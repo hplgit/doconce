@@ -1,0 +1,9 @@
+.. Automatically generated reST file from Doconce source
+   (http://code.google.com/p/doconce/)
+
+A Document for Testing Doconce
+==============================
+
+:Author: Hans Petter Langtangen (hpl at simula.no), Kaare Dump, A. Dummy Author, I. S. Overworked, J. Doe (j_doe at cyberspace.com)
+:Date: Jun 29, 2013
+

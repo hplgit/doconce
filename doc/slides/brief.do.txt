@@ -1,0 +1,105 @@
+
+TITLE: Testing HTML Slide Environments
+AUTHOR: Hans Petter Langtangen at Center for Biomedical Computing, Simula Research Laboratory
+DATE: today
+
+
+!split
+======= Doconce: example on slide code with cells =======
+
+One can introduce a table-like layout with MxN cells and
+put slide elements in various cell. A cell with position
+MN is surrounded by `!bslidecell MN` and `!eslidecell`
+tags. Below is an example with a bullet list to the left and
+a figure to the right (two cells, numbered 00 and 01).
+
+!bc
+!split
+======= Headline =======
+
+!bslidecell 00
+ * Key point 1
+ * Key point 2
+ * Key point 3 takes very much more text to explain because
+   this point is really comprehensive, and although long
+   bullet points are not recommended in general, we need
+   it here for demonstration purposes
+
+!bt
+\[ -\nabla^2 u = f \quad\hbox{in }\Omega \]
+!et
+
+!eslidecell
+
+!bslidecell 01
+FIGURE: [fig/broken_pen_and_paper, width=400]
+!eslidecell
+
+!split
+======= Next slide... =======
+!ec
+
+!split
+======= Doconce: example on slide code =======
+
+Last page gets rendered to
+
+======= Headline =======
+
+!bslidecell 00
+ * Key point 1
+ * Key point 2
+ * Key point 3 takes very much more text to explain because
+   this point is really comprehensive, and although long
+   bullet points are not recommended in general, we need
+   it here for demonstration purposes
+
+!bt
+\[ -\nabla^2 u = f \quad\hbox{in }\Omega \]
+!et
+
+!eslidecell
+
+!bslidecell 01
+FIGURE: [fig/broken_pen_and_paper, width=400]
+!eslidecell
+
+
+!split
+======= Numerical solution method =======
+label{numerical:problem}
+
+idx{mesh in time} idx{$\theta$-rule} idx{numerical scheme}
+idx{finite difference scheme}
+
+!bpop
+ * Mesh in time: $0= t_0< t_1 \cdots < t_N=T$
+ * Assume constant $\Delta t = t_{n}-t_{n-1}$
+ * $u^n$: numerical approx to the exact solution at $t_n$
+!epop
+
+!bpop
+Numerical scheme:
+!bt
+   \[
+   u^{n+1} = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}u^n,
+   \quad n=0,1,\ldots,N-1
+   \]
+!et
+!epop
+
+!bpop
+$\theta=0$: Forward Euler, $\theta=1$: Backward Euler,
+$\theta=1/2$: Crank-Nicolson
+!epop
+
+!split
+
+
+===== Implementation =====
+
+@@@CODE src/dc_mod.pyopt
+
+
+!split
+

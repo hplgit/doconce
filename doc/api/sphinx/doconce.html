@@ -1,0 +1,255 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>doconce.doconce &mdash; Doconce Documentation 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Doconce Documentation 1.0 documentation" href="index.html" />
+    <link rel="next" title="doconce.common" href="common.html" />
+    <link rel="prev" title="doconce" href="init.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="common.html" title="doconce.common"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="init.html" title="doconce"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Doconce Documentation 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-doconce.doconce">
+<span id="doconce-doconce"></span><h1><a class="reference internal" href="#module-doconce.doconce" title="doconce.doconce"><tt class="xref py py-mod docutils literal"><span class="pre">doconce.doconce</span></tt></a><a class="headerlink" href="#module-doconce.doconce" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="doconce.doconce.debugpr">
+<tt class="descclassname">doconce.doconce.</tt><tt class="descname">debugpr</tt><big>(</big><em>out</em><big>)</big><a class="headerlink" href="#doconce.doconce.debugpr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="doconce.doconce.doconce2format">
+<tt class="descclassname">doconce.doconce.</tt><tt class="descname">doconce2format</tt><big>(</big><em>filestr</em>, <em>format</em><big>)</big><a class="headerlink" href="#doconce.doconce.doconce2format" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="doconce.doconce.doconce2format4docstrings">
+<tt class="descclassname">doconce.doconce.</tt><tt class="descname">doconce2format4docstrings</tt><big>(</big><em>filestr</em>, <em>format</em><big>)</big><a class="headerlink" href="#doconce.doconce.doconce2format4docstrings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run doconce2format on all doc strings in a Python file.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="doconce.doconce.exercises">
+<tt class="descclassname">doconce.doconce.</tt><tt class="descname">exercises</tt><big>(</big><em>filestr</em>, <em>format</em><big>)</big><a class="headerlink" href="#doconce.doconce.exercises" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="doconce.doconce.file2file">
+<tt class="descclassname">doconce.doconce.</tt><tt class="descname">file2file</tt><big>(</big><em>in_filename</em>, <em>format</em>, <em>out_filename</em><big>)</big><a class="headerlink" href="#doconce.doconce.file2file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform the transformation of a doconce file, stored in in_filename,
+to a given format (html, latex, etc.), written to out_filename.
+This is the &#8220;main&#8221; function in the module.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="doconce.doconce.handle_cross_referencing">
+<tt class="descclassname">doconce.doconce.</tt><tt class="descname">handle_cross_referencing</tt><big>(</big><em>filestr</em>, <em>format</em><big>)</big><a class="headerlink" href="#doconce.doconce.handle_cross_referencing" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="doconce.doconce.handle_figures">
+<tt class="descclassname">doconce.doconce.</tt><tt class="descname">handle_figures</tt><big>(</big><em>filestr</em>, <em>format</em><big>)</big><a class="headerlink" href="#doconce.doconce.handle_figures" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="doconce.doconce.handle_index_and_bib">
+<tt class="descclassname">doconce.doconce.</tt><tt class="descname">handle_index_and_bib</tt><big>(</big><em>filestr</em>, <em>format</em>, <em>has_title</em><big>)</big><a class="headerlink" href="#doconce.doconce.handle_index_and_bib" title="Permalink to this definition">¶</a></dt>
+<dd><p>Process idx{...} and cite{...} instructions.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="doconce.doconce.inline_tag_subst">
+<tt class="descclassname">doconce.doconce.</tt><tt class="descname">inline_tag_subst</tt><big>(</big><em>filestr</em>, <em>format</em><big>)</big><a class="headerlink" href="#doconce.doconce.inline_tag_subst" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deal with all inline tags by substitution.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="doconce.doconce.insert_code_from_file">
+<tt class="descclassname">doconce.doconce.</tt><tt class="descname">insert_code_from_file</tt><big>(</big><em>filestr</em>, <em>format</em><big>)</big><a class="headerlink" href="#doconce.doconce.insert_code_from_file" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="doconce.doconce.interpret_authors">
+<tt class="descclassname">doconce.doconce.</tt><tt class="descname">interpret_authors</tt><big>(</big><em>filestr</em>, <em>format</em><big>)</big><a class="headerlink" href="#doconce.doconce.interpret_authors" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="doconce.doconce.main">
+<tt class="descclassname">doconce.doconce.</tt><tt class="descname">main</tt><big>(</big><big>)</big><a class="headerlink" href="#doconce.doconce.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="doconce.doconce.make_one_line_paragraphs">
+<tt class="descclassname">doconce.doconce.</tt><tt class="descname">make_one_line_paragraphs</tt><big>(</big><em>filestr</em>, <em>format</em><big>)</big><a class="headerlink" href="#doconce.doconce.make_one_line_paragraphs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="doconce.doconce.parse_keyword">
+<tt class="descclassname">doconce.doconce.</tt><tt class="descname">parse_keyword</tt><big>(</big><em>keyword</em>, <em>format</em><big>)</big><a class="headerlink" href="#doconce.doconce.parse_keyword" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse a keyword for a description list when the keyword may
+represent information about an argument to a function or a
+variable in a program:</p>
+<div class="highlight-python"><pre>- argument x: x coordinate (float).
+- keyword argument tolerance: error tolerance (float).
+- return: corresponding y coordinate (float).</pre>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="doconce.doconce.preprocess">
+<tt class="descclassname">doconce.doconce.</tt><tt class="descname">preprocess</tt><big>(</big><em>filename</em>, <em>format</em>, <em>preprocessor_options=</em><span class="optional">[</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#doconce.doconce.preprocess" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run mako or the preprocess script on filename and return the name
+of the resulting file. The preprocessor_options list contains
+the preprocessor options given on the command line.
+In addition, the preprocessor option FORMAT (=format) is
+always defined.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="doconce.doconce.subst_away_inline_comments">
+<tt class="descclassname">doconce.doconce.</tt><tt class="descname">subst_away_inline_comments</tt><big>(</big><em>filestr</em><big>)</big><a class="headerlink" href="#doconce.doconce.subst_away_inline_comments" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="doconce.doconce.subst_class_func_mod">
+<tt class="descclassname">doconce.doconce.</tt><tt class="descname">subst_class_func_mod</tt><big>(</big><em>filestr</em>, <em>format</em><big>)</big><a class="headerlink" href="#doconce.doconce.subst_class_func_mod" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="doconce.doconce.supported_format_names">
+<tt class="descclassname">doconce.doconce.</tt><tt class="descname">supported_format_names</tt><big>(</big><big>)</big><a class="headerlink" href="#doconce.doconce.supported_format_names" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="doconce.doconce.syntax_check">
+<tt class="descclassname">doconce.doconce.</tt><tt class="descname">syntax_check</tt><big>(</big><em>filestr</em>, <em>format</em><big>)</big><a class="headerlink" href="#doconce.doconce.syntax_check" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="doconce.doconce.typeset_authors">
+<tt class="descclassname">doconce.doconce.</tt><tt class="descname">typeset_authors</tt><big>(</big><em>filestr</em>, <em>format</em><big>)</big><a class="headerlink" href="#doconce.doconce.typeset_authors" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="doconce.doconce.typeset_lists">
+<tt class="descclassname">doconce.doconce.</tt><tt class="descname">typeset_lists</tt><big>(</big><em>filestr</em>, <em>format</em>, <em>debug_info=</em><span class="optional">[</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#doconce.doconce.typeset_lists" title="Permalink to this definition">¶</a></dt>
+<dd><p>Go through filestr and parse all lists and typeset them correctly.
+This function must be called after all (verbatim) code and tex blocks
+have been removed from the file.
+This function also treats comment lines and blank lines.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="doconce.doconce.typeset_tables">
+<tt class="descclassname">doconce.doconce.</tt><tt class="descname">typeset_tables</tt><big>(</big><em>filestr</em>, <em>format</em><big>)</big><a class="headerlink" href="#doconce.doconce.typeset_tables" title="Permalink to this definition">¶</a></dt>
+<dd><p>Translate tables with pipes and dashes to a list of
+row-column values. Horizontal rules become a row
+[&#8216;horizontal rule&#8217;] in the list.
+The list is easily translated to various output formats
+by other modules.</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="init.html"
+                        title="previous chapter"><tt class="docutils literal"><span class="pre">doconce</span></tt></a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="common.html"
+                        title="next chapter"><tt class="docutils literal docutils literal"><span class="pre">doconce.common</span></tt></a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/doconce.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="common.html" title="doconce.common"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="init.html" title="doconce"
+             >previous</a> |</li>
+        <li><a href="index.html">Doconce Documentation 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2010, H. P. Langtangen.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

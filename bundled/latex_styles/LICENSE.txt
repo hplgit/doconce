@@ -1,0 +1,6 @@
+The lyx_*.pdf/eps figures are converted from PNG images taken from
+http://www.karakas-online.de/mySGML/lyx-admonitions.html
+
+The other figures (and corresponding *.eps and *.pdf formats)
+are taken from the source of the Guide to NumPy book by
+Travis Oliphant.

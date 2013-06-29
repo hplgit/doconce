@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<!--
+Automatically generated HTML file from Doconce source
+(http://code.google.com/p/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: http://code.google.com/p/doconce/" />
+<meta name="description" content="On the Technicalities of Scientific Writing Anno 2012: The Doconce Way">
+
+
+
+<style type="text/css">
+    /* blueish style */
+
+    /* Color definitions:  http://www.december.com/html/spec/color0.html
+       CSS examples:       http://www.w3schools.com/css/css_examples.asp */
+
+    body {
+      margin-top: 1.0em;
+      background-color: #ffffff;
+      font-family: Helvetica, Arial, FreeSans, san-serif;
+      color: #000000;
+    }
+    h1 { font-size: 1.8em; color: #1e36ce; }
+    h2 { font-size: 1.5em; color: #1e36ce; }
+    h3 { color: #1e36ce; }
+    a { color: #1e36ce; text-decoration:none; }
+    tt { font-family: "Courier New", Courier; }
+    
+    p { text-indent: 0px; }
+    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    p.caption { width: 80%; font-style: normal; text-align: left; }
+    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    .alert-text-small   { font-size: 80%;  }
+    .alert-text-large   { font-size: 130%; }
+    .alert-text-normal  { font-size: 90%;  }
+    .alert {
+             padding:8px 35px 8px 14px; margin-bottom:18px;
+             text-shadow:0 1px 0 rgba(255,255,255,0.5);
+             border:1px solid #bababa;
+             -webkit-border-radius: 4px; -moz-border-radius: 4px;
+             border-radius: 4px
+             color: #555;
+             background-color: #f8f8f8;
+             background-position: 10px 5px;
+             background-repeat: no-repeat;
+             background-size: 38px;
+             padding-left: 55px;
+             width: 75%;
+     }
+     .alert-block {padding-top:14px; padding-bottom:14px}
+     .alert-block > p, .alert-block > ul {margin-bottom:0}
+     .alert li {margin-top: 1em}
+     .alert-block p+p {margin-top:5px}
+     .alert-notice { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_notice.png); }
+     .alert-summary  { background-image:url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_summary.png); }
+     .alert-warning { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_warning.png); }
+     .alert-question {background-image:url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_question.png); }
+
+</style>
+
+</head>
+
+<!-- tocinfo
+{'highest level': 2,
+ 'sections': [(' Figure and bullet list ', 2, None, '___sec0'),
+              (' Scientific writing needs to address many new media ',
+               2,
+               None,
+               '___sec1'),
+              (' Some math and computer code ', 2, None, '___sec2'),
+              (' Admon blocks ', 2, None, '___sec3')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "AMS"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+
+<!-- newcommands_bfmath.tex -->
+$$
+\renewcommand{\u}{\pmb{u}}
+
+\newcommand{\xbm}{\boldsymbol{x}}
+\newcommand{\normalvecbm}{\boldsymbol{n}}
+\newcommand{\ubm}{\boldsymbol{u}}
+$$
+
+
+<!-- newcommands_replace.tex -->
+$$
+\newcommand{\x}{\pmb{x}}
+\newcommand{\normalvec}{\pmb{n}}
+\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
+\newcommand{\halfi}{1/2}
+\newcommand{\half}{\frac{1}{2}}
+\newcommand{\report}{test report}
+$$
+
+
+
+
+    
+<!-- ------------------- main content ---------------------- -->
+
+
+<title>On the Technicalities of Scientific Writing Anno 2012: The Doconce Way</title>
+
+<center><h1>On the Technicalities of Scientific Writing Anno 2012: The Doconce Way</h1></center>  <!-- document title -->
+
+<p>
+<!-- author(s): Hans Petter Langtangen -->
+
+<center>
+<b>Hans Petter Langtangen</b> [1, 2]
+</center>
+
+
+<p>
+<!-- institution(s) -->
+
+<center>[1] <b>Simula Research Laboratory</b></center>
+<center>[2] <b>University of Oslo</b></center>
+<p>
+<center><h4>Jun 29, 2013</h4></center> <!-- date -->
+<p>
+<!-- !split -->
+
+<h3>Figure and bullet list  <a name="___sec0"></a></h3>
+
+<p>
+<!-- !bslidecell 00  0.35 -->
+<!-- !bpop -->
+
+<p>
+
+<ul>
+  <li> Here is a <em>wave packet</em></li>
+  <li> It can move</li>
+  <li> But here it is just a figure</li>
+</ul>
+
+<!-- !epop -->
+<!-- !eslidecell -->
+
+<p>
+<!-- Test that it is okay to leave out width if there are only two columns -->
+
+<p>
+<!-- !bslidecell 01 -->
+<center><p><img src="../doc/manual/figs/wavepacket_0001.png" align="bottom" width=300></p></center>
+<!-- !eslidecell -->
+
+<p>
+<!-- !bpop highlight-red -->
+Here we have a paragraph to pop up in red.
+And a line more
+<!-- !epop -->
+
+<p>
+
+<!-- begin inline comment -->
+<font color="red">[<b>hpl 1</b>: <em>Here are some notes that can go to notes typesetting
+in the slide environment.</em>]</font>
+<!-- end inline comment -->
+
+
+<p>
+<!-- !bnotes -->
+One can also have ordinary notes.
+Over multiple lines.
+<!-- !enotes -->
+
+<p>
+<!-- !split -->
+
+<h3>Scientific writing needs to address many new media  <a name="___sec1"></a></h3>
+
+<p>
+<!-- !bpop -->
+
+<p>
+
+<ul>
+ <li> Old days (1985-2005): mostly black-and-white documents aimed at printing</li>
+ <li> Now: also color PDF, web pages, wikis - for paper, PC, iPad, ...</li>
+ <li> LaTeX writing may be very different from writing in other formats</li>
+ <li> Main problem:</li>
+
+<ul>
+    <li> LaTeX provide all sorts of fancy packages, but</li>
+    <li> PDF in browsers has limited capabilities (design, navigation)
+      compared to native HTML formats</li>
+</ul>
+
+ <li> Conclusion: We need more than LaTeX</li>
+</ul>
+
+<!-- !epop -->
+
+<p>
+<!-- !split -->
+
+<h3>Some math and computer code  <a name="___sec2"></a></h3>
+
+<p>
+$$ f(x,y,t) = e^{-xt}\sin\pi y $$
+
+Python implementation:
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "emacs" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #AA22FF; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+
+<span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">f</span>(x, y, t):
+    <span style="color: #AA22FF; font-weight: bold">return</span> np<span style="color: #666666">.</span>exp(<span style="color: #666666">-</span>x<span style="color: #666666">*</span>t)<span style="color: #666666">*</span>np<span style="color: #666666">.</span>sin(np<span style="color: #666666">.</span>pi<span style="color: #666666">*</span>y)
+
+<span style="color: #AA22FF; font-weight: bold">class</span> <span style="color: #0000FF">Fancy</span>:
+    <span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">__init__</span>(<span style="color: #AA22FF">self</span>):
+        <span style="color: #AA22FF; font-weight: bold">pass</span>
+
+    <span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">__call__</span>(<span style="color: #AA22FF">self</span>, x, y, t):
+        <span style="color: #AA22FF; font-weight: bold">return</span> f(x, y, t)
+
+f2 <span style="color: #666666">=</span> Fancy()
+</pre></div>
+<p>
+<!-- !split -->
+
+<h3>Admon blocks  <a name="___sec3"></a></h3>
+
+<p>
+Can use admons to simulate blocks:
+
+<p>
+<div class="alert alert-block alert-notice alert-text-normal"><b>Key PDE:</b>
+This box has title and math in normal 90 percent font:
+$$ \frac{\partial u}{\partial t} = \nabla^2 u $$
+</div>
+<p>
+<!-- !bpop -->
+<div class="alert alert-block alert-notice alert-text-normal"><b></b>
+Just some block with text and a conclusion that something is important.
+This one pops up after the rest of the slide.
+</div>
+<!-- !epop -->
+
+<p>
+<div class="alert alert-block alert-warning alert-text-small"><b>Warning.</b>
+Can use, e.g., a warning admon to have my own notes, preferably
+inside preprocess/mako if statements to turn notes on and off.
+This one is typeset in a small font and with the default
+title (Warning) since no title is specified.
+</div>
+<!-- ------------------- end of main content --------------- -->
+
+
+</body>
+</html>
+    
+

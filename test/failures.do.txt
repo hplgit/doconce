@@ -1,0 +1,61 @@
+# Text with wrong doconce format
+
+A list followed by a code block works okay:
+
+  * Third point
+  * Fourth point
+!bc cod
+some verbatime stuff
+!ec
+
+=== Section heading before code is caught by the syntax check ===
+label{my} idx{failure}
+
+!bc
+more verbatime stuff
+!ec
+
+Next we see if backslashes are detected: \label{mylab}\idx{youridx}
+And a reference to \cite{mybook}.
+
+__Paragraph before code is bad.__
+
+# But here it could be fooled by a comment
+
+!bc
+More verbatim stuff.
+!ec
+
+Can we successfully say `__call__` and `__add__` and avoid having them as
+bad paragraphs?
+
+Figure with just an image.
+
+FIGURE: [../doc/manual/figs/streamtubes]
+
+Figure with label, but no caption.
+
+FIGURE: [../doc/manual/figs/streamtubes] label{myl1}
+
+Figure with no comma between filename and options:
+
+FIGURE: [../doc/manual/figs/streamtubes width=800]
+
+More text...
+# Comment before math
+!bt
+\begin{align}
+a &= b,  label{eq1}\\
+a &= b,  label{eq2}
+\end{align}
+!et
+
+# Comment before list
+
+ * A1
+ * A2
+
+Normal text.
+
+
+

@@ -1,0 +1,19 @@
+The Knob_*.png figures are taken from
+
+  http://itweek.deviantart.com/art/Knob-Buttons-Toolbar-icons-73463960
+
+"This pack includes thirty-nine icons in PNG, ICNS, TIFF and ICO
+formats, Mac and Windows compatible, 32x32 pixels dimensions only. You
+are free to use these icons on your software application, website,
+etc. You're welcome to give credits for the graphics, when used."
+Posted by iTweek: http://itweek.deviantart.com/
+
+
+The lyx_*.png figures are taken from
+http://www.karakas-online.de/mySGML/lyx-admonitions.html
+
+The small_*, yellow_pen_*, handwritten_*, question_*,
+prev4.png, next4.png, lab1.png, discussion1.png, exercise1.png,
+icons are taken from
+http://www.iconfinder.com (licence free images).
+

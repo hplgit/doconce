@@ -1,0 +1,4 @@
+include lib/doconce/*.py
+include test/*
+recursive-include lib/doconce/doc *
+include LICENSE

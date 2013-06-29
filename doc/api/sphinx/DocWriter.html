@@ -1,0 +1,645 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>doconce.DocWriter &mdash; Doconce Documentation 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Doconce Documentation 1.0 documentation" href="index.html" />
+    <link rel="next" title="doconce.expand_newcommands" href="expand_newcommands.html" />
+    <link rel="prev" title="doconce.epytext" href="epytext.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="expand_newcommands.html" title="doconce.expand_newcommands"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="epytext.html" title="doconce.epytext"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Doconce Documentation 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-doconce.DocWriter">
+<span id="doconce-docwriter"></span><h1><a class="reference internal" href="#module-doconce.DocWriter" title="doconce.DocWriter"><tt class="xref py py-mod docutils literal"><span class="pre">doconce.DocWriter</span></tt></a><a class="headerlink" href="#module-doconce.DocWriter" title="Permalink to this headline">¶</a></h1>
+<p>DocWriter is a tool for writing documents in ASCII, HTML,
+LaTeX, Doconce, and other formats based on input from Python
+datastructures.</p>
+<p>The base class _BaseWriter defines common functions and data
+structures, while subclasses HTML, Doconce, etc.  implement (i.e.,
+write to) various formats.</p>
+<p>This module works, but is unifinished and needs documentation!</p>
+<dl class="class">
+<dt id="doconce.DocWriter.DocWriter">
+<em class="property">class </em><tt class="descclassname">doconce.DocWriter.</tt><tt class="descname">DocWriter</tt><big>(</big><em>*formats</em><big>)</big><a class="headerlink" href="#doconce.DocWriter.DocWriter" title="Permalink to this definition">¶</a></dt>
+<dd><p>DocWriter can write documents in several formats at once.</p>
+<dl class="method">
+<dt id="doconce.DocWriter.DocWriter.dispatcher">
+<tt class="descname">dispatcher</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#doconce.DocWriter.DocWriter.dispatcher" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="doconce.DocWriter.DocWriter.documents">
+<tt class="descname">documents</tt><big>(</big><big>)</big><a class="headerlink" href="#doconce.DocWriter.DocWriter.documents" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="doconce.DocWriter.DocWriter.figure">
+<tt class="descname">figure</tt><big>(</big><em>filename</em>, <em>caption</em>, <em>width=None</em>, <em>height=None</em>, <em>label=None</em><big>)</big><a class="headerlink" href="#doconce.DocWriter.DocWriter.figure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Insert a figure into the document.
+filename should be without extension; a proper extension is added,
+and if the figure is not available in that image format, the
+convert utility from ImageMagick is called to convert the format.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="doconce.DocWriter.DocWriter.link">
+<tt class="descname">link</tt><big>(</big><em>link_text</em>, <em>link_target</em><big>)</big><a class="headerlink" href="#doconce.DocWriter.DocWriter.link" title="Permalink to this definition">¶</a></dt>
+<dd><p>Typeset a hyperlink.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="doconce.DocWriter.DocWriter.list">
+<tt class="descname">list</tt><big>(</big><em>items</em>, <em>listtype='itemize'</em><big>)</big><a class="headerlink" href="#doconce.DocWriter.DocWriter.list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write list or nested lists.</p>
+<p>&#64;param items: list of items.
+&#64;param listtype: &#8216;itemize&#8217;, &#8216;enumerate&#8217;, or &#8216;description&#8217;.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="doconce.DocWriter.DocWriter.math">
+<tt class="descname">math</tt><big>(</big><em>text</em><big>)</big><a class="headerlink" href="#doconce.DocWriter.DocWriter.math" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write block of mathematical text (equations).</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="doconce.DocWriter.DocWriter.methods">
+<tt class="descname">methods</tt><em class="property"> = ('title', 'section', 'subsection', 'subsubsection', 'paragraph', 'paragraph_separator', 'text', 'list', 'verbatim', 'math', 'raw', 'url', 'link', 'write_to_file', 'figure', 'table')</em><a class="headerlink" href="#doconce.DocWriter.DocWriter.methods" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="doconce.DocWriter.DocWriter.paragraph">
+<tt class="descname">paragraph</tt><big>(</big><em>title</em>, <em>ending='.'</em>, <em>label=None</em><big>)</big><a class="headerlink" href="#doconce.DocWriter.DocWriter.paragraph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write a paragraph heading with the given title and an ending
+(period, question mark, colon) and an optional label (for navigation).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="doconce.DocWriter.DocWriter.paragraph_separator">
+<tt class="descname">paragraph_separator</tt><big>(</big><big>)</big><a class="headerlink" href="#doconce.DocWriter.DocWriter.paragraph_separator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a (space) separator between running paragraphs.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="doconce.DocWriter.DocWriter.raw">
+<tt class="descname">raw</tt><big>(</big><em>text</em><big>)</big><a class="headerlink" href="#doconce.DocWriter.DocWriter.raw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write text directly &#8216;as is&#8217; to output.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="doconce.DocWriter.DocWriter.section">
+<tt class="descname">section</tt><big>(</big><em>title</em>, <em>label=None</em><big>)</big><a class="headerlink" href="#doconce.DocWriter.DocWriter.section" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write a section heading with the given title and an optional
+label (for navigation).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="doconce.DocWriter.DocWriter.subsection">
+<tt class="descname">subsection</tt><big>(</big><em>title</em>, <em>label=None</em><big>)</big><a class="headerlink" href="#doconce.DocWriter.DocWriter.subsection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write a subsection heading with the given title and an optional
+label (for navigation).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="doconce.DocWriter.DocWriter.subsubsection">
+<tt class="descname">subsubsection</tt><big>(</big><em>title</em>, <em>label=None</em><big>)</big><a class="headerlink" href="#doconce.DocWriter.DocWriter.subsubsection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write a subsubsection heading with the given title and an optional
+label (for navigation).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="doconce.DocWriter.DocWriter.table">
+<tt class="descname">table</tt><big>(</big><em>table</em>, <em>column_headline_pos='c'</em>, <em>column_pos='c'</em><big>)</big><a class="headerlink" href="#doconce.DocWriter.DocWriter.table" title="Permalink to this definition">¶</a></dt>
+<dd><p>Translates a two-dimensional list of data, containing strings or
+numbers, to a suitable &#8220;tabular&#8221; environment in the output.</p>
+<p>&#64;param table: list of list with rows/columns in table, including
+(optional) column-headline 1st row and row-headline 1st column.
+&#64;param column_pos: specify the l/c/r position of data
+entries in columns, give either (e.g.) &#8216;llrrc&#8217; or one char
+(if all are equal).
+&#64;param column_headline_pos : position l/c/r for the headline row</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="doconce.DocWriter.DocWriter.text">
+<tt class="descname">text</tt><big>(</big><em>text</em>, <em>indent=0</em><big>)</big><a class="headerlink" href="#doconce.DocWriter.DocWriter.text" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write plain text. Each line can be idented by a given number
+of spaces.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="doconce.DocWriter.DocWriter.title">
+<tt class="descname">title</tt><big>(</big><em>title</em>, <em>authors_and_institutions=</em><span class="optional">[</span><span class="optional">]</span>, <em>date='today'</em><big>)</big><a class="headerlink" href="#doconce.DocWriter.DocWriter.title" title="Permalink to this definition">¶</a></dt>
+<dd><p>Provide title and authors.</p>
+<p>&#64;param title: document title (string).
+&#64;param authors_and_institutions: list of authors and their
+associated institutions, where each list item is a tuple/list
+with author as first element followed by the name of all
+institutions this author is associated with.
+&#64;param date: None implies no date, while &#8216;today&#8217; generates
+the current date, otherwise a string is supplied.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="doconce.DocWriter.DocWriter.url">
+<tt class="descname">url</tt><big>(</big><em>url_address</em>, <em>link_text=None</em><big>)</big><a class="headerlink" href="#doconce.DocWriter.DocWriter.url" title="Permalink to this definition">¶</a></dt>
+<dd><p>Typeset an URL (with an optional link).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="doconce.DocWriter.DocWriter.verbatim">
+<tt class="descname">verbatim</tt><big>(</big><em>code</em><big>)</big><a class="headerlink" href="#doconce.DocWriter.DocWriter.verbatim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write verbatim text in fixed-width form
+(typically for computer code).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="doconce.DocWriter.DocWriter.write_to_file">
+<tt class="descname">write_to_file</tt><big>(</big><em>filename</em><big>)</big><a class="headerlink" href="#doconce.DocWriter.DocWriter.write_to_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write formatted document to a file.
+Just give the stem of the file name;
+the extension will be automatically added (depending on the
+document format).</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="doconce.DocWriter.Doconce">
+<em class="property">class </em><tt class="descclassname">doconce.DocWriter.</tt><tt class="descname">Doconce</tt><a class="headerlink" href="#doconce.DocWriter.Doconce" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">doconce.DocWriter._BaseWriter</span></tt></p>
+<dl class="method">
+<dt id="doconce.DocWriter.Doconce.figure">
+<tt class="descname">figure</tt><big>(</big><em>filename</em>, <em>caption</em>, <em>width=None</em>, <em>height=None</em>, <em>label=None</em><big>)</big><a class="headerlink" href="#doconce.DocWriter.Doconce.figure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Insert a figure into the document.
+filename should be without extension; a proper extension is added,
+and if the figure is not available in that image format, the
+convert utility from ImageMagick is called to convert the format.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="doconce.DocWriter.Doconce.heading">
+<tt class="descname">heading</tt><big>(</big><em>underscores</em>, <em>title</em>, <em>label=None</em><big>)</big><a class="headerlink" href="#doconce.DocWriter.Doconce.heading" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="doconce.DocWriter.Doconce.item_handler">
+<tt class="descname">item_handler</tt><big>(</big><em>item</em>, <em>listtype</em>, <em>level</em>, <em>keyword=None</em><big>)</big><a class="headerlink" href="#doconce.DocWriter.Doconce.item_handler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write out the syntax for an item in a list.</p>
+<p>&#64;param item: text assoicated with the current list item. If item
+equals &#8216;_begin&#8217; or &#8216;_end&#8217;, appropriate begin/end formatting of
+the list is written instead of an ordinary item.
+&#64;param listtype: &#8216;itemize, &#8216;enumerate&#8217;, or &#8216;description&#8217;.
+&#64;param level: list level number, 0 is the mainlist, increased by 1
+for each sublist (the level number implies the amount of indentation).
+&#64;param keyword: the keyword of the item in a &#8216;description&#8217; list.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="doconce.DocWriter.Doconce.link">
+<tt class="descname">link</tt><big>(</big><em>link_text</em>, <em>link_target</em><big>)</big><a class="headerlink" href="#doconce.DocWriter.Doconce.link" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="doconce.DocWriter.Doconce.list">
+<tt class="descname">list</tt><big>(</big><em>items</em>, <em>listtype='itemize'</em><big>)</big><a class="headerlink" href="#doconce.DocWriter.Doconce.list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write list or nested lists.</p>
+<p>&#64;param items: list of items.
+&#64;param listtype: &#8216;itemize&#8217;, &#8216;enumerate&#8217;, or &#8216;description&#8217;.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="doconce.DocWriter.Doconce.method">
+<tt class="descname">method</tt><big>(</big><em>item</em>, <em>listtype</em>, <em>level</em>, <em>keyword=None</em><big>)</big><a class="headerlink" href="#doconce.DocWriter.Doconce.method" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write out the syntax for an item in a list.</p>
+<p>&#64;param item: text assoicated with the current list item. If item
+equals &#8216;_begin&#8217; or &#8216;_end&#8217;, appropriate begin/end formatting of
+the list is written instead of an ordinary item.
+&#64;param listtype: &#8216;itemize, &#8216;enumerate&#8217;, or &#8216;description&#8217;.
+&#64;param level: list level number, 0 is the mainlist, increased by 1
+for each sublist (the level number implies the amount of indentation).
+&#64;param keyword: the keyword of the item in a &#8216;description&#8217; list.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="doconce.DocWriter.Doconce.paragraph">
+<tt class="descname">paragraph</tt><big>(</big><em>title</em>, <em>ending='.'</em>, <em>label=None</em><big>)</big><a class="headerlink" href="#doconce.DocWriter.Doconce.paragraph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write a paragraph heading with the given title and an ending
+(period, question mark, colon) and an optional label (for navigation).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="doconce.DocWriter.Doconce.paragraph_separator">
+<tt class="descname">paragraph_separator</tt><big>(</big><big>)</big><a class="headerlink" href="#doconce.DocWriter.Doconce.paragraph_separator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="doconce.DocWriter.Doconce.section">
+<tt class="descname">section</tt><big>(</big><em>title</em>, <em>label=None</em><big>)</big><a class="headerlink" href="#doconce.DocWriter.Doconce.section" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write a section heading with the given title and an optional
+label (for navigation).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="doconce.DocWriter.Doconce.subsection">
+<tt class="descname">subsection</tt><big>(</big><em>title</em>, <em>label=None</em><big>)</big><a class="headerlink" href="#doconce.DocWriter.Doconce.subsection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write a subsection heading with the given title and an optional
+label (for navigation).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="doconce.DocWriter.Doconce.subsubsection">
+<tt class="descname">subsubsection</tt><big>(</big><em>title</em>, <em>label=None</em><big>)</big><a class="headerlink" href="#doconce.DocWriter.Doconce.subsubsection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write a subsubsection heading with the given title and an optional
+label (for navigation).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="doconce.DocWriter.Doconce.table">
+<tt class="descname">table</tt><big>(</big><em>table</em>, <em>column_headline_pos='c'</em>, <em>column_pos='c'</em><big>)</big><a class="headerlink" href="#doconce.DocWriter.Doconce.table" title="Permalink to this definition">¶</a></dt>
+<dd><p>Translates a two-dimensional list of data, containing strings or
+numbers, to a suitable &#8220;tabular&#8221; environment in the output.</p>
+<p>&#64;param table: list of list with rows/columns in table, including
+(optional) column-headline 1st row and row-headline 1st column.
+&#64;param column_pos: specify the l/c/r position of data
+entries in columns, give either (e.g.) &#8216;llrrc&#8217; or one char
+(if all are equal).
+&#64;param column_headline_pos : position l/c/r for the headline row</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="doconce.DocWriter.Doconce.text">
+<tt class="descname">text</tt><big>(</big><em>text</em>, <em>indent=0</em><big>)</big><a class="headerlink" href="#doconce.DocWriter.Doconce.text" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write plain text. Each line can be idented by a given number
+of spaces.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="doconce.DocWriter.Doconce.title">
+<tt class="descname">title</tt><big>(</big><em>title</em>, <em>authors_and_institutions=</em><span class="optional">[</span><span class="optional">]</span>, <em>date='today'</em><big>)</big><a class="headerlink" href="#doconce.DocWriter.Doconce.title" title="Permalink to this definition">¶</a></dt>
+<dd><p>Provide title and authors.</p>
+<p>&#64;param title: document title (string).
+&#64;param authors_and_institutions: list of authors and their
+associated institutions, where each list item is a tuple/list
+with author as first element followed by the name of all
+institutions this author is associated with.
+&#64;param date: None implies no date, while &#8216;today&#8217; generates
+the current date, otherwise a string is supplied.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="doconce.DocWriter.Doconce.url">
+<tt class="descname">url</tt><big>(</big><em>url_address</em>, <em>link_text=None</em><big>)</big><a class="headerlink" href="#doconce.DocWriter.Doconce.url" title="Permalink to this definition">¶</a></dt>
+<dd><p>Typeset an URL (with an optional link).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="doconce.DocWriter.Doconce.verbatim">
+<tt class="descname">verbatim</tt><big>(</big><em>code</em><big>)</big><a class="headerlink" href="#doconce.DocWriter.Doconce.verbatim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write verbatim text in fixed-width form
+(typically for computer code).</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="doconce.DocWriter.HTML">
+<em class="property">class </em><tt class="descclassname">doconce.DocWriter.</tt><tt class="descname">HTML</tt><a class="headerlink" href="#doconce.DocWriter.HTML" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">doconce.DocWriter._BaseWriter</span></tt></p>
+<dl class="attribute">
+<dt id="doconce.DocWriter.HTML.INLINE_TAGS_SUBST">
+<tt class="descname">INLINE_TAGS_SUBST</tt><em class="property"> = {'math2': '\\g&lt;begin&gt;\\g&lt;puretext&gt;\\g&lt;end&gt;', 'verbatim': '\\g&lt;begin&gt;&lt;tt&gt;\\g&lt;subst&gt;&lt;/tt&gt;\\g&lt;end&gt;', 'emphasize': '\\g&lt;begin&gt;&lt;em&gt;\\g&lt;subst&gt;&lt;/em&gt;\\g&lt;end&gt;', 'math': None, 'bold': '\\g&lt;begin&gt;&lt;b&gt;\\g&lt;subst&gt;&lt;/b&gt;\\g&lt;end&gt;'}</em><a class="headerlink" href="#doconce.DocWriter.HTML.INLINE_TAGS_SUBST" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="doconce.DocWriter.HTML.figure">
+<tt class="descname">figure</tt><big>(</big><em>filename</em>, <em>caption</em>, <em>width=None</em>, <em>height=None</em>, <em>label=None</em><big>)</big><a class="headerlink" href="#doconce.DocWriter.HTML.figure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Insert a figure into the document.
+filename should be without extension; a proper extension is added,
+and if the figure is not available in that image format, the
+convert utility from ImageMagick is called to convert the format.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="doconce.DocWriter.HTML.footer">
+<tt class="descname">footer</tt><big>(</big><big>)</big><a class="headerlink" href="#doconce.DocWriter.HTML.footer" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="doconce.DocWriter.HTML.header">
+<tt class="descname">header</tt><big>(</big><big>)</big><a class="headerlink" href="#doconce.DocWriter.HTML.header" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="doconce.DocWriter.HTML.heading">
+<tt class="descname">heading</tt><big>(</big><em>level</em>, <em>title</em>, <em>label=None</em><big>)</big><a class="headerlink" href="#doconce.DocWriter.HTML.heading" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="doconce.DocWriter.HTML.item_handler">
+<tt class="descname">item_handler</tt><big>(</big><em>item</em>, <em>listtype</em>, <em>level</em>, <em>keyword=None</em><big>)</big><a class="headerlink" href="#doconce.DocWriter.HTML.item_handler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write out the syntax for an item in a list.</p>
+<p>&#64;param item: text assoicated with the current list item. If item
+equals &#8216;_begin&#8217; or &#8216;_end&#8217;, appropriate begin/end formatting of
+the list is written instead of an ordinary item.
+&#64;param listtype: &#8216;itemize, &#8216;enumerate&#8217;, or &#8216;description&#8217;.
+&#64;param level: list level number, 0 is the mainlist, increased by 1
+for each sublist (the level number implies the amount of indentation).
+&#64;param keyword: the keyword of the item in a &#8216;description&#8217; list.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="doconce.DocWriter.HTML.link">
+<tt class="descname">link</tt><big>(</big><em>link_text</em>, <em>link_target</em><big>)</big><a class="headerlink" href="#doconce.DocWriter.HTML.link" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="doconce.DocWriter.HTML.list">
+<tt class="descname">list</tt><big>(</big><em>items</em>, <em>listtype='itemize'</em><big>)</big><a class="headerlink" href="#doconce.DocWriter.HTML.list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write list or nested lists.</p>
+<p>&#64;param items: list of items.
+&#64;param listtype: &#8216;itemize&#8217;, &#8216;enumerate&#8217;, or &#8216;description&#8217;.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="doconce.DocWriter.HTML.method">
+<tt class="descname">method</tt><big>(</big><em>item</em>, <em>listtype</em>, <em>level</em>, <em>keyword=None</em><big>)</big><a class="headerlink" href="#doconce.DocWriter.HTML.method" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write out the syntax for an item in a list.</p>
+<p>&#64;param item: text assoicated with the current list item. If item
+equals &#8216;_begin&#8217; or &#8216;_end&#8217;, appropriate begin/end formatting of
+the list is written instead of an ordinary item.
+&#64;param listtype: &#8216;itemize, &#8216;enumerate&#8217;, or &#8216;description&#8217;.
+&#64;param level: list level number, 0 is the mainlist, increased by 1
+for each sublist (the level number implies the amount of indentation).
+&#64;param keyword: the keyword of the item in a &#8216;description&#8217; list.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="doconce.DocWriter.HTML.paragraph">
+<tt class="descname">paragraph</tt><big>(</big><em>title</em>, <em>ending='.'</em>, <em>label=None</em><big>)</big><a class="headerlink" href="#doconce.DocWriter.HTML.paragraph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write a paragraph heading with the given title and an ending
+(period, question mark, colon) and an optional label (for navigation).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="doconce.DocWriter.HTML.paragraph_separator">
+<tt class="descname">paragraph_separator</tt><big>(</big><big>)</big><a class="headerlink" href="#doconce.DocWriter.HTML.paragraph_separator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="doconce.DocWriter.HTML.section">
+<tt class="descname">section</tt><big>(</big><em>title</em>, <em>label=None</em><big>)</big><a class="headerlink" href="#doconce.DocWriter.HTML.section" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write a section heading with the given title and an optional
+label (for navigation).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="doconce.DocWriter.HTML.subsection">
+<tt class="descname">subsection</tt><big>(</big><em>title</em>, <em>label=None</em><big>)</big><a class="headerlink" href="#doconce.DocWriter.HTML.subsection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write a subsection heading with the given title and an optional
+label (for navigation).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="doconce.DocWriter.HTML.subsubsection">
+<tt class="descname">subsubsection</tt><big>(</big><em>title</em>, <em>label=None</em><big>)</big><a class="headerlink" href="#doconce.DocWriter.HTML.subsubsection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write a subsubsection heading with the given title and an optional
+label (for navigation).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="doconce.DocWriter.HTML.table">
+<tt class="descname">table</tt><big>(</big><em>table</em>, <em>column_headline_pos='c'</em>, <em>column_pos='c'</em><big>)</big><a class="headerlink" href="#doconce.DocWriter.HTML.table" title="Permalink to this definition">¶</a></dt>
+<dd><p>Translates a two-dimensional list of data, containing strings or
+numbers, to a suitable &#8220;tabular&#8221; environment in the output.</p>
+<p>&#64;param table: list of list with rows/columns in table, including
+(optional) column-headline 1st row and row-headline 1st column.
+&#64;param column_pos: specify the l/c/r position of data
+entries in columns, give either (e.g.) &#8216;llrrc&#8217; or one char
+(if all are equal).
+&#64;param column_headline_pos : position l/c/r for the headline row</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="doconce.DocWriter.HTML.table_border">
+<tt class="descname">table_border</tt><em class="property"> = '2'</em><a class="headerlink" href="#doconce.DocWriter.HTML.table_border" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="doconce.DocWriter.HTML.table_cellpadding">
+<tt class="descname">table_cellpadding</tt><em class="property"> = '5'</em><a class="headerlink" href="#doconce.DocWriter.HTML.table_cellpadding" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="doconce.DocWriter.HTML.table_cellspacing">
+<tt class="descname">table_cellspacing</tt><em class="property"> = '2'</em><a class="headerlink" href="#doconce.DocWriter.HTML.table_cellspacing" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="doconce.DocWriter.HTML.text">
+<tt class="descname">text</tt><big>(</big><em>text</em>, <em>indent=0</em><big>)</big><a class="headerlink" href="#doconce.DocWriter.HTML.text" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write plain text. Each line can be idented by a given number
+of spaces.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="doconce.DocWriter.HTML.title">
+<tt class="descname">title</tt><big>(</big><em>title</em>, <em>authors_and_institutions=</em><span class="optional">[</span><span class="optional">]</span>, <em>date='today'</em><big>)</big><a class="headerlink" href="#doconce.DocWriter.HTML.title" title="Permalink to this definition">¶</a></dt>
+<dd><p>Provide title and authors.</p>
+<p>&#64;param title: document title (string).
+&#64;param authors_and_institutions: list of authors and their
+associated institutions, where each list item is a tuple/list
+with author as first element followed by the name of all
+institutions this author is associated with.
+&#64;param date: None implies no date, while &#8216;today&#8217; generates
+the current date, otherwise a string is supplied.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="doconce.DocWriter.HTML.url">
+<tt class="descname">url</tt><big>(</big><em>url_address</em>, <em>link_text=None</em><big>)</big><a class="headerlink" href="#doconce.DocWriter.HTML.url" title="Permalink to this definition">¶</a></dt>
+<dd><p>Typeset an URL (with an optional link).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="doconce.DocWriter.HTML.verbatim">
+<tt class="descname">verbatim</tt><big>(</big><em>code</em><big>)</big><a class="headerlink" href="#doconce.DocWriter.HTML.verbatim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write verbatim text in fixed-width form
+(typically for computer code).</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="doconce.DocWriter.LaTeX">
+<em class="property">class </em><tt class="descclassname">doconce.DocWriter.</tt><tt class="descname">LaTeX</tt><a class="headerlink" href="#doconce.DocWriter.LaTeX" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">doconce.DocWriter._BaseWriter</span></tt></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="doconce.DocWriter.func_to_method">
+<tt class="descclassname">doconce.DocWriter.</tt><tt class="descname">func_to_method</tt><big>(</big><em>func</em>, <em>class_</em>, <em>method_name=None</em><big>)</big><a class="headerlink" href="#doconce.DocWriter.func_to_method" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="doconce.DocWriter.html_movie">
+<tt class="descclassname">doconce.DocWriter.</tt><tt class="descname">html_movie</tt><big>(</big><em>plotfiles</em>, <em>interval_ms=300</em>, <em>width=800</em>, <em>height=600</em>, <em>casename='movie'</em><big>)</big><a class="headerlink" href="#doconce.DocWriter.html_movie" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes a list plotfiles which should be for example of the form:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="s">&#39;frame00.png&#39;</span><span class="p">,</span> <span class="s">&#39;frame01.png&#39;</span><span class="p">,</span> <span class="o">...</span> <span class="p">]</span>
+</pre></div>
+</div>
+<p>where each string should be the name of an image file and they should be
+in the proper order for viewing as an animation.</p>
+<p>The result is html text strings that incorporate javascript to
+loop through the plots one after another.  The html text also features
+buttons for controlling the movie.
+The parameter iterval_ms is the time interval between loading
+successive images and is in milliseconds.</p>
+<p>The width and height parameters do not seem to have any effect
+for reasons not understood.</p>
+<p>The following strings are returned: header, javascript code, form
+with movie and buttons, and footer. Concatenating these strings
+and dumping to an html file yields a kind of movie file to be
+viewed in a browser. The images variable in the javascript code
+is unique for each movie, because it is annotated by the casename
+string, so several such javascript sections can be used in the
+same html file.</p>
+<p>This function is based on code written by R.J. LeVeque, based on
+a template from Alan McIntyre.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="doconce.DocWriter.html_movie_embed">
+<tt class="descclassname">doconce.DocWriter.</tt><tt class="descname">html_movie_embed</tt><big>(</big><em>moviefile</em>, <em>width=400</em>, <em>height=400</em><big>)</big><a class="headerlink" href="#doconce.DocWriter.html_movie_embed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return HTML for embedding a moviefile using the default
+handling of such files.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="doconce.DocWriter.html_movie_embed_qt">
+<tt class="descclassname">doconce.DocWriter.</tt><tt class="descname">html_movie_embed_qt</tt><big>(</big><em>moviefile</em>, <em>width=400</em>, <em>height=400</em><big>)</big><a class="headerlink" href="#doconce.DocWriter.html_movie_embed_qt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return HTML for embedding a moviefile (QuickTime code).</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="doconce.DocWriter.html_movie_embed_wmp">
+<tt class="descclassname">doconce.DocWriter.</tt><tt class="descname">html_movie_embed_wmp</tt><big>(</big><em>moviefile</em>, <em>width=400</em>, <em>height=400</em><big>)</big><a class="headerlink" href="#doconce.DocWriter.html_movie_embed_wmp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return HTML text for embedding a movie file
+(Windows Media Player code).</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="doconce.DocWriter.makedocstr">
+<tt class="descclassname">doconce.DocWriter.</tt><tt class="descname">makedocstr</tt><big>(</big><em>parent_class</em>, <em>subclass_method</em><big>)</big><a class="headerlink" href="#doconce.DocWriter.makedocstr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compose a string (to be used as doc string) from a method&#8217;s
+doc string in a parent class and an additional doc string
+in a subclass version of the method.</p>
+<p>&#64;param parent_class: class object for parent class.
+&#64;param subclass_method: method object for subclass.
+&#64;return: parent_class.method.__doc__ + subclass_method.__doc__</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="epytext.html"
+                        title="previous chapter"><tt class="docutils literal"><span class="pre">doconce.epytext</span></tt></a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="expand_newcommands.html"
+                        title="next chapter"><tt class="docutils literal"><span class="pre">doconce.expand_newcommands</span></tt></a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/DocWriter.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="expand_newcommands.html" title="doconce.expand_newcommands"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="epytext.html" title="doconce.epytext"
+             >previous</a> |</li>
+        <li><a href="index.html">Doconce Documentation 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2010, H. P. Langtangen.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

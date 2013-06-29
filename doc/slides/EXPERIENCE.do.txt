@@ -1,0 +1,7 @@
+======== Experience with HTML5 slide environments ========
+
+ * Firefox is the best browser
+ * Chrome can show something (what?) that Firefox cannot
+ * Use a wide view (full screen)
+ * To many bullets on a slide makes deck (sandstone.default)
+   reduce the font everwhere... Remedy: less bullet points!

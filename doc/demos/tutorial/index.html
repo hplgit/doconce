@@ -1,0 +1,45 @@
+<HTML><BODY>
+<TITLE>Demo of Doconce formats</TITLE>
+<H3>Doconce demo</H3>
+
+Doconce is a minimum tagged markup language. The file
+<a href="tutorial.do.txt">tutorial.do.txt</a> is the source of the
+Doconce tutorial, written in the Doconce format.
+Running
+<pre>
+doconce format html tutorial.do.txt
+</pre>
+produces the HTML file <a href="tutorial.html">tutorial.html</a>.
+Going from Doconce to LaTeX is done by
+<pre>
+doconce format latex tutorial.do.txt
+</pre>
+resulting in the file <a href="tutorial.tex">tutorial.tex</a>, which can
+be compiled to a PDF file <a href="tutorial.pdf">tutorial.pdf</a>
+by running <tt>latex</tt> and <tt>dvipdf</tt> the standard way.
+<p>
+The reStructuredText (reST) format is of particular interest:
+<pre>
+doconce format rst    tutorial.do.txt  # standard reST
+doconce format sphinx tutorial.do.txt  # Sphinx extension of reST
+</pre>
+The reST file <a href="tutorial.rst">tutorial.rst</a> is a starting point
+for conversion to many other formats: OpenOffice,
+<a href="tutorial.xml">XML</a>, <a href="tutorial.rst.html">HTML</a>,
+<a href="tutorial.rst.tex">LaTeX</a>,
+and from LaTeX to <a href="tutorial.rst.pdf">PDF</a>.
+The <a href="tutorial.sphinx.rst">Sphinx</a> dialect of reST
+can be translated to <a href="tutorial.sphinx.pdf">PDF</a>
+and <a href="html/index.html">HTML</a>.
+<p>
+Doconce can also be converted to
+<a href="tutorial.gwiki">Googlecode wiki</a>,
+<a href="tutorial.cwiki">Creole wiki</a>,
+<a href="tutorial.mwiki">MediaWiki wiki</a>,
+<a href="tutorial.md">Markdown</a> (Pandoc extension),
+<a href="tutorial.st">Structured Text</a>,
+<a href="tutorial.epytext">Epytext</a>,
+and maybe the most important format of all:
+<a href="tutorial.txt">plain untagged ASCII text</a>.
+</BODY>
+</HTML>

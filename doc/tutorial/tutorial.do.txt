@@ -1,0 +1,432 @@
+## Missing: FIGURE, MOVIE, Exercise, environments
+
+TITLE: Doconce: Document Once, Include Anywhere
+AUTHOR: Hans Petter Langtangen at Center for Biomedical Computing, Simula Research Laboratory & Department of Informatics, University of Oslo
+DATE: today
+
+
+ * When writing a note, report, manual, etc., do you find it difficult
+   to choose the typesetting format? That is, to choose between plain
+   (email-like) text, wiki, Word/OpenOffice, LaTeX, HTML,
+   reStructuredText, Sphinx, XML, etc.  Would it be convenient to
+   start with some very simple text-like format that easily converts
+   to the formats listed above, and then at some later stage
+   eventually go with a particular format?
+
+ * Do you need to write documents in varying formats but find it
+   difficult to remember all the typesetting details of various
+   formats like "LaTeX":"http://refcards.com/docs/silvermanj/amslatex/LaTeXRefCard.v2.0.pdf", "HTML":"http://www.htmlcodetutorial.com/", "reStructuredText":"http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html", "Sphinx":"http://sphinx.pocoo.org/contents.html", and "wiki":"http://code.google.com/p/support/wiki/WikiSyntax"? Would it be convenient
+   to generate the typesetting details of a particular format from a
+   very simple text-like format with minimal tagging?
+
+ * Do you have the same information scattered around in different
+   documents in different typesetting formats? Would it be a good idea
+   to write things once, in one format, stored in one place, and
+   include it anywhere?
+
+If any of these questions are of interest, you should keep on reading.
+
+
+======= Some Doconce Features =======
+
+ * Strong support for texts with much math and code.
+
+ * Same source can produce a variety of output formats.
+   The following support LaTeX math and (pygmentized) code:
+
+   o "traditional LaTeX B/W documents for printing": "http://hplgit.github.com/teamods/writing_reports/_static/report_4printing.pdf"
+   o "color LaTeX PDF documents": "http://hplgit.github.com/teamods/writing_reports/_static/report.pdf"
+   o "color LaTeX PDF documents for viewing on small phones": "http://hplgit.github.com/teamods/writing_reports/_static/report_4phone.pdf"
+   o "Sphinx HTML documents with 20+ different designs": "http://hplgit.github.com/teamods/writing_reports/_static/sphinx-fenics_minimal/report.html"
+   o "Plain HTML": "http://hplgit.github.com/teamods/writing_reports/_static/report.html" or with a "template": "http://hplgit.github.com/teamods/writing_reports/_static/report_vagrant.html" or "another template": "http://hplgit.github.com/teamods/writing_reports/_static/report_github_minimal.html" or "solarized": "http://hplgit.github.com/teamods/writing_reports/_static/report_solarized.html"
+   o HTML for "Google": "http://doconce-report-demo.blogspot.no/" or "Wordpress": "http://doconcereportdemo.wordpress.com/" blogs
+   o "MediaWiki": "http://doconcedemo.shoutwiki.com/wiki/Doconce_demo_page" (Wikipedia, Wikibooks, etc)
+   o Markdown
+   o IPython notebook
+
+   Other formats include plain untagged text (for email),
+   Creole wiki (for Bitbucket wikis), Google wiki (for Googlecode),
+   reStructuredText, and Epytext.
+
+ * Integration with Mako enables use of variables, functions, if-tests,
+   and loops to parameterize the text and generate various versions of
+   the text for different purposes.
+
+ * Computer code can be copied directly from parts of source code files.
+
+ * Running text can quickly be edited to slide formats (reveal.js and deck.js,
+   based on HTML5+CSS3).
+
+ * Special exercise environments with support for hints, answers,
+   subexercises, etc.
+
+ * Automatic inline embedding of YouTube and Vimeo movies.
+
+ * Good support for admonitions in various LaTeX and HTML styles
+   for warnings, questions, hints, remarks, summaries, etc.
+
+
+======= What Does Doconce Look Like? =======
+
+Doconce text looks like ordinary text (much like Markdown), but there
+are some almost invisible text constructions that allow you to control
+the formating. Here are some examples.
+
+  * Bullet lists automatically arise from lines starting with `*`,
+    or `o` if the list is to be enumerated.
+
+  * *Emphasized words* are surrounded by `*`. _Words in boldface_
+    are surrounded by underscores.
+
+  * Words from computer code are enclosed in back quotes and
+    then typeset `verbatim (in a monospace font)`.
+
+  * Section and paragraph headings are recognied special
+    decorating characters (`=` or `_`) before and after the heading.
+    The length of the decoration determines the level of the
+    section.
+
+  * Blocks of computer code are included by surrounding the blocks with
+    `!bc` (begin code) and `!ec` (end code) tags on separate lines.
+
+  * Blocks of computer code can also be imported from source files.
+
+  * Blocks of LaTeX mathematics are included by surrounding the blocks
+    with `!bt` (begin TeX) and `!et` (end TeX) tags on separate lines.
+
+  * There is support for both LaTeX and text-like inline mathematics
+    such that formulas make sense also when not rendered by LaTeX
+    or MathJax.
+
+  * Figures and movies with captions, simple tables,
+    URLs with links, index list, labels and references are supported.
+    YouTube and Vimeo videos are automatically embedded in web documents.
+
+  * The abstract of a document starts with *Abstract* as paragraph
+    heading, and all text up to the next heading makes up the abstract,
+
+  * Special comment lines are not visible in the output.
+
+  * Comments to authors can be inserted throughout the text and
+    made visible or invisible as desired.
+
+  * There is an exercise environment with many advanced features.
+
+  * With a preprocessor, Preprocess or Mako, one can include other
+    documents (files), large portions of text can be defined in or out
+    of the text, and tailored format-specific constructs can easily be
+    included. With Mako a single text can output its program examples
+    in two or more languages.
+
+===== What Can Doconce Be Used For? =====
+
+LaTeX is ideal for articles, thesis, and books, but not so suited
+for web documents. Nice environments for web documents, such as
+Sphinx, Markdown, or plain HTML, are not particularly well
+suited for thesis and books. IPython notebooks are ideal for
+documenting computational experiments, but do not (yet) meet the
+requirements of books and thesis.
+
+What about migrating a part of a book for blogging? What about making
+an MS Word version of parts or an untagged text for inclusion in
+email?  What about efficiently generating slides in modern HTML5
+style?  Doconce enables all this with just *one source* (the slogan is
+*document once - include anywhere*).
+Doconce also
+has many extra features for supporting documents with much code and
+mathematics, not found in any of the mentioned formats.
+
+===== Basic Syntax =====
+
+Here is an example of some simple text written in the Doconce format:
+!bc
+======= First a Section Heading =======
+
+Section headings have 7 equality characters before and after the heading.
+With 9 characters we have a chapter heading, 5 gives a subsection
+heading, and 3 a subsubsection heading.
+
+===== A Subsection with Sample Text =====
+label{my:first:sec}
+
+Ordinary text looks like ordinary text, and the tags used for
+_boldface_ words, *emphasized* words, and `computer` words look
+natural in plain text.  Lists are typeset as you would do in email,
+
+  * item 1
+  * item 2
+  * item 3
+
+Lists can also have automatically numbered items instead of bullets,
+
+  o item 1
+  o item 2
+  o item 3
+
+__Hyperlinks.__ Paragraph headings are surrounded by double underscores.
+URLs with a link word are possible, as in "hpl": "http://folk.uio.no/hpl".
+If the word is URL, the URL itself becomes the link name,
+as in "URL": "tutorial.do.txt". Doconce distinguishes between paper
+and screen output. In traditional paper output, in PDF generated from LaTeX
+generated from Doconce, the URLs of links appear as footnotes.
+With screen output, all links are clickable hyperlinks, except in
+the plain text format which does not support hyperlinks.
+
+References to sections may use logical names as labels (e.g., a
+"label" command right after the section title), as in the reference to
+Section ref{my:first:sec}.
+
+Doconce also allows inline comments of the form [name: comment] (with
+a space after `name:`), e.g., such as [hpl: here I will make some
+remarks to the text]. Inline comments can be removed from the output
+by a command-line argument (see Section ref{doconce2formats} for an
+example).
+
+Tables are also supperted, e.g.,
+
+  |--------------------------------|
+  |time  | velocity | acceleration |
+  |---r-------r-----------r--------|
+  | 0.0  | 1.4186   | -5.01        |
+  | 2.0  | 1.376512 | 11.919       |
+  | 4.0  | 1.1E+1   | 14.717624    |
+  |--------------------------------|
+
+# lines beginning with # are comment lines
+!ec
+The Doconce text above results in the following little document:
+
+
+======= First a Section Heading =======
+
+Section headings have 7 equality characters before and after the heading.
+With 9 characters we have a chapter heading, 5 gives a subsection
+heading, and 3 a subsubsection heading.
+
+===== A Subsection with Sample Text =====
+label{my:first:sec}
+
+Ordinary text looks like ordinary text, and the tags used for
+_boldface_ words, *emphasized* words, and `computer` words look
+natural in plain text.  Lists are typeset as you would do in an email,
+
+  * item 1
+  * item 2
+  * item 3
+
+Lists can also have numbered items instead of bullets, just use an `o`
+(for ordered) instead of the asterisk:
+
+  o item 1
+  o item 2
+  o item 3
+
+__Hyperlinks.__ Paragraph headings are surrounded by double underscores.
+URLs with a link word are possible, as in "hpl": "http://folk.uio.no/hpl".
+If the word is URL, the URL itself becomes the link name,
+as in "URL": "tutorial.do.txt". Doconce distinguishes between paper
+and screen output. In traditional paper output, in PDF generated from LaTeX
+generated from Doconce, the URLs of links appear as footnotes.
+With screen output, all links are clickable hyperlinks, except in
+the plain text format which does not support hyperlinks.
+
+References to sections may use logical names as labels (e.g., a
+"label" command right after the section title), as in the reference to
+Section ref{my:first:sec}.
+
+Doconce also allows inline comments such as [hpl: here I will make
+some remarks to the text] for allowing authors to make notes. Inline
+comments can be removed from the output by a command-line argument
+(see Section ref{doconce2formats} for an example). Ordinary comment
+lines start with `#` and are copied to comment lines in the
+output format.
+
+Tables are also supperted, e.g.,
+
+  |--------------------------------|
+  |time  | velocity | acceleration |
+  |---r-------r-----------r--------|
+  | 0.0  | 1.4186   | -5.01        |
+  | 2.0  | 1.376512 | 11.919       |
+  | 4.0  | 1.1E+1   | 14.717624    |
+  |--------------------------------|
+
+===== Mathematics and Computer Code =====
+
+Inline mathematics, such as $\nu = \sin(x)$|$v = sin(x)$,
+allows the formula to be specified both as LaTeX and as plain text.
+This results in a professional LaTeX typesetting, but in formats
+not supporting LaTeX mathematics
+the text version normally looks better than raw LaTeX mathematics with
+backslashes. An inline formula like $\nu = \sin(x)$|$v = sin(x)$ is
+typeset as
+
+!bc
+$\nu = \sin(x)$|$v = sin(x)$
+!ec
+The pipe symbol acts as a delimiter between LaTeX code and the plain text
+version of the formula. If you write a lot of mathematics, only the
+output formats `latex`, `pdflatex`, `html`, `sphinx`, and `pandoc`
+are of interest
+and all these support inline LaTeX mathematics so then you will naturally
+drop the pipe symbol and write just
+
+!bc
+$\nu = \sin(x)$
+!ec
+However, if you want more textual formats, like plain text or reStructuredText,
+the text after the pipe symbol may help to make the math formula more readable
+if there are backslahes or other special LaTeX symbols in the LaTeX code.
+
+Blocks of mathematics are typeset with raw LaTeX, inside
+`!bt` and `!et` (begin TeX, end TeX) instructions:
+
+!bc
+|bt
+\begin{align}
+{\partial u\over\partial t} &= \nabla^2 u + f, label{myeq1}\\
+{\partial v\over\partial t} &= \nabla\cdot(q(u)\nabla v) + g
+\end{align}
+|et
+!ec
+## Note: |bt and |et (and |bc and |ec below) are used to illustrate
+## tex and code blocks in inside verbatim blocks and are replaced
+## by !bt, !et, !bc, and !ec after all other formatting is finished.
+## (Comment lines starting with ## are not copied to the output
+## format and hence much used to explain the Doconce syntax
+## used in special constructions.)
+The result looks like this:
+
+!bt
+\begin{align}
+{\partial u\over\partial t} &= \nabla^2 u + f, label{myeq1}\\
+{\partial v\over\partial t} &= \nabla\cdot(q(u)\nabla v) + g
+\end{align}
+!et
+Of course, such blocks only looks nice in formats with support
+for LaTeX mathematics, and here the align environment in particular
+(this includes `latex`, `pdflatex`, `html`, and `sphinx`). The raw
+LaTeX syntax appears in simpler formats, but can still be useful
+for those who can read LaTeX syntax.
+
+You can have blocks of computer code, starting and ending with
+`!bc` and `!ec` instructions, respectively.
+
+!bc
+|bc pycod
+from math import sin, pi
+def myfunc(x):
+    return sin(pi*x)
+
+import integrate
+I = integrate.trapezoidal(myfunc, 0, pi, 100)
+|ec
+!ec
+Such blocks are formatted as
+
+!bc pycod
+from math import sin, pi
+def myfunc(x):
+    return sin(pi*x)
+
+import integrate
+I = integrate.trapezoidal(myfunc, 0, pi, 100)
+!ec
+A code block must come after some plain sentence (at least for successful
+output to `sphinx`, `rst`, and formats close to plain text),
+not directly after a section/paragraph heading or a table.
+
+
+One can also copy computer code directly from files, either the
+complete file or specified parts.  Computer code is then never
+duplicated in the documentation (important for the principle of
+avoiding copying information!).
+
+Another document can be included by writing `# #include "mynote.do.txt"`
+at the beginning of a line.  Doconce documents have
+extension `do.txt`. The `do` part stands for doconce, while the
+trailing `.txt` denotes a text document so that editors gives you
+plain text editing capabilities.
+
+
+===== Macros (Newcommands), Cross-References, Index, and Bibliography =====
+label{newcommands}
+
+Doconce supports a type of macros via a LaTeX-style *newcommand*
+construction.  The newcommands are defined in files with names
+`newcommands*.tex`, using standard LaTeX syntax. Only newcommands
+for use inside math environments are supported.
+
+Labels, corss-references, citations, and support of an index and
+bibliography are much inspired by LaTeX syntax, but Doconce features
+no backslashes. Use labels for sections and equations only, and
+preceed the reference by "Section" or "Chapter", or in case of
+an equation, surround the reference by parenthesis.
+
+Here is an example:
+
+!bc
+===== My Section =====
+label{sec:mysec}
+
+idx{key equation} idx{$\u$ conservation}
+
+We refer to Section ref{sec:yoursec} for background material on
+the *key equation*. Here we focus on the extension
+
+# \Ddt, \u and \mycommand are defined in newcommands_keep.tex
+
+|bt
+\begin{equation}
+\Ddt{\u} = \mycommand{v},
+label{mysec:eq:Dudt}
+\end{equation}
+|et
+where $\Ddt{\u}$ is the material derivative of $\u$.
+Equation (ref{mysec:eq:Dudt}) is important in a number
+of contexts, see cite{Larsen_et_al_2002,Johnson_Friedman_2010a}.
+Also, cite{Miller_2000} supports such a view.
+
+As see in Figure ref{mysec:fig:myfig}, the key equation
+features large, smooth regions *and* abrupt changes.
+
+FIGURE: [fig/myfile, width=600 frac=0.9] My figure. label{mysec:fig:myfig}
+
+===== References =====
+
+BIBFILE: papers.pub
+!ec
+
+For further details on functionality and
+syntax we refer to the `doc/manual/manual.do.txt` file (see the
+"demo page": "https://doconce.googlecode.com/hg/doc/demos/manual/index.html"
+for various formats of this document).
+
+
+## Example on including another Doconce file (using preprocess):
+
+# #include "doconce2anything.do.txt"
+
+
+===== Demos =====
+
+The current text is generated from a Doconce format stored in the file
+!bc
+doc/tutorial/tutorial.do.txt
+!ec
+The file `make.sh` in the `tutorial` directory of the
+Doconce source code contains a demo of how to produce a variety of
+formats.  The source of this tutorial, `tutorial.do.txt` is the
+starting point.  Running `make.sh` and studying the various generated
+files and comparing them with the original `tutorial.do.txt` file,
+gives a quick introduction to how Doconce is used in a real case.
+"Here": "https://doconce.googlecode.com/hg/doc/demos/tutorial/index.html"
+is a sample of how this tutorial looks in different formats.
+
+There is another demo in the `docs/manual` directory which
+translates the more comprehensive documentation, `manual.do.txt`, to
+various formats. The `make.sh` script runs a set of translations.
+
+# #include "../manual/install.do.txt"
+
+

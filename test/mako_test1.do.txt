@@ -1,0 +1,3 @@
+# Purpose: see if doconce detects that mako must be used
+
+This document is translated to the format ${FORMAT}.

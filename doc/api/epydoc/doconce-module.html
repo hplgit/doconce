@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>doconce</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th bgcolor="#70b0f0" class="navbar-select"
+          >&nbsp;&nbsp;&nbsp;Home&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        Package&nbsp;doconce
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="doconce-module.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== PACKAGE DESCRIPTION ==================== -->
+<h1 class="epydoc">Package doconce</h1><p class="nomargin-top"><span class="codelink"><a href="doconce-pysrc.html">source&nbsp;code</a></span></p>
+<h1 class="heading">What Is Doconce?</h1>
+    <p>Doconce is two things:</p>
+    <ol start="1">
+      <li>
+        Doconce is a very simple and minimally tagged markup language that 
+        looks like ordinary ASCII text (much like what you would use in an 
+        email), but the text can be transformed to numerous other formats, 
+        including HTML, Wiki, LaTeX, PDF, reStructuredText (reST), Sphinx, 
+        Epytext, and also plain text (where non-obvious formatting/tags are
+        removed for clear reading in, e.g., emails). From reStructuredText 
+        you can go to XML, HTML, LaTeX, PDF, OpenOffice, and from the 
+        latter to RTF and MS Word. (An experimental translator to Pandoc is
+        under development, and from Pandoc one can generate Markdown, reST,
+        LaTeX, HTML, PDF, DocBook XML, OpenOffice, GNU Texinfo, MediaWiki, 
+        RTF, Groff, and other formats.)
+      </li>
+      <li>
+        Doconce is a working strategy for never duplicating information. 
+        Text is written in a single place and then transformed to a number 
+        of different destinations of diverse type (software source code, 
+        manuals, tutorials, books, wikis, memos, emails, etc.). The Doconce
+        markup language support this working strategy. The slogan is: 
+        &quot;Write once, include anywhere&quot;.
+      </li>
+    </ol>
+  <h1 class="heading">What Does Doconce Look Like?</h1>
+    <p>Doconce text looks like ordinary text, but there are some almost 
+    invisible text constructions that allow you to control the formating. 
+    For example,</p>
+    <ul>
+      <li>
+        bullet lists arise from lines starting with an asterisk,
+      </li>
+      <li>
+        <i>emphasized words</i> are surrounded by asterisks,
+      </li>
+      <li>
+        <b>words in boldface</b> are surrounded by underscores,
+      </li>
+      <li>
+        words from computer code are enclosed in back quotes and then 
+        typeset verbatim (monospace font),
+      </li>
+      <li>
+        section headings are recognied by equality (<code>=</code>) signs 
+        before and after the text, and the number of <code>=</code> signs 
+        indicates the level of the section (7 for main section, 5 for 
+        subsection, 3 for subsubsection),
+      </li>
+      <li>
+        paragraph headings are recognized by a double underscore before and
+        after the heading,
+      </li>
+      <li>
+        blocks of computer code can easily be included by placing 
+        <code>!bc</code> (begin code) and <code>!ec</code> (end code) 
+        commands at separate lines before and after the code block,
+      </li>
+      <li>
+        blocks of computer code can also be imported from source files,
+      </li>
+      <li>
+        blocks of LaTeX mathematics can easily be included by placing 
+        <code>!bt</code> (begin TeX) and <code>!et</code> (end TeX) 
+        commands at separate lines before and after the math block,
+      </li>
+      <li>
+        there is support for both LaTeX and text-like inline mathematics,
+      </li>
+      <li>
+        tables, figures, movies with captions, URLs with links, index list,
+        labels and references are supported,
+      </li>
+      <li>
+        comments can be inserted throughout the text (<code>#</code> at the
+        beginning of a line),
+      </li>
+      <li>
+        with a simple preprocessor, Preprocess or Mako, one can include 
+        other documents (files) and large portions of text can be defined 
+        in or out of the text,
+      </li>
+      <li>
+        with the Mako preprocessor one can even embed Python code and use 
+        this to steer generation of Doconce text.
+      </li>
+    </ul>
+    <p>Documentation of Doconce is found in</p>
+    <ul>
+      <li>
+        The tutorial in <code>doc/tutorial/tutorial.do.txt</code> (file 
+        paths are here given relative to the root of the Doconce source 
+        code).
+      </li>
+      <li>
+        The more comprehensive documentation in 
+        <code>doc/manual/manual.do.txt</code>.
+      </li>
+      <li>
+        There is web access to the <a 
+        href="http://doconce.googlecode.com/hg/doc/demos/tutorial/index.html"
+        target="_top">tutorial</a> and the <a 
+        href="http://doconce.googlecode.com/hg/doc/demos/manual/index.html"
+        target="_top">manual</a>
+      </li>
+    </ul>
+    <p>Both directories contain a <code>make.sh</code> file for creating 
+    various formats.</p>
+
+<hr />
+<div class="fields">      <p><strong>Version:</strong>
+        0.7
+      </p>
+      <dl><dt>Authors:</dt>
+        <dd>
+          Hans Petter Langtangen,
+          Johannes H. Ring
+        </dd>
+      </dl>
+</div><!-- ==================== SUBMODULES ==================== -->
+<a name="section-Submodules"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Submodules</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Submodules"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+  <tr><td class="summary">
+  <ul class="nomargin">
+    <li> <strong class="uidlink"><a href="doconce.DocWriter-module.html">doconce.DocWriter</a></strong>: <em class="summary">DocWriter is a tool for writing documents in ASCII, HTML, LaTeX, 
+        Doconce, and other formats based on input from Python 
+        datastructures.</em>    </li>
+    <li class="private"> <strong class="uidlink"><a href="doconce._update-module.html">doconce._update</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="doconce.common-module.html">doconce.common</a></strong>: <em class="summary">This module contains data structures used in translation of the 
+        Doconce format to other formats.</em>    </li>
+    <li> <strong class="uidlink"><a href="doconce.cwiki-module.html">doconce.cwiki</a></strong>: <em class="summary">Creole Wiki (as used on bitbucket.org).</em>    </li>
+    <li> <strong class="uidlink"><a href="doconce.doconce-module.html">doconce.doconce</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="doconce.epytext-module.html">doconce.epytext</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="doconce.expand_newcommands-module.html">doconce.expand_newcommands</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="doconce.gwiki-module.html">doconce.gwiki</a></strong>: <em class="summary">Google Code Wiki translator.</em>    </li>
+    <li> <strong class="uidlink"><a href="doconce.html-module.html">doconce.html</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="doconce.latex-module.html">doconce.latex</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="doconce.mwiki-module.html">doconce.mwiki</a></strong>: <em class="summary">MediaWiki translator, aimed at Wikipedia/WikiBooks type of web 
+        pages.</em>    </li>
+    <li> <strong class="uidlink"><a href="doconce.pandoc-module.html">doconce.pandoc</a></strong>: <em class="summary">Warning: This translater should be complete (no &quot;reference 
+        links&quot;, though), but it is not tested.</em>    </li>
+    <li> <strong class="uidlink"><a href="doconce.pdflatex-module.html">doconce.pdflatex</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="doconce.plaintext-module.html">doconce.plaintext</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="doconce.rst-module.html">doconce.rst</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="doconce.sphinx-module.html">doconce.sphinx</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="doconce.st-module.html">doconce.st</a></strong>    </li>
+  </ul></td></tr>
+</table>
+
+<br />
+<!-- ==================== VARIABLES ==================== -->
+<a name="section-Variables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Variables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="version"></a><span class="summary-name">version</span> = <code title="'0.7'"><code class="variable-quote">'</code><code class="variable-string">0.7</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="author"></a><span class="summary-name">author</span> = <code title="('Hans Petter Langtangen', 'Johannes H. Ring')"><code class="variable-group">(</code><code class="variable-quote">'</code><code class="variable-string">Hans Petter Langtangen</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">Johannes H. Ring</code><code class="variable-quote">'</code><code class="variable-group">)</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="__acknowledgments__"></a><span class="summary-name">__acknowledgments__</span> = <code title="''"><code class="variable-quote">'</code><code class="variable-string"></code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="__package__"></a><span class="summary-name">__package__</span> = <code title="'doconce'"><code class="variable-quote">'</code><code class="variable-string">doconce</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+</table>
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th bgcolor="#70b0f0" class="navbar-select"
+          >&nbsp;&nbsp;&nbsp;Home&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Sat Jun 23 13:38:11 2012
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

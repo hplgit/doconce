@@ -1,0 +1,232 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>doconce.latex &mdash; Doconce Documentation 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Doconce Documentation 1.0 documentation" href="index.html" />
+    <link rel="next" title="doconce.pdflatex" href="pdflatex.html" />
+    <link rel="prev" title="doconce.html" href="html.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="pdflatex.html" title="doconce.pdflatex"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="html.html" title="doconce.html"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Doconce Documentation 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-doconce.latex">
+<span id="doconce-latex"></span><h1><a class="reference internal" href="#module-doconce.latex" title="doconce.latex"><tt class="xref py py-mod docutils literal"><span class="pre">doconce.latex</span></tt></a><a class="headerlink" href="#module-doconce.latex" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="doconce.latex.define">
+<tt class="descclassname">doconce.latex.</tt><tt class="descname">define</tt><big>(</big><em>FILENAME_EXTENSION</em>, <em>BLANKLINE</em>, <em>INLINE_TAGS_SUBST</em>, <em>CODE</em>, <em>LIST</em>, <em>ARGLIST</em>, <em>TABLE</em>, <em>EXERCISE</em>, <em>FIGURE_EXT</em>, <em>CROSS_REFS</em>, <em>INDEX_BIB</em>, <em>INTRO</em>, <em>OUTRO</em><big>)</big><a class="headerlink" href="#doconce.latex.define" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="doconce.latex.fix_latex_command_regex">
+<tt class="descclassname">doconce.latex.</tt><tt class="descname">fix_latex_command_regex</tt><big>(</big><em>pattern</em>, <em>application='match'</em><big>)</big><a class="headerlink" href="#doconce.latex.fix_latex_command_regex" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Given a pattern for a regular expression match or substitution,</dt>
+<dd><p class="first">the function checks for problematic patterns commonly
+encountered when working with LaTeX texts, namely commands
+starting with a backslash.</p>
+<p>For a pattern to be matched or substituted, and extra backslash is
+always needed (either a special regex construction like <tt class="docutils literal"><span class="pre">\w</span></tt> leads
+to wrong match, or <tt class="docutils literal"><span class="pre">\c</span></tt> leads to wrong substitution since <tt class="docutils literal"><span class="pre">\</span></tt> just
+escapes <tt class="docutils literal"><span class="pre">c</span></tt> so only the <tt class="docutils literal"><span class="pre">c</span></tt> is replaced, leaving an undesired
+backslash). For the replacement pattern in a substitutions, specified
+by the <tt class="docutils literal"><span class="pre">application='replacement'</span></tt> argument, a backslash
+before any of the characters <tt class="docutils literal"><span class="pre">abfgnrtv</span></tt> must be preceeded by an
+additional backslash.</p>
+<p>The application variable equals &#8216;match&#8217; if <cite>pattern</cite> is used for
+a match and &#8216;replacement&#8217; if <cite>pattern</cite> defines a replacement
+regex in a <tt class="docutils literal"><span class="pre">re.sub</span></tt> command.</p>
+<p>Caveats: let <cite>pattern</cite> just contain LaTeX commands, not combination
+of commands and other regular expressions (<tt class="docutils literal"><span class="pre">\s</span></tt>, <tt class="docutils literal"><span class="pre">\d</span></tt>, etc.) as the
+latter will end up with an extra undesired backslash.</p>
+<p>Here are examples on failures.</p>
+<div class="last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">r&#39;egin\{equation\}&#39;</span><span class="p">,</span> <span class="s">r&#39;\[&#39;</span><span class="p">,</span> <span class="s">r&#39;egin{equation}&#39;</span><span class="p">)</span>
+<span class="go">&#39;\begin{equation}&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c"># match of mbox, not \mbox, and wrong output</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">r&#39;\mbox\{(.+?)\}&#39;</span><span class="p">,</span> <span class="s">r&#39;</span>
+</pre></div>
+</div>
+</dd>
+<dt>box{g&lt;1&gt;}&#8217;, r&#8217;mbox{not}&#8217;)</dt>
+<dd>&#8216;</dd>
+</dl>
+<p>box{not}&#8217;</p>
+<blockquote>
+<div><p>Here are examples on using this function.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">doconce.latex</span> <span class="kn">import</span> <span class="n">fix_latex_command_regex</span> <span class="k">as</span> <span class="n">fix</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pattern</span> <span class="o">=</span> <span class="n">fix</span><span class="p">(</span><span class="s">r&#39;egin\{equation\}&#39;</span><span class="p">,</span> <span class="n">application</span><span class="o">=</span><span class="s">&#39;match&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="s">r&#39;\[&#39;</span><span class="p">,</span> <span class="s">r&#39;egin{equation}&#39;</span><span class="p">)</span>
+<span class="go">&#39;\[&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pattern</span> <span class="o">=</span> <span class="n">fix</span><span class="p">(</span><span class="s">r&#39;\mbox\{(.+?)\}&#39;</span><span class="p">,</span> <span class="n">application</span><span class="o">=</span><span class="s">&#39;match&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">replacement</span> <span class="o">=</span> <span class="n">fix</span><span class="p">(</span><span class="s">r&#39;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<dl class="docutils">
+<dt>box{g&lt;1&gt;}&#8217;, application=&#8217;replacement&#8217;)</dt>
+<dd><div class="first highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">replacement</span><span class="p">,</span> <span class="s">r&#39;\mbox{not}&#39;</span><span class="p">)</span>
+<span class="go">&#39;\fbox{not}&#39;</span>
+</pre></div>
+</div>
+<p>Avoid mixing LaTeX commands and ordinary regular expression
+commands, e.g.,</p>
+<div class="last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">pattern</span> <span class="o">=</span> <span class="n">fix</span><span class="p">(</span><span class="s">r&#39;\mbox\{(\d+)\}&#39;</span><span class="p">,</span> <span class="n">application</span><span class="o">=</span><span class="s">&#39;match&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pattern</span>
+<span class="go">&#39;\\mbox\{(\\d+)\}&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">replacement</span><span class="p">,</span> <span class="s">r&#39;\mbox{987}&#39;</span><span class="p">)</span>
+<span class="go">&#39;\mbox{987}&#39;  # no substitution, no match</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="doconce.latex.latex_author">
+<tt class="descclassname">doconce.latex.</tt><tt class="descname">latex_author</tt><big>(</big><em>authors_and_institutions</em>, <em>auth2index</em>, <em>inst2index</em>, <em>index2inst</em>, <em>auth2email</em><big>)</big><a class="headerlink" href="#doconce.latex.latex_author" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="doconce.latex.latex_code">
+<tt class="descclassname">doconce.latex.</tt><tt class="descname">latex_code</tt><big>(</big><em>filestr</em>, <em>format</em><big>)</big><a class="headerlink" href="#doconce.latex.latex_code" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="doconce.latex.latex_exercise">
+<tt class="descclassname">doconce.latex.</tt><tt class="descname">latex_exercise</tt><big>(</big><em>exer</em><big>)</big><a class="headerlink" href="#doconce.latex.latex_exercise" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="doconce.latex.latex_figure">
+<tt class="descclassname">doconce.latex.</tt><tt class="descname">latex_figure</tt><big>(</big><em>m</em>, <em>includegraphics=True</em><big>)</big><a class="headerlink" href="#doconce.latex.latex_figure" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="doconce.latex.latex_index_bib">
+<tt class="descclassname">doconce.latex.</tt><tt class="descname">latex_index_bib</tt><big>(</big><em>filestr</em>, <em>index</em>, <em>citations</em>, <em>bibfile</em><big>)</big><a class="headerlink" href="#doconce.latex.latex_index_bib" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="doconce.latex.latex_movie">
+<tt class="descclassname">doconce.latex.</tt><tt class="descname">latex_movie</tt><big>(</big><em>m</em><big>)</big><a class="headerlink" href="#doconce.latex.latex_movie" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="doconce.latex.latex_ref_and_label">
+<tt class="descclassname">doconce.latex.</tt><tt class="descname">latex_ref_and_label</tt><big>(</big><em>section_label2title</em>, <em>format</em>, <em>filestr</em><big>)</big><a class="headerlink" href="#doconce.latex.latex_ref_and_label" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="doconce.latex.latex_table">
+<tt class="descclassname">doconce.latex.</tt><tt class="descname">latex_table</tt><big>(</big><em>table</em><big>)</big><a class="headerlink" href="#doconce.latex.latex_table" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="doconce.latex.latex_title">
+<tt class="descclassname">doconce.latex.</tt><tt class="descname">latex_title</tt><big>(</big><em>m</em><big>)</big><a class="headerlink" href="#doconce.latex.latex_title" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="html.html"
+                        title="previous chapter"><tt class="docutils literal docutils literal docutils literal"><span class="pre">doconce.html</span></tt></a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="pdflatex.html"
+                        title="next chapter"><tt class="docutils literal"><span class="pre">doconce.pdflatex</span></tt></a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/latex.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="pdflatex.html" title="doconce.pdflatex"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="html.html" title="doconce.html"
+             >previous</a> |</li>
+        <li><a href="index.html">Doconce Documentation 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2010, H. P. Langtangen.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

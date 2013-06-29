@@ -1,0 +1,166 @@
+// Available tones: default, firefox, dark, light, aurora, nightly, mdn
+$tone: 'default';
+
+@font-face{
+    font-family: "Open Sans";
+    src: url("fonts/OpenSans-Regular-webfont.eot");
+    src: url('fonts/OpenSans-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/OpenSans-Regular-webfont.woff') format('woff'),
+         url('fonts/OpenSans-Regular-webfont.ttf') format('truetype'),
+         url('fonts/OpenSans-Regular-webfont.svg#OpenSansRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@mixin sand_back() {
+    $top-color: #D7D3C8;
+    $bottom-color: #F6F4EC;
+
+    @if $tone == 'firefox' {
+        $top-color: #CAE1F4;
+        $bottom-color: #EEEEEE;
+    } @else if $tone == 'dark' {
+        $top-color: #424F5A;
+        $bottom-color: #6A7B86;
+    } @else if $tone == 'light' {
+        $top-color: #D4DDE4;
+        $bottom-color: #EEAEFF;
+    } @else if $tone == 'aurora' {
+        $top-color: #331E54;
+        $bottom-color: #000000;
+    } @else if $tone == 'nightly' {
+        $top-color: #002147;
+        $bottom-color: #000000;
+    } @else if $tone == 'mdn' {
+        $top-color: #630a0c;
+        $bottom-color: #000;
+    }
+    background-color: $top-color; /* fallback color if gradients are not supported */
+    background-image: -webkit-linear-gradient(top, $top-color, $bottom-color);
+    background-image:    -moz-linear-gradient(top, $top-color, $bottom-color); /* For Fx 3.6 to Fx 15 */
+    background-image:     -ms-linear-gradient(top, $top-color, $bottom-color); /* For IE 10 Platform Previews and Consumer Preview */
+    background-image:      -o-linear-gradient(top, $top-color, $bottom-color); /* For Opera 11.1 to 12.0 */
+    background-image:         linear-gradient(to bottom, $top-color, $bottom-color); /* Standard syntax; must be the last statement */
+}
+
+@mixin sand_color($fade: 0%) {
+    $color: #000;
+    @each $dark_tone in dark, aurora, nightly, mdn {
+        @if $tone == $dark_tone {
+            $color: invert($color);
+        } @else {
+        }
+    }
+    color: $color;
+}
+
+.deck-container {
+	font-family: "Open Sans", sans-serif;
+    font-size: 1.75em;
+    @include sand_back();
+    @include sand_color();
+
+    #tabzilla-panel {
+        z-index: 999;
+    }
+	
+	.slide {
+		h2 {
+			border-bottom-color:#ccc;
+		}
+
+        img, iframe {
+            width: 100%;
+        }
+
+        iframe {
+            height: 480px;
+        }
+
+		pre {
+			border-color:#ccc;
+		}
+
+		code {
+			color:#888;
+		}
+
+		blockquote {
+			font-size:2em;
+			font-style:italic;
+			padding:1em 2em;
+			color:#000;
+			border-left:5px solid #ccc;
+
+			p {
+				margin:0;
+			}
+
+			cite {
+				font-size:.5em;
+				font-style:normal;
+				font-weight:bold;
+				color:#888;
+			}
+		}
+
+		::-moz-selection{ background:#c00; color:#fff; }
+		::selection { background:#c00; color:#fff; }
+
+		a {
+			&, &:hover, &:focus, &:active, &:visited {
+				color:#0095DD;
+				text-decoration:none;
+			}
+
+			&:hover, &:focus {
+                color: #00539F;
+				text-decoration:underline;
+			}
+		}
+	}
+	
+	> .slide {
+		.deck-before, .deck-previous {
+			opacity:0.4;
+			
+			&:not(.deck-child-current) {
+				.deck-before, .deck-previous {
+					opacity:1;
+				}
+			}
+		}
+		
+		.deck-child-current {
+			opacity:1;
+		}
+	} 
+	
+	.deck-prev-link, .deck-next-link {
+		background:#ccc;
+		font-family:serif; // sans-serif arrows x-browser fail
+		
+		&, &:hover, &:focus, &:active, &:visited {
+			color:#fff;
+		}
+		
+		&:hover, &:focus {
+			background:#c00;
+			text-decoration:none;
+		}
+	}
+	
+	.deck-status {
+		font-size:0.6666em;
+	}
+	
+	&.deck-menu {
+		.slide {
+			background:#eee;
+		}
+		
+		.deck-current, .no-touch & .slide:hover {
+			background:#ddf;
+		}
+	}
+}

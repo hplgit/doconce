@@ -1,0 +1,226 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html>
+<head>
+  <title></title>
+  <meta http-equiv="content-type" content="text/html; charset=latin1">
+  <style type="text/css">
+td.linenos { background-color: #f0f0f0; padding-right: 10px; }
+span.lineno { background-color: #f0f0f0; padding: 0 5px 0 5px; }
+pre { line-height: 125%; }
+body .hll { background-color: #ffffcc }
+body  { background: #f8f8f8; }
+body .c { color: #408080; font-style: italic } /* Comment */
+body .err { border: 1px solid #FF0000 } /* Error */
+body .k { color: #008000; font-weight: bold } /* Keyword */
+body .o { color: #666666 } /* Operator */
+body .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+body .cp { color: #BC7A00 } /* Comment.Preproc */
+body .c1 { color: #408080; font-style: italic } /* Comment.Single */
+body .cs { color: #408080; font-style: italic } /* Comment.Special */
+body .gd { color: #A00000 } /* Generic.Deleted */
+body .ge { font-style: italic } /* Generic.Emph */
+body .gr { color: #FF0000 } /* Generic.Error */
+body .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+body .gi { color: #00A000 } /* Generic.Inserted */
+body .go { color: #808080 } /* Generic.Output */
+body .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+body .gs { font-weight: bold } /* Generic.Strong */
+body .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+body .gt { color: #0040D0 } /* Generic.Traceback */
+body .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+body .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+body .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+body .kp { color: #008000 } /* Keyword.Pseudo */
+body .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+body .kt { color: #B00040 } /* Keyword.Type */
+body .m { color: #666666 } /* Literal.Number */
+body .s { color: #BA2121 } /* Literal.String */
+body .na { color: #7D9029 } /* Name.Attribute */
+body .nb { color: #008000 } /* Name.Builtin */
+body .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+body .no { color: #880000 } /* Name.Constant */
+body .nd { color: #AA22FF } /* Name.Decorator */
+body .ni { color: #999999; font-weight: bold } /* Name.Entity */
+body .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+body .nf { color: #0000FF } /* Name.Function */
+body .nl { color: #A0A000 } /* Name.Label */
+body .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+body .nt { color: #008000; font-weight: bold } /* Name.Tag */
+body .nv { color: #19177C } /* Name.Variable */
+body .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+body .w { color: #bbbbbb } /* Text.Whitespace */
+body .mf { color: #666666 } /* Literal.Number.Float */
+body .mh { color: #666666 } /* Literal.Number.Hex */
+body .mi { color: #666666 } /* Literal.Number.Integer */
+body .mo { color: #666666 } /* Literal.Number.Oct */
+body .sb { color: #BA2121 } /* Literal.String.Backtick */
+body .sc { color: #BA2121 } /* Literal.String.Char */
+body .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+body .s2 { color: #BA2121 } /* Literal.String.Double */
+body .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+body .sh { color: #BA2121 } /* Literal.String.Heredoc */
+body .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+body .sx { color: #008000 } /* Literal.String.Other */
+body .sr { color: #BB6688 } /* Literal.String.Regex */
+body .s1 { color: #BA2121 } /* Literal.String.Single */
+body .ss { color: #19177C } /* Literal.String.Symbol */
+body .bp { color: #008000 } /* Name.Builtin.Pseudo */
+body .vc { color: #19177C } /* Name.Variable.Class */
+body .vg { color: #19177C } /* Name.Variable.Global */
+body .vi { color: #19177C } /* Name.Variable.Instance */
+body .il { color: #666666 } /* Literal.Number.Integer.Long */
+
+  </style>
+</head>
+<body>
+<h2></h2>
+
+<div class="highlight"><pre><span class="nt">&lt;p&gt;</span>
+
+Here is some simple mathematics:
+
+<span class="nt">&lt;p&gt;</span>
+
+$latex 
+f(x) = \frac{1}{1 + x^2},
+ $
+
+$latex 
+f&#39;(x)  =-\frac{2x}{(1+x^2)^2}
+
+ $
+
+
+which can be implemented in a computer code:
+
+<span class="nt">&lt;p&gt;</span>
+
+
+
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;highlight&quot;</span> <span class="na">style=</span><span class="s">&quot;background: #f8f8f8&quot;</span><span class="nt">&gt;&lt;pre</span> <span class="na">style=</span><span class="s">&quot;line-height: 125%&quot;</span><span class="nt">&gt;&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #008000; font-weight: bold&quot;</span><span class="nt">&gt;</span>def<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #0000FF&quot;</span><span class="nt">&gt;</span>f<span class="nt">&lt;/span&gt;</span>(x):
+    <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #BA2121; font-style: italic&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;quot;&amp;quot;&amp;quot;</span>Runge<span class="ni">&amp;#39;</span>s function.<span class="ni">&amp;quot;&amp;quot;&amp;quot;</span><span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #008000; font-weight: bold&quot;</span><span class="nt">&gt;</span>return<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #666666&quot;</span><span class="nt">&gt;</span>1/<span class="nt">&lt;/span&gt;</span>(<span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #666666&quot;</span><span class="nt">&gt;</span>1<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #666666&quot;</span><span class="nt">&gt;</span>+<span class="nt">&lt;/span&gt;</span> x<span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #666666&quot;</span><span class="nt">&gt;</span>**2<span class="nt">&lt;/span&gt;</span>)
+
+<span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #408080; font-style: italic&quot;</span><span class="nt">&gt;</span># Plot f<span class="nt">&lt;/span&gt;</span>
+<span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #008000; font-weight: bold&quot;</span><span class="nt">&gt;</span>import<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #0000FF; font-weight: bold&quot;</span><span class="nt">&gt;</span>matplotlib.pyplot<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #008000; font-weight: bold&quot;</span><span class="nt">&gt;</span>as<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #0000FF; font-weight: bold&quot;</span><span class="nt">&gt;</span>plt<span class="nt">&lt;/span&gt;</span>
+<span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #008000; font-weight: bold&quot;</span><span class="nt">&gt;</span>import<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #0000FF; font-weight: bold&quot;</span><span class="nt">&gt;</span>numpy<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #008000; font-weight: bold&quot;</span><span class="nt">&gt;</span>as<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #0000FF; font-weight: bold&quot;</span><span class="nt">&gt;</span>np<span class="nt">&lt;/span&gt;</span>
+xcoor <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #666666&quot;</span><span class="nt">&gt;</span>=<span class="nt">&lt;/span&gt;</span> np<span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #666666&quot;</span><span class="nt">&gt;</span>.<span class="nt">&lt;/span&gt;</span>linspace(<span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #666666&quot;</span><span class="nt">&gt;</span>-3<span class="nt">&lt;/span&gt;</span>, <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #666666&quot;</span><span class="nt">&gt;</span>3<span class="nt">&lt;/span&gt;</span>, <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #666666&quot;</span><span class="nt">&gt;</span>101<span class="nt">&lt;/span&gt;</span>)
+ycoor <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #666666&quot;</span><span class="nt">&gt;</span>=<span class="nt">&lt;/span&gt;</span> f(xcoor)
+plt<span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #666666&quot;</span><span class="nt">&gt;</span>.<span class="nt">&lt;/span&gt;</span>plot(xcoor, ycoor)
+plt<span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #666666&quot;</span><span class="nt">&gt;</span>.<span class="nt">&lt;/span&gt;</span>savefig(<span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #BA2121&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;#39;</span>f_plot.png<span class="ni">&amp;#39;</span><span class="nt">&lt;/span&gt;</span>)
+
+<span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #408080; font-style: italic&quot;</span><span class="nt">&gt;</span># Compute f<span class="ni">&amp;#39;</span>(x) symbolically and make a Python function out of it<span class="nt">&lt;/span&gt;</span>
+<span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #008000; font-weight: bold&quot;</span><span class="nt">&gt;</span>import<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #0000FF; font-weight: bold&quot;</span><span class="nt">&gt;</span>sympy<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #008000; font-weight: bold&quot;</span><span class="nt">&gt;</span>as<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #0000FF; font-weight: bold&quot;</span><span class="nt">&gt;</span>sm<span class="nt">&lt;/span&gt;</span>
+x <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #666666&quot;</span><span class="nt">&gt;</span>=<span class="nt">&lt;/span&gt;</span> sm<span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #666666&quot;</span><span class="nt">&gt;</span>.<span class="nt">&lt;/span&gt;</span>Symbol(<span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #BA2121&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;#39;</span>x<span class="ni">&amp;#39;</span><span class="nt">&lt;/span&gt;</span>)
+f_expr <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #666666&quot;</span><span class="nt">&gt;</span>=<span class="nt">&lt;/span&gt;</span> f(x)
+<span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #008000; font-weight: bold&quot;</span><span class="nt">&gt;</span>print<span class="nt">&lt;/span&gt;</span> f_expr
+df_expr <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #666666&quot;</span><span class="nt">&gt;</span>=<span class="nt">&lt;/span&gt;</span> sm<span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #666666&quot;</span><span class="nt">&gt;</span>.<span class="nt">&lt;/span&gt;</span>diff(f_expr, x)
+<span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #008000; font-weight: bold&quot;</span><span class="nt">&gt;</span>print<span class="nt">&lt;/span&gt;</span> df_expr
+df <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #666666&quot;</span><span class="nt">&gt;</span>=<span class="nt">&lt;/span&gt;</span> sm<span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #666666&quot;</span><span class="nt">&gt;</span>.<span class="nt">&lt;/span&gt;</span>lambdify(x, df_expr)  <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #408080; font-style: italic&quot;</span><span class="nt">&gt;</span># turn expression into Python function<span class="nt">&lt;/span&gt;</span>
+
+<span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #408080; font-style: italic&quot;</span><span class="nt">&gt;</span># Plot f<span class="ni">&amp;#39;</span>(x)<span class="nt">&lt;/span&gt;</span>
+plt<span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #666666&quot;</span><span class="nt">&gt;</span>.<span class="nt">&lt;/span&gt;</span>figure()
+plt<span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #666666&quot;</span><span class="nt">&gt;</span>.<span class="nt">&lt;/span&gt;</span>plot(xcoor, df(xcoor))
+plt<span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #666666&quot;</span><span class="nt">&gt;</span>.<span class="nt">&lt;/span&gt;</span>savefig(<span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #BA2121&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;#39;</span>df_plot.png<span class="ni">&amp;#39;</span><span class="nt">&lt;/span&gt;</span>)
+plt<span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #666666&quot;</span><span class="nt">&gt;</span>.<span class="nt">&lt;/span&gt;</span>show()
+<span class="nt">&lt;/pre&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;p&gt;</span>
+
+A plot of the function $latex f(x)$
+
+appears below.
+
+<span class="nt">&lt;p&gt;</span>
+<span class="nt">&lt;center&gt;&lt;p&gt;&lt;img</span> <span class="na">src=</span><span class="s">&quot;https://doconce.googlecode.com/hg/doc/blog/f_plot.png&quot;</span> <span class="na">align=</span><span class="s">&quot;bottom&quot;</span> <span class="na">width=</span><span class="s">400</span><span class="nt">&gt;&lt;/p&gt;&lt;/center&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>
+Here is the derivative $latex f&#39;(x)$ (with figure caption and label, which enables
+referring to the figure later):
+
+<span class="nt">&lt;p&gt;</span>
+
+<span class="nt">&lt;center&gt;</span> <span class="cp">&lt;! -- figure --&gt;</span>
+<span class="nt">&lt;hr</span> <span class="na">class=</span><span class="s">&quot;figure&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;center&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;caption&quot;</span><span class="nt">&gt;</span>Figure 1:  The derivative of Runge&#39;s function. <span class="nt">&lt;a</span> <span class="na">name=</span><span class="s">&quot;fig:Runge:dfdx&quot;</span><span class="nt">&gt;&lt;/a&gt;</span> <span class="nt">&lt;/p&gt;&lt;/center&gt;</span>
+<span class="nt">&lt;p&gt;&lt;img</span> <span class="na">src=</span><span class="s">&quot;https://doconce.googlecode.com/hg/doc/blog/df_plot.png&quot;</span> <span class="na">align=</span><span class="s">&quot;bottom&quot;</span> <span class="na">width=</span><span class="s">400</span><span class="nt">&gt;&lt;/p&gt;</span>
+<span class="nt">&lt;/center&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>
+
+Movies can also be embedded:
+
+<span class="nt">&lt;p&gt;</span>
+
+<span class="nt">&lt;iframe</span> <span class="na">width=</span><span class="s">&quot;420&quot;</span> <span class="na">height=</span><span class="s">&quot;315&quot;</span> <span class="na">src=</span><span class="s">&quot;http://www.youtube.com/embed/75Ju0eM5T2c&quot;</span> <span class="na">frameborder=</span><span class="s">&quot;0&quot;</span> <span class="na">allowfullscreen</span><span class="nt">&gt;&lt;/iframe&gt;</span>
+
+
+<span class="nt">&lt;p&gt;</span>
+The elements above are generated by the following
+<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://code.google.com/p/doconce&quot;</span><span class="nt">&gt;</span>Doconce<span class="nt">&lt;/a&gt;</span> code.
+
+<span class="nt">&lt;p&gt;</span>
+
+
+
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;highlight&quot;</span> <span class="na">style=</span><span class="s">&quot;background: #f8f8f8&quot;</span><span class="nt">&gt;&lt;pre</span> <span class="na">style=</span><span class="s">&quot;line-height: 125%&quot;</span><span class="nt">&gt;</span>Here is some simple mathematics:
+
+!bt
+\begin{align}
+f(x) <span class="ni">&amp;amp;</span>= \frac{1}{1 + x^2},
+label{eq:f}\\
+f<span class="ni">&amp;#39;</span>(x) <span class="ni">&amp;amp;</span> =-\frac{2x}{(1+x^2)^2}
+label{eq:df}
+\end{align}
+!et
+which can be implemented in a computer code:
+
+@@@CODE Runges_func.py
+
+A plot of the function $f(x)$
+
+appears below.
+
+FIGURE: [https://doconce.googlecode.com/hg/doc/blog/f_plot.png, width=400]
+
+Here is the derivative $f<span class="ni">&amp;#39;</span>(x)$ (with figure caption and label, which enables
+referring to the figure later):
+
+FIGURE: [https://doconce.googlecode.com/hg/doc/blog/df_plot.png, width=400] The derivative of Runge<span class="ni">&amp;#39;</span>s function. label{fig:Runge:dfdx}
+
+Movies can also be embedded:
+
+MOVIE: [http://www.youtube.com/watch?v=75Ju0eM5T2c]
+<span class="nt">&lt;/pre&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;p&gt;</span>
+
+
+<span class="nt">&lt;table</span> <span class="na">width=</span><span class="s">&quot;95%&quot;</span> <span class="na">border=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;tr&gt;</span>
+<span class="nt">&lt;td</span> <span class="na">width=</span><span class="s">&quot;25&quot;</span> <span class="na">align=</span><span class="s">&quot;center&quot;</span> <span class="na">valign=</span><span class="s">&quot;top&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;https://doconce.googlecode.com/hg/bundled/html_images/lyx_notice.png&quot;</span> <span class="na">hspace=</span><span class="s">&quot;5&quot;</span> <span class="na">alt=</span><span class="s">&quot;Notice&quot;</span><span class="nt">&gt;&lt;/td&gt;</span>
+<span class="nt">&lt;th</span> <span class="na">align=</span><span class="s">&quot;left&quot;</span> <span class="na">valign=</span><span class="s">&quot;middle&quot;</span><span class="nt">&gt;&lt;b&gt;</span>Notice<span class="nt">&lt;/b&gt;&lt;/th&gt;</span>
+<span class="nt">&lt;/tr&gt;</span>
+<span class="nt">&lt;tr&gt;</span>
+<span class="nt">&lt;td&gt;</span><span class="ni">&amp;nbsp;</span><span class="nt">&lt;/td&gt;</span>
+<span class="nt">&lt;td</span> <span class="na">align=</span><span class="s">&quot;left&quot;</span> <span class="na">valign=</span><span class="s">&quot;top&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;p&gt;&lt;p&gt;</span>
+
+<span class="nt">&lt;ol&gt;</span>
+<span class="nt">&lt;li&gt;</span> There must be no title, author, or date in the document.<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;li&gt;</span> If the Doconce code above is stored in a file
+   <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;https://doconce.googlecode.com/hg/doc/blog/demo.do.txt.html&quot;</span><span class="nt">&gt;&lt;tt&gt;</span>demo.do.txt<span class="nt">&lt;/tt&gt;&lt;/a&gt;</span>, run
+   <span class="nt">&lt;tt&gt;</span>doconce format html demo --wordpress<span class="nt">&lt;/tt&gt;</span> to produce the HTML code, stored in
+   <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;https://doconce.googlecode.com/hg/doc/blog/demo_wordpress.html.html&quot;</span><span class="nt">&gt;&lt;tt&gt;</span>demo.html<span class="nt">&lt;/tt&gt;&lt;/a&gt;</span>.<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;li&gt;</span> Copy the text in <span class="nt">&lt;tt&gt;</span>demo.html<span class="nt">&lt;/tt&gt;</span> into the blog text area on
+   <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://doconce.wordpress.com&quot;</span><span class="nt">&gt;&lt;tt&gt;</span>http://doconce.wordpress.com<span class="nt">&lt;/tt&gt;&lt;/a&gt;</span> site, using <span class="nt">&lt;em&gt;</span>Text<span class="nt">&lt;/em&gt;</span> mode (not <span class="nt">&lt;em&gt;</span>Visual<span class="nt">&lt;/em&gt;</span>!).<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;li&gt;</span> Remember to first choose the <span class="nt">&lt;em&gt;</span>HTML-code<span class="nt">&lt;/em&gt;</span> tab (and not just <span class="nt">&lt;em&gt;</span>Write<span class="nt">&lt;/em&gt;</span>)
+   and to place the copied text between the <span class="nt">&lt;tt&gt;</span>div<span class="nt">&lt;/tt&gt;</span> tags.<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ol&gt;&lt;/p&gt;</span>
+<span class="nt">&lt;/td&gt;</span>
+<span class="nt">&lt;/tr&gt;</span>
+<span class="nt">&lt;/table&gt;</span>
+</pre></div>
+</body>
+</html>

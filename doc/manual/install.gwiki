@@ -1,0 +1,427 @@
+
+
+== Installation of Doconce and its Dependencies ==
+
+Below, we explain the manual installation of all software that may be
+needed when working with Doconce documents.
+The impatient way to install what is needed is to run the
+[doconce_install_all.sh `doconce_install_all.sh`] script.
+
+==== Doconce ====
+
+Doconce itself is pure Python code hosted at http://code.google.com/p/doconce.  Its installation from the
+Mercurial (`hg`) source follows the standard procedure:
+{{{
+# Doconce
+hg clone https://code.google.com/p/doconce/ doconce
+cd doconce
+sudo python setup.py install
+cd ..
+}}}
+Since Doconce is frequently updated, it is recommended to use the
+above procedure and whenever a problem occurs, make sure to
+update to the most recent version:
+{{{
+cd doconce
+hg pull
+hg update
+sudo python setup.py install
+}}}
+
+
+==== Dependencies ====
+
+Producing HTML documents, plain text, pandoc-extended Markdown,
+and wikis can be done without installing any other
+software. However, if you want other formats as output
+(LaTeX, Sphinx, reStructuredText) and assisting utilities such
+as preprocesors, spellcheck, file differences, bibliographies,
+and so on, the software below must be installed.
+
+<wiki:comment> Make a debpkg_doconce.txt file with everything that is needed on Debian </wiki:comment>
+
+==== Preprocessors ====
+
+If you make use of the [http://code.google.com/p/preprocess Preprocess]
+preprocessor, this program must be installed:
+
+{{{
+svn checkout http://preprocess.googlecode.com/svn/trunk/ preprocess
+cd preprocess
+cd doconce
+sudo python setup.py install
+cd ..
+}}}
+
+A much more advanced alternative to Preprocess is
+[http://www.makotemplates.org Mako]. Its installation is most
+conveniently done by `pip`,
+
+{{{
+pip install Mako
+}}}
+This command requires `pip` to be installed. On Debian Linux systems,
+such as Ubuntu, the installation is simply done by
+
+{{{
+sudo apt-get install python-pip
+}}}
+Alternatively, one can install from the `pip` [http://pypi.python.org/pypi/pip source code].
+
+Mako can also be installed directly from
+[http://www.makotemplates.org/download.html source]: download the
+tarball, pack it out, go to the directory and run
+the usual `sudo python setup.py install`.
+
+==== Image file handling ====
+
+Different output formats require different formats of image files.
+For example, PostScript or Encapuslated PostScript is required for `latex`
+output, while HTML needs JPEG, GIF, or PNG formats.
+Doconce calls up programs from the ImageMagick suite for converting
+image files to a proper format if needed. The [http://www.imagemagick.org/script/index.php ImageMagick suite] can be installed on all major platforms.
+On Debian Linux (including Ubuntu) systems one can simply write
+
+{{{
+sudo apt-get install imagemagick
+}}}
+
+The convenience program `doconce combine_images`, for combining several
+images into one, will use `montage` and `convert` from ImageMagick and
+the `pdftk`, `pdfnup`, and `pdfcrop` programs from the `texlive-extra-utils`
+Debian package. The latter gets installed by
+
+{{{
+sudo apt-get install texlive-extra-utils
+}}}
+
+Automatic image conversion from EPS to PDF calls up `epstopdf`, which
+can be installed by
+
+{{{
+sudo apt-get install texlive-font-utils
+}}}
+
+==== Spellcheck ====
+
+The utility `doconce spellcheck` applies the `ispell` program for
+spellcheck. On Debian (including Ubuntu) it is installed by
+
+{{{
+sudo apt-get install ispell
+}}}
+
+
+==== Bibliography ====
+
+The Python package [https://bitbucket.org/logg/publish Publish] is needed if you use a bibliography
+in your document. On the website, click on *Clone*, copy the
+command and run it:
+
+{{{
+hg clone https://bitbucket.org/logg/publish
+}}}
+Thereafter go to the `publish` directory and run the `setup.py` script
+for installing Publish:
+
+{{{
+cd publish
+sudo python setup.py
+}}}
+
+
+==== Ptex2tex for LaTeX Output ====
+
+To make LaTeX documents with very flexible choice of typesetting of
+verbatim code blocks you need [http://code.google.com/p/ptex2tex ptex2tex],
+which is installed by
+
+{{{
+svn checkout http://ptex2tex.googlecode.com/svn/trunk/ ptex2tex
+cd ptex2tex
+sudo python setup.py install
+}}}
+It may happen that you need additional style files, you can run
+a script, `cp2texmf.sh`:
+
+{{{
+cd latex
+sh cp2texmf.sh  # copy stylefiles to ~/texmf directory
+cd ../..
+}}}
+This script copies some special stylefiles that
+that `ptex2tex` potentially makes use of. Some more standard stylefiles
+are also needed. These are installed by
+
+{{{
+sudo apt-get install texlive
+}}}
+on Debian Linux (including Ubuntu) systems. TeXShop on Mac comes with
+the necessary stylefiles (if not, they can be found by googling and installed
+manually in the `~/texmf/tex/latex/misc` directory).
+
+Note that the `doconce ptex2tex` command, which needs no installation
+beyond Doconce itself, can be used as a simpler alternative to the `ptex2tex`
+program.
+
+The *minted* LaTeX style is offered by `ptex2tex` and `doconce ptext2tex`
+and popular among many
+users. This style requires the package [http://pygments.org Pygments]
+to be installed. On Debian Linux,
+{{{
+sudo apt-get install python-pygments
+}}}
+Alternatively, the package can be installed manually:
+{{{
+hg clone ssh://hg@bitbucket.org/birkenfeld/pygments-main pygments
+cd pygments
+sudo python setup.py install
+}}}
+One can also do the simple
+
+{{{
+pip install sphinx
+}}}
+which also installs pygments.
+
+If you use the minted style together with `ptex2tex`, you have to
+enable it by the `-DMINTED` command-line argument to `ptex2tex`.
+This is not necessary if you run the alternative `doconce ptex2tex` program.
+
+All use of the minted style requires the `-shell-escape` command-line
+argument when running LaTeX, i.e., `latex -shell-escape` or `pdflatex
+-shell-escape`.
+
+Inline comments apply the `todonotes` LaTeX package if the `ptex2tex`
+or `doconce ptex2tex` command is run with `-DTODONOTES`.  The
+`todonotes` package requires several other packages: `xcolor`,
+`ifthen`, `xkeyval`, `tikz`, `calc`, `graphicx`, and `setspace`. The
+relevant Debian packages for installing all this are listed below.
+
+==== LaTeX packages ====
+
+Many LaTeX packages are potentially needed (depending on various
+preprocessor variables given to `ptex2tex` or `doconce ptex2tex`.  The
+standard packages always included are `relsize`, `epsfig`, `makeidx`,
+`setspace`, `color`, `amsmath`, `amsfonts`, `xcolor`, `bm`,
+`microtype`, `titlesec`, and `hyperref`.  The `ptex2tex` package (from
+[http://code.google.com/p/ptex2tex ptex2tex]) is also included, but
+removed again if `doconce ptex2tex` is run instead of the `ptex2tex`
+program, meaning that if you do not use `ptex2tex`, you do not need
+`ptex2tex.sty`. Optional packages that might be included are `minted`,
+`fontspec`, `xunicode`, `inputenc`, `helvet`, `mathpazo`, `wrapfig`,
+`calc`, `ifthen`, `xkeyval`, `tikz`, `graphicx`, `setspace`, `shadow`,
+`disable`, `todonotes`, `lineno`, `xr`, `framed`, `mdframe`,
+`movie15`, `a4paper`, and `a6paper`.
+
+Relevant Debian packages that gives you all of these LaTeX packages are
+
+{{{
+texlive
+texlive-extra-utils
+texlive-latex-extra
+texlive-font-utils
+}}}
+On old Ubuntu 12.04 one has to do `sudo add-apt-repository ppa:texlive-backports/ppa` and `sudo apt-get update` first, or alternatively install these as well:
+
+{{{
+texlive-math-extra
+texlive-bibtex-extra
+texlive-xetex
+texlive-humanities
+texlive-pictures
+}}}
+Alternatively, one may pull in `texlive-full` to get all available
+style files.
+
+If you want to use the *anslistings* code environment with `ptex2tex`
+(`.ptex2tex.cfg` styles `Python_ANS`, `Python_ANSt`, `Cpp_ANS`, etc.) or
+`doconce ptex2tex` (`envir=ans` or `envir=ans:nt`), you need the
+`anslistings.sty` file. It can be obtained from
+the [https://code.google.com/p/ptex2tex/source/browse/trunk/latex/styles/with_license/anslistings.sty ptex2tex source]. It should get installed
+by the `cp2texmf.sh` script executed above.
+
+
+==== reStructuredText (reST) Output ====
+
+The `rst` output from Doconce allows further transformation to LaTeX,
+HTML, XML, OpenOffice, and so on, through the [http://docutils.sourceforge.net docutils] package.  The installation of the
+most recent version can be done by
+
+{{{
+svn checkout \
+  http://docutils.svn.sourceforge.net/svnroot/docutils/trunk/docutils
+cd docutils
+sudo python setup.py install
+cd ..
+}}}
+The command
+
+{{{
+pip install sphinx
+}}}
+installs Docutils along with Sphinx and Pygments.
+
+To use the OpenOffice suite you will typically on Debian systems install
+{{{
+sudo apt-get install unovonv libreoffice libreoffice-dmaths
+}}}
+
+There is a possibility to create PDF files from reST documents
+using ReportLab instead of LaTeX. The enabling software is
+[http://code.google.com/p/rst2pdf rst2pdf]. Either download the tarball
+or clone the svn repository, go to the `rst2pdf` directory and
+run the usual `sudo python setup.py install`.
+
+==== Sphinx Output ====
+
+Output to `sphinx` requires of course the
+[http://sphinx.pocoo.org Sphinx software],
+installed by
+
+{{{
+hg clone https://bitbucket.org/birkenfeld/sphinx
+cd sphinx
+sudo python setup.py install
+cd ..
+}}}
+An alternative is
+
+{{{
+pip install sphinx
+}}}
+
+Doconce comes with many Sphinx themes that are not part of the
+standard Sphinx source distribution. Some of these themes require
+additional Python/Sphinx modules to be installed:
+
+
+ * cloud and redcloud: https://bitbucket.org/ecollins/cloud_sptheme
+ * bootstrap: https://github.com/ryan-roemer/sphinx-bootstrap-theme
+ * solarized: https://bitbucket.org/miiton/sphinxjp.themes.solarized
+ * impressjs: https://github.com/shkumagai/sphinxjp.themes.impressjs
+
+These must be downloaded or cloned, and `setup.py` must be run as shown
+above.
+
+==== Markdown and Pandoc Output ====
+
+The Doconce format `pandoc` outputs the document in the Pandoc
+extended Markdown format, which via the `pandoc` program can be
+translated to a range of other formats. Installation of [http://johnmacfarlane.net/pandoc/ Pandoc], written in Haskell, is most
+easily done by
+
+{{{
+sudo apt-get install pandoc
+}}}
+on Debian (Ubuntu) systems.
+
+==== Epydoc Output ====
+
+When the output format is `epydoc` one needs that program too, installed
+by
+{{{
+svn co https://epydoc.svn.sourceforge.net/svnroot/epydoc/trunk/epydoc epydoc
+cd epydoc
+sudo make install
+cd ..
+}}}
+
+*Remark.* Several of the packages above installed from source code
+are also available in Debian-based system through the
+`apt-get install` command. However, we recommend installation directly
+from the version control system repository as there might be important
+updates and bug fixes. For `svn` directories, go to the directory,
+run `svn update`, and then `sudo python setup.py install`. For
+Mercurial (`hg`) directories, go to the directory, run
+`hg pull; hg update`, and then `sudo python setup.py install`.
+
+==== The `doconce diff` command ====
+
+The `doconce diff file1 file prog` command for illustrating differences between
+two files `file1` and `file2` using the program `prog` requires `prog`
+to be installed. By default, `prog` is `difflib` which comes with Python
+and is always present if you have Doconce installed. Another choice, `diff`,
+should be available on all Unix/Linux systems. Other choices, their
+URL, and their `sudo apt-get install` command on Debian (Ubuntu) systems
+appear in the table below.
+
+
+ ||                                           *Program*                                            ||                                             *URL*                                              ||                                    *Debian/Ubuntu install*                                     ||
+ ||  `pdiff`                                                                                       ||  [http://www.gnu.org/software/a2ps/ a2ps] [http://www.gnu.org/software/wdiff/ wdiff]     ||  `sudo apt-get install a2ps wdiff texlive-latex-extra texlive-latex-recommended`               ||
+ ||  `latexdiff`                                                                                   ||  [http://www.ctan.org/pkg/latexdiff latexdiff]                                              ||  `sudo apt-get install latexdiff`                                                              ||
+ ||  `kdiff3`                                                                                      ||  [http://kdiff3.sourceforge.net/ kdiff3]                                                    ||  `sudo apt-get install kdiff3`                                                                 ||
+ ||  `diffuse`                                                                                     ||  [http://diffuse.sourceforge.net/ diffuse]                                                  ||  `sudo apt-get install diffuse`                                                                ||
+ ||  `xxdiff`                                                                                      ||  [http://xxdiff.sourceforge.net/local/ xxdiff]                                              ||  `sudo apt-get install xxdiff`                                                                 ||
+ ||  `meld`                                                                                        ||  [http://meldmerge.org/ meld]                                                               ||  `sudo apt-get install meld`                                                                   ||
+ ||  `tkdiff.tcl`                                                                                  ||  [https://sourceforge.net/projects/tkdiff/ tkdiff]                                          ||  not in Debian                                                                                 ||
+
+
+==== Quick Debian/Ubuntu Install ====
+
+On Debian (including Ubuntu) systems, it is straightforward to install the
+long series of Doconce dependencies:
+
+{{{
+# Version control systems
+sudo apt-get install -y mercurial git subversion
+
+# Python
+sudo apt-get install -y idle ipython python-pip python-pdftools texinfo
+
+# These lines are only necessary for Ubuntu 12.04 to install texlive 2012
+ubuntu_version=`lsb_release -r | awl '{print $2}'`
+if [ $ubuntu_version = "12.04" ]; then
+  sudo add-apt-repository ppa:texlive-backports/ppa
+  sudo apt-get update
+fi
+# LaTeX
+sudo apt-get install -y texlive texlive-extra-utils texlive-latex-extra texlive-math-extra texlive-font-utils
+# or sudo apt-get install -y texlive-full  # get everything
+sudo apt-get install -y latexdiff auctex
+
+# Image and movie tools
+sudo apt-get install -y imagemagick netpbm mjpegtools pdftk giftrans gv evince smpeg-plaympeg mplayer totem ffmpeg libav-tools
+
+# Misc
+sudo apt-get install -y ispell pandoc libreoffice unoconv libreoffice-dmaths curl a2ps wdiff meld xxdiff diffpdf kdiff3 diffuse
+
+# More Python software
+pip install sphinx  # install pygments and docutils too
+pip install mako
+pip install -e svn+http://preprocess.googlecode.com/svn/trunk#egg=preprocess
+pip install -e hg+https://bitbucket.org/logg/publish#egg=publish
+
+pip install -e hg+https://bitbucket.org/ecollins/cloud_sptheme#egg=cloud_sptheme
+pip install -e git+https://github.com/ryan-roemer/sphinx-bootstrap-theme#egg=sphinx-bootstrap-theme
+pip install -e hg+https://bitbucket.org/miiton/sphinxjp.themes.solarized#egg=sphinxjp.themes.solarized
+pip install -e git+https://github.com/shkumagai/sphinxjp.themes.impressjs#egg=sphinxjp.themes.impressjs
+pip install -e svn+https://epydoc.svn.sourceforge.net/svnroot/epydoc/trunk/epydoc#egg=epydoc
+
+# Doconce itself
+rm -rf srclib   # put downloaded software in srclib
+mkdir srclib
+cd srclib
+hg clone https://code.google.com/p/doconce/
+cd doconce
+sudo python setup.py install -y
+cd ../..
+
+# Ptex2tex
+cd srclib
+svn checkout http://ptex2tex.googlecode.com/svn/trunk/ ptex2tex
+cd ptex2tex
+sudo python setup.py install -y
+cd latex
+sh cp2texmf.sh  # copy stylefiles to ~/texmf directory
+cd ../../..
+}}}
+
+
+
+
+
+
+
+
+

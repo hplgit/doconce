@@ -1,0 +1,109 @@
+﻿.deck-annotate-canvas {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+}
+
+.deck-annotate-canvas > canvas {
+    width: 100%;
+    height: 100%;
+}
+
+#deck-annotate-tools {
+    display: none;
+    z-index: 1001;
+    bottom: 40px;
+    right: 15px;
+    padding: 10px;
+    padding-top: 0;
+    position: absolute;
+    background-color: white;
+}
+
+@media print {
+    #deck-annotate-tools {
+        display: none;
+    }
+}
+
+#deck-annotate-tools > .hidden {
+    display: none;
+}
+
+#tools-title {
+    font-size: medium;
+}
+
+#shape-picker .shape {
+    display: inline-block;
+    width: 26px;
+    height: 26px;
+    padding: 1px;
+    margin: 1px;
+    border: 2px solid black;
+}
+
+#shape-line {
+    margin: auto;
+    border: 0;
+    background-color: black;
+    margin-top: 12px;
+    height: 5px;
+    width: 80%;
+}
+
+#shape-rectangle {
+    margin: auto;
+    border: 3px solid black;
+    margin-top: 2px;
+    height: 60%;
+    width: 60%;
+}
+
+#shape-circle {
+    margin: auto;
+    border: 3px solid black;
+    margin-top: 2px;
+    height: 60%;
+    width: 60%;
+    border-radius: 50%;
+}
+
+#size-picker .size {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 2px;
+    margin: 4px 2px;
+    border-radius: 50%;
+    border: 2px solid black;
+}
+
+#color-picker .color {
+    width: 25px;
+    height: 25px;
+    margin: 1px;
+    border: 2px solid black;
+}
+
+#deck-annotate-tools .active {
+    border: 2px solid green;
+}
+
+#deck-annotate-tools > .expand-arrow {
+    float:right;
+    border-top: 10px solid transparent;
+	  border-bottom: 10px solid transparent;
+}
+
+#deck-annotate-tools > .left.expand-arrow {
+    border-right:10px solid blue; 
+}
+
+#deck-annotate-tools > .right.expand-arrow {
+    display: inline-block;
+    border-left: 10px solid blue;
+}

@@ -1,0 +1,601 @@
+TITLE: Test slide features
+AUTHOR: Core Dump at Cyber Space Ltd
+DATE: Today
+
+FIGURE: [../doc/slides/fig/doconce1b, width=400 frac=0.5]
+
+!split
+======= Scientific writing for the future needs to address many new media =======
+
+!bslidecell 00 0.4
+FIGURE: [../doc/slides/fig/ipad, width=400 frac=0.8]
+
+FIGURE: [../doc/slides/fig/iphones, width=100 frac=0.3]
+
+#FIGURE: [../doc/slides/fig/mbair, width=400]
+
+!eslidecell
+
+!bslidecell 01 0.6
+FIGURE: [../doc/slides/fig/imac, width=350 frac=0.7]
+!eslidecell
+
+!split
+======= The book will probably survive =======
+
+FIGURE: [../doc/slides/fig/oldbooks, width=800]
+
+!split
+======= The classical report will survive =======
+
+!bslidecell 00
+FIGURE: [../doc/slides/fig/latex_thesis, width=400 frac=1.2]
+!eslidecell
+
+!bslidecell 01
+FIGURE: [../doc/slides/fig/latex_paper1, width=400 frac=1.2]
+!eslidecell
+
+!split
+======= Scope =======
+
+#  * Scientific writing = lecture notes, slides, reports, thesis, books,  ...
+#  * (Journal papers typeset by journals are out of scope)
+
+!bpop
+  * Scope: documents with color{red}{much} *math* and *computer code*
+  * Key question: What tools should I use for writing?
+  * Default answer: LaTeX
+  * Alternative: MS Word w/math
+  * Recent popular alternative tools: HTML w/MathJax,
+    Sphinx, Markdown, MediaWiki, IPython notebook
+!epop
+
+!bslidecell 00 0.25
+FIGURE: [../doc/slides/fig/LaTeX_logo.jpg, width=120 frac=0.3]
+!eslidecell
+
+!bslidecell 01 0.25
+FIGURE: [../doc/slides/fig/MS_Word_logo.jpg, width=80 frac=0.2]
+!eslidecell
+
+!bslidecell 02 0.5
+FIGURE: [../doc/slides/fig/sphinx_logo.png, width=200 frac=0.4]
+!eslidecell
+
+!bslidecell 10 0.25
+FIGURE: [../doc/slides/fig/markdown_logo.jpg, width=80 frac=0.2]
+!eslidecell
+
+!bslidecell 11 0.25
+FIGURE: [../doc/slides/fig/MediaWiki_logo.jpg, width=80 frac=0.2]
+!eslidecell
+
+!bslidecell 12 0.5
+FIGURE: [../doc/slides/fig/IPython_logo.png, width=300 frac=0.6]
+!eslidecell
+
+
+!split
+======= Scientific writing for the future needs to address many new media =======
+
+# Insert links here to reports
+
+!bslidecell 00
+Old days (1985-2005): LaTeX for BW paper output, but now
+
+   o BW books
+   o Colorful PDF books (printed and screen)
+   o Designed web pages
+   o Wikis
+   o Bloggs
+   o Next new fancy format (iBook w/LaTeX?)
+!eslidecell
+
+!bslidecell 01
+FIGURE: [../doc/slides/fig/jungle_with_mess.jpg, width=500]
+!eslidecell
+
+!split
+
+======= Fundamental question =======
+
+When I write some scientific material,
+
+ * a LaTeX document,
+ * a blogg (HTML),
+ * some web pages (HTML),
+ * a Sphinx document,
+ * some Markdown files,
+
+and later want to collect the pieces into a larger document, maybe
+some book, or one big web document, is that at all feasible?
+
+!bpop highlight-red
+Probably not, but I have a solution :-)
+!epop
+
+!split
+
+======= LaTeX is very rich; other tools support only some elements =======
+
+ * LaTeX inline math: works with all (LaTeX, MathJax, Sphinx, Markdown, MediaWiki)
+ * LaTeX equation math:
+    * _LaTeX_: `equation*`, `equation`, `align*`, `align` +
+      `eqnarray`, `split`, `alignat`, ... (numerous!)
+    * _MathJax_: `equation*`, `equation`, `align*`, `align`
+    * _MediaWiki_: `equation*`, `equation`, `align*`, `align`
+    * _Sphinx_: `equation*`, `equation`, `align*`
+    * _Markdown_: `equation*`, `equation`, `eqnarray*`, `align*` (but no labels)
+
+!split
+======= LaTeX is very rich; other tools support only some elements =======
+
+!bpop
+ * Figures: all
+ * Subfigures: LaTeX (`subfigure`)
+ * Movies: LaTeX (can run separately), just raw embedded HTML in others
+ * Floating computer code: LaTeX
+ * Fixed computer code: all
+ * Floating tables: LaTeX; inline tables: all
+ * Algorithms: LaTeX
+ * Margin notes: LaTeX
+ * Page references: LaTeX
+ * Footnotes: LaTeX, Sphinx, reStructuredText, MediaWiki
+ * Bibliography: LaTeX, Sphinx, reStructuredText, MediaWiki
+ * Hyperlinks: all (but not on paper!)
+!epop
+
+!bpop
+Conclusion: Highly non-trivial to translate a LaTeX document into something
+based on HTML and vice versa.
+!epop
+
+
+!split
+======= Doconce demo =======
+
+URL: "http://hplgit.github.com/teamods/writing_reports/"
+
+ * LaTeX-based PDF "for screen": "http://hplgit.github.com/teamods/writing_reports/_static/report.pdf", "for printing": "http://hplgit.github.com/teamods/writing_reports/_static/report_4printing.pdf", "for phone": "http://hplgit.github.com/teamods/writing_reports/_static/report_4phone.pdf"
+ * "Plain HTML": "http://hplgit.github.com/teamods/writing_reports/_static/report_do.html" or with a "template": "http://hplgit.github.com/teamods/writing_reports/_static/report_vagrant.html" or "another template": "http://hplgit.github.com/teamods/writing_reports/_static/report_github_minimal.html" or "solarized": "http://hplgit.github.com/teamods/writing_reports/_static/report_solarized.html"
+ * Sphinx: "agni": "http://hplgit.github.com/teamods/writing_reports/_static/sphinx-agni/index.html", "pyramid": "http://hplgit.github.com/teamods/writing_reports/_static/sphinx-pyramid/report.html", "classy": "http://hplgit.github.com/teamods/writing_reports/_static/sphinx-classy/report.html", "fenics": "http://hplgit.github.com/teamods/writing_reports/_static/sphinx-fenics_minimal/report.html", "redcloud": "http://hplgit.github.com/teamods/writing_reports/_static/sphinx-fenics_minimal/report.html"
+ * HTML for "Google": "http://doconce-report-demo.blogspot.no/" or "Wordpress": "http://doconcereportdemo.wordpress.com/" blogs
+ * "MediaWiki": "http://doconcedemo.shoutwiki.com/wiki/Doconce_demo_page" (Wikipedia, Wikibooks, etc)
+ * Doconce "source code": "http://hplgit.github.com/teamods/writing_reports/_static/report.do.txt.html" and "tutorial": "http://code.google.com/p/doconce/wiki/Tutorial"
+
+
+!split
+
+# #if FORMAT in ("latex", "pdflatex")
+# latex interprets 9 = as chapter and then needs book style...
+======= A tour of Doconce =======
+# #else
+========= A tour of Doconce =========
+# #endif
+
+!split
+======= Doconce: title, authors, date, toc =======
+
+!bc
+TITLE: Some Title
+AUTHOR: name1 at institution1, with more info, and institution2
+AUTHOR: name2 email:name2@web.com at institution
+DATE: today
+
+# A table of contents is optional:
+TOC: on
+!ec
+
+!bnotice
+Title and authors must have all information *on a single line*!
+!enotice
+
+!split
+======= Doconce: abstract =======
+
+!bc
+__Abstract.__
+Here goes the abstract...
+!ec
+
+Or:
+!bc
+__Summary.__
+Here goes the summary...
+!ec
+
+
+!split
+======= Doconce: section headings =======
+
+Headings are surrounded by `=` signs:
+!bc
+========= This is an H1/chapter heading =========
+
+======= This is an H2/section heading =======
+
+===== This is an H3/subsection heading =====
+
+=== This is an H4/paragraph heading ===
+
+__This is a paragraph heading.__
+!ec
+
+Result:
+
+========= This is an H1/chapter heading =========
+
+======= This is an H2/section heading =======
+
+===== This is an H3/subsection heading =====
+
+=== This is an H4/paragraph heading ===
+
+__This is a paragraph heading.__
+
+
+!split
+======= Doconce: markup and lists =======
+
+!bc
+ * Bullet list items start with `*`
+   and may span several lines
+ * *Emphasized words* are possible
+ * _Boldface words_ are also possible
+ * color{red}{colored words} too
+ * `inline verbatim code` is featured
+   o and sublists with enumerated items starting with `o`
+   o items are just indented as you would do in email
+!ec
+
+This gets rendered as
+
+ * Bullet lists start with `*`
+   and may span several lines
+ * *Emphasized words* are possible
+ * _Boldface words_ are also possible
+ * color{red}{colored words} too
+ * `inline verbatim code` is featured
+   o and sublists with enumerated items starting with `o`
+   o items are just indented as you would do in email
+
+!split
+======= Doconce: labels, references, index items =======
+
+!bc
+# Insert index items in the source
+idx{key word1} idx{key word2}
+
+# Label
+===== Some section =====
+label{this:section}
+
+# Make reference
+As we saw in Section ref{this:section}, references, index
+items and labels follow a syntax similar to LaTeX
+but without backslashes.
+
+# Make reference to equations
+See (ref{eq1})-(ref{myeq}).
+
+# Make hyperlink
+"some link text": "http://code.google.com/p/doconce/"
+
+# Hyperlink with complete URL as link text
+URL: "http://code.google.com/p/doconce/"
+!ec
+
+!split
+======= Doconce: figures and movies =======
+
+!bnotice
+Figure with HTML and LaTeX info, and caption, *all on one line*:
+!enotice
+
+!bc
+FIGURE: [figdir/myfig, width=300 frac=1.2] My caption. label{fig1}
+
+# This figure will be 300 pixels wide in HTML and span 1.2 times
+# the linewidth in LaTeX.
+!ec
+
+Movies are also supported:
+
+!bc
+MOVIE: [http://www.youtube.com/embed/P8VcZzgdfSc, width=420 height=315]
+!ec
+and rendered as
+
+MOVIE: [http://www.youtube.com/embed/P8VcZzgdfSc, width=420 height=315]
+
+!split
+======= Doconce: math =======
+
+Inline math as in LaTeX:
+
+!bc
+...where $a=\int_{\Omega}fdx$ is an integral.
+!ec
+gets rendered as ...where $a=\int_{\Omega}fdx$ is an integral.
+
+
+An equation environment is surrounded by `!bt` and `!et` tags,
+the rest is plain LaTeX:
+
+!bc
+|bt
+\begin{align}
+\frac{\partial u}{\partial t} &= \nabla^2 u,
+label{a:eq}\\
+\nabla\cdot\pmb{v} & = 0
+label{b:eq}
+\end{align}
+|et
+!ec
+which is rendered as
+
+!bt
+\begin{align}
+\frac{\partial u}{\partial t} &= \nabla^2 u,
+label{a:eq}\\
+\nabla\cdot\pmb{v} & = 0
+label{b:eq}
+\end{align}
+!et
+
+
+!split
+======= Doconce: displaying code =======
+
+Code is enclosed in `!bc` and `!ec` tags:
+
+!bc
+|bc pycod
+def solver(I, a, T, dt, theta):
+    """Solve u'=-a*u, u(0)=I, for t in (0,T] with steps of dt."""
+    dt = float(dt)           # avoid integer division
+    N = int(round(T/dt))     # no of time intervals
+    T = N*dt                 # adjust T to fit time step dt
+    u = zeros(N+1)           # array of u[n] values
+    t = linspace(0, T, N+1)  # time mesh
+
+    u[0] = I                 # assign initial condition
+    for n in range(0, N):    # n=0,1,...,N-1
+        u[n+1] = (1 - (1-theta)*a*dt)/(1 + theta*dt*a)*u[n]
+    return u, t
+|ec
+!ec
+This gets rendered as
+
+!bc pycod
+def solver(I, a, T, dt, theta):
+    """Solve u'=-a*u, u(0)=I, for t in (0,T] with steps of dt."""
+    dt = float(dt)           # avoid integer division
+    N = int(round(T/dt))     # no of time intervals
+    T = N*dt                 # adjust T to fit time step dt
+    u = zeros(N+1)           # array of u[n] values
+    t = linspace(0, T, N+1)  # time mesh
+
+    u[0] = I                 # assign initial condition
+    for n in range(0, N):    # n=0,1,...,N-1
+        u[n+1] = (1 - (1-theta)*a*dt)/(1 + theta*dt*a)*u[n]
+    return u, t
+!ec
+
+!bnotice Language-dependent typesetting of code:
+The `!bc` command can be followed by a specification of the computer
+language: `pycod` for Python code snippet, `pypro` for complete Python
+program, `fcod` for Fortran snippet, `fpro` for Fortran program, and so
+forth (`c` for C, `cpp` for C++, `sh` for Unix shells, `m` for Matlab).
+!enotice
+
+
+!split
+======= Doconce: displaying interactive demo code =======
+label{slide:pot}
+
+With `!bc pyoptpro` or a file `*.pyopt`, the code applies the
+"Online Python Tutor": "http://pythontutor.com" for displaying
+program flow and state of variables:
+
+@@@CODE ../doc/slides/src/dc_mod.pyopt
+
+
+
+
+!split
+======= Doconce: exercises =======
+
+Doconce offers a special format for *exercises*, *problems*, *projects*,
+and *examples*:
+
+!bc
+===== Problem: Flip a Coin =====
+label{demo:ex:1}
+
+files = flip_coin.py, flip_coin.pdf
+solutions = mysol.txt, mysol_flip_coin.py
+keywords = random numbers; Monte Carlo simulation
+
+!bsubex
+Make a program that simulates flipping a coin $N$ times.
+
+!bhint
+Use `r = random.random()` and define head as `r <= 0.5`.
+!ehint
+!esubex
+
+!bsubex
+Compute the probability of getting heads.
+
+!bans
+A short answer: 0.5.
+!eans
+
+!bsol
+A full solution to this subexercise can go here.
+!esol
+!esubex
+
+!bsubex
+Make another program that computes the probability
+of getting at least three heads out of 5 throws.
+!esubex
+!ec
+
+Solutions/answers can easily be left out of the document.
+
+!split
+======= Doconce: exercises =======
+
+Last page gets rendered as follows:
+
+===== Problem: Flip a Coin =====
+label{demo:ex:1}
+files = flip_coin.py, flip_coin.pdf
+solutions = mysol.txt, mysol_flip_coin.py
+keywords = random numbers; Monte Carlo simulation
+
+!bsubex
+Make a program that simulates flipping a coin $N$ times.
+
+!bhint
+Use `r = random.random()` and define head as `r <= 0.5`.
+!ehint
+!esubex
+
+!bsubex
+Compute the probability of getting heads.
+
+!bans
+A short answer: 0.5.
+!eans
+
+!bsol
+A full solution to this subexercise can go here.
+!esol
+!esubex
+
+!bsubex
+Make another program that computes the probability
+of getting at least three heads out of 5 throws.
+!esubex
+
+
+!split
+======= Doconce: example on slide code =======
+
+!bc
+!split
+======= Headline =======
+
+ * Key point 1
+ * Key point 2
+ * Key point 3 takes very much more text to explain because
+   this point is really comprehensive, and although long
+   bullet points are not recommended in general, we need
+   it here for demonstration purposes
+
+FIGURE: [../doc/slides/fig/teacher1, width=100]
+
+Key equation:
+
+|bt
+\[ -\nabla^2 u = f \quad\hbox{in }\Omega \]
+|et
+
+And maybe a final comment?
+
+!split
+======= Next slide... =======
+!ec
+
+!split
+======= Doconce: example on slide code =======
+
+Last page gets rendered to
+
+======= Headline =======
+
+ * Key point 1
+ * Key point 2
+
+FIGURE: [../doc/slides/fig/teacher1, width=100 frac=0.4]
+
+Key equation:
+
+!bt
+\[ -\nabla^2 u = f \quad\hbox{in }\Omega \]
+!et
+
+And maybe a final comment?
+
+!split
+======= Doconce: example on slide code with cells =======
+
+One can introduce a table-like layout with MxN cells and
+put slide elements in various cell. A cell with position
+MN is surrounded by `!bslidecell MN` and `!eslidecell`
+tags. Below is an example with a bullet list to the left and
+a figure to the right (two cells, numbered 00 and 01).
+
+!bc
+!split
+======= Headline =======
+
+!bslidecell 00
+!bpop
+ * Key point 1
+ * Key point 2
+ * Key point 3 takes very much more text to explain because
+   this point is really comprehensive, and although long
+   bullet points are not recommended in general, we need
+   it here for demonstration purposes
+!epop
+
+!bpop
+|bt
+\[ -\nabla^2 u = f \quad\hbox{in }\Omega \]
+|et
+!epop
+
+!eslidecell
+
+!bslidecell 01
+FIGURE: [../doc/slides/fig/broken_pen_and_paper, width=400, frac=0.8]
+!eslidecell
+
+!split
+======= Next slide... =======
+!ec
+
+!split
+======= Doconce: example on slide code =======
+
+Last page gets rendered to
+
+======= Headline =======
+
+!bslidecell 00
+!bpop
+ * Key point 1
+ * Key point 2
+ * Key point 3 takes very much more text to explain because
+   this point is really comprehensive, and although long
+   bullet points are not recommended in general, we need
+   it here for demonstration purposes
+!epop
+
+!bpop
+!bt
+\[ -\nabla^2 u = f \quad\hbox{in }\Omega \]
+!et
+!epop
+
+!eslidecell
+
+!bslidecell 01
+FIGURE: [../doc/slides/fig/broken_pen_and_paper, width=400]
+!eslidecell
+

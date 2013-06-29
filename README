@@ -1,0 +1,57 @@
+Contents:
+=========
+
+A package doconce with a main module doconce.
+Executable scripts: doconce2format, doconce_insertdocstr.
+
+Dependencies:
+=============
+
+If you make use of preprocessor directives in the Doconce source,
+either preprocess (http://code.google.com/p/preprocess) or Mako
+(http://www.makotemplates.org) must be installed.
+
+For LaTeX output you also need http://code.google.com/p/ptex2tex
+(ptex2tex may need certain style files and pygments, depending on
+what type of verbatim format you want to use)
+For reStructuredText output you need http://docutils.sourceforge.net/
+For Sphinx output you need http://sphinx.pocoo.org
+For translation to Pandoc you need http://johnmacfarlane.net/pandoc
+
+Install:
+========
+
+python setup.py install
+
+Documentation:
+==============
+
+pydoc doconce
+
+This short text points to a tutorial and a manual.
+
+Demo:
+=====
+
+The doc/manual and doc/tutorial directories contain a make.sh
+script for creating lots of different format out of a Doconce
+document.
+
+Testing:
+========
+
+cd test; ./test.verify; diff test.v test.r
+(test.r are the reference results)
+
+License:
+========
+
+doconce is licensed under the BSD license, see the included LICENSE file.
+
+The files doc/manual/figs/streamtubes.* and
+doc/manual/figs/wavepacket.* was made by the doconce author and is
+released under the same conditions as doconce.
+
+The file doc/manual/figs/mjolnir.mpeg was made by Dr. Sylfest
+Glimsdal, University of Oslo and is, with his permission, released
+under the same conditions as doconce.

@@ -1,0 +1,999 @@
+#TITLE (actually governed by the filename): Doconce Quick Reference
+
+By '''Hans Petter Langtangen'''
+==== Jun 29, 2013 ====
+
+__TOC__
+
+
+
+'''WARNING: This quick reference is very incomplete!'''
+
+''Mission.''
+Enable writing documentation with much mathematics and
+computer code ''once, in one place'' and include it in traditional LaTeX
+books, thesis, and reports, and without extra efforts also make
+professionally looking web versions with Sphinx or HTML. Other outlets
+include Google's <code>blogger.com</code>, Wikipedia/Wikibooks, IPython
+notebooks, plus a wide variety of formats for documents without
+mathematics and code.
+
+==== Supported Formats ====
+
+Doconce currently translates files to the following formats:
+
+
+<ul>
+ <li> LaTeX (format <code>latex</code> and <code>pdflatex</code>)
+ <li> HTML (format <code>html</code>)
+ <li> reStructuredText (format <code>rst</code>)
+ <li> plain (untagged) ASCII (format <code>plain</code>)
+ <li> Sphinx (format <code>sphinx</code>)
+ <li> IPython notebook (format <code>ipynb</code>)
+ <li> MediaWiki (format <code>mwiki</code>)
+ <li> (Pandoc extended) Markdown (format <code>pandoc</code>)
+ <li> Googlecode wiki (format <code>gwiki</code>)
+ <li> Creoloe wiki (format <code>cwiki</code>)
+ <li> Epydoc (format <code>epydoc</code>)
+ <li> StructuredText (format <code>st</code>)
+</ul>
+
+For documents with much code and mathematics, the best (and most supported)
+formats are <code>latex</code>, <code>pdflatex</code>, <code>sphinx</code>, and <code>html</code>; and to a slightly
+less extent <code>mwiki</code> and <code>pandoc</code>. The HTML format supports blogging on
+Google and Wordpress.
+
+
+==== Emacs syntax support ====
+
+The file [https://doconce.googlecode.com/hg/misc/.doconce-mode.el .doconce-mode.el] in the Doconce source distribution
+gives a "Doconce Editing Mode" in Emacs. Store the file in the home
+directory and add <code>(load-file "~/.doconce-mode.el")</code> to the <code>.emacs</code>
+file.
+
+Besides syntax highlighting of Doconce documents, this Emacs mode
+provides a lot of shortcuts for setting up many elements in a document:
+
+<table border="1">
+<tr><td align="center"><b>             Emacs key              </b></td> <td align="center"><b>               Action               </b></td> </tr>
+<tr><td align="left">   Ctrl+c f                              </td> <td align="left">   figure                                </td> </tr>
+<tr><td align="left">   Ctrl+c v                              </td> <td align="left">   movie/video                           </td> </tr>
+<tr><td align="left">   Ctrl+c h1                             </td> <td align="left">   heading level 1 (section/h1)          </td> </tr>
+<tr><td align="left">   Ctrl+c h2                             </td> <td align="left">   heading level 2 (subsection/h2)       </td> </tr>
+<tr><td align="left">   Ctrl+c h3                             </td> <td align="left">   heading level 2 (subsection/h3)       </td> </tr>
+<tr><td align="left">   Ctrl+c hp                             </td> <td align="left">   heading for paragraph                 </td> </tr>
+<tr><td align="left">   Ctrl+c me                             </td> <td align="left">   math environment: !bt equation !et    </td> </tr>
+<tr><td align="left">   Ctrl+c ma                             </td> <td align="left">   math environment: !bt align !et       </td> </tr>
+<tr><td align="left">   Ctrl+c ce                             </td> <td align="left">   code environment: !bc !ec             </td> </tr>
+<tr><td align="left">   Ctrl+c cf                             </td> <td align="left">   code from file: @@@CODE               </td> </tr>
+<tr><td align="left">   Ctrl+c table2                         </td> <td align="left">   table with 2 columns                  </td> </tr>
+<tr><td align="left">   Ctrl+c table3                         </td> <td align="left">   table with 3 columns                  </td> </tr>
+<tr><td align="left">   Ctrl+c table4                         </td> <td align="left">   table with 4 columns                  </td> </tr>
+<tr><td align="left">   Ctrl+c exer                           </td> <td align="left">   exercise outline                      </td> </tr>
+<tr><td align="left">   Ctrl+c slide                          </td> <td align="left">   slide outline                         </td> </tr>
+<tr><td align="left">   Ctrl+c help                           </td> <td align="left">   print this table                      </td> </tr>
+</table>
+==== Title, Authors, and Date ====
+
+A typical example of giving a title, a set of authors, a date,
+and an optional table of contents
+reads
+<syntaxhighlight lang="text">
+TITLE: On an Ultimate Markup Language
+AUTHOR: H. P. Langtangen at Center for Biomedical Computing, Simula Research Laboratory & Dept. of Informatics, Univ. of Oslo
+AUTHOR: Kaare Dump Email: dump@cyb.space.com at Segfault, Cyberspace Inc.
+AUTHOR: A. Dummy Author
+DATE: today
+TOC: on
+</syntaxhighlight>
+The entire title must appear on a single line.
+The author syntax is
+<syntaxhighlight lang="text">
+name Email: somename@adr.net at institution1 & institution2
+</syntaxhighlight>
+where the email is optional, the "at" keyword is required if one or
+more institutions are to be specified, and the <code>&</code> keyword
+separates the institutions (the keyword <code>and</code> works too).
+Each author specification must appear
+on a single line.
+When more than one author belong to the
+same institution, make sure that the institution is specified in an identical
+way for each author.
+
+The date can be set as any text different from <code>today</code> if not the
+current date is wanted, e.g., <code>Feb 22, 2016</code>.
+
+The table of contents is removed by writing <code>TOC: off</code>.
+
+
+==== Section Types ====
+
+<table border="1">
+<tr><td align="center"><b>                            Section type                           </b></td> <td align="center"><b>                               Syntax                              </b></td> </tr>
+<tr><td align="left">   chapter                                                              </td> <td align="left">   <code>========= Heading ========</code> (9 <code>=</code>)           </td> </tr>
+<tr><td align="left">   section                                                              </td> <td align="left">   <code>======= Heading =======</code>    (7 <code>=</code>)           </td> </tr>
+<tr><td align="left">   subsection                                                           </td> <td align="left">   <code>===== Heading =====</code>        (5 <code>=</code>)           </td> </tr>
+<tr><td align="left">   subsubsection                                                        </td> <td align="left">   <code>=== Heading ===</code>            (3 <code>=</code>)           </td> </tr>
+<tr><td align="left">   paragraph                                                            </td> <td align="left">   <code>__Heading.__</code>               (2 <code>_</code>)           </td> </tr>
+<tr><td align="left">   abstract                                                             </td> <td align="left">   <code>__Abstract.__</code> Running text...                           </td> </tr>
+<tr><td align="left">   appendix                                                             </td> <td align="left">   <code>======= Appendix: heading =======</code> (7 <code>=</code>)    </td> </tr>
+<tr><td align="left">   appendix                                                             </td> <td align="left">   <code>===== Appendix: heading =====</code> (5 <code>=</code>)        </td> </tr>
+<tr><td align="left">   exercise                                                             </td> <td align="left">   <code>======= Exercise: heading =======</code> (7 <code>=</code>)    </td> </tr>
+<tr><td align="left">   exercise                                                             </td> <td align="left">   <code>===== Exercise: heading =====</code> (5 <code>=</code>)        </td> </tr>
+</table>
+Note that abstracts are recognized by starting with <code>__Abstract.__</code> or
+<code>__Summary.__</code> at the beginning of a line and ending with three or
+more <code>=</code> signs of the next heading.
+
+The <code>Exercise:</code> keyword kan be substituted by <code>Problem:</code> or <code>Project:</code>.
+A recommended convention is that an exercise is tied to the text,
+a problem can stand on its own, and a project is a comprehensive
+problem.
+
+==== Inline Formatting ====
+
+Words surrounded by <code>*</code> are emphasized: <code>*emphasized words*</code> becomes
+''emphasized words''. Similarly, an underscore surrounds words that
+appear in boldface: <code>_boldface_</code> becomes '''boldface'''. Colored words
+are also possible: the text
+<syntaxhighlight lang="text">
+`color{red}{two red words}`
+</syntaxhighlight>
+becomes <font color="red">two red words</font>.
+
+==== Lists ====
+
+There are three types of lists: ''bullet lists'', where each item starts
+with <code>*</code>, ''enumeration lists'', where each item starts with <code>o</code> and gets
+consqutive numbers,
+and ''description'' lists, where each item starts with <code>-</code> followed
+by a keyword and a colon.
+<syntaxhighlight lang="text">
+Here is a bullet list:
+
+ * item1
+ * item2
+  * subitem1 of item2
+  * subitem2 of item2
+ * item3
+
+Note that sublists are consistently indented by one or more blanks..
+Here is an enumeration list:
+
+ o item1
+ o item2
+   may appear on
+   multiple lines
+  o subitem1 of item2
+  o subitem2 of item2
+ o item3
+
+And finally a description list:
+
+ - keyword1: followed by
+   some text
+   over multiple
+   lines
+ - keyword2:
+   followed by text on the next line
+ - keyword3: and its description may fit on one line
+</syntaxhighlight>
+The code above follows.
+
+Here is a bullet list:
+
+
+<ul>
+ <li> item1
+ <li> item2
+
+<ul>
+  <li><li> subitem1 of item2
+  <li><li> subitem2 of item2
+</ul>
+
+ <li> item3
+</ul>
+
+Note that sublists are indented.
+Here is an enumeration list:
+
+
+<ol>
+<li> item1
+<li> item2
+   may appear on
+   multiple lines
+
+<ol>
+ <li><li> subitem1 of item2
+ <li><li> subitem2 of item2
+</ol>
+
+<li> item3
+</ol>
+
+And finally a description list:
+
+
+<dl>
+ <dt>keyword1:<dd> 
+   followed by
+   some text
+   over multiple
+   lines
+ <dt>keyword2:<dd> 
+   followed by text on the next line
+ <dt>keyword3:<dd> 
+   and its description may fit on one line
+</dl>
+
+==== Comment lines ====
+
+Lines starting with <code>#</code> are treated as comments in the document and
+translated to the proper syntax for comments in the output
+document. Such comment lines should not appear before LaTeX math
+blocks, verbatim code blocks, or lists if the formats <code>rst</code> and
+<code>sphinx</code> are desired.
+
+Comment lines starting with <code>##</code> are not propagated to the output
+document and can be used for comments that are only interest in
+the Doconce file.
+
+Large portions of text can be left out using Preprocess. Just place
+<code># #ifdef EXTRA</code> and <code># #endif</code> around the text. The command line
+option <code>-DEXTRA</code> will bring the text alive again.
+
+When using the Mako preprocessor one can also place comments in
+the Doconce source file that will be removed by Mako before
+Doconce starts processing the file.
+
+
+==== Inline comments ====
+
+Inline comments meant as messages or notes, to authors during development
+in particular,
+are enabled by the syntax
+<syntaxhighlight lang="text">
+[name: running text]
+</syntaxhighlight>
+where <code>name</code> is the name or ID of an author or reader making the comment,
+and <code>running text</code> is the comment. Here goes an example.
+[hpl 1: There must be a space after the colon,
+but the running text can occupy multiple lines.]
+The inline comments have simple typesetting in most formats, typically boldface
+name and everything surrounded by parenthesis, but with LaTeX
+output and the <code>-DTOTONOTES</code> option to <code>ptex2tex</code> or <code>doconce ptex2tex</code>,
+colorful margin or inline boxes (using the <code>todonotes</code> package)
+make it very easy to spot the comments.
+
+Running
+<syntaxhighlight lang="bash">
+doconce format html mydoc.do.txt --skip_inline_comments
+</syntaxhighlight>
+removes all inline comments from the output. This feature makes it easy
+to turn on and off notes to authors during the development of the document.
+
+All inline comments to readers can also be physically
+removed from the Doconce source by
+<syntaxhighlight lang="bash">
+doconce remove_inline_comments mydoc.do.txt
+</syntaxhighlight>
+
+==== Verbatim/Computer Code ====
+
+Inline verbatim code is typeset within back-ticks, as in
+<syntaxhighlight lang="text">
+Some sentence with `words in verbatim style`.
+</syntaxhighlight>
+resulting in Some sentence with <code>words in verbatim style</code>.
+
+Multi-line blocks of verbatim text, typically computer code, is typeset
+in between <code>!bc xxx</code> and <code>!ec</code> directives, which must appear on the
+beginning of the line. A specification <code>xxx</code> indicates what verbatim
+formatting style that is to be used. Typical values for <code>xxx</code> are
+nothing, <code>cod</code> for a code snippet, <code>pro</code> for a complete program,
+<code>sys</code> for a terminal session, <code>dat</code> for a data file (or output from a
+program),
+<code>Xpro</code> or <code>Xcod</code> for a program or code snipped, respectively,
+in programming <code>X</code>, where <code>X</code> may be <code>py</code> for Python,
+<code>cy</code> for Cython, <code>sh</code> for Bash or other Unix shells,
+<code>f</code> for Fortran, <code>c</code> for C, <code>cpp</code> for C++, <code>m</code> for MATLAB,
+<code>pl</code> for Perl. For output in <code>latex</code> one can let <code>xxx</code> reflect any
+defined verbatim environment in the <code>ptex2tex</code> configuration file
+(<code>.ptex2tex.cfg</code>). For <code>sphinx</code> output one can insert a comment
+<syntaxhighlight lang="text">
+# sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console
+</syntaxhighlight>
+that maps environments (<code>xxx</code>) onto valid language types for
+Pygments (which is what <code>sphinx</code> applies to typeset computer code).
+
+The <code>xxx</code> specifier has only effect for <code>latex</code> and
+<code>sphinx</code> output. All other formats use a fixed monospace font for all
+kinds of verbatim output.
+
+Here is an example of computer code (see the source of this document
+for exact syntax):
+
+<syntaxhighlight lang="python">
+from numpy import sin, cos, exp, pi
+
+def f(x, y, z, t):
+    return exp(-t)*sin(pi*x)*sin(pi*y)*cos(2*pi*z)
+</syntaxhighlight>
+
+<!-- When showing copy from file in !bc envir, indent a character - otherwise -->
+<!-- ptex2tex is confused and starts copying... -->
+Computer code can also be copied from a file:
+<syntaxhighlight lang="text">
+ @@@CODE doconce_program.sh
+ @@@CODE doconce_program.sh  fromto: doconce clean@^doconce split_rst
+ @@@CODE doconce_program.sh  from-to: doconce clean@^doconce split_rst
+</syntaxhighlight>
+The <code>@@@CODE</code> identifier must appear at the very beginning of the line.
+The first specification copies the complete file <code>doconce_program.sh</code>.
+The second specification copies from the first line matching the ''regular
+expression'' <code>doconce clean</code> up to, but not including the line
+matching the ''regular expression'' <code>^doconce split_rst</code>.
+The third specification behaves as the second, but the line matching
+the first regular expression is not copied (aimed at copying
+text between begin-end comment pair in the file).
+
+The copied line from file are in this example put inside <code>!bc shpro</code>
+and <code>!ec</code> directives, if a complete file is copied, while the
+directives become <code>!bc shcod</code> and <code>!ec</code> when a code snippet is copied
+from file. In general, for a filename extension <code>.X</code>, the environment
+becomes <code>!bc Xpro</code> or <code>!bc Xcod</code> for a complete program or snippet,
+respectively. The enivorments (<code>Xcod</code> and <code>Xpro</code>) are only active
+for <code>latex</code> and <code>sphinx</code> outout.
+
+Important warnings:
+
+
+<ul>
+ <li> A code block must come after some plain sentence (at least for successful
+   output in reStructredText), not directly after a section/paragraph heading,
+   table, comment, figure, or movie.
+ <li> Verbatim code blocks inside lists can be ugly typeset in some
+   output formats. A more robust approach is to replace the list by
+   paragraphs with headings.
+</ul>
+
+==== LaTeX Mathematics ====
+
+Doconce supports inline mathematics and blocks of mathematics, using
+standard LaTeX syntax. The output formats <code>html</code>, <code>sphinx</code>, <code>latex</code>,
+pdflatex`, <code>pandoc</code>, and <code>mwiki</code> work with this syntax while all other
+formats will just display the raw LaTeX code.
+
+Inline expressions are written in the standard
+LaTeX way with the mathematics surrounded by dollar signs, as in
+<math>Ax=b</math>. To help increase readability in other formats than <code>sphinx</code>,
+<code>latex</code>, and <code>pdflatex</code>, inline mathematics may have a more human
+readable companion expression. The syntax is like
+<syntaxhighlight lang="text">
+$\sin(\norm{\bf u})$|$sin(||u||)$
+</syntaxhighlight>
+That is, the LaTeX expression appears to the left of a vertical bar (pipe
+symbol) and the more readable expression appears to the right. Both
+expressions are surrounded by dollar signs.
+
+Blocks of LaTeX mathematics are written within
+<code>!bt</code>
+and
+<code>!et</code> (begin/end TeX) directives starting on the beginning of a line:
+
+<syntaxhighlight lang="text">
+!bt
+\begin{align*}
+\nabla\cdot \pmb{u} &= 0,\\ 
+\nabla\times \pmb{u} &= 0.
+\end{align*}
+!et
+</syntaxhighlight>
+
+This LaTeX code gets rendered as
+
+:<math>
+\begin{align*}
+\nabla\cdot \pmb{u} &= 0,\\ 
+\nabla\times \pmb{u} &= 0.
+\end{align*}
+</math>
+Here is a single equation:
+
+<syntaxhighlight lang="text">
+!bt
+\[ \frac{\partial\pmb{u}}{\partial t} + \pmb{u}\cdot\nabla\pmb{u} = 0.\]
+!et
+</syntaxhighlight>
+which results in
+
+:<math>
+ \frac{\partial\pmb{u}}{\partial t} + \pmb{u}\cdot\nabla\pmb{u} = 0.
+</math>
+
+Any LaTeX syntax is accepted, but if output in the <code>sphinx</code>, <code>pandoc</code>,
+<code>mwiki</code>, <code>html</code>, or <code>ipynb</code> formats
+is also important, one should follow these rules:
+
+
+<ul>
+  <li> Use only the equation environments <code>\[</code>, <code>\]</code>,
+    <code>equation</code>, <code>equation*</code>, <code>align</code>, and <code>align*</code>.
+  <li> MediaWiki (<code>mwiki</code>) does not support references to equations.
+</ul>
+
+(Doconce performs extensions to <code>sphinx</code> and other formats such that
+labels in <code>align</code> environments work well.)
+
+
+{{mbox
+| type = notice
+| textstyle = font-size: 90%;
+| text = '''Notice.''' LaTeX supports lots of fancy formatting, for example, multiple
+plots in the same figure, footnotes, margin notes, etc.
+Allowing other output formats, such as <code>sphinx</code>, makes it necessary
+to only utilze very standard LaTeX and avoid, for instance, more than
+one plot per figure. However, one can use preprocessor if-tests on
+the format (typically <code>if FORMAT in ("latex", "pdflatex")</code>) to
+include special code for <code>latex</code> and <code>pdflatex</code> output and more
+straightforward typesetting for other formats. In this way, one can
+also allow advanced LaTeX features and fine tuning of resulting
+PDF document.
+}}
+
+''LaTeX Newcommands.''
+The author can define <code>newcommand</code> statements in files with names
+<code>newcommands*.tex</code>. Such commands should only be used for mathematics
+(other LaTeX constructions are only understood by LaTeX itself).
+The convention is that <code>newcommands_keep.tex</code>
+contains the newcommands that are kept in the document, while
+those in <code>newcommands_replace.tex</code> will be replaced by their full
+LaTeX code. This conventions helps make readable documents in formats
+without LaTeX support. For <code>html</code>, <code>sphinx</code>, <code>latex</code>, <code>pdflatex</code>,
+<code>mwiki</code>, <code>ipynb</code>, and <code>pandoc</code>, the mathematics in newcommands is
+rendered nicely anyway.
+
+
+==== Hyperlinks ====
+
+Links use either a link text or the raw URL:
+
+<syntaxhighlight lang="text">
+Here is some "some link text": "http://some.net/address"
+(as in "search google": "http://google.com")
+or just the raw address: URL: "http://google.com".
+
+Links to files typeset in verbatim mode applies backtics:
+"`myfile.py`": "http://some.net/some/place/myfile.py".
+
+Mail addresses works too: send problems to
+"`hpl@simula.no`": "mailto:hpl@simula.no"
+or just "send mail": "mailto:hpl@simula.no".
+</syntaxhighlight>
+
+==== Figures and Movies ====
+
+Figures and movies have almost equal syntax:
+<syntaxhighlight lang="text">
+FIGURE: [relative/path/to/figurefile, width=500 frac=0.8] Here goes the caption which must be on a single line. label{some:fig:label}
+
+MOVIE: [relative/path/to/moviefile, width=500] Here goes the caption which must be on a single line. label{some:fig:label}
+
+</syntaxhighlight>
+Note three important syntax details:
+
+
+<ol>
+ <li> A mandatory comma after the figure/movie filename,
+ <li> no comments between <code>width</code>, <code>height</code>, and <code>frac</code> and no spaces
+    around the <code>=</code> characters,
+ <li> all of the command must appear on a single line,
+ <li> there must be a blank line after the command.
+</ol>
+
+The figure file can be listed without extension. Doconce will then find
+the version of the file with the most appropriate extension for the chosen
+output format. If not suitable version is found, Doconce will convert
+another format to the needed one.
+
+The caption is optional. If omitted, the figure will be inlined (meaning
+no use of any figure environment in HTML or LaTeX formats). The <code>width</code>
+and <code>height</code> parameters affect HTML formats (<code>html</code>, <code>rst</code>, <code>sphinx</code>),
+while <code>frac</code> is the width of the image as a fraction of the total text
+width in the <code>latex</code> and <code>pdflatex</code> formats.
+
+Movie files can either be a video or a wildcard expression for a
+series of frames. In the latter case, a simple device in an HTML page
+will display the individual frame files as a movie.
+
+Combining several image files into one can be done by the
+<syntaxhighlight lang="bash">
+doconce combine_images image1 image2 ... output_image
+</syntaxhighlight>
+This command applies <code>montage</code> or PDF-based tools to combine the images
+to get the highest quality.
+
+YouTube and Vimeo movies will be embedded in <code>html</code> and <code>sphinx</code> documents
+and otherwise be represented by a link. The syntax is
+
+<syntaxhighlight lang="text">
+MOVIE: [http://www.youtube.com/watch?v=_O7iUiftbKU, width=420 height=315] YouTube movie.
+
+MOVIE: [http://vimeo.com/55562330, width=500 height=278] Vimeo movie.
+
+</syntaxhighlight>
+The latter results in
+
+ Vimeo movie. http://vimeo.com/55562330
+
+
+==== Tables ====
+
+The table in the section [#Section_Types] was written with this
+syntax:
+<syntaxhighlight lang="text">
+|----------------c--------|------------------c--------------------|
+|      Section type       |        Syntax                         |
+|----------------l--------|------------------l--------------------|
+| chapter                 | `========= Heading ========` (9 `=`)  |
+| section                 | `======= Heading =======`    (7 `=`)  |
+| subsection              | `===== Heading =====`        (5 `=`)  |
+| subsubsection           | `=== Heading ===`            (3 `=`)  |
+| paragraph               | `__Heading.__`               (2 `_`)  |
+|-----------------------------------------------------------------|
+</syntaxhighlight>
+
+Note that
+
+
+<ul>
+ <li> Each line begins and ends with a vertical bar (pipe symbol).
+ <li> Column data are separated by a vertical bar (pipe symbol).
+ <li> There may be horizontal rules, i.e., lines with dashes for
+   indicating the heading and the end of the table, and these may
+   contain characters 'c', 'l', or 'r' for how to align headings or
+   columns. The first horizontal rule may indicate how to align
+   headings (center, left, right), and the horizontal rule after the
+   heading line may indicate how to align the data in the columns
+   (center, left, right).
+ <li> If the horizontal rules are without alignment information there should
+   be no vertical bar (pipe symbol) between the columns. Otherwise, such
+   a bar indicates a vertical bar between columns in LaTeX.
+ <li> Many output formats are so primitive that heading and column alignment
+   have no effect.
+</ul>
+
+The command-line option <code>--tables2csv</code> (to <code>doconce format</code>)
+makes Doconce dump each table to CSV format in a file <code>table_X.csv</code>,
+where <code>X</code> is the table number. This feature makes it easy to
+load tables into spreadsheet programs for further analysis.
+
+==== Labels and References ====
+
+The notion of labels and references (as well as bibliography and index)
+is adopted
+from LaTeX with a very similar syntax. As in LaTeX, a label can be
+inserted anywhere, using the syntax
+<syntaxhighlight lang="text">
+label{name}
+</syntaxhighlight>
+with no backslash
+preceding the label keyword. It is common practice to choose <code>name</code>
+as some hierarchical name, say <code>a:b:c</code>, where <code>a</code> and <code>b</code> indicate
+some abbreviations for a section and/or subsection for the topic and
+<code>c</code> is some name for the particular unit that has a label.
+
+A reference to the label <code>name</code> is written as
+<syntaxhighlight lang="text">
+ref{name}
+</syntaxhighlight>
+again with no backslash before <code>ref</code>.
+
+Use labels for sections and equations only, and preceed the reference
+by "Section" or "Chapter", or in case of an equation, surround the
+reference by parenthesis.
+
+
+==== Citations and Bibliography ====
+
+Single citations are written as
+<syntaxhighlight lang="text">
+cite{name}
+</syntaxhighlight>
+where <code>name</code> is a logical name
+of the reference (again, LaTeX writers must not insert a backslash).
+Bibliography citations often have <code>name</code> on the form
+<code>Author1_Author2_YYYY</code>, <code>Author_YYYY</code>, or <code>Author1_etal_YYYY</code>, where
+<code>YYYY</code> is the year of the publication.
+Multiple citations at once is possible by separating the logical names
+by comma:
+<syntaxhighlight lang="text">
+cite{name1,name2,name3}
+</syntaxhighlight>
+
+The bibliography is specified by a line <code>BIBFILE: papers.pub</code>,
+where <code>papers.pub</code> is a publication database in the
+[https://bitbucket.org/logg/publish Publish] format.
+BibTeX <code>.bib</code> files can easily be combined to a Publish database
+(which Doconce needs to create bibliographies in other formats
+than LaTeX).
+
+==== Generalized Citations ====
+
+There is a ''generalized referencing'' feature in Doconce that allows
+a reference with <code>ref</code> to have one formulation if the label is
+in the same document and another formulation if the reference is
+to an item in an external document. This construction makes it easy
+to work with many small, independent documents in parallel with
+a book assembly of some of the small elements.
+The syntax of a generalized reference is
+<syntaxhighlight lang="text">
+ref[internal][cite][external]
+
+# Example:
+As explained in
+ref[Section ref{subsec:ex}][in cite{testdoc:12}][a "section":
+"testdoc.html#___sec2" in the document
+"A Document for Testing Doconce": "testdoc.html" cite{testdoc:12}],
+Doconce documents may include movies.
+</syntaxhighlight>
+The output from a generalized reference is the text <code>internal</code> if all
+<code>label</code> references in <code>internal</code> are references to labels in the
+present document. Otherwise, if cite is non-empty and the format is
+<code>latex</code> or <code>pdflatex</code> one assumes that the references in <code>internal</code>
+are to external documents declared by a comment line <code>#
+Externaldocuments: testdoc, mydoc</code> (usually after the title, authors,
+and date). In this case the output text is <code>internal cite</code> and the
+LaTeX package <code>xr</code> is used to handle the labels in the external
+documents.  If none of the two situations above applies, the
+<code>external</code> text will be the output.
+
+==== Index of Keywords ====
+
+Doconce supports creating an index of keywords. A certain keyword
+is registered for the index by a syntax like (no
+backslash!)
+<syntaxhighlight lang="text">
+index{name}
+</syntaxhighlight>
+It is recommended to place any index of this type outside
+running text, i.e., after (sub)section titles and in the space between
+paragraphs. Index specifications placed right before paragraphs also
+gives the doconce source code an indication of the content in the
+forthcoming text. The index is only produced for the <code>latex</code>,
+<code>pdflatex</code>, <code>rst</code>, and <code>sphinx</code> formats.
+
+==== Capabilities of The Program <code>doconce</code> ====
+
+The <code>doconce</code> program can be used for a number of purposes besides
+transforming a <code>.do.txt</code> file to some format. Here is the
+list of capabilities:
+
+<syntaxhighlight lang="bash">
+Usage: doconce command [optional arguments]
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex expand_commands combine_images guess_encoding change_encoding gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+
+
+# transform doconce file to another format
+doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwiki|cwiki|pandoc|st|epytext file.do.txt
+
+# substitute a phrase by another using regular expressions
+doconce subst [-s -m -x --restore] regex-pattern regex-replacement file1 file2 ...
+(-s is the re.DOTALL modifier, -m is the re.MULTILINE modifier,
+ -x is the re.VERBOSE modifier, --restore copies backup files back again)
+
+# replace a phrase by another literally
+doconce replace from-text to-text file1 file2 ...
+(exact text substutition)
+
+# doconce replace using from and to phrases from file
+doconce replace_from_file file-with-from-to file1 file2 ...
+(exact text substitution, but a set of from-to relations)
+
+# gwiki format requires substitution of figure file names by URLs
+doconce gwiki_figsubst file.gwiki URL-of-fig-dir
+
+# remove all inline comments in a doconce file
+doconce remove_inline_comments file.do.txt
+
+# create a directory for the sphinx format
+doconce sphinx_dir author='John Doe' title='Long title' \
+    short_title="Short title" version=0.1 \
+    dirname=sphinx-rootdir theme=default logo=mylogo.png \
+    do_file [do_file2 do_file3 ...]
+(requires sphinx version >= 1.1)
+
+# replace latex-1 (non-ascii) characters by html codes
+doconce latin2html file.html
+
+# walk through a directory tree and insert doconce files as
+# docstrings in *.p.py files
+doconce insertdocstr rootdir
+
+# remove all files that the doconce format can regenerate
+doconce clean
+
+# print the header (preamble) for latex file
+doconce latex_header
+
+# print the footer for latex files
+doconce latex_footer
+
+# change encoding
+doconce change_encoding utf-8 latin1 filename
+
+# guess the encoding in a text
+doconce guess_encoding filename
+
+# transform a .bbl file to a .rst file with reST bibliography format
+doconce bbl2rst file.bbl
+
+# split a sphinx/rst file into parts
+doconce format sphinx complete_file
+doconce split_rst complete_file        # !split delimiters
+doconce sphinx_dir complete_file
+python automake_sphinx.py
+
+# edit URLs to local files and place them in _static
+doconce sphinxfix_local_URLs file.rst
+
+# split an html file into parts according to !split commands
+doconce split_html complete_file.html
+
+# create HTML slides from a (doconce) html file
+doconce slides_html slide_type complete_file.html
+
+# create LaTeX Beamer slides from a (doconce) latex/pdflatex file
+doconce slides_beamer complete_file.tex
+
+# replace bullets in lists by colored bullets
+doconce html_colorbullets file1.html file2.html ...
+
+# grab selected text from a file
+doconce grab   --from[-] from-text [--to[-] to-text] somefile
+
+# remove selected text from a file
+doconce remove --from[-] from-text [--to[-] to-text] somefile
+
+# run spellcheck on a set of files
+doconce spellcheck [-d .mydict.txt] *.do.txt
+
+# transform ptex2tex files (.p.tex) to ordinary latex file
+# and manage the code environments
+doconce ptex2tex mydoc -DMINTED pycod=minted sys=Verbatim \
+        dat=\begin{quote}\begin{verbatim};\end{verbatim}\end{quote}
+
+# make HTML file via pandoc from Markdown (.md) file
+doconce md2html file
+
+# make LaTeX file via pandoc from Markdown (.md) file
+doconce md2latex file
+
+# expand short cut commands to full form in files
+doconce expand_commands file1 file2 ...
+
+# combine several images into one
+doconce combine_images image1 image2 ... output_file
+
+# insert a table of exercises in a latex file myfile.p.tex
+doconce latex_exercise_toc myfile
+
+# list all labels in a document (for purposes of cleaning them up)
+doconce list_labels myfile
+
+# translate a latex document to doconce (requires usually manual fixing)
+doconce latex2doconce latexfile
+
+# check if there are problems with translating latex to doconce
+doconce latex_dislikes latexfile
+
+# typeset a doconce document with pygments (for pretty print of doconce itself)
+doconce pygmentize myfile [pygments-style]
+
+# generate a make.sh script for translating a doconce file to various formats
+doconce makefile docname doconcefile [html sphinx pdflatex ...]
+
+# fix common problems in bibtex files for publish import
+doconce fix_bibtex4publish file1.bib file2.bib ...
+
+# find differences between two files
+doconce diff file1.do.txt file2.do.txt [diffprog]
+(diffprog can be difflib, diff, pdiff, latexdiff, kdiff3, diffuse, ...)
+
+# find differences between the last two Git versions of several files
+doconce gitdiff file1 file2 file3 ...
+
+# convert csv file to doconce table format
+doconce csv2table somefile.csv
+</syntaxhighlight>
+
+==== Exercises ====
+
+Doconce supports ''Exercise'', ''Problem'', ''Project'', and ''Example''.
+These are typeset
+as ordinary sections and referred to by their section labels.
+Exercise, problem, project, or example sections contains certain ''elements'':
+
+
+<ul>
+  <li> a headline at the level of a subsection
+    containing one of the words "Exercise:", "Problem:",
+    "Project:", or "Example:", followed by a title (required)
+  <li> a label (optional)
+  <li> a solution file (optional)
+  <li> name of file with a student solution (optional)
+  <li> main exercise text (required)
+  <li> a short answer (optional)
+  <li> a full solution (optional)
+  <li> one or more hints (optional)
+  <li> one or more subexercises (subproblems, subprojects), which can also
+    contain a text, a short answer, a full solution, name student file
+    to be handed in, and one or more hints (optional)
+</ul>
+
+A typical sketch of a a problem without subexercises goes as follows:
+<syntaxhighlight lang="text">
+===== Problem: Derive the Formula for the Area of an Ellipse =====
+label{problem:ellipsearea1}
+file=ellipse_area.pdf
+solution=ellipse_area1_sol.pdf
+
+Derive an expression for the area of an ellipse by integrating
+the area under a curve that defines half of the allipse.
+Show each step in the mathematical derivation.
+
+!bhint
+Wikipedia has the formula for the curve.
+!ehint
+
+!bhint
+"Wolframalpha": "http://wolframalpha.com" can perhaps
+compute the integral.
+!ehint
+</syntaxhighlight>
+If the exercise type (Exercise, Problem, Project, or Example)
+is enclosed in braces, the type is left out of the title in the
+output. For example, the if the title line above reads
+
+<syntaxhighlight lang="text">
+===== {Problem}: Derive the Formula for the Area of an Ellipse =====
+</syntaxhighlight>
+the title becomes just "Derive the ...".
+
+An exercise with subproblems, answers and full solutions has this
+setup-up:
+
+<syntaxhighlight lang="text">
+===== Exercise: Determine the Distance to the Moon =====
+label{exer:moondist}
+
+Intro to this exercise. Questions are in subexercises below.
+
+!bsubex
+Subexercises are numbered a), b), etc.
+
+file=subexer_a.pdf
+
+!bans
+Short answer to subexercise a).
+!eans
+
+!bhint
+First hint to subexercise a).
+!ehint
+
+!bhint
+Second hint to subexercise a).
+!ehint
+!esubex
+
+!bsubex
+Here goes the text for subexercise b).
+
+file=subexer_b.pdf
+
+!bhint
+A hint for this subexercise.
+!ehint
+
+!bsol
+Here goes the solution of this subexercise.
+!esol
+!esubex
+
+!bremarks
+At the very end of the exercise it may be appropriate to summarize
+and give some perspectives. The text inside the !bremarks-!eremarks
+directives is always typeset at the end of the exercise.
+!eremarks
+
+!bsol
+Here goes a full solution of the whole exercise.
+!esol
+
+</syntaxhighlight>
+By default, answers, solutions, and hints are typeset as paragraphs.
+The command-line arguments <code>--without_answers</code> and <code>--without_solutions</code>
+turn off output of answers and solutions, respectively, except for
+examples.
+
+
+==== Environments ====
+
+Doconce environments start with <code>!benvirname</code> and end with <code>!eenvirname</code>,
+where <code>envirname</code> is the name of the environment. Here is a listing of
+the environments:
+
+
+<ul>
+ <li> <code>c</code>: computer code (or verbatim text)
+ <li> <code>t</code>: math blocks with LaTeX syntax
+ <li> <code>subex</code>: sub-exercise
+ <li> <code>ans</code>: short answer to exercise or sub-exercise
+ <li> <code>sol</code>: full solution to exercise or sub-exercise
+ <li> <code>quote</code>: indented text
+ <li> <code>notice</code>, <code>summary</code>, <code>warning</code>, <code>question</code>, <code>hint</code>: admonition boxes with
+    custom title, special icon, and (frequently) background color
+ <li> <code>pop</code>: text to gradually pop up in slide presentations
+ <li> <code>slidecell</code>: indication of cells in a grid layout for elements on a
+   slide
+</ul>
+
+==== Preprocessing ====
+
+Doconce documents may utilize a preprocessor, either <code>preprocess</code> and/or
+<code>mako</code>. The former is a C-style preprocessor that allows if-tests
+and including other files (but not macros with arguments).
+The <code>mako</code> preprocessor is much more advanced - it is actually a full
+programming language, very similar to Python.
+
+The command <code>doconce format</code> first runs <code>preprocess</code> and then <code>mako</code>.
+Here is a typical example on utilizing <code>preprocess</code> to include another
+document, "comment out" a large portion of text, and to write format-specific
+constructions:
+
+<syntaxhighlight lang="text">
+# #include "myotherdoc.do.txt"
+
+# #if FORMAT in ("latex", "pdflatex")
+\begin{table}
+\caption{Some words... label{mytab}}
+\begin{tabular}{lrr}
+\hline\noalign{\smallskip}
+\multicolumn{1}{c}{time} & \multicolumn{1}{c}{velocity} & \multicolumn{1}{c}{acceleration} \\ 
+\hline
+0.0          & 1.4186       & -5.01        \\ 
+2.0          & 1.376512     & 11.919       \\ 
+4.0          & 1.1E+1       & 14.717624    \\ 
+\hline
+\end{tabular}
+\end{table}
+# #else
+  |--------------------------------|
+  |time  | velocity | acceleration |
+  |--l--------r-----------r--------|
+  | 0.0  | 1.4186   | -5.01        |
+  | 2.0  | 1.376512 | 11.919       |
+  | 4.0  | 1.1E+1   | 14.717624    |
+  |--------------------------------|
+# #endif
+
+# #ifdef EXTRA_MATERIAL
+....large portions of text...
+# #endif
+</syntaxhighlight>
+
+With the <code>mako</code> preprocessor the if-else tests have slightly different syntax.
+An [http://hplgit.github.com/bioinf-py/ example document] contains
+some illustrations on how to utilize <code>mako</code> (clone the GitHub project and
+examine the Doconce source and the <code>doc/src/make.sh</code> script).
+
+==== Resources ====
+
+<ul>
+ <li> Excellent "Sphinx Tutorial" by C. Reller: "http://people.ee.ethz.ch/~creller/web/tricks/reST.html"
+</ul>
+
+

@@ -1,0 +1,20 @@
+
+.. Master file automatically created by doconce sphinx_dir
+
+Doconce: Document Once, Include Anywhere
+========================================
+
+Contents:
+
+.. toctree::
+   :maxdepth: 2
+
+   tutorial
+
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`

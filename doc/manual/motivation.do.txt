@@ -1,0 +1,236 @@
+======= Motivation: Problems with Documenting Software =======
+idx{doconce!motivation}
+
+__Duplicated Information.__ It is common to write some software
+documentation in the code (doc strings in Python, doxygen in C++,
+javadoc in Java) while similar documentation is often also included in
+a LaTeX or HTML manual or tutorial. Although the various types of
+documentation may start out to be the same, different physical files
+must be used since very different tagging is required for different
+output formats. Over time the duplicated information starts to
+diverge. Severe problems with such unsynchronized documentation was
+one motivation for developing the Doconce concept and tool.
+
+__Tagging Issues in Python Documentation.__ A problem with doc
+strings in Python is that they benefit greatly from some tagging,
+Epytext or reStructuredText, when transformed to HTML or PDF
+manuals. However, such tagging looks annoying in Pydoc, which just
+shows the pure doc string. For Pydoc we should have more minimal (or
+no) tagging (students and newbies are in particular annoyed by any
+unfamiliar tagging of ASCII text). On the contrary, manuals or
+tutorials in HTML and LaTeX need quite much tagging.
+
+__Solution.__ Accurate information is crucial and can only be
+maintained in a *single physical* place (file), which must be
+converted (filtered) to suitable formats and included in various
+documents (HTML/LaTeX manuals/tutorials, Pydoc/Epydoc/HappyDoc
+reference manuals).
+
+__A Common Format.__ There is no existing format and associated
+conversion tools that allow a "singleton" documentation file to be
+filtered to LaTeX, HTML, XML, PDF, Epydoc, HappyDoc, Pydoc, *and* plain
+untagged text. As we are involved with mathematical software, the
+LaTeX manuals should have nicely typeset mathematics, while Pydoc,
+Epydoc, and HappyDoc must show LaTeX math in verbatim mode.
+Unfortunately, Epytext is annoyed by even very simple LaTeX math (also
+in verbatim environments). To summarize, we need
+
+  o A minimally tagged markup language with full support for 
+    for mathematics and verbatim computer code.
+
+  o Filters for producing highly tagged formats (LaTeX, HTML, XML),
+    medium tagged formats (reStructuredText, Epytext), and plain
+    text with completely invivisble tagging. 
+
+  o Tools for inserting appropriately filtered versions of a "singleton"
+    documentation file in other documents (manuals, tutorials, doc strings).
+
+One answer to these points is the Doconce markup language, its
+associated tools, and a "C-style preprocessor tool":
+"http://code.google.com/p/preprocess" or the "Mako template system":
+"http://www.makotemplates.org/".  Then we can *write once, include
+anywhere*!  And what we write is close to plain ASCII text.
+
+But isn't reStructuredText exactly the format that fulfills the needs
+above? Yes and no. Yes, because reStructuredText can be filtered to a
+lot of the mentioned formats. No, because of the reasons listed
+in Section ref{what:is:doconce}, but perhaps the strongest feature
+of Doconce is that it integrates well with LaTeX: Large LaTeX documents (book)
+can be made of many smaller Doconce units, typically describing examples
+and computer codes, glued with mathematical pieces written entirely
+in LaTeX and with heavy cross-referencing of equations, as is usual
+in mathematical texts. All the Doconce units can then be available
+also as stand-alone examples in wikis or Sphinx pages and thereby used
+in other occasions (including software documentation and teaching material).
+This is a promising way of composing future books of units that can
+be reused in many contexts and formats, currently being explored by
+the Doconce maintainer.
+
+A final warning may be necessary: The Doconce format is a minimalistic
+formatting language. It is ideal when you start a new project when you
+are uncertain about which format to choose. At some later stage, when
+you need quite some sophisticated formatting and layout, you can
+perform the final filtering of Doconce into something more appropriate
+for future demands. The convenient thing is that the format decision
+can be posponed (maybe forever - which is the common experience of the
+Doconce developer).
+
+===== The Doconce Software Documentation Strategy ===== 
+label{doconce:strategy}
+
+   * Write software documentation, both tutorials and manuals, in
+     the Doconce format. Use many files - and never duplicate information!
+
+   * Use `#include` statements in source code (especially in doc
+     strings) and in LaTeX documents for including documentation
+     files.  These documentation files must be filtered to an
+     appropriate format by the program `doconce` before being
+     included. In a Python context, this means plain text for computer
+     source code (and Pydoc); Epytext for Epydoc API documentation, or
+     the Sphinx dialect of reStructuredText for Sphinx API
+     documentation; LaTeX for LaTeX manuals; and possibly
+     reStructuredText for XML, Docbook, OpenOffice, RTF, Word.
+
+   * Run the preprocessor `preprocess` on the files to produce native
+     files for pure computer code and for various other documents.
+
+Consider an example involving a Python module in a `basename.p.py` file.
+The `.p.py` extension identifies this as a file that has to be
+preprocessed) by the `preprocess` program. 
+In a doc string in `basename.p.py` we do a preprocessor include
+in a comment line, say (use triple quotes in the doc string in case
+the `doc1` documentation includes code snippets with doc strings
+with the usual triple double quotes): `#  #include docstrings/doc1.dst.txt`.
+The file `docstrings/doc1.dst.txt` is a file filtered to a specific format
+(typically plain text, reStructedText, or Epytext) from an original
+"singleton" documentation file named `docstrings/doc1.do.txt`. The `.dst.txt`
+is the extension of a file filtered ready for being included in a doc
+string (`d` for doc, `st` for string).
+
+For making an Epydoc manual, the `docstrings/doc1.do.txt` file is
+filtered to `docstrings/doc1.epytext` and renamed to
+`docstrings/doc1.dst.txt`.  Then we run the preprocessor on the
+`basename.p.py` file and create a real Python file
+`basename.py`. Finally, we run Epydoc on this file. Alternatively, and
+nowadays preferably, we use Sphinx for API documentation and then the
+Doconce `docstrings/doc1.do.txt` file is filtered to
+`docstrings/doc1.rst` and renamed to `docstrings/doc1.dst.txt`. A
+Sphinx directory must have been made with the right `index.rst` and
+`conf.py` files. Going to this directory and typing `make html` makes
+the HTML version of the Sphinx API documentation.
+
+The next step is to produce the final pure Python source code. For
+this purpose we filter `docstrings/doc1.do.txt` to plain text format
+(`docstrings/doc1.txt`) and rename to `docstrings/doc1.dst.txt`. The
+preprocessor transforms the `basename.p.py` file to a standard Python
+file `basename.py`. The doc strings are now in plain text and well
+suited for Pydoc or reading by humans. All these steps are automated
+by the `insertdocstr.py` script.  Here are the corresponding Unix
+commands:
+
+!bc sys
+# make Epydoc API manual of basename module:
+cd docstrings
+doconce format epytext doc1.do.txt
+mv doc1.epytext doc1.dst.txt
+cd ..
+preprocess basename.p.py > basename.py
+epydoc basename
+
+# make Sphinx API manual of basename module:
+cd doc
+doconce format sphinx doc1.do.txt
+mv doc1.rst doc1.dst.txt
+cd ..
+preprocess basename.p.py > basename.py
+cd docstrings/sphinx-rootdir  # sphinx directory for API source
+make clean
+make html
+cd ../..
+
+# make ordinary Python module files with doc strings:
+cd docstrings
+doconce format plain doc1.do.txt
+mv doc1.txt doc1.dst.txt
+cd ..
+preprocess basename.p.py > basename.py
+
+# can automate inserting doc strings in all .p.py files:
+insertdocstr.py plain .
+# (runs through all .do.txt files and filters them to plain format and
+# renames to .dst.txt extension, then the script runs through all 
+# .p.py files and runs the preprocessor, which includes the .dst.txt
+# files)
+!ec
+
+
+===== Why Yet Another Minimally Tagged Markup Language? ===== 
+label{why:another:markup}
+
+The Python community has already produced two successful, ASCII-based
+markup languages with a modest amount of tagging:
+http://docutils.sourceforge.net/rst.html<reStructuredText> (part of
+the http://www.docutils.org<Docutils package>) and Epytext (part of
+http://epydoc.sourceforge.net/<Epydoc for Python APIs>).  The
+http://sphinx.pocoo.org<Sphinx documentation system>, now being the
+standard Python documentation system, builds on reStructuredText.
+http://www.pault.com/xmlalternatives.html<Other minimum-tagged markup languages do also exist>. So why is Doconce needed?
+
+  - Simplicity:
+    Doconce supports only a handful of formatting constructions and
+    is therefore simpler than Epytext and reStructuredText.
+    Consequently, the latter two are more flexible. However,
+    their parsing modules are also much more complex, and it is
+    an order of magnitude simpler to add support for a new format
+    in Doconce than in most other markup languages. 
+
+    The simple Doconce format is less cluttered and easier 
+    to read than more flexible and advanced ASCII-based markup languages,
+    such as reStructuredText. Many who receive close-to-plain ASCII
+    text in email tend to be annoyed by the tagging and may remove tags
+    and clean up the text.
+
+  - Flexibility:
+    Epydoc and Sphinx produce complete module/package documentation.
+    Doconce can work with small pieces of documentation, e.g.,
+    module doc strings to be filtered to and used by Epydoc or Sphinx, and
+    also included in a LaTeX thesis or a Word document.
+
+  - Math:
+    Doconce supports inline mathematical expressions and blocks
+    of mathematical LaTeX code. (Epytext is easily fooled by TeX
+    code with the backslashes and gives lots of error messages
+    even if the code block is to be typeset in varbatim mode.) 
+
+  - Clean output:
+    The LaTeX output of Doconce was much cleaner than the source produced by
+    reStructuredText at the time Doconce was constructed. TThis may be important if a book or manual in
+    LaTeX is to be built from some building blocks in a more general
+    format and the LaTeX output needs some tweeking before it can
+    qualify for a book/manual context. Typically, one wants parts of
+    the book/manual to be available in several formats, e.g., through
+    Sphinx. Doconce may then be a better source for these building
+    blocks than reStructuredText.
+
+  - More formats:
+    Doconce can currently be translated to HTML, LaTeX, reStructuredText,
+    Sphinx, StructuredText, Epytext, Wiki, and (important!) plain 
+    "untagged" ASCII. 
+
+    When Doconce is transformed to reStructuredText, the text can
+    further be transformed to HTML, LaTeX, and XML.  The
+    reStructuredText support for Docbook, RTF, and OpenOffice is under
+    development. Doconce can also be transformed to Epytext or Sphinx
+    for formatting of API documentation of Python modules, or to
+    StructuredText used by the older HappyDoc tool for API
+    documentation.  The plain untagged ASCII text is very suitable for
+    online manuals intended to be read in terminal windows, or for
+    emails.  Especially for emails, plain untagged text handy since
+    many who are unfamiliar with, e.g., reStructuredText may to be
+    annoyed by the tagging and even start "correcting" the text.
+
+    A page of code, containing definitions of how emphasized text, 
+    verbatim text, lists, etc. are rendered, is all you need to 
+    implement a new format.
+    (Everything except lists are parsed by regular expressions in Doconce.)
+

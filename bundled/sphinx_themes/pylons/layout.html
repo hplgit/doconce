@@ -1,0 +1,59 @@
+{% extends "basic/layout.html" %}
+
+{%- block extrahead %}
+<link rel="stylesheet" href="https://static.pylonsproject.org/fonts/nobile/stylesheet.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="https://static.pylonsproject.org/fonts/neuton/stylesheet.css" type="text/css" media="screen" charset="utf-8" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="{{ pathto('_static/ie6.css', 1) }}" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+{%- if theme_favicon %}
+<link rel="shortcut icon" href="{{ pathto('_static/'+theme_favicon, 1) }}"/>
+{%- endif %}
+{% endblock %}
+
+{% block header %}
+
+{% if theme_in_progress|tobool %}
+<img style="position: fixed; display: block; width: 165px; height: 165px; bottom: 60px; right: 0; border: 0;" src="{{ pathto('_static/in_progress.png', 1) }}" alt="Documentation in progress"></a>
+{% endif %}
+
+{% if theme_github_url %}
+<a href="{{ theme_github_url }}"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://d3nwyuy0nl342s.cloudfront.net/img/7afbc8b248c68eb468279e8c17986ad46549fb71/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub"></a>
+{% endif %}
+
+<div class="header-small">
+	{%- if theme_logo %}
+	{% set img, ext = theme_logo.split('.', -1) %}
+	<div class="logo-small">
+		<a href="{{ pathto(master_doc) }}">
+      		<img class="logo" src="{{ pathto('_static/%s-small.%s' % (img, ext), 1)}}" alt="Logo"/>
+		</a>
+  	</div>
+  	{%- endif %}
+</div>
+{% endblock %}
+
+{%- macro relbar() %}
+<div class="related">
+	<h3>{{ _('Navigation') }}</h3>
+	<ul>
+		{%- for rellink in rellinks %}
+		<li class="right" {% if loop.first %}style="margin-right: 10px"{% endif %}>
+			<a href="{{ pathto(rellink[0]) }}" title="{{ rellink[1]|striptags|e }}"
+			{{ accesskey(rellink[2]) }}>{{ rellink[3] }}</a>
+			{%- if not loop.first %}{{ reldelim2 }}{% endif %}
+		</li>
+		{%- endfor %}
+    	{%- block rootrellink %}
+    	<li><a href="{{ pathto(master_doc) }}">{{ docstitle|e }}</a>{{ reldelim1 }}</li>
+    	{%- endblock %}
+    	{%- for parent in parents %}
+          <li><a href="{{ parent.link|e }}" {% if loop.last %}{{ accesskey("U") }}{% endif %}>{{ parent.title }}</a>{{ reldelim1 }}</li>
+        {%- endfor %}
+        {%- block relbaritems %} {% endblock %}
+  	</ul>
+</div>
+{%- endmacro %}
+
+{%- block sidebarlogo %}{%- endblock %}
+{%- block sidebarsourcelink %}{%- endblock %}

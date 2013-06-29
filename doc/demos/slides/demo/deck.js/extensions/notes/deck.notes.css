@@ -1,0 +1,12 @@
+.notes {
+  position:absolute;
+  z-index:1000;
+  background: black;
+  color: white;
+  opacity :0.8;
+  width : 80%;
+  height : 80%;
+  top: 100px;
+  left: 100px;
+  float: right;
+}
