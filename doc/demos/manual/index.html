@@ -1,0 +1,48 @@
+<HTML><BODY>
+<TITLE>Demo of Doconce formats</TITLE>
+<H3>Doconce demo</H3>
+
+Doconce is a minimum tagged markup language. The file
+<a href="manual.do.txt">manual.do.txt</a> is the source of
+a Doconce Description, written in the Doconce format.
+Running
+<pre>
+doconce format html manual.do.txt
+</pre>
+produces the HTML file <a href="manual.html">manual.html</a>.
+(Note that on <tt>code.google.com</tt> the LaTeX mathematics
+is not rendered properly with MathJax, so the mathematics looks
+ugly!)
+<p>
+Going from Doconce to LaTeX is done by
+<pre>
+doconce format latex manual.do.txt
+</pre>
+resulting in the file <a href="manual.tex">manual.tex</a>, which can
+be compiled to a PDF file <a href="manual.pdf">manual.pdf</a>
+by running <tt>latex</tt> and <tt>dvipdf</tt> the standard way.
+<p>
+The reStructuredText (reST) format is of particular interest:
+<pre>
+doconce format rst    manual.do.txt  # standard reST
+doconce format sphinx manual.do.txt  # Sphinx extension of reST
+</pre>
+The reST file <a href="manual.rst">manual.rst</a> is a starting point
+for conversion to many other formats: OpenOffice,
+<a href="manual.xml">XML</a>, <a href="manual.rst.html">HTML</a>,
+<a href="manual.rst.tex">LaTeX</a>,
+and from LaTeX to <a href="manual.rst.pdf">PDF</a>.
+The <a href="manual.sphinx.rst">Sphinx</a> dialect of reST
+can be translated to <a href="manual.sphinx.pdf">PDF</a>
+and <a href="html/index.html">HTML</a>.
+<p>
+Doconce can also be converted to
+<a href="manual.gwiki">Googlecode wiki</a>,
+<a href="manual.cwiki">Creole wiki</a>,
+<a href="manual.mwiki">MediaWiki</a>,
+<a href="manual.md">Markdown</a> (Pandoc extended version),
+<a href="manual.epytext">Epytext</a>,
+and maybe the most important format of all:
+<a href="manual.txt">plain untagged ASCII text</a>.
+</BODY>
+</HTML>

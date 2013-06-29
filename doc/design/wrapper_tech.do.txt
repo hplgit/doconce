@@ -1,0 +1,392 @@
+TITLE: How to Wrap Plain HTML Files with an Available Look and Feel
+AUTHOR: Hans Petter Langtangen at Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo
+DATE: today
+
+# URL to this page:
+# https://doconce.googlecode.com/hg/doc/design/wrapper_tech.html
+
+========= Problem setting =========
+
+ o You need to write web pages, say for a course, and want to have
+   complete control of the core text in a plain text editor without
+   paying attention to fancy layouts.
+ o There might be many pages, often developing dynamically over time,
+   linked to a potentially large number of files (images, computer codes,
+   lecture notes, exercises, etc.).
+   This author also has a lot of mathematics and computer code
+   in these pages.
+ o You will (of course) have full version control of the files with the
+   core content and publish the latest version of all files with one command.
+ o However, the web pages should appear with a prescribed look and feel
+   because your host institution requires so.
+ o The look and feel is automatically obtained if you write your
+   web pages with particular web-based tools, but this tedious and
+   boring, happens without version control, has no support for
+   nicely typeset mathematics and computer code, and most
+   importantly: the approach does not scale with a lot of files!
+ o You would like your pages to live on a 24/7 available server *you*
+   have chosen, e.g.,
+   "GitHub": "http://github.com", "Bitbucket": "http://bitbucket.org",
+   "Googlecode": "http://code.google.com", or similar.
+
+In short, you would like to write something close to standard LaTeX,
+but get it published on the web with your institution's look and
+feel. This document tells you how to do that and minimize the fuzz
+with layouts.
+
+
+========= Solution =========
+
+===== Step 1: Use Doconce to generate text =====
+
+We shall in this document use "Doconce": "http://code.google.com/p/doconce"
+for writing the core text. Doconce looks like plain text, with just a
+few tags for enabling full LaTeX mathematics and nicely typeset
+computer code. From Doconce you can go to plain LaTeX, pdfLaTeX,
+Sphinx, HTML, Markdown, and MediaWiki, to mention some good formats
+that support LaTeX mathematics and nice computer code. (If you do not
+have code and math, it is easy to go to MS Word, XML, DocBook, and
+numerous other formats too.) From a Doconce text it is also trivial
+to generate slides.
+
+===== Step 2: Write the core text =====
+
+Write the core text, here an "exercise with some math and code":
+"mydoc_plain_pygmentized.html" stored in a file `mydoc.do.txt`:
+
+!bc
+DATE: today
+
+======= Solve the world's simplest differential equation =======
+
+===== Mathematical problem =====
+
+This exercise addresses the differential equation problem
+
+|bt
+\begin{align}
+u'(t) &= -au(t), \quad t \in (0,T], label{ode}\\
+u(0)  &= I,                         label{initial:value}
+\end{align}
+|et
+where $a$, $I$, and $T$ are prescribed constant parameters, and $u(t)$ is
+the unknown function to be estimated. This mathematical model
+is relevant for physical phenomena featuring exponential decay
+in time.
+
+===== Numerical solution method =====
+
+Derive the $\theta$-rule scheme for solving (ref{ode}) numerically
+with time step $\Delta t$:
+
+|bt
+\[
+u^{n+1} = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}u^n,
+\]
+|et
+Here, $n=0,1,\ldots,N-1$.
+
+!bhint
+Set up the Forward Euler, Backward Euler, and the Crank-Nicolson (or
+Midpoint) schemes first. Then generalize to the $\theta$-rule above.
+!ehint
+
+===== Implementation =====
+
+The numerical method is implemented in a Python function
+`solver` (found in the "`decay_mod`":
+"https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py" module):
+
+|bc pycod
+from numpy import linspace, zeros
+
+def solver(I, a, T, dt, theta):
+    """Solve u'=-a*u, u(0)=I, for t in (0,T] with steps of dt."""
+    dt = float(dt)           # avoid integer division
+    N = int(round(T/dt))     # no of time intervals
+    T = N*dt                 # adjust T to fit time step dt
+    u = zeros(N+1)           # array of u[n] values
+    t = linspace(0, T, N+1)  # time mesh
+
+    u[0] = I                 # assign initial condition
+    for n in range(0, N):    # n=0,1,...,N-1
+        u[n+1] = (1 - (1-theta)*a*dt)/(1 + theta*dt*a)*u[n]
+    return u, t
+|ec
+
+===== Numerical experiments =====
+
+Fix the values of where $I$, $a$, and $T$.
+Then vary $\Delta t$ for $\theta=0,1/2,1$.
+Illustrate that if $\Delta t$ is not sufficiently small,
+$\theta=0$ and $\theta=1/2$ can give non-physical solutions
+(more precisely, oscillating solutions).
+
+Perform experiments and determine empirically the convergence
+rate for $\theta=0,1/2,1$.
+!ec
+
+When the title in a Doconce document (`TITLE: ...`) is missing or
+commented out (`#TITLE:`), no HTML header and footer are generated,
+which is important when embedding the HTML code in a template file
+later.
+
+===== Step 3: Inspect the HTML page =====
+
+Check the default layout of your HTML page by translating the
+Doconce file to HTML:
+
+!bc sys
+doconce format html mydoc
+google-chrome mydoc.html
+!ec
+The page is rendered with the "default HTML style": "mydoc_plain_pygmentized.html" as seen in the figure below (or "in the file itself": "mydoc_plain.html"):
+
+FIGURE: [fig/plain_html.png, width=900]
+
+===== Step 4: Find some web page and make a template =====
+
+When you see a design of a web page that you would like to adopt,
+view the source code (all browsers have a menu choice for doing this)
+and store it on file. To proceed you need to know some basic HTML.
+
+ o Identify where the main body of text is. Remove this text and
+   insert `%(main)s` instead. This is a tag that will be replaced
+   by the HTML code of the core text you had in `mydoc.do.txt`.
+   (The HTML code of the web page is viewed as a text string in
+   Python and `%(main)s` is just the standard syntax for inserting
+   a dictionary with key `main` at this point.)
+
+ o Identify the `title` tag and replace the title by `%(title)s`.
+   The title (commented out) or the first heading in `mydoc.do.txt`
+   will replace `%(title)s`.
+
+ o If relevant, find the date in the page and replace by `%(date)s`.
+
+ o Search for text `link type="text/css" rel="stylesheet"...`, which
+   specifies CSS stylesheets. You either need to have the stylesheet
+   files together with the HTML document, or you need to copy the stylesheet
+   code into the HTML file.
+
+ o Search for text `script type="text/javascript" src="...`, which
+   specifies JavaScript code. Either the code must be available on the
+   net (`http://...` address) or you need a copy of this code stored
+   along with the HTML file. You may use the Google Chrome or Firefox
+   browsers to view the source code and just click on stylesheets,
+   JavaScript files, and other links to see the content. This has the
+   great advantage of showing a *complete URL* to the file that may
+   have a relative path in the HTML code.
+
+As example, we took the source code of the GitHub "minimal" theme
+and implemented the points above. Some of the elements in the
+downloaded page are conveniently replaced by some indicating text
+that we will fill out when we finalize the layout of our web site.
+
+!bc htmlpro
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <title>%(title)s</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+    <meta name="viewport"
+     content="width=device-width, initial-scale=1, user-scalable=no">
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Main Permanent Header</h1>
+        <p>Permanent SubHeader</p>
+
+        <!-- picture below the heading on the left -->
+	<img src="..." width=220>
+
+      </header>
+
+      <!-- Here goes the main page --->
+      <section>
+
+%(main)s
+
+      </section>
+
+      <footer>
+        <p>This project is maintained by ...</p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by
+        <a href="https://github.com/orderedlist">orderedlist</a>
+        </small></p>
+      </footer>
+
+    </div>
+    <script src="js/scale.fix.js"></script>
+
+  </body>
+</html>
+!ec
+Note that the template requires
+
+ * the stylesheet `styles.css` in a subdirectory `css`
+ * the JavaScript `scale.fix.js` in a subdirectory `js`
+
+We need to get our hands on both these files. For the current
+application we customize the template:
+
+ * The picture on the left is specified to `fig/discrete_function.png`
+   which acts as a kind of logo for the page.
+ * The  `Main Permanent Header` and `Permanent SubHeader` are
+   replaced by something appropriate, here `Exercise` and
+   `Differential Equations`.
+
+
+===== Step 5: Embed your HTML document in the template =====
+
+We can now use Doconce to insert our document `mydoc.html`,
+generated from `mydoc.do.txt` into an HTML template.
+The template shown above, stored in the file `template_minimal.html`
+is used as example. We run
+
+!bc sys
+doconce format html mydoc --html_template=template_minimal.html
+!ec
+The result is a file "`mydoc.html`": "mydoc_github_pygmentized.html" where
+
+  o the first heading in `mydoc.do.txt` is substituted as title tag
+  o the text in `mydoc.do.txt`, transformed to HTML, is inserted
+    where `%(main)s` appears in the template.
+
+Here is the "visual result": "mydoc_github.html":
+
+FIGURE: [fig/github_html.png, width=900]
+
+The original text file `mydoc.do.txt` has now been transformed
+to a web page with fancy design!
+
+
+======= Making a template from Vortex pages at the University of Oslo =======
+
+As case, we invoke the page for a "course": "http://www.uio.no/studier/emner/matnat/ifi/INF5620/h12/". The "source code": "uio/5620_pygmentized.html"
+is huge. Here is a glimpse:
+
+!bc
+    <link type="text/css" rel="stylesheet" media="all" href="/vrtx/decorating/resources/dist/style/style.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/vrtx/decorating/resources/dist/www.uio.no/logos-eng/logos.css" />
+    <link type="text/css" rel="stylesheet" media="print" href="/vrtx/decorating/resources/dist/style/print.css" />
+    <link type="text/css" rel="stylesheet" media="handheld" href="/vrtx/decorating/resources/dist/style/handheld.css"/>
+
+   <script type="text/javascript" src="/vrtx/__vrtx/static-resources/jquery/jquery.min.js"></script>
+
+ ...
+
+    <!-- Page header end -->
+
+    <div id="uiodoc-wrapper">
+    <div id="uiodoc">
+        <!-- img-tag for print -->
+        <img id="head-print" alt="print logo" src="/vrtx/decorating/resources/dist/www.uio.no/logos-eng/faculty-small.png"/>
+
+...
+            <div id="right-main">
+              <!--startindex-->
+!ec
+We do the following:
+
+ o The part of the text which we want to replace by our document must
+   be deleted and substituted by `%(main)s`.
+ o A more challenging task is to deal with all the links to *local files*
+   of the type `/vrtx/decorating/resources/...` and similar.
+   However, clicking on these links when viewing the source code of
+   the page in Google Chrome or Firefox, displays the full URL
+   of the files. It appears that `/vrtx/` can simply be replaced
+   by `http://www.uio.no/vrtx/` and the page works (!). We therefore
+   carry out that substitution.
+ o The title inside the `title` tags is replaced by `%(title)s`.
+
+(There is no date in this page and hence no need to insert `%(date)s`.)
+The "resulting code": "uio/template_5620_pygmentized.hml" is ready
+as a template:
+
+!bc sys
+doconce format html mydoc --html_template=mynewcoursetemplate.html
+!ec
+Here is "the result": "mydoc_uio.html".
+
+FIGURE: [fig/uio_html.png, width=900]
+
+It really looks that we are inside the Vortex web system at the
+University of Oslo and all the links to *Student Life*, *People*,
+etc. work.
+
+Normally, the web pages at the University of Oslo have to be written
+through a web-based editor (in the Vortex system), and the information
+is stored in XML files.  It is somewhat remarkable that the HTML
+rendered from these XML files can be copied so easily and used as
+templates for web documents anywhere else.
+
+======= Using the Vagrant template =======
+
+Besides the GitHub "minimal" theme, Doconce comes with a template
+"`template_vagrant.html`":
+"../../bundled/html_styles/vagrant/template_vagrant.html" adopted from
+the style in the documentation of the "Vagrant":
+"http://docs.vagrantup.com/v1/docs/getting-started/index.html" virtual machine
+tool.
+
+FIGURE: [fig/vagrant_web, width=900]
+
+This template, found in `bundled/html_styles/vagrant` in the
+Doconce source code tree, is easy to adopt to a particular set of web
+pages. It looks as
+
+FIGURE: [fig/template_vagrant, width=900]
+
+There are several elements in the template:
+
+ o Navigation bar to the left, which is automatically created by Doconce.
+ o A main part (`%(main)s`) and a title as usual.
+ o Navigation buttons on the button, which are automatically filled in
+   by Doconce if the document is split into several parts.
+ o A logo consisting of a *LogoWord* in black and a *withSubWord* in
+   gray. This should be *manually edited* to some short name for the web pages
+   you want to embed with the Vagrant style.
+ o Navigation links in the top right part of the page. These should be
+   *manually edited* or deleted.
+ o At the bottom of the page there is a footer, which can be
+   *manually edited* or deleted.
+
+Here we edit the logo to *DiffEq101*, edit the navigation links at the
+top right to point to Wikipedia and WolframAlpha, and insert a
+copyright 2013 notice in the footer.
+
+The Vagrant style depends on two CSS files. We copy these from
+the `bundled/html_styles/vagrant/css` directory in the Doconce source
+to the current directory so that the links to the stylesheets in
+the template are correct.
+
+Translation of the original Doconce writings in `mydoc.do.txt` is
+done by
+
+!bc sys
+doconce format html mydoc.do.txt --html_style=vagrant \
+        --html_template=style_vagrant/template_vagrant.html
+!ec
+The resulting "HTML file": "mydoc_vagrant_pygmentized.html" has
+a "nice look": "mydoc_vagrant.html":
+
+FIGURE: [fig/vagrant_html.png, width=900]
+
+======= Summary =======
+
+We have seen have to write web pages in a text-like format, with full
+support of LaTeX mathematics and nicely typeset (pygmentized) computer code.
+These pages can easily be embedded in various fancy HTML styles by
+simply grabbing a web page with the desired style and editing it as
+explained.
+
+However, embedding Doconce documents in fancy web pages is just possibility
+for publishing the content. One can equally well make a traditional
+LaTeX file and include the document in a book, or make a special adapted
+version of the PDF for viewing on phones, or one can generate Sphinx
+output which has "a lot of different nice styles": "http://hplgit.github.com/teamods/writing_reports/index.html" for viewing on the web.

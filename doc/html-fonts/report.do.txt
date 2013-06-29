@@ -1,0 +1,57 @@
+
+TITLE: Experiments with Schemes for Exponential Decay
+AUTHOR: Hans Petter Langtangen Email:hpl@simula.no at Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo.
+DATE: today
+
+The body text has font *${BODY_FONT}*, while the headings have font
+*${HEADING_FONT}*.
+
+__Summary.__
+This report investigates the accuracy of three finite difference
+schemes for the ordinary differential equation $u'=-au$ with the
+aid of numerical experiments. Numerical artifacts are in particular
+demonstrated.
+
+
+======= Mathematical problem =======
+
+We address the initial-value problem
+
+!bt
+\begin{align}
+u'(t) &= -au(t), \quad t \in (0,T], label{ode}\\
+u(0)  &= I,                         label{initial:value}
+\end{align}
+!et
+where $a$, $I$, and $T$ are prescribed parameters, and $u(t)$ is
+the unknown function to be estimated. This mathematical model
+is relevant for physical phenomena featuring exponential decay
+in time.
+
+======= Numerical solution method =======
+label{numerical:problem}
+
+We introduce a mesh in time with points $0= t_0< t_1 \cdots < t_N=T$.
+For simplicity, we assume constant spacing $\Delta t$ between the
+mesh points: $\Delta t = t_{n}-t_{n-1}$, $n=1,\ldots,N$. Let
+$u^n$ be the numerical approximation to the exact solution at $t_n$.
+
+The $\theta$-rule is used to solve (ref{ode}) numerically:
+
+!bt
+\[
+u^{n+1} = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}u^n,
+\]
+!et
+for $n=0,1,\ldots,N-1$. This scheme corresponds to
+
+  * The "Forward Euler":
+    "http://en.wikipedia.org/wiki/Forward_Euler_method"
+    scheme when $\theta=0$
+  * The "Backward Euler":
+    "http://en.wikipedia.org/wiki/Backward_Euler_method"
+    scheme when $\theta=1$
+  * The "Crank-Nicolson":
+    "http://en.wikipedia.org/wiki/Crank-Nicolson"
+    scheme when $\theta=1/2$
+

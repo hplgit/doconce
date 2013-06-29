@@ -1,0 +1,77 @@
+# Version control systems
+mercurial git subversion
+
+$ cd srclib
+$ hg clone https://code.google.com/p/doconce/
+$ cd doconce
+$ sudo python setup.py install
+$ cd ../..
+
+# Python
+idle ipython
+python-pip
+python-pdftools
+$ pip install sphinx  # installs pygments and docutils too
+$ pip install mako
+$ pip install -e svn+http://preprocess.googlecode.com/svn/trunk#egg=preprocess
+$ pip install -e hg+https://bitbucket.org/logg/publish#egg=publish
+
+$ pip install -e hg+https://bitbucket.org/ecollins/cloud_sptheme#egg=cloud_sptheme
+$ pip install -e git+https://github.com/ryan-roemer/sphinx-bootstrap-theme#egg=sphinx-bootstrap-theme
+$ pip install -e hg+https://bitbucket.org/miiton/sphinxjp.themes.solarized#egg=sphinxjp.themes.solarized
+$ pip install -e git+https://github.com/shkumagai/sphinxjp.themes.impressjs#egg=sphinxjp.themes.impressjs
+
+$ cd srclib
+$ svn checkout http://ptex2tex.googlecode.com/svn/trunk/ ptex2tex
+$ cd ptex2tex
+$ sudo python setup.py install
+$ cd latex
+$ sh cp2texmf.sh  # copy stylefiles to ~/texmf directory
+$ cd ../../..
+
+# LaTeX
+texinfo
+# These lines are only necessary for Ubuntu 12.04 to install texlive 2012
+$ ubuntu_version=`lsb_release -r | awl '{print $2}'`
+$ if [ $ubuntu_version = "12.04" ]; then
+$   sudo add-apt-repository ppa:texlive-backports/ppa
+$   sudo apt-get update
+$ fi
+texlive
+texlive-extra-utils
+texlive-latex-extra
+texlive-math-extra
+texlive-font-utils
+latexdiff
+auctex
+
+# Image manipulation
+imagemagick
+netpbm mjpegtools pdftk giftrans
+gv evince smpeg-plaympeg mplayer totem
+ffmpeg libav-tools
+
+# Misc
+ispell
+pandoc
+libreoffice unoconv libreoffice-dmaths
+$ pip install -e svn+https://epydoc.svn.sourceforge.net/svnroot/epydoc/trunk/epydoc#egg=epydoc
+
+curl
+a2ps wdiff
+meld xxdiff diffpdf kdiff3 diffuse
+
+# tkdiff.tcl:
+#tcl8.5-dev tk8.5-dev blt-dev
+#https://sourceforge.net/projects/tkdiff/
+
+# example on installing mdframed.sty (in texlive) manually
+# curl -O http://ctan.uib.no/macros/latex/contrib/mdframed/mdframed.dtx
+# alternative: git clone https://github.com/marcodaniel/mdframed
+# texdir=~/texmf/tex/latex/misc
+# if [ ! -d $texdir ]; then mkdir -p $texdir; fi
+# cp mdframed.sty $texdir/
+# cd $texdir/../../..
+# mktexlsr .
+# cd -
+# rm -f md-frame-* mdframed.*

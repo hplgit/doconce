@@ -1,0 +1,13 @@
+The main document in this directory is wrapper_tech.do.txt.
+View it by loading wrapper_tech.html into a browser.
+
+The make.sh script generates all the files that are referred to
+in the wrapper_tech document. The sample document that wrapper_tech
+applies as example is mydoc.do.txt. Many variants are available
+as mydoc*.html - these can be examined in a browser.
+
+(wrapper_tech.do.txt refers to a lot of local HTML files, which is
+fine as long as all files in this directory are located together,
+but for sphinx output, one should take a copy of every local file
+that is linked to in wrapper_tech.do.txt and place in a _static
+directory.)

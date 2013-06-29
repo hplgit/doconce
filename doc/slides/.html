@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="HPL" />
+  <title>How various formats can deal with LaTeX math</title>
+  <script src="https://d3eoax9i5htok0.cloudfront.net/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+<body>
+<div id="header">
+<h1 class="title">How various formats can deal with LaTeX math</h1>
+<h2 class="author">HPL</h2>
+<h3 class="date">Jan 26, 2013</h3>
+</div>
+<p>This document is translated to the format pandoc.</p>
+<p><em>Test 1: Inline math.</em> A sentence contains the equation \(u(t)=e^{-at}\).</p>
+<p><em>Test 2: A single equation without label.</em> Here it is</p>
+<p>\[ u(t)=e^{-at} \]</p>
+<p><em>Test 3: A single equation with label.</em> Here it is as a one-line latex code,</p>
+<pre><code>!bt
+\begin{equation} u(t)=e^{-at} \label{eq1}\end{equation}
+!et</code></pre>
+<p>looking like</p>
+<p>\[
+\begin{equation} u(t)=e^{-at} \label{eq1}\end{equation}
+\] and as a three-line latex code:</p>
+<pre><code>!bt
+\begin{equation}
+u(t)=e^{-at} \label{eq1}
+\end{equation}
+!et</code></pre>
+<p>looking like</p>
+<p>\[
+\begin{equation}
+u(t)=e^{-at} \label{eq1}
+\end{equation}
+\] This equation has label Equation (eq1).</p>
+<p><em>Test 4: Multiple, aligned equations without label.</em> Only the align environment is supported by other formats than LaTeX for typesetting multiple, aligned equations. The code reads</p>
+<pre><code>!bt
+\begin{align*}
+u(t)&amp;=e^{-at}\\ 
+v(t) &amp;= \frac{du}{dt}
+\end{align*}
+!et</code></pre>
+<p>and results in</p>
+<p>\[
+\begin{align*}
+u(t)&amp;=e^{-at}\\ 
+v(t) &amp;= \frac{du}{dt}
+\end{align*}
+\]</p>
+<p><em>Test 5: Multiple, aligned equations with label.</em> We use align with labels:</p>
+<pre><code>!bt
+\begin{align}
+u(t)&amp;=e^{-at}
+\label{eq2}\\ 
+v(t) &amp;= \frac{du}{dt}
+\label{eq3}
+\end{align}
+!et</code></pre>
+<p>and results in</p>
+<p>\[
+\begin{align}
+u(t)&amp;=e^{-at}
+\label{eq2}\\ 
+v(t) &amp;= \frac{du}{dt}
+\label{eq3}
+\end{align}
+\] We can refer to the last equations as the system Equations (eq2)-(eq3).</p>
+</body>
+</html>

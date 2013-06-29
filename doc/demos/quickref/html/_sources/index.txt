@@ -1,0 +1,20 @@
+
+.. Master file automatically created by doconce sphinx_dir
+
+On an Ultimate Markup Language
+==============================
+
+Contents:
+
+.. toctree::
+   :maxdepth: 2
+
+   quickref
+
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`

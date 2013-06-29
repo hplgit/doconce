@@ -1,0 +1,255 @@
+<html>
+<head>
+<!--
+This style is adopted from the (now old) vagrant 1.0 web
+pages. The style builds on the Twitter Bootstrap style.
+Modifications by Hans Petter Langtangen, hpl@simula.no.
+
+This style file should be copied and the following
+elements edited:
+
+Logo heading:
+
+ DiffEq
+ 101
+
+Navigation links at the top:
+
+ GO TO 1
+ GO TO 2
+
+Footer at the end:
+
+ &copy; 2013
+
+-->
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: http://code.google.com/p/doconce/" />
+
+<link rel="stylesheet" href="css/twitter_bootstrap.css">
+<link rel="stylesheet" href="css/vagrant.css">
+<!-- Define color of headings here (last definition counts) -->
+<style type="text/css">
+h1, h2, h3, h4, h5, h6 {
+  color: #000;     /* black */
+  color: #999;     /* gray */
+  color: #005580;  /* dark blue */
+  color: #08c;     /* characteristic blue */
+</style>
+</head>
+<body>
+
+<title> Numerical experiments </title>
+
+<div class="container">
+ <div class="row Header with-border">
+  <div class="span3 Module logo">
+   <h1><a href="/">DiffEq<span class="subtitle">101</span></a></h1>
+  </div>
+  <div class="span9">
+   <div class="Module navigation">
+   <!-- Navigation at the top of the page -->
+    <ul>
+     <li> <a href="http://wikipedia.org">Wikipedia</a></li>
+     <li> <a href="http://wolframalpha.com">WolframAlpha</a></li>
+    </ul>
+   </div>
+  </div>
+ </div>
+</div>
+
+
+<!-- Here goes the table of contents in the sidebar
+     <li class="active"> means dark blue background for current section
+-->
+<div class="row">
+ <div class="span3 Module sidebar">
+  <div class="well" style="padding: 8px 0px;">
+   <ul class="nav nav-list">
+     <!-- Syntax:
+     <li> <a href="...">Section 1</a></li>
+     <li class="active"> <a href="...">Section 2</a></li>
+     <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2a</a></li>
+     <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2b</a></li>
+     -->
+     <!-- Doconce automatically fills in the table of contents -->
+          <!-- vagrant nav toc: " Solve the world's simplest differential equation " --> <li>  <a href="#___sec0"> Solve the world's simplest differential equation </a>
+     <!-- vagrant nav toc: " Mathematical problem " --> <li> &nbsp;  <a href="#___sec1"> Mathematical problem </a>
+     <!-- vagrant nav toc: " Numerical solution method " --> <li> &nbsp;  <a href="#___sec2"> Numerical solution method </a>
+     <!-- vagrant nav toc: " Implementation " --> <li> &nbsp;  <a href="#___sec3"> Implementation </a>
+     <!-- vagrant nav toc: " Numerical experiments " --> <li> &nbsp;  <a href="#___sec4"> Numerical experiments </a>
+
+    </ul>
+   </div>
+  </div>
+
+  <div class="span9">
+
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(" Solve the world's simplest differential equation ",
+               1,
+               None,
+               '___sec0'),
+              (' Mathematical problem ', 2, None, '___sec1'),
+              (' Numerical solution method ', 2, None, '___sec2'),
+              (' Implementation ', 2, None, '___sec3'),
+              (' Numerical experiments ', 2, None, '___sec4')]}
+end of tocinfo -->
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "AMS"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+
+
+
+<!-- ------------------- main content ---------------------- -->
+
+<p>
+
+<p>
+
+<h2>Solve the world's simplest differential equation  <a name="___sec0"></a></h2>
+
+<p>
+
+<h3>Mathematical problem  <a name="___sec1"></a></h3>
+
+<p>
+This exercise addresses the differential equation problem
+
+<p>
+$$
+\begin{align}
+u'(t) &= -au(t), \quad t \in (0,T], \label{ode}\\
+u(0)  &= I,                         \label{initial:value}
+\end{align}
+$$
+
+where \( a \), \( I \), and \( T \) are prescribed constant parameters, and \( u(t) \) is
+the unknown function to be estimated. This mathematical model
+is relevant for physical phenomena featuring exponential decay
+in time.
+
+<p>
+
+<h3>Numerical solution method  <a name="___sec2"></a></h3>
+
+<p>
+Derive the \( \theta \)-rule scheme for solving \eqref{ode} numerically
+with time step \( \Delta t \):
+
+<p>
+$$
+u^{n+1} = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}u^n,
+$$
+
+Here, \( n=0,1,\ldots,N-1 \).
+
+<p>
+<div class="alert alert-block alert-hint"><b>Hint.</b>
+Set up the Forward Euler, Backward Euler, and the Crank-Nicolson (or
+Midpoint) schemes first. Then generalize to the \( \theta \)-rule above.
+</div>
+<p>
+
+<h3>Implementation  <a name="___sec3"></a></h3>
+
+<p>
+The numerical method is implemented in a Python function
+<code>solver</code> (found in the <a href="https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py"><tt>decay_mod</tt></a> module):
+
+<p>
+
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> linspace, zeros
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">solver</span>(I, a, T, dt, theta):
+    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Solve u&#39;=-a*u, u(0)=I, for t in (0,T] with steps of dt.&quot;&quot;&quot;</span>
+    dt <span style="color: #666666">=</span> <span style="color: #008000">float</span>(dt)           <span style="color: #408080; font-style: italic"># avoid integer division</span>
+    N <span style="color: #666666">=</span> <span style="color: #008000">int</span>(<span style="color: #008000">round</span>(T<span style="color: #666666">/</span>dt))     <span style="color: #408080; font-style: italic"># no of time intervals</span>
+    T <span style="color: #666666">=</span> N<span style="color: #666666">*</span>dt                 <span style="color: #408080; font-style: italic"># adjust T to fit time step dt</span>
+    u <span style="color: #666666">=</span> zeros(N<span style="color: #666666">+1</span>)           <span style="color: #408080; font-style: italic"># array of u[n] values</span>
+    t <span style="color: #666666">=</span> linspace(<span style="color: #666666">0</span>, T, N<span style="color: #666666">+1</span>)  <span style="color: #408080; font-style: italic"># time mesh</span>
+
+    u[<span style="color: #666666">0</span>] <span style="color: #666666">=</span> I                 <span style="color: #408080; font-style: italic"># assign initial condition</span>
+    <span style="color: #008000; font-weight: bold">for</span> n <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">0</span>, N):    <span style="color: #408080; font-style: italic"># n=0,1,...,N-1</span>
+        u[n<span style="color: #666666">+1</span>] <span style="color: #666666">=</span> (<span style="color: #666666">1</span> <span style="color: #666666">-</span> (<span style="color: #666666">1-</span>theta)<span style="color: #666666">*</span>a<span style="color: #666666">*</span>dt)<span style="color: #666666">/</span>(<span style="color: #666666">1</span> <span style="color: #666666">+</span> theta<span style="color: #666666">*</span>dt<span style="color: #666666">*</span>a)<span style="color: #666666">*</span>u[n]
+    <span style="color: #008000; font-weight: bold">return</span> u, t
+</pre></div>
+<p>
+
+
+<h3>Numerical experiments  <a name="___sec4"></a></h3>
+
+<p>
+Fix the values of where \( I \), \( a \), and \( T \).
+Then vary \( \Delta t \) for \( \theta=0,1/2,1 \).
+Illustrate that if \( \Delta t \) is not sufficiently small,
+\( \theta=0 \) and \( \theta=1/2 \) can give non-physical solutions
+(more precisely, oscillating solutions).
+
+<p>
+Perform experiments and determine empirically the convergence
+rate for \( \theta=0,1/2,1 \).
+
+<!-- ------------------- end of main content --------------- -->
+
+
+<!--
+Preliminary examples/discussion on vagrant style syntax
+
+<div class='alert alert-block alert-notice'>
+  <h3>What about PHP? Python? Java?</h3>
+<p>
+bla-bla.
+</div>
+
+<p>
+While the <div class="deep-blue">rest of the</div> getting started
+-->
+
+<!-- Navigation buttons at the bottom:
+     Doconce will automatically fill in the right URL in these
+     buttons when doconce html_split is run. Otherwise they are empty.
+<ul class="pager">
+  <li class="previous">
+    <a href="">&larr; </a>
+  </li>
+  <li class="next">
+    <a href=""> &rarr;</a>
+ </li>
+</ul>
+-->
+
+ </div>
+
+ <div class="row Footer">
+  <div class="span12">
+  &copy; 2013
+  </div>
+ </div>
+</div>
+</body>
+</html>
+
+
+

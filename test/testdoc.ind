@@ -1,0 +1,26 @@
+\begin{theindex}
+
+  \item figures, \hyperpage{5}
+
+  \indexspace
+
+  \item index with
+    \subitem subindex, \hyperpage{11}
+  \item index, with comma, and one more, \hyperpage{11}
+
+  \indexspace
+
+  \item movies, \hyperpage{7}
+
+  \indexspace
+
+  \item {\rm\texttt{somefunc}} function, \hyperpage{3}
+
+  \indexspace
+
+  \item test index with {\rm\texttt{verbatim text}} which is possible, 
+		\hyperpage{11}
+  \item test {\rm\texttt{two}} (separate) {\rm\texttt{verbatim expressions}} which is also possible, 
+		\hyperpage{11}
+
+\end{theindex}

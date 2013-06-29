@@ -1,0 +1,47 @@
+#!/bin/bash
+# This script creates a new release of Doconce
+
+# Make sure we have the current version
+echo '--- Synchronizing repository'
+sleep 1
+hg pull -u
+hg commit
+
+# Update version numbers
+echo '--- Update version number in ChangeLog'
+sleep 1
+emacs -nw ChangeLog
+echo '--- Update version number in lib/doconce/__init__.py'
+sleep 1
+emacs -nw lib/doconce/__init__.py
+
+# Commit changes
+echo '--- Committing changes to repository'
+sleep 1
+hg commit
+
+# Get the version number
+VERSION=`python -c "import sys;sys.path.insert(0, 'lib');import doconce;print doconce.__version__"`
+echo "--- Version number is $VERSION"
+
+# Tag repository and push changes
+hg tag -m "Tagging release $VERSION of Doconce." doconce-$VERSION
+hg push
+
+# Create archive
+echo "--- Creating release $VERSION of Doconce"
+rm -f dist/doconce-$VERSION.tar.gz
+mkdir -p dist
+hg archive --prefix "doconce-$VERSION" --type tgz \
+    --exclude ".hg*" --exclude "doc/api" --exclude "doc/demos" \
+    dist/doconce-$VERSION.tar.gz
+
+# Upload files to googlecode
+echo '--- Uploading files to googlecode'
+googlecode_upload.py \
+    -s "Doconce $VERSION - Source version" \
+    -p doconce dist/doconce-$VERSION.tar.gz
+
+# Edit web pages
+echo '--- Edit web pages'
+firefox http://code.google.com/p/doconce/

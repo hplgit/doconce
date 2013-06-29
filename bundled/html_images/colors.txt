@@ -1,0 +1,14 @@
+List of background color or dominating color of some images.
+
+Method:
+   identify -verbose imagefile
+   Look for the dominating colors in the color histogram.
+   Mini HTML file for testing:
+   <body bgcolor="#dcdcdc"><img src="small_gray_warning.png">
+
+Knob_Forward.png  56,107,20 #386B14
+question_black_on_gray.png 179,179,179 #b3b3b3
+question_white_on_blue_small.png 114,159,207 #729FCF
+small_gray_warning.png orange: 227,173,0 #E3AD00 gray: 220,220,220 #dcdcdc
+small_gray_*.png 220,220,220 #dcdcdc
+small_yellow_*.png 248,224,159 #F8E09F

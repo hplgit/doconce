@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: http://code.google.com/p/doconce/" />
+<meta name="description" content="On the Technicalities of Scientific Writing Anno 2012: The Doconce Way">
+
+
+
+
+
+
+
+<!-- deck.js: https://github.com/imakewebthings/deck.js -->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=1024, user-scalable=no">
+
+<title>None</title>
+
+<!-- Required stylesheet -->
+<link rel="stylesheet" href="deck.js/core/deck.core.css">
+
+<!-- Extension CSS files go here. Remove or add as needed.
+deck.goto: Adds a shortcut key to jump to any slide number.
+Hit g, type in the slide number, and hit enter.
+
+deck.hash: Enables internal linking within slides, deep
+linking to individual slides, and updates the address bar and
+a permalink anchor with each slide change.
+
+deck.menu: Adds a menu view, letting you see all slides in a grid.
+Hit m to toggle to menu view, continue navigating your deck,
+and hit m to return to normal view. Touch devices can double-tap
+the deck to switch between views.
+
+deck.navigation: Adds clickable left and right buttons for the
+less keyboard inclined.
+
+deck.status: Adds a page number indicator. (current/total).
+
+deck.scale: Scales each slide to fit within the deck container
+using CSS Transforms for those browsers that support them.
+
+deck.pointer: Turn mouse into laser pointer (toggle with p).
+(Requires https://github.com/mikeharris100/deck.pointer.js)
+-->
+
+<link rel="stylesheet" href="deck.js/extensions/menu/deck.menu.css">
+<link rel="stylesheet" href="deck.js/extensions/navigation/deck.navigation.css">
+<link rel="stylesheet" href="deck.js/extensions/scale/deck.scale.css">
+<link rel="stylesheet" href="deck.js/extensions/pointer/deck.pointer.css">
+<link rel="stylesheet" href="deck.js/extensions/notes/deck.notes.css">
+<!--
+<link rel="stylesheet" href="deck.js/extensions/goto/deck.goto.css">
+<link rel="stylesheet" href="deck.js/extensions/hash/deck.hash.css">
+<link rel="stylesheet" href="deck.js/extensions/status/deck.status.css">
+-->
+
+<!-- Style theme. More available in themes/style/ or create your own. -->
+<link rel="stylesheet" href="deck.js/themes/style/web-2.0.css">
+
+<!--
+<link rel="stylesheet" href="deck.js/themes/style/neon.css">
+<link rel="stylesheet" href="deck.js/themes/style/swiss.css">
+<link rel="stylesheet" href="deck.js/themes/style/web-2.0.css">
+
+git clone git://github.com/duijf/mnml.git
+<link rel="stylesheet" href="deck.js/themes/style/mnml.css">
+
+git://github.com/groovecoder/deckjs-theme-mozilla.git
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.css">
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.aurora.css">
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.dark.css">
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.default.css">
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.firefox.css">
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.light.css">
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.mdn.css">
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.nightly.css">
+
+git://github.com/barraq/deck.ext.js.git
+<link rel="stylesheet" href="deck.js/themes/style/beamer.css">
+-->
+
+<!-- Transition theme. More available in /themes/transition/ or create your own. -->
+<link rel="stylesheet" href="deck.js/themes/transition/horizontal-slide.css">
+<!--
+<link rel="stylesheet" href="deck.js/themes/transition/fade.css">
+<link rel="stylesheet" href="deck.js/themes/transition/vertical-slide.css">
+<link rel="stylesheet" href="deck.js/themes/transition/horizontal-slide.css">
+-->
+
+<!-- Required Modernizr file -->
+<script src="deck.js/modernizr.custom.js"></script>
+
+<style type="text/css">
+    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    p.caption { width: 80%; font-size: 60%; font-style: italic; text-align: left; }
+    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    .slide .alert-text-small   { font-size: 80%;  }
+    .slide .alert-text-large   { font-size: 130%; }
+    .slide .alert-text-normal  { font-size: 90%;  }
+    .slide .alert {
+             padding:8px 35px 8px 14px; margin-bottom:18px;
+             text-shadow:0 1px 0 rgba(255,255,255,0.5);
+             border:5px solid #bababa;
+               -webkit-border-radius:14px; -moz-border-radius:14px;
+             border-radius:14px
+             background-position: 10px 10px;
+             background-repeat: no-repeat;
+             background-size: 38px;
+             padding-left: 30px; /* 55px; if icon */
+     }
+     .slide .alert-block {padding-top:14px; padding-bottom:14px}
+     .slide .alert-block > p, .alert-block > ul {margin-bottom:0}
+     /*.slide .alert li {margin-top: 1em}*/
+     .deck .alert-block p+p {margin-top:5px}
+     /*.slide .alert-notice { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_notice.png); }
+     .slide .alert-summary  { background-image:url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_summary.png); }
+     .slide .alert-warning { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_warning.png); }
+     .slide .alert-question {background-image:url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_question.png); } */
+
+</style>
+
+
+
+<!-- Styles for table layout of slides -->
+<style type="text/css">
+td.padding {
+  padding-top:20px;
+  padding-bottom:20px;
+  padding-right:50px;
+  padding-left:50px;
+}
+</style>
+
+</head>
+
+<body class="deck-container">
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "AMS"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+
+<!-- newcommands_bfmath.tex -->
+$$
+\renewcommand{\u}{\pmb{u}}
+
+\newcommand{\xbm}{\boldsymbol{x}}
+\newcommand{\normalvecbm}{\boldsymbol{n}}
+\newcommand{\ubm}{\boldsymbol{u}}
+$$
+
+
+<!-- newcommands_replace.tex -->
+$$
+\newcommand{\x}{\pmb{x}}
+\newcommand{\normalvec}{\pmb{n}}
+\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
+\newcommand{\halfi}{1/2}
+\newcommand{\half}{\frac{1}{2}}
+\newcommand{\report}{test report}
+$$
+
+
+
+
+    
+
+
+
+<section class="slide">
+<!-- ------------------- main content ---------------------- -->
+
+
+<title>On the Technicalities of Scientific Writing Anno 2012: The Doconce Way</title>
+
+<center><h1>On the Technicalities of Scientific Writing Anno 2012: The Doconce Way</h1></center>  <!-- document title -->
+
+<p>
+<!-- author(s): Hans Petter Langtangen -->
+
+<center>
+<b style="font-weight: bold">Hans Petter Langtangen</b> [1, 2]
+</center>
+
+
+<p>
+<!-- institution(s) -->
+
+<center>[1] <b style="font-weight: bold">Simula Research Laboratory</b></center>
+<center>[2] <b style="font-weight: bold">University of Oslo</b></center>
+<p>
+<center><h4>Jun 29, 2013</h4></center> <!-- date -->
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h3>Figure and bullet list  <a name="___sec0"></a></h3>
+
+<p>
+
+<table border="0">
+<tr>
+<td class="padding">
+
+
+<p>
+
+<ul>
+  <p><li class="slide"> Here is a <em>wave packet</em></li>
+  <p><li class="slide"> It can move</li>
+  <p><li class="slide"> But here it is just a figure</li>
+</ul>
+<p>
+
+
+</td>
+<td class="padding">
+<center><p><img src="../doc/manual/figs/wavepacket_0001.png" align="bottom" width=300></p></center>
+</td>
+</tr>
+</table>
+
+
+<p>
+<!-- Test that it is okay to leave out width if there are only two columns -->
+
+<p>
+
+
+<p>
+
+<p class="slide">
+
+Here we have a paragraph to pop up in red.
+And a line more
+
+</p>
+
+
+<p>
+
+<!-- begin inline comment -->
+<font color="red">[<b style="font-weight: bold">hpl 1</b>: <em>Here are some notes that can go to notes typesetting
+in the slide environment.</em>]</font>
+<!-- end inline comment -->
+
+
+<p>
+<div class="notes">
+<!-- press "n" to activate -->
+
+One can also have ordinary notes.
+Over multiple lines.
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h3>Scientific writing needs to address many new media  <a name="___sec1"></a></h3>
+
+<p>
+
+
+<p>
+
+<ul>
+ <p><li class="slide"> Old days (1985-2005): mostly black-and-white documents aimed at printing</li>
+ <p><li class="slide"> Now: also color PDF, web pages, wikis - for paper, PC, iPad, ...</li>
+ <p><li class="slide"> LaTeX writing may be very different from writing in other formats</li>
+ <p><li class="slide"> Main problem:</li>
+
+<ul>
+    <p><li class="slide"> LaTeX provide all sorts of fancy packages, but</li>
+    <p><li class="slide"> PDF in browsers has limited capabilities (design, navigation)
+      compared to native HTML formats</li>
+</ul>
+<p>
+
+ <p><li class="slide"> Conclusion: We need more than LaTeX</li>
+</ul>
+<p>
+
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h3>Some math and computer code  <a name="___sec2"></a></h3>
+
+<p>
+<p>&nbsp;<br>
+$$ f(x,y,t) = e^{-xt}\sin\pi y $$
+<p>&nbsp;<br>
+
+Python implementation:
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "emacs" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #AA22FF; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+
+<span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">f</span>(x, y, t):
+    <span style="color: #AA22FF; font-weight: bold">return</span> np<span style="color: #666666">.</span>exp(<span style="color: #666666">-</span>x<span style="color: #666666">*</span>t)<span style="color: #666666">*</span>np<span style="color: #666666">.</span>sin(np<span style="color: #666666">.</span>pi<span style="color: #666666">*</span>y)
+
+<span style="color: #AA22FF; font-weight: bold">class</span> <span style="color: #0000FF">Fancy</span>:
+    <span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">__init__</span>(<span style="color: #AA22FF">self</span>):
+        <span style="color: #AA22FF; font-weight: bold">pass</span>
+
+    <span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">__call__</span>(<span style="color: #AA22FF">self</span>, x, y, t):
+        <span style="color: #AA22FF; font-weight: bold">return</span> f(x, y, t)
+
+f2 <span style="color: #666666">=</span> Fancy()
+</code></pre></div>
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h3>Admon blocks  <a name="___sec3"></a></h3>
+
+<p>
+Can use admons to simulate blocks:
+
+<p>
+<div class="alert alert-block alert-notice alert-text-normal"><b style="font-weight: bold">Key PDE:</b>
+This box has title and math in normal 90 percent font:
+<p>&nbsp;<br>
+$$ \frac{\partial u}{\partial t} = \nabla^2 u $$
+<p>&nbsp;<br>
+</div>
+<p>
+
+<p class="slide">
+
+<div class="slide alert alert-block alert-notice alert-text-normal"><b style="font-weight: bold"></b>
+Just some block with text and a conclusion that something is important.
+This one pops up after the rest of the slide.
+</div>
+
+</p>
+
+
+<p>
+<div class="alert alert-block alert-warning alert-text-small"><b style="font-weight: bold">Warning.</b>
+Can use, e.g., a warning admon to have my own notes, preferably
+inside preprocess/mako if statements to turn notes on and off.
+This one is typeset in a small font and with the default
+title (Warning) since no title is specified.
+</div>
+
+</section>
+
+
+
+<!-- Begin extension snippets. Add or remove as needed. -->
+
+<!-- deck.navigation snippet -->
+<a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+<a href="#" class="deck-next-link" title="Next">&#8594;</a>
+
+<!-- deck.status snippet
+<p class="deck-status">
+	<span class="deck-status-current"></span>
+	/
+	<span class="deck-status-total"></span>
+</p>
+-->
+
+<!-- deck.goto snippet
+<form action="." method="get" class="goto-form">
+	<label for="goto-slide">Go to slide:</label>
+	<input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+	<datalist id="goto-datalist"></datalist>
+	<input type="submit" value="Go">
+</form>
+-->
+
+<!-- deck.hash snippet
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+-->
+
+<!-- End extension snippets. -->
+
+
+<!-- Required JS files. -->
+<script src="deck.js/jquery-1.7.2.min.js"></script>
+<script src="deck.js/core/deck.core.js"></script>
+
+<!-- Extension JS files. Add or remove as needed. -->
+<script src="deck.js/core/deck.core.js"></script>
+<script src="deck.js/extensions/hash/deck.hash.js"></script>
+<script src="deck.js/extensions/menu/deck.menu.js"></script>
+<script src="deck.js/extensions/goto/deck.goto.js"></script>
+<script src="deck.js/extensions/status/deck.status.js"></script>
+<script src="deck.js/extensions/navigation/deck.navigation.js"></script>
+<script src="deck.js/extensions/scale/deck.scale.js"></script>
+<script src="deck.js/extensions/notes/deck.notes.js"></script>
+
+<!-- From https://github.com/mikeharris100/deck.pointer.js -->
+<script src="deck.js/extensions/pointer/deck.pointer.js"></script>
+
+<!-- From https://github.com/stvnwrgs/presenterview -->
+<script type="text/javascript" src="deck.js/extensions/presenterview/deck.presenterview.js"></script>
+
+<!-- From https://github.com/nemec/deck.annotate.js
+<script type="text/javascript" src="deck.js/extensions/deck.annotate.js/deck.annotate.js"></script>
+-->
+
+
+<!-- Initialize the deck. You can put this in an external file if desired. -->
+<script>
+	$(function() {
+		$.deck('.slide');
+	});
+</script>
+
+
+</body>
+</html>
+deck.js:
+boilerplate.html
+core
+extensions
+GPL-license.txt
+introduction
+jquery-1.7.2.min.js
+MIT-license.txt
+modernizr.custom.js
+README.md
+test
+themes
+
+deck.js/core:
+deck.core.css
+deck.core.js
+deck.core.scss
+
+deck.js/extensions:
+codemirror
+deck.annotate.js
+goto
+hash
+menu
+navigation
+notes
+pointer
+presenterview
+scale
+status
+
+deck.js/extensions/codemirror:
+codemirror.js
+CONTRIBUTORS.txt
+deck.codemirror.css
+deck.codemirror.js
+deck.codemirror.scss
+introduction
+MIT-LICENSE.txt
+mode
+README.md
+themes
+VERSION.txt
+
+deck.js/extensions/codemirror/introduction:
+index.html
+introduction.css
+introduction.js
+introduction.scss
+modernizr.custom.js
+
+deck.js/extensions/codemirror/mode:
+clike
+clojure
+coffeescript
+css
+diff
+haskell
+htmlmixed
+javascript
+lua
+php
+plsql
+python
+r
+rst
+ruby
+scheme
+smalltalk
+sparql
+stex
+velocity
+xml
+xmlpure
+yaml
+
+deck.js/extensions/codemirror/mode/clike:
+clike.js
+index.html
+
+deck.js/extensions/codemirror/mode/clojure:
+clojure.js
+index.html
+
+deck.js/extensions/codemirror/mode/coffeescript:
+coffeescript.js
+index.html
+LICENSE
+
+deck.js/extensions/codemirror/mode/css:
+css.js
+index.html
+
+deck.js/extensions/codemirror/mode/diff:
+diff.css
+diff.js
+index.html
+
+deck.js/extensions/codemirror/mode/haskell:
+haskell.js
+index.html
+
+deck.js/extensions/codemirror/mode/htmlmixed:
+htmlmixed.js
+index.html
+
+deck.js/extensions/codemirror/mode/javascript:
+index.html
+javascript.js
+
+deck.js/extensions/codemirror/mode/lua:
+index.html
+lua.js
+
+deck.js/extensions/codemirror/mode/php:
+index.html
+php.js
+
+deck.js/extensions/codemirror/mode/plsql:
+index.html
+plsql.js
+
+deck.js/extensions/codemirror/mode/python:
+index.html
+LICENSE.txt
+python.js
+
+deck.js/extensions/codemirror/mode/r:
+index.html
+LICENSE
+r.js
+
+deck.js/extensions/codemirror/mode/rst:
+index.html
+rst.css
+rst.js
+
+deck.js/extensions/codemirror/mode/ruby:
+index.html
+LICENSE
+ruby.js
+
+deck.js/extensions/codemirror/mode/scheme:
+index.html
+scheme.js
+
+deck.js/extensions/codemirror/mode/smalltalk:
+index.html
+smalltalk.js
+
+deck.js/extensions/codemirror/mode/sparql:
+index.html
+sparql.js
+
+deck.js/extensions/codemirror/mode/stex:
+index.html
+stex.js
+
+deck.js/extensions/codemirror/mode/velocity:
+index.html
+velocity.js
+
+deck.js/extensions/codemirror/mode/xml:
+index.html
+xml.js
+
+deck.js/extensions/codemirror/mode/xmlpure:
+index.html
+xmlpure.js
+
+deck.js/extensions/codemirror/mode/yaml:
+index.html
+yaml.js
+
+deck.js/extensions/codemirror/themes:
+cobalt.css
+default.css
+elegant.css
+lesser-dark.css
+neat.css
+night.css
+
+deck.js/extensions/deck.annotate.js:
+deck.annotate.css
+deck.annotate.js
+example.png
+README.md
+
+deck.js/extensions/goto:
+deck.goto.css
+deck.goto.html
+deck.goto.js
+deck.goto.scss
+
+deck.js/extensions/hash:
+deck.hash.css
+deck.hash.html
+deck.hash.js
+deck.hash.scss
+
+deck.js/extensions/menu:
+deck.menu.css
+deck.menu.js
+deck.menu.scss
+
+deck.js/extensions/navigation:
+deck.navigation.css
+deck.navigation.html
+deck.navigation.js
+deck.navigation.scss
+
+deck.js/extensions/notes:
+deck.notes.css
+deck.notes.js
+README.md
+
+deck.js/extensions/pointer:
+deck.pointer.css
+deck.pointer.js
+
+deck.js/extensions/presenterview:
+deck.presenterview.css
+deck.presenterview.html
+deck.presenterview.js
+iframe.html
+presenterwindow.js
+README.md
+TODO
+
+deck.js/extensions/scale:
+deck.scale.css
+deck.scale.js
+deck.scale.scss
+
+deck.js/extensions/status:
+deck.status.css
+deck.status.html
+deck.status.js
+deck.status.scss
+
+deck.js/introduction:
+index.html
+
+deck.js/test:
+fixtures
+index.html
+lib
+settings.js
+spec.core.js
+spec.goto.js
+spec.hash.js
+spec.menu.js
+spec.navigation.js
+spec.scale.js
+spec.status.js
+
+deck.js/test/fixtures:
+complex.html
+empty.html
+iframes.html
+iframe_simple.html
+nesteds.html
+standard.html
+
+deck.js/test/lib:
+jasmine.css
+jasmine-html.js
+jasmine-jquery.js
+jasmine.js
+
+deck.js/themes:
+style
+transition
+
+deck.js/themes/style:
+beamer.css
+beamer.scss
+mnml.css
+neon.css
+neon.scss
+sandstone.aurora.css
+sandstone.css
+sandstone.dark.css
+sandstone.default.css
+sandstone.firefox.css
+sandstone.light.css
+sandstone.mdn.css
+sandstone.nightly.css
+sandstone.scss
+swiss.css
+swiss.scss
+web-2.0.css
+web-2.0.scss
+
+deck.js/themes/transition:
+fade.css
+fade.scss
+horizontal-slide.css
+horizontal-slide.scss
+vertical-slide.css
+vertical-slide.scss

@@ -1,0 +1,176 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>doconce.common &mdash; Doconce Documentation 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Doconce Documentation 1.0 documentation" href="index.html" />
+    <link rel="next" title="doconce.html" href="html.html" />
+    <link rel="prev" title="doconce.doconce" href="doconce.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="html.html" title="doconce.html"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="doconce.html" title="doconce.doconce"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Doconce Documentation 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-doconce.common">
+<span id="doconce-common"></span><h1><a class="reference internal" href="#module-doconce.common" title="doconce.common"><tt class="xref py py-mod docutils literal"><span class="pre">doconce.common</span></tt></a><a class="headerlink" href="#module-doconce.common" title="Permalink to this headline">¶</a></h1>
+<p>This module contains data structures used in translation of the
+Doconce format to other formats.  Some convenience functions used in
+translation modules (latex.py, html.py, etc.) are also included in
+here.</p>
+<dl class="function">
+<dt id="doconce.common.default_movie">
+<tt class="descclassname">doconce.common.</tt><tt class="descname">default_movie</tt><big>(</big><em>m</em><big>)</big><a class="headerlink" href="#doconce.common.default_movie" title="Permalink to this definition">¶</a></dt>
+<dd><p>Replace a movie entry by a proper URL with text.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="doconce.common.indent_lines">
+<tt class="descclassname">doconce.common.</tt><tt class="descname">indent_lines</tt><big>(</big><em>text</em>, <em>format</em>, <em>indentation='        '</em><big>)</big><a class="headerlink" href="#doconce.common.indent_lines" title="Permalink to this definition">¶</a></dt>
+<dd><p>Indent each line in the string text, provided in a format for
+HTML, LaTeX, epytext, ..., by the blank string indentation.
+Return new version of text.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="doconce.common.insert_code_and_tex">
+<tt class="descclassname">doconce.common.</tt><tt class="descname">insert_code_and_tex</tt><big>(</big><em>filestr</em>, <em>code_blocks</em>, <em>tex_blocks</em>, <em>format</em><big>)</big><a class="headerlink" href="#doconce.common.insert_code_and_tex" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="doconce.common.plain_exercise">
+<tt class="descclassname">doconce.common.</tt><tt class="descname">plain_exercise</tt><big>(</big><em>exer</em><big>)</big><a class="headerlink" href="#doconce.common.plain_exercise" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="doconce.common.ref2equations">
+<tt class="descclassname">doconce.common.</tt><tt class="descname">ref2equations</tt><big>(</big><em>filestr</em><big>)</big><a class="headerlink" href="#doconce.common.ref2equations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Replace references to equations:
+(ref{my:label}) -&gt; Equation (my:label)
+(ref{my:label1})-(ref{my:label2}) -&gt; Equations (my:label1)-(my:label2)
+(ref{my:label1}) and (ref{my:label2}) -&gt; Equations (my:label1) and (my:label2)
+(ref{my:label1}), (ref{my:label2}) and (ref{my:label3}) -&gt; Equations (my:label1), (my:label2) and (ref{my:label2})</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="doconce.common.remove_code_and_tex">
+<tt class="descclassname">doconce.common.</tt><tt class="descname">remove_code_and_tex</tt><big>(</big><em>filestr</em><big>)</big><a class="headerlink" href="#doconce.common.remove_code_and_tex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove verbatim and latex (math) code blocks from the file and
+store separately in lists (code_blocks and tex_blocks).
+The function insert_code_and_tex will insert these blocks again.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="doconce.common.table_analysis">
+<tt class="descclassname">doconce.common.</tt><tt class="descname">table_analysis</tt><big>(</big><em>table</em><big>)</big><a class="headerlink" href="#doconce.common.table_analysis" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return max width of each column.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="doconce.common.where">
+<tt class="descclassname">doconce.common.</tt><tt class="descname">where</tt><big>(</big><big>)</big><a class="headerlink" href="#doconce.common.where" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the location where the doconce package is installed.</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="doconce.html"
+                        title="previous chapter"><tt class="docutils literal"><span class="pre">doconce.doconce</span></tt></a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="html.html"
+                        title="next chapter"><tt class="docutils literal"><span class="pre">doconce.html</span></tt></a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/common.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="html.html" title="doconce.html"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="doconce.html" title="doconce.doconce"
+             >previous</a> |</li>
+        <li><a href="index.html">Doconce Documentation 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2010, H. P. Langtangen.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

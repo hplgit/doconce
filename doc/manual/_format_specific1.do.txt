@@ -1,0 +1,31 @@
+
+First some math:
+
+|bt
+\begin{align}
+x &= 3
+label{x:eq1}\\
+y &= 5
+label{y:eq1}
+\end{align}
+|et
+Let us now reason about this.
+
+# Sphinx cannot refer to labels in align environments
+
+# #if FORMAT in ("latex", "pdflatex", "html")
+From (\ref{x:eq})-(\ref{y:eq1}) we get that
+# #elif FORMAT == "sphinx"
+From
+|bt
+\[ x = 3 \]
+|et
+and
+|bt
+\[ y= 5 \]
+|et
+it follows that
+# #else
+From the above equations it follows that
+# #endif
+$x+y$ is 8.

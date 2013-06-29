@@ -1,0 +1,39 @@
+# Test of GitHub Flavored Markdown
+
+# Write in doconce
+# Translate with doconce format pandoc githu_md --github_md
+
+!bquote
+===== Problems with a function =====
+
+There is a problem with the `f(x)` function
+
+!bc pycod
+def f(x):
+    return 1 + x
+!ec
+This function should be quadratic.
+!equote
+
+OK, this is fixed:
+
+!bc pycod
+def f(x, a=1, b=1, c=1):
+    return a*x**2 + b*x + c
+!ec
+
+===== Updated task list =====
+
+   * [x] Offer an `f(x)` function
+   * [ ] Extension to cubic functions
+   * [x] Allowing general coefficient in the quadratic function
+
+=== Remaining functionality ===
+
+|---------------------------------------------------------------|
+| function | purpose                        | state |
+|----l-----------l------------------------------l---------------|
+|  `g(x)`  | Compute the Gaussian function. | Formula ready. |
+|  `h(x)`  | Heaviside function.            | Formula ready. |
+|  `I(x)`  | Indicator function.            | Nothing done yet. |
+|---------------------------------------------------------------|

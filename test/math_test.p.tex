@@ -1,0 +1,414 @@
+%%
+%% Automatically generated file from Doconce source
+%% (http://code.google.com/p/doconce/)
+%%
+% #ifdef PTEX2TEX_EXPLANATION
+%%
+%% The file follows the ptex2tex extended LaTeX format, see
+%% ptex2tex: http://code.google.com/p/ptex2tex/
+%%
+%% Run
+%%      ptex2tex myfile
+%% or
+%%      doconce ptex2tex myfile
+%%
+%% to turn myfile.p.tex into an ordinary LaTeX file myfile.tex.
+%% (The ptex2tex program: http://code.google.com/p/ptex2tex)
+%% Many preprocess options can be added to ptex2tex or doconce ptex2tex
+%%
+%%      ptex2tex -DMINTED -DPALATINO -DA6PAPER -DLATEX_HEADING=traditional myfile
+%%      doconce ptex2tex myfile -DMINTED -DLATEX_HEADING=titlepage
+%%
+%% ptex2tex will typeset code environments according to a global or local
+%% .ptex2tex.cfg configure file. doconce ptex2tex will typeset code
+%% according to options on the command line (just type doconce ptex2tex to
+%% see examples).
+% #endif
+
+% #ifndef LATEX_HEADING
+% #define LATEX_HEADING "doconce_heading"
+% #endif
+
+% #ifndef PREAMBLE
+% #if LATEX_HEADING == "Springer_collection"
+% #undef PREAMBLE
+% #else
+% #define PREAMBLE
+% #endif
+% #endif
+
+
+% #ifdef PREAMBLE
+%-------------------- begin preamble ----------------------
+
+\documentclass[%
+oneside,                 % oneside: electronic viewing, twoside: printing
+final,                   % or draft (marks overfull hboxes)
+10pt]{article}
+
+\listfiles               % print all files needed to compile this document
+
+% #ifdef A4PAPER
+\usepackage[a4paper]{geometry}
+% #endif
+% #ifdef A6PAPER
+% a6paper is suitable for mobile devices
+\usepackage[%
+  a6paper,
+  text={90mm,130mm},
+  inner={5mm},           % inner margin (two sided documents)
+  top=5mm,
+  headsep=4mm
+  ]{geometry}
+% #endif
+
+\usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
+\usepackage[table]{xcolor}
+\usepackage{bm,microtype}
+\usepackage{ptex2tex}
+
+% #ifdef MINTED
+\usepackage{minted}
+\usemintedstyle{default}
+% #endif
+
+% #ifdef XELATEX
+% xelatex settings
+\usepackage{fontspec}
+\usepackage{xunicode}
+\defaultfontfeatures{Mapping=tex-text} % To support LaTeX quoting style
+\defaultfontfeatures{Ligatures=TeX}
+\setromanfont{Kinnari}
+% Examples of font types (Ubuntu): Gentium Book Basic (Palatino-like),
+% Liberation Sans (Helvetica-like), Norasi, Purisa (handwriting), UnDoum
+% #else
+%\usepackage[latin1]{inputenc}
+\usepackage[utf8]{inputenc}
+% #ifdef HELVETICA
+% Set helvetica as the default font family:
+\RequirePackage{helvet}
+\renewcommand\familydefault{phv}
+% #endif
+% #ifdef PALATINO
+% Set palatino as the default font family:
+\usepackage[sc]{mathpazo}    % Palatino fonts
+\linespread{1.05}            % Palatino needs extra line spread to look nice
+% #endif
+% #endif
+
+% Hyperlinks in PDF:
+\definecolor{linkcolor}{rgb}{0,0,0.4}
+\usepackage[%
+    colorlinks=true,
+    linkcolor=linkcolor,
+    urlcolor=linkcolor,
+    citecolor=black,
+    filecolor=black,
+    %filecolor=blue,
+    pdfmenubar=true,
+    pdftoolbar=true,
+    bookmarksdepth=3   % Uncomment (and tweak) for PDF bookmarks with more levels than the TOC
+            ]{hyperref}
+%\hyperbaseurl{}   % hyperlinks are relative to this root
+
+\setcounter{tocdepth}{2}  % number chapter, section, subsection
+
+% #ifdef COLORED_TABLE_ROWS
+% color every two table rows
+\let\oldtabular\tabular
+\let\endoldtabular\endtabular
+% #if COLORED_TABLE_ROWS not in ("gray", "blue")
+% #define COLORED_TABLE_ROWS gray
+% #endif
+% #else
+% #define COLORED_TABLE_ROWS no
+% #endif
+% #if COLORED_TABLE_ROWS == "gray"
+\definecolor{rowgray}{gray}{0.9}
+\renewenvironment{tabular}{\rowcolors{2}{white}{rowgray}%
+\oldtabular}{\endoldtabular}
+% #elif COLORED_TABLE_ROWS == "blue"
+\definecolor{appleblue}{rgb}{0.93,0.95,1.0}  % Apple blue
+\renewenvironment{tabular}{\rowcolors{2}{white}{appleblue}%
+\oldtabular}{\endoldtabular}
+% #endif
+
+% prevent orhpans and widows
+\clubpenalty = 10000
+\widowpenalty = 10000
+
+% http://www.ctex.org/documents/packages/layout/titlesec.pdf
+\usepackage[compact]{titlesec}  % narrower section headings
+% #ifdef BLUE_SECTION_HEADINGS
+\definecolor{seccolor}{rgb}{0.2,0.2,0.8}
+\titleformat{\section}
+{\color{seccolor}\normalfont\Large\bfseries}
+{\color{seccolor}\thesection}{1em}{}
+\titleformat{\subsection}
+{\color{seccolor}\normalfont\large\bfseries}
+{\color{seccolor}\thesubsection}{1em}{}
+% #endif
+
+% --- end of standard preamble for documents ---
+
+
+% insert custom LaTeX commands...
+
+\makeindex
+
+%-------------------- end preamble ----------------------
+
+\begin{document}
+
+% #endif
+
+\input{newcommands_bfmath}
+\input{newcommands_replace}
+
+% ------------------- main content ----------------------
+
+
+
+% ----------------- title -------------------------
+% #if LATEX_HEADING == "traditional"
+\title{How various formats can deal with {\LaTeX} math}
+
+% #elif LATEX_HEADING == "titlepage"
+
+\thispagestyle{empty}
+\hbox{\ \ }
+\vfill
+\begin{center}
+{\huge{\bfseries{
+\begin{spacing}{1.25}
+How various formats can deal with {\LaTeX} math
+\end{spacing}
+}}}
+
+% #elif LATEX_HEADING == "Springer_collection"
+\title*{How various formats can deal with {\LaTeX} math}
+% Short version of title:
+%\titlerunning{...}
+
+% #elif LATEX_HEADING == "beamer"
+\title{How various formats can deal with {\LaTeX} math}
+% #else
+\begin{center}
+{\LARGE\bf
+\begin{spacing}{1.25}
+How various formats can deal with {\LaTeX} math
+\end{spacing}
+}
+\end{center}
+% #endif
+
+% ----------------- author(s) -------------------------
+% #if LATEX_HEADING == "traditional"
+\author{HPL}
+
+% #elif LATEX_HEADING == "titlepage"
+\vspace{1.3cm}
+
+    {\Large\textsf{HPL${}^{}$}}\\ [3mm]
+    
+\ \\ [2mm]
+
+% #elif LATEX_HEADING == "Springer_collection"
+
+\author{HPL}
+% Short version of authors:
+%\authorrunning{...}
+\institute{HPL}
+
+% #elif LATEX_HEADING == "beamer"
+\author{HPL\inst{}}
+\institute{}
+% #else
+
+\begin{center}
+{\bf HPL${}^{}$} \\ [0mm]
+\end{center}
+
+\begin{center}
+% List of all institutions:
+\end{center}
+% #endif
+% ----------------- end author(s) -------------------------
+
+
+% #if LATEX_HEADING == "traditional"
+\date{Jun 29, 2013}
+\maketitle
+% #elif LATEX_HEADING == "beamer"
+\date{Jun 29, 2013
+% <titlepage figure>
+}
+% #elif LATEX_HEADING == "titlepage"
+
+\ \\ [10mm]
+{\large\textsf{Jun 29, 2013}}
+
+\end{center}
+\vfill
+\clearpage
+
+% #else
+\begin{center}
+Jun 29, 2013
+\end{center}
+
+\vspace{1cm}
+
+% #endif
+
+
+This document is translated to the format \textbf{pdflatex}. The purpose is to
+test math and doconce and various output formats.
+
+\paragraph{Test 1: Inline math.}
+Here is a sentence contains the equation $u(t)=e^{-at}$.
+
+\paragraph{Test 2: A single equation without label.}
+Here it is
+
+\[ u(t)=e^{-at} \]
+
+\paragraph{Test 3: A single equation with label.}
+Here it is as a one-line
+latex code,
+
+\bccq
+!bt
+\begin{equation} u(t)=e^{-at} label{eq1}\end{equation}
+!et
+\eccq
+looking like
+
+\begin{equation} u(t)=e^{-at} \label{eq1}\end{equation}
+and as a three-line latex code:
+
+\bccq
+!bt
+\begin{equation}
+u(t)=e^{-at} label{eq1b}
+\end{equation}
+!et
+\eccq
+looking like
+
+\begin{equation}
+u(t)=e^{-at} \label{eq1b}
+\end{equation}
+This equation has label (\ref{eq1b}).
+
+
+\paragraph{Test 4: Multiple, aligned equations without label.}
+Only the align
+environment is supported by other formats than {\LaTeX} for typesetting
+multiple, aligned equations. The code reads
+
+\bccq
+!bt
+\begin{align*}
+u(t)&=e^{-at}\\ 
+v(t) - 1 &= \frac{du}{dt}
+\end{align*}
+!et
+\eccq
+and results in
+
+\begin{align*}
+u(t)&=e^{-at}\\ 
+v(t) - 1 &= \frac{du}{dt}
+\end{align*}
+
+\paragraph{Test 5: Multiple, aligned equations with label.}
+We use align with
+labels:
+
+\bccq
+!bt
+\begin{align}
+u(t)&=e^{-at}
+label{eq2b}\\ 
+v(t) - 1 &= \frac{du}{dt}
+label{eq3b}
+\end{align}
+!et
+\eccq
+and results in
+
+\begin{align}
+u(t)&=e^{-at} \label{eq2b}\\ 
+v(t) - 1 &= \frac{du}{dt} \label{eq3b}
+\end{align}
+We can refer to the last equations as the system (\ref{eq2b})-(\ref{eq3b}).
+
+
+
+
+\paragraph{Test 6: Multiple, aligned eqnarray equations without label.}
+Let us
+try the old eqnarray environment.
+
+\bccq
+!bt
+\begin{eqnarray*}
+u(t)&=& e^{-at}\\ 
+v(t) - 1 &=& \frac{du}{dt}
+\end{eqnarray*}
+!et
+\eccq
+and results in
+
+\begin{eqnarray*}
+u(t)&=& e^{-at}\\ 
+v(t) - 1 &=& \frac{du}{dt}
+\end{eqnarray*}
+
+\paragraph{Test 7: Multiple, eqnarrayed equations with label.}
+We use eqnarray with
+labels:
+
+\bccq
+!bt
+\begin{eqnarray}
+u(t)&=& e^{-at}
+label{eq2c}\\ 
+v(t) - 1 &=& \frac{du}{dt}
+label{eq3c}
+\end{eqnarray}
+!et
+\eccq
+and results in
+
+\begin{eqnarray}
+u(t)&=& e^{-at} \label{eq2c}\\ 
+v(t) - 1 &=& \frac{du}{dt} \label{eq3c}
+\end{eqnarray}
+Can we refer to the last equations as the system (\ref{eq2c})-(\ref{eq3c})?
+
+\paragraph{Test 8: newcommands and boldface bm vs pmb.}
+We have
+
+\[ \color{blue}{\frac{\partial\u}{\partial t}} +
+\nabla\cdot\nabla\u = \nu\nabla^2\u -
+\frac{1}{\varrho}\nabla p,\]
+and $\nabla\u (\x)\cdot\normalvec$
+with plain old pmb. Here are the same formulas using \code{\bm}:
+
+\[ \color{blue}{\frac{\partial\ubm}{\partial t}} +
+\nabla\cdot\nabla\ubm = \nu\nabla^2\ubm -
+\frac{1}{\varrho}\nabla p,\]
+and $\nabla\ubm (\xbm)\cdot\normalvecbm$.
+
+
+% ------------------- end of main content ---------------
+
+
+% #ifdef PREAMBLE
+\printindex
+
+\end{document}
+% #endif
+

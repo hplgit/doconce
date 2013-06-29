@@ -1,0 +1,892 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>doconce.latex</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="doconce-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="doconce-module.html">Package&nbsp;doconce</a> ::
+        Module&nbsp;latex
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="doconce.latex-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="doconce.latex-module.html">Module doconce.latex</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-comment"># -*- coding: iso-8859-15 -*-</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">os</tt><tt class="py-op">,</tt> <tt class="py-name">commands</tt><tt class="py-op">,</tt> <tt class="py-name">re</tt><tt class="py-op">,</tt> <tt class="py-name">sys</tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-0" class="py-name" targets="Module doconce.common=doconce.common-module.html"><a title="doconce.common" class="py-name" href="#" onclick="return doclink('link-0', 'common', 'link-0');">common</a></tt> <tt class="py-keyword">import</tt> <tt id="link-1" class="py-name" targets="Function doconce.common.plain_exercise()=doconce.common-module.html#plain_exercise"><a title="doconce.common.plain_exercise" class="py-name" href="#" onclick="return doclink('link-1', 'plain_exercise', 'link-1');">plain_exercise</a></tt><tt class="py-op">,</tt> <tt id="link-2" class="py-name" targets="Function doconce.common.table_analysis()=doconce.common-module.html#table_analysis"><a title="doconce.common.table_analysis" class="py-name" href="#" onclick="return doclink('link-2', 'table_analysis', 'link-2');">table_analysis</a></tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt id="link-3" class="py-name" targets="Variable doconce.latex.additional_packages=doconce.latex-module.html#additional_packages"><a title="doconce.latex.additional_packages" class="py-name" href="#" onclick="return doclink('link-3', 'additional_packages', 'link-3');">additional_packages</a></tt> <tt class="py-op">=</tt> <tt class="py-string">''</tt>  <tt class="py-comment"># comma-sep. list of packages for \usepackage{}</tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"> </tt>
+<a name="latex_code"></a><div id="latex_code-def"><a name="L7"></a><tt class="py-lineno">  7</tt> <a class="py-toggle" href="#" id="latex_code-toggle" onclick="return toggle('latex_code');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="doconce.latex-module.html#latex_code">latex_code</a><tt class="py-op">(</tt><tt class="py-param">filestr</tt><tt class="py-op">,</tt> <tt class="py-param">format</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="latex_code-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="latex_code-expanded"><a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line">    <tt class="py-name">lines</tt> <tt class="py-op">=</tt> <tt class="py-name">filestr</tt><tt class="py-op">.</tt><tt class="py-name">splitlines</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line">    <tt id="link-4" class="py-name" targets="Variable doconce.DocWriter.arg=doconce.DocWriter-module.html#arg"><a title="doconce.DocWriter.arg" class="py-name" href="#" onclick="return doclink('link-4', 'arg', 'link-4');">arg</a></tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line">    <tt class="py-name">bc_arg</tt> <tt class="py-op">=</tt> <tt class="py-name">re</tt><tt class="py-op">.</tt><tt class="py-name">compile</tt><tt class="py-op">(</tt><tt class="py-string">r'^!bc\s+([^ ]+?)$'</tt><tt class="py-op">)</tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line">    <tt class="py-name">ec</tt> <tt class="py-op">=</tt> <tt class="py-name">re</tt><tt class="py-op">.</tt><tt class="py-name">compile</tt><tt class="py-op">(</tt><tt class="py-string">r'^!ec\s*$'</tt><tt class="py-op">)</tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt class="py-name">i</tt> <tt class="py-keyword">in</tt> <tt class="py-name">range</tt><tt class="py-op">(</tt><tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">lines</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line">        <tt class="py-comment">#if re.search(r'^![be]c', lines[i]):a</tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line">        <tt class="py-comment">#    print 'latex_code treats line\n', lines[i]</tt> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line">        <tt class="py-comment"># !bc without argument is substituted as !bc ccq:</tt> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line">        <tt class="py-name">lines</tt><tt class="py-op">[</tt><tt class="py-name">i</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">re</tt><tt class="py-op">.</tt><tt class="py-name">sub</tt><tt class="py-op">(</tt><tt class="py-string">r'^!bc\s*$'</tt><tt class="py-op">,</tt> <tt class="py-string">r'!bc ccq'</tt><tt class="py-op">,</tt> <tt class="py-name">lines</tt><tt class="py-op">[</tt><tt class="py-name">i</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line">        <tt class="py-comment">#print 'after mod:', lines[i]</tt> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line"> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line">        <tt class="py-comment"># treat a line !bc arg:</tt> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line">        <tt class="py-name">m</tt> <tt class="py-op">=</tt> <tt class="py-name">bc_arg</tt><tt class="py-op">.</tt><tt class="py-name">search</tt><tt class="py-op">(</tt><tt class="py-name">lines</tt><tt class="py-op">[</tt><tt class="py-name">i</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">m</tt><tt class="py-op">:</tt> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line">            <tt id="link-5" class="py-name"><a title="doconce.DocWriter.arg" class="py-name" href="#" onclick="return doclink('link-5', 'arg', 'link-4');">arg</a></tt> <tt class="py-op">=</tt> <tt class="py-name">m</tt><tt class="py-op">.</tt><tt class="py-name">group</tt><tt class="py-op">(</tt><tt class="py-number">1</tt><tt class="py-op">)</tt> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line">            <tt class="py-comment">#print 'yes, this is a !bc line with arg =', arg</tt> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line">            <tt class="py-comment"># add \b to arg, e.g., if arg is cod, make \bcod (ptex2tex)</tt> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line">            <tt class="py-name">lines</tt><tt class="py-op">[</tt><tt class="py-name">i</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">bc_arg</tt><tt class="py-op">.</tt><tt class="py-name">sub</tt><tt class="py-op">(</tt><tt class="py-string">r'\\b'</tt> <tt class="py-op">+</tt> <tt id="link-6" class="py-name"><a title="doconce.DocWriter.arg" class="py-name" href="#" onclick="return doclink('link-6', 'arg', 'link-4');">arg</a></tt><tt class="py-op">,</tt> <tt class="py-name">lines</tt><tt class="py-op">[</tt><tt class="py-name">i</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line">            <tt class="py-comment">#print 'new b envir:', lines[i]</tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line">        <tt class="py-comment"># treat a line !ec:</tt> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line">        <tt class="py-name">m</tt> <tt class="py-op">=</tt> <tt class="py-name">ec</tt><tt class="py-op">.</tt><tt class="py-name">search</tt><tt class="py-op">(</tt><tt class="py-name">lines</tt><tt class="py-op">[</tt><tt class="py-name">i</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">m</tt><tt class="py-op">:</tt> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line">            <tt class="py-comment">#print 'yes, this is a !ec line with arg =', arg</tt> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt id="link-7" class="py-name"><a title="doconce.DocWriter.arg" class="py-name" href="#" onclick="return doclink('link-7', 'arg', 'link-4');">arg</a></tt> <tt class="py-op">==</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line">                <tt class="py-keyword">print</tt> <tt class="py-string">'\n'</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt class="py-name">lines</tt><tt class="py-op">[</tt><tt class="py-op">:</tt><tt class="py-name">i</tt><tt class="py-op">+</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line">                <tt class="py-keyword">print</tt> <tt class="py-string">'\n\nError: !ec with a non-matching !bc before, '</tt>\ </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line">                      <tt class="py-string">'see print out above, up to the problematic line.'</tt> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line">                <tt class="py-name">sys</tt><tt class="py-op">.</tt><tt class="py-name">exit</tt><tt class="py-op">(</tt><tt class="py-number">1</tt><tt class="py-op">)</tt> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line">            <tt class="py-name">lines</tt><tt class="py-op">[</tt><tt class="py-name">i</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">ec</tt><tt class="py-op">.</tt><tt class="py-name">sub</tt><tt class="py-op">(</tt><tt class="py-string">r'\\e'</tt> <tt class="py-op">+</tt> <tt id="link-8" class="py-name"><a title="doconce.DocWriter.arg" class="py-name" href="#" onclick="return doclink('link-8', 'arg', 'link-4');">arg</a></tt><tt class="py-op">,</tt> <tt class="py-name">lines</tt><tt class="py-op">[</tt><tt class="py-name">i</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line">            <tt class="py-comment">#print 'new e envir:', lines[i]</tt> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line">            <tt id="link-9" class="py-name"><a title="doconce.DocWriter.arg" class="py-name" href="#" onclick="return doclink('link-9', 'arg', 'link-4');">arg</a></tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line">    <tt class="py-name">filestr</tt> <tt class="py-op">=</tt> <tt class="py-string">'\n'</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt class="py-name">lines</tt><tt class="py-op">)</tt> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line">    <tt class="py-name">c</tt> <tt class="py-op">=</tt> <tt class="py-name">re</tt><tt class="py-op">.</tt><tt class="py-name">compile</tt><tt class="py-op">(</tt><tt class="py-string">r'^!bt\n'</tt><tt class="py-op">,</tt> <tt class="py-name">re</tt><tt class="py-op">.</tt><tt class="py-name">MULTILINE</tt><tt class="py-op">)</tt> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line">    <tt class="py-comment">#filestr = c.sub('\n', filestr)  # why an extra \n?</tt> </tt>
+<a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line">    <tt class="py-name">filestr</tt> <tt class="py-op">=</tt> <tt class="py-name">c</tt><tt class="py-op">.</tt><tt class="py-name">sub</tt><tt class="py-op">(</tt><tt class="py-string">''</tt><tt class="py-op">,</tt> <tt class="py-name">filestr</tt><tt class="py-op">)</tt> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line">    <tt class="py-name">filestr</tt> <tt class="py-op">=</tt> <tt class="py-name">re</tt><tt class="py-op">.</tt><tt class="py-name">sub</tt><tt class="py-op">(</tt><tt class="py-string">r'!et\n'</tt><tt class="py-op">,</tt> <tt class="py-string">''</tt><tt class="py-op">,</tt> <tt class="py-name">filestr</tt><tt class="py-op">)</tt> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">filestr</tt> </tt>
+</div><a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line"> </tt>
+<a name="latex_figure"></a><div id="latex_figure-def"><a name="L47"></a><tt class="py-lineno"> 47</tt> <a class="py-toggle" href="#" id="latex_figure-toggle" onclick="return toggle('latex_figure');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="doconce.latex-module.html#latex_figure">latex_figure</a><tt class="py-op">(</tt><tt class="py-param">m</tt><tt class="py-op">,</tt> <tt class="py-param">includegraphics</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="latex_figure-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="latex_figure-expanded"><a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line">    <tt class="py-name">filename</tt> <tt class="py-op">=</tt> <tt class="py-name">m</tt><tt class="py-op">.</tt><tt class="py-name">group</tt><tt class="py-op">(</tt><tt class="py-string">'filename'</tt><tt class="py-op">)</tt> </tt>
+<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line">    <tt class="py-name">basename</tt>  <tt class="py-op">=</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">basename</tt><tt class="py-op">(</tt><tt class="py-name">filename</tt><tt class="py-op">)</tt> </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line">    <tt class="py-name">stem</tt><tt class="py-op">,</tt> <tt class="py-name">ext</tt> <tt class="py-op">=</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">splitext</tt><tt class="py-op">(</tt><tt class="py-name">basename</tt><tt class="py-op">)</tt> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line">    <tt class="py-comment">#root, ext = os.path.splitext(filename)</tt> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line">    <tt class="py-comment"># doconce.py ensures that images are transformed to .ps or .eps</tt> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line"> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line">    <tt class="py-comment"># note that label{...} are substituted by \label{...} (inline</tt> </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line">    <tt class="py-comment"># label tag) so we write just label and not \label below:</tt> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line"> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line">    <tt class="py-name">frac</tt> <tt class="py-op">=</tt> <tt class="py-number">0.9</tt> </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line">    <tt class="py-name">opts</tt> <tt class="py-op">=</tt> <tt class="py-name">m</tt><tt class="py-op">.</tt><tt class="py-name">group</tt><tt class="py-op">(</tt><tt class="py-string">'options'</tt><tt class="py-op">)</tt> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">opts</tt><tt class="py-op">:</tt> </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line">        <tt class="py-name">info</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-name">s</tt><tt class="py-op">.</tt><tt class="py-name">split</tt><tt class="py-op">(</tt><tt class="py-string">'='</tt><tt class="py-op">)</tt> <tt class="py-keyword">for</tt> <tt class="py-name">s</tt> <tt class="py-keyword">in</tt> <tt class="py-name">opts</tt><tt class="py-op">.</tt><tt class="py-name">split</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">]</tt> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">option</tt><tt class="py-op">,</tt> <tt id="link-10" class="py-name" targets="Variable doconce.DocWriter.value=doconce.DocWriter-module.html#value"><a title="doconce.DocWriter.value" class="py-name" href="#" onclick="return doclink('link-10', 'value', 'link-10');">value</a></tt> <tt class="py-keyword">in</tt> <tt class="py-name">info</tt><tt class="py-op">:</tt> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">option</tt> <tt class="py-op">==</tt> <tt class="py-string">'frac'</tt><tt class="py-op">:</tt> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line">                <tt class="py-name">frac</tt> <tt class="py-op">=</tt> <tt class="py-name">float</tt><tt class="py-op">(</tt><tt id="link-11" class="py-name"><a title="doconce.DocWriter.value" class="py-name" href="#" onclick="return doclink('link-11', 'value', 'link-10');">value</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">includegraphics</tt><tt class="py-op">:</tt> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line">        <tt class="py-name">includeline</tt> <tt class="py-op">=</tt> <tt class="py-string">r'\centerline{\includegraphics[width=%s\linewidth]{%s}}'</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">frac</tt><tt class="py-op">,</tt> <tt class="py-name">filename</tt><tt class="py-op">)</tt> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line">    <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line">        <tt class="py-name">includeline</tt> <tt class="py-op">=</tt> <tt class="py-string">r'\centerline{\psfig{figure=%s,width=%s\linewidth}}'</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">filename</tt><tt class="py-op">,</tt> <tt class="py-name">frac</tt><tt class="py-op">)</tt> </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line"> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line">    <tt class="py-name">caption</tt> <tt class="py-op">=</tt> <tt class="py-name">m</tt><tt class="py-op">.</tt><tt class="py-name">group</tt><tt class="py-op">(</tt><tt class="py-string">'caption'</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">strip</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line">    <tt class="py-comment"># `verbatim text` in backquotes does not work so we need to substitute</tt> </tt>
+<a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line">    <tt class="py-comment"># by \texttt{}, and underscores need a backslash</tt> </tt>
+<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line">    <tt class="py-name">verbatim_text</tt> <tt class="py-op">=</tt> <tt class="py-name">re</tt><tt class="py-op">.</tt><tt class="py-name">findall</tt><tt class="py-op">(</tt><tt class="py-string">r'(`[^`]+?`)'</tt><tt class="py-op">,</tt> <tt class="py-name">caption</tt><tt class="py-op">)</tt> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line">    <tt class="py-name">verbatim_text_new</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt class="py-name">words</tt> <tt class="py-keyword">in</tt> <tt class="py-name">verbatim_text</tt><tt class="py-op">:</tt> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line">        <tt class="py-name">new_words</tt> <tt class="py-op">=</tt> <tt class="py-name">words</tt> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-string">'_'</tt> <tt class="py-keyword">in</tt> <tt class="py-name">new_words</tt><tt class="py-op">:</tt> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line">            <tt class="py-name">new_words</tt> <tt class="py-op">=</tt> <tt class="py-name">new_words</tt><tt class="py-op">.</tt><tt class="py-name">replace</tt><tt class="py-op">(</tt><tt class="py-string">'_'</tt><tt class="py-op">,</tt> <tt class="py-string">r'\_'</tt><tt class="py-op">)</tt> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line">        <tt class="py-comment"># Replace backquotes by {\rm\texttt{}}</tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line">        <tt class="py-name">new_words</tt> <tt class="py-op">=</tt> <tt class="py-string">r'{\rm\texttt{'</tt> <tt class="py-op">+</tt> <tt class="py-name">new_words</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">:</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">]</tt> <tt class="py-op">+</tt> <tt class="py-string">'}}'</tt> </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line">        <tt class="py-name">verbatim_text_new</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">new_words</tt><tt class="py-op">)</tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt class="py-name">from_</tt><tt class="py-op">,</tt> <tt class="py-name">to_</tt> <tt class="py-keyword">in</tt> <tt class="py-name">zip</tt><tt class="py-op">(</tt><tt class="py-name">verbatim_text</tt><tt class="py-op">,</tt> <tt class="py-name">verbatim_text_new</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line">        <tt class="py-name">caption</tt> <tt class="py-op">=</tt> <tt class="py-name">caption</tt><tt class="py-op">.</tt><tt class="py-name">replace</tt><tt class="py-op">(</tt><tt class="py-name">from_</tt><tt class="py-op">,</tt> <tt class="py-name">to_</tt><tt class="py-op">)</tt> </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">caption</tt><tt class="py-op">:</tt> </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line">        <tt class="py-name">result</tt> <tt class="py-op">=</tt> <tt class="py-string">r"""</tt> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line"><tt class="py-string">\begin{figure}</tt> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line"><tt class="py-string">  %s</tt> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line"><tt class="py-string">  \caption{</tt> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line"><tt class="py-string">  %s</tt> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line"><tt class="py-string">  }</tt> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line"><tt class="py-string">\end{figure}</tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line"><tt class="py-string">"""</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">includeline</tt><tt class="py-op">,</tt> <tt class="py-name">caption</tt><tt class="py-op">)</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line">    <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line">        <tt class="py-comment"># drop caption</tt> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line">        <tt class="py-name">result</tt> <tt class="py-op">=</tt> <tt class="py-string">r"""</tt> </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line"><tt class="py-string">\begin{figure}</tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line"><tt class="py-string">  %s</tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line"><tt class="py-string">  %%\caption{}</tt> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line"><tt class="py-string">\end{figure}</tt> </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line"><tt class="py-string">"""</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">includeline</tt><tt class="py-op">)</tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">result</tt> </tt>
+</div><a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line"> </tt>
+<a name="latex_movie"></a><div id="latex_movie-def"><a name="L102"></a><tt class="py-lineno">102</tt> <a class="py-toggle" href="#" id="latex_movie-toggle" onclick="return toggle('latex_movie');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="doconce.latex-module.html#latex_movie">latex_movie</a><tt class="py-op">(</tt><tt class="py-param">m</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="latex_movie-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="latex_movie-expanded"><a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line">    <tt class="py-keyword">from</tt> <tt id="link-12" class="py-name" targets="Module doconce.plaintext=doconce.plaintext-module.html"><a title="doconce.plaintext" class="py-name" href="#" onclick="return doclink('link-12', 'plaintext', 'link-12');">plaintext</a></tt> <tt class="py-keyword">import</tt> <tt id="link-13" class="py-name" targets="Function doconce.common.default_movie()=doconce.common-module.html#default_movie"><a title="doconce.common.default_movie" class="py-name" href="#" onclick="return doclink('link-13', 'default_movie', 'link-13');">default_movie</a></tt> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line">    <tt id="link-14" class="py-name" targets="Method doconce.DocWriter.Doconce.text()=doconce.DocWriter.Doconce-class.html#text,Method doconce.DocWriter.HTML.text()=doconce.DocWriter.HTML-class.html#text,Method doconce.DocWriter._BaseWriter.text()=doconce.DocWriter._BaseWriter-class.html#text"><a title="doconce.DocWriter.Doconce.text
+doconce.DocWriter.HTML.text
+doconce.DocWriter._BaseWriter.text" class="py-name" href="#" onclick="return doclink('link-14', 'text', 'link-14');">text</a></tt> <tt class="py-op">=</tt> <tt id="link-15" class="py-name"><a title="doconce.common.default_movie" class="py-name" href="#" onclick="return doclink('link-15', 'default_movie', 'link-13');">default_movie</a></tt><tt class="py-op">(</tt><tt class="py-name">m</tt><tt class="py-op">)</tt> </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line"> </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line">    <tt class="py-comment"># URL to HTML viewer file must have absolute path in \href</tt> </tt>
+<a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line">    <tt class="py-name">html_viewer_file_pattern</tt> <tt class="py-op">=</tt> <tt class="py-string">r'Movie of files `.+` in URL:"(.+)"'</tt> </tt>
+<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line">    <tt class="py-name">m2</tt> <tt class="py-op">=</tt> <tt class="py-name">re</tt><tt class="py-op">.</tt><tt class="py-name">search</tt><tt class="py-op">(</tt><tt class="py-name">html_viewer_file_pattern</tt><tt class="py-op">,</tt> <tt id="link-16" class="py-name"><a title="doconce.DocWriter.Doconce.text
+doconce.DocWriter.HTML.text
+doconce.DocWriter._BaseWriter.text" class="py-name" href="#" onclick="return doclink('link-16', 'text', 'link-14');">text</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">m2</tt><tt class="py-op">:</tt> </tt>
+<a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line">        <tt class="py-name">html_viewer_file</tt> <tt class="py-op">=</tt> <tt class="py-name">m2</tt><tt class="py-op">.</tt><tt class="py-name">group</tt><tt class="py-op">(</tt><tt class="py-number">1</tt><tt class="py-op">)</tt> </tt>
+<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">isfile</tt><tt class="py-op">(</tt><tt class="py-name">html_viewer_file</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line">            <tt class="py-name">html_viewer_file_abs</tt> <tt class="py-op">=</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">abspath</tt><tt class="py-op">(</tt><tt class="py-name">html_viewer_file</tt><tt class="py-op">)</tt> </tt>
+<a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line">            <tt id="link-17" class="py-name"><a title="doconce.DocWriter.Doconce.text
+doconce.DocWriter.HTML.text
+doconce.DocWriter._BaseWriter.text" class="py-name" href="#" onclick="return doclink('link-17', 'text', 'link-14');">text</a></tt> <tt class="py-op">=</tt> <tt id="link-18" class="py-name"><a title="doconce.DocWriter.Doconce.text
+doconce.DocWriter.HTML.text
+doconce.DocWriter._BaseWriter.text" class="py-name" href="#" onclick="return doclink('link-18', 'text', 'link-14');">text</a></tt><tt class="py-op">.</tt><tt class="py-name">replace</tt><tt class="py-op">(</tt><tt class="py-string">'URL:"%s"'</tt> <tt class="py-op">%</tt> <tt class="py-name">html_viewer_file</tt><tt class="py-op">,</tt> </tt>
+<a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line">                                <tt class="py-string">'URL:"file://%s"'</tt> <tt class="py-op">%</tt> <tt class="py-name">html_viewer_file_abs</tt><tt class="py-op">)</tt> </tt>
+<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line"> </tt>
+<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line"> </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-string">': play URL:'</tt> <tt class="py-keyword">in</tt> <tt id="link-19" class="py-name"><a title="doconce.DocWriter.Doconce.text
+doconce.DocWriter.HTML.text
+doconce.DocWriter._BaseWriter.text" class="py-name" href="#" onclick="return doclink('link-19', 'text', 'link-14');">text</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line">        <tt class="py-comment"># Drop default_movie, embed in PDF instead using the movie15 package</tt> </tt>
+<a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line">        <tt id="link-20" class="py-name"><a title="doconce.DocWriter.Doconce.text
+doconce.DocWriter.HTML.text
+doconce.DocWriter._BaseWriter.text" class="py-name" href="#" onclick="return doclink('link-20', 'text', 'link-14');">text</a></tt> <tt class="py-op">=</tt> <tt class="py-string">r"""</tt> </tt>
+<a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line"><tt class="py-string">\\begin{figure}[ht]</tt> </tt>
+<a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line"><tt class="py-string">\\begin{center}</tt> </tt>
+<a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line"><tt class="py-string"></tt> </tt>
+<a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line"><tt class="py-string">% #ifdef MOVIE15</tt> </tt>
+<a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line"><tt class="py-string">\includemovie[poster,</tt> </tt>
+<a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line"><tt class="py-string">label=\g&lt;filename&gt;,</tt> </tt>
+<a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line"><tt class="py-string">autoplay,</tt> </tt>
+<a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line"><tt class="py-string">%controls,</tt> </tt>
+<a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line"><tt class="py-string">%toolbar,</tt> </tt>
+<a name="L129"></a><tt class="py-lineno">129</tt>  <tt class="py-line"><tt class="py-string">% #ifdef EXTERNAL_MOVIE_VIEWER</tt> </tt>
+<a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line"><tt class="py-string">externalviewer,</tt> </tt>
+<a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line"><tt class="py-string">% #endif</tt> </tt>
+<a name="L132"></a><tt class="py-lineno">132</tt>  <tt class="py-line"><tt class="py-string">text={\small (Loading \g&lt;filename&gt;)},</tt> </tt>
+<a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line"><tt class="py-string">repeat,</tt> </tt>
+<a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line"><tt class="py-string">]{0.9\linewidth}{0.9\linewidth}{\g&lt;filename&gt;}    % requires \usepackage{movie15}</tt> </tt>
+<a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line"><tt class="py-string">% #ifndef EXTERNAL_MOVIE_VIEWER</tt> </tt>
+<a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line"><tt class="py-string">\movieref[rate=0.5]{\g&lt;filename&gt;}{Slower}</tt> </tt>
+<a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line"><tt class="py-string">\movieref[rate=2]{\g&lt;filename&gt;}{Faster}</tt> </tt>
+<a name="L138"></a><tt class="py-lineno">138</tt>  <tt class="py-line"><tt class="py-string">\movieref[default]{\g&lt;filename&gt;}{Normal}</tt> </tt>
+<a name="L139"></a><tt class="py-lineno">139</tt>  <tt class="py-line"><tt class="py-string">\movieref[pause]{\g&lt;filename&gt;}{Play/Pause}</tt> </tt>
+<a name="L140"></a><tt class="py-lineno">140</tt>  <tt class="py-line"><tt class="py-string">\movieref[stop]{\g&lt;filename&gt;}{Stop}</tt> </tt>
+<a name="L141"></a><tt class="py-lineno">141</tt>  <tt class="py-line"><tt class="py-string">% #else</tt> </tt>
+<a name="L142"></a><tt class="py-lineno">142</tt>  <tt class="py-line"><tt class="py-string">\href{run:\g&lt;filename&gt;}{\g&lt;filename&gt;}</tt> </tt>
+<a name="L143"></a><tt class="py-lineno">143</tt>  <tt class="py-line"><tt class="py-string">% #endif</tt> </tt>
+<a name="L144"></a><tt class="py-lineno">144</tt>  <tt class="py-line"><tt class="py-string"></tt> </tt>
+<a name="L145"></a><tt class="py-lineno">145</tt>  <tt class="py-line"><tt class="py-string">% #else</tt> </tt>
+<a name="L146"></a><tt class="py-lineno">146</tt>  <tt class="py-line"><tt class="py-string">\href{run:\g&lt;filename&gt;}{\g&lt;filename&gt;}</tt> </tt>
+<a name="L147"></a><tt class="py-lineno">147</tt>  <tt class="py-line"><tt class="py-string"></tt> </tt>
+<a name="L148"></a><tt class="py-lineno">148</tt>  <tt class="py-line"><tt class="py-string">% alternative: \movie command that comes with beamer</tt> </tt>
+<a name="L149"></a><tt class="py-lineno">149</tt>  <tt class="py-line"><tt class="py-string">% \movie[options]{\g&lt;filename&gt;}{\g&lt;filename&gt;}</tt> </tt>
+<a name="L150"></a><tt class="py-lineno">150</tt>  <tt class="py-line"><tt class="py-string">% #endif</tt> </tt>
+<a name="L151"></a><tt class="py-lineno">151</tt>  <tt class="py-line"><tt class="py-string">\end{center}</tt> </tt>
+<a name="L152"></a><tt class="py-lineno">152</tt>  <tt class="py-line"><tt class="py-string">\caption{\g&lt;caption&gt;}</tt> </tt>
+<a name="L153"></a><tt class="py-lineno">153</tt>  <tt class="py-line"><tt class="py-string">\end{figure}</tt> </tt>
+<a name="L154"></a><tt class="py-lineno">154</tt>  <tt class="py-line"><tt class="py-string">"""</tt> </tt>
+<a name="L155"></a><tt class="py-lineno">155</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt id="link-21" class="py-name"><a title="doconce.DocWriter.Doconce.text
+doconce.DocWriter.HTML.text
+doconce.DocWriter._BaseWriter.text" class="py-name" href="#" onclick="return doclink('link-21', 'text', 'link-14');">text</a></tt> </tt>
+</div><a name="L156"></a><tt class="py-lineno">156</tt>  <tt class="py-line"> </tt>
+<a name="latex_table"></a><div id="latex_table-def"><a name="L157"></a><tt class="py-lineno">157</tt> <a class="py-toggle" href="#" id="latex_table-toggle" onclick="return toggle('latex_table');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="doconce.latex-module.html#latex_table">latex_table</a><tt class="py-op">(</tt><tt class="py-param">table</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="latex_table-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="latex_table-expanded"><a name="L158"></a><tt class="py-lineno">158</tt>  <tt class="py-line">    <tt class="py-name">column_width</tt> <tt class="py-op">=</tt> <tt id="link-22" class="py-name"><a title="doconce.common.table_analysis" class="py-name" href="#" onclick="return doclink('link-22', 'table_analysis', 'link-2');">table_analysis</a></tt><tt class="py-op">(</tt><tt id="link-23" class="py-name" targets="Method doconce.DocWriter.Doconce.table()=doconce.DocWriter.Doconce-class.html#table,Method doconce.DocWriter.HTML.table()=doconce.DocWriter.HTML-class.html#table,Method doconce.DocWriter._BaseWriter.table()=doconce.DocWriter._BaseWriter-class.html#table"><a title="doconce.DocWriter.Doconce.table
+doconce.DocWriter.HTML.table
+doconce.DocWriter._BaseWriter.table" class="py-name" href="#" onclick="return doclink('link-23', 'table', 'link-23');">table</a></tt><tt class="py-op">[</tt><tt class="py-string">'rows'</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L159"></a><tt class="py-lineno">159</tt>  <tt class="py-line"> </tt>
+<a name="L160"></a><tt class="py-lineno">160</tt>  <tt class="py-line">    <tt class="py-comment">#ncolumns = max(len(row) for row in table['rows'])</tt> </tt>
+<a name="L161"></a><tt class="py-lineno">161</tt>  <tt class="py-line">    <tt class="py-name">ncolumns</tt> <tt class="py-op">=</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">column_width</tt><tt class="py-op">)</tt> </tt>
+<a name="L162"></a><tt class="py-lineno">162</tt>  <tt class="py-line">    <tt class="py-comment">#import pprint; pprint.pprint(table)</tt> </tt>
+<a name="L163"></a><tt class="py-lineno">163</tt>  <tt class="py-line">    <tt class="py-name">column_spec</tt> <tt class="py-op">=</tt> <tt id="link-24" class="py-name"><a title="doconce.DocWriter.Doconce.table
+doconce.DocWriter.HTML.table
+doconce.DocWriter._BaseWriter.table" class="py-name" href="#" onclick="return doclink('link-24', 'table', 'link-23');">table</a></tt><tt class="py-op">.</tt><tt class="py-name">get</tt><tt class="py-op">(</tt><tt class="py-string">'columns_align'</tt><tt class="py-op">,</tt> <tt class="py-string">'c'</tt><tt class="py-op">*</tt><tt class="py-name">ncolumns</tt><tt class="py-op">)</tt> </tt>
+<a name="L164"></a><tt class="py-lineno">164</tt>  <tt class="py-line">    <tt class="py-name">column_spec</tt> <tt class="py-op">=</tt> <tt class="py-name">column_spec</tt><tt class="py-op">.</tt><tt class="py-name">replace</tt><tt class="py-op">(</tt><tt class="py-string">'|'</tt><tt class="py-op">,</tt> <tt class="py-string">''</tt><tt class="py-op">)</tt> </tt>
+<a name="L165"></a><tt class="py-lineno">165</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">column_spec</tt><tt class="py-op">)</tt> <tt class="py-op">!=</tt> <tt class="py-name">ncolumns</tt><tt class="py-op">:</tt>  <tt class="py-comment"># (allow | separators)</tt> </tt>
+<a name="L166"></a><tt class="py-lineno">166</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">'Table has column alignment specification: %s, but %d columns'</tt> \ </tt>
+<a name="L167"></a><tt class="py-lineno">167</tt>  <tt class="py-line">              <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">column_spec</tt><tt class="py-op">,</tt> <tt class="py-name">ncolumns</tt><tt class="py-op">)</tt> </tt>
+<a name="L168"></a><tt class="py-lineno">168</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">'Table with rows'</tt><tt class="py-op">,</tt> <tt id="link-25" class="py-name"><a title="doconce.DocWriter.Doconce.table
+doconce.DocWriter.HTML.table
+doconce.DocWriter._BaseWriter.table" class="py-name" href="#" onclick="return doclink('link-25', 'table', 'link-23');">table</a></tt><tt class="py-op">[</tt><tt class="py-string">'rows'</tt><tt class="py-op">]</tt> </tt>
+<a name="L169"></a><tt class="py-lineno">169</tt>  <tt class="py-line">        <tt class="py-name">sys</tt><tt class="py-op">.</tt><tt class="py-name">exit</tt><tt class="py-op">(</tt><tt class="py-number">1</tt><tt class="py-op">)</tt> </tt>
+<a name="L170"></a><tt class="py-lineno">170</tt>  <tt class="py-line"> </tt>
+<a name="L171"></a><tt class="py-lineno">171</tt>  <tt class="py-line">    <tt class="py-comment"># we do not support | in headings alignments (could be fixed,</tt> </tt>
+<a name="L172"></a><tt class="py-lineno">172</tt>  <tt class="py-line">    <tt class="py-comment"># by making column_spec not a string but a list so the</tt> </tt>
+<a name="L173"></a><tt class="py-lineno">173</tt>  <tt class="py-line">    <tt class="py-comment"># right elements are picked in the zip-based loop)</tt> </tt>
+<a name="L174"></a><tt class="py-lineno">174</tt>  <tt class="py-line">    <tt class="py-name">heading_spec</tt> <tt class="py-op">=</tt> <tt id="link-26" class="py-name"><a title="doconce.DocWriter.Doconce.table
+doconce.DocWriter.HTML.table
+doconce.DocWriter._BaseWriter.table" class="py-name" href="#" onclick="return doclink('link-26', 'table', 'link-23');">table</a></tt><tt class="py-op">.</tt><tt class="py-name">get</tt><tt class="py-op">(</tt><tt class="py-string">'headings_align'</tt><tt class="py-op">,</tt> <tt class="py-string">'c'</tt><tt class="py-op">*</tt><tt class="py-name">ncolumns</tt><tt class="py-op">)</tt><tt class="py-comment">#.replace('|', '')</tt> </tt>
+<a name="L175"></a><tt class="py-lineno">175</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">heading_spec</tt><tt class="py-op">)</tt> <tt class="py-op">!=</tt> <tt class="py-name">ncolumns</tt><tt class="py-op">:</tt> </tt>
+<a name="L176"></a><tt class="py-lineno">176</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">'Table has headings alignment specification: %s, '</tt>\ </tt>
+<a name="L177"></a><tt class="py-lineno">177</tt>  <tt class="py-line">              <tt class="py-string">'but %d columns'</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">heading_spec</tt><tt class="py-op">,</tt> <tt class="py-name">ncolumns</tt><tt class="py-op">)</tt> </tt>
+<a name="L178"></a><tt class="py-lineno">178</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">'Table with rows'</tt><tt class="py-op">,</tt> <tt id="link-27" class="py-name"><a title="doconce.DocWriter.Doconce.table
+doconce.DocWriter.HTML.table
+doconce.DocWriter._BaseWriter.table" class="py-name" href="#" onclick="return doclink('link-27', 'table', 'link-23');">table</a></tt><tt class="py-op">[</tt><tt class="py-string">'rows'</tt><tt class="py-op">]</tt> </tt>
+<a name="L179"></a><tt class="py-lineno">179</tt>  <tt class="py-line">        <tt class="py-name">sys</tt><tt class="py-op">.</tt><tt class="py-name">exit</tt><tt class="py-op">(</tt><tt class="py-number">1</tt><tt class="py-op">)</tt> </tt>
+<a name="L180"></a><tt class="py-lineno">180</tt>  <tt class="py-line"> </tt>
+<a name="L181"></a><tt class="py-lineno">181</tt>  <tt class="py-line">    <tt class="py-name">s</tt> <tt class="py-op">=</tt> <tt class="py-string">'\n'</tt> <tt class="py-op">+</tt> <tt class="py-string">r'\begin{quote}\begin{tabular}{%s}'</tt> <tt class="py-op">%</tt> <tt class="py-name">column_spec</tt> <tt class="py-op">+</tt> <tt class="py-string">'\n'</tt> </tt>
+<a name="L182"></a><tt class="py-lineno">182</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt class="py-name">i</tt><tt class="py-op">,</tt> <tt class="py-name">row</tt> <tt class="py-keyword">in</tt> <tt class="py-name">enumerate</tt><tt class="py-op">(</tt><tt id="link-28" class="py-name"><a title="doconce.DocWriter.Doconce.table
+doconce.DocWriter.HTML.table
+doconce.DocWriter._BaseWriter.table" class="py-name" href="#" onclick="return doclink('link-28', 'table', 'link-23');">table</a></tt><tt class="py-op">[</tt><tt class="py-string">'rows'</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L183"></a><tt class="py-lineno">183</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">row</tt> <tt class="py-op">==</tt> <tt class="py-op">[</tt><tt class="py-string">'horizontal rule'</tt><tt class="py-op">]</tt><tt class="py-op">:</tt> </tt>
+<a name="L184"></a><tt class="py-lineno">184</tt>  <tt class="py-line">            <tt class="py-name">s</tt> <tt class="py-op">+=</tt> <tt class="py-string">r'\hline'</tt> <tt class="py-op">+</tt> <tt class="py-string">'\n'</tt> </tt>
+<a name="L185"></a><tt class="py-lineno">185</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L186"></a><tt class="py-lineno">186</tt>  <tt class="py-line">            <tt class="py-comment"># check if this is a headline between two horizontal rules:</tt> </tt>
+<a name="L187"></a><tt class="py-lineno">187</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">i</tt> <tt class="py-op">==</tt> <tt class="py-number">1</tt> <tt class="py-keyword">and</tt> \ </tt>
+<a name="L188"></a><tt class="py-lineno">188</tt>  <tt class="py-line">               <tt id="link-29" class="py-name"><a title="doconce.DocWriter.Doconce.table
+doconce.DocWriter.HTML.table
+doconce.DocWriter._BaseWriter.table" class="py-name" href="#" onclick="return doclink('link-29', 'table', 'link-23');">table</a></tt><tt class="py-op">[</tt><tt class="py-string">'rows'</tt><tt class="py-op">]</tt><tt class="py-op">[</tt><tt class="py-name">i</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">]</tt> <tt class="py-op">==</tt> <tt class="py-op">[</tt><tt class="py-string">'horizontal rule'</tt><tt class="py-op">]</tt> <tt class="py-keyword">and</tt> \ </tt>
+<a name="L189"></a><tt class="py-lineno">189</tt>  <tt class="py-line">               <tt id="link-30" class="py-name"><a title="doconce.DocWriter.Doconce.table
+doconce.DocWriter.HTML.table
+doconce.DocWriter._BaseWriter.table" class="py-name" href="#" onclick="return doclink('link-30', 'table', 'link-23');">table</a></tt><tt class="py-op">[</tt><tt class="py-string">'rows'</tt><tt class="py-op">]</tt><tt class="py-op">[</tt><tt class="py-name">i</tt><tt class="py-op">+</tt><tt class="py-number">1</tt><tt class="py-op">]</tt> <tt class="py-op">==</tt> <tt class="py-op">[</tt><tt class="py-string">'horizontal rule'</tt><tt class="py-op">]</tt><tt class="py-op">:</tt> </tt>
+<a name="L190"></a><tt class="py-lineno">190</tt>  <tt class="py-line">                <tt class="py-name">headline</tt> <tt class="py-op">=</tt> <tt class="py-name">True</tt> </tt>
+<a name="L191"></a><tt class="py-lineno">191</tt>  <tt class="py-line">            <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L192"></a><tt class="py-lineno">192</tt>  <tt class="py-line">                <tt class="py-name">headline</tt> <tt class="py-op">=</tt> <tt class="py-name">False</tt> </tt>
+<a name="L193"></a><tt class="py-lineno">193</tt>  <tt class="py-line"> </tt>
+<a name="L194"></a><tt class="py-lineno">194</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">headline</tt><tt class="py-op">:</tt> </tt>
+<a name="L195"></a><tt class="py-lineno">195</tt>  <tt class="py-line">                <tt class="py-name">row</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-string">r'\multicolumn{1}{%s}{%s}'</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt id="link-31" class="py-name" targets="Variable doconce.DocWriter.a=doconce.DocWriter-module.html#a"><a title="doconce.DocWriter.a" class="py-name" href="#" onclick="return doclink('link-31', 'a', 'link-31');">a</a></tt><tt class="py-op">,</tt> <tt class="py-name">r</tt><tt class="py-op">)</tt> \ </tt>
+<a name="L196"></a><tt class="py-lineno">196</tt>  <tt class="py-line">                       <tt class="py-keyword">for</tt> <tt class="py-name">r</tt><tt class="py-op">,</tt> <tt id="link-32" class="py-name"><a title="doconce.DocWriter.a" class="py-name" href="#" onclick="return doclink('link-32', 'a', 'link-31');">a</a></tt> <tt class="py-keyword">in</tt> <tt class="py-name">zip</tt><tt class="py-op">(</tt><tt class="py-name">row</tt><tt class="py-op">,</tt> <tt class="py-name">heading_spec</tt><tt class="py-op">)</tt><tt class="py-op">]</tt> </tt>
+<a name="L197"></a><tt class="py-lineno">197</tt>  <tt class="py-line">            <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L198"></a><tt class="py-lineno">198</tt>  <tt class="py-line">                <tt class="py-name">row</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-name">r</tt><tt class="py-op">.</tt><tt class="py-name">ljust</tt><tt class="py-op">(</tt><tt class="py-name">w</tt><tt class="py-op">)</tt> <tt class="py-keyword">for</tt> <tt class="py-name">r</tt><tt class="py-op">,</tt> <tt class="py-name">w</tt> <tt class="py-keyword">in</tt> <tt class="py-name">zip</tt><tt class="py-op">(</tt><tt class="py-name">row</tt><tt class="py-op">,</tt> <tt class="py-name">column_width</tt><tt class="py-op">)</tt><tt class="py-op">]</tt> </tt>
+<a name="L199"></a><tt class="py-lineno">199</tt>  <tt class="py-line"> </tt>
+<a name="L200"></a><tt class="py-lineno">200</tt>  <tt class="py-line">            <tt class="py-name">s</tt> <tt class="py-op">+=</tt> <tt class="py-string">' &amp; '</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt class="py-name">row</tt><tt class="py-op">)</tt> <tt class="py-op">+</tt> <tt class="py-string">' \\\\\n'</tt> </tt>
+<a name="L201"></a><tt class="py-lineno">201</tt>  <tt class="py-line"> </tt>
+<a name="L202"></a><tt class="py-lineno">202</tt>  <tt class="py-line">    <tt class="py-name">s</tt> <tt class="py-op">+=</tt> <tt class="py-string">r'\end{tabular}\end{quote}'</tt> <tt class="py-op">+</tt> <tt class="py-string">'\n\n'</tt> <tt class="py-op">+</tt> <tt class="py-string">r'\noindent'</tt> <tt class="py-op">+</tt> <tt class="py-string">'\n'</tt> </tt>
+<a name="L203"></a><tt class="py-lineno">203</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">s</tt> </tt>
+</div><a name="L204"></a><tt class="py-lineno">204</tt>  <tt class="py-line"> </tt>
+<a name="latex_title"></a><div id="latex_title-def"><a name="L205"></a><tt class="py-lineno">205</tt> <a class="py-toggle" href="#" id="latex_title-toggle" onclick="return toggle('latex_title');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="doconce.latex-module.html#latex_title">latex_title</a><tt class="py-op">(</tt><tt class="py-param">m</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="latex_title-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="latex_title-expanded"><a name="L206"></a><tt class="py-lineno">206</tt>  <tt class="py-line">    <tt id="link-33" class="py-name" targets="Method doconce.DocWriter.Doconce.title()=doconce.DocWriter.Doconce-class.html#title,Method doconce.DocWriter.HTML.title()=doconce.DocWriter.HTML-class.html#title,Method doconce.DocWriter._BaseWriter.title()=doconce.DocWriter._BaseWriter-class.html#title"><a title="doconce.DocWriter.Doconce.title
+doconce.DocWriter.HTML.title
+doconce.DocWriter._BaseWriter.title" class="py-name" href="#" onclick="return doclink('link-33', 'title', 'link-33');">title</a></tt> <tt class="py-op">=</tt> <tt class="py-name">m</tt><tt class="py-op">.</tt><tt class="py-name">group</tt><tt class="py-op">(</tt><tt class="py-string">'subst'</tt><tt class="py-op">)</tt> </tt>
+<a name="L207"></a><tt class="py-lineno">207</tt>  <tt class="py-line">    <tt class="py-comment"># Make appropriate linebreaks for the default typesetting</tt> </tt>
+<a name="L208"></a><tt class="py-lineno">208</tt>  <tt class="py-line">    <tt class="py-keyword">import</tt> <tt class="py-name">textwrap</tt> </tt>
+<a name="L209"></a><tt class="py-lineno">209</tt>  <tt class="py-line">    <tt class="py-name">default_title</tt> <tt class="py-op">=</tt> <tt class="py-string">r' \\\\ [1.5mm] '</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt class="py-name">textwrap</tt><tt class="py-op">.</tt><tt class="py-name">wrap</tt><tt class="py-op">(</tt><tt id="link-34" class="py-name"><a title="doconce.DocWriter.Doconce.title
+doconce.DocWriter.HTML.title
+doconce.DocWriter._BaseWriter.title" class="py-name" href="#" onclick="return doclink('link-34', 'title', 'link-33');">title</a></tt><tt class="py-op">,</tt> <tt class="py-name">width</tt><tt class="py-op">=</tt><tt class="py-number">38</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L210"></a><tt class="py-lineno">210</tt>  <tt class="py-line"> </tt>
+<a name="L211"></a><tt class="py-lineno">211</tt>  <tt class="py-line">    <tt id="link-35" class="py-name"><a title="doconce.DocWriter.Doconce.text
+doconce.DocWriter.HTML.text
+doconce.DocWriter._BaseWriter.text" class="py-name" href="#" onclick="return doclink('link-35', 'text', 'link-14');">text</a></tt> <tt class="py-op">=</tt> <tt id="link-36" class="py-name" targets="Function doconce.latex.fix_latex_command_regex()=doconce.latex-module.html#fix_latex_command_regex"><a title="doconce.latex.fix_latex_command_regex" class="py-name" href="#" onclick="return doclink('link-36', 'fix_latex_command_regex', 'link-36');">fix_latex_command_regex</a></tt><tt class="py-op">(</tt><tt class="py-name">pattern</tt><tt class="py-op">=</tt><tt class="py-string">r"""</tt> </tt>
+<a name="L212"></a><tt class="py-lineno">212</tt>  <tt class="py-line"><tt class="py-string"></tt> </tt>
+<a name="L213"></a><tt class="py-lineno">213</tt>  <tt class="py-line"><tt class="py-string">%% #ifndef LATEX_HEADING</tt> </tt>
+<a name="L214"></a><tt class="py-lineno">214</tt>  <tt class="py-line"><tt class="py-string">%% #define LATEX_HEADING</tt> </tt>
+<a name="L215"></a><tt class="py-lineno">215</tt>  <tt class="py-line"><tt class="py-string">%% #endif</tt> </tt>
+<a name="L216"></a><tt class="py-lineno">216</tt>  <tt class="py-line"><tt class="py-string"></tt> </tt>
+<a name="L217"></a><tt class="py-lineno">217</tt>  <tt class="py-line"><tt class="py-string">%% ----------------- Title -------------------------</tt> </tt>
+<a name="L218"></a><tt class="py-lineno">218</tt>  <tt class="py-line"><tt class="py-string">%% #if LATEX_HEADING == "traditional"</tt> </tt>
+<a name="L219"></a><tt class="py-lineno">219</tt>  <tt class="py-line"><tt class="py-string"></tt> </tt>
+<a name="L220"></a><tt class="py-lineno">220</tt>  <tt class="py-line"><tt class="py-string">\title{%s}</tt> </tt>
+<a name="L221"></a><tt class="py-lineno">221</tt>  <tt class="py-line"><tt class="py-string"></tt> </tt>
+<a name="L222"></a><tt class="py-lineno">222</tt>  <tt class="py-line"><tt class="py-string">%% #elif LATEX_HEADING == "titlepage"</tt> </tt>
+<a name="L223"></a><tt class="py-lineno">223</tt>  <tt class="py-line"><tt class="py-string"></tt> </tt>
+<a name="L224"></a><tt class="py-lineno">224</tt>  <tt class="py-line"><tt class="py-string">\thispagestyle{empty}</tt> </tt>
+<a name="L225"></a><tt class="py-lineno">225</tt>  <tt class="py-line"><tt class="py-string">\hbox{\ \ }</tt> </tt>
+<a name="L226"></a><tt class="py-lineno">226</tt>  <tt class="py-line"><tt class="py-string">\vfill</tt> </tt>
+<a name="L227"></a><tt class="py-lineno">227</tt>  <tt class="py-line"><tt class="py-string">\begin{center}</tt> </tt>
+<a name="L228"></a><tt class="py-lineno">228</tt>  <tt class="py-line"><tt class="py-string">{\huge{\bfseries{%s}}}</tt> </tt>
+<a name="L229"></a><tt class="py-lineno">229</tt>  <tt class="py-line"><tt class="py-string"></tt> </tt>
+<a name="L230"></a><tt class="py-lineno">230</tt>  <tt class="py-line"><tt class="py-string">%% #else</tt> </tt>
+<a name="L231"></a><tt class="py-lineno">231</tt>  <tt class="py-line"><tt class="py-string"></tt> </tt>
+<a name="L232"></a><tt class="py-lineno">232</tt>  <tt class="py-line"><tt class="py-string">\begin{center}</tt> </tt>
+<a name="L233"></a><tt class="py-lineno">233</tt>  <tt class="py-line"><tt class="py-string">{\LARGE\bf %s}</tt> </tt>
+<a name="L234"></a><tt class="py-lineno">234</tt>  <tt class="py-line"><tt class="py-string">\end{center}</tt> </tt>
+<a name="L235"></a><tt class="py-lineno">235</tt>  <tt class="py-line"><tt class="py-string"></tt> </tt>
+<a name="L236"></a><tt class="py-lineno">236</tt>  <tt class="py-line"><tt class="py-string">%% #endif</tt> </tt>
+<a name="L237"></a><tt class="py-lineno">237</tt>  <tt class="py-line"><tt class="py-string">"""</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt id="link-37" class="py-name"><a title="doconce.DocWriter.Doconce.title
+doconce.DocWriter.HTML.title
+doconce.DocWriter._BaseWriter.title" class="py-name" href="#" onclick="return doclink('link-37', 'title', 'link-33');">title</a></tt><tt class="py-op">,</tt> <tt id="link-38" class="py-name"><a title="doconce.DocWriter.Doconce.title
+doconce.DocWriter.HTML.title
+doconce.DocWriter._BaseWriter.title" class="py-name" href="#" onclick="return doclink('link-38', 'title', 'link-33');">title</a></tt><tt class="py-op">,</tt> <tt class="py-name">default_title</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">application</tt><tt class="py-op">=</tt><tt class="py-string">'replacement'</tt><tt class="py-op">)</tt> </tt>
+<a name="L238"></a><tt class="py-lineno">238</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt id="link-39" class="py-name"><a title="doconce.DocWriter.Doconce.text
+doconce.DocWriter.HTML.text
+doconce.DocWriter._BaseWriter.text" class="py-name" href="#" onclick="return doclink('link-39', 'text', 'link-14');">text</a></tt> </tt>
+</div><a name="L239"></a><tt class="py-lineno">239</tt>  <tt class="py-line"> </tt>
+<a name="latex_author"></a><div id="latex_author-def"><a name="L240"></a><tt class="py-lineno">240</tt> <a class="py-toggle" href="#" id="latex_author-toggle" onclick="return toggle('latex_author');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="doconce.latex-module.html#latex_author">latex_author</a><tt class="py-op">(</tt><tt class="py-param">authors_and_institutions</tt><tt class="py-op">,</tt> <tt class="py-param">auth2index</tt><tt class="py-op">,</tt> </tt>
+<a name="L241"></a><tt class="py-lineno">241</tt>  <tt class="py-line">                 <tt class="py-param">inst2index</tt><tt class="py-op">,</tt> <tt class="py-param">index2inst</tt><tt class="py-op">,</tt> <tt class="py-param">auth2email</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="latex_author-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="latex_author-expanded"><a name="L242"></a><tt class="py-lineno">242</tt>  <tt class="py-line">    <tt id="link-40" class="py-name"><a title="doconce.DocWriter.Doconce.text
+doconce.DocWriter.HTML.text
+doconce.DocWriter._BaseWriter.text" class="py-name" href="#" onclick="return doclink('link-40', 'text', 'link-14');">text</a></tt> <tt class="py-op">=</tt> <tt class="py-string">r"""</tt> </tt>
+<a name="L243"></a><tt class="py-lineno">243</tt>  <tt class="py-line"><tt class="py-string"></tt> </tt>
+<a name="L244"></a><tt class="py-lineno">244</tt>  <tt class="py-line"><tt class="py-string">% ----------------- Author(s) -------------------------</tt> </tt>
+<a name="L245"></a><tt class="py-lineno">245</tt>  <tt class="py-line"><tt class="py-string">% #if LATEX_HEADING == "traditional"</tt> </tt>
+<a name="L246"></a><tt class="py-lineno">246</tt>  <tt class="py-line"><tt class="py-string">\author{"""</tt> </tt>
+<a name="L247"></a><tt class="py-lineno">247</tt>  <tt class="py-line"> </tt>
+<a name="L248"></a><tt class="py-lineno">248</tt>  <tt class="py-line">    <tt class="py-comment"># Traditional latex heading</tt> </tt>
+<a name="L249"></a><tt class="py-lineno">249</tt>  <tt class="py-line">    <tt class="py-name">author_command</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L250"></a><tt class="py-lineno">250</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt id="link-41" class="py-name"><a title="doconce.DocWriter.a" class="py-name" href="#" onclick="return doclink('link-41', 'a', 'link-31');">a</a></tt><tt class="py-op">,</tt> <tt class="py-name">i</tt><tt class="py-op">,</tt> <tt class="py-name">e</tt> <tt class="py-keyword">in</tt> <tt class="py-name">authors_and_institutions</tt><tt class="py-op">:</tt> </tt>
+<a name="L251"></a><tt class="py-lineno">251</tt>  <tt class="py-line">        <tt class="py-name">a_text</tt> <tt class="py-op">=</tt> <tt id="link-42" class="py-name"><a title="doconce.DocWriter.a" class="py-name" href="#" onclick="return doclink('link-42', 'a', 'link-31');">a</a></tt> </tt>
+<a name="L252"></a><tt class="py-lineno">252</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">e</tt> <tt class="py-keyword">is</tt> <tt class="py-keyword">not</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L253"></a><tt class="py-lineno">253</tt>  <tt class="py-line">            <tt class="py-name">e</tt> <tt class="py-op">=</tt> <tt class="py-name">e</tt><tt class="py-op">.</tt><tt class="py-name">replace</tt><tt class="py-op">(</tt><tt class="py-string">'_'</tt><tt class="py-op">,</tt> <tt class="py-string">r'\_'</tt><tt class="py-op">)</tt> </tt>
+<a name="L254"></a><tt class="py-lineno">254</tt>  <tt class="py-line">            <tt class="py-name">name</tt><tt class="py-op">,</tt> <tt class="py-name">adr</tt> <tt class="py-op">=</tt> <tt class="py-name">e</tt><tt class="py-op">.</tt><tt class="py-name">split</tt><tt class="py-op">(</tt><tt class="py-string">'@'</tt><tt class="py-op">)</tt> </tt>
+<a name="L255"></a><tt class="py-lineno">255</tt>  <tt class="py-line">            <tt class="py-comment">#e_text = r'Email: \texttt{%s} at \texttt{%s}' % (name, adr)</tt> </tt>
+<a name="L256"></a><tt class="py-lineno">256</tt>  <tt class="py-line">            <tt class="py-name">e_text</tt> <tt class="py-op">=</tt> <tt class="py-string">r'Email: \texttt{%s@%s}'</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">name</tt><tt class="py-op">,</tt> <tt class="py-name">adr</tt><tt class="py-op">)</tt> </tt>
+<a name="L257"></a><tt class="py-lineno">257</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L258"></a><tt class="py-lineno">258</tt>  <tt class="py-line">            <tt class="py-name">e_text</tt> <tt class="py-op">=</tt> <tt class="py-string">''</tt> </tt>
+<a name="L259"></a><tt class="py-lineno">259</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">i</tt> <tt class="py-keyword">is</tt> <tt class="py-keyword">not</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L260"></a><tt class="py-lineno">260</tt>  <tt class="py-line">            <tt class="py-name">a_text</tt> <tt class="py-op">+=</tt> <tt class="py-string">r'\footnote{'</tt> </tt>
+<a name="L261"></a><tt class="py-lineno">261</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">i</tt><tt class="py-op">)</tt> <tt class="py-op">==</tt> <tt class="py-number">1</tt><tt class="py-op">:</tt> </tt>
+<a name="L262"></a><tt class="py-lineno">262</tt>  <tt class="py-line">                <tt class="py-name">i_text</tt> <tt class="py-op">=</tt> <tt class="py-name">i</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> </tt>
+<a name="L263"></a><tt class="py-lineno">263</tt>  <tt class="py-line">            <tt class="py-keyword">elif</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">i</tt><tt class="py-op">)</tt> <tt class="py-op">==</tt> <tt class="py-number">2</tt><tt class="py-op">:</tt> </tt>
+<a name="L264"></a><tt class="py-lineno">264</tt>  <tt class="py-line">                <tt class="py-name">i_text</tt> <tt class="py-op">=</tt> <tt class="py-string">' and '</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt class="py-name">i</tt><tt class="py-op">)</tt> </tt>
+<a name="L265"></a><tt class="py-lineno">265</tt>  <tt class="py-line">            <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L266"></a><tt class="py-lineno">266</tt>  <tt class="py-line">                <tt class="py-name">i</tt><tt class="py-op">[</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-string">'and '</tt> <tt class="py-op">+</tt> <tt class="py-name">i</tt><tt class="py-op">[</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">]</tt> </tt>
+<a name="L267"></a><tt class="py-lineno">267</tt>  <tt class="py-line">                <tt class="py-name">i_text</tt> <tt class="py-op">=</tt> <tt class="py-string">'; '</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt class="py-name">i</tt><tt class="py-op">)</tt> </tt>
+<a name="L268"></a><tt class="py-lineno">268</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">e_text</tt><tt class="py-op">:</tt> </tt>
+<a name="L269"></a><tt class="py-lineno">269</tt>  <tt class="py-line">                <tt class="py-name">a_text</tt> <tt class="py-op">+=</tt> <tt class="py-name">e_text</tt> <tt class="py-op">+</tt> <tt class="py-string">'. '</tt> <tt class="py-op">+</tt> <tt class="py-name">i_text</tt> </tt>
+<a name="L270"></a><tt class="py-lineno">270</tt>  <tt class="py-line">            <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L271"></a><tt class="py-lineno">271</tt>  <tt class="py-line">                <tt class="py-name">a_text</tt> <tt class="py-op">+=</tt> <tt class="py-name">i_text</tt> </tt>
+<a name="L272"></a><tt class="py-lineno">272</tt>  <tt class="py-line">            <tt class="py-name">a_text</tt> <tt class="py-op">+=</tt> <tt class="py-string">'.}'</tt> </tt>
+<a name="L273"></a><tt class="py-lineno">273</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> <tt class="py-comment"># Just email</tt> </tt>
+<a name="L274"></a><tt class="py-lineno">274</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">e_text</tt><tt class="py-op">:</tt> </tt>
+<a name="L275"></a><tt class="py-lineno">275</tt>  <tt class="py-line">                <tt class="py-name">a_text</tt> <tt class="py-op">+=</tt> <tt class="py-string">r'\footnote{%s.}'</tt> <tt class="py-op">%</tt> <tt class="py-name">e_text</tt> </tt>
+<a name="L276"></a><tt class="py-lineno">276</tt>  <tt class="py-line">        <tt class="py-name">author_command</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">a_text</tt><tt class="py-op">)</tt> </tt>
+<a name="L277"></a><tt class="py-lineno">277</tt>  <tt class="py-line">    <tt class="py-name">author_command</tt> <tt class="py-op">=</tt> <tt class="py-string">'\n\\and '</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt class="py-name">author_command</tt><tt class="py-op">)</tt> </tt>
+<a name="L278"></a><tt class="py-lineno">278</tt>  <tt class="py-line"> </tt>
+<a name="L279"></a><tt class="py-lineno">279</tt>  <tt class="py-line">    <tt id="link-43" class="py-name"><a title="doconce.DocWriter.Doconce.text
+doconce.DocWriter.HTML.text
+doconce.DocWriter._BaseWriter.text" class="py-name" href="#" onclick="return doclink('link-43', 'text', 'link-14');">text</a></tt> <tt class="py-op">+=</tt> <tt class="py-name">author_command</tt> <tt class="py-op">+</tt> <tt class="py-string">'}\n'</tt> </tt>
+<a name="L280"></a><tt class="py-lineno">280</tt>  <tt class="py-line"> </tt>
+<a name="L281"></a><tt class="py-lineno">281</tt>  <tt class="py-line">    <tt id="link-44" class="py-name"><a title="doconce.DocWriter.Doconce.text
+doconce.DocWriter.HTML.text
+doconce.DocWriter._BaseWriter.text" class="py-name" href="#" onclick="return doclink('link-44', 'text', 'link-14');">text</a></tt> <tt class="py-op">+=</tt> <tt class="py-string">r"""</tt> </tt>
+<a name="L282"></a><tt class="py-lineno">282</tt>  <tt class="py-line"><tt class="py-string">% #elif LATEX_HEADING == "titlepage"</tt> </tt>
+<a name="L283"></a><tt class="py-lineno">283</tt>  <tt class="py-line"><tt class="py-string">\vspace{1.3cm}</tt> </tt>
+<a name="L284"></a><tt class="py-lineno">284</tt>  <tt class="py-line"><tt class="py-string">"""</tt> </tt>
+<a name="L285"></a><tt class="py-lineno">285</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt id="link-45" class="py-name" targets="Variable doconce.author=doconce-module.html#author"><a title="doconce.author" class="py-name" href="#" onclick="return doclink('link-45', 'author', 'link-45');">author</a></tt> <tt class="py-keyword">in</tt> <tt class="py-name">auth2index</tt><tt class="py-op">:</tt> <tt class="py-comment"># correct order of authors</tt> </tt>
+<a name="L286"></a><tt class="py-lineno">286</tt>  <tt class="py-line">        <tt class="py-name">email</tt> <tt class="py-op">=</tt> <tt class="py-name">auth2email</tt><tt class="py-op">[</tt><tt id="link-46" class="py-name"><a title="doconce.author" class="py-name" href="#" onclick="return doclink('link-46', 'author', 'link-45');">author</a></tt><tt class="py-op">]</tt> </tt>
+<a name="L287"></a><tt class="py-lineno">287</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">email</tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L288"></a><tt class="py-lineno">288</tt>  <tt class="py-line">            <tt class="py-name">email_text</tt> <tt class="py-op">=</tt> <tt class="py-string">''</tt> </tt>
+<a name="L289"></a><tt class="py-lineno">289</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L290"></a><tt class="py-lineno">290</tt>  <tt class="py-line">            <tt class="py-name">email</tt> <tt class="py-op">=</tt> <tt class="py-name">email</tt><tt class="py-op">.</tt><tt class="py-name">replace</tt><tt class="py-op">(</tt><tt class="py-string">'_'</tt><tt class="py-op">,</tt> <tt class="py-string">r'\_'</tt><tt class="py-op">)</tt> </tt>
+<a name="L291"></a><tt class="py-lineno">291</tt>  <tt class="py-line">            <tt class="py-name">name</tt><tt class="py-op">,</tt> <tt class="py-name">adr</tt> <tt class="py-op">=</tt> <tt class="py-name">email</tt><tt class="py-op">.</tt><tt class="py-name">split</tt><tt class="py-op">(</tt><tt class="py-string">'@'</tt><tt class="py-op">)</tt> </tt>
+<a name="L292"></a><tt class="py-lineno">292</tt>  <tt class="py-line">            <tt class="py-comment">#email_text = r' (\texttt{%s} at \texttt{%s})' % (name, adr)</tt> </tt>
+<a name="L293"></a><tt class="py-lineno">293</tt>  <tt class="py-line">            <tt class="py-name">email_text</tt> <tt class="py-op">=</tt> <tt class="py-string">r' (\texttt{%s@%s})'</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">name</tt><tt class="py-op">,</tt> <tt class="py-name">adr</tt><tt class="py-op">)</tt> </tt>
+<a name="L294"></a><tt class="py-lineno">294</tt>  <tt class="py-line">        <tt id="link-47" class="py-name"><a title="doconce.DocWriter.Doconce.text
+doconce.DocWriter.HTML.text
+doconce.DocWriter._BaseWriter.text" class="py-name" href="#" onclick="return doclink('link-47', 'text', 'link-14');">text</a></tt> <tt class="py-op">+=</tt> <tt class="py-string">r"""</tt> </tt>
+<a name="L295"></a><tt class="py-lineno">295</tt>  <tt class="py-line"><tt class="py-string">{\Large\textsf{%s${}^{%s}$%s}}\\ [3mm]</tt> </tt>
+<a name="L296"></a><tt class="py-lineno">296</tt>  <tt class="py-line"><tt class="py-string">"""</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt id="link-48" class="py-name"><a title="doconce.author" class="py-name" href="#" onclick="return doclink('link-48', 'author', 'link-45');">author</a></tt><tt class="py-op">,</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">auth2index</tt><tt class="py-op">[</tt><tt id="link-49" class="py-name"><a title="doconce.author" class="py-name" href="#" onclick="return doclink('link-49', 'author', 'link-45');">author</a></tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">:</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> <tt class="py-name">email_text</tt><tt class="py-op">)</tt> </tt>
+<a name="L297"></a><tt class="py-lineno">297</tt>  <tt class="py-line">    <tt id="link-50" class="py-name"><a title="doconce.DocWriter.Doconce.text
+doconce.DocWriter.HTML.text
+doconce.DocWriter._BaseWriter.text" class="py-name" href="#" onclick="return doclink('link-50', 'text', 'link-14');">text</a></tt> <tt class="py-op">+=</tt> <tt class="py-string">r"""</tt> </tt>
+<a name="L298"></a><tt class="py-lineno">298</tt>  <tt class="py-line"><tt class="py-string">\ \\ [2mm]</tt> </tt>
+<a name="L299"></a><tt class="py-lineno">299</tt>  <tt class="py-line"><tt class="py-string">"""</tt> </tt>
+<a name="L300"></a><tt class="py-lineno">300</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt class="py-name">index</tt> <tt class="py-keyword">in</tt> <tt class="py-name">index2inst</tt><tt class="py-op">:</tt> </tt>
+<a name="L301"></a><tt class="py-lineno">301</tt>  <tt class="py-line">        <tt id="link-51" class="py-name"><a title="doconce.DocWriter.Doconce.text
+doconce.DocWriter.HTML.text
+doconce.DocWriter._BaseWriter.text" class="py-name" href="#" onclick="return doclink('link-51', 'text', 'link-14');">text</a></tt> <tt class="py-op">+=</tt> <tt class="py-string">r"""</tt> </tt>
+<a name="L302"></a><tt class="py-lineno">302</tt>  <tt class="py-line"><tt class="py-string">{\large\textsf{${}^%d$%s} \\ [1.5mm]}"""</tt> <tt class="py-op">%</tt> \ </tt>
+<a name="L303"></a><tt class="py-lineno">303</tt>  <tt class="py-line">                <tt class="py-op">(</tt><tt class="py-name">index</tt><tt class="py-op">,</tt> <tt class="py-name">index2inst</tt><tt class="py-op">[</tt><tt class="py-name">index</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L304"></a><tt class="py-lineno">304</tt>  <tt class="py-line"> </tt>
+<a name="L305"></a><tt class="py-lineno">305</tt>  <tt class="py-line">    <tt id="link-52" class="py-name"><a title="doconce.DocWriter.Doconce.text
+doconce.DocWriter.HTML.text
+doconce.DocWriter._BaseWriter.text" class="py-name" href="#" onclick="return doclink('link-52', 'text', 'link-14');">text</a></tt> <tt class="py-op">+=</tt> <tt class="py-string">r"""</tt> </tt>
+<a name="L306"></a><tt class="py-lineno">306</tt>  <tt class="py-line"><tt class="py-string"></tt> </tt>
+<a name="L307"></a><tt class="py-lineno">307</tt>  <tt class="py-line"><tt class="py-string">% #else</tt> </tt>
+<a name="L308"></a><tt class="py-lineno">308</tt>  <tt class="py-line"><tt class="py-string">"""</tt> </tt>
+<a name="L309"></a><tt class="py-lineno">309</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt id="link-53" class="py-name"><a title="doconce.author" class="py-name" href="#" onclick="return doclink('link-53', 'author', 'link-45');">author</a></tt> <tt class="py-keyword">in</tt> <tt class="py-name">auth2index</tt><tt class="py-op">:</tt> <tt class="py-comment"># correct order of authors</tt> </tt>
+<a name="L310"></a><tt class="py-lineno">310</tt>  <tt class="py-line">        <tt class="py-name">email</tt> <tt class="py-op">=</tt> <tt class="py-name">auth2email</tt><tt class="py-op">[</tt><tt id="link-54" class="py-name"><a title="doconce.author" class="py-name" href="#" onclick="return doclink('link-54', 'author', 'link-45');">author</a></tt><tt class="py-op">]</tt> </tt>
+<a name="L311"></a><tt class="py-lineno">311</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">email</tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L312"></a><tt class="py-lineno">312</tt>  <tt class="py-line">            <tt class="py-name">email_text</tt> <tt class="py-op">=</tt> <tt class="py-string">''</tt> </tt>
+<a name="L313"></a><tt class="py-lineno">313</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L314"></a><tt class="py-lineno">314</tt>  <tt class="py-line">            <tt class="py-name">email</tt> <tt class="py-op">=</tt> <tt class="py-name">email</tt><tt class="py-op">.</tt><tt class="py-name">replace</tt><tt class="py-op">(</tt><tt class="py-string">'_'</tt><tt class="py-op">,</tt> <tt class="py-string">r'\_'</tt><tt class="py-op">)</tt> </tt>
+<a name="L315"></a><tt class="py-lineno">315</tt>  <tt class="py-line">            <tt class="py-name">name</tt><tt class="py-op">,</tt> <tt class="py-name">adr</tt> <tt class="py-op">=</tt> <tt class="py-name">email</tt><tt class="py-op">.</tt><tt class="py-name">split</tt><tt class="py-op">(</tt><tt class="py-string">'@'</tt><tt class="py-op">)</tt> </tt>
+<a name="L316"></a><tt class="py-lineno">316</tt>  <tt class="py-line">            <tt class="py-comment">#email_text = r' (\texttt{%s} \emph{at} \texttt{%s})' % (name, adr)</tt> </tt>
+<a name="L317"></a><tt class="py-lineno">317</tt>  <tt class="py-line">            <tt class="py-name">email_text</tt> <tt class="py-op">=</tt> <tt class="py-string">r' (\texttt{%s@%s})'</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">name</tt><tt class="py-op">,</tt> <tt class="py-name">adr</tt><tt class="py-op">)</tt> </tt>
+<a name="L318"></a><tt class="py-lineno">318</tt>  <tt class="py-line">        <tt id="link-55" class="py-name"><a title="doconce.DocWriter.Doconce.text
+doconce.DocWriter.HTML.text
+doconce.DocWriter._BaseWriter.text" class="py-name" href="#" onclick="return doclink('link-55', 'text', 'link-14');">text</a></tt> <tt class="py-op">+=</tt> <tt class="py-string">r"""</tt> </tt>
+<a name="L319"></a><tt class="py-lineno">319</tt>  <tt class="py-line"><tt class="py-string">\begin{center}</tt> </tt>
+<a name="L320"></a><tt class="py-lineno">320</tt>  <tt class="py-line"><tt class="py-string">{\bf %s${}^{%s}$%s} \\ [0mm]</tt> </tt>
+<a name="L321"></a><tt class="py-lineno">321</tt>  <tt class="py-line"><tt class="py-string">\end{center}</tt> </tt>
+<a name="L322"></a><tt class="py-lineno">322</tt>  <tt class="py-line"><tt class="py-string"></tt> </tt>
+<a name="L323"></a><tt class="py-lineno">323</tt>  <tt class="py-line"><tt class="py-string">"""</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt id="link-56" class="py-name"><a title="doconce.author" class="py-name" href="#" onclick="return doclink('link-56', 'author', 'link-45');">author</a></tt><tt class="py-op">,</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">auth2index</tt><tt class="py-op">[</tt><tt id="link-57" class="py-name"><a title="doconce.author" class="py-name" href="#" onclick="return doclink('link-57', 'author', 'link-45');">author</a></tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">:</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> <tt class="py-name">email_text</tt><tt class="py-op">)</tt> </tt>
+<a name="L324"></a><tt class="py-lineno">324</tt>  <tt class="py-line"> </tt>
+<a name="L325"></a><tt class="py-lineno">325</tt>  <tt class="py-line">    <tt id="link-58" class="py-name"><a title="doconce.DocWriter.Doconce.text
+doconce.DocWriter.HTML.text
+doconce.DocWriter._BaseWriter.text" class="py-name" href="#" onclick="return doclink('link-58', 'text', 'link-14');">text</a></tt> <tt class="py-op">+=</tt> <tt class="py-string">r'\begin{center}'</tt> <tt class="py-op">+</tt> <tt class="py-string">'\n'</tt> <tt class="py-op">+</tt> <tt class="py-string">'% List of all institutions:\n'</tt> </tt>
+<a name="L326"></a><tt class="py-lineno">326</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt class="py-name">index</tt> <tt class="py-keyword">in</tt> <tt class="py-name">index2inst</tt><tt class="py-op">:</tt> </tt>
+<a name="L327"></a><tt class="py-lineno">327</tt>  <tt class="py-line">        <tt id="link-59" class="py-name"><a title="doconce.DocWriter.Doconce.text
+doconce.DocWriter.HTML.text
+doconce.DocWriter._BaseWriter.text" class="py-name" href="#" onclick="return doclink('link-59', 'text', 'link-14');">text</a></tt> <tt class="py-op">+=</tt> <tt class="py-string">r"""\centerline{{\small ${}^%d$%s}}"""</tt> <tt class="py-op">%</tt> \ </tt>
+<a name="L328"></a><tt class="py-lineno">328</tt>  <tt class="py-line">                <tt class="py-op">(</tt><tt class="py-name">index</tt><tt class="py-op">,</tt> <tt class="py-name">index2inst</tt><tt class="py-op">[</tt><tt class="py-name">index</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> <tt class="py-op">+</tt> <tt class="py-string">'\n'</tt> </tt>
+<a name="L329"></a><tt class="py-lineno">329</tt>  <tt class="py-line"> </tt>
+<a name="L330"></a><tt class="py-lineno">330</tt>  <tt class="py-line">    <tt id="link-60" class="py-name"><a title="doconce.DocWriter.Doconce.text
+doconce.DocWriter.HTML.text
+doconce.DocWriter._BaseWriter.text" class="py-name" href="#" onclick="return doclink('link-60', 'text', 'link-14');">text</a></tt> <tt class="py-op">+=</tt> <tt class="py-string">r"""\end{center}</tt> </tt>
+<a name="L331"></a><tt class="py-lineno">331</tt>  <tt class="py-line"><tt class="py-string">% #endif</tt> </tt>
+<a name="L332"></a><tt class="py-lineno">332</tt>  <tt class="py-line"><tt class="py-string">% ----------------- End of author(s) -------------------------</tt> </tt>
+<a name="L333"></a><tt class="py-lineno">333</tt>  <tt class="py-line"><tt class="py-string"></tt> </tt>
+<a name="L334"></a><tt class="py-lineno">334</tt>  <tt class="py-line"><tt class="py-string">"""</tt> </tt>
+<a name="L335"></a><tt class="py-lineno">335</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt id="link-61" class="py-name"><a title="doconce.DocWriter.Doconce.text
+doconce.DocWriter.HTML.text
+doconce.DocWriter._BaseWriter.text" class="py-name" href="#" onclick="return doclink('link-61', 'text', 'link-14');">text</a></tt> </tt>
+</div><a name="L336"></a><tt class="py-lineno">336</tt>  <tt class="py-line"> </tt>
+<a name="latex_ref_and_label"></a><div id="latex_ref_and_label-def"><a name="L337"></a><tt class="py-lineno">337</tt> <a class="py-toggle" href="#" id="latex_ref_and_label-toggle" onclick="return toggle('latex_ref_and_label');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="doconce.latex-module.html#latex_ref_and_label">latex_ref_and_label</a><tt class="py-op">(</tt><tt class="py-param">section_label2title</tt><tt class="py-op">,</tt> <tt class="py-param">format</tt><tt class="py-op">,</tt> <tt class="py-param">filestr</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="latex_ref_and_label-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="latex_ref_and_label-expanded"><a name="L338"></a><tt class="py-lineno">338</tt>  <tt class="py-line">    <tt class="py-name">filestr</tt> <tt class="py-op">=</tt> <tt class="py-name">filestr</tt><tt class="py-op">.</tt><tt class="py-name">replace</tt><tt class="py-op">(</tt><tt class="py-string">'label{'</tt><tt class="py-op">,</tt> <tt class="py-string">r'\label{'</tt><tt class="py-op">)</tt> </tt>
+<a name="L339"></a><tt class="py-lineno">339</tt>  <tt class="py-line">    <tt class="py-comment"># add ~\ between chapter/section and the reference</tt> </tt>
+<a name="L340"></a><tt class="py-lineno">340</tt>  <tt class="py-line">    <tt class="py-name">pattern</tt> <tt class="py-op">=</tt> <tt class="py-string">r'([Ss]ection|[Cc]hapter)(s?)\s+ref\{'</tt>  <tt class="py-comment"># no \[A-Za-z] pattern =&gt; no fix</tt> </tt>
+<a name="L341"></a><tt class="py-lineno">341</tt>  <tt class="py-line">    <tt class="py-comment"># recall \r is special character so it needs \\r</tt> </tt>
+<a name="L342"></a><tt class="py-lineno">342</tt>  <tt class="py-line">    <tt class="py-comment"># (could call fix_latex_command_regex for the replacement)</tt> </tt>
+<a name="L343"></a><tt class="py-lineno">343</tt>  <tt class="py-line">    <tt class="py-name">replacement</tt> <tt class="py-op">=</tt> <tt class="py-string">r'\g&lt;1&gt;\g&lt;2&gt;~\\ref{'</tt> </tt>
+<a name="L344"></a><tt class="py-lineno">344</tt>  <tt class="py-line">    <tt class="py-comment">#filestr = re.sub(pattern, replacement, filestr, flags=re.IGNORECASE)</tt> </tt>
+<a name="L345"></a><tt class="py-lineno">345</tt>  <tt class="py-line">    <tt class="py-name">cpattern</tt> <tt class="py-op">=</tt> <tt class="py-name">re</tt><tt class="py-op">.</tt><tt class="py-name">compile</tt><tt class="py-op">(</tt><tt class="py-name">pattern</tt><tt class="py-op">,</tt> <tt class="py-name">flags</tt><tt class="py-op">=</tt><tt class="py-name">re</tt><tt class="py-op">.</tt><tt class="py-name">IGNORECASE</tt><tt class="py-op">)</tt> </tt>
+<a name="L346"></a><tt class="py-lineno">346</tt>  <tt class="py-line">    <tt class="py-name">filestr</tt> <tt class="py-op">=</tt> <tt class="py-name">cpattern</tt><tt class="py-op">.</tt><tt class="py-name">sub</tt><tt class="py-op">(</tt><tt class="py-name">replacement</tt><tt class="py-op">,</tt> <tt class="py-name">filestr</tt><tt class="py-op">)</tt> </tt>
+<a name="L347"></a><tt class="py-lineno">347</tt>  <tt class="py-line">    <tt class="py-comment"># range ref:</tt> </tt>
+<a name="L348"></a><tt class="py-lineno">348</tt>  <tt class="py-line">    <tt class="py-name">filestr</tt> <tt class="py-op">=</tt> <tt class="py-name">re</tt><tt class="py-op">.</tt><tt class="py-name">sub</tt><tt class="py-op">(</tt><tt class="py-string">r'-ref\{'</tt><tt class="py-op">,</tt> <tt class="py-string">r'-\\ref{'</tt><tt class="py-op">,</tt> <tt class="py-name">filestr</tt><tt class="py-op">)</tt> </tt>
+<a name="L349"></a><tt class="py-lineno">349</tt>  <tt class="py-line">    <tt class="py-comment"># the rest of the ' ref{}' (single refs should have ~ in front):</tt> </tt>
+<a name="L350"></a><tt class="py-lineno">350</tt>  <tt class="py-line">    <tt class="py-name">filestr</tt> <tt class="py-op">=</tt> <tt class="py-name">re</tt><tt class="py-op">.</tt><tt class="py-name">sub</tt><tt class="py-op">(</tt><tt class="py-string">r'\sref\{'</tt><tt class="py-op">,</tt> <tt class="py-string">r'~\\ref{'</tt><tt class="py-op">,</tt> <tt class="py-name">filestr</tt><tt class="py-op">)</tt> </tt>
+<a name="L351"></a><tt class="py-lineno">351</tt>  <tt class="py-line">    <tt class="py-name">filestr</tt> <tt class="py-op">=</tt> <tt class="py-name">re</tt><tt class="py-op">.</tt><tt class="py-name">sub</tt><tt class="py-op">(</tt><tt class="py-string">r'\(ref\{'</tt><tt class="py-op">,</tt> <tt class="py-string">r'(\\ref{'</tt><tt class="py-op">,</tt> <tt class="py-name">filestr</tt><tt class="py-op">)</tt> </tt>
+<a name="L352"></a><tt class="py-lineno">352</tt>  <tt class="py-line"> </tt>
+<a name="L353"></a><tt class="py-lineno">353</tt>  <tt class="py-line">    <tt class="py-comment"># equations are ok in the doconce markup</tt> </tt>
+<a name="L354"></a><tt class="py-lineno">354</tt>  <tt class="py-line"> </tt>
+<a name="L355"></a><tt class="py-lineno">355</tt>  <tt class="py-line">    <tt class="py-comment"># perform a substitution of "LaTeX" (and ensure \LaTeX is not there):</tt> </tt>
+<a name="L356"></a><tt class="py-lineno">356</tt>  <tt class="py-line">    <tt class="py-name">filestr</tt> <tt class="py-op">=</tt> <tt class="py-name">re</tt><tt class="py-op">.</tt><tt class="py-name">sub</tt><tt class="py-op">(</tt><tt id="link-62" class="py-name"><a title="doconce.latex.fix_latex_command_regex" class="py-name" href="#" onclick="return doclink('link-62', 'fix_latex_command_regex', 'link-36');">fix_latex_command_regex</a></tt><tt class="py-op">(</tt><tt class="py-string">r'\LaTeX({})?'</tt><tt class="py-op">,</tt> </tt>
+<a name="L357"></a><tt class="py-lineno">357</tt>  <tt class="py-line">                               <tt class="py-name">application</tt><tt class="py-op">=</tt><tt class="py-string">'match'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">'LaTeX'</tt><tt class="py-op">,</tt> <tt class="py-name">filestr</tt><tt class="py-op">)</tt> </tt>
+<a name="L358"></a><tt class="py-lineno">358</tt>  <tt class="py-line">    <tt class="py-comment">#filestr = re.sub('''([^"'`*_A-Za-z0-9-])LaTeX([^"'`*_A-Za-z0-9-])''',</tt> </tt>
+<a name="L359"></a><tt class="py-lineno">359</tt>  <tt class="py-line">    <tt class="py-comment">#                 r'\g&lt;1&gt;{\LaTeX}\g&lt;2&gt;', filestr)</tt> </tt>
+<a name="L360"></a><tt class="py-lineno">360</tt>  <tt class="py-line">    <tt class="py-name">filestr</tt> <tt class="py-op">=</tt> <tt class="py-name">re</tt><tt class="py-op">.</tt><tt class="py-name">sub</tt><tt class="py-op">(</tt><tt class="py-string">r'''([^"'`*-])\bLaTeX\b([^"'`*-])'''</tt><tt class="py-op">,</tt> </tt>
+<a name="L361"></a><tt class="py-lineno">361</tt>  <tt class="py-line">                     <tt class="py-string">r'\g&lt;1&gt;{\LaTeX}\g&lt;2&gt;'</tt><tt class="py-op">,</tt> <tt class="py-name">filestr</tt><tt class="py-op">)</tt> </tt>
+<a name="L362"></a><tt class="py-lineno">362</tt>  <tt class="py-line">    <tt class="py-comment"># This one is not good enough for verbatim `LaTeX`:</tt> </tt>
+<a name="L363"></a><tt class="py-lineno">363</tt>  <tt class="py-line">    <tt class="py-comment">#filestr = re.sub(r'\bLaTeX\b', r'{\LaTeX}', filestr)</tt> </tt>
+<a name="L364"></a><tt class="py-lineno">364</tt>  <tt class="py-line"> </tt>
+<a name="L365"></a><tt class="py-lineno">365</tt>  <tt class="py-line">    <tt class="py-comment"># handle &amp; (Texas A&amp;M -&gt; Texas A{\&amp;}M):</tt> </tt>
+<a name="L366"></a><tt class="py-lineno">366</tt>  <tt class="py-line">    <tt class="py-name">filestr</tt> <tt class="py-op">=</tt> <tt class="py-name">re</tt><tt class="py-op">.</tt><tt class="py-name">sub</tt><tt class="py-op">(</tt><tt class="py-string">r'([A-Za-z])\s*&amp;\s*([A-Za-z])'</tt><tt class="py-op">,</tt> <tt class="py-string">r'\g&lt;1&gt;{\&amp;}\g&lt;2&gt;'</tt><tt class="py-op">,</tt> <tt class="py-name">filestr</tt><tt class="py-op">)</tt> </tt>
+<a name="L367"></a><tt class="py-lineno">367</tt>  <tt class="py-line"> </tt>
+<a name="L368"></a><tt class="py-lineno">368</tt>  <tt class="py-line">    <tt class="py-comment"># handle non-English characters:</tt> </tt>
+<a name="L369"></a><tt class="py-lineno">369</tt>  <tt class="py-line">    <tt class="py-name">chars</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt><tt class="py-string">'&#230;'</tt><tt class="py-op">:</tt> <tt class="py-string">r'{\ae}'</tt><tt class="py-op">,</tt> <tt class="py-string">'&#248;'</tt><tt class="py-op">:</tt> <tt class="py-string">r'{\o}'</tt><tt class="py-op">,</tt> <tt class="py-string">'&#229;'</tt><tt class="py-op">:</tt> <tt class="py-string">r'{\aa}'</tt><tt class="py-op">,</tt> </tt>
+<a name="L370"></a><tt class="py-lineno">370</tt>  <tt class="py-line">             <tt class="py-string">'&#198;'</tt><tt class="py-op">:</tt> <tt class="py-string">r'{\AE}'</tt><tt class="py-op">,</tt> <tt class="py-string">'&#216;'</tt><tt class="py-op">:</tt> <tt class="py-string">r'{\O}'</tt><tt class="py-op">,</tt> <tt class="py-string">'&#197;'</tt><tt class="py-op">:</tt> <tt class="py-string">r'{\AA}'</tt><tt class="py-op">,</tt> </tt>
+<a name="L371"></a><tt class="py-lineno">371</tt>  <tt class="py-line">             <tt class="py-op">}</tt> </tt>
+<a name="L372"></a><tt class="py-lineno">372</tt>  <tt class="py-line">    <tt class="py-comment"># Not implemented</tt> </tt>
+<a name="L373"></a><tt class="py-lineno">373</tt>  <tt class="py-line">    <tt class="py-comment">#for c in chars:</tt> </tt>
+<a name="L374"></a><tt class="py-lineno">374</tt>  <tt class="py-line">    <tt class="py-comment">#    filestr, n = re.subn(c, chars[c], filestr)</tt> </tt>
+<a name="L375"></a><tt class="py-lineno">375</tt>  <tt class="py-line">    <tt class="py-comment">#    print '%d subst of %s' % (n, c)</tt> </tt>
+<a name="L376"></a><tt class="py-lineno">376</tt>  <tt class="py-line">    <tt class="py-comment">#    #filestr = filestr.replace(c, chars[c])</tt> </tt>
+<a name="L377"></a><tt class="py-lineno">377</tt>  <tt class="py-line"> </tt>
+<a name="L378"></a><tt class="py-lineno">378</tt>  <tt class="py-line">    <tt class="py-comment"># Handle 50% and similar</tt> </tt>
+<a name="L379"></a><tt class="py-lineno">379</tt>  <tt class="py-line">    <tt class="py-name">filestr</tt> <tt class="py-op">=</tt> <tt class="py-name">re</tt><tt class="py-op">.</tt><tt class="py-name">sub</tt><tt class="py-op">(</tt><tt class="py-string">r'([0-9]{1,3})%'</tt><tt class="py-op">,</tt> <tt class="py-string">r'\g&lt;1&gt;\%'</tt><tt class="py-op">,</tt> <tt class="py-name">filestr</tt><tt class="py-op">)</tt> </tt>
+<a name="L380"></a><tt class="py-lineno">380</tt>  <tt class="py-line"> </tt>
+<a name="L381"></a><tt class="py-lineno">381</tt>  <tt class="py-line">    <tt class="py-comment"># fix periods followed by too long space:</tt> </tt>
+<a name="L382"></a><tt class="py-lineno">382</tt>  <tt class="py-line">    <tt class="py-name">prefix</tt> <tt class="py-op">=</tt> <tt class="py-string">r'Prof\.'</tt><tt class="py-op">,</tt> <tt class="py-string">r'Profs\.'</tt><tt class="py-op">,</tt> <tt class="py-string">r'prof\.'</tt><tt class="py-op">,</tt> <tt class="py-string">r'profs\.'</tt><tt class="py-op">,</tt> <tt class="py-string">r'Dr\.'</tt><tt class="py-op">,</tt> \ </tt>
+<a name="L383"></a><tt class="py-lineno">383</tt>  <tt class="py-line">             <tt class="py-string">r'assoc\.'</tt><tt class="py-op">,</tt> <tt class="py-string">r'Assoc.'</tt><tt class="py-op">,</tt> <tt class="py-string">r'Assist.'</tt><tt class="py-op">,</tt> <tt class="py-string">r'Mr\.'</tt><tt class="py-op">,</tt> <tt class="py-string">r'Ms\.'</tt><tt class="py-op">,</tt> <tt class="py-string">'Mss\.'</tt><tt class="py-op">,</tt> \ </tt>
+<a name="L384"></a><tt class="py-lineno">384</tt>  <tt class="py-line">             <tt class="py-string">r'Fig\.'</tt><tt class="py-op">,</tt> <tt class="py-string">r'Tab\.'</tt><tt class="py-op">,</tt> <tt class="py-string">r'Univ\.'</tt><tt class="py-op">,</tt> <tt class="py-string">r'Dept\.'</tt><tt class="py-op">,</tt> <tt class="py-string">r'abbr\.'</tt><tt class="py-op">,</tt> <tt class="py-string">r'cf\.'</tt><tt class="py-op">,</tt> \ </tt>
+<a name="L385"></a><tt class="py-lineno">385</tt>  <tt class="py-line">             <tt class="py-string">r'e\.g\.'</tt><tt class="py-op">,</tt> <tt class="py-string">r'E\.g\.'</tt><tt class="py-op">,</tt> <tt class="py-string">r'i\.e\.'</tt><tt class="py-op">,</tt> <tt class="py-string">r'Approx\.'</tt><tt class="py-op">,</tt> <tt class="py-string">r'approx\.'</tt> </tt>
+<a name="L386"></a><tt class="py-lineno">386</tt>  <tt class="py-line">    <tt class="py-comment"># avoid r'assist\.' - matches too much</tt> </tt>
+<a name="L387"></a><tt class="py-lineno">387</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt class="py-name">p</tt> <tt class="py-keyword">in</tt> <tt class="py-name">prefix</tt><tt class="py-op">:</tt> </tt>
+<a name="L388"></a><tt class="py-lineno">388</tt>  <tt class="py-line">        <tt class="py-name">filestr</tt> <tt class="py-op">=</tt> <tt class="py-name">re</tt><tt class="py-op">.</tt><tt class="py-name">sub</tt><tt class="py-op">(</tt><tt class="py-string">r'(%s) +([\\A-Za-z0-9])'</tt> <tt class="py-op">%</tt> <tt class="py-name">p</tt><tt class="py-op">,</tt> <tt class="py-string">r'\g&lt;1&gt;~\g&lt;2&gt;'</tt><tt class="py-op">,</tt> </tt>
+<a name="L389"></a><tt class="py-lineno">389</tt>  <tt class="py-line">                         <tt class="py-name">filestr</tt><tt class="py-op">)</tt> </tt>
+<a name="L390"></a><tt class="py-lineno">390</tt>  <tt class="py-line"> </tt>
+<a name="L391"></a><tt class="py-lineno">391</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">filestr</tt> </tt>
+</div><a name="L392"></a><tt class="py-lineno">392</tt>  <tt class="py-line"> </tt>
+<a name="latex_index_bib"></a><div id="latex_index_bib-def"><a name="L393"></a><tt class="py-lineno">393</tt> <a class="py-toggle" href="#" id="latex_index_bib-toggle" onclick="return toggle('latex_index_bib');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="doconce.latex-module.html#latex_index_bib">latex_index_bib</a><tt class="py-op">(</tt><tt class="py-param">filestr</tt><tt class="py-op">,</tt> <tt class="py-param">index</tt><tt class="py-op">,</tt> <tt class="py-param">citations</tt><tt class="py-op">,</tt> <tt class="py-param">bibfile</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="latex_index_bib-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="latex_index_bib-expanded"><a name="L394"></a><tt class="py-lineno">394</tt>  <tt class="py-line">    <tt class="py-comment">#print 'index:', index</tt> </tt>
+<a name="L395"></a><tt class="py-lineno">395</tt>  <tt class="py-line">    <tt class="py-comment">#print 'citations:', citations</tt> </tt>
+<a name="L396"></a><tt class="py-lineno">396</tt>  <tt class="py-line">    <tt class="py-name">filestr</tt> <tt class="py-op">=</tt> <tt class="py-name">filestr</tt><tt class="py-op">.</tt><tt class="py-name">replace</tt><tt class="py-op">(</tt><tt class="py-string">'cite{'</tt><tt class="py-op">,</tt> <tt class="py-string">r'\cite{'</tt><tt class="py-op">)</tt> </tt>
+<a name="L397"></a><tt class="py-lineno">397</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt class="py-name">word</tt> <tt class="py-keyword">in</tt> <tt class="py-name">index</tt><tt class="py-op">:</tt> </tt>
+<a name="L398"></a><tt class="py-lineno">398</tt>  <tt class="py-line">        <tt class="py-name">pattern</tt> <tt class="py-op">=</tt> <tt class="py-string">'idx{%s}'</tt> <tt class="py-op">%</tt> <tt class="py-name">word</tt> </tt>
+<a name="L399"></a><tt class="py-lineno">399</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-string">'`'</tt> <tt class="py-keyword">in</tt> <tt class="py-name">word</tt><tt class="py-op">:</tt> </tt>
+<a name="L400"></a><tt class="py-lineno">400</tt>  <tt class="py-line">            <tt class="py-comment"># verbatim typesetting:</tt> </tt>
+<a name="L401"></a><tt class="py-lineno">401</tt>  <tt class="py-line">            <tt class="py-name">word</tt> <tt class="py-op">=</tt> <tt class="py-name">re</tt><tt class="py-op">.</tt><tt class="py-name">sub</tt><tt class="py-op">(</tt><tt class="py-string">r'^(.*)`([^`]+)`(.*)$'</tt><tt class="py-op">,</tt> </tt>
+<a name="L402"></a><tt class="py-lineno">402</tt>  <tt class="py-line">            <tt id="link-63" class="py-name"><a title="doconce.latex.fix_latex_command_regex" class="py-name" href="#" onclick="return doclink('link-63', 'fix_latex_command_regex', 'link-36');">fix_latex_command_regex</a></tt><tt class="py-op">(</tt><tt class="py-string">r'\g&lt;1&gt;\g&lt;2&gt;@\g&lt;1&gt;{\rm\texttt{\g&lt;2&gt;}}\g&lt;3&gt;'</tt><tt class="py-op">,</tt> </tt>
+<a name="L403"></a><tt class="py-lineno">403</tt>  <tt class="py-line">                                    <tt class="py-name">application</tt><tt class="py-op">=</tt><tt class="py-string">'replacement'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">word</tt><tt class="py-op">)</tt> </tt>
+<a name="L404"></a><tt class="py-lineno">404</tt>  <tt class="py-line">            <tt class="py-comment"># fix underscores:</tt> </tt>
+<a name="L405"></a><tt class="py-lineno">405</tt>  <tt class="py-line">            <tt class="py-name">word</tt> <tt class="py-op">=</tt> <tt class="py-name">word</tt><tt class="py-op">.</tt><tt class="py-name">replace</tt><tt class="py-op">(</tt><tt class="py-string">'_'</tt><tt class="py-op">,</tt> <tt class="py-string">r'\_'</tt><tt class="py-op">)</tt> </tt>
+<a name="L406"></a><tt class="py-lineno">406</tt>  <tt class="py-line">        <tt class="py-name">replacement</tt> <tt class="py-op">=</tt> <tt class="py-string">r'\index{%s}'</tt> <tt class="py-op">%</tt> <tt class="py-name">word</tt> </tt>
+<a name="L407"></a><tt class="py-lineno">407</tt>  <tt class="py-line">        <tt class="py-name">filestr</tt> <tt class="py-op">=</tt> <tt class="py-name">filestr</tt><tt class="py-op">.</tt><tt class="py-name">replace</tt><tt class="py-op">(</tt><tt class="py-name">pattern</tt><tt class="py-op">,</tt> <tt class="py-name">replacement</tt><tt class="py-op">)</tt> </tt>
+<a name="L408"></a><tt class="py-lineno">408</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-string">'bib'</tt> <tt class="py-keyword">in</tt> <tt class="py-name">bibfile</tt><tt class="py-op">:</tt> </tt>
+<a name="L409"></a><tt class="py-lineno">409</tt>  <tt class="py-line">        <tt class="py-name">bibtext</tt> <tt class="py-op">=</tt> <tt id="link-64" class="py-name"><a title="doconce.latex.fix_latex_command_regex" class="py-name" href="#" onclick="return doclink('link-64', 'fix_latex_command_regex', 'link-36');">fix_latex_command_regex</a></tt><tt class="py-op">(</tt><tt class="py-string">r"""</tt> </tt>
+<a name="L410"></a><tt class="py-lineno">410</tt>  <tt class="py-line"><tt class="py-string"></tt> </tt>
+<a name="L411"></a><tt class="py-lineno">411</tt>  <tt class="py-line"><tt class="py-string">\bibliographystyle{plain}</tt> </tt>
+<a name="L412"></a><tt class="py-lineno">412</tt>  <tt class="py-line"><tt class="py-string">\bibliography{%s}</tt> </tt>
+<a name="L413"></a><tt class="py-lineno">413</tt>  <tt class="py-line"><tt class="py-string">"""</tt> <tt class="py-op">%</tt> <tt class="py-name">bibfile</tt><tt class="py-op">[</tt><tt class="py-string">'bib'</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> <tt class="py-name">application</tt><tt class="py-op">=</tt><tt class="py-string">'replacement'</tt><tt class="py-op">)</tt> </tt>
+<a name="L414"></a><tt class="py-lineno">414</tt>  <tt class="py-line">        <tt class="py-comment">#filestr = re.sub(r'^BIBFILE:.+$', bibtext, filestr,</tt> </tt>
+<a name="L415"></a><tt class="py-lineno">415</tt>  <tt class="py-line">        <tt class="py-comment">#                 flags=re.MULTILINE)</tt> </tt>
+<a name="L416"></a><tt class="py-lineno">416</tt>  <tt class="py-line">        <tt class="py-name">cpattern</tt> <tt class="py-op">=</tt> <tt class="py-name">re</tt><tt class="py-op">.</tt><tt class="py-name">compile</tt><tt class="py-op">(</tt><tt class="py-string">r'^BIBFILE:.+$'</tt><tt class="py-op">,</tt> <tt class="py-name">re</tt><tt class="py-op">.</tt><tt class="py-name">MULTILINE</tt><tt class="py-op">)</tt> </tt>
+<a name="L417"></a><tt class="py-lineno">417</tt>  <tt class="py-line">        <tt class="py-name">filestr</tt> <tt class="py-op">=</tt> <tt class="py-name">cpattern</tt><tt class="py-op">.</tt><tt class="py-name">sub</tt><tt class="py-op">(</tt><tt class="py-name">bibtext</tt><tt class="py-op">,</tt> <tt class="py-name">filestr</tt><tt class="py-op">)</tt> </tt>
+<a name="L418"></a><tt class="py-lineno">418</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">filestr</tt> </tt>
+</div><a name="L419"></a><tt class="py-lineno">419</tt>  <tt class="py-line"> </tt>
+<a name="L420"></a><tt class="py-lineno">420</tt>  <tt class="py-line"> </tt>
+<a name="latex_exercise"></a><div id="latex_exercise-def"><a name="L421"></a><tt class="py-lineno">421</tt> <a class="py-toggle" href="#" id="latex_exercise-toggle" onclick="return toggle('latex_exercise');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="doconce.latex-module.html#latex_exercise">latex_exercise</a><tt class="py-op">(</tt><tt class="py-param">exer</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="latex_exercise-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="latex_exercise-expanded"><a name="L422"></a><tt class="py-lineno">422</tt>  <tt class="py-line">    <tt class="py-name">s</tt> <tt class="py-op">=</tt> <tt class="py-string">''</tt>  <tt class="py-comment"># result string</tt> </tt>
+<a name="L423"></a><tt class="py-lineno">423</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-string">'heading'</tt> <tt class="py-keyword">in</tt> <tt class="py-name">exer</tt><tt class="py-op">:</tt> </tt>
+<a name="L424"></a><tt class="py-lineno">424</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">'Wrong formatting of exercise, not a 3/5 === type heading'</tt> </tt>
+<a name="L425"></a><tt class="py-lineno">425</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-name">exer</tt> </tt>
+<a name="L426"></a><tt class="py-lineno">426</tt>  <tt class="py-line">        <tt class="py-name">sys</tt><tt class="py-op">.</tt><tt class="py-name">exit</tt><tt class="py-op">(</tt><tt class="py-number">1</tt><tt class="py-op">)</tt> </tt>
+<a name="L427"></a><tt class="py-lineno">427</tt>  <tt class="py-line"> </tt>
+<a name="L428"></a><tt class="py-lineno">428</tt>  <tt class="py-line">    <tt class="py-comment"># Reuse plan_exercise (std doconce formatting) where possible</tt> </tt>
+<a name="L429"></a><tt class="py-lineno">429</tt>  <tt class="py-line">    <tt class="py-comment"># and just make a few adjustments</tt> </tt>
+<a name="L430"></a><tt class="py-lineno">430</tt>  <tt class="py-line"> </tt>
+<a name="L431"></a><tt class="py-lineno">431</tt>  <tt class="py-line">    <tt class="py-name">s</tt> <tt class="py-op">+=</tt> <tt class="py-name">exer</tt><tt class="py-op">[</tt><tt class="py-string">'heading'</tt><tt class="py-op">]</tt> <tt class="py-op">+</tt> <tt class="py-string">' '</tt> <tt class="py-op">+</tt> <tt class="py-name">exer</tt><tt class="py-op">[</tt><tt class="py-string">'title'</tt><tt class="py-op">]</tt> <tt class="py-op">+</tt> <tt class="py-string">' '</tt> <tt class="py-op">+</tt> <tt class="py-name">exer</tt><tt class="py-op">[</tt><tt class="py-string">'heading'</tt><tt class="py-op">]</tt> <tt class="py-op">+</tt> <tt class="py-string">'\n'</tt> </tt>
+<a name="L432"></a><tt class="py-lineno">432</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-string">'label'</tt> <tt class="py-keyword">in</tt> <tt class="py-name">exer</tt><tt class="py-op">:</tt> </tt>
+<a name="L433"></a><tt class="py-lineno">433</tt>  <tt class="py-line">        <tt class="py-name">s</tt> <tt class="py-op">+=</tt> <tt class="py-string">'label{%s}'</tt> <tt class="py-op">%</tt> <tt class="py-name">exer</tt><tt class="py-op">[</tt><tt class="py-string">'label'</tt><tt class="py-op">]</tt> <tt class="py-op">+</tt> <tt class="py-string">'\n'</tt> </tt>
+<a name="L434"></a><tt class="py-lineno">434</tt>  <tt class="py-line">    <tt class="py-name">s</tt> <tt class="py-op">+=</tt> <tt class="py-string">'\n'</tt> <tt class="py-op">+</tt> <tt class="py-name">exer</tt><tt class="py-op">[</tt><tt class="py-string">'text'</tt><tt class="py-op">]</tt> <tt class="py-op">+</tt> <tt class="py-string">'\n'</tt> </tt>
+<a name="L435"></a><tt class="py-lineno">435</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt class="py-name">hint_no</tt> <tt class="py-keyword">in</tt> <tt class="py-name">sorted</tt><tt class="py-op">(</tt><tt class="py-name">exer</tt><tt class="py-op">[</tt><tt class="py-string">'hint'</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L436"></a><tt class="py-lineno">436</tt>  <tt class="py-line">        <tt class="py-name">s</tt> <tt class="py-op">+=</tt> <tt class="py-name">exer</tt><tt class="py-op">[</tt><tt class="py-string">'hint'</tt><tt class="py-op">]</tt><tt class="py-op">[</tt><tt class="py-name">hint_no</tt><tt class="py-op">]</tt> <tt class="py-op">+</tt> <tt class="py-string">'\n'</tt> </tt>
+<a name="L437"></a><tt class="py-lineno">437</tt>  <tt class="py-line">        <tt class="py-comment">#s += '\n' + exer['hint'][hint_no] + '\n'</tt> </tt>
+<a name="L438"></a><tt class="py-lineno">438</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-string">'file'</tt> <tt class="py-keyword">in</tt> <tt class="py-name">exer</tt><tt class="py-op">:</tt> </tt>
+<a name="L439"></a><tt class="py-lineno">439</tt>  <tt class="py-line">        <tt class="py-comment">#s += '\n' + r'\noindent' + '\nFilename: ' + r'\code{%s}' % exer['file'] + '\n'</tt> </tt>
+<a name="L440"></a><tt class="py-lineno">440</tt>  <tt class="py-line">        <tt class="py-name">s</tt> <tt class="py-op">+=</tt> <tt class="py-string">'Filename: '</tt> <tt class="py-op">+</tt> <tt class="py-string">r'\code{%s}'</tt> <tt class="py-op">%</tt> <tt class="py-name">exer</tt><tt class="py-op">[</tt><tt class="py-string">'file'</tt><tt class="py-op">]</tt> <tt class="py-op">+</tt> <tt class="py-string">'.\n'</tt> </tt>
+<a name="L441"></a><tt class="py-lineno">441</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-string">'comments'</tt> <tt class="py-keyword">in</tt> <tt class="py-name">exer</tt><tt class="py-op">:</tt> </tt>
+<a name="L442"></a><tt class="py-lineno">442</tt>  <tt class="py-line">        <tt class="py-name">s</tt> <tt class="py-op">+=</tt> <tt class="py-string">'\n'</tt> <tt class="py-op">+</tt> <tt class="py-name">exer</tt><tt class="py-op">[</tt><tt class="py-string">'comments'</tt><tt class="py-op">]</tt> </tt>
+<a name="L443"></a><tt class="py-lineno">443</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-string">'solution'</tt> <tt class="py-keyword">in</tt> <tt class="py-name">exer</tt><tt class="py-op">:</tt> </tt>
+<a name="L444"></a><tt class="py-lineno">444</tt>  <tt class="py-line">        <tt class="py-keyword">pass</tt> </tt>
+<a name="L445"></a><tt class="py-lineno">445</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">s</tt> </tt>
+</div><a name="L446"></a><tt class="py-lineno">446</tt>  <tt class="py-line"> </tt>
+<a name="L447"></a><tt class="py-lineno">447</tt>  <tt class="py-line"> </tt>
+<a name="define"></a><div id="define-def"><a name="L448"></a><tt class="py-lineno">448</tt> <a class="py-toggle" href="#" id="define-toggle" onclick="return toggle('define');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="doconce.latex-module.html#define">define</a><tt class="py-op">(</tt><tt class="py-param">FILENAME_EXTENSION</tt><tt class="py-op">,</tt> </tt>
+<a name="L449"></a><tt class="py-lineno">449</tt>  <tt class="py-line">           <tt class="py-param">BLANKLINE</tt><tt class="py-op">,</tt> </tt>
+<a name="L450"></a><tt class="py-lineno">450</tt>  <tt class="py-line">           <tt class="py-param">INLINE_TAGS_SUBST</tt><tt class="py-op">,</tt> </tt>
+<a name="L451"></a><tt class="py-lineno">451</tt>  <tt class="py-line">           <tt class="py-param">CODE</tt><tt class="py-op">,</tt> </tt>
+<a name="L452"></a><tt class="py-lineno">452</tt>  <tt class="py-line">           <tt class="py-param">LIST</tt><tt class="py-op">,</tt> </tt>
+<a name="L453"></a><tt class="py-lineno">453</tt>  <tt class="py-line">           <tt class="py-param">ARGLIST</tt><tt class="py-op">,</tt> </tt>
+<a name="L454"></a><tt class="py-lineno">454</tt>  <tt class="py-line">           <tt class="py-param">TABLE</tt><tt class="py-op">,</tt> </tt>
+<a name="L455"></a><tt class="py-lineno">455</tt>  <tt class="py-line">           <tt class="py-param">EXERCISE</tt><tt class="py-op">,</tt> </tt>
+<a name="L456"></a><tt class="py-lineno">456</tt>  <tt class="py-line">           <tt class="py-param">FIGURE_EXT</tt><tt class="py-op">,</tt> </tt>
+<a name="L457"></a><tt class="py-lineno">457</tt>  <tt class="py-line">           <tt class="py-param">CROSS_REFS</tt><tt class="py-op">,</tt> </tt>
+<a name="L458"></a><tt class="py-lineno">458</tt>  <tt class="py-line">           <tt class="py-param">INDEX_BIB</tt><tt class="py-op">,</tt> </tt>
+<a name="L459"></a><tt class="py-lineno">459</tt>  <tt class="py-line">           <tt class="py-param">INTRO</tt><tt class="py-op">,</tt> </tt>
+<a name="L460"></a><tt class="py-lineno">460</tt>  <tt class="py-line">           <tt class="py-param">OUTRO</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="define-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="define-expanded"><a name="L461"></a><tt class="py-lineno">461</tt>  <tt class="py-line">    <tt class="py-comment"># all arguments are dicts and accept in-place modifications (extensions)</tt> </tt>
+<a name="L462"></a><tt class="py-lineno">462</tt>  <tt class="py-line"> </tt>
+<a name="L463"></a><tt class="py-lineno">463</tt>  <tt class="py-line">    <tt id="link-65" class="py-name" targets="Variable doconce.common.FILENAME_EXTENSION=doconce.common-module.html#FILENAME_EXTENSION"><a title="doconce.common.FILENAME_EXTENSION" class="py-name" href="#" onclick="return doclink('link-65', 'FILENAME_EXTENSION', 'link-65');">FILENAME_EXTENSION</a></tt><tt class="py-op">[</tt><tt class="py-string">'latex'</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-string">'.p.tex'</tt> </tt>
+<a name="L464"></a><tt class="py-lineno">464</tt>  <tt class="py-line">    <tt id="link-66" class="py-name" targets="Variable doconce.common.BLANKLINE=doconce.common-module.html#BLANKLINE"><a title="doconce.common.BLANKLINE" class="py-name" href="#" onclick="return doclink('link-66', 'BLANKLINE', 'link-66');">BLANKLINE</a></tt><tt class="py-op">[</tt><tt class="py-string">'latex'</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-string">'\n'</tt> </tt>
+<a name="L465"></a><tt class="py-lineno">465</tt>  <tt class="py-line"> </tt>
+<a name="L466"></a><tt class="py-lineno">466</tt>  <tt class="py-line">    <tt id="link-67" class="py-name" targets="Variable doconce.DocWriter.HTML.INLINE_TAGS_SUBST=doconce.DocWriter.HTML-class.html#INLINE_TAGS_SUBST,Variable doconce.common.INLINE_TAGS_SUBST=doconce.common-module.html#INLINE_TAGS_SUBST"><a title="doconce.DocWriter.HTML.INLINE_TAGS_SUBST
+doconce.common.INLINE_TAGS_SUBST" class="py-name" href="#" onclick="return doclink('link-67', 'INLINE_TAGS_SUBST', 'link-67');">INLINE_TAGS_SUBST</a></tt><tt class="py-op">[</tt><tt class="py-string">'latex'</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt> </tt>
+<a name="L467"></a><tt class="py-lineno">467</tt>  <tt class="py-line">        <tt class="py-comment"># Note: re.sub "eats" backslashes: \t and \b will not survive to</tt> </tt>
+<a name="L468"></a><tt class="py-lineno">468</tt>  <tt class="py-line">        <tt class="py-comment"># latex if text goes through re.sub. Then we must write</tt> </tt>
+<a name="L469"></a><tt class="py-lineno">469</tt>  <tt class="py-line">        <tt class="py-comment"># \\b and \\t etc. See the fix_latex_command_regex function below</tt> </tt>
+<a name="L470"></a><tt class="py-lineno">470</tt>  <tt class="py-line">        <tt class="py-comment"># for the complete story.</tt> </tt>
+<a name="L471"></a><tt class="py-lineno">471</tt>  <tt class="py-line"> </tt>
+<a name="L472"></a><tt class="py-lineno">472</tt>  <tt class="py-line">        <tt class="py-string">'math'</tt><tt class="py-op">:</tt>          <tt class="py-name">None</tt><tt class="py-op">,</tt>  <tt class="py-comment"># indicates no substitution, leave as is</tt> </tt>
+<a name="L473"></a><tt class="py-lineno">473</tt>  <tt class="py-line">        <tt class="py-string">'math2'</tt><tt class="py-op">:</tt>         <tt class="py-string">r'\g&lt;begin&gt;$\g&lt;latexmath&gt;$\g&lt;end&gt;'</tt><tt class="py-op">,</tt> </tt>
+<a name="L474"></a><tt class="py-lineno">474</tt>  <tt class="py-line">        <tt class="py-string">'emphasize'</tt><tt class="py-op">:</tt>     <tt class="py-string">r'\g&lt;begin&gt;\emph{\g&lt;subst&gt;}\g&lt;end&gt;'</tt><tt class="py-op">,</tt> </tt>
+<a name="L475"></a><tt class="py-lineno">475</tt>  <tt class="py-line">        <tt class="py-string">'bold'</tt><tt class="py-op">:</tt>          <tt class="py-string">r'\g&lt;begin&gt;\\textbf{\g&lt;subst&gt;}\g&lt;end&gt;'</tt><tt class="py-op">,</tt>  <tt class="py-comment"># (re.sub swallows a \)</tt> </tt>
+<a name="L476"></a><tt class="py-lineno">476</tt>  <tt class="py-line">        <tt class="py-string">'verbatim'</tt><tt class="py-op">:</tt>      <tt class="py-string">r'\g&lt;begin&gt;\code{\g&lt;subst&gt;}\g&lt;end&gt;'</tt><tt class="py-op">,</tt> </tt>
+<a name="L477"></a><tt class="py-lineno">477</tt>  <tt class="py-line">        <tt class="py-comment"># The following verbatim is better if fixed fontsize is ok, since</tt> </tt>
+<a name="L478"></a><tt class="py-lineno">478</tt>  <tt class="py-line">        <tt class="py-comment"># \code{\latexcommand{arg1}} style formatting does not work well</tt> </tt>
+<a name="L479"></a><tt class="py-lineno">479</tt>  <tt class="py-line">        <tt class="py-comment"># with ptex2tex (the regex will not include the proper second }</tt> </tt>
+<a name="L480"></a><tt class="py-lineno">480</tt>  <tt class="py-line">        <tt class="py-comment">#'verbatim':      r'\g&lt;begin&gt;{\footnotesize{10pt}{10pt}\verb!\g&lt;subst&gt;!\g&lt;end&gt;',</tt> </tt>
+<a name="L481"></a><tt class="py-lineno">481</tt>  <tt class="py-line">        <tt class="py-string">'citation'</tt><tt class="py-op">:</tt>      <tt class="py-string">r'~\\cite{\g&lt;subst&gt;}'</tt><tt class="py-op">,</tt> </tt>
+<a name="L482"></a><tt class="py-lineno">482</tt>  <tt class="py-line">        <tt class="py-string">'linkURL'</tt><tt class="py-op">:</tt>       <tt class="py-string">r'\g&lt;begin&gt;\href{\g&lt;url&gt;}{\g&lt;link&gt;}\g&lt;end&gt;'</tt><tt class="py-op">,</tt> </tt>
+<a name="L483"></a><tt class="py-lineno">483</tt>  <tt class="py-line">        <tt class="py-string">'linkURL2'</tt><tt class="py-op">:</tt>      <tt class="py-string">r'\href{{\g&lt;url&gt;}}{\g&lt;link&gt;}'</tt><tt class="py-op">,</tt> </tt>
+<a name="L484"></a><tt class="py-lineno">484</tt>  <tt class="py-line">        <tt class="py-string">'linkURL3'</tt><tt class="py-op">:</tt>      <tt class="py-string">r'\href{{\g&lt;url&gt;}}{\g&lt;link&gt;}'</tt><tt class="py-op">,</tt> </tt>
+<a name="L485"></a><tt class="py-lineno">485</tt>  <tt class="py-line">        <tt class="py-string">'linkURL2v'</tt><tt class="py-op">:</tt>     <tt class="py-string">r'\href{{\g&lt;url&gt;}}{\\nolinkurl{\g&lt;link&gt;}}'</tt><tt class="py-op">,</tt> </tt>
+<a name="L486"></a><tt class="py-lineno">486</tt>  <tt class="py-line">        <tt class="py-string">'linkURL3v'</tt><tt class="py-op">:</tt>     <tt class="py-string">r'\href{{\g&lt;url&gt;}}{\\nolinkurl{\g&lt;link&gt;}}'</tt><tt class="py-op">,</tt> </tt>
+<a name="L487"></a><tt class="py-lineno">487</tt>  <tt class="py-line">        <tt class="py-string">'plainURL'</tt><tt class="py-op">:</tt>      <tt class="py-string">r'\href{{\g&lt;url&gt;}}{\\nolinkurl{\g&lt;url&gt;}}'</tt><tt class="py-op">,</tt>  <tt class="py-comment"># cannot use \code inside \href, use \nolinkurl to handle _ and # etc. (implies verbatim font)</tt> </tt>
+<a name="L488"></a><tt class="py-lineno">488</tt>  <tt class="py-line">        <tt class="py-string">'inlinecomment'</tt><tt class="py-op">:</tt> <tt class="py-string">r'\inlinecomment{\g&lt;name&gt;}{\g&lt;comment&gt;}'</tt><tt class="py-op">,</tt> </tt>
+<a name="L489"></a><tt class="py-lineno">489</tt>  <tt class="py-line">        <tt class="py-string">'chapter'</tt><tt class="py-op">:</tt>       <tt class="py-string">r'\n\n\chapter{\g&lt;subst&gt;}\n'</tt><tt class="py-op">,</tt> </tt>
+<a name="L490"></a><tt class="py-lineno">490</tt>  <tt class="py-line">        <tt class="py-string">'section'</tt><tt class="py-op">:</tt>       <tt class="py-string">r'\n\n\section{\g&lt;subst&gt;}\n'</tt><tt class="py-op">,</tt> </tt>
+<a name="L491"></a><tt class="py-lineno">491</tt>  <tt class="py-line">        <tt class="py-string">'subsection'</tt><tt class="py-op">:</tt>    <tt class="py-string">r'\n\subsection{\g&lt;subst&gt;}\n'</tt><tt class="py-op">,</tt> </tt>
+<a name="L492"></a><tt class="py-lineno">492</tt>  <tt class="py-line">        <tt class="py-comment">#'subsubsection': '\n' + r'\subsubsection{\g&lt;subst&gt;}' + '\n',</tt> </tt>
+<a name="L493"></a><tt class="py-lineno">493</tt>  <tt class="py-line">        <tt class="py-string">'subsubsection'</tt><tt class="py-op">:</tt> <tt class="py-string">r'\n\paragraph{\g&lt;subst&gt;.}'</tt><tt class="py-op">,</tt> </tt>
+<a name="L494"></a><tt class="py-lineno">494</tt>  <tt class="py-line">        <tt class="py-string">'paragraph'</tt><tt class="py-op">:</tt>     <tt class="py-string">r'\paragraph{\g&lt;subst&gt;}\n'</tt><tt class="py-op">,</tt> </tt>
+<a name="L495"></a><tt class="py-lineno">495</tt>  <tt class="py-line">        <tt class="py-comment">#'abstract':      '\n\n' + r'\\begin{abstract}' + '\n' + r'\g&lt;text&gt;' + '\n' + r'\end{abstract}' + '\n\n' + r'\g&lt;rest&gt;',</tt> </tt>
+<a name="L496"></a><tt class="py-lineno">496</tt>  <tt class="py-line">        <tt class="py-string">'abstract'</tt><tt class="py-op">:</tt>      <tt class="py-string">r'\n\n\\begin{abstract}\n\g&lt;text&gt;\n\end{abstract}\n\n\g&lt;rest&gt;'</tt><tt class="py-op">,</tt> </tt>
+<a name="L497"></a><tt class="py-lineno">497</tt>  <tt class="py-line">        <tt class="py-comment"># recall that this is regex so latex commands must be treated carefully:</tt> </tt>
+<a name="L498"></a><tt class="py-lineno">498</tt>  <tt class="py-line">        <tt class="py-comment">#'title':         r'\\title{\g&lt;subst&gt;}' + '\n', # we don'e use maketitle</tt> </tt>
+<a name="L499"></a><tt class="py-lineno">499</tt>  <tt class="py-line">        <tt class="py-string">'title'</tt><tt class="py-op">:</tt>         <tt id="link-68" class="py-name" targets="Function doconce.latex.latex_title()=doconce.latex-module.html#latex_title"><a title="doconce.latex.latex_title" class="py-name" href="#" onclick="return doclink('link-68', 'latex_title', 'link-68');">latex_title</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L500"></a><tt class="py-lineno">500</tt>  <tt class="py-line">        <tt class="py-string">'author'</tt><tt class="py-op">:</tt>        <tt id="link-69" class="py-name" targets="Function doconce.latex.latex_author()=doconce.latex-module.html#latex_author"><a title="doconce.latex.latex_author" class="py-name" href="#" onclick="return doclink('link-69', 'latex_author', 'link-69');">latex_author</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L501"></a><tt class="py-lineno">501</tt>  <tt class="py-line">        <tt class="py-comment">#'date':          r'\\date{\g&lt;subst&gt;}' ' \n\\maketitle\n\n',</tt> </tt>
+<a name="L502"></a><tt class="py-lineno">502</tt>  <tt class="py-line">        <tt class="py-string">'date'</tt><tt class="py-op">:</tt>          <tt id="link-70" class="py-name"><a title="doconce.latex.fix_latex_command_regex" class="py-name" href="#" onclick="return doclink('link-70', 'fix_latex_command_regex', 'link-36');">fix_latex_command_regex</a></tt><tt class="py-op">(</tt><tt class="py-name">pattern</tt><tt class="py-op">=</tt><tt class="py-string">r"""</tt> </tt>
+<a name="L503"></a><tt class="py-lineno">503</tt>  <tt class="py-line"><tt class="py-string"></tt> </tt>
+<a name="L504"></a><tt class="py-lineno">504</tt>  <tt class="py-line"><tt class="py-string">% ----------------- Date -------------------------</tt> </tt>
+<a name="L505"></a><tt class="py-lineno">505</tt>  <tt class="py-line"><tt class="py-string"></tt> </tt>
+<a name="L506"></a><tt class="py-lineno">506</tt>  <tt class="py-line"><tt class="py-string">% #if LATEX_HEADING == "traditional"</tt> </tt>
+<a name="L507"></a><tt class="py-lineno">507</tt>  <tt class="py-line"><tt class="py-string"></tt> </tt>
+<a name="L508"></a><tt class="py-lineno">508</tt>  <tt class="py-line"><tt class="py-string">\date{\g&lt;subst&gt;}</tt> </tt>
+<a name="L509"></a><tt class="py-lineno">509</tt>  <tt class="py-line"><tt class="py-string">\maketitle</tt> </tt>
+<a name="L510"></a><tt class="py-lineno">510</tt>  <tt class="py-line"><tt class="py-string"></tt> </tt>
+<a name="L511"></a><tt class="py-lineno">511</tt>  <tt class="py-line"><tt class="py-string">% #elif LATEX_HEADING == "titlepage"</tt> </tt>
+<a name="L512"></a><tt class="py-lineno">512</tt>  <tt class="py-line"><tt class="py-string"></tt> </tt>
+<a name="L513"></a><tt class="py-lineno">513</tt>  <tt class="py-line"><tt class="py-string">\ \\\\ [10mm]</tt> </tt>
+<a name="L514"></a><tt class="py-lineno">514</tt>  <tt class="py-line"><tt class="py-string">{\large\textsf{\g&lt;subst&gt;}}</tt> </tt>
+<a name="L515"></a><tt class="py-lineno">515</tt>  <tt class="py-line"><tt class="py-string"></tt> </tt>
+<a name="L516"></a><tt class="py-lineno">516</tt>  <tt class="py-line"><tt class="py-string">\end{center}</tt> </tt>
+<a name="L517"></a><tt class="py-lineno">517</tt>  <tt class="py-line"><tt class="py-string">\vfill</tt> </tt>
+<a name="L518"></a><tt class="py-lineno">518</tt>  <tt class="py-line"><tt class="py-string">\clearpage</tt> </tt>
+<a name="L519"></a><tt class="py-lineno">519</tt>  <tt class="py-line"><tt class="py-string"></tt> </tt>
+<a name="L520"></a><tt class="py-lineno">520</tt>  <tt class="py-line"><tt class="py-string">% #else</tt> </tt>
+<a name="L521"></a><tt class="py-lineno">521</tt>  <tt class="py-line"><tt class="py-string"></tt> </tt>
+<a name="L522"></a><tt class="py-lineno">522</tt>  <tt class="py-line"><tt class="py-string">\begin{center}</tt> </tt>
+<a name="L523"></a><tt class="py-lineno">523</tt>  <tt class="py-line"><tt class="py-string">\g&lt;subst&gt;</tt> </tt>
+<a name="L524"></a><tt class="py-lineno">524</tt>  <tt class="py-line"><tt class="py-string">\end{center}</tt> </tt>
+<a name="L525"></a><tt class="py-lineno">525</tt>  <tt class="py-line"><tt class="py-string"></tt> </tt>
+<a name="L526"></a><tt class="py-lineno">526</tt>  <tt class="py-line"><tt class="py-string">% #endif</tt> </tt>
+<a name="L527"></a><tt class="py-lineno">527</tt>  <tt class="py-line"><tt class="py-string">"""</tt><tt class="py-op">,</tt> <tt class="py-name">application</tt><tt class="py-op">=</tt><tt class="py-string">'replacement'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L528"></a><tt class="py-lineno">528</tt>  <tt class="py-line">        <tt class="py-string">'figure'</tt><tt class="py-op">:</tt>        <tt id="link-71" class="py-name" targets="Function doconce.latex.latex_figure()=doconce.latex-module.html#latex_figure"><a title="doconce.latex.latex_figure" class="py-name" href="#" onclick="return doclink('link-71', 'latex_figure', 'link-71');">latex_figure</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L529"></a><tt class="py-lineno">529</tt>  <tt class="py-line">        <tt class="py-string">'movie'</tt><tt class="py-op">:</tt>         <tt id="link-72" class="py-name" targets="Function doconce.latex.latex_movie()=doconce.latex-module.html#latex_movie"><a title="doconce.latex.latex_movie" class="py-name" href="#" onclick="return doclink('link-72', 'latex_movie', 'link-72');">latex_movie</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L530"></a><tt class="py-lineno">530</tt>  <tt class="py-line">        <tt class="py-string">'comment'</tt><tt class="py-op">:</tt>       <tt class="py-string">'%% %s'</tt><tt class="py-op">,</tt> </tt>
+<a name="L531"></a><tt class="py-lineno">531</tt>  <tt class="py-line">        <tt class="py-op">}</tt> </tt>
+<a name="L532"></a><tt class="py-lineno">532</tt>  <tt class="py-line">    <tt class="py-comment"># should be configureable:</tt> </tt>
+<a name="L533"></a><tt class="py-lineno">533</tt>  <tt class="py-line">    <tt class="py-comment"># [tex]</tt> </tt>
+<a name="L534"></a><tt class="py-lineno">534</tt>  <tt class="py-line">    <tt class="py-comment"># verbatim = \code{, }</tt> </tt>
+<a name="L535"></a><tt class="py-lineno">535</tt>  <tt class="py-line">    <tt class="py-comment"># verbatim = \verb!, !</tt> </tt>
+<a name="L536"></a><tt class="py-lineno">536</tt>  <tt class="py-line"> </tt>
+<a name="L537"></a><tt class="py-lineno">537</tt>  <tt class="py-line">    <tt class="py-name">ending</tt> <tt class="py-op">=</tt> <tt class="py-string">'\n'</tt> </tt>
+<a name="L538"></a><tt class="py-lineno">538</tt>  <tt class="py-line">    <tt class="py-name">ending</tt> <tt class="py-op">=</tt> <tt class="py-string">'\n\n\\noindent\n'</tt> </tt>
+<a name="L539"></a><tt class="py-lineno">539</tt>  <tt class="py-line">    <tt id="link-73" class="py-name" targets="Variable doconce.common.LIST=doconce.common-module.html#LIST"><a title="doconce.common.LIST" class="py-name" href="#" onclick="return doclink('link-73', 'LIST', 'link-73');">LIST</a></tt><tt class="py-op">[</tt><tt class="py-string">'latex'</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt> </tt>
+<a name="L540"></a><tt class="py-lineno">540</tt>  <tt class="py-line">        <tt class="py-string">'itemize'</tt><tt class="py-op">:</tt> </tt>
+<a name="L541"></a><tt class="py-lineno">541</tt>  <tt class="py-line">        <tt class="py-op">{</tt><tt class="py-string">'begin'</tt><tt class="py-op">:</tt> <tt class="py-string">r'\begin{itemize}'</tt> <tt class="py-op">+</tt> <tt class="py-string">'\n'</tt><tt class="py-op">,</tt> </tt>
+<a name="L542"></a><tt class="py-lineno">542</tt>  <tt class="py-line">         <tt class="py-string">'item'</tt><tt class="py-op">:</tt> <tt class="py-string">r'\item'</tt><tt class="py-op">,</tt> <tt class="py-string">'end'</tt><tt class="py-op">:</tt> <tt class="py-string">r'\end{itemize}'</tt> <tt class="py-op">+</tt> <tt class="py-name">ending</tt><tt class="py-op">}</tt><tt class="py-op">,</tt> </tt>
+<a name="L543"></a><tt class="py-lineno">543</tt>  <tt class="py-line"> </tt>
+<a name="L544"></a><tt class="py-lineno">544</tt>  <tt class="py-line">        <tt class="py-string">'enumerate'</tt><tt class="py-op">:</tt> </tt>
+<a name="L545"></a><tt class="py-lineno">545</tt>  <tt class="py-line">        <tt class="py-op">{</tt><tt class="py-string">'begin'</tt><tt class="py-op">:</tt> <tt class="py-string">r'\begin{enumerate}'</tt> <tt class="py-op">+</tt> <tt class="py-string">'\n'</tt><tt class="py-op">,</tt> <tt class="py-string">'item'</tt><tt class="py-op">:</tt> <tt class="py-string">r'\item'</tt><tt class="py-op">,</tt> </tt>
+<a name="L546"></a><tt class="py-lineno">546</tt>  <tt class="py-line">         <tt class="py-string">'end'</tt><tt class="py-op">:</tt> <tt class="py-string">r'\end{enumerate}'</tt> <tt class="py-op">+</tt> <tt class="py-name">ending</tt><tt class="py-op">}</tt><tt class="py-op">,</tt> </tt>
+<a name="L547"></a><tt class="py-lineno">547</tt>  <tt class="py-line"> </tt>
+<a name="L548"></a><tt class="py-lineno">548</tt>  <tt class="py-line">        <tt class="py-string">'description'</tt><tt class="py-op">:</tt> </tt>
+<a name="L549"></a><tt class="py-lineno">549</tt>  <tt class="py-line">        <tt class="py-op">{</tt><tt class="py-string">'begin'</tt><tt class="py-op">:</tt> <tt class="py-string">r'\begin{description}'</tt> <tt class="py-op">+</tt> <tt class="py-string">'\n'</tt><tt class="py-op">,</tt> <tt class="py-string">'item'</tt><tt class="py-op">:</tt> <tt class="py-string">r'\item[%s]'</tt><tt class="py-op">,</tt> </tt>
+<a name="L550"></a><tt class="py-lineno">550</tt>  <tt class="py-line">         <tt class="py-string">'end'</tt><tt class="py-op">:</tt> <tt class="py-string">r'\end{description}'</tt> <tt class="py-op">+</tt> <tt class="py-name">ending</tt><tt class="py-op">}</tt><tt class="py-op">,</tt> </tt>
+<a name="L551"></a><tt class="py-lineno">551</tt>  <tt class="py-line"> </tt>
+<a name="L552"></a><tt class="py-lineno">552</tt>  <tt class="py-line">        <tt class="py-string">'separator'</tt><tt class="py-op">:</tt> <tt class="py-string">'\n'</tt><tt class="py-op">,</tt> </tt>
+<a name="L553"></a><tt class="py-lineno">553</tt>  <tt class="py-line">        <tt class="py-op">}</tt> </tt>
+<a name="L554"></a><tt class="py-lineno">554</tt>  <tt class="py-line"> </tt>
+<a name="L555"></a><tt class="py-lineno">555</tt>  <tt class="py-line">    <tt id="link-74" class="py-name" targets="Variable doconce.common.CODE=doconce.common-module.html#CODE"><a title="doconce.common.CODE" class="py-name" href="#" onclick="return doclink('link-74', 'CODE', 'link-74');">CODE</a></tt><tt class="py-op">[</tt><tt class="py-string">'latex'</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt id="link-75" class="py-name" targets="Function doconce.latex.latex_code()=doconce.latex-module.html#latex_code"><a title="doconce.latex.latex_code" class="py-name" href="#" onclick="return doclink('link-75', 'latex_code', 'link-75');">latex_code</a></tt> </tt>
+<a name="L556"></a><tt class="py-lineno">556</tt>  <tt class="py-line">    <tt id="link-76" class="py-name" targets="Variable doconce.common.ARGLIST=doconce.common-module.html#ARGLIST"><a title="doconce.common.ARGLIST" class="py-name" href="#" onclick="return doclink('link-76', 'ARGLIST', 'link-76');">ARGLIST</a></tt><tt class="py-op">[</tt><tt class="py-string">'latex'</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt> </tt>
+<a name="L557"></a><tt class="py-lineno">557</tt>  <tt class="py-line">    <tt class="py-comment">#    'parameter': r'\textbf{argument}',</tt> </tt>
+<a name="L558"></a><tt class="py-lineno">558</tt>  <tt class="py-line">    <tt class="py-comment">#    'keyword': r'\textbf{keyword argument}',</tt> </tt>
+<a name="L559"></a><tt class="py-lineno">559</tt>  <tt class="py-line">    <tt class="py-comment">#    'return': r'\textbf{return value(s)}',</tt> </tt>
+<a name="L560"></a><tt class="py-lineno">560</tt>  <tt class="py-line">    <tt class="py-comment">#    'instance variable': r'\textbf{instance variable}',</tt> </tt>
+<a name="L561"></a><tt class="py-lineno">561</tt>  <tt class="py-line">    <tt class="py-comment">#    'class variable': r'\textbf{class variable}',</tt> </tt>
+<a name="L562"></a><tt class="py-lineno">562</tt>  <tt class="py-line">    <tt class="py-comment">#    'module variable': r'\textbf{module variable}',</tt> </tt>
+<a name="L563"></a><tt class="py-lineno">563</tt>  <tt class="py-line">        <tt class="py-string">'parameter'</tt><tt class="py-op">:</tt> <tt class="py-string">r'argument'</tt><tt class="py-op">,</tt> </tt>
+<a name="L564"></a><tt class="py-lineno">564</tt>  <tt class="py-line">        <tt class="py-string">'keyword'</tt><tt class="py-op">:</tt> <tt class="py-string">r'keyword argument'</tt><tt class="py-op">,</tt> </tt>
+<a name="L565"></a><tt class="py-lineno">565</tt>  <tt class="py-line">        <tt class="py-string">'return'</tt><tt class="py-op">:</tt> <tt class="py-string">r'return value(s)'</tt><tt class="py-op">,</tt> </tt>
+<a name="L566"></a><tt class="py-lineno">566</tt>  <tt class="py-line">        <tt class="py-string">'instance variable'</tt><tt class="py-op">:</tt> <tt class="py-string">r'instance variable'</tt><tt class="py-op">,</tt> </tt>
+<a name="L567"></a><tt class="py-lineno">567</tt>  <tt class="py-line">        <tt class="py-string">'class variable'</tt><tt class="py-op">:</tt> <tt class="py-string">r'class variable'</tt><tt class="py-op">,</tt> </tt>
+<a name="L568"></a><tt class="py-lineno">568</tt>  <tt class="py-line">        <tt class="py-string">'module variable'</tt><tt class="py-op">:</tt> <tt class="py-string">r'module variable'</tt><tt class="py-op">,</tt> </tt>
+<a name="L569"></a><tt class="py-lineno">569</tt>  <tt class="py-line">        <tt class="py-op">}</tt> </tt>
+<a name="L570"></a><tt class="py-lineno">570</tt>  <tt class="py-line"> </tt>
+<a name="L571"></a><tt class="py-lineno">571</tt>  <tt class="py-line">    <tt id="link-77" class="py-name" targets="Variable doconce.common.FIGURE_EXT=doconce.common-module.html#FIGURE_EXT"><a title="doconce.common.FIGURE_EXT" class="py-name" href="#" onclick="return doclink('link-77', 'FIGURE_EXT', 'link-77');">FIGURE_EXT</a></tt><tt class="py-op">[</tt><tt class="py-string">'latex'</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-string">'.eps'</tt><tt class="py-op">,</tt> <tt class="py-string">'.ps'</tt><tt class="py-op">)</tt> </tt>
+<a name="L572"></a><tt class="py-lineno">572</tt>  <tt class="py-line"> </tt>
+<a name="L573"></a><tt class="py-lineno">573</tt>  <tt class="py-line">    <tt id="link-78" class="py-name" targets="Variable doconce.common.CROSS_REFS=doconce.common-module.html#CROSS_REFS"><a title="doconce.common.CROSS_REFS" class="py-name" href="#" onclick="return doclink('link-78', 'CROSS_REFS', 'link-78');">CROSS_REFS</a></tt><tt class="py-op">[</tt><tt class="py-string">'latex'</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt id="link-79" class="py-name" targets="Function doconce.latex.latex_ref_and_label()=doconce.latex-module.html#latex_ref_and_label"><a title="doconce.latex.latex_ref_and_label" class="py-name" href="#" onclick="return doclink('link-79', 'latex_ref_and_label', 'link-79');">latex_ref_and_label</a></tt> </tt>
+<a name="L574"></a><tt class="py-lineno">574</tt>  <tt class="py-line"> </tt>
+<a name="L575"></a><tt class="py-lineno">575</tt>  <tt class="py-line">    <tt id="link-80" class="py-name" targets="Variable doconce.common.TABLE=doconce.common-module.html#TABLE"><a title="doconce.common.TABLE" class="py-name" href="#" onclick="return doclink('link-80', 'TABLE', 'link-80');">TABLE</a></tt><tt class="py-op">[</tt><tt class="py-string">'latex'</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt id="link-81" class="py-name" targets="Function doconce.latex.latex_table()=doconce.latex-module.html#latex_table"><a title="doconce.latex.latex_table" class="py-name" href="#" onclick="return doclink('link-81', 'latex_table', 'link-81');">latex_table</a></tt> </tt>
+<a name="L576"></a><tt class="py-lineno">576</tt>  <tt class="py-line">    <tt id="link-82" class="py-name" targets="Variable doconce.common.EXERCISE=doconce.common-module.html#EXERCISE"><a title="doconce.common.EXERCISE" class="py-name" href="#" onclick="return doclink('link-82', 'EXERCISE', 'link-82');">EXERCISE</a></tt><tt class="py-op">[</tt><tt class="py-string">'latex'</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt id="link-83" class="py-name" targets="Function doconce.latex.latex_exercise()=doconce.latex-module.html#latex_exercise"><a title="doconce.latex.latex_exercise" class="py-name" href="#" onclick="return doclink('link-83', 'latex_exercise', 'link-83');">latex_exercise</a></tt> </tt>
+<a name="L577"></a><tt class="py-lineno">577</tt>  <tt class="py-line">    <tt id="link-84" class="py-name" targets="Variable doconce.common.INDEX_BIB=doconce.common-module.html#INDEX_BIB"><a title="doconce.common.INDEX_BIB" class="py-name" href="#" onclick="return doclink('link-84', 'INDEX_BIB', 'link-84');">INDEX_BIB</a></tt><tt class="py-op">[</tt><tt class="py-string">'latex'</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt id="link-85" class="py-name" targets="Function doconce.latex.latex_index_bib()=doconce.latex-module.html#latex_index_bib"><a title="doconce.latex.latex_index_bib" class="py-name" href="#" onclick="return doclink('link-85', 'latex_index_bib', 'link-85');">latex_index_bib</a></tt> </tt>
+<a name="L578"></a><tt class="py-lineno">578</tt>  <tt class="py-line"> </tt>
+<a name="L579"></a><tt class="py-lineno">579</tt>  <tt class="py-line">    <tt id="link-86" class="py-name" targets="Variable doconce.common.INTRO=doconce.common-module.html#INTRO"><a title="doconce.common.INTRO" class="py-name" href="#" onclick="return doclink('link-86', 'INTRO', 'link-86');">INTRO</a></tt><tt class="py-op">[</tt><tt class="py-string">'latex'</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-string">r"""%%</tt> </tt>
+<a name="L580"></a><tt class="py-lineno">580</tt>  <tt class="py-line"><tt class="py-string">%% Automatically generated LaTeX file from Doconce source</tt> </tt>
+<a name="L581"></a><tt class="py-lineno">581</tt>  <tt class="py-line"><tt class="py-string">%% http://code.google.com/p/doconce/</tt> </tt>
+<a name="L582"></a><tt class="py-lineno">582</tt>  <tt class="py-line"><tt class="py-string">%%</tt> </tt>
+<a name="L583"></a><tt class="py-lineno">583</tt>  <tt class="py-line"><tt class="py-string"></tt> </tt>
+<a name="L584"></a><tt class="py-lineno">584</tt>  <tt class="py-line"><tt class="py-string">% #ifdef BOOK</tt> </tt>
+<a name="L585"></a><tt class="py-lineno">585</tt>  <tt class="py-line"><tt class="py-string">\documentclass{book}</tt> </tt>
+<a name="L586"></a><tt class="py-lineno">586</tt>  <tt class="py-line"><tt class="py-string">% #else</tt> </tt>
+<a name="L587"></a><tt class="py-lineno">587</tt>  <tt class="py-line"><tt class="py-string">\documentclass{article}</tt> </tt>
+<a name="L588"></a><tt class="py-lineno">588</tt>  <tt class="py-line"><tt class="py-string">% #endif</tt> </tt>
+<a name="L589"></a><tt class="py-lineno">589</tt>  <tt class="py-line"><tt class="py-string"></tt> </tt>
+<a name="L590"></a><tt class="py-lineno">590</tt>  <tt class="py-line"><tt class="py-string">\usepackage{relsize,epsfig,makeidx,amsmath,amsfonts}</tt> </tt>
+<a name="L591"></a><tt class="py-lineno">591</tt>  <tt class="py-line"><tt class="py-string">\usepackage[latin1]{inputenc}</tt> </tt>
+<a name="L592"></a><tt class="py-lineno">592</tt>  <tt class="py-line"><tt class="py-string">\usepackage{ptex2tex}</tt> </tt>
+<a name="L593"></a><tt class="py-lineno">593</tt>  <tt class="py-line"><tt class="py-string">% #ifdef MOVIE15</tt> </tt>
+<a name="L594"></a><tt class="py-lineno">594</tt>  <tt class="py-line"><tt class="py-string">\usepackage{movie15}</tt> </tt>
+<a name="L595"></a><tt class="py-lineno">595</tt>  <tt class="py-line"><tt class="py-string">% #endif</tt> </tt>
+<a name="L596"></a><tt class="py-lineno">596</tt>  <tt class="py-line"><tt class="py-string">% #ifdef MINTED</tt> </tt>
+<a name="L597"></a><tt class="py-lineno">597</tt>  <tt class="py-line"><tt class="py-string">\usepackage{minted}  % requires latex -shell-escape (for Minted_* ptex2tex envirs)</tt> </tt>
+<a name="L598"></a><tt class="py-lineno">598</tt>  <tt class="py-line"><tt class="py-string">% #endif</tt> </tt>
+<a name="L599"></a><tt class="py-lineno">599</tt>  <tt class="py-line"><tt class="py-string"></tt> </tt>
+<a name="L600"></a><tt class="py-lineno">600</tt>  <tt class="py-line"><tt class="py-string">% #ifdef HELVETICA</tt> </tt>
+<a name="L601"></a><tt class="py-lineno">601</tt>  <tt class="py-line"><tt class="py-string">% Set helvetica as the default font family:</tt> </tt>
+<a name="L602"></a><tt class="py-lineno">602</tt>  <tt class="py-line"><tt class="py-string">\RequirePackage{helvet}</tt> </tt>
+<a name="L603"></a><tt class="py-lineno">603</tt>  <tt class="py-line"><tt class="py-string">\renewcommand\familydefault{phv}</tt> </tt>
+<a name="L604"></a><tt class="py-lineno">604</tt>  <tt class="py-line"><tt class="py-string">% #endif</tt> </tt>
+<a name="L605"></a><tt class="py-lineno">605</tt>  <tt class="py-line"><tt class="py-string"></tt> </tt>
+<a name="L606"></a><tt class="py-lineno">606</tt>  <tt class="py-line"><tt class="py-string">\usepackage[%</tt> </tt>
+<a name="L607"></a><tt class="py-lineno">607</tt>  <tt class="py-line"><tt class="py-string">colorlinks=true,</tt> </tt>
+<a name="L608"></a><tt class="py-lineno">608</tt>  <tt class="py-line"><tt class="py-string">linkcolor=blue,</tt> </tt>
+<a name="L609"></a><tt class="py-lineno">609</tt>  <tt class="py-line"><tt class="py-string">citecolor=black,</tt> </tt>
+<a name="L610"></a><tt class="py-lineno">610</tt>  <tt class="py-line"><tt class="py-string">filecolor=blue,</tt> </tt>
+<a name="L611"></a><tt class="py-lineno">611</tt>  <tt class="py-line"><tt class="py-string">urlcolor=blue]{hyperref}</tt> </tt>
+<a name="L612"></a><tt class="py-lineno">612</tt>  <tt class="py-line"><tt class="py-string">%\hyperbaseurl{}   % hyperlinks are relative to this root</tt> </tt>
+<a name="L613"></a><tt class="py-lineno">613</tt>  <tt class="py-line"><tt class="py-string"></tt> </tt>
+<a name="L614"></a><tt class="py-lineno">614</tt>  <tt class="py-line"><tt class="py-string">\newcommand{\inlinecomment}[2]{  ({\bf #1}: \emph{#2})  }</tt> </tt>
+<a name="L615"></a><tt class="py-lineno">615</tt>  <tt class="py-line"><tt class="py-string">%\newcommand{\inlinecomment}[2]{}  % turn off inline comments</tt> </tt>
+<a name="L616"></a><tt class="py-lineno">616</tt>  <tt class="py-line"><tt class="py-string"></tt> </tt>
+<a name="L617"></a><tt class="py-lineno">617</tt>  <tt class="py-line"><tt class="py-string">\makeindex</tt> </tt>
+<a name="L618"></a><tt class="py-lineno">618</tt>  <tt class="py-line"><tt class="py-string"></tt> </tt>
+<a name="L619"></a><tt class="py-lineno">619</tt>  <tt class="py-line"><tt class="py-string">\begin{document}</tt> </tt>
+<a name="L620"></a><tt class="py-lineno">620</tt>  <tt class="py-line"><tt class="py-string"></tt> </tt>
+<a name="L621"></a><tt class="py-lineno">621</tt>  <tt class="py-line"><tt class="py-string">"""</tt> </tt>
+<a name="L622"></a><tt class="py-lineno">622</tt>  <tt class="py-line">    <tt class="py-name">newcommands_files</tt> <tt class="py-op">=</tt> <tt class="py-string">'newcommands.tex'</tt><tt class="py-op">,</tt> <tt class="py-string">'newcommands_replace.tex'</tt><tt class="py-op">,</tt> \ </tt>
+<a name="L623"></a><tt class="py-lineno">623</tt>  <tt class="py-line">                        <tt class="py-string">'newcommands_keep.tex'</tt> </tt>
+<a name="L624"></a><tt class="py-lineno">624</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt class="py-name">filename</tt> <tt class="py-keyword">in</tt> <tt class="py-name">newcommands_files</tt><tt class="py-op">:</tt> </tt>
+<a name="L625"></a><tt class="py-lineno">625</tt>  <tt class="py-line">        <tt class="py-name">pfilename</tt> <tt class="py-op">=</tt> <tt class="py-name">filename</tt><tt class="py-op">[</tt><tt class="py-op">:</tt><tt class="py-op">-</tt><tt class="py-number">4</tt><tt class="py-op">]</tt> <tt class="py-op">+</tt> <tt class="py-string">'.p.tex'</tt> </tt>
+<a name="L626"></a><tt class="py-lineno">626</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">isfile</tt><tt class="py-op">(</tt><tt class="py-name">filename</tt><tt class="py-op">)</tt> <tt class="py-keyword">or</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">isfile</tt><tt class="py-op">(</tt><tt class="py-name">pfilename</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L627"></a><tt class="py-lineno">627</tt>  <tt class="py-line">            <tt id="link-87" class="py-name"><a title="doconce.common.INTRO" class="py-name" href="#" onclick="return doclink('link-87', 'INTRO', 'link-86');">INTRO</a></tt><tt class="py-op">[</tt><tt class="py-string">'latex'</tt><tt class="py-op">]</tt> <tt class="py-op">+=</tt> <tt class="py-string">r"""\input{%s}</tt> </tt>
+<a name="L628"></a><tt class="py-lineno">628</tt>  <tt class="py-line"><tt class="py-string">"""</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">filename</tt><tt class="py-op">[</tt><tt class="py-op">:</tt><tt class="py-op">-</tt><tt class="py-number">4</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L629"></a><tt class="py-lineno">629</tt>  <tt class="py-line">            <tt class="py-comment">#print '... found', filename</tt> </tt>
+<a name="L630"></a><tt class="py-lineno">630</tt>  <tt class="py-line">        <tt class="py-comment">#elif os.path.isfile(pfilename):</tt> </tt>
+<a name="L631"></a><tt class="py-lineno">631</tt>  <tt class="py-line">        <tt class="py-comment">#    print '%s exists, but not %s - run ptex2tex first' % \</tt> </tt>
+<a name="L632"></a><tt class="py-lineno">632</tt>  <tt class="py-line">        <tt class="py-comment">#    (pfilename, filename)</tt> </tt>
+<a name="L633"></a><tt class="py-lineno">633</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L634"></a><tt class="py-lineno">634</tt>  <tt class="py-line">            <tt class="py-comment">#print '... did not find', filename</tt> </tt>
+<a name="L635"></a><tt class="py-lineno">635</tt>  <tt class="py-line">            <tt class="py-keyword">pass</tt> </tt>
+<a name="L636"></a><tt class="py-lineno">636</tt>  <tt class="py-line"> </tt>
+<a name="L637"></a><tt class="py-lineno">637</tt>  <tt class="py-line"> </tt>
+<a name="L638"></a><tt class="py-lineno">638</tt>  <tt class="py-line">    <tt id="link-88" class="py-name" targets="Variable doconce.common.OUTRO=doconce.common-module.html#OUTRO"><a title="doconce.common.OUTRO" class="py-name" href="#" onclick="return doclink('link-88', 'OUTRO', 'link-88');">OUTRO</a></tt><tt class="py-op">[</tt><tt class="py-string">'latex'</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-string">r"""</tt> </tt>
+<a name="L639"></a><tt class="py-lineno">639</tt>  <tt class="py-line"><tt class="py-string"></tt> </tt>
+<a name="L640"></a><tt class="py-lineno">640</tt>  <tt class="py-line"><tt class="py-string">\printindex</tt> </tt>
+<a name="L641"></a><tt class="py-lineno">641</tt>  <tt class="py-line"><tt class="py-string"></tt> </tt>
+<a name="L642"></a><tt class="py-lineno">642</tt>  <tt class="py-line"><tt class="py-string">\end{document}</tt> </tt>
+<a name="L643"></a><tt class="py-lineno">643</tt>  <tt class="py-line"><tt class="py-string">"""</tt> </tt>
+</div><a name="L644"></a><tt class="py-lineno">644</tt>  <tt class="py-line"> </tt>
+<a name="L645"></a><tt class="py-lineno">645</tt>  <tt class="py-line"> </tt>
+<a name="fix_latex_command_regex"></a><div id="fix_latex_command_regex-def"><a name="L646"></a><tt class="py-lineno">646</tt> <a class="py-toggle" href="#" id="fix_latex_command_regex-toggle" onclick="return toggle('fix_latex_command_regex');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="doconce.latex-module.html#fix_latex_command_regex">fix_latex_command_regex</a><tt class="py-op">(</tt><tt class="py-param">pattern</tt><tt class="py-op">,</tt> <tt class="py-param">application</tt><tt class="py-op">=</tt><tt class="py-string">'match'</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="fix_latex_command_regex-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="fix_latex_command_regex-expanded"><a name="L647"></a><tt class="py-lineno">647</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L648"></a><tt class="py-lineno">648</tt>  <tt class="py-line"><tt class="py-docstring">    Given a pattern for a regular expression match or substitution,</tt> </tt>
+<a name="L649"></a><tt class="py-lineno">649</tt>  <tt class="py-line"><tt class="py-docstring">    the function checks for problematic patterns commonly</tt> </tt>
+<a name="L650"></a><tt class="py-lineno">650</tt>  <tt class="py-line"><tt class="py-docstring">    encountered when working with LaTeX texts, namely commands</tt> </tt>
+<a name="L651"></a><tt class="py-lineno">651</tt>  <tt class="py-line"><tt class="py-docstring">    starting with a backslash.</tt> </tt>
+<a name="L652"></a><tt class="py-lineno">652</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L653"></a><tt class="py-lineno">653</tt>  <tt class="py-line"><tt class="py-docstring">    For a pattern to be matched or substituted, and extra backslash is</tt> </tt>
+<a name="L654"></a><tt class="py-lineno">654</tt>  <tt class="py-line"><tt class="py-docstring">    always needed (either a special regex construction like ``\w`` leads</tt> </tt>
+<a name="L655"></a><tt class="py-lineno">655</tt>  <tt class="py-line"><tt class="py-docstring">    to wrong match, or ``\c`` leads to wrong substitution since ``\`` just</tt> </tt>
+<a name="L656"></a><tt class="py-lineno">656</tt>  <tt class="py-line"><tt class="py-docstring">    escapes ``c`` so only the ``c`` is replaced, leaving an undesired</tt> </tt>
+<a name="L657"></a><tt class="py-lineno">657</tt>  <tt class="py-line"><tt class="py-docstring">    backslash). For the replacement pattern in a substitutions, specified</tt> </tt>
+<a name="L658"></a><tt class="py-lineno">658</tt>  <tt class="py-line"><tt class="py-docstring">    by the ``application='replacement'`` argument, a backslash</tt> </tt>
+<a name="L659"></a><tt class="py-lineno">659</tt>  <tt class="py-line"><tt class="py-docstring">    before any of the characters ``abfgnrtv`` must be preceeded by an</tt> </tt>
+<a name="L660"></a><tt class="py-lineno">660</tt>  <tt class="py-line"><tt class="py-docstring">    additional backslash.</tt> </tt>
+<a name="L661"></a><tt class="py-lineno">661</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L662"></a><tt class="py-lineno">662</tt>  <tt class="py-line"><tt class="py-docstring">    The application variable equals 'match' if `pattern` is used for</tt> </tt>
+<a name="L663"></a><tt class="py-lineno">663</tt>  <tt class="py-line"><tt class="py-docstring">    a match and 'replacement' if `pattern` defines a replacement</tt> </tt>
+<a name="L664"></a><tt class="py-lineno">664</tt>  <tt class="py-line"><tt class="py-docstring">    regex in a ``re.sub`` command.</tt> </tt>
+<a name="L665"></a><tt class="py-lineno">665</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L666"></a><tt class="py-lineno">666</tt>  <tt class="py-line"><tt class="py-docstring">    Caveats: let `pattern` just contain LaTeX commands, not combination</tt> </tt>
+<a name="L667"></a><tt class="py-lineno">667</tt>  <tt class="py-line"><tt class="py-docstring">    of commands and other regular expressions (``\s``, ``\d``, etc.) as the</tt> </tt>
+<a name="L668"></a><tt class="py-lineno">668</tt>  <tt class="py-line"><tt class="py-docstring">    latter will end up with an extra undesired backslash.</tt> </tt>
+<a name="L669"></a><tt class="py-lineno">669</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L670"></a><tt class="py-lineno">670</tt>  <tt class="py-line"><tt class="py-docstring">    Here are examples on failures.</tt> </tt>
+<a name="L671"></a><tt class="py-lineno">671</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L672"></a><tt class="py-lineno">672</tt>  <tt class="py-line"><tt class="py-docstring">    &gt;&gt;&gt; re.sub(r'\begin\{equation\}', r'\[', r'\begin{equation}')</tt> </tt>
+<a name="L673"></a><tt class="py-lineno">673</tt>  <tt class="py-line"><tt class="py-docstring">    '\\begin{equation}'</tt> </tt>
+<a name="L674"></a><tt class="py-lineno">674</tt>  <tt class="py-line"><tt class="py-docstring">    &gt;&gt;&gt; # match of mbox, not \mbox, and wrong output</tt> </tt>
+<a name="L675"></a><tt class="py-lineno">675</tt>  <tt class="py-line"><tt class="py-docstring">    &gt;&gt;&gt; re.sub(r'\mbox\{(.+?)\}', r'\fbox{\g&lt;1&gt;}', r'\mbox{not}')</tt> </tt>
+<a name="L676"></a><tt class="py-lineno">676</tt>  <tt class="py-line"><tt class="py-docstring">    '\\\x0cbox{not}'</tt> </tt>
+<a name="L677"></a><tt class="py-lineno">677</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L678"></a><tt class="py-lineno">678</tt>  <tt class="py-line"><tt class="py-docstring">    Here are examples on using this function.</tt> </tt>
+<a name="L679"></a><tt class="py-lineno">679</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L680"></a><tt class="py-lineno">680</tt>  <tt class="py-line"><tt class="py-docstring">    &gt;&gt;&gt; from doconce.latex import fix_latex_command_regex as fix</tt> </tt>
+<a name="L681"></a><tt class="py-lineno">681</tt>  <tt class="py-line"><tt class="py-docstring">    &gt;&gt;&gt; pattern = fix(r'\begin\{equation\}', application='match')</tt> </tt>
+<a name="L682"></a><tt class="py-lineno">682</tt>  <tt class="py-line"><tt class="py-docstring">    &gt;&gt;&gt; re.sub(pattern, r'\[', r'\begin{equation}')</tt> </tt>
+<a name="L683"></a><tt class="py-lineno">683</tt>  <tt class="py-line"><tt class="py-docstring">    '\\['</tt> </tt>
+<a name="L684"></a><tt class="py-lineno">684</tt>  <tt class="py-line"><tt class="py-docstring">    &gt;&gt;&gt; pattern = fix(r'\mbox\{(.+?)\}', application='match')</tt> </tt>
+<a name="L685"></a><tt class="py-lineno">685</tt>  <tt class="py-line"><tt class="py-docstring">    &gt;&gt;&gt; replacement = fix(r'\fbox{\g&lt;1&gt;}', application='replacement')</tt> </tt>
+<a name="L686"></a><tt class="py-lineno">686</tt>  <tt class="py-line"><tt class="py-docstring">    &gt;&gt;&gt; re.sub(pattern, replacement, r'\mbox{not}')</tt> </tt>
+<a name="L687"></a><tt class="py-lineno">687</tt>  <tt class="py-line"><tt class="py-docstring">    '\\fbox{not}'</tt> </tt>
+<a name="L688"></a><tt class="py-lineno">688</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L689"></a><tt class="py-lineno">689</tt>  <tt class="py-line"><tt class="py-docstring">    Avoid mixing LaTeX commands and ordinary regular expression</tt> </tt>
+<a name="L690"></a><tt class="py-lineno">690</tt>  <tt class="py-line"><tt class="py-docstring">    commands, e.g.,</tt> </tt>
+<a name="L691"></a><tt class="py-lineno">691</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L692"></a><tt class="py-lineno">692</tt>  <tt class="py-line"><tt class="py-docstring">    &gt;&gt;&gt; pattern = fix(r'\mbox\{(\d+)\}', application='match')</tt> </tt>
+<a name="L693"></a><tt class="py-lineno">693</tt>  <tt class="py-line"><tt class="py-docstring">    &gt;&gt;&gt; pattern</tt> </tt>
+<a name="L694"></a><tt class="py-lineno">694</tt>  <tt class="py-line"><tt class="py-docstring">    '\\\\mbox\\{(\\\\d+)\\}'</tt> </tt>
+<a name="L695"></a><tt class="py-lineno">695</tt>  <tt class="py-line"><tt class="py-docstring">    &gt;&gt;&gt; re.sub(pattern, replacement, r'\mbox{987}')</tt> </tt>
+<a name="L696"></a><tt class="py-lineno">696</tt>  <tt class="py-line"><tt class="py-docstring">    '\\mbox{987}'  # no substitution, no match</tt> </tt>
+<a name="L697"></a><tt class="py-lineno">697</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L698"></a><tt class="py-lineno">698</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L699"></a><tt class="py-lineno">699</tt>  <tt class="py-line">    <tt class="py-keyword">import</tt> <tt class="py-name">string</tt> </tt>
+<a name="L700"></a><tt class="py-lineno">700</tt>  <tt class="py-line">    <tt class="py-name">problematic_letters</tt> <tt class="py-op">=</tt> <tt class="py-name">string</tt><tt class="py-op">.</tt><tt class="py-name">ascii_letters</tt> <tt class="py-keyword">if</tt> <tt class="py-name">application</tt> <tt class="py-op">==</tt> <tt class="py-string">'match'</tt> \ </tt>
+<a name="L701"></a><tt class="py-lineno">701</tt>  <tt class="py-line">                          <tt class="py-keyword">else</tt> <tt class="py-string">'abfgnrtv'</tt> </tt>
+<a name="L702"></a><tt class="py-lineno">702</tt>  <tt class="py-line"> </tt>
+<a name="L703"></a><tt class="py-lineno">703</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt class="py-name">letter</tt> <tt class="py-keyword">in</tt> <tt class="py-name">problematic_letters</tt><tt class="py-op">:</tt> </tt>
+<a name="L704"></a><tt class="py-lineno">704</tt>  <tt class="py-line">        <tt class="py-name">problematic_pattern</tt> <tt class="py-op">=</tt> <tt class="py-string">'\\'</tt> <tt class="py-op">+</tt> <tt class="py-name">letter</tt> </tt>
+<a name="L705"></a><tt class="py-lineno">705</tt>  <tt class="py-line"> </tt>
+<a name="L706"></a><tt class="py-lineno">706</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">letter</tt> <tt class="py-op">==</tt> <tt class="py-string">'g'</tt> <tt class="py-keyword">and</tt> <tt class="py-name">application</tt> <tt class="py-op">==</tt> <tt class="py-string">'replacement'</tt><tt class="py-op">:</tt> </tt>
+<a name="L707"></a><tt class="py-lineno">707</tt>  <tt class="py-line">            <tt class="py-comment"># no extra \ for \g&lt;...&gt; in pattern</tt> </tt>
+<a name="L708"></a><tt class="py-lineno">708</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-string">r'\g&lt;'</tt> <tt class="py-keyword">in</tt> <tt class="py-name">pattern</tt><tt class="py-op">:</tt> </tt>
+<a name="L709"></a><tt class="py-lineno">709</tt>  <tt class="py-line">                <tt class="py-keyword">continue</tt> </tt>
+<a name="L710"></a><tt class="py-lineno">710</tt>  <tt class="py-line"> </tt>
+<a name="L711"></a><tt class="py-lineno">711</tt>  <tt class="py-line">        <tt class="py-name">ok_pattern</tt> <tt class="py-op">=</tt> <tt class="py-string">'\\\\'</tt> <tt class="py-op">+</tt> <tt class="py-name">letter</tt> </tt>
+<a name="L712"></a><tt class="py-lineno">712</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">problematic_pattern</tt> <tt class="py-keyword">in</tt> <tt class="py-name">pattern</tt> <tt class="py-keyword">and</tt> <tt class="py-keyword">not</tt> <tt class="py-name">ok_pattern</tt> <tt class="py-keyword">in</tt> <tt class="py-name">pattern</tt><tt class="py-op">:</tt> </tt>
+<a name="L713"></a><tt class="py-lineno">713</tt>  <tt class="py-line">            <tt class="py-name">pattern</tt> <tt class="py-op">=</tt> <tt class="py-name">pattern</tt><tt class="py-op">.</tt><tt class="py-name">replace</tt><tt class="py-op">(</tt><tt class="py-name">problematic_pattern</tt><tt class="py-op">,</tt> <tt class="py-name">ok_pattern</tt><tt class="py-op">)</tt> </tt>
+<a name="L714"></a><tt class="py-lineno">714</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">pattern</tt> </tt>
+</div><a name="L715"></a><tt class="py-lineno">715</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="doconce-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Sat Jun 23 13:38:12 2012
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

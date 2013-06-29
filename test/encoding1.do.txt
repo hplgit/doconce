@@ -1,0 +1,3 @@
+=== Test ===
+
+Name with Norwegian characters: Åsmund Ødegård.

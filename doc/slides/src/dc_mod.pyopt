@@ -1,0 +1,15 @@
+def solver(I, a, T, dt, theta):
+    dt = float(dt)
+    N = int(round(T/dt))
+    T = N*dt
+    u = [0.0]*(N+1)
+    t = [i*dt for i in range(N+1)]
+
+    u[0] = I
+    for n in range(0, N):
+        u[n+1] = (1 - (1-theta)*a*dt)/(1 + theta*dt*a)*u[n]
+    return u, t
+
+u, t = solver(I=1, a=1, T=3, dt=1., theta=0.5)
+print u
+

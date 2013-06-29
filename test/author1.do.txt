@@ -1,0 +1,73 @@
+TITLE: Test of one author at one institution
+AUTHOR: John Doe Email:doe@cyberspace.net at Cyberspace Inc.
+DATE: today
+
+# Externaldocument: testdoc
+
+========= Generalized References =========
+label{genrefs}
+
+Sometimes a series of individual documents may be assembled to one
+large document. The assembly impacts how references to sections
+are written: when referring to a section in the same document, a label
+can be used, while references to sections in other documents are
+written differently, sometimes involving a link (URL) and a citation.
+Especially if both the individual documents and the large assembly document
+are to exist side by side, a flexible way of referencing is needed.
+For this purpose, Doconce offers *generalized references* which allows
+a reference to have two different formulations, one for internal
+references and one for external references. Since LaTeX supports
+references to labels in external documents via the `xr` package,
+the generalized references in Doconce has a syntax that may utilize
+the `xr` feature in LaTeX.
+
+The syntax of generalized references reads
+!bc
+ref[internal][cite][external]
+!ec
+If all `ref{label}` references in the text `internal` are references
+to labels in the present document, the above `ref` command is replaced
+by the text `internal`. Otherwise, if cite is non-empty and the format
+is `latex` or `pdflatex` one assumes that the references in `internal`
+are to external documents declared by a comment line `#
+Externaldocuments: testdoc, mydoc` (usually after the title, authors,
+and date). In this case the output text is `internal cite` and the
+LaTeX package `xr` is used to handle the labels in the external documents.
+If none of the two situations above applies, the `external`
+text will be the output.
+
+Here is a specific example on a generalized reference:
+!bc
+As explained in
+ref[Section ref{subsec:ex}][in "Langtangen, 2013":
+"http://doconce.googlecode.com/hg/test/demo_testdoc.html"
+cite{testdoc:12}][a "section": "demo_testdoc.html#___sec2" in
+the document "A Document for Testing Doconce": "demo_testdoc.html"
+cite{testdoc:12}], Doconce documents may include movies.
+!ec
+This is rendered to the following text:
+As explained in
+ref[Section ref{subsec:ex}][in "Langtangen, 2013":
+"http://doconce.googlecode.com/hg/test/demo_testdoc.html"
+cite{testdoc:12}][a "section": "demo_testdoc.html#___sec2" in
+the document "A Document for Testing Doconce": "demo_testdoc.html"
+cite{testdoc:12}], Doconce documents may include movies.
+
+And here is another example with internal references only:
+!bc
+Generalized references are described in ref[Section ref{genrefs}][][
+the document *author1*].
+!ec
+The text is rendered to "Generalized references are described in
+ref[Section ref{genrefs}][][
+the document *author1*]."
+
+# We are testing chapter too to see if latex output then has
+# book style rather than article style.
+
+========= Test of math =========
+
+Inline math, $a=b$, is the only math in this document.
+
+# Need BIBFILE because of cite{} examples
+BIBFILE: papers.pub

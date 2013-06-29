@@ -1,0 +1,1177 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>doconce.DocWriter</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="doconce-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="doconce-module.html">Package&nbsp;doconce</a> ::
+        Module&nbsp;DocWriter
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="doconce.DocWriter-module.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== MODULE DESCRIPTION ==================== -->
+<h1 class="epydoc">Module DocWriter</h1><p class="nomargin-top"><span class="codelink"><a href="doconce.DocWriter-pysrc.html">source&nbsp;code</a></span></p>
+<p>DocWriter is a tool for writing documents in ASCII, HTML, LaTeX, 
+  Doconce, and other formats based on input from Python datastructures.</p>
+  <p>The base class _BaseWriter defines common functions and data 
+  structures, while subclasses HTML, Doconce, etc.  implement (i.e., write 
+  to) various formats.</p>
+  <p>This module works, but is unifinished and needs documentation!</p>
+
+<!-- ==================== CLASSES ==================== -->
+<a name="section-Classes"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Classes</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Classes"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="doconce.DocWriter._BaseWriter-class.html" class="summary-name" onclick="show_private();">_BaseWriter</a><br />
+      Base class for document writing classes.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="doconce.DocWriter.Doconce-class.html" class="summary-name">Doconce</a>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="doconce.DocWriter.HTML-class.html" class="summary-name">HTML</a>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="doconce.DocWriter.LaTeX-class.html" class="summary-name">LaTeX</a>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="doconce.DocWriter.DocWriter-class.html" class="summary-name">DocWriter</a><br />
+      DocWriter can write documents in several formats at once.
+    </td>
+  </tr>
+</table>
+<!-- ==================== FUNCTIONS ==================== -->
+<a name="section-Functions"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Functions</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Functions"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="doconce.DocWriter-module.html#makedocstr" class="summary-sig-name">makedocstr</a>(<span class="summary-sig-arg">parent_class</span>,
+        <span class="summary-sig-arg">subclass_method</span>)</span><br />
+      Compose a string (to be used as doc string) from a method's doc 
+      string in a parent class and an additional doc string in a subclass 
+      version of the method.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="doconce.DocWriter-pysrc.html#makedocstr">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="func_to_method"></a><span class="summary-sig-name">func_to_method</span>(<span class="summary-sig-arg">func</span>,
+        <span class="summary-sig-arg">class_</span>,
+        <span class="summary-sig-arg">method_name</span>=<span class="summary-sig-default">None</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="doconce.DocWriter-pysrc.html#func_to_method">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="doconce.DocWriter-module.html#html_movie" class="summary-sig-name">html_movie</a>(<span class="summary-sig-arg">plotfiles</span>,
+        <span class="summary-sig-arg">interval_ms</span>=<span class="summary-sig-default">300</span>,
+        <span class="summary-sig-arg">width</span>=<span class="summary-sig-default">800</span>,
+        <span class="summary-sig-arg">height</span>=<span class="summary-sig-default">600</span>,
+        <span class="summary-sig-arg">casename</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string">movie</code><code class="variable-quote">'</code></span>)</span><br />
+      Takes a list plotfiles which should be for example of the form:</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="doconce.DocWriter-pysrc.html#html_movie">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="html_movie_embed"></a><span class="summary-sig-name">html_movie_embed</span>(<span class="summary-sig-arg">moviefile</span>,
+        <span class="summary-sig-arg">width</span>=<span class="summary-sig-default">400</span>,
+        <span class="summary-sig-arg">height</span>=<span class="summary-sig-default">400</span>)</span><br />
+      Return HTML for embedding a moviefile using the default handling of 
+      such files.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="doconce.DocWriter-pysrc.html#html_movie_embed">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="html_movie_embed_wmp"></a><span class="summary-sig-name">html_movie_embed_wmp</span>(<span class="summary-sig-arg">moviefile</span>,
+        <span class="summary-sig-arg">width</span>=<span class="summary-sig-default">400</span>,
+        <span class="summary-sig-arg">height</span>=<span class="summary-sig-default">400</span>)</span><br />
+      Return HTML text for embedding a movie file (Windows Media Player 
+      code).</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="doconce.DocWriter-pysrc.html#html_movie_embed_wmp">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="html_movie_embed_qt"></a><span class="summary-sig-name">html_movie_embed_qt</span>(<span class="summary-sig-arg">moviefile</span>,
+        <span class="summary-sig-arg">width</span>=<span class="summary-sig-default">400</span>,
+        <span class="summary-sig-arg">height</span>=<span class="summary-sig-default">400</span>)</span><br />
+      Return HTML for embedding a moviefile (QuickTime code).</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="doconce.DocWriter-pysrc.html#html_movie_embed_qt">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="_test"></a><span class="summary-sig-name">_test</span>(<span class="summary-sig-arg">d</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="doconce.DocWriter-pysrc.html#_test">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="doconce.DocWriter-module.html#_figure" class="summary-sig-name" onclick="show_private();">_figure</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">filename</span>,
+        <span class="summary-sig-arg">caption</span>,
+        <span class="summary-sig-arg">width</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">height</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">label</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Insert a figure into the document.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="doconce.DocWriter-pysrc.html#_figure">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="_link"></a><span class="summary-sig-name">_link</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">link_text</span>,
+        <span class="summary-sig-arg">link_target</span>)</span><br />
+      Typeset a hyperlink.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="doconce.DocWriter-pysrc.html#_link">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="doconce.DocWriter-module.html#_list" class="summary-sig-name" onclick="show_private();">_list</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">items</span>,
+        <span class="summary-sig-arg">listtype</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string">itemize</code><code class="variable-quote">'</code></span>)</span><br />
+      Write list or nested lists.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="doconce.DocWriter-pysrc.html#_list">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="_math"></a><span class="summary-sig-name">_math</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">text</span>)</span><br />
+      Write block of mathematical text (equations).</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="doconce.DocWriter-pysrc.html#_math">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="_paragraph"></a><span class="summary-sig-name">_paragraph</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">title</span>,
+        <span class="summary-sig-arg">ending</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string">.</code><code class="variable-quote">'</code></span>,
+        <span class="summary-sig-arg">label</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Write a paragraph heading with the given title and an ending (period,
+      question mark, colon) and an optional label (for navigation).</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="doconce.DocWriter-pysrc.html#_paragraph">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="_paragraph_separator"></a><span class="summary-sig-name">_paragraph_separator</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Add a (space) separator between running paragraphs.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="doconce.DocWriter-pysrc.html#_paragraph_separator">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="_raw"></a><span class="summary-sig-name">_raw</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">text</span>)</span><br />
+      Write text directly 'as is' to output.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="doconce.DocWriter-pysrc.html#_raw">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="_section"></a><span class="summary-sig-name">_section</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">title</span>,
+        <span class="summary-sig-arg">label</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Write a section heading with the given title and an optional label 
+      (for navigation).</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="doconce.DocWriter-pysrc.html#_section">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="_subsection"></a><span class="summary-sig-name">_subsection</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">title</span>,
+        <span class="summary-sig-arg">label</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Write a subsection heading with the given title and an optional label
+      (for navigation).</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="doconce.DocWriter-pysrc.html#_subsection">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="_subsubsection"></a><span class="summary-sig-name">_subsubsection</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">title</span>,
+        <span class="summary-sig-arg">label</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Write a subsubsection heading with the given title and an optional 
+      label (for navigation).</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="doconce.DocWriter-pysrc.html#_subsubsection">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="doconce.DocWriter-module.html#_table" class="summary-sig-name" onclick="show_private();">_table</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">table</span>,
+        <span class="summary-sig-arg">column_headline_pos</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string">c</code><code class="variable-quote">'</code></span>,
+        <span class="summary-sig-arg">column_pos</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string">c</code><code class="variable-quote">'</code></span>)</span><br />
+      Translates a two-dimensional list of data, containing strings or 
+      numbers, to a suitable &quot;tabular&quot; environment in the output.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="doconce.DocWriter-pysrc.html#_table">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="doconce.DocWriter-module.html#_text" class="summary-sig-name" onclick="show_private();">_text</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">text</span>,
+        <span class="summary-sig-arg">indent</span>=<span class="summary-sig-default">0</span>)</span><br />
+      Write plain text.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="doconce.DocWriter-pysrc.html#_text">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="doconce.DocWriter-module.html#_title" class="summary-sig-name" onclick="show_private();">_title</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">title</span>,
+        <span class="summary-sig-arg">authors_and_institutions</span>=<span class="summary-sig-default"><code class="variable-group">[</code><code class="variable-group">]</code></span>,
+        <span class="summary-sig-arg">date</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string">today</code><code class="variable-quote">'</code></span>)</span><br />
+      Provide title and authors.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="doconce.DocWriter-pysrc.html#_title">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="_url"></a><span class="summary-sig-name">_url</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">url_address</span>,
+        <span class="summary-sig-arg">link_text</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Typeset an URL (with an optional link).</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="doconce.DocWriter-pysrc.html#_url">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="_verbatim"></a><span class="summary-sig-name">_verbatim</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">code</span>)</span><br />
+      Write verbatim text in fixed-width form (typically for computer 
+      code).</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="doconce.DocWriter-pysrc.html#_verbatim">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="doconce.DocWriter-module.html#_write_to_file" class="summary-sig-name" onclick="show_private();">_write_to_file</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">filename</span>)</span><br />
+      Write formatted document to a file.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="doconce.DocWriter-pysrc.html#_write_to_file">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<!-- ==================== VARIABLES ==================== -->
+<a name="section-Variables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Variables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="inline_tag_begin"></a><span class="summary-name">inline_tag_begin</span> = <code title="'(?P&lt;begin&gt;(^|[(\\s]))'"><code class="variable-quote">'</code><code class="variable-string">(?P&lt;begin&gt;(^|[(\\s]))</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="inline_tag_end"></a><span class="summary-name">inline_tag_end</span> = <code title="'(?P&lt;end&gt;($|[.,?!;:)\\s]))'"><code class="variable-quote">'</code><code class="variable-string">(?P&lt;end&gt;($|[.,?!;:)\\s]))</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="doconce.DocWriter-module.html#INLINE_TAGS" class="summary-name">INLINE_TAGS</a> = <code title="{'bold': '(?P&lt;begin&gt;(^|[(\\s]))_(?P&lt;subst&gt;[^ `][^_`]*)_(?P&lt;end&gt;($|[.,?\
+!;:)\\s]))',
+ 'emphasize': '(?P&lt;begin&gt;(^|[(\\s]))\\*(?P&lt;subst&gt;[^ `][^*`]*)\\*(?P&lt;en\
+d&gt;($|[.,?!;:)\\s]))',
+ 'math': '(?P&lt;begin&gt;(^|[(\\s]))\\$(?P&lt;subst&gt;[^ `][^$`]*)\\$(?P&lt;end&gt;($|\
+[.,?!;:)\\s]))',
+ 'math2': '(?P&lt;begin&gt;(^|[(\\s]))\\$(?P&lt;latexmath&gt;[^ `][^$`]*)\\$\\|\\$\
+(?P&lt;puretext&gt;[^ `][^$`]*)\\$(?P&lt;end&gt;($|[.,?!;:)\\s]))',
+..."><code class="variable-group">{</code><code class="variable-quote">'</code><code class="variable-string">bold</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">(?P&lt;begin&gt;(^|[(\\s]))_(?P&lt;subst&gt;[^ `][</code><code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="__package__"></a><span class="summary-name">__package__</span> = <code title="'doconce'"><code class="variable-quote">'</code><code class="variable-string">doconce</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="doconce.DocWriter-module.html#a" class="summary-name">a</a> = <code title="ArgSpec(args=['self', 'table', 'column_headline_pos', 'column_pos'], v\
+arargs=None, keywords=None, defaults=('c', 'c'))">ArgSpec(args=['self', 'table', 'column_headline_pos', 'col<code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="doconce.DocWriter-module.html#allargs" class="summary-name">allargs</a> = <code title="['self', 'table', 'column_headline_pos=\'c\'', 'column_pos=\'c\'']"><code class="variable-group">[</code><code class="variable-quote">'</code><code class="variable-string">self</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">table</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">column_headline_pos=\'c\'</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">colu</code><code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="arg"></a><span class="summary-name">arg</span> = <code title="'column_pos'"><code class="variable-quote">'</code><code class="variable-string">column_pos</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="args"></a><span class="summary-name">args</span> = <code title="['self', 'table']"><code class="variable-group">[</code><code class="variable-quote">'</code><code class="variable-string">self</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">table</code><code class="variable-quote">'</code><code class="variable-group">]</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="doconce.DocWriter-module.html#code" class="summary-name">code</a> = <code title="'''def _table(self, table, column_headline_pos=\'c\', column_pos=\'c\'\
+):
+    \'\'\'
+        Translates a two-dimensional list of data, containing strings \
+or
+        numbers, to a suitable &quot;tabular&quot; environment in the output.
+
+        @param table: list of list with rows/columns in table, includi\
+..."><code class="variable-quote">'</code><code class="variable-string">def _table(self, table, column_headline_pos=\'c\', col</code><code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="doconce.DocWriter-module.html#docstring" class="summary-name">docstring</a> = <code title="'''
+        Translates a two-dimensional list of data, containing strings \
+or
+        numbers, to a suitable &quot;tabular&quot; environment in the output.
+
+        @param table: list of list with rows/columns in table, includi\
+ng
+        (optional) column-headline 1st row and row-headline 1st column\
+..."><code class="variable-quote">'</code><code class="variable-string">\n        Translates a two-dimensional list of da</code><code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="kwargs"></a><span class="summary-name">kwargs</span> = <code title="['column_headline_pos=\'c\'', 'column_pos=\'c\'']"><code class="variable-group">[</code><code class="variable-quote">'</code><code class="variable-string">column_headline_pos=\'c\'</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">column_pos=\'c\'</code><code class="variable-quote">'</code><code class="variable-group">]</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="method"></a><span class="summary-name">method</span> = <code title="'table'"><code class="variable-quote">'</code><code class="variable-string">table</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="signature_call"></a><span class="summary-name">signature_call</span> = <code title="'table(table, column_headline_pos, column_pos)'"><code class="variable-quote">'</code><code class="variable-string">table(table, column_headline_pos, column_pos)</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="doconce.DocWriter-module.html#signature_def" class="summary-name">signature_def</a> = <code title="'table(self, table, column_headline_pos=\'c\', column_pos=\'c\')'"><code class="variable-quote">'</code><code class="variable-string">table(self, table, column_headline_pos=\'c\',</code><code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="value"></a><span class="summary-name">value</span> = <code title="'c'"><code class="variable-quote">'</code><code class="variable-string">c</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+</table>
+<!-- ==================== FUNCTION DETAILS ==================== -->
+<a name="section-FunctionDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Function Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-FunctionDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="makedocstr"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">makedocstr</span>(<span class="sig-arg">parent_class</span>,
+        <span class="sig-arg">subclass_method</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="doconce.DocWriter-pysrc.html#makedocstr">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Compose a string (to be used as doc string) from a method's doc string
+  in a parent class and an additional doc string in a subclass version of 
+  the method.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>parent_class</code></strong> - class object for parent class.</li>
+        <li><strong class="pname"><code>subclass_method</code></strong> - method object for subclass.</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>parent_class.method.__doc__ + subclass_method.__doc__</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="html_movie"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">html_movie</span>(<span class="sig-arg">plotfiles</span>,
+        <span class="sig-arg">interval_ms</span>=<span class="sig-default">300</span>,
+        <span class="sig-arg">width</span>=<span class="sig-default">800</span>,
+        <span class="sig-arg">height</span>=<span class="sig-default">600</span>,
+        <span class="sig-arg">casename</span>=<span class="sig-default"><code class="variable-quote">'</code><code class="variable-string">movie</code><code class="variable-quote">'</code></span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="doconce.DocWriter-pysrc.html#html_movie">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Takes a list plotfiles which should be for example of the form:</p>
+<pre class="literalblock">
+   ['frame00.png', 'frame01.png', ... ]
+</pre>
+  <p>where each string should be the name of an image file and they should 
+  be in the proper order for viewing as an animation.</p>
+  <p>The result is html text strings that incorporate javascript to loop 
+  through the plots one after another.  The html text also features buttons
+  for controlling the movie. The parameter iterval_ms is the time interval 
+  between loading successive images and is in milliseconds.</p>
+  <p>The width and height parameters do not seem to have any effect for 
+  reasons not understood.</p>
+  <p>The following strings are returned: header, javascript code, form with
+  movie and buttons, and footer. Concatenating these strings and dumping to
+  an html file yields a kind of movie file to be viewed in a browser. The 
+  images variable in the javascript code is unique for each movie, because 
+  it is annotated by the casename string, so several such javascript 
+  sections can be used in the same html file.</p>
+  <p>This function is based on code written by R.J. LeVeque, based on a 
+  template from Alan McIntyre.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="_figure"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">_figure</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">filename</span>,
+        <span class="sig-arg">caption</span>,
+        <span class="sig-arg">width</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">height</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">label</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="doconce.DocWriter-pysrc.html#_figure">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Insert a figure into the document. filename should be without 
+  extension; a proper extension is added, and if the figure is not 
+  available in that image format, the convert utility from ImageMagick is 
+  called to convert the format.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="_list"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">_list</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">items</span>,
+        <span class="sig-arg">listtype</span>=<span class="sig-default"><code class="variable-quote">'</code><code class="variable-string">itemize</code><code class="variable-quote">'</code></span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="doconce.DocWriter-pysrc.html#_list">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Write list or nested lists.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>items</code></strong> - list of items.</li>
+        <li><strong class="pname"><code>listtype</code></strong> - 'itemize', 'enumerate', or 'description'.</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="_table"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">_table</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">table</span>,
+        <span class="sig-arg">column_headline_pos</span>=<span class="sig-default"><code class="variable-quote">'</code><code class="variable-string">c</code><code class="variable-quote">'</code></span>,
+        <span class="sig-arg">column_pos</span>=<span class="sig-default"><code class="variable-quote">'</code><code class="variable-string">c</code><code class="variable-quote">'</code></span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="doconce.DocWriter-pysrc.html#_table">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Translates a two-dimensional list of data, containing strings or 
+  numbers, to a suitable &quot;tabular&quot; environment in the output.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>table</code></strong> - list of list with rows/columns in table, including (optional) 
+          column-headline 1st row and row-headline 1st column.</li>
+        <li><strong class="pname"><code>column_pos</code></strong> - specify the l/c/r position of data entries in columns, give 
+          either (e.g.) 'llrrc' or one char (if all are equal).</li>
+        <li><strong class="pname"><code>column_headline_pos</code></strong> - position l/c/r for the headline row</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="_text"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">_text</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">text</span>,
+        <span class="sig-arg">indent</span>=<span class="sig-default">0</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="doconce.DocWriter-pysrc.html#_text">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Write plain text. Each line can be idented by a given number of 
+  spaces.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="_title"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">_title</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">title</span>,
+        <span class="sig-arg">authors_and_institutions</span>=<span class="sig-default"><code class="variable-group">[</code><code class="variable-group">]</code></span>,
+        <span class="sig-arg">date</span>=<span class="sig-default"><code class="variable-quote">'</code><code class="variable-string">today</code><code class="variable-quote">'</code></span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="doconce.DocWriter-pysrc.html#_title">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Provide title and authors.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>title</code></strong> - document title (string).</li>
+        <li><strong class="pname"><code>authors_and_institutions</code></strong> - list of authors and their associated institutions, where each 
+          list item is a tuple/list with author as first element followed 
+          by the name of all institutions this author is associated with.</li>
+        <li><strong class="pname"><code>date</code></strong> - None implies no date, while 'today' generates the current date, 
+          otherwise a string is supplied.</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="_write_to_file"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">_write_to_file</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">filename</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="doconce.DocWriter-pysrc.html#_write_to_file">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Write formatted document to a file. Just give the stem of the file 
+  name; the extension will be automatically added (depending on the 
+  document format).</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== VARIABLES DETAILS ==================== -->
+<a name="section-VariablesDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Variables Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-VariablesDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="INLINE_TAGS"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">INLINE_TAGS</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+<code class="variable-group">{</code><code class="variable-quote">'</code><code class="variable-string">bold</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">(?P&lt;begin&gt;(^|[(\\s]))_(?P&lt;subst&gt;[^ `][^_`]*)_(?P&lt;end&gt;($|[.,?</code><span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+<code class="variable-string">!;:)\\s]))</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">emphasize</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">(?P&lt;begin&gt;(^|[(\\s]))\\*(?P&lt;subst&gt;[^ `][^*`]*)\\*(?P&lt;en</code><span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+<code class="variable-string">d&gt;($|[.,?!;:)\\s]))</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">math</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">(?P&lt;begin&gt;(^|[(\\s]))\\$(?P&lt;subst&gt;[^ `][^$`]*)\\$(?P&lt;end&gt;($|</code><span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+<code class="variable-string">[.,?!;:)\\s]))</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">math2</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">(?P&lt;begin&gt;(^|[(\\s]))\\$(?P&lt;latexmath&gt;[^ `][^$`]*)\\$\\|\\$</code><span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+<code class="variable-string">(?P&lt;puretext&gt;[^ `][^$`]*)\\$(?P&lt;end&gt;($|[.,?!;:)\\s]))</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+<code class="variable-ellipsis">...</code>
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="a"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">a</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+ArgSpec(args=['self', 'table', 'column_headline_pos', 'column_pos'], v<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+arargs=None, keywords=None, defaults=('c', 'c'))
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="allargs"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">allargs</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+<code class="variable-group">[</code><code class="variable-quote">'</code><code class="variable-string">self</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">table</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">column_headline_pos=\'c\'</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">column_pos=\'c\'</code><code class="variable-quote">'</code><code class="variable-group">]</code>
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="code"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">code</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+<code class="variable-quote">'''</code><code class="variable-string">def _table(self, table, column_headline_pos=\'c\', column_pos=\'c\'</code><span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+<code class="variable-string">):</code>
+<code class="variable-string">    \'\'\'</code>
+<code class="variable-string">        Translates a two-dimensional list of data, containing strings </code><span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+<code class="variable-string">or</code>
+<code class="variable-string">        numbers, to a suitable &quot;tabular&quot; environment in the output.</code>
+<code class="variable-string"></code>
+<code class="variable-string">        @param table: list of list with rows/columns in table, includi</code><span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+<code class="variable-ellipsis">...</code>
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="docstring"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">docstring</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+<code class="variable-quote">'''</code><code class="variable-string"></code>
+<code class="variable-string">        Translates a two-dimensional list of data, containing strings </code><span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+<code class="variable-string">or</code>
+<code class="variable-string">        numbers, to a suitable &quot;tabular&quot; environment in the output.</code>
+<code class="variable-string"></code>
+<code class="variable-string">        @param table: list of list with rows/columns in table, includi</code><span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+<code class="variable-string">ng</code>
+<code class="variable-string">        (optional) column-headline 1st row and row-headline 1st column</code><span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+<code class="variable-ellipsis">...</code>
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="signature_def"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">signature_def</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+<code class="variable-quote">'</code><code class="variable-string">table(self, table, column_headline_pos=\'c\', column_pos=\'c\')</code><code class="variable-quote">'</code>
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="doconce-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Sat Jun 23 13:38:11 2012
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

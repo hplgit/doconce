@@ -1,0 +1,71 @@
+DATE: today
+
+======= Solve the world's simplest differential equation =======
+
+===== Mathematical problem =====
+
+This exercise addresses the differential equation problem
+
+!bt
+\begin{align}
+u'(t) &= -au(t), \quad t \in (0,T], label{ode}\\
+u(0)  &= I,                         label{initial:value}
+\end{align}
+!et
+where $a$, $I$, and $T$ are prescribed constant parameters, and $u(t)$ is
+the unknown function to be estimated. This mathematical model
+is relevant for physical phenomena featuring exponential decay
+in time.
+
+===== Numerical solution method =====
+
+Derive the $\theta$-rule scheme for solving (ref{ode}) numerically
+with time step $\Delta t$:
+
+!bt
+\[
+u^{n+1} = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}u^n,
+\]
+!et
+Here, $n=0,1,\ldots,N-1$.
+
+!bhint
+Set up the Forward Euler, Backward Euler, and the Crank-Nicolson (or
+Midpoint) schemes first. Then generalize to the $\theta$-rule above.
+!ehint
+
+===== Implementation =====
+
+The numerical method is implemented in a Python function
+`solver` (found in the "`decay_mod`":
+"https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py" module):
+
+!bc pycod
+from numpy import linspace, zeros
+
+def solver(I, a, T, dt, theta):
+    """Solve u'=-a*u, u(0)=I, for t in (0,T] with steps of dt."""
+    dt = float(dt)           # avoid integer division
+    N = int(round(T/dt))     # no of time intervals
+    T = N*dt                 # adjust T to fit time step dt
+    u = zeros(N+1)           # array of u[n] values
+    t = linspace(0, T, N+1)  # time mesh
+
+    u[0] = I                 # assign initial condition
+    for n in range(0, N):    # n=0,1,...,N-1
+        u[n+1] = (1 - (1-theta)*a*dt)/(1 + theta*dt*a)*u[n]
+    return u, t
+!ec
+
+
+===== Numerical experiments =====
+
+Fix the values of where $I$, $a$, and $T$.
+Then vary $\Delta t$ for $\theta=0,1/2,1$.
+Illustrate that if $\Delta t$ is not sufficiently small,
+$\theta=0$ and $\theta=1/2$ can give non-physical solutions
+(more precisely, oscillating solutions).
+
+Perform experiments and determine empirically the convergence
+rate for $\theta=0,1/2,1$.
+

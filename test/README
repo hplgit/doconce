@@ -1,0 +1,11 @@
+Dependencies for the test problems run by test.verify:
+
+* ptex2tex (pygments) and ptex2tex.sty style file (from ptex2tex)
+* mako
+* preprocess
+* texlive-latex-extra (Ubuntu package) or movie15.sty LaTeX package
+* sphinx
+* docutils
+* latex, dvipdf
+* pdftk (just for the make.sh script in doc/tutorial)
+

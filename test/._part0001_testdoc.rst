@@ -1,0 +1,57 @@
+.. !split
+
+
+
+
+
+The format of this document is
+sphinx
+
+*Abstract.* This is a document with many test constructions for doconce syntax.
+It was used heavily for the development and kept for testing
+numerous constructions, also special and less common cases.
+
+And exactly for test purposes we have an extra line here, which
+is part of the abstract.
+
+.. Cannot demonstrate chapter headings since abstract and chapter
+
+.. is mutually exclusive in LaTeX
+
+
+.. _sec1:
+
+
+Section 1
+=========
+
+Here is a nested list:
+
+  * item1
+
+  * item2
+
+  * item3 which continues
+    on the next line to test that feature
+
+  * and a sublist
+
+    * with indented subitem1
+
+    * and a subitem2
+
+
+  * and perhaps an ordered sublist
+
+   1. first item
+
+   2. second item,
+      continuing on a new line
+
+
+
+..
+
+    Here are two lines that make up
+    a block quote.
+

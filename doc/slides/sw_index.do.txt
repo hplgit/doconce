@@ -1,0 +1,17 @@
+TITLE: Scientific Writing Anno 2013
+# index.html file for looking at the various versions of scientific_writing
+
+ * "HTML5 Slides": "scientific_writing_reveal.html" (using "reveal.js": "http://lab.hakim.se/reveal-js/")
+ * "HTML5 Slides": "scientific_writing_deck.html" (using "deck.js": "https://github.com/imakewebthings/deck.js/")
+ * "LaTeX Beamer": "scientific_writing_red2.pdf"
+ * "Plain HTML slides": "scientific_writing_plain.html"
+
+Here are some other document versions of the slides:
+
+ * "PDF (LaTeX)": "scientific_writing_anslistings.pdf" (anslistings.sty for code)
+ * "PDF (LaTeX)": "scientific_writing_minted.pdf" (minted.sty for code)
+ * "Solarized MathJax HTML": "scientific_writing_solarized.html"
+
+Doconce supports many slide styles:
+
+ * "Demos of different HTML5 slide styles": "demo/index.html"

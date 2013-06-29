@@ -1,0 +1,199 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>doconce &mdash; Doconce Documentation 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Doconce Documentation 1.0 documentation" href="index.html" />
+    <link rel="next" title="doconce.doconce" href="doconce.html" />
+    <link rel="prev" title="Welcome to the Doconce documentation!" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="doconce.html" title="doconce.doconce"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to the Doconce documentation!"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Doconce Documentation 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-doconce">
+<span id="doconce"></span><h1><a class="reference internal" href="#module-doconce" title="doconce"><tt class="xref py py-mod docutils literal"><span class="pre">doconce</span></tt></a><a class="headerlink" href="#module-doconce" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="what-is-doconce">
+<h2>What Is Doconce?<a class="headerlink" href="#what-is-doconce" title="Permalink to this headline">¶</a></h2>
+<p>Doconce is two things:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Doconce is a very simple and minimally tagged markup language that
+looks like ordinary ASCII text (much like what you would use in an
+email), but the text can be transformed to numerous other formats,
+including HTML, Wiki, LaTeX, PDF, reStructuredText (reST), Sphinx,
+Epytext, and also plain text (where non-obvious formatting/tags are
+removed for clear reading in, e.g., emails). From reStructuredText
+you can go to XML, HTML, LaTeX, PDF, OpenOffice, and from the
+latter to RTF and MS Word.
+(An experimental translator to Pandoc is under development, and from
+Pandoc one can generate Markdown, reST, LaTeX, HTML, PDF, DocBook XML,
+OpenOffice, GNU Texinfo, MediaWiki, RTF, Groff, and other formats.)</li>
+<li>Doconce is a working strategy for never duplicating information.
+Text is written in a single place and then transformed to
+a number of different destinations of diverse type (software
+source code, manuals, tutorials, books, wikis, memos, emails, etc.).
+The Doconce markup language support this working strategy.
+The slogan is: &#8220;Write once, include anywhere&#8221;.</li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="what-does-doconce-look-like">
+<h2>What Does Doconce Look Like?<a class="headerlink" href="#what-does-doconce-look-like" title="Permalink to this headline">¶</a></h2>
+<p>Doconce text looks like ordinary text, but there are some almost invisible
+text constructions that allow you to control the formating. For example,</p>
+<blockquote>
+<div><ul class="simple">
+<li>bullet lists arise from lines starting with an asterisk,</li>
+<li><em>emphasized words</em> are surrounded by asterisks,</li>
+<li><strong>words in boldface</strong> are surrounded by underscores,</li>
+<li>words from computer code are enclosed in back quotes and
+then typeset verbatim (monospace font),</li>
+<li>section headings are recognied by equality (<tt class="docutils literal"><span class="pre">=</span></tt>) signs before
+and after the text, and the number of <tt class="docutils literal"><span class="pre">=</span></tt> signs indicates the
+level of the section (7 for main section, 5 for subsection,
+3 for subsubsection),</li>
+<li>paragraph headings are recognized by a double underscore
+before and after the heading,</li>
+<li>blocks of computer code can easily be included by placing
+<tt class="docutils literal"><span class="pre">!bc</span></tt> (begin code) and <tt class="docutils literal"><span class="pre">!ec</span></tt> (end code) commands at separate lines
+before and after the code block,</li>
+<li>blocks of computer code can also be imported from source files,</li>
+<li>blocks of LaTeX mathematics can easily be included by placing
+<tt class="docutils literal"><span class="pre">!bt</span></tt> (begin TeX) and <tt class="docutils literal"><span class="pre">!et</span></tt> (end TeX) commands at separate lines
+before and after the math block,</li>
+<li>there is support for both LaTeX and text-like inline mathematics,</li>
+<li>tables, figures, movies with captions, URLs with links, index list,
+labels and references are supported,</li>
+<li>comments can be inserted throughout the text (<tt class="docutils literal"><span class="pre">#</span></tt> at the beginning
+of a line),</li>
+<li>with a simple preprocessor, Preprocess or Mako, one can include
+other documents (files) and large portions of text can be defined
+in or out of the text,</li>
+<li>with the Mako preprocessor one can even embed Python
+code and use this to steer generation of Doconce text.</li>
+</ul>
+</div></blockquote>
+<p>Documentation of Doconce is found in</p>
+<blockquote>
+<div><ul class="simple">
+<li>The tutorial in <tt class="docutils literal"><span class="pre">doc/tutorial/tutorial.do.txt</span></tt> (file paths are here given
+relative to the root of the Doconce source code).</li>
+<li>The more comprehensive documentation in <tt class="docutils literal"><span class="pre">doc/manual/manual.do.txt</span></tt>.</li>
+<li>There is web access to the <a class="reference external" href="http://doconce.googlecode.com/hg/doc/demos/tutorial/index.html">tutorial</a> and the <a class="reference external" href="http://doconce.googlecode.com/hg/doc/demos/manual/index.html">manual</a></li>
+</ul>
+</div></blockquote>
+<p>Both directories contain a <tt class="docutils literal"><span class="pre">make.sh</span></tt> file for creating various formats.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#"><tt class="docutils literal"><span class="pre">doconce</span></tt></a><ul>
+<li><a class="reference internal" href="#what-is-doconce">What Is Doconce?</a></li>
+<li><a class="reference internal" href="#what-does-doconce-look-like">What Does Doconce Look Like?</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Welcome to the Doconce documentation!</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="doconce.html"
+                        title="next chapter"><tt class="docutils literal docutils literal docutils literal"><span class="pre">doconce.doconce</span></tt></a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/init.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="doconce.html" title="doconce.doconce"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to the Doconce documentation!"
+             >previous</a> |</li>
+        <li><a href="index.html">Doconce Documentation 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2010, H. P. Langtangen.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
