@@ -3419,7 +3419,7 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
     header = ''.join(header)
     theme = option('beamer_slide_theme=', default='default')
     if theme != 'default':
-        beamerstyle = 'beamertheme' + theme + '.sty'
+        beamerstyle = 'beamertheme' + theme
         copy_latex_packages([beamerstyle])
 
     slides = r"""

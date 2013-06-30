@@ -1,4 +1,5 @@
 #!/bin/sh -x
+set -x
 # Compile the Doconce manual, manual.do.txt, in a variety of
 # formats to exemplify how different formats may look like.
 # This is both a test of Doconce and an example.
@@ -179,11 +180,7 @@ and maybe the most important format of all:
 EOF
 
 cd ..
-rm -rf ../demos/manual
-cp -r demo ../demos/manual
-# update wiki too
-cp manual.gwiki ../../../doconce.wiki/Description.wiki
-doconce format gwiki install
-cp install.gwiki ../../../doconce.wiki/Installation1.wiki
-echo
-echo "Go to the demo directory and load index.html into a web browser."
+dest=../pub/manual
+cp -r demo/html demo/manual.pdf demo/manual.html demo/figs $dest
+dest=../../../doconce.wiki
+cp -r demo/manual.rst $dest

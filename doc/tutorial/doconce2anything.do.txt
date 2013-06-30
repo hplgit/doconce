@@ -509,6 +509,7 @@ edited with the aid of the `doconce replace` and `doconce subst`
 commands. The former works with substituting text directly, while the
 latter performs substitutions using regular expressions.
 You will use `doconce replace` to edit `section{` to `section*{`:
+
 !bc sys
 Terminal> doconce replace 'section{' 'section*{' mydoc.tex
 !ec

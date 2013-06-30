@@ -1,4 +1,5 @@
 #!/bin/sh -x
+set -x
 sh -x ./clean.sh
 
 # html
@@ -145,10 +146,10 @@ EOF
 echo
 echo "Go to the demo directory and load index.html into a web browser."
 
-# update demo (recall that there is no .hg dir except in the top dir
-# so we can just take an rm and cp)
 cd ..
-rm -rf ../demos/tutorial
-cp -r demo ../demos/tutorial
-# update wiki too
-cp tutorial.gwiki ../../../doconce.wiki/Tutorial.wiki
+dest=../pub/tutorial
+cp -r demo/html demo/tutorial.pdf demo/tutorial.html $dest
+dest=../../../doconce.wiki
+cp -r demo/tutorial.rst $dest
+
+

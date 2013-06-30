@@ -1,4 +1,5 @@
 #!/bin/sh -x
+set -x
 sh ./clean.sh
 
 # Make latest bin/doconce doc
@@ -97,10 +98,8 @@ EOF
 echo
 echo "Go to the demo directory and load index.html into a web browser."
 
-# update demo (recall that there is no .hg dir except in the top dir
-# so we can just take an rm and cp)
 cd ..
-rm -rf ../demos/quickref
-cp -r demo ../demos/quickref
-# update wiki too
-cp quickref.gwiki ../../../doconce.wiki/Quickref.wiki
+dest=../pub/quickref
+cp -r demo/html demo/quickref.pdf demo/quickref.html $dest
+dest=../../../doconce.wiki
+cp -r demo/quickref.rst $dest

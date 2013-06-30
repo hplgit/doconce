@@ -10,11 +10,11 @@ The impatient way to install what is needed is to run the
 ===== Doconce =====
 
 Doconce itself is pure Python code hosted at URL:
-"http://code.google.com/p/doconce".  Its installation from the
-Mercurial (`hg`) source follows the standard procedure:
+"https://github.com/hplgit/doconce".  Its installation from the
+Git source follows the standard procedure:
 !bc sys
 # Doconce
-hg clone https://code.google.com/p/doconce/ doconce
+git clone git@github.com:hplgit/doconce.git
 cd doconce
 sudo python setup.py install
 cd ..
@@ -22,10 +22,10 @@ cd ..
 Since Doconce is frequently updated, it is recommended to use the
 above procedure and whenever a problem occurs, make sure to
 update to the most recent version:
+
 !bc sys
 cd doconce
-hg pull
-hg update
+git pull origin master
 sudo python setup.py install
 !ec
 

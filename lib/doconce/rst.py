@@ -64,8 +64,8 @@ def rst_movie(m):
     return rst_text
 
 # these global patterns are used in st, epytext, plaintext as well:
-bc_regex_pattern = r'([a-zA-Z0-9)"`.*_}=-^~+])[\n:.?!, ]\s*?^!bc.*?$'
-bt_regex_pattern = r'([a-zA-Z0-9)"`.*_}=-^~])[\n:.?!, ]\s*?^!bt.*?$'
+bc_regex_pattern = r'([a-zA-Z0-9)"`.*_{}=-^~+])[\n:.?!, ]\s*?^!bc.*?$'
+bt_regex_pattern = r'([a-zA-Z0-9)"`.*_{}=-^~])[\n:.?!, ]\s*?^!bt.*?$'
 
 def rst_code(filestr, code_blocks, code_block_types,
              tex_blocks, format):
