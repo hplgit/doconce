@@ -617,7 +617,8 @@ def bibliography(pubdata, citations, format='doconce'):
             if pub['key'] == key:
                 pubs.append(pub)
                 break
-    text = '\n======= Bibliography =======\n\n'
+    #text = '\n======= Bibliography =======\n\n' # the user writes the heading
+    text = ''
     for pub in pubs:
         text += formatter[pub['category']](pub)
     text += '\n\n'

@@ -766,7 +766,7 @@ def latex_index_bib(filestr, index, citations, pubfile, pubdata):
         print '\nexporting publish database %s to %s:' % (pubfile, bibtexfile)
         failure = os.system('publish export %s' % bibtexfile)
 
-        # Remove heading right before BIBFILE
+        # Remove heading right before BIBFILE because latex has its own
         pattern = '={5,9} .+? ={5,9}\s+^BIBFILE'
         filestr = re.sub(pattern, 'BIBFILE', filestr, flags=re.MULTILINE)
 

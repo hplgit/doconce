@@ -42,7 +42,7 @@ if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
 rm -rf sphinx-rootdir
 # We have several examples on AUTHOR: so to avoid multiple
 # authors we have to specify
-doconce sphinx_dir author=HPL title='Doconce Manual' version=0.6 manual.do.txt
+doconce sphinx_dir author=HPL title='Doconce Manual' theme=cbc version=0.6 manual.do.txt
 cp manual.rst manual.sphinx.rst
 cp manual.rst sphinx-rootdir
 cp -r figs sphinx-rootdir

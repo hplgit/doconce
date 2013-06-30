@@ -52,21 +52,6 @@ def plain_ref_and_label(section_label2title, format, filestr):
 
     return filestr
 
-def bibdict2doconcelist(pyfile, citations):
-    """Transform dict with bibliography to a doconce ordered list."""
-    f = open(pyfile, 'r')
-    bibstr = f.read()
-    try:
-        bibdict = eval(bibstr)
-    except:
-        print '*** error: in Python dictionary for bibliography in', pyfile
-        _abort()
-    text = '\n\n======= Bibliography =======\n\n'
-    for label in citations:
-        # remove newlines in reference data:
-        text += '  o ' + ' '.join(bibdict[label].splitlines()) + '\n'
-    text += '\n\n'
-    return text
 
 def plain_index_bib(filestr, index, citations, pubfile, pubdata):
     if citations:
