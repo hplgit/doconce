@@ -6,7 +6,7 @@
 
 You should take a look at Doconce if any of these questions are of interest.
 
-*Users are strongly encouraged to use the most recent software in the [GitHub repository](https://github.com/hplgit/doconce) and not the tarballs.
+*Users are strongly encouraged to use the most recent software in the [GitHub repository](https://github.com/hplgit/doconce) and not the tarballs!*
 
 ### Highlights
 
@@ -47,32 +47,17 @@ be used to create slides in various formats.
 
 ### Documentation
 
- * Tutorial:
+ * Tutorial: [Sphinx](../pub/tutorial/html/index.html),
+   [HTML](../pub/tutorial/tutorial.html),
+   [PDF](../pub/tutorial/tutorial.pdf)
 
-   * [Sphinx](../pub/tutorial/html/index.html)
+ * Manual: [Sphinx](../pub/manual/html/index.html),
+   [HTML](../pub/manual/manual.html),
+   [PDF](../pub/manual/manual.pdf)
 
-   * [HTML](../pub/tutorial/tutorial.html)
-
-   * [PDF](../pub/tutorial/tutorial.pdf)
-
-
- * Manual:
-
-   * [Sphinx](../pub/manual/html/index.html)
-
-   * [HTML](../pub/manual/manual.html)
-
-   * [PDF](../pub/manual/manual.pdf)
-
-
- * Quick Reference:
-
-   * [Sphinx](../pub/quickref/html/index.html)
-
-   * [HTML](../pub/quickref/quickref.html)
-
-   * [PDF](../pub/quickref/quickref.pdf)
-
+ * Quick Reference: [Sphinx](../pub/quickref/html/index.html),
+   [HTML](../pub/quickref/quickref.html),
+   [PDF](../pub/quickref/quickref.pdf)
 
 ### License
 
