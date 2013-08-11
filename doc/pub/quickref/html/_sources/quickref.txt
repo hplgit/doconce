@@ -1,11 +1,11 @@
 .. Automatically generated reST file from Doconce source
-   (http://code.google.com/p/doconce/)
+   (https://github.com/hplgit/doconce/)
 
 Doconce Quick Reference
 -----------------------
 
 :Author: Hans Petter Langtangen
-:Date: Jun 29, 2013
+:Date: Aug 11, 2013
 
 **WARNING: This quick reference is very incomplete!**
 

@@ -1068,12 +1068,12 @@ case in LaTeX.
 <!DOCTYPE html>
 <!--
 Automatically generated HTML file from Doconce source
-(http://code.google.com/p/doconce/)
+(https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: http://code.google.com/p/doconce/" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="A Document for Testing Doconce">
 <meta name="keywords" content="figures,movies,index with subindex,index, with comma, and one more">
 
@@ -1377,7 +1377,7 @@ $$
 ************** File: testdoc.p.tex *****************
 %%
 %% Automatically generated file from Doconce source
-%% (http://code.google.com/p/doconce/)
+%% (https://github.com/hplgit/doconce/)
 %%
 % #ifdef PTEX2TEX_EXPLANATION
 %%
@@ -3107,7 +3107,7 @@ case in {\LaTeX}.
 ************** File: testdoc.tex_ptex2tex *****************
 %%
 %% Automatically generated file from Doconce source
-%% (http://code.google.com/p/doconce/)
+%% (https://github.com/hplgit/doconce/)
 %%
 
 
@@ -4586,7 +4586,7 @@ output in testdoc.tex
 ----------- end of doconce ptex2tex output ----------------
 %%
 %% Automatically generated file from Doconce source
-%% (http://code.google.com/p/doconce/)
+%% (https://github.com/hplgit/doconce/)
 %%
 
 
@@ -5995,7 +5995,7 @@ case in {\LaTeX}.
 
 ************** File: testdoc.rst *****************
 .. Automatically generated reST file from Doconce source
-   (http://code.google.com/p/doconce/)
+   (https://github.com/hplgit/doconce/)
 
 A Document for Testing Doconce
 ==============================
@@ -7070,10 +7070,6 @@ Filename: ``selc_composed.pdf``.
 References
 ==========
 
-
-Bibliography
-============
-
 .. [Ref01]
    **H. P. Langtangen and G. Pedersen**. Propagation of Large Destructive Waves,
    *International Journal of Applied Mechanics and Engineering*,
@@ -7356,7 +7352,7 @@ case in LaTeX.
 
 ************** File: testdoc.sphinx.rst *****************
 .. Automatically generated reST file from Doconce source
-   (http://code.google.com/p/doconce/)
+   (https://github.com/hplgit/doconce/)
 
 A Document for Testing Doconce
 ==============================
@@ -8589,10 +8585,6 @@ Filename: ``selc_composed.pdf``.
 References
 ==========
 
-
-Bibliography
-============
-
 .. [Ref01]
    **H. P. Langtangen and G. Pedersen**. Propagation of Large Destructive Waves,
    *International Journal of Applied Mechanics and Engineering*,
@@ -9786,9 +9778,6 @@ Filename: `selc_composed.pdf`.
 == References ==
 
 
-== Bibliography ==
-
-
  # H. P. Langtangen and G. Pedersen.     Propagation of Large Destructive Waves,    *International Journal of Applied Mechanics and Engineering*,    7(1),    pp. 187-204,    2002.
  # H. P. Langtangen, K.-A. Mardal and R. Winther.     Numerical Methods for Incompressible Viscous Flow,    *Advances in Water Resources*,    25,    pp. 1125-1146,    2002.
  # H. P. Langtangen.     Numerical Solution of First Passage Problems in Random Vibrations,    *SIAM Journal of Scientific and Statistical Computing*,    15,    pp. 997-996,    1994.
@@ -10843,9 +10832,6 @@ Filename: <code>selc_composed.pdf</code>.
 
 
 == References ==
-
-
-== Bibliography ==
 
 
 <ol>
@@ -11964,9 +11950,6 @@ Filename: {{{selc_composed.pdf}}}.
 = References =
 
 
-= Bibliography =
-
-
  # H. P. Langtangen and G. Pedersen.     Propagation of Large Destructive Waves,    //International Journal of Applied Mechanics and Engineering//,    7(1),    pp. 187-204,    2002.
  # H. P. Langtangen, K.-A. Mardal and R. Winther.     Numerical Methods for Incompressible Viscous Flow,    //Advances in Water Resources//,    25,    pp. 1125-1146,    2002.
  # H. P. Langtangen.     Numerical Solution of First Passage Problems in Random Vibrations,    //SIAM Journal of Scientific and Statistical Computing//,    15,    pp. 997-996,    1994.
@@ -12894,9 +12877,6 @@ Filename: 'selc_composed.pdf'.
 
 
 References
-
-
-Bibliography
 
  1. H. P. Langtangen and G. Pedersen. 
     Propagation of Large Destructive Waves,
@@ -13936,10 +13916,6 @@ Filename: C{selc_composed.pdf}.
 
 References
 ==========
-
-
-Bibliography
-============
 
  1. H. P. Langtangen and G. Pedersen. 
     Propagation of Large Destructive Waves,
@@ -15054,10 +15030,6 @@ Filename: selc_composed.pdf.
 
 References
 ==========
-
-
-Bibliography
-============
 
  1. H. P. Langtangen and G. Pedersen. 
     Propagation of Large Destructive Waves,
@@ -16322,9 +16294,6 @@ Filename: `selc_composed.pdf`.
 
 
 ## References
-
-
-## Bibliography
 
  1. \label{Langtangen_Pedersen_2002} _H. P. Langtangen and G. Pedersen_. 
     Propagation of Large Destructive Waves,
@@ -17874,9 +17843,6 @@ case in LaTeX.
       "\n",
       "\n",
       "## References\n",
-      "\n",
-      "\n",
-      "## Bibliography\n",
       "\n",
       " 1. \\label{Langtangen_Pedersen_2002} _H. P. Langtangen and G. Pedersen_. \n",
       "    Propagation of Large Destructive Waves,\n",
@@ -19657,7 +19623,6 @@ x, y = circle(<span class="fl">2.0</span>, <span class="dv">0</span>, <span clas
 
 
 <h2 id="references">References</h2>
-<h2 id="bibliography">Bibliography</h2>
 <ol style="list-style-type: decimal">
 <li><p> <em>H. P. Langtangen and G. Pedersen</em>. Propagation of Large Destructive Waves, <em>International Journal of Applied Mechanics and Engineering</em>, 7(1), pp. 187-204, 2002.</p></li>
 <li><p> <em>H. P. Langtangen, K.-A. Mardal and R. Winther</em>. Numerical Methods for Incompressible Viscous Flow, <em>Advances in Water Resources</em>, 25, pp. 1125-1146, 2002.</p></li>
@@ -20639,12 +20604,12 @@ MathJax.Hub.Config({
 <!DOCTYPE html>
 <!--
 Automatically generated HTML file from Doconce source
-(http://code.google.com/p/doconce/)
+(https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: http://code.google.com/p/doconce/" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Test of one author at one institution">
 
 
@@ -20828,10 +20793,6 @@ Inline math, \( a=b \), is the only math in this document.
 <p>
 <!-- Need BIBFILE because of cite{} examples -->
 
-<h2>Bibliography</h2>
-
-<p>
-
 <ol>
  <li> <a name="testdoc:12"></a> <b>H. P. Langtangen</b>. 
     A Document for Testing Doconce,
@@ -20852,7 +20813,7 @@ Inline math, \( a=b \), is the only math in this document.
 ************** File: author1.p.tex *****************
 %%
 %% Automatically generated file from Doconce source
-%% (http://code.google.com/p/doconce/)
+%% (https://github.com/hplgit/doconce/)
 %%
 % #ifdef PTEX2TEX_EXPLANATION
 %%
@@ -21206,7 +21167,7 @@ Inline math, $a=b$, is the only math in this document.
 
 ************** File: author1.rst *****************
 .. Automatically generated reST file from Doconce source
-   (http://code.google.com/p/doconce/)
+   (https://github.com/hplgit/doconce/)
 
 Test of one author at one institution
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -21295,10 +21256,6 @@ Inline math, :math:`a=b`, is the only math in this document.
 
 .. Need BIBFILE because of cite{} examples
 
-
-Bibliography
-============
-
 .. [Ref1]
    **H. P. Langtangen**. A Document for Testing Doconce,
    *Simula Research Laboratory*,
@@ -21381,10 +21338,6 @@ Test of math
 
 Inline math, a=b, is the only math in this document.
 
-
-Bibliography
-============
-
  1. H. P. Langtangen. 
     A Document for Testing Doconce,
     *Simula Research Laboratory*,
@@ -21396,12 +21349,12 @@ Bibliography
 <!DOCTYPE html>
 <!--
 Automatically generated HTML file from Doconce source
-(http://code.google.com/p/doconce/)
+(https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: http://code.google.com/p/doconce/" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="A Document for Testing Doconce">
 <meta name="keywords" content="figures,movies,index with subindex,index, with comma, and one more">
 
@@ -21706,12 +21659,12 @@ $$
 <!DOCTYPE html>
 <!--
 Automatically generated HTML file from Doconce source
-(http://code.google.com/p/doconce/)
+(https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: http://code.google.com/p/doconce/" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="A Document for Testing Doconce">
 <meta name="keywords" content="figures,movies,index with subindex,index, with comma, and one more">
 
@@ -21991,12 +21944,12 @@ Here is a nested list:
 <!DOCTYPE html>
 <!--
 Automatically generated HTML file from Doconce source
-(http://code.google.com/p/doconce/)
+(https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: http://code.google.com/p/doconce/" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="A Document for Testing Doconce">
 <meta name="keywords" content="figures,movies,index with subindex,index, with comma, and one more">
 
@@ -23289,8 +23242,6 @@ Filename: <code>selc_composed.pdf</code>.
 
 <h2>References  <a name="___sec27"></a></h2>
 
-<h2>Bibliography</h2>
-
 <p>
 
 <ol>
@@ -23575,12 +23526,12 @@ case in LaTeX.
 <!DOCTYPE html>
 <!--
 Automatically generated HTML file from Doconce source
-(http://code.google.com/p/doconce/)
+(https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: http://code.google.com/p/doconce/" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="A Document for Testing Doconce">
 <meta name="keywords" content="figures,movies,index with subindex,index, with comma, and one more">
 
@@ -24705,8 +24656,6 @@ Filename: <code>selc_composed.pdf</code>.
 
 <h2>References  <a name="___sec27"></a></h2>
 
-<h2>Bibliography</h2>
-
 <p>
 
 <ol>
@@ -24987,12 +24936,12 @@ case in LaTeX.
 <!DOCTYPE html>
 <!--
 Automatically generated HTML file from Doconce source
-(http://code.google.com/p/doconce/)
+(https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: http://code.google.com/p/doconce/" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="A Document for Testing Doconce">
 <meta name="keywords" content="figures,movies,index with subindex,index, with comma, and one more">
 
@@ -26324,8 +26273,6 @@ Filename: <code>selc_composed.pdf</code>.
 
 <h2>References  <a name="___sec27"></a></h2>
 
-<h2>Bibliography</h2>
-
 <p>
 
 <ol>
@@ -26606,7 +26553,7 @@ case in LaTeX.
 ************** File: testdoc_no_solutions.p.tex *****************
 %%
 %% Automatically generated file from Doconce source
-%% (http://code.google.com/p/doconce/)
+%% (https://github.com/hplgit/doconce/)
 %%
 % #ifdef PTEX2TEX_EXPLANATION
 %%
@@ -29389,12 +29336,12 @@ to `\boldsymbol`.
 <!DOCTYPE html>
 <!--
 Automatically generated HTML file from Doconce source
-(http://code.google.com/p/doconce/)
+(https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: http://code.google.com/p/doconce/" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="How various formats can deal with LaTeX math">
 
 
@@ -29833,7 +29780,7 @@ v(t) - 1 &amp;=&amp; \frac{du}{dt} \label{eq3c}
 ************** File: math_test.p.tex *****************
 %%
 %% Automatically generated file from Doconce source
-%% (http://code.google.com/p/doconce/)
+%% (https://github.com/hplgit/doconce/)
 %%
 % #ifdef PTEX2TEX_EXPLANATION
 %%
@@ -30248,7 +30195,7 @@ and $\nabla\ubm (\xbm)\cdot\normalvecbm$.
 
 ************** File: math_test.rst *****************
 .. Automatically generated reST file from Doconce source
-   (http://code.google.com/p/doconce/)
+   (https://github.com/hplgit/doconce/)
 
 How various formats can deal with LaTeX math
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -32834,8 +32781,6 @@ Filename: <code>selc_composed.pdf</code>.
 
 <h2>References  <a name="___sec27"></a></h2>
 
-<h2>Bibliography</h2>
-
 <p>
 
 <ol>
@@ -33146,7 +33091,7 @@ While the <div class="deep-blue">rest of the</div> getting started
 
 ************** File: ._part0000_testdoc.rst *****************
 .. Automatically generated reST file from Doconce source
-   (http://code.google.com/p/doconce/)
+   (https://github.com/hplgit/doconce/)
 
 A Document for Testing Doconce
 ==============================
@@ -34383,10 +34328,6 @@ Filename: ``selc_composed.pdf``.
 References
 ==========
 
-
-Bibliography
-============
-
 .. [Ref01]
    **H. P. Langtangen and G. Pedersen**. Propagation of Large Destructive Waves,
    *International Journal of Applied Mechanics and Engineering*,
@@ -34670,7 +34611,7 @@ case in LaTeX.
 ************** File: admon.p.tex *****************
 %%
 %% Automatically generated file from Doconce source
-%% (http://code.google.com/p/doconce/)
+%% (https://github.com/hplgit/doconce/)
 %%
 % #ifdef PTEX2TEX_EXPLANATION
 %%
@@ -35292,7 +35233,7 @@ Titles should be optional.
 ************** File: admon_colors1.tex *****************
 %%
 %% Automatically generated file from Doconce source
-%% (http://code.google.com/p/doconce/)
+%% (https://github.com/hplgit/doconce/)
 %%
 
 
@@ -35743,7 +35684,7 @@ Titles should be optional.
 ************** File: admon_colors2.tex *****************
 %%
 %% Automatically generated file from Doconce source
-%% (http://code.google.com/p/doconce/)
+%% (https://github.com/hplgit/doconce/)
 %%
 
 
@@ -36201,7 +36142,7 @@ Titles should be optional.
 ************** File: admon_graybox1.tex *****************
 %%
 %% Automatically generated file from Doconce source
-%% (http://code.google.com/p/doconce/)
+%% (https://github.com/hplgit/doconce/)
 %%
 
 
@@ -36580,7 +36521,7 @@ Titles should be optional.
 ************** File: admon_graybox2.tex *****************
 %%
 %% Automatically generated file from Doconce source
-%% (http://code.google.com/p/doconce/)
+%% (https://github.com/hplgit/doconce/)
 %%
 
 
@@ -36990,7 +36931,7 @@ Titles should be optional.
 ************** File: admon_graybox3.tex *****************
 %%
 %% Automatically generated file from Doconce source
-%% (http://code.google.com/p/doconce/)
+%% (https://github.com/hplgit/doconce/)
 %%
 
 
@@ -37448,7 +37389,7 @@ Titles should be optional.
 ************** File: admon_paragraph.tex *****************
 %%
 %% Automatically generated file from Doconce source
-%% (http://code.google.com/p/doconce/)
+%% (https://github.com/hplgit/doconce/)
 %%
 
 
@@ -37811,7 +37752,7 @@ Titles should be optional.
 ************** File: admon_yellowbox.tex *****************
 %%
 %% Automatically generated file from Doconce source
-%% (http://code.google.com/p/doconce/)
+%% (https://github.com/hplgit/doconce/)
 %%
 
 
@@ -38270,12 +38211,12 @@ Titles should be optional.
 <!DOCTYPE html>
 <!--
 Automatically generated HTML file from Doconce source
-(http://code.google.com/p/doconce/)
+(https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: http://code.google.com/p/doconce/" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Testing admons">
 
 
@@ -38657,12 +38598,12 @@ Titles should be optional.
 <!DOCTYPE html>
 <!--
 Automatically generated HTML file from Doconce source
-(http://code.google.com/p/doconce/)
+(https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: http://code.google.com/p/doconce/" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Testing admons">
 
 
@@ -39055,12 +38996,12 @@ Titles should be optional.
 <!DOCTYPE html>
 <!--
 Automatically generated HTML file from Doconce source
-(http://code.google.com/p/doconce/)
+(https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: http://code.google.com/p/doconce/" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Testing admons">
 
 
@@ -39784,12 +39725,12 @@ Titles should be optional.</p>
 <!DOCTYPE html>
 <!--
 Automatically generated HTML file from Doconce source
-(http://code.google.com/p/doconce/)
+(https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: http://code.google.com/p/doconce/" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Testing admons">
 
 
@@ -40250,12 +40191,12 @@ Titles should be optional.</div>
 <!DOCTYPE html>
 <!--
 Automatically generated HTML file from Doconce source
-(http://code.google.com/p/doconce/)
+(https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: http://code.google.com/p/doconce/" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Testing admons">
 
 
@@ -40662,12 +40603,12 @@ Titles should be optional.
 <!DOCTYPE html>
 <!--
 Automatically generated HTML file from Doconce source
-(http://code.google.com/p/doconce/)
+(https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: http://code.google.com/p/doconce/" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Testing admons">
 
 
@@ -41887,7 +41828,7 @@ title (Warning) since no title is specified.
 <!DOCTYPE html>
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: http://code.google.com/p/doconce/" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="On the Technicalities of Scientific Writing Anno 2012: The Doconce Way">
 
 
@@ -42484,12 +42425,12 @@ echo "Here are the slide shows:"
 <!DOCTYPE html>
 <!--
 Automatically generated HTML file from Doconce source
-(http://code.google.com/p/doconce/)
+(https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: http://code.google.com/p/doconce/" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="On the Technicalities of Scientific Writing Anno 2012: The Doconce Way">
 
 
@@ -42764,7 +42705,7 @@ title (Warning) since no title is specified.
 <!DOCTYPE html>
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: http://code.google.com/p/doconce/" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="On the Technicalities of Scientific Writing Anno 2012: The Doconce Way">
 
 
@@ -43517,7 +43458,7 @@ vertical-slide.scss
 ************** File: slides1.p.tex *****************
 %%
 %% Automatically generated file from Doconce source
-%% (http://code.google.com/p/doconce/)
+%% (https://github.com/hplgit/doconce/)
 %%
 % #ifdef PTEX2TEX_EXPLANATION
 %%
@@ -43973,7 +43914,7 @@ title (Warning) since no title is specified. \par}
 ************** File: slides1.tex *****************
 
 % LaTeX Beamer file automatically generated from Doconce
-% http://code.google.com/p/doconce
+% https://github.com/hplgit/doconce
 
 %-------------------- begin preamble ----------------------
 
@@ -44846,7 +44787,7 @@ FIGURE: [../doc/slides/fig/broken_pen_and_paper, width=400]
 <!DOCTYPE html>
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: http://code.google.com/p/doconce/" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Test slide features">
 <meta name="keywords" content="key word1,key word2">
 
@@ -45973,7 +45914,7 @@ dependencies: [
 ************** File: slides2.p.tex *****************
 %%
 %% Automatically generated file from Doconce source
-%% (http://code.google.com/p/doconce/)
+%% (https://github.com/hplgit/doconce/)
 %%
 % #ifdef PTEX2TEX_EXPLANATION
 %%
@@ -47064,7 +47005,7 @@ Last page gets rendered to
 ************** File: slides2.tex *****************
 
 % LaTeX Beamer file automatically generated from Doconce
-% http://code.google.com/p/doconce
+% https://github.com/hplgit/doconce
 
 %-------------------- begin preamble ----------------------
 
@@ -48166,7 +48107,7 @@ qualitatively correct results.
 <!DOCTYPE html>
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: http://code.google.com/p/doconce/" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="On Schemes for Exponential Decay">
 
 
@@ -48585,7 +48526,7 @@ dependencies: [
 ************** File: slides3.p.tex *****************
 %%
 %% Automatically generated file from Doconce source
-%% (http://code.google.com/p/doconce/)
+%% (https://github.com/hplgit/doconce/)
 %%
 % #ifdef PTEX2TEX_EXPLANATION
 %%
@@ -49051,7 +48992,7 @@ qualitatively correct results.
 ************** File: slides3.tex *****************
 
 % LaTeX Beamer file automatically generated from Doconce
-% http://code.google.com/p/doconce
+% https://github.com/hplgit/doconce
 
 %-------------------- begin preamble ----------------------
 
@@ -49662,7 +49603,7 @@ And here is a table:
 <h6>Dept. of Informatics, Univ. of Oslo</h6>
 </center>
 
-<center>Sat, 29 Jun 2013 (15:58)</center>
+<center>Sun, 11 Aug 2013 (15:14)</center>
 
 
 
@@ -49793,7 +49734,7 @@ And here is a table:
 <h6>Dept. of Informatics, Univ. of Oslo</h6>
 </center>
 
-<center>Sat, 29 Jun 2013 (15:58)</center>
+<center>Sun, 11 Aug 2013 (15:14)</center>
 
 
 
@@ -49912,6 +49853,7 @@ And here is a table:
 
 ************** File: make.sh *****************
 #!/bin/sh -x
+set -x
 sh ./clean.sh
 
 # Make latest bin/doconce doc
@@ -50010,13 +49952,11 @@ EOF
 echo
 echo "Go to the demo directory and load index.html into a web browser."
 
-# update demo (recall that there is no .hg dir except in the top dir
-# so we can just take an rm and cp)
 cd ..
-rm -rf ../demos/quickref
-cp -r demo ../demos/quickref
-# update wiki too
-cp quickref.gwiki ../../../doconce.wiki/Quickref.wiki
+dest=../pub/quickref
+cp -r demo/html demo/quickref.pdf demo/quickref.html $dest
+dest=../../../doconce.wiki
+cp -r demo/quickref.rst $dest
 
 ************** File: quickref.do.txt *****************
 TITLE: Doconce Quick Reference
@@ -50846,12 +50786,12 @@ examine the Doconce source and the `doc/src/make.sh` script).
 <!DOCTYPE html>
 <!--
 Automatically generated HTML file from Doconce source
-(http://code.google.com/p/doconce/)
+(https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: http://code.google.com/p/doconce/" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Doconce Quick Reference">
 
 
@@ -52118,7 +52058,7 @@ examine the Doconce source and the <code>doc/src/make.sh</code> script).
 ************** File: quickref.p.tex *****************
 %%
 %% Automatically generated file from Doconce source
-%% (http://code.google.com/p/doconce/)
+%% (https://github.com/hplgit/doconce/)
 %%
 % #ifdef PTEX2TEX_EXPLANATION
 %%
@@ -53520,7 +53460,7 @@ examine the Doconce source and the \code{doc/src/make.sh} script).
 
 ************** File: quickref.rst *****************
 .. Automatically generated reST file from Doconce source
-   (http://code.google.com/p/doconce/)
+   (https://github.com/hplgit/doconce/)
 
 Doconce Quick Reference
 -----------------------
@@ -54585,7 +54525,7 @@ Resources
 
 ************** File: quickref.sphinx.rst *****************
 .. Automatically generated reST file from Doconce source
-   (http://code.google.com/p/doconce/)
+   (https://github.com/hplgit/doconce/)
 
 Doconce Quick Reference
 -----------------------
@@ -63803,9 +63743,6 @@ LaTeX Warning: Reference `exer:some:formula' on page 2 undefined on input line
 
 LaTeX Warning: Reference `exer:you' on page 2 
 
-
-Package hyperref Warning: old tdo file detected, not used; run LaTeX again.
-
 [2] 
 
 LaTeX Warning: Reference `sec1' on page 3 
@@ -64104,17 +64041,13 @@ LaTeX Warning: Reference `mdf@pagelabel-2' on page 19 undefined on input line 1
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on 
 
-(./testdoc.ind [20]
-Overfull \hbox (9.21391pt too wide) 
-[]\OT1/cmr/m/n/10 (-20) test \OT1/cmtt/m/n/10 two \OT1/cmr/m/n/10 (-20) (sep-a-
-rate) \OT1/cmtt/m/n/10 verbatim expressions \OT1/cmr/m/n/10 (-20) which
-[21])
+No file testdoc.ind.
 
 Package movie15 Warning: @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 (movie15)                @@ Rerun to get object references right! @@
 (movie15)                @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@.
 
-(./testdoc.aux)
+[20] (./testdoc.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -64288,7 +64221,6 @@ downloaded_figures/f_plot.png
  testdoc.out.pyg
  testdoc.out.pyg
  testdoc.bbl
- testdoc.ind
  ***********
 
 
@@ -64327,7 +64259,7 @@ are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/te
 xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/share/texlive/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/share/texlive/texmf-di
 st/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on testdoc.pdf (21 pages, ).
+Output written on testdoc.pdf (20 pages, ).
 Transcript written on testdoc.log.
 + '[' 0 -ne 0 ']'
 + pdflatex -shell-escape testdoc
@@ -64637,17 +64569,13 @@ Package amsmath Warning: Foreign command \over;
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on 
 
-(./testdoc.ind [20]
-Overfull \hbox (9.21391pt too wide) 
-[]\OT1/cmr/m/n/10 (-20) test \OT1/cmtt/m/n/10 two \OT1/cmr/m/n/10 (-20) (sep-a-
-rate) \OT1/cmtt/m/n/10 verbatim expressions \OT1/cmr/m/n/10 (-20) which
-[21])
+No file testdoc.ind.
 
 Package movie15 Warning: @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 (movie15)                @@ Rerun to get object references right! @@
 (movie15)                @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@.
 
-(./testdoc.aux)
+[20] (./testdoc.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -64823,7 +64751,6 @@ downloaded_figures/f_plot.png
  testdoc.out.pyg
  testdoc.out.pyg
  testdoc.bbl
- testdoc.ind
  ***********
 
  )
@@ -64851,7 +64778,7 @@ are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/te
 xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/share/texlive/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/share/texlive/texmf-di
 st/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on testdoc.pdf (21 pages, ).
+Output written on testdoc.pdf (20 pages, ).
 Transcript written on testdoc.log.
 + makeindex testdoc
 This is makeindex, version 2.15 [TeX Live 2012] (kpathsea + Thai support).
@@ -66922,6 +66849,7 @@ output in slides1.html
 + '[' 0 -ne 0 ']'
 + system doconce slides_html slides1 deck --html_slide_type=sandstone.firefox
 + doconce slides_html slides1 deck --html_slide_type=sandstone.firefox
+made subdirectory deck.js
 slides written to slides1.html
 + '[' 0 -ne 0 ']'
 + cp slides1.html slides1_deck.html
@@ -67093,7 +67021,7 @@ output in slides3.tex
 + '[' 0 -ne 0 ']'
 + system doconce slides_beamer slides3 --beamer_slide_theme=red3
 + doconce slides_beamer slides3 --beamer_slide_theme=red3
-could not extract beamerthemered3.sty.sty (from latex_styles.zip in the doconce installation)
+could not extract beamerthemered3.sty (from latex_styles.zip in the doconce installation)
 slides written to slides3.tex
 + '[' 0 -ne 0 ']'
 + system doconce format html slides1 --pygments_html_style=emacs
@@ -70301,6 +70229,7 @@ When we reach this point in the script,
 + echo 'it is clearly a successful run of all tests!'
 it is clearly a successful run of all tests!
 
++ set -x
 + sh ./clean.sh
 Removing in /home/hpl/vc/doconce/doc/quickref:
 + doconce
@@ -72229,6 +72158,7 @@ output in quickref.md
 + echo 'Go to the demo directory and load index.html into a web browser.'
 Go to the demo directory and load index.html into a web browser.
 + cd ..
-+ rm -rf ../demos/quickref
-+ cp -r demo ../demos/quickref
-+ cp quickref.gwiki ../../../doconce.wiki/Quickref.wiki
++ dest=../pub/quickref
++ cp -r demo/html demo/quickref.pdf demo/quickref.html ../pub/quickref
++ dest=../../../doconce.wiki
++ cp -r demo/quickref.rst ../../../doconce.wiki

@@ -1,11 +1,11 @@
 .. Automatically generated reST file from Doconce source
-   (http://code.google.com/p/doconce/)
+   (https://github.com/hplgit/doconce/)
 
 How various formats can deal with LaTeX math
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 :Author: HPL
-:Date: Jun 29, 2013
+:Date: Aug 11, 2013
 
 This document is translated to the format **sphinx**. The purpose is to
 test math and doconce and various output formats.

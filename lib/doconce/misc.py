@@ -3424,7 +3424,7 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
 
     slides = r"""
 %% LaTeX Beamer file automatically generated from Doconce
-%% http://code.google.com/p/doconce
+%% https://github.com/hplgit/doconce
 
 %%-------------------- begin preamble ----------------------
 

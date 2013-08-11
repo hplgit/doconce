@@ -1,6 +1,6 @@
 % How various formats can deal with LaTeX math
 % HPL
-% Jun 29, 2013
+% Aug 11, 2013
 
 This document is translated to the format _pandoc_. The purpose is to
 test math and doconce and various output formats.

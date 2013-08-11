@@ -1195,7 +1195,7 @@ def define(FILENAME_EXTENSION,
 
     INTRO['latex'] = r"""%%
 %% Automatically generated file from Doconce source
-%% (http://code.google.com/p/doconce/)
+%% (https://github.com/hplgit/doconce/)
 %%
 % #ifdef PTEX2TEX_EXPLANATION
 %%

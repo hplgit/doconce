@@ -1166,10 +1166,6 @@ Filename: ``selc_composed.pdf``.
 References
 ==========
 
-
-Bibliography
-============
-
 .. [Ref01]
    **H. P. Langtangen and G. Pedersen**. Propagation of Large Destructive Waves,
    *International Journal of Applied Mechanics and Engineering*,
