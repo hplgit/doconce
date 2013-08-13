@@ -42,22 +42,25 @@ details.
 A [short scientific report](http://hplgit.github.io/teamods/writing_reports/index.html) demonstrates the many formats that Doconce can generate and
 how mathematics and computer code look like.
 
-There is also a [demo](../pub/slides/index.html) of how Doconce can
+<!-- Note: local links does not work since this README file is a source -->
+<!-- code file and not part of the published gh-pages. Use full URL. -->
+
+There is also a [demo](http://hplgit.github.io/doconce/doc/pub/slides/index.html) of how Doconce can
 be used to create slides in various formats.
 
 ### Documentation
 
- * Tutorial: [Sphinx](../pub/tutorial/html/index.html),
-   [HTML](../pub/tutorial/tutorial.html),
-   [PDF](../pub/tutorial/tutorial.pdf)
+ * Tutorial: [Sphinx](http://hplgit.github.io/doconce/doc/pub/tutorial/html/index.html),
+   [HTML](http://hplgit.github.io/doconce/doc/pub/tutorial/tutorial.html),
+   [PDF](http://hplgit.github.io/doconce/doc/pub/tutorial/tutorial.pdf)
 
- * Manual: [Sphinx](../pub/manual/html/index.html),
-   [HTML](../pub/manual/manual.html),
-   [PDF](../pub/manual/manual.pdf)
+ * Manual: [Sphinx](http://hplgit.github.io/doconce/doc/pub/manual/html/index.html),
+   [HTML](http://hplgit.github.io/doconce/doc/pub/manual/manual.html),
+   [PDF](http://hplgit.github.io/doconce/doc/pub/manual/manual.pdf)
 
- * Quick Reference: [Sphinx](../pub/quickref/html/index.html),
-   [HTML](../pub/quickref/quickref.html),
-   [PDF](../pub/quickref/quickref.pdf)
+ * Quick Reference: [Sphinx](http://hplgit.github.io/doconce/doc/pub/quickref/html/index.html),
+   [HTML](http://hplgit.github.io/doconce/doc/pub/quickref/quickref.html),
+   [PDF](http://hplgit.github.io/doconce/doc/pub/quickref/quickref.pdf)
 
 ### License
 
