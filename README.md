@@ -45,8 +45,8 @@ how mathematics and computer code look like.
 <!-- Note: local links does not work since this README file is a source -->
 <!-- code file and not part of the published gh-pages. Use full URL. -->
 
-There is also a [demo](http://hplgit.github.io/doconce/doc/pub/slides/index.html) of how Doconce can
-be used to create slides in various formats.
+There is also a demo of how Doconce can
+be used to [create slides](http://hplgit.github.io/doconce/doc/pub/slides/demo/index.html) in various formats.
 
 ### Documentation
 
