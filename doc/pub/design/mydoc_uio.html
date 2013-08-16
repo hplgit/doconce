@@ -1,0 +1,533 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+   <!-- iPhone viewport -->
+   <meta name="viewport" content="width=1020, user-scalable=yes" />
+
+
+   <title>Solve the world's simplest differential equation</title>
+
+    <link rel="shortcut icon" type="image/vnd.microsoft.icon" href="http://www.uio.no/vrtx/decorating/resources/dist/images/favicon.ico" />
+    <link type="text/css" rel="stylesheet" media="all" href="http://www.uio.no/vrtx/decorating/resources/dist/style/style.css" />
+
+    <!--[if IE 7]>
+         <link type="text/css" rel="stylesheet" media="all" href="http://www.uio.no/vrtx/decorating/resources/dist/style/style_ie7.css" />
+       <![endif]-->
+
+       <!--[if lte IE 6]>
+         <link type="text/css" rel="stylesheet" media="all" href="http://www.uio.no/vrtx/decorating/resources/dist/style/style_ie6.css" />
+       <![endif]-->
+
+
+    <link type="text/css" rel="stylesheet" media="all" href="http://www.uio.no/vrtx/decorating/resources/dist/www.uio.no/logos-eng/logos.css" />
+    <link type="text/css" rel="stylesheet" media="print" href="http://www.uio.no/vrtx/decorating/resources/dist/style/print.css" />
+    <link type="text/css" rel="stylesheet" media="handheld" href="http://www.uio.no/vrtx/decorating/resources/dist/style/handheld.css"/>
+
+   <script type="text/javascript" src="http://www.uio.no/vrtx/__vrtx/static-resources/jquery/jquery.min.js"></script>
+
+   <meta name="MSSmartTagsPreventParsing" content="true" />
+   <meta http-equiv="imagetoolbar" content="no" />
+
+
+<META http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<meta name="spraak" content="en"/>
+<meta content="kurs" name="dokumenttype"/>
+
+  </head>
+
+  <body class='www.uio.no faculty'  id="vrtx-semester">
+
+    <!--stopindex-->
+
+    <!-- Navigation start -->
+    <ul id="hidnav">
+      <li><a href="#globalnav">Jump to main navigation</a></li>
+      <li><a href="#main">Jump to main contentt</a></li>
+      <li><a href="#bottomnav">Jump to theme navigation</a></li>
+      <li><a href="#footer">Jump to contact information</a></li>
+    </ul>
+    <!-- Navigation end -->
+
+    <!-- Page header starts -->
+    <div id="head-globalnav" class="head-uio">
+       <div id="head">
+	  <div id="logos">
+	    <div id="uiologo" title="Go to University of Oslo"><a href="http://www.uio.no/english/"><span></span>University of Oslo</a></div>
+	    <div id="facultylogo" title="Go to University of Oslo"><a href="http://www.uio.no/english/"><span></span>University of Oslo</a></div>
+	  </div>
+
+	  <form class="searchform" method="get" action="/english">
+	    <fieldset>
+	      <label for="searchstring" class="searchstringlabel">Search in University of Oslo</label>
+              <input type="hidden" name="vrtx" value="search"/>
+	      <input type="text" id="searchstring" name="query" value="" />
+	      <button type="submit" class="searchsubmit"><span>Search</span></button>
+	    </fieldset>
+	  </form>
+
+	  <!-- head-menu -->
+          <div id="head-menu">
+
+
+            <ul class="ref-menu"><li><a href="http://www.uio.no/">Norwegian website</a></li></ul>
+            <ul class="vrtx-uri-menu"><li class="for-employees"><a href="http://www.uio.no/english/for-employees/">For employees</a></li></ul>
+          </div>
+          <!-- head-menu -->
+	</div>
+
+        <!-- Global navigation start -->
+	<div id="globalnav">
+          <ul class="vrtx-tab-menu">
+            <li class="english parent-folder"><a href="http://www.uio.no/english/">Home</a></li>
+            <li class="research"><a href="http://www.uio.no/english/research/">Research</a></li>
+            <li class="vrtx-active-item studies vrtx-current-item"><a href="http://www.uio.no/english/studies/">Studies</a></li>
+            <li class="student-life"><a href="http://www.uio.no/english/student-life/">Student Life</a></li>
+            <li class="services"><a href="http://www.uio.no/english/services/">Services and tools</a></li>
+            <li class="about"><a href="http://www.uio.no/english/about/">About UiO</a></li>
+            <li class="people"><a href="http://www.uio.no/english/people/">People</a></li>
+          </ul>
+        </div>
+	<!-- Global navigation end -->
+    </div>
+    <!-- Page header end -->
+
+    <div id="uiodoc-wrapper">
+    <div id="uiodoc">
+        <!-- img-tag for print -->
+        <img id="head-print" alt="print logo" src="http://www.uio.no/vrtx/decorating/resources/dist/www.uio.no/logos-eng/faculty-small.png"/>
+
+	<!-- Page content start -->
+	<div id="main">
+          <!--startindex-->
+
+                     <!-- left menu (default) -->
+            <!--stopindex-->
+            <div id="left-main">
+
+              <ul class="vrtx-breadcrumb-menu">
+		<li class="vrtx-ancestor"> <a href="http://www.uio.no/english/studies/"><span>Studies</span></a> </li>
+		<li class="vrtx-ancestor"><a href="http://www.uio.no/english/studies/courses/"><span>Courses</span></a></li>
+                <li class="vrtx-parent">
+  <ul class="vrtx-breadcrumb-menu">
+			<li class="vrtx-parent" ><a href="http://www.uio.no/studier/emner/matnat/ifi/INF5620/"><span>INF5620</span></a>
+      <ul>
+		  <li class="vrtx-child"><a class="vrtx-marked" href="http://www.uio.no/studier/emner/matnat/ifi/INF5620/h12/"><span>Autumn 2012</span></a></li>
+      </ul>
+    </li>
+  </ul>
+</li>
+              </ul>
+            </div>
+            <div id="right-main">
+              <!--startindex-->
+
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(" Solve the world's simplest differential equation ",
+               1,
+               None,
+               '___sec0'),
+              (' Mathematical problem ', 2, None, '___sec1'),
+              (' Numerical solution method ', 2, None, '___sec2'),
+              (' Implementation ', 2, None, '___sec3'),
+              (' Numerical experiments ', 2, None, '___sec4')]}
+end of tocinfo -->
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "AMS"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+
+
+
+<!-- ------------------- main content ---------------------- -->
+
+<h2>Solve the world's simplest differential equation  <a name="___sec0"></a></h2>
+
+<h3>Mathematical problem  <a name="___sec1"></a></h3>
+
+<p>
+This exercise addresses the differential equation problem
+
+<p>
+$$
+\begin{align}
+u'(t) &= -au(t), \quad t \in (0,T], \label{ode}\\
+u(0)  &= I,                         \label{initial:value}
+\end{align}
+$$
+
+where \( a \), \( I \), and \( T \) are prescribed constant parameters, and \( u(t) \) is
+the unknown function to be estimated. This mathematical model
+is relevant for physical phenomena featuring exponential decay
+in time.
+
+<h3>Numerical solution method  <a name="___sec2"></a></h3>
+
+<p>
+Derive the \( \theta \)-rule scheme for solving \eqref{ode} numerically
+with time step \( \Delta t \):
+
+<p>
+$$
+u^{n+1} = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}u^n,
+$$
+
+Here, \( n=0,1,\ldots,N-1 \).
+
+<p>
+<b>Hint.</b>\n
+Set up the Forward Euler, Backward Euler, and the Crank-Nicolson (or
+Midpoint) schemes first. Then generalize to the \( \theta \)-rule above.
+
+<h3>Implementation  <a name="___sec3"></a></h3>
+
+<p>
+The numerical method is implemented in a Python function
+<code>solver</code> (found in the <a href="https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py"><tt>decay_mod</tt></a> module):
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> linspace, zeros
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">solver</span>(I, a, T, dt, theta):
+    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Solve u&#39;=-a*u, u(0)=I, for t in (0,T] with steps of dt.&quot;&quot;&quot;</span>
+    dt <span style="color: #666666">=</span> <span style="color: #008000">float</span>(dt)           <span style="color: #408080; font-style: italic"># avoid integer division</span>
+    N <span style="color: #666666">=</span> <span style="color: #008000">int</span>(<span style="color: #008000">round</span>(T<span style="color: #666666">/</span>dt))     <span style="color: #408080; font-style: italic"># no of time intervals</span>
+    T <span style="color: #666666">=</span> N<span style="color: #666666">*</span>dt                 <span style="color: #408080; font-style: italic"># adjust T to fit time step dt</span>
+    u <span style="color: #666666">=</span> zeros(N<span style="color: #666666">+1</span>)           <span style="color: #408080; font-style: italic"># array of u[n] values</span>
+    t <span style="color: #666666">=</span> linspace(<span style="color: #666666">0</span>, T, N<span style="color: #666666">+1</span>)  <span style="color: #408080; font-style: italic"># time mesh</span>
+
+    u[<span style="color: #666666">0</span>] <span style="color: #666666">=</span> I                 <span style="color: #408080; font-style: italic"># assign initial condition</span>
+    <span style="color: #008000; font-weight: bold">for</span> n <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">0</span>, N):    <span style="color: #408080; font-style: italic"># n=0,1,...,N-1</span>
+        u[n<span style="color: #666666">+1</span>] <span style="color: #666666">=</span> (<span style="color: #666666">1</span> <span style="color: #666666">-</span> (<span style="color: #666666">1-</span>theta)<span style="color: #666666">*</span>a<span style="color: #666666">*</span>dt)<span style="color: #666666">/</span>(<span style="color: #666666">1</span> <span style="color: #666666">+</span> theta<span style="color: #666666">*</span>dt<span style="color: #666666">*</span>a)<span style="color: #666666">*</span>u[n]
+    <span style="color: #008000; font-weight: bold">return</span> u, t
+</pre></div>
+
+<h3>Numerical experiments  <a name="___sec4"></a></h3>
+
+<p>
+Fix the values of where \( I \), \( a \), and \( T \).
+Then vary \( \Delta t \) for \( \theta=0,1/2,1 \).
+Illustrate that if \( \Delta t \) is not sufficiently small,
+\( \theta=0 \) and \( \theta=1/2 \) can give non-physical solutions
+(more precisely, oscillating solutions).
+
+<p>
+Perform experiments and determine empirically the convergence
+rate for \( \theta=0,1/2,1 \).
+
+<!-- ------------------- end of main content --------------- -->
+
+              <!--stopindex-->
+            </div>
+
+          <!--stopindex-->
+         </div>
+	<!-- Page content end -->
+
+      <!-- Bottom navigation start -->
+	<div id="bottomnav">
+           <div id="breadcrumb-container">
+	     <div id="vrtx-breadcrumb-start" class="breadcrumb">
+	       <span class="vrtx-uio"><a href="http://www.uio.no/english/">UiO</a> <span class="vrtx-breadcrumb-delimiter">&gt;</span></span>
+               <span class="vrtx-faculty"><a href="http://www.uio.no/english/">University of Oslo</a> <span class="vrtx-breadcrumb-delimiter">&gt;</span></span>
+             </div>
+             <div id="vrtx-breadcrumb" class="breadcrumb">
+               <span class="vrtx-breadcrumb-level-3"><a href="http://www.uio.no/english/studies/">Studies</a>
+      	         <span class="vrtx-breadcrumb-delimiter">&gt;</span>
+               </span>
+             </div>
+           </div>
+
+           <div id="bottom-menu">
+
+          <div class="vrtx-subfolder-menu">
+    <div class="vrtx-group-1">
+
+  <ul class="resultset-1">
+      <li>    <a href="http://www.uio.no/english/research/">Research</a>
+  <ul>
+      <li>
+      <a href="http://www.uio.no/english/research/centres-for-research-based-innovation/">Centres for Research-based Innovation</a>
+      </li>
+      <li>
+      <a href="http://www.uio.no/english/research/centres-of-excellence/">Centres of Excellence</a>
+      </li>
+      <li>
+      <a href="http://www.uio.no/english/research/doctoral-degree-and-career/">Doctoral degree and career opportunities</a>
+      </li>
+      <li>
+      <a href="http://www.uio.no/english/research/interfaculty-research-areas/">Interfaculty research areas</a>
+      </li>
+      <li>
+      <a href="http://www.uio.no/english/research/news-and-events/">News and events</a>
+      </li>
+
+      <li class="vrtx-more">
+        <a href="http://www.uio.no/english/research/">More...</a>
+      </li>
+  </ul>
+</li>
+  </ul>
+
+  <ul class="resultset-2">
+      <li>    <a href="http://www.uio.no/english/studies/">Studies</a>
+  <ul>
+      <li>
+      <a href="http://www.uio.no/english/studies/about/">About studies</a>
+      </li>
+      <li>
+      <a href="http://www.uio.no/english/studies/admission/">Admission for international applicants</a>
+      </li>
+      <li>
+      <a href="http://www.uio.no/english/studies/bachelor-programmes/">Bachelor's degree programmes</a>
+      </li>
+      <li>
+      <a href="http://www.uio.no/english/studies/course-groups/">Course groups</a>
+      </li>
+      <li>
+      <a href="http://www.uio.no/english/studies/courses/">Courses</a>
+      </li>
+
+      <li class="vrtx-more">
+        <a href="http://www.uio.no/english/studies/">More...</a>
+      </li>
+  </ul>
+</li>
+  </ul>
+
+  <ul class="resultset-3">
+      <li>    <a href="http://www.uio.no/english/student-life/">Student life</a>
+  <ul>
+      <li>
+      <a href="http://www.uio.no/english/student-life/budget/">Budget and cost of living</a>
+      </li>
+      <li>
+      <a href="http://www.uio.no/english/student-life/campus-guide/">Campus guide</a>
+      </li>
+      <li>
+      <a href="http://www.uio.no/english/student-life/language-tandem/">Language tandem</a>
+      </li>
+      <li>
+      <a href="http://www.uio.no/english/student-life/life-in-oslo/">Living in Oslo</a>
+      </li>
+      <li>
+      <a href="http://www.uio.no/english/student-life/student-democracy/">Student democracy</a>
+      </li>
+
+      <li class="vrtx-more">
+        <a href="http://www.uio.no/english/student-life/">More...</a>
+      </li>
+  </ul>
+</li>
+  </ul>
+
+  <ul class="resultset-4">
+      <li>    <a href="http://www.uio.no/english/services/">Services and tools</a>
+  <ul>
+      <li>
+      <a href="http://www.uio.no/english/services/it/">IT services</a>
+      </li>
+      <li>
+      <a href="http://www.uio.no/english/services/library/">Library </a>
+      </li>
+      <li>
+      <a href="http://www.uio.no/english/services/print/">Print</a>
+      </li>
+      <li>
+      <a href="http://www.uio.no/english/services/public/">Services to the public</a>
+      </li>
+
+  </ul>
+</li>
+  </ul>
+
+  <ul class="resultset-5">
+      <li>    <a href="http://www.uio.no/english/about/">About UiO</a>
+  <ul>
+      <li>
+      <a href="http://www.uio.no/english/about/organisation/">Organisation</a>
+      </li>
+      <li>
+      <a href="http://www.uio.no/english/about/contact/">Contact</a>
+      </li>
+      <li>
+      <a href="http://www.uio.no/english/about/maps/">Maps</a>
+      </li>
+      <li>
+      <a href="http://www.uio.no/english/about/culture/">Art and culture</a>
+      </li>
+      <li>
+      <a href="http://www.uio.no/english/about/facts/">Facts and figures</a>
+      </li>
+
+      <li class="vrtx-more">
+        <a href="http://www.uio.no/english/about/">More...</a>
+      </li>
+  </ul>
+</li>
+  </ul>
+
+  <ul class="resultset-6">
+      <li>      <a href="http://www.uio.no/english/people/">People</a>
+</li>
+  </ul>
+    </div>
+        </div>
+
+
+
+           </div>
+        </div>
+      <!-- Bottom navigation end -->
+    </div>
+    </div>
+    <!-- Page wrapper end -->
+    <div id="footer-wrapper">
+    <!-- Page footer start -->
+      <div id="footer">
+        <div id="footer-main" class="vcard">
+	  <div class="institutelogo fn org"><span></span>University of Oslo</div>
+             <div class="adr phone-fax-email visitor-adress">
+  <span class="vrtx-label">Contact information</span>
+  <span class="tel">Switchboard: <br />+ 47 22 85 50 50</span>
+  <p><a href="/english/about/contact/">Contact UiO</a></p>
+</div>
+<div class="adr mail-adress">
+  <span class="vrtx-label">Address</span>
+  <span class="post-office-box">University of Oslo</span>
+  <span class="post-office-box">P.O. Box 1072 Blindern</span>
+  <span class="postal-code">0316</span>
+  <span class="locality"> Oslo</span><br />
+  <span class="locality"> Norway</span>
+</div>
+<div class="adr phone-fax-email">
+  <span class="vrtx-label">Emergency</span>
+  <span>In case of fires, accidents or serious incidents: <br />+ 47 22 85 66 66</span>
+</div>
+
+
+
+        </div>
+
+        <div id="footer-admin">
+          <ul class="unit-admin-links">
+             <li id="unit-admin-responsible-header">Responsible for this page:</li>
+             <li>
+
+
+                   <a href="mailto:studieredaktor@admin.uio.no">studieredaktor@admin.uio.no</a>
+
+
+            </li>
+          </ul>
+
+
+
+
+    <!-- begin view dropdown js -->
+    <script type="text/javascript" src="http://www.uio.no/vrtx/__vrtx/static-resources/js/view-dropdown.js"></script>
+    <!-- end view dropdown js -->
+    <script type="text/javascript"><!--
+      $(function() {
+        $(".vrtx-dropdown-form").addClass("hidden");
+        $(".vrtx-dropdown-form-link").addClass("visible");
+        $(document).off("click", ".vrtx-dropdown-form-link")
+                    .on("click", ".vrtx-dropdown-form-link", function(e) {
+          $(this).prev(".vrtx-dropdown-form").submit();
+          e.stopPropagation();
+          e.preventDefault();
+        });
+      });
+    // -->
+    </script>
+
+  <div class="vrtx-login-manage-component vrtx-dropdown-component vrtx-dropdown-component-toggled">
+      <a href="http://www.uio.no/studier/emner/matnat/ifi/INF5620/h12/index.xml?authTarget=http" class="vrtx-login-manage-title-link vrtx-dropdown-title-link">Login</a>
+      <a href="javascript:void(0)" class="vrtx-login-manage-link vrtx-dropdown-link"></a>
+    <div class="vrtx-login-manage-wrapper vrtx-dropdown-wrapper">
+      <div class="vrtx-login-manage-wrapper-inner vrtx-dropdown-wrapper-inner">
+        <ul>
+          <li class="vrtx-dropdown-first vrtx-dropdown-last">
+              <a href="https://www-adm.uio.no/studier/emner/matnat/ifi/INF5620/h12/index.xml?vrtx=admin" class="vrtx-login-manage-admin">
+Manage document              </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+
+          <div id="cms">Powered by <a href="http://www.uio.no/tjenester/it/web/vortex/">Vortex</a></div>
+        </div>
+      </div>
+    <!-- Page footer end -->
+   </div>
+
+   <script type="text/javascript" src="http://www.uio.no/vrtx/__vrtx/static-resources/jquery/plugins/jquery.autocomplete.js"></script>
+   <script type="text/javascript" src="http://www.uio.no/vrtx/decorating/resources/dist/script/uio.js"></script>
+   <script type="text/javascript">
+      $(document).ready(function() {
+        var emnerParams = {selectFirst:false, width:226, max:50, delay:75};
+        emnerAutocomplete('course-search', 'emner', emnerParams);
+        gotoEmnerAutocompleteSuggestion('course-search');
+
+        var lastLeftMenuLi = $("ul.vrtx-breadcrumb-menu > li:last-child");
+        if($.trim(lastLeftMenuLi.html()) === "") { // Empty?
+          lastLeftMenuLi.remove();
+        }
+      });
+   </script>
+
+   <!-- Google Urchin -->
+   <script src="http://www.uio.no/vrtx/decorating/resources/dist/urchin/urchin.js" type="text/javascript"></script>
+   <script type="text/javascript">
+       _udn="uio.no";
+       urchinTracker();
+   </script>
+
+   <!-- Tablesort -->
+   <script type="text/javascript" src="http://www.uio.no/vrtx/__vrtx/static-resources/js/plugins/tablesort-1.5.min.js"></script>
+   <script type="text/javascript" src="http://www.uio.no/vrtx/__vrtx/static-resources/js/plugins/tablesort-customsort.js"></script>
+
+   </body>
+</html>
+

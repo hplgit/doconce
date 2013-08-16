@@ -35,12 +35,9 @@ MathJax.Hub.Config({
 <!-- ------------------- main content ---------------------- -->
 
 <p>
-<center><h4>May 5, 2013</h4></center> <!-- date -->
-<p>
+<center><h4>Aug 16, 2013</h4></center> <!-- date -->
 
 <h2>Solve the world's simplest differential equation  <a name="___sec0"></a></h2>
-
-<p>
 
 <h3>Mathematical problem  <a name="___sec1"></a></h3>
 
@@ -60,8 +57,6 @@ the unknown function to be estimated. This mathematical model
 is relevant for physical phenomena featuring exponential decay
 in time.
 
-<p>
-
 <h3>Numerical solution method  <a name="___sec2"></a></h3>
 
 <p>
@@ -76,11 +71,9 @@ $$
 Here, \( n=0,1,\ldots,N-1 \).
 
 <p>
-<div class="alert alert-block alert-hint"><b>Hint.</b>
+<b>Hint.</b>\n
 Set up the Forward Euler, Backward Euler, and the Crank-Nicolson (or
 Midpoint) schemes first. Then generalize to the \( \theta \)-rule above.
-</div>
-<p>
 
 <h3>Implementation  <a name="___sec3"></a></h3>
 
@@ -89,7 +82,6 @@ The numerical method is implemented in a Python function
 <code>solver</code> (found in the <a href="https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py"><tt>decay_mod</tt></a> module):
 
 <p>
-
 
 <!-- code=python (from !bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> linspace, zeros
@@ -107,8 +99,6 @@ The numerical method is implemented in a Python function
         u[n<span style="color: #666666">+1</span>] <span style="color: #666666">=</span> (<span style="color: #666666">1</span> <span style="color: #666666">-</span> (<span style="color: #666666">1-</span>theta)<span style="color: #666666">*</span>a<span style="color: #666666">*</span>dt)<span style="color: #666666">/</span>(<span style="color: #666666">1</span> <span style="color: #666666">+</span> theta<span style="color: #666666">*</span>dt<span style="color: #666666">*</span>a)<span style="color: #666666">*</span>u[n]
     <span style="color: #008000; font-weight: bold">return</span> u, t
 </pre></div>
-<p>
-
 
 <h3>Numerical experiments  <a name="___sec4"></a></h3>
 

@@ -34,26 +34,20 @@ idx{doconce!short explanation}
 idx{demos}
 
 The current text is generated from a Doconce format stored in the
+directory
 !bc sys
-docs/manual/manual.do.txt
+doc/manual/manual.do.txt
 !ec
-file in the Doconce source code tree. We have made a
-"demo web page": "https://doconce.googlecode.com/hg/doc/demos/manual/index.html"
-where you can compare the Doconce source with the output in many
-different formats: HTML, LaTeX, plain text, etc.
-
-The file `make.sh` in the same directory as the `manual.do.txt` file
-(the current text) shows how to run `doconce format` on the
-Doconce file to obtain documents in various formats.
+file in the Doconce source code tree. Here you can run a
+`make.sh` script to generate a lot of different
+formats: HTML, LaTeX, plain text, etc., stored in the subdirectory `demo`.
 
 Another demo is found in
 !bc sys
-docs/tutorial/tutorial.do.txt
+doc/tutorial/tutorial.do.txt
 !ec
 In the `tutorial` directory there is also a `make.sh` file producing a
-lot of formats, with a corresponding
-"web demo": "https://doconce.googlecode.com/hg/doc/demos/tutorial/index.html"
-of the results.
+lot of formats in the subdirectory `demo`.
 
 # Example on including another Doconce file:
 
@@ -1841,10 +1835,10 @@ label{emacs:doconce}
 ## for highly configurable latex editors that perhaps can be adapted
 ## to doconce (Kile seems to be the choice because of extensibility)
 
-The file ".doconce-mode.el": "https://doconce.googlecode.com/hg/misc/.doconce-mode.el" in the Doconce source distribution
+The file ".doconce-mode.el": "https://github.com/hplgit/doconce/blob/master/misc/.doconce-mode.el" in the Doconce source distribution
 gives a "Doconce Editing Mode" in Emacs.
 
-Here is how to get the Doconce Editing Mode in Emacs: Download ".doconce-mode.el": "https://doconce.googlecode.com/hg/misc/.doconce-mode.el" and save it in your home directory, then add these lines to `~/.emacs`:
+Here is how to get the Doconce Editing Mode in Emacs: Download ".doconce-mode.el": "https://raw.github.com/hplgit/doconce/master/misc/.doconce-mode.el" and save it in your home directory, then add these lines to `~/.emacs`:
 !bc
 (load-file "~/.doconce-mode.el")
 !ec

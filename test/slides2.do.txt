@@ -162,7 +162,7 @@ URL: "http://hplgit.github.com/teamods/writing_reports/"
  * Sphinx: "agni": "http://hplgit.github.com/teamods/writing_reports/_static/sphinx-agni/index.html", "pyramid": "http://hplgit.github.com/teamods/writing_reports/_static/sphinx-pyramid/report.html", "classy": "http://hplgit.github.com/teamods/writing_reports/_static/sphinx-classy/report.html", "fenics": "http://hplgit.github.com/teamods/writing_reports/_static/sphinx-fenics_minimal/report.html", "redcloud": "http://hplgit.github.com/teamods/writing_reports/_static/sphinx-fenics_minimal/report.html"
  * HTML for "Google": "http://doconce-report-demo.blogspot.no/" or "Wordpress": "http://doconcereportdemo.wordpress.com/" blogs
  * "MediaWiki": "http://doconcedemo.shoutwiki.com/wiki/Doconce_demo_page" (Wikipedia, Wikibooks, etc)
- * Doconce "source code": "http://hplgit.github.com/teamods/writing_reports/_static/report.do.txt.html" and "tutorial": "http://code.google.com/p/doconce/wiki/Tutorial"
+ * Doconce "source code": "http://hplgit.github.com/teamods/writing_reports/_static/report.do.txt.html" and "manual": "http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html"
 
 
 !split
@@ -280,10 +280,10 @@ but without backslashes.
 See (ref{eq1})-(ref{myeq}).
 
 # Make hyperlink
-"some link text": "http://code.google.com/p/doconce/"
+"some link text": "https://github.com/hplgit/doconce"
 
 # Hyperlink with complete URL as link text
-URL: "http://code.google.com/p/doconce/"
+URL: "https://github.com/hplgit/doconce"
 !ec
 
 !split

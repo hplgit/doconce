@@ -38,10 +38,11 @@ Google and Wordpress.
 
 ===== Emacs syntax support =====
 
-The file ".doconce-mode.el": "https://doconce.googlecode.com/hg/misc/.doconce-mode.el" in the Doconce source distribution
-gives a "Doconce Editing Mode" in Emacs. Store the file in the home
-directory and add `(load-file "~/.doconce-mode.el")` to the `.emacs`
-file.
+The file ".doconce-mode.el":
+"https://github.com/hplgit/doconce/blob/master/misc/.doconce-mode.el"
+in the Doconce source distribution gives a "Doconce Editing Mode" in
+Emacs. Store the raw version of the file in the home directory and add
+`(load-file "~/.doconce-mode.el")` to the `.emacs` file.
 
 Besides syntax highlighting of Doconce documents, this Emacs mode
 provides a lot of shortcuts for setting up many elements in a document:

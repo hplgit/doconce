@@ -14,7 +14,7 @@ FIGURE: [../doc/slides/fig/CN_logo, width=300 frac=0.4]
 ======= Goal =======
 
 The primary goal of this demo talk is to demonstrate how to write
-talks with "doconce": "http://code.google.com/p/doconce"
+talks with "Doconce": "https://github.com/hplgit/doconce"
 and get them rendered in numerous HTML formats.
 # #if FORMAT in ("html", "pdflatex", "latex")
 !bnotice Layout

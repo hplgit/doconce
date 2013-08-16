@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="How to Wrap Plain HTML Files with an Available Look and Feel">
+
+
+
+<style type="text/css">
+    /* blueish style */
+
+    /* Color definitions:  http://www.december.com/html/spec/color0.html
+       CSS examples:       http://www.w3schools.com/css/css_examples.asp */
+
+    body {
+      margin-top: 1.0em;
+      background-color: #ffffff;
+      font-family: Helvetica, Arial, FreeSans, san-serif;
+      color: #000000;
+    }
+    h1 { font-size: 1.8em; color: #1e36ce; }
+    h2 { font-size: 1.5em; color: #1e36ce; }
+    h3 { color: #1e36ce; }
+    a { color: #1e36ce; text-decoration:none; }
+    tt { font-family: "Courier New", Courier; }
+    
+    p { text-indent: 0px; }
+    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    p.caption { width: 80%; font-style: normal; text-align: left; }
+    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+
+</style>
+
+</head>
+
+<!-- tocinfo
+{'highest level': 0,
+ 'sections': [(' Problem setting ', 0, None, '___sec0'),
+              (' Solution ', 0, None, '___sec1'),
+              (' Step 1: Use Doconce to generate text ', 2, None, '___sec2'),
+              (' Step 2: Write the core text ', 2, None, '___sec3'),
+              (' Step 3: Inspect the HTML page ', 2, None, '___sec4'),
+              (' Step 4: Find some web page and make a template ',
+               2,
+               None,
+               '___sec5'),
+              (' Step 5: Embed your HTML document in the template ',
+               2,
+               None,
+               '___sec6'),
+              (' Making a template from Vortex pages at the University of Oslo ',
+               1,
+               None,
+               '___sec7'),
+              (' Using the Vagrant template ', 1, None, '___sec8'),
+              (' Summary ', 1, None, '___sec9')]}
+end of tocinfo -->
+
+<body>
+
+    
+<!-- ------------------- main content ---------------------- -->
+
+
+<title>How to Wrap Plain HTML Files with an Available Look and Feel</title>
+
+<center><h1>How to Wrap Plain HTML Files with an Available Look and Feel</h1></center>  <!-- document title -->
+
+<p>
+<!-- author(s): Hans Petter Langtangen -->
+
+<center>
+<b>Hans Petter Langtangen</b> [1, 2]
+</center>
+
+
+<p>
+<!-- institution(s) -->
+
+<center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
+<center>[2] <b>Department of Informatics, University of Oslo</b></center>
+<p>
+<center><h4>Aug 16, 2013</h4></center> <!-- date -->
+<p>
+<!-- URL to this page: -->
+<!-- <a href="https://doconce.googlecode.com/hg/doc/design/wrapper_tech.html"><tt>https://doconce.googlecode.com/hg/doc/design/wrapper_tech.html</tt></a> -->
+
+<h1>Problem setting  <a name="___sec0"></a></h1>
+
+<p>
+
+<ol>
+<li> You need to write web pages, say for a course, and want to have
+   complete control of the core text in a plain text editor without
+   paying attention to fancy layouts.</li>
+<li> There might be many pages, often developing dynamically over time,
+   linked to a potentially large number of files (images, computer codes,
+   lecture notes, exercises, etc.).
+   This author also has a lot of mathematics and computer code
+   in these pages.</li>
+<li> You will (of course) have full version control of the files with the
+   core content and publish the latest version of all files with one command.</li>
+<li> However, the web pages should appear with a prescribed look and feel
+   because your host institution requires so.</li>
+<li> The look and feel is automatically obtained if you write your
+   web pages with particular web-based tools, but this tedious and
+   boring, happens without version control, has no support for
+   nicely typeset mathematics and computer code, and most
+   importantly: the approach does not scale with a lot of files!</li>
+<li> You would like your pages to live on a 24/7 available server <em>you</em>
+   have chosen, e.g.,
+   <a href="http://github.com">GitHub</a>, <a href="http://bitbucket.org">Bitbucket</a>,
+   <a href="http://code.google.com">Googlecode</a>, or similar.</li>
+</ol>
+
+In short, you would like to write something close to standard LaTeX,
+but get it published on the web with your institution's look and
+feel. This document tells you how to do that and minimize the fuzz
+with layouts.
+
+<h1>Solution  <a name="___sec1"></a></h1>
+
+<h3>Step 1: Use Doconce to generate text  <a name="___sec2"></a></h3>
+
+<p>
+We shall in this document use <a href="https://github.com/hplgit/doconce">Doconce</a>
+for writing the core text. Doconce looks like plain text, with just a
+few tags for enabling full LaTeX mathematics and nicely typeset
+computer code. From Doconce you can go to plain LaTeX, pdfLaTeX,
+Sphinx, HTML, Markdown, and MediaWiki, to mention some good formats
+that support LaTeX mathematics and nice computer code. (If you do not
+have code and math, it is easy to go to MS Word, XML, DocBook, and
+numerous other formats too.) From a Doconce text it is also trivial
+to generate slides.
+
+<h3>Step 2: Write the core text  <a name="___sec3"></a></h3>
+
+<p>
+Write the core text, here an <a href="mydoc_plain_pygmentized.html">exercise with some math and code</a> stored in a file <code>mydoc.do.txt</code>:
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">DATE: today
+
+======= Solve the world&#39;s simplest differential equation =======
+
+===== Mathematical problem =====
+
+This exercise addresses the differential equation problem
+
+!bt
+\begin{align}
+u&#39;(t) &amp;= -au(t), \quad t \in (0,T], label{ode}\\
+u(0)  &amp;= I,                         label{initial:value}
+\end{align}
+!et
+where $a$, $I$, and $T$ are prescribed constant parameters, and $u(t)$ is
+the unknown function to be estimated. This mathematical model
+is relevant for physical phenomena featuring exponential decay
+in time.
+
+===== Numerical solution method =====
+
+Derive the $\theta$-rule scheme for solving \eqref{ode} numerically
+with time step $\Delta t$:
+
+!bt
+\[
+u^{n+1} = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}u^n,
+\]
+!et
+Here, $n=0,1,\ldots,N-1$.
+
+<b>Hint.</b>\n
+Set up the Forward Euler, Backward Euler, and the Crank-Nicolson (or
+Midpoint) schemes first. Then generalize to the $\theta$-rule above.
+
+===== Implementation =====
+
+The numerical method is implemented in a Python function
+`solver` (found in the &quot;`decay_mod`&quot;:
+&quot;https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py&quot; module):
+
+!bc pycod
+from numpy import linspace, zeros
+
+def solver(I, a, T, dt, theta):
+    &quot;&quot;&quot;Solve u&#39;=-a*u, u(0)=I, for t in (0,T] with steps of dt.&quot;&quot;&quot;
+    dt = float(dt)           # avoid integer division
+    N = int(round(T/dt))     # no of time intervals
+    T = N*dt                 # adjust T to fit time step dt
+    u = zeros(N+1)           # array of u[n] values
+    t = linspace(0, T, N+1)  # time mesh
+
+    u[0] = I                 # assign initial condition
+    for n in range(0, N):    # n=0,1,...,N-1
+        u[n+1] = (1 - (1-theta)*a*dt)/(1 + theta*dt*a)*u[n]
+    return u, t
+!ec
+
+===== Numerical experiments =====
+
+Fix the values of where $I$, $a$, and $T$.
+Then vary $\Delta t$ for $\theta=0,1/2,1$.
+Illustrate that if $\Delta t$ is not sufficiently small,
+$\theta=0$ and $\theta=1/2$ can give non-physical solutions
+(more precisely, oscillating solutions).
+
+Perform experiments and determine empirically the convergence
+rate for $\theta=0,1/2,1$.
+</pre></div>
+<p>
+When the title in a Doconce document (<code>TITLE: ...</code>) is missing or
+commented out (<code>#TITLE:</code>), no HTML header and footer are generated,
+which is important when embedding the HTML code in a template file
+later.
+
+<h3>Step 3: Inspect the HTML page  <a name="___sec4"></a></h3>
+
+<p>
+Check the default layout of your HTML page by translating the
+Doconce file to HTML:
+
+<p>
+
+<!-- code=bash (from !bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doconce format html mydoc
+google-chrome mydoc.html
+</pre></div>
+<p>
+The page is rendered with the <a href="mydoc_plain_pygmentized.html">default HTML style</a> as seen in the figure below (or <a href="mydoc_plain.html">in the file itself</a>):
+
+<p>
+<center><p><img src="fig/plain_html.png" align="bottom" width=900></p></center>
+
+<h3>Step 4: Find some web page and make a template  <a name="___sec5"></a></h3>
+
+<p>
+When you see a design of a web page that you would like to adopt,
+view the source code (all browsers have a menu choice for doing this)
+and store it on file. To proceed you need to know some basic HTML.
+
+<p>
+
+<ol>
+<li> Identify where the main body of text is. Remove this text and
+   insert <code>%(main)s</code> instead. This is a tag that will be replaced
+   by the HTML code of the core text you had in <code>mydoc.do.txt</code>.
+   (The HTML code of the web page is viewed as a text string in
+   Python and <code>%(main)s</code> is just the standard syntax for inserting
+   a dictionary with key <code>main</code> at this point.)</li>
+<li> Identify the <code>title</code> tag and replace the title by <code>%(title)s</code>.
+   The title (commented out) or the first heading in <code>mydoc.do.txt</code>
+   will replace <code>%(title)s</code>.</li>
+<li> If relevant, find the date in the page and replace by <code>%(date)s</code>.</li>
+<li> Search for text <code>link type="text/css" rel="stylesheet"...</code>, which
+   specifies CSS stylesheets. You either need to have the stylesheet
+   files together with the HTML document, or you need to copy the stylesheet
+   code into the HTML file.</li>
+<li> Search for text <code>script type="text/javascript" src="...</code>, which
+   specifies JavaScript code. Either the code must be available on the
+   net (<code>http://...</code> address) or you need a copy of this code stored
+   along with the HTML file. You may use the Google Chrome or Firefox
+   browsers to view the source code and just click on stylesheets,
+   JavaScript files, and other links to see the content. This has the
+   great advantage of showing a <em>complete URL</em> to the file that may
+   have a relative path in the HTML code.</li>
+</ol>
+
+As example, we took the source code of the GitHub "minimal" theme
+and implemented the points above. Some of the elements in the
+downloaded page are conveniently replaced by some indicating text
+that we will fill out when we finalize the layout of our web site.
+
+<p>
+
+<!-- code=html (from !bc htmlpro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">&lt;!doctype html&gt;</span>
+<span style="color: #008000; font-weight: bold">&lt;html&gt;</span>
+  <span style="color: #008000; font-weight: bold">&lt;head&gt;</span>
+    <span style="color: #008000; font-weight: bold">&lt;meta</span> <span style="color: #7D9029">charset=</span><span style="color: #BA2121">&quot;utf-8&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+    <span style="color: #008000; font-weight: bold">&lt;meta</span> <span style="color: #7D9029">http-equiv=</span><span style="color: #BA2121">&quot;X-UA-Compatible&quot;</span> <span style="color: #7D9029">content=</span><span style="color: #BA2121">&quot;chrome=1&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+
+    <span style="color: #008000; font-weight: bold">&lt;title&gt;</span>%(title)s<span style="color: #008000; font-weight: bold">&lt;/title&gt;</span>
+
+    <span style="color: #008000; font-weight: bold">&lt;link</span> <span style="color: #7D9029">rel=</span><span style="color: #BA2121">&quot;stylesheet&quot;</span> <span style="color: #7D9029">href=</span><span style="color: #BA2121">&quot;css/styles.css&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+    <span style="color: #008000; font-weight: bold">&lt;meta</span> <span style="color: #7D9029">name=</span><span style="color: #BA2121">&quot;viewport&quot;</span>
+     <span style="color: #7D9029">content=</span><span style="color: #BA2121">&quot;width=device-width, initial-scale=1, user-scalable=no&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+  <span style="color: #008000; font-weight: bold">&lt;/head&gt;</span>
+  <span style="color: #008000; font-weight: bold">&lt;body&gt;</span>
+    <span style="color: #008000; font-weight: bold">&lt;div</span> <span style="color: #7D9029">class=</span><span style="color: #BA2121">&quot;wrapper&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+      <span style="color: #008000; font-weight: bold">&lt;header&gt;</span>
+        <span style="color: #008000; font-weight: bold">&lt;h1&gt;</span>Main Permanent Header<span style="color: #008000; font-weight: bold">&lt;/h1&gt;</span>
+        <span style="color: #008000; font-weight: bold">&lt;p&gt;</span>Permanent SubHeader<span style="color: #008000; font-weight: bold">&lt;/p&gt;</span>
+
+        <span style="color: #408080; font-style: italic">&lt;!-- picture below the heading on the left --&gt;</span>
+	<span style="color: #008000; font-weight: bold">&lt;img</span> <span style="color: #7D9029">src=</span><span style="color: #BA2121">&quot;...&quot;</span> <span style="color: #7D9029">width=</span><span style="color: #BA2121">220</span><span style="color: #008000; font-weight: bold">&gt;</span>
+
+      <span style="color: #008000; font-weight: bold">&lt;/header&gt;</span>
+
+      <span style="color: #408080; font-style: italic">&lt;!-- Here goes the main page ---&gt;</span>
+      <span style="color: #008000; font-weight: bold">&lt;section&gt;</span>
+
+%(main)s
+
+      <span style="color: #008000; font-weight: bold">&lt;/section&gt;</span>
+
+      <span style="color: #008000; font-weight: bold">&lt;footer&gt;</span>
+        <span style="color: #008000; font-weight: bold">&lt;p&gt;</span>This project is maintained by ...<span style="color: #008000; font-weight: bold">&lt;/p&gt;</span>
+        <span style="color: #008000; font-weight: bold">&lt;p&gt;&lt;small&gt;</span>Hosted on GitHub Pages <span style="color: #999999; font-weight: bold">&amp;mdash;</span> Theme by
+        <span style="color: #008000; font-weight: bold">&lt;a</span> <span style="color: #7D9029">href=</span><span style="color: #BA2121">&quot;https://github.com/orderedlist&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>orderedlist<span style="color: #008000; font-weight: bold">&lt;/a&gt;</span>
+        <span style="color: #008000; font-weight: bold">&lt;/small&gt;&lt;/p&gt;</span>
+      <span style="color: #008000; font-weight: bold">&lt;/footer&gt;</span>
+
+    <span style="color: #008000; font-weight: bold">&lt;/div&gt;</span>
+    <span style="color: #008000; font-weight: bold">&lt;script </span><span style="color: #7D9029">src=</span><span style="color: #BA2121">&quot;js/scale.fix.js&quot;</span><span style="color: #008000; font-weight: bold">&gt;&lt;/script&gt;</span>
+
+  <span style="color: #008000; font-weight: bold">&lt;/body&gt;</span>
+<span style="color: #008000; font-weight: bold">&lt;/html&gt;</span>
+</pre></div>
+<p>
+Note that the template requires
+
+<p>
+
+<ul>
+ <li> the stylesheet <code>styles.css</code> in a subdirectory <code>css</code></li>
+ <li> the JavaScript <code>scale.fix.js</code> in a subdirectory <code>js</code></li>
+</ul>
+
+We need to get our hands on both these files. For the current
+application we customize the template:
+
+<p>
+
+<ul>
+ <li> The picture on the left is specified to <code>fig/discrete_function.png</code>
+   which acts as a kind of logo for the page.</li>
+ <li> The  <code>Main Permanent Header</code> and <code>Permanent SubHeader</code> are
+   replaced by something appropriate, here <code>Exercise</code> and
+   <code>Differential Equations</code>.</li>
+</ul>
+
+<h3>Step 5: Embed your HTML document in the template  <a name="___sec6"></a></h3>
+
+<p>
+We can now use Doconce to insert our document <code>mydoc.html</code>,
+generated from <code>mydoc.do.txt</code> into an HTML template.
+The template shown above, stored in the file <code>template_minimal.html</code>
+is used as example. We run
+
+<p>
+
+<!-- code=bash (from !bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doconce format html mydoc --html_template<span style="color: #666666">=</span>template_minimal.html
+</pre></div>
+<p>
+The result is a file <a href="mydoc_github_pygmentized.html"><tt>mydoc.html</tt></a> where
+
+<p>
+
+<ol>
+ <li> the first heading in <code>mydoc.do.txt</code> is substituted as title tag</li>
+ <li> the text in <code>mydoc.do.txt</code>, transformed to HTML, is inserted
+    where <code>%(main)s</code> appears in the template.</li>
+</ol>
+
+Here is the <a href="mydoc_github.html">visual result</a>:
+
+<p>
+<center><p><img src="fig/github_html.png" align="bottom" width=900></p></center>
+
+<p>
+The original text file <code>mydoc.do.txt</code> has now been transformed
+to a web page with fancy design!
+
+<h2>Making a template from Vortex pages at the University of Oslo  <a name="___sec7"></a></h2>
+
+<p>
+As case, we invoke the page for a <a href="http://www.uio.no/studier/emner/matnat/ifi/INF5620/h12/">course</a>. The <a href="uio/5620_pygmentized.html">source code</a>
+is huge. Here is a glimpse:
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">    &lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/vrtx/decorating/resources/dist/style/style.css&quot; /&gt;
+    &lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/vrtx/decorating/resources/dist/www.uio.no/logos-eng/logos.css&quot; /&gt;
+    &lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;print&quot; href=&quot;/vrtx/decorating/resources/dist/style/print.css&quot; /&gt;
+    &lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;handheld&quot; href=&quot;/vrtx/decorating/resources/dist/style/handheld.css&quot;/&gt;
+
+   &lt;script type=&quot;text/javascript&quot; src=&quot;/vrtx/__vrtx/static-resources/jquery/jquery.min.js&quot;&gt;&lt;/script&gt;
+
+ ...
+
+    &lt;!-- Page header end --&gt;
+
+    &lt;div id=&quot;uiodoc-wrapper&quot;&gt;
+    &lt;div id=&quot;uiodoc&quot;&gt;
+        &lt;!-- img-tag for print --&gt;
+        &lt;img id=&quot;head-print&quot; alt=&quot;print logo&quot; src=&quot;/vrtx/decorating/resources/dist/www.uio.no/logos-eng/faculty-small.png&quot;/&gt;
+
+...
+            &lt;div id=&quot;right-main&quot;&gt;
+              &lt;!--startindex--&gt;
+</pre></div>
+<p>
+We do the following:
+
+<p>
+
+<ol>
+<li> The part of the text which we want to replace by our document must
+   be deleted and substituted by <code>%(main)s</code>.</li>
+<li> A more challenging task is to deal with all the links to <em>local files</em>
+   of the type <code>/vrtx/decorating/resources/...</code> and similar.
+   However, clicking on these links when viewing the source code of
+   the page in Google Chrome or Firefox, displays the full URL
+   of the files. It appears that <code>/vrtx/</code> can simply be replaced
+   by <code>http://www.uio.no/vrtx/</code> and the page works (!). We therefore
+   carry out that substitution.</li>
+<li> The title inside the <code>title</code> tags is replaced by <code>%(title)s</code>.</li>
+</ol>
+
+(There is no date in this page and hence no need to insert <code>%(date)s</code>.)
+The "resulting code": "uio/template_5620_pygmentized.hml" is ready
+as a template:
+
+<p>
+
+<!-- code=bash (from !bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doconce format html mydoc --html_template<span style="color: #666666">=</span>mynewcoursetemplate.html
+</pre></div>
+<p>
+Here is <a href="mydoc_uio.html">the result</a>.
+
+<p>
+<center><p><img src="fig/uio_html.png" align="bottom" width=900></p></center>
+
+<p>
+It really looks that we are inside the Vortex web system at the
+University of Oslo and all the links to <em>Student Life</em>, <em>People</em>,
+etc. work.
+
+<p>
+Normally, the web pages at the University of Oslo have to be written
+through a web-based editor (in the Vortex system), and the information
+is stored in XML files.  It is somewhat remarkable that the HTML
+rendered from these XML files can be copied so easily and used as
+templates for web documents anywhere else.
+
+<h2>Using the Vagrant template  <a name="___sec8"></a></h2>
+
+<p>
+Besides the GitHub "minimal" theme, Doconce comes with a template
+<a href="../../bundled/html_styles/vagrant/template_vagrant.html"><tt>template_vagrant.html</tt></a> adopted from
+the style in the documentation of the <a href="http://docs.vagrantup.com/v1/docs/getting-started/index.html">Vagrant</a> virtual machine
+tool.
+
+<p>
+<center><p><img src="fig/vagrant_web.png" align="bottom" width=900></p></center>
+
+<p>
+This template, found in <code>bundled/html_styles/vagrant</code> in the
+Doconce source code tree, is easy to adopt to a particular set of web
+pages. It looks as
+
+<p>
+<center><p><img src="fig/template_vagrant.png" align="bottom" width=900></p></center>
+
+<p>
+There are several elements in the template:
+
+<p>
+
+<ol>
+<li> Navigation bar to the left, which is automatically created by Doconce.</li>
+<li> A main part (<code>%(main)s</code>) and a title as usual.</li>
+<li> Navigation buttons on the button, which are automatically filled in
+   by Doconce if the document is split into several parts.</li>
+<li> A logo consisting of a <em>LogoWord</em> in black and a <em>withSubWord</em> in
+   gray. This should be <em>manually edited</em> to some short name for the web pages
+   you want to embed with the Vagrant style.</li>
+<li> Navigation links in the top right part of the page. These should be
+   <em>manually edited</em> or deleted.</li>
+<li> At the bottom of the page there is a footer, which can be
+   <em>manually edited</em> or deleted.</li>
+</ol>
+
+Here we edit the logo to <em>DiffEq101</em>, edit the navigation links at the
+top right to point to Wikipedia and WolframAlpha, and insert a
+copyright 2013 notice in the footer.
+
+<p>
+The Vagrant style depends on two CSS files. We copy these from
+the <code>bundled/html_styles/style_vagrant/css</code> directory in the Doconce source
+to the current directory so that the links to the stylesheets in
+the template are correct. Otherwise, you have to replace <code>href="css/</code>
+in the template to <code>href="style_vagrant/css/</code>.
+
+<p>
+Translation of the original Doconce writings in <code>mydoc.do.txt</code> is
+done by
+
+<p>
+
+<!-- code=bash (from !bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doconce format html mydoc.do.txt --html_style<span style="color: #666666">=</span>vagrant <span style="color: #BB6622; font-weight: bold">\</span>
+        --html_template<span style="color: #666666">=</span>style_vagrant/template_vagrant.html
+</pre></div>
+<p>
+The resulting <a href="mydoc_vagrant_pygmentized.html">HTML file</a> has
+a <a href="mydoc_vagrant.html">nice look</a>:
+
+<p>
+<center><p><img src="fig/vagrant_html.png" align="bottom" width=900></p></center>
+
+<h2>Summary  <a name="___sec9"></a></h2>
+
+<p>
+We have seen have to write web pages in a text-like format, with full
+support of LaTeX mathematics and nicely typeset (pygmentized) computer code.
+These pages can easily be embedded in various fancy HTML styles by
+simply grabbing a web page with the desired style and editing it as
+explained.
+
+<p>
+However, embedding Doconce documents in fancy web pages is just possibility
+for publishing the content. One can equally well make a traditional
+LaTeX file and include the document in a book, or make a special adapted
+version of the PDF for viewing on phones, or one can generate Sphinx
+output which has <a href="http://hplgit.github.com/teamods/writing_reports/index.html">a lot of different nice styles</a> for viewing on the web.
+
+<!-- ------------------- end of main content --------------- -->
+
+
+</body>
+</html>
+    
+

@@ -398,9 +398,8 @@ BIBFILE: papers.pub
 !ec
 
 For further details on functionality and
-syntax we refer to the `doc/manual/manual.do.txt` file (see the
-"demo page": "https://doconce.googlecode.com/hg/doc/demos/manual/index.html"
-for various formats of this document).
+syntax we refer to the `doc/manual/manual.do.txt` file
+in the Doconce source and a "Sphinx version": "http://hplgit.github.io/doconce/doc/pub/manual/html/" of this document.
 
 
 ## Example on including another Doconce file (using preprocess):

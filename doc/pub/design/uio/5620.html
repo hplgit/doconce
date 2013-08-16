@@ -24,25 +24,27 @@
    <meta name="viewport" content="width=1020, user-scalable=yes" />
 
 
-   <title>Solve the world's simplest differential equation</title>
+   <title>INF5620 -
+    Autumn&nbsp;2012 (Numerical methods for partial differential equations)
+   - University of Oslo</title>
 
-    <link rel="shortcut icon" type="image/vnd.microsoft.icon" href="http://www.uio.no/vrtx/decorating/resources/dist/images/favicon.ico" />
-    <link type="text/css" rel="stylesheet" media="all" href="http://www.uio.no/vrtx/decorating/resources/dist/style/style.css" />
+    <link rel="shortcut icon" type="image/vnd.microsoft.icon" href="/vrtx/decorating/resources/dist/images/favicon.ico" />
+    <link type="text/css" rel="stylesheet" media="all" href="/vrtx/decorating/resources/dist/style/style.css" />
 
     <!--[if IE 7]>
-         <link type="text/css" rel="stylesheet" media="all" href="http://www.uio.no/vrtx/decorating/resources/dist/style/style_ie7.css" />
+         <link type="text/css" rel="stylesheet" media="all" href="/vrtx/decorating/resources/dist/style/style_ie7.css" />
        <![endif]-->
 
        <!--[if lte IE 6]>
-         <link type="text/css" rel="stylesheet" media="all" href="http://www.uio.no/vrtx/decorating/resources/dist/style/style_ie6.css" />
+         <link type="text/css" rel="stylesheet" media="all" href="/vrtx/decorating/resources/dist/style/style_ie6.css" />
        <![endif]-->
 
 
-    <link type="text/css" rel="stylesheet" media="all" href="http://www.uio.no/vrtx/decorating/resources/dist/www.uio.no/logos-eng/logos.css" />
-    <link type="text/css" rel="stylesheet" media="print" href="http://www.uio.no/vrtx/decorating/resources/dist/style/print.css" />
-    <link type="text/css" rel="stylesheet" media="handheld" href="http://www.uio.no/vrtx/decorating/resources/dist/style/handheld.css"/>
+    <link type="text/css" rel="stylesheet" media="all" href="/vrtx/decorating/resources/dist/www.uio.no/logos-eng/logos.css" />
+    <link type="text/css" rel="stylesheet" media="print" href="/vrtx/decorating/resources/dist/style/print.css" />
+    <link type="text/css" rel="stylesheet" media="handheld" href="/vrtx/decorating/resources/dist/style/handheld.css"/>
 
-   <script type="text/javascript" src="http://www.uio.no/vrtx/__vrtx/static-resources/jquery/jquery.min.js"></script>
+   <script type="text/javascript" src="/vrtx/__vrtx/static-resources/jquery/jquery.min.js"></script>
 
    <meta name="MSSmartTagsPreventParsing" content="true" />
    <meta http-equiv="imagetoolbar" content="no" />
@@ -114,7 +116,7 @@
     <div id="uiodoc-wrapper">
     <div id="uiodoc">
         <!-- img-tag for print -->
-        <img id="head-print" alt="print logo" src="http://www.uio.no/vrtx/decorating/resources/dist/www.uio.no/logos-eng/faculty-small.png"/>
+        <img id="head-print" alt="print logo" src="/vrtx/decorating/resources/dist/www.uio.no/logos-eng/faculty-small.png"/>
 
 	<!-- Page content start -->
 	<div id="main">
@@ -141,132 +143,22 @@
             <div id="right-main">
               <!--startindex-->
 
-
-<!-- tocinfo
-{'highest level': 1,
- 'sections': [(" Solve the world's simplest differential equation ",
-               1,
-               None,
-               '___sec0'),
-              (' Mathematical problem ', 2, None, '___sec1'),
-              (' Numerical solution method ', 2, None, '___sec2'),
-              (' Implementation ', 2, None, '___sec3'),
-              (' Numerical experiments ', 2, None, '___sec4')]}
-end of tocinfo -->
-
-
-
-
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  TeX: {
-     equationNumbers: {  autoNumber: "AMS"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
-  }
-});
-</script>
-<script type="text/javascript"
- src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
-
-
-
-<!-- ------------------- main content ---------------------- -->
-
+<h1 id="tekststart">INF5620 -
+    Autumn&nbsp;2012 (Numerical methods for partial differential equations)
+  </h1>
+<table align="right" cellspacing="5" cellpadding="5" width="45%" class="emner">
+<tr>
+<td><b>Latest messages:
+          </b></td>
+</tr>
+<tr>
+<td><a href="beskjeder.xml" class="vrtx-link-check">No messages</a></td>
+</tr>
+</table>
 <p>
-
-<p>
-
-<h2>Solve the world's simplest differential equation  <a name="___sec0"></a></h2>
-
-<p>
-
-<h3>Mathematical problem  <a name="___sec1"></a></h3>
-
-<p>
-This exercise addresses the differential equation problem
-
-<p>
-$$
-\begin{align}
-u'(t) &= -au(t), \quad t \in (0,T], \label{ode}\\
-u(0)  &= I,                         \label{initial:value}
-\end{align}
-$$
-
-where \( a \), \( I \), and \( T \) are prescribed constant parameters, and \( u(t) \) is
-the unknown function to be estimated. This mathematical model
-is relevant for physical phenomena featuring exponential decay
-in time.
-
-<p>
-
-<h3>Numerical solution method  <a name="___sec2"></a></h3>
-
-<p>
-Derive the \( \theta \)-rule scheme for solving \eqref{ode} numerically
-with time step \( \Delta t \):
-
-<p>
-$$
-u^{n+1} = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}u^n,
-$$
-
-Here, \( n=0,1,\ldots,N-1 \).
-
-<p>
-<div class="alert alert-block alert-hint"><b>Hint.</b>
-Set up the Forward Euler, Backward Euler, and the Crank-Nicolson (or
-Midpoint) schemes first. Then generalize to the \( \theta \)-rule above.
-</div>
-<p>
-
-<h3>Implementation  <a name="___sec3"></a></h3>
-
-<p>
-The numerical method is implemented in a Python function
-<code>solver</code> (found in the <a href="https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py"><tt>decay_mod</tt></a> module):
-
-<p>
-
-
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> linspace, zeros
-
-<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">solver</span>(I, a, T, dt, theta):
-    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Solve u&#39;=-a*u, u(0)=I, for t in (0,T] with steps of dt.&quot;&quot;&quot;</span>
-    dt <span style="color: #666666">=</span> <span style="color: #008000">float</span>(dt)           <span style="color: #408080; font-style: italic"># avoid integer division</span>
-    N <span style="color: #666666">=</span> <span style="color: #008000">int</span>(<span style="color: #008000">round</span>(T<span style="color: #666666">/</span>dt))     <span style="color: #408080; font-style: italic"># no of time intervals</span>
-    T <span style="color: #666666">=</span> N<span style="color: #666666">*</span>dt                 <span style="color: #408080; font-style: italic"># adjust T to fit time step dt</span>
-    u <span style="color: #666666">=</span> zeros(N<span style="color: #666666">+1</span>)           <span style="color: #408080; font-style: italic"># array of u[n] values</span>
-    t <span style="color: #666666">=</span> linspace(<span style="color: #666666">0</span>, T, N<span style="color: #666666">+1</span>)  <span style="color: #408080; font-style: italic"># time mesh</span>
-
-    u[<span style="color: #666666">0</span>] <span style="color: #666666">=</span> I                 <span style="color: #408080; font-style: italic"># assign initial condition</span>
-    <span style="color: #008000; font-weight: bold">for</span> n <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">0</span>, N):    <span style="color: #408080; font-style: italic"># n=0,1,...,N-1</span>
-        u[n<span style="color: #666666">+1</span>] <span style="color: #666666">=</span> (<span style="color: #666666">1</span> <span style="color: #666666">-</span> (<span style="color: #666666">1-</span>theta)<span style="color: #666666">*</span>a<span style="color: #666666">*</span>dt)<span style="color: #666666">/</span>(<span style="color: #666666">1</span> <span style="color: #666666">+</span> theta<span style="color: #666666">*</span>dt<span style="color: #666666">*</span>a)<span style="color: #666666">*</span>u[n]
-    <span style="color: #008000; font-weight: bold">return</span> u, t
-</pre></div>
-<p>
-
-
-<h3>Numerical experiments  <a name="___sec4"></a></h3>
-
-<p>
-Fix the values of where \( I \), \( a \), and \( T \).
-Then vary \( \Delta t \) for \( \theta=0,1/2,1 \).
-Illustrate that if \( \Delta t \) is not sufficiently small,
-\( \theta=0 \) and \( \theta=1/2 \) can give non-physical solutions
-(more precisely, oscillating solutions).
-
-<p>
-Perform experiments and determine empirically the convergence
-rate for \( \theta=0,1/2,1 \).
-
-<!-- ------------------- end of main content --------------- -->
+<a href="../index-eng.xml" class="vrtx-link-check">Course description</a><br/><br/><b>Teachers</b><br/><a href="http://www.uio.no/personer/?vrtx=person-view&amp;uid=hpl" class="vrtx-link-check">Hans Petter Langtangen</a><br/><br/><b>Teaching</b><br/><a href="tid-og-sted.html" class="vrtx-link-check">Time and place</a><br/><br/><b>Examination/form of assessment</b><br/><a href="eksamen.xml" class="vrtx-link-check">Time and place</a> -
+    <a href="http://www.uio.no/english/studies/admin/examinations/" class="vrtx-link-check">Examination at the UiO</a><br/><br/><b>Main web resource for the course</b><br/><a href="http://hplgit.github.com/INF5620/doc/web/index.html" class="vrtx-link-check">INF5620 on GitHub</a><br/><br/><b>University Library</b><br/><a href="http://www.ub.uio.no/fag/informatikk-matematikk/informatikk/" class="vrtx-link-check">Library pages for this course (in Norwegian)</a><br/><br/><b>Contact us</b><br/><a href="kontaktinformasjon.xml" class="vrtx-link-check">Administration and teachers</a>
+</p>
 
               <!--stopindex-->
             </div>
@@ -476,7 +368,7 @@ rate for \( \theta=0,1/2,1 \).
 
 
     <!-- begin view dropdown js -->
-    <script type="text/javascript" src="http://www.uio.no/vrtx/__vrtx/static-resources/js/view-dropdown.js"></script>
+    <script type="text/javascript" src="/vrtx/__vrtx/static-resources/js/view-dropdown.js"></script>
     <!-- end view dropdown js -->
     <script type="text/javascript"><!--
       $(function() {
@@ -515,8 +407,8 @@ Manage document              </a>
     <!-- Page footer end -->
    </div>
 
-   <script type="text/javascript" src="http://www.uio.no/vrtx/__vrtx/static-resources/jquery/plugins/jquery.autocomplete.js"></script>
-   <script type="text/javascript" src="http://www.uio.no/vrtx/decorating/resources/dist/script/uio.js"></script>
+   <script type="text/javascript" src="/vrtx/__vrtx/static-resources/jquery/plugins/jquery.autocomplete.js"></script>
+   <script type="text/javascript" src="/vrtx/decorating/resources/dist/script/uio.js"></script>
    <script type="text/javascript">
       $(document).ready(function() {
         var emnerParams = {selectFirst:false, width:226, max:50, delay:75};
@@ -531,16 +423,15 @@ Manage document              </a>
    </script>
 
    <!-- Google Urchin -->
-   <script src="http://www.uio.no/vrtx/decorating/resources/dist/urchin/urchin.js" type="text/javascript"></script>
+   <script src="/vrtx/decorating/resources/dist/urchin/urchin.js" type="text/javascript"></script>
    <script type="text/javascript">
        _udn="uio.no";
        urchinTracker();
    </script>
 
    <!-- Tablesort -->
-   <script type="text/javascript" src="http://www.uio.no/vrtx/__vrtx/static-resources/js/plugins/tablesort-1.5.min.js"></script>
-   <script type="text/javascript" src="http://www.uio.no/vrtx/__vrtx/static-resources/js/plugins/tablesort-customsort.js"></script>
+   <script type="text/javascript" src="/vrtx/__vrtx/static-resources/js/plugins/tablesort-1.5.min.js"></script>
+   <script type="text/javascript" src="/vrtx/__vrtx/static-resources/js/plugins/tablesort-customsort.js"></script>
 
    </body>
 </html>
-

@@ -15,7 +15,7 @@
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
+        URL_ROOT:    '',
         VERSION:     '0.6',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
@@ -56,7 +56,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Author:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Aug 11, 2013</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Aug 16, 2013</td>
 </tr>
 </tbody>
 </table>
@@ -519,7 +519,7 @@ pip install -e svn+https://epydoc.svn.sourceforge.net/svnroot/epydoc/trunk/epydo
 rm -rf srclib   # put downloaded software in srclib
 mkdir srclib
 cd srclib
-hg clone https://code.google.com/p/doconce/
+git clone git@github.com:hplgit/doconce.git
 cd doconce
 sudo python setup.py install -y
 cd ../..
@@ -537,25 +537,20 @@ cd ../../..
 </div>
 <div class="section" id="demos">
 <h2>Demos<a class="headerlink" href="#demos" title="Permalink to this headline">¶</a></h2>
-<p id="index-1">The current text is generated from a Doconce format stored in the</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">docs/manual/manual.do.txt</span>
+<p id="index-1">The current text is generated from a Doconce format stored in the
+directory</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">doc/manual/manual.do.txt</span>
 </pre></div>
 </div>
-<p>file in the Doconce source code tree. We have made a
-<a class="reference external" href="https://doconce.googlecode.com/hg/doc/demos/manual/index.html">demo web page</a>
-where you can compare the Doconce source with the output in many
-different formats: HTML, LaTeX, plain text, etc.</p>
-<p>The file <tt class="docutils literal"><span class="pre">make.sh</span></tt> in the same directory as the <tt class="docutils literal"><span class="pre">manual.do.txt</span></tt> file
-(the current text) shows how to run <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></tt> on the
-Doconce file to obtain documents in various formats.</p>
+<p>file in the Doconce source code tree. Here you can run a
+<tt class="docutils literal"><span class="pre">make.sh</span></tt> script to generate a lot of different
+formats: HTML, LaTeX, plain text, etc., stored in the subdirectory <tt class="docutils literal"><span class="pre">demo</span></tt>.</p>
 <p>Another demo is found in</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">docs/tutorial/tutorial.do.txt</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">doc/tutorial/tutorial.do.txt</span>
 </pre></div>
 </div>
 <p>In the <tt class="docutils literal"><span class="pre">tutorial</span></tt> directory there is also a <tt class="docutils literal"><span class="pre">make.sh</span></tt> file producing a
-lot of formats, with a corresponding
-<a class="reference external" href="https://doconce.googlecode.com/hg/doc/demos/tutorial/index.html">web demo</a>
-of the results.</p>
+lot of formats in the subdirectory <tt class="docutils literal"><span class="pre">demo</span></tt>.</p>
 </div>
 </div>
 <div class="section" id="from-doconce-to-other-formats">
@@ -690,10 +685,10 @@ be specified: <tt class="docutils literal"><span class="pre">--ccs=file1.css,fil
 <p>Templates are HTML files with &#8220;slots&#8221; <tt class="docutils literal"><span class="pre">%(main)s</span></tt> for the main body
 of text, <tt class="docutils literal"><span class="pre">%(title)s</span></tt> for the title, and <tt class="docutils literal"><span class="pre">%(date)s</span></tt> for the date.
 Doconce comes with a few templates. The usage of templates is
-described in a <a class="reference external" href="https://doconce.googlecode.com/hg/doc/design/wrapper_tech.html">separate document</a>. That document describes how you your Doconce-generated
+described in a &#8220;separate document&#8221;: &#8220;&#8221;. That document describes how you your Doconce-generated
 HTML file can have any specified layout.</p>
 <p>The HTML file can be embedded in a template with your own tailored
-design, see a &#8220;tutorial&#8221;: &#8221; <a class="reference external" href="https://doconce.googlecode.com/hg/doc/design/wrapper_tech.html">https://doconce.googlecode.com/hg/doc/design/wrapper_tech.html</a>&#8221; on this topic. The template file must contain
+design, see a <a class="reference external" href="http://hplgit.github.io/doconce/doc/pub/tech_wrapper.htl">tutorial</a> on this topic. The template file must contain
 valid HTML code and can have three &#8220;slots&#8221;: <tt class="docutils literal"><span class="pre">%(title)s</span></tt> for a title,
 <tt class="docutils literal"><span class="pre">%(date)s</span></tt> for a date, and <tt class="docutils literal"><span class="pre">%(main)s</span></tt> for the main body of text. The
 latter is the
@@ -1650,7 +1645,7 @@ part of the caption appearing on the same line as <tt class="docutils literal"><
 included in the formatted caption).</p>
 </div>
 <div class="figure" id="fig-viz">
-<a class="reference internal image-reference" href="_images/streamtubes.png"><img alt="_images/streamtubes.png" src="_images/streamtubes.png" style="width: 400px;" /></a>
+<img alt="_images/streamtubes.png" src="_images/streamtubes.png" style="width: 400px;" />
 <p class="caption"><em>Streamtube visualization of a fluid flow</em></p>
 </div>
 <p>Combining several image files into one, in a table fashion, can be done by the
@@ -1776,11 +1771,11 @@ The space after colon is optional, but it is important to enclose the
 link and the URL in double quotes.</p>
 <p>To have the URL address itself as link text, put an &#8220;URL&#8221; or URL
 before the address enclosed in double quotes:</p>
-<div class="highlight-text"><div class="highlight"><pre>Click on this link: URL:&quot;http://code.google.com/p/doconce&quot;.
+<div class="highlight-text"><div class="highlight"><pre>Click on this link: URL: &quot;https://github.com/hplgit/doconce&quot;.
 </pre></div>
 </div>
 <p>which gets rendered as
-Click on this link: <a class="reference external" href="http://code.google.com/p/doconce">http://code.google.com/p/doconce</a>.</p>
+Click on this link: <a class="reference external" href="https://github.com/hplgit/doconce">https://github.com/hplgit/doconce</a>.</p>
 <p>(There is also support for lazy writing of URLs: any http or https web address
 with a leading space and a trailing space, comma, semi-colon, or question
 mark (but not period!) becomes a link with the web address as link text.)</p>
@@ -1992,16 +1987,16 @@ text will be the output.</p>
 <p>Here is an example on a specific generalized reference:</p>
 <div class="highlight-text"><div class="highlight"><pre>As explained in
 ref[Section ref{subsec:ex}][in &quot;Langtangen, 2012&quot;:
-&quot;http://code.google.com/p/doconce/wiki/Description&quot;
-cite{testdoc:12}][a &quot;section&quot;: &quot;testdoc.html#___sec2&quot; in
-the document &quot;A Document for Testing Doconce&quot;: &quot;testdoc.html&quot;
+&quot;http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex&quot;
+cite{testdoc:12}][a &quot;section&quot;: &quot;http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex&quot; in
+the document &quot;A Document for Testing Doconce&quot;: &quot;http://hplgit.github.io/doconce/test/demo_testdoc.html&quot;
 cite{testdoc:12}], Doconce documents may include movies.
 </pre></div>
 </div>
 <p>In LaTeX, this becomes</p>
 <div class="highlight-text"><div class="highlight"><pre>As explained in
 Section~\ref{subsec:ex} in
-\href{{http://code.google.com/p/doconce/source/browse/test/testdoc.do.txt}}{Langtangen, 2012}
+\href{{http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex}}{Langtangen, 2012}
 \cite{testdoc:12}, Doconce documents may include movies.
 </pre></div>
 </div>
@@ -2541,7 +2536,7 @@ INLINE_TAGS = {
 </pre></div>
 </div>
 <p>And here is a C++ code snippet (<tt class="docutils literal"><span class="pre">cppcod</span></tt> style):</p>
-<div class="highlight-c++"><div class="highlight"><pre><span class="kt">void</span> <span class="n">myfunc</span><span class="p">(</span><span class="kt">double</span><span class="o">*</span> <span class="n">x</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span><span class="o">&amp;</span> <span class="n">myarr</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight-c++"><div class="highlight"><pre><span class="kt">void</span> <span class="nf">myfunc</span><span class="p">(</span><span class="kt">double</span><span class="o">*</span> <span class="n">x</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span><span class="o">&amp;</span> <span class="n">myarr</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">myarr</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">myarr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">myarr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">myarr</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
     <span class="p">}</span>
@@ -3027,9 +3022,9 @@ has a title), the header and footer are included, otherwise not.</p>
 </div>
 <div class="section" id="emacs-doconce-formatter">
 <span id="emacs-doconce"></span><h2>Emacs Doconce Formatter<a class="headerlink" href="#emacs-doconce-formatter" title="Permalink to this headline">¶</a></h2>
-<p>The file <a class="reference external" href="https://doconce.googlecode.com/hg/misc/.doconce-mode.el">.doconce-mode.el</a> in the Doconce source distribution
+<p>The file <a class="reference external" href="https://github.com/hplgit/doconce/blob/master/misc/.doconce-mode.el">.doconce-mode.el</a> in the Doconce source distribution
 gives a &#8220;Doconce Editing Mode&#8221; in Emacs.</p>
-<p>Here is how to get the Doconce Editing Mode in Emacs: Download <a class="reference external" href="https://doconce.googlecode.com/hg/misc/.doconce-mode.el">.doconce-mode.el</a> and save it in your home directory, then add these lines to <tt class="docutils literal"><span class="pre">~/.emacs</span></tt>:</p>
+<p>Here is how to get the Doconce Editing Mode in Emacs: Download <a class="reference external" href="https://raw.github.com/hplgit/doconce/master/misc/.doconce-mode.el">.doconce-mode.el</a> and save it in your home directory, then add these lines to <tt class="docutils literal"><span class="pre">~/.emacs</span></tt>:</p>
 <div class="highlight-text"><div class="highlight"><pre>(load-file &quot;~/.doconce-mode.el&quot;)
 </pre></div>
 </div>
@@ -3948,7 +3943,7 @@ the iterations.</td>
 <table class="docutils citation" frame="void" id="ref1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[Ref1]</td><td><em>(<a class="fn-backref" href="#id6">1</a>, <a class="fn-backref" href="#id11">2</a>)</em> <strong>H. P. Langtangen and G. Pedersen</strong>. Propagation of Large Destructive Waves,
+<tr><td class="label">[Ref1]</td><td><em>(<a class="fn-backref" href="#id7">1</a>, <a class="fn-backref" href="#id12">2</a>)</em> <strong>H. P. Langtangen and G. Pedersen</strong>. Propagation of Large Destructive Waves,
 <em>International Journal of Applied Mechanics and Engineering</em>,
 7(1),
 pp. 187-204,
@@ -3958,7 +3953,7 @@ pp. 187-204,
 <table class="docutils citation" frame="void" id="ref2" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id7">[Ref2]</a></td><td><strong>H. P. Langtangen, K.-A. Mardal and R. Winther</strong>. Numerical Methods for Incompressible Viscous Flow,
+<tr><td class="label"><a class="fn-backref" href="#id8">[Ref2]</a></td><td><strong>H. P. Langtangen, K.-A. Mardal and R. Winther</strong>. Numerical Methods for Incompressible Viscous Flow,
 <em>Advances in Water Resources</em>,
 25,
 pp. 1125-1146,
@@ -3968,7 +3963,7 @@ pp. 1125-1146,
 <table class="docutils citation" frame="void" id="ref3" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id8">[Ref3]</a></td><td><strong>H. P. Langtangen</strong>. Numerical Solution of First Passage Problems in Random Vibrations,
+<tr><td class="label"><a class="fn-backref" href="#id9">[Ref3]</a></td><td><strong>H. P. Langtangen</strong>. Numerical Solution of First Passage Problems in Random Vibrations,
 <em>SIAM Journal of Scientific and Statistical Computing</em>,
 15,
 pp. 997-996,
@@ -3978,7 +3973,7 @@ pp. 997-996,
 <table class="docutils citation" frame="void" id="ref4" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[Ref4]</td><td><em>(<a class="fn-backref" href="#id9">1</a>, <a class="fn-backref" href="#id12">2</a>)</em> <strong>K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen</strong>. Software Tools for Multigrid Methods,
+<tr><td class="label">[Ref4]</td><td><em>(<a class="fn-backref" href="#id10">1</a>, <a class="fn-backref" href="#id13">2</a>)</em> <strong>K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen</strong>. Software Tools for Multigrid Methods,
 Advanced Topics in Computational Partial Differential Equations &#8211; Numerical Methods and Diffpack Programming,
 edited by <strong>H. P. Langtangen and A. Tveito</strong>,
 Springer,
@@ -3988,7 +3983,7 @@ Springer,
 <table class="docutils citation" frame="void" id="ref5" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id10">[Ref5]</a></td><td><strong>H. P. Langtangen</strong>. The FEMDEQS Program System,
+<tr><td class="label"><a class="fn-backref" href="#id11">[Ref5]</a></td><td><strong>H. P. Langtangen</strong>. The FEMDEQS Program System,
 <em>Department of Mathematics, University of Oslo</em>,
 1989.</td></tr>
 </tbody>
