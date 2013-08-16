@@ -39,7 +39,7 @@ with layouts.
 
 ===== Step 1: Use Doconce to generate text =====
 
-We shall in this document use "Doconce": "http://code.google.com/p/doconce"
+We shall in this document use "Doconce": "https://github.com/hplgit/doconce"
 for writing the core text. Doconce looks like plain text, with just a
 few tags for enabling full LaTeX mathematics and nicely typeset
 computer code. From Doconce you can go to plain LaTeX, pdfLaTeX,

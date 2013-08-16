@@ -287,6 +287,7 @@ body {
 
 .reveal code {
 	font-family: monospace;
+        font-size: 90%;
 	overflow: auto;
 	max-height: 400px;
 }

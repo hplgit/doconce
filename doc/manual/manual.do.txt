@@ -463,10 +463,10 @@ link and the URL in double quotes.
 To have the URL address itself as link text, put an "URL" or URL
 before the address enclosed in double quotes:
 !bc
-Click on this link: URL:"http://code.google.com/p/doconce".
+Click on this link: URL: "https://github.com/hplgit/doconce".
 !ec
 which gets rendered as
-Click on this link: URL: "http://code.google.com/p/doconce".
+Click on this link: URL: "https://github.com/hplgit/doconce".
 
 (There is also support for lazy writing of URLs: any http or https web address
 with a leading space and a trailing space, comma, semi-colon, or question
@@ -708,16 +708,16 @@ Here is an example on a specific generalized reference:
 !bc
 As explained in
 ref[Section ref{subsec:ex}][in "Langtangen, 2012":
-"http://code.google.com/p/doconce/wiki/Description"
-cite{testdoc:12}][a "section": "testdoc.html#___sec2" in
-the document "A Document for Testing Doconce": "testdoc.html"
+"http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex"
+cite{testdoc:12}][a "section": "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex" in
+the document "A Document for Testing Doconce": "http://hplgit.github.io/doconce/test/demo_testdoc.html"
 cite{testdoc:12}], Doconce documents may include movies.
 !ec
 In LaTeX, this becomes
 !bc
 As explained in
 Section~\ref{subsec:ex} in
-\href{{http://code.google.com/p/doconce/source/browse/test/testdoc.do.txt}}{Langtangen, 2012}
+\href{{http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex}}{Langtangen, 2012}
 \cite{testdoc:12}, Doconce documents may include movies.
 !ec
 Note that there is a specific numbered reference to an external

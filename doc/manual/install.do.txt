@@ -420,7 +420,7 @@ pip install -e svn+https://epydoc.svn.sourceforge.net/svnroot/epydoc/trunk/epydo
 rm -rf srclib   # put downloaded software in srclib
 mkdir srclib
 cd srclib
-hg clone https://code.google.com/p/doconce/
+git clone git@github.com:hplgit/doconce.git
 cd doconce
 sudo python setup.py install -y
 cd ../..
