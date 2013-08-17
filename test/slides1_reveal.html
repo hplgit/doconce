@@ -151,7 +151,7 @@ $$
 <center>[1] <b>Simula Research Laboratory</b></center>
 <center>[2] <b>University of Oslo</b></center>
 <p>&nbsp;<br>
-<center><h4>Aug 11, 2013</h4></center> <!-- date -->
+<center><h4>Aug 16, 2013</h4></center> <!-- date -->
 <p>
 
 </section>
@@ -369,6 +369,7 @@ dependencies: [
 </html>
 reveal.js:
 css
+examples
 Gruntfile.js
 index.html
 js
@@ -418,6 +419,16 @@ mixins.scss
 settings.scss
 theme.scss
 
+reveal.js/examples:
+assets
+barebones.html
+embedded-media.html
+slide-backgrounds.html
+
+reveal.js/examples/assets:
+image1.png
+image2.png
+
 reveal.js/js:
 reveal.js
 reveal.min.js
@@ -444,6 +455,7 @@ html5shiv.js
 
 reveal.js/plugin:
 highlight
+leap
 markdown
 multiplex
 notes
@@ -456,6 +468,9 @@ zoom-js
 
 reveal.js/plugin/highlight:
 highlight.js
+
+reveal.js/plugin/leap:
+leap.js
 
 reveal.js/plugin/markdown:
 example.html

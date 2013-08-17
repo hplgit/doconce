@@ -239,7 +239,7 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 
 # Test URL as figure name
 
-FIGURE: [https://doconce.googlecode.com/hg/doc/blog/f_plot.png, width=500, frac=0.8]
+FIGURE: [https://raw.github.com/hplgit/doconce/master/doc/blog/f_plot.png, width=500, frac=0.8]
 
 # Test wikimedia type of files that otherwise reside in subdirs
 # #if FORMAT == "mwiki"
@@ -6334,7 +6334,7 @@ and an extra space before the FIGURE keyword.
 
 
 
-.. figure:: https://doconce.googlecode.com/hg/doc/blog/f_plot.png
+.. figure:: https://raw.github.com/hplgit/doconce/master/doc/blog/f_plot.png
    :width: 500
 
 
@@ -7708,7 +7708,7 @@ and an extra space before the FIGURE keyword.
 
 
 
-.. figure:: https://doconce.googlecode.com/hg/doc/blog/f_plot.png
+.. figure:: https://raw.github.com/hplgit/doconce/master/doc/blog/f_plot.png
    :width: 500
 
 
@@ -9166,10 +9166,10 @@ googlecode repository) and substitute the line above with the URL.
 
 Figure: 
 
-(the URL of the image file https://doconce.googlecode.com/hg/doc/blog/f_plot.png must be inserted here)
+(the URL of the image file https://raw.github.com/hplgit/doconce/master/doc/blog/f_plot.png must be inserted here)
 
 <wiki:comment>
-Put the figure file https://doconce.googlecode.com/hg/doc/blog/f_plot.png on the web (e.g., as part of the
+Put the figure file https://raw.github.com/hplgit/doconce/master/doc/blog/f_plot.png on the web (e.g., as part of the
 googlecode repository) and substitute the line above with the URL.
 </wiki:comment>
 ---------------------------------------------------------------
@@ -10194,7 +10194,7 @@ and an extra space before the FIGURE keyword.
 <!-- Test URL as figure name -->
 
 
-[[File:f_plot.png|frame|500,px|link=https://doconce.googlecode.com/hg/doc/blog|alt=f_plot.png|<span title=""></span>]]
+[[File:f_plot.png|frame|500,px|link=https://raw.github.com/hplgit/doconce/master/doc/blog|alt=f_plot.png|<span title=""></span>]]
 
 
 <!-- Test wikimedia type of files that otherwise reside in subdirs -->
@@ -11336,7 +11336,7 @@ and an extra space before the FIGURE keyword.
 
 <wiki:comment> Test URL as figure name </wiki:comment>
 
-{{https://doconce.googlecode.com/hg/doc/blog/f_plot.png|}}
+{{https://raw.github.com/hplgit/doconce/master/doc/blog/f_plot.png|}}
 
 <wiki:comment> Test wikimedia type of files that otherwise reside in subdirs </wiki:comment>
 
@@ -12346,7 +12346,7 @@ FIGURE: [../doc/manual/figs/wavepacket_0001.png, width=500] A long caption spann
 
 
 
-FIGURE: [https://doconce.googlecode.com/hg/doc/blog/f_plot.png, width=500, frac=0.8]
+FIGURE: [https://raw.github.com/hplgit/doconce/master/doc/blog/f_plot.png, width=500, frac=0.8]
 
 
 
@@ -13360,7 +13360,7 @@ FIGURE: [../doc/manual/figs/wavepacket_0001.png, width=500] A long caption spann
 
 
 
-FIGURE: [https://doconce.googlecode.com/hg/doc/blog/f_plot.png, width=500, frac=0.8]
+FIGURE: [https://raw.github.com/hplgit/doconce/master/doc/blog/f_plot.png, width=500, frac=0.8]
 
 
 
@@ -14474,7 +14474,7 @@ FIGURE: [../doc/manual/figs/wavepacket_0001.png, width=500] A long caption spann
 
 
 
-FIGURE: [https://doconce.googlecode.com/hg/doc/blog/f_plot.png, width=500, frac=0.8]
+FIGURE: [https://raw.github.com/hplgit/doconce/master/doc/blog/f_plot.png, width=500, frac=0.8]
 
 
 
@@ -15587,7 +15587,7 @@ and an extra space before the FIGURE keyword.
 
 <!-- Test URL as figure name -->
 
-![](https://doconce.googlecode.com/hg/doc/blog/f_plot.png)
+![](https://raw.github.com/hplgit/doconce/master/doc/blog/f_plot.png)
 
 <!-- Test wikimedia type of files that otherwise reside in subdirs -->
 
@@ -16992,7 +16992,7 @@ case in LaTeX.
       "\n",
       "<!-- Test URL as figure name -->\n",
       "\n",
-      "![](https://doconce.googlecode.com/hg/doc/blog/f_plot.png)\n",
+      "![](https://raw.github.com/hplgit/doconce/master/doc/blog/f_plot.png)\n",
       "\n",
       "<!-- Test wikimedia type of files that otherwise reside in subdirs -->\n",
       "\n",
@@ -19114,7 +19114,7 @@ output2</code></pre>
 <!-- Test URL as figure name -->
 
 <div class="figure">
-<img src="https://doconce.googlecode.com/hg/doc/blog/f_plot.png" />
+<img src="https://raw.github.com/hplgit/doconce/master/doc/blog/f_plot.png" />
 </div>
 <!-- Test wikimedia type of files that otherwise reside in subdirs -->
 
@@ -20751,22 +20751,22 @@ If none of the two situations above applies, the <code>external</code>
 text will be the output.
 
 <p>
-Here is a specific example on a generalized reference:
+Here is an example on a specific generalized reference:
 <p>
 
 <!-- code=text typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">As explained in
-ref[Section ref{subsec:ex}][in &quot;Langtangen, 2013&quot;:
-&quot;http://doconce.googlecode.com/hg/test/demo_testdoc.html&quot;
-cite{testdoc:12}][a &quot;section&quot;: &quot;demo_testdoc.html#___sec2&quot; in
-the document &quot;A Document for Testing Doconce&quot;: &quot;demo_testdoc.html&quot;
+ref[Section ref{subsec:ex}][in &quot;Langtangen, 2012&quot;:
+&quot;http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex&quot;
+cite{testdoc:12}][a &quot;section&quot;: &quot;http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex&quot; in
+the document &quot;A Document for Testing Doconce&quot;: &quot;http://hplgit.github.io/doconce/test/demo_testdoc.html&quot;
 cite{testdoc:12}], Doconce documents may include movies.
 </pre></div>
 <p>
-This is rendered to the following text:
+This is renedered as follows:
 As explained in
-a <a href="demo_testdoc.html#___sec2">section</a> in
-the document <a href="demo_testdoc.html">A Document for Testing Doconce</a>
+a <a href="http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex">section</a> in
+the document <a href="http://hplgit.github.io/doconce/test/demo_testdoc.html">A Document for Testing Doconce</a>
 <a href="#testdoc:12">[1]</a>, Doconce documents may include movies.
 
 <p>
@@ -21120,18 +21120,18 @@ and date). In this case the output text is \code{internal cite} and the
 If none of the two situations above applies, the \code{external}
 text will be the output.
 
-Here is a specific example on a generalized reference:
+Here is an example on a specific generalized reference:
 \bccq
 As explained in
-ref[Section ref{subsec:ex}][in "Langtangen, 2013":
-"http://doconce.googlecode.com/hg/test/demo_testdoc.html"
-cite{testdoc:12}][a "section": "demo_testdoc.html#___sec2" in
-the document "A Document for Testing Doconce": "demo_testdoc.html"
+ref[Section ref{subsec:ex}][in "Langtangen, 2012":
+"http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex"
+cite{testdoc:12}][a "section": "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex" in
+the document "A Document for Testing Doconce": "http://hplgit.github.io/doconce/test/demo_testdoc.html"
 cite{testdoc:12}], Doconce documents may include movies.
 \eccq
-This is rendered to the following text:
+This is renedered as follows:
 As explained in
-Section~\ref{subsec:ex} in \href{{http://doconce.googlecode.com/hg/test/demo_testdoc.html}}{Langtangen, 2013}
+Section~\ref{subsec:ex} in \href{{http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex}}{Langtangen, 2012}
 \cite{testdoc:12}, Doconce documents may include movies.
 
 And here is another example with internal references only:
@@ -21215,22 +21215,22 @@ LaTeX package ``xr`` is used to handle the labels in the external documents.
 If none of the two situations above applies, the ``external``
 text will be the output.
 
-Here is a specific example on a generalized reference:
+Here is an example on a specific generalized reference:
 
 .. code-block:: text
 
 
         As explained in
-        ref[Section ref{subsec:ex}][in "Langtangen, 2013":
-        "http://doconce.googlecode.com/hg/test/demo_testdoc.html"
-        cite{testdoc:12}][a "section": "demo_testdoc.html#___sec2" in
-        the document "A Document for Testing Doconce": "demo_testdoc.html"
+        ref[Section ref{subsec:ex}][in "Langtangen, 2012":
+        "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex"
+        cite{testdoc:12}][a "section": "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex" in
+        the document "A Document for Testing Doconce": "http://hplgit.github.io/doconce/test/demo_testdoc.html"
         cite{testdoc:12}], Doconce documents may include movies.
 
-This is rendered to the following text:
+This is renedered as follows:
 As explained in
-a `section <demo_testdoc.html#___sec2>`_ in
-the document `A Document for Testing Doconce <demo_testdoc.html>`_
+a `section <http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex>`_ in
+the document `A Document for Testing Doconce <http://hplgit.github.io/doconce/test/demo_testdoc.html>`_
 [Ref1]_, Doconce documents may include movies.
 
 And here is another example with internal references only:
@@ -21307,20 +21307,20 @@ LaTeX package xr is used to handle the labels in the external documents.
 If none of the two situations above applies, the external
 text will be the output.
 
-Here is a specific example on a generalized reference::
+Here is an example on a specific generalized reference::
 
 
         As explained in
-        ref[Section ref{subsec:ex}][in "Langtangen, 2013":
-        "http://doconce.googlecode.com/hg/test/demo_testdoc.html"
-        cite{testdoc:12}][a "section": "demo_testdoc.html#___sec2" in
-        the document "A Document for Testing Doconce": "demo_testdoc.html"
+        ref[Section ref{subsec:ex}][in "Langtangen, 2012":
+        "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex"
+        cite{testdoc:12}][a "section": "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex" in
+        the document "A Document for Testing Doconce": "http://hplgit.github.io/doconce/test/demo_testdoc.html"
         cite{testdoc:12}], Doconce documents may include movies.
 
-This is rendered to the following text:
+This is renedered as follows:
 As explained in
-a section (demo_testdoc.html#___sec2) in
-the document A Document for Testing Doconce (demo_testdoc.html)
+a section (http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex) in
+the document A Document for Testing Doconce (http://hplgit.github.io/doconce/test/demo_testdoc.html)
 [1], Doconce documents may include movies.
 
 And here is another example with internal references only::
@@ -22480,7 +22480,7 @@ and an extra space before the FIGURE keyword.
 <!-- Test URL as figure name -->
 
 <p>
-<center><p><img src="https://doconce.googlecode.com/hg/doc/blog/f_plot.png" align="bottom" width=500,></p></center>
+<center><p><img src="https://raw.github.com/hplgit/doconce/master/doc/blog/f_plot.png" align="bottom" width=500,></p></center>
 
 <p>
 <!-- Test wikimedia type of files that otherwise reside in subdirs -->
@@ -23970,7 +23970,7 @@ and an extra space before the FIGURE keyword.
 </center>
 
 <p>
-<center><p><img src="https://doconce.googlecode.com/hg/doc/blog/f_plot.png" align="bottom" width=500,></p></center>
+<center><p><img src="https://raw.github.com/hplgit/doconce/master/doc/blog/f_plot.png" align="bottom" width=500,></p></center>
 
 <h3>The $latex \theta$ parameter (not $latex \nabla$?) <a name="decay:sec:theta"></a></h3>
 
@@ -25527,7 +25527,7 @@ and an extra space before the FIGURE keyword.
 <!-- Test URL as figure name -->
 
 <p>
-<center><p><img src="https://doconce.googlecode.com/hg/doc/blog/f_plot.png" align="bottom" width=500,></p></center>
+<center><p><img src="https://raw.github.com/hplgit/doconce/master/doc/blog/f_plot.png" align="bottom" width=500,></p></center>
 
 <p>
 <!-- Test wikimedia type of files that otherwise reside in subdirs -->
@@ -32013,7 +32013,7 @@ and an extra space before the FIGURE keyword.
 <!-- Test URL as figure name -->
 
 <p>
-<center><p><img src="https://doconce.googlecode.com/hg/doc/blog/f_plot.png" align="bottom" width=500,></p></center>
+<center><p><img src="https://raw.github.com/hplgit/doconce/master/doc/blog/f_plot.png" align="bottom" width=500,></p></center>
 
 <p>
 <!-- Test wikimedia type of files that otherwise reside in subdirs -->
@@ -33451,7 +33451,7 @@ and an extra space before the FIGURE keyword.
 
 
 
-.. figure:: https://doconce.googlecode.com/hg/doc/blog/f_plot.png
+.. figure:: https://raw.github.com/hplgit/doconce/master/doc/blog/f_plot.png
    :width: 500
 
 
@@ -42196,6 +42196,7 @@ dependencies: [
 </html>
 reveal.js:
 css
+examples
 Gruntfile.js
 index.html
 js
@@ -42245,6 +42246,16 @@ mixins.scss
 settings.scss
 theme.scss
 
+reveal.js/examples:
+assets
+barebones.html
+embedded-media.html
+slide-backgrounds.html
+
+reveal.js/examples/assets:
+image1.png
+image2.png
+
 reveal.js/js:
 reveal.js
 reveal.min.js
@@ -42271,6 +42282,7 @@ html5shiv.js
 
 reveal.js/plugin:
 highlight
+leap
 markdown
 multiplex
 notes
@@ -42283,6 +42295,9 @@ zoom-js
 
 reveal.js/plugin/highlight:
 highlight.js
+
+reveal.js/plugin/leap:
+leap.js
 
 reveal.js/plugin/markdown:
 example.html
@@ -44345,7 +44360,7 @@ URL: "http://hplgit.github.com/teamods/writing_reports/"
  * Sphinx: "agni": "http://hplgit.github.com/teamods/writing_reports/_static/sphinx-agni/index.html", "pyramid": "http://hplgit.github.com/teamods/writing_reports/_static/sphinx-pyramid/report.html", "classy": "http://hplgit.github.com/teamods/writing_reports/_static/sphinx-classy/report.html", "fenics": "http://hplgit.github.com/teamods/writing_reports/_static/sphinx-fenics_minimal/report.html", "redcloud": "http://hplgit.github.com/teamods/writing_reports/_static/sphinx-fenics_minimal/report.html"
  * HTML for "Google": "http://doconce-report-demo.blogspot.no/" or "Wordpress": "http://doconcereportdemo.wordpress.com/" blogs
  * "MediaWiki": "http://doconcedemo.shoutwiki.com/wiki/Doconce_demo_page" (Wikipedia, Wikibooks, etc)
- * Doconce "source code": "http://hplgit.github.com/teamods/writing_reports/_static/report.do.txt.html" and "tutorial": "http://code.google.com/p/doconce/wiki/Tutorial"
+ * Doconce "source code": "http://hplgit.github.com/teamods/writing_reports/_static/report.do.txt.html" and "manual": "http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html"
 
 
 !split
@@ -44463,10 +44478,10 @@ but without backslashes.
 See (ref{eq1})-(ref{myeq}).
 
 # Make hyperlink
-"some link text": "http://code.google.com/p/doconce/"
+"some link text": "https://github.com/hplgit/doconce"
 
 # Hyperlink with complete URL as link text
-URL: "http://code.google.com/p/doconce/"
+URL: "https://github.com/hplgit/doconce"
 !ec
 
 !split
@@ -45252,7 +45267,7 @@ based on HTML and vice versa.
  <p><li> Sphinx: <a href="http://hplgit.github.com/teamods/writing_reports/_static/sphinx-agni/index.html">agni</a>, <a href="http://hplgit.github.com/teamods/writing_reports/_static/sphinx-pyramid/report.html">pyramid</a>, <a href="http://hplgit.github.com/teamods/writing_reports/_static/sphinx-classy/report.html">classy</a>, <a href="http://hplgit.github.com/teamods/writing_reports/_static/sphinx-fenics_minimal/report.html">fenics</a>, <a href="http://hplgit.github.com/teamods/writing_reports/_static/sphinx-fenics_minimal/report.html">redcloud</a></li>
  <p><li> HTML for <a href="http://doconce-report-demo.blogspot.no/">Google</a> or <a href="http://doconcereportdemo.wordpress.com/">Wordpress</a> blogs</li>
  <p><li> <a href="http://doconcedemo.shoutwiki.com/wiki/Doconce_demo_page">MediaWiki</a> (Wikipedia, Wikibooks, etc)</li>
- <p><li> Doconce <a href="http://hplgit.github.com/teamods/writing_reports/_static/report.do.txt.html">source code</a> and <a href="http://code.google.com/p/doconce/wiki/Tutorial">tutorial</a></li>
+ <p><li> Doconce <a href="http://hplgit.github.com/teamods/writing_reports/_static/report.do.txt.html">source code</a> and <a href="http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html">manual</a></li>
 </ul>
 <p>
 
@@ -45418,10 +45433,10 @@ but without backslashes.
 See \eqref{eq1}-\eqref{myeq}.
 
 # Make hyperlink
-&quot;some link text&quot;: &quot;http://code.google.com/p/doconce/&quot;
+&quot;some link text&quot;: &quot;https://github.com/hplgit/doconce&quot;
 
 # Hyperlink with complete URL as link text
-URL: &quot;http://code.google.com/p/doconce/&quot;
+URL: &quot;https://github.com/hplgit/doconce&quot;
 </pre></div>
 <p>
 
@@ -46503,7 +46518,7 @@ based on HTML and vice versa.
 
  \item \href{{http://doconcedemo.shoutwiki.com/wiki/Doconce_demo_page}}{MediaWiki} (Wikipedia, Wikibooks, etc)
 
- \item Doconce \href{{http://hplgit.github.com/teamods/writing_reports/_static/report.do.txt.html}}{source code} and \href{{http://code.google.com/p/doconce/wiki/Tutorial}}{tutorial}
+ \item Doconce \href{{http://hplgit.github.com/teamods/writing_reports/_static/report.do.txt.html}}{source code} and \href{{http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html}}{manual}
 \end{itemize}
 
 \noindent
@@ -46629,10 +46644,10 @@ but without backslashes.
 See (ref{eq1})-(ref{myeq}).
 
 # Make hyperlink
-"some link text": "http://code.google.com/p/doconce/"
+"some link text": "https://github.com/hplgit/doconce"
 
 # Hyperlink with complete URL as link text
-URL: "http://code.google.com/p/doconce/"
+URL: "https://github.com/hplgit/doconce"
 \eccq
 
 % !split
@@ -47416,7 +47431,7 @@ based on HTML and vice versa.
 
  \item \href{{http://doconcedemo.shoutwiki.com/wiki/Doconce_demo_page}}{MediaWiki} (Wikipedia, Wikibooks, etc)
 
- \item Doconce \href{{http://hplgit.github.com/teamods/writing_reports/_static/report.do.txt.html}}{source code} and \href{{http://code.google.com/p/doconce/wiki/Tutorial}}{tutorial}
+ \item Doconce \href{{http://hplgit.github.com/teamods/writing_reports/_static/report.do.txt.html}}{source code} and \href{{http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html}}{manual}
 \end{itemize}
 
 \noindent
@@ -47550,10 +47565,10 @@ but without backslashes.
 See (ref{eq1})-(ref{myeq}).
 
 # Make hyperlink
-"some link text": "http://code.google.com/p/doconce/"
+"some link text": "https://github.com/hplgit/doconce"
 
 # Hyperlink with complete URL as link text
-URL: "http://code.google.com/p/doconce/"
+URL: "https://github.com/hplgit/doconce"
 \end{Verbatim}
 \end{frame}
 
@@ -47943,7 +47958,7 @@ FIGURE: [../doc/slides/fig/CN_logo, width=300 frac=0.4]
 ======= Goal =======
 
 The primary goal of this demo talk is to demonstrate how to write
-talks with "doconce": "http://code.google.com/p/doconce"
+talks with "Doconce": "https://github.com/hplgit/doconce"
 and get them rendered in numerous HTML formats.
 # #if FORMAT in ("html", "pdflatex", "latex")
 !bnotice Layout
@@ -47971,7 +47986,7 @@ pressing "Ctrl-P".
 % elif SLIDE_TYPE == 'html5slides':
 pressing "p".
 % elif SLIDE_TYPE == 'csss':
-using the "onstage.html": "https://doconce.googlecode.com/hg/bundled/dzslides/shells/onstage.html" embedding page.
+using the "onstage.html": "https://raw.github.com/hplgit/doconce/master/bundled/dzslides/shells/onstage.html" embedding page.
 % endif
 !enotice
 # #endif
@@ -48272,7 +48287,7 @@ $$
 
 <p>
 The primary goal of this demo talk is to demonstrate how to write
-talks with <a href="http://code.google.com/p/doconce">doconce</a>
+talks with <a href="https://github.com/hplgit/doconce">Doconce</a>
 and get them rendered in numerous HTML formats.
 <div class="alert alert-block alert-notice alert-text-normal"><b>Layout.</b>
 This version
@@ -48839,7 +48854,7 @@ Jan 32, 2100
 \section{Goal}
 
 The primary goal of this demo talk is to demonstrate how to write
-talks with \href{{http://code.google.com/p/doconce}}{doconce}
+talks with \href{{https://github.com/hplgit/doconce}}{Doconce}
 and get them rendered in numerous HTML formats.
 
 \begin{graybox1admon}[Layout.]
@@ -49135,7 +49150,7 @@ Department of Informatics, University of Oslo\inst{2}}
 \frametitle{Goal}
 
 The primary goal of this demo talk is to demonstrate how to write
-talks with \href{{http://code.google.com/p/doconce}}{doconce}
+talks with \href{{https://github.com/hplgit/doconce}}{Doconce}
 and get them rendered in numerous HTML formats.
 
 \begin{graybox1admon}[Layout.]
@@ -49603,7 +49618,7 @@ And here is a table:
 <h6>Dept. of Informatics, Univ. of Oslo</h6>
 </center>
 
-<center>Sun, 11 Aug 2013 (15:14)</center>
+<center>Fri, 16 Aug 2013 (21:37)</center>
 
 
 
@@ -49734,7 +49749,7 @@ And here is a table:
 <h6>Dept. of Informatics, Univ. of Oslo</h6>
 </center>
 
-<center>Sun, 11 Aug 2013 (15:14)</center>
+<center>Fri, 16 Aug 2013 (21:37)</center>
 
 
 
@@ -49999,10 +50014,11 @@ Google and Wordpress.
 
 ===== Emacs syntax support =====
 
-The file ".doconce-mode.el": "https://doconce.googlecode.com/hg/misc/.doconce-mode.el" in the Doconce source distribution
-gives a "Doconce Editing Mode" in Emacs. Store the file in the home
-directory and add `(load-file "~/.doconce-mode.el")` to the `.emacs`
-file.
+The file ".doconce-mode.el":
+"https://github.com/hplgit/doconce/blob/master/misc/.doconce-mode.el"
+in the Doconce source distribution gives a "Doconce Editing Mode" in
+Emacs. Store the raw version of the file in the home directory and add
+`(load-file "~/.doconce-mode.el")` to the `.emacs` file.
 
 Besides syntax highlighting of Doconce documents, this Emacs mode
 provides a lot of shortcuts for setting up many elements in a document:
@@ -50991,10 +51007,10 @@ Google and Wordpress.
 <h3>Emacs syntax support  <a name="___sec1"></a></h3>
 
 <p>
-The file <a href="https://doconce.googlecode.com/hg/misc/.doconce-mode.el">.doconce-mode.el</a> in the Doconce source distribution
-gives a "Doconce Editing Mode" in Emacs. Store the file in the home
-directory and add <code>(load-file "~/.doconce-mode.el")</code> to the <code>.emacs</code>
-file.
+The file <a href="https://github.com/hplgit/doconce/blob/master/misc/.doconce-mode.el">.doconce-mode.el</a>
+in the Doconce source distribution gives a "Doconce Editing Mode" in
+Emacs. Store the raw version of the file in the home directory and add
+<code>(load-file "~/.doconce-mode.el")</code> to the <code>.emacs</code> file.
 
 <p>
 Besides syntax highlighting of Doconce documents, this Emacs mode
@@ -52454,10 +52470,10 @@ Google and Wordpress.
 
 \subsection{Emacs syntax support}
 
-The file \href{{https://doconce.googlecode.com/hg/misc/.doconce-mode.el}}{.doconce-mode.el} in the Doconce source distribution
-gives a "Doconce Editing Mode" in Emacs. Store the file in the home
-directory and add \code{(load-file "~/.doconce-mode.el")} to the \code{.emacs}
-file.
+The file \href{{https://github.com/hplgit/doconce/blob/master/misc/.doconce-mode.el}}{.doconce-mode.el}
+in the Doconce source distribution gives a "Doconce Editing Mode" in
+Emacs. Store the raw version of the file in the home directory and add
+\code{(load-file "~/.doconce-mode.el")} to the \code{.emacs} file.
 
 Besides syntax highlighting of Doconce documents, this Emacs mode
 provides a lot of shortcuts for setting up many elements in a document:
@@ -53521,10 +53537,10 @@ Google and Wordpress.
 Emacs syntax support
 --------------------
 
-The file `.doconce-mode.el <https://doconce.googlecode.com/hg/misc/.doconce-mode.el>`_ in the Doconce source distribution
-gives a "Doconce Editing Mode" in Emacs. Store the file in the home
-directory and add ``(load-file "~/.doconce-mode.el")`` to the ``.emacs``
-file.
+The file `.doconce-mode.el <https://github.com/hplgit/doconce/blob/master/misc/.doconce-mode.el>`_
+in the Doconce source distribution gives a "Doconce Editing Mode" in
+Emacs. Store the raw version of the file in the home directory and add
+``(load-file "~/.doconce-mode.el")`` to the ``.emacs`` file.
 
 Besides syntax highlighting of Doconce documents, this Emacs mode
 provides a lot of shortcuts for setting up many elements in a document:
@@ -54581,10 +54597,10 @@ Google and Wordpress.
 Emacs syntax support
 --------------------
 
-The file `.doconce-mode.el <https://doconce.googlecode.com/hg/misc/.doconce-mode.el>`_ in the Doconce source distribution
-gives a "Doconce Editing Mode" in Emacs. Store the file in the home
-directory and add ``(load-file "~/.doconce-mode.el")`` to the ``.emacs``
-file.
+The file `.doconce-mode.el <https://github.com/hplgit/doconce/blob/master/misc/.doconce-mode.el>`_
+in the Doconce source distribution gives a "Doconce Editing Mode" in
+Emacs. Store the raw version of the file in the home directory and add
+``(load-file "~/.doconce-mode.el")`` to the ``.emacs`` file.
 
 Besides syntax highlighting of Doconce documents, this Emacs mode
 provides a lot of shortcuts for setting up many elements in a document:
@@ -55697,10 +55713,10 @@ Google and Wordpress.
 
 ==== Emacs syntax support ====
 
-The file [https://doconce.googlecode.com/hg/misc/.doconce-mode.el .doconce-mode.el] in the Doconce source distribution
-gives a "Doconce Editing Mode" in Emacs. Store the file in the home
-directory and add `(load-file "~/.doconce-mode.el")` to the `.emacs`
-file.
+The file [https://github.com/hplgit/doconce/blob/master/misc/.doconce-mode.el .doconce-mode.el]
+in the Doconce source distribution gives a "Doconce Editing Mode" in
+Emacs. Store the raw version of the file in the home directory and add
+`(load-file "~/.doconce-mode.el")` to the `.emacs` file.
 
 Besides syntax highlighting of Doconce documents, this Emacs mode
 provides a lot of shortcuts for setting up many elements in a document:
@@ -56645,10 +56661,10 @@ Google and Wordpress.
 
 ==== Emacs syntax support ====
 
-The file [https://doconce.googlecode.com/hg/misc/.doconce-mode.el .doconce-mode.el] in the Doconce source distribution
-gives a "Doconce Editing Mode" in Emacs. Store the file in the home
-directory and add <code>(load-file "~/.doconce-mode.el")</code> to the <code>.emacs</code>
-file.
+The file [https://github.com/hplgit/doconce/blob/master/misc/.doconce-mode.el .doconce-mode.el]
+in the Doconce source distribution gives a "Doconce Editing Mode" in
+Emacs. Store the raw version of the file in the home directory and add
+<code>(load-file "~/.doconce-mode.el")</code> to the <code>.emacs</code> file.
 
 Besides syntax highlighting of Doconce documents, this Emacs mode
 provides a lot of shortcuts for setting up many elements in a document:
@@ -57643,10 +57659,10 @@ Google and Wordpress.
 
 == Emacs syntax support ==
 
-The file [[https://doconce.googlecode.com/hg/misc/.doconce-mode.el|.doconce-mode.el]] in the Doconce source distribution
-gives a "Doconce Editing Mode" in Emacs. Store the file in the home
-directory and add {{{(load-file "~/.doconce-mode.el")}}} to the {{{.emacs}}}
-file.
+The file [[https://github.com/hplgit/doconce/blob/master/misc/.doconce-mode.el|.doconce-mode.el]]
+in the Doconce source distribution gives a "Doconce Editing Mode" in
+Emacs. Store the raw version of the file in the home directory and add
+{{{(load-file "~/.doconce-mode.el")}}} to the {{{.emacs}}} file.
 
 Besides syntax highlighting of Doconce documents, this Emacs mode
 provides a lot of shortcuts for setting up many elements in a document:
@@ -58584,10 +58600,10 @@ Google and Wordpress.
 
 Emacs syntax support
 
-The file "https://doconce.googlecode.com/hg/misc/.doconce-mode.el":.doconce-mode.el in the Doconce source distribution
-gives a "Doconce Editing Mode" in Emacs. Store the file in the home
-directory and add '(load-file "~/.doconce-mode.el")' to the '.emacs'
-file.
+The file "https://github.com/hplgit/doconce/blob/master/misc/.doconce-mode.el":.doconce-mode.el
+in the Doconce source distribution gives a "Doconce Editing Mode" in
+Emacs. Store the raw version of the file in the home directory and add
+'(load-file "~/.doconce-mode.el")' to the '.emacs' file.
 
 Besides syntax highlighting of Doconce documents, this Emacs mode
 provides a lot of shortcuts for setting up many elements in a document:
@@ -59557,10 +59573,10 @@ Google and Wordpress.
 Emacs syntax support
 --------------------
 
-The file U{.doconce-mode.el<https://doconce.googlecode.com/hg/misc/.doconce-mode.el>} in the Doconce source distribution
-gives a "Doconce Editing Mode" in Emacs. Store the file in the home
-directory and add C{(load-file "~/.doconce-mode.el")} to the C{.emacs}
-file.
+The file U{.doconce-mode.el<https://github.com/hplgit/doconce/blob/master/misc/.doconce-mode.el>}
+in the Doconce source distribution gives a "Doconce Editing Mode" in
+Emacs. Store the raw version of the file in the home directory and add
+C{(load-file "~/.doconce-mode.el")} to the C{.emacs} file.
 
 Besides syntax highlighting of Doconce documents, this Emacs mode
 provides a lot of shortcuts for setting up many elements in a document:
@@ -60577,10 +60593,10 @@ Google and Wordpress.
 Emacs syntax support
 --------------------
 
-The file .doconce-mode.el (https://doconce.googlecode.com/hg/misc/.doconce-mode.el) in the Doconce source distribution
-gives a "Doconce Editing Mode" in Emacs. Store the file in the home
-directory and add (load-file "~/.doconce-mode.el") to the .emacs
-file.
+The file .doconce-mode.el (https://github.com/hplgit/doconce/blob/master/misc/.doconce-mode.el)
+in the Doconce source distribution gives a "Doconce Editing Mode" in
+Emacs. Store the raw version of the file in the home directory and add
+(load-file "~/.doconce-mode.el") to the .emacs file.
 
 Besides syntax highlighting of Doconce documents, this Emacs mode
 provides a lot of shortcuts for setting up many elements in a document:
@@ -61619,10 +61635,10 @@ Google and Wordpress.
 
 ### Emacs syntax support
 
-The file [.doconce-mode.el](https://doconce.googlecode.com/hg/misc/.doconce-mode.el) in the Doconce source distribution
-gives a "Doconce Editing Mode" in Emacs. Store the file in the home
-directory and add `(load-file "~/.doconce-mode.el")` to the `.emacs`
-file.
+The file [.doconce-mode.el](https://github.com/hplgit/doconce/blob/master/misc/.doconce-mode.el)
+in the Doconce source distribution gives a "Doconce Editing Mode" in
+Emacs. Store the raw version of the file in the home directory and add
+`(load-file "~/.doconce-mode.el")` to the `.emacs` file.
 
 Besides syntax highlighting of Doconce documents, this Emacs mode
 provides a lot of shortcuts for setting up many elements in a document:
@@ -63112,7 +63128,7 @@ text before the code! (Now "Code:" is inserted)
 found info about 9 exercises, written to .testdoc.exerinfo
 figure file ../doc/manual/figs/streamtubes:
     can use ../doc/manual/figs/streamtubes.eps for format latex
-downloading https://doconce.googlecode.com/hg/doc/blog/f_plot.png .......
+downloading https://raw.github.com/hplgit/doconce/master/doc/blog/f_plot.png .......
 
 exporting publish database papers.pub to papers.bib:
 output in testdoc.p.tex
@@ -63393,7 +63409,7 @@ text before the code! (Now "Code:" is inserted)
 found info about 9 exercises, written to .testdoc.exerinfo
 figure file ../doc/manual/figs/streamtubes:
     can use ../doc/manual/figs/streamtubes.eps for format latex
-downloading https://doconce.googlecode.com/hg/doc/blog/f_plot.png .......
+downloading https://raw.github.com/hplgit/doconce/master/doc/blog/f_plot.png .......
 
 exporting publish database papers.pub to papers.bib:
 output in testdoc.p.tex
@@ -63474,7 +63490,7 @@ text before the code! (Now "Code:" is inserted)
 found info about 9 exercises, written to .testdoc.exerinfo
 figure file ../doc/manual/figs/streamtubes:
     can use ../doc/manual/figs/streamtubes.png for format pdflatex
-downloading https://doconce.googlecode.com/hg/doc/blog/f_plot.png .......
+downloading https://raw.github.com/hplgit/doconce/master/doc/blog/f_plot.png .......
 
 exporting publish database papers.pub to papers.bib:
 *** warning: --latex_double_hyphen may lead to unwanted edits.
@@ -66639,7 +66655,7 @@ NOTE: Place ../doc/manual/figs/wavepacket_0001.png at some place on the web and 
       doconce gwiki_figsubst.py mydoc.gwiki URL
 
 
-NOTE: Place https://doconce.googlecode.com/hg/doc/blog/f_plot.png at some place on the web and edit the
+NOTE: Place https://raw.github.com/hplgit/doconce/master/doc/blog/f_plot.png at some place on the web and edit the
       .gwiki page, either manually (seach for 'Figure: ')
       or use the doconce script:
       doconce gwiki_figsubst.py mydoc.gwiki URL
@@ -66722,7 +66738,7 @@ text before the code! (Now "Code:" is inserted)
 found info about 9 exercises, written to .testdoc.exerinfo
 figure file ../doc/manual/figs/streamtubes:
     can use ../doc/manual/figs/streamtubes.eps for format latex
-downloading https://doconce.googlecode.com/hg/doc/blog/f_plot.png .......
+downloading https://raw.github.com/hplgit/doconce/master/doc/blog/f_plot.png .......
 
 exporting publish database papers.pub to papers.bib:
 output in testdoc.p.tex
@@ -66849,7 +66865,6 @@ output in slides1.html
 + '[' 0 -ne 0 ']'
 + system doconce slides_html slides1 deck --html_slide_type=sandstone.firefox
 + doconce slides_html slides1 deck --html_slide_type=sandstone.firefox
-made subdirectory deck.js
 slides written to slides1.html
 + '[' 0 -ne 0 ']'
 + cp slides1.html slides1_deck.html
@@ -67089,13 +67104,6 @@ output in author1.p.tex
 + system doconce format sphinx author1
 + doconce format sphinx author1
 translating doconce text in author1.do.txt to sphinx
-*** warning: hyperlink to URL demo_testdoc.html is to a local file,
-  - recommended to be _static/demo_testdoc.html for sphinx
-*** warning: hyperlink to URL demo_testdoc.html#___sec2 is to a local file,
-  - recommended to be _static/demo_testdoc.html#___sec2 for sphinx
-*** move linked files to _static and change URLs
-    (unless you really know that the links will be correct
-    when the sphinx build directory is moved to its final destination)
 output in author1.rst
 + '[' 0 -ne 0 ']'
 + system doconce format plain author1
@@ -70443,11 +70451,7 @@ ABD: EveryShipout initializing macros
 
 Package hyperref Warning: old toc file detected, not used; run LaTeX again.
 
- [1]
-Overfull \hbox (119.75502pt too wide) 
-\OT1/phv/m/n/10 Edit-ing Mode" in Emacs. Store the file in the home di-rec-tory
- and add []
-[2]
+ [1] [2]
 Overfull \hbox (19.14615pt too wide) 
 \OT1/phv/m/n/10 Note that ab-stracts are rec-og-nized by start-ing with [] or [
 ]
@@ -70839,11 +70843,7 @@ Writing index file quickref.idx
 
 
 
-[1] 
-Overfull \hbox (119.75502pt too wide) 
-\OT1/phv/m/n/10 Edit-ing Mode" in Emacs. Store the file in the home di-rec-tory
- and add []
-[2] [3]
+[1]  [2] [3]
 Overfull \hbox (19.14615pt too wide) 
 \OT1/phv/m/n/10 Note that ab-stracts are rec-og-nized by start-ing with [] or [
 ]

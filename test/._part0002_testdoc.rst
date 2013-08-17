@@ -289,7 +289,7 @@ and an extra space before the FIGURE keyword.
 
 
 
-.. figure:: https://doconce.googlecode.com/hg/doc/blog/f_plot.png
+.. figure:: https://raw.github.com/hplgit/doconce/master/doc/blog/f_plot.png
    :width: 500
 
 
