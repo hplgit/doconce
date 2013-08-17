@@ -33,8 +33,8 @@ details.
 A "short scientific report": "http://hplgit.github.io/teamods/writing_reports/index.html" demonstrates the many formats that Doconce can generate and
 how mathematics and computer code look like.
 
-There is also a "demo": "../pub/slides/index.html" of how Doconce can
-be used to create slides in various formats.
+There is also a demo of how Doconce can
+be used to "create slides": "../pub/slides/index.html" in various formats.
 
 ===== Documentation =====
 
@@ -47,6 +47,8 @@ be used to create slides in various formats.
  * Quick Reference: "Sphinx": "../pub/quickref/html/index.html",
    "HTML": "../pub/quickref/quickref.html",
    "PDF": "../pub/quickref/quickref.pdf"
+
+These documents are under development...
 
 ===== License =====
 
