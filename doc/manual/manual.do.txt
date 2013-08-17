@@ -707,11 +707,11 @@ cite{testdoc:12}][a "section": "http://hplgit.github.io/doconce/test/demo_testdo
 the document "A Document for Testing Doconce": "http://hplgit.github.io/doconce/test/demo_testdoc.html"
 cite{testdoc:12}], Doconce documents may include movies.
 !ec
-In LaTeX, this becomes
+In LaTeX, this becomes something like
 !bc
 As explained in
 Section~\ref{subsec:ex} in
-\href{{http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex}}{Langtangen, 2012}
+\href{{http://hplgit.github.io/doconce/...}}{Langtangen, 2012}
 \cite{testdoc:12}, Doconce documents may include movies.
 !ec
 Note that there is a specific numbered reference to an external
@@ -722,34 +722,6 @@ relevant link text. The link can be the same or different from
 links used in the "external" part of the reference (LaTeX cannot
 have links to local files, so a complete URL must be used).
 
-Translation to Sphinx or reStructuredText results in
-!bc
-As explained in
-a `section <testdoc.html#___sec2>`_ in
-the document `A Document for Testing Doconce <testdoc.html>`_
-[testdoc:12]_, Doconce documents may include movies.
-!ec
-In plain HTML, this becomes
-!bc
-As explained in
-a <a href="testdoc.html#___sec2">section</a> in
-the document <a href="testdoc.html">A Document for Testing Doconce</a>
-<a href="#testdoc:12">[1]</a>, Doconce documents may include movies.
-!ec
-The plain text format reads
-!bc
-As explained in
-a section (testdoc.html#___sec2) in
-the document A Document for Testing Doconce (testdoc.html)
-[1], Doconce documents may include movies.
-!ec
-And in Pandoc-exteded Markdown we have
-!bc
-As explained in
-a [section](testdoc.html#___sec2) in
-the document [A Document for Testing Doconce](testdoc.html)
-@testdoc:12, Doconce documents may include movies.
-!ec
 
 ===== Index =====
 idx{index} idx{citations} idx{bibliography}

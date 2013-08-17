@@ -36,21 +36,21 @@ LaTeX package `xr` is used to handle the labels in the external documents.
 If none of the two situations above applies, the `external`
 text will be the output.
 
-Here is a specific example on a generalized reference:
+Here is an example on a specific generalized reference:
 !bc
 As explained in
-ref[Section ref{subsec:ex}][in "Langtangen, 2013":
-"http://doconce.googlecode.com/hg/test/demo_testdoc.html"
-cite{testdoc:12}][a "section": "demo_testdoc.html#___sec2" in
-the document "A Document for Testing Doconce": "demo_testdoc.html"
+ref[Section ref{subsec:ex}][in "Langtangen, 2012":
+"http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex"
+cite{testdoc:12}][a "section": "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex" in
+the document "A Document for Testing Doconce": "http://hplgit.github.io/doconce/test/demo_testdoc.html"
 cite{testdoc:12}], Doconce documents may include movies.
 !ec
-This is rendered to the following text:
+This is renedered as follows:
 As explained in
-ref[Section ref{subsec:ex}][in "Langtangen, 2013":
-"http://doconce.googlecode.com/hg/test/demo_testdoc.html"
-cite{testdoc:12}][a "section": "demo_testdoc.html#___sec2" in
-the document "A Document for Testing Doconce": "demo_testdoc.html"
+ref[Section ref{subsec:ex}][in "Langtangen, 2012":
+"http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex"
+cite{testdoc:12}][a "section": "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex" in
+the document "A Document for Testing Doconce": "http://hplgit.github.io/doconce/test/demo_testdoc.html"
 cite{testdoc:12}], Doconce documents may include movies.
 
 And here is another example with internal references only:

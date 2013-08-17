@@ -42,7 +42,7 @@ pressing "Ctrl-P".
 % elif SLIDE_TYPE == 'html5slides':
 pressing "p".
 % elif SLIDE_TYPE == 'csss':
-using the "onstage.html": "https://doconce.googlecode.com/hg/bundled/dzslides/shells/onstage.html" embedding page.
+using the "onstage.html": "https://raw.github.com/hplgit/doconce/master/bundled/dzslides/shells/onstage.html" embedding page.
 % endif
 !enotice
 # #endif
