@@ -1,11 +1,11 @@
 .. Automatically generated reST file from Doconce source
-   (http://code.google.com/p/doconce/)
+   (https://github.com/hplgit/doconce/)
 
 Doconce Description
 ===================
 
 :Author: Hans Petter Langtangen
-:Date: Aug 11, 2013
+:Date: Aug 16, 2013
 
 .. lines beginning with # are doconce comment lines
 
@@ -578,7 +578,7 @@ long series of Doconce dependencies:
         rm -rf srclib   # put downloaded software in srclib
         mkdir srclib
         cd srclib
-        hg clone https://code.google.com/p/doconce/
+        git clone git@github.com:hplgit/doconce.git
         cd doconce
         sudo python setup.py install -y
         cd ../..
@@ -624,30 +624,24 @@ Demos
 
 
 The current text is generated from a Doconce format stored in the
+directory
 
 .. code-block:: console
 
-        docs/manual/manual.do.txt
+        doc/manual/manual.do.txt
 
-file in the Doconce source code tree. We have made a
-`demo web page <https://doconce.googlecode.com/hg/doc/demos/manual/index.html>`_
-where you can compare the Doconce source with the output in many
-different formats: HTML, LaTeX, plain text, etc.
-
-The file ``make.sh`` in the same directory as the ``manual.do.txt`` file
-(the current text) shows how to run ``doconce format`` on the
-Doconce file to obtain documents in various formats.
+file in the Doconce source code tree. Here you can run a
+``make.sh`` script to generate a lot of different
+formats: HTML, LaTeX, plain text, etc., stored in the subdirectory ``demo``.
 
 Another demo is found in
 
 .. code-block:: console
 
-        docs/tutorial/tutorial.do.txt
+        doc/tutorial/tutorial.do.txt
 
 In the ``tutorial`` directory there is also a ``make.sh`` file producing a
-lot of formats, with a corresponding
-`web demo <https://doconce.googlecode.com/hg/doc/demos/tutorial/index.html>`_
-of the results.
+lot of formats in the subdirectory ``demo``.
 
 .. Example on including another Doconce file:
 
@@ -821,11 +815,11 @@ HTML templates
 Templates are HTML files with "slots" ``%(main)s`` for the main body
 of text, ``%(title)s`` for the title, and ``%(date)s`` for the date.
 Doconce comes with a few templates. The usage of templates is
-described in a `separate document <https://doconce.googlecode.com/hg/doc/design/wrapper_tech.html>`_. That document describes how you your Doconce-generated
+described in a "separate document": "". That document describes how you your Doconce-generated
 HTML file can have any specified layout.
 
 The HTML file can be embedded in a template with your own tailored
-design, see a "tutorial": " `<https://doconce.googlecode.com/hg/doc/design/wrapper_tech.html>`_" on this topic. The template file must contain
+design, see a `tutorial <http://hplgit.github.io/doconce/doc/pub/tech_wrapper.htl>`_ on this topic. The template file must contain
 valid HTML code and can have three "slots": ``%(title)s`` for a title,
 ``%(date)s`` for a date, and ``%(main)s`` for the main body of text. The
 latter is the
@@ -2258,10 +2252,10 @@ before the address enclosed in double quotes:
 .. code-block:: text
 
 
-        Click on this link: URL:"http://code.google.com/p/doconce".
+        Click on this link: URL: "https://github.com/hplgit/doconce".
 
 which gets rendered as
-Click on this link: `<http://code.google.com/p/doconce>`_.
+Click on this link: `<https://github.com/hplgit/doconce>`_.
 
 (There is also support for lazy writing of URLs: any http or https web address
 with a leading space and a trailing space, comma, semi-colon, or question
@@ -2563,9 +2557,9 @@ Here is an example on a specific generalized reference:
 
         As explained in
         ref[Section ref{subsec:ex}][in "Langtangen, 2012":
-        "http://code.google.com/p/doconce/wiki/Description"
-        cite{testdoc:12}][a "section": "testdoc.html#___sec2" in
-        the document "A Document for Testing Doconce": "testdoc.html"
+        "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex"
+        cite{testdoc:12}][a "section": "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex" in
+        the document "A Document for Testing Doconce": "http://hplgit.github.io/doconce/test/demo_testdoc.html"
         cite{testdoc:12}], Doconce documents may include movies.
 
 In LaTeX, this becomes
@@ -2575,7 +2569,7 @@ In LaTeX, this becomes
 
         As explained in
         Section~\ref{subsec:ex} in
-        \href{{http://code.google.com/p/doconce/source/browse/test/testdoc.do.txt}}{Langtangen, 2012}
+        \href{{http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex}}{Langtangen, 2012}
         \cite{testdoc:12}, Doconce documents may include movies.
 
 Note that there is a specific numbered reference to an external
@@ -3840,10 +3834,10 @@ Emacs Doconce Formatter
 -----------------------
 
 
-The file `.doconce-mode.el <https://doconce.googlecode.com/hg/misc/.doconce-mode.el>`_ in the Doconce source distribution
+The file `.doconce-mode.el <https://github.com/hplgit/doconce/blob/master/misc/.doconce-mode.el>`_ in the Doconce source distribution
 gives a "Doconce Editing Mode" in Emacs.
 
-Here is how to get the Doconce Editing Mode in Emacs: Download `.doconce-mode.el <https://doconce.googlecode.com/hg/misc/.doconce-mode.el>`_ and save it in your home directory, then add these lines to ``~/.emacs``:
+Here is how to get the Doconce Editing Mode in Emacs: Download `.doconce-mode.el <https://raw.github.com/hplgit/doconce/master/misc/.doconce-mode.el>`_ and save it in your home directory, then add these lines to ``~/.emacs``:
 
 .. code-block:: text
 

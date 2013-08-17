@@ -2,8 +2,6 @@ TITLE: How to Wrap Plain HTML Files with an Available Look and Feel
 AUTHOR: Hans Petter Langtangen at Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo
 DATE: today
 
-# URL to this page:
-# https://doconce.googlecode.com/hg/doc/design/wrapper_tech.html
 
 ========= Problem setting =========
 
@@ -39,7 +37,7 @@ with layouts.
 
 ===== Step 1: Use Doconce to generate text =====
 
-We shall in this document use "Doconce": "http://code.google.com/p/doconce"
+We shall in this document use "Doconce": "https://github.com/hplgit/doconce"
 for writing the core text. Doconce looks like plain text, with just a
 few tags for enabling full LaTeX mathematics and nicely typeset
 computer code. From Doconce you can go to plain LaTeX, pdfLaTeX,
@@ -361,9 +359,10 @@ top right to point to Wikipedia and WolframAlpha, and insert a
 copyright 2013 notice in the footer.
 
 The Vagrant style depends on two CSS files. We copy these from
-the `bundled/html_styles/vagrant/css` directory in the Doconce source
+the `bundled/html_styles/style_vagrant/css` directory in the Doconce source
 to the current directory so that the links to the stylesheets in
-the template are correct.
+the template are correct. Otherwise, you have to replace `href="css/`
+in the template to `href="style_vagrant/css/`.
 
 Translation of the original Doconce writings in `mydoc.do.txt` is
 done by

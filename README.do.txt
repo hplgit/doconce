@@ -33,20 +33,23 @@ details.
 A "short scientific report": "http://hplgit.github.io/teamods/writing_reports/index.html" demonstrates the many formats that Doconce can generate and
 how mathematics and computer code look like.
 
+# Note: local links does not work since this README file is a source
+# code file and not part of the published gh-pages. Use full URL.
+
 There is also a demo of how Doconce can
-be used to "create slides": "../pub/slides/index.html" in various formats.
+be used to "create slides": "http://hplgit.github.io/doconce/doc/pub/slides/demo/index.html" in various formats.
 
 ===== Documentation =====
 
- * Tutorial: "Sphinx": "../pub/tutorial/html/index.html",
-   "HTML": "../pub/tutorial/tutorial.html",
-   "PDF": "../pub/tutorial/tutorial.pdf"
- * Manual: "Sphinx": "../pub/manual/html/index.html",
-   "HTML": "../pub/manual/manual.html",
-   "PDF": "../pub/manual/manual.pdf"
- * Quick Reference: "Sphinx": "../pub/quickref/html/index.html",
-   "HTML": "../pub/quickref/quickref.html",
-   "PDF": "../pub/quickref/quickref.pdf"
+ * Tutorial: "Sphinx": "http://hplgit.github.io/doconce/doc/pub/tutorial/html/index.html",
+   "HTML": "http://hplgit.github.io/doconce/doc/pub/tutorial/tutorial.html",
+   "PDF": "http://hplgit.github.io/doconce/doc/pub/tutorial/tutorial.pdf"
+ * Manual: "Sphinx": "http://hplgit.github.io/doconce/doc/pub/manual/html/index.html",
+   "HTML": "http://hplgit.github.io/doconce/doc/pub/manual/manual.html",
+   "PDF": "http://hplgit.github.io/doconce/doc/pub/manual/manual.pdf"
+ * Quick Reference: "Sphinx": "http://hplgit.github.io/doconce/doc/pub/quickref/html/index.html",
+   "HTML": "http://hplgit.github.io/doconce/doc/pub/quickref/quickref.html",
+   "PDF": "http://hplgit.github.io/doconce/doc/pub/quickref/quickref.pdf"
 
 These documents are under development...
 

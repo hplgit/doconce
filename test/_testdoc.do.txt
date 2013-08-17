@@ -223,7 +223,7 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 
 # Test URL as figure name
 
-FIGURE: [https://doconce.googlecode.com/hg/doc/blog/f_plot.png, width=500, frac=0.8]
+FIGURE: [https://raw.github.com/hplgit/doconce/master/doc/blog/f_plot.png, width=500, frac=0.8]
 
 # Test wikimedia type of files that otherwise reside in subdirs
 # #if FORMAT == "mwiki"

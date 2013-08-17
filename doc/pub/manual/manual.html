@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <!--
 Automatically generated HTML file from Doconce source
-(http://code.google.com/p/doconce/)
+(https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: http://code.google.com/p/doconce/" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Doconce Description">
 <meta name="keywords" content="doconce short explanation,demos,headlines,section headings,inline tagging,emphasized words,boldface words,verbatim text,inline comments,cross referencing,labels,references,index,citations,bibliography,some index entry,main entry subentry">
 
@@ -402,7 +402,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>Aug 11, 2013</h4></center> <!-- date -->
+<center><h4>Aug 16, 2013</h4></center> <!-- date -->
 <p>
 <!-- lines beginning with # are doconce comment lines -->
 <!-- (documents can also have mako comment lines) -->
@@ -968,7 +968,7 @@ pip install -e svn+https://epydoc.svn.sourceforge.net/svnroot/epydoc/trunk/epydo
 rm -rf srclib   # put downloaded software in srclib
 mkdir srclib
 cd srclib
-hg clone https://code.google.com/p/doconce/
+git clone git@github.com:hplgit/doconce.git
 cd doconce
 sudo python setup.py install -y
 cd ../..
@@ -1002,30 +1002,23 @@ cd ../../..
 
 <p>
 The current text is generated from a Doconce format stored in the
+directory
 <!-- begin verbatim block  sys-->
-<pre><code>docs/manual/manual.do.txt
+<pre><code>doc/manual/manual.do.txt
 </code></pre>
 <!-- end verbatim block -->
-file in the Doconce source code tree. We have made a
-<a href="https://doconce.googlecode.com/hg/doc/demos/manual/index.html">demo web page</a>
-where you can compare the Doconce source with the output in many
-different formats: HTML, LaTeX, plain text, etc.
-
-<p>
-The file <code>make.sh</code> in the same directory as the <code>manual.do.txt</code> file
-(the current text) shows how to run <code>doconce format</code> on the
-Doconce file to obtain documents in various formats.
+file in the Doconce source code tree. Here you can run a
+<code>make.sh</code> script to generate a lot of different
+formats: HTML, LaTeX, plain text, etc., stored in the subdirectory <code>demo</code>.
 
 <p>
 Another demo is found in
 <!-- begin verbatim block  sys-->
-<pre><code>docs/tutorial/tutorial.do.txt
+<pre><code>doc/tutorial/tutorial.do.txt
 </code></pre>
 <!-- end verbatim block -->
 In the <code>tutorial</code> directory there is also a <code>make.sh</code> file producing a
-lot of formats, with a corresponding
-<a href="https://doconce.googlecode.com/hg/doc/demos/tutorial/index.html">web demo</a>
-of the results.
+lot of formats in the subdirectory <code>demo</code>.
 
 <p>
 <!-- Example on including another Doconce file: -->
@@ -1190,12 +1183,12 @@ be specified: <code>--ccs=file1.css,file2.css,file3.css</code>.
 Templates are HTML files with "slots" <code>%(main)s</code> for the main body
 of text, <code>%(title)s</code> for the title, and <code>%(date)s</code> for the date.
 Doconce comes with a few templates. The usage of templates is
-described in a <a href="https://doconce.googlecode.com/hg/doc/design/wrapper_tech.html">separate document</a>. That document describes how you your Doconce-generated
+described in a "separate document": "". That document describes how you your Doconce-generated
 HTML file can have any specified layout.
 
 <p>
 The HTML file can be embedded in a template with your own tailored
-design, see a "tutorial": " <a href="https://doconce.googlecode.com/hg/doc/design/wrapper_tech.html"><tt>https://doconce.googlecode.com/hg/doc/design/wrapper_tech.html</tt></a>" on this topic. The template file must contain
+design, see a <a href="http://hplgit.github.io/doconce/doc/pub/tech_wrapper.htl">tutorial</a> on this topic. The template file must contain
 valid HTML code and can have three "slots": <code>%(title)s</code> for a title,
 <code>%(date)s</code> for a date, and <code>%(main)s</code> for the main body of text. The
 latter is the
@@ -2581,11 +2574,11 @@ link and the URL in double quotes.
 To have the URL address itself as link text, put an "URL" or URL
 before the address enclosed in double quotes:
 <!-- begin verbatim block -->
-<pre><code>Click on this link: URL:&quot;http://code.google.com/p/doconce&quot;.
+<pre><code>Click on this link: URL: &quot;https://github.com/hplgit/doconce&quot;.
 </code></pre>
 <!-- end verbatim block -->
 which gets rendered as
-Click on this link: <a href="http://code.google.com/p/doconce"><tt>http://code.google.com/p/doconce</tt></a>.
+Click on this link: <a href="https://github.com/hplgit/doconce"><tt>https://github.com/hplgit/doconce</tt></a>.
 
 <p>
 (There is also support for lazy writing of URLs: any http or https web address
@@ -2864,9 +2857,9 @@ Here is an example on a specific generalized reference:
 <!-- begin verbatim block -->
 <pre><code>As explained in
 ref[Section ref{subsec:ex}][in &quot;Langtangen, 2012&quot;:
-&quot;http://code.google.com/p/doconce/wiki/Description&quot;
-cite{testdoc:12}][a &quot;section&quot;: &quot;testdoc.html#___sec2&quot; in
-the document &quot;A Document for Testing Doconce&quot;: &quot;testdoc.html&quot;
+&quot;http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex&quot;
+cite{testdoc:12}][a &quot;section&quot;: &quot;http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex&quot; in
+the document &quot;A Document for Testing Doconce&quot;: &quot;http://hplgit.github.io/doconce/test/demo_testdoc.html&quot;
 cite{testdoc:12}], Doconce documents may include movies.
 </code></pre>
 <!-- end verbatim block -->
@@ -2874,7 +2867,7 @@ In LaTeX, this becomes
 <!-- begin verbatim block -->
 <pre><code>As explained in
 Section~\ref{subsec:ex} in
-\href{{http://code.google.com/p/doconce/source/browse/test/testdoc.do.txt}}{Langtangen, 2012}
+\href{{http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex}}{Langtangen, 2012}
 \cite{testdoc:12}, Doconce documents may include movies.
 </code></pre>
 <!-- end verbatim block -->
@@ -4105,11 +4098,11 @@ has a title), the header and footer are included, otherwise not.
 <h3>Emacs Doconce Formatter <a name="emacs:doconce"></a></h3>
 
 <p>
-The file <a href="https://doconce.googlecode.com/hg/misc/.doconce-mode.el">.doconce-mode.el</a> in the Doconce source distribution
+The file <a href="https://github.com/hplgit/doconce/blob/master/misc/.doconce-mode.el">.doconce-mode.el</a> in the Doconce source distribution
 gives a "Doconce Editing Mode" in Emacs.
 
 <p>
-Here is how to get the Doconce Editing Mode in Emacs: Download <a href="https://doconce.googlecode.com/hg/misc/.doconce-mode.el">.doconce-mode.el</a> and save it in your home directory, then add these lines to <code>~/.emacs</code>:
+Here is how to get the Doconce Editing Mode in Emacs: Download <a href="https://raw.github.com/hplgit/doconce/master/misc/.doconce-mode.el">.doconce-mode.el</a> and save it in your home directory, then add these lines to <code>~/.emacs</code>:
 <!-- begin verbatim block -->
 <pre><code>(load-file &quot;~/.doconce-mode.el&quot;)
 </code></pre>

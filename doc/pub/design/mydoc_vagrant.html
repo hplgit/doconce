@@ -1,27 +1,90 @@
-<!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Solve the world's simplest differential equation</title>
+<head>
+<!--
+This style is adopted from the (now old) vagrant 1.0 web
+pages. The style builds on the Twitter Bootstrap style.
+Modifications by Hans Petter Langtangen, hpl@simula.no.
 
-    <link rel="stylesheet" href="css/styles.css">
-    <meta name="viewport"
-     content="width=device-width, initial-scale=1, user-scalable=no">
-  </head>
-  <body>
-    <div class="wrapper">
-      <header>
-        <h1>Exercise</h1>
-        <p>Differential Equations</p>
+This style file should be copied and the following
+elements edited:
 
-        <!-- picture below the heading on the left -->
-	<img src="fig/discrete_function.png" width=220>
+Logo heading:
 
-      </header>
+ DiffEq
+ 101
 
-      <!-- Here goes the main page --->
-      <section>
+Navigation links at the top:
+
+ GO TO 1
+ GO TO 2
+
+Footer at the end:
+
+ &copy; 2013
+
+-->
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: http://code.google.com/p/doconce/" />
+
+<link rel="stylesheet" href="style_vagrant/css/twitter_bootstrap.css">
+<link rel="stylesheet" href="style_vagrant/css/vagrant.css">
+<!-- Define color of headings here (last definition counts) -->
+<style type="text/css">
+h1, h2, h3, h4, h5, h6 {
+  color: #000;     /* black */
+  color: #999;     /* gray */
+  color: #005580;  /* dark blue */
+  color: #08c;     /* characteristic blue */
+</style>
+</head>
+<body>
+
+<title> Numerical experiments </title>
+
+<div class="container">
+ <div class="row Header with-border">
+  <div class="span3 Module logo">
+   <h1><a href="/">DiffEq<span class="subtitle">101</span></a></h1>
+  </div>
+  <div class="span9">
+   <div class="Module navigation">
+   <!-- Navigation at the top of the page -->
+    <ul>
+     <li> <a href="http://wikipedia.org">Wikipedia</a></li>
+     <li> <a href="http://wolframalpha.com">WolframAlpha</a></li>
+    </ul>
+   </div>
+  </div>
+ </div>
+</div>
+
+
+<!-- Here goes the table of contents in the sidebar
+     <li class="active"> means dark blue background for current section
+-->
+<div class="row">
+ <div class="span3 Module sidebar">
+  <div class="well" style="padding: 8px 0px;">
+   <ul class="nav nav-list">
+     <!-- Syntax:
+     <li> <a href="...">Section 1</a></li>
+     <li class="active"> <a href="...">Section 2</a></li>
+     <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2a</a></li>
+     <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2b</a></li>
+     -->
+     <!-- Doconce automatically fills in the table of contents -->
+          <!-- vagrant nav toc: " Solve the world's simplest differential equation " --> <li>  <a href="#___sec0"> Solve the world's simplest differential equation </a>
+     <!-- vagrant nav toc: " Mathematical problem " --> <li> &nbsp;  <a href="#___sec1"> Mathematical problem </a>
+     <!-- vagrant nav toc: " Numerical solution method " --> <li> &nbsp;  <a href="#___sec2"> Numerical solution method </a>
+     <!-- vagrant nav toc: " Implementation " --> <li> &nbsp;  <a href="#___sec3"> Implementation </a>
+     <!-- vagrant nav toc: " Numerical experiments " --> <li> &nbsp;  <a href="#___sec4"> Numerical experiments </a>
+
+    </ul>
+   </div>
+  </div>
+
+  <div class="span9">
 
 
 <!-- tocinfo
@@ -59,13 +122,7 @@ MathJax.Hub.Config({
 
 <!-- ------------------- main content ---------------------- -->
 
-<p>
-
-<p>
-
 <h2>Solve the world's simplest differential equation  <a name="___sec0"></a></h2>
-
-<p>
 
 <h3>Mathematical problem  <a name="___sec1"></a></h3>
 
@@ -85,8 +142,6 @@ the unknown function to be estimated. This mathematical model
 is relevant for physical phenomena featuring exponential decay
 in time.
 
-<p>
-
 <h3>Numerical solution method  <a name="___sec2"></a></h3>
 
 <p>
@@ -101,11 +156,9 @@ $$
 Here, \( n=0,1,\ldots,N-1 \).
 
 <p>
-<div class="alert alert-block alert-hint"><b>Hint.</b>
+<b>Hint.</b>\n
 Set up the Forward Euler, Backward Euler, and the Crank-Nicolson (or
 Midpoint) schemes first. Then generalize to the \( \theta \)-rule above.
-</div>
-<p>
 
 <h3>Implementation  <a name="___sec3"></a></h3>
 
@@ -114,7 +167,6 @@ The numerical method is implemented in a Python function
 <code>solver</code> (found in the <a href="https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py"><tt>decay_mod</tt></a> module):
 
 <p>
-
 
 <!-- code=python (from !bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> linspace, zeros
@@ -132,8 +184,6 @@ The numerical method is implemented in a Python function
         u[n<span style="color: #666666">+1</span>] <span style="color: #666666">=</span> (<span style="color: #666666">1</span> <span style="color: #666666">-</span> (<span style="color: #666666">1-</span>theta)<span style="color: #666666">*</span>a<span style="color: #666666">*</span>dt)<span style="color: #666666">/</span>(<span style="color: #666666">1</span> <span style="color: #666666">+</span> theta<span style="color: #666666">*</span>dt<span style="color: #666666">*</span>a)<span style="color: #666666">*</span>u[n]
     <span style="color: #008000; font-weight: bold">return</span> u, t
 </pre></div>
-<p>
-
 
 <h3>Numerical experiments  <a name="___sec4"></a></h3>
 
@@ -151,16 +201,42 @@ rate for \( \theta=0,1/2,1 \).
 <!-- ------------------- end of main content --------------- -->
 
 
-      </section>
+<!--
+Preliminary examples/discussion on vagrant style syntax
 
-      <footer>
-        <p>This project is maintained by ...</p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
+<div class='alert alert-block alert-notice'>
+  <h3>What about PHP? Python? Java?</h3>
+<p>
+bla-bla.
+</div>
 
-    </div>
-    <script src="js/scale.fix.js"></script>
+<p>
+While the <div class="deep-blue">rest of the</div> getting started
+-->
 
-  </body>
+<!-- Navigation buttons at the bottom:
+     Doconce will automatically fill in the right URL in these
+     buttons when doconce html_split is run. Otherwise they are empty.
+<ul class="pager">
+  <li class="previous">
+    <a href="">&larr; </a>
+  </li>
+  <li class="next">
+    <a href=""> &rarr;</a>
+ </li>
+</ul>
+-->
+
+ </div>
+
+ <div class="row Footer">
+  <div class="span12">
+  &copy; 2013
+  </div>
+ </div>
+</div>
+</body>
 </html>
+
+
 

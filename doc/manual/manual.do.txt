@@ -34,26 +34,20 @@ idx{doconce!short explanation}
 idx{demos}
 
 The current text is generated from a Doconce format stored in the
+directory
 !bc sys
-docs/manual/manual.do.txt
+doc/manual/manual.do.txt
 !ec
-file in the Doconce source code tree. We have made a
-"demo web page": "https://doconce.googlecode.com/hg/doc/demos/manual/index.html"
-where you can compare the Doconce source with the output in many
-different formats: HTML, LaTeX, plain text, etc.
-
-The file `make.sh` in the same directory as the `manual.do.txt` file
-(the current text) shows how to run `doconce format` on the
-Doconce file to obtain documents in various formats.
+file in the Doconce source code tree. Here you can run a
+`make.sh` script to generate a lot of different
+formats: HTML, LaTeX, plain text, etc., stored in the subdirectory `demo`.
 
 Another demo is found in
 !bc sys
-docs/tutorial/tutorial.do.txt
+doc/tutorial/tutorial.do.txt
 !ec
 In the `tutorial` directory there is also a `make.sh` file producing a
-lot of formats, with a corresponding
-"web demo": "https://doconce.googlecode.com/hg/doc/demos/tutorial/index.html"
-of the results.
+lot of formats in the subdirectory `demo`.
 
 # Example on including another Doconce file:
 
@@ -463,10 +457,10 @@ link and the URL in double quotes.
 To have the URL address itself as link text, put an "URL" or URL
 before the address enclosed in double quotes:
 !bc
-Click on this link: URL:"http://code.google.com/p/doconce".
+Click on this link: URL: "https://github.com/hplgit/doconce".
 !ec
 which gets rendered as
-Click on this link: URL: "http://code.google.com/p/doconce".
+Click on this link: URL: "https://github.com/hplgit/doconce".
 
 (There is also support for lazy writing of URLs: any http or https web address
 with a leading space and a trailing space, comma, semi-colon, or question
@@ -708,16 +702,16 @@ Here is an example on a specific generalized reference:
 !bc
 As explained in
 ref[Section ref{subsec:ex}][in "Langtangen, 2012":
-"http://code.google.com/p/doconce/wiki/Description"
-cite{testdoc:12}][a "section": "testdoc.html#___sec2" in
-the document "A Document for Testing Doconce": "testdoc.html"
+"http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex"
+cite{testdoc:12}][a "section": "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex" in
+the document "A Document for Testing Doconce": "http://hplgit.github.io/doconce/test/demo_testdoc.html"
 cite{testdoc:12}], Doconce documents may include movies.
 !ec
-In LaTeX, this becomes
+In LaTeX, this becomes something like
 !bc
 As explained in
 Section~\ref{subsec:ex} in
-\href{{http://code.google.com/p/doconce/source/browse/test/testdoc.do.txt}}{Langtangen, 2012}
+\href{{http://hplgit.github.io/doconce/...}}{Langtangen, 2012}
 \cite{testdoc:12}, Doconce documents may include movies.
 !ec
 Note that there is a specific numbered reference to an external
@@ -728,34 +722,6 @@ relevant link text. The link can be the same or different from
 links used in the "external" part of the reference (LaTeX cannot
 have links to local files, so a complete URL must be used).
 
-Translation to Sphinx or reStructuredText results in
-!bc
-As explained in
-a `section <testdoc.html#___sec2>`_ in
-the document `A Document for Testing Doconce <testdoc.html>`_
-[testdoc:12]_, Doconce documents may include movies.
-!ec
-In plain HTML, this becomes
-!bc
-As explained in
-a <a href="testdoc.html#___sec2">section</a> in
-the document <a href="testdoc.html">A Document for Testing Doconce</a>
-<a href="#testdoc:12">[1]</a>, Doconce documents may include movies.
-!ec
-The plain text format reads
-!bc
-As explained in
-a section (testdoc.html#___sec2) in
-the document A Document for Testing Doconce (testdoc.html)
-[1], Doconce documents may include movies.
-!ec
-And in Pandoc-exteded Markdown we have
-!bc
-As explained in
-a [section](testdoc.html#___sec2) in
-the document [A Document for Testing Doconce](testdoc.html)
-@testdoc:12, Doconce documents may include movies.
-!ec
 
 ===== Index =====
 idx{index} idx{citations} idx{bibliography}
@@ -1841,10 +1807,10 @@ label{emacs:doconce}
 ## for highly configurable latex editors that perhaps can be adapted
 ## to doconce (Kile seems to be the choice because of extensibility)
 
-The file ".doconce-mode.el": "https://doconce.googlecode.com/hg/misc/.doconce-mode.el" in the Doconce source distribution
+The file ".doconce-mode.el": "https://github.com/hplgit/doconce/blob/master/misc/.doconce-mode.el" in the Doconce source distribution
 gives a "Doconce Editing Mode" in Emacs.
 
-Here is how to get the Doconce Editing Mode in Emacs: Download ".doconce-mode.el": "https://doconce.googlecode.com/hg/misc/.doconce-mode.el" and save it in your home directory, then add these lines to `~/.emacs`:
+Here is how to get the Doconce Editing Mode in Emacs: Download ".doconce-mode.el": "https://raw.github.com/hplgit/doconce/master/misc/.doconce-mode.el" and save it in your home directory, then add these lines to `~/.emacs`:
 !bc
 (load-file "~/.doconce-mode.el")
 !ec

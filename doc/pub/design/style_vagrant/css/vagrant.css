@@ -47,7 +47,7 @@ h3 > code {
 }
 
 li {
-  color: #404040;
+  /*color: #404040;*/
   line-height: 1.6em;
 }
 
@@ -85,14 +85,16 @@ ul.nav.list > li {
   text-rendering: optimizelegibility;
 }
 
+
 .alert-notice {
   color: #555;
   background-color: whiteSmoke;
-  background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/Knob_Message.png);
+  background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_notice.png);
   background-position: 10px 10px;
   background-repeat: no-repeat;
-  padding-left: 52px;
-  font-size: 0.8em;
+  background-size: 38px;
+  padding-left: 55px;
+  font-size: 100%;
 }
 
 .Header {

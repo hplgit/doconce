@@ -202,8 +202,7 @@ body {
 	display: inline-block;
 
 	text-align: left;
-	margin: 0 0 0 1em;
-        margin-bottom: 1em;
+	margin: 0 0 1em 2em;
 }
 
 .reveal ol {
@@ -293,6 +292,7 @@ body {
 
 .reveal code {
 	font-family: monospace;
+        font-size: 90%;
 	overflow: auto;
 	max-height: 400px;
 }

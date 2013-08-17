@@ -138,11 +138,11 @@ be specified: `--ccs=file1.css,file2.css,file3.css`.
 Templates are HTML files with "slots" `%(main)s` for the main body
 of text, `%(title)s` for the title, and `%(date)s` for the date.
 Doconce comes with a few templates. The usage of templates is
-described in a "separate document": "https://doconce.googlecode.com/hg/doc/design/wrapper_tech.html". That document describes how you your Doconce-generated
+described in a "separate document": "". That document describes how you your Doconce-generated
 HTML file can have any specified layout.
 
 The HTML file can be embedded in a template with your own tailored
-design, see a "tutorial": " https://doconce.googlecode.com/hg/doc/design/wrapper_tech.html" on this topic. The template file must contain
+design, see a "tutorial": "http://hplgit.github.io/doconce/doc/pub/tech_wrapper.htl" on this topic. The template file must contain
 valid HTML code and can have three "slots": `%(title)s` for a title,
 `%(date)s` for a date, and `%(main)s` for the main body of text. The
 latter is the

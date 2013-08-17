@@ -280,7 +280,7 @@ URL: "http://hplgit.github.com/teamods/writing_reports/"
  * Sphinx: "agni": "http://hplgit.github.com/teamods/writing_reports/_static/sphinx-agni/index.html", "pyramid": "http://hplgit.github.com/teamods/writing_reports/_static/sphinx-pyramid/report.html", "classy": "http://hplgit.github.com/teamods/writing_reports/_static/sphinx-classy/report.html", "fenics": "http://hplgit.github.com/teamods/writing_reports/_static/sphinx-fenics_minimal/report.html", "redcloud": "http://hplgit.github.com/teamods/writing_reports/_static/sphinx-fenics_minimal/report.html"
  * HTML for "Google": "http://doconce-report-demo.blogspot.no/" or "Wordpress": "http://doconcereportdemo.wordpress.com/" for blogging
  * "MediaWiki": "http://doconcedemo.shoutwiki.com/wiki/Doconce_demo_page" (Wikipedia, Wikibooks, etc)
- * Doconce "source code": "http://hplgit.github.com/teamods/writing_reports/_static/report.do.txt.html" and "tutorial": "http://code.google.com/p/doconce/wiki/Tutorial"
+ * Doconce "source code": "http://hplgit.github.com/teamods/writing_reports/_static/report.do.txt.html" and "tutorial": "http://hplgit.github.io/doconce/doc/pub/tutorial/html/index.html"
 
 
 !split
@@ -398,10 +398,10 @@ but without backslashes.
 See (ref{eq1})-(ref{myeq}).
 
 # Make hyperlink
-"some link text": "http://code.google.com/p/doconce/"
+"some link text": "https://github.com/hplgit/doconce"
 
 # Hyperlink with complete URL as link text
-URL: "http://code.google.com/p/doconce/"
+URL: "https://github.com/hplgit/doconce"
 !ec
 
 !split
@@ -1019,11 +1019,11 @@ doconce format plain  doconcefile  # plain, untagged text for email
 ======= Installation =======
 
  * Ubuntu: `sudo apt-get install python-doconce` (old!)
- * Source at "Googlecode": "http://code.google.com/p/doconce" (recommended!)
+ * Source at "GitHub": "https://github.com/hplgit/doconce" (recommended!)
    * `hg clone` + `sudo python setyp.py install`
- * Many "dependencies...": "https://doconce.googlecode.com/hg/doc/demos/manual/manual.html#___sec1"
+ * Many "dependencies...": "http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html#installation-of-doconce-and-its-dependencies"
    * Must have `preprocess` and `mako`
-   * Need `latex`, `sphinx`, `pandoc`, etc. (see Installation in "manual": "https://doconce.googlecode.com/hg/doc/demos/manual/manual.html#___sec1")
+   * Need `latex`, `sphinx`, `pandoc`, etc. (see the "Installation": "http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html#installation-of-doconce-and-its-dependencies" description)
    * Easy for slides: only `preprocess` is needed :-)
 
 !split
