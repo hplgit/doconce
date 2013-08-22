@@ -1,4 +1,4 @@
-TITLE: Scientific Writing Anno 2013
+TITLE: Scientific Writing with Doconce
 # index.html file for looking at the various versions of scientific_writing
 
  * "HTML5 Slides": "scientific_writing_reveal.html" (using "reveal.js": "http://lab.hakim.se/reveal-js/")

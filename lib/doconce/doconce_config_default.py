@@ -49,3 +49,4 @@ tables2csv = False
 github_md = False
 sections_up = False
 sections_down = False
+handout = False

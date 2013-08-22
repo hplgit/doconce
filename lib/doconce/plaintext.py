@@ -26,6 +26,11 @@ def plain_ref_and_label(section_label2title, format, filestr):
     pattern = r'[Cc]hapter(s?)\s+ref\{'
     replacement = r'the chapter\g<1> ref{'
     filestr = re.sub(pattern, replacement, filestr)
+    # Need special adjustment to handle start of sentence (capital) or not.
+    pattern = r'([.?!])\s+the (sections?|captions?)\s+ref'
+    replacement = r'\g<1> The \g<2> ref'
+    filestr = re.sub(pattern, replacement, filestr)
+
     # Remove Exercise, Project, Problem in references since those words
     # are used in the title of the section too
     pattern = r'(the\s*)?([Ee]xercises?|[Pp]rojects?|[Pp]roblems?)\s+ref\{'

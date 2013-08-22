@@ -11,3 +11,4 @@ author = __author__
 
 __acknowledgments__ = ''
 
+from doconce import doconce_format, DoconceSyntaxError

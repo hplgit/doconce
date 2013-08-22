@@ -249,7 +249,19 @@ doconce format html demo --pygments_html_style=monokai --keep_pygments_html_bg S
 doconce slides_html demo csss --html_slide_theme=csss_default
 </pre>
 <li>LaTeX Beamer PDF: $beamer_pdfs
+<pre>
+doconce format pdflatex demo SLIDE_TYPE="beamer" SLIDE_THEME="red_shadow"
+doconce ptex2tex demo -DLATEX_HEADING=beamer envir=minted
+doconce slides_beamer demo --beamer_slide_theme=red_shadow
+pdflatex -shell-escape demo
+cp demo.pdf demo_red_shadow.pdf
+</pre>
 <li><a href="demo.pdf">Handouts in PDF</a> (generated via LaTeX)
+<pre>
+doconce format pdflatex demo SLIDE_TYPE="latex" SLIDE_THEME="std. latex"
+doconce ptex2tex demo envir=minted
+pdflatex -shell-escape demo
+</pre>
 <li><a href="demo_doconce.html">Doconce source code for the slides</a>
 <li>Doconce: Why and How, <a href="../scientific_writing.html">reveal w/darkgrey</a>, <a href="../scientific_writing_deck.html">deck w/sandstone.default</a>,
 <a href="../scientific_writing_red_shadow.pdf">beamer</a>,

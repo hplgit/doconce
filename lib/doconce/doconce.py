@@ -2660,5 +2660,53 @@ def format_driver():
     #print '----- successful run: %s filtered to %s\n' % (filename, out_filename)
     print 'output in', out_filename
 
+
+class DoconceSyntaxError(Exception):
+    pass
+
+def doconce_format(format, dotext, compile=False,
+                   filename_stem='_tmp', **options):
+    """
+    Library interface to the doconce format command and
+    possibly subsequent formats for compiling the output
+    format to a final document, which is returned as
+    string.
+
+    Method: system calls to basic doconce functionality,
+    but input is text (`dotext`) and output is the
+    resulting file as string, or filename(s) and associated
+    files if `compile` is true.
+    """
+    options_string = ' '.join(['--%s=%s' % (key, options[key])
+                               for key in options])
+    dofile = open(filename_stem + '.do.txt', 'w')
+    dofile.write(dotext)
+    dofile.close()
+    cmd = 'doconce format %(format)s %(filename_stem)s %(options_string)s' % vars()
+    import commands
+    failure, output = commands.getstatusoutput(cmd)
+
+    if failure:
+        raise DoconceSyntaxError('Could not run %s.\nOutput:\n%s' %
+                                 (cmd, output))
+    # Grab filename
+    for line in output.splitlines():
+        if line.startswith('output in '):
+            outfile = line.split()[-1]
+    f = open(outfile, 'r')
+    text = f.read()
+    f.close()
+    if not compile:
+        return text
+    else:
+        raise NotImplementedError('compiling not implemented')
+        if outfile.endswith('.p.tex'):
+            pass
+        if outfile.endswith('.rst') and format == 'sphinx':
+            pass
+        if outfile.endswith('.rst') and format == 'rst':
+            pass
+
+
 if __name__ == '__main__':
     format_driver()

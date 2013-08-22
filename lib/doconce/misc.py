@@ -92,6 +92,8 @@ inserted to the right in exercises - "default" and "none" are allowed
      'Upgrade all sections: sections to chapters, subsections to sections, etc.'),
     ('--sections_down',
      'Downgrade all sections: chapters to sections, sections to subsections, etc.'),
+    ('--handout',
+     'Makes slides output suited for printing.'),
     ]
 
 _legal_command_line_options = \
@@ -2149,7 +2151,7 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
              padding-left: 30px; /* 55px; if icon */
      }
      .reveal .alert-block {padding-top:14px; padding-bottom:14px}
-     .reveal .alert-block > p, .alert-block > ul {margin-bottom:0}
+     .reveal .alert-block > p, .alert-block > ul {margin-bottom:1em}
      /*.reveal .alert li {margin-top: 1em}*/
      .reveal .alert-block p+p {margin-top:5px}
      /*.reveal .alert-notice { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_notice.png); }
@@ -2923,8 +2925,6 @@ basically smaller fonts and left-adjusted titles.
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=1024, user-scalable=no">
 
-<title>%(title)s</title>
-
 <!-- Required stylesheet -->
 <link rel="stylesheet" href="deck.js/core/deck.core.css">
 
@@ -3413,6 +3413,8 @@ def slides_beamer():
         f.write(filestr)
         f.close()
         print 'slides written to', filename
+        if option('handout'):
+            print 'printing for handout:\npdfnup --nup 2x3 --frame true --delta "1cm 1cm" --scale 0.9 %s.pdf' % basename
 
 
 def generate_beamer_slides(header, parts, footer, basename, filename):
@@ -3421,6 +3423,7 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
     if theme != 'default':
         beamerstyle = 'beamertheme' + theme
         copy_latex_packages([beamerstyle])
+    handout = 'handout,' if option('handout') else ''
 
     slides = r"""
 %% LaTeX Beamer file automatically generated from Doconce
@@ -3428,7 +3431,7 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
 
 %%-------------------- begin preamble ----------------------
 
-\documentclass{beamer}
+\documentclass{%(handout)sbeamer}
 
 \usetheme{%(theme)s}
 \usecolortheme{default}

@@ -99,7 +99,7 @@ admon_styles2 = admon_styles_text + """\
              width: 75%%;
      }
      .alert-block {padding-top:14px; padding-bottom:14px}
-     .alert-block > p, .alert-block > ul {margin-bottom:0}
+     .alert-block > p, .alert-block > ul {margin-bottom:1em}
      .alert li {margin-top: 1em}
      .alert-block p+p {margin-top:5px}
      .alert-notice { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/%(icon_notice)s); }
@@ -907,6 +907,11 @@ def html_ref_and_label(section_label2title, format, filestr):
     pattern = r'[Cc]hapter(s?)\s+ref\{'
     replacement = r'the chapter\g<1> ref{'
     filestr = re.sub(pattern, replacement, filestr)
+    # Need special adjustment to handle start of sentence (capital) or not.
+    pattern = r'([.?!])\s+the (sections?|captions?)\s+ref'
+    replacement = r'\g<1> The \g<2> ref'
+    filestr = re.sub(pattern, replacement, filestr)
+
     # Remove Exercise, Project, Problem in references since those words
     # are used in the title of the section too
     pattern = r'(the\s*)?([Ee]xercises?|[Pp]rojects?|[Pp]roblems?)\s+ref\{'
