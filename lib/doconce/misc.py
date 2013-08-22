@@ -3414,7 +3414,7 @@ def slides_beamer():
         f.close()
         print 'slides written to', filename
         if option('handout'):
-            print 'printing for handout:\npdfnup --nup 2x3 --frame true --delta "1cm 1cm" --scale 0.9 %s.pdf' % basename
+            print 'printing for handout:\npdfnup --nup 2x3 --frame true --delta "1cm 1cm" --scale 0.9 %s.pdf' % filestem
 
 
 def generate_beamer_slides(header, parts, footer, basename, filename):

@@ -2665,7 +2665,7 @@ class DoconceSyntaxError(Exception):
     pass
 
 def doconce_format(format, dotext, compile=False,
-                   filename_stem='_tmp', **options):
+                   filename_stem='_tmp', cleanup=False, **options):
     """
     Library interface to the doconce format command and
     possibly subsequent formats for compiling the output
@@ -2676,6 +2676,8 @@ def doconce_format(format, dotext, compile=False,
     but input is text (`dotext`) and output is the
     resulting file as string, or filename(s) and associated
     files if `compile` is true.
+
+    Generated doconce files are removed if `cleanup` is True.
     """
     options_string = ' '.join(['--%s=%s' % (key, options[key])
                                for key in options])
@@ -2696,9 +2698,7 @@ def doconce_format(format, dotext, compile=False,
     f = open(outfile, 'r')
     text = f.read()
     f.close()
-    if not compile:
-        return text
-    else:
+    if compile:
         raise NotImplementedError('compiling not implemented')
         if outfile.endswith('.p.tex'):
             pass
@@ -2706,6 +2706,10 @@ def doconce_format(format, dotext, compile=False,
             pass
         if outfile.endswith('.rst') and format == 'rst':
             pass
+    if cleanup:
+        for filename in glob.glob(filename_stem + '.*'):
+            os.remove(filename)
+    return text
 
 
 if __name__ == '__main__':
