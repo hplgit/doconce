@@ -16,7 +16,7 @@ body.deck-container {
   padding: 0 48px;
   font-size: 16px;
   line-height: 1.25;
-  overflow: hidden;
+  overflow: auto;
   /* Resets and base styles from HTML5 Boilerplate */
   /* End HTML5 Boilerplate adaptations */
 }
