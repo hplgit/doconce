@@ -3423,7 +3423,7 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
     if theme != 'default':
         beamerstyle = 'beamertheme' + theme
         copy_latex_packages([beamerstyle])
-    handout = 'handout,' if option('handout') else ''
+    handout = '[handout]' if option('handout') else ''
 
     slides = r"""
 %% LaTeX Beamer file automatically generated from Doconce
@@ -3431,7 +3431,7 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
 
 %%-------------------- begin preamble ----------------------
 
-\documentclass{%(handout)sbeamer}
+\documentclass%(handout)s{beamer}
 
 \usetheme{%(theme)s}
 \usecolortheme{default}
