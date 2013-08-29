@@ -194,7 +194,7 @@ there is a flow.
 
 .. _fig:impact:
 
-.. figure:: ../doc/manual/figs/streamtubes.png
+.. figure:: ../doc/src/manual/figs/streamtubes.png
    :width: 200
 
    *Visualization of flow by streamtubes*
@@ -203,7 +203,7 @@ there is a flow.
 Figures without captions are allowed and will be inlined.
 
 
-.. figure:: ../doc/manual/figs/streamtubes.png
+.. figure:: ../doc/src/manual/figs/streamtubes.png
    :width: 200
 
 
@@ -219,7 +219,7 @@ Movie :ref:`mov:tsunami` shows a tsunami.
 
 .. raw:: html
         
-        <embed src="../doc/manual/figs/mjolnir.mpeg" width=700 height=400 autoplay="false" loop="true"></embed>
+        <embed src="../doc/src/manual/figs/mjolnir.mpeg" width=700 height=400 autoplay="false" loop="true"></embed>
         <p><em>Mjolnir tsunami (by Sylfest Glimsdal) .</em></p>
 
 
@@ -228,7 +228,7 @@ Test empty caption (for inline movie):
 
 .. raw:: html
         
-        <embed src="../doc/manual/figs/wavepacket.mpeg" width=700 height=400 autoplay="false" loop="true"></embed>
+        <embed src="../doc/src/manual/figs/wavepacket.mpeg" width=700 height=400 autoplay="false" loop="true"></embed>
         <p><em></em></p>
 
 
@@ -238,7 +238,7 @@ Test empty caption (for inline movie):
 
 .. raw:: html
         
-        <p><a href="wavepacket_0001.html">Movie of files <tt>../doc/manual/figs/wavepacket_*.png</tt></a>
+        <p><a href="wavepacket_0001.html">Movie of files <tt>../doc/src/manual/figs/wavepacket_*.png</tt></a>
         <em>Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie).</em></p>
 
 
@@ -276,7 +276,7 @@ and an extra space before the FIGURE keyword.
 
 .. _myfig:
 
-.. figure:: ../doc/manual/figs/wavepacket_0001.png
+.. figure:: ../doc/src/manual/figs/wavepacket_0001.png
    :width: 500
 
    A long caption spanning several lines and containing verbatim words like ``my_file_v1`` and ``my_file_v2`` as well as math with subscript as in :math:`t_{i+1}`
@@ -289,7 +289,7 @@ and an extra space before the FIGURE keyword.
 
 
 
-.. figure:: https://raw.github.com/hplgit/doconce/master/doc/blog/f_plot.png
+.. figure:: https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png
    :width: 500
 
 
@@ -786,6 +786,7 @@ head, otherwise tail. Repeat this :math:`N` number of times.
                 heads += 1
         print 'Flipping a coin %d times gave %d heads' % (N, heads)
 
+
 .. --- end solution of exercise ---
 
 Filenames: ``flip_coin.py``, ``flip_coin.pdf``.
@@ -1000,6 +1001,7 @@ And with code (in plain verbatim) returning :math:`x+1` in hint:
 
         def func(x):
             return x + 1  # with code in hint
+
 
 .. --- end hint in exercise ---
 

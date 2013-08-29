@@ -65,11 +65,11 @@ to Section ref{subsubsec:ex}. idx{`somefunc` function}
 
 Let's do some copying from files too. First from subroutine up to the very end,
 
-@@@CODE ../doc/manual/__testcode.f fromto: subroutine@
+@@@CODE ../doc/src/manual/__testcode.f fromto: subroutine@
 and then just the subroutine,
-@@@CODE ../doc/manual/__testcode.f from-to:a comment@^C\s+END1
+@@@CODE ../doc/src/manual/__testcode.f from-to:a comment@^C\s+END1
 and finally the complete file:
-@@@CODE ../doc/manual/__testcode.f
+@@@CODE ../doc/src/manual/__testcode.f
 
 Testing other code environments. First Python:
 !bc
@@ -176,11 +176,11 @@ idx{figures}
 Test of figures. In particular we refer to Figure ref{fig:impact} in which
 there is a flow.
 
-FIGURE:[../doc/manual/figs/streamtubes, width=200] Visualization of flow by streamtubes. label{fig:impact}
+FIGURE:[../doc/src/manual/figs/streamtubes, width=200] Visualization of flow by streamtubes. label{fig:impact}
 
 Figures without captions are allowed and will be inlined.
 
-FIGURE:[../doc/manual/figs/streamtubes, width=200]
+FIGURE:[../doc/src/manual/figs/streamtubes, width=200]
 
 idx{movies}
 
@@ -188,15 +188,15 @@ idx{movies}
 
 Movie ref{mov:tsunami} shows a tsunami.
 
-MOVIE: [../doc/manual/figs/mjolnir.mpeg, width=700 height=400] Mjolnir tsunami (by Sylfest Glimsdal) label{mov:tsunami}.
+MOVIE: [../doc/src/manual/figs/mjolnir.mpeg, width=700 height=400] Mjolnir tsunami (by Sylfest Glimsdal) label{mov:tsunami}.
 
 Test empty caption (for inline movie):
 
-MOVIE: [../doc/manual/figs/wavepacket.mpeg, width=700 height=400]
+MOVIE: [../doc/src/manual/figs/wavepacket.mpeg, width=700 height=400]
 
 # Test wrong syntax and multi-line caption
 
-   MOVIE: [../doc/manual/figs/wavepacket_*.png, width=700 height=400] Movie
+   MOVIE: [../doc/src/manual/figs/wavepacket_*.png, width=700 height=400] Movie
 based on collection of frames
 (here just a few frames compared with the full wavepacket.mpeg movie).
 label{mymov}
@@ -214,7 +214,7 @@ MOVIE: [http://vimeo.com/55562330, width=500 height=278] Computational fluid dyn
 Here is figure ref{myfig} with a long multi-line caption
 and an extra space before the FIGURE keyword.
 
- FIGURE: [../doc/manual/figs/wavepacket_0001.png, width=500] A long
+ FIGURE: [../doc/src/manual/figs/wavepacket_0001.png, width=500] A long
 caption spanning
 several lines and containing verbatim words like `my_file_v1` and `my_file_v2`
 as well as math with subscript as in $t_{i+1}$. label{myfig}
@@ -223,7 +223,7 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 
 # Test URL as figure name
 
-FIGURE: [https://raw.github.com/hplgit/doconce/master/doc/blog/f_plot.png, width=500, frac=0.8]
+FIGURE: [https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png, width=500, frac=0.8]
 
 # Test wikimedia type of files that otherwise reside in subdirs
 # #if FORMAT == "mwiki"

@@ -2,7 +2,7 @@ TITLE: On Schemes for Exponential Decay
 AUTHOR: Hans Petter Langtangen at Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo
 DATE: today
 
-FIGURE: [../doc/slides/fig/CN_logo, width=300 frac=0.4]
+FIGURE: [../doc/src/slides/fig/CN_logo, width=300 frac=0.4]
 
 ## Comments start with a # and are visible as comments in the
 ## output. Lines starting with ## are also comments, but not visible
@@ -90,7 +90,7 @@ label{initial:value}
 ## width in HTML. A caption can be added (after [...]).
 
 !bslidecell 01
-FIGURE: [../doc/slides/fig/teacher2, width=250 frac=0.5]
+FIGURE: [../doc/src/slides/fig/teacher2, width=250 frac=0.5]
 !eslidecell
 
 !split
@@ -136,14 +136,14 @@ MOVIE: [http://youtu.be/PtJrPEIHNJw, width=640 height=480]
 
 The numerical method is implemented in a Python function:
 
-@@@CODE ../doc/slides/src/dc_mod.py  fromto: def solver@def verify_three
+@@@CODE ../doc/src/slides/src/dc_mod.py  fromto: def solver@def verify_three
 
 !split
 ===== The Crank-Nicolson method =====
 
 ## Figure filenames do not need extension - the right version is picked
 
-FIGURE: [../doc/slides/fig/CN, width=600]
+FIGURE: [../doc/src/slides/fig/CN, width=600]
 
 !split
 ===== The artifacts can be explained by some theory =====

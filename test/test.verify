@@ -83,7 +83,7 @@ else:
 
 # Drop tutorial
 """
-tutdir = os.path.join(os.pardir, 'doc', 'tutorial')
+tutdir = os.path.join(os.pardir, 'doc', 'src', 'tutorial')
 print 'cd', tutdir
 os.chdir(tutdir)
 
@@ -133,7 +133,7 @@ log.close()
 os.chdir(thisdir)
 
 # test quickref:
-quickdir = os.path.join(os.pardir, 'doc', 'quickref')
+quickdir = os.path.join(os.pardir, 'doc', 'src', 'quickref')
 print 'cd', quickdir
 os.chdir(quickdir)
 

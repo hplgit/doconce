@@ -69,7 +69,7 @@ Automatically generated HTML file from Doconce source
              width: 75%;
      }
      .alert-block {padding-top:14px; padding-bottom:14px}
-     .alert-block > p, .alert-block > ul {margin-bottom:0}
+     .alert-block > p, .alert-block > ul {margin-bottom:1em}
      .alert li {margin-top: 1em}
      .alert-block p+p {margin-top:5px}
      .alert-notice { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_yellow_notice.png); }
@@ -246,7 +246,7 @@ $$
 <center>[6] <b>Third Inst, Elsewhere</b></center>
 <center>[7] <b>Fourth Inst</b></center>
 <p>
-<center><h4>Aug 16, 2013</h4></center> <!-- date -->
+<center><h4>Aug 29, 2013</h4></center> <!-- date -->
 
 <h2>Table of contents</h2>
 
@@ -594,14 +594,14 @@ there is a flow.
 <center> <!-- figure -->
 <hr class="figure">
 <center><p class="caption">Figure 1:  Visualization of flow by streamtubes. <a name="fig:impact"></a> </p></center>
-<p><img src="../doc/manual/figs/streamtubes.png" align="bottom" width=200></p>
+<p><img src="../doc/src/manual/figs/streamtubes.png" align="bottom" width=200></p>
 </center>
 
 <p>
 Figures without captions are allowed and will be inlined.
 
 <p>
-<center><p><img src="../doc/manual/figs/streamtubes.png" align="bottom" width=200></p></center>
+<center><p><img src="../doc/src/manual/figs/streamtubes.png" align="bottom" width=200></p></center>
 
 <h4>Test of movies  <a name="___sec3"></a></h4>
 
@@ -610,7 +610,7 @@ Movie <a href="#mov:tsunami">mov:tsunami</a> shows a tsunami.
 
 <p>
 
-<embed src="../doc/manual/figs/mjolnir.mpeg" width=700 height=400 autoplay="false" loop="true"></embed>
+<embed src="../doc/src/manual/figs/mjolnir.mpeg" width=700 height=400 autoplay="false" loop="true"></embed>
 <p><em>Mjolnir tsunami (by Sylfest Glimsdal) <a name="mov:tsunami"></a>.</em></p>
 
 
@@ -619,14 +619,14 @@ Test empty caption (for inline movie):
 
 <p>
 
-<embed src="../doc/manual/figs/wavepacket.mpeg" width=700 height=400 autoplay="false" loop="true"></embed>
+<embed src="../doc/src/manual/figs/wavepacket.mpeg" width=700 height=400 autoplay="false" loop="true"></embed>
 <p><em></em></p>
 
 
 <p>
 <!-- Test wrong syntax and multi-line caption -->
 
-<p><a href="wavepacket_0001.html">Movie of files <tt>../doc/manual/figs/wavepacket_*.png</tt></a>
+<p><a href="wavepacket_0001.html">Movie of files <tt>../doc/src/manual/figs/wavepacket_*.png</tt></a>
 <em>Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). <a name="mymov"></a></em></p>
 
 <p>
@@ -660,7 +660,7 @@ and an extra space before the FIGURE keyword.
 <center> <!-- figure -->
 <hr class="figure">
 <center><p class="caption">Figure 2:  A long caption spanning several lines and containing verbatim words like <code>my_file_v1</code> and <code>my_file_v2</code> as well as math with subscript as in \( t_{i+1} \). <a name="myfig"></a> </p></center>
-<p><img src="../doc/manual/figs/wavepacket_0001.png" align="bottom" width=500></p>
+<p><img src="../doc/src/manual/figs/wavepacket_0001.png" align="bottom" width=500></p>
 </center>
 
 <p>
@@ -670,7 +670,7 @@ and an extra space before the FIGURE keyword.
 <!-- Test URL as figure name -->
 
 <p>
-<center><p><img src="https://raw.github.com/hplgit/doconce/master/doc/blog/f_plot.png" align="bottom" width=500,></p></center>
+<center><p><img src="https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png" align="bottom" width=500,></p></center>
 
 <p>
 <!-- Test wikimedia type of files that otherwise reside in subdirs -->
@@ -1085,6 +1085,8 @@ the beginning of a new exercise and cause trouble. Maybe a list
 
 <b>Hint 1.</b>
 Use <code>r = random.random()</code> and define head as <code>r <= 0.5</code>.
+
+<p>
 <!-- --- end hint in exercise --- -->
 
 <p>
@@ -1094,6 +1096,8 @@ Use <code>r = random.random()</code> and define head as <code>r <= 0.5</code>.
 <b>Hint 2.</b>
 Draw an integer among \( \{1,2\} \) with
 <code>r = random.randint(1,2)</code> and define head when <code>r</code> is 1.
+
+<p>
 <!-- --- end hint in exercise --- -->
 
 <p>
@@ -1101,6 +1105,8 @@ Draw an integer among \( \{1,2\} \) with
 <b>Answer.</b>
 If the <code>random.random()</code> function returns a number \( <1/2 \), let it be
 head, otherwise tail. Repeat this \( N \) number of times.
+
+<p>
 <!-- --- end answer of exercise --- -->
 
 <p>
@@ -1161,6 +1167,8 @@ To answer this question empirically, let a program
 draw \( N \) such random numbers using Python's standard <code>random</code> module,
 count how many of them, \( M \), that fall in the interval \( (0.5,0.6) \), and
 compute the probability as \( M/N \).
+
+<p>
 <!-- --- end hint in exercise --- -->
 
 <p>
@@ -1228,18 +1236,24 @@ Let \( R \) be normally distributed and \( (x_0,y_0) \) uniformly distributed.
 <b>Hint.</b>
 Use the <code>numpy.random</code> module to draw the
 \( x_0 \), \( y_0 \), and \( R \) quantities.
+
+<p>
 <!-- --- end hint in exercise --- -->
 
 <p>
 <!-- --- begin answer of exercise --- -->
 <b>Answer.</b>
 Here goes the short answer to part a).
+
+<p>
 <!-- --- end answer of exercise --- -->
 
 <p>
 <!-- --- begin solution of exercise --- -->
 <b>Solution.</b>
 Here goes a full solution to part a).
+
+<p>
 <!-- --- end solution of exercise --- -->
 
 <p>
@@ -1294,6 +1308,8 @@ And code <code>a=b</code> in this solution:
 </pre></div>
 </td></tr></table><p>
 End of solution is here.
+
+<p>
 <!-- --- end solution of exercise --- -->
 
 <p>
@@ -1329,6 +1345,8 @@ And with code (in plain verbatim) returning \( x+1 \) in hint:
 <p>
 <b>Hint 2.</b>
 Second hint to subexercise a).
+
+<p>
 <!-- --- end hint in exercise --- -->
 Filename: <code>subexer_a.pdf</code>.
 
@@ -1337,6 +1355,8 @@ Filename: <code>subexer_a.pdf</code>.
 <b>Answer.</b>
 Short answer to subexercise a).
 With math in answer: \( a=b \).
+
+<p>
 <!-- --- end answer of exercise --- -->
 
 <p>
@@ -1356,6 +1376,8 @@ $$ \cos^2 x + \sin^2 x = 1 \thinspace .$$
 <p>
 <b>Hint.</b>
 A hint for this subexercise.
+
+<p>
 <!-- --- end hint in exercise --- -->
 Filename: <code>subexer_b.pdf</code>.
 
@@ -1363,6 +1385,8 @@ Filename: <code>subexer_b.pdf</code>.
 <!-- --- begin solution of exercise --- -->
 <b>Solution.</b>
 Here goes the solution of this subexercise.
+
+<p>
 <!-- --- end solution of exercise --- -->
 
 <p>
