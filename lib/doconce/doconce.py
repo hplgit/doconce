@@ -2495,8 +2495,13 @@ need to include --no_mako on the command line.
             if formula[0] == '{':
                 if formula[1] == '}':
                     suggestion = 'as $\,{}...$'
-                print '*** error: potential problem with formula $%s$' % formula
-                print '    since ${ can confuse Mako - rewrite', suggestion
+                if formula[1:7] == r'\cal O}':
+                    suggestion = r'as \newcommand{\Oof}[1]{{\cal O}{#1}}'
+                else:
+                    suggestion = 'or make a newcommand'
+                print """\
+*** error: potential problem with formula $%s$'
+    since ${ can confuse Mako - rewrite %s""" % (formula, suggestion)
                 _abort()
 
         if preprocessor is not None:  # already found preprocess commands?
@@ -2557,7 +2562,7 @@ python-mako package (sudo apt-get install python-mako).
             if "Undefined" in str(e):
                 print '*** mako error: NameError Undefined variable,'
                 print '                one or more ${var} variables are undefined.\n'
-                print '                Rerun with --mako_strict_undefined to see where the problem is.'
+                print '                Rerun doconce format with --mako_strict_undefined to see where the problem is.'
                 _abort()
             elif "is not defined" in str(e):
                 print '*** mako error: NameError', e

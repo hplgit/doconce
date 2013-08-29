@@ -4129,6 +4129,7 @@ _replacements = [
     (r"^#.*endif.*$", "", re.MULTILINE),
     (r"^#include.*$", "", re.MULTILINE),
     # Mako
+    (r'^<%.+?^%>', '', re.MULTILINE|re.DOTALL),
     (r"^% .*$", "", re.MULTILINE),
     (r"^<%.*$", "", re.MULTILINE),
     ]
