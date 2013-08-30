@@ -768,6 +768,8 @@ def latex_index_bib(filestr, index, citations, pubfile, pubdata):
         # Note: we have to run publish in the directory where pubfile resides
         this_dir = os.getcwd()
         pubfile_dir = os.path.dirname(pubfile)
+        if not pubfile_dir:
+            pubfile_dir = os.curdir
         os.chdir(pubfile_dir)
         os.system(publish_cmd)
         os.chdir(this_dir)

@@ -1668,8 +1668,10 @@ def handle_index_and_bib(filestr, format, has_title):
             import publish
             # Note: we have to operate publish in the directory
             # where pubfile resides
-            this_dir = os.getcwd()
             directory, basename = os.path.split(pubfile)
+            if not directory:
+                directory = os.curdir
+            this_dir = os.getcwd()
             os.chdir(directory)
 
             pubdata = publish.database.read_database(basename)

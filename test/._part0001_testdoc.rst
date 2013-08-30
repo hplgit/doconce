@@ -55,3 +55,6 @@ Here is a nested list:
     Here are two lines that make up
     a block quote.
 
+Here is a reference to Equation :ref:`(3.3) <Eq:my:eq1>`.
+This equation appears in another part if this document is split.
+
