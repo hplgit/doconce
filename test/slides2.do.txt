@@ -421,30 +421,30 @@ files = flip_coin.py, flip_coin.pdf
 solutions = mysol.txt, mysol_flip_coin.py
 keywords = random numbers; Monte Carlo simulation
 
-!bsubex
+|bsubex
 Make a program that simulates flipping a coin $N$ times.
 
-!bhint
+|bhint
 Use `r = random.random()` and define head as `r <= 0.5`.
-!ehint
-!esubex
+|ehint
+|esubex
 
-!bsubex
+|bsubex
 Compute the probability of getting heads.
 
-!bans
+|bans
 A short answer: 0.5.
-!eans
+|eans
 
-!bsol
+|bsol
 A full solution to this subexercise can go here.
-!esol
-!esubex
+|esol
+|esubex
 
-!bsubex
+|bsubex
 Make another program that computes the probability
 of getting at least three heads out of 5 throws.
-!esubex
+|esubex
 !ec
 
 Solutions/answers can easily be left out of the document.
@@ -547,27 +547,27 @@ a figure to the right (two cells, numbered 00 and 01).
 !split
 ======= Headline =======
 
-!bslidecell 00
-!bpop
+|bslidecell 00
+|bpop
  * Key point 1
  * Key point 2
  * Key point 3 takes very much more text to explain because
    this point is really comprehensive, and although long
    bullet points are not recommended in general, we need
    it here for demonstration purposes
-!epop
+|epop
 
-!bpop
+|bpop
 |bt
 \[ -\nabla^2 u = f \quad\hbox{in }\Omega \]
 |et
-!epop
+|epop
 
-!eslidecell
+|eslidecell
 
-!bslidecell 01
+|bslidecell 01
 FIGURE: [../doc/src/slides/fig/broken_pen_and_paper, width=400, frac=0.8]
-!eslidecell
+|eslidecell
 
 !split
 ======= Next slide... =======

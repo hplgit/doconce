@@ -35459,8 +35459,16 @@ And more and more text.
 Test warning with title:
 
 
-\begin{warning_colors2admon}[{\large Watch Out }]
+\begin{warning_colors2admon}[{\large Watch out }]
 {\large And here comes some text with bad news in larger font. \par}
+\end{warning_colors2admon}
+
+Test warning with title with math:
+
+
+\begin{warning_colors2admon}[{\large Watch out for $\nabla\cdot\bm{u}=0$ equations }]
+{\large Divergence freedom is often problematic from a numerical point
+of view. \par}
 \end{warning_colors2admon}
 
 Then we test a block, which is guaranteed to never have any admon icon.
@@ -35914,8 +35922,16 @@ And more and more text.
 Test warning with title:
 
 
-\begin{warning_colors1admon}[{\large Watch Out }]
+\begin{warning_colors1admon}[{\large Watch out }]
 {\large And here comes some text with bad news in larger font. \par}
+\end{warning_colors1admon}
+
+Test warning with title with math:
+
+
+\begin{warning_colors1admon}[{\large Watch out for $\nabla\cdot\bm{u}=0$ equations }]
+{\large Divergence freedom is often problematic from a numerical point
+of view. \par}
 \end{warning_colors1admon}
 
 Then we test a block, which is guaranteed to never have any admon icon.
@@ -36374,8 +36390,16 @@ And more and more text.
 Test warning with title:
 
 
-\begin{warning_colors2admon}[{\large Watch Out }]
+\begin{warning_colors2admon}[{\large Watch out }]
 {\large And here comes some text with bad news in larger font. \par}
+\end{warning_colors2admon}
+
+Test warning with title with math:
+
+
+\begin{warning_colors2admon}[{\large Watch out for $\nabla\cdot\bm{u}=0$ equations }]
+{\large Divergence freedom is often problematic from a numerical point
+of view. \par}
 \end{warning_colors2admon}
 
 Then we test a block, which is guaranteed to never have any admon icon.
@@ -36755,8 +36779,16 @@ And more and more text.
 Test warning with title:
 
 
-\begin{graybox1admon}[{\large Watch Out }.]
+\begin{graybox1admon}[{\large Watch out }.]
 {\large And here comes some text with bad news in larger font. \par}
+\end{graybox1admon}
+
+Test warning with title with math:
+
+
+\begin{graybox1admon}[{\large Watch out for $\nabla\cdot\bm{u}=0$ equations }.]
+{\large Divergence freedom is often problematic from a numerical point
+of view. \par}
 \end{graybox1admon}
 
 Then we test a block, which is guaranteed to never have any admon icon.
@@ -37150,8 +37182,18 @@ Test warning with title:
 
 
 
-\begin{graybox2admon}[{\large Watch Out }.]
+\begin{graybox2admon}[{\large Watch out }.]
 {\large And here comes some text with bad news in larger font. \par}
+\end{graybox2admon}
+
+
+Test warning with title with math:
+
+
+
+\begin{graybox2admon}[{\large Watch out for $\nabla\cdot\bm{u}=0$ equations }.]
+{\large Divergence freedom is often problematic from a numerical point
+of view. \par}
 \end{graybox2admon}
 
 
@@ -37627,8 +37669,16 @@ And more and more text.
 Test warning with title:
 
 
-\begin{warning_graybox3admon}[{\large Watch Out }]
+\begin{warning_graybox3admon}[{\large Watch out }]
 {\large And here comes some text with bad news in larger font. \par}
+\end{warning_graybox3admon}
+
+Test warning with title with math:
+
+
+\begin{warning_graybox3admon}[{\large Watch out for $\nabla\cdot\bm{u}=0$ equations }]
+{\large Divergence freedom is often problematic from a numerical point
+of view. \par}
 \end{warning_graybox3admon}
 
 Then we test a block, which is guaranteed to never have any admon icon.
@@ -37993,8 +38043,16 @@ And more and more text.
 Test warning with title:
 
 
-\begin{paragraphadmon}[{\large Watch Out }.]
+\begin{paragraphadmon}[{\large Watch out }.]
 {\large And here comes some text with bad news in larger font. \par}
+\end{paragraphadmon}
+
+Test warning with title with math:
+
+
+\begin{paragraphadmon}[{\large Watch out for $\nabla\cdot\bm{u}=0$ equations }.]
+{\large Divergence freedom is often problematic from a numerical point
+of view. \par}
 \end{paragraphadmon}
 
 Then we test a block, which is guaranteed to never have any admon icon.
@@ -38452,8 +38510,16 @@ And more and more text.
 Test warning with title:
 
 
-\begin{warning_yellowboxadmon}[{\large Watch Out }]
+\begin{warning_yellowboxadmon}[{\large Watch out }]
 {\large And here comes some text with bad news in larger font. \par}
+\end{warning_yellowboxadmon}
+
+Test warning with title with math:
+
+
+\begin{warning_yellowboxadmon}[{\large Watch out for $\nabla\cdot\bm{u}=0$ equations }]
+{\large Divergence freedom is often problematic from a numerical point
+of view. \par}
 \end{warning_yellowboxadmon}
 
 Then we test a block, which is guaranteed to never have any admon icon.
@@ -38828,8 +38894,16 @@ And more and more text.
 Test warning with title:
 
 <p>
-<div class="warning alert-text-large"><b>Watch Out.</b>
+<div class="warning alert-text-large"><b>Watch out.</b>
 And here comes some text with bad news in larger font.
+</div>
+<p>
+Test warning with title with math:
+
+<p>
+<div class="warning alert-text-large"><b>Watch out for \( \nabla\cdot\boldsymbol{u}=0 \) equations.</b>
+Divergence freedom is often problematic from a numerical point
+of view.
 </div>
 <p>
 Then we test a block, which is guaranteed to never have any admon icon.
@@ -39226,8 +39300,16 @@ And more and more text.
 Test warning with title:
 
 <p>
-<div class="alert alert-block alert-warning alert-text-large"><b>Watch Out.</b>
+<div class="alert alert-block alert-warning alert-text-large"><b>Watch out.</b>
 And here comes some text with bad news in larger font.
+</div>
+<p>
+Test warning with title with math:
+
+<p>
+<div class="alert alert-block alert-warning alert-text-large"><b>Watch out for \( \nabla\cdot\boldsymbol{u}=0 \) equations.</b>
+Divergence freedom is often problematic from a numerical point
+of view.
 </div>
 <p>
 Then we test a block, which is guaranteed to never have any admon icon.
@@ -39622,8 +39704,16 @@ And more and more text.
 Test warning with title:
 
 <p>
-<div class="alert alert-block alert-warning alert-text-large"><b>Watch Out.</b>
+<div class="alert alert-block alert-warning alert-text-large"><b>Watch out.</b>
 And here comes some text with bad news in larger font.
+</div>
+<p>
+Test warning with title with math:
+
+<p>
+<div class="alert alert-block alert-warning alert-text-large"><b>Watch out for \( \nabla\cdot\boldsymbol{u}=0 \) equations.</b>
+Divergence freedom is often problematic from a numerical point
+of view.
 </div>
 <p>
 Then we test a block, which is guaranteed to never have any admon icon.
@@ -39940,8 +40030,14 @@ And more and more text.</p>
 </div>
 <p>Test warning with title:</p>
 <div class="admonition-watch-out admonition">
-<p class="first admonition-title">Watch Out</p>
+<p class="first admonition-title">Watch out</p>
 <p class="last">And here comes some text with bad news in larger font.</p>
+</div>
+<p>Test warning with title with math:</p>
+<div class="admonition-watch-out-for-math-nabla-cdot-boldsymbol-u-0-equations admonition">
+<p class="first admonition-title">Watch out for <span class="math">\(\nabla\cdot\boldsymbol{u}=0\)</span> equations</p>
+<p class="last">Divergence freedom is often problematic from a numerical point
+of view.</p>
 </div>
 <p>Then we test a block, which is guaranteed to never have any admon icon.</p>
 <div class="admonition-block-with-title admonition">
@@ -40344,10 +40440,26 @@ Test warning with title:
 <tr>
 <td width="25" align="center" valign="top">
 <img src="https://doconce.googlecode.com/hg/bundled/html_images/lyx_warning.png" hspace="5" alt="warning"></td>
-<th align="left" valign="middle"><b>Watch Out.</b></th>
+<th align="left" valign="middle"><b>Watch out.</b></th>
 </tr>
 <tr><td>&nbsp;</td> <td align="left" valign="top"><p>
 <div class="alert-text-large">And here comes some text with bad news in larger font.</div>
+</p></td></tr>
+</table>
+<p>
+Test warning with title with math:
+
+<p>
+
+<table width="95%" border="0">
+<tr>
+<td width="25" align="center" valign="top">
+<img src="https://doconce.googlecode.com/hg/bundled/html_images/lyx_warning.png" hspace="5" alt="warning"></td>
+<th align="left" valign="middle"><b>Watch out for \( \nabla\cdot\boldsymbol{u}=0 \) equations.</b></th>
+</tr>
+<tr><td>&nbsp;</td> <td align="left" valign="top"><p>
+<div class="alert-text-large">Divergence freedom is often problematic from a numerical point
+of view.</div>
 </p></td></tr>
 </table>
 <p>
@@ -40803,8 +40915,19 @@ Test warning with title:
 
 
 <!-- admonition: warning, typeset as paragraph -->
-<div class="alert-text-large"><b>Watch Out.</b>
+<div class="alert-text-large"><b>Watch out.</b>
 And here comes some text with bad news in larger font.
+</div>
+<p>
+Test warning with title with math:
+
+<p>
+
+
+<!-- admonition: warning, typeset as paragraph -->
+<div class="alert-text-large"><b>Watch out for \( \nabla\cdot\boldsymbol{u}=0 \) equations.</b>
+Divergence freedom is often problematic from a numerical point
+of view.
 </div>
 <p>
 Then we test a block, which is guaranteed to never have any admon icon.
@@ -41246,8 +41369,16 @@ And more and more text.
 Test warning with title:
 
 <p>
-<div class="alert alert-block alert-warning alert-text-large"><b>Watch Out.</b>
+<div class="alert alert-block alert-warning alert-text-large"><b>Watch out.</b>
 And here comes some text with bad news in larger font.
+</div>
+<p>
+Test warning with title with math:
+
+<p>
+<div class="alert alert-block alert-warning alert-text-large"><b>Watch out for \( \nabla\cdot\boldsymbol{u}=0 \) equations.</b>
+Divergence freedom is often problematic from a numerical point
+of view.
 </div>
 <p>
 Then we test a block, which is guaranteed to never have any admon icon.
@@ -41662,8 +41793,16 @@ And more and more text.
 Test warning with title:
 
 <p>
-<div class="alert alert-block alert-warning alert-text-large"><b>Watch Out.</b>
+<div class="alert alert-block alert-warning alert-text-large"><b>Watch out.</b>
 And here comes some text with bad news in larger font.
+</div>
+<p>
+Test warning with title with math:
+
+<p>
+<div class="alert alert-block alert-warning alert-text-large"><b>Watch out for \( \nabla\cdot\boldsymbol{u}=0 \) equations.</b>
+Divergence freedom is often problematic from a numerical point
+of view.
 </div>
 <p>
 Then we test a block, which is guaranteed to never have any admon icon.
@@ -41960,7 +42099,17 @@ Test warning with title:
 {{mbox
 | type = warning
 | textstyle = font-size: 130%;
-| text = '''Watch Out.''' And here comes some text with bad news in larger font.
+| text = '''Watch out.''' And here comes some text with bad news in larger font.
+}}
+
+Test warning with title with math:
+
+
+{{mbox
+| type = warning
+| textstyle = font-size: 130%;
+| text = '''Watch out for <math>\nabla\cdot\bm{u}=0</math> equations.''' Divergence freedom is often problematic from a numerical point
+of view.
 }}
 
 Then we test a block, which is guaranteed to never have any admon icon.
@@ -45076,30 +45225,30 @@ files = flip_coin.py, flip_coin.pdf
 solutions = mysol.txt, mysol_flip_coin.py
 keywords = random numbers; Monte Carlo simulation
 
-!bsubex
+|bsubex
 Make a program that simulates flipping a coin $N$ times.
 
-!bhint
+|bhint
 Use `r = random.random()` and define head as `r <= 0.5`.
-!ehint
-!esubex
+|ehint
+|esubex
 
-!bsubex
+|bsubex
 Compute the probability of getting heads.
 
-!bans
+|bans
 A short answer: 0.5.
-!eans
+|eans
 
-!bsol
+|bsol
 A full solution to this subexercise can go here.
-!esol
-!esubex
+|esol
+|esubex
 
-!bsubex
+|bsubex
 Make another program that computes the probability
 of getting at least three heads out of 5 throws.
-!esubex
+|esubex
 !ec
 
 Solutions/answers can easily be left out of the document.
@@ -45202,27 +45351,27 @@ a figure to the right (two cells, numbered 00 and 01).
 !split
 ======= Headline =======
 
-!bslidecell 00
-!bpop
+|bslidecell 00
+|bpop
  * Key point 1
  * Key point 2
  * Key point 3 takes very much more text to explain because
    this point is really comprehensive, and although long
    bullet points are not recommended in general, we need
    it here for demonstration purposes
-!epop
+|epop
 
-!bpop
+|bpop
 |bt
 \[ -\nabla^2 u = f \quad\hbox{in }\Omega \]
 |et
-!epop
+|epop
 
-!eslidecell
+|eslidecell
 
-!bslidecell 01
+|bslidecell 01
 FIGURE: [../doc/src/slides/fig/broken_pen_and_paper, width=400, frac=0.8]
-!eslidecell
+|eslidecell
 
 !split
 ======= Next slide... =======
@@ -46131,9 +46280,9 @@ keywords = random numbers; Monte Carlo simulation
 !bsubex
 Make a program that simulates flipping a coin $N$ times.
 
-<b>Hint.</b>\n
+!bhint
 Use `r = random.random()` and define head as `r &lt;= 0.5`.
-
+!ehint
 !esubex
 
 !bsubex
@@ -47342,9 +47491,9 @@ keywords = random numbers; Monte Carlo simulation
 !bsubex
 Make a program that simulates flipping a coin $N$ times.
 
-\paragraph{Hint.}\n
+!bhint
 Use `r = random.random()` and define head as `r <= 0.5`.
-
+!ehint
 !esubex
 
 !bsubex
@@ -48260,9 +48409,9 @@ keywords = random numbers; Monte Carlo simulation
 !bsubex
 Make a program that simulates flipping a coin $N$ times.
 
-\noindent\textbf{Hint.}\n
+!bhint
 Use `r = random.random()` and define head as `r <= 0.5`.
-
+!ehint
 !esubex
 
 !bsubex
@@ -50176,7 +50325,7 @@ And here is a table:
 <h6>Dept. of Informatics, Univ. of Oslo</h6>
 </center>
 
-<center>Fri, 30 Aug 2013 (19:40)</center>
+<center>Sat, 31 Aug 2013 (01:48)</center>
 
 
 
@@ -50307,7 +50456,7 @@ And here is a table:
 <h6>Dept. of Informatics, Univ. of Oslo</h6>
 </center>
 
-<center>Fri, 30 Aug 2013 (19:40)</center>
+<center>Sat, 31 Aug 2013 (01:48)</center>
 
 
 
@@ -67731,13 +67880,6 @@ figure file ../doc/src/slides/fig/latex_paper1:
 figure file ../doc/src/slides/fig/doconce1b:
     can use ../doc/src/slides/fig/doconce1b.png for format html
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
-*** warning: found environment begin/end !bsubex
-    context:
-----------------------------------
-eywords = random numbers; Monte Carlo simulation
-
-!bsubex
-Make a program that simulates flipping a coin $N$
 output in slides2.html
 + '[' 0 -ne 0 ']'
 + system doconce slides_html slides2 reveal --html_slide_type=beigesmall
@@ -67792,13 +67934,6 @@ figure file ../doc/src/slides/fig/latex_paper1:
     can use ../doc/src/slides/fig/latex_paper1.png for format pdflatex
 figure file ../doc/src/slides/fig/doconce1b:
     can use ../doc/src/slides/fig/doconce1b.png for format pdflatex
-*** warning: found environment begin/end !bsubex
-    context:
-----------------------------------
-eywords = random numbers; Monte Carlo simulation
-
-!bsubex
-Make a program that simulates flipping a coin $N$
 output in slides2.p.tex
 + '[' 0 -ne 0 ']'
 + system doconce ptex2tex slides2 -DLATEX_HEADING=beamer envir=minted
@@ -68478,7 +68613,10 @@ Underfull \hbox (badness 10000)
 Underfull \hbox (badness 10000) 
 
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./latex_figs/warning.pdf
->]
+>] <use latex_figs/warning.pdf>
+Underfull \hbox (badness 10000) 
+
+
 Underfull \hbox (badness 10000) 
 
 
@@ -68491,14 +68629,14 @@ Underfull \hbox (badness 10000)
 <use latex_figs/notice.pdf>
 Underfull \hbox (badness 10000) 
 
-<latex_figs/question.pdf, id=23, 89.33376pt x 89.33376pt>
+[2 <./latex_figs/notice.pdf>]
+<latex_figs/question.pdf, id=37, 89.33376pt x 89.33376pt>
 <use latex_figs/question.pdf>
 Underfull \hbox (badness 10000) 
 
 <use latex_figs/question.pdf>
 Underfull \hbox (badness 10000) 
 
-[2 <./latex_figs/notice.pdf> <./latex_figs/question.pdf>]
 <use latex_figs/warning.pdf>
 Underfull \hbox (badness 10000) 
 
@@ -68509,9 +68647,9 @@ Underfull \hbox (badness 10000)
 Underfull \hbox (badness 10000) 
 
 (./admon_colors1.out.pyg) (./admon_colors1.out.pyg)
-<../doc/src/manual/figs/wavepacket_0001.png, id=42, 642.4pt x 481.8pt>
-<use ../doc/src/manual/figs/wavepacket_0001.png> [3] [4]
-<latex_figs/summary.pdf, id=55, 89.33376pt x 89.33376pt>
+<../doc/src/manual/figs/wavepacket_0001.png, id=38, 642.4pt x 481.8pt>
+<use ../doc/src/manual/figs/wavepacket_0001.png> [3 <./latex_figs/question.pdf>
+] [4] <latex_figs/summary.pdf, id=55, 89.33376pt x 89.33376pt>
 <use latex_figs/summary.pdf>
 Underfull \hbox (badness 10000) 
 
@@ -68613,6 +68751,7 @@ newcommands_replace.tex
 admon_colors1.out.pyg
 latex_figs/warning.pdf
   omscmr.fd    1999/05/25 v2.5h Standard LaTeX font definitions
+latex_figs/warning.pdf
 latex_figs/warning.pdf
 latex_figs/notice.pdf
 latex_figs/notice.pdf
@@ -68856,9 +68995,10 @@ ABD: EveryShipout initializing macros (./newcommands_bfmath.tex)
 s/map/pdftex/updmap/pdftex.map}] (./admon_graybox1.out.pyg) [2]
 (./admon_graybox1.out.pyg) (./admon_graybox1.out.pyg)
 <../doc/src/manual/figs/wavepacket_0001.png, id=33, 642.4pt x 481.8pt>
-<use ../doc/src/manual/figs/wavepacket_0001.png> [3]
+<use ../doc/src/manual/figs/wavepacket_0001.png> [3] [4 <../doc/src/manual/figs
+/wavepacket_0001.png>]
 No file admon_graybox1.ind.
-[4 <../doc/src/manual/figs/wavepacket_0001.png>] (./admon_graybox1.aux)
+[5] (./admon_graybox1.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -69022,7 +69162,7 @@ public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
 msfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
 s/cm/cmti8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
 tt9.pfb>
-Output written on admon_graybox1.pdf (4 pages, ).
+Output written on admon_graybox1.pdf (5 pages, ).
 Transcript written on admon_graybox1.log.
 + for admon_tp in '$admon_tps'
 + system doconce format pdflatex admon --latex_admon=paragraph
@@ -69608,11 +69748,29 @@ ABD: EveryShipout initializing macros (./newcommands_bfmath.tex)
 
 (./admon_graybox2.out.pyg)
  [1{/var/lib/texmf/font
-s/map/pdftex/updmap/pdftex.map}] (./admon_graybox2.out.pyg) [2]
-(./admon_graybox2.out.pyg) (./admon_graybox2.out.pyg)
-<../doc/src/manual/figs/wavepacket_0001.png, id=33, 642.4pt x 481.8pt>
-<use ../doc/src/manual/figs/wavepacket_0001.png> [3] [4 <../doc/src/manual/figs
-/wavepacket_0001.png>]
+s/map/pdftex/updmap/pdftex.map}]
+
+Package mdframed Warning: You got a bad break
+(mdframed)                you have to change it manually
+(mdframed)                by changing the text, the space
+(mdframed)                or something else on 
+
+[2]
+
+Package mdframed Warning: You got a bad break
+(mdframed)                because the last split box is empty
+(mdframed)                You have to change the settings on 
+
+(./admon_graybox2.out.pyg) (./admon_graybox2.out.pyg) (./admon_graybox2.out.pyg
+) <../doc/src/manual/figs/wavepacket_0001.png, id=31, 642.4pt x 481.8pt>
+<use ../doc/src/manual/figs/wavepacket_0001.png> [3]
+Overfull \vbox (7.22804pt too high) has occurred while \output is active
+[4 <../doc/src/manual/figs/wavepacket_0001.png>]
+
+Package mdframed Warning: You got a bad break
+(mdframed)                because the last split box is empty
+(mdframed)                You have to change the settings on 
+
 No file admon_graybox2.ind.
 [5] (./admon_graybox2.aux)
 
@@ -69768,17 +69926,18 @@ Package rerunfilecheck Warning: File `admon_graybox2.out' has changed.
 (rerunfilecheck)                Rerun to get outlines right
 (rerunfilecheck)                or use package `bookmark'.
 
- )</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmti8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-tt9.pfb>
+ )
+(see the transcript file for additional information)</usr/share/texlive/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+r7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><
+/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/share/te
+xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
 Output written on admon_graybox2.pdf (5 pages, ).
 Transcript written on admon_graybox2.log.
 + for admon_tp in '$admon_tps'
@@ -69903,6 +70062,7 @@ No file admon_yellowbox.aux.
 
 <use latex_figs/small_yellow_warning.pdf> [1{/var/lib/texmf/fonts/map/pdftex/up
 dmap/pdftex.map} <./latex_figs/small_yellow_warning.pdf>]
+<use latex_figs/small_yellow_warning.pdf>
 <latex_figs/small_yellow_notice.pdf, id=24, 32.12pt x 32.12pt>
 <use latex_figs/small_yellow_notice.pdf>
 <use latex_figs/small_yellow_notice.pdf>
@@ -69914,11 +70074,11 @@ dmap/pdftex.map} <./latex_figs/small_yellow_warning.pdf>]
 <use latex_figs/small_yellow_warning.pdf>
 <use latex_figs/small_yellow_notice.pdf> (./admon_yellowbox.out.pyg)
 (./admon_yellowbox.out.pyg)
-<../doc/src/manual/figs/wavepacket_0001.png, id=49, 642.4pt x 481.8pt>
+<../doc/src/manual/figs/wavepacket_0001.png, id=48, 642.4pt x 481.8pt>
 <use ../doc/src/manual/figs/wavepacket_0001.png> [3]
-Underfull \vbox (badness 10000) detected at line 437
+Underfull \vbox (badness 1337) detected at line 445
 
-Underfull \vbox (badness 10000) detected at line 437
+Underfull \vbox (badness 1137) detected at line 445
 [4] <latex_figs/small_yellow_summary.pdf, id=61, 32.12pt x 32.12pt>
 <use latex_figs/small_yellow_summary.pdf>
 No file admon_yellowbox.ind.
@@ -70020,6 +70180,7 @@ newcommands_replace.tex
 admon_yellowbox.out.pyg
 latex_figs/small_yellow_warning.pdf
   omscmr.fd    1999/05/25 v2.5h Standard LaTeX font definitions
+latex_figs/small_yellow_warning.pdf
 latex_figs/small_yellow_warning.pdf
 latex_figs/small_yellow_notice.pdf
 latex_figs/small_yellow_notice.pdf
@@ -70176,6 +70337,7 @@ No file admon_graybox3.aux.
 
 <use latex_figs/small_gray_warning.pdf> [1{/var/lib/texmf/fonts/map/pdftex/updm
 ap/pdftex.map} <./latex_figs/small_gray_warning.pdf>]
+<use latex_figs/small_gray_warning.pdf>
 <latex_figs/small_gray_notice.pdf, id=24, 64.24pt x 64.24pt>
 <use latex_figs/small_gray_notice.pdf> <use latex_figs/small_gray_notice.pdf>
 <latex_figs/small_gray_question2.pdf, id=25, 64.24pt x 64.24pt>
@@ -70185,11 +70347,11 @@ f> <./latex_figs/small_gray_question2.pdf>]
 <use latex_figs/small_gray_warning.pdf> (./admon_graybox3.out.pyg)
 <use latex_figs/small_gray_warning.pdf> <use latex_figs/small_gray_notice.pdf>
 (./admon_graybox3.out.pyg) (./admon_graybox3.out.pyg)
-<../doc/src/manual/figs/wavepacket_0001.png, id=49, 642.4pt x 481.8pt>
+<../doc/src/manual/figs/wavepacket_0001.png, id=48, 642.4pt x 481.8pt>
 <use ../doc/src/manual/figs/wavepacket_0001.png> [3]
-Underfull \vbox (badness 10000) detected at line 437
+Underfull \vbox (badness 1337) detected at line 445
 
-Underfull \vbox (badness 10000) detected at line 437
+Underfull \vbox (badness 1137) detected at line 445
 [4] <latex_figs/small_gray_summary.pdf, id=61, 48.18pt x 48.18pt>
 <use latex_figs/small_gray_summary.pdf>
 No file admon_graybox3.ind.
@@ -70291,6 +70453,7 @@ newcommands_replace.tex
 admon_graybox3.out.pyg
 latex_figs/small_gray_warning.pdf
   omscmr.fd    1999/05/25 v2.5h Standard LaTeX font definitions
+latex_figs/small_gray_warning.pdf
 latex_figs/small_gray_warning.pdf
 latex_figs/small_gray_notice.pdf
 latex_figs/small_gray_notice.pdf
@@ -70446,7 +70609,7 @@ No file admon_colors2.aux.
 <use latex_figs/warning.pdf>
 
 <use latex_figs/warning.pdf> [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.m
-ap} <./latex_figs/warning.pdf>]
+ap} <./latex_figs/warning.pdf>] <use latex_figs/warning.pdf>
 <latex_figs/notice.pdf, id=22, 89.33376pt x 89.33376pt>
 <use latex_figs/notice.pdf> <use latex_figs/notice.pdf>
 <latex_figs/question.pdf, id=23, 89.33376pt x 89.33376pt>
@@ -70454,11 +70617,11 @@ ap} <./latex_figs/warning.pdf>]
 tice.pdf> <./latex_figs/question.pdf>] <use latex_figs/warning.pdf>
 (./admon_colors2.out.pyg) <use latex_figs/warning.pdf>
 <use latex_figs/notice.pdf> (./admon_colors2.out.pyg) (./admon_colors2.out.pyg)
-<../doc/src/manual/figs/wavepacket_0001.png, id=43, 642.4pt x 481.8pt>
+<../doc/src/manual/figs/wavepacket_0001.png, id=42, 642.4pt x 481.8pt>
 <use ../doc/src/manual/figs/wavepacket_0001.png> [3]
-Underfull \vbox (badness 10000) detected at line 437
+Underfull \vbox (badness 1337) detected at line 445
 
-Underfull \vbox (badness 10000) detected at line 437
+Underfull \vbox (badness 1137) detected at line 445
 [4] <latex_figs/summary.pdf, id=55, 89.33376pt x 89.33376pt>
 <use latex_figs/summary.pdf>
 No file admon_colors2.ind.
@@ -70560,6 +70723,7 @@ newcommands_replace.tex
 admon_colors2.out.pyg
 latex_figs/warning.pdf
   omscmr.fd    1999/05/25 v2.5h Standard LaTeX font definitions
+latex_figs/warning.pdf
 latex_figs/warning.pdf
 latex_figs/notice.pdf
 latex_figs/notice.pdf
