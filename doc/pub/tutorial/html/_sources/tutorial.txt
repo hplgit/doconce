@@ -6,7 +6,7 @@ Doconce: Document Once, Include Anywhere
 ========================================
 
 :Author: Hans Petter Langtangen
-:Date: Aug 17, 2013
+:Date: Aug 31, 2013
 
  * When writing a note, report, manual, etc., do you find it difficult
    to choose the typesetting format? That is, to choose between plain
@@ -48,7 +48,7 @@ Some Doconce Features
 
   5. `Plain HTML <http://hplgit.github.com/teamods/writing_reports/_static/report.html>`_ or with a `template <http://hplgit.github.com/teamods/writing_reports/_static/report_vagrant.html>`_ or `another template <http://hplgit.github.com/teamods/writing_reports/_static/report_github_minimal.html>`_ or `solarized <http://hplgit.github.com/teamods/writing_reports/_static/report_solarized.html>`_
 
-  6. HTML for `Google <http://doconce-report-demo.blogspot.no/>`_ or `Wordpress <http://doconcereportdemo.wordpress.com/>`_ blogs
+  6. HTML for `Google <http://doconce-report-demo.blogspot.no/>`_ or `Wordpress <http://doconcereportdemo.wordpress.com/>`_ blog posts
 
   7. `MediaWiki <http://doconcedemo.shoutwiki.com/wiki/Doconce_demo_page>`_ (Wikipedia, Wikibooks, etc)
 
@@ -140,7 +140,7 @@ suited for thesis and books. IPython notebooks are ideal for
 documenting computational experiments, but do not (yet) meet the
 requirements of books and thesis.
 
-What about migrating a part of a book for blogging? What about making
+What about migrating a part of a book to blog posts? What about making
 an MS Word version of parts or an untagged text for inclusion in
 email?  What about efficiently generating slides in modern HTML5
 style?  Doconce enables all this with just *one source* (the slogan is
@@ -478,7 +478,7 @@ produce several different formats. The relevant commands should
 then be placed in a script that acts as a "makefile".
 
 The ``doconce makefile`` can be used to automatically generate
-such a makefile, more precisely a Bash script ``make.sh``, which
+such a makefile, more precisely a Python script ``make.py``, which
 carries out the commands explained below. If our Doconce source
 is in ``main_myproj.do.txt``, we run
 
@@ -488,12 +488,12 @@ is in ``main_myproj.do.txt``, we run
         doconce makefile main_myproj html pdflatex sphinx
 
 to produce the necessary output for generating HTML, pdfLaTeX, and
-Sphinx. Usually, you need to edit ``make.sh`` to really fit your
+Sphinx. Usually, you need to edit ``make.py`` to really fit your
 needs. Some examples lines are inserted as comments to show
 various options that can be added to the basic commands.
-A handy feature of the generated ``make.sh`` script is that it
-inserts checks for successful runs of the ``doconce format`` commands,
-and if something goes wrong, the ``make.sh`` exits.
+A handy feature of the generated ``make.py`` script is that it
+inserts checks for successful runs of the many ``doconce`` commands,
+and if something goes wrong, the script aborts.
 
 
 Preprocessing
@@ -689,22 +689,22 @@ raw HTML code. Google's Blogger service (``blogger.com`` or
 ``blogname.blogspot.com``) is particularly well suited since it also
 allows extensive LaTeX mathematics via MathJax.
 
-1. Write the blog text as a Doconce document without any
+1. Write the text of the blog post as a Doconce document without any
    title, author, and date.
 
 2. Generate HTML as described above.
 
 3. Copy the text and paste it into the
-   text area in the blog (just delete the HTML code that initially
+   text area in the blog post (just delete the HTML code that initially
    pops up in the text area). Make sure the input format is HTML.
 
 See a `simple blog example <http://doconce.blogspot.no>`_ and
 a `scientific report <http://doconce-report-demo.blogspot.no/>`_
-for demonstrations of blogs at ``blogspot.no``.
+for demonstrations of blog posts at ``blogspot.no``.
 
 
 .. warning::
-    In the readers' comments after the blog one cannot paste raw HTML
+    In the readers' comments after the blog post one cannot paste raw HTML
     code with MathJax
     scripts so there is no support for mathematics in the discussion forum.
 
@@ -724,12 +724,12 @@ for demonstrations of blogs at ``blogspot.no``.
                      mydoc2.do.txt
            done
            doconce format html mydoc2
-           # Paste mydoc2.html into a new blog page
+           # Paste mydoc2.html into a new blog post page
 
 
 Blog posts at Google can also be published `automatically through email <http://support.google.com/blogger/bin/answer.py?hl=en&answer=41452>`_.
 A Python program can send the contents of the HTML file
-to the blog's email address using the packages  ``smtplib`` and ``email``.
+to the blog site's email address using the packages  ``smtplib`` and ``email``.
 
 WordPress (``wordpress.com``) allows raw HTML code in blogs,
 but has very limited
@@ -738,7 +738,7 @@ LaTeX support, basically only formulas. The ``--wordpress`` option to
 in a way that is acceptable to WordPress.
 Look at a `simple doconce example <http://doconce.wordpress.com>`_
 and a `scientific report <http://doconcereportdemo.wordpress.com/>`_
-to see blogging with mathematics and code on WordPress.
+to see blog posts with mathematics and code on WordPress.
 
 Speaking of WordPress, the related project `<http://pressbooks.com>`_ can take raw HTML code (from Doconce, for
 instance) and produce very nice-looking books.  There is no support
@@ -936,7 +936,7 @@ The title, authors, and date are by default typeset in a non-standard
 way to enable a nicer treatment of multiple authors having
 institutions in common. However, the standard LaTeX "maketitle" heading
 is also available through ``-DLATEX_HEADING=traditional``.
-A separate titlepage can be generate by
+A separate titlepage can be generated by
 ``-DLATEX_HEADING=titlepage``.
 
 Preprocessor variables to be defined or undefined are
@@ -977,7 +977,7 @@ Preprocessor variables to be defined or undefined are
  * ``LINENUMBERS`` for inclusion of line numbers in the text.
 
  * ``COLORED_TABLE_ROWS`` for coloring every other table rows (set this
-   variable to ``gray`` or ``blue``)
+   variable to ``gray`` or ``blue``).
 
  * ``BLUE_SECTION_HEADINGS`` for blue section and subsection headings
 
@@ -985,7 +985,13 @@ Preprocessor variables to be defined or undefined are
    preamble (values: ``traditional`` for traditional LaTeX heading,
    ``titlepage`` for a separate titlepage, ``Springer_collection`` for
    edited volumes on Springer, ``beamer`` for Beamer slides, ``doconce_heading``
-   (default) for listing institutions after names)
+   (default) for listing institutions after names).
+
+ * ``LATEX_STYLE`` for speficying the style:
+   ``std`` for standard LaTeX, ``Springer_lncse``, ``Springer_T2``,
+   ``Springer_llncse`` (the latter three are not tested).
+   The style dictates the type of ``documentclass`` as well as inclusion of
+   special packages and commands.
 
 If you are not satisfied with the Doconce preamble, you can provide
 your own preamble by adding the command-line option ``--latex_preamble=myfile``.
@@ -1513,6 +1519,39 @@ When the Doconce file contains figures, each figure filename must in
 the ``.gwiki`` file be replaced by a URL where the figure is
 available. There are instructions in the file for doing this. Usually,
 one performs this substitution automatically (see next section).
+
+Google Docs
+-----------
+
+Google Docs are normally made online in the interactive editor. However,
+you may upload a Doconce document to Google Docs. This requires transforming
+the Doconce document to one of the accepted formats for Google Docs:
+
+ * OpenOffice: ``doconce format rst`` and then run
+   ``rst2odt`` (or ``rst2odt.py``). Upload the ``.odt`` file, click
+   *Open...* in Google Drive and choose *Google Docs* as viewer.
+
+ * MS Word: ``doconce format pandoc`` and then run ``pandoc`` to
+   produce a ``.docx`` file that can be uploaded to Google Drive
+   and opened in Google Docs.
+
+ * RTF: ``doconce format pandoc`` and then run ``pandoc`` to produce
+   a ``.rtf`` file that can be uploaded to Google Drive and opened.
+   Another possibility is to run ``doconce format latex`` and
+   then `latex2rtf <http://sourceforge.net/projects/latex2rtf>`_
+   (the support of mathematics has gotten worse).
+
+ * Plain text: ``doconce format plain``. Upload the ``.txt`` file
+   to Google Drive and open in Google Docs.
+
+ * HTML: ``doconce format html``. Upload the ``.html`` file and
+   open in Google Docs. Complicated HTML files can be misinterpreted
+   by Google Docs.
+
+This is not yet much tested. It remains to see how code becomes in
+Google Docs. Support for mathematics is probably impossible until
+Google Docs can import LaTeX files, but LaTeX mathematics can be embedded
+in Google Docs and the `googledoc2latex <http://code.google.com/p/googledoc2latex>`_ script can convert a Google document to LaTeX.
 
 Tweaking the Doconce Output
 ---------------------------

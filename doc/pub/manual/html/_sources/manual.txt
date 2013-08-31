@@ -5,7 +5,7 @@ Doconce Description
 ===================
 
 :Author: Hans Petter Langtangen
-:Date: Aug 16, 2013
+:Date: Aug 31, 2013
 
 .. lines beginning with # are doconce comment lines
 
@@ -34,7 +34,7 @@ Word, HTML, LaTeX, PDF, DocBook, GNU Texinfo, and more.
 Doconce supports a working strategy of never duplicating information.
 Text is written in a single place and then transformed to a number of
 different destinations of diverse type: scientific reports, software
-manuals, books, thesis, software source code, wikis, blogs, emails,
+manuals, books, thesis, software source code, wikis, blog posts, emails,
 etc.  The slogan is: "Write once, include anywhere".
 
 Here are some Doconce features:
@@ -45,14 +45,14 @@ Here are some Doconce features:
     such as LaTeX, pdfLaTeX, Sphinx, HTML,
     MediaWiki, blogger.com, and wordpress.com.
     A piece of Doconce text can enter (e.g.) a classical
-    science book, an ebook, a web document, and a blog.
+    science book, an ebook, a web document, and a blog post.
 
   * Doconce targets in particular large book projects where many different
     pieces of text and software can be assembled and published in different
     formats for different devices.
 
   * Doconce enables authors who write for many times of media
-    (blogs, wikis, LaTeX manuscripts, Sphinx, HTML) to use a common
+    (blog posts, wikis, LaTeX manuscripts, Sphinx, HTML) to use a common
     source language such that lots of different pieces can easily be
     brought together later to form a coherent (big) document.
 
@@ -675,7 +675,7 @@ produce several different formats. The relevant commands should
 then be placed in a script that acts as a "makefile".
 
 The ``doconce makefile`` can be used to automatically generate
-such a makefile, more precisely a Bash script ``make.sh``, which
+such a makefile, more precisely a Python script ``make.py``, which
 carries out the commands explained below. If our Doconce source
 is in ``main_myproj.do.txt``, we run
 
@@ -685,12 +685,12 @@ is in ``main_myproj.do.txt``, we run
         doconce makefile main_myproj html pdflatex sphinx
 
 to produce the necessary output for generating HTML, pdfLaTeX, and
-Sphinx. Usually, you need to edit ``make.sh`` to really fit your
+Sphinx. Usually, you need to edit ``make.py`` to really fit your
 needs. Some examples lines are inserted as comments to show
 various options that can be added to the basic commands.
-A handy feature of the generated ``make.sh`` script is that it
-inserts checks for successful runs of the ``doconce format`` commands,
-and if something goes wrong, the ``make.sh`` exits.
+A handy feature of the generated ``make.py`` script is that it
+inserts checks for successful runs of the many ``doconce`` commands,
+and if something goes wrong, the script aborts.
 
 
 Preprocessing
@@ -886,22 +886,22 @@ raw HTML code. Google's Blogger service (``blogger.com`` or
 ``blogname.blogspot.com``) is particularly well suited since it also
 allows extensive LaTeX mathematics via MathJax.
 
-1. Write the blog text as a Doconce document without any
+1. Write the text of the blog post as a Doconce document without any
    title, author, and date.
 
 2. Generate HTML as described above.
 
 3. Copy the text and paste it into the
-   text area in the blog (just delete the HTML code that initially
+   text area in the blog post (just delete the HTML code that initially
    pops up in the text area). Make sure the input format is HTML.
 
 See a `simple blog example <http://doconce.blogspot.no>`_ and
 a `scientific report <http://doconce-report-demo.blogspot.no/>`_
-for demonstrations of blogs at ``blogspot.no``.
+for demonstrations of blog posts at ``blogspot.no``.
 
 
 .. warning::
-    In the readers' comments after the blog one cannot paste raw HTML
+    In the readers' comments after the blog post one cannot paste raw HTML
     code with MathJax
     scripts so there is no support for mathematics in the discussion forum.
 
@@ -921,12 +921,12 @@ for demonstrations of blogs at ``blogspot.no``.
                      mydoc2.do.txt
            done
            doconce format html mydoc2
-           # Paste mydoc2.html into a new blog page
+           # Paste mydoc2.html into a new blog post page
 
 
 Blog posts at Google can also be published `automatically through email <http://support.google.com/blogger/bin/answer.py?hl=en&answer=41452>`_.
 A Python program can send the contents of the HTML file
-to the blog's email address using the packages  ``smtplib`` and ``email``.
+to the blog site's email address using the packages  ``smtplib`` and ``email``.
 
 WordPress (``wordpress.com``) allows raw HTML code in blogs,
 but has very limited
@@ -935,7 +935,7 @@ LaTeX support, basically only formulas. The ``--wordpress`` option to
 in a way that is acceptable to WordPress.
 Look at a `simple doconce example <http://doconce.wordpress.com>`_
 and a `scientific report <http://doconcereportdemo.wordpress.com/>`_
-to see blogging with mathematics and code on WordPress.
+to see blog posts with mathematics and code on WordPress.
 
 Speaking of WordPress, the related project `<http://pressbooks.com>`_ can take raw HTML code (from Doconce, for
 instance) and produce very nice-looking books.  There is no support
@@ -1133,7 +1133,7 @@ The title, authors, and date are by default typeset in a non-standard
 way to enable a nicer treatment of multiple authors having
 institutions in common. However, the standard LaTeX "maketitle" heading
 is also available through ``-DLATEX_HEADING=traditional``.
-A separate titlepage can be generate by
+A separate titlepage can be generated by
 ``-DLATEX_HEADING=titlepage``.
 
 Preprocessor variables to be defined or undefined are
@@ -1174,7 +1174,7 @@ Preprocessor variables to be defined or undefined are
  * ``LINENUMBERS`` for inclusion of line numbers in the text.
 
  * ``COLORED_TABLE_ROWS`` for coloring every other table rows (set this
-   variable to ``gray`` or ``blue``)
+   variable to ``gray`` or ``blue``).
 
  * ``BLUE_SECTION_HEADINGS`` for blue section and subsection headings
 
@@ -1182,7 +1182,13 @@ Preprocessor variables to be defined or undefined are
    preamble (values: ``traditional`` for traditional LaTeX heading,
    ``titlepage`` for a separate titlepage, ``Springer_collection`` for
    edited volumes on Springer, ``beamer`` for Beamer slides, ``doconce_heading``
-   (default) for listing institutions after names)
+   (default) for listing institutions after names).
+
+ * ``LATEX_STYLE`` for speficying the style:
+   ``std`` for standard LaTeX, ``Springer_lncse``, ``Springer_T2``,
+   ``Springer_llncse`` (the latter three are not tested).
+   The style dictates the type of ``documentclass`` as well as inclusion of
+   special packages and commands.
 
 If you are not satisfied with the Doconce preamble, you can provide
 your own preamble by adding the command-line option ``--latex_preamble=myfile``.
@@ -1710,6 +1716,39 @@ When the Doconce file contains figures, each figure filename must in
 the ``.gwiki`` file be replaced by a URL where the figure is
 available. There are instructions in the file for doing this. Usually,
 one performs this substitution automatically (see next section).
+
+Google Docs
+-----------
+
+Google Docs are normally made online in the interactive editor. However,
+you may upload a Doconce document to Google Docs. This requires transforming
+the Doconce document to one of the accepted formats for Google Docs:
+
+ * OpenOffice: ``doconce format rst`` and then run
+   ``rst2odt`` (or ``rst2odt.py``). Upload the ``.odt`` file, click
+   *Open...* in Google Drive and choose *Google Docs* as viewer.
+
+ * MS Word: ``doconce format pandoc`` and then run ``pandoc`` to
+   produce a ``.docx`` file that can be uploaded to Google Drive
+   and opened in Google Docs.
+
+ * RTF: ``doconce format pandoc`` and then run ``pandoc`` to produce
+   a ``.rtf`` file that can be uploaded to Google Drive and opened.
+   Another possibility is to run ``doconce format latex`` and
+   then `latex2rtf <http://sourceforge.net/projects/latex2rtf>`_
+   (the support of mathematics has gotten worse).
+
+ * Plain text: ``doconce format plain``. Upload the ``.txt`` file
+   to Google Drive and open in Google Docs.
+
+ * HTML: ``doconce format html``. Upload the ``.html`` file and
+   open in Google Docs. Complicated HTML files can be misinterpreted
+   by Google Docs.
+
+This is not yet much tested. It remains to see how code becomes in
+Google Docs. Support for mathematics is probably impossible until
+Google Docs can import LaTeX files, but LaTeX mathematics can be embedded
+in Google Docs and the `googledoc2latex <http://code.google.com/p/googledoc2latex>`_ script can convert a Google document to LaTeX.
 
 Tweaking the Doconce Output
 ---------------------------
@@ -2562,14 +2601,14 @@ Here is an example on a specific generalized reference:
         the document "A Document for Testing Doconce": "http://hplgit.github.io/doconce/test/demo_testdoc.html"
         cite{testdoc:12}], Doconce documents may include movies.
 
-In LaTeX, this becomes
+In LaTeX, this becomes something like
 
 .. code-block:: text
 
 
         As explained in
         Section~\ref{subsec:ex} in
-        \href{{http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex}}{Langtangen, 2012}
+        \href{{http://hplgit.github.io/doconce/...}}{Langtangen, 2012}
         \cite{testdoc:12}, Doconce documents may include movies.
 
 Note that there is a specific numbered reference to an external
@@ -2579,46 +2618,6 @@ a link to the document using the name of the other or some other
 relevant link text. The link can be the same or different from
 links used in the "external" part of the reference (LaTeX cannot
 have links to local files, so a complete URL must be used).
-
-Translation to Sphinx or reStructuredText results in
-
-.. code-block:: text
-
-
-        As explained in
-        a `section <testdoc.html#___sec2>`_ in
-        the document `A Document for Testing Doconce <testdoc.html>`_
-        [testdoc:12]_, Doconce documents may include movies.
-
-In plain HTML, this becomes
-
-.. code-block:: text
-
-
-        As explained in
-        a <a href="testdoc.html#___sec2">section</a> in
-        the document <a href="testdoc.html">A Document for Testing Doconce</a>
-        <a href="#testdoc:12">[1]</a>, Doconce documents may include movies.
-
-The plain text format reads
-
-.. code-block:: text
-
-
-        As explained in
-        a section (testdoc.html#___sec2) in
-        the document A Document for Testing Doconce (testdoc.html)
-        [1], Doconce documents may include movies.
-
-And in Pandoc-exteded Markdown we have
-
-.. code-block:: text
-
-
-        As explained in
-        a [section](testdoc.html#___sec2) in
-        the document [A Document for Testing Doconce](testdoc.html)
-        @testdoc:12, Doconce documents may include movies.
 
 
 Index
@@ -3732,6 +3731,14 @@ to another location (you can always check ``.mydoc_html_file_collection``
 for a list of all the files that are needed to display this HTML
 document).
 
+MathJax cannot refer to equations defined in other HTML files, but
+the ``doconce split_html`` fixes this problem. Note, however, that
+running ``doconce split_html`` leads to another equation numbering
+than in the original HTML document. In the latter, we use AMS
+equation numbering, which means that the standard LaTeX conventions
+are followed, while in the splitted document only the subset of
+equations with labels are given numbers.
+
 The HTML documents have very simple navigation buttons for the previous
 and next document. These are not customizable directly, but one can easily
 look up the HTML code and use ``doconce replace`` to edit the links to
@@ -4186,15 +4193,24 @@ Doconce syntax is not treated properly.
 General Problems
 ----------------
 
-Spellcheck reports a lot of mistakes related LaTeX math
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Spellcheck reports a lot of mistakes related to LaTeX math
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The ``doconce spellcheck`` command should ignore LaTeX math, but if
 the dollar signs for inline math are not correct (one missing, for instance),
 a lot of math enters the text to be spellchecked. Invoke the
-relevant ``tmp_missing_*`` file and search for the math expressions that
-are reported as misspellings. This will fortunately give you hint of
-what is wrong with the math typesetting.
+relevant ``tmp_missing_*`` file and find the first math-style expression that
+is reported as misspelling. Open the corresponding stripped file,
+``tmp_stripped_*``, which is supposed to have all the math stripped
+away, and search for the misspelling. When you find it, you will see
+that there are math expressions in the stripped file that should not
+be there. (Because of wrong begin and end signs around math expressions
+ordinary text has instead been stripped away. This way, a missing dollar
+sign can lead to hundreds of misspellings.)
+Find the problem in the corresponding Doconce file and correct it.
+A similar error can be caused by wrong matching
+of equation environments between ``!bt`` and ``!et``.
+
 
 Doconce aborts because of a syntax error that is not an error
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -4239,10 +4255,15 @@ The error message will ask you to rerun ``doconce`` with
 ``--mako_strict_undefined``, which will display the variable that
 is confusing Mako. However, do not continue to use
 ``--mako_strict_undefined`` while you are debugging because this
-variable will then always be undefined in that mode.
-Use ``# #ifdef`` directives to comment out large portions of
+variable or a new variable will then always be undefined in that mode.
+Rerun without ``--mako_strict_undefined`` to see if the problem
+is gone. If not, try the option again, and if no progress,
+use ``# #ifdef`` directives to comment out large portions of
 the text and apply a "bisection" procedure to locate where
 the Mako problem is (without ``--mako_strict_undefined``).
+A "bisection" procedure means that you comment out the last half,
+find in which half the problem is, comment out half of that half,
+find in which half the problem is, and so on.
 
 Something goes wrong in the preprocessing step
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -4625,6 +4646,12 @@ the cause is usually a verbatim inline text (in back-ticks in the
 Doconce file) spans more than one line. Make sure, in the Doconce source,
 that all inline verbatim text appears on the same line.
 
+The LaTeX Beamer file does not compile
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Make sure you have a ``!split`` before every slide heading.
+
+
 Inline verbatim gives error
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -4785,6 +4812,12 @@ simply by automatic editing of the HTML code in a little shell script:
          '<hr style="width: 50%">' mydoc.html
 
 
+Tools for Writing Doconce Document
+----------------------------------
+
+ * Emacs (with the modest Doconce syntax highlighting), Vim, Gedit, etc.
+
+ * `TeXMaker <http://www.xm1math.net/texmaker/>`_ and `Kile <http://kile.sourceforge.net/>`_ can in theory be adapted to handle Doconce compilation and maybe even Doconce constructs.
 
 Debugging
 ---------

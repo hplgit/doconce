@@ -44895,7 +44895,7 @@ Old days (1985-2005): LaTeX for BW paper output, but now
    o Colorful PDF books (printed and screen)
    o Designed web pages
    o Wikis
-   o Bloggs
+   o Blog posts
    o Next new fancy format (iBook w/LaTeX?)
 !eslidecell
 
@@ -44910,7 +44910,7 @@ FIGURE: [../doc/src/slides/fig/jungle_with_mess.jpg, width=500]
 When I write some scientific material,
 
  * a LaTeX document,
- * a blogg (HTML),
+ * a blog post (HTML),
  * some web pages (HTML),
  * a Sphinx document,
  * some Markdown files,
@@ -44967,7 +44967,7 @@ URL: "http://hplgit.github.com/teamods/writing_reports/"
  * LaTeX-based PDF "for screen": "http://hplgit.github.com/teamods/writing_reports/_static/report.pdf", "for printing": "http://hplgit.github.com/teamods/writing_reports/_static/report_4printing.pdf", "for phone": "http://hplgit.github.com/teamods/writing_reports/_static/report_4phone.pdf"
  * "Plain HTML": "http://hplgit.github.com/teamods/writing_reports/_static/report_do.html" or with a "template": "http://hplgit.github.com/teamods/writing_reports/_static/report_vagrant.html" or "another template": "http://hplgit.github.com/teamods/writing_reports/_static/report_github_minimal.html" or "solarized": "http://hplgit.github.com/teamods/writing_reports/_static/report_solarized.html"
  * Sphinx: "agni": "http://hplgit.github.com/teamods/writing_reports/_static/sphinx-agni/index.html", "pyramid": "http://hplgit.github.com/teamods/writing_reports/_static/sphinx-pyramid/report.html", "classy": "http://hplgit.github.com/teamods/writing_reports/_static/sphinx-classy/report.html", "fenics": "http://hplgit.github.com/teamods/writing_reports/_static/sphinx-fenics_minimal/report.html", "redcloud": "http://hplgit.github.com/teamods/writing_reports/_static/sphinx-fenics_minimal/report.html"
- * HTML for "Google": "http://doconce-report-demo.blogspot.no/" or "Wordpress": "http://doconcereportdemo.wordpress.com/" blogs
+ * HTML for "Google": "http://doconce-report-demo.blogspot.no/" or "Wordpress": "http://doconcereportdemo.wordpress.com/" blog posts
  * "MediaWiki": "http://doconcedemo.shoutwiki.com/wiki/Doconce_demo_page" (Wikipedia, Wikibooks, etc)
  * Doconce "source code": "http://hplgit.github.com/teamods/writing_reports/_static/report.do.txt.html" and "manual": "http://hplgit.github.io/doconce/doc/src/pub/manual/html/manual.html"
 
@@ -45777,7 +45777,7 @@ Old days (1985-2005): LaTeX for BW paper output, but now
   <p><li> Colorful PDF books (printed and screen)</li>
   <p><li> Designed web pages</li>
   <p><li> Wikis</li>
-  <p><li> Bloggs</li>
+  <p><li> Blog posts</li>
   <p><li> Next new fancy format (iBook w/LaTeX?)</li>
 </ol>
 <p>
@@ -45809,7 +45809,7 @@ When I write some scientific material,
 
 <ul>
  <p><li> a LaTeX document,</li>
- <p><li> a blogg (HTML),</li>
+ <p><li> a blog post (HTML),</li>
  <p><li> some web pages (HTML),</li>
  <p><li> a Sphinx document,</li>
  <p><li> some Markdown files,</li>
@@ -45917,7 +45917,7 @@ based on HTML and vice versa.
  <p><li> LaTeX-based PDF <a href="http://hplgit.github.com/teamods/writing_reports/_static/report.pdf">for screen</a>, <a href="http://hplgit.github.com/teamods/writing_reports/_static/report_4printing.pdf">for printing</a>, <a href="http://hplgit.github.com/teamods/writing_reports/_static/report_4phone.pdf">for phone</a></li>
  <p><li> <a href="http://hplgit.github.com/teamods/writing_reports/_static/report_do.html">Plain HTML</a> or with a <a href="http://hplgit.github.com/teamods/writing_reports/_static/report_vagrant.html">template</a> or <a href="http://hplgit.github.com/teamods/writing_reports/_static/report_github_minimal.html">another template</a> or <a href="http://hplgit.github.com/teamods/writing_reports/_static/report_solarized.html">solarized</a></li>
  <p><li> Sphinx: <a href="http://hplgit.github.com/teamods/writing_reports/_static/sphinx-agni/index.html">agni</a>, <a href="http://hplgit.github.com/teamods/writing_reports/_static/sphinx-pyramid/report.html">pyramid</a>, <a href="http://hplgit.github.com/teamods/writing_reports/_static/sphinx-classy/report.html">classy</a>, <a href="http://hplgit.github.com/teamods/writing_reports/_static/sphinx-fenics_minimal/report.html">fenics</a>, <a href="http://hplgit.github.com/teamods/writing_reports/_static/sphinx-fenics_minimal/report.html">redcloud</a></li>
- <p><li> HTML for <a href="http://doconce-report-demo.blogspot.no/">Google</a> or <a href="http://doconcereportdemo.wordpress.com/">Wordpress</a> blogs</li>
+ <p><li> HTML for <a href="http://doconce-report-demo.blogspot.no/">Google</a> or <a href="http://doconcereportdemo.wordpress.com/">Wordpress</a> blog posts</li>
  <p><li> <a href="http://doconcedemo.shoutwiki.com/wiki/Doconce_demo_page">MediaWiki</a> (Wikipedia, Wikibooks, etc)</li>
  <p><li> Doconce <a href="http://hplgit.github.com/teamods/writing_reports/_static/report.do.txt.html">source code</a> and <a href="http://hplgit.github.io/doconce/doc/src/pub/manual/html/manual.html">manual</a></li>
 </ul>
@@ -47084,7 +47084,7 @@ Old days (1985-2005): {\LaTeX} for BW paper output, but now
 
   \item Wikis
 
-  \item Bloggs
+  \item Blog posts
 
   \item Next new fancy format (iBook w/LaTeX?)
 \end{enumerate}
@@ -47109,7 +47109,7 @@ When I write some scientific material,
 \begin{itemize}
  \item a {\LaTeX} document,
 
- \item a blogg (HTML),
+ \item a blog post (HTML),
 
  \item some web pages (HTML),
 
@@ -47203,7 +47203,7 @@ based on HTML and vice versa.
 
  \item Sphinx: \href{{http://hplgit.github.com/teamods/writing_reports/_static/sphinx-agni/index.html}}{agni}, \href{{http://hplgit.github.com/teamods/writing_reports/_static/sphinx-pyramid/report.html}}{pyramid}, \href{{http://hplgit.github.com/teamods/writing_reports/_static/sphinx-classy/report.html}}{classy}, \href{{http://hplgit.github.com/teamods/writing_reports/_static/sphinx-fenics_minimal/report.html}}{fenics}, \href{{http://hplgit.github.com/teamods/writing_reports/_static/sphinx-fenics_minimal/report.html}}{redcloud}
 
- \item HTML for \href{{http://doconce-report-demo.blogspot.no/}}{Google} or \href{{http://doconcereportdemo.wordpress.com/}}{Wordpress} blogs
+ \item HTML for \href{{http://doconce-report-demo.blogspot.no/}}{Google} or \href{{http://doconcereportdemo.wordpress.com/}}{Wordpress} blog posts
 
  \item \href{{http://doconcedemo.shoutwiki.com/wiki/Doconce_demo_page}}{MediaWiki} (Wikipedia, Wikibooks, etc)
 
@@ -47988,7 +47988,7 @@ Old days (1985-2005): {\LaTeX} for BW paper output, but now
 
   \item Wikis
 
-  \item Bloggs
+  \item Blog posts
 
   \item Next new fancy format (iBook w/LaTeX?)
 \end{enumerate}
@@ -48012,7 +48012,7 @@ When I write some scientific material,
 \begin{itemize}
  \item a {\LaTeX} document,
 
- \item a blogg (HTML),
+ \item a blog post (HTML),
 
  \item some web pages (HTML),
 
@@ -48119,7 +48119,7 @@ based on HTML and vice versa.
 
  \item Sphinx: \href{{http://hplgit.github.com/teamods/writing_reports/_static/sphinx-agni/index.html}}{agni}, \href{{http://hplgit.github.com/teamods/writing_reports/_static/sphinx-pyramid/report.html}}{pyramid}, \href{{http://hplgit.github.com/teamods/writing_reports/_static/sphinx-classy/report.html}}{classy}, \href{{http://hplgit.github.com/teamods/writing_reports/_static/sphinx-fenics_minimal/report.html}}{fenics}, \href{{http://hplgit.github.com/teamods/writing_reports/_static/sphinx-fenics_minimal/report.html}}{redcloud}
 
- \item HTML for \href{{http://doconce-report-demo.blogspot.no/}}{Google} or \href{{http://doconcereportdemo.wordpress.com/}}{Wordpress} blogs
+ \item HTML for \href{{http://doconce-report-demo.blogspot.no/}}{Google} or \href{{http://doconcereportdemo.wordpress.com/}}{Wordpress} blog posts
 
  \item \href{{http://doconcedemo.shoutwiki.com/wiki/Doconce_demo_page}}{MediaWiki} (Wikipedia, Wikibooks, etc)
 
@@ -50325,7 +50325,7 @@ And here is a table:
 <h6>Dept. of Informatics, Univ. of Oslo</h6>
 </center>
 
-<center>Sat, 31 Aug 2013 (01:48)</center>
+<center>Sat, 31 Aug 2013 (01:52)</center>
 
 
 
@@ -50456,7 +50456,7 @@ And here is a table:
 <h6>Dept. of Informatics, Univ. of Oslo</h6>
 </center>
 
-<center>Sat, 31 Aug 2013 (01:48)</center>
+<center>Sat, 31 Aug 2013 (01:52)</center>
 
 
 
@@ -50715,7 +50715,7 @@ Doconce currently translates files to the following formats:
 
 For documents with much code and mathematics, the best (and most supported)
 formats are `latex`, `pdflatex`, `sphinx`, and `html`; and to a slightly
-less extent `mwiki` and `pandoc`. The HTML format supports blogging on
+less extent `mwiki` and `pandoc`. The HTML format supports blog posts on
 Google and Wordpress.
 
 
@@ -51708,7 +51708,7 @@ Doconce currently translates files to the following formats:
 
 For documents with much code and mathematics, the best (and most supported)
 formats are <code>latex</code>, <code>pdflatex</code>, <code>sphinx</code>, and <code>html</code>; and to a slightly
-less extent <code>mwiki</code> and <code>pandoc</code>. The HTML format supports blogging on
+less extent <code>mwiki</code> and <code>pandoc</code>. The HTML format supports blog posts on
 Google and Wordpress.
 
 <h3>Emacs syntax support  <a name="___sec1"></a></h3>
@@ -53191,7 +53191,7 @@ Doconce currently translates files to the following formats:
 \noindent
 For documents with much code and mathematics, the best (and most supported)
 formats are \code{latex}, \code{pdflatex}, \code{sphinx}, and \code{html}; and to a slightly
-less extent \code{mwiki} and \code{pandoc}. The HTML format supports blogging on
+less extent \code{mwiki} and \code{pandoc}. The HTML format supports blog posts on
 Google and Wordpress.
 
 
@@ -54257,7 +54257,7 @@ Doconce currently translates files to the following formats:
 
 For documents with much code and mathematics, the best (and most supported)
 formats are ``latex``, ``pdflatex``, ``sphinx``, and ``html``; and to a slightly
-less extent ``mwiki`` and ``pandoc``. The HTML format supports blogging on
+less extent ``mwiki`` and ``pandoc``. The HTML format supports blog posts on
 Google and Wordpress.
 
 
@@ -55317,7 +55317,7 @@ Doconce currently translates files to the following formats:
 
 For documents with much code and mathematics, the best (and most supported)
 formats are ``latex``, ``pdflatex``, ``sphinx``, and ``html``; and to a slightly
-less extent ``mwiki`` and ``pandoc``. The HTML format supports blogging on
+less extent ``mwiki`` and ``pandoc``. The HTML format supports blog posts on
 Google and Wordpress.
 
 
@@ -56434,7 +56434,7 @@ Doconce currently translates files to the following formats:
 
 For documents with much code and mathematics, the best (and most supported)
 formats are `latex`, `pdflatex`, `sphinx`, and `html`; and to a slightly
-less extent `mwiki` and `pandoc`. The HTML format supports blogging on
+less extent `mwiki` and `pandoc`. The HTML format supports blog posts on
 Google and Wordpress.
 
 
@@ -57382,7 +57382,7 @@ Doconce currently translates files to the following formats:
 
 For documents with much code and mathematics, the best (and most supported)
 formats are <code>latex</code>, <code>pdflatex</code>, <code>sphinx</code>, and <code>html</code>; and to a slightly
-less extent <code>mwiki</code> and <code>pandoc</code>. The HTML format supports blogging on
+less extent <code>mwiki</code> and <code>pandoc</code>. The HTML format supports blog posts on
 Google and Wordpress.
 
 
@@ -58380,7 +58380,7 @@ Doconce currently translates files to the following formats:
 
 For documents with much code and mathematics, the best (and most supported)
 formats are {{{latex}}}, {{{pdflatex}}}, {{{sphinx}}}, and {{{html}}}; and to a slightly
-less extent {{{mwiki}}} and {{{pandoc}}}. The HTML format supports blogging on
+less extent {{{mwiki}}} and {{{pandoc}}}. The HTML format supports blog posts on
 Google and Wordpress.
 
 
@@ -59321,7 +59321,7 @@ Doconce currently translates files to the following formats:
 
 For documents with much code and mathematics, the best (and most supported)
 formats are 'latex', 'pdflatex', 'sphinx', and 'html'; and to a slightly
-less extent 'mwiki' and 'pandoc'. The HTML format supports blogging on
+less extent 'mwiki' and 'pandoc'. The HTML format supports blog posts on
 Google and Wordpress.
 
 
@@ -60293,7 +60293,7 @@ Doconce currently translates files to the following formats:
 
 For documents with much code and mathematics, the best (and most supported)
 formats are C{latex}, C{pdflatex}, C{sphinx}, and C{html}; and to a slightly
-less extent C{mwiki} and C{pandoc}. The HTML format supports blogging on
+less extent C{mwiki} and C{pandoc}. The HTML format supports blog posts on
 Google and Wordpress.
 
 
@@ -61313,7 +61313,7 @@ Doconce currently translates files to the following formats:
 
 For documents with much code and mathematics, the best (and most supported)
 formats are latex, pdflatex, sphinx, and html; and to a slightly
-less extent mwiki and pandoc. The HTML format supports blogging on
+less extent mwiki and pandoc. The HTML format supports blog posts on
 Google and Wordpress.
 
 
@@ -62356,7 +62356,7 @@ Doconce currently translates files to the following formats:
 
 For documents with much code and mathematics, the best (and most supported)
 formats are `latex`, `pdflatex`, `sphinx`, and `html`; and to a slightly
-less extent `mwiki` and `pandoc`. The HTML format supports blogging on
+less extent `mwiki` and `pandoc`. The HTML format supports blog posts on
 Google and Wordpress.
 
 
