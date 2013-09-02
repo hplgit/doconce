@@ -2165,10 +2165,15 @@ The error message will ask you to rerun `doconce` with
 `--mako_strict_undefined`, which will display the variable that
 is confusing Mako. However, do not continue to use
 `--mako_strict_undefined` while you are debugging because this
-variable will then always be undefined in that mode.
-Use `# #ifdef` directives to comment out large portions of
+variable or a new variable will then always be undefined in that mode.
+Rerun without `--mako_strict_undefined` to see if the problem
+is gone. If not, try the option again, and if no progress,
+use `# #ifdef` directives to comment out large portions of
 the text and apply a "bisection" procedure to locate where
 the Mako problem is (without `--mako_strict_undefined`).
+A "bisection" procedure means that you comment out the last half,
+find in which half the problem is, comment out half of that half,
+find in which half the problem is, and so on.
 
 === Something goes wrong in the preprocessing step ===
 
@@ -2479,6 +2484,11 @@ If the problem is undefined control sequence involving
 the cause is usually a verbatim inline text (in back-ticks in the
 Doconce file) spans more than one line. Make sure, in the Doconce source,
 that all inline verbatim text appears on the same line.
+
+=== The LaTeX Beamer file does not compile ===
+
+Make sure you have a `!split` before every slide heading.
+
 
 === Inline verbatim gives error  ===
 
