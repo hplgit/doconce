@@ -487,7 +487,7 @@ def doconce_exercise_output(exer,
                 s += '\n# ' + envir_delimiter_lines['hint'][0] + '\n'
             s += '\n' + hint_header_ + hint + '\n'
             if exer['type'] != 'Example':
-                s += '# ' + envir_delimiter_lines['hint'][1] + '\n'
+                s += '\n# ' + envir_delimiter_lines['hint'][1] + '\n'
 
     if exer['answer']:
         s += '\n'
