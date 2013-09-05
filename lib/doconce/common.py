@@ -497,7 +497,7 @@ def doconce_exercise_output(exer,
             s += '\n# ' + envir_delimiter_lines['ans'][0] + '\n'
         s += answer_header + '\n' + exer['answer'] + '\n'
         if exer['type'] != 'Example':
-            s += '# ' + envir_delimiter_lines['ans'][1] + '\n'
+            s += '\n# ' + envir_delimiter_lines['ans'][1] + '\n'
 
 
     if exer['solution']:
@@ -513,7 +513,7 @@ def doconce_exercise_output(exer,
             s += 'Code:\n'
         s += exer['solution'] + '\n'
         if exer['type'] != 'Example':
-            s += '# ' + envir_delimiter_lines['sol'][1] + '\n'
+            s += '\n# ' + envir_delimiter_lines['sol'][1] + '\n'
 
     if exer['subex']:
         s += '\n'
@@ -535,7 +535,7 @@ def doconce_exercise_output(exer,
                         s += '\n# ' + envir_delimiter_lines['hint'][0] + '\n'
                     s += '\n' + hint_header_ + hint + '\n'
                     if exer['type'] != 'Example':
-                        s += '# ' + envir_delimiter_lines['hint'][1] + '\n'
+                        s += '\n# ' + envir_delimiter_lines['hint'][1] + '\n'
 
                 if subex['file']:
                     if len(subex['file']) == 1:
@@ -550,7 +550,7 @@ def doconce_exercise_output(exer,
                         s += '\n# ' + envir_delimiter_lines['ans'][0] + '\n'
                     s += answer_header + '\n' + subex['answer'] + '\n'
                     if exer['type'] != 'Example':
-                        s += '# ' + envir_delimiter_lines['ans'][1] + '\n'
+                        s += '\n# ' + envir_delimiter_lines['ans'][1] + '\n'
 
                 if subex['solution']:
                     s += '\n'
@@ -564,7 +564,7 @@ def doconce_exercise_output(exer,
                         s += 'Code:\n'
                     s += subex['solution'] + '\n'
                     if exer['type'] != 'Example':
-                        s += '# ' + envir_delimiter_lines['sol'][1] + '\n'
+                        s += '\n# ' + envir_delimiter_lines['sol'][1] + '\n'
 
     if exer['file']:
         if exer['subex']:
