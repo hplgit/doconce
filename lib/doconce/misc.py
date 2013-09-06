@@ -5770,111 +5770,380 @@ def makefile():
 """
 Automatically generated file for compiling doconce documents.
 """
-import sys
+import sys, glob, os
+
+unix_command_recorder = []
 
 def system(command):
     failure = os.system(command)
     if failure:
         print 'Could not run\n', command
         sys.exit(1)
+    else:
+        unix_command_recorder.append(cmd)  # record command for bash script
 
-def spellcheck(name):
-    cmd = 'doconce spellcheck -d .dict4spell.txt *.do.txt'
-    system(cmd)
+def spellcheck():
+    for filename in glob.glob('*.do.txt'):
+        if not filename.startswith('tmp'):
+            cmd = 'doconce spellcheck -d .dict4spell.txt %(filename)s' % vars()
+            system(cmd)
 
-def latex(name, latex_options='', latex_program='pdflatex',
-          ptex2tex_options=''):
+def latex(name,
+          latex_program='pdflatex',    # or 'latex'
+          options='',
+          ptex2tex_program='doconce',   # or 'ptex2tex' with .ptex2tex.cfg
+          ptex2tex_options='',
+          ptex2tex_envir='minted'):
+    """
+    Make latex/pdflatex (according to `latex_program`) PDF file from
+    the doconce file `name` (without any .do.txt extension).
+    """
+    if name.endswith('.do.txt'):
+        name = name.replace('.do.txt', '')
+    system('rm -f *.aux')
+
     # Compile source
-    cmd = 'doconce format %(latex_program)ss %(name)s %(latex_options)s ' % vars()
-    # Add options manually here
-    # cmd += '-DVAR1=value1 ...'
+    cmd = 'doconce format %(latex_program)ss %(name)s %(options)s ' % vars()
     system(cmd)
 
     # Transform .p.tex to .tex
-    cmd = 'doconce ptex2tex %(name) %(ptex2tex_options)s envir=minted' % vars()
-    # Add options manually here
-    #cmd += '-DVAR2=value2 ...'
+    cmd = 'doconce ptex2tex %(name) %(ptex2tex_options)s envir="%(ptex2tex_envir)s"' % vars()
     system(cmd)
 
     # Run latex
-    cmd_latex = '%(latex_program)s %(name)s' % vars()
+    shell_escape = '-shell-escape' if ptex2tex_envir == 'minted' else ''
+    cmd_latex = '%(latex_program)s %(shell_escape)s %(name)s' % vars()
     system(cmd_latex)
-    cmd = 'makeindex %(name)s' % vars()
-    system(cmd)
-    cmd = 'bibtex %(name)s' % vars()
-    system(cmd)
+    dofile = open(name + '.do.txt', 'r')
+    text = dofile.read()
+    dofile.close()
+    if 'idx{' in text:
+        cmd = 'makeindex %(name)s' % vars()
+        system(cmd)
+    if 'BIBFILE:' in text:
+        cmd = 'bibtex %(name)s' % vars()
+        system(cmd)
     system(cmd_latex)
     system(cmd_latex)
     if latex_program == 'latex':
         cmd = 'dvipdf %(name)s' % vars()
         system(cmd)
-        # Could instead run dvips and ps2pdf
+        # Could instead of dvipdf run dvips and ps2pdf
 
-if __name__ == '__main__':
-    dofile = sys.argv[1]
-    formats = sys.argv[2]
 
-# Bash
-name="%s"
+def html(name, options='', split=False):
+    """
+    Make HTML file from the doconce file `name`
+    (without any .do.txt extension).
+    """
+    if name.endswith('.do.txt'):
+        name = name.replace('.do.txt', '')
 
-# Perform spellcheck
+    # Compile source
+    cmd = 'doconce format html %(name)s %(options)s ' % vars()
+    system(cmd)
 
-if [ $? -ne 0 ]; then echo "make.sh aborts due to misspellings"; exit 1; fi
-rm -rf tmp_stripped*
+    if split:
+        cmd = 'doconce split_html %(name)s' % vars()
 
-options="--skip_inline_comments"
-''' % (dofile))
+
+def reveal_slides(name, options='', nametag='reveal', theme='darkgray'):
+    """Make reveal.js HTML5 slides from the doconce file `name`."""
+    if name.endswith('.do.txt'):
+        name = name.replace('.do.txt', '')
+
+    # Compile source
+    if '--pygments_html_style=' not in options:
+        from doconce.misc import recommended_html_styles_and_pygment_styles
+        combinations = recommended_html_styles_and_pygment_styles()
+        options += ' --pygments_html_style=%s' % combinations['reveal'][theme][0]
+    if '--keep_pygments_html_bg' not in options:
+        options += ' --keep_pygments_html_bg'
+    options += ' --html_output="%(name)s-%(nametag)s'
+
+    cmd = 'doconce format html %(name)s %(options)s ' % vars()
+    system(cmd)
+
+    cmd = 'doconce slides_html %(name)s-%(nametag)s reveal --html_slide_theme=%(theme)s'
+    system(cmd)
+
+def deck_slides(name, options='', nametag='deck', theme='sandstone.default'):
+    """Make deck.js HTML5 slides from the doconce file `name`."""
+    if name.endswith('.do.txt'):
+        name = name.replace('.do.txt', '')
+
+    # Compile source
+    if '--pygments_html_style=' not in options:
+        from doconce.misc import recommended_html_styles_and_pygment_styles
+        combinations = recommended_html_styles_and_pygment_styles()
+        options += ' --pygments_html_style=%s' % combinations['deck'][theme][0]
+    if '--keep_pygments_html_bg' not in options:
+        options += ' --keep_pygments_html_bg'
+    options += ' --html_output="%(name)s-%(nametag)s'
+
+    cmd = 'doconce format html %(name)s %(options)s ' % vars()
+    system(cmd)
+
+    cmd = 'doconce slides_html %(name)s-%(nametag)s deck --html_slide_theme=%(theme)s'
+    system(cmd)
+
+def beamer_slides(name, options='', nametag='beamer', theme='red_shadow',
+                  ptex2tex_envir='minted'):
+    """Make latex beamer slides from the doconce file `name`."""
+    if name.endswith('.do.txt'):
+        name = name.replace('.do.txt', '')
+    system('rm -f *.aux')
+
+    # Compile source
+    shell_escape = '-shell-escape' if ptex2tex_envir == 'minted' else ''
+    cmd = 'doconce format pdflatex %(name)s %(options)s ' % vars()
+    system(cmd)
+    # Run latex
+    cmd = 'doconce ptex2tex %(name)s -DLATEX_HEADING=beamer envir=%(ptex2tex_envir)s' % vars()
+    system(cmd)
+    cmd = 'doconce slides_beamer %(name)s --beamer_slide_theme=%(theme)s' % vars()
+    system(cmd)
+    cmd = 'pdflatex %(shell_escape)s %(name)s'
+    system(cmd)
+    system(cmd)
+    system('cp %(name)s.pdf %(name)s-%(nametag).pdf' % vars())
+
+    cmd = 'doconce slides_html %(name)s-%(nametag)s deck --html_slide_theme=%(theme)s'
+    system(cmd)
+
+
+def sphinx(name, options='', dirname='sphinx-rootdir',
+           theme='pyramid', automake_sphinx_options='',
+           split=False):
+    """
+    Make Sphinx HTML subdirectory from the doconce file `name`
+    (without any .do.txt extension).
+    """
+    if name.endswith('.do.txt'):
+        name = name.replace('.do.txt', '')
+
+    # Compile source
+    cmd = 'doconce format sphinx %(name)s %(options)s ' % vars()
+    system(cmd)
+    # Create sphinx directory
+    cmd = 'doconce sphinx_dir theme=%(theme)s %(options)s' % vars()
+    system(cmd)
+
+    if split:
+        cmd = 'doconce split_rst %(name)s' % vars()
+
+    # Compile sphinx
+    cmd = 'python automake_sphinx.py %(automake_sphinx_options)s' % vars()
+    system(cmd)
+
+def doconce2format(name, format, options=''):
+    """Make given format from the doconce file `name`."""
+    if name.endswith('.do.txt'):
+        name = name.replace('.do.txt', '')
+
+    # Compile source
+    cmd = 'doconce format %(format)s %(name)s %(options)s ' % vars()
+    system(cmd)
+
+def plain(name, options=''):
+    doconce2format(name, 'plain', options)
+
+def pandoc(name, options=''):
+    doconce2format(name, 'pandoc', options)
+
+def ipynb(name, options=''):
+    doconce2format(name, 'ipynb', options)
+
+def cwiki(name, options=''):
+    doconce2format(name, 'cwiki', options)
+
+def mwiki(name, options=''):
+    doconce2format(name, 'mwiki', options)
+
+def gwiki(name, options=''):
+    doconce2format(name, 'gwiki', options)
+
+def main():
+    """
+    Produce various formats from the doconce source.
+    """
+''')
+    f.write('''
+    dofile = %(dofile)s
+    spellcheck()
+    common_options = ''
+''' % vars())
+
     for format in formats:
-        if format == 'pdflatex':
+        if format.endswith('latex'):
             f.write("""
+    # latex PDF for printing (URLs are in footnotes too)
+    latex(
+      dofile,
+      latex_program='pdflatex',
+      options=common_options + ' --device=paper',
+      ptex2tex_program='doconce',
+      ptex2tex_options='',
+      ptex2tex_envir='minted')
+    system('cp %(dofile)s.pdf %(dofile)s_4print.pdf')  # gets recorded
 
-# --- pdflatex ---
-#doconce format pdflatex $name $options --latex-printed
-doconce format pdflatex $name $options
-if [ $? -ne 0 ]; then echo "doconce error - abort"; exit; fi
-pdflatex $name
-makeindex $name
-pdflatex $name
-pdflatex $name
-""")
-        elif format == 'latex':
-            f.write("""
-
-# --- latex ---
-#doconce format latex $name $options --latex-printed
-doconce format latex $name $options
-if [ $? -ne 0 ]; then echo "doconce error - abort"; exit; fi
-
-#ptex2tex $name -DA4PAPER -DLATEX_HEADING=traditional  # requires .ptex2tex.fcg
-doconce ptex2tex $name  # -DA4PAPER -DPALATINO envir=ans
-latex $name
-makeindex $name
-latex $name
-latex $name
-dvipdf $name
-""")
+    # latex PDF for electronic viewing (no footnotes with URL)
+    latex(
+      dofile,
+      latex_program='pdflatex',
+      options=common_options + '',
+      ptex2tex_program='doconce',
+      ptex2tex_options='',
+      ptex2tex_envir='minted')
+""" % vars())
         elif format == 'html':
             f.write("""
+    # One long HTML file
+    html(
+      dofile,
+      options=common_options + ' --html_output=%(dofile)s-1',
+      split=False)
 
-# --- html ---
-# options: --pygments_html_lineos --no-pygments-html
-#doconce format html $name $options --html_style=solarized --pygments_html_style=perldoc
-#if [ $? -ne 0 ]; then echo "doconce error - abort"; exit; fi
-#cp $name.html ${name}_solarized.html
-doconce format latex $name $options --html_style=blueish --pygments_html_style=default
-if [ $? -ne 0 ]; then echo "doconce error - abort"; exit; fi
+    # Splitted HTML file
+    html(
+      dofile,
+      options=common_options + '',
+      split=True)
 """)
         elif format == 'sphinx':
             f.write("""
-
-# --- sphinx ---
-doconce format sphinx $name $options
-if [ $? -ne 0 ]; then echo "doconce error - abort"; exit; fi
-#doconce sphinx_dir author="name(s) of author" title="the full title of the document" short-title="some short title" version=0.1 theme=themename dirname=sphinx-rootdir
-doconce sphinx_dir theme=pyramid dirname=sphinx-rootdir $name
-python automake_sphinx.py
+    sphinx(
+      dofile,
+      options=common_options + '',
+      dirname='sphinx-rootdir',
+      theme='pyramid',
+      automake_sphinx_options='',
+      split=False)
 """)
-    print 'output in make.sh'
+        elif format == 'reveal':
+            f.write("""
+    reveal_slides(
+      dofile,
+      options=common_options + '',
+      nametag='reveal',
+      theme='darkgray')
+""")
+        elif format == 'deck':
+            f.write("""
+    deck_slides(
+      dofile,
+      options=common_options + '',
+      nametag='deck',
+      theme='sandstone.default')
+""")
+        elif format == 'beamer':
+            f.write("""
+    beamer_slides(
+      dofile,
+      options=common_options + '',
+      nametag='beamer',
+      theme='red_shadow',
+      ptex2tex_envir='minted')  # 'ans:nt'
+""")
+        elif format.endswith('wiki') or format in ('pandoc', 'plain', 'ipynb'):
+            f.write("""
+    doconce2format(dofile, format, options=common_options + '')
+
+""")
+    # Are there lectures/slides documents in addition?
+    dofile_lectures = glob.glob('lec*.do.txt')
+    for dofile in dofile_lectures:
+        # Is the TOC surrounded by a WITH_TOC test directive?
+        f = open(dofile, 'r')
+        text = f.read()
+        f.close()
+        with_toc = ' -DWITH_TOC' if 'WITH_TOC' in text else ''
+
+        dofile = dofile[:-7]
+        f.write("""
+    # Lecture/slide file %(dofile)s""" % vars())
+        for format in formats:
+            f.write("""
+    html_style = 'bloodish'
+    # One long HTML file
+    html(
+      dofile,
+      options=common_options + ' --html_output=%(dofile)s-1 --html_style=%(html_style)s' + with_toc,
+      split=False)
+    system('doconce replace "<li>" "<p><li>" %(dofile)s-1.html' % vars())
+
+    # Splitted HTML file
+    html(
+      dofile,
+      options=common_options + ' --html_style=%(html_style)s' + with_toc,
+      split=True)
+    system('doconce replace "<li>" "<p><li>" %(dofile)s.html' % vars())
+
+    # One long solarized file
+    html(
+      dofile,
+      options=common_options + ' --html_style=solarized --html_output=%(dofile)s-solarized --pygments_html_style=perldoc --pygments_html_linenos' + with_toc,
+      split=False)
+    system('doconce replace "<li>" "<p><li>" %(dofile)s-solarized.html' % vars())
+    reveal_slides(
+      dofile,
+      options=common_options + '',
+      nametag='reveal',
+      theme='darkgray')
+
+    deck_slides(
+      dofile,
+      options=common_options + '',
+      nametag='deck',
+      theme='sandstone.default')
+""" % vars())
+        elif format.endswith('latex'):
+            f.write("""
+    beamer_slides(
+      dofile,
+      options=common_options + '',
+      nametag='beamer',
+      theme='red_shadow',
+      ptex2tex_envir='minted')  # 'ans:nt'
+
+    # Ordinary latex document (for printing)
+    latex(
+      dofile,
+      latex_program='pdflatex',
+      options=common_options + ' --device=paper' + with_toc,
+      ptex2tex_program='doconce',
+      ptex2tex_options='',
+      ptex2tex_envir='minted')
+""")
+    f.write("""
+    # Dump all Unix commands run above as a Bash script
+    bash = open('tmp_make.sh', 'w')
+    bash.write('''\
+#!/bin/bash
+set - x  # display all commands when run
+
+# Safe execution of a Unix command: exit if failure
+function system {
+  "$@"
+  if [ $? -ne 0 ]; then
+    echo "make.sh: unsuccessful command $@"
+    echo "abort!"
+    exit 1
+  fi
+}
+''')
+    for cmd in unix_command_recorder:
+        if 'doconce format' in cmd:
+            f.write('\n')  # delimiter line in script
+        f.write('system ' + command + '\n')
+    f.close()
+""")
+    f.write("""
+
+if __name__ == '__main__':
+    main()
+""")
+    f.close()
 
 
 def _usage_fix_bibtex4publish():
