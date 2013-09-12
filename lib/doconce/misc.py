@@ -4065,7 +4065,7 @@ _environments = [
     # Wait until the end with removing comment lines
     ]
 
-# These are relevant if doconce spellcheck is applied latex or ptex2tex files
+# These are relevant if doconce spellcheck is applied to latex or ptex2tex files
 _latex_environments = [
    ("\\begin{equation}",   "\\end{equation}"),
     ("\\begin{equation*}",  "\\end{equation*}"),
@@ -4095,6 +4095,7 @@ _replacements = [
     # General
     (r'cf.', ''),
     # Doconce
+    (r'^<%.+^%>', '', re.MULTILINE|re.DOTALL),  # Mako Python code
     (r'"([^"]+?)":\s*"[^"]+?"', r'\g<1>'),  # links
     (r"^#.*$", "", re.MULTILINE),
     (r"(idx|label|ref|cite)\{.*?\}", ""),

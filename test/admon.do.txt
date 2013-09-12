@@ -214,7 +214,7 @@ class Forward3(Diff):
 !ec
 And then we add a figure too.
 
-FIGURE: [../doc/manual/figs/wavepacket_0001]
+FIGURE: [../doc/src/manual/figs/wavepacket_0001]
 !enotice
 
 ===== The end =====

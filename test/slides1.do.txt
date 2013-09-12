@@ -19,7 +19,7 @@ DATE: Today
 # Test that it is okay to leave out width if there are only two columns
 
 !bslidecell 01
-FIGURE: [../doc/manual/figs/wavepacket_0001.png, width=300]
+FIGURE: [../doc/src/manual/figs/wavepacket_0001.png, width=300]
 !eslidecell
 
 !bpop highlight-red

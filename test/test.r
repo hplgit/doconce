@@ -81,11 +81,11 @@ to Section ref{subsubsec:ex}. idx{`somefunc` function}
 
 Let's do some copying from files too. First from subroutine up to the very end,
 
-@@@CODE ../doc/manual/__testcode.f fromto: subroutine@
+@@@CODE ../doc/src/manual/__testcode.f fromto: subroutine@
 and then just the subroutine,
-@@@CODE ../doc/manual/__testcode.f from-to:a comment@^C\s+END1
+@@@CODE ../doc/src/manual/__testcode.f from-to:a comment@^C\s+END1
 and finally the complete file:
-@@@CODE ../doc/manual/__testcode.f
+@@@CODE ../doc/src/manual/__testcode.f
 
 Testing other code environments. First Python:
 !bc
@@ -192,11 +192,11 @@ idx{figures}
 Test of figures. In particular we refer to Figure ref{fig:impact} in which
 there is a flow.
 
-FIGURE:[../doc/manual/figs/streamtubes, width=200] Visualization of flow by streamtubes. label{fig:impact}
+FIGURE:[../doc/src/manual/figs/streamtubes, width=200] Visualization of flow by streamtubes. label{fig:impact}
 
 Figures without captions are allowed and will be inlined.
 
-FIGURE:[../doc/manual/figs/streamtubes, width=200]
+FIGURE:[../doc/src/manual/figs/streamtubes, width=200]
 
 idx{movies}
 
@@ -204,15 +204,15 @@ idx{movies}
 
 Movie ref{mov:tsunami} shows a tsunami.
 
-MOVIE: [../doc/manual/figs/mjolnir.mpeg, width=700 height=400] Mjolnir tsunami (by Sylfest Glimsdal) label{mov:tsunami}.
+MOVIE: [../doc/src/manual/figs/mjolnir.mpeg, width=700 height=400] Mjolnir tsunami (by Sylfest Glimsdal) label{mov:tsunami}.
 
 Test empty caption (for inline movie):
 
-MOVIE: [../doc/manual/figs/wavepacket.mpeg, width=700 height=400]
+MOVIE: [../doc/src/manual/figs/wavepacket.mpeg, width=700 height=400]
 
 # Test wrong syntax and multi-line caption
 
-   MOVIE: [../doc/manual/figs/wavepacket_*.png, width=700 height=400] Movie
+   MOVIE: [../doc/src/manual/figs/wavepacket_*.png, width=700 height=400] Movie
 based on collection of frames
 (here just a few frames compared with the full wavepacket.mpeg movie).
 label{mymov}
@@ -230,7 +230,7 @@ MOVIE: [http://vimeo.com/55562330, width=500 height=278] Computational fluid dyn
 Here is figure ref{myfig} with a long multi-line caption
 and an extra space before the FIGURE keyword.
 
- FIGURE: [../doc/manual/figs/wavepacket_0001.png, width=500] A long
+ FIGURE: [../doc/src/manual/figs/wavepacket_0001.png, width=500] A long
 caption spanning
 several lines and containing verbatim words like `my_file_v1` and `my_file_v2`
 as well as math with subscript as in $t_{i+1}$. label{myfig}
@@ -239,7 +239,7 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 
 # Test URL as figure name
 
-FIGURE: [https://raw.github.com/hplgit/doconce/master/doc/blog/f_plot.png, width=500, frac=0.8]
+FIGURE: [https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png, width=500, frac=0.8]
 
 # Test wikimedia type of files that otherwise reside in subdirs
 # #if FORMAT == "mwiki"
@@ -1136,7 +1136,7 @@ Automatically generated HTML file from Doconce source
              width: 75%;
      }
      .alert-block {padding-top:14px; padding-bottom:14px}
-     .alert-block > p, .alert-block > ul {margin-bottom:0}
+     .alert-block > p, .alert-block > ul {margin-bottom:1em}
      .alert li {margin-top: 1em}
      .alert-block p+p {margin-top:5px}
      .alert-notice { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_yellow_notice.png); }
@@ -2028,7 +2028,7 @@ there is a flow.
 
 
 \begin{figure}[ht]
-  \centerline{\includegraphics[width=0.9\linewidth]{../doc/manual/figs/streamtubes.eps}}
+  \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/figs/streamtubes.eps}}
   \caption{
   Visualization of flow by streamtubes. \label{fig:impact}
   }
@@ -2040,7 +2040,7 @@ Figures without captions are allowed and will be inlined.
 
 
 \begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.9\linewidth]{../doc/manual/figs/streamtubes.eps}}
+  \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/figs/streamtubes.eps}}
 \end{center}
 
 
@@ -2056,11 +2056,11 @@ Movie~\ref{mov:tsunami} shows a tsunami.
 % #if MOVIE == "media9"
 \includemedia[
 width=0.8\linewidth,
-label=../doc/manual/figs/mjolnir.mpeg,
+label=../doc/src/manual/figs/mjolnir.mpeg,
 activate=pageopen,         % or onclick or pagevisible
-addresource=../doc/manual/figs/mjolnir.mpeg,  % embed the video in the PDF
+addresource=../doc/src/manual/figs/mjolnir.mpeg,  % embed the video in the PDF
 flashvars={
-source=../doc/manual/figs/mjolnir.mpeg
+source=../doc/src/manual/figs/mjolnir.mpeg
 &autoPlay=true
 &loop=true
 &scaleMode=letterbox   % preserve aspect ration while scaling this video
@@ -2068,7 +2068,7 @@ source=../doc/manual/figs/mjolnir.mpeg
 
 % #ifdef MOVIE_CONTROLS
 \mediabutton[
-  mediacommand=../doc/manual/figs/mjolnir.mpeg:playPause,
+  mediacommand=../doc/src/manual/figs/mjolnir.mpeg:playPause,
   overface=\\textcolor{blue}{\fbox{\strut Play/Pause}},
   downface=\\textcolor{red}{\fbox{\strut Play/Pause}}
   ]{\fhox{\strut Play/Pause}}
@@ -2076,34 +2076,34 @@ source=../doc/manual/figs/mjolnir.mpeg
 
 % #elif MOVIE == "movie15"
 \includemovie[poster,
-label=../doc/manual/figs/mjolnir.mpeg,
+label=../doc/src/manual/figs/mjolnir.mpeg,
 autoplay,
 %controls,
 %toolbar,
 % #ifdef EXTERNAL_MOVIE_VIEWER
 externalviewer,
 % #endif
-text={\small (Loading ../doc/manual/figs/mjolnir.mpeg)},
+text={\small (Loading ../doc/src/manual/figs/mjolnir.mpeg)},
 repeat,
-]{0.9\linewidth}{0.9\linewidth}{../doc/manual/figs/mjolnir.mpeg}
+]{0.9\linewidth}{0.9\linewidth}{../doc/src/manual/figs/mjolnir.mpeg}
 % #ifndef EXTERNAL_MOVIE_VIEWER
-\movieref[rate=0.5]{../doc/manual/figs/mjolnir.mpeg}{Slower}
-\movieref[rate=2]{../doc/manual/figs/mjolnir.mpeg}{Faster}
-\movieref[default]{../doc/manual/figs/mjolnir.mpeg}{Normal}
-\movieref[pause]{../doc/manual/figs/mjolnir.mpeg}{Play/Pause}
-\movieref[stop]{../doc/manual/figs/mjolnir.mpeg}{Stop}
+\movieref[rate=0.5]{../doc/src/manual/figs/mjolnir.mpeg}{Slower}
+\movieref[rate=2]{../doc/src/manual/figs/mjolnir.mpeg}{Faster}
+\movieref[default]{../doc/src/manual/figs/mjolnir.mpeg}{Normal}
+\movieref[pause]{../doc/src/manual/figs/mjolnir.mpeg}{Play/Pause}
+\movieref[stop]{../doc/src/manual/figs/mjolnir.mpeg}{Stop}
 % #else
-\href{run:../doc/manual/figs/mjolnir.mpeg}{../doc/manual/figs/mjolnir.mpeg}
+\href{run:../doc/src/manual/figs/mjolnir.mpeg}{../doc/src/manual/figs/mjolnir.mpeg}
 % #endif
 
 % #elif MOVIE == "multimedia"
 % Beamer-style \movie command
 \movie[
-label=../doc/manual/figs/mjolnir.mpeg,
+label=../doc/src/manual/figs/mjolnir.mpeg,
 width=0.9\linewidth,
-autostart]{../doc/manual/figs/mjolnir.mpeg}{../doc/manual/figs/mjolnir.mpeg}
+autostart]{../doc/src/manual/figs/mjolnir.mpeg}{../doc/src/manual/figs/mjolnir.mpeg}
 % #else
-\href{run:../doc/manual/figs/mjolnir.mpeg}{../doc/manual/figs/mjolnir.mpeg}
+\href{run:../doc/src/manual/figs/mjolnir.mpeg}{../doc/src/manual/figs/mjolnir.mpeg}
 % #endif
 
 \end{center}
@@ -2113,15 +2113,15 @@ autostart]{../doc/manual/figs/mjolnir.mpeg}{../doc/manual/figs/mjolnir.mpeg}
 
 Test empty caption (for inline movie):
 
- (Movie ../doc/manual/figs/wavepacket.mpeg: play \href{{wavepacket.html}}{\nolinkurl{wavepacket.html}})
+ (Movie ../doc/src/manual/figs/wavepacket.mpeg: play \href{{wavepacket.html}}{\nolinkurl{wavepacket.html}})
 % #if MOVIE == "media9"
 \includemedia[
 width=0.8\linewidth,
-label=../doc/manual/figs/wavepacket.mpeg,
+label=../doc/src/manual/figs/wavepacket.mpeg,
 activate=pageopen,         % or onclick or pagevisible
-addresource=../doc/manual/figs/wavepacket.mpeg,  % embed the video in the PDF
+addresource=../doc/src/manual/figs/wavepacket.mpeg,  % embed the video in the PDF
 flashvars={
-source=../doc/manual/figs/wavepacket.mpeg
+source=../doc/src/manual/figs/wavepacket.mpeg
 &autoPlay=true
 &loop=true
 &scaleMode=letterbox   % preserve aspect ration while scaling this video
@@ -2129,7 +2129,7 @@ source=../doc/manual/figs/wavepacket.mpeg
 
 % #ifdef MOVIE_CONTROLS
 \mediabutton[
-  mediacommand=../doc/manual/figs/wavepacket.mpeg:playPause,
+  mediacommand=../doc/src/manual/figs/wavepacket.mpeg:playPause,
   overface=\\textcolor{blue}{\fbox{\strut Play/Pause}},
   downface=\\textcolor{red}{\fbox{\strut Play/Pause}}
   ]{\fhox{\strut Play/Pause}}
@@ -2137,41 +2137,41 @@ source=../doc/manual/figs/wavepacket.mpeg
 
 % #elif MOVIE == "movie15"
 \includemovie[poster,
-label=../doc/manual/figs/wavepacket.mpeg,
+label=../doc/src/manual/figs/wavepacket.mpeg,
 autoplay,
 %controls,
 %toolbar,
 % #ifdef EXTERNAL_MOVIE_VIEWER
 externalviewer,
 % #endif
-text={\small (Loading ../doc/manual/figs/wavepacket.mpeg)},
+text={\small (Loading ../doc/src/manual/figs/wavepacket.mpeg)},
 repeat,
-]{0.9\linewidth}{0.9\linewidth}{../doc/manual/figs/wavepacket.mpeg}
+]{0.9\linewidth}{0.9\linewidth}{../doc/src/manual/figs/wavepacket.mpeg}
 % #ifndef EXTERNAL_MOVIE_VIEWER
-\movieref[rate=0.5]{../doc/manual/figs/wavepacket.mpeg}{Slower}
-\movieref[rate=2]{../doc/manual/figs/wavepacket.mpeg}{Faster}
-\movieref[default]{../doc/manual/figs/wavepacket.mpeg}{Normal}
-\movieref[pause]{../doc/manual/figs/wavepacket.mpeg}{Play/Pause}
-\movieref[stop]{../doc/manual/figs/wavepacket.mpeg}{Stop}
+\movieref[rate=0.5]{../doc/src/manual/figs/wavepacket.mpeg}{Slower}
+\movieref[rate=2]{../doc/src/manual/figs/wavepacket.mpeg}{Faster}
+\movieref[default]{../doc/src/manual/figs/wavepacket.mpeg}{Normal}
+\movieref[pause]{../doc/src/manual/figs/wavepacket.mpeg}{Play/Pause}
+\movieref[stop]{../doc/src/manual/figs/wavepacket.mpeg}{Stop}
 % #else
-\href{run:../doc/manual/figs/wavepacket.mpeg}{../doc/manual/figs/wavepacket.mpeg}
+\href{run:../doc/src/manual/figs/wavepacket.mpeg}{../doc/src/manual/figs/wavepacket.mpeg}
 % #endif
 
 % #elif MOVIE == "multimedia"
 % Beamer-style \movie command
 \movie[
-label=../doc/manual/figs/wavepacket.mpeg,
+label=../doc/src/manual/figs/wavepacket.mpeg,
 width=0.9\linewidth,
-autostart]{../doc/manual/figs/wavepacket.mpeg}{../doc/manual/figs/wavepacket.mpeg}
+autostart]{../doc/src/manual/figs/wavepacket.mpeg}{../doc/src/manual/figs/wavepacket.mpeg}
 % #else
-\href{run:../doc/manual/figs/wavepacket.mpeg}{../doc/manual/figs/wavepacket.mpeg}
+\href{run:../doc/src/manual/figs/wavepacket.mpeg}{../doc/src/manual/figs/wavepacket.mpeg}
 % #endif
 
 
 % Test wrong syntax and multi-line caption
 
 
- Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). \label{mymov}  (Movie of files \code{../doc/manual/figs/wavepacket_*.png} in \href{{file:///home/hpl/vc/doconce/test/wavepacket_0001.html}}{\nolinkurl{file:///home/hpl/vc/doconce/test/wavepacket_0001.html}})
+ Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). \label{mymov}  (Movie of files \code{../doc/src/manual/figs/wavepacket_*.png} in \href{{file:///home/hpl/vc/doconce/test/wavepacket_0001.html}}{\nolinkurl{file:///home/hpl/vc/doconce/test/wavepacket_0001.html}})
 
 
 % Check out the correct with and height of YouTube movies from the
@@ -2189,7 +2189,7 @@ and an extra space before the FIGURE keyword.
 
 
 \begin{figure}[ht]
-  \centerline{\includegraphics[width=0.9\linewidth]{../doc/manual/figs/wavepacket_0001.eps}}
+  \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/figs/wavepacket_0001.eps}}
   \caption{
   A long caption spanning several lines and containing verbatim words like \protect \code{my\_file\_v1} and \protect \code{my\_file\_v2} as well as math with subscript as in $t_{i+1}$. \label{myfig}
   }
@@ -2604,6 +2604,7 @@ the beginning of a new exercise and cause trouble. Maybe a list
 \noindent
 \paragraph{Hint 1.}
 Use \code{r = random.random()} and define head as \code{r <= 0.5}.
+
 % --- end hint in exercise ---
 
 % --- begin hint in exercise ---
@@ -2611,6 +2612,7 @@ Use \code{r = random.random()} and define head as \code{r <= 0.5}.
 \paragraph{Hint 2.}
 Draw an integer among $\{1,2\}$ with
 \code{r = random.randint(1,2)} and define head when \code{r} is 1.
+
 % --- end hint in exercise ---
 
 
@@ -2618,6 +2620,7 @@ Draw an integer among $\{1,2\}$ with
 \paragraph{Answer.}
 If the \code{random.random()} function returns a number $<1/2$, let it be
 head, otherwise tail. Repeat this $N$ number of times.
+
 % --- end answer of exercise ---
 
 
@@ -2634,6 +2637,7 @@ for i in range(N):
         heads += 1
 print 'Flipping a coin %d times gave %d heads' % (N, heads)
 \epycod
+
 % --- end solution of exercise ---
 Filenames: \code{flip_coin.py}, \code{flip_coin.pdf}.
 % solution files: mysol.txt, mysol_flip_coin.py, yet_another.file
@@ -2669,6 +2673,7 @@ To answer this question empirically, let a program
 draw $N$ such random numbers using Python's standard \code{random} module,
 count how many of them, $M$, that fall in the interval $(0.5,0.6)$, and
 compute the probability as $M/N$.
+
 % --- end hint in exercise ---
 
 \end{exercise}
@@ -2723,18 +2728,21 @@ Let $R$ be normally distributed and $(x_0,y_0)$ uniformly distributed.
 \paragraph{Hint.}
 Use the \code{numpy.random} module to draw the
 $x_0$, $y_0$, and $R$ quantities.
+
 % --- end hint in exercise ---
 
 
 % --- begin answer of exercise ---
 \paragraph{Answer.}
 Here goes the short answer to part a).
+
 % --- end answer of exercise ---
 
 
 % --- begin solution of exercise ---
 \paragraph{Solution.}
 Here goes a full solution to part a).
+
 % --- end solution of exercise ---
 
 \paragraph{b)}
@@ -2787,6 +2795,7 @@ And code \code{a=b} in this solution:
 a = b  # code in solution
 \eccq
 End of solution is here.
+
 % --- end solution of exercise ---
 
 
@@ -2806,12 +2815,14 @@ And with code (in plain verbatim) returning $x+1$ in hint:
 def func(x):
     return x + 1  # with code in hint
 \eccq
+
 % --- end hint in exercise ---
 
 % --- begin hint in exercise ---
 
 \paragraph{Hint 2.}
 Second hint to subexercise a).
+
 % --- end hint in exercise ---
 Filename: \code{subexer_a.pdf}.
 
@@ -2820,6 +2831,7 @@ Filename: \code{subexer_a.pdf}.
 \paragraph{Answer.}
 Short answer to subexercise a).
 With math in answer: $a=b$.
+
 % --- end answer of exercise ---
 
 \paragraph{b)}
@@ -2834,6 +2846,7 @@ Some math $\cos^2 x + \sin^2 x = 1$ written one a single line:
 
 \paragraph{Hint.}
 A hint for this subexercise.
+
 % --- end hint in exercise ---
 Filename: \code{subexer_b.pdf}.
 
@@ -2841,6 +2854,7 @@ Filename: \code{subexer_b.pdf}.
 % --- begin solution of exercise ---
 \paragraph{Solution.}
 Here goes the solution of this subexercise.
+
 % --- end solution of exercise ---
 
 % Closing remarks for this Exercise
@@ -3575,7 +3589,7 @@ there is a flow.
 
 
 \begin{figure}[ht]
-  \centerline{\includegraphics[width=0.9\linewidth]{../doc/manual/figs/streamtubes.png}}
+  \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/figs/streamtubes.png}}
   \caption{
   Visualization of flow by streamtubes. \label{fig:impact}
   }
@@ -3587,7 +3601,7 @@ Figures without captions are allowed and will be inlined.
 
 
 \begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.9\linewidth]{../doc/manual/figs/streamtubes.png}}
+  \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/figs/streamtubes.png}}
 \end{center}
 
 
@@ -3601,18 +3615,18 @@ Movie~\ref{mov:tsunami} shows a tsunami.
 \begin{center}
 
 \includemovie[poster,
-label=../doc/manual/figs/mjolnir.mpeg,
+label=../doc/src/manual/figs/mjolnir.mpeg,
 autoplay,
 %controls,
 %toolbar,
-text={\small (Loading ../doc/manual/figs/mjolnir.mpeg)},
+text={\small (Loading ../doc/src/manual/figs/mjolnir.mpeg)},
 repeat,
-]{0.9\linewidth}{0.9\linewidth}{../doc/manual/figs/mjolnir.mpeg}
-\movieref[rate=0.5]{../doc/manual/figs/mjolnir.mpeg}{Slower}
-\movieref[rate=2]{../doc/manual/figs/mjolnir.mpeg}{Faster}
-\movieref[default]{../doc/manual/figs/mjolnir.mpeg}{Normal}
-\movieref[pause]{../doc/manual/figs/mjolnir.mpeg}{Play/Pause}
-\movieref[stop]{../doc/manual/figs/mjolnir.mpeg}{Stop}
+]{0.9\linewidth}{0.9\linewidth}{../doc/src/manual/figs/mjolnir.mpeg}
+\movieref[rate=0.5]{../doc/src/manual/figs/mjolnir.mpeg}{Slower}
+\movieref[rate=2]{../doc/src/manual/figs/mjolnir.mpeg}{Faster}
+\movieref[default]{../doc/src/manual/figs/mjolnir.mpeg}{Normal}
+\movieref[pause]{../doc/src/manual/figs/mjolnir.mpeg}{Play/Pause}
+\movieref[stop]{../doc/src/manual/figs/mjolnir.mpeg}{Stop}
 
 
 \end{center}
@@ -3622,27 +3636,27 @@ repeat,
 
 Test empty caption (for inline movie):
 
- (Movie ../doc/manual/figs/wavepacket.mpeg: play \href{{wavepacket.html}}{\nolinkurl{wavepacket.html}\footnote{\texttt{wavepacket.html}}})
+ (Movie ../doc/src/manual/figs/wavepacket.mpeg: play \href{{wavepacket.html}}{\nolinkurl{wavepacket.html}\footnote{\texttt{wavepacket.html}}})
 \includemovie[poster,
-label=../doc/manual/figs/wavepacket.mpeg,
+label=../doc/src/manual/figs/wavepacket.mpeg,
 autoplay,
 %controls,
 %toolbar,
-text={\small (Loading ../doc/manual/figs/wavepacket.mpeg)},
+text={\small (Loading ../doc/src/manual/figs/wavepacket.mpeg)},
 repeat,
-]{0.9\linewidth}{0.9\linewidth}{../doc/manual/figs/wavepacket.mpeg}
-\movieref[rate=0.5]{../doc/manual/figs/wavepacket.mpeg}{Slower}
-\movieref[rate=2]{../doc/manual/figs/wavepacket.mpeg}{Faster}
-\movieref[default]{../doc/manual/figs/wavepacket.mpeg}{Normal}
-\movieref[pause]{../doc/manual/figs/wavepacket.mpeg}{Play/Pause}
-\movieref[stop]{../doc/manual/figs/wavepacket.mpeg}{Stop}
+]{0.9\linewidth}{0.9\linewidth}{../doc/src/manual/figs/wavepacket.mpeg}
+\movieref[rate=0.5]{../doc/src/manual/figs/wavepacket.mpeg}{Slower}
+\movieref[rate=2]{../doc/src/manual/figs/wavepacket.mpeg}{Faster}
+\movieref[default]{../doc/src/manual/figs/wavepacket.mpeg}{Normal}
+\movieref[pause]{../doc/src/manual/figs/wavepacket.mpeg}{Play/Pause}
+\movieref[stop]{../doc/src/manual/figs/wavepacket.mpeg}{Stop}
 
 
 
 % Test wrong syntax and multi--line caption
 
 
- Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). \label{mymov}  (Movie of files {\fontsize{10pt}{10pt}\Verb!../doc/manual/figs/wavepacket_*.png!} in \href{{file:///home/hpl/vc/doconce/test/wavepacket_0001.html}}{\nolinkurl{file:///home/hpl/vc/doconce/test/wavepacket_0001.html}\footnote{\texttt{file:///home/hpl/vc/doconce/test/wavepacket\_0001.html}}})
+ Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). \label{mymov}  (Movie of files {\fontsize{10pt}{10pt}\Verb!../doc/src/manual/figs/wavepacket_*.png!} in \href{{file:///home/hpl/vc/doconce/test/wavepacket_0001.html}}{\nolinkurl{file:///home/hpl/vc/doconce/test/wavepacket_0001.html}\footnote{\texttt{file:///home/hpl/vc/doconce/test/wavepacket\_0001.html}}})
 
 
 % Check out the correct with and height of YouTube movies from the
@@ -3660,7 +3674,7 @@ and an extra space before the FIGURE keyword.
 
 
 \begin{figure}[ht]
-  \centerline{\includegraphics[width=0.9\linewidth]{../doc/manual/figs/wavepacket_0001.png}}
+  \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/figs/wavepacket_0001.png}}
   \caption{
   A long caption spanning several lines and containing verbatim words like {\fontsize{10pt}{10pt}\protect\Verb!my\_file\_v1!} and {\fontsize{10pt}{10pt}\protect\Verb!my\_file\_v2!} as well as math with subscript as in $t_{i+1}$. \label{myfig}
   }
@@ -4066,6 +4080,7 @@ the beginning of a new exercise and cause trouble. Maybe a list
 \noindent
 \paragraph{Hint 1.}
 Use {\fontsize{10pt}{10pt}\Verb!r = random.random()!} and define head as {\fontsize{10pt}{10pt}\Verb!r <= 0.5!}.
+
 % --- end hint in exercise ---
 
 % --- begin hint in exercise ---
@@ -4073,6 +4088,7 @@ Use {\fontsize{10pt}{10pt}\Verb!r = random.random()!} and define head as {\fonts
 \paragraph{Hint 2.}
 Draw an integer among $\{1,2\}$ with
 {\fontsize{10pt}{10pt}\Verb!r = random.randint(1,2)!} and define head when {\fontsize{10pt}{10pt}\Verb!r!} is 1.
+
 % --- end hint in exercise ---
 
 
@@ -4080,6 +4096,7 @@ Draw an integer among $\{1,2\}$ with
 \paragraph{Answer.}
 If the {\fontsize{10pt}{10pt}\Verb!random.random()!} function returns a number $<1/2$, let it be
 head, otherwise tail. Repeat this $N$ number of times.
+
 % --- end answer of exercise ---
 
 
@@ -4097,6 +4114,7 @@ for i in range(N):
 print 'Flipping a coin %d times gave %d heads' % (N, heads)
 \end{minted}
 \noindent
+
 % --- end solution of exercise ---
 Filenames: {\fontsize{10pt}{10pt}\Verb!flip_coin.py!}, {\fontsize{10pt}{10pt}\Verb!flip_coin.pdf!}.
 % solution files: mysol.txt, mysol_flip_coin.py, yet_another.file
@@ -4132,6 +4150,7 @@ To answer this question empirically, let a program
 draw $N$ such random numbers using Python's standard {\fontsize{10pt}{10pt}\Verb!random!} module,
 count how many of them, $M$, that fall in the interval $(0.5,0.6)$, and
 compute the probability as $M/N$.
+
 % --- end hint in exercise ---
 
 \end{exercise}
@@ -4187,18 +4206,21 @@ Let $R$ be normally distributed and $(x_0,y_0)$ uniformly distributed.
 \paragraph{Hint.}
 Use the {\fontsize{10pt}{10pt}\Verb!numpy.random!} module to draw the
 $x_0$, $y_0$, and $R$ quantities.
+
 % --- end hint in exercise ---
 
 
 % --- begin answer of exercise ---
 \paragraph{Answer.}
 Here goes the short answer to part a).
+
 % --- end answer of exercise ---
 
 
 % --- begin solution of exercise ---
 \paragraph{Solution.}
 Here goes a full solution to part a).
+
 % --- end solution of exercise ---
 
 \paragraph{b)}
@@ -4253,6 +4275,7 @@ a = b  # code in solution
 \end{Verbatim}
 \noindent
 End of solution is here.
+
 % --- end solution of exercise ---
 
 
@@ -4274,12 +4297,14 @@ def func(x):
     return x + 1  # with code in hint
 \end{Verbatim}
 \noindent
+
 % --- end hint in exercise ---
 
 % --- begin hint in exercise ---
 
 \paragraph{Hint 2.}
 Second hint to subexercise a).
+
 % --- end hint in exercise ---
 Filename: {\fontsize{10pt}{10pt}\Verb!subexer_a.pdf!}.
 
@@ -4288,6 +4313,7 @@ Filename: {\fontsize{10pt}{10pt}\Verb!subexer_a.pdf!}.
 \paragraph{Answer.}
 Short answer to subexercise a).
 With math in answer: $a=b$.
+
 % --- end answer of exercise ---
 
 \paragraph{b)}
@@ -4302,6 +4328,7 @@ Some math $\cos^2 x + \sin^2 x = 1$ written one a single line:
 
 \paragraph{Hint.}
 A hint for this subexercise.
+
 % --- end hint in exercise ---
 Filename: {\fontsize{10pt}{10pt}\Verb!subexer_b.pdf!}.
 
@@ -4309,6 +4336,7 @@ Filename: {\fontsize{10pt}{10pt}\Verb!subexer_b.pdf!}.
 % --- begin solution of exercise ---
 \paragraph{Solution.}
 Here goes the solution of this subexercise.
+
 % --- end solution of exercise ---
 
 % Closing remarks for this Exercise
@@ -5010,7 +5038,7 @@ there is a flow.
 
 
 \begin{figure}[ht]
-  \centerline{\includegraphics[width=0.9\linewidth]{../doc/manual/figs/streamtubes.png}}
+  \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/figs/streamtubes.png}}
   \caption{
   Visualization of flow by streamtubes. \label{fig:impact}
   }
@@ -5022,7 +5050,7 @@ Figures without captions are allowed and will be inlined.
 
 
 \begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.9\linewidth]{../doc/manual/figs/streamtubes.png}}
+  \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/figs/streamtubes.png}}
 \end{center}
 
 
@@ -5037,11 +5065,11 @@ Movie~\ref{mov:tsunami} shows a tsunami.
 
 \includemedia[
 width=0.8\linewidth,
-label=../doc/manual/figs/mjolnir.mpeg,
+label=../doc/src/manual/figs/mjolnir.mpeg,
 activate=pageopen,         % or onclick or pagevisible
-addresource=../doc/manual/figs/mjolnir.mpeg,  % embed the video in the PDF
+addresource=../doc/src/manual/figs/mjolnir.mpeg,  % embed the video in the PDF
 flashvars={
-source=../doc/manual/figs/mjolnir.mpeg
+source=../doc/src/manual/figs/mjolnir.mpeg
 &autoPlay=true
 &loop=true
 &scaleMode=letterbox   % preserve aspect ration while scaling this video
@@ -5056,14 +5084,14 @@ source=../doc/manual/figs/mjolnir.mpeg
 
 Test empty caption (for inline movie):
 
- (Movie ../doc/manual/figs/wavepacket.mpeg: play \href{{wavepacket.html}}{\nolinkurl{wavepacket.html}\footnote{\texttt{wavepacket.html}}})
+ (Movie ../doc/src/manual/figs/wavepacket.mpeg: play \href{{wavepacket.html}}{\nolinkurl{wavepacket.html}\footnote{\texttt{wavepacket.html}}})
 \includemedia[
 width=0.8\linewidth,
-label=../doc/manual/figs/wavepacket.mpeg,
+label=../doc/src/manual/figs/wavepacket.mpeg,
 activate=pageopen,         % or onclick or pagevisible
-addresource=../doc/manual/figs/wavepacket.mpeg,  % embed the video in the PDF
+addresource=../doc/src/manual/figs/wavepacket.mpeg,  % embed the video in the PDF
 flashvars={
-source=../doc/manual/figs/wavepacket.mpeg
+source=../doc/src/manual/figs/wavepacket.mpeg
 &autoPlay=true
 &loop=true
 &scaleMode=letterbox   % preserve aspect ration while scaling this video
@@ -5075,7 +5103,7 @@ source=../doc/manual/figs/wavepacket.mpeg
 % Test wrong syntax and multi--line caption
 
 
- Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). \label{mymov}  (Movie of files \Verb!../doc/manual/figs/wavepacket_*.png! in \href{{file:///home/hpl/vc/doconce/test/wavepacket_0001.html}}{\nolinkurl{file:///home/hpl/vc/doconce/test/wavepacket_0001.html}\footnote{\texttt{file:///home/hpl/vc/doconce/test/wavepacket\_0001.html}}})
+ Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). \label{mymov}  (Movie of files \Verb!../doc/src/manual/figs/wavepacket_*.png! in \href{{file:///home/hpl/vc/doconce/test/wavepacket_0001.html}}{\nolinkurl{file:///home/hpl/vc/doconce/test/wavepacket_0001.html}\footnote{\texttt{file:///home/hpl/vc/doconce/test/wavepacket\_0001.html}}})
 
 
 % Check out the correct with and height of YouTube movies from the
@@ -5093,7 +5121,7 @@ and an extra space before the FIGURE keyword.
 
 
 \begin{figure}[ht]
-  \centerline{\includegraphics[width=0.9\linewidth]{../doc/manual/figs/wavepacket_0001.png}}
+  \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/figs/wavepacket_0001.png}}
   \caption{
   A long caption spanning several lines and containing verbatim words like \protect \Verb!my\_file\_v1! and \protect \Verb!my\_file\_v2! as well as math with subscript as in $t_{i+1}$. \label{myfig}
   }
@@ -5495,6 +5523,7 @@ the beginning of a new exercise and cause trouble. Maybe a list
 \noindent
 \paragraph{Hint 1.}
 Use \Verb!r = random.random()! and define head as \Verb!r <= 0.5!.
+
 % --- end hint in exercise ---
 
 % --- begin hint in exercise ---
@@ -5502,6 +5531,7 @@ Use \Verb!r = random.random()! and define head as \Verb!r <= 0.5!.
 \paragraph{Hint 2.}
 Draw an integer among $\{1,2\}$ with
 \Verb!r = random.randint(1,2)! and define head when \Verb!r! is 1.
+
 % --- end hint in exercise ---
 
 
@@ -5509,6 +5539,7 @@ Draw an integer among $\{1,2\}$ with
 \paragraph{Answer.}
 If the \Verb!random.random()! function returns a number $<1/2$, let it be
 head, otherwise tail. Repeat this $N$ number of times.
+
 % --- end answer of exercise ---
 
 
@@ -5525,6 +5556,7 @@ for i in range(N):
         heads += 1
 print 'Flipping a coin %d times gave %d heads' % (N, heads)
 \end{minted}
+
 % --- end solution of exercise ---
 Filenames: \Verb!flip_coin.py!, \Verb!flip_coin.pdf!.
 % solution files: mysol.txt, mysol_flip_coin.py, yet_another.file
@@ -5560,6 +5592,7 @@ To answer this question empirically, let a program
 draw $N$ such random numbers using Python's standard \Verb!random! module,
 count how many of them, $M$, that fall in the interval $(0.5,0.6)$, and
 compute the probability as $M/N$.
+
 % --- end hint in exercise ---
 
 \end{exercise}
@@ -5614,18 +5647,21 @@ Let $R$ be normally distributed and $(x_0,y_0)$ uniformly distributed.
 \paragraph{Hint.}
 Use the \Verb!numpy.random! module to draw the
 $x_0$, $y_0$, and $R$ quantities.
+
 % --- end hint in exercise ---
 
 
 % --- begin answer of exercise ---
 \paragraph{Answer.}
 Here goes the short answer to part a).
+
 % --- end answer of exercise ---
 
 
 % --- begin solution of exercise ---
 \paragraph{Solution.}
 Here goes a full solution to part a).
+
 % --- end solution of exercise ---
 
 \paragraph{b)}
@@ -5678,6 +5714,7 @@ And code \Verb!a=b! in this solution:
 a = b  # code in solution
 \end{Verbatim}
 End of solution is here.
+
 % --- end solution of exercise ---
 
 
@@ -5697,12 +5734,14 @@ And with code (in plain verbatim) returning $x+1$ in hint:
 def func(x):
     return x + 1  # with code in hint
 \end{Verbatim}
+
 % --- end hint in exercise ---
 
 % --- begin hint in exercise ---
 
 \paragraph{Hint 2.}
 Second hint to subexercise a).
+
 % --- end hint in exercise ---
 Filename: \Verb!subexer_a.pdf!.
 
@@ -5711,6 +5750,7 @@ Filename: \Verb!subexer_a.pdf!.
 \paragraph{Answer.}
 Short answer to subexercise a).
 With math in answer: $a=b$.
+
 % --- end answer of exercise ---
 
 \paragraph{b)}
@@ -5725,6 +5765,7 @@ Some math $\cos^2 x + \sin^2 x = 1$ written one a single line:
 
 \paragraph{Hint.}
 A hint for this subexercise.
+
 % --- end hint in exercise ---
 Filename: \Verb!subexer_b.pdf!.
 
@@ -5732,6 +5773,7 @@ Filename: \Verb!subexer_b.pdf!.
 % --- begin solution of exercise ---
 \paragraph{Solution.}
 Here goes the solution of this subexercise.
+
 % --- end solution of exercise ---
 
 % Closing remarks for this Exercise
@@ -6242,7 +6284,7 @@ there is a flow.
 
 .. _fig:impact:
 
-.. figure:: ../doc/manual/figs/streamtubes.png
+.. figure:: ../doc/src/manual/figs/streamtubes.png
    :width: 200
 
    *Visualization of flow by streamtubes*  (fig:impact)
@@ -6251,7 +6293,7 @@ there is a flow.
 Figures without captions are allowed and will be inlined.
 
 
-.. figure:: ../doc/manual/figs/streamtubes.png
+.. figure:: ../doc/src/manual/figs/streamtubes.png
    :width: 200
 
 
@@ -6264,7 +6306,7 @@ Movie `mov:tsunami`_ shows a tsunami.
 
 .. raw:: html
         
-        <embed src="../doc/manual/figs/mjolnir.mpeg" width=700 height=400 autoplay="false" loop="true"></embed>
+        <embed src="../doc/src/manual/figs/mjolnir.mpeg" width=700 height=400 autoplay="false" loop="true"></embed>
         <p><em>Mjolnir tsunami (by Sylfest Glimsdal) .</em></p>
 
 
@@ -6273,7 +6315,7 @@ Test empty caption (for inline movie):
 
 .. raw:: html
         
-        <embed src="../doc/manual/figs/wavepacket.mpeg" width=700 height=400 autoplay="false" loop="true"></embed>
+        <embed src="../doc/src/manual/figs/wavepacket.mpeg" width=700 height=400 autoplay="false" loop="true"></embed>
         <p><em></em></p>
 
 
@@ -6283,7 +6325,7 @@ Test empty caption (for inline movie):
 
 .. raw:: html
         
-        <p><a href="wavepacket_0001.html">Movie of files <tt>../doc/manual/figs/wavepacket_*.png</tt></a>
+        <p><a href="wavepacket_0001.html">Movie of files <tt>../doc/src/manual/figs/wavepacket_*.png</tt></a>
         <em>Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie).</em></p>
 
 
@@ -6321,7 +6363,7 @@ and an extra space before the FIGURE keyword.
 
 .. _myfig:
 
-.. figure:: ../doc/manual/figs/wavepacket_0001.png
+.. figure:: ../doc/src/manual/figs/wavepacket_0001.png
    :width: 500
 
    *A long caption spanning several lines and containing verbatim words like ``my_file_v1`` and ``my_file_v2`` as well as math with subscript as in $t_{i+1}$*  (myfig)
@@ -6334,7 +6376,7 @@ and an extra space before the FIGURE keyword.
 
 
 
-.. figure:: https://raw.github.com/hplgit/doconce/master/doc/blog/f_plot.png
+.. figure:: https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png
    :width: 500
 
 
@@ -6715,6 +6757,7 @@ head, otherwise tail. Repeat this N number of times.
                 heads += 1
         print 'Flipping a coin %d times gave %d heads' % (N, heads)
 
+
 .. --- end solution of exercise ---
 
 Filenames: ``flip_coin.py``, ``flip_coin.pdf``.
@@ -6911,6 +6954,7 @@ And with code (in plain verbatim) returning x+1 in hint::
 
         def func(x):
             return x + 1  # with code in hint
+
 
 .. --- end hint in exercise ---
 
@@ -7613,7 +7657,7 @@ there is a flow.
 
 .. _fig:impact:
 
-.. figure:: ../doc/manual/figs/streamtubes.png
+.. figure:: ../doc/src/manual/figs/streamtubes.png
    :width: 200
 
    *Visualization of flow by streamtubes*
@@ -7622,7 +7666,7 @@ there is a flow.
 Figures without captions are allowed and will be inlined.
 
 
-.. figure:: ../doc/manual/figs/streamtubes.png
+.. figure:: ../doc/src/manual/figs/streamtubes.png
    :width: 200
 
 
@@ -7638,7 +7682,7 @@ Movie :ref:`mov:tsunami` shows a tsunami.
 
 .. raw:: html
         
-        <embed src="../doc/manual/figs/mjolnir.mpeg" width=700 height=400 autoplay="false" loop="true"></embed>
+        <embed src="../doc/src/manual/figs/mjolnir.mpeg" width=700 height=400 autoplay="false" loop="true"></embed>
         <p><em>Mjolnir tsunami (by Sylfest Glimsdal) .</em></p>
 
 
@@ -7647,7 +7691,7 @@ Test empty caption (for inline movie):
 
 .. raw:: html
         
-        <embed src="../doc/manual/figs/wavepacket.mpeg" width=700 height=400 autoplay="false" loop="true"></embed>
+        <embed src="../doc/src/manual/figs/wavepacket.mpeg" width=700 height=400 autoplay="false" loop="true"></embed>
         <p><em></em></p>
 
 
@@ -7657,7 +7701,7 @@ Test empty caption (for inline movie):
 
 .. raw:: html
         
-        <p><a href="wavepacket_0001.html">Movie of files <tt>../doc/manual/figs/wavepacket_*.png</tt></a>
+        <p><a href="wavepacket_0001.html">Movie of files <tt>../doc/src/manual/figs/wavepacket_*.png</tt></a>
         <em>Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie).</em></p>
 
 
@@ -7695,7 +7739,7 @@ and an extra space before the FIGURE keyword.
 
 .. _myfig:
 
-.. figure:: ../doc/manual/figs/wavepacket_0001.png
+.. figure:: ../doc/src/manual/figs/wavepacket_0001.png
    :width: 500
 
    A long caption spanning several lines and containing verbatim words like ``my_file_v1`` and ``my_file_v2`` as well as math with subscript as in :math:`t_{i+1}`
@@ -7708,7 +7752,7 @@ and an extra space before the FIGURE keyword.
 
 
 
-.. figure:: https://raw.github.com/hplgit/doconce/master/doc/blog/f_plot.png
+.. figure:: https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png
    :width: 500
 
 
@@ -8205,6 +8249,7 @@ head, otherwise tail. Repeat this :math:`N` number of times.
                 heads += 1
         print 'Flipping a coin %d times gave %d heads' % (N, heads)
 
+
 .. --- end solution of exercise ---
 
 Filenames: ``flip_coin.py``, ``flip_coin.pdf``.
@@ -8419,6 +8464,7 @@ And with code (in plain verbatim) returning :math:`x+1` in hint:
 
         def func(x):
             return x + 1  # with code in hint
+
 
 .. --- end hint in exercise ---
 
@@ -9082,10 +9128,10 @@ there is a flow.
 
 Figure:  Visualization of flow by streamtubes. (fig:impact)
 
-(the URL of the image file ../doc/manual/figs/streamtubes.png must be inserted here)
+(the URL of the image file ../doc/src/manual/figs/streamtubes.png must be inserted here)
 
 <wiki:comment>
-Put the figure file ../doc/manual/figs/streamtubes.png on the web (e.g., as part of the
+Put the figure file ../doc/src/manual/figs/streamtubes.png on the web (e.g., as part of the
 googlecode repository) and substitute the line above with the URL.
 </wiki:comment>
 ---------------------------------------------------------------
@@ -9100,10 +9146,10 @@ Figures without captions are allowed and will be inlined.
 
 Figure: 
 
-(the URL of the image file ../doc/manual/figs/streamtubes.png must be inserted here)
+(the URL of the image file ../doc/src/manual/figs/streamtubes.png must be inserted here)
 
 <wiki:comment>
-Put the figure file ../doc/manual/figs/streamtubes.png on the web (e.g., as part of the
+Put the figure file ../doc/src/manual/figs/streamtubes.png on the web (e.g., as part of the
 googlecode repository) and substitute the line above with the URL.
 </wiki:comment>
 ---------------------------------------------------------------
@@ -9115,16 +9161,16 @@ googlecode repository) and substitute the line above with the URL.
 
 Movie mov:tsunami shows a tsunami.
 
- Mjolnir tsunami (by Sylfest Glimsdal) . (Movie ../doc/manual/figs/mjolnir.mpeg: play mjolnir.html)
+ Mjolnir tsunami (by Sylfest Glimsdal) . (Movie ../doc/src/manual/figs/mjolnir.mpeg: play mjolnir.html)
 
 Test empty caption (for inline movie):
 
- (Movie ../doc/manual/figs/wavepacket.mpeg: play wavepacket.html)
+ (Movie ../doc/src/manual/figs/wavepacket.mpeg: play wavepacket.html)
 
 <wiki:comment> Test wrong syntax and multi-line caption </wiki:comment>
 
 
- Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie).   (Movie of files `../doc/manual/figs/wavepacket_*.png` in wavepacket_0001.html)
+ Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie).   (Movie of files `../doc/src/manual/figs/wavepacket_*.png` in wavepacket_0001.html)
 
 
 <wiki:comment> Check out the correct with and height of YouTube movies from the </wiki:comment>
@@ -9146,10 +9192,10 @@ and an extra space before the FIGURE keyword.
 
 Figure:  A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in `t_{i+1}`. (myfig) 
 
-(the URL of the image file ../doc/manual/figs/wavepacket_0001.png must be inserted here)
+(the URL of the image file ../doc/src/manual/figs/wavepacket_0001.png must be inserted here)
 
 <wiki:comment>
-Put the figure file ../doc/manual/figs/wavepacket_0001.png on the web (e.g., as part of the
+Put the figure file ../doc/src/manual/figs/wavepacket_0001.png on the web (e.g., as part of the
 googlecode repository) and substitute the line above with the URL.
 </wiki:comment>
 ---------------------------------------------------------------
@@ -9166,10 +9212,10 @@ googlecode repository) and substitute the line above with the URL.
 
 Figure: 
 
-(the URL of the image file https://raw.github.com/hplgit/doconce/master/doc/blog/f_plot.png must be inserted here)
+(the URL of the image file https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png must be inserted here)
 
 <wiki:comment>
-Put the figure file https://raw.github.com/hplgit/doconce/master/doc/blog/f_plot.png on the web (e.g., as part of the
+Put the figure file https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png on the web (e.g., as part of the
 googlecode repository) and substitute the line above with the URL.
 </wiki:comment>
 ---------------------------------------------------------------
@@ -9471,18 +9517,21 @@ the beginning of a new exercise and cause trouble. Maybe a list
 
 
 *Hint 1.* Use `r = random.random()` and define head as `r <= 0.5`.
+
 <wiki:comment> --- end hint in exercise --- </wiki:comment>
 
 <wiki:comment> --- begin hint in exercise --- </wiki:comment>
 
 *Hint 2.* Draw an integer among `\{1,2\}` with
 `r = random.randint(1,2)` and define head when `r` is 1.
+
 <wiki:comment> --- end hint in exercise --- </wiki:comment>
 
 
 <wiki:comment> --- begin answer of exercise --- </wiki:comment>
 *Answer.* If the `random.random()` function returns a number `<1/2`, let it be
 head, otherwise tail. Repeat this `N` number of times.
+
 <wiki:comment> --- end answer of exercise --- </wiki:comment>
 
 
@@ -9498,6 +9547,7 @@ for i in range(N):
         heads += 1
 print 'Flipping a coin %d times gave %d heads' % (N, heads)
 }}}
+
 <wiki:comment> --- end solution of exercise --- </wiki:comment>
 Filenames: `flip_coin.py`, `flip_coin.pdf`.
 <wiki:comment> solution files: mysol.txt, mysol_flip_coin.py, yet_another.file </wiki:comment>
@@ -9528,6 +9578,7 @@ drawing uniformly distributed random numbers from the interval `[0,1)`?
 draw `N` such random numbers using Python's standard `random` module,
 count how many of them, `M`, that fall in the interval `(0.5,0.6)`, and
 compute the probability as `M/N`.
+
 <wiki:comment> --- end hint in exercise --- </wiki:comment>
 
 <wiki:comment> --- end exercise --- </wiki:comment>
@@ -9578,16 +9629,19 @@ above.
 
 *Hint.* Use the `numpy.random` module to draw the
 `x_0`, `y_0`, and `R` quantities.
+
 <wiki:comment> --- end hint in exercise --- </wiki:comment>
 
 
 <wiki:comment> --- begin answer of exercise --- </wiki:comment>
 *Answer.* Here goes the short answer to part a).
+
 <wiki:comment> --- end answer of exercise --- </wiki:comment>
 
 
 <wiki:comment> --- begin solution of exercise --- </wiki:comment>
 *Solution.* Here goes a full solution to part a).
+
 <wiki:comment> --- end solution of exercise --- </wiki:comment>
 
 *b)* Let `R` be uniformly distributed and `(x_0,y_0)` normally distributed.
@@ -9636,6 +9690,7 @@ And code `a=b` in this solution:
 a = b  # code in solution
 }}}
 End of solution is here.
+
 <wiki:comment> --- end solution of exercise --- </wiki:comment>
 
 
@@ -9655,11 +9710,13 @@ And with code (in plain verbatim) returning `x+1` in hint:
 def func(x):
     return x + 1  # with code in hint
 }}}
+
 <wiki:comment> --- end hint in exercise --- </wiki:comment>
 
 <wiki:comment> --- begin hint in exercise --- </wiki:comment>
 
 *Hint 2.* Second hint to subexercise a).
+
 <wiki:comment> --- end hint in exercise --- </wiki:comment>
 Filename: `subexer_a.pdf`.
 
@@ -9667,6 +9724,7 @@ Filename: `subexer_a.pdf`.
 <wiki:comment> --- begin answer of exercise --- </wiki:comment>
 *Answer.* Short answer to subexercise a).
 With math in answer: `a=b`.
+
 <wiki:comment> --- end answer of exercise --- </wiki:comment>
 
 *b)* Here goes the text for subexercise b).
@@ -9681,12 +9739,14 @@ Some math `\cos^2 x + \sin^2 x = 1` written one a single line:
 <wiki:comment> --- begin hint in exercise --- </wiki:comment>
 
 *Hint.* A hint for this subexercise.
+
 <wiki:comment> --- end hint in exercise --- </wiki:comment>
 Filename: `subexer_b.pdf`.
 
 
 <wiki:comment> --- begin solution of exercise --- </wiki:comment>
 *Solution.* Here goes the solution of this subexercise.
+
 <wiki:comment> --- end solution of exercise --- </wiki:comment>
 
 <wiki:comment> Closing remarks for this Exercise </wiki:comment>
@@ -10160,16 +10220,16 @@ Figures without captions are allowed and will be inlined.
 
 Movie mov:tsunami shows a tsunami.
 
- Mjolnir tsunami (by Sylfest Glimsdal) . (Movie ../doc/manual/figs/mjolnir.mpeg: play mjolnir.html)
+ Mjolnir tsunami (by Sylfest Glimsdal) . (Movie ../doc/src/manual/figs/mjolnir.mpeg: play mjolnir.html)
 
 Test empty caption (for inline movie):
 
- (Movie ../doc/manual/figs/wavepacket.mpeg: play wavepacket.html)
+ (Movie ../doc/src/manual/figs/wavepacket.mpeg: play wavepacket.html)
 
 <!-- Test wrong syntax and multi-line caption -->
 
 
- Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie).   (Movie of files <code>../doc/manual/figs/wavepacket_*.png</code> in wavepacket_0001.html)
+ Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie).   (Movie of files <code>../doc/src/manual/figs/wavepacket_*.png</code> in wavepacket_0001.html)
 
 
 <!-- Check out the correct with and height of YouTube movies from the -->
@@ -10194,7 +10254,7 @@ and an extra space before the FIGURE keyword.
 <!-- Test URL as figure name -->
 
 
-[[File:f_plot.png|frame|500,px|link=https://raw.github.com/hplgit/doconce/master/doc/blog|alt=f_plot.png|<span title=""></span>]]
+[[File:f_plot.png|frame|500,px|link=https://raw.github.com/hplgit/doconce/master/doc/src/blog|alt=f_plot.png|<span title=""></span>]]
 
 
 <!-- Test wikimedia type of files that otherwise reside in subdirs -->
@@ -10507,6 +10567,7 @@ the beginning of a new exercise and cause trouble. Maybe a list
 
 ''Hint 1.''
 Use <code>r = random.random()</code> and define head as <code>r <= 0.5</code>.
+
 <!-- --- end hint in exercise --- -->
 
 <!-- --- begin hint in exercise --- -->
@@ -10514,6 +10575,7 @@ Use <code>r = random.random()</code> and define head as <code>r <= 0.5</code>.
 ''Hint 2.''
 Draw an integer among <math>\{1,2\}</math> with
 <code>r = random.randint(1,2)</code> and define head when <code>r</code> is 1.
+
 <!-- --- end hint in exercise --- -->
 
 
@@ -10521,6 +10583,7 @@ Draw an integer among <math>\{1,2\}</math> with
 ''Answer.''
 If the <code>random.random()</code> function returns a number <math><1/2</math>, let it be
 head, otherwise tail. Repeat this <math>N</math> number of times.
+
 <!-- --- end answer of exercise --- -->
 
 
@@ -10537,6 +10600,7 @@ for i in range(N):
         heads += 1
 print 'Flipping a coin %d times gave %d heads' % (N, heads)
 </syntaxhighlight>
+
 <!-- --- end solution of exercise --- -->
 Filenames: <code>flip_coin.py</code>, <code>flip_coin.pdf</code>.
 <!-- solution files: mysol.txt, mysol_flip_coin.py, yet_another.file -->
@@ -10568,6 +10632,7 @@ To answer this question empirically, let a program
 draw <math>N</math> such random numbers using Python's standard <code>random</code> module,
 count how many of them, <math>M</math>, that fall in the interval <math>(0.5,0.6)</math>, and
 compute the probability as <math>M/N</math>.
+
 <!-- --- end hint in exercise --- -->
 
 <!-- --- end exercise --- -->
@@ -10620,18 +10685,21 @@ Let <math>R</math> be normally distributed and <math>(x_0,y_0)</math> uniformly 
 ''Hint.''
 Use the <code>numpy.random</code> module to draw the
 <math>x_0</math>, <math>y_0</math>, and <math>R</math> quantities.
+
 <!-- --- end hint in exercise --- -->
 
 
 <!-- --- begin answer of exercise --- -->
 ''Answer.''
 Here goes the short answer to part a).
+
 <!-- --- end answer of exercise --- -->
 
 
 <!-- --- begin solution of exercise --- -->
 ''Solution.''
 Here goes a full solution to part a).
+
 <!-- --- end solution of exercise --- -->
 
 ''b)''
@@ -10683,6 +10751,7 @@ And code <code>a=b</code> in this solution:
 a = b  # code in solution
 </syntaxhighlight>
 End of solution is here.
+
 <!-- --- end solution of exercise --- -->
 
 
@@ -10704,12 +10773,14 @@ And with code (in plain verbatim) returning <math>x+1</math> in hint:
 def func(x):
     return x + 1  # with code in hint
 </syntaxhighlight>
+
 <!-- --- end hint in exercise --- -->
 
 <!-- --- begin hint in exercise --- -->
 
 ''Hint 2.''
 Second hint to subexercise a).
+
 <!-- --- end hint in exercise --- -->
 Filename: <code>subexer_a.pdf</code>.
 
@@ -10718,6 +10789,7 @@ Filename: <code>subexer_a.pdf</code>.
 ''Answer.''
 Short answer to subexercise a).
 With math in answer: <math>a=b</math>.
+
 <!-- --- end answer of exercise --- -->
 
 ''b)''
@@ -10734,6 +10806,7 @@ Some math <math>\cos^2 x + \sin^2 x = 1</math> written one a single line:
 
 ''Hint.''
 A hint for this subexercise.
+
 <!-- --- end hint in exercise --- -->
 Filename: <code>subexer_b.pdf</code>.
 
@@ -10741,6 +10814,7 @@ Filename: <code>subexer_b.pdf</code>.
 <!-- --- begin solution of exercise --- -->
 ''Solution.''
 Here goes the solution of this subexercise.
+
 <!-- --- end solution of exercise --- -->
 
 <!-- Closing remarks for this Exercise -->
@@ -11294,27 +11368,27 @@ HTML is the output format.
 Test of figures. In particular we refer to Figure fig:impact in which
 there is a flow.
 
-{{../doc/manual/figs/streamtubes.png| Visualization of flow by streamtubes. (fig:impact)}}
+{{../doc/src/manual/figs/streamtubes.png| Visualization of flow by streamtubes. (fig:impact)}}
 
 Figures without captions are allowed and will be inlined.
 
-{{../doc/manual/figs/streamtubes.png|}}
+{{../doc/src/manual/figs/streamtubes.png|}}
 
 
 === Test of movies ===
 
 Movie mov:tsunami shows a tsunami.
 
- Mjolnir tsunami (by Sylfest Glimsdal) . (Movie ../doc/manual/figs/mjolnir.mpeg: play [[mjolnir.html]])
+ Mjolnir tsunami (by Sylfest Glimsdal) . (Movie ../doc/src/manual/figs/mjolnir.mpeg: play [[mjolnir.html]])
 
 Test empty caption (for inline movie):
 
- (Movie ../doc/manual/figs/wavepacket.mpeg: play [[wavepacket.html]])
+ (Movie ../doc/src/manual/figs/wavepacket.mpeg: play [[wavepacket.html]])
 
 <wiki:comment> Test wrong syntax and multi-line caption </wiki:comment>
 
 
- Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie).   (Movie of files {{{../doc/manual/figs/wavepacket_*.png}}} in [[wavepacket_0001.html]])
+ Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie).   (Movie of files {{{../doc/src/manual/figs/wavepacket_*.png}}} in [[wavepacket_0001.html]])
 
 
 <wiki:comment> Check out the correct with and height of YouTube movies from the </wiki:comment>
@@ -11330,13 +11404,13 @@ Test empty caption (for inline movie):
 Here is figure myfig with a long multi-line caption
 and an extra space before the FIGURE keyword.
 
-{{../doc/manual/figs/wavepacket_0001.png| A long caption spanning several lines and containing verbatim words like {{{my_file_v1}}} and {{{my_file_v2}}} as well as math with subscript as in {{{t_{i+1}}}}. (myfig) }}
+{{../doc/src/manual/figs/wavepacket_0001.png| A long caption spanning several lines and containing verbatim words like {{{my_file_v1}}} and {{{my_file_v2}}} as well as math with subscript as in {{{t_{i+1}}}}. (myfig) }}
 
 <wiki:comment> Must be a blank line after MOVIE or FIGURE to detect this problem </wiki:comment>
 
 <wiki:comment> Test URL as figure name </wiki:comment>
 
-{{https://raw.github.com/hplgit/doconce/master/doc/blog/f_plot.png|}}
+{{https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png|}}
 
 <wiki:comment> Test wikimedia type of files that otherwise reside in subdirs </wiki:comment>
 
@@ -11638,18 +11712,21 @@ the beginning of a new exercise and cause trouble. Maybe a list
 
 
 //Hint 1.// Use {{{r = random.random()}}} and define head as {{{r <= 0.5}}}.
+
 <wiki:comment> --- end hint in exercise --- </wiki:comment>
 
 <wiki:comment> --- begin hint in exercise --- </wiki:comment>
 
 //Hint 2.// Draw an integer among {{{\{1,2\}}}} with
 {{{r = random.randint(1,2)}}} and define head when {{{r}}} is 1.
+
 <wiki:comment> --- end hint in exercise --- </wiki:comment>
 
 
 <wiki:comment> --- begin answer of exercise --- </wiki:comment>
 //Answer.// If the {{{random.random()}}} function returns a number {{{<1/2}}}, let it be
 head, otherwise tail. Repeat this {{{N}}} number of times.
+
 <wiki:comment> --- end answer of exercise --- </wiki:comment>
 
 
@@ -11665,6 +11742,7 @@ for i in range(N):
         heads += 1
 print 'Flipping a coin %d times gave %d heads' % (N, heads)
 }}}
+
 <wiki:comment> --- end solution of exercise --- </wiki:comment>
 Filenames: {{{flip_coin.py}}}, {{{flip_coin.pdf}}}.
 <wiki:comment> solution files: mysol.txt, mysol_flip_coin.py, yet_another.file </wiki:comment>
@@ -11696,6 +11774,7 @@ drawing uniformly distributed random numbers from the interval {{{[0,1)}}}?
 draw {{{N}}} such random numbers using Python's standard {{{random}}} module,
 count how many of them, {{{M}}}, that fall in the interval {{{(0.5,0.6)}}}, and
 compute the probability as {{{M/N}}}.
+
 <wiki:comment> --- end hint in exercise --- </wiki:comment>
 
 <wiki:comment> --- end exercise --- </wiki:comment>
@@ -11747,16 +11826,19 @@ above.
 
 //Hint.// Use the {{{numpy.random}}} module to draw the
 {{{x_0}}}, {{{y_0}}}, and {{{R}}} quantities.
+
 <wiki:comment> --- end hint in exercise --- </wiki:comment>
 
 
 <wiki:comment> --- begin answer of exercise --- </wiki:comment>
 //Answer.// Here goes the short answer to part a).
+
 <wiki:comment> --- end answer of exercise --- </wiki:comment>
 
 
 <wiki:comment> --- begin solution of exercise --- </wiki:comment>
 //Solution.// Here goes a full solution to part a).
+
 <wiki:comment> --- end solution of exercise --- </wiki:comment>
 
 //b)// Let {{{R}}} be uniformly distributed and {{{(x_0,y_0)}}} normally distributed.
@@ -11806,6 +11888,7 @@ And code {{{a=b}}} in this solution:
 a = b  # code in solution
 }}}
 End of solution is here.
+
 <wiki:comment> --- end solution of exercise --- </wiki:comment>
 
 
@@ -11825,11 +11908,13 @@ And with code (in plain verbatim) returning {{{x+1}}} in hint:
 def func(x):
     return x + 1  # with code in hint
 }}}
+
 <wiki:comment> --- end hint in exercise --- </wiki:comment>
 
 <wiki:comment> --- begin hint in exercise --- </wiki:comment>
 
 //Hint 2.// Second hint to subexercise a).
+
 <wiki:comment> --- end hint in exercise --- </wiki:comment>
 Filename: {{{subexer_a.pdf}}}.
 
@@ -11837,6 +11922,7 @@ Filename: {{{subexer_a.pdf}}}.
 <wiki:comment> --- begin answer of exercise --- </wiki:comment>
 //Answer.// Short answer to subexercise a).
 With math in answer: {{{a=b}}}.
+
 <wiki:comment> --- end answer of exercise --- </wiki:comment>
 
 //b)// Here goes the text for subexercise b).
@@ -11851,12 +11937,14 @@ Some math {{{\cos^2 x + \sin^2 x = 1}}} written one a single line:
 <wiki:comment> --- begin hint in exercise --- </wiki:comment>
 
 //Hint.// A hint for this subexercise.
+
 <wiki:comment> --- end hint in exercise --- </wiki:comment>
 Filename: {{{subexer_b.pdf}}}.
 
 
 <wiki:comment> --- begin solution of exercise --- </wiki:comment>
 //Solution.// Here goes the solution of this subexercise.
+
 <wiki:comment> --- end solution of exercise --- </wiki:comment>
 
 <wiki:comment> Closing remarks for this Exercise </wiki:comment>
@@ -12310,26 +12398,26 @@ Subsection 2: Testing figures and movies
 Test of figures. In particular we refer to Figure ref{fig:impact} in which
 there is a flow.
 
-FIGURE:[../doc/manual/figs/streamtubes, width=200] Visualization of flow by streamtubes. {fig:impact}
+FIGURE:[../doc/src/manual/figs/streamtubes, width=200] Visualization of flow by streamtubes. {fig:impact}
 
 Figures without captions are allowed and will be inlined.
 
-FIGURE:[../doc/manual/figs/streamtubes, width=200]
+FIGURE:[../doc/src/manual/figs/streamtubes, width=200]
 
 
 Test of movies
 
 Movie ref{mov:tsunami} shows a tsunami.
 
- Mjolnir tsunami (by Sylfest Glimsdal) . (Movie ../doc/manual/figs/mjolnir.mpeg: play "mjolnir.html":mjolnir.html)
+ Mjolnir tsunami (by Sylfest Glimsdal) . (Movie ../doc/src/manual/figs/mjolnir.mpeg: play "mjolnir.html":mjolnir.html)
 
 Test empty caption (for inline movie):
 
- (Movie ../doc/manual/figs/wavepacket.mpeg: play "wavepacket.html":wavepacket.html)
+ (Movie ../doc/src/manual/figs/wavepacket.mpeg: play "wavepacket.html":wavepacket.html)
 
 
 
- Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie).   (Movie of files '../doc/manual/figs/wavepacket_*.png' in "wavepacket_0001.html":wavepacket_0001.html)
+ Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie).   (Movie of files '../doc/src/manual/figs/wavepacket_*.png' in "wavepacket_0001.html":wavepacket_0001.html)
 
 
 
@@ -12342,11 +12430,11 @@ Test empty caption (for inline movie):
 Here is figure ref{myfig} with a long multi-line caption
 and an extra space before the FIGURE keyword.
 
-FIGURE: [../doc/manual/figs/wavepacket_0001.png, width=500] A long caption spanning several lines and containing verbatim words like 'my_file_v1' and 'my_file_v2' as well as math with subscript as in t_{i+1}. {myfig} 
+FIGURE: [../doc/src/manual/figs/wavepacket_0001.png, width=500] A long caption spanning several lines and containing verbatim words like 'my_file_v1' and 'my_file_v2' as well as math with subscript as in t_{i+1}. {myfig} 
 
 
 
-FIGURE: [https://raw.github.com/hplgit/doconce/master/doc/blog/f_plot.png, width=500, frac=0.8]
+FIGURE: [https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png, width=500, frac=0.8]
 
 
 
@@ -12628,12 +12716,15 @@ the beginning of a new exercise and cause trouble. Maybe a list
 *Hint 1.* Use 'r = random.random()' and define head as 'r <= 0.5'.
 
 
+
 *Hint 2.* Draw an integer among \{1,2\} with
 'r = random.randint(1,2)' and define head when 'r' is 1.
 
 
+
 *Answer.* If the 'random.random()' function returns a number <1/2, let it be
 head, otherwise tail. Repeat this N number of times.
+
 
 
 *Solution.* Code::
@@ -12647,6 +12738,7 @@ head, otherwise tail. Repeat this N number of times.
             if r <= 0.5:
                 heads += 1
         print 'Flipping a coin %d times gave %d heads' % (N, heads)
+
 
 Filenames: 'flip_coin.py', 'flip_coin.pdf'.
 
@@ -12672,6 +12764,7 @@ drawing uniformly distributed random numbers from the interval [0,1)?
 draw N such random numbers using Python's standard 'random' module,
 count how many of them, M, that fall in the interval (0.5,0.6), and
 compute the probability as M/N.
+
 
 
 
@@ -12717,10 +12810,13 @@ above.
 x_0, y_0, and R quantities.
 
 
+
 *Answer.* Here goes the short answer to part a).
 
 
+
 *Solution.* Here goes a full solution to part a).
+
 
 *b)* Let R be uniformly distributed and (x_0,y_0) normally distributed.
 Filename: 'norm.py'.
@@ -12766,6 +12862,7 @@ And code 'a=b' in this solution::
 End of solution is here.
 
 
+
 *a)* Subexercises are numbered a), b), etc.
 
 
@@ -12782,12 +12879,15 @@ And with code (in plain verbatim) returning x+1 in hint::
 
 
 
+
 *Hint 2.* Second hint to subexercise a).
+
 Filename: 'subexer_a.pdf'.
 
 
 *Answer.* Short answer to subexercise a).
 With math in answer: a=b.
+
 
 *b)* Here goes the text for subexercise b).
 
@@ -12799,10 +12899,12 @@ Some math \cos^2 x + \sin^2 x = 1 written one a single line::
 
 
 *Hint.* A hint for this subexercise.
+
 Filename: 'subexer_b.pdf'.
 
 
 *Solution.* Here goes the solution of this subexercise.
+
 
 
 Remarks
@@ -13323,11 +13425,11 @@ Subsection 2: Testing figures and movies
 Test of figures. In particular we refer to Figure ref{fig:impact} in which
 there is a flow.
 
-FIGURE:[../doc/manual/figs/streamtubes, width=200] Visualization of flow by streamtubes. {fig:impact}
+FIGURE:[../doc/src/manual/figs/streamtubes, width=200] Visualization of flow by streamtubes. {fig:impact}
 
 Figures without captions are allowed and will be inlined.
 
-FIGURE:[../doc/manual/figs/streamtubes, width=200]
+FIGURE:[../doc/src/manual/figs/streamtubes, width=200]
 
 
 Test of movies
@@ -13335,15 +13437,15 @@ Test of movies
 
 Movie ref{mov:tsunami} shows a tsunami.
 
- Mjolnir tsunami (by Sylfest Glimsdal) . (Movie ../doc/manual/figs/mjolnir.mpeg: play U{mjolnir.html<mjolnir.html>})
+ Mjolnir tsunami (by Sylfest Glimsdal) . (Movie ../doc/src/manual/figs/mjolnir.mpeg: play U{mjolnir.html<mjolnir.html>})
 
 Test empty caption (for inline movie):
 
- (Movie ../doc/manual/figs/wavepacket.mpeg: play U{wavepacket.html<wavepacket.html>})
+ (Movie ../doc/src/manual/figs/wavepacket.mpeg: play U{wavepacket.html<wavepacket.html>})
 
 
 
- Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie).   (Movie of files C{../doc/manual/figs/wavepacket_*.png} in U{wavepacket_0001.html<wavepacket_0001.html>})
+ Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie).   (Movie of files C{../doc/src/manual/figs/wavepacket_*.png} in U{wavepacket_0001.html<wavepacket_0001.html>})
 
 
 
@@ -13356,11 +13458,11 @@ Test empty caption (for inline movie):
 Here is figure ref{myfig} with a long multi-line caption
 and an extra space before the FIGURE keyword.
 
-FIGURE: [../doc/manual/figs/wavepacket_0001.png, width=500] A long caption spanning several lines and containing verbatim words like C{my_file_v1} and C{my_file_v2} as well as math with subscript as in M{t_{i+1}}. {myfig} 
+FIGURE: [../doc/src/manual/figs/wavepacket_0001.png, width=500] A long caption spanning several lines and containing verbatim words like C{my_file_v1} and C{my_file_v2} as well as math with subscript as in M{t_{i+1}}. {myfig} 
 
 
 
-FIGURE: [https://raw.github.com/hplgit/doconce/master/doc/blog/f_plot.png, width=500, frac=0.8]
+FIGURE: [https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png, width=500, frac=0.8]
 
 
 
@@ -13654,12 +13756,15 @@ the beginning of a new exercise and cause trouble. Maybe a list
 I{Hint 1.} Use C{r = random.random()} and define head as C{r <= 0.5}.
 
 
+
 I{Hint 2.} Draw an integer among M{\{1,2\}} with
 C{r = random.randint(1,2)} and define head when C{r} is 1.
 
 
+
 I{Answer.} If the C{random.random()} function returns a number M{<1/2}, let it be
 head, otherwise tail. Repeat this M{N} number of times.
+
 
 
 I{Solution.} Code::
@@ -13673,6 +13778,7 @@ I{Solution.} Code::
             if r <= 0.5:
                 heads += 1
         print 'Flipping a coin %d times gave %d heads' % (N, heads)
+
 
 Filenames: C{flip_coin.py}, C{flip_coin.pdf}.
 
@@ -13700,6 +13806,7 @@ I{Hint.} To answer this question empirically, let a program
 draw M{N} such random numbers using Python's standard C{random} module,
 count how many of them, M{M}, that fall in the interval M{(0.5,0.6)}, and
 compute the probability as M{M/N}.
+
 
 
 
@@ -13746,10 +13853,13 @@ I{Hint.} Use the C{numpy.random} module to draw the
 M{x_0}, M{y_0}, and M{R} quantities.
 
 
+
 I{Answer.} Here goes the short answer to part a).
 
 
+
 I{Solution.} Here goes a full solution to part a).
+
 
 I{b)} Let M{R} be uniformly distributed and M{(x_0,y_0)} normally distributed.
 Filename: C{norm.py}.
@@ -13797,6 +13907,7 @@ And code C{a=b} in this solution::
 End of solution is here.
 
 
+
 I{a)} Subexercises are numbered a), b), etc.
 
 
@@ -13813,12 +13924,15 @@ And with code (in plain verbatim) returning M{x+1} in hint::
 
 
 
+
 I{Hint 2.} Second hint to subexercise a).
+
 Filename: C{subexer_a.pdf}.
 
 
 I{Answer.} Short answer to subexercise a).
 With math in answer: M{a=b}.
+
 
 I{b)} Here goes the text for subexercise b).
 
@@ -13830,10 +13944,12 @@ Some math M{\cos^2 x + \sin^2 x = 1} written one a single line::
 
 
 I{Hint.} A hint for this subexercise.
+
 Filename: C{subexer_b.pdf}.
 
 
 I{Solution.} Here goes the solution of this subexercise.
+
 
 
 Remarks
@@ -14437,11 +14553,11 @@ Subsection 2: Testing figures and movies
 Test of figures. In particular we refer to Figure ref{fig:impact} in which
 there is a flow.
 
-FIGURE:[../doc/manual/figs/streamtubes, width=200] Visualization of flow by streamtubes. {fig:impact}
+FIGURE:[../doc/src/manual/figs/streamtubes, width=200] Visualization of flow by streamtubes. {fig:impact}
 
 Figures without captions are allowed and will be inlined.
 
-FIGURE:[../doc/manual/figs/streamtubes, width=200]
+FIGURE:[../doc/src/manual/figs/streamtubes, width=200]
 
 
 Test of movies
@@ -14449,15 +14565,15 @@ Test of movies
 
 Movie ref{mov:tsunami} shows a tsunami.
 
- Mjolnir tsunami (by Sylfest Glimsdal) . (Movie ../doc/manual/figs/mjolnir.mpeg: play mjolnir.html)
+ Mjolnir tsunami (by Sylfest Glimsdal) . (Movie ../doc/src/manual/figs/mjolnir.mpeg: play mjolnir.html)
 
 Test empty caption (for inline movie):
 
- (Movie ../doc/manual/figs/wavepacket.mpeg: play wavepacket.html)
+ (Movie ../doc/src/manual/figs/wavepacket.mpeg: play wavepacket.html)
 
 
 
- Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie).   (Movie of files ../doc/manual/figs/wavepacket_*.png in wavepacket_0001.html)
+ Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie).   (Movie of files ../doc/src/manual/figs/wavepacket_*.png in wavepacket_0001.html)
 
 
 
@@ -14470,11 +14586,11 @@ Test empty caption (for inline movie):
 Here is figure ref{myfig} with a long multi-line caption
 and an extra space before the FIGURE keyword.
 
-FIGURE: [../doc/manual/figs/wavepacket_0001.png, width=500] A long caption spanning several lines and containing verbatim words like my_file_v1 and my_file_v2 as well as math with subscript as in t_{i+1}. {myfig} 
+FIGURE: [../doc/src/manual/figs/wavepacket_0001.png, width=500] A long caption spanning several lines and containing verbatim words like my_file_v1 and my_file_v2 as well as math with subscript as in t_{i+1}. {myfig} 
 
 
 
-FIGURE: [https://raw.github.com/hplgit/doconce/master/doc/blog/f_plot.png, width=500, frac=0.8]
+FIGURE: [https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png, width=500, frac=0.8]
 
 
 
@@ -14768,12 +14884,15 @@ the beginning of a new exercise and cause trouble. Maybe a list
 *Hint 1.* Use r = random.random() and define head as r <= 0.5.
 
 
+
 *Hint 2.* Draw an integer among \{1,2\} with
 r = random.randint(1,2) and define head when r is 1.
 
 
+
 *Answer.* If the random.random() function returns a number <1/2, let it be
 head, otherwise tail. Repeat this N number of times.
+
 
 
 *Solution.* Code::
@@ -14787,6 +14906,7 @@ head, otherwise tail. Repeat this N number of times.
             if r <= 0.5:
                 heads += 1
         print 'Flipping a coin %d times gave %d heads' % (N, heads)
+
 
 Filenames: flip_coin.py, flip_coin.pdf.
 
@@ -14814,6 +14934,7 @@ drawing uniformly distributed random numbers from the interval [0,1)?
 draw N such random numbers using Python's standard random module,
 count how many of them, M, that fall in the interval (0.5,0.6), and
 compute the probability as M/N.
+
 
 
 
@@ -14860,10 +14981,13 @@ above.
 x_0, y_0, and R quantities.
 
 
+
 *Answer.* Here goes the short answer to part a).
 
 
+
 *Solution.* Here goes a full solution to part a).
+
 
 *b)* Let R be uniformly distributed and (x_0,y_0) normally distributed.
 Filename: norm.py.
@@ -14911,6 +15035,7 @@ And code a=b in this solution::
 End of solution is here.
 
 
+
 *a)* Subexercises are numbered a), b), etc.
 
 
@@ -14927,12 +15052,15 @@ And with code (in plain verbatim) returning x+1 in hint::
 
 
 
+
 *Hint 2.* Second hint to subexercise a).
+
 Filename: subexer_a.pdf.
 
 
 *Answer.* Short answer to subexercise a).
 With math in answer: a=b.
+
 
 *b)* Here goes the text for subexercise b).
 
@@ -14944,10 +15072,12 @@ Some math \cos^2 x + \sin^2 x = 1 written one a single line::
 
 
 *Hint.* A hint for this subexercise.
+
 Filename: subexer_b.pdf.
 
 
 *Solution.* Here goes the solution of this subexercise.
+
 
 
 Remarks
@@ -15529,11 +15659,11 @@ HTML is the output format.
 Test of figures. In particular we refer to Figure ref{fig:impact} in which
 there is a flow.
 
-![Visualization of flow by streamtubes. ](../doc/manual/figs/streamtubes.png)
+![Visualization of flow by streamtubes. ](../doc/src/manual/figs/streamtubes.png)
 
 Figures without captions are allowed and will be inlined.
 
-![](../doc/manual/figs/streamtubes.png)
+![](../doc/src/manual/figs/streamtubes.png)
 
 
 #### Test of movies
@@ -15541,21 +15671,21 @@ Figures without captions are allowed and will be inlined.
 Movie ref{mov:tsunami} shows a tsunami.
 
 
-<embed src="../doc/manual/figs/mjolnir.mpeg" width=700 height=400 autoplay="false" loop="true"></embed>
+<embed src="../doc/src/manual/figs/mjolnir.mpeg" width=700 height=400 autoplay="false" loop="true"></embed>
 <p><em>Mjolnir tsunami (by Sylfest Glimsdal) .</em></p>
 
 
 Test empty caption (for inline movie):
 
 
-<embed src="../doc/manual/figs/wavepacket.mpeg" width=700 height=400 autoplay="false" loop="true"></embed>
+<embed src="../doc/src/manual/figs/wavepacket.mpeg" width=700 height=400 autoplay="false" loop="true"></embed>
 <p><em></em></p>
 
 
 <!-- Test wrong syntax and multi-line caption -->
 
 
-<p><a href="wavepacket_0001.html">Movie of files <tt>../doc/manual/figs/wavepacket_*.png</tt></a>
+<p><a href="wavepacket_0001.html">Movie of files <tt>../doc/src/manual/figs/wavepacket_*.png</tt></a>
 <em>Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie).</em></p>
 
 <!-- Check out the correct with and height of YouTube movies from the -->
@@ -15581,13 +15711,13 @@ Test empty caption (for inline movie):
 Here is figure ref{myfig} with a long multi-line caption
 and an extra space before the FIGURE keyword.
 
-![A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. ](../doc/manual/figs/wavepacket_0001.png)
+![A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. ](../doc/src/manual/figs/wavepacket_0001.png)
 
 <!-- Must be a blank line after MOVIE or FIGURE to detect this problem -->
 
 <!-- Test URL as figure name -->
 
-![](https://raw.github.com/hplgit/doconce/master/doc/blog/f_plot.png)
+![](https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png)
 
 <!-- Test wikimedia type of files that otherwise reside in subdirs -->
 
@@ -15976,18 +16106,21 @@ the beginning of a new exercise and cause trouble. Maybe a list
 <!-- --- begin hint in exercise --- -->
 
 *Hint 1.* Use `r = random.random()` and define head as `r <= 0.5`.
+
 <!-- --- end hint in exercise --- -->
 
 <!-- --- begin hint in exercise --- -->
 
 *Hint 2.* Draw an integer among $\{1,2\}$ with
 `r = random.randint(1,2)` and define head when `r` is 1.
+
 <!-- --- end hint in exercise --- -->
 
 
 <!-- --- begin answer of exercise --- -->
 *Answer.* If the `random.random()` function returns a number $<1/2$, let it be
 head, otherwise tail. Repeat this $N$ number of times.
+
 <!-- --- end answer of exercise --- -->
 
 
@@ -16035,6 +16168,7 @@ drawing uniformly distributed random numbers from the interval $[0,1)$?
 draw $N$ such random numbers using Python's standard `random` module,
 count how many of them, $M$, that fall in the interval $(0.5,0.6)$, and
 compute the probability as $M/N$.
+
 <!-- --- end hint in exercise --- -->
 
 <!-- --- end exercise --- -->
@@ -16091,16 +16225,19 @@ above.
 
 *Hint.* Use the `numpy.random` module to draw the
 $x_0$, $y_0$, and $R$ quantities.
+
 <!-- --- end hint in exercise --- -->
 
 
 <!-- --- begin answer of exercise --- -->
 *Answer.* Here goes the short answer to part a).
+
 <!-- --- end answer of exercise --- -->
 
 
 <!-- --- begin solution of exercise --- -->
 *Solution.* Here goes a full solution to part a).
+
 <!-- --- end solution of exercise --- -->
 
 *b)* Let $R$ be uniformly distributed and $(x_0,y_0)$ normally distributed.
@@ -16151,6 +16288,7 @@ a = b  # code in solution
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 End of solution is here.
+
 <!-- --- end solution of exercise --- -->
 
 
@@ -16177,6 +16315,7 @@ def func(x):
 <!-- --- begin hint in exercise --- -->
 
 *Hint 2.* Second hint to subexercise a).
+
 <!-- --- end hint in exercise --- -->
 Filename: `subexer_a.pdf`.
 
@@ -16184,6 +16323,7 @@ Filename: `subexer_a.pdf`.
 <!-- --- begin answer of exercise --- -->
 *Answer.* Short answer to subexercise a).
 With math in answer: $a=b$.
+
 <!-- --- end answer of exercise --- -->
 
 *b)* Here goes the text for subexercise b).
@@ -16198,12 +16338,14 @@ $$
 <!-- --- begin hint in exercise --- -->
 
 *Hint.* A hint for this subexercise.
+
 <!-- --- end hint in exercise --- -->
 Filename: `subexer_b.pdf`.
 
 
 <!-- --- begin solution of exercise --- -->
 *Solution.* Here goes the solution of this subexercise.
+
 <!-- --- end solution of exercise --- -->
 
 <!-- Closing remarks for this Exercise -->
@@ -16934,11 +17076,11 @@ case in LaTeX.
       "Test of figures. In particular we refer to Figure ref{fig:impact} in which\n",
       "there is a flow.\n",
       "\n",
-      "![Visualization of flow by streamtubes. ](files/../doc/manual/figs/streamtubes.png)\n",
+      "![Visualization of flow by streamtubes. ](files/../doc/src/manual/figs/streamtubes.png)\n",
       "\n",
       "Figures without captions are allowed and will be inlined.\n",
       "\n",
-      "![](files/../doc/manual/figs/streamtubes.png)\n",
+      "![](files/../doc/src/manual/figs/streamtubes.png)\n",
       "\n",
       "\n",
       "#### Test of movies\n",
@@ -16946,21 +17088,21 @@ case in LaTeX.
       "Movie ref{mov:tsunami} shows a tsunami.\n",
       "\n",
       "\n",
-      "<embed src=\"../doc/manual/figs/mjolnir.mpeg\" width=700 height=400 autoplay=\"false\" loop=\"true\"></embed>\n",
+      "<embed src=\"../doc/src/manual/figs/mjolnir.mpeg\" width=700 height=400 autoplay=\"false\" loop=\"true\"></embed>\n",
       "<p><em>Mjolnir tsunami (by Sylfest Glimsdal) .</em></p>\n",
       "\n",
       "\n",
       "Test empty caption (for inline movie):\n",
       "\n",
       "\n",
-      "<embed src=\"../doc/manual/figs/wavepacket.mpeg\" width=700 height=400 autoplay=\"false\" loop=\"true\"></embed>\n",
+      "<embed src=\"../doc/src/manual/figs/wavepacket.mpeg\" width=700 height=400 autoplay=\"false\" loop=\"true\"></embed>\n",
       "<p><em></em></p>\n",
       "\n",
       "\n",
       "<!-- Test wrong syntax and multi-line caption -->\n",
       "\n",
       "\n",
-      "<p><a href=\"wavepacket_0001.html\">Movie of files <tt>../doc/manual/figs/wavepacket_*.png</tt></a>\n",
+      "<p><a href=\"wavepacket_0001.html\">Movie of files <tt>../doc/src/manual/figs/wavepacket_*.png</tt></a>\n",
       "<em>Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie).</em></p>\n",
       "\n",
       "<!-- Check out the correct with and height of YouTube movies from the -->\n",
@@ -16986,13 +17128,13 @@ case in LaTeX.
       "Here is figure ref{myfig} with a long multi-line caption\n",
       "and an extra space before the FIGURE keyword.\n",
       "\n",
-      "![A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. ](files/../doc/manual/figs/wavepacket_0001.png)\n",
+      "![A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. ](files/../doc/src/manual/figs/wavepacket_0001.png)\n",
       "\n",
       "<!-- Must be a blank line after MOVIE or FIGURE to detect this problem -->\n",
       "\n",
       "<!-- Test URL as figure name -->\n",
       "\n",
-      "![](https://raw.github.com/hplgit/doconce/master/doc/blog/f_plot.png)\n",
+      "![](https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png)\n",
       "\n",
       "<!-- Test wikimedia type of files that otherwise reside in subdirs -->\n",
       "\n",
@@ -17409,18 +17551,21 @@ case in LaTeX.
       "<!-- --- begin hint in exercise --- -->\n",
       "\n",
       "*Hint 1.* Use `r = random.random()` and define head as `r <= 0.5`.\n",
+      "\n",
       "<!-- --- end hint in exercise --- -->\n",
       "\n",
       "<!-- --- begin hint in exercise --- -->\n",
       "\n",
       "*Hint 2.* Draw an integer among $\\{1,2\\}$ with\n",
       "`r = random.randint(1,2)` and define head when `r` is 1.\n",
+      "\n",
       "<!-- --- end hint in exercise --- -->\n",
       "\n",
       "\n",
       "<!-- --- begin answer of exercise --- -->\n",
       "*Answer.* If the `random.random()` function returns a number $<1/2$, let it be\n",
       "head, otherwise tail. Repeat this $N$ number of times.\n",
+      "\n",
       "<!-- --- end answer of exercise --- -->\n",
       "\n",
       "\n",
@@ -17480,6 +17625,7 @@ case in LaTeX.
       "draw $N$ such random numbers using Python's standard `random` module,\n",
       "count how many of them, $M$, that fall in the interval $(0.5,0.6)$, and\n",
       "compute the probability as $M/N$.\n",
+      "\n",
       "<!-- --- end hint in exercise --- -->\n",
       "\n",
       "<!-- --- end exercise --- -->\n",
@@ -17563,16 +17709,19 @@ case in LaTeX.
       "\n",
       "*Hint.* Use the `numpy.random` module to draw the\n",
       "$x_0$, $y_0$, and $R$ quantities.\n",
+      "\n",
       "<!-- --- end hint in exercise --- -->\n",
       "\n",
       "\n",
       "<!-- --- begin answer of exercise --- -->\n",
       "*Answer.* Here goes the short answer to part a).\n",
+      "\n",
       "<!-- --- end answer of exercise --- -->\n",
       "\n",
       "\n",
       "<!-- --- begin solution of exercise --- -->\n",
       "*Solution.* Here goes a full solution to part a).\n",
+      "\n",
       "<!-- --- end solution of exercise --- -->\n",
       "\n",
       "*b)* Let $R$ be uniformly distributed and $(x_0,y_0)$ normally distributed.\n",
@@ -17647,6 +17796,7 @@ case in LaTeX.
      "metadata": {},
      "source": [
       "End of solution is here.\n",
+      "\n",
       "<!-- --- end solution of exercise --- -->\n",
       "\n",
       "\n",
@@ -17695,6 +17845,7 @@ case in LaTeX.
       "<!-- --- begin hint in exercise --- -->\n",
       "\n",
       "*Hint 2.* Second hint to subexercise a).\n",
+      "\n",
       "<!-- --- end hint in exercise --- -->\n",
       "Filename: `subexer_a.pdf`.\n",
       "\n",
@@ -17702,6 +17853,7 @@ case in LaTeX.
       "<!-- --- begin answer of exercise --- -->\n",
       "*Answer.* Short answer to subexercise a).\n",
       "With math in answer: $a=b$.\n",
+      "\n",
       "<!-- --- end answer of exercise --- -->\n",
       "\n",
       "*b)* Here goes the text for subexercise b).\n",
@@ -17726,12 +17878,14 @@ case in LaTeX.
       "<!-- --- begin hint in exercise --- -->\n",
       "\n",
       "*Hint.* A hint for this subexercise.\n",
+      "\n",
       "<!-- --- end hint in exercise --- -->\n",
       "Filename: `subexer_b.pdf`.\n",
       "\n",
       "\n",
       "<!-- --- begin solution of exercise --- -->\n",
       "*Solution.* Here goes the solution of this subexercise.\n",
+      "\n",
       "<!-- --- end solution of exercise --- -->\n",
       "\n",
       "<!-- Closing remarks for this Exercise -->\n",
@@ -18120,7 +18274,7 @@ to Section ref{subsubsec:ex}. idx{`somefunc` function}
 
 Let's do some copying from files too. First from subroutine up to the very end,
 
-@@@CODE ../doc/manual/__testcode.f fromto: subroutine@
+@@@CODE ../doc/src/manual/__testcode.f fromto: subroutine@
 ===== Project: Compute a Probability =====
 
 # Minimalistic exercise
@@ -18459,24 +18613,24 @@ output2</code></pre>
 <p>Test of figures. In particular we refer to Figure [fig:impact] in which there is a flow.</p>
 <p>[ht]</p>
 <div class="figure">
-<embed src="../doc/manual/figs/streamtubes.eps" /><p class="caption">image</p>
+<embed src="../doc/src/manual/figs/streamtubes.eps" /><p class="caption">image</p>
 </div>
 <p>Figures without captions are allowed and will be inlined.</p>
 <div class="figure">
-<embed src="../doc/manual/figs/streamtubes.eps" /><p class="caption">image</p>
+<embed src="../doc/src/manual/figs/streamtubes.eps" /><p class="caption">image</p>
 </div>
 <h4 id="test-of-movies.">Test of movies.</h4>
 <p>Movie [mov:tsunami] shows a tsunami.</p>
 <p>[ht]</p>
 <p>Test empty caption (for inline movie):</p>
-<p>(Movie ../doc/manual/figs/wavepacket.mpeg: play <a href="{wavepacket.html}"></a>)</p>
-<p>Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). [mymov] (Movie of files <code>../doc/manual/figs/wavepacket_*.png</code> in <a href="{file:///home/hpl/vc/doconce/test/wavepacket_0001.html}"></a>)</p>
+<p>(Movie ../doc/src/manual/figs/wavepacket.mpeg: play <a href="{wavepacket.html}"></a>)</p>
+<p>Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). [mymov] (Movie of files <code>../doc/src/manual/figs/wavepacket_*.png</code> in <a href="{file:///home/hpl/vc/doconce/test/wavepacket_0001.html}"></a>)</p>
 <p>Movies can be uploaded to YouTube and embedded as HTML or as a link. <a href="{http://www.youtube.com/watch?v=_O7iUiftbKU}"></a></p>
 <p>Computational fluid dynamics movie. <a href="{http://vimeo.com/55562330}"></a></p>
 <p>Here is figure [myfig] with a long multi-line caption and an extra space before the FIGURE keyword.</p>
 <p>[ht]</p>
 <div class="figure">
-<embed src="../doc/manual/figs/wavepacket_0001.eps" /><p class="caption">image</p>
+<embed src="../doc/src/manual/figs/wavepacket_0001.eps" /><p class="caption">image</p>
 </div>
 <div class="figure">
 <img src="downloaded_figures/f_plot.png" alt="image" /><p class="caption">image</p>
@@ -18796,7 +18950,8 @@ x, y = circle(2.0, 0, 0)</code></pre>
 <pre><code>def func(x):
     return x + 1  # with code in hint</code></pre>
 <h4 id="hint-2.-2">Hint 2.</h4>
-<p>Second hint to subexercise a). Filename: <code>subexer_a.pdf</code>.</p>
+<p>Second hint to subexercise a).</p>
+<p>Filename: <code>subexer_a.pdf</code>.</p>
 <h4 id="answer.-2">Answer.</h4>
 <p>Short answer to subexercise a). With math in answer: <span class="math">\(a=b\)</span>.</p>
 <h4 id="b-2">b)</h4>
@@ -18804,7 +18959,8 @@ x, y = circle(2.0, 0, 0)</code></pre>
 <p>Some math <span class="math">\(\cos^2 x + \sin^2 x = 1\)</span> written one a single line:</p>
 <p><span class="math">\[\cos^2 x + \sin^2 x = 1 \thinspace .\]</span></p>
 <h4 id="hint.-2">Hint.</h4>
-<p>A hint for this subexercise. Filename: <code>subexer_b.pdf</code>.</p>
+<p>A hint for this subexercise.</p>
+<p>Filename: <code>subexer_b.pdf</code>.</p>
 <h4 id="solution.-5">Solution.</h4>
 <p>Here goes the solution of this subexercise.</p>
 <h4 id="remarks.-2">Remarks.</h4>
@@ -19065,22 +19221,22 @@ output2</code></pre>
 <h3 id="subsection-2-testing-figures-and-movies">Subsection 2: Testing figures and movies</h3>
 <p>Test of figures. In particular we refer to Figure ref{fig:impact} in which there is a flow.</p>
 <div class="figure">
-<img src="../doc/manual/figs/streamtubes.png" alt="Visualization of flow by streamtubes." /><p class="caption">Visualization of flow by streamtubes.</p>
+<img src="../doc/src/manual/figs/streamtubes.png" alt="Visualization of flow by streamtubes." /><p class="caption">Visualization of flow by streamtubes.</p>
 </div>
 <p>Figures without captions are allowed and will be inlined.</p>
 <div class="figure">
-<img src="../doc/manual/figs/streamtubes.png" />
+<img src="../doc/src/manual/figs/streamtubes.png" />
 </div>
 <h4 id="test-of-movies">Test of movies</h4>
 <p>Movie ref{mov:tsunami} shows a tsunami.</p>
-<embed src="../doc/manual/figs/mjolnir.mpeg" width=700 height=400 autoplay="false" loop="true"></embed>
+<embed src="../doc/src/manual/figs/mjolnir.mpeg" width=700 height=400 autoplay="false" loop="true"></embed>
 <p>
 <em>Mjolnir tsunami (by Sylfest Glimsdal) .</em>
 </p>
 
 
 <p>Test empty caption (for inline movie):</p>
-<embed src="../doc/manual/figs/wavepacket.mpeg" width=700 height=400 autoplay="false" loop="true"></embed>
+<embed src="../doc/src/manual/figs/wavepacket.mpeg" width=700 height=400 autoplay="false" loop="true"></embed>
 <p>
 <em></em>
 </p>
@@ -19090,7 +19246,7 @@ output2</code></pre>
 
 
 <p>
-<a href="wavepacket_0001.html">Movie of files <tt>../doc/manual/figs/wavepacket_*.png</tt></a> <em>Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie).</em>
+<a href="wavepacket_0001.html">Movie of files <tt>../doc/src/manual/figs/wavepacket_*.png</tt></a> <em>Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie).</em>
 </p>
 
 <!-- Check out the correct with and height of YouTube movies from the -->
@@ -19107,14 +19263,14 @@ output2</code></pre>
 
 <p>Here is figure ref{myfig} with a long multi-line caption and an extra space before the FIGURE keyword.</p>
 <div class="figure">
-<img src="../doc/manual/figs/wavepacket_0001.png" alt="A long caption spanning several lines and containing verbatim words like my_file_v1 and my_file_v2 as well as math with subscript as in t_{i+1}." /><p class="caption">A long caption spanning several lines and containing verbatim words like <code>my_file_v1</code> and <code>my_file_v2</code> as well as math with subscript as in <span class="math">\(t_{i+1}\)</span>.</p>
+<img src="../doc/src/manual/figs/wavepacket_0001.png" alt="A long caption spanning several lines and containing verbatim words like my_file_v1 and my_file_v2 as well as math with subscript as in t_{i+1}." /><p class="caption">A long caption spanning several lines and containing verbatim words like <code>my_file_v1</code> and <code>my_file_v2</code> as well as math with subscript as in <span class="math">\(t_{i+1}\)</span>.</p>
 </div>
 <!-- Must be a blank line after MOVIE or FIGURE to detect this problem -->
 
 <!-- Test URL as figure name -->
 
 <div class="figure">
-<img src="https://raw.github.com/hplgit/doconce/master/doc/blog/f_plot.png" />
+<img src="https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png" />
 </div>
 <!-- Test wikimedia type of files that otherwise reside in subdirs -->
 
@@ -19443,12 +19599,20 @@ b &amp;= \nabla^2 u + \nabla^4 x &amp; x\in\Omega \label{eq2a}
 <li><p>Mark 1.</p></li>
 <li><p>Mark 2. <!-- --- begin hint in exercise --- --></p></li>
 </ol>
-<p><em>Hint 1.</em> Use <code>r = random.random()</code> and define head as <code>r &lt;= 0.5</code>. <!-- --- end hint in exercise --- --></p>
+<p><em>Hint 1.</em> Use <code>r = random.random()</code> and define head as <code>r &lt;= 0.5</code>.</p>
+<!-- --- end hint in exercise --- -->
+
 <!-- --- begin hint in exercise --- -->
 
-<p><em>Hint 2.</em> Draw an integer among <span class="math">\(\{1,2\}\)</span> with <code>r = random.randint(1,2)</code> and define head when <code>r</code> is 1. <!-- --- end hint in exercise --- --></p>
+<p><em>Hint 2.</em> Draw an integer among <span class="math">\(\{1,2\}\)</span> with <code>r = random.randint(1,2)</code> and define head when <code>r</code> is 1.</p>
+<!-- --- end hint in exercise --- -->
+
+
 <!-- --- begin answer of exercise --- -->
-<p><em>Answer.</em> If the <code>random.random()</code> function returns a number <span class="math">\(&lt;1/2\)</span>, let it be head, otherwise tail. Repeat this <span class="math">\(N\)</span> number of times. <!-- --- end answer of exercise --- --></p>
+<p><em>Answer.</em> If the <code>random.random()</code> function returns a number <span class="math">\(&lt;1/2\)</span>, let it be head, otherwise tail. Repeat this <span class="math">\(N\)</span> number of times.</p>
+<!-- --- end answer of exercise --- -->
+
+
 <!-- --- begin solution of exercise --- -->
 <p><em>Solution.</em> Code:</p>
 <pre class="sourceCode Python"><code class="sourceCode python"><span class="ch">import</span> sys, random
@@ -19475,7 +19639,9 @@ heads = <span class="dv">0</span>
 <p>What is the probability of getting a number between 0.5 and 0.6 when drawing uniformly distributed random numbers from the interval <span class="math">\([0,1)\)</span>?</p>
 <!-- --- begin hint in exercise --- -->
 
-<p><em>Hint.</em> To answer this question empirically, let a program draw <span class="math">\(N\)</span> such random numbers using Python's standard <code>random</code> module, count how many of them, <span class="math">\(M\)</span>, that fall in the interval <span class="math">\((0.5,0.6)\)</span>, and compute the probability as <span class="math">\(M/N\)</span>. <!-- --- end hint in exercise --- --></p>
+<p><em>Hint.</em> To answer this question empirically, let a program draw <span class="math">\(N\)</span> such random numbers using Python's standard <code>random</code> module, count how many of them, <span class="math">\(M\)</span>, that fall in the interval <span class="math">\((0.5,0.6)\)</span>, and compute the probability as <span class="math">\(M/N\)</span>.</p>
+<!-- --- end hint in exercise --- -->
+
 <!-- --- end exercise --- -->
 
 
@@ -19511,11 +19677,19 @@ x, y = circle(<span class="fl">2.0</span>, <span class="dv">0</span>, <span clas
 <p><em>a)</em> Let <span class="math">\(R\)</span> be normally distributed and <span class="math">\((x_0,y_0)\)</span> uniformly distributed.</p>
 <!-- --- begin hint in exercise --- -->
 
-<p><em>Hint.</em> Use the <code>numpy.random</code> module to draw the <span class="math">\(x_0\)</span>, <span class="math">\(y_0\)</span>, and <span class="math">\(R\)</span> quantities. <!-- --- end hint in exercise --- --></p>
+<p><em>Hint.</em> Use the <code>numpy.random</code> module to draw the <span class="math">\(x_0\)</span>, <span class="math">\(y_0\)</span>, and <span class="math">\(R\)</span> quantities.</p>
+<!-- --- end hint in exercise --- -->
+
+
 <!-- --- begin answer of exercise --- -->
-<p><em>Answer.</em> Here goes the short answer to part a). <!-- --- end answer of exercise --- --></p>
+<p><em>Answer.</em> Here goes the short answer to part a).</p>
+<!-- --- end answer of exercise --- -->
+
+
 <!-- --- begin solution of exercise --- -->
-<p><em>Solution.</em> Here goes a full solution to part a). <!-- --- end solution of exercise --- --></p>
+<p><em>Solution.</em> Here goes a full solution to part a).</p>
+<!-- --- end solution of exercise --- -->
+
 <p><em>b)</em> Let <span class="math">\(R\)</span> be uniformly distributed and <span class="math">\((x_0,y_0)\)</span> normally distributed. Filename: <code>norm.py</code>.</p>
 <p><em>c)</em> Let <span class="math">\(R\)</span> and <span class="math">\((x_0,y_0)\)</span> be normally distributed.</p>
 <p>Filename: <code>circles.pdf</code>.</p>
@@ -19539,7 +19713,10 @@ x, y = circle(<span class="fl">2.0</span>, <span class="dv">0</span>, <span clas
  \hbox{math in solution: } a = b 
 \]</span> And code <code>a=b</code> in this solution:</p>
 <pre><code>a = b  # code in solution</code></pre>
-<p>End of solution is here. <!-- --- end solution of exercise --- --></p>
+<p>End of solution is here.</p>
+<!-- --- end solution of exercise --- -->
+
+
 <p><em>a)</em> Subexercises are numbered a), b), etc.</p>
 <!-- --- begin hint in exercise --- -->
 
@@ -19553,9 +19730,13 @@ x, y = circle(<span class="fl">2.0</span>, <span class="dv">0</span>, <span clas
 
 <!-- --- begin hint in exercise --- -->
 
-<p><em>Hint 2.</em> Second hint to subexercise a). <!-- --- end hint in exercise --- --> Filename: <code>subexer_a.pdf</code>.</p>
+<p><em>Hint 2.</em> Second hint to subexercise a).</p>
+<!-- --- end hint in exercise --- -->
+<p>Filename: <code>subexer_a.pdf</code>.</p>
 <!-- --- begin answer of exercise --- -->
-<p><em>Answer.</em> Short answer to subexercise a). With math in answer: <span class="math">\(a=b\)</span>. <!-- --- end answer of exercise --- --></p>
+<p><em>Answer.</em> Short answer to subexercise a). With math in answer: <span class="math">\(a=b\)</span>.</p>
+<!-- --- end answer of exercise --- -->
+
 <p><em>b)</em> Here goes the text for subexercise b).</p>
 <p>Some math <span class="math">\(\cos^2 x + \sin^2 x = 1\)</span> written one a single line:</p>
 <p><span class="math">\[
@@ -19563,9 +19744,13 @@ x, y = circle(<span class="fl">2.0</span>, <span class="dv">0</span>, <span clas
 \]</span></p>
 <!-- --- begin hint in exercise --- -->
 
-<p><em>Hint.</em> A hint for this subexercise. <!-- --- end hint in exercise --- --> Filename: <code>subexer_b.pdf</code>.</p>
+<p><em>Hint.</em> A hint for this subexercise.</p>
+<!-- --- end hint in exercise --- -->
+<p>Filename: <code>subexer_b.pdf</code>.</p>
 <!-- --- begin solution of exercise --- -->
-<p><em>Solution.</em> Here goes the solution of this subexercise. <!-- --- end solution of exercise --- --></p>
+<p><em>Solution.</em> Here goes the solution of this subexercise.</p>
+<!-- --- end solution of exercise --- -->
+
 <!-- Closing remarks for this Exercise -->
 
 <h4 id="remarks-2">Remarks</h4>
@@ -21417,7 +21602,7 @@ Automatically generated HTML file from Doconce source
              width: 75%;
      }
      .alert-block {padding-top:14px; padding-bottom:14px}
-     .alert-block > p, .alert-block > ul {margin-bottom:0}
+     .alert-block > p, .alert-block > ul {margin-bottom:1em}
      .alert li {margin-top: 1em}
      .alert-block p+p {margin-top:5px}
      .alert-notice { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_yellow_notice.png); }
@@ -21727,7 +21912,7 @@ Automatically generated HTML file from Doconce source
              width: 75%;
      }
      .alert-block {padding-top:14px; padding-bottom:14px}
-     .alert-block > p, .alert-block > ul {margin-bottom:0}
+     .alert-block > p, .alert-block > ul {margin-bottom:1em}
      .alert li {margin-top: 1em}
      .alert-block p+p {margin-top:5px}
      .alert-notice { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_yellow_notice.png); }
@@ -22012,7 +22197,7 @@ Automatically generated HTML file from Doconce source
              width: 75%;
      }
      .alert-block {padding-top:14px; padding-bottom:14px}
-     .alert-block > p, .alert-block > ul {margin-bottom:0}
+     .alert-block > p, .alert-block > ul {margin-bottom:1em}
      .alert li {margin-top: 1em}
      .alert-block p+p {margin-top:5px}
      .alert-notice { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_yellow_notice.png); }
@@ -22404,14 +22589,14 @@ there is a flow.
 <center> <!-- figure -->
 <hr class="figure">
 <center><p class="caption">Figure 1:  Visualization of flow by streamtubes. <a name="fig:impact"></a> </p></center>
-<p><img src="../doc/manual/figs/streamtubes.png" align="bottom" width=200></p>
+<p><img src="../doc/src/manual/figs/streamtubes.png" align="bottom" width=200></p>
 </center>
 
 <p>
 Figures without captions are allowed and will be inlined.
 
 <p>
-<center><p><img src="../doc/manual/figs/streamtubes.png" align="bottom" width=200></p></center>
+<center><p><img src="../doc/src/manual/figs/streamtubes.png" align="bottom" width=200></p></center>
 
 <h4>Test of movies  <a name="___sec3"></a></h4>
 
@@ -22420,7 +22605,7 @@ Movie <a href="#mov:tsunami">mov:tsunami</a> shows a tsunami.
 
 <p>
 
-<embed src="../doc/manual/figs/mjolnir.mpeg" width=700 height=400 autoplay="false" loop="true"></embed>
+<embed src="../doc/src/manual/figs/mjolnir.mpeg" width=700 height=400 autoplay="false" loop="true"></embed>
 <p><em>Mjolnir tsunami (by Sylfest Glimsdal) <a name="mov:tsunami"></a>.</em></p>
 
 
@@ -22429,14 +22614,14 @@ Test empty caption (for inline movie):
 
 <p>
 
-<embed src="../doc/manual/figs/wavepacket.mpeg" width=700 height=400 autoplay="false" loop="true"></embed>
+<embed src="../doc/src/manual/figs/wavepacket.mpeg" width=700 height=400 autoplay="false" loop="true"></embed>
 <p><em></em></p>
 
 
 <p>
 <!-- Test wrong syntax and multi-line caption -->
 
-<p><a href="wavepacket_0001.html">Movie of files <tt>../doc/manual/figs/wavepacket_*.png</tt></a>
+<p><a href="wavepacket_0001.html">Movie of files <tt>../doc/src/manual/figs/wavepacket_*.png</tt></a>
 <em>Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). <a name="mymov"></a></em></p>
 
 <p>
@@ -22470,7 +22655,7 @@ and an extra space before the FIGURE keyword.
 <center> <!-- figure -->
 <hr class="figure">
 <center><p class="caption">Figure 2:  A long caption spanning several lines and containing verbatim words like <code>my_file_v1</code> and <code>my_file_v2</code> as well as math with subscript as in \( t_{i+1} \). <a name="myfig"></a> </p></center>
-<p><img src="../doc/manual/figs/wavepacket_0001.png" align="bottom" width=500></p>
+<p><img src="../doc/src/manual/figs/wavepacket_0001.png" align="bottom" width=500></p>
 </center>
 
 <p>
@@ -22480,7 +22665,7 @@ and an extra space before the FIGURE keyword.
 <!-- Test URL as figure name -->
 
 <p>
-<center><p><img src="https://raw.github.com/hplgit/doconce/master/doc/blog/f_plot.png" align="bottom" width=500,></p></center>
+<center><p><img src="https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png" align="bottom" width=500,></p></center>
 
 <p>
 <!-- Test wikimedia type of files that otherwise reside in subdirs -->
@@ -22898,6 +23083,8 @@ the beginning of a new exercise and cause trouble. Maybe a list
 
 <b>Hint 1.</b>
 Use <code>r = random.random()</code> and define head as <code>r <= 0.5</code>.
+
+<p>
 <!-- --- end hint in exercise --- -->
 
 <p>
@@ -22907,6 +23094,8 @@ Use <code>r = random.random()</code> and define head as <code>r <= 0.5</code>.
 <b>Hint 2.</b>
 Draw an integer among \( \{1,2\} \) with
 <code>r = random.randint(1,2)</code> and define head when <code>r</code> is 1.
+
+<p>
 <!-- --- end hint in exercise --- -->
 
 <p>
@@ -22914,6 +23103,8 @@ Draw an integer among \( \{1,2\} \) with
 <b>Answer.</b>
 If the <code>random.random()</code> function returns a number \( <1/2 \), let it be
 head, otherwise tail. Repeat this \( N \) number of times.
+
+<p>
 <!-- --- end answer of exercise --- -->
 
 <p>
@@ -22953,6 +23144,8 @@ To answer this question empirically, let a program
 draw \( N \) such random numbers using Python's standard <code>random</code> module,
 count how many of them, \( M \), that fall in the interval \( (0.5,0.6) \), and
 compute the probability as \( M/N \).
+
+<p>
 <!-- --- end hint in exercise --- -->
 
 <p>
@@ -23023,12 +23216,16 @@ Let \( R \) be normally distributed and \( (x_0,y_0) \) uniformly distributed.
 <b>Hint.</b>
 Use the <code>numpy.random</code> module to draw the
 \( x_0 \), \( y_0 \), and \( R \) quantities.
+
+<p>
 <!-- --- end hint in exercise --- -->
 
 <p>
 <!-- --- begin answer of exercise --- -->
 <b>Answer.</b>
 Here goes the short answer to part a).
+
+<p>
 <!-- --- end answer of exercise --- -->
 
 <p>
@@ -23108,6 +23305,8 @@ And with code (in plain verbatim) returning \( x+1 \) in hint:
 <p>
 <b>Hint 2.</b>
 Second hint to subexercise a).
+
+<p>
 <!-- --- end hint in exercise --- -->
 Filename: <code>subexer_a.pdf</code>.
 
@@ -23116,6 +23315,8 @@ Filename: <code>subexer_a.pdf</code>.
 <b>Answer.</b>
 Short answer to subexercise a).
 With math in answer: \( a=b \).
+
+<p>
 <!-- --- end answer of exercise --- -->
 
 <p>
@@ -23135,6 +23336,8 @@ $$ \cos^2 x + \sin^2 x = 1 \thinspace .$$
 <p>
 <b>Hint.</b>
 A hint for this subexercise.
+
+<p>
 <!-- --- end hint in exercise --- -->
 Filename: <code>subexer_b.pdf</code>.
 
@@ -23577,7 +23780,7 @@ Automatically generated HTML file from Doconce source
              width: 75%;
      }
      .alert-block {padding-top:14px; padding-bottom:14px}
-     .alert-block > p, .alert-block > ul {margin-bottom:0}
+     .alert-block > p, .alert-block > ul {margin-bottom:1em}
      .alert li {margin-top: 1em}
      .alert-block p+p {margin-top:5px}
      .alert-notice { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_notice.png); }
@@ -23910,14 +24113,14 @@ there is a flow.
 <center> 
 <hr class="figure">
 <center><p class="caption">Figure 1:  Visualization of flow by streamtubes. <a name="fig:impact"></a> </p></center>
-<p><img src="../doc/manual/figs/streamtubes.png" align="bottom" width=200></p>
+<p><img src="../doc/src/manual/figs/streamtubes.png" align="bottom" width=200></p>
 </center>
 
 <p>
 Figures without captions are allowed and will be inlined.
 
 <p>
-<center><p><img src="../doc/manual/figs/streamtubes.png" align="bottom" width=200></p></center>
+<center><p><img src="../doc/src/manual/figs/streamtubes.png" align="bottom" width=200></p></center>
 
 <h4>Test of movies  <a name="___sec3"></a></h4>
 
@@ -23926,7 +24129,7 @@ Movie <a href="#mov:tsunami">mov:tsunami</a> shows a tsunami.
 
 <p>
 
-<embed src="../doc/manual/figs/mjolnir.mpeg" width=700 height=400 autoplay="false" loop="true"></embed>
+<embed src="../doc/src/manual/figs/mjolnir.mpeg" width=700 height=400 autoplay="false" loop="true"></embed>
 <p><em>Mjolnir tsunami (by Sylfest Glimsdal) <a name="mov:tsunami"></a>.</em></p>
 
 
@@ -23935,11 +24138,11 @@ Test empty caption (for inline movie):
 
 <p>
 
-<embed src="../doc/manual/figs/wavepacket.mpeg" width=700 height=400 autoplay="false" loop="true"></embed>
+<embed src="../doc/src/manual/figs/wavepacket.mpeg" width=700 height=400 autoplay="false" loop="true"></embed>
 <p><em></em></p>
 
 
-<p><a href="wavepacket_0001.html">Movie of files <tt>../doc/manual/figs/wavepacket_*.png</tt></a>
+<p><a href="wavepacket_0001.html">Movie of files <tt>../doc/src/manual/figs/wavepacket_*.png</tt></a>
 <em>Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). <a name="mymov"></a></em></p>
 
 <p>
@@ -23966,11 +24169,11 @@ and an extra space before the FIGURE keyword.
 <center> 
 <hr class="figure">
 <center><p class="caption">Figure 2:  A long caption spanning several lines and containing verbatim words like <code>my_file_v1</code> and <code>my_file_v2</code> as well as math with subscript as in $latex t_{i+1}$. <a name="myfig"></a> </p></center>
-<p><img src="../doc/manual/figs/wavepacket_0001.png" align="bottom" width=500></p>
+<p><img src="../doc/src/manual/figs/wavepacket_0001.png" align="bottom" width=500></p>
 </center>
 
 <p>
-<center><p><img src="https://raw.github.com/hplgit/doconce/master/doc/blog/f_plot.png" align="bottom" width=500,></p></center>
+<center><p><img src="https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png" align="bottom" width=500,></p></center>
 
 <h3>The $latex \theta$ parameter (not $latex \nabla$?) <a name="decay:sec:theta"></a></h3>
 
@@ -24360,19 +24563,16 @@ the beginning of a new exercise and cause trouble. Maybe a list
 <b>Hint 1.</b>
 Use <code>r = random.random()</code> and define head as <code>r <= 0.5</code>.
 
-
 <p>
 <b>Hint 2.</b>
 Draw an integer among $latex \{1,2\}$ with
 <code>r = random.randint(1,2)</code> and define head when <code>r</code> is 1.
-
 
 <p>
 
 <b>Answer.</b>
 If the <code>random.random()</code> function returns a number $latex <1/2$, let it be
 head, otherwise tail. Repeat this $latex N$ number of times.
-
 
 <p>
 
@@ -24466,18 +24666,15 @@ Let $latex R$ be normally distributed and $latex (x_0,y_0)$ uniformly distribute
 Use the <code>numpy.random</code> module to draw the
 $latex x_0$, $latex y_0$, and $latex R$ quantities.
 
-
 <p>
 
 <b>Answer.</b>
 Here goes the short answer to part a).
 
-
 <p>
 
 <b>Solution.</b>
 Here goes a full solution to part a).
-
 
 <p>
 <b>b)</b>
@@ -24528,7 +24725,6 @@ And code <code>a=b</code> in this solution:
 <p>
 End of solution is here.
 
-
 <p>
 <b>a)</b>
 Subexercises are numbered a), b), etc.
@@ -24555,6 +24751,8 @@ And with code (in plain verbatim) returning $latex x+1$ in hint:
 <b>Hint 2.</b>
 Second hint to subexercise a).
 
+<p>
+
 Filename: <code>subexer_a.pdf</code>.
 
 <p>
@@ -24562,7 +24760,6 @@ Filename: <code>subexer_a.pdf</code>.
 <b>Answer.</b>
 Short answer to subexercise a).
 With math in answer: $latex a=b$.
-
 
 <p>
 <b>b)</b>
@@ -24580,6 +24777,8 @@ $latex  \cos^2 x + \sin^2 x = 1 \thinspace . $
 <p>
 <b>Hint.</b>
 A hint for this subexercise.
+
+<p>
 
 Filename: <code>subexer_b.pdf</code>.
 
@@ -24987,7 +25186,7 @@ Automatically generated HTML file from Doconce source
              width: 75%;
      }
      .alert-block {padding-top:14px; padding-bottom:14px}
-     .alert-block > p, .alert-block > ul {margin-bottom:0}
+     .alert-block > p, .alert-block > ul {margin-bottom:1em}
      .alert li {margin-top: 1em}
      .alert-block p+p {margin-top:5px}
      .alert-notice { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_notice.png); }
@@ -25451,14 +25650,14 @@ there is a flow.
 <center> <!-- figure -->
 <hr class="figure">
 <center><p class="caption">Figure 1:  Visualization of flow by streamtubes. <a name="fig:impact"></a> </p></center>
-<p><img src="../doc/manual/figs/streamtubes.png" align="bottom" width=200></p>
+<p><img src="../doc/src/manual/figs/streamtubes.png" align="bottom" width=200></p>
 </center>
 
 <p>
 Figures without captions are allowed and will be inlined.
 
 <p>
-<center><p><img src="../doc/manual/figs/streamtubes.png" align="bottom" width=200></p></center>
+<center><p><img src="../doc/src/manual/figs/streamtubes.png" align="bottom" width=200></p></center>
 
 <h4>Test of movies  <a name="___sec3"></a></h4>
 
@@ -25467,7 +25666,7 @@ Movie <a href="#mov:tsunami">mov:tsunami</a> shows a tsunami.
 
 <p>
 
-<embed src="../doc/manual/figs/mjolnir.mpeg" width=700 height=400 autoplay="false" loop="true"></embed>
+<embed src="../doc/src/manual/figs/mjolnir.mpeg" width=700 height=400 autoplay="false" loop="true"></embed>
 <p><em>Mjolnir tsunami (by Sylfest Glimsdal) <a name="mov:tsunami"></a>.</em></p>
 
 
@@ -25476,14 +25675,14 @@ Test empty caption (for inline movie):
 
 <p>
 
-<embed src="../doc/manual/figs/wavepacket.mpeg" width=700 height=400 autoplay="false" loop="true"></embed>
+<embed src="../doc/src/manual/figs/wavepacket.mpeg" width=700 height=400 autoplay="false" loop="true"></embed>
 <p><em></em></p>
 
 
 <p>
 <!-- Test wrong syntax and multi-line caption -->
 
-<p><a href="wavepacket_0001.html">Movie of files <tt>../doc/manual/figs/wavepacket_*.png</tt></a>
+<p><a href="wavepacket_0001.html">Movie of files <tt>../doc/src/manual/figs/wavepacket_*.png</tt></a>
 <em>Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). <a name="mymov"></a></em></p>
 
 <p>
@@ -25517,7 +25716,7 @@ and an extra space before the FIGURE keyword.
 <center> <!-- figure -->
 <hr class="figure">
 <center><p class="caption">Figure 2:  A long caption spanning several lines and containing verbatim words like <code>my_file_v1</code> and <code>my_file_v2</code> as well as math with subscript as in \( t_{i+1} \). <a name="myfig"></a> </p></center>
-<p><img src="../doc/manual/figs/wavepacket_0001.png" align="bottom" width=500></p>
+<p><img src="../doc/src/manual/figs/wavepacket_0001.png" align="bottom" width=500></p>
 </center>
 
 <p>
@@ -25527,7 +25726,7 @@ and an extra space before the FIGURE keyword.
 <!-- Test URL as figure name -->
 
 <p>
-<center><p><img src="https://raw.github.com/hplgit/doconce/master/doc/blog/f_plot.png" align="bottom" width=500,></p></center>
+<center><p><img src="https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png" align="bottom" width=500,></p></center>
 
 <p>
 <!-- Test wikimedia type of files that otherwise reside in subdirs -->
@@ -25938,6 +26137,8 @@ the beginning of a new exercise and cause trouble. Maybe a list
 
 <b>Hint 1.</b>
 Use <code>r = random.random()</code> and define head as <code>r <= 0.5</code>.
+
+<p>
 <!-- --- end hint in exercise --- -->
 
 <p>
@@ -25947,6 +26148,8 @@ Use <code>r = random.random()</code> and define head as <code>r <= 0.5</code>.
 <b>Hint 2.</b>
 Draw an integer among \( \{1,2\} \) with
 <code>r = random.randint(1,2)</code> and define head when <code>r</code> is 1.
+
+<p>
 <!-- --- end hint in exercise --- -->
 
 <p>
@@ -25992,6 +26195,8 @@ To answer this question empirically, let a program
 draw \( N \) such random numbers using Python's standard <code>random</code> module,
 count how many of them, \( M \), that fall in the interval \( (0.5,0.6) \), and
 compute the probability as \( M/N \).
+
+<p>
 <!-- --- end hint in exercise --- -->
 
 <p>
@@ -26054,6 +26259,8 @@ Let \( R \) be normally distributed and \( (x_0,y_0) \) uniformly distributed.
 <b>Hint.</b>
 Use the <code>numpy.random</code> module to draw the
 \( x_0 \), \( y_0 \), and \( R \) quantities.
+
+<p>
 <!-- --- end hint in exercise --- -->
 
 <p>
@@ -26140,6 +26347,8 @@ And with code (in plain verbatim) returning \( x+1 \) in hint:
 <p>
 <b>Hint 2.</b>
 Second hint to subexercise a).
+
+<p>
 <!-- --- end hint in exercise --- -->
 Filename: <code>subexer_a.pdf</code>.
 
@@ -26164,6 +26373,8 @@ $$ \cos^2 x + \sin^2 x = 1 \thinspace .$$
 <p>
 <b>Hint.</b>
 A hint for this subexercise.
+
+<p>
 <!-- --- end hint in exercise --- -->
 Filename: <code>subexer_b.pdf</code>.
 
@@ -27205,7 +27416,7 @@ there is a flow.
 
 
 \begin{figure}[ht]
-  \centerline{\includegraphics[width=0.9\linewidth]{../doc/manual/figs/streamtubes.eps}}
+  \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/figs/streamtubes.eps}}
   \caption{
   Visualization of flow by streamtubes. \label{fig:impact}
   }
@@ -27217,7 +27428,7 @@ Figures without captions are allowed and will be inlined.
 
 
 \begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.9\linewidth]{../doc/manual/figs/streamtubes.eps}}
+  \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/figs/streamtubes.eps}}
 \end{center}
 
 
@@ -27233,11 +27444,11 @@ Movie~\ref{mov:tsunami} shows a tsunami.
 % #if MOVIE == "media9"
 \includemedia[
 width=0.8\linewidth,
-label=../doc/manual/figs/mjolnir.mpeg,
+label=../doc/src/manual/figs/mjolnir.mpeg,
 activate=pageopen,         % or onclick or pagevisible
-addresource=../doc/manual/figs/mjolnir.mpeg,  % embed the video in the PDF
+addresource=../doc/src/manual/figs/mjolnir.mpeg,  % embed the video in the PDF
 flashvars={
-source=../doc/manual/figs/mjolnir.mpeg
+source=../doc/src/manual/figs/mjolnir.mpeg
 &autoPlay=true
 &loop=true
 &scaleMode=letterbox   % preserve aspect ration while scaling this video
@@ -27245,7 +27456,7 @@ source=../doc/manual/figs/mjolnir.mpeg
 
 % #ifdef MOVIE_CONTROLS
 \mediabutton[
-  mediacommand=../doc/manual/figs/mjolnir.mpeg:playPause,
+  mediacommand=../doc/src/manual/figs/mjolnir.mpeg:playPause,
   overface=\\textcolor{blue}{\fbox{\strut Play/Pause}},
   downface=\\textcolor{red}{\fbox{\strut Play/Pause}}
   ]{\fhox{\strut Play/Pause}}
@@ -27253,34 +27464,34 @@ source=../doc/manual/figs/mjolnir.mpeg
 
 % #elif MOVIE == "movie15"
 \includemovie[poster,
-label=../doc/manual/figs/mjolnir.mpeg,
+label=../doc/src/manual/figs/mjolnir.mpeg,
 autoplay,
 %controls,
 %toolbar,
 % #ifdef EXTERNAL_MOVIE_VIEWER
 externalviewer,
 % #endif
-text={\small (Loading ../doc/manual/figs/mjolnir.mpeg)},
+text={\small (Loading ../doc/src/manual/figs/mjolnir.mpeg)},
 repeat,
-]{0.9\linewidth}{0.9\linewidth}{../doc/manual/figs/mjolnir.mpeg}
+]{0.9\linewidth}{0.9\linewidth}{../doc/src/manual/figs/mjolnir.mpeg}
 % #ifndef EXTERNAL_MOVIE_VIEWER
-\movieref[rate=0.5]{../doc/manual/figs/mjolnir.mpeg}{Slower}
-\movieref[rate=2]{../doc/manual/figs/mjolnir.mpeg}{Faster}
-\movieref[default]{../doc/manual/figs/mjolnir.mpeg}{Normal}
-\movieref[pause]{../doc/manual/figs/mjolnir.mpeg}{Play/Pause}
-\movieref[stop]{../doc/manual/figs/mjolnir.mpeg}{Stop}
+\movieref[rate=0.5]{../doc/src/manual/figs/mjolnir.mpeg}{Slower}
+\movieref[rate=2]{../doc/src/manual/figs/mjolnir.mpeg}{Faster}
+\movieref[default]{../doc/src/manual/figs/mjolnir.mpeg}{Normal}
+\movieref[pause]{../doc/src/manual/figs/mjolnir.mpeg}{Play/Pause}
+\movieref[stop]{../doc/src/manual/figs/mjolnir.mpeg}{Stop}
 % #else
-\href{run:../doc/manual/figs/mjolnir.mpeg}{../doc/manual/figs/mjolnir.mpeg}
+\href{run:../doc/src/manual/figs/mjolnir.mpeg}{../doc/src/manual/figs/mjolnir.mpeg}
 % #endif
 
 % #elif MOVIE == "multimedia"
 % Beamer-style \movie command
 \movie[
-label=../doc/manual/figs/mjolnir.mpeg,
+label=../doc/src/manual/figs/mjolnir.mpeg,
 width=0.9\linewidth,
-autostart]{../doc/manual/figs/mjolnir.mpeg}{../doc/manual/figs/mjolnir.mpeg}
+autostart]{../doc/src/manual/figs/mjolnir.mpeg}{../doc/src/manual/figs/mjolnir.mpeg}
 % #else
-\href{run:../doc/manual/figs/mjolnir.mpeg}{../doc/manual/figs/mjolnir.mpeg}
+\href{run:../doc/src/manual/figs/mjolnir.mpeg}{../doc/src/manual/figs/mjolnir.mpeg}
 % #endif
 
 \end{center}
@@ -27290,15 +27501,15 @@ autostart]{../doc/manual/figs/mjolnir.mpeg}{../doc/manual/figs/mjolnir.mpeg}
 
 Test empty caption (for inline movie):
 
- (Movie ../doc/manual/figs/wavepacket.mpeg: play \href{{wavepacket.html}}{\nolinkurl{wavepacket.html}})
+ (Movie ../doc/src/manual/figs/wavepacket.mpeg: play \href{{wavepacket.html}}{\nolinkurl{wavepacket.html}})
 % #if MOVIE == "media9"
 \includemedia[
 width=0.8\linewidth,
-label=../doc/manual/figs/wavepacket.mpeg,
+label=../doc/src/manual/figs/wavepacket.mpeg,
 activate=pageopen,         % or onclick or pagevisible
-addresource=../doc/manual/figs/wavepacket.mpeg,  % embed the video in the PDF
+addresource=../doc/src/manual/figs/wavepacket.mpeg,  % embed the video in the PDF
 flashvars={
-source=../doc/manual/figs/wavepacket.mpeg
+source=../doc/src/manual/figs/wavepacket.mpeg
 &autoPlay=true
 &loop=true
 &scaleMode=letterbox   % preserve aspect ration while scaling this video
@@ -27306,7 +27517,7 @@ source=../doc/manual/figs/wavepacket.mpeg
 
 % #ifdef MOVIE_CONTROLS
 \mediabutton[
-  mediacommand=../doc/manual/figs/wavepacket.mpeg:playPause,
+  mediacommand=../doc/src/manual/figs/wavepacket.mpeg:playPause,
   overface=\\textcolor{blue}{\fbox{\strut Play/Pause}},
   downface=\\textcolor{red}{\fbox{\strut Play/Pause}}
   ]{\fhox{\strut Play/Pause}}
@@ -27314,41 +27525,41 @@ source=../doc/manual/figs/wavepacket.mpeg
 
 % #elif MOVIE == "movie15"
 \includemovie[poster,
-label=../doc/manual/figs/wavepacket.mpeg,
+label=../doc/src/manual/figs/wavepacket.mpeg,
 autoplay,
 %controls,
 %toolbar,
 % #ifdef EXTERNAL_MOVIE_VIEWER
 externalviewer,
 % #endif
-text={\small (Loading ../doc/manual/figs/wavepacket.mpeg)},
+text={\small (Loading ../doc/src/manual/figs/wavepacket.mpeg)},
 repeat,
-]{0.9\linewidth}{0.9\linewidth}{../doc/manual/figs/wavepacket.mpeg}
+]{0.9\linewidth}{0.9\linewidth}{../doc/src/manual/figs/wavepacket.mpeg}
 % #ifndef EXTERNAL_MOVIE_VIEWER
-\movieref[rate=0.5]{../doc/manual/figs/wavepacket.mpeg}{Slower}
-\movieref[rate=2]{../doc/manual/figs/wavepacket.mpeg}{Faster}
-\movieref[default]{../doc/manual/figs/wavepacket.mpeg}{Normal}
-\movieref[pause]{../doc/manual/figs/wavepacket.mpeg}{Play/Pause}
-\movieref[stop]{../doc/manual/figs/wavepacket.mpeg}{Stop}
+\movieref[rate=0.5]{../doc/src/manual/figs/wavepacket.mpeg}{Slower}
+\movieref[rate=2]{../doc/src/manual/figs/wavepacket.mpeg}{Faster}
+\movieref[default]{../doc/src/manual/figs/wavepacket.mpeg}{Normal}
+\movieref[pause]{../doc/src/manual/figs/wavepacket.mpeg}{Play/Pause}
+\movieref[stop]{../doc/src/manual/figs/wavepacket.mpeg}{Stop}
 % #else
-\href{run:../doc/manual/figs/wavepacket.mpeg}{../doc/manual/figs/wavepacket.mpeg}
+\href{run:../doc/src/manual/figs/wavepacket.mpeg}{../doc/src/manual/figs/wavepacket.mpeg}
 % #endif
 
 % #elif MOVIE == "multimedia"
 % Beamer-style \movie command
 \movie[
-label=../doc/manual/figs/wavepacket.mpeg,
+label=../doc/src/manual/figs/wavepacket.mpeg,
 width=0.9\linewidth,
-autostart]{../doc/manual/figs/wavepacket.mpeg}{../doc/manual/figs/wavepacket.mpeg}
+autostart]{../doc/src/manual/figs/wavepacket.mpeg}{../doc/src/manual/figs/wavepacket.mpeg}
 % #else
-\href{run:../doc/manual/figs/wavepacket.mpeg}{../doc/manual/figs/wavepacket.mpeg}
+\href{run:../doc/src/manual/figs/wavepacket.mpeg}{../doc/src/manual/figs/wavepacket.mpeg}
 % #endif
 
 
 % Test wrong syntax and multi-line caption
 
 
- Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). \label{mymov}  (Movie of files \code{../doc/manual/figs/wavepacket_*.png} in \href{{file:///home/hpl/vc/doconce/test/wavepacket_0001.html}}{\nolinkurl{file:///home/hpl/vc/doconce/test/wavepacket_0001.html}})
+ Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). \label{mymov}  (Movie of files \code{../doc/src/manual/figs/wavepacket_*.png} in \href{{file:///home/hpl/vc/doconce/test/wavepacket_0001.html}}{\nolinkurl{file:///home/hpl/vc/doconce/test/wavepacket_0001.html}})
 
 
 % Check out the correct with and height of YouTube movies from the
@@ -27366,7 +27577,7 @@ and an extra space before the FIGURE keyword.
 
 
 \begin{figure}[ht]
-  \centerline{\includegraphics[width=0.9\linewidth]{../doc/manual/figs/wavepacket_0001.eps}}
+  \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/figs/wavepacket_0001.eps}}
   \caption{
   A long caption spanning several lines and containing verbatim words like \protect \code{my\_file\_v1} and \protect \code{my\_file\_v2} as well as math with subscript as in $t_{i+1}$. \label{myfig}
   }
@@ -27760,6 +27971,7 @@ let the program count the number of heads.
 
 \paragraph{Hint 1.}
 Use \code{r = random.random()} and define head as \code{r <= 0.5}.
+
 % --- end hint in exercise ---
 
 % --- begin hint in exercise ---
@@ -27767,6 +27979,7 @@ Use \code{r = random.random()} and define head as \code{r <= 0.5}.
 \paragraph{Hint 2.}
 Draw an integer among $\{1,2\}$ with
 \code{r = random.randint(1,2)} and define head when \code{r} is 1.
+
 % --- end hint in exercise ---
 
 
@@ -27819,6 +28032,7 @@ To answer this question empirically, let a program
 draw $N$ such random numbers using Python's standard \code{random} module,
 count how many of them, $M$, that fall in the interval $(0.5,0.6)$, and
 compute the probability as $M/N$.
+
 % --- end hint in exercise ---
 
 \end{exercise}
@@ -27873,6 +28087,7 @@ Let $R$ be normally distributed and $(x_0,y_0)$ uniformly distributed.
 \paragraph{Hint.}
 Use the \code{numpy.random} module to draw the
 $x_0$, $y_0$, and $R$ quantities.
+
 % --- end hint in exercise ---
 
 
@@ -27943,12 +28158,14 @@ And with code (in plain verbatim) returning $x+1$ in hint:
 def func(x):
     return x + 1  # with code in hint
 \eccq
+
 % --- end hint in exercise ---
 
 % --- begin hint in exercise ---
 
 \paragraph{Hint 2.}
 Second hint to subexercise a).
+
 % --- end hint in exercise ---
 Filename: \code{subexer_a.pdf}.
 
@@ -27968,6 +28185,7 @@ Some math $\cos^2 x + \sin^2 x = 1$ written one a single line:
 
 \paragraph{Hint.}
 A hint for this subexercise.
+
 % --- end hint in exercise ---
 Filename: \code{subexer_b.pdf}.
 
@@ -28611,11 +28829,11 @@ google-chrome sphinx-rootdir-math/_build/html/index.html
 
 ************** File: .testdoc_html_file_collection *****************
 testdoc.html
-../doc/manual/figs/streamtubes.png
-../doc/manual/figs/wavepacket_0001.png
-../doc/manual/figs/mjolnir.mpeg
-../doc/manual/figs/wavepacket.mpeg
-../doc/manual/figs/wavepacket_*.png
+../doc/src/manual/figs/streamtubes.png
+../doc/src/manual/figs/wavepacket_0001.png
+../doc/src/manual/figs/mjolnir.mpeg
+../doc/src/manual/figs/wavepacket.mpeg
+../doc/src/manual/figs/wavepacket_*.png
 wavepacket_0001.html
 testdoc.do.txt
 ._part0000_testdoc.html
@@ -31937,14 +32155,14 @@ there is a flow.
 <center> <!-- figure -->
 <hr class="figure">
 <center><p class="caption">Figure 1:  Visualization of flow by streamtubes. <a name="fig:impact"></a> </p></center>
-<p><img src="../doc/manual/figs/streamtubes.png" align="bottom" width=200></p>
+<p><img src="../doc/src/manual/figs/streamtubes.png" align="bottom" width=200></p>
 </center>
 
 <p>
 Figures without captions are allowed and will be inlined.
 
 <p>
-<center><p><img src="../doc/manual/figs/streamtubes.png" align="bottom" width=200></p></center>
+<center><p><img src="../doc/src/manual/figs/streamtubes.png" align="bottom" width=200></p></center>
 
 <h4>Test of movies  <a name="___sec3"></a></h4>
 
@@ -31953,7 +32171,7 @@ Movie <a href="#mov:tsunami">mov:tsunami</a> shows a tsunami.
 
 <p>
 
-<embed src="../doc/manual/figs/mjolnir.mpeg" width=700 height=400 autoplay="false" loop="true"></embed>
+<embed src="../doc/src/manual/figs/mjolnir.mpeg" width=700 height=400 autoplay="false" loop="true"></embed>
 <p><em>Mjolnir tsunami (by Sylfest Glimsdal) <a name="mov:tsunami"></a>.</em></p>
 
 
@@ -31962,14 +32180,14 @@ Test empty caption (for inline movie):
 
 <p>
 
-<embed src="../doc/manual/figs/wavepacket.mpeg" width=700 height=400 autoplay="false" loop="true"></embed>
+<embed src="../doc/src/manual/figs/wavepacket.mpeg" width=700 height=400 autoplay="false" loop="true"></embed>
 <p><em></em></p>
 
 
 <p>
 <!-- Test wrong syntax and multi-line caption -->
 
-<p><a href="wavepacket_0001.html">Movie of files <tt>../doc/manual/figs/wavepacket_*.png</tt></a>
+<p><a href="wavepacket_0001.html">Movie of files <tt>../doc/src/manual/figs/wavepacket_*.png</tt></a>
 <em>Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). <a name="mymov"></a></em></p>
 
 <p>
@@ -32003,7 +32221,7 @@ and an extra space before the FIGURE keyword.
 <center> <!-- figure -->
 <hr class="figure">
 <center><p class="caption">Figure 2:  A long caption spanning several lines and containing verbatim words like <code>my_file_v1</code> and <code>my_file_v2</code> as well as math with subscript as in \( t_{i+1} \). <a name="myfig"></a> </p></center>
-<p><img src="../doc/manual/figs/wavepacket_0001.png" align="bottom" width=500></p>
+<p><img src="../doc/src/manual/figs/wavepacket_0001.png" align="bottom" width=500></p>
 </center>
 
 <p>
@@ -32013,7 +32231,7 @@ and an extra space before the FIGURE keyword.
 <!-- Test URL as figure name -->
 
 <p>
-<center><p><img src="https://raw.github.com/hplgit/doconce/master/doc/blog/f_plot.png" align="bottom" width=500,></p></center>
+<center><p><img src="https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png" align="bottom" width=500,></p></center>
 
 <p>
 <!-- Test wikimedia type of files that otherwise reside in subdirs -->
@@ -32421,6 +32639,8 @@ the beginning of a new exercise and cause trouble. Maybe a list
 
 <b>Hint 1.</b>
 Use <code>r = random.random()</code> and define head as <code>r <= 0.5</code>.
+
+<p>
 <!-- --- end hint in exercise --- -->
 
 <p>
@@ -32430,6 +32650,8 @@ Use <code>r = random.random()</code> and define head as <code>r <= 0.5</code>.
 <b>Hint 2.</b>
 Draw an integer among \( \{1,2\} \) with
 <code>r = random.randint(1,2)</code> and define head when <code>r</code> is 1.
+
+<p>
 <!-- --- end hint in exercise --- -->
 
 <p>
@@ -32437,6 +32659,8 @@ Draw an integer among \( \{1,2\} \) with
 <b>Answer.</b>
 If the <code>random.random()</code> function returns a number \( <1/2 \), let it be
 head, otherwise tail. Repeat this \( N \) number of times.
+
+<p>
 <!-- --- end answer of exercise --- -->
 
 <p>
@@ -32490,6 +32714,8 @@ To answer this question empirically, let a program
 draw \( N \) such random numbers using Python's standard <code>random</code> module,
 count how many of them, \( M \), that fall in the interval \( (0.5,0.6) \), and
 compute the probability as \( M/N \).
+
+<p>
 <!-- --- end hint in exercise --- -->
 
 <p>
@@ -32549,18 +32775,24 @@ Let \( R \) be normally distributed and \( (x_0,y_0) \) uniformly distributed.
 <b>Hint.</b>
 Use the <code>numpy.random</code> module to draw the
 \( x_0 \), \( y_0 \), and \( R \) quantities.
+
+<p>
 <!-- --- end hint in exercise --- -->
 
 <p>
 <!-- --- begin answer of exercise --- -->
 <b>Answer.</b>
 Here goes the short answer to part a).
+
+<p>
 <!-- --- end answer of exercise --- -->
 
 <p>
 <!-- --- begin solution of exercise --- -->
 <b>Solution.</b>
 Here goes a full solution to part a).
+
+<p>
 <!-- --- end solution of exercise --- -->
 
 <p>
@@ -32615,6 +32847,8 @@ And code <code>a=b</code> in this solution:
 </pre></div>
 <p>
 End of solution is here.
+
+<p>
 <!-- --- end solution of exercise --- -->
 
 <p>
@@ -32649,6 +32883,8 @@ And with code (in plain verbatim) returning \( x+1 \) in hint:
 <p>
 <b>Hint 2.</b>
 Second hint to subexercise a).
+
+<p>
 <!-- --- end hint in exercise --- -->
 Filename: <code>subexer_a.pdf</code>.
 
@@ -32657,6 +32893,8 @@ Filename: <code>subexer_a.pdf</code>.
 <b>Answer.</b>
 Short answer to subexercise a).
 With math in answer: \( a=b \).
+
+<p>
 <!-- --- end answer of exercise --- -->
 
 <p>
@@ -32676,6 +32914,8 @@ $$ \cos^2 x + \sin^2 x = 1 \thinspace .$$
 <p>
 <b>Hint.</b>
 A hint for this subexercise.
+
+<p>
 <!-- --- end hint in exercise --- -->
 Filename: <code>subexer_b.pdf</code>.
 
@@ -32683,6 +32923,8 @@ Filename: <code>subexer_b.pdf</code>.
 <!-- --- begin solution of exercise --- -->
 <b>Solution.</b>
 Here goes the solution of this subexercise.
+
+<p>
 <!-- --- end solution of exercise --- -->
 
 <p>
@@ -33356,7 +33598,7 @@ there is a flow.
 
 .. _fig:impact:
 
-.. figure:: ../doc/manual/figs/streamtubes.png
+.. figure:: ../doc/src/manual/figs/streamtubes.png
    :width: 200
 
    *Visualization of flow by streamtubes*
@@ -33365,7 +33607,7 @@ there is a flow.
 Figures without captions are allowed and will be inlined.
 
 
-.. figure:: ../doc/manual/figs/streamtubes.png
+.. figure:: ../doc/src/manual/figs/streamtubes.png
    :width: 200
 
 
@@ -33381,7 +33623,7 @@ Movie :ref:`mov:tsunami` shows a tsunami.
 
 .. raw:: html
         
-        <embed src="../doc/manual/figs/mjolnir.mpeg" width=700 height=400 autoplay="false" loop="true"></embed>
+        <embed src="../doc/src/manual/figs/mjolnir.mpeg" width=700 height=400 autoplay="false" loop="true"></embed>
         <p><em>Mjolnir tsunami (by Sylfest Glimsdal) .</em></p>
 
 
@@ -33390,7 +33632,7 @@ Test empty caption (for inline movie):
 
 .. raw:: html
         
-        <embed src="../doc/manual/figs/wavepacket.mpeg" width=700 height=400 autoplay="false" loop="true"></embed>
+        <embed src="../doc/src/manual/figs/wavepacket.mpeg" width=700 height=400 autoplay="false" loop="true"></embed>
         <p><em></em></p>
 
 
@@ -33400,7 +33642,7 @@ Test empty caption (for inline movie):
 
 .. raw:: html
         
-        <p><a href="wavepacket_0001.html">Movie of files <tt>../doc/manual/figs/wavepacket_*.png</tt></a>
+        <p><a href="wavepacket_0001.html">Movie of files <tt>../doc/src/manual/figs/wavepacket_*.png</tt></a>
         <em>Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie).</em></p>
 
 
@@ -33438,7 +33680,7 @@ and an extra space before the FIGURE keyword.
 
 .. _myfig:
 
-.. figure:: ../doc/manual/figs/wavepacket_0001.png
+.. figure:: ../doc/src/manual/figs/wavepacket_0001.png
    :width: 500
 
    A long caption spanning several lines and containing verbatim words like ``my_file_v1`` and ``my_file_v2`` as well as math with subscript as in :math:`t_{i+1}`
@@ -33451,7 +33693,7 @@ and an extra space before the FIGURE keyword.
 
 
 
-.. figure:: https://raw.github.com/hplgit/doconce/master/doc/blog/f_plot.png
+.. figure:: https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png
    :width: 500
 
 
@@ -33948,6 +34190,7 @@ head, otherwise tail. Repeat this :math:`N` number of times.
                 heads += 1
         print 'Flipping a coin %d times gave %d heads' % (N, heads)
 
+
 .. --- end solution of exercise ---
 
 Filenames: ``flip_coin.py``, ``flip_coin.pdf``.
@@ -34162,6 +34405,7 @@ And with code (in plain verbatim) returning :math:`x+1` in hint:
 
         def func(x):
             return x + 1  # with code in hint
+
 
 .. --- end hint in exercise ---
 
@@ -35203,7 +35447,7 @@ And then we add a figure too.
 
 
 \begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.9\linewidth]{../doc/manual/figs/wavepacket_0001.png}}
+  \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/figs/wavepacket_0001.png}}
 \end{center}
 \end{notice_colors2admon}
 
@@ -35656,7 +35900,7 @@ And then we add a figure too.
 
 
 \begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.9\linewidth]{../doc/manual/figs/wavepacket_0001.png}}
+  \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/figs/wavepacket_0001.png}}
 \end{center}
 \end{notice_colors1admon}
 
@@ -36114,7 +36358,7 @@ And then we add a figure too.
 
 
 \begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.9\linewidth]{../doc/manual/figs/wavepacket_0001.png}}
+  \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/figs/wavepacket_0001.png}}
 \end{center}
 \end{notice_colors2admon}
 
@@ -36493,7 +36737,7 @@ And then we add a figure too.
 
 
 \begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.9\linewidth]{../doc/manual/figs/wavepacket_0001.png}}
+  \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/figs/wavepacket_0001.png}}
 \end{center}
 \end{graybox1admon}
 
@@ -36903,7 +37147,7 @@ And then we add a figure too.
 
 
 \begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.9\linewidth]{../doc/manual/figs/wavepacket_0001.png}}
+  \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/figs/wavepacket_0001.png}}
 \end{center}
 \end{graybox2admon}
 
@@ -37361,7 +37605,7 @@ And then we add a figure too.
 
 
 \begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.9\linewidth]{../doc/manual/figs/wavepacket_0001.png}}
+  \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/figs/wavepacket_0001.png}}
 \end{center}
 \end{notice_graybox3admon}
 
@@ -37724,7 +37968,7 @@ And then we add a figure too.
 
 
 \begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.9\linewidth]{../doc/manual/figs/wavepacket_0001.png}}
+  \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/figs/wavepacket_0001.png}}
 \end{center}
 \end{paragraphadmon}
 
@@ -38182,7 +38426,7 @@ And then we add a figure too.
 
 
 \begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.9\linewidth]{../doc/manual/figs/wavepacket_0001.png}}
+  \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/figs/wavepacket_0001.png}}
 \end{center}
 \end{notice_yellowboxadmon}
 
@@ -38571,7 +38815,7 @@ Longer computer code requires vertical space:
 And then we add a figure too.
 
 <p>
-<center><p><img src="../doc/manual/figs/wavepacket_0001.png" align="bottom" ></p></center>
+<center><p><img src="../doc/src/manual/figs/wavepacket_0001.png" align="bottom" ></p></center>
 </div>
 <h3>The end  <a name="___sec4"></a></h3>
 
@@ -38650,7 +38894,7 @@ Automatically generated HTML file from Doconce source
              width: 75%;
      }
      .alert-block {padding-top:14px; padding-bottom:14px}
-     .alert-block > p, .alert-block > ul {margin-bottom:0}
+     .alert-block > p, .alert-block > ul {margin-bottom:1em}
      .alert li {margin-top: 1em}
      .alert-block p+p {margin-top:5px}
      .alert-notice { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_notice.png); }
@@ -38969,7 +39213,7 @@ Longer computer code requires vertical space:
 And then we add a figure too.
 
 <p>
-<center><p><img src="../doc/manual/figs/wavepacket_0001.png" align="bottom" ></p></center>
+<center><p><img src="../doc/src/manual/figs/wavepacket_0001.png" align="bottom" ></p></center>
 </div>
 <h3>The end  <a name="___sec4"></a></h3>
 
@@ -39046,7 +39290,7 @@ Automatically generated HTML file from Doconce source
              width: 75%;
      }
      .alert-block {padding-top:14px; padding-bottom:14px}
-     .alert-block > p, .alert-block > ul {margin-bottom:0}
+     .alert-block > p, .alert-block > ul {margin-bottom:1em}
      .alert li {margin-top: 1em}
      .alert-block p+p {margin-top:5px}
      .alert-notice { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_yellow_notice.png); }
@@ -39365,7 +39609,7 @@ Longer computer code requires vertical space:
 And then we add a figure too.
 
 <p>
-<center><p><img src="../doc/manual/figs/wavepacket_0001.png" align="bottom" ></p></center>
+<center><p><img src="../doc/src/manual/figs/wavepacket_0001.png" align="bottom" ></p></center>
 </div>
 <h3>The end  <a name="___sec4"></a></h3>
 
@@ -40155,7 +40399,7 @@ Longer computer code requires vertical space:
 And then we add a figure too.
 
 <p>
-<center><p><img src="../doc/manual/figs/wavepacket_0001.png" align="bottom" ></p></center></div>
+<center><p><img src="../doc/src/manual/figs/wavepacket_0001.png" align="bottom" ></p></center></div>
 </p></td></tr>
 </table>
 <h3>The end  <a name="___sec4"></a></h3>
@@ -40573,7 +40817,7 @@ Longer computer code requires vertical space:
 And then we add a figure too.
 
 <p>
-<center><p><img src="../doc/manual/figs/wavepacket_0001.png" align="bottom" ></p></center>
+<center><p><img src="../doc/src/manual/figs/wavepacket_0001.png" align="bottom" ></p></center>
 </div>
 <h3>The end  <a name="___sec4"></a></h3>
 
@@ -40670,7 +40914,7 @@ Automatically generated HTML file from Doconce source
              width: 75%;
      }
      .alert-block {padding-top:14px; padding-bottom:14px}
-     .alert-block > p, .alert-block > ul {margin-bottom:0}
+     .alert-block > p, .alert-block > ul {margin-bottom:1em}
      .alert li {margin-top: 1em}
      .alert-block p+p {margin-top:5px}
      .alert-notice { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_yellow_notice.png); }
@@ -40989,7 +41233,7 @@ Longer computer code requires vertical space:
 And then we add a figure too.
 
 <p>
-<center><p><img src="../doc/manual/figs/wavepacket_0001.png" align="bottom" ></p></center>
+<center><p><img src="../doc/src/manual/figs/wavepacket_0001.png" align="bottom" ></p></center>
 </div>
 <h3>The end  <a name="___sec4"></a></h3>
 
@@ -41405,7 +41649,7 @@ Longer computer code requires vertical space:
 And then we add a figure too.
 
 <p>
-<center><p><img src="../doc/manual/figs/wavepacket_0001.png" align="bottom" ></p></center>
+<center><p><img src="../doc/src/manual/figs/wavepacket_0001.png" align="bottom" ></p></center>
 </div>
 <h3>The end  <a name="___sec4"></a></h3>
 
@@ -41739,7 +41983,7 @@ DATE: Today
 # Test that it is okay to leave out width if there are only two columns
 
 !bslidecell 01
-FIGURE: [../doc/manual/figs/wavepacket_0001.png, width=300]
+FIGURE: [../doc/src/manual/figs/wavepacket_0001.png, width=300]
 !eslidecell
 
 !bpop highlight-red
@@ -41878,7 +42122,7 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
              padding-left: 30px; /* 55px; if icon */
      }
      .reveal .alert-block {padding-top:14px; padding-bottom:14px}
-     .reveal .alert-block > p, .alert-block > ul {margin-bottom:0}
+     .reveal .alert-block > p, .alert-block > ul {margin-bottom:1em}
      /*.reveal .alert li {margin-top: 1em}*/
      .reveal .alert-block p+p {margin-top:5px}
      /*.reveal .alert-notice { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_notice.png); }
@@ -42007,7 +42251,7 @@ $$
 
 </td>
 <td class="padding">
-<center><p><img src="../doc/manual/figs/wavepacket_0001.png" align="bottom" width=300></p></center>
+<center><p><img src="../doc/src/manual/figs/wavepacket_0001.png" align="bottom" width=300></p></center>
 </td>
 </tr>
 </table>
@@ -42250,6 +42494,7 @@ reveal.js/examples:
 assets
 barebones.html
 embedded-media.html
+math.html
 slide-backgrounds.html
 
 reveal.js/examples/assets:
@@ -42284,6 +42529,7 @@ reveal.js/plugin:
 highlight
 leap
 markdown
+math
 multiplex
 notes
 notes-server
@@ -42304,6 +42550,9 @@ example.html
 example.md
 markdown.js
 marked.js
+
+reveal.js/plugin/math:
+math.js
 
 reveal.js/plugin/multiplex:
 client.js
@@ -42490,7 +42739,7 @@ Automatically generated HTML file from Doconce source
              width: 75%;
      }
      .alert-block {padding-top:14px; padding-bottom:14px}
-     .alert-block > p, .alert-block > ul {margin-bottom:0}
+     .alert-block > p, .alert-block > ul {margin-bottom:1em}
      .alert li {margin-top: 1em}
      .alert-block p+p {margin-top:5px}
      .alert-notice { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_notice.png); }
@@ -42603,7 +42852,7 @@ $$
 
 <p>
 <!-- !bslidecell 01 -->
-<center><p><img src="../doc/manual/figs/wavepacket_0001.png" align="bottom" width=300></p></center>
+<center><p><img src="../doc/src/manual/figs/wavepacket_0001.png" align="bottom" width=300></p></center>
 <!-- !eslidecell -->
 
 <p>
@@ -42734,8 +42983,6 @@ title (Warning) since no title is specified.
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=1024, user-scalable=no">
-
-<title>None</title>
 
 <!-- Required stylesheet -->
 <link rel="stylesheet" href="deck.js/core/deck.core.css">
@@ -42954,7 +43201,7 @@ $$
 
 </td>
 <td class="padding">
-<center><p><img src="../doc/manual/figs/wavepacket_0001.png" align="bottom" width=300></p></center>
+<center><p><img src="../doc/src/manual/figs/wavepacket_0001.png" align="bottom" width=300></p></center>
 </td>
 </tr>
 </table>
@@ -43818,7 +44065,7 @@ Jan 32, 2100
 % !bslidecell 01
 
 \begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.9\linewidth]{../doc/manual/figs/wavepacket_0001.png}}
+  \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/figs/wavepacket_0001.png}}
 \end{center}
 
 % !eslidecell
@@ -44085,7 +44332,7 @@ University of Oslo\inst{2}}
 
 \column{0.65\textwidth}
 \begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.9\linewidth]{../doc/manual/figs/wavepacket_0001.png}}
+  \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/figs/wavepacket_0001.png}}
 \end{center}
 
 
@@ -44200,38 +44447,38 @@ TITLE: Test slide features
 AUTHOR: Core Dump at Cyber Space Ltd
 DATE: Today
 
-FIGURE: [../doc/slides/fig/doconce1b, width=400 frac=0.5]
+FIGURE: [../doc/src/slides/fig/doconce1b, width=400 frac=0.5]
 
 !split
 ======= Scientific writing for the future needs to address many new media =======
 
 !bslidecell 00 0.4
-FIGURE: [../doc/slides/fig/ipad, width=400 frac=0.8]
+FIGURE: [../doc/src/slides/fig/ipad, width=400 frac=0.8]
 
-FIGURE: [../doc/slides/fig/iphones, width=100 frac=0.3]
+FIGURE: [../doc/src/slides/fig/iphones, width=100 frac=0.3]
 
-#FIGURE: [../doc/slides/fig/mbair, width=400]
+#FIGURE: [../doc/src/slides/fig/mbair, width=400]
 
 !eslidecell
 
 !bslidecell 01 0.6
-FIGURE: [../doc/slides/fig/imac, width=350 frac=0.7]
+FIGURE: [../doc/src/slides/fig/imac, width=350 frac=0.7]
 !eslidecell
 
 !split
 ======= The book will probably survive =======
 
-FIGURE: [../doc/slides/fig/oldbooks, width=800]
+FIGURE: [../doc/src/slides/fig/oldbooks, width=800]
 
 !split
 ======= The classical report will survive =======
 
 !bslidecell 00
-FIGURE: [../doc/slides/fig/latex_thesis, width=400 frac=1.2]
+FIGURE: [../doc/src/slides/fig/latex_thesis, width=400 frac=1.2]
 !eslidecell
 
 !bslidecell 01
-FIGURE: [../doc/slides/fig/latex_paper1, width=400 frac=1.2]
+FIGURE: [../doc/src/slides/fig/latex_paper1, width=400 frac=1.2]
 !eslidecell
 
 !split
@@ -44250,27 +44497,27 @@ FIGURE: [../doc/slides/fig/latex_paper1, width=400 frac=1.2]
 !epop
 
 !bslidecell 00 0.25
-FIGURE: [../doc/slides/fig/LaTeX_logo.jpg, width=120 frac=0.3]
+FIGURE: [../doc/src/slides/fig/LaTeX_logo.jpg, width=120 frac=0.3]
 !eslidecell
 
 !bslidecell 01 0.25
-FIGURE: [../doc/slides/fig/MS_Word_logo.jpg, width=80 frac=0.2]
+FIGURE: [../doc/src/slides/fig/MS_Word_logo.jpg, width=80 frac=0.2]
 !eslidecell
 
 !bslidecell 02 0.5
-FIGURE: [../doc/slides/fig/sphinx_logo.png, width=200 frac=0.4]
+FIGURE: [../doc/src/slides/fig/sphinx_logo.png, width=200 frac=0.4]
 !eslidecell
 
 !bslidecell 10 0.25
-FIGURE: [../doc/slides/fig/markdown_logo.jpg, width=80 frac=0.2]
+FIGURE: [../doc/src/slides/fig/markdown_logo.jpg, width=80 frac=0.2]
 !eslidecell
 
 !bslidecell 11 0.25
-FIGURE: [../doc/slides/fig/MediaWiki_logo.jpg, width=80 frac=0.2]
+FIGURE: [../doc/src/slides/fig/MediaWiki_logo.jpg, width=80 frac=0.2]
 !eslidecell
 
 !bslidecell 12 0.5
-FIGURE: [../doc/slides/fig/IPython_logo.png, width=300 frac=0.6]
+FIGURE: [../doc/src/slides/fig/IPython_logo.png, width=300 frac=0.6]
 !eslidecell
 
 
@@ -44291,7 +44538,7 @@ Old days (1985-2005): LaTeX for BW paper output, but now
 !eslidecell
 
 !bslidecell 01
-FIGURE: [../doc/slides/fig/jungle_with_mess.jpg, width=500]
+FIGURE: [../doc/src/slides/fig/jungle_with_mess.jpg, width=500]
 !eslidecell
 
 !split
@@ -44360,7 +44607,7 @@ URL: "http://hplgit.github.com/teamods/writing_reports/"
  * Sphinx: "agni": "http://hplgit.github.com/teamods/writing_reports/_static/sphinx-agni/index.html", "pyramid": "http://hplgit.github.com/teamods/writing_reports/_static/sphinx-pyramid/report.html", "classy": "http://hplgit.github.com/teamods/writing_reports/_static/sphinx-classy/report.html", "fenics": "http://hplgit.github.com/teamods/writing_reports/_static/sphinx-fenics_minimal/report.html", "redcloud": "http://hplgit.github.com/teamods/writing_reports/_static/sphinx-fenics_minimal/report.html"
  * HTML for "Google": "http://doconce-report-demo.blogspot.no/" or "Wordpress": "http://doconcereportdemo.wordpress.com/" blogs
  * "MediaWiki": "http://doconcedemo.shoutwiki.com/wiki/Doconce_demo_page" (Wikipedia, Wikibooks, etc)
- * Doconce "source code": "http://hplgit.github.com/teamods/writing_reports/_static/report.do.txt.html" and "manual": "http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html"
+ * Doconce "source code": "http://hplgit.github.com/teamods/writing_reports/_static/report.do.txt.html" and "manual": "http://hplgit.github.io/doconce/doc/src/pub/manual/html/manual.html"
 
 
 !split
@@ -44597,7 +44844,7 @@ With `!bc pyoptpro` or a file `*.pyopt`, the code applies the
 "Online Python Tutor": "http://pythontutor.com" for displaying
 program flow and state of variables:
 
-@@@CODE ../doc/slides/src/dc_mod.pyopt
+@@@CODE ../doc/src/slides/src/dc_mod.pyopt
 
 
 
@@ -44695,7 +44942,7 @@ of getting at least three heads out of 5 throws.
    bullet points are not recommended in general, we need
    it here for demonstration purposes
 
-FIGURE: [../doc/slides/fig/teacher1, width=100]
+FIGURE: [../doc/src/slides/fig/teacher1, width=100]
 
 Key equation:
 
@@ -44719,7 +44966,7 @@ Last page gets rendered to
  * Key point 1
  * Key point 2
 
-FIGURE: [../doc/slides/fig/teacher1, width=100 frac=0.4]
+FIGURE: [../doc/src/slides/fig/teacher1, width=100 frac=0.4]
 
 Key equation:
 
@@ -44761,7 +45008,7 @@ a figure to the right (two cells, numbered 00 and 01).
 !eslidecell
 
 !bslidecell 01
-FIGURE: [../doc/slides/fig/broken_pen_and_paper, width=400, frac=0.8]
+FIGURE: [../doc/src/slides/fig/broken_pen_and_paper, width=400, frac=0.8]
 !eslidecell
 
 !split
@@ -44794,7 +45041,7 @@ Last page gets rendered to
 !eslidecell
 
 !bslidecell 01
-FIGURE: [../doc/slides/fig/broken_pen_and_paper, width=400]
+FIGURE: [../doc/src/slides/fig/broken_pen_and_paper, width=400]
 !eslidecell
 
 
@@ -44853,7 +45100,7 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
              padding-left: 30px; /* 55px; if icon */
      }
      .reveal .alert-block {padding-top:14px; padding-bottom:14px}
-     .reveal .alert-block > p, .alert-block > ul {margin-bottom:0}
+     .reveal .alert-block > p, .alert-block > ul {margin-bottom:1em}
      /*.reveal .alert li {margin-top: 1em}*/
      .reveal .alert-block p+p {margin-top:5px}
      /*.reveal .alert-notice { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_notice.png); }
@@ -44954,7 +45201,7 @@ $$
 <p>&nbsp;<br>
 <center><h4>Jan 32, 2100</h4></center> <!-- date -->
 <p>
-<center><p><img src="../doc/slides/fig/doconce1b.png" align="bottom" width=400></p></center>
+<center><p><img src="../doc/src/slides/fig/doconce1b.png" align="bottom" width=400></p></center>
 
 <p>
 
@@ -44970,18 +45217,18 @@ $$
 <table border="0">
 <tr>
 <td class="padding">
-<center><p><img src="../doc/slides/fig/ipad.png" align="bottom" width=400></p></center>
+<center><p><img src="../doc/src/slides/fig/ipad.png" align="bottom" width=400></p></center>
 
 <p>
-<center><p><img src="../doc/slides/fig/iphones.jpg" align="bottom" width=100></p></center>
+<center><p><img src="../doc/src/slides/fig/iphones.jpg" align="bottom" width=100></p></center>
 
 <p>
-<!-- FIGURE: [../doc/slides/fig/mbair, width=400] -->
+<!-- FIGURE: [../doc/src/slides/fig/mbair, width=400] -->
 
 <p>
 </td>
 <td class="padding">
-<center><p><img src="../doc/slides/fig/imac.png" align="bottom" width=350></p></center>
+<center><p><img src="../doc/src/slides/fig/imac.png" align="bottom" width=350></p></center>
 </td>
 </tr>
 </table>
@@ -45000,7 +45247,7 @@ $$
 <h2>The book will probably survive  <a name="___sec1"></a></h2>
 
 <p>
-<center><p><img src="../doc/slides/fig/oldbooks.jpg" align="bottom" width=800></p></center>
+<center><p><img src="../doc/src/slides/fig/oldbooks.jpg" align="bottom" width=800></p></center>
 
 <p>
 
@@ -45016,10 +45263,10 @@ $$
 <table border="0">
 <tr>
 <td class="padding">
-<center><p><img src="../doc/slides/fig/latex_thesis.jpg" align="bottom" width=400></p></center>
+<center><p><img src="../doc/src/slides/fig/latex_thesis.jpg" align="bottom" width=400></p></center>
 </td>
 <td class="padding">
-<center><p><img src="../doc/slides/fig/latex_paper1.png" align="bottom" width=400></p></center>
+<center><p><img src="../doc/src/slides/fig/latex_paper1.png" align="bottom" width=400></p></center>
 </td>
 </tr>
 </table>
@@ -45061,24 +45308,24 @@ $$
 <table border="0">
 <tr>
 <td class="padding">
-<center><p><img src="../doc/slides/fig/LaTeX_logo.jpg" align="bottom" width=120></p></center>
+<center><p><img src="../doc/src/slides/fig/LaTeX_logo.jpg" align="bottom" width=120></p></center>
 </td>
 <td class="padding">
-<center><p><img src="../doc/slides/fig/MS_Word_logo.jpg" align="bottom" width=80></p></center>
+<center><p><img src="../doc/src/slides/fig/MS_Word_logo.jpg" align="bottom" width=80></p></center>
 </td>
 <td class="padding">
-<center><p><img src="../doc/slides/fig/sphinx_logo.png" align="bottom" width=200></p></center>
+<center><p><img src="../doc/src/slides/fig/sphinx_logo.png" align="bottom" width=200></p></center>
 </td>
 </tr>
 <tr>
 <td class="padding">
-<center><p><img src="../doc/slides/fig/markdown_logo.jpg" align="bottom" width=80></p></center>
+<center><p><img src="../doc/src/slides/fig/markdown_logo.jpg" align="bottom" width=80></p></center>
 </td>
 <td class="padding">
-<center><p><img src="../doc/slides/fig/MediaWiki_logo.jpg" align="bottom" width=80></p></center>
+<center><p><img src="../doc/src/slides/fig/MediaWiki_logo.jpg" align="bottom" width=80></p></center>
 </td>
 <td class="padding">
-<center><p><img src="../doc/slides/fig/IPython_logo.png" align="bottom" width=300></p></center>
+<center><p><img src="../doc/src/slides/fig/IPython_logo.png" align="bottom" width=300></p></center>
 </td>
 </tr>
 </table>
@@ -45132,7 +45379,7 @@ Old days (1985-2005): LaTeX for BW paper output, but now
 
 </td>
 <td class="padding">
-<center><p><img src="../doc/slides/fig/jungle_with_mess.jpg" align="bottom" width=500></p></center>
+<center><p><img src="../doc/src/slides/fig/jungle_with_mess.jpg" align="bottom" width=500></p></center>
 </td>
 </tr>
 </table>
@@ -45267,7 +45514,7 @@ based on HTML and vice versa.
  <p><li> Sphinx: <a href="http://hplgit.github.com/teamods/writing_reports/_static/sphinx-agni/index.html">agni</a>, <a href="http://hplgit.github.com/teamods/writing_reports/_static/sphinx-pyramid/report.html">pyramid</a>, <a href="http://hplgit.github.com/teamods/writing_reports/_static/sphinx-classy/report.html">classy</a>, <a href="http://hplgit.github.com/teamods/writing_reports/_static/sphinx-fenics_minimal/report.html">fenics</a>, <a href="http://hplgit.github.com/teamods/writing_reports/_static/sphinx-fenics_minimal/report.html">redcloud</a></li>
  <p><li> HTML for <a href="http://doconce-report-demo.blogspot.no/">Google</a> or <a href="http://doconcereportdemo.wordpress.com/">Wordpress</a> blogs</li>
  <p><li> <a href="http://doconcedemo.shoutwiki.com/wiki/Doconce_demo_page">MediaWiki</a> (Wikipedia, Wikibooks, etc)</li>
- <p><li> Doconce <a href="http://hplgit.github.com/teamods/writing_reports/_static/report.do.txt.html">source code</a> and <a href="http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html">manual</a></li>
+ <p><li> Doconce <a href="http://hplgit.github.com/teamods/writing_reports/_static/report.do.txt.html">source code</a> and <a href="http://hplgit.github.io/doconce/doc/src/pub/manual/html/manual.html">manual</a></li>
 </ul>
 <p>
 
@@ -45681,6 +45928,8 @@ Make a program that simulates flipping a coin \( N \) times.
 <p>
 <b>Hint.</b>
 Use <code>r = random.random()</code> and define head as <code>r <= 0.5</code>.
+
+<p>
 <!-- --- end hint in exercise --- -->
 
 <p>
@@ -45691,12 +45940,16 @@ Compute the probability of getting heads.
 <!-- --- begin answer of exercise --- -->
 <b>Answer.</b>
 A short answer: 0.5.
+
+<p>
 <!-- --- end answer of exercise --- -->
 
 <p>
 <!-- --- begin solution of exercise --- -->
 <b>Solution.</b>
 A full solution to this subexercise can go here.
+
+<p>
 <!-- --- end solution of exercise --- -->
 
 <p>
@@ -45733,7 +45986,7 @@ Filenames: <code>flip_coin.py</code>, <code>flip_coin.pdf</code>.
    bullet points are not recommended in general, we need
    it here for demonstration purposes
 
-FIGURE: [../doc/slides/fig/teacher1, width=100]
+FIGURE: [../doc/src/slides/fig/teacher1, width=100]
 
 Key equation:
 
@@ -45768,7 +46021,7 @@ Last page gets rendered to
 </ul>
 <p>
 
-<center><p><img src="../doc/slides/fig/teacher1.gif" align="bottom" width=100></p></center>
+<center><p><img src="../doc/src/slides/fig/teacher1.gif" align="bottom" width=100></p></center>
 
 <p>
 Key equation:
@@ -45823,7 +46076,7 @@ a figure to the right (two cells, numbered 00 and 01).
 !eslidecell
 
 !bslidecell 01
-FIGURE: [../doc/slides/fig/broken_pen_and_paper, width=400, frac=0.8]
+FIGURE: [../doc/src/slides/fig/broken_pen_and_paper, width=400, frac=0.8]
 !eslidecell
 
 !split
@@ -45877,7 +46130,7 @@ $$ -\nabla^2 u = f \quad\hbox{in }\Omega $$
 <p>
 </td>
 <td class="padding">
-<center><p><img src="../doc/slides/fig/broken_pen_and_paper.jpg" align="bottom" width=400></p></center>
+<center><p><img src="../doc/src/slides/fig/broken_pen_and_paper.jpg" align="bottom" width=400></p></center>
 </td>
 </tr>
 </table>
@@ -46246,7 +46499,7 @@ Jan 32, 2100
 
 
 \begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.5\linewidth]{../doc/slides/fig/doconce1b.png}}
+  \centerline{\includegraphics[width=0.5\linewidth]{../doc/src/slides/fig/doconce1b.png}}
 \end{center}
 
 
@@ -46256,24 +46509,24 @@ Jan 32, 2100
 % !bslidecell 00 0.4
 
 \begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.8\linewidth]{../doc/slides/fig/ipad.png}}
+  \centerline{\includegraphics[width=0.8\linewidth]{../doc/src/slides/fig/ipad.png}}
 \end{center}
 
 
 
 \begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.3\linewidth]{../doc/slides/fig/iphones.jpg}}
+  \centerline{\includegraphics[width=0.3\linewidth]{../doc/src/slides/fig/iphones.jpg}}
 \end{center}
 
 
-% FIGURE: [../doc/slides/fig/mbair, width=400]
+% FIGURE: [../doc/src/slides/fig/mbair, width=400]
 
 % !eslidecell
 
 % !bslidecell 01 0.6
 
 \begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.7\linewidth]{../doc/slides/fig/imac.png}}
+  \centerline{\includegraphics[width=0.7\linewidth]{../doc/src/slides/fig/imac.png}}
 \end{center}
 
 % !eslidecell
@@ -46283,7 +46536,7 @@ Jan 32, 2100
 
 
 \begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.9\linewidth]{../doc/slides/fig/oldbooks.jpg}}
+  \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/slides/fig/oldbooks.jpg}}
 \end{center}
 
 
@@ -46293,7 +46546,7 @@ Jan 32, 2100
 % !bslidecell 00
 
 \begin{center}  % inline figure
-  \centerline{\includegraphics[width=1.2\linewidth]{../doc/slides/fig/latex_thesis.jpg}}
+  \centerline{\includegraphics[width=1.2\linewidth]{../doc/src/slides/fig/latex_thesis.jpg}}
 \end{center}
 
 % !eslidecell
@@ -46301,7 +46554,7 @@ Jan 32, 2100
 % !bslidecell 01
 
 \begin{center}  % inline figure
-  \centerline{\includegraphics[width=1.2\linewidth]{../doc/slides/fig/latex_paper1.png}}
+  \centerline{\includegraphics[width=1.2\linewidth]{../doc/src/slides/fig/latex_paper1.png}}
 \end{center}
 
 % !eslidecell
@@ -46332,7 +46585,7 @@ Jan 32, 2100
 % !bslidecell 00 0.25
 
 \begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.3\linewidth]{../doc/slides/fig/LaTeX_logo.jpg}}
+  \centerline{\includegraphics[width=0.3\linewidth]{../doc/src/slides/fig/LaTeX_logo.jpg}}
 \end{center}
 
 % !eslidecell
@@ -46340,7 +46593,7 @@ Jan 32, 2100
 % !bslidecell 01 0.25
 
 \begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.2\linewidth]{../doc/slides/fig/MS_Word_logo.jpg}}
+  \centerline{\includegraphics[width=0.2\linewidth]{../doc/src/slides/fig/MS_Word_logo.jpg}}
 \end{center}
 
 % !eslidecell
@@ -46348,7 +46601,7 @@ Jan 32, 2100
 % !bslidecell 02 0.5
 
 \begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.4\linewidth]{../doc/slides/fig/sphinx_logo.png}}
+  \centerline{\includegraphics[width=0.4\linewidth]{../doc/src/slides/fig/sphinx_logo.png}}
 \end{center}
 
 % !eslidecell
@@ -46356,7 +46609,7 @@ Jan 32, 2100
 % !bslidecell 10 0.25
 
 \begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.2\linewidth]{../doc/slides/fig/markdown_logo.jpg}}
+  \centerline{\includegraphics[width=0.2\linewidth]{../doc/src/slides/fig/markdown_logo.jpg}}
 \end{center}
 
 % !eslidecell
@@ -46364,7 +46617,7 @@ Jan 32, 2100
 % !bslidecell 11 0.25
 
 \begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.2\linewidth]{../doc/slides/fig/MediaWiki_logo.jpg}}
+  \centerline{\includegraphics[width=0.2\linewidth]{../doc/src/slides/fig/MediaWiki_logo.jpg}}
 \end{center}
 
 % !eslidecell
@@ -46372,7 +46625,7 @@ Jan 32, 2100
 % !bslidecell 12 0.5
 
 \begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.6\linewidth]{../doc/slides/fig/IPython_logo.png}}
+  \centerline{\includegraphics[width=0.6\linewidth]{../doc/src/slides/fig/IPython_logo.png}}
 \end{center}
 
 % !eslidecell
@@ -46406,7 +46659,7 @@ Old days (1985-2005): {\LaTeX} for BW paper output, but now
 % !bslidecell 01
 
 \begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.9\linewidth]{../doc/slides/fig/jungle_with_mess.jpg}}
+  \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/slides/fig/jungle_with_mess.jpg}}
 \end{center}
 
 % !eslidecell
@@ -46518,7 +46771,7 @@ based on HTML and vice versa.
 
  \item \href{{http://doconcedemo.shoutwiki.com/wiki/Doconce_demo_page}}{MediaWiki} (Wikipedia, Wikibooks, etc)
 
- \item Doconce \href{{http://hplgit.github.com/teamods/writing_reports/_static/report.do.txt.html}}{source code} and \href{{http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html}}{manual}
+ \item Doconce \href{{http://hplgit.github.com/teamods/writing_reports/_static/report.do.txt.html}}{source code} and \href{{http://hplgit.github.io/doconce/doc/src/pub/manual/html/manual.html}}{manual}
 \end{itemize}
 
 \noindent
@@ -46850,6 +47103,7 @@ Make a program that simulates flipping a coin $N$ times.
 
 \paragraph{Hint.}
 Use \code{r = random.random()} and define head as \code{r <= 0.5}.
+
 % --- end hint in exercise ---
 
 \paragraph{b)}
@@ -46859,12 +47113,14 @@ Compute the probability of getting heads.
 % --- begin answer of exercise ---
 \paragraph{Answer.}
 A short answer: 0.5.
+
 % --- end answer of exercise ---
 
 
 % --- begin solution of exercise ---
 \paragraph{Solution.}
 A full solution to this subexercise can go here.
+
 % --- end solution of exercise ---
 
 \paragraph{c)}
@@ -46892,7 +47148,7 @@ Filenames: \code{flip_coin.py}, \code{flip_coin.pdf}.
    bullet points are not recommended in general, we need
    it here for demonstration purposes
 
-FIGURE: [../doc/slides/fig/teacher1, width=100]
+FIGURE: [../doc/src/slides/fig/teacher1, width=100]
 
 Key equation:
 
@@ -46921,7 +47177,7 @@ Last page gets rendered to
 
 \noindent
 \begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.4\linewidth]{../doc/slides/fig/teacher1.pdf}}
+  \centerline{\includegraphics[width=0.4\linewidth]{../doc/src/slides/fig/teacher1.pdf}}
 \end{center}
 
 
@@ -46963,7 +47219,7 @@ a figure to the right (two cells, numbered 00 and 01).
 !eslidecell
 
 !bslidecell 01
-FIGURE: [../doc/slides/fig/broken_pen_and_paper, width=400, frac=0.8]
+FIGURE: [../doc/src/slides/fig/broken_pen_and_paper, width=400, frac=0.8]
 !eslidecell
 
 !split
@@ -47002,7 +47258,7 @@ Last page gets rendered to
 % !bslidecell 01
 
 \begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.9\linewidth]{../doc/slides/fig/broken_pen_and_paper.jpg}}
+  \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/slides/fig/broken_pen_and_paper.jpg}}
 \end{center}
 
 % !eslidecell
@@ -47150,7 +47406,7 @@ Last page gets rendered to
 
 \date{Jan 32, 2100
 \\ \ \\ 
-\centerline{\includegraphics[width=0.5\linewidth]{../doc/slides/fig/doconce1b.png}}
+\centerline{\includegraphics[width=0.5\linewidth]{../doc/src/slides/fig/doconce1b.png}}
 }
 
 
@@ -47166,22 +47422,22 @@ Last page gets rendered to
 \begin{columns}
 \column{0.4\textwidth}
 \begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.8\linewidth]{../doc/slides/fig/ipad.png}}
+  \centerline{\includegraphics[width=0.8\linewidth]{../doc/src/slides/fig/ipad.png}}
 \end{center}
 
 
 
 \begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.3\linewidth]{../doc/slides/fig/iphones.jpg}}
+  \centerline{\includegraphics[width=0.3\linewidth]{../doc/src/slides/fig/iphones.jpg}}
 \end{center}
 
 
-% FIGURE: [../doc/slides/fig/mbair, width=400]
+% FIGURE: [../doc/src/slides/fig/mbair, width=400]
 
 
 \column{0.6\textwidth}
 \begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.7\linewidth]{../doc/slides/fig/imac.png}}
+  \centerline{\includegraphics[width=0.7\linewidth]{../doc/src/slides/fig/imac.png}}
 \end{center}
 
 
@@ -47192,7 +47448,7 @@ Last page gets rendered to
 \frametitle{The book will probably survive}
 
 \begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.9\linewidth]{../doc/slides/fig/oldbooks.jpg}}
+  \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/slides/fig/oldbooks.jpg}}
 \end{center}
 \end{frame}
 
@@ -47202,13 +47458,13 @@ Last page gets rendered to
 \begin{columns}
 \column{0.5\textwidth}
 \begin{center}  % inline figure
-  \centerline{\includegraphics[width=1.2\linewidth]{../doc/slides/fig/latex_thesis.jpg}}
+  \centerline{\includegraphics[width=1.2\linewidth]{../doc/src/slides/fig/latex_thesis.jpg}}
 \end{center}
 
 
 \column{0.5\textwidth}
 \begin{center}  % inline figure
-  \centerline{\includegraphics[width=1.2\linewidth]{../doc/slides/fig/latex_paper1.png}}
+  \centerline{\includegraphics[width=1.2\linewidth]{../doc/src/slides/fig/latex_paper1.png}}
 \end{center}
 
 
@@ -47239,19 +47495,19 @@ Last page gets rendered to
 \begin{columns}
 \column{0.25\textwidth}
 \begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.3\linewidth]{../doc/slides/fig/LaTeX_logo.jpg}}
+  \centerline{\includegraphics[width=0.3\linewidth]{../doc/src/slides/fig/LaTeX_logo.jpg}}
 \end{center}
 
 
 \column{0.25\textwidth}
 \begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.2\linewidth]{../doc/slides/fig/MS_Word_logo.jpg}}
+  \centerline{\includegraphics[width=0.2\linewidth]{../doc/src/slides/fig/MS_Word_logo.jpg}}
 \end{center}
 
 
 \column{0.5\textwidth}
 \begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.4\linewidth]{../doc/slides/fig/sphinx_logo.png}}
+  \centerline{\includegraphics[width=0.4\linewidth]{../doc/src/slides/fig/sphinx_logo.png}}
 \end{center}
 
 
@@ -47259,19 +47515,19 @@ Last page gets rendered to
 \begin{columns}
 \column{0.25\textwidth}
 \begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.2\linewidth]{../doc/slides/fig/markdown_logo.jpg}}
+  \centerline{\includegraphics[width=0.2\linewidth]{../doc/src/slides/fig/markdown_logo.jpg}}
 \end{center}
 
 
 \column{0.25\textwidth}
 \begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.2\linewidth]{../doc/slides/fig/MediaWiki_logo.jpg}}
+  \centerline{\includegraphics[width=0.2\linewidth]{../doc/src/slides/fig/MediaWiki_logo.jpg}}
 \end{center}
 
 
 \column{0.5\textwidth}
 \begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.6\linewidth]{../doc/slides/fig/IPython_logo.png}}
+  \centerline{\includegraphics[width=0.6\linewidth]{../doc/src/slides/fig/IPython_logo.png}}
 \end{center}
 
 
@@ -47305,7 +47561,7 @@ Old days (1985-2005): {\LaTeX} for BW paper output, but now
 
 \column{0.5\textwidth}
 \begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.9\linewidth]{../doc/slides/fig/jungle_with_mess.jpg}}
+  \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/slides/fig/jungle_with_mess.jpg}}
 \end{center}
 
 
@@ -47431,7 +47687,7 @@ based on HTML and vice versa.
 
  \item \href{{http://doconcedemo.shoutwiki.com/wiki/Doconce_demo_page}}{MediaWiki} (Wikipedia, Wikibooks, etc)
 
- \item Doconce \href{{http://hplgit.github.com/teamods/writing_reports/_static/report.do.txt.html}}{source code} and \href{{http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html}}{manual}
+ \item Doconce \href{{http://hplgit.github.com/teamods/writing_reports/_static/report.do.txt.html}}{source code} and \href{{http://hplgit.github.io/doconce/doc/src/pub/manual/html/manual.html}}{manual}
 \end{itemize}
 
 \noindent
@@ -47772,6 +48028,7 @@ Make a program that simulates flipping a coin $N$ times.
 
 \noindent\textbf{Hint.}
 Use \Verb!r = random.random()! and define head as \Verb!r <= 0.5!.
+
 % --- end hint in exercise ---
 
 \noindent\textbf{b)}
@@ -47781,12 +48038,14 @@ Compute the probability of getting heads.
 % --- begin answer of exercise ---
 \noindent\textbf{Answer.}
 A short answer: 0.5.
+
 % --- end answer of exercise ---
 
 
 % --- begin solution of exercise ---
 \noindent\textbf{Solution.}
 A full solution to this subexercise can go here.
+
 % --- end solution of exercise ---
 
 \noindent\textbf{c)}
@@ -47814,7 +48073,7 @@ Filenames: \Verb!flip_coin.py!, \Verb!flip_coin.pdf!.
    bullet points are not recommended in general, we need
    it here for demonstration purposes
 
-FIGURE: [../doc/slides/fig/teacher1, width=100]
+FIGURE: [../doc/src/slides/fig/teacher1, width=100]
 
 Key equation:
 
@@ -47844,7 +48103,7 @@ Last page gets rendered to
 
 \noindent
 \begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.4\linewidth]{../doc/slides/fig/teacher1.pdf}}
+  \centerline{\includegraphics[width=0.4\linewidth]{../doc/src/slides/fig/teacher1.pdf}}
 \end{center}
 
 
@@ -47887,7 +48146,7 @@ a figure to the right (two cells, numbered 00 and 01).
 !eslidecell
 
 !bslidecell 01
-FIGURE: [../doc/slides/fig/broken_pen_and_paper, width=400, frac=0.8]
+FIGURE: [../doc/src/slides/fig/broken_pen_and_paper, width=400, frac=0.8]
 !eslidecell
 
 !split
@@ -47932,7 +48191,7 @@ Last page gets rendered to
 
 \column{0.5\textwidth}
 \begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.9\linewidth]{../doc/slides/fig/broken_pen_and_paper.jpg}}
+  \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/slides/fig/broken_pen_and_paper.jpg}}
 \end{center}
 
 
@@ -47946,7 +48205,7 @@ TITLE: On Schemes for Exponential Decay
 AUTHOR: Hans Petter Langtangen at Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo
 DATE: today
 
-FIGURE: [../doc/slides/fig/CN_logo, width=300 frac=0.4]
+FIGURE: [../doc/src/slides/fig/CN_logo, width=300 frac=0.4]
 
 ## Comments start with a # and are visible as comments in the
 ## output. Lines starting with ## are also comments, but not visible
@@ -48034,7 +48293,7 @@ label{initial:value}
 ## width in HTML. A caption can be added (after [...]).
 
 !bslidecell 01
-FIGURE: [../doc/slides/fig/teacher2, width=250 frac=0.5]
+FIGURE: [../doc/src/slides/fig/teacher2, width=250 frac=0.5]
 !eslidecell
 
 !split
@@ -48080,14 +48339,14 @@ MOVIE: [http://youtu.be/PtJrPEIHNJw, width=640 height=480]
 
 The numerical method is implemented in a Python function:
 
-@@@CODE ../doc/slides/src/dc_mod.py  fromto: def solver@def verify_three
+@@@CODE ../doc/src/slides/src/dc_mod.py  fromto: def solver@def verify_three
 
 !split
 ===== The Crank-Nicolson method =====
 
 ## Figure filenames do not need extension - the right version is picked
 
-FIGURE: [../doc/slides/fig/CN, width=600]
+FIGURE: [../doc/src/slides/fig/CN, width=600]
 
 !split
 ===== The artifacts can be explained by some theory =====
@@ -48172,7 +48431,7 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
              padding-left: 30px; /* 55px; if icon */
      }
      .reveal .alert-block {padding-top:14px; padding-bottom:14px}
-     .reveal .alert-block > p, .alert-block > ul {margin-bottom:0}
+     .reveal .alert-block > p, .alert-block > ul {margin-bottom:1em}
      /*.reveal .alert li {margin-top: 1em}*/
      .reveal .alert-block p+p {margin-top:5px}
      /*.reveal .alert-notice { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_notice.png); }
@@ -48274,7 +48533,7 @@ $$
 <p>&nbsp;<br>
 <center><h4>Jan 32, 2100</h4></center> <!-- date -->
 <p>
-<center><p><img src="../doc/slides/fig/CN_logo.png" align="bottom" width=300></p></center>
+<center><p><img src="../doc/src/slides/fig/CN_logo.png" align="bottom" width=300></p></center>
 
 <p>
 
@@ -48348,7 +48607,7 @@ $$
 
 </td>
 <td class="padding">
-<center><p><img src="../doc/slides/fig/teacher2.jpg" align="bottom" width=250></p></center>
+<center><p><img src="../doc/src/slides/fig/teacher2.jpg" align="bottom" width=250></p></center>
 </td>
 </tr>
 </table>
@@ -48446,7 +48705,7 @@ The numerical method is implemented in a Python function:
 <h3>The Crank-Nicolson method  <a name="___sec5"></a></h3>
 
 <p>
-<center><p><img src="../doc/slides/fig/CN.png" align="bottom" width=600></p></center>
+<center><p><img src="../doc/src/slides/fig/CN.png" align="bottom" width=600></p></center>
 
 <p>
 
@@ -48844,7 +49103,7 @@ Jan 32, 2100
 
 
 \begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.4\linewidth]{../doc/slides/fig/CN_logo.pdf}}
+  \centerline{\includegraphics[width=0.4\linewidth]{../doc/src/slides/fig/CN_logo.pdf}}
 \end{center}
 
 
@@ -48899,7 +49158,7 @@ u(0)  &= I,
 % !bslidecell 01
 
 \begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.5\linewidth]{../doc/slides/fig/teacher2.jpg}}
+  \centerline{\includegraphics[width=0.5\linewidth]{../doc/src/slides/fig/teacher2.jpg}}
 \end{center}
 
 % !eslidecell
@@ -48956,7 +49215,7 @@ def solver(I, a, T, dt, theta):
 
 
 \begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.9\linewidth]{../doc/slides/fig/CN.pdf}}
+  \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/slides/fig/CN.pdf}}
 \end{center}
 
 
@@ -49136,7 +49395,7 @@ Department of Informatics, University of Oslo\inst{2}}
 
 \date{Jan 32, 2100
 \\ \ \\ 
-\centerline{\includegraphics[width=0.4\linewidth]{../doc/slides/fig/CN_logo.pdf}}
+\centerline{\includegraphics[width=0.4\linewidth]{../doc/src/slides/fig/CN_logo.pdf}}
 }
 
 
@@ -49190,7 +49449,7 @@ u(0)  &= I,
 
 \column{0.5\textwidth}
 \begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.5\linewidth]{../doc/slides/fig/teacher2.jpg}}
+  \centerline{\includegraphics[width=0.5\linewidth]{../doc/src/slides/fig/teacher2.jpg}}
 \end{center}
 
 
@@ -49250,7 +49509,7 @@ def solver(I, a, T, dt, theta):
 \frametitle{The Crank-Nicolson method}
 
 \begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.9\linewidth]{../doc/slides/fig/CN.pdf}}
+  \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/slides/fig/CN.pdf}}
 \end{center}
 \end{frame}
 
@@ -49618,7 +49877,7 @@ And here is a table:
 <h6>Dept. of Informatics, Univ. of Oslo</h6>
 </center>
 
-<center>Fri, 16 Aug 2013 (21:37)</center>
+<center>Thu, 29 Aug 2013 (11:27)</center>
 
 
 
@@ -49749,7 +50008,7 @@ And here is a table:
 <h6>Dept. of Informatics, Univ. of Oslo</h6>
 </center>
 
-<center>Fri, 16 Aug 2013 (21:37)</center>
+<center>Thu, 29 Aug 2013 (11:27)</center>
 
 
 
@@ -49968,9 +50227,9 @@ echo
 echo "Go to the demo directory and load index.html into a web browser."
 
 cd ..
-dest=../pub/quickref
+dest=../../pub/quickref
 cp -r demo/html demo/quickref.pdf demo/quickref.html $dest
-dest=../../../doconce.wiki
+dest=../../../../doconce.wiki
 cp -r demo/quickref.rst $dest
 
 ************** File: quickref.do.txt *****************
@@ -50852,7 +51111,7 @@ Automatically generated HTML file from Doconce source
              width: 75%;
      }
      .alert-block {padding-top:14px; padding-bottom:14px}
-     .alert-block > p, .alert-block > ul {margin-bottom:0}
+     .alert-block > p, .alert-block > ul {margin-bottom:1em}
      .alert li {margin-top: 1em}
      .alert-block p+p {margin-top:5px}
      .alert-notice { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_notice.png); }
@@ -62955,11 +63214,11 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 -- fixed to one line
 
 FIX: FIGURE not at the beginning of the line - 1 fixes
- FIGURE: [../doc/manual/figs/wavepacket_0001.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
+ FIGURE: [../doc/src/manual/figs/wavepacket_0001.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
 
 
 FIX: MOVIE not at the beginning of the line - 1 fixes
-   MOVIE: [../doc/manual/figs/wavepacket_*.png, width=700 height=400] Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). label{mymov} 
+   MOVIE: [../doc/src/manual/figs/wavepacket_*.png, width=700 height=400] Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). label{mymov} 
 
 
 FIX: !bhint not at the beginning of the line - 1 fixes
@@ -62974,17 +63233,17 @@ FIX: !ehint not at the beginning of the line - 1 fixes
 
 
 copying from regex "subroutine" until end of file
-     file: ../doc/manual/__testcode.f,  lines 3-16  (format: fcod)
+     file: ../doc/src/manual/__testcode.f,  lines 3-16  (format: fcod)
 copying after regex "a comment" until "^C\s+END1"
-     file: ../doc/manual/__testcode.f,  lines 2-11  (format: fcod)
-copy complete file ../doc/manual/__testcode.f  (format: fpro)
+     file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
+copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
 
 warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
 
 found info about 9 exercises, written to .testdoc.exerinfo
-figure file ../doc/manual/figs/streamtubes:
-    can use ../doc/manual/figs/streamtubes.png for format html
+figure file ../doc/src/manual/figs/streamtubes:
+    can use ../doc/src/manual/figs/streamtubes.png for format html
 output in testdoc.html
 + '[' 0 -ne 0 ']'
 + cp testdoc.html testdoc_wordpress.html
@@ -63014,11 +63273,11 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 -- fixed to one line
 
 FIX: FIGURE not at the beginning of the line - 1 fixes
- FIGURE: [../doc/manual/figs/wavepacket_0001.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
+ FIGURE: [../doc/src/manual/figs/wavepacket_0001.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
 
 
 FIX: MOVIE not at the beginning of the line - 1 fixes
-   MOVIE: [../doc/manual/figs/wavepacket_*.png, width=700 height=400] Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). label{mymov} 
+   MOVIE: [../doc/src/manual/figs/wavepacket_*.png, width=700 height=400] Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). label{mymov} 
 
 
 FIX: !bhint not at the beginning of the line - 1 fixes
@@ -63033,17 +63292,17 @@ FIX: !ehint not at the beginning of the line - 1 fixes
 
 
 copying from regex "subroutine" until end of file
-     file: ../doc/manual/__testcode.f,  lines 3-16  (format: fcod)
+     file: ../doc/src/manual/__testcode.f,  lines 3-16  (format: fcod)
 copying after regex "a comment" until "^C\s+END1"
-     file: ../doc/manual/__testcode.f,  lines 2-11  (format: fcod)
-copy complete file ../doc/manual/__testcode.f  (format: fpro)
+     file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
+copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
 
 warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
 
 found info about 9 exercises, written to .testdoc.exerinfo
-figure file ../doc/manual/figs/streamtubes:
-    can use ../doc/manual/figs/streamtubes.png for format html
+figure file ../doc/src/manual/figs/streamtubes:
+    can use ../doc/src/manual/figs/streamtubes.png for format html
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in testdoc.html
 + '[' 0 -ne 0 ']'
@@ -63095,11 +63354,11 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 -- fixed to one line
 
 FIX: FIGURE not at the beginning of the line - 1 fixes
- FIGURE: [../doc/manual/figs/wavepacket_0001.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
+ FIGURE: [../doc/src/manual/figs/wavepacket_0001.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
 
 
 FIX: MOVIE not at the beginning of the line - 1 fixes
-   MOVIE: [../doc/manual/figs/wavepacket_*.png, width=700 height=400] Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). label{mymov} 
+   MOVIE: [../doc/src/manual/figs/wavepacket_*.png, width=700 height=400] Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). label{mymov} 
 
 
 FIX: !bhint not at the beginning of the line - 1 fixes
@@ -63114,10 +63373,10 @@ FIX: !ehint not at the beginning of the line - 1 fixes
 
 
 copying from regex "subroutine" until end of file
-     file: ../doc/manual/__testcode.f,  lines 3-16  (format: fcod)
+     file: ../doc/src/manual/__testcode.f,  lines 3-16  (format: fcod)
 copying after regex "a comment" until "^C\s+END1"
-     file: ../doc/manual/__testcode.f,  lines 2-11  (format: fcod)
-copy complete file ../doc/manual/__testcode.f  (format: fpro)
+     file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
+copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
 transforming sections: subsection to subsubsection...
 transforming sections: section to subsection...
 transforming sections: chapter to section...
@@ -63126,9 +63385,9 @@ warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
 
 found info about 9 exercises, written to .testdoc.exerinfo
-figure file ../doc/manual/figs/streamtubes:
-    can use ../doc/manual/figs/streamtubes.eps for format latex
-downloading https://raw.github.com/hplgit/doconce/master/doc/blog/f_plot.png .......
+figure file ../doc/src/manual/figs/streamtubes:
+    can use ../doc/src/manual/figs/streamtubes.eps for format latex
+downloading https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png .......
 
 exporting publish database papers.pub to papers.bib:
 output in testdoc.p.tex
@@ -63162,11 +63421,11 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 -- fixed to one line
 
 FIX: FIGURE not at the beginning of the line - 1 fixes
- FIGURE: [../doc/manual/figs/wavepacket_0001.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
+ FIGURE: [../doc/src/manual/figs/wavepacket_0001.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
 
 
 FIX: MOVIE not at the beginning of the line - 1 fixes
-   MOVIE: [../doc/manual/figs/wavepacket_*.png, width=700 height=400] Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). label{mymov} 
+   MOVIE: [../doc/src/manual/figs/wavepacket_*.png, width=700 height=400] Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). label{mymov} 
 
 
 FIX: !bhint not at the beginning of the line - 1 fixes
@@ -63181,17 +63440,17 @@ FIX: !ehint not at the beginning of the line - 1 fixes
 
 
 copying from regex "subroutine" until end of file
-     file: ../doc/manual/__testcode.f,  lines 3-16  (format: fcod)
+     file: ../doc/src/manual/__testcode.f,  lines 3-16  (format: fcod)
 copying after regex "a comment" until "^C\s+END1"
-     file: ../doc/manual/__testcode.f,  lines 2-11  (format: fcod)
-copy complete file ../doc/manual/__testcode.f  (format: fpro)
+     file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
+copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
 
 warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
 
 found info about 9 exercises, written to .testdoc.exerinfo
-figure file ../doc/manual/figs/streamtubes:
-    can use ../doc/manual/figs/streamtubes.png for format html
+figure file ../doc/src/manual/figs/streamtubes:
+    can use ../doc/src/manual/figs/streamtubes.png for format html
 *** warning: TITLE may look strange with a template -
              it is recommended to comment out the title: #TITLE:
 *** warning: AUTHOR may look strange with a template -
@@ -63229,11 +63488,11 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 -- fixed to one line
 
 FIX: FIGURE not at the beginning of the line - 1 fixes
- FIGURE: [../doc/manual/figs/wavepacket_0001.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
+ FIGURE: [../doc/src/manual/figs/wavepacket_0001.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
 
 
 FIX: MOVIE not at the beginning of the line - 1 fixes
-   MOVIE: [../doc/manual/figs/wavepacket_*.png, width=700 height=400] Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). label{mymov} 
+   MOVIE: [../doc/src/manual/figs/wavepacket_*.png, width=700 height=400] Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). label{mymov} 
 
 
 FIX: !bhint not at the beginning of the line - 1 fixes
@@ -63248,17 +63507,17 @@ FIX: !ehint not at the beginning of the line - 1 fixes
 
 
 copying from regex "subroutine" until end of file
-     file: ../doc/manual/__testcode.f,  lines 3-16  (format: fcod)
+     file: ../doc/src/manual/__testcode.f,  lines 3-16  (format: fcod)
 copying after regex "a comment" until "^C\s+END1"
-     file: ../doc/manual/__testcode.f,  lines 2-11  (format: fcod)
-copy complete file ../doc/manual/__testcode.f  (format: fpro)
+     file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
+copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
 
 warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
 
 found info about 9 exercises, written to .testdoc.exerinfo
-figure file ../doc/manual/figs/streamtubes:
-    can use ../doc/manual/figs/streamtubes.png for format html
+figure file ../doc/src/manual/figs/streamtubes:
+    can use ../doc/src/manual/figs/streamtubes.png for format html
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in testdoc.html
 + '[' 0 -ne 0 ']'
@@ -63299,11 +63558,11 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 -- fixed to one line
 
 FIX: FIGURE not at the beginning of the line - 1 fixes
- FIGURE: [../doc/manual/figs/wavepacket_0001.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
+ FIGURE: [../doc/src/manual/figs/wavepacket_0001.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
 
 
 FIX: MOVIE not at the beginning of the line - 1 fixes
-   MOVIE: [../doc/manual/figs/wavepacket_*.png, width=700 height=400] Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). label{mymov} 
+   MOVIE: [../doc/src/manual/figs/wavepacket_*.png, width=700 height=400] Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). label{mymov} 
 
 
 FIX: !bhint not at the beginning of the line - 1 fixes
@@ -63318,17 +63577,17 @@ FIX: !ehint not at the beginning of the line - 1 fixes
 
 
 copying from regex "subroutine" until end of file
-     file: ../doc/manual/__testcode.f,  lines 3-16  (format: fcod)
+     file: ../doc/src/manual/__testcode.f,  lines 3-16  (format: fcod)
 copying after regex "a comment" until "^C\s+END1"
-     file: ../doc/manual/__testcode.f,  lines 2-11  (format: fcod)
-copy complete file ../doc/manual/__testcode.f  (format: fpro)
+     file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
+copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
 
 warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
 
 found info about 9 exercises, written to .testdoc.exerinfo
-figure file ../doc/manual/figs/streamtubes:
-    can use ../doc/manual/figs/streamtubes.png for format html
+figure file ../doc/src/manual/figs/streamtubes:
+    can use ../doc/src/manual/figs/streamtubes.png for format html
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in demo_testdoc.html
 + '[' 0 -ne 0 ']'
@@ -63379,11 +63638,11 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 -- fixed to one line
 
 FIX: FIGURE not at the beginning of the line - 1 fixes
- FIGURE: [../doc/manual/figs/wavepacket_0001.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
+ FIGURE: [../doc/src/manual/figs/wavepacket_0001.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
 
 
 FIX: MOVIE not at the beginning of the line - 1 fixes
-   MOVIE: [../doc/manual/figs/wavepacket_*.png, width=700 height=400] Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). label{mymov} 
+   MOVIE: [../doc/src/manual/figs/wavepacket_*.png, width=700 height=400] Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). label{mymov} 
 
 
 FIX: !bhint not at the beginning of the line - 1 fixes
@@ -63398,18 +63657,18 @@ FIX: !ehint not at the beginning of the line - 1 fixes
 
 
 copying from regex "subroutine" until end of file
-     file: ../doc/manual/__testcode.f,  lines 3-16  (format: fcod)
+     file: ../doc/src/manual/__testcode.f,  lines 3-16  (format: fcod)
 copying after regex "a comment" until "^C\s+END1"
-     file: ../doc/manual/__testcode.f,  lines 2-11  (format: fcod)
-copy complete file ../doc/manual/__testcode.f  (format: fpro)
+     file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
+copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
 
 warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
 
 found info about 9 exercises, written to .testdoc.exerinfo
-figure file ../doc/manual/figs/streamtubes:
-    can use ../doc/manual/figs/streamtubes.eps for format latex
-downloading https://raw.github.com/hplgit/doconce/master/doc/blog/f_plot.png .......
+figure file ../doc/src/manual/figs/streamtubes:
+    can use ../doc/src/manual/figs/streamtubes.eps for format latex
+downloading https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png .......
 
 exporting publish database papers.pub to papers.bib:
 output in testdoc.p.tex
@@ -63460,11 +63719,11 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 -- fixed to one line
 
 FIX: FIGURE not at the beginning of the line - 1 fixes
- FIGURE: [../doc/manual/figs/wavepacket_0001.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
+ FIGURE: [../doc/src/manual/figs/wavepacket_0001.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
 
 
 FIX: MOVIE not at the beginning of the line - 1 fixes
-   MOVIE: [../doc/manual/figs/wavepacket_*.png, width=700 height=400] Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). label{mymov} 
+   MOVIE: [../doc/src/manual/figs/wavepacket_*.png, width=700 height=400] Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). label{mymov} 
 
 
 FIX: !bhint not at the beginning of the line - 1 fixes
@@ -63479,18 +63738,18 @@ FIX: !ehint not at the beginning of the line - 1 fixes
 
 
 copying from regex "subroutine" until end of file
-     file: ../doc/manual/__testcode.f,  lines 3-16  (format: fcod)
+     file: ../doc/src/manual/__testcode.f,  lines 3-16  (format: fcod)
 copying after regex "a comment" until "^C\s+END1"
-     file: ../doc/manual/__testcode.f,  lines 2-11  (format: fcod)
-copy complete file ../doc/manual/__testcode.f  (format: fpro)
+     file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
+copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
 
 warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
 
 found info about 9 exercises, written to .testdoc.exerinfo
-figure file ../doc/manual/figs/streamtubes:
-    can use ../doc/manual/figs/streamtubes.png for format pdflatex
-downloading https://raw.github.com/hplgit/doconce/master/doc/blog/f_plot.png .......
+figure file ../doc/src/manual/figs/streamtubes:
+    can use ../doc/src/manual/figs/streamtubes.png for format pdflatex
+downloading https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png .......
 
 exporting publish database papers.pub to papers.bib:
 *** warning: --latex_double_hyphen may lead to unwanted edits.
@@ -63772,36 +64031,36 @@ LaTeX Warning: Reference `subsubsec:ex' on page 3
 
 LaTeX Warning: Reference `fig:impact' on page 5 
 
-<../doc/manual/figs/streamtubes.png, id=59, 583.17876pt x 437.635pt>
-<use ../doc/manual/figs/streamtubes.png>
-<use ../doc/manual/figs/streamtubes.png>
+<../doc/src/manual/figs/streamtubes.png, id=59, 583.17876pt x 437.635pt>
+<use ../doc/src/manual/figs/streamtubes.png>
+<use ../doc/src/manual/figs/streamtubes.png>
 Underfull \vbox (badness 10000) has occurred while \output is active [5]
 Overfull \vbox (13.3931pt too high) has occurred while \output is active
-[6 <../doc/manual/figs/streamtubes.png>]
+[6 <../doc/src/manual/figs/streamtubes.png>]
 
 LaTeX Warning: Reference `mov:tsunami' on page 7 
 
 
-Overfull \hbox (280.67903pt too wide) 
-[]\OT1/cmr/m/n/10 (-20) (Movie ../doc/-man-u-al/-figs/wavepacket.mpeg: play [][
-]$\OT1/cmtt/m/n/10 wavepacket . html$[][][][][][][]\OT1/cmr/m/n/10 (-20) ) [][]
-[][][][][][][][][][][][][][][][][][][][]
+Overfull \hbox (297.63849pt too wide) 
+[]\OT1/cmr/m/n/10 (-20) (Movie ../doc/s-r-c/-man-u-al/-figs/wavepacket.mpeg: pl
+ay [][]$\OT1/cmtt/m/n/10 wavepacket . html$[][][][][][][]\OT1/cmr/m/n/10 (-20) 
+) [][][][][][][][][][][][][][][][][][][][][][]
 
 Underfull \vbox (badness 10000) has occurred while \output is active [7<<../doc
-/manual/figs/mjolnir.mpeg>>]
+/src/manual/figs/mjolnir.mpeg>>]
 Overfull \hbox (13.9403pt too wide) 
 []\OT1/cmr/m/n/10 (-20) Movie based on col-lec-tion of frames (here just a few 
 frames com-pared with the full wavepacket.mpeg
 
 LaTeX Warning: Reference `myfig' on page 8 
 
-<../doc/manual/figs/wavepacket_0001.png, id=117, 642.4pt x 481.8pt>
-<use ../doc/manual/figs/wavepacket_0001.png>
+<../doc/src/manual/figs/wavepacket_0001.png, id=117, 642.4pt x 481.8pt>
+<use ../doc/src/manual/figs/wavepacket_0001.png>
 <downloaded_figures/f_plot.png, id=118, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png>
 Underfull \vbox (badness 10000) has occurred while \output is active [8<<../doc
-/manual/figs/wavepacket.mpeg>>] [9 <../doc/manual/figs/wavepacket_0001.png> <./
-downloaded_figures/f_plot.png>]
+/src/manual/figs/wavepacket.mpeg>>] [9 <../doc/src/manual/figs/wavepacket_0001.
+png> <./downloaded_figures/f_plot.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on 
@@ -64019,7 +64278,7 @@ LaTeX Warning: Reference `exer:some:formula' on page 13 undefined on input line
 
 [13] (./testdoc.out.pyg) (./testdoc.out.pyg [14]) [15]
 
-LaTeX Warning: Reference `proj:circle1' on page 16 undefined on input line 1283
+LaTeX Warning: Reference `proj:circle1' on page 16 undefined on input line 1297
 .
 
 
@@ -64030,29 +64289,30 @@ LaTeX Warning: Reference `demo:ex:2' on page 16
 
 
 LaTeX Warning: Reference `exer:some:formula' on page 16 undefined on input line
- 1300.
+ 1314.
 
 
 LaTeX Warning: Reference `demo:ex:2' on page 16 
 
 
-LaTeX Warning: Reference `proj:circle1' on page 16 undefined on input line 1301
+LaTeX Warning: Reference `proj:circle1' on page 16 undefined on input line 1315
 .
 
 
 LaTeX Warning: Reference `exer:you' on page 16 
 
-(./testdoc.bbl [16]) [17]
+No file testdoc.bbl.
+[16]
 
-LaTeX Warning: Reference `mdf@pagelabel-1' on page 18 undefined on input line 1
-354.
+LaTeX Warning: Reference `mdf@pagelabel-1' on page 17 undefined on input line 1
+368.
+
+[17]
+
+LaTeX Warning: Reference `mdf@pagelabel-2' on page 18 undefined on input line 1
+396.
 
 [18]
-
-LaTeX Warning: Reference `mdf@pagelabel-2' on page 19 undefined on input line 1
-382.
-
-[19]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on 
@@ -64063,7 +64323,7 @@ Package movie15 Warning: @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 (movie15)                @@ Rerun to get object references right! @@
 (movie15)                @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@.
 
-[20] (./testdoc.aux)
+[19] (./testdoc.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -64230,13 +64490,12 @@ newcommands_replace.tex
  testdoc.out.pyg
  testdoc.out.pyg
  testdoc.out.pyg
-../doc/manual/figs/streamtubes.png
-../doc/manual/figs/streamtubes.png
-../doc/manual/figs/wavepacket_0001.png
+../doc/src/manual/figs/streamtubes.png
+../doc/src/manual/figs/streamtubes.png
+../doc/src/manual/figs/wavepacket_0001.png
 downloaded_figures/f_plot.png
  testdoc.out.pyg
  testdoc.out.pyg
- testdoc.bbl
  ***********
 
 
@@ -64275,7 +64534,7 @@ are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/te
 xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/share/texlive/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/share/texlive/texmf-di
 st/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on testdoc.pdf (20 pages, ).
+Output written on testdoc.pdf (19 pages, ).
 Transcript written on testdoc.log.
 + '[' 0 -ne 0 ']'
 + pdflatex -shell-escape testdoc
@@ -64501,29 +64760,29 @@ f/fonts/map/pdftex/updmap/pdftex.map}] (./testdoc.toc) (./testdoc.tdo) [2]
 (./testdoc.out.pyg) (./testdoc.out.pyg [3]) (./testdoc.out.pyg)
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) [4]
 (./testdoc.out.pyg)
-<../doc/manual/figs/streamtubes.png, id=212, 583.17876pt x 437.635pt>
-<use ../doc/manual/figs/streamtubes.png>
-<use ../doc/manual/figs/streamtubes.png>
+<../doc/src/manual/figs/streamtubes.png, id=212, 583.17876pt x 437.635pt>
+<use ../doc/src/manual/figs/streamtubes.png>
+<use ../doc/src/manual/figs/streamtubes.png>
 Underfull \vbox (badness 10000) has occurred while \output is active [5]
 Overfull \vbox (13.3931pt too high) has occurred while \output is active
-[6 <../doc/manual/figs/streamtubes.png>]
-Overfull \hbox (280.67903pt too wide) 
-[]\OT1/cmr/m/n/10 (-20) (Movie ../doc/-man-u-al/-figs/wavepacket.mpeg: play [][
-]$\OT1/cmtt/m/n/10 wavepacket . html$[][][][][][][]\OT1/cmr/m/n/10 (-20) ) [][]
-[][][][][][][][][][][][][][][][][][][][]
+[6 <../doc/src/manual/figs/streamtubes.png>]
+Overfull \hbox (297.63849pt too wide) 
+[]\OT1/cmr/m/n/10 (-20) (Movie ../doc/s-r-c/-man-u-al/-figs/wavepacket.mpeg: pl
+ay [][]$\OT1/cmtt/m/n/10 wavepacket . html$[][][][][][][]\OT1/cmr/m/n/10 (-20) 
+) [][][][][][][][][][][][][][][][][][][][][][]
 
 Underfull \vbox (badness 10000) has occurred while \output is active [7<<../doc
-/manual/figs/mjolnir.mpeg>>]
+/src/manual/figs/mjolnir.mpeg>>]
 Overfull \hbox (13.9403pt too wide) 
 []\OT1/cmr/m/n/10 (-20) Movie based on col-lec-tion of frames (here just a few 
 frames com-pared with the full wavepacket.mpeg
-<../doc/manual/figs/wavepacket_0001.png, id=271, 642.4pt x 481.8pt>
-<use ../doc/manual/figs/wavepacket_0001.png>
+<../doc/src/manual/figs/wavepacket_0001.png, id=271, 642.4pt x 481.8pt>
+<use ../doc/src/manual/figs/wavepacket_0001.png>
 <downloaded_figures/f_plot.png, id=272, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png>
 Underfull \vbox (badness 10000) has occurred while \output is active [8<<../doc
-/manual/figs/wavepacket.mpeg>>] [9 <../doc/manual/figs/wavepacket_0001.png> <./
-downloaded_figures/f_plot.png>]
+/src/manual/figs/wavepacket.mpeg>>] [9 <../doc/src/manual/figs/wavepacket_0001.
+png> <./downloaded_figures/f_plot.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on 
@@ -64569,6 +64828,118 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on 
 
+
+LaTeX Warning: Citation `Langtangen_Pedersen_2002' on page 11 undefined on inpu
+t line 748.
+
+
+LaTeX Warning: Citation `Langtangen_et_al_2002' on page 11 undefined on input l
+ine 749.
+
+
+LaTeX Warning: Citation `Langtangen_1994a' on page 11 undefined on input line 7
+52.
+
+
+LaTeX Warning: Citation `Mardal_et_al_2003a' on page 11 undefined on input line
+ 753.
+
+
+LaTeX Warning: Citation `Langtangen_1988d' on page 11 undefined on input line 7
+55.
+
+
+LaTeX Warning: Citation `Langtangen_Pedersen_2002' on page 11 undefined on inpu
+t line 757.
+
+
+LaTeX Warning: Citation `Mardal_et_al_2003a' on page 11 undefined on input line
+ 757.
+
+
+LaTeX Warning: Citation `Langtangen_1992c' on page 11 undefined on input line 7
+61.
+
+
+LaTeX Warning: Citation `Langtangen_1994a' on page 11 undefined on input line 7
+61.
+
+
+LaTeX Warning: Citation `Mortensen_et_al_2011' on page 11 undefined on input li
+ne 761.
+
+
+LaTeX Warning: Citation `Langtangen_Pedersen_2002' on page 11 undefined on inpu
+t line 761.
+
+
+LaTeX Warning: Citation `Langtangen_et_al_2002' on page 11 undefined on input l
+ine 763.
+
+
+LaTeX Warning: Citation `Glimsdal_et_al_20006' on page 11 undefined on input li
+ne 763.
+
+
+LaTeX Warning: Citation `Rahman_et_al_2006b' on page 11 undefined on input line
+ 763.
+
+
+LaTeX Warning: Citation `Haga_et_al_2011a' on page 11 undefined on input line 7
+63.
+
+
+LaTeX Warning: Citation `Langtangen_2003a' on page 11 undefined on input line 7
+63.
+
+
+LaTeX Warning: Citation `Langtangen_2008a' on page 11 undefined on input line 7
+63.
+
+
+LaTeX Warning: Citation `Langtangen:95' on page 11 
+
+
+
+LaTeX Warning: Citation `Langtangen_2012' on page 11 undefined on input line 76
+5.
+
+
+LaTeX Warning: Citation `Mardal_et_al_2003a' on page 11 undefined on input line
+ 765.
+
+
+LaTeX Warning: Citation `Jeberg_et_al_2004' on page 11 undefined on input line 
+765.
+
+
+LaTeX Warning: Citation `Langtangen_1988d' on page 11 undefined on input line 7
+66.
+
+
+LaTeX Warning: Citation `Langtangen_1989e' on page 11 undefined on input line 7
+66.
+
+
+LaTeX Warning: Citation `Langtangen_talk_2007a' on page 11 undefined on input l
+ine 767.
+
+
+LaTeX Warning: Citation `Langtangen:85' on page 11 
+
+
+
+LaTeX Warning: Citation `Langtangen_1989e' on page 11 undefined on input line 7
+68.
+
+
+LaTeX Warning: Citation `Langtangen:91' on page 11 
+
+
+
+LaTeX Warning: Citation `Langtangen:94b' on page 11 undefined on input line 771
+.
+
 [11]
 Overfull \hbox (5.05241pt too wide) 
 [][][]\OT1/cmtt/m/n/8 http://www.springer.com/mathematics/computational+science
@@ -64579,8 +64950,9 @@ Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on 
 
-[13] (./testdoc.out.pyg) (./testdoc.out.pyg [14]) [15] (./testdoc.bbl [16])
-[17] [18] [19]
+[13] (./testdoc.out.pyg) (./testdoc.out.pyg [14]) [15]
+No file testdoc.bbl.
+[16] [17] [18]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on 
@@ -64591,7 +64963,7 @@ Package movie15 Warning: @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 (movie15)                @@ Rerun to get object references right! @@
 (movie15)                @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@.
 
-[20] (./testdoc.aux)
+[19] (./testdoc.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -64760,14 +65132,16 @@ newcommands_replace.tex
  testdoc.out.pyg
  testdoc.out.pyg
  testdoc.out.pyg
-../doc/manual/figs/streamtubes.png
-../doc/manual/figs/streamtubes.png
-../doc/manual/figs/wavepacket_0001.png
+../doc/src/manual/figs/streamtubes.png
+../doc/src/manual/figs/streamtubes.png
+../doc/src/manual/figs/wavepacket_0001.png
 downloaded_figures/f_plot.png
  testdoc.out.pyg
  testdoc.out.pyg
- testdoc.bbl
  ***********
+
+
+LaTeX Warning: There were undefined references.
 
  )
 (see the transcript file for additional information)</usr/share/texlive/texmf-d
@@ -64794,7 +65168,7 @@ are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/te
 xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/share/texlive/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/share/texlive/texmf-di
 st/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on testdoc.pdf (20 pages, ).
+Output written on testdoc.pdf (19 pages, ).
 Transcript written on testdoc.log.
 + makeindex testdoc
 This is makeindex, version 2.15 [TeX Live 2012] (kpathsea + Thai support).
@@ -65037,29 +65411,29 @@ f/fonts/map/pdftex/updmap/pdftex.map}] (./testdoc.toc) (./testdoc.tdo) [2]
 (./testdoc.out.pyg) (./testdoc.out.pyg [3]) (./testdoc.out.pyg)
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) [4]
 (./testdoc.out.pyg)
-<../doc/manual/figs/streamtubes.png, id=212, 583.17876pt x 437.635pt>
-<use ../doc/manual/figs/streamtubes.png>
-<use ../doc/manual/figs/streamtubes.png>
+<../doc/src/manual/figs/streamtubes.png, id=212, 583.17876pt x 437.635pt>
+<use ../doc/src/manual/figs/streamtubes.png>
+<use ../doc/src/manual/figs/streamtubes.png>
 Underfull \vbox (badness 10000) has occurred while \output is active [5]
 Overfull \vbox (13.3931pt too high) has occurred while \output is active
-[6 <../doc/manual/figs/streamtubes.png>]
-Overfull \hbox (280.67903pt too wide) 
-[]\OT1/cmr/m/n/10 (-20) (Movie ../doc/-man-u-al/-figs/wavepacket.mpeg: play [][
-]$\OT1/cmtt/m/n/10 wavepacket . html$[][][][][][][]\OT1/cmr/m/n/10 (-20) ) [][]
-[][][][][][][][][][][][][][][][][][][][]
+[6 <../doc/src/manual/figs/streamtubes.png>]
+Overfull \hbox (297.63849pt too wide) 
+[]\OT1/cmr/m/n/10 (-20) (Movie ../doc/s-r-c/-man-u-al/-figs/wavepacket.mpeg: pl
+ay [][]$\OT1/cmtt/m/n/10 wavepacket . html$[][][][][][][]\OT1/cmr/m/n/10 (-20) 
+) [][][][][][][][][][][][][][][][][][][][][][]
 
 Underfull \vbox (badness 10000) has occurred while \output is active [7<<../doc
-/manual/figs/mjolnir.mpeg>>]
+/src/manual/figs/mjolnir.mpeg>>]
 Overfull \hbox (13.9403pt too wide) 
 []\OT1/cmr/m/n/10 (-20) Movie based on col-lec-tion of frames (here just a few 
 frames com-pared with the full wavepacket.mpeg
-<../doc/manual/figs/wavepacket_0001.png, id=271, 642.4pt x 481.8pt>
-<use ../doc/manual/figs/wavepacket_0001.png>
+<../doc/src/manual/figs/wavepacket_0001.png, id=271, 642.4pt x 481.8pt>
+<use ../doc/src/manual/figs/wavepacket_0001.png>
 <downloaded_figures/f_plot.png, id=272, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png>
 Underfull \vbox (badness 10000) has occurred while \output is active [8<<../doc
-/manual/figs/wavepacket.mpeg>>] [9 <../doc/manual/figs/wavepacket_0001.png> <./
-downloaded_figures/f_plot.png>]
+/src/manual/figs/wavepacket.mpeg>>] [9 <../doc/src/manual/figs/wavepacket_0001.
+png> <./downloaded_figures/f_plot.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on 
@@ -65104,6 +65478,118 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on 
+
+
+LaTeX Warning: Citation `Langtangen_Pedersen_2002' on page 11 undefined on inpu
+t line 748.
+
+
+LaTeX Warning: Citation `Langtangen_et_al_2002' on page 11 undefined on input l
+ine 749.
+
+
+LaTeX Warning: Citation `Langtangen_1994a' on page 11 undefined on input line 7
+52.
+
+
+LaTeX Warning: Citation `Mardal_et_al_2003a' on page 11 undefined on input line
+ 753.
+
+
+LaTeX Warning: Citation `Langtangen_1988d' on page 11 undefined on input line 7
+55.
+
+
+LaTeX Warning: Citation `Langtangen_Pedersen_2002' on page 11 undefined on inpu
+t line 757.
+
+
+LaTeX Warning: Citation `Mardal_et_al_2003a' on page 11 undefined on input line
+ 757.
+
+
+LaTeX Warning: Citation `Langtangen_1992c' on page 11 undefined on input line 7
+61.
+
+
+LaTeX Warning: Citation `Langtangen_1994a' on page 11 undefined on input line 7
+61.
+
+
+LaTeX Warning: Citation `Mortensen_et_al_2011' on page 11 undefined on input li
+ne 761.
+
+
+LaTeX Warning: Citation `Langtangen_Pedersen_2002' on page 11 undefined on inpu
+t line 761.
+
+
+LaTeX Warning: Citation `Langtangen_et_al_2002' on page 11 undefined on input l
+ine 763.
+
+
+LaTeX Warning: Citation `Glimsdal_et_al_20006' on page 11 undefined on input li
+ne 763.
+
+
+LaTeX Warning: Citation `Rahman_et_al_2006b' on page 11 undefined on input line
+ 763.
+
+
+LaTeX Warning: Citation `Haga_et_al_2011a' on page 11 undefined on input line 7
+63.
+
+
+LaTeX Warning: Citation `Langtangen_2003a' on page 11 undefined on input line 7
+63.
+
+
+LaTeX Warning: Citation `Langtangen_2008a' on page 11 undefined on input line 7
+63.
+
+
+LaTeX Warning: Citation `Langtangen:95' on page 11 
+
+
+
+LaTeX Warning: Citation `Langtangen_2012' on page 11 undefined on input line 76
+5.
+
+
+LaTeX Warning: Citation `Mardal_et_al_2003a' on page 11 undefined on input line
+ 765.
+
+
+LaTeX Warning: Citation `Jeberg_et_al_2004' on page 11 undefined on input line 
+765.
+
+
+LaTeX Warning: Citation `Langtangen_1988d' on page 11 undefined on input line 7
+66.
+
+
+LaTeX Warning: Citation `Langtangen_1989e' on page 11 undefined on input line 7
+66.
+
+
+LaTeX Warning: Citation `Langtangen_talk_2007a' on page 11 undefined on input l
+ine 767.
+
+
+LaTeX Warning: Citation `Langtangen:85' on page 11 
+
+
+
+LaTeX Warning: Citation `Langtangen_1989e' on page 11 undefined on input line 7
+68.
+
+
+LaTeX Warning: Citation `Langtangen:91' on page 11 
+
+
+
+LaTeX Warning: Citation `Langtangen:94b' on page 11 undefined on input line 771
+.
 
 [11]
 Overfull \hbox (5.05241pt too wide) 
@@ -65300,15 +65786,21 @@ newcommands_replace.tex
  testdoc.out.pyg
  testdoc.out.pyg
  testdoc.out.pyg
-../doc/manual/figs/streamtubes.png
-../doc/manual/figs/streamtubes.png
-../doc/manual/figs/wavepacket_0001.png
+../doc/src/manual/figs/streamtubes.png
+../doc/src/manual/figs/streamtubes.png
+../doc/src/manual/figs/wavepacket_0001.png
 downloaded_figures/f_plot.png
  testdoc.out.pyg
  testdoc.out.pyg
  testdoc.bbl
  testdoc.ind
  ***********
+
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  )
 (see the transcript file for additional information)</usr/share/texlive/texmf-d
@@ -65560,29 +66052,29 @@ f/fonts/map/pdftex/updmap/pdftex.map}] (./testdoc.toc) (./testdoc.tdo) [2]
 (./testdoc.out.pyg) (./testdoc.out.pyg [3]) (./testdoc.out.pyg)
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) [4]
 (./testdoc.out.pyg)
-<../doc/manual/figs/streamtubes.png, id=212, 583.17876pt x 437.635pt>
-<use ../doc/manual/figs/streamtubes.png>
-<use ../doc/manual/figs/streamtubes.png>
+<../doc/src/manual/figs/streamtubes.png, id=212, 583.17876pt x 437.635pt>
+<use ../doc/src/manual/figs/streamtubes.png>
+<use ../doc/src/manual/figs/streamtubes.png>
 Underfull \vbox (badness 10000) has occurred while \output is active [5]
 Overfull \vbox (13.3931pt too high) has occurred while \output is active
-[6 <../doc/manual/figs/streamtubes.png>]
-Overfull \hbox (280.67903pt too wide) 
-[]\OT1/cmr/m/n/10 (-20) (Movie ../doc/-man-u-al/-figs/wavepacket.mpeg: play [][
-]$\OT1/cmtt/m/n/10 wavepacket . html$[][][][][][][]\OT1/cmr/m/n/10 (-20) ) [][]
-[][][][][][][][][][][][][][][][][][][][]
+[6 <../doc/src/manual/figs/streamtubes.png>]
+Overfull \hbox (297.63849pt too wide) 
+[]\OT1/cmr/m/n/10 (-20) (Movie ../doc/s-r-c/-man-u-al/-figs/wavepacket.mpeg: pl
+ay [][]$\OT1/cmtt/m/n/10 wavepacket . html$[][][][][][][]\OT1/cmr/m/n/10 (-20) 
+) [][][][][][][][][][][][][][][][][][][][][][]
 
 Underfull \vbox (badness 10000) has occurred while \output is active [7<<../doc
-/manual/figs/mjolnir.mpeg>>]
+/src/manual/figs/mjolnir.mpeg>>]
 Overfull \hbox (13.9403pt too wide) 
 []\OT1/cmr/m/n/10 (-20) Movie based on col-lec-tion of frames (here just a few 
 frames com-pared with the full wavepacket.mpeg
-<../doc/manual/figs/wavepacket_0001.png, id=271, 642.4pt x 481.8pt>
-<use ../doc/manual/figs/wavepacket_0001.png>
+<../doc/src/manual/figs/wavepacket_0001.png, id=271, 642.4pt x 481.8pt>
+<use ../doc/src/manual/figs/wavepacket_0001.png>
 <downloaded_figures/f_plot.png, id=272, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png>
 Underfull \vbox (badness 10000) has occurred while \output is active [8<<../doc
-/manual/figs/wavepacket.mpeg>>] [9 <../doc/manual/figs/wavepacket_0001.png> <./
-downloaded_figures/f_plot.png>]
+/src/manual/figs/wavepacket.mpeg>>] [9 <../doc/src/manual/figs/wavepacket_0001.
+png> <./downloaded_figures/f_plot.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on 
@@ -65817,9 +66309,9 @@ newcommands_replace.tex
  testdoc.out.pyg
  testdoc.out.pyg
  testdoc.out.pyg
-../doc/manual/figs/streamtubes.png
-../doc/manual/figs/streamtubes.png
-../doc/manual/figs/wavepacket_0001.png
+../doc/src/manual/figs/streamtubes.png
+../doc/src/manual/figs/streamtubes.png
+../doc/src/manual/figs/wavepacket_0001.png
 downloaded_figures/f_plot.png
  testdoc.out.pyg
  testdoc.out.pyg
@@ -65886,11 +66378,11 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 -- fixed to one line
 
 FIX: FIGURE not at the beginning of the line - 1 fixes
- FIGURE: [../doc/manual/figs/wavepacket_0001.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
+ FIGURE: [../doc/src/manual/figs/wavepacket_0001.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
 
 
 FIX: MOVIE not at the beginning of the line - 1 fixes
-   MOVIE: [../doc/manual/figs/wavepacket_*.png, width=700 height=400] Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). label{mymov} 
+   MOVIE: [../doc/src/manual/figs/wavepacket_*.png, width=700 height=400] Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). label{mymov} 
 
 
 FIX: !bhint not at the beginning of the line - 1 fixes
@@ -65905,10 +66397,10 @@ FIX: !ehint not at the beginning of the line - 1 fixes
 
 
 copying from regex "subroutine" until end of file
-     file: ../doc/manual/__testcode.f,  lines 3-16  (format: fcod)
+     file: ../doc/src/manual/__testcode.f,  lines 3-16  (format: fcod)
 copying after regex "a comment" until "^C\s+END1"
-     file: ../doc/manual/__testcode.f,  lines 2-11  (format: fcod)
-copy complete file ../doc/manual/__testcode.f  (format: fpro)
+     file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
+copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
 
 warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
@@ -65941,11 +66433,11 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 -- fixed to one line
 
 FIX: FIGURE not at the beginning of the line - 1 fixes
- FIGURE: [../doc/manual/figs/wavepacket_0001.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
+ FIGURE: [../doc/src/manual/figs/wavepacket_0001.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
 
 
 FIX: MOVIE not at the beginning of the line - 1 fixes
-   MOVIE: [../doc/manual/figs/wavepacket_*.png, width=700 height=400] Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). label{mymov} 
+   MOVIE: [../doc/src/manual/figs/wavepacket_*.png, width=700 height=400] Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). label{mymov} 
 
 
 FIX: !bhint not at the beginning of the line - 1 fixes
@@ -65960,10 +66452,10 @@ FIX: !ehint not at the beginning of the line - 1 fixes
 
 
 copying from regex "subroutine" until end of file
-     file: ../doc/manual/__testcode.f,  lines 3-16  (format: fcod)
+     file: ../doc/src/manual/__testcode.f,  lines 3-16  (format: fcod)
 copying after regex "a comment" until "^C\s+END1"
-     file: ../doc/manual/__testcode.f,  lines 2-11  (format: fcod)
-copy complete file ../doc/manual/__testcode.f  (format: fpro)
+     file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
+copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
 
 warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
@@ -65996,11 +66488,11 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 -- fixed to one line
 
 FIX: FIGURE not at the beginning of the line - 1 fixes
- FIGURE: [../doc/manual/figs/wavepacket_0001.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
+ FIGURE: [../doc/src/manual/figs/wavepacket_0001.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
 
 
 FIX: MOVIE not at the beginning of the line - 1 fixes
-   MOVIE: [../doc/manual/figs/wavepacket_*.png, width=700 height=400] Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). label{mymov} 
+   MOVIE: [../doc/src/manual/figs/wavepacket_*.png, width=700 height=400] Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). label{mymov} 
 
 
 FIX: !bhint not at the beginning of the line - 1 fixes
@@ -66028,17 +66520,17 @@ Not recommended for sphinx output: math environment {gather}
     (unless you really know that the links will be correct
     when the sphinx build directory is moved to its final destination)
 copying from regex "subroutine" until end of file
-     file: ../doc/manual/__testcode.f,  lines 3-16  (format: fcod)
+     file: ../doc/src/manual/__testcode.f,  lines 3-16  (format: fcod)
 copying after regex "a comment" until "^C\s+END1"
-     file: ../doc/manual/__testcode.f,  lines 2-11  (format: fcod)
-copy complete file ../doc/manual/__testcode.f  (format: fpro)
+     file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
+copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
 
 warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
 
 found info about 9 exercises, written to .testdoc.exerinfo
-figure file ../doc/manual/figs/streamtubes:
-    can use ../doc/manual/figs/streamtubes.png for format sphinx
+figure file ../doc/src/manual/figs/streamtubes:
+    can use ../doc/src/manual/figs/streamtubes.png for format sphinx
 
 Warning: the "alignat" environment will give errors in Sphinx:
 
@@ -66082,11 +66574,11 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 -- fixed to one line
 
 FIX: FIGURE not at the beginning of the line - 1 fixes
- FIGURE: [../doc/manual/figs/wavepacket_0001.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
+ FIGURE: [../doc/src/manual/figs/wavepacket_0001.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
 
 
 FIX: MOVIE not at the beginning of the line - 1 fixes
-   MOVIE: [../doc/manual/figs/wavepacket_*.png, width=700 height=400] Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). label{mymov} 
+   MOVIE: [../doc/src/manual/figs/wavepacket_*.png, width=700 height=400] Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). label{mymov} 
 
 
 FIX: !bhint not at the beginning of the line - 1 fixes
@@ -66114,17 +66606,17 @@ Not recommended for sphinx output: math environment {gather}
     (unless you really know that the links will be correct
     when the sphinx build directory is moved to its final destination)
 copying from regex "subroutine" until end of file
-     file: ../doc/manual/__testcode.f,  lines 3-16  (format: fcod)
+     file: ../doc/src/manual/__testcode.f,  lines 3-16  (format: fcod)
 copying after regex "a comment" until "^C\s+END1"
-     file: ../doc/manual/__testcode.f,  lines 2-11  (format: fcod)
-copy complete file ../doc/manual/__testcode.f  (format: fpro)
+     file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
+copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
 
 warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
 
 found info about 9 exercises, written to .testdoc.exerinfo
-figure file ../doc/manual/figs/streamtubes:
-    can use ../doc/manual/figs/streamtubes.png for format sphinx
+figure file ../doc/src/manual/figs/streamtubes:
+    can use ../doc/src/manual/figs/streamtubes.png for format sphinx
 
 Warning: the "alignat" environment will give errors in Sphinx:
 
@@ -66238,11 +66730,11 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 -- fixed to one line
 
 FIX: FIGURE not at the beginning of the line - 1 fixes
- FIGURE: [../doc/manual/figs/wavepacket_0001.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
+ FIGURE: [../doc/src/manual/figs/wavepacket_0001.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
 
 
 FIX: MOVIE not at the beginning of the line - 1 fixes
-   MOVIE: [../doc/manual/figs/wavepacket_*.png, width=700 height=400] Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). label{mymov} 
+   MOVIE: [../doc/src/manual/figs/wavepacket_*.png, width=700 height=400] Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). label{mymov} 
 
 
 FIX: !bhint not at the beginning of the line - 1 fixes
@@ -66257,17 +66749,17 @@ FIX: !ehint not at the beginning of the line - 1 fixes
 
 
 copying from regex "subroutine" until end of file
-     file: ../doc/manual/__testcode.f,  lines 3-16  (format: fcod)
+     file: ../doc/src/manual/__testcode.f,  lines 3-16  (format: fcod)
 copying after regex "a comment" until "^C\s+END1"
-     file: ../doc/manual/__testcode.f,  lines 2-11  (format: fcod)
-copy complete file ../doc/manual/__testcode.f  (format: fpro)
+     file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
+copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
 
 warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
 
 found info about 9 exercises, written to .testdoc.exerinfo
-figure file ../doc/manual/figs/streamtubes:
-    can use ../doc/manual/figs/streamtubes.png for format rst
+figure file ../doc/src/manual/figs/streamtubes:
+    can use ../doc/src/manual/figs/streamtubes.png for format rst
 output in testdoc.rst
 + '[' 0 -ne 0 ']'
 + system doconce format epytext testdoc.do.txt --examples_as_exercises
@@ -66295,11 +66787,11 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 -- fixed to one line
 
 FIX: FIGURE not at the beginning of the line - 1 fixes
- FIGURE: [../doc/manual/figs/wavepacket_0001.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
+ FIGURE: [../doc/src/manual/figs/wavepacket_0001.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
 
 
 FIX: MOVIE not at the beginning of the line - 1 fixes
-   MOVIE: [../doc/manual/figs/wavepacket_*.png, width=700 height=400] Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). label{mymov} 
+   MOVIE: [../doc/src/manual/figs/wavepacket_*.png, width=700 height=400] Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). label{mymov} 
 
 
 FIX: !bhint not at the beginning of the line - 1 fixes
@@ -66314,10 +66806,10 @@ FIX: !ehint not at the beginning of the line - 1 fixes
 
 
 copying from regex "subroutine" until end of file
-     file: ../doc/manual/__testcode.f,  lines 3-16  (format: fcod)
+     file: ../doc/src/manual/__testcode.f,  lines 3-16  (format: fcod)
 copying after regex "a comment" until "^C\s+END1"
-     file: ../doc/manual/__testcode.f,  lines 2-11  (format: fcod)
-copy complete file ../doc/manual/__testcode.f  (format: fpro)
+     file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
+copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
 
 warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
@@ -66350,11 +66842,11 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 -- fixed to one line
 
 FIX: FIGURE not at the beginning of the line - 1 fixes
- FIGURE: [../doc/manual/figs/wavepacket_0001.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
+ FIGURE: [../doc/src/manual/figs/wavepacket_0001.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
 
 
 FIX: MOVIE not at the beginning of the line - 1 fixes
-   MOVIE: [../doc/manual/figs/wavepacket_*.png, width=700 height=400] Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). label{mymov} 
+   MOVIE: [../doc/src/manual/figs/wavepacket_*.png, width=700 height=400] Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). label{mymov} 
 
 
 FIX: !bhint not at the beginning of the line - 1 fixes
@@ -66369,17 +66861,17 @@ FIX: !ehint not at the beginning of the line - 1 fixes
 
 
 copying from regex "subroutine" until end of file
-     file: ../doc/manual/__testcode.f,  lines 3-16  (format: fcod)
+     file: ../doc/src/manual/__testcode.f,  lines 3-16  (format: fcod)
 copying after regex "a comment" until "^C\s+END1"
-     file: ../doc/manual/__testcode.f,  lines 2-11  (format: fcod)
-copy complete file ../doc/manual/__testcode.f  (format: fpro)
+     file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
+copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
 
 warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
 
 found info about 9 exercises, written to .testdoc.exerinfo
-figure file ../doc/manual/figs/streamtubes:
-    can use ../doc/manual/figs/streamtubes.png for format pandoc
+figure file ../doc/src/manual/figs/streamtubes:
+    can use ../doc/src/manual/figs/streamtubes.png for format pandoc
 *** warning: latex envir \begin{multline} does not work well.
 
 *** warning: latex envir \begin{gather} does not work well.
@@ -66415,11 +66907,11 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 -- fixed to one line
 
 FIX: FIGURE not at the beginning of the line - 1 fixes
- FIGURE: [../doc/manual/figs/wavepacket_0001.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
+ FIGURE: [../doc/src/manual/figs/wavepacket_0001.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
 
 
 FIX: MOVIE not at the beginning of the line - 1 fixes
-   MOVIE: [../doc/manual/figs/wavepacket_*.png, width=700 height=400] Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). label{mymov} 
+   MOVIE: [../doc/src/manual/figs/wavepacket_*.png, width=700 height=400] Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). label{mymov} 
 
 
 FIX: !bhint not at the beginning of the line - 1 fixes
@@ -66434,17 +66926,17 @@ FIX: !ehint not at the beginning of the line - 1 fixes
 
 
 copying from regex "subroutine" until end of file
-     file: ../doc/manual/__testcode.f,  lines 3-16  (format: fcod)
+     file: ../doc/src/manual/__testcode.f,  lines 3-16  (format: fcod)
 copying after regex "a comment" until "^C\s+END1"
-     file: ../doc/manual/__testcode.f,  lines 2-11  (format: fcod)
-copy complete file ../doc/manual/__testcode.f  (format: fpro)
+     file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
+copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
 
 warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
 
 found info about 9 exercises, written to .testdoc.exerinfo
-figure file ../doc/manual/figs/streamtubes:
-    can use ../doc/manual/figs/streamtubes.png for format mwiki
+figure file ../doc/src/manual/figs/streamtubes:
+    can use ../doc/src/manual/figs/streamtubes.png for format mwiki
  ...checking if streamtubes.png is stored at en.wikipedia.org/w/api.php...
  ...for wikipedia/wikibooks you must upload image file streamtubes.png to
     common.wikimedia.org
@@ -66491,11 +66983,11 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 -- fixed to one line
 
 FIX: FIGURE not at the beginning of the line - 1 fixes
- FIGURE: [../doc/manual/figs/wavepacket_0001.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
+ FIGURE: [../doc/src/manual/figs/wavepacket_0001.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
 
 
 FIX: MOVIE not at the beginning of the line - 1 fixes
-   MOVIE: [../doc/manual/figs/wavepacket_*.png, width=700 height=400] Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). label{mymov} 
+   MOVIE: [../doc/src/manual/figs/wavepacket_*.png, width=700 height=400] Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). label{mymov} 
 
 
 FIX: !bhint not at the beginning of the line - 1 fixes
@@ -66510,17 +67002,17 @@ FIX: !ehint not at the beginning of the line - 1 fixes
 
 
 copying from regex "subroutine" until end of file
-     file: ../doc/manual/__testcode.f,  lines 3-16  (format: fcod)
+     file: ../doc/src/manual/__testcode.f,  lines 3-16  (format: fcod)
 copying after regex "a comment" until "^C\s+END1"
-     file: ../doc/manual/__testcode.f,  lines 2-11  (format: fcod)
-copy complete file ../doc/manual/__testcode.f  (format: fpro)
+     file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
+copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
 
 warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
 
 found info about 9 exercises, written to .testdoc.exerinfo
-figure file ../doc/manual/figs/streamtubes:
-    can use ../doc/manual/figs/streamtubes.png for format cwiki
+figure file ../doc/src/manual/figs/streamtubes:
+    can use ../doc/src/manual/figs/streamtubes.png for format cwiki
 output in testdoc.cwiki
 + '[' 0 -ne 0 ']'
 + system doconce format ipynb testdoc.do.txt --examples_as_exercises
@@ -66548,11 +67040,11 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 -- fixed to one line
 
 FIX: FIGURE not at the beginning of the line - 1 fixes
- FIGURE: [../doc/manual/figs/wavepacket_0001.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
+ FIGURE: [../doc/src/manual/figs/wavepacket_0001.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
 
 
 FIX: MOVIE not at the beginning of the line - 1 fixes
-   MOVIE: [../doc/manual/figs/wavepacket_*.png, width=700 height=400] Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). label{mymov} 
+   MOVIE: [../doc/src/manual/figs/wavepacket_*.png, width=700 height=400] Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). label{mymov} 
 
 
 FIX: !bhint not at the beginning of the line - 1 fixes
@@ -66567,17 +67059,17 @@ FIX: !ehint not at the beginning of the line - 1 fixes
 
 
 copying from regex "subroutine" until end of file
-     file: ../doc/manual/__testcode.f,  lines 3-16  (format: fcod)
+     file: ../doc/src/manual/__testcode.f,  lines 3-16  (format: fcod)
 copying after regex "a comment" until "^C\s+END1"
-     file: ../doc/manual/__testcode.f,  lines 2-11  (format: fcod)
-copy complete file ../doc/manual/__testcode.f  (format: fpro)
+     file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
+copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
 
 warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
 
 found info about 9 exercises, written to .testdoc.exerinfo
-figure file ../doc/manual/figs/streamtubes:
-    can use ../doc/manual/figs/streamtubes.png for format ipynb
+figure file ../doc/src/manual/figs/streamtubes:
+    can use ../doc/src/manual/figs/streamtubes.png for format ipynb
 output in testdoc.ipynb
 + '[' 0 -ne 0 ']'
 + system doconce format gwiki testdoc.do.txt --skip_inline_comments MYVAR1=3 'MYVAR2=a string' --examples_as_exercises
@@ -66606,11 +67098,11 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 -- fixed to one line
 
 FIX: FIGURE not at the beginning of the line - 1 fixes
- FIGURE: [../doc/manual/figs/wavepacket_0001.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
+ FIGURE: [../doc/src/manual/figs/wavepacket_0001.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
 
 
 FIX: MOVIE not at the beginning of the line - 1 fixes
-   MOVIE: [../doc/manual/figs/wavepacket_*.png, width=700 height=400] Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). label{mymov} 
+   MOVIE: [../doc/src/manual/figs/wavepacket_*.png, width=700 height=400] Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). label{mymov} 
 
 
 FIX: !bhint not at the beginning of the line - 1 fixes
@@ -66625,37 +67117,37 @@ FIX: !ehint not at the beginning of the line - 1 fixes
 
 
 copying from regex "subroutine" until end of file
-     file: ../doc/manual/__testcode.f,  lines 3-16  (format: fcod)
+     file: ../doc/src/manual/__testcode.f,  lines 3-16  (format: fcod)
 copying after regex "a comment" until "^C\s+END1"
-     file: ../doc/manual/__testcode.f,  lines 2-11  (format: fcod)
-copy complete file ../doc/manual/__testcode.f  (format: fpro)
+     file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
+copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
 
 warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
 
 found info about 9 exercises, written to .testdoc.exerinfo
-figure file ../doc/manual/figs/streamtubes:
-    can use ../doc/manual/figs/streamtubes.png for format gwiki
+figure file ../doc/src/manual/figs/streamtubes:
+    can use ../doc/src/manual/figs/streamtubes.png for format gwiki
 
-NOTE: Place ../doc/manual/figs/streamtubes.png at some place on the web and edit the
+NOTE: Place ../doc/src/manual/figs/streamtubes.png at some place on the web and edit the
       .gwiki page, either manually (seach for 'Figure: ')
       or use the doconce script:
       doconce gwiki_figsubst.py mydoc.gwiki URL
 
 
-NOTE: Place ../doc/manual/figs/streamtubes.png at some place on the web and edit the
+NOTE: Place ../doc/src/manual/figs/streamtubes.png at some place on the web and edit the
       .gwiki page, either manually (seach for 'Figure: ')
       or use the doconce script:
       doconce gwiki_figsubst.py mydoc.gwiki URL
 
 
-NOTE: Place ../doc/manual/figs/wavepacket_0001.png at some place on the web and edit the
+NOTE: Place ../doc/src/manual/figs/wavepacket_0001.png at some place on the web and edit the
       .gwiki page, either manually (seach for 'Figure: ')
       or use the doconce script:
       doconce gwiki_figsubst.py mydoc.gwiki URL
 
 
-NOTE: Place https://raw.github.com/hplgit/doconce/master/doc/blog/f_plot.png at some place on the web and edit the
+NOTE: Place https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png at some place on the web and edit the
       .gwiki page, either manually (seach for 'Figure: ')
       or use the doconce script:
       doconce gwiki_figsubst.py mydoc.gwiki URL
@@ -66708,11 +67200,11 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 -- fixed to one line
 
 FIX: FIGURE not at the beginning of the line - 1 fixes
- FIGURE: [../doc/manual/figs/wavepacket_0001.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
+ FIGURE: [../doc/src/manual/figs/wavepacket_0001.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
 
 
 FIX: MOVIE not at the beginning of the line - 1 fixes
-   MOVIE: [../doc/manual/figs/wavepacket_*.png, width=700 height=400] Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). label{mymov} 
+   MOVIE: [../doc/src/manual/figs/wavepacket_*.png, width=700 height=400] Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). label{mymov} 
 
 
 FIX: !bhint not at the beginning of the line - 1 fixes
@@ -66727,18 +67219,18 @@ FIX: !ehint not at the beginning of the line - 1 fixes
 
 
 copying from regex "subroutine" until end of file
-     file: ../doc/manual/__testcode.f,  lines 3-16  (format: fcod)
+     file: ../doc/src/manual/__testcode.f,  lines 3-16  (format: fcod)
 copying after regex "a comment" until "^C\s+END1"
-     file: ../doc/manual/__testcode.f,  lines 2-11  (format: fcod)
-copy complete file ../doc/manual/__testcode.f  (format: fpro)
+     file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
+copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
 
 warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
 
 found info about 9 exercises, written to .testdoc.exerinfo
-figure file ../doc/manual/figs/streamtubes:
-    can use ../doc/manual/figs/streamtubes.eps for format latex
-downloading https://raw.github.com/hplgit/doconce/master/doc/blog/f_plot.png .......
+figure file ../doc/src/manual/figs/streamtubes:
+    can use ../doc/src/manual/figs/streamtubes.eps for format latex
+downloading https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png .......
 
 exporting publish database papers.pub to papers.bib:
 output in testdoc.p.tex
@@ -66797,11 +67289,11 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 -- fixed to one line
 
 FIX: FIGURE not at the beginning of the line - 1 fixes
- FIGURE: [../doc/manual/figs/wavepacket_0001.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
+ FIGURE: [../doc/src/manual/figs/wavepacket_0001.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
 
 
 FIX: MOVIE not at the beginning of the line - 1 fixes
-   MOVIE: [../doc/manual/figs/wavepacket_*.png, width=700 height=400] Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). label{mymov} 
+   MOVIE: [../doc/src/manual/figs/wavepacket_*.png, width=700 height=400] Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). label{mymov} 
 
 
 FIX: !bhint not at the beginning of the line - 1 fixes
@@ -66816,17 +67308,17 @@ FIX: !ehint not at the beginning of the line - 1 fixes
 
 
 copying from regex "subroutine" until end of file
-     file: ../doc/manual/__testcode.f,  lines 3-16  (format: fcod)
+     file: ../doc/src/manual/__testcode.f,  lines 3-16  (format: fcod)
 copying after regex "a comment" until "^C\s+END1"
-     file: ../doc/manual/__testcode.f,  lines 2-11  (format: fcod)
-copy complete file ../doc/manual/__testcode.f  (format: fpro)
+     file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
+copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
 
 warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
 
 found info about 9 exercises, written to .testdoc.exerinfo
-figure file ../doc/manual/figs/streamtubes:
-    can use ../doc/manual/figs/streamtubes.png for format pandoc
+figure file ../doc/src/manual/figs/streamtubes:
+    can use ../doc/src/manual/figs/streamtubes.png for format pandoc
 *** warning: latex envir \begin{multline} does not work well.
 
 *** warning: latex envir \begin{gather} does not work well.
@@ -66887,26 +67379,26 @@ slides written to slides1.tex
 + doconce format html slides2 --pygments_html_style=emacs
 running preprocess -DFORMAT=html -DDEVICE=screen  slides2.do.txt > tmp_preprocess__slides2.do.txt
 translating doconce text in tmp_preprocess__slides2.do.txt to html
-copy complete file ../doc/slides/src/dc_mod.pyopt  (format: pyoptpro)
+copy complete file ../doc/src/slides/src/dc_mod.pyopt  (format: pyoptpro)
 found info about 1 exercises, written to .slides2.exerinfo
-figure file ../doc/slides/fig/latex_thesis:
-    can use ../doc/slides/fig/latex_thesis.jpg for format html
-figure file ../doc/slides/fig/imac:
-    can use ../doc/slides/fig/imac.png for format html
-figure file ../doc/slides/fig/latex_paper1:
-    can use ../doc/slides/fig/latex_paper1.png for format html
-figure file ../doc/slides/fig/iphones:
-    can use ../doc/slides/fig/iphones.jpg for format html
-figure file ../doc/slides/fig/oldbooks:
-    can use ../doc/slides/fig/oldbooks.jpg for format html
-figure file ../doc/slides/fig/ipad:
-    can use ../doc/slides/fig/ipad.png for format html
-figure file ../doc/slides/fig/doconce1b:
-    can use ../doc/slides/fig/doconce1b.png for format html
-figure file ../doc/slides/fig/teacher1:
-    can use ../doc/slides/fig/teacher1.gif for format html
-figure file ../doc/slides/fig/broken_pen_and_paper:
-    can use ../doc/slides/fig/broken_pen_and_paper.jpg for format html
+figure file ../doc/src/slides/fig/iphones:
+    can use ../doc/src/slides/fig/iphones.jpg for format html
+figure file ../doc/src/slides/fig/imac:
+    can use ../doc/src/slides/fig/imac.png for format html
+figure file ../doc/src/slides/fig/teacher1:
+    can use ../doc/src/slides/fig/teacher1.gif for format html
+figure file ../doc/src/slides/fig/latex_thesis:
+    can use ../doc/src/slides/fig/latex_thesis.jpg for format html
+figure file ../doc/src/slides/fig/broken_pen_and_paper:
+    can use ../doc/src/slides/fig/broken_pen_and_paper.jpg for format html
+figure file ../doc/src/slides/fig/oldbooks:
+    can use ../doc/src/slides/fig/oldbooks.jpg for format html
+figure file ../doc/src/slides/fig/ipad:
+    can use ../doc/src/slides/fig/ipad.png for format html
+figure file ../doc/src/slides/fig/latex_paper1:
+    can use ../doc/src/slides/fig/latex_paper1.png for format html
+figure file ../doc/src/slides/fig/doconce1b:
+    can use ../doc/src/slides/fig/doconce1b.png for format html
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 *** warning: found environment begin/end !bsubex
     context:
@@ -66948,26 +67440,26 @@ slides written to slides2.html
 + doconce format pdflatex slides2
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  slides2.do.txt > tmp_preprocess__slides2.do.txt
 translating doconce text in tmp_preprocess__slides2.do.txt to pdflatex
-copy complete file ../doc/slides/src/dc_mod.pyopt  (format: pyoptpro)
+copy complete file ../doc/src/slides/src/dc_mod.pyopt  (format: pyoptpro)
 found info about 1 exercises, written to .slides2.exerinfo
-figure file ../doc/slides/fig/latex_thesis:
-    can use ../doc/slides/fig/latex_thesis.jpg for format pdflatex
-figure file ../doc/slides/fig/imac:
-    can use ../doc/slides/fig/imac.png for format pdflatex
-figure file ../doc/slides/fig/latex_paper1:
-    can use ../doc/slides/fig/latex_paper1.png for format pdflatex
-figure file ../doc/slides/fig/iphones:
-    can use ../doc/slides/fig/iphones.jpg for format pdflatex
-figure file ../doc/slides/fig/oldbooks:
-    can use ../doc/slides/fig/oldbooks.jpg for format pdflatex
-figure file ../doc/slides/fig/ipad:
-    can use ../doc/slides/fig/ipad.png for format pdflatex
-figure file ../doc/slides/fig/doconce1b:
-    can use ../doc/slides/fig/doconce1b.png for format pdflatex
-figure file ../doc/slides/fig/teacher1:
-    can use ../doc/slides/fig/teacher1.pdf for format pdflatex
-figure file ../doc/slides/fig/broken_pen_and_paper:
-    can use ../doc/slides/fig/broken_pen_and_paper.jpg for format pdflatex
+figure file ../doc/src/slides/fig/iphones:
+    can use ../doc/src/slides/fig/iphones.jpg for format pdflatex
+figure file ../doc/src/slides/fig/imac:
+    can use ../doc/src/slides/fig/imac.png for format pdflatex
+figure file ../doc/src/slides/fig/teacher1:
+    can use ../doc/src/slides/fig/teacher1.pdf for format pdflatex
+figure file ../doc/src/slides/fig/latex_thesis:
+    can use ../doc/src/slides/fig/latex_thesis.jpg for format pdflatex
+figure file ../doc/src/slides/fig/broken_pen_and_paper:
+    can use ../doc/src/slides/fig/broken_pen_and_paper.jpg for format pdflatex
+figure file ../doc/src/slides/fig/oldbooks:
+    can use ../doc/src/slides/fig/oldbooks.jpg for format pdflatex
+figure file ../doc/src/slides/fig/ipad:
+    can use ../doc/src/slides/fig/ipad.png for format pdflatex
+figure file ../doc/src/slides/fig/latex_paper1:
+    can use ../doc/src/slides/fig/latex_paper1.png for format pdflatex
+figure file ../doc/src/slides/fig/doconce1b:
+    can use ../doc/src/slides/fig/doconce1b.png for format pdflatex
 *** warning: found environment begin/end !bsubex
     context:
 ----------------------------------
@@ -66995,13 +67487,13 @@ running mako on tmp_preprocess__slides3.do.txt to make tmp_mako__slides3.do.txt
 mako variables: {'DEVICE': 'screen', 'SLIDE_TYPE': 'reveal', 'SLIDE_THEME': 'beigesmall', 'FORMAT': 'html'}
 translating doconce text in tmp_mako__slides3.do.txt to html
 copying from regex "def solver" until "def verify_three"
-     file: ../doc/slides/src/dc_mod.py,  lines 5-18  (format: pycod)
-figure file ../doc/slides/fig/teacher2:
-    can use ../doc/slides/fig/teacher2.jpg for format html
-figure file ../doc/slides/fig/CN_logo:
-    can use ../doc/slides/fig/CN_logo.png for format html
-figure file ../doc/slides/fig/CN:
-    can use ../doc/slides/fig/CN.png for format html
+     file: ../doc/src/slides/src/dc_mod.py,  lines 5-18  (format: pycod)
+figure file ../doc/src/slides/fig/CN_logo:
+    can use ../doc/src/slides/fig/CN_logo.png for format html
+figure file ../doc/src/slides/fig/CN:
+    can use ../doc/src/slides/fig/CN.png for format html
+figure file ../doc/src/slides/fig/teacher2:
+    can use ../doc/src/slides/fig/teacher2.jpg for format html
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in slides3.html
 + '[' 0 -ne 0 ']'
@@ -67020,13 +67512,13 @@ running mako on tmp_preprocess__slides3.do.txt to make tmp_mako__slides3.do.txt
 mako variables: {'DEVICE': 'screen', 'SLIDE_TYPE': 'beamer', 'SLIDE_THEME': 'red3', 'FORMAT': 'pdflatex'}
 translating doconce text in tmp_mako__slides3.do.txt to pdflatex
 copying from regex "def solver" until "def verify_three"
-     file: ../doc/slides/src/dc_mod.py,  lines 5-18  (format: pycod)
-figure file ../doc/slides/fig/teacher2:
-    can use ../doc/slides/fig/teacher2.jpg for format pdflatex
-figure file ../doc/slides/fig/CN_logo:
-    can use ../doc/slides/fig/CN_logo.pdf for format pdflatex
-figure file ../doc/slides/fig/CN:
-    can use ../doc/slides/fig/CN.pdf for format pdflatex
+     file: ../doc/src/slides/src/dc_mod.py,  lines 5-18  (format: pycod)
+figure file ../doc/src/slides/fig/CN_logo:
+    can use ../doc/src/slides/fig/CN_logo.pdf for format pdflatex
+figure file ../doc/src/slides/fig/CN:
+    can use ../doc/src/slides/fig/CN.pdf for format pdflatex
+figure file ../doc/src/slides/fig/teacher2:
+    can use ../doc/src/slides/fig/teacher2.jpg for format pdflatex
 output in slides3.p.tex
 + '[' 0 -ne 0 ']'
 + system doconce ptex2tex slides3 -DLATEX_HEADING=beamer envir=minted
@@ -67533,8 +68025,8 @@ format, help, sphinx_dir, subst, replace, replace_from_file, clean, spellcheck, 
 + doconce format pdflatex admon --latex_admon=colors1
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to pdflatex
-figure file ../doc/manual/figs/wavepacket_0001:
-    can use ../doc/manual/figs/wavepacket_0001.png for format pdflatex
+figure file ../doc/src/manual/figs/wavepacket_0001:
+    can use ../doc/src/manual/figs/wavepacket_0001.png for format pdflatex
 *** error: wrong text size "illegal-size" specified in notice environment!
     must be large or small - will be set to normal
 output in admon.p.tex
@@ -67684,14 +68176,14 @@ Underfull \hbox (badness 10000)
 Underfull \hbox (badness 10000) 
 
 (./admon_colors1.out.pyg) (./admon_colors1.out.pyg)
-<../doc/manual/figs/wavepacket_0001.png, id=42, 642.4pt x 481.8pt>
-<use ../doc/manual/figs/wavepacket_0001.png> [3] [4]
+<../doc/src/manual/figs/wavepacket_0001.png, id=42, 642.4pt x 481.8pt>
+<use ../doc/src/manual/figs/wavepacket_0001.png> [3] [4]
 <latex_figs/summary.pdf, id=55, 89.33376pt x 89.33376pt>
 <use latex_figs/summary.pdf>
 Underfull \hbox (badness 10000) 
 
 No file admon_colors1.ind.
-[5 <../doc/manual/figs/wavepacket_0001.png> <./latex_figs/summary.pdf>]
+[5 <../doc/src/manual/figs/wavepacket_0001.png> <./latex_figs/summary.pdf>]
 (./admon_colors1.aux)
 
  *File List*
@@ -67799,7 +68291,7 @@ latex_figs/warning.pdf
 latex_figs/notice.pdf
 admon_colors1.out.pyg
 admon_colors1.out.pyg
-../doc/manual/figs/wavepacket_0001.png
+../doc/src/manual/figs/wavepacket_0001.png
 latex_figs/summary.pdf
  ***********
 
@@ -67827,8 +68319,8 @@ Transcript written on admon_colors1.log.
 + doconce format pdflatex admon --latex_admon=graybox1
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to pdflatex
-figure file ../doc/manual/figs/wavepacket_0001:
-    can use ../doc/manual/figs/wavepacket_0001.png for format pdflatex
+figure file ../doc/src/manual/figs/wavepacket_0001:
+    can use ../doc/src/manual/figs/wavepacket_0001.png for format pdflatex
 *** error: wrong text size "illegal-size" specified in notice environment!
     must be large or small - will be set to normal
 output in admon.p.tex
@@ -68030,10 +68522,10 @@ ABD: EveryShipout initializing macros (./newcommands_bfmath.tex)
  [1{/var/lib/texmf/font
 s/map/pdftex/updmap/pdftex.map}] (./admon_graybox1.out.pyg) [2]
 (./admon_graybox1.out.pyg) (./admon_graybox1.out.pyg)
-<../doc/manual/figs/wavepacket_0001.png, id=33, 642.4pt x 481.8pt>
-<use ../doc/manual/figs/wavepacket_0001.png> [3]
+<../doc/src/manual/figs/wavepacket_0001.png, id=33, 642.4pt x 481.8pt>
+<use ../doc/src/manual/figs/wavepacket_0001.png> [3]
 No file admon_graybox1.ind.
-[4 <../doc/manual/figs/wavepacket_0001.png>] (./admon_graybox1.aux)
+[4 <../doc/src/manual/figs/wavepacket_0001.png>] (./admon_graybox1.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -68178,7 +68670,7 @@ admon_graybox1.out.pyg
 admon_graybox1.out.pyg
 admon_graybox1.out.pyg
 admon_graybox1.out.pyg
-../doc/manual/figs/wavepacket_0001.png
+../doc/src/manual/figs/wavepacket_0001.png
  ***********
 
 
@@ -68204,8 +68696,8 @@ Transcript written on admon_graybox1.log.
 + doconce format pdflatex admon --latex_admon=paragraph
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to pdflatex
-figure file ../doc/manual/figs/wavepacket_0001:
-    can use ../doc/manual/figs/wavepacket_0001.png for format pdflatex
+figure file ../doc/src/manual/figs/wavepacket_0001:
+    can use ../doc/src/manual/figs/wavepacket_0001.png for format pdflatex
 *** error: wrong text size "illegal-size" specified in notice environment!
     must be large or small - will be set to normal
 output in admon.p.tex
@@ -68407,10 +68899,10 @@ ABD: EveryShipout initializing macros (./newcommands_bfmath.tex)
  [1{/var/lib/texmf/font
 s/map/pdftex/updmap/pdftex.map}] (./admon_paragraph.out.pyg) [2]
 (./admon_paragraph.out.pyg) (./admon_paragraph.out.pyg [3])
-<../doc/manual/figs/wavepacket_0001.png, id=38, 642.4pt x 481.8pt>
-<use ../doc/manual/figs/wavepacket_0001.png>
+<../doc/src/manual/figs/wavepacket_0001.png, id=38, 642.4pt x 481.8pt>
+<use ../doc/src/manual/figs/wavepacket_0001.png>
 No file admon_paragraph.ind.
-[4 <../doc/manual/figs/wavepacket_0001.png>] (./admon_paragraph.aux)
+[4 <../doc/src/manual/figs/wavepacket_0001.png>] (./admon_paragraph.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -68555,7 +69047,7 @@ admon_paragraph.out.pyg
 admon_paragraph.out.pyg
 admon_paragraph.out.pyg
 admon_paragraph.out.pyg
-../doc/manual/figs/wavepacket_0001.png
+../doc/src/manual/figs/wavepacket_0001.png
  ***********
 
 
@@ -68581,8 +69073,8 @@ Transcript written on admon_paragraph.log.
 + doconce format pdflatex admon --latex_admon=graybox2
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to pdflatex
-figure file ../doc/manual/figs/wavepacket_0001:
-    can use ../doc/manual/figs/wavepacket_0001.png for format pdflatex
+figure file ../doc/src/manual/figs/wavepacket_0001:
+    can use ../doc/src/manual/figs/wavepacket_0001.png for format pdflatex
 *** error: wrong text size "illegal-size" specified in notice environment!
     must be large or small - will be set to normal
 output in admon.p.tex
@@ -68785,9 +69277,9 @@ ABD: EveryShipout initializing macros (./newcommands_bfmath.tex)
  [1{/var/lib/texmf/font
 s/map/pdftex/updmap/pdftex.map}] (./admon_graybox2.out.pyg) [2]
 (./admon_graybox2.out.pyg) (./admon_graybox2.out.pyg)
-<../doc/manual/figs/wavepacket_0001.png, id=33, 642.4pt x 481.8pt>
-<use ../doc/manual/figs/wavepacket_0001.png> [3] [4 <../doc/manual/figs/wavepac
-ket_0001.png>]
+<../doc/src/manual/figs/wavepacket_0001.png, id=33, 642.4pt x 481.8pt>
+<use ../doc/src/manual/figs/wavepacket_0001.png> [3] [4 <../doc/src/manual/figs
+/wavepacket_0001.png>]
 No file admon_graybox2.ind.
 [5] (./admon_graybox2.aux)
 
@@ -68935,7 +69427,7 @@ admon_graybox2.out.pyg
 admon_graybox2.out.pyg
 admon_graybox2.out.pyg
 admon_graybox2.out.pyg
-../doc/manual/figs/wavepacket_0001.png
+../doc/src/manual/figs/wavepacket_0001.png
  ***********
 
 
@@ -68961,8 +69453,8 @@ Transcript written on admon_graybox2.log.
 + doconce format pdflatex admon --latex_admon=yellowbox
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to pdflatex
-figure file ../doc/manual/figs/wavepacket_0001:
-    can use ../doc/manual/figs/wavepacket_0001.png for format pdflatex
+figure file ../doc/src/manual/figs/wavepacket_0001:
+    can use ../doc/src/manual/figs/wavepacket_0001.png for format pdflatex
 *** error: wrong text size "illegal-size" specified in notice environment!
     must be large or small - will be set to normal
 output in admon.p.tex
@@ -69089,16 +69581,16 @@ dmap/pdftex.map} <./latex_figs/small_yellow_warning.pdf>]
 <use latex_figs/small_yellow_warning.pdf>
 <use latex_figs/small_yellow_notice.pdf> (./admon_yellowbox.out.pyg)
 (./admon_yellowbox.out.pyg)
-<../doc/manual/figs/wavepacket_0001.png, id=49, 642.4pt x 481.8pt>
-<use ../doc/manual/figs/wavepacket_0001.png> [3]
+<../doc/src/manual/figs/wavepacket_0001.png, id=49, 642.4pt x 481.8pt>
+<use ../doc/src/manual/figs/wavepacket_0001.png> [3]
 Underfull \vbox (badness 10000) detected at line 435
 
 Underfull \vbox (badness 10000) detected at line 435
 [4] <latex_figs/small_yellow_summary.pdf, id=61, 32.12pt x 32.12pt>
 <use latex_figs/small_yellow_summary.pdf>
 No file admon_yellowbox.ind.
-[5 <../doc/manual/figs/wavepacket_0001.png> <./latex_figs/small_yellow_summary.
-pdf>] (./admon_yellowbox.aux)
+[5 <../doc/src/manual/figs/wavepacket_0001.png> <./latex_figs/small_yellow_summ
+ary.pdf>] (./admon_yellowbox.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -69206,7 +69698,7 @@ latex_figs/small_yellow_warning.pdf
 latex_figs/small_yellow_notice.pdf
 admon_yellowbox.out.pyg
 admon_yellowbox.out.pyg
-../doc/manual/figs/wavepacket_0001.png
+../doc/src/manual/figs/wavepacket_0001.png
 latex_figs/small_yellow_summary.pdf
  ***********
 
@@ -69234,8 +69726,8 @@ Transcript written on admon_yellowbox.log.
 + doconce format pdflatex admon --latex_admon=graybox3
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to pdflatex
-figure file ../doc/manual/figs/wavepacket_0001:
-    can use ../doc/manual/figs/wavepacket_0001.png for format pdflatex
+figure file ../doc/src/manual/figs/wavepacket_0001:
+    can use ../doc/src/manual/figs/wavepacket_0001.png for format pdflatex
 *** error: wrong text size "illegal-size" specified in notice environment!
     must be large or small - will be set to normal
 output in admon.p.tex
@@ -69360,16 +69852,16 @@ f> <./latex_figs/small_gray_question2.pdf>]
 <use latex_figs/small_gray_warning.pdf> (./admon_graybox3.out.pyg)
 <use latex_figs/small_gray_warning.pdf> <use latex_figs/small_gray_notice.pdf>
 (./admon_graybox3.out.pyg) (./admon_graybox3.out.pyg)
-<../doc/manual/figs/wavepacket_0001.png, id=49, 642.4pt x 481.8pt>
-<use ../doc/manual/figs/wavepacket_0001.png> [3]
+<../doc/src/manual/figs/wavepacket_0001.png, id=49, 642.4pt x 481.8pt>
+<use ../doc/src/manual/figs/wavepacket_0001.png> [3]
 Underfull \vbox (badness 10000) detected at line 435
 
 Underfull \vbox (badness 10000) detected at line 435
 [4] <latex_figs/small_gray_summary.pdf, id=61, 48.18pt x 48.18pt>
 <use latex_figs/small_gray_summary.pdf>
 No file admon_graybox3.ind.
-[5 <../doc/manual/figs/wavepacket_0001.png> <./latex_figs/small_gray_summary.pd
-f>] (./admon_graybox3.aux)
+[5 <../doc/src/manual/figs/wavepacket_0001.png> <./latex_figs/small_gray_summar
+y.pdf>] (./admon_graybox3.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -69477,7 +69969,7 @@ latex_figs/small_gray_warning.pdf
 latex_figs/small_gray_notice.pdf
 admon_graybox3.out.pyg
 admon_graybox3.out.pyg
-../doc/manual/figs/wavepacket_0001.png
+../doc/src/manual/figs/wavepacket_0001.png
 latex_figs/small_gray_summary.pdf
  ***********
 
@@ -69505,8 +69997,8 @@ Transcript written on admon_graybox3.log.
 + doconce format pdflatex admon --latex_admon=colors2
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to pdflatex
-figure file ../doc/manual/figs/wavepacket_0001:
-    can use ../doc/manual/figs/wavepacket_0001.png for format pdflatex
+figure file ../doc/src/manual/figs/wavepacket_0001:
+    can use ../doc/src/manual/figs/wavepacket_0001.png for format pdflatex
 *** error: wrong text size "illegal-size" specified in notice environment!
     must be large or small - will be set to normal
 output in admon.p.tex
@@ -69629,15 +70121,15 @@ ap} <./latex_figs/warning.pdf>]
 tice.pdf> <./latex_figs/question.pdf>] <use latex_figs/warning.pdf>
 (./admon_colors2.out.pyg) <use latex_figs/warning.pdf>
 <use latex_figs/notice.pdf> (./admon_colors2.out.pyg) (./admon_colors2.out.pyg)
-<../doc/manual/figs/wavepacket_0001.png, id=43, 642.4pt x 481.8pt>
-<use ../doc/manual/figs/wavepacket_0001.png> [3]
+<../doc/src/manual/figs/wavepacket_0001.png, id=43, 642.4pt x 481.8pt>
+<use ../doc/src/manual/figs/wavepacket_0001.png> [3]
 Underfull \vbox (badness 10000) detected at line 435
 
 Underfull \vbox (badness 10000) detected at line 435
 [4] <latex_figs/summary.pdf, id=55, 89.33376pt x 89.33376pt>
 <use latex_figs/summary.pdf>
 No file admon_colors2.ind.
-[5 <../doc/manual/figs/wavepacket_0001.png> <./latex_figs/summary.pdf>]
+[5 <../doc/src/manual/figs/wavepacket_0001.png> <./latex_figs/summary.pdf>]
 (./admon_colors2.aux)
 
  *File List*
@@ -69746,7 +70238,7 @@ latex_figs/warning.pdf
 latex_figs/notice.pdf
 admon_colors2.out.pyg
 admon_colors2.out.pyg
-../doc/manual/figs/wavepacket_0001.png
+../doc/src/manual/figs/wavepacket_0001.png
 latex_figs/summary.pdf
  ***********
 
@@ -69773,8 +70265,8 @@ Transcript written on admon_colors2.log.
 + doconce format html admon --html_admon=lyx --html_style=blueish2
 running preprocess -DFORMAT=html -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to html
-figure file ../doc/manual/figs/wavepacket_0001:
-    can use ../doc/manual/figs/wavepacket_0001.png for format html
+figure file ../doc/src/manual/figs/wavepacket_0001:
+    can use ../doc/src/manual/figs/wavepacket_0001.png for format html
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 *** error: wrong text size "illegal-size" specified in notice environment!
     must be large or small - will be set to normal
@@ -69785,8 +70277,8 @@ output in admon.html
 + doconce format html admon --html_admon=paragraph --html_style=blueish2
 running preprocess -DFORMAT=html -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to html
-figure file ../doc/manual/figs/wavepacket_0001:
-    can use ../doc/manual/figs/wavepacket_0001.png for format html
+figure file ../doc/src/manual/figs/wavepacket_0001:
+    can use ../doc/src/manual/figs/wavepacket_0001.png for format html
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 *** error: wrong text size "illegal-size" specified in notice environment!
     must be large or small - will be set to normal
@@ -69797,8 +70289,8 @@ output in admon.html
 + doconce format html admon --html_admon=colors
 running preprocess -DFORMAT=html -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to html
-figure file ../doc/manual/figs/wavepacket_0001:
-    can use ../doc/manual/figs/wavepacket_0001.png for format html
+figure file ../doc/src/manual/figs/wavepacket_0001:
+    can use ../doc/src/manual/figs/wavepacket_0001.png for format html
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 *** error: wrong text size "illegal-size" specified in notice environment!
     must be large or small - will be set to normal
@@ -69809,8 +70301,8 @@ output in admon.html
 + doconce format html admon --html_admon=gray --html_style=blueish2
 running preprocess -DFORMAT=html -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to html
-figure file ../doc/manual/figs/wavepacket_0001:
-    can use ../doc/manual/figs/wavepacket_0001.png for format html
+figure file ../doc/src/manual/figs/wavepacket_0001:
+    can use ../doc/src/manual/figs/wavepacket_0001.png for format html
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 *** error: wrong text size "illegal-size" specified in notice environment!
     must be large or small - will be set to normal
@@ -69821,8 +70313,8 @@ output in admon.html
 + doconce format html admon --html_admon=yellow
 running preprocess -DFORMAT=html -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to html
-figure file ../doc/manual/figs/wavepacket_0001:
-    can use ../doc/manual/figs/wavepacket_0001.png for format html
+figure file ../doc/src/manual/figs/wavepacket_0001:
+    can use ../doc/src/manual/figs/wavepacket_0001.png for format html
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 *** error: wrong text size "illegal-size" specified in notice environment!
     must be large or small - will be set to normal
@@ -69833,8 +70325,8 @@ output in admon.html
 + doconce format html admon --html_admon=apricot --html_style=solarized
 running preprocess -DFORMAT=html -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to html
-figure file ../doc/manual/figs/wavepacket_0001:
-    can use ../doc/manual/figs/wavepacket_0001.png for format html
+figure file ../doc/src/manual/figs/wavepacket_0001:
+    can use ../doc/src/manual/figs/wavepacket_0001.png for format html
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 *** error: wrong text size "illegal-size" specified in notice environment!
     must be large or small - will be set to normal
@@ -69845,8 +70337,8 @@ output in admon.html
 + doconce format html admon --html_style=vagrant --pygments_html_style=default --html_template=style_vagrant/template_vagrant.html
 running preprocess -DFORMAT=html -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to html
-figure file ../doc/manual/figs/wavepacket_0001:
-    can use ../doc/manual/figs/wavepacket_0001.png for format html
+figure file ../doc/src/manual/figs/wavepacket_0001:
+    can use ../doc/src/manual/figs/wavepacket_0001.png for format html
 *** warning: TITLE may look strange with a template -
              it is recommended to comment out the title: #TITLE:
 *** warning: AUTHOR may look strange with a template -
@@ -69933,8 +70425,8 @@ or just run it by
 + python automake_sphinx.py
 running preprocess -DFORMAT=sphinx -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to sphinx
-figure file ../doc/manual/figs/wavepacket_0001:
-    can use ../doc/manual/figs/wavepacket_0001.png for format sphinx
+figure file ../doc/src/manual/figs/wavepacket_0001:
+    can use ../doc/src/manual/figs/wavepacket_0001.png for format sphinx
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 *** error: wrong text size "illegal-size" specified in notice environment!
     must be large or small - will be set to normal
@@ -70008,7 +70500,7 @@ replacing </head> by
 doconce format sphinx admon 
 running doconce format sphinx admon 
 running doconce guess_encoding admon.rst
-copying ../doc/manual/figs/wavepacket_0001.png to tmp_admon
+copying ../doc/src/manual/figs/wavepacket_0001.png to tmp_admon
 /home/hpl/vc/doconce/test/tmp_admon
 running make clean
 running make html
@@ -70022,8 +70514,8 @@ google-chrome tmp_admon/_build/html/index.html
 + doconce format mwiki admon
 running preprocess -DFORMAT=mwiki -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to mwiki
-figure file ../doc/manual/figs/wavepacket_0001:
-    can use ../doc/manual/figs/wavepacket_0001.png for format mwiki
+figure file ../doc/src/manual/figs/wavepacket_0001:
+    can use ../doc/src/manual/figs/wavepacket_0001.png for format mwiki
  ...checking if wavepacket_0001.png is stored at en.wikipedia.org/w/api.php...
  ...for wikipedia/wikibooks you must upload image file wavepacket_0001.png to
     common.wikimedia.org
@@ -70219,17 +70711,13 @@ Abort! (add --no_abort on the command line to avoid this abortion)
 replacing # Comment before list by  in tmp2.do.txt
 + doconce format rst tmp2
 translating doconce text in tmp2.do.txt to rst
-figure file ../doc/manual/figs/streamtubes:
-    can use ../doc/manual/figs/streamtubes.png for format rst
-*** warning: you have citations but no bibliography (BIBFILE: ...)
-output in tmp2.rst
+Figure file ../doc/manual/figs/streamtubes does not exist
+Abort! (add --no_abort on the command line to avoid this abortion)
 + doconce replace '`Google`' '`Google` site' tmp2.do.txt
 + doconce format rst tmp2
 translating doconce text in tmp2.do.txt to rst
-figure file ../doc/manual/figs/streamtubes:
-    can use ../doc/manual/figs/streamtubes.png for format rst
-*** warning: you have citations but no bibliography (BIBFILE: ...)
-output in tmp2.rst
+Figure file ../doc/manual/figs/streamtubes does not exist
+Abort! (add --no_abort on the command line to avoid this abortion)
 + echo
 
 + echo 'When we reach this point in the script,'
@@ -70239,7 +70727,7 @@ it is clearly a successful run of all tests!
 
 + set -x
 + sh ./clean.sh
-Removing in /home/hpl/vc/doconce/doc/quickref:
+Removing in /home/hpl/vc/doconce/doc/src/quickref:
 + doconce
 + doconce format html quickref --no_pygments_html --no_preprocess
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
@@ -70447,9 +70935,6 @@ ABD: EveryShipout initializing macros
 
 
 
-
-
-Package hyperref Warning: old toc file detected, not used; run LaTeX again.
 
  [1] [2]
 Overfull \hbox (19.14615pt too wide) 
@@ -71179,7 +71664,7 @@ replacing </head> by
    </style>
   </head>
  in index.html
-/home/hpl/vc/doconce/doc/quickref/sphinx-rootdir
+/home/hpl/vc/doconce/doc/src/quickref/sphinx-rootdir
 running make clean
 running make html
 Fix generated files:
@@ -71251,9 +71736,6 @@ No file quickref.rst.aux.
 
 
 Package hyperref Warning: Rerun to get /PageLabels entry.
-
-
-Package hyperref Warning: old toc file detected, not used; run LaTeX again.
 
 
 Overfull \hbox (4.55762pt too wide) 
@@ -72158,7 +72640,7 @@ output in quickref.md
 + echo 'Go to the demo directory and load index.html into a web browser.'
 Go to the demo directory and load index.html into a web browser.
 + cd ..
-+ dest=../pub/quickref
-+ cp -r demo/html demo/quickref.pdf demo/quickref.html ../pub/quickref
-+ dest=../../../doconce.wiki
-+ cp -r demo/quickref.rst ../../../doconce.wiki
++ dest=../../pub/quickref
++ cp -r demo/html demo/quickref.pdf demo/quickref.html ../../pub/quickref
++ dest=../../../../doconce.wiki
++ cp -r demo/quickref.rst ../../../../doconce.wiki
