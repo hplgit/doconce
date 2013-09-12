@@ -660,6 +660,7 @@ def latex_exercise_toc():
             types_of_exer = ', '.join(types_of_exer)
         heading = "List of %s" % types_of_exer
     latex = r"""
+\clearpage % pagebreak before list of exercises
 \subsection*{%s}
 \\begin{tabular}{lrll}
 """ % heading
@@ -698,6 +699,7 @@ def latex_exercise_toc():
         # (need 8 \ for \\ to survive because re.sub below eats them)
     latex += r"""\end{tabular}
 % --- end of table of exercises
+\clearpage % pagebreak after list of exercises
 
 """
     ptexfile = dofile + '.p.tex'
@@ -4104,7 +4106,7 @@ _replacements = [
     (r'"ftp://.*?"', ""),
     (r"\b[A-Za-z_0-9/.:]+\.(com|org|net|edu|)\b", ""),  # net name
     (r'\[[A-Za-z]+:\s+[^\]]*?\]', ''),  # inline comment
-    (r'^\s*file=[A-Za-z_0-9.]+\s*$', '', re.MULTILINE),
+    (r'^\s*file=[A-Za-z_0-9., ]+\s*$', '', re.MULTILINE),
     (r"^@@@CODE.*$",    "", re.MULTILINE),
     (r"^\s*(FIGURE|MOVIE):\s*\[.+?\]",    "", re.MULTILINE),
     (r"^\s*BIBFILE:.+$",    "", re.MULTILINE),
@@ -5764,8 +5766,8 @@ def makefile():
     if not formats:
         formats = ['pdflatex', 'html', 'sphinx']
 
-    f = open('make.py', 'w')
-    f.write('''\
+    make = open('make.py', 'w')
+    make.write('''\
 #!/usr/bin/env python
 """
 Automatically generated file for compiling doconce documents.
@@ -5777,7 +5779,7 @@ unix_command_recorder = []
 def system(command):
     failure = os.system(command)
     if failure:
-        print 'Could not run\n', command
+        print 'Could not run\\n', command
         sys.exit(1)
     else:
         unix_command_recorder.append(cmd)  # record command for bash script
@@ -5800,23 +5802,26 @@ def latex(name,
     """
     if name.endswith('.do.txt'):
         name = name.replace('.do.txt', '')
-    system('rm -f *.aux')
+    system('rm -f %(name)s.aux' % vars())
 
     # Compile source
     cmd = 'doconce format %(latex_program)ss %(name)s %(options)s ' % vars()
     system(cmd)
 
     # Transform .p.tex to .tex
+    # (Alternative: use ptex2tex program which allows .ptex2tex.cfg file)
     cmd = 'doconce ptex2tex %(name) %(ptex2tex_options)s envir="%(ptex2tex_envir)s"' % vars()
     system(cmd)
 
-    # Run latex
-    shell_escape = '-shell-escape' if ptex2tex_envir == 'minted' else ''
-    cmd_latex = '%(latex_program)s %(shell_escape)s %(name)s' % vars()
-    system(cmd_latex)
     dofile = open(name + '.do.txt', 'r')
     text = dofile.read()
     dofile.close()
+
+    # Run latex
+    shell_escape = '-shell-escape' if '{minted}' in text else ''
+    cmd_latex = '%(latex_program)s %(shell_escape)s %(name)s' % vars()
+    system(cmd_latex)
+
     if 'idx{' in text:
         cmd = 'makeindex %(name)s' % vars()
         system(cmd)
@@ -5892,7 +5897,7 @@ def beamer_slides(name, options='', nametag='beamer', theme='red_shadow',
     """Make latex beamer slides from the doconce file `name`."""
     if name.endswith('.do.txt'):
         name = name.replace('.do.txt', '')
-    system('rm -f *.aux')
+    system('rm -f %(name)s.aux' % vars())
 
     # Compile source
     shell_escape = '-shell-escape' if ptex2tex_envir == 'minted' else ''
@@ -5968,15 +5973,17 @@ def main():
     Produce various formats from the doconce source.
     """
 ''')
-    f.write('''
-    dofile = %(dofile)s
+    make.write('''
+    dofile = "%(dofile)s"
+
     spellcheck()
+
     common_options = ''
 ''' % vars())
 
     for format in formats:
         if format.endswith('latex'):
-            f.write("""
+            make.write("""
     # latex PDF for printing (URLs are in footnotes too)
     latex(
       dofile,
@@ -5985,7 +5992,7 @@ def main():
       ptex2tex_program='doconce',
       ptex2tex_options='',
       ptex2tex_envir='minted')
-    system('cp %(dofile)s.pdf %(dofile)s_4print.pdf')  # gets recorded
+    system('cp %(dofile)s.pdf %(dofile)s_4print.pdf' % vars())  # gets recorded
 
     # latex PDF for electronic viewing (no footnotes with URL)
     latex(
@@ -5995,13 +6002,13 @@ def main():
       ptex2tex_program='doconce',
       ptex2tex_options='',
       ptex2tex_envir='minted')
-""" % vars())
+""")
         elif format == 'html':
-            f.write("""
+            make.write("""
     # One long HTML file
     html(
       dofile,
-      options=common_options + ' --html_output=%(dofile)s-1',
+      options=common_options + ' --html_output=%(dofile)s-1' % vars(),
       split=False)
 
     # Splitted HTML file
@@ -6011,7 +6018,7 @@ def main():
       split=True)
 """)
         elif format == 'sphinx':
-            f.write("""
+            make.write("""
     sphinx(
       dofile,
       options=common_options + '',
@@ -6021,7 +6028,7 @@ def main():
       split=False)
 """)
         elif format == 'reveal':
-            f.write("""
+            make.write("""
     reveal_slides(
       dofile,
       options=common_options + '',
@@ -6029,7 +6036,7 @@ def main():
       theme='darkgray')
 """)
         elif format == 'deck':
-            f.write("""
+            make.write("""
     deck_slides(
       dofile,
       options=common_options + '',
@@ -6037,7 +6044,7 @@ def main():
       theme='sandstone.default')
 """)
         elif format == 'beamer':
-            f.write("""
+            make.write("""
     beamer_slides(
       dofile,
       options=common_options + '',
@@ -6046,7 +6053,7 @@ def main():
       ptex2tex_envir='minted')  # 'ans:nt'
 """)
         elif format.endswith('wiki') or format in ('pandoc', 'plain', 'ipynb'):
-            f.write("""
+            make.write("""
     doconce2format(dofile, format, options=common_options + '')
 
 """)
@@ -6054,35 +6061,38 @@ def main():
     dofile_lectures = glob.glob('lec*.do.txt')
     for dofile in dofile_lectures:
         # Is the TOC surrounded by a WITH_TOC test directive?
-        f = open(dofile, 'r')
-        text = f.read()
-        f.close()
+        lec_dofile = open(dofile, 'r')
+        text = lec_dofile.read()
+        lec_dofile.close()
         with_toc = ' -DWITH_TOC' if 'WITH_TOC' in text else ''
 
         dofile = dofile[:-7]
-        f.write("""
-    # Lecture/slide file %(dofile)s""" % vars())
+        make.write("""
+    # Lecture/slide file %(dofile)s
+    dofile = "%(dofile)s"
+""" % vars())
         for format in formats:
-            f.write("""
+            if format == 'html':
+                make.write("""
     html_style = 'bloodish'
     # One long HTML file
     html(
       dofile,
-      options=common_options + ' --html_output=%(dofile)s-1 --html_style=%(html_style)s' + with_toc,
+      options=common_options + ' --html_output=%(dofile)s-1 --html_style=%(html_style)s' % vars() + with_toc,
       split=False)
     system('doconce replace "<li>" "<p><li>" %(dofile)s-1.html' % vars())
 
     # Splitted HTML file
     html(
       dofile,
-      options=common_options + ' --html_style=%(html_style)s' + with_toc,
+      options=common_options + ' --html_style=%(html_style)s' % vars() + with_toc,
       split=True)
     system('doconce replace "<li>" "<p><li>" %(dofile)s.html' % vars())
 
     # One long solarized file
     html(
       dofile,
-      options=common_options + ' --html_style=solarized --html_output=%(dofile)s-solarized --pygments_html_style=perldoc --pygments_html_linenos' + with_toc,
+      options=common_options + ' --html_style=solarized --html_output=%(dofile)s-solarized --pygments_html_style=perldoc --pygments_html_linenos' % vars() + with_toc,
       split=False)
     system('doconce replace "<li>" "<p><li>" %(dofile)s-solarized.html' % vars())
     reveal_slides(
@@ -6096,9 +6106,9 @@ def main():
       options=common_options + '',
       nametag='deck',
       theme='sandstone.default')
-""" % vars())
-        elif format.endswith('latex'):
-            f.write("""
+""")
+            elif format.endswith('latex'):
+                make.write("""
     beamer_slides(
       dofile,
       options=common_options + '',
@@ -6115,7 +6125,7 @@ def main():
       ptex2tex_options='',
       ptex2tex_envir='minted')
 """)
-    f.write("""
+    make.write("""
     # Dump all Unix commands run above as a Bash script
     bash = open('tmp_make.sh', 'w')
     bash.write('''\
@@ -6133,17 +6143,17 @@ function system {
 }
 ''')
     for cmd in unix_command_recorder:
-        if 'doconce format' in cmd:
-            f.write('\n')  # delimiter line in script
-        f.write('system ' + command + '\n')
+        if cmd.startswith('doconce format') or cmd.startswith('rm '):
+            f.write('\\n')  # delimiter line in script
+        f.write('system ' + command + '\\n')
     f.close()
 """)
-    f.write("""
+    make.write("""
 
 if __name__ == '__main__':
     main()
 """)
-    f.close()
+    make.close()
 
 
 def _usage_fix_bibtex4publish():
