@@ -660,7 +660,7 @@ def latex_exercise_toc():
             types_of_exer = ', '.join(types_of_exer)
         heading = "List of %s" % types_of_exer
     latex = r"""
-\clearpage % pagebreak before list of exercises
+\clearpage %% pagebreak before list of exercises
 \subsection*{%s}
 \\begin{tabular}{lrll}
 """ % heading
