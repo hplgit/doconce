@@ -5,6 +5,9 @@ DATE: Today
 FIGURE: [../doc/src/slides/fig/doconce1b, width=400 frac=0.5]
 
 !split
+TOC: on
+
+!split
 ======= Scientific writing for the future needs to address many new media =======
 
 !bslidecell 00 0.4

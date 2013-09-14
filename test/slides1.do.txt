@@ -2,8 +2,8 @@ TITLE: On the Technicalities of Scientific Writing Anno 2012: The Doconce Way
 AUTHOR: Hans Petter Langtangen at Simula Research Laboratory and University of Oslo
 DATE: Today
 
-!split
 
+!split
 ===== Figure and bullet list =====
 
 !bslidecell 00  0.35

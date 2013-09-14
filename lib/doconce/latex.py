@@ -1172,14 +1172,24 @@ def define(FILENAME_EXTENSION,
     EXERCISE['latex'] = latex_exercise
     INDEX_BIB['latex'] = latex_index_bib
     if option('skip_inline_comments') or not has_inline_comments:
-        TOC['latex'] = lambda s: r'\tableofcontents' + '\n\n' + r'\vspace{1cm} % after toc' + '\n\n'
+        TOC['latex'] = lambda s: r"""
+% #if LATEX_HEADING != "beamer"
+\tableofcontents
+
+\vspace{1cm} % after toc'
+% #endif
+
+"""
     else:
-        TOC['latex'] = lambda s: r"""\tableofcontents
+        TOC['latex'] = lambda s: r"""
+% #if LATEX_HEADING != "beamer"
+\tableofcontents
 % #ifdef TODONOTES
 \listoftodos[List of inline comments]
 % #endif
 
 \vspace{1cm} % after toc
+% #endif
 
 """
 

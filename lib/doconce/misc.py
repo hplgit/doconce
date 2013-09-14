@@ -3601,6 +3601,14 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
 
         part = part.rstrip()
 
+        # Check if slide is empty
+        empty_slide = True
+        for line in part.splitlines():
+            if line.startswith('%'):
+                continue
+            if line.strip() != '':
+                empty_slide = False
+
         if r'\title{' in part:
             # Titlepage needs special treatment
             m = re.search(r'(\\centerline\{\\includegraphics.+\}\})', part)
@@ -3617,7 +3625,7 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
 \titlepage
 \end{frame}
 """ % vars()
-        else:
+        elif not empty_slide:
             # Ordinary slide
             slides += r"""
 \begin{frame}[plain,fragile]
