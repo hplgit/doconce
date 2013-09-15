@@ -1094,6 +1094,15 @@ def typeset_tables(filestr, format):
             if not inside_table:
                 inside_table = True
                 table_counter += 1
+            # Check if | is used in math in this line
+            math_exprs = re.findall(r'\$(.+?)\$', line)
+            for math_expr in math_exprs:
+                if '|' in math_expr:
+                    print '*** error: use of | in math formulas in tables confuses'
+                    print '    the interpretation of the table. Rewrite and remove |.'
+                    print line
+                    _abort()
+
             columns = line.strip().split('|')  # does not work with math2 syntax
             # Possible fix so that | $\bar T$|$T$ | $...$ | ... is possible:
             # .split(' | '), but need to make sure the syntax and no of columns
@@ -1119,8 +1128,10 @@ def typeset_tables(filestr, format):
                 # so the table is ended
                 inside_table = False
                 #import pprint; pprint.pprint(table)
-                # Check for consistency:
+
+                # Check for consistency of the recorded table:
                 try:
+                    # We demand three horizontal rules
                     ok = table['rows'][0] == ['horizontal rule'] and \
                          table['rows'][2] == ['horizontal rule'] and \
                          table['rows'][-1] == ['horizontal rule']
@@ -1130,7 +1141,8 @@ def typeset_tables(filestr, format):
                     print '*** error: syntax error in table:'
                     for row in table['rows']:
                         if row != ['horizontal rule']:
-                            print ' | '.join(row)
+                            print '| ' + ' | '.join(row) + ' |'
+                            print '(Maybe not a table, just an opening pip at the beginning of the line?)'
                     _abort()
 
                 result.write(TABLE[format](table))   # typeset table

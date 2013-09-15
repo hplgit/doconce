@@ -115,30 +115,32 @@ text...
 )
 
 
-;; Syntax highlighting
+; Syntax highlighting
 
 (make-face 'do-code-face)
 (set-face-attribute 'do-code-face nil :family "courier")
 (set-face-attribute 'do-code-face nil :slant 'normal)
-;;(set-face-attribute 'do-code-face nil :background "red")
+;(set-face-attribute 'do-code-face nil :background "red")
 
 (make-face 'do-math-face)
 (set-face-attribute 'do-math-face nil :family "courier")
 (set-face-attribute 'do-math-face nil :slant 'normal)
-(set-face-attribute 'do-math-face nil :height '150)
+;(set-face-attribute 'do-math-face nil :height '150)
+;(set-face-attribute 'do-math-face nil :height '100)
+(set-face-attribute 'do-math-face nil :foreground "lightgray")
 
 (make-face 'do-figmov-face)
-;;(set-face-attribute 'do-figmov-face nil :background "gray")
-;;(set-face-attribute 'do-figmov-face nil :slant 'italic)
+;(set-face-attribute 'do-figmov-face nil :background "gray")
+;(set-face-attribute 'do-figmov-face nil :slant 'italic)
 (set-face-attribute 'do-figmov-face nil :underline t)
 
 (make-face 'do-heading-face)
-;;(set-face-attribute 'do-heading-face nil :background "yellow")
+;(set-face-attribute 'do-heading-face nil :background "yellow")
 ;(set-face-attribute 'do-heading-face nil :foreground "yellow")
 ; other colors: lightblue, lightgray, purple
 (set-face-attribute 'do-heading-face nil :foreground "red")
 (set-face-attribute 'do-heading-face nil :slant 'normal)
-;;(set-face-attribute 'do-heading-face nil :height '170)
+;(set-face-attribute 'do-heading-face nil :height '170)
 
 (make-face 'do-emph-face)
 (set-face-attribute 'do-emph-face nil :slant 'italic)
@@ -159,7 +161,7 @@ text...
 
 
 
-;;;###autoload
+;;###autoload
 (define-generic-mode doconce
   '(("%<doc>" . "%</doc>"))              ; (mako) comment characters
   '("bwarning" "ewarning" "bquote" "equote" "bnotice" "enotice" "bsummary" "esummary" "bquestion" "equestion" "bblock" "eblock" "bsubex" "esubex" "bhint" "ehint" "bsol" "esol" "bans" "eans" "bpop" "epop" "bslidecell" "eslidecell" "idx") ; keywords (!bt used below does not work well)
