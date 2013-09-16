@@ -1973,6 +1973,7 @@ def doconce_html_split(header, parts, footer, basename, filename):
     # Fix internal links to point to the right splitted file
     name_pattern = r'<a name="(.+?)">'
     href_pattern = r'<a href="#(.+?)">'
+    label_pattern = r'\label\{(.+?)\}'  # label in latex equations
     eqref_pattern = r'\eqref\{(.+?)\}'
     parts_name = [re.findall(name_pattern, ''.join(part)) for part in parts]
     parts_name.append(re.findall(name_pattern, ''.join(header)))
@@ -1981,7 +1982,8 @@ def doconce_html_split(header, parts, footer, basename, filename):
     parts_href.append(re.findall(href_pattern, ''.join(header)))
     parts_href.append(re.findall(href_pattern, ''.join(footer)))
     parts_eqref = [re.findall(eqref_pattern, ''.join(part)) for part in parts]
-    # Add label to parts_name and eqref to parts_href? Might not work
+    parts_label = [re.findall(label_pattern, ''.join(part)) for part in parts]
+
     parts_name2part = {}   # map a name to where it is defined
     for i in range(len(parts_name)):
         for name in parts_name[i]:
@@ -2010,29 +2012,66 @@ def doconce_html_split(header, parts, footer, basename, filename):
                     header = text.splitlines(True)
                 elif i == len(parts)+1:
                     footer = text.splitlines(True)
-    # Substitute eqrefs in each part
+
+    parts_label2part = {}   # map an eq. label to where it is defined
+    for i in range(len(parts_label)):
+        for label in parts_label[i]:
+            parts_label2part[label] = i
+    # Check if there are eqrefs to undefined labels
+    undefined_labels = []
     for i in range(len(parts_eqref)):
-        for name in parts_eqref[i]:
-            n = parts_name2part[name]   # part where this name is defined
-            if n != i:
-                # Reference to equation with label in another file
-                print '*** warning: \\eqref{%s} to label in another HTML file will appear as (eq)'
-                name_def_filename = '._part%04d_%s.html' % (n, basename)
-                if i < len(parts):
-                    part = parts[i]
-                elif i == len(parts):
-                    part = header
-                elif i == len(parts)+1:
-                    part = footer
-                text = ''.join(part).replace(
-                    r'\eqref{%s}' % name,
-                    '<a href="%s#%s">(eq)</a>' % (name_def_filename, name))
+        for label in parts_eqref[i]:
+            if label not in parts_label2part:
+                undefine_labels.append(label)
+    if undefined_labels:
+        for label in undefined_labels:
+            print '*** (ref{%s}) but no label{%s}' % (label, label)
+        print '*** error: found references to undefined equation labels!'
+        _abort()
+    # Substitute eqrefs in each part.
+    # MathJax cannot refer to labels in other HTML files.
+    # We generate tag number for each label, in the right numbering
+    # and use tags to refer to equations.
+    # Info on http://stackoverflow.com/questions/16339000/how-to-refer-to-an-equation-in-a-different-page-with-mathjax
+    labels = []
+    for i in parts_label:
+        labels += i
+    label2tag = {}
+    for i in range(len(labels)):
+        label2tag[labels[i]] = i+1
+    # Insert tags in each part
+    for i in range(len(parts)):
+        text = ''.join(parts[i])
+        if r'\label{' in text:
+            labels = re.findall(label_pattern, text)
+            for label in labels:
+                text = text.replace(
+                    r'\label{%s}' % label,
+                    r'\tag{%s}' % (label2tag[label]))
+        parts[i] = text.splitlines(True)
+    # Substitute all \eqrefs (can only have tags, not labels for
+    # right navigation to an equation)
+    for i in range(len(parts_eqref)):
+        for label in parts_eqref[i]:
+            n = parts_label2part[label]   # part where this label is defined
+            if i < len(parts):
+                part = parts[i]
+                text = ''.join(part)
+                if n != i:
+                    # Reference to equation with label in another file
+                    #print '*** warning: \\eqref{%s} to label in another HTML file will appear as (eq)' % (label)
+                    label_def_filename = '._part%04d_%s.html' % (n, basename)
+                    text = text.replace(
+                        r'\eqref{%s}' % label,
+                        '<a href="%s#mjx-eqn-%s">(%s)</a>' %
+                        (label_def_filename, label2tag[label], label2tag[label]))
+                else:
+                    text = text.replace(
+                        r'\eqref{%s}' % label,
+                        '<a href="#mjx-eqn-%s">(%s)</a>' %
+                        (label2tag[label], label2tag[label]))
                 if i < len(parts):
                     parts[i] = text.splitlines(True)
-                elif i == len(parts):
-                    header = text.splitlines(True)
-                elif i == len(parts)+1:
-                    footer = text.splitlines(True)
 
     generated_files = []
     for pn, part in enumerate(parts):
@@ -4628,7 +4667,7 @@ def md2html():
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
   TeX: {
-     equationNumbers: {  autoNumber: "AMS"  },
+     equationNumbers: {  autoNumber: "none"  },
      extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
   }
 });
