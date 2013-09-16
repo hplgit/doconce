@@ -146,8 +146,9 @@ text...
 (set-face-attribute 'do-emph-face nil :slant 'italic)
 
 (make-face 'do-bold-face)
-(set-face-attribute 'do-bold-face nil :weight 'bold)
-(set-face-attribute 'do-bold-face nil :foreground "lightgray")
+;(set-face-attribute 'do-bold-face nil :weight 'bold)
+(set-face-attribute 'do-bold-face nil :slant 'italic)
+(set-face-attribute 'do-bold-face nil :foreground "lightblue")
 
 (make-face 'do-filecode-face)
 (set-face-attribute 'do-filecode-face nil :slant 'italic)
@@ -170,12 +171,14 @@ text...
     ("\\(^!bt[^§]+?!et\\)" (1 'do-math-face))
     ("\\(`.+?`\\)" (1 'do-code-face))
     ("\\(\\*.+?\\*\\)" (1 'do-emph-face))
-    ("\\(_[\w\s]+_\\)" (1 'do-bold-face))
+    ("\\(\s+_.+?_\s+\\)" (1 'do-bold-face))
     ("\\(==+ *.+ *==+\\)" (1 'do-heading-face))
     ("\\(^__.+?[.:?]__\\)" (1 'do-heading-face))
     ("\\(^@@@CODE .+\\)" (1 'do-filecode-face))
-    ("\\(^!split\\)" (1 'do-bold-face))
     ("\\(^#.+$\\)" (1 'do-comment-face))
+    ("\\(!split\s+\\)" (1 'do-bold-face))
+    ("\\(label\{.+?\}\\)" (1 'do-bold-face))
+    ("\\(ref\{.+?\}\\)" (1 'do-bold-face))
    )                ; font lock
   '("\\.do\\.txt$")                     ; auto-mode-alist
   '(doconce-special-setup)              ; function-list

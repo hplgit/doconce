@@ -1626,10 +1626,10 @@ def html_colorbullets():
                 line = line.replace('<li>', """</tr><p><tr><td valign='top'><img src="BULLET"></td><td>""")
                 if level == 1:
                     #image_filename = html_imagefile(red_bullet)
-                    image_filename = 'https://doconce.googlecode.com/hg/bundled/html_images/' + red_bullet
+                    image_filename = 'http://hplgit.github.io/doconce/bundled/html_images/' + red_bullet
                 elif level >= 2:
                     #image_filename = html_imagefile(green_bullet)
-                    image_filename = 'https://doconce.googlecode.com/hg/bundled/html_images/' + green_bullet
+                    image_filename = 'http://hplgit.github.io/doconce/bundled/html_images/' + green_bullet
                 line = line.replace('BULLET', image_filename)
             f.write(line + '\n')
         f.close()
@@ -1966,8 +1966,8 @@ def doconce_html_split(header, parts, footer, basename, filename):
         html.add_to_file_collection(button_prev_filename, filename, 'a')
         html.add_to_file_collection(button_next_filename, filename, 'a')
     else:
-        button_prev_filename = 'https://doconce.googlecode.com/hg/bundled/html_images/%s.png' % prev_part
-        button_next_filename = 'https://doconce.googlecode.com/hg/bundled/html_images/%s.png' % next_part
+        button_prev_filename = 'http://hplgit.github.io/doconce/bundled/html_images/%s.png' % prev_part
+        button_next_filename = 'http://hplgit.github.io/doconce/bundled/html_images/%s.png' % next_part
 
 
     # Fix internal links to point to the right splitted file
@@ -2030,7 +2030,7 @@ def doconce_html_split(header, parts, footer, basename, filename):
             if local_navigation_pics:
                 header_part_line_filename = html_imagefile(header_part_line)
             else:
-                header_part_line_filename = 'https://doconce.googlecode.com/hg/bundled/html_images/%s.png' % header_part_line
+                header_part_line_filename = 'http://hplgit.github.io/doconce/bundled/html_images/%s.png' % header_part_line
             lines.append("""
 <p><br><img src="%s"><p><br><p>
 """ % header_part_line_filename)
@@ -2156,10 +2156,10 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
      .reveal .alert-block > p, .alert-block > ul {margin-bottom:1em}
      /*.reveal .alert li {margin-top: 1em}*/
      .reveal .alert-block p+p {margin-top:5px}
-     /*.reveal .alert-notice { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_notice.png); }
-     .reveal .alert-summary  { background-image:url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_summary.png); }
-     .reveal .alert-warning { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_warning.png); }
-     .reveal .alert-question {background-image:url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_question.png); } */
+     /*.reveal .alert-notice { background-image: url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_notice.png); }
+     .reveal .alert-summary  { background-image:url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_summary.png); }
+     .reveal .alert-warning { background-image: url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_warning.png); }
+     .reveal .alert-question {background-image:url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_question.png); } */
 
 </style>
 
@@ -2257,8 +2257,8 @@ for(var i=0; i<cssControls.length; i++) {
             slide_envir_end='</section>',
             #notes='<div role="note">\n\g<1>\n</div>',
             pop=('incremental', 'ul', 'ol'),
-            notes='<details>\n<!-- use onstage shell to activate: invoke https://doconce.googlecode.com/hg/bundled/dzslides/shells/onstage.html -->\n\\g<1>\n</details>\n',
-            #notes='<div role="note">\n<!-- use onstage shell to activate: invoke https://doconce.googlecode.com/hg/bundled/dzslides/shells/onstage.html -->\n\\g<1>\n</div>\n',
+            notes='<details>\n<!-- use onstage shell to activate: invoke http://hplgit.github.io/doconce/bundled/dzslides/shells/onstage.html -->\n\\g<1>\n</details>\n',
+            #notes='<div role="note">\n<!-- use onstage shell to activate: invoke http://hplgit.github.io/doconce/bundled/dzslides/shells/onstage.html -->\n\\g<1>\n</div>\n',
             head_header="""
 <!-- dzslides: http://paulrouget.com/dzslides/ -->
 
@@ -3024,10 +3024,10 @@ git://github.com/barraq/deck.ext.js.git
      .slide .alert-block > p, .alert-block > ul {margin-bottom:0}
      /*.slide .alert li {margin-top: 1em}*/
      .deck .alert-block p+p {margin-top:5px}
-     /*.slide .alert-notice { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_notice.png); }
-     .slide .alert-summary  { background-image:url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_summary.png); }
-     .slide .alert-warning { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_warning.png); }
-     .slide .alert-question {background-image:url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_question.png); } */
+     /*.slide .alert-notice { background-image: url(http://hplgit.github.io/doconce/bundled/html_images//small_gray_notice.png); }
+     .slide .alert-summary  { background-image:url(http://hplgit.github.io/doconce/bundled/html_images//small_gray_summary.png); }
+     .slide .alert-warning { background-image: url(http://hplgit.github.io/doconce/bundled/html_images//small_gray_warning.png); }
+     .slide .alert-question {background-image:url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_question.png); } */
 
 </style>
 
