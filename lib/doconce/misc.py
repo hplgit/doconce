@@ -1973,12 +1973,14 @@ def doconce_html_split(header, parts, footer, basename, filename):
     # Fix internal links to point to the right splitted file
     name_pattern = r'<a name="(.+?)">'
     href_pattern = r'<a href="#(.+?)">'
+    eqref_pattern = r'\eqref\{(.+?)\}'
     parts_name = [re.findall(name_pattern, ''.join(part)) for part in parts]
     parts_name.append(re.findall(name_pattern, ''.join(header)))
     parts_name.append(re.findall(name_pattern, ''.join(footer)))
     parts_href = [re.findall(href_pattern, ''.join(part)) for part in parts]
     parts_href.append(re.findall(href_pattern, ''.join(header)))
     parts_href.append(re.findall(href_pattern, ''.join(footer)))
+    parts_eqref = [re.findall(eqref_pattern, ''.join(part)) for part in parts]
     # Add label to parts_name and eqref to parts_href? Might not work
     parts_name2part = {}   # map a name to where it is defined
     for i in range(len(parts_name)):
@@ -2002,6 +2004,29 @@ def doconce_html_split(header, parts, footer, basename, filename):
                 text = ''.join(part).replace(
                     '<a href="#%s">' % name,
                     '<a href="%s#%s">' % (name_def_filename, name))
+                if i < len(parts):
+                    parts[i] = text.splitlines(True)
+                elif i == len(parts):
+                    header = text.splitlines(True)
+                elif i == len(parts)+1:
+                    footer = text.splitlines(True)
+    # Substitute eqrefs in each part
+    for i in range(len(parts_eqref)):
+        for name in parts_eqref[i]:
+            n = parts_name2part[name]   # part where this name is defined
+            if n != i:
+                # Reference to equation with label in another file
+                print '*** warning: \\eqref{%s} to label in another HTML file will appear as (eq)'
+                name_def_filename = '._part%04d_%s.html' % (n, basename)
+                if i < len(parts):
+                    part = parts[i]
+                elif i == len(parts):
+                    part = header
+                elif i == len(parts)+1:
+                    part = footer
+                text = ''.join(part).replace(
+                    r'\eqref{%s}' % name,
+                    '<a href="%s#%s">(eq)</a>' % (name_def_filename, name))
                 if i < len(parts):
                     parts[i] = text.splitlines(True)
                 elif i == len(parts):
