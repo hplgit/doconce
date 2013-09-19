@@ -440,7 +440,7 @@ def html_code(filestr, code_blocks, code_block_types,
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
   TeX: {
-     equationNumbers: {  autoNumber: "none"  },
+     equationNumbers: {  autoNumber: "AMS"  },
      extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
   }
 });
@@ -1017,6 +1017,12 @@ def html_index_bib(filestr, index, citations, pubfile, pubdata):
                 print '*** error: problems in %s' % pubfile
                 print '    with key', label
                 _abort()
+
+        bibtext = """
+<!-- begin bibliography -->
+%s
+<!-- end bibliography -->
+""" % bibtext
 
         filestr = re.sub(r'^BIBFILE:.+$', bibtext, filestr, flags=re.MULTILINE)
 

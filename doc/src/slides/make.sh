@@ -263,8 +263,11 @@ doconce ptex2tex demo envir=minted
 pdflatex -shell-escape demo
 </pre>
 <li><a href="demo_doconce.html">Doconce source code for the slides</a>
-<li>Doconce: Why and How, <a href="../scientific_writing.html">reveal w/darkgrey</a>, <a href="../scientific_writing_deck.html">deck w/sandstone.default</a>,
+<li>Doconce: Why and How,
+<a href="../scientific_writing_reveal.html">reveal w/darkgrey</a>,
+<a href="../scientific_writing_deck.html">deck w/sandstone.default</a>,
 <a href="../scientific_writing_red_shadow.pdf">beamer</a>,
-<a href="../scientific_writing_solarized.html">solarized</a>
+<a href="../scientific_writing_solarized.html">solarized</a>,
+<a href="../scientific_writing_solarized">plain HTML</a>
 </ul>
 EOF

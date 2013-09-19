@@ -303,7 +303,7 @@ def default_movie(m):
 </BODY>
 </HTML>
 """ % (filename, filename, ' '.join(options), caption))
-        text = '%s (Movie %s: play URL:"%s")' % (caption, filename, moviehtml)
+        text = '%s (Movie `%s`: play URL:"%s")' % (caption, filename, moviehtml)
     return text
 
 def begin_end_consistency_checks(filestr, envirs):
@@ -594,6 +594,7 @@ def doconce_exercise_output(exer,
 
 def plain_exercise(exer):
     return doconce_exercise_output(exer)
+
 
 def bibliography(pubdata, citations, format='doconce'):
     """

@@ -122,7 +122,7 @@ def latex_code(filestr, code_blocks, code_block_types,
     comment_pattern = '%% %s'
     pattern = comment_pattern % envir_delimiter_lines['exercise'][0] + '\n'
     replacement = pattern + r"""\begin{exercise}
-\refstepcounter{exerno}
+\refstepcounter{exerciseno}
 """
     filestr = filestr.replace(pattern, replacement)
     pattern = comment_pattern % envir_delimiter_lines['exercise'][1] + '\n'
@@ -764,9 +764,15 @@ def latex_index_bib(filestr, index, citations, pubfile, pubdata):
         # Always produce a new bibtex file
         bibtexfile = pubfile[:-3] + 'bib'
         print '\nexporting publish database %s to %s:' % (pubfile, bibtexfile)
-        failure = os.system('publish export %s' % bibtexfile)
+        publish_cmd = 'publish export %s' % bibtexfile
+        # Note: we have to run publish in the directory where pubfile resides
+        this_dir = os.getcwd()
+        pubfile_dir = os.path.dirname(pubfile)
+        os.chdir(pubfile_dir)
+        os.system(publish_cmd)
+        os.chdir(this_dir)
 
-        # Remove heading right before BIBFILE because latex has its own
+        # Remove heading right before BIBFILE because latex has its own heading
         pattern = '={5,9} .+? ={5,9}\s+^BIBFILE'
         filestr = re.sub(pattern, 'BIBFILE', filestr, flags=re.MULTILINE)
 
@@ -1685,13 +1691,14 @@ final,                   % or draft (marks overfull hboxes)
     # Note: the line above is key for extracting the correct part
     # of the preamble for beamer slides in misc.slides_beamer
 
+    # Make exercise, problem and project counters
     exer_envirs = ['Exercise', 'Problem', 'Project']
     exer_envirs = exer_envirs + ['{%s}' % e for e in exer_envirs]
     for exer_envir in exer_envirs:
         if exer_envir + ':' in filestr:
             INTRO['latex'] += r"""
 \newenvironment{exercise}{}{}
-\newcounter{exerno}
+\newcounter{exerciseno}
 """
             break
 

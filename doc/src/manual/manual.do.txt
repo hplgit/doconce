@@ -1717,6 +1717,14 @@ to another location (you can always check `.mydoc_html_file_collection`
 for a list of all the files that are needed to display this HTML
 document).
 
+MathJax cannot refer to equations defined in other HTML files, but
+the `doconce split_html` fixes this problem. Note, however, that
+running `doconce split_html` leads to another equation numbering
+than in the original HTML document. In the latter, we use AMS
+equation numbering, which means that the standard LaTeX conventions
+are followed, while in the splitted document only the subset of
+equations with labels are given numbers.
+
 The HTML documents have very simple navigation buttons for the previous
 and next document. These are not customizable directly, but one can easily
 look up the HTML code and use `doconce replace` to edit the links to

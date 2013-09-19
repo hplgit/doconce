@@ -743,8 +743,12 @@ def exercises(filestr, format, code_blocks, tex_blocks):
             else:
                 exer['type_visible'] = True
             exer['type'] = exer_tp
-            exer_counter[exer_tp] += 1
-            exer['no'] = exer_counter[exer_tp]
+
+            # We count all Exercises, Problems, etc. with the
+            # same counter (Exercise 4 and Problem 4 are likely
+            # to be confusing...)
+            exer_counter['Exercise'] += 1
+            exer['no'] = exer_counter['Exercise']
 
             exer['label'] = None
             exer['solution_file'] = None
@@ -1662,8 +1666,15 @@ def handle_index_and_bib(filestr, format, has_title):
                 print '*** error: cannot find publish database', pubfile
                 _abort()
             import publish
-            pubdata = publish.database.read_database(pubfile)
+            # Note: we have to operate publish in the directory
+            # where pubfile resides
+            this_dir = os.getcwd()
+            directory, basename = os.path.split(pubfile)
+            os.chdir(directory)
 
+            pubdata = publish.database.read_database(basename)
+
+            os.chdir(this_dir)
         else:
             index_words = re.findall(r'idx\{(.+?)\}', line)
             if index_words:

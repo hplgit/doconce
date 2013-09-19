@@ -1993,7 +1993,12 @@ def doconce_html_split(header, parts, footer, basename, filename):
     # Substitute hrefs in each part, plus header and footer
     for i in range(len(parts_href)):
         for name in parts_href[i]:
-            n = parts_name2part[name]   # part where this name is defined
+            n = parts_name2part.get(name, None) #part where this name is defined
+            if n is None:
+                print '*** error: <a href="#%s" has no corresponding anchor (<a name=)' % name
+                print '    This is probably a bug in Doconce.'
+                _abort()
+                continue  # go to next if abort is turned off
             if n != i:
                 # Reference to label in another file
                 name_def_filename = '._part%04d_%s.html' % (n, basename)
@@ -2013,6 +2018,8 @@ def doconce_html_split(header, parts, footer, basename, filename):
                 elif i == len(parts)+1:
                     footer = text.splitlines(True)
 
+    # Treat \eqref and labels: MathJax does not support references
+    # to eq. labels in other files
     parts_label2part = {}   # map an eq. label to where it is defined
     for i in range(len(parts_label)):
         for label in parts_label[i]:
@@ -2022,7 +2029,7 @@ def doconce_html_split(header, parts, footer, basename, filename):
     for i in range(len(parts_eqref)):
         for label in parts_eqref[i]:
             if label not in parts_label2part:
-                undefine_labels.append(label)
+                undefined_labels.append(label)
     if undefined_labels:
         for label in undefined_labels:
             print '*** (ref{%s}) but no label{%s}' % (label, label)
@@ -2039,6 +2046,13 @@ def doconce_html_split(header, parts, footer, basename, filename):
     label2tag = {}
     for i in range(len(labels)):
         label2tag[labels[i]] = i+1
+    # Go from AMS to non equationNumering in MathJax since we do not
+    # want any equation without label to have numbers (instead we
+    # control all numbers here by inserting \tag)
+    for i in range(len(header)):
+        if 'autoNumber: "AMS"' in header[i]:
+            header[i] = header[i].replace('autoNumber: "AMS"', 'autoNumber: "none"')
+            break
     # Insert tags in each part
     for i in range(len(parts)):
         text = ''.join(parts[i])
@@ -3310,6 +3324,13 @@ td.padding {
 
 """ % slide_syntax[slide_tp]
 
+    # Avoid too many numbered equations: use \tag for all equations
+    # with labels (these get numbers) and turn all other numbers off
+    # by autoNumber: "none"
+    slides = slides.replace('autoNumber: "AMS"', 'autoNumber: "none"')
+
+    eq_no = 1  # counter for equations
+
     for part_no, part in enumerate(parts):
         part = ''.join(part)
 
@@ -3424,6 +3445,16 @@ td.padding {
         if slide_tp == 'deck':
             part = part.replace('<pre>', '<pre><code>')
             part = part.replace('</pre>', '</code></pre>')
+
+        # Insert \tag for each \label (\label only in equations in HTML)
+        labels = re.findall(r'\label\{(.+?)\}', part)
+        for label in labels:
+            part = part.replace(r'\label{%s}' % label,
+                                r'\tag{%s}' % eq_no)
+            part = part.replace(r'\eqref{%s}' % label,
+                                '<a href="#mjx-eqn-%s">(%s)</a>' %
+                                (eq_no, eq_no))
+            eq_no += 1
 
         part = part.replace('</ul>', '</ul>\n<p>')
         part = part.replace('</ol>', '</ol>\n<p>')
@@ -4184,7 +4215,7 @@ _replacements = [
     (r"^\s*(FIGURE|MOVIE):\s*\[.+?\]",    "", re.MULTILINE),
     (r"^\s*BIBFILE:.+$",    "", re.MULTILINE),
     (r"^\s*TOC:\s+(on|off)", "", re.MULTILINE),
-    (r"\$.+?\$", ""),  # inline math (before mako variables)
+    (r"\$[^{].*?\$", "", re.DOTALL),  # inline math (before mako variables)
     (r"\$\{.*?\}", ""),   # mako variables (clashes with math: ${\cal O}(dx)$)
     ('!split', ''),
     (r'![be]slidecell', ''),
@@ -4219,7 +4250,7 @@ _latex_replacements = [
     #(r"\\[Vv]erb(.)(.+?)\1", "\g<2>"),
     (r"\\[Vv]erb(.)(.+?)\1", ""),
     (r"\\index\{.*?\}", ""),
-    (r"\$.+?\$", ""),  # works line by line (due to .), [^$]+ is dangerous...
+    (r"\$.+?\$", "", re.DOTALL),
     (r"([A-Za-z])~", "\g<1> "),
     (r"``(.+?)''", "\g<1>"),  # very important, otherwise doconce verb eats the text
     (r' \.', '.'),
@@ -4667,7 +4698,7 @@ def md2html():
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
   TeX: {
-     equationNumbers: {  autoNumber: "none"  },
+     equationNumbers: {  autoNumber: "AMS"  },
      extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
   }
 });
