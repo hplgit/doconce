@@ -2267,7 +2267,7 @@ controls: true,
 progress: true,
 history: true,
 center: true,
-heme: Reveal.getQueryHash().theme, // available themes are in reveal.js/css/theme
+theme: Reveal.getQueryHash().theme, // available themes are in reveal.js/css/theme
 transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
 
 // Optional libraries used to extend on reveal.js
