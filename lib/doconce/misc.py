@@ -3329,8 +3329,6 @@ td.padding {
     # by autoNumber: "none"
     slides = slides.replace('autoNumber: "AMS"', 'autoNumber: "none"')
 
-    eq_no = 1  # counter for equations
-
     for part_no, part in enumerate(parts):
         part = ''.join(part)
 
@@ -3446,16 +3444,6 @@ td.padding {
             part = part.replace('<pre>', '<pre><code>')
             part = part.replace('</pre>', '</code></pre>')
 
-        # Insert \tag for each \label (\label only in equations in HTML)
-        labels = re.findall(r'\label\{(.+?)\}', part)
-        for label in labels:
-            part = part.replace(r'\label{%s}' % label,
-                                r'\tag{%s}' % eq_no)
-            part = part.replace(r'\eqref{%s}' % label,
-                                '<a href="#mjx-eqn-%s">(%s)</a>' %
-                                (eq_no, eq_no))
-            eq_no += 1
-
         part = part.replace('</ul>', '</ul>\n<p>')
         part = part.replace('</ol>', '</ol>\n<p>')
 
@@ -3474,6 +3462,19 @@ td.padding {
 </html>
 """ % (slide_syntax[slide_tp]['footer'])
     slides = re.sub(r'<!-- !split .*-->\n', '', slides)
+
+    eq_no = 1  # counter for equations
+    # Insert \tag for each \label (\label only in equations in HTML)
+    labels = re.findall(r'\\label\{(.+?)\}', slides)
+    print labels
+    for label in labels:
+        slides = slides.replace(r'\label{%s}' % label,
+                                r'\tag{%s}' % eq_no)
+        slides = slides.replace(r'\eqref{%s}' % label,
+                                '<a href="#mjx-eqn-%s">(%s)</a>' %
+                                (eq_no, eq_no))
+        eq_no += 1
+
     return slides
 
 

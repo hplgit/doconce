@@ -1089,14 +1089,15 @@ For output formats different from `latex`, `pdflatex`, and `html`:
    and `mwiki` cannot refer to them.
  * `sphinx` output requires
    * no math in section headings or figure captions
-     (gets removed in references)
-   * running text to start in column 1
+     (gets removed in references).
+   * running text to start in column 1.
    * progressive section headings: after chapter (9 `=`) comes
      section (7 `=`), then subsection (5 `=`), then paragraph
-     (3 `=`).
+     (3 `=`). Do not make jumps in this progression.
    * index entries (`idx{keyword}`) before the paragraph where they
-     are introduced (before 3 `=` too)
-   * a line of text and no comment before code or list
+     are introduced and place them *before* subsubsection
+     headings (`=== ... ===`) and after subsection and section headings.
+   * a line of text and no comment or math before code or list.
 
 
 
