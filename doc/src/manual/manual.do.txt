@@ -2125,14 +2125,23 @@ Doconce syntax is not treated properly.
 
 ===== General Problems =====
 
-=== Spellcheck reports a lot of mistakes related LaTeX math ===
+=== Spellcheck reports a lot of mistakes related to LaTeX math ===
 
 The `doconce spellcheck` command should ignore LaTeX math, but if
 the dollar signs for inline math are not correct (one missing, for instance),
 a lot of math enters the text to be spellchecked. Invoke the
-relevant `tmp_missing_*` file and search for the math expressions that
-are reported as misspellings. This will fortunately give you hint of
-what is wrong with the math typesetting.
+relevant `tmp_missing_*` file and find the first math-style expression that
+is reported as misspelling. Open the corresponding stripped file,
+`tmp_stripped_*`, which is supposed to have all the math stripped
+away, and search for the misspelling. When you find it, you will see
+that there are math expressions in the stripped file that should not
+be there. (Because of wrong begin and end signs around math expressions
+ordinary text has instead been stripped away. This way, a missing dollar
+sign can lead to hundreds of misspellings.)
+Find the problem in the corresponding Doconce file and correct it.
+A similar error can be caused by wrong matching
+of equation environments between `!bt` and `!et`.
+
 
 === Doconce aborts because of a syntax error that is not an error ===
 
@@ -2634,6 +2643,12 @@ doconce replace '<p class="caption">' \
 doconce replace '<hr class="figure">' \
  '<hr style="width: 50%">' mydoc.html
 !ec
+
+===== Tools for Writing Doconce Document =====
+
+ * Emacs (with the modest Doconce syntax highlighting), Vim, Gedit, etc.
+ * "TeXMaker": "http://www.xm1math.net/texmaker/" and "Kile": "http://kile.sourceforge.net/" can in theory be adapted to handle Doconce compilation and maybe even Doconce constructs.
+
 
 
 ===== Debugging =====

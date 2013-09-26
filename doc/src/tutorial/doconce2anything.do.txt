@@ -20,7 +20,7 @@ produce several different formats. The relevant commands should
 then be placed in a script that acts as a "makefile".
 
 The `doconce makefile` can be used to automatically generate
-such a makefile, more precisely a Bash script `make.sh`, which
+such a makefile, more precisely a Python script `make.py`, which
 carries out the commands explained below. If our Doconce source
 is in `main_myproj.do.txt`, we run
 
@@ -28,12 +28,12 @@ is in `main_myproj.do.txt`, we run
 doconce makefile main_myproj html pdflatex sphinx
 !ec
 to produce the necessary output for generating HTML, pdfLaTeX, and
-Sphinx. Usually, you need to edit `make.sh` to really fit your
+Sphinx. Usually, you need to edit `make.py` to really fit your
 needs. Some examples lines are inserted as comments to show
 various options that can be added to the basic commands.
-A handy feature of the generated `make.sh` script is that it
-inserts checks for successful runs of the `doconce format` commands,
-and if something goes wrong, the `make.sh` exits.
+A handy feature of the generated `make.py` script is that it
+inserts checks for successful runs of the many `doconce` commands,
+and if something goes wrong, the script aborts.
 
 
 ===== Preprocessing =====
@@ -926,6 +926,34 @@ When the Doconce file contains figures, each figure filename must in
 the `.gwiki` file be replaced by a URL where the figure is
 available. There are instructions in the file for doing this. Usually,
 one performs this substitution automatically (see next section).
+
+===== Google Docs =====
+
+Google Docs are normally made online in the interactive editor. However,
+you may upload a Doconce document to Google Docs. This requires transforming
+the Doconce document to one of the accepted formats for Google Docs:
+
+ * OpenOffice: `doconce format rst` and then run
+   `rst2odt` (or `rst2odt.py`). Upload the `.odt` file, click
+   *Open...* in Google Drive and choose *Google Docs* as viewer.
+ * MS Word: `doconce format pandoc` and then run `pandoc` to
+   produce a `.docx` file that can be uploaded to Google Drive
+   and opened in Google Docs.
+ * RTF: `doconce format pandoc` and then run `pandoc` to produce
+   a `.rtf` file that can be uploaded to Google Drive and opened.
+   Another possibility is to run `doconce format latex` and
+   then "latex2rtf": "http://sourceforge.net/projects/latex2rtf"
+   (the support of mathematics has gotten worse).
+ * Plain text: `doconce format plain`. Upload the `.txt` file
+   to Google Drive and open in Google Docs.
+ * HTML: `doconce format html`. Upload the `.html` file and
+   open in Google Docs. Complicated HTML files can be misinterpreted
+   by Google Docs.
+
+This is not yet much tested. It remains to see how code becomes in
+Google Docs. Support for mathematics is probably impossible until
+Google Docs can import LaTeX files, but LaTeX mathematics can be embedded
+in Google Docs and the "googledoc2latex": "http://code.google.com/p/googledoc2latex" script can convert a Google document to LaTeX.
 
 ===== Tweaking the Doconce Output =====
 

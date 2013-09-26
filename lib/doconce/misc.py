@@ -1973,16 +1973,12 @@ def doconce_html_split(header, parts, footer, basename, filename):
     # Fix internal links to point to the right splitted file
     name_pattern = r'<a name="(.+?)">'
     href_pattern = r'<a href="#(.+?)">'
-    label_pattern = r'\label\{(.+?)\}'  # label in latex equations
-    eqref_pattern = r'\eqref\{(.+?)\}'
     parts_name = [re.findall(name_pattern, ''.join(part)) for part in parts]
     parts_name.append(re.findall(name_pattern, ''.join(header)))
     parts_name.append(re.findall(name_pattern, ''.join(footer)))
     parts_href = [re.findall(href_pattern, ''.join(part)) for part in parts]
     parts_href.append(re.findall(href_pattern, ''.join(header)))
     parts_href.append(re.findall(href_pattern, ''.join(footer)))
-    parts_eqref = [re.findall(eqref_pattern, ''.join(part)) for part in parts]
-    parts_label = [re.findall(label_pattern, ''.join(part)) for part in parts]
 
     parts_name2part = {}   # map a name to where it is defined
     for i in range(len(parts_name)):
@@ -2020,6 +2016,11 @@ def doconce_html_split(header, parts, footer, basename, filename):
 
     # Treat \eqref and labels: MathJax does not support references
     # to eq. labels in other files
+    label_pattern = r'\label\{(.+?)\}'  # label in latex equations
+    parts_label = [re.findall(label_pattern, ''.join(part)) for part in parts]
+    eqref_pattern = r'\eqref\{(.+?)\}'
+    parts_eqref = [re.findall(eqref_pattern, ''.join(part)) for part in parts]
+
     parts_label2part = {}   # map an eq. label to where it is defined
     for i in range(len(parts_label)):
         for label in parts_label[i]:
@@ -2040,7 +2041,8 @@ def doconce_html_split(header, parts, footer, basename, filename):
     # We generate tag number for each label, in the right numbering
     # and use tags to refer to equations.
     # Info on http://stackoverflow.com/questions/16339000/how-to-refer-to-an-equation-in-a-different-page-with-mathjax
-    labels = []
+    # Tags are numbered globally
+    labels = []  # Hold all labels in a list (not list of list as parts_label)
     for i in parts_label:
         labels += i
     label2tag = {}
@@ -3849,14 +3851,54 @@ def split_rst():
 
 def doconce_rst_split(parts, basename, filename):
     """Native doconce style splitting of rst file into parts."""
-    import pprint
+    # Write the parts to file and fix references to equations.
+
+    # Fix cross-referencing of equations between parts:
+    # Replace all labels inside math environments with ordinary
+    # sphinx anchors and replace all :eq: references to equations
+    # in other parts with ordinary :ref: references. Number labels
+    # locally in files (as Sphinx automatically does), but use
+    # links of the type partnumber.labelnumber (where labelnumber
+    # is local.
+    label_pattern = r'.. math::\s+:label: (.+?)$'
+    parts_label = [re.findall(label_pattern, ''.join(part), flags=re.MULTILINE)
+                   for part in parts]
+    parts_label2part = {}   # map an eq. label to where it is defined
+    for i in range(len(parts_label)):
+        for label in parts_label[i]:  # assume all labels are unique
+            parts_label2part[label] = i
+    label2tag = {}
+    for pn, part_label in enumerate(parts_label):
+        local_eq_no = 1
+        for label in part_label:
+            label2tag[label] = '%d.%d' % (pn+1, local_eq_no)
+            local_eq_no += 1
+
 
     generated_files = []
     for pn, part in enumerate(parts):
         part_filename = '._part%04d_%s.rst' % (pn, basename)
         generated_files.append(part_filename)
+        text = ''.join(part)
+
+        for label in parts_label[pn]:
+            # All math labels get an anchor above for equation refs
+            # from other parts. The anchor is Eq:label
+            text = re.sub(r'.. math::\s+:label: %s$' % label,
+                          r".. _Eq:%s:\n\n.. math::\n   :label: %s" %
+                          (label, label), text, flags=re.MULTILINE)
+        local_eqrefs = re.findall(r':eq:`(.+?)`', text)
+        for label in local_eqrefs:
+            if parts_label2part[label] == pn:
+                # References to local labels in this part apply the
+                # standard syntax
+                pass
+            else:
+                text = text.replace(r':eq:`%s`' % label,
+                                    ':ref:`(%s) <Eq:%s>`' %
+                                    (label2tag[label], label))
         f = open(part_filename, 'w')
-        f.write(''.join(part))
+        f.write(text)
         f.close()
     return generated_files
 
