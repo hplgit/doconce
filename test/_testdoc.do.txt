@@ -54,6 +54,11 @@ Here are two lines that make up
 a block quote.
 !equote
 
+Here is a reference to Equation (ref{my:eq1}).
+# #if FORMAT in ("sphinx", "html")
+This equation appears in another part if this document is split.
+# #endif
+
 !split and check if these extra words are included properly in the comment
 
 ===== Subsection 1 =====
