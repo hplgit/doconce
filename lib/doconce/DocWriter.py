@@ -747,11 +747,14 @@ def html_movie(plotfiles, interval_ms=300, width=800, height=600,
     viewed in a browser. The images variable in the javascript code
     is unique for each movie, because it is annotated by the casename
     string, so several such javascript sections can be used in the
-    same html file.
+    same html file. If casename is just 'movie', the name of the plot
+    files is used as casename.
 
-    This function is based on code written by R.J. LeVeque, based on
+    This function is based on code written by R. J. LeVeque, based on
     a template from Alan McIntyre.
     """
+    # Alternative method:
+    # http://stackoverflow.com/questions/9486961/animated-image-with-javascript
     import os
     if not isinstance(plotfiles, (tuple,list)):
         raise TypeError('html_movie: plotfiles=%s of wrong type %s' %
@@ -761,12 +764,20 @@ def html_movie(plotfiles, interval_ms=300, width=800, height=600,
     if missing_files:
         raise ValueError('Missing plot files: %s' % str(missing_files)[1:-1])
 
-    ext = os.path.splitext(plotfiles[0])[-1]
+    filestem, ext = os.path.splitext(plotfiles[0])
     if ext == '.png' or ext == '.jpg' or ext == '.jpeg' or ext == 'gif':
         pass
     else:
-        raise ValueError('Plotfiles (%s, ...) must be PNG files with '\
-                         'extension .png' % plotfiles[0])
+        raise ValueError('Plotfiles (%s, ...) must be PNG, JPEG, or GIF files with '\
+                         'extension .png, .jpg/.jpeg, or .gif' % plotfiles[0])
+    if casename == 'movie' : # default
+        # Make a valid variable name for Javascript out of filestem
+        filestem = re.sub(r'_?\d+\.', '', filestem)
+        filestem = filestem.replace('/', '_')
+        for c in """ ,.[]{}\\"'^&%$#@!=|?""":
+            filestem = filestem.replace(c, '')
+        casename = filestem
+
     header = """\
 <html>
 <head>
@@ -778,9 +789,9 @@ def html_movie(plotfiles, interval_ms=300, width=800, height=600,
 <script language="Javascript">
 <!---
 var num_images_%(casename)s = %(no_images)d;
-var img_width = %(width)d;
-var img_height = %(height)d;
-var interval = %(interval_ms)d;
+var img_width_%(casename)s = %(width)d;
+var img_height_%(casename)s = %(height)d;
+var interval_%(casename)s = %(interval_ms)d;
 var images_%(casename)s = new Array();
 
 function preload_images_%(casename)s()
@@ -792,7 +803,7 @@ function preload_images_%(casename)s()
     for fname in plotfiles:
         jscode += """
    t.innerHTML = "Preloading image ";
-   images_%(casename)s[%(i)s] = new Image(img_width, img_height);
+   images_%(casename)s[%(i)s] = new Image(img_width_%(casename)s, img_height_%(casename)s);
    images_%(casename)s[%(i)s].src = "%(fname)s";
         """ % vars()
         i = i+1
@@ -807,27 +818,27 @@ function tick_%(casename)s()
 
    document.movie.src = images_%(casename)s[frame_%(casename)s].src;
    frame_%(casename)s += 1;
-   tt = setTimeout("tick_%(casename)s()", interval);
+   tt = setTimeout("tick_%(casename)s()", interval_%(casename)s);
 }
 
 function startup_%(casename)s()
 {
    preload_images_%(casename)s();
    frame_%(casename)s = 0;
-   setTimeout("tick_%(casename)s()", interval);
+   setTimeout("tick_%(casename)s()", interval_%(casename)s);
 }
 
-function stopit()
+function stopit_%(casename)s()
 { clearTimeout(tt); }
 
 function restart_%(casename)s()
-{ tt = setTimeout("tick_%(casename)s()", interval); }
+{ tt = setTimeout("tick_%(casename)s()", interval_%(casename)s); }
 
-function slower()
-{ interval = interval/0.7; }
+function slower_%(casename)s()
+{ interval_%(casename)s = interval_%(casename)s/0.7; }
 
-function faster()
-{ interval = interval*0.7; }
+function faster_%(casename)s()
+{ interval_%(casename)s = interval_%(casename)s*0.7; }
 
 // --->
 </script>
@@ -837,15 +848,15 @@ function faster()
 <form>
 &nbsp;
 <input type="button" value="Start movie" onClick="startup_%(casename)s()">
-<input type="button" value="Pause movie" onClick="stopit()">
+<input type="button" value="Pause movie" onClick="stopit_%(casename)s()">
 <input type="button" value="Restart movie" onClick="restart_%(casename)s()">
 &nbsp;
-<input type="button" value="Slower" onClick="slower()">
-<input type="button" value="Faster" onClick="faster()">
+<input type="button" value="Slower" onClick="slower_%(casename)s()">
+<input type="button" value="Faster" onClick="faster_%(casename)s()">
 </form>
 
 <p><div ID="progress"></div></p>
-<img src="%(plotfile0)s" name="movie" border=2/>
+<img src="%(plotfile0)s" name="_%(casename)s" border=2/>
 """ % vars()
     footer = '\n</body>\n</html>\n'
     return header, jscode, form, footer
