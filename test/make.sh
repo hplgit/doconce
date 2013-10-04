@@ -281,24 +281,32 @@ system doconce format html mako_test4 --no_pygments_html  # works fine, lines st
 system doconce csv2table testtable.csv > testtable.do.txt
 
 # Test error detection
-doconce format plain failures
 cp failures.do.txt tmp2.do.txt
+doconce format plain tmp2.do.txt
+doconce replace '`myfile.py` file' '`myfile.py`' tmp2.do.txt
+doconce format plain tmp2
 doconce subst 'failure\}\n\n!bc' 'failure}\n\nHello\n!bc' tmp2.do.txt
-doconce format rst tmp2
-doconce replace '\label' 'label' tmp2.do.txt
+doconce format sphinx tmp2.do.txt
+doconce replace '!bsubex' '' tmp2.do.txt
+doconce format sphinx tmp2.do.txt
+doconce replace '# Comment before list' '' tmp2.do.txt
+doconce format sphinx tmp2
 doconce replace '\idx' 'idx' tmp2.do.txt
 doconce replace '\cite' 'cite' tmp2.do.txt
 doconce format rst tmp2
 doconce subst -s '__Paragraph before.+!bc' '!bc' tmp2.do.txt
 doconce format rst tmp2
+doconce replace '\label' 'label' tmp2.do.txt
 doconce replace 'streamtubes width' 'streamtubes,  width' tmp2.do.txt
-doconce format rst tmp2
-doconce replace '# Comment before math' '' tmp2.do.txt
-doconce format rst tmp2
-doconce replace '# Comment before list' '' tmp2.do.txt
-doconce format rst tmp2
-doconce replace '`Google`' '`Google` site' tmp2.do.txt
-doconce format rst tmp2
+doconce format sphinx tmp2
+doconce replace '../lib/doconce/doconce.py' '_static/doconce.py' tmp2.do.txt
+doconce subst -s -m '^!bsol.+?!esol' ''  tmp2.do.txt
+doconce format sphinx tmp2
+doconce subst -s -m '^!bhint.+?!ehint' ''  tmp2.do.txt
+doconce format sphinx tmp2
+doconce replace 'doc/manual' 'doc/src/manual' tmp2.do.txt
+doconce format sphinx tmp2
+#doconce replace '# Comment before math is ok' '' tmp2.do.txt
 echo
 echo "When we reach this point in the script,"
 echo "it is clearly a successful run of all tests!"

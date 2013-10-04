@@ -71,6 +71,7 @@ def sphinx_figure(m):
     result = ''
     # m is a MatchObject
 
+    filename = m.group('filename')
     caption = m.group('caption').strip()
 
     # Stubstitute Doconce label by rst label in caption
@@ -89,7 +90,7 @@ def sphinx_figure(m):
         parts[0] = parts[0].strip()
         # insert emphasize marks if not latex $ at the
         # beginning or end (math subst does not work for *$I=1$*)
-        if not parts[0].startswith('$') and \
+        if parts[0] and not parts[0].startswith('$') and \
            not parts[0].endswith('$'):
             parts[0] = '*' + parts[0] + '*'
         #caption = '  label'.join(parts)
@@ -98,15 +99,14 @@ def sphinx_figure(m):
         # since we just want to remove the whole label as part of
         # the caption (otherwise done when handling ref and label)
 
-        # math is ignored in references to figures, test for math only
-        redcap = re.sub(r'\$.+?\$', '', caption).replace(',', '').replace('.', '').replace(';', '').replace(' ', '')
-        if not re.search(r'[A-Za-z]', redcap):
-            print 'Warning: math only in sphinx figure caption\n  %s\n' % caption
     else:
         if caption and caption[-1] == '.':
             caption = caption[:-1]
 
-    filename = m.group('filename')
+    # math is ignored in references to figures, test for math only
+    if caption.startswith('$') and caption.endswith('$'):
+        print '*** warning: math only in sphinx figure caption\n  %s\n    FIGURE: [%s' % (caption, filename)
+
     #stem = os.path.splitext(filename)[0]
     #result += '\n.. figure:: ' + stem + '.*\n'  # utilize flexibility  # does not work yet
     result += '\n.. figure:: ' + filename + '\n'
@@ -245,7 +245,7 @@ def sphinx_code(filestr, code_blocks, code_block_types,
         tex_blocks[i] = re.sub('&\s*=\s*&', ' &= ', tex_blocks[i])
         # provide warnings for problematic environments
         if '{alignat' in tex_blocks[i]:
-            print '\nWarning: the "alignat" environment will give errors in Sphinx:\n\n', tex_blocks[i], '\n'
+            print '*** warning: the "alignat" environment will give errors in Sphinx:\n\n', tex_blocks[i], '\n'
 
     # Replace all references to equations that have labels in math environments:
     for label in math_labels:
@@ -260,9 +260,9 @@ def sphinx_code(filestr, code_blocks, code_block_types,
 
     if multiple_math_labels_with_refs:
         print """
-Detected non-align equation systems with multiple labels
-(that Sphinx will not handle - labels will be removed
-and references to them will be empty):"""
+*** warning: detected non-align equation systems with multiple labels
+    (that Sphinx will not handle - labels will be removed
+    and references to them will be empty):"""
         for label in multiple_math_labels_with_refs:
             print 'label{%s}' % label
         print
@@ -528,7 +528,7 @@ def sphinx_code_orig(filestr, format):
         tex_blocks[i] = re.sub('&\s*=\s*&', ' &= ', tex_blocks[i])
         # provide warnings for problematic environments
         if '{alignat' in tex_blocks[i]:
-            print '\nWarning: the "alignat" environment will give errors in Sphinx:\n\n', tex_blocks[i], '\n'
+            print '*** warning: the "alignat" environment will give errors in Sphinx:\n', tex_blocks[i], '\n'
 
 
     filestr = insert_code_and_tex(filestr, code_blocks, tex_blocks, 'rst')

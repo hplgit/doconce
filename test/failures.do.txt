@@ -31,18 +31,25 @@ bad paragraphs?
 
 Figure with just an image.
 
-FIGURE: [../doc/manual/figs/streamtubes]
+FIGURE: [../doc/src/manual/figs/streamtubes]
 
 Figure with label, but no caption.
 
-FIGURE: [../doc/manual/figs/streamtubes] label{myl1}
+FIGURE: [../doc/src/manual/figs/streamtubes] label{myl1}
 
-Figure with no comma between filename and options:
+Figure with no comma between filename and options, and wrong path:
 
 FIGURE: [../doc/manual/figs/streamtubes width=800]
 
+Figure with math only in the caption, which causes sphinx to use an
+empty figure name:
+
+FIGURE: [../doc/manual/figs/streamtubes, width=800] $a=50$
+
+Links with mix of verbatim and plain text is not good: "`myfile.py` file": "http://some.where.net/myfile.py".
+
 More text...
-# Comment before math
+# Comment before math is ok
 !bt
 \begin{align}
 a &= b,  label{eq1}\\
@@ -57,5 +64,22 @@ a &= b,  label{eq2}
 
 Normal text.
 
+===== Normal section with exercise envirs are detected by syntax checks =====
 
+!bhint
+Here is a hint.
+!ehint
+
+Normal text.
+
+!bsubex
+Just a loner subexercise begin.
+!bsol
+Here is a solution.
+!esol
+Normal text.
+
+===== Links to local files shall give warning =====
+
+Try this "link": "../lib/doconce/doconce.py".
 

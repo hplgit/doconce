@@ -103,7 +103,7 @@ def syntax_check(filestr, format):
         pattern = re.compile(r'^ +![eb]%s' % envir, re.MULTILINE)
         m = pattern.search(filestr)
         if m:
-            print '\nSyntax error: !b%s and/or !e%s not at the beginning of the line' % (envir, envir)
+            print '\n*** error: !b%s and/or !e%s not at the beginning of the line' % (envir, envir)
             print repr(filestr[m.start():m.start()+120])
             _abort()
 
@@ -124,7 +124,7 @@ def syntax_check(filestr, format):
     pattern = re.compile(r'[^\n:.?!,]^(!b[ct]|@@@CODE)', re.MULTILINE)
     m = pattern.search(filestr)
     if m:
-        print '\nSyntax error: Line before !bc/!bt/@@@CODE block\nends with wrong character (must be among [\\n:.?!, ]):'
+        print '\n*** error: line before !bc/!bt/@@@CODE block\nends with wrong character (must be among [\\n:.?!, ]):'
         print repr(filestr[m.start():m.start()+80])
         _abort()
 
@@ -142,7 +142,7 @@ def syntax_check(filestr, format):
                              re.MULTILINE)
         m = pattern.search(filestr2)
         if m and format in ('rst', 'plain', 'epytext', 'st'):
-            print '\nSyntax error: Must have a plain sentence before\na code block like !bc/!bt/@@@CODE, not a section/paragraph heading,\ntable, or comment:'
+            print '\n*** error: must have a plain sentence before\na code block like !bc/!bt/@@@CODE, not a section/paragraph heading,\ntable, or comment:'
             print filestr2[m.start()-40:m.start()+80]
             _abort()
 
@@ -265,8 +265,8 @@ def syntax_check(filestr, format):
         if line.strip().startswith('==='):
             w = line.split()
             if w[0] != w[-1]:
-                print '\ninconsistent no of = in heading:\n', line
-                print 'lengths: %d and %d, must be equal and odd' % \
+                print '\n*** error: inconsistent no of = in heading:\n', line
+                print '      lengths: %d and %d, must be equal and odd' % \
                       (len(w[0]), len(w[-1]))
                 _abort()
 
@@ -288,8 +288,8 @@ def syntax_check(filestr, format):
         if prefix[-1] == 's':
             prefix = prefix[:-1]  # skip plural
         if not prefix.lower() in prefixes:
-            print 'found reference "%s %s" with unexpected word "%s" in front' % (prefix, ref, prefix),
-            print '(reference to equation, but missing parenthesis in (%s)?)' % (ref)
+            print '*** warning: found reference "%s %s" with unexpected word "%s" in front' % (prefix, ref, prefix),
+            print '    (reference to equation, but missing parenthesis in (%s)?)' % (ref)
 
     # Code/tex blocks cannot have a comment, table, figure, etc.
     # right before them
@@ -304,7 +304,7 @@ def syntax_check(filestr, format):
                              re.MULTILINE)
         m = pattern.search(filestr)
         if m and format in ('rst', 'sphinx'):
-            print '\nSyntax error: Line before list, !bc, !bt or @@@CODE block is a %s line\nwhich will "swallow" the block in reST format.\nInsert some extra line (text) to separate the two elements.' % construction
+            print '\n*** error: line before list, !bc, !bt or @@@CODE block is a %s line\nwhich will "swallow" the block in reST format.\n    Insert some extra line (text) to separate the two elements.' % construction
             print filestr[m.start():m.start()+80]
             _abort()
 
@@ -363,7 +363,7 @@ def syntax_check(filestr, format):
     pattern = r'__[A-Z][A-Za-z0-9,:` ]+__\.'
     matches = re.findall(pattern, filestr)
     if matches:
-        print '\nSyntax error: Wrong paragraphs'
+        print '\n*** error: wrong paragraphs'
         print '\n'.join(matches)
         _abort()
 
@@ -384,8 +384,7 @@ def syntax_check(filestr, format):
     cpattern = re.compile(pattern, re.MULTILINE)
     matches = cpattern.findall(filestr)
     if matches:
-        print '\nSyntax error in FIGURE specification'\
-              '\nmissing comma after filename, before options'
+        print '*** error: missing comma after filename, before options in FIGURE'
         print '\n'.join(matches)
         _abort()
 
@@ -394,8 +393,7 @@ def syntax_check(filestr, format):
     cpattern = re.compile(pattern, re.MULTILINE)
     matches = cpattern.findall(filestr)
     if matches:
-        print '\nSyntax error in MOVIE specification'\
-              '\nmissing comma after filename, before options'
+        print '\n*** error: missing comma after filename, before options in MOVIE'
         print '\n'.join(matches)
         _abort()
 
@@ -406,8 +404,7 @@ def syntax_check(filestr, format):
         cpattern = re.compile(pattern, re.MULTILINE)
         matches = cpattern.findall(filestr)
         if matches:
-            print '\nSyntax error in %s specification:'\
-                  '%s must appear at the beginning of the line!' % (kw,kw)
+            print '\n*** error: %s specification must be at the beginning of a line' % kw
             print '\n'.join(matches)
             _abort()
 
@@ -417,8 +414,7 @@ def syntax_check(filestr, format):
         cpattern = re.compile(pattern, re.MULTILINE)
         matches = cpattern.findall(filestr)
         if matches:
-            print '\nSyntax error in %s: specification'\
-                  '\nmissing colon after keyword' % kw
+            print '\n*** error: missing colon after %s specification' % kw
             print '\n'.join(matches)
             _abort()
 
@@ -436,14 +432,14 @@ def syntax_check(filestr, format):
         if md or mt or ma:
             if not (md and mt and ma):
                 print """
-Syntax error: latex format requires TITLE, AUTHOR and DATE to be
-specified if one of them is present."""
+*** error: latex format requires TITLE, AUTHOR and DATE to be
+    specified if one of them is present."""
                 if not md:
-                    print 'DATE is missing'
+                    print '    DATE is missing'
                 if not mt:
-                    print 'TITLE is missing'
+                    print '    TITLE is missing'
                 if not ma:
-                    print 'AUTHOR is missing '
+                    print '    AUTHOR is missing '
                 _abort()
 
     if format == "sphinx":
@@ -460,11 +456,11 @@ specified if one of them is present."""
                     link.startswith('_static')):
                 links2local.append(link)
         for link in links2local:
-            print '*** warning: hyperlink to URL %s is to a local file,\n  - recommended to be _static/%s for sphinx' % (link, link)
+            print '*** warning: hyperlink to URL %s is to a local file,\n    recommended to be _static/%s for sphinx' % (link, os.path.basename(link))
         if links2local:
-            print '*** move linked files to _static and change URLs'
-            print '    (unless you really know that the links will be correct'
-            print '    when the sphinx build directory is moved to its final destination)'
+            print '    move linked file to _static and change URLs unless'
+            print '    you really know that the links will be correct when the'
+            print '    sphinx build directory is moved to its final destination'
             #_abort()  # no abort since some documentation has local URLs for illustration
 
     return None
@@ -971,6 +967,31 @@ def exercises(filestr, format, code_blocks, tex_blocks):
         debugpr('\n%s\n**** The file after interpreting exercises ***\n\n%s\n%s\n\n\n' % ('-'*80, filestr, '-'*80))
     else:
         debugpr('No exercises found.\n')
+
+    # Syntax check: must be no more exercise-specific environments left
+    envirs = ['ans', 'sol', 'subex', 'hint', 'remarks']
+    for envir in envirs:
+        begin = '!b' + envir
+        end = '!e' + envir
+        found_pairs = False
+        # Find pairs
+        blocks = re.findall(r'^%s.+?^%s' % (begin, end), filestr,
+                            flags=re.DOTALL|re.MULTILINE)
+        if blocks:
+            found_pairs = True
+            print '*** error: %s-%s block is not legal outside an exercise' % \
+                  (begin, end)
+            print '    (or problem/project/example) section:'
+            for block in blocks:
+                print block
+            _abort()
+        # Find single occurences (syntax error)
+        if not found_pairs:
+            m = re.search(r'^![be]%s' % envir, filestr, flags=re.MULTILINE)
+            if m:
+                print '*** error: found !b%s or !e%s outside exercise section' % envir
+                print repr(filestr[m.start():m.start()+120])
+                _abort()
 
     return filestr
 
