@@ -816,7 +816,7 @@ function tick_%(casename)s()
    if (frame_%(casename)s > num_images_%(casename)s - 1)
        frame_%(casename)s = 0;
 
-   document.movie.src = images_%(casename)s[frame_%(casename)s].src;
+   document.name_%(casename)s.src = images_%(casename)s[frame_%(casename)s].src;
    frame_%(casename)s += 1;
    tt = setTimeout("tick_%(casename)s()", interval_%(casename)s);
 }
@@ -856,7 +856,7 @@ function faster_%(casename)s()
 </form>
 
 <p><div ID="progress"></div></p>
-<img src="%(plotfile0)s" name="_%(casename)s" border=2/>
+<img src="%(plotfile0)s" name="name_%(casename)s" border=2/>
 """ % vars()
     footer = '\n</body>\n</html>\n'
     return header, jscode, form, footer

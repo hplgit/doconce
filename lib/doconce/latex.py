@@ -116,17 +116,17 @@ def latex_code(filestr, code_blocks, code_block_types,
                      count=1)
     filestr = re.sub(appendix_pattern, r'\\\g<1>{', filestr) # all others
 
-    # Make sure exercises are surrounded by \begin{exercise} and
-    # \end{exercise} with some exercise counter
+    # Make sure exercises are surrounded by \begin{doconce:exercise} and
+    # \end{doconce:exercise} with some exercise counter
     #comment_pattern = INLINE_TAGS_SUBST[format]['comment'] # only in doconce.py
     comment_pattern = '%% %s'
     pattern = comment_pattern % envir_delimiter_lines['exercise'][0] + '\n'
-    replacement = pattern + r"""\begin{exercise}
-\refstepcounter{exerciseno}
+    replacement = pattern + r"""\begin{doconce:exercise}
+\refstepcounter{doconce:exercise:counter}
 """
     filestr = filestr.replace(pattern, replacement)
     pattern = comment_pattern % envir_delimiter_lines['exercise'][1] + '\n'
-    replacement = r'\end{exercise}' + '\n' + pattern
+    replacement = r'\end{doconce:exercise}' + '\n' + pattern
     filestr = filestr.replace(pattern, replacement)
 
     if include_numbering_of_exercises:
@@ -1238,6 +1238,10 @@ def define(FILENAME_EXTENSION,
 %% see examples).
 % #endif
 
+% #ifndef LATEX_STYLE
+% #define LATEX_STYLE "std"
+% #endif
+
 % #ifndef LATEX_HEADING
 % #define LATEX_HEADING "doconce_heading"
 % #endif
@@ -1253,6 +1257,7 @@ def define(FILENAME_EXTENSION,
 
 % #ifdef PREAMBLE
 %-------------------- begin preamble ----------------------
+% #if LATEX_STYLE == "std"
 """
 
     m = re.search(r'^\s*=========\s*.+?=========', filestr, flags=re.MULTILINE)
@@ -1274,6 +1279,19 @@ final,                   % or draft (marks overfull hboxes)
 """
 
     INTRO['latex'] += r"""
+% #elif LATEX_STYLE == "Springer_lncse"
+% Style: Lecture Notes in Computational Science and Engineering (Springer)
+\documentclass[envcountsect,open=right]{lncse}
+\pagestyle{headings}
+% #elif LATEX_STYLE == "Springer_T2"
+% Style: T2 (Springer)
+\documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmono}
+\usepackage{t2}
+% #elif LATEX_STYLE == "Springer_llcse"
+% Style: Lecture Notes in Computer Science (Springer)
+\documentclass[oribib]{llncs}
+% #endif
+
 \listfiles               % print all files needed to compile this document
 
 % #ifdef A4PAPER
@@ -1699,8 +1717,8 @@ final,                   % or draft (marks overfull hboxes)
     for exer_envir in exer_envirs:
         if exer_envir + ':' in filestr:
             INTRO['latex'] += r"""
-\newenvironment{exercise}{}{}
-\newcounter{exerciseno}
+\newenvironment{doconce:exercise}{}{}
+\newcounter{doconce:exercise:counter}
 """
             break
 
