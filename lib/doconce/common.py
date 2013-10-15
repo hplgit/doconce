@@ -684,7 +684,7 @@ INLINE_TAGS = {
     # `verbatim inline text is enclosed in back quotes`
     'verbatim':
     r'%s`(?P<subst>[^ ][^`]*)`%s' % \
-    (inline_tag_begin, inline_tag_end),
+    (inline_tag_begin, r"(?P<end>($|[.,?!;:)}'\s-]))"), # inline_tag_end and '
 
     # _underscore before and after signifies bold_
     'bold':

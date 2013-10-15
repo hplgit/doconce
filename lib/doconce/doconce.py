@@ -1241,7 +1241,8 @@ def typeset_envirs(filestr, format):
             # else: other envirs for slides are treated later with
             # the begin and end directives set in comments, see doconce2format
 
-        pattern = r'^!b%s([A-Za-z0-9,.!:? /()\-]*?)\n(.+?)\s*^!e%s\s*' % (envir, envir)
+        #pattern = r'^!b%s([A-Za-z0-9,.!:? /()\-]*?)\n(.+?)\s*^!e%s\s*' % (envir, envir)
+        pattern = r'^!b%s(.*?)\n(.+?)\s*^!e%s\s*' % (envir, envir)
         filestr = re.sub(pattern, subst, filestr,
                          flags=re.DOTALL | re.MULTILINE)
     return filestr
@@ -1490,7 +1491,8 @@ def handle_figures(filestr, format):
     # First check if the figure files are of right type, then
     # call format-specific functions for how to format the figures.
 
-    files = [filename for filename, options, caption in c.findall(filestr)]
+    files = [filename.strip()
+             for filename, options, caption in c.findall(filestr)]
     if type(FIGURE_EXT[format]) is str:
         extensions = [FIGURE_EXT[format]]  # wrap in list
     else:
@@ -2340,9 +2342,12 @@ def doconce2format(filestr, format):
         if m:
             # Found, but can be inside code block (should have |[be].+ then)
             # and hence not necessarily an error
-            print '*** warning: found environment begin/end %s' % m.group(1)
-            print '    context:\n----------------------------------'
+            print '*** error: could not translate environment: %s' % m.group(1)
+            print '    context:\n'
             print filestr[m.start()-50:m.end()+50]
+            print '    possible reason: syntax error or bug in doconce'
+            _abort()
+
 
     # Final step: replace environments starting with | (instead of !)
     # by ! (for illustration of doconce syntax inside !bc/!ec directives).
