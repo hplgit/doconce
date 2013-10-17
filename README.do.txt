@@ -10,11 +10,11 @@ You should take a look at Doconce if any of these questions are of interest.
 ===== Highlights =====
 
  * Minimally tagged markup language (like Markdown) with strong support for small and large scale projects involving much math and code in the text.
- * For documents with math and code, you can generate clean plain LaTeX (PDF), HTML (with MathJax and pygments - embedded in your own templates), Sphinx for nice web layouts, Markdown, IPython notebooks, HTML for Google or Wordpress blogging, and MediaWiki. LaTeX output is in the ptex2tex format for very flexible typesetting of computer code. Doconce can output other formats (with no support for nicely typeset math and code): plain untagged text, Google wiki, Creole wiki, and reStructuredText. From Markdown or reStructuredText you can go to XML, DocBook, MS Word, and many other formats.
- * The document source is first preprocessed by preprocess and mako, which gives you full programming capabilities in the text. For example, with mako it is easy to write a book with all computer code examples in both Matlab and Python, and you determine at compile time of the Doconce document whether the book features Matlab or Python.
- * Doconce extends Sphinx, Markdown, and MediaWiki output such that LaTeX align environments with labels work for systems of equations.
- * One source for the text can be used for different media: traditional books, ebooks in PDF, ebooks in PDF for phones, ebooks in HTML with various layouts, and blogs.
- * Doconce makes it very easy to write slides with nice math and code. Both LaTeX Beamer and HTML5 slides (reveal.js and deck.js) are supported. Slide elements can be arranged in cells to easily control the layout.
+ * For documents with math and code, you can generate clean plain LaTeX (PDF), HTML (with MathJax and pygments - embedded in your own templates), Sphinx for nice web layouts, Markdown, IPython notebooks, HTML for Google or Wordpress blog splots, and MediaWiki. LaTeX output is in the ptex2tex format for very flexible typesetting of computer code. Doconce can output other formats (with no support for nicely typeset math and code): plain untagged text, Google wiki, Creole wiki, and reStructuredText. From Markdown or reStructuredText you can go to XML, DocBook, epub, OpenOffice/LibreOffice, MS Word, and many other formats.
+ * The document source is first preprocessed by preprocess and mako, which gives you full programming capabilities in the text. For example, with mako it is easy to write a book with all computer code examples in two alternative languages (say Matlab and Python), and you determine at compile time of the Doconce document which language to choose.
+ * Doconce extends Sphinx, Markdown, and MediaWiki output such that LaTeX align environments with labels work for systems of equations. Doconce can also adjust Sphinx and HTML output such that it is possible to refer to equations outside the current HTML page.
+ * One source for the text can be used for different media: traditional paper-based books, ebooks in PDF, ebooks in PDF for phones, ebooks in HTML with various layouts, and blog spots.
+ * Doconce makes it very easy to write slides with nice math and code, especially if you have the contents in text already available in Doconce (basically you strip away text, insert bullet points or brief summary blocks, keep some figures, math, and code). Both LaTeX Beamer and HTML5 slides (reveal.js and deck.js) are supported. Slide elements can be arranged in cells to easily control the layout.
 
 ===== Installation =====
 
@@ -56,12 +56,4 @@ These documents are under development...
 ===== License =====
 
 Doconce is licensed under the BSD license, see the included LICENSE file.
-
-The files `doc/manual/figs/streamtubes.*` and
-`doc/manual/figs/wavepacket.*` was made by the Doconce author and is
-released under the same conditions as doconce.
-
-The file `doc/manual/figs/mjolnir.mpeg` was made by Dr. Sylfest
-Glimsdal, University of Oslo and is, with his permission, released
-under the same conditions as doconce.
 
