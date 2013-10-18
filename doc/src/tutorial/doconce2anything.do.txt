@@ -202,19 +202,19 @@ raw HTML code. Google's Blogger service (`blogger.com` or
 `blogname.blogspot.com`) is particularly well suited since it also
 allows extensive LaTeX mathematics via MathJax.
 
- o Write the blog text as a Doconce document without any
+ o Write the text of the blog post as a Doconce document without any
    title, author, and date.
  o Generate HTML as described above.
  o Copy the text and paste it into the
-   text area in the blog (just delete the HTML code that initially
+   text area in the blog post (just delete the HTML code that initially
    pops up in the text area). Make sure the input format is HTML.
 
 See a "simple blog example": "http://doconce.blogspot.no" and
 a "scientific report": "http://doconce-report-demo.blogspot.no/"
-for demonstrations of blogs at `blogspot.no`.
+for demonstrations of blog posts at `blogspot.no`.
 
 !bwarning
-In the readers' comments after the blog one cannot paste raw HTML
+In the readers' comments after the blog post one cannot paste raw HTML
 code with MathJax
 scripts so there is no support for mathematics in the discussion forum.
 !ewarning
@@ -232,14 +232,14 @@ for figname in fig1 fig2 fig3; do
           mydoc2.do.txt
 done
 doconce format html mydoc2
-# Paste mydoc2.html into a new blog page
+# Paste mydoc2.html into a new blog post page
 !ec
 !enotice
 
 Blog posts at Google can also be published "automatically through email":
 "http://support.google.com/blogger/bin/answer.py?hl=en&answer=41452".
 A Python program can send the contents of the HTML file
-to the blog's email address using the packages  `smtplib` and `email`.
+to the blog site's email address using the packages  `smtplib` and `email`.
 
 WordPress (`wordpress.com`) allows raw HTML code in blogs,
 but has very limited
@@ -248,7 +248,7 @@ LaTeX support, basically only formulas. The `--wordpress` option to
 in a way that is acceptable to WordPress.
 Look at a "simple doconce example": "http://doconce.wordpress.com"
 and a "scientific report": "http://doconcereportdemo.wordpress.com/"
-to see blogging with mathematics and code on WordPress.
+to see blog posts with mathematics and code on WordPress.
 
 Speaking of WordPress, the related project URL:
 "http://pressbooks.com" can take raw HTML code (from Doconce, for

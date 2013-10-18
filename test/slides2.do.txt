@@ -91,7 +91,7 @@ Old days (1985-2005): LaTeX for BW paper output, but now
    o Colorful PDF books (printed and screen)
    o Designed web pages
    o Wikis
-   o Bloggs
+   o Blog posts
    o Next new fancy format (iBook w/LaTeX?)
 !eslidecell
 
@@ -106,7 +106,7 @@ FIGURE: [../doc/src/slides/fig/jungle_with_mess.jpg, width=500]
 When I write some scientific material,
 
  * a LaTeX document,
- * a blogg (HTML),
+ * a blog post (HTML),
  * some web pages (HTML),
  * a Sphinx document,
  * some Markdown files,
@@ -163,7 +163,7 @@ URL: "http://hplgit.github.com/teamods/writing_reports/"
  * LaTeX-based PDF "for screen": "http://hplgit.github.com/teamods/writing_reports/_static/report.pdf", "for printing": "http://hplgit.github.com/teamods/writing_reports/_static/report_4printing.pdf", "for phone": "http://hplgit.github.com/teamods/writing_reports/_static/report_4phone.pdf"
  * "Plain HTML": "http://hplgit.github.com/teamods/writing_reports/_static/report_do.html" or with a "template": "http://hplgit.github.com/teamods/writing_reports/_static/report_vagrant.html" or "another template": "http://hplgit.github.com/teamods/writing_reports/_static/report_github_minimal.html" or "solarized": "http://hplgit.github.com/teamods/writing_reports/_static/report_solarized.html"
  * Sphinx: "agni": "http://hplgit.github.com/teamods/writing_reports/_static/sphinx-agni/index.html", "pyramid": "http://hplgit.github.com/teamods/writing_reports/_static/sphinx-pyramid/report.html", "classy": "http://hplgit.github.com/teamods/writing_reports/_static/sphinx-classy/report.html", "fenics": "http://hplgit.github.com/teamods/writing_reports/_static/sphinx-fenics_minimal/report.html", "redcloud": "http://hplgit.github.com/teamods/writing_reports/_static/sphinx-fenics_minimal/report.html"
- * HTML for "Google": "http://doconce-report-demo.blogspot.no/" or "Wordpress": "http://doconcereportdemo.wordpress.com/" blogs
+ * HTML for "Google": "http://doconce-report-demo.blogspot.no/" or "Wordpress": "http://doconcereportdemo.wordpress.com/" blog posts
  * "MediaWiki": "http://doconcedemo.shoutwiki.com/wiki/Doconce_demo_page" (Wikipedia, Wikibooks, etc)
  * Doconce "source code": "http://hplgit.github.com/teamods/writing_reports/_static/report.do.txt.html" and "manual": "http://hplgit.github.io/doconce/doc/src/pub/manual/html/manual.html"
 

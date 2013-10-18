@@ -108,7 +108,7 @@ FIGURE: [fig/jungle_with_mess.jpg, width=500]
 When I write some scientific material,
 
  * a LaTeX document,
- * a blogg (HTML),
+ * a blog post (HTML),
  * some web pages (HTML),
  * a Sphinx document,
  * some Markdown files,
@@ -139,7 +139,7 @@ Probably not, but I have a solution :-)
    visualization
  * _MediaWiki_: quite good LaTeX math support (cf. Wikipedia)
  * Other _wiki_ formats: no math support, great for collaborative editing
- * _Wordpress_: supports LaTeX *formulas* only, but good blogging support
+ * _Wordpress_: supports LaTeX *formulas* only, but good blog post support
  * _Google blogger_: supports full HTML with MathJax
  * _Epydoc_: old tool for Python code documentation
  * _Plain text for email_: no math, just raw LaTeX, and no tagging
@@ -278,7 +278,7 @@ URL: "http://hplgit.github.com/teamods/writing_reports/"
  * LaTeX-based PDF "for screen": "http://hplgit.github.com/teamods/writing_reports/_static/report.pdf", "for printing": "http://hplgit.github.com/teamods/writing_reports/_static/report_4printing.pdf", "for phone": "http://hplgit.github.com/teamods/writing_reports/_static/report_4phone.pdf"
  * "Plain HTML": "http://hplgit.github.com/teamods/writing_reports/_static/report_do.html" or with a "template": "http://hplgit.github.com/teamods/writing_reports/_static/report_vagrant.html" or "another template": "http://hplgit.github.com/teamods/writing_reports/_static/report_github_minimal.html" or "solarized": "http://hplgit.github.com/teamods/writing_reports/_static/report_solarized.html"
  * Sphinx: "agni": "http://hplgit.github.com/teamods/writing_reports/_static/sphinx-agni/index.html", "pyramid": "http://hplgit.github.com/teamods/writing_reports/_static/sphinx-pyramid/report.html", "classy": "http://hplgit.github.com/teamods/writing_reports/_static/sphinx-classy/report.html", "fenics": "http://hplgit.github.com/teamods/writing_reports/_static/sphinx-fenics_minimal/report.html", "redcloud": "http://hplgit.github.com/teamods/writing_reports/_static/sphinx-fenics_minimal/report.html"
- * HTML for "Google": "http://doconce-report-demo.blogspot.no/" or "Wordpress": "http://doconcereportdemo.wordpress.com/" for blogging
+ * HTML for "Google": "http://doconce-report-demo.blogspot.no/" or "Wordpress": "http://doconcereportdemo.wordpress.com/" for blog posts
  * "MediaWiki": "http://doconcedemo.shoutwiki.com/wiki/Doconce_demo_page" (Wikipedia, Wikibooks, etc)
  * Doconce "source code": "http://hplgit.github.com/teamods/writing_reports/_static/report.do.txt.html" and "tutorial": "http://hplgit.github.io/doconce/doc/pub/tutorial/html/index.html"
 
@@ -923,9 +923,9 @@ doconce slides_html doconcefile reveal --html_slide_theme=darkgray
 !ec
 
 !split
-======= Output for blogging =======
+======= Output for blog posts =======
 
-Two types of blogs are supported:
+Two formats of blog posts are supported:
 
  * Google's "blogspot.com": "http://doconce-report-demo.blogspot.no/":
    just paste the raw HTML (full support of math and code)

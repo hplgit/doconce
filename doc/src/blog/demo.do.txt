@@ -1,4 +1,4 @@
-# This is a demo of a blog shown on
+# This is a demo of a blog post shown on
 # http://doconce.blogspot.com
 # http://doconce.shoutwiki.com/wiki/Doconce_demo
 # http://doconcedemo.jumpwiki.com/wiki/First_demo
@@ -82,7 +82,7 @@ MOVIE: [http://www.youtube.com/watch?v=75Ju0eM5T2c]
    "`demo.do.txt`": "https://github.com/hplgit/doconce/blob/master/doc/blog/demo.do.txt", run
    `doconce format html demo` to produce the HTML code, stored in
    "`demo.html`": "https://github.com/hplgit/doconce/blob/master/doc/blog/demo.html.html".
- o Copy the text in `demo.html` into the blog text area on
+ o Copy the text in `demo.html` into the blog post's text area on
    URL: "http://doconce.blogspot.com" site, , using *HTML* mode.
  o Remember to first choose the *HTML-code* tab (and not just *Write*)
    and to place the copied text between the `div` tags.
@@ -92,7 +92,7 @@ MOVIE: [http://www.youtube.com/watch?v=75Ju0eM5T2c]
    "`demo.do.txt`": "https://github.com/hplgit/doconce/blob/master/doc/blog/demo.do.txt.html", run
    `doconce format html demo --wordpress` to produce the HTML code, stored in
    "`demo.html`": "https://github.com/hplgit/doconce/blob/master/doc/blog/demo_wordpress.html.html".
- o Copy the text in `demo.html` into the blog text area on
+ o Copy the text in `demo.html` into the blog post's text area on
    URL: "http://doconce.wordpress.com" site, using *Text* mode (not *Visual*!).
  o Remember to first choose the *HTML-code* tab (and not just *Write*)
    and to place the copied text between the `div` tags.
