@@ -163,8 +163,8 @@ css_blueish = """\
       color: #000000;
     }
     h1 { font-size: 1.8em; color: #1e36ce; }
-    h2 { font-size: 1.5em; color: #1e36ce; }
-    h3 { color: #1e36ce; }
+    h2 { font-size: 1.6em; color: #1e36ce; }
+    h3 { font-size: 1.4em; color: #1e36ce; }
     a { color: #1e36ce; text-decoration:none; }
     tt { font-family: "Courier New", Courier; }
     pre { background: #ededed; color: #000; padding: 15px;}
@@ -187,8 +187,8 @@ css_blueish2 = """\
       color: #000000;
     }
     h1 { font-size: 1.8em; color: #1e36ce; }
-    h2 { font-size: 1.5em; color: #1e36ce; }
-    h3 { color: #1e36ce; }
+    h2 { font-size: 1.6em; color: #1e36ce; }
+    h3 { font-size: 1.4em; color: #1e36ce; }
     a { color: #1e36ce; text-decoration:none; }
     tt { font-family: "Courier New", Courier; }
     pre {
@@ -216,8 +216,9 @@ css_bloodish = """\
       background: #ffffff;
     }
     h1 { font-size: 1.8em;  color: #8A0808; }
-    h2 { font-size: 1.5em;  color: #8A0808; }
-    h3, h4 { color: #8A0808; }
+    h2 { font-size: 1.6em;  color: #8A0808; }
+    h3 { font-size: 1.4em;  color: #8A0808; }
+    h4 { color: #8A0808; }
     a { color: #8A0808; text-decoration:none; }
     tt { font-family: "Courier New", Courier; }
     pre { background: #ededed; color: #000; padding: 15px;}
@@ -431,7 +432,11 @@ def html_code(filestr, code_blocks, code_block_types,
         newcommands = ''
         for filename in newcommands_files:
             f = open(filename, 'r')
-            text = f.read().strip()
+            text = ''
+            for line in f.readlines():
+                if not line.startswith('%'):
+                    text += line
+            text = text.strip()
             if text:
                 newcommands += '\n<!-- %s -->\n' % filename + '$$\n' + text \
                                + '\n$$\n\n'
