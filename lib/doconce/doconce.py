@@ -1333,17 +1333,24 @@ def typeset_lists(filestr, format, debug_info=[]):
                 debugpr('  > This is just a comment line')
                 # the comment can be propagated to some formats
                 # (rst, latex, html):
-                line = line[1:]  # strip off initial #
                 if 'comment' in INLINE_TAGS_SUBST[format]:
                     comment_action = INLINE_TAGS_SUBST[format]['comment']
                     if isinstance(comment_action, str):
-                        new_comment = comment_action % line.strip()
+                        new_comment = comment_action % line[1:].strip()
                     elif callable(comment_action):
-                        new_comment = comment_action(line.strip())
-                    result.write(new_comment + '\n')
+                        new_comment = comment_action(line[1:].strip())
+
+                    # end of exercises is a special delimiter line
+                    if not '--- end exercise ---' in line:
+                        result.write(new_comment + '\n')
+                    else:
+                        line = new_comment  # will be printed later
 
             lastline = line
-            continue
+            if not '--- end exercise ---' in line:
+                continue
+            # else: just proceed and use zero indent as indicator
+            # for end of list
 
         # structure of a line:
         linescan = re.compile(

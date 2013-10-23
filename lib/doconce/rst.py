@@ -447,7 +447,7 @@ def define(FILENAME_EXTENSION,
         #'section':       lambda m: '%s\n%s' % (m.group('subst'), '='*len(m.group('subst').decode('latin-1'))),
         'subsection':    lambda m: '%s\n%s' % (m.group('subst'), '-'*len(m.group('subst').decode('latin-1'))),
         'subsubsection': lambda m: '%s\n%s\n' % (m.group('subst'), '~'*len(m.group('subst').decode('latin-1'))),
-        'paragraph':     r'*\g<subst>* ',  # extra blank
+        'paragraph':     r'**\g<subst>**\n',  # extra newline
         'abstract':      r'\n*\g<type>.* \g<text>\n\g<rest>',
         #'title':         r'======= \g<subst> =======\n',  # doconce top section, must be the highest section level (but no higher than others, need more code)
         'title':         None, # taken care of in ref_and_label_commoncode
