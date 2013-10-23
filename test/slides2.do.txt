@@ -91,7 +91,7 @@ Old days (1985-2005): LaTeX for BW paper output, but now
    o Colorful PDF books (printed and screen)
    o Designed web pages
    o Wikis
-   o Bloggs
+   o Blog posts
    o Next new fancy format (iBook w/LaTeX?)
 !eslidecell
 
@@ -106,7 +106,7 @@ FIGURE: [../doc/src/slides/fig/jungle_with_mess.jpg, width=500]
 When I write some scientific material,
 
  * a LaTeX document,
- * a blogg (HTML),
+ * a blog post (HTML),
  * some web pages (HTML),
  * a Sphinx document,
  * some Markdown files,
@@ -163,7 +163,7 @@ URL: "http://hplgit.github.com/teamods/writing_reports/"
  * LaTeX-based PDF "for screen": "http://hplgit.github.com/teamods/writing_reports/_static/report.pdf", "for printing": "http://hplgit.github.com/teamods/writing_reports/_static/report_4printing.pdf", "for phone": "http://hplgit.github.com/teamods/writing_reports/_static/report_4phone.pdf"
  * "Plain HTML": "http://hplgit.github.com/teamods/writing_reports/_static/report_do.html" or with a "template": "http://hplgit.github.com/teamods/writing_reports/_static/report_vagrant.html" or "another template": "http://hplgit.github.com/teamods/writing_reports/_static/report_github_minimal.html" or "solarized": "http://hplgit.github.com/teamods/writing_reports/_static/report_solarized.html"
  * Sphinx: "agni": "http://hplgit.github.com/teamods/writing_reports/_static/sphinx-agni/index.html", "pyramid": "http://hplgit.github.com/teamods/writing_reports/_static/sphinx-pyramid/report.html", "classy": "http://hplgit.github.com/teamods/writing_reports/_static/sphinx-classy/report.html", "fenics": "http://hplgit.github.com/teamods/writing_reports/_static/sphinx-fenics_minimal/report.html", "redcloud": "http://hplgit.github.com/teamods/writing_reports/_static/sphinx-fenics_minimal/report.html"
- * HTML for "Google": "http://doconce-report-demo.blogspot.no/" or "Wordpress": "http://doconcereportdemo.wordpress.com/" blogs
+ * HTML for "Google": "http://doconce-report-demo.blogspot.no/" or "Wordpress": "http://doconcereportdemo.wordpress.com/" blog posts
  * "MediaWiki": "http://doconcedemo.shoutwiki.com/wiki/Doconce_demo_page" (Wikipedia, Wikibooks, etc)
  * Doconce "source code": "http://hplgit.github.com/teamods/writing_reports/_static/report.do.txt.html" and "manual": "http://hplgit.github.io/doconce/doc/src/pub/manual/html/manual.html"
 
@@ -421,30 +421,30 @@ files = flip_coin.py, flip_coin.pdf
 solutions = mysol.txt, mysol_flip_coin.py
 keywords = random numbers; Monte Carlo simulation
 
-!bsubex
+|bsubex
 Make a program that simulates flipping a coin $N$ times.
 
-!bhint
+|bhint
 Use `r = random.random()` and define head as `r <= 0.5`.
-!ehint
-!esubex
+|ehint
+|esubex
 
-!bsubex
+|bsubex
 Compute the probability of getting heads.
 
-!bans
+|bans
 A short answer: 0.5.
-!eans
+|eans
 
-!bsol
+|bsol
 A full solution to this subexercise can go here.
-!esol
-!esubex
+|esol
+|esubex
 
-!bsubex
+|bsubex
 Make another program that computes the probability
 of getting at least three heads out of 5 throws.
-!esubex
+|esubex
 !ec
 
 Solutions/answers can easily be left out of the document.
@@ -547,27 +547,27 @@ a figure to the right (two cells, numbered 00 and 01).
 !split
 ======= Headline =======
 
-!bslidecell 00
-!bpop
+|bslidecell 00
+|bpop
  * Key point 1
  * Key point 2
  * Key point 3 takes very much more text to explain because
    this point is really comprehensive, and although long
    bullet points are not recommended in general, we need
    it here for demonstration purposes
-!epop
+|epop
 
-!bpop
+|bpop
 |bt
 \[ -\nabla^2 u = f \quad\hbox{in }\Omega \]
 |et
-!epop
+|epop
 
-!eslidecell
+|eslidecell
 
-!bslidecell 01
+|bslidecell 01
 FIGURE: [../doc/src/slides/fig/broken_pen_and_paper, width=400, frac=0.8]
-!eslidecell
+|eslidecell
 
 !split
 ======= Next slide... =======

@@ -15,7 +15,7 @@
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
+        URL_ROOT:    './',
         VERSION:     '1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
@@ -57,7 +57,7 @@
 <tr class="field-odd field"><th class="field-name">Author:</th><td class="field-body"><p class="first">Hans Petter Langtangen</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body"><p class="first">Aug 17, 2013</p>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body"><p class="first">Aug 31, 2013</p>
 <ul class="last simple">
 <li>When writing a note, report, manual, etc., do you find it difficult
 to choose the typesetting format? That is, to choose between plain
@@ -97,7 +97,7 @@ The following support LaTeX math and (pygmentized) code:</li>
 <li><a class="reference external" href="http://hplgit.github.com/teamods/writing_reports/_static/report_4phone.pdf">color LaTeX PDF documents for viewing on small phones</a></li>
 <li><a class="reference external" href="http://hplgit.github.com/teamods/writing_reports/_static/sphinx-fenics_minimal/report.html">Sphinx HTML documents with 20+ different designs</a></li>
 <li><a class="reference external" href="http://hplgit.github.com/teamods/writing_reports/_static/report.html">Plain HTML</a> or with a <a class="reference external" href="http://hplgit.github.com/teamods/writing_reports/_static/report_vagrant.html">template</a> or <a class="reference external" href="http://hplgit.github.com/teamods/writing_reports/_static/report_github_minimal.html">another template</a> or <a class="reference external" href="http://hplgit.github.com/teamods/writing_reports/_static/report_solarized.html">solarized</a></li>
-<li>HTML for <a class="reference external" href="http://doconce-report-demo.blogspot.no/">Google</a> or <a class="reference external" href="http://doconcereportdemo.wordpress.com/">Wordpress</a> blogs</li>
+<li>HTML for <a class="reference external" href="http://doconce-report-demo.blogspot.no/">Google</a> or <a class="reference external" href="http://doconcereportdemo.wordpress.com/">Wordpress</a> blog posts</li>
 <li><a class="reference external" href="http://doconcedemo.shoutwiki.com/wiki/Doconce_demo_page">MediaWiki</a> (Wikipedia, Wikibooks, etc)</li>
 <li>Markdown</li>
 <li>IPython notebook</li>
@@ -171,7 +171,7 @@ Sphinx, Markdown, or plain HTML, are not particularly well
 suited for thesis and books. IPython notebooks are ideal for
 documenting computational experiments, but do not (yet) meet the
 requirements of books and thesis.</p>
-<p>What about migrating a part of a book for blogging? What about making
+<p>What about migrating a part of a book to blog posts? What about making
 an MS Word version of parts or an untagged text for inclusion in
 email?  What about efficiently generating slides in modern HTML5
 style?  Doconce enables all this with just <em>one source</em> (the slogan is
@@ -457,19 +457,19 @@ Doconce sources requires a few commands. Often you want to
 produce several different formats. The relevant commands should
 then be placed in a script that acts as a &#8220;makefile&#8221;.</p>
 <p>The <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">makefile</span></tt> can be used to automatically generate
-such a makefile, more precisely a Bash script <tt class="docutils literal"><span class="pre">make.sh</span></tt>, which
+such a makefile, more precisely a Python script <tt class="docutils literal"><span class="pre">make.py</span></tt>, which
 carries out the commands explained below. If our Doconce source
 is in <tt class="docutils literal"><span class="pre">main_myproj.do.txt</span></tt>, we run</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">doconce makefile main_myproj html pdflatex sphinx</span>
 </pre></div>
 </div>
 <p>to produce the necessary output for generating HTML, pdfLaTeX, and
-Sphinx. Usually, you need to edit <tt class="docutils literal"><span class="pre">make.sh</span></tt> to really fit your
+Sphinx. Usually, you need to edit <tt class="docutils literal"><span class="pre">make.py</span></tt> to really fit your
 needs. Some examples lines are inserted as comments to show
 various options that can be added to the basic commands.
-A handy feature of the generated <tt class="docutils literal"><span class="pre">make.sh</span></tt> script is that it
-inserts checks for successful runs of the <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></tt> commands,
-and if something goes wrong, the <tt class="docutils literal"><span class="pre">make.sh</span></tt> exits.</p>
+A handy feature of the generated <tt class="docutils literal"><span class="pre">make.py</span></tt> script is that it
+inserts checks for successful runs of the many <tt class="docutils literal"><span class="pre">doconce</span></tt> commands,
+and if something goes wrong, the script aborts.</p>
 </div>
 <div class="section" id="preprocessing">
 <h2>Preprocessing<a class="headerlink" href="#preprocessing" title="Permalink to this headline">¶</a></h2>
@@ -634,19 +634,19 @@ raw HTML code. Google&#8217;s Blogger service (<tt class="docutils literal"><spa
 <tt class="docutils literal"><span class="pre">blogname.blogspot.com</span></tt>) is particularly well suited since it also
 allows extensive LaTeX mathematics via MathJax.</p>
 <ol class="arabic simple">
-<li>Write the blog text as a Doconce document without any
+<li>Write the text of the blog post as a Doconce document without any
 title, author, and date.</li>
 <li>Generate HTML as described above.</li>
 <li>Copy the text and paste it into the
-text area in the blog (just delete the HTML code that initially
+text area in the blog post (just delete the HTML code that initially
 pops up in the text area). Make sure the input format is HTML.</li>
 </ol>
 <p>See a <a class="reference external" href="http://doconce.blogspot.no">simple blog example</a> and
 a <a class="reference external" href="http://doconce-report-demo.blogspot.no/">scientific report</a>
-for demonstrations of blogs at <tt class="docutils literal"><span class="pre">blogspot.no</span></tt>.</p>
+for demonstrations of blog posts at <tt class="docutils literal"><span class="pre">blogspot.no</span></tt>.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p class="last">In the readers&#8217; comments after the blog one cannot paste raw HTML
+<p class="last">In the readers&#8217; comments after the blog post one cannot paste raw HTML
 code with MathJax
 scripts so there is no support for mathematics in the discussion forum.</p>
 </div>
@@ -662,13 +662,13 @@ be replaced by the relevant URL. This can be automatically edited:</p>
           mydoc2.do.txt
 <span class="k">done</span>
 doconce format html mydoc2
-<span class="c"># Paste mydoc2.html into a new blog page</span>
+<span class="c"># Paste mydoc2.html into a new blog post page</span>
 </pre></div>
 </div>
 </div>
 <p>Blog posts at Google can also be published <a class="reference external" href="http://support.google.com/blogger/bin/answer.py?hl=en&amp;answer=41452">automatically through email</a>.
 A Python program can send the contents of the HTML file
-to the blog&#8217;s email address using the packages  <tt class="docutils literal"><span class="pre">smtplib</span></tt> and <tt class="docutils literal"><span class="pre">email</span></tt>.</p>
+to the blog site&#8217;s email address using the packages  <tt class="docutils literal"><span class="pre">smtplib</span></tt> and <tt class="docutils literal"><span class="pre">email</span></tt>.</p>
 <p>WordPress (<tt class="docutils literal"><span class="pre">wordpress.com</span></tt>) allows raw HTML code in blogs,
 but has very limited
 LaTeX support, basically only formulas. The <tt class="docutils literal"><span class="pre">--wordpress</span></tt> option to
@@ -676,7 +676,7 @@ LaTeX support, basically only formulas. The <tt class="docutils literal"><span c
 in a way that is acceptable to WordPress.
 Look at a <a class="reference external" href="http://doconce.wordpress.com">simple doconce example</a>
 and a <a class="reference external" href="http://doconcereportdemo.wordpress.com/">scientific report</a>
-to see blogging with mathematics and code on WordPress.</p>
+to see blog posts with mathematics and code on WordPress.</p>
 <p>Speaking of WordPress, the related project <a class="reference external" href="http://pressbooks.com">http://pressbooks.com</a> can take raw HTML code (from Doconce, for
 instance) and produce very nice-looking books.  There is no support
 for mathematics in the text, though.</p>
@@ -829,7 +829,7 @@ Computer Modern font, run</p>
 way to enable a nicer treatment of multiple authors having
 institutions in common. However, the standard LaTeX &#8220;maketitle&#8221; heading
 is also available through <tt class="docutils literal"><span class="pre">-DLATEX_HEADING=traditional</span></tt>.
-A separate titlepage can be generate by
+A separate titlepage can be generated by
 <tt class="docutils literal"><span class="pre">-DLATEX_HEADING=titlepage</span></tt>.</p>
 <p>Preprocessor variables to be defined or undefined are</p>
 <blockquote>
@@ -859,13 +859,18 @@ macro has only effect if inline comments are used (name, colon,
 and comment inside brackets).</li>
 <li><tt class="docutils literal"><span class="pre">LINENUMBERS</span></tt> for inclusion of line numbers in the text.</li>
 <li><tt class="docutils literal"><span class="pre">COLORED_TABLE_ROWS</span></tt> for coloring every other table rows (set this
-variable to <tt class="docutils literal"><span class="pre">gray</span></tt> or <tt class="docutils literal"><span class="pre">blue</span></tt>)</li>
+variable to <tt class="docutils literal"><span class="pre">gray</span></tt> or <tt class="docutils literal"><span class="pre">blue</span></tt>).</li>
 <li><tt class="docutils literal"><span class="pre">BLUE_SECTION_HEADINGS</span></tt> for blue section and subsection headings</li>
 <li><tt class="docutils literal"><span class="pre">LATEX_HEADING</span></tt> for the typesetting of the title, author, parts of
 preamble (values: <tt class="docutils literal"><span class="pre">traditional</span></tt> for traditional LaTeX heading,
 <tt class="docutils literal"><span class="pre">titlepage</span></tt> for a separate titlepage, <tt class="docutils literal"><span class="pre">Springer_collection</span></tt> for
 edited volumes on Springer, <tt class="docutils literal"><span class="pre">beamer</span></tt> for Beamer slides, <tt class="docutils literal"><span class="pre">doconce_heading</span></tt>
-(default) for listing institutions after names)</li>
+(default) for listing institutions after names).</li>
+<li><tt class="docutils literal"><span class="pre">LATEX_STYLE</span></tt> for speficying the style:
+<tt class="docutils literal"><span class="pre">std</span></tt> for standard LaTeX, <tt class="docutils literal"><span class="pre">Springer_lncse</span></tt>, <tt class="docutils literal"><span class="pre">Springer_T2</span></tt>,
+<tt class="docutils literal"><span class="pre">Springer_llncse</span></tt> (the latter three are not tested).
+The style dictates the type of <tt class="docutils literal"><span class="pre">documentclass</span></tt> as well as inclusion of
+special packages and commands.</li>
 </ul>
 </div></blockquote>
 <p>If you are not satisfied with the Doconce preamble, you can provide
@@ -1293,6 +1298,36 @@ wiki editor in a web browser.</p>
 the <tt class="docutils literal"><span class="pre">.gwiki</span></tt> file be replaced by a URL where the figure is
 available. There are instructions in the file for doing this. Usually,
 one performs this substitution automatically (see next section).</p>
+</div>
+<div class="section" id="google-docs">
+<h2>Google Docs<a class="headerlink" href="#google-docs" title="Permalink to this headline">¶</a></h2>
+<p>Google Docs are normally made online in the interactive editor. However,
+you may upload a Doconce document to Google Docs. This requires transforming
+the Doconce document to one of the accepted formats for Google Docs:</p>
+<blockquote>
+<div><ul class="simple">
+<li>OpenOffice: <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span> <span class="pre">rst</span></tt> and then run
+<tt class="docutils literal"><span class="pre">rst2odt</span></tt> (or <tt class="docutils literal"><span class="pre">rst2odt.py</span></tt>). Upload the <tt class="docutils literal"><span class="pre">.odt</span></tt> file, click
+<em>Open...</em> in Google Drive and choose <em>Google Docs</em> as viewer.</li>
+<li>MS Word: <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span> <span class="pre">pandoc</span></tt> and then run <tt class="docutils literal"><span class="pre">pandoc</span></tt> to
+produce a <tt class="docutils literal"><span class="pre">.docx</span></tt> file that can be uploaded to Google Drive
+and opened in Google Docs.</li>
+<li>RTF: <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span> <span class="pre">pandoc</span></tt> and then run <tt class="docutils literal"><span class="pre">pandoc</span></tt> to produce
+a <tt class="docutils literal"><span class="pre">.rtf</span></tt> file that can be uploaded to Google Drive and opened.
+Another possibility is to run <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span> <span class="pre">latex</span></tt> and
+then <a class="reference external" href="http://sourceforge.net/projects/latex2rtf">latex2rtf</a>
+(the support of mathematics has gotten worse).</li>
+<li>Plain text: <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span> <span class="pre">plain</span></tt>. Upload the <tt class="docutils literal"><span class="pre">.txt</span></tt> file
+to Google Drive and open in Google Docs.</li>
+<li>HTML: <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span> <span class="pre">html</span></tt>. Upload the <tt class="docutils literal"><span class="pre">.html</span></tt> file and
+open in Google Docs. Complicated HTML files can be misinterpreted
+by Google Docs.</li>
+</ul>
+</div></blockquote>
+<p>This is not yet much tested. It remains to see how code becomes in
+Google Docs. Support for mathematics is probably impossible until
+Google Docs can import LaTeX files, but LaTeX mathematics can be embedded
+in Google Docs and the <a class="reference external" href="http://code.google.com/p/googledoc2latex">googledoc2latex</a> script can convert a Google document to LaTeX.</p>
 </div>
 <div class="section" id="tweaking-the-doconce-output">
 <h2>Tweaking the Doconce Output<a class="headerlink" href="#tweaking-the-doconce-output" title="Permalink to this headline">¶</a></h2>
@@ -1784,6 +1819,7 @@ cd ../../..
 </ul>
 </li>
 <li><a class="reference internal" href="#wiki-formats">Wiki Formats</a></li>
+<li><a class="reference internal" href="#google-docs">Google Docs</a></li>
 <li><a class="reference internal" href="#tweaking-the-doconce-output">Tweaking the Doconce Output</a></li>
 <li><a class="reference internal" href="#demos">Demos</a></li>
 </ul>
@@ -1848,7 +1884,7 @@ cd ../../..
     </div>
     <div class="footer">
         &copy; Copyright 2013, Hans Petter Langtangen.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2pre.
     </div>
   </body>
 </html>

@@ -32,7 +32,7 @@ Doconce currently translates files to the following formats:
 
 For documents with much code and mathematics, the best (and most supported)
 formats are `latex`, `pdflatex`, `sphinx`, and `html`; and to a slightly
-less extent `mwiki` and `pandoc`. The HTML format supports blogging on
+less extent `mwiki` and `pandoc`. The HTML format supports blog posts on
 Google and Wordpress.
 
 

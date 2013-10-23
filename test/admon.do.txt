@@ -51,8 +51,15 @@ And more and more text.
 
 Test warning with title:
 
-!bwarning (large) Watch Out
+!bwarning (large) Watch out
 And here comes some text with bad news in larger font.
+!ewarning
+
+Test warning with title with math:
+
+!bwarning (large) Watch out for $\nabla\cdot\bm{u}=0$ equations
+Divergence freedom is often problematic from a numerical point
+of view.
 !ewarning
 
 Then we test a block, which is guaranteed to never have any admon icon.

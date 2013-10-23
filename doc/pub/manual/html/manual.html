@@ -15,7 +15,7 @@
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
+        URL_ROOT:    './',
         VERSION:     '0.6',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
@@ -56,7 +56,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Author:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Aug 16, 2013</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Aug 31, 2013</td>
 </tr>
 </tbody>
 </table>
@@ -74,7 +74,7 @@ Word, HTML, LaTeX, PDF, DocBook, GNU Texinfo, and more.</p>
 <p>Doconce supports a working strategy of never duplicating information.
 Text is written in a single place and then transformed to a number of
 different destinations of diverse type: scientific reports, software
-manuals, books, thesis, software source code, wikis, blogs, emails,
+manuals, books, thesis, software source code, wikis, blog posts, emails,
 etc.  The slogan is: &#8220;Write once, include anywhere&#8221;.</p>
 <p>Here are some Doconce features:</p>
 <blockquote>
@@ -85,12 +85,12 @@ LaTeX mathematics</em>, where the output is desired in different formats
 such as LaTeX, pdfLaTeX, Sphinx, HTML,
 MediaWiki, blogger.com, and wordpress.com.
 A piece of Doconce text can enter (e.g.) a classical
-science book, an ebook, a web document, and a blog.</li>
+science book, an ebook, a web document, and a blog post.</li>
 <li>Doconce targets in particular large book projects where many different
 pieces of text and software can be assembled and published in different
 formats for different devices.</li>
 <li>Doconce enables authors who write for many times of media
-(blogs, wikis, LaTeX manuscripts, Sphinx, HTML) to use a common
+(blog posts, wikis, LaTeX manuscripts, Sphinx, HTML) to use a common
 source language such that lots of different pieces can easily be
 brought together later to form a coherent (big) document.</li>
 <li>Doconce has good support for copying computer code
@@ -571,19 +571,19 @@ Doconce sources requires a few commands. Often you want to
 produce several different formats. The relevant commands should
 then be placed in a script that acts as a &#8220;makefile&#8221;.</p>
 <p>The <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">makefile</span></tt> can be used to automatically generate
-such a makefile, more precisely a Bash script <tt class="docutils literal"><span class="pre">make.sh</span></tt>, which
+such a makefile, more precisely a Python script <tt class="docutils literal"><span class="pre">make.py</span></tt>, which
 carries out the commands explained below. If our Doconce source
 is in <tt class="docutils literal"><span class="pre">main_myproj.do.txt</span></tt>, we run</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">doconce makefile main_myproj html pdflatex sphinx</span>
 </pre></div>
 </div>
 <p>to produce the necessary output for generating HTML, pdfLaTeX, and
-Sphinx. Usually, you need to edit <tt class="docutils literal"><span class="pre">make.sh</span></tt> to really fit your
+Sphinx. Usually, you need to edit <tt class="docutils literal"><span class="pre">make.py</span></tt> to really fit your
 needs. Some examples lines are inserted as comments to show
 various options that can be added to the basic commands.
-A handy feature of the generated <tt class="docutils literal"><span class="pre">make.sh</span></tt> script is that it
-inserts checks for successful runs of the <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></tt> commands,
-and if something goes wrong, the <tt class="docutils literal"><span class="pre">make.sh</span></tt> exits.</p>
+A handy feature of the generated <tt class="docutils literal"><span class="pre">make.py</span></tt> script is that it
+inserts checks for successful runs of the many <tt class="docutils literal"><span class="pre">doconce</span></tt> commands,
+and if something goes wrong, the script aborts.</p>
 </div>
 <div class="section" id="preprocessing">
 <h2>Preprocessing<a class="headerlink" href="#preprocessing" title="Permalink to this headline">¶</a></h2>
@@ -748,19 +748,19 @@ raw HTML code. Google&#8217;s Blogger service (<tt class="docutils literal"><spa
 <tt class="docutils literal"><span class="pre">blogname.blogspot.com</span></tt>) is particularly well suited since it also
 allows extensive LaTeX mathematics via MathJax.</p>
 <ol class="arabic simple">
-<li>Write the blog text as a Doconce document without any
+<li>Write the text of the blog post as a Doconce document without any
 title, author, and date.</li>
 <li>Generate HTML as described above.</li>
 <li>Copy the text and paste it into the
-text area in the blog (just delete the HTML code that initially
+text area in the blog post (just delete the HTML code that initially
 pops up in the text area). Make sure the input format is HTML.</li>
 </ol>
 <p>See a <a class="reference external" href="http://doconce.blogspot.no">simple blog example</a> and
 a <a class="reference external" href="http://doconce-report-demo.blogspot.no/">scientific report</a>
-for demonstrations of blogs at <tt class="docutils literal"><span class="pre">blogspot.no</span></tt>.</p>
+for demonstrations of blog posts at <tt class="docutils literal"><span class="pre">blogspot.no</span></tt>.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p class="last">In the readers&#8217; comments after the blog one cannot paste raw HTML
+<p class="last">In the readers&#8217; comments after the blog post one cannot paste raw HTML
 code with MathJax
 scripts so there is no support for mathematics in the discussion forum.</p>
 </div>
@@ -776,13 +776,13 @@ be replaced by the relevant URL. This can be automatically edited:</p>
           mydoc2.do.txt
 <span class="k">done</span>
 doconce format html mydoc2
-<span class="c"># Paste mydoc2.html into a new blog page</span>
+<span class="c"># Paste mydoc2.html into a new blog post page</span>
 </pre></div>
 </div>
 </div>
 <p>Blog posts at Google can also be published <a class="reference external" href="http://support.google.com/blogger/bin/answer.py?hl=en&amp;answer=41452">automatically through email</a>.
 A Python program can send the contents of the HTML file
-to the blog&#8217;s email address using the packages  <tt class="docutils literal"><span class="pre">smtplib</span></tt> and <tt class="docutils literal"><span class="pre">email</span></tt>.</p>
+to the blog site&#8217;s email address using the packages  <tt class="docutils literal"><span class="pre">smtplib</span></tt> and <tt class="docutils literal"><span class="pre">email</span></tt>.</p>
 <p>WordPress (<tt class="docutils literal"><span class="pre">wordpress.com</span></tt>) allows raw HTML code in blogs,
 but has very limited
 LaTeX support, basically only formulas. The <tt class="docutils literal"><span class="pre">--wordpress</span></tt> option to
@@ -790,7 +790,7 @@ LaTeX support, basically only formulas. The <tt class="docutils literal"><span c
 in a way that is acceptable to WordPress.
 Look at a <a class="reference external" href="http://doconce.wordpress.com">simple doconce example</a>
 and a <a class="reference external" href="http://doconcereportdemo.wordpress.com/">scientific report</a>
-to see blogging with mathematics and code on WordPress.</p>
+to see blog posts with mathematics and code on WordPress.</p>
 <p>Speaking of WordPress, the related project <a class="reference external" href="http://pressbooks.com">http://pressbooks.com</a> can take raw HTML code (from Doconce, for
 instance) and produce very nice-looking books.  There is no support
 for mathematics in the text, though.</p>
@@ -943,7 +943,7 @@ Computer Modern font, run</p>
 way to enable a nicer treatment of multiple authors having
 institutions in common. However, the standard LaTeX &#8220;maketitle&#8221; heading
 is also available through <tt class="docutils literal"><span class="pre">-DLATEX_HEADING=traditional</span></tt>.
-A separate titlepage can be generate by
+A separate titlepage can be generated by
 <tt class="docutils literal"><span class="pre">-DLATEX_HEADING=titlepage</span></tt>.</p>
 <p>Preprocessor variables to be defined or undefined are</p>
 <blockquote>
@@ -973,13 +973,18 @@ macro has only effect if inline comments are used (name, colon,
 and comment inside brackets).</li>
 <li><tt class="docutils literal"><span class="pre">LINENUMBERS</span></tt> for inclusion of line numbers in the text.</li>
 <li><tt class="docutils literal"><span class="pre">COLORED_TABLE_ROWS</span></tt> for coloring every other table rows (set this
-variable to <tt class="docutils literal"><span class="pre">gray</span></tt> or <tt class="docutils literal"><span class="pre">blue</span></tt>)</li>
+variable to <tt class="docutils literal"><span class="pre">gray</span></tt> or <tt class="docutils literal"><span class="pre">blue</span></tt>).</li>
 <li><tt class="docutils literal"><span class="pre">BLUE_SECTION_HEADINGS</span></tt> for blue section and subsection headings</li>
 <li><tt class="docutils literal"><span class="pre">LATEX_HEADING</span></tt> for the typesetting of the title, author, parts of
 preamble (values: <tt class="docutils literal"><span class="pre">traditional</span></tt> for traditional LaTeX heading,
 <tt class="docutils literal"><span class="pre">titlepage</span></tt> for a separate titlepage, <tt class="docutils literal"><span class="pre">Springer_collection</span></tt> for
 edited volumes on Springer, <tt class="docutils literal"><span class="pre">beamer</span></tt> for Beamer slides, <tt class="docutils literal"><span class="pre">doconce_heading</span></tt>
-(default) for listing institutions after names)</li>
+(default) for listing institutions after names).</li>
+<li><tt class="docutils literal"><span class="pre">LATEX_STYLE</span></tt> for speficying the style:
+<tt class="docutils literal"><span class="pre">std</span></tt> for standard LaTeX, <tt class="docutils literal"><span class="pre">Springer_lncse</span></tt>, <tt class="docutils literal"><span class="pre">Springer_T2</span></tt>,
+<tt class="docutils literal"><span class="pre">Springer_llncse</span></tt> (the latter three are not tested).
+The style dictates the type of <tt class="docutils literal"><span class="pre">documentclass</span></tt> as well as inclusion of
+special packages and commands.</li>
 </ul>
 </div></blockquote>
 <p>If you are not satisfied with the Doconce preamble, you can provide
@@ -1408,6 +1413,36 @@ the <tt class="docutils literal"><span class="pre">.gwiki</span></tt> file be re
 available. There are instructions in the file for doing this. Usually,
 one performs this substitution automatically (see next section).</p>
 </div>
+<div class="section" id="google-docs">
+<h2>Google Docs<a class="headerlink" href="#google-docs" title="Permalink to this headline">¶</a></h2>
+<p>Google Docs are normally made online in the interactive editor. However,
+you may upload a Doconce document to Google Docs. This requires transforming
+the Doconce document to one of the accepted formats for Google Docs:</p>
+<blockquote>
+<div><ul class="simple">
+<li>OpenOffice: <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span> <span class="pre">rst</span></tt> and then run
+<tt class="docutils literal"><span class="pre">rst2odt</span></tt> (or <tt class="docutils literal"><span class="pre">rst2odt.py</span></tt>). Upload the <tt class="docutils literal"><span class="pre">.odt</span></tt> file, click
+<em>Open...</em> in Google Drive and choose <em>Google Docs</em> as viewer.</li>
+<li>MS Word: <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span> <span class="pre">pandoc</span></tt> and then run <tt class="docutils literal"><span class="pre">pandoc</span></tt> to
+produce a <tt class="docutils literal"><span class="pre">.docx</span></tt> file that can be uploaded to Google Drive
+and opened in Google Docs.</li>
+<li>RTF: <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span> <span class="pre">pandoc</span></tt> and then run <tt class="docutils literal"><span class="pre">pandoc</span></tt> to produce
+a <tt class="docutils literal"><span class="pre">.rtf</span></tt> file that can be uploaded to Google Drive and opened.
+Another possibility is to run <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span> <span class="pre">latex</span></tt> and
+then <a class="reference external" href="http://sourceforge.net/projects/latex2rtf">latex2rtf</a>
+(the support of mathematics has gotten worse).</li>
+<li>Plain text: <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span> <span class="pre">plain</span></tt>. Upload the <tt class="docutils literal"><span class="pre">.txt</span></tt> file
+to Google Drive and open in Google Docs.</li>
+<li>HTML: <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span> <span class="pre">html</span></tt>. Upload the <tt class="docutils literal"><span class="pre">.html</span></tt> file and
+open in Google Docs. Complicated HTML files can be misinterpreted
+by Google Docs.</li>
+</ul>
+</div></blockquote>
+<p>This is not yet much tested. It remains to see how code becomes in
+Google Docs. Support for mathematics is probably impossible until
+Google Docs can import LaTeX files, but LaTeX mathematics can be embedded
+in Google Docs and the <a class="reference external" href="http://code.google.com/p/googledoc2latex">googledoc2latex</a> script can convert a Google document to LaTeX.</p>
+</div>
 <div class="section" id="tweaking-the-doconce-output">
 <h2>Tweaking the Doconce Output<a class="headerlink" href="#tweaking-the-doconce-output" title="Permalink to this headline">¶</a></h2>
 <p>Occasionally, one would like to tweak the output in a certain format
@@ -1645,7 +1680,7 @@ part of the caption appearing on the same line as <tt class="docutils literal"><
 included in the formatted caption).</p>
 </div>
 <div class="figure" id="fig-viz">
-<img alt="_images/streamtubes.png" src="_images/streamtubes.png" style="width: 400px;" />
+<a class="reference internal image-reference" href="_images/streamtubes.png"><img alt="_images/streamtubes.png" src="_images/streamtubes.png" style="width: 400px;" /></a>
 <p class="caption"><em>Streamtube visualization of a fluid flow</em></p>
 </div>
 <p>Combining several image files into one, in a table fashion, can be done by the
@@ -1993,10 +2028,10 @@ the document &quot;A Document for Testing Doconce&quot;: &quot;http://hplgit.git
 cite{testdoc:12}], Doconce documents may include movies.
 </pre></div>
 </div>
-<p>In LaTeX, this becomes</p>
+<p>In LaTeX, this becomes something like</p>
 <div class="highlight-text"><div class="highlight"><pre>As explained in
 Section~\ref{subsec:ex} in
-\href{{http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex}}{Langtangen, 2012}
+\href{{http://hplgit.github.io/doconce/...}}{Langtangen, 2012}
 \cite{testdoc:12}, Doconce documents may include movies.
 </pre></div>
 </div>
@@ -2007,34 +2042,6 @@ a link to the document using the name of the other or some other
 relevant link text. The link can be the same or different from
 links used in the &#8220;external&#8221; part of the reference (LaTeX cannot
 have links to local files, so a complete URL must be used).</p>
-<p>Translation to Sphinx or reStructuredText results in</p>
-<div class="highlight-text"><div class="highlight"><pre>As explained in
-a `section &lt;testdoc.html#___sec2&gt;`_ in
-the document `A Document for Testing Doconce &lt;testdoc.html&gt;`_
-[testdoc:12]_, Doconce documents may include movies.
-</pre></div>
-</div>
-<p>In plain HTML, this becomes</p>
-<div class="highlight-text"><div class="highlight"><pre>As explained in
-a &lt;a href=&quot;testdoc.html#___sec2&quot;&gt;section&lt;/a&gt; in
-the document &lt;a href=&quot;testdoc.html&quot;&gt;A Document for Testing Doconce&lt;/a&gt;
-&lt;a href=&quot;#testdoc:12&quot;&gt;[1]&lt;/a&gt;, Doconce documents may include movies.
-</pre></div>
-</div>
-<p>The plain text format reads</p>
-<div class="highlight-text"><div class="highlight"><pre>As explained in
-a section (testdoc.html#___sec2) in
-the document A Document for Testing Doconce (testdoc.html)
-[1], Doconce documents may include movies.
-</pre></div>
-</div>
-<p>And in Pandoc-exteded Markdown we have</p>
-<div class="highlight-text"><div class="highlight"><pre>As explained in
-a [section](testdoc.html#___sec2) in
-the document [A Document for Testing Doconce](testdoc.html)
-@testdoc:12, Doconce documents may include movies.
-</pre></div>
-</div>
 </div>
 <div class="section" id="index">
 <h2>Index<a class="headerlink" href="#index" title="Permalink to this headline">¶</a></h2>
@@ -2536,7 +2543,7 @@ INLINE_TAGS = {
 </pre></div>
 </div>
 <p>And here is a C++ code snippet (<tt class="docutils literal"><span class="pre">cppcod</span></tt> style):</p>
-<div class="highlight-c++"><div class="highlight"><pre><span class="kt">void</span> <span class="nf">myfunc</span><span class="p">(</span><span class="kt">double</span><span class="o">*</span> <span class="n">x</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span><span class="o">&amp;</span> <span class="n">myarr</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight-c++"><div class="highlight"><pre><span class="kt">void</span> <span class="n">myfunc</span><span class="p">(</span><span class="kt">double</span><span class="o">*</span> <span class="n">x</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span><span class="o">&amp;</span> <span class="n">myarr</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">myarr</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">myarr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">myarr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">myarr</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
     <span class="p">}</span>
@@ -2944,6 +2951,13 @@ on. Recall that all the parts are needed if the HTML document is to be moved
 to another location (you can always check <tt class="docutils literal"><span class="pre">.mydoc_html_file_collection</span></tt>
 for a list of all the files that are needed to display this HTML
 document).</p>
+<p>MathJax cannot refer to equations defined in other HTML files, but
+the <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">split_html</span></tt> fixes this problem. Note, however, that
+running <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">split_html</span></tt> leads to another equation numbering
+than in the original HTML document. In the latter, we use AMS
+equation numbering, which means that the standard LaTeX conventions
+are followed, while in the splitted document only the subset of
+equations with labels are given numbers.</p>
 <p>The HTML documents have very simple navigation buttons for the previous
 and next document. These are not customizable directly, but one can easily
 look up the HTML code and use <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">replace</span></tt> to edit the links to
@@ -3363,14 +3377,22 @@ Doconce syntax is not treated properly.</p>
 </div>
 <div class="section" id="general-problems">
 <h2>General Problems<a class="headerlink" href="#general-problems" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="spellcheck-reports-a-lot-of-mistakes-related-latex-math">
-<h3>Spellcheck reports a lot of mistakes related LaTeX math<a class="headerlink" href="#spellcheck-reports-a-lot-of-mistakes-related-latex-math" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="spellcheck-reports-a-lot-of-mistakes-related-to-latex-math">
+<h3>Spellcheck reports a lot of mistakes related to LaTeX math<a class="headerlink" href="#spellcheck-reports-a-lot-of-mistakes-related-to-latex-math" title="Permalink to this headline">¶</a></h3>
 <p>The <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">spellcheck</span></tt> command should ignore LaTeX math, but if
 the dollar signs for inline math are not correct (one missing, for instance),
 a lot of math enters the text to be spellchecked. Invoke the
-relevant <tt class="docutils literal"><span class="pre">tmp_missing_*</span></tt> file and search for the math expressions that
-are reported as misspellings. This will fortunately give you hint of
-what is wrong with the math typesetting.</p>
+relevant <tt class="docutils literal"><span class="pre">tmp_missing_*</span></tt> file and find the first math-style expression that
+is reported as misspelling. Open the corresponding stripped file,
+<tt class="docutils literal"><span class="pre">tmp_stripped_*</span></tt>, which is supposed to have all the math stripped
+away, and search for the misspelling. When you find it, you will see
+that there are math expressions in the stripped file that should not
+be there. (Because of wrong begin and end signs around math expressions
+ordinary text has instead been stripped away. This way, a missing dollar
+sign can lead to hundreds of misspellings.)
+Find the problem in the corresponding Doconce file and correct it.
+A similar error can be caused by wrong matching
+of equation environments between <tt class="docutils literal"><span class="pre">!bt</span></tt> and <tt class="docutils literal"><span class="pre">!et</span></tt>.</p>
 </div>
 <div class="section" id="doconce-aborts-because-of-a-syntax-error-that-is-not-an-error">
 <h3>Doconce aborts because of a syntax error that is not an error<a class="headerlink" href="#doconce-aborts-because-of-a-syntax-error-that-is-not-an-error" title="Permalink to this headline">¶</a></h3>
@@ -3413,10 +3435,15 @@ A suggested rewrite is <tt class="docutils literal"><span class="pre">$\,{}^+$</
 <tt class="docutils literal"><span class="pre">--mako_strict_undefined</span></tt>, which will display the variable that
 is confusing Mako. However, do not continue to use
 <tt class="docutils literal"><span class="pre">--mako_strict_undefined</span></tt> while you are debugging because this
-variable will then always be undefined in that mode.
-Use <tt class="docutils literal"><span class="pre">#</span> <span class="pre">#ifdef</span></tt> directives to comment out large portions of
+variable or a new variable will then always be undefined in that mode.
+Rerun without <tt class="docutils literal"><span class="pre">--mako_strict_undefined</span></tt> to see if the problem
+is gone. If not, try the option again, and if no progress,
+use <tt class="docutils literal"><span class="pre">#</span> <span class="pre">#ifdef</span></tt> directives to comment out large portions of
 the text and apply a &#8220;bisection&#8221; procedure to locate where
-the Mako problem is (without <tt class="docutils literal"><span class="pre">--mako_strict_undefined</span></tt>).</p>
+the Mako problem is (without <tt class="docutils literal"><span class="pre">--mako_strict_undefined</span></tt>).
+A &#8220;bisection&#8221; procedure means that you comment out the last half,
+find in which half the problem is, comment out half of that half,
+find in which half the problem is, and so on.</p>
 </div>
 <div class="section" id="something-goes-wrong-in-the-preprocessing-step">
 <h3>Something goes wrong in the preprocessing step<a class="headerlink" href="#something-goes-wrong-in-the-preprocessing-step" title="Permalink to this headline">¶</a></h3>
@@ -3719,6 +3746,10 @@ restricted to LaTeX.</p>
 Doconce file) spans more than one line. Make sure, in the Doconce source,
 that all inline verbatim text appears on the same line.</p>
 </div>
+<div class="section" id="the-latex-beamer-file-does-not-compile">
+<h3>The LaTeX Beamer file does not compile<a class="headerlink" href="#the-latex-beamer-file-does-not-compile" title="Permalink to this headline">¶</a></h3>
+<p>Make sure you have a <tt class="docutils literal"><span class="pre">!split</span></tt> before every slide heading.</p>
+</div>
 <div class="section" id="inline-verbatim-gives-error">
 <h3>Inline verbatim gives error<a class="headerlink" href="#inline-verbatim-gives-error" title="Permalink to this headline">¶</a></h3>
 <p>Check if the inline verbatim contains typical LaTeX commands, e.g.,</p>
@@ -3850,6 +3881,15 @@ doconce replace &#39;&lt;hr class=&quot;figure&quot;&gt;&#39; \
 </pre></div>
 </div>
 </div>
+</div>
+<div class="section" id="tools-for-writing-doconce-document">
+<h2>Tools for Writing Doconce Document<a class="headerlink" href="#tools-for-writing-doconce-document" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>Emacs (with the modest Doconce syntax highlighting), Vim, Gedit, etc.</li>
+<li><a class="reference external" href="http://www.xm1math.net/texmaker/">TeXMaker</a> and <a class="reference external" href="http://kile.sourceforge.net/">Kile</a> can in theory be adapted to handle Doconce compilation and maybe even Doconce constructs.</li>
+</ul>
+</div></blockquote>
 </div>
 <div class="section" id="debugging">
 <h2>Debugging<a class="headerlink" href="#debugging" title="Permalink to this headline">¶</a></h2>
@@ -4053,6 +4093,7 @@ Springer,
 </ul>
 </li>
 <li><a class="reference internal" href="#wiki-formats">Wiki Formats</a></li>
+<li><a class="reference internal" href="#google-docs">Google Docs</a></li>
 <li><a class="reference internal" href="#tweaking-the-doconce-output">Tweaking the Doconce Output</a></li>
 </ul>
 </li>
@@ -4125,7 +4166,7 @@ Springer,
 <li><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
 <li><a class="reference internal" href="#disclaimer">Disclaimer</a></li>
 <li><a class="reference internal" href="#general-problems">General Problems</a><ul>
-<li><a class="reference internal" href="#spellcheck-reports-a-lot-of-mistakes-related-latex-math">Spellcheck reports a lot of mistakes related LaTeX math</a></li>
+<li><a class="reference internal" href="#spellcheck-reports-a-lot-of-mistakes-related-to-latex-math">Spellcheck reports a lot of mistakes related to LaTeX math</a></li>
 <li><a class="reference internal" href="#doconce-aborts-because-of-a-syntax-error-that-is-not-an-error">Doconce aborts because of a syntax error that is not an error</a></li>
 <li><a class="reference internal" href="#the-mako-preprocessor-is-seemingly-not-run">The Mako preprocessor is seemingly not run</a></li>
 <li><a class="reference internal" href="#the-mako-preprocessor-is-fooled-by-doconce-text">The Mako preprocessor is fooled by Doconce text</a></li>
@@ -4171,6 +4212,7 @@ Springer,
 <li><a class="reference internal" href="#can-i-have-latex-figures-with-shadows">Can I have LaTeX figures with shadows?</a></li>
 <li><a class="reference internal" href="#how-can-i-use-my-fancy-latex-environments">How can I use my fancy LaTeX environments?</a></li>
 <li><a class="reference internal" href="#the-latex-file-does-not-compile">The LaTeX file does not compile</a></li>
+<li><a class="reference internal" href="#the-latex-beamer-file-does-not-compile">The LaTeX Beamer file does not compile</a></li>
 <li><a class="reference internal" href="#inline-verbatim-gives-error">Inline verbatim gives error</a></li>
 <li><a class="reference internal" href="#errors-in-figure-captions">Errors in figure captions</a></li>
 <li><a class="reference internal" href="#chapters-are-ignored">Chapters are ignored</a></li>
@@ -4188,6 +4230,7 @@ Springer,
 <li><a class="reference internal" href="#why-do-figures-look-ugly-when-using-html-templates">Why do figures look ugly when using HTML templates?</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#tools-for-writing-doconce-document">Tools for Writing Doconce Document</a></li>
 <li><a class="reference internal" href="#debugging">Debugging</a></li>
 </ul>
 </li>

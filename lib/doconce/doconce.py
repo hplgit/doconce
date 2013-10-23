@@ -2352,7 +2352,10 @@ def doconce2format(filestr, format):
             print '*** error: could not translate environment: %s' % m.group(1)
             print '    context:\n'
             print filestr[m.start()-50:m.end()+50]
-            print '    possible reason: syntax error or bug in doconce'
+            print '    possible reasons:'
+            print '     * syntax error in environment name'
+            print '     * environment inside code: use | instead of !'
+            print '     * or bug in doconce'
             _abort()
 
 

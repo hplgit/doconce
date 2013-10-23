@@ -52,7 +52,7 @@ Automatically generated HTML file from Doconce source
              width: 75%;
      }
      .alert-block {padding-top:14px; padding-bottom:14px}
-     .alert-block > p, .alert-block > ul {margin-bottom:0}
+     .alert-block > p, .alert-block > ul {margin-bottom:1em}
      .alert li {margin-top: 1em}
      .alert-block p+p {margin-top:5px}
      .alert-notice { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_notice.png); }
@@ -107,26 +107,27 @@ Automatically generated HTML file from Doconce source
               (' Sphinx ', 2, None, '___sec29'),
               (' The manual Sphinx procedure ', 3, None, '___sec30'),
               (' Wiki Formats ', 2, None, '___sec31'),
-              (' Tweaking the Doconce Output ', 2, None, '___sec32'),
-              (' Demos ', 2, None, '___sec33'),
+              (' Google Docs ', 2, None, '___sec32'),
+              (' Tweaking the Doconce Output ', 2, None, '___sec33'),
+              (' Demos ', 2, None, '___sec34'),
               (' Installation of Doconce and its Dependencies ',
                1,
                None,
-               '___sec34'),
-              (' Doconce ', 2, None, '___sec35'),
-              (' Dependencies ', 2, None, '___sec36'),
-              (' Preprocessors ', 3, None, '___sec37'),
-              (' Image file handling ', 3, None, '___sec38'),
-              (' Spellcheck ', 3, None, '___sec39'),
-              (' Bibliography ', 3, None, '___sec40'),
-              (' Ptex2tex for LaTeX Output ', 3, None, '___sec41'),
-              (' LaTeX packages ', 3, None, '___sec42'),
-              (' reStructuredText (reST) Output ', 3, None, '___sec43'),
-              (' Sphinx Output ', 3, None, '___sec44'),
-              (' Markdown and Pandoc Output ', 3, None, '___sec45'),
-              (' Epydoc Output ', 3, None, '___sec46'),
-              (' The `doconce diff` command ', 3, None, '___sec47'),
-              (' Quick Debian/Ubuntu Install ', 2, None, '___sec48')]}
+               '___sec35'),
+              (' Doconce ', 2, None, '___sec36'),
+              (' Dependencies ', 2, None, '___sec37'),
+              (' Preprocessors ', 3, None, '___sec38'),
+              (' Image file handling ', 3, None, '___sec39'),
+              (' Spellcheck ', 3, None, '___sec40'),
+              (' Bibliography ', 3, None, '___sec41'),
+              (' Ptex2tex for LaTeX Output ', 3, None, '___sec42'),
+              (' LaTeX packages ', 3, None, '___sec43'),
+              (' reStructuredText (reST) Output ', 3, None, '___sec44'),
+              (' Sphinx Output ', 3, None, '___sec45'),
+              (' Markdown and Pandoc Output ', 3, None, '___sec46'),
+              (' Epydoc Output ', 3, None, '___sec47'),
+              (' The `doconce diff` command ', 3, None, '___sec48'),
+              (' Quick Debian/Ubuntu Install ', 2, None, '___sec49')]}
 end of tocinfo -->
 
 <body>
@@ -174,7 +175,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>Aug 17, 2013</h4></center> <!-- date -->
+<center><h4>Aug 31, 2013</h4></center> <!-- date -->
 <p>
 
 <ul>
@@ -213,7 +214,7 @@ If any of these questions are of interest, you should keep on reading.
   <li> <a href="http://hplgit.github.com/teamods/writing_reports/_static/report_4phone.pdf">color LaTeX PDF documents for viewing on small phones</a></li>
   <li> <a href="http://hplgit.github.com/teamods/writing_reports/_static/sphinx-fenics_minimal/report.html">Sphinx HTML documents with 20+ different designs</a></li>
   <li> <a href="http://hplgit.github.com/teamods/writing_reports/_static/report.html">Plain HTML</a> or with a <a href="http://hplgit.github.com/teamods/writing_reports/_static/report_vagrant.html">template</a> or <a href="http://hplgit.github.com/teamods/writing_reports/_static/report_github_minimal.html">another template</a> or <a href="http://hplgit.github.com/teamods/writing_reports/_static/report_solarized.html">solarized</a></li>
-  <li> HTML for <a href="http://doconce-report-demo.blogspot.no/">Google</a> or <a href="http://doconcereportdemo.wordpress.com/">Wordpress</a> blogs</li>
+  <li> HTML for <a href="http://doconce-report-demo.blogspot.no/">Google</a> or <a href="http://doconcereportdemo.wordpress.com/">Wordpress</a> blog posts</li>
   <li> <a href="http://doconcedemo.shoutwiki.com/wiki/Doconce_demo_page">MediaWiki</a> (Wikipedia, Wikibooks, etc)</li>
   <li> Markdown</li>
   <li> IPython notebook</li>
@@ -290,7 +291,7 @@ documenting computational experiments, but do not (yet) meet the
 requirements of books and thesis.
 
 <p>
-What about migrating a part of a book for blogging? What about making
+What about migrating a part of a book to blog posts? What about making
 an MS Word version of parts or an untagged text for inclusion in
 email?  What about efficiently generating slides in modern HTML5
 style?  Doconce enables all this with just <em>one source</em> (the slogan is
@@ -621,7 +622,7 @@ then be placed in a script that acts as a "makefile".
 
 <p>
 The <code>doconce makefile</code> can be used to automatically generate
-such a makefile, more precisely a Bash script <code>make.sh</code>, which
+such a makefile, more precisely a Python script <code>make.py</code>, which
 carries out the commands explained below. If our Doconce source
 is in <code>main_myproj.do.txt</code>, we run
 
@@ -631,12 +632,12 @@ is in <code>main_myproj.do.txt</code>, we run
 </code></pre>
 <!-- end verbatim block -->
 to produce the necessary output for generating HTML, pdfLaTeX, and
-Sphinx. Usually, you need to edit <code>make.sh</code> to really fit your
+Sphinx. Usually, you need to edit <code>make.py</code> to really fit your
 needs. Some examples lines are inserted as comments to show
 various options that can be added to the basic commands.
-A handy feature of the generated <code>make.sh</code> script is that it
-inserts checks for successful runs of the <code>doconce format</code> commands,
-and if something goes wrong, the <code>make.sh</code> exits.
+A handy feature of the generated <code>make.py</code> script is that it
+inserts checks for successful runs of the many <code>doconce</code> commands,
+and if something goes wrong, the script aborts.
 
 <h3>Preprocessing  <a name="___sec10"></a></h3>
 
@@ -830,21 +831,21 @@ allows extensive LaTeX mathematics via MathJax.
 <p>
 
 <ol>
-<li> Write the blog text as a Doconce document without any
+<li> Write the text of the blog post as a Doconce document without any
    title, author, and date.</li>
 <li> Generate HTML as described above.</li>
 <li> Copy the text and paste it into the
-   text area in the blog (just delete the HTML code that initially
+   text area in the blog post (just delete the HTML code that initially
    pops up in the text area). Make sure the input format is HTML.</li>
 </ol>
 
 See a <a href="http://doconce.blogspot.no">simple blog example</a> and
 a <a href="http://doconce-report-demo.blogspot.no/">scientific report</a>
-for demonstrations of blogs at <code>blogspot.no</code>.
+for demonstrations of blog posts at <code>blogspot.no</code>.
 
 <p>
 <div class="alert alert-block alert-warning alert-text-normal"><b>Warning.</b>
-In the readers' comments after the blog one cannot paste raw HTML
+In the readers' comments after the blog post one cannot paste raw HTML
 code with MathJax
 scripts so there is no support for mathematics in the discussion forum.
 </div>
@@ -863,14 +864,14 @@ for figname in fig1 fig2 fig3; do
           mydoc2.do.txt
 done
 doconce format html mydoc2
-# Paste mydoc2.html into a new blog page
+# Paste mydoc2.html into a new blog post page
 </code></pre>
 <!-- end verbatim block -->
 </div>
 <p>
 Blog posts at Google can also be published <a href="http://support.google.com/blogger/bin/answer.py?hl=en&answer=41452">automatically through email</a>.
 A Python program can send the contents of the HTML file
-to the blog's email address using the packages  <code>smtplib</code> and <code>email</code>.
+to the blog site's email address using the packages  <code>smtplib</code> and <code>email</code>.
 
 <p>
 WordPress (<code>wordpress.com</code>) allows raw HTML code in blogs,
@@ -880,7 +881,7 @@ LaTeX support, basically only formulas. The <code>--wordpress</code> option to
 in a way that is acceptable to WordPress.
 Look at a <a href="http://doconce.wordpress.com">simple doconce example</a>
 and a <a href="http://doconcereportdemo.wordpress.com/">scientific report</a>
-to see blogging with mathematics and code on WordPress.
+to see blog posts with mathematics and code on WordPress.
 
 <p>
 Speaking of WordPress, the related project <a href="http://pressbooks.com"><tt>http://pressbooks.com</tt></a> can take raw HTML code (from Doconce, for
@@ -1074,7 +1075,7 @@ The title, authors, and date are by default typeset in a non-standard
 way to enable a nicer treatment of multiple authors having
 institutions in common. However, the standard LaTeX "maketitle" heading
 is also available through <code>-DLATEX_HEADING=traditional</code>.
-A separate titlepage can be generate by
+A separate titlepage can be generated by
 <code>-DLATEX_HEADING=titlepage</code>.
 
 <p>
@@ -1108,13 +1109,18 @@ Preprocessor variables to be defined or undefined are
    and comment inside brackets).</li>
  <li> <code>LINENUMBERS</code> for inclusion of line numbers in the text.</li>
  <li> <code>COLORED_TABLE_ROWS</code> for coloring every other table rows (set this
-   variable to <code>gray</code> or <code>blue</code>)</li>
+   variable to <code>gray</code> or <code>blue</code>).</li>
  <li> <code>BLUE_SECTION_HEADINGS</code> for blue section and subsection headings</li>
  <li> <code>LATEX_HEADING</code> for the typesetting of the title, author, parts of
    preamble (values: <code>traditional</code> for traditional LaTeX heading,
    <code>titlepage</code> for a separate titlepage, <code>Springer_collection</code> for
    edited volumes on Springer, <code>beamer</code> for Beamer slides, <code>doconce_heading</code>
-   (default) for listing institutions after names)</li>
+   (default) for listing institutions after names).</li>
+ <li> <code>LATEX_STYLE</code> for speficying the style:
+   <code>std</code> for standard LaTeX, <code>Springer_lncse</code>, <code>Springer_T2</code>,
+   <code>Springer_llncse</code> (the latter three are not tested).
+   The style dictates the type of <code>documentclass</code> as well as inclusion of
+   special packages and commands.</li>
 </ul>
 
 If you are not satisfied with the Doconce preamble, you can provide
@@ -1657,7 +1663,40 @@ the <code>.gwiki</code> file be replaced by a URL where the figure is
 available. There are instructions in the file for doing this. Usually,
 one performs this substitution automatically (see next section).
 
-<h3>Tweaking the Doconce Output  <a name="___sec32"></a></h3>
+<h3>Google Docs  <a name="___sec32"></a></h3>
+
+<p>
+Google Docs are normally made online in the interactive editor. However,
+you may upload a Doconce document to Google Docs. This requires transforming
+the Doconce document to one of the accepted formats for Google Docs:
+
+<p>
+
+<ul>
+ <li> OpenOffice: <code>doconce format rst</code> and then run
+   <code>rst2odt</code> (or <code>rst2odt.py</code>). Upload the <code>.odt</code> file, click
+   <em>Open...</em> in Google Drive and choose <em>Google Docs</em> as viewer.</li>
+ <li> MS Word: <code>doconce format pandoc</code> and then run <code>pandoc</code> to
+   produce a <code>.docx</code> file that can be uploaded to Google Drive
+   and opened in Google Docs.</li>
+ <li> RTF: <code>doconce format pandoc</code> and then run <code>pandoc</code> to produce
+   a <code>.rtf</code> file that can be uploaded to Google Drive and opened.
+   Another possibility is to run <code>doconce format latex</code> and
+   then <a href="http://sourceforge.net/projects/latex2rtf">latex2rtf</a>
+   (the support of mathematics has gotten worse).</li>
+ <li> Plain text: <code>doconce format plain</code>. Upload the <code>.txt</code> file
+   to Google Drive and open in Google Docs.</li>
+ <li> HTML: <code>doconce format html</code>. Upload the <code>.html</code> file and
+   open in Google Docs. Complicated HTML files can be misinterpreted
+   by Google Docs.</li>
+</ul>
+
+This is not yet much tested. It remains to see how code becomes in
+Google Docs. Support for mathematics is probably impossible until
+Google Docs can import LaTeX files, but LaTeX mathematics can be embedded
+in Google Docs and the <a href="http://code.google.com/p/googledoc2latex">googledoc2latex</a> script can convert a Google document to LaTeX.
+
+<h3>Tweaking the Doconce Output  <a name="___sec33"></a></h3>
 
 <p>
 Occasionally, one would like to tweak the output in a certain format
@@ -1672,7 +1711,7 @@ from a script to automate all steps in going from Doconce to the final
 format(s). The <code>make.sh</code> files in <code>docs/manual</code> and <code>docs/tutorial</code>
 constitute comprehensive examples on how such scripts can be made.
 
-<h3>Demos  <a name="___sec33"></a></h3>
+<h3>Demos  <a name="___sec34"></a></h3>
 
 <p>
 The current text is generated from a Doconce format stored in the file
@@ -1692,7 +1731,7 @@ There is another demo in the <code>docs/manual</code> directory which
 translates the more comprehensive documentation, <code>manual.do.txt</code>, to
 various formats. The <code>make.sh</code> script runs a set of translations.
 
-<h2>Installation of Doconce and its Dependencies  <a name="___sec34"></a></h2>
+<h2>Installation of Doconce and its Dependencies  <a name="___sec35"></a></h2>
 
 <p>
 Below, we explain the manual installation of all software that may be
@@ -1700,7 +1739,7 @@ needed when working with Doconce documents.
 The impatient way to install what is needed is to run the
 <a href="doconce_install_all.sh"><tt>doconce_install_all.sh</tt></a> script.
 
-<h3>Doconce  <a name="___sec35"></a></h3>
+<h3>Doconce  <a name="___sec36"></a></h3>
 
 <p>
 Doconce itself is pure Python code hosted at <a href="https://github.com/hplgit/doconce"><tt>https://github.com/hplgit/doconce</tt></a>.  Its installation from the
@@ -1725,7 +1764,7 @@ sudo python setup.py install
 </code></pre>
 <!-- end verbatim block -->
 
-<h3>Dependencies  <a name="___sec36"></a></h3>
+<h3>Dependencies  <a name="___sec37"></a></h3>
 
 <p>
 Producing HTML documents, plain text, pandoc-extended Markdown,
@@ -1738,7 +1777,7 @@ and so on, the software below must be installed.
 <p>
 <!-- Make a debpkg_doconce.txt file with everything that is needed on Debian -->
 
-<h4>Preprocessors  <a name="___sec37"></a></h4>
+<h4>Preprocessors  <a name="___sec38"></a></h4>
 
 <p>
 If you make use of the <a href="http://code.google.com/p/preprocess">Preprocess</a>
@@ -1780,7 +1819,7 @@ Mako can also be installed directly from
 tarball, pack it out, go to the directory and run
 the usual <code>sudo python setup.py install</code>.
 
-<h4>Image file handling  <a name="___sec38"></a></h4>
+<h4>Image file handling  <a name="___sec39"></a></h4>
 
 <p>
 Different output formats require different formats of image files.
@@ -1818,7 +1857,7 @@ can be installed by
 </code></pre>
 <!-- end verbatim block -->
 
-<h4>Spellcheck  <a name="___sec39"></a></h4>
+<h4>Spellcheck  <a name="___sec40"></a></h4>
 
 <p>
 The utility <code>doconce spellcheck</code> applies the <code>ispell</code> program for
@@ -1830,7 +1869,7 @@ spellcheck. On Debian (including Ubuntu) it is installed by
 </code></pre>
 <!-- end verbatim block -->
 
-<h4>Bibliography  <a name="___sec40"></a></h4>
+<h4>Bibliography  <a name="___sec41"></a></h4>
 
 <p>
 The Python package <a href="https://bitbucket.org/logg/publish">Publish</a> is needed if you use a bibliography
@@ -1852,7 +1891,7 @@ sudo python setup.py
 </code></pre>
 <!-- end verbatim block -->
 
-<h4>Ptex2tex for LaTeX Output  <a name="___sec41"></a></h4>
+<h4>Ptex2tex for LaTeX Output  <a name="___sec42"></a></h4>
 
 <p>
 To make LaTeX documents with very flexible choice of typesetting of
@@ -1936,7 +1975,7 @@ or <code>doconce ptex2tex</code> command is run with <code>-DTODONOTES</code>.  
 <code>ifthen</code>, <code>xkeyval</code>, <code>tikz</code>, <code>calc</code>, <code>graphicx</code>, and <code>setspace</code>. The
 relevant Debian packages for installing all this are listed below.
 
-<h4>LaTeX packages  <a name="___sec42"></a></h4>
+<h4>LaTeX packages  <a name="___sec43"></a></h4>
 
 <p>
 Many LaTeX packages are potentially needed (depending on various
@@ -1986,7 +2025,7 @@ If you want to use the <em>anslistings</em> code environment with <code>ptex2tex
 the <a href="https://code.google.com/p/ptex2tex/source/browse/trunk/latex/styles/with_license/anslistings.sty">ptex2tex source</a>. It should get installed
 by the <code>cp2texmf.sh</code> script executed above.
 
-<h4>reStructuredText (reST) Output  <a name="___sec43"></a></h4>
+<h4>reStructuredText (reST) Output  <a name="___sec44"></a></h4>
 
 <p>
 The <code>rst</code> output from Doconce allows further transformation to LaTeX,
@@ -2025,7 +2064,7 @@ using ReportLab instead of LaTeX. The enabling software is
 or clone the svn repository, go to the <code>rst2pdf</code> directory and
 run the usual <code>sudo python setup.py install</code>.
 
-<h4>Sphinx Output  <a name="___sec44"></a></h4>
+<h4>Sphinx Output  <a name="___sec45"></a></h4>
 
 <p>
 Output to <code>sphinx</code> requires of course the
@@ -2065,7 +2104,7 @@ additional Python/Sphinx modules to be installed:
 These must be downloaded or cloned, and <code>setup.py</code> must be run as shown
 above.
 
-<h4>Markdown and Pandoc Output  <a name="___sec45"></a></h4>
+<h4>Markdown and Pandoc Output  <a name="___sec46"></a></h4>
 
 <p>
 The Doconce format <code>pandoc</code> outputs the document in the Pandoc
@@ -2080,7 +2119,7 @@ easily done by
 <!-- end verbatim block -->
 on Debian (Ubuntu) systems.
 
-<h4>Epydoc Output  <a name="___sec46"></a></h4>
+<h4>Epydoc Output  <a name="___sec47"></a></h4>
 
 <p>
 When the output format is <code>epydoc</code> one needs that program too, installed
@@ -2104,7 +2143,7 @@ run <code>svn update</code>, and then <code>sudo python setup.py install</code>.
 Mercurial (<code>hg</code>) directories, go to the directory, run
 <code>hg pull; hg update</code>, and then <code>sudo python setup.py install</code>.
 
-<h4>The <code>doconce diff</code> command  <a name="___sec47"></a></h4>
+<h4>The <code>doconce diff</code> command  <a name="___sec48"></a></h4>
 
 <p>
 The <code>doconce diff file1 file prog</code> command for illustrating differences between
@@ -2127,7 +2166,7 @@ appear in the table below.
 <tr><td align="left">   <code>tkdiff.tcl</code>                                                                       </td> <td align="left">   <a href="https://sourceforge.net/projects/tkdiff/">tkdiff</a>                                          </td> <td align="left">   not in Debian                                                                                 </td> </tr>
 </table>
 
-<h3>Quick Debian/Ubuntu Install  <a name="___sec48"></a></h3>
+<h3>Quick Debian/Ubuntu Install  <a name="___sec49"></a></h3>
 
 <p>
 On Debian (including Ubuntu) systems, it is straightforward to install the
