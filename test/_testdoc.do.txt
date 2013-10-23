@@ -695,6 +695,12 @@ count how many of them, $M$, that fall in the interval $(0.5,0.6)$, and
 compute the probability as $M/N$.
 !ehint
 
+At the end we have a list because that caused problems in LaTeX
+in previous Doconce versions:
+
+ o item1
+ o item2
+
 ===== Project: Explore Distributions of Random Circles =====
 
 label{proj:circle1}
