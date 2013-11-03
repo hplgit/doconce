@@ -1290,6 +1290,15 @@ final,                   % or draft (marks overfull hboxes)
 % #elif LATEX_STYLE == "Springer_llcse"
 % Style: Lecture Notes in Computer Science (Springer)
 \documentclass[oribib]{llncs}
+% #elif LATEX_STYLE == "Koma_Script"
+% Style: Koma-Script
+\documentclass[10pt]{scrartcl}
+% #elif LATEX_STYLE == "siamltex"
+% Style: SIAM LaTeX2e
+\documentclass[leqno]{siamltex}
+% #elif LATEX_STYLE == "siamltexmm"
+% Style: SIAM LaTeX2e multimedia
+\documentclass[leqno]{siamltexmm}
 % #endif
 
 \listfiles               % print all files needed to compile this document
