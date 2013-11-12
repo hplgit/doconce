@@ -3468,7 +3468,6 @@ td.padding {
     eq_no = 1  # counter for equations
     # Insert \tag for each \label (\label only in equations in HTML)
     labels = re.findall(r'\\label\{(.+?)\}', slides)
-    print labels
     for label in labels:
         slides = slides.replace(r'\label{%s}' % label,
                                 r'\tag{%s}' % eq_no)
