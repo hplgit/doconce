@@ -247,6 +247,10 @@ def remove_inline_comments():
         print 'Usage: doconce remove_inline_comments myfile.do.txt'
         _abort()
 
+    if not os.path.isfile(filename):
+        print '*** error: file %s does not exist!' % filename
+        sys.exit(1)
+
     shutil.copy(filename, filename + '.old~~')
     f = open(filename, 'r')
     filestr = f.read()
@@ -268,6 +272,7 @@ def latin2html():
     import os, shutil, sys
     for filename in sys.argv[1:]:
         if not os.path.isfile(filename):
+            print '*** error: file %s does not exist!' % filename
             continue
         oldfilename = filename + '.old~'
         shutil.copy(filename, oldfilename)
@@ -291,6 +296,10 @@ def gwiki_figsubst():
         print 'Usage: %s wikifile URL-stem' % sys.argv[0]
         print 'Ex:    %s somefile.gwiki http://code.google.com/p/myproject/trunk/doc/somedir' % sys.argv[0]
         _abort()
+
+    if not os.path.isfile(gwikifile):
+        print '*** error: file %s does not exist!' % gwikifile
+        sys.exit(1)
 
     # first grep out all filenames with local path:
     shutil.copy(gwikifile, gwikifile + '.old~~')
@@ -353,7 +362,8 @@ def _scitools_subst(patterns, replacements, filenames,
 
     for filename in filenames:
         if not os.path.isfile(filename):
-            raise IOError('%s is not a file!' % filename)
+            print '*** error: file %s does not exist!' % filename
+            continue
         f = open(filename, 'r');
         filestr = f.read()
         f.close()
@@ -445,6 +455,9 @@ def replace():
     to_text = sys.argv[2]
     filenames = wildcard_notation(sys.argv[3:])
     for filename in filenames:
+        if not os.path.isfile(filename):
+            print '*** error: file %s does not exist!' % filename
+            continue
         f = open(filename, 'r')
         text = f.read()
         f.close()
