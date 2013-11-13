@@ -1156,6 +1156,9 @@ download preprocess from http://code.google.com/p/preprocess""")
             print 'You have requested the minted latex style, but this'
             print 'requires the pygments package to be installed. On Debian/Ubuntu: run'
             print 'Terminal> sudo apt-get install python-pygments'
+            print 'Or'
+            print 'Terminal> hg clone http://bitbucket.org/birkenfeld/pygments-main pygments'
+            print 'Terminal> cd pygments; sudo python setup.py install'
             _abort()
 
     # --- Treat the \code{} commands ---
@@ -3851,7 +3854,7 @@ def split_rst():
         basename = filename
         filename += '.rst'
     else:
-        basename = filename[:-5]
+        basename = filename[:-4]
 
     header, parts, footer = get_header_parts_footer(filename, "rst")
     import pprint

@@ -388,7 +388,7 @@ shutil.copy('%%s.rst' %% filename, sphinx_rootdir)
         f.write('''
 # Copy generated sphinx files to sphinx root directory
 filename = '%(filename)s'
-shutil.copy('%%s.rst' %% filename, sphinx_rootdir)
+# Not used: shutil.copy('%%s.rst' %% filename, sphinx_rootdir)
 for part in %(parts_names)s:
     shutil.copy('%%s.rst' %% part, sphinx_rootdir)
 ''' % vars())
@@ -403,7 +403,8 @@ for figdir in figdirs:
         shutil.copytree(figdir, destdir)
 
 # Copy needed media files in current dir (not in fig* and mov*)
-for rstfile in [os.path.join(sphinx_rootdir, filename + '.rst')]:
+for rstfile in glob.glob(os.path.join(sphinx_rootdir, '*.rst')) + \\
+               glob.glob(os.path.join(sphinx_rootdir, '.*.rst')):
     f = open(rstfile, 'r')
     text = text_orig = f.read()
     f.close()
