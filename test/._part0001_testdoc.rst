@@ -15,9 +15,7 @@ And exactly for test purposes we have an extra line here, which
 is part of the abstract.
 
 .. Cannot demonstrate chapter headings since abstract and chapter
-
 .. is mutually exclusive in LaTeX
-
 
 .. _sec1:
 

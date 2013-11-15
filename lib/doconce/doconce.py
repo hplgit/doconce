@@ -1291,6 +1291,7 @@ def typeset_lists(filestr, format, debug_info=[]):
     lastline = lines[0]
     # for debugging only:
     _code_block_no = 0; _tex_block_no = 0
+    exercise_comment_line = r'--- (begin|end) .+?exercise ---'
 
     for i, line in enumerate(lines):
         debugpr('\n------------------------\nsource line=[%s]' % line)
@@ -1315,7 +1316,7 @@ def typeset_lists(filestr, format, debug_info=[]):
             lastline = line
             continue
 
-        if line.startswith('#'):
+        if line.startswith('#') and not:
 
             # first do some debug output:
             if line.startswith('#!!CODE') and len(debug_info) >= 1:
@@ -1340,14 +1341,14 @@ def typeset_lists(filestr, format, debug_info=[]):
                     elif callable(comment_action):
                         new_comment = comment_action(line[1:].strip())
 
-                    # end of exercises is a special delimiter line
-                    if not '--- end exercise ---' in line:
+                    # exercises has comment lines that make end of lists
+                    if re.search(exercise_comment_line, line):
                         result.write(new_comment + '\n')
                     else:
                         line = new_comment  # will be printed later
 
             lastline = line
-            if not '--- end exercise ---' in line:
+            if re.search(exercise_comment_line, line):
                 continue
             # else: just proceed and use zero indent as indicator
             # for end of list
