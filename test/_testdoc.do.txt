@@ -803,6 +803,12 @@ def func(x):
 
 !bhint
 Second hint to subexercise a).
+
+Test list in hint:
+
+ o item1
+ o item2
+
 !ehint
 !esubex
 
@@ -849,6 +855,11 @@ End of solution is here.
 The text here belongs to the main (intro) part of the exercise. Need
 closing remarks to have text after subexercises.
 
+Test list in exercise:
+
+ o item1
+ o item2
+
 
 ===== {Exercise}: Some exercise without the "Exercise:" prefix =====
 
@@ -894,6 +905,11 @@ file=verify_formula.py
 Pick a statement from Project ref{proj:circle1} or Problem ref{demo:ex:1}
 and verify it.
 
+Test list at the end of an exercise without other elements (like subexercise,
+hint, etc.):
+
+ o item1
+ o item2
 
 % if FORMAT in ('rst', 'sphinx', 'html'):
 ===== Project: References in a headings do not work well in ${FORMAT} =====

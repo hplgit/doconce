@@ -5,11 +5,12 @@ Doconce Quick Reference
 -----------------------
 
 :Author: Hans Petter Langtangen
-:Date: Aug 31, 2013
+:Date: Nov 15, 2013
 
 **WARNING: This quick reference is very incomplete!**
 
-*Mission.* Enable writing documentation with much mathematics and
+**Mission.**
+Enable writing documentation with much mathematics and
 computer code *once, in one place* and include it in traditional LaTeX
 books, thesis, and reports, and without extra efforts also make
 professionally looking web versions with Sphinx or HTML. Other outlets
@@ -498,7 +499,8 @@ labels in ``align`` environments work well.)
    PDF document.
 
 
-*LaTeX Newcommands.* The author can define ``newcommand`` statements in files with names
+**LaTeX Newcommands.**
+The author can define ``newcommand`` statements in files with names
 ``newcommands*.tex``. Such commands should only be used for mathematics
 (other LaTeX constructions are only understood by LaTeX itself).
 The convention is that ``newcommands_keep.tex``

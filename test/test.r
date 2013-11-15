@@ -711,6 +711,12 @@ count how many of them, $M$, that fall in the interval $(0.5,0.6)$, and
 compute the probability as $M/N$.
 !ehint
 
+At the end we have a list because that caused problems in LaTeX
+in previous Doconce versions:
+
+ o item1
+ o item2
+
 ===== Project: Explore Distributions of Random Circles =====
 
 label{proj:circle1}
@@ -813,6 +819,12 @@ def func(x):
 
 !bhint
 Second hint to subexercise a).
+
+Test list in hint:
+
+ o item1
+ o item2
+
 !ehint
 !esubex
 
@@ -859,6 +871,11 @@ End of solution is here.
 The text here belongs to the main (intro) part of the exercise. Need
 closing remarks to have text after subexercises.
 
+Test list in exercise:
+
+ o item1
+ o item2
+
 
 ===== {Exercise}: Some exercise without the "Exercise:" prefix =====
 
@@ -904,6 +921,11 @@ file=verify_formula.py
 Pick a statement from Project ref{proj:circle1} or Problem ref{demo:ex:1}
 and verify it.
 
+Test list at the end of an exercise without other elements (like subexercise,
+hint, etc.):
+
+ o item1
+ o item2
 
 % if FORMAT in ('rst', 'sphinx', 'html'):
 ===== Project: References in a headings do not work well in ${FORMAT} =====
@@ -1444,6 +1466,15 @@ final,                   % or draft (marks overfull hboxes)
 % #elif LATEX_STYLE == "Springer_llcse"
 % Style: Lecture Notes in Computer Science (Springer)
 \documentclass[oribib]{llncs}
+% #elif LATEX_STYLE == "Koma_Script"
+% Style: Koma-Script
+\documentclass[10pt]{scrartcl}
+% #elif LATEX_STYLE == "siamltex"
+% Style: SIAM LaTeX2e
+\documentclass[leqno]{siamltex}
+% #elif LATEX_STYLE == "siamltexmm"
+% Style: SIAM LaTeX2e multimedia
+\documentclass[leqno]{siamltexmm}
 % #endif
 
 \listfiles               % print all files needed to compile this document
@@ -2625,10 +2656,11 @@ the beginning of a new exercise and cause trouble. Maybe a list
 \item Mark 1.
 
 \item Mark 2.
-% --- begin hint in exercise ---
 \end{enumerate}
 
 \noindent
+% --- begin hint in exercise ---
+
 \paragraph{Hint 1.}
 Use \code{r = random.random()} and define head as \code{r <= 0.5}.
 
@@ -2693,6 +2725,17 @@ exercises.
 What is the probability of getting a number between 0.5 and 0.6 when
 drawing uniformly distributed random numbers from the interval $[0,1)$?
 
+
+At the end we have a list because that caused problems in {\LaTeX}
+in previous Doconce versions:
+
+\begin{enumerate}
+\item item1
+
+\item item2
+\end{enumerate}
+
+\noindent
 % --- begin hint in exercise ---
 
 \paragraph{Hint.}
@@ -2811,7 +2854,15 @@ Intro to this exercise. Questions are in subexercises below.
 The text here belongs to the main (intro) part of the exercise. Need
 closing remarks to have text after subexercises.
 
+Test list in exercise:
 
+\begin{enumerate}
+\item item1
+
+\item item2
+\end{enumerate}
+
+\noindent
 % --- begin solution of exercise ---
 \paragraph{Solution.}
 Here goes a full solution of the whole exercise.
@@ -2850,6 +2901,15 @@ def func(x):
 \paragraph{Hint 2.}
 Second hint to subexercise a).
 
+Test list in hint:
+
+\begin{enumerate}
+\item item1
+
+\item item2
+\end{enumerate}
+
+\noindent
 % --- end hint in exercise ---
 Filename: \code{subexer_a.pdf}.
 
@@ -2960,6 +3020,17 @@ With some text, before we continue with exercises.
 
 Pick a statement from Project~\ref{proj:circle1} or Problem~\ref{demo:ex:1}
 and verify it.
+
+Test list at the end of an exercise without other elements (like subexercise,
+hint, etc.):
+
+\begin{enumerate}
+\item item1
+
+\item item2
+\end{enumerate}
+
+\noindent
 Filename: \code{verify_formula.py}.
 
 \end{doconce:exercise}
@@ -4107,10 +4178,11 @@ the beginning of a new exercise and cause trouble. Maybe a list
 \item Mark 1.
 
 \item Mark 2.
-% --- begin hint in exercise ---
 \end{enumerate}
 
 \noindent
+% --- begin hint in exercise ---
+
 \paragraph{Hint 1.}
 Use {\fontsize{10pt}{10pt}\Verb!r = random.random()!} and define head as {\fontsize{10pt}{10pt}\Verb!r <= 0.5!}.
 
@@ -4176,6 +4248,17 @@ exercises.
 What is the probability of getting a number between 0.5 and 0.6 when
 drawing uniformly distributed random numbers from the interval $[0,1)$?
 
+
+At the end we have a list because that caused problems in {\LaTeX}
+in previous Doconce versions:
+
+\begin{enumerate}
+\item item1
+
+\item item2
+\end{enumerate}
+
+\noindent
 % --- begin hint in exercise ---
 
 \paragraph{Hint.}
@@ -4295,7 +4378,15 @@ Intro to this exercise. Questions are in subexercises below.
 The text here belongs to the main (intro) part of the exercise. Need
 closing remarks to have text after subexercises.
 
+Test list in exercise:
 
+\begin{enumerate}
+\item item1
+
+\item item2
+\end{enumerate}
+
+\noindent
 % --- begin solution of exercise ---
 \paragraph{Solution.}
 Here goes a full solution of the whole exercise.
@@ -4338,6 +4429,15 @@ def func(x):
 \paragraph{Hint 2.}
 Second hint to subexercise a).
 
+Test list in hint:
+
+\begin{enumerate}
+\item item1
+
+\item item2
+\end{enumerate}
+
+\noindent
 % --- end hint in exercise ---
 Filename: {\fontsize{10pt}{10pt}\Verb!subexer_a.pdf!}.
 
@@ -4450,6 +4550,17 @@ With some text, before we continue with exercises.
 
 Pick a statement from Project~\ref{proj:circle1} or Problem~\ref{demo:ex:1}
 and verify it.
+
+Test list at the end of an exercise without other elements (like subexercise,
+hint, etc.):
+
+\begin{enumerate}
+\item item1
+
+\item item2
+\end{enumerate}
+
+\noindent
 Filename: {\fontsize{10pt}{10pt}\Verb!verify_formula.py!}.
 
 \end{doconce:exercise}
@@ -5556,10 +5667,11 @@ the beginning of a new exercise and cause trouble. Maybe a list
 \item Mark 1.
 
 \item Mark 2.
-% --- begin hint in exercise ---
 \end{enumerate}
 
 \noindent
+% --- begin hint in exercise ---
+
 \paragraph{Hint 1.}
 Use \Verb!r = random.random()! and define head as \Verb!r <= 0.5!.
 
@@ -5624,6 +5736,17 @@ exercises.
 What is the probability of getting a number between 0.5 and 0.6 when
 drawing uniformly distributed random numbers from the interval $[0,1)$?
 
+
+At the end we have a list because that caused problems in {\LaTeX}
+in previous Doconce versions:
+
+\begin{enumerate}
+\item item1
+
+\item item2
+\end{enumerate}
+
+\noindent
 % --- begin hint in exercise ---
 
 \paragraph{Hint.}
@@ -5742,7 +5865,15 @@ Intro to this exercise. Questions are in subexercises below.
 The text here belongs to the main (intro) part of the exercise. Need
 closing remarks to have text after subexercises.
 
+Test list in exercise:
 
+\begin{enumerate}
+\item item1
+
+\item item2
+\end{enumerate}
+
+\noindent
 % --- begin solution of exercise ---
 \paragraph{Solution.}
 Here goes a full solution of the whole exercise.
@@ -5781,6 +5912,15 @@ def func(x):
 \paragraph{Hint 2.}
 Second hint to subexercise a).
 
+Test list in hint:
+
+\begin{enumerate}
+\item item1
+
+\item item2
+\end{enumerate}
+
+\noindent
 % --- end hint in exercise ---
 Filename: \Verb!subexer_a.pdf!.
 
@@ -5891,6 +6031,17 @@ With some text, before we continue with exercises.
 
 Pick a statement from Project~\ref{proj:circle1} or Problem~\ref{demo:ex:1}
 and verify it.
+
+Test list at the end of an exercise without other elements (like subexercise,
+hint, etc.):
+
+\begin{enumerate}
+\item item1
+
+\item item2
+\end{enumerate}
+
+\noindent
 Filename: \Verb!verify_formula.py!.
 
 \end{doconce:exercise}
@@ -6441,7 +6592,8 @@ involving \theta::
             return theta**2
 
 
-*More on \theta.* Here is more text following headline with math.
+**More on \theta.**
+Here is more text following headline with math.
 
 Newcommands must also be tested in this test report:
 \frac{1}{2}, {1/2}, \pmb{x}, \frac{Du}{dt},
@@ -6480,14 +6632,16 @@ Should look nice in most formats!
 .. begin theorem
 
 
-*Theorem 5.* Let a=1 and b=2. Then c=3.
+**Theorem 5.**
+Let a=1 and b=2. Then c=3.
 
 .. end theorem
 
 
 .. begin proof
 
-*Proof.* Since c=a+b, the result follows from straightforward addition.
+**Proof.**
+Since c=a+b, the result follows from straightforward addition.
 END
 .. end proof
 
@@ -6572,7 +6726,8 @@ and ``|`` right after verbatim word (with no space):
 A test of verbatim words in heading with subscript a_i: ``my_file_v1`` and ``my_file_v2``
 -----------------------------------------------------------------------------------------
 
-*Files ``my_file_v1.py`` and ``my_file_v2.py`` define some math a_{i-1}.* Here is
+**Files ``my_file_v1.py`` and ``my_file_v2.py`` define some math a_{i-1}.**
+Here is
 some text.
 
 Bibliography test
@@ -6620,17 +6775,23 @@ typeset as exercises. This is useful if one has solution
 environments as part of the example.
 
 
-*a)* State some problem.
+**a)**
+State some problem.
 
-*Solution.* The answer to this subproblem can be written here.
+**Solution.**
+The answer to this subproblem can be written here.
 
-*b)* State some other problem.
+**b)**
+State some other problem.
 
-*Hint 1.* A hint can be given.
+**Hint 1.**
+A hint can be given.
 
-*Hint 2.* Maybe even another hint?
+**Hint 2.**
+Maybe even another hint?
 
-*Solution.* The answer to this other subproblem goes here,
+**Solution.**
+The answer to this other subproblem goes here,
 maybe over multiple doconce input lines.
 
 .. --- end exercise ---
@@ -6759,34 +6920,31 @@ the beginning of a new exercise and cause trouble. Maybe a list
 
 .. --- begin hint in exercise ---
 
-
-*Hint 1.* Use ``r = random.random()`` and define head as ``r <= 0.5``.
+**Hint 1.**
+Use ``r = random.random()`` and define head as ``r <= 0.5``.
 
 .. --- end hint in exercise ---
 
-
 .. --- begin hint in exercise ---
 
-
-*Hint 2.* Draw an integer among \{1,2\} with
+**Hint 2.**
+Draw an integer among \{1,2\} with
 ``r = random.randint(1,2)`` and define head when ``r`` is 1.
 
 .. --- end hint in exercise ---
 
 
-
 .. --- begin answer of exercise ---
-
-*Answer.* If the ``random.random()`` function returns a number <1/2, let it be
+**Answer.**
+If the ``random.random()`` function returns a number <1/2, let it be
 head, otherwise tail. Repeat this N number of times.
 
 .. --- end answer of exercise ---
 
 
-
 .. --- begin solution of exercise ---
-
-*Solution.* Code::
+**Solution.**
+Code::
 
 
         import sys, random
@@ -6800,7 +6958,6 @@ head, otherwise tail. Repeat this N number of times.
 
 
 .. --- end solution of exercise ---
-
 Filenames: ``flip_coin.py``, ``flip_coin.pdf``.
 
 .. solution files: mysol.txt, mysol_flip_coin.py, yet_another.file
@@ -6833,16 +6990,23 @@ Project 3: Compute a Probability
 What is the probability of getting a number between 0.5 and 0.6 when
 drawing uniformly distributed random numbers from the interval [0,1)?
 
+
+At the end we have a list because that caused problems in LaTeX
+in previous Doconce versions:
+
+1. item1
+
+2. item2
+
 .. --- begin hint in exercise ---
 
-
-*Hint.* To answer this question empirically, let a program
+**Hint.**
+To answer this question empirically, let a program
 draw N such random numbers using Python's standard ``random`` module,
 count how many of them, M, that fall in the interval (0.5,0.6), and
 compute the probability as M/N.
 
 .. --- end hint in exercise ---
-
 
 .. --- end exercise ---
 
@@ -6892,37 +7056,37 @@ center and radius. Plot each circle using the ``circle`` function
 above.
 
 
-*a)* Let R be normally distributed and (x_0,y_0) uniformly distributed.
+**a)**
+Let R be normally distributed and (x_0,y_0) uniformly distributed.
 
 .. --- begin hint in exercise ---
 
-
-*Hint.* Use the ``numpy.random`` module to draw the
+**Hint.**
+Use the ``numpy.random`` module to draw the
 x_0, y_0, and R quantities.
 
 .. --- end hint in exercise ---
 
 
-
 .. --- begin answer of exercise ---
-
-*Answer.* Here goes the short answer to part a).
+**Answer.**
+Here goes the short answer to part a).
 
 .. --- end answer of exercise ---
 
 
-
 .. --- begin solution of exercise ---
-
-*Solution.* Here goes a full solution to part a).
+**Solution.**
+Here goes a full solution to part a).
 
 .. --- end solution of exercise ---
 
-
-*b)* Let R be uniformly distributed and (x_0,y_0) normally distributed.
+**b)**
+Let R be uniformly distributed and (x_0,y_0) normally distributed.
 Filename: ``norm.py``.
 
-*c)* Let R and (x_0,y_0) be normally distributed.
+**c)**
+Let R and (x_0,y_0) be normally distributed.
 
 Filename: ``circles.pdf``.
 
@@ -6961,10 +7125,15 @@ Intro to this exercise. Questions are in subexercises below.
 The text here belongs to the main (intro) part of the exercise. Need
 closing remarks to have text after subexercises.
 
+Test list in exercise:
+
+1. item1
+
+2. item2
 
 .. --- begin solution of exercise ---
-
-*Solution.* Here goes a full solution of the whole exercise.
+**Solution.**
+Here goes a full solution of the whole exercise.
 With some math a=b in this solution::
 
         \[ \hbox{math in solution: } a = b \]
@@ -6979,13 +7148,13 @@ End of solution is here.
 .. --- end solution of exercise ---
 
 
-
-*a)* Subexercises are numbered a), b), etc.
+**a)**
+Subexercises are numbered a), b), etc.
 
 .. --- begin hint in exercise ---
 
-
-*Hint 1.* First hint to subexercise a).
+**Hint 1.**
+First hint to subexercise a).
 With math a=b in hint::
 
         \[ a=b. \]
@@ -6999,26 +7168,30 @@ And with code (in plain verbatim) returning x+1 in hint::
 
 .. --- end hint in exercise ---
 
-
 .. --- begin hint in exercise ---
 
+**Hint 2.**
+Second hint to subexercise a).
 
-*Hint 2.* Second hint to subexercise a).
+Test list in hint:
+
+1. item1
+
+2. item2
 
 .. --- end hint in exercise ---
-
 Filename: ``subexer_a.pdf``.
 
 
 .. --- begin answer of exercise ---
-
-*Answer.* Short answer to subexercise a).
+**Answer.**
+Short answer to subexercise a).
 With math in answer: a=b.
 
 .. --- end answer of exercise ---
 
-
-*b)* Here goes the text for subexercise b).
+**b)**
+Here goes the text for subexercise b).
 
 
 Some math \cos^2 x + \sin^2 x = 1 written one a single line::
@@ -7028,20 +7201,18 @@ Some math \cos^2 x + \sin^2 x = 1 written one a single line::
 
 .. --- begin hint in exercise ---
 
-
-*Hint.* A hint for this subexercise.
+**Hint.**
+A hint for this subexercise.
 
 .. --- end hint in exercise ---
-
 Filename: ``subexer_b.pdf``.
 
 
 .. --- begin solution of exercise ---
-
-*Solution.* Here goes the solution of this subexercise.
+**Solution.**
+Here goes the solution of this subexercise.
 
 .. --- end solution of exercise ---
-
 
 .. Closing remarks for this Exercise
 
@@ -7099,9 +7270,11 @@ Example 7: Just an example
 
 
 
-*a)* What is the capital of Norway?
+**a)**
+What is the capital of Norway?
 
-*Answer.* Oslo.
+**Answer.**
+Oslo.
 
 .. --- end exercise ---
 
@@ -7127,6 +7300,14 @@ Exercise 8: Make references to projects and problems
 
 Pick a statement from `Project 4: Explore Distributions of Random Circles`_ or `Problem 2: Flip a Coin`_
 and verify it.
+
+Test list at the end of an exercise without other elements (like subexercise,
+hint, etc.):
+
+1. item1
+
+2. item2
+
 Filename: ``verify_formula.py``.
 
 .. --- end exercise ---
@@ -7822,7 +8003,8 @@ involving :math:`\theta`:
             return theta**2
 
 
-*More on :math:`\theta`.* Here is more text following headline with math.
+**More on :math:`\theta`.**
+Here is more text following headline with math.
 
 Newcommands must also be tested in this test report:
 :math:`\frac{1}{2}`, :math:`{1/2}`, :math:`\pmb{x}`, :math:`\frac{Du}{dt}`,
@@ -7881,14 +8063,16 @@ Should look nice in most formats!
 .. begin theorem
 
 
-*Theorem 5.* Let :math:`a=1` and :math:`b=2`. Then :math:`c=3`.
+**Theorem 5.**
+Let :math:`a=1` and :math:`b=2`. Then :math:`c=3`.
 
 .. end theorem
 
 
 .. begin proof
 
-*Proof.* Since :math:`c=a+b`, the result follows from straightforward addition.
+**Proof.**
+Since :math:`c=a+b`, the result follows from straightforward addition.
 :math:`\Diamond`
 .. end proof
 
@@ -7989,7 +8173,8 @@ and ``|`` right after verbatim word (with no space):
 A test of verbatim words in heading with subscript :math:`a_i`: ``my_file_v1`` and ``my_file_v2``
 -------------------------------------------------------------------------------------------------
 
-*Files ``my_file_v1.py`` and ``my_file_v2.py`` define some math :math:`a_{i-1}`.* Here is
+**Files ``my_file_v1.py`` and ``my_file_v2.py`` define some math :math:`a_{i-1}`.**
+Here is
 some text.
 
 Bibliography test
@@ -8037,17 +8222,23 @@ typeset as exercises. This is useful if one has solution
 environments as part of the example.
 
 
-*a)* State some problem.
+**a)**
+State some problem.
 
-*Solution.* The answer to this subproblem can be written here.
+**Solution.**
+The answer to this subproblem can be written here.
 
-*b)* State some other problem.
+**b)**
+State some other problem.
 
-*Hint 1.* A hint can be given.
+**Hint 1.**
+A hint can be given.
 
-*Hint 2.* Maybe even another hint?
+**Hint 2.**
+Maybe even another hint?
 
-*Solution.* The answer to this other subproblem goes here,
+**Solution.**
+The answer to this other subproblem goes here,
 maybe over multiple doconce input lines.
 
 .. --- end exercise ---
@@ -8253,34 +8444,31 @@ the beginning of a new exercise and cause trouble. Maybe a list
 
 .. --- begin hint in exercise ---
 
-
-*Hint 1.* Use ``r = random.random()`` and define head as ``r <= 0.5``.
+**Hint 1.**
+Use ``r = random.random()`` and define head as ``r <= 0.5``.
 
 .. --- end hint in exercise ---
 
-
 .. --- begin hint in exercise ---
 
-
-*Hint 2.* Draw an integer among :math:`\{1,2\}` with
+**Hint 2.**
+Draw an integer among :math:`\{1,2\}` with
 ``r = random.randint(1,2)`` and define head when ``r`` is 1.
 
 .. --- end hint in exercise ---
 
 
-
 .. --- begin answer of exercise ---
-
-*Answer.* If the ``random.random()`` function returns a number :math:`<1/2`, let it be
+**Answer.**
+If the ``random.random()`` function returns a number :math:`<1/2`, let it be
 head, otherwise tail. Repeat this :math:`N` number of times.
 
 .. --- end answer of exercise ---
 
 
-
 .. --- begin solution of exercise ---
-
-*Solution.* Code:
+**Solution.**
+Code:
 
 .. code-block:: python
 
@@ -8295,7 +8483,6 @@ head, otherwise tail. Repeat this :math:`N` number of times.
 
 
 .. --- end solution of exercise ---
-
 Filenames: ``flip_coin.py``, ``flip_coin.pdf``.
 
 .. solution files: mysol.txt, mysol_flip_coin.py, yet_another.file
@@ -8328,16 +8515,23 @@ Project 3: Compute a Probability
 What is the probability of getting a number between 0.5 and 0.6 when
 drawing uniformly distributed random numbers from the interval :math:`[0,1)`?
 
+
+At the end we have a list because that caused problems in LaTeX
+in previous Doconce versions:
+
+1. item1
+
+2. item2
+
 .. --- begin hint in exercise ---
 
-
-*Hint.* To answer this question empirically, let a program
+**Hint.**
+To answer this question empirically, let a program
 draw :math:`N` such random numbers using Python's standard ``random`` module,
 count how many of them, :math:`M`, that fall in the interval :math:`(0.5,0.6)`, and
 compute the probability as :math:`M/N`.
 
 .. --- end hint in exercise ---
-
 
 .. --- end exercise ---
 
@@ -8397,37 +8591,37 @@ center and radius. Plot each circle using the ``circle`` function
 above.
 
 
-*a)* Let :math:`R` be normally distributed and :math:`(x_0,y_0)` uniformly distributed.
+**a)**
+Let :math:`R` be normally distributed and :math:`(x_0,y_0)` uniformly distributed.
 
 .. --- begin hint in exercise ---
 
-
-*Hint.* Use the ``numpy.random`` module to draw the
+**Hint.**
+Use the ``numpy.random`` module to draw the
 :math:`x_0`, :math:`y_0`, and :math:`R` quantities.
 
 .. --- end hint in exercise ---
 
 
-
 .. --- begin answer of exercise ---
-
-*Answer.* Here goes the short answer to part a).
+**Answer.**
+Here goes the short answer to part a).
 
 .. --- end answer of exercise ---
 
 
-
 .. --- begin solution of exercise ---
-
-*Solution.* Here goes a full solution to part a).
+**Solution.**
+Here goes a full solution to part a).
 
 .. --- end solution of exercise ---
 
-
-*b)* Let :math:`R` be uniformly distributed and :math:`(x_0,y_0)` normally distributed.
+**b)**
+Let :math:`R` be uniformly distributed and :math:`(x_0,y_0)` normally distributed.
 Filename: ``norm.py``.
 
-*c)* Let :math:`R` and :math:`(x_0,y_0)` be normally distributed.
+**c)**
+Let :math:`R` and :math:`(x_0,y_0)` be normally distributed.
 
 Filename: ``circles.pdf``.
 
@@ -8466,10 +8660,15 @@ Intro to this exercise. Questions are in subexercises below.
 The text here belongs to the main (intro) part of the exercise. Need
 closing remarks to have text after subexercises.
 
+Test list in exercise:
+
+1. item1
+
+2. item2
 
 .. --- begin solution of exercise ---
-
-*Solution.* Here goes a full solution of the whole exercise.
+**Solution.**
+Here goes a full solution of the whole exercise.
 With some math :math:`a=b` in this solution:
 
 .. math::
@@ -8487,13 +8686,13 @@ End of solution is here.
 .. --- end solution of exercise ---
 
 
-
-*a)* Subexercises are numbered a), b), etc.
+**a)**
+Subexercises are numbered a), b), etc.
 
 .. --- begin hint in exercise ---
 
-
-*Hint 1.* First hint to subexercise a).
+**Hint 1.**
+First hint to subexercise a).
 With math :math:`a=b` in hint:
 
 
@@ -8512,26 +8711,30 @@ And with code (in plain verbatim) returning :math:`x+1` in hint:
 
 .. --- end hint in exercise ---
 
-
 .. --- begin hint in exercise ---
 
+**Hint 2.**
+Second hint to subexercise a).
 
-*Hint 2.* Second hint to subexercise a).
+Test list in hint:
+
+1. item1
+
+2. item2
 
 .. --- end hint in exercise ---
-
 Filename: ``subexer_a.pdf``.
 
 
 .. --- begin answer of exercise ---
-
-*Answer.* Short answer to subexercise a).
+**Answer.**
+Short answer to subexercise a).
 With math in answer: :math:`a=b`.
 
 .. --- end answer of exercise ---
 
-
-*b)* Here goes the text for subexercise b).
+**b)**
+Here goes the text for subexercise b).
 
 
 Some math :math:`\cos^2 x + \sin^2 x = 1` written one a single line:
@@ -8543,20 +8746,18 @@ Some math :math:`\cos^2 x + \sin^2 x = 1` written one a single line:
 
 .. --- begin hint in exercise ---
 
-
-*Hint.* A hint for this subexercise.
+**Hint.**
+A hint for this subexercise.
 
 .. --- end hint in exercise ---
-
 Filename: ``subexer_b.pdf``.
 
 
 .. --- begin solution of exercise ---
-
-*Solution.* Here goes the solution of this subexercise.
+**Solution.**
+Here goes the solution of this subexercise.
 
 .. --- end solution of exercise ---
-
 
 .. Closing remarks for this Exercise
 
@@ -8619,9 +8820,11 @@ Example 7: Just an example
 
 
 
-*a)* What is the capital of Norway?
+**a)**
+What is the capital of Norway?
 
-*Answer.* Oslo.
+**Answer.**
+Oslo.
 
 .. --- end exercise ---
 
@@ -8647,6 +8850,14 @@ Exercise 8: Make references to projects and problems
 
 Pick a statement from :ref:`proj:circle1` or :ref:`demo:ex:1`
 and verify it.
+
+Test list at the end of an exercise without other elements (like subexercise,
+hint, etc.):
+
+1. item1
+
+2. item2
+
 Filename: ``verify_formula.py``.
 
 .. --- end exercise ---
@@ -9559,8 +9770,9 @@ the beginning of a new exercise and cause trouble. Maybe a list
 
 
 # Mark 1.
-# Mark 2.<wiki:comment> --- begin hint in exercise --- </wiki:comment>
+# Mark 2.
 
+<wiki:comment> --- begin hint in exercise --- </wiki:comment>
 
 *Hint 1.* Use `r = random.random()` and define head as `r <= 0.5`.
 
@@ -9617,6 +9829,14 @@ exercises.
 
 What is the probability of getting a number between 0.5 and 0.6 when
 drawing uniformly distributed random numbers from the interval `[0,1)`?
+
+
+At the end we have a list because that caused problems in LaTeX
+in previous Doconce versions:
+
+
+# item1
+# item2
 
 <wiki:comment> --- begin hint in exercise --- </wiki:comment>
 
@@ -9724,6 +9944,11 @@ Intro to this exercise. Questions are in subexercises below.
 The text here belongs to the main (intro) part of the exercise. Need
 closing remarks to have text after subexercises.
 
+Test list in exercise:
+
+
+# item1
+# item2
 
 <wiki:comment> --- begin solution of exercise --- </wiki:comment>
 *Solution.* Here goes a full solution of the whole exercise.
@@ -9762,6 +9987,12 @@ def func(x):
 <wiki:comment> --- begin hint in exercise --- </wiki:comment>
 
 *Hint 2.* Second hint to subexercise a).
+
+Test list in hint:
+
+
+# item1
+# item2
 
 <wiki:comment> --- end hint in exercise --- </wiki:comment>
 Filename: `subexer_a.pdf`.
@@ -9862,6 +10093,14 @@ With some text, before we continue with exercises.
 
 Pick a statement from [#Project_4:_Explore_Distributions_of_Random_Circles] or [#Problem_2:_Flip_a_Coin]
 and verify it.
+
+Test list at the end of an exercise without other elements (like subexercise,
+hint, etc.):
+
+
+# item1
+# item2
+
 Filename: `verify_formula.py`.
 
 <wiki:comment> --- end exercise --- </wiki:comment>
@@ -10610,8 +10849,9 @@ the beginning of a new exercise and cause trouble. Maybe a list
 <ol>
 <li> Mark 1.
 <li> Mark 2.
-<!-- --- begin hint in exercise --- -->
 </ol>
+
+<!-- --- begin hint in exercise --- -->
 
 ''Hint 1.''
 Use <code>r = random.random()</code> and define head as <code>r <= 0.5</code>.
@@ -10672,6 +10912,16 @@ exercises.
 
 What is the probability of getting a number between 0.5 and 0.6 when
 drawing uniformly distributed random numbers from the interval <math>[0,1)</math>?
+
+
+At the end we have a list because that caused problems in LaTeX
+in previous Doconce versions:
+
+
+<ol>
+<li> item1
+<li> item2
+</ol>
 
 <!-- --- begin hint in exercise --- -->
 
@@ -10786,6 +11036,13 @@ Intro to this exercise. Questions are in subexercises below.
 The text here belongs to the main (intro) part of the exercise. Need
 closing remarks to have text after subexercises.
 
+Test list in exercise:
+
+
+<ol>
+<li> item1
+<li> item2
+</ol>
 
 <!-- --- begin solution of exercise --- -->
 ''Solution.''
@@ -10828,6 +11085,14 @@ def func(x):
 
 ''Hint 2.''
 Second hint to subexercise a).
+
+Test list in hint:
+
+
+<ol>
+<li> item1
+<li> item2
+</ol>
 
 <!-- --- end hint in exercise --- -->
 Filename: <code>subexer_a.pdf</code>.
@@ -10934,6 +11199,16 @@ With some text, before we continue with exercises.
 
 Pick a statement from [#Project_4:_Explore_Distributions_of_Random_Circles] or [#Problem_2:_Flip_a_Coin]
 and verify it.
+
+Test list at the end of an exercise without other elements (like subexercise,
+hint, etc.):
+
+
+<ol>
+<li> item1
+<li> item2
+</ol>
+
 Filename: <code>verify_formula.py</code>.
 
 <!-- --- end exercise --- -->
@@ -11758,8 +12033,9 @@ the beginning of a new exercise and cause trouble. Maybe a list
 
 
 # Mark 1.
-# Mark 2.<wiki:comment> --- begin hint in exercise --- </wiki:comment>
+# Mark 2.
 
+<wiki:comment> --- begin hint in exercise --- </wiki:comment>
 
 //Hint 1.// Use {{{r = random.random()}}} and define head as {{{r <= 0.5}}}.
 
@@ -11817,6 +12093,14 @@ exercises.
 
 What is the probability of getting a number between 0.5 and 0.6 when
 drawing uniformly distributed random numbers from the interval {{{[0,1)}}}?
+
+
+At the end we have a list because that caused problems in LaTeX
+in previous Doconce versions:
+
+
+# item1
+# item2
 
 <wiki:comment> --- begin hint in exercise --- </wiki:comment>
 
@@ -11926,6 +12210,11 @@ Intro to this exercise. Questions are in subexercises below.
 The text here belongs to the main (intro) part of the exercise. Need
 closing remarks to have text after subexercises.
 
+Test list in exercise:
+
+
+# item1
+# item2
 
 <wiki:comment> --- begin solution of exercise --- </wiki:comment>
 //Solution.// Here goes a full solution of the whole exercise.
@@ -11964,6 +12253,12 @@ def func(x):
 <wiki:comment> --- begin hint in exercise --- </wiki:comment>
 
 //Hint 2.// Second hint to subexercise a).
+
+Test list in hint:
+
+
+# item1
+# item2
 
 <wiki:comment> --- end hint in exercise --- </wiki:comment>
 Filename: {{{subexer_a.pdf}}}.
@@ -12065,6 +12360,14 @@ With some text, before we continue with exercises.
 
 Pick a statement from [#Project_4:_Explore_Distributions_of_Random_Circles] or [#Problem_2:_Flip_a_Coin]
 and verify it.
+
+Test list at the end of an exercise without other elements (like subexercise,
+hint, etc.):
+
+
+# item1
+# item2
+
 Filename: {{{verify_formula.py}}}.
 
 <wiki:comment> --- end exercise --- </wiki:comment>
@@ -12765,20 +13068,28 @@ the beginning of a new exercise and cause trouble. Maybe a list
 1. Mark 1.
 2. Mark 2.
 
+# --- begin hint in exercise ---
+
 *Hint 1.* Use 'r = random.random()' and define head as 'r <= 0.5'.
 
+# --- end hint in exercise ---
 
+# --- begin hint in exercise ---
 
 *Hint 2.* Draw an integer among \{1,2\} with
 'r = random.randint(1,2)' and define head when 'r' is 1.
 
+# --- end hint in exercise ---
 
 
+# --- begin answer of exercise ---
 *Answer.* If the 'random.random()' function returns a number <1/2, let it be
 head, otherwise tail. Repeat this N number of times.
 
+# --- end answer of exercise ---
 
 
+# --- begin solution of exercise ---
 *Solution.* Code::
 
 
@@ -12792,6 +13103,7 @@ head, otherwise tail. Repeat this N number of times.
         print 'Flipping a coin %d times gave %d heads' % (N, heads)
 
 
+# --- end solution of exercise ---
 Filenames: 'flip_coin.py', 'flip_coin.pdf'.
 
 
@@ -12812,11 +13124,20 @@ What is the probability of getting a number between 0.5 and 0.6 when
 drawing uniformly distributed random numbers from the interval [0,1)?
 
 
+At the end we have a list because that caused problems in LaTeX
+in previous Doconce versions:
+
+1. item1
+2. item2
+
+# --- begin hint in exercise ---
+
 *Hint.* To answer this question empirically, let a program
 draw N such random numbers using Python's standard 'random' module,
 count how many of them, M, that fall in the interval (0.5,0.6), and
 compute the probability as M/N.
 
+# --- end hint in exercise ---
 
 
 
@@ -12857,18 +13178,24 @@ above.
 
 *a)* Let R be normally distributed and (x_0,y_0) uniformly distributed.
 
+# --- begin hint in exercise ---
 
 *Hint.* Use the 'numpy.random' module to draw the
 x_0, y_0, and R quantities.
 
+# --- end hint in exercise ---
 
 
+# --- begin answer of exercise ---
 *Answer.* Here goes the short answer to part a).
 
+# --- end answer of exercise ---
 
 
+# --- begin solution of exercise ---
 *Solution.* Here goes a full solution to part a).
 
+# --- end solution of exercise ---
 
 *b)* Let R be uniformly distributed and (x_0,y_0) normally distributed.
 Filename: 'norm.py'.
@@ -12900,7 +13227,12 @@ Intro to this exercise. Questions are in subexercises below.
 The text here belongs to the main (intro) part of the exercise. Need
 closing remarks to have text after subexercises.
 
+Test list in exercise:
 
+1. item1
+2. item2
+
+# --- begin solution of exercise ---
 *Solution.* Here goes a full solution of the whole exercise.
 With some math a=b in this solution::
 
@@ -12913,10 +13245,12 @@ And code 'a=b' in this solution::
 
 End of solution is here.
 
+# --- end solution of exercise ---
 
 
 *a)* Subexercises are numbered a), b), etc.
 
+# --- begin hint in exercise ---
 
 *Hint 1.* First hint to subexercise a).
 With math a=b in hint::
@@ -12930,16 +13264,26 @@ And with code (in plain verbatim) returning x+1 in hint::
             return x + 1  # with code in hint
 
 
+# --- end hint in exercise ---
 
+# --- begin hint in exercise ---
 
 *Hint 2.* Second hint to subexercise a).
 
+Test list in hint:
+
+1. item1
+2. item2
+
+# --- end hint in exercise ---
 Filename: 'subexer_a.pdf'.
 
 
+# --- begin answer of exercise ---
 *Answer.* Short answer to subexercise a).
 With math in answer: a=b.
 
+# --- end answer of exercise ---
 
 *b)* Here goes the text for subexercise b).
 
@@ -12949,14 +13293,18 @@ Some math \cos^2 x + \sin^2 x = 1 written one a single line::
         \[ \cos^2 x + \sin^2 x = 1 \thinspace .\]
 
 
+# --- begin hint in exercise ---
 
 *Hint.* A hint for this subexercise.
 
+# --- end hint in exercise ---
 Filename: 'subexer_b.pdf'.
 
 
+# --- begin solution of exercise ---
 *Solution.* Here goes the solution of this subexercise.
 
+# --- end solution of exercise ---
 
 
 Remarks
@@ -13014,6 +13362,13 @@ Exercise 8: Make references to projects and problems
 
 Pick a statement from  "Project 4: Explore Distributions of Random Circles" or  "Problem 2: Flip a Coin"
 and verify it.
+
+Test list at the end of an exercise without other elements (like subexercise,
+hint, etc.):
+
+1. item1
+2. item2
+
 Filename: 'verify_formula.py'.
 
 
@@ -13807,20 +14162,28 @@ the beginning of a new exercise and cause trouble. Maybe a list
 1. Mark 1.
 2. Mark 2.
 
+# --- begin hint in exercise ---
+
 I{Hint 1.} Use C{r = random.random()} and define head as C{r <= 0.5}.
 
+# --- end hint in exercise ---
 
+# --- begin hint in exercise ---
 
 I{Hint 2.} Draw an integer among M{\{1,2\}} with
 C{r = random.randint(1,2)} and define head when C{r} is 1.
 
+# --- end hint in exercise ---
 
 
+# --- begin answer of exercise ---
 I{Answer.} If the C{random.random()} function returns a number M{<1/2}, let it be
 head, otherwise tail. Repeat this M{N} number of times.
 
+# --- end answer of exercise ---
 
 
+# --- begin solution of exercise ---
 I{Solution.} Code::
 
 
@@ -13834,6 +14197,7 @@ I{Solution.} Code::
         print 'Flipping a coin %d times gave %d heads' % (N, heads)
 
 
+# --- end solution of exercise ---
 Filenames: C{flip_coin.py}, C{flip_coin.pdf}.
 
 
@@ -13856,11 +14220,20 @@ What is the probability of getting a number between 0.5 and 0.6 when
 drawing uniformly distributed random numbers from the interval M{[0,1)}?
 
 
+At the end we have a list because that caused problems in LaTeX
+in previous Doconce versions:
+
+1. item1
+2. item2
+
+# --- begin hint in exercise ---
+
 I{Hint.} To answer this question empirically, let a program
 draw M{N} such random numbers using Python's standard C{random} module,
 count how many of them, M{M}, that fall in the interval M{(0.5,0.6)}, and
 compute the probability as M{M/N}.
 
+# --- end hint in exercise ---
 
 
 
@@ -13902,18 +14275,24 @@ above.
 
 I{a)} Let M{R} be normally distributed and M{(x_0,y_0)} uniformly distributed.
 
+# --- begin hint in exercise ---
 
 I{Hint.} Use the C{numpy.random} module to draw the
 M{x_0}, M{y_0}, and M{R} quantities.
 
+# --- end hint in exercise ---
 
 
+# --- begin answer of exercise ---
 I{Answer.} Here goes the short answer to part a).
 
+# --- end answer of exercise ---
 
 
+# --- begin solution of exercise ---
 I{Solution.} Here goes a full solution to part a).
 
+# --- end solution of exercise ---
 
 I{b)} Let M{R} be uniformly distributed and M{(x_0,y_0)} normally distributed.
 Filename: C{norm.py}.
@@ -13947,7 +14326,12 @@ Intro to this exercise. Questions are in subexercises below.
 The text here belongs to the main (intro) part of the exercise. Need
 closing remarks to have text after subexercises.
 
+Test list in exercise:
 
+1. item1
+2. item2
+
+# --- begin solution of exercise ---
 I{Solution.} Here goes a full solution of the whole exercise.
 With some math M{a=b} in this solution::
 
@@ -13960,10 +14344,12 @@ And code C{a=b} in this solution::
 
 End of solution is here.
 
+# --- end solution of exercise ---
 
 
 I{a)} Subexercises are numbered a), b), etc.
 
+# --- begin hint in exercise ---
 
 I{Hint 1.} First hint to subexercise a).
 With math M{a=b} in hint::
@@ -13977,16 +14363,26 @@ And with code (in plain verbatim) returning M{x+1} in hint::
             return x + 1  # with code in hint
 
 
+# --- end hint in exercise ---
 
+# --- begin hint in exercise ---
 
 I{Hint 2.} Second hint to subexercise a).
 
+Test list in hint:
+
+1. item1
+2. item2
+
+# --- end hint in exercise ---
 Filename: C{subexer_a.pdf}.
 
 
+# --- begin answer of exercise ---
 I{Answer.} Short answer to subexercise a).
 With math in answer: M{a=b}.
 
+# --- end answer of exercise ---
 
 I{b)} Here goes the text for subexercise b).
 
@@ -13996,14 +14392,18 @@ Some math M{\cos^2 x + \sin^2 x = 1} written one a single line::
         \[ \cos^2 x + \sin^2 x = 1 \thinspace .\]
 
 
+# --- begin hint in exercise ---
 
 I{Hint.} A hint for this subexercise.
 
+# --- end hint in exercise ---
 Filename: C{subexer_b.pdf}.
 
 
+# --- begin solution of exercise ---
 I{Solution.} Here goes the solution of this subexercise.
 
+# --- end solution of exercise ---
 
 
 Remarks
@@ -14067,6 +14467,13 @@ Exercise 8: Make references to projects and problems
 
 Pick a statement from  "Project 4: Explore Distributions of Random Circles" or  "Problem 2: Flip a Coin"
 and verify it.
+
+Test list at the end of an exercise without other elements (like subexercise,
+hint, etc.):
+
+1. item1
+2. item2
+
 Filename: C{verify_formula.py}.
 
 
@@ -14937,20 +15344,28 @@ the beginning of a new exercise and cause trouble. Maybe a list
 
 2. Mark 2.
 
+# --- begin hint in exercise ---
+
 *Hint 1.* Use r = random.random() and define head as r <= 0.5.
 
+# --- end hint in exercise ---
 
+# --- begin hint in exercise ---
 
 *Hint 2.* Draw an integer among \{1,2\} with
 r = random.randint(1,2) and define head when r is 1.
 
+# --- end hint in exercise ---
 
 
+# --- begin answer of exercise ---
 *Answer.* If the random.random() function returns a number <1/2, let it be
 head, otherwise tail. Repeat this N number of times.
 
+# --- end answer of exercise ---
 
 
+# --- begin solution of exercise ---
 *Solution.* Code::
 
 
@@ -14964,6 +15379,7 @@ head, otherwise tail. Repeat this N number of times.
         print 'Flipping a coin %d times gave %d heads' % (N, heads)
 
 
+# --- end solution of exercise ---
 Filenames: flip_coin.py, flip_coin.pdf.
 
 
@@ -14986,11 +15402,21 @@ What is the probability of getting a number between 0.5 and 0.6 when
 drawing uniformly distributed random numbers from the interval [0,1)?
 
 
+At the end we have a list because that caused problems in LaTeX
+in previous Doconce versions:
+
+1. item1
+
+2. item2
+
+# --- begin hint in exercise ---
+
 *Hint.* To answer this question empirically, let a program
 draw N such random numbers using Python's standard random module,
 count how many of them, M, that fall in the interval (0.5,0.6), and
 compute the probability as M/N.
 
+# --- end hint in exercise ---
 
 
 
@@ -15032,18 +15458,24 @@ above.
 
 *a)* Let R be normally distributed and (x_0,y_0) uniformly distributed.
 
+# --- begin hint in exercise ---
 
 *Hint.* Use the numpy.random module to draw the
 x_0, y_0, and R quantities.
 
+# --- end hint in exercise ---
 
 
+# --- begin answer of exercise ---
 *Answer.* Here goes the short answer to part a).
 
+# --- end answer of exercise ---
 
 
+# --- begin solution of exercise ---
 *Solution.* Here goes a full solution to part a).
 
+# --- end solution of exercise ---
 
 *b)* Let R be uniformly distributed and (x_0,y_0) normally distributed.
 Filename: norm.py.
@@ -15077,7 +15509,13 @@ Intro to this exercise. Questions are in subexercises below.
 The text here belongs to the main (intro) part of the exercise. Need
 closing remarks to have text after subexercises.
 
+Test list in exercise:
 
+1. item1
+
+2. item2
+
+# --- begin solution of exercise ---
 *Solution.* Here goes a full solution of the whole exercise.
 With some math a=b in this solution::
 
@@ -15090,10 +15528,12 @@ And code a=b in this solution::
 
 End of solution is here.
 
+# --- end solution of exercise ---
 
 
 *a)* Subexercises are numbered a), b), etc.
 
+# --- begin hint in exercise ---
 
 *Hint 1.* First hint to subexercise a).
 With math a=b in hint::
@@ -15107,16 +15547,27 @@ And with code (in plain verbatim) returning x+1 in hint::
             return x + 1  # with code in hint
 
 
+# --- end hint in exercise ---
 
+# --- begin hint in exercise ---
 
 *Hint 2.* Second hint to subexercise a).
 
+Test list in hint:
+
+1. item1
+
+2. item2
+
+# --- end hint in exercise ---
 Filename: subexer_a.pdf.
 
 
+# --- begin answer of exercise ---
 *Answer.* Short answer to subexercise a).
 With math in answer: a=b.
 
+# --- end answer of exercise ---
 
 *b)* Here goes the text for subexercise b).
 
@@ -15126,14 +15577,18 @@ Some math \cos^2 x + \sin^2 x = 1 written one a single line::
         \[ \cos^2 x + \sin^2 x = 1 \thinspace .\]
 
 
+# --- begin hint in exercise ---
 
 *Hint.* A hint for this subexercise.
 
+# --- end hint in exercise ---
 Filename: subexer_b.pdf.
 
 
+# --- begin solution of exercise ---
 *Solution.* Here goes the solution of this subexercise.
 
+# --- end solution of exercise ---
 
 
 Remarks
@@ -15197,6 +15652,14 @@ Exercise 8: Make references to projects and problems
 
 Pick a statement from  "Project 4: Explore Distributions of Random Circles" or  "Problem 2: Flip a Coin"
 and verify it.
+
+Test list at the end of an exercise without other elements (like subexercise,
+hint, etc.):
+
+1. item1
+
+2. item2
+
 Filename: verify_formula.py.
 
 
@@ -16161,6 +16624,7 @@ the beginning of a new exercise and cause trouble. Maybe a list
 1. Mark 1.
 
 2. Mark 2.
+
 <!-- --- begin hint in exercise --- -->
 
 *Hint 1.* Use `r = random.random()` and define head as `r <= 0.5`.
@@ -16219,6 +16683,14 @@ exercises.
 
 What is the probability of getting a number between 0.5 and 0.6 when
 drawing uniformly distributed random numbers from the interval $[0,1)$?
+
+
+At the end we have a list because that caused problems in LaTeX
+in previous Doconce versions:
+
+1. item1
+
+2. item2
 
 <!-- --- begin hint in exercise --- -->
 
@@ -16332,6 +16804,11 @@ Intro to this exercise. Questions are in subexercises below.
 The text here belongs to the main (intro) part of the exercise. Need
 closing remarks to have text after subexercises.
 
+Test list in exercise:
+
+1. item1
+
+2. item2
 
 <!-- --- begin solution of exercise --- -->
 *Solution.* Here goes a full solution of the whole exercise.
@@ -16373,6 +16850,12 @@ def func(x):
 <!-- --- begin hint in exercise --- -->
 
 *Hint 2.* Second hint to subexercise a).
+
+Test list in hint:
+
+1. item1
+
+2. item2
 
 <!-- --- end hint in exercise --- -->
 Filename: `subexer_a.pdf`.
@@ -16474,6 +16957,14 @@ With some text, before we continue with exercises.
 
 Pick a statement from  [Project 4: Explore Distributions of Random Circles](#s) or  [Problem 2: Flip a Coin](#n)
 and verify it.
+
+Test list at the end of an exercise without other elements (like subexercise,
+hint, etc.):
+
+1. item1
+
+2. item2
+
 Filename: `verify_formula.py`.
 
 <!-- --- end exercise --- -->
@@ -17608,6 +18099,7 @@ case in LaTeX.
       "1. Mark 1.\n",
       "\n",
       "2. Mark 2.\n",
+      "\n",
       "<!-- --- begin hint in exercise --- -->\n",
       "\n",
       "*Hint 1.* Use `r = random.random()` and define head as `r <= 0.5`.\n",
@@ -17678,6 +18170,14 @@ case in LaTeX.
       "\n",
       "What is the probability of getting a number between 0.5 and 0.6 when\n",
       "drawing uniformly distributed random numbers from the interval $[0,1)$?\n",
+      "\n",
+      "\n",
+      "At the end we have a list because that caused problems in LaTeX\n",
+      "in previous Doconce versions:\n",
+      "\n",
+      "1. item1\n",
+      "\n",
+      "2. item2\n",
       "\n",
       "<!-- --- begin hint in exercise --- -->\n",
       "\n",
@@ -17818,6 +18318,11 @@ case in LaTeX.
       "The text here belongs to the main (intro) part of the exercise. Need\n",
       "closing remarks to have text after subexercises.\n",
       "\n",
+      "Test list in exercise:\n",
+      "\n",
+      "1. item1\n",
+      "\n",
+      "2. item2\n",
       "\n",
       "<!-- --- begin solution of exercise --- -->\n",
       "*Solution.* Here goes a full solution of the whole exercise.\n",
@@ -17905,6 +18410,12 @@ case in LaTeX.
       "<!-- --- begin hint in exercise --- -->\n",
       "\n",
       "*Hint 2.* Second hint to subexercise a).\n",
+      "\n",
+      "Test list in hint:\n",
+      "\n",
+      "1. item1\n",
+      "\n",
+      "2. item2\n",
       "\n",
       "<!-- --- end hint in exercise --- -->\n",
       "Filename: `subexer_a.pdf`.\n",
@@ -18037,6 +18548,14 @@ case in LaTeX.
       "\n",
       "Pick a statement from  [Project 4: Explore Distributions of Random Circles](#s) or  [Problem 2: Flip a Coin](#n)\n",
       "and verify it.\n",
+      "\n",
+      "Test list at the end of an exercise without other elements (like subexercise,\n",
+      "hint, etc.):\n",
+      "\n",
+      "1. item1\n",
+      "\n",
+      "2. item2\n",
+      "\n",
       "Filename: `verify_formula.py`.\n",
       "\n",
       "<!-- --- end exercise --- -->\n",
@@ -18403,7 +18922,7 @@ Could not find match for from regex "\*\s+\$.+normally"
   'solution': '',
   'solution_file': None,
   'subex': [],
-  'text': '# Minimalistic exercise\n\n\nWhat is the probability of getting a number between 0.5 and 0.6 when\ndrawing uniformly distributed random numbers from the interval $[0,1)$?',
+  'text': '# Minimalistic exercise\n\n\nWhat is the probability of getting a number between 0.5 and 0.6 when\ndrawing uniformly distributed random numbers from the interval $[0,1)$?\n\n\nAt the end we have a list because that caused problems in LaTeX\nin previous Doconce versions:\n\n o item1\n o item2',
   'title': 'Compute a Probability',
   'type': 'Project',
   'type_visible': True},
@@ -18449,7 +18968,7 @@ Could not find match for from regex "\*\s+\$.+normally"
   'subex': [{'answer': 'Short answer to subexercise a).\nWith math in answer: $a=b$.',
              'file': ['subexer_a.pdf'],
              'hints': ['First hint to subexercise a).\nWith math $a=b$ in hint:\n\n19 <<<!!MATH_BLOCK\nAnd with code (in plain verbatim) returning $x+1$ in hint:\n\n16 <<<!!CODE_BLOCK',
-                       'Second hint to subexercise a).'],
+                       'Second hint to subexercise a).\n\nTest list in hint:\n\n o item1\n o item2'],
              'solution': '',
              'text': 'Subexercises are numbered a), b), etc.'},
             {'answer': '',
@@ -18457,7 +18976,7 @@ Could not find match for from regex "\*\s+\$.+normally"
              'hints': ['A hint for this subexercise.'],
              'solution': 'Here goes the solution of this subexercise.',
              'text': 'Here goes the text for subexercise b).\n\n\nSome math $\\cos^2 x + \\sin^2 x = 1$ written one a single line:\n\n!bt\n\\[ \\cos^2 x + \\sin^2 x = 1 \\thinspace .\\]\n\n!et'}],
-  'text': 'Intro to this exercise. Questions are in subexercises below.\n\n\n\n\n\n#  No meaning in this weired test example:\nThe text here belongs to the main (intro) part of the exercise. Need\nclosing remarks to have text after subexercises.',
+  'text': 'Intro to this exercise. Questions are in subexercises below.\n\n\n\n\n\n#  No meaning in this weired test example:\nThe text here belongs to the main (intro) part of the exercise. Need\nclosing remarks to have text after subexercises.\n\nTest list in exercise:\n\n o item1\n o item2',
   'title': 'Determine some Distance',
   'type': 'Exercise',
   'type_visible': True},
@@ -18506,7 +19025,7 @@ Could not find match for from regex "\*\s+\$.+normally"
   'solution': '',
   'solution_file': None,
   'subex': [],
-  'text': 'Pick a statement from Project ref{proj:circle1} or Problem ref{demo:ex:1}\nand verify it.',
+  'text': 'Pick a statement from Project ref{proj:circle1} or Problem ref{demo:ex:1}\nand verify it.\n\nTest list at the end of an exercise without other elements (like subexercise,\nhint, etc.):\n\n o item1\n o item2',
   'title': 'Make references to projects and problems',
   'type': 'Exercise',
   'type_visible': True},
@@ -18862,8 +19381,8 @@ output2</code></pre>
 <h4 id="files-my_file_v1.py-and-my_file_v2.py-define-some-math-a_i-1.">Files <code>my\_file\_v1.py</code> and <code>my\_file\_v2.py</code> define some math <span class="math">\(a_{i-1}\)</span>.</h4>
 <p>Here is some text.</p>
 <h2 id="bibliography-test">Bibliography test</h2>
-<p>Here is an example:  discussed propagation of large destructive water waves,  gave an overview of numerical methods for solving the Navier-Stokes equations, while the use of Backward Kolmogorov equations for analyzing random vibrations was investigated in . The book chapter  contains information on C++ software tools for programming multigrid methods. A real retro reference is  about a big FORTRAN package. Multiple references are also possible, e.g., see .</p>
-<p>We need to cite more than 10 papers to reproduce an old formatting problem with blanks in the keys in reST format:  and  and all the work of  as well as old work  and , and the talk . Langtangen also had two thesis . More retro citations are the old ME-IN323 book  and the  OONSKI ’94 paper.</p>
+<p>Here is an example: @Langtangen_Pedersen_2002 discussed propagation of large destructive water waves, @Langtangen_et_al_2002 gave an overview of numerical methods for solving the Navier-Stokes equations, while the use of Backward Kolmogorov equations for analyzing random vibrations was investigated in @Langtangen_1994a. The book chapter @Mardal_et_al_2003a contains information on C++ software tools for programming multigrid methods. A real retro reference is @Langtangen_1988d about a big FORTRAN package. Multiple references are also possible, e.g., see @Langtangen_Pedersen_2002 [@Mardal_et_al_2003a].</p>
+<p>We need to cite more than 10 papers to reproduce an old formatting problem with blanks in the keys in reST format: @Langtangen_1992c [@Langtangen_1994a; @Mortensen_et_al_2011; @Langtangen_Pedersen_2002] and @Langtangen_et_al_2002 [@Glimsdal_et_al_20006; @Rahman_et_al_2006b; @Haga_et_al_2011a; @Langtangen_2003a; @Langtangen_2008a; @Langtangen:95] and all the work of @Langtangen_2012 [@Mardal_et_al_2003a; @Jeberg_et_al_2004] as well as old work @Langtangen_1988d and @Langtangen_1989e, and the talk @Langtangen_talk_2007a. Langtangen also had two thesis @Langtangen:85 [@Langtangen_1989e]. More retro citations are the old ME-IN323 book @Langtangen:91 and the @Langtangen:94b OONSKI ’94 paper.</p>
 <h2 id="example-1-examples-can-be-typeset-as-exercises">Example 1: Examples can be typeset as exercises</h2>
 <p>[Example]</p>
 <p>Examples can start with a subsection heading starting with <code>Example:</code> and then, with the command-line option <code>--examples_as_exercises</code> be typeset as exercises. This is useful if one has solution environments as part of the example.</p>
@@ -18930,7 +19449,7 @@ b &amp;= \nabla^2 u + \nabla^4 x &amp; x\in\Omega \label{eq2a}\end{aligned}\]</s
 <p>More mathematical typesetting is demonstrated in the coming exercises.</p>
 <p>Below, we have Problem [demo:ex:1] and Project [demo:ex:2], as well as Projects [proj:circle1] and [exer:you], and in between there we have Exercise [exer:some:formula].</p>
 <h1 id="exercises">Exercises</h1>
-<h2 id="problem-2-flip-a-coin">Problem 2: Flip a Coin</h2>
+<h2 id="problem-2-flip-a-coin" class="unnumbered">Problem 2: Flip a Coin</h2>
 <p>[demo:ex:1]</p>
 <p>Make a program that simulates flipping a coin <span class="math">\(N\)</span> times. Print out &quot;tail&quot; or &quot;head&quot; for each flip and let the program count the number of heads.</p>
 <h4 id="remarks.">Remarks.</h4>
@@ -18958,12 +19477,17 @@ print &#39;Flipping a coin %d times gave %d heads&#39; % (N, heads)</code></pre>
 <p>Filenames: <code>flip_coin.py</code>, <code>flip_coin.pdf</code>.</p>
 <h2 id="not-an-exercise">Not an exercise</h2>
 <p>Should be possible to stick a normal section in the middle of many exercises.</p>
-<h2 id="project-3-compute-a-probability">Project 3: Compute a Probability</h2>
+<h2 id="project-3-compute-a-probability" class="unnumbered">Project 3: Compute a Probability</h2>
 <p>[demo:ex:2]</p>
 <p>What is the probability of getting a number between 0.5 and 0.6 when drawing uniformly distributed random numbers from the interval <span class="math">\([0,1)\)</span>?</p>
+<p>At the end we have a list because that caused problems in LaTeX in previous Doconce versions:</p>
+<ol style="list-style-type: decimal">
+<li><p>item1</p></li>
+<li><p>item2</p></li>
+</ol>
 <h4 id="hint.">Hint.</h4>
 <p>To answer this question empirically, let a program draw <span class="math">\(N\)</span> such random numbers using Python’s standard <code>random</code> module, count how many of them, <span class="math">\(M\)</span>, that fall in the interval <span class="math">\((0.5,0.6)\)</span>, and compute the probability as <span class="math">\(M/N\)</span>.</p>
-<h2 id="project-4-explore-distributions-of-random-circles">Project 4: Explore Distributions of Random Circles</h2>
+<h2 id="project-4-explore-distributions-of-random-circles" class="unnumbered">Project 4: Explore Distributions of Random Circles</h2>
 <p>[proj:circle1]</p>
 <p>The formula for a circle is given by</p>
 <p><span class="math">\[\begin{aligned}
@@ -18995,10 +19519,15 @@ x, y = circle(2.0, 0, 0)</code></pre>
 <p>Filename: <code>circles.pdf</code>.</p>
 <h4 id="remarks.-1">Remarks.</h4>
 <p>At the very end of the exercise it may be appropriate to summarize and give some perspectives.</p>
-<h2 id="exercise-5-determine-some-distance">Exercise 5: Determine some Distance</h2>
+<h2 id="exercise-5-determine-some-distance" class="unnumbered">Exercise 5: Determine some Distance</h2>
 <p>[exer:dist]</p>
 <p>Intro to this exercise. Questions are in subexercises below.</p>
 <p>The text here belongs to the main (intro) part of the exercise. Need closing remarks to have text after subexercises.</p>
+<p>Test list in exercise:</p>
+<ol style="list-style-type: decimal">
+<li><p>item1</p></li>
+<li><p>item2</p></li>
+</ol>
 <h4 id="solution.-4">Solution.</h4>
 <p>Here goes a full solution of the whole exercise. With some math <span class="math">\(a=b\)</span> in this solution: <span class="math">\[\hbox{math in solution: } a = b\]</span> And code <code>a=b</code> in this solution:</p>
 <pre><code>a = b  # code in solution</code></pre>
@@ -19012,6 +19541,11 @@ x, y = circle(2.0, 0, 0)</code></pre>
     return x + 1  # with code in hint</code></pre>
 <h4 id="hint-2.-2">Hint 2.</h4>
 <p>Second hint to subexercise a).</p>
+<p>Test list in hint:</p>
+<ol style="list-style-type: decimal">
+<li><p>item1</p></li>
+<li><p>item2</p></li>
+</ol>
 <p>Filename: <code>subexer_a.pdf</code>.</p>
 <h4 id="answer.-2">Answer.</h4>
 <p>Short answer to subexercise a). With math in answer: <span class="math">\(a=b\)</span>.</p>
@@ -19039,10 +19573,16 @@ x, y = circle(2.0, 0, 0)</code></pre>
 <h1 id="here-goes-another-section">Here goes another section</h1>
 <p>With some text, before we continue with exercises.</p>
 <h1 id="more-exercises">More Exercises</h1>
-<h2 id="exercise-8-make-references-to-projects-and-problems">Exercise 8: Make references to projects and problems</h2>
+<h2 id="exercise-8-make-references-to-projects-and-problems" class="unnumbered">Exercise 8: Make references to projects and problems</h2>
 <p>[exer:some:formula]</p>
-<p>Pick a statement from Project [proj:circle1] or Problem [demo:ex:1] and verify it. Filename: <code>verify_formula.py</code>.</p>
-<h2 id="project-9-references-to-projectdemoex2-in-a-heading-works-for-latex">Project 9: References to Project [demo:ex:2] in a heading works for latex</h2>
+<p>Pick a statement from Project [proj:circle1] or Problem [demo:ex:1] and verify it.</p>
+<p>Test list at the end of an exercise without other elements (like subexercise, hint, etc.):</p>
+<ol style="list-style-type: decimal">
+<li><p>item1</p></li>
+<li><p>item2</p></li>
+</ol>
+<p>Filename: <code>verify_formula.py</code>.</p>
+<h2 id="project-9-references-to-projectdemoex2-in-a-heading-works-for-latex" class="unnumbered">Project 9: References to Project [demo:ex:2] in a heading works for latex</h2>
 <p>[exer:you]</p>
 <p>Refer to the previous exercise as Exercise [exer:some:formula], the two before that as Projects [demo:ex:2] and [proj:circle1], and this one as Project [exer:you]. Filename: <code>selc_composed.pdf</code>.</p>
 <h1 id="just-for-testing-part-i">Just for testing; part I</h1>
@@ -19077,19 +19617,20 @@ x, y = circle(2.0, 0, 0)</code></pre>
 <p>The point here is to test 1) <code>verbatim</code> code in headings, and 2) ending a heading with verbatim code as this triggers a special case in LaTeX.</p>
 </body>
 </html>
-pandoc 1.10.1
-Compiled with citeproc-hs 0.3.6, texmath 0.6.0.6, highlighting-kate 0.5.1.
+pandoc 1.11.1
+Compiled with citeproc-hs 0.3.8, texmath 0.6.1.3, highlighting-kate 0.5.3.8.
 Syntax highlighting is supported for the following languages:
-    Actionscript, Ada, Alert, Alert_indent, Apache, Asn1, Asp, Awk, Bash,
-    Bibtex, Boo, C, Changelog, Clojure, Cmake, Coffeescript, Coldfusion,
-    Commonlisp, Cpp, Cs, Css, D, Diff, Djangotemplate, Doxygen, Dtd, Eiffel,
-    Email, Erlang, Fortran, Fsharp, Gnuassembler, Go, Haskell, Haxe, Html, Ini,
-    Java, Javadoc, Javascript, Json, Jsp, Latex, Lex, LiterateHaskell, Lua,
-    Makefile, Mandoc, Matlab, Maxima, Metafont, Mips, Modula2, Modula3,
-    Monobasic, Nasm, Noweb, Objectivec, Objectivecpp, Ocaml, Octave, Pascal,
-    Perl, Php, Pike, Postscript, Prolog, Python, R, Relaxngcompact, Rhtml, Ruby,
-    Scala, Scheme, Sci, Sed, Sgml, Sql, SqlMysql, SqlPostgresql, Tcl, Texinfo,
-    Verilog, Vhdl, Xml, Xorg, Xslt, Xul, Yacc, Yaml
+    actionscript, ada, apache, asn1, asp, awk, bash, bibtex, boo, c, changelog,
+    clojure, cmake, coffee, coldfusion, commonlisp, cpp, cs, css, curry, d,
+    diff, djangotemplate, doxygen, doxygenlua, dtd, eiffel, email, erlang,
+    fortran, fsharp, gnuassembler, go, haskell, haxe, html, ini, java, javadoc,
+    javascript, json, jsp, julia, latex, lex, literatecurry, literatehaskell,
+    lua, makefile, mandoc, matlab, maxima, metafont, mips, modula2, modula3,
+    monobasic, nasm, noweb, objectivec, objectivecpp, ocaml, octave, pascal,
+    perl, php, pike, postscript, prolog, python, r, relaxngcompact, rhtml, ruby,
+    rust, scala, scheme, sci, sed, sgml, sql, sqlmysql, sqlpostgresql, tcl,
+    texinfo, verilog, vhdl, xml, xorg, xslt, xul, yacc, yaml
+Default user data directory: /home/hpl/.pandoc
 Copyright (C) 2006-2013 John MacFarlane
 Web:  http://johnmacfarlane.net/pandoc
 This is free software; see the source for copying conditions.  There is no
@@ -19112,7 +19653,7 @@ warranty, not even for merchantability or fitness for a particular purpose.
   <style type="text/css">
 table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
   margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; }
+table.sourceCode { width: 100%; line-height: 100%; }
 td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
 td.sourceCode { padding-left: 5px; }
 code > span.kw { color: #007020; font-weight: bold; }
@@ -19273,11 +19814,11 @@ v = f(x)
 &lt;!-- comment --&gt;
 &lt;/table&gt;</code></pre>
 <p>System call:</p>
-<pre class="sourceCode Bash"><code class="sourceCode bash">Terminal<span class="kw">&gt;</span> <span class="kw">mkdir</span> <span class="kw">test</span>
-Terminal<span class="kw">&gt;</span> <span class="kw">cd</span> <span class="kw">test</span>
-Terminal<span class="kw">&gt;</span> myprog -f
-output1
-output2</code></pre>
+<pre class="sourceCode Bash"><code class="sourceCode bash"><span class="kw">Terminal&gt;</span> mkdir test
+<span class="kw">Terminal&gt;</span> cd test
+<span class="kw">Terminal&gt;</span> myprog -f
+<span class="kw">output1</span>
+<span class="kw">output2</span></code></pre>
 <p>It is time to test <code>verbatim inline font</code> especially with <code>a newline inside the text</code> and an exclamation mark at the end: <code>BEGIN</code>! The exclamation mark inside the verbatim text is not smart for latex as we use ! in the <code>verb</code> typesetting... Also test backslashes like <code>\begin</code> and <code>\end</code> in inline verbatim text.</p>
 <p>Here is some <font color="red">red</font> color and an attempt to write <font color="green">with green color containing a linebreak. And one more.</font> Some formats will only display this correctly when HTML is the output format.</p>
 <h3 id="subsection-2-testing-figures-and-movies">Subsection 2: Testing figures and movies</h3>
@@ -19659,8 +20200,10 @@ b &amp;= \nabla^2 u + \nabla^4 x &amp; x\in\Omega \label{eq2a}
 <p>Remarks with such a subsubsection heading would previously mark the beginning of a new exercise and cause trouble. Maybe a list</p>
 <ol style="list-style-type: decimal">
 <li><p>Mark 1.</p></li>
-<li><p>Mark 2. <!-- --- begin hint in exercise --- --></p></li>
+<li><p>Mark 2.</p></li>
 </ol>
+<!-- --- begin hint in exercise --- -->
+
 <p><em>Hint 1.</em> Use <code>r = random.random()</code> and define head as <code>r &lt;= 0.5</code>.</p>
 <!-- --- end hint in exercise --- -->
 
@@ -19699,6 +20242,11 @@ heads = <span class="dv">0</span>
 
 
 <p>What is the probability of getting a number between 0.5 and 0.6 when drawing uniformly distributed random numbers from the interval <span class="math">\([0,1)\)</span>?</p>
+<p>At the end we have a list because that caused problems in LaTeX in previous Doconce versions:</p>
+<ol style="list-style-type: decimal">
+<li><p>item1</p></li>
+<li><p>item2</p></li>
+</ol>
 <!-- --- begin hint in exercise --- -->
 
 <p><em>Hint.</em> To answer this question empirically, let a program draw <span class="math">\(N\)</span> such random numbers using Python's standard <code>random</code> module, count how many of them, <span class="math">\(M\)</span>, that fall in the interval <span class="math">\((0.5,0.6)\)</span>, and compute the probability as <span class="math">\(M/N\)</span>.</p>
@@ -19770,6 +20318,11 @@ x, y = circle(<span class="fl">2.0</span>, <span class="dv">0</span>, <span clas
 <p>Intro to this exercise. Questions are in subexercises below.</p>
 <!-- No meaning in this weired test example: -->
 <p>The text here belongs to the main (intro) part of the exercise. Need closing remarks to have text after subexercises.</p>
+<p>Test list in exercise:</p>
+<ol style="list-style-type: decimal">
+<li><p>item1</p></li>
+<li><p>item2</p></li>
+</ol>
 <!-- --- begin solution of exercise --- -->
 <p><em>Solution.</em> Here goes a full solution of the whole exercise. With some math <span class="math">\(a=b\)</span> in this solution: <span class="math">\[
  \hbox{math in solution: } a = b 
@@ -19793,6 +20346,11 @@ x, y = circle(<span class="fl">2.0</span>, <span class="dv">0</span>, <span clas
 <!-- --- begin hint in exercise --- -->
 
 <p><em>Hint 2.</em> Second hint to subexercise a).</p>
+<p>Test list in hint:</p>
+<ol style="list-style-type: decimal">
+<li><p>item1</p></li>
+<li><p>item2</p></li>
+</ol>
 <!-- --- end hint in exercise --- -->
 <p>Filename: <code>subexer_a.pdf</code>.</p>
 <!-- --- begin answer of exercise --- -->
@@ -19856,7 +20414,13 @@ x, y = circle(<span class="fl">2.0</span>, <span class="dv">0</span>, <span clas
 <!-- --- begin exercise --- -->
 
 <h3 id="exercise-8-make-references-to-projects-and-problems">Exercise 8: Make references to projects and problems</h3>
-<p>Pick a statement from <a href="#s">Project 4: Explore Distributions of Random Circles</a> or <a href="#n">Problem 2: Flip a Coin</a> and verify it. Filename: <code>verify_formula.py</code>.</p>
+<p>Pick a statement from <a href="#s">Project 4: Explore Distributions of Random Circles</a> or <a href="#n">Problem 2: Flip a Coin</a> and verify it.</p>
+<p>Test list at the end of an exercise without other elements (like subexercise, hint, etc.):</p>
+<ol style="list-style-type: decimal">
+<li><p>item1</p></li>
+<li><p>item2</p></li>
+</ol>
+<p>Filename: <code>verify_formula.py</code>.</p>
 <!-- --- end exercise --- -->
 
 
@@ -19922,19 +20486,20 @@ x, y = circle(<span class="fl">2.0</span>, <span class="dv">0</span>, <span clas
 <p>The point here is to test 1) <code>verbatim</code> code in headings, and 2) ending a heading with verbatim code as this triggers a special case in LaTeX.</p>
 </body>
 </html>
-pandoc 1.10.1
-Compiled with citeproc-hs 0.3.6, texmath 0.6.0.6, highlighting-kate 0.5.1.
+pandoc 1.11.1
+Compiled with citeproc-hs 0.3.8, texmath 0.6.1.3, highlighting-kate 0.5.3.8.
 Syntax highlighting is supported for the following languages:
-    Actionscript, Ada, Alert, Alert_indent, Apache, Asn1, Asp, Awk, Bash,
-    Bibtex, Boo, C, Changelog, Clojure, Cmake, Coffeescript, Coldfusion,
-    Commonlisp, Cpp, Cs, Css, D, Diff, Djangotemplate, Doxygen, Dtd, Eiffel,
-    Email, Erlang, Fortran, Fsharp, Gnuassembler, Go, Haskell, Haxe, Html, Ini,
-    Java, Javadoc, Javascript, Json, Jsp, Latex, Lex, LiterateHaskell, Lua,
-    Makefile, Mandoc, Matlab, Maxima, Metafont, Mips, Modula2, Modula3,
-    Monobasic, Nasm, Noweb, Objectivec, Objectivecpp, Ocaml, Octave, Pascal,
-    Perl, Php, Pike, Postscript, Prolog, Python, R, Relaxngcompact, Rhtml, Ruby,
-    Scala, Scheme, Sci, Sed, Sgml, Sql, SqlMysql, SqlPostgresql, Tcl, Texinfo,
-    Verilog, Vhdl, Xml, Xorg, Xslt, Xul, Yacc, Yaml
+    actionscript, ada, apache, asn1, asp, awk, bash, bibtex, boo, c, changelog,
+    clojure, cmake, coffee, coldfusion, commonlisp, cpp, cs, css, curry, d,
+    diff, djangotemplate, doxygen, doxygenlua, dtd, eiffel, email, erlang,
+    fortran, fsharp, gnuassembler, go, haskell, haxe, html, ini, java, javadoc,
+    javascript, json, jsp, julia, latex, lex, literatecurry, literatehaskell,
+    lua, makefile, mandoc, matlab, maxima, metafont, mips, modula2, modula3,
+    monobasic, nasm, noweb, objectivec, objectivecpp, ocaml, octave, pascal,
+    perl, php, pike, postscript, prolog, python, r, relaxngcompact, rhtml, ruby,
+    rust, scala, scheme, sci, sed, sgml, sql, sqlmysql, sqlpostgresql, tcl,
+    texinfo, verilog, vhdl, xml, xorg, xslt, xul, yacc, yaml
+Default user data directory: /home/hpl/.pandoc
 Copyright (C) 2006-2013 John MacFarlane
 Web:  http://johnmacfarlane.net/pandoc
 This is free software; see the source for copying conditions.  There is no
@@ -20874,8 +21439,8 @@ Automatically generated HTML file from Doconce source
       color: #000000;
     }
     h1 { font-size: 1.8em; color: #1e36ce; }
-    h2 { font-size: 1.5em; color: #1e36ce; }
-    h3 { color: #1e36ce; }
+    h2 { font-size: 1.6em; color: #1e36ce; }
+    h3 { font-size: 1.4em; color: #1e36ce; }
     a { color: #1e36ce; text-decoration:none; }
     tt { font-family: "Courier New", Courier; }
     
@@ -21128,6 +21693,15 @@ open=right               % start new chapters on odd-numbered pages
 % #elif LATEX_STYLE == "Springer_llcse"
 % Style: Lecture Notes in Computer Science (Springer)
 \documentclass[oribib]{llncs}
+% #elif LATEX_STYLE == "Koma_Script"
+% Style: Koma-Script
+\documentclass[10pt]{scrartcl}
+% #elif LATEX_STYLE == "siamltex"
+% Style: SIAM LaTeX2e
+\documentclass[leqno]{siamltex}
+% #elif LATEX_STYLE == "siamltexmm"
+% Style: SIAM LaTeX2e multimedia
+\documentclass[leqno]{siamltexmm}
 % #endif
 
 \listfiles               % print all files needed to compile this document
@@ -23165,10 +23739,12 @@ the beginning of a new exercise and cause trouble. Maybe a list
 
 <ol>
 </tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> Mark 1.</li>
-</tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> Mark 2.
-<!-- --- begin hint in exercise --- --></li>
+</tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> Mark 2.</li>
 </ol>
 
+<!-- --- begin hint in exercise --- -->
+
+<p>
 <b>Hint 1.</b>
 Use <code>r = random.random()</code> and define head as <code>r <= 0.5</code>.
 
@@ -23224,6 +23800,16 @@ What is the probability of getting a number between 0.5 and 0.6 when
 drawing uniformly distributed random numbers from the interval \( [0,1) \)?
 
 <p>
+At the end we have a list because that caused problems in LaTeX
+in previous Doconce versions:
+
+<p>
+
+<ol>
+</tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> item1</li>
+</tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> item2</li>
+</ol>
+
 <!-- --- begin hint in exercise --- -->
 
 <p>
@@ -23359,6 +23945,15 @@ The text here belongs to the main (intro) part of the exercise. Need
 closing remarks to have text after subexercises.
 
 <p>
+Test list in exercise:
+
+<p>
+
+<ol>
+</tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> item1</li>
+</tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> item2</li>
+</ol>
+
 
 <p>
 <b>a)</b>
@@ -23395,6 +23990,15 @@ And with code (in plain verbatim) returning \( x+1 \) in hint:
 Second hint to subexercise a).
 
 <p>
+Test list in hint:
+
+<p>
+
+<ol>
+</tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> item1</li>
+</tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> item2</li>
+</ol>
+
 <!-- --- end hint in exercise --- -->
 Filename: <code>subexer_a.pdf</code>.
 
@@ -23509,6 +24113,18 @@ With some text, before we continue with exercises.
 <p>
 Pick a statement from <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a> or <a href="#demo:ex:1">Problem 2: Flip a Coin</a>
 and verify it.
+
+<p>
+Test list at the end of an exercise without other elements (like subexercise,
+hint, etc.):
+
+<p>
+
+<ol>
+</tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> item1</li>
+</tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> item2</li>
+</ol>
+
 Filename: <code>verify_formula.py</code>.
 
 <p>
@@ -23844,8 +24460,8 @@ Automatically generated HTML file from Doconce source
       color: #000000;
     }
     h1 { font-size: 1.8em; color: #1e36ce; }
-    h2 { font-size: 1.5em; color: #1e36ce; }
-    h3 { color: #1e36ce; }
+    h2 { font-size: 1.6em; color: #1e36ce; }
+    h3 { font-size: 1.4em; color: #1e36ce; }
     a { color: #1e36ce; text-decoration:none; }
     tt { font-family: "Courier New", Courier; }
     
@@ -24651,10 +25267,12 @@ the beginning of a new exercise and cause trouble. Maybe a list
 
 <ol>
 <li> Mark 1.</li>
-<li> Mark 2.
-</li>
+<li> Mark 2.</li>
 </ol>
 
+
+
+<p>
 <b>Hint 1.</b>
 Use <code>r = random.random()</code> and define head as <code>r <= 0.5</code>.
 
@@ -24703,6 +25321,19 @@ exercises.
 <p>
 What is the probability of getting a number between 0.5 and 0.6 when
 drawing uniformly distributed random numbers from the interval $latex [0,1)$?
+
+<p>
+At the end we have a list because that caused problems in LaTeX
+in previous Doconce versions:
+
+<p>
+
+<ol>
+<li> item1</li>
+<li> item2</li>
+</ol>
+
+
 
 <p>
 <b>Hint.</b>
@@ -24803,6 +25434,15 @@ The text here belongs to the main (intro) part of the exercise. Need
 closing remarks to have text after subexercises.
 
 <p>
+Test list in exercise:
+
+<p>
+
+<ol>
+<li> item1</li>
+<li> item2</li>
+</ol>
+
 
 <b>Solution.</b>
 Here goes a full solution of the whole exercise.
@@ -24847,6 +25487,15 @@ And with code (in plain verbatim) returning $latex x+1$ in hint:
 Second hint to subexercise a).
 
 <p>
+Test list in hint:
+
+<p>
+
+<ol>
+<li> item1</li>
+<li> item2</li>
+</ol>
+
 
 Filename: <code>subexer_a.pdf</code>.
 
@@ -24935,6 +25584,18 @@ With some text, before we continue with exercises.
 <p>
 Pick a statement from <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a> or <a href="#demo:ex:1">Problem 2: Flip a Coin</a>
 and verify it.
+
+<p>
+Test list at the end of an exercise without other elements (like subexercise,
+hint, etc.):
+
+<p>
+
+<ol>
+<li> item1</li>
+<li> item2</li>
+</ol>
+
 Filename: <code>verify_formula.py</code>.
 
 <h3>Project 9: References in a headings do not work well in html <a name="exer:you"></a></h3>
@@ -25255,8 +25916,8 @@ Automatically generated HTML file from Doconce source
       color: #000000;
     }
     h1 { font-size: 1.8em; color: #1e36ce; }
-    h2 { font-size: 1.5em; color: #1e36ce; }
-    h3 { color: #1e36ce; }
+    h2 { font-size: 1.6em; color: #1e36ce; }
+    h3 { font-size: 1.4em; color: #1e36ce; }
     a { color: #1e36ce; text-decoration:none; }
     tt { font-family: "Courier New", Courier; }
     
@@ -26231,10 +26892,12 @@ the beginning of a new exercise and cause trouble. Maybe a list
 
 <ol>
 <li> Mark 1.</li>
-<li> Mark 2.
-<!-- --- begin hint in exercise --- --></li>
+<li> Mark 2.</li>
 </ol>
 
+<!-- --- begin hint in exercise --- -->
+
+<p>
 <b>Hint 1.</b>
 Use <code>r = random.random()</code> and define head as <code>r <= 0.5</code>.
 
@@ -26287,6 +26950,16 @@ What is the probability of getting a number between 0.5 and 0.6 when
 drawing uniformly distributed random numbers from the interval \( [0,1) \)?
 
 <p>
+At the end we have a list because that caused problems in LaTeX
+in previous Doconce versions:
+
+<p>
+
+<ol>
+<li> item1</li>
+<li> item2</li>
+</ol>
+
 <!-- --- begin hint in exercise --- -->
 
 <p>
@@ -26412,6 +27085,15 @@ The text here belongs to the main (intro) part of the exercise. Need
 closing remarks to have text after subexercises.
 
 <p>
+Test list in exercise:
+
+<p>
+
+<ol>
+<li> item1</li>
+<li> item2</li>
+</ol>
+
 <!-- removed !bsol ... !esol environment
  --><!-- (because of the command-line option --without_solutions)
  -->
@@ -26449,6 +27131,15 @@ And with code (in plain verbatim) returning \( x+1 \) in hint:
 Second hint to subexercise a).
 
 <p>
+Test list in hint:
+
+<p>
+
+<ol>
+<li> item1</li>
+<li> item2</li>
+</ol>
+
 <!-- --- end hint in exercise --- -->
 Filename: <code>subexer_a.pdf</code>.
 
@@ -26560,6 +27251,18 @@ With some text, before we continue with exercises.
 <p>
 Pick a statement from <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a> or <a href="#demo:ex:1">Problem 2: Flip a Coin</a>
 and verify it.
+
+<p>
+Test list at the end of an exercise without other elements (like subexercise,
+hint, etc.):
+
+<p>
+
+<ol>
+<li> item1</li>
+<li> item2</li>
+</ol>
+
 Filename: <code>verify_formula.py</code>.
 
 <p>
@@ -26929,6 +27632,15 @@ final,                   % or draft (marks overfull hboxes)
 % #elif LATEX_STYLE == "Springer_llcse"
 % Style: Lecture Notes in Computer Science (Springer)
 \documentclass[oribib]{llncs}
+% #elif LATEX_STYLE == "Koma_Script"
+% Style: Koma-Script
+\documentclass[10pt]{scrartcl}
+% #elif LATEX_STYLE == "siamltex"
+% Style: SIAM LaTeX2e
+\documentclass[leqno]{siamltex}
+% #elif LATEX_STYLE == "siamltexmm"
+% Style: SIAM LaTeX2e multimedia
+\documentclass[leqno]{siamltexmm}
 % #endif
 
 \listfiles               % print all files needed to compile this document
@@ -28150,6 +28862,17 @@ exercises.
 What is the probability of getting a number between 0.5 and 0.6 when
 drawing uniformly distributed random numbers from the interval $[0,1)$?
 
+
+At the end we have a list because that caused problems in {\LaTeX}
+in previous Doconce versions:
+
+\begin{enumerate}
+\item item1
+
+\item item2
+\end{enumerate}
+
+\noindent
 % --- begin hint in exercise ---
 
 \paragraph{Hint.}
@@ -28262,7 +28985,15 @@ Intro to this exercise. Questions are in subexercises below.
 The text here belongs to the main (intro) part of the exercise. Need
 closing remarks to have text after subexercises.
 
+Test list in exercise:
 
+\begin{enumerate}
+\item item1
+
+\item item2
+\end{enumerate}
+
+\noindent
 % removed !bsol ... !esol environment
 % (because of the command-line option --without_solutions)
 
@@ -28291,6 +29022,15 @@ def func(x):
 \paragraph{Hint 2.}
 Second hint to subexercise a).
 
+Test list in hint:
+
+\begin{enumerate}
+\item item1
+
+\item item2
+\end{enumerate}
+
+\noindent
 % --- end hint in exercise ---
 Filename: \code{subexer_a.pdf}.
 
@@ -28393,6 +29133,17 @@ With some text, before we continue with exercises.
 
 Pick a statement from Project~\ref{proj:circle1} or Problem~\ref{demo:ex:1}
 and verify it.
+
+Test list at the end of an exercise without other elements (like subexercise,
+hint, etc.):
+
+\begin{enumerate}
+\item item1
+
+\item item2
+\end{enumerate}
+
+\noindent
 Filename: \code{verify_formula.py}.
 
 \end{doconce:exercise}
@@ -28768,7 +29519,7 @@ def system(cmd, capture_output=False, echo=True):
 
 # Copy generated sphinx files to sphinx root directory
 filename = 'testdoc'
-shutil.copy('%s.rst' % filename, sphinx_rootdir)
+# Not used: shutil.copy('%s.rst' % filename, sphinx_rootdir)
 for part in ['._part0000_testdoc', '._part0001_testdoc', '._part0002_testdoc']:
     shutil.copy('%s.rst' % part, sphinx_rootdir)
 
@@ -28781,7 +29532,8 @@ for figdir in figdirs:
         shutil.copytree(figdir, destdir)
 
 # Copy needed media files in current dir (not in fig* and mov*)
-for rstfile in [os.path.join(sphinx_rootdir, filename + '.rst')]:
+for rstfile in glob.glob(os.path.join(sphinx_rootdir, '*.rst')) + \
+               glob.glob(os.path.join(sphinx_rootdir, '.*.rst')):
     f = open(rstfile, 'r')
     text = text_orig = f.read()
     f.close()
@@ -28893,7 +29645,8 @@ for figdir in figdirs:
         shutil.copytree(figdir, destdir)
 
 # Copy needed media files in current dir (not in fig* and mov*)
-for rstfile in [os.path.join(sphinx_rootdir, filename + '.rst')]:
+for rstfile in glob.glob(os.path.join(sphinx_rootdir, '*.rst')) + \
+               glob.glob(os.path.join(sphinx_rootdir, '.*.rst')):
     f = open(rstfile, 'r')
     text = text_orig = f.read()
     f.close()
@@ -29710,8 +30463,8 @@ Automatically generated HTML file from Doconce source
       color: #000000;
     }
     h1 { font-size: 1.8em; color: #1e36ce; }
-    h2 { font-size: 1.5em; color: #1e36ce; }
-    h3 { color: #1e36ce; }
+    h2 { font-size: 1.6em; color: #1e36ce; }
+    h3 { font-size: 1.4em; color: #1e36ce; }
     a { color: #1e36ce; text-decoration:none; }
     tt { font-family: "Courier New", Courier; }
     
@@ -30193,6 +30946,15 @@ final,                   % or draft (marks overfull hboxes)
 % #elif LATEX_STYLE == "Springer_llcse"
 % Style: Lecture Notes in Computer Science (Springer)
 \documentclass[oribib]{llncs}
+% #elif LATEX_STYLE == "Koma_Script"
+% Style: Koma-Script
+\documentclass[10pt]{scrartcl}
+% #elif LATEX_STYLE == "siamltex"
+% Style: SIAM LaTeX2e
+\documentclass[leqno]{siamltex}
+% #elif LATEX_STYLE == "siamltexmm"
+% Style: SIAM LaTeX2e multimedia
+\documentclass[leqno]{siamltexmm}
 % #endif
 
 \listfiles               % print all files needed to compile this document
@@ -30575,16 +31337,19 @@ How various formats can deal with LaTeX math
 This document is translated to the format **sphinx**. The purpose is to
 test math and doconce and various output formats.
 
-*Test 1: Inline math.* Here is a sentence contains the equation :math:`u(t)=e^{-at}`.
+**Test 1: Inline math.**
+Here is a sentence contains the equation :math:`u(t)=e^{-at}`.
 
-*Test 2: A single equation without label.* Here it is
+**Test 2: A single equation without label.**
+Here it is
 
 
 .. math::
          u(t)=e^{-at} 
 
 
-*Test 3: A single equation with label.* Here it is as a one-line
+**Test 3: A single equation with label.**
+Here it is as a one-line
 latex code,
 
 
@@ -30626,7 +31391,8 @@ looking like
 This equation has label :eq:`eq1b`.
 
 
-*Test 4: Multiple, aligned equations without label.* Only the align
+**Test 4: Multiple, aligned equations without label.**
+Only the align
 environment is supported by other formats than LaTeX for typesetting
 multiple, aligned equations. The code reads
 
@@ -30651,7 +31417,8 @@ and results in
         
 
 
-*Test 5: Multiple, aligned equations with label.* We use align with
+**Test 5: Multiple, aligned equations with label.**
+We use align with
 labels:
 
 
@@ -30711,7 +31478,8 @@ in the present case is
 
 
 
-*Test 6: Multiple, aligned eqnarray equations without label.* Let us
+**Test 6: Multiple, aligned eqnarray equations without label.**
+Let us
 try the old eqnarray environment.
 
 
@@ -30735,7 +31503,8 @@ and results in
         
 
 
-*Test 7: Multiple, eqnarrayed equations with label.* We use eqnarray with
+**Test 7: Multiple, eqnarrayed equations with label.**
+We use eqnarray with
 labels:
 
 
@@ -30778,7 +31547,8 @@ works. MathJax does not support eqnarray with labels so Sphinx would
 probably fail to show them (unless one tries PNG images or other
 math engines?). The rule of thumb is to avoid equarray.
 
-*Test 8: newcommands and boldface bm vs pmb.* We have
+**Test 8: newcommands and boldface bm vs pmb.**
+We have
 
 
 .. math::
@@ -32788,10 +33558,12 @@ the beginning of a new exercise and cause trouble. Maybe a list
 
 <ol>
 <li> Mark 1.</li>
-<li> Mark 2.
-<!-- --- begin hint in exercise --- --></li>
+<li> Mark 2.</li>
 </ol>
 
+<!-- --- begin hint in exercise --- -->
+
+<p>
 <b>Hint 1.</b>
 Use <code>r = random.random()</code> and define head as <code>r <= 0.5</code>.
 
@@ -32861,6 +33633,16 @@ What is the probability of getting a number between 0.5 and 0.6 when
 drawing uniformly distributed random numbers from the interval \( [0,1) \)?
 
 <p>
+At the end we have a list because that caused problems in LaTeX
+in previous Doconce versions:
+
+<p>
+
+<ol>
+<li> item1</li>
+<li> item2</li>
+</ol>
+
 <!-- --- begin hint in exercise --- -->
 
 <p>
@@ -32988,6 +33770,15 @@ The text here belongs to the main (intro) part of the exercise. Need
 closing remarks to have text after subexercises.
 
 <p>
+Test list in exercise:
+
+<p>
+
+<ol>
+<li> item1</li>
+<li> item2</li>
+</ol>
+
 <!-- --- begin solution of exercise --- -->
 <b>Solution.</b>
 Here goes a full solution of the whole exercise.
@@ -33040,6 +33831,15 @@ And with code (in plain verbatim) returning \( x+1 \) in hint:
 Second hint to subexercise a).
 
 <p>
+Test list in hint:
+
+<p>
+
+<ol>
+<li> item1</li>
+<li> item2</li>
+</ol>
+
 <!-- --- end hint in exercise --- -->
 Filename: <code>subexer_a.pdf</code>.
 
@@ -33157,6 +33957,18 @@ With some text, before we continue with exercises.
 <p>
 Pick a statement from <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a> or <a href="#demo:ex:1">Problem 2: Flip a Coin</a>
 and verify it.
+
+<p>
+Test list at the end of an exercise without other elements (like subexercise,
+hint, etc.):
+
+<p>
+
+<ol>
+<li> item1</li>
+<li> item2</li>
+</ol>
+
 Filename: <code>verify_formula.py</code>.
 
 <p>
@@ -35078,6 +35890,15 @@ final,                   % or draft (marks overfull hboxes)
 % #elif LATEX_STYLE == "Springer_llcse"
 % Style: Lecture Notes in Computer Science (Springer)
 \documentclass[oribib]{llncs}
+% #elif LATEX_STYLE == "Koma_Script"
+% Style: Koma-Script
+\documentclass[10pt]{scrartcl}
+% #elif LATEX_STYLE == "siamltex"
+% Style: SIAM LaTeX2e
+\documentclass[leqno]{siamltex}
+% #elif LATEX_STYLE == "siamltexmm"
+% Style: SIAM LaTeX2e multimedia
+\documentclass[leqno]{siamltexmm}
 % #endif
 
 \listfiles               % print all files needed to compile this document
@@ -38737,8 +39558,8 @@ Automatically generated HTML file from Doconce source
       color: #000000;
     }
     h1 { font-size: 1.8em; color: #1e36ce; }
-    h2 { font-size: 1.5em; color: #1e36ce; }
-    h3 { color: #1e36ce; }
+    h2 { font-size: 1.6em; color: #1e36ce; }
+    h3 { font-size: 1.4em; color: #1e36ce; }
     a { color: #1e36ce; text-decoration:none; }
     tt { font-family: "Courier New", Courier; }
     
@@ -39132,8 +39953,8 @@ Automatically generated HTML file from Doconce source
       color: #000000;
     }
     h1 { font-size: 1.8em; color: #1e36ce; }
-    h2 { font-size: 1.5em; color: #1e36ce; }
-    h3 { color: #1e36ce; }
+    h2 { font-size: 1.6em; color: #1e36ce; }
+    h3 { font-size: 1.4em; color: #1e36ce; }
     a { color: #1e36ce; text-decoration:none; }
     tt { font-family: "Courier New", Courier; }
     
@@ -39538,8 +40359,8 @@ Automatically generated HTML file from Doconce source
       color: #000000;
     }
     h1 { font-size: 1.8em; color: #1e36ce; }
-    h2 { font-size: 1.5em; color: #1e36ce; }
-    h3 { color: #1e36ce; }
+    h2 { font-size: 1.6em; color: #1e36ce; }
+    h3 { font-size: 1.4em; color: #1e36ce; }
     a { color: #1e36ce; text-decoration:none; }
     tt { font-family: "Courier New", Courier; }
     
@@ -40281,8 +41102,8 @@ Automatically generated HTML file from Doconce source
       color: #000000;
     }
     h1 { font-size: 1.8em; color: #1e36ce; }
-    h2 { font-size: 1.5em; color: #1e36ce; }
-    h3 { color: #1e36ce; }
+    h2 { font-size: 1.6em; color: #1e36ce; }
+    h3 { font-size: 1.4em; color: #1e36ce; }
     a { color: #1e36ce; text-decoration:none; }
     tt { font-family: "Courier New", Courier; }
     
@@ -40763,8 +41584,8 @@ Automatically generated HTML file from Doconce source
       color: #000000;
     }
     h1 { font-size: 1.8em; color: #1e36ce; }
-    h2 { font-size: 1.5em; color: #1e36ce; }
-    h3 { color: #1e36ce; }
+    h2 { font-size: 1.6em; color: #1e36ce; }
+    h3 { font-size: 1.4em; color: #1e36ce; }
     a { color: #1e36ce; text-decoration:none; }
     tt { font-family: "Courier New", Courier; }
     
@@ -43054,8 +43875,8 @@ Automatically generated HTML file from Doconce source
       color: #000000;
     }
     h1 { font-size: 1.8em; color: #1e36ce; }
-    h2 { font-size: 1.5em; color: #1e36ce; }
-    h3 { color: #1e36ce; }
+    h2 { font-size: 1.6em; color: #1e36ce; }
+    h3 { font-size: 1.4em; color: #1e36ce; }
     a { color: #1e36ce; text-decoration:none; }
     tt { font-family: "Courier New", Courier; }
     
@@ -44124,6 +44945,15 @@ final,                   % or draft (marks overfull hboxes)
 % #elif LATEX_STYLE == "Springer_llcse"
 % Style: Lecture Notes in Computer Science (Springer)
 \documentclass[oribib]{llncs}
+% #elif LATEX_STYLE == "Koma_Script"
+% Style: Koma-Script
+\documentclass[10pt]{scrartcl}
+% #elif LATEX_STYLE == "siamltex"
+% Style: SIAM LaTeX2e
+\documentclass[leqno]{siamltex}
+% #elif LATEX_STYLE == "siamltexmm"
+% Style: SIAM LaTeX2e multimedia
+\documentclass[leqno]{siamltexmm}
 % #endif
 
 \listfiles               % print all files needed to compile this document
@@ -46651,6 +47481,15 @@ open=right               % start new chapters on odd-numbered pages
 % #elif LATEX_STYLE == "Springer_llcse"
 % Style: Lecture Notes in Computer Science (Springer)
 \documentclass[oribib]{llncs}
+% #elif LATEX_STYLE == "Koma_Script"
+% Style: Koma-Script
+\documentclass[10pt]{scrartcl}
+% #elif LATEX_STYLE == "siamltex"
+% Style: SIAM LaTeX2e
+\documentclass[leqno]{siamltex}
+% #elif LATEX_STYLE == "siamltexmm"
+% Style: SIAM LaTeX2e multimedia
+\documentclass[leqno]{siamltexmm}
 % #endif
 
 \listfiles               % print all files needed to compile this document
@@ -49292,6 +50131,15 @@ final,                   % or draft (marks overfull hboxes)
 % #elif LATEX_STYLE == "Springer_llcse"
 % Style: Lecture Notes in Computer Science (Springer)
 \documentclass[oribib]{llncs}
+% #elif LATEX_STYLE == "Koma_Script"
+% Style: Koma-Script
+\documentclass[10pt]{scrartcl}
+% #elif LATEX_STYLE == "siamltex"
+% Style: SIAM LaTeX2e
+\documentclass[leqno]{siamltex}
+% #elif LATEX_STYLE == "siamltexmm"
+% Style: SIAM LaTeX2e multimedia
+\documentclass[leqno]{siamltexmm}
 % #endif
 
 \listfiles               % print all files needed to compile this document
@@ -50325,7 +51173,7 @@ And here is a table:
 <h6>Dept. of Informatics, Univ. of Oslo</h6>
 </center>
 
-<center>Sat, 31 Aug 2013 (01:52)</center>
+<center>Fri, 15 Nov 2013 (13:51)</center>
 
 
 
@@ -50456,7 +51304,7 @@ And here is a table:
 <h6>Dept. of Informatics, Univ. of Oslo</h6>
 </center>
 
-<center>Sat, 31 Aug 2013 (01:52)</center>
+<center>Fri, 15 Nov 2013 (13:51)</center>
 
 
 
@@ -51532,8 +52380,8 @@ Automatically generated HTML file from Doconce source
       color: #000000;
     }
     h1 { font-size: 1.8em; color: #1e36ce; }
-    h2 { font-size: 1.5em; color: #1e36ce; }
-    h3 { color: #1e36ce; }
+    h2 { font-size: 1.6em; color: #1e36ce; }
+    h3 { font-size: 1.4em; color: #1e36ce; }
     a { color: #1e36ce; text-decoration:none; }
     tt { font-family: "Courier New", Courier; }
     pre { background: #ededed; color: #000; padding: 15px;}
@@ -52843,6 +53691,15 @@ final,                   % or draft (marks overfull hboxes)
 % #elif LATEX_STYLE == "Springer_llcse"
 % Style: Lecture Notes in Computer Science (Springer)
 \documentclass[oribib]{llncs}
+% #elif LATEX_STYLE == "Koma_Script"
+% Style: Koma-Script
+\documentclass[10pt]{scrartcl}
+% #elif LATEX_STYLE == "siamltex"
+% Style: SIAM LaTeX2e
+\documentclass[leqno]{siamltex}
+% #elif LATEX_STYLE == "siamltexmm"
+% Style: SIAM LaTeX2e multimedia
+\documentclass[leqno]{siamltexmm}
 % #endif
 
 \listfiles               % print all files needed to compile this document
@@ -54218,7 +55075,8 @@ Doconce Quick Reference
 
 **WARNING: This quick reference is very incomplete!**
 
-*Mission.* Enable writing documentation with much mathematics and
+**Mission.**
+Enable writing documentation with much mathematics and
 computer code *once, in one place* and include it in traditional LaTeX
 books, thesis, and reports, and without extra efforts also make
 professionally looking web versions with Sphinx or HTML. Other outlets
@@ -54675,7 +55533,8 @@ labels in ``align`` environments work well.)
    PDF document.
 
 
-*LaTeX Newcommands.* The author can define ``newcommand`` statements in files with names
+**LaTeX Newcommands.**
+The author can define ``newcommand`` statements in files with names
 ``newcommands*.tex``. Such commands should only be used for mathematics
 (other LaTeX constructions are only understood by LaTeX itself).
 The convention is that ``newcommands_keep.tex``
@@ -55278,7 +56137,8 @@ Doconce Quick Reference
 
 **WARNING: This quick reference is very incomplete!**
 
-*Mission.* Enable writing documentation with much mathematics and
+**Mission.**
+Enable writing documentation with much mathematics and
 computer code *once, in one place* and include it in traditional LaTeX
 books, thesis, and reports, and without extra efforts also make
 professionally looking web versions with Sphinx or HTML. Other outlets
@@ -55767,7 +56627,8 @@ labels in ``align`` environments work well.)
    PDF document.
 
 
-*LaTeX Newcommands.* The author can define ``newcommand`` statements in files with names
+**LaTeX Newcommands.**
+The author can define ``newcommand`` statements in files with names
 ``newcommands*.tex``. Such commands should only be used for mathematics
 (other LaTeX constructions are only understood by LaTeX itself).
 The convention is that ``newcommands_keep.tex``
@@ -64250,13 +65111,12 @@ done testdoc.p.tex -> testdoc.tex
 + '[' 0 -ne 0 ']'
 + system pdflatex -shell-escape testdoc
 + pdflatex -shell-escape testdoc
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian)
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
  \write18 enabled.
 entering extended mode
 (./testdoc.tex
 LaTeX2e <2011/06/27>
-Babel <v3.8m> and hyphenation patterns for english, dumylang, nohyphenation, lo
-aded.
+Babel <3.9f> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
@@ -64265,17 +65125,7 @@ Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
 
 
-(/usr/share/texlive/texmf-dist/tex/latex/relsize/relsize.sty
-Examine \normalsize starts \@setfontsize size may be \@xpt. 
-Examine \small starts \@setfontsize size may be \@ixpt. 
-Examine \footnotesize starts \@setfontsize size may be \@viiipt. 
-Examine \large starts \@setfontsize size may be \@xiipt. 
-Examine \Large starts \@setfontsize size may be \@xivpt. 
-Examine \LARGE starts \@setfontsize size may be \@xviipt. 
-Examine \scriptsize starts \@setfontsize size may be \@viipt. 
-Examine \tiny starts \@setfontsize size may be \@vpt. 
-Examine \huge starts \@setfontsize size may be \@xxpt. 
-Examine \Huge starts \@setfontsize size may be \@xxvpt. )
+
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/epsfig.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
@@ -64301,6 +65151,7 @@ For additional information on amsmath, use the `?' option.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
+
 
 (/home/hpl/texmf/tex/latex/misc/ptex2tex.sty
 (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
@@ -64334,6 +65185,7 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+
 
 
 
@@ -64441,8 +65293,9 @@ gs.code.tex
 
 
 
+
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-abspage.sty
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-base.sty
+
 
 
 
@@ -64747,41 +65600,41 @@ LaTeX Warning: Reference `exer:you' on page 15
 LaTeX Warning: Reference `exer:some:formula' on page 15 undefined on input line
  928.
 
-[15] (./testdoc.out.pyg) (./testdoc.out.pyg [16]) [17]
+[15] (./testdoc.out.pyg) [16] (./testdoc.out.pyg) [17]
 
-LaTeX Warning: Reference `proj:circle1' on page 18 undefined on input line 1303
+LaTeX Warning: Reference `proj:circle1' on page 18 undefined on input line 1332
 .
 
 
 LaTeX Warning: Reference `demo:ex:1' on page 18 
 
+[18]
 
-LaTeX Warning: Reference `demo:ex:2' on page 18 
-
-
-LaTeX Warning: Reference `exer:some:formula' on page 18 undefined on input line
- 1320.
+LaTeX Warning: Reference `demo:ex:2' on page 19 
 
 
-LaTeX Warning: Reference `demo:ex:2' on page 18 
+LaTeX Warning: Reference `exer:some:formula' on page 19 undefined on input line
+ 1360.
 
 
-LaTeX Warning: Reference `proj:circle1' on page 18 undefined on input line 1321
+LaTeX Warning: Reference `demo:ex:2' on page 19 
+
+
+LaTeX Warning: Reference `proj:circle1' on page 19 undefined on input line 1361
 .
 
 
-LaTeX Warning: Reference `exer:you' on page 18 
+LaTeX Warning: Reference `exer:you' on page 19 
 
 No file testdoc.bbl.
-[18]
 
 LaTeX Warning: Reference `mdf@pagelabel-1' on page 19 undefined on input line 1
-374.
+414.
 
 [19]
 
 LaTeX Warning: Reference `mdf@pagelabel-2' on page 20 undefined on input line 1
-402.
+442.
 
 [20]
 
@@ -64804,7 +65657,7 @@ geometry.sty    2010/09/12 v5.6 Page Geometry
    ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
   ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
  ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
- relsize.sty    2011/09/21 ver 4.0
+ relsize.sty    2013/03/29 ver 4.1
   epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
 graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
@@ -64817,19 +65670,20 @@ infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
    color.sty    1999/02/16
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
 setspace.sty    2011/12/19 v6.7a set line spacing
- amsmath.sty    2000/07/18 v2.13 AMS math features
+ amsmath.sty    2013/01/14 v2.14 AMS math features
  amstext.sty    2000/06/29 v2.01
   amsgen.sty    1999/11/30 v2.0
   amsbsy.sty    1999/11/29 v1.2d
   amsopn.sty    1999/12/14 v2.01 operator names
-amsfonts.sty    2009/06/22 v3.00 Basic AMSFonts support
+amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
   xcolor.sty    2007/01/21 v2.11 LaTeX color extensions (UK)
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
 colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
    array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
       bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
-microtype.sty    2010/01/10 v2.4 Micro-typography with pdfTeX (RS)
-microtype.cfg    2010/01/10 v2.4 microtype main configuration file (RS)
+microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
+microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
+microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
 ptex2tex.sty    
 fancyvrb.sty    2008/02/07
 moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
@@ -64837,9 +65691,9 @@ verbatim.sty    2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
   framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
 anslistings.sty    2009/03/28 code highlighting; provided by Olivier Verdier <o
 livier@maths.lth.se>
-listings.sty    2007/02/22 1.4 (Carsten Heinz)
- lstmisc.sty    2007/02/22 1.4 (Carsten Heinz)
-listings.cfg    2007/02/22 1.4 listings configuration
+listings.sty    2013/07/10 1.5 (Carsten Heinz)
+ lstmisc.sty    2013/07/10 1.5 (Carsten Heinz)
+listings.cfg    2013/06/27 1.5pre1 listings configuration
  movie15.sty    2009/07/07
   ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
  ifdraft.sty    2008/08/11 v1.3 Detect class options draft and final (HO)
@@ -64859,7 +65713,7 @@ inputenc.sty    2008/03/30 v1.1d Input encoding file
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
-hyperref.sty    2012/05/13 v6.82q Hypertext links for LaTeX
+hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
   hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
@@ -64877,15 +65731,16 @@ atveryend.sty    2011/06/30 v1.8 Hooks at the very end of document (HO)
 atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
 refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
  hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
+ auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
 kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
-  pd1enc.def    2012/05/13 v6.82q Hyperref: PDFDocEncoding definition (HO)
+  pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
      url.sty    2006/04/12  ver 3.3  Verb mode for urls, etc.
- hpdftex.def    2012/05/13 v6.82q Hyperref driver for pdfTeX
+ hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
- xkeyval.sty    2008/08/13 v2.6a package option processing (HA)
- xkeyval.tex    2008/08/13 v2.6a key=value parser (HA)
+ xkeyval.sty    2012/10/14 v2.6b package option processing (HA)
+ xkeyval.tex    2012/10/14 v2.6b key=value parser (HA)
     tikz.sty    2010/10/13 v2.10 (rcs-revision 1.76)
      pgf.sty    2008/01/15 v2.10 (rcs-revision 1.12)
   pgfrcs.sty    2010/10/25 v2.10 (rcs-revision 1.24)
@@ -64903,38 +65758,39 @@ pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
  pgfkeys.code.tex
   pgffor.code.tex
     tikz.code.tex
-todonotes.sty    2011/10/22
+todonotes.sty    2012/07/25
   lineno.sty    2005/11/02 line numbers on paragraphs v4.41
-mdframed.sty    2012/04/08 v1.5: mdframed
-  xparse.sty    2012/04/23 v3570 L3 Experimental document command parser
-   expl3.sty    2012/04/23 v3570 L3 Experimental code bundle wrapper
- l3names.sty    2012/03/04 v3494 L3 Experimental namespace for primitives
-l3bootstrap.sty    2011/12/29 v3110 L3 Experimental bootstrap code
+mdframed.sty    2013/07/01 1.9b: mdframed
+  xparse.sty    2013/07/12 v4544 L3 Experimental document command parser
+   expl3.sty    2013/07/12 v4544 L3 Experimental code bundle wrapper
+ l3names.sty    2012/12/07 v4346 L3 Namespace for primitives
+l3bootstrap.sty    2013/01/08 v4420 L3 Experimental bootstrap code
     etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
-l3basics.sty    2012/03/04 v3491 L3 Experimental basic definitions
- l3expan.sty    2012/02/26 v3460 L3 Experimental argument expansion
-    l3tl.sty    2012/03/04 v3490 L3 Experimental token lists
-   l3seq.sty    2012/03/04 v3490 L3 Experimental sequences and stacks
-   l3int.sty    2012/03/04 v3490 L3 Experimental integers
- l3quark.sty    2012/02/12 v3384 L3 Experimental quarks
-   l3prg.sty    2012/03/04 v3490 L3 Experimental control structures
- l3clist.sty    2012/03/04 v3490 L3 Experimental comma separated lists
- l3token.sty    2012/03/04 v3491 L3 Experimental token manipulation
-  l3prop.sty    2012/03/04 v3490 L3 Experimental property lists
-   l3msg.sty    2012/04/23 v3568 L3 Experimental messages
-  l3file.sty    2012/03/09 v3520 L3 Experimental file and I/O operations
-  l3skip.sty    2012/03/05 v3499 L3 Experimental dimensions and skips
-  l3keys.sty    2012/03/03 v3487 L3 Experimental key-value interfaces
-    l3fp.sty    2012/03/04 v3490 L3 Experimental floating-point operations
-   l3box.sty    2012/03/04 v3490 L3 Experimental boxes
-l3coffins.sty    2012/03/03 v3482 L3 Experimental coffin code layer
- l3color.sty    2011/09/07 v2776 L3 Experimental colour support
-l3luatex.sty    2012/02/09 v3355 L3 Experimental LuaTeX-specific functions
+l3basics.sty    2013/07/09 v4521 L3 Basic definitions
+ l3expan.sty    2013/07/09 v4521 L3 Argument expansion
+    l3tl.sty    2013/04/24 v4482 L3 Token lists
+   l3seq.sty    2013/05/26 v4500 L3 Sequences and stacks
+   l3int.sty    2013/04/24 v4482 L3 Integers
+ l3quark.sty    2013/07/09 v4521 L3 Quarks
+   l3prg.sty    2013/04/24 v4482 L3 Control structures
+ l3clist.sty    2013/05/26 v4500 L3 Comma separated lists
+ l3token.sty    2013/04/24 v4482 L3 Experimental token manipulation
+  l3prop.sty    2013/01/09 v4423 L3 Property lists
+   l3msg.sty    2013/01/08 v4412 L3 Messages
+  l3file.sty    2013/05/01 v4483 L3 File and I/O operations
+  l3skip.sty    2013/01/13 v4444 L3 Dimensions and skips
+  l3keys.sty    2013/07/12 v4544 L3 Experimental key-value interfaces
+    l3fp.sty    2013/07/09 v4521 L3 Floating points
+   l3box.sty    2013/04/24 v4482 L3 Experimental boxes
+l3coffins.sty    2012/09/09 v4212 L3 Coffin code layer
+ l3color.sty    2012/08/29 v4156 L3 Experimental color support
+l3luatex.sty    2012/08/03 v4049 L3 Experimental LuaTeX-specific functions
+l3candidates.sty    2013/07/09 v4521 L3 Experimental additions to l3kernel
 etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
- auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
-md-frame-1.mdf    2012/04/08  v1.5: md-frame-1
+needspace.sty    2010/09/12 v1.3d reserve vertical space
+md-frame-1.mdf    2013/07/01\ 1.9b: md-frame-1
 titlesec.sty    2011/12/15 v2.10.0 Sectioning titles
  theorem.sty    1995/11/23 v2.2c Theorem extension package (FMi)
      thp.sty    1995/11/23 v2.2c Theorem extension package (FMi)
@@ -64942,15 +65798,15 @@ supp-pdf.mkii
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
 epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
-  mt-cmr.cfg    2009/11/09 v2.0 microtype config. file: Computer Modern Roman (
+  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
 RS)
- nameref.sty    2010/04/30 v2.40 Cross-referencing by name of section
+ nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
 newcommands_bfmath.tex
 newcommands_replace.tex
-    umsa.fd    2009/06/22 v3.00 AMS symbols A
+    umsa.fd    2013/01/14 v3.01 AMS symbols A
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
-    umsb.fd    2009/06/22 v3.00 AMS symbols B
+    umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
   omscmr.fd    1999/05/25 v2.5h Standard LaTeX font definitions
  testdoc.out.pyg
@@ -65009,13 +65865,12 @@ Output written on testdoc.pdf (21 pages, ).
 Transcript written on testdoc.log.
 + '[' 0 -ne 0 ']'
 + pdflatex -shell-escape testdoc
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian)
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
  \write18 enabled.
 entering extended mode
 (./testdoc.tex
 LaTeX2e <2011/06/27>
-Babel <v3.8m> and hyphenation patterns for english, dumylang, nohyphenation, lo
-aded.
+Babel <3.9f> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
@@ -65024,17 +65879,7 @@ Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
 
 
-(/usr/share/texlive/texmf-dist/tex/latex/relsize/relsize.sty
-Examine \normalsize starts \@setfontsize size may be \@xpt. 
-Examine \small starts \@setfontsize size may be \@ixpt. 
-Examine \footnotesize starts \@setfontsize size may be \@viiipt. 
-Examine \large starts \@setfontsize size may be \@xiipt. 
-Examine \Large starts \@setfontsize size may be \@xivpt. 
-Examine \LARGE starts \@setfontsize size may be \@xviipt. 
-Examine \scriptsize starts \@setfontsize size may be \@viipt. 
-Examine \tiny starts \@setfontsize size may be \@vpt. 
-Examine \huge starts \@setfontsize size may be \@xxpt. 
-Examine \Huge starts \@setfontsize size may be \@xxvpt. )
+
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/epsfig.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
@@ -65060,6 +65905,7 @@ For additional information on amsmath, use the `?' option.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
+
 
 (/home/hpl/texmf/tex/latex/misc/ptex2tex.sty
 (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
@@ -65093,6 +65939,7 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+
 
 
 
@@ -65200,8 +66047,9 @@ gs.code.tex
 
 
 
+
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-abspage.sty
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-base.sty
+
 
 
 
@@ -65421,9 +66269,9 @@ Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on 
 
-[15] (./testdoc.out.pyg) (./testdoc.out.pyg [16]) [17]
+[15] (./testdoc.out.pyg) [16] (./testdoc.out.pyg) [17] [18]
 No file testdoc.bbl.
-[18] [19] [20]
+[19] [20]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on 
@@ -65444,7 +66292,7 @@ geometry.sty    2010/09/12 v5.6 Page Geometry
    ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
   ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
  ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
- relsize.sty    2011/09/21 ver 4.0
+ relsize.sty    2013/03/29 ver 4.1
   epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
 graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
@@ -65457,19 +66305,20 @@ infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
    color.sty    1999/02/16
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
 setspace.sty    2011/12/19 v6.7a set line spacing
- amsmath.sty    2000/07/18 v2.13 AMS math features
+ amsmath.sty    2013/01/14 v2.14 AMS math features
  amstext.sty    2000/06/29 v2.01
   amsgen.sty    1999/11/30 v2.0
   amsbsy.sty    1999/11/29 v1.2d
   amsopn.sty    1999/12/14 v2.01 operator names
-amsfonts.sty    2009/06/22 v3.00 Basic AMSFonts support
+amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
   xcolor.sty    2007/01/21 v2.11 LaTeX color extensions (UK)
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
 colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
    array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
       bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
-microtype.sty    2010/01/10 v2.4 Micro-typography with pdfTeX (RS)
-microtype.cfg    2010/01/10 v2.4 microtype main configuration file (RS)
+microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
+microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
+microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
 ptex2tex.sty    
 fancyvrb.sty    2008/02/07
 moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
@@ -65477,9 +66326,9 @@ verbatim.sty    2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
   framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
 anslistings.sty    2009/03/28 code highlighting; provided by Olivier Verdier <o
 livier@maths.lth.se>
-listings.sty    2007/02/22 1.4 (Carsten Heinz)
- lstmisc.sty    2007/02/22 1.4 (Carsten Heinz)
-listings.cfg    2007/02/22 1.4 listings configuration
+listings.sty    2013/07/10 1.5 (Carsten Heinz)
+ lstmisc.sty    2013/07/10 1.5 (Carsten Heinz)
+listings.cfg    2013/06/27 1.5pre1 listings configuration
  movie15.sty    2009/07/07
   ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
  ifdraft.sty    2008/08/11 v1.3 Detect class options draft and final (HO)
@@ -65499,7 +66348,7 @@ inputenc.sty    2008/03/30 v1.1d Input encoding file
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
-hyperref.sty    2012/05/13 v6.82q Hypertext links for LaTeX
+hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
   hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
@@ -65517,15 +66366,16 @@ atveryend.sty    2011/06/30 v1.8 Hooks at the very end of document (HO)
 atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
 refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
  hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
+ auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
 kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
-  pd1enc.def    2012/05/13 v6.82q Hyperref: PDFDocEncoding definition (HO)
+  pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
      url.sty    2006/04/12  ver 3.3  Verb mode for urls, etc.
- hpdftex.def    2012/05/13 v6.82q Hyperref driver for pdfTeX
+ hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
- xkeyval.sty    2008/08/13 v2.6a package option processing (HA)
- xkeyval.tex    2008/08/13 v2.6a key=value parser (HA)
+ xkeyval.sty    2012/10/14 v2.6b package option processing (HA)
+ xkeyval.tex    2012/10/14 v2.6b key=value parser (HA)
     tikz.sty    2010/10/13 v2.10 (rcs-revision 1.76)
      pgf.sty    2008/01/15 v2.10 (rcs-revision 1.12)
   pgfrcs.sty    2010/10/25 v2.10 (rcs-revision 1.24)
@@ -65543,38 +66393,39 @@ pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
  pgfkeys.code.tex
   pgffor.code.tex
     tikz.code.tex
-todonotes.sty    2011/10/22
+todonotes.sty    2012/07/25
   lineno.sty    2005/11/02 line numbers on paragraphs v4.41
-mdframed.sty    2012/04/08 v1.5: mdframed
-  xparse.sty    2012/04/23 v3570 L3 Experimental document command parser
-   expl3.sty    2012/04/23 v3570 L3 Experimental code bundle wrapper
- l3names.sty    2012/03/04 v3494 L3 Experimental namespace for primitives
-l3bootstrap.sty    2011/12/29 v3110 L3 Experimental bootstrap code
+mdframed.sty    2013/07/01 1.9b: mdframed
+  xparse.sty    2013/07/12 v4544 L3 Experimental document command parser
+   expl3.sty    2013/07/12 v4544 L3 Experimental code bundle wrapper
+ l3names.sty    2012/12/07 v4346 L3 Namespace for primitives
+l3bootstrap.sty    2013/01/08 v4420 L3 Experimental bootstrap code
     etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
-l3basics.sty    2012/03/04 v3491 L3 Experimental basic definitions
- l3expan.sty    2012/02/26 v3460 L3 Experimental argument expansion
-    l3tl.sty    2012/03/04 v3490 L3 Experimental token lists
-   l3seq.sty    2012/03/04 v3490 L3 Experimental sequences and stacks
-   l3int.sty    2012/03/04 v3490 L3 Experimental integers
- l3quark.sty    2012/02/12 v3384 L3 Experimental quarks
-   l3prg.sty    2012/03/04 v3490 L3 Experimental control structures
- l3clist.sty    2012/03/04 v3490 L3 Experimental comma separated lists
- l3token.sty    2012/03/04 v3491 L3 Experimental token manipulation
-  l3prop.sty    2012/03/04 v3490 L3 Experimental property lists
-   l3msg.sty    2012/04/23 v3568 L3 Experimental messages
-  l3file.sty    2012/03/09 v3520 L3 Experimental file and I/O operations
-  l3skip.sty    2012/03/05 v3499 L3 Experimental dimensions and skips
-  l3keys.sty    2012/03/03 v3487 L3 Experimental key-value interfaces
-    l3fp.sty    2012/03/04 v3490 L3 Experimental floating-point operations
-   l3box.sty    2012/03/04 v3490 L3 Experimental boxes
-l3coffins.sty    2012/03/03 v3482 L3 Experimental coffin code layer
- l3color.sty    2011/09/07 v2776 L3 Experimental colour support
-l3luatex.sty    2012/02/09 v3355 L3 Experimental LuaTeX-specific functions
+l3basics.sty    2013/07/09 v4521 L3 Basic definitions
+ l3expan.sty    2013/07/09 v4521 L3 Argument expansion
+    l3tl.sty    2013/04/24 v4482 L3 Token lists
+   l3seq.sty    2013/05/26 v4500 L3 Sequences and stacks
+   l3int.sty    2013/04/24 v4482 L3 Integers
+ l3quark.sty    2013/07/09 v4521 L3 Quarks
+   l3prg.sty    2013/04/24 v4482 L3 Control structures
+ l3clist.sty    2013/05/26 v4500 L3 Comma separated lists
+ l3token.sty    2013/04/24 v4482 L3 Experimental token manipulation
+  l3prop.sty    2013/01/09 v4423 L3 Property lists
+   l3msg.sty    2013/01/08 v4412 L3 Messages
+  l3file.sty    2013/05/01 v4483 L3 File and I/O operations
+  l3skip.sty    2013/01/13 v4444 L3 Dimensions and skips
+  l3keys.sty    2013/07/12 v4544 L3 Experimental key-value interfaces
+    l3fp.sty    2013/07/09 v4521 L3 Floating points
+   l3box.sty    2013/04/24 v4482 L3 Experimental boxes
+l3coffins.sty    2012/09/09 v4212 L3 Coffin code layer
+ l3color.sty    2012/08/29 v4156 L3 Experimental color support
+l3luatex.sty    2012/08/03 v4049 L3 Experimental LuaTeX-specific functions
+l3candidates.sty    2013/07/09 v4521 L3 Experimental additions to l3kernel
 etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
- auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
-md-frame-1.mdf    2012/04/08  v1.5: md-frame-1
+needspace.sty    2010/09/12 v1.3d reserve vertical space
+md-frame-1.mdf    2013/07/01\ 1.9b: md-frame-1
 titlesec.sty    2011/12/15 v2.10.0 Sectioning titles
  theorem.sty    1995/11/23 v2.2c Theorem extension package (FMi)
      thp.sty    1995/11/23 v2.2c Theorem extension package (FMi)
@@ -65582,17 +66433,17 @@ supp-pdf.mkii
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
 epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
-  mt-cmr.cfg    2009/11/09 v2.0 microtype config. file: Computer Modern Roman (
+  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
 RS)
- nameref.sty    2010/04/30 v2.40 Cross-referencing by name of section
+ nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
  testdoc.out
  testdoc.out
 newcommands_bfmath.tex
 newcommands_replace.tex
-    umsa.fd    2009/06/22 v3.00 AMS symbols A
+    umsa.fd    2013/01/14 v3.01 AMS symbols A
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
-    umsb.fd    2009/06/22 v3.00 AMS symbols B
+    umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
   omscmr.fd    1999/05/25 v2.5h Standard LaTeX font definitions
  testdoc.out.pyg
@@ -65642,14 +66493,14 @@ st/fonts/type1/public/amsfonts/symbols/msam10.pfb>
 Output written on testdoc.pdf (21 pages, ).
 Transcript written on testdoc.log.
 + makeindex testdoc
-This is makeindex, version 2.15 [TeX Live 2012] (kpathsea + Thai support).
+This is makeindex, version 2.15 [TeX Live 2013] (kpathsea + Thai support).
 Scanning input file testdoc.idx....done (7 entries accepted, 0 rejected).
 Sorting entries....done (23 comparisons).
 Generating output file testdoc.ind....done (26 lines written, 0 warnings).
 Output written in testdoc.ind.
 Transcript written in testdoc.ilg.
 + bibtex testdoc
-This is BibTeX, Version 0.99d (TeX Live 2012/Debian)
+This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
 The top-level auxiliary file: testdoc.aux
 The style file: plain.bst
 Database file #1: papers.bib.bib
@@ -65660,13 +66511,12 @@ Warning--entry type for "Langtangen:85" isn't style-file defined
 Warning--can't use both author and editor fields in Langtangen:95
 (There were 3 warnings)
 + pdflatex -shell-escape testdoc
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian)
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
  \write18 enabled.
 entering extended mode
 (./testdoc.tex
 LaTeX2e <2011/06/27>
-Babel <v3.8m> and hyphenation patterns for english, dumylang, nohyphenation, lo
-aded.
+Babel <3.9f> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
@@ -65675,17 +66525,7 @@ Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
 
 
-(/usr/share/texlive/texmf-dist/tex/latex/relsize/relsize.sty
-Examine \normalsize starts \@setfontsize size may be \@xpt. 
-Examine \small starts \@setfontsize size may be \@ixpt. 
-Examine \footnotesize starts \@setfontsize size may be \@viiipt. 
-Examine \large starts \@setfontsize size may be \@xiipt. 
-Examine \Large starts \@setfontsize size may be \@xivpt. 
-Examine \LARGE starts \@setfontsize size may be \@xviipt. 
-Examine \scriptsize starts \@setfontsize size may be \@viipt. 
-Examine \tiny starts \@setfontsize size may be \@vpt. 
-Examine \huge starts \@setfontsize size may be \@xxpt. 
-Examine \Huge starts \@setfontsize size may be \@xxvpt. )
+
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/epsfig.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
@@ -65711,6 +66551,7 @@ For additional information on amsmath, use the `?' option.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
+
 
 (/home/hpl/texmf/tex/latex/misc/ptex2tex.sty
 (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
@@ -65744,6 +66585,7 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+
 
 
 
@@ -65851,8 +66693,9 @@ gs.code.tex
 
 
 
+
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-abspage.sty
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-base.sty
+
 
 
 
@@ -66072,17 +66915,17 @@ Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on 
 
-[15] (./testdoc.out.pyg) (./testdoc.out.pyg [16]) [17] (./testdoc.bbl [18])
-[19] [20] [21]
+[15] (./testdoc.out.pyg) [16] (./testdoc.out.pyg) [17] [18] (./testdoc.bbl
+[19]) [20] [21] [22]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on 
 
-(./testdoc.ind [22]
+(./testdoc.ind [23]
 Overfull \hbox (9.21391pt too wide) 
 []\OT1/cmr/m/n/10 (-20) test \OT1/cmtt/m/n/10 two \OT1/cmr/m/n/10 (-20) (sep-a-
 rate) \OT1/cmtt/m/n/10 verbatim expressions \OT1/cmr/m/n/10 (-20) which
-[23])
+[24])
 
 Package movie15 Warning: @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 (movie15)                @@ Rerun to get object references right! @@
@@ -66098,7 +66941,7 @@ geometry.sty    2010/09/12 v5.6 Page Geometry
    ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
   ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
  ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
- relsize.sty    2011/09/21 ver 4.0
+ relsize.sty    2013/03/29 ver 4.1
   epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
 graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
@@ -66111,19 +66954,20 @@ infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
    color.sty    1999/02/16
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
 setspace.sty    2011/12/19 v6.7a set line spacing
- amsmath.sty    2000/07/18 v2.13 AMS math features
+ amsmath.sty    2013/01/14 v2.14 AMS math features
  amstext.sty    2000/06/29 v2.01
   amsgen.sty    1999/11/30 v2.0
   amsbsy.sty    1999/11/29 v1.2d
   amsopn.sty    1999/12/14 v2.01 operator names
-amsfonts.sty    2009/06/22 v3.00 Basic AMSFonts support
+amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
   xcolor.sty    2007/01/21 v2.11 LaTeX color extensions (UK)
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
 colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
    array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
       bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
-microtype.sty    2010/01/10 v2.4 Micro-typography with pdfTeX (RS)
-microtype.cfg    2010/01/10 v2.4 microtype main configuration file (RS)
+microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
+microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
+microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
 ptex2tex.sty    
 fancyvrb.sty    2008/02/07
 moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
@@ -66131,9 +66975,9 @@ verbatim.sty    2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
   framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
 anslistings.sty    2009/03/28 code highlighting; provided by Olivier Verdier <o
 livier@maths.lth.se>
-listings.sty    2007/02/22 1.4 (Carsten Heinz)
- lstmisc.sty    2007/02/22 1.4 (Carsten Heinz)
-listings.cfg    2007/02/22 1.4 listings configuration
+listings.sty    2013/07/10 1.5 (Carsten Heinz)
+ lstmisc.sty    2013/07/10 1.5 (Carsten Heinz)
+listings.cfg    2013/06/27 1.5pre1 listings configuration
  movie15.sty    2009/07/07
   ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
  ifdraft.sty    2008/08/11 v1.3 Detect class options draft and final (HO)
@@ -66153,7 +66997,7 @@ inputenc.sty    2008/03/30 v1.1d Input encoding file
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
-hyperref.sty    2012/05/13 v6.82q Hypertext links for LaTeX
+hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
   hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
@@ -66171,15 +67015,16 @@ atveryend.sty    2011/06/30 v1.8 Hooks at the very end of document (HO)
 atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
 refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
  hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
+ auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
 kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
-  pd1enc.def    2012/05/13 v6.82q Hyperref: PDFDocEncoding definition (HO)
+  pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
      url.sty    2006/04/12  ver 3.3  Verb mode for urls, etc.
- hpdftex.def    2012/05/13 v6.82q Hyperref driver for pdfTeX
+ hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
- xkeyval.sty    2008/08/13 v2.6a package option processing (HA)
- xkeyval.tex    2008/08/13 v2.6a key=value parser (HA)
+ xkeyval.sty    2012/10/14 v2.6b package option processing (HA)
+ xkeyval.tex    2012/10/14 v2.6b key=value parser (HA)
     tikz.sty    2010/10/13 v2.10 (rcs-revision 1.76)
      pgf.sty    2008/01/15 v2.10 (rcs-revision 1.12)
   pgfrcs.sty    2010/10/25 v2.10 (rcs-revision 1.24)
@@ -66197,38 +67042,39 @@ pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
  pgfkeys.code.tex
   pgffor.code.tex
     tikz.code.tex
-todonotes.sty    2011/10/22
+todonotes.sty    2012/07/25
   lineno.sty    2005/11/02 line numbers on paragraphs v4.41
-mdframed.sty    2012/04/08 v1.5: mdframed
-  xparse.sty    2012/04/23 v3570 L3 Experimental document command parser
-   expl3.sty    2012/04/23 v3570 L3 Experimental code bundle wrapper
- l3names.sty    2012/03/04 v3494 L3 Experimental namespace for primitives
-l3bootstrap.sty    2011/12/29 v3110 L3 Experimental bootstrap code
+mdframed.sty    2013/07/01 1.9b: mdframed
+  xparse.sty    2013/07/12 v4544 L3 Experimental document command parser
+   expl3.sty    2013/07/12 v4544 L3 Experimental code bundle wrapper
+ l3names.sty    2012/12/07 v4346 L3 Namespace for primitives
+l3bootstrap.sty    2013/01/08 v4420 L3 Experimental bootstrap code
     etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
-l3basics.sty    2012/03/04 v3491 L3 Experimental basic definitions
- l3expan.sty    2012/02/26 v3460 L3 Experimental argument expansion
-    l3tl.sty    2012/03/04 v3490 L3 Experimental token lists
-   l3seq.sty    2012/03/04 v3490 L3 Experimental sequences and stacks
-   l3int.sty    2012/03/04 v3490 L3 Experimental integers
- l3quark.sty    2012/02/12 v3384 L3 Experimental quarks
-   l3prg.sty    2012/03/04 v3490 L3 Experimental control structures
- l3clist.sty    2012/03/04 v3490 L3 Experimental comma separated lists
- l3token.sty    2012/03/04 v3491 L3 Experimental token manipulation
-  l3prop.sty    2012/03/04 v3490 L3 Experimental property lists
-   l3msg.sty    2012/04/23 v3568 L3 Experimental messages
-  l3file.sty    2012/03/09 v3520 L3 Experimental file and I/O operations
-  l3skip.sty    2012/03/05 v3499 L3 Experimental dimensions and skips
-  l3keys.sty    2012/03/03 v3487 L3 Experimental key-value interfaces
-    l3fp.sty    2012/03/04 v3490 L3 Experimental floating-point operations
-   l3box.sty    2012/03/04 v3490 L3 Experimental boxes
-l3coffins.sty    2012/03/03 v3482 L3 Experimental coffin code layer
- l3color.sty    2011/09/07 v2776 L3 Experimental colour support
-l3luatex.sty    2012/02/09 v3355 L3 Experimental LuaTeX-specific functions
+l3basics.sty    2013/07/09 v4521 L3 Basic definitions
+ l3expan.sty    2013/07/09 v4521 L3 Argument expansion
+    l3tl.sty    2013/04/24 v4482 L3 Token lists
+   l3seq.sty    2013/05/26 v4500 L3 Sequences and stacks
+   l3int.sty    2013/04/24 v4482 L3 Integers
+ l3quark.sty    2013/07/09 v4521 L3 Quarks
+   l3prg.sty    2013/04/24 v4482 L3 Control structures
+ l3clist.sty    2013/05/26 v4500 L3 Comma separated lists
+ l3token.sty    2013/04/24 v4482 L3 Experimental token manipulation
+  l3prop.sty    2013/01/09 v4423 L3 Property lists
+   l3msg.sty    2013/01/08 v4412 L3 Messages
+  l3file.sty    2013/05/01 v4483 L3 File and I/O operations
+  l3skip.sty    2013/01/13 v4444 L3 Dimensions and skips
+  l3keys.sty    2013/07/12 v4544 L3 Experimental key-value interfaces
+    l3fp.sty    2013/07/09 v4521 L3 Floating points
+   l3box.sty    2013/04/24 v4482 L3 Experimental boxes
+l3coffins.sty    2012/09/09 v4212 L3 Coffin code layer
+ l3color.sty    2012/08/29 v4156 L3 Experimental color support
+l3luatex.sty    2012/08/03 v4049 L3 Experimental LuaTeX-specific functions
+l3candidates.sty    2013/07/09 v4521 L3 Experimental additions to l3kernel
 etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
- auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
-md-frame-1.mdf    2012/04/08  v1.5: md-frame-1
+needspace.sty    2010/09/12 v1.3d reserve vertical space
+md-frame-1.mdf    2013/07/01\ 1.9b: md-frame-1
 titlesec.sty    2011/12/15 v2.10.0 Sectioning titles
  theorem.sty    1995/11/23 v2.2c Theorem extension package (FMi)
      thp.sty    1995/11/23 v2.2c Theorem extension package (FMi)
@@ -66236,17 +67082,17 @@ supp-pdf.mkii
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
 epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
-  mt-cmr.cfg    2009/11/09 v2.0 microtype config. file: Computer Modern Roman (
+  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
 RS)
- nameref.sty    2010/04/30 v2.40 Cross-referencing by name of section
+ nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
  testdoc.out
  testdoc.out
 newcommands_bfmath.tex
 newcommands_replace.tex
-    umsa.fd    2009/06/22 v3.00 AMS symbols A
+    umsa.fd    2013/01/14 v3.01 AMS symbols A
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
-    umsb.fd    2009/06/22 v3.00 AMS symbols B
+    umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
   omscmr.fd    1999/05/25 v2.5h Standard LaTeX font definitions
  testdoc.out.pyg
@@ -66298,16 +67144,15 @@ are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/te
 xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/share/texlive/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/share/texlive/texmf-di
 st/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on testdoc.pdf (23 pages, ).
+Output written on testdoc.pdf (24 pages, ).
 Transcript written on testdoc.log.
 + pdflatex -shell-escape testdoc
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian)
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
  \write18 enabled.
 entering extended mode
 (./testdoc.tex
 LaTeX2e <2011/06/27>
-Babel <v3.8m> and hyphenation patterns for english, dumylang, nohyphenation, lo
-aded.
+Babel <3.9f> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
@@ -66316,17 +67161,7 @@ Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
 
 
-(/usr/share/texlive/texmf-dist/tex/latex/relsize/relsize.sty
-Examine \normalsize starts \@setfontsize size may be \@xpt. 
-Examine \small starts \@setfontsize size may be \@ixpt. 
-Examine \footnotesize starts \@setfontsize size may be \@viiipt. 
-Examine \large starts \@setfontsize size may be \@xiipt. 
-Examine \Large starts \@setfontsize size may be \@xivpt. 
-Examine \LARGE starts \@setfontsize size may be \@xviipt. 
-Examine \scriptsize starts \@setfontsize size may be \@viipt. 
-Examine \tiny starts \@setfontsize size may be \@vpt. 
-Examine \huge starts \@setfontsize size may be \@xxpt. 
-Examine \Huge starts \@setfontsize size may be \@xxvpt. )
+
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/epsfig.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
@@ -66352,6 +67187,7 @@ For additional information on amsmath, use the `?' option.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
+
 
 (/home/hpl/texmf/tex/latex/misc/ptex2tex.sty
 (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
@@ -66385,6 +67221,7 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+
 
 
 
@@ -66492,8 +67329,9 @@ gs.code.tex
 
 
 
+
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-abspage.sty
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-base.sty
+
 
 
 
@@ -66601,17 +67439,17 @@ Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on 
 
-[15] (./testdoc.out.pyg) (./testdoc.out.pyg [16]) [17] (./testdoc.bbl [18])
-[19] [20] [21]
+[15] (./testdoc.out.pyg) [16] (./testdoc.out.pyg) [17] [18] (./testdoc.bbl
+[19]) [20] [21] [22]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on 
 
-(./testdoc.ind [22]
+(./testdoc.ind [23]
 Overfull \hbox (9.21391pt too wide) 
 []\OT1/cmr/m/n/10 (-20) test \OT1/cmtt/m/n/10 two \OT1/cmr/m/n/10 (-20) (sep-a-
 rate) \OT1/cmtt/m/n/10 verbatim expressions \OT1/cmr/m/n/10 (-20) which
-[23]) (./testdoc.aux)
+[24]) (./testdoc.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -66621,7 +67459,7 @@ geometry.sty    2010/09/12 v5.6 Page Geometry
    ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
   ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
  ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
- relsize.sty    2011/09/21 ver 4.0
+ relsize.sty    2013/03/29 ver 4.1
   epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
 graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
@@ -66634,19 +67472,20 @@ infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
    color.sty    1999/02/16
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
 setspace.sty    2011/12/19 v6.7a set line spacing
- amsmath.sty    2000/07/18 v2.13 AMS math features
+ amsmath.sty    2013/01/14 v2.14 AMS math features
  amstext.sty    2000/06/29 v2.01
   amsgen.sty    1999/11/30 v2.0
   amsbsy.sty    1999/11/29 v1.2d
   amsopn.sty    1999/12/14 v2.01 operator names
-amsfonts.sty    2009/06/22 v3.00 Basic AMSFonts support
+amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
   xcolor.sty    2007/01/21 v2.11 LaTeX color extensions (UK)
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
 colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
    array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
       bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
-microtype.sty    2010/01/10 v2.4 Micro-typography with pdfTeX (RS)
-microtype.cfg    2010/01/10 v2.4 microtype main configuration file (RS)
+microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
+microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
+microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
 ptex2tex.sty    
 fancyvrb.sty    2008/02/07
 moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
@@ -66654,9 +67493,9 @@ verbatim.sty    2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
   framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
 anslistings.sty    2009/03/28 code highlighting; provided by Olivier Verdier <o
 livier@maths.lth.se>
-listings.sty    2007/02/22 1.4 (Carsten Heinz)
- lstmisc.sty    2007/02/22 1.4 (Carsten Heinz)
-listings.cfg    2007/02/22 1.4 listings configuration
+listings.sty    2013/07/10 1.5 (Carsten Heinz)
+ lstmisc.sty    2013/07/10 1.5 (Carsten Heinz)
+listings.cfg    2013/06/27 1.5pre1 listings configuration
  movie15.sty    2009/07/07
   ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
  ifdraft.sty    2008/08/11 v1.3 Detect class options draft and final (HO)
@@ -66676,7 +67515,7 @@ inputenc.sty    2008/03/30 v1.1d Input encoding file
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
-hyperref.sty    2012/05/13 v6.82q Hypertext links for LaTeX
+hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
   hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
@@ -66694,15 +67533,16 @@ atveryend.sty    2011/06/30 v1.8 Hooks at the very end of document (HO)
 atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
 refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
  hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
+ auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
 kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
-  pd1enc.def    2012/05/13 v6.82q Hyperref: PDFDocEncoding definition (HO)
+  pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
      url.sty    2006/04/12  ver 3.3  Verb mode for urls, etc.
- hpdftex.def    2012/05/13 v6.82q Hyperref driver for pdfTeX
+ hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
- xkeyval.sty    2008/08/13 v2.6a package option processing (HA)
- xkeyval.tex    2008/08/13 v2.6a key=value parser (HA)
+ xkeyval.sty    2012/10/14 v2.6b package option processing (HA)
+ xkeyval.tex    2012/10/14 v2.6b key=value parser (HA)
     tikz.sty    2010/10/13 v2.10 (rcs-revision 1.76)
      pgf.sty    2008/01/15 v2.10 (rcs-revision 1.12)
   pgfrcs.sty    2010/10/25 v2.10 (rcs-revision 1.24)
@@ -66720,38 +67560,39 @@ pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
  pgfkeys.code.tex
   pgffor.code.tex
     tikz.code.tex
-todonotes.sty    2011/10/22
+todonotes.sty    2012/07/25
   lineno.sty    2005/11/02 line numbers on paragraphs v4.41
-mdframed.sty    2012/04/08 v1.5: mdframed
-  xparse.sty    2012/04/23 v3570 L3 Experimental document command parser
-   expl3.sty    2012/04/23 v3570 L3 Experimental code bundle wrapper
- l3names.sty    2012/03/04 v3494 L3 Experimental namespace for primitives
-l3bootstrap.sty    2011/12/29 v3110 L3 Experimental bootstrap code
+mdframed.sty    2013/07/01 1.9b: mdframed
+  xparse.sty    2013/07/12 v4544 L3 Experimental document command parser
+   expl3.sty    2013/07/12 v4544 L3 Experimental code bundle wrapper
+ l3names.sty    2012/12/07 v4346 L3 Namespace for primitives
+l3bootstrap.sty    2013/01/08 v4420 L3 Experimental bootstrap code
     etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
-l3basics.sty    2012/03/04 v3491 L3 Experimental basic definitions
- l3expan.sty    2012/02/26 v3460 L3 Experimental argument expansion
-    l3tl.sty    2012/03/04 v3490 L3 Experimental token lists
-   l3seq.sty    2012/03/04 v3490 L3 Experimental sequences and stacks
-   l3int.sty    2012/03/04 v3490 L3 Experimental integers
- l3quark.sty    2012/02/12 v3384 L3 Experimental quarks
-   l3prg.sty    2012/03/04 v3490 L3 Experimental control structures
- l3clist.sty    2012/03/04 v3490 L3 Experimental comma separated lists
- l3token.sty    2012/03/04 v3491 L3 Experimental token manipulation
-  l3prop.sty    2012/03/04 v3490 L3 Experimental property lists
-   l3msg.sty    2012/04/23 v3568 L3 Experimental messages
-  l3file.sty    2012/03/09 v3520 L3 Experimental file and I/O operations
-  l3skip.sty    2012/03/05 v3499 L3 Experimental dimensions and skips
-  l3keys.sty    2012/03/03 v3487 L3 Experimental key-value interfaces
-    l3fp.sty    2012/03/04 v3490 L3 Experimental floating-point operations
-   l3box.sty    2012/03/04 v3490 L3 Experimental boxes
-l3coffins.sty    2012/03/03 v3482 L3 Experimental coffin code layer
- l3color.sty    2011/09/07 v2776 L3 Experimental colour support
-l3luatex.sty    2012/02/09 v3355 L3 Experimental LuaTeX-specific functions
+l3basics.sty    2013/07/09 v4521 L3 Basic definitions
+ l3expan.sty    2013/07/09 v4521 L3 Argument expansion
+    l3tl.sty    2013/04/24 v4482 L3 Token lists
+   l3seq.sty    2013/05/26 v4500 L3 Sequences and stacks
+   l3int.sty    2013/04/24 v4482 L3 Integers
+ l3quark.sty    2013/07/09 v4521 L3 Quarks
+   l3prg.sty    2013/04/24 v4482 L3 Control structures
+ l3clist.sty    2013/05/26 v4500 L3 Comma separated lists
+ l3token.sty    2013/04/24 v4482 L3 Experimental token manipulation
+  l3prop.sty    2013/01/09 v4423 L3 Property lists
+   l3msg.sty    2013/01/08 v4412 L3 Messages
+  l3file.sty    2013/05/01 v4483 L3 File and I/O operations
+  l3skip.sty    2013/01/13 v4444 L3 Dimensions and skips
+  l3keys.sty    2013/07/12 v4544 L3 Experimental key-value interfaces
+    l3fp.sty    2013/07/09 v4521 L3 Floating points
+   l3box.sty    2013/04/24 v4482 L3 Experimental boxes
+l3coffins.sty    2012/09/09 v4212 L3 Coffin code layer
+ l3color.sty    2012/08/29 v4156 L3 Experimental color support
+l3luatex.sty    2012/08/03 v4049 L3 Experimental LuaTeX-specific functions
+l3candidates.sty    2013/07/09 v4521 L3 Experimental additions to l3kernel
 etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
- auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
-md-frame-1.mdf    2012/04/08  v1.5: md-frame-1
+needspace.sty    2010/09/12 v1.3d reserve vertical space
+md-frame-1.mdf    2013/07/01\ 1.9b: md-frame-1
 titlesec.sty    2011/12/15 v2.10.0 Sectioning titles
  theorem.sty    1995/11/23 v2.2c Theorem extension package (FMi)
      thp.sty    1995/11/23 v2.2c Theorem extension package (FMi)
@@ -66759,17 +67600,17 @@ supp-pdf.mkii
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
 epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
-  mt-cmr.cfg    2009/11/09 v2.0 microtype config. file: Computer Modern Roman (
+  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
 RS)
- nameref.sty    2010/04/30 v2.40 Cross-referencing by name of section
+ nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
  testdoc.out
  testdoc.out
 newcommands_bfmath.tex
 newcommands_replace.tex
-    umsa.fd    2009/06/22 v3.00 AMS symbols A
+    umsa.fd    2013/01/14 v3.01 AMS symbols A
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
-    umsb.fd    2009/06/22 v3.00 AMS symbols B
+    umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
   omscmr.fd    1999/05/25 v2.5h Standard LaTeX font definitions
  testdoc.out.pyg
@@ -66815,7 +67656,7 @@ are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/te
 xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/share/texlive/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/share/texlive/texmf-di
 st/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on testdoc.pdf (23 pages, ).
+Output written on testdoc.pdf (24 pages, ).
 Transcript written on testdoc.log.
 + cp testdoc.tex testdoc.tex_ptex2tex
 + system doconce ptex2tex testdoc -DBOOK -DPALATINO 'sys=begin{quote}begin{Verbatim}@end{Verbatim}end{quote}' pypro=ans:nt envir=minted
@@ -67105,14 +67946,14 @@ label{eq2a}
 output in testdoc.rst
 + doconce split_rst testdoc
 Traceback (most recent call last):
-  File "/usr/local/bin/doconce", line 952, in <module>
+  File "/usr/local/bin/doconce", line 953, in <module>
     main()
-  File "/usr/local/bin/doconce", line 942, in main
+  File "/usr/local/bin/doconce", line 943, in main
     eval(command + '()')
   File "<string>", line 1, in <module>
-  File "/usr/local/lib/python2.7/dist-packages/doconce/misc.py", line 3846, in split_rst
+  File "/usr/local/lib/python2.7/dist-packages/doconce/misc.py", line 3861, in split_rst
     files = doconce_rst_split(parts, basename, filename)
-  File "/usr/local/lib/python2.7/dist-packages/doconce/misc.py", line 3892, in doconce_rst_split
+  File "/usr/local/lib/python2.7/dist-packages/doconce/misc.py", line 3907, in doconce_rst_split
     if parts_label2part[label] == pn:
 KeyError: 'eq1a'
 + system doconce sphinx_dir author=HPL 'title=Just a test' version=0.1 theme=agni testdoc
@@ -67823,7 +68664,6 @@ output in slides1.html
 made subdirectory reveal.js
 *** warning: pygments style "emacs" is not recommended for "beige"!
 recommended styles are "perldoc"
-[]
 slides written to slides1.html
 + '[' 0 -ne 0 ']'
 + cp slides1.html slides1_reveal.html
@@ -67836,7 +68676,6 @@ output in slides1.html
 + '[' 0 -ne 0 ']'
 + system doconce slides_html slides1 deck --html_slide_type=sandstone.firefox
 + doconce slides_html slides1 deck --html_slide_type=sandstone.firefox
-[]
 slides written to slides1.html
 + '[' 0 -ne 0 ']'
 + cp slides1.html slides1_deck.html
@@ -67906,7 +68745,6 @@ recommended styles are "perldoc"
 recommended styles are "perldoc"
 *** warning: pygments style "emacs" is not recommended for "beige"!
 recommended styles are "perldoc"
-['a:eq', 'b:eq']
 slides written to slides2.html
 + '[' 0 -ne 0 ']'
 + cp slides2.html slides2_reveal.html
@@ -67968,7 +68806,6 @@ output in slides3.html
 + doconce slides_html slides3 reveal --html_slide_type=beigesmall
 *** warning: pygments style "emacs" is not recommended for "beige"!
 recommended styles are "perldoc"
-['ode', 'initial:value']
 slides written to slides3.html
 + '[' 0 -ne 0 ']'
 + cp slides3.html slides3_reveal.html
@@ -68081,27 +68918,16 @@ output in math_test.p.tex
 \bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
 output in math_test.tex
 + pdflatex math_test
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian)
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
  restricted \write18 enabled.
 entering extended mode
 (./math_test.tex
 LaTeX2e <2011/06/27>
-Babel <v3.8m> and hyphenation patterns for english, dumylang, nohyphenation, lo
-aded.
+Babel <3.9f> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
-(/usr/share/texlive/texmf-dist/tex/latex/relsize/relsize.sty
-Examine \normalsize starts \@setfontsize size may be \@xpt. 
-Examine \small starts \@setfontsize size may be \@ixpt. 
-Examine \footnotesize starts \@setfontsize size may be \@viiipt. 
-Examine \large starts \@setfontsize size may be \@xiipt. 
-Examine \Large starts \@setfontsize size may be \@xivpt. 
-Examine \LARGE starts \@setfontsize size may be \@xviipt. 
-Examine \scriptsize starts \@setfontsize size may be \@viipt. 
-Examine \tiny starts \@setfontsize size may be \@vpt. 
-Examine \huge starts \@setfontsize size may be \@xxpt. 
-Examine \Huge starts \@setfontsize size may be \@xxvpt. )
+
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/epsfig.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 
@@ -68129,6 +68955,7 @@ For additional information on amsmath, use the `?' option.
 
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
 
+
 (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
 <2008/02/07> (tvz)) (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
@@ -68138,6 +68965,7 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+
 
 
 
@@ -68188,7 +69016,7 @@ No file math_test.ind.
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
   size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
- relsize.sty    2011/09/21 ver 4.0
+ relsize.sty    2013/03/29 ver 4.1
   epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
 graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
   keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
@@ -68202,26 +69030,27 @@ infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
    color.sty    1999/02/16
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
 setspace.sty    2011/12/19 v6.7a set line spacing
- amsmath.sty    2000/07/18 v2.13 AMS math features
+ amsmath.sty    2013/01/14 v2.14 AMS math features
  amstext.sty    2000/06/29 v2.01
   amsgen.sty    1999/11/30 v2.0
   amsbsy.sty    1999/11/29 v1.2d
   amsopn.sty    1999/12/14 v2.01 operator names
-amsfonts.sty    2009/06/22 v3.00 Basic AMSFonts support
+amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
   xcolor.sty    2007/01/21 v2.11 LaTeX color extensions (UK)
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
 colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
    array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
       bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
-microtype.sty    2010/01/10 v2.4 Micro-typography with pdfTeX (RS)
-microtype.cfg    2010/01/10 v2.4 microtype main configuration file (RS)
+microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
+microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
+microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
 fancyvrb.sty    2008/02/07
 inputenc.sty    2008/03/30 v1.1d Input encoding file
     utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
-hyperref.sty    2012/05/13 v6.82q Hypertext links for LaTeX
+hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
   hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
@@ -68245,26 +69074,27 @@ atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
 refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
  hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
  ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
+ auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
 kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
-  pd1enc.def    2012/05/13 v6.82q Hyperref: PDFDocEncoding definition (HO)
+  pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
      url.sty    2006/04/12  ver 3.3  Verb mode for urls, etc.
- hpdftex.def    2012/05/13 v6.82q Hyperref driver for pdfTeX
+ hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 titlesec.sty    2011/12/15 v2.10.0 Sectioning titles
 supp-pdf.mkii
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
 epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
-  mt-cmr.cfg    2009/11/09 v2.0 microtype config. file: Computer Modern Roman (
+  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
 RS)
- nameref.sty    2010/04/30 v2.40 Cross-referencing by name of section
+ nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
 newcommands_bfmath.tex
 newcommands_replace.tex
-    umsa.fd    2009/06/22 v3.00 AMS symbols A
+    umsa.fd    2013/01/14 v3.01 AMS symbols A
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
-    umsb.fd    2009/06/22 v3.00 AMS symbols B
+    umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
  ***********
 
@@ -68505,27 +69335,16 @@ output in admon.p.tex
 output in admon.tex
 + cp admon.tex admon_colors1.tex
 + pdflatex -shell-escape admon_colors1
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian)
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
  \write18 enabled.
 entering extended mode
 (./admon_colors1.tex
 LaTeX2e <2011/06/27>
-Babel <v3.8m> and hyphenation patterns for english, dumylang, nohyphenation, lo
-aded.
+Babel <3.9f> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
-(/usr/share/texlive/texmf-dist/tex/latex/relsize/relsize.sty
-Examine \normalsize starts \@setfontsize size may be \@xpt. 
-Examine \small starts \@setfontsize size may be \@ixpt. 
-Examine \footnotesize starts \@setfontsize size may be \@viiipt. 
-Examine \large starts \@setfontsize size may be \@xiipt. 
-Examine \Large starts \@setfontsize size may be \@xivpt. 
-Examine \LARGE starts \@setfontsize size may be \@xviipt. 
-Examine \scriptsize starts \@setfontsize size may be \@viipt. 
-Examine \tiny starts \@setfontsize size may be \@vpt. 
-Examine \huge starts \@setfontsize size may be \@xxpt. 
-Examine \Huge starts \@setfontsize size may be \@xxvpt. )
+
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/epsfig.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 
@@ -68553,6 +69372,7 @@ For additional information on amsmath, use the `?' option.
 
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
 
+
 (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
 <2008/02/07> (tvz)) (/home/hpl/texmf/tex/latex/misc/minted.sty
@@ -68574,6 +69394,7 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+
 
 
 
@@ -68660,7 +69481,7 @@ No file admon_colors1.ind.
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
   size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
- relsize.sty    2011/09/21 ver 4.0
+ relsize.sty    2013/03/29 ver 4.1
   epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
 graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
   keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
@@ -68674,19 +69495,20 @@ infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
    color.sty    1999/02/16
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
 setspace.sty    2011/12/19 v6.7a set line spacing
- amsmath.sty    2000/07/18 v2.13 AMS math features
+ amsmath.sty    2013/01/14 v2.14 AMS math features
  amstext.sty    2000/06/29 v2.01
   amsgen.sty    1999/11/30 v2.0
   amsbsy.sty    1999/11/29 v1.2d
   amsopn.sty    1999/12/14 v2.01 operator names
-amsfonts.sty    2009/06/22 v3.00 Basic AMSFonts support
+amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
   xcolor.sty    2007/01/21 v2.11 LaTeX color extensions (UK)
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
 colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
    array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
       bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
-microtype.sty    2010/01/10 v2.4 Micro-typography with pdfTeX (RS)
-microtype.cfg    2010/01/10 v2.4 microtype main configuration file (RS)
+microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
+microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
+microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
 fancyvrb.sty    2008/02/07
   minted.sty    2010/01/27 v1.6 Yet another Pygments shim for LaTeX
    float.sty    2001/11/08 v1.3d Float enhancements (AL)
@@ -68705,7 +69527,7 @@ inputenc.sty    2008/03/30 v1.1d Input encoding file
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
-hyperref.sty    2012/05/13 v6.82q Hypertext links for LaTeX
+hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
   hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
@@ -68725,11 +69547,12 @@ atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
 refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
  hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
  ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
+ auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
 kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
-  pd1enc.def    2012/05/13 v6.82q Hyperref: PDFDocEncoding definition (HO)
+  pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
      url.sty    2006/04/12  ver 3.3  Verb mode for urls, etc.
- hpdftex.def    2012/05/13 v6.82q Hyperref driver for pdfTeX
+ hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
   framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
@@ -68738,15 +69561,15 @@ supp-pdf.mkii
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
 epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
-  mt-cmr.cfg    2009/11/09 v2.0 microtype config. file: Computer Modern Roman (
+  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
 RS)
- nameref.sty    2010/04/30 v2.40 Cross-referencing by name of section
+ nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
 newcommands_bfmath.tex
 newcommands_replace.tex
-    umsa.fd    2009/06/22 v3.00 AMS symbols A
+    umsa.fd    2013/01/14 v3.01 AMS symbols A
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
-    umsb.fd    2009/06/22 v3.00 AMS symbols B
+    umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 admon_colors1.out.pyg
 latex_figs/warning.pdf
@@ -68803,27 +69626,16 @@ output in admon.p.tex
 output in admon.tex
 + cp admon.tex admon_graybox1.tex
 + pdflatex -shell-escape admon_graybox1
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian)
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
  \write18 enabled.
 entering extended mode
 (./admon_graybox1.tex
 LaTeX2e <2011/06/27>
-Babel <v3.8m> and hyphenation patterns for english, dumylang, nohyphenation, lo
-aded.
+Babel <3.9f> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
-(/usr/share/texlive/texmf-dist/tex/latex/relsize/relsize.sty
-Examine \normalsize starts \@setfontsize size may be \@xpt. 
-Examine \small starts \@setfontsize size may be \@ixpt. 
-Examine \footnotesize starts \@setfontsize size may be \@viiipt. 
-Examine \large starts \@setfontsize size may be \@xiipt. 
-Examine \Large starts \@setfontsize size may be \@xivpt. 
-Examine \LARGE starts \@setfontsize size may be \@xviipt. 
-Examine \scriptsize starts \@setfontsize size may be \@viipt. 
-Examine \tiny starts \@setfontsize size may be \@vpt. 
-Examine \huge starts \@setfontsize size may be \@xxpt. 
-Examine \Huge starts \@setfontsize size may be \@xxvpt. )
+
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/epsfig.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 
@@ -68851,6 +69663,7 @@ For additional information on amsmath, use the `?' option.
 
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
 
+
 (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
 <2008/02/07> (tvz)) (/home/hpl/texmf/tex/latex/misc/minted.sty
@@ -68872,6 +69685,7 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+
 
 
 
@@ -68910,8 +69724,9 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 
 
 
+
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-abspage.sty
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-base.sty
+
 
 (/usr/share/texmf/tex/latex/pgf/frontendlayer/tikz.sty
 (/usr/share/texmf/tex/latex/pgf/basiclayer/pgf.sty
@@ -68992,18 +69807,25 @@ ABD: EveryShipout initializing macros (./newcommands_bfmath.tex)
 
 (./admon_graybox1.out.pyg)
  [1{/var/lib/texmf/font
-s/map/pdftex/updmap/pdftex.map}] (./admon_graybox1.out.pyg) [2]
-(./admon_graybox1.out.pyg) (./admon_graybox1.out.pyg)
-<../doc/src/manual/figs/wavepacket_0001.png, id=33, 642.4pt x 481.8pt>
-<use ../doc/src/manual/figs/wavepacket_0001.png> [3] [4 <../doc/src/manual/figs
-/wavepacket_0001.png>]
+s/map/pdftex/updmap/pdftex.map}]
+
+Package mdframed Warning: You got a bad break
+(mdframed)                because the last box will be empty
+(mdframed)                you have to change it manually
+(mdframed)                by changing the text, the space
+(mdframed)                or something else on 
+
+[2] (./admon_graybox1.out.pyg) (./admon_graybox1.out.pyg)
+(./admon_graybox1.out.pyg)
+<../doc/src/manual/figs/wavepacket_0001.png, id=31, 642.4pt x 481.8pt>
+<use ../doc/src/manual/figs/wavepacket_0001.png> [3] [4]
 No file admon_graybox1.ind.
-[5] (./admon_graybox1.aux)
+[5 <../doc/src/manual/figs/wavepacket_0001.png>] (./admon_graybox1.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
   size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
- relsize.sty    2011/09/21 ver 4.0
+ relsize.sty    2013/03/29 ver 4.1
   epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
 graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
   keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
@@ -69017,19 +69839,20 @@ infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
    color.sty    1999/02/16
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
 setspace.sty    2011/12/19 v6.7a set line spacing
- amsmath.sty    2000/07/18 v2.13 AMS math features
+ amsmath.sty    2013/01/14 v2.14 AMS math features
  amstext.sty    2000/06/29 v2.01
   amsgen.sty    1999/11/30 v2.0
   amsbsy.sty    1999/11/29 v1.2d
   amsopn.sty    1999/12/14 v2.01 operator names
-amsfonts.sty    2009/06/22 v3.00 Basic AMSFonts support
+amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
   xcolor.sty    2007/01/21 v2.11 LaTeX color extensions (UK)
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
 colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
    array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
       bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
-microtype.sty    2010/01/10 v2.4 Micro-typography with pdfTeX (RS)
-microtype.cfg    2010/01/10 v2.4 microtype main configuration file (RS)
+microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
+microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
+microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
 fancyvrb.sty    2008/02/07
   minted.sty    2010/01/27 v1.6 Yet another Pygments shim for LaTeX
    float.sty    2001/11/08 v1.3d Float enhancements (AL)
@@ -69048,7 +69871,7 @@ inputenc.sty    2008/03/30 v1.1d Input encoding file
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
-hyperref.sty    2012/05/13 v6.82q Hypertext links for LaTeX
+hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
   hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
@@ -69068,42 +69891,44 @@ atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
 refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
  hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
  ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
+ auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
 kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
-  pd1enc.def    2012/05/13 v6.82q Hyperref: PDFDocEncoding definition (HO)
+  pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
      url.sty    2006/04/12  ver 3.3  Verb mode for urls, etc.
- hpdftex.def    2012/05/13 v6.82q Hyperref driver for pdfTeX
+ hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
-mdframed.sty    2012/04/08 v1.5: mdframed
-  xparse.sty    2012/04/23 v3570 L3 Experimental document command parser
-   expl3.sty    2012/04/23 v3570 L3 Experimental code bundle wrapper
- l3names.sty    2012/03/04 v3494 L3 Experimental namespace for primitives
-l3bootstrap.sty    2011/12/29 v3110 L3 Experimental bootstrap code
+mdframed.sty    2013/07/01 1.9b: mdframed
+  xparse.sty    2013/07/12 v4544 L3 Experimental document command parser
+   expl3.sty    2013/07/12 v4544 L3 Experimental code bundle wrapper
+ l3names.sty    2012/12/07 v4346 L3 Namespace for primitives
+l3bootstrap.sty    2013/01/08 v4420 L3 Experimental bootstrap code
     etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
-l3basics.sty    2012/03/04 v3491 L3 Experimental basic definitions
- l3expan.sty    2012/02/26 v3460 L3 Experimental argument expansion
-    l3tl.sty    2012/03/04 v3490 L3 Experimental token lists
-   l3seq.sty    2012/03/04 v3490 L3 Experimental sequences and stacks
-   l3int.sty    2012/03/04 v3490 L3 Experimental integers
- l3quark.sty    2012/02/12 v3384 L3 Experimental quarks
-   l3prg.sty    2012/03/04 v3490 L3 Experimental control structures
- l3clist.sty    2012/03/04 v3490 L3 Experimental comma separated lists
- l3token.sty    2012/03/04 v3491 L3 Experimental token manipulation
-  l3prop.sty    2012/03/04 v3490 L3 Experimental property lists
-   l3msg.sty    2012/04/23 v3568 L3 Experimental messages
-  l3file.sty    2012/03/09 v3520 L3 Experimental file and I/O operations
-  l3skip.sty    2012/03/05 v3499 L3 Experimental dimensions and skips
-  l3keys.sty    2012/03/03 v3487 L3 Experimental key-value interfaces
-    l3fp.sty    2012/03/04 v3490 L3 Experimental floating-point operations
-   l3box.sty    2012/03/04 v3490 L3 Experimental boxes
-l3coffins.sty    2012/03/03 v3482 L3 Experimental coffin code layer
- l3color.sty    2011/09/07 v2776 L3 Experimental colour support
-l3luatex.sty    2012/02/09 v3355 L3 Experimental LuaTeX-specific functions
+l3basics.sty    2013/07/09 v4521 L3 Basic definitions
+ l3expan.sty    2013/07/09 v4521 L3 Argument expansion
+    l3tl.sty    2013/04/24 v4482 L3 Token lists
+   l3seq.sty    2013/05/26 v4500 L3 Sequences and stacks
+   l3int.sty    2013/04/24 v4482 L3 Integers
+ l3quark.sty    2013/07/09 v4521 L3 Quarks
+   l3prg.sty    2013/04/24 v4482 L3 Control structures
+ l3clist.sty    2013/05/26 v4500 L3 Comma separated lists
+ l3token.sty    2013/04/24 v4482 L3 Experimental token manipulation
+  l3prop.sty    2013/01/09 v4423 L3 Property lists
+   l3msg.sty    2013/01/08 v4412 L3 Messages
+  l3file.sty    2013/05/01 v4483 L3 File and I/O operations
+  l3skip.sty    2013/01/13 v4444 L3 Dimensions and skips
+  l3keys.sty    2013/07/12 v4544 L3 Experimental key-value interfaces
+    l3fp.sty    2013/07/09 v4521 L3 Floating points
+   l3box.sty    2013/04/24 v4482 L3 Experimental boxes
+l3coffins.sty    2012/09/09 v4212 L3 Coffin code layer
+ l3color.sty    2012/08/29 v4156 L3 Experimental color support
+l3luatex.sty    2012/08/03 v4049 L3 Experimental LuaTeX-specific functions
+l3candidates.sty    2013/07/09 v4521 L3 Experimental additions to l3kernel
 etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
- auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
+needspace.sty    2010/09/12 v1.3d reserve vertical space
     tikz.sty    2010/10/13 v2.10 (rcs-revision 1.76)
      pgf.sty    2008/01/15 v2.10 (rcs-revision 1.12)
   pgfrcs.sty    2010/10/25 v2.10 (rcs-revision 1.24)
@@ -69122,21 +69947,21 @@ pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
  pgfkeys.code.tex
   pgffor.code.tex
     tikz.code.tex
-md-frame-1.mdf    2012/04/08  v1.5: md-frame-1
+md-frame-1.mdf    2013/07/01\ 1.9b: md-frame-1
 titlesec.sty    2011/12/15 v2.10.0 Sectioning titles
 supp-pdf.mkii
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
 epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
-  mt-cmr.cfg    2009/11/09 v2.0 microtype config. file: Computer Modern Roman (
+  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
 RS)
- nameref.sty    2010/04/30 v2.40 Cross-referencing by name of section
+ nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
 newcommands_bfmath.tex
 newcommands_replace.tex
-    umsa.fd    2009/06/22 v3.00 AMS symbols A
+    umsa.fd    2013/01/14 v3.01 AMS symbols A
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
-    umsb.fd    2009/06/22 v3.00 AMS symbols B
+    umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 admon_graybox1.out.pyg
   omscmr.fd    1999/05/25 v2.5h Standard LaTeX font definitions
@@ -69181,27 +70006,16 @@ output in admon.p.tex
 output in admon.tex
 + cp admon.tex admon_paragraph.tex
 + pdflatex -shell-escape admon_paragraph
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian)
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
  \write18 enabled.
 entering extended mode
 (./admon_paragraph.tex
 LaTeX2e <2011/06/27>
-Babel <v3.8m> and hyphenation patterns for english, dumylang, nohyphenation, lo
-aded.
+Babel <3.9f> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
-(/usr/share/texlive/texmf-dist/tex/latex/relsize/relsize.sty
-Examine \normalsize starts \@setfontsize size may be \@xpt. 
-Examine \small starts \@setfontsize size may be \@ixpt. 
-Examine \footnotesize starts \@setfontsize size may be \@viiipt. 
-Examine \large starts \@setfontsize size may be \@xiipt. 
-Examine \Large starts \@setfontsize size may be \@xivpt. 
-Examine \LARGE starts \@setfontsize size may be \@xviipt. 
-Examine \scriptsize starts \@setfontsize size may be \@viipt. 
-Examine \tiny starts \@setfontsize size may be \@vpt. 
-Examine \huge starts \@setfontsize size may be \@xxpt. 
-Examine \Huge starts \@setfontsize size may be \@xxvpt. )
+
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/epsfig.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 
@@ -69229,6 +70043,7 @@ For additional information on amsmath, use the `?' option.
 
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
 
+
 (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
 <2008/02/07> (tvz)) (/home/hpl/texmf/tex/latex/misc/minted.sty
@@ -69250,6 +70065,7 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+
 
 
 
@@ -69288,8 +70104,9 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 
 
 
+
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-abspage.sty
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-base.sty
+
 
 (/usr/share/texmf/tex/latex/pgf/frontendlayer/tikz.sty
 (/usr/share/texmf/tex/latex/pgf/basiclayer/pgf.sty
@@ -69380,7 +70197,7 @@ No file admon_paragraph.ind.
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
   size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
- relsize.sty    2011/09/21 ver 4.0
+ relsize.sty    2013/03/29 ver 4.1
   epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
 graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
   keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
@@ -69394,19 +70211,20 @@ infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
    color.sty    1999/02/16
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
 setspace.sty    2011/12/19 v6.7a set line spacing
- amsmath.sty    2000/07/18 v2.13 AMS math features
+ amsmath.sty    2013/01/14 v2.14 AMS math features
  amstext.sty    2000/06/29 v2.01
   amsgen.sty    1999/11/30 v2.0
   amsbsy.sty    1999/11/29 v1.2d
   amsopn.sty    1999/12/14 v2.01 operator names
-amsfonts.sty    2009/06/22 v3.00 Basic AMSFonts support
+amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
   xcolor.sty    2007/01/21 v2.11 LaTeX color extensions (UK)
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
 colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
    array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
       bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
-microtype.sty    2010/01/10 v2.4 Micro-typography with pdfTeX (RS)
-microtype.cfg    2010/01/10 v2.4 microtype main configuration file (RS)
+microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
+microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
+microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
 fancyvrb.sty    2008/02/07
   minted.sty    2010/01/27 v1.6 Yet another Pygments shim for LaTeX
    float.sty    2001/11/08 v1.3d Float enhancements (AL)
@@ -69425,7 +70243,7 @@ inputenc.sty    2008/03/30 v1.1d Input encoding file
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
-hyperref.sty    2012/05/13 v6.82q Hypertext links for LaTeX
+hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
   hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
@@ -69445,42 +70263,44 @@ atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
 refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
  hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
  ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
+ auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
 kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
-  pd1enc.def    2012/05/13 v6.82q Hyperref: PDFDocEncoding definition (HO)
+  pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
      url.sty    2006/04/12  ver 3.3  Verb mode for urls, etc.
- hpdftex.def    2012/05/13 v6.82q Hyperref driver for pdfTeX
+ hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
-mdframed.sty    2012/04/08 v1.5: mdframed
-  xparse.sty    2012/04/23 v3570 L3 Experimental document command parser
-   expl3.sty    2012/04/23 v3570 L3 Experimental code bundle wrapper
- l3names.sty    2012/03/04 v3494 L3 Experimental namespace for primitives
-l3bootstrap.sty    2011/12/29 v3110 L3 Experimental bootstrap code
+mdframed.sty    2013/07/01 1.9b: mdframed
+  xparse.sty    2013/07/12 v4544 L3 Experimental document command parser
+   expl3.sty    2013/07/12 v4544 L3 Experimental code bundle wrapper
+ l3names.sty    2012/12/07 v4346 L3 Namespace for primitives
+l3bootstrap.sty    2013/01/08 v4420 L3 Experimental bootstrap code
     etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
-l3basics.sty    2012/03/04 v3491 L3 Experimental basic definitions
- l3expan.sty    2012/02/26 v3460 L3 Experimental argument expansion
-    l3tl.sty    2012/03/04 v3490 L3 Experimental token lists
-   l3seq.sty    2012/03/04 v3490 L3 Experimental sequences and stacks
-   l3int.sty    2012/03/04 v3490 L3 Experimental integers
- l3quark.sty    2012/02/12 v3384 L3 Experimental quarks
-   l3prg.sty    2012/03/04 v3490 L3 Experimental control structures
- l3clist.sty    2012/03/04 v3490 L3 Experimental comma separated lists
- l3token.sty    2012/03/04 v3491 L3 Experimental token manipulation
-  l3prop.sty    2012/03/04 v3490 L3 Experimental property lists
-   l3msg.sty    2012/04/23 v3568 L3 Experimental messages
-  l3file.sty    2012/03/09 v3520 L3 Experimental file and I/O operations
-  l3skip.sty    2012/03/05 v3499 L3 Experimental dimensions and skips
-  l3keys.sty    2012/03/03 v3487 L3 Experimental key-value interfaces
-    l3fp.sty    2012/03/04 v3490 L3 Experimental floating-point operations
-   l3box.sty    2012/03/04 v3490 L3 Experimental boxes
-l3coffins.sty    2012/03/03 v3482 L3 Experimental coffin code layer
- l3color.sty    2011/09/07 v2776 L3 Experimental colour support
-l3luatex.sty    2012/02/09 v3355 L3 Experimental LuaTeX-specific functions
+l3basics.sty    2013/07/09 v4521 L3 Basic definitions
+ l3expan.sty    2013/07/09 v4521 L3 Argument expansion
+    l3tl.sty    2013/04/24 v4482 L3 Token lists
+   l3seq.sty    2013/05/26 v4500 L3 Sequences and stacks
+   l3int.sty    2013/04/24 v4482 L3 Integers
+ l3quark.sty    2013/07/09 v4521 L3 Quarks
+   l3prg.sty    2013/04/24 v4482 L3 Control structures
+ l3clist.sty    2013/05/26 v4500 L3 Comma separated lists
+ l3token.sty    2013/04/24 v4482 L3 Experimental token manipulation
+  l3prop.sty    2013/01/09 v4423 L3 Property lists
+   l3msg.sty    2013/01/08 v4412 L3 Messages
+  l3file.sty    2013/05/01 v4483 L3 File and I/O operations
+  l3skip.sty    2013/01/13 v4444 L3 Dimensions and skips
+  l3keys.sty    2013/07/12 v4544 L3 Experimental key-value interfaces
+    l3fp.sty    2013/07/09 v4521 L3 Floating points
+   l3box.sty    2013/04/24 v4482 L3 Experimental boxes
+l3coffins.sty    2012/09/09 v4212 L3 Coffin code layer
+ l3color.sty    2012/08/29 v4156 L3 Experimental color support
+l3luatex.sty    2012/08/03 v4049 L3 Experimental LuaTeX-specific functions
+l3candidates.sty    2013/07/09 v4521 L3 Experimental additions to l3kernel
 etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
- auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
+needspace.sty    2010/09/12 v1.3d reserve vertical space
     tikz.sty    2010/10/13 v2.10 (rcs-revision 1.76)
      pgf.sty    2008/01/15 v2.10 (rcs-revision 1.12)
   pgfrcs.sty    2010/10/25 v2.10 (rcs-revision 1.24)
@@ -69499,21 +70319,21 @@ pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
  pgfkeys.code.tex
   pgffor.code.tex
     tikz.code.tex
-md-frame-1.mdf    2012/04/08  v1.5: md-frame-1
+md-frame-1.mdf    2013/07/01\ 1.9b: md-frame-1
 titlesec.sty    2011/12/15 v2.10.0 Sectioning titles
 supp-pdf.mkii
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
 epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
-  mt-cmr.cfg    2009/11/09 v2.0 microtype config. file: Computer Modern Roman (
+  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
 RS)
- nameref.sty    2010/04/30 v2.40 Cross-referencing by name of section
+ nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
 newcommands_bfmath.tex
 newcommands_replace.tex
-    umsa.fd    2009/06/22 v3.00 AMS symbols A
+    umsa.fd    2013/01/14 v3.01 AMS symbols A
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
-    umsb.fd    2009/06/22 v3.00 AMS symbols B
+    umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 admon_paragraph.out.pyg
   omscmr.fd    1999/05/25 v2.5h Standard LaTeX font definitions
@@ -69558,27 +70378,16 @@ output in admon.p.tex
 output in admon.tex
 + cp admon.tex admon_graybox2.tex
 + pdflatex -shell-escape admon_graybox2
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian)
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
  \write18 enabled.
 entering extended mode
 (./admon_graybox2.tex
 LaTeX2e <2011/06/27>
-Babel <v3.8m> and hyphenation patterns for english, dumylang, nohyphenation, lo
-aded.
+Babel <3.9f> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
-(/usr/share/texlive/texmf-dist/tex/latex/relsize/relsize.sty
-Examine \normalsize starts \@setfontsize size may be \@xpt. 
-Examine \small starts \@setfontsize size may be \@ixpt. 
-Examine \footnotesize starts \@setfontsize size may be \@viiipt. 
-Examine \large starts \@setfontsize size may be \@xiipt. 
-Examine \Large starts \@setfontsize size may be \@xivpt. 
-Examine \LARGE starts \@setfontsize size may be \@xviipt. 
-Examine \scriptsize starts \@setfontsize size may be \@viipt. 
-Examine \tiny starts \@setfontsize size may be \@vpt. 
-Examine \huge starts \@setfontsize size may be \@xxpt. 
-Examine \Huge starts \@setfontsize size may be \@xxvpt. )
+
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/epsfig.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 
@@ -69606,6 +70415,7 @@ For additional information on amsmath, use the `?' option.
 
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
 
+
 (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
 <2008/02/07> (tvz)) (/home/hpl/texmf/tex/latex/misc/minted.sty
@@ -69627,6 +70437,7 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+
 
 
 
@@ -69666,8 +70477,9 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 
 
 
+
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-abspage.sty
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-base.sty
+
 
 (/usr/share/texmf/tex/latex/pgf/frontendlayer/tikz.sty
 (/usr/share/texmf/tex/latex/pgf/basiclayer/pgf.sty
@@ -69748,36 +70560,17 @@ ABD: EveryShipout initializing macros (./newcommands_bfmath.tex)
 
 (./admon_graybox2.out.pyg)
  [1{/var/lib/texmf/font
-s/map/pdftex/updmap/pdftex.map}]
-
-Package mdframed Warning: You got a bad break
-(mdframed)                you have to change it manually
-(mdframed)                by changing the text, the space
-(mdframed)                or something else on 
-
-[2]
-
-Package mdframed Warning: You got a bad break
-(mdframed)                because the last split box is empty
-(mdframed)                You have to change the settings on 
-
-(./admon_graybox2.out.pyg) (./admon_graybox2.out.pyg) (./admon_graybox2.out.pyg
-) <../doc/src/manual/figs/wavepacket_0001.png, id=31, 642.4pt x 481.8pt>
-<use ../doc/src/manual/figs/wavepacket_0001.png> [3]
-Overfull \vbox (7.22804pt too high) has occurred while \output is active
-[4 <../doc/src/manual/figs/wavepacket_0001.png>]
-
-Package mdframed Warning: You got a bad break
-(mdframed)                because the last split box is empty
-(mdframed)                You have to change the settings on 
-
+s/map/pdftex/updmap/pdftex.map}] [2] (./admon_graybox2.out.pyg)
+(./admon_graybox2.out.pyg) (./admon_graybox2.out.pyg)
+<../doc/src/manual/figs/wavepacket_0001.png, id=30, 642.4pt x 481.8pt>
+<use ../doc/src/manual/figs/wavepacket_0001.png> [3] [4]
 No file admon_graybox2.ind.
-[5] (./admon_graybox2.aux)
+[5 <../doc/src/manual/figs/wavepacket_0001.png>] (./admon_graybox2.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
   size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
- relsize.sty    2011/09/21 ver 4.0
+ relsize.sty    2013/03/29 ver 4.1
   epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
 graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
   keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
@@ -69791,19 +70584,20 @@ infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
    color.sty    1999/02/16
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
 setspace.sty    2011/12/19 v6.7a set line spacing
- amsmath.sty    2000/07/18 v2.13 AMS math features
+ amsmath.sty    2013/01/14 v2.14 AMS math features
  amstext.sty    2000/06/29 v2.01
   amsgen.sty    1999/11/30 v2.0
   amsbsy.sty    1999/11/29 v1.2d
   amsopn.sty    1999/12/14 v2.01 operator names
-amsfonts.sty    2009/06/22 v3.00 Basic AMSFonts support
+amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
   xcolor.sty    2007/01/21 v2.11 LaTeX color extensions (UK)
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
 colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
    array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
       bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
-microtype.sty    2010/01/10 v2.4 Micro-typography with pdfTeX (RS)
-microtype.cfg    2010/01/10 v2.4 microtype main configuration file (RS)
+microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
+microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
+microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
 fancyvrb.sty    2008/02/07
   minted.sty    2010/01/27 v1.6 Yet another Pygments shim for LaTeX
    float.sty    2001/11/08 v1.3d Float enhancements (AL)
@@ -69822,7 +70616,7 @@ inputenc.sty    2008/03/30 v1.1d Input encoding file
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
-hyperref.sty    2012/05/13 v6.82q Hypertext links for LaTeX
+hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
   hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
@@ -69842,43 +70636,45 @@ atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
 refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
  hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
  ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
+ auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
 kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
-  pd1enc.def    2012/05/13 v6.82q Hyperref: PDFDocEncoding definition (HO)
+  pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
      url.sty    2006/04/12  ver 3.3  Verb mode for urls, etc.
- hpdftex.def    2012/05/13 v6.82q Hyperref driver for pdfTeX
+ hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
  wrapfig.sty    2003/01/31  v 3.6
-mdframed.sty    2012/04/08 v1.5: mdframed
-  xparse.sty    2012/04/23 v3570 L3 Experimental document command parser
-   expl3.sty    2012/04/23 v3570 L3 Experimental code bundle wrapper
- l3names.sty    2012/03/04 v3494 L3 Experimental namespace for primitives
-l3bootstrap.sty    2011/12/29 v3110 L3 Experimental bootstrap code
+mdframed.sty    2013/07/01 1.9b: mdframed
+  xparse.sty    2013/07/12 v4544 L3 Experimental document command parser
+   expl3.sty    2013/07/12 v4544 L3 Experimental code bundle wrapper
+ l3names.sty    2012/12/07 v4346 L3 Namespace for primitives
+l3bootstrap.sty    2013/01/08 v4420 L3 Experimental bootstrap code
     etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
-l3basics.sty    2012/03/04 v3491 L3 Experimental basic definitions
- l3expan.sty    2012/02/26 v3460 L3 Experimental argument expansion
-    l3tl.sty    2012/03/04 v3490 L3 Experimental token lists
-   l3seq.sty    2012/03/04 v3490 L3 Experimental sequences and stacks
-   l3int.sty    2012/03/04 v3490 L3 Experimental integers
- l3quark.sty    2012/02/12 v3384 L3 Experimental quarks
-   l3prg.sty    2012/03/04 v3490 L3 Experimental control structures
- l3clist.sty    2012/03/04 v3490 L3 Experimental comma separated lists
- l3token.sty    2012/03/04 v3491 L3 Experimental token manipulation
-  l3prop.sty    2012/03/04 v3490 L3 Experimental property lists
-   l3msg.sty    2012/04/23 v3568 L3 Experimental messages
-  l3file.sty    2012/03/09 v3520 L3 Experimental file and I/O operations
-  l3skip.sty    2012/03/05 v3499 L3 Experimental dimensions and skips
-  l3keys.sty    2012/03/03 v3487 L3 Experimental key-value interfaces
-    l3fp.sty    2012/03/04 v3490 L3 Experimental floating-point operations
-   l3box.sty    2012/03/04 v3490 L3 Experimental boxes
-l3coffins.sty    2012/03/03 v3482 L3 Experimental coffin code layer
- l3color.sty    2011/09/07 v2776 L3 Experimental colour support
-l3luatex.sty    2012/02/09 v3355 L3 Experimental LuaTeX-specific functions
+l3basics.sty    2013/07/09 v4521 L3 Basic definitions
+ l3expan.sty    2013/07/09 v4521 L3 Argument expansion
+    l3tl.sty    2013/04/24 v4482 L3 Token lists
+   l3seq.sty    2013/05/26 v4500 L3 Sequences and stacks
+   l3int.sty    2013/04/24 v4482 L3 Integers
+ l3quark.sty    2013/07/09 v4521 L3 Quarks
+   l3prg.sty    2013/04/24 v4482 L3 Control structures
+ l3clist.sty    2013/05/26 v4500 L3 Comma separated lists
+ l3token.sty    2013/04/24 v4482 L3 Experimental token manipulation
+  l3prop.sty    2013/01/09 v4423 L3 Property lists
+   l3msg.sty    2013/01/08 v4412 L3 Messages
+  l3file.sty    2013/05/01 v4483 L3 File and I/O operations
+  l3skip.sty    2013/01/13 v4444 L3 Dimensions and skips
+  l3keys.sty    2013/07/12 v4544 L3 Experimental key-value interfaces
+    l3fp.sty    2013/07/09 v4521 L3 Floating points
+   l3box.sty    2013/04/24 v4482 L3 Experimental boxes
+l3coffins.sty    2012/09/09 v4212 L3 Coffin code layer
+ l3color.sty    2012/08/29 v4156 L3 Experimental color support
+l3luatex.sty    2012/08/03 v4049 L3 Experimental LuaTeX-specific functions
+l3candidates.sty    2013/07/09 v4521 L3 Experimental additions to l3kernel
 etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
- auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
+needspace.sty    2010/09/12 v1.3d reserve vertical space
     tikz.sty    2010/10/13 v2.10 (rcs-revision 1.76)
      pgf.sty    2008/01/15 v2.10 (rcs-revision 1.12)
   pgfrcs.sty    2010/10/25 v2.10 (rcs-revision 1.24)
@@ -69897,21 +70693,21 @@ pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
  pgfkeys.code.tex
   pgffor.code.tex
     tikz.code.tex
-md-frame-1.mdf    2012/04/08  v1.5: md-frame-1
+md-frame-1.mdf    2013/07/01\ 1.9b: md-frame-1
 titlesec.sty    2011/12/15 v2.10.0 Sectioning titles
 supp-pdf.mkii
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
 epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
-  mt-cmr.cfg    2009/11/09 v2.0 microtype config. file: Computer Modern Roman (
+  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
 RS)
- nameref.sty    2010/04/30 v2.40 Cross-referencing by name of section
+ nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
 newcommands_bfmath.tex
 newcommands_replace.tex
-    umsa.fd    2009/06/22 v3.00 AMS symbols A
+    umsa.fd    2013/01/14 v3.01 AMS symbols A
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
-    umsb.fd    2009/06/22 v3.00 AMS symbols B
+    umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 admon_graybox2.out.pyg
   omscmr.fd    1999/05/25 v2.5h Standard LaTeX font definitions
@@ -69926,18 +70722,17 @@ Package rerunfilecheck Warning: File `admon_graybox2.out' has changed.
 (rerunfilecheck)                Rerun to get outlines right
 (rerunfilecheck)                or use package `bookmark'.
 
- )
-(see the transcript file for additional information)</usr/share/texlive/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-r7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><
-/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/s
-hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/share/te
-xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
+ )</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/font
+s/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmti8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+tt9.pfb>
 Output written on admon_graybox2.pdf (5 pages, ).
 Transcript written on admon_graybox2.log.
 + for admon_tp in '$admon_tps'
@@ -69957,27 +70752,16 @@ output in admon.p.tex
 output in admon.tex
 + cp admon.tex admon_yellowbox.tex
 + pdflatex -shell-escape admon_yellowbox
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian)
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
  \write18 enabled.
 entering extended mode
 (./admon_yellowbox.tex
 LaTeX2e <2011/06/27>
-Babel <v3.8m> and hyphenation patterns for english, dumylang, nohyphenation, lo
-aded.
+Babel <3.9f> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
-(/usr/share/texlive/texmf-dist/tex/latex/relsize/relsize.sty
-Examine \normalsize starts \@setfontsize size may be \@xpt. 
-Examine \small starts \@setfontsize size may be \@ixpt. 
-Examine \footnotesize starts \@setfontsize size may be \@viiipt. 
-Examine \large starts \@setfontsize size may be \@xiipt. 
-Examine \Large starts \@setfontsize size may be \@xivpt. 
-Examine \LARGE starts \@setfontsize size may be \@xviipt. 
-Examine \scriptsize starts \@setfontsize size may be \@viipt. 
-Examine \tiny starts \@setfontsize size may be \@vpt. 
-Examine \huge starts \@setfontsize size may be \@xxpt. 
-Examine \Huge starts \@setfontsize size may be \@xxvpt. )
+
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/epsfig.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 
@@ -70005,6 +70789,7 @@ For additional information on amsmath, use the `?' option.
 
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
 
+
 (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
 <2008/02/07> (tvz)) (/home/hpl/texmf/tex/latex/misc/minted.sty
@@ -70026,6 +70811,7 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+
 
 
 
@@ -70088,7 +70874,7 @@ ary.pdf>] (./admon_yellowbox.aux)
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
   size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
- relsize.sty    2011/09/21 ver 4.0
+ relsize.sty    2013/03/29 ver 4.1
   epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
 graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
   keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
@@ -70102,19 +70888,20 @@ infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
    color.sty    1999/02/16
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
 setspace.sty    2011/12/19 v6.7a set line spacing
- amsmath.sty    2000/07/18 v2.13 AMS math features
+ amsmath.sty    2013/01/14 v2.14 AMS math features
  amstext.sty    2000/06/29 v2.01
   amsgen.sty    1999/11/30 v2.0
   amsbsy.sty    1999/11/29 v1.2d
   amsopn.sty    1999/12/14 v2.01 operator names
-amsfonts.sty    2009/06/22 v3.00 Basic AMSFonts support
+amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
   xcolor.sty    2007/01/21 v2.11 LaTeX color extensions (UK)
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
 colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
    array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
       bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
-microtype.sty    2010/01/10 v2.4 Micro-typography with pdfTeX (RS)
-microtype.cfg    2010/01/10 v2.4 microtype main configuration file (RS)
+microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
+microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
+microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
 fancyvrb.sty    2008/02/07
   minted.sty    2010/01/27 v1.6 Yet another Pygments shim for LaTeX
    float.sty    2001/11/08 v1.3d Float enhancements (AL)
@@ -70133,7 +70920,7 @@ inputenc.sty    2008/03/30 v1.1d Input encoding file
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
-hyperref.sty    2012/05/13 v6.82q Hypertext links for LaTeX
+hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
   hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
@@ -70153,11 +70940,12 @@ atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
 refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
  hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
  ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
+ auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
 kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
-  pd1enc.def    2012/05/13 v6.82q Hyperref: PDFDocEncoding definition (HO)
+  pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
      url.sty    2006/04/12  ver 3.3  Verb mode for urls, etc.
- hpdftex.def    2012/05/13 v6.82q Hyperref driver for pdfTeX
+ hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
   framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
@@ -70167,15 +70955,15 @@ supp-pdf.mkii
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
 epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
-  mt-cmr.cfg    2009/11/09 v2.0 microtype config. file: Computer Modern Roman (
+  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
 RS)
- nameref.sty    2010/04/30 v2.40 Cross-referencing by name of section
+ nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
 newcommands_bfmath.tex
 newcommands_replace.tex
-    umsa.fd    2009/06/22 v3.00 AMS symbols A
+    umsa.fd    2013/01/14 v3.01 AMS symbols A
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
-    umsb.fd    2009/06/22 v3.00 AMS symbols B
+    umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 admon_yellowbox.out.pyg
 latex_figs/small_yellow_warning.pdf
@@ -70232,27 +71020,16 @@ output in admon.p.tex
 output in admon.tex
 + cp admon.tex admon_graybox3.tex
 + pdflatex -shell-escape admon_graybox3
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian)
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
  \write18 enabled.
 entering extended mode
 (./admon_graybox3.tex
 LaTeX2e <2011/06/27>
-Babel <v3.8m> and hyphenation patterns for english, dumylang, nohyphenation, lo
-aded.
+Babel <3.9f> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
-(/usr/share/texlive/texmf-dist/tex/latex/relsize/relsize.sty
-Examine \normalsize starts \@setfontsize size may be \@xpt. 
-Examine \small starts \@setfontsize size may be \@ixpt. 
-Examine \footnotesize starts \@setfontsize size may be \@viiipt. 
-Examine \large starts \@setfontsize size may be \@xiipt. 
-Examine \Large starts \@setfontsize size may be \@xivpt. 
-Examine \LARGE starts \@setfontsize size may be \@xviipt. 
-Examine \scriptsize starts \@setfontsize size may be \@viipt. 
-Examine \tiny starts \@setfontsize size may be \@vpt. 
-Examine \huge starts \@setfontsize size may be \@xxpt. 
-Examine \Huge starts \@setfontsize size may be \@xxvpt. )
+
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/epsfig.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 
@@ -70280,6 +71057,7 @@ For additional information on amsmath, use the `?' option.
 
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
 
+
 (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
 <2008/02/07> (tvz)) (/home/hpl/texmf/tex/latex/misc/minted.sty
@@ -70301,6 +71079,7 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+
 
 
 
@@ -70361,7 +71140,7 @@ y.pdf>] (./admon_graybox3.aux)
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
   size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
- relsize.sty    2011/09/21 ver 4.0
+ relsize.sty    2013/03/29 ver 4.1
   epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
 graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
   keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
@@ -70375,19 +71154,20 @@ infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
    color.sty    1999/02/16
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
 setspace.sty    2011/12/19 v6.7a set line spacing
- amsmath.sty    2000/07/18 v2.13 AMS math features
+ amsmath.sty    2013/01/14 v2.14 AMS math features
  amstext.sty    2000/06/29 v2.01
   amsgen.sty    1999/11/30 v2.0
   amsbsy.sty    1999/11/29 v1.2d
   amsopn.sty    1999/12/14 v2.01 operator names
-amsfonts.sty    2009/06/22 v3.00 Basic AMSFonts support
+amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
   xcolor.sty    2007/01/21 v2.11 LaTeX color extensions (UK)
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
 colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
    array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
       bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
-microtype.sty    2010/01/10 v2.4 Micro-typography with pdfTeX (RS)
-microtype.cfg    2010/01/10 v2.4 microtype main configuration file (RS)
+microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
+microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
+microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
 fancyvrb.sty    2008/02/07
   minted.sty    2010/01/27 v1.6 Yet another Pygments shim for LaTeX
    float.sty    2001/11/08 v1.3d Float enhancements (AL)
@@ -70406,7 +71186,7 @@ inputenc.sty    2008/03/30 v1.1d Input encoding file
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
-hyperref.sty    2012/05/13 v6.82q Hypertext links for LaTeX
+hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
   hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
@@ -70426,11 +71206,12 @@ atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
 refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
  hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
  ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
+ auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
 kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
-  pd1enc.def    2012/05/13 v6.82q Hyperref: PDFDocEncoding definition (HO)
+  pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
      url.sty    2006/04/12  ver 3.3  Verb mode for urls, etc.
- hpdftex.def    2012/05/13 v6.82q Hyperref driver for pdfTeX
+ hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
   framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
@@ -70440,15 +71221,15 @@ supp-pdf.mkii
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
 epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
-  mt-cmr.cfg    2009/11/09 v2.0 microtype config. file: Computer Modern Roman (
+  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
 RS)
- nameref.sty    2010/04/30 v2.40 Cross-referencing by name of section
+ nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
 newcommands_bfmath.tex
 newcommands_replace.tex
-    umsa.fd    2009/06/22 v3.00 AMS symbols A
+    umsa.fd    2013/01/14 v3.01 AMS symbols A
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
-    umsb.fd    2009/06/22 v3.00 AMS symbols B
+    umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 admon_graybox3.out.pyg
 latex_figs/small_gray_warning.pdf
@@ -70505,27 +71286,16 @@ output in admon.p.tex
 output in admon.tex
 + cp admon.tex admon_colors2.tex
 + pdflatex -shell-escape admon_colors2
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian)
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
  \write18 enabled.
 entering extended mode
 (./admon_colors2.tex
 LaTeX2e <2011/06/27>
-Babel <v3.8m> and hyphenation patterns for english, dumylang, nohyphenation, lo
-aded.
+Babel <3.9f> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
-(/usr/share/texlive/texmf-dist/tex/latex/relsize/relsize.sty
-Examine \normalsize starts \@setfontsize size may be \@xpt. 
-Examine \small starts \@setfontsize size may be \@ixpt. 
-Examine \footnotesize starts \@setfontsize size may be \@viiipt. 
-Examine \large starts \@setfontsize size may be \@xiipt. 
-Examine \Large starts \@setfontsize size may be \@xivpt. 
-Examine \LARGE starts \@setfontsize size may be \@xviipt. 
-Examine \scriptsize starts \@setfontsize size may be \@viipt. 
-Examine \tiny starts \@setfontsize size may be \@vpt. 
-Examine \huge starts \@setfontsize size may be \@xxpt. 
-Examine \Huge starts \@setfontsize size may be \@xxvpt. )
+
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/epsfig.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 
@@ -70553,6 +71323,7 @@ For additional information on amsmath, use the `?' option.
 
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
 
+
 (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
 <2008/02/07> (tvz)) (/home/hpl/texmf/tex/latex/misc/minted.sty
@@ -70574,6 +71345,7 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+
 
 
 
@@ -70631,7 +71403,7 @@ No file admon_colors2.ind.
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
   size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
- relsize.sty    2011/09/21 ver 4.0
+ relsize.sty    2013/03/29 ver 4.1
   epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
 graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
   keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
@@ -70645,19 +71417,20 @@ infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
    color.sty    1999/02/16
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
 setspace.sty    2011/12/19 v6.7a set line spacing
- amsmath.sty    2000/07/18 v2.13 AMS math features
+ amsmath.sty    2013/01/14 v2.14 AMS math features
  amstext.sty    2000/06/29 v2.01
   amsgen.sty    1999/11/30 v2.0
   amsbsy.sty    1999/11/29 v1.2d
   amsopn.sty    1999/12/14 v2.01 operator names
-amsfonts.sty    2009/06/22 v3.00 Basic AMSFonts support
+amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
   xcolor.sty    2007/01/21 v2.11 LaTeX color extensions (UK)
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
 colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
    array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
       bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
-microtype.sty    2010/01/10 v2.4 Micro-typography with pdfTeX (RS)
-microtype.cfg    2010/01/10 v2.4 microtype main configuration file (RS)
+microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
+microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
+microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
 fancyvrb.sty    2008/02/07
   minted.sty    2010/01/27 v1.6 Yet another Pygments shim for LaTeX
    float.sty    2001/11/08 v1.3d Float enhancements (AL)
@@ -70676,7 +71449,7 @@ inputenc.sty    2008/03/30 v1.1d Input encoding file
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
-hyperref.sty    2012/05/13 v6.82q Hypertext links for LaTeX
+hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
   hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
@@ -70696,11 +71469,12 @@ atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
 refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
  hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
  ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
+ auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
 kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
-  pd1enc.def    2012/05/13 v6.82q Hyperref: PDFDocEncoding definition (HO)
+  pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
      url.sty    2006/04/12  ver 3.3  Verb mode for urls, etc.
- hpdftex.def    2012/05/13 v6.82q Hyperref driver for pdfTeX
+ hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
   framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
@@ -70710,15 +71484,15 @@ supp-pdf.mkii
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
 epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
-  mt-cmr.cfg    2009/11/09 v2.0 microtype config. file: Computer Modern Roman (
+  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
 RS)
- nameref.sty    2010/04/30 v2.40 Cross-referencing by name of section
+ nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
 newcommands_bfmath.tex
 newcommands_replace.tex
-    umsa.fd    2009/06/22 v3.00 AMS symbols A
+    umsa.fd    2013/01/14 v3.01 AMS symbols A
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
-    umsb.fd    2009/06/22 v3.00 AMS symbols B
+    umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 admon_colors2.out.pyg
 latex_figs/warning.pdf
@@ -71255,27 +72029,16 @@ output in quickref.p.tex
 \bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=0mm]
 output in quickref.tex
 + latex -shell-escape quickref.tex
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian)
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
  \write18 enabled.
 entering extended mode
 (./quickref.tex
 LaTeX2e <2011/06/27>
-Babel <v3.8m> and hyphenation patterns for english, dumylang, nohyphenation, lo
-aded.
+Babel <3.9f> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
-(/usr/share/texlive/texmf-dist/tex/latex/relsize/relsize.sty
-Examine \normalsize starts \@setfontsize size may be \@xpt. 
-Examine \small starts \@setfontsize size may be \@ixpt. 
-Examine \footnotesize starts \@setfontsize size may be \@viiipt. 
-Examine \large starts \@setfontsize size may be \@xiipt. 
-Examine \Large starts \@setfontsize size may be \@xivpt. 
-Examine \LARGE starts \@setfontsize size may be \@xviipt. 
-Examine \scriptsize starts \@setfontsize size may be \@viipt. 
-Examine \tiny starts \@setfontsize size may be \@vpt. 
-Examine \huge starts \@setfontsize size may be \@xxpt. 
-Examine \Huge starts \@setfontsize size may be \@xxvpt. )
+
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/epsfig.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 
@@ -71301,6 +72064,7 @@ For additional information on amsmath, use the `?' option.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
+
 
 (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
@@ -71330,6 +72094,16 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 
 
+(/usr/share/texlive/texmf-dist/tex/latex/l3experimental/l3str/l3regex.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/l3experimental/l3str/l3tl-analysis.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/l3experimental/l3str/l3str-convert.sty
+)) 
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/atbegshi.sty
+
 
 (/home/hpl/texmf/tex/latex/misc/minted.sty
 
@@ -71337,8 +72111,6 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (/usr/share/texlive/texmf-dist/tex/latex/ifplatform/ifplatform.sty
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
-
-
 
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/catchfile.sty
 
@@ -71359,6 +72131,7 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 
 
+
 Package hyperref Message: Driver (default): hdvips.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hdvips.def
@@ -71368,7 +72141,7 @@ Package hyperref Message: Driver (default): hdvips.
 (/usr/share/texlive/texmf-dist/tex/latex/mdframed/mdframed.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-abspage.sty
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-base.sty
+
 
 (/usr/share/texmf/tex/latex/pgf/frontendlayer/tikz.sty
 (/usr/share/texmf/tex/latex/pgf/basiclayer/pgf.sty
@@ -71464,7 +72237,10 @@ sl/10 reg-u-lar ex-pres-sion []
 Overfull \hbox (25.94281pt too wide) 
 \OT1/phv/m/n/10 up to, but not in-clud-ing the line match-ing the \OT1/phv/m/sl
 /10 reg-u-lar ex-pres-sion []\OT1/phv/m/n/10 .
-[6] [7] [8]
+[6]
+Overfull \hbox (49.67618pt too wide) 
+\OT1/phv/m/n/10 pre-pro-ces-sor if-tests on the for-mat (typ-i-cally [])
+[7] [8]
 
 LaTeX Warning: Reference `quick:sections' on page 9 undefined on input line 718
 .
@@ -71500,7 +72276,7 @@ No file quickref.ind.
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
   size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
- relsize.sty    2011/09/21 ver 4.0
+ relsize.sty    2013/03/29 ver 4.1
   epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
 graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
   keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
@@ -71513,56 +72289,66 @@ graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
 dvipsnam.def    1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
 setspace.sty    2011/12/19 v6.7a set line spacing
- amsmath.sty    2000/07/18 v2.13 AMS math features
+ amsmath.sty    2013/01/14 v2.14 AMS math features
  amstext.sty    2000/06/29 v2.01
   amsgen.sty    1999/11/30 v2.0
   amsbsy.sty    1999/11/29 v1.2d
   amsopn.sty    1999/12/14 v2.01 operator names
-amsfonts.sty    2009/06/22 v3.00 Basic AMSFonts support
+amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
   xcolor.sty    2007/01/21 v2.11 LaTeX color extensions (UK)
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
 colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
    array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
       bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
-microtype.sty    2010/01/10 v2.4 Micro-typography with pdfTeX (RS)
-microtype.cfg    2010/01/10 v2.4 microtype main configuration file (RS)
+microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
+microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
+microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
 fancyvrb.sty    2008/02/07
-  media9.sty    2012/05/02 v0.7 acrobat-9 compatible media
-   expl3.sty    2012/04/23 v3570 L3 Experimental code bundle wrapper
- l3names.sty    2012/03/04 v3494 L3 Experimental namespace for primitives
-l3bootstrap.sty    2011/12/29 v3110 L3 Experimental bootstrap code
+  media9.sty    2013/07/19 v0.29 acrobat-9/X compatible media
+   expl3.sty    2013/07/12 v4544 L3 Experimental code bundle wrapper
+ l3names.sty    2012/12/07 v4346 L3 Namespace for primitives
+l3bootstrap.sty    2013/01/08 v4420 L3 Experimental bootstrap code
     etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
-l3basics.sty    2012/03/04 v3491 L3 Experimental basic definitions
- l3expan.sty    2012/02/26 v3460 L3 Experimental argument expansion
-    l3tl.sty    2012/03/04 v3490 L3 Experimental token lists
-   l3seq.sty    2012/03/04 v3490 L3 Experimental sequences and stacks
-   l3int.sty    2012/03/04 v3490 L3 Experimental integers
- l3quark.sty    2012/02/12 v3384 L3 Experimental quarks
-   l3prg.sty    2012/03/04 v3490 L3 Experimental control structures
- l3clist.sty    2012/03/04 v3490 L3 Experimental comma separated lists
- l3token.sty    2012/03/04 v3491 L3 Experimental token manipulation
-  l3prop.sty    2012/03/04 v3490 L3 Experimental property lists
-   l3msg.sty    2012/04/23 v3568 L3 Experimental messages
-  l3file.sty    2012/03/09 v3520 L3 Experimental file and I/O operations
-  l3skip.sty    2012/03/05 v3499 L3 Experimental dimensions and skips
-  l3keys.sty    2012/03/03 v3487 L3 Experimental key-value interfaces
-    l3fp.sty    2012/03/04 v3490 L3 Experimental floating-point operations
-   l3box.sty    2012/03/04 v3490 L3 Experimental boxes
-l3coffins.sty    2012/03/03 v3482 L3 Experimental coffin code layer
- l3color.sty    2011/09/07 v2776 L3 Experimental colour support
-l3luatex.sty    2012/02/09 v3355 L3 Experimental LuaTeX-specific functions
-  xparse.sty    2012/04/23 v3570 L3 Experimental document command parser
-l3keys2e.sty    2012/04/23 v3570 LaTeX2e option processing using LaTeX3 keys
+l3basics.sty    2013/07/09 v4521 L3 Basic definitions
+ l3expan.sty    2013/07/09 v4521 L3 Argument expansion
+    l3tl.sty    2013/04/24 v4482 L3 Token lists
+   l3seq.sty    2013/05/26 v4500 L3 Sequences and stacks
+   l3int.sty    2013/04/24 v4482 L3 Integers
+ l3quark.sty    2013/07/09 v4521 L3 Quarks
+   l3prg.sty    2013/04/24 v4482 L3 Control structures
+ l3clist.sty    2013/05/26 v4500 L3 Comma separated lists
+ l3token.sty    2013/04/24 v4482 L3 Experimental token manipulation
+  l3prop.sty    2013/01/09 v4423 L3 Property lists
+   l3msg.sty    2013/01/08 v4412 L3 Messages
+  l3file.sty    2013/05/01 v4483 L3 File and I/O operations
+  l3skip.sty    2013/01/13 v4444 L3 Dimensions and skips
+  l3keys.sty    2013/07/12 v4544 L3 Experimental key-value interfaces
+    l3fp.sty    2013/07/09 v4521 L3 Floating points
+   l3box.sty    2013/04/24 v4482 L3 Experimental boxes
+l3coffins.sty    2012/09/09 v4212 L3 Coffin code layer
+ l3color.sty    2012/08/29 v4156 L3 Experimental color support
+l3luatex.sty    2012/08/03 v4049 L3 Experimental LuaTeX-specific functions
+l3candidates.sty    2013/07/09 v4521 L3 Experimental additions to l3kernel
    ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
+ l3regex.sty    2013/04/24 v4482 L3 Experimental regular expressions
+l3tl-build.sty    2011/12/08 v3039 L3 Experimental token list construction
+l3tl-analysis.sty    2011/12/08 v3039 L3 Experimental token lists analysis
+   l3str.sty    2013/04/24 v4482 L3 Experimental strings
+  l3flag.sty    2011/12/08 v3039 L3 Experimental flags
+l3str-convert.sty    2013/01/08 v4339 L3 Experimental string encoding conversio
+ns
+l3keys2e.sty    2013/07/12 v4544 LaTeX2e option processing using LaTeX3 keys
+  xparse.sty    2013/07/12 v4544 L3 Experimental document command parser
+atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
+infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
+ ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
   minted.sty    2010/01/27 v1.6 Yet another Pygments shim for LaTeX
    float.sty    2001/11/08 v1.3d Float enhancements (AL)
   ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
     calc.sty    2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
 ifplatform.sty    2010/10/22 v0.4 Testing for the operating system
 pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
-infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
 ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
- ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 catchfile.sty    2011/03/01 v1.6 Catch the contents of a file (HO)
 etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
 quickref.w18
@@ -71573,7 +72359,7 @@ inputenc.sty    2008/03/30 v1.1d Input encoding file
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   helvet.sty    2005/04/12 PSNFSS-v9.2a (WaS) 
-hyperref.sty    2012/05/13 v6.82q Hypertext links for LaTeX
+hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
   hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
@@ -71589,23 +72375,23 @@ letltxmacro.sty    2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
  hopatch.sty    2012/05/28 v1.2 Wrapper for package hooks (HO)
 xcolor-patch.sty    2011/01/30 xcolor patch
 atveryend.sty    2011/06/30 v1.8 Hooks at the very end of document (HO)
-atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
 refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
  hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
  ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
+ auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
 kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
-  pd1enc.def    2012/05/13 v6.82q Hyperref: PDFDocEncoding definition (HO)
+  pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
      url.sty    2006/04/12  ver 3.3  Verb mode for urls, etc.
-  hdvips.def    2012/05/13 v6.82q Hyperref driver for dvips
- pdfmark.def    2012/05/13 v6.82q Hyperref definitions for pdfmark specials
+  hdvips.def    2012/11/06 v6.83m Hyperref driver for dvips
+ pdfmark.def    2012/11/06 v6.83m Hyperref definitions for pdfmark specials
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
-mdframed.sty    2012/04/08 v1.5: mdframed
+mdframed.sty    2013/07/01 1.9b: mdframed
 etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
- auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
+needspace.sty    2010/09/12 v1.3d reserve vertical space
     tikz.sty    2010/10/13 v2.10 (rcs-revision 1.76)
      pgf.sty    2008/01/15 v2.10 (rcs-revision 1.12)
   pgfrcs.sty    2010/10/25 v2.10 (rcs-revision 1.24)
@@ -71624,16 +72410,16 @@ pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
  pgfkeys.code.tex
   pgffor.code.tex
     tikz.code.tex
-md-frame-1.mdf    2012/04/08  v1.5: md-frame-1
+md-frame-1.mdf    2013/07/01\ 1.9b: md-frame-1
 titlesec.sty    2011/12/15 v2.10.0 Sectioning titles
   ot1phv.fd    2001/06/04 scalable font definitions for OT1/phv.
- nameref.sty    2010/04/30 v2.40 Cross-referencing by name of section
+ nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
-  mt-cmr.cfg    2009/11/09 v2.0 microtype config. file: Computer Modern Roman (
+  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
 RS)
-    umsa.fd    2009/06/22 v3.00 AMS symbols A
+    umsa.fd    2013/01/14 v3.01 AMS symbols A
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
-    umsb.fd    2009/06/22 v3.00 AMS symbols B
+    umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
   omsphv.fd    
  ***********
@@ -71654,27 +72440,16 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 Output written on quickref.dvi (17 pages, ).
 Transcript written on quickref.log.
 + latex -shell-escape quickref.tex
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian)
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
  \write18 enabled.
 entering extended mode
 (./quickref.tex
 LaTeX2e <2011/06/27>
-Babel <v3.8m> and hyphenation patterns for english, dumylang, nohyphenation, lo
-aded.
+Babel <3.9f> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
-(/usr/share/texlive/texmf-dist/tex/latex/relsize/relsize.sty
-Examine \normalsize starts \@setfontsize size may be \@xpt. 
-Examine \small starts \@setfontsize size may be \@ixpt. 
-Examine \footnotesize starts \@setfontsize size may be \@viiipt. 
-Examine \large starts \@setfontsize size may be \@xiipt. 
-Examine \Large starts \@setfontsize size may be \@xivpt. 
-Examine \LARGE starts \@setfontsize size may be \@xviipt. 
-Examine \scriptsize starts \@setfontsize size may be \@viipt. 
-Examine \tiny starts \@setfontsize size may be \@vpt. 
-Examine \huge starts \@setfontsize size may be \@xxpt. 
-Examine \Huge starts \@setfontsize size may be \@xxvpt. )
+
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/epsfig.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 
@@ -71700,6 +72475,7 @@ For additional information on amsmath, use the `?' option.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
+
 
 (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
@@ -71729,6 +72505,16 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 
 
+(/usr/share/texlive/texmf-dist/tex/latex/l3experimental/l3str/l3regex.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/l3experimental/l3str/l3tl-analysis.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/l3experimental/l3str/l3str-convert.sty
+)) 
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/atbegshi.sty
+
 
 (/home/hpl/texmf/tex/latex/misc/minted.sty
 
@@ -71736,8 +72522,6 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (/usr/share/texlive/texmf-dist/tex/latex/ifplatform/ifplatform.sty
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
-
-
 
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/catchfile.sty
 
@@ -71758,6 +72542,7 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 
 
+
 Package hyperref Message: Driver (default): hdvips.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hdvips.def
@@ -71767,7 +72552,7 @@ Package hyperref Message: Driver (default): hdvips.
 (/usr/share/texlive/texmf-dist/tex/latex/mdframed/mdframed.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-abspage.sty
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-base.sty
+
 
 (/usr/share/texmf/tex/latex/pgf/frontendlayer/tikz.sty
 (/usr/share/texmf/tex/latex/pgf/basiclayer/pgf.sty
@@ -71856,7 +72641,10 @@ sl/10 reg-u-lar ex-pres-sion []
 Overfull \hbox (25.94281pt too wide) 
 \OT1/phv/m/n/10 up to, but not in-clud-ing the line match-ing the \OT1/phv/m/sl
 /10 reg-u-lar ex-pres-sion []\OT1/phv/m/n/10 .
-[7] [8] [9] [10]
+[7]
+Overfull \hbox (49.67618pt too wide) 
+\OT1/phv/m/n/10 pre-pro-ces-sor if-tests on the for-mat (typ-i-cally [])
+[8] [9] [10]
 Overfull \hbox (59.2456pt too wide) 
 \OT1/phv/m/n/10 sert a back-slash). Bib-li-og-ra-phy ci-ta-tions of-ten have []
  on the form [],
@@ -71887,7 +72675,7 @@ No file quickref.ind.
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
   size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
- relsize.sty    2011/09/21 ver 4.0
+ relsize.sty    2013/03/29 ver 4.1
   epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
 graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
   keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
@@ -71900,56 +72688,66 @@ graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
 dvipsnam.def    1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
 setspace.sty    2011/12/19 v6.7a set line spacing
- amsmath.sty    2000/07/18 v2.13 AMS math features
+ amsmath.sty    2013/01/14 v2.14 AMS math features
  amstext.sty    2000/06/29 v2.01
   amsgen.sty    1999/11/30 v2.0
   amsbsy.sty    1999/11/29 v1.2d
   amsopn.sty    1999/12/14 v2.01 operator names
-amsfonts.sty    2009/06/22 v3.00 Basic AMSFonts support
+amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
   xcolor.sty    2007/01/21 v2.11 LaTeX color extensions (UK)
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
 colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
    array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
       bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
-microtype.sty    2010/01/10 v2.4 Micro-typography with pdfTeX (RS)
-microtype.cfg    2010/01/10 v2.4 microtype main configuration file (RS)
+microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
+microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
+microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
 fancyvrb.sty    2008/02/07
-  media9.sty    2012/05/02 v0.7 acrobat-9 compatible media
-   expl3.sty    2012/04/23 v3570 L3 Experimental code bundle wrapper
- l3names.sty    2012/03/04 v3494 L3 Experimental namespace for primitives
-l3bootstrap.sty    2011/12/29 v3110 L3 Experimental bootstrap code
+  media9.sty    2013/07/19 v0.29 acrobat-9/X compatible media
+   expl3.sty    2013/07/12 v4544 L3 Experimental code bundle wrapper
+ l3names.sty    2012/12/07 v4346 L3 Namespace for primitives
+l3bootstrap.sty    2013/01/08 v4420 L3 Experimental bootstrap code
     etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
-l3basics.sty    2012/03/04 v3491 L3 Experimental basic definitions
- l3expan.sty    2012/02/26 v3460 L3 Experimental argument expansion
-    l3tl.sty    2012/03/04 v3490 L3 Experimental token lists
-   l3seq.sty    2012/03/04 v3490 L3 Experimental sequences and stacks
-   l3int.sty    2012/03/04 v3490 L3 Experimental integers
- l3quark.sty    2012/02/12 v3384 L3 Experimental quarks
-   l3prg.sty    2012/03/04 v3490 L3 Experimental control structures
- l3clist.sty    2012/03/04 v3490 L3 Experimental comma separated lists
- l3token.sty    2012/03/04 v3491 L3 Experimental token manipulation
-  l3prop.sty    2012/03/04 v3490 L3 Experimental property lists
-   l3msg.sty    2012/04/23 v3568 L3 Experimental messages
-  l3file.sty    2012/03/09 v3520 L3 Experimental file and I/O operations
-  l3skip.sty    2012/03/05 v3499 L3 Experimental dimensions and skips
-  l3keys.sty    2012/03/03 v3487 L3 Experimental key-value interfaces
-    l3fp.sty    2012/03/04 v3490 L3 Experimental floating-point operations
-   l3box.sty    2012/03/04 v3490 L3 Experimental boxes
-l3coffins.sty    2012/03/03 v3482 L3 Experimental coffin code layer
- l3color.sty    2011/09/07 v2776 L3 Experimental colour support
-l3luatex.sty    2012/02/09 v3355 L3 Experimental LuaTeX-specific functions
-  xparse.sty    2012/04/23 v3570 L3 Experimental document command parser
-l3keys2e.sty    2012/04/23 v3570 LaTeX2e option processing using LaTeX3 keys
+l3basics.sty    2013/07/09 v4521 L3 Basic definitions
+ l3expan.sty    2013/07/09 v4521 L3 Argument expansion
+    l3tl.sty    2013/04/24 v4482 L3 Token lists
+   l3seq.sty    2013/05/26 v4500 L3 Sequences and stacks
+   l3int.sty    2013/04/24 v4482 L3 Integers
+ l3quark.sty    2013/07/09 v4521 L3 Quarks
+   l3prg.sty    2013/04/24 v4482 L3 Control structures
+ l3clist.sty    2013/05/26 v4500 L3 Comma separated lists
+ l3token.sty    2013/04/24 v4482 L3 Experimental token manipulation
+  l3prop.sty    2013/01/09 v4423 L3 Property lists
+   l3msg.sty    2013/01/08 v4412 L3 Messages
+  l3file.sty    2013/05/01 v4483 L3 File and I/O operations
+  l3skip.sty    2013/01/13 v4444 L3 Dimensions and skips
+  l3keys.sty    2013/07/12 v4544 L3 Experimental key-value interfaces
+    l3fp.sty    2013/07/09 v4521 L3 Floating points
+   l3box.sty    2013/04/24 v4482 L3 Experimental boxes
+l3coffins.sty    2012/09/09 v4212 L3 Coffin code layer
+ l3color.sty    2012/08/29 v4156 L3 Experimental color support
+l3luatex.sty    2012/08/03 v4049 L3 Experimental LuaTeX-specific functions
+l3candidates.sty    2013/07/09 v4521 L3 Experimental additions to l3kernel
    ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
+ l3regex.sty    2013/04/24 v4482 L3 Experimental regular expressions
+l3tl-build.sty    2011/12/08 v3039 L3 Experimental token list construction
+l3tl-analysis.sty    2011/12/08 v3039 L3 Experimental token lists analysis
+   l3str.sty    2013/04/24 v4482 L3 Experimental strings
+  l3flag.sty    2011/12/08 v3039 L3 Experimental flags
+l3str-convert.sty    2013/01/08 v4339 L3 Experimental string encoding conversio
+ns
+l3keys2e.sty    2013/07/12 v4544 LaTeX2e option processing using LaTeX3 keys
+  xparse.sty    2013/07/12 v4544 L3 Experimental document command parser
+atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
+infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
+ ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
   minted.sty    2010/01/27 v1.6 Yet another Pygments shim for LaTeX
    float.sty    2001/11/08 v1.3d Float enhancements (AL)
   ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
     calc.sty    2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
 ifplatform.sty    2010/10/22 v0.4 Testing for the operating system
 pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
-infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
 ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
- ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 catchfile.sty    2011/03/01 v1.6 Catch the contents of a file (HO)
 etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
 quickref.w18
@@ -71960,7 +72758,7 @@ inputenc.sty    2008/03/30 v1.1d Input encoding file
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   helvet.sty    2005/04/12 PSNFSS-v9.2a (WaS) 
-hyperref.sty    2012/05/13 v6.82q Hypertext links for LaTeX
+hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
   hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
@@ -71976,23 +72774,23 @@ letltxmacro.sty    2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
  hopatch.sty    2012/05/28 v1.2 Wrapper for package hooks (HO)
 xcolor-patch.sty    2011/01/30 xcolor patch
 atveryend.sty    2011/06/30 v1.8 Hooks at the very end of document (HO)
-atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
 refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
  hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
  ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
+ auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
 kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
-  pd1enc.def    2012/05/13 v6.82q Hyperref: PDFDocEncoding definition (HO)
+  pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
      url.sty    2006/04/12  ver 3.3  Verb mode for urls, etc.
-  hdvips.def    2012/05/13 v6.82q Hyperref driver for dvips
- pdfmark.def    2012/05/13 v6.82q Hyperref definitions for pdfmark specials
+  hdvips.def    2012/11/06 v6.83m Hyperref driver for dvips
+ pdfmark.def    2012/11/06 v6.83m Hyperref definitions for pdfmark specials
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
-mdframed.sty    2012/04/08 v1.5: mdframed
+mdframed.sty    2013/07/01 1.9b: mdframed
 etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
- auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
+needspace.sty    2010/09/12 v1.3d reserve vertical space
     tikz.sty    2010/10/13 v2.10 (rcs-revision 1.76)
      pgf.sty    2008/01/15 v2.10 (rcs-revision 1.12)
   pgfrcs.sty    2010/10/25 v2.10 (rcs-revision 1.24)
@@ -72011,18 +72809,18 @@ pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
  pgfkeys.code.tex
   pgffor.code.tex
     tikz.code.tex
-md-frame-1.mdf    2012/04/08  v1.5: md-frame-1
+md-frame-1.mdf    2013/07/01\ 1.9b: md-frame-1
 titlesec.sty    2011/12/15 v2.10.0 Sectioning titles
   ot1phv.fd    2001/06/04 scalable font definitions for OT1/phv.
- nameref.sty    2010/04/30 v2.40 Cross-referencing by name of section
+ nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
 quickref.out
 quickref.out
-  mt-cmr.cfg    2009/11/09 v2.0 microtype config. file: Computer Modern Roman (
+  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
 RS)
-    umsa.fd    2009/06/22 v3.00 AMS symbols A
+    umsa.fd    2013/01/14 v3.01 AMS symbols A
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
-    umsb.fd    2009/06/22 v3.00 AMS symbols B
+    umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
   omsphv.fd    
  ***********
@@ -72035,6 +72833,22 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 Output written on quickref.dvi (18 pages, ).
 Transcript written on quickref.log.
 + dvipdf quickref.dvi
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@    Warning: DVI resolution greater than 1200 dpi!     @@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@                                                       @@
+@@ Media poster and button faces may be distorted or     @@
+@@ invisible.                                            @@
+@@                                                       @@
+@@ Dvips should be called either without option `-Ppdf': @@
+@@                                                       @@
+@@   dvips quickref
+@@                                                       @@
+@@ or with a different resolution setting:               @@
+@@                                                       @@
+@@   dvips -Ppdf -D1200 quickref
+@@                                                       @@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 + doconce format sphinx quickref --no_preprocess
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to sphinx
@@ -72194,13 +73008,12 @@ output in quickref.rst
 + rst2html.py quickref.rst
 + rst2latex.py quickref.rst
 + latex quickref.rst.tex
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian)
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
  restricted \write18 enabled.
 entering extended mode
 (./quickref.rst.tex
 LaTeX2e <2011/06/27>
-Babel <v3.8m> and hyphenation patterns for english, dumylang, nohyphenation, lo
-aded.
+Babel <3.9f> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
@@ -72226,6 +73039,7 @@ Package cmap Warning: pdftex in DVI mode - exiting.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+
 
 
 
@@ -72268,16 +73082,16 @@ rspace Inc.
 Overfull \hbox (59.00006pt too wide) 
 []\T1/pcr/m/n/10 name Email: somename@adr.net at institution1 & institution2 
 
-Overfull \hbox (4.50082pt too wide) in alignment at lines 339--347
+Overfull \hbox (4.50082pt too wide) in alignment at lines 340--348
  [] [] 
 
-Overfull \hbox (4.50082pt too wide) in alignment at lines 347--355
+Overfull \hbox (4.50082pt too wide) in alignment at lines 348--356
  [] [] 
 
-Overfull \hbox (4.50082pt too wide) in alignment at lines 355--357
+Overfull \hbox (4.50082pt too wide) in alignment at lines 356--358
  [] [] 
 
-Overfull \hbox (4.50082pt too wide) in alignment at lines 357--358
+Overfull \hbox (4.50082pt too wide) in alignment at lines 358--359
  [] [] 
 
 Underfull \hbox (badness 10000) 
@@ -72295,7 +73109,7 @@ Underfull \hbox (badness 10000)
 Underfull \hbox (badness 10000) 
 []|\T1/pcr/m/n/10 ===== Exercise: heading
 
-Overfull \hbox (4.50082pt too wide) in alignment at lines 358--419
+Overfull \hbox (4.50082pt too wide) in alignment at lines 359--420
  [] [] 
 [2]
 Overfull \hbox (15.61775pt too wide) 
@@ -72388,7 +73202,7 @@ Overfull \hbox (119.00006pt too wide)
  movie. 
 
 LaTeX Warning: Hyper reference `section-types' on page 9 undefined on input lin
-e 998.
+e 1000.
 
 
 Overfull \hbox (107.00006pt too wide) 
@@ -72661,13 +73475,12 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 Output written on quickref.rst.dvi (17 pages, ).
 Transcript written on quickref.rst.log.
 + latex quickref.rst.tex
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian)
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
  restricted \write18 enabled.
 entering extended mode
 (./quickref.rst.tex
 LaTeX2e <2011/06/27>
-Babel <v3.8m> and hyphenation patterns for english, dumylang, nohyphenation, lo
-aded.
+Babel <3.9f> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
@@ -72693,6 +73506,7 @@ Package cmap Warning: pdftex in DVI mode - exiting.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+
 
 
 
@@ -72729,16 +73543,16 @@ rspace Inc.
 Overfull \hbox (59.00006pt too wide) 
 []\T1/pcr/m/n/10 name Email: somename@adr.net at institution1 & institution2 
 
-Overfull \hbox (4.50082pt too wide) in alignment at lines 339--347
+Overfull \hbox (4.50082pt too wide) in alignment at lines 340--348
  [] [] 
 
-Overfull \hbox (4.50082pt too wide) in alignment at lines 347--355
+Overfull \hbox (4.50082pt too wide) in alignment at lines 348--356
  [] [] 
 
-Overfull \hbox (4.50082pt too wide) in alignment at lines 355--357
+Overfull \hbox (4.50082pt too wide) in alignment at lines 356--358
  [] [] 
 
-Overfull \hbox (4.50082pt too wide) in alignment at lines 357--358
+Overfull \hbox (4.50082pt too wide) in alignment at lines 358--359
  [] [] 
 
 Underfull \hbox (badness 10000) 
@@ -72756,7 +73570,7 @@ Underfull \hbox (badness 10000)
 Underfull \hbox (badness 10000) 
 []|\T1/pcr/m/n/10 ===== Exercise: heading
 
-Overfull \hbox (4.50082pt too wide) in alignment at lines 358--419
+Overfull \hbox (4.50082pt too wide) in alignment at lines 359--420
  [] [] 
 [3]
 Overfull \hbox (15.61775pt too wide) 
