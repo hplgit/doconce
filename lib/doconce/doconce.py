@@ -2016,11 +2016,17 @@ def file2file(in_filename, format, basename):
     except UnicodeEncodeError, e:
         m = str(e)
         if "codec can't encode character" in m:
-            pos = int(m.split('position')[1].split(':')[0])
-            print 'pos', pos
-            print 'Problem with character when writing to file:', filestr[pos]
+            pos = m.split('position')[1].split(':')[0]
+            print 'Problem with character when writing to file:'
+            print '(text position %s)' % pos
+            try:
+                pos = int(pos)
+            except:
+                if '-' in pos:
+                    pos = pos.split('-')[0]
+                    pos = int(pos)
             print filestr[pos-40:pos], '|', filestr[pos], '|', filestr[pos+1:pos+40]
-            print 'Fix character or try --encoding=utf-8 or --encoding=iso-8859-15'
+            print 'Fix character or try --encoding=utf-8'
             _abort()
     f.close()
     return out_filename

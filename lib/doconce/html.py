@@ -1449,12 +1449,14 @@ def latin2html(text):
     text_new = []
     try:
         text = text.decode('utf-8')
-    except UnicodeDecodeError:
+    except UnicodeDecodeError, e:
         try:
             text = text.decode('latin-1')
         except UnicodeDecodeError, e:
             print 'Tried to interpret the file as utf-8 (failed) and latin-1 (failed) - aborted'
             raise e
+    #except UnicodeEncodeError, e:
+    #    pass
     for c in text:
         try:
             if ord(c) > 159:
