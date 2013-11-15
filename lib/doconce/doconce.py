@@ -1316,7 +1316,7 @@ def typeset_lists(filestr, format, debug_info=[]):
             lastline = line
             continue
 
-        if line.startswith('#') and not:
+        if line.startswith('#'):
 
             # first do some debug output:
             if line.startswith('#!!CODE') and len(debug_info) >= 1:
