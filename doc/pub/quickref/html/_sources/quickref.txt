@@ -368,7 +368,9 @@ for exact syntax):
 
 
 .. When showing copy from file in !bc envir, indent a character - otherwise
+
 .. ptex2tex is confused and starts copying...
+
 Computer code can also be copied from a file:
 
 .. code-block:: text

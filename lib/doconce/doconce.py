@@ -1341,14 +1341,19 @@ def typeset_lists(filestr, format, debug_info=[]):
                     elif callable(comment_action):
                         new_comment = comment_action(line[1:].strip())
 
-                    # exercises has comment lines that make end of lists
-                    if re.search(exercise_comment_line, line):
+                    # Exercises has comment lines that make end of lists,
+                    # let these be treated as ordinary new, nonindented
+                    # lines
+                    if not re.search(exercise_comment_line, line):
+                        # Ordinary comment
                         result.write(new_comment + '\n')
                     else:
+                        # Special exercise comment (ordinary line)
                         line = new_comment  # will be printed later
 
             lastline = line
-            if re.search(exercise_comment_line, line):
+            if not re.search(exercise_comment_line, line):
+                # Ordinary comment
                 continue
             # else: just proceed and use zero indent as indicator
             # for end of list

@@ -860,8 +860,6 @@ Test list in exercise:
  o item1
  o item2
 
-    exercise_comment_line = r'--- (begin|end) .+?exercise ---'
-if re.search(exercise_comment_line, line):
 
 ===== {Exercise}: Some exercise without the "Exercise:" prefix =====
 
