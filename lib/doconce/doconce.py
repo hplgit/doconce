@@ -1301,7 +1301,7 @@ def typeset_lists(filestr, format, debug_info=[]):
             if bug:
                 m = re.search(bug[0], line)
                 if m:
-                    print '>>> syntax error: "%s"\n    %s' % \
+                    print '*** syntax error: "%s"\n    %s' % \
                           (m.group(0), bug[1])
                     print '    in line\n[%s]' % line
                     print '    surrounding text is\n'

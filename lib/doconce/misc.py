@@ -5028,7 +5028,7 @@ def _latex2doconce(filestr):
 
 
     subst = [
-                    # hpl specific things:
+        # hpl specific things:
     #(r'\\ep(\\|\s+|\n)', r'\thinspace . \g<1>*'), # gives tab hinspace .
     #(r'^\ep\n', r'\\thinspace .\n', re.MULTILINE),
     #(r'\ep\n', r' \\thinspace .\n'),
@@ -5601,8 +5601,8 @@ def latex_dislikes():
         (r'\\subfigure', 'Avoid \\subfigure, combine images to a single new image.'),
         (r'\\pageref', 'Avoid \\pageref entirely (page numbers do not make sense in most electronic formats).'),
         #(r'\\psfig\{', 'Avoid \\psfig, use \\includegraphics.'),
-        (r'\\begin\{table\}', 'Tables are handled, but can easily become problematic. Test outcome of doconce2latex for this table, make it inline (only tabular) and of a form that easily translates to doconce.'),
-        (r'\\begin\{tabular\}', 'Tables are handled, but can easily become problematic. Test outcome of doconce2latex for this tabular environment and adjust if necessary/possible.'),
+        (r'\\begin\{table\}', 'Tables are handled, but can easily become problematic. Test outcome of latex2doconce for this table, make it inline (only tabular) and of a form that easily translates to doconce.'),
+        (r'\\begin\{tabular\}', 'Tables are handled, but can easily become problematic. Test outcome of latex2doconce for this tabular environment and adjust if necessary/possible.'),
         ]
     likes_commands = []
 
