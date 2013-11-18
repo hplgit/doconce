@@ -4284,6 +4284,7 @@ _replacements = [
     (r'![be]notes', ''),
     (r'![be]pop', ''),
     (r'![be]warning', ''),
+    (r'![be]summary', ''),
     (r'![be]notice', ''),
     (r'![be]remarks', ''),
     # Preprocess
