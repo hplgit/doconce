@@ -1450,7 +1450,7 @@ final,                   % or draft (marks overfull hboxes)
             packages = r'\usepackage{framed,wrapfig}'
         elif latex_admon in ('graybox2',):
             packages = r"""\usepackage{wrapfig,calc}
-\usepackage[framemethod=TikZ]{mdframed}"""
+\usepackage[framemethod=TikZ]{mdframed}  % use latest version: https://github.com/marcodaniel/mdframed"""
         else: # graybox1
             packages = r'\usepackage[framemethod=TikZ]{mdframed}'
         INTRO['latex'] += '\n' + packages + '\n'
@@ -1493,6 +1493,7 @@ final,                   % or draft (marks overfull hboxes)
   skipbelow=\topsep,
   leftmargin=23,
   rightmargin=23,
+  needspace=0pt,
 ]{graybox2mdframed}
 
 \newenvironment{graybox2admon}[1][]{
@@ -1520,6 +1521,7 @@ final,                   % or draft (marks overfull hboxes)
   leftmargin=0,
   rightmargin=0,
   roundcorner=5,
+  needspace=0pt,
 ]{graybox1mdframed}
 
 \newenvironment{graybox1admon}[1][]{

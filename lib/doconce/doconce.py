@@ -1291,7 +1291,7 @@ def typeset_lists(filestr, format, debug_info=[]):
     lastline = lines[0]
     # for debugging only:
     _code_block_no = 0; _tex_block_no = 0
-    exercise_comment_line = r'--- (begin|end) .+?exercise ---'
+    exercise_comment_line = r'--- (begin|end) .*?exercise ---'
 
     for i, line in enumerate(lines):
         debugpr('\n------------------------\nsource line=[%s]' % line)
