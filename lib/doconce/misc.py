@@ -60,6 +60,8 @@ inserted to the right in exercises - "default" and "none" are allowed
 ("none" if no option)."""),
     ('--html_exercise_icon_width=',
      """Width of the icon image specified as --html_exercise_icon."""),
+    ('--html_links_in_new_window',
+     """Open HTML links in a new window."""),
     ('--device=',
      """Set device to paper, screen, or other (paper impacts LaTeX output)."""),
     ('--latex_double_hyphen',

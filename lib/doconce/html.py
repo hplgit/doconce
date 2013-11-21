@@ -495,6 +495,9 @@ MathJax.Hub.Config({
            f.startswith('file:')):
             add_to_file_collection(f)
 
+    # Change a href links so they open URLs in new windows?
+    if option('html_links_in_new_window'):
+        filestr = filestr.replace('target="_self"', 'target="_blank"')
 
     # Add info about the toc (for construction of navigation panels etc.).
     # Just dump the tocinfo dict so that we can read it and take eval
@@ -1203,11 +1206,11 @@ def define(FILENAME_EXTENSION,
         'verbatim':      r'\g<begin><code>\g<subst></code>\g<end>',
         'colortext':     r'<font color="\g<color>">\g<text></font>',
         #'linkURL':       r'\g<begin><a href="\g<url>">\g<link></a>\g<end>',
-        'linkURL2':      r'<a href="\g<url>">\g<link></a>',
-        'linkURL3':      r'<a href="\g<url>">\g<link></a>',
-        'linkURL2v':     r'<a href="\g<url>"><tt>\g<link></tt></a>',
-        'linkURL3v':     r'<a href="\g<url>"><tt>\g<link></tt></a>',
-        'plainURL':      r'<a href="\g<url>"><tt>\g<url></tt></a>',
+        'linkURL2':      r'<a href="\g<url>" target="_self">\g<link></a>',
+        'linkURL3':      r'<a href="\g<url>" target="_self">\g<link></a>',
+        'linkURL2v':     r'<a href="\g<url>" target="_self"><tt>\g<link></tt></a>',
+        'linkURL3v':     r'<a href="\g<url>" target="_self"><tt>\g<link></tt></a>',
+        'plainURL':      r'<a href="\g<url>" target="_self"><tt>\g<url></tt></a>',
         'inlinecomment': r'\n<!-- begin inline comment -->\n<font color="red">[<b>\g<name></b>: <em>\g<comment></em>]</font>\n<!-- end inline comment -->\n',
         'chapter':       r'\n<h1>\g<subst></h1>',
         'section':       r'\n<h2>\g<subst></h2>',

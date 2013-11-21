@@ -52,3 +52,4 @@ github_md = False
 sections_up = False
 sections_down = False
 handout = False
+html_links_in_new_window = False
