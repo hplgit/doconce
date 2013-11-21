@@ -92,6 +92,10 @@ inserted to the right in exercises - "default" and "none" are allowed
      'Upgrade all sections: sections to chapters, subsections to sections, etc.'),
     ('--sections_down',
      'Downgrade all sections: chapters to sections, sections to subsections, etc.'),
+    ('--figure_prefix=',
+     'Prefix all figure filenames with, e.g., an URL'),
+    ('--movie_prefix=',
+     'Prefix all movie filenames with, e.g., an URL'),
     ('--handout',
      'Makes slides output suited for printing.'),
     ]
@@ -125,9 +129,9 @@ except ImportError:
 def option(name, default=None):
     """
     Return value of command-line option with the given name.
-    If name ends with = (``--name=value``), return the value,
+    If name ends with a = (as in ``--name=value``), return the value,
     otherwise return True or False whether the option ``--name``
-    is found or not. If default is provided, this value is returned
+    is found or not. If value of `default` is returned
     in case the option was not found.
     """
     # Note: Do not use fancy command-line parsers as much functionality

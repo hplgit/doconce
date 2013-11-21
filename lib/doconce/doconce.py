@@ -1511,11 +1511,67 @@ def handle_figures(filestr, format):
     else:
         extensions = FIGURE_EXT[format]
     import sets; files = sets.Set(files)   # remove multiple occurences
+
+    figure_prefix = option('figure_prefix=')
+    if figure_prefix is not None:
+        # substitute all figfile names in files with figure_prefix + figfile
+        for figfile in files:
+            if not figfile.startswith('http'):
+                newname = figure_prefix + figfile
+                filestr = re.sub(r'%s([,\]])' % figfile,
+                                 '%s\g<1>' % newname, filestr)
+    # Prefix movies also
+    movie_pattern = INLINE_TAGS['movie']
+    movie_files = [filename.strip()
+                   for filename, options, caption in
+                   re.findall(movie_pattern, filestr, flags=re.MULTILINE)]
+    movie_prefix = option('movie_prefix=')
+    if movie_prefix is not None:
+        for movfile in movie_files:
+            if not movfile.startswith('http'):
+                newname = movie_prefix + movfile
+                filestr = re.sub(r'%s([,\]])' % movfile,
+                                 '%s\g<1>' % newname, filestr)
+
+
     for figfile in files:
         if figfile.startswith('http'):
-            # latex, pdflatex must download the file, not yet implemented
-            # html, sphinx and web-based formats can use the URL
+            # latex, pdflatex must download the file,
+            # html, sphinx and web-based formats can use the URL directly
+            basepath, ext = os.path.splitext(figfile)
+            # Avoid ext = '.05' etc from numbers in the filename
+            if not ext.lower() in ['.eps', '.pdf', '.png', '.jpg', 'jpeg',
+                                   '.gif', '.tif', '.tiff']:
+                ext = ''
+            if ext:
+                try:
+                    f = urllib.urlopen(figfile)
+                    f.close()
+                except IOError:
+                    print '*** error: figure URL "%s" could not reached' % figfile
+                    _abort()
+            else:
+                # no extension, run through the allowed extensions
+                # to see if figfile + ext exists:
+                file_found = False
+                for ext in extensions:
+                    newname = figfile + ext
+                    try:
+                        f = urllib.urlopen(newname)
+                        f.close()
+                        file_found = True
+                        print 'figure file %s:\n    can use %s for format %s' \
+                              % (figfile, newname, format)
+                        filestr = re.sub(r'%s([,\]])' % figfile,
+                                         '%s\g<1>' % newname, filestr)
+                        break
+                    except IOError:
+                        pass
+                if not file_found:
+                    print '*** error: figure %s:\n    could not find URL with legal extension %s' % (figfile, ', '.join(extensions))
+                    _abort()
             continue
+        # else: check out local figure file on the disk
         file_found = False
         if not os.path.isfile(figfile):
             basepath, ext = os.path.splitext(figfile)
@@ -1535,19 +1591,23 @@ def handle_figures(filestr, format):
                         figfile = newname
                         file_found = True
                         break
-                # try to see if other extensions exist:
+                # couldn't find figfile with an acceptable extension,
+                # try to see if other extensions exist and use the
+                # first one to convert to right format:
                 if not file_found:
                     candidate_files = glob.glob(figfile + '.*')
                     for newname in candidate_files:
                         if os.path.isfile(newname):
                             print 'Found', newname
-                            filestr = filestr.replace(figfile, newname)
+                            #dangerous: filestr = filestr.replace(figfile, newname)
+                            filestr = re.sub(r'%s([,\]])' % figfile,
+                                             '%s\g<1>' % newname, filestr)
                             figfile = newname
                             file_found = True
                             break
         if not os.path.isfile(figfile):
             #raise ValueError('file %s does not exist' % figfile)
-            print 'Figure file %s does not exist' % figfile
+            print '*** error: figure file "%s" does not exist!' % figfile
             _abort()
         basepath, ext = os.path.splitext(figfile)
         if not ext in extensions:
@@ -1582,11 +1642,17 @@ be loss of quality. Generate a proper %s file.""" % \
                         failure = os.system(cmd)
                         if not failure:
                             print '....image conversion:', cmd
-                            filestr = filestr.replace(figfile, converted_file)
+                            # dangerous: filestr = filestr.replace(figfile, converted_file)
+                            filestr = re.sub(r'%s([,\]])' % figfile,
+                                         '%s\g<1>' % converted_file, filestr)
+
                             break  # jump out of inner e loop
                 else:  # right file exists:
                     #print '....ok, ', converted_file, 'exists'
-                    filestr = filestr.replace(figfile, converted_file)
+                    #dangerous: filestr = filestr.replace(figfile, converted_file)
+                    filestr = re.sub(r'%s([,\]])' % figfile,
+                                     '%s\g<1>' % converted_file, filestr)
+
                     break
 
     # replace FIGURE... by format specific syntax:
