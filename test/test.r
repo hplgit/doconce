@@ -1605,6 +1605,7 @@ final,                   % or draft (marks overfull hboxes)
   leftmargin=0,
   rightmargin=0,
   roundcorner=5,
+  needspace=0pt,
 ]{graybox1mdframed}
 
 \newenvironment{graybox1admon}[1][]{
@@ -3307,6 +3308,7 @@ final,                   % or draft (marks overfull hboxes)
   leftmargin=0,
   rightmargin=0,
   roundcorner=5,
+  needspace=0pt,
 ]{graybox1mdframed}
 
 \newenvironment{graybox1admon}[1][]{
@@ -4839,6 +4841,7 @@ final,                   % or draft (marks overfull hboxes)
   leftmargin=0,
   rightmargin=0,
   roundcorner=5,
+  needspace=0pt,
 ]{graybox1mdframed}
 
 \newenvironment{graybox1admon}[1][]{
@@ -6763,7 +6766,6 @@ the old ME-IN323 book [Ref19]_ and the
 
 .. --- begin exercise ---
 
-
 .. _Example:
 
 Example 1: Examples can be typeset as exercises
@@ -6795,7 +6797,6 @@ The answer to this other subproblem goes here,
 maybe over multiple doconce input lines.
 
 .. --- end exercise ---
-
 
 
 .. _subsubsec:ex:
@@ -6886,7 +6887,6 @@ Exercises
 
 .. --- begin exercise ---
 
-
 .. _demo:ex:1:
 
 Problem 2: Flip a Coin
@@ -6966,7 +6966,6 @@ Filenames: ``flip_coin.py``, ``flip_coin.pdf``.
 .. --- end exercise ---
 
 
-
 Not an exercise
 ---------------
 
@@ -6976,7 +6975,6 @@ exercises.
 
 
 .. --- begin exercise ---
-
 
 .. _demo:ex:2:
 
@@ -7013,9 +7011,7 @@ compute the probability as M/N.
 
 
 
-
 .. --- begin exercise ---
-
 
 .. _proj:circle1:
 
@@ -7105,9 +7101,7 @@ and give some perspectives.
 
 
 
-
 .. --- begin exercise ---
-
 
 .. _exer:dist:
 
@@ -7230,9 +7224,7 @@ remarks will appear at the end of the typeset exercise.
 
 
 
-
 .. --- begin exercise ---
-
 
 Some exercise without the "Exercise:" prefix
 --------------------------------------------
@@ -7257,9 +7249,7 @@ And a test that the code ``lambda x: x+2`` is correctly placed here::
 
 
 
-
 .. --- begin exercise ---
-
 
 Example 7: Just an example
 --------------------------
@@ -7279,7 +7269,6 @@ Oslo.
 .. --- end exercise ---
 
 
-
 Here goes another section
 =========================
 
@@ -7291,7 +7280,6 @@ More Exercises
 
 
 .. --- begin exercise ---
-
 
 .. _exer:some:formula:
 
@@ -7315,9 +7303,7 @@ Filename: ``verify_formula.py``.
 
 
 
-
 .. --- begin exercise ---
-
 
 .. _exer:you:
 
@@ -7330,7 +7316,6 @@ and this one as `Project 9: References in a headings do not work well in rst`_.
 Filename: ``selc_composed.pdf``.
 
 .. --- end exercise ---
-
 
 
 References
@@ -8210,7 +8195,6 @@ the old ME-IN323 book [Ref19]_ and the
 
 .. --- begin exercise ---
 
-
 .. _Example:
 
 Example 1: Examples can be typeset as exercises
@@ -8242,7 +8226,6 @@ The answer to this other subproblem goes here,
 maybe over multiple doconce input lines.
 
 .. --- end exercise ---
-
 
 
 .. _subsubsec:ex:
@@ -8410,7 +8393,6 @@ Exercises
 
 .. --- begin exercise ---
 
-
 .. _demo:ex:1:
 
 Problem 2: Flip a Coin
@@ -8491,7 +8473,6 @@ Filenames: ``flip_coin.py``, ``flip_coin.pdf``.
 .. --- end exercise ---
 
 
-
 Not an exercise
 ---------------
 
@@ -8501,7 +8482,6 @@ exercises.
 
 
 .. --- begin exercise ---
-
 
 .. _demo:ex:2:
 
@@ -8538,9 +8518,7 @@ compute the probability as :math:`M/N`.
 
 
 
-
 .. --- begin exercise ---
-
 
 .. _proj:circle1:
 
@@ -8640,9 +8618,7 @@ and give some perspectives.
 
 
 
-
 .. --- begin exercise ---
-
 
 .. _exer:dist:
 
@@ -8775,9 +8751,7 @@ remarks will appear at the end of the typeset exercise.
 
 
 
-
 .. --- begin exercise ---
-
 
 Some exercise without the "Exercise:" prefix
 --------------------------------------------
@@ -8807,9 +8781,7 @@ And a test that the code ``lambda x: x+2`` is correctly placed here:
 
 
 
-
 .. --- begin exercise ---
-
 
 Example 7: Just an example
 --------------------------
@@ -8829,7 +8801,6 @@ Oslo.
 .. --- end exercise ---
 
 
-
 Here goes another section
 =========================
 
@@ -8841,7 +8812,6 @@ More Exercises
 
 
 .. --- begin exercise ---
-
 
 .. _exer:some:formula:
 
@@ -8865,9 +8835,7 @@ Filename: ``verify_formula.py``.
 
 
 
-
 .. --- begin exercise ---
-
 
 .. _exer:you:
 
@@ -8880,7 +8848,6 @@ and this one as :ref:`exer:you`.
 Filename: ``selc_composed.pdf``.
 
 .. --- end exercise ---
-
 
 
 References
@@ -12951,6 +12918,7 @@ the old ME-IN323 book [19] and the
 
 
 
+# --- begin exercise ---
 
 Example 1: Examples can be typeset as exercises
 
@@ -12973,6 +12941,7 @@ environments as part of the example.
 *Solution.* The answer to this other subproblem goes here,
 maybe over multiple doconce input lines.
 
+# --- end exercise ---
 
 
 URLs
@@ -13046,6 +13015,7 @@ Exercises
 
 
 
+# --- begin exercise ---
 
 Problem 2: Flip a Coin
 
@@ -13106,6 +13076,7 @@ head, otherwise tail. Repeat this N number of times.
 # --- end solution of exercise ---
 Filenames: 'flip_coin.py', 'flip_coin.pdf'.
 
+# --- end exercise ---
 
 
 Not an exercise
@@ -13115,6 +13086,7 @@ exercises.
 
 
 
+# --- begin exercise ---
 
 Project 3: Compute a Probability
 
@@ -13139,10 +13111,12 @@ compute the probability as M/N.
 
 # --- end hint in exercise ---
 
+# --- end exercise ---
 
 
 
 
+# --- begin exercise ---
 
 Project 4: Explore Distributions of Random Circles
 
@@ -13211,10 +13185,12 @@ At the very end of the exercise it may be appropriate to summarize
 and give some perspectives.
 
 
+# --- end exercise ---
 
 
 
 
+# --- begin exercise ---
 
 Exercise 5: Determine some Distance
 
@@ -13314,10 +13290,12 @@ and their implications in other problems can be made. These
 remarks will appear at the end of the typeset exercise.
 
 
+# --- end exercise ---
 
 
 
 
+# --- begin exercise ---
 
 Some exercise without the "Exercise:" prefix
 
@@ -13334,10 +13312,12 @@ And a test that the code 'lambda x: x+2' is correctly placed here::
         lambda x: x+2
 
 
+# --- end exercise ---
 
 
 
 
+# --- begin exercise ---
 
 Example 7: Just an example
 
@@ -13347,6 +13327,7 @@ Example 7: Just an example
 
 *Answer.* Oslo.
 
+# --- end exercise ---
 
 
 Here goes another section
@@ -13357,6 +13338,7 @@ More Exercises
 
 
 
+# --- begin exercise ---
 
 Exercise 8: Make references to projects and problems
 
@@ -13371,10 +13353,12 @@ hint, etc.):
 
 Filename: 'verify_formula.py'.
 
+# --- end exercise ---
 
 
 
 
+# --- begin exercise ---
 
 Project 9: References to  "Project 3: Compute a Probability" in a heading works for st
 
@@ -13383,6 +13367,7 @@ the two before that as  "Project 3: Compute a Probability" and "Project 4: Explo
 and this one as  "Project 9: References to Project ref{demo:ex:2} in a heading works for st".
 Filename: 'selc_composed.pdf'.
 
+# --- end exercise ---
 
 
 References
@@ -14038,6 +14023,7 @@ the old ME-IN323 book [19] and the
 
 
 
+# --- begin exercise ---
 
 Example 1: Examples can be typeset as exercises
 -----------------------------------------------
@@ -14061,6 +14047,7 @@ I{Hint 2.} Maybe even another hint?
 I{Solution.} The answer to this other subproblem goes here,
 maybe over multiple doconce input lines.
 
+# --- end exercise ---
 
 
 URLs
@@ -14138,6 +14125,7 @@ Exercises
 
 
 
+# --- begin exercise ---
 
 Problem 2: Flip a Coin
 ----------------------
@@ -14200,6 +14188,7 @@ I{Solution.} Code::
 # --- end solution of exercise ---
 Filenames: C{flip_coin.py}, C{flip_coin.pdf}.
 
+# --- end exercise ---
 
 
 Not an exercise
@@ -14210,6 +14199,7 @@ exercises.
 
 
 
+# --- begin exercise ---
 
 Project 3: Compute a Probability
 --------------------------------
@@ -14235,10 +14225,12 @@ compute the probability as M{M/N}.
 
 # --- end hint in exercise ---
 
+# --- end exercise ---
 
 
 
 
+# --- begin exercise ---
 
 Project 4: Explore Distributions of Random Circles
 --------------------------------------------------
@@ -14309,10 +14301,12 @@ At the very end of the exercise it may be appropriate to summarize
 and give some perspectives.
 
 
+# --- end exercise ---
 
 
 
 
+# --- begin exercise ---
 
 Exercise 5: Determine some Distance
 -----------------------------------
@@ -14414,10 +14408,12 @@ and their implications in other problems can be made. These
 remarks will appear at the end of the typeset exercise.
 
 
+# --- end exercise ---
 
 
 
 
+# --- begin exercise ---
 
 Some exercise without the "Exercise:" prefix
 --------------------------------------------
@@ -14435,10 +14431,12 @@ And a test that the code C{lambda x: x+2} is correctly placed here::
         lambda x: x+2
 
 
+# --- end exercise ---
 
 
 
 
+# --- begin exercise ---
 
 Example 7: Just an example
 --------------------------
@@ -14449,6 +14447,7 @@ I{a)} What is the capital of Norway?
 
 I{Answer.} Oslo.
 
+# --- end exercise ---
 
 
 Here goes another section
@@ -14461,6 +14460,7 @@ More Exercises
 
 
 
+# --- begin exercise ---
 
 Exercise 8: Make references to projects and problems
 ----------------------------------------------------
@@ -14476,10 +14476,12 @@ hint, etc.):
 
 Filename: C{verify_formula.py}.
 
+# --- end exercise ---
 
 
 
 
+# --- begin exercise ---
 
 Project 9: References to  "Project 3: Compute a Probability" in a heading works for epytext
 -------------------------------------------------------------------------------------------
@@ -14489,6 +14491,7 @@ the two before that as  "Project 3: Compute a Probability" and "Project 4: Explo
 and this one as  "Project 9: References to Project ref{demo:ex:2} in a heading works for epytext".
 Filename: C{selc_composed.pdf}.
 
+# --- end exercise ---
 
 
 References
@@ -15220,6 +15223,7 @@ the old ME-IN323 book [19] and the
 
 
 
+# --- begin exercise ---
 
 Example 1: Examples can be typeset as exercises
 -----------------------------------------------
@@ -15243,6 +15247,7 @@ environments as part of the example.
 *Solution.* The answer to this other subproblem goes here,
 maybe over multiple doconce input lines.
 
+# --- end exercise ---
 
 
 URLs
@@ -15319,6 +15324,7 @@ Exercises
 
 
 
+# --- begin exercise ---
 
 Problem 2: Flip a Coin
 ----------------------
@@ -15382,6 +15388,7 @@ head, otherwise tail. Repeat this N number of times.
 # --- end solution of exercise ---
 Filenames: flip_coin.py, flip_coin.pdf.
 
+# --- end exercise ---
 
 
 Not an exercise
@@ -15392,6 +15399,7 @@ exercises.
 
 
 
+# --- begin exercise ---
 
 Project 3: Compute a Probability
 --------------------------------
@@ -15418,10 +15426,12 @@ compute the probability as M/N.
 
 # --- end hint in exercise ---
 
+# --- end exercise ---
 
 
 
 
+# --- begin exercise ---
 
 Project 4: Explore Distributions of Random Circles
 --------------------------------------------------
@@ -15492,10 +15502,12 @@ At the very end of the exercise it may be appropriate to summarize
 and give some perspectives.
 
 
+# --- end exercise ---
 
 
 
 
+# --- begin exercise ---
 
 Exercise 5: Determine some Distance
 -----------------------------------
@@ -15599,10 +15611,12 @@ and their implications in other problems can be made. These
 remarks will appear at the end of the typeset exercise.
 
 
+# --- end exercise ---
 
 
 
 
+# --- begin exercise ---
 
 Some exercise without the "Exercise:" prefix
 --------------------------------------------
@@ -15620,10 +15634,12 @@ And a test that the code lambda x: x+2 is correctly placed here::
         lambda x: x+2
 
 
+# --- end exercise ---
 
 
 
 
+# --- begin exercise ---
 
 Example 7: Just an example
 --------------------------
@@ -15634,6 +15650,7 @@ Example 7: Just an example
 
 *Answer.* Oslo.
 
+# --- end exercise ---
 
 
 Here goes another section
@@ -15646,6 +15663,7 @@ More Exercises
 
 
 
+# --- begin exercise ---
 
 Exercise 8: Make references to projects and problems
 ----------------------------------------------------
@@ -15662,10 +15680,12 @@ hint, etc.):
 
 Filename: verify_formula.py.
 
+# --- end exercise ---
 
 
 
 
+# --- begin exercise ---
 
 Project 9: References to  "Project 3: Compute a Probability" in a heading works for plain
 -----------------------------------------------------------------------------------------
@@ -15675,6 +15695,7 @@ the two before that as  "Project 3: Compute a Probability" and "Project 4: Explo
 and this one as  "Project 9: References to Project ref{demo:ex:2} in a heading works for plain".
 Filename: selc_composed.pdf.
 
+# --- end exercise ---
 
 
 References
@@ -21577,8 +21598,8 @@ cite{testdoc:12}], Doconce documents may include movies.
 <p>
 This is renedered as follows:
 As explained in
-a <a href="http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex">section</a> in
-the document <a href="http://hplgit.github.io/doconce/test/demo_testdoc.html">A Document for Testing Doconce</a>
+a <a href="http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex" target="_self">section</a> in
+the document <a href="http://hplgit.github.io/doconce/test/demo_testdoc.html" target="_self">A Document for Testing Doconce</a>
 <a href="#testdoc:12">[1]</a>, Doconce documents may include movies.
 
 <p>
@@ -21613,7 +21634,7 @@ Inline math, \( a=b \), is the only math in this document.
     A Document for Testing Doconce,
     <em>Simula Research Laboratory</em>,
     2013,
-    <a href="http://doconce.googlecode.com/hg/test/demo_testdoc.html"><tt>http://doconce.googlecode.com/hg/test/demo_testdoc.html</tt></a>.</li>
+    <a href="http://doconce.googlecode.com/hg/test/demo_testdoc.html" target="_self"><tt>http://doconce.googlecode.com/hg/test/demo_testdoc.html</tt></a>.</li>
 </ol>
 
 <!-- end bibliography -->
@@ -23561,33 +23582,33 @@ maybe over multiple doconce input lines.
 <h3>URLs <a name="subsubsec:ex"></a></h3>
 
 <p>
-Testing of URLs: hpl's home page <a href="http://folk.uio.no/hpl">hpl</a>, or
-the entire URL if desired, <a href="http://folk.uio.no/hpl"><tt>http://folk.uio.no/hpl</tt></a>.  Here is a
-plain file link <a href="testdoc.do.txt"><tt>testdoc.do.txt</tt></a>, or <a href="testdoc.do.txt"><tt>testdoc.do.txt</tt></a>, or
-<a href="testdoc.do.txt"><tt>testdoc.do.txt</tt></a> or <a href="testdoc.do.txt"><tt>testdoc.do.txt</tt></a> or <a href="testdoc.do.txt">a link with
+Testing of URLs: hpl's home page <a href="http://folk.uio.no/hpl" target="_self">hpl</a>, or
+the entire URL if desired, <a href="http://folk.uio.no/hpl" target="_self"><tt>http://folk.uio.no/hpl</tt></a>.  Here is a
+plain file link <a href="testdoc.do.txt" target="_self"><tt>testdoc.do.txt</tt></a>, or <a href="testdoc.do.txt" target="_self"><tt>testdoc.do.txt</tt></a>, or
+<a href="testdoc.do.txt" target="_self"><tt>testdoc.do.txt</tt></a> or <a href="testdoc.do.txt" target="_self"><tt>testdoc.do.txt</tt></a> or <a href="testdoc.do.txt" target="_self">a link with
 newline</a>. Can test spaces with the link with word
-too: <a href="http://folk.uio.no/hpl">hpl</a> or <a href="http://folk.uio.no/hpl">hpl</a>. Also <code>file:///</code> works: <a href="file:///home/hpl/vc/doconce/doc/demos/manual/manual.html">link to a
+too: <a href="http://folk.uio.no/hpl" target="_self">hpl</a> or <a href="http://folk.uio.no/hpl" target="_self">hpl</a>. Also <code>file:///</code> works: <a href="file:///home/hpl/vc/doconce/doc/demos/manual/manual.html" target="_self">link to a
 file</a> is
 fine to have. Moreover, "loose" URLs work, i.e., no quotes, just
-the plain URL as in <a href="http://folk.uio.no/hpl"><tt>http://folk.uio.no/hpl</tt></a>, if followed by space, comma,
+the plain URL as in <a href="http://folk.uio.no/hpl" target="_self"><tt>http://folk.uio.no/hpl</tt></a>, if followed by space, comma,
 colon, semi-colon, question mark, exclamation mark, but not a period
 (which gets confused with the periods inside the URL).
 
 <p>
-Mail addresses can also be used: <a href="mailto:hpl@simula.no"><tt>hpl@simula.no</tt></a>, or just a <a href="mailto:hpl@simula.no">mail link</a>, or a raw <a href="mailto:hpl@simula.no"><tt>mailto:hpl@simula.no</tt></a>.
+Mail addresses can also be used: <a href="mailto:hpl@simula.no" target="_self"><tt>hpl@simula.no</tt></a>, or just a <a href="mailto:hpl@simula.no" target="_self">mail link</a>, or a raw <a href="mailto:hpl@simula.no" target="_self"><tt>mailto:hpl@simula.no</tt></a>.
 
 <p>
 Here are some tough tests of URLs, especially for the <code>latex</code> format:
-<a href="http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas">Newton-Cotes</a> formulas
-and a <a href="http://www.springer.com/mathematics/computational+science+%26+engineering/book/978-3-642-23098-1">good book</a>. Need to test
+<a href="http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas" target="_self">Newton-Cotes</a> formulas
+and a <a href="http://www.springer.com/mathematics/computational+science+%26+engineering/book/978-3-642-23098-1" target="_self">good book</a>. Need to test
 Newton-Cotes with percentage in URL too:
-<a href="http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas"><tt>http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas</tt></a>
-and <a href="http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae"><tt>http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae</tt></a> which has a shebang.
+<a href="http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas" target="_self"><tt>http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas</tt></a>
+and <a href="http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae" target="_self"><tt>http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae</tt></a> which has a shebang.
 
 <p>
 For the <code>--device=paper</code> option it is important to test that URLs with
 monofont link text get a footnote, as in this reference to
-<a href="https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py"><tt>decay_mod</tt></a>.
+<a href="https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py" target="_self"><tt>decay_mod</tt></a>.
 
 <p>
 <!-- Comments should be inserted outside paragraphs (because in the rst -->
@@ -23601,8 +23622,8 @@ monofont link text get a footnote, as in this reference to
 <p>
 More tough tests: repeated URLs whose footnotes when using the
 <code>--device=paper</code> option must be correct. We have
-<a href="http://google.com">google</a>, <a href="http://google.com">google</a>, and
-<a href="http://google.com">google</a>, which should result in exactly three
+<a href="http://google.com" target="_self">google</a>, <a href="http://google.com" target="_self">google</a>, and
+<a href="http://google.com" target="_self">google</a>, which should result in exactly three
 footnotes.
 
 <h3>LaTeX Mathematics  <a name="___sec11"></a></h3>
@@ -24191,7 +24212,7 @@ Filename: <code>selc_composed.pdf</code>.
     A FEniCS-Based Programming Framework for Modeling Turbulent Flow by the Reynolds-Averaged Navier-Stokes Equations,
     <em>Advances in Water Resources</em>,
     34(9),
-    <a href="http://dx.doi.org/10.1016/j.advwatres.2011.02.013">doi: 10.1016/j.advwatres.2011.02.013</a>,
+    <a href="http://dx.doi.org/10.1016/j.advwatres.2011.02.013" target="_self">doi: 10.1016/j.advwatres.2011.02.013</a>,
     2011.</li>
  </tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> <a name="Glimsdal_et_al_20006"></a> <b>S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt</b>. 
     Propagation of the Dec.~26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics,
@@ -24207,9 +24228,9 @@ Filename: <code>selc_composed.pdf</code>.
 </tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> <a name="Haga_et_al_2011a"></a> <b>J. B. Haga, H. Osnes and H. P. Langtangen</b>. 
     On the Causes of Pressure Oscillations in Low-Permeable and Low-Compressible Porous Media,
     <em>International Journal of Analytical and Numerical Methods in Geomechanics</em>,
-    <a href="http://dx.doi.org/10.1002/nag.1062">doi: 10.1002/nag.1062</a>,
+    <a href="http://dx.doi.org/10.1002/nag.1062" target="_self">doi: 10.1002/nag.1062</a>,
     2011,
-    <a href="http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract"><tt>http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract</tt></a>.</li>
+    <a href="http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract" target="_self"><tt>http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract</tt></a>.</li>
 </tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> <a name="Langtangen_2003a"></a> <b>H. P. Langtangen</b>. 
     <em>Computational Partial Differential Equations - Numerical Methods and Diffpack Programming</em>,
     Springer,
@@ -24225,7 +24246,7 @@ Filename: <code>selc_composed.pdf</code>.
     Kluwer Academic Publishers,
     pp. pp. 117-126,
     1995,
-    <a href="http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310"><tt>http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310</tt></a>.</li>
+    <a href="http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310" target="_self"><tt>http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310</tt></a>.</li>
 </tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> <a name="Langtangen_2012"></a> <b>H. P. Langtangen</b>. 
     <em>A Primer on Scientific Programming With Python</em>,
     Springer,
@@ -24310,7 +24331,7 @@ with programs or technical reports it is essential
 to have changes documented and to
 ensure that every computer and person involved in the project
 have the latest updates of the files.
-Greg Wilson' excellent <a href="http://software-carpentry.org/2010/07/script-for-introduction-to-version-control/">Script for Introduction to Version Control</a> provides a more detailed motivation why you will benefit greatly
+Greg Wilson' excellent <a href="http://software-carpentry.org/2010/07/script-for-introduction-to-version-control/" target="_self">Script for Introduction to Version Control</a> provides a more detailed motivation why you will benefit greatly
 from using version control systems.
 
 <p>
@@ -24334,7 +24355,7 @@ recommend you to use such sites for all serious programming and
 scientific writing work - and all other important files.
 
 <p>
-The simplest services for hosting project files are <a href="http://dropbox.com">Dropbox</a> and <a href="http://drive.google.com">Google Drive</a>.
+The simplest services for hosting project files are <a href="http://dropbox.com" target="_self">Dropbox</a> and <a href="http://drive.google.com" target="_self">Google Drive</a>.
 It is very easy to get started with these systems, and they allow you
 to share files among laptops and mobile units with as many users as
 you want. The systems offer a kind of version control in that the
@@ -24393,7 +24414,7 @@ scientific writing work - and all other important files.
 <p>
 The simplest services for hosting project files is Dropbox. 
 <!-- begin inline comment -->
-<font color="red">[<b>mp 2</b>: <em>Simply go to <a href="http://dropbox.com"><tt>http://dropbox.com</tt></a> and watch the video. It explains
+<font color="red">[<b>mp 2</b>: <em>Simply go to <a href="http://dropbox.com" target="_self"><tt>http://dropbox.com</tt></a> and watch the video. It explains
 how files, like <code>myfile.py</code>, perhaps containing much math, like
 \( \partial u/\partial t \), are easily communicated between machines.</em>]</font>
 <!-- end inline comment -->
@@ -24824,14 +24845,14 @@ there is a flow.
 <center> 
 <hr class="figure">
 <center><p class="caption">Figure 1:  Visualization of flow by streamtubes. <a name="fig:impact"></a> </p></center>
-<p><img src="../doc/src/manual/figs/streamtubes.png" align="bottom" width=200></p>
+<p><img src="https://raw.github.com/hplgit/doconce/master/test/../doc/src/manual/figs/streamtubes.png" align="bottom" width=200></p>
 </center>
 
 <p>
 Figures without captions are allowed and will be inlined.
 
 <p>
-<center><p><img src="../doc/src/manual/figs/streamtubes.png" align="bottom" width=200></p></center>
+<center><p><img src="https://raw.github.com/hplgit/doconce/master/test/../doc/src/manual/figs/streamtubes.png" align="bottom" width=200></p></center>
 
 <h4>Test of movies  <a name="___sec3"></a></h4>
 
@@ -24840,7 +24861,7 @@ Movie <a href="#mov:tsunami">mov:tsunami</a> shows a tsunami.
 
 <p>
 
-<embed src="../doc/src/manual/figs/mjolnir.mpeg" width=700 height=400 autoplay="false" loop="true"></embed>
+<embed src="https://raw.github.com/hplgit/doconce/master/test/../doc/src/manual/figs/mjolnir.mpeg" width=700 height=400 autoplay="false" loop="true"></embed>
 <p><em>Mjolnir tsunami (by Sylfest Glimsdal) <a name="mov:tsunami"></a>.</em></p>
 
 
@@ -24849,7 +24870,7 @@ Test empty caption (for inline movie):
 
 <p>
 
-<embed src="../doc/src/manual/figs/wavepacket.mpeg" width=700 height=400 autoplay="false" loop="true"></embed>
+<embed src="https://raw.github.com/hplgit/doconce/master/test/../doc/src/manual/figs/wavepacket.mpeg" width=700 height=400 autoplay="false" loop="true"></embed>
 <p><em></em></p>
 
 
@@ -24880,7 +24901,7 @@ and an extra space before the FIGURE keyword.
 <center> 
 <hr class="figure">
 <center><p class="caption">Figure 2:  A long caption spanning several lines and containing verbatim words like <code>my_file_v1</code> and <code>my_file_v2</code> as well as math with subscript as in $latex t_{i+1}$. <a name="myfig"></a> </p></center>
-<p><img src="../doc/src/manual/figs/wavepacket_0001.png" align="bottom" width=500></p>
+<p><img src="https://raw.github.com/hplgit/doconce/master/test/../doc/src/manual/figs/wavepacket_0001.png" align="bottom" width=500></p>
 </center>
 
 <p>
@@ -25103,39 +25124,39 @@ maybe over multiple doconce input lines.
 <h3>URLs <a name="subsubsec:ex"></a></h3>
 
 <p>
-Testing of URLs: hpl's home page <a href="http://folk.uio.no/hpl">hpl</a>, or
-the entire URL if desired, <a href="http://folk.uio.no/hpl"><tt>http://folk.uio.no/hpl</tt></a>.  Here is a
-plain file link <a href="testdoc.do.txt"><tt>testdoc.do.txt</tt></a>, or <a href="testdoc.do.txt"><tt>testdoc.do.txt</tt></a>, or
-<a href="testdoc.do.txt"><tt>testdoc.do.txt</tt></a> or <a href="testdoc.do.txt"><tt>testdoc.do.txt</tt></a> or <a href="testdoc.do.txt">a link with
+Testing of URLs: hpl's home page <a href="http://folk.uio.no/hpl" target="_blank">hpl</a>, or
+the entire URL if desired, <a href="http://folk.uio.no/hpl" target="_blank"><tt>http://folk.uio.no/hpl</tt></a>.  Here is a
+plain file link <a href="testdoc.do.txt" target="_blank"><tt>testdoc.do.txt</tt></a>, or <a href="testdoc.do.txt" target="_blank"><tt>testdoc.do.txt</tt></a>, or
+<a href="testdoc.do.txt" target="_blank"><tt>testdoc.do.txt</tt></a> or <a href="testdoc.do.txt" target="_blank"><tt>testdoc.do.txt</tt></a> or <a href="testdoc.do.txt" target="_blank">a link with
 newline</a>. Can test spaces with the link with word
-too: <a href="http://folk.uio.no/hpl">hpl</a> or <a href="http://folk.uio.no/hpl">hpl</a>. Also <code>file:///</code> works: <a href="file:///home/hpl/vc/doconce/doc/demos/manual/manual.html">link to a
+too: <a href="http://folk.uio.no/hpl" target="_blank">hpl</a> or <a href="http://folk.uio.no/hpl" target="_blank">hpl</a>. Also <code>file:///</code> works: <a href="file:///home/hpl/vc/doconce/doc/demos/manual/manual.html" target="_blank">link to a
 file</a> is
 fine to have. Moreover, "loose" URLs work, i.e., no quotes, just
-the plain URL as in <a href="http://folk.uio.no/hpl"><tt>http://folk.uio.no/hpl</tt></a>, if followed by space, comma,
+the plain URL as in <a href="http://folk.uio.no/hpl" target="_blank"><tt>http://folk.uio.no/hpl</tt></a>, if followed by space, comma,
 colon, semi-colon, question mark, exclamation mark, but not a period
 (which gets confused with the periods inside the URL).
 
 <p>
-Mail addresses can also be used: <a href="mailto:hpl@simula.no"><tt>hpl@simula.no</tt></a>, or just a <a href="mailto:hpl@simula.no">mail link</a>, or a raw <a href="mailto:hpl@simula.no"><tt>mailto:hpl@simula.no</tt></a>.
+Mail addresses can also be used: <a href="mailto:hpl@simula.no" target="_blank"><tt>hpl@simula.no</tt></a>, or just a <a href="mailto:hpl@simula.no" target="_blank">mail link</a>, or a raw <a href="mailto:hpl@simula.no" target="_blank"><tt>mailto:hpl@simula.no</tt></a>.
 
 <p>
 Here are some tough tests of URLs, especially for the <code>latex</code> format:
-<a href="http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas">Newton-Cotes</a> formulas
-and a <a href="http://www.springer.com/mathematics/computational+science+%26+engineering/book/978-3-642-23098-1">good book</a>. Need to test
+<a href="http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas" target="_blank">Newton-Cotes</a> formulas
+and a <a href="http://www.springer.com/mathematics/computational+science+%26+engineering/book/978-3-642-23098-1" target="_blank">good book</a>. Need to test
 Newton-Cotes with percentage in URL too:
-<a href="http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas"><tt>http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas</tt></a>
-and <a href="http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae"><tt>http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae</tt></a> which has a shebang.
+<a href="http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas" target="_blank"><tt>http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas</tt></a>
+and <a href="http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae" target="_blank"><tt>http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae</tt></a> which has a shebang.
 
 <p>
 For the <code>--device=paper</code> option it is important to test that URLs with
 monofont link text get a footnote, as in this reference to
-<a href="https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py"><tt>decay_mod</tt></a>.
+<a href="https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py" target="_blank"><tt>decay_mod</tt></a>.
 
 <p>
 More tough tests: repeated URLs whose footnotes when using the
 <code>--device=paper</code> option must be correct. We have
-<a href="http://google.com">google</a>, <a href="http://google.com">google</a>, and
-<a href="http://google.com">google</a>, which should result in exactly three
+<a href="http://google.com" target="_blank">google</a>, <a href="http://google.com" target="_blank">google</a>, and
+<a href="http://google.com" target="_blank">google</a>, which should result in exactly three
 footnotes.
 
 <h3>LaTeX Mathematics  <a name="___sec11"></a></h3>
@@ -25653,7 +25674,7 @@ Filename: <code>selc_composed.pdf</code>.
     A FEniCS-Based Programming Framework for Modeling Turbulent Flow by the Reynolds-Averaged Navier-Stokes Equations,
     <em>Advances in Water Resources</em>,
     34(9),
-    <a href="http://dx.doi.org/10.1016/j.advwatres.2011.02.013">doi: 10.1016/j.advwatres.2011.02.013</a>,
+    <a href="http://dx.doi.org/10.1016/j.advwatres.2011.02.013" target="_blank">doi: 10.1016/j.advwatres.2011.02.013</a>,
     2011.</li>
  <li> <a name="Glimsdal_et_al_20006"></a> <b>S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt</b>. 
     Propagation of the Dec.~26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics,
@@ -25669,9 +25690,9 @@ Filename: <code>selc_composed.pdf</code>.
 <li> <a name="Haga_et_al_2011a"></a> <b>J. B. Haga, H. Osnes and H. P. Langtangen</b>. 
     On the Causes of Pressure Oscillations in Low-Permeable and Low-Compressible Porous Media,
     <em>International Journal of Analytical and Numerical Methods in Geomechanics</em>,
-    <a href="http://dx.doi.org/10.1002/nag.1062">doi: 10.1002/nag.1062</a>,
+    <a href="http://dx.doi.org/10.1002/nag.1062" target="_blank">doi: 10.1002/nag.1062</a>,
     2011,
-    <a href="http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract"><tt>http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract</tt></a>.</li>
+    <a href="http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract" target="_blank"><tt>http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract</tt></a>.</li>
 <li> <a name="Langtangen_2003a"></a> <b>H. P. Langtangen</b>. 
     <em>Computational Partial Differential Equations - Numerical Methods and Diffpack Programming</em>,
     Springer,
@@ -25687,7 +25708,7 @@ Filename: <code>selc_composed.pdf</code>.
     Kluwer Academic Publishers,
     pp. pp. 117-126,
     1995,
-    <a href="http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310"><tt>http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310</tt></a>.</li>
+    <a href="http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310" target="_blank"><tt>http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310</tt></a>.</li>
 <li> <a name="Langtangen_2012"></a> <b>H. P. Langtangen</b>. 
     <em>A Primer on Scientific Programming With Python</em>,
     Springer,
@@ -25770,7 +25791,7 @@ with programs or technical reports it is essential
 to have changes documented and to
 ensure that every computer and person involved in the project
 have the latest updates of the files.
-Greg Wilson' excellent <a href="http://software-carpentry.org/2010/07/script-for-introduction-to-version-control/">Script for Introduction to Version Control</a> provides a more detailed motivation why you will benefit greatly
+Greg Wilson' excellent <a href="http://software-carpentry.org/2010/07/script-for-introduction-to-version-control/" target="_blank">Script for Introduction to Version Control</a> provides a more detailed motivation why you will benefit greatly
 from using version control systems.
 
 <p>
@@ -25794,7 +25815,7 @@ recommend you to use such sites for all serious programming and
 scientific writing work - and all other important files.
 
 <p>
-The simplest services for hosting project files are <a href="http://dropbox.com">Dropbox</a> and <a href="http://drive.google.com">Google Drive</a>.
+The simplest services for hosting project files are <a href="http://dropbox.com" target="_blank">Dropbox</a> and <a href="http://drive.google.com" target="_blank">Google Drive</a>.
 It is very easy to get started with these systems, and they allow you
 to share files among laptops and mobile units with as many users as
 you want. The systems offer a kind of version control in that the
@@ -25853,7 +25874,7 @@ scientific writing work - and all other important files.
 <p>
 The simplest services for hosting project files is Dropbox. 
 
-<font color="red">[<b>mp 2</b>: <em>Simply go to <a href="http://dropbox.com"><tt>http://dropbox.com</tt></a> and watch the video. It explains
+<font color="red">[<b>mp 2</b>: <em>Simply go to <a href="http://dropbox.com" target="_blank"><tt>http://dropbox.com</tt></a> and watch the video. It explains
 how files, like <code>myfile.py</code>, perhaps containing much math, like
 $latex \partial u/\partial t$, are easily communicated between machines.</em>]</font>
 
@@ -26714,33 +26735,33 @@ maybe over multiple doconce input lines.
 <h3>URLs <a name="subsubsec:ex"></a></h3>
 
 <p>
-Testing of URLs: hpl's home page <a href="http://folk.uio.no/hpl">hpl</a>, or
-the entire URL if desired, <a href="http://folk.uio.no/hpl"><tt>http://folk.uio.no/hpl</tt></a>.  Here is a
-plain file link <a href="testdoc.do.txt"><tt>testdoc.do.txt</tt></a>, or <a href="testdoc.do.txt"><tt>testdoc.do.txt</tt></a>, or
-<a href="testdoc.do.txt"><tt>testdoc.do.txt</tt></a> or <a href="testdoc.do.txt"><tt>testdoc.do.txt</tt></a> or <a href="testdoc.do.txt">a link with
+Testing of URLs: hpl's home page <a href="http://folk.uio.no/hpl" target="_self">hpl</a>, or
+the entire URL if desired, <a href="http://folk.uio.no/hpl" target="_self"><tt>http://folk.uio.no/hpl</tt></a>.  Here is a
+plain file link <a href="testdoc.do.txt" target="_self"><tt>testdoc.do.txt</tt></a>, or <a href="testdoc.do.txt" target="_self"><tt>testdoc.do.txt</tt></a>, or
+<a href="testdoc.do.txt" target="_self"><tt>testdoc.do.txt</tt></a> or <a href="testdoc.do.txt" target="_self"><tt>testdoc.do.txt</tt></a> or <a href="testdoc.do.txt" target="_self">a link with
 newline</a>. Can test spaces with the link with word
-too: <a href="http://folk.uio.no/hpl">hpl</a> or <a href="http://folk.uio.no/hpl">hpl</a>. Also <code>file:///</code> works: <a href="file:///home/hpl/vc/doconce/doc/demos/manual/manual.html">link to a
+too: <a href="http://folk.uio.no/hpl" target="_self">hpl</a> or <a href="http://folk.uio.no/hpl" target="_self">hpl</a>. Also <code>file:///</code> works: <a href="file:///home/hpl/vc/doconce/doc/demos/manual/manual.html" target="_self">link to a
 file</a> is
 fine to have. Moreover, "loose" URLs work, i.e., no quotes, just
-the plain URL as in <a href="http://folk.uio.no/hpl"><tt>http://folk.uio.no/hpl</tt></a>, if followed by space, comma,
+the plain URL as in <a href="http://folk.uio.no/hpl" target="_self"><tt>http://folk.uio.no/hpl</tt></a>, if followed by space, comma,
 colon, semi-colon, question mark, exclamation mark, but not a period
 (which gets confused with the periods inside the URL).
 
 <p>
-Mail addresses can also be used: <a href="mailto:hpl@simula.no"><tt>hpl@simula.no</tt></a>, or just a <a href="mailto:hpl@simula.no">mail link</a>, or a raw <a href="mailto:hpl@simula.no"><tt>mailto:hpl@simula.no</tt></a>.
+Mail addresses can also be used: <a href="mailto:hpl@simula.no" target="_self"><tt>hpl@simula.no</tt></a>, or just a <a href="mailto:hpl@simula.no" target="_self">mail link</a>, or a raw <a href="mailto:hpl@simula.no" target="_self"><tt>mailto:hpl@simula.no</tt></a>.
 
 <p>
 Here are some tough tests of URLs, especially for the <code>latex</code> format:
-<a href="http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas">Newton-Cotes</a> formulas
-and a <a href="http://www.springer.com/mathematics/computational+science+%26+engineering/book/978-3-642-23098-1">good book</a>. Need to test
+<a href="http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas" target="_self">Newton-Cotes</a> formulas
+and a <a href="http://www.springer.com/mathematics/computational+science+%26+engineering/book/978-3-642-23098-1" target="_self">good book</a>. Need to test
 Newton-Cotes with percentage in URL too:
-<a href="http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas"><tt>http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas</tt></a>
-and <a href="http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae"><tt>http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae</tt></a> which has a shebang.
+<a href="http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas" target="_self"><tt>http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas</tt></a>
+and <a href="http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae" target="_self"><tt>http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae</tt></a> which has a shebang.
 
 <p>
 For the <code>--device=paper</code> option it is important to test that URLs with
 monofont link text get a footnote, as in this reference to
-<a href="https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py"><tt>decay_mod</tt></a>.
+<a href="https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py" target="_self"><tt>decay_mod</tt></a>.
 
 <p>
 <!-- Comments should be inserted outside paragraphs (because in the rst -->
@@ -26754,8 +26775,8 @@ monofont link text get a footnote, as in this reference to
 <p>
 More tough tests: repeated URLs whose footnotes when using the
 <code>--device=paper</code> option must be correct. We have
-<a href="http://google.com">google</a>, <a href="http://google.com">google</a>, and
-<a href="http://google.com">google</a>, which should result in exactly three
+<a href="http://google.com" target="_self">google</a>, <a href="http://google.com" target="_self">google</a>, and
+<a href="http://google.com" target="_self">google</a>, which should result in exactly three
 footnotes.
 
 <h3>LaTeX Mathematics  <a name="___sec11"></a></h3>
@@ -27329,7 +27350,7 @@ Filename: <code>selc_composed.pdf</code>.
     A FEniCS-Based Programming Framework for Modeling Turbulent Flow by the Reynolds-Averaged Navier-Stokes Equations,
     <em>Advances in Water Resources</em>,
     34(9),
-    <a href="http://dx.doi.org/10.1016/j.advwatres.2011.02.013">doi: 10.1016/j.advwatres.2011.02.013</a>,
+    <a href="http://dx.doi.org/10.1016/j.advwatres.2011.02.013" target="_self">doi: 10.1016/j.advwatres.2011.02.013</a>,
     2011.</li>
  <li> <a name="Glimsdal_et_al_20006"></a> <b>S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt</b>. 
     Propagation of the Dec.~26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics,
@@ -27345,9 +27366,9 @@ Filename: <code>selc_composed.pdf</code>.
 <li> <a name="Haga_et_al_2011a"></a> <b>J. B. Haga, H. Osnes and H. P. Langtangen</b>. 
     On the Causes of Pressure Oscillations in Low-Permeable and Low-Compressible Porous Media,
     <em>International Journal of Analytical and Numerical Methods in Geomechanics</em>,
-    <a href="http://dx.doi.org/10.1002/nag.1062">doi: 10.1002/nag.1062</a>,
+    <a href="http://dx.doi.org/10.1002/nag.1062" target="_self">doi: 10.1002/nag.1062</a>,
     2011,
-    <a href="http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract"><tt>http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract</tt></a>.</li>
+    <a href="http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract" target="_self"><tt>http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract</tt></a>.</li>
 <li> <a name="Langtangen_2003a"></a> <b>H. P. Langtangen</b>. 
     <em>Computational Partial Differential Equations - Numerical Methods and Diffpack Programming</em>,
     Springer,
@@ -27363,7 +27384,7 @@ Filename: <code>selc_composed.pdf</code>.
     Kluwer Academic Publishers,
     pp. pp. 117-126,
     1995,
-    <a href="http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310"><tt>http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310</tt></a>.</li>
+    <a href="http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310" target="_self"><tt>http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310</tt></a>.</li>
 <li> <a name="Langtangen_2012"></a> <b>H. P. Langtangen</b>. 
     <em>A Primer on Scientific Programming With Python</em>,
     Springer,
@@ -27448,7 +27469,7 @@ with programs or technical reports it is essential
 to have changes documented and to
 ensure that every computer and person involved in the project
 have the latest updates of the files.
-Greg Wilson' excellent <a href="http://software-carpentry.org/2010/07/script-for-introduction-to-version-control/">Script for Introduction to Version Control</a> provides a more detailed motivation why you will benefit greatly
+Greg Wilson' excellent <a href="http://software-carpentry.org/2010/07/script-for-introduction-to-version-control/" target="_self">Script for Introduction to Version Control</a> provides a more detailed motivation why you will benefit greatly
 from using version control systems.
 
 <p>
@@ -27472,7 +27493,7 @@ recommend you to use such sites for all serious programming and
 scientific writing work - and all other important files.
 
 <p>
-The simplest services for hosting project files are <a href="http://dropbox.com">Dropbox</a> and <a href="http://drive.google.com">Google Drive</a>.
+The simplest services for hosting project files are <a href="http://dropbox.com" target="_self">Dropbox</a> and <a href="http://drive.google.com" target="_self">Google Drive</a>.
 It is very easy to get started with these systems, and they allow you
 to share files among laptops and mobile units with as many users as
 you want. The systems offer a kind of version control in that the
@@ -27531,7 +27552,7 @@ scientific writing work - and all other important files.
 <p>
 The simplest services for hosting project files is Dropbox. 
 <!-- begin inline comment -->
-<font color="red">[<b>mp 2</b>: <em>Simply go to <a href="http://dropbox.com"><tt>http://dropbox.com</tt></a> and watch the video. It explains
+<font color="red">[<b>mp 2</b>: <em>Simply go to <a href="http://dropbox.com" target="_self"><tt>http://dropbox.com</tt></a> and watch the video. It explains
 how files, like <code>myfile.py</code>, perhaps containing much math, like
 \( \partial u/\partial t \), are easily communicated between machines.</em>]</font>
 <!-- end inline comment -->
@@ -27771,6 +27792,7 @@ final,                   % or draft (marks overfull hboxes)
   leftmargin=0,
   rightmargin=0,
   roundcorner=5,
+  needspace=0pt,
 ]{graybox1mdframed}
 
 \newenvironment{graybox1admon}[1][]{
@@ -29759,7 +29781,8 @@ EOF
 ex="--examples_as_exercises"
 #ex=
 
-system doconce format html testdoc --wordpress  $ex --html_exercise_icon=question_blue_on_white1.png --html_exercise_icon_width=80
+system doconce format html testdoc --wordpress  $ex --html_exercise_icon=question_blue_on_white1.png --html_exercise_icon_width=80 --figure_prefix="https://raw.github.com/hplgit/doconce/master/test/" --movie_prefix="https://raw.github.com/hplgit/doconce/master/test/" --html_links_in_new_window
+
 cp testdoc.html testdoc_wordpress.html
 
 system doconce format html testdoc --without_answers --without_solutions $ex -DSOMEVAR --html_exercise_icon=default
@@ -33383,33 +33406,33 @@ maybe over multiple doconce input lines.
 <h3>URLs <a name="subsubsec:ex"></a></h3>
 
 <p>
-Testing of URLs: hpl's home page <a href="http://folk.uio.no/hpl">hpl</a>, or
-the entire URL if desired, <a href="http://folk.uio.no/hpl"><tt>http://folk.uio.no/hpl</tt></a>.  Here is a
-plain file link <a href="testdoc.do.txt"><tt>testdoc.do.txt</tt></a>, or <a href="testdoc.do.txt"><tt>testdoc.do.txt</tt></a>, or
-<a href="testdoc.do.txt"><tt>testdoc.do.txt</tt></a> or <a href="testdoc.do.txt"><tt>testdoc.do.txt</tt></a> or <a href="testdoc.do.txt">a link with
+Testing of URLs: hpl's home page <a href="http://folk.uio.no/hpl" target="_self">hpl</a>, or
+the entire URL if desired, <a href="http://folk.uio.no/hpl" target="_self"><tt>http://folk.uio.no/hpl</tt></a>.  Here is a
+plain file link <a href="testdoc.do.txt" target="_self"><tt>testdoc.do.txt</tt></a>, or <a href="testdoc.do.txt" target="_self"><tt>testdoc.do.txt</tt></a>, or
+<a href="testdoc.do.txt" target="_self"><tt>testdoc.do.txt</tt></a> or <a href="testdoc.do.txt" target="_self"><tt>testdoc.do.txt</tt></a> or <a href="testdoc.do.txt" target="_self">a link with
 newline</a>. Can test spaces with the link with word
-too: <a href="http://folk.uio.no/hpl">hpl</a> or <a href="http://folk.uio.no/hpl">hpl</a>. Also <code>file:///</code> works: <a href="file:///home/hpl/vc/doconce/doc/demos/manual/manual.html">link to a
+too: <a href="http://folk.uio.no/hpl" target="_self">hpl</a> or <a href="http://folk.uio.no/hpl" target="_self">hpl</a>. Also <code>file:///</code> works: <a href="file:///home/hpl/vc/doconce/doc/demos/manual/manual.html" target="_self">link to a
 file</a> is
 fine to have. Moreover, "loose" URLs work, i.e., no quotes, just
-the plain URL as in <a href="http://folk.uio.no/hpl"><tt>http://folk.uio.no/hpl</tt></a>, if followed by space, comma,
+the plain URL as in <a href="http://folk.uio.no/hpl" target="_self"><tt>http://folk.uio.no/hpl</tt></a>, if followed by space, comma,
 colon, semi-colon, question mark, exclamation mark, but not a period
 (which gets confused with the periods inside the URL).
 
 <p>
-Mail addresses can also be used: <a href="mailto:hpl@simula.no"><tt>hpl@simula.no</tt></a>, or just a <a href="mailto:hpl@simula.no">mail link</a>, or a raw <a href="mailto:hpl@simula.no"><tt>mailto:hpl@simula.no</tt></a>.
+Mail addresses can also be used: <a href="mailto:hpl@simula.no" target="_self"><tt>hpl@simula.no</tt></a>, or just a <a href="mailto:hpl@simula.no" target="_self">mail link</a>, or a raw <a href="mailto:hpl@simula.no" target="_self"><tt>mailto:hpl@simula.no</tt></a>.
 
 <p>
 Here are some tough tests of URLs, especially for the <code>latex</code> format:
-<a href="http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas">Newton-Cotes</a> formulas
-and a <a href="http://www.springer.com/mathematics/computational+science+%26+engineering/book/978-3-642-23098-1">good book</a>. Need to test
+<a href="http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas" target="_self">Newton-Cotes</a> formulas
+and a <a href="http://www.springer.com/mathematics/computational+science+%26+engineering/book/978-3-642-23098-1" target="_self">good book</a>. Need to test
 Newton-Cotes with percentage in URL too:
-<a href="http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas"><tt>http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas</tt></a>
-and <a href="http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae"><tt>http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae</tt></a> which has a shebang.
+<a href="http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas" target="_self"><tt>http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas</tt></a>
+and <a href="http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae" target="_self"><tt>http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae</tt></a> which has a shebang.
 
 <p>
 For the <code>--device=paper</code> option it is important to test that URLs with
 monofont link text get a footnote, as in this reference to
-<a href="https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py"><tt>decay_mod</tt></a>.
+<a href="https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py" target="_self"><tt>decay_mod</tt></a>.
 
 <p>
 <!-- Comments should be inserted outside paragraphs (because in the rst -->
@@ -33423,8 +33446,8 @@ monofont link text get a footnote, as in this reference to
 <p>
 More tough tests: repeated URLs whose footnotes when using the
 <code>--device=paper</code> option must be correct. We have
-<a href="http://google.com">google</a>, <a href="http://google.com">google</a>, and
-<a href="http://google.com">google</a>, which should result in exactly three
+<a href="http://google.com" target="_self">google</a>, <a href="http://google.com" target="_self">google</a>, and
+<a href="http://google.com" target="_self">google</a>, which should result in exactly three
 footnotes.
 
 <h3>LaTeX Mathematics  <a name="___sec11"></a></h3>
@@ -34032,7 +34055,7 @@ Filename: <code>selc_composed.pdf</code>.
     A FEniCS-Based Programming Framework for Modeling Turbulent Flow by the Reynolds-Averaged Navier-Stokes Equations,
     <em>Advances in Water Resources</em>,
     34(9),
-    <a href="http://dx.doi.org/10.1016/j.advwatres.2011.02.013">doi: 10.1016/j.advwatres.2011.02.013</a>,
+    <a href="http://dx.doi.org/10.1016/j.advwatres.2011.02.013" target="_self">doi: 10.1016/j.advwatres.2011.02.013</a>,
     2011.</li>
  <li> <a name="Glimsdal_et_al_20006"></a> <b>S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt</b>. 
     Propagation of the Dec.~26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics,
@@ -34048,9 +34071,9 @@ Filename: <code>selc_composed.pdf</code>.
 <li> <a name="Haga_et_al_2011a"></a> <b>J. B. Haga, H. Osnes and H. P. Langtangen</b>. 
     On the Causes of Pressure Oscillations in Low-Permeable and Low-Compressible Porous Media,
     <em>International Journal of Analytical and Numerical Methods in Geomechanics</em>,
-    <a href="http://dx.doi.org/10.1002/nag.1062">doi: 10.1002/nag.1062</a>,
+    <a href="http://dx.doi.org/10.1002/nag.1062" target="_self">doi: 10.1002/nag.1062</a>,
     2011,
-    <a href="http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract"><tt>http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract</tt></a>.</li>
+    <a href="http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract" target="_self"><tt>http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract</tt></a>.</li>
 <li> <a name="Langtangen_2003a"></a> <b>H. P. Langtangen</b>. 
     <em>Computational Partial Differential Equations - Numerical Methods and Diffpack Programming</em>,
     Springer,
@@ -34066,7 +34089,7 @@ Filename: <code>selc_composed.pdf</code>.
     Kluwer Academic Publishers,
     pp. pp. 117-126,
     1995,
-    <a href="http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310"><tt>http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310</tt></a>.</li>
+    <a href="http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310" target="_self"><tt>http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310</tt></a>.</li>
 <li> <a name="Langtangen_2012"></a> <b>H. P. Langtangen</b>. 
     <em>A Primer on Scientific Programming With Python</em>,
     Springer,
@@ -34151,7 +34174,7 @@ with programs or technical reports it is essential
 to have changes documented and to
 ensure that every computer and person involved in the project
 have the latest updates of the files.
-Greg Wilson' excellent <a href="http://software-carpentry.org/2010/07/script-for-introduction-to-version-control/">Script for Introduction to Version Control</a> provides a more detailed motivation why you will benefit greatly
+Greg Wilson' excellent <a href="http://software-carpentry.org/2010/07/script-for-introduction-to-version-control/" target="_self">Script for Introduction to Version Control</a> provides a more detailed motivation why you will benefit greatly
 from using version control systems.
 
 <p>
@@ -34175,7 +34198,7 @@ recommend you to use such sites for all serious programming and
 scientific writing work - and all other important files.
 
 <p>
-The simplest services for hosting project files are <a href="http://dropbox.com">Dropbox</a> and <a href="http://drive.google.com">Google Drive</a>.
+The simplest services for hosting project files are <a href="http://dropbox.com" target="_self">Dropbox</a> and <a href="http://drive.google.com" target="_self">Google Drive</a>.
 It is very easy to get started with these systems, and they allow you
 to share files among laptops and mobile units with as many users as
 you want. The systems offer a kind of version control in that the
@@ -34234,7 +34257,7 @@ scientific writing work - and all other important files.
 <p>
 The simplest services for hosting project files is Dropbox. 
 <!-- begin inline comment -->
-<font color="red">[<b>mp 2</b>: <em>Simply go to <a href="http://dropbox.com"><tt>http://dropbox.com</tt></a> and watch the video. It explains
+<font color="red">[<b>mp 2</b>: <em>Simply go to <a href="http://dropbox.com" target="_self"><tt>http://dropbox.com</tt></a> and watch the video. It explains
 how files, like <code>myfile.py</code>, perhaps containing much math, like
 \( \partial u/\partial t \), are easily communicated between machines.</em>]</font>
 <!-- end inline comment -->
@@ -37485,6 +37508,7 @@ final,                   % or draft (marks overfull hboxes)
   leftmargin=0,
   rightmargin=0,
   roundcorner=5,
+  needspace=0pt,
 ]{graybox1mdframed}
 
 \newenvironment{graybox1admon}[1][]{
@@ -37864,7 +37888,7 @@ final,                   % or draft (marks overfull hboxes)
 %\usepackage{float}\restylefloat{figure}
 
 \usepackage{wrapfig,calc}
-\usepackage[framemethod=TikZ]{mdframed}
+\usepackage[framemethod=TikZ]{mdframed}  % use latest version: https://github.com/marcodaniel/mdframed
 
 % gray box with horizontal rules (cannot handle verbatim text)
 \definecolor{lightgray}{rgb}{0.94,0.94,0.94}
@@ -37885,6 +37909,7 @@ final,                   % or draft (marks overfull hboxes)
   skipbelow=\topsep,
   leftmargin=23,
   rightmargin=23,
+  needspace=0pt,
 ]{graybox2mdframed}
 
 \newenvironment{graybox2admon}[1][]{
@@ -45067,6 +45092,7 @@ final,                   % or draft (marks overfull hboxes)
   leftmargin=0,
   rightmargin=0,
   roundcorner=5,
+  needspace=0pt,
 ]{graybox1mdframed}
 
 \newenvironment{graybox1admon}[1][]{
@@ -46739,17 +46765,17 @@ based on HTML and vice versa.
 <h2>Doconce demo  <a name="___sec8"></a></h2>
 
 <p>
-<a href="http://hplgit.github.com/teamods/writing_reports/"><tt>http://hplgit.github.com/teamods/writing_reports/</tt></a>
+<a href="http://hplgit.github.com/teamods/writing_reports/" target="_self"><tt>http://hplgit.github.com/teamods/writing_reports/</tt></a>
 
 <p>
 
 <ul>
- <p><li> LaTeX-based PDF <a href="http://hplgit.github.com/teamods/writing_reports/_static/report.pdf">for screen</a>, <a href="http://hplgit.github.com/teamods/writing_reports/_static/report_4printing.pdf">for printing</a>, <a href="http://hplgit.github.com/teamods/writing_reports/_static/report_4phone.pdf">for phone</a></li>
- <p><li> <a href="http://hplgit.github.com/teamods/writing_reports/_static/report_do.html">Plain HTML</a> or with a <a href="http://hplgit.github.com/teamods/writing_reports/_static/report_vagrant.html">template</a> or <a href="http://hplgit.github.com/teamods/writing_reports/_static/report_github_minimal.html">another template</a> or <a href="http://hplgit.github.com/teamods/writing_reports/_static/report_solarized.html">solarized</a></li>
- <p><li> Sphinx: <a href="http://hplgit.github.com/teamods/writing_reports/_static/sphinx-agni/index.html">agni</a>, <a href="http://hplgit.github.com/teamods/writing_reports/_static/sphinx-pyramid/report.html">pyramid</a>, <a href="http://hplgit.github.com/teamods/writing_reports/_static/sphinx-classy/report.html">classy</a>, <a href="http://hplgit.github.com/teamods/writing_reports/_static/sphinx-fenics_minimal/report.html">fenics</a>, <a href="http://hplgit.github.com/teamods/writing_reports/_static/sphinx-fenics_minimal/report.html">redcloud</a></li>
- <p><li> HTML for <a href="http://doconce-report-demo.blogspot.no/">Google</a> or <a href="http://doconcereportdemo.wordpress.com/">Wordpress</a> blog posts</li>
- <p><li> <a href="http://doconcedemo.shoutwiki.com/wiki/Doconce_demo_page">MediaWiki</a> (Wikipedia, Wikibooks, etc)</li>
- <p><li> Doconce <a href="http://hplgit.github.com/teamods/writing_reports/_static/report.do.txt.html">source code</a> and <a href="http://hplgit.github.io/doconce/doc/src/pub/manual/html/manual.html">manual</a></li>
+ <p><li> LaTeX-based PDF <a href="http://hplgit.github.com/teamods/writing_reports/_static/report.pdf" target="_self">for screen</a>, <a href="http://hplgit.github.com/teamods/writing_reports/_static/report_4printing.pdf" target="_self">for printing</a>, <a href="http://hplgit.github.com/teamods/writing_reports/_static/report_4phone.pdf" target="_self">for phone</a></li>
+ <p><li> <a href="http://hplgit.github.com/teamods/writing_reports/_static/report_do.html" target="_self">Plain HTML</a> or with a <a href="http://hplgit.github.com/teamods/writing_reports/_static/report_vagrant.html" target="_self">template</a> or <a href="http://hplgit.github.com/teamods/writing_reports/_static/report_github_minimal.html" target="_self">another template</a> or <a href="http://hplgit.github.com/teamods/writing_reports/_static/report_solarized.html" target="_self">solarized</a></li>
+ <p><li> Sphinx: <a href="http://hplgit.github.com/teamods/writing_reports/_static/sphinx-agni/index.html" target="_self">agni</a>, <a href="http://hplgit.github.com/teamods/writing_reports/_static/sphinx-pyramid/report.html" target="_self">pyramid</a>, <a href="http://hplgit.github.com/teamods/writing_reports/_static/sphinx-classy/report.html" target="_self">classy</a>, <a href="http://hplgit.github.com/teamods/writing_reports/_static/sphinx-fenics_minimal/report.html" target="_self">fenics</a>, <a href="http://hplgit.github.com/teamods/writing_reports/_static/sphinx-fenics_minimal/report.html" target="_self">redcloud</a></li>
+ <p><li> HTML for <a href="http://doconce-report-demo.blogspot.no/" target="_self">Google</a> or <a href="http://doconcereportdemo.wordpress.com/" target="_self">Wordpress</a> blog posts</li>
+ <p><li> <a href="http://doconcedemo.shoutwiki.com/wiki/Doconce_demo_page" target="_self">MediaWiki</a> (Wikipedia, Wikibooks, etc)</li>
+ <p><li> Doconce <a href="http://hplgit.github.com/teamods/writing_reports/_static/report.do.txt.html" target="_self">source code</a> and <a href="http://hplgit.github.io/doconce/doc/src/pub/manual/html/manual.html" target="_self">manual</a></li>
 </ul>
 <p>
 
@@ -47076,7 +47102,7 @@ forth (<code>c</code> for C, <code>cpp</code> for C++, <code>sh</code> for Unix 
 
 <p>
 With <code>!bc pyoptpro</code> or a file <code>*.pyopt</code>, the code applies the
-<a href="http://pythontutor.com">Online Python Tutor</a> for displaying
+<a href="http://pythontutor.com" target="_self">Online Python Tutor</a> for displaying
 program flow and state of variables:
 
 <p>
@@ -47597,6 +47623,7 @@ open=right               % start new chapters on odd-numbered pages
   leftmargin=0,
   rightmargin=0,
   roundcorner=5,
+  needspace=0pt,
 ]{graybox1mdframed}
 
 \newenvironment{graybox1admon}[1][]{
@@ -49815,7 +49842,7 @@ $$
 
 <p>
 The primary goal of this demo talk is to demonstrate how to write
-talks with <a href="https://github.com/hplgit/doconce">Doconce</a>
+talks with <a href="https://github.com/hplgit/doconce" target="_self">Doconce</a>
 and get them rendered in numerous HTML formats.
 <div class="alert alert-block alert-notice alert-text-normal"><b>Layout.</b>
 This version
@@ -50234,6 +50261,7 @@ final,                   % or draft (marks overfull hboxes)
   leftmargin=0,
   rightmargin=0,
   roundcorner=5,
+  needspace=0pt,
 ]{graybox1mdframed}
 
 \newenvironment{graybox1admon}[1][]{
@@ -51173,7 +51201,7 @@ And here is a table:
 <h6>Dept. of Informatics, Univ. of Oslo</h6>
 </center>
 
-<center>Fri, 15 Nov 2013 (13:51)</center>
+<center>Thu, 21 Nov 2013 (06:44)</center>
 
 
 
@@ -51304,7 +51332,7 @@ And here is a table:
 <h6>Dept. of Informatics, Univ. of Oslo</h6>
 </center>
 
-<center>Fri, 15 Nov 2013 (13:51)</center>
+<center>Thu, 21 Nov 2013 (06:44)</center>
 
 
 
@@ -52562,7 +52590,7 @@ Google and Wordpress.
 <h3>Emacs syntax support  <a name="___sec1"></a></h3>
 
 <p>
-The file <a href="https://github.com/hplgit/doconce/blob/master/misc/.doconce-mode.el">.doconce-mode.el</a>
+The file <a href="https://github.com/hplgit/doconce/blob/master/misc/.doconce-mode.el" target="_self">.doconce-mode.el</a>
 in the Doconce source distribution gives a "Doconce Editing Mode" in
 Emacs. Store the raw version of the file in the home directory and add
 <code>(load-file "~/.doconce-mode.el")</code> to the <code>.emacs</code> file.
@@ -53213,7 +53241,7 @@ by comma:
 <p>
 The bibliography is specified by a line <code>BIBFILE: papers.pub</code>,
 where <code>papers.pub</code> is a publication database in the
-<a href="https://bitbucket.org/logg/publish">Publish</a> format.
+<a href="https://bitbucket.org/logg/publish" target="_self">Publish</a> format.
 BibTeX <code>.bib</code> files can easily be combined to a Publish database
 (which Doconce needs to create bibliographies in other formats
 than LaTeX).
@@ -53605,7 +53633,7 @@ constructions:
 
 <p>
 With the <code>mako</code> preprocessor the if-else tests have slightly different syntax.
-An <a href="http://hplgit.github.com/bioinf-py/">example document</a> contains
+An <a href="http://hplgit.github.com/bioinf-py/" target="_self">example document</a> contains
 some illustrations on how to utilize <code>mako</code> (clone the GitHub project and
 examine the Doconce source and the <code>doc/src/make.sh</code> script).
 
@@ -53826,6 +53854,7 @@ final,                   % or draft (marks overfull hboxes)
   leftmargin=0,
   rightmargin=0,
   roundcorner=5,
+  needspace=0pt,
 ]{graybox1mdframed}
 
 \newenvironment{graybox1admon}[1][]{
@@ -64518,8 +64547,8 @@ Total:                              21
 Saving backup copy of database to file "papers.pub.bak"
 Saving database to file "papers.pub"
 + ex=--examples_as_exercises
-+ system doconce format html testdoc --wordpress --examples_as_exercises --html_exercise_icon=question_blue_on_white1.png --html_exercise_icon_width=80
-+ doconce format html testdoc --wordpress --examples_as_exercises --html_exercise_icon=question_blue_on_white1.png --html_exercise_icon_width=80
++ system doconce format html testdoc --wordpress --examples_as_exercises --html_exercise_icon=question_blue_on_white1.png --html_exercise_icon_width=80 --figure_prefix=https://raw.github.com/hplgit/doconce/master/test/ --movie_prefix=https://raw.github.com/hplgit/doconce/master/test/ --html_links_in_new_window
++ doconce format html testdoc --wordpress --examples_as_exercises --html_exercise_icon=question_blue_on_white1.png --html_exercise_icon_width=80 --figure_prefix=https://raw.github.com/hplgit/doconce/master/test/ --movie_prefix=https://raw.github.com/hplgit/doconce/master/test/ --html_links_in_new_window
 running preprocess -DFORMAT=html -DDEVICE=screen  testdoc.do.txt > tmp_preprocess__testdoc.do.txt
 running mako on tmp_preprocess__testdoc.do.txt to make tmp_mako__testdoc.do.txt
 translating doconce text in tmp_mako__testdoc.do.txt to html
@@ -65334,7 +65363,7 @@ LaTeX Warning: Reference `exer:dist' on page 3
 
 
 LaTeX Warning: Reference `exer:some:formula' on page 3 undefined on input line 
-202.
+203.
 
 
 LaTeX Warning: Reference `exer:you' on page 3 
@@ -65432,71 +65461,71 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 LaTeX Warning: Citation `Langtangen_Pedersen_2002' on page 13 undefined on inpu
-t line 754.
+t line 755.
 
 
 LaTeX Warning: Citation `Langtangen_et_al_2002' on page 13 undefined on input l
-ine 755.
+ine 756.
 
 
 LaTeX Warning: Citation `Langtangen_1994a' on page 13 undefined on input line 7
-58.
+59.
 
 
 LaTeX Warning: Citation `Mardal_et_al_2003a' on page 13 undefined on input line
- 759.
+ 760.
 
 
 LaTeX Warning: Citation `Langtangen_1988d' on page 13 undefined on input line 7
-61.
+62.
 
 
 LaTeX Warning: Citation `Langtangen_Pedersen_2002' on page 13 undefined on inpu
-t line 763.
+t line 764.
 
 
 LaTeX Warning: Citation `Mardal_et_al_2003a' on page 13 undefined on input line
- 763.
+ 764.
 
 
 LaTeX Warning: Citation `Langtangen_1992c' on page 13 undefined on input line 7
-67.
+68.
 
 
 LaTeX Warning: Citation `Langtangen_1994a' on page 13 undefined on input line 7
-67.
+68.
 
 
 LaTeX Warning: Citation `Mortensen_et_al_2011' on page 13 undefined on input li
-ne 767.
+ne 768.
 
 
 LaTeX Warning: Citation `Langtangen_Pedersen_2002' on page 13 undefined on inpu
-t line 767.
+t line 768.
 
 
 LaTeX Warning: Citation `Langtangen_et_al_2002' on page 13 undefined on input l
-ine 769.
+ine 770.
 
 
 LaTeX Warning: Citation `Glimsdal_et_al_20006' on page 13 undefined on input li
-ne 769.
+ne 770.
 
 
 LaTeX Warning: Citation `Rahman_et_al_2006b' on page 13 undefined on input line
- 769.
+ 770.
 
 
 LaTeX Warning: Citation `Haga_et_al_2011a' on page 13 undefined on input line 7
-69.
+70.
 
 
 LaTeX Warning: Citation `Langtangen_2003a' on page 13 undefined on input line 7
-69.
+70.
 
 
 LaTeX Warning: Citation `Langtangen_2008a' on page 13 undefined on input line 7
-69.
+70.
 
 
 LaTeX Warning: Citation `Langtangen:95' on page 13 
@@ -65504,27 +65533,27 @@ LaTeX Warning: Citation `Langtangen:95' on page 13
 
 
 LaTeX Warning: Citation `Langtangen_2012' on page 13 undefined on input line 77
-1.
+2.
 
 
 LaTeX Warning: Citation `Mardal_et_al_2003a' on page 13 undefined on input line
- 771.
+ 772.
 
 
 LaTeX Warning: Citation `Jeberg_et_al_2004' on page 13 undefined on input line 
-771.
+772.
 
 
 LaTeX Warning: Citation `Langtangen_1988d' on page 13 undefined on input line 7
-72.
+73.
 
 
 LaTeX Warning: Citation `Langtangen_1989e' on page 13 undefined on input line 7
-72.
+73.
 
 
 LaTeX Warning: Citation `Langtangen_talk_2007a' on page 13 undefined on input l
-ine 773.
+ine 774.
 
 
 LaTeX Warning: Citation `Langtangen:85' on page 13 
@@ -65532,14 +65561,14 @@ LaTeX Warning: Citation `Langtangen:85' on page 13
 
 
 LaTeX Warning: Citation `Langtangen_1989e' on page 13 undefined on input line 7
-74.
+75.
 
 
 LaTeX Warning: Citation `Langtangen:91' on page 13 
 
 
 
-LaTeX Warning: Citation `Langtangen:94b' on page 13 undefined on input line 777
+LaTeX Warning: Citation `Langtangen:94b' on page 13 undefined on input line 778
 .
 
 [13]
@@ -65566,7 +65595,7 @@ LaTeX Warning: Reference `eq2' on page 15
 
 
 LaTeX Warning: Reference `split:envir:eq' on page 15 undefined on input line 90
-2.
+3.
 
 
 LaTeX Warning: Reference `eq1' on page 15 
@@ -65598,11 +65627,11 @@ LaTeX Warning: Reference `exer:you' on page 15
 
 
 LaTeX Warning: Reference `exer:some:formula' on page 15 undefined on input line
- 928.
+ 929.
 
 [15] (./testdoc.out.pyg) [16] (./testdoc.out.pyg) [17]
 
-LaTeX Warning: Reference `proj:circle1' on page 18 undefined on input line 1332
+LaTeX Warning: Reference `proj:circle1' on page 18 undefined on input line 1333
 .
 
 
@@ -65614,13 +65643,13 @@ LaTeX Warning: Reference `demo:ex:2' on page 19
 
 
 LaTeX Warning: Reference `exer:some:formula' on page 19 undefined on input line
- 1360.
+ 1361.
 
 
 LaTeX Warning: Reference `demo:ex:2' on page 19 
 
 
-LaTeX Warning: Reference `proj:circle1' on page 19 undefined on input line 1361
+LaTeX Warning: Reference `proj:circle1' on page 19 undefined on input line 1362
 .
 
 
@@ -65629,12 +65658,12 @@ LaTeX Warning: Reference `exer:you' on page 19
 No file testdoc.bbl.
 
 LaTeX Warning: Reference `mdf@pagelabel-1' on page 19 undefined on input line 1
-414.
+415.
 
 [19]
 
 LaTeX Warning: Reference `mdf@pagelabel-2' on page 20 undefined on input line 1
-442.
+443.
 
 [20]
 
@@ -66149,71 +66178,71 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 LaTeX Warning: Citation `Langtangen_Pedersen_2002' on page 13 undefined on inpu
-t line 754.
+t line 755.
 
 
 LaTeX Warning: Citation `Langtangen_et_al_2002' on page 13 undefined on input l
-ine 755.
+ine 756.
 
 
 LaTeX Warning: Citation `Langtangen_1994a' on page 13 undefined on input line 7
-58.
+59.
 
 
 LaTeX Warning: Citation `Mardal_et_al_2003a' on page 13 undefined on input line
- 759.
+ 760.
 
 
 LaTeX Warning: Citation `Langtangen_1988d' on page 13 undefined on input line 7
-61.
+62.
 
 
 LaTeX Warning: Citation `Langtangen_Pedersen_2002' on page 13 undefined on inpu
-t line 763.
+t line 764.
 
 
 LaTeX Warning: Citation `Mardal_et_al_2003a' on page 13 undefined on input line
- 763.
+ 764.
 
 
 LaTeX Warning: Citation `Langtangen_1992c' on page 13 undefined on input line 7
-67.
+68.
 
 
 LaTeX Warning: Citation `Langtangen_1994a' on page 13 undefined on input line 7
-67.
+68.
 
 
 LaTeX Warning: Citation `Mortensen_et_al_2011' on page 13 undefined on input li
-ne 767.
+ne 768.
 
 
 LaTeX Warning: Citation `Langtangen_Pedersen_2002' on page 13 undefined on inpu
-t line 767.
+t line 768.
 
 
 LaTeX Warning: Citation `Langtangen_et_al_2002' on page 13 undefined on input l
-ine 769.
+ine 770.
 
 
 LaTeX Warning: Citation `Glimsdal_et_al_20006' on page 13 undefined on input li
-ne 769.
+ne 770.
 
 
 LaTeX Warning: Citation `Rahman_et_al_2006b' on page 13 undefined on input line
- 769.
+ 770.
 
 
 LaTeX Warning: Citation `Haga_et_al_2011a' on page 13 undefined on input line 7
-69.
+70.
 
 
 LaTeX Warning: Citation `Langtangen_2003a' on page 13 undefined on input line 7
-69.
+70.
 
 
 LaTeX Warning: Citation `Langtangen_2008a' on page 13 undefined on input line 7
-69.
+70.
 
 
 LaTeX Warning: Citation `Langtangen:95' on page 13 
@@ -66221,27 +66250,27 @@ LaTeX Warning: Citation `Langtangen:95' on page 13
 
 
 LaTeX Warning: Citation `Langtangen_2012' on page 13 undefined on input line 77
-1.
+2.
 
 
 LaTeX Warning: Citation `Mardal_et_al_2003a' on page 13 undefined on input line
- 771.
+ 772.
 
 
 LaTeX Warning: Citation `Jeberg_et_al_2004' on page 13 undefined on input line 
-771.
+772.
 
 
 LaTeX Warning: Citation `Langtangen_1988d' on page 13 undefined on input line 7
-72.
+73.
 
 
 LaTeX Warning: Citation `Langtangen_1989e' on page 13 undefined on input line 7
-72.
+73.
 
 
 LaTeX Warning: Citation `Langtangen_talk_2007a' on page 13 undefined on input l
-ine 773.
+ine 774.
 
 
 LaTeX Warning: Citation `Langtangen:85' on page 13 
@@ -66249,14 +66278,14 @@ LaTeX Warning: Citation `Langtangen:85' on page 13
 
 
 LaTeX Warning: Citation `Langtangen_1989e' on page 13 undefined on input line 7
-74.
+75.
 
 
 LaTeX Warning: Citation `Langtangen:91' on page 13 
 
 
 
-LaTeX Warning: Citation `Langtangen:94b' on page 13 undefined on input line 777
+LaTeX Warning: Citation `Langtangen:94b' on page 13 undefined on input line 778
 .
 
 [13]
@@ -66795,71 +66824,71 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 LaTeX Warning: Citation `Langtangen_Pedersen_2002' on page 13 undefined on inpu
-t line 754.
+t line 755.
 
 
 LaTeX Warning: Citation `Langtangen_et_al_2002' on page 13 undefined on input l
-ine 755.
+ine 756.
 
 
 LaTeX Warning: Citation `Langtangen_1994a' on page 13 undefined on input line 7
-58.
+59.
 
 
 LaTeX Warning: Citation `Mardal_et_al_2003a' on page 13 undefined on input line
- 759.
+ 760.
 
 
 LaTeX Warning: Citation `Langtangen_1988d' on page 13 undefined on input line 7
-61.
+62.
 
 
 LaTeX Warning: Citation `Langtangen_Pedersen_2002' on page 13 undefined on inpu
-t line 763.
+t line 764.
 
 
 LaTeX Warning: Citation `Mardal_et_al_2003a' on page 13 undefined on input line
- 763.
+ 764.
 
 
 LaTeX Warning: Citation `Langtangen_1992c' on page 13 undefined on input line 7
-67.
+68.
 
 
 LaTeX Warning: Citation `Langtangen_1994a' on page 13 undefined on input line 7
-67.
+68.
 
 
 LaTeX Warning: Citation `Mortensen_et_al_2011' on page 13 undefined on input li
-ne 767.
+ne 768.
 
 
 LaTeX Warning: Citation `Langtangen_Pedersen_2002' on page 13 undefined on inpu
-t line 767.
+t line 768.
 
 
 LaTeX Warning: Citation `Langtangen_et_al_2002' on page 13 undefined on input l
-ine 769.
+ine 770.
 
 
 LaTeX Warning: Citation `Glimsdal_et_al_20006' on page 13 undefined on input li
-ne 769.
+ne 770.
 
 
 LaTeX Warning: Citation `Rahman_et_al_2006b' on page 13 undefined on input line
- 769.
+ 770.
 
 
 LaTeX Warning: Citation `Haga_et_al_2011a' on page 13 undefined on input line 7
-69.
+70.
 
 
 LaTeX Warning: Citation `Langtangen_2003a' on page 13 undefined on input line 7
-69.
+70.
 
 
 LaTeX Warning: Citation `Langtangen_2008a' on page 13 undefined on input line 7
-69.
+70.
 
 
 LaTeX Warning: Citation `Langtangen:95' on page 13 
@@ -66867,27 +66896,27 @@ LaTeX Warning: Citation `Langtangen:95' on page 13
 
 
 LaTeX Warning: Citation `Langtangen_2012' on page 13 undefined on input line 77
-1.
+2.
 
 
 LaTeX Warning: Citation `Mardal_et_al_2003a' on page 13 undefined on input line
- 771.
+ 772.
 
 
 LaTeX Warning: Citation `Jeberg_et_al_2004' on page 13 undefined on input line 
-771.
+772.
 
 
 LaTeX Warning: Citation `Langtangen_1988d' on page 13 undefined on input line 7
-72.
+73.
 
 
 LaTeX Warning: Citation `Langtangen_1989e' on page 13 undefined on input line 7
-72.
+73.
 
 
 LaTeX Warning: Citation `Langtangen_talk_2007a' on page 13 undefined on input l
-ine 773.
+ine 774.
 
 
 LaTeX Warning: Citation `Langtangen:85' on page 13 
@@ -66895,14 +66924,14 @@ LaTeX Warning: Citation `Langtangen:85' on page 13
 
 
 LaTeX Warning: Citation `Langtangen_1989e' on page 13 undefined on input line 7
-74.
+75.
 
 
 LaTeX Warning: Citation `Langtangen:91' on page 13 
 
 
 
-LaTeX Warning: Citation `Langtangen:94b' on page 13 undefined on input line 777
+LaTeX Warning: Citation `Langtangen:94b' on page 13 undefined on input line 778
 .
 
 [13]
@@ -67951,9 +67980,9 @@ Traceback (most recent call last):
   File "/usr/local/bin/doconce", line 943, in main
     eval(command + '()')
   File "<string>", line 1, in <module>
-  File "/usr/local/lib/python2.7/dist-packages/doconce/misc.py", line 3861, in split_rst
+  File "/usr/local/lib/python2.7/dist-packages/doconce/misc.py", line 3867, in split_rst
     files = doconce_rst_split(parts, basename, filename)
-  File "/usr/local/lib/python2.7/dist-packages/doconce/misc.py", line 3907, in doconce_rst_split
+  File "/usr/local/lib/python2.7/dist-packages/doconce/misc.py", line 3913, in doconce_rst_split
     if parts_label2part[label] == pn:
 KeyError: 'eq1a'
 + system doconce sphinx_dir author=HPL 'title=Just a test' version=0.1 theme=agni testdoc
@@ -71988,7 +72017,7 @@ Abort! (add --no_abort on the command line to avoid this abortion)
 translating doconce text in tmp2.do.txt to sphinx
 figure file ../doc/src/manual/figs/streamtubes:
     can use ../doc/src/manual/figs/streamtubes.png for format sphinx
-Figure file ../doc/manual/figs/streamtubes does not exist
+*** error: figure file "../doc/manual/figs/streamtubes" does not exist!
 Abort! (add --no_abort on the command line to avoid this abortion)
 + doconce replace doc/manual doc/src/manual tmp2.do.txt
 replacing doc/manual by doc/src/manual in tmp2.do.txt
@@ -72242,7 +72271,7 @@ Overfull \hbox (49.67618pt too wide)
 \OT1/phv/m/n/10 pre-pro-ces-sor if-tests on the for-mat (typ-i-cally [])
 [7] [8]
 
-LaTeX Warning: Reference `quick:sections' on page 9 undefined on input line 718
+LaTeX Warning: Reference `quick:sections' on page 9 undefined on input line 719
 .
 
 [9]

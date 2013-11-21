@@ -246,7 +246,7 @@ $$
 <center>[6] <b>Third Inst, Elsewhere</b></center>
 <center>[7] <b>Fourth Inst</b></center>
 <p>
-<center><h4>Nov 15, 2013</h4></center> <!-- date -->
+<center><h4>Nov 21, 2013</h4></center> <!-- date -->
 
 <h2>Table of contents</h2>
 
@@ -908,33 +908,33 @@ maybe over multiple doconce input lines.
 <h3>URLs <a name="subsubsec:ex"></a></h3>
 
 <p>
-Testing of URLs: hpl's home page <a href="http://folk.uio.no/hpl">hpl</a>, or
-the entire URL if desired, <a href="http://folk.uio.no/hpl"><tt>http://folk.uio.no/hpl</tt></a>.  Here is a
-plain file link <a href="testdoc.do.txt"><tt>testdoc.do.txt</tt></a>, or <a href="testdoc.do.txt"><tt>testdoc.do.txt</tt></a>, or
-<a href="testdoc.do.txt"><tt>testdoc.do.txt</tt></a> or <a href="testdoc.do.txt"><tt>testdoc.do.txt</tt></a> or <a href="testdoc.do.txt">a link with
+Testing of URLs: hpl's home page <a href="http://folk.uio.no/hpl" target="_self">hpl</a>, or
+the entire URL if desired, <a href="http://folk.uio.no/hpl" target="_self"><tt>http://folk.uio.no/hpl</tt></a>.  Here is a
+plain file link <a href="testdoc.do.txt" target="_self"><tt>testdoc.do.txt</tt></a>, or <a href="testdoc.do.txt" target="_self"><tt>testdoc.do.txt</tt></a>, or
+<a href="testdoc.do.txt" target="_self"><tt>testdoc.do.txt</tt></a> or <a href="testdoc.do.txt" target="_self"><tt>testdoc.do.txt</tt></a> or <a href="testdoc.do.txt" target="_self">a link with
 newline</a>. Can test spaces with the link with word
-too: <a href="http://folk.uio.no/hpl">hpl</a> or <a href="http://folk.uio.no/hpl">hpl</a>. Also <code>file:///</code> works: <a href="file:///home/hpl/vc/doconce/doc/demos/manual/manual.html">link to a
+too: <a href="http://folk.uio.no/hpl" target="_self">hpl</a> or <a href="http://folk.uio.no/hpl" target="_self">hpl</a>. Also <code>file:///</code> works: <a href="file:///home/hpl/vc/doconce/doc/demos/manual/manual.html" target="_self">link to a
 file</a> is
 fine to have. Moreover, "loose" URLs work, i.e., no quotes, just
-the plain URL as in <a href="http://folk.uio.no/hpl"><tt>http://folk.uio.no/hpl</tt></a>, if followed by space, comma,
+the plain URL as in <a href="http://folk.uio.no/hpl" target="_self"><tt>http://folk.uio.no/hpl</tt></a>, if followed by space, comma,
 colon, semi-colon, question mark, exclamation mark, but not a period
 (which gets confused with the periods inside the URL).
 
 <p>
-Mail addresses can also be used: <a href="mailto:hpl@simula.no"><tt>hpl@simula.no</tt></a>, or just a <a href="mailto:hpl@simula.no">mail link</a>, or a raw <a href="mailto:hpl@simula.no"><tt>mailto:hpl@simula.no</tt></a>.
+Mail addresses can also be used: <a href="mailto:hpl@simula.no" target="_self"><tt>hpl@simula.no</tt></a>, or just a <a href="mailto:hpl@simula.no" target="_self">mail link</a>, or a raw <a href="mailto:hpl@simula.no" target="_self"><tt>mailto:hpl@simula.no</tt></a>.
 
 <p>
 Here are some tough tests of URLs, especially for the <code>latex</code> format:
-<a href="http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas">Newton-Cotes</a> formulas
-and a <a href="http://www.springer.com/mathematics/computational+science+%26+engineering/book/978-3-642-23098-1">good book</a>. Need to test
+<a href="http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas" target="_self">Newton-Cotes</a> formulas
+and a <a href="http://www.springer.com/mathematics/computational+science+%26+engineering/book/978-3-642-23098-1" target="_self">good book</a>. Need to test
 Newton-Cotes with percentage in URL too:
-<a href="http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas"><tt>http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas</tt></a>
-and <a href="http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae"><tt>http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae</tt></a> which has a shebang.
+<a href="http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas" target="_self"><tt>http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas</tt></a>
+and <a href="http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae" target="_self"><tt>http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae</tt></a> which has a shebang.
 
 <p>
 For the <code>--device=paper</code> option it is important to test that URLs with
 monofont link text get a footnote, as in this reference to
-<a href="https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py"><tt>decay_mod</tt></a>.
+<a href="https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py" target="_self"><tt>decay_mod</tt></a>.
 
 <p>
 <!-- Comments should be inserted outside paragraphs (because in the rst -->
@@ -948,8 +948,8 @@ monofont link text get a footnote, as in this reference to
 <p>
 More tough tests: repeated URLs whose footnotes when using the
 <code>--device=paper</code> option must be correct. We have
-<a href="http://google.com">google</a>, <a href="http://google.com">google</a>, and
-<a href="http://google.com">google</a>, which should result in exactly three
+<a href="http://google.com" target="_self">google</a>, <a href="http://google.com" target="_self">google</a>, and
+<a href="http://google.com" target="_self">google</a>, which should result in exactly three
 footnotes.
 
 <h3>LaTeX Mathematics  <a name="___sec11"></a></h3>
@@ -1573,7 +1573,7 @@ Filename: <code>selc_composed.pdf</code>.
     A FEniCS-Based Programming Framework for Modeling Turbulent Flow by the Reynolds-Averaged Navier-Stokes Equations,
     <em>Advances in Water Resources</em>,
     34(9),
-    <a href="http://dx.doi.org/10.1016/j.advwatres.2011.02.013">doi: 10.1016/j.advwatres.2011.02.013</a>,
+    <a href="http://dx.doi.org/10.1016/j.advwatres.2011.02.013" target="_self">doi: 10.1016/j.advwatres.2011.02.013</a>,
     2011.</li>
  <li> <a name="Glimsdal_et_al_20006"></a> <b>S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt</b>. 
     Propagation of the Dec.~26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics,
@@ -1589,9 +1589,9 @@ Filename: <code>selc_composed.pdf</code>.
 <li> <a name="Haga_et_al_2011a"></a> <b>J. B. Haga, H. Osnes and H. P. Langtangen</b>. 
     On the Causes of Pressure Oscillations in Low-Permeable and Low-Compressible Porous Media,
     <em>International Journal of Analytical and Numerical Methods in Geomechanics</em>,
-    <a href="http://dx.doi.org/10.1002/nag.1062">doi: 10.1002/nag.1062</a>,
+    <a href="http://dx.doi.org/10.1002/nag.1062" target="_self">doi: 10.1002/nag.1062</a>,
     2011,
-    <a href="http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract"><tt>http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract</tt></a>.</li>
+    <a href="http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract" target="_self"><tt>http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract</tt></a>.</li>
 <li> <a name="Langtangen_2003a"></a> <b>H. P. Langtangen</b>. 
     <em>Computational Partial Differential Equations - Numerical Methods and Diffpack Programming</em>,
     Springer,
@@ -1607,7 +1607,7 @@ Filename: <code>selc_composed.pdf</code>.
     Kluwer Academic Publishers,
     pp. pp. 117-126,
     1995,
-    <a href="http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310"><tt>http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310</tt></a>.</li>
+    <a href="http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310" target="_self"><tt>http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310</tt></a>.</li>
 <li> <a name="Langtangen_2012"></a> <b>H. P. Langtangen</b>. 
     <em>A Primer on Scientific Programming With Python</em>,
     Springer,
@@ -1692,7 +1692,7 @@ with programs or technical reports it is essential
 to have changes documented and to
 ensure that every computer and person involved in the project
 have the latest updates of the files.
-Greg Wilson' excellent <a href="http://software-carpentry.org/2010/07/script-for-introduction-to-version-control/">Script for Introduction to Version Control</a> provides a more detailed motivation why you will benefit greatly
+Greg Wilson' excellent <a href="http://software-carpentry.org/2010/07/script-for-introduction-to-version-control/" target="_self">Script for Introduction to Version Control</a> provides a more detailed motivation why you will benefit greatly
 from using version control systems.
 
 <p>
@@ -1716,7 +1716,7 @@ recommend you to use such sites for all serious programming and
 scientific writing work - and all other important files.
 
 <p>
-The simplest services for hosting project files are <a href="http://dropbox.com">Dropbox</a> and <a href="http://drive.google.com">Google Drive</a>.
+The simplest services for hosting project files are <a href="http://dropbox.com" target="_self">Dropbox</a> and <a href="http://drive.google.com" target="_self">Google Drive</a>.
 It is very easy to get started with these systems, and they allow you
 to share files among laptops and mobile units with as many users as
 you want. The systems offer a kind of version control in that the
@@ -1775,7 +1775,7 @@ scientific writing work - and all other important files.
 <p>
 The simplest services for hosting project files is Dropbox. 
 <!-- begin inline comment -->
-<font color="red">[<b>mp 2</b>: <em>Simply go to <a href="http://dropbox.com"><tt>http://dropbox.com</tt></a> and watch the video. It explains
+<font color="red">[<b>mp 2</b>: <em>Simply go to <a href="http://dropbox.com" target="_self"><tt>http://dropbox.com</tt></a> and watch the video. It explains
 how files, like <code>myfile.py</code>, perhaps containing much math, like
 \( \partial u/\partial t \), are easily communicated between machines.</em>]</font>
 <!-- end inline comment -->
