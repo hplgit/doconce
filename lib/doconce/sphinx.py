@@ -314,6 +314,9 @@ def sphinx_code(filestr, code_blocks, code_block_types,
     filestr = re.sub(r'([.:;?!])\n^\.\. ', r'\g<1>\n\n.. ',
                      filestr, flags=re.MULTILINE)
 
+    if option('html_links_in_new_window'):
+        filestr = '\n\n.. Open external links in new windows.\n\n' + filestr
+
     return filestr
 
 def sphinx_ref_and_label(section_label2title, format, filestr):

@@ -458,6 +458,12 @@ for filename in glob.glob('*.html'):
    </style>
   </head>
 " %%s""" %% filename, echo=False)
+    # Check if external links should pop up in separate windows
+    f = open(filename, 'r');  text = f.read();  f.close()
+    if '.. Open external links in new windows.' in filestr:
+        text = text.replace('<a class="reference external"',
+                            '<a class="reference external" target="_blank"')
+        f = open(filename, 'w');  f.write(text);  f.close()
     os.remove(filename + '.old~')
 print """
 google-chrome %(sphinx_rootdir)s/_build/html/index.html
