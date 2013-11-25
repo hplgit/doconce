@@ -41,6 +41,10 @@ be used to "create slides": "http://hplgit.github.io/doconce/doc/pub/slides/demo
 
 ===== Documentation =====
 
+!bwarning
+These documents are under development...
+!ewarning
+
  * Tutorial: "Sphinx": "http://hplgit.github.io/doconce/doc/pub/tutorial/html/index.html",
    "HTML": "http://hplgit.github.io/doconce/doc/pub/tutorial/tutorial.html",
    "PDF": "http://hplgit.github.io/doconce/doc/pub/tutorial/tutorial.pdf"
@@ -54,7 +58,6 @@ be used to "create slides": "http://hplgit.github.io/doconce/doc/pub/slides/demo
    "HTML": "http://hplgit.github.io/doconce/doc/pub/trouble/trouble.html",
    "PDF": "http://hplgit.github.io/doconce/doc/pub/trouble/trouble.pdf"
 
-These documents are under development...
 
 ===== License =====
 

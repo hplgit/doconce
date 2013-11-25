@@ -50,7 +50,10 @@ be used to [create slides](http://hplgit.github.io/doconce/doc/pub/slides/demo/i
 
 ### Documentation
 
- * Tutorial: [Sphinx](http://hplgit.github.io/doconce/doc/pub/tutorial/html/index.html),
+*Warning.* 
+These documents are under development...
+
+* Tutorial: [Sphinx](http://hplgit.github.io/doconce/doc/pub/tutorial/html/index.html),
    [HTML](http://hplgit.github.io/doconce/doc/pub/tutorial/tutorial.html),
    [PDF](http://hplgit.github.io/doconce/doc/pub/tutorial/tutorial.pdf)
 
@@ -65,8 +68,6 @@ be used to [create slides](http://hplgit.github.io/doconce/doc/pub/slides/demo/i
  * Troubleshooting: [Sphinx](http://hplgit.github.io/doconce/doc/pub/trouble/html/index.html),
    [HTML](http://hplgit.github.io/doconce/doc/pub/trouble/trouble.html),
    [PDF](http://hplgit.github.io/doconce/doc/pub/trouble/trouble.pdf)
-
-These documents are under development...
 
 ### License
 
