@@ -1,4 +1,4 @@
-import re, os, glob, sys, glob, urllib
+import re, os, glob, sys, glob
 from common import table_analysis, plain_exercise, insert_code_and_tex, \
      indent_lines, python_online_tutor, bibliography, \
      cite_with_multiple_args2multiple_cites, _abort, is_file_or_url

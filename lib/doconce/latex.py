@@ -4,7 +4,7 @@ import os, commands, re, sys, glob
 from common import plain_exercise, table_analysis, \
      _CODE_BLOCK, _MATH_BLOCK, doconce_exercise_output, indent_lines, \
      python_online_tutor, envir_delimiter_lines, safe_join, \
-     insert_code_and_tex, _abort
+     insert_code_and_tex, _abort, is_file_or_url
 from misc import option
 additional_packages = ''  # comma-sep. list of packages for \usepackage{}
 
@@ -201,19 +201,13 @@ def latex_figure(m, includegraphics=True):
         if not os.path.isdir(figdir):
             os.mkdir(figdir)
         os.chdir(figdir)
-        import urllib
-        try:
-            f = urllib.urlopen(filename)
-            print 'downloading', filename, '.......'
-        except IOError, e:
-            print 'tried to download %s, but failure:' % filename, e
-            print '*** error: cannot treat latex figure on the net (no connection or invalid URL)'
+        if is_file_or_url(filename) != 'url':
+            print '*** error: cannot fetch latex figure %s on the net (no connection or invalid URL)' % filename
             _abort()
+        import urllib
+        f = urllib.urlopen(filename)
         file_content = f.read()
         f.close()
-        if 'DOCTYPE html' in file_content:
-            print '*** error: could not download', filename
-            _abort()
         f = open(basename, 'w')
         f.write(file_content)
         f.close()
