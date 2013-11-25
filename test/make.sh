@@ -281,7 +281,9 @@ system doconce format html mako_test4 --no_pygments_html  # works fine, lines st
 
 system doconce csv2table testtable.csv > testtable.do.txt
 
-# Test error detection
+# Test error detection (note: the sequence of the error tests is
+# crucial: an error must occur, then corrected before the next
+# one will occur!)
 cp failures.do.txt tmp2.do.txt
 doconce format plain tmp2.do.txt
 doconce replace '`myfile.py` file' '`myfile.py`' tmp2.do.txt
@@ -305,8 +307,16 @@ doconce subst -s -m '^!bsol.+?!esol' ''  tmp2.do.txt
 doconce format sphinx tmp2
 doconce subst -s -m '^!bhint.+?!ehint' ''  tmp2.do.txt
 doconce format sphinx tmp2
+doconce replace 'two_media99' 'two_media' tmp2.do.txt
+doconce format html tmp2
+doconce format pdflatex tmp2
 doconce replace 'doc/manual' 'doc/src/manual' tmp2.do.txt
+doconce format html tmp2
+doconce format pdflatex tmp2
 doconce format sphinx tmp2
+doconce replace '99x9.ogg' '.ogg' tmp2.do.txt
+doconce format html tmp2
+doconce format pdflatex tmp2
 #doconce replace '# Comment before math is ok' '' tmp2.do.txt
 echo
 echo "When we reach this point in the script,"

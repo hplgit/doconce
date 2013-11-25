@@ -3,6 +3,7 @@
 # can reuse most of rst module:
 from rst import *
 from common import align2equations, python_online_tutor, bibliography
+from misc import option
 
 legal_pygments_languages = [
     'Cucumber', 'cucumber', 'Gherkin', 'gherkin',
