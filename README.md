@@ -62,6 +62,10 @@ be used to [create slides](http://hplgit.github.io/doconce/doc/pub/slides/demo/i
    [HTML](http://hplgit.github.io/doconce/doc/pub/quickref/quickref.html),
    [PDF](http://hplgit.github.io/doconce/doc/pub/quickref/quickref.pdf)
 
+ * Troubleshooting: [Sphinx](http://hplgit.github.io/doconce/doc/pub/trouble/html/index.html),
+   [HTML](http://hplgit.github.io/doconce/doc/pub/trouble/trouble.html),
+   [PDF](http://hplgit.github.io/doconce/doc/pub/trouble/trouble.pdf)
+
 These documents are under development...
 
 ### License

@@ -1,0 +1,729 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Doconce Troubleshooting</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Doconce Troubleshooting" href="index.html" />
+    <link rel="prev" title="Doconce Troubleshooting" href="index.html" /> 
+  
+   <style type=text/css>
+     div.admonition {
+       background-color: whiteSmoke;
+       border: 1px solid #bababa;
+     }
+   </style>
+  </head>
+
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="index.html" title="Doconce Troubleshooting"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Doconce Troubleshooting</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="doconce-troubleshooting">
+<h1>Doconce Troubleshooting<a class="headerlink" href="#doconce-troubleshooting" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Author:</th><td class="field-body">Hans Petter Langtangen</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Nov 25, 2013</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Disclaimer.</strong>
+Doconce has some support for syntax checking.  If you encounter Python
+errors while running <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></tt>, the reason for the error is
+most likely a syntax problem in your Doconce source file. You have to
+track down this syntax problem yourself. However, Doconce applies
+regular expressions to a large extent for transforming text, and
+regular expressions may sometimes fail. Therefore, there is a chance that legal
+Doconce syntax is not treated properly.</p>
+</div>
+<div class="section" id="general-problems">
+<h1>General Problems<a class="headerlink" href="#general-problems" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="spellcheck-reports-a-lot-of-mistakes-related-to-latex-math">
+<h2>Spellcheck reports a lot of mistakes related to LaTeX math<a class="headerlink" href="#spellcheck-reports-a-lot-of-mistakes-related-to-latex-math" title="Permalink to this headline">¶</a></h2>
+<p>The <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">spellcheck</span></tt> command should ignore LaTeX math, but if
+the dollar signs for inline math are not correct (one missing, for instance),
+a lot of math enters the text to be spellchecked. Invoke the
+relevant <tt class="docutils literal"><span class="pre">tmp_missing_*</span></tt> file and find the first math-style expression that
+is reported as misspelling. Open the corresponding stripped file,
+<tt class="docutils literal"><span class="pre">tmp_stripped_*</span></tt>, which is supposed to have all the math stripped
+away, and search for the misspelling. When you find it, you will see
+that there are math expressions in the stripped file that should not
+be there. (Because of wrong begin and end signs around math expressions
+ordinary text has instead been stripped away. This way, a missing dollar
+sign can lead to hundreds of misspellings.)
+Find the problem in the corresponding Doconce file and correct it.
+A similar error can be caused by wrong matching
+of equation environments between <tt class="docutils literal"><span class="pre">!bt</span></tt> and <tt class="docutils literal"><span class="pre">!et</span></tt>.</p>
+</div>
+<div class="section" id="text-between-subexercises-are-moved">
+<h2>Text between subexercises are moved<a class="headerlink" href="#text-between-subexercises-are-moved" title="Permalink to this headline">¶</a></h2>
+<p>If you insert text between a <tt class="docutils literal"><span class="pre">!esubex</span></tt> and the next <tt class="docutils literal"><span class="pre">!bsubex</span></tt>, this
+text is moved before all the subexercises. This is a feature, not a
+bug (exercises have certain elements: main text, subexercises, hints,
+etc. that are typeset in a specific order, which may be different from
+what appears in the Doconce source file). If you need a comment
+between two subexercises, just place the comment at the end of the
+previous subexercise.</p>
+</div>
+<div class="section" id="doconce-aborts-because-of-a-syntax-error-that-is-not-an-error">
+<h2>Doconce aborts because of a syntax error that is not an error<a class="headerlink" href="#doconce-aborts-because-of-a-syntax-error-that-is-not-an-error" title="Permalink to this headline">¶</a></h2>
+<p>Doconce searches for typical syntax errors and usually aborts the
+execution if errors are found. However, it may happen,
+especially in verbatim blocks, that Doconce reports syntax errors
+that are not errors. To continue execution, simply add the
+<tt class="docutils literal"><span class="pre">--no_abort</span></tt> option on the command line. You may send an email
+to the Doconce author at <tt class="docutils literal"><span class="pre">hpl&#64;simula.no</span></tt> and report the problem.</p>
+</div>
+<div class="section" id="the-mako-preprocessor-is-seemingly-not-run">
+<h2>The Mako preprocessor is seemingly not run<a class="headerlink" href="#the-mako-preprocessor-is-seemingly-not-run" title="Permalink to this headline">¶</a></h2>
+<p>If you have lines starting with <tt class="docutils literal"><span class="pre">%</span></tt> inside code segments (for example,
+SWIG code or Matlab comment lines), the Mako preprocessor will crash
+because it thinks these lines are Mako statements. Doconce detects
+this problem and avoids running Mako.  Examine the output from
+Doconce: warnings are issued if Mako is not run.</p>
+</div>
+<div class="section" id="the-mako-preprocessor-is-fooled-by-doconce-text">
+<h2>The Mako preprocessor is fooled by Doconce text<a class="headerlink" href="#the-mako-preprocessor-is-fooled-by-doconce-text" title="Permalink to this headline">¶</a></h2>
+<p>Here are possible problems for Mako:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Strings with <tt class="docutils literal"><span class="pre">'T&lt;%.1f'</span></tt> look as openings of Mako blocks (<tt class="docutils literal"><span class="pre">&lt;%</span></tt>); change
+to <tt class="docutils literal"><span class="pre">'T</span> <span class="pre">&lt;</span> <span class="pre">%.1f'</span></tt> to avoid this confusion.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="the-mako-preprocessor-claims-a-variable-is-undefined">
+<h2>The Mako preprocessor claims a variable is undefined<a class="headerlink" href="#the-mako-preprocessor-claims-a-variable-is-undefined" title="Permalink to this headline">¶</a></h2>
+<p>Very often such errors are related to typos when using Mako
+variables or functions, or correct yet undesired LaTeX syntax.
+For example, <span class="math">\({\cal O}(\Delta x^2)\)</span> is valid LaTeX, but
+the dollar sign and curly braces confuse Mako. Rewrite such
+mathematics. It is wise to not use <tt class="docutils literal"><span class="pre">${</span></tt> anywhere in LaTeX mathematics.
+Create a newcommand if there are no other possible rewritings.
+A known common problem is <tt class="docutils literal"><span class="pre">${}^+$</span></tt> type of indication of superscripts.
+A suggested rewrite is <tt class="docutils literal"><span class="pre">$\,{}^+$</span></tt>.</p>
+<p>The error message will ask you to rerun <tt class="docutils literal"><span class="pre">doconce</span></tt> with
+<tt class="docutils literal"><span class="pre">--mako_strict_undefined</span></tt>, which will display the variable that
+is confusing Mako. However, do not continue to use
+<tt class="docutils literal"><span class="pre">--mako_strict_undefined</span></tt> while you are debugging because this
+variable or a new variable will then always be undefined in that mode.
+Rerun without <tt class="docutils literal"><span class="pre">--mako_strict_undefined</span></tt> to see if the problem
+is gone. If not, try the option again, and if no progress,
+use <tt class="docutils literal"><span class="pre">#</span> <span class="pre">#ifdef</span></tt> directives to comment out large portions of
+the text and apply a &#8220;bisection&#8221; procedure to locate where
+the Mako problem is (without <tt class="docutils literal"><span class="pre">--mako_strict_undefined</span></tt>).
+A &#8220;bisection&#8221; procedure means that you comment out the last half,
+find in which half the problem is, comment out half of that half,
+find in which half the problem is, and so on.</p>
+</div>
+<div class="section" id="something-goes-wrong-in-the-preprocessing-step">
+<h2>Something goes wrong in the preprocessing step<a class="headerlink" href="#something-goes-wrong-in-the-preprocessing-step" title="Permalink to this headline">¶</a></h2>
+<p>You can examine <tt class="docutils literal"><span class="pre">tmp_preprocess__filename</span></tt> and <tt class="docutils literal"><span class="pre">tmp_mako__filename</span></tt>,
+where <tt class="docutils literal"><span class="pre">filename</span></tt> is the complete name of the Doconce file, to see
+what the preprocessors actually to and if something is wrong in these
+files before Doconce starts translating the text.
+One or both of those files may be missing, but examine the beginning
+of the output from Doconce to see exactly which preprocessors are run
+and on which files.</p>
+</div>
+<div class="section" id="figure-captions-are-incomplete">
+<h2>Figure captions are incomplete<a class="headerlink" href="#figure-captions-are-incomplete" title="Permalink to this headline">¶</a></h2>
+<p>If only the first part of a figure caption in the Doconce file is seen
+in the target output format, the reason is usually that the caption
+occupies multiple lines in the Doconce file. The figure caption must
+be written as <em>one line</em>, at the same line as the FIGURE keyword.</p>
+</div>
+<div class="section" id="preprocessor-directives-do-not-work">
+<h2>Preprocessor directives do not work<a class="headerlink" href="#preprocessor-directives-do-not-work" title="Permalink to this headline">¶</a></h2>
+<p>Make sure the preprocessor instructions, in Preprocess or Mako, have
+correct syntax. Also make sure that you do not mix Preprocess and Mako
+instructions. Doconce will then only run Preprocess.</p>
+</div>
+<div class="section" id="problems-with-boldface-and-emphasize">
+<h2>Problems with boldface and emphasize<a class="headerlink" href="#problems-with-boldface-and-emphasize" title="Permalink to this headline">¶</a></h2>
+<p>Two boldface or emphasize expressions after each other are not rendered
+correctly. Merge them into one common expression.</p>
+</div>
+<div class="section" id="links-to-local-directories-do-not-work">
+<h2>Links to local directories do not work<a class="headerlink" href="#links-to-local-directories-do-not-work" title="Permalink to this headline">¶</a></h2>
+<p>Links of the type</p>
+<div class="highlight-text"><div class="highlight"><pre>see the &quot;examples directory&quot;: &quot;src/examples&quot;
+</pre></div>
+</div>
+<p>do not work well. You need to link to a specific HTML file:</p>
+<div class="highlight-text"><div class="highlight"><pre>see the &quot;examples directory&quot;: &quot;src/examples/index.html&quot;
+</pre></div>
+</div>
+<p>We recommend to put all files you link to in a <tt class="docutils literal"><span class="pre">_static</span></tt> directory
+if you intend to use the <tt class="docutils literal"><span class="pre">sphinx</span></tt> output. This guarantees that all
+your files are collected in the Sphinx directory tree bundle.
+With plain <tt class="docutils literal"><span class="pre">html</span></tt> output only, you can link to whatever, but remember
+to move all files you link to if you move the primary <tt class="docutils literal"><span class="pre">.html</span></tt> file.</p>
+</div>
+<div class="section" id="links-are-not-typeset-correctly">
+<h2>Links are not typeset correctly<a class="headerlink" href="#links-are-not-typeset-correctly" title="Permalink to this headline">¶</a></h2>
+<p>Not all formats will allow formatting of the links. Verbatim words
+in links are allowed if the whole link is typeset in verbatim:</p>
+<div class="highlight-text"><div class="highlight"><pre>see the directory &quot;`examples`&quot;: &quot;src/examples/index.html&quot;.
+</pre></div>
+</div>
+<p>However, the following will not be typeset correctly:</p>
+<div class="highlight-text"><div class="highlight"><pre>see the &quot;`examples`&quot;: &quot;src/examples/index.html&quot; directory.
+</pre></div>
+</div>
+<p>The back-ticks must be removed, or the text can be reformulated as
+in the line above it.</p>
+</div>
+<div class="section" id="inline-verbatim-code-is-not-detected">
+<h2>Inline verbatim code is not detected<a class="headerlink" href="#inline-verbatim-code-is-not-detected" title="Permalink to this headline">¶</a></h2>
+<p>Make sure there is a space before the first back-tick.</p>
+</div>
+<div class="section" id="inline-verbatim-text-is-not-formatted-correctly">
+<h2>Inline verbatim text is not formatted correctly<a class="headerlink" href="#inline-verbatim-text-is-not-formatted-correctly" title="Permalink to this headline">¶</a></h2>
+<p>Make sure there is whitespace surrounding the text in back-ticks.</p>
+</div>
+<div class="section" id="strange-non-english-characters">
+<h2>Strange non-English characters<a class="headerlink" href="#strange-non-english-characters" title="Permalink to this headline">¶</a></h2>
+<p>The former reason for this problem is that Doconce could only work with latin1
+(ISO-8859) encoding and not UTF-8. After May 2013, Doconce applies
+UTF-8 both for HTML and LaTeX.</p>
+<p>Check the encoding of the <tt class="docutils literal"><span class="pre">.do.txt</span></tt> file with the Unix <tt class="docutils literal"><span class="pre">file</span></tt> command
+or with</p>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce guess_encoding myfile.do.txt
+</pre></div>
+</div>
+<p>If the encoding is UTF-8, convert to latin1 using either of
+the Unix commands</p>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce change_encoding utf-8 latin1 myfile.do.txt
+Terminal&gt; iconv -f utf-8 -t latin1 myfile.do.txt --output newfile
+</pre></div>
+</div>
+</div>
+<div class="section" id="wrong-norwegian-charcters">
+<h2>Wrong Norwegian charcters<a class="headerlink" href="#wrong-norwegian-charcters" title="Permalink to this headline">¶</a></h2>
+<p>When Doconce documents have characters not in the standard ASCII set,
+the format of the file must be LATIN1 and not UTF-8. See
+the section &#8220;Strange non-English characters&#8221; above for how to
+run <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">change_encoding</span></tt> to change the encoding of the Doconce file.</p>
+</div>
+<div class="section" id="too-short-underlining-of-rest-headlines">
+<h2>Too short underlining of reST headlines<a class="headerlink" href="#too-short-underlining-of-rest-headlines" title="Permalink to this headline">¶</a></h2>
+<p>This may happen if there is a paragraph heading without
+proceeding text before some section heading.</p>
+</div>
+<div class="section" id="found-bt-but-no-tex-blocks-extracted-bug">
+<h2>Found !bt but no tex blocks extracted (BUG)<a class="headerlink" href="#found-bt-but-no-tex-blocks-extracted-bug" title="Permalink to this headline">¶</a></h2>
+<p>This message points to a bug, but has been resolved by removing blank lines
+between the text and the first <tt class="docutils literal"><span class="pre">!bt</span></tt> (inserting the blanks again did not
+trigger the error message again...).</p>
+</div>
+<div class="section" id="examples-are-typset-with-environment-delimiters-visible">
+<h2>Examples are typset with environment delimiters visible<a class="headerlink" href="#examples-are-typset-with-environment-delimiters-visible" title="Permalink to this headline">¶</a></h2>
+<p>If you see an Example section containing <tt class="docutils literal"><span class="pre">!bsubex</span></tt>, <tt class="docutils literal"><span class="pre">!bsol</span></tt>, or other
+begin and end tags for environments, it means that you have intended
+to typeset examples as exercises, but forgotten the command-line
+option <tt class="docutils literal"><span class="pre">--examples_as_exercises</span></tt>. The text in the example is typeset
+as is unless this option is included.</p>
+</div>
+<div class="section" id="emacs-editing-does-not-work-properly-because-of-regexp-overflow">
+<h2>Emacs editing does not work properly because of &#8220;regexp overflow&#8221;<a class="headerlink" href="#emacs-editing-does-not-work-properly-because-of-regexp-overflow" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes the Doonce editing mode (see the section <em class="xref std std-ref">emacs:doconce</em>) in Emacs
+leads to an error message ending with &#8220;overflow in regexp matcher&#8221;.
+This error is due to some regular expression used in the Doconce editing
+mode. The remedy is to split the file into smaller pieces and include
+the pieces using the <tt class="docutils literal"><span class="pre">preprocess</span></tt> directive <tt class="docutils literal"><span class="pre">#include</span> <span class="pre">&quot;piece.do.txt&quot;</span></tt>.
+The error message comes with the Doconce file contains too much text
+for Emacs to handle.</p>
+</div>
+</div>
+<div class="section" id="problems-with-code-or-tex-blocks">
+<h1>Problems with code or Tex Blocks<a class="headerlink" href="#problems-with-code-or-tex-blocks" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="code-or-math-block-errors-in-rest">
+<h2>Code or math block errors in reST<a class="headerlink" href="#code-or-math-block-errors-in-rest" title="Permalink to this headline">¶</a></h2>
+<p>First note that a code or math block must come after some plain
+sentence (at least for successful output in reST), not directly
+after a section/paragraph heading, table, comment, figure, or
+movie, because the code or math block is indented and then become
+parts of such constructions. Either the block becomes invisible or
+error messages are issued.</p>
+<p>Sometimes reST reports an &#8220;Unexpected indentation&#8221; at the beginning of
+a code block. If you see a <tt class="docutils literal"><span class="pre">!bc</span></tt>, which should have been removed when
+running <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span> <span class="pre">sphinx</span></tt>, it is usually an error in the Doconce
+source, or a problem with the rst/sphinx translator.  Check if the
+line before the code block ends in one colon (not two!), a question
+mark, an exclamation mark, a comma, a period, or just a newline/space
+after text. If not, make sure that the ending is among the
+mentioned. Then <tt class="docutils literal"><span class="pre">!bc</span></tt> will most likely be replaced and a double colon
+at the preceding line will appear (which is the right way in reST to
+indicate a verbatim block of text).</p>
+</div>
+<div class="section" id="strange-errors-around-code-or-tex-blocks-in-rest">
+<h2>Strange errors around code or TeX blocks in reST<a class="headerlink" href="#strange-errors-around-code-or-tex-blocks-in-rest" title="Permalink to this headline">¶</a></h2>
+<p>If <tt class="docutils literal"><span class="pre">idx</span></tt> commands for defining indices are placed inside paragraphs,
+and especially right before a code block, the reST translator
+(rst and sphinx formats) may get confused and produce strange
+code blocks that cause errors when the reST text is transformed to
+other formats. The remedy is to define items for the index outside
+paragraphs.</p>
+</div>
+<div class="section" id="something-is-wrong-with-a-verbatim-code-block">
+<h2>Something is wrong with a verbatim code block<a class="headerlink" href="#something-is-wrong-with-a-verbatim-code-block" title="Permalink to this headline">¶</a></h2>
+<p>Check first that there is a &#8220;normal&#8221; sentence right before
+the block (this is important for reST and similar
+&#8220;ASCII-close&#8221; formats).</p>
+</div>
+<div class="section" id="code-tex-block-is-not-shown-in-rest-format">
+<h2>Code/TeX block is not shown in reST format<a class="headerlink" href="#code-tex-block-is-not-shown-in-rest-format" title="Permalink to this headline">¶</a></h2>
+<p>A comment right before a code or tex block will treat the whole
+block also as a comment. It is important that there is normal
+running text right before <tt class="docutils literal"><span class="pre">!bt</span></tt> and <tt class="docutils literal"><span class="pre">!bc</span></tt> environments.</p>
+</div>
+<div class="section" id="verbatim-code-blocks-inside-lists-look-ugly">
+<h2>Verbatim code blocks inside lists look ugly<a class="headerlink" href="#verbatim-code-blocks-inside-lists-look-ugly" title="Permalink to this headline">¶</a></h2>
+<p>Read the the section <em class="xref std std-ref">sec:verbatim:blocks</em> above.  Start the
+<tt class="docutils literal"><span class="pre">!bc</span></tt> and <tt class="docutils literal"><span class="pre">!ec</span></tt> tags in column 1 of the file, and be careful with
+indenting the surrounding plain text of the list item correctly. If
+you cannot resolve the problem this way, get rid of the list and use
+paragraph headings instead. In fact, that is what is recommended:
+avoid verbatim code blocks inside lists (it makes life easier).</p>
+</div>
+<div class="section" id="latex-code-blocks-inside-lists-look-ugly">
+<h2>LaTeX code blocks inside lists look ugly<a class="headerlink" href="#latex-code-blocks-inside-lists-look-ugly" title="Permalink to this headline">¶</a></h2>
+<p>Same solution as for computer code blocks as described in the
+previous paragraph. Make sure the <tt class="docutils literal"><span class="pre">!bt</span></tt> and <tt class="docutils literal"><span class="pre">!et</span></tt> tags are in column 1
+and that the rest of the non-LaTeX surrounding text is correctly indented.
+Using paragraphs instead of list items is a good idea also here.</p>
+</div>
+</div>
+<div class="section" id="problems-with-rest-sphinx-output">
+<h1>Problems with reST/Sphinx Output<a class="headerlink" href="#problems-with-rest-sphinx-output" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="title-level-inconsistent">
+<h2>Title level inconsistent<a class="headerlink" href="#title-level-inconsistent" title="Permalink to this headline">¶</a></h2>
+<p>reST does not like jumps in the levels of headings. For example, you cannot
+have a <tt class="docutils literal"><span class="pre">===</span></tt> (paragraph) heading after a <tt class="docutils literal"><span class="pre">=======</span></tt> (section) heading without
+a <tt class="docutils literal"><span class="pre">====</span></tt> (subsection) heading in between.</p>
+</div>
+<div class="section" id="lists-do-not-appear-in-rst-files">
+<h2>Lists do not appear in .rst files<a class="headerlink" href="#lists-do-not-appear-in-rst-files" title="Permalink to this headline">¶</a></h2>
+<p>Check if you have a comment right above the list. That comment
+will include the list if the list is indentend. Remove the comment.</p>
+</div>
+<div class="section" id="error-message-undefined-substitution-from-rest">
+<h2>Error message &#8220;Undefined substitution...&#8221; from reST<a class="headerlink" href="#error-message-undefined-substitution-from-rest" title="Permalink to this headline">¶</a></h2>
+<p>This may happen if there is much inline math in the text. reST cannot
+understand inline LaTeX commands and interprets them as illegal code.
+Just ignore these error messages.</p>
+</div>
+<div class="section" id="warning-about-duplicate-link-names">
+<h2>Warning about duplicate link names<a class="headerlink" href="#warning-about-duplicate-link-names" title="Permalink to this headline">¶</a></h2>
+<p>Link names should be unique, but if (e.g.) &#8220;file&#8221; is used as link text
+several places in a reST file, the links still work. The warning can
+therefore be ignorned.</p>
+</div>
+<div class="section" id="inconsistent-headings-in-rest">
+<h2>Inconsistent headings in reST<a class="headerlink" href="#inconsistent-headings-in-rest" title="Permalink to this headline">¶</a></h2>
+<p>The <tt class="docutils literal"><span class="pre">rst2*.py</span></tt> and Sphinx converters abort if the headers of sections
+are not consistent, i.e., a subsection must come under a section,
+and a subsubsection must come under a subsection (you cannot have
+a subsubsection directly under a section). Search for <tt class="docutils literal"><span class="pre">===</span></tt>,
+count the number of equality signs (or underscores if you use that)
+and make sure they decrease by two every time a lower level is encountered.</p>
+</div>
+<div class="section" id="no-code-environment-appears-before-bc-ipy-blocks">
+<h2>No code environment appears before &#8220;bc ipy&#8221; blocks<a class="headerlink" href="#no-code-environment-appears-before-bc-ipy-blocks" title="Permalink to this headline">¶</a></h2>
+<p>The <tt class="docutils literal"><span class="pre">!bc</span> <span class="pre">ipy</span></tt> directive behaves this way for <tt class="docutils literal"><span class="pre">sphinx</span></tt> output because
+interactive sessions are automatically handled. If this is not
+appropriate, shift to <tt class="docutils literal"><span class="pre">!bc</span> <span class="pre">cod</span></tt> or another specification of the
+verbatim environment.</p>
+</div>
+</div>
+<div class="section" id="problems-with-latex-output">
+<h1>Problems with LaTeX Output<a class="headerlink" href="#problems-with-latex-output" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="latex-does-not-like-underscores-in-urls">
+<h2>LaTeX does not like underscores in URLs<a class="headerlink" href="#latex-does-not-like-underscores-in-urls" title="Permalink to this headline">¶</a></h2>
+<p>Suppose you have a URL reference like</p>
+<div class="highlight-text"><div class="highlight"><pre>..which can be found in the file &quot;my_file.txt&quot;:
+&quot;http://some.where.net/web/dir/my_file.txt&quot;.
+</pre></div>
+</div>
+<p>LaTeX will stop with a message about a missing dollar sign. The reason
+is that underscores in link texts need to be preceded by a backslash.
+However, this is incovenient to do in the Doconce source since the
+underscore is misleading in other formats.
+The remedy is to format the link text with inline verbatim tags (backticks):</p>
+<div class="highlight-text"><div class="highlight"><pre>..which can be found in the file &quot;`my_file.txt`&quot;:
+&quot;http://some.where.net/web/dir/my_file.txt&quot;.
+</pre></div>
+</div>
+<p>Verbatim text in links works fine with underscores.</p>
+</div>
+<div class="section" id="how-can-i-have-unnumbered-sections">
+<h2>How can I have unnumbered sections?<a class="headerlink" href="#how-can-i-have-unnumbered-sections" title="Permalink to this headline">¶</a></h2>
+<p>Do an automatic edit like this:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; doconce replace &#39;section{&#39; &#39;section*{&#39; mydoc.do.txt</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="error-when-running-latex-you-must-have-pygmentize-installed">
+<h2>Error when running latex: You must have &#8216;pygmentize&#8217; installed<a class="headerlink" href="#error-when-running-latex-you-must-have-pygmentize-installed" title="Permalink to this headline">¶</a></h2>
+<p>This message points to the use of the minted style for typesetting verbatim
+code. You need to include the <tt class="docutils literal"><span class="pre">-shell-escape</span></tt> command-line argument when
+running <tt class="docutils literal"><span class="pre">latex</span></tt> or <tt class="docutils literal"><span class="pre">pdflatex</span></tt>:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; latex -shell-escape file mydoc.tex</span>
+<span class="go">Terminal&gt; pdflatex -shell-escape file mydoc.tex</span>
+</pre></div>
+</div>
+<p>Using <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">ptex2tex</span></tt> will turn on the minted style if specified as
+environment on the command line, while using <tt class="docutils literal"><span class="pre">ptex2tex</span></tt> requires the
+preprocessor option <tt class="docutils literal"><span class="pre">-DMINTED</span></tt> to turn on the minted package.
+When this package is included, <tt class="docutils literal"><span class="pre">latex</span></tt> or <tt class="docutils literal"><span class="pre">pdflatex</span></tt> runs the
+<tt class="docutils literal"><span class="pre">pygmentize</span></tt> program and the <tt class="docutils literal"><span class="pre">shell-escape</span></tt> option is required.</p>
+</div>
+<div class="section" id="why-are-the-latex-section-headings-smaller-than-normal">
+<h2>Why are the LaTeX section headings smaller than normal?<a class="headerlink" href="#why-are-the-latex-section-headings-smaller-than-normal" title="Permalink to this headline">¶</a></h2>
+<p>Doconce inserts a special command to make the headings
+more compact:</p>
+<div class="highlight-text"><div class="highlight"><pre>\usepackage[compact]{titlesec}
+</pre></div>
+</div>
+<p>as explained in the <a class="reference external" href="http://www.ctex.org/documents/packages/layout/titlesec.pdf">titlesec</a> package documentation.
+To retrieve the standard LaTeX headings, comment out this line or remove it:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; doconce format pdflatex mydoc</span>
+<span class="go">Terminal&gt; doconce subst &#39;\\usepack.+\{titlesec\} &#39;&#39; mydoc.p.tex</span>
+</pre></div>
+</div>
+<p>You can easily make the headings even smaller than the normal font
+by replacing <tt class="docutils literal"><span class="pre">[compact]</span></tt> by <tt class="docutils literal"><span class="pre">[compact,small]</span></tt> as parameter specification
+for <tt class="docutils literal"><span class="pre">titlesec</span></tt>.</p>
+</div>
+<div class="section" id="i-get-latex-compilation-errors-about-shadedquoteblue-in-code-blocks-in-exercises">
+<h2>I get LaTeX compilation errors about &#8220;shadedquoteBlue&#8221; in code blocks in exercises<a class="headerlink" href="#i-get-latex-compilation-errors-about-shadedquoteblue-in-code-blocks-in-exercises" title="Permalink to this headline">¶</a></h2>
+<p>When using colored boxes for code in LaTeX, a code snippet is needed
+in the ordinary running text <em>before</em> code snippets inside exercises, problems,
+or projects. This is a kind of bug in Doconce that is challenging to fix.
+It is usually only a problem when writing documents mainly containing
+exercises, problems, or projects.</p>
+</div>
+<div class="section" id="can-i-have-latex-figures-with-shadows">
+<h2>Can I have LaTeX figures with shadows?<a class="headerlink" href="#can-i-have-latex-figures-with-shadows" title="Permalink to this headline">¶</a></h2>
+<p>This is easy by including the <tt class="docutils literal"><span class="pre">fancybox</span></tt> and <tt class="docutils literal"><span class="pre">graphicx</span></tt> packages
+and wrapping all <tt class="docutils literal"><span class="pre">\includegraphics</span></tt> in a shadow box:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; doconce format pdflatex mydoc</span>
+<span class="go">Terminal&gt; doconce replace \</span>
+<span class="go">          &#39;microtype}&#39;, &#39;microtype,fancybox,graphicx}&#39; mydoc.p.tex</span>
+<span class="go">Terminal&gt; doconce subst &#39;(\\includegraphics\[.+\}\})&#39; \</span>
+<span class="go">          &#39;\\shadowbox{\g&lt;1&gt;}&#39; mydoc.p.tex</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="how-can-i-use-my-fancy-latex-environments">
+<h2>How can I use my fancy LaTeX environments?<a class="headerlink" href="#how-can-i-use-my-fancy-latex-environments" title="Permalink to this headline">¶</a></h2>
+<p>See the section <em class="xref std std-ref">manual:theorem:envir</em> for how to make a custom
+theorem environment also in Doconce, without using implementations
+restricted to LaTeX.</p>
+</div>
+<div class="section" id="the-latex-file-does-not-compile">
+<h2>The LaTeX file does not compile<a class="headerlink" href="#the-latex-file-does-not-compile" title="Permalink to this headline">¶</a></h2>
+<p>If the problem is undefined control sequence involving</p>
+<div class="highlight-text"><div class="highlight"><pre>\code{...}
+</pre></div>
+</div>
+<p>the cause is usually a verbatim inline text (in back-ticks in the
+Doconce file) spans more than one line. Make sure, in the Doconce source,
+that all inline verbatim text appears on the same line.</p>
+</div>
+<div class="section" id="the-latex-beamer-file-does-not-compile">
+<h2>The LaTeX Beamer file does not compile<a class="headerlink" href="#the-latex-beamer-file-does-not-compile" title="Permalink to this headline">¶</a></h2>
+<p>Make sure you have a <tt class="docutils literal"><span class="pre">!split</span></tt> before every slide heading.</p>
+</div>
+<div class="section" id="inline-verbatim-gives-error">
+<h2>Inline verbatim gives error<a class="headerlink" href="#inline-verbatim-gives-error" title="Permalink to this headline">¶</a></h2>
+<p>Check if the inline verbatim contains typical LaTeX commands, e.g.,</p>
+<div class="highlight-text"><div class="highlight"><pre>some text with `\usepackage{mypack}` is difficult because
+ptex2tex will replace this by \code{\usepackage{mypack}} and
+then replace this by
+{\fontsize{10pt}{10pt}\verb!\usepackage{mypack!}}
+which is wrong because ptex2tex applies regex that don&#39;t
+capture the second }
+</pre></div>
+</div>
+<p>The remedy is to place verbatim LaTeX commands in verbatim
+blocks - that is safe.</p>
+</div>
+<div class="section" id="errors-in-figure-captions">
+<h2>Errors in figure captions<a class="headerlink" href="#errors-in-figure-captions" title="Permalink to this headline">¶</a></h2>
+<p>Such errors typically arise from unbalanced curly braces, or dollar signs
+around math, and similar LaTeX syntax errors.</p>
+<p>(Note that verbatim font is likely to cause trouble inside figure captions,
+but Doconce will automatically replace verbatim text in back-ticks by
+a proper <tt class="docutils literal"><span class="pre">texttt</span></tt> command (since verbatim font constructions does not work
+inside figure captions) and precede underscores by backslash.)</p>
+</div>
+<div class="section" id="chapters-are-ignored">
+<h2>Chapters are ignored<a class="headerlink" href="#chapters-are-ignored" title="Permalink to this headline">¶</a></h2>
+<p>The default LaTeX style is &#8220;article&#8221;. If you chapters in the Doconce file,
+you need to run <tt class="docutils literal"><span class="pre">ptex2tex</span></tt> with the option <tt class="docutils literal"><span class="pre">-DBOOK</span></tt> to set the LaTeX
+documentstyle to &#8220;book&#8221;.</p>
+</div>
+<div class="section" id="i-want-to-tune-the-top-preamble-of-the-latex-file">
+<h2>I want to tune the top (preamble) of the LaTeX file<a class="headerlink" href="#i-want-to-tune-the-top-preamble-of-the-latex-file" title="Permalink to this headline">¶</a></h2>
+<p>The default preamble generated by Doconce has several <tt class="docutils literal"><span class="pre">preprocess</span></tt>
+options to set the font, type of titlepage, etc., when running
+<tt class="docutils literal"><span class="pre">ptex2tex</span></tt> or <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">ptex2tex</span></tt>. However, it is easy to provide
+a customized preamble text:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; doconce format latex mydoc --latex_preamble=mytop.tex</span>
+</pre></div>
+</div>
+<p>If <tt class="docutils literal"><span class="pre">mytop.tex</span></tt> starts with a <tt class="docutils literal"><span class="pre">documentclass</span></tt> specification, the whole
+file becomes the complete preamble in <tt class="docutils literal"><span class="pre">mydoc.p.tex</span></tt>, otherwise
+<tt class="docutils literal"><span class="pre">mytop.tex</span></tt> is added at the end of the preamble generated by
+Doconce.</p>
+<p>Note also that <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">replace</span></tt> and <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">subst</span></tt> can be used
+after <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">formt</span></tt> to tune the LaTeX code in the preamble.
+There are comment lines with <tt class="docutils literal"><span class="pre">---</span> <span class="pre">begin</span> <span class="pre">preamble</span> <span class="pre">---</span></tt> and
+<tt class="docutils literal"><span class="pre">---</span> <span class="pre">end</span> <span class="pre">preamble</span> <span class="pre">---</span></tt> in the generate <tt class="docutils literal"><span class="pre">.p.tex</span></tt> file that can be
+used to replace the whole preamble by something more suitable.</p>
+</div>
+</div>
+<div class="section" id="problems-with-gwiki-output">
+<h1>Problems with gwiki Output<a class="headerlink" href="#problems-with-gwiki-output" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="strange-nested-lists-in-gwiki">
+<h2>Strange nested lists in gwiki<a class="headerlink" href="#strange-nested-lists-in-gwiki" title="Permalink to this headline">¶</a></h2>
+<p>Doconce cannot handle nested lists correctly in the gwiki format.
+Use nonnested lists or edit the <tt class="docutils literal"><span class="pre">.gwiki</span></tt> file directly.</p>
+</div>
+<div class="section" id="lists-in-gwiki-look-ugly-in-the-gwiki-source">
+<h2>Lists in gwiki look ugly in the gwiki source<a class="headerlink" href="#lists-in-gwiki-look-ugly-in-the-gwiki-source" title="Permalink to this headline">¶</a></h2>
+<p>Because the Google Code wiki format requires all text of a list item to
+be on one line, Doconce simply concatenates lines in that format,
+and because of the indentation in the original Doconce text, the gwiki
+output looks somewhat ugly. The good thing is that this gwiki source
+is seldom to be looked at - it is the Doconce source that one edits
+further.</p>
+</div>
+</div>
+<div class="section" id="problems-with-html-output">
+<h1>Problems with HTML Output<a class="headerlink" href="#problems-with-html-output" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="mathjax-formulas-are-not-properly-rendered">
+<h2>MathJax formulas are not properly rendered<a class="headerlink" href="#mathjax-formulas-are-not-properly-rendered" title="Permalink to this headline">¶</a></h2>
+<p>Here are some common problems:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Two equations cannot have identical label (this error often arises
+from copying and pasting equations)</li>
+<li><tt class="docutils literal"><span class="pre">[</span></tt> and <tt class="docutils literal"><span class="pre">]</span></tt> brackets must sometimes be replaced by <tt class="docutils literal"><span class="pre">\lbrack</span></tt> and <tt class="docutils literal"><span class="pre">\rbrack</span></tt></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="how-can-i-change-the-layout-of-the-html-page">
+<h2>How can I change the layout of the HTML page?<a class="headerlink" href="#how-can-i-change-the-layout-of-the-html-page" title="Permalink to this headline">¶</a></h2>
+<p>The easiest way is to edit the HTML style or the HTML code directly.
+However, those edits are overwritten the next time you compile the
+Doconce document to HTML. The edits should therefore be automated
+using <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">subst</span></tt> (for regular expression editing) or <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">replace</span></tt>
+(for plain text substitution editing) commands in the file where
+you run <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span> <span class="pre">html</span> <span class="pre">mydoc</span></tt>. For example, say you want narrower
+gray admonition boxes with a much thicker boundary. The <tt class="docutils literal"><span class="pre">.alert</span></tt>
+style must then be changed, more precisely the <tt class="docutils literal"><span class="pre">border</span></tt> and the <tt class="docutils literal"><span class="pre">width</span></tt>
+specification:</p>
+<div class="highlight-bash"><div class="highlight"><pre>doconce replace <span class="s1">&#39;border:1px&#39;</span> <span class="s1">&#39;border:11px&#39;</span> mydoc.html
+doconce replace <span class="s1">&#39;width: 75%;&#39;</span> <span class="s1">&#39;width: 35%&#39;</span> mydoc.html
+</pre></div>
+</div>
+<p>Another way to control the layout is to copy the style in the HTML
+file into a <tt class="docutils literal"><span class="pre">.css</span></tt> file, edit that file as you like, and provide the
+file as part of the compilation using the <tt class="docutils literal"><span class="pre">--css=mystyle.css</span></tt>
+flag.</p>
+<p>The standard of way of completely controlling the HTML format is to
+use an HTML template. The Doconce source is then the body of text
+(leave out <tt class="docutils literal"><span class="pre">TITLE:</span></tt> to get HTML without a header and footer). The
+<tt class="docutils literal"><span class="pre">--html_template=filename</span></tt> command-line option will then embed the
+Doconce text in the specified template file, where you can use style
+sheets and desired constructs in the header and footer.  The template
+can have &#8220;slots&#8221; for a title (<tt class="docutils literal"><span class="pre">%(title)s</span></tt>), a date (<tt class="docutils literal"><span class="pre">%(date)s</span></tt>), and
+the main body of text (<tt class="docutils literal"><span class="pre">%(main)s</span></tt>).  For typesetting code, <tt class="docutils literal"><span class="pre">pygments</span></tt>
+is used (if installed) and can be turned off by <tt class="docutils literal"><span class="pre">--no_pygments_html</span></tt>
+(leaving code in gray boxes).</p>
+<p>The easiest way is to get fancy layouts in HTML is to
+use the <tt class="docutils literal"><span class="pre">sphinx</span></tt> format and one its many themes.</p>
+</div>
+<div class="section" id="why-do-figures-look-ugly-when-using-html-templates">
+<h2>Why do figures look ugly when using HTML templates?<a class="headerlink" href="#why-do-figures-look-ugly-when-using-html-templates" title="Permalink to this headline">¶</a></h2>
+<p>The HTML header that Doconce generates contain special styles for
+figure captions and the horizontal rule above figures. When using
+templates these styles are not defined, resulting in a rule that
+spans the width and a centered caption. Changing the appearance
+of the rule and caption can either be done by inserting styles or
+simply by automatic editing of the HTML code in a little shell script:</p>
+<div class="highlight-text"><div class="highlight"><pre>doconce replace &#39;&lt;p class=&quot;caption&quot;&gt;&#39; \
+ &#39;&lt;p style=&quot;width: 50%; font-style: italic; color: blue&quot;&gt;&#39; mydoc.html
+doconce replace &#39;&lt;hr class=&quot;figure&quot;&gt;&#39; \
+ &#39;&lt;hr style=&quot;width: 50%&quot;&gt;&#39; mydoc.html
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Doconce Troubleshooting</a></li>
+<li><a class="reference internal" href="#general-problems">General Problems</a><ul>
+<li><a class="reference internal" href="#spellcheck-reports-a-lot-of-mistakes-related-to-latex-math">Spellcheck reports a lot of mistakes related to LaTeX math</a></li>
+<li><a class="reference internal" href="#text-between-subexercises-are-moved">Text between subexercises are moved</a></li>
+<li><a class="reference internal" href="#doconce-aborts-because-of-a-syntax-error-that-is-not-an-error">Doconce aborts because of a syntax error that is not an error</a></li>
+<li><a class="reference internal" href="#the-mako-preprocessor-is-seemingly-not-run">The Mako preprocessor is seemingly not run</a></li>
+<li><a class="reference internal" href="#the-mako-preprocessor-is-fooled-by-doconce-text">The Mako preprocessor is fooled by Doconce text</a></li>
+<li><a class="reference internal" href="#the-mako-preprocessor-claims-a-variable-is-undefined">The Mako preprocessor claims a variable is undefined</a></li>
+<li><a class="reference internal" href="#something-goes-wrong-in-the-preprocessing-step">Something goes wrong in the preprocessing step</a></li>
+<li><a class="reference internal" href="#figure-captions-are-incomplete">Figure captions are incomplete</a></li>
+<li><a class="reference internal" href="#preprocessor-directives-do-not-work">Preprocessor directives do not work</a></li>
+<li><a class="reference internal" href="#problems-with-boldface-and-emphasize">Problems with boldface and emphasize</a></li>
+<li><a class="reference internal" href="#links-to-local-directories-do-not-work">Links to local directories do not work</a></li>
+<li><a class="reference internal" href="#links-are-not-typeset-correctly">Links are not typeset correctly</a></li>
+<li><a class="reference internal" href="#inline-verbatim-code-is-not-detected">Inline verbatim code is not detected</a></li>
+<li><a class="reference internal" href="#inline-verbatim-text-is-not-formatted-correctly">Inline verbatim text is not formatted correctly</a></li>
+<li><a class="reference internal" href="#strange-non-english-characters">Strange non-English characters</a></li>
+<li><a class="reference internal" href="#wrong-norwegian-charcters">Wrong Norwegian charcters</a></li>
+<li><a class="reference internal" href="#too-short-underlining-of-rest-headlines">Too short underlining of reST headlines</a></li>
+<li><a class="reference internal" href="#found-bt-but-no-tex-blocks-extracted-bug">Found !bt but no tex blocks extracted (BUG)</a></li>
+<li><a class="reference internal" href="#examples-are-typset-with-environment-delimiters-visible">Examples are typset with environment delimiters visible</a></li>
+<li><a class="reference internal" href="#emacs-editing-does-not-work-properly-because-of-regexp-overflow">Emacs editing does not work properly because of &#8220;regexp overflow&#8221;</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#problems-with-code-or-tex-blocks">Problems with code or Tex Blocks</a><ul>
+<li><a class="reference internal" href="#code-or-math-block-errors-in-rest">Code or math block errors in reST</a></li>
+<li><a class="reference internal" href="#strange-errors-around-code-or-tex-blocks-in-rest">Strange errors around code or TeX blocks in reST</a></li>
+<li><a class="reference internal" href="#something-is-wrong-with-a-verbatim-code-block">Something is wrong with a verbatim code block</a></li>
+<li><a class="reference internal" href="#code-tex-block-is-not-shown-in-rest-format">Code/TeX block is not shown in reST format</a></li>
+<li><a class="reference internal" href="#verbatim-code-blocks-inside-lists-look-ugly">Verbatim code blocks inside lists look ugly</a></li>
+<li><a class="reference internal" href="#latex-code-blocks-inside-lists-look-ugly">LaTeX code blocks inside lists look ugly</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#problems-with-rest-sphinx-output">Problems with reST/Sphinx Output</a><ul>
+<li><a class="reference internal" href="#title-level-inconsistent">Title level inconsistent</a></li>
+<li><a class="reference internal" href="#lists-do-not-appear-in-rst-files">Lists do not appear in .rst files</a></li>
+<li><a class="reference internal" href="#error-message-undefined-substitution-from-rest">Error message &#8220;Undefined substitution...&#8221; from reST</a></li>
+<li><a class="reference internal" href="#warning-about-duplicate-link-names">Warning about duplicate link names</a></li>
+<li><a class="reference internal" href="#inconsistent-headings-in-rest">Inconsistent headings in reST</a></li>
+<li><a class="reference internal" href="#no-code-environment-appears-before-bc-ipy-blocks">No code environment appears before &#8220;bc ipy&#8221; blocks</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#problems-with-latex-output">Problems with LaTeX Output</a><ul>
+<li><a class="reference internal" href="#latex-does-not-like-underscores-in-urls">LaTeX does not like underscores in URLs</a></li>
+<li><a class="reference internal" href="#how-can-i-have-unnumbered-sections">How can I have unnumbered sections?</a></li>
+<li><a class="reference internal" href="#error-when-running-latex-you-must-have-pygmentize-installed">Error when running latex: You must have &#8216;pygmentize&#8217; installed</a></li>
+<li><a class="reference internal" href="#why-are-the-latex-section-headings-smaller-than-normal">Why are the LaTeX section headings smaller than normal?</a></li>
+<li><a class="reference internal" href="#i-get-latex-compilation-errors-about-shadedquoteblue-in-code-blocks-in-exercises">I get LaTeX compilation errors about &#8220;shadedquoteBlue&#8221; in code blocks in exercises</a></li>
+<li><a class="reference internal" href="#can-i-have-latex-figures-with-shadows">Can I have LaTeX figures with shadows?</a></li>
+<li><a class="reference internal" href="#how-can-i-use-my-fancy-latex-environments">How can I use my fancy LaTeX environments?</a></li>
+<li><a class="reference internal" href="#the-latex-file-does-not-compile">The LaTeX file does not compile</a></li>
+<li><a class="reference internal" href="#the-latex-beamer-file-does-not-compile">The LaTeX Beamer file does not compile</a></li>
+<li><a class="reference internal" href="#inline-verbatim-gives-error">Inline verbatim gives error</a></li>
+<li><a class="reference internal" href="#errors-in-figure-captions">Errors in figure captions</a></li>
+<li><a class="reference internal" href="#chapters-are-ignored">Chapters are ignored</a></li>
+<li><a class="reference internal" href="#i-want-to-tune-the-top-preamble-of-the-latex-file">I want to tune the top (preamble) of the LaTeX file</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#problems-with-gwiki-output">Problems with gwiki Output</a><ul>
+<li><a class="reference internal" href="#strange-nested-lists-in-gwiki">Strange nested lists in gwiki</a></li>
+<li><a class="reference internal" href="#lists-in-gwiki-look-ugly-in-the-gwiki-source">Lists in gwiki look ugly in the gwiki source</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#problems-with-html-output">Problems with HTML Output</a><ul>
+<li><a class="reference internal" href="#mathjax-formulas-are-not-properly-rendered">MathJax formulas are not properly rendered</a></li>
+<li><a class="reference internal" href="#how-can-i-change-the-layout-of-the-html-page">How can I change the layout of the HTML page?</a></li>
+<li><a class="reference internal" href="#why-do-figures-look-ugly-when-using-html-templates">Why do figures look ugly when using HTML templates?</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Doconce Troubleshooting</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/trouble.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="index.html" title="Doconce Troubleshooting"
+             >previous</a> |</li>
+        <li><a href="index.html">Doconce Troubleshooting</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, HPL.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
