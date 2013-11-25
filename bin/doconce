@@ -460,7 +460,7 @@ for filename in glob.glob('*.html'):
 " %%s""" %% filename, echo=False)
     # Check if external links should pop up in separate windows
     f = open(filename, 'r');  text = f.read();  f.close()
-    if '.. Open external links in new windows.' in filestr:
+    if '.. Open external links in new windows.' in text:
         text = text.replace('<a class="reference external"',
                             '<a class="reference external" target="_blank"')
         f = open(filename, 'w');  f.write(text);  f.close()
