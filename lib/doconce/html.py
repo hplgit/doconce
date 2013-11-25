@@ -1,7 +1,7 @@
-import re, os, glob, sys, glob
+import re, os, glob, sys, glob, urllib
 from common import table_analysis, plain_exercise, insert_code_and_tex, \
      indent_lines, python_online_tutor, bibliography, \
-     cite_with_multiple_args2multiple_cites, _abort
+     cite_with_multiple_args2multiple_cites, _abort, is_file_or_url
 from misc import option
 
 global _file_collection_filename
@@ -24,6 +24,7 @@ color_table = [
 ('teal', '#008080', 'rgb(0,128,128)'),
 ('blue', '#0000FF', 'rgb(0,0,255)'),
 ('navy', '#000080', 'rgb(0,0,128)'),]
+
 
 
 def add_to_file_collection(filename, doconce_docname=None, mode='a'):
@@ -835,13 +836,13 @@ def html_movie(m):
             text = """
 <div>
 <video %(autoplay)s loop controls width='%(width)s' height='%(height)s' preload='none'>""" % vars()
-            if os.path.isfile(stem + '.mp4'):
+            if is_file_or_url(stem + '.mp4') in ('file', 'url'):
                 text += """
 <source src='%(stem)s.mp4'  type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>""" % vars()
-            if os.path.isfile(stem + '.webm'):
+            if is_file_or_url(stem + '.webm') in ('file', 'url'):
                 text += """
 <source src='%(stem)s.webm' type='video/webm; codecs="vp8, vorbis"'>""" % vars()
-            if os.path.isfile(stem + '.ogg'):
+            if is_file_or_url(stem + '.ogg') in ('file', 'url'):
                 text += """
 <source src='%(stem)s.ogg'  type='video/ogg; codecs="theora, vorbis"'>""" % vars()
             text += """

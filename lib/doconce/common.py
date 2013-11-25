@@ -4,7 +4,7 @@ Doconce format to other formats.  Some convenience functions used in
 translation modules (latex.py, html.py, etc.) are also included in
 here.
 """
-import re, sys, urllib
+import re, sys, urllib, os
 
 # Identifiers in the text used to identify code and math blocks
 _CODE_BLOCK = '<<<!!CODE_BLOCK'
@@ -80,6 +80,38 @@ def where():
     # Technique: find the directory where this common.py file resides
     import os
     return os.path.dirname(__file__)
+
+def is_file_or_url(filename):
+    """
+    Return "file" if filename is a file, "url" if filename
+    is a URL (not an HTML file), and None otherwise.
+    """
+    if filename.startswith('http'):
+        try:
+            # Print a message in case the program hangs a while here
+            print '... checking existence of', filename, '...'
+            f = urllib.urlopen(filename)
+            text = f.read()
+            f.close()
+            ext = os.path.splitext(filename)[1]
+            if ext in ('.html', 'htm'):
+                # Successful opening of an HTML file
+                return 'url'
+            elif ext == '':
+                # Successful opening of a directory (meaning index.html)
+                return 'url'
+            else:
+                if 'github.' in filename and text.startswith('<!DOCTYPE html>'):
+                    # HTML file with an error message: file not found
+                    return None
+                else:
+                    return 'url'
+        except IOError:
+            print '... could not find', filename
+            return None
+    else:
+        return ('file' if os.path.isfile(filename) else None)
+
 
 def indent_lines(text, format, indentation=' '*8, trailing_newline=True):
     """

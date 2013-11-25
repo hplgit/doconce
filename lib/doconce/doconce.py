@@ -1544,10 +1544,7 @@ def handle_figures(filestr, format):
                                    '.gif', '.tif', '.tiff']:
                 ext = ''
             if ext:
-                try:
-                    f = urllib.urlopen(figfile)
-                    f.close()
-                except IOError:
+                if is_file_or_url(figfile) != 'url':
                     print '*** error: figure URL "%s" could not reached' % figfile
                     _abort()
             else:
@@ -1556,17 +1553,13 @@ def handle_figures(filestr, format):
                 file_found = False
                 for ext in extensions:
                     newname = figfile + ext
-                    try:
-                        f = urllib.urlopen(newname)
-                        f.close()
+                    if is_file_or_url(newname) == 'url':
                         file_found = True
                         print 'figure file %s:\n    can use %s for format %s' \
                               % (figfile, newname, format)
                         filestr = re.sub(r'%s([,\]])' % figfile,
                                          '%s\g<1>' % newname, filestr)
                         break
-                    except IOError:
-                        pass
                 if not file_found:
                     print '*** error: figure %s:\n    could not find URL with legal extension %s' % (figfile, ', '.join(extensions))
                     _abort()
