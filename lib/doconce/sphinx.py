@@ -261,11 +261,11 @@ def sphinx_code(filestr, code_blocks, code_block_types,
 
     if multiple_math_labels_with_refs:
         print """
-*** warning: detected non-align equation systems with multiple labels
-    (that Sphinx will not handle - labels will be removed
+*** warning: detected non-align math environment with multiple labels
+    (Sphinx cannot handle this equation system - labels will be removed
     and references to them will be empty):"""
         for label in multiple_math_labels_with_refs:
-            print 'label{%s}' % label
+            print '    label{%s}' % label
         print
 
     filestr = insert_code_and_tex(filestr, code_blocks, tex_blocks, 'rst')

@@ -5,7 +5,7 @@ Doconce Quick Reference
 -----------------------
 
 :Author: Hans Petter Langtangen
-:Date: Nov 21, 2013
+:Date: Nov 25, 2013
 
 **WARNING: This quick reference is very incomplete!**
 
@@ -497,6 +497,8 @@ labels in ``align`` environments work well.)
    straightforward typesetting for other formats. In this way, one can
    also allow advanced LaTeX features and fine tuning of resulting
    PDF document.
+
+
 
 
 **LaTeX Newcommands.**

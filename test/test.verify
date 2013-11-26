@@ -70,17 +70,6 @@ for f in files:
     add(f, log)
 log.close()
 
-# Find date
-f = open('testdoc.p.tex', 'r')
-text = f.read()
-f.close()
-m = re.search(r'date\{(.+?)\}', text)
-if m:
-    date = m.group(1)
-else:
-    print 'Error: no date in testdoc.p.tex'
-    sys.exit(1)
-
 # Drop tutorial
 """
 tutdir = os.path.join(os.pardir, 'doc', 'src', 'tutorial')
@@ -155,12 +144,21 @@ log = open(logfilename, 'r')
 text = log.read()
 log.close()
 text += '\n\n'.join(system_output)
-text = text.replace(date, 'Jan 32, 2100')
+date = r'[A-Z][a-z][a-z], \d\d [A-Z][a-z][a-z] \d\d\d\d \(\d\d:\d\d\)'
+text = re.sub(date, 'Jan 32, 2100', text)
+date = r'[A-Z][a-z][a-z] \d\d, \d\d\d\d'
+text = re.sub(date, 'Jan 32, 2100', text)
 text = re.sub(r'^DATE: .*? \(.+?\)$', 'DATE: Jan 32, 2100', text, flags=re.MULTILINE)
 text = re.sub(r'\d+ bytes', '', text)
 text = re.sub(r'in paragraph at lines .*', '', text)
-text = re.sub(r'undefined on input line \d+\.', '', text)
-text = re.sub(r'input line \d+\.', '', text)
+text = re.sub(r'undefined on input line .*', '', text)
+text = re.sub(r'input line \d+', '', text)
+text = re.sub(r'Underfull \\vbox.*', '', text)
+text = re.sub(r'Overfull \\vbox.*', '', text)
+text = re.sub(r'LaTeX Warning: .+? on page.*', '', text)
+text = re.sub(r'^ ?\d+\.$', '...rest of part of LaTeX line number...', text,
+              flags=re.MULTILINE)
+text = re.sub(r'^(line|ine|ne) \d+\.$', '...rest of part of LaTeX line number...', text, flags=re.MULTILINE)
 text = re.sub(r'\(\/usr\/share\/.+\)', '', text)
 log = open(logfilename, 'w')
 log.write(text)

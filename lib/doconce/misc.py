@@ -3910,14 +3910,17 @@ def doconce_rst_split(parts, basename, filename):
                           (label, label), text, flags=re.MULTILINE)
         local_eqrefs = re.findall(r':eq:`(.+?)`', text)
         for label in local_eqrefs:
-            if parts_label2part[label] == pn:
+            # (Ignore non-existent labels - sphinx.py removes labels
+            # in non-align math environments anyway)
+            if parts_label2part.get(label, None) == pn:
                 # References to local labels in this part apply the
                 # standard syntax
                 pass
             else:
-                text = text.replace(r':eq:`%s`' % label,
-                                    ':ref:`(%s) <Eq:%s>`' %
-                                    (label2tag[label], label))
+                text = text.replace(
+                    r':eq:`%s`' % label,
+                    ':ref:`(%s) <Eq:%s>`' %
+                    (label2tag.get(label, 'label:removed'), label))
         f = open(part_filename, 'w')
         f.write(text)
         f.close()

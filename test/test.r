@@ -1918,6 +1918,8 @@ Here is a nested list:
     Here are two lines that make up
     a block quote.
 \end{quote}
+
+
 Here is a reference to Equation (\ref{my:eq1}).
 
 % !split and check if these extra words are included properly in the comment
@@ -3103,6 +3105,9 @@ Without label.
 Here is a tip or hint box, typeset as a notice box.
 \end{graybox1admon}
 
+
+
+
 \clearpage
 
 Need a lot of text to surround the summary box.
@@ -3130,6 +3135,8 @@ Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
 \end{graybox1admon}
+
+
 
 Projects that you want to share among several computers or project
 workers are today most conveniently stored at some web site "in the
@@ -3499,6 +3506,8 @@ Here is a nested list:
     Here are two lines that make up
     a block quote.
 \end{quote}
+
+
 Here is a reference to Equation (\ref{my:eq1}).
 
 % !split and check if these extra words are included properly in the comment
@@ -4634,6 +4643,9 @@ Without label.
 Here is a tip or hint box, typeset as a notice box.
 \end{graybox1admon}
 
+
+
+
 \clearpage
 
 Need a lot of text to surround the summary box.
@@ -4661,6 +4673,8 @@ Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
 \end{graybox1admon}
+
+
 
 Projects that you want to share among several computers or project
 workers are today most conveniently stored at some web site "in the
@@ -5026,6 +5040,8 @@ Here is a nested list:
     Here are two lines that make up
     a block quote.
 \end{quote}
+
+
 Here is a reference to Equation (\ref{my:eq1}).
 
 % !split and check if these extra words are included properly in the comment
@@ -6116,6 +6132,9 @@ Without label.
 Here is a tip or hint box, typeset as a notice box.
 \end{graybox1admon}
 
+
+
+
 \clearpage
 
 Need a lot of text to surround the summary box.
@@ -6143,6 +6162,8 @@ Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
 \end{graybox1admon}
+
+
 
 Projects that you want to share among several computers or project
 workers are today most conveniently stored at some web site "in the
@@ -6299,6 +6320,8 @@ Here is a nested list:
 
     Here are two lines that make up
     a block quote.
+
+
 
 Here is a reference to Equation (my:eq1).
 
@@ -7496,6 +7519,10 @@ Without label.
    Here is a tip or hint box, typeset as a notice box.
 
 
+
+
+
+
 Need a lot of text to surround the summary box.
 Version control systems allow you to record the history of files
 and share files among several computers and collaborators in a
@@ -7521,6 +7548,8 @@ from using version control systems.
    Much testing in this document, otherwise stupid content.
    Much testing in this document, otherwise stupid content.
    Much testing in this document, otherwise stupid content.
+
+
 
 
 Projects that you want to share among several computers or project
@@ -7667,6 +7696,8 @@ Here is a nested list:
 
     Here are two lines that make up
     a block quote.
+
+
 
 Here is a reference to Equation :eq:`my:eq1`.
 This equation appears in another part if this document is split.
@@ -9028,6 +9059,10 @@ Without label.
    Here is a tip or hint box, typeset as a notice box.
 
 
+
+
+
+
 Need a lot of text to surround the summary box.
 Version control systems allow you to record the history of files
 and share files among several computers and collaborators in a
@@ -9053,6 +9088,8 @@ from using version control systems.
    Much testing in this document, otherwise stupid content.
    Much testing in this document, otherwise stupid content.
    Much testing in this document, otherwise stupid content.
+
+
 
 
 Projects that you want to share among several computers or project
@@ -9180,6 +9217,8 @@ Here is a nested list:
 
    # first item
    # second item,      continuing on a new line
+
+
 
 
 
@@ -10143,6 +10182,10 @@ Without label.
 *Tip.* 
 Here is a tip or hint box, typeset as a notice box.
 
+
+
+
+
 Need a lot of text to surround the summary box.
 Version control systems allow you to record the history of files
 and share files among several computers and collaborators in a
@@ -10166,6 +10209,8 @@ Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
+
+
 
 Projects that you want to share among several computers or project
 workers are today most conveniently stored at some web site "in the
@@ -10296,6 +10341,8 @@ Here is a nested list:
 </ol>
 
 </ul>
+
+
 
 
 
@@ -11341,6 +11388,10 @@ Without label.
 | text = '''Tip.''' Here is a tip or hint box, typeset as a notice box.
 }}
 
+
+
+
+
 Need a lot of text to surround the summary box.
 Version control systems allow you to record the history of files
 and share files among several computers and collaborators in a
@@ -11368,6 +11419,8 @@ Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
 }}
+
+
 
 Projects that you want to share among several computers or project
 workers are today most conveniently stored at some web site "in the
@@ -11493,6 +11546,8 @@ Here is a nested list:
 
    ## first item
    ## second item,      continuing on a new line
+
+
 
 
 
@@ -12413,6 +12468,10 @@ Without label.
 //Tip.// 
 Here is a tip or hint box, typeset as a notice box.
 
+
+
+
+
 Need a lot of text to surround the summary box.
 Version control systems allow you to record the history of files
 and share files among several computers and collaborators in a
@@ -12436,6 +12495,8 @@ Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
+
+
 
 Projects that you want to share among several computers or project
 workers are today most conveniently stored at some web site "in the
@@ -12550,6 +12611,8 @@ Here is a nested list:
    1. first item
    2. second item,
       continuing on a new line
+
+
 
 
 
@@ -13509,6 +13572,10 @@ Without label.
 *Tip.* 
 Here is a tip or hint box, typeset as a notice box.
 
+
+
+
+
 Need a lot of text to surround the summary box.
 Version control systems allow you to record the history of files
 and share files among several computers and collaborators in a
@@ -13532,6 +13599,8 @@ Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
+
+
 
 Projects that you want to share among several computers or project
 workers are today most conveniently stored at some web site "in the
@@ -13647,6 +13716,8 @@ Here is a nested list:
    1. first item
    2. second item,
       continuing on a new line
+
+
 
 
 
@@ -14641,6 +14712,10 @@ Without label.
 I{Tip.} 
 Here is a tip or hint box, typeset as a notice box.
 
+
+
+
+
 Need a lot of text to surround the summary box.
 Version control systems allow you to record the history of files
 and share files among several computers and collaborators in a
@@ -14664,6 +14739,8 @@ Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
+
+
 
 Projects that you want to share among several computers or project
 workers are today most conveniently stored at some web site "in the
@@ -14847,6 +14924,8 @@ Here is a nested list:
 
    2. second item,
       continuing on a new line
+
+
 
 
 
@@ -15864,6 +15943,10 @@ Without label.
 *Tip.* 
 Here is a tip or hint box, typeset as a notice box.
 
+
+
+
+
 Need a lot of text to surround the summary box.
 Version control systems allow you to record the history of files
 and share files among several computers and collaborators in a
@@ -15887,6 +15970,8 @@ Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
+
+
 
 Projects that you want to share among several computers or project
 workers are today most conveniently stored at some web site "in the
@@ -16022,6 +16107,8 @@ Here is a nested list:
 
 > Here are two lines that make up
 > a block quote.
+
+
 
 Here is a reference to Equation \eqref{my:eq1}.
 
@@ -17163,6 +17250,10 @@ Without label.
 *Tip.* 
 Here is a tip or hint box, typeset as a notice box.
 
+
+
+
+
 Need a lot of text to surround the summary box.
 Version control systems allow you to record the history of files
 and share files among several computers and collaborators in a
@@ -17186,6 +17277,8 @@ Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
+
+
 
 Projects that you want to share among several computers or project
 workers are today most conveniently stored at some web site "in the
@@ -22790,6 +22883,8 @@ Here is a nested list:
     Here are two lines that make up
     a block quote.
 </blockquote>
+
+
 <p>
 Here is a reference to Equation <a href="._part0002_testdoc.html#mjx-eqn-3">(3)</a>.
 This equation appears in another part if this document is split.
@@ -24321,6 +24416,8 @@ Without label.
 <div class="alert alert-block alert-notice alert-text-normal"><b>Tip.</b>
 Here is a tip or hint box, typeset as a notice box.
 </div>
+
+
 <p>
 Need a lot of text to surround the summary box.
 Version control systems allow you to record the history of files
@@ -24347,6 +24444,8 @@ Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
 </div>
+
+
 <p>
 Projects that you want to share among several computers or project
 workers are today most conveniently stored at some web site "in the
@@ -24656,6 +24755,8 @@ Here is a nested list:
     Here are two lines that make up
     a block quote.
 </blockquote>
+
+
 <p>
 Here is a reference to Equation <b>(REF to equation my:eq1 not supported)</b>.
 This equation appears in another part if this document is split.
@@ -25781,6 +25882,8 @@ Without label.
 <div class="alert alert-block alert-notice alert-text-normal"><b>Tip.</b>
 Here is a tip or hint box, typeset as a notice box.
 </div>
+
+
 <p>
 Need a lot of text to surround the summary box.
 Version control systems allow you to record the history of files
@@ -25807,6 +25910,8 @@ Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
 </div>
+
+
 <p>
 Projects that you want to share among several computers or project
 workers are today most conveniently stored at some web site "in the
@@ -26240,6 +26345,8 @@ Here is a nested list:
     Here are two lines that make up
     a block quote.
 </blockquote>
+
+
 <p>
 Here is a reference to Equation \eqref{my:eq1}.
 This equation appears in another part if this document is split.
@@ -27459,6 +27566,8 @@ Without label.
 <div class="alert alert-block alert-notice alert-text-normal"><b>Tip.</b>
 Here is a tip or hint box, typeset as a notice box.
 </div>
+
+
 <p>
 Need a lot of text to surround the summary box.
 Version control systems allow you to record the history of files
@@ -27485,6 +27594,8 @@ Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
 </div>
+
+
 <p>
 Projects that you want to share among several computers or project
 workers are today most conveniently stored at some web site "in the
@@ -28107,6 +28218,8 @@ Here is a nested list:
     Here are two lines that make up
     a block quote.
 \end{quote}
+
+
 Here is a reference to Equation (\ref{my:eq1}).
 
 % !split and check if these extra words are included properly in the comment
@@ -29230,6 +29343,9 @@ Without label.
 Here is a tip or hint box, typeset as a notice box.
 \end{graybox1admon}
 
+
+
+
 \clearpage
 
 Need a lot of text to surround the summary box.
@@ -29257,6 +29373,8 @@ Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
 \end{graybox1admon}
+
+
 
 Projects that you want to share among several computers or project
 workers are today most conveniently stored at some web site "in the
@@ -29609,6 +29727,12 @@ for filename in glob.glob('*.html'):
    </style>
   </head>
 " %s""" % filename, echo=False)
+    # Check if external links should pop up in separate windows
+    f = open(filename, 'r');  text = f.read();  f.close()
+    if '.. Open external links in new windows.' in text:
+        text = text.replace('<a class="reference external"',
+                            '<a class="reference external" target="_blank"')
+        f = open(filename, 'w');  f.write(text);  f.close()
     os.remove(filename + '.old~')
 print """
 google-chrome sphinx-rootdir/_build/html/index.html
@@ -29722,6 +29846,12 @@ for filename in glob.glob('*.html'):
    </style>
   </head>
 " %s""" % filename, echo=False)
+    # Check if external links should pop up in separate windows
+    f = open(filename, 'r');  text = f.read();  f.close()
+    if '.. Open external links in new windows.' in text:
+        text = text.replace('<a class="reference external"',
+                            '<a class="reference external" target="_blank"')
+        f = open(filename, 'w');  f.write(text);  f.close()
     os.remove(filename + '.old~')
 print """
 google-chrome sphinx-rootdir-math/_build/html/index.html
@@ -30024,7 +30154,9 @@ system doconce format html mako_test4 --no_pygments_html  # works fine, lines st
 
 system doconce csv2table testtable.csv > testtable.do.txt
 
-# Test error detection
+# Test error detection (note: the sequence of the error tests is
+# crucial: an error must occur, then corrected before the next
+# one will occur!)
 cp failures.do.txt tmp2.do.txt
 doconce format plain tmp2.do.txt
 doconce replace '`myfile.py` file' '`myfile.py`' tmp2.do.txt
@@ -30048,8 +30180,16 @@ doconce subst -s -m '^!bsol.+?!esol' ''  tmp2.do.txt
 doconce format sphinx tmp2
 doconce subst -s -m '^!bhint.+?!ehint' ''  tmp2.do.txt
 doconce format sphinx tmp2
+doconce replace 'two_media99' 'two_media' tmp2.do.txt
+doconce format html tmp2
+doconce format pdflatex tmp2
 doconce replace 'doc/manual' 'doc/src/manual' tmp2.do.txt
+doconce format html tmp2
+doconce format pdflatex tmp2
 doconce format sphinx tmp2
+doconce replace '99x9.ogg' '.ogg' tmp2.do.txt
+doconce format html tmp2
+doconce format pdflatex tmp2
 #doconce replace '# Comment before math is ok' '' tmp2.do.txt
 echo
 echo "When we reach this point in the script,"
@@ -32624,6 +32764,8 @@ Here is a nested list:
     Here are two lines that make up
     a block quote.
 </blockquote>
+
+
 <p>
 Here is a reference to Equation <a href="._part0002_testdoc_vagrant.html#mjx-eqn-3">(3)</a>.
 This equation appears in another part if this document is split.
@@ -34164,6 +34306,8 @@ Without label.
 <div class="alert alert-block alert-notice alert-text-normal"><b>Tip.</b>
 Here is a tip or hint box, typeset as a notice box.
 </div>
+
+
 <p>
 Need a lot of text to surround the summary box.
 Version control systems allow you to record the history of files
@@ -34190,6 +34334,8 @@ Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
 </div>
+
+
 <p>
 Projects that you want to share among several computers or project
 workers are today most conveniently stored at some web site "in the
@@ -34392,6 +34538,8 @@ Here is a nested list:
 
     Here are two lines that make up
     a block quote.
+
+
 
 Here is a reference to Equation :ref:`(3.3) <Eq:my:eq1>`.
 This equation appears in another part if this document is split.
@@ -34715,7 +34863,8 @@ involving :math:`\theta`:
             return theta**2
 
 
-*More on :math:`\theta`.* Here is more text following headline with math.
+**More on :math:`\theta`.**
+Here is more text following headline with math.
 
 Newcommands must also be tested in this test report:
 :math:`\frac{1}{2}`, :math:`{1/2}`, :math:`\pmb{x}`, :math:`\frac{Du}{dt}`,
@@ -34734,6 +34883,8 @@ both inline and in block:
 Or with align with label and numbers:
 
 
+.. _Eq:aligneq1:
+
 .. math::
    :label: aligneq1
         
@@ -34749,6 +34900,8 @@ Or with align with label and numbers:
         
 
 
+
+.. _Eq:aligneq2:
 
 .. math::
    :label: aligneq2
@@ -34774,14 +34927,16 @@ Should look nice in most formats!
 .. begin theorem
 
 
-*Theorem 5.* Let :math:`a=1` and :math:`b=2`. Then :math:`c=3`.
+**Theorem 5.**
+Let :math:`a=1` and :math:`b=2`. Then :math:`c=3`.
 
 .. end theorem
 
 
 .. begin proof
 
-*Proof.* Since :math:`c=a+b`, the result follows from straightforward addition.
+**Proof.**
+Since :math:`c=a+b`, the result follows from straightforward addition.
 :math:`\Diamond`
 .. end proof
 
@@ -34882,7 +35037,8 @@ and ``|`` right after verbatim word (with no space):
 A test of verbatim words in heading with subscript :math:`a_i`: ``my_file_v1`` and ``my_file_v2``
 -------------------------------------------------------------------------------------------------
 
-*Files ``my_file_v1.py`` and ``my_file_v2.py`` define some math :math:`a_{i-1}`.* Here is
+**Files ``my_file_v1.py`` and ``my_file_v2.py`` define some math :math:`a_{i-1}`.**
+Here is
 some text.
 
 Bibliography test
@@ -34918,7 +35074,6 @@ the old ME-IN323 book [Ref19]_ and the
 
 .. --- begin exercise ---
 
-
 .. _Example:
 
 Example 1: Examples can be typeset as exercises
@@ -34930,21 +35085,26 @@ typeset as exercises. This is useful if one has solution
 environments as part of the example.
 
 
-*a)* State some problem.
+**a)**
+State some problem.
 
-*Solution.* The answer to this subproblem can be written here.
+**Solution.**
+The answer to this subproblem can be written here.
 
-*b)* State some other problem.
+**b)**
+State some other problem.
 
-*Hint 1.* A hint can be given.
+**Hint 1.**
+A hint can be given.
 
-*Hint 2.* Maybe even another hint?
+**Hint 2.**
+Maybe even another hint?
 
-*Solution.* The answer to this other subproblem goes here,
+**Solution.**
+The answer to this other subproblem goes here,
 maybe over multiple doconce input lines.
 
 .. --- end exercise ---
-
 
 
 .. _subsubsec:ex:
@@ -35007,6 +35167,8 @@ Here is an equation without label using backslash-bracket environment:
 
 or with number and label, as in :eq:`my:eq1`, using the equation environment:
 
+.. _Eq:my:eq1:
+
 .. math::
    :label: my:eq1
         
@@ -35027,6 +35189,8 @@ Here is a system without equation numbers, using the align-astrisk environment:
 
 And here is a system of equations with labels in an align environment:
 
+.. _Eq:eq1:
+
 .. math::
    :label: eq1
         
@@ -35034,6 +35198,8 @@ And here is a system of equations with labels in an align environment:
         
 
 
+
+.. _Eq:eq2:
 
 .. math::
    :label: eq2
@@ -35048,6 +35214,8 @@ Also test :math:`a_{i-j}` as well as :math:`kx-wt`.
 Many of the next environments will fail in non-latex formats.
 Testing multiline:
 
+.. _Eq:multiline:eq1:
+
 .. math::
    :label: multiline:eq1
         
@@ -35057,6 +35225,8 @@ Testing multiline:
         
 
 Testing split:
+
+.. _Eq:split:envir:eq:
 
 .. math::
    :label: split:envir:eq
@@ -35088,7 +35258,7 @@ Testing alignat:
         \end{alignat}
 
 Let us refer to :eq:`eq1`-:eq:`eq2` again, and to the
-alignat variant :eq:`eq1a`-:eq:`eq2a`, and to :eq:`my:eq1`.
+alignat variant :ref:`(label:removed) <Eq:eq1a>`-:ref:`(label:removed) <Eq:eq2a>`, and to :eq:`my:eq1`.
 
 Testing eqnarray:
 
@@ -35112,10 +35282,9 @@ Exercises
 
 .. --- begin exercise ---
 
-
 .. _demo:ex:1:
 
-Problem 1: Flip a Coin
+Problem 2: Flip a Coin
 ----------------------
 .. keywords = random numbers; Monte Carlo simulation
 
@@ -35146,34 +35315,31 @@ the beginning of a new exercise and cause trouble. Maybe a list
 
 .. --- begin hint in exercise ---
 
-
-*Hint 1.* Use ``r = random.random()`` and define head as ``r <= 0.5``.
+**Hint 1.**
+Use ``r = random.random()`` and define head as ``r <= 0.5``.
 
 .. --- end hint in exercise ---
 
-
 .. --- begin hint in exercise ---
 
-
-*Hint 2.* Draw an integer among :math:`\{1,2\}` with
+**Hint 2.**
+Draw an integer among :math:`\{1,2\}` with
 ``r = random.randint(1,2)`` and define head when ``r`` is 1.
 
 .. --- end hint in exercise ---
 
 
-
 .. --- begin answer of exercise ---
-
-*Answer.* If the ``random.random()`` function returns a number :math:`<1/2`, let it be
+**Answer.**
+If the ``random.random()`` function returns a number :math:`<1/2`, let it be
 head, otherwise tail. Repeat this :math:`N` number of times.
 
 .. --- end answer of exercise ---
 
 
-
 .. --- begin solution of exercise ---
-
-*Solution.* Code:
+**Solution.**
+Code:
 
 .. code-block:: python
 
@@ -35188,14 +35354,12 @@ head, otherwise tail. Repeat this :math:`N` number of times.
 
 
 .. --- end solution of exercise ---
-
 Filenames: ``flip_coin.py``, ``flip_coin.pdf``.
 
 .. solution files: mysol.txt, mysol_flip_coin.py, yet_another.file
 
 
 .. --- end exercise ---
-
 
 
 Not an exercise
@@ -35208,10 +35372,9 @@ exercises.
 
 .. --- begin exercise ---
 
-
 .. _demo:ex:2:
 
-Project 1: Compute a Probability
+Project 3: Compute a Probability
 --------------------------------
 
 .. Minimalistic exercise
@@ -35221,29 +35384,34 @@ Project 1: Compute a Probability
 What is the probability of getting a number between 0.5 and 0.6 when
 drawing uniformly distributed random numbers from the interval :math:`[0,1)`?
 
+
+At the end we have a list because that caused problems in LaTeX
+in previous Doconce versions:
+
+1. item1
+
+2. item2
+
 .. --- begin hint in exercise ---
 
-
-*Hint.* To answer this question empirically, let a program
+**Hint.**
+To answer this question empirically, let a program
 draw :math:`N` such random numbers using Python's standard ``random`` module,
 count how many of them, :math:`M`, that fall in the interval :math:`(0.5,0.6)`, and
 compute the probability as :math:`M/N`.
 
 .. --- end hint in exercise ---
 
-
 .. --- end exercise ---
-
 
 
 
 
 .. --- begin exercise ---
 
-
 .. _proj:circle1:
 
-Project 2: Explore Distributions of Random Circles
+Project 4: Explore Distributions of Random Circles
 --------------------------------------------------
 
 The formula for a circle is given by
@@ -35290,37 +35458,37 @@ center and radius. Plot each circle using the ``circle`` function
 above.
 
 
-*a)* Let :math:`R` be normally distributed and :math:`(x_0,y_0)` uniformly distributed.
+**a)**
+Let :math:`R` be normally distributed and :math:`(x_0,y_0)` uniformly distributed.
 
 .. --- begin hint in exercise ---
 
-
-*Hint.* Use the ``numpy.random`` module to draw the
+**Hint.**
+Use the ``numpy.random`` module to draw the
 :math:`x_0`, :math:`y_0`, and :math:`R` quantities.
 
 .. --- end hint in exercise ---
 
 
-
 .. --- begin answer of exercise ---
-
-*Answer.* Here goes the short answer to part a).
+**Answer.**
+Here goes the short answer to part a).
 
 .. --- end answer of exercise ---
 
 
-
 .. --- begin solution of exercise ---
-
-*Solution.* Here goes a full solution to part a).
+**Solution.**
+Here goes a full solution to part a).
 
 .. --- end solution of exercise ---
 
-
-*b)* Let :math:`R` be uniformly distributed and :math:`(x_0,y_0)` normally distributed.
+**b)**
+Let :math:`R` be uniformly distributed and :math:`(x_0,y_0)` normally distributed.
 Filename: ``norm.py``.
 
-*c)* Let :math:`R` and :math:`(x_0,y_0)` be normally distributed.
+**c)**
+Let :math:`R` and :math:`(x_0,y_0)` be normally distributed.
 
 Filename: ``circles.pdf``.
 
@@ -35339,13 +35507,11 @@ and give some perspectives.
 
 
 
-
 .. --- begin exercise ---
-
 
 .. _exer:dist:
 
-Exercise 1: Determine some Distance
+Exercise 5: Determine some Distance
 -----------------------------------
 
 Intro to this exercise. Questions are in subexercises below.
@@ -35359,10 +35525,15 @@ Intro to this exercise. Questions are in subexercises below.
 The text here belongs to the main (intro) part of the exercise. Need
 closing remarks to have text after subexercises.
 
+Test list in exercise:
+
+1. item1
+
+2. item2
 
 .. --- begin solution of exercise ---
-
-*Solution.* Here goes a full solution of the whole exercise.
+**Solution.**
+Here goes a full solution of the whole exercise.
 With some math :math:`a=b` in this solution:
 
 .. math::
@@ -35380,13 +35551,13 @@ End of solution is here.
 .. --- end solution of exercise ---
 
 
-
-*a)* Subexercises are numbered a), b), etc.
+**a)**
+Subexercises are numbered a), b), etc.
 
 .. --- begin hint in exercise ---
 
-
-*Hint 1.* First hint to subexercise a).
+**Hint 1.**
+First hint to subexercise a).
 With math :math:`a=b` in hint:
 
 
@@ -35405,26 +35576,30 @@ And with code (in plain verbatim) returning :math:`x+1` in hint:
 
 .. --- end hint in exercise ---
 
-
 .. --- begin hint in exercise ---
 
+**Hint 2.**
+Second hint to subexercise a).
 
-*Hint 2.* Second hint to subexercise a).
+Test list in hint:
+
+1. item1
+
+2. item2
 
 .. --- end hint in exercise ---
-
 Filename: ``subexer_a.pdf``.
 
 
 .. --- begin answer of exercise ---
-
-*Answer.* Short answer to subexercise a).
+**Answer.**
+Short answer to subexercise a).
 With math in answer: :math:`a=b`.
 
 .. --- end answer of exercise ---
 
-
-*b)* Here goes the text for subexercise b).
+**b)**
+Here goes the text for subexercise b).
 
 
 Some math :math:`\cos^2 x + \sin^2 x = 1` written one a single line:
@@ -35436,20 +35611,18 @@ Some math :math:`\cos^2 x + \sin^2 x = 1` written one a single line:
 
 .. --- begin hint in exercise ---
 
-
-*Hint.* A hint for this subexercise.
+**Hint.**
+A hint for this subexercise.
 
 .. --- end hint in exercise ---
-
 Filename: ``subexer_b.pdf``.
 
 
 .. --- begin solution of exercise ---
-
-*Solution.* Here goes the solution of this subexercise.
+**Solution.**
+Here goes the solution of this subexercise.
 
 .. --- end solution of exercise ---
-
 
 .. Closing remarks for this Exercise
 
@@ -35467,9 +35640,7 @@ remarks will appear at the end of the typeset exercise.
 
 
 
-
 .. --- begin exercise ---
-
 
 Some exercise without the "Exercise:" prefix
 --------------------------------------------
@@ -35499,11 +35670,9 @@ And a test that the code ``lambda x: x+2`` is correctly placed here:
 
 
 
-
 .. --- begin exercise ---
 
-
-Example 2: Just an example
+Example 7: Just an example
 --------------------------
 
 .. This example needs the --examples_as_exercises option, otherwise
@@ -35512,12 +35681,13 @@ Example 2: Just an example
 
 
 
-*a)* What is the capital of Norway?
+**a)**
+What is the capital of Norway?
 
-*Answer.* Oslo.
+**Answer.**
+Oslo.
 
 .. --- end exercise ---
-
 
 
 Here goes another section
@@ -35532,14 +35702,21 @@ More Exercises
 
 .. --- begin exercise ---
 
-
 .. _exer:some:formula:
 
-Exercise 3: Make references to projects and problems
+Exercise 8: Make references to projects and problems
 ----------------------------------------------------
 
 Pick a statement from :ref:`proj:circle1` or :ref:`demo:ex:1`
 and verify it.
+
+Test list at the end of an exercise without other elements (like subexercise,
+hint, etc.):
+
+1. item1
+
+2. item2
+
 Filename: ``verify_formula.py``.
 
 .. --- end exercise ---
@@ -35547,13 +35724,11 @@ Filename: ``verify_formula.py``.
 
 
 
-
 .. --- begin exercise ---
-
 
 .. _exer:you:
 
-Project 3: References in a headings do not work well in sphinx
+Project 9: References in a headings do not work well in sphinx
 --------------------------------------------------------------
 
 Refer to the previous exercise as :ref:`exer:some:formula`,
@@ -35562,7 +35737,6 @@ and this one as :ref:`exer:you`.
 Filename: ``selc_composed.pdf``.
 
 .. --- end exercise ---
-
 
 
 References
@@ -35743,6 +35917,10 @@ Without label.
    Here is a tip or hint box, typeset as a notice box.
 
 
+
+
+
+
 Need a lot of text to surround the summary box.
 Version control systems allow you to record the history of files
 and share files among several computers and collaborators in a
@@ -35768,6 +35946,8 @@ from using version control systems.
    Much testing in this document, otherwise stupid content.
    Much testing in this document, otherwise stupid content.
    Much testing in this document, otherwise stupid content.
+
+
 
 
 Projects that you want to share among several computers or project
@@ -36300,12 +36480,16 @@ And more and more text.
 And more and more text.
 \end{warning_colors2admon}
 
+
+
 Test warning with title:
 
 
 \begin{warning_colors2admon}[{\large Watch out }]
 {\large And here comes some text with bad news in larger font. \par}
 \end{warning_colors2admon}
+
+
 
 Test warning with title with math:
 
@@ -36314,6 +36498,8 @@ Test warning with title with math:
 {\large Divergence freedom is often problematic from a numerical point
 of view. \par}
 \end{warning_colors2admon}
+
+
 
 Then we test a block, which is guaranteed to never have any admon icon.
 
@@ -36329,10 +36515,15 @@ of understanding. \par}
 \end{block_colors2admon}
 
 
+
+
+
 \begin{block_colors2admon}[]
 Here is a block of text with no title. As above, it is typeset without any icon
 and is useful when you want some admons with icon and some without.
 \end{block_colors2admon}
+
+
 
 The next admonition features a title "Note, eventually!".
 
@@ -36350,6 +36541,8 @@ But first a bit of math where we define $\theta$ and $\bm{r}$:
 \end{align*}
 \end{notice_colors2admon}
 
+
+
 % Test one word with a number
 
 
@@ -36358,9 +36551,13 @@ Ah, we are soon close to the end.
 \end{notice_colors2admon}
 
 
+
+
 \begin{question_colors2admon}[Question]
 So, how many admonition environments does Doconce support?
 \end{question_colors2admon}
+
+
 
 
 \begin{question_colors2admon}[Question]
@@ -36370,6 +36567,9 @@ So, how many admonition environments does Doconce support?
 
 \noindent
 \end{question_colors2admon}
+
+
+
 
 \begin{warning_colors2admon}[Tip]
 It is of outmost important to
@@ -36391,12 +36591,16 @@ def grab(url, filename):
 \epycod
 \end{warning_colors2admon}
 
+
+
 Next is a warning without a title ("none" implies no title).
 
 
 \begin{warning_colors2admon}[]
 And here comes some text with bad news.
 \end{warning_colors2admon}
+
+
 
 \subsection{Going deeper environments}
 
@@ -36482,6 +36686,8 @@ And then we add a figure too.
 \end{center}
 \end{notice_colors2admon}
 
+
+
 \subsection{The end}
 
 A bit of text before the summary, which we now call "Concluding remarks,
@@ -36494,6 +36700,8 @@ We can summarize the most important things with admons: they have
 a different typesetting, and they may have a symbol.
 Titles should be optional.
 \end{summary_colors2admon}
+
+
 
 % ------------------- end of main content ---------------
 
@@ -36763,12 +36971,16 @@ And more and more text.
 And more and more text.
 \end{warning_colors1admon}
 
+
+
 Test warning with title:
 
 
 \begin{warning_colors1admon}[{\large Watch out }]
 {\large And here comes some text with bad news in larger font. \par}
 \end{warning_colors1admon}
+
+
 
 Test warning with title with math:
 
@@ -36777,6 +36989,8 @@ Test warning with title with math:
 {\large Divergence freedom is often problematic from a numerical point
 of view. \par}
 \end{warning_colors1admon}
+
+
 
 Then we test a block, which is guaranteed to never have any admon icon.
 
@@ -36792,10 +37006,15 @@ of understanding. \par}
 \end{block_colors1admon}
 
 
+
+
+
 \begin{block_colors1admon}[]
 Here is a block of text with no title. As above, it is typeset without any icon
 and is useful when you want some admons with icon and some without.
 \end{block_colors1admon}
+
+
 
 The next admonition features a title "Note, eventually!".
 
@@ -36813,6 +37032,8 @@ But first a bit of math where we define $\theta$ and $\bm{r}$:
 \end{align*}
 \end{notice_colors1admon}
 
+
+
 % Test one word with a number
 
 
@@ -36821,9 +37042,13 @@ Ah, we are soon close to the end.
 \end{notice_colors1admon}
 
 
+
+
 \begin{question_colors1admon}[Question]
 So, how many admonition environments does Doconce support?
 \end{question_colors1admon}
+
+
 
 
 \begin{question_colors1admon}[Question]
@@ -36833,6 +37058,9 @@ So, how many admonition environments does Doconce support?
 
 \noindent
 \end{question_colors1admon}
+
+
+
 
 \begin{warning_colors1admon}[Tip]
 It is of outmost important to
@@ -36854,12 +37082,16 @@ def grab(url, filename):
 \end{minted}
 \end{warning_colors1admon}
 
+
+
 Next is a warning without a title ("none" implies no title).
 
 
 \begin{warning_colors1admon}[]
 And here comes some text with bad news.
 \end{warning_colors1admon}
+
+
 
 \subsection{Going deeper environments}
 
@@ -36945,6 +37177,8 @@ And then we add a figure too.
 \end{center}
 \end{notice_colors1admon}
 
+
+
 \subsection{The end}
 
 A bit of text before the summary, which we now call "Concluding remarks,
@@ -36957,6 +37191,8 @@ We can summarize the most important things with admons: they have
 a different typesetting, and they may have a symbol.
 Titles should be optional.
 \end{summary_colors1admon}
+
+
 
 % ------------------- end of main content ---------------
 
@@ -37231,12 +37467,16 @@ And more and more text.
 And more and more text.
 \end{warning_colors2admon}
 
+
+
 Test warning with title:
 
 
 \begin{warning_colors2admon}[{\large Watch out }]
 {\large And here comes some text with bad news in larger font. \par}
 \end{warning_colors2admon}
+
+
 
 Test warning with title with math:
 
@@ -37245,6 +37485,8 @@ Test warning with title with math:
 {\large Divergence freedom is often problematic from a numerical point
 of view. \par}
 \end{warning_colors2admon}
+
+
 
 Then we test a block, which is guaranteed to never have any admon icon.
 
@@ -37260,10 +37502,15 @@ of understanding. \par}
 \end{block_colors2admon}
 
 
+
+
+
 \begin{block_colors2admon}[]
 Here is a block of text with no title. As above, it is typeset without any icon
 and is useful when you want some admons with icon and some without.
 \end{block_colors2admon}
+
+
 
 The next admonition features a title "Note, eventually!".
 
@@ -37281,6 +37528,8 @@ But first a bit of math where we define $\theta$ and $\bm{r}$:
 \end{align*}
 \end{notice_colors2admon}
 
+
+
 % Test one word with a number
 
 
@@ -37289,9 +37538,13 @@ Ah, we are soon close to the end.
 \end{notice_colors2admon}
 
 
+
+
 \begin{question_colors2admon}[Question]
 So, how many admonition environments does Doconce support?
 \end{question_colors2admon}
+
+
 
 
 \begin{question_colors2admon}[Question]
@@ -37301,6 +37554,9 @@ So, how many admonition environments does Doconce support?
 
 \noindent
 \end{question_colors2admon}
+
+
+
 
 \begin{warning_colors2admon}[Tip]
 It is of outmost important to
@@ -37322,12 +37578,16 @@ def grab(url, filename):
 \end{minted}
 \end{warning_colors2admon}
 
+
+
 Next is a warning without a title ("none" implies no title).
 
 
 \begin{warning_colors2admon}[]
 And here comes some text with bad news.
 \end{warning_colors2admon}
+
+
 
 \subsection{Going deeper environments}
 
@@ -37413,6 +37673,8 @@ And then we add a figure too.
 \end{center}
 \end{notice_colors2admon}
 
+
+
 \subsection{The end}
 
 A bit of text before the summary, which we now call "Concluding remarks,
@@ -37425,6 +37687,8 @@ We can summarize the most important things with admons: they have
 a different typesetting, and they may have a symbol.
 Titles should be optional.
 \end{summary_colors2admon}
+
+
 
 % ------------------- end of main content ---------------
 
@@ -37621,12 +37885,16 @@ And more and more text.
 And more and more text.
 \end{graybox1admon}
 
+
+
 Test warning with title:
 
 
 \begin{graybox1admon}[{\large Watch out }.]
 {\large And here comes some text with bad news in larger font. \par}
 \end{graybox1admon}
+
+
 
 Test warning with title with math:
 
@@ -37635,6 +37903,8 @@ Test warning with title with math:
 {\large Divergence freedom is often problematic from a numerical point
 of view. \par}
 \end{graybox1admon}
+
+
 
 Then we test a block, which is guaranteed to never have any admon icon.
 
@@ -37650,10 +37920,15 @@ of understanding. \par}
 \end{graybox1admon}
 
 
+
+
+
 \begin{graybox1admon}[]
 Here is a block of text with no title. As above, it is typeset without any icon
 and is useful when you want some admons with icon and some without.
 \end{graybox1admon}
+
+
 
 The next admonition features a title "Note, eventually!".
 
@@ -37671,6 +37946,8 @@ But first a bit of math where we define $\theta$ and $\bm{r}$:
 \end{align*}
 \end{graybox1admon}
 
+
+
 % Test one word with a number
 
 
@@ -37679,9 +37956,13 @@ Ah, we are soon close to the end.
 \end{graybox1admon}
 
 
+
+
 \begin{graybox1admon}[Question.]
 So, how many admonition environments does Doconce support?
 \end{graybox1admon}
+
+
 
 
 \begin{graybox1admon}[Question.]
@@ -37691,6 +37972,9 @@ So, how many admonition environments does Doconce support?
 
 \noindent
 \end{graybox1admon}
+
+
+
 
 \begin{graybox1admon}[Tip.]
 It is of outmost important to
@@ -37712,12 +37996,16 @@ def grab(url, filename):
 \end{minted}
 \end{graybox1admon}
 
+
+
 Next is a warning without a title ("none" implies no title).
 
 
 \begin{graybox1admon}[]
 And here comes some text with bad news.
 \end{graybox1admon}
+
+
 
 \subsection{Going deeper environments}
 
@@ -37803,6 +38091,8 @@ And then we add a figure too.
 \end{center}
 \end{graybox1admon}
 
+
+
 \subsection{The end}
 
 A bit of text before the summary, which we now call "Concluding remarks,
@@ -37815,6 +38105,8 @@ We can summarize the most important things with admons: they have
 a different typesetting, and they may have a symbol.
 Titles should be optional.
 \end{graybox1admon}
+
+
 
 % ------------------- end of main content ---------------
 
@@ -38024,6 +38316,8 @@ And more and more text.
 \end{graybox2admon}
 
 
+
+
 Test warning with title:
 
 
@@ -38031,6 +38325,8 @@ Test warning with title:
 \begin{graybox2admon}[{\large Watch out }.]
 {\large And here comes some text with bad news in larger font. \par}
 \end{graybox2admon}
+
+
 
 
 Test warning with title with math:
@@ -38041,6 +38337,8 @@ Test warning with title with math:
 {\large Divergence freedom is often problematic from a numerical point
 of view. \par}
 \end{graybox2admon}
+
+
 
 
 Then we test a block, which is guaranteed to never have any admon icon.
@@ -38060,10 +38358,15 @@ of understanding. \par}
 
 
 
+
+
+
 \begin{graybox2admon}[]
 Here is a block of text with no title. As above, it is typeset without any icon
 and is useful when you want some admons with icon and some without.
 \end{graybox2admon}
+
+
 
 
 The next admonition features a title "Note, eventually!".
@@ -38084,6 +38387,8 @@ But first a bit of math where we define $\theta$ and $\bm{r}$:
 \end{graybox2admon}
 
 
+
+
 % Test one word with a number
 
 
@@ -38095,9 +38400,13 @@ Ah, we are soon close to the end.
 
 
 
+
+
 \begin{graybox2admon}[Question.]
 So, how many admonition environments does Doconce support?
 \end{graybox2admon}
+
+
 
 
 
@@ -38109,6 +38418,10 @@ So, how many admonition environments does Doconce support?
 
 \noindent
 \end{graybox2admon}
+
+
+
+
 
 
 \begin{graybox2admon}[Tip.]
@@ -38132,6 +38445,8 @@ def grab(url, filename):
 \end{graybox2admon}
 
 
+
+
 Next is a warning without a title ("none" implies no title).
 
 
@@ -38139,6 +38454,8 @@ Next is a warning without a title ("none" implies no title).
 \begin{graybox2admon}[]
 And here comes some text with bad news.
 \end{graybox2admon}
+
+
 
 
 \subsection{Going deeper environments}
@@ -38227,6 +38544,8 @@ And then we add a figure too.
 \end{graybox2admon}
 
 
+
+
 \subsection{The end}
 
 A bit of text before the summary, which we now call "Concluding remarks,
@@ -38239,6 +38558,8 @@ just because we can.
 a different typesetting, and they may have a symbol.
 Titles should be optional.
 }
+
+
 % ------------------- end of main content ---------------
 
 
@@ -38512,12 +38833,16 @@ And more and more text.
 And more and more text.
 \end{warning_graybox3admon}
 
+
+
 Test warning with title:
 
 
 \begin{warning_graybox3admon}[{\large Watch out }]
 {\large And here comes some text with bad news in larger font. \par}
 \end{warning_graybox3admon}
+
+
 
 Test warning with title with math:
 
@@ -38526,6 +38851,8 @@ Test warning with title with math:
 {\large Divergence freedom is often problematic from a numerical point
 of view. \par}
 \end{warning_graybox3admon}
+
+
 
 Then we test a block, which is guaranteed to never have any admon icon.
 
@@ -38541,10 +38868,15 @@ of understanding. \par}
 \end{block_graybox3admon}
 
 
+
+
+
 \begin{block_graybox3admon}[]
 Here is a block of text with no title. As above, it is typeset without any icon
 and is useful when you want some admons with icon and some without.
 \end{block_graybox3admon}
+
+
 
 The next admonition features a title "Note, eventually!".
 
@@ -38562,6 +38894,8 @@ But first a bit of math where we define $\theta$ and $\bm{r}$:
 \end{align*}
 \end{notice_graybox3admon}
 
+
+
 % Test one word with a number
 
 
@@ -38570,9 +38904,13 @@ Ah, we are soon close to the end.
 \end{notice_graybox3admon}
 
 
+
+
 \begin{question_graybox3admon}[Question]
 So, how many admonition environments does Doconce support?
 \end{question_graybox3admon}
+
+
 
 
 \begin{question_graybox3admon}[Question]
@@ -38582,6 +38920,9 @@ So, how many admonition environments does Doconce support?
 
 \noindent
 \end{question_graybox3admon}
+
+
+
 
 \begin{warning_graybox3admon}[Tip]
 It is of outmost important to
@@ -38603,12 +38944,16 @@ def grab(url, filename):
 \end{minted}
 \end{warning_graybox3admon}
 
+
+
 Next is a warning without a title ("none" implies no title).
 
 
 \begin{warning_graybox3admon}[]
 And here comes some text with bad news.
 \end{warning_graybox3admon}
+
+
 
 \subsection{Going deeper environments}
 
@@ -38694,6 +39039,8 @@ And then we add a figure too.
 \end{center}
 \end{notice_graybox3admon}
 
+
+
 \subsection{The end}
 
 A bit of text before the summary, which we now call "Concluding remarks,
@@ -38706,6 +39053,8 @@ We can summarize the most important things with admons: they have
 a different typesetting, and they may have a symbol.
 Titles should be optional.
 \end{summary_graybox3admon}
+
+
 
 % ------------------- end of main content ---------------
 
@@ -38886,12 +39235,16 @@ And more and more text.
 And more and more text.
 \end{paragraphadmon}
 
+
+
 Test warning with title:
 
 
 \begin{paragraphadmon}[{\large Watch out }.]
 {\large And here comes some text with bad news in larger font. \par}
 \end{paragraphadmon}
+
+
 
 Test warning with title with math:
 
@@ -38900,6 +39253,8 @@ Test warning with title with math:
 {\large Divergence freedom is often problematic from a numerical point
 of view. \par}
 \end{paragraphadmon}
+
+
 
 Then we test a block, which is guaranteed to never have any admon icon.
 
@@ -38914,10 +39269,15 @@ of understanding. \par}
 \end{paragraphadmon}
 
 
+
+
+
 \begin{paragraphadmon}[]
 Here is a block of text with no title. As above, it is typeset without any icon
 and is useful when you want some admons with icon and some without.
 \end{paragraphadmon}
+
+
 
 The next admonition features a title "Note, eventually!".
 
@@ -38935,6 +39295,8 @@ But first a bit of math where we define $\theta$ and $\bm{r}$:
 \end{align*}
 \end{paragraphadmon}
 
+
+
 % Test one word with a number
 
 
@@ -38943,9 +39305,13 @@ Ah, we are soon close to the end.
 \end{paragraphadmon}
 
 
+
+
 \begin{paragraphadmon}[Question.]
 So, how many admonition environments does Doconce support?
 \end{paragraphadmon}
+
+
 
 
 \begin{paragraphadmon}[Question.]
@@ -38955,6 +39321,9 @@ So, how many admonition environments does Doconce support?
 
 \noindent
 \end{paragraphadmon}
+
+
+
 
 \begin{paragraphadmon}[Tip.]
 It is of outmost important to
@@ -38976,12 +39345,16 @@ def grab(url, filename):
 \end{minted}
 \end{paragraphadmon}
 
+
+
 Next is a warning without a title ("none" implies no title).
 
 
 \begin{paragraphadmon}[]
 And here comes some text with bad news.
 \end{paragraphadmon}
+
+
 
 \subsection{Going deeper environments}
 
@@ -39067,6 +39440,8 @@ And then we add a figure too.
 \end{center}
 \end{paragraphadmon}
 
+
+
 \subsection{The end}
 
 A bit of text before the summary, which we now call "Concluding remarks,
@@ -39079,6 +39454,8 @@ We can summarize the most important things with admons: they have
 a different typesetting, and they may have a symbol.
 Titles should be optional.
 \end{paragraphadmon}
+
+
 
 % ------------------- end of main content ---------------
 
@@ -39353,12 +39730,16 @@ And more and more text.
 And more and more text.
 \end{warning_yellowboxadmon}
 
+
+
 Test warning with title:
 
 
 \begin{warning_yellowboxadmon}[{\large Watch out }]
 {\large And here comes some text with bad news in larger font. \par}
 \end{warning_yellowboxadmon}
+
+
 
 Test warning with title with math:
 
@@ -39367,6 +39748,8 @@ Test warning with title with math:
 {\large Divergence freedom is often problematic from a numerical point
 of view. \par}
 \end{warning_yellowboxadmon}
+
+
 
 Then we test a block, which is guaranteed to never have any admon icon.
 
@@ -39382,10 +39765,15 @@ of understanding. \par}
 \end{block_yellowboxadmon}
 
 
+
+
+
 \begin{block_yellowboxadmon}[]
 Here is a block of text with no title. As above, it is typeset without any icon
 and is useful when you want some admons with icon and some without.
 \end{block_yellowboxadmon}
+
+
 
 The next admonition features a title "Note, eventually!".
 
@@ -39403,6 +39791,8 @@ But first a bit of math where we define $\theta$ and $\bm{r}$:
 \end{align*}
 \end{notice_yellowboxadmon}
 
+
+
 % Test one word with a number
 
 
@@ -39411,9 +39801,13 @@ Ah, we are soon close to the end.
 \end{notice_yellowboxadmon}
 
 
+
+
 \begin{question_yellowboxadmon}[Question]
 So, how many admonition environments does Doconce support?
 \end{question_yellowboxadmon}
+
+
 
 
 \begin{question_yellowboxadmon}[Question]
@@ -39423,6 +39817,9 @@ So, how many admonition environments does Doconce support?
 
 \noindent
 \end{question_yellowboxadmon}
+
+
+
 
 \begin{warning_yellowboxadmon}[Tip]
 It is of outmost important to
@@ -39444,12 +39841,16 @@ def grab(url, filename):
 \end{minted}
 \end{warning_yellowboxadmon}
 
+
+
 Next is a warning without a title ("none" implies no title).
 
 
 \begin{warning_yellowboxadmon}[]
 And here comes some text with bad news.
 \end{warning_yellowboxadmon}
+
+
 
 \subsection{Going deeper environments}
 
@@ -39535,6 +39936,8 @@ And then we add a figure too.
 \end{center}
 \end{notice_yellowboxadmon}
 
+
+
 \subsection{The end}
 
 A bit of text before the summary, which we now call "Concluding remarks,
@@ -39547,6 +39950,8 @@ We can summarize the most important things with admons: they have
 a different typesetting, and they may have a symbol.
 Titles should be optional.
 \end{summary_yellowboxadmon}
+
+
 
 % ------------------- end of main content ---------------
 
@@ -39736,6 +40141,8 @@ And more and more text.
 And more and more text.
 And more and more text.
 </div>
+
+
 <p>
 Test warning with title:
 
@@ -39743,6 +40150,8 @@ Test warning with title:
 <div class="warning alert-text-large"><b>Watch out.</b>
 And here comes some text with bad news in larger font.
 </div>
+
+
 <p>
 Test warning with title with math:
 
@@ -39751,6 +40160,8 @@ Test warning with title with math:
 Divergence freedom is often problematic from a numerical point
 of view.
 </div>
+
+
 <p>
 Then we test a block, which is guaranteed to never have any admon icon.
 
@@ -39763,11 +40174,15 @@ more comment-style text or text that really goes deeper or talks
 about fun facts that are not strictly necessary for the main flow
 of understanding.
 </div>
+
+
 <p>
 <div class="block alert-text-normal"><b></b>
 Here is a block of text with no title. As above, it is typeset without any icon
 and is useful when you want some admons with icon and some without.
 </div>
+
+
 <p>
 The next admonition features a title "Note, eventually!".
 
@@ -39788,6 +40203,8 @@ $$
 \end{align*}
 $$
 </div>
+
+
 <p>
 <!-- Test one word with a number -->
 
@@ -39795,10 +40212,14 @@ $$
 <div class="notice alert-text-normal"><b>Point1.</b>
 Ah, we are soon close to the end.
 </div>
+
+
 <p>
 <div class="question alert-text-normal"><b>Question.</b>
 So, how many admonition environments does Doconce support?
 </div>
+
+
 <p>
 <div class="question alert-text-normal"><b>Question.</b>
 
@@ -39806,6 +40227,8 @@ So, how many admonition environments does Doconce support?
  <li> Once more, how many admonition environments does Doconce support?</li>
 </ol>
 </div>
+
+
 <p>
 <div class="warning alert-text-normal"><b>Tip.</b>
 It is of outmost important to
@@ -39829,6 +40252,8 @@ Because here the thing is to do
 </pre></div>
 <p>
 </div>
+
+
 <p>
 Next is a warning without a title ("none" implies no title).
 
@@ -39836,6 +40261,8 @@ Next is a warning without a title ("none" implies no title).
 <div class="warning alert-text-normal"><b></b>
 And here comes some text with bad news.
 </div>
+
+
 <h3>Going deeper environments  <a name="___sec3"></a></h3>
 
 <p>
@@ -39930,6 +40357,8 @@ And then we add a figure too.
 <p>
 <center><p><img src="../doc/src/manual/figs/wavepacket_0001.png" align="bottom" ></p></center>
 </div>
+
+
 <h3>The end  <a name="___sec4"></a></h3>
 
 <p>
@@ -39943,6 +40372,8 @@ We can summarize the most important things with admons: they have
 a different typesetting, and they may have a symbol.
 Titles should be optional.
 </div>
+
+
 <!-- ------------------- end of main content --------------- -->
 
 
@@ -40142,6 +40573,8 @@ And more and more text.
 And more and more text.
 And more and more text.
 </div>
+
+
 <p>
 Test warning with title:
 
@@ -40149,6 +40582,8 @@ Test warning with title:
 <div class="alert alert-block alert-warning alert-text-large"><b>Watch out.</b>
 And here comes some text with bad news in larger font.
 </div>
+
+
 <p>
 Test warning with title with math:
 
@@ -40157,6 +40592,8 @@ Test warning with title with math:
 Divergence freedom is often problematic from a numerical point
 of view.
 </div>
+
+
 <p>
 Then we test a block, which is guaranteed to never have any admon icon.
 
@@ -40169,11 +40606,15 @@ more comment-style text or text that really goes deeper or talks
 about fun facts that are not strictly necessary for the main flow
 of understanding.
 </div>
+
+
 <p>
 <div class="alert alert-block alert-block alert-text-normal"><b></b>
 Here is a block of text with no title. As above, it is typeset without any icon
 and is useful when you want some admons with icon and some without.
 </div>
+
+
 <p>
 The next admonition features a title "Note, eventually!".
 
@@ -40194,6 +40635,8 @@ $$
 \end{align*}
 $$
 </div>
+
+
 <p>
 <!-- Test one word with a number -->
 
@@ -40201,10 +40644,14 @@ $$
 <div class="alert alert-block alert-notice alert-text-normal"><b>Point1.</b>
 Ah, we are soon close to the end.
 </div>
+
+
 <p>
 <div class="alert alert-block alert-question alert-text-normal"><b>Question.</b>
 So, how many admonition environments does Doconce support?
 </div>
+
+
 <p>
 <div class="alert alert-block alert-question alert-text-normal"><b>Question.</b>
 
@@ -40212,6 +40659,8 @@ So, how many admonition environments does Doconce support?
  <li> Once more, how many admonition environments does Doconce support?</li>
 </ol>
 </div>
+
+
 <p>
 <div class="alert alert-block alert-warning alert-text-normal"><b>Tip.</b>
 It is of outmost important to
@@ -40235,6 +40684,8 @@ Because here the thing is to do
 </pre></div>
 <p>
 </div>
+
+
 <p>
 Next is a warning without a title ("none" implies no title).
 
@@ -40242,6 +40693,8 @@ Next is a warning without a title ("none" implies no title).
 <div class="alert alert-block alert-warning alert-text-normal"><b></b>
 And here comes some text with bad news.
 </div>
+
+
 <h3>Going deeper environments  <a name="___sec3"></a></h3>
 
 <p>
@@ -40336,6 +40789,8 @@ And then we add a figure too.
 <p>
 <center><p><img src="../doc/src/manual/figs/wavepacket_0001.png" align="bottom" ></p></center>
 </div>
+
+
 <h3>The end  <a name="___sec4"></a></h3>
 
 <p>
@@ -40349,6 +40804,8 @@ We can summarize the most important things with admons: they have
 a different typesetting, and they may have a symbol.
 Titles should be optional.
 </div>
+
+
 <!-- ------------------- end of main content --------------- -->
 
 
@@ -40546,6 +41003,8 @@ And more and more text.
 And more and more text.
 And more and more text.
 </div>
+
+
 <p>
 Test warning with title:
 
@@ -40553,6 +41012,8 @@ Test warning with title:
 <div class="alert alert-block alert-warning alert-text-large"><b>Watch out.</b>
 And here comes some text with bad news in larger font.
 </div>
+
+
 <p>
 Test warning with title with math:
 
@@ -40561,6 +41022,8 @@ Test warning with title with math:
 Divergence freedom is often problematic from a numerical point
 of view.
 </div>
+
+
 <p>
 Then we test a block, which is guaranteed to never have any admon icon.
 
@@ -40573,11 +41036,15 @@ more comment-style text or text that really goes deeper or talks
 about fun facts that are not strictly necessary for the main flow
 of understanding.
 </div>
+
+
 <p>
 <div class="alert alert-block alert-block alert-text-normal"><b></b>
 Here is a block of text with no title. As above, it is typeset without any icon
 and is useful when you want some admons with icon and some without.
 </div>
+
+
 <p>
 The next admonition features a title "Note, eventually!".
 
@@ -40598,6 +41065,8 @@ $$
 \end{align*}
 $$
 </div>
+
+
 <p>
 <!-- Test one word with a number -->
 
@@ -40605,10 +41074,14 @@ $$
 <div class="alert alert-block alert-notice alert-text-normal"><b>Point1.</b>
 Ah, we are soon close to the end.
 </div>
+
+
 <p>
 <div class="alert alert-block alert-question alert-text-normal"><b>Question.</b>
 So, how many admonition environments does Doconce support?
 </div>
+
+
 <p>
 <div class="alert alert-block alert-question alert-text-normal"><b>Question.</b>
 
@@ -40616,6 +41089,8 @@ So, how many admonition environments does Doconce support?
  <li> Once more, how many admonition environments does Doconce support?</li>
 </ol>
 </div>
+
+
 <p>
 <div class="alert alert-block alert-warning alert-text-normal"><b>Tip.</b>
 It is of outmost important to
@@ -40639,6 +41114,8 @@ Because here the thing is to do
 </pre></div>
 <p>
 </div>
+
+
 <p>
 Next is a warning without a title ("none" implies no title).
 
@@ -40646,6 +41123,8 @@ Next is a warning without a title ("none" implies no title).
 <div class="alert alert-block alert-warning alert-text-normal"><b></b>
 And here comes some text with bad news.
 </div>
+
+
 <h3>Going deeper environments  <a name="___sec3"></a></h3>
 
 <p>
@@ -40740,6 +41219,8 @@ And then we add a figure too.
 <p>
 <center><p><img src="../doc/src/manual/figs/wavepacket_0001.png" align="bottom" ></p></center>
 </div>
+
+
 <h3>The end  <a name="___sec4"></a></h3>
 
 <p>
@@ -40753,6 +41234,8 @@ We can summarize the most important things with admons: they have
 a different typesetting, and they may have a symbol.
 Titles should be optional.
 </div>
+
+
 <!-- ------------------- end of main content --------------- -->
 
 
@@ -41277,6 +41760,8 @@ And more and more text.
 And more and more text.</div>
 </p></td></tr>
 </table>
+
+
 <p>
 Test warning with title:
 
@@ -41292,6 +41777,8 @@ Test warning with title:
 <div class="alert-text-large">And here comes some text with bad news in larger font.</div>
 </p></td></tr>
 </table>
+
+
 <p>
 Test warning with title with math:
 
@@ -41308,6 +41795,8 @@ Test warning with title with math:
 of view.</div>
 </p></td></tr>
 </table>
+
+
 <p>
 Then we test a block, which is guaranteed to never have any admon icon.
 
@@ -41325,6 +41814,8 @@ about fun facts that are not strictly necessary for the main flow
 of understanding.</div>
 </p></td></tr>
 </table>
+
+
 <p>
 
 <table width="95%" border="0">
@@ -41335,6 +41826,8 @@ of understanding.</div>
 and is useful when you want some admons with icon and some without.</div>
 </p></td></tr>
 </table>
+
+
 <p>
 The next admonition features a title "Note, eventually!".
 
@@ -41363,6 +41856,8 @@ $$
 $$</div>
 </p></td></tr>
 </table>
+
+
 <p>
 <!-- Test one word with a number -->
 
@@ -41378,6 +41873,8 @@ $$</div>
 <div class="alert-text-normal">Ah, we are soon close to the end.</div>
 </p></td></tr>
 </table>
+
+
 <p>
 
 <table width="95%" border="0">
@@ -41390,6 +41887,8 @@ $$</div>
 <div class="alert-text-normal">So, how many admonition environments does Doconce support?</div>
 </p></td></tr>
 </table>
+
+
 <p>
 
 <table width="95%" border="0">
@@ -41405,6 +41904,8 @@ $$</div>
 </ol></div>
 </p></td></tr>
 </table>
+
+
 <p>
 
 <table width="95%" border="0">
@@ -41436,6 +41937,8 @@ Because here the thing is to do
 <p></div>
 </p></td></tr>
 </table>
+
+
 <p>
 Next is a warning without a title ("none" implies no title).
 
@@ -41451,6 +41954,8 @@ Next is a warning without a title ("none" implies no title).
 <div class="alert-text-normal">And here comes some text with bad news.</div>
 </p></td></tr>
 </table>
+
+
 <h3>Going deeper environments  <a name="___sec3"></a></h3>
 
 <p>
@@ -41553,6 +42058,8 @@ And then we add a figure too.
 <center><p><img src="../doc/src/manual/figs/wavepacket_0001.png" align="bottom" ></p></center></div>
 </p></td></tr>
 </table>
+
+
 <h3>The end  <a name="___sec4"></a></h3>
 
 <p>
@@ -41574,6 +42081,8 @@ a different typesetting, and they may have a symbol.
 Titles should be optional.</div>
 </p></td></tr>
 </table>
+
+
 <!-- ------------------- end of main content --------------- -->
 
 
@@ -41754,6 +42263,8 @@ And more and more text.
 And more and more text.
 And more and more text.
 </div>
+
+
 <p>
 Test warning with title:
 
@@ -41764,6 +42275,8 @@ Test warning with title:
 <div class="alert-text-large"><b>Watch out.</b>
 And here comes some text with bad news in larger font.
 </div>
+
+
 <p>
 Test warning with title with math:
 
@@ -41775,6 +42288,8 @@ Test warning with title with math:
 Divergence freedom is often problematic from a numerical point
 of view.
 </div>
+
+
 <p>
 Then we test a block, which is guaranteed to never have any admon icon.
 
@@ -41790,6 +42305,8 @@ more comment-style text or text that really goes deeper or talks
 about fun facts that are not strictly necessary for the main flow
 of understanding.
 </div>
+
+
 <p>
 
 
@@ -41798,6 +42315,8 @@ of understanding.
 Here is a block of text with no title. As above, it is typeset without any icon
 and is useful when you want some admons with icon and some without.
 </div>
+
+
 <p>
 The next admonition features a title "Note, eventually!".
 
@@ -41821,6 +42340,8 @@ $$
 \end{align*}
 $$
 </div>
+
+
 <p>
 <!-- Test one word with a number -->
 
@@ -41831,6 +42352,8 @@ $$
 <div class="alert-text-normal"><b>Point1.</b>
 Ah, we are soon close to the end.
 </div>
+
+
 <p>
 
 
@@ -41838,6 +42361,8 @@ Ah, we are soon close to the end.
 <div class="alert-text-normal"><b>Question.</b>
 So, how many admonition environments does Doconce support?
 </div>
+
+
 <p>
 
 
@@ -41848,6 +42373,8 @@ So, how many admonition environments does Doconce support?
  <li> Once more, how many admonition environments does Doconce support?</li>
 </ol>
 </div>
+
+
 <p>
 
 
@@ -41874,6 +42401,8 @@ Because here the thing is to do
 </pre></div>
 <p>
 </div>
+
+
 <p>
 Next is a warning without a title ("none" implies no title).
 
@@ -41884,6 +42413,8 @@ Next is a warning without a title ("none" implies no title).
 <div class="alert-text-normal"><b></b>
 And here comes some text with bad news.
 </div>
+
+
 <h3>Going deeper environments  <a name="___sec3"></a></h3>
 
 <p>
@@ -41981,6 +42512,8 @@ And then we add a figure too.
 <p>
 <center><p><img src="../doc/src/manual/figs/wavepacket_0001.png" align="bottom" ></p></center>
 </div>
+
+
 <h3>The end  <a name="___sec4"></a></h3>
 
 <p>
@@ -41997,6 +42530,8 @@ We can summarize the most important things with admons: they have
 a different typesetting, and they may have a symbol.
 Titles should be optional.
 </div>
+
+
 <!-- ------------------- end of main content --------------- -->
 
 
@@ -42211,6 +42746,8 @@ And more and more text.
 And more and more text.
 And more and more text.
 </div>
+
+
 <p>
 Test warning with title:
 
@@ -42218,6 +42755,8 @@ Test warning with title:
 <div class="alert alert-block alert-warning alert-text-large"><b>Watch out.</b>
 And here comes some text with bad news in larger font.
 </div>
+
+
 <p>
 Test warning with title with math:
 
@@ -42226,6 +42765,8 @@ Test warning with title with math:
 Divergence freedom is often problematic from a numerical point
 of view.
 </div>
+
+
 <p>
 Then we test a block, which is guaranteed to never have any admon icon.
 
@@ -42238,11 +42779,15 @@ more comment-style text or text that really goes deeper or talks
 about fun facts that are not strictly necessary for the main flow
 of understanding.
 </div>
+
+
 <p>
 <div class="alert alert-block alert-block alert-text-normal"><b></b>
 Here is a block of text with no title. As above, it is typeset without any icon
 and is useful when you want some admons with icon and some without.
 </div>
+
+
 <p>
 The next admonition features a title "Note, eventually!".
 
@@ -42263,6 +42808,8 @@ $$
 \end{align*}
 $$
 </div>
+
+
 <p>
 <!-- Test one word with a number -->
 
@@ -42270,10 +42817,14 @@ $$
 <div class="alert alert-block alert-notice alert-text-normal"><b>Point1.</b>
 Ah, we are soon close to the end.
 </div>
+
+
 <p>
 <div class="alert alert-block alert-question alert-text-normal"><b>Question.</b>
 So, how many admonition environments does Doconce support?
 </div>
+
+
 <p>
 <div class="alert alert-block alert-question alert-text-normal"><b>Question.</b>
 
@@ -42281,6 +42832,8 @@ So, how many admonition environments does Doconce support?
  <li> Once more, how many admonition environments does Doconce support?</li>
 </ol>
 </div>
+
+
 <p>
 <div class="alert alert-block alert-warning alert-text-normal"><b>Tip.</b>
 It is of outmost important to
@@ -42304,6 +42857,8 @@ Because here the thing is to do
 </pre></div>
 <p>
 </div>
+
+
 <p>
 Next is a warning without a title ("none" implies no title).
 
@@ -42311,6 +42866,8 @@ Next is a warning without a title ("none" implies no title).
 <div class="alert alert-block alert-warning alert-text-normal"><b></b>
 And here comes some text with bad news.
 </div>
+
+
 <h3>Going deeper environments  <a name="___sec3"></a></h3>
 
 <p>
@@ -42405,6 +42962,8 @@ And then we add a figure too.
 <p>
 <center><p><img src="../doc/src/manual/figs/wavepacket_0001.png" align="bottom" ></p></center>
 </div>
+
+
 <h3>The end  <a name="___sec4"></a></h3>
 
 <p>
@@ -42418,6 +42977,8 @@ We can summarize the most important things with admons: they have
 a different typesetting, and they may have a symbol.
 Titles should be optional.
 </div>
+
+
 <!-- ------------------- end of main content --------------- -->
 
 
@@ -42635,6 +43196,8 @@ And more and more text.
 And more and more text.
 And more and more text.
 </div>
+
+
 <p>
 Test warning with title:
 
@@ -42642,6 +43205,8 @@ Test warning with title:
 <div class="alert alert-block alert-warning alert-text-large"><b>Watch out.</b>
 And here comes some text with bad news in larger font.
 </div>
+
+
 <p>
 Test warning with title with math:
 
@@ -42650,6 +43215,8 @@ Test warning with title with math:
 Divergence freedom is often problematic from a numerical point
 of view.
 </div>
+
+
 <p>
 Then we test a block, which is guaranteed to never have any admon icon.
 
@@ -42662,11 +43229,15 @@ more comment-style text or text that really goes deeper or talks
 about fun facts that are not strictly necessary for the main flow
 of understanding.
 </div>
+
+
 <p>
 <div class="alert alert-block alert-block alert-text-normal"><b></b>
 Here is a block of text with no title. As above, it is typeset without any icon
 and is useful when you want some admons with icon and some without.
 </div>
+
+
 <p>
 The next admonition features a title "Note, eventually!".
 
@@ -42687,6 +43258,8 @@ $$
 \end{align*}
 $$
 </div>
+
+
 <p>
 <!-- Test one word with a number -->
 
@@ -42694,10 +43267,14 @@ $$
 <div class="alert alert-block alert-notice alert-text-normal"><b>Point1.</b>
 Ah, we are soon close to the end.
 </div>
+
+
 <p>
 <div class="alert alert-block alert-question alert-text-normal"><b>Question.</b>
 So, how many admonition environments does Doconce support?
 </div>
+
+
 <p>
 <div class="alert alert-block alert-question alert-text-normal"><b>Question.</b>
 
@@ -42705,6 +43282,8 @@ So, how many admonition environments does Doconce support?
  <li> Once more, how many admonition environments does Doconce support?</li>
 </ol>
 </div>
+
+
 <p>
 <div class="alert alert-block alert-warning alert-text-normal"><b>Tip.</b>
 It is of outmost important to
@@ -42728,6 +43307,8 @@ Because here the thing is to do
 </pre></div>
 <p>
 </div>
+
+
 <p>
 Next is a warning without a title ("none" implies no title).
 
@@ -42735,6 +43316,8 @@ Next is a warning without a title ("none" implies no title).
 <div class="alert alert-block alert-warning alert-text-normal"><b></b>
 And here comes some text with bad news.
 </div>
+
+
 <h3>Going deeper environments  <a name="___sec3"></a></h3>
 
 <p>
@@ -42829,6 +43412,8 @@ And then we add a figure too.
 <p>
 <center><p><img src="../doc/src/manual/figs/wavepacket_0001.png" align="bottom" ></p></center>
 </div>
+
+
 <h3>The end  <a name="___sec4"></a></h3>
 
 <p>
@@ -42842,6 +43427,8 @@ We can summarize the most important things with admons: they have
 a different typesetting, and they may have a symbol.
 Titles should be optional.
 </div>
+
+
 <!-- ------------------- end of main content --------------- -->
 
 
@@ -42939,6 +43526,8 @@ And more and more text.
 And more and more text.
 }}
 
+
+
 Test warning with title:
 
 
@@ -42947,6 +43536,8 @@ Test warning with title:
 | textstyle = font-size: 130%;
 | text = '''Watch out.''' And here comes some text with bad news in larger font.
 }}
+
+
 
 Test warning with title with math:
 
@@ -42958,6 +43549,8 @@ Test warning with title with math:
 of view.
 }}
 
+
+
 Then we test a block, which is guaranteed to never have any admon icon.
 
 ''Block with title''\n
@@ -42968,8 +43561,13 @@ more comment-style text or text that really goes deeper or talks
 about fun facts that are not strictly necessary for the main flow
 of understanding.
 
+
+
+
 Here is a block of text with no title. As above, it is typeset without any icon
 and is useful when you want some admons with icon and some without.
+
+
 
 The next admonition features a title "Note, eventually!".
 
@@ -42991,6 +43589,8 @@ But first a bit of math where we define <math>\theta</math> and <math>\bm{r}</ma
 </math>
 }}
 
+
+
 <!-- Test one word with a number -->
 
 
@@ -43001,11 +43601,15 @@ But first a bit of math where we define <math>\theta</math> and <math>\bm{r}</ma
 }}
 
 
+
+
 {{mbox
 | type = Question.
 | textstyle = font-size: 90%;
 | text = '''Question.''' So, how many admonition environments does Doconce support?
 }}
+
+
 
 
 {{mbox
@@ -43016,6 +43620,9 @@ But first a bit of math where we define <math>\theta</math> and <math>\bm{r}</ma
  <li> Once more, how many admonition environments does Doconce support?
 </ol>
 }}
+
+
+
 
 {{mbox
 | type = warning
@@ -43038,6 +43645,8 @@ def grab(url, filename):
 </syntaxhighlight>
 }}
 
+
+
 Next is a warning without a title ("none" implies no title).
 
 
@@ -43046,6 +43655,8 @@ Next is a warning without a title ("none" implies no title).
 | textstyle = font-size: 90%;
 | text = '''''' And here comes some text with bad news.
 }}
+
+
 
 ==== Going deeper environments ====
 
@@ -43133,6 +43744,8 @@ And then we add a figure too.
 [[File:Wavepacket 0001.png|frame|alt=Wavepacket 0001.png|<span title=""></span>]] <!-- not yet uploaded to common.wikimedia.org -->
 }}
 
+
+
 ==== The end ====
 
 A bit of text before the summary, which we now call "Concluding remarks,
@@ -43147,6 +43760,8 @@ just because we can.
 a different typesetting, and they may have a symbol.
 Titles should be optional.
 }}
+
+
 
 
 ************** File: slides1.do.txt *****************
@@ -43568,6 +44183,8 @@ This box has title and math in normal 90 percent font:
 $$ \frac{\partial u}{\partial t} = \nabla^2 u $$
 <p>&nbsp;<br>
 </div>
+
+
 <p>
 
 <p class="fragment">
@@ -43576,6 +44193,7 @@ $$ \frac{\partial u}{\partial t} = \nabla^2 u $$
 Just some block with text and a conclusion that something is important.
 This one pops up after the rest of the slide.
 </div>
+
 
 </p>
 
@@ -43587,6 +44205,8 @@ inside preprocess/mako if statements to turn notes on and off.
 This one is typeset in a small font and with the default
 title (Warning) since no title is specified.
 </div>
+
+
 
 </section>
 
@@ -44130,12 +44750,15 @@ Can use admons to simulate blocks:
 This box has title and math in normal 90 percent font:
 $$ \frac{\partial u}{\partial t} = \nabla^2 u $$
 </div>
+
+
 <p>
 <!-- !bpop -->
 <div class="alert alert-block alert-notice alert-text-normal"><b></b>
 Just some block with text and a conclusion that something is important.
 This one pops up after the rest of the slide.
 </div>
+
 <!-- !epop -->
 
 <p>
@@ -44145,6 +44768,8 @@ inside preprocess/mako if statements to turn notes on and off.
 This one is typeset in a small font and with the default
 title (Warning) since no title is specified.
 </div>
+
+
 <!-- ------------------- end of main content --------------- -->
 
 
@@ -44514,6 +45139,8 @@ This box has title and math in normal 90 percent font:
 $$ \frac{\partial u}{\partial t} = \nabla^2 u $$
 <p>&nbsp;<br>
 </div>
+
+
 <p>
 
 <p class="slide">
@@ -44522,6 +45149,7 @@ $$ \frac{\partial u}{\partial t} = \nabla^2 u $$
 Just some block with text and a conclusion that something is important.
 This one pops up after the rest of the slide.
 </div>
+
 
 </p>
 
@@ -44533,6 +45161,8 @@ inside preprocess/mako if statements to turn notes on and off.
 This one is typeset in a small font and with the default
 title (Warning) since no title is specified.
 </div>
+
+
 
 </section>
 
@@ -45360,12 +45990,15 @@ This box has title and math in normal 90 percent font:
 \[ \frac{\partial u}{\partial t} = \nabla^2 u \]
 \end{graybox1admon}
 
+
+
 % !bpop
 
 \begin{graybox1admon}[]
 Just some block with text and a conclusion that something is important.
 This one pops up after the rest of the slide.
 \end{graybox1admon}
+
 
 % !epop
 
@@ -45377,6 +46010,9 @@ inside preprocess/mako if statements to turn notes on and off.
 This one is typeset in a small font and with the default
 title (Warning) since no title is specified. \par}
 \end{graybox1admon}
+
+
+
 
 % ------------------- end of main content ---------------
 
@@ -45636,6 +46272,8 @@ Can use admons to simulate blocks:
 This box has title and math in normal 90 percent font:
 \[ \frac{\partial u}{\partial t} = \nabla^2 u \]
 \end{graybox1admon}
+
+
 
 
 \pause
@@ -46811,6 +47449,8 @@ TOC: on
 <div class="alert alert-block alert-notice alert-text-normal"><b>Notice.</b>
 Title and authors must have all information <em>on a single line</em>!
 </div>
+
+
 <p>
 
 </section>
@@ -46959,6 +47599,8 @@ URL: &quot;https://github.com/hplgit/doconce&quot;
 <div class="alert alert-block alert-notice alert-text-normal"><b>Notice.</b>
 Figure with HTML and LaTeX info, and caption, <em>all on one line</em>:
 </div>
+
+
 <p>
 
 <!-- code=text typeset with pygments style "emacs" -->
@@ -47091,6 +47733,8 @@ language: <code>pycod</code> for Python code snippet, <code>pypro</code> for com
 program, <code>fcod</code> for Fortran snippet, <code>fpro</code> for Fortran program, and so
 forth (<code>c</code> for C, <code>cpp</code> for C++, <code>sh</code> for Unix shells, <code>m</code> for Matlab).
 </div>
+
+
 <p>
 
 </section>
@@ -48100,6 +48744,8 @@ TOC: on
 Title and authors must have all information \emph{on a single line}!
 \end{graybox1admon}
 
+
+
 % !split
 \section{Doconce: abstract}
 
@@ -48213,6 +48859,8 @@ URL: "https://github.com/hplgit/doconce"
 Figure with HTML and {\LaTeX} info, and caption, \emph{all on one line}:
 \end{graybox1admon}
 
+
+
 \bccq
 FIGURE: [figdir/myfig, width=300 frac=1.2] My caption. label{fig1}
 
@@ -48308,6 +48956,9 @@ language: \code{pycod} for Python code snippet, \code{pypro} for complete Python
 program, \code{fcod} for Fortran snippet, \code{fpro} for Fortran program, and so
 forth (\code{c} for C, \code{cpp} for C++, \code{sh} for Unix shells, \code{m} for Matlab).
 \end{graybox1admon}
+
+
+
 
 % !split
 \section{Doconce: displaying interactive demo code}
@@ -49131,6 +49782,8 @@ URL: "https://github.com/hplgit/doconce"
 Figure with HTML and {\LaTeX} info, and caption, \emph{all on one line}:
 \end{graybox1admon}
 
+
+
 \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
 FIGURE: [figdir/myfig, width=300 frac=1.2] My caption. label{fig1}
 
@@ -49848,11 +50501,15 @@ and get them rendered in numerous HTML formats.
 This version
 utilizes reveal slides with the theme beigesmall.
 </div>
+
+
 <p>
 <div class="alert alert-block alert-notice alert-text-normal"><b>Notice.</b>
 Speaker notes show up by
 pressing "s".
 </div>
+
+
 <p>
 <aside class="notes">
 <!-- click "s" to activate -->
@@ -50049,6 +50706,7 @@ $$ u^n = A^n,\quad A = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}\thi
 Only the Backward Euler scheme is guaranteed to always give
 qualitatively correct results.
 </div>
+
 
 </p>
 
@@ -50445,6 +51103,11 @@ This version
 utilizes beamer slides with the theme red3.
 \end{graybox1admon}
 
+
+
+
+
+
 % !bnotes
 The talk investigates the accuracy of three finite difference
 schemes for the ordinary differential equation $u'=-au$ with the
@@ -50574,6 +51237,7 @@ Exact solution of the scheme:
 Only the Backward Euler scheme is guaranteed to always give
 qualitatively correct results.
 \end{graybox1admon}
+
 
 % !epop
 
@@ -50740,6 +51404,11 @@ and get them rendered in numerous HTML formats.
 This version
 utilizes beamer slides with the theme red3.
 \end{graybox1admon}
+
+
+
+
+
 
 \note{
 The talk investigates the accuracy of three finite difference
@@ -50951,6 +51620,8 @@ i,h_i,\bar T_i,L_i
 > ```
 > 
 > This function should be quadratic.
+
+
 
 OK, this is fixed:
 
@@ -51201,7 +51872,7 @@ And here is a table:
 <h6>Dept. of Informatics, Univ. of Oslo</h6>
 </center>
 
-<center>Thu, 21 Nov 2013 (06:44)</center>
+<center>Jan 32, 2100</center>
 
 
 
@@ -51332,7 +52003,7 @@ And here is a table:
 <h6>Dept. of Informatics, Univ. of Oslo</h6>
 </center>
 
-<center>Thu, 21 Nov 2013 (06:44)</center>
+<center>Jan 32, 2100</center>
 
 
 
@@ -51655,7 +52326,7 @@ same institution, make sure that the institution is specified in an identical
 way for each author.
 
 The date can be set as any text different from `today` if not the
-current date is wanted, e.g., `Feb 22, 2016`.
+current date is wanted, e.g., `Jan 32, 2100`.
 
 The table of contents is removed by writing `TOC: off`.
 
@@ -52652,7 +53323,7 @@ way for each author.
 
 <p>
 The date can be set as any text different from <code>today</code> if not the
-current date is wanted, e.g., <code>Feb 22, 2016</code>.
+current date is wanted, e.g., <code>Jan 32, 2100</code>.
 
 <p>
 The table of contents is removed by writing <code>TOC: off</code>.
@@ -53041,6 +53712,8 @@ straightforward typesetting for other formats. In this way, one can
 also allow advanced LaTeX features and fine tuning of resulting
 PDF document.
 </div>
+
+
 <p>
 <b>LaTeX Newcommands.</b>
 The author can define <code>newcommand</code> statements in files with names
@@ -54144,7 +54817,7 @@ same institution, make sure that the institution is specified in an identical
 way for each author.
 
 The date can be set as any text different from \code{today} if not the
-current date is wanted, e.g., \code{Feb 22, 2016}.
+current date is wanted, e.g., \code{Jan 32, 2100}.
 
 The table of contents is removed by writing \code{TOC: off}.
 
@@ -54498,6 +55171,8 @@ straightforward typesetting for other formats. In this way, one can
 also allow advanced {\LaTeX} features and fine tuning of resulting
 PDF document.
 \end{graybox1admon}
+
+
 
 \paragraph{LaTeX Newcommands.}
 The author can define \code{newcommand} statements in files with names
@@ -55211,7 +55886,7 @@ same institution, make sure that the institution is specified in an identical
 way for each author.
 
 The date can be set as any text different from ``today`` if not the
-current date is wanted, e.g., ``Feb 22, 2016``.
+current date is wanted, e.g., ``Jan 32, 2100``.
 
 The table of contents is removed by writing ``TOC: off``.
 
@@ -55560,6 +56235,8 @@ labels in ``align`` environments work well.)
    straightforward typesetting for other formats. In this way, one can
    also allow advanced LaTeX features and fine tuning of resulting
    PDF document.
+
+
 
 
 **LaTeX Newcommands.**
@@ -56277,7 +56954,7 @@ same institution, make sure that the institution is specified in an identical
 way for each author.
 
 The date can be set as any text different from ``today`` if not the
-current date is wanted, e.g., ``Feb 22, 2016``.
+current date is wanted, e.g., ``Jan 32, 2100``.
 
 The table of contents is removed by writing ``TOC: off``.
 
@@ -56654,6 +57331,8 @@ labels in ``align`` environments work well.)
    straightforward typesetting for other formats. In this way, one can
    also allow advanced LaTeX features and fine tuning of resulting
    PDF document.
+
+
 
 
 **LaTeX Newcommands.**
@@ -57386,7 +58065,7 @@ same institution, make sure that the institution is specified in an identical
 way for each author.
 
 The date can be set as any text different from `today` if not the
-current date is wanted, e.g., `Feb 22, 2016`.
+current date is wanted, e.g., `Jan 32, 2100`.
 
 The table of contents is removed by writing `TOC: off`.
 
@@ -57700,6 +58379,8 @@ include special code for `latex` and `pdflatex` output and more
 straightforward typesetting for other formats. In this way, one can
 also allow advanced LaTeX features and fine tuning of resulting
 PDF document.
+
+
 
 *LaTeX Newcommands.* The author can define `newcommand` statements in files with names
 `newcommands*.tex`. Such commands should only be used for mathematics
@@ -58333,7 +59014,7 @@ same institution, make sure that the institution is specified in an identical
 way for each author.
 
 The date can be set as any text different from <code>today</code> if not the
-current date is wanted, e.g., <code>Feb 22, 2016</code>.
+current date is wanted, e.g., <code>Jan 32, 2100</code>.
 
 The table of contents is removed by writing <code>TOC: off</code>.
 
@@ -58674,6 +59355,8 @@ straightforward typesetting for other formats. In this way, one can
 also allow advanced LaTeX features and fine tuning of resulting
 PDF document.
 }}
+
+
 
 ''LaTeX Newcommands.''
 The author can define <code>newcommand</code> statements in files with names
@@ -59332,7 +60015,7 @@ same institution, make sure that the institution is specified in an identical
 way for each author.
 
 The date can be set as any text different from {{{today}}} if not the
-current date is wanted, e.g., {{{Feb 22, 2016}}}.
+current date is wanted, e.g., {{{Jan 32, 2100}}}.
 
 The table of contents is removed by writing {{{TOC: off}}}.
 
@@ -59648,6 +60331,8 @@ include special code for {{{latex}}} and {{{pdflatex}}} output and more
 straightforward typesetting for other formats. In this way, one can
 also allow advanced LaTeX features and fine tuning of resulting
 PDF document.
+
+
 
 //LaTeX Newcommands.// The author can define {{{newcommand}}} statements in files with names
 {{{newcommands*.tex}}}. Such commands should only be used for mathematics
@@ -60276,7 +60961,7 @@ same institution, make sure that the institution is specified in an identical
 way for each author.
 
 The date can be set as any text different from 'today' if not the
-current date is wanted, e.g., 'Feb 22, 2016'.
+current date is wanted, e.g., 'Jan 32, 2100'.
 
 The table of contents is removed by writing 'TOC: off'.
 
@@ -60599,6 +61284,8 @@ include special code for 'latex' and 'pdflatex' output and more
 straightforward typesetting for other formats. In this way, one can
 also allow advanced LaTeX features and fine tuning of resulting
 PDF document.
+
+
 
 *LaTeX Newcommands.* The author can define 'newcommand' statements in files with names
 'newcommands*.tex'. Such commands should only be used for mathematics
@@ -61250,7 +61937,7 @@ same institution, make sure that the institution is specified in an identical
 way for each author.
 
 The date can be set as any text different from C{today} if not the
-current date is wanted, e.g., C{Feb 22, 2016}.
+current date is wanted, e.g., C{Jan 32, 2100}.
 
 The table of contents is removed by writing C{TOC: off}.
 
@@ -61585,6 +62272,8 @@ include special code for C{latex} and C{pdflatex} output and more
 straightforward typesetting for other formats. In this way, one can
 also allow advanced LaTeX features and fine tuning of resulting
 PDF document.
+
+
 
 I{LaTeX Newcommands.} The author can define C{newcommand} statements in files with names
 C{newcommands*.tex}. Such commands should only be used for mathematics
@@ -62270,7 +62959,7 @@ same institution, make sure that the institution is specified in an identical
 way for each author.
 
 The date can be set as any text different from today if not the
-current date is wanted, e.g., Feb 22, 2016.
+current date is wanted, e.g., Jan 32, 2100.
 
 The table of contents is removed by writing TOC: off.
 
@@ -62612,6 +63301,8 @@ include special code for latex and pdflatex output and more
 straightforward typesetting for other formats. In this way, one can
 also allow advanced LaTeX features and fine tuning of resulting
 PDF document.
+
+
 
 *LaTeX Newcommands.* The author can define newcommand statements in files with names
 newcommands*.tex. Such commands should only be used for mathematics
@@ -63313,7 +64004,7 @@ same institution, make sure that the institution is specified in an identical
 way for each author.
 
 The date can be set as any text different from `today` if not the
-current date is wanted, e.g., `Feb 22, 2016`.
+current date is wanted, e.g., `Jan 32, 2100`.
 
 The table of contents is removed by writing `TOC: off`.
 
@@ -63667,6 +64358,8 @@ include special code for `latex` and `pdflatex` output and more
 straightforward typesetting for other formats. In this way, one can
 also allow advanced LaTeX features and fine tuning of resulting
 PDF document.
+
+
 
 *LaTeX Newcommands.* The author can define `newcommand` statements in files with names
 `newcommands*.tex`. Such commands should only be used for mathematics
@@ -64600,6 +65293,7 @@ warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
 
 found info about 9 exercises, written to .testdoc.exerinfo
+... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
 figure file ../doc/src/manual/figs/streamtubes:
     can use ../doc/src/manual/figs/streamtubes.png for format html
 output in testdoc.html
@@ -64659,6 +65353,7 @@ warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
 
 found info about 9 exercises, written to .testdoc.exerinfo
+... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
 figure file ../doc/src/manual/figs/streamtubes:
     can use ../doc/src/manual/figs/streamtubes.png for format html
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
@@ -64743,9 +65438,10 @@ warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
 
 found info about 9 exercises, written to .testdoc.exerinfo
+... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
 figure file ../doc/src/manual/figs/streamtubes:
     can use ../doc/src/manual/figs/streamtubes.eps for format latex
-downloading https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png .......
+... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
 
 exporting publish database papers.pub to papers.bib:
 output in testdoc.p.tex
@@ -64807,6 +65503,7 @@ warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
 
 found info about 9 exercises, written to .testdoc.exerinfo
+... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
 figure file ../doc/src/manual/figs/streamtubes:
     can use ../doc/src/manual/figs/streamtubes.png for format html
 *** warning: TITLE may look strange with a template -
@@ -64874,6 +65571,7 @@ warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
 
 found info about 9 exercises, written to .testdoc.exerinfo
+... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
 figure file ../doc/src/manual/figs/streamtubes:
     can use ../doc/src/manual/figs/streamtubes.png for format html
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
@@ -64944,6 +65642,7 @@ warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
 
 found info about 9 exercises, written to .testdoc.exerinfo
+... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
 figure file ../doc/src/manual/figs/streamtubes:
     can use ../doc/src/manual/figs/streamtubes.png for format html
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
@@ -65024,9 +65723,10 @@ warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
 
 found info about 9 exercises, written to .testdoc.exerinfo
+... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
 figure file ../doc/src/manual/figs/streamtubes:
     can use ../doc/src/manual/figs/streamtubes.eps for format latex
-downloading https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png .......
+... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
 
 exporting publish database papers.pub to papers.bib:
 output in testdoc.p.tex
@@ -65105,9 +65805,10 @@ warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
 
 found info about 9 exercises, written to .testdoc.exerinfo
+... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
 figure file ../doc/src/manual/figs/streamtubes:
     can use ../doc/src/manual/figs/streamtubes.png for format pdflatex
-downloading https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png .......
+... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
 
 exporting publish database papers.pub to papers.bib:
 *** warning: --latex_double_hyphen may lead to unwanted edits.
@@ -65350,48 +66051,48 @@ ABD: EveryShipout initializing macros
  [1{/var/lib/texm
 f/fonts/map/pdftex/updmap/pdftex.map}] [2]
 
-LaTeX Warning: Reference `demo:ex:1' on page 3 
 
 
-LaTeX Warning: Reference `demo:ex:2' on page 3 
 
 
-LaTeX Warning: Reference `proj:circle1' on page 3 
 
 
-LaTeX Warning: Reference `exer:dist' on page 3 
 
 
-LaTeX Warning: Reference `exer:some:formula' on page 3 undefined on input line 
-203.
 
 
-LaTeX Warning: Reference `exer:you' on page 3 
+
+
+
+...rest of part of LaTeX line number...
+
+
+
 
 [3] [4] 
 
-LaTeX Warning: Reference `my:eq1' on page 5 
 
 
-LaTeX Warning: Reference `sec1' on page 5 
 
 
-LaTeX Warning: Reference `subsubsec:ex' on page 5 
+
+
+
 
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg [5])
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg)
 [6] (./testdoc.out.pyg)
 
-LaTeX Warning: Reference `fig:impact' on page 7 
+
 
 <../doc/src/manual/figs/streamtubes.png, id=67, 583.17876pt x 437.635pt>
 <use ../doc/src/manual/figs/streamtubes.png>
 <use ../doc/src/manual/figs/streamtubes.png>
-Underfull \vbox (badness 8075) has occurred while \output is active [7]
-Overfull \vbox (13.3931pt too high) has occurred while \output is active
+
+
 [8 <../doc/src/manual/figs/streamtubes.png>]
 
-LaTeX Warning: Reference `mov:tsunami' on page 9 
+
 
 
 Overfull \hbox (320.62254pt too wide) 
@@ -65399,176 +66100,176 @@ Overfull \hbox (320.62254pt too wide)
 $[][][][][][][]\OT1/cmr/m/n/10 (-20) ) [][][][][][][][][][][][][][][][][][][][]
 [][]
 
-Underfull \vbox (badness 10000) has occurred while \output is active [9<<../doc
+
 /src/manual/figs/mjolnir.mpeg>>]
 Overfull \hbox (13.9403pt too wide) 
 []\OT1/cmr/m/n/10 (-20) Movie based on col-lec-tion of frames (here just a few 
 frames com-pared with the full wavepacket.mpeg
 
-LaTeX Warning: Reference `myfig' on page 10 
+
 
 <../doc/src/manual/figs/wavepacket_0001.png, id=125, 642.4pt x 481.8pt>
 <use ../doc/src/manual/figs/wavepacket_0001.png>
 <downloaded_figures/f_plot.png, id=126, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png>
-Underfull \vbox (badness 10000) has occurred while \output is active [10<<../do
+
 c/src/manual/figs/wavepacket.mpeg>>] [11 <../doc/src/manual/figs/wavepacket_000
 1.png> <./downloaded_figures/f_plot.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on 
+(hyperref)                removing `math shift' on .
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\theta' on 
+(hyperref)                removing `\theta' on .
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on 
+(hyperref)                removing `math shift' on .
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on 
+(hyperref)                removing `math shift' on .
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\nabla' on 
+(hyperref)                removing `\nabla' on .
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on 
+(hyperref)                removing `math shift' on .
 
 [12]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on 
+(hyperref)                removing `math shift' on .
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on 
+(hyperref)                removing `subscript' on .
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on 
+(hyperref)                removing `math shift' on .
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on 
+(hyperref)                removing `\new@ifnextchar' on .
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on 
-
-
-LaTeX Warning: Citation `Langtangen_Pedersen_2002' on page 13 undefined on inpu
-t line 755.
-
-
-LaTeX Warning: Citation `Langtangen_et_al_2002' on page 13 undefined on input l
-ine 756.
-
-
-LaTeX Warning: Citation `Langtangen_1994a' on page 13 undefined on input line 7
-59.
-
-
-LaTeX Warning: Citation `Mardal_et_al_2003a' on page 13 undefined on input line
- 760.
-
-
-LaTeX Warning: Citation `Langtangen_1988d' on page 13 undefined on input line 7
-62.
-
-
-LaTeX Warning: Citation `Langtangen_Pedersen_2002' on page 13 undefined on inpu
-t line 764.
-
-
-LaTeX Warning: Citation `Mardal_et_al_2003a' on page 13 undefined on input line
- 764.
-
-
-LaTeX Warning: Citation `Langtangen_1992c' on page 13 undefined on input line 7
-68.
-
-
-LaTeX Warning: Citation `Langtangen_1994a' on page 13 undefined on input line 7
-68.
-
-
-LaTeX Warning: Citation `Mortensen_et_al_2011' on page 13 undefined on input li
-ne 768.
-
-
-LaTeX Warning: Citation `Langtangen_Pedersen_2002' on page 13 undefined on inpu
-t line 768.
-
-
-LaTeX Warning: Citation `Langtangen_et_al_2002' on page 13 undefined on input l
-ine 770.
-
-
-LaTeX Warning: Citation `Glimsdal_et_al_20006' on page 13 undefined on input li
-ne 770.
-
-
-LaTeX Warning: Citation `Rahman_et_al_2006b' on page 13 undefined on input line
- 770.
-
-
-LaTeX Warning: Citation `Haga_et_al_2011a' on page 13 undefined on input line 7
-70.
-
-
-LaTeX Warning: Citation `Langtangen_2003a' on page 13 undefined on input line 7
-70.
-
-
-LaTeX Warning: Citation `Langtangen_2008a' on page 13 undefined on input line 7
-70.
-
-
-LaTeX Warning: Citation `Langtangen:95' on page 13 
+(hyperref)                removing `\new@ifnextchar' on .
 
 
 
-LaTeX Warning: Citation `Langtangen_2012' on page 13 undefined on input line 77
-2.
+t line 757.
 
 
-LaTeX Warning: Citation `Mardal_et_al_2003a' on page 13 undefined on input line
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+ 762.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+t line 766.
+
+
+
+ 766.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+t line 770.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
  772.
 
 
-LaTeX Warning: Citation `Jeberg_et_al_2004' on page 13 undefined on input line 
-772.
 
-
-LaTeX Warning: Citation `Langtangen_1988d' on page 13 undefined on input line 7
-73.
-
-
-LaTeX Warning: Citation `Langtangen_1989e' on page 13 undefined on input line 7
-73.
-
-
-LaTeX Warning: Citation `Langtangen_talk_2007a' on page 13 undefined on input l
-ine 774.
-
-
-LaTeX Warning: Citation `Langtangen:85' on page 13 
+...rest of part of LaTeX line number...
 
 
 
-LaTeX Warning: Citation `Langtangen_1989e' on page 13 undefined on input line 7
-75.
-
-
-LaTeX Warning: Citation `Langtangen:91' on page 13 
+...rest of part of LaTeX line number...
 
 
 
-LaTeX Warning: Citation `Langtangen:94b' on page 13 undefined on input line 778
+...rest of part of LaTeX line number...
+
+
+
+
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+ 774.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+
+
+
+
 .
 
 [13]
@@ -65577,98 +66278,98 @@ Overfull \hbox (5.05241pt too wide)
 +%26+engineering/book/978-3-642-23098-1| 
 [14]
 
-LaTeX Warning: Reference `my:eq1' on page 15 
+
 
 
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on 
-
-
-LaTeX Warning: Reference `my:eq1' on page 15 
-
-
-LaTeX Warning: Reference `eq1' on page 15 
-
-
-LaTeX Warning: Reference `eq2' on page 15 
-
-
-LaTeX Warning: Reference `split:envir:eq' on page 15 undefined on input line 90
-3.
-
-
-LaTeX Warning: Reference `eq1' on page 15 
-
-
-LaTeX Warning: Reference `eq2' on page 15 
-
-
-LaTeX Warning: Reference `eq1a' on page 15 
-
-
-LaTeX Warning: Reference `eq2a' on page 15 
-
-
-LaTeX Warning: Reference `my:eq1' on page 15 
-
-
-LaTeX Warning: Reference `demo:ex:1' on page 15 
-
-
-LaTeX Warning: Reference `demo:ex:2' on page 15 
-
-
-LaTeX Warning: Reference `proj:circle1' on page 15 
+(amsmath)                 on .
 
 
 
-LaTeX Warning: Reference `exer:you' on page 15 
 
 
-LaTeX Warning: Reference `exer:some:formula' on page 15 undefined on input line
- 929.
+
+
+
+
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 931.
 
 [15] (./testdoc.out.pyg) [16] (./testdoc.out.pyg) [17]
 
-LaTeX Warning: Reference `proj:circle1' on page 18 undefined on input line 1333
+
 .
 
 
-LaTeX Warning: Reference `demo:ex:1' on page 18 
+
 
 [18]
 
-LaTeX Warning: Reference `demo:ex:2' on page 19 
 
 
-LaTeX Warning: Reference `exer:some:formula' on page 19 undefined on input line
- 1361.
 
 
-LaTeX Warning: Reference `demo:ex:2' on page 19 
+ 1363.
 
 
-LaTeX Warning: Reference `proj:circle1' on page 19 undefined on input line 1362
+
+
+
+
 .
 
 
-LaTeX Warning: Reference `exer:you' on page 19 
+
 
 No file testdoc.bbl.
 
-LaTeX Warning: Reference `mdf@pagelabel-1' on page 19 undefined on input line 1
-415.
+
+...rest of part of LaTeX line number...
 
 [19]
 
-LaTeX Warning: Reference `mdf@pagelabel-2' on page 20 undefined on input line 1
-443.
+
+...rest of part of LaTeX line number...
 
 [20]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on 
+(hyperref)                removing `\new@ifnextchar' on .
 
 No file testdoc.ind.
 
@@ -66111,15 +66812,15 @@ f/fonts/map/pdftex/updmap/pdftex.map}] (./testdoc.toc) [2] [3] (./testdoc.tdo)
 <../doc/src/manual/figs/streamtubes.png, id=222, 583.17876pt x 437.635pt>
 <use ../doc/src/manual/figs/streamtubes.png>
 <use ../doc/src/manual/figs/streamtubes.png>
-Underfull \vbox (badness 8075) has occurred while \output is active [7]
-Overfull \vbox (13.3931pt too high) has occurred while \output is active
+
+
 [8 <../doc/src/manual/figs/streamtubes.png>]
 Overfull \hbox (320.62254pt too wide) 
 []\OT1/cmr/m/n/10 (-20) (Movie []: play [][]$\OT1/cmtt/m/n/10 wavepacket . html
 $[][][][][][][]\OT1/cmr/m/n/10 (-20) ) [][][][][][][][][][][][][][][][][][][][]
 [][]
 
-Underfull \vbox (badness 10000) has occurred while \output is active [9<<../doc
+
 /src/manual/figs/mjolnir.mpeg>>]
 Overfull \hbox (13.9403pt too wide) 
 []\OT1/cmr/m/n/10 (-20) Movie based on col-lec-tion of frames (here just a few 
@@ -66128,164 +66829,164 @@ frames com-pared with the full wavepacket.mpeg
 <use ../doc/src/manual/figs/wavepacket_0001.png>
 <downloaded_figures/f_plot.png, id=282, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png>
-Underfull \vbox (badness 10000) has occurred while \output is active [10<<../do
+
 c/src/manual/figs/wavepacket.mpeg>>] [11 <../doc/src/manual/figs/wavepacket_000
 1.png> <./downloaded_figures/f_plot.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on 
+(hyperref)                removing `math shift' on .
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\theta' on 
+(hyperref)                removing `\theta' on .
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on 
+(hyperref)                removing `math shift' on .
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on 
+(hyperref)                removing `math shift' on .
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\nabla' on 
+(hyperref)                removing `\nabla' on .
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on 
+(hyperref)                removing `math shift' on .
 
 [12]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on 
+(hyperref)                removing `math shift' on .
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on 
+(hyperref)                removing `subscript' on .
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on 
+(hyperref)                removing `math shift' on .
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on 
+(hyperref)                removing `\new@ifnextchar' on .
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on 
-
-
-LaTeX Warning: Citation `Langtangen_Pedersen_2002' on page 13 undefined on inpu
-t line 755.
-
-
-LaTeX Warning: Citation `Langtangen_et_al_2002' on page 13 undefined on input l
-ine 756.
-
-
-LaTeX Warning: Citation `Langtangen_1994a' on page 13 undefined on input line 7
-59.
-
-
-LaTeX Warning: Citation `Mardal_et_al_2003a' on page 13 undefined on input line
- 760.
-
-
-LaTeX Warning: Citation `Langtangen_1988d' on page 13 undefined on input line 7
-62.
-
-
-LaTeX Warning: Citation `Langtangen_Pedersen_2002' on page 13 undefined on inpu
-t line 764.
-
-
-LaTeX Warning: Citation `Mardal_et_al_2003a' on page 13 undefined on input line
- 764.
-
-
-LaTeX Warning: Citation `Langtangen_1992c' on page 13 undefined on input line 7
-68.
-
-
-LaTeX Warning: Citation `Langtangen_1994a' on page 13 undefined on input line 7
-68.
-
-
-LaTeX Warning: Citation `Mortensen_et_al_2011' on page 13 undefined on input li
-ne 768.
-
-
-LaTeX Warning: Citation `Langtangen_Pedersen_2002' on page 13 undefined on inpu
-t line 768.
-
-
-LaTeX Warning: Citation `Langtangen_et_al_2002' on page 13 undefined on input l
-ine 770.
-
-
-LaTeX Warning: Citation `Glimsdal_et_al_20006' on page 13 undefined on input li
-ne 770.
-
-
-LaTeX Warning: Citation `Rahman_et_al_2006b' on page 13 undefined on input line
- 770.
-
-
-LaTeX Warning: Citation `Haga_et_al_2011a' on page 13 undefined on input line 7
-70.
-
-
-LaTeX Warning: Citation `Langtangen_2003a' on page 13 undefined on input line 7
-70.
-
-
-LaTeX Warning: Citation `Langtangen_2008a' on page 13 undefined on input line 7
-70.
-
-
-LaTeX Warning: Citation `Langtangen:95' on page 13 
+(hyperref)                removing `\new@ifnextchar' on .
 
 
 
-LaTeX Warning: Citation `Langtangen_2012' on page 13 undefined on input line 77
-2.
+t line 757.
 
 
-LaTeX Warning: Citation `Mardal_et_al_2003a' on page 13 undefined on input line
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+ 762.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+t line 766.
+
+
+
+ 766.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+t line 770.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
  772.
 
 
-LaTeX Warning: Citation `Jeberg_et_al_2004' on page 13 undefined on input line 
-772.
 
-
-LaTeX Warning: Citation `Langtangen_1988d' on page 13 undefined on input line 7
-73.
-
-
-LaTeX Warning: Citation `Langtangen_1989e' on page 13 undefined on input line 7
-73.
-
-
-LaTeX Warning: Citation `Langtangen_talk_2007a' on page 13 undefined on input l
-ine 774.
-
-
-LaTeX Warning: Citation `Langtangen:85' on page 13 
+...rest of part of LaTeX line number...
 
 
 
-LaTeX Warning: Citation `Langtangen_1989e' on page 13 undefined on input line 7
-75.
-
-
-LaTeX Warning: Citation `Langtangen:91' on page 13 
+...rest of part of LaTeX line number...
 
 
 
-LaTeX Warning: Citation `Langtangen:94b' on page 13 undefined on input line 778
+...rest of part of LaTeX line number...
+
+
+
+
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+ 774.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+
+
+
+
 .
 
 [13]
@@ -66296,14 +66997,14 @@ Overfull \hbox (5.05241pt too wide)
 
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on 
+(amsmath)                 on .
 
 [15] (./testdoc.out.pyg) [16] (./testdoc.out.pyg) [17] [18]
 No file testdoc.bbl.
 [19] [20]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on 
+(hyperref)                removing `\new@ifnextchar' on .
 
 No file testdoc.ind.
 
@@ -66757,15 +67458,15 @@ f/fonts/map/pdftex/updmap/pdftex.map}] (./testdoc.toc) [2] [3] (./testdoc.tdo)
 <../doc/src/manual/figs/streamtubes.png, id=222, 583.17876pt x 437.635pt>
 <use ../doc/src/manual/figs/streamtubes.png>
 <use ../doc/src/manual/figs/streamtubes.png>
-Underfull \vbox (badness 8075) has occurred while \output is active [7]
-Overfull \vbox (13.3931pt too high) has occurred while \output is active
+
+
 [8 <../doc/src/manual/figs/streamtubes.png>]
 Overfull \hbox (320.62254pt too wide) 
 []\OT1/cmr/m/n/10 (-20) (Movie []: play [][]$\OT1/cmtt/m/n/10 wavepacket . html
 $[][][][][][][]\OT1/cmr/m/n/10 (-20) ) [][][][][][][][][][][][][][][][][][][][]
 [][]
 
-Underfull \vbox (badness 10000) has occurred while \output is active [9<<../doc
+
 /src/manual/figs/mjolnir.mpeg>>]
 Overfull \hbox (13.9403pt too wide) 
 []\OT1/cmr/m/n/10 (-20) Movie based on col-lec-tion of frames (here just a few 
@@ -66774,164 +67475,164 @@ frames com-pared with the full wavepacket.mpeg
 <use ../doc/src/manual/figs/wavepacket_0001.png>
 <downloaded_figures/f_plot.png, id=282, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png>
-Underfull \vbox (badness 10000) has occurred while \output is active [10<<../do
+
 c/src/manual/figs/wavepacket.mpeg>>] [11 <../doc/src/manual/figs/wavepacket_000
 1.png> <./downloaded_figures/f_plot.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on 
+(hyperref)                removing `math shift' on .
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\theta' on 
+(hyperref)                removing `\theta' on .
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on 
+(hyperref)                removing `math shift' on .
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on 
+(hyperref)                removing `math shift' on .
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\nabla' on 
+(hyperref)                removing `\nabla' on .
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on 
+(hyperref)                removing `math shift' on .
 
 [12]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on 
+(hyperref)                removing `math shift' on .
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on 
+(hyperref)                removing `subscript' on .
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on 
+(hyperref)                removing `math shift' on .
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on 
+(hyperref)                removing `\new@ifnextchar' on .
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on 
-
-
-LaTeX Warning: Citation `Langtangen_Pedersen_2002' on page 13 undefined on inpu
-t line 755.
-
-
-LaTeX Warning: Citation `Langtangen_et_al_2002' on page 13 undefined on input l
-ine 756.
-
-
-LaTeX Warning: Citation `Langtangen_1994a' on page 13 undefined on input line 7
-59.
-
-
-LaTeX Warning: Citation `Mardal_et_al_2003a' on page 13 undefined on input line
- 760.
-
-
-LaTeX Warning: Citation `Langtangen_1988d' on page 13 undefined on input line 7
-62.
-
-
-LaTeX Warning: Citation `Langtangen_Pedersen_2002' on page 13 undefined on inpu
-t line 764.
-
-
-LaTeX Warning: Citation `Mardal_et_al_2003a' on page 13 undefined on input line
- 764.
-
-
-LaTeX Warning: Citation `Langtangen_1992c' on page 13 undefined on input line 7
-68.
-
-
-LaTeX Warning: Citation `Langtangen_1994a' on page 13 undefined on input line 7
-68.
-
-
-LaTeX Warning: Citation `Mortensen_et_al_2011' on page 13 undefined on input li
-ne 768.
-
-
-LaTeX Warning: Citation `Langtangen_Pedersen_2002' on page 13 undefined on inpu
-t line 768.
-
-
-LaTeX Warning: Citation `Langtangen_et_al_2002' on page 13 undefined on input l
-ine 770.
-
-
-LaTeX Warning: Citation `Glimsdal_et_al_20006' on page 13 undefined on input li
-ne 770.
-
-
-LaTeX Warning: Citation `Rahman_et_al_2006b' on page 13 undefined on input line
- 770.
-
-
-LaTeX Warning: Citation `Haga_et_al_2011a' on page 13 undefined on input line 7
-70.
-
-
-LaTeX Warning: Citation `Langtangen_2003a' on page 13 undefined on input line 7
-70.
-
-
-LaTeX Warning: Citation `Langtangen_2008a' on page 13 undefined on input line 7
-70.
-
-
-LaTeX Warning: Citation `Langtangen:95' on page 13 
+(hyperref)                removing `\new@ifnextchar' on .
 
 
 
-LaTeX Warning: Citation `Langtangen_2012' on page 13 undefined on input line 77
-2.
+t line 757.
 
 
-LaTeX Warning: Citation `Mardal_et_al_2003a' on page 13 undefined on input line
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+ 762.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+t line 766.
+
+
+
+ 766.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+t line 770.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
  772.
 
 
-LaTeX Warning: Citation `Jeberg_et_al_2004' on page 13 undefined on input line 
-772.
 
-
-LaTeX Warning: Citation `Langtangen_1988d' on page 13 undefined on input line 7
-73.
-
-
-LaTeX Warning: Citation `Langtangen_1989e' on page 13 undefined on input line 7
-73.
-
-
-LaTeX Warning: Citation `Langtangen_talk_2007a' on page 13 undefined on input l
-ine 774.
-
-
-LaTeX Warning: Citation `Langtangen:85' on page 13 
+...rest of part of LaTeX line number...
 
 
 
-LaTeX Warning: Citation `Langtangen_1989e' on page 13 undefined on input line 7
-75.
-
-
-LaTeX Warning: Citation `Langtangen:91' on page 13 
+...rest of part of LaTeX line number...
 
 
 
-LaTeX Warning: Citation `Langtangen:94b' on page 13 undefined on input line 778
+...rest of part of LaTeX line number...
+
+
+
+
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+ 774.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+
+
+
+
 .
 
 [13]
@@ -66942,13 +67643,13 @@ Overfull \hbox (5.05241pt too wide)
 
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on 
+(amsmath)                 on .
 
 [15] (./testdoc.out.pyg) [16] (./testdoc.out.pyg) [17] [18] (./testdoc.bbl
 [19]) [20] [21] [22]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on 
+(hyperref)                removing `\new@ifnextchar' on .
 
 (./testdoc.ind [23]
 Overfull \hbox (9.21391pt too wide) 
@@ -67393,15 +68094,15 @@ f/fonts/map/pdftex/updmap/pdftex.map}] (./testdoc.toc) [2] [3] (./testdoc.tdo)
 <../doc/src/manual/figs/streamtubes.png, id=222, 583.17876pt x 437.635pt>
 <use ../doc/src/manual/figs/streamtubes.png>
 <use ../doc/src/manual/figs/streamtubes.png>
-Underfull \vbox (badness 8075) has occurred while \output is active [7]
-Overfull \vbox (13.3931pt too high) has occurred while \output is active
+
+
 [8 <../doc/src/manual/figs/streamtubes.png>]
 Overfull \hbox (320.62254pt too wide) 
 []\OT1/cmr/m/n/10 (-20) (Movie []: play [][]$\OT1/cmtt/m/n/10 wavepacket . html
 $[][][][][][][]\OT1/cmr/m/n/10 (-20) ) [][][][][][][][][][][][][][][][][][][][]
 [][]
 
-Underfull \vbox (badness 10000) has occurred while \output is active [9<<../doc
+
 /src/manual/figs/mjolnir.mpeg>>]
 Overfull \hbox (13.9403pt too wide) 
 []\OT1/cmr/m/n/10 (-20) Movie based on col-lec-tion of frames (here just a few 
@@ -67410,53 +68111,53 @@ frames com-pared with the full wavepacket.mpeg
 <use ../doc/src/manual/figs/wavepacket_0001.png>
 <downloaded_figures/f_plot.png, id=282, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png>
-Underfull \vbox (badness 10000) has occurred while \output is active [10<<../do
+
 c/src/manual/figs/wavepacket.mpeg>>] [11 <../doc/src/manual/figs/wavepacket_000
 1.png> <./downloaded_figures/f_plot.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on 
+(hyperref)                removing `math shift' on .
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\theta' on 
+(hyperref)                removing `\theta' on .
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on 
+(hyperref)                removing `math shift' on .
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on 
+(hyperref)                removing `math shift' on .
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\nabla' on 
+(hyperref)                removing `\nabla' on .
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on 
+(hyperref)                removing `math shift' on .
 
 [12]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on 
+(hyperref)                removing `math shift' on .
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on 
+(hyperref)                removing `subscript' on .
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on 
+(hyperref)                removing `math shift' on .
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on 
+(hyperref)                removing `\new@ifnextchar' on .
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on 
+(hyperref)                removing `\new@ifnextchar' on .
 
 [13]
 Overfull \hbox (5.05241pt too wide) 
@@ -67466,13 +68167,13 @@ Overfull \hbox (5.05241pt too wide)
 
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on 
+(amsmath)                 on .
 
 [15] (./testdoc.out.pyg) [16] (./testdoc.out.pyg) [17] [18] (./testdoc.bbl
 [19]) [20] [21] [22]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on 
+(hyperref)                removing `\new@ifnextchar' on .
 
 (./testdoc.ind [23]
 Overfull \hbox (9.21391pt too wide) 
@@ -67870,6 +68571,7 @@ warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
 
 found info about 9 exercises, written to .testdoc.exerinfo
+... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
 figure file ../doc/src/manual/figs/streamtubes:
     can use ../doc/src/manual/figs/streamtubes.png for format sphinx
 *** warning: the "alignat" environment will give errors in Sphinx:
@@ -67881,11 +68583,11 @@ figure file ../doc/src/manual/figs/streamtubes:
 
 
 
-*** warning: detected non-align equation systems with multiple labels
-    (that Sphinx will not handle - labels will be removed
+*** warning: detected non-align math environment with multiple labels
+    (Sphinx cannot handle this equation system - labels will be removed
     and references to them will be empty):
-label{eq1a}
-label{eq2a}
+    label{eq1a}
+    label{eq2a}
 
 output in testdoc.rst
 + '[' 0 -ne 0 ']'
@@ -67955,6 +68657,7 @@ warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
 
 found info about 9 exercises, written to .testdoc.exerinfo
+... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
 figure file ../doc/src/manual/figs/streamtubes:
     can use ../doc/src/manual/figs/streamtubes.png for format sphinx
 *** warning: the "alignat" environment will give errors in Sphinx:
@@ -67966,25 +68669,16 @@ figure file ../doc/src/manual/figs/streamtubes:
 
 
 
-*** warning: detected non-align equation systems with multiple labels
-    (that Sphinx will not handle - labels will be removed
+*** warning: detected non-align math environment with multiple labels
+    (Sphinx cannot handle this equation system - labels will be removed
     and references to them will be empty):
-label{eq1a}
-label{eq2a}
+    label{eq1a}
+    label{eq2a}
 
 output in testdoc.rst
 + doconce split_rst testdoc
-Traceback (most recent call last):
-  File "/usr/local/bin/doconce", line 953, in <module>
-    main()
-  File "/usr/local/bin/doconce", line 943, in main
-    eval(command + '()')
-  File "<string>", line 1, in <module>
-  File "/usr/local/lib/python2.7/dist-packages/doconce/misc.py", line 3867, in split_rst
-    files = doconce_rst_split(parts, basename, filename)
-  File "/usr/local/lib/python2.7/dist-packages/doconce/misc.py", line 3913, in doconce_rst_split
-    if parts_label2part[label] == pn:
-KeyError: 'eq1a'
+testdoc split into
+._part0000_testdoc.rst ._part0001_testdoc.rst ._part0002_testdoc.rst
 + system doconce sphinx_dir author=HPL 'title=Just a test' version=0.1 theme=agni testdoc
 + doconce sphinx_dir author=HPL 'title=Just a test' version=0.1 theme=agni testdoc
 Making sphinx-rootdir
@@ -68106,6 +68800,7 @@ warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
 
 found info about 9 exercises, written to .testdoc.exerinfo
+... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
 figure file ../doc/src/manual/figs/streamtubes:
     can use ../doc/src/manual/figs/streamtubes.png for format rst
 output in testdoc.rst
@@ -68218,6 +68913,7 @@ warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
 
 found info about 9 exercises, written to .testdoc.exerinfo
+... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
 figure file ../doc/src/manual/figs/streamtubes:
     can use ../doc/src/manual/figs/streamtubes.png for format pandoc
 *** warning: latex envir \begin{multline} does not work well.
@@ -68283,6 +68979,7 @@ warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
 
 found info about 9 exercises, written to .testdoc.exerinfo
+... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
 figure file ../doc/src/manual/figs/streamtubes:
     can use ../doc/src/manual/figs/streamtubes.png for format mwiki
  ...checking if streamtubes.png is stored at en.wikipedia.org/w/api.php...
@@ -68359,6 +69056,7 @@ warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
 
 found info about 9 exercises, written to .testdoc.exerinfo
+... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
 figure file ../doc/src/manual/figs/streamtubes:
     can use ../doc/src/manual/figs/streamtubes.png for format cwiki
 output in testdoc.cwiki
@@ -68416,6 +69114,7 @@ warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
 
 found info about 9 exercises, written to .testdoc.exerinfo
+... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
 figure file ../doc/src/manual/figs/streamtubes:
     can use ../doc/src/manual/figs/streamtubes.png for format ipynb
 output in testdoc.ipynb
@@ -68474,6 +69173,7 @@ warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
 
 found info about 9 exercises, written to .testdoc.exerinfo
+... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
 figure file ../doc/src/manual/figs/streamtubes:
     can use ../doc/src/manual/figs/streamtubes.png for format gwiki
 
@@ -68576,9 +69276,10 @@ warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
 
 found info about 9 exercises, written to .testdoc.exerinfo
+... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
 figure file ../doc/src/manual/figs/streamtubes:
     can use ../doc/src/manual/figs/streamtubes.eps for format latex
-downloading https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png .......
+... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
 
 exporting publish database papers.pub to papers.bib:
 output in testdoc.p.tex
@@ -68665,6 +69366,7 @@ warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
 
 found info about 9 exercises, written to .testdoc.exerinfo
+... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
 figure file ../doc/src/manual/figs/streamtubes:
     can use ../doc/src/manual/figs/streamtubes.png for format pandoc
 *** warning: latex envir \begin{multline} does not work well.
@@ -69023,21 +69725,21 @@ No file math_test.aux.
 
 
 
-LaTeX Warning: Reference `eq1b' on page 1 
+
 
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 
-LaTeX Warning: Reference `eq2b' on page 2 
 
 
-LaTeX Warning: Reference `eq3b' on page 2 
+
+
 
 [2]
 
-LaTeX Warning: Reference `eq2c' on page 3 
 
 
-LaTeX Warning: Reference `eq3c' on page 3 
+
+
 
 No file math_test.ind.
 [3] (./math_test.aux)
@@ -69170,11 +69872,11 @@ Not recommended for sphinx output: math environment {eqnarray}
 (use equation, equation*, \[ \], or align/align*)
 Not recommended for sphinx output: math environment {eqnarray*}
 
-*** warning: detected non-align equation systems with multiple labels
-    (that Sphinx will not handle - labels will be removed
+*** warning: detected non-align math environment with multiple labels
+    (Sphinx cannot handle this equation system - labels will be removed
     and references to them will be empty):
-label{eq2c}
-label{eq3c}
+    label{eq2c}
+    label{eq3c}
 
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in math_test.rst
@@ -69842,7 +70544,7 @@ Package mdframed Warning: You got a bad break
 (mdframed)                because the last box will be empty
 (mdframed)                you have to change it manually
 (mdframed)                by changing the text, the space
-(mdframed)                or something else on 
+(mdframed)                or something else on .
 
 [2] (./admon_graybox1.out.pyg) (./admon_graybox1.out.pyg)
 (./admon_graybox1.out.pyg)
@@ -70891,9 +71593,9 @@ dmap/pdftex.map} <./latex_figs/small_yellow_warning.pdf>]
 (./admon_yellowbox.out.pyg)
 <../doc/src/manual/figs/wavepacket_0001.png, id=48, 642.4pt x 481.8pt>
 <use ../doc/src/manual/figs/wavepacket_0001.png> [3]
-Underfull \vbox (badness 1337) detected at line 445
 
-Underfull \vbox (badness 1137) detected at line 445
+
+
 [4] <latex_figs/small_yellow_summary.pdf, id=61, 32.12pt x 32.12pt>
 <use latex_figs/small_yellow_summary.pdf>
 No file admon_yellowbox.ind.
@@ -71157,9 +71859,9 @@ f> <./latex_figs/small_gray_question2.pdf>]
 (./admon_graybox3.out.pyg) (./admon_graybox3.out.pyg)
 <../doc/src/manual/figs/wavepacket_0001.png, id=48, 642.4pt x 481.8pt>
 <use ../doc/src/manual/figs/wavepacket_0001.png> [3]
-Underfull \vbox (badness 1337) detected at line 445
 
-Underfull \vbox (badness 1137) detected at line 445
+
+
 [4] <latex_figs/small_gray_summary.pdf, id=61, 48.18pt x 48.18pt>
 <use latex_figs/small_gray_summary.pdf>
 No file admon_graybox3.ind.
@@ -71420,9 +72122,9 @@ tice.pdf> <./latex_figs/question.pdf>] <use latex_figs/warning.pdf>
 <use latex_figs/notice.pdf> (./admon_colors2.out.pyg) (./admon_colors2.out.pyg)
 <../doc/src/manual/figs/wavepacket_0001.png, id=42, 642.4pt x 481.8pt>
 <use ../doc/src/manual/figs/wavepacket_0001.png> [3]
-Underfull \vbox (badness 1337) detected at line 445
 
-Underfull \vbox (badness 1137) detected at line 445
+
+
 [4] <latex_figs/summary.pdf, id=55, 89.33376pt x 89.33376pt>
 <use latex_figs/summary.pdf>
 No file admon_colors2.ind.
@@ -72015,21 +72717,97 @@ Abort! (add --no_abort on the command line to avoid this abortion)
 ^!bhint.+?!ehint replaced by  in tmp2.do.txt
 + doconce format sphinx tmp2
 translating doconce text in tmp2.do.txt to sphinx
+... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media99.png ...
+... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media99.gif ...
+... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media99.jpg ...
+... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media99.jpeg ...
+*** error: figure http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media99:
+    could not find URL with legal extension .png, .gif, .jpg, .jpeg
+Abort! (add --no_abort on the command line to avoid this abortion)
++ doconce replace two_media99 two_media tmp2.do.txt
+replacing two_media99 by two_media in tmp2.do.txt
++ doconce format html tmp2
+translating doconce text in tmp2.do.txt to html
 figure file ../doc/src/manual/figs/streamtubes:
-    can use ../doc/src/manual/figs/streamtubes.png for format sphinx
+    can use ../doc/src/manual/figs/streamtubes.png for format html
+*** error: figure file "../doc/manual/figs/streamtubes" does not exist!
+Abort! (add --no_abort on the command line to avoid this abortion)
++ doconce format pdflatex tmp2
+translating doconce text in tmp2.do.txt to pdflatex
+figure file ../doc/src/manual/figs/streamtubes:
+    can use ../doc/src/manual/figs/streamtubes.png for format pdflatex
 *** error: figure file "../doc/manual/figs/streamtubes" does not exist!
 Abort! (add --no_abort on the command line to avoid this abortion)
 + doconce replace doc/manual doc/src/manual tmp2.do.txt
 replacing doc/manual by doc/src/manual in tmp2.do.txt
++ doconce format html tmp2
+translating doconce text in tmp2.do.txt to html
+figure file ../doc/src/manual/figs/streamtubes:
+    can use ../doc/src/manual/figs/streamtubes.png for format html
+... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png ...
+figure file http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media:
+    can use http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png for format html
+*** warning: you have citations but no bibliography (BIBFILE: ...)
+... checking existence of http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.mp4 ...
+... checking existence of http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.webm ...
+... checking existence of http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.ogg ...
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
+output in tmp2.html
++ doconce format pdflatex tmp2
+translating doconce text in tmp2.do.txt to pdflatex
+figure file ../doc/src/manual/figs/streamtubes:
+    can use ../doc/src/manual/figs/streamtubes.png for format pdflatex
+... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.pdf ...
+... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png ...
+figure file http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media:
+    can use http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png for format pdflatex
+... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png ...
+*** warning: you have citations but no bibliography (BIBFILE: ...)
+output in tmp2.p.tex
 + doconce format sphinx tmp2
 translating doconce text in tmp2.do.txt to sphinx
 figure file ../doc/src/manual/figs/streamtubes:
     can use ../doc/src/manual/figs/streamtubes.png for format sphinx
+... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png ...
+figure file http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media:
+    can use http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png for format sphinx
 *** warning: math only in sphinx figure caption
   $a=50$
     FIGURE: [../doc/src/manual/figs/streamtubes.png
+*** warning: math only in sphinx figure caption
+  $a=50$
+    FIGURE: [http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png
 *** warning: you have citations but no bibliography (BIBFILE: ...)
+... checking existence of http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.mp4 ...
+... checking existence of http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.webm ...
+... checking existence of http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.ogg ...
 output in tmp2.rst
++ doconce replace 99x9.ogg .ogg tmp2.do.txt
+replacing 99x9.ogg by .ogg in tmp2.do.txt
++ doconce format html tmp2
+translating doconce text in tmp2.do.txt to html
+figure file ../doc/src/manual/figs/streamtubes:
+    can use ../doc/src/manual/figs/streamtubes.png for format html
+... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png ...
+figure file http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media:
+    can use http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png for format html
+*** warning: you have citations but no bibliography (BIBFILE: ...)
+... checking existence of http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.mp4 ...
+... checking existence of http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.webm ...
+... checking existence of http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.ogg ...
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
+output in tmp2.html
++ doconce format pdflatex tmp2
+translating doconce text in tmp2.do.txt to pdflatex
+figure file ../doc/src/manual/figs/streamtubes:
+    can use ../doc/src/manual/figs/streamtubes.png for format pdflatex
+... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.pdf ...
+... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png ...
+figure file http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media:
+    can use http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png for format pdflatex
+... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png ...
+*** warning: you have citations but no bibliography (BIBFILE: ...)
+output in tmp2.p.tex
 + echo
 
 + echo 'When we reach this point in the script,'
@@ -72271,7 +73049,7 @@ Overfull \hbox (49.67618pt too wide)
 \OT1/phv/m/n/10 pre-pro-ces-sor if-tests on the for-mat (typ-i-cally [])
 [7] [8]
 
-LaTeX Warning: Reference `quick:sections' on page 9 undefined on input line 719
+
 .
 
 [9]
@@ -72284,7 +73062,7 @@ Overfull \hbox (20.06894pt too wide)
 [10]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on 
+(hyperref)                removing `\new@ifnextchar' on .
 
 [11] [12] [13] [14]
 Overfull \hbox (3.50804pt too wide) 
@@ -72683,7 +73461,7 @@ Overfull \hbox (20.06894pt too wide)
 [11]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on 
+(hyperref)                removing `\new@ifnextchar' on .
 
 [12] [13] [14] [15]
 Overfull \hbox (3.50804pt too wide) 
@@ -73230,7 +74008,7 @@ Overfull \hbox (119.00006pt too wide)
 []\T1/pcr/m/n/10 MOVIE: [http://vimeo.com/55562330, width=500 height=278] Vimeo
  movie. 
 
-LaTeX Warning: Hyper reference `section-types' on page 9 undefined on input lin
+
 e 1000.
 
 

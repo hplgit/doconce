@@ -1,7 +1,7 @@
 #TITLE (actually governed by the filename): Testing admons
 
 By '''hpl'''
-==== Nov 21, 2013 ====
+==== Nov 25, 2013 ====
 
 == Introduction ==
 First some ordinary text to compare font sizes in admonitions
@@ -51,6 +51,8 @@ And more and more text.
 And more and more text.
 }}
 
+
+
 Test warning with title:
 
 
@@ -59,6 +61,8 @@ Test warning with title:
 | textstyle = font-size: 130%;
 | text = '''Watch out.''' And here comes some text with bad news in larger font.
 }}
+
+
 
 Test warning with title with math:
 
@@ -70,6 +74,8 @@ Test warning with title with math:
 of view.
 }}
 
+
+
 Then we test a block, which is guaranteed to never have any admon icon.
 
 ''Block with title''\n
@@ -80,8 +86,13 @@ more comment-style text or text that really goes deeper or talks
 about fun facts that are not strictly necessary for the main flow
 of understanding.
 
+
+
+
 Here is a block of text with no title. As above, it is typeset without any icon
 and is useful when you want some admons with icon and some without.
+
+
 
 The next admonition features a title "Note, eventually!".
 
@@ -103,6 +114,8 @@ But first a bit of math where we define <math>\theta</math> and <math>\bm{r}</ma
 </math>
 }}
 
+
+
 <!-- Test one word with a number -->
 
 
@@ -113,11 +126,15 @@ But first a bit of math where we define <math>\theta</math> and <math>\bm{r}</ma
 }}
 
 
+
+
 {{mbox
 | type = Question.
 | textstyle = font-size: 90%;
 | text = '''Question.''' So, how many admonition environments does Doconce support?
 }}
+
+
 
 
 {{mbox
@@ -128,6 +145,9 @@ But first a bit of math where we define <math>\theta</math> and <math>\bm{r}</ma
  <li> Once more, how many admonition environments does Doconce support?
 </ol>
 }}
+
+
+
 
 {{mbox
 | type = warning
@@ -150,6 +170,8 @@ def grab(url, filename):
 </syntaxhighlight>
 }}
 
+
+
 Next is a warning without a title ("none" implies no title).
 
 
@@ -158,6 +180,8 @@ Next is a warning without a title ("none" implies no title).
 | textstyle = font-size: 90%;
 | text = '''''' And here comes some text with bad news.
 }}
+
+
 
 ==== Going deeper environments ====
 
@@ -245,6 +269,8 @@ And then we add a figure too.
 [[File:Wavepacket 0001.png|frame|alt=Wavepacket 0001.png|<span title=""></span>]] <!-- not yet uploaded to common.wikimedia.org -->
 }}
 
+
+
 ==== The end ====
 
 A bit of text before the summary, which we now call "Concluding remarks,
@@ -259,4 +285,6 @@ just because we can.
 a different typesetting, and they may have a symbol.
 Titles should be optional.
 }}
+
+
 

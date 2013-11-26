@@ -315,7 +315,8 @@ involving :math:`\theta`:
             return theta**2
 
 
-*More on :math:`\theta`.* Here is more text following headline with math.
+**More on :math:`\theta`.**
+Here is more text following headline with math.
 
 Newcommands must also be tested in this test report:
 :math:`\frac{1}{2}`, :math:`{1/2}`, :math:`\pmb{x}`, :math:`\frac{Du}{dt}`,
@@ -334,6 +335,8 @@ both inline and in block:
 Or with align with label and numbers:
 
 
+.. _Eq:aligneq1:
+
 .. math::
    :label: aligneq1
         
@@ -349,6 +352,8 @@ Or with align with label and numbers:
         
 
 
+
+.. _Eq:aligneq2:
 
 .. math::
    :label: aligneq2
@@ -374,14 +379,16 @@ Should look nice in most formats!
 .. begin theorem
 
 
-*Theorem 5.* Let :math:`a=1` and :math:`b=2`. Then :math:`c=3`.
+**Theorem 5.**
+Let :math:`a=1` and :math:`b=2`. Then :math:`c=3`.
 
 .. end theorem
 
 
 .. begin proof
 
-*Proof.* Since :math:`c=a+b`, the result follows from straightforward addition.
+**Proof.**
+Since :math:`c=a+b`, the result follows from straightforward addition.
 :math:`\Diamond`
 .. end proof
 
@@ -482,7 +489,8 @@ and ``|`` right after verbatim word (with no space):
 A test of verbatim words in heading with subscript :math:`a_i`: ``my_file_v1`` and ``my_file_v2``
 -------------------------------------------------------------------------------------------------
 
-*Files ``my_file_v1.py`` and ``my_file_v2.py`` define some math :math:`a_{i-1}`.* Here is
+**Files ``my_file_v1.py`` and ``my_file_v2.py`` define some math :math:`a_{i-1}`.**
+Here is
 some text.
 
 Bibliography test
@@ -518,7 +526,6 @@ the old ME-IN323 book [Ref19]_ and the
 
 .. --- begin exercise ---
 
-
 .. _Example:
 
 Example 1: Examples can be typeset as exercises
@@ -530,21 +537,26 @@ typeset as exercises. This is useful if one has solution
 environments as part of the example.
 
 
-*a)* State some problem.
+**a)**
+State some problem.
 
-*Solution.* The answer to this subproblem can be written here.
+**Solution.**
+The answer to this subproblem can be written here.
 
-*b)* State some other problem.
+**b)**
+State some other problem.
 
-*Hint 1.* A hint can be given.
+**Hint 1.**
+A hint can be given.
 
-*Hint 2.* Maybe even another hint?
+**Hint 2.**
+Maybe even another hint?
 
-*Solution.* The answer to this other subproblem goes here,
+**Solution.**
+The answer to this other subproblem goes here,
 maybe over multiple doconce input lines.
 
 .. --- end exercise ---
-
 
 
 .. _subsubsec:ex:
@@ -607,6 +619,8 @@ Here is an equation without label using backslash-bracket environment:
 
 or with number and label, as in :eq:`my:eq1`, using the equation environment:
 
+.. _Eq:my:eq1:
+
 .. math::
    :label: my:eq1
         
@@ -627,6 +641,8 @@ Here is a system without equation numbers, using the align-astrisk environment:
 
 And here is a system of equations with labels in an align environment:
 
+.. _Eq:eq1:
+
 .. math::
    :label: eq1
         
@@ -634,6 +650,8 @@ And here is a system of equations with labels in an align environment:
         
 
 
+
+.. _Eq:eq2:
 
 .. math::
    :label: eq2
@@ -648,6 +666,8 @@ Also test :math:`a_{i-j}` as well as :math:`kx-wt`.
 Many of the next environments will fail in non-latex formats.
 Testing multiline:
 
+.. _Eq:multiline:eq1:
+
 .. math::
    :label: multiline:eq1
         
@@ -657,6 +677,8 @@ Testing multiline:
         
 
 Testing split:
+
+.. _Eq:split:envir:eq:
 
 .. math::
    :label: split:envir:eq
@@ -688,7 +710,7 @@ Testing alignat:
         \end{alignat}
 
 Let us refer to :eq:`eq1`-:eq:`eq2` again, and to the
-alignat variant :eq:`eq1a`-:eq:`eq2a`, and to :eq:`my:eq1`.
+alignat variant :ref:`(label:removed) <Eq:eq1a>`-:ref:`(label:removed) <Eq:eq2a>`, and to :eq:`my:eq1`.
 
 Testing eqnarray:
 
@@ -712,10 +734,9 @@ Exercises
 
 .. --- begin exercise ---
 
-
 .. _demo:ex:1:
 
-Problem 1: Flip a Coin
+Problem 2: Flip a Coin
 ----------------------
 .. keywords = random numbers; Monte Carlo simulation
 
@@ -746,34 +767,31 @@ the beginning of a new exercise and cause trouble. Maybe a list
 
 .. --- begin hint in exercise ---
 
-
-*Hint 1.* Use ``r = random.random()`` and define head as ``r <= 0.5``.
+**Hint 1.**
+Use ``r = random.random()`` and define head as ``r <= 0.5``.
 
 .. --- end hint in exercise ---
 
-
 .. --- begin hint in exercise ---
 
-
-*Hint 2.* Draw an integer among :math:`\{1,2\}` with
+**Hint 2.**
+Draw an integer among :math:`\{1,2\}` with
 ``r = random.randint(1,2)`` and define head when ``r`` is 1.
 
 .. --- end hint in exercise ---
 
 
-
 .. --- begin answer of exercise ---
-
-*Answer.* If the ``random.random()`` function returns a number :math:`<1/2`, let it be
+**Answer.**
+If the ``random.random()`` function returns a number :math:`<1/2`, let it be
 head, otherwise tail. Repeat this :math:`N` number of times.
 
 .. --- end answer of exercise ---
 
 
-
 .. --- begin solution of exercise ---
-
-*Solution.* Code:
+**Solution.**
+Code:
 
 .. code-block:: python
 
@@ -788,14 +806,12 @@ head, otherwise tail. Repeat this :math:`N` number of times.
 
 
 .. --- end solution of exercise ---
-
 Filenames: ``flip_coin.py``, ``flip_coin.pdf``.
 
 .. solution files: mysol.txt, mysol_flip_coin.py, yet_another.file
 
 
 .. --- end exercise ---
-
 
 
 Not an exercise
@@ -808,10 +824,9 @@ exercises.
 
 .. --- begin exercise ---
 
-
 .. _demo:ex:2:
 
-Project 1: Compute a Probability
+Project 3: Compute a Probability
 --------------------------------
 
 .. Minimalistic exercise
@@ -821,29 +836,34 @@ Project 1: Compute a Probability
 What is the probability of getting a number between 0.5 and 0.6 when
 drawing uniformly distributed random numbers from the interval :math:`[0,1)`?
 
+
+At the end we have a list because that caused problems in LaTeX
+in previous Doconce versions:
+
+1. item1
+
+2. item2
+
 .. --- begin hint in exercise ---
 
-
-*Hint.* To answer this question empirically, let a program
+**Hint.**
+To answer this question empirically, let a program
 draw :math:`N` such random numbers using Python's standard ``random`` module,
 count how many of them, :math:`M`, that fall in the interval :math:`(0.5,0.6)`, and
 compute the probability as :math:`M/N`.
 
 .. --- end hint in exercise ---
 
-
 .. --- end exercise ---
-
 
 
 
 
 .. --- begin exercise ---
 
-
 .. _proj:circle1:
 
-Project 2: Explore Distributions of Random Circles
+Project 4: Explore Distributions of Random Circles
 --------------------------------------------------
 
 The formula for a circle is given by
@@ -890,37 +910,37 @@ center and radius. Plot each circle using the ``circle`` function
 above.
 
 
-*a)* Let :math:`R` be normally distributed and :math:`(x_0,y_0)` uniformly distributed.
+**a)**
+Let :math:`R` be normally distributed and :math:`(x_0,y_0)` uniformly distributed.
 
 .. --- begin hint in exercise ---
 
-
-*Hint.* Use the ``numpy.random`` module to draw the
+**Hint.**
+Use the ``numpy.random`` module to draw the
 :math:`x_0`, :math:`y_0`, and :math:`R` quantities.
 
 .. --- end hint in exercise ---
 
 
-
 .. --- begin answer of exercise ---
-
-*Answer.* Here goes the short answer to part a).
+**Answer.**
+Here goes the short answer to part a).
 
 .. --- end answer of exercise ---
 
 
-
 .. --- begin solution of exercise ---
-
-*Solution.* Here goes a full solution to part a).
+**Solution.**
+Here goes a full solution to part a).
 
 .. --- end solution of exercise ---
 
-
-*b)* Let :math:`R` be uniformly distributed and :math:`(x_0,y_0)` normally distributed.
+**b)**
+Let :math:`R` be uniformly distributed and :math:`(x_0,y_0)` normally distributed.
 Filename: ``norm.py``.
 
-*c)* Let :math:`R` and :math:`(x_0,y_0)` be normally distributed.
+**c)**
+Let :math:`R` and :math:`(x_0,y_0)` be normally distributed.
 
 Filename: ``circles.pdf``.
 
@@ -939,13 +959,11 @@ and give some perspectives.
 
 
 
-
 .. --- begin exercise ---
-
 
 .. _exer:dist:
 
-Exercise 1: Determine some Distance
+Exercise 5: Determine some Distance
 -----------------------------------
 
 Intro to this exercise. Questions are in subexercises below.
@@ -959,10 +977,15 @@ Intro to this exercise. Questions are in subexercises below.
 The text here belongs to the main (intro) part of the exercise. Need
 closing remarks to have text after subexercises.
 
+Test list in exercise:
+
+1. item1
+
+2. item2
 
 .. --- begin solution of exercise ---
-
-*Solution.* Here goes a full solution of the whole exercise.
+**Solution.**
+Here goes a full solution of the whole exercise.
 With some math :math:`a=b` in this solution:
 
 .. math::
@@ -980,13 +1003,13 @@ End of solution is here.
 .. --- end solution of exercise ---
 
 
-
-*a)* Subexercises are numbered a), b), etc.
+**a)**
+Subexercises are numbered a), b), etc.
 
 .. --- begin hint in exercise ---
 
-
-*Hint 1.* First hint to subexercise a).
+**Hint 1.**
+First hint to subexercise a).
 With math :math:`a=b` in hint:
 
 
@@ -1005,26 +1028,30 @@ And with code (in plain verbatim) returning :math:`x+1` in hint:
 
 .. --- end hint in exercise ---
 
-
 .. --- begin hint in exercise ---
 
+**Hint 2.**
+Second hint to subexercise a).
 
-*Hint 2.* Second hint to subexercise a).
+Test list in hint:
+
+1. item1
+
+2. item2
 
 .. --- end hint in exercise ---
-
 Filename: ``subexer_a.pdf``.
 
 
 .. --- begin answer of exercise ---
-
-*Answer.* Short answer to subexercise a).
+**Answer.**
+Short answer to subexercise a).
 With math in answer: :math:`a=b`.
 
 .. --- end answer of exercise ---
 
-
-*b)* Here goes the text for subexercise b).
+**b)**
+Here goes the text for subexercise b).
 
 
 Some math :math:`\cos^2 x + \sin^2 x = 1` written one a single line:
@@ -1036,20 +1063,18 @@ Some math :math:`\cos^2 x + \sin^2 x = 1` written one a single line:
 
 .. --- begin hint in exercise ---
 
-
-*Hint.* A hint for this subexercise.
+**Hint.**
+A hint for this subexercise.
 
 .. --- end hint in exercise ---
-
 Filename: ``subexer_b.pdf``.
 
 
 .. --- begin solution of exercise ---
-
-*Solution.* Here goes the solution of this subexercise.
+**Solution.**
+Here goes the solution of this subexercise.
 
 .. --- end solution of exercise ---
-
 
 .. Closing remarks for this Exercise
 
@@ -1067,9 +1092,7 @@ remarks will appear at the end of the typeset exercise.
 
 
 
-
 .. --- begin exercise ---
-
 
 Some exercise without the "Exercise:" prefix
 --------------------------------------------
@@ -1099,11 +1122,9 @@ And a test that the code ``lambda x: x+2`` is correctly placed here:
 
 
 
-
 .. --- begin exercise ---
 
-
-Example 2: Just an example
+Example 7: Just an example
 --------------------------
 
 .. This example needs the --examples_as_exercises option, otherwise
@@ -1112,12 +1133,13 @@ Example 2: Just an example
 
 
 
-*a)* What is the capital of Norway?
+**a)**
+What is the capital of Norway?
 
-*Answer.* Oslo.
+**Answer.**
+Oslo.
 
 .. --- end exercise ---
-
 
 
 Here goes another section
@@ -1132,14 +1154,21 @@ More Exercises
 
 .. --- begin exercise ---
 
-
 .. _exer:some:formula:
 
-Exercise 3: Make references to projects and problems
+Exercise 8: Make references to projects and problems
 ----------------------------------------------------
 
 Pick a statement from :ref:`proj:circle1` or :ref:`demo:ex:1`
 and verify it.
+
+Test list at the end of an exercise without other elements (like subexercise,
+hint, etc.):
+
+1. item1
+
+2. item2
+
 Filename: ``verify_formula.py``.
 
 .. --- end exercise ---
@@ -1147,13 +1176,11 @@ Filename: ``verify_formula.py``.
 
 
 
-
 .. --- begin exercise ---
-
 
 .. _exer:you:
 
-Project 3: References in a headings do not work well in sphinx
+Project 9: References in a headings do not work well in sphinx
 --------------------------------------------------------------
 
 Refer to the previous exercise as :ref:`exer:some:formula`,
@@ -1162,7 +1189,6 @@ and this one as :ref:`exer:you`.
 Filename: ``selc_composed.pdf``.
 
 .. --- end exercise ---
-
 
 
 References
@@ -1343,6 +1369,10 @@ Without label.
    Here is a tip or hint box, typeset as a notice box.
 
 
+
+
+
+
 Need a lot of text to surround the summary box.
 Version control systems allow you to record the history of files
 and share files among several computers and collaborators in a
@@ -1368,6 +1398,8 @@ from using version control systems.
    Much testing in this document, otherwise stupid content.
    Much testing in this document, otherwise stupid content.
    Much testing in this document, otherwise stupid content.
+
+
 
 
 Projects that you want to share among several computers or project
