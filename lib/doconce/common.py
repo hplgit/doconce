@@ -177,7 +177,7 @@ def table_analysis(table):
                 column_list[j].append(len(column))
     return [max(c) for c in column_list]
 
-def python_online_tutor(code, return_tp='iframe'):
+def online_python_tutor(code, return_tp='iframe'):
     """
     Return URL (return_tp is 'url') or iframe HTML code
     (return_tp is 'iframe') for code embedded in
@@ -429,24 +429,24 @@ def insert_code_and_tex(filestr, code_blocks, tex_blocks, format):
     n = filestr.count(_CODE_BLOCK)
     if len(code_blocks) != n:
         print '*** error: found %d code block markers for %d initial code blocks' % (n, len(code_blocks))
-        print """Possible causes:
+        print """    Possible causes:
            - mismatch of !bt and !et within one file, such that a !bt
              swallows code
            - mismatch of !bt and !et across files in multi-file documents
            - !bc and !ec inside code blocks - replace by |bc and |ec
-           (run doconce on each file to locate the problem, then on
-           smaller and smaller parts of each file)"""
+    (run doconce on each file to locate the problem, then on
+     smaller and smaller parts of each file)"""
         _abort()
     n = filestr.count(_MATH_BLOCK)
     if len(tex_blocks) != n:
         print '*** error: found %d tex block markers for %d initial tex blocks\nAbort!' % (n, len(tex_blocks))
-        print """Possible causes:
+        print """    Possible causes:
            - mismatch of !bc and !ec within one file, such that a !bc
              swallows tex blocks
            - mismatch of !bc and !ec across files in multi-file documents
            - !bt and !et inside code blocks - replace by |bt and |et
-           (run doconce on each file to locate the problem, then on
-           smaller and smaller parts of each file)"""
+    (run doconce on each file to locate the problem, then on
+     smaller and smaller parts of each file)"""
         _abort()
 
     lines = filestr.splitlines()

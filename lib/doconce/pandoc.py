@@ -59,7 +59,7 @@ def pandoc_code(filestr, code_blocks, code_block_types,
                 rbcod='Ruby', rbpro='Ruby',
                 plcod='Perl', plpro='Perl',
                 sys='Bash', dat='Python',
-                pyoptpro='Python')
+                pyoptpro='Python', pyscpro='Python')
         # (the "python" typesetting is neutral if the text
         # does not parse as python)
 

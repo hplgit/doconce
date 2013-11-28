@@ -34,6 +34,7 @@ def wide_clean():
             os.path.join('doc', 'src', 'slides'),
             os.path.join('doc', 'src', 'blog'),
             os.path.join('doc', 'src', 'design'),
+            os.path.join('doc', 'src', 'pyopt_pysc'),
             'test',
             #'bundled',  # leave cloned repos and delete them manually
             ]

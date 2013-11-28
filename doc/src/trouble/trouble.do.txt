@@ -50,68 +50,12 @@ that are not errors. To continue execution, simply add the
 `--no_abort` option on the command line. You may send an email
 to the Doconce author at `hpl@simula.no` and report the problem.
 
-===== The Mako preprocessor is seemingly not run =====
-
-If you have lines starting with `%` inside code segments (for example,
-SWIG code or Matlab comment lines), the Mako preprocessor will crash
-because it thinks these lines are Mako statements. Doconce detects
-this problem and avoids running Mako.  Examine the output from
-Doconce: warnings are issued if Mako is not run.
-
-===== The Mako preprocessor is fooled by Doconce text =====
-
-Here are possible problems for Mako:
-
- * Strings with `'T<%.1f'` look as openings of Mako blocks (`<%`); change
-   to `'T < %.1f'` to avoid this confusion.
-
-===== The Mako preprocessor claims a variable is undefined =====
-
-Very often such errors are related to typos when using Mako
-variables or functions, or correct yet undesired LaTeX syntax.
-For example, ${\cal O}(\Delta x^2)$ is valid LaTeX, but
-the dollar sign and curly braces confuse Mako. Rewrite such
-mathematics. It is wise to not use `${` anywhere in LaTeX mathematics.
-Create a newcommand if there are no other possible rewritings.
-A known common problem is `${}^+$` type of indication of superscripts.
-A suggested rewrite is `$\,{}^+$`.
-
-The error message will ask you to rerun `doconce` with
-`--mako_strict_undefined`, which will display the variable that
-is confusing Mako. However, do not continue to use
-`--mako_strict_undefined` while you are debugging because this
-variable or a new variable will then always be undefined in that mode.
-Rerun without `--mako_strict_undefined` to see if the problem
-is gone. If not, try the option again, and if no progress,
-use `# #ifdef` directives to comment out large portions of
-the text and apply a "bisection" procedure to locate where
-the Mako problem is (without `--mako_strict_undefined`).
-A "bisection" procedure means that you comment out the last half,
-find in which half the problem is, comment out half of that half,
-find in which half the problem is, and so on.
-
-===== Something goes wrong in the preprocessing step =====
-
-You can examine `tmp_preprocess__filename` and `tmp_mako__filename`,
-where `filename` is the complete name of the Doconce file, to see
-what the preprocessors actually to and if something is wrong in these
-files before Doconce starts translating the text.
-One or both of those files may be missing, but examine the beginning
-of the output from Doconce to see exactly which preprocessors are run
-and on which files.
-
 ===== Figure captions are incomplete =====
 
 If only the first part of a figure caption in the Doconce file is seen
 in the target output format, the reason is usually that the caption
 occupies multiple lines in the Doconce file. The figure caption must
 be written as *one line*, at the same line as the FIGURE keyword.
-
-===== Preprocessor directives do not work =====
-
-Make sure the preprocessor instructions, in Preprocess or Mako, have
-correct syntax. Also make sure that you do not mix Preprocess and Mako
-instructions. Doconce will then only run Preprocess.
 
 ===== Problems with boldface and emphasize =====
 
@@ -212,6 +156,66 @@ mode. The remedy is to split the file into smaller pieces and include
 the pieces using the `preprocess` directive `#include "piece.do.txt"`.
 The error message comes with the Doconce file contains too much text
 for Emacs to handle.
+
+
+======= Preprocess/Mako problems =======
+
+===== The Mako preprocessor is seemingly not run =====
+
+If you have lines starting with `%` inside code segments (for example,
+SWIG code or Matlab comment lines), the Mako preprocessor will crash
+because it thinks these lines are Mako statements. Doconce detects
+this problem and avoids running Mako.  Examine the output from
+Doconce: warnings are issued if Mako is not run.
+
+
+===== The Mako preprocessor is fooled by Doconce text =====
+
+Here are possible problems for Mako:
+
+ * Strings with `'T<%.1f'` look as openings of Mako blocks (`<%`); change
+   to `'T < %.1f'` to avoid this confusion.
+
+===== The Mako preprocessor claims a variable is undefined =====
+
+Very often such errors are related to typos when using Mako
+variables or functions, or correct yet undesired LaTeX syntax.
+For example, ${\cal O}(\Delta x^2)$ is valid LaTeX, but
+the dollar sign and curly braces confuse Mako. Rewrite such
+mathematics. It is wise to not use `${` anywhere in LaTeX mathematics.
+Create a newcommand if there are no other possible rewritings.
+A known common problem is `${}^+$` type of indication of superscripts.
+A suggested rewrite is `$\,{}^+$`.
+
+The error message will ask you to rerun `doconce` with
+`--mako_strict_undefined`, which will display the variable that
+is confusing Mako. However, do not continue to use
+`--mako_strict_undefined` while you are debugging because this
+variable or a new variable will then always be undefined in that mode.
+Rerun without `--mako_strict_undefined` to see if the problem
+is gone. If not, try the option again, and if no progress,
+use `# #ifdef` directives to comment out large portions of
+the text and apply a "bisection" procedure to locate where
+the Mako problem is (without `--mako_strict_undefined`).
+A "bisection" procedure means that you comment out the last half,
+find in which half the problem is, comment out half of that half,
+find in which half the problem is, and so on.
+
+===== Something goes wrong in the preprocessing step =====
+
+You can examine `tmp_preprocess__filename` and `tmp_mako__filename`,
+where `filename` is the complete name of the Doconce file, to see
+what the preprocessors actually to and if something is wrong in these
+files before Doconce starts translating the text.
+One or both of those files may be missing, but examine the beginning
+of the output from Doconce to see exactly which preprocessors are run
+and on which files.
+
+===== Preprocessor directives do not work =====
+
+Make sure the preprocessor instructions, in Preprocess or Mako, have
+correct syntax. Also make sure that you do not mix Preprocess and Mako
+instructions. Doconce will then only run Preprocess.
 
 ======= Problems with code or Tex Blocks =======
 

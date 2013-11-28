@@ -659,33 +659,55 @@ most of the steps through the `doconce sphinx_dir` command:
 !bc sys
 Terminal> doconce sphinx_dir author="authors' names" \
           title="some title" version=1.0 dirname=sphinxdir \
-          theme=mytheme file1 file2 file3 ...
+          theme=mytheme mydoc
 !ec
 The keywords `author`, `title`, and `version` are used in the headings
 of the Sphinx document. By default, `version` is 1.0 and the script
-will try to deduce authors and title from the doconce files `file1`,
-`file2`, etc. that together represent the whole document. Note that
-none of the individual Doconce files `file1`, `file2`, etc. should
-include the rest as their union makes up the whole document.
+will try to deduce authors and title from the doconce file `mydoc.do.txt`
 The default value of `dirname` is `sphinx-rootdir`. The `theme`
 keyword is used to set the theme for design of HTML output from
 Sphinx (the default theme is `'default'`).
 
-With a single-file document in `mydoc.do.txt` one often just runs
+One often just runs the simple command
 !bc sys
 Terminal> doconce sphinx_dir mydoc
 !ec
-and then an appropriate Sphinx directory `sphinx-rootdir` is made with
+which creates the Sphinx directory `sphinx-rootdir` with
 relevant files.
 
 The `doconce sphinx_dir` command generates a script
 `automake_sphinx.py` for compiling the Sphinx document into an HTML
-document.  One can either run `automake_sphinx.py` or perform the
-steps in the script manually, possibly with necessary modifications.
-Normally, executing the script works well, but if you are new
-to Sphinx and end up producing quite some Sphinx documents, I encourave
-you to read the Sphinx documentation and study the `automake_sphinx.py`
-file.
+document.  Run
+
+!bc sys
+Terminal> python automake_sphinx.py
+!ec
+As the output also tells, you can see the Sphinx HTML version of the document
+by running
+
+!bc sys
+Terminal> google-chrome sphinx-rootdir/_build/html/index.html
+!ec
+or loading the `index.html` file manually into your favorite web browser.
+
+If you cycle through editing the Doconce file and watching the
+HTML output, you should observe that `automake_sphinx.py` does not
+recompile the Doconce file if the Sphinx `.rst` version already exists.
+In each edit-and-watch cycle do
+
+!bc sys
+Terminal> rm mydoc.rst; python automake_sphinx.py
+!ec
+
+!bnotice Tip
+If you are new
+to Sphinx and end up producing quite some Sphinx documents, you are encouraged
+to read the Sphinx documentation and study the `automake_sphinx.py`
+file. Maybe you want to do things differently.
+!enotice
+
+The following paragraphs describes the many possibilities for steering
+the Sphinx output.
 
 __Links.__
 The `automake_sphinx.py` script copies directories named `fig*`

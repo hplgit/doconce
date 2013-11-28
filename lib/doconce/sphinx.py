@@ -2,7 +2,7 @@
 
 # can reuse most of rst module:
 from rst import *
-from common import align2equations, python_online_tutor, bibliography
+from common import align2equations, online_python_tutor, bibliography
 from misc import option
 
 legal_pygments_languages = [
@@ -153,7 +153,7 @@ def sphinx_code(filestr, code_blocks, code_block_types,
         xmlcod='xml', xmlpro='xml', xml='xml',
         htmlcod='html', htmlpro='html', html='html',
         texcod='latex', texpro='latex', tex='latex',
-        pyoptpro='python'
+        pyoptpro='python', pyscpro='python',
         )
 
     # grab line with: # Sphinx code-blocks: cod=python cpp=c++ etc
@@ -171,7 +171,7 @@ def sphinx_code(filestr, code_blocks, code_block_types,
 
     for i in range(len(code_blocks)):
         if code_block_types[i].startswith('pyoptpro'):
-            code_blocks[i] = python_online_tutor(code_blocks[i],
+            code_blocks[i] = online_python_tutor(code_blocks[i],
                                                  return_tp='iframe')
         code_blocks[i] = indent_lines(code_blocks[i], format)
 
@@ -287,9 +287,24 @@ def sphinx_code(filestr, code_blocks, code_block_types,
         #filestr = re.sub(r'^!bc\s+%s\s*\n' % key,
         #                 '\n.. code-block:: %s\n\n' % envir2lang[key], filestr,
         #                 flags=re.MULTILINE)
+        # Check that we have code installed to handle pyscpro
+        if key == 'pyscpro':
+            try:
+                import icsecontrib.sagecellserver
+            except ImportError:
+                print """
+*** warning: pyscpro for computer code (sage cells) is requested, but'
+    icsecontrib.sagecellserver from https://github.com/kriskda/sphinx-sagecell
+    is not installed. Using plain Python typesetting instead."""
+                key = 'pypro'
+
         if key == 'pyoptpro':
             filestr = re.sub(r'^!bc\s+%s\s*\n' % key,
                              '\n.. raw:: html\n\n',
+                             filestr, flags=re.MULTILINE)
+        elif key == 'pyscpro':
+            filestr = re.sub(r'^!bc\s+%s\s*\n' % key,
+                             '\n.. sagecellserver::\n\n',
                              filestr, flags=re.MULTILINE)
         else:
             filestr = re.sub(r'^!bc\s+%s\s*\n' % key,

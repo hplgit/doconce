@@ -1,0 +1,34 @@
+In a movie or written demo of Doconce, show how to debug:
+
+Mako errors:
+
+ * Missing brace in "`vib_undamped.py`": "${src_vib/vib_undamped.py"
+ * Typo in mako variable
+ * Forgotten to set required mako variable on the command line
+
+Preprocess errors:
+
+ * Two includes of the same file
+ * Typo in if directive
+ * If test involves undefined preprocess variable
+
+Table errors:
+
+ * Forgotten a horizontal rule
+
+Doconce syntax errors:
+
+ * FIGURE and other keywords do not start in column 1
+ * label with backslash
+ * idx with backslash
+
+HTML MathJax problems:
+
+ * Ref to equation in another page
+
+Beamer errors:
+
+ * Formula with missing end dollar: $a=b, which gives...
+   Really difficult error message, you don't know where the error is.
+   Show that it is wise to first compile the slide document
+   in straight latex before running beamer.

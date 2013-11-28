@@ -1,0 +1,12 @@
+man: man page for doconce
+
+src: source tree for doconce documentation and examples
+
+pub: contains compiled documents from the src tree to be
+     accessible on the web
+     (strictly speaking, pub could only be a dir in gh-pages,
+     but we keep master and gh-pages in sync)
+
+web: entry point for the web pages, with index.html and github
+     style files (just github's generated files are here,
+     all the doconce material is in pub)

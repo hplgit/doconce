@@ -1,0 +1,109 @@
+TITLE: Demo of Online Python Tutor and Sage Cell Server
+AUTHOR: Hans Petter Langtangen at Center for Biomedical Computing, Simula Research Laboratory & Department of Informatics, University of Oslo
+DATE: today
+
+======= Interactive Python in documents =======
+
+!bnotice Online Python Tutor
+The "Online Python Tutor": "http://pythontutor.com/" is a web service
+for stepping through Python programs and demonstrating the program flow,
+listing local and global variables, and showing output. It is ideal
+for explaining what Python does with a program.
+!enotice
+
+Here is an example
+on the program flow with classes with special methods:
+
+!bc pyoptpro
+class Line:
+    def __init__(self, a, b):
+        """Store data for a line y = a*x + b."""
+        self.a, self.b = a, b
+
+    def __call__(self, x):
+        """Return y = a*x + b."""
+        a, b = self.a, self.b
+        return a*x + b
+
+    def __str__(self):
+        """Pretty print of the formula for the line."""
+        # Use b_str to avoid output like 2*a + -4
+        if self. b > 0:
+            b_str = '+ ' + str(self.b)
+        elif self.b == 0:
+            b_str = ''
+        else:
+            b_str = '- ' + str(abs(self.b))
+        if self.a == 0:
+            a_str = ''
+        elif self.a == 1:
+            a_str = 'x'
+        else:
+            a_str = str(self.a) + '*x'
+        return '%s %s' % (a_str, b_str)
+
+line = Line(2, 1)
+y = line(x=3)
+print y
+print line
+!ec
+
+!bnotice Sage Cells
+The "Sage Cell Server": "http://sagecell.sagemath.org/" is a web
+service where one can paste code in Python and many other languages
+and get it executed. The technology behind this server makes it
+possible to "embed sage cells in Sphinx and HTML documents":
+"http://sagecell.sagemath.org/static/about.html?v=103b2268085e3a183130be519fb55ce7#embedding".
+!enotice
+
+Here is an example:
+
+!bc pyscpro
+a = 2
+b = 3
+print 'a+b:', a + b
+
+# In a sage cell we can also plot
+from matplotlib.pyplot import *
+from numpy import *
+x = linspace(0, 4*pi, 101)
+y = exp(-0.1*x)*cos(x)
+plot(x, y)
+xlabel('x'); ylabel('y')
+show()
+!ec
+
+!bwarning
+It's pretty cool!
+!ewarning
+
+======= What do I write? =======
+
+Python Online Tutor typesetting of code is enabled by using the
+Doconce environment `!bc pyoptpro` (note `pro`, which indicates that
+it is a complete program - no additional code is needed to run it
+as a stand-alone program).
+
+!bc pycod
+|bc pyoptpro
+class Line:
+    ...
+|ec
+!ec
+
+The sage cells are enabled by the environment `!bc pyscpro` (again it
+has to be a complete program):
+
+!bc pycod
+|bc pyscpro
+a = 2
+b = 1
+...
+|ec
+!ec
+
+Code can also be put on file and automatically copied into the
+document by the `@@@CODE` directive. file The extensions
+`.pyopt` (Online Python Tutor) and `.pysc` (sage cell) translates
+into the right code environments `pyoptpro` and `pyscpro`, respectively.
+

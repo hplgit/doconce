@@ -551,7 +551,9 @@ def insert_code_from_file(filestr, format):
             elif filetype in ('csh', 'ksh', 'zsh', 'tcsh'):
                 filetype = 'sh'
             if filetype in ('py', 'f', 'c', 'cpp', 'sh',
-                            'm', 'pl', 'cy', 'rst', 'pyopt',
+                            'm', 'pl', 'cy', 'rst',
+                            'pyopt',  # Online Python Tutor
+                            'pysc',   # Sage cell
                             'rb', 'html', 'xml', 'js'):
                 code_envir = filetype
             elif filetype == 'tex':
@@ -1242,7 +1244,6 @@ def typeset_envirs(filestr, format):
             # the begin and end directives set in comments, see doconce2format
 
         #pattern = r'^!b%s([A-Za-z0-9,.!:? /()\-]*?)\n(.+?)\s*^!e%s\s*' % (envir, envir)
-        #pattern = r'^!b%s(.*?)\n(.+?)\s*^!e%s\s*' % (envir, envir)
         pattern = r'^!b%s(.*?)\n(.+?)\s*^!e%s' % (envir, envir)
         filestr = re.sub(pattern, subst, filestr,
                          flags=re.DOTALL | re.MULTILINE)
@@ -2596,10 +2597,10 @@ preprocess package (sudo apt-get install preprocess).
         for code_block in code_blocks:
             m = re.search(mako_commands, code_block, re.MULTILINE)
             if m:
-                print '\n\n*** warning: the code block\n---------------------------'
+                print '\n\n*** warning: detected problem with the code block\n---------------------------'
                 print code_block
                 print '''---------------------------
-The above code block contains %s on the beginning of a line.
+The above code block contains "%s" on the beginning of a line.
 Such lines cause problems for the mako preprocessor
 since it thinks this is a mako statement.
 ''' % (m.group(0))
@@ -2607,13 +2608,13 @@ since it thinks this is a mako statement.
                 mako_problems = True
         if mako_problems:
             print '''\
-Use %% in the code block(s) above to fix the
-problem with % at the beginning of lines,
-or put the code in a file that is included
-with @@@CODE filename, or drop mako instructions
-or variables and rely on preprocess only in the
-preprocessing step. In the latter case you
-need to include --no_mako on the command line.
+Use %% in the code block(s) above to fix the problem with % at the
+beginning of lines, or put the code in a file that is included
+with @@@CODE filename, or drop mako instructions or variables and
+rely on preprocess only in the preprocessing step.
+Including --no_mako on the command line avoids running mako.
+If you have % in code, see if it is possible to move the % char
+away from the beginning of the line.
 '''
             print 'mako is not run because of lines starting with %,'
             print 'fix the lines as described or remove all mako statements.'

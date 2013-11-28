@@ -3,7 +3,7 @@
 import os, commands, re, sys, glob
 from common import plain_exercise, table_analysis, \
      _CODE_BLOCK, _MATH_BLOCK, doconce_exercise_output, indent_lines, \
-     python_online_tutor, envir_delimiter_lines, safe_join, \
+     online_python_tutor, envir_delimiter_lines, safe_join, \
      insert_code_and_tex, _abort, is_file_or_url
 from misc import option
 additional_packages = ''  # comma-sep. list of packages for \usepackage{}
@@ -69,9 +69,9 @@ def latex_code(filestr, code_blocks, code_block_types,
             n = int(words[0])
             if len(words) >= 3 and words[2] == 'pyoptpro' and \
                        not option('device=', '') == 'paper':
-                # Insert an Online Python Tutorial link and add to lines[i]
+                # Insert an Online Python Tutor link and add to lines[i]
                 post = '\n\\noindent\n(\\href{{%s}}{Visualize execution}) ' % \
-                       python_online_tutor(code_blocks[n], return_tp='url')
+                       online_python_tutor(code_blocks[n], return_tp='url')
                 lines[i] = lines[i].replace(' pyoptpro', ' pypro') + post + '\n'
 
     filestr = safe_join(lines, '\n')
@@ -85,7 +85,7 @@ def latex_code(filestr, code_blocks, code_block_types,
             if len(words) == 1:
                 current_code_envir = 'ccq'
             else:
-                if words[1] == 'pyoptpro':
+                if words[1] in ('pyoptpro', 'pyscpro'):
                     current_code_envir = 'pypro'
                 else:
                     current_code_envir = words[1]
@@ -103,7 +103,7 @@ def latex_code(filestr, code_blocks, code_block_types,
     filestr = re.sub(r'!et\n', '', filestr)
 
     # Check for misspellings
-    envirs = 'pro pypro cypro cpppro cpro fpro plpro shpro mpro cod pycod cycod cppcod ccod fcod plcod shcod mcod htmlcod htmlpro rstcod rstpro xmlcod xmlpro cppans pyans fans bashans swigans uflans sni dat dsni sys slin ipy rpy plin ver warn rule summ ccq cc ccl py pyoptpro'.split()
+    envirs = 'pro pypro cypro cpppro cpro fpro plpro shpro mpro cod pycod cycod cppcod ccod fcod plcod shcod mcod htmlcod htmlpro rstcod rstpro xmlcod xmlpro cppans pyans fans bashans swigans uflans sni dat dsni sys slin ipy rpy plin ver warn rule summ ccq cc ccl py pyoptpro pyscpro'.split()
     for envir in code_block_types:
         if envir and envir not in envirs:
             print 'Warning: found "!bc %s", but %s is not a standard predefined ptex2tex environment' % (envir, envir)
@@ -758,7 +758,7 @@ def latex_index_bib(filestr, index, citations, pubfile, pubdata):
         # Always produce a new bibtex file
         bibtexfile = pubfile[:-3] + 'bib'
         print '\nexporting publish database %s to %s:' % (pubfile, bibtexfile)
-        publish_cmd = 'publish export %s' % bibtexfile
+        publish_cmd = 'publish export %s' % os.path.basename(bibtexfile)
         # Note: we have to run publish in the directory where pubfile resides
         this_dir = os.getcwd()
         pubfile_dir = os.path.dirname(pubfile)
@@ -776,7 +776,7 @@ def latex_index_bib(filestr, index, citations, pubfile, pubdata):
 
 \bibliographystyle{plain}
 \bibliography{%s}
-""" % bibtexfile, application='replacement')
+""" % bibtexfile[:-4], application='replacement')
         filestr = re.sub(r'^BIBFILE:.+$', bibtext, filestr,
                          flags=re.MULTILINE)
         cpattern = re.compile(r'^BIBFILE:.+$', re.MULTILINE)

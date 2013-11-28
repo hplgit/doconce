@@ -1,6 +1,6 @@
 import re, os, glob, sys, glob
 from common import table_analysis, plain_exercise, insert_code_and_tex, \
-     indent_lines, python_online_tutor, bibliography, \
+     indent_lines, online_python_tutor, bibliography, \
      cite_with_multiple_args2multiple_cites, _abort, is_file_or_url
 from misc import option
 
@@ -242,7 +242,7 @@ def html_code(filestr, code_blocks, code_block_types,
                            swig='c++', latex='latex', tex='latex',
                            html='html', xml='xml',
                            js='js', sys='bash',
-                           pyproopt='python')
+                           pyoptpro='python', pyscpro='python')
     try:
         import pygments as pygm
         from pygments.lexers import guess_lexer, get_lexer_by_name
@@ -275,17 +275,19 @@ def html_code(filestr, code_blocks, code_block_types,
 
         linenos = option('pygments_html_linenos')
 
-    PythoOnlineTutor = False  # True if one occurence
+    needs_online_python_tutor = False  # True if one occurence
     for i in range(len(code_blocks)):
         if code_block_types[i].startswith('pyoptpro'):
-            PythoOnlineTutor = True
+            needs_online_python_tutor = True
             if pygm is None:
-                print '*** error: cannot use Python Online Tutorial (pyproopt)'
+                print '*** error: cannot use Python Online Tutorial (!bc pyoptpro or .pyoptpro file)'
                 print '    without pygmentized code'
                 _abort()
-            code_blocks[i] = python_online_tutor(code_blocks[i],
+            code_blocks[i] = online_python_tutor(code_blocks[i],
                                                  return_tp='iframe')
 
+        #elif code_block_types[i].startswith('pyscpro'):
+        # not yet implemented
         elif pygm is not None:
             # Typeset with pygments
             #lexer = guess_lexer(code_blocks[i])
@@ -366,7 +368,7 @@ def html_code(filestr, code_blocks, code_block_types,
     debugpr('File after call to isnert_code_and tex (format html)\n%s'
             % filestr)
 
-    if pygm or PythoOnlineTutor:
+    if pygm or needs_online_python_tutor:
         c = re.compile(r'^!bc(.*?)\n', re.MULTILINE)
         filestr = c.sub(r'<p>\n\n', filestr)
         filestr = re.sub(r'!ec\n', r'<p>\n', filestr)
