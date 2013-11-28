@@ -86,11 +86,32 @@ which gets rendered as
 
 Now a complete program to be shown via Python Online Tutorial:
 
+
 .. raw:: html
 
         <iframe width="950" height="500" frameborder="0"
-                src="http://pythontutor.com/iframe-embed.html#code=def+f%28x%29%3A%0A++++return+x+%2B+1%0A%0Aa+%3D+2%0Ax+%3D+a%0Aa+%3D+1%0Av+%3D+f%28x%29%0Aprint+v&curInstr=0&py=2&cumulative=false">
+                src="http://pythontutor.com/iframe-embed.html#code=class+Line%3A%0A++++def+__init__%28self%2C+a%2C+b%29%3A%0A++++++++self.a%2C+self.b+%3D+a%2C+b%0A%0A++++def+__call__%28self%2C+x%29%3A%0A++++++++a%2C+b+%3D+self.a%2C+self.b%0A++++++++return+a%2Ax+%2B+b%0A%0Aline+%3D+Line%282%2C+1%29%0Ay+%3D+line%28x%3D3%29%0Aprint+y&curInstr=0&py=2&cumulative=false">
         </iframe>
+
+
+Another complete program to be typeset as a sage cell:
+
+
+.. sagecellserver::
+
+        a = 2
+        b = 3
+        print 'a+b:', a + b
+        
+        # In a sage cell we can also plot
+        from matplotlib.pyplot import *
+        from numpy import *
+        x = linspace(0, 4*pi, 101)
+        y = exp(-0.1*x)*cos(x)
+        plot(x, y)
+        xlabel('x'); ylabel('y')
+        show()
+
 
 
 Then Cython:

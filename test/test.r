@@ -106,17 +106,51 @@ def f(x):
     return x+1
 !ec
 
+# #if FORMAT in ("sphinx", "html", "latex", "pdflatex")
 Now a complete program to be shown via Python Online Tutorial:
-!bc pyoptpro
-def f(x):
-    return x + 1
+# #else
+Here is a program that is supposed to be interactive via
+Python Online Tutorial, but that service is not accessible
+for the present format.
+# #endif
 
-a = 2
-x = a
-a = 1
-v = f(x)
-print v
+!bc pyoptpro
+class Line:
+    def __init__(self, a, b):
+        self.a, self.b = a, b
+
+    def __call__(self, x):
+        a, b = self.a, self.b
+        return a*x + b
+
+line = Line(2, 1)
+y = line(x=3)
+print y
 !ec
+
+# #if FORMAT == "sphinx"
+Another complete program to be typeset as a sage cell:
+# #else
+Some more Python code (actually specified as a sage cell, but
+such cells are not supported by this format).
+# #endif
+
+!bc pyscpro
+a = 2
+b = 3
+print 'a+b:', a + b
+
+# In a sage cell we can also plot
+from matplotlib.pyplot import *
+from numpy import *
+x = linspace(0, 4*pi, 101)
+y = exp(-0.1*x)*cos(x)
+plot(x, y)
+xlabel('x'); ylabel('y')
+show()
+!ec
+
+## Should also test that one can read .pyopt and .pysc programs
 
 Then Cython:
 !bc cycod
@@ -1994,18 +2028,41 @@ def f(x):
 \epycod
 
 Now a complete program to be shown via Python Online Tutorial:
-\bpypro
-def f(x):
-    return x + 1
 
-a = 2
-x = a
-a = 1
-v = f(x)
-print v
+\bpypro
+class Line:
+    def __init__(self, a, b):
+        self.a, self.b = a, b
+
+    def __call__(self, x):
+        a, b = self.a, self.b
+        return a*x + b
+
+line = Line(2, 1)
+y = line(x=3)
+print y
 \epypro
 \noindent
-(\href{{http://pythontutor.com/visualize.html\#code=def+f\%28x\%29\%3A\%0A++++return+x+\%2B+1\%0A\%0Aa+\%3D+2\%0Ax+\%3D+a\%0Aa+\%3D+1\%0Av+\%3D+f\%28x\%29\%0Aprint+v&mode=display&cumulative=false&heapPrimitives=false&drawParentPointers=false&textReferences=false&py=2&curInstr=0}}{Visualize execution}) 
+(\href{{http://pythontutor.com/visualize.html\#code=class+Line\%3A\%0A++++def+__init__\%28self\%2C+a\%2C+b\%29\%3A\%0A++++++++self.a\%2C+self.b+\%3D+a\%2C+b\%0A\%0A++++def+__call__\%28self\%2C+x\%29\%3A\%0A++++++++a\%2C+b+\%3D+self.a\%2C+self.b\%0A++++++++return+a\%2Ax+\%2B+b\%0A\%0Aline+\%3D+Line\%282\%2C+1\%29\%0Ay+\%3D+line\%28x\%3D3\%29\%0Aprint+y&mode=display&cumulative=false&heapPrimitives=false&drawParentPointers=false&textReferences=false&py=2&curInstr=0}}{Visualize execution}) 
+
+
+Some more Python code (actually specified as a sage cell, but
+such cells are not supported by this format).
+
+\bpypro
+a = 2
+b = 3
+print 'a+b:', a + b
+
+# In a sage cell we can also plot
+from matplotlib.pyplot import *
+from numpy import *
+x = linspace(0, 4*pi, 101)
+y = exp(-0.1*x)*cos(x)
+plot(x, y)
+xlabel('x'); ylabel('y')
+show()
+\epypro
 
 
 Then Cython:
@@ -3061,7 +3118,7 @@ Filename: \code{selc_composed.pdf}.
 
 
 \bibliographystyle{plain}
-\bibliography{papers.bib}
+\bibliography{papers}
 
 
 
@@ -3588,17 +3645,41 @@ def f(x):
 \noindent
 
 Now a complete program to be shown via Python Online Tutorial:
-\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
-def f(x):
-    return x + 1
 
-a = 2
-x = a
-a = 1
-v = f(x)
-print v
+\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+class Line:
+    def __init__(self, a, b):
+        self.a, self.b = a, b
+
+    def __call__(self, x):
+        a, b = self.a, self.b
+        return a*x + b
+
+line = Line(2, 1)
+y = line(x=3)
+print y
 \end{minted}
 \noindent
+
+Some more Python code (actually specified as a sage cell, but
+such cells are not supported by this format).
+
+\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+a = 2
+b = 3
+print 'a+b:', a + b
+
+# In a sage cell we can also plot
+from matplotlib.pyplot import *
+from numpy import *
+x = linspace(0, 4*pi, 101)
+y = exp(-0.1*x)*cos(x)
+plot(x, y)
+xlabel('x'); ylabel('y')
+show()
+\end{minted}
+\noindent
+
 
 Then Cython:
 \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{cython}
@@ -4599,7 +4680,7 @@ Filename: {\fontsize{10pt}{10pt}\Verb!selc_composed.pdf!}.
 
 
 \bibliographystyle{plain}
-\bibliography{papers.bib}
+\bibliography{papers}
 
 
 
@@ -5116,16 +5197,39 @@ def f(x):
 \end{minted}
 
 Now a complete program to be shown via Python Online Tutorial:
-\begin{python:nt}
-def f(x):
-    return x + 1
 
-a = 2
-x = a
-a = 1
-v = f(x)
-print v
+\begin{python:nt}
+class Line:
+    def __init__(self, a, b):
+        self.a, self.b = a, b
+
+    def __call__(self, x):
+        a, b = self.a, self.b
+        return a*x + b
+
+line = Line(2, 1)
+y = line(x=3)
+print y
 \end{python:nt}
+
+Some more Python code (actually specified as a sage cell, but
+such cells are not supported by this format).
+
+\begin{python:nt}
+a = 2
+b = 3
+print 'a+b:', a + b
+
+# In a sage cell we can also plot
+from matplotlib.pyplot import *
+from numpy import *
+x = linspace(0, 4*pi, 101)
+y = exp(-0.1*x)*cos(x)
+plot(x, y)
+xlabel('x'); ylabel('y')
+show()
+\end{python:nt}
+
 
 Then Cython:
 \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{cython}
@@ -6088,7 +6192,7 @@ Filename: \Verb!selc_composed.pdf!.
 
 
 \bibliographystyle{plain}
-\bibliography{papers.bib}
+\bibliography{papers}
 
 
 
@@ -6401,17 +6505,41 @@ which gets rendered as::
             return x+1
 
 
-Now a complete program to be shown via Python Online Tutorial::
+Here is a program that is supposed to be interactive via
+Python Online Tutorial, but that service is not accessible
+for the present format::
 
 
-        def f(x):
-            return x + 1
+        class Line:
+            def __init__(self, a, b):
+                self.a, self.b = a, b
         
+            def __call__(self, x):
+                a, b = self.a, self.b
+                return a*x + b
+        
+        line = Line(2, 1)
+        y = line(x=3)
+        print y
+
+
+Some more Python code (actually specified as a sage cell, but
+such cells are not supported by this format)::
+
+
         a = 2
-        x = a
-        a = 1
-        v = f(x)
-        print v
+        b = 3
+        print 'a+b:', a + b
+        
+        # In a sage cell we can also plot
+        from matplotlib.pyplot import *
+        from numpy import *
+        x = linspace(0, 4*pi, 101)
+        y = exp(-0.1*x)*cos(x)
+        plot(x, y)
+        xlabel('x'); ylabel('y')
+        show()
+
 
 
 Then Cython::
@@ -7790,11 +7918,32 @@ which gets rendered as
 
 Now a complete program to be shown via Python Online Tutorial:
 
+
 .. raw:: html
 
         <iframe width="950" height="500" frameborder="0"
-                src="http://pythontutor.com/iframe-embed.html#code=def+f%28x%29%3A%0A++++return+x+%2B+1%0A%0Aa+%3D+2%0Ax+%3D+a%0Aa+%3D+1%0Av+%3D+f%28x%29%0Aprint+v&curInstr=0&py=2&cumulative=false">
+                src="http://pythontutor.com/iframe-embed.html#code=class+Line%3A%0A++++def+__init__%28self%2C+a%2C+b%29%3A%0A++++++++self.a%2C+self.b+%3D+a%2C+b%0A%0A++++def+__call__%28self%2C+x%29%3A%0A++++++++a%2C+b+%3D+self.a%2C+self.b%0A++++++++return+a%2Ax+%2B+b%0A%0Aline+%3D+Line%282%2C+1%29%0Ay+%3D+line%28x%3D3%29%0Aprint+y&curInstr=0&py=2&cumulative=false">
         </iframe>
+
+
+Another complete program to be typeset as a sage cell:
+
+
+.. sagecellserver::
+
+        a = 2
+        b = 3
+        print 'a+b:', a + b
+        
+        # In a sage cell we can also plot
+        from matplotlib.pyplot import *
+        from numpy import *
+        x = linspace(0, 4*pi, 101)
+        y = exp(-0.1*x)*cos(x)
+        plot(x, y)
+        xlabel('x'); ylabel('y')
+        show()
+
 
 
 Then Cython:
@@ -9296,17 +9445,42 @@ def f(x):
     return x+1
 }}}
 
-Now a complete program to be shown via Python Online Tutorial:
-{{{
-def f(x):
-    return x + 1
+Here is a program that is supposed to be interactive via
+Python Online Tutorial, but that service is not accessible
+for the present format.
 
-a = 2
-x = a
-a = 1
-v = f(x)
-print v
+{{{
+class Line:
+    def __init__(self, a, b):
+        self.a, self.b = a, b
+
+    def __call__(self, x):
+        a, b = self.a, self.b
+        return a*x + b
+
+line = Line(2, 1)
+y = line(x=3)
+print y
 }}}
+
+Some more Python code (actually specified as a sage cell, but
+such cells are not supported by this format).
+
+{{{
+a = 2
+b = 3
+print 'a+b:', a + b
+
+# In a sage cell we can also plot
+from matplotlib.pyplot import *
+from numpy import *
+x = linspace(0, 4*pi, 101)
+y = exp(-0.1*x)*cos(x)
+plot(x, y)
+xlabel('x'); ylabel('y')
+show()
+}}}
+
 
 Then Cython:
 {{{
@@ -10417,17 +10591,42 @@ def f(x):
     return x+1
 </syntaxhighlight>
 
-Now a complete program to be shown via Python Online Tutorial:
-<syntaxhighlight lang="python">
-def f(x):
-    return x + 1
+Here is a program that is supposed to be interactive via
+Python Online Tutorial, but that service is not accessible
+for the present format.
 
-a = 2
-x = a
-a = 1
-v = f(x)
-print v
+<syntaxhighlight lang="python">
+class Line:
+    def __init__(self, a, b):
+        self.a, self.b = a, b
+
+    def __call__(self, x):
+        a, b = self.a, self.b
+        return a*x + b
+
+line = Line(2, 1)
+y = line(x=3)
+print y
 </syntaxhighlight>
+
+Some more Python code (actually specified as a sage cell, but
+such cells are not supported by this format).
+
+<syntaxhighlight lang="python">
+a = 2
+b = 3
+print 'a+b:', a + b
+
+# In a sage cell we can also plot
+from matplotlib.pyplot import *
+from numpy import *
+x = linspace(0, 4*pi, 101)
+y = exp(-0.1*x)*cos(x)
+plot(x, y)
+xlabel('x'); ylabel('y')
+show()
+</syntaxhighlight>
+
 
 Then Cython:
 <syntaxhighlight lang="python">
@@ -11625,17 +11824,42 @@ def f(x):
     return x+1
 }}}
 
-Now a complete program to be shown via Python Online Tutorial:
-{{{
-def f(x):
-    return x + 1
+Here is a program that is supposed to be interactive via
+Python Online Tutorial, but that service is not accessible
+for the present format.
 
-a = 2
-x = a
-a = 1
-v = f(x)
-print v
+{{{
+class Line:
+    def __init__(self, a, b):
+        self.a, self.b = a, b
+
+    def __call__(self, x):
+        a, b = self.a, self.b
+        return a*x + b
+
+line = Line(2, 1)
+y = line(x=3)
+print y
 }}}
+
+Some more Python code (actually specified as a sage cell, but
+such cells are not supported by this format).
+
+{{{
+a = 2
+b = 3
+print 'a+b:', a + b
+
+# In a sage cell we can also plot
+from matplotlib.pyplot import *
+from numpy import *
+x = linspace(0, 4*pi, 101)
+y = exp(-0.1*x)*cos(x)
+plot(x, y)
+xlabel('x'); ylabel('y')
+show()
+}}}
+
 
 Then Cython:
 {{{
@@ -12691,17 +12915,41 @@ which gets rendered as::
             return x+1
 
 
-Now a complete program to be shown via Python Online Tutorial::
+Here is a program that is supposed to be interactive via
+Python Online Tutorial, but that service is not accessible
+for the present format::
 
 
-        def f(x):
-            return x + 1
+        class Line:
+            def __init__(self, a, b):
+                self.a, self.b = a, b
         
+            def __call__(self, x):
+                a, b = self.a, self.b
+                return a*x + b
+        
+        line = Line(2, 1)
+        y = line(x=3)
+        print y
+
+
+Some more Python code (actually specified as a sage cell, but
+such cells are not supported by this format)::
+
+
         a = 2
-        x = a
-        a = 1
-        v = f(x)
-        print v
+        b = 3
+        print 'a+b:', a + b
+        
+        # In a sage cell we can also plot
+        from matplotlib.pyplot import *
+        from numpy import *
+        x = linspace(0, 4*pi, 101)
+        y = exp(-0.1*x)*cos(x)
+        plot(x, y)
+        xlabel('x'); ylabel('y')
+        show()
+
 
 
 Then Cython::
@@ -13797,17 +14045,41 @@ which gets rendered as::
             return x+1
 
 
-Now a complete program to be shown via Python Online Tutorial::
+Here is a program that is supposed to be interactive via
+Python Online Tutorial, but that service is not accessible
+for the present format::
 
 
-        def f(x):
-            return x + 1
+        class Line:
+            def __init__(self, a, b):
+                self.a, self.b = a, b
         
+            def __call__(self, x):
+                a, b = self.a, self.b
+                return a*x + b
+        
+        line = Line(2, 1)
+        y = line(x=3)
+        print y
+
+
+Some more Python code (actually specified as a sage cell, but
+such cells are not supported by this format)::
+
+
         a = 2
-        x = a
-        a = 1
-        v = f(x)
-        print v
+        b = 3
+        print 'a+b:', a + b
+        
+        # In a sage cell we can also plot
+        from matplotlib.pyplot import *
+        from numpy import *
+        x = linspace(0, 4*pi, 101)
+        y = exp(-0.1*x)*cos(x)
+        plot(x, y)
+        xlabel('x'); ylabel('y')
+        show()
+
 
 
 Then Cython::
@@ -15005,17 +15277,41 @@ which gets rendered as::
             return x+1
 
 
-Now a complete program to be shown via Python Online Tutorial::
+Here is a program that is supposed to be interactive via
+Python Online Tutorial, but that service is not accessible
+for the present format::
 
 
-        def f(x):
-            return x + 1
+        class Line:
+            def __init__(self, a, b):
+                self.a, self.b = a, b
         
+            def __call__(self, x):
+                a, b = self.a, self.b
+                return a*x + b
+        
+        line = Line(2, 1)
+        y = line(x=3)
+        print y
+
+
+Some more Python code (actually specified as a sage cell, but
+such cells are not supported by this format)::
+
+
         a = 2
-        x = a
-        a = 1
-        v = f(x)
-        print v
+        b = 3
+        print 'a+b:', a + b
+        
+        # In a sage cell we can also plot
+        from matplotlib.pyplot import *
+        from numpy import *
+        x = linspace(0, 4*pi, 101)
+        y = exp(-0.1*x)*cos(x)
+        plot(x, y)
+        xlabel('x'); ylabel('y')
+        show()
+
 
 
 Then Cython::
@@ -16189,17 +16485,42 @@ def f(x):
     return x+1
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Now a complete program to be shown via Python Online Tutorial:
+Here is a program that is supposed to be interactive via
+Python Online Tutorial, but that service is not accessible
+for the present format.
+
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.Python}
-def f(x):
-    return x + 1
+class Line:
+    def __init__(self, a, b):
+        self.a, self.b = a, b
 
+    def __call__(self, x):
+        a, b = self.a, self.b
+        return a*x + b
+
+line = Line(2, 1)
+y = line(x=3)
+print y
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Some more Python code (actually specified as a sage cell, but
+such cells are not supported by this format).
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.Python}
 a = 2
-x = a
-a = 1
-v = f(x)
-print v
+b = 3
+print 'a+b:', a + b
+
+# In a sage cell we can also plot
+from matplotlib.pyplot import *
+from numpy import *
+x = linspace(0, 4*pi, 101)
+y = exp(-0.1*x)*cos(x)
+plot(x, y)
+xlabel('x'); ylabel('y')
+show()
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Then Cython:
@@ -17561,21 +17882,56 @@ case in LaTeX.
      "cell_type": "markdown",
      "metadata": {},
      "source": [
-      "Now a complete program to be shown via Python Online Tutorial:"
+      "Here is a program that is supposed to be interactive via\n",
+      "Python Online Tutorial, but that service is not accessible\n",
+      "for the present format."
      ]
     },
     {
      "cell_type": "code",
      "collapsed": false,
      "input": [
-      "def f(x):\n",
-      "    return x + 1\n",
+      "class Line:\n",
+      "    def __init__(self, a, b):\n",
+      "        self.a, self.b = a, b\n",
       "\n",
+      "    def __call__(self, x):\n",
+      "        a, b = self.a, self.b\n",
+      "        return a*x + b\n",
+      "\n",
+      "line = Line(2, 1)\n",
+      "y = line(x=3)\n",
+      "print y\n"
+     ],
+     "language": "python",
+     "metadata": {},
+     "outputs": [],
+     "prompt_number": 1
+    },
+    {
+     "cell_type": "markdown",
+     "metadata": {},
+     "source": [
+      "Some more Python code (actually specified as a sage cell, but\n",
+      "such cells are not supported by this format)."
+     ]
+    },
+    {
+     "cell_type": "code",
+     "collapsed": false,
+     "input": [
       "a = 2\n",
-      "x = a\n",
-      "a = 1\n",
-      "v = f(x)\n",
-      "print v\n"
+      "b = 3\n",
+      "print 'a+b:', a + b\n",
+      "\n",
+      "# In a sage cell we can also plot\n",
+      "from matplotlib.pyplot import *\n",
+      "from numpy import *\n",
+      "x = linspace(0, 4*pi, 101)\n",
+      "y = exp(-0.1*x)*cos(x)\n",
+      "plot(x, y)\n",
+      "xlabel('x'); ylabel('y')\n",
+      "show()\n"
      ],
      "language": "python",
      "metadata": {},
@@ -19081,7 +19437,7 @@ Could not find match for from regex "\*\s+\$.+normally"
   'solution_file': None,
   'subex': [{'answer': 'Short answer to subexercise a).\nWith math in answer: $a=b$.',
              'file': ['subexer_a.pdf'],
-             'hints': ['First hint to subexercise a).\nWith math $a=b$ in hint:\n\n19 <<<!!MATH_BLOCK\nAnd with code (in plain verbatim) returning $x+1$ in hint:\n\n16 <<<!!CODE_BLOCK',
+             'hints': ['First hint to subexercise a).\nWith math $a=b$ in hint:\n\n19 <<<!!MATH_BLOCK\nAnd with code (in plain verbatim) returning $x+1$ in hint:\n\n17 <<<!!CODE_BLOCK',
                        'Second hint to subexercise a).\n\nTest list in hint:\n\n o item1\n o item2'],
              'solution': '',
              'text': 'Subexercises are numbered a), b), etc.'},
@@ -19252,15 +19608,31 @@ def f(x):
 <pre><code>def f(x):
     return x+1</code></pre>
 <p>Now a complete program to be shown via Python Online Tutorial:</p>
-<pre><code>def f(x):
-    return x + 1
+<pre><code>class Line:
+    def __init__(self, a, b):
+        self.a, self.b = a, b
 
-a = 2
-x = a
-a = 1
-v = f(x)
-print v</code></pre>
-<p>(<a href="{http://pythontutor.com/visualize.html#code=def+f%28x%29%3A%0A++++return+x+%2B+1%0A%0Aa+%3D+2%0Ax+%3D+a%0Aa+%3D+1%0Av+%3D+f%28x%29%0Aprint+v&amp;mode=display&amp;cumulative=false&amp;heapPrimitives=false&amp;drawParentPointers=false&amp;textReferences=false&amp;py=2&amp;curInstr=0}">Visualize execution</a>)</p>
+    def __call__(self, x):
+        a, b = self.a, self.b
+        return a*x + b
+
+line = Line(2, 1)
+y = line(x=3)
+print y</code></pre>
+<p>(<a href="{http://pythontutor.com/visualize.html#code=class+Line%3A%0A++++def+__init__%28self%2C+a%2C+b%29%3A%0A++++++++self.a%2C+self.b+%3D+a%2C+b%0A%0A++++def+__call__%28self%2C+x%29%3A%0A++++++++a%2C+b+%3D+self.a%2C+self.b%0A++++++++return+a%2Ax+%2B+b%0A%0Aline+%3D+Line%282%2C+1%29%0Ay+%3D+line%28x%3D3%29%0Aprint+y&amp;mode=display&amp;cumulative=false&amp;heapPrimitives=false&amp;drawParentPointers=false&amp;textReferences=false&amp;py=2&amp;curInstr=0}">Visualize execution</a>)</p>
+<p>Some more Python code (actually specified as a sage cell, but such cells are not supported by this format).</p>
+<pre><code>a = 2
+b = 3
+print &#39;a+b:&#39;, a + b
+
+# In a sage cell we can also plot
+from matplotlib.pyplot import *
+from numpy import *
+x = linspace(0, 4*pi, 101)
+y = exp(-0.1*x)*cos(x)
+plot(x, y)
+xlabel(&#39;x&#39;); ylabel(&#39;y&#39;)
+show()</code></pre>
 <p>Then Cython:</p>
 <pre><code>cpdef f(double x):
     return x + 1</code></pre>
@@ -19883,15 +20255,31 @@ def f(x):
 <p>which gets rendered as</p>
 <pre class="sourceCode Python"><code class="sourceCode python"><span class="kw">def</span> f(x):
     <span class="kw">return</span> x<span class="dv">+1</span></code></pre>
-<p>Now a complete program to be shown via Python Online Tutorial:</p>
-<pre class="sourceCode Python"><code class="sourceCode python"><span class="kw">def</span> f(x):
-    <span class="kw">return</span> x + <span class="dv">1</span>
+<p>Here is a program that is supposed to be interactive via Python Online Tutorial, but that service is not accessible for the present format.</p>
+<pre class="sourceCode Python"><code class="sourceCode python"><span class="kw">class</span> Line:
+    <span class="kw">def</span> <span class="ot">__init__</span>(<span class="ot">self</span>, a, b):
+        <span class="ot">self</span>.a, <span class="ot">self</span>.b = a, b
 
-a = <span class="dv">2</span>
-x = a
-a = <span class="dv">1</span>
-v = f(x)
-<span class="kw">print</span> v</code></pre>
+    <span class="kw">def</span> <span class="ot">__call__</span>(<span class="ot">self</span>, x):
+        a, b = <span class="ot">self</span>.a, <span class="ot">self</span>.b
+        <span class="kw">return</span> a*x + b
+
+line = Line(<span class="dv">2</span>, <span class="dv">1</span>)
+y = line(x=<span class="dv">3</span>)
+<span class="kw">print</span> y</code></pre>
+<p>Some more Python code (actually specified as a sage cell, but such cells are not supported by this format).</p>
+<pre class="sourceCode Python"><code class="sourceCode python">a = <span class="dv">2</span>
+b = <span class="dv">3</span>
+<span class="kw">print</span> <span class="st">&#39;a+b:&#39;</span>, a + b
+
+<span class="co"># In a sage cell we can also plot</span>
+<span class="ch">from</span> matplotlib.pyplot <span class="ch">import</span> *
+<span class="ch">from</span> numpy <span class="ch">import</span> *
+x = linspace(<span class="dv">0</span>, <span class="dv">4</span>*pi, <span class="dv">101</span>)
+y = exp(-<span class="fl">0.1</span>*x)*cos(x)
+plot(x, y)
+xlabel(<span class="st">&#39;x&#39;</span>); ylabel(<span class="st">&#39;y&#39;</span>)
+show()</code></pre>
 <p>Then Cython:</p>
 <pre><code>cpdef f(double x):
     return x + 1</code></pre>
@@ -22110,7 +22498,7 @@ Inline math, $a=b$, is the only math in this document.
 
 
 \bibliographystyle{plain}
-\bibliography{papers.bib}
+\bibliography{papers}
 
 % ------------------- end of main content ---------------
 
@@ -23238,12 +23626,44 @@ which gets rendered as
 </pre></div>
 </td></tr></table><p>
 Now a complete program to be shown via Python Online Tutorial:
+
 <p>
 
 <iframe width="950" height="500" frameborder="0"
-        src="http://pythontutor.com/iframe-embed.html#code=def+f%28x%29%3A%0A++++return+x+%2B+1%0A%0Aa+%3D+2%0Ax+%3D+a%0Aa+%3D+1%0Av+%3D+f%28x%29%0Aprint+v&curInstr=0&py=2&cumulative=false">
+        src="http://pythontutor.com/iframe-embed.html#code=class+Line%3A%0A++++def+__init__%28self%2C+a%2C+b%29%3A%0A++++++++self.a%2C+self.b+%3D+a%2C+b%0A%0A++++def+__call__%28self%2C+x%29%3A%0A++++++++a%2C+b+%3D+self.a%2C+self.b%0A++++++++return+a%2Ax+%2B+b%0A%0Aline+%3D+Line%282%2C+1%29%0Ay+%3D+line%28x%3D3%29%0Aprint+y&curInstr=0&py=2&cumulative=false">
 </iframe>
 <p>
+Some more Python code (actually specified as a sage cell, but
+such cells are not supported by this format).
+
+<p>
+
+<!-- code=text (from !bc pyscpro) typeset with pygments style "emacs" -->
+<table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a = 2
+b = 3
+print &#39;a+b:&#39;, a + b
+
+# In a sage cell we can also plot
+from matplotlib.pyplot import *
+from numpy import *
+x = linspace(0, 4*pi, 101)
+y = exp(-0.1*x)*cos(x)
+plot(x, y)
+xlabel(&#39;x&#39;); ylabel(&#39;y&#39;)
+show()
+</pre></div>
+</td></tr></table><p>
 Then Cython:
 <p>
 
@@ -24844,11 +25264,32 @@ which gets rendered as
 </pre></div>
 <p>
 Now a complete program to be shown via Python Online Tutorial:
+
 <p>
 
 <iframe width="950" height="500" frameborder="0"
-        src="http://pythontutor.com/iframe-embed.html#code=def+f%28x%29%3A%0A++++return+x+%2B+1%0A%0Aa+%3D+2%0Ax+%3D+a%0Aa+%3D+1%0Av+%3D+f%28x%29%0Aprint+v&curInstr=0&py=2&cumulative=false">
+        src="http://pythontutor.com/iframe-embed.html#code=class+Line%3A%0A++++def+__init__%28self%2C+a%2C+b%29%3A%0A++++++++self.a%2C+self.b+%3D+a%2C+b%0A%0A++++def+__call__%28self%2C+x%29%3A%0A++++++++a%2C+b+%3D+self.a%2C+self.b%0A++++++++return+a%2Ax+%2B+b%0A%0Aline+%3D+Line%282%2C+1%29%0Ay+%3D+line%28x%3D3%29%0Aprint+y&curInstr=0&py=2&cumulative=false">
 </iframe>
+<p>
+Some more Python code (actually specified as a sage cell, but
+such cells are not supported by this format).
+
+<p>
+
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a = 2
+b = 3
+print &#39;a+b:&#39;, a + b
+
+# In a sage cell we can also plot
+from matplotlib.pyplot import *
+from numpy import *
+x = linspace(0, 4*pi, 101)
+y = exp(-0.1*x)*cos(x)
+plot(x, y)
+xlabel(&#39;x&#39;); ylabel(&#39;y&#39;)
+show()
+</pre></div>
 <p>
 Then Cython:
 <p>
@@ -26437,11 +26878,32 @@ which gets rendered as
 </pre></div>
 <p>
 Now a complete program to be shown via Python Online Tutorial:
+
 <p>
 
 <iframe width="950" height="500" frameborder="0"
-        src="http://pythontutor.com/iframe-embed.html#code=def+f%28x%29%3A%0A++++return+x+%2B+1%0A%0Aa+%3D+2%0Ax+%3D+a%0Aa+%3D+1%0Av+%3D+f%28x%29%0Aprint+v&curInstr=0&py=2&cumulative=false">
+        src="http://pythontutor.com/iframe-embed.html#code=class+Line%3A%0A++++def+__init__%28self%2C+a%2C+b%29%3A%0A++++++++self.a%2C+self.b+%3D+a%2C+b%0A%0A++++def+__call__%28self%2C+x%29%3A%0A++++++++a%2C+b+%3D+self.a%2C+self.b%0A++++++++return+a%2Ax+%2B+b%0A%0Aline+%3D+Line%282%2C+1%29%0Ay+%3D+line%28x%3D3%29%0Aprint+y&curInstr=0&py=2&cumulative=false">
 </iframe>
+<p>
+Some more Python code (actually specified as a sage cell, but
+such cells are not supported by this format).
+
+<p>
+
+<!-- code=text (from !bc pyscpro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a = 2
+b = 3
+print &#39;a+b:&#39;, a + b
+
+# In a sage cell we can also plot
+from matplotlib.pyplot import *
+from numpy import *
+x = linspace(0, 4*pi, 101)
+y = exp(-0.1*x)*cos(x)
+plot(x, y)
+xlabel(&#39;x&#39;); ylabel(&#39;y&#39;)
+show()
+</pre></div>
 <p>
 Then Cython:
 <p>
@@ -28293,18 +28755,41 @@ def f(x):
 \epycod
 
 Now a complete program to be shown via Python Online Tutorial:
-\bpypro
-def f(x):
-    return x + 1
 
-a = 2
-x = a
-a = 1
-v = f(x)
-print v
+\bpypro
+class Line:
+    def __init__(self, a, b):
+        self.a, self.b = a, b
+
+    def __call__(self, x):
+        a, b = self.a, self.b
+        return a*x + b
+
+line = Line(2, 1)
+y = line(x=3)
+print y
 \epypro
 \noindent
-(\href{{http://pythontutor.com/visualize.html\#code=def+f\%28x\%29\%3A\%0A++++return+x+\%2B+1\%0A\%0Aa+\%3D+2\%0Ax+\%3D+a\%0Aa+\%3D+1\%0Av+\%3D+f\%28x\%29\%0Aprint+v&mode=display&cumulative=false&heapPrimitives=false&drawParentPointers=false&textReferences=false&py=2&curInstr=0}}{Visualize execution}) 
+(\href{{http://pythontutor.com/visualize.html\#code=class+Line\%3A\%0A++++def+__init__\%28self\%2C+a\%2C+b\%29\%3A\%0A++++++++self.a\%2C+self.b+\%3D+a\%2C+b\%0A\%0A++++def+__call__\%28self\%2C+x\%29\%3A\%0A++++++++a\%2C+b+\%3D+self.a\%2C+self.b\%0A++++++++return+a\%2Ax+\%2B+b\%0A\%0Aline+\%3D+Line\%282\%2C+1\%29\%0Ay+\%3D+line\%28x\%3D3\%29\%0Aprint+y&mode=display&cumulative=false&heapPrimitives=false&drawParentPointers=false&textReferences=false&py=2&curInstr=0}}{Visualize execution}) 
+
+
+Some more Python code (actually specified as a sage cell, but
+such cells are not supported by this format).
+
+\bpypro
+a = 2
+b = 3
+print 'a+b:', a + b
+
+# In a sage cell we can also plot
+from matplotlib.pyplot import *
+from numpy import *
+x = linspace(0, 4*pi, 101)
+y = exp(-0.1*x)*cos(x)
+plot(x, y)
+xlabel('x'); ylabel('y')
+show()
+\epypro
 
 
 Then Cython:
@@ -29306,7 +29791,7 @@ Filename: \code{selc_composed.pdf}.
 
 
 \bibliographystyle{plain}
-\bibliography{papers.bib}
+\bibliography{papers}
 
 
 
@@ -29632,11 +30117,14 @@ And more code:
 
 ************** File: automake_sphinx_testdoc.py *****************
 #!/usr/bin/env python
-# Autogenerated file (by doconce sphinx_dir)
-# Purpose: create HTML Sphinx version of testdoc
+# Autogenerated file (by doconce sphinx_dir).
+# Purpose: create HTML Sphinx version of testdoc.
 
 # Command-line arguments are transferred to the doconce format sphinx file
-# compilation command
+# compilation command.
+
+# To force compilation of the doconce file to sphinx format, remove
+# the sphinx (.rst) file first.
 
 import glob, sys, os, commands, shutil
 
@@ -29740,11 +30228,14 @@ google-chrome sphinx-rootdir/_build/html/index.html
 
 ************** File: automake_sphinx_math_test.py *****************
 #!/usr/bin/env python
-# Autogenerated file (by doconce sphinx_dir)
-# Purpose: create HTML Sphinx version of math_test
+# Autogenerated file (by doconce sphinx_dir).
+# Purpose: create HTML Sphinx version of math_test.
 
 # Command-line arguments are transferred to the doconce format sphinx file
-# compilation command
+# compilation command.
+
+# To force compilation of the doconce file to sphinx format, remove
+# the sphinx (.rst) file first.
 
 import glob, sys, os, commands, shutil
 
@@ -29765,6 +30256,7 @@ def system(cmd, capture_output=False, echo=True):
     if capture_output:
         return outtext
 
+# Compile the doconce file if a sphinx version of it is not found
 filename = 'math_test'
 if not os.path.isfile(filename + '.rst'):
     # Filter doconce format to sphinx format and copy to sphinx directory
@@ -33143,11 +33635,32 @@ which gets rendered as
 </pre></div>
 <p>
 Now a complete program to be shown via Python Online Tutorial:
+
 <p>
 
 <iframe width="950" height="500" frameborder="0"
-        src="http://pythontutor.com/iframe-embed.html#code=def+f%28x%29%3A%0A++++return+x+%2B+1%0A%0Aa+%3D+2%0Ax+%3D+a%0Aa+%3D+1%0Av+%3D+f%28x%29%0Aprint+v&curInstr=0&py=2&cumulative=false">
+        src="http://pythontutor.com/iframe-embed.html#code=class+Line%3A%0A++++def+__init__%28self%2C+a%2C+b%29%3A%0A++++++++self.a%2C+self.b+%3D+a%2C+b%0A%0A++++def+__call__%28self%2C+x%29%3A%0A++++++++a%2C+b+%3D+self.a%2C+self.b%0A++++++++return+a%2Ax+%2B+b%0A%0Aline+%3D+Line%282%2C+1%29%0Ay+%3D+line%28x%3D3%29%0Aprint+y&curInstr=0&py=2&cumulative=false">
 </iframe>
+<p>
+Some more Python code (actually specified as a sage cell, but
+such cells are not supported by this format).
+
+<p>
+
+<!-- code=text (from !bc pyscpro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a = 2
+b = 3
+print &#39;a+b:&#39;, a + b
+
+# In a sage cell we can also plot
+from matplotlib.pyplot import *
+from numpy import *
+x = linspace(0, 4*pi, 101)
+y = exp(-0.1*x)*cos(x)
+plot(x, y)
+xlabel(&#39;x&#39;); ylabel(&#39;y&#39;)
+show()
+</pre></div>
 <p>
 Then Cython:
 <p>
@@ -34634,11 +35147,32 @@ which gets rendered as
 
 Now a complete program to be shown via Python Online Tutorial:
 
+
 .. raw:: html
 
         <iframe width="950" height="500" frameborder="0"
-                src="http://pythontutor.com/iframe-embed.html#code=def+f%28x%29%3A%0A++++return+x+%2B+1%0A%0Aa+%3D+2%0Ax+%3D+a%0Aa+%3D+1%0Av+%3D+f%28x%29%0Aprint+v&curInstr=0&py=2&cumulative=false">
+                src="http://pythontutor.com/iframe-embed.html#code=class+Line%3A%0A++++def+__init__%28self%2C+a%2C+b%29%3A%0A++++++++self.a%2C+self.b+%3D+a%2C+b%0A%0A++++def+__call__%28self%2C+x%29%3A%0A++++++++a%2C+b+%3D+self.a%2C+self.b%0A++++++++return+a%2Ax+%2B+b%0A%0Aline+%3D+Line%282%2C+1%29%0Ay+%3D+line%28x%3D3%29%0Aprint+y&curInstr=0&py=2&cumulative=false">
         </iframe>
+
+
+Another complete program to be typeset as a sage cell:
+
+
+.. sagecellserver::
+
+        a = 2
+        b = 3
+        print 'a+b:', a + b
+        
+        # In a sage cell we can also plot
+        from matplotlib.pyplot import *
+        from numpy import *
+        x = linspace(0, 4*pi, 101)
+        y = exp(-0.1*x)*cos(x)
+        plot(x, y)
+        xlabel('x'); ylabel('y')
+        show()
+
 
 
 Then Cython:
@@ -41273,8 +41807,26 @@ Titles should be optional.
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
+        <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
+
+        <script>sagecell.makeSagecell({inputLocation: ".sage"});</script>
+
+        <style type="text/css">
+                .sagecell .CodeMirror-scroll {
+                        overflow-y: hidden;
+                        overflow-x: auto;
+                }
+                .sagecell .CodeMirror {
+                        height: auto;
+                }
+        </style>
+
+    
     <link rel="top" title="Testing admons" href="index.html" />
-    <link rel="prev" title="Testing admons" href="index.html" /> 
+    <link rel="prev" title="Testing admons" href="index.html" />
+ 
   
    <style type=text/css>
      div.admonition {
@@ -66080,17 +66632,16 @@ f/fonts/map/pdftex/updmap/pdftex.map}] [2]
 
 
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg [5])
-(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg)
-[6] (./testdoc.out.pyg)
+(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg
+[6]) (./testdoc.out.pyg) (./testdoc.out.pyg)
 
 
 
 <../doc/src/manual/figs/streamtubes.png, id=67, 583.17876pt x 437.635pt>
 <use ../doc/src/manual/figs/streamtubes.png>
-<use ../doc/src/manual/figs/streamtubes.png>
+<use ../doc/src/manual/figs/streamtubes.png> [7]
 
-
-[8 <../doc/src/manual/figs/streamtubes.png>]
+/src/manual/figs/streamtubes.png>]
 
 
 
@@ -66101,20 +66652,21 @@ $[][][][][][][]\OT1/cmr/m/n/10 (-20) ) [][][][][][][][][][][][][][][][][][][][]
 [][]
 
 
-/src/manual/figs/mjolnir.mpeg>>]
+
+[10<<../doc/src/manual/figs/mjolnir.mpeg>><<../doc/src/manual/figs/wavepacket.m
+peg>>]
 Overfull \hbox (13.9403pt too wide) 
 []\OT1/cmr/m/n/10 (-20) Movie based on col-lec-tion of frames (here just a few 
 frames com-pared with the full wavepacket.mpeg
 
 
 
-<../doc/src/manual/figs/wavepacket_0001.png, id=125, 642.4pt x 481.8pt>
+<../doc/src/manual/figs/wavepacket_0001.png, id=132, 642.4pt x 481.8pt>
 <use ../doc/src/manual/figs/wavepacket_0001.png>
-<downloaded_figures/f_plot.png, id=126, 578.16pt x 433.62pt>
+<downloaded_figures/f_plot.png, id=133, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png>
 
-c/src/manual/figs/wavepacket.mpeg>>] [11 <../doc/src/manual/figs/wavepacket_000
-1.png> <./downloaded_figures/f_plot.png>]
+c/src/manual/figs/wavepacket_0001.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -66139,7 +66691,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
-[12]
+[12 <./downloaded_figures/f_plot.png>] [13]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -66162,31 +66714,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 757.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
- 762.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-t line 766.
-
-
-
- 766.
+t line 781.
 
 
 
@@ -66202,7 +66730,11 @@ t line 766.
 
 
 
-t line 770.
+...rest of part of LaTeX line number...
+
+
+
+t line 790.
 
 
 
@@ -66214,7 +66746,27 @@ t line 770.
 
 
 
- 772.
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+t line 794.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
 
 
 
@@ -66238,7 +66790,7 @@ t line 770.
 
 
 
- 774.
+...rest of part of LaTeX line number...
 
 
 
@@ -66272,11 +66824,10 @@ t line 770.
 
 .
 
-[13]
+[14]
 Overfull \hbox (5.05241pt too wide) 
 [][][]\OT1/cmtt/m/n/8 http://www.springer.com/mathematics/computational+science
 +%26+engineering/book/978-3-642-23098-1| 
-[14]
 
 
 
@@ -66298,6 +66849,7 @@ Package amsmath Warning: Foreign command \over;
 
 ...rest of part of LaTeX line number...
 
+[15]
 
 
 
@@ -66328,9 +66880,9 @@ Package amsmath Warning: Foreign command \over;
 
 
 
- 931.
+...rest of part of LaTeX line number...
 
-[15] (./testdoc.out.pyg) [16] (./testdoc.out.pyg) [17]
+(./testdoc.out.pyg) [16] (./testdoc.out.pyg) [17] [18]
 
 
 .
@@ -66338,13 +66890,12 @@ Package amsmath Warning: Foreign command \over;
 
 
 
-[18]
 
 
 
 
 
- 1363.
+...rest of part of LaTeX line number...
 
 
 
@@ -66357,16 +66908,17 @@ Package amsmath Warning: Foreign command \over;
 
 
 No file testdoc.bbl.
-
-
-...rest of part of LaTeX line number...
-
 [19]
 
 
 ...rest of part of LaTeX line number...
 
 [20]
+
+
+...rest of part of LaTeX line number...
+
+[21]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
@@ -66377,7 +66929,7 @@ Package movie15 Warning: @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 (movie15)                @@ Rerun to get object references right! @@
 (movie15)                @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@.
 
-[21] (./testdoc.aux)
+[22] (./testdoc.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -66547,6 +67099,7 @@ newcommands_replace.tex
  testdoc.out.pyg
  testdoc.out.pyg
  testdoc.out.pyg
+ testdoc.out.pyg
 ../doc/src/manual/figs/streamtubes.png
 ../doc/src/manual/figs/streamtubes.png
 ../doc/src/manual/figs/wavepacket_0001.png
@@ -66591,7 +67144,7 @@ are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/te
 xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/share/texlive/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/share/texlive/texmf-di
 st/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on testdoc.pdf (21 pages, ).
+Output written on testdoc.pdf (22 pages, ).
 Transcript written on testdoc.log.
 + '[' 0 -ne 0 ']'
 + pdflatex -shell-escape testdoc
@@ -66807,31 +67360,31 @@ ABD: EveryShipout initializing macros
 f/fonts/map/pdftex/updmap/pdftex.map}] (./testdoc.toc) [2] [3] (./testdoc.tdo)
 [4]  (./testdoc.out.pyg
 ) (./testdoc.out.pyg) (./testdoc.out.pyg [5]) (./testdoc.out.pyg)
-(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) [6]
-(./testdoc.out.pyg)
+(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg [6])
+(./testdoc.out.pyg) (./testdoc.out.pyg)
 <../doc/src/manual/figs/streamtubes.png, id=222, 583.17876pt x 437.635pt>
 <use ../doc/src/manual/figs/streamtubes.png>
-<use ../doc/src/manual/figs/streamtubes.png>
+<use ../doc/src/manual/figs/streamtubes.png> [7]
 
-
-[8 <../doc/src/manual/figs/streamtubes.png>]
+/src/manual/figs/streamtubes.png>]
 Overfull \hbox (320.62254pt too wide) 
 []\OT1/cmr/m/n/10 (-20) (Movie []: play [][]$\OT1/cmtt/m/n/10 wavepacket . html
 $[][][][][][][]\OT1/cmr/m/n/10 (-20) ) [][][][][][][][][][][][][][][][][][][][]
 [][]
 
 
-/src/manual/figs/mjolnir.mpeg>>]
+
+[10<<../doc/src/manual/figs/mjolnir.mpeg>><<../doc/src/manual/figs/wavepacket.m
+peg>>]
 Overfull \hbox (13.9403pt too wide) 
 []\OT1/cmr/m/n/10 (-20) Movie based on col-lec-tion of frames (here just a few 
 frames com-pared with the full wavepacket.mpeg
-<../doc/src/manual/figs/wavepacket_0001.png, id=281, 642.4pt x 481.8pt>
+<../doc/src/manual/figs/wavepacket_0001.png, id=287, 642.4pt x 481.8pt>
 <use ../doc/src/manual/figs/wavepacket_0001.png>
-<downloaded_figures/f_plot.png, id=282, 578.16pt x 433.62pt>
+<downloaded_figures/f_plot.png, id=288, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png>
 
-c/src/manual/figs/wavepacket.mpeg>>] [11 <../doc/src/manual/figs/wavepacket_000
-1.png> <./downloaded_figures/f_plot.png>]
+c/src/manual/figs/wavepacket_0001.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -66856,7 +67409,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
-[12]
+[12 <./downloaded_figures/f_plot.png>] [13]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -66879,31 +67432,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 757.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
- 762.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-t line 766.
-
-
-
- 766.
+t line 781.
 
 
 
@@ -66919,7 +67448,11 @@ t line 766.
 
 
 
-t line 770.
+...rest of part of LaTeX line number...
+
+
+
+t line 790.
 
 
 
@@ -66931,7 +67464,27 @@ t line 770.
 
 
 
- 772.
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+t line 794.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
 
 
 
@@ -66955,7 +67508,7 @@ t line 770.
 
 
 
- 774.
+...rest of part of LaTeX line number...
 
 
 
@@ -66989,11 +67542,10 @@ t line 770.
 
 .
 
-[13]
+[14]
 Overfull \hbox (5.05241pt too wide) 
 [][][]\OT1/cmtt/m/n/8 http://www.springer.com/mathematics/computational+science
 +%26+engineering/book/978-3-642-23098-1| 
-[14]
 
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
@@ -67001,7 +67553,7 @@ Package amsmath Warning: Foreign command \over;
 
 [15] (./testdoc.out.pyg) [16] (./testdoc.out.pyg) [17] [18]
 No file testdoc.bbl.
-[19] [20]
+[19] [20] [21]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
@@ -67012,7 +67564,7 @@ Package movie15 Warning: @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 (movie15)                @@ Rerun to get object references right! @@
 (movie15)                @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@.
 
-[21] (./testdoc.aux)
+[22] (./testdoc.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -67184,6 +67736,7 @@ newcommands_replace.tex
  testdoc.out.pyg
  testdoc.out.pyg
  testdoc.out.pyg
+ testdoc.out.pyg
 ../doc/src/manual/figs/streamtubes.png
 ../doc/src/manual/figs/streamtubes.png
 ../doc/src/manual/figs/wavepacket_0001.png
@@ -67220,7 +67773,7 @@ are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/te
 xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/share/texlive/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/share/texlive/texmf-di
 st/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on testdoc.pdf (21 pages, ).
+Output written on testdoc.pdf (22 pages, ).
 Transcript written on testdoc.log.
 + makeindex testdoc
 This is makeindex, version 2.15 [TeX Live 2013] (kpathsea + Thai support).
@@ -67233,11 +67786,11 @@ Transcript written in testdoc.ilg.
 This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
 The top-level auxiliary file: testdoc.aux
 The style file: plain.bst
-Database file #1: papers.bib.bib
+Database file #1: papers.bib
 Warning--entry type for "Langtangen_1989e" isn't style-file defined
---line 166 of file papers.bib.bib
+--line 166 of file papers.bib
 Warning--entry type for "Langtangen:85" isn't style-file defined
---line 175 of file papers.bib.bib
+--line 175 of file papers.bib
 Warning--can't use both author and editor fields in Langtangen:95
 (There were 3 warnings)
 + pdflatex -shell-escape testdoc
@@ -67453,31 +68006,31 @@ ABD: EveryShipout initializing macros
 f/fonts/map/pdftex/updmap/pdftex.map}] (./testdoc.toc) [2] [3] (./testdoc.tdo)
 [4]  (./testdoc.out.pyg
 ) (./testdoc.out.pyg) (./testdoc.out.pyg [5]) (./testdoc.out.pyg)
-(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) [6]
-(./testdoc.out.pyg)
+(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg [6])
+(./testdoc.out.pyg) (./testdoc.out.pyg)
 <../doc/src/manual/figs/streamtubes.png, id=222, 583.17876pt x 437.635pt>
 <use ../doc/src/manual/figs/streamtubes.png>
-<use ../doc/src/manual/figs/streamtubes.png>
+<use ../doc/src/manual/figs/streamtubes.png> [7]
 
-
-[8 <../doc/src/manual/figs/streamtubes.png>]
+/src/manual/figs/streamtubes.png>]
 Overfull \hbox (320.62254pt too wide) 
 []\OT1/cmr/m/n/10 (-20) (Movie []: play [][]$\OT1/cmtt/m/n/10 wavepacket . html
 $[][][][][][][]\OT1/cmr/m/n/10 (-20) ) [][][][][][][][][][][][][][][][][][][][]
 [][]
 
 
-/src/manual/figs/mjolnir.mpeg>>]
+
+[10<<../doc/src/manual/figs/mjolnir.mpeg>><<../doc/src/manual/figs/wavepacket.m
+peg>>]
 Overfull \hbox (13.9403pt too wide) 
 []\OT1/cmr/m/n/10 (-20) Movie based on col-lec-tion of frames (here just a few 
 frames com-pared with the full wavepacket.mpeg
-<../doc/src/manual/figs/wavepacket_0001.png, id=281, 642.4pt x 481.8pt>
+<../doc/src/manual/figs/wavepacket_0001.png, id=287, 642.4pt x 481.8pt>
 <use ../doc/src/manual/figs/wavepacket_0001.png>
-<downloaded_figures/f_plot.png, id=282, 578.16pt x 433.62pt>
+<downloaded_figures/f_plot.png, id=288, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png>
 
-c/src/manual/figs/wavepacket.mpeg>>] [11 <../doc/src/manual/figs/wavepacket_000
-1.png> <./downloaded_figures/f_plot.png>]
+c/src/manual/figs/wavepacket_0001.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -67502,7 +68055,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
-[12]
+[12 <./downloaded_figures/f_plot.png>] [13]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -67525,31 +68078,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 757.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
- 762.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-t line 766.
-
-
-
- 766.
+t line 781.
 
 
 
@@ -67565,7 +68094,11 @@ t line 766.
 
 
 
-t line 770.
+...rest of part of LaTeX line number...
+
+
+
+t line 790.
 
 
 
@@ -67577,7 +68110,27 @@ t line 770.
 
 
 
- 772.
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+t line 794.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
 
 
 
@@ -67601,7 +68154,7 @@ t line 770.
 
 
 
- 774.
+...rest of part of LaTeX line number...
 
 
 
@@ -67635,11 +68188,10 @@ t line 770.
 
 .
 
-[13]
+[14]
 Overfull \hbox (5.05241pt too wide) 
 [][][]\OT1/cmtt/m/n/8 http://www.springer.com/mathematics/computational+science
 +%26+engineering/book/978-3-642-23098-1| 
-[14]
 
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
@@ -67825,6 +68377,7 @@ newcommands_replace.tex
     umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
   omscmr.fd    1999/05/25 v2.5h Standard LaTeX font definitions
+ testdoc.out.pyg
  testdoc.out.pyg
  testdoc.out.pyg
  testdoc.out.pyg
@@ -68089,31 +68642,31 @@ ABD: EveryShipout initializing macros
 f/fonts/map/pdftex/updmap/pdftex.map}] (./testdoc.toc) [2] [3] (./testdoc.tdo)
 [4]  (./testdoc.out.pyg
 ) (./testdoc.out.pyg) (./testdoc.out.pyg [5]) (./testdoc.out.pyg)
-(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) [6]
-(./testdoc.out.pyg)
+(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg [6])
+(./testdoc.out.pyg) (./testdoc.out.pyg)
 <../doc/src/manual/figs/streamtubes.png, id=222, 583.17876pt x 437.635pt>
 <use ../doc/src/manual/figs/streamtubes.png>
-<use ../doc/src/manual/figs/streamtubes.png>
+<use ../doc/src/manual/figs/streamtubes.png> [7]
 
-
-[8 <../doc/src/manual/figs/streamtubes.png>]
+/src/manual/figs/streamtubes.png>]
 Overfull \hbox (320.62254pt too wide) 
 []\OT1/cmr/m/n/10 (-20) (Movie []: play [][]$\OT1/cmtt/m/n/10 wavepacket . html
 $[][][][][][][]\OT1/cmr/m/n/10 (-20) ) [][][][][][][][][][][][][][][][][][][][]
 [][]
 
 
-/src/manual/figs/mjolnir.mpeg>>]
+
+[10<<../doc/src/manual/figs/mjolnir.mpeg>><<../doc/src/manual/figs/wavepacket.m
+peg>>]
 Overfull \hbox (13.9403pt too wide) 
 []\OT1/cmr/m/n/10 (-20) Movie based on col-lec-tion of frames (here just a few 
 frames com-pared with the full wavepacket.mpeg
-<../doc/src/manual/figs/wavepacket_0001.png, id=281, 642.4pt x 481.8pt>
+<../doc/src/manual/figs/wavepacket_0001.png, id=287, 642.4pt x 481.8pt>
 <use ../doc/src/manual/figs/wavepacket_0001.png>
-<downloaded_figures/f_plot.png, id=282, 578.16pt x 433.62pt>
+<downloaded_figures/f_plot.png, id=288, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png>
 
-c/src/manual/figs/wavepacket.mpeg>>] [11 <../doc/src/manual/figs/wavepacket_000
-1.png> <./downloaded_figures/f_plot.png>]
+c/src/manual/figs/wavepacket_0001.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -68138,7 +68691,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
-[12]
+[12 <./downloaded_figures/f_plot.png>] [13]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -68159,11 +68712,10 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
-[13]
+[14]
 Overfull \hbox (5.05241pt too wide) 
 [][][]\OT1/cmtt/m/n/8 http://www.springer.com/mathematics/computational+science
 +%26+engineering/book/978-3-642-23098-1| 
-[14]
 
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
@@ -68343,6 +68895,7 @@ newcommands_replace.tex
     umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
   omscmr.fd    1999/05/25 v2.5h Standard LaTeX font definitions
+ testdoc.out.pyg
  testdoc.out.pyg
  testdoc.out.pyg
  testdoc.out.pyg

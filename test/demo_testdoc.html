@@ -246,7 +246,7 @@ $$
 <center>[6] <b>Third Inst, Elsewhere</b></center>
 <center>[7] <b>Fourth Inst</b></center>
 <p>
-<center><h4>Nov 25, 2013</h4></center> <!-- date -->
+<center><h4>Nov 28, 2013</h4></center> <!-- date -->
 
 <h2>Table of contents</h2>
 
@@ -471,12 +471,44 @@ which gets rendered as
 </pre></div>
 </td></tr></table><p>
 Now a complete program to be shown via Python Online Tutorial:
+
 <p>
 
 <iframe width="950" height="500" frameborder="0"
-        src="http://pythontutor.com/iframe-embed.html#code=def+f%28x%29%3A%0A++++return+x+%2B+1%0A%0Aa+%3D+2%0Ax+%3D+a%0Aa+%3D+1%0Av+%3D+f%28x%29%0Aprint+v&curInstr=0&py=2&cumulative=false">
+        src="http://pythontutor.com/iframe-embed.html#code=class+Line%3A%0A++++def+__init__%28self%2C+a%2C+b%29%3A%0A++++++++self.a%2C+self.b+%3D+a%2C+b%0A%0A++++def+__call__%28self%2C+x%29%3A%0A++++++++a%2C+b+%3D+self.a%2C+self.b%0A++++++++return+a%2Ax+%2B+b%0A%0Aline+%3D+Line%282%2C+1%29%0Ay+%3D+line%28x%3D3%29%0Aprint+y&curInstr=0&py=2&cumulative=false">
 </iframe>
 <p>
+Some more Python code (actually specified as a sage cell, but
+such cells are not supported by this format).
+
+<p>
+
+<!-- code=text (from !bc pyscpro) typeset with pygments style "emacs" -->
+<table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a = 2
+b = 3
+print &#39;a+b:&#39;, a + b
+
+# In a sage cell we can also plot
+from matplotlib.pyplot import *
+from numpy import *
+x = linspace(0, 4*pi, 101)
+y = exp(-0.1*x)*cos(x)
+plot(x, y)
+xlabel(&#39;x&#39;); ylabel(&#39;y&#39;)
+show()
+</pre></div>
+</td></tr></table><p>
 Then Cython:
 <p>
 
