@@ -83,6 +83,7 @@ xrightmargin=5pt,
 \lstnewenvironment{latexcode}{\lstset{language=[LaTeX]TeX,style=c@mmon}}{}
 \newcommand{\inputlatex}[1]{\lstset{language=[LaTeX]TeX,style=c@mmon}%
   \lstinputlisting{#1}}
+\lstnewenvironment{latexcode:nt}{\lstset{language=[LaTeX]TeX,style=c@mmon}}{}
 
 %--- C++ ---
 
@@ -136,7 +137,7 @@ morestring=[d][stringstyle]'
 \newcommand{\inputcpp}[1]{\lstinputlisting[style=cppstyle, title={\codetitlestyle{C++ code}}, belowcaptionskip=\belowtitleskip]{#1}}
 \lstnewenvironment{c++}[1][]{\lstset{style=cppstyle, title={\codetitlestyle{C++ code}}, belowcaptionskip=\belowtitleskip}}{}
 \lstnewenvironment{c++:nt}[1][]{\lstset{style=cppstyle}}{}
-\newcommand{\cpp}{\lstinline[style=cppstyle,basicstyle=\ttfamily]}
+\newcommand{\cppinline}{\lstinline[style=cppstyle,basicstyle=\ttfamily]}
 
 %--- Python and Cython ---
 
@@ -247,13 +248,13 @@ morestring=[d][stringstyle]'
 \lstnewenvironment{python}[1][]{\lstset{style=pythonstyle,title={\codetitlestyle{Python code }},belowcaptionskip=\belowtitleskip}}{}
 %\lstnewenvironment{python}[1][]{\lstset{style=pythonstyle,title={\codetitlestyle{Python code }},belowcaptionskip=\belowtitleskip}}{}
 \lstnewenvironment{python:nt}[1][]{\lstset{style=pythonstyle}}{}
-\newcommand{\pyth}{\lstinline[style=pythonstyle,basicstyle=\ttfamily]}
+\newcommand{\pythoninline}{\lstinline[style=pythonstyle,basicstyle=\ttfamily]}
 
 
 \newcommand{\inputcython}[1]{\lstinputlisting[style=cythonstyle,title={\codetitlestyle{Cython code }},belowcaptionskip=\belowtitleskip]{#1}}
 \lstnewenvironment{cython}[1][]{\lstset{style=cythonstyle,title={\codetitlestyle{Cython code }},belowcaptionskip=\belowtitleskip}}{}
 \lstnewenvironment{cython:nt}[1][]{\lstset{style=cythonstyle}}{}
-\newcommand{\cyth}{\lstinline[style=cythonstyle,basicstyle=\ttfamily]}
+\newcommand{\cythoninline}{\lstinline[style=cythonstyle,basicstyle=\ttfamily]}
 
 %--- FORTRAN ---
 
@@ -296,7 +297,7 @@ morestring=[d][stringstyle]'
 \newcommand{\inputfortran}[1]{\lstinputlisting[style=fortranstyle, title={\codetitlestyle{FORTRAN code}}, belowcaptionskip=\belowtitleskip]{#1}}
 \lstnewenvironment{fortran}[1][]{\lstset{style=fortranstyle, title={\codetitlestyle{FORTRAN code}}, belowcaptionskip=\belowtitleskip}}{}
 \lstnewenvironment{fortran:nt}[1][]{\lstset{style=fortranstyle}}{}
-\newcommand{\fortr}{\lstinline[style=fortranstyle,basicstyle=\ttfamily]}
+\newcommand{\fortraninline}{\lstinline[style=fortranstyle,basicstyle=\ttfamily]}
 
 
 %--- XML ---

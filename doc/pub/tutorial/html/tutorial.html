@@ -15,7 +15,7 @@
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
+        URL_ROOT:    '',
         VERSION:     '1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
@@ -26,8 +26,26 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
+        <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
+
+        <script>sagecell.makeSagecell({inputLocation: ".sage"});</script>
+
+        <style type="text/css">
+                .sagecell .CodeMirror-scroll {
+                        overflow-y: hidden;
+                        overflow-x: auto;
+                }
+                .sagecell .CodeMirror {
+                        height: auto;
+                }
+        </style>
+
+    
     <link rel="top" title="Doconce: Document Once, Include Anywhere" href="index.html" />
-    <link rel="prev" title="Doconce: Document Once, Include Anywhere" href="index.html" /> 
+    <link rel="prev" title="Doconce: Document Once, Include Anywhere" href="index.html" />
+ 
   </head>
   <body>
     <div class="related">
@@ -57,7 +75,7 @@
 <tr class="field-odd field"><th class="field-name">Author:</th><td class="field-body"><p class="first">Hans Petter Langtangen</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body"><p class="first">Aug 31, 2013</p>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body"><p class="first">Nov 28, 2013</p>
 <ul class="last simple">
 <li>When writing a note, report, manual, etc., do you find it difficult
 to choose the typesetting format? That is, to choose between plain
@@ -267,7 +285,8 @@ natural in plain text.  Lists are typeset as you would do in an email,</p>
 <li>item 3</li>
 </ol>
 </div></blockquote>
-<p><em>Hyperlinks.</em> Paragraph headings are surrounded by double underscores.
+<p><strong>Hyperlinks.</strong>
+Paragraph headings are surrounded by double underscores.
 URLs with a link word are possible, as in <a class="reference external" href="http://folk.uio.no/hpl">hpl</a>.
 If the word is URL, the URL itself becomes the link name,
 as in <a class="reference external" href="tutorial.do.txt">tutorial.do.txt</a>. Doconce distinguishes between paper
@@ -652,12 +671,18 @@ scripts so there is no support for mathematics in the discussion forum.</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>Figure files must be uploaded to some web site and the filenames name must
-be replaced by the relevant URL. This can be automatically edited:</p>
+<p>Figure files must be uploaded to some web site and the local filenames name must
+be replaced by the relevant URL. This is usually done by using the
+<tt class="docutils literal"><span class="pre">--figure_prefix=http://project.github.io/...</span></tt> option to give some URL
+as prefix to all figure names (a similar <tt class="docutils literal"><span class="pre">--movie_prefix=</span></tt> option exists as
+well).</p>
+<p>Changing figure names in a blog post can also be done &#8220;manually&#8221; by
+some editing code in the script that compiles the Doconce document
+to HTML format:</p>
 <div class="last highlight-bash"><div class="highlight"><pre>cp mydoc.do.txt mydoc2.do.txt
 <span class="nv">url</span><span class="o">=</span><span class="s2">&quot;https//raw.github.com/someuser/someuser.github.com&quot;</span>
 <span class="nv">dir</span><span class="o">=</span><span class="s2">&quot;master/project/dir1/dir2&quot;</span>
-<span class="k">for </span>figname in fig1 fig2 fig3; <span class="k">do</span>
+<span class="k">for </span>figname in fig1 fig2 fig3<span class="p">;</span> <span class="k">do</span>
 <span class="k">  </span>doconce replace <span class="s2">&quot;[$figname,&quot;</span> <span class="s2">&quot;[$site/$dir/$figname.png,&quot;</span> <span class="se">\</span>
           mydoc2.do.txt
 <span class="k">done</span>
@@ -741,7 +766,9 @@ This recipe is a quick way of makeing HTML notes with (some) mathematics.</p>
 Markdown dialect, which is used for the issue tracker on <a class="reference external" href="http://github.com">GitHub</a>. A special feature is the support of task lists:
 unnumbered lists with <tt class="docutils literal"><span class="pre">[x]</span></tt> (task done) or <tt class="docutils literal"><span class="pre">[</span> <span class="pre">]</span></tt> (task not done).
 (Tables get typeset directly as HTML and the syntax for code highlighting
-is different from Pandoc extended Markdown.) Here is an example:</p>
+is different from Pandoc extended Markdown.) Below is a typical
+response in a GitHub issue tracker
+where one first quotes the issue and then provides an answer:</p>
 <div class="highlight-text"><div class="highlight"><pre>!bquote
 ===== Problems with a function =====
 
@@ -782,7 +809,8 @@ def f(x, a=1, b=1, c=1):
 <div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; doconce format pandoc mycomments --github_md</span>
 </pre></div>
 </div>
-<p>produces <tt class="docutils literal"><span class="pre">mycomments.md</span></tt> which can be pasted into the Write field of
+<p>produces the Markdown file <tt class="docutils literal"><span class="pre">mycomments.md</span></tt>, which can be pasted into
+the Write field of
 the GitHub issue tracker. Turning on Preview shows the typesetting of
 the quote, compute code, inline verbatim, headings, the task list, and
 the table.</p>
@@ -791,7 +819,8 @@ the table.</p>
 <div class="section" id="id4">
 <h2>LaTeX<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <p>Making a LaTeX file <tt class="docutils literal"><span class="pre">mydoc.tex</span></tt> from <tt class="docutils literal"><span class="pre">mydoc.do.txt</span></tt> is done in two steps:</p>
-<p><em>Step 1.</em> Filter the doconce text to a pre-LaTeX form <tt class="docutils literal"><span class="pre">mydoc.p.tex</span></tt> for
+<p><strong>Step 1.</strong>
+Filter the doconce text to a pre-LaTeX form <tt class="docutils literal"><span class="pre">mydoc.p.tex</span></tt> for
 the <tt class="docutils literal"><span class="pre">ptex2tex</span></tt> program (or <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">ptex2tex</span></tt>):</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; doconce format latex mydoc</span>
 </pre></div>
@@ -809,7 +838,8 @@ as <a class="reference external" href="http://goo.gl/">http://goo.gl/</a>, <a cl
 <a class="reference external" href="https://bitly.com/">https://bitly.com/</a>.)
 The default, <tt class="docutils literal"><span class="pre">--device=screen</span></tt>, creates a PDF file for reading
 on a screen where links are just clickable.</p>
-<p><em>Step 2.</em> Run <tt class="docutils literal"><span class="pre">ptex2tex</span></tt> (if you have it) to make a standard LaTeX file,</p>
+<p><strong>Step 2.</strong>
+Run <tt class="docutils literal"><span class="pre">ptex2tex</span></tt> (if you have it) to make a standard LaTeX file,</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; ptex2tex mydoc</span>
 </pre></div>
 </div>
@@ -913,7 +943,8 @@ the <tt class="docutils literal"><span class="pre">sys</span></tt> environments 
 <p>If no environments like <tt class="docutils literal"><span class="pre">sys</span></tt>, <tt class="docutils literal"><span class="pre">fpro</span></tt>, or the common
 <tt class="docutils literal"><span class="pre">envir</span></tt> are defined on the command line, the plain <tt class="docutils literal"><span class="pre">\begin{Verbatim}</span></tt>
 and <tt class="docutils literal"><span class="pre">\end{Verbatim}</span></tt> instructions are used.</p>
-<p><em>Step 2b (optional).</em> Edit the <tt class="docutils literal"><span class="pre">mydoc.tex</span></tt> file to your needs.
+<p><strong>Step 2b (optional).</strong>
+Edit the <tt class="docutils literal"><span class="pre">mydoc.tex</span></tt> file to your needs.
 For example, you may want to substitute <tt class="docutils literal"><span class="pre">section</span></tt> by <tt class="docutils literal"><span class="pre">section*</span></tt> to
 avoid numbering of sections, you may want to insert linebreaks
 (and perhaps space) in the title, etc. This can be automatically
@@ -937,7 +968,8 @@ an appropriate set of text replacements and regular expression
 substitutions. You are anyway encourged to make a script for
 generating PDF from the LaTeX file so the <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">subst</span></tt> or
 <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">replace</span></tt> commands can be put inside the script.</p>
-<p><em>Step 3.</em> Compile <tt class="docutils literal"><span class="pre">mydoc.tex</span></tt>
+<p><strong>Step 3.</strong>
+Compile <tt class="docutils literal"><span class="pre">mydoc.tex</span></tt>
 and create the PDF file:</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; latex mydoc</span>
 <span class="go">Terminal&gt; latex mydoc</span>
@@ -1037,7 +1069,8 @@ classic MS Word format, and PDF:</p>
 <span class="go">Terminal&gt; unoconv -f pdf mydoc.odt</span>
 </pre></div>
 </div>
-<p><em>Remark about Mathematical Typesetting.</em> At the time of this writing, there is no easy way to go from Doconce
+<p><strong>Remark about Mathematical Typesetting.</strong>
+At the time of this writing, there is no easy way to go from Doconce
 and LaTeX mathematics to reST and further to OpenOffice and the
 &#8220;MS Word world&#8221;. Mathematics is only fully supported by <tt class="docutils literal"><span class="pre">latex</span></tt> as
 output and to a wide extent also supported by the <tt class="docutils literal"><span class="pre">sphinx</span></tt> output format.
@@ -1056,33 +1089,51 @@ Some links for going from LaTeX to Word are listed below.</p>
 most of the steps through the <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">sphinx_dir</span></tt> command:</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; doconce sphinx_dir author=&quot;authors&#39; names&quot; \</span>
 <span class="go">          title=&quot;some title&quot; version=1.0 dirname=sphinxdir \</span>
-<span class="go">          theme=mytheme file1 file2 file3 ...</span>
+<span class="go">          theme=mytheme mydoc</span>
 </pre></div>
 </div>
 <p>The keywords <tt class="docutils literal"><span class="pre">author</span></tt>, <tt class="docutils literal"><span class="pre">title</span></tt>, and <tt class="docutils literal"><span class="pre">version</span></tt> are used in the headings
 of the Sphinx document. By default, <tt class="docutils literal"><span class="pre">version</span></tt> is 1.0 and the script
-will try to deduce authors and title from the doconce files <tt class="docutils literal"><span class="pre">file1</span></tt>,
-<tt class="docutils literal"><span class="pre">file2</span></tt>, etc. that together represent the whole document. Note that
-none of the individual Doconce files <tt class="docutils literal"><span class="pre">file1</span></tt>, <tt class="docutils literal"><span class="pre">file2</span></tt>, etc. should
-include the rest as their union makes up the whole document.
+will try to deduce authors and title from the doconce file <tt class="docutils literal"><span class="pre">mydoc.do.txt</span></tt>
 The default value of <tt class="docutils literal"><span class="pre">dirname</span></tt> is <tt class="docutils literal"><span class="pre">sphinx-rootdir</span></tt>. The <tt class="docutils literal"><span class="pre">theme</span></tt>
 keyword is used to set the theme for design of HTML output from
 Sphinx (the default theme is <tt class="docutils literal"><span class="pre">'default'</span></tt>).</p>
-<p>With a single-file document in <tt class="docutils literal"><span class="pre">mydoc.do.txt</span></tt> one often just runs</p>
+<p>One often just runs the simple command</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; doconce sphinx_dir mydoc</span>
 </pre></div>
 </div>
-<p>and then an appropriate Sphinx directory <tt class="docutils literal"><span class="pre">sphinx-rootdir</span></tt> is made with
+<p>which creates the Sphinx directory <tt class="docutils literal"><span class="pre">sphinx-rootdir</span></tt> with
 relevant files.</p>
 <p>The <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">sphinx_dir</span></tt> command generates a script
 <tt class="docutils literal"><span class="pre">automake_sphinx.py</span></tt> for compiling the Sphinx document into an HTML
-document.  One can either run <tt class="docutils literal"><span class="pre">automake_sphinx.py</span></tt> or perform the
-steps in the script manually, possibly with necessary modifications.
-Normally, executing the script works well, but if you are new
-to Sphinx and end up producing quite some Sphinx documents, I encourave
-you to read the Sphinx documentation and study the <tt class="docutils literal"><span class="pre">automake_sphinx.py</span></tt>
-file.</p>
-<p><em>Links.</em> The <tt class="docutils literal"><span class="pre">automake_sphinx.py</span></tt> script copies directories named <tt class="docutils literal"><span class="pre">fig*</span></tt>
+document.  Run</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; python automake_sphinx.py</span>
+</pre></div>
+</div>
+<p>As the output also tells, you can see the Sphinx HTML version of the document
+by running</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; google-chrome sphinx-rootdir/_build/html/index.html</span>
+</pre></div>
+</div>
+<p>or loading the <tt class="docutils literal"><span class="pre">index.html</span></tt> file manually into your favorite web browser.</p>
+<p>If you cycle through editing the Doconce file and watching the
+HTML output, you should observe that <tt class="docutils literal"><span class="pre">automake_sphinx.py</span></tt> does not
+recompile the Doconce file if the Sphinx <tt class="docutils literal"><span class="pre">.rst</span></tt> version already exists.
+In each edit-and-watch cycle do</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; rm mydoc.rst; python automake_sphinx.py</span>
+</pre></div>
+</div>
+<div class="admonition-tip admonition">
+<p class="first admonition-title">Tip</p>
+<p class="last">If you are new
+to Sphinx and end up producing quite some Sphinx documents, you are encouraged
+to read the Sphinx documentation and study the <tt class="docutils literal"><span class="pre">automake_sphinx.py</span></tt>
+file. Maybe you want to do things differently.</p>
+</div>
+<p>The following paragraphs describes the many possibilities for steering
+the Sphinx output.</p>
+<p><strong>Links.</strong>
+The <tt class="docutils literal"><span class="pre">automake_sphinx.py</span></tt> script copies directories named <tt class="docutils literal"><span class="pre">fig*</span></tt>
 over to the Sphinx directory so that figures are accessible
 in the Sphinx compilation.  It also examines <tt class="docutils literal"><span class="pre">MOVIE:</span></tt> and <tt class="docutils literal"><span class="pre">FIGURE:</span></tt>
 commands in the Doconce file to find other image files and copies
@@ -1098,7 +1149,8 @@ to <tt class="docutils literal"><span class="pre">_static/myfile.txt</span></tt>
 However, I recommend instead that you manually copy
 files to <tt class="docutils literal"><span class="pre">_static</span></tt> when you want to link to them, or let your
 script which compiles the Doconce document do it automatically.</p>
-<p><em>Themes.</em> Doconce comes with a rich collection of HTML themes for Sphinx documents,
+<p><strong>Themes.</strong>
+Doconce comes with a rich collection of HTML themes for Sphinx documents,
 much larger than what is found in the standard Sphinx distribution.
 Additional themes include
 <tt class="docutils literal"><span class="pre">agni</span></tt>,
@@ -1144,7 +1196,8 @@ that come with Doconce into the Sphinx directory. Just specify
 path to the directory containing the Sphinx theme. You must also
 specify a configure file by <tt class="docutils literal"><span class="pre">conf.py=path</span></tt>, where <tt class="docutils literal"><span class="pre">path</span></tt> is the
 relative path to your <tt class="docutils literal"><span class="pre">conf.py</span></tt> file.</p>
-<p><em>Example.</em> Say you like the <tt class="docutils literal"><span class="pre">scipy_lectures</span></tt> theme, but you want
+<p><strong>Example.</strong>
+Say you like the <tt class="docutils literal"><span class="pre">scipy_lectures</span></tt> theme, but you want
 a table of contents to appear <em>to the right</em>, much in the same style
 as in the <tt class="docutils literal"><span class="pre">default</span></tt> theme (where the table of contents is to the left).
 You can then run <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">sphinx_dir</span></tt>, invoke a text editor with the
@@ -1185,11 +1238,13 @@ and reuse it the next time <tt class="docutils literal"><span class="pre">doconc
 <p>If it is not desirable to use the autogenerated scripts explained
 above, here is the complete manual procedure of generating a
 Sphinx document from a file <tt class="docutils literal"><span class="pre">mydoc.do.txt</span></tt>.</p>
-<p><em>Step 1.</em> Translate Doconce into the Sphinx format:</p>
+<p><strong>Step 1.</strong>
+Translate Doconce into the Sphinx format:</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; doconce format sphinx mydoc</span>
 </pre></div>
 </div>
-<p><em>Step 2.</em> Create a Sphinx root directory
+<p><strong>Step 2.</strong>
+Create a Sphinx root directory
 either manually or by using the interactive <tt class="docutils literal"><span class="pre">sphinx-quickstart</span></tt>
 program. Here is a scripted version of the steps with the latter:</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">mkdir sphinx-rootdir</span>
@@ -1223,7 +1278,8 @@ may need some edits if you want to specific layout (Sphinx themes)
 of HTML pages. The <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">sphinx_dir</span></tt> generator makes an extended <tt class="docutils literal"><span class="pre">conv.py</span></tt>
 file where, among other things, several useful Sphinx extensions
 are included.</p>
-<p><em>Step 3.</em> Copy the <tt class="docutils literal"><span class="pre">mydoc.rst</span></tt> file to the Sphinx root directory:</p>
+<p><strong>Step 3.</strong>
+Copy the <tt class="docutils literal"><span class="pre">mydoc.rst</span></tt> file to the Sphinx root directory:</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; cp mydoc.rst sphinx-rootdir</span>
 </pre></div>
 </div>
@@ -1233,7 +1289,8 @@ directory. Either edit <tt class="docutils literal"><span class="pre">mydoc.rst<
 or simply copy your figure directories to <tt class="docutils literal"><span class="pre">sphinx-rootdir</span></tt>.
 Links to local files in <tt class="docutils literal"><span class="pre">mydoc.rst</span></tt> must be modified to links to
 files in the <tt class="docutils literal"><span class="pre">_static</span></tt> directory, see comment above.</p>
-<p><em>Step 4.</em> Edit the generated <tt class="docutils literal"><span class="pre">index.rst</span></tt> file so that <tt class="docutils literal"><span class="pre">mydoc.rst</span></tt>
+<p><strong>Step 4.</strong>
+Edit the generated <tt class="docutils literal"><span class="pre">index.rst</span></tt> file so that <tt class="docutils literal"><span class="pre">mydoc.rst</span></tt>
 is included, i.e., add <tt class="docutils literal"><span class="pre">mydoc</span></tt> to the <tt class="docutils literal"><span class="pre">toctree</span></tt> section so that it becomes</p>
 <div class="highlight-text"><div class="highlight"><pre>.. toctree::
    :maxdepth: 2
@@ -1242,7 +1299,8 @@ is included, i.e., add <tt class="docutils literal"><span class="pre">mydoc</spa
 </pre></div>
 </div>
 <p>(The spaces before <tt class="docutils literal"><span class="pre">mydoc</span></tt> are important!)</p>
-<p><em>Step 5.</em> Generate, for instance, an HTML version of the Sphinx source:</p>
+<p><strong>Step 5.</strong>
+Generate, for instance, an HTML version of the Sphinx source:</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">make clean   # remove old versions</span>
 <span class="go">make html</span>
 </pre></div>
@@ -1252,7 +1310,8 @@ standalone HTML, HTML in separate directories with <tt class="docutils literal">
 a large single HTML file, JSON files, various help files (the qthelp, HTML,
 and Devhelp projects), epub, LaTeX, PDF (via LaTeX), pure text, man pages,
 and Texinfo files.</p>
-<p><em>Step 6.</em> View the result:</p>
+<p><strong>Step 6.</strong>
+View the result:</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; firefox _build/html/index.html</span>
 </pre></div>
 </div>
@@ -1365,7 +1424,8 @@ various formats. The <tt class="docutils literal"><span class="pre">make.sh</spa
 <p>Below, we explain the manual installation of all software that may be
 needed when working with Doconce documents.
 The impatient way to install what is needed is to run the
-<a class="reference external" href="doconce_install_all.sh">doconce_install_all.sh</a> script.</p>
+<a class="reference external" href="install_doconce.sh">install_doconce.sh</a> (or
+<a class="reference external" href="install_doconce.py">install_doconce.py</a>) script.</p>
 <div class="section" id="doconce">
 <h2>Doconce<a class="headerlink" href="#doconce" title="Permalink to this headline">¶</a></h2>
 <p>Doconce itself is pure Python code hosted at <a class="reference external" href="https://github.com/hplgit/doconce">https://github.com/hplgit/doconce</a>.  Its installation from the
@@ -1618,6 +1678,7 @@ additional Python/Sphinx modules to be installed:</p>
 <li>bootstrap: <a class="reference external" href="https://github.com/ryan-roemer/sphinx-bootstrap-theme">https://github.com/ryan-roemer/sphinx-bootstrap-theme</a></li>
 <li>solarized: <a class="reference external" href="https://bitbucket.org/miiton/sphinxjp.themes.solarized">https://bitbucket.org/miiton/sphinxjp.themes.solarized</a></li>
 <li>impressjs: <a class="reference external" href="https://github.com/shkumagai/sphinxjp.themes.impressjs">https://github.com/shkumagai/sphinxjp.themes.impressjs</a></li>
+<li>sagecellserver: <a class="reference external" href="https://github.com/kriskda/sphinx-sagecell">https://github.com/kriskda/sphinx-sagecell</a></li>
 </ul>
 </div></blockquote>
 <p>These must be downloaded or cloned, and <tt class="docutils literal"><span class="pre">setup.py</span></tt> must be run as shown
@@ -1644,7 +1705,8 @@ by</p>
 <span class="go">cd ..</span>
 </pre></div>
 </div>
-<p><em>Remark.</em> Several of the packages above installed from source code
+<p><strong>Remark.</strong>
+Several of the packages above installed from source code
 are also available in Debian-based system through the
 <tt class="docutils literal"><span class="pre">apt-get</span> <span class="pre">install</span></tt> command. However, we recommend installation directly
 from the version control system repository as there might be important
@@ -1735,16 +1797,17 @@ sudo apt-get install -y imagemagick netpbm mjpegtools pdftk giftrans gv evince s
 sudo apt-get install -y ispell pandoc libreoffice unoconv libreoffice-dmaths curl a2ps wdiff meld xxdiff diffpdf kdiff3 diffuse
 
 # More Python software
-pip install sphinx  # install pygments and docutils too
-pip install mako
-pip install -e svn+http://preprocess.googlecode.com/svn/trunk#egg=preprocess
-pip install -e hg+https://bitbucket.org/logg/publish#egg=publish
+sudo pip install sphinx  # install pygments and docutils too
+sudo pip install mako
+sudo pip install -e svn+http://preprocess.googlecode.com/svn/trunk#egg=preprocess
+sudo pip install -e hg+https://bitbucket.org/logg/publish#egg=publish
 
-pip install -e hg+https://bitbucket.org/ecollins/cloud_sptheme#egg=cloud_sptheme
-pip install -e git+https://github.com/ryan-roemer/sphinx-bootstrap-theme#egg=sphinx-bootstrap-theme
-pip install -e hg+https://bitbucket.org/miiton/sphinxjp.themes.solarized#egg=sphinxjp.themes.solarized
-pip install -e git+https://github.com/shkumagai/sphinxjp.themes.impressjs#egg=sphinxjp.themes.impressjs
-pip install -e svn+https://epydoc.svn.sourceforge.net/svnroot/epydoc/trunk/epydoc#egg=epydoc
+sudo pip install -e hg+https://bitbucket.org/ecollins/cloud_sptheme#egg=cloud_sptheme
+sudo pip install -e git+https://github.com/ryan-roemer/sphinx-bootstrap-theme#egg=sphinx-bootstrap-theme
+sudo pip install -e hg+https://bitbucket.org/miiton/sphinxjp.themes.solarized#egg=sphinxjp.themes.solarized
+sudo pip install -e git+https://github.com/shkumagai/sphinxjp.themes.impressjs#egg=sphinxjp.themes.impressjs
+sudo pip install -e git+https://github.com/kriskda/sphinx-sagecell#egg=sphinx-sagecell
+sudo pip install -e svn+https://epydoc.svn.sourceforge.net/svnroot/epydoc/trunk/epydoc#egg=epydoc
 
 # Doconce itself
 rm -rf srclib   # put downloaded software in srclib
@@ -1884,7 +1947,7 @@ cd ../../..
     </div>
     <div class="footer">
         &copy; Copyright 2013, Hans Petter Langtangen.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2pre.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
 </html>

@@ -6,7 +6,7 @@ Doconce: Document Once, Include Anywhere
 ========================================
 
 :Author: Hans Petter Langtangen
-:Date: Aug 31, 2013
+:Date: Nov 28, 2013
 
  * When writing a note, report, manual, etc., do you find it difficult
    to choose the typesetting format? That is, to choose between plain
@@ -245,7 +245,8 @@ Lists can also have numbered items instead of bullets, just use an ``o``
 
  3. item 3
 
-*Hyperlinks.* Paragraph headings are surrounded by double underscores.
+**Hyperlinks.**
+Paragraph headings are surrounded by double underscores.
 URLs with a link word are possible, as in `hpl <http://folk.uio.no/hpl>`_.
 If the word is URL, the URL itself becomes the link name,
 as in `<tutorial.do.txt>`_. Doconce distinguishes between paper
@@ -709,9 +710,19 @@ for demonstrations of blog posts at ``blogspot.no``.
     scripts so there is no support for mathematics in the discussion forum.
 
 
+
+
+
 .. note::
-   Figure files must be uploaded to some web site and the filenames name must
-   be replaced by the relevant URL. This can be automatically edited:
+   Figure files must be uploaded to some web site and the local filenames name must
+   be replaced by the relevant URL. This is usually done by using the
+   ``--figure_prefix=http://project.github.io/...`` option to give some URL
+   as prefix to all figure names (a similar ``--movie_prefix=`` option exists as
+   well).
+   
+   Changing figure names in a blog post can also be done "manually" by
+   some editing code in the script that compiles the Doconce document
+   to HTML format:
    
    
    .. code-block:: bash
@@ -725,6 +736,8 @@ for demonstrations of blog posts at ``blogspot.no``.
            done
            doconce format html mydoc2
            # Paste mydoc2.html into a new blog post page
+
+
 
 
 Blog posts at Google can also be published `automatically through email <http://support.google.com/blogger/bin/answer.py?hl=en&answer=41452>`_.
@@ -821,7 +834,9 @@ Adding the command-line option ``github-md`` turns on the GutHub-flavored
 Markdown dialect, which is used for the issue tracker on `GitHub <http://github.com>`_. A special feature is the support of task lists:
 unnumbered lists with ``[x]`` (task done) or ``[ ]`` (task not done).
 (Tables get typeset directly as HTML and the syntax for code highlighting
-is different from Pandoc extended Markdown.) Here is an example:
+is different from Pandoc extended Markdown.) Below is a typical
+response in a GitHub issue tracker
+where one first quotes the issue and then provides an answer:
 
 
 .. code-block:: text
@@ -869,7 +884,8 @@ Say this text is stored in a file ``mycomments.do.txt``. Running
 
         Terminal> doconce format pandoc mycomments --github_md
 
-produces ``mycomments.md`` which can be pasted into the Write field of
+produces the Markdown file ``mycomments.md``, which can be pasted into
+the Write field of
 the GitHub issue tracker. Turning on Preview shows the typesetting of
 the quote, compute code, inline verbatim, headings, the task list, and
 the table.
@@ -887,7 +903,8 @@ Making a LaTeX file ``mydoc.tex`` from ``mydoc.do.txt`` is done in two steps:
 .. environment, as used here.
 
 
-*Step 1.* Filter the doconce text to a pre-LaTeX form ``mydoc.p.tex`` for
+**Step 1.**
+Filter the doconce text to a pre-LaTeX form ``mydoc.p.tex`` for
 the ``ptex2tex`` program (or ``doconce ptex2tex``):
 
 .. code-block:: console
@@ -909,7 +926,8 @@ as `<http://goo.gl/>`_, `<http://tinyurl.com/>`_, and
 The default, ``--device=screen``, creates a PDF file for reading
 on a screen where links are just clickable.
 
-*Step 2.* Run ``ptex2tex`` (if you have it) to make a standard LaTeX file,
+**Step 2.**
+Run ``ptex2tex`` (if you have it) to make a standard LaTeX file,
 
 .. code-block:: console
 
@@ -1040,7 +1058,8 @@ If no environments like ``sys``, ``fpro``, or the common
 and ``\end{Verbatim}`` instructions are used.
 
 
-*Step 2b (optional).* Edit the ``mydoc.tex`` file to your needs.
+**Step 2b (optional).**
+Edit the ``mydoc.tex`` file to your needs.
 For example, you may want to substitute ``section`` by ``section*`` to
 avoid numbering of sections, you may want to insert linebreaks
 (and perhaps space) in the title, etc. This can be automatically
@@ -1071,7 +1090,8 @@ substitutions. You are anyway encourged to make a script for
 generating PDF from the LaTeX file so the ``doconce subst`` or
 ``doconce replace`` commands can be put inside the script.
 
-*Step 3.* Compile ``mydoc.tex``
+**Step 3.**
+Compile ``mydoc.tex``
 and create the PDF file:
 
 .. code-block:: console
@@ -1204,7 +1224,8 @@ classic MS Word format, and PDF:
         Terminal> unoconv -f pdf mydoc.odt
 
 
-*Remark about Mathematical Typesetting.* At the time of this writing, there is no easy way to go from Doconce
+**Remark about Mathematical Typesetting.**
+At the time of this writing, there is no easy way to go from Doconce
 and LaTeX mathematics to reST and further to OpenOffice and the
 "MS Word world". Mathematics is only fully supported by ``latex`` as
 output and to a wide extent also supported by the ``sphinx`` output format.
@@ -1226,37 +1247,70 @@ most of the steps through the ``doconce sphinx_dir`` command:
 
         Terminal> doconce sphinx_dir author="authors' names" \ 
                   title="some title" version=1.0 dirname=sphinxdir \ 
-                  theme=mytheme file1 file2 file3 ...
+                  theme=mytheme mydoc
 
 The keywords ``author``, ``title``, and ``version`` are used in the headings
 of the Sphinx document. By default, ``version`` is 1.0 and the script
-will try to deduce authors and title from the doconce files ``file1``,
-``file2``, etc. that together represent the whole document. Note that
-none of the individual Doconce files ``file1``, ``file2``, etc. should
-include the rest as their union makes up the whole document.
+will try to deduce authors and title from the doconce file ``mydoc.do.txt``
 The default value of ``dirname`` is ``sphinx-rootdir``. The ``theme``
 keyword is used to set the theme for design of HTML output from
 Sphinx (the default theme is ``'default'``).
 
-With a single-file document in ``mydoc.do.txt`` one often just runs
+One often just runs the simple command
 
 .. code-block:: console
 
         Terminal> doconce sphinx_dir mydoc
 
-and then an appropriate Sphinx directory ``sphinx-rootdir`` is made with
+which creates the Sphinx directory ``sphinx-rootdir`` with
 relevant files.
 
 The ``doconce sphinx_dir`` command generates a script
 ``automake_sphinx.py`` for compiling the Sphinx document into an HTML
-document.  One can either run ``automake_sphinx.py`` or perform the
-steps in the script manually, possibly with necessary modifications.
-Normally, executing the script works well, but if you are new
-to Sphinx and end up producing quite some Sphinx documents, I encourave
-you to read the Sphinx documentation and study the ``automake_sphinx.py``
-file.
+document.  Run
 
-*Links.* The ``automake_sphinx.py`` script copies directories named ``fig*``
+
+.. code-block:: console
+
+        Terminal> python automake_sphinx.py
+
+As the output also tells, you can see the Sphinx HTML version of the document
+by running
+
+
+.. code-block:: console
+
+        Terminal> google-chrome sphinx-rootdir/_build/html/index.html
+
+or loading the ``index.html`` file manually into your favorite web browser.
+
+If you cycle through editing the Doconce file and watching the
+HTML output, you should observe that ``automake_sphinx.py`` does not
+recompile the Doconce file if the Sphinx ``.rst`` version already exists.
+In each edit-and-watch cycle do
+
+
+.. code-block:: console
+
+        Terminal> rm mydoc.rst; python automake_sphinx.py
+
+
+
+.. admonition:: Tip
+
+   If you are new
+   to Sphinx and end up producing quite some Sphinx documents, you are encouraged
+   to read the Sphinx documentation and study the ``automake_sphinx.py``
+   file. Maybe you want to do things differently.
+
+
+
+
+The following paragraphs describes the many possibilities for steering
+the Sphinx output.
+
+**Links.**
+The ``automake_sphinx.py`` script copies directories named ``fig*``
 over to the Sphinx directory so that figures are accessible
 in the Sphinx compilation.  It also examines ``MOVIE:`` and ``FIGURE:``
 commands in the Doconce file to find other image files and copies
@@ -1274,7 +1328,8 @@ However, I recommend instead that you manually copy
 files to ``_static`` when you want to link to them, or let your
 script which compiles the Doconce document do it automatically.
 
-*Themes.* Doconce comes with a rich collection of HTML themes for Sphinx documents,
+**Themes.**
+Doconce comes with a rich collection of HTML themes for Sphinx documents,
 much larger than what is found in the standard Sphinx distribution.
 Additional themes include
 ``agni``,
@@ -1326,7 +1381,8 @@ path to the directory containing the Sphinx theme. You must also
 specify a configure file by ``conf.py=path``, where ``path`` is the
 relative path to your ``conf.py`` file.
 
-*Example.* Say you like the ``scipy_lectures`` theme, but you want
+**Example.**
+Say you like the ``scipy_lectures`` theme, but you want
 a table of contents to appear *to the right*, much in the same style
 as in the ``default`` theme (where the table of contents is to the left).
 You can then run ``doconce sphinx_dir``, invoke a text editor with the
@@ -1376,14 +1432,16 @@ If it is not desirable to use the autogenerated scripts explained
 above, here is the complete manual procedure of generating a
 Sphinx document from a file ``mydoc.do.txt``.
 
-*Step 1.* Translate Doconce into the Sphinx format:
+**Step 1.**
+Translate Doconce into the Sphinx format:
 
 .. code-block:: console
 
         Terminal> doconce format sphinx mydoc
 
 
-*Step 2.* Create a Sphinx root directory
+**Step 2.**
+Create a Sphinx root directory
 either manually or by using the interactive ``sphinx-quickstart``
 program. Here is a scripted version of the steps with the latter:
 
@@ -1421,7 +1479,8 @@ file where, among other things, several useful Sphinx extensions
 are included.
 
 
-*Step 3.* Copy the ``mydoc.rst`` file to the Sphinx root directory:
+**Step 3.**
+Copy the ``mydoc.rst`` file to the Sphinx root directory:
 
 .. code-block:: console
 
@@ -1434,7 +1493,8 @@ or simply copy your figure directories to ``sphinx-rootdir``.
 Links to local files in ``mydoc.rst`` must be modified to links to
 files in the ``_static`` directory, see comment above.
 
-*Step 4.* Edit the generated ``index.rst`` file so that ``mydoc.rst``
+**Step 4.**
+Edit the generated ``index.rst`` file so that ``mydoc.rst``
 is included, i.e., add ``mydoc`` to the ``toctree`` section so that it becomes
 
 .. code-block:: text
@@ -1447,7 +1507,8 @@ is included, i.e., add ``mydoc`` to the ``toctree`` section so that it becomes
 
 (The spaces before ``mydoc`` are important!)
 
-*Step 5.* Generate, for instance, an HTML version of the Sphinx source:
+**Step 5.**
+Generate, for instance, an HTML version of the Sphinx source:
 
 .. code-block:: console
 
@@ -1461,7 +1522,8 @@ a large single HTML file, JSON files, various help files (the qthelp, HTML,
 and Devhelp projects), epub, LaTeX, PDF (via LaTeX), pure text, man pages,
 and Texinfo files.
 
-*Step 6.* View the result:
+**Step 6.**
+View the result:
 
 .. code-block:: console
 
@@ -1598,7 +1660,8 @@ Installation of Doconce and its Dependencies
 Below, we explain the manual installation of all software that may be
 needed when working with Doconce documents.
 The impatient way to install what is needed is to run the
-`doconce_install_all.sh <doconce_install_all.sh>`_ script.
+`install_doconce.sh <install_doconce.sh>`_ (or
+`install_doconce.py <install_doconce.py>`_) script.
 
 Doconce
 -------
@@ -1957,6 +2020,8 @@ additional Python/Sphinx modules to be installed:
 
  * impressjs: `<https://github.com/shkumagai/sphinxjp.themes.impressjs>`_
 
+ * sagecellserver: `<https://github.com/kriskda/sphinx-sagecell>`_
+
 These must be downloaded or cloned, and ``setup.py`` must be run as shown
 above.
 
@@ -1989,7 +2054,8 @@ by
         cd ..
 
 
-*Remark.* Several of the packages above installed from source code
+**Remark.**
+Several of the packages above installed from source code
 are also available in Debian-based system through the
 ``apt-get install`` command. However, we recommend installation directly
 from the version control system repository as there might be important
@@ -2055,16 +2121,17 @@ long series of Doconce dependencies:
         sudo apt-get install -y ispell pandoc libreoffice unoconv libreoffice-dmaths curl a2ps wdiff meld xxdiff diffpdf kdiff3 diffuse
         
         # More Python software
-        pip install sphinx  # install pygments and docutils too
-        pip install mako
-        pip install -e svn+http://preprocess.googlecode.com/svn/trunk#egg=preprocess
-        pip install -e hg+https://bitbucket.org/logg/publish#egg=publish
+        sudo pip install sphinx  # install pygments and docutils too
+        sudo pip install mako
+        sudo pip install -e svn+http://preprocess.googlecode.com/svn/trunk#egg=preprocess
+        sudo pip install -e hg+https://bitbucket.org/logg/publish#egg=publish
         
-        pip install -e hg+https://bitbucket.org/ecollins/cloud_sptheme#egg=cloud_sptheme
-        pip install -e git+https://github.com/ryan-roemer/sphinx-bootstrap-theme#egg=sphinx-bootstrap-theme
-        pip install -e hg+https://bitbucket.org/miiton/sphinxjp.themes.solarized#egg=sphinxjp.themes.solarized
-        pip install -e git+https://github.com/shkumagai/sphinxjp.themes.impressjs#egg=sphinxjp.themes.impressjs
-        pip install -e svn+https://epydoc.svn.sourceforge.net/svnroot/epydoc/trunk/epydoc#egg=epydoc
+        sudo pip install -e hg+https://bitbucket.org/ecollins/cloud_sptheme#egg=cloud_sptheme
+        sudo pip install -e git+https://github.com/ryan-roemer/sphinx-bootstrap-theme#egg=sphinx-bootstrap-theme
+        sudo pip install -e hg+https://bitbucket.org/miiton/sphinxjp.themes.solarized#egg=sphinxjp.themes.solarized
+        sudo pip install -e git+https://github.com/shkumagai/sphinxjp.themes.impressjs#egg=sphinxjp.themes.impressjs
+        sudo pip install -e git+https://github.com/kriskda/sphinx-sagecell#egg=sphinx-sagecell
+        sudo pip install -e svn+https://epydoc.svn.sourceforge.net/svnroot/epydoc/trunk/epydoc#egg=epydoc
         
         # Doconce itself
         rm -rf srclib   # put downloaded software in srclib

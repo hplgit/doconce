@@ -74,13 +74,13 @@ admon_styles1 = admon_styles_text + """\
        background-repeat: no-repeat; background-position: 10px center;
     }
     .notice   { color: #00529B; background-color: %(background_notice)s;
-                background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/%(icon_notice)s); }
+                background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/%(icon_notice)s); }
     .summary  { color: #4F8A10; background-color: %(background_summary)s;
-                background-image:url(https://doconce.googlecode.com/hg/bundled/html_images/%(icon_summary)s); }
+                background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/%(icon_summary)s); }
     .warning  { color: #9F6000; background-color: %(background_warning)s;
-                background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/%(icon_warning)s); }
+                background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/%(icon_warning)s); }
     .question { color: #4F8A10; background-color: %(background_question)s;
-                background-image:url(https://doconce.googlecode.com/hg/bundled/html_images/%(icon_question)s); }
+                background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/%(icon_question)s); }
     .block    { color: #00529B; background-color: %(background_notice)s; }
 """
 
@@ -103,10 +103,10 @@ admon_styles2 = admon_styles_text + """\
      .alert-block > p, .alert-block > ul {margin-bottom:1em}
      .alert li {margin-top: 1em}
      .alert-block p+p {margin-top:5px}
-     .alert-notice { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/%(icon_notice)s); }
-     .alert-summary  { background-image:url(https://doconce.googlecode.com/hg/bundled/html_images/%(icon_summary)s); }
-     .alert-warning { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/%(icon_warning)s); }
-     .alert-question {background-image:url(https://doconce.googlecode.com/hg/bundled/html_images/%(icon_question)s); }
+     .alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/%(icon_notice)s); }
+     .alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/%(icon_summary)s); }
+     .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/%(icon_warning)s); }
+     .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/%(icon_question)s); }
 """
 # alt: background-image: url(data:image/png;base64,iVBORw0KGgoAAAAN...);
 
@@ -664,7 +664,7 @@ MathJax.Hub.Config({
                 icon = 'question_blue_on_white2.png'
             else:
                 icon = 'exercise1.svg'
-        icon_path = 'https://doconce.googlecode.com/hg/bundled/html_images/' + icon
+        icon_path = 'https://raw.github.com/hplgit/doconce/master/bundled/html_images/' + icon
         pattern = r'(<h3>(Exercise|Project|Problem) \d+:.+</h3>)'
         filestr = re.sub(pattern, '\g<1>\n\n<img src="%s" width=%s align="right">\n' % (icon_path, icon_width), filestr)
 
@@ -1144,7 +1144,7 @@ def html_%(_admon)s(block, format, title='%(_Admon)s', text_size='normal'):
 <table width="95%%%%" border="0">
 <tr>
 <td width="25" align="center" valign="top">
-<img src="https://doconce.googlecode.com/hg/bundled/html_images/lyx_%(_admon)s.png" hspace="5" alt="%(_admon)s"></td>
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/lyx_%(_admon)s.png" hspace="5" alt="%(_admon)s"></td>
 <th align="left" valign="middle"><b>%%s</b></th>
 </tr>
 <tr><td>&nbsp;</td> <td align="left" valign="top"><p>

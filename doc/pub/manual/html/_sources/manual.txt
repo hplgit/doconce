@@ -5,7 +5,7 @@ Doconce Description
 ===================
 
 :Author: Hans Petter Langtangen
-:Date: Aug 31, 2013
+:Date: Nov 28, 2013
 
 .. lines beginning with # are doconce comment lines
 
@@ -80,7 +80,8 @@ Here are some Doconce features:
     special support for exercises, and produces
     cleaner LaTeX and HTML output.
 
-*History.* Doconce was developed in 2006 at a time when most popular
+**History.**
+Doconce was developed in 2006 at a time when most popular
 markup languages used quite some tagging.  Later, almost untagged
 markup languages like Markdown and the Pandoc translator became
 popular. Doconce is not a replacement of Pandoc, which is a
@@ -88,7 +89,8 @@ considerably more sophisticated project. Moreover, Doconce was
 developed mainly to fulfill the needs for a flexible source code base
 for books with much mathematics and computer code.
 
-*Disclaimer.* Doconce is a simple tool, largely based on interpreting
+**Disclaimer.**
+Doconce is a simple tool, largely based on interpreting
 and handling text through regular expressions. The possibility for
 tweaking the layout is obviously limited since the text can go to
 all sorts of sophisticated markup languages. Moreover, because of
@@ -106,7 +108,8 @@ Installation of Doconce and its Dependencies
 Below, we explain the manual installation of all software that may be
 needed when working with Doconce documents.
 The impatient way to install what is needed is to run the
-`doconce_install_all.sh <doconce_install_all.sh>`_ script.
+`install_doconce.sh <install_doconce.sh>`_ (or
+`install_doconce.py <install_doconce.py>`_) script.
 
 Doconce
 -------
@@ -465,6 +468,8 @@ additional Python/Sphinx modules to be installed:
 
  * impressjs: `<https://github.com/shkumagai/sphinxjp.themes.impressjs>`_
 
+ * sagecellserver: `<https://github.com/kriskda/sphinx-sagecell>`_
+
 These must be downloaded or cloned, and ``setup.py`` must be run as shown
 above.
 
@@ -497,7 +502,8 @@ by
         cd ..
 
 
-*Remark.* Several of the packages above installed from source code
+**Remark.**
+Several of the packages above installed from source code
 are also available in Debian-based system through the
 ``apt-get install`` command. However, we recommend installation directly
 from the version control system repository as there might be important
@@ -563,16 +569,17 @@ long series of Doconce dependencies:
         sudo apt-get install -y ispell pandoc libreoffice unoconv libreoffice-dmaths curl a2ps wdiff meld xxdiff diffpdf kdiff3 diffuse
         
         # More Python software
-        pip install sphinx  # install pygments and docutils too
-        pip install mako
-        pip install -e svn+http://preprocess.googlecode.com/svn/trunk#egg=preprocess
-        pip install -e hg+https://bitbucket.org/logg/publish#egg=publish
+        sudo pip install sphinx  # install pygments and docutils too
+        sudo pip install mako
+        sudo pip install -e svn+http://preprocess.googlecode.com/svn/trunk#egg=preprocess
+        sudo pip install -e hg+https://bitbucket.org/logg/publish#egg=publish
         
-        pip install -e hg+https://bitbucket.org/ecollins/cloud_sptheme#egg=cloud_sptheme
-        pip install -e git+https://github.com/ryan-roemer/sphinx-bootstrap-theme#egg=sphinx-bootstrap-theme
-        pip install -e hg+https://bitbucket.org/miiton/sphinxjp.themes.solarized#egg=sphinxjp.themes.solarized
-        pip install -e git+https://github.com/shkumagai/sphinxjp.themes.impressjs#egg=sphinxjp.themes.impressjs
-        pip install -e svn+https://epydoc.svn.sourceforge.net/svnroot/epydoc/trunk/epydoc#egg=epydoc
+        sudo pip install -e hg+https://bitbucket.org/ecollins/cloud_sptheme#egg=cloud_sptheme
+        sudo pip install -e git+https://github.com/ryan-roemer/sphinx-bootstrap-theme#egg=sphinx-bootstrap-theme
+        sudo pip install -e hg+https://bitbucket.org/miiton/sphinxjp.themes.solarized#egg=sphinxjp.themes.solarized
+        sudo pip install -e git+https://github.com/shkumagai/sphinxjp.themes.impressjs#egg=sphinxjp.themes.impressjs
+        sudo pip install -e git+https://github.com/kriskda/sphinx-sagecell#egg=sphinx-sagecell
+        sudo pip install -e svn+https://epydoc.svn.sourceforge.net/svnroot/epydoc/trunk/epydoc#egg=epydoc
         
         # Doconce itself
         rm -rf srclib   # put downloaded software in srclib
@@ -906,9 +913,19 @@ for demonstrations of blog posts at ``blogspot.no``.
     scripts so there is no support for mathematics in the discussion forum.
 
 
+
+
+
 .. note::
-   Figure files must be uploaded to some web site and the filenames name must
-   be replaced by the relevant URL. This can be automatically edited:
+   Figure files must be uploaded to some web site and the local filenames name must
+   be replaced by the relevant URL. This is usually done by using the
+   ``--figure_prefix=http://project.github.io/...`` option to give some URL
+   as prefix to all figure names (a similar ``--movie_prefix=`` option exists as
+   well).
+   
+   Changing figure names in a blog post can also be done "manually" by
+   some editing code in the script that compiles the Doconce document
+   to HTML format:
    
    
    .. code-block:: bash
@@ -922,6 +939,8 @@ for demonstrations of blog posts at ``blogspot.no``.
            done
            doconce format html mydoc2
            # Paste mydoc2.html into a new blog post page
+
+
 
 
 Blog posts at Google can also be published `automatically through email <http://support.google.com/blogger/bin/answer.py?hl=en&answer=41452>`_.
@@ -1018,7 +1037,9 @@ Adding the command-line option ``github-md`` turns on the GutHub-flavored
 Markdown dialect, which is used for the issue tracker on `GitHub <http://github.com>`_. A special feature is the support of task lists:
 unnumbered lists with ``[x]`` (task done) or ``[ ]`` (task not done).
 (Tables get typeset directly as HTML and the syntax for code highlighting
-is different from Pandoc extended Markdown.) Here is an example:
+is different from Pandoc extended Markdown.) Below is a typical
+response in a GitHub issue tracker
+where one first quotes the issue and then provides an answer:
 
 
 .. code-block:: text
@@ -1066,7 +1087,8 @@ Say this text is stored in a file ``mycomments.do.txt``. Running
 
         Terminal> doconce format pandoc mycomments --github_md
 
-produces ``mycomments.md`` which can be pasted into the Write field of
+produces the Markdown file ``mycomments.md``, which can be pasted into
+the Write field of
 the GitHub issue tracker. Turning on Preview shows the typesetting of
 the quote, compute code, inline verbatim, headings, the task list, and
 the table.
@@ -1084,7 +1106,8 @@ Making a LaTeX file ``mydoc.tex`` from ``mydoc.do.txt`` is done in two steps:
 .. environment, as used here.
 
 
-*Step 1.* Filter the doconce text to a pre-LaTeX form ``mydoc.p.tex`` for
+**Step 1.**
+Filter the doconce text to a pre-LaTeX form ``mydoc.p.tex`` for
 the ``ptex2tex`` program (or ``doconce ptex2tex``):
 
 .. code-block:: console
@@ -1106,7 +1129,8 @@ as `<http://goo.gl/>`_, `<http://tinyurl.com/>`_, and
 The default, ``--device=screen``, creates a PDF file for reading
 on a screen where links are just clickable.
 
-*Step 2.* Run ``ptex2tex`` (if you have it) to make a standard LaTeX file,
+**Step 2.**
+Run ``ptex2tex`` (if you have it) to make a standard LaTeX file,
 
 .. code-block:: console
 
@@ -1237,7 +1261,8 @@ If no environments like ``sys``, ``fpro``, or the common
 and ``\end{Verbatim}`` instructions are used.
 
 
-*Step 2b (optional).* Edit the ``mydoc.tex`` file to your needs.
+**Step 2b (optional).**
+Edit the ``mydoc.tex`` file to your needs.
 For example, you may want to substitute ``section`` by ``section*`` to
 avoid numbering of sections, you may want to insert linebreaks
 (and perhaps space) in the title, etc. This can be automatically
@@ -1268,7 +1293,8 @@ substitutions. You are anyway encourged to make a script for
 generating PDF from the LaTeX file so the ``doconce subst`` or
 ``doconce replace`` commands can be put inside the script.
 
-*Step 3.* Compile ``mydoc.tex``
+**Step 3.**
+Compile ``mydoc.tex``
 and create the PDF file:
 
 .. code-block:: console
@@ -1401,7 +1427,8 @@ classic MS Word format, and PDF:
         Terminal> unoconv -f pdf mydoc.odt
 
 
-*Remark about Mathematical Typesetting.* At the time of this writing, there is no easy way to go from Doconce
+**Remark about Mathematical Typesetting.**
+At the time of this writing, there is no easy way to go from Doconce
 and LaTeX mathematics to reST and further to OpenOffice and the
 "MS Word world". Mathematics is only fully supported by ``latex`` as
 output and to a wide extent also supported by the ``sphinx`` output format.
@@ -1423,37 +1450,70 @@ most of the steps through the ``doconce sphinx_dir`` command:
 
         Terminal> doconce sphinx_dir author="authors' names" \
                   title="some title" version=1.0 dirname=sphinxdir \
-                  theme=mytheme file1 file2 file3 ...
+                  theme=mytheme mydoc
 
 The keywords ``author``, ``title``, and ``version`` are used in the headings
 of the Sphinx document. By default, ``version`` is 1.0 and the script
-will try to deduce authors and title from the doconce files ``file1``,
-``file2``, etc. that together represent the whole document. Note that
-none of the individual Doconce files ``file1``, ``file2``, etc. should
-include the rest as their union makes up the whole document.
+will try to deduce authors and title from the doconce file ``mydoc.do.txt``
 The default value of ``dirname`` is ``sphinx-rootdir``. The ``theme``
 keyword is used to set the theme for design of HTML output from
 Sphinx (the default theme is ``'default'``).
 
-With a single-file document in ``mydoc.do.txt`` one often just runs
+One often just runs the simple command
 
 .. code-block:: console
 
         Terminal> doconce sphinx_dir mydoc
 
-and then an appropriate Sphinx directory ``sphinx-rootdir`` is made with
+which creates the Sphinx directory ``sphinx-rootdir`` with
 relevant files.
 
 The ``doconce sphinx_dir`` command generates a script
 ``automake_sphinx.py`` for compiling the Sphinx document into an HTML
-document.  One can either run ``automake_sphinx.py`` or perform the
-steps in the script manually, possibly with necessary modifications.
-Normally, executing the script works well, but if you are new
-to Sphinx and end up producing quite some Sphinx documents, I encourave
-you to read the Sphinx documentation and study the ``automake_sphinx.py``
-file.
+document.  Run
 
-*Links.* The ``automake_sphinx.py`` script copies directories named ``fig*``
+
+.. code-block:: console
+
+        Terminal> python automake_sphinx.py
+
+As the output also tells, you can see the Sphinx HTML version of the document
+by running
+
+
+.. code-block:: console
+
+        Terminal> google-chrome sphinx-rootdir/_build/html/index.html
+
+or loading the ``index.html`` file manually into your favorite web browser.
+
+If you cycle through editing the Doconce file and watching the
+HTML output, you should observe that ``automake_sphinx.py`` does not
+recompile the Doconce file if the Sphinx ``.rst`` version already exists.
+In each edit-and-watch cycle do
+
+
+.. code-block:: console
+
+        Terminal> rm mydoc.rst; python automake_sphinx.py
+
+
+
+.. admonition:: Tip
+
+   If you are new
+   to Sphinx and end up producing quite some Sphinx documents, you are encouraged
+   to read the Sphinx documentation and study the ``automake_sphinx.py``
+   file. Maybe you want to do things differently.
+
+
+
+
+The following paragraphs describes the many possibilities for steering
+the Sphinx output.
+
+**Links.**
+The ``automake_sphinx.py`` script copies directories named ``fig*``
 over to the Sphinx directory so that figures are accessible
 in the Sphinx compilation.  It also examines ``MOVIE:`` and ``FIGURE:``
 commands in the Doconce file to find other image files and copies
@@ -1471,7 +1531,8 @@ However, I recommend instead that you manually copy
 files to ``_static`` when you want to link to them, or let your
 script which compiles the Doconce document do it automatically.
 
-*Themes.* Doconce comes with a rich collection of HTML themes for Sphinx documents,
+**Themes.**
+Doconce comes with a rich collection of HTML themes for Sphinx documents,
 much larger than what is found in the standard Sphinx distribution.
 Additional themes include
 ``agni``,
@@ -1523,7 +1584,8 @@ path to the directory containing the Sphinx theme. You must also
 specify a configure file by ``conf.py=path``, where ``path`` is the
 relative path to your ``conf.py`` file.
 
-*Example.* Say you like the ``scipy_lectures`` theme, but you want
+**Example.**
+Say you like the ``scipy_lectures`` theme, but you want
 a table of contents to appear *to the right*, much in the same style
 as in the ``default`` theme (where the table of contents is to the left).
 You can then run ``doconce sphinx_dir``, invoke a text editor with the
@@ -1573,14 +1635,16 @@ If it is not desirable to use the autogenerated scripts explained
 above, here is the complete manual procedure of generating a
 Sphinx document from a file ``mydoc.do.txt``.
 
-*Step 1.* Translate Doconce into the Sphinx format:
+**Step 1.**
+Translate Doconce into the Sphinx format:
 
 .. code-block:: console
 
         Terminal> doconce format sphinx mydoc
 
 
-*Step 2.* Create a Sphinx root directory
+**Step 2.**
+Create a Sphinx root directory
 either manually or by using the interactive ``sphinx-quickstart``
 program. Here is a scripted version of the steps with the latter:
 
@@ -1618,7 +1682,8 @@ file where, among other things, several useful Sphinx extensions
 are included.
 
 
-*Step 3.* Copy the ``mydoc.rst`` file to the Sphinx root directory:
+**Step 3.**
+Copy the ``mydoc.rst`` file to the Sphinx root directory:
 
 .. code-block:: console
 
@@ -1631,7 +1696,8 @@ or simply copy your figure directories to ``sphinx-rootdir``.
 Links to local files in ``mydoc.rst`` must be modified to links to
 files in the ``_static`` directory, see comment above.
 
-*Step 4.* Edit the generated ``index.rst`` file so that ``mydoc.rst``
+**Step 4.**
+Edit the generated ``index.rst`` file so that ``mydoc.rst``
 is included, i.e., add ``mydoc`` to the ``toctree`` section so that it becomes
 
 .. code-block:: text
@@ -1644,7 +1710,8 @@ is included, i.e., add ``mydoc`` to the ``toctree`` section so that it becomes
 
 (The spaces before ``mydoc`` are important!)
 
-*Step 5.* Generate, for instance, an HTML version of the Sphinx source:
+**Step 5.**
+Generate, for instance, an HTML version of the Sphinx source:
 
 .. code-block:: console
 
@@ -1658,7 +1725,8 @@ a large single HTML file, JSON files, various help files (the qthelp, HTML,
 and Devhelp projects), epub, LaTeX, PDF (via LaTeX), pure text, man pages,
 and Texinfo files.
 
-*Step 6.* View the result:
+**Step 6.**
+View the result:
 
 .. code-block:: console
 
@@ -2071,6 +2139,9 @@ The caption may contain a label for referencing the figure.
     included in the formatted caption).
 
 
+
+
+
 .. _fig:viz:
 
 .. figure:: figs/streamtubes.png
@@ -2269,6 +2340,8 @@ problems with inline verbatim text that is split over two lines.
    Doconce source and modify it so the format to which you want to go
    becomes correct (sometimes a trial and error process - sticking to
    very simple formatting usually avoids such problems).
+
+
 
 
 Links to Web Addresses
@@ -2710,6 +2783,8 @@ Requirements to input data
    demand.
 
 
+
+
 The utility ``doconce fix_bibtex4publish file.bib`` fixes several known
 issues with BibTeX files such that Publish has a better chance of
 accepting the entries. Run this utility first, then run Publish,
@@ -3072,7 +3147,8 @@ or "Project:" word, so that references like
 
 works well in all formats (i.e., no double "Problem Problem" appears).
 
-*Remark.* Examples are *not* typeset similarly to exercises unless one adds
+**Remark.**
+Examples are *not* typeset similarly to exercises unless one adds
 the command-line option ``--examples_as_exercises``. That is, without
 this option, any heading and starting with ``Example:`` makes Doconce
 treat the forthcoming text as ordinary text without any interpretation
@@ -3529,9 +3605,14 @@ The above Doconce code is in the present format rendered as
     Here is a warning!
 
 
+
+
+
 .. admonition:: Hint
 
    This is a hint.
+
+
 
 
 
@@ -3540,10 +3621,15 @@ The above Doconce code is in the present format rendered as
    A block has never any icon.
 
 
+
+
+
 .. admonition:: Going deeper
 
    This is text meant to provide more details. The box has the
    layout of the notice box, but a custom title, here "Going deeper".
+
+
 
 
 Finally some summary:
@@ -3553,6 +3639,8 @@ Finally some summary:
 
    The main message is to utilize the admonition styles for
    marking different parts of the text
+
+
 
 
 The layout of admonitions depend on the format.
@@ -3712,7 +3800,8 @@ when writing slides with Doconce. The ``doconce format`` command does not
 recognize ``!split`` instructions: one needs to run ``doconce split_*``
 as a postprocess, where the ``*`` means ``html``, ``rst``, or ``beamer``.
 
-*HTML.* Splitting an HTML document is done by
+**HTML.**
+Splitting an HTML document is done by
 
 
 .. code-block:: console
@@ -3761,7 +3850,8 @@ between parts. One example is the template
 in ``bundled/html_styles/style_vagrant/template_vagrant.html`` in the Doconce
 source.
 
-*reStructuredText and Sphinx.* Here is a typical split of a large Sphinx document ``mydoc.rst``
+**reStructuredText and Sphinx.**
+Here is a typical split of a large Sphinx document ``mydoc.rst``
 into smaller pieces:
 
 
@@ -3998,6 +4088,8 @@ a real programming language.
     messages from Mako, usually that a variable is not defined.
 
 
+
+
 The Basics of Mako
 ------------------
 
@@ -4175,645 +4267,9 @@ Also ``doconce ptex2tex`` has some flexibility for typesetting computer code.
 
 
 
-Troubleshooting
-===============
 
-Disclaimer
-----------
-
-Doconce has some support for syntax checking.  If you encounter Python
-errors while running ``doconce format``, the reason for the error is
-most likely a syntax problem in your Doconce source file. You have to
-track down this syntax problem yourself. However, Doconce applies
-regular expressions to a large extent for transforming text, and
-regular expressions may sometimes fail. Therefore, there is a chance that legal
-Doconce syntax is not treated properly.
-
-
-General Problems
-----------------
-
-Spellcheck reports a lot of mistakes related to LaTeX math
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The ``doconce spellcheck`` command should ignore LaTeX math, but if
-the dollar signs for inline math are not correct (one missing, for instance),
-a lot of math enters the text to be spellchecked. Invoke the
-relevant ``tmp_missing_*`` file and find the first math-style expression that
-is reported as misspelling. Open the corresponding stripped file,
-``tmp_stripped_*``, which is supposed to have all the math stripped
-away, and search for the misspelling. When you find it, you will see
-that there are math expressions in the stripped file that should not
-be there. (Because of wrong begin and end signs around math expressions
-ordinary text has instead been stripped away. This way, a missing dollar
-sign can lead to hundreds of misspellings.)
-Find the problem in the corresponding Doconce file and correct it.
-A similar error can be caused by wrong matching
-of equation environments between ``!bt`` and ``!et``.
-
-
-Doconce aborts because of a syntax error that is not an error
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Doconce searches for typical syntax errors and usually aborts the
-execution if errors are found. However, it may happen,
-especially in verbatim blocks, that Doconce reports syntax errors
-that are not errors. To continue execution, simply add the
-``--no_abort`` option on the command line. You may send an email
-to the Doconce author at ``hpl@simula.no`` and report the problem.
-
-The Mako preprocessor is seemingly not run
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-If you have lines starting with ``%`` inside code segments (for example,
-SWIG code or Matlab comment lines), the Mako preprocessor will crash
-because it thinks these lines are Mako statements. Doconce detects
-this problem and avoids running Mako.  Examine the output from
-Doconce: warnings are issued if Mako is not run.
-
-The Mako preprocessor is fooled by Doconce text
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Here are possible problems for Mako:
-
- * Strings with ``'T<%.1f'`` look as openings of Mako blocks (``<%``); change
-   to ``'T < %.1f'`` to avoid this confusion.
-
-The Mako preprocessor claims a variable is undefined
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Very often such errors are related to typos when using Mako
-variables or functions, or correct yet undesired LaTeX syntax.
-For example, :math:`{\cal O}(\Delta x^2)` is valid LaTeX, but
-the dollar sign and curly braces confuse Mako. Rewrite such
-mathematics. It is wise to not use ``${`` anywhere in LaTeX mathematics.
-Create a newcommand if there are no other possible rewritings.
-A known common problem is ``${}^+$`` type of indication of superscripts.
-A suggested rewrite is ``$\,{}^+$``.
-
-The error message will ask you to rerun ``doconce`` with
-``--mako_strict_undefined``, which will display the variable that
-is confusing Mako. However, do not continue to use
-``--mako_strict_undefined`` while you are debugging because this
-variable or a new variable will then always be undefined in that mode.
-Rerun without ``--mako_strict_undefined`` to see if the problem
-is gone. If not, try the option again, and if no progress,
-use ``# #ifdef`` directives to comment out large portions of
-the text and apply a "bisection" procedure to locate where
-the Mako problem is (without ``--mako_strict_undefined``).
-A "bisection" procedure means that you comment out the last half,
-find in which half the problem is, comment out half of that half,
-find in which half the problem is, and so on.
-
-Something goes wrong in the preprocessing step
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-You can examine ``tmp_preprocess__filename`` and ``tmp_mako__filename``,
-where ``filename`` is the complete name of the Doconce file, to see
-what the preprocessors actually to and if something is wrong in these
-files before Doconce starts translating the text.
-One or both of those files may be missing, but examine the beginning
-of the output from Doconce to see exactly which preprocessors are run
-and on which files.
-
-Figure captions are incomplete
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-If only the first part of a figure caption in the Doconce file is seen
-in the target output format, the reason is usually that the caption
-occupies multiple lines in the Doconce file. The figure caption must
-be written as *one line*, at the same line as the FIGURE keyword.
-
-Preprocessor directives do not work
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Make sure the preprocessor instructions, in Preprocess or Mako, have
-correct syntax. Also make sure that you do not mix Preprocess and Mako
-instructions. Doconce will then only run Preprocess.
-
-Problems with boldface and emphasize
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Two boldface or emphasize expressions after each other are not rendered
-correctly. Merge them into one common expression.
-
-Links to local directories do not work
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Links of the type
-
-.. code-block:: text
-
-
-        see the "examples directory": "src/examples"
-
-do not work well. You need to link to a specific HTML file:
-
-.. code-block:: text
-
-
-        see the "examples directory": "src/examples/index.html"
-
-We recommend to put all files you link to in a ``_static`` directory
-if you intend to use the ``sphinx`` output. This guarantees that all
-your files are collected in the Sphinx directory tree bundle.
-With plain ``html`` output only, you can link to whatever, but remember
-to move all files you link to if you move the primary ``.html`` file.
-
-Links are not typeset correctly
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Not all formats will allow formatting of the links. Verbatim words
-in links are allowed if the whole link is typeset in verbatim:
-
-.. code-block:: text
-
-
-        see the directory "`examples`": "src/examples/index.html".
-
-However, the following will not be typeset correctly:
-
-.. code-block:: text
-
-
-        see the "`examples`": "src/examples/index.html" directory.
-
-The back-ticks must be removed, or the text can be reformulated as
-in the line above it.
-
-
-Inline verbatim code is not detected
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Make sure there is a space before the first back-tick.
-
-Inline verbatim text is not formatted correctly
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Make sure there is whitespace surrounding the text in back-ticks.
-
-Strange non-English characters
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The former reason for this problem is that Doconce could only work with latin1
-(ISO-8859) encoding and not UTF-8. After May 2013, Doconce applies
-UTF-8 both for HTML and LaTeX.
-
-Check the encoding of the ``.do.txt`` file with the Unix ``file`` command
-or with
-
-.. code-block:: text
-
-
-        Terminal> doconce guess_encoding myfile.do.txt
-
-If the encoding is UTF-8, convert to latin1 using either of
-the Unix commands
-
-.. code-block:: text
-
-
-        Terminal> doconce change_encoding utf-8 latin1 myfile.do.txt
-        Terminal> iconv -f utf-8 -t latin1 myfile.do.txt --output newfile
-
-
-
-Wrong Norwegian charcters
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-When Doconce documents have characters not in the standard ASCII set,
-the format of the file must be LATIN1 and not UTF-8. See
-the section "Strange non-English characters" above for how to
-run ``doconce change_encoding`` to change the encoding of the Doconce file.
-
-Too short underlining of reST headlines
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-This may happen if there is a paragraph heading without
-proceeding text before some section heading.
-
-
-Found !bt but no tex blocks extracted (BUG)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-This message points to a bug, but has been resolved by removing blank lines
-between the text and the first ``!bt`` (inserting the blanks again did not
-trigger the error message again...).
-
-Examples are typset with environment delimiters visible
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-If you see an Example section containing ``!bsubex``, ``!bsol``, or other
-begin and end tags for environments, it means that you have intended
-to typeset examples as exercises, but forgotten the command-line
-option ``--examples_as_exercises``. The text in the example is typeset
-as is unless this option is included.
-
-Emacs editing does not work properly because of "regexp overflow"
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Sometimes the Doonce editing mode (see the section :ref:`emacs:doconce`) in Emacs
-leads to an error message ending with "overflow in regexp matcher".
-This error is due to some regular expression used in the Doconce editing
-mode. The remedy is to split the file into smaller pieces and include
-the pieces using the ``preprocess`` directive ``#include "piece.do.txt"``.
-The error message comes with the Doconce file contains too much text
-for Emacs to handle.
-
-Problems with code or Tex Blocks
---------------------------------
-
-Code or math block errors in reST
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-First note that a code or math block must come after some plain
-sentence (at least for successful output in reST), not directly
-after a section/paragraph heading, table, comment, figure, or
-movie, because the code or math block is indented and then become
-parts of such constructions. Either the block becomes invisible or
-error messages are issued.
-
-Sometimes reST reports an "Unexpected indentation" at the beginning of
-a code block. If you see a ``!bc``, which should have been removed when
-running ``doconce format sphinx``, it is usually an error in the Doconce
-source, or a problem with the rst/sphinx translator.  Check if the
-line before the code block ends in one colon (not two!), a question
-mark, an exclamation mark, a comma, a period, or just a newline/space
-after text. If not, make sure that the ending is among the
-mentioned. Then ``!bc`` will most likely be replaced and a double colon
-at the preceding line will appear (which is the right way in reST to
-indicate a verbatim block of text).
-
-Strange errors around code or TeX blocks in reST
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-If ``idx`` commands for defining indices are placed inside paragraphs,
-and especially right before a code block, the reST translator
-(rst and sphinx formats) may get confused and produce strange
-code blocks that cause errors when the reST text is transformed to
-other formats. The remedy is to define items for the index outside
-paragraphs.
-
-Something is wrong with a verbatim code block
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Check first that there is a "normal" sentence right before
-the block (this is important for reST and similar
-"ASCII-close" formats).
-
-Code/TeX block is not shown in reST format
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-A comment right before a code or tex block will treat the whole
-block also as a comment. It is important that there is normal
-running text right before ``!bt`` and ``!bc`` environments.
-
-Verbatim code blocks inside lists look ugly
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Read the the section :ref:`sec:verbatim:blocks` above.  Start the
-``!bc`` and ``!ec`` tags in column 1 of the file, and be careful with
-indenting the surrounding plain text of the list item correctly. If
-you cannot resolve the problem this way, get rid of the list and use
-paragraph headings instead. In fact, that is what is recommended:
-avoid verbatim code blocks inside lists (it makes life easier).
-
-LaTeX code blocks inside lists look ugly
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Same solution as for computer code blocks as described in the
-previous paragraph. Make sure the ``!bt`` and ``!et`` tags are in column 1
-and that the rest of the non-LaTeX surrounding text is correctly indented.
-Using paragraphs instead of list items is a good idea also here.
-
-
-Problems with reST/Sphinx Output
---------------------------------
-
-Title level inconsistent
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-reST does not like jumps in the levels of headings. For example, you cannot
-have a ``===`` (paragraph) heading after a ``=======`` (section) heading without
-a ``=====`` (subsection) heading in between.
-
-Lists do not appear in .rst files
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Check if you have a comment right above the list. That comment
-will include the list if the list is indentend. Remove the comment.
-
-Error message "Undefined substitution..." from reST
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-This may happen if there is much inline math in the text. reST cannot
-understand inline LaTeX commands and interprets them as illegal code.
-Just ignore these error messages.
-
-Warning about duplicate link names
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Link names should be unique, but if (e.g.) "file" is used as link text
-several places in a reST file, the links still work. The warning can
-therefore be ignorned.
-
-Inconsistent headings in reST
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The ``rst2*.py`` and Sphinx converters abort if the headers of sections
-are not consistent, i.e., a subsection must come under a section,
-and a subsubsection must come under a subsection (you cannot have
-a subsubsection directly under a section). Search for ``===``,
-count the number of equality signs (or underscores if you use that)
-and make sure they decrease by two every time a lower level is encountered.
-
-No code environment appears before "bc ipy" blocks
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The ``!bc ipy`` directive behaves this way for ``sphinx`` output because
-interactive sessions are automatically handled. If this is not
-appropriate, shift to ``!bc cod`` or another specification of the
-verbatim environment.
-
-Problems with LaTeX Output
---------------------------
-
-LaTeX does not like underscores in URLs
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Suppose you have a URL reference like
-
-
-.. code-block:: text
-
-
-        ..which can be found in the file "my_file.txt":
-        "http://some.where.net/web/dir/my_file.txt".
-
-LaTeX will stop with a message about a missing dollar sign. The reason
-is that underscores in link texts need to be preceded by a backslash.
-However, this is incovenient to do in the Doconce source since the
-underscore is misleading in other formats.
-The remedy is to format the link text with inline verbatim tags (backticks):
-
-.. code-block:: text
-
-
-        ..which can be found in the file "`my_file.txt`":
-        "http://some.where.net/web/dir/my_file.txt".
-
-Verbatim text in links works fine with underscores.
-
-Error when running latex: You must have 'pygmentize' installed
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-This message points to the use of the minted style for typesetting verbatim
-code. You need to include the ``-shell-escape`` command-line argument when
-running ``latex`` or ``pdflatex``:
-
-.. code-block:: console
-
-        Terminal> latex -shell-escape file mydoc.tex
-        Terminal> pdflatex -shell-escape file mydoc.tex
-
-Using ``doconce ptex2tex`` will turn on the minted style if specified as
-environment on the command line, while using ``ptex2tex`` requires the
-preprocessor option ``-DMINTED`` to turn on the minted package.
-When this package is included, ``latex`` or ``pdflatex`` runs the
-``pygmentize`` program and the ``shell-escape`` option is required.
-
-Why are the LaTeX section headings smaller than normal?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Doconce inserts a special command to make the headings
-more compact:
-
-
-.. code-block:: text
-
-
-        \usepackage[compact]{titlesec}
-
-as explained in the `titlesec <http://www.ctex.org/documents/packages/layout/titlesec.pdf>`_ package documentation.
-To retrieve the standard LaTeX headings, comment out this line or remove it:
-
-
-.. code-block:: console
-
-        Terminal> doconce format pdflatex mydoc
-        Terminal> doconce subst '\\usepack.+\{titlesec\} '' mydoc.p.tex
-
-
-You can easily make the headings even smaller than the normal font
-by replacing ``[compact]`` by ``[compact,small]`` as parameter specification
-for ``titlesec``.
-
-Can I have LaTeX figures with shadows?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-This is easy by including the ``fancybox`` and ``graphicx`` packages
-and wrapping all ``\includegraphics`` in a shadow box:
-
-
-.. code-block:: console
-
-        Terminal> doconce format pdflatex mydoc
-        Terminal> doconce replace \
-                  'microtype}', 'microtype,fancybox,graphicx}' mydoc.p.tex
-        Terminal> doconce subst '(\\includegraphics\[.+\}\})' \
-                  '\\shadowbox{\g<1>}' mydoc.p.tex
-
-
-How can I use my fancy LaTeX environments?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-See the section :ref:`manual:theorem:envir` for how to make a custom
-theorem environment also in Doconce, without using implementations
-restricted to LaTeX.
-
-
-The LaTeX file does not compile
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-If the problem is undefined control sequence involving
-
-.. code-block:: text
-
-
-        \code{...}
-
-the cause is usually a verbatim inline text (in back-ticks in the
-Doconce file) spans more than one line. Make sure, in the Doconce source,
-that all inline verbatim text appears on the same line.
-
-The LaTeX Beamer file does not compile
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Make sure you have a ``!split`` before every slide heading.
-
-
-Inline verbatim gives error
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Check if the inline verbatim contains typical LaTeX commands, e.g.,
-
-.. code-block:: text
-
-
-        some text with `\usepackage{mypack}` is difficult because
-        ptex2tex will replace this by \code{\usepackage{mypack}} and
-        then replace this by
-        {\fontsize{10pt}{10pt}\verb!\usepackage{mypack!}}
-        which is wrong because ptex2tex applies regex that don't
-        capture the second }
-
-The remedy is to place verbatim LaTeX commands in verbatim
-blocks - that is safe.
-
-.. Could have doconce configure file where inline verbatim is
-
-.. configured to be \fontsize... directly, not via ptex2tex \code{}.
-
-
-
-Errors in figure captions
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Such errors typically arise from unbalanced curly braces, or dollar signs
-around math, and similar LaTeX syntax errors.
-
-(Note that verbatim font is likely to cause trouble inside figure captions,
-but Doconce will automatically replace verbatim text in back-ticks by
-a proper ``texttt`` command (since verbatim font constructions does not work
-inside figure captions) and precede underscores by backslash.)
-
-Chapters are ignored
-~~~~~~~~~~~~~~~~~~~~
-
-The default LaTeX style is "article". If you chapters in the Doconce file,
-you need to run ``ptex2tex`` with the option ``-DBOOK`` to set the LaTeX
-documentstyle to "book".
-
-I want to tune the top of the LaTeX file
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The top of the LaTeX file, as generated by Doconce, is very simple.
-If this LaTeX code is not sufficient for your needs, there are
-two ways out of it:
-
-1. Make a little Bash script that performs a series of
-   ``doconce subst`` (regular expressions) or ``doconce replace`` (regular text)
-   substitutions to change the text automatically (you probably have to
-   repeat these edits so automating them is a good idea).
-
-2. Place the title, author(s), and date of the Doconce file in a separate
-   file and use the preprocessor to include the rest. The rest is then
-   one or more Doconce files without title, author(s), and date. This
-   means that the ``doconce format latex`` command does not generate
-   the LaTeX intro (preamble) and outro, just the core text, for these
-   files.
-   Make a new file by hand with the appropriate LaTeX intro and outro
-   text and include the various text pieces in this file.
-   To make the LaTeX document, you compile all Doconce files
-   into LaTeX code, except the "top" Doconce file that includes the
-   others. That file is not used for LaTeX output, but
-   replaced by the hand-written LaTeX "top" file.
-
-Problems with gwiki Output
---------------------------
-
-Strange nested lists in gwiki
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Doconce cannot handle nested lists correctly in the gwiki format.
-Use nonnested lists or edit the ``.gwiki`` file directly.
-
-Lists in gwiki look ugly in the gwiki source
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Because the Google Code wiki format requires all text of a list item to
-be on one line, Doconce simply concatenates lines in that format,
-and because of the indentation in the original Doconce text, the gwiki
-output looks somewhat ugly. The good thing is that this gwiki source
-is seldom to be looked at - it is the Doconce source that one edits
-further.
-
-Problems with HTML Output
--------------------------
-
-MathJax formulas are not properly rendered
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Here are some common problems:
-
- * Two equations cannot have identical label (this error often arises
-   from copying and pasting equations)
-
- * ``[`` and ``]`` brackets must sometimes be replaced by ``\lbrack`` and ``\rbrack``
-
-How can I change the layout of the HTML page?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The easiest way is to edit the HTML style or the HTML code directly.
-However, those edits are overwritten the next time you compile the
-Doconce document to HTML. The edits should therefore be automated
-using ``doconce subst`` (for regular expression editing) or ``doconce replace``
-(for plain text substitution editing) commands in the file where
-you run ``doconce format html mydoc``. For example, say you want narrower
-gray admonition boxes with a much thicker boundary. The ``.alert``
-style must then be changed, more precisely the ``border`` and the ``width``
-specification:
-
-
-.. code-block:: bash
-
-        doconce replace 'border:1px' 'border:11px' mydoc.html
-        doconce replace 'width: 75%;' 'width: 35%' mydoc.html
-
-
-Another way to control the layout is to copy the style in the HTML
-file into a ``.css`` file, edit that file as you like, and provide the
-file as part of the compilation using the ``--css=mystyle.css``
-flag.
-
-The standard of way of completely controlling the HTML format is to
-use an HTML template. The Doconce source is then the body of text
-(leave out ``TITLE:`` to get HTML without a header and footer). The
-``--html_template=filename`` command-line option will then embed the
-Doconce text in the specified template file, where you can use style
-sheets and desired constructs in the header and footer.  The template
-can have "slots" for a title (``%(title)s``), a date (``%(date)s``), and
-the main body of text (``%(main)s``).  For typesetting code, ``pygments``
-is used (if installed) and can be turned off by ``--no_pygments_html``
-(leaving code in gray boxes).
-
-
-The easiest way is to get fancy layouts in HTML is to
-use the ``sphinx`` format and one its many themes.
-
-
-Why do figures look ugly when using HTML templates?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The HTML header that Doconce generates contain special styles for
-figure captions and the horizontal rule above figures. When using
-templates these styles are not defined, resulting in a rule that
-spans the width and a centered caption. Changing the appearance
-of the rule and caption can either be done by inserting styles or
-simply by automatic editing of the HTML code in a little shell script:
-
-
-.. code-block:: text
-
-
-        doconce replace '<p class="caption">' \
-         '<p style="width: 50%; font-style: italic; color: blue">' mydoc.html
-        doconce replace '<hr class="figure">' \
-         '<hr style="width: 50%">' mydoc.html
-
-
-Tools for Writing Doconce Document
-----------------------------------
+Tools for Writing Doconce Documents
+-----------------------------------
 
  * Emacs (with the modest Doconce syntax highlighting), Vim, Gedit, etc.
 

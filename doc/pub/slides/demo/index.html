@@ -116,9 +116,25 @@ doconce format html demo --pygments_html_style=monokai --keep_pygments_html_bg S
 doconce slides_html demo csss --html_slide_theme=csss_default
 </pre>
 <li>LaTeX Beamer PDF:  <a href="demo_blue_plain.pdf">blue_plain</a> <a href="demo_blue_shadow.pdf">blue_shadow</a> <a href="demo_red_plain.pdf">red_plain</a> <a href="demo_red_shadow.pdf">red_shadow</a> <a href="demo_cbc.pdf">cbc</a> <a href="demo_simula.pdf">simula</a>
+<pre>
+doconce format pdflatex demo SLIDE_TYPE="beamer" SLIDE_THEME="red_shadow"
+doconce ptex2tex demo -DLATEX_HEADING=beamer envir=minted
+doconce slides_beamer demo --beamer_slide_theme=red_shadow
+pdflatex -shell-escape demo
+cp demo.pdf demo_red_shadow.pdf
+</pre>
 <li><a href="demo.pdf">Handouts in PDF</a> (generated via LaTeX)
+<pre>
+doconce format pdflatex demo SLIDE_TYPE="latex" SLIDE_THEME="std. latex"
+doconce ptex2tex demo envir=minted
+pdflatex -shell-escape demo
+</pre>
 <li><a href="demo_doconce.html">Doconce source code for the slides</a>
-<li>Doconce: Why and How, <a href="../scientific_writing.html">reveal w/darkgrey</a>, <a href="../scientific_writing_deck.html">deck w/sandstone.default</a>,
-<a href="../scientific_writing_red_shadow.pdf">beamer</a>,
-<a href="../scientific_writing_solarized.html">solarized</a>
+<li>Doconce: Why and How,
+<a href="../scientific_writing-reveal.html">reveal w/darkgrey</a>,
+<a href="../scientific_writing-deck.html">deck w/sandstone.default</a>,
+<a href="../scientific_writing-beamer-red_shadow.pdf">beamer</a>,
+<a href="../scientific_writing-plain.html">plain HTML slides</a>
+<a href="../scientific_writing-1.html">one big HTML file</a>
+<a href="../scientific_writing-solarized.html">solarized HTML</a>,
 </ul>

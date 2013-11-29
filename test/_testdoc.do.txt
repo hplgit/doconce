@@ -192,9 +192,12 @@ output2
 
 It is time to test `verbatim inline font` especially with `a newline
 inside the text` and an exclamation mark at the end: `BEGIN`! The
-exclamation mark inside the verbatim text is not smart for latex as
-we use ! in the `verb` typesetting... Also test backslashes
-like `\begin` and `\end` in inline verbatim text.
+exclamation mark inside the verbatim text is potentially not smart
+since latex use ! in the `Verb` typesetting, but this should now
+be fixed: test `!bc` and `!ec` as well as `!bsummary`.
+Also test backslashes and braces like `\begin`, `\begin{enumerate}`,
+`\end{this}\end{that}`, and `{something \inside braces}` in inline
+verbatim text.
 
 Here is some color{red}{red} color and an attempt to write color{green}{with
 green color containing a linebreak.

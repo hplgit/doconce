@@ -8,16 +8,16 @@ name=scientific_writing
 # Note: since Doconce syntax is demonstrated inside !bc/!ec
 # blocks we need a few fixes
 
-doconce format html $name --pygments_html_style=native --keep_pygments_html_bg
+html=${name}-reveal
+doconce format html $name --pygments_html_style=native --keep_pygments_html_bg --html_links_in_new_window --html_output=$html
 if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
-doconce slides_html $name reveal --html_slide_theme=darkgray
+doconce slides_html $html reveal --html_slide_theme=darkgray
 if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
-cp $name.html ${name}_reveal.html
 
 function editfix {
 # Fix selected backslashes inside verbatim envirs that doconce has added
 # (only a problem when we want to show full doconce code with
-# labels in !bc-!ec envirs).
+# labels in !bc-!ec envirs as in this presentation).
 doconce replace '\label{this:section}' 'label{this:section}' $1
 doconce replace '\label{fig1}' 'label{fig1}' $1
 doconce replace '\label{demo' 'label{demo' $1
@@ -26,36 +26,53 @@ doconce replace '\eqref{myeq}' '(ref{myeq})' $1
 doconce replace '\eqref{mysec:eq:Dudt}' '(ref{mysec:eq:Dudt})' $1
 }
 
-editfix ${name}_reveal.html
+editfix $html.html
 
+html=${name}-reveal-beige
+doconce format html $name --pygments_html_style=perldoc --keep_pygments_html_bg --html_links_in_new_window --html_output=$html
+doconce slides_html $html reveal --html_slide_theme=beige
+editfix $html.html
 
-doconce format html $name --pygments_html_style=perldoc --keep_pygments_html_bg
+html=${name}-reveal-white
+doconce format html $name --pygments_html_style=default --keep_pygments_html_bg --html_links_in_new_window --html_output=$html
+doconce slides_html $html reveal --html_slide_theme=simple
+editfix $html.html
+
+html=${name}-deck
+doconce format html $name --pygments_html_style=perldoc --keep_pygments_html_bg --html_links_in_new_window --html_output=$html
 if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
-cp $name.html ${name}_deck.html
-doconce slides_html ${name}_deck deck --html_slide_theme=sandstone.default
+doconce slides_html $html deck --html_slide_theme=sandstone.default
 if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
-editfix ${name}_deck.html
+editfix $html.html
 
 # Plain HTML documents
-doconce format html $name --pygments_html_style=perldoc --html_style=solarized --html_admon=apricot
+html=${name}-solarized
+doconce format html $name --pygments_html_style=perldoc --html_style=solarized --html_admon=apricot --html_links_in_new_window --html_output=$html
 if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
-cp $name.html ${name}_solarized.html
-editfix ${name}_solarized.html
+editfix $html.html
 
-doconce format html $name --pygments_html_style=default
-cp $name.html ${name}_plain.html
-editfix ${name}_plain.html
-doconce split_html ${name}_plain.html
+html=${name}-plain
+doconce format html $name --pygments_html_style=default --html_links_in_new_window --html_output=$html
+editfix $html.html
+doconce split_html $html.html
 # Remove top navigation in all parts
-doconce subst -s '<!-- begin top navigation.+?end top navigation -->' '' ${name}_plain.html ._part*_${name}*.html
+doconce subst -s '<!-- begin top navigation.+?end top navigation -->' '' ${name}-plain.html ._part*_${name}*.html
+
+# One big HTML file with space between the slides
+html=${name}-1
+doconce format html $name --html_style=bloodish --html_links_in_new_window --html_output=$html
+editfix $html.html
+# Add space:
+doconce replace '<!-- !split -->' '<!-- !split --><br><br><br><br><br><br><br><br>' $html.html
 
 # LaTeX Beamer slides
+beamertheme=red_shadow
 doconce format pdflatex $name
 editfix ${name}.p.tex
 doconce ptex2tex $name -DLATEX_HEADING=beamer envir=minted
-doconce slides_beamer $name --beamer_slide_theme=red_shadow
-cp $name.tex ${name}_red_shadow.tex
-pdflatex -shell-escape ${name}_red_shadow
+doconce slides_beamer $name --beamer_slide_theme=$beamertheme
+cp $name.tex ${name}-beamer-${beamertheme}.tex
+pdflatex -shell-escape ${name}-beamer-$beamertheme
 
 # LaTeX documents
 doconce format pdflatex $name --minted_latex_style=trac
@@ -63,7 +80,8 @@ editfix ${name}.p.tex
 doconce ptex2tex $name envir=minted -DBOOK
 doconce replace 'section{' 'section*{' $name.tex
 pdflatex -shell-escape $name
-mv -f $name.pdf ${name}_minted.pdf
+mv -f $name.pdf ${name}-minted.pdf
+cp $name.tex ${name}-minted.tex
 
 doconce format pdflatex $name
 if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
@@ -72,7 +90,8 @@ doconce replace 'section{' 'section*{' ${name}.p.tex
 doconce ptex2tex $name envir=ans:nt -DBOOK
 if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
 pdflatex $name
-mv -f $name.pdf ${name}_anslistings.pdf
+mv -f $name.pdf ${name}-anslistings.pdf
+cp $name.tex ${name}-anslistings.tex
 
 # sphinx doesn't handle math inside code well, we drop it since
 # other formats demonstrate doconce writing this way
@@ -91,14 +110,18 @@ if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
 #doconce format rst    $name  # reStructuredText
 #doconce format plain  $name  # plain, untagged text for email
 
-pygmentize -l text -f html -o ${name}_doconce.html ${name}.do.txt
+pygmentize -l text -f html -o ${name}-doconce.html ${name}.do.txt
 
 dest=../../pub/slides
 
-cp -r ${name}*.pdf ._part*_${name}_*.html *.md *.gwiki ${name}*.html deck.js reveal.js fig $dest/
+cp -r ${name}*.pdf ._part*_${name}-*.html *.md *.gwiki ${name}*.html deck.js reveal.js fig $dest/
 
 doconce format html sw_index.do.txt
 cp sw_index.html $dest/index.html
+
+#drop demo part
+#echo 'STOPPED HERE AND SKIPPED COMPILING DEMO TALK!'
+exit
 
 # --------- short demo talk ------------
 
@@ -264,10 +287,11 @@ pdflatex -shell-escape demo
 </pre>
 <li><a href="demo_doconce.html">Doconce source code for the slides</a>
 <li>Doconce: Why and How,
-<a href="../scientific_writing_reveal.html">reveal w/darkgrey</a>,
-<a href="../scientific_writing_deck.html">deck w/sandstone.default</a>,
-<a href="../scientific_writing_red_shadow.pdf">beamer</a>,
-<a href="../scientific_writing_solarized.html">solarized</a>,
-<a href="../scientific_writing_solarized">plain HTML</a>
+<a href="../scientific_writing-reveal.html">reveal w/darkgrey</a>,
+<a href="../scientific_writing-deck.html">deck w/sandstone.default</a>,
+<a href="../scientific_writing-beamer-$beamertheme.pdf">beamer</a>,
+<a href="../scientific_writing-plain.html">plain HTML slides</a>
+<a href="../scientific_writing-1.html">one big HTML file</a>
+<a href="../scientific_writing-solarized.html">solarized HTML</a>,
 </ul>
 EOF

@@ -1,8 +1,8 @@
 <!-- TITLE: On the Technicalities of Scientific Writing Anno 2012: The Doconce Way -->
 <!-- TITLE: Scientific Writing Anno 2013: The Doconce Way -->
-% Scientific Writing Anno 2013
+% Scientific Writing and Publishing Anno 2013
 % Hans Petter Langtangen
-% Jun 29, 2013
+% Nov 28, 2013
 
 ![](fig/doconce1b.png)
 
@@ -11,7 +11,38 @@
 # Challenges with tools for scientific writing
 
 <!-- !split -->
-## Scientific writing needs to address new media
+## Scientific writing = LaTeX
+
+ * Pre 1980: Handwriting + publisher (paper or book)
+
+ * Post 1984: scientists write TeX and LaTeX
+
+ * Post 1995: publish LaTeX on the web or in journals and books
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\providecommand{\shadedskip}{}
+\definecolor{shadecolor}{rgb}{0.87843, 0.95686, 1.0}
+\renewenvironment{shadedskip}{
+\def\FrameCommand{\colorbox{shadecolor}}\FrameRule0.6pt
+\MakeFramed {\FrameRestore}\vskip3mm}{\vskip0mm\endMakeFramed}
+\providecommand{\shadedquoteBlue}{}
+\renewenvironment{shadedquoteBlue}[1][]{
+\bgroup\rmfamily\fboxsep=0mm\relax
+\begin{shadedskip}
+\list{}{\parsep=-2mm\parskip=0mm\topsep=0pt\leftmargin=2mm
+\rightmargin=2\leftmargin\leftmargin=4pt\relax}
+\relax}{\endlist\end{shadedskip}\egroup}\begin{shadedquoteBlue}
+\fontsize{9pt}{9pt}
+\begin{Verbatim}
+print 'Hello, World!'
+\end{Verbatim}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Big late 1990s question: Will MS Word replace LaTeX? It never did!
+
+<!-- !split -->
+## Scientific publishing needs to address new media
 
 <!-- !bslidecell 00 0.4 -->
 ![](fig/ipad.png)
@@ -46,16 +77,18 @@
 <!-- * Scientific writing = lecture notes, slides, reports, thesis, books,  ... -->
 <!-- * (Journal papers typeset by journals are out of scope) -->
 
-## Scope
+## Scope of this presentation
 
   * Focus: documents with <font color="red">much</font> *math* and *computer code*
 
-  * Key question: What tools should I use for writing?
+  * Key question: What tools should I use for scientific writing?
 
-  * Default answer: LaTeX
+The default answer is LaTeX, but there are many
+recent popular alternative tools: HTML w/MathJax,
+Sphinx, Markdown, MediaWiki, IPython notebook.
 
-  * Recent popular alternative tools: HTML w/MathJax,
-    Sphinx, Markdown, MediaWiki, IPython notebook
+
+
 
 <!-- !bslidecell 00 0.25 -->
 ![](fig/LaTeX_logo.jpg)
@@ -82,7 +115,7 @@
 <!-- !eslidecell -->
 
 <!-- !split -->
-## New media are here
+## Does your scientific writing today need to address new media (in the future)?
 
 <!-- Insert links here to reports -->
 
@@ -90,6 +123,8 @@
  * BW paper
 
  * Color paper
+
+ * Slides
 
  * Web w/design
 
@@ -109,22 +144,25 @@
 
 <!-- !split -->
 
-## Fundamental question
+## Can we factor pieces from a heterogeneous world to one coherent piece in the future?
 
 When I write some scientific material,
 
  * a LaTeX document,
 
- * a blogg (HTML),
+ * a blog post (HTML),
 
  * some web pages (HTML),
 
  * a Sphinx document,
 
+ * an IPython notebook,
+
  * some Markdown files,
 
 and later want to collect the pieces into a larger document, maybe
-some book, or one big web document, is that at all feasible?
+some book, or one big web document, or a set of slides,
+is that at all feasible?
 
 <!-- !bpop highlight-red -->
 Probably not, but I have a solution :-)
@@ -136,16 +174,17 @@ Probably not, but I have a solution :-)
 <!-- !bpop -->
  * _LaTeX_: de facto standard for math-instensive documents
 
- * _pdfLaTeX_, _XeLaTeX_, _LuaLaTeX_: takes over (figures in png, pdf)
+ * _pdfLaTeX_, _XeLaTeX_, _LuaLaTeX_: takes over (figures in png, pdf) - use these!
 
  * _MS Word_: too clicky math support and ugly fonts, but much used
 
- * _HTML with MathJax_: "full" LaTeX *math*, but too much tagging
+ * _HTML with MathJax_: "full" LaTeX *math*, but much tagging
 
  * _Sphinx_:
-   somewhat limited LaTeX math support, but great support for web design
+   somewhat limited LaTeX math support, but great support for web design,
+   and less tagged than HTML
 
- * _reStructuredText_: no math support, but transforms to
+ * _reStructuredText_: similar to Sphinx, but no math support, transforms to
    lots of formats (LaTeX, HTML, XML, Word, OpenOffice, ...)
 
  * _Markdown_: somewhat limited LaTeX math support, but minor tagging,
@@ -153,13 +192,13 @@ Probably not, but I have a solution :-)
 
  * _IPython notebooks_: Markdown code/math,
    combines Python code, interactivity, and
-   visualization
+   visualization, but requires all code snippets to sync together
 
- * _MediaWiki_: quite good LaTeX math support (cf. Wikipedia)
+ * _MediaWiki_: quite good LaTeX math support (cf. Wikipedia/Wikibooks)
 
  * Other _wiki_ formats: no math support, great for collaborative editing
 
- * _Wordpress_: supports LaTeX *formulas* only, but good blogging support
+ * _Wordpress_: supports LaTeX *formulas* only, but good blog post support
 
  * _Google blogger_: supports full HTML with MathJax
 
@@ -197,17 +236,17 @@ Probably not, but I have a solution :-)
 
  * Subfigures: LaTeX (`subfigure`)
 
- * Movies: LaTeX, raw embedded HTML in others
+ * Movies: LaTeX, raw HTML
 
- * Floating computer code: LaTeX
+ * Floating computer code: LaTeX; fixed computer code: all
 
- * Fixed computer code: all
+ * Interactive programs: Sphinx, IPython notebook, raw HTML
 
- * Floating tables: LaTeX; inline tables: all
+ * Floating tables: LaTeX; fixed tables: all
 
  * Algorithms: LaTeX
 
- * Margin notes: LaTeX
+ * Margin notes: LaTeX, HTML with tailored css code
 
  * Page references: LaTeX
 
@@ -225,7 +264,7 @@ based on HTML and vice versa.
 <!-- !epop -->
 
 <!-- !split -->
-## Concerns I
+## Typesetting concerns I
 
 <!-- !bpop -->
  * Sphinx refers to figures by the caption (has to be short!) and
@@ -250,7 +289,7 @@ based on HTML and vice versa.
 <!-- !epop -->
 
 <!-- !split -->
-## Concerns II
+## Typesetting concerns II
 
 <!-- !bpop -->
  * Footnotes must appear as part of the running text (e.g., sentences
@@ -275,7 +314,7 @@ based on HTML and vice versa.
 <!-- "bibitems" a la BibTeX must look sensible and consistent. -->
 
 <!-- !split -->
-## Concerns III
+## Typesetting concerns III
 
 <!-- !bpop -->
  * Index words can appear anywhere in LaTeX, but should be outside
@@ -343,13 +382,13 @@ especially for scientific writing with much math and code.
 
  * [Plain HTML](http://hplgit.github.com/teamods/writing_reports/_static/report_do.html) or with a [template](http://hplgit.github.com/teamods/writing_reports/_static/report_vagrant.html) or [another template](http://hplgit.github.com/teamods/writing_reports/_static/report_github_minimal.html) or [solarized](http://hplgit.github.com/teamods/writing_reports/_static/report_solarized.html)
 
- * Sphinx: [agni](http://hplgit.github.com/teamods/writing_reports/_static/sphinx-agni/index.html), [pyramid](http://hplgit.github.com/teamods/writing_reports/_static/sphinx-pyramid/report.html), [classy](http://hplgit.github.com/teamods/writing_reports/_static/sphinx-classy/report.html), [fenics](http://hplgit.github.com/teamods/writing_reports/_static/sphinx-fenics_minimal/report.html), [redcloud](http://hplgit.github.com/teamods/writing_reports/_static/sphinx-fenics_minimal/report.html)
+ * Sphinx: [agni](http://hplgit.github.com/teamods/writing_reports/_static/sphinx-agni/index.html), [pyramid](http://hplgit.github.com/teamods/writing_reports/_static/sphinx-pyramid/report.html), [classy](http://hplgit.github.com/teamods/writing_reports/_static/sphinx-classy/report.html), [fenics](http://hplgit.github.com/teamods/writing_reports/_static/sphinx-fenics_minimal/report.html), [redcloud](http://hplgit.github.com/teamods/writing_reports/_static/sphinx-redcloud/report.html)
 
- * HTML for [Google](http://doconce-report-demo.blogspot.no/) or [Wordpress](http://doconcereportdemo.wordpress.com/) for blogging
+ * HTML for [Google](http://doconce-report-demo.blogspot.no/) or [Wordpress](http://doconcereportdemo.wordpress.com/) for blog posts
 
  * [MediaWiki](http://doconcedemo.shoutwiki.com/wiki/Doconce_demo_page) (Wikipedia, Wikibooks, etc)
 
- * Doconce [source code](http://hplgit.github.com/teamods/writing_reports/_static/report.do.txt.html) and [tutorial](http://code.google.com/p/doconce/wiki/Tutorial)
+ * Doconce [source code](http://hplgit.github.com/teamods/writing_reports/_static/report.do.txt.html) and [tutorial](http://hplgit.github.io/doconce/doc/pub/tutorial/html/index.html)
 
 <!-- !split -->
 
@@ -371,6 +410,8 @@ TOC: on
 
 *Notice.* 
 Title and authors must have all information *on a single line*!
+
+
 
 <!-- !split -->
 ## Abstract
@@ -469,10 +510,10 @@ but without backslashes.
 See \eqref{eq1}-\eqref{myeq}.
 
 # Make hyperlink
-"some link text": "http://code.google.com/p/doconce/"
+"some link text": "https://github.com/hplgit/doconce"
 
 # Hyperlink with complete URL as link text
-URL: "http://code.google.com/p/doconce/"
+URL: "https://github.com/hplgit/doconce"
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 <!-- !split -->
@@ -480,6 +521,9 @@ URL: "http://code.google.com/p/doconce/"
 
 *Important:* 
 Figures with HTML and LaTeX size info, and caption: *everything on one line*
+
+
+
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 FIGURE: [figdir/myfig, width=300 frac=1.2] My caption. \label{fig1}
@@ -489,13 +533,13 @@ Movies are also supported:
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-MOVIE: [http://www.youtube.com/embed/P8VcZzgdfSc, width=420 height=315]
+MOVIE: [http://youtu.be/IDeGDFZSYo8, width=420 height=315]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 and rendered as
 
 
-<iframe width="420" height="315" src="http://www.youtube.com/embed/P8VcZzgdfSc" frameborder="0" allowfullscreen></iframe>
+<iframe width="420" height="315" src="http://www.youtube.com/embed/IDeGDFZSYo8" frameborder="0" allowfullscreen></iframe>
 
 
 <!-- !split -->
@@ -564,9 +608,14 @@ Limit math environments to
 \end{align}
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Even though Sphinx, Markdown, and MediaWiki have problems with
-the latter, Doconce splits it into separate, single equations
-such that align with labels works accross formats.
+*Doconce fix of shortcomings.* 
+ * Sphinx, Markdown, and MediaWiki cannot have
+   `align` with labels
+
+ * MathJax (HTML, Sphinx, Markdown, Mediawiki, ...) cannot
+   handle equation references across web pages
+
+
 
 <!-- !split -->
 ## Displaying code
@@ -603,10 +652,6 @@ def solver(I, a, T, dt, theta):
     return u, t
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-`pycod`: Python snippet, `pypro`: complete Python program;
-`fcod/fpro`: Fortran; `ccod/cpro`: C, `mcod/mpro`: Matlab, etc.
-
-
 <!-- !split -->
 ## Copying code from source files
 
@@ -628,7 +673,8 @@ start and end regular expressions:
 @@@CODE src/dc_mod.py  fromto: def solver\(@def next\(x,\s*y,
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Typesetting of code is implied by the file extension:
+<!-- !split -->
+## Typesetting of code is implied by the file extension
 
  * `.py`: `pypro` if complete file, `pycod` if snippet
 
@@ -649,7 +695,7 @@ Typesetting of code is implied by the file extension:
  * `pygments` is used for code in HTML (ca 10 styles)
 
 <!-- !split -->
-## Demonstrating code execution
+## Demonstrating code execution; Online Python Tutor
 
 With `!bc pyoptpro` or a file `*.pyopt`, the code applies the
 [Online Python Tutor](http://pythontutor.com) for displaying
@@ -672,6 +718,38 @@ def solver(I, a, T, dt, theta):
 u, t = solver(I=1, a=1, T=3, dt=1., theta=0.5)
 print u
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+<!-- !split -->
+## Demonstrating code execution; Sage Cell Server
+
+With `!bc pyscpro` or a file `*.pysc`, the code is typeset in
+a sage cell:
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.Python}
+a = 2
+b = 3
+print 'a+b:', a + b
+
+# In a sage cell we can also plot
+from matplotlib.pyplot import *
+from numpy import *
+x = linspace(0, 4*pi, 101)
+y = exp(-0.1*x)*cos(x)
+plot(x, y)
+xlabel('x'); ylabel('y')
+show()
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+*Warning.* 
+Works only in Sphinx documents (but HTML support is possible).
+
+
+
+<!-- !split -->
+## Demonstrating code execution; IPython notebook
+
+Can take a [Doconce source](http://hplgit.github.com/teamods/writing_reports/_static/report.do.txt.html) and transform to an [IPython notebook](http://nbviewer.ipython.org/url/hplgit.github.com/teamods/writing_reports/_static/report.ipynb) with [source](http://hplgit.github.com/teamods/writing_reports/_static/report.ipynb.html)
 
 <!-- !split -->
 ## Tables
@@ -781,10 +859,10 @@ Compute the probability of getting heads.
 
 
 
+
 <!-- --- begin exercise --- -->
 
 ### Problem 1: Flip a Coin
-
 <!-- keywords = random numbers; Monte Carlo simulation -->
 
 
@@ -793,6 +871,7 @@ Compute the probability of getting heads.
 <!-- --- begin hint in exercise --- -->
 
 *Hint.* Use `r = random.random()` and define head as `r <= 0.5`.
+
 <!-- --- end hint in exercise --- -->
 
 *b)* Compute the probability of getting heads.
@@ -800,6 +879,7 @@ Compute the probability of getting heads.
 
 <!-- --- begin answer of exercise --- -->
 *Answer.* 0.5.
+
 <!-- --- end answer of exercise --- -->
 
 Filenames: `flip_coin.py`, `flip_coin.pdf`.
@@ -836,9 +916,9 @@ processing (e.g., making a book of problems).
 <!-- !split -->
 ## Use of preprocessors
 
- * Simple if-else tests a la C preprocessor
+ * Simple if-else tests a la the C/C++ preprocessor
 
- * `FORMAT` variable can be used to test on format
+ * `FORMAT` variable can be used to test on format, e.g.,
 
     * if latex/pdflatex do one sort of code (raw LaTeX)
 
@@ -857,18 +937,30 @@ processing (e.g., making a book of problems).
 
 *Use with caution!* 
 Such environments may light up the document, but can be disturbing too.
+Some admon styles have icons.
+
+
 
 *Going deeper.* 
 More details can be separated from the rest.
 
+
+
 *Time for review!* 
+Tasks:
+
   * Maybe ask a question?
 
   * Or two?
 
-*Conclusions.* 
+
+
+Conclusion:
+
   * A special "block" admonition has less pronounced typesetting and
     can be used when no special icon is desired. Good for slides.
+
+
 
 <!-- !split -->
 ## Slides
@@ -881,22 +973,17 @@ Very effective way to generate slides from running text:
 
  * Emphasize key points in bullet items
 
- * Focus on figures and movies
+ * Focus on key equations, figures, movies, key code snippets
 
- * Focus on key equations
-
- * Focus on key code snippets
-
- * Insert `!split` wherever you want a new slide to
-   begin
+ * Insert `!split` wherever you want a new slide to begin
 
  * Insert `!bpop` and `!epop` around elements to pop up
    in sequence
 
  * Use 7 `=` or 5 `=` in headings (H2 or H3)
 
- * Slides are made with HTML5 tools such as reveal.js, deck.js,
-   csss, or dzslides
+ * Supported slide types: Beamer, HTML,
+   HTML5 (reveal.js, deck.js, csss, dzslides)
 
 <!-- !split -->
 ## Example on slide code
@@ -914,7 +1001,7 @@ Very effective way to generate slides from running text:
    what happens with the slide layout where there is
    so much text under one point
 
-FIGURE: [fig/teacher1, width=100 frac=0.5]
+FIGURE: [fig/teacher1, width=100 frac=0.4]
 
 Key equation:
 
@@ -1017,7 +1104,19 @@ $$
 
 
 <!-- !split -->
-## Slide styles
+## Classic slide types
+
+ * LaTeX Beamer
+
+ * Plain HTML w/various styles
+
+   * separate slides w/navigation
+
+   * one big slide
+
+
+<!-- !split -->
+## HTML5 slide types
 
 <!-- !bpop -->
  * Supported HTML5 packages:
@@ -1038,7 +1137,7 @@ $$
 
  * _Problem_: reveal and deck have numerous styles
 
-   * _Solution_: easy [to autogenerate all styles](demo/index.html) for a talk
+   * _Solution_: easy [to autogenerate all styles](http://hplgit.github.com/teamods/doconce/demo/index.html) for a talk
 
 
  * _Problem_: HTML5 slides need many style files
@@ -1057,7 +1156,7 @@ $$
 
 
 <!-- !split -->
-## Output in HTML
+## Doconce to HTML
 
 Run in terminal window:
 
@@ -1078,9 +1177,9 @@ doconce slides_html doconcefile reveal --html_slide_theme=darkgray
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 <!-- !split -->
-## Output for blogging
+## Output for blog posts
 
-Two types of blogs are supported:
+Two formats of blog posts are supported:
 
  * Google's [blogspot.com](http://doconce-report-demo.blogspot.no/):
    just paste the raw HTML (full support of math and code)
@@ -1100,7 +1199,7 @@ and paste the code into the text area.
 
 
 <!-- !split -->
-## Output in pdfLaTeX
+## Doconce to pdfLaTeX
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1125,7 +1224,7 @@ doconce ptex2tex doconcefile envir=ans:nt
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 <!-- !split -->
-## Output in Sphinx
+## Doconce to Sphinx
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1165,7 +1264,7 @@ Publishing of "official" documents:
  * Wikipedia
 
 <!-- !split -->
-## Output in other formats
+## Doconce to other formats
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1181,16 +1280,16 @@ doconce format plain  doconcefile  # plain, untagged text for email
 
  * Ubuntu: `sudo apt-get install python-doconce` (old!)
 
- * Source at [Googlecode](http://code.google.com/p/doconce) (recommended!)
+ * Source at [GitHub](https://github.com/hplgit/doconce) (recommended!)
 
    * `hg clone` + `sudo python setyp.py install`
 
 
- * Many [dependencies...](https://doconce.googlecode.com/hg/doc/demos/manual/manual.html#___sec1)
+ * Many [dependencies...](http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html#installation-of-doconce-and-its-dependencies)
 
    * Must have `preprocess` and `mako`
 
-   * Need `latex`, `sphinx`, `pandoc`, etc. (see Installation in [manual](https://doconce.googlecode.com/hg/doc/demos/manual/manual.html#___sec1))
+   * Need `latex`, `sphinx`, `pandoc`, etc. (see the [Installation](http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html#installation-of-doconce-and-its-dependencies) description)
 
    * Easy for slides: only `preprocess` is needed :-)
 
@@ -1232,7 +1331,7 @@ doconce format plain  doconcefile  # plain, untagged text for email
 <!-- !split -->
 ## Doconce writing tips
 
-<!-- * See the previous *Concerns I, II and III* slides for issues when writing -->
+<!-- * See the previous *Typesetting concerns I, II and III* slides for issues when writing -->
 <!-- for multiple formats. However: Doconce makes a fix so that Sphinx and -->
 <!-- other formats works with labels in align environments :-) -->
 
@@ -1281,18 +1380,19 @@ For output formats different from `latex`, `pdflatex`, and `html`:
  * `sphinx` output requires
 
    * no math in section headings or figure captions
-     (gets removed in references)
+     (gets removed in references).
 
-   * running text to start in column 1
+   * running text to start in column 1.
 
    * progressive section headings: after chapter (9 `=`) comes
      section (7 `=`), then subsection (5 `=`), then paragraph
-     (3 `=`).
+     (3 `=`). Do not make jumps in this progression.
 
    * index entries (``) before the paragraph where they
-     are introduced (before 3 `=` too)
+     are introduced and place them *before* subsubsection
+     headings (`=== ... ===`) and after subsection and section headings.
 
-   * a line of text and no comment before code or list
+   * a line of text and no comment or math before code or list.
 
 
 

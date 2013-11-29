@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: http://code.google.com/p/doconce/" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="On Schemes for Exponential Decay">
 
 
@@ -15,8 +15,6 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=1024, user-scalable=no">
-
-<title>None</title>
 
 <!-- Required stylesheet -->
 <link rel="stylesheet" href="deck.js/core/deck.core.css">
@@ -115,10 +113,10 @@ git://github.com/barraq/deck.ext.js.git
      .slide .alert-block > p, .alert-block > ul {margin-bottom:0}
      /*.slide .alert li {margin-top: 1em}*/
      .deck .alert-block p+p {margin-top:5px}
-     /*.slide .alert-notice { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_notice.png); }
-     .slide .alert-summary  { background-image:url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_summary.png); }
-     .slide .alert-warning { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_warning.png); }
-     .slide .alert-question {background-image:url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_question.png); } */
+     /*.slide .alert-notice { background-image: url(http://hplgit.github.io/doconce/bundled/html_images//small_gray_notice.png); }
+     .slide .alert-summary  { background-image:url(http://hplgit.github.io/doconce/bundled/html_images//small_gray_summary.png); }
+     .slide .alert-warning { background-image: url(http://hplgit.github.io/doconce/bundled/html_images//small_gray_warning.png); }
+     .slide .alert-question {background-image:url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_question.png); } */
 
 </style>
 
@@ -145,7 +143,7 @@ td.padding {
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
   TeX: {
-     equationNumbers: {  autoNumber: "AMS"  },
+     equationNumbers: {  autoNumber: "none"  },
      extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
   }
 });
@@ -185,7 +183,7 @@ MathJax.Hub.Config({
 <center>[1] <b style="font-weight: bold">Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b style="font-weight: bold">Department of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>Jun 29, 2013</h4></center> <!-- date -->
+<center><h4>Nov 28, 2013</h4></center> <!-- date -->
 <p>
 <center><p><img src="fig/CN_logo.png" align="bottom" width=300></p></center>
 
@@ -200,17 +198,21 @@ MathJax.Hub.Config({
 
 <p>
 The primary goal of this demo talk is to demonstrate how to write
-talks with <a href="http://code.google.com/p/doconce">doconce</a>
+talks with <a href="https://github.com/hplgit/doconce" target="_self">Doconce</a>
 and get them rendered in numerous HTML formats.
 <div class="alert alert-block alert-notice alert-text-normal"><b style="font-weight: bold">Layout.</b>
 This version
 utilizes deck slides with the theme <code>sandstone.aurora</code>.
 </div>
+
+
 <p>
 <div class="alert alert-block alert-notice alert-text-normal"><b style="font-weight: bold">Notice.</b>
 Speaker notes show up by
 pressing "n".
 </div>
+
+
 <p>
 <div class="notes">
 <!-- press "n" to activate -->
@@ -242,9 +244,9 @@ demonstrated.
 $$
 \begin{align}
 u'(t) &= -au(t),
-\label{ode}\\ 
+\tag{1}\\ 
 u(0)  &= I,
-\label{initial:value}
+\tag{2}
 \end{align}
 $$
 <p>&nbsp;<br>
@@ -407,6 +409,7 @@ $$ u^n = A^n,\quad A = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}\thi
 Only the Backward Euler scheme is guaranteed to always give
 qualitatively correct results.
 </div>
+
 
 </p>
 

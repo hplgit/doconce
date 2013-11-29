@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: http://code.google.com/p/doconce/" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="On Schemes for Exponential Decay">
 
 
@@ -57,7 +57,7 @@ td.padding {
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
   TeX: {
-     equationNumbers: {  autoNumber: "AMS"  },
+     equationNumbers: {  autoNumber: "none"  },
      extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
   }
 });
@@ -97,7 +97,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>Jun 29, 2013</h4></center> <!-- date -->
+<center><h4>Nov 28, 2013</h4></center> <!-- date -->
 <p>
 <center><p><img src="fig/CN_logo.png" align="bottom" width=300></p></center>
 
@@ -112,17 +112,21 @@ MathJax.Hub.Config({
 
 <p>
 The primary goal of this demo talk is to demonstrate how to write
-talks with <a href="http://code.google.com/p/doconce">doconce</a>
+talks with <a href="https://github.com/hplgit/doconce" target="_self">Doconce</a>
 and get them rendered in numerous HTML formats.
 <div class="alert alert-block alert-notice alert-text-normal"><b>Layout.</b>
 This version
 utilizes html5slides slides with the theme <code>template-default</code>.
 </div>
+
+
 <p>
 <div class="alert alert-block alert-notice alert-text-normal"><b>Notice.</b>
 Speaker notes show up by
 pressing "p".
 </div>
+
+
 <p>
 <aside class="note">
 <!-- press "p" to activate -->
@@ -153,9 +157,9 @@ demonstrated.
 $$
 \begin{align}
 u'(t) &= -au(t),
-\label{ode}\\ 
+\tag{1}\\ 
 u(0)  &= I,
-\label{initial:value}
+\tag{2}
 \end{align}
 $$
 
@@ -313,6 +317,7 @@ $$ u^n = A^n,\quad A = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}\thi
 Only the Backward Euler scheme is guaranteed to always give
 qualitatively correct results.
 </div>
+
 
 </p>
 

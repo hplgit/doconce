@@ -560,3 +560,22 @@ doconce replace '<p class="caption">' \
 doconce replace '<hr class="figure">' \
  '<hr style="width: 50%">' mydoc.html
 !ec
+
+======= Problems with reveal/deck HTML5 slides =======
+
+===== Reveal slides are moving steadily to the left =====
+
+This seems to be a problem when one has used the mouse to scroll down
+on a slide and continue to use the right arrow for moving to the
+next slide. Click on the arrow in the slide instead of using the arrow key.
+
+===== YouTube movies do not work =====
+
+They do not work in reveal or deck unless the Chrome browser is used.
+Usually the HTML5 slides work best in Firefox.
+
+===== Online Python Tutor does not work =====
+
+Seems to be a problem with reveal slides. The *Forward* button is not
+clickable.
+

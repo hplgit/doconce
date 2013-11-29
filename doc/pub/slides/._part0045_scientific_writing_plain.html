@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <!--
 Automatically generated HTML file from Doconce source
-(http://code.google.com/p/doconce/)
+(https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: http://code.google.com/p/doconce/" />
-<meta name="description" content="Scientific Writing Anno 2013">
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Scientific Writing and Publishing Anno 2013">
 <meta name="keywords" content="key word1,key word2,key equation,$\u$ conservation,keyword">
 
 
@@ -25,8 +25,8 @@ Automatically generated HTML file from Doconce source
       color: #000000;
     }
     h1 { font-size: 1.8em; color: #1e36ce; }
-    h2 { font-size: 1.5em; color: #1e36ce; }
-    h3 { color: #1e36ce; }
+    h2 { font-size: 1.6em; color: #1e36ce; }
+    h3 { font-size: 1.4em; color: #1e36ce; }
     a { color: #1e36ce; text-decoration:none; }
     tt { font-family: "Courier New", Courier; }
     
@@ -52,7 +52,7 @@ Automatically generated HTML file from Doconce source
              width: 75%;
      }
      .alert-block {padding-top:14px; padding-bottom:14px}
-     .alert-block > p, .alert-block > ul {margin-bottom:0}
+     .alert-block > p, .alert-block > ul {margin-bottom:1em}
      .alert li {margin-top: 1em}
      .alert-block p+p {margin-top:5px}
      .alert-notice { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_notice.png); }
@@ -66,24 +66,30 @@ Automatically generated HTML file from Doconce source
 
 <!-- tocinfo
 {'highest level': 0,
- 'sections': [(' Challenges with tools for scientific writing  ',
+ 'sections': [(' Challenges with tools for scientific publishing  ',
                0,
                None,
                '___sec0'),
-              (' Scientific writing needs to address new media ',
+              (' Once upon a time scientific publishing was easy to grasp ',
                1,
                None,
                '___sec1'),
-              (' The book will probably survive ', 1, None, '___sec2'),
-              (' The classical report will survive ', 1, None, '___sec3'),
-              (' Scope ', 1, None, '___sec4'),
-              (' New media are here ', 1, None, '___sec5'),
-              (' Fundamental question ', 1, None, '___sec6'),
-              (' Popular tools anno 2013 and their math support ',
+              (' Scientific publishing needs to address new media ',
+               1,
+               None,
+               '___sec2'),
+              (' The book will probably survive ', 1, None, '___sec3'),
+              (' The classical report will survive ', 1, None, '___sec4'),
+              (' Scope of this presentation ', 1, None, '___sec5'),
+              (' Does your scientific writing today need to address new media In the future)? ',
+               1,
+               None,
+               '___sec6'),
+              (' Can we factor pieces from a heterogeneous world to one coherent piece in the future? ',
                1,
                None,
                '___sec7'),
-              (' LaTeX is very rich; other tools support much less ',
+              (' Popular tools anno 2013 and their math support ',
                1,
                None,
                '___sec8'),
@@ -91,69 +97,73 @@ Automatically generated HTML file from Doconce source
                1,
                None,
                '___sec9'),
-              (' Concerns I ', 1, None, '___sec10'),
-              (' Concerns II ', 1, None, '___sec11'),
-              (' Concerns III ', 1, None, '___sec12'),
+              (' LaTeX is very rich; other tools support much less ',
+               1,
+               None,
+               '___sec10'),
+              (' Typesetting concerns I ', 1, None, '___sec11'),
+              (' Typesetting concerns II ', 1, None, '___sec12'),
+              (' Typesetting concerns III ', 1, None, '___sec13'),
               (' Solution I: Use a format that translates to many ',
                1,
                None,
-               '___sec13'),
-              (' Solution II: Use Doconce ', 1, None, '___sec14'),
-              (' Doconce ', 0, None, '___sec15'),
-              (' Doconce demos ', 1, None, '___sec16'),
-              (' A tour of Doconce ', 0, None, '___sec17'),
-              (' Title, authors, date, toc ', 1, None, '___sec18'),
-              (' Abstract ', 1, None, '___sec19'),
-              (' Section headings ', 1, None, '___sec20'),
-              (' This is an H1/chapter heading ', 0, None, '___sec21'),
-              (' This is an H2/section heading ', 1, None, '___sec22'),
-              (' This is an H3/subsection heading ', 2, None, '___sec23'),
-              (' This is an H4/paragraph heading ', 3, None, '___sec24'),
-              (' Markup and lists ', 1, None, '___sec25'),
-              (' Labels, references, index items ', 1, None, '___sec26'),
-              (' Figures and movies ', 1, None, '___sec27'),
-              (' Math ', 1, None, '___sec28'),
-              (' Math flexibility ', 1, None, '___sec29'),
-              (' Displaying code ', 1, None, '___sec30'),
-              (' Copying code from source files ', 1, None, '___sec31'),
+               '___sec14'),
+              (' Solution II: Use Doconce ', 1, None, '___sec15'),
+              (' Doconce ', 0, None, '___sec16'),
+              (' Doconce demos ', 1, None, '___sec17'),
+              (' A tour of Doconce ', 0, None, '___sec18'),
+              (' Title, authors, date, toc ', 1, None, '___sec19'),
+              (' Abstract ', 1, None, '___sec20'),
+              (' Section headings ', 1, None, '___sec21'),
+              (' This is an H1/chapter heading ', 0, None, '___sec22'),
+              (' This is an H2/section heading ', 1, None, '___sec23'),
+              (' This is an H3/subsection heading ', 2, None, '___sec24'),
+              (' This is an H4/paragraph heading ', 3, None, '___sec25'),
+              (' Markup and lists ', 1, None, '___sec26'),
+              (' Labels, references, index items ', 1, None, '___sec27'),
+              (' Figures and movies ', 1, None, '___sec28'),
+              (' Math ', 1, None, '___sec29'),
+              (' Math flexibility ', 1, None, '___sec30'),
+              (' Displaying code ', 1, None, '___sec31'),
+              (' Copying code from source files ', 1, None, '___sec32'),
               (' Demonstrating code execution ', 1, 'slide:pot', 'slide:pot'),
-              (' Tables ', 1, None, '___sec33'),
-              (' Newcommands for math ', 1, None, '___sec34'),
+              (' Tables ', 1, None, '___sec34'),
+              (' Newcommands for math ', 1, None, '___sec35'),
               (' Labels, citations, index, bibliography ',
                1,
                None,
-               '___sec35'),
-              (' Exercises ', 1, None, '___sec36'),
-              (' Rendering of the previous page ', 1, None, '___sec37'),
+               '___sec36'),
+              (' Exercises ', 1, None, '___sec37'),
+              (' Rendering of the previous page ', 1, None, '___sec38'),
               (' Problem 1: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
-              (' Exercises ', 1, None, '___sec39'),
-              (' Use of preprocessors ', 1, None, '___sec40'),
-              (' Doconce admonitions ', 1, None, '___sec41'),
-              (' Slides ', 1, None, '___sec42'),
-              (' Example on slide code ', 1, None, '___sec43'),
+              (' Exercises ', 1, None, '___sec40'),
+              (' Use of preprocessors ', 1, None, '___sec41'),
+              (' Doconce admonitions ', 1, None, '___sec42'),
+              (' Slides ', 1, None, '___sec43'),
               (' Example on slide code ', 1, None, '___sec44'),
-              (' Headline ', 1, None, '___sec45'),
-              (' Grid layout of slide: MxN cells ', 1, None, '___sec46'),
-              (' Grid layout of slide: MxN cells  ', 1, None, '___sec47'),
-              (' Headline ', 1, None, '___sec48'),
-              (' Slide styles ', 1, None, '___sec49'),
-              (' Output in HTML ', 1, None, '___sec50'),
-              (' Output for blogging ', 1, None, '___sec51'),
-              (' Output in pdfLaTeX ', 1, None, '___sec52'),
-              (' Output in Sphinx ', 1, None, '___sec53'),
-              (' Output for wiki ', 1, None, '___sec54'),
-              (' Output in other formats ', 1, None, '___sec55'),
-              (' Installation ', 1, None, '___sec56'),
+              (' Example on slide code ', 1, None, '___sec45'),
+              (' Headline ', 1, None, '___sec46'),
+              (' Grid layout of slide: MxN cells ', 1, None, '___sec47'),
+              (' Grid layout of slide: MxN cells  ', 1, None, '___sec48'),
+              (' Headline ', 1, None, '___sec49'),
+              (' Slide styles ', 1, None, '___sec50'),
+              (' Output in HTML ', 1, None, '___sec51'),
+              (' Output for blog posts ', 1, None, '___sec52'),
+              (' Output in pdfLaTeX ', 1, None, '___sec53'),
+              (' Output in Sphinx ', 1, None, '___sec54'),
+              (' Output for wiki ', 1, None, '___sec55'),
+              (' Output in other formats ', 1, None, '___sec56'),
+              (' Installation ', 1, None, '___sec57'),
               (' Writing tips for LaTeX writers who want to convert to Doconce  ',
                1,
                None,
-               '___sec57'),
-              (' Doconce writing tips ', 1, None, '___sec58'),
+               '___sec58'),
               (' Doconce writing tips ', 1, None, '___sec59'),
+              (' Doconce writing tips ', 1, None, '___sec60'),
               (' Writing tips for sphinx and other formats ',
                1,
                None,
-               '___sec60')]}
+               '___sec61')]}
 end of tocinfo -->
 
 <body>
@@ -163,7 +173,7 @@ end of tocinfo -->
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
   TeX: {
-     equationNumbers: {  autoNumber: "AMS"  },
+     equationNumbers: {  autoNumber: "none"  },
      extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
   }
 });
@@ -184,36 +194,33 @@ MathJax.Hub.Config({
 <p>
 <!-- !split -->
 
-<h2>Output for blogging  <a name="___sec51"></a></h2>
+<h2>Output in HTML  <a name="___sec51"></a></h2>
 
 <p>
-Two types of blogs are supported:
-
-<p>
-
-<ul>
- <li> Google's <a href="http://doconce-report-demo.blogspot.no/">blogspot.com</a>:
-   just paste the raw HTML (full support of math and code)</li>
- <li> <a href="http://doconcereportdemo.wordpress.com/">Wordpress</a>:
-   despite limited math, Doconce manipulates the math
-   such that even <code>equation</code> and <code>align</code> work in Wordpress :-)</li>
-</ul>
-
-For wordpress, add <code>--wordpress</code>:
+Run in terminal window:
 <p>
 
 <!-- code=text typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doconce format html doconcefile --wordpress
-</pre></div>
-<p>
-and paste the code into the text area.
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doconce format html doconcefile
 
+# Solarized HTML style
+doconce format html doconcefile --html_solarized
+
+# Control pygments typesetting of code
+doconce format html doconcefile --pygments_html_style=native
+
+# Or use plain &lt;pre&gt; tag for code
+doconce format html doconcefile --no_pygments_html
+
+# Further making of slides
+doconce slides_html doconcefile reveal --html_slide_theme=darkgray
+</pre></div>
 <p>
 <p>
 <!-- begin bottom navigation -->
-<a href="._part0044_scientific_writing_plain.html"><img src="https://doconce.googlecode.com/hg/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+<a href="._part0044_scientific_writing_plain.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
 
-<a href="._part0046_scientific_writing_plain.html"><img src="https://doconce.googlecode.com/hg/bundled/html_images/next1.png" border=0 alt="next"></a>
+<a href="._part0046_scientific_writing_plain.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
 <!-- end bottom navigation -->
 
 <!-- ------------------- end of main content --------------- -->

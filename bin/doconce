@@ -449,7 +449,7 @@ system('make html')
 
 print 'Fix generated files:'
 os.chdir('_build/html')
-for filename in glob.glob('*.html'):
+for filename in glob.glob('*.html') + glob.glob('.*.html'):
     # Fix double title in <title> tags
     system('doconce subst "<title>(.+?) &mdash;.+?</title>" "<title>\g<1></title>" %%s' %% filename, echo=False)
     # Fix admonition style
@@ -462,13 +462,14 @@ for filename in glob.glob('*.html'):
    </style>
   </head>
 " %%s""" %% filename, echo=False)
+    if os.path.isfile(filename + '.old~~'):
+        os.remove(filename + '.old~~')
     # Check if external links should pop up in separate windows
     f = open(filename, 'r');  text = f.read();  f.close()
     if '.. Open external links in new windows.' in text:
         text = text.replace('<a class="reference external"',
                             '<a class="reference external" target="_blank"')
         f = open(filename, 'w');  f.write(text);  f.close()
-    os.remove(filename + '.old~')
 print """
 google-chrome %(sphinx_rootdir)s/_build/html/index.html
 """

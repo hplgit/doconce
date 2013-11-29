@@ -1447,7 +1447,7 @@ final,                   % or draft (marks overfull hboxes)
 \usepackage[framemethod=TikZ]{mdframed}  % use latest version: https://github.com/marcodaniel/mdframed"""
         else: # graybox1
             packages = r'\usepackage[framemethod=TikZ]{mdframed}'
-        INTRO['latex'] += '\n' + packages + '\n'
+        INTRO['latex'] += '\n' + packages + '\n\n% --- begin definitions of admonition environments ---\n'
         if latex_admon == 'graybox2':
             INTRO['latex'] += r"""
 % gray box with horizontal rules (cannot handle verbatim text)
@@ -1675,6 +1675,19 @@ final,                   % or draft (marks overfull hboxes)
 """ % vars()
 
     INTRO['latex'] += r"""
+% --- end of definitions of admonition environments ---
+
+% #ifdef BLUE_SECTION_HEADINGS
+\definecolor{seccolor}{rgb}{0.2,0.2,0.8}
+%\definecolor{seccolor}{cmyk}{.9,.5,0,.35}  % siamltexmm.sty section color
+\titleformat{\section}
+{\color{seccolor}\normalfont\Large\bfseries}
+{\color{seccolor}\thesection}{1em}{}
+\titleformat{\subsection}
+{\color{seccolor}\normalfont\large\bfseries}
+{\color{seccolor}\thesubsection}{1em}{}
+% #endif
+
 % #ifdef COLORED_TABLE_ROWS
 % color every two table rows
 \let\oldtabular\tabular
@@ -1701,15 +1714,6 @@ final,                   % or draft (marks overfull hboxes)
 
 % http://www.ctex.org/documents/packages/layout/titlesec.pdf
 \usepackage[compact]{titlesec}  % narrower section headings
-% #ifdef BLUE_SECTION_HEADINGS
-\definecolor{seccolor}{rgb}{0.2,0.2,0.8}
-\titleformat{\section}
-{\color{seccolor}\normalfont\Large\bfseries}
-{\color{seccolor}\thesection}{1em}{}
-\titleformat{\subsection}
-{\color{seccolor}\normalfont\large\bfseries}
-{\color{seccolor}\thesubsection}{1em}{}
-% #endif
 
 % --- end of standard preamble for documents ---
 """

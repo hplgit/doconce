@@ -1,6 +1,9 @@
 import os, sys, shutil, re, glob, sets, time, commands
 from common import _abort
 
+_part_filename = '._%s%03d'
+_part_filename_wildcard = '._*[0-9][0-9][0-9]'
+
 _registered_command_line_options = [
     ('--help',
      'Print all options to the doconce program.'),
@@ -1175,8 +1178,27 @@ download preprocess from http://code.google.com/p/preprocess""")
     filestr = pattern.sub(r'\code{\g<1> \g<2>}', filestr)
     verb_command = 'Verb'  # requires fancyvrb package, otherwise use std 'verb'
 
+    verb_delimiter = '!'
+    alt_verb_delimiter = '~'  # can't use '%' in latex
     cpattern = re.compile(r"""\\code\{(.*?)\}([ \n,.;:?!)"'-])""", re.DOTALL)
-    filestr = cpattern.sub(r'\\%s!\g<1>!\g<2>' % verb_command, filestr)
+    # Check if the verbatim text contains verb_delimiter and make
+    # special solutions for these first
+    for verbatim, dummy in cpattern.findall(filestr):
+        if verb_delimiter in verbatim:
+            if alt_verb_delimiter in verbatim:
+                print """
+*** warning: inline verbatim "%s"
+    contains both delimiters %s and %s that the \\%s LaTeX
+    command will use - be prepared for strange output that
+    requires manual editing (or with doconce replace/subst)
+""" % (verbatim, verb_delimiter, alt_verb_delimiter)
+            filestr = re.sub(r"""\\code\{%s\}([ \n,.;:?!)"'-])""" % verbatim,
+                             r'\\%s%s%s%s\g<1>' %
+            (verb_command, alt_verb_delimiter, verbatim, alt_verb_delimiter),
+                             filestr, flags=re.DOTALL)
+    filestr = cpattern.sub(r'\\%s%s\g<1>%s\g<2>' %
+                           (verb_command, verb_delimiter, verb_delimiter),
+                           filestr)
 
     '''
     # If fontsize is part of the \Verb command (which is not wise, since
@@ -1384,8 +1406,9 @@ def clean():
     For example, if ``d1.do.txt`` and ``d2.do.txt`` are found,
     all files ``d1.*`` and ``d1.*`` are deleted, except when ``*``
     is ``.do.txt`` or ``.sh``. The subdirectories ``sphinx-rootdir``
-    and ``html_images`` are also removed, as well as all ``._part*.html``,
-    ``*~`` and ``tmp*`` files.
+    and ``html_images`` are also removed, as well as all ``*~`` and
+    ``tmp*`` files and all files made from splitting (split_html,
+    split_rst).
     """
     if os.path.isdir('Trash'):
         print
@@ -1411,8 +1434,8 @@ def clean():
         for f in generated_files:
             removed.append(f)
     removed.extend(glob.glob('*~') + glob.glob('tmp*') +
-                   glob.glob('._part*.html') +
-                   glob.glob('._part*.rst') +
+                   glob.glob(_part_filename_wildcard + '.html') +
+                   glob.glob(_part_filename_wildcard + '.rst') +
                    glob.glob('.*.exerinfo') +
                    glob.glob('.*_html_file_collection'))
     directories = ['sphinx-rootdir', 'html_images']
@@ -2019,7 +2042,7 @@ def doconce_html_split(header, parts, footer, basename, filename):
                 continue  # go to next if abort is turned off
             if n != i:
                 # Reference to label in another file
-                name_def_filename = '._part%04d_%s.html' % (n, basename)
+                name_def_filename = _part_filename % (basename, n) + '.html'
                 if i < len(parts):
                     part = parts[i]
                 elif i == len(parts):
@@ -2098,7 +2121,7 @@ def doconce_html_split(header, parts, footer, basename, filename):
                 if n != i:
                     # Reference to equation with label in another file
                     #print '*** warning: \\eqref{%s} to label in another HTML file will appear as (eq)' % (label)
-                    label_def_filename = '._part%04d_%s.html' % (n, basename)
+                    label_def_filename = _part_filename % (basename, n) + '.html'
                     text = text.replace(
                         r'\eqref{%s}' % label,
                         '<a href="%s#mjx-eqn-%s">(%s)</a>' %
@@ -2137,9 +2160,9 @@ def doconce_html_split(header, parts, footer, basename, filename):
 <p><br><img src="%s"><p><br><p>
 """ % header_part_line_filename)
 
-        part_filename = '._part%04d_%s.html' % (pn, basename)
-        prev_part_filename = '._part%04d_%s.html' % (pn-1, basename)
-        next_part_filename = '._part%04d_%s.html' % (pn+1, basename)
+        part_filename = _part_filename % (basename, pn) + '.html'
+        prev_part_filename = _part_filename % (basename, pn-1) + '.html'
+        next_part_filename = _part_filename % (basename, pn+1) + '.html'
         generated_files.append(part_filename)
 
         if vagrant:
@@ -3701,7 +3724,7 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
         # Add text for this slide
 
         # Grab title as first section/subsection
-        pattern = r'section\{(.+?)\}'
+        pattern = r'section\{(.+)\}'  # greedy so it goes to the end
         m = re.search(pattern, part)
         if m:
             title = m.group(1).strip()
@@ -3898,7 +3921,7 @@ def doconce_rst_split(parts, basename, filename):
 
     generated_files = []
     for pn, part in enumerate(parts):
-        part_filename = '._part%04d_%s.rst' % (pn, basename)
+        part_filename = _part_filename % (basename, pn) + '.rst'
         generated_files.append(part_filename)
         text = ''.join(part)
 
@@ -3959,7 +3982,7 @@ def list_labels():
             if m:
                 heading = m.group(1).strip()
         else:
-            m = re.search(r'section\{(.+?)\}', line)
+            m = re.search(r'section\{(.+)\}', line) # make .+ greedy
             if m:
                 heading = m.group(1).strip()
         if heading:
@@ -4309,7 +4332,7 @@ _replacements = [
 
 _latex_replacements = [
     (r"%.*$", "", re.MULTILINE),  # comments
-    (r"\\.*section\{(.+?)\}", "\g<1>"),
+    (r"\\.*section\{(.+)\}", "\g<1>"),
     (r"^\\\[[^@]+\\\]",    ""),  # (@ is "unlikely" character)
     (r"\\includegraphics.*?(\.pdf|\.png|\.eps|\.ps|\.jpg)", ""),
     (r"\\(pageref|eqref|ref|label|url|emp)\{.*?\}", ""),
