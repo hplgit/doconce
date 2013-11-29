@@ -210,41 +210,52 @@ MathJax.Hub.Config({
 
 
     
-<a name="part0000"></a>
+<a name="part0048"></a>
 
 
 <p>
-<!-- ------------------- main content ---------------------- -->
+<!-- !split -->
 
-
-<p>
-<!-- TITLE: On the Technicalities of Scientific Writing Anno 2012: The Doconce Way -->
-<!-- TITLE: Scientific Writing Anno 2013: The Doconce Way -->
-
-<title>Scientific Writing and Publishing Anno 2013</title>
-
-<center><h1>Scientific Writing and Publishing Anno 2013</h1></center>  <!-- document title -->
+<h2>Grid layout of slide: MxN cells  <a name="___sec53"></a></h2>
 
 <p>
-<!-- author(s): Hans Petter Langtangen -->
-
-<center>
-<b>Hans Petter Langtangen</b> 
-</center>
-
+Example with a bullet list to the left and
+a figure to the right (two cells: 00 and 01):
 
 <p>
-<!-- institution(s) -->
-<p>
-<center><h4>Nov 29, 2013</h4></center> <!-- date -->
-<p>
-<center><p><img src="fig/doconce1b.png" align="bottom" width=400></p></center>
 
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">!split
+======= Headline =======
+
+!bslidecell 00
+!bpop
+ * Key point 1
+ * Key point 2
+ * Key point 3
+!epop
+
+!bpop
+!bt
+\[ -\nabla^2 u = f \quad\hbox{in }\Omega \]
+!et
+!epop
+
+!eslidecell
+
+!bslidecell 01
+FIGURE: [fig/broken_pen_and_paper, width=400, frac=0.8]
+!eslidecell
+
+!split
+======= Next slide... =======
+</pre></div>
 <p>
-<!-- latex interprets 9 = as chapter and then needs book style... -->
 <p>
 <!-- begin bottom navigation -->
-<a href="._scientific_writing-plain001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<a href="._scientific_writing-plain047.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+
+<a href="._scientific_writing-plain049.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
 <!-- end bottom navigation -->
 
 <!-- ------------------- end of main content --------------- -->

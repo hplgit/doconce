@@ -210,41 +210,51 @@ MathJax.Hub.Config({
 
 
     
-<a name="part0000"></a>
+<a name="part0002"></a>
 
 
 <p>
-<!-- ------------------- main content ---------------------- -->
+<!-- !split -->
 
-
-<p>
-<!-- TITLE: On the Technicalities of Scientific Writing Anno 2012: The Doconce Way -->
-<!-- TITLE: Scientific Writing Anno 2013: The Doconce Way -->
-
-<title>Scientific Writing and Publishing Anno 2013</title>
-
-<center><h1>Scientific Writing and Publishing Anno 2013</h1></center>  <!-- document title -->
+<h2>Scientific writing = LaTeX  <a name="___sec1"></a></h2>
 
 <p>
-<!-- author(s): Hans Petter Langtangen -->
 
-<center>
-<b>Hans Petter Langtangen</b> 
-</center>
-
-
-<p>
-<!-- institution(s) -->
-<p>
-<center><h4>Nov 29, 2013</h4></center> <!-- date -->
-<p>
-<center><p><img src="fig/doconce1b.png" align="bottom" width=400></p></center>
+<ul>
+ <li> Pre 1980: Handwriting + publisher (paper or book)</li>
+ <li> Post 1984: scientists write TeX and LaTeX</li>
+ <li> Post 1995: publish LaTeX on the web or in journals and books</li>
+</ul>
 
 <p>
-<!-- latex interprets 9 = as chapter and then needs book style... -->
+
+<!-- code=latex (from !bc latexcod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">\providecommand</span><span style="color: #008000">{</span><span style="color: #008000; font-weight: bold">\shadedskip</span><span style="color: #008000">}{}</span>
+<span style="color: #008000; font-weight: bold">\definecolor</span><span style="color: #008000">{</span>shadecolor<span style="color: #008000">}{</span>rgb<span style="color: #008000">}{</span>0.87843, 0.95686, 1.0<span style="color: #008000">}</span>
+<span style="color: #008000; font-weight: bold">\renewenvironment</span><span style="color: #008000">{</span>shadedskip<span style="color: #008000">}{</span>
+<span style="color: #008000; font-weight: bold">\def\FrameCommand</span><span style="color: #008000">{</span><span style="color: #008000; font-weight: bold">\colorbox</span><span style="color: #008000">{</span>shadecolor<span style="color: #008000">}}</span><span style="color: #008000; font-weight: bold">\FrameRule</span>0.6pt
+<span style="color: #008000; font-weight: bold">\MakeFramed</span> <span style="color: #008000">{</span><span style="color: #008000; font-weight: bold">\FrameRestore</span><span style="color: #008000">}</span><span style="color: #008000; font-weight: bold">\vskip</span>3mm<span style="color: #008000">}{</span><span style="color: #008000; font-weight: bold">\vskip</span>0mm<span style="color: #008000; font-weight: bold">\endMakeFramed</span><span style="color: #008000">}</span>
+<span style="color: #008000; font-weight: bold">\providecommand</span><span style="color: #008000">{</span><span style="color: #008000; font-weight: bold">\shadedquoteBlue</span><span style="color: #008000">}{}</span>
+<span style="color: #008000; font-weight: bold">\renewenvironment</span><span style="color: #008000">{</span>shadedquoteBlue<span style="color: #008000">}</span>[1][]<span style="color: #008000">{</span>
+<span style="color: #008000; font-weight: bold">\bgroup\rmfamily\fboxsep</span>=0mm<span style="color: #008000; font-weight: bold">\relax</span>
+<span style="color: #008000; font-weight: bold">\begin</span><span style="color: #008000">{</span>shadedskip<span style="color: #008000">}</span>
+<span style="color: #008000; font-weight: bold">\list</span><span style="color: #008000">{}{</span><span style="color: #008000; font-weight: bold">\parsep</span>=-2mm<span style="color: #008000; font-weight: bold">\parskip</span>=0mm<span style="color: #008000; font-weight: bold">\topsep</span>=0pt<span style="color: #008000; font-weight: bold">\leftmargin</span>=2mm
+<span style="color: #008000; font-weight: bold">\rightmargin</span>=2<span style="color: #008000; font-weight: bold">\leftmargin\leftmargin</span>=4pt<span style="color: #008000; font-weight: bold">\relax</span><span style="color: #008000">}</span>
+<span style="color: #008000; font-weight: bold">\relax</span><span style="color: #008000">}{</span><span style="color: #008000; font-weight: bold">\endlist\end</span><span style="color: #008000">{</span>shadedskip<span style="color: #008000">}</span><span style="color: #008000; font-weight: bold">\egroup</span><span style="color: #008000">}</span><span style="color: #008000; font-weight: bold">\begin</span><span style="color: #008000">{</span>shadedquoteBlue<span style="color: #008000">}</span>
+<span style="color: #008000; font-weight: bold">\fontsize</span><span style="color: #008000">{</span>9pt<span style="color: #008000">}{</span>9pt<span style="color: #008000">}</span>
+<span style="color: #008000; font-weight: bold">\begin</span><span style="color: #008000">{</span>Verbatim<span style="color: #008000">}</span>
+print &#39;Hello, World!&#39;
+<span style="color: #008000; font-weight: bold">\end</span><span style="color: #008000">{</span>Verbatim<span style="color: #008000">}</span>
+</pre></div>
+<p>
+Big late 1990s question: Will MS Word replace LaTeX? It never did!
+
+<p>
 <p>
 <!-- begin bottom navigation -->
-<a href="._scientific_writing-plain001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<a href="._scientific_writing-plain001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+
+<a href="._scientific_writing-plain003.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
 <!-- end bottom navigation -->
 
 <!-- ------------------- end of main content --------------- -->

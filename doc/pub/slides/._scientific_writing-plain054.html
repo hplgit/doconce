@@ -210,41 +210,42 @@ MathJax.Hub.Config({
 
 
     
-<a name="part0000"></a>
+<a name="part0054"></a>
 
 
 <p>
-<!-- ------------------- main content ---------------------- -->
+<!-- !split -->
 
-
-<p>
-<!-- TITLE: On the Technicalities of Scientific Writing Anno 2012: The Doconce Way -->
-<!-- TITLE: Scientific Writing Anno 2013: The Doconce Way -->
-
-<title>Scientific Writing and Publishing Anno 2013</title>
-
-<center><h1>Scientific Writing and Publishing Anno 2013</h1></center>  <!-- document title -->
+<h2>Doconce to pdfLaTeX  <a name="___sec60"></a></h2>
 
 <p>
-<!-- author(s): Hans Petter Langtangen -->
 
-<center>
-<b>Hans Petter Langtangen</b> 
-</center>
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doconce format pdflatex doconcefile
 
+# Result: doconcefile.p.tex (ptex2tex file)
+# Run either
+ptex2tex doconcefile
+# or
+doconce ptex2tex doconcefile -DHELVETICA envir=minted
 
-<p>
-<!-- institution(s) -->
-<p>
-<center><h4>Nov 29, 2013</h4></center> <!-- date -->
-<p>
-<center><p><img src="fig/doconce1b.png" align="bottom" width=400></p></center>
+pdflatex doconcefile
+bibtex doconcefile
+pdflatex doconcefile
 
+# More control of how code is typeset
+doconce format pdflatex doconcefile --minted_latex_style=trac
+doconce ptex2tex doconcefile envir=minted
+
+doconce format pdflatex doconcefile
+doconce ptex2tex doconcefile envir=ans:nt
+</pre></div>
 <p>
-<!-- latex interprets 9 = as chapter and then needs book style... -->
 <p>
 <!-- begin bottom navigation -->
-<a href="._scientific_writing-plain001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<a href="._scientific_writing-plain053.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+
+<a href="._scientific_writing-plain055.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
 <!-- end bottom navigation -->
 
 <!-- ------------------- end of main content --------------- -->

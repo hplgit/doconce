@@ -210,41 +210,44 @@ MathJax.Hub.Config({
 
 
     
-<a name="part0000"></a>
+<a name="part0062"></a>
 
 
 <p>
-<!-- ------------------- main content ---------------------- -->
+<!-- !split -->
 
-
-<p>
-<!-- TITLE: On the Technicalities of Scientific Writing Anno 2012: The Doconce Way -->
-<!-- TITLE: Scientific Writing Anno 2013: The Doconce Way -->
-
-<title>Scientific Writing and Publishing Anno 2013</title>
-
-<center><h1>Scientific Writing and Publishing Anno 2013</h1></center>  <!-- document title -->
+<h2>Writing tips for sphinx and other formats  <a name="___sec68"></a></h2>
 
 <p>
-<!-- author(s): Hans Petter Langtangen -->
-
-<center>
-<b>Hans Petter Langtangen</b> 
-</center>
-
+For output formats different from <code>latex</code>, <code>pdflatex</code>, and <code>html</code>:
 
 <p>
-<!-- institution(s) -->
-<p>
-<center><h4>Nov 29, 2013</h4></center> <!-- date -->
-<p>
-<center><p><img src="fig/doconce1b.png" align="bottom" width=400></p></center>
 
-<p>
-<!-- latex interprets 9 = as chapter and then needs book style... -->
+<ul>
+ <li> Use labels only right after section headings and in equations.</li>
+ <li> Be careful with labels in <code>align</code> math environments: <code>pandoc</code>
+   and <code>mwiki</code> cannot refer to them.</li>
+ <li> <code>sphinx</code> output requires</li>
+
+<ul>
+   <li> no math in section headings or figure captions
+     (gets removed in references).</li>
+   <li> running text to start in column 1.</li>
+   <li> progressive section headings: after chapter (9 <code>=</code>) comes
+     section (7 <code>=</code>), then subsection (5 <code>=</code>), then paragraph
+     (3 <code>=</code>). Do not make jumps in this progression.</li>
+   <li> index entries (``) before the paragraph where they
+     are introduced and place them <em>before</em> subsubsection
+     headings (<code>=== ... ===</code>) and after subsection and section headings.</li>
+   <li> a line of text and no comment or math before code or list.</li>
+</ul>
+
+</ul>
+
+
 <p>
 <!-- begin bottom navigation -->
-<a href="._scientific_writing-plain001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<a href="._scientific_writing-plain061.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
 <!-- end bottom navigation -->
 
 <!-- ------------------- end of main content --------------- -->

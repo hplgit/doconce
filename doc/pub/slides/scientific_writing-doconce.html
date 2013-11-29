@@ -16,7 +16,17 @@
 ## If the vagrant demo link shows the text after the toc, zoom out
 ##
 
+## New foils: Doconce disclaimer and divorce, summary - code generation
+
 ## Files: https://raw.github.com/hplgit/doconce/master/
+##
+##\newcommand\section{\@startsection{section}{1}{.25in}%
+##                                  {1.3ex \@plus .5ex \@minus .2ex}%
+##                                  {-.5em \@plus -.1em}%
+##                                  {\reset@font\color{header1}\normalsize\HLtext}
+## Can we redefine \section, \subsection, \paragraph med ny color?
+## E.g. bluesection, bluesubsection, blueparagraph, can just insert
+## color
 
 #TITLE: On the Technicalities of Scientific Writing Anno 2012: The Doconce Way
 #TITLE: Scientific Writing Anno 2013: The Doconce Way
@@ -304,19 +314,19 @@ based on HTML and vice versa.
 !split
 ======= Solution II: Use Doconce =======
 
-Doconce offers minimalistic typing, great flexibility wrt format,
-especially for scientific writing with much math and code.
+&quot;Doconce&quot;: &quot;http://hplgit.github.io/doconce/doc/web/index.html&quot;
+offers minimalistic typing, great flexibility wrt format,
+especially for scientific writing with *much math and code*.
 
  * Can generate LaTeX, HTML, Sphinx, Markdown, MediaWiki, Google wiki,
    Creole wiki, reST, plain text
  * Made for large science books *and* small notes
- * Targets books, electronic PDF, PDF for phones,
-   designed web pages, blog posts
+ * Targets paper and screen
  * Many special features (code snippets from files, embedded movies,
-   admonitions, ...)
+   admonitions, modern LaTeX layouts, ...)
  * Very effective for generating slides from ordinary text
  * Applies Mako: Doconce text is a program (!)
- * Less tagged than LaTeX, HTML, Sphinx
+ * Much like Markdown, less tagged than LaTeX, HTML, Sphinx
 
 # #if not FORMAT in (&quot;latex&quot;, &quot;pdflatex&quot;)
 # latex interprets 9 = as chapter and then needs book style...
@@ -337,6 +347,63 @@ URL: &quot;http://hplgit.github.com/teamods/writing_reports/&quot;
  * &quot;MediaWiki&quot;: &quot;http://doconcedemo.shoutwiki.com/wiki/Doconce_demo_page&quot; (Wikipedia, Wikibooks, etc)
  * Doconce &quot;source code&quot;: &quot;http://hplgit.github.com/teamods/writing_reports/_static/report.do.txt.html&quot; and &quot;tutorial&quot;: &quot;http://hplgit.github.io/doconce/doc/pub/tutorial/html/index.html&quot;
 
+!split
+======= Doconce disclaimer =======
+
+ * Based on text transformations (reg.exp.) so valid syntax may
+   occasionally give problems
+
+# * Actively developed and maintained, but one-man show
+
+!bwarning Doconce divorce
+At any time one can divorce from Doconce and marry one of the output
+formats, such as LaTeX or Sphinx. The generated code is clean.
+!ewarning
+
+!split
+======= Doconce experience: code generation is a great thing =======
+
+!bblock
+
+Regardless of what format you write in, introduce a step where
+you can generate (parts of) the syntax.
+
+ * Use a preprocessor a la Mako
+ * Write your own read-and-generate code
+ * or both (like Doconce)
+
+Advantages:
+
+ * Less writing
+ * Repository of syntax for nice constructions
+ * Implements structure/rules across documents
+ * Easier to change layout/structure
+!eblock
+
+!split
+===== Example: generate reveal.js or deck.js slides from HTML =====
+
+ * Write the content of each slide in plain HTML(5)
+ * Use e.g. `#slide` as delimiter between slides
+ * Read file, splitting wrt `#slide` yields a list of
+   slides (HTML code)
+ * For a specific format (reveal.js, deck.js, csss, ...):
+    * write header
+    * for slide in slides:
+      * embed slide in correct HTML code
+    * write footer
+
+!bc htmlcod
+&lt;h2&gt;Scope of this presentation&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Focus: documents with much &lt;em&gt;math&lt;/em&gt; and
+      &lt;em&gt;computer code&lt;/em&gt;
+  &lt;li&gt;Key question: What tools should I use for scientific writing?
+&lt;/ul&gt;
+&lt;p&gt;&lt;div class=&quot;alert&quot;&gt;
+The default answer is LaTeX.
+&lt;/div&gt;
+!ec
 
 !split
 

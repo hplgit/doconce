@@ -185,7 +185,7 @@ MathJax.Hub.Config({
 <p>
 <!-- institution(s) -->
 <p>
-<center><h4>Nov 28, 2013</h4></center> <!-- date -->
+<center><h4>Nov 29, 2013</h4></center> <!-- date -->
 <p>
 <center><p><img src="fig/doconce1b.png" align="bottom" width=400></p></center>
 
@@ -685,8 +685,9 @@ based on HTML and vice versa.
 <h2>Solution II: Use Doconce  <a name="___sec15"></a></h2>
 
 <p>
-Doconce offers minimalistic typing, great flexibility wrt format,
-especially for scientific writing with much math and code.
+<a href="http://hplgit.github.io/doconce/doc/web/index.html" target="_blank">Doconce</a>
+offers minimalistic typing, great flexibility wrt format,
+especially for scientific writing with <em>much math and code</em>.
 
 <p>
 
@@ -694,13 +695,12 @@ especially for scientific writing with much math and code.
  <p><li> Can generate LaTeX, HTML, Sphinx, Markdown, MediaWiki, Google wiki,
    Creole wiki, reST, plain text</li>
  <p><li> Made for large science books <em>and</em> small notes</li>
- <p><li> Targets books, electronic PDF, PDF for phones,
-   designed web pages, blog posts</li>
+ <p><li> Targets paper and screen</li>
  <p><li> Many special features (code snippets from files, embedded movies,
-   admonitions, ...)</li>
+   admonitions, modern LaTeX layouts, ...)</li>
  <p><li> Very effective for generating slides from ordinary text</li>
  <p><li> Applies Mako: Doconce text is a program (!)</li>
- <p><li> Less tagged than LaTeX, HTML, Sphinx
+ <p><li> Much like Markdown, less tagged than LaTeX, HTML, Sphinx
 <!-- latex interprets 9 = as chapter and then needs book style... --></li>
 </ul>
 <p>
@@ -743,7 +743,22 @@ especially for scientific writing with much math and code.
 
 <section class="slide">
 
-<h1>A tour of Doconce  <a name="___sec18"></a></h1>
+<h2>Doconce disclaimer  <a name="___sec18"></a></h2>
+
+<p>
+
+<ul>
+ <p><li> Based on text transformations (reg.exp.) so valid syntax may
+   occasionally give problems
+<!-- * Actively developed and maintained, but one-man show --></li>
+</ul>
+<p>
+
+<div class="alert alert-block alert-warning alert-text-normal"><b style="font-weight: bold">Doconce divorce.</b>
+At any time one can divorce from Doconce and marry one of the output
+formats, such as LaTeX or Sphinx. The generated code is clean.
+</div>
+
 
 <p>
 
@@ -752,7 +767,102 @@ especially for scientific writing with much math and code.
 
 <section class="slide">
 
-<h2>Title, authors, date, toc  <a name="___sec19"></a></h2>
+<h2>Doconce experience: code generation is a great thing  <a name="___sec19"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal"><b style="font-weight: bold"></b>
+
+<p>
+Regardless of what format you write in, introduce a step where
+you can generate (parts of) the syntax.
+
+<p>
+
+<ul>
+ <p><li> Use a preprocessor a la Mako</li>
+ <p><li> Write your own read-and-generate code</li>
+ <p><li> or both (like Doconce)</li>
+</ul>
+<p>
+
+Advantages:
+
+<p>
+
+<ul>
+ <p><li> Less writing</li>
+ <p><li> Repository of syntax for nice constructions</li>
+ <p><li> Implements structure/rules across documents</li>
+ <p><li> Easier to change layout/structure</li>
+</ul>
+<p>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h3>Example: generate reveal.js or deck.js slides from HTML  <a name="___sec20"></a></h3>
+
+<p>
+
+<ul>
+ <p><li> Write the content of each slide in plain HTML(5)</li>
+ <p><li> Use e.g. <code>#slide</code> as delimiter between slides</li>
+ <p><li> Read file, splitting wrt <code>#slide</code> yields a list of
+   slides (HTML code)</li>
+ <p><li> For a specific format (reveal.js, deck.js, csss, ...):</li>
+
+<ul>
+    <p><li> write header</li>
+    <p><li> for slide in slides:</li>
+
+<ul>
+      <p><li> embed slide in correct HTML code</li>
+</ul>
+<p>
+
+    <p><li> write footer</li>
+</ul>
+<p>
+
+</ul>
+<p>
+
+<p>
+
+<!-- code=html (from !bc htmlcod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">&lt;h2&gt;</span>Scope of this presentation<span style="color: #8B008B; font-weight: bold">&lt;/h2&gt;</span>
+<span style="color: #8B008B; font-weight: bold">&lt;ul&gt;</span>
+  <span style="color: #8B008B; font-weight: bold">&lt;li&gt;</span>Focus: documents with much <span style="color: #8B008B; font-weight: bold">&lt;em&gt;</span>math<span style="color: #8B008B; font-weight: bold">&lt;/em&gt;</span> and
+      <span style="color: #8B008B; font-weight: bold">&lt;em&gt;</span>computer code<span style="color: #8B008B; font-weight: bold">&lt;/em&gt;</span>
+  <span style="color: #8B008B; font-weight: bold">&lt;li&gt;</span>Key question: What tools should I use for scientific writing?
+<span style="color: #8B008B; font-weight: bold">&lt;/ul&gt;</span>
+<span style="color: #8B008B; font-weight: bold">&lt;p&gt;&lt;div</span> <span style="color: #658b00">class=</span><span style="color: #CD5555">&quot;alert&quot;</span><span style="color: #8B008B; font-weight: bold">&gt;</span>
+The default answer is LaTeX.
+<span style="color: #8B008B; font-weight: bold">&lt;/div&gt;</span>
+</code></pre></div>
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h1>A tour of Doconce  <a name="___sec21"></a></h1>
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Title, authors, date, toc  <a name="___sec22"></a></h2>
 
 <p>
 
@@ -778,7 +888,7 @@ Title and authors must have all information <em>on a single line</em>!
 
 <section class="slide">
 
-<h2>Abstract  <a name="___sec20"></a></h2>
+<h2>Abstract  <a name="___sec23"></a></h2>
 
 <p>
 
@@ -801,7 +911,7 @@ Here goes the summary...
 
 <section class="slide">
 
-<h2>Section headings  <a name="___sec21"></a></h2>
+<h2>Section headings  <a name="___sec24"></a></h2>
 
 <p>
 Headings are surrounded by <code>=</code> signs:
@@ -821,13 +931,13 @@ __This is a paragraph heading.__
 <p>
 Result:
 
-<h1>This is an H1/chapter heading  <a name="___sec22"></a></h1>
+<h1>This is an H1/chapter heading  <a name="___sec25"></a></h1>
 
-<h2>This is an H2/section heading  <a name="___sec23"></a></h2>
+<h2>This is an H2/section heading  <a name="___sec26"></a></h2>
 
-<h3>This is an H3/subsection heading  <a name="___sec24"></a></h3>
+<h3>This is an H3/subsection heading  <a name="___sec27"></a></h3>
 
-<h4>This is an H4/paragraph heading  <a name="___sec25"></a></h4>
+<h4>This is an H4/paragraph heading  <a name="___sec28"></a></h4>
 
 <p>
 <b style="font-weight: bold">This is a paragraph heading.</b>
@@ -838,7 +948,7 @@ Result:
 
 <section class="slide">
 
-<h2>Markup and lists  <a name="___sec26"></a></h2>
+<h2>Markup and lists  <a name="___sec29"></a></h2>
 
 <p>
 
@@ -880,7 +990,7 @@ This gets rendered as
 
 <section class="slide">
 
-<h2>Labels, references, index items  <a name="___sec27"></a></h2>
+<h2>Labels, references, index items  <a name="___sec30"></a></h2>
 
 <p>
 
@@ -913,7 +1023,7 @@ URL: &quot;https://github.com/hplgit/doconce&quot;
 
 <section class="slide">
 
-<h2>Figures and movies  <a name="___sec28"></a></h2>
+<h2>Figures and movies  <a name="___sec31"></a></h2>
 
 <p>
 <div class="alert alert-block alert-notice alert-text-normal"><b style="font-weight: bold">Important:</b>
@@ -949,7 +1059,7 @@ and rendered as
 
 <section class="slide">
 
-<h2>Math  <a name="___sec29"></a></h2>
+<h2>Math  <a name="___sec32"></a></h2>
 
 <p>
 Inline math as in LaTeX:
@@ -1001,7 +1111,7 @@ $$
 
 <section class="slide">
 
-<h2>Math flexibility  <a name="___sec30"></a></h2>
+<h2>Math flexibility  <a name="___sec33"></a></h2>
 
 <p>
 Limit math environments to
@@ -1043,7 +1153,7 @@ Limit math environments to
 
 <section class="slide">
 
-<h2>Displaying code  <a name="___sec31"></a></h2>
+<h2>Displaying code  <a name="___sec34"></a></h2>
 
 <p>
 Code is enclosed in <code>!bc</code> and <code>!ec</code> tags:
@@ -1086,7 +1196,7 @@ This gets rendered as
 
 <section class="slide">
 
-<h2>Copying code from source files  <a name="___sec32"></a></h2>
+<h2>Copying code from source files  <a name="___sec35"></a></h2>
 
 <p>
 We recommend to copy as much code as possible directly from the
@@ -1115,7 +1225,7 @@ start and end regular expressions:
 
 <section class="slide">
 
-<h2>Typesetting of code is implied by the file extension  <a name="___sec33"></a></h2>
+<h2>Typesetting of code is implied by the file extension  <a name="___sec36"></a></h2>
 
 <p>
 
@@ -1204,7 +1314,7 @@ Can take a <a href="http://hplgit.github.com/teamods/writing_reports/_static/rep
 
 <section class="slide">
 
-<h2>Tables  <a name="___sec37"></a></h2>
+<h2>Tables  <a name="___sec40"></a></h2>
 
 <p>
 
@@ -1234,7 +1344,7 @@ Gets rendered as
 
 <section class="slide">
 
-<h2>Newcommands for math  <a name="___sec38"></a></h2>
+<h2>Newcommands for math  <a name="___sec41"></a></h2>
 
 <p>
 
@@ -1251,7 +1361,7 @@ Gets rendered as
 
 <section class="slide">
 
-<h2>Labels, citations, index, bibliography  <a name="___sec39"></a></h2>
+<h2>Labels, citations, index, bibliography  <a name="___sec42"></a></h2>
 
 <p>
 Lables, citations, index, and bibliography follow the ideas of
@@ -1297,7 +1407,7 @@ format (easy to make from BibTeX).
 
 <section class="slide">
 
-<h2>Exercises  <a name="___sec40"></a></h2>
+<h2>Exercises  <a name="___sec43"></a></h2>
 
 <p>
 Doconce offers a special format for <em>exercises</em>, <em>problems</em>, <em>projects</em>,
@@ -1335,12 +1445,12 @@ Compute the probability of getting heads.
 
 <section class="slide">
 
-<h2>Rendering of the previous page  <a name="___sec41"></a></h2>
+<h2>Rendering of the previous page  <a name="___sec44"></a></h2>
 
 <p>
 <!-- --- begin exercise --- -->
 
-<h3>Problem 1: Flip a Coin  <a name="___sec42"></a></h3>
+<h3>Problem 1: Flip a Coin  <a name="___sec45"></a></h3>
 <!-- keywords = random numbers; Monte Carlo simulation -->
 
 <p>
@@ -1383,7 +1493,7 @@ Filenames: <code>flip_coin.py</code>, <code>flip_coin.pdf</code>.
 
 <section class="slide">
 
-<h2>Exercises  <a name="___sec43"></a></h2>
+<h2>Exercises  <a name="___sec46"></a></h2>
 
 <p>
 All <em>exercises</em>, <em>problems</em>, and <em>projects</em> in a document are parsed
@@ -1415,7 +1525,7 @@ processing (e.g., making a book of problems).
 
 <section class="slide">
 
-<h2>Use of preprocessors  <a name="___sec44"></a></h2>
+<h2>Use of preprocessors  <a name="___sec47"></a></h2>
 
 <p>
 
@@ -1442,7 +1552,7 @@ processing (e.g., making a book of problems).
 
 <section class="slide">
 
-<h2>Doconce admonitions  <a name="___sec45"></a></h2>
+<h2>Doconce admonitions  <a name="___sec48"></a></h2>
 
 <p>
 <div class="alert alert-block alert-warning alert-text-normal"><b style="font-weight: bold">Use with caution!</b>
@@ -1492,7 +1602,7 @@ Conclusion:
 
 <section class="slide">
 
-<h2>Slides  <a name="___sec46"></a></h2>
+<h2>Slides  <a name="___sec49"></a></h2>
 
 <p>
 Very effective way to generate slides from running text:
@@ -1519,7 +1629,7 @@ Very effective way to generate slides from running text:
 
 <section class="slide">
 
-<h2>Example on slide code  <a name="___sec47"></a></h2>
+<h2>Example on slide code  <a name="___sec50"></a></h2>
 
 <p>
 
@@ -1555,12 +1665,12 @@ And maybe a final comment?
 
 <section class="slide">
 
-<h2>Example on slide code  <a name="___sec48"></a></h2>
+<h2>Example on slide code  <a name="___sec51"></a></h2>
 
 <p>
 Last page gets rendered to
 
-<h2>Headline  <a name="___sec49"></a></h2>
+<h2>Headline  <a name="___sec52"></a></h2>
 
 <p>
 
@@ -1591,7 +1701,7 @@ And maybe a final comment?
 
 <section class="slide">
 
-<h2>Grid layout of slide: MxN cells  <a name="___sec50"></a></h2>
+<h2>Grid layout of slide: MxN cells  <a name="___sec53"></a></h2>
 
 <p>
 Example with a bullet list to the left and
@@ -1632,12 +1742,12 @@ FIGURE: [fig/broken_pen_and_paper, width=400, frac=0.8]
 
 <section class="slide">
 
-<h2>Grid layout of slide: MxN cells   <a name="___sec51"></a></h2>
+<h2>Grid layout of slide: MxN cells   <a name="___sec54"></a></h2>
 
 <p>
 Last page gets rendered to
 
-<h2>Headline  <a name="___sec52"></a></h2>
+<h2>Headline  <a name="___sec55"></a></h2>
 
 <p>
 
@@ -1686,7 +1796,7 @@ $$ -\nabla^2 u = f \quad\hbox{in }\Omega $$
 
 <section class="slide">
 
-<h2>Classic slide types  <a name="___sec53"></a></h2>
+<h2>Classic slide types  <a name="___sec56"></a></h2>
 
 <p>
 
@@ -1709,7 +1819,7 @@ $$ -\nabla^2 u = f \quad\hbox{in }\Omega $$
 
 <section class="slide">
 
-<h2>HTML5 slide types  <a name="___sec54"></a></h2>
+<h2>HTML5 slide types  <a name="___sec57"></a></h2>
 
 <p>
 
@@ -1767,7 +1877,7 @@ $$ -\nabla^2 u = f \quad\hbox{in }\Omega $$
 
 <section class="slide">
 
-<h2>Doconce to HTML  <a name="___sec55"></a></h2>
+<h2>Doconce to HTML  <a name="___sec58"></a></h2>
 
 <p>
 Run in terminal window:
@@ -1795,7 +1905,7 @@ doconce slides_html doconcefile reveal --html_slide_theme=darkgray
 
 <section class="slide">
 
-<h2>Output for blog posts  <a name="___sec56"></a></h2>
+<h2>Output for blog posts  <a name="___sec59"></a></h2>
 
 <p>
 Two formats of blog posts are supported:
@@ -1827,7 +1937,7 @@ and paste the code into the text area.
 
 <section class="slide">
 
-<h2>Doconce to pdfLaTeX  <a name="___sec57"></a></h2>
+<h2>Doconce to pdfLaTeX  <a name="___sec60"></a></h2>
 
 <p>
 
@@ -1858,7 +1968,7 @@ doconce ptex2tex doconcefile envir=ans:nt
 
 <section class="slide">
 
-<h2>Doconce to Sphinx  <a name="___sec58"></a></h2>
+<h2>Doconce to Sphinx  <a name="___sec61"></a></h2>
 
 <p>
 
@@ -1883,7 +1993,7 @@ Much easier than running the Sphinx tools manually!
 
 <section class="slide">
 
-<h2>Output for wiki  <a name="___sec59"></a></h2>
+<h2>Output for wiki  <a name="___sec62"></a></h2>
 
 <p>
 Only MediaWiki supports math.
@@ -1921,7 +2031,7 @@ Publishing of "official" documents:
 
 <section class="slide">
 
-<h2>Doconce to other formats  <a name="___sec60"></a></h2>
+<h2>Doconce to other formats  <a name="___sec63"></a></h2>
 
 <p>
 
@@ -1939,7 +2049,7 @@ doconce format plain  doconcefile  # plain, untagged text for email
 
 <section class="slide">
 
-<h2>Installation  <a name="___sec61"></a></h2>
+<h2>Installation  <a name="___sec64"></a></h2>
 
 <p>
 
@@ -1970,7 +2080,7 @@ doconce format plain  doconcefile  # plain, untagged text for email
 
 <section class="slide">
 
-<h2>Writing tips for LaTeX writers who want to convert to Doconce   <a name="___sec62"></a></h2>
+<h2>Writing tips for LaTeX writers who want to convert to Doconce   <a name="___sec65"></a></h2>
 
 <p>
 
@@ -2001,7 +2111,7 @@ doconce format plain  doconcefile  # plain, untagged text for email
 
 <section class="slide">
 
-<h2>Doconce writing tips  <a name="___sec63"></a></h2>
+<h2>Doconce writing tips  <a name="___sec66"></a></h2>
 
 <p>
 <!-- * See the previous <em>Typesetting concerns I, II and III</em> slides for issues when writing -->
@@ -2031,7 +2141,7 @@ Figures:
 
 <section class="slide">
 
-<h2>Doconce writing tips  <a name="___sec64"></a></h2>
+<h2>Doconce writing tips  <a name="___sec67"></a></h2>
 
 <p>
 
@@ -2055,7 +2165,7 @@ Figures:
 
 <section class="slide">
 
-<h2>Writing tips for sphinx and other formats  <a name="___sec65"></a></h2>
+<h2>Writing tips for sphinx and other formats  <a name="___sec68"></a></h2>
 
 <p>
 For output formats different from <code>latex</code>, <code>pdflatex</code>, and <code>html</code>:

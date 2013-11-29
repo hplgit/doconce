@@ -56,7 +56,7 @@ doconce format html $name --pygments_html_style=default --html_links_in_new_wind
 editfix $html.html
 doconce split_html $html.html
 # Remove top navigation in all parts
-doconce subst -s '<!-- begin top navigation.+?end top navigation -->' '' ${name}-plain.html ._part*_${name}*.html
+doconce subst -s '<!-- begin top navigation.+?end top navigation -->' '' ${name}-plain.html ._${name}*.html
 
 # One big HTML file with space between the slides
 html=${name}-1
@@ -114,7 +114,7 @@ pygmentize -l text -f html -o ${name}-doconce.html ${name}.do.txt
 
 dest=../../pub/slides
 
-cp -r ${name}*.pdf ._part*_${name}-*.html *.md *.gwiki ${name}*.html deck.js reveal.js fig $dest/
+cp -r ${name}*.pdf ._${name}*.html *.md *.gwiki ${name}*.html deck.js reveal.js fig $dest/
 
 doconce format html sw_index.do.txt
 cp sw_index.html $dest/index.html

@@ -2,7 +2,7 @@
 <!-- TITLE: Scientific Writing Anno 2013: The Doconce Way -->
 % Scientific Writing and Publishing Anno 2013
 % Hans Petter Langtangen
-% Nov 28, 2013
+% Nov 29, 2013
 
 ![](fig/doconce1b.png)
 
@@ -349,25 +349,25 @@ based on HTML and vice versa.
 <!-- !split -->
 ## Solution II: Use Doconce
 
-Doconce offers minimalistic typing, great flexibility wrt format,
-especially for scientific writing with much math and code.
+[Doconce](http://hplgit.github.io/doconce/doc/web/index.html)
+offers minimalistic typing, great flexibility wrt format,
+especially for scientific writing with *much math and code*.
 
  * Can generate LaTeX, HTML, Sphinx, Markdown, MediaWiki, Google wiki,
    Creole wiki, reST, plain text
 
  * Made for large science books *and* small notes
 
- * Targets books, electronic PDF, PDF for phones,
-   designed web pages, blog posts
+ * Targets paper and screen
 
  * Many special features (code snippets from files, embedded movies,
-   admonitions, ...)
+   admonitions, modern LaTeX layouts, ...)
 
  * Very effective for generating slides from ordinary text
 
  * Applies Mako: Doconce text is a program (!)
 
- * Less tagged than LaTeX, HTML, Sphinx
+ * Much like Markdown, less tagged than LaTeX, HTML, Sphinx
 <!-- latex interprets 9 = as chapter and then needs book style... -->
 
 <!-- !split -->
@@ -389,6 +389,79 @@ especially for scientific writing with much math and code.
  * [MediaWiki](http://doconcedemo.shoutwiki.com/wiki/Doconce_demo_page) (Wikipedia, Wikibooks, etc)
 
  * Doconce [source code](http://hplgit.github.com/teamods/writing_reports/_static/report.do.txt.html) and [tutorial](http://hplgit.github.io/doconce/doc/pub/tutorial/html/index.html)
+
+<!-- !split -->
+## Doconce disclaimer
+
+ * Based on text transformations (reg.exp.) so valid syntax may
+   occasionally give problems
+<!-- * Actively developed and maintained, but one-man show -->
+
+*Doconce divorce.* 
+At any time one can divorce from Doconce and marry one of the output
+formats, such as LaTeX or Sphinx. The generated code is clean.
+
+
+
+<!-- !split -->
+## Doconce experience: code generation is a great thing
+
+
+Regardless of what format you write in, introduce a step where
+you can generate (parts of) the syntax.
+
+ * Use a preprocessor a la Mako
+
+ * Write your own read-and-generate code
+
+ * or both (like Doconce)
+
+Advantages:
+
+ * Less writing
+
+ * Repository of syntax for nice constructions
+
+ * Implements structure/rules across documents
+
+ * Easier to change layout/structure
+
+
+
+<!-- !split -->
+### Example: generate reveal.js or deck.js slides from HTML
+
+ * Write the content of each slide in plain HTML(5)
+
+ * Use e.g. `#slide` as delimiter between slides
+
+ * Read file, splitting wrt `#slide` yields a list of
+   slides (HTML code)
+
+ * For a specific format (reveal.js, deck.js, csss, ...):
+
+    * write header
+
+    * for slide in slides:
+
+      * embed slide in correct HTML code
+
+
+    * write footer
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<h2>Scope of this presentation</h2>
+<ul>
+  <li>Focus: documents with much <em>math</em> and
+      <em>computer code</em>
+  <li>Key question: What tools should I use for scientific writing?
+</ul>
+<p><div class="alert">
+The default answer is LaTeX.
+</div>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 <!-- !split -->
 

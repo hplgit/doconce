@@ -210,41 +210,55 @@ MathJax.Hub.Config({
 
 
     
-<a name="part0000"></a>
+<a name="part0021"></a>
 
 
 <p>
-<!-- ------------------- main content ---------------------- -->
+<!-- !split -->
 
-
-<p>
-<!-- TITLE: On the Technicalities of Scientific Writing Anno 2012: The Doconce Way -->
-<!-- TITLE: Scientific Writing Anno 2013: The Doconce Way -->
-
-<title>Scientific Writing and Publishing Anno 2013</title>
-
-<center><h1>Scientific Writing and Publishing Anno 2013</h1></center>  <!-- document title -->
+<h3>Example: generate reveal.js or deck.js slides from HTML  <a name="___sec20"></a></h3>
 
 <p>
-<!-- author(s): Hans Petter Langtangen -->
 
-<center>
-<b>Hans Petter Langtangen</b> 
-</center>
+<ul>
+ <li> Write the content of each slide in plain HTML(5)</li>
+ <li> Use e.g. <code>#slide</code> as delimiter between slides</li>
+ <li> Read file, splitting wrt <code>#slide</code> yields a list of
+   slides (HTML code)</li>
+ <li> For a specific format (reveal.js, deck.js, csss, ...):</li>
 
+<ul>
+    <li> write header</li>
+    <li> for slide in slides:</li>
+
+<ul>
+      <li> embed slide in correct HTML code</li>
+</ul>
+
+    <li> write footer</li>
+</ul>
+
+</ul>
 
 <p>
-<!-- institution(s) -->
-<p>
-<center><h4>Nov 29, 2013</h4></center> <!-- date -->
-<p>
-<center><p><img src="fig/doconce1b.png" align="bottom" width=400></p></center>
 
+<!-- code=html (from !bc htmlcod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">&lt;h2&gt;</span>Scope of this presentation<span style="color: #008000; font-weight: bold">&lt;/h2&gt;</span>
+<span style="color: #008000; font-weight: bold">&lt;ul&gt;</span>
+  <span style="color: #008000; font-weight: bold">&lt;li&gt;</span>Focus: documents with much <span style="color: #008000; font-weight: bold">&lt;em&gt;</span>math<span style="color: #008000; font-weight: bold">&lt;/em&gt;</span> and
+      <span style="color: #008000; font-weight: bold">&lt;em&gt;</span>computer code<span style="color: #008000; font-weight: bold">&lt;/em&gt;</span>
+  <span style="color: #008000; font-weight: bold">&lt;li&gt;</span>Key question: What tools should I use for scientific writing?
+<span style="color: #008000; font-weight: bold">&lt;/ul&gt;</span>
+<span style="color: #008000; font-weight: bold">&lt;p&gt;&lt;div</span> <span style="color: #7D9029">class=</span><span style="color: #BA2121">&quot;alert&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+The default answer is LaTeX.
+<span style="color: #008000; font-weight: bold">&lt;/div&gt;</span>
+</pre></div>
 <p>
-<!-- latex interprets 9 = as chapter and then needs book style... -->
 <p>
 <!-- begin bottom navigation -->
-<a href="._scientific_writing-plain001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<a href="._scientific_writing-plain020.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+
+<a href="._scientific_writing-plain022.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
 <!-- end bottom navigation -->
 
 <!-- ------------------- end of main content --------------- -->

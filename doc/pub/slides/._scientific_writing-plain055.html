@@ -210,41 +210,36 @@ MathJax.Hub.Config({
 
 
     
-<a name="part0000"></a>
+<a name="part0055"></a>
 
 
 <p>
-<!-- ------------------- main content ---------------------- -->
+<!-- !split -->
 
-
-<p>
-<!-- TITLE: On the Technicalities of Scientific Writing Anno 2012: The Doconce Way -->
-<!-- TITLE: Scientific Writing Anno 2013: The Doconce Way -->
-
-<title>Scientific Writing and Publishing Anno 2013</title>
-
-<center><h1>Scientific Writing and Publishing Anno 2013</h1></center>  <!-- document title -->
+<h2>Doconce to Sphinx  <a name="___sec61"></a></h2>
 
 <p>
-<!-- author(s): Hans Petter Langtangen -->
 
-<center>
-<b>Hans Petter Langtangen</b> 
-</center>
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doconce format sphinx doconcefile
 
+# Autocreate sphinx directory
+doconce sphinx_dir theme=pyramid doconcefile
+
+# Copy files and build HTML document
+python automake-sphinx.py
+
+google-chrome sphinx-rootdir/_build/html/index.html
+</pre></div>
+<p>
+Much easier than running the Sphinx tools manually!
 
 <p>
-<!-- institution(s) -->
-<p>
-<center><h4>Nov 29, 2013</h4></center> <!-- date -->
-<p>
-<center><p><img src="fig/doconce1b.png" align="bottom" width=400></p></center>
-
-<p>
-<!-- latex interprets 9 = as chapter and then needs book style... -->
 <p>
 <!-- begin bottom navigation -->
-<a href="._scientific_writing-plain001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<a href="._scientific_writing-plain054.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+
+<a href="._scientific_writing-plain056.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
 <!-- end bottom navigation -->
 
 <!-- ------------------- end of main content --------------- -->

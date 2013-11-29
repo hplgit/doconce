@@ -210,41 +210,40 @@ MathJax.Hub.Config({
 
 
     
-<a name="part0000"></a>
+<a name="part0060"></a>
 
 
 <p>
-<!-- ------------------- main content ---------------------- -->
+<!-- !split -->
 
-
-<p>
-<!-- TITLE: On the Technicalities of Scientific Writing Anno 2012: The Doconce Way -->
-<!-- TITLE: Scientific Writing Anno 2013: The Doconce Way -->
-
-<title>Scientific Writing and Publishing Anno 2013</title>
-
-<center><h1>Scientific Writing and Publishing Anno 2013</h1></center>  <!-- document title -->
+<h2>Doconce writing tips  <a name="___sec66"></a></h2>
 
 <p>
-<!-- author(s): Hans Petter Langtangen -->
-
-<center>
-<b>Hans Petter Langtangen</b> 
-</center>
-
+<!-- * See the previous <em>Typesetting concerns I, II and III</em> slides for issues when writing -->
+<!-- for multiple formats. However: Doconce makes a fix so that Sphinx and -->
+<!-- other formats works with labels in align environments :-) -->
 
 <p>
-<!-- institution(s) -->
-<p>
-<center><h4>Nov 29, 2013</h4></center> <!-- date -->
-<p>
-<center><p><img src="fig/doconce1b.png" align="bottom" width=400></p></center>
+Figures:
 
 <p>
-<!-- latex interprets 9 = as chapter and then needs book style... -->
+
+<ul>
+ <li> Prepare figures in the right format: EPS for <code>latex</code>, PDF for <code>pdflatex</code>,
+   PNG, GIF or JPEG for HTML formats (<code>html</code>, and HTML output from
+   <code>sphinx</code>, <code>rst</code>, <code>pandoc</code>). One can omit the figure file extension and
+   <code>doconce</code> will pick the most appropriate file for the given output format.</li>
+ <li> Let plotting programs produce both PDF/EPS and PNG files.
+   (Recall that PDF and EPS are vector graphics formats that can scale to
+   any size with much higher quality than PNG or other bitmap formats.)</li>
+ <li> Use <code>doconce combine_images</code> to combine several images into one.</li>
+</ul>
+
 <p>
 <!-- begin bottom navigation -->
-<a href="._scientific_writing-plain001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<a href="._scientific_writing-plain059.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+
+<a href="._scientific_writing-plain061.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
 <!-- end bottom navigation -->
 
 <!-- ------------------- end of main content --------------- -->

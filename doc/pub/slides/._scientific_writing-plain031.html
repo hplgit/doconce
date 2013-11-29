@@ -210,41 +210,54 @@ MathJax.Hub.Config({
 
 
     
-<a name="part0000"></a>
+<a name="part0031"></a>
 
 
 <p>
-<!-- ------------------- main content ---------------------- -->
+<!-- !split -->
 
-
-<p>
-<!-- TITLE: On the Technicalities of Scientific Writing Anno 2012: The Doconce Way -->
-<!-- TITLE: Scientific Writing Anno 2013: The Doconce Way -->
-
-<title>Scientific Writing and Publishing Anno 2013</title>
-
-<center><h1>Scientific Writing and Publishing Anno 2013</h1></center>  <!-- document title -->
+<h2>Displaying code  <a name="___sec34"></a></h2>
 
 <p>
-<!-- author(s): Hans Petter Langtangen -->
-
-<center>
-<b>Hans Petter Langtangen</b> 
-</center>
-
+Code is enclosed in <code>!bc</code> and <code>!ec</code> tags:
 
 <p>
-<!-- institution(s) -->
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">!bc pycod
+def solver(I, a, T, dt, theta):
+    &quot;&quot;&quot;Solve u&#39;=-a*u, u(0)=I, for t in (0,T] with steps of dt.&quot;&quot;&quot;
+    dt = float(dt); N = int(round(T/dt)); T = N*dt
+    u = zeros(N+1); t = linspace(0, T, N+1)
+
+    u[0] = I
+    for n in range(0, N):
+        u[n+1] = (1 - (1-theta)*a*dt)/(1 + theta*dt*a)*u[n]
+    return u, t
+!ec
+</pre></div>
 <p>
-<center><h4>Nov 29, 2013</h4></center> <!-- date -->
-<p>
-<center><p><img src="fig/doconce1b.png" align="bottom" width=400></p></center>
+This gets rendered as
 
 <p>
-<!-- latex interprets 9 = as chapter and then needs book style... -->
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">solver</span>(I, a, T, dt, theta):
+    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Solve u&#39;=-a*u, u(0)=I, for t in (0,T] with steps of dt.&quot;&quot;&quot;</span>
+    dt <span style="color: #666666">=</span> <span style="color: #008000">float</span>(dt); N <span style="color: #666666">=</span> <span style="color: #008000">int</span>(<span style="color: #008000">round</span>(T<span style="color: #666666">/</span>dt)); T <span style="color: #666666">=</span> N<span style="color: #666666">*</span>dt
+    u <span style="color: #666666">=</span> zeros(N<span style="color: #666666">+1</span>); t <span style="color: #666666">=</span> linspace(<span style="color: #666666">0</span>, T, N<span style="color: #666666">+1</span>)
+
+    u[<span style="color: #666666">0</span>] <span style="color: #666666">=</span> I
+    <span style="color: #008000; font-weight: bold">for</span> n <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">0</span>, N):
+        u[n<span style="color: #666666">+1</span>] <span style="color: #666666">=</span> (<span style="color: #666666">1</span> <span style="color: #666666">-</span> (<span style="color: #666666">1-</span>theta)<span style="color: #666666">*</span>a<span style="color: #666666">*</span>dt)<span style="color: #666666">/</span>(<span style="color: #666666">1</span> <span style="color: #666666">+</span> theta<span style="color: #666666">*</span>dt<span style="color: #666666">*</span>a)<span style="color: #666666">*</span>u[n]
+    <span style="color: #008000; font-weight: bold">return</span> u, t
+</pre></div>
+<p>
 <p>
 <!-- begin bottom navigation -->
-<a href="._scientific_writing-plain001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<a href="._scientific_writing-plain030.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+
+<a href="._scientific_writing-plain032.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
 <!-- end bottom navigation -->
 
 <!-- ------------------- end of main content --------------- -->
