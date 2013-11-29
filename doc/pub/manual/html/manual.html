@@ -74,7 +74,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Author:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Nov 28, 2013</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Nov 29, 2013</td>
 </tr>
 </tbody>
 </table>
@@ -1009,17 +1009,45 @@ and comment inside brackets).</li>
 <li><tt class="docutils literal"><span class="pre">LINENUMBERS</span></tt> for inclusion of line numbers in the text.</li>
 <li><tt class="docutils literal"><span class="pre">COLORED_TABLE_ROWS</span></tt> for coloring every other table rows (set this
 variable to <tt class="docutils literal"><span class="pre">gray</span></tt> or <tt class="docutils literal"><span class="pre">blue</span></tt>).</li>
-<li><tt class="docutils literal"><span class="pre">BLUE_SECTION_HEADINGS</span></tt> for blue section and subsection headings</li>
-<li><tt class="docutils literal"><span class="pre">LATEX_HEADING</span></tt> for the typesetting of the title, author, parts of
-preamble (values: <tt class="docutils literal"><span class="pre">traditional</span></tt> for traditional LaTeX heading,
-<tt class="docutils literal"><span class="pre">titlepage</span></tt> for a separate titlepage, <tt class="docutils literal"><span class="pre">Springer_collection</span></tt> for
-edited volumes on Springer, <tt class="docutils literal"><span class="pre">beamer</span></tt> for Beamer slides, <tt class="docutils literal"><span class="pre">doconce_heading</span></tt>
-(default) for listing institutions after names).</li>
-<li><tt class="docutils literal"><span class="pre">LATEX_STYLE</span></tt> for speficying the style:
-<tt class="docutils literal"><span class="pre">std</span></tt> for standard LaTeX, <tt class="docutils literal"><span class="pre">Springer_lncse</span></tt>, <tt class="docutils literal"><span class="pre">Springer_T2</span></tt>,
-<tt class="docutils literal"><span class="pre">Springer_llncse</span></tt> (the latter three are not tested).
-The style dictates the type of <tt class="docutils literal"><span class="pre">documentclass</span></tt> as well as inclusion of
-special packages and commands.</li>
+<li><tt class="docutils literal"><span class="pre">BLUE_SECTION_HEADINGS</span></tt> for blue section and subsection headings.</li>
+</ul>
+</div></blockquote>
+<p>There are also preprocessor variables with specific values:</p>
+<blockquote>
+<div><ul>
+<li><p class="first"><tt class="docutils literal"><span class="pre">LATEX_HEADING</span></tt> for the typesetting of the title, author, parts of
+preamble:</p>
+<blockquote>
+<div><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">traditional</span></tt> for traditional LaTeX heading,</li>
+<li><tt class="docutils literal"><span class="pre">titlepage</span></tt> for a separate titlepage,</li>
+<li><tt class="docutils literal"><span class="pre">Springer_collection</span></tt> for edited volumes on Springer,</li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">beamer</span></tt> for Beamer slides,</li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">doconce_heading</span></tt> (default) for listing institutions after names.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">LATEX_STYLE</span></tt> for speficying the style (affects parameters in
+<tt class="docutils literal"><span class="pre">documentclass</span></tt> and inclusion of special packages and commands):</p>
+<blockquote>
+<div><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">std</span></tt> for standard LaTeX,</li>
+<li><tt class="docutils literal"><span class="pre">Springer_lncse</span></tt> for Springer&#8217;s LNCSE book series,</li>
+<li><tt class="docutils literal"><span class="pre">Springer_T2</span></tt> for large Springer book format,</li>
+<li><tt class="docutils literal"><span class="pre">Springer_llncse</span></tt> for Springer&#8217;s LNCS book series,</li>
+<li><tt class="docutils literal"><span class="pre">Koma_Script</span></tt> for Koma-Script <tt class="docutils literal"><span class="pre">scrartcl</span></tt> style,</li>
+<li><tt class="docutils literal"><span class="pre">siamltex</span></tt> for standard SIAM journal paper style,</li>
+<li><tt class="docutils literal"><span class="pre">siamltexmm</span></tt> for newer SIAM journal paper (multi media)
+style with blue headings.</li>
+</ul>
+</div></blockquote>
+</li>
 </ul>
 </div></blockquote>
 <p>If you are not satisfied with the Doconce preamble, you can provide
@@ -3011,8 +3039,8 @@ Splitting an HTML document is done by</p>
 by a new HTML file, representing the first part of the document,
 after the second command. The various files that constitute the
 parts of the document are listed after the <tt class="docutils literal"><span class="pre">split_html</span></tt> command.
-The files have names <tt class="docutils literal"><span class="pre">mydoc.html</span></tt>, <tt class="docutils literal"><span class="pre">._part0000_mydoc.html</span></tt> (equal to
-<tt class="docutils literal"><span class="pre">mydoc.html</span></tt>), <tt class="docutils literal"><span class="pre">._part0001_mydoc.html</span></tt>, <tt class="docutils literal"><span class="pre">._part0002_mydoc.html</span></tt>, and so
+The files have names <tt class="docutils literal"><span class="pre">mydoc.html</span></tt>, <tt class="docutils literal"><span class="pre">._mydoc000.html</span></tt> (equal to
+<tt class="docutils literal"><span class="pre">mydoc.html</span></tt>), <tt class="docutils literal"><span class="pre">._mydoc001.html</span></tt>, <tt class="docutils literal"><span class="pre">._mydoc002.html</span></tt>, and so
 on. Recall that all the parts are needed if the HTML document is to be moved
 to another location (you can always check <tt class="docutils literal"><span class="pre">.mydoc_html_file_collection</span></tt>
 for a list of all the files that are needed to display this HTML
@@ -3029,9 +3057,9 @@ and next document. These are not customizable directly, but one can easily
 look up the HTML code and use <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">replace</span></tt> to edit the links to
 the images used for navigation. Some more colorful images arise from</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; doconce replace &#39;prev1.png&#39; &#39;Knob_Left.png&#39; \</span>
-<span class="go">          mydoc.html ._part*_mydoc.html</span>
+<span class="go">          mydoc.html ._mydoc*.html</span>
 <span class="go">Terminal&gt; doconce replace &#39;next1.png&#39; &#39;Knob_Forward.png&#39; \</span>
-<span class="go">          mydoc.html ._part*_mydoc.html</span>
+<span class="go">          mydoc.html ._mydoc*.html</span>
 </pre></div>
 </div>
 <p>This works because the <tt class="docutils literal"><span class="pre">Knob*.png</span></tt> images live in the same place in the
@@ -3054,7 +3082,7 @@ into smaller pieces:</p>
 <p>The <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span> <span class="pre">sphinx</span> <span class="pre">mydoc</span></tt> command is needed to produce <tt class="docutils literal"><span class="pre">mydoc.rst</span></tt>,
 which is the starting point for the <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">split_rst</span></tt> command.
 The various files that constitute the complete Sphinx document are
-<tt class="docutils literal"><span class="pre">mydoc.rst</span></tt>, <tt class="docutils literal"><span class="pre">._part0000_mydoc.rst</span></tt>, <tt class="docutils literal"><span class="pre">._part0001_mydoc.rst</span></tt>, <tt class="docutils literal"><span class="pre">._part0002_mydoc.rst</span></tt>,
+<tt class="docutils literal"><span class="pre">mydoc.rst</span></tt>, <tt class="docutils literal"><span class="pre">._mydoc000.rst</span></tt>, <tt class="docutils literal"><span class="pre">._mydoc001.rst</span></tt>, <tt class="docutils literal"><span class="pre">._mydoc002.rst</span></tt>,
 and so on. The <tt class="docutils literal"><span class="pre">automake_sphinx.py</span></tt> script ensures that the Sphinx document
 is compiled correctly. If all links to local files are in a <tt class="docutils literal"><span class="pre">_static</span></tt>
 directory, the whole Sphinx document exists in a complete version

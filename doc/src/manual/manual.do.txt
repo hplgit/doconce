@@ -1710,8 +1710,8 @@ The `mydoc.html` document created by the first command is replaced
 by a new HTML file, representing the first part of the document,
 after the second command. The various files that constitute the
 parts of the document are listed after the `split_html` command.
-The files have names `mydoc.html`, `._part0000_mydoc.html` (equal to
-`mydoc.html`), `._part0001_mydoc.html`, `._part0002_mydoc.html`, and so
+The files have names `mydoc.html`, `._mydoc000.html` (equal to
+`mydoc.html`), `._mydoc001.html`, `._mydoc002.html`, and so
 on. Recall that all the parts are needed if the HTML document is to be moved
 to another location (you can always check `.mydoc_html_file_collection`
 for a list of all the files that are needed to display this HTML
@@ -1732,9 +1732,9 @@ the images used for navigation. Some more colorful images arise from
 
 !bc sys
 Terminal> doconce replace 'prev1.png' 'Knob_Left.png' \
-          mydoc.html ._part*_mydoc.html
+          mydoc.html ._mydoc*.html
 Terminal> doconce replace 'next1.png' 'Knob_Forward.png' \
-          mydoc.html ._part*_mydoc.html
+          mydoc.html ._mydoc*.html
 !ec
 This works because the `Knob*.png` images live in the same place in the
 Doconce repository as `prev1.png` and `next1.png`. Other images can be
@@ -1759,7 +1759,7 @@ Terminal> python automake_sphinx.py
 The `doconce format sphinx mydoc` command is needed to produce `mydoc.rst`,
 which is the starting point for the `doconce split_rst` command.
 The various files that constitute the complete Sphinx document are
-`mydoc.rst`, `._part0000_mydoc.rst`, `._part0001_mydoc.rst`, `._part0002_mydoc.rst`,
+`mydoc.rst`, `._mydoc000.rst`, `._mydoc001.rst`, `._mydoc002.rst`,
 and so on. The `automake_sphinx.py` script ensures that the Sphinx document
 is compiled correctly. If all links to local files are in a `_static`
 directory, the whole Sphinx document exists in a complete version

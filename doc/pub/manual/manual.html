@@ -257,7 +257,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>Nov 28, 2013</h4></center> <!-- date -->
+<center><h4>Nov 29, 2013</h4></center> <!-- date -->
 <p>
 <!-- lines beginning with # are doconce comment lines -->
 <!-- (documents can also have mako comment lines) -->
@@ -1409,17 +1409,43 @@ Preprocessor variables to be defined or undefined are
  <li> <code>LINENUMBERS</code> for inclusion of line numbers in the text.</li>
  <li> <code>COLORED_TABLE_ROWS</code> for coloring every other table rows (set this
    variable to <code>gray</code> or <code>blue</code>).</li>
- <li> <code>BLUE_SECTION_HEADINGS</code> for blue section and subsection headings</li>
+ <li> <code>BLUE_SECTION_HEADINGS</code> for blue section and subsection headings.</li>
+</ul>
+
+There are also preprocessor variables with specific values:
+
+<p>
+
+<ul>
  <li> <code>LATEX_HEADING</code> for the typesetting of the title, author, parts of
-   preamble (values: <code>traditional</code> for traditional LaTeX heading,
-   <code>titlepage</code> for a separate titlepage, <code>Springer_collection</code> for
-   edited volumes on Springer, <code>beamer</code> for Beamer slides, <code>doconce_heading</code>
-   (default) for listing institutions after names).</li>
- <li> <code>LATEX_STYLE</code> for speficying the style:
-   <code>std</code> for standard LaTeX, <code>Springer_lncse</code>, <code>Springer_T2</code>,
-   <code>Springer_llncse</code> (the latter three are not tested).
-   The style dictates the type of <code>documentclass</code> as well as inclusion of
-   special packages and commands.</li>
+   preamble:</li>
+
+<ul>
+     <li> <code>traditional</code> for traditional LaTeX heading,</li>
+     <li> <code>titlepage</code> for a separate titlepage,</li>
+     <li> <code>Springer_collection</code> for edited volumes on Springer,</li>
+
+<ul>
+      <li> <code>beamer</code> for Beamer slides,</li>
+</ul>
+
+     <li> <code>doconce_heading</code> (default) for listing institutions after names.</li>
+</ul>
+
+ <li> <code>LATEX_STYLE</code> for speficying the style (affects parameters in
+   <code>documentclass</code> and inclusion of special packages and commands):</li>
+
+<ul>
+     <li> <code>std</code> for standard LaTeX,</li>
+     <li> <code>Springer_lncse</code> for Springer's LNCSE book series,</li>
+     <li> <code>Springer_T2</code> for large Springer book format,</li>
+     <li> <code>Springer_llncse</code> for Springer's LNCS book series,</li>
+     <li> <code>Koma_Script</code> for Koma-Script <code>scrartcl</code> style,</li>
+     <li> <code>siamltex</code> for standard SIAM journal paper style,</li>
+     <li> <code>siamltexmm</code> for newer SIAM journal paper (multi media)
+       style with blue headings.</li>
+</ul>
+
 </ul>
 
 If you are not satisfied with the Doconce preamble, you can provide
@@ -3913,8 +3939,8 @@ The <code>mydoc.html</code> document created by the first command is replaced
 by a new HTML file, representing the first part of the document,
 after the second command. The various files that constitute the
 parts of the document are listed after the <code>split_html</code> command.
-The files have names <code>mydoc.html</code>, <code>._part0000_mydoc.html</code> (equal to
-<code>mydoc.html</code>), <code>._part0001_mydoc.html</code>, <code>._part0002_mydoc.html</code>, and so
+The files have names <code>mydoc.html</code>, <code>._mydoc000.html</code> (equal to
+<code>mydoc.html</code>), <code>._mydoc001.html</code>, <code>._mydoc002.html</code>, and so
 on. Recall that all the parts are needed if the HTML document is to be moved
 to another location (you can always check <code>.mydoc_html_file_collection</code>
 for a list of all the files that are needed to display this HTML
@@ -3938,9 +3964,9 @@ the images used for navigation. Some more colorful images arise from
 <p>
 <!-- begin verbatim block  sys-->
 <pre><code>Terminal&gt; doconce replace 'prev1.png' 'Knob_Left.png' \
-          mydoc.html ._part*_mydoc.html
+          mydoc.html ._mydoc*.html
 Terminal&gt; doconce replace 'next1.png' 'Knob_Forward.png' \
-          mydoc.html ._part*_mydoc.html
+          mydoc.html ._mydoc*.html
 </code></pre>
 <!-- end verbatim block -->
 This works because the <code>Knob*.png</code> images live in the same place in the
@@ -3970,7 +3996,7 @@ Terminal&gt; python automake_sphinx.py
 The <code>doconce format sphinx mydoc</code> command is needed to produce <code>mydoc.rst</code>,
 which is the starting point for the <code>doconce split_rst</code> command.
 The various files that constitute the complete Sphinx document are
-<code>mydoc.rst</code>, <code>._part0000_mydoc.rst</code>, <code>._part0001_mydoc.rst</code>, <code>._part0002_mydoc.rst</code>,
+<code>mydoc.rst</code>, <code>._mydoc000.rst</code>, <code>._mydoc001.rst</code>, <code>._mydoc002.rst</code>,
 and so on. The <code>automake_sphinx.py</code> script ensures that the Sphinx document
 is compiled correctly. If all links to local files are in a <code>_static</code>
 directory, the whole Sphinx document exists in a complete version

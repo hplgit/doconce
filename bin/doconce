@@ -166,7 +166,7 @@ def sphinx_dir():
             print '%s.do.txt does not exist' % filename
             sys.exit(1)
 
-    parts = glob.glob('._part*_%s.rst' % filename)
+    parts = glob.glob('._%s[0-9][0-9][0-9].rst' % filename)
     parts = [part[:-4] for part in sorted(parts)]
 
     if title is None:
