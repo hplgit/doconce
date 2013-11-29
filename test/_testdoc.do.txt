@@ -90,7 +90,13 @@ def f(x):
     return x+1
 !ec
 
+# #if FORMAT in ("sphinx", "html", "latex", "pdflatex")
 Now a complete program to be shown via Python Online Tutorial:
+# #else
+Here is a program that is supposed to be interactive via
+Python Online Tutorial, but that service is not accessible
+for the present format.
+# #endif
 
 !bc pyoptpro
 class Line:
@@ -107,10 +113,10 @@ print y
 !ec
 
 # #if FORMAT == "sphinx"
-Another complete program to be typeset with as a sage cell:
+Another complete program to be typeset as a sage cell:
 # #else
 Some more Python code (actually specified as a sage cell, but
-such cells are not supported by this format)>
+such cells are not supported by this format).
 # #endif
 
 !bc pyscpro
