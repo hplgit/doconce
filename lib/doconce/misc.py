@@ -882,27 +882,32 @@ def copy_latex_packages(packages):
     Copy less well-known latex packages to the current directory
     if the packages are not found on the (Unix) system.
     """
+    datafile = latexstyle_files  # global variable (latex_styles.zip)
+    missing_files = []
     import commands
     for style in packages:
         failure, output = commands.getstatusoutput('kpsewhich %s.sty' % style)
         if output == '':
-            # Copy style.sty to current dir
-            filename = style + '.sty'
-            datafile = latexstyle_files  # global variable (latex_styles.zip)
-            if not os.path.isfile(filename):
-                import doconce
-                doconce_dir = os.path.dirname(doconce.__file__)
-                doconce_datafile = os.path.join(doconce_dir, datafile)
-                shutil.copy(doconce_datafile, os.curdir)
-                import zipfile
-                try:
-                    zipfile.ZipFile(datafile).extract(filename)
-                    msg = 'extracted'
-                except:
-                    msg = 'could not extract'
-                print '%s %s (from %s in the doconce installation)' % \
-                (msg, filename, latexstyle_files)
-                os.remove(datafile)
+            missing_files.append(style + '.sty')
+    if missing_files:
+        # Copy zipfile with styles to current dir
+        import doconce
+        doconce_dir = os.path.dirname(doconce.__file__)
+        doconce_datafile = os.path.join(doconce_dir, datafile)
+        shutil.copy(doconce_datafile, os.curdir)
+        import zipfile
+    for filename in missing_files:
+        # Extract file from zip archive
+        if not os.path.isfile(filename):
+            try:
+                zipfile.ZipFile(datafile).extract(filename)
+                msg = 'extracted'
+            except:
+                msg = 'could not extract'
+            print '%s %s (from %s in the doconce installation)' % \
+            (msg, filename, latexstyle_files)
+    if os.path.isfile(datafile):
+        os.remove(datafile)
 
 def _usage_ptex2tex():
     print r"""\
@@ -1155,9 +1160,14 @@ download preprocess from http://code.google.com/p/preprocess""")
         filestr = filestr.replace(r'\usepackage{ptex2tex}', '')
 
     # Copy less well-known latex packages to the current directory
-    copy_latex_packages(
-        [name for name in ['minted', 'anslistings', 'fancyvrb']
-         if name in packages])
+    stylefiles = [name for name in ['minted', 'anslistings', 'fancyvrb']
+                  if name in packages]
+    # preprocess is run so we can check which less known packages
+    # that are required
+    less_known_packages = ['mdframed', 'titlesec',]  # more?
+    #stylefiles += less_known_packages
+    copy_latex_packages(stylefiles)
+
 
     if 'minted' in packages:
         failure, output = commands.getstatusoutput('pygmentize')
@@ -1606,7 +1616,7 @@ def copy_datafiles(datafile):
     """
     Get a doconce datafile, ``files.zip`` or ``files.tar.gz``, to
     the current directory and pack it out unless the subdirectory
-    ``files`` exists.
+    ``files`` (with all the files) already exists.
     """
     if datafile.endswith('.zip'):
         subdir = datafile[:-4]
