@@ -1684,15 +1684,72 @@ final,                   % or draft (marks overfull hboxes)
     INTRO['latex'] += r"""
 % --- end of definitions of admonition environments ---
 
-% #ifdef BLUE_SECTION_HEADINGS
-\definecolor{seccolor}{rgb}{0.2,0.2,0.8}
-%\definecolor{seccolor}{cmyk}{.9,.5,0,.35}  % siamltexmm.sty section color
-\titleformat{\section}
+% prevent orhpans and widows
+\clubpenalty = 10000
+\widowpenalty = 10000
+
+% #ifndef SECTION_HEADINGS
+% #define SECTION_HEADINGS "std"
+% #else
+% http://www.ctex.org/documents/packages/layout/titlesec.pdf
+\usepackage[compact]{titlesec}  % reduce the spacing above/below the heading
+% #endif
+% #if SECTION_HEADINGS == "blue"
+% --- section/subsection headings with blue color ---
+\definecolor{seccolor}{cmyk}{.9,.5,0,.35}  % siamltexmm.sty section color
+\titleformat{name=\section}
 {\color{seccolor}\normalfont\Large\bfseries}
 {\color{seccolor}\thesection}{1em}{}
-\titleformat{\subsection}
+\titleformat{name=\subsection}
 {\color{seccolor}\normalfont\large\bfseries}
 {\color{seccolor}\thesubsection}{1em}{}
+\titleformat{name=\paragraph}[runin]
+{\color{seccolor}\normalfont\normalsize\bfseries}
+{}{}{\indent}
+% #elif SECTION_HEADINGS == "strongblue"
+% --- section/subsection headings with a strong blue color ---
+\definecolor{seccolor}{rgb}{0.2,0.2,0.8}
+\titleformat{name=\section}
+{\color{seccolor}\normalfont\Large\bfseries}
+{\color{seccolor}\thesection}{1em}{}
+\titleformat{name=\subsection}
+{\color{seccolor}\normalfont\large\bfseries}
+{\color{seccolor}\thesubsection}{1em}{}
+\titleformat{name=\paragraph}[runin]
+{\color{seccolor}\normalfont\normalsize\bfseries}
+{}{}{\indent}
+% #elif SECTION_HEADINGS == "gray"
+% --- section/subsection headings with white text on gray background ---
+\titleformat{name=\section}[block]
+  {\sffamily\Large}{}{0pt}{\colorsection}
+\titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip}
+
+\newcommand{\colorsection}[1]{%
+  \colorbox{gray!50}{{\color{white}\thesection\ #1}}}
+
+\titleformat{name=\subsection}[block]
+  {\sffamily\large}{}{0pt}{\colorsubsection}
+\titlespacing*{\subsection}{0pt}{\baselineskip}{\baselineskip}
+
+\newcommand{\colorsubsection}[1]{%
+  \colorbox{gray!50}{{\color{white}\thesubsection\ #1}}}
+% #elif SECTION_HEADINGS == "gray-wide"
+% --- section/subsection headings with white text on wide gray background ---
+\titleformat{name=\section}[block]
+  {\sffamily\Large}{}{0pt}{\colorsection}
+\titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip}
+
+\newcommand{\colorsection}[1]{%
+  \colorbox{gray!50}{\parbox{\dimexpr\textwidth-2\fboxsep}%
+           {\color{white}\thesection\ #1}}}
+
+\titleformat{name=\subsection}[block]
+  {\sffamily\large}{}{0pt}{\colorsubsection}
+\titlespacing*{\subsection}{0pt}{\baselineskip}{\baselineskip}
+
+\newcommand{\colorsubsection}[1]{%
+  \colorbox{gray!50}{\parbox{\dimexpr\textwidth-2\fboxsep}%
+           {\color{white}\thesubsection\ #1}}}
 % #endif
 
 % #ifdef COLORED_TABLE_ROWS
@@ -1714,13 +1771,6 @@ final,                   % or draft (marks overfull hboxes)
 \renewenvironment{tabular}{\rowcolors{2}{white}{appleblue}%
 \oldtabular}{\endoldtabular}
 % #endif
-
-% prevent orhpans and widows
-\clubpenalty = 10000
-\widowpenalty = 10000
-
-% http://www.ctex.org/documents/packages/layout/titlesec.pdf
-\usepackage[compact]{titlesec}  % narrower section headings
 
 % --- end of standard preamble for documents ---
 """

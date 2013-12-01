@@ -72,10 +72,10 @@ Automatically generated HTML file from Doconce source
      .alert-block > p, .alert-block > ul {margin-bottom:1em}
      .alert li {margin-top: 1em}
      .alert-block p+p {margin-top:5px}
-     .alert-notice { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_yellow_notice.png); }
-     .alert-summary  { background-image:url(https://doconce.googlecode.com/hg/bundled/html_images/small_yellow_summary.png); }
-     .alert-warning { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_yellow_warning.png); }
-     .alert-question {background-image:url(https://doconce.googlecode.com/hg/bundled/html_images/small_yellow_question.png); }
+     .alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
+     .alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
+     .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
+     .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
 
 </style>
 
@@ -246,7 +246,7 @@ $$
 <center>[6] <b>Third Inst, Elsewhere</b></center>
 <center>[7] <b>Fourth Inst</b></center>
 <p>
-<center><h4>Nov 28, 2013</h4></center> <!-- date -->
+<center><h4>Nov 30, 2013</h4></center> <!-- date -->
 
 <h2>Table of contents</h2>
 
@@ -612,9 +612,12 @@ output2
 </td></tr></table><p>
 It is time to test <code>verbatim inline font</code> especially with <code>a newline
 inside the text</code> and an exclamation mark at the end: <code>BEGIN</code>! The
-exclamation mark inside the verbatim text is not smart for latex as
-we use ! in the <code>verb</code> typesetting... Also test backslashes
-like <code>\begin</code> and <code>\end</code> in inline verbatim text.
+exclamation mark inside the verbatim text is potentially not smart
+since latex use ! in the <code>Verb</code> typesetting, but this should now
+be fixed: test <code>!bc</code> and <code>!ec</code> as well as <code>!bsummary</code>.
+Also test backslashes and braces like <code>\begin</code>, <code>\begin{enumerate}</code>,
+<code>\end{this}\end{that}</code>, and <code>{something \inside braces}</code> in inline
+verbatim text.
 
 <p>
 Here is some <font color="red">red</font> color and an attempt to write <font color="green">with

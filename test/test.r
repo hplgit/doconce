@@ -214,9 +214,12 @@ output2
 
 It is time to test `verbatim inline font` especially with `a newline
 inside the text` and an exclamation mark at the end: `BEGIN`! The
-exclamation mark inside the verbatim text is not smart for latex as
-we use ! in the `verb` typesetting... Also test backslashes
-like `\begin` and `\end` in inline verbatim text.
+exclamation mark inside the verbatim text is potentially not smart
+since latex use ! in the `Verb` typesetting, but this should now
+be fixed: test `!bc` and `!ec` as well as `!bsummary`.
+Also test backslashes and braces like `\begin`, `\begin{enumerate}`,
+`\end{this}\end{that}`, and `{something \inside braces}` in inline
+verbatim text.
 
 Here is some color{red}{red} color and an attempt to write color{green}{with
 green color containing a linebreak.
@@ -1200,10 +1203,10 @@ Automatically generated HTML file from Doconce source
      .alert-block > p, .alert-block > ul {margin-bottom:1em}
      .alert li {margin-top: 1em}
      .alert-block p+p {margin-top:5px}
-     .alert-notice { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_yellow_notice.png); }
-     .alert-summary  { background-image:url(https://doconce.googlecode.com/hg/bundled/html_images/small_yellow_summary.png); }
-     .alert-warning { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_yellow_warning.png); }
-     .alert-question {background-image:url(https://doconce.googlecode.com/hg/bundled/html_images/small_yellow_question.png); }
+     .alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
+     .alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
+     .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
+     .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
 
 </style>
 
@@ -1334,7 +1337,7 @@ $$
     
 <a name="part0000"></a>
 <!-- begin top navigation -->
-<a href="._part0001_testdoc.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<a href="._testdoc001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
 <!-- end top navigation -->
 
 <p>
@@ -1385,48 +1388,48 @@ $$
 <h2>Table of contents</h2>
 
 <p>
-<a href="._part0001_testdoc.html#sec1"> Section 1 </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc.html#___sec1"> Subsection 1 </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc.html#subsec:ex"> Subsection 2: Testing figures and movies </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc.html#___sec3"> Test of movies </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc.html#___sec5"> Custom Environments </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc.html#subsec:table"> Tables </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc.html#___sec7"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc.html#___sec8"> Bibliography test </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc.html#Example"> Example 1: Examples can be typeset as exercises </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc.html#subsubsec:ex"> URLs </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc.html#___sec11"> LaTeX Mathematics </a><br>
-<a href="._part0002_testdoc.html#___sec12"> Exercises </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc.html#demo:ex:1"> Problem 2: Flip a Coin </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc.html#___sec14"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc.html#___sec15"> Not an exercise </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc.html#demo:ex:2"> Project 3: Compute a Probability </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc.html#___sec18"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc.html#exer:dist"> Exercise 5: Determine some Distance </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc.html#___sec20"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc.html#___sec21"> Some exercise without the "Exercise:" prefix </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc.html#___sec22"> Example 7: Just an example </a><br>
-<a href="._part0002_testdoc.html#___sec23"> Here goes another section </a><br>
-<a href="._part0002_testdoc.html#___sec24"> More Exercises </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc.html#exer:some:formula"> Exercise 8: Make references to projects and problems </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc.html#exer:you"> Project 9: References in a headings do not work well in html </a><br>
-<a href="._part0002_testdoc.html#___sec27"> References </a><br>
-<a href="._part0002_testdoc.html#___sec28"> Appendix: Just for testing; part I </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc.html#___sec29"> A subsection within an appendix </a><br>
-<a href="._part0002_testdoc.html#___sec30"> Appendix: Just for testing; part II </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc.html#___sec31"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc.html#test:title:id1"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc.html#test:title:id2"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc.html#___sec34"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc.html#___sec35"> Appendix: Testing inline comments </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc.html#___sec36"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
+<a href="._testdoc001.html#sec1"> Section 1 </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec1"> Subsection 1 </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#subsec:ex"> Subsection 2: Testing figures and movies </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec3"> Test of movies </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec5"> Custom Environments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#subsec:table"> Tables </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec7"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec8"> Bibliography test </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#Example"> Example 1: Examples can be typeset as exercises </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#subsubsec:ex"> URLs </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec11"> LaTeX Mathematics </a><br>
+<a href="._testdoc002.html#___sec12"> Exercises </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#demo:ex:1"> Problem 2: Flip a Coin </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec14"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec15"> Not an exercise </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#demo:ex:2"> Project 3: Compute a Probability </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec18"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#exer:dist"> Exercise 5: Determine some Distance </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec20"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec21"> Some exercise without the "Exercise:" prefix </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec22"> Example 7: Just an example </a><br>
+<a href="._testdoc002.html#___sec23"> Here goes another section </a><br>
+<a href="._testdoc002.html#___sec24"> More Exercises </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#exer:some:formula"> Exercise 8: Make references to projects and problems </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#exer:you"> Project 9: References in a headings do not work well in html </a><br>
+<a href="._testdoc002.html#___sec27"> References </a><br>
+<a href="._testdoc002.html#___sec28"> Appendix: Just for testing; part I </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec29"> A subsection within an appendix </a><br>
+<a href="._testdoc002.html#___sec30"> Appendix: Just for testing; part II </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec31"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#test:title:id1"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#test:title:id2"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec34"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec35"> Appendix: Testing inline comments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec36"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
 
 <p>
 <p>
 <!-- begin bottom navigation -->
-<a href="._part0001_testdoc.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<a href="._testdoc001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
 <!-- end bottom navigation -->
 
 <!-- ------------------- end of main content --------------- -->
@@ -1630,6 +1633,8 @@ final,                   % or draft (marks overfull hboxes)
 
 \usepackage[framemethod=TikZ]{mdframed}
 
+% --- begin definitions of admonition environments ---
+
 % Admonition is an oval gray box
 \newmdenv[
   backgroundcolor=gray!5,  %% white with 5%% gray
@@ -1649,6 +1654,76 @@ final,                   % or draft (marks overfull hboxes)
 \end{graybox1mdframed}
 }
 
+% --- end of definitions of admonition environments ---
+
+% prevent orhpans and widows
+\clubpenalty = 10000
+\widowpenalty = 10000
+
+% #ifndef SECTION_HEADINGS
+% #define SECTION_HEADINGS "std"
+% #else
+% http://www.ctex.org/documents/packages/layout/titlesec.pdf
+\usepackage[compact]{titlesec}  % reduce the spacing above/below the heading
+% #endif
+% #if SECTION_HEADINGS == "blue"
+% --- section/subsection headings with blue color ---
+\definecolor{seccolor}{cmyk}{.9,.5,0,.35}  % siamltexmm.sty section color
+\titleformat{name=\section}
+{\color{seccolor}\normalfont\Large\bfseries}
+{\color{seccolor}\thesection}{1em}{}
+\titleformat{name=\subsection}
+{\color{seccolor}\normalfont\large\bfseries}
+{\color{seccolor}\thesubsection}{1em}{}
+\titleformat{name=\paragraph}[runin]
+{\color{seccolor}\normalfont\normalsize\bfseries}
+{}{}{\indent}
+% #elif SECTION_HEADINGS == "strongblue"
+% --- section/subsection headings with a strong blue color ---
+\definecolor{seccolor}{rgb}{0.2,0.2,0.8}
+\titleformat{name=\section}
+{\color{seccolor}\normalfont\Large\bfseries}
+{\color{seccolor}\thesection}{1em}{}
+\titleformat{name=\subsection}
+{\color{seccolor}\normalfont\large\bfseries}
+{\color{seccolor}\thesubsection}{1em}{}
+\titleformat{name=\paragraph}[runin]
+{\color{seccolor}\normalfont\normalsize\bfseries}
+{}{}{\indent}
+% #elif SECTION_HEADINGS == "gray"
+% --- section/subsection headings with white text on gray background ---
+\titleformat{name=\section}[block]
+  {\sffamily\Large}{}{0pt}{\colorsection}
+\titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip}
+
+\newcommand{\colorsection}[1]{%
+  \colorbox{gray!50}{{\color{white}\thesection\ #1}}}
+
+\titleformat{name=\subsection}[block]
+  {\sffamily\large}{}{0pt}{\colorsubsection}
+\titlespacing*{\subsection}{0pt}{\baselineskip}{\baselineskip}
+
+\newcommand{\colorsubsection}[1]{%
+  \colorbox{gray!50}{{\color{white}\thesubsection\ #1}}}
+% #elif SECTION_HEADINGS == "gray-wide"
+% --- section/subsection headings with white text on wide gray background ---
+\titleformat{name=\section}[block]
+  {\sffamily\Large}{}{0pt}{\colorsection}
+\titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip}
+
+\newcommand{\colorsection}[1]{%
+  \colorbox{gray!50}{\parbox{\dimexpr\textwidth-2\fboxsep}%
+           {\color{white}\thesection\ #1}}}
+
+\titleformat{name=\subsection}[block]
+  {\sffamily\large}{}{0pt}{\colorsubsection}
+\titlespacing*{\subsection}{0pt}{\baselineskip}{\baselineskip}
+
+\newcommand{\colorsubsection}[1]{%
+  \colorbox{gray!50}{\parbox{\dimexpr\textwidth-2\fboxsep}%
+           {\color{white}\thesubsection\ #1}}}
+% #endif
+
 % #ifdef COLORED_TABLE_ROWS
 % color every two table rows
 \let\oldtabular\tabular
@@ -1667,22 +1742,6 @@ final,                   % or draft (marks overfull hboxes)
 \definecolor{appleblue}{rgb}{0.93,0.95,1.0}  % Apple blue
 \renewenvironment{tabular}{\rowcolors{2}{white}{appleblue}%
 \oldtabular}{\endoldtabular}
-% #endif
-
-% prevent orhpans and widows
-\clubpenalty = 10000
-\widowpenalty = 10000
-
-% http://www.ctex.org/documents/packages/layout/titlesec.pdf
-\usepackage[compact]{titlesec}  % narrower section headings
-% #ifdef BLUE_SECTION_HEADINGS
-\definecolor{seccolor}{rgb}{0.2,0.2,0.8}
-\titleformat{\section}
-{\color{seccolor}\normalfont\Large\bfseries}
-{\color{seccolor}\thesection}{1em}{}
-\titleformat{\subsection}
-{\color{seccolor}\normalfont\large\bfseries}
-{\color{seccolor}\thesubsection}{1em}{}
 % #endif
 
 % --- end of standard preamble for documents ---
@@ -2127,9 +2186,12 @@ output2
 
 It is time to test \code{verbatim inline font} especially with \code{a newline
 inside the text} and an exclamation mark at the end: \code{BEGIN}! The
-exclamation mark inside the verbatim text is not smart for latex as
-we use ! in the \code{verb} typesetting... Also test backslashes
-like \code{\begin} and \code{\end} in inline verbatim text.
+exclamation mark inside the verbatim text is potentially not smart
+since latex use ! in the \code{Verb} typesetting, but this should now
+be fixed: test \code{!bc} and \code{!ec} as well as \code{!bsummary}.
+Also test backslashes and braces like \code{\begin}, \code{\begin{enumerate}},
+\code{\end{this}\end{that}}, and \code{{something \inside braces}} in inline
+verbatim text.
 
 Here is some \textcolor{red}{red} color and an attempt to write \textcolor{green}{with
 green color containing a linebreak.
@@ -3363,6 +3425,8 @@ final,                   % or draft (marks overfull hboxes)
 
 \usepackage[framemethod=TikZ]{mdframed}
 
+% --- begin definitions of admonition environments ---
+
 % Admonition is an oval gray box
 \newmdenv[
   backgroundcolor=gray!5,  %% white with 5%% gray
@@ -3382,26 +3446,32 @@ final,                   % or draft (marks overfull hboxes)
 \end{graybox1mdframed}
 }
 
-% color every two table rows
-\let\oldtabular\tabular
-\let\endoldtabular\endtabular
-\definecolor{appleblue}{rgb}{0.93,0.95,1.0}  % Apple blue
-\renewenvironment{tabular}{\rowcolors{2}{white}{appleblue}%
-\oldtabular}{\endoldtabular}
+% --- end of definitions of admonition environments ---
 
 % prevent orhpans and widows
 \clubpenalty = 10000
 \widowpenalty = 10000
 
 % http://www.ctex.org/documents/packages/layout/titlesec.pdf
-\usepackage[compact]{titlesec}  % narrower section headings
-\definecolor{seccolor}{rgb}{0.2,0.2,0.8}
-\titleformat{\section}
+\usepackage[compact]{titlesec}  % reduce the spacing above/below the heading
+% --- section/subsection headings with blue color ---
+\definecolor{seccolor}{cmyk}{.9,.5,0,.35}  % siamltexmm.sty section color
+\titleformat{name=\section}
 {\color{seccolor}\normalfont\Large\bfseries}
 {\color{seccolor}\thesection}{1em}{}
-\titleformat{\subsection}
+\titleformat{name=\subsection}
 {\color{seccolor}\normalfont\large\bfseries}
 {\color{seccolor}\thesubsection}{1em}{}
+\titleformat{name=\paragraph}[runin]
+{\color{seccolor}\normalfont\normalsize\bfseries}
+{}{}{\indent}
+
+% color every two table rows
+\let\oldtabular\tabular
+\let\endoldtabular\endtabular
+\definecolor{appleblue}{rgb}{0.93,0.95,1.0}  % Apple blue
+\renewenvironment{tabular}{\rowcolors{2}{white}{appleblue}%
+\oldtabular}{\endoldtabular}
 
 % --- end of standard preamble for documents ---
 
@@ -3766,9 +3836,12 @@ output2
 \end{Verbatim}
 
 It is time to test {\fontsize{10pt}{10pt}\Verb!verbatim inline font!} especially with {\fontsize{10pt}{10pt}\Verb!a newline inside the text!} and an exclamation mark at the end: {\fontsize{10pt}{10pt}\Verb!BEGIN!}! The
-exclamation mark inside the verbatim text is not smart for latex as
-we use ! in the {\fontsize{10pt}{10pt}\Verb!verb!} typesetting... Also test backslashes
-like {\fontsize{10pt}{10pt}\Verb!\begin!} and {\fontsize{10pt}{10pt}\Verb!\end!} in inline verbatim text.
+exclamation mark inside the verbatim text is potentially not smart
+since latex use ! in the {\fontsize{10pt}{10pt}\Verb!Verb!} typesetting, but this should now
+be fixed: test {\fontsize{10pt}{10pt}\Verb!!bc!} and {\fontsize{10pt}{10pt}\Verb!!ec!} as well as {\fontsize{10pt}{10pt}\Verb!!bsummary!}.
+Also test backslashes and braces like {\fontsize{10pt}{10pt}\Verb!\begin!}, {\fontsize{10pt}{10pt}\Verb!\begin{enumerate}!},
+{\fontsize{10pt}{10pt}\Verb!\end{this}\end{that}!}, and {\fontsize{10pt}{10pt}\Verb!{something \inside braces}!} in inline
+verbatim text.
 
 Here is some \textcolor{red}{red} color and an attempt to write \textcolor{green}{with
 green color containing a linebreak.
@@ -4927,6 +5000,8 @@ final,                   % or draft (marks overfull hboxes)
 
 \usepackage[framemethod=TikZ]{mdframed}
 
+% --- begin definitions of admonition environments ---
+
 % Admonition is an oval gray box
 \newmdenv[
   backgroundcolor=gray!5,  %% white with 5%% gray
@@ -4946,13 +5021,13 @@ final,                   % or draft (marks overfull hboxes)
 \end{graybox1mdframed}
 }
 
+% --- end of definitions of admonition environments ---
 
 % prevent orhpans and widows
 \clubpenalty = 10000
 \widowpenalty = 10000
 
-% http://www.ctex.org/documents/packages/layout/titlesec.pdf
-\usepackage[compact]{titlesec}  % narrower section headings
+
 
 % --- end of standard preamble for documents ---
 
@@ -5292,9 +5367,12 @@ output2
 end{Verbatim}end{quote}
 
 It is time to test \Verb!verbatim inline font! especially with \Verb!a newline inside the text! and an exclamation mark at the end: \Verb!BEGIN!! The
-exclamation mark inside the verbatim text is not smart for latex as
-we use ! in the \Verb!verb! typesetting... Also test backslashes
-like \Verb!\begin! and \Verb!\end! in inline verbatim text.
+exclamation mark inside the verbatim text is potentially not smart
+since latex use ! in the \Verb!Verb! typesetting, but this should now
+be fixed: test \Verb~!bc~ and \Verb~!ec~ as well as \Verb~!bsummary~.
+Also test backslashes and braces like \Verb!\begin!, \Verb!\begin{enumerate}!,
+\Verb!\end{this}\end{that}!, and \Verb!{something \inside braces}! in inline
+verbatim text.
 
 Here is some \textcolor{red}{red} color and an attempt to write \textcolor{green}{with
 green color containing a linebreak.
@@ -6609,9 +6687,12 @@ System call::
 
 It is time to test ``verbatim inline font`` especially with ``a newline
 inside the text`` and an exclamation mark at the end: ``BEGIN``! The
-exclamation mark inside the verbatim text is not smart for latex as
-we use ! in the ``verb`` typesetting... Also test backslashes
-like ``\begin`` and ``\end`` in inline verbatim text.
+exclamation mark inside the verbatim text is potentially not smart
+since latex use ! in the ``Verb`` typesetting, but this should now
+be fixed: test ``!bc`` and ``!ec`` as well as ``!bsummary``.
+Also test backslashes and braces like ``\begin``, ``\begin{enumerate}``,
+``\end{this}\end{that}``, and ``{something \inside braces}`` in inline
+verbatim text.
 
 Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
 green color containing a linebreak.
@@ -8023,9 +8104,12 @@ System call:
 
 It is time to test ``verbatim inline font`` especially with ``a newline
 inside the text`` and an exclamation mark at the end: ``BEGIN``! The
-exclamation mark inside the verbatim text is not smart for latex as
-we use ! in the ``verb`` typesetting... Also test backslashes
-like ``\begin`` and ``\end`` in inline verbatim text.
+exclamation mark inside the verbatim text is potentially not smart
+since latex use ! in the ``Verb`` typesetting, but this should now
+be fixed: test ``!bc`` and ``!ec`` as well as ``!bsummary``.
+Also test backslashes and braces like ``\begin``, ``\begin{enumerate}``,
+``\end{this}\end{that}``, and ``{something \inside braces}`` in inline
+verbatim text.
 
 Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
 green color containing a linebreak.
@@ -9544,9 +9628,12 @@ output2
 
 It is time to test `verbatim inline font` especially with `a newline
 inside the text` and an exclamation mark at the end: `BEGIN`! The
-exclamation mark inside the verbatim text is not smart for latex as
-we use ! in the `verb` typesetting... Also test backslashes
-like `\begin` and `\end` in inline verbatim text.
+exclamation mark inside the verbatim text is potentially not smart
+since latex use ! in the `Verb` typesetting, but this should now
+be fixed: test `!bc` and `!ec` as well as `!bsummary`.
+Also test backslashes and braces like `\begin`, `\begin{enumerate}`,
+`\end{this}\end{that}`, and `{something \inside braces}` in inline
+verbatim text.
 
 Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
 green color containing a linebreak.
@@ -10690,9 +10777,12 @@ output2
 
 It is time to test <code>verbatim inline font</code> especially with <code>a newline
 inside the text</code> and an exclamation mark at the end: <code>BEGIN</code>! The
-exclamation mark inside the verbatim text is not smart for latex as
-we use ! in the <code>verb</code> typesetting... Also test backslashes
-like <code>\begin</code> and <code>\end</code> in inline verbatim text.
+exclamation mark inside the verbatim text is potentially not smart
+since latex use ! in the <code>Verb</code> typesetting, but this should now
+be fixed: test <code>!bc</code> and <code>!ec</code> as well as <code>!bsummary</code>.
+Also test backslashes and braces like <code>\begin</code>, <code>\begin{enumerate}</code>,
+<code>\end{this}\end{that}</code>, and <code>{something \inside braces}</code> in inline
+verbatim text.
 
 Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
 green color containing a linebreak.
@@ -11923,9 +12013,12 @@ output2
 
 It is time to test {{{verbatim inline font}}} especially with {{{a newline
 inside the text}}} and an exclamation mark at the end: {{{BEGIN}}}! The
-exclamation mark inside the verbatim text is not smart for latex as
-we use ! in the {{{verb}}} typesetting... Also test backslashes
-like {{{\begin}}} and {{{\end}}} in inline verbatim text.
+exclamation mark inside the verbatim text is potentially not smart
+since latex use ! in the {{{Verb}}} typesetting, but this should now
+be fixed: test {{{!bc}}} and {{{!ec}}} as well as {{{!bsummary}}}.
+Also test backslashes and braces like {{{\begin}}}, {{{\begin{enumerate}}}},
+{{{\end{this}\end{that}}}}, and {{{{something \inside braces}}}} in inline
+verbatim text.
 
 Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
 green color containing a linebreak.
@@ -13015,9 +13108,12 @@ System call::
 
 It is time to test 'verbatim inline font' especially with 'a newline
 inside the text' and an exclamation mark at the end: 'BEGIN'! The
-exclamation mark inside the verbatim text is not smart for latex as
-we use ! in the 'verb' typesetting... Also test backslashes
-like '\begin' and '\end' in inline verbatim text.
+exclamation mark inside the verbatim text is potentially not smart
+since latex use ! in the 'Verb' typesetting, but this should now
+be fixed: test '!bc' and '!ec' as well as '!bsummary'.
+Also test backslashes and braces like '\begin', '\begin{enumerate}',
+'\end{this}\end{that}', and '{something \inside braces}' in inline
+verbatim text.
 
 Here is some red color and an attempt to write with
 green color containing a linebreak.
@@ -14145,9 +14241,12 @@ System call::
 
 It is time to test C{verbatim inline font} especially with C{a newline
 inside the text} and an exclamation mark at the end: C{BEGIN}! The
-exclamation mark inside the verbatim text is not smart for latex as
-we use ! in the C{verb} typesetting... Also test backslashes
-like C{\begin} and C{\end} in inline verbatim text.
+exclamation mark inside the verbatim text is potentially not smart
+since latex use ! in the C{Verb} typesetting, but this should now
+be fixed: test C{!bc} and C{!ec} as well as C{!bsummary}.
+Also test backslashes and braces like C{\begin}, C{\begin{enumerate}},
+C{\end{this}\end{that}}, and C{{something \inside braces}} in inline
+verbatim text.
 
 Here is some red color and an attempt to write with
 green color containing a linebreak.
@@ -15377,9 +15476,12 @@ System call::
 
 It is time to test verbatim inline font especially with a newline
 inside the text and an exclamation mark at the end: BEGIN! The
-exclamation mark inside the verbatim text is not smart for latex as
-we use ! in the verb typesetting... Also test backslashes
-like \begin and \end in inline verbatim text.
+exclamation mark inside the verbatim text is potentially not smart
+since latex use ! in the Verb typesetting, but this should now
+be fixed: test !bc and !ec as well as !bsummary.
+Also test backslashes and braces like \begin, \begin{enumerate},
+\end{this}\end{that}, and {something \inside braces} in inline
+verbatim text.
 
 Here is some red color and an attempt to write with
 green color containing a linebreak.
@@ -16593,9 +16695,12 @@ output2
 
 It is time to test `verbatim inline font` especially with `a newline
 inside the text` and an exclamation mark at the end: `BEGIN`! The
-exclamation mark inside the verbatim text is not smart for latex as
-we use ! in the `verb` typesetting... Also test backslashes
-like `\begin` and `\end` in inline verbatim text.
+exclamation mark inside the verbatim text is potentially not smart
+since latex use ! in the `Verb` typesetting, but this should now
+be fixed: test `!bc` and `!ec` as well as `!bsummary`.
+Also test backslashes and braces like `\begin`, `\begin{enumerate}`,
+`\end{this}\end{that}`, and `{something \inside braces}` in inline
+verbatim text.
 
 Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
 green color containing a linebreak.
@@ -18081,9 +18186,12 @@ case in LaTeX.
      "source": [
       "It is time to test `verbatim inline font` especially with `a newline\n",
       "inside the text` and an exclamation mark at the end: `BEGIN`! The\n",
-      "exclamation mark inside the verbatim text is not smart for latex as\n",
-      "we use ! in the `verb` typesetting... Also test backslashes\n",
-      "like `\\begin` and `\\end` in inline verbatim text.\n",
+      "exclamation mark inside the verbatim text is potentially not smart\n",
+      "since latex use ! in the `Verb` typesetting, but this should now\n",
+      "be fixed: test `!bc` and `!ec` as well as `!bsummary`.\n",
+      "Also test backslashes and braces like `\\begin`, `\\begin{enumerate}`,\n",
+      "`\\end{this}\\end{that}`, and `{something \\inside braces}` in inline\n",
+      "verbatim text.\n",
       "\n",
       "Here is some <font color=\"red\">red</font> color and an attempt to write <font color=\"green\">with\n",
       "green color containing a linebreak.\n",
@@ -19672,7 +19780,7 @@ Terminal&gt; cd test
 Terminal&gt; myprog -f
 output1
 output2</code></pre>
-<p>It is time to test <code>verbatim inline font</code> especially with <code>a newline inside the text</code> and an exclamation mark at the end: <code>BEGIN</code>! The exclamation mark inside the verbatim text is not smart for latex as we use ! in the <code>verb</code> typesetting... Also test backslashes like <code>\begin</code> and <code>\end</code> in inline verbatim text.</p>
+<p>It is time to test <code>verbatim inline font</code> especially with <code>a newline inside the text</code> and an exclamation mark at the end: <code>BEGIN</code>! The exclamation mark inside the verbatim text is potentially not smart since latex use ! in the <code>Verb</code> typesetting, but this should now be fixed: test  !bc  and  !ec  as well as  !bsummary . Also test backslashes and braces like <code>\begin</code>, <code>\begin{enumerate}</code>, <code>\end{this}\end{that}</code>, and <code>{something \inside braces}</code> in inline verbatim text.</p>
 <p>Here is some color and an attempt to write Some formats will only display this correctly when HTML is the output format.</p>
 <h2 id="subsection-2-testing-figures-and-movies">Subsection 2: Testing figures and movies</h2>
 <p>[subsec:ex]</p>
@@ -20321,7 +20429,7 @@ show()</code></pre>
 <span class="kw">Terminal&gt;</span> myprog -f
 <span class="kw">output1</span>
 <span class="kw">output2</span></code></pre>
-<p>It is time to test <code>verbatim inline font</code> especially with <code>a newline inside the text</code> and an exclamation mark at the end: <code>BEGIN</code>! The exclamation mark inside the verbatim text is not smart for latex as we use ! in the <code>verb</code> typesetting... Also test backslashes like <code>\begin</code> and <code>\end</code> in inline verbatim text.</p>
+<p>It is time to test <code>verbatim inline font</code> especially with <code>a newline inside the text</code> and an exclamation mark at the end: <code>BEGIN</code>! The exclamation mark inside the verbatim text is potentially not smart since latex use ! in the <code>Verb</code> typesetting, but this should now be fixed: test <code>!bc</code> and <code>!ec</code> as well as <code>!bsummary</code>. Also test backslashes and braces like <code>\begin</code>, <code>\begin{enumerate}</code>, <code>\end{this}\end{that}</code>, and <code>{something \inside braces}</code> in inline verbatim text.</p>
 <p>Here is some <font color="red">red</font> color and an attempt to write <font color="green">with green color containing a linebreak. And one more.</font> Some formats will only display this correctly when HTML is the output format.</p>
 <h3 id="subsection-2-testing-figures-and-movies">Subsection 2: Testing figures and movies</h3>
 <p>Test of figures. In particular we refer to Figure ref{fig:impact} in which there is a flow.</p>
@@ -22273,6 +22381,76 @@ open=right               % start new chapters on odd-numbered pages
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
 
+% --- end of definitions of admonition environments ---
+
+% prevent orhpans and widows
+\clubpenalty = 10000
+\widowpenalty = 10000
+
+% #ifndef SECTION_HEADINGS
+% #define SECTION_HEADINGS "std"
+% #else
+% http://www.ctex.org/documents/packages/layout/titlesec.pdf
+\usepackage[compact]{titlesec}  % reduce the spacing above/below the heading
+% #endif
+% #if SECTION_HEADINGS == "blue"
+% --- section/subsection headings with blue color ---
+\definecolor{seccolor}{cmyk}{.9,.5,0,.35}  % siamltexmm.sty section color
+\titleformat{name=\section}
+{\color{seccolor}\normalfont\Large\bfseries}
+{\color{seccolor}\thesection}{1em}{}
+\titleformat{name=\subsection}
+{\color{seccolor}\normalfont\large\bfseries}
+{\color{seccolor}\thesubsection}{1em}{}
+\titleformat{name=\paragraph}[runin]
+{\color{seccolor}\normalfont\normalsize\bfseries}
+{}{}{\indent}
+% #elif SECTION_HEADINGS == "strongblue"
+% --- section/subsection headings with a strong blue color ---
+\definecolor{seccolor}{rgb}{0.2,0.2,0.8}
+\titleformat{name=\section}
+{\color{seccolor}\normalfont\Large\bfseries}
+{\color{seccolor}\thesection}{1em}{}
+\titleformat{name=\subsection}
+{\color{seccolor}\normalfont\large\bfseries}
+{\color{seccolor}\thesubsection}{1em}{}
+\titleformat{name=\paragraph}[runin]
+{\color{seccolor}\normalfont\normalsize\bfseries}
+{}{}{\indent}
+% #elif SECTION_HEADINGS == "gray"
+% --- section/subsection headings with white text on gray background ---
+\titleformat{name=\section}[block]
+  {\sffamily\Large}{}{0pt}{\colorsection}
+\titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip}
+
+\newcommand{\colorsection}[1]{%
+  \colorbox{gray!50}{{\color{white}\thesection\ #1}}}
+
+\titleformat{name=\subsection}[block]
+  {\sffamily\large}{}{0pt}{\colorsubsection}
+\titlespacing*{\subsection}{0pt}{\baselineskip}{\baselineskip}
+
+\newcommand{\colorsubsection}[1]{%
+  \colorbox{gray!50}{{\color{white}\thesubsection\ #1}}}
+% #elif SECTION_HEADINGS == "gray-wide"
+% --- section/subsection headings with white text on wide gray background ---
+\titleformat{name=\section}[block]
+  {\sffamily\Large}{}{0pt}{\colorsection}
+\titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip}
+
+\newcommand{\colorsection}[1]{%
+  \colorbox{gray!50}{\parbox{\dimexpr\textwidth-2\fboxsep}%
+           {\color{white}\thesection\ #1}}}
+
+\titleformat{name=\subsection}[block]
+  {\sffamily\large}{}{0pt}{\colorsubsection}
+\titlespacing*{\subsection}{0pt}{\baselineskip}{\baselineskip}
+
+\newcommand{\colorsubsection}[1]{%
+  \colorbox{gray!50}{\parbox{\dimexpr\textwidth-2\fboxsep}%
+           {\color{white}\thesubsection\ #1}}}
+% #endif
+
 % #ifdef COLORED_TABLE_ROWS
 % color every two table rows
 \let\oldtabular\tabular
@@ -22291,22 +22469,6 @@ open=right               % start new chapters on odd-numbered pages
 \definecolor{appleblue}{rgb}{0.93,0.95,1.0}  % Apple blue
 \renewenvironment{tabular}{\rowcolors{2}{white}{appleblue}%
 \oldtabular}{\endoldtabular}
-% #endif
-
-% prevent orhpans and widows
-\clubpenalty = 10000
-\widowpenalty = 10000
-
-% http://www.ctex.org/documents/packages/layout/titlesec.pdf
-\usepackage[compact]{titlesec}  % narrower section headings
-% #ifdef BLUE_SECTION_HEADINGS
-\definecolor{seccolor}{rgb}{0.2,0.2,0.8}
-\titleformat{\section}
-{\color{seccolor}\normalfont\Large\bfseries}
-{\color{seccolor}\thesection}{1em}{}
-\titleformat{\subsection}
-{\color{seccolor}\normalfont\large\bfseries}
-{\color{seccolor}\thesubsection}{1em}{}
 % #endif
 
 % --- end of standard preamble for documents ---
@@ -22690,7 +22852,7 @@ Inline math, a=b, is the only math in this document.
     http://doconce.googlecode.com/hg/test/demotestdoc.html.
 
 
-************** File: ._part0000_testdoc.html *****************
+************** File: ._testdoc000.html *****************
 <!DOCTYPE html>
 <!--
 Automatically generated HTML file from Doconce source
@@ -22765,10 +22927,10 @@ Automatically generated HTML file from Doconce source
      .alert-block > p, .alert-block > ul {margin-bottom:1em}
      .alert li {margin-top: 1em}
      .alert-block p+p {margin-top:5px}
-     .alert-notice { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_yellow_notice.png); }
-     .alert-summary  { background-image:url(https://doconce.googlecode.com/hg/bundled/html_images/small_yellow_summary.png); }
-     .alert-warning { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_yellow_warning.png); }
-     .alert-question {background-image:url(https://doconce.googlecode.com/hg/bundled/html_images/small_yellow_question.png); }
+     .alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
+     .alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
+     .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
+     .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
 
 </style>
 
@@ -22899,7 +23061,7 @@ $$
     
 <a name="part0000"></a>
 <!-- begin top navigation -->
-<a href="._part0001_testdoc.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<a href="._testdoc001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
 <!-- end top navigation -->
 
 <p>
@@ -22950,48 +23112,48 @@ $$
 <h2>Table of contents</h2>
 
 <p>
-<a href="._part0001_testdoc.html#sec1"> Section 1 </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc.html#___sec1"> Subsection 1 </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc.html#subsec:ex"> Subsection 2: Testing figures and movies </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc.html#___sec3"> Test of movies </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc.html#___sec5"> Custom Environments </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc.html#subsec:table"> Tables </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc.html#___sec7"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc.html#___sec8"> Bibliography test </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc.html#Example"> Example 1: Examples can be typeset as exercises </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc.html#subsubsec:ex"> URLs </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc.html#___sec11"> LaTeX Mathematics </a><br>
-<a href="._part0002_testdoc.html#___sec12"> Exercises </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc.html#demo:ex:1"> Problem 2: Flip a Coin </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc.html#___sec14"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc.html#___sec15"> Not an exercise </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc.html#demo:ex:2"> Project 3: Compute a Probability </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc.html#___sec18"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc.html#exer:dist"> Exercise 5: Determine some Distance </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc.html#___sec20"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc.html#___sec21"> Some exercise without the "Exercise:" prefix </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc.html#___sec22"> Example 7: Just an example </a><br>
-<a href="._part0002_testdoc.html#___sec23"> Here goes another section </a><br>
-<a href="._part0002_testdoc.html#___sec24"> More Exercises </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc.html#exer:some:formula"> Exercise 8: Make references to projects and problems </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc.html#exer:you"> Project 9: References in a headings do not work well in html </a><br>
-<a href="._part0002_testdoc.html#___sec27"> References </a><br>
-<a href="._part0002_testdoc.html#___sec28"> Appendix: Just for testing; part I </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc.html#___sec29"> A subsection within an appendix </a><br>
-<a href="._part0002_testdoc.html#___sec30"> Appendix: Just for testing; part II </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc.html#___sec31"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc.html#test:title:id1"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc.html#test:title:id2"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc.html#___sec34"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc.html#___sec35"> Appendix: Testing inline comments </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc.html#___sec36"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
+<a href="._testdoc001.html#sec1"> Section 1 </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec1"> Subsection 1 </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#subsec:ex"> Subsection 2: Testing figures and movies </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec3"> Test of movies </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec5"> Custom Environments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#subsec:table"> Tables </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec7"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec8"> Bibliography test </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#Example"> Example 1: Examples can be typeset as exercises </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#subsubsec:ex"> URLs </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec11"> LaTeX Mathematics </a><br>
+<a href="._testdoc002.html#___sec12"> Exercises </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#demo:ex:1"> Problem 2: Flip a Coin </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec14"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec15"> Not an exercise </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#demo:ex:2"> Project 3: Compute a Probability </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec18"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#exer:dist"> Exercise 5: Determine some Distance </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec20"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec21"> Some exercise without the "Exercise:" prefix </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec22"> Example 7: Just an example </a><br>
+<a href="._testdoc002.html#___sec23"> Here goes another section </a><br>
+<a href="._testdoc002.html#___sec24"> More Exercises </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#exer:some:formula"> Exercise 8: Make references to projects and problems </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#exer:you"> Project 9: References in a headings do not work well in html </a><br>
+<a href="._testdoc002.html#___sec27"> References </a><br>
+<a href="._testdoc002.html#___sec28"> Appendix: Just for testing; part I </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec29"> A subsection within an appendix </a><br>
+<a href="._testdoc002.html#___sec30"> Appendix: Just for testing; part II </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec31"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#test:title:id1"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#test:title:id2"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec34"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec35"> Appendix: Testing inline comments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec36"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
 
 <p>
 <p>
 <!-- begin bottom navigation -->
-<a href="._part0001_testdoc.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<a href="._testdoc001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
 <!-- end bottom navigation -->
 
 <!-- ------------------- end of main content --------------- -->
@@ -23000,7 +23162,7 @@ $$
 </body>
 </html>
 
-************** File: ._part0001_testdoc.html *****************
+************** File: ._testdoc001.html *****************
 <!DOCTYPE html>
 <!--
 Automatically generated HTML file from Doconce source
@@ -23075,10 +23237,10 @@ Automatically generated HTML file from Doconce source
      .alert-block > p, .alert-block > ul {margin-bottom:1em}
      .alert li {margin-top: 1em}
      .alert-block p+p {margin-top:5px}
-     .alert-notice { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_yellow_notice.png); }
-     .alert-summary  { background-image:url(https://doconce.googlecode.com/hg/bundled/html_images/small_yellow_summary.png); }
-     .alert-warning { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_yellow_warning.png); }
-     .alert-question {background-image:url(https://doconce.googlecode.com/hg/bundled/html_images/small_yellow_question.png); }
+     .alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
+     .alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
+     .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
+     .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
 
 </style>
 
@@ -23209,9 +23371,9 @@ $$
     
 <a name="part0001"></a>
 <!-- begin top navigation -->
-<a href="._part0000_testdoc.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+<a href="._testdoc000.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
 
-<a href="._part0002_testdoc.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<a href="._testdoc002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
 <!-- end top navigation -->
 
 <p>
@@ -23274,15 +23436,15 @@ Here is a nested list:
 
 
 <p>
-Here is a reference to Equation <a href="._part0002_testdoc.html#mjx-eqn-3">(3)</a>.
+Here is a reference to Equation <a href="._testdoc002.html#mjx-eqn-3">(3)</a>.
 This equation appears in another part if this document is split.
 
 <p>
 <p>
 <!-- begin bottom navigation -->
-<a href="._part0000_testdoc.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+<a href="._testdoc000.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
 
-<a href="._part0002_testdoc.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<a href="._testdoc002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
 <!-- end bottom navigation -->
 
 <!-- ------------------- end of main content --------------- -->
@@ -23291,7 +23453,7 @@ This equation appears in another part if this document is split.
 </body>
 </html>
 
-************** File: ._part0002_testdoc.html *****************
+************** File: ._testdoc002.html *****************
 <!DOCTYPE html>
 <!--
 Automatically generated HTML file from Doconce source
@@ -23366,10 +23528,10 @@ Automatically generated HTML file from Doconce source
      .alert-block > p, .alert-block > ul {margin-bottom:1em}
      .alert li {margin-top: 1em}
      .alert-block p+p {margin-top:5px}
-     .alert-notice { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_yellow_notice.png); }
-     .alert-summary  { background-image:url(https://doconce.googlecode.com/hg/bundled/html_images/small_yellow_summary.png); }
-     .alert-warning { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_yellow_warning.png); }
-     .alert-question {background-image:url(https://doconce.googlecode.com/hg/bundled/html_images/small_yellow_question.png); }
+     .alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
+     .alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
+     .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
+     .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
 
 </style>
 
@@ -23500,7 +23662,7 @@ $$
     
 <a name="part0002"></a>
 <!-- begin top navigation -->
-<a href="._part0001_testdoc.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+<a href="._testdoc001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
 <!-- end top navigation -->
 
 <p>
@@ -23509,7 +23671,7 @@ $$
 <h3>Subsection 1  <a name="___sec1"></a></h3>
 
 <p>
-More text, with a reference back to the section <a href="._part0001_testdoc.html#sec1">Section 1</a> and further
+More text, with a reference back to the section <a href="._testdoc001.html#sec1">Section 1</a> and further
 to the section <a href="#subsubsec:ex">URLs</a>. 
 <!-- sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console -->
 
@@ -23767,9 +23929,12 @@ output2
 </td></tr></table><p>
 It is time to test <code>verbatim inline font</code> especially with <code>a newline
 inside the text</code> and an exclamation mark at the end: <code>BEGIN</code>! The
-exclamation mark inside the verbatim text is not smart for latex as
-we use ! in the <code>verb</code> typesetting... Also test backslashes
-like <code>\begin</code> and <code>\end</code> in inline verbatim text.
+exclamation mark inside the verbatim text is potentially not smart
+since latex use ! in the <code>Verb</code> typesetting, but this should now
+be fixed: test <code>!bc</code> and <code>!ec</code> as well as <code>!bsummary</code>.
+Also test backslashes and braces like <code>\begin</code>, <code>\begin{enumerate}</code>,
+<code>\end{this}\end{that}</code>, and <code>{something \inside braces}</code> in inline
+verbatim text.
 
 <p>
 Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
@@ -24250,7 +24415,7 @@ between there we have <a href="#exer:some:formula">Exercise 8: Make references t
 
 <h3>Problem 2: Flip a Coin <a name="demo:ex:1"></a></h3>
 
-<img src="https://doconce.googlecode.com/hg/bundled/html_images/exercise1.svg" width=100 align="right">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/exercise1.svg" width=100 align="right">
 
 <!-- keywords = random numbers; Monte Carlo simulation -->
 
@@ -24325,7 +24490,7 @@ exercises.
 
 <h3>Project 3: Compute a Probability <a name="demo:ex:2"></a></h3>
 
-<img src="https://doconce.googlecode.com/hg/bundled/html_images/exercise1.svg" width=100 align="right">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/exercise1.svg" width=100 align="right">
 
 
 <p>
@@ -24366,7 +24531,7 @@ compute the probability as \( M/N \).
 
 <h3>Project 4: Explore Distributions of Random Circles <a name="proj:circle1"></a></h3>
 
-<img src="https://doconce.googlecode.com/hg/bundled/html_images/exercise1.svg" width=100 align="right">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/exercise1.svg" width=100 align="right">
 
 
 <p>
@@ -24469,7 +24634,7 @@ and give some perspectives.
 
 <h3>Exercise 5: Determine some Distance <a name="exer:dist"></a></h3>
 
-<img src="https://doconce.googlecode.com/hg/bundled/html_images/exercise1.svg" width=100 align="right">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/exercise1.svg" width=100 align="right">
 
 
 <p>
@@ -24643,7 +24808,7 @@ With some text, before we continue with exercises.
 
 <h3>Exercise 8: Make references to projects and problems <a name="exer:some:formula"></a></h3>
 
-<img src="https://doconce.googlecode.com/hg/bundled/html_images/exercise1.svg" width=100 align="right">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/exercise1.svg" width=100 align="right">
 
 
 <p>
@@ -24671,7 +24836,7 @@ Filename: <code>verify_formula.py</code>.
 
 <h3>Project 9: References in a headings do not work well in html <a name="exer:you"></a></h3>
 
-<img src="https://doconce.googlecode.com/hg/bundled/html_images/exercise1.svg" width=100 align="right">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/exercise1.svg" width=100 align="right">
 
 
 <p>
@@ -24963,7 +25128,7 @@ case in LaTeX.
 
 <p>
 <!-- begin bottom navigation -->
-<a href="._part0001_testdoc.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+<a href="._testdoc001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
 <!-- end bottom navigation -->
 
 <!-- ------------------- end of main content --------------- -->
@@ -25030,10 +25195,10 @@ Automatically generated HTML file from Doconce source
      .alert-block > p, .alert-block > ul {margin-bottom:1em}
      .alert li {margin-top: 1em}
      .alert-block p+p {margin-top:5px}
-     .alert-notice { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_notice.png); }
-     .alert-summary  { background-image:url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_summary.png); }
-     .alert-warning { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_warning.png); }
-     .alert-question {background-image:url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_question.png); }
+     .alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
+     .alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
+     .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
+     .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
 
 </style>
 
@@ -25367,9 +25532,12 @@ output2
 <p>
 It is time to test <code>verbatim inline font</code> especially with <code>a newline
 inside the text</code> and an exclamation mark at the end: <code>BEGIN</code>! The
-exclamation mark inside the verbatim text is not smart for latex as
-we use ! in the <code>verb</code> typesetting... Also test backslashes
-like <code>\begin</code> and <code>\end</code> in inline verbatim text.
+exclamation mark inside the verbatim text is potentially not smart
+since latex use ! in the <code>Verb</code> typesetting, but this should now
+be fixed: test <code>!bc</code> and <code>!ec</code> as well as <code>!bsummary</code>.
+Also test backslashes and braces like <code>\begin</code>, <code>\begin{enumerate}</code>,
+<code>\end{this}\end{that}</code>, and <code>{something \inside braces}</code> in inline
+verbatim text.
 
 <p>
 Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
@@ -25811,7 +25979,7 @@ between there we have <a href="#exer:some:formula">Exercise 8: Make references t
 
 <h3>Problem 2: Flip a Coin <a name="demo:ex:1"></a></h3>
 
-<img src="https://doconce.googlecode.com/hg/bundled/html_images/question_blue_on_white1.png" width=80 align="right">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/question_blue_on_white1.png" width=80 align="right">
 
 
 
@@ -25878,7 +26046,7 @@ exercises.
 
 <h3>Project 3: Compute a Probability <a name="demo:ex:2"></a></h3>
 
-<img src="https://doconce.googlecode.com/hg/bundled/html_images/question_blue_on_white1.png" width=80 align="right">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/question_blue_on_white1.png" width=80 align="right">
 
 
 <p>
@@ -25907,7 +26075,7 @@ compute the probability as $latex M/N$.
 
 <h3>Project 4: Explore Distributions of Random Circles <a name="proj:circle1"></a></h3>
 
-<img src="https://doconce.googlecode.com/hg/bundled/html_images/question_blue_on_white1.png" width=80 align="right">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/question_blue_on_white1.png" width=80 align="right">
 
 
 <p>
@@ -25985,7 +26153,7 @@ and give some perspectives.
 
 <h3>Exercise 5: Determine some Distance <a name="exer:dist"></a></h3>
 
-<img src="https://doconce.googlecode.com/hg/bundled/html_images/question_blue_on_white1.png" width=80 align="right">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/question_blue_on_white1.png" width=80 align="right">
 
 
 <p>
@@ -26141,7 +26309,7 @@ With some text, before we continue with exercises.
 
 <h3>Exercise 8: Make references to projects and problems <a name="exer:some:formula"></a></h3>
 
-<img src="https://doconce.googlecode.com/hg/bundled/html_images/question_blue_on_white1.png" width=80 align="right">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/question_blue_on_white1.png" width=80 align="right">
 
 
 <p>
@@ -26163,7 +26331,7 @@ Filename: <code>verify_formula.py</code>.
 
 <h3>Project 9: References in a headings do not work well in html <a name="exer:you"></a></h3>
 
-<img src="https://doconce.googlecode.com/hg/bundled/html_images/question_blue_on_white1.png" width=80 align="right">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/question_blue_on_white1.png" width=80 align="right">
 
 
 <p>
@@ -26513,10 +26681,10 @@ Automatically generated HTML file from Doconce source
      .alert-block > p, .alert-block > ul {margin-bottom:1em}
      .alert li {margin-top: 1em}
      .alert-block p+p {margin-top:5px}
-     .alert-notice { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_notice.png); }
-     .alert-summary  { background-image:url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_summary.png); }
-     .alert-warning { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_warning.png); }
-     .alert-question {background-image:url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_question.png); }
+     .alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
+     .alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
+     .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
+     .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
 
 </style>
 
@@ -26981,9 +27149,12 @@ output2
 <p>
 It is time to test <code>verbatim inline font</code> especially with <code>a newline
 inside the text</code> and an exclamation mark at the end: <code>BEGIN</code>! The
-exclamation mark inside the verbatim text is not smart for latex as
-we use ! in the <code>verb</code> typesetting... Also test backslashes
-like <code>\begin</code> and <code>\end</code> in inline verbatim text.
+exclamation mark inside the verbatim text is potentially not smart
+since latex use ! in the <code>Verb</code> typesetting, but this should now
+be fixed: test <code>!bc</code> and <code>!ec</code> as well as <code>!bsummary</code>.
+Also test backslashes and braces like <code>\begin</code>, <code>\begin{enumerate}</code>,
+<code>\end{this}\end{that}</code>, and <code>{something \inside braces}</code> in inline
+verbatim text.
 
 <p>
 Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
@@ -27457,7 +27628,7 @@ between there we have <a href="#exer:some:formula">Exercise 8: Make references t
 
 <h3>Problem 2: Flip a Coin <a name="demo:ex:1"></a></h3>
 
-<img src="https://doconce.googlecode.com/hg/bundled/html_images/question_blue_on_white2.png" width=100 align="right">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/question_blue_on_white2.png" width=100 align="right">
 
 <!-- keywords = random numbers; Monte Carlo simulation -->
 
@@ -27529,7 +27700,7 @@ exercises.
 
 <h3>Project 3: Compute a Probability <a name="demo:ex:2"></a></h3>
 
-<img src="https://doconce.googlecode.com/hg/bundled/html_images/question_blue_on_white2.png" width=100 align="right">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/question_blue_on_white2.png" width=100 align="right">
 
 
 <p>
@@ -27570,7 +27741,7 @@ compute the probability as \( M/N \).
 
 <h3>Project 4: Explore Distributions of Random Circles <a name="proj:circle1"></a></h3>
 
-<img src="https://doconce.googlecode.com/hg/bundled/html_images/question_blue_on_white2.png" width=100 align="right">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/question_blue_on_white2.png" width=100 align="right">
 
 
 <p>
@@ -27663,7 +27834,7 @@ and give some perspectives.
 
 <h3>Exercise 5: Determine some Distance <a name="exer:dist"></a></h3>
 
-<img src="https://doconce.googlecode.com/hg/bundled/html_images/question_blue_on_white2.png" width=100 align="right">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/question_blue_on_white2.png" width=100 align="right">
 
 
 <p>
@@ -27835,7 +28006,7 @@ With some text, before we continue with exercises.
 
 <h3>Exercise 8: Make references to projects and problems <a name="exer:some:formula"></a></h3>
 
-<img src="https://doconce.googlecode.com/hg/bundled/html_images/question_blue_on_white2.png" width=100 align="right">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/question_blue_on_white2.png" width=100 align="right">
 
 
 <p>
@@ -27863,7 +28034,7 @@ Filename: <code>verify_formula.py</code>.
 
 <h3>Project 9: References in a headings do not work well in html <a name="exer:you"></a></h3>
 
-<img src="https://doconce.googlecode.com/hg/bundled/html_images/question_blue_on_white2.png" width=100 align="right">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/question_blue_on_white2.png" width=100 align="right">
 
 
 <p>
@@ -28356,6 +28527,8 @@ final,                   % or draft (marks overfull hboxes)
 
 \usepackage[framemethod=TikZ]{mdframed}
 
+% --- begin definitions of admonition environments ---
+
 % Admonition is an oval gray box
 \newmdenv[
   backgroundcolor=gray!5,  %% white with 5%% gray
@@ -28375,6 +28548,76 @@ final,                   % or draft (marks overfull hboxes)
 \end{graybox1mdframed}
 }
 
+% --- end of definitions of admonition environments ---
+
+% prevent orhpans and widows
+\clubpenalty = 10000
+\widowpenalty = 10000
+
+% #ifndef SECTION_HEADINGS
+% #define SECTION_HEADINGS "std"
+% #else
+% http://www.ctex.org/documents/packages/layout/titlesec.pdf
+\usepackage[compact]{titlesec}  % reduce the spacing above/below the heading
+% #endif
+% #if SECTION_HEADINGS == "blue"
+% --- section/subsection headings with blue color ---
+\definecolor{seccolor}{cmyk}{.9,.5,0,.35}  % siamltexmm.sty section color
+\titleformat{name=\section}
+{\color{seccolor}\normalfont\Large\bfseries}
+{\color{seccolor}\thesection}{1em}{}
+\titleformat{name=\subsection}
+{\color{seccolor}\normalfont\large\bfseries}
+{\color{seccolor}\thesubsection}{1em}{}
+\titleformat{name=\paragraph}[runin]
+{\color{seccolor}\normalfont\normalsize\bfseries}
+{}{}{\indent}
+% #elif SECTION_HEADINGS == "strongblue"
+% --- section/subsection headings with a strong blue color ---
+\definecolor{seccolor}{rgb}{0.2,0.2,0.8}
+\titleformat{name=\section}
+{\color{seccolor}\normalfont\Large\bfseries}
+{\color{seccolor}\thesection}{1em}{}
+\titleformat{name=\subsection}
+{\color{seccolor}\normalfont\large\bfseries}
+{\color{seccolor}\thesubsection}{1em}{}
+\titleformat{name=\paragraph}[runin]
+{\color{seccolor}\normalfont\normalsize\bfseries}
+{}{}{\indent}
+% #elif SECTION_HEADINGS == "gray"
+% --- section/subsection headings with white text on gray background ---
+\titleformat{name=\section}[block]
+  {\sffamily\Large}{}{0pt}{\colorsection}
+\titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip}
+
+\newcommand{\colorsection}[1]{%
+  \colorbox{gray!50}{{\color{white}\thesection\ #1}}}
+
+\titleformat{name=\subsection}[block]
+  {\sffamily\large}{}{0pt}{\colorsubsection}
+\titlespacing*{\subsection}{0pt}{\baselineskip}{\baselineskip}
+
+\newcommand{\colorsubsection}[1]{%
+  \colorbox{gray!50}{{\color{white}\thesubsection\ #1}}}
+% #elif SECTION_HEADINGS == "gray-wide"
+% --- section/subsection headings with white text on wide gray background ---
+\titleformat{name=\section}[block]
+  {\sffamily\Large}{}{0pt}{\colorsection}
+\titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip}
+
+\newcommand{\colorsection}[1]{%
+  \colorbox{gray!50}{\parbox{\dimexpr\textwidth-2\fboxsep}%
+           {\color{white}\thesection\ #1}}}
+
+\titleformat{name=\subsection}[block]
+  {\sffamily\large}{}{0pt}{\colorsubsection}
+\titlespacing*{\subsection}{0pt}{\baselineskip}{\baselineskip}
+
+\newcommand{\colorsubsection}[1]{%
+  \colorbox{gray!50}{\parbox{\dimexpr\textwidth-2\fboxsep}%
+           {\color{white}\thesubsection\ #1}}}
+% #endif
+
 % #ifdef COLORED_TABLE_ROWS
 % color every two table rows
 \let\oldtabular\tabular
@@ -28393,22 +28636,6 @@ final,                   % or draft (marks overfull hboxes)
 \definecolor{appleblue}{rgb}{0.93,0.95,1.0}  % Apple blue
 \renewenvironment{tabular}{\rowcolors{2}{white}{appleblue}%
 \oldtabular}{\endoldtabular}
-% #endif
-
-% prevent orhpans and widows
-\clubpenalty = 10000
-\widowpenalty = 10000
-
-% http://www.ctex.org/documents/packages/layout/titlesec.pdf
-\usepackage[compact]{titlesec}  % narrower section headings
-% #ifdef BLUE_SECTION_HEADINGS
-\definecolor{seccolor}{rgb}{0.2,0.2,0.8}
-\titleformat{\section}
-{\color{seccolor}\normalfont\Large\bfseries}
-{\color{seccolor}\thesection}{1em}{}
-\titleformat{\subsection}
-{\color{seccolor}\normalfont\large\bfseries}
-{\color{seccolor}\thesubsection}{1em}{}
 % #endif
 
 % --- end of standard preamble for documents ---
@@ -28854,9 +29081,12 @@ output2
 
 It is time to test \code{verbatim inline font} especially with \code{a newline
 inside the text} and an exclamation mark at the end: \code{BEGIN}! The
-exclamation mark inside the verbatim text is not smart for latex as
-we use ! in the \code{verb} typesetting... Also test backslashes
-like \code{\begin} and \code{\end} in inline verbatim text.
+exclamation mark inside the verbatim text is potentially not smart
+since latex use ! in the \code{Verb} typesetting, but this should now
+be fixed: test \code{!bc} and \code{!ec} as well as \code{!bsummary}.
+Also test backslashes and braces like \code{\begin}, \code{\begin{enumerate}},
+\code{\end{this}\end{that}}, and \code{{something \inside braces}} in inline
+verbatim text.
 
 Here is some \textcolor{red}{red} color and an attempt to write \textcolor{green}{with
 green color containing a linebreak.
@@ -30148,7 +30378,7 @@ def system(cmd, capture_output=False, echo=True):
 # Copy generated sphinx files to sphinx root directory
 filename = 'testdoc'
 # Not used: shutil.copy('%s.rst' % filename, sphinx_rootdir)
-for part in ['._part0000_testdoc', '._part0001_testdoc', '._part0002_testdoc']:
+for part in ['._testdoc000', '._testdoc001', '._testdoc002']:
     shutil.copy('%s.rst' % part, sphinx_rootdir)
 
 # Copy figures and movies directories
@@ -30202,7 +30432,7 @@ system('make html')
 
 print 'Fix generated files:'
 os.chdir('_build/html')
-for filename in glob.glob('*.html'):
+for filename in glob.glob('*.html') + glob.glob('.*.html'):
     # Fix double title in <title> tags
     system('doconce subst "<title>(.+?) &mdash;.+?</title>" "<title>\g<1></title>" %s' % filename, echo=False)
     # Fix admonition style
@@ -30215,13 +30445,14 @@ for filename in glob.glob('*.html'):
    </style>
   </head>
 " %s""" % filename, echo=False)
+    if os.path.isfile(filename + '.old~~'):
+        os.remove(filename + '.old~~')
     # Check if external links should pop up in separate windows
     f = open(filename, 'r');  text = f.read();  f.close()
     if '.. Open external links in new windows.' in text:
         text = text.replace('<a class="reference external"',
                             '<a class="reference external" target="_blank"')
         f = open(filename, 'w');  f.write(text);  f.close()
-    os.remove(filename + '.old~')
 print """
 google-chrome sphinx-rootdir/_build/html/index.html
 """
@@ -30325,7 +30556,7 @@ system('make html')
 
 print 'Fix generated files:'
 os.chdir('_build/html')
-for filename in glob.glob('*.html'):
+for filename in glob.glob('*.html') + glob.glob('.*.html'):
     # Fix double title in <title> tags
     system('doconce subst "<title>(.+?) &mdash;.+?</title>" "<title>\g<1></title>" %s' % filename, echo=False)
     # Fix admonition style
@@ -30338,13 +30569,14 @@ for filename in glob.glob('*.html'):
    </style>
   </head>
 " %s""" % filename, echo=False)
+    if os.path.isfile(filename + '.old~~'):
+        os.remove(filename + '.old~~')
     # Check if external links should pop up in separate windows
     f = open(filename, 'r');  text = f.read();  f.close()
     if '.. Open external links in new windows.' in text:
         text = text.replace('<a class="reference external"',
                             '<a class="reference external" target="_blank"')
         f = open(filename, 'w');  f.write(text);  f.close()
-    os.remove(filename + '.old~')
 print """
 google-chrome sphinx-rootdir-math/_build/html/index.html
 """
@@ -30358,9 +30590,9 @@ testdoc.html
 ../doc/src/manual/figs/wavepacket_*.png
 wavepacket_0001.html
 testdoc.do.txt
-._part0000_testdoc.html
-._part0001_testdoc.html
-._part0002_testdoc.html
+._testdoc000.html
+._testdoc001.html
+._testdoc002.html
 
 ************** File: make.sh *****************
 #!/bin/bash -x
@@ -30446,7 +30678,7 @@ doconce replace --examples_as__exercises $ex testdoc.p.tex
 
 # A4PAPER trigger summary environment to be smaller paragraph
 # within the text (fine for proposals or articles).
-system ptex2tex -DMINTED -DMOVIE=movie15 -DLATEX_HEADING=titlepage -DA4PAPER -DTODONOTES -DLINENUMBERS -DCOLORED_TABLE_ROWS=blue -DBLUE_SECTION_HEADINGS testdoc
+system ptex2tex -DMINTED -DMOVIE=movie15 -DLATEX_HEADING=titlepage -DA4PAPER -DTODONOTES -DLINENUMBERS -DCOLORED_TABLE_ROWS=blue -DSECTION_HEADINGS=blue testdoc
 
 # test that pdflatex works
 system pdflatex -shell-escape testdoc
@@ -31679,6 +31911,76 @@ final,                   % or draft (marks overfull hboxes)
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
 
+% --- end of definitions of admonition environments ---
+
+% prevent orhpans and widows
+\clubpenalty = 10000
+\widowpenalty = 10000
+
+% #ifndef SECTION_HEADINGS
+% #define SECTION_HEADINGS "std"
+% #else
+% http://www.ctex.org/documents/packages/layout/titlesec.pdf
+\usepackage[compact]{titlesec}  % reduce the spacing above/below the heading
+% #endif
+% #if SECTION_HEADINGS == "blue"
+% --- section/subsection headings with blue color ---
+\definecolor{seccolor}{cmyk}{.9,.5,0,.35}  % siamltexmm.sty section color
+\titleformat{name=\section}
+{\color{seccolor}\normalfont\Large\bfseries}
+{\color{seccolor}\thesection}{1em}{}
+\titleformat{name=\subsection}
+{\color{seccolor}\normalfont\large\bfseries}
+{\color{seccolor}\thesubsection}{1em}{}
+\titleformat{name=\paragraph}[runin]
+{\color{seccolor}\normalfont\normalsize\bfseries}
+{}{}{\indent}
+% #elif SECTION_HEADINGS == "strongblue"
+% --- section/subsection headings with a strong blue color ---
+\definecolor{seccolor}{rgb}{0.2,0.2,0.8}
+\titleformat{name=\section}
+{\color{seccolor}\normalfont\Large\bfseries}
+{\color{seccolor}\thesection}{1em}{}
+\titleformat{name=\subsection}
+{\color{seccolor}\normalfont\large\bfseries}
+{\color{seccolor}\thesubsection}{1em}{}
+\titleformat{name=\paragraph}[runin]
+{\color{seccolor}\normalfont\normalsize\bfseries}
+{}{}{\indent}
+% #elif SECTION_HEADINGS == "gray"
+% --- section/subsection headings with white text on gray background ---
+\titleformat{name=\section}[block]
+  {\sffamily\Large}{}{0pt}{\colorsection}
+\titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip}
+
+\newcommand{\colorsection}[1]{%
+  \colorbox{gray!50}{{\color{white}\thesection\ #1}}}
+
+\titleformat{name=\subsection}[block]
+  {\sffamily\large}{}{0pt}{\colorsubsection}
+\titlespacing*{\subsection}{0pt}{\baselineskip}{\baselineskip}
+
+\newcommand{\colorsubsection}[1]{%
+  \colorbox{gray!50}{{\color{white}\thesubsection\ #1}}}
+% #elif SECTION_HEADINGS == "gray-wide"
+% --- section/subsection headings with white text on wide gray background ---
+\titleformat{name=\section}[block]
+  {\sffamily\Large}{}{0pt}{\colorsection}
+\titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip}
+
+\newcommand{\colorsection}[1]{%
+  \colorbox{gray!50}{\parbox{\dimexpr\textwidth-2\fboxsep}%
+           {\color{white}\thesection\ #1}}}
+
+\titleformat{name=\subsection}[block]
+  {\sffamily\large}{}{0pt}{\colorsubsection}
+\titlespacing*{\subsection}{0pt}{\baselineskip}{\baselineskip}
+
+\newcommand{\colorsubsection}[1]{%
+  \colorbox{gray!50}{\parbox{\dimexpr\textwidth-2\fboxsep}%
+           {\color{white}\thesubsection\ #1}}}
+% #endif
+
 % #ifdef COLORED_TABLE_ROWS
 % color every two table rows
 \let\oldtabular\tabular
@@ -31697,22 +31999,6 @@ final,                   % or draft (marks overfull hboxes)
 \definecolor{appleblue}{rgb}{0.93,0.95,1.0}  % Apple blue
 \renewenvironment{tabular}{\rowcolors{2}{white}{appleblue}%
 \oldtabular}{\endoldtabular}
-% #endif
-
-% prevent orhpans and widows
-\clubpenalty = 10000
-\widowpenalty = 10000
-
-% http://www.ctex.org/documents/packages/layout/titlesec.pdf
-\usepackage[compact]{titlesec}  % narrower section headings
-% #ifdef BLUE_SECTION_HEADINGS
-\definecolor{seccolor}{rgb}{0.2,0.2,0.8}
-\titleformat{\section}
-{\color{seccolor}\normalfont\Large\bfseries}
-{\color{seccolor}\thesection}{1em}{}
-\titleformat{\subsection}
-{\color{seccolor}\normalfont\large\bfseries}
-{\color{seccolor}\thesubsection}{1em}{}
 % #endif
 
 % --- end of standard preamble for documents ---
@@ -32302,43 +32588,43 @@ h1, h2, h3, h4, h5, h6 {
      <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2b</a></li>
      -->
      <!-- Doconce automatically fills in the table of contents -->
-          <!-- vagrant nav toc: " Section 1 " --> <li>  <a href="._part0001_testdoc_vagrant.html#sec1"> Section 1 </a>
-     <!-- vagrant nav toc: " Subsection 1 " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#___sec1"> Subsection 1 </a>
-     <!-- vagrant nav toc: " Subsection 2: Testing figures and movies " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#subsec:ex"> Subsection 2: Testing figures and movies </a>
-     <!-- vagrant nav toc: " Test of movies " --> <li> &nbsp; &nbsp;  <a href="._part0002_testdoc_vagrant.html#___sec3"> Test of movies </a>
-     <!-- vagrant nav toc: " The \( \theta \) parameter (not \( \nabla \)?) " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a>
-     <!-- vagrant nav toc: " Custom Environments " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#___sec5"> Custom Environments </a>
-     <!-- vagrant nav toc: " Tables " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#subsec:table"> Tables </a>
-     <!-- vagrant nav toc: " A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#___sec7"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a>
-     <!-- vagrant nav toc: " Bibliography test " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#___sec8"> Bibliography test </a>
-     <!-- vagrant nav toc: " Example 1: Examples can be typeset as exercises " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#Example"> Example 1: Examples can be typeset as exercises </a>
-     <!-- vagrant nav toc: " URLs " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#subsubsec:ex"> URLs </a>
-     <!-- vagrant nav toc: " LaTeX Mathematics " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#___sec11"> LaTeX Mathematics </a>
-     <!-- vagrant nav toc: " Exercises " --> <li>  <a href="._part0002_testdoc_vagrant.html#___sec12"> Exercises </a>
-     <!-- vagrant nav toc: " Problem 2: Flip a Coin " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#demo:ex:1"> Problem 2: Flip a Coin </a>
-     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._part0002_testdoc_vagrant.html#___sec14"> Remarks </a>
-     <!-- vagrant nav toc: " Not an exercise " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#___sec15"> Not an exercise </a>
-     <!-- vagrant nav toc: " Project 3: Compute a Probability " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#demo:ex:2"> Project 3: Compute a Probability </a>
-     <!-- vagrant nav toc: " Project 4: Explore Distributions of Random Circles " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a>
-     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._part0002_testdoc_vagrant.html#___sec18"> Remarks </a>
-     <!-- vagrant nav toc: " Exercise 5: Determine some Distance " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#exer:dist"> Exercise 5: Determine some Distance </a>
-     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._part0002_testdoc_vagrant.html#___sec20"> Remarks </a>
-     <!-- vagrant nav toc: " Some exercise without the "Exercise:" prefix " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#___sec21"> Some exercise without the "Exercise:" prefix </a>
-     <!-- vagrant nav toc: " Example 7: Just an example " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#___sec22"> Example 7: Just an example </a>
-     <!-- vagrant nav toc: " Here goes another section " --> <li>  <a href="._part0002_testdoc_vagrant.html#___sec23"> Here goes another section </a>
-     <!-- vagrant nav toc: " More Exercises " --> <li>  <a href="._part0002_testdoc_vagrant.html#___sec24"> More Exercises </a>
-     <!-- vagrant nav toc: " Exercise 8: Make references to projects and problems " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#exer:some:formula"> Exercise 8: Make references to projects and problems </a>
-     <!-- vagrant nav toc: " Project 9: References in a headings do not work well in html " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#exer:you"> Project 9: References in a headings do not work well in html </a>
-     <!-- vagrant nav toc: " References " --> <li>  <a href="._part0002_testdoc_vagrant.html#___sec27"> References </a>
-     <!-- vagrant nav toc: " Appendix: Just for testing; part I " --> <li>  <a href="._part0002_testdoc_vagrant.html#___sec28"> Appendix: Just for testing; part I </a>
-     <!-- vagrant nav toc: " A subsection within an appendix " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#___sec29"> A subsection within an appendix </a>
-     <!-- vagrant nav toc: " Appendix: Just for testing; part II " --> <li>  <a href="._part0002_testdoc_vagrant.html#___sec30"> Appendix: Just for testing; part II </a>
-     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#___sec31"> Appendix: Testing identical titles </a>
-     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#test:title:id1"> Appendix: Testing identical titles </a>
-     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#test:title:id2"> Appendix: Testing identical titles </a>
-     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#___sec34"> Appendix: Testing identical titles </a>
-     <!-- vagrant nav toc: " Appendix: Testing inline comments " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#___sec35"> Appendix: Testing inline comments </a>
-     <!-- vagrant nav toc: " Appendix: Testing headings ending with <code>verbatim inline</code> " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#___sec36"> Appendix: Testing headings ending with <code>verbatim inline</code> </a>
+          <!-- vagrant nav toc: " Section 1 " --> <li>  <a href="._testdoc_vagrant001.html#sec1"> Section 1 </a>
+     <!-- vagrant nav toc: " Subsection 1 " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec1"> Subsection 1 </a>
+     <!-- vagrant nav toc: " Subsection 2: Testing figures and movies " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#subsec:ex"> Subsection 2: Testing figures and movies </a>
+     <!-- vagrant nav toc: " Test of movies " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec3"> Test of movies </a>
+     <!-- vagrant nav toc: " The \( \theta \) parameter (not \( \nabla \)?) " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a>
+     <!-- vagrant nav toc: " Custom Environments " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec5"> Custom Environments </a>
+     <!-- vagrant nav toc: " Tables " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#subsec:table"> Tables </a>
+     <!-- vagrant nav toc: " A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec7"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a>
+     <!-- vagrant nav toc: " Bibliography test " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec8"> Bibliography test </a>
+     <!-- vagrant nav toc: " Example 1: Examples can be typeset as exercises " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#Example"> Example 1: Examples can be typeset as exercises </a>
+     <!-- vagrant nav toc: " URLs " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#subsubsec:ex"> URLs </a>
+     <!-- vagrant nav toc: " LaTeX Mathematics " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec11"> LaTeX Mathematics </a>
+     <!-- vagrant nav toc: " Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec12"> Exercises </a>
+     <!-- vagrant nav toc: " Problem 2: Flip a Coin " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:1"> Problem 2: Flip a Coin </a>
+     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec14"> Remarks </a>
+     <!-- vagrant nav toc: " Not an exercise " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec15"> Not an exercise </a>
+     <!-- vagrant nav toc: " Project 3: Compute a Probability " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:2"> Project 3: Compute a Probability </a>
+     <!-- vagrant nav toc: " Project 4: Explore Distributions of Random Circles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a>
+     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec18"> Remarks </a>
+     <!-- vagrant nav toc: " Exercise 5: Determine some Distance " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 5: Determine some Distance </a>
+     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec20"> Remarks </a>
+     <!-- vagrant nav toc: " Some exercise without the "Exercise:" prefix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec21"> Some exercise without the "Exercise:" prefix </a>
+     <!-- vagrant nav toc: " Example 7: Just an example " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec22"> Example 7: Just an example </a>
+     <!-- vagrant nav toc: " Here goes another section " --> <li>  <a href="._testdoc_vagrant002.html#___sec23"> Here goes another section </a>
+     <!-- vagrant nav toc: " More Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec24"> More Exercises </a>
+     <!-- vagrant nav toc: " Exercise 8: Make references to projects and problems " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 8: Make references to projects and problems </a>
+     <!-- vagrant nav toc: " Project 9: References in a headings do not work well in html " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:you"> Project 9: References in a headings do not work well in html </a>
+     <!-- vagrant nav toc: " References " --> <li>  <a href="._testdoc_vagrant002.html#___sec27"> References </a>
+     <!-- vagrant nav toc: " Appendix: Just for testing; part I " --> <li>  <a href="._testdoc_vagrant002.html#___sec28"> Appendix: Just for testing; part I </a>
+     <!-- vagrant nav toc: " A subsection within an appendix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec29"> A subsection within an appendix </a>
+     <!-- vagrant nav toc: " Appendix: Just for testing; part II " --> <li>  <a href="._testdoc_vagrant002.html#___sec30"> Appendix: Just for testing; part II </a>
+     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec31"> Appendix: Testing identical titles </a>
+     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id1"> Appendix: Testing identical titles </a>
+     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id2"> Appendix: Testing identical titles </a>
+     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec34"> Appendix: Testing identical titles </a>
+     <!-- vagrant nav toc: " Appendix: Testing inline comments " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec35"> Appendix: Testing inline comments </a>
+     <!-- vagrant nav toc: " Appendix: Testing headings ending with <code>verbatim inline</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec36"> Appendix: Testing headings ending with <code>verbatim inline</code> </a>
 
     </ul>
    </div>
@@ -32514,43 +32800,43 @@ $$
 <h2>Table of contents</h2>
 
 <p>
-<a href="._part0001_testdoc_vagrant.html#sec1"> Section 1 </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc_vagrant.html#___sec1"> Subsection 1 </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc_vagrant.html#subsec:ex"> Subsection 2: Testing figures and movies </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc_vagrant.html#___sec3"> Test of movies </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc_vagrant.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc_vagrant.html#___sec5"> Custom Environments </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc_vagrant.html#subsec:table"> Tables </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc_vagrant.html#___sec7"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc_vagrant.html#___sec8"> Bibliography test </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc_vagrant.html#Example"> Example 1: Examples can be typeset as exercises </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc_vagrant.html#subsubsec:ex"> URLs </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc_vagrant.html#___sec11"> LaTeX Mathematics </a><br>
-<a href="._part0002_testdoc_vagrant.html#___sec12"> Exercises </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc_vagrant.html#demo:ex:1"> Problem 2: Flip a Coin </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc_vagrant.html#___sec14"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc_vagrant.html#___sec15"> Not an exercise </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc_vagrant.html#demo:ex:2"> Project 3: Compute a Probability </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc_vagrant.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc_vagrant.html#___sec18"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc_vagrant.html#exer:dist"> Exercise 5: Determine some Distance </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc_vagrant.html#___sec20"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc_vagrant.html#___sec21"> Some exercise without the "Exercise:" prefix </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc_vagrant.html#___sec22"> Example 7: Just an example </a><br>
-<a href="._part0002_testdoc_vagrant.html#___sec23"> Here goes another section </a><br>
-<a href="._part0002_testdoc_vagrant.html#___sec24"> More Exercises </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc_vagrant.html#exer:some:formula"> Exercise 8: Make references to projects and problems </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc_vagrant.html#exer:you"> Project 9: References in a headings do not work well in html </a><br>
-<a href="._part0002_testdoc_vagrant.html#___sec27"> References </a><br>
-<a href="._part0002_testdoc_vagrant.html#___sec28"> Appendix: Just for testing; part I </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc_vagrant.html#___sec29"> A subsection within an appendix </a><br>
-<a href="._part0002_testdoc_vagrant.html#___sec30"> Appendix: Just for testing; part II </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc_vagrant.html#___sec31"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc_vagrant.html#test:title:id1"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc_vagrant.html#test:title:id2"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc_vagrant.html#___sec34"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc_vagrant.html#___sec35"> Appendix: Testing inline comments </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc_vagrant.html#___sec36"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
+<a href="._testdoc_vagrant001.html#sec1"> Section 1 </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec1"> Subsection 1 </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#subsec:ex"> Subsection 2: Testing figures and movies </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec3"> Test of movies </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec5"> Custom Environments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#subsec:table"> Tables </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec7"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec8"> Bibliography test </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#Example"> Example 1: Examples can be typeset as exercises </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#subsubsec:ex"> URLs </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec11"> LaTeX Mathematics </a><br>
+<a href="._testdoc_vagrant002.html#___sec12"> Exercises </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#demo:ex:1"> Problem 2: Flip a Coin </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec14"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec15"> Not an exercise </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#demo:ex:2"> Project 3: Compute a Probability </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec18"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 5: Determine some Distance </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec20"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec21"> Some exercise without the "Exercise:" prefix </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec22"> Example 7: Just an example </a><br>
+<a href="._testdoc_vagrant002.html#___sec23"> Here goes another section </a><br>
+<a href="._testdoc_vagrant002.html#___sec24"> More Exercises </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 8: Make references to projects and problems </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#exer:you"> Project 9: References in a headings do not work well in html </a><br>
+<a href="._testdoc_vagrant002.html#___sec27"> References </a><br>
+<a href="._testdoc_vagrant002.html#___sec28"> Appendix: Just for testing; part I </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec29"> A subsection within an appendix </a><br>
+<a href="._testdoc_vagrant002.html#___sec30"> Appendix: Just for testing; part II </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec31"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#test:title:id1"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#test:title:id2"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec34"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec35"> Appendix: Testing inline comments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec36"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
 
 <p>
 <p>
@@ -32573,7 +32859,7 @@ While the <div class="deep-blue">rest of the</div> getting started
 <ul class="pager">
 
   <li class="next">
-    <a href="._part0001_testdoc_vagrant.html">Next &rarr;</a>
+    <a href="._testdoc_vagrant001.html">Next &rarr;</a>
   </li>
 
 </ul>
@@ -32592,7 +32878,7 @@ While the <div class="deep-blue">rest of the</div> getting started
 
 
 
-************** File: ._part0000_testdoc_vagrant.html *****************
+************** File: ._testdoc_vagrant000.html *****************
 <html>
 <head>
 <!--
@@ -32669,43 +32955,43 @@ h1, h2, h3, h4, h5, h6 {
      <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2b</a></li>
      -->
      <!-- Doconce automatically fills in the table of contents -->
-          <!-- vagrant nav toc: " Section 1 " --> <li>  <a href="._part0001_testdoc_vagrant.html#sec1"> Section 1 </a>
-     <!-- vagrant nav toc: " Subsection 1 " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#___sec1"> Subsection 1 </a>
-     <!-- vagrant nav toc: " Subsection 2: Testing figures and movies " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#subsec:ex"> Subsection 2: Testing figures and movies </a>
-     <!-- vagrant nav toc: " Test of movies " --> <li> &nbsp; &nbsp;  <a href="._part0002_testdoc_vagrant.html#___sec3"> Test of movies </a>
-     <!-- vagrant nav toc: " The \( \theta \) parameter (not \( \nabla \)?) " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a>
-     <!-- vagrant nav toc: " Custom Environments " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#___sec5"> Custom Environments </a>
-     <!-- vagrant nav toc: " Tables " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#subsec:table"> Tables </a>
-     <!-- vagrant nav toc: " A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#___sec7"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a>
-     <!-- vagrant nav toc: " Bibliography test " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#___sec8"> Bibliography test </a>
-     <!-- vagrant nav toc: " Example 1: Examples can be typeset as exercises " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#Example"> Example 1: Examples can be typeset as exercises </a>
-     <!-- vagrant nav toc: " URLs " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#subsubsec:ex"> URLs </a>
-     <!-- vagrant nav toc: " LaTeX Mathematics " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#___sec11"> LaTeX Mathematics </a>
-     <!-- vagrant nav toc: " Exercises " --> <li>  <a href="._part0002_testdoc_vagrant.html#___sec12"> Exercises </a>
-     <!-- vagrant nav toc: " Problem 2: Flip a Coin " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#demo:ex:1"> Problem 2: Flip a Coin </a>
-     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._part0002_testdoc_vagrant.html#___sec14"> Remarks </a>
-     <!-- vagrant nav toc: " Not an exercise " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#___sec15"> Not an exercise </a>
-     <!-- vagrant nav toc: " Project 3: Compute a Probability " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#demo:ex:2"> Project 3: Compute a Probability </a>
-     <!-- vagrant nav toc: " Project 4: Explore Distributions of Random Circles " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a>
-     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._part0002_testdoc_vagrant.html#___sec18"> Remarks </a>
-     <!-- vagrant nav toc: " Exercise 5: Determine some Distance " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#exer:dist"> Exercise 5: Determine some Distance </a>
-     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._part0002_testdoc_vagrant.html#___sec20"> Remarks </a>
-     <!-- vagrant nav toc: " Some exercise without the "Exercise:" prefix " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#___sec21"> Some exercise without the "Exercise:" prefix </a>
-     <!-- vagrant nav toc: " Example 7: Just an example " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#___sec22"> Example 7: Just an example </a>
-     <!-- vagrant nav toc: " Here goes another section " --> <li>  <a href="._part0002_testdoc_vagrant.html#___sec23"> Here goes another section </a>
-     <!-- vagrant nav toc: " More Exercises " --> <li>  <a href="._part0002_testdoc_vagrant.html#___sec24"> More Exercises </a>
-     <!-- vagrant nav toc: " Exercise 8: Make references to projects and problems " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#exer:some:formula"> Exercise 8: Make references to projects and problems </a>
-     <!-- vagrant nav toc: " Project 9: References in a headings do not work well in html " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#exer:you"> Project 9: References in a headings do not work well in html </a>
-     <!-- vagrant nav toc: " References " --> <li>  <a href="._part0002_testdoc_vagrant.html#___sec27"> References </a>
-     <!-- vagrant nav toc: " Appendix: Just for testing; part I " --> <li>  <a href="._part0002_testdoc_vagrant.html#___sec28"> Appendix: Just for testing; part I </a>
-     <!-- vagrant nav toc: " A subsection within an appendix " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#___sec29"> A subsection within an appendix </a>
-     <!-- vagrant nav toc: " Appendix: Just for testing; part II " --> <li>  <a href="._part0002_testdoc_vagrant.html#___sec30"> Appendix: Just for testing; part II </a>
-     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#___sec31"> Appendix: Testing identical titles </a>
-     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#test:title:id1"> Appendix: Testing identical titles </a>
-     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#test:title:id2"> Appendix: Testing identical titles </a>
-     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#___sec34"> Appendix: Testing identical titles </a>
-     <!-- vagrant nav toc: " Appendix: Testing inline comments " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#___sec35"> Appendix: Testing inline comments </a>
-     <!-- vagrant nav toc: " Appendix: Testing headings ending with <code>verbatim inline</code> " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#___sec36"> Appendix: Testing headings ending with <code>verbatim inline</code> </a>
+          <!-- vagrant nav toc: " Section 1 " --> <li>  <a href="._testdoc_vagrant001.html#sec1"> Section 1 </a>
+     <!-- vagrant nav toc: " Subsection 1 " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec1"> Subsection 1 </a>
+     <!-- vagrant nav toc: " Subsection 2: Testing figures and movies " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#subsec:ex"> Subsection 2: Testing figures and movies </a>
+     <!-- vagrant nav toc: " Test of movies " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec3"> Test of movies </a>
+     <!-- vagrant nav toc: " The \( \theta \) parameter (not \( \nabla \)?) " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a>
+     <!-- vagrant nav toc: " Custom Environments " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec5"> Custom Environments </a>
+     <!-- vagrant nav toc: " Tables " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#subsec:table"> Tables </a>
+     <!-- vagrant nav toc: " A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec7"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a>
+     <!-- vagrant nav toc: " Bibliography test " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec8"> Bibliography test </a>
+     <!-- vagrant nav toc: " Example 1: Examples can be typeset as exercises " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#Example"> Example 1: Examples can be typeset as exercises </a>
+     <!-- vagrant nav toc: " URLs " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#subsubsec:ex"> URLs </a>
+     <!-- vagrant nav toc: " LaTeX Mathematics " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec11"> LaTeX Mathematics </a>
+     <!-- vagrant nav toc: " Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec12"> Exercises </a>
+     <!-- vagrant nav toc: " Problem 2: Flip a Coin " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:1"> Problem 2: Flip a Coin </a>
+     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec14"> Remarks </a>
+     <!-- vagrant nav toc: " Not an exercise " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec15"> Not an exercise </a>
+     <!-- vagrant nav toc: " Project 3: Compute a Probability " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:2"> Project 3: Compute a Probability </a>
+     <!-- vagrant nav toc: " Project 4: Explore Distributions of Random Circles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a>
+     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec18"> Remarks </a>
+     <!-- vagrant nav toc: " Exercise 5: Determine some Distance " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 5: Determine some Distance </a>
+     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec20"> Remarks </a>
+     <!-- vagrant nav toc: " Some exercise without the "Exercise:" prefix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec21"> Some exercise without the "Exercise:" prefix </a>
+     <!-- vagrant nav toc: " Example 7: Just an example " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec22"> Example 7: Just an example </a>
+     <!-- vagrant nav toc: " Here goes another section " --> <li>  <a href="._testdoc_vagrant002.html#___sec23"> Here goes another section </a>
+     <!-- vagrant nav toc: " More Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec24"> More Exercises </a>
+     <!-- vagrant nav toc: " Exercise 8: Make references to projects and problems " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 8: Make references to projects and problems </a>
+     <!-- vagrant nav toc: " Project 9: References in a headings do not work well in html " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:you"> Project 9: References in a headings do not work well in html </a>
+     <!-- vagrant nav toc: " References " --> <li>  <a href="._testdoc_vagrant002.html#___sec27"> References </a>
+     <!-- vagrant nav toc: " Appendix: Just for testing; part I " --> <li>  <a href="._testdoc_vagrant002.html#___sec28"> Appendix: Just for testing; part I </a>
+     <!-- vagrant nav toc: " A subsection within an appendix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec29"> A subsection within an appendix </a>
+     <!-- vagrant nav toc: " Appendix: Just for testing; part II " --> <li>  <a href="._testdoc_vagrant002.html#___sec30"> Appendix: Just for testing; part II </a>
+     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec31"> Appendix: Testing identical titles </a>
+     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id1"> Appendix: Testing identical titles </a>
+     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id2"> Appendix: Testing identical titles </a>
+     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec34"> Appendix: Testing identical titles </a>
+     <!-- vagrant nav toc: " Appendix: Testing inline comments " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec35"> Appendix: Testing inline comments </a>
+     <!-- vagrant nav toc: " Appendix: Testing headings ending with <code>verbatim inline</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec36"> Appendix: Testing headings ending with <code>verbatim inline</code> </a>
 
     </ul>
    </div>
@@ -32881,43 +33167,43 @@ $$
 <h2>Table of contents</h2>
 
 <p>
-<a href="._part0001_testdoc_vagrant.html#sec1"> Section 1 </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc_vagrant.html#___sec1"> Subsection 1 </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc_vagrant.html#subsec:ex"> Subsection 2: Testing figures and movies </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc_vagrant.html#___sec3"> Test of movies </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc_vagrant.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc_vagrant.html#___sec5"> Custom Environments </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc_vagrant.html#subsec:table"> Tables </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc_vagrant.html#___sec7"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc_vagrant.html#___sec8"> Bibliography test </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc_vagrant.html#Example"> Example 1: Examples can be typeset as exercises </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc_vagrant.html#subsubsec:ex"> URLs </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc_vagrant.html#___sec11"> LaTeX Mathematics </a><br>
-<a href="._part0002_testdoc_vagrant.html#___sec12"> Exercises </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc_vagrant.html#demo:ex:1"> Problem 2: Flip a Coin </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc_vagrant.html#___sec14"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc_vagrant.html#___sec15"> Not an exercise </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc_vagrant.html#demo:ex:2"> Project 3: Compute a Probability </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc_vagrant.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc_vagrant.html#___sec18"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc_vagrant.html#exer:dist"> Exercise 5: Determine some Distance </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc_vagrant.html#___sec20"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc_vagrant.html#___sec21"> Some exercise without the "Exercise:" prefix </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc_vagrant.html#___sec22"> Example 7: Just an example </a><br>
-<a href="._part0002_testdoc_vagrant.html#___sec23"> Here goes another section </a><br>
-<a href="._part0002_testdoc_vagrant.html#___sec24"> More Exercises </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc_vagrant.html#exer:some:formula"> Exercise 8: Make references to projects and problems </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc_vagrant.html#exer:you"> Project 9: References in a headings do not work well in html </a><br>
-<a href="._part0002_testdoc_vagrant.html#___sec27"> References </a><br>
-<a href="._part0002_testdoc_vagrant.html#___sec28"> Appendix: Just for testing; part I </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc_vagrant.html#___sec29"> A subsection within an appendix </a><br>
-<a href="._part0002_testdoc_vagrant.html#___sec30"> Appendix: Just for testing; part II </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc_vagrant.html#___sec31"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc_vagrant.html#test:title:id1"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc_vagrant.html#test:title:id2"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc_vagrant.html#___sec34"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc_vagrant.html#___sec35"> Appendix: Testing inline comments </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._part0002_testdoc_vagrant.html#___sec36"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
+<a href="._testdoc_vagrant001.html#sec1"> Section 1 </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec1"> Subsection 1 </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#subsec:ex"> Subsection 2: Testing figures and movies </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec3"> Test of movies </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec5"> Custom Environments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#subsec:table"> Tables </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec7"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec8"> Bibliography test </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#Example"> Example 1: Examples can be typeset as exercises </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#subsubsec:ex"> URLs </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec11"> LaTeX Mathematics </a><br>
+<a href="._testdoc_vagrant002.html#___sec12"> Exercises </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#demo:ex:1"> Problem 2: Flip a Coin </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec14"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec15"> Not an exercise </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#demo:ex:2"> Project 3: Compute a Probability </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec18"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 5: Determine some Distance </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec20"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec21"> Some exercise without the "Exercise:" prefix </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec22"> Example 7: Just an example </a><br>
+<a href="._testdoc_vagrant002.html#___sec23"> Here goes another section </a><br>
+<a href="._testdoc_vagrant002.html#___sec24"> More Exercises </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 8: Make references to projects and problems </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#exer:you"> Project 9: References in a headings do not work well in html </a><br>
+<a href="._testdoc_vagrant002.html#___sec27"> References </a><br>
+<a href="._testdoc_vagrant002.html#___sec28"> Appendix: Just for testing; part I </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec29"> A subsection within an appendix </a><br>
+<a href="._testdoc_vagrant002.html#___sec30"> Appendix: Just for testing; part II </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec31"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#test:title:id1"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#test:title:id2"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec34"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec35"> Appendix: Testing inline comments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec36"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
 
 <p>
 <p>
@@ -32940,7 +33226,7 @@ While the <div class="deep-blue">rest of the</div> getting started
 <ul class="pager">
 
   <li class="next">
-    <a href="._part0001_testdoc_vagrant.html">Next &rarr;</a>
+    <a href="._testdoc_vagrant001.html">Next &rarr;</a>
   </li>
 
 </ul>
@@ -32959,7 +33245,7 @@ While the <div class="deep-blue">rest of the</div> getting started
 
 
 
-************** File: ._part0001_testdoc_vagrant.html *****************
+************** File: ._testdoc_vagrant001.html *****************
 <html>
 <head>
 <!--
@@ -33036,43 +33322,43 @@ h1, h2, h3, h4, h5, h6 {
      <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2b</a></li>
      -->
      <!-- Doconce automatically fills in the table of contents -->
-          <!-- vagrant nav toc: " Section 1 " --> <li class="active">  <a href="._part0001_testdoc_vagrant.html#sec1"> Section 1 </a>
-     <!-- vagrant nav toc: " Subsection 1 " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#___sec1"> Subsection 1 </a>
-     <!-- vagrant nav toc: " Subsection 2: Testing figures and movies " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#subsec:ex"> Subsection 2: Testing figures and movies </a>
-     <!-- vagrant nav toc: " Test of movies " --> <li> &nbsp; &nbsp;  <a href="._part0002_testdoc_vagrant.html#___sec3"> Test of movies </a>
-     <!-- vagrant nav toc: " The \( \theta \) parameter (not \( \nabla \)?) " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a>
-     <!-- vagrant nav toc: " Custom Environments " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#___sec5"> Custom Environments </a>
-     <!-- vagrant nav toc: " Tables " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#subsec:table"> Tables </a>
-     <!-- vagrant nav toc: " A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#___sec7"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a>
-     <!-- vagrant nav toc: " Bibliography test " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#___sec8"> Bibliography test </a>
-     <!-- vagrant nav toc: " Example 1: Examples can be typeset as exercises " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#Example"> Example 1: Examples can be typeset as exercises </a>
-     <!-- vagrant nav toc: " URLs " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#subsubsec:ex"> URLs </a>
-     <!-- vagrant nav toc: " LaTeX Mathematics " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#___sec11"> LaTeX Mathematics </a>
-     <!-- vagrant nav toc: " Exercises " --> <li>  <a href="._part0002_testdoc_vagrant.html#___sec12"> Exercises </a>
-     <!-- vagrant nav toc: " Problem 2: Flip a Coin " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#demo:ex:1"> Problem 2: Flip a Coin </a>
-     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._part0002_testdoc_vagrant.html#___sec14"> Remarks </a>
-     <!-- vagrant nav toc: " Not an exercise " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#___sec15"> Not an exercise </a>
-     <!-- vagrant nav toc: " Project 3: Compute a Probability " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#demo:ex:2"> Project 3: Compute a Probability </a>
-     <!-- vagrant nav toc: " Project 4: Explore Distributions of Random Circles " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a>
-     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._part0002_testdoc_vagrant.html#___sec18"> Remarks </a>
-     <!-- vagrant nav toc: " Exercise 5: Determine some Distance " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#exer:dist"> Exercise 5: Determine some Distance </a>
-     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._part0002_testdoc_vagrant.html#___sec20"> Remarks </a>
-     <!-- vagrant nav toc: " Some exercise without the "Exercise:" prefix " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#___sec21"> Some exercise without the "Exercise:" prefix </a>
-     <!-- vagrant nav toc: " Example 7: Just an example " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#___sec22"> Example 7: Just an example </a>
-     <!-- vagrant nav toc: " Here goes another section " --> <li>  <a href="._part0002_testdoc_vagrant.html#___sec23"> Here goes another section </a>
-     <!-- vagrant nav toc: " More Exercises " --> <li>  <a href="._part0002_testdoc_vagrant.html#___sec24"> More Exercises </a>
-     <!-- vagrant nav toc: " Exercise 8: Make references to projects and problems " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#exer:some:formula"> Exercise 8: Make references to projects and problems </a>
-     <!-- vagrant nav toc: " Project 9: References in a headings do not work well in html " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#exer:you"> Project 9: References in a headings do not work well in html </a>
-     <!-- vagrant nav toc: " References " --> <li>  <a href="._part0002_testdoc_vagrant.html#___sec27"> References </a>
-     <!-- vagrant nav toc: " Appendix: Just for testing; part I " --> <li>  <a href="._part0002_testdoc_vagrant.html#___sec28"> Appendix: Just for testing; part I </a>
-     <!-- vagrant nav toc: " A subsection within an appendix " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#___sec29"> A subsection within an appendix </a>
-     <!-- vagrant nav toc: " Appendix: Just for testing; part II " --> <li>  <a href="._part0002_testdoc_vagrant.html#___sec30"> Appendix: Just for testing; part II </a>
-     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#___sec31"> Appendix: Testing identical titles </a>
-     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#test:title:id1"> Appendix: Testing identical titles </a>
-     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#test:title:id2"> Appendix: Testing identical titles </a>
-     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#___sec34"> Appendix: Testing identical titles </a>
-     <!-- vagrant nav toc: " Appendix: Testing inline comments " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#___sec35"> Appendix: Testing inline comments </a>
-     <!-- vagrant nav toc: " Appendix: Testing headings ending with <code>verbatim inline</code> " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#___sec36"> Appendix: Testing headings ending with <code>verbatim inline</code> </a>
+          <!-- vagrant nav toc: " Section 1 " --> <li class="active">  <a href="._testdoc_vagrant001.html#sec1"> Section 1 </a>
+     <!-- vagrant nav toc: " Subsection 1 " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec1"> Subsection 1 </a>
+     <!-- vagrant nav toc: " Subsection 2: Testing figures and movies " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#subsec:ex"> Subsection 2: Testing figures and movies </a>
+     <!-- vagrant nav toc: " Test of movies " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec3"> Test of movies </a>
+     <!-- vagrant nav toc: " The \( \theta \) parameter (not \( \nabla \)?) " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a>
+     <!-- vagrant nav toc: " Custom Environments " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec5"> Custom Environments </a>
+     <!-- vagrant nav toc: " Tables " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#subsec:table"> Tables </a>
+     <!-- vagrant nav toc: " A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec7"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a>
+     <!-- vagrant nav toc: " Bibliography test " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec8"> Bibliography test </a>
+     <!-- vagrant nav toc: " Example 1: Examples can be typeset as exercises " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#Example"> Example 1: Examples can be typeset as exercises </a>
+     <!-- vagrant nav toc: " URLs " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#subsubsec:ex"> URLs </a>
+     <!-- vagrant nav toc: " LaTeX Mathematics " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec11"> LaTeX Mathematics </a>
+     <!-- vagrant nav toc: " Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec12"> Exercises </a>
+     <!-- vagrant nav toc: " Problem 2: Flip a Coin " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:1"> Problem 2: Flip a Coin </a>
+     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec14"> Remarks </a>
+     <!-- vagrant nav toc: " Not an exercise " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec15"> Not an exercise </a>
+     <!-- vagrant nav toc: " Project 3: Compute a Probability " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:2"> Project 3: Compute a Probability </a>
+     <!-- vagrant nav toc: " Project 4: Explore Distributions of Random Circles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a>
+     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec18"> Remarks </a>
+     <!-- vagrant nav toc: " Exercise 5: Determine some Distance " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 5: Determine some Distance </a>
+     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec20"> Remarks </a>
+     <!-- vagrant nav toc: " Some exercise without the "Exercise:" prefix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec21"> Some exercise without the "Exercise:" prefix </a>
+     <!-- vagrant nav toc: " Example 7: Just an example " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec22"> Example 7: Just an example </a>
+     <!-- vagrant nav toc: " Here goes another section " --> <li>  <a href="._testdoc_vagrant002.html#___sec23"> Here goes another section </a>
+     <!-- vagrant nav toc: " More Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec24"> More Exercises </a>
+     <!-- vagrant nav toc: " Exercise 8: Make references to projects and problems " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 8: Make references to projects and problems </a>
+     <!-- vagrant nav toc: " Project 9: References in a headings do not work well in html " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:you"> Project 9: References in a headings do not work well in html </a>
+     <!-- vagrant nav toc: " References " --> <li>  <a href="._testdoc_vagrant002.html#___sec27"> References </a>
+     <!-- vagrant nav toc: " Appendix: Just for testing; part I " --> <li>  <a href="._testdoc_vagrant002.html#___sec28"> Appendix: Just for testing; part I </a>
+     <!-- vagrant nav toc: " A subsection within an appendix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec29"> A subsection within an appendix </a>
+     <!-- vagrant nav toc: " Appendix: Just for testing; part II " --> <li>  <a href="._testdoc_vagrant002.html#___sec30"> Appendix: Just for testing; part II </a>
+     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec31"> Appendix: Testing identical titles </a>
+     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id1"> Appendix: Testing identical titles </a>
+     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id2"> Appendix: Testing identical titles </a>
+     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec34"> Appendix: Testing identical titles </a>
+     <!-- vagrant nav toc: " Appendix: Testing inline comments " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec35"> Appendix: Testing inline comments </a>
+     <!-- vagrant nav toc: " Appendix: Testing headings ending with <code>verbatim inline</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec36"> Appendix: Testing headings ending with <code>verbatim inline</code> </a>
 
     </ul>
    </div>
@@ -33259,7 +33545,7 @@ Here is a nested list:
 
 
 <p>
-Here is a reference to Equation <a href="._part0002_testdoc_vagrant.html#mjx-eqn-3">(3)</a>.
+Here is a reference to Equation <a href="._testdoc_vagrant002.html#mjx-eqn-3">(3)</a>.
 This equation appears in another part if this document is split.
 
 <p>
@@ -33282,11 +33568,11 @@ While the <div class="deep-blue">rest of the</div> getting started
 
 <ul class="pager">
   <li class="previous">
-    <a href="._part0000_testdoc_vagrant.html">&larr; Prev</a>
+    <a href="._testdoc_vagrant000.html">&larr; Prev</a>
   </li>
 
   <li class="next">
-    <a href="._part0002_testdoc_vagrant.html">Next &rarr;</a>
+    <a href="._testdoc_vagrant002.html">Next &rarr;</a>
   </li>
 
 </ul>
@@ -33305,7 +33591,7 @@ While the <div class="deep-blue">rest of the</div> getting started
 
 
 
-************** File: ._part0002_testdoc_vagrant.html *****************
+************** File: ._testdoc_vagrant002.html *****************
 <html>
 <head>
 <!--
@@ -33382,43 +33668,43 @@ h1, h2, h3, h4, h5, h6 {
      <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2b</a></li>
      -->
      <!-- Doconce automatically fills in the table of contents -->
-          <!-- vagrant nav toc: " Section 1 " --> <li>  <a href="._part0001_testdoc_vagrant.html#sec1"> Section 1 </a>
-     <!-- vagrant nav toc: " Subsection 1 " --> <li class="active"> &nbsp;  <a href="._part0002_testdoc_vagrant.html#___sec1"> Subsection 1 </a>
-     <!-- vagrant nav toc: " Subsection 2: Testing figures and movies " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#subsec:ex"> Subsection 2: Testing figures and movies </a>
-     <!-- vagrant nav toc: " Test of movies " --> <li> &nbsp; &nbsp;  <a href="._part0002_testdoc_vagrant.html#___sec3"> Test of movies </a>
-     <!-- vagrant nav toc: " The \( \theta \) parameter (not \( \nabla \)?) " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a>
-     <!-- vagrant nav toc: " Custom Environments " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#___sec5"> Custom Environments </a>
-     <!-- vagrant nav toc: " Tables " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#subsec:table"> Tables </a>
-     <!-- vagrant nav toc: " A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#___sec7"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a>
-     <!-- vagrant nav toc: " Bibliography test " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#___sec8"> Bibliography test </a>
-     <!-- vagrant nav toc: " Example 1: Examples can be typeset as exercises " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#Example"> Example 1: Examples can be typeset as exercises </a>
-     <!-- vagrant nav toc: " URLs " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#subsubsec:ex"> URLs </a>
-     <!-- vagrant nav toc: " LaTeX Mathematics " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#___sec11"> LaTeX Mathematics </a>
-     <!-- vagrant nav toc: " Exercises " --> <li>  <a href="._part0002_testdoc_vagrant.html#___sec12"> Exercises </a>
-     <!-- vagrant nav toc: " Problem 2: Flip a Coin " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#demo:ex:1"> Problem 2: Flip a Coin </a>
-     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._part0002_testdoc_vagrant.html#___sec14"> Remarks </a>
-     <!-- vagrant nav toc: " Not an exercise " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#___sec15"> Not an exercise </a>
-     <!-- vagrant nav toc: " Project 3: Compute a Probability " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#demo:ex:2"> Project 3: Compute a Probability </a>
-     <!-- vagrant nav toc: " Project 4: Explore Distributions of Random Circles " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a>
-     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._part0002_testdoc_vagrant.html#___sec18"> Remarks </a>
-     <!-- vagrant nav toc: " Exercise 5: Determine some Distance " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#exer:dist"> Exercise 5: Determine some Distance </a>
-     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._part0002_testdoc_vagrant.html#___sec20"> Remarks </a>
-     <!-- vagrant nav toc: " Some exercise without the "Exercise:" prefix " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#___sec21"> Some exercise without the "Exercise:" prefix </a>
-     <!-- vagrant nav toc: " Example 7: Just an example " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#___sec22"> Example 7: Just an example </a>
-     <!-- vagrant nav toc: " Here goes another section " --> <li>  <a href="._part0002_testdoc_vagrant.html#___sec23"> Here goes another section </a>
-     <!-- vagrant nav toc: " More Exercises " --> <li>  <a href="._part0002_testdoc_vagrant.html#___sec24"> More Exercises </a>
-     <!-- vagrant nav toc: " Exercise 8: Make references to projects and problems " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#exer:some:formula"> Exercise 8: Make references to projects and problems </a>
-     <!-- vagrant nav toc: " Project 9: References in a headings do not work well in html " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#exer:you"> Project 9: References in a headings do not work well in html </a>
-     <!-- vagrant nav toc: " References " --> <li>  <a href="._part0002_testdoc_vagrant.html#___sec27"> References </a>
-     <!-- vagrant nav toc: " Appendix: Just for testing; part I " --> <li>  <a href="._part0002_testdoc_vagrant.html#___sec28"> Appendix: Just for testing; part I </a>
-     <!-- vagrant nav toc: " A subsection within an appendix " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#___sec29"> A subsection within an appendix </a>
-     <!-- vagrant nav toc: " Appendix: Just for testing; part II " --> <li>  <a href="._part0002_testdoc_vagrant.html#___sec30"> Appendix: Just for testing; part II </a>
-     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#___sec31"> Appendix: Testing identical titles </a>
-     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#test:title:id1"> Appendix: Testing identical titles </a>
-     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#test:title:id2"> Appendix: Testing identical titles </a>
-     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#___sec34"> Appendix: Testing identical titles </a>
-     <!-- vagrant nav toc: " Appendix: Testing inline comments " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#___sec35"> Appendix: Testing inline comments </a>
-     <!-- vagrant nav toc: " Appendix: Testing headings ending with <code>verbatim inline</code> " --> <li> &nbsp;  <a href="._part0002_testdoc_vagrant.html#___sec36"> Appendix: Testing headings ending with <code>verbatim inline</code> </a>
+          <!-- vagrant nav toc: " Section 1 " --> <li>  <a href="._testdoc_vagrant001.html#sec1"> Section 1 </a>
+     <!-- vagrant nav toc: " Subsection 1 " --> <li class="active"> &nbsp;  <a href="._testdoc_vagrant002.html#___sec1"> Subsection 1 </a>
+     <!-- vagrant nav toc: " Subsection 2: Testing figures and movies " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#subsec:ex"> Subsection 2: Testing figures and movies </a>
+     <!-- vagrant nav toc: " Test of movies " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec3"> Test of movies </a>
+     <!-- vagrant nav toc: " The \( \theta \) parameter (not \( \nabla \)?) " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a>
+     <!-- vagrant nav toc: " Custom Environments " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec5"> Custom Environments </a>
+     <!-- vagrant nav toc: " Tables " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#subsec:table"> Tables </a>
+     <!-- vagrant nav toc: " A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec7"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a>
+     <!-- vagrant nav toc: " Bibliography test " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec8"> Bibliography test </a>
+     <!-- vagrant nav toc: " Example 1: Examples can be typeset as exercises " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#Example"> Example 1: Examples can be typeset as exercises </a>
+     <!-- vagrant nav toc: " URLs " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#subsubsec:ex"> URLs </a>
+     <!-- vagrant nav toc: " LaTeX Mathematics " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec11"> LaTeX Mathematics </a>
+     <!-- vagrant nav toc: " Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec12"> Exercises </a>
+     <!-- vagrant nav toc: " Problem 2: Flip a Coin " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:1"> Problem 2: Flip a Coin </a>
+     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec14"> Remarks </a>
+     <!-- vagrant nav toc: " Not an exercise " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec15"> Not an exercise </a>
+     <!-- vagrant nav toc: " Project 3: Compute a Probability " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:2"> Project 3: Compute a Probability </a>
+     <!-- vagrant nav toc: " Project 4: Explore Distributions of Random Circles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a>
+     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec18"> Remarks </a>
+     <!-- vagrant nav toc: " Exercise 5: Determine some Distance " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 5: Determine some Distance </a>
+     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec20"> Remarks </a>
+     <!-- vagrant nav toc: " Some exercise without the "Exercise:" prefix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec21"> Some exercise without the "Exercise:" prefix </a>
+     <!-- vagrant nav toc: " Example 7: Just an example " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec22"> Example 7: Just an example </a>
+     <!-- vagrant nav toc: " Here goes another section " --> <li>  <a href="._testdoc_vagrant002.html#___sec23"> Here goes another section </a>
+     <!-- vagrant nav toc: " More Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec24"> More Exercises </a>
+     <!-- vagrant nav toc: " Exercise 8: Make references to projects and problems " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 8: Make references to projects and problems </a>
+     <!-- vagrant nav toc: " Project 9: References in a headings do not work well in html " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:you"> Project 9: References in a headings do not work well in html </a>
+     <!-- vagrant nav toc: " References " --> <li>  <a href="._testdoc_vagrant002.html#___sec27"> References </a>
+     <!-- vagrant nav toc: " Appendix: Just for testing; part I " --> <li>  <a href="._testdoc_vagrant002.html#___sec28"> Appendix: Just for testing; part I </a>
+     <!-- vagrant nav toc: " A subsection within an appendix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec29"> A subsection within an appendix </a>
+     <!-- vagrant nav toc: " Appendix: Just for testing; part II " --> <li>  <a href="._testdoc_vagrant002.html#___sec30"> Appendix: Just for testing; part II </a>
+     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec31"> Appendix: Testing identical titles </a>
+     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id1"> Appendix: Testing identical titles </a>
+     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id2"> Appendix: Testing identical titles </a>
+     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec34"> Appendix: Testing identical titles </a>
+     <!-- vagrant nav toc: " Appendix: Testing inline comments " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec35"> Appendix: Testing inline comments </a>
+     <!-- vagrant nav toc: " Appendix: Testing headings ending with <code>verbatim inline</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec36"> Appendix: Testing headings ending with <code>verbatim inline</code> </a>
 
     </ul>
    </div>
@@ -33555,7 +33841,7 @@ $$
 <h3>Subsection 1  <a name="___sec1"></a></h3>
 
 <p>
-More text, with a reference back to the section <a href="._part0001_testdoc_vagrant.html#sec1">Section 1</a> and further
+More text, with a reference back to the section <a href="._testdoc_vagrant001.html#sec1">Section 1</a> and further
 to the section <a href="#subsubsec:ex">URLs</a>. 
 <!-- sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console -->
 
@@ -33738,9 +34024,12 @@ output2
 <p>
 It is time to test <code>verbatim inline font</code> especially with <code>a newline
 inside the text</code> and an exclamation mark at the end: <code>BEGIN</code>! The
-exclamation mark inside the verbatim text is not smart for latex as
-we use ! in the <code>verb</code> typesetting... Also test backslashes
-like <code>\begin</code> and <code>\end</code> in inline verbatim text.
+exclamation mark inside the verbatim text is potentially not smart
+since latex use ! in the <code>Verb</code> typesetting, but this should now
+be fixed: test <code>!bc</code> and <code>!ec</code> as well as <code>!bsummary</code>.
+Also test backslashes and braces like <code>\begin</code>, <code>\begin{enumerate}</code>,
+<code>\end{this}\end{that}</code>, and <code>{something \inside braces}</code> in inline
+verbatim text.
 
 <p>
 Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
@@ -34963,7 +35252,7 @@ While the <div class="deep-blue">rest of the</div> getting started
 
 <ul class="pager">
   <li class="previous">
-    <a href="._part0001_testdoc_vagrant.html">&larr; Prev</a>
+    <a href="._testdoc_vagrant001.html">&larr; Prev</a>
   </li>
 
 
@@ -34983,7 +35272,7 @@ While the <div class="deep-blue">rest of the</div> getting started
 
 
 
-************** File: ._part0000_testdoc.rst *****************
+************** File: ._testdoc000.rst *****************
 .. Automatically generated reST file from Doconce source
    (https://github.com/hplgit/doconce/)
 
@@ -34994,7 +35283,7 @@ A Document for Testing Doconce
 :Date: Jan 32, 2100
 
 
-************** File: ._part0001_testdoc.rst *****************
+************** File: ._testdoc001.rst *****************
 .. !split
 
 
@@ -35058,7 +35347,7 @@ Here is a reference to Equation :ref:`(3.3) <Eq:my:eq1>`.
 This equation appears in another part if this document is split.
 
 
-************** File: ._part0002_testdoc.rst *****************
+************** File: ._testdoc002.rst *****************
 .. !split and check if these extra words are included properly in the comment
 
 
@@ -35252,9 +35541,12 @@ System call:
 
 It is time to test ``verbatim inline font`` especially with ``a newline
 inside the text`` and an exclamation mark at the end: ``BEGIN``! The
-exclamation mark inside the verbatim text is not smart for latex as
-we use ! in the ``verb`` typesetting... Also test backslashes
-like ``\begin`` and ``\end`` in inline verbatim text.
+exclamation mark inside the verbatim text is potentially not smart
+since latex use ! in the ``Verb`` typesetting, but this should now
+be fixed: test ``!bc`` and ``!ec`` as well as ``!bsummary``.
+Also test backslashes and braces like ``\begin``, ``\begin{enumerate}``,
+``\end{this}\end{that}``, and ``{something \inside braces}`` in inline
+verbatim text.
 
 Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
 green color containing a linebreak.
@@ -36721,6 +37013,8 @@ final,                   % or draft (marks overfull hboxes)
 
 \usepackage{framed,wrapfig}
 
+% --- begin definitions of admonition environments ---
+
 % Admonition environment for "notice"
 \definecolor{noticebackground}{rgb}{0.988235, 0.964706, 0.862745}
 % \fboxsep sets the space between the text and the box
@@ -36818,6 +37112,76 @@ final,                   % or draft (marks overfull hboxes)
 \end{blockshaded}
 }
 
+% --- end of definitions of admonition environments ---
+
+% prevent orhpans and widows
+\clubpenalty = 10000
+\widowpenalty = 10000
+
+% #ifndef SECTION_HEADINGS
+% #define SECTION_HEADINGS "std"
+% #else
+% http://www.ctex.org/documents/packages/layout/titlesec.pdf
+\usepackage[compact]{titlesec}  % reduce the spacing above/below the heading
+% #endif
+% #if SECTION_HEADINGS == "blue"
+% --- section/subsection headings with blue color ---
+\definecolor{seccolor}{cmyk}{.9,.5,0,.35}  % siamltexmm.sty section color
+\titleformat{name=\section}
+{\color{seccolor}\normalfont\Large\bfseries}
+{\color{seccolor}\thesection}{1em}{}
+\titleformat{name=\subsection}
+{\color{seccolor}\normalfont\large\bfseries}
+{\color{seccolor}\thesubsection}{1em}{}
+\titleformat{name=\paragraph}[runin]
+{\color{seccolor}\normalfont\normalsize\bfseries}
+{}{}{\indent}
+% #elif SECTION_HEADINGS == "strongblue"
+% --- section/subsection headings with a strong blue color ---
+\definecolor{seccolor}{rgb}{0.2,0.2,0.8}
+\titleformat{name=\section}
+{\color{seccolor}\normalfont\Large\bfseries}
+{\color{seccolor}\thesection}{1em}{}
+\titleformat{name=\subsection}
+{\color{seccolor}\normalfont\large\bfseries}
+{\color{seccolor}\thesubsection}{1em}{}
+\titleformat{name=\paragraph}[runin]
+{\color{seccolor}\normalfont\normalsize\bfseries}
+{}{}{\indent}
+% #elif SECTION_HEADINGS == "gray"
+% --- section/subsection headings with white text on gray background ---
+\titleformat{name=\section}[block]
+  {\sffamily\Large}{}{0pt}{\colorsection}
+\titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip}
+
+\newcommand{\colorsection}[1]{%
+  \colorbox{gray!50}{{\color{white}\thesection\ #1}}}
+
+\titleformat{name=\subsection}[block]
+  {\sffamily\large}{}{0pt}{\colorsubsection}
+\titlespacing*{\subsection}{0pt}{\baselineskip}{\baselineskip}
+
+\newcommand{\colorsubsection}[1]{%
+  \colorbox{gray!50}{{\color{white}\thesubsection\ #1}}}
+% #elif SECTION_HEADINGS == "gray-wide"
+% --- section/subsection headings with white text on wide gray background ---
+\titleformat{name=\section}[block]
+  {\sffamily\Large}{}{0pt}{\colorsection}
+\titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip}
+
+\newcommand{\colorsection}[1]{%
+  \colorbox{gray!50}{\parbox{\dimexpr\textwidth-2\fboxsep}%
+           {\color{white}\thesection\ #1}}}
+
+\titleformat{name=\subsection}[block]
+  {\sffamily\large}{}{0pt}{\colorsubsection}
+\titlespacing*{\subsection}{0pt}{\baselineskip}{\baselineskip}
+
+\newcommand{\colorsubsection}[1]{%
+  \colorbox{gray!50}{\parbox{\dimexpr\textwidth-2\fboxsep}%
+           {\color{white}\thesubsection\ #1}}}
+% #endif
+
 % #ifdef COLORED_TABLE_ROWS
 % color every two table rows
 \let\oldtabular\tabular
@@ -36836,22 +37200,6 @@ final,                   % or draft (marks overfull hboxes)
 \definecolor{appleblue}{rgb}{0.93,0.95,1.0}  % Apple blue
 \renewenvironment{tabular}{\rowcolors{2}{white}{appleblue}%
 \oldtabular}{\endoldtabular}
-% #endif
-
-% prevent orhpans and widows
-\clubpenalty = 10000
-\widowpenalty = 10000
-
-% http://www.ctex.org/documents/packages/layout/titlesec.pdf
-\usepackage[compact]{titlesec}  % narrower section headings
-% #ifdef BLUE_SECTION_HEADINGS
-\definecolor{seccolor}{rgb}{0.2,0.2,0.8}
-\titleformat{\section}
-{\color{seccolor}\normalfont\Large\bfseries}
-{\color{seccolor}\thesection}{1em}{}
-\titleformat{\subsection}
-{\color{seccolor}\normalfont\large\bfseries}
-{\color{seccolor}\thesubsection}{1em}{}
 % #endif
 
 % --- end of standard preamble for documents ---
@@ -37312,6 +37660,8 @@ final,                   % or draft (marks overfull hboxes)
 
 \usepackage{framed}
 
+% --- begin definitions of admonition environments ---
+
 % Admonition environment for "notice"
 % Style from NumPy User Guide
 \definecolor{noticebackground}{rgb}{0.988235, 0.964706, 0.862745}
@@ -37402,13 +37752,13 @@ final,                   % or draft (marks overfull hboxes)
 \end{blockshaded}
 }
 
+% --- end of definitions of admonition environments ---
 
 % prevent orhpans and widows
 \clubpenalty = 10000
 \widowpenalty = 10000
 
-% http://www.ctex.org/documents/packages/layout/titlesec.pdf
-\usepackage[compact]{titlesec}  % narrower section headings
+
 
 % --- end of standard preamble for documents ---
 
@@ -37801,6 +38151,8 @@ final,                   % or draft (marks overfull hboxes)
 
 \usepackage{framed,wrapfig}
 
+% --- begin definitions of admonition environments ---
+
 % Admonition environment for "notice"
 \definecolor{noticebackground}{rgb}{0.988235, 0.964706, 0.862745}
 % \fboxsep sets the space between the text and the box
@@ -37898,13 +38250,13 @@ final,                   % or draft (marks overfull hboxes)
 \end{blockshaded}
 }
 
+% --- end of definitions of admonition environments ---
 
 % prevent orhpans and widows
 \clubpenalty = 10000
 \widowpenalty = 10000
 
-% http://www.ctex.org/documents/packages/layout/titlesec.pdf
-\usepackage[compact]{titlesec}  % narrower section headings
+
 
 % --- end of standard preamble for documents ---
 
@@ -38297,6 +38649,8 @@ final,                   % or draft (marks overfull hboxes)
 
 \usepackage[framemethod=TikZ]{mdframed}
 
+% --- begin definitions of admonition environments ---
+
 % Admonition is an oval gray box
 \newmdenv[
   backgroundcolor=gray!5,  %% white with 5%% gray
@@ -38316,13 +38670,13 @@ final,                   % or draft (marks overfull hboxes)
 \end{graybox1mdframed}
 }
 
+% --- end of definitions of admonition environments ---
 
 % prevent orhpans and widows
 \clubpenalty = 10000
 \widowpenalty = 10000
 
-% http://www.ctex.org/documents/packages/layout/titlesec.pdf
-\usepackage[compact]{titlesec}  % narrower section headings
+
 
 % --- end of standard preamble for documents ---
 
@@ -38716,6 +39070,8 @@ final,                   % or draft (marks overfull hboxes)
 \usepackage{wrapfig,calc}
 \usepackage[framemethod=TikZ]{mdframed}  % use latest version: https://github.com/marcodaniel/mdframed
 
+% --- begin definitions of admonition environments ---
+
 % gray box with horizontal rules (cannot handle verbatim text)
 \definecolor{lightgray}{rgb}{0.94,0.94,0.94}
 % gray box of 80% width
@@ -38745,13 +39101,13 @@ final,                   % or draft (marks overfull hboxes)
 \end{graybox2mdframed}
 }
 
+% --- end of definitions of admonition environments ---
 
 % prevent orhpans and widows
 \clubpenalty = 10000
 \widowpenalty = 10000
 
-% http://www.ctex.org/documents/packages/layout/titlesec.pdf
-\usepackage[compact]{titlesec}  % narrower section headings
+
 
 % --- end of standard preamble for documents ---
 
@@ -39167,6 +39523,8 @@ final,                   % or draft (marks overfull hboxes)
 
 \usepackage{framed,wrapfig}
 
+% --- begin definitions of admonition environments ---
+
 % Admonition environment for "notice"
 \definecolor{noticebackground}{rgb}{0.91, 0.91, 0.91}
 % \fboxsep sets the space between the text and the box
@@ -39264,13 +39622,13 @@ final,                   % or draft (marks overfull hboxes)
 \end{blockshaded}
 }
 
+% --- end of definitions of admonition environments ---
 
 % prevent orhpans and widows
 \clubpenalty = 10000
 \widowpenalty = 10000
 
-% http://www.ctex.org/documents/packages/layout/titlesec.pdf
-\usepackage[compact]{titlesec}  % narrower section headings
+
 
 % --- end of standard preamble for documents ---
 
@@ -39663,16 +40021,18 @@ final,                   % or draft (marks overfull hboxes)
 
 \usepackage[framemethod=TikZ]{mdframed}
 
+% --- begin definitions of admonition environments ---
+
 % Admonition is just a paragraph
 \newenvironment{paragraphadmon}[1][]{\paragraph{#1}}{}
 
+% --- end of definitions of admonition environments ---
 
 % prevent orhpans and widows
 \clubpenalty = 10000
 \widowpenalty = 10000
 
-% http://www.ctex.org/documents/packages/layout/titlesec.pdf
-\usepackage[compact]{titlesec}  % narrower section headings
+
 
 % --- end of standard preamble for documents ---
 
@@ -40064,6 +40424,8 @@ final,                   % or draft (marks overfull hboxes)
 
 \usepackage{framed,wrapfig}
 
+% --- begin definitions of admonition environments ---
+
 % Admonition environment for "notice"
 \definecolor{noticebackground}{rgb}{0.988235, 0.964706, 0.862745}
 % \fboxsep sets the space between the text and the box
@@ -40161,13 +40523,13 @@ final,                   % or draft (marks overfull hboxes)
 \end{blockshaded}
 }
 
+% --- end of definitions of admonition environments ---
 
 % prevent orhpans and widows
 \clubpenalty = 10000
 \widowpenalty = 10000
 
-% http://www.ctex.org/documents/packages/layout/titlesec.pdf
-\usepackage[compact]{titlesec}  % narrower section headings
+
 
 % --- end of standard preamble for documents ---
 
@@ -40539,13 +40901,13 @@ Automatically generated HTML file from Doconce source
        background-repeat: no-repeat; background-position: 10px center;
     }
     .notice   { color: #00529B; background-color: #BDE5F8;
-                background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/Knob_Info.png); }
+                background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/Knob_Info.png); }
     .summary  { color: #4F8A10; background-color: #DFF2BF;
-                background-image:url(https://doconce.googlecode.com/hg/bundled/html_images/Knob_Valid_Green.png); }
+                background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/Knob_Valid_Green.png); }
     .warning  { color: #9F6000; background-color: #FEEFB3;
-                background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/Knob_Attention.png); }
+                background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/Knob_Attention.png); }
     .question { color: #4F8A10; background-color: #DFF2BF;
-                background-image:url(https://doconce.googlecode.com/hg/bundled/html_images/Knob_Forward.png); }
+                background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/Knob_Forward.png); }
     .block    { color: #00529B; background-color: #BDE5F8; }
 
 </style>
@@ -40975,10 +41337,10 @@ Automatically generated HTML file from Doconce source
      .alert-block > p, .alert-block > ul {margin-bottom:1em}
      .alert li {margin-top: 1em}
      .alert-block p+p {margin-top:5px}
-     .alert-notice { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_notice.png); }
-     .alert-summary  { background-image:url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_summary.png); }
-     .alert-warning { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_warning.png); }
-     .alert-question {background-image:url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_question.png); }
+     .alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
+     .alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
+     .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
+     .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
 
 </style>
 
@@ -41405,10 +41767,10 @@ Automatically generated HTML file from Doconce source
      .alert-block > p, .alert-block > ul {margin-bottom:1em}
      .alert li {margin-top: 1em}
      .alert-block p+p {margin-top:5px}
-     .alert-notice { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_yellow_notice.png); }
-     .alert-summary  { background-image:url(https://doconce.googlecode.com/hg/bundled/html_images/small_yellow_summary.png); }
-     .alert-warning { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_yellow_warning.png); }
-     .alert-question {background-image:url(https://doconce.googlecode.com/hg/bundled/html_images/small_yellow_question.png); }
+     .alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
+     .alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
+     .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
+     .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
 
 </style>
 
@@ -42288,7 +42650,7 @@ Let us start with a plain warning environment.
 <table width="95%" border="0">
 <tr>
 <td width="25" align="center" valign="top">
-<img src="https://doconce.googlecode.com/hg/bundled/html_images/lyx_warning.png" hspace="5" alt="warning"></td>
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/lyx_warning.png" hspace="5" alt="warning"></td>
 <th align="left" valign="middle"><b>Warning.</b></th>
 </tr>
 <tr><td>&nbsp;</td> <td align="left" valign="top"><p>
@@ -42322,7 +42684,7 @@ Test warning with title:
 <table width="95%" border="0">
 <tr>
 <td width="25" align="center" valign="top">
-<img src="https://doconce.googlecode.com/hg/bundled/html_images/lyx_warning.png" hspace="5" alt="warning"></td>
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/lyx_warning.png" hspace="5" alt="warning"></td>
 <th align="left" valign="middle"><b>Watch out.</b></th>
 </tr>
 <tr><td>&nbsp;</td> <td align="left" valign="top"><p>
@@ -42339,7 +42701,7 @@ Test warning with title with math:
 <table width="95%" border="0">
 <tr>
 <td width="25" align="center" valign="top">
-<img src="https://doconce.googlecode.com/hg/bundled/html_images/lyx_warning.png" hspace="5" alt="warning"></td>
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/lyx_warning.png" hspace="5" alt="warning"></td>
 <th align="left" valign="middle"><b>Watch out for \( \nabla\cdot\boldsymbol{u}=0 \) equations.</b></th>
 </tr>
 <tr><td>&nbsp;</td> <td align="left" valign="top"><p>
@@ -42392,7 +42754,7 @@ The next admonition features a title "Note, eventually!".
 <table width="95%" border="0">
 <tr>
 <td width="25" align="center" valign="top">
-<img src="https://doconce.googlecode.com/hg/bundled/html_images/lyx_notice.png" hspace="5" alt="notice"></td>
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/lyx_notice.png" hspace="5" alt="notice"></td>
 <th align="left" valign="middle"><b>Note, eventually!</b></th>
 </tr>
 <tr><td>&nbsp;</td> <td align="left" valign="top"><p>
@@ -42418,7 +42780,7 @@ $$</div>
 <table width="95%" border="0">
 <tr>
 <td width="25" align="center" valign="top">
-<img src="https://doconce.googlecode.com/hg/bundled/html_images/lyx_notice.png" hspace="5" alt="notice"></td>
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/lyx_notice.png" hspace="5" alt="notice"></td>
 <th align="left" valign="middle"><b>Point1.</b></th>
 </tr>
 <tr><td>&nbsp;</td> <td align="left" valign="top"><p>
@@ -42432,7 +42794,7 @@ $$</div>
 <table width="95%" border="0">
 <tr>
 <td width="25" align="center" valign="top">
-<img src="https://doconce.googlecode.com/hg/bundled/html_images/lyx_question.png" hspace="5" alt="question"></td>
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/lyx_question.png" hspace="5" alt="question"></td>
 <th align="left" valign="middle"><b>Question.</b></th>
 </tr>
 <tr><td>&nbsp;</td> <td align="left" valign="top"><p>
@@ -42446,7 +42808,7 @@ $$</div>
 <table width="95%" border="0">
 <tr>
 <td width="25" align="center" valign="top">
-<img src="https://doconce.googlecode.com/hg/bundled/html_images/lyx_question.png" hspace="5" alt="question"></td>
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/lyx_question.png" hspace="5" alt="question"></td>
 <th align="left" valign="middle"><b>Question.</b></th>
 </tr>
 <tr><td>&nbsp;</td> <td align="left" valign="top"><p>
@@ -42463,7 +42825,7 @@ $$</div>
 <table width="95%" border="0">
 <tr>
 <td width="25" align="center" valign="top">
-<img src="https://doconce.googlecode.com/hg/bundled/html_images/lyx_warning.png" hspace="5" alt="warning"></td>
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/lyx_warning.png" hspace="5" alt="warning"></td>
 <th align="left" valign="middle"><b>Tip.</b></th>
 </tr>
 <tr><td>&nbsp;</td> <td align="left" valign="top"><p>
@@ -42499,7 +42861,7 @@ Next is a warning without a title ("none" implies no title).
 <table width="95%" border="0">
 <tr>
 <td width="25" align="center" valign="top">
-<img src="https://doconce.googlecode.com/hg/bundled/html_images/lyx_warning.png" hspace="5" alt="warning"></td>
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/lyx_warning.png" hspace="5" alt="warning"></td>
 <th align="left" valign="middle"><b></b></th>
 </tr>
 <tr><td>&nbsp;</td> <td align="left" valign="top"><p>
@@ -42519,7 +42881,7 @@ text, math and code.
 <table width="95%" border="0">
 <tr>
 <td width="25" align="center" valign="top">
-<img src="https://doconce.googlecode.com/hg/bundled/html_images/lyx_notice.png" hspace="5" alt="notice"></td>
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/lyx_notice.png" hspace="5" alt="notice"></td>
 <th align="left" valign="middle"><b>Going deeper.</b></th>
 </tr>
 <tr><td>&nbsp;</td> <td align="left" valign="top"><p>
@@ -42624,7 +42986,7 @@ just because we can.
 <table width="95%" border="0">
 <tr>
 <td width="25" align="center" valign="top">
-<img src="https://doconce.googlecode.com/hg/bundled/html_images/lyx_summary.png" hspace="5" alt="summary"></td>
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/lyx_summary.png" hspace="5" alt="summary"></td>
 <th align="left" valign="middle"><b>Concluding remarks, for the novice.</b></th>
 </tr>
 <tr><td>&nbsp;</td> <td align="left" valign="top"><p>
@@ -43166,10 +43528,10 @@ Automatically generated HTML file from Doconce source
      .alert-block > p, .alert-block > ul {margin-bottom:1em}
      .alert li {margin-top: 1em}
      .alert-block p+p {margin-top:5px}
-     .alert-notice { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_yellow_notice.png); }
-     .alert-summary  { background-image:url(https://doconce.googlecode.com/hg/bundled/html_images/small_yellow_summary.png); }
-     .alert-warning { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_yellow_warning.png); }
-     .alert-question {background-image:url(https://doconce.googlecode.com/hg/bundled/html_images/small_yellow_question.png); }
+     .alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
+     .alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
+     .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
+     .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
 
 </style>
 
@@ -45102,10 +45464,10 @@ Automatically generated HTML file from Doconce source
      .alert-block > p, .alert-block > ul {margin-bottom:1em}
      .alert li {margin-top: 1em}
      .alert-block p+p {margin-top:5px}
-     .alert-notice { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_notice.png); }
-     .alert-summary  { background-image:url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_summary.png); }
-     .alert-warning { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_warning.png); }
-     .alert-question {background-image:url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_question.png); }
+     .alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
+     .alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
+     .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
+     .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
 
 </style>
 
@@ -46265,6 +46627,8 @@ final,                   % or draft (marks overfull hboxes)
 
 \usepackage[framemethod=TikZ]{mdframed}
 
+% --- begin definitions of admonition environments ---
+
 % Admonition is an oval gray box
 \newmdenv[
   backgroundcolor=gray!5,  %% white with 5%% gray
@@ -46284,6 +46648,76 @@ final,                   % or draft (marks overfull hboxes)
 \end{graybox1mdframed}
 }
 
+% --- end of definitions of admonition environments ---
+
+% prevent orhpans and widows
+\clubpenalty = 10000
+\widowpenalty = 10000
+
+% #ifndef SECTION_HEADINGS
+% #define SECTION_HEADINGS "std"
+% #else
+% http://www.ctex.org/documents/packages/layout/titlesec.pdf
+\usepackage[compact]{titlesec}  % reduce the spacing above/below the heading
+% #endif
+% #if SECTION_HEADINGS == "blue"
+% --- section/subsection headings with blue color ---
+\definecolor{seccolor}{cmyk}{.9,.5,0,.35}  % siamltexmm.sty section color
+\titleformat{name=\section}
+{\color{seccolor}\normalfont\Large\bfseries}
+{\color{seccolor}\thesection}{1em}{}
+\titleformat{name=\subsection}
+{\color{seccolor}\normalfont\large\bfseries}
+{\color{seccolor}\thesubsection}{1em}{}
+\titleformat{name=\paragraph}[runin]
+{\color{seccolor}\normalfont\normalsize\bfseries}
+{}{}{\indent}
+% #elif SECTION_HEADINGS == "strongblue"
+% --- section/subsection headings with a strong blue color ---
+\definecolor{seccolor}{rgb}{0.2,0.2,0.8}
+\titleformat{name=\section}
+{\color{seccolor}\normalfont\Large\bfseries}
+{\color{seccolor}\thesection}{1em}{}
+\titleformat{name=\subsection}
+{\color{seccolor}\normalfont\large\bfseries}
+{\color{seccolor}\thesubsection}{1em}{}
+\titleformat{name=\paragraph}[runin]
+{\color{seccolor}\normalfont\normalsize\bfseries}
+{}{}{\indent}
+% #elif SECTION_HEADINGS == "gray"
+% --- section/subsection headings with white text on gray background ---
+\titleformat{name=\section}[block]
+  {\sffamily\Large}{}{0pt}{\colorsection}
+\titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip}
+
+\newcommand{\colorsection}[1]{%
+  \colorbox{gray!50}{{\color{white}\thesection\ #1}}}
+
+\titleformat{name=\subsection}[block]
+  {\sffamily\large}{}{0pt}{\colorsubsection}
+\titlespacing*{\subsection}{0pt}{\baselineskip}{\baselineskip}
+
+\newcommand{\colorsubsection}[1]{%
+  \colorbox{gray!50}{{\color{white}\thesubsection\ #1}}}
+% #elif SECTION_HEADINGS == "gray-wide"
+% --- section/subsection headings with white text on wide gray background ---
+\titleformat{name=\section}[block]
+  {\sffamily\Large}{}{0pt}{\colorsection}
+\titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip}
+
+\newcommand{\colorsection}[1]{%
+  \colorbox{gray!50}{\parbox{\dimexpr\textwidth-2\fboxsep}%
+           {\color{white}\thesection\ #1}}}
+
+\titleformat{name=\subsection}[block]
+  {\sffamily\large}{}{0pt}{\colorsubsection}
+\titlespacing*{\subsection}{0pt}{\baselineskip}{\baselineskip}
+
+\newcommand{\colorsubsection}[1]{%
+  \colorbox{gray!50}{\parbox{\dimexpr\textwidth-2\fboxsep}%
+           {\color{white}\thesubsection\ #1}}}
+% #endif
+
 % #ifdef COLORED_TABLE_ROWS
 % color every two table rows
 \let\oldtabular\tabular
@@ -46302,22 +46736,6 @@ final,                   % or draft (marks overfull hboxes)
 \definecolor{appleblue}{rgb}{0.93,0.95,1.0}  % Apple blue
 \renewenvironment{tabular}{\rowcolors{2}{white}{appleblue}%
 \oldtabular}{\endoldtabular}
-% #endif
-
-% prevent orhpans and widows
-\clubpenalty = 10000
-\widowpenalty = 10000
-
-% http://www.ctex.org/documents/packages/layout/titlesec.pdf
-\usepackage[compact]{titlesec}  % narrower section headings
-% #ifdef BLUE_SECTION_HEADINGS
-\definecolor{seccolor}{rgb}{0.2,0.2,0.8}
-\titleformat{\section}
-{\color{seccolor}\normalfont\Large\bfseries}
-{\color{seccolor}\thesection}{1em}{}
-\titleformat{\subsection}
-{\color{seccolor}\normalfont\large\bfseries}
-{\color{seccolor}\thesubsection}{1em}{}
 % #endif
 
 % --- end of standard preamble for documents ---
@@ -48810,6 +49228,8 @@ open=right               % start new chapters on odd-numbered pages
 
 \usepackage[framemethod=TikZ]{mdframed}
 
+% --- begin definitions of admonition environments ---
+
 % Admonition is an oval gray box
 \newmdenv[
   backgroundcolor=gray!5,  %% white with 5%% gray
@@ -48829,6 +49249,76 @@ open=right               % start new chapters on odd-numbered pages
 \end{graybox1mdframed}
 }
 
+% --- end of definitions of admonition environments ---
+
+% prevent orhpans and widows
+\clubpenalty = 10000
+\widowpenalty = 10000
+
+% #ifndef SECTION_HEADINGS
+% #define SECTION_HEADINGS "std"
+% #else
+% http://www.ctex.org/documents/packages/layout/titlesec.pdf
+\usepackage[compact]{titlesec}  % reduce the spacing above/below the heading
+% #endif
+% #if SECTION_HEADINGS == "blue"
+% --- section/subsection headings with blue color ---
+\definecolor{seccolor}{cmyk}{.9,.5,0,.35}  % siamltexmm.sty section color
+\titleformat{name=\section}
+{\color{seccolor}\normalfont\Large\bfseries}
+{\color{seccolor}\thesection}{1em}{}
+\titleformat{name=\subsection}
+{\color{seccolor}\normalfont\large\bfseries}
+{\color{seccolor}\thesubsection}{1em}{}
+\titleformat{name=\paragraph}[runin]
+{\color{seccolor}\normalfont\normalsize\bfseries}
+{}{}{\indent}
+% #elif SECTION_HEADINGS == "strongblue"
+% --- section/subsection headings with a strong blue color ---
+\definecolor{seccolor}{rgb}{0.2,0.2,0.8}
+\titleformat{name=\section}
+{\color{seccolor}\normalfont\Large\bfseries}
+{\color{seccolor}\thesection}{1em}{}
+\titleformat{name=\subsection}
+{\color{seccolor}\normalfont\large\bfseries}
+{\color{seccolor}\thesubsection}{1em}{}
+\titleformat{name=\paragraph}[runin]
+{\color{seccolor}\normalfont\normalsize\bfseries}
+{}{}{\indent}
+% #elif SECTION_HEADINGS == "gray"
+% --- section/subsection headings with white text on gray background ---
+\titleformat{name=\section}[block]
+  {\sffamily\Large}{}{0pt}{\colorsection}
+\titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip}
+
+\newcommand{\colorsection}[1]{%
+  \colorbox{gray!50}{{\color{white}\thesection\ #1}}}
+
+\titleformat{name=\subsection}[block]
+  {\sffamily\large}{}{0pt}{\colorsubsection}
+\titlespacing*{\subsection}{0pt}{\baselineskip}{\baselineskip}
+
+\newcommand{\colorsubsection}[1]{%
+  \colorbox{gray!50}{{\color{white}\thesubsection\ #1}}}
+% #elif SECTION_HEADINGS == "gray-wide"
+% --- section/subsection headings with white text on wide gray background ---
+\titleformat{name=\section}[block]
+  {\sffamily\Large}{}{0pt}{\colorsection}
+\titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip}
+
+\newcommand{\colorsection}[1]{%
+  \colorbox{gray!50}{\parbox{\dimexpr\textwidth-2\fboxsep}%
+           {\color{white}\thesection\ #1}}}
+
+\titleformat{name=\subsection}[block]
+  {\sffamily\large}{}{0pt}{\colorsubsection}
+\titlespacing*{\subsection}{0pt}{\baselineskip}{\baselineskip}
+
+\newcommand{\colorsubsection}[1]{%
+  \colorbox{gray!50}{\parbox{\dimexpr\textwidth-2\fboxsep}%
+           {\color{white}\thesubsection\ #1}}}
+% #endif
+
 % #ifdef COLORED_TABLE_ROWS
 % color every two table rows
 \let\oldtabular\tabular
@@ -48847,22 +49337,6 @@ open=right               % start new chapters on odd-numbered pages
 \definecolor{appleblue}{rgb}{0.93,0.95,1.0}  % Apple blue
 \renewenvironment{tabular}{\rowcolors{2}{white}{appleblue}%
 \oldtabular}{\endoldtabular}
-% #endif
-
-% prevent orhpans and widows
-\clubpenalty = 10000
-\widowpenalty = 10000
-
-% http://www.ctex.org/documents/packages/layout/titlesec.pdf
-\usepackage[compact]{titlesec}  % narrower section headings
-% #ifdef BLUE_SECTION_HEADINGS
-\definecolor{seccolor}{rgb}{0.2,0.2,0.8}
-\titleformat{\section}
-{\color{seccolor}\normalfont\Large\bfseries}
-{\color{seccolor}\thesection}{1em}{}
-\titleformat{\subsection}
-{\color{seccolor}\normalfont\large\bfseries}
-{\color{seccolor}\thesubsection}{1em}{}
 % #endif
 
 % --- end of standard preamble for documents ---
@@ -50102,9 +50576,7 @@ Probably not, but I have a solution :-)
 \end{frame}
 
 \begin{frame}[plain,fragile]
-\frametitle{{\LaTeX}
-
-is very rich; other tools support only some elements}
+\frametitle{{\LaTeX} is very rich; other tools support only some elements}
 
 \begin{itemize}
  \item {\LaTeX} inline math: works with all ({\LaTeX}, MathJax, Sphinx, Markdown, MediaWiki)
@@ -50131,10 +50603,7 @@ is very rich; other tools support only some elements}
 \end{frame}
 
 \begin{frame}[plain,fragile]
-\frametitle{{\LaTeX}
-
-is very rich; other tools support only some elements}
-
+\frametitle{{\LaTeX} is very rich; other tools support only some elements}
 
 \pause
 \begin{block}{}
@@ -50364,7 +50833,7 @@ Inline math as in {\LaTeX}:
 gets rendered as ...where $a=\int_{\Omega}fdx$ is an integral.
 
 
-An equation environment is surrounded by \Verb!!bt! and \Verb!!et! tags,
+An equation environment is surrounded by \Verb~!bt~ and \Verb~!et~ tags,
 the rest is plain {\LaTeX}:
 
 \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
@@ -50390,7 +50859,7 @@ which is rendered as
 \begin{frame}[plain,fragile]
 \frametitle{Doconce: displaying code}
 
-Code is enclosed in \Verb!!bc! and \Verb!!ec! tags:
+Code is enclosed in \Verb~!bc~ and \Verb~!ec~ tags:
 
 \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
 !bc pycod
@@ -50427,7 +50896,7 @@ def solver(I, a, T, dt, theta):
 
 
 \begin{graybox1admon}[Language-dependent typesetting of code:]
-The \Verb!!bc! command can be followed by a specification of the computer
+The \Verb~!bc~ command can be followed by a specification of the computer
 language: \Verb!pycod! for Python code snippet, \Verb!pypro! for complete Python
 program, \Verb!fcod! for Fortran snippet, \Verb!fpro! for Fortran program, and so
 forth (\Verb!c! for C, \Verb!cpp! for C++, \Verb!sh! for Unix shells, \Verb!m! for Matlab).
@@ -50439,7 +50908,7 @@ forth (\Verb!c! for C, \Verb!cpp! for C++, \Verb!sh! for Unix shells, \Verb!m! f
 
 \label{slide:pot}
 
-With \Verb!!bc pyoptpro! or a file \Verb!*.pyopt!, the code applies the
+With \Verb~!bc pyoptpro~ or a file \Verb!*.pyopt!, the code applies the
 \href{{http://pythontutor.com}}{Online Python Tutor} for displaying
 program flow and state of variables:
 
@@ -50620,7 +51089,7 @@ And maybe a final comment?
 
 One can introduce a table-like layout with MxN cells and
 put slide elements in various cell. A cell with position
-MN is surrounded by \Verb!!bslidecell MN! and \Verb!!eslidecell!
+MN is surrounded by \Verb~!bslidecell MN~ and \Verb~!eslidecell~
 tags. Below is an example with a bullet list to the left and
 a figure to the right (two cells, numbered 00 and 01).
 
@@ -51462,6 +51931,8 @@ final,                   % or draft (marks overfull hboxes)
 
 \usepackage[framemethod=TikZ]{mdframed}
 
+% --- begin definitions of admonition environments ---
+
 % Admonition is an oval gray box
 \newmdenv[
   backgroundcolor=gray!5,  %% white with 5%% gray
@@ -51481,6 +51952,76 @@ final,                   % or draft (marks overfull hboxes)
 \end{graybox1mdframed}
 }
 
+% --- end of definitions of admonition environments ---
+
+% prevent orhpans and widows
+\clubpenalty = 10000
+\widowpenalty = 10000
+
+% #ifndef SECTION_HEADINGS
+% #define SECTION_HEADINGS "std"
+% #else
+% http://www.ctex.org/documents/packages/layout/titlesec.pdf
+\usepackage[compact]{titlesec}  % reduce the spacing above/below the heading
+% #endif
+% #if SECTION_HEADINGS == "blue"
+% --- section/subsection headings with blue color ---
+\definecolor{seccolor}{cmyk}{.9,.5,0,.35}  % siamltexmm.sty section color
+\titleformat{name=\section}
+{\color{seccolor}\normalfont\Large\bfseries}
+{\color{seccolor}\thesection}{1em}{}
+\titleformat{name=\subsection}
+{\color{seccolor}\normalfont\large\bfseries}
+{\color{seccolor}\thesubsection}{1em}{}
+\titleformat{name=\paragraph}[runin]
+{\color{seccolor}\normalfont\normalsize\bfseries}
+{}{}{\indent}
+% #elif SECTION_HEADINGS == "strongblue"
+% --- section/subsection headings with a strong blue color ---
+\definecolor{seccolor}{rgb}{0.2,0.2,0.8}
+\titleformat{name=\section}
+{\color{seccolor}\normalfont\Large\bfseries}
+{\color{seccolor}\thesection}{1em}{}
+\titleformat{name=\subsection}
+{\color{seccolor}\normalfont\large\bfseries}
+{\color{seccolor}\thesubsection}{1em}{}
+\titleformat{name=\paragraph}[runin]
+{\color{seccolor}\normalfont\normalsize\bfseries}
+{}{}{\indent}
+% #elif SECTION_HEADINGS == "gray"
+% --- section/subsection headings with white text on gray background ---
+\titleformat{name=\section}[block]
+  {\sffamily\Large}{}{0pt}{\colorsection}
+\titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip}
+
+\newcommand{\colorsection}[1]{%
+  \colorbox{gray!50}{{\color{white}\thesection\ #1}}}
+
+\titleformat{name=\subsection}[block]
+  {\sffamily\large}{}{0pt}{\colorsubsection}
+\titlespacing*{\subsection}{0pt}{\baselineskip}{\baselineskip}
+
+\newcommand{\colorsubsection}[1]{%
+  \colorbox{gray!50}{{\color{white}\thesubsection\ #1}}}
+% #elif SECTION_HEADINGS == "gray-wide"
+% --- section/subsection headings with white text on wide gray background ---
+\titleformat{name=\section}[block]
+  {\sffamily\Large}{}{0pt}{\colorsection}
+\titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip}
+
+\newcommand{\colorsection}[1]{%
+  \colorbox{gray!50}{\parbox{\dimexpr\textwidth-2\fboxsep}%
+           {\color{white}\thesection\ #1}}}
+
+\titleformat{name=\subsection}[block]
+  {\sffamily\large}{}{0pt}{\colorsubsection}
+\titlespacing*{\subsection}{0pt}{\baselineskip}{\baselineskip}
+
+\newcommand{\colorsubsection}[1]{%
+  \colorbox{gray!50}{\parbox{\dimexpr\textwidth-2\fboxsep}%
+           {\color{white}\thesubsection\ #1}}}
+% #endif
+
 % #ifdef COLORED_TABLE_ROWS
 % color every two table rows
 \let\oldtabular\tabular
@@ -51499,22 +52040,6 @@ final,                   % or draft (marks overfull hboxes)
 \definecolor{appleblue}{rgb}{0.93,0.95,1.0}  % Apple blue
 \renewenvironment{tabular}{\rowcolors{2}{white}{appleblue}%
 \oldtabular}{\endoldtabular}
-% #endif
-
-% prevent orhpans and widows
-\clubpenalty = 10000
-\widowpenalty = 10000
-
-% http://www.ctex.org/documents/packages/layout/titlesec.pdf
-\usepackage[compact]{titlesec}  % narrower section headings
-% #ifdef BLUE_SECTION_HEADINGS
-\definecolor{seccolor}{rgb}{0.2,0.2,0.8}
-\titleformat{\section}
-{\color{seccolor}\normalfont\Large\bfseries}
-{\color{seccolor}\thesection}{1em}{}
-\titleformat{\subsection}
-{\color{seccolor}\normalfont\large\bfseries}
-{\color{seccolor}\thesubsection}{1em}{}
 % #endif
 
 % --- end of standard preamble for documents ---
@@ -53661,10 +54186,10 @@ Automatically generated HTML file from Doconce source
      .alert-block > p, .alert-block > ul {margin-bottom:1em}
      .alert li {margin-top: 1em}
      .alert-block p+p {margin-top:5px}
-     .alert-notice { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_notice.png); }
-     .alert-summary  { background-image:url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_summary.png); }
-     .alert-warning { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_warning.png); }
-     .alert-question {background-image:url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_question.png); }
+     .alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
+     .alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
+     .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
+     .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
 
 </style>
 
@@ -55070,6 +55595,8 @@ final,                   % or draft (marks overfull hboxes)
 
 \usepackage[framemethod=TikZ]{mdframed}
 
+% --- begin definitions of admonition environments ---
+
 % Admonition is an oval gray box
 \newmdenv[
   backgroundcolor=gray!5,  %% white with 5%% gray
@@ -55089,6 +55616,76 @@ final,                   % or draft (marks overfull hboxes)
 \end{graybox1mdframed}
 }
 
+% --- end of definitions of admonition environments ---
+
+% prevent orhpans and widows
+\clubpenalty = 10000
+\widowpenalty = 10000
+
+% #ifndef SECTION_HEADINGS
+% #define SECTION_HEADINGS "std"
+% #else
+% http://www.ctex.org/documents/packages/layout/titlesec.pdf
+\usepackage[compact]{titlesec}  % reduce the spacing above/below the heading
+% #endif
+% #if SECTION_HEADINGS == "blue"
+% --- section/subsection headings with blue color ---
+\definecolor{seccolor}{cmyk}{.9,.5,0,.35}  % siamltexmm.sty section color
+\titleformat{name=\section}
+{\color{seccolor}\normalfont\Large\bfseries}
+{\color{seccolor}\thesection}{1em}{}
+\titleformat{name=\subsection}
+{\color{seccolor}\normalfont\large\bfseries}
+{\color{seccolor}\thesubsection}{1em}{}
+\titleformat{name=\paragraph}[runin]
+{\color{seccolor}\normalfont\normalsize\bfseries}
+{}{}{\indent}
+% #elif SECTION_HEADINGS == "strongblue"
+% --- section/subsection headings with a strong blue color ---
+\definecolor{seccolor}{rgb}{0.2,0.2,0.8}
+\titleformat{name=\section}
+{\color{seccolor}\normalfont\Large\bfseries}
+{\color{seccolor}\thesection}{1em}{}
+\titleformat{name=\subsection}
+{\color{seccolor}\normalfont\large\bfseries}
+{\color{seccolor}\thesubsection}{1em}{}
+\titleformat{name=\paragraph}[runin]
+{\color{seccolor}\normalfont\normalsize\bfseries}
+{}{}{\indent}
+% #elif SECTION_HEADINGS == "gray"
+% --- section/subsection headings with white text on gray background ---
+\titleformat{name=\section}[block]
+  {\sffamily\Large}{}{0pt}{\colorsection}
+\titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip}
+
+\newcommand{\colorsection}[1]{%
+  \colorbox{gray!50}{{\color{white}\thesection\ #1}}}
+
+\titleformat{name=\subsection}[block]
+  {\sffamily\large}{}{0pt}{\colorsubsection}
+\titlespacing*{\subsection}{0pt}{\baselineskip}{\baselineskip}
+
+\newcommand{\colorsubsection}[1]{%
+  \colorbox{gray!50}{{\color{white}\thesubsection\ #1}}}
+% #elif SECTION_HEADINGS == "gray-wide"
+% --- section/subsection headings with white text on wide gray background ---
+\titleformat{name=\section}[block]
+  {\sffamily\Large}{}{0pt}{\colorsection}
+\titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip}
+
+\newcommand{\colorsection}[1]{%
+  \colorbox{gray!50}{\parbox{\dimexpr\textwidth-2\fboxsep}%
+           {\color{white}\thesection\ #1}}}
+
+\titleformat{name=\subsection}[block]
+  {\sffamily\large}{}{0pt}{\colorsubsection}
+\titlespacing*{\subsection}{0pt}{\baselineskip}{\baselineskip}
+
+\newcommand{\colorsubsection}[1]{%
+  \colorbox{gray!50}{\parbox{\dimexpr\textwidth-2\fboxsep}%
+           {\color{white}\thesubsection\ #1}}}
+% #endif
+
 % #ifdef COLORED_TABLE_ROWS
 % color every two table rows
 \let\oldtabular\tabular
@@ -55107,22 +55704,6 @@ final,                   % or draft (marks overfull hboxes)
 \definecolor{appleblue}{rgb}{0.93,0.95,1.0}  % Apple blue
 \renewenvironment{tabular}{\rowcolors{2}{white}{appleblue}%
 \oldtabular}{\endoldtabular}
-% #endif
-
-% prevent orhpans and widows
-\clubpenalty = 10000
-\widowpenalty = 10000
-
-% http://www.ctex.org/documents/packages/layout/titlesec.pdf
-\usepackage[compact]{titlesec}  % narrower section headings
-% #ifdef BLUE_SECTION_HEADINGS
-\definecolor{seccolor}{rgb}{0.2,0.2,0.8}
-\titleformat{\section}
-{\color{seccolor}\normalfont\Large\bfseries}
-{\color{seccolor}\thesection}{1em}{}
-\titleformat{\subsection}
-{\color{seccolor}\normalfont\large\bfseries}
-{\color{seccolor}\thesubsection}{1em}{}
 % #endif
 
 % --- end of standard preamble for documents ---
@@ -66069,7 +66650,7 @@ output in testdoc.html
 + cp testdoc.html testdoc_vagrant.html
 + doconce split_html testdoc_vagrant.html
 testdoc_vagrant.html now links to the generated files
-._part0000_testdoc_vagrant.html, ._part0001_testdoc_vagrant.html, ._part0002_testdoc_vagrant.html
+._testdoc_vagrant000.html, ._testdoc_vagrant001.html, ._testdoc_vagrant002.html
 + system doconce format html testdoc.do.txt --pygments_html_linenos --html_style=solarized --pygments_html_style=emacs --examples_as_exercises --html_exercise_icon=exercise1.svg
 + doconce format html testdoc.do.txt --pygments_html_linenos --html_style=solarized --pygments_html_style=emacs --examples_as_exercises --html_exercise_icon=exercise1.svg
 running preprocess -DFORMAT=html -DDEVICE=screen  testdoc.do.txt > tmp_preprocess__testdoc.do.txt
@@ -66139,7 +66720,7 @@ no answers/solutions to exercises found in testdoc.html
 + system doconce split_html testdoc.html
 + doconce split_html testdoc.html
 testdoc.html now links to the generated files
-._part0000_testdoc.html, ._part0001_testdoc.html, ._part0002_testdoc.html
+._testdoc000.html, ._testdoc001.html, ._testdoc002.html
 + '[' 0 -ne 0 ']'
 + system doconce format html testdoc.do.txt --pygments_html_linenos --html_style=solarized --pygments_html_style=emacs --examples_as_exercises --html_output=demo_testdoc
 + doconce format html testdoc.do.txt --pygments_html_linenos --html_style=solarized --pygments_html_style=emacs --examples_as_exercises --html_output=demo_testdoc
@@ -66385,10 +66966,10 @@ replacing % end theorem by \end{theorem} in testdoc.p.tex
 + doconce replace Newton--Cotes Newton-Cotes testdoc.p.tex
 replacing Newton--Cotes by Newton-Cotes in testdoc.p.tex
 + doconce replace --examples_as__exercises --examples_as_exercises testdoc.p.tex
-+ system ptex2tex -DMINTED -DMOVIE=movie15 -DLATEX_HEADING=titlepage -DA4PAPER -DTODONOTES -DLINENUMBERS -DCOLORED_TABLE_ROWS=blue -DBLUE_SECTION_HEADINGS testdoc
-+ ptex2tex -DMINTED -DMOVIE=movie15 -DLATEX_HEADING=titlepage -DA4PAPER -DTODONOTES -DLINENUMBERS -DCOLORED_TABLE_ROWS=blue -DBLUE_SECTION_HEADINGS testdoc
++ system ptex2tex -DMINTED -DMOVIE=movie15 -DLATEX_HEADING=titlepage -DA4PAPER -DTODONOTES -DLINENUMBERS -DCOLORED_TABLE_ROWS=blue -DSECTION_HEADINGS=blue testdoc
++ ptex2tex -DMINTED -DMOVIE=movie15 -DLATEX_HEADING=titlepage -DA4PAPER -DTODONOTES -DLINENUMBERS -DCOLORED_TABLE_ROWS=blue -DSECTION_HEADINGS=blue testdoc
 using local config file .ptex2tex.cfg
-running preprocessor on testdoc.p.tex...  defines: 'BLUE_SECTION_HEADINGS', 'A4PAPER', 'MINTED', 'LATEX_HEADING', 'MOVIE', 'LINENUMBERS', 'COLORED_TABLE_ROWS', 'TODONOTES'  done
+running preprocessor on testdoc.p.tex...  defines: 'A4PAPER', 'MINTED', 'LATEX_HEADING', 'MOVIE', 'LINENUMBERS', 'SECTION_HEADINGS', 'COLORED_TABLE_ROWS', 'TODONOTES'  done
 done testdoc.p.tex -> testdoc.tex
 + '[' 0 -ne 0 ']'
 + system pdflatex -shell-escape testdoc
@@ -66581,6 +67162,7 @@ gs.code.tex
 
 
 
+
 (/usr/share/texlive/texmf-dist/tex/latex/tools/theorem.sty
 
 Writing index file testdoc.idx
@@ -66714,7 +67296,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 781.
+t line 792.
 
 
 
@@ -66734,7 +67316,7 @@ t line 781.
 
 
 
-t line 790.
+t line 801.
 
 
 
@@ -66754,7 +67336,7 @@ t line 790.
 
 
 
-t line 794.
+t line 805.
 
 
 
@@ -67074,6 +67656,7 @@ zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
 needspace.sty    2010/09/12 v1.3d reserve vertical space
 md-frame-1.mdf    2013/07/01\ 1.9b: md-frame-1
 titlesec.sty    2011/12/15 v2.10.0 Sectioning titles
+ ttlkeys.def    2011/12/15
  theorem.sty    1995/11/23 v2.2c Theorem extension package (FMi)
      thp.sty    1995/11/23 v2.2c Theorem extension package (FMi)
 supp-pdf.mkii
@@ -67336,6 +67919,7 @@ gs.code.tex
 
 
 
+
 (/usr/share/texlive/texmf-dist/tex/latex/tools/theorem.sty
 
 Writing index file testdoc.idx
@@ -67432,7 +68016,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 781.
+t line 792.
 
 
 
@@ -67452,7 +68036,7 @@ t line 781.
 
 
 
-t line 790.
+t line 801.
 
 
 
@@ -67472,7 +68056,7 @@ t line 790.
 
 
 
-t line 794.
+t line 805.
 
 
 
@@ -67709,6 +68293,7 @@ zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
 needspace.sty    2010/09/12 v1.3d reserve vertical space
 md-frame-1.mdf    2013/07/01\ 1.9b: md-frame-1
 titlesec.sty    2011/12/15 v2.10.0 Sectioning titles
+ ttlkeys.def    2011/12/15
  theorem.sty    1995/11/23 v2.2c Theorem extension package (FMi)
      thp.sty    1995/11/23 v2.2c Theorem extension package (FMi)
 supp-pdf.mkii
@@ -67982,6 +68567,7 @@ gs.code.tex
 
 
 
+
 (/usr/share/texlive/texmf-dist/tex/latex/tools/theorem.sty
 
 Writing index file testdoc.idx
@@ -68078,7 +68664,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 781.
+t line 792.
 
 
 
@@ -68098,7 +68684,7 @@ t line 781.
 
 
 
-t line 790.
+t line 801.
 
 
 
@@ -68118,7 +68704,7 @@ t line 790.
 
 
 
-t line 794.
+t line 805.
 
 
 
@@ -68358,6 +68944,7 @@ zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
 needspace.sty    2010/09/12 v1.3d reserve vertical space
 md-frame-1.mdf    2013/07/01\ 1.9b: md-frame-1
 titlesec.sty    2011/12/15 v2.10.0 Sectioning titles
+ ttlkeys.def    2011/12/15
  theorem.sty    1995/11/23 v2.2c Theorem extension package (FMi)
      thp.sty    1995/11/23 v2.2c Theorem extension package (FMi)
 supp-pdf.mkii
@@ -68614,6 +69201,7 @@ gs.code.tex
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-abspage.sty
+
 
 
 
@@ -68876,6 +69464,7 @@ zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
 needspace.sty    2010/09/12 v1.3d reserve vertical space
 md-frame-1.mdf    2013/07/01\ 1.9b: md-frame-1
 titlesec.sty    2011/12/15 v2.10.0 Sectioning titles
+ ttlkeys.def    2011/12/15
  theorem.sty    1995/11/23 v2.2c Theorem extension package (FMi)
      thp.sty    1995/11/23 v2.2c Theorem extension package (FMi)
 supp-pdf.mkii
@@ -69231,7 +69820,7 @@ figure file ../doc/src/manual/figs/streamtubes:
 output in testdoc.rst
 + doconce split_rst testdoc
 testdoc split into
-._part0000_testdoc.rst ._part0001_testdoc.rst ._part0002_testdoc.rst
+._testdoc000.rst ._testdoc001.rst ._testdoc002.rst
 + system doconce sphinx_dir author=HPL 'title=Just a test' version=0.1 theme=agni testdoc
 + doconce sphinx_dir author=HPL 'title=Just a test' version=0.1 theme=agni testdoc
 Making sphinx-rootdir
@@ -70261,7 +70850,6 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
 
-
 Writing index file math_test.idx
 No file math_test.aux.
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
@@ -70365,7 +70953,6 @@ hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
      url.sty    2006/04/12  ver 3.3  Verb mode for urls, etc.
  hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
-titlesec.sty    2011/12/15 v2.10.0 Sectioning titles
 supp-pdf.mkii
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
@@ -70692,7 +71279,6 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 
 
 
-
 Writing index file admon_colors1.idx
 No file admon_colors1.aux.
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
@@ -70713,12 +71299,12 @@ No file admon_colors1.aux.
 <use latex_figs/warning.pdf>
 Underfull \hbox (badness 10000) 
 
-
+ [1{/var/lib/texmf/font
+s/map/pdftex/updmap/pdftex.map} <./latex_figs/warning.pdf>]
 <use latex_figs/warning.pdf>
 Underfull \hbox (badness 10000) 
 
-[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./latex_figs/warning.pdf
->] <use latex_figs/warning.pdf>
+<use latex_figs/warning.pdf>
 Underfull \hbox (badness 10000) 
 
 
@@ -70748,19 +71334,21 @@ Underfull \hbox (badness 10000)
 (./admon_colors1.out.pyg) <use latex_figs/warning.pdf>
 Underfull \hbox (badness 10000) 
 
-<use latex_figs/notice.pdf>
+[3 <./latex_figs/question.pdf>] <use latex_figs/notice.pdf>
 Underfull \hbox (badness 10000) 
 
 (./admon_colors1.out.pyg) (./admon_colors1.out.pyg)
-<../doc/src/manual/figs/wavepacket_0001.png, id=38, 642.4pt x 481.8pt>
-<use ../doc/src/manual/figs/wavepacket_0001.png> [3 <./latex_figs/question.pdf>
-] [4] <latex_figs/summary.pdf, id=55, 89.33376pt x 89.33376pt>
+<../doc/src/manual/figs/wavepacket_0001.png, id=50, 642.4pt x 481.8pt>
+<use ../doc/src/manual/figs/wavepacket_0001.png> [4]
+<latex_figs/summary.pdf, id=55, 89.33376pt x 89.33376pt>
 <use latex_figs/summary.pdf>
 Underfull \hbox (badness 10000) 
 
+
+
+[5 <../doc/src/manual/figs/wavepacket_0001.png>]
 No file admon_colors1.ind.
-[5 <../doc/src/manual/figs/wavepacket_0001.png> <./latex_figs/summary.pdf>]
-(./admon_colors1.aux)
+[6 <./latex_figs/summary.pdf>] (./admon_colors1.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -70840,7 +71428,6 @@ hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
   framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
-titlesec.sty    2011/12/15 v2.10.0 Sectioning titles
 supp-pdf.mkii
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
@@ -70891,7 +71478,7 @@ r7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><
 /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/s
 hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/share/te
 xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on admon_colors1.pdf (5 pages, ).
+Output written on admon_colors1.pdf (6 pages, ).
 Transcript written on admon_colors1.log.
 + for admon_tp in '$admon_tps'
 + system doconce format pdflatex admon --latex_admon=graybox1
@@ -71072,7 +71659,7 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 
 (/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopat
 hs.code.tex))) (/usr/share/texlive/texmf-dist/tex/latex/mdframed/md-frame-1.mdf
-)) 
+))
 Writing index file admon_graybox1.idx
 No file admon_graybox1.aux.
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
@@ -71232,7 +71819,6 @@ pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
   pgffor.code.tex
     tikz.code.tex
 md-frame-1.mdf    2013/07/01\ 1.9b: md-frame-1
-titlesec.sty    2011/12/15 v2.10.0 Sectioning titles
 supp-pdf.mkii
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
@@ -71452,7 +72038,7 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 
 (/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopat
 hs.code.tex))) (/usr/share/texlive/texmf-dist/tex/latex/mdframed/md-frame-1.mdf
-)) 
+))
 Writing index file admon_paragraph.idx
 No file admon_paragraph.aux.
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
@@ -71473,10 +72059,10 @@ ABD: EveryShipout initializing macros (./newcommands_bfmath.tex)
  [1{/var/lib/texmf/font
 s/map/pdftex/updmap/pdftex.map}] (./admon_paragraph.out.pyg) [2]
 (./admon_paragraph.out.pyg) (./admon_paragraph.out.pyg [3])
-<../doc/src/manual/figs/wavepacket_0001.png, id=38, 642.4pt x 481.8pt>
+<../doc/src/manual/figs/wavepacket_0001.png, id=50, 642.4pt x 481.8pt>
 <use ../doc/src/manual/figs/wavepacket_0001.png>
 No file admon_paragraph.ind.
-[4 <../doc/src/manual/figs/wavepacket_0001.png>] (./admon_paragraph.aux)
+[4 <../doc/src/manual/figs/wavepacket_0001.png>] [5] (./admon_paragraph.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -71604,7 +72190,6 @@ pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
   pgffor.code.tex
     tikz.code.tex
 md-frame-1.mdf    2013/07/01\ 1.9b: md-frame-1
-titlesec.sty    2011/12/15 v2.10.0 Sectioning titles
 supp-pdf.mkii
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
@@ -71643,7 +72228,7 @@ public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
 msfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
 s/cm/cmti8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
 tt9.pfb>
-Output written on admon_paragraph.pdf (4 pages, ).
+Output written on admon_paragraph.pdf (5 pages, ).
 Transcript written on admon_paragraph.log.
 + for admon_tp in '$admon_tps'
 + system doconce format pdflatex admon --latex_admon=graybox2
@@ -71825,7 +72410,7 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 
 (/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopat
 hs.code.tex))) (/usr/share/texlive/texmf-dist/tex/latex/mdframed/md-frame-1.mdf
-)) 
+))
 Writing index file admon_graybox2.idx
 No file admon_graybox2.aux.
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
@@ -71843,10 +72428,35 @@ ABD: EveryShipout initializing macros (./newcommands_bfmath.tex)
 
 
 (./admon_graybox2.out.pyg)
- [1{/var/lib/texmf/font
-s/map/pdftex/updmap/pdftex.map}] [2] (./admon_graybox2.out.pyg)
-(./admon_graybox2.out.pyg) (./admon_graybox2.out.pyg)
-<../doc/src/manual/figs/wavepacket_0001.png, id=30, 642.4pt x 481.8pt>
+
+
+Package mdframed Warning: You got a bad break
+(mdframed)                because the last box will be empty
+(mdframed)                you have to change it manually
+(mdframed)                by changing the text, the space
+(mdframed)                or something else on .
+
+[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+
+Package mdframed Warning: You got a bad break
+(mdframed)                because the last split box is empty
+(mdframed)                You have to change the settings on .
+
+
+Package mdframed Warning: You got a bad break
+(mdframed)                because the last box will be empty
+(mdframed)                you have to change it manually
+(mdframed)                by changing the text, the space
+(mdframed)                or something else on .
+
+[2]
+
+Package mdframed Warning: You got a bad break
+(mdframed)                because the last split box is empty
+(mdframed)                You have to change the settings on .
+
+(./admon_graybox2.out.pyg) (./admon_graybox2.out.pyg) (./admon_graybox2.out.pyg
+) <../doc/src/manual/figs/wavepacket_0001.png, id=30, 642.4pt x 481.8pt>
 <use ../doc/src/manual/figs/wavepacket_0001.png> [3] [4]
 No file admon_graybox2.ind.
 [5 <../doc/src/manual/figs/wavepacket_0001.png>] (./admon_graybox2.aux)
@@ -71978,7 +72588,6 @@ pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
   pgffor.code.tex
     tikz.code.tex
 md-frame-1.mdf    2013/07/01\ 1.9b: md-frame-1
-titlesec.sty    2011/12/15 v2.10.0 Sectioning titles
 supp-pdf.mkii
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
@@ -72110,7 +72719,6 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 
 
 
-
 Writing index file admon_yellowbox.idx
 No file admon_yellowbox.aux.
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
@@ -72129,27 +72737,25 @@ No file admon_yellowbox.aux.
 (./admon_yellowbox.out.pyg)
 <latex_figs/small_yellow_warning.pdf, id=4, 32.12pt x 32.12pt>
 <use latex_figs/small_yellow_warning.pdf>
-
-<use latex_figs/small_yellow_warning.pdf> [1{/var/lib/texmf/fonts/map/pdftex/up
-dmap/pdftex.map} <./latex_figs/small_yellow_warning.pdf>]
+ [1{/var/lib/texmf/font
+s/map/pdftex/updmap/pdftex.map} <./latex_figs/small_yellow_warning.pdf>]
+<use latex_figs/small_yellow_warning.pdf>
 <use latex_figs/small_yellow_warning.pdf>
 <latex_figs/small_yellow_notice.pdf, id=24, 32.12pt x 32.12pt>
 <use latex_figs/small_yellow_notice.pdf>
 <use latex_figs/small_yellow_notice.pdf>
 <latex_figs/small_yellow_question.pdf, id=25, 32.12pt x 32.12pt>
-<use latex_figs/small_yellow_question.pdf>
 <use latex_figs/small_yellow_question.pdf> [2 <./latex_figs/small_yellow_notice
 .pdf> <./latex_figs/small_yellow_question.pdf>]
+<use latex_figs/small_yellow_question.pdf>
 <use latex_figs/small_yellow_warning.pdf> (./admon_yellowbox.out.pyg)
 <use latex_figs/small_yellow_warning.pdf>
 <use latex_figs/small_yellow_notice.pdf> (./admon_yellowbox.out.pyg)
 (./admon_yellowbox.out.pyg)
 <../doc/src/manual/figs/wavepacket_0001.png, id=48, 642.4pt x 481.8pt>
-<use ../doc/src/manual/figs/wavepacket_0001.png> [3]
+<use ../doc/src/manual/figs/wavepacket_0001.png>
 
-
-
-[4] <latex_figs/small_yellow_summary.pdf, id=61, 32.12pt x 32.12pt>
+[3] [4] <latex_figs/small_yellow_summary.pdf, id=61, 32.12pt x 32.12pt>
 <use latex_figs/small_yellow_summary.pdf>
 No file admon_yellowbox.ind.
 [5 <../doc/src/manual/figs/wavepacket_0001.png> <./latex_figs/small_yellow_summ
@@ -72234,7 +72840,6 @@ rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
   framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
  wrapfig.sty    2003/01/31  v 3.6
-titlesec.sty    2011/12/15 v2.10.0 Sectioning titles
 supp-pdf.mkii
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
@@ -72378,7 +72983,6 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 
 
 
-
 Writing index file admon_graybox3.idx
 No file admon_graybox3.aux.
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
@@ -72397,25 +73001,23 @@ No file admon_graybox3.aux.
 (./admon_graybox3.out.pyg)
 <latex_figs/small_gray_warning.pdf, id=4, 48.18pt x 48.18pt>
 <use latex_figs/small_gray_warning.pdf>
-
-<use latex_figs/small_gray_warning.pdf> [1{/var/lib/texmf/fonts/map/pdftex/updm
-ap/pdftex.map} <./latex_figs/small_gray_warning.pdf>]
+ [1{/var/lib/texmf/font
+s/map/pdftex/updmap/pdftex.map} <./latex_figs/small_gray_warning.pdf>]
+<use latex_figs/small_gray_warning.pdf>
 <use latex_figs/small_gray_warning.pdf>
 <latex_figs/small_gray_notice.pdf, id=24, 64.24pt x 64.24pt>
 <use latex_figs/small_gray_notice.pdf> <use latex_figs/small_gray_notice.pdf>
 <latex_figs/small_gray_question2.pdf, id=25, 64.24pt x 64.24pt>
-<use latex_figs/small_gray_question2.pdf>
 <use latex_figs/small_gray_question2.pdf> [2 <./latex_figs/small_gray_notice.pd
 f> <./latex_figs/small_gray_question2.pdf>]
+<use latex_figs/small_gray_question2.pdf>
 <use latex_figs/small_gray_warning.pdf> (./admon_graybox3.out.pyg)
 <use latex_figs/small_gray_warning.pdf> <use latex_figs/small_gray_notice.pdf>
 (./admon_graybox3.out.pyg) (./admon_graybox3.out.pyg)
 <../doc/src/manual/figs/wavepacket_0001.png, id=48, 642.4pt x 481.8pt>
-<use ../doc/src/manual/figs/wavepacket_0001.png> [3]
+<use ../doc/src/manual/figs/wavepacket_0001.png>
 
-
-
-[4] <latex_figs/small_gray_summary.pdf, id=61, 48.18pt x 48.18pt>
+[3] [4] <latex_figs/small_gray_summary.pdf, id=61, 48.18pt x 48.18pt>
 <use latex_figs/small_gray_summary.pdf>
 No file admon_graybox3.ind.
 [5 <../doc/src/manual/figs/wavepacket_0001.png> <./latex_figs/small_gray_summar
@@ -72500,7 +73102,6 @@ rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
   framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
  wrapfig.sty    2003/01/31  v 3.6
-titlesec.sty    2011/12/15 v2.10.0 Sectioning titles
 supp-pdf.mkii
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
@@ -72644,7 +73245,6 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 
 
 
-
 Writing index file admon_colors2.idx
 No file admon_colors2.aux.
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
@@ -72663,22 +73263,20 @@ No file admon_colors2.aux.
 (./admon_colors2.out.pyg)
 <latex_figs/warning.pdf, id=4, 89.33376pt x 89.33376pt>
 <use latex_figs/warning.pdf>
-
-<use latex_figs/warning.pdf> [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.m
-ap} <./latex_figs/warning.pdf>] <use latex_figs/warning.pdf>
+ [1{/var/lib/texmf/font
+s/map/pdftex/updmap/pdftex.map} <./latex_figs/warning.pdf>]
+<use latex_figs/warning.pdf> <use latex_figs/warning.pdf>
 <latex_figs/notice.pdf, id=22, 89.33376pt x 89.33376pt>
 <use latex_figs/notice.pdf> <use latex_figs/notice.pdf>
 <latex_figs/question.pdf, id=23, 89.33376pt x 89.33376pt>
-<use latex_figs/question.pdf> <use latex_figs/question.pdf> [2 <./latex_figs/no
-tice.pdf> <./latex_figs/question.pdf>] <use latex_figs/warning.pdf>
+<use latex_figs/question.pdf> [2 <./latex_figs/notice.pdf> <./latex_figs/questi
+on.pdf>] <use latex_figs/question.pdf> <use latex_figs/warning.pdf>
 (./admon_colors2.out.pyg) <use latex_figs/warning.pdf>
 <use latex_figs/notice.pdf> (./admon_colors2.out.pyg) (./admon_colors2.out.pyg)
 <../doc/src/manual/figs/wavepacket_0001.png, id=42, 642.4pt x 481.8pt>
-<use ../doc/src/manual/figs/wavepacket_0001.png> [3]
+<use ../doc/src/manual/figs/wavepacket_0001.png>
 
-
-
-[4] <latex_figs/summary.pdf, id=55, 89.33376pt x 89.33376pt>
+[3] [4] <latex_figs/summary.pdf, id=55, 89.33376pt x 89.33376pt>
 <use latex_figs/summary.pdf>
 No file admon_colors2.ind.
 [5 <../doc/src/manual/figs/wavepacket_0001.png> <./latex_figs/summary.pdf>]
@@ -72763,7 +73361,6 @@ rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
   framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
  wrapfig.sty    2003/01/31  v 3.6
-titlesec.sty    2011/12/15 v2.10.0 Sectioning titles
 supp-pdf.mkii
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
@@ -73563,7 +74160,7 @@ Package hyperref Message: Driver (default): hdvips.
 
 (/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopat
 hs.code.tex))) (/usr/share/texlive/texmf-dist/tex/latex/mdframed/md-frame-1.mdf
-)) 
+))
 Writing index file quickref.idx
 No file quickref.aux.
 
@@ -73597,39 +74194,37 @@ sl/10 reg-u-lar ex-pres-sion []
 Overfull \hbox (25.94281pt too wide) 
 \OT1/phv/m/n/10 up to, but not in-clud-ing the line match-ing the \OT1/phv/m/sl
 /10 reg-u-lar ex-pres-sion []\OT1/phv/m/n/10 .
-[6]
+[6] [7]
 Overfull \hbox (49.67618pt too wide) 
 \OT1/phv/m/n/10 pre-pro-ces-sor if-tests on the for-mat (typ-i-cally [])
-[7] [8]
+[8]
 
 
 .
 
-[9]
+[9] [10]
 Overfull \hbox (59.2456pt too wide) 
 \OT1/phv/m/n/10 sert a back-slash). Bib-li-og-ra-phy ci-ta-tions of-ten have []
  on the form [],
 
 Overfull \hbox (20.06894pt too wide) 
 []\OT1/phv/m/n/10 The bib-li-og-ra-phy is spec-i-fied by a line [], where []
-[10]
+[11]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
-[11] [12] [13] [14]
-Overfull \hbox (3.50804pt too wide) 
-\OT1/phv/m/n/10 Doconce en-vi-ron-ments start with []benvirname! and end with [
-]eenvirname!, where
-[15]
+[12] [13] [14] [15]
+Overfull \hbox (7.76833pt too wide) 
+\OT1/phv/m/n/10 Doconce en-vi-ron-ments start with [] and end with [], where
+
 Overfull \hbox (0.45856pt too wide) 
 \OT1/phv/m/n/10 Doconce doc-u-ments may uti-lize a pre-pro-ces-sor, ei-ther [] 
 and/or [].
-
+[16]
 Overfull \hbox (86.48466pt too wide) 
 []\OT1/phv/m/n/10 Excellent "Sphinx Tu-to-rial" by C. Reller: "http://people.ee
 .ethz.ch/ creller/web/tricks/reST.html" 
-[16]
 No file quickref.ind.
 [17] (./quickref.aux)
 
@@ -73771,7 +74366,6 @@ pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
   pgffor.code.tex
     tikz.code.tex
 md-frame-1.mdf    2013/07/01\ 1.9b: md-frame-1
-titlesec.sty    2011/12/15 v2.10.0 Sectioning titles
   ot1phv.fd    2001/06/04 scalable font definitions for OT1/phv.
  nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
@@ -73974,7 +74568,7 @@ Package hyperref Message: Driver (default): hdvips.
 
 (/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopat
 hs.code.tex))) (/usr/share/texlive/texmf-dist/tex/latex/mdframed/md-frame-1.mdf
-)) 
+))
 Writing index file quickref.idx
 (./quickref.aux) 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
@@ -73989,11 +74583,11 @@ Writing index file quickref.idx
 Overfull \hbox (19.14615pt too wide) 
 \OT1/phv/m/n/10 Note that ab-stracts are rec-og-nized by start-ing with [] or [
 ]
-[4]
+[4] [5]
 Overfull \hbox (29.09346pt too wide) 
 []\OT1/phv/m/n/10 Large por-tions of text can be left out us-ing Pre-pro-cess. 
 Just place []
-[5] [6]
+[6]
 Overfull \hbox (4.40137pt too wide) 
 \OT1/phv/m/n/10 fi-ca-tion copies from the first line match-ing the \OT1/phv/m/
 sl/10 reg-u-lar ex-pres-sion []
@@ -74017,18 +74611,16 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
 [12] [13] [14] [15]
-Overfull \hbox (3.50804pt too wide) 
-\OT1/phv/m/n/10 Doconce en-vi-ron-ments start with []benvirname! and end with [
-]eenvirname!, where
+Overfull \hbox (7.76833pt too wide) 
+\OT1/phv/m/n/10 Doconce en-vi-ron-ments start with [] and end with [], where
 [16]
 Overfull \hbox (0.45856pt too wide) 
 \OT1/phv/m/n/10 Doconce doc-u-ments may uti-lize a pre-pro-ces-sor, ei-ther [] 
 and/or [].
-
+[17]
 Overfull \hbox (86.48466pt too wide) 
 []\OT1/phv/m/n/10 Excellent "Sphinx Tu-to-rial" by C. Reller: "http://people.ee
 .ethz.ch/ creller/web/tricks/reST.html" 
-[17]
 No file quickref.ind.
 [18] (./quickref.aux)
 
@@ -74170,7 +74762,6 @@ pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
   pgffor.code.tex
     tikz.code.tex
 md-frame-1.mdf    2013/07/01\ 1.9b: md-frame-1
-titlesec.sty    2011/12/15 v2.10.0 Sectioning titles
   ot1phv.fd    2001/06/04 scalable font definitions for OT1/phv.
  nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
