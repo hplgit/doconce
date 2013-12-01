@@ -482,6 +482,8 @@ def latex_title(m):
 %% #elif LATEX_HEADING == "beamer"
 \title{%s}
 %% #else
+\thispagestyle{empty}
+
 \begin{center}
 {\LARGE\bf
 \begin{spacing}{1.25}
@@ -1254,8 +1256,10 @@ def define(FILENAME_EXTENSION,
 % #if LATEX_STYLE == "std"
 """
 
-    m = re.search(r'^\s*=========\s*.+?=========', filestr, flags=re.MULTILINE)
+    m = re.search(r'^\s*=========\s*[A-Za-z0-9].+?=========', filestr, flags=re.MULTILINE)
+    # (use A-Z etc to avoid sphinx table headings to indicate chapters...
     if m:  # We have chapters, use book style
+        chapters = True
         INTRO['latex'] += r"""
 \documentclass[%
 oneside,                 % oneside: electronic viewing, twoside: printing
@@ -1265,6 +1269,7 @@ open=right               % start new chapters on odd-numbered pages
 10pt]{book}
 """
     else:  # Only sections, use article style
+        chapters = False
         INTRO['latex'] += r"""
 \documentclass[%
 oneside,                 % oneside: electronic viewing, twoside: printing
@@ -1369,24 +1374,24 @@ final,                   % or draft (marks overfull hboxes)
 """
     # Make sure hyperlinks are black (as the text) for printout
     # and otherwise set to the dark blue linkcolor
-    linkcolor = 'black' if option('device') == 'paper else 'linkcolor'
+    linkcolor = 'black' if option('device=') == 'paper' else 'linkcolor'
     INTRO['latex'] += r"""
 %% Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
-\usepackage[%
+\usepackage[%%
     colorlinks=true,
-    linkcolor=%(linkcolor)s,
+    linkcolor=%s,
     urlcolor=linkcolor,
     citecolor=black,
     filecolor=black,
-    %filecolor=blue,
+    %%filecolor=blue,
     pdfmenubar=true,
     pdftoolbar=true,
     bookmarksdepth=3   %% Uncomment (and tweak) for PDF bookmarks with more levels than the TOC
             ]{hyperref}
-%\hyperbaseurl{}   %% hyperlinks are relative to this root
+%%\hyperbaseurl{}   %% hyperlinks are relative to this root
 
-\setcounter{tocdepth}{2}  % number chapter, section, subsection
+\setcounter{tocdepth}{2}  %% number chapter, section, subsection
 """ % linkcolor
 
     if 'FIGURE:' in filestr:
@@ -1441,7 +1446,32 @@ final,                   % or draft (marks overfull hboxes)
 \usepackage[mathlines]{lineno}  % show line numbers
 \linenumbers
 % #endif
+
+% #ifdef FANCY_HEADER
+% --- fancyhdr package for fancy headers ---
+\usepackage{fancyhdr}
+\fancyhf{}"""
+        if chapters:
+            INTRO['latex'] += r"""
+\fancyhead[LE]{\rightmark} %section
+\fancyhead[RE]{\thepage}
+\fancyhead[RO]{\leftmark} % chapter
+\fancyhead[LO]{\thepage}"""
+        else:
+            INTRO['latex'] += r"""
+\fancyhead[LE,RO]{\rightmark} %section
+\fancyhead[RE,LO]{\thepage}"""
+        INTRO['latex'] += r"""
+\pagestyle{fancy}
+% #endif
+
 """
+        # Not necessary:
+        #filestr = re.sub('^(=====.+?=====\s+)', '% #ifdef FANCY_HEADER\n\\pagestyle{fancy}\n% #endif\n\n\g<1>', filestr, count=1, flags=re.MULTILINE)
+        # Can insert above if SECTION_HEADINGS == "blue" and have a
+        # blue typesetting of the section if that is not done automatically...
+
+
     # Admonitions
     if re.search(r'^!b(%s)' % '|'.join(admons), filestr, flags=re.MULTILINE):
         latex_admon = option('latex_admon=', 'graybox1')
