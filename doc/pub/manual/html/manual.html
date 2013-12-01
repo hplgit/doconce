@@ -74,7 +74,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Author:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Nov 29, 2013</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Dec 1, 2013</td>
 </tr>
 </tbody>
 </table>
@@ -937,10 +937,43 @@ the table.</p>
 </div>
 <div class="section" id="latex">
 <h2>LaTeX<a class="headerlink" href="#latex" title="Permalink to this headline">¶</a></h2>
-<p>Making a LaTeX file <tt class="docutils literal"><span class="pre">mydoc.tex</span></tt> from <tt class="docutils literal"><span class="pre">mydoc.do.txt</span></tt> is done in two steps:</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">XeLaTeX and pdfLaTeX are used very much in the same way as standard
+LaTeX. The minor differences are described in separate sections
+of the documentation of the Doconce to LaTeX translation.</p>
+</div>
+<p>Making a LaTeX file <tt class="docutils literal"><span class="pre">mydoc.tex</span></tt> from <tt class="docutils literal"><span class="pre">mydoc.do.txt</span></tt> is done in two steps:
+1) compile the Doconce source to the <tt class="docutils literal"><span class="pre">ptex2tex</span></tt> format, and 2) compile
+the <tt class="docutils literal"><span class="pre">ptex2tex</span></tt> format to standard LaTeX.
+The <a class="reference external" href="http://code.google.com/p/ptex2tex">ptex2tex</a> format can be
+viewed as an extended LaTeX. For Doconce users, the <tt class="docutils literal"><span class="pre">ptex2tex</span></tt> format
+essentially means that the file consists of</p>
+<ol class="arabic simple">
+<li><tt class="docutils literal"><span class="pre">if-else</span></tt> statements for the <tt class="docutils literal"><span class="pre">preprocess</span></tt> processor such that
+LaTeX constructions can be activated or deactivated, and</li>
+<li>all code environments can be typeset according to a <tt class="docutils literal"><span class="pre">.ptex2tex.cfg</span></tt>
+configuration file.</li>
+</ol>
+<p>Point 2 is only of interest if you aim to use a special computer code
+formatting that requires you to use a configuration file and
+the <tt class="docutils literal"><span class="pre">ptex2tex</span></tt> program.</p>
+<p>The reason for generating <tt class="docutils literal"><span class="pre">ptex2tex</span></tt> and not standard LaTeX directly
+from Doconce was that the <tt class="docutils literal"><span class="pre">ptex2tex</span></tt> format shows a range of possible
+LaTeX constructions for controlling the layout. It can be instructive
+for LaTeX users to look at this code before choosing specific parts
+for some desired layout. Experts may also want to edit this code
+(which should be automated by a script such that the edits can be
+repeated when the Doconce source is modified, see Step 2b below).
+(Direct control of the LaTeX layout in the <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></tt> program
+would not spit out alternative LaTeX constructs as is now done through
+the <tt class="docutils literal"><span class="pre">ptex2tex</span></tt> step.)</p>
+<p>Going from <tt class="docutils literal"><span class="pre">ptex2tex</span></tt> format to standard LaTeX format is enabled by
+either the <tt class="docutils literal"><span class="pre">ptex2tex</span></tt> program or Doconce&#8217;s (simplified) version of it:
+<tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">ptex2tex</span></tt>. Details are given below.</p>
 <p><strong>Step 1.</strong>
-Filter the doconce text to a pre-LaTeX form <tt class="docutils literal"><span class="pre">mydoc.p.tex</span></tt> for
-the <tt class="docutils literal"><span class="pre">ptex2tex</span></tt> program (or <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">ptex2tex</span></tt>):</p>
+Filter the doconce text to the <tt class="docutils literal"><span class="pre">ptex2tex</span></tt> &#8220;pre-LaTeX form&#8221;
+<tt class="docutils literal"><span class="pre">mydoc.p.tex</span></tt>:</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; doconce format latex mydoc</span>
 </pre></div>
 </div>
@@ -958,15 +991,17 @@ as <a class="reference external" href="http://goo.gl/">http://goo.gl/</a>, <a cl
 The default, <tt class="docutils literal"><span class="pre">--device=screen</span></tt>, creates a PDF file for reading
 on a screen where links are just clickable.</p>
 <p><strong>Step 2.</strong>
-Run <tt class="docutils literal"><span class="pre">ptex2tex</span></tt> (if you have it) to make a standard LaTeX file,</p>
+Run <tt class="docutils literal"><span class="pre">ptex2tex</span></tt> (if you have installed the
+Python ptex2tex package) to make a standard LaTeX file,</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; ptex2tex mydoc</span>
 </pre></div>
 </div>
-<p>In case you do not have <tt class="docutils literal"><span class="pre">ptex2tex</span></tt>, you may run a (very) simplified version:</p>
+<p>In case you do not have <tt class="docutils literal"><span class="pre">ptex2tex</span></tt>, you may run the (simplified) version
+that comes with Doconce:</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; doconce ptex2tex mydoc</span>
 </pre></div>
 </div>
-<p>Note that Doconce generates a <tt class="docutils literal"><span class="pre">.p.tex</span></tt> file with some preprocessor macros
+<p>The <tt class="docutils literal"><span class="pre">.p.tex</span></tt> file contains a lot of preprocessor variables (like C macros)
 that can be used to steer certain properties of the LaTeX document.
 For example, to turn on the Helvetica font instead of the standard
 Computer Modern font, run</p>
@@ -974,12 +1009,6 @@ Computer Modern font, run</p>
 <span class="go">Terminal&gt; doconce ptex2tex mydoc -DHELVETICA  # alternative</span>
 </pre></div>
 </div>
-<p>The title, authors, and date are by default typeset in a non-standard
-way to enable a nicer treatment of multiple authors having
-institutions in common. However, the standard LaTeX &#8220;maketitle&#8221; heading
-is also available through <tt class="docutils literal"><span class="pre">-DLATEX_HEADING=traditional</span></tt>.
-A separate titlepage can be generated by
-<tt class="docutils literal"><span class="pre">-DLATEX_HEADING=titlepage</span></tt>.</p>
 <p>Preprocessor variables to be defined or undefined are</p>
 <blockquote>
 <div><ul class="simple">
@@ -1009,7 +1038,6 @@ and comment inside brackets).</li>
 <li><tt class="docutils literal"><span class="pre">LINENUMBERS</span></tt> for inclusion of line numbers in the text.</li>
 <li><tt class="docutils literal"><span class="pre">COLORED_TABLE_ROWS</span></tt> for coloring every other table rows (set this
 variable to <tt class="docutils literal"><span class="pre">gray</span></tt> or <tt class="docutils literal"><span class="pre">blue</span></tt>).</li>
-<li><tt class="docutils literal"><span class="pre">BLUE_SECTION_HEADINGS</span></tt> for blue section and subsection headings.</li>
 </ul>
 </div></blockquote>
 <p>There are also preprocessor variables with specific values:</p>
@@ -1048,9 +1076,21 @@ style with blue headings.</li>
 </ul>
 </div></blockquote>
 </li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">SECTION_HEADINGS</span></tt> for specifying the style of the section,
+subsection, and paragraph headings:</p>
+<blockquote>
+<div><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">blue</span></tt> for a blue-gray color of the text,</li>
+<li><tt class="docutils literal"><span class="pre">strongblue</span></tt> for a stronger blue color of the text,</li>
+<li><tt class="docutils literal"><span class="pre">gray</span></tt> for white text on gray background,</li>
+<li><tt class="docutils literal"><span class="pre">gray-wide</span></tt> for white text in a gray box that spans the whole
+page width.</li>
 </ul>
 </div></blockquote>
-<p>If you are not satisfied with the Doconce preamble, you can provide
+</li>
+</ul>
+</div></blockquote>
+<p>If you are not satisfied with the generated Doconce preamble, you can provide
 your own preamble by adding the command-line option <tt class="docutils literal"><span class="pre">--latex_preamble=myfile</span></tt>.
 In case <tt class="docutils literal"><span class="pre">myfile</span></tt> contains a documentclass definition, Doconce assumes
 that the file contains the <em>complete</em> preamble you want (not that all
@@ -1058,7 +1098,7 @@ the packages listed in the default preamble are required and must be
 present in <tt class="docutils literal"><span class="pre">myfile</span></tt>). Otherwise, <tt class="docutils literal"><span class="pre">myfile</span></tt> is assumed to contain
 <em>additional</em> LaTeX code to be added to the Doconce default preamble.</p>
 <p>The <tt class="docutils literal"><span class="pre">ptex2tex</span></tt> tool makes it possible to easily switch between many
-different fancy formattings of computer or verbatim code in LaTeX
+different fancy formattings of computer code in LaTeX
 documents. After any <tt class="docutils literal"><span class="pre">!bc</span></tt> command in the Doconce source you can
 insert verbatim block styles as defined in your <tt class="docutils literal"><span class="pre">.ptex2tex.cfg</span></tt>
 file, e.g., <tt class="docutils literal"><span class="pre">!bc</span> <span class="pre">sys</span></tt> for a terminal session, where <tt class="docutils literal"><span class="pre">sys</span></tt> is set to
@@ -1126,16 +1166,19 @@ and create the PDF file:</p>
 <span class="go">Terminal&gt; dvipdf mydoc</span>
 </pre></div>
 </div>
-<p>If one wishes to run <tt class="docutils literal"><span class="pre">ptex2tex</span></tt> and use the minted LaTeX package for
+<p>See the next two sections for compilation with XeLaTeX or pdfLaTeX.</p>
+<p>If one wishes to use the minted LaTeX package for
 typesetting code blocks (<tt class="docutils literal"><span class="pre">Minted_Python</span></tt>, <tt class="docutils literal"><span class="pre">Minted_Cpp</span></tt>, etc., in
 <tt class="docutils literal"><span class="pre">ptex2tex</span></tt> specified through the <tt class="docutils literal"><span class="pre">*pro</span></tt> and <tt class="docutils literal"><span class="pre">*cod</span></tt> variables in
 <tt class="docutils literal"><span class="pre">.ptex2tex.cfg</span></tt> or <tt class="docutils literal"><span class="pre">$HOME/.ptex2tex.cfg</span></tt>), the minted LaTeX package is
-needed.  This package is included by running <tt class="docutils literal"><span class="pre">ptex2tex</span></tt> with the
-<tt class="docutils literal"><span class="pre">-DMINTED</span></tt> option:</p>
+needed.  This package is automatically included by <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">ptex2tex</span></tt> if
+the minted style is used, while you have to include the
+<tt class="docutils literal"><span class="pre">-DMINTED</span></tt> preprocessor option when running the <tt class="docutils literal"><span class="pre">ptex2tex</span></tt> program:</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; ptex2tex -DMINTED mydoc</span>
 </pre></div>
 </div>
-<p>In this case, <tt class="docutils literal"><span class="pre">latex</span></tt> must be run with the
+<p>If the minted style is used, <tt class="docutils literal"><span class="pre">latex</span></tt> (or <tt class="docutils literal"><span class="pre">pdflatex</span></tt> or <tt class="docutils literal"><span class="pre">xelatex</span></tt>)
+<em>must</em> be run with the
 <tt class="docutils literal"><span class="pre">-shell-escape</span></tt> option:</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; latex -shell-escape mydoc</span>
 <span class="go">Terminal&gt; latex -shell-escape mydoc</span>
@@ -1145,9 +1188,6 @@ needed.  This package is included by running <tt class="docutils literal"><span 
 <span class="go">Terminal&gt; dvipdf mydoc</span>
 </pre></div>
 </div>
-<p>When running <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">ptex2tex</span> <span class="pre">mydoc</span> <span class="pre">envir=minted</span></tt> (or other minted
-specifications with <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">ptex2tex</span></tt>), the minted package is automatically
-included so there is no need for the <tt class="docutils literal"><span class="pre">-DMINTED</span></tt> option.</p>
 </div>
 <div class="section" id="pdflatex">
 <h2>PDFLaTeX<a class="headerlink" href="#pdflatex" title="Permalink to this headline">¶</a></h2>
@@ -1844,7 +1884,7 @@ of computer code from a file directly into a verbatim environment, see
 the section <a class="reference internal" href="#sec-verbatim-blocks"><em>Blocks of Verbatim Computer Code</em></a> below.</p>
 </div>
 <div class="section" id="inline-tagging">
-<span id="id4"></span><h2>Inline Tagging<a class="headerlink" href="#inline-tagging" title="Permalink to this headline">¶</a></h2>
+<span id="id5"></span><h2>Inline Tagging<a class="headerlink" href="#inline-tagging" title="Permalink to this headline">¶</a></h2>
 <span class="target" id="index-8"></span><span class="target" id="index-9"></span><span class="target" id="index-10"></span><span class="target" id="index-11"></span><p id="index-12">Doconce supports tags for <em>emphasized phrases</em>, <strong>boldface phrases</strong>,
 and <tt class="docutils literal"><span class="pre">verbatim</span> <span class="pre">text</span></tt> (also called type writer text, for inline code),
 &lt;font color=&#8221;blue&#8221;&gt;colored words&lt;/font&gt;,
@@ -3558,7 +3598,7 @@ the iterations.</td>
 <table class="docutils citation" frame="void" id="ref1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[Ref1]</td><td><em>(<a class="fn-backref" href="#id7">1</a>, <a class="fn-backref" href="#id12">2</a>)</em> <strong>H. P. Langtangen and G. Pedersen</strong>. Propagation of Large Destructive Waves,
+<tr><td class="label">[Ref1]</td><td><em>(<a class="fn-backref" href="#id8">1</a>, <a class="fn-backref" href="#id13">2</a>)</em> <strong>H. P. Langtangen and G. Pedersen</strong>. Propagation of Large Destructive Waves,
 <em>International Journal of Applied Mechanics and Engineering</em>,
 7(1),
 pp. 187-204,
@@ -3568,7 +3608,7 @@ pp. 187-204,
 <table class="docutils citation" frame="void" id="ref2" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id8">[Ref2]</a></td><td><strong>H. P. Langtangen, K.-A. Mardal and R. Winther</strong>. Numerical Methods for Incompressible Viscous Flow,
+<tr><td class="label"><a class="fn-backref" href="#id9">[Ref2]</a></td><td><strong>H. P. Langtangen, K.-A. Mardal and R. Winther</strong>. Numerical Methods for Incompressible Viscous Flow,
 <em>Advances in Water Resources</em>,
 25,
 pp. 1125-1146,
@@ -3578,7 +3618,7 @@ pp. 1125-1146,
 <table class="docutils citation" frame="void" id="ref3" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id9">[Ref3]</a></td><td><strong>H. P. Langtangen</strong>. Numerical Solution of First Passage Problems in Random Vibrations,
+<tr><td class="label"><a class="fn-backref" href="#id10">[Ref3]</a></td><td><strong>H. P. Langtangen</strong>. Numerical Solution of First Passage Problems in Random Vibrations,
 <em>SIAM Journal of Scientific and Statistical Computing</em>,
 15,
 pp. 997-996,
@@ -3588,7 +3628,7 @@ pp. 997-996,
 <table class="docutils citation" frame="void" id="ref4" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[Ref4]</td><td><em>(<a class="fn-backref" href="#id10">1</a>, <a class="fn-backref" href="#id13">2</a>)</em> <strong>K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen</strong>. Software Tools for Multigrid Methods,
+<tr><td class="label">[Ref4]</td><td><em>(<a class="fn-backref" href="#id11">1</a>, <a class="fn-backref" href="#id14">2</a>)</em> <strong>K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen</strong>. Software Tools for Multigrid Methods,
 Advanced Topics in Computational Partial Differential Equations &#8211; Numerical Methods and Diffpack Programming,
 edited by <strong>H. P. Langtangen and A. Tveito</strong>,
 Springer,
@@ -3598,7 +3638,7 @@ Springer,
 <table class="docutils citation" frame="void" id="ref5" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id11">[Ref5]</a></td><td><strong>H. P. Langtangen</strong>. The FEMDEQS Program System,
+<tr><td class="label"><a class="fn-backref" href="#id12">[Ref5]</a></td><td><strong>H. P. Langtangen</strong>. The FEMDEQS Program System,
 <em>Department of Mathematics, University of Oslo</em>,
 1989.</td></tr>
 </tbody>

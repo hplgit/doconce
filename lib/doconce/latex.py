@@ -1366,24 +1366,29 @@ final,                   % or draft (marks overfull hboxes)
 \linespread{1.05}            % Palatino needs extra line spread to look nice
 % #endif
 % #endif
-
-% Hyperlinks in PDF:
+"""
+    # Make sure hyperlinks are black (as the text) for printout
+    # and otherwise set to the dark blue linkcolor
+    linkcolor = 'black' if option('device') == 'paper else 'linkcolor'
+    INTRO['latex'] += r"""
+%% Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
 \usepackage[%
     colorlinks=true,
-    linkcolor=linkcolor,
+    linkcolor=%(linkcolor)s,
     urlcolor=linkcolor,
     citecolor=black,
     filecolor=black,
     %filecolor=blue,
     pdfmenubar=true,
     pdftoolbar=true,
-    bookmarksdepth=3   % Uncomment (and tweak) for PDF bookmarks with more levels than the TOC
+    bookmarksdepth=3   %% Uncomment (and tweak) for PDF bookmarks with more levels than the TOC
             ]{hyperref}
-%\hyperbaseurl{}   % hyperlinks are relative to this root
+%\hyperbaseurl{}   %% hyperlinks are relative to this root
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
-"""
+""" % linkcolor
+
     if 'FIGURE:' in filestr:
         INTRO['latex'] += r"""
 % Tricks for having figures close to where they are defined:
@@ -1404,6 +1409,7 @@ final,                   % or draft (marks overfull hboxes)
         INTRO['latex'] += r"""
 
 % #ifdef TODONOTES
+% enable inline (doconce) comments to be typeset with the todonotes package
 \usepackage{ifthen,xkeyval,tikz,calc,graphicx}"""
         if option('skip_inline_comments'):
             INTRO['latex'] += r"""
@@ -1417,7 +1423,8 @@ final,                   % or draft (marks overfull hboxes)
  \begin{spacing}{0.75}{\bf #1}: #2\end{spacing}}}
 \newcommand{\longinlinecomment}[3]{%
 \todo[inline,color=orange!40,caption={#3}]{{\bf #1}: #2}}
-% #else"""
+% #else
+% newcommands for typesetting inline (doconce) comments"""
         if option('skip_inline_comments'):
             INTRO['latex'] += r"""
 \newcommand{\shortinlinecomment}[3]{}

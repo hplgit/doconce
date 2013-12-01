@@ -257,7 +257,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>Nov 29, 2013</h4></center> <!-- date -->
+<center><h4>Dec 1, 2013</h4></center> <!-- date -->
 <p>
 <!-- lines beginning with # are doconce comment lines -->
 <!-- (documents can also have mako comment lines) -->
@@ -1318,19 +1318,66 @@ the table.
 <h3>LaTeX  <a name="___sec33"></a></h3>
 
 <p>
+<div class="alert alert-block alert-notice alert-text-normal"><b>Notice.</b>
+XeLaTeX and pdfLaTeX are used very much in the same way as standard
+LaTeX. The minor differences are described in separate sections
+of the documentation of the Doconce to LaTeX translation.
+</div>
+
+
+<p>
 Making a LaTeX file <code>mydoc.tex</code> from <code>mydoc.do.txt</code> is done in two steps:
+1) compile the Doconce source to the <code>ptex2tex</code> format, and 2) compile
+the <code>ptex2tex</code> format to standard LaTeX.
+The <a href="http://code.google.com/p/ptex2tex" target="_self"><tt>ptex2tex</tt></a> format can be
+viewed as an extended LaTeX. For Doconce users, the <code>ptex2tex</code> format
+essentially means that the file consists of
+
+<p>
+
+<ol>
+<li> <code>if-else</code> statements for the <code>preprocess</code> processor such that
+   LaTeX constructions can be activated or deactivated, and</li>
+<li> all code environments can be typeset according to a <code>.ptex2tex.cfg</code>
+   configuration file.</li>
+</ol>
+
+Point 2 is only of interest if you aim to use a special computer code
+formatting that requires you to use a configuration file and
+the <code>ptex2tex</code> program.
+
+<p>
+The reason for generating <code>ptex2tex</code> and not standard LaTeX directly
+from Doconce was that the <code>ptex2tex</code> format shows a range of possible
+LaTeX constructions for controlling the layout. It can be instructive
+for LaTeX users to look at this code before choosing specific parts
+for some desired layout. Experts may also want to edit this code
+(which should be automated by a script such that the edits can be
+repeated when the Doconce source is modified, see Step 2b below).
+(Direct control of the LaTeX layout in the <code>doconce format</code> program
+would not spit out alternative LaTeX constructs as is now done through
+the <code>ptex2tex</code> step.)
+
+<p>
+Going from <code>ptex2tex</code> format to standard LaTeX format is enabled by
+either the <code>ptex2tex</code> program or Doconce's (simplified) version of it:
+<code>doconce ptex2tex</code>. Details are given below.
+
+<p>
 <!-- Note: putting code blocks inside a list is not successful in many -->
 <!-- formats - the text may be messed up. A better choice is a paragraph -->
 <!-- environment, as used here. -->
 
 <p>
 <b>Step 1.</b>
-Filter the doconce text to a pre-LaTeX form <code>mydoc.p.tex</code> for
-the <code>ptex2tex</code> program (or <code>doconce ptex2tex</code>):
+Filter the doconce text to the <code>ptex2tex</code> "pre-LaTeX form"
+<code>mydoc.p.tex</code>:
 <!-- begin verbatim block  sys-->
 <pre><code>Terminal&gt; doconce format latex mydoc
 </code></pre>
 <!-- end verbatim block -->
+
+<p>
 LaTeX-specific commands ("newcommands") in math formulas and similar
 can be placed in files <code>newcommands.tex</code>, <code>newcommands_keep.tex</code>, or
 <code>newcommands_replace.tex</code> (see the section <a href="#newcommands">Macros (Newcommands)</a>).
@@ -1349,19 +1396,21 @@ on a screen where links are just clickable.
 
 <p>
 <b>Step 2.</b>
-Run <code>ptex2tex</code> (if you have it) to make a standard LaTeX file,
+Run <code>ptex2tex</code> (if you have installed the
+Python ptex2tex package) to make a standard LaTeX file,
 <!-- begin verbatim block  sys-->
 <pre><code>Terminal&gt; ptex2tex mydoc
 </code></pre>
 <!-- end verbatim block -->
-In case you do not have <code>ptex2tex</code>, you may run a (very) simplified version:
+In case you do not have <code>ptex2tex</code>, you may run the (simplified) version
+that comes with Doconce:
 <!-- begin verbatim block  sys-->
 <pre><code>Terminal&gt; doconce ptex2tex mydoc
 </code></pre>
 <!-- end verbatim block -->
 
 <p>
-Note that Doconce generates a <code>.p.tex</code> file with some preprocessor macros
+The <code>.p.tex</code> file contains a lot of preprocessor variables (like C macros)
 that can be used to steer certain properties of the LaTeX document.
 For example, to turn on the Helvetica font instead of the standard
 Computer Modern font, run
@@ -1370,12 +1419,6 @@ Computer Modern font, run
 Terminal&gt; doconce ptex2tex mydoc -DHELVETICA  # alternative
 </code></pre>
 <!-- end verbatim block -->
-The title, authors, and date are by default typeset in a non-standard
-way to enable a nicer treatment of multiple authors having
-institutions in common. However, the standard LaTeX "maketitle" heading
-is also available through <code>-DLATEX_HEADING=traditional</code>.
-A separate titlepage can be generated by
-<code>-DLATEX_HEADING=titlepage</code>.
 
 <p>
 Preprocessor variables to be defined or undefined are
@@ -1409,7 +1452,6 @@ Preprocessor variables to be defined or undefined are
  <li> <code>LINENUMBERS</code> for inclusion of line numbers in the text.</li>
  <li> <code>COLORED_TABLE_ROWS</code> for coloring every other table rows (set this
    variable to <code>gray</code> or <code>blue</code>).</li>
- <li> <code>BLUE_SECTION_HEADINGS</code> for blue section and subsection headings.</li>
 </ul>
 
 There are also preprocessor variables with specific values:
@@ -1446,9 +1488,20 @@ There are also preprocessor variables with specific values:
        style with blue headings.</li>
 </ul>
 
+ <li> <code>SECTION_HEADINGS</code> for specifying the style of the section,
+   subsection, and paragraph headings:</li>
+
+<ul>
+     <li> <code>blue</code> for a blue-gray color of the text,</li>
+     <li> <code>strongblue</code> for a stronger blue color of the text,</li>
+     <li> <code>gray</code> for white text on gray background,</li>
+     <li> <code>gray-wide</code> for white text in a gray box that spans the whole
+       page width.</li>
 </ul>
 
-If you are not satisfied with the Doconce preamble, you can provide
+</ul>
+
+If you are not satisfied with the generated Doconce preamble, you can provide
 your own preamble by adding the command-line option <code>--latex_preamble=myfile</code>.
 In case <code>myfile</code> contains a documentclass definition, Doconce assumes
 that the file contains the <em>complete</em> preamble you want (not that all
@@ -1458,7 +1511,7 @@ present in <code>myfile</code>). Otherwise, <code>myfile</code> is assumed to co
 
 <p>
 The <code>ptex2tex</code> tool makes it possible to easily switch between many
-different fancy formattings of computer or verbatim code in LaTeX
+different fancy formattings of computer code in LaTeX
 documents. After any <code>!bc</code> command in the Doconce source you can
 insert verbatim block styles as defined in your <code>.ptex2tex.cfg</code>
 file, e.g., <code>!bc sys</code> for a terminal session, where <code>sys</code> is set to
@@ -1542,20 +1595,25 @@ Terminal&gt; latex mydoc
 Terminal&gt; dvipdf mydoc
 </code></pre>
 <!-- end verbatim block -->
+See the next two sections for compilation with XeLaTeX or pdfLaTeX.
 
 <p>
-If one wishes to run <code>ptex2tex</code> and use the minted LaTeX package for
+If one wishes to use the minted LaTeX package for
 typesetting code blocks (<code>Minted_Python</code>, <code>Minted_Cpp</code>, etc., in
 <code>ptex2tex</code> specified through the <code>*pro</code> and <code>*cod</code> variables in
 <code>.ptex2tex.cfg</code> or <code>$HOME/.ptex2tex.cfg</code>), the minted LaTeX package is
-needed.  This package is included by running <code>ptex2tex</code> with the
-<code>-DMINTED</code> option:
+needed.  This package is automatically included by <code>doconce ptex2tex</code> if
+the minted style is used, while you have to include the
+<code>-DMINTED</code> preprocessor option when running the <code>ptex2tex</code> program:
 <!-- begin verbatim block  sys-->
 <pre><code>Terminal&gt; ptex2tex -DMINTED mydoc
 </code></pre>
 <!-- end verbatim block -->
-In this case, <code>latex</code> must be run with the
+If the minted style is used, <code>latex</code> (or <code>pdflatex</code> or <code>xelatex</code>)
+<em>must</em> be run with the
 <code>-shell-escape</code> option:
+
+<p>
 <!-- begin verbatim block  sys-->
 <pre><code>Terminal&gt; latex -shell-escape mydoc
 Terminal&gt; latex -shell-escape mydoc
@@ -1565,9 +1623,6 @@ Terminal&gt; latex -shell-escape mydoc
 Terminal&gt; dvipdf mydoc
 </code></pre>
 <!-- end verbatim block -->
-When running <code>doconce ptex2tex mydoc envir=minted</code> (or other minted
-specifications with <code>doconce ptex2tex</code>), the minted package is automatically
-included so there is no need for the <code>-DMINTED</code> option.
 
 <h3>PDFLaTeX  <a name="___sec34"></a></h3>
 

@@ -1,6 +1,8 @@
 TITLE: Scientific Writing with Doconce
 # index.html file for looking at the various versions of scientific_writing
 
+Doconce motivation and introduction talk *Scientific Writing and Publishing Anno 2013*:
+
  * "HTML5 Slides": "scientific_writing-reveal.html" using "reveal.js": "http://lab.hakim.se/reveal-js/" darkgray theme
  * "HTML5 Slides": "scientific_writing-reveal-beige.html" using "reveal.js": "http://lab.hakim.se/reveal-js/" beige theme
  * "HTML5 Slides": "scientific_writing-reveal-white.html" using "reveal.js": "http://lab.hakim.se/reveal-js/" simple theme
@@ -8,13 +10,11 @@ TITLE: Scientific Writing with Doconce
  * "LaTeX Beamer": "scientific_writing-beamer-red_shadow.pdf"
  * "Plain HTML slides": "scientific_writing-plain.html"
  * "One big plain HTML file": "scientific_writing-1.html"
+ * "One big HTML file with solarized colors": "scientific_writing-solarized.html"
 
-Here are some other document versions of the slides:
+Some other document-style versions of the slides above
 
  * "PDF (LaTeX)": "scientific_writing-anslistings.pdf" (anslistings.sty for code)
  * "PDF (LaTeX)": "scientific_writing-minted.pdf" (minted.sty for code)
- * "Solarized HTML": "scientific_writing-solarized.html"
 
-Doconce supports many slide styles:
-
- * "Demos of different HTML5 slide styles": "demo/index.html"
+Doconce supports many slide styles, see the "demo collection": "demo/index.html".
