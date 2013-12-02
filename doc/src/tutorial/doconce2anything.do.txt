@@ -491,6 +491,8 @@ Preprocessor variables to be defined or undefined are
  * `LINENUMBERS` for inclusion of line numbers in the text.
  * `COLORED_TABLE_ROWS` for coloring every other table rows (set this
    variable to `gray` or `blue`).
+ * `FANCY_HEADER` for turning on headers with section title and page
+   (and also chapter title on odd numbered pages if chapters exist).
 
 There are also preprocessor variables with specific values:
 

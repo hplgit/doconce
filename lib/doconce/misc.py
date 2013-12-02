@@ -5938,7 +5938,7 @@ def pygmentize():
     f = open(filename + '.html', 'w');  f.write(text);  f.close()
 
 def _usage_makefile():
-    print 'Usage:   doconce makefile doconce-file [html pdflatex latex sphinx] ...'
+    print 'Usage:   doconce makefile doconce-file [html pdflatex latex sphinx gwiki pandoc ipynb deck reveal beamer ...]'
     print 'Example: doconce makefile main_wave.do.txt html sphinx'
     print """
 A script make.sh is generated with the basic steps for running a
@@ -5953,7 +5953,7 @@ and font, extra info about sphinx theme, authors, version, etc.).
 """
 
 def makefile():
-    """Generate a generic makefile."""
+    """Generate a generic (Python) makefile for compiling doconce files."""
     if len(sys.argv) < 3:
         _usage_makefile()
         sys.exit(1)
@@ -5969,7 +5969,7 @@ def makefile():
     # make.py mydoc sphinx pdflatex beamer
 
     if not formats:
-        formats = ['pdflatex', 'html', 'sphinx']
+        formats = ['pdflatex', 'html', 'sphinx', 'deck', 'reveal', 'beamer']
 
     make = open('make.py', 'w')
     make.write('''\
@@ -5977,7 +5977,7 @@ def makefile():
 """
 Automatically generated file for compiling doconce documents.
 """
-import sys, glob, os
+import sys, glob, os, shutil
 
 unix_command_recorder = []
 
@@ -5998,24 +5998,52 @@ def spellcheck():
 def latex(name,
           latex_program='pdflatex',    # or 'latex'
           options='',
-          ptex2tex_program='doconce',   # or 'ptex2tex' with .ptex2tex.cfg
+          ptex2tex_program='doconce',  # or 'ptex2tex' (with .ptex2tex.cfg file)
           ptex2tex_options='',
-          ptex2tex_envir='minted'):
+          ptex2tex_envir='minted',
+          version='paper',             # or 'screen', '2up', 'A4', 'A4-2up'
+          postfix='',                  # or 'auto'
+          ):
     """
     Make latex/pdflatex (according to `latex_program`) PDF file from
     the doconce file `name` (without any .do.txt extension).
+
+    version:
+      * paper: normal page size, ``--device=paper``
+      * 2up: normal page size, ``--device=paper``, 2 pages per sheet
+      * A4: A4 page size, ``--device=paper``
+      * A4-2up: A4 page size, ``--device=paper``, 2 pages per sheet
+      * screen: normal pages size, ``--device=screen``
     """
     if name.endswith('.do.txt'):
         name = name.replace('.do.txt', '')
     system('rm -f %(name)s.aux' % vars())
+
+    if version in ('paper', 'A4', '2up', 'A4-2up'):
+        if not '--device=paper' in options:
+            options.append('--device=paper')
+    elif version == 'screen" and '--device=paper' in options:
+        options.remove('--device=paper')
+    if version in ('A4', 'A4-2up'):
+        if not '-DA4PAPER' in ptex2tex_options:
+            ptex2tex_options.append('-DA4PAPER')
+    if postfix == 'auto':
+        if version == 'paper':
+            postfix = '4print'
+        elif version == 'screen':
+            postfix = '4screen'
+        else:
+            postfix = version
 
     # Compile source
     cmd = 'doconce format %(latex_program)ss %(name)s %(options)s ' % vars()
     system(cmd)
 
     # Transform .p.tex to .tex
-    # (Alternative: use ptex2tex program which allows .ptex2tex.cfg file)
-    cmd = 'doconce ptex2tex %(name) %(ptex2tex_options)s envir="%(ptex2tex_envir)s"' % vars()
+    if ptex2tex_program == 'doconce':
+        cmd = 'doconce ptex2tex %(name) %(ptex2tex_options)s envir="%(ptex2tex_envir)s"' % vars()
+    else:
+        cmd = 'ptex2tex %(ptex2tex_options)s %(name)' % vars()
     system(cmd)
 
     dofile = open(name + '.do.txt', 'r')
@@ -6040,8 +6068,17 @@ def latex(name,
         system(cmd)
         # Could instead of dvipdf run dvips and ps2pdf
 
+    if version in ('2up', 'A4-2up'):
+        # Use pdfnup to make two pages per sheet
+        cmd = 'pdfnup --frame true --outfile tmp.pdf %(name)s.pdf' % vars()
+        system(cmd)
+        shutil.copy('tmp.pdf', name + '.pdf')
+        os.remove('tmp.pdf')
+    if postfix:
+        shutil.copy(name + '.pdf', name + '-' + postfix + '.pdf')
 
-def html(name, options='', split=False):
+
+def html(name, options='', postfix='', split=False):
     """
     Make HTML file from the doconce file `name`
     (without any .do.txt extension).
@@ -6056,8 +6093,11 @@ def html(name, options='', split=False):
     if split:
         cmd = 'doconce split_html %(name)s' % vars()
 
+    if postfix:
+        shutil.copy(name + '.html', name + '-' + postfix + '.html')
 
-def reveal_slides(name, options='', nametag='reveal', theme='darkgray'):
+
+def reveal_slides(name, options='', postfix='reveal', theme='darkgray'):
     """Make reveal.js HTML5 slides from the doconce file `name`."""
     if name.endswith('.do.txt'):
         name = name.replace('.do.txt', '')
@@ -6069,15 +6109,15 @@ def reveal_slides(name, options='', nametag='reveal', theme='darkgray'):
         options += ' --pygments_html_style=%s' % combinations['reveal'][theme][0]
     if '--keep_pygments_html_bg' not in options:
         options += ' --keep_pygments_html_bg'
-    options += ' --html_output="%(name)s-%(nametag)s'
+    options += ' --html_output="%(name)s-%(postfi)s'
 
     cmd = 'doconce format html %(name)s %(options)s ' % vars()
     system(cmd)
 
-    cmd = 'doconce slides_html %(name)s-%(nametag)s reveal --html_slide_theme=%(theme)s'
+    cmd = 'doconce slides_html %(name)s-%(postfi)s reveal --html_slide_theme=%(theme)s'
     system(cmd)
 
-def deck_slides(name, options='', nametag='deck', theme='sandstone.default'):
+def deck_slides(name, options='', postfix='deck', theme='sandstone.default'):
     """Make deck.js HTML5 slides from the doconce file `name`."""
     if name.endswith('.do.txt'):
         name = name.replace('.do.txt', '')
@@ -6089,15 +6129,15 @@ def deck_slides(name, options='', nametag='deck', theme='sandstone.default'):
         options += ' --pygments_html_style=%s' % combinations['deck'][theme][0]
     if '--keep_pygments_html_bg' not in options:
         options += ' --keep_pygments_html_bg'
-    options += ' --html_output="%(name)s-%(nametag)s'
+    options += ' --html_output="%(name)s-%(postfi)s'
 
     cmd = 'doconce format html %(name)s %(options)s ' % vars()
     system(cmd)
 
-    cmd = 'doconce slides_html %(name)s-%(nametag)s deck --html_slide_theme=%(theme)s'
+    cmd = 'doconce slides_html %(name)s-%(postfi)s deck --html_slide_theme=%(theme)s'
     system(cmd)
 
-def beamer_slides(name, options='', nametag='beamer', theme='red_shadow',
+def beamer_slides(name, options='', postfix='beamer', theme='red_shadow',
                   ptex2tex_envir='minted'):
     """Make latex beamer slides from the doconce file `name`."""
     if name.endswith('.do.txt'):
@@ -6116,9 +6156,9 @@ def beamer_slides(name, options='', nametag='beamer', theme='red_shadow',
     cmd = 'pdflatex %(shell_escape)s %(name)s'
     system(cmd)
     system(cmd)
-    system('cp %(name)s.pdf %(name)s-%(nametag).pdf' % vars())
+    system('cp %(name)s.pdf %(name)s-%(postfi).pdf' % vars())
 
-    cmd = 'doconce slides_html %(name)s-%(nametag)s deck --html_slide_theme=%(theme)s'
+    cmd = 'doconce slides_html %(name)s-%(postfi)s deck --html_slide_theme=%(theme)s'
     system(cmd)
 
 
@@ -6189,55 +6229,53 @@ def main():
     for format in formats:
         if format.endswith('latex'):
             make.write("""
-    # latex PDF for printing (URLs are in footnotes too)
-    latex(
-      dofile,
-      latex_program='pdflatex',
-      options=common_options + ' --device=paper',
-      ptex2tex_program='doconce',
-      ptex2tex_options='',
-      ptex2tex_envir='minted')
-    system('cp %(dofile)s.pdf %(dofile)s_4print.pdf' % vars())  # gets recorded
-
-    # latex PDF for electronic viewing (no footnotes with URL)
-    latex(
-      dofile,
-      latex_program='pdflatex',
-      options=common_options + '',
-      ptex2tex_program='doconce',
-      ptex2tex_options='',
-      ptex2tex_envir='minted')
+    for version in 'paper', 'screen':  # , 'A4', '2up', 'A4-2up':
+        latex(
+          dofile,
+          latex_program='pdflatex',
+          options=common_options,
+          ptex2tex_program='doconce',
+          ptex2tex_options='',
+          ptex2tex_envir='minted',
+          version=version,
+          postfix='auto')
 """)
         elif format == 'html':
             make.write("""
     # One long HTML file
     html(
       dofile,
-      options=common_options + ' --html_output=%(dofile)s-1' % vars(),
-      split=False)
+      options=common_options,
+      split=False,
+      postfix='1')
 
     # Splitted HTML file
-    html(
-      dofile,
-      options=common_options + '',
-      split=True)
+    #html(dofile, options=common_options, split=True)
+
+    # Solarized HTML
+    #html(dofile, options=common_options + '--html_style=solarized',
+    #     split=True, postfix='solarized')
 """)
         elif format == 'sphinx':
             make.write("""
-    sphinx(
-      dofile,
-      options=common_options + '',
-      dirname='sphinx-rootdir',
-      theme='pyramid',
-      automake_sphinx_options='',
-      split=False)
+    sphinx_themes = ['pyramid']
+    for theme in sphinx_themes:
+        dirname = 'sphinx-rootdir' if len(sphinx-themes) == 1 \
+                  else 'sphinx-rootdir-%s' % theme
+        sphinx(
+          dofile,
+          options=common_options + '',
+          dirname=dirname,
+          theme=theme,
+          automake_sphinx_options='',
+          split=False)
 """)
         elif format == 'reveal':
             make.write("""
     reveal_slides(
       dofile,
       options=common_options + '',
-      nametag='reveal',
+      postfix='reveal',
       theme='darkgray')
 """)
         elif format == 'deck':
@@ -6245,7 +6283,7 @@ def main():
     deck_slides(
       dofile,
       options=common_options + '',
-      nametag='deck',
+      postfix='deck',
       theme='sandstone.default')
 """)
         elif format == 'beamer':
@@ -6253,7 +6291,7 @@ def main():
     beamer_slides(
       dofile,
       options=common_options + '',
-      nametag='beamer',
+      postfix='beamer',
       theme='red_shadow',
       ptex2tex_envir='minted')  # 'ans:nt'
 """)
@@ -6303,13 +6341,13 @@ def main():
     reveal_slides(
       dofile,
       options=common_options + '',
-      nametag='reveal',
+      postfix='reveal',
       theme='darkgray')
 
     deck_slides(
       dofile,
       options=common_options + '',
-      nametag='deck',
+      postfix='deck',
       theme='sandstone.default')
 """)
             elif format.endswith('latex'):
@@ -6317,7 +6355,7 @@ def main():
     beamer_slides(
       dofile,
       options=common_options + '',
-      nametag='beamer',
+      postfix='beamer',
       theme='red_shadow',
       ptex2tex_envir='minted')  # 'ans:nt'
 

@@ -81,7 +81,7 @@ doconce replace --examples_as__exercises $ex testdoc.p.tex
 
 # A4PAPER trigger summary environment to be smaller paragraph
 # within the text (fine for proposals or articles).
-system ptex2tex -DMINTED -DMOVIE=movie15 -DLATEX_HEADING=titlepage -DA4PAPER -DTODONOTES -DLINENUMBERS -DCOLORED_TABLE_ROWS=blue -DSECTION_HEADINGS=blue testdoc
+system ptex2tex -DMINTED -DMOVIE=movie15 -DLATEX_HEADING=titlepage -DA4PAPER -DTODONOTES -DLINENUMBERS -DCOLORED_TABLE_ROWS=blue -DFANCY_HEADER -DSECTION_HEADINGS=blue testdoc
 
 # test that pdflatex works
 system pdflatex -shell-escape testdoc
@@ -90,7 +90,7 @@ makeindex testdoc
 bibtex testdoc
 pdflatex -shell-escape testdoc
 pdflatex -shell-escape testdoc
-
+exit
 cp testdoc.tex testdoc.tex_ptex2tex
 # testdoc.tex_ptex2tex corresponds to testdoc.pdf
 

@@ -1453,12 +1453,18 @@ final,                   % or draft (marks overfull hboxes)
 \fancyhf{}"""
         if chapters:
             INTRO['latex'] += r"""
+% section name to the left (L) and page number to the right (R)
+% on even (E) pages,
+% chapter name to the right (R) and page number to the right (L)
+% on odd (O) pages
 \fancyhead[LE]{\rightmark} %section
 \fancyhead[RE]{\thepage}
 \fancyhead[RO]{\leftmark} % chapter
 \fancyhead[LO]{\thepage}"""
         else:
             INTRO['latex'] += r"""
+% section name to the left (L) and page number to the right (R)
+% on even (E) pages, the other way around on odd pages
 \fancyhead[LE,RO]{\rightmark} %section
 \fancyhead[RE,LO]{\thepage}"""
         INTRO['latex'] += r"""
@@ -1736,6 +1742,14 @@ final,                   % or draft (marks overfull hboxes)
 \titleformat{name=\paragraph}[runin]
 {\color{seccolor}\normalfont\normalsize\bfseries}
 {}{}{\indent}
+% #ifdef FANCY_HEADER
+% let the header have a thick gray hrule with section and page in blue above
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{{\color{gray!50}%
+\hrule width\headwidth height\headrulewidth \vskip-\headrulewidth}}
+\fancyhead[LE,RO]{{\color{seccolor}\rightmark}} %section
+\fancyhead[RE,LO]{{\color{seccolor}\thepage}}
+% #endif
 % #elif SECTION_HEADINGS == "strongblue"
 % --- section/subsection headings with a strong blue color ---
 \definecolor{seccolor}{rgb}{0.2,0.2,0.8}
