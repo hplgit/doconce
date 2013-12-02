@@ -829,9 +829,29 @@ def exercises(filestr, format, code_blocks, tex_blocks):
                 instruction_line = False
 
             # [[[
-            # How to do multiple choice in exer or subex:
-            # !bmchoices, !emchoices (bchoices does not work since it starts with bc!)
-            # inside_mchoices: store all that text in subex/exer['multiple_choice']
+            # Read the suggestions below. Multiple choice must be
+            # a separate functionality so we can insert !bmchoice also
+            # outside exercises. Just read the text into a data structure
+            # and let formats have a new SURVEY[format] function to typeset
+            # the questions. One can generate plain HTML or create full
+            # surveys on Google:
+            # https://developers.google.com/apps-script/reference/forms/
+            # or surveymonkey:
+            # http://www.surveygizmo.com/survey-software-support/tutorials/create-a-survey-through-an-import-from-word/
+            # The multiple choice block can then end in a link to the survey,
+            # but we should check that automatic feedback on correct answers
+            # is possible in the survey service we choose. Google can:
+            # http://www.techrepublic.com/blog/google-in-the-enterprise/use-google-forms-to-create-a-self-grading-quiz/
+            # https://docs.google.com/a/simula.no/document/d/1S_rJ8CAsnBwAH6bRW1tKkwmlv1CWWeHFalkovs_Z0ws/edit
+            # See cool example:
+            # https://sites.google.com/site/mrswilsonstechclasses/technology-class-homework
+            # It should be possible to leave out questions from a doconce doc.
+            # Probably best to give to a summer student.
+            #
+            # How to do multiple choice in exer or subex (or inside admons
+            # and elsewhere, e.g., survey questions):
+            # !bmchoice, !emchoice (bchoices does not work since it starts with bc!)
+            # inside_mchoice: store all that text in subex/exer['multiple_choice']
             # afterwards: interpret the text in multiple_choices
             # syntax: Cf/Cr: ..., required E: ... for explanation (can be empty)
             # Cf is a false choice, Cr is a right choice (or False:/True:)
@@ -844,6 +864,9 @@ def exercises(filestr, format, code_blocks, tex_blocks):
             # js in the html file), latex can use fancy constructions,
             # others can use a plain list. --with_sol determines if
             # the solution is published (as for the answer/solution).
+            # Should have possibility to have textarea as answer to
+            # question for future smart regex checks of the answer, maybe
+            # also upload files.
             if inside_subex and not instruction_line:
                 if inside_answer:
                     subex['answer'].append(lines[line_no])
