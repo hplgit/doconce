@@ -842,6 +842,9 @@ def exercises(filestr, format, code_blocks, tex_blocks):
             # but we should check that automatic feedback on correct answers
             # is possible in the survey service we choose. Google can:
             # http://www.techrepublic.com/blog/google-in-the-enterprise/use-google-forms-to-create-a-self-grading-quiz/
+            # https://docs.google.com/a/simula.no/document/d/1S_rJ8CAsnBwAH6bRW1tKkwmlv1CWWeHFalkovs_Z0ws/edit
+            # See cool example:
+            # https://sites.google.com/site/mrswilsonstechclasses/technology-class-homework
             # It should be possible to leave out questions from a doconce doc.
             # Probably best to give to a summer student.
             #
