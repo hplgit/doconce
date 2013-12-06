@@ -53,3 +53,4 @@ sections_down = False
 #figure_prefix = 
 #movie_prefix = 
 handout = False
+#short_title = 
