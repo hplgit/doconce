@@ -1396,8 +1396,8 @@ final,                   % or draft (marks overfull hboxes)
 \definecolor{linkcolor}{rgb}{0,0,0.4}
 \usepackage[%%
     colorlinks=true,
-    linkcolor=%s,
-    urlcolor=linkcolor,
+    linkcolor=%(linkcolor)s,
+    urlcolor=%(linkcolor)s,
     citecolor=black,
     filecolor=black,
     %%filecolor=blue,
@@ -1408,7 +1408,7 @@ final,                   % or draft (marks overfull hboxes)
 %%\hyperbaseurl{}   %% hyperlinks are relative to this root
 
 \setcounter{tocdepth}{2}  %% number chapter, section, subsection
-""" % linkcolor
+""" % vars()
 
     if 'FIGURE:' in filestr:
         INTRO['latex'] += r"""

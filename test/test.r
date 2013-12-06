@@ -1790,8 +1790,14 @@ final,                   % or draft (marks overfull hboxes)
 
 
 % ----------------- title -------------------------
+
 % #if LATEX_HEADING == "traditional"
+
+% #if SECTION_HEADINGS in ("blue", "strongblue")
+\title{{\color{seccolor} A Document for Testing Doconce}}
+% #else
 \title{A Document for Testing Doconce}
+% #endif
 
 % #elif LATEX_HEADING == "titlepage"
 
@@ -1801,14 +1807,18 @@ final,                   % or draft (marks overfull hboxes)
 \begin{center}
 {\huge{\bfseries{
 \begin{spacing}{1.25}
+% #if SECTION_HEADINGS in ("blue", "strongblue")
+{\color{seccolor} A Document for Testing Doconce}
+% #else
 A Document for Testing Doconce
+% #endif
 \end{spacing}
 }}}
 
 % #elif LATEX_HEADING == "Springer_collection"
 \title*{A Document for Testing Doconce}
 % Short version of title:
-%\titlerunning{...}
+\titlerunning{A Document for Testing Doconce}
 
 % #elif LATEX_HEADING == "beamer"
 \title{A Document for Testing Doconce}
@@ -3409,7 +3419,7 @@ final,                   % or draft (marks overfull hboxes)
 \usepackage[%
     colorlinks=true,
     linkcolor=black,
-    urlcolor=linkcolor,
+    urlcolor=black,
     citecolor=black,
     filecolor=black,
     %filecolor=blue,
@@ -3539,13 +3549,14 @@ final,                   % or draft (marks overfull hboxes)
 
 % ----------------- title -------------------------
 
+
 \thispagestyle{empty}
 \hbox{\ \ }
 \vfill
 \begin{center}
 {\huge{\bfseries{
 \begin{spacing}{1.25}
-A Document for Testing Doconce
+{\color{seccolor} A Document for Testing Doconce}
 \end{spacing}
 }}}
 
@@ -5008,7 +5019,7 @@ final,                   % or draft (marks overfull hboxes)
 \usepackage[%
     colorlinks=true,
     linkcolor=black,
-    urlcolor=linkcolor,
+    urlcolor=black,
     citecolor=black,
     filecolor=black,
     %filecolor=blue,
@@ -5097,6 +5108,7 @@ final,                   % or draft (marks overfull hboxes)
 
 
 % ----------------- title -------------------------
+
 \thispagestyle{empty}
 
 \begin{center}
@@ -22553,8 +22565,14 @@ open=right               % start new chapters on odd-numbered pages
 
 
 % ----------------- title -------------------------
+
 % #if LATEX_HEADING == "traditional"
+
+% #if SECTION_HEADINGS in ("blue", "strongblue")
+\title{{\color{seccolor} Test of one author at one institution}}
+% #else
 \title{Test of one author at one institution}
+% #endif
 
 % #elif LATEX_HEADING == "titlepage"
 
@@ -22564,14 +22582,18 @@ open=right               % start new chapters on odd-numbered pages
 \begin{center}
 {\huge{\bfseries{
 \begin{spacing}{1.25}
+% #if SECTION_HEADINGS in ("blue", "strongblue")
+{\color{seccolor} Test of one author at one institution}
+% #else
 Test of one author at one institution
+% #endif
 \end{spacing}
 }}}
 
 % #elif LATEX_HEADING == "Springer_collection"
 \title*{Test of one author at one institution}
 % Short version of title:
-%\titlerunning{...}
+\titlerunning{Test of one author at one institution}
 
 % #elif LATEX_HEADING == "beamer"
 \title{Test of one author at one institution}
@@ -28740,8 +28762,14 @@ final,                   % or draft (marks overfull hboxes)
 
 
 % ----------------- title -------------------------
+
 % #if LATEX_HEADING == "traditional"
+
+% #if SECTION_HEADINGS in ("blue", "strongblue")
+\title{{\color{seccolor} A Document for Testing Doconce}}
+% #else
 \title{A Document for Testing Doconce}
+% #endif
 
 % #elif LATEX_HEADING == "titlepage"
 
@@ -28751,14 +28779,18 @@ final,                   % or draft (marks overfull hboxes)
 \begin{center}
 {\huge{\bfseries{
 \begin{spacing}{1.25}
+% #if SECTION_HEADINGS in ("blue", "strongblue")
+{\color{seccolor} A Document for Testing Doconce}
+% #else
 A Document for Testing Doconce
+% #endif
 \end{spacing}
 }}}
 
 % #elif LATEX_HEADING == "Springer_collection"
 \title*{A Document for Testing Doconce}
 % Short version of title:
-%\titlerunning{...}
+\titlerunning{A Document for Testing Doconce}
 
 % #elif LATEX_HEADING == "beamer"
 \title{A Document for Testing Doconce}
@@ -32110,8 +32142,14 @@ final,                   % or draft (marks overfull hboxes)
 
 
 % ----------------- title -------------------------
+
 % #if LATEX_HEADING == "traditional"
+
+% #if SECTION_HEADINGS in ("blue", "strongblue")
+\title{{\color{seccolor} How various formats can deal with {\LaTeX} math}}
+% #else
 \title{How various formats can deal with {\LaTeX} math}
+% #endif
 
 % #elif LATEX_HEADING == "titlepage"
 
@@ -32121,14 +32159,18 @@ final,                   % or draft (marks overfull hboxes)
 \begin{center}
 {\huge{\bfseries{
 \begin{spacing}{1.25}
+% #if SECTION_HEADINGS in ("blue", "strongblue")
+{\color{seccolor} How various formats can deal with {\LaTeX} math}
+% #else
 How various formats can deal with {\LaTeX} math
+% #endif
 \end{spacing}
 }}}
 
 % #elif LATEX_HEADING == "Springer_collection"
 \title*{How various formats can deal with {\LaTeX} math}
 % Short version of title:
-%\titlerunning{...}
+\titlerunning{How various formats can deal with {\LaTeX} math}
 
 % #elif LATEX_HEADING == "beamer"
 \title{How various formats can deal with {\LaTeX} math}
@@ -37321,8 +37363,14 @@ final,                   % or draft (marks overfull hboxes)
 
 
 % ----------------- title -------------------------
+
 % #if LATEX_HEADING == "traditional"
+
+% #if SECTION_HEADINGS in ("blue", "strongblue")
+\title{{\color{seccolor} Testing admons}}
+% #else
 \title{Testing admons}
+% #endif
 
 % #elif LATEX_HEADING == "titlepage"
 
@@ -37332,14 +37380,18 @@ final,                   % or draft (marks overfull hboxes)
 \begin{center}
 {\huge{\bfseries{
 \begin{spacing}{1.25}
+% #if SECTION_HEADINGS in ("blue", "strongblue")
+{\color{seccolor} Testing admons}
+% #else
 Testing admons
+% #endif
 \end{spacing}
 }}}
 
 % #elif LATEX_HEADING == "Springer_collection"
 \title*{Testing admons}
 % Short version of title:
-%\titlerunning{...}
+\titlerunning{Testing admons}
 
 % #elif LATEX_HEADING == "beamer"
 \title{Testing admons}
@@ -37880,6 +37932,7 @@ final,                   % or draft (marks overfull hboxes)
 
 
 % ----------------- title -------------------------
+
 \thispagestyle{empty}
 
 \begin{center}
@@ -38380,6 +38433,7 @@ final,                   % or draft (marks overfull hboxes)
 
 
 % ----------------- title -------------------------
+
 \thispagestyle{empty}
 
 \begin{center}
@@ -38802,6 +38856,7 @@ final,                   % or draft (marks overfull hboxes)
 
 
 % ----------------- title -------------------------
+
 \thispagestyle{empty}
 
 \begin{center}
@@ -39235,6 +39290,7 @@ final,                   % or draft (marks overfull hboxes)
 
 
 % ----------------- title -------------------------
+
 \thispagestyle{empty}
 
 \begin{center}
@@ -39758,6 +39814,7 @@ final,                   % or draft (marks overfull hboxes)
 
 
 % ----------------- title -------------------------
+
 \thispagestyle{empty}
 
 \begin{center}
@@ -40164,6 +40221,7 @@ final,                   % or draft (marks overfull hboxes)
 
 
 % ----------------- title -------------------------
+
 \thispagestyle{empty}
 
 \begin{center}
@@ -40663,6 +40721,7 @@ final,                   % or draft (marks overfull hboxes)
 
 
 % ----------------- title -------------------------
+
 \thispagestyle{empty}
 
 \begin{center}
@@ -46895,8 +46954,14 @@ final,                   % or draft (marks overfull hboxes)
 
 
 % ----------------- title -------------------------
+
 % #if LATEX_HEADING == "traditional"
+
+% #if SECTION_HEADINGS in ("blue", "strongblue")
+\title{{\color{seccolor} On the Technicalities of Scientific Writing Anno 2012: The Doconce Way}}
+% #else
 \title{On the Technicalities of Scientific Writing Anno 2012: The Doconce Way}
+% #endif
 
 % #elif LATEX_HEADING == "titlepage"
 
@@ -46906,14 +46971,18 @@ final,                   % or draft (marks overfull hboxes)
 \begin{center}
 {\huge{\bfseries{
 \begin{spacing}{1.25}
+% #if SECTION_HEADINGS in ("blue", "strongblue")
+{\color{seccolor} On the Technicalities of Scientific Writing Anno 2012: The Doconce Way}
+% #else
 On the Technicalities of Scientific Writing Anno 2012: The Doconce Way
+% #endif
 \end{spacing}
 }}}
 
 % #elif LATEX_HEADING == "Springer_collection"
 \title*{On the Technicalities of Scientific Writing Anno 2012: The Doconce Way}
 % Short version of title:
-%\titlerunning{...}
+\titlerunning{On the Technicalities of Scientific Writing Anno 2012: The Doconce Way}
 
 % #elif LATEX_HEADING == "beamer"
 \title{On the Technicalities of Scientific Writing Anno 2012: The Doconce Way}
@@ -47251,6 +47320,7 @@ title (Warning) since no title is specified. \par}
 
 
 % ----------------- title -------------------------
+
 \title{On the Technicalities of Scientific Writing Anno 2012: The Doconce Way}
 
 % ----------------- author(s) -------------------------
@@ -49509,8 +49579,14 @@ open=right               % start new chapters on odd-numbered pages
 
 
 % ----------------- title -------------------------
+
 % #if LATEX_HEADING == "traditional"
+
+% #if SECTION_HEADINGS in ("blue", "strongblue")
+\title{{\color{seccolor} Test slide features}}
+% #else
 \title{Test slide features}
+% #endif
 
 % #elif LATEX_HEADING == "titlepage"
 
@@ -49520,14 +49596,18 @@ open=right               % start new chapters on odd-numbered pages
 \begin{center}
 {\huge{\bfseries{
 \begin{spacing}{1.25}
+% #if SECTION_HEADINGS in ("blue", "strongblue")
+{\color{seccolor} Test slide features}
+% #else
 Test slide features
+% #endif
 \end{spacing}
 }}}
 
 % #elif LATEX_HEADING == "Springer_collection"
 \title*{Test slide features}
 % Short version of title:
-%\titlerunning{...}
+\titlerunning{Test slide features}
 
 % #elif LATEX_HEADING == "beamer"
 \title{Test slide features}
@@ -50523,6 +50603,7 @@ Last page gets rendered to
 
 
 % ----------------- title -------------------------
+
 \title{Test slide features}
 
 % ----------------- author(s) -------------------------
@@ -52219,8 +52300,14 @@ final,                   % or draft (marks overfull hboxes)
 
 
 % ----------------- title -------------------------
+
 % #if LATEX_HEADING == "traditional"
+
+% #if SECTION_HEADINGS in ("blue", "strongblue")
+\title{{\color{seccolor} On Schemes for Exponential Decay}}
+% #else
 \title{On Schemes for Exponential Decay}
+% #endif
 
 % #elif LATEX_HEADING == "titlepage"
 
@@ -52230,14 +52317,18 @@ final,                   % or draft (marks overfull hboxes)
 \begin{center}
 {\huge{\bfseries{
 \begin{spacing}{1.25}
+% #if SECTION_HEADINGS in ("blue", "strongblue")
+{\color{seccolor} On Schemes for Exponential Decay}
+% #else
 On Schemes for Exponential Decay
+% #endif
 \end{spacing}
 }}}
 
 % #elif LATEX_HEADING == "Springer_collection"
 \title*{On Schemes for Exponential Decay}
 % Short version of title:
-%\titlerunning{...}
+\titlerunning{On Schemes for Exponential Decay}
 
 % #elif LATEX_HEADING == "beamer"
 \title{On Schemes for Exponential Decay}
@@ -52606,6 +52697,7 @@ qualitatively correct results.
 
 
 % ----------------- title -------------------------
+
 \title{On Schemes for Exponential Decay}
 
 % ----------------- author(s) -------------------------
@@ -55908,8 +56000,14 @@ final,                   % or draft (marks overfull hboxes)
 
 
 % ----------------- title -------------------------
+
 % #if LATEX_HEADING == "traditional"
+
+% #if SECTION_HEADINGS in ("blue", "strongblue")
+\title{{\color{seccolor} Doconce Quick Reference}}
+% #else
 \title{Doconce Quick Reference}
+% #endif
 
 % #elif LATEX_HEADING == "titlepage"
 
@@ -55919,14 +56017,18 @@ final,                   % or draft (marks overfull hboxes)
 \begin{center}
 {\huge{\bfseries{
 \begin{spacing}{1.25}
+% #if SECTION_HEADINGS in ("blue", "strongblue")
+{\color{seccolor} Doconce Quick Reference}
+% #else
 Doconce Quick Reference
+% #endif
 \end{spacing}
 }}}
 
 % #elif LATEX_HEADING == "Springer_collection"
 \title*{Doconce Quick Reference}
 % Short version of title:
-%\titlerunning{...}
+\titlerunning{Doconce Quick Reference}
 
 % #elif LATEX_HEADING == "beamer"
 \title{Doconce Quick Reference}
@@ -67479,7 +67581,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 809.
+t line 810.
 
 
 
@@ -67499,7 +67601,7 @@ t line 809.
 
 
 
-t line 818.
+t line 819.
 
 
 
@@ -67519,7 +67621,7 @@ t line 818.
 
 
 
-t line 822.
+t line 823.
 
 
 
@@ -68201,7 +68303,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 809.
+t line 810.
 
 
 
@@ -68221,7 +68323,7 @@ t line 809.
 
 
 
-t line 818.
+t line 819.
 
 
 
@@ -68241,7 +68343,7 @@ t line 818.
 
 
 
-t line 822.
+t line 823.
 
 
 
@@ -68851,7 +68953,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 809.
+t line 810.
 
 
 
@@ -68871,7 +68973,7 @@ t line 809.
 
 
 
-t line 818.
+t line 819.
 
 
 
@@ -68891,7 +68993,7 @@ t line 818.
 
 
 
-t line 822.
+t line 823.
 
 
 
