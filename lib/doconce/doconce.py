@@ -465,6 +465,36 @@ def syntax_check(filestr, format):
 
     return None
 
+def urlcheck(filestr):
+    pattern = '"(https?://.+?)"'
+    urls = re.findall(pattern, filestr)
+    problematic = []
+    for url in urls:
+        if is_file_or_url(url) != 'url':
+            problematic.append(url)
+    if problematic:
+        print '*** warning: found non-existing URLs'
+        for problem in problematic:
+            print '    ', problem
+
+    """
+    pieces = url.split('/')
+    site = '/'.join(pieces[0:3])
+    path = '/' + '/'join(pieces[3:])
+
+    connection = httplib.HTTPConnection(site)
+    connection.request('HEAD', path)
+    response = connection.getresponse()
+    connection.close()
+    ok = False
+    if response.status == 200:
+        ok = True
+    #if response.status in (200, 301, 301):  # incl. redirection
+    if not ok:
+        print '*** warning: URL "%s" does not exist!'
+    return ok
+    """
+
 def make_one_line_paragraphs(filestr, format):
     # THIS FUNCTION DOES NOT WORK WELL - it's difficult to make
     # one-line paragraphs...
@@ -2248,6 +2278,10 @@ def doconce2format(filestr, format):
           ('*'*80, pprint.pformat(code_block_types)))
     debugpr('%s\n**** The tex blocks:\n\n%s\n\n' % \
           ('*'*80, pprint.pformat(tex_blocks)))
+
+    # Check URLs to see if they are valid
+    if option('urlcheck'):
+        urlcheck(filestr)
 
     # Lift sections up or down?
     s2name = {9: 'chapter', 7: 'section',

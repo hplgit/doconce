@@ -103,6 +103,8 @@ inserted to the right in exercises - "default" and "none" are allowed
      'Prefix all movie filenames with, e.g., an URL'),
     ('--handout',
      'Makes slides output suited for printing.'),
+    ('--urlcheck',
+     'Check that all URLs referred to in the document are valid.'),
     ]
 
 _legal_command_line_options = \

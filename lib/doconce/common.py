@@ -89,10 +89,11 @@ def is_file_or_url(filename):
     if filename.startswith('http'):
         try:
             # Print a message in case the program hangs a while here
-            print '... checking existence of', filename, '...'
+            print '... checking existence of', filename, '...',
             f = urllib.urlopen(filename)
             text = f.read()
             f.close()
+            print 'found!'
             ext = os.path.splitext(filename)[1]
             if ext in ('.html', 'htm'):
                 # Successful opening of an HTML file
@@ -107,7 +108,7 @@ def is_file_or_url(filename):
                 else:
                     return 'url'
         except IOError:
-            print '... could not find', filename
+            print 'not found!'
             return None
     else:
         return ('file' if os.path.isfile(filename) else None)
