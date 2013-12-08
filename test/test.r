@@ -1614,6 +1614,7 @@ final,                   % or draft (marks overfull hboxes)
 
 
 % #ifdef TODONOTES
+% enable inline (doconce) comments to be typeset with the todonotes package
 \usepackage{ifthen,xkeyval,tikz,calc,graphicx}
 \usepackage[shadow]{todonotes}
 \newcommand{\shortinlinecomment}[3]{%
@@ -1622,6 +1623,7 @@ final,                   % or draft (marks overfull hboxes)
 \newcommand{\longinlinecomment}[3]{%
 \todo[inline,color=orange!40,caption={#3}]{{\bf #1}: #2}}
 % #else
+% newcommands for typesetting inline (doconce) comments
 \newcommand{\shortinlinecomment}[3]{{\bf #1}: \emph{#2}}
 \newcommand{\longinlinecomment}[3]{{\bf #1}: \emph{#2}}
 % #endif
@@ -1630,6 +1632,18 @@ final,                   % or draft (marks overfull hboxes)
 \usepackage[mathlines]{lineno}  % show line numbers
 \linenumbers
 % #endif
+
+% #ifdef FANCY_HEADER
+% --- fancyhdr package for fancy headers ---
+\usepackage{fancyhdr}
+\fancyhf{}
+% section name to the left (L) and page number to the right (R)
+% on even (E) pages, the other way around on odd pages
+\fancyhead[LE,RO]{\rightmark} %section
+\fancyhead[RE,LO]{\thepage}
+\pagestyle{fancy}
+% #endif
+
 
 \usepackage[framemethod=TikZ]{mdframed}
 
@@ -1678,6 +1692,14 @@ final,                   % or draft (marks overfull hboxes)
 \titleformat{name=\paragraph}[runin]
 {\color{seccolor}\normalfont\normalsize\bfseries}
 {}{}{\indent}
+% #ifdef FANCY_HEADER
+% let the header have a thick gray hrule with section and page in blue above
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{{\color{gray!50}%
+\hrule width\headwidth height\headrulewidth \vskip-\headrulewidth}}
+\fancyhead[LE,RO]{{\color{seccolor}\rightmark}} %section
+\fancyhead[RE,LO]{{\color{seccolor}\thepage}}
+% #endif
 % #elif SECTION_HEADINGS == "strongblue"
 % --- section/subsection headings with a strong blue color ---
 \definecolor{seccolor}{rgb}{0.2,0.2,0.8}
@@ -1768,8 +1790,14 @@ final,                   % or draft (marks overfull hboxes)
 
 
 % ----------------- title -------------------------
+
 % #if LATEX_HEADING == "traditional"
+
+% #if SECTION_HEADINGS in ("blue", "strongblue")
+\title{{\color{seccolor} A Document for Testing Doconce}}
+% #else
 \title{A Document for Testing Doconce}
+% #endif
 
 % #elif LATEX_HEADING == "titlepage"
 
@@ -1779,18 +1807,24 @@ final,                   % or draft (marks overfull hboxes)
 \begin{center}
 {\huge{\bfseries{
 \begin{spacing}{1.25}
+% #if SECTION_HEADINGS in ("blue", "strongblue")
+{\color{seccolor} A Document for Testing Doconce}
+% #else
 A Document for Testing Doconce
+% #endif
 \end{spacing}
 }}}
 
 % #elif LATEX_HEADING == "Springer_collection"
 \title*{A Document for Testing Doconce}
 % Short version of title:
-%\titlerunning{...}
+\titlerunning{A Document for Testing Doconce}
 
 % #elif LATEX_HEADING == "beamer"
 \title{A Document for Testing Doconce}
 % #else
+\thispagestyle{empty}
+
 \begin{center}
 {\LARGE\bf
 \begin{spacing}{1.25}
@@ -3384,8 +3418,8 @@ final,                   % or draft (marks overfull hboxes)
 \definecolor{linkcolor}{rgb}{0,0,0.4}
 \usepackage[%
     colorlinks=true,
-    linkcolor=linkcolor,
-    urlcolor=linkcolor,
+    linkcolor=black,
+    urlcolor=black,
     citecolor=black,
     filecolor=black,
     %filecolor=blue,
@@ -3412,6 +3446,7 @@ final,                   % or draft (marks overfull hboxes)
 %\usepackage{float}\restylefloat{figure}
 
 
+% enable inline (doconce) comments to be typeset with the todonotes package
 \usepackage{ifthen,xkeyval,tikz,calc,graphicx}
 \usepackage[shadow]{todonotes}
 \newcommand{\shortinlinecomment}[3]{%
@@ -3422,6 +3457,16 @@ final,                   % or draft (marks overfull hboxes)
 
 \usepackage[mathlines]{lineno}  % show line numbers
 \linenumbers
+
+% --- fancyhdr package for fancy headers ---
+\usepackage{fancyhdr}
+\fancyhf{}
+% section name to the left (L) and page number to the right (R)
+% on even (E) pages, the other way around on odd pages
+\fancyhead[LE,RO]{\rightmark} %section
+\fancyhead[RE,LO]{\thepage}
+\pagestyle{fancy}
+
 
 \usepackage[framemethod=TikZ]{mdframed}
 
@@ -3465,6 +3510,12 @@ final,                   % or draft (marks overfull hboxes)
 \titleformat{name=\paragraph}[runin]
 {\color{seccolor}\normalfont\normalsize\bfseries}
 {}{}{\indent}
+% let the header have a thick gray hrule with section and page in blue above
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{{\color{gray!50}%
+\hrule width\headwidth height\headrulewidth \vskip-\headrulewidth}}
+\fancyhead[LE,RO]{{\color{seccolor}\rightmark}} %section
+\fancyhead[RE,LO]{{\color{seccolor}\thepage}}
 
 % color every two table rows
 \let\oldtabular\tabular
@@ -3498,13 +3549,14 @@ final,                   % or draft (marks overfull hboxes)
 
 % ----------------- title -------------------------
 
+
 \thispagestyle{empty}
 \hbox{\ \ }
 \vfill
 \begin{center}
 {\huge{\bfseries{
 \begin{spacing}{1.25}
-A Document for Testing Doconce
+{\color{seccolor} A Document for Testing Doconce}
 \end{spacing}
 }}}
 
@@ -4966,8 +5018,8 @@ final,                   % or draft (marks overfull hboxes)
 \definecolor{linkcolor}{rgb}{0,0,0.4}
 \usepackage[%
     colorlinks=true,
-    linkcolor=linkcolor,
-    urlcolor=linkcolor,
+    linkcolor=black,
+    urlcolor=black,
     citecolor=black,
     filecolor=black,
     %filecolor=blue,
@@ -4994,8 +5046,11 @@ final,                   % or draft (marks overfull hboxes)
 %\usepackage{float}\restylefloat{figure}
 
 
+% newcommands for typesetting inline (doconce) comments
 \newcommand{\shortinlinecomment}[3]{{\bf #1}: \emph{#2}}
 \newcommand{\longinlinecomment}[3]{{\bf #1}: \emph{#2}}
+
+
 
 
 \usepackage[framemethod=TikZ]{mdframed}
@@ -5053,6 +5108,9 @@ final,                   % or draft (marks overfull hboxes)
 
 
 % ----------------- title -------------------------
+
+\thispagestyle{empty}
+
 \begin{center}
 {\LARGE\bf
 \begin{spacing}{1.25}
@@ -22405,6 +22463,14 @@ open=right               % start new chapters on odd-numbered pages
 \titleformat{name=\paragraph}[runin]
 {\color{seccolor}\normalfont\normalsize\bfseries}
 {}{}{\indent}
+% #ifdef FANCY_HEADER
+% let the header have a thick gray hrule with section and page in blue above
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{{\color{gray!50}%
+\hrule width\headwidth height\headrulewidth \vskip-\headrulewidth}}
+\fancyhead[LE,RO]{{\color{seccolor}\rightmark}} %section
+\fancyhead[RE,LO]{{\color{seccolor}\thepage}}
+% #endif
 % #elif SECTION_HEADINGS == "strongblue"
 % --- section/subsection headings with a strong blue color ---
 \definecolor{seccolor}{rgb}{0.2,0.2,0.8}
@@ -22499,8 +22565,14 @@ open=right               % start new chapters on odd-numbered pages
 
 
 % ----------------- title -------------------------
+
 % #if LATEX_HEADING == "traditional"
+
+% #if SECTION_HEADINGS in ("blue", "strongblue")
+\title{{\color{seccolor} Test of one author at one institution}}
+% #else
 \title{Test of one author at one institution}
+% #endif
 
 % #elif LATEX_HEADING == "titlepage"
 
@@ -22510,18 +22582,24 @@ open=right               % start new chapters on odd-numbered pages
 \begin{center}
 {\huge{\bfseries{
 \begin{spacing}{1.25}
+% #if SECTION_HEADINGS in ("blue", "strongblue")
+{\color{seccolor} Test of one author at one institution}
+% #else
 Test of one author at one institution
+% #endif
 \end{spacing}
 }}}
 
 % #elif LATEX_HEADING == "Springer_collection"
 \title*{Test of one author at one institution}
 % Short version of title:
-%\titlerunning{...}
+\titlerunning{Test of one author at one institution}
 
 % #elif LATEX_HEADING == "beamer"
 \title{Test of one author at one institution}
 % #else
+\thispagestyle{empty}
+
 \begin{center}
 {\LARGE\bf
 \begin{spacing}{1.25}
@@ -28508,6 +28586,7 @@ final,                   % or draft (marks overfull hboxes)
 
 
 % #ifdef TODONOTES
+% enable inline (doconce) comments to be typeset with the todonotes package
 \usepackage{ifthen,xkeyval,tikz,calc,graphicx}
 \usepackage[shadow]{todonotes}
 \newcommand{\shortinlinecomment}[3]{%
@@ -28516,6 +28595,7 @@ final,                   % or draft (marks overfull hboxes)
 \newcommand{\longinlinecomment}[3]{%
 \todo[inline,color=orange!40,caption={#3}]{{\bf #1}: #2}}
 % #else
+% newcommands for typesetting inline (doconce) comments
 \newcommand{\shortinlinecomment}[3]{{\bf #1}: \emph{#2}}
 \newcommand{\longinlinecomment}[3]{{\bf #1}: \emph{#2}}
 % #endif
@@ -28524,6 +28604,18 @@ final,                   % or draft (marks overfull hboxes)
 \usepackage[mathlines]{lineno}  % show line numbers
 \linenumbers
 % #endif
+
+% #ifdef FANCY_HEADER
+% --- fancyhdr package for fancy headers ---
+\usepackage{fancyhdr}
+\fancyhf{}
+% section name to the left (L) and page number to the right (R)
+% on even (E) pages, the other way around on odd pages
+\fancyhead[LE,RO]{\rightmark} %section
+\fancyhead[RE,LO]{\thepage}
+\pagestyle{fancy}
+% #endif
+
 
 \usepackage[framemethod=TikZ]{mdframed}
 
@@ -28572,6 +28664,14 @@ final,                   % or draft (marks overfull hboxes)
 \titleformat{name=\paragraph}[runin]
 {\color{seccolor}\normalfont\normalsize\bfseries}
 {}{}{\indent}
+% #ifdef FANCY_HEADER
+% let the header have a thick gray hrule with section and page in blue above
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{{\color{gray!50}%
+\hrule width\headwidth height\headrulewidth \vskip-\headrulewidth}}
+\fancyhead[LE,RO]{{\color{seccolor}\rightmark}} %section
+\fancyhead[RE,LO]{{\color{seccolor}\thepage}}
+% #endif
 % #elif SECTION_HEADINGS == "strongblue"
 % --- section/subsection headings with a strong blue color ---
 \definecolor{seccolor}{rgb}{0.2,0.2,0.8}
@@ -28662,8 +28762,14 @@ final,                   % or draft (marks overfull hboxes)
 
 
 % ----------------- title -------------------------
+
 % #if LATEX_HEADING == "traditional"
+
+% #if SECTION_HEADINGS in ("blue", "strongblue")
+\title{{\color{seccolor} A Document for Testing Doconce}}
+% #else
 \title{A Document for Testing Doconce}
+% #endif
 
 % #elif LATEX_HEADING == "titlepage"
 
@@ -28673,18 +28779,24 @@ final,                   % or draft (marks overfull hboxes)
 \begin{center}
 {\huge{\bfseries{
 \begin{spacing}{1.25}
+% #if SECTION_HEADINGS in ("blue", "strongblue")
+{\color{seccolor} A Document for Testing Doconce}
+% #else
 A Document for Testing Doconce
+% #endif
 \end{spacing}
 }}}
 
 % #elif LATEX_HEADING == "Springer_collection"
 \title*{A Document for Testing Doconce}
 % Short version of title:
-%\titlerunning{...}
+\titlerunning{A Document for Testing Doconce}
 
 % #elif LATEX_HEADING == "beamer"
 \title{A Document for Testing Doconce}
 % #else
+\thispagestyle{empty}
+
 \begin{center}
 {\LARGE\bf
 \begin{spacing}{1.25}
@@ -30678,7 +30790,7 @@ doconce replace --examples_as__exercises $ex testdoc.p.tex
 
 # A4PAPER trigger summary environment to be smaller paragraph
 # within the text (fine for proposals or articles).
-system ptex2tex -DMINTED -DMOVIE=movie15 -DLATEX_HEADING=titlepage -DA4PAPER -DTODONOTES -DLINENUMBERS -DCOLORED_TABLE_ROWS=blue -DSECTION_HEADINGS=blue testdoc
+system ptex2tex -DMINTED -DMOVIE=movie15 -DLATEX_HEADING=titlepage -DA4PAPER -DTODONOTES -DLINENUMBERS -DCOLORED_TABLE_ROWS=blue -DFANCY_HEADER -DSECTION_HEADINGS=blue testdoc
 
 # test that pdflatex works
 system pdflatex -shell-escape testdoc
@@ -31935,6 +32047,14 @@ final,                   % or draft (marks overfull hboxes)
 \titleformat{name=\paragraph}[runin]
 {\color{seccolor}\normalfont\normalsize\bfseries}
 {}{}{\indent}
+% #ifdef FANCY_HEADER
+% let the header have a thick gray hrule with section and page in blue above
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{{\color{gray!50}%
+\hrule width\headwidth height\headrulewidth \vskip-\headrulewidth}}
+\fancyhead[LE,RO]{{\color{seccolor}\rightmark}} %section
+\fancyhead[RE,LO]{{\color{seccolor}\thepage}}
+% #endif
 % #elif SECTION_HEADINGS == "strongblue"
 % --- section/subsection headings with a strong blue color ---
 \definecolor{seccolor}{rgb}{0.2,0.2,0.8}
@@ -32022,8 +32142,14 @@ final,                   % or draft (marks overfull hboxes)
 
 
 % ----------------- title -------------------------
+
 % #if LATEX_HEADING == "traditional"
+
+% #if SECTION_HEADINGS in ("blue", "strongblue")
+\title{{\color{seccolor} How various formats can deal with {\LaTeX} math}}
+% #else
 \title{How various formats can deal with {\LaTeX} math}
+% #endif
 
 % #elif LATEX_HEADING == "titlepage"
 
@@ -32033,18 +32159,24 @@ final,                   % or draft (marks overfull hboxes)
 \begin{center}
 {\huge{\bfseries{
 \begin{spacing}{1.25}
+% #if SECTION_HEADINGS in ("blue", "strongblue")
+{\color{seccolor} How various formats can deal with {\LaTeX} math}
+% #else
 How various formats can deal with {\LaTeX} math
+% #endif
 \end{spacing}
 }}}
 
 % #elif LATEX_HEADING == "Springer_collection"
 \title*{How various formats can deal with {\LaTeX} math}
 % Short version of title:
-%\titlerunning{...}
+\titlerunning{How various formats can deal with {\LaTeX} math}
 
 % #elif LATEX_HEADING == "beamer"
 \title{How various formats can deal with {\LaTeX} math}
 % #else
+\thispagestyle{empty}
+
 \begin{center}
 {\LARGE\bf
 \begin{spacing}{1.25}
@@ -37136,6 +37268,14 @@ final,                   % or draft (marks overfull hboxes)
 \titleformat{name=\paragraph}[runin]
 {\color{seccolor}\normalfont\normalsize\bfseries}
 {}{}{\indent}
+% #ifdef FANCY_HEADER
+% let the header have a thick gray hrule with section and page in blue above
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{{\color{gray!50}%
+\hrule width\headwidth height\headrulewidth \vskip-\headrulewidth}}
+\fancyhead[LE,RO]{{\color{seccolor}\rightmark}} %section
+\fancyhead[RE,LO]{{\color{seccolor}\thepage}}
+% #endif
 % #elif SECTION_HEADINGS == "strongblue"
 % --- section/subsection headings with a strong blue color ---
 \definecolor{seccolor}{rgb}{0.2,0.2,0.8}
@@ -37223,8 +37363,14 @@ final,                   % or draft (marks overfull hboxes)
 
 
 % ----------------- title -------------------------
+
 % #if LATEX_HEADING == "traditional"
+
+% #if SECTION_HEADINGS in ("blue", "strongblue")
+\title{{\color{seccolor} Testing admons}}
+% #else
 \title{Testing admons}
+% #endif
 
 % #elif LATEX_HEADING == "titlepage"
 
@@ -37234,18 +37380,24 @@ final,                   % or draft (marks overfull hboxes)
 \begin{center}
 {\huge{\bfseries{
 \begin{spacing}{1.25}
+% #if SECTION_HEADINGS in ("blue", "strongblue")
+{\color{seccolor} Testing admons}
+% #else
 Testing admons
+% #endif
 \end{spacing}
 }}}
 
 % #elif LATEX_HEADING == "Springer_collection"
 \title*{Testing admons}
 % Short version of title:
-%\titlerunning{...}
+\titlerunning{Testing admons}
 
 % #elif LATEX_HEADING == "beamer"
 \title{Testing admons}
 % #else
+\thispagestyle{empty}
+
 \begin{center}
 {\LARGE\bf
 \begin{spacing}{1.25}
@@ -37780,6 +37932,9 @@ final,                   % or draft (marks overfull hboxes)
 
 
 % ----------------- title -------------------------
+
+\thispagestyle{empty}
+
 \begin{center}
 {\LARGE\bf
 \begin{spacing}{1.25}
@@ -38278,6 +38433,9 @@ final,                   % or draft (marks overfull hboxes)
 
 
 % ----------------- title -------------------------
+
+\thispagestyle{empty}
+
 \begin{center}
 {\LARGE\bf
 \begin{spacing}{1.25}
@@ -38698,6 +38856,9 @@ final,                   % or draft (marks overfull hboxes)
 
 
 % ----------------- title -------------------------
+
+\thispagestyle{empty}
+
 \begin{center}
 {\LARGE\bf
 \begin{spacing}{1.25}
@@ -39129,6 +39290,9 @@ final,                   % or draft (marks overfull hboxes)
 
 
 % ----------------- title -------------------------
+
+\thispagestyle{empty}
+
 \begin{center}
 {\LARGE\bf
 \begin{spacing}{1.25}
@@ -39650,6 +39814,9 @@ final,                   % or draft (marks overfull hboxes)
 
 
 % ----------------- title -------------------------
+
+\thispagestyle{empty}
+
 \begin{center}
 {\LARGE\bf
 \begin{spacing}{1.25}
@@ -40054,6 +40221,9 @@ final,                   % or draft (marks overfull hboxes)
 
 
 % ----------------- title -------------------------
+
+\thispagestyle{empty}
+
 \begin{center}
 {\LARGE\bf
 \begin{spacing}{1.25}
@@ -40551,6 +40721,9 @@ final,                   % or draft (marks overfull hboxes)
 
 
 % ----------------- title -------------------------
+
+\thispagestyle{empty}
+
 \begin{center}
 {\LARGE\bf
 \begin{spacing}{1.25}
@@ -46608,6 +46781,7 @@ final,                   % or draft (marks overfull hboxes)
 
 
 % #ifdef TODONOTES
+% enable inline (doconce) comments to be typeset with the todonotes package
 \usepackage{ifthen,xkeyval,tikz,calc,graphicx}
 \usepackage[shadow]{todonotes}
 \newcommand{\shortinlinecomment}[3]{%
@@ -46616,6 +46790,7 @@ final,                   % or draft (marks overfull hboxes)
 \newcommand{\longinlinecomment}[3]{%
 \todo[inline,color=orange!40,caption={#3}]{{\bf #1}: #2}}
 % #else
+% newcommands for typesetting inline (doconce) comments
 \newcommand{\shortinlinecomment}[3]{{\bf #1}: \emph{#2}}
 \newcommand{\longinlinecomment}[3]{{\bf #1}: \emph{#2}}
 % #endif
@@ -46624,6 +46799,18 @@ final,                   % or draft (marks overfull hboxes)
 \usepackage[mathlines]{lineno}  % show line numbers
 \linenumbers
 % #endif
+
+% #ifdef FANCY_HEADER
+% --- fancyhdr package for fancy headers ---
+\usepackage{fancyhdr}
+\fancyhf{}
+% section name to the left (L) and page number to the right (R)
+% on even (E) pages, the other way around on odd pages
+\fancyhead[LE,RO]{\rightmark} %section
+\fancyhead[RE,LO]{\thepage}
+\pagestyle{fancy}
+% #endif
+
 
 \usepackage[framemethod=TikZ]{mdframed}
 
@@ -46672,6 +46859,14 @@ final,                   % or draft (marks overfull hboxes)
 \titleformat{name=\paragraph}[runin]
 {\color{seccolor}\normalfont\normalsize\bfseries}
 {}{}{\indent}
+% #ifdef FANCY_HEADER
+% let the header have a thick gray hrule with section and page in blue above
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{{\color{gray!50}%
+\hrule width\headwidth height\headrulewidth \vskip-\headrulewidth}}
+\fancyhead[LE,RO]{{\color{seccolor}\rightmark}} %section
+\fancyhead[RE,LO]{{\color{seccolor}\thepage}}
+% #endif
 % #elif SECTION_HEADINGS == "strongblue"
 % --- section/subsection headings with a strong blue color ---
 \definecolor{seccolor}{rgb}{0.2,0.2,0.8}
@@ -46759,8 +46954,14 @@ final,                   % or draft (marks overfull hboxes)
 
 
 % ----------------- title -------------------------
+
 % #if LATEX_HEADING == "traditional"
+
+% #if SECTION_HEADINGS in ("blue", "strongblue")
+\title{{\color{seccolor} On the Technicalities of Scientific Writing Anno 2012: The Doconce Way}}
+% #else
 \title{On the Technicalities of Scientific Writing Anno 2012: The Doconce Way}
+% #endif
 
 % #elif LATEX_HEADING == "titlepage"
 
@@ -46770,18 +46971,24 @@ final,                   % or draft (marks overfull hboxes)
 \begin{center}
 {\huge{\bfseries{
 \begin{spacing}{1.25}
+% #if SECTION_HEADINGS in ("blue", "strongblue")
+{\color{seccolor} On the Technicalities of Scientific Writing Anno 2012: The Doconce Way}
+% #else
 On the Technicalities of Scientific Writing Anno 2012: The Doconce Way
+% #endif
 \end{spacing}
 }}}
 
 % #elif LATEX_HEADING == "Springer_collection"
 \title*{On the Technicalities of Scientific Writing Anno 2012: The Doconce Way}
 % Short version of title:
-%\titlerunning{...}
+\titlerunning{On the Technicalities of Scientific Writing Anno 2012: The Doconce Way}
 
 % #elif LATEX_HEADING == "beamer"
 \title{On the Technicalities of Scientific Writing Anno 2012: The Doconce Way}
 % #else
+\thispagestyle{empty}
+
 \begin{center}
 {\LARGE\bf
 \begin{spacing}{1.25}
@@ -47113,6 +47320,7 @@ title (Warning) since no title is specified. \par}
 
 
 % ----------------- title -------------------------
+
 \title{On the Technicalities of Scientific Writing Anno 2012: The Doconce Way}
 
 % ----------------- author(s) -------------------------
@@ -49273,6 +49481,14 @@ open=right               % start new chapters on odd-numbered pages
 \titleformat{name=\paragraph}[runin]
 {\color{seccolor}\normalfont\normalsize\bfseries}
 {}{}{\indent}
+% #ifdef FANCY_HEADER
+% let the header have a thick gray hrule with section and page in blue above
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{{\color{gray!50}%
+\hrule width\headwidth height\headrulewidth \vskip-\headrulewidth}}
+\fancyhead[LE,RO]{{\color{seccolor}\rightmark}} %section
+\fancyhead[RE,LO]{{\color{seccolor}\thepage}}
+% #endif
 % #elif SECTION_HEADINGS == "strongblue"
 % --- section/subsection headings with a strong blue color ---
 \definecolor{seccolor}{rgb}{0.2,0.2,0.8}
@@ -49363,8 +49579,14 @@ open=right               % start new chapters on odd-numbered pages
 
 
 % ----------------- title -------------------------
+
 % #if LATEX_HEADING == "traditional"
+
+% #if SECTION_HEADINGS in ("blue", "strongblue")
+\title{{\color{seccolor} Test slide features}}
+% #else
 \title{Test slide features}
+% #endif
 
 % #elif LATEX_HEADING == "titlepage"
 
@@ -49374,18 +49596,24 @@ open=right               % start new chapters on odd-numbered pages
 \begin{center}
 {\huge{\bfseries{
 \begin{spacing}{1.25}
+% #if SECTION_HEADINGS in ("blue", "strongblue")
+{\color{seccolor} Test slide features}
+% #else
 Test slide features
+% #endif
 \end{spacing}
 }}}
 
 % #elif LATEX_HEADING == "Springer_collection"
 \title*{Test slide features}
 % Short version of title:
-%\titlerunning{...}
+\titlerunning{Test slide features}
 
 % #elif LATEX_HEADING == "beamer"
 \title{Test slide features}
 % #else
+\thispagestyle{empty}
+
 \begin{center}
 {\LARGE\bf
 \begin{spacing}{1.25}
@@ -50375,6 +50603,7 @@ Last page gets rendered to
 
 
 % ----------------- title -------------------------
+
 \title{Test slide features}
 
 % ----------------- author(s) -------------------------
@@ -51976,6 +52205,14 @@ final,                   % or draft (marks overfull hboxes)
 \titleformat{name=\paragraph}[runin]
 {\color{seccolor}\normalfont\normalsize\bfseries}
 {}{}{\indent}
+% #ifdef FANCY_HEADER
+% let the header have a thick gray hrule with section and page in blue above
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{{\color{gray!50}%
+\hrule width\headwidth height\headrulewidth \vskip-\headrulewidth}}
+\fancyhead[LE,RO]{{\color{seccolor}\rightmark}} %section
+\fancyhead[RE,LO]{{\color{seccolor}\thepage}}
+% #endif
 % #elif SECTION_HEADINGS == "strongblue"
 % --- section/subsection headings with a strong blue color ---
 \definecolor{seccolor}{rgb}{0.2,0.2,0.8}
@@ -52063,8 +52300,14 @@ final,                   % or draft (marks overfull hboxes)
 
 
 % ----------------- title -------------------------
+
 % #if LATEX_HEADING == "traditional"
+
+% #if SECTION_HEADINGS in ("blue", "strongblue")
+\title{{\color{seccolor} On Schemes for Exponential Decay}}
+% #else
 \title{On Schemes for Exponential Decay}
+% #endif
 
 % #elif LATEX_HEADING == "titlepage"
 
@@ -52074,18 +52317,24 @@ final,                   % or draft (marks overfull hboxes)
 \begin{center}
 {\huge{\bfseries{
 \begin{spacing}{1.25}
+% #if SECTION_HEADINGS in ("blue", "strongblue")
+{\color{seccolor} On Schemes for Exponential Decay}
+% #else
 On Schemes for Exponential Decay
+% #endif
 \end{spacing}
 }}}
 
 % #elif LATEX_HEADING == "Springer_collection"
 \title*{On Schemes for Exponential Decay}
 % Short version of title:
-%\titlerunning{...}
+\titlerunning{On Schemes for Exponential Decay}
 
 % #elif LATEX_HEADING == "beamer"
 \title{On Schemes for Exponential Decay}
 % #else
+\thispagestyle{empty}
+
 \begin{center}
 {\LARGE\bf
 \begin{spacing}{1.25}
@@ -52448,6 +52697,7 @@ qualitatively correct results.
 
 
 % ----------------- title -------------------------
+
 \title{On Schemes for Exponential Decay}
 
 % ----------------- author(s) -------------------------
@@ -55576,6 +55826,7 @@ final,                   % or draft (marks overfull hboxes)
 
 
 % #ifdef TODONOTES
+% enable inline (doconce) comments to be typeset with the todonotes package
 \usepackage{ifthen,xkeyval,tikz,calc,graphicx}
 \usepackage[shadow]{todonotes}
 \newcommand{\shortinlinecomment}[3]{%
@@ -55584,6 +55835,7 @@ final,                   % or draft (marks overfull hboxes)
 \newcommand{\longinlinecomment}[3]{%
 \todo[inline,color=orange!40,caption={#3}]{{\bf #1}: #2}}
 % #else
+% newcommands for typesetting inline (doconce) comments
 \newcommand{\shortinlinecomment}[3]{{\bf #1}: \emph{#2}}
 \newcommand{\longinlinecomment}[3]{{\bf #1}: \emph{#2}}
 % #endif
@@ -55592,6 +55844,18 @@ final,                   % or draft (marks overfull hboxes)
 \usepackage[mathlines]{lineno}  % show line numbers
 \linenumbers
 % #endif
+
+% #ifdef FANCY_HEADER
+% --- fancyhdr package for fancy headers ---
+\usepackage{fancyhdr}
+\fancyhf{}
+% section name to the left (L) and page number to the right (R)
+% on even (E) pages, the other way around on odd pages
+\fancyhead[LE,RO]{\rightmark} %section
+\fancyhead[RE,LO]{\thepage}
+\pagestyle{fancy}
+% #endif
+
 
 \usepackage[framemethod=TikZ]{mdframed}
 
@@ -55640,6 +55904,14 @@ final,                   % or draft (marks overfull hboxes)
 \titleformat{name=\paragraph}[runin]
 {\color{seccolor}\normalfont\normalsize\bfseries}
 {}{}{\indent}
+% #ifdef FANCY_HEADER
+% let the header have a thick gray hrule with section and page in blue above
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{{\color{gray!50}%
+\hrule width\headwidth height\headrulewidth \vskip-\headrulewidth}}
+\fancyhead[LE,RO]{{\color{seccolor}\rightmark}} %section
+\fancyhead[RE,LO]{{\color{seccolor}\thepage}}
+% #endif
 % #elif SECTION_HEADINGS == "strongblue"
 % --- section/subsection headings with a strong blue color ---
 \definecolor{seccolor}{rgb}{0.2,0.2,0.8}
@@ -55728,8 +56000,14 @@ final,                   % or draft (marks overfull hboxes)
 
 
 % ----------------- title -------------------------
+
 % #if LATEX_HEADING == "traditional"
+
+% #if SECTION_HEADINGS in ("blue", "strongblue")
+\title{{\color{seccolor} Doconce Quick Reference}}
+% #else
 \title{Doconce Quick Reference}
+% #endif
 
 % #elif LATEX_HEADING == "titlepage"
 
@@ -55739,18 +56017,24 @@ final,                   % or draft (marks overfull hboxes)
 \begin{center}
 {\huge{\bfseries{
 \begin{spacing}{1.25}
+% #if SECTION_HEADINGS in ("blue", "strongblue")
+{\color{seccolor} Doconce Quick Reference}
+% #else
 Doconce Quick Reference
+% #endif
 \end{spacing}
 }}}
 
 % #elif LATEX_HEADING == "Springer_collection"
 \title*{Doconce Quick Reference}
 % Short version of title:
-%\titlerunning{...}
+\titlerunning{Doconce Quick Reference}
 
 % #elif LATEX_HEADING == "beamer"
 \title{Doconce Quick Reference}
 % #else
+\thispagestyle{empty}
+
 \begin{center}
 {\LARGE\bf
 \begin{spacing}{1.25}
@@ -66966,10 +67250,10 @@ replacing % end theorem by \end{theorem} in testdoc.p.tex
 + doconce replace Newton--Cotes Newton-Cotes testdoc.p.tex
 replacing Newton--Cotes by Newton-Cotes in testdoc.p.tex
 + doconce replace --examples_as__exercises --examples_as_exercises testdoc.p.tex
-+ system ptex2tex -DMINTED -DMOVIE=movie15 -DLATEX_HEADING=titlepage -DA4PAPER -DTODONOTES -DLINENUMBERS -DCOLORED_TABLE_ROWS=blue -DSECTION_HEADINGS=blue testdoc
-+ ptex2tex -DMINTED -DMOVIE=movie15 -DLATEX_HEADING=titlepage -DA4PAPER -DTODONOTES -DLINENUMBERS -DCOLORED_TABLE_ROWS=blue -DSECTION_HEADINGS=blue testdoc
++ system ptex2tex -DMINTED -DMOVIE=movie15 -DLATEX_HEADING=titlepage -DA4PAPER -DTODONOTES -DLINENUMBERS -DCOLORED_TABLE_ROWS=blue -DFANCY_HEADER -DSECTION_HEADINGS=blue testdoc
++ ptex2tex -DMINTED -DMOVIE=movie15 -DLATEX_HEADING=titlepage -DA4PAPER -DTODONOTES -DLINENUMBERS -DCOLORED_TABLE_ROWS=blue -DFANCY_HEADER -DSECTION_HEADINGS=blue testdoc
 using local config file .ptex2tex.cfg
-running preprocessor on testdoc.p.tex...  defines: 'A4PAPER', 'MINTED', 'LATEX_HEADING', 'MOVIE', 'LINENUMBERS', 'SECTION_HEADINGS', 'COLORED_TABLE_ROWS', 'TODONOTES'  done
+running preprocessor on testdoc.p.tex...  defines: 'A4PAPER', 'MINTED', 'LATEX_HEADING', 'MOVIE', 'LINENUMBERS', 'SECTION_HEADINGS', 'COLORED_TABLE_ROWS', 'FANCY_HEADER', 'TODONOTES'  done
 done testdoc.p.tex -> testdoc.tex
 + '[' 0 -ne 0 ']'
 + system pdflatex -shell-escape testdoc
@@ -67128,6 +67412,7 @@ ioning.code.tex)
 ws.code.tex
 (/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryfadin
 gs.code.tex
+
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/mdframed/mdframed.sty
@@ -67296,7 +67581,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 792.
+t line 810.
 
 
 
@@ -67316,7 +67601,7 @@ t line 792.
 
 
 
-t line 801.
+t line 819.
 
 
 
@@ -67336,7 +67621,7 @@ t line 801.
 
 
 
-t line 805.
+t line 823.
 
 
 
@@ -67624,6 +67909,7 @@ pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
     tikz.code.tex
 todonotes.sty    2012/07/25
   lineno.sty    2005/11/02 line numbers on paragraphs v4.41
+fancyhdr.sty    
 mdframed.sty    2013/07/01 1.9b: mdframed
   xparse.sty    2013/07/12 v4544 L3 Experimental document command parser
    expl3.sty    2013/07/12 v4544 L3 Experimental code bundle wrapper
@@ -67887,6 +68173,7 @@ ws.code.tex
 gs.code.tex
 
 
+
 (/usr/share/texlive/texmf-dist/tex/latex/mdframed/mdframed.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
@@ -68016,7 +68303,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 792.
+t line 810.
 
 
 
@@ -68036,7 +68323,7 @@ t line 792.
 
 
 
-t line 801.
+t line 819.
 
 
 
@@ -68056,7 +68343,7 @@ t line 801.
 
 
 
-t line 805.
+t line 823.
 
 
 
@@ -68261,6 +68548,7 @@ pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
     tikz.code.tex
 todonotes.sty    2012/07/25
   lineno.sty    2005/11/02 line numbers on paragraphs v4.41
+fancyhdr.sty    
 mdframed.sty    2013/07/01 1.9b: mdframed
   xparse.sty    2013/07/12 v4544 L3 Experimental document command parser
    expl3.sty    2013/07/12 v4544 L3 Experimental code bundle wrapper
@@ -68535,6 +68823,7 @@ ws.code.tex
 gs.code.tex
 
 
+
 (/usr/share/texlive/texmf-dist/tex/latex/mdframed/mdframed.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
@@ -68664,7 +68953,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 792.
+t line 810.
 
 
 
@@ -68684,7 +68973,7 @@ t line 792.
 
 
 
-t line 801.
+t line 819.
 
 
 
@@ -68704,7 +68993,7 @@ t line 801.
 
 
 
-t line 805.
+t line 823.
 
 
 
@@ -68912,6 +69201,7 @@ pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
     tikz.code.tex
 todonotes.sty    2012/07/25
   lineno.sty    2005/11/02 line numbers on paragraphs v4.41
+fancyhdr.sty    
 mdframed.sty    2013/07/01 1.9b: mdframed
   xparse.sty    2013/07/12 v4544 L3 Experimental document command parser
    expl3.sty    2013/07/12 v4544 L3 Experimental code bundle wrapper
@@ -69173,6 +69463,7 @@ ws.code.tex
 gs.code.tex
 
 
+
 (/usr/share/texlive/texmf-dist/tex/latex/mdframed/mdframed.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
@@ -69432,6 +69723,7 @@ pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
     tikz.code.tex
 todonotes.sty    2012/07/25
   lineno.sty    2005/11/02 line numbers on paragraphs v4.41
+fancyhdr.sty    
 mdframed.sty    2013/07/01 1.9b: mdframed
   xparse.sty    2013/07/12 v4544 L3 Experimental document command parser
    expl3.sty    2013/07/12 v4544 L3 Experimental code bundle wrapper

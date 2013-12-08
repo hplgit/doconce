@@ -90,7 +90,7 @@ makeindex testdoc
 bibtex testdoc
 pdflatex -shell-escape testdoc
 pdflatex -shell-escape testdoc
-exit
+
 cp testdoc.tex testdoc.tex_ptex2tex
 # testdoc.tex_ptex2tex corresponds to testdoc.pdf
 

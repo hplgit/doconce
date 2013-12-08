@@ -456,11 +456,23 @@ def latex_table(table):
 
 def latex_title(m):
     title = m.group('subst')
+    short_title = option('short_title=', title)
+    if short_title != title:
+        short_title_cmd = '[' + short_title + ']'
+    else:
+        short_title_cmd = ''
+
     text = r"""
 
 %% ----------------- title -------------------------
+
 %% #if LATEX_HEADING == "traditional"
-\title{%s}
+
+%% #if SECTION_HEADINGS in ("blue", "strongblue")
+\title%(short_title_cmd)s{{\color{seccolor} %(title)s}}
+%% #else
+\title%(short_title_cmd)s{%(title)s}
+%% #endif
 
 %% #elif LATEX_HEADING == "titlepage"
 
@@ -470,29 +482,33 @@ def latex_title(m):
 \begin{center}
 {\huge{\bfseries{
 \begin{spacing}{1.25}
-%s
+%% #if SECTION_HEADINGS in ("blue", "strongblue")
+{\color{seccolor} %(title)s}
+%% #else
+%(title)s
+%% #endif
 \end{spacing}
 }}}
 
 %% #elif LATEX_HEADING == "Springer_collection"
-\title*{%s}
+\title*{%(title)s}
 %% Short version of title:
-%%\titlerunning{...}
+\titlerunning{%(short_title)s}
 
 %% #elif LATEX_HEADING == "beamer"
-\title{%s}
+\title%(short_title_cmd)s{%(title)s}
 %% #else
 \thispagestyle{empty}
 
 \begin{center}
 {\LARGE\bf
 \begin{spacing}{1.25}
-%s
+%(title)s
 \end{spacing}
 }
 \end{center}
 %% #endif
-""" % (title, title, title, title, title)
+""" % vars()
     return text
 
 def latex_author(authors_and_institutions, auth2index,
@@ -1380,8 +1396,8 @@ final,                   % or draft (marks overfull hboxes)
 \definecolor{linkcolor}{rgb}{0,0,0.4}
 \usepackage[%%
     colorlinks=true,
-    linkcolor=%s,
-    urlcolor=linkcolor,
+    linkcolor=%(linkcolor)s,
+    urlcolor=%(linkcolor)s,
     citecolor=black,
     filecolor=black,
     %%filecolor=blue,
@@ -1392,7 +1408,7 @@ final,                   % or draft (marks overfull hboxes)
 %%\hyperbaseurl{}   %% hyperlinks are relative to this root
 
 \setcounter{tocdepth}{2}  %% number chapter, section, subsection
-""" % linkcolor
+""" % vars()
 
     if 'FIGURE:' in filestr:
         INTRO['latex'] += r"""
