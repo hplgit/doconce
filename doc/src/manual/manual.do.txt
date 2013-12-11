@@ -1324,13 +1324,21 @@ from-to: Start Example 2@End Example 2
 !ec
 With only `fromto:` this would be impossible.
 
-(Remark for those familiar with `ptex2tex`: The from-to
+Remark for those familiar with `ptex2tex`: The from-to
 syntax is slightly different from that used in `ptex2tex`. When
 transforming Doconce to LaTeX, one first transforms the document to a
 `.p.tex` file to be treated by `ptex2tex`. However, the `@@@CODE` line
 is interpreted by Doconce and replaced by the mentioned
 pro or cod environment which are defined in the `ptex2tex` configuration
-file.)
+file.
+
+Remark for those familiar with the `listings` package in LaTeX: the
+`listing` package can copy code from files, but snippets must be
+specified through exact line numbers. The `@@@CODE` directive
+above works with regular expressions which are much less sensitive
+to edits of the source code file than the line numbers.
+Moreover, copy of code from file works in Dococe across formats
+(HTML, Sphinx, Markdown, etc.).
 
 
 ===== LaTeX Blocks of Mathematical Text =====

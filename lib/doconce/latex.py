@@ -483,9 +483,13 @@ def latex_title(m):
 {\huge{\bfseries{
 \begin{spacing}{1.25}
 %% #if SECTION_HEADINGS in ("blue", "strongblue")
-{\color{seccolor} %(title)s}
+{\color{seccolor}\rule{\linewidth}{0.5mm}} \\[0.4cm]
+{\color{seccolor}%(title)s}
+\\[0.4cm] {\color{seccolor}\rule{\linewidth}{0.5mm}} \\[1.5cm]
 %% #else
-%(title)s
+{\rule{\linewidth}{0.5mm}} \\[0.4cm]
+{%(title)s}
+\\[0.4cm] {\rule{\linewidth}{0.5mm}} \\[1.5cm]
 %% #endif
 \end{spacing}
 }}}
@@ -1272,26 +1276,35 @@ def define(FILENAME_EXTENSION,
 % #if LATEX_STYLE == "std"
 """
 
+    side_tp = 'oneside' if option('device=') == 'paper' else 'twoside'
     m = re.search(r'^\s*=========\s*[A-Za-z0-9].+?=========', filestr, flags=re.MULTILINE)
     # (use A-Z etc to avoid sphinx table headings to indicate chapters...
     if m:  # We have chapters, use book style
         chapters = True
         INTRO['latex'] += r"""
-\documentclass[%
-oneside,                 % oneside: electronic viewing, twoside: printing
-final,                   % or draft (marks overfull hboxes)
-chapterprefix=true,      % "Chapter" word at beginning of each chapter
-open=right               % start new chapters on odd-numbered pages
+\documentclass[%%
+%(side_tp)s,                 %% oneside: electronic viewing, twoside: printing
+%% #ifdef DOUBLE_SPACING
+draft,                   %% or final
+%% #else
+final,                   %% or draft (marks overfull hboxes)
+%% #endif
+chapterprefix=true,      %% "Chapter" word at beginning of each chapter
+open=right               %% start new chapters on odd-numbered pages
 10pt]{book}
-"""
+""" % vars()
     else:  # Only sections, use article style
         chapters = False
         INTRO['latex'] += r"""
-\documentclass[%
-oneside,                 % oneside: electronic viewing, twoside: printing
-final,                   % or draft (marks overfull hboxes)
+\documentclass[%%
+%(side_tp)s,                 %% oneside: electronic viewing, twoside: printing
+%% #ifdef DOUBLE_SPACING
+draft,                   %% or final
+%% #else
+final,                   %% or draft (marks overfull hboxes)
+%% #endif
 10pt]{article}
-"""
+""" % vars()
 
     INTRO['latex'] += r"""
 % #elif LATEX_STYLE == "Springer_lncse"
@@ -1461,6 +1474,11 @@ final,                   % or draft (marks overfull hboxes)
 % #ifdef LINENUMBERS
 \usepackage[mathlines]{lineno}  % show line numbers
 \linenumbers
+% #endif
+
+% #ifdef DOUBLE_SPACING
+\onehalfspacing    % from setspace package
+%\doublespacing
 % #endif
 
 % #ifdef FANCY_HEADER

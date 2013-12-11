@@ -493,6 +493,8 @@ Preprocessor variables to be defined or undefined are
    variable to `gray` or `blue`).
  * `FANCY_HEADER` for turning on headers with section title and page
    (and also chapter title on odd numbered pages if chapters exist).
+ * `DOUBLE_SPACING` for 50 percent larger line spacing (useful for
+   pen corrections) and LaTeX "draft" mode.
 
 There are also preprocessor variables with specific values:
 
