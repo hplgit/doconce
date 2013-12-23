@@ -320,7 +320,8 @@ modestbranding=1   %% no YouTube logo in control bar
 &autohide=1        %% controlbar autohide
 &showinfo=0        %% no title and other info before start
 &rel=0             %% no related videos after end
-}
+},
+url %% Flash loaded from URL
 ]{}{%(filename)s}
 %% #else
 %(default)s
@@ -339,7 +340,7 @@ flashvars={
 source=%(filename)s
 &autoPlay=true
 &loop=true
-&scaleMode=letterbox   %% preserve aspect ration while scaling this video
+&scaleMode=letterbox       %% preserve aspect ratio while scaling this video
 }]{}{VPlayer.swf}
 
 %% #ifdef MOVIE_CONTROLS
