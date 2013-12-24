@@ -45,6 +45,7 @@ from doconce.misc import (
     diff,
     gitdiff,
     csv2table,
+    linkchecker,
     )
 
 def remove_options_from_command_line():
@@ -813,6 +814,7 @@ make_figure_code_links
 latex_exercise_toc
 insertdocstr
 old2new_format
+linkchecker
 latex2doconce
 latex_dislikes
 pygmentize
@@ -934,6 +936,9 @@ doconce latex_exercise_toc myfile
 
 # list all labels in a document (for purposes of cleaning them up)
 doconce list_labels myfile
+
+# check all links in HTML files
+doconce linkchecker *.html
 
 # translate a latex document to doconce (requires usually manual fixing)
 doconce latex2doconce latexfile

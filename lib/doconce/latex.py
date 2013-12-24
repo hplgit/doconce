@@ -163,14 +163,6 @@ def latex_code(filestr, code_blocks, code_block_types,
                 return '\\href{{%s}}{%s}' % (url, text)
         filestr = re.sub(pattern, subst, filestr)
 
-    # Add movie15 package if the file has a movie
-    if r'\includemovie[' in filestr:
-        filestr = filestr.replace('usepackage{ptex2tex}', """\
-usepackage{ptex2tex}
-% #ifdef MOVIE15
-\usepackage{movie15}
-% #endif
-""")
     # \code{} in section headings and paragraph needs a \protect
     cpattern = re.compile(r'^\s*(\\.*section\*?|\\paragraph)\{(.*)\}\s*$',
                          re.MULTILINE)

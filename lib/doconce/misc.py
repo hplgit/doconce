@@ -287,7 +287,7 @@ def latin2html():
         if not os.path.isfile(filename):
             print '*** error: file %s does not exist!' % filename
             continue
-        oldfilename = filename + '.old~'
+        oldfilename = filename + '.old~~'
         shutil.copy(filename, oldfilename)
         print 'transformin latin characters to HTML encoding in', filename
         f = open(oldfilename, 'r')
@@ -357,7 +357,7 @@ def _scitools_subst(patterns, replacements, filenames,
           for pattern, replacement in zip(patterns, replacements):
               file_string = re.sub(pattern, replacement, file_string)
 
-    A copy of the original file is taken, with extension `.old~`.
+    A copy of the original file is taken, with extension `.old~~`.
     """
     # if some arguments are strings, convert them to lists:
     if isinstance(patterns, basestring):
@@ -385,7 +385,7 @@ def _scitools_subst(patterns, replacements, filenames,
             zip(patterns, cpatterns, replacements):
             if cpattern.search(filestr):
                 filestr = cpattern.sub(replacement, filestr)
-                shutil.copy2(filename, filename + '.old~') # backup
+                shutil.copy2(filename, filename + '.old~~') # backup
                 f = open(filename, 'w')
                 f.write(filestr)
                 f.close()
@@ -444,7 +444,7 @@ def subst():
 
     if restore:
         for oldfile in args:
-            newfile = re.sub(r'\.old~$', '', oldfile)
+            newfile = re.sub(r'\.old~~$', '', oldfile)
             if not os.path.isfile(oldfile):
                 print '%s is not a file!' % oldfile; continue
             os.rename(oldfile, newfile)
@@ -535,6 +535,47 @@ def replace_from_file():
             f = open(filename, 'w')
             f.write(text)
             f.close()
+
+def _usage_linkchecker():
+    print 'Usage: doconce linkchecker file1.html file2.html ...'
+    print 'Check if URLs or links to local files in HTML files are valid.'
+
+def linkchecker():
+    if len(sys.argv) <= 1:
+        _usage_linkchecker()
+        sys.exit(1)
+    from common import is_file_or_url
+    pattern = r'href="(.+?)"'
+    missing = []
+    for filename in sys.argv[1:]:
+        ext = os.path.splitext(filename)[1]
+        if not ext in ('.html', '.htm'):
+            print '*** error: %s is not an HTML file' % filename
+            continue
+        f = open(filename, 'r')
+        text = f.read()
+        f.close()
+        links = re.findall(pattern, text, flags=re.IGNORECASE)
+        missing.append([filename, []])
+        for link in links:
+            if link.startswith('mailto'):
+                continue
+            if link.startswith('javascript:void'):
+                continue
+            if link.startswith('#'):
+                continue
+            check = is_file_or_url(link, msg=None)
+            if check in ('file', 'url'):
+                print '%s:' % filename, link, 'exists as', check
+            else:
+                print '%s:' % filename, link, 'WAS NOT FOUND'
+                missing[-1][1].append(link)
+    for filename, missing_links in missing:
+        if missing_links:
+            print '\n\n*** missing links in %s:\n%s' % \
+                  (filename, '\n'.join(['"%s"' % link
+                                        for link in missing_links]))
+
 
 def _dofix_localURLs(filename, exclude_adr):
     if os.path.splitext(filename)[1] != '.rst':

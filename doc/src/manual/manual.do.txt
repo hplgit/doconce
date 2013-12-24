@@ -307,7 +307,7 @@ part of the caption appearing on the same line as `FIGURE:` will be
 included in the formatted caption).
 !ewarning
 
-FIGURE:[figs/streamtubes, width=400] Streamtube visualization of a fluid flow. label{fig:viz}
+FIGURE:[fig/wave1D, width=400] A wave. label{fig:viz}
 
 Combining several image files into one, in a table fashion, can be done by the
 `montage` program from the ImageMagick suite:
@@ -318,6 +318,19 @@ montage -background white -geometry 100% -tile 2x \
 The option `-tile XxY` gives `X` figures in the horizontal direction and
 `Y` in the vertical direction (`tile 2x` means two figures per row
 and `-tile x2` means two rows).
+
+The `montage` program is only appropriate for bitmap images (PNG, JPEG, GIF,
+TIFF). Images in the PDF format should be mounted together
+using `pdftk` (to combine images to one file),
+`pdfnup` (to align them in tabular format), and `pdfcrop` (to
+remove surrounding whitespace):
+
+!bc sys
+Terminal> pdftk file1.pdf file2.pdf ... file4.pdf output tmp.pdf
+Terminal> pdfnup --nup 2x2 tmp.pdf        # output in tmp-nup.pdf
+Terminal> pdfcrop tmp-nup.pdf result.png  # output in FE1.png
+!ec
+
 
 ===== Movies =====
 
@@ -330,32 +343,28 @@ MOVIE: [filename, height=xxx width=yyy] possible caption
 
 !ec
 
-# latex/PDF format can make use of the movie15 package for displaying movies,
-# or just plain \href{run: ...}{...}
+Here is a movie in the MPEG format:
 
-MOVIE: [figs/mjolnir.mpeg, width=600 height=470]
+MOVIE: [mov/wave.mpeg, width=600 height=470]
 
-#MOVIE: [figs/wavepacket.gif, width=600 height=470]
+And here is a movie in the Ogg format:
 
-#MOVIE: [figs/wavepacket2.mpeg, width=600 height=470]
+MOVIE: [mov/wave.ogg, width=600 height=470]
 
-The LaTeX format results in a file that can either make use of
-the movie15 package (requires the PDF to be shown in Acrobat Reader)
-or just a plain address to the movie. The HTML, reST, and
-Sphinx formats will play
-the movie right away by embedding the file in a standard HTML code,
-provided the output format is HTML.
-For all other formats a URL to an HTML file, which can play the code,
-is inserted in the output document.
+If a movie is in Ogg, MP4, or WebM format, and the output format is HTML,
+Doconce will check if the movie file is also in the other formats among
+Ogg, MP4, and WebM, and include these as well such that the movie has
+backup formats in case the browser does not support a particular format.
+Providing a movie in Ogg, MP4, *and* WebM format is therefore the safest
+way to ensure that the movie can be played in any browser on any device.
 
-When movies are embedded in the PDF file via LaTeX and
-the `movie15` package wanted, one has to turn on the preprocessor
-variable `MOVIE15`. There is an associated variable
-`EXTERNAL_MOVIE_VIEWER` which can be defined to launch an external
-viewer when displaying the PDF file (in Acrobat Reader):
-!bc sys
-Terminal> ptex2tex -DMOVIE15 -DEXTERNAL_MOVIE_VIEWER mydoc
-!ec
+The LaTeX format results in a file that can either make use of the
+movie9 package (requires the PDF to be shown in Acrobat Reader) or
+just a plain address to the movie. The HTML, reST, and Sphinx formats
+will play the movie right away by embedding the file in a standard
+HTML code, provided the output format is HTML.  For all other formats
+a URL to an HTML file, which can play the code, is inserted in the
+output document.
 
 The HTML, reST, and Sphinx formats can also treat filenames of the form
 `myframes*.png`. In that case, an HTML file for showing the sequence of frames

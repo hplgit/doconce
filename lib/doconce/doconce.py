@@ -1303,32 +1303,6 @@ def typeset_envirs(filestr, format):
     return filestr
 
 
-def check_URLs(filestr, format):
-    """Check if URLs exist and work."""
-    # Could use webchecker probably, or just urllib.urlopen
-    # on all links of types below, extract with re.findall
-    pass #[[[
-"""
-    'linkURL2':  # "some link": "https://bla-bla"
-    r'''"(?P<link>[^"]+?)" ?:\s*"(?P<url>(file:/|https?:)//.+?)"''',
-    #r'"(?P<link>[^>]+)" ?: ?"(?P<url>https?://[^<]+?)"'
-
-    'linkURL2v':  # verbatim link "`filelink`": "https://bla-bla"
-    r'''"`(?P<link>[^"]+?)`" ?:\s*"(?P<url>(file:/|https?:|ftp:)//.+?)"''',
-
-    'linkURL3':  # "some link": "some/local/file/name.html" or .txt/.pdf/.py/.c/.cpp/.cxx/.f/.java/.pl files
-    #r'''"(?P<link>[^"]+?)" ?:\s*"(?P<url>([^"]+?\.html?|[^"]+?\.txt|[^"]+?.pdf))"''',
-    r'''"(?P<link>[^"]+?)" ?:''' + _linked_files,
-    #r'"(?P<link>[^>]+)" ?: ?"(?P<url>https?://[^<]+?)"'
-    'linkURL3v':  # "`somefile`": "some/local/file/name.html" or .txt/.pdf/.py/.c/.cpp/.cxx/.f/.java/.pl files
-    r'''"`(?P<link>[^"]+?)`" ?:''' +  _linked_files,
-
-    'plainURL':
-    #r'"URL" ?: ?"(?P<url>.+?)"',
-    #r'"?(URL|url)"? ?: ?"(?P<url>.+?)"',
-    r'("URL"|"url"|URL|url) ?:\s*"(?P<url>.+?)"',
-"""
-
 def typeset_lists(filestr, format, debug_info=[]):
     """
     Go through filestr and parse all lists and typeset them correctly.
@@ -2364,9 +2338,6 @@ def doconce2format(filestr, format):
     filestr = typeset_tables(filestr, format)
     debugpr('%s\n**** The file after typesetting of tables:\n\n%s\n\n' % \
           ('*'*80, filestr))
-
-    # Next step: extract all URLs for checking
-    check_URLs(filestr, format)
 
     # Next step: do substitutions:
     filestr = inline_tag_subst(filestr, format)

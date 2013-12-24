@@ -1,0 +1,34 @@
+TITLE: This is a demo of movies in Doconce
+AUTHOR: HPL
+DATE: today
+
+Let us refer to movie ref{mov:wave}.
+
+Here is a movie in WebM format:
+
+MOVIE: [../doc/src/manual/mov/wave.webm, width=700 height=400] 1D wave in WebM.
+
+Here is the same movie in Ogg format:
+
+MOVIE: [../doc/src/manual/mov/wave.ogg, width=700 height=400] 1D wave in Ogg.
+
+Here is the same movie in MP4 format:
+
+MOVIE: [../doc/src/manual/mov/wave.mp4, width=700 height=400] 1D wave in MP4.
+
+Here is the same movie in Flash format:
+
+MOVIE: [../doc/src/manual/mov/wave.flv, width=700 height=400] 1D wave in Flash.
+
+And here is a collection of images shown as an animation:
+
+MOVIE: [../doc/src/manual/mov/wave_frames/frame_*.png, width=700 height=400] Animated collection of images.
+
+The movie above in MPEG format:
+
+MOVIE: [../doc/src/manual/mov/wave.mpeg, width=700 height=400] 1D wave in MPEG. label{mov:wave}
+
+Here is the same movie in AVI format:
+
+MOVIE: [../doc/src/manual/mov/wave.avi, width=700 height=400] 1D wave in AVI.
+

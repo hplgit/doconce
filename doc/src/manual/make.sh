@@ -45,7 +45,7 @@ rm -rf sphinx-rootdir
 doconce sphinx_dir author=HPL title='Doconce Manual' theme=cbc version=0.6 manual.do.txt
 cp manual.rst manual.sphinx.rst
 cp manual.rst sphinx-rootdir
-cp -r figs sphinx-rootdir
+cp -r fig sphinx-rootdir
 # run sphinx:
 cd sphinx-rootdir
 make clean
@@ -62,10 +62,12 @@ rst2xml.py manual.rst > manual.xml
 
 rst2latex.py manual.rst > manual.rst.tex
 
-# fix figure extension:
+pdflatex manual.rst.tex
+# fix figure extension: rst will use .png file for wave1D, but this is not
+# legal for latex
 # lookahead don't work: doconce subst '(?=includegraphics.+)\.png' '.eps' manual.rst.tex
-doconce subst '\.png' '' manual.rst.tex   # no extension in graphics file
-latex manual.rst.tex   # pdflatex works too
+doconce replace wave1D.png wave1D.eps manual.rst.tex
+latex manual.rst.tex
 latex manual.rst.tex
 dvipdf manual.rst.dvi
 
@@ -113,7 +115,7 @@ $d2f gwiki manual.do.txt --no_mako
 if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
 
 # fix figure in wiki: (can also by done by doconce gwiki_figsubst)
-doconce subst "\(the URL of the image file figs/streamtubes.png must be inserted here\)" "https://doconce.googlecode.com/hg/doc/manual/figs/streamtubes.png" manual.gwiki
+doconce subst "\(the URL of the image file fig/wave1D.png must be inserted here\)" "(https://raw.github.com/hplgit/doconce/master/doc/src/manual/fig/wave1D.png" manual.gwiki
 
 $d2f cwiki manual.do.txt --no_mako
 if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
@@ -125,7 +127,7 @@ rm -f *.ps
 
 rm -rf demo
 mkdir demo
-cp -r manual.do.txt manual.html figs manual.p.tex manual.tex manual.pdf manual_pdflatex.pdf manual.rst manual.sphinx.rst manual.xml manual.rst.html manual.rst.tex manual.rst.pdf manual.gwiki manual.cwiki manual.mwiki manual.txt manual.epytext manual.md sphinx-rootdir/_build/html demo
+cp -r manual.do.txt manual.html fig mov manual.p.tex manual.tex manual.pdf manual_pdflatex.pdf manual.rst manual.sphinx.rst manual.xml manual.rst.html manual.rst.tex manual.rst.pdf manual.gwiki manual.cwiki manual.mwiki manual.txt manual.epytext manual.md sphinx-rootdir/_build/html demo
 
 cd demo
 cat > index.html <<EOF
@@ -181,6 +183,6 @@ EOF
 
 cd ..
 dest=../../pub/manual
-cp -r demo/html demo/manual.pdf demo/manual.html demo/figs $dest
+cp -r demo/html demo/manual.pdf demo/manual.html demo/fig demo/mov $dest
 dest=../../../../doconce.wiki
 cp -r demo/manual.rst $dest

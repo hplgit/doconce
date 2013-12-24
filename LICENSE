@@ -34,11 +34,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Remarks:
 
-The files doc/manual/figs/streamtubes.* and
-`doc/manual/figs/wavepacket.*` was made by the Doconce author and is
-released under the same conditions as Doconce.
-
-The file doc/manual/figs/mjolnir.mpeg was made by Dr. Sylfest
-Glimsdal, University of Oslo and is, with his permission, released
-under the same conditions as Doconce.
+The figure and movie files in doc/manual/* were made by the Doconce
+author and is released under the same conditions as Doconce.
 

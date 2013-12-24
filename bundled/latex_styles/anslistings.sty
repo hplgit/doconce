@@ -60,22 +60,24 @@
 \colorlet{specmethodcolour}{violet}
 \colorlet{indendifiercolour}{green!70!white}
 
-% Common style
+% Define the common style to be shared by all languages
 \lstdefinestyle{c@mmon}{%
-showtabs=true,
+showtabs=true,                       % show tabs in strings using underscore
 tab=,
-tabsize=2,
-basicstyle=\ttfamily\footnotesize,
-breaklines=true,
-breakatwhitespace=true,
+tabsize=2,                           % tab means 2 spaces
+basicstyle=\ttfamily\footnotesize,   % fonts used for the code
+breaklines=true,                     % break lines
+breakatwhitespace=true,              % let linebreaks happen at whitespace
+showspaces=false,                    % true: show spaces with a particular underscore
 aboveskip=1ex,
-frame=trbl,
-rulecolor=\color{black},
+frame=trbl,                          % top+right+bottom+left (TB draws double lines at top + bottom)
+%framerule=0.4pt                     % thickness of frame
+rulecolor=\color{black},             % frame color
 backgroundcolor=\color{yellow!10},
 xleftmargin=5pt,
 xrightmargin=5pt,
-%numbers=left,
-%stepnumber=2,
+%numbers=left,                       % put line numbers on the left
+%stepnumber=2,                       % stepnumber=1 numbers each line, =n every n lines
 }
 \lstset{style=c@mmon}
 

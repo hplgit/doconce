@@ -81,34 +81,59 @@ def where():
     import os
     return os.path.dirname(__file__)
 
-def is_file_or_url(filename):
+def is_file_or_url(filename, msg='checking existence of', debug=True):
     """
     Return "file" if filename is a file, "url" if filename
     is a URL (not an HTML file), and None otherwise.
+
+    The string ``msg`` is written out together with ``filename``,
+    unless ``msg=None``.
     """
+    if debug and msg is None:
+        msg = ''  # Avoid printing None
+
     if filename.startswith('http'):
         try:
             # Print a message in case the program hangs a while here
-            print '... checking existence of', filename, '...',
+            if msg is not None or debug:
+                print '...', msg, filename, '...',
             f = urllib.urlopen(filename)
             text = f.read()
             f.close()
-            print 'found!'
             ext = os.path.splitext(filename)[1]
             if ext in ('.html', 'htm'):
                 # Successful opening of an HTML file
+                if msg or debug:
+                    print 'found!'
                 return 'url'
             elif ext == '':
                 # Successful opening of a directory (meaning index.html)
+                if msg or debug:
+                    print 'found!'
                 return 'url'
             else:
-                if 'github.' in filename and text.startswith('<!DOCTYPE html>'):
+                # Seemingly successful opening of a file, but check if
+                # this is a special GitHub error message file
+                special_hosts = ('github.', 'www.uio.no')
+                special_host = False
+                for host in special_hosts:
+                    if host in filename:
+                        special_host = True
+                        break
+                if special_host and '>404' in text:
                     # HTML file with an error message: file not found
-                    return None
+                    if msg or debug:
+                        print 'not found (%s, 404 error)' % filename
+                        return None
                 else:
+                    if msg or debug:
+                        print 'found!'
                     return 'url'
-        except IOError:
-            print 'not found!'
+        except IOError, e:
+            if msg or debug:
+                print 'not found!'
+            if debug:
+                print 'urllib.urlopen error:', e
             return None
     else:
         return ('file' if os.path.isfile(filename) else None)

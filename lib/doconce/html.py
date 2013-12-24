@@ -766,8 +766,8 @@ def html_movie(m):
         filename = filename.replace('youtu.be', 'youtube.com')
 
     if '*' in filename:
-        # Glob files and use DocWriter.html_movie to make a separate
-        # html page for viewing the set of files
+        # Glob files and use DocWriter.html_movie to make inline javascript
+        # code for viewing the set of files
         plotfiles = glob.glob(filename)
         if not plotfiles:
             print 'No plotfiles on the form', filename
@@ -778,7 +778,11 @@ def html_movie(m):
         kwargs['casename'] = stem
         import DocWriter
         header, jscode, form, footer = DocWriter.html_movie(plotfiles, **kwargs)
-        #text = jscode + form  # does not work well with several movies
+        text = jscode + form
+        if caption:
+            text += '\n<br><em>' + caption + '</em><br>\n\n'
+        # Movie in separate file
+        '''
         moviehtml = stem + '.html'
         f = open(moviehtml, 'w')
         f.write(header + jscode + form + footer)
@@ -786,6 +790,7 @@ def html_movie(m):
         text = """
 <p><a href="%s">Movie of files <tt>%s</tt></a>\n<em>%s</em></p>""" % \
                (moviehtml, filename, caption)
+        '''
     elif 'youtube.com' in filename:
         if not 'youtube.com/embed/' in filename:
             filename = filename.replace('watch?v=', '')
@@ -835,16 +840,17 @@ def html_movie(m):
         if ext in ('.mp4', '.ogg', '.webm'):
             # Use HTML video tag
             autoplay = 'autoplay' if autoplay else ''
+            msg = 'movie: trying to find'
             text = """
 <div>
 <video %(autoplay)s loop controls width='%(width)s' height='%(height)s' preload='none'>""" % vars()
-            if is_file_or_url(stem + '.mp4') in ('file', 'url'):
+            if is_file_or_url(stem + '.mp4', msg) in ('file', 'url'):
                 text += """
 <source src='%(stem)s.mp4'  type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>""" % vars()
-            if is_file_or_url(stem + '.webm') in ('file', 'url'):
+            if is_file_or_url(stem + '.webm', msg) in ('file', 'url'):
                 text += """
 <source src='%(stem)s.webm' type='video/webm; codecs="vp8, vorbis"'>""" % vars()
-            if is_file_or_url(stem + '.ogg') in ('file', 'url'):
+            if is_file_or_url(stem + '.ogg', msg) in ('file', 'url'):
                 text += """
 <source src='%(stem)s.ogg'  type='video/ogg; codecs="theora, vorbis"'>""" % vars()
             text += """

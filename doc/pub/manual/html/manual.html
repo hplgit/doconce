@@ -74,7 +74,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Author:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Dec 1, 2013</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Dec 24, 2013</td>
 </tr>
 </tbody>
 </table>
@@ -1038,6 +1038,10 @@ and comment inside brackets).</li>
 <li><tt class="docutils literal"><span class="pre">LINENUMBERS</span></tt> for inclusion of line numbers in the text.</li>
 <li><tt class="docutils literal"><span class="pre">COLORED_TABLE_ROWS</span></tt> for coloring every other table rows (set this
 variable to <tt class="docutils literal"><span class="pre">gray</span></tt> or <tt class="docutils literal"><span class="pre">blue</span></tt>).</li>
+<li><tt class="docutils literal"><span class="pre">FANCY_HEADER</span></tt> for turning on headers with section title and page
+(and also chapter title on odd numbered pages if chapters exist).</li>
+<li><tt class="docutils literal"><span class="pre">DOUBLE_SPACING</span></tt> for 50 percent larger line spacing (useful for
+pen corrections) and LaTeX &#8220;draft&#8221; mode.</li>
 </ul>
 </div></blockquote>
 <p>There are also preprocessor variables with specific values:</p>
@@ -1812,8 +1816,8 @@ part of the caption appearing on the same line as <tt class="docutils literal"><
 included in the formatted caption).</p>
 </div>
 <div class="figure" id="fig-viz">
-<img alt="_images/streamtubes.png" src="_images/streamtubes.png" style="width: 400px;" />
-<p class="caption"><em>Streamtube visualization of a fluid flow</em></p>
+<img alt="_images/wave1D.png" src="_images/wave1D.png" style="width: 400px;" />
+<p class="caption"><em>A wave</em></p>
 </div>
 <p>Combining several image files into one, in a table fashion, can be done by the
 <tt class="docutils literal"><span class="pre">montage</span></tt> program from the ImageMagick suite:</p>
@@ -1824,6 +1828,16 @@ included in the formatted caption).</p>
 <p>The option <tt class="docutils literal"><span class="pre">-tile</span> <span class="pre">XxY</span></tt> gives <tt class="docutils literal"><span class="pre">X</span></tt> figures in the horizontal direction and
 <tt class="docutils literal"><span class="pre">Y</span></tt> in the vertical direction (<tt class="docutils literal"><span class="pre">tile</span> <span class="pre">2x</span></tt> means two figures per row
 and <tt class="docutils literal"><span class="pre">-tile</span> <span class="pre">x2</span></tt> means two rows).</p>
+<p>The <tt class="docutils literal"><span class="pre">montage</span></tt> program is only appropriate for bitmap images (PNG, JPEG, GIF,
+TIFF). Images in the PDF format should be mounted together
+using <tt class="docutils literal"><span class="pre">pdftk</span></tt> (to combine images to one file),
+<tt class="docutils literal"><span class="pre">pdfnup</span></tt> (to align them in tabular format), and <tt class="docutils literal"><span class="pre">pdfcrop</span></tt> (to
+remove surrounding whitespace):</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; pdftk file1.pdf file2.pdf ... file4.pdf output tmp.pdf</span>
+<span class="go">Terminal&gt; pdfnup --nup 2x2 tmp.pdf        # output in tmp-nup.pdf</span>
+<span class="go">Terminal&gt; pdfcrop tmp-nup.pdf result.png  # output in FE1.png</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="movies">
 <h2>Movies<a class="headerlink" href="#movies" title="Permalink to this headline">¶</a></h2>
@@ -1834,9 +1848,24 @@ for showing the movie.</p>
 <div class="highlight-text"><div class="highlight"><pre>MOVIE: [filename, height=xxx width=yyy] possible caption
 </pre></div>
 </div>
-<embed src="figs/mjolnir.mpeg" width=600 height=470 autoplay="false" loop="true"></embed>
-<p><em></em></p><p>The LaTeX format results in a file that can either make use of
-the movie15 package (requires the PDF to be shown in Acrobat Reader)
+<p>Here is a movie in the MPEG format:</p>
+<embed src="mov/wave.mpeg" width=600 height=470 autoplay="false" loop="true"></embed>
+<p><em></em></p><p>And here is a movie in the Ogg format:</p>
+<div>
+<video  loop controls width='600' height='470' preload='none'>
+<source src='mov/wave.mp4'  type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+<source src='mov/wave.webm' type='video/webm; codecs="vp8, vorbis"'>
+<source src='mov/wave.ogg'  type='video/ogg; codecs="theora, vorbis"'>
+</video>
+</div>
+<p><em></em></p><p>If a movie is in Ogg, MP4, or WebM format, and the output format is HTML,
+Doconce will check if the movie file is also in the other formats among
+Ogg, MP4, and WebM, and include these as well such that the movie has
+backup formats in case the browser does not support a particular format.
+Providing a movie in Ogg, MP4, <em>and</em> WebM format is therefore the safest
+way to ensure that the movie can be played in any browser on any device.</p>
+<p>The LaTeX format results in a file that can either make use of
+the movie9 package (requires the PDF to be shown in Acrobat Reader)
 or just a plain address to the movie. The HTML, reST, and
 Sphinx formats will play
 the movie right away by embedding the file in a standard HTML code,
@@ -1844,8 +1873,8 @@ provided the output format is HTML.
 For all other formats a URL to an HTML file, which can play the code,
 is inserted in the output document.</p>
 <p>When movies are embedded in the PDF file via LaTeX and
-the <tt class="docutils literal"><span class="pre">movie15</span></tt> package wanted, one has to turn on the preprocessor
-variable <tt class="docutils literal"><span class="pre">MOVIE15</span></tt>. There is an associated variable
+the <tt class="docutils literal"><span class="pre">movie9</span></tt> package wanted, one has to turn on the preprocessor
+variable <tt class="docutils literal"><span class="pre">MOVIE9</span></tt>. There is an associated variable
 <tt class="docutils literal"><span class="pre">EXTERNAL_MOVIE_VIEWER</span></tt> which can be defined to launch an external
 viewer when displaying the PDF file (in Acrobat Reader):</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; ptex2tex -DMOVIE15 -DEXTERNAL_MOVIE_VIEWER mydoc</span>
@@ -2112,7 +2141,7 @@ and with LaTeX &#8220;label&#8221; and &#8220;ref&#8221; are just equipped with 
 these commands work as usual in LaTeX.</p>
 <p>It is, in general, recommended to use labels and references for
 (sub)sections, equations, and figures only.
-By the way, here is an example on referencing Figure <a class="reference internal" href="#fig-viz"><em>Streamtube visualization of a fluid flow</em></a>
+By the way, here is an example on referencing Figure <a class="reference internal" href="#fig-viz"><em>A wave</em></a>
 (the label appears in the figure caption in the source code of this document).
 Additional references to the sections <a class="reference internal" href="#mathtext"><em>LaTeX Blocks of Mathematical Text</em></a> and <a class="reference internal" href="#newcommands"><em>Macros (Newcommands)</em></a> are
 nice to demonstrate, as well as a reference to equations,
@@ -2762,13 +2791,20 @@ Copying the second set of parameters from the text</p>
 </pre></div>
 </div>
 <p>With only <tt class="docutils literal"><span class="pre">fromto:</span></tt> this would be impossible.</p>
-<p>(Remark for those familiar with <tt class="docutils literal"><span class="pre">ptex2tex</span></tt>: The from-to
+<p>Remark for those familiar with <tt class="docutils literal"><span class="pre">ptex2tex</span></tt>: The from-to
 syntax is slightly different from that used in <tt class="docutils literal"><span class="pre">ptex2tex</span></tt>. When
 transforming Doconce to LaTeX, one first transforms the document to a
 <tt class="docutils literal"><span class="pre">.p.tex</span></tt> file to be treated by <tt class="docutils literal"><span class="pre">ptex2tex</span></tt>. However, the <tt class="docutils literal"><span class="pre">&#64;&#64;&#64;CODE</span></tt> line
 is interpreted by Doconce and replaced by the mentioned
 pro or cod environment which are defined in the <tt class="docutils literal"><span class="pre">ptex2tex</span></tt> configuration
-file.)</p>
+file.</p>
+<p>Remark for those familiar with the <tt class="docutils literal"><span class="pre">listings</span></tt> package in LaTeX: the
+<tt class="docutils literal"><span class="pre">listing</span></tt> package can copy code from files, but snippets must be
+specified through exact line numbers. The <tt class="docutils literal"><span class="pre">&#64;&#64;&#64;CODE</span></tt> directive
+above works with regular expressions which are much less sensitive
+to edits of the source code file than the line numbers.
+Moreover, copy of code from file works in Dococe across formats
+(HTML, Sphinx, Markdown, etc.).</p>
 </div>
 <div class="section" id="latex-blocks-of-mathematical-text">
 <span id="mathtext"></span><h2>LaTeX Blocks of Mathematical Text<a class="headerlink" href="#latex-blocks-of-mathematical-text" title="Permalink to this headline">¶</a></h2>

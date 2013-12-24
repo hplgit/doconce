@@ -5,7 +5,7 @@ Doconce Description
 ===================
 
 :Author: Hans Petter Langtangen
-:Date: Dec 1, 2013
+:Date: Dec 24, 2013
 
 .. lines beginning with # are doconce comment lines
 
@@ -1236,6 +1236,12 @@ Preprocessor variables to be defined or undefined are
  * ``COLORED_TABLE_ROWS`` for coloring every other table rows (set this
    variable to ``gray`` or ``blue``).
 
+ * ``FANCY_HEADER`` for turning on headers with section title and page
+   (and also chapter title on odd numbered pages if chapters exist).
+
+ * ``DOUBLE_SPACING`` for 50 percent larger line spacing (useful for
+   pen corrections) and LaTeX "draft" mode.
+
 There are also preprocessor variables with specific values:
 
  * ``LATEX_HEADING`` for the typesetting of the title, author, parts of
@@ -2215,10 +2221,10 @@ The caption may contain a label for referencing the figure.
 
 .. _fig:viz:
 
-.. figure:: figs/streamtubes.png
+.. figure:: fig/wave1D.png
    :width: 400
 
-   *Streamtube visualization of a fluid flow*
+   *A wave*
 
 
 Combining several image files into one, in a table fashion, can be done by the
@@ -2232,6 +2238,21 @@ Combining several image files into one, in a table fashion, can be done by the
 The option ``-tile XxY`` gives ``X`` figures in the horizontal direction and
 ``Y`` in the vertical direction (``tile 2x`` means two figures per row
 and ``-tile x2`` means two rows).
+
+The ``montage`` program is only appropriate for bitmap images (PNG, JPEG, GIF,
+TIFF). Images in the PDF format should be mounted together
+using ``pdftk`` (to combine images to one file),
+``pdfnup`` (to align them in tabular format), and ``pdfcrop`` (to
+remove surrounding whitespace):
+
+
+.. code-block:: console
+
+        Terminal> pdftk file1.pdf file2.pdf ... file4.pdf output tmp.pdf
+        Terminal> pdfnup --nup 2x2 tmp.pdf        # output in tmp-nup.pdf
+        Terminal> pdfcrop tmp-nup.pdf result.png  # output in FE1.png
+
+
 
 Movies
 ------
@@ -2248,26 +2269,39 @@ for showing the movie.
         
 
 
-.. latex/PDF format can make use of the movie15 package for displaying movies,
-
-.. or just plain \h:ref:`run: ...`{...}
-
+Here is a movie in the MPEG format:
 
 .. raw:: html
         
-        <embed src="figs/mjolnir.mpeg" width=600 height=470 autoplay="false" loop="true"></embed>
+        <embed src="mov/wave.mpeg" width=600 height=470 autoplay="false" loop="true"></embed>
         <p><em></em></p>
 
 
 
-.. MOVIE: [figs/wavepacket.gif, width=600 height=470]
+And here is a movie in the Ogg format:
+
+.. raw:: html
+        
+        <div>
+        <video  loop controls width='600' height='470' preload='none'>
+        <source src='mov/wave.mp4'  type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+        <source src='mov/wave.webm' type='video/webm; codecs="vp8, vorbis"'>
+        <source src='mov/wave.ogg'  type='video/ogg; codecs="theora, vorbis"'>
+        </video>
+        </div>
+        <p><em></em></p>
 
 
-.. MOVIE: [figs/wavepacket2.mpeg, width=600 height=470]
 
+If a movie is in Ogg, MP4, or WebM format, and the output format is HTML,
+Doconce will check if the movie file is also in the other formats among
+Ogg, MP4, and WebM, and include these as well such that the movie has
+backup formats in case the browser does not support a particular format.
+Providing a movie in Ogg, MP4, *and* WebM format is therefore the safest
+way to ensure that the movie can be played in any browser on any device.
 
 The LaTeX format results in a file that can either make use of
-the movie15 package (requires the PDF to be shown in Acrobat Reader)
+the movie9 package (requires the PDF to be shown in Acrobat Reader)
 or just a plain address to the movie. The HTML, reST, and
 Sphinx formats will play
 the movie right away by embedding the file in a standard HTML code,
@@ -2276,8 +2310,8 @@ For all other formats a URL to an HTML file, which can play the code,
 is inserted in the output document.
 
 When movies are embedded in the PDF file via LaTeX and
-the ``movie15`` package wanted, one has to turn on the preprocessor
-variable ``MOVIE15``. There is an associated variable
+the ``movie9`` package wanted, one has to turn on the preprocessor
+variable ``MOVIE9``. There is an associated variable
 ``EXTERNAL_MOVIE_VIEWER`` which can be defined to launch an external
 viewer when displaying the PDF file (in Acrobat Reader):
 
@@ -3489,13 +3523,21 @@ is easy with
 
 With only ``fromto:`` this would be impossible.
 
-(Remark for those familiar with ``ptex2tex``: The from-to
+Remark for those familiar with ``ptex2tex``: The from-to
 syntax is slightly different from that used in ``ptex2tex``. When
 transforming Doconce to LaTeX, one first transforms the document to a
 ``.p.tex`` file to be treated by ``ptex2tex``. However, the ``@@@CODE`` line
 is interpreted by Doconce and replaced by the mentioned
 pro or cod environment which are defined in the ``ptex2tex`` configuration
-file.)
+file.
+
+Remark for those familiar with the ``listings`` package in LaTeX: the
+``listing`` package can copy code from files, but snippets must be
+specified through exact line numbers. The ``@@@CODE`` directive
+above works with regular expressions which are much less sensitive
+to edits of the source code file than the line numbers.
+Moreover, copy of code from file works in Dococe across formats
+(HTML, Sphinx, Markdown, etc.).
 
 
 .. _mathtext:
