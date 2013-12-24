@@ -246,7 +246,7 @@ $$
 <center>[6] <b>Third Inst, Elsewhere</b></center>
 <center>[7] <b>Fourth Inst</b></center>
 <p>
-<center><h4>Dec 5, 2013</h4></center> <!-- date -->
+<center><h4>Dec 24, 2013</h4></center> <!-- date -->
 
 <h2>Table of contents</h2>
 
@@ -634,51 +634,336 @@ there is a flow.
 <p>
 <center> <!-- figure -->
 <hr class="figure">
-<center><p class="caption">Figure 1:  Visualization of flow by streamtubes. <a name="fig:impact"></a> </p></center>
-<p><img src="../doc/src/manual/figs/streamtubes.png" align="bottom" width=200></p>
+<center><p class="caption">Figure 1:  Visualization of a wave. <a name="fig:impact"></a> </p></center>
+<p><img src="../doc/src/manual/fig/wave1D.png" align="bottom" width=200></p>
 </center>
 
 <p>
 Figures without captions are allowed and will be inlined.
 
 <p>
-<center><p><img src="../doc/src/manual/figs/streamtubes.png" align="bottom" width=200></p></center>
+<center><p><img src="../doc/src/manual/fig/wave1D.png" align="bottom" width=200></p></center>
 
 <h4>Test of movies  <a name="___sec3"></a></h4>
 
 <p>
-Movie <a href="#mov:tsunami">mov:tsunami</a> shows a tsunami.
+Movie <a href="#mov:wave">mov:wave</a> shows a wave.
 
 <p>
 
-<embed src="../doc/src/manual/figs/mjolnir.mpeg" width=700 height=400 autoplay="false" loop="true"></embed>
-<p><em>Mjolnir tsunami (by Sylfest Glimsdal) <a name="mov:tsunami"></a>.</em></p>
+<div>
+<video  loop controls width='700' height='400' preload='none'>
+<source src='../doc/src/manual/mov/wave.mp4'  type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+<source src='../doc/src/manual/mov/wave.webm' type='video/webm; codecs="vp8, vorbis"'>
+<source src='../doc/src/manual/mov/wave.ogg'  type='video/ogg; codecs="theora, vorbis"'>
+</video>
+</div>
+<p><em>1D wave in Ogg format. <a name="mov:wave"></a>.</em></p>
 
 
 <p>
-Test empty caption (for inline movie):
+Test empty caption (for inline movie, here in MPEG format):
 
 <p>
 
-<embed src="../doc/src/manual/figs/wavepacket.mpeg" width=700 height=400 autoplay="false" loop="true"></embed>
+<embed src="../doc/src/manual/mov/wave.mpeg" width=700 height=400 autoplay="false" loop="true"></embed>
 <p><em></em></p>
 
 
 <p>
-<!-- Test wrong syntax and multi-line caption -->
-
-<p><a href="wavepacket_0001.html">Movie of files <tt>../doc/src/manual/figs/wavepacket_*.png</tt></a>
-<em>Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). <a name="mymov"></a></em></p>
+Test wrong syntax and multi-line caption, to see if it is automatically
+corrected:
 
 <p>
-<!-- Check out the correct with and height of YouTube movies from the -->
-<!-- embed command that the YouTube page can generate. Similar for Vimeo. -->
+
+<div>
+<video  loop controls width='700' height='400' preload='none'>
+<source src='../doc/src/manual/mov/wave.mp4'  type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+<source src='../doc/src/manual/mov/wave.webm' type='video/webm; codecs="vp8, vorbis"'>
+<source src='../doc/src/manual/mov/wave.ogg'  type='video/ogg; codecs="theora, vorbis"'>
+</video>
+</div>
+<p><em>Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). <a name="mymov"></a></em></p>
+
+
+<p>
+We can show a series of images as an animation:
+
+<p>
+
+<script language="Javascript">
+<!---
+var num_images_frame_0080 = 50;
+var img_width_frame_0080 = 800;
+var img_height_frame_0080 = 600;
+var interval_frame_0080 = 300;
+var images_frame_0080 = new Array();
+
+function preload_images_frame_0080()
+{
+   t = document.getElementById("progress");
+
+   t.innerHTML = "Preloading image ";
+   images_frame_0080[0] = new Image(img_width_frame_0080, img_height_frame_0080);
+   images_frame_0080[0].src = "../doc/src/manual/mov/wave_frames/frame_0080.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_frame_0080[1] = new Image(img_width_frame_0080, img_height_frame_0080);
+   images_frame_0080[1].src = "../doc/src/manual/mov/wave_frames/frame_0081.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_frame_0080[2] = new Image(img_width_frame_0080, img_height_frame_0080);
+   images_frame_0080[2].src = "../doc/src/manual/mov/wave_frames/frame_0082.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_frame_0080[3] = new Image(img_width_frame_0080, img_height_frame_0080);
+   images_frame_0080[3].src = "../doc/src/manual/mov/wave_frames/frame_0083.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_frame_0080[4] = new Image(img_width_frame_0080, img_height_frame_0080);
+   images_frame_0080[4].src = "../doc/src/manual/mov/wave_frames/frame_0084.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_frame_0080[5] = new Image(img_width_frame_0080, img_height_frame_0080);
+   images_frame_0080[5].src = "../doc/src/manual/mov/wave_frames/frame_0085.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_frame_0080[6] = new Image(img_width_frame_0080, img_height_frame_0080);
+   images_frame_0080[6].src = "../doc/src/manual/mov/wave_frames/frame_0086.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_frame_0080[7] = new Image(img_width_frame_0080, img_height_frame_0080);
+   images_frame_0080[7].src = "../doc/src/manual/mov/wave_frames/frame_0087.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_frame_0080[8] = new Image(img_width_frame_0080, img_height_frame_0080);
+   images_frame_0080[8].src = "../doc/src/manual/mov/wave_frames/frame_0088.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_frame_0080[9] = new Image(img_width_frame_0080, img_height_frame_0080);
+   images_frame_0080[9].src = "../doc/src/manual/mov/wave_frames/frame_0089.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_frame_0080[10] = new Image(img_width_frame_0080, img_height_frame_0080);
+   images_frame_0080[10].src = "../doc/src/manual/mov/wave_frames/frame_0090.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_frame_0080[11] = new Image(img_width_frame_0080, img_height_frame_0080);
+   images_frame_0080[11].src = "../doc/src/manual/mov/wave_frames/frame_0091.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_frame_0080[12] = new Image(img_width_frame_0080, img_height_frame_0080);
+   images_frame_0080[12].src = "../doc/src/manual/mov/wave_frames/frame_0092.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_frame_0080[13] = new Image(img_width_frame_0080, img_height_frame_0080);
+   images_frame_0080[13].src = "../doc/src/manual/mov/wave_frames/frame_0093.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_frame_0080[14] = new Image(img_width_frame_0080, img_height_frame_0080);
+   images_frame_0080[14].src = "../doc/src/manual/mov/wave_frames/frame_0094.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_frame_0080[15] = new Image(img_width_frame_0080, img_height_frame_0080);
+   images_frame_0080[15].src = "../doc/src/manual/mov/wave_frames/frame_0095.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_frame_0080[16] = new Image(img_width_frame_0080, img_height_frame_0080);
+   images_frame_0080[16].src = "../doc/src/manual/mov/wave_frames/frame_0096.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_frame_0080[17] = new Image(img_width_frame_0080, img_height_frame_0080);
+   images_frame_0080[17].src = "../doc/src/manual/mov/wave_frames/frame_0097.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_frame_0080[18] = new Image(img_width_frame_0080, img_height_frame_0080);
+   images_frame_0080[18].src = "../doc/src/manual/mov/wave_frames/frame_0098.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_frame_0080[19] = new Image(img_width_frame_0080, img_height_frame_0080);
+   images_frame_0080[19].src = "../doc/src/manual/mov/wave_frames/frame_0099.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_frame_0080[20] = new Image(img_width_frame_0080, img_height_frame_0080);
+   images_frame_0080[20].src = "../doc/src/manual/mov/wave_frames/frame_0100.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_frame_0080[21] = new Image(img_width_frame_0080, img_height_frame_0080);
+   images_frame_0080[21].src = "../doc/src/manual/mov/wave_frames/frame_0101.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_frame_0080[22] = new Image(img_width_frame_0080, img_height_frame_0080);
+   images_frame_0080[22].src = "../doc/src/manual/mov/wave_frames/frame_0102.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_frame_0080[23] = new Image(img_width_frame_0080, img_height_frame_0080);
+   images_frame_0080[23].src = "../doc/src/manual/mov/wave_frames/frame_0103.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_frame_0080[24] = new Image(img_width_frame_0080, img_height_frame_0080);
+   images_frame_0080[24].src = "../doc/src/manual/mov/wave_frames/frame_0104.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_frame_0080[25] = new Image(img_width_frame_0080, img_height_frame_0080);
+   images_frame_0080[25].src = "../doc/src/manual/mov/wave_frames/frame_0105.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_frame_0080[26] = new Image(img_width_frame_0080, img_height_frame_0080);
+   images_frame_0080[26].src = "../doc/src/manual/mov/wave_frames/frame_0106.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_frame_0080[27] = new Image(img_width_frame_0080, img_height_frame_0080);
+   images_frame_0080[27].src = "../doc/src/manual/mov/wave_frames/frame_0107.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_frame_0080[28] = new Image(img_width_frame_0080, img_height_frame_0080);
+   images_frame_0080[28].src = "../doc/src/manual/mov/wave_frames/frame_0108.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_frame_0080[29] = new Image(img_width_frame_0080, img_height_frame_0080);
+   images_frame_0080[29].src = "../doc/src/manual/mov/wave_frames/frame_0109.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_frame_0080[30] = new Image(img_width_frame_0080, img_height_frame_0080);
+   images_frame_0080[30].src = "../doc/src/manual/mov/wave_frames/frame_0110.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_frame_0080[31] = new Image(img_width_frame_0080, img_height_frame_0080);
+   images_frame_0080[31].src = "../doc/src/manual/mov/wave_frames/frame_0111.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_frame_0080[32] = new Image(img_width_frame_0080, img_height_frame_0080);
+   images_frame_0080[32].src = "../doc/src/manual/mov/wave_frames/frame_0112.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_frame_0080[33] = new Image(img_width_frame_0080, img_height_frame_0080);
+   images_frame_0080[33].src = "../doc/src/manual/mov/wave_frames/frame_0113.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_frame_0080[34] = new Image(img_width_frame_0080, img_height_frame_0080);
+   images_frame_0080[34].src = "../doc/src/manual/mov/wave_frames/frame_0114.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_frame_0080[35] = new Image(img_width_frame_0080, img_height_frame_0080);
+   images_frame_0080[35].src = "../doc/src/manual/mov/wave_frames/frame_0115.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_frame_0080[36] = new Image(img_width_frame_0080, img_height_frame_0080);
+   images_frame_0080[36].src = "../doc/src/manual/mov/wave_frames/frame_0116.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_frame_0080[37] = new Image(img_width_frame_0080, img_height_frame_0080);
+   images_frame_0080[37].src = "../doc/src/manual/mov/wave_frames/frame_0117.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_frame_0080[38] = new Image(img_width_frame_0080, img_height_frame_0080);
+   images_frame_0080[38].src = "../doc/src/manual/mov/wave_frames/frame_0118.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_frame_0080[39] = new Image(img_width_frame_0080, img_height_frame_0080);
+   images_frame_0080[39].src = "../doc/src/manual/mov/wave_frames/frame_0119.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_frame_0080[40] = new Image(img_width_frame_0080, img_height_frame_0080);
+   images_frame_0080[40].src = "../doc/src/manual/mov/wave_frames/frame_0120.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_frame_0080[41] = new Image(img_width_frame_0080, img_height_frame_0080);
+   images_frame_0080[41].src = "../doc/src/manual/mov/wave_frames/frame_0121.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_frame_0080[42] = new Image(img_width_frame_0080, img_height_frame_0080);
+   images_frame_0080[42].src = "../doc/src/manual/mov/wave_frames/frame_0122.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_frame_0080[43] = new Image(img_width_frame_0080, img_height_frame_0080);
+   images_frame_0080[43].src = "../doc/src/manual/mov/wave_frames/frame_0123.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_frame_0080[44] = new Image(img_width_frame_0080, img_height_frame_0080);
+   images_frame_0080[44].src = "../doc/src/manual/mov/wave_frames/frame_0124.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_frame_0080[45] = new Image(img_width_frame_0080, img_height_frame_0080);
+   images_frame_0080[45].src = "../doc/src/manual/mov/wave_frames/frame_0125.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_frame_0080[46] = new Image(img_width_frame_0080, img_height_frame_0080);
+   images_frame_0080[46].src = "../doc/src/manual/mov/wave_frames/frame_0126.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_frame_0080[47] = new Image(img_width_frame_0080, img_height_frame_0080);
+   images_frame_0080[47].src = "../doc/src/manual/mov/wave_frames/frame_0127.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_frame_0080[48] = new Image(img_width_frame_0080, img_height_frame_0080);
+   images_frame_0080[48].src = "../doc/src/manual/mov/wave_frames/frame_0128.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_frame_0080[49] = new Image(img_width_frame_0080, img_height_frame_0080);
+   images_frame_0080[49].src = "../doc/src/manual/mov/wave_frames/frame_0129.png";
+        
+   t.innerHTML = "";
+}
+
+function tick_frame_0080()
+{
+   if (frame_frame_0080 > num_images_frame_0080 - 1)
+       frame_frame_0080 = 0;
+
+   document.name_frame_0080.src = images_frame_0080[frame_frame_0080].src;
+   frame_frame_0080 += 1;
+   tt = setTimeout("tick_frame_0080()", interval_frame_0080);
+}
+
+function startup_frame_0080()
+{
+   preload_images_frame_0080();
+   frame_frame_0080 = 0;
+   setTimeout("tick_frame_0080()", interval_frame_0080);
+}
+
+function stopit_frame_0080()
+{ clearTimeout(tt); }
+
+function restart_frame_0080()
+{ tt = setTimeout("tick_frame_0080()", interval_frame_0080); }
+
+function slower_frame_0080()
+{ interval_frame_0080 = interval_frame_0080/0.7; }
+
+function faster_frame_0080()
+{ interval_frame_0080 = interval_frame_0080*0.7; }
+
+// --->
+</script>
+
+<form>
+&nbsp;
+<input type="button" value="Start movie" onClick="startup_frame_0080()">
+<input type="button" value="Pause movie" onClick="stopit_frame_0080()">
+<input type="button" value="Restart movie" onClick="restart_frame_0080()">
+&nbsp;
+<input type="button" value="Slower" onClick="slower_frame_0080()">
+<input type="button" value="Faster" onClick="faster_frame_0080()">
+</form>
+
+<p><div ID="progress"></div></p>
+<img src="../doc/src/manual/mov/wave_frames/frame_0080.png" name="name_frame_0080" border=2/>
+
+<br><em>Caption for animated collection of images.</em><br>
+
+
+
+<p>
+Check out the correct with and height of YouTube movies from the
+embed command that the YouTube page can generate. Similar for Vimeo.
 
 <p>
 
 <iframe width="420" height="315" src="http://www.youtube.com/embed/_O7iUiftbKU" frameborder="0" allowfullscreen></iframe>
 
-<em>Movies can be uploaded to YouTube and embedded as HTML or as a link.</em>
+<em>YouTube movie.</em>
 
 
 
@@ -686,7 +971,7 @@ Test empty caption (for inline movie):
 
 <iframe width="500" height="278" src="http://player.vimeo.com/video/55562330" frameborder="0" allowfullscreen></iframe>
 
-<em>Computational fluid dynamics movie.</em>
+<em>Vimeo movie.</em>
 
 
 
@@ -701,14 +986,14 @@ and an extra space before the FIGURE keyword.
 <center> <!-- figure -->
 <hr class="figure">
 <center><p class="caption">Figure 2:  A long caption spanning several lines and containing verbatim words like <code>my_file_v1</code> and <code>my_file_v2</code> as well as math with subscript as in \( t_{i+1} \). <a name="myfig"></a> </p></center>
-<p><img src="../doc/src/manual/figs/wavepacket_0001.png" align="bottom" width=500></p>
+<p><img src="../doc/src/manual/fig/wave1D.png" align="bottom" width=500></p>
 </center>
 
 <p>
 <!-- Must be a blank line after MOVIE or FIGURE to detect this problem -->
 
 <p>
-<!-- Test URL as figure name -->
+Test URL as figure name:
 
 <p>
 <center><p><img src="https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png" align="bottom" width=500,></p></center>

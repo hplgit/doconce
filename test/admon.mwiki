@@ -1,7 +1,7 @@
 #TITLE (actually governed by the filename): Testing admons
 
 By '''hpl'''
-==== Dec 5, 2013 ====
+==== Dec 24, 2013 ====
 
 == Introduction ==
 First some ordinary text to compare font sizes in admonitions
@@ -266,7 +266,7 @@ class Forward3(Diff):
 And then we add a figure too.
 
 
-[[File:Wavepacket 0001.png|frame|alt=Wavepacket 0001.png|<span title=""></span>]] <!-- not yet uploaded to common.wikimedia.org -->
+[[File:Wave1D.png|frame|alt=Wave1D.png|<span title=""></span>]] <!-- not yet uploaded to common.wikimedia.org -->
 }}
 
 

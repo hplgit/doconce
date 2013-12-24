@@ -751,7 +751,7 @@ INLINE_TAGS = {
 
     # color{col}{text} (\b is useful, but :.;`? is not word boundary)
     'colortext':
-    r'\bcolor\{(?P<color>.+?)\}\{(?P<text>[^}]+)\}',
+    r'\bcolor\{(?P<color>[^}]+?)\}\{(?P<text>[^}]+)\}',
 
     # http://some.where.org/mypage<link text>  # old outdated syntax
     'linkURL':

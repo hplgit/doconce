@@ -81,7 +81,7 @@ doconce replace --examples_as__exercises $ex testdoc.p.tex
 
 # A4PAPER trigger summary environment to be smaller paragraph
 # within the text (fine for proposals or articles).
-system ptex2tex -DMINTED -DMOVIE=movie15 -DLATEX_HEADING=titlepage -DA4PAPER -DTODONOTES -DLINENUMBERS -DCOLORED_TABLE_ROWS=blue -DFANCY_HEADER -DSECTION_HEADINGS=blue testdoc
+system ptex2tex -DMINTED -DMOVIE=media9 -DLATEX_HEADING=titlepage -DA4PAPER -DTODONOTES -DLINENUMBERS -DCOLORED_TABLE_ROWS=blue -DFANCY_HEADER -DSECTION_HEADINGS=blue testdoc
 
 # test that pdflatex works
 system pdflatex -shell-escape testdoc
@@ -300,17 +300,17 @@ doconce format rst tmp2
 doconce subst -s '__Paragraph before.+!bc' '!bc' tmp2.do.txt
 doconce format rst tmp2
 doconce replace '\label' 'label' tmp2.do.txt
-doconce replace 'streamtubes width' 'streamtubes,  width' tmp2.do.txt
+doconce replace 'wave1D width' 'wave1D,  width' tmp2.do.txt
 doconce format sphinx tmp2
 doconce replace '../lib/doconce/doconce.py' '_static/doconce.py' tmp2.do.txt
 doconce subst -s -m '^!bsol.+?!esol' ''  tmp2.do.txt
 doconce format sphinx tmp2
 doconce subst -s -m '^!bhint.+?!ehint' ''  tmp2.do.txt
 doconce format sphinx tmp2
-doconce replace 'two_media99' 'two_media' tmp2.do.txt
+doconce replace 'doc/manual' 'doc/src/manual' tmp2.do.txt
 doconce format html tmp2
 doconce format pdflatex tmp2
-doconce replace 'doc/manual' 'doc/src/manual' tmp2.do.txt
+doconce replace 'two_media99' 'two_media' tmp2.do.txt
 doconce format html tmp2
 doconce format pdflatex tmp2
 doconce format sphinx tmp2
