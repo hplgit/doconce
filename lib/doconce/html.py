@@ -36,6 +36,11 @@ def add_to_file_collection(filename, doconce_docname=None, mode='a'):
     and this name is used to set the filename of the file collection.
     Later, `doconce_docname` is not given (otherwise previous info is erased).
     """
+    if isinstance(filename, str):
+        filenames = [filename]
+    elif isinstance(filename, (list,tuple)):
+        filenames = filename
+
     # bin/doconce functions that add info to the file collection
     # must provide the right doconce_docname and mode='a' in order
     # to write correctly to an already existing file.
@@ -47,18 +52,17 @@ def add_to_file_collection(filename, doconce_docname=None, mode='a'):
             doconce_docname = doconce_docname[:-5]
         _file_collection_filename = '.' + doconce_docname + \
                                     '_html_file_collection'
-    try:
-        if mode == 'a':
-            f = open(_file_collection_filename, 'r')
-            files = [name.strip() for name in f.read().split()]
-            f.close()
-            if filename in files:  # already registered?
-                return
-        f = open(_file_collection_filename, mode)
-        f.write(filename + '\n')
+    if mode == 'a':
+        f = open(_file_collection_filename, 'r')
+        files = [name.strip() for name in f.read().split()]
         f.close()
-    except:
-        pass
+    else:
+        files = []
+    f = open(_file_collection_filename, mode)
+    for name in filenames:
+        if not name in files:  # already registered?
+            f.write(name + '\n')
+    f.close()
 
 # Style sheets
 
@@ -781,6 +785,7 @@ def html_movie(m):
         text = jscode + form
         if caption:
             text += '\n<br><em>' + caption + '</em><br>\n\n'
+        add_to_file_collection(plotfiles)
         # Movie in separate file
         '''
         moviehtml = stem + '.html'
