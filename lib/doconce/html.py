@@ -4,6 +4,9 @@ from common import table_analysis, plain_exercise, insert_code_and_tex, \
      cite_with_multiple_args2multiple_cites, _abort, is_file_or_url
 from misc import option
 
+box_shadow = 'box-shadow: 8px 8px 5px #888888;'
+#box_shadow = 'box-shadow: 0px 0px 10px #888888'
+
 global _file_collection_filename
 
 # From http://service.real.com/help/library/guides/realone/ProductionGuide/HTML/htmfiles/colors.htm:
@@ -101,8 +104,9 @@ admon_styles2 = admon_styles_text + """\
              padding:8px 35px 8px 14px; margin-bottom:18px;
              text-shadow:0 1px 0 rgba(255,255,255,0.5);
              border:1px solid %(boundary)s;
-             -webkit-border-radius: 4px; -moz-border-radius: 4px;
-             border-radius: 4px
+             border-radius: 4px;
+             -webkit-border-radius: 4px;
+             -moz-border-radius: 4px;
              color: #555;
              background-color: %(background)s;
              background-position: 10px 5px;
@@ -622,7 +626,8 @@ MathJax.Hub.Config({
         # Check that template does not have "main content" begin and
         # end lines that may interfere with the automatically generated
         # ones in Doconce (may destroy the split_html command)
-        m = re.findall(r'(<!-- -+ .*main content -+)', template)
+        from doconce import main_content_char as _c
+        m = re.findall(r'(<!-- %s+ main content %s+)' % (_c,_c), template)
         if m:
             print '*** error: template contains lines that may interfere'
             print '    with markers that doconce inserts - remove these'
@@ -1108,13 +1113,16 @@ def html_toc(sections):
     return s
 
 def html_box(block, format, text_size='normal'):
+    """Add a HTML box with text, code, equations inside. Can have shadow."""
+    # box_shadow is a global variable set in the top of the file
+    shadow = ' ' + box_shadow if option('html_box_shadow') else ''
     return """
 <!-- begin box -->
-<div style="background-color:white; padding: 10px; border: 1px solid #000">
+<div style="width: 95%%; padding: 10px; border: 1px solid #000; border-radius: 4px;%s">
 %s
 </div>
 <!-- end box -->
-""" % (block)
+""" % (shadow, block)
 
 def html_quote(block, format, text_size='normal'):
     return """\
@@ -1402,6 +1410,14 @@ def define(FILENAME_EXTENSION,
         icon_question='Knob_Forward.png',
         icon_block='',
         )
+    if option('html_admon_shadow'):
+        # Add a shadow effect to the admon_styles2 boxes
+        global admon_styles2
+        admon_styles2 = re.sub(
+            r'(-webkit-|-moz-|)(border-radius: \d+px;)',
+            '\g<1>\g<2> \g<1>%s' % box_shadow,
+            admon_styles2)
+
     # Need to add admon_styles? (html_admon_style is global)
     for admon in admons:
         if '!b'+admon in filestr and '!e'+admon in filestr:

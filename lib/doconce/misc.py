@@ -52,6 +52,8 @@ document is embedded."""),
      """Specify HTML font for headings. =? lists available Google fonts."""),
     ('--html_video_autoplay=',
      """True for autoplay when HTML is loaded, otherwise False (default)."""),
+    ('--html_box_shadow',
+     'Add a shadow effect in HTML box environments.'),
     ('--html_slide_theme=',
      """Specify a theme for the present slide type.
 (See the HTML header for a list of theme files and their names."""),
@@ -73,6 +75,8 @@ inserted to the right in exercises - "default" and "none" are allowed
      """User-provided LaTeX preamble file, either complete or additions."""),
     ('--html_admon=',
      "Type of admonition and color: white, colors, gray, yellow."),
+    ('--html_admon_shadow',
+     'Add a shadow effect to HTML admon boxes (gray, yellow, apricot).'),
     ('--latex_admon=',
      "Type of admonition and color: colors1-2, graybox1-3, yellowbox, paragraph."),
     ('--css=',
@@ -1991,6 +1995,7 @@ def _format_comments(format='html'):
 
 def get_header_parts_footer(filename, format='html'):
     """Return list of lines for header, parts split by !split, and footer."""
+    from doconce import main_content_char
     header = []
     footer = []
     parts = [[]]
@@ -2001,15 +2006,15 @@ def get_header_parts_footer(filename, format='html'):
     begin_comment, end_comment = _format_comments(format)
     f = open(filename, 'r')
     for line in f:
-        #if re.search(r'^%s -+ main content -+ ?%s' %
-        #             (begin_comment, end_comment), line):
-        if re.search(r'^%s -+ main content -+ ?%s' %
-                     (begin_comment, end_comment), line):
+        if re.search(r'^%s %s+ main content %s+ ?%s' %
+                     (begin_comment, main_content_char,
+                      main_content_char, end_comment), line):
             loc = 'body'
         if re.search(r'^%s !split.*?%s' % (begin_comment, end_comment), line):
             parts.append([])
-        if re.search(r'^%s -+ end of main content -+ ?%s' %
-                     (begin_comment, end_comment), line):
+        if re.search(r'^%s %s+ end of main content %s+ ?%s' %
+                     (begin_comment, main_content_char,
+                      main_content_char, end_comment), line):
             loc = 'footer'
         if loc == 'header':
             header.append(line)

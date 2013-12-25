@@ -45,6 +45,14 @@ By way of corollary, it adds:
 Does quotes with title also work? No...cannot work in LaTeX and HTML
 and then it does not make sense to support it.
 
+# #if FORMAT in ("sphinx", "rst")
+!bwarning
+The boxes below are shown without any extra formatting in reST
+and Sphinx. We could use an admonition environment, but requires
+a title.
+!ewarning
+# #endif
+
 A plain *box* is sometimes useful. Let's show it here for comparison
 with admons (especially the block admon has much in common with a box).
 The box is more aimed at framing a law or an equation.
@@ -111,7 +119,10 @@ Test warning with title:
 And here comes some text with bad news in larger font.
 !ewarning
 
-Test warning with title with math:
+Test warning with large title with math:
+# #if FORMAT == "sphinx"
+(we have no impact on the font size in the title in Sphinx)
+# #endif
 
 !bwarning (large) Watch out for $\nabla\cdot\bm{u}=0$ equations
 Divergence freedom is often problematic from a numerical point
@@ -131,8 +142,9 @@ of understanding.
 
 # #if FORMAT == "sphinx"
 Admonitions must have a title in Sphinx, otherwise they are not
-shown. Here, we have not specified any title, and Doconce then
-applies the generic title "Notice:"
+shown. Here, for the following *block admon* (`!bblock`)
+we have not specified any title, and Doconce then
+applies the generic title "Notice:" for the Sphinx format:
 # #endif
 
 !bblock
@@ -277,7 +289,7 @@ class Forward3(Diff):
 !ec
 And then we add a figure too.
 
-FIGURE: [../doc/src/manual/fig/wave1D]
+FIGURE: [../doc/src/manual/fig/wave1D, width=400 frac=0.7]
 !enotice
 
 

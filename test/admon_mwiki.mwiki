@@ -45,6 +45,7 @@ By way of corollary, it adds:
 Does quotes with title also work? No...cannot work in LaTeX and HTML
 and then it does not make sense to support it.
 
+
 A plain ''box'' is sometimes useful. Let's show it here for comparison
 with admons (especially the block admon has much in common with a box).
 The box is more aimed at framing a law or an equation.
@@ -141,7 +142,7 @@ Test warning with title:
 
 
 
-Test warning with title with math:
+Test warning with large title with math:
 
 
 {{mbox
@@ -352,7 +353,7 @@ class Forward3(Diff):
 And then we add a figure too.
 
 
-[[File:Wave1D.png|frame|alt=Wave1D.png|<span title=""></span>]] <!-- not yet uploaded to common.wikimedia.org -->
+[[File:Wave1D.png|frame|400px|alt=Wave1D.png|<span title=""></span>]] <!-- not yet uploaded to common.wikimedia.org -->
 }}
 
 

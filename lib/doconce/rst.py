@@ -343,16 +343,18 @@ def rst_index_bib(filestr, index, citations, pubfile, pubdata):
     return filestr
 
 def rst_box(block, format, text_size='normal'):
-    # Insert empty comment to distinguish from possibly
-    # previous list, code, etc.
     return """
-.. raw:: html
-    <!-- begin box -->
-    <div style="background-color:white; padding: 10px; border: 1px solid #000">
+.. The below box could be typeset as .. admonition: Attention
+   but we have decided not to do so (the box formatting is just ignored)
+..
+
 %s
-    </div>
-    <!-- end box -->
-""" % (indent_lines(block, format, ' '*4))
+""" % block
+#    return rst_quote(block, format, text_size)
+#    return """
+#.. addmonition:: some title
+#%s
+#""" % (indent_lines(block, format, ' '*4))
 
 def rst_quote(block, format, text_size='normal'):
     # Insert empty comment to distinguish from possibly
