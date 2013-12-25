@@ -36,10 +36,12 @@ def add_to_file_collection(filename, doconce_docname=None, mode='a'):
     and this name is used to set the filename of the file collection.
     Later, `doconce_docname` is not given (otherwise previous info is erased).
     """
-    if isinstance(filename, str):
+    if isinstance(filename, (str,unicode)):
         filenames = [filename]
     elif isinstance(filename, (list,tuple)):
         filenames = filename
+    else:
+        raise TypeError('filename=%s is %s, not supported' % (filename, type(filename)))
 
     # bin/doconce functions that add info to the file collection
     # must provide the right doconce_docname and mode='a' in order
@@ -53,7 +55,13 @@ def add_to_file_collection(filename, doconce_docname=None, mode='a'):
         _file_collection_filename = '.' + doconce_docname + \
                                     '_html_file_collection'
     if mode == 'a':
-        f = open(_file_collection_filename, 'r')
+        try:
+            f = open(_file_collection_filename, 'r')
+        except (IOError, NameError):
+            # sphinx, rst makes use of html functions that call
+            # add_to_file_collection, and in those cases the
+            # _file_collection_filename variable is not defined
+            return
         files = [name.strip() for name in f.read().split()]
         f.close()
     else:

@@ -1,5 +1,5 @@
 Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex expand_commands combine_images guess_encoding change_encoding gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex expand_commands combine_images guess_encoding change_encoding gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 # transform doconce file to another format
@@ -108,6 +108,9 @@ doconce latex_exercise_toc myfile
 
 # list all labels in a document (for purposes of cleaning them up)
 doconce list_labels myfile
+
+# check all links in HTML files
+doconce linkchecker *.html
 
 # translate a latex document to doconce (requires usually manual fixing)
 doconce latex2doconce latexfile

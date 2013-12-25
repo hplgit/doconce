@@ -31,21 +31,21 @@ bad paragraphs?
 
 Figure with just an image and no caption must be handled.
 
-FIGURE: [../doc/src/manual/figs/streamtubes]
+FIGURE: [../doc/src/manual/fig/wave1D]
 
 Figure with label, but no caption.
 
-FIGURE: [../doc/src/manual/figs/streamtubes] label{myl1}
+FIGURE: [../doc/src/manual/fig/wave1D] label{myl1}
 
 Figure with no comma between filename and options, and wrong path must
 give error.
 
-FIGURE: [../doc/manual/figs/streamtubes width=800]
+FIGURE: [../doc/manual/fig/wave1D width=800]
 
 Figure with math only in the caption, which causes sphinx to use an
 empty figure name, is problematic.
 
-FIGURE: [../doc/manual/figs/streamtubes, width=800] $a=50$
+FIGURE: [../doc/manual/fig/wave1D, width=800] $a=50$
 
 # http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.webm
 Movie/figure with nonexistent URL must give error messages.

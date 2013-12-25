@@ -230,7 +230,7 @@ idx{movies}
 
 Movie ref{mov:wave} shows a wave.
 
-MOVIE: [../doc/src/manual/mov/wave.mpeg, width=700 height=400] 1D wave. label{mov:wave}.
+MOVIE: [../doc/src/manual/mov/wave.ogg, width=700 height=400] 1D wave in Ogg format. label{mov:wave}.
 
 Test empty caption (for inline movie, here in MPEG format):
 
@@ -268,7 +268,7 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 
 # Must be a blank line after MOVIE or FIGURE to detect this problem
 
-# Test URL as figure name
+Test URL as figure name:
 
 FIGURE: [https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png, width=500, frac=0.8]
 
