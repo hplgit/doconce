@@ -28,6 +28,62 @@ x=1.0 y=0.9 z=0.4
 x=1.1 y=0.3 z=0.1
 !ec
 
+===== Quotes and boxes =====
+
+Here is a plain quote environment.
+
+!bquote
+Sayre's law states that
+"in any dispute the intensity of feeling is inversely
+proportional to the value of the issues at stake."
+By way of corollary, it adds:
+"That is why academic politics are so bitter."
+
+*Source*: "wikipedia": "http://en.wikipedia.org/wiki/Sayre's_law"
+!equote
+
+Does quotes with title also work? No...cannot work in LaTeX and HTML
+and then it does not make sense to support it.
+
+A plain *box* is sometimes useful. Let's show it here for comparison
+with admons (especially the block admon has much in common with a box).
+The box is more aimed at framing a law or an equation.
+
+First a simple block with text, an equation, and a list:
+
+!bbox
+A generic equation
+
+!bt
+\[ f(x) = 0 \]
+!et
+must be solved by a numerical method, such as
+
+ * Newton's method
+ * The Bisection method
+ * Fixed-point (Picard) iteration by rewriting $f(x)=x - g(x)$
+ * The Secant method
+!ebox
+Now test a box with equation only (note that this line continues the
+box, it is not a new paragraph):
+
+!bbox
+!bt
+\begin{equation} f(x) = \sin(x)e^{1-x} \end{equation}
+!et
+!ebox
+
+Let's begin a new paragraph and show a box with code only:
+
+!bbox
+!bc pycod
+def some_code(x):
+    return sin(x)*exp(1-x)
+!ec
+!ebox
+
+
+
 ===== Admonitions =====
 
 Let us start with a plain warning environment.
@@ -224,6 +280,7 @@ And then we add a figure too.
 FIGURE: [../doc/src/manual/fig/wave1D]
 !enotice
 
+
 ===== The end =====
 
 A bit of text before the summary, which we now call "Concluding remarks,
@@ -235,3 +292,7 @@ We can summarize the most important things with admons: they have
 a different typesetting, and they may have a symbol.
 Titles should be optional.
 !esummary
+
+__Remark.__
+The `remarks` and `hint` environments are not allowed outside
+exercises (and problems and projects too).

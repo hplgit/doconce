@@ -351,16 +351,18 @@ def default_movie(m):
         moviehtml = stem + '.html'
         f = open(moviehtml, 'w')
         f.write("""
-<HTML>
-<BODY>
-<TITLE>Embedding movie %s in HTML</TITLE>
-   <EMBED SRC="%s" %s AUTOPLAY="TRUE" LOOP="TRUE"></EMBED>
-   <P>
-   <EM>%s</EM>
-   </P>
-</BODY>
-</HTML>
-""" % (filename, filename, ' '.join(options), caption))
+<html>
+<body>
+<title>Embedding movie in HTML</title>
+   <embed SRC="%s" %s AUTOPLAY="TRUE" LOOP="TRUE"></embed>
+   <p>
+   <em>%s</em>
+   </p>
+</body>
+</html>
+""" % (filename, ' '.join(options), caption))
+        print '*** made link to new HTML file %s with code to display the movie %s' % \
+        (moviehtml, filename)
         text = '%s (Movie `%s`: play URL:"%s")' % (caption, filename, moviehtml)
     return text
 

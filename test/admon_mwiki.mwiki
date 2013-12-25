@@ -1,7 +1,7 @@
 #TITLE (actually governed by the filename): Testing admons
 
 By '''hpl'''
-==== Dec 24, 2013 ====
+==== Dec 25, 2013 ====
 
 == Introduction ==
 First some ordinary text to compare font sizes in admonitions
@@ -23,6 +23,83 @@ And some plain text verbatim:
 x=1.0 y=0.9 z=0.4
 x=1.1 y=0.3 z=0.1
 </syntaxhighlight>
+
+==== Quotes and boxes ====
+
+Here is a plain quote environment.
+
+
+{{quote box
+| quote = Sayre's law states that
+"in any dispute the intensity of feeling is inversely
+proportional to the value of the issues at stake."
+By way of corollary, it adds:
+"That is why academic politics are so bitter."
+
+''Source'': [http://en.wikipedia.org/wiki/Sayre's_law wikipedia]
+| textstyle = font-size: 90%;
+}}
+
+
+
+Does quotes with title also work? No...cannot work in LaTeX and HTML
+and then it does not make sense to support it.
+
+A plain ''box'' is sometimes useful. Let's show it here for comparison
+with admons (especially the block admon has much in common with a box).
+The box is more aimed at framing a law or an equation.
+
+First a simple block with text, an equation, and a list:
+
+
+{{mbox
+| type = 
+| textstyle = font-size: 90%;
+| text = '''''' A generic equation
+
+:<math>
+ f(x) = 0 
+</math>
+must be solved by a numerical method, such as
+
+
+<ul>
+ <li> Newton's method
+ <li> The Bisection method
+ <li> Fixed-point (Picard) iteration by rewriting <math>f(x)=x - g(x)</math>
+ <li> The Secant method
+</ul>
+}}
+
+
+Now test a box with equation only (note that this line continues the
+box, it is not a new paragraph):
+
+
+{{mbox
+| type = 
+| textstyle = font-size: 90%;
+| text = '''''' :<math>
+f(x) = \sin(x)e^{1-x} </math>
+}}
+
+
+
+Let's begin a new paragraph and show a box with code only:
+
+
+{{mbox
+| type = 
+| textstyle = font-size: 90%;
+| text = '''''' <syntaxhighlight lang="python">
+def some_code(x):
+    return sin(x)*exp(1-x)
+</syntaxhighlight>
+}}
+
+
+
+
 
 ==== Admonitions ====
 
@@ -78,19 +155,28 @@ of view.
 
 Then we test a block, which is guaranteed to never have any admon icon.
 
-''Block with title''\n
-Here is a block of text with title. It is typeset
+
+{{mbox
+| type = Block with title.
+| textstyle = font-size: 80%;
+| text = '''Block with title.''' Here is a block of text with title. It is typeset
 ''without any icon'' and is useful when you want some admons with icon
 and some without. With the small font size, as used here, one can have
 more comment-style text or text that really goes deeper or talks
 about fun facts that are not strictly necessary for the main flow
 of understanding.
+}}
 
 
 
 
-Here is a block of text with no title. As above, it is typeset without any icon
+
+{{mbox
+| type = 
+| textstyle = font-size: 90%;
+| text = '''''' Here is a block of text with no title. As above, it is typeset without any icon
 and is useful when you want some admons with icon and some without.
+}}
 
 
 
@@ -271,6 +357,7 @@ And then we add a figure too.
 
 
 
+
 ==== The end ====
 
 A bit of text before the summary, which we now call "Concluding remarks,
@@ -287,4 +374,8 @@ Titles should be optional.
 }}
 
 
+
+''Remark.''
+The <code>remarks</code> and <code>hint</code> environments are not allowed outside
+exercises (and problems and projects too).
 

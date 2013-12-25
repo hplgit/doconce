@@ -834,12 +834,23 @@ def latex_exercise_old(exer):
         pass
     return s
 
+def latex_box(block, format, text_size='normal'):
+    return r"""
+\begin{center}
+\begin{Sbox}
+\begin{minipage}{0.85\textwidth}
+%s
+\end{minipage}
+\end{Sbox}
+\fbox{\TheSbox}
+\end{center}""" % (block)
+
 def latex_quote(block, format, text_size='normal'):
     return r"""
 \begin{quote}
 %s
 \end{quote}
-""" % (indent_lines(block, format, ' '*4, trailing_newline=False))
+""" % (block) # no indentation in case block has code
 
 latexfigdir = 'latex_figs'
 
@@ -1145,6 +1156,7 @@ def define(FILENAME_EXTENSION,
         'notice':        latex_notice,
         'summary':       latex_summary,
         'block':         latex_block,
+        'box':           latex_box,
        }
 
     ending = '\n'
@@ -1341,6 +1353,15 @@ final,                   %% or draft (marks overfull hboxes)
 \usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
+"""
+    # fancybox must be loaded prior to fancyvrb and minted
+    # (which appears instead of or in addition to ptex2tex)
+    if '!bbox' in filestr:
+        INTRO['latex'] += r"""
+\usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
+\setlength{\fboxsep}{8pt}
+"""
+    INTRO['latex'] += r"""
 \usepackage{ptex2tex}
 """
     # Add packages for movies

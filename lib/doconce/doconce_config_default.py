@@ -52,6 +52,7 @@ sections_up = False
 sections_down = False
 #figure_prefix = 
 #movie_prefix = 
+no_mp4_webm_ogg_alternatives = False
 handout = False
 urlcheck = False
 #short_title = 

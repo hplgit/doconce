@@ -30,8 +30,9 @@ def doconce_envirs():                     # begin-end environments
             'ans', 'sol', 'subex',        # exercises
             'pop', 'slidecell', 'notes',  # slides
             'hint', 'remarks',            # exercises
-            'quote',
-            'notice', 'summary', 'warning', 'question', 'block']  # admon
+            'quote', 'box',
+            'notice', 'summary', 'warning', 'question', 'block', # admon
+            ]
 
 admons = 'notice', 'summary', 'warning', 'question', 'block'
 
@@ -1265,7 +1266,8 @@ def typeset_envirs(filestr, format):
                     return ENVIRS[format][envir](m.group(2), format, title, text_size=text_size)
         else:
             # subst functions for default handling in primitive formats
-            if envir == 'quote':
+            if envir in ('quote', 'box'):
+                # Just indent the block
                 def subst(m):
                     return indent_lines(m.group(1), format, ' '*4) + '\n'
             elif envir in admons + ('hint', 'remarks'):

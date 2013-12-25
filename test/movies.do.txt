@@ -4,7 +4,12 @@ DATE: today
 
 Let us refer to movie ref{mov:wave}.
 
-Here is a movie in WebM format:
+Here is a movie in WebM format.
+# #if FORMAT == "html"
+Note that in HTML format it may be the MP4 version of this movie that is
+actually played since three alternative sources (MP4, WebM, OGG)
+are given.
+# #endif
 
 MOVIE: [../doc/src/manual/mov/wave.webm, width=700 height=400] 1D wave in WebM.
 

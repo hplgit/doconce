@@ -165,7 +165,7 @@ text...
 ;;###autoload
 (define-generic-mode doconce
   '(("%<doc>" . "%</doc>"))              ; (mako) comment characters
-  '("bwarning" "ewarning" "bquote" "equote" "bnotice" "enotice" "bsummary" "esummary" "bquestion" "equestion" "bblock" "eblock" "bsubex" "esubex" "bhint" "ehint" "bsol" "esol" "bans" "eans" "bpop" "epop" "bslidecell" "eslidecell" "idx") ; keywords (!bt used below does not work well)
+  '("bwarning" "ewarning" "bquote" "equote" "bnotice" "enotice" "bsummary" "esummary" "bquestion" "equestion" "bblock" "eblock" "bbox" "ebox" "bsubex" "esubex" "bhint" "ehint" "bsol" "esol" "bans" "eans" "bremarks" "eremarks" "bpop" "epop" "bslidecell" "eslidecell" "idx") ; keywords (!bt used below does not work well)
   '(("\\(^!bc[^§]+?!ec\\)" (1 'do-code-face))
     ("\\(^\\(FIGURE\\|MOVIE\\|AUTHOR\\|TITLE\\):.+$\\)" (1 'do-figmov-face))
     ("\\(^!bt[^§]+?!et\\)" (1 'do-math-face))

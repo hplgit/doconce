@@ -1116,3 +1116,5 @@ The point here is to test 1) `verbatim` code in headings, and 2)
 ending a heading with verbatim code as this triggers a special
 case in LaTeX.
 
+And finally, what about admons, quotes, and boxes? They are tested
+in a separate document: `admon.do.txt`.

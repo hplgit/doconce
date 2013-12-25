@@ -101,6 +101,8 @@ inserted to the right in exercises - "default" and "none" are allowed
      'Prefix all figure filenames with, e.g., an URL'),
     ('--movie_prefix=',
      'Prefix all movie filenames with, e.g., an URL'),
+    ('--no_mp4_webm_ogg_alternatives',
+     'Use just the specified (.mp4, .webm, .ogg) movie file; do not allow alternatives in HTML5 video tag. Used if the just the specified movie format should be played.'),
     ('--handout',
      'Makes slides output suited for printing.'),
     ('--urlcheck',
@@ -152,8 +154,6 @@ def option(name, default=None):
         print 'test for illegal option:', option_name
         _abort()
 
-    value = default
-
     # Check if a command-line option has dash instead of underscore,
     # which is a common mistake
     for arg in sys.argv[1:]:
@@ -166,12 +166,19 @@ def option(name, default=None):
                       (arg, '--' + arg[2:].replace('-', '_'))
                 _abort()
 
-    # Check first if name is in configuration file (doconce_config)
+    value = None  # initialization
+
+    # Check if name is in configuration file (doconce_config)
+    # and get a default value from there
     name_dash2underscore = name.replace('-', '_')
     if hasattr(doconce_config, name_dash2underscore):
         value = getattr(doconce_config, name_dash2underscore)
 
-    # Let the command line override
+    # Let the user's default value override that in the config file
+    if default is not None:
+        value = default
+
+    # Finally, let the command line override everything
     if option_name.endswith('='):
         for arg in sys.argv[1:]:
             if arg.startswith(option_name):
