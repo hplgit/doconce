@@ -235,10 +235,10 @@ cp admon.html admon_paragraph.html
 system doconce format html admon --html_admon=colors
 cp admon.html admon_colors.html
 
-system doconce format html admon --html_admon=gray --html_style=blueish2
+system doconce format html admon --html_admon=gray --html_style=blueish2 --html_admon_shadow --html_box_shadow
 cp admon.html admon_gray.html
 
-system doconce format html admon --html_admon=yellow
+system doconce format html admon --html_admon=yellow --html_admon_shadow --html_box_shadow
 cp admon.html admon_yellow.html
 
 system doconce format html admon --html_admon=apricot --html_style=solarized
@@ -249,10 +249,12 @@ cp admon.html admon_vagrant.html
 
 system doconce sphinx_dir dirname=tmp_admon admon
 system python automake_sphinx.py
-cp tmp_admon/_build/html/admon.html admon_sphinx.html
+rm -rf admon_sphinx
+cp -r tmp_admon/_build/html admon_sphinx
 
 system doconce format mwiki admon
 cp admon.mwiki admon_mwiki.mwiki
+mv -f admon_* admon/
 
 system doconce format pandoc github_md.do.txt --github_md
 

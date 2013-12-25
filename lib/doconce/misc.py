@@ -52,6 +52,8 @@ document is embedded."""),
      """Specify HTML font for headings. =? lists available Google fonts."""),
     ('--html_video_autoplay=',
      """True for autoplay when HTML is loaded, otherwise False (default)."""),
+    ('--html_box_shadow',
+     'Add a shadow effect in HTML box environments.'),
     ('--html_slide_theme=',
      """Specify a theme for the present slide type.
 (See the HTML header for a list of theme files and their names."""),
@@ -73,6 +75,8 @@ inserted to the right in exercises - "default" and "none" are allowed
      """User-provided LaTeX preamble file, either complete or additions."""),
     ('--html_admon=',
      "Type of admonition and color: white, colors, gray, yellow."),
+    ('--html_admon_shadow',
+     'Add a shadow effect to HTML admon boxes (gray, yellow, apricot).'),
     ('--latex_admon=',
      "Type of admonition and color: colors1-2, graybox1-3, yellowbox, paragraph."),
     ('--css=',
@@ -101,6 +105,8 @@ inserted to the right in exercises - "default" and "none" are allowed
      'Prefix all figure filenames with, e.g., an URL'),
     ('--movie_prefix=',
      'Prefix all movie filenames with, e.g., an URL'),
+    ('--no_mp4_webm_ogg_alternatives',
+     'Use just the specified (.mp4, .webm, .ogg) movie file; do not allow alternatives in HTML5 video tag. Used if the just the specified movie format should be played.'),
     ('--handout',
      'Makes slides output suited for printing.'),
     ('--urlcheck',
@@ -152,8 +158,6 @@ def option(name, default=None):
         print 'test for illegal option:', option_name
         _abort()
 
-    value = default
-
     # Check if a command-line option has dash instead of underscore,
     # which is a common mistake
     for arg in sys.argv[1:]:
@@ -166,12 +170,19 @@ def option(name, default=None):
                       (arg, '--' + arg[2:].replace('-', '_'))
                 _abort()
 
-    # Check first if name is in configuration file (doconce_config)
+    value = None  # initialization
+
+    # Check if name is in configuration file (doconce_config)
+    # and get a default value from there
     name_dash2underscore = name.replace('-', '_')
     if hasattr(doconce_config, name_dash2underscore):
         value = getattr(doconce_config, name_dash2underscore)
 
-    # Let the command line override
+    # Let the user's default value override that in the config file
+    if default is not None:
+        value = default
+
+    # Finally, let the command line override everything
     if option_name.endswith('='):
         for arg in sys.argv[1:]:
             if arg.startswith(option_name):
@@ -1984,6 +1995,7 @@ def _format_comments(format='html'):
 
 def get_header_parts_footer(filename, format='html'):
     """Return list of lines for header, parts split by !split, and footer."""
+    from doconce import main_content_char
     header = []
     footer = []
     parts = [[]]
@@ -1994,15 +2006,15 @@ def get_header_parts_footer(filename, format='html'):
     begin_comment, end_comment = _format_comments(format)
     f = open(filename, 'r')
     for line in f:
-        #if re.search(r'^%s -+ main content -+ ?%s' %
-        #             (begin_comment, end_comment), line):
-        if re.search(r'^%s -+ main content -+ ?%s' %
-                     (begin_comment, end_comment), line):
+        if re.search(r'^%s %s+ main content %s+ ?%s' %
+                     (begin_comment, main_content_char,
+                      main_content_char, end_comment), line):
             loc = 'body'
         if re.search(r'^%s !split.*?%s' % (begin_comment, end_comment), line):
             parts.append([])
-        if re.search(r'^%s -+ end of main content -+ ?%s' %
-                     (begin_comment, end_comment), line):
+        if re.search(r'^%s %s+ end of main content %s+ ?%s' %
+                     (begin_comment, main_content_char,
+                      main_content_char, end_comment), line):
             loc = 'footer'
         if loc == 'header':
             header.append(line)

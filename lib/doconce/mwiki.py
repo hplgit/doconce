@@ -277,7 +277,7 @@ def mwiki_admon(block, format, title='Warning', text_size='normal',
     if title.lower().strip() == 'none':
         title = ''
     # Blocks without explicit title should have empty title
-    if title == 'Block':  # block admon has no default title
+    if title == 'Block':
         title = ''
 
     if title and title[-1] not in ('.', ':', '!', '?'):
@@ -286,7 +286,8 @@ def mwiki_admon(block, format, title='Warning', text_size='normal',
 
     admon_type2mwiki = dict(notice='notice',
                             warning='warning',  # or critical or important
-                            hint='notice',)
+                            hint='notice',
+                            quote='quote')
     if admon_type in admon_type2mwiki:
         admon_type = admon_type2mwiki[admon_type]  # use mwiki admon
     else:
@@ -301,7 +302,19 @@ def mwiki_admon(block, format, title='Warning', text_size='normal',
     elif text_size == 'small':
         text_size = '80%'
 
-    s = """
+    if admon_type == 'quote':
+        s = """
+{{quote box
+| quote = %s
+| textstyle = font-size: %s;
+}}
+
+""" % (block, text_size)
+        # quote has also | source = ... but other formats like
+        # latex and html have no specific source tag, so it must
+        # be typeset manually
+    else:
+        s = """
 {{mbox
 | type = %s
 | textstyle = font-size: %s;
@@ -376,7 +389,13 @@ def define(FILENAME_EXTENSION,
         'hint':      lambda block, format, title='Hint', text_size='normal':
            mwiki_admon(block, format, title, text_size, 'hint'),
         'summary':   lambda block, format, title='Summary', text_size='normal':
-           mwiki_admon(block, format, title, text_size, 'summary')
+           mwiki_admon(block, format, title, text_size, 'summary'),
+        'block':     lambda block, format, title='Block', text_size='normal':
+           mwiki_admon(block, format, title, text_size, 'block'),
+        'box':       lambda block, format, title='none', text_size='normal':
+           mwiki_admon(block, format, title, text_size, 'box'),
+        'quote':     lambda block, format, title='none', text_size='normal':
+           mwiki_admon(block, format, title, text_size, 'quote'),
         }
 
     # native list:

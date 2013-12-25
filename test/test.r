@@ -1132,7 +1132,8 @@ The point here is to test 1) `verbatim` code in headings, and 2)
 ending a heading with verbatim code as this triggers a special
 case in LaTeX.
 
-
+And finally, what about admons, quotes, and boxes? They are tested
+in a separate document: `admon.do.txt`.
 ************** File: testdoc.html *****************
 <!DOCTYPE html>
 <!--
@@ -1194,8 +1195,9 @@ Automatically generated HTML file from Doconce source
              padding:8px 35px 8px 14px; margin-bottom:18px;
              text-shadow:0 1px 0 rgba(255,255,255,0.5);
              border:1px solid #FFBF00;
-             -webkit-border-radius: 4px; -moz-border-radius: 4px;
-             border-radius: 4px
+             border-radius: 4px;
+             -webkit-border-radius: 4px;
+             -moz-border-radius: 4px;
              color: #555;
              background-color: #fbeed5;
              background-position: 10px 5px;
@@ -1542,6 +1544,7 @@ final,                   % or draft (marks overfull hboxes)
 \usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
+
 \usepackage{ptex2tex}
 
 % #ifndef MOVIE
@@ -2056,8 +2059,8 @@ Here is a nested list:
 \noindent
 
 \begin{quote}
-    Here are two lines that make up
-    a block quote.
+Here are two lines that make up
+a block quote.
 \end{quote}
 
 
@@ -3446,6 +3449,9 @@ The point here is to test 1) \code{verbatim} code in headings, and 2)
 ending a heading with verbatim code as this triggers a special
 case in {\LaTeX}.
 
+And finally, what about admons, quotes, and boxes? They are tested
+in a separate document: \code{admon.do.txt}.
+
 % ------------------- end of main content ---------------
 
 
@@ -3481,6 +3487,7 @@ final,                   % or draft (marks overfull hboxes)
 \usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
+
 \usepackage{ptex2tex}
 
 
@@ -3763,8 +3770,8 @@ Here is a nested list:
 \noindent
 
 \begin{quote}
-    Here are two lines that make up
-    a block quote.
+Here are two lines that make up
+a block quote.
 \end{quote}
 
 
@@ -5063,6 +5070,9 @@ The point here is to test 1) {\fontsize{10pt}{10pt}\Verb!verbatim!} code in head
 ending a heading with verbatim code as this triggers a special
 case in {\LaTeX}.
 
+And finally, what about admons, quotes, and boxes? They are tested
+in a separate document: {\fontsize{10pt}{10pt}\Verb!admon.do.txt!}.
+
 % ------------------- end of main content ---------------
 
 
@@ -5106,6 +5116,7 @@ final,                   % or draft (marks overfull hboxes)
 \usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
+
 \usepackage{anslistings,minted,fancyvrb} % packages needed for verbatim environments
 
 
@@ -5356,8 +5367,8 @@ Here is a nested list:
 \noindent
 
 \begin{quote}
-    Here are two lines that make up
-    a block quote.
+Here are two lines that make up
+a block quote.
 \end{quote}
 
 
@@ -6612,6 +6623,9 @@ The point here is to test 1) \Verb!verbatim! code in headings, and 2)
 ending a heading with verbatim code as this triggers a special
 case in {\LaTeX}.
 
+And finally, what about admons, quotes, and boxes? They are tested
+in a separate document: \Verb!admon.do.txt!.
+
 % ------------------- end of main content ---------------
 
 
@@ -6924,9 +6938,9 @@ Movie `mov:wave`_ shows a wave.
         
         <div>
         <video  loop controls width='700' height='400' preload='none'>
-        <source src='../doc/src/manual/mov/wave.mp4'  type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
-        <source src='../doc/src/manual/mov/wave.webm' type='video/webm; codecs="vp8, vorbis"'>
-        <source src='../doc/src/manual/mov/wave.ogg'  type='video/ogg; codecs="theora, vorbis"'>
+            <source src='../doc/src/manual/mov/wave.mp4'  type='video/mp4;  codecs="avc1.42E01E, mp4a.40.2"'>
+            <source src='../doc/src/manual/mov/wave.webm' type='video/webm; codecs="vp8, vorbis"'>
+            <source src='../doc/src/manual/mov/wave.ogg'  type='video/ogg;  codecs="theora, vorbis"'>
         </video>
         </div>
         <p><em>1D wave in Ogg format. .</em></p>
@@ -6949,9 +6963,9 @@ corrected:
         
         <div>
         <video  loop controls width='700' height='400' preload='none'>
-        <source src='../doc/src/manual/mov/wave.mp4'  type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
-        <source src='../doc/src/manual/mov/wave.webm' type='video/webm; codecs="vp8, vorbis"'>
-        <source src='../doc/src/manual/mov/wave.ogg'  type='video/ogg; codecs="theora, vorbis"'>
+            <source src='../doc/src/manual/mov/wave.mp4'  type='video/mp4;  codecs="avc1.42E01E, mp4a.40.2"'>
+            <source src='../doc/src/manual/mov/wave.webm' type='video/webm; codecs="vp8, vorbis"'>
+            <source src='../doc/src/manual/mov/wave.ogg'  type='video/ogg;  codecs="theora, vorbis"'>
         </video>
         </div>
         <p><em>Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie).</em></p>
@@ -8306,6 +8320,9 @@ The point here is to test 1) ``verbatim`` code in headings, and 2)
 ending a heading with verbatim code as this triggers a special
 case in LaTeX.
 
+And finally, what about admons, quotes, and boxes? They are tested
+in a separate document: ``admon.do.txt``.
+
 ************** File: testdoc.sphinx.rst *****************
 .. Automatically generated reST file from Doconce source
    (https://github.com/hplgit/doconce/)
@@ -8625,9 +8642,9 @@ Movie :ref:`mov:wave` shows a wave.
         
         <div>
         <video  loop controls width='700' height='400' preload='none'>
-        <source src='../doc/src/manual/mov/wave.mp4'  type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
-        <source src='../doc/src/manual/mov/wave.webm' type='video/webm; codecs="vp8, vorbis"'>
-        <source src='../doc/src/manual/mov/wave.ogg'  type='video/ogg; codecs="theora, vorbis"'>
+            <source src='../doc/src/manual/mov/wave.mp4'  type='video/mp4;  codecs="avc1.42E01E, mp4a.40.2"'>
+            <source src='../doc/src/manual/mov/wave.webm' type='video/webm; codecs="vp8, vorbis"'>
+            <source src='../doc/src/manual/mov/wave.ogg'  type='video/ogg;  codecs="theora, vorbis"'>
         </video>
         </div>
         <p><em>1D wave in Ogg format. .</em></p>
@@ -8650,9 +8667,9 @@ corrected:
         
         <div>
         <video  loop controls width='700' height='400' preload='none'>
-        <source src='../doc/src/manual/mov/wave.mp4'  type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
-        <source src='../doc/src/manual/mov/wave.webm' type='video/webm; codecs="vp8, vorbis"'>
-        <source src='../doc/src/manual/mov/wave.ogg'  type='video/ogg; codecs="theora, vorbis"'>
+            <source src='../doc/src/manual/mov/wave.mp4'  type='video/mp4;  codecs="avc1.42E01E, mp4a.40.2"'>
+            <source src='../doc/src/manual/mov/wave.webm' type='video/webm; codecs="vp8, vorbis"'>
+            <source src='../doc/src/manual/mov/wave.ogg'  type='video/ogg;  codecs="theora, vorbis"'>
         </video>
         </div>
         <p><em>Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie).</em></p>
@@ -10148,6 +10165,9 @@ The point here is to test 1) ``verbatim`` code in headings, and 2)
 ending a heading with verbatim code as this triggers a special
 case in LaTeX.
 
+And finally, what about admons, quotes, and boxes? They are tested
+in a separate document: ``admon.do.txt``.
+
 ************** File: testdoc.gwiki *****************
 #summary A Document for Testing Doconce
 
@@ -11296,6 +11316,9 @@ The point here is to test 1) `verbatim` code in headings, and 2)
 ending a heading with verbatim code as this triggers a special
 case in LaTeX.
 
+And finally, what about admons, quotes, and boxes? They are tested
+in a separate document: `admon.do.txt`.
+
 
 ************** File: testdoc.mwiki *****************
 #TITLE (actually governed by the filename): A Document for Testing Doconce
@@ -11354,6 +11377,11 @@ Here is a nested list:
 </ul>
 
 
+{{quote box
+| quote = Here are two lines that make up
+a block quote.
+| textstyle = font-size: 90%;
+}}
 
 
 
@@ -12542,6 +12570,9 @@ The point here is to test 1) <code>verbatim</code> code in headings, and 2)
 ending a heading with verbatim code as this triggers a special
 case in LaTeX.
 
+And finally, what about admons, quotes, and boxes? They are tested
+in a separate document: <code>admon.do.txt</code>.
+
 
 ************** File: testdoc.cwiki *****************
 #summary A Document for Testing Doconce
@@ -13650,6 +13681,9 @@ and in-depth explanations of the concepts and tools.]
 The point here is to test 1) {{{verbatim}}} code in headings, and 2)
 ending a heading with verbatim code as this triggers a special
 case in LaTeX.
+
+And finally, what about admons, quotes, and boxes? They are tested
+in a separate document: {{{admon.do.txt}}}.
 
 
 ************** File: testdoc.st *****************
@@ -14790,6 +14824,9 @@ Appendix: Testing headings ending with 'verbatim inline'
 The point here is to test 1) 'verbatim' code in headings, and 2)
 ending a heading with verbatim code as this triggers a special
 case in LaTeX.
+
+And finally, what about admons, quotes, and boxes? They are tested
+in a separate document: 'admon.do.txt'.
 
 ************** File: testdoc.epytext *****************
 TITLE: A Document for Testing Doconce
@@ -15968,6 +16005,9 @@ Appendix: Testing headings ending with C{verbatim inline}
 The point here is to test 1) C{verbatim} code in headings, and 2)
 ending a heading with verbatim code as this triggers a special
 case in LaTeX.
+
+And finally, what about admons, quotes, and boxes? They are tested
+in a separate document: C{admon.do.txt}.
 
 ************** File: testdoc.txt *****************
 A Document for Testing Doconce
@@ -17236,6 +17276,9 @@ The point here is to test 1) verbatim code in headings, and 2)
 ending a heading with verbatim code as this triggers a special
 case in LaTeX.
 
+And finally, what about admons, quotes, and boxes? They are tested
+in a separate document: admon.do.txt.
+
 ************** File: testdoc.md *****************
 % A Document for Testing Doconce
 % Hans Petter Langtangen at Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo;  Kaare Dump at Segfault Inc, Cyberspace;  A. Dummy Author;  I. S. Overworked at Inst1 and Inst2, Somewhere and Third Inst, Elsewhere and Fourth Inst;  J. Doe
@@ -17515,9 +17558,9 @@ Movie ref{mov:wave} shows a wave.
 
 <div>
 <video  loop controls width='700' height='400' preload='none'>
-<source src='../doc/src/manual/mov/wave.mp4'  type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
-<source src='../doc/src/manual/mov/wave.webm' type='video/webm; codecs="vp8, vorbis"'>
-<source src='../doc/src/manual/mov/wave.ogg'  type='video/ogg; codecs="theora, vorbis"'>
+    <source src='../doc/src/manual/mov/wave.mp4'  type='video/mp4;  codecs="avc1.42E01E, mp4a.40.2"'>
+    <source src='../doc/src/manual/mov/wave.webm' type='video/webm; codecs="vp8, vorbis"'>
+    <source src='../doc/src/manual/mov/wave.ogg'  type='video/ogg;  codecs="theora, vorbis"'>
 </video>
 </div>
 <p><em>1D wave in Ogg format. .</em></p>
@@ -17536,9 +17579,9 @@ corrected:
 
 <div>
 <video  loop controls width='700' height='400' preload='none'>
-<source src='../doc/src/manual/mov/wave.mp4'  type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
-<source src='../doc/src/manual/mov/wave.webm' type='video/webm; codecs="vp8, vorbis"'>
-<source src='../doc/src/manual/mov/wave.ogg'  type='video/ogg; codecs="theora, vorbis"'>
+    <source src='../doc/src/manual/mov/wave.mp4'  type='video/mp4;  codecs="avc1.42E01E, mp4a.40.2"'>
+    <source src='../doc/src/manual/mov/wave.webm' type='video/webm; codecs="vp8, vorbis"'>
+    <source src='../doc/src/manual/mov/wave.ogg'  type='video/ogg;  codecs="theora, vorbis"'>
 </video>
 </div>
 <p><em>Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie).</em></p>
@@ -18850,6 +18893,9 @@ The point here is to test 1) `verbatim` code in headings, and 2)
 ending a heading with verbatim code as this triggers a special
 case in LaTeX.
 
+And finally, what about admons, quotes, and boxes? They are tested
+in a separate document: `admon.do.txt`.
+
 
 ************** File: testdoc.ipynb *****************
 {
@@ -19287,9 +19333,9 @@ case in LaTeX.
       "\n",
       "<div>\n",
       "<video  loop controls width='700' height='400' preload='none'>\n",
-      "<source src='../doc/src/manual/mov/wave.mp4'  type='video/mp4; codecs=\"avc1.42E01E, mp4a.40.2\"'>\n",
-      "<source src='../doc/src/manual/mov/wave.webm' type='video/webm; codecs=\"vp8, vorbis\"'>\n",
-      "<source src='../doc/src/manual/mov/wave.ogg'  type='video/ogg; codecs=\"theora, vorbis\"'>\n",
+      "    <source src='../doc/src/manual/mov/wave.mp4'  type='video/mp4;  codecs=\"avc1.42E01E, mp4a.40.2\"'>\n",
+      "    <source src='../doc/src/manual/mov/wave.webm' type='video/webm; codecs=\"vp8, vorbis\"'>\n",
+      "    <source src='../doc/src/manual/mov/wave.ogg'  type='video/ogg;  codecs=\"theora, vorbis\"'>\n",
       "</video>\n",
       "</div>\n",
       "<p><em>1D wave in Ogg format. .</em></p>\n",
@@ -19308,9 +19354,9 @@ case in LaTeX.
       "\n",
       "<div>\n",
       "<video  loop controls width='700' height='400' preload='none'>\n",
-      "<source src='../doc/src/manual/mov/wave.mp4'  type='video/mp4; codecs=\"avc1.42E01E, mp4a.40.2\"'>\n",
-      "<source src='../doc/src/manual/mov/wave.webm' type='video/webm; codecs=\"vp8, vorbis\"'>\n",
-      "<source src='../doc/src/manual/mov/wave.ogg'  type='video/ogg; codecs=\"theora, vorbis\"'>\n",
+      "    <source src='../doc/src/manual/mov/wave.mp4'  type='video/mp4;  codecs=\"avc1.42E01E, mp4a.40.2\"'>\n",
+      "    <source src='../doc/src/manual/mov/wave.webm' type='video/webm; codecs=\"vp8, vorbis\"'>\n",
+      "    <source src='../doc/src/manual/mov/wave.ogg'  type='video/ogg;  codecs=\"theora, vorbis\"'>\n",
       "</video>\n",
       "</div>\n",
       "<p><em>Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie).</em></p>\n",
@@ -20762,7 +20808,10 @@ case in LaTeX.
       "\n",
       "The point here is to test 1) `verbatim` code in headings, and 2)\n",
       "ending a heading with verbatim code as this triggers a special\n",
-      "case in LaTeX."
+      "case in LaTeX.\n",
+      "\n",
+      "And finally, what about admons, quotes, and boxes? They are tested\n",
+      "in a separate document: `admon.do.txt`."
      ]
     }
    ],
@@ -21563,6 +21612,7 @@ x, y = circle(2.0, 0, 0)</code></pre>
 <p>When several people may edit files simultaneously, it can be difficult detect who did what when, roll back to previous versions, and to manually merge the edits when these are incompatible. Then one needs more sophisticated tools than Dropbox: project hosting services with true version control systems. <strong>hpl 3</strong>: * The following text aims at providing you with the minimum information to started with such systems. Numerous other tutorials contain more comprehensive material and in-depth explanations of the concepts and tools. *</p>
 <h2 id="appendix-testing-headings-ending-with-verbatim-inline">Appendix: Testing headings ending with <code>verbatim inline</code></h2>
 <p>The point here is to test 1) <code>verbatim</code> code in headings, and 2) ending a heading with verbatim code as this triggers a special case in LaTeX.</p>
+<p>And finally, what about admons, quotes, and boxes? They are tested in a separate document: <code>admon.do.txt</code>.</p>
 </body>
 </html>
 pandoc 1.11.1
@@ -21798,7 +21848,8 @@ show()</code></pre>
 <p>Movie ref{mov:wave} shows a wave.</p>
 <div>
 <video  loop controls width='700' height='400' preload='none'>
-<source src='../doc/src/manual/mov/wave.mp4'  type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'> <source src='../doc/src/manual/mov/wave.webm' type='video/webm; codecs="vp8, vorbis"'> <source src='../doc/src/manual/mov/wave.ogg'  type='video/ogg; codecs="theora, vorbis"'>
+    
+<source src='../doc/src/manual/mov/wave.mp4'  type='video/mp4;  codecs="avc1.42E01E, mp4a.40.2"'> <source src='../doc/src/manual/mov/wave.webm' type='video/webm; codecs="vp8, vorbis"'> <source src='../doc/src/manual/mov/wave.ogg'  type='video/ogg;  codecs="theora, vorbis"'>
 </video>
 </div>
 <p>
@@ -21816,7 +21867,8 @@ show()</code></pre>
 <p>Test wrong syntax and multi-line caption, to see if it is automatically corrected:</p>
 <div>
 <video  loop controls width='700' height='400' preload='none'>
-<source src='../doc/src/manual/mov/wave.mp4'  type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'> <source src='../doc/src/manual/mov/wave.webm' type='video/webm; codecs="vp8, vorbis"'> <source src='../doc/src/manual/mov/wave.ogg'  type='video/ogg; codecs="theora, vorbis"'>
+    
+<source src='../doc/src/manual/mov/wave.mp4'  type='video/mp4;  codecs="avc1.42E01E, mp4a.40.2"'> <source src='../doc/src/manual/mov/wave.webm' type='video/webm; codecs="vp8, vorbis"'> <source src='../doc/src/manual/mov/wave.ogg'  type='video/ogg;  codecs="theora, vorbis"'>
 </video>
 </div>
 <p>
@@ -22707,6 +22759,7 @@ x, y = circle(<span class="fl">2.0</span>, <span class="dv">0</span>, <span clas
 <p>When several people may edit files simultaneously, it can be difficult detect who did what when, roll back to previous versions, and to manually merge the edits when these are incompatible. Then one needs more sophisticated tools than Dropbox: project hosting services with true version control systems. [hpl 3: The following text aims at providing you with the minimum information to started with such systems. Numerous other tutorials contain more comprehensive material and in-depth explanations of the concepts and tools.]</p>
 <h3 id="appendix-testing-headings-ending-with-verbatim-inline">Appendix: Testing headings ending with <code>verbatim inline</code></h3>
 <p>The point here is to test 1) <code>verbatim</code> code in headings, and 2) ending a heading with verbatim code as this triggers a special case in LaTeX.</p>
+<p>And finally, what about admons, quotes, and boxes? They are tested in a separate document: <code>admon.do.txt</code>.</p>
 </body>
 </html>
 pandoc 1.11.1
@@ -23950,6 +24003,7 @@ open=right               % start new chapters on odd-numbered pages
 \usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
+
 \usepackage{ptex2tex}
 
 % #ifdef MINTED
@@ -24554,8 +24608,9 @@ Automatically generated HTML file from Doconce source
              padding:8px 35px 8px 14px; margin-bottom:18px;
              text-shadow:0 1px 0 rgba(255,255,255,0.5);
              border:1px solid #FFBF00;
-             -webkit-border-radius: 4px; -moz-border-radius: 4px;
-             border-radius: 4px
+             border-radius: 4px;
+             -webkit-border-radius: 4px;
+             -moz-border-radius: 4px;
              color: #555;
              background-color: #fbeed5;
              background-position: 10px 5px;
@@ -24864,8 +24919,9 @@ Automatically generated HTML file from Doconce source
              padding:8px 35px 8px 14px; margin-bottom:18px;
              text-shadow:0 1px 0 rgba(255,255,255,0.5);
              border:1px solid #FFBF00;
-             -webkit-border-radius: 4px; -moz-border-radius: 4px;
-             border-radius: 4px
+             border-radius: 4px;
+             -webkit-border-radius: 4px;
+             -moz-border-radius: 4px;
              color: #555;
              background-color: #fbeed5;
              background-position: 10px 5px;
@@ -25155,8 +25211,9 @@ Automatically generated HTML file from Doconce source
              padding:8px 35px 8px 14px; margin-bottom:18px;
              text-shadow:0 1px 0 rgba(255,255,255,0.5);
              border:1px solid #FFBF00;
-             -webkit-border-radius: 4px; -moz-border-radius: 4px;
-             border-radius: 4px
+             border-radius: 4px;
+             -webkit-border-radius: 4px;
+             -moz-border-radius: 4px;
              color: #555;
              background-color: #fbeed5;
              background-position: 10px 5px;
@@ -25611,9 +25668,9 @@ Movie <a href="#mov:wave">mov:wave</a> shows a wave.
 
 <div>
 <video  loop controls width='700' height='400' preload='none'>
-<source src='../doc/src/manual/mov/wave.mp4'  type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
-<source src='../doc/src/manual/mov/wave.webm' type='video/webm; codecs="vp8, vorbis"'>
-<source src='../doc/src/manual/mov/wave.ogg'  type='video/ogg; codecs="theora, vorbis"'>
+    <source src='../doc/src/manual/mov/wave.mp4'  type='video/mp4;  codecs="avc1.42E01E, mp4a.40.2"'>
+    <source src='../doc/src/manual/mov/wave.webm' type='video/webm; codecs="vp8, vorbis"'>
+    <source src='../doc/src/manual/mov/wave.ogg'  type='video/ogg;  codecs="theora, vorbis"'>
 </video>
 </div>
 <p><em>1D wave in Ogg format. <a name="mov:wave"></a>.</em></p>
@@ -25636,9 +25693,9 @@ corrected:
 
 <div>
 <video  loop controls width='700' height='400' preload='none'>
-<source src='../doc/src/manual/mov/wave.mp4'  type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
-<source src='../doc/src/manual/mov/wave.webm' type='video/webm; codecs="vp8, vorbis"'>
-<source src='../doc/src/manual/mov/wave.ogg'  type='video/ogg; codecs="theora, vorbis"'>
+    <source src='../doc/src/manual/mov/wave.mp4'  type='video/mp4;  codecs="avc1.42E01E, mp4a.40.2"'>
+    <source src='../doc/src/manual/mov/wave.webm' type='video/webm; codecs="vp8, vorbis"'>
+    <source src='../doc/src/manual/mov/wave.ogg'  type='video/ogg;  codecs="theora, vorbis"'>
 </video>
 </div>
 <p><em>Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). <a name="mymov"></a></em></p>
@@ -27053,6 +27110,10 @@ ending a heading with verbatim code as this triggers a special
 case in LaTeX.
 
 <p>
+And finally, what about admons, quotes, and boxes? They are tested
+in a separate document: <code>admon.do.txt</code>.
+
+<p>
 <!-- begin bottom navigation -->
 <a href="._testdoc001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
 <!-- end bottom navigation -->
@@ -27107,8 +27168,9 @@ Automatically generated HTML file from Doconce source
              padding:8px 35px 8px 14px; margin-bottom:18px;
              text-shadow:0 1px 0 rgba(255,255,255,0.5);
              border:1px solid #bababa;
-             -webkit-border-radius: 4px; -moz-border-radius: 4px;
-             border-radius: 4px
+             border-radius: 4px;
+             -webkit-border-radius: 4px;
+             -moz-border-radius: 4px;
              color: #555;
              background-color: #f8f8f8;
              background-position: 10px 5px;
@@ -27499,9 +27561,9 @@ Movie <a href="#mov:wave">mov:wave</a> shows a wave.
 
 <div>
 <video  loop controls width='700' height='400' preload='none'>
-<source src='https://raw.github.com/hplgit/doconce/master/test/../doc/src/manual/mov/wave.mp4'  type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
-<source src='https://raw.github.com/hplgit/doconce/master/test/../doc/src/manual/mov/wave.webm' type='video/webm; codecs="vp8, vorbis"'>
-<source src='https://raw.github.com/hplgit/doconce/master/test/../doc/src/manual/mov/wave.ogg'  type='video/ogg; codecs="theora, vorbis"'>
+    <source src='https://raw.github.com/hplgit/doconce/master/test/../doc/src/manual/mov/wave.mp4'  type='video/mp4;  codecs="avc1.42E01E, mp4a.40.2"'>
+    <source src='https://raw.github.com/hplgit/doconce/master/test/../doc/src/manual/mov/wave.webm' type='video/webm; codecs="vp8, vorbis"'>
+    <source src='https://raw.github.com/hplgit/doconce/master/test/../doc/src/manual/mov/wave.ogg'  type='video/ogg;  codecs="theora, vorbis"'>
 </video>
 </div>
 <p><em>1D wave in Ogg format. <a name="mov:wave"></a>.</em></p>
@@ -27524,9 +27586,9 @@ corrected:
 
 <div>
 <video  loop controls width='700' height='400' preload='none'>
-<source src='https://raw.github.com/hplgit/doconce/master/test/../doc/src/manual/mov/wave.mp4'  type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
-<source src='https://raw.github.com/hplgit/doconce/master/test/../doc/src/manual/mov/wave.webm' type='video/webm; codecs="vp8, vorbis"'>
-<source src='https://raw.github.com/hplgit/doconce/master/test/../doc/src/manual/mov/wave.ogg'  type='video/ogg; codecs="theora, vorbis"'>
+    <source src='https://raw.github.com/hplgit/doconce/master/test/../doc/src/manual/mov/wave.mp4'  type='video/mp4;  codecs="avc1.42E01E, mp4a.40.2"'>
+    <source src='https://raw.github.com/hplgit/doconce/master/test/../doc/src/manual/mov/wave.webm' type='video/webm; codecs="vp8, vorbis"'>
+    <source src='https://raw.github.com/hplgit/doconce/master/test/../doc/src/manual/mov/wave.ogg'  type='video/ogg;  codecs="theora, vorbis"'>
 </video>
 </div>
 <p><em>Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). <a name="mymov"></a></em></p>
@@ -28836,6 +28898,10 @@ The point here is to test 1) <code>verbatim</code> code in headings, and 2)
 ending a heading with verbatim code as this triggers a special
 case in LaTeX.
 
+<p>
+And finally, what about admons, quotes, and boxes? They are tested
+in a separate document: <code>admon.do.txt</code>.
+
 
 
 
@@ -28888,8 +28954,9 @@ Automatically generated HTML file from Doconce source
              padding:8px 35px 8px 14px; margin-bottom:18px;
              text-shadow:0 1px 0 rgba(255,255,255,0.5);
              border:1px solid #bababa;
-             -webkit-border-radius: 4px; -moz-border-radius: 4px;
-             border-radius: 4px
+             border-radius: 4px;
+             -webkit-border-radius: 4px;
+             -moz-border-radius: 4px;
              color: #555;
              background-color: #f8f8f8;
              background-position: 10px 5px;
@@ -29411,9 +29478,9 @@ Movie <a href="#mov:wave">mov:wave</a> shows a wave.
 
 <div>
 <video  loop controls width='700' height='400' preload='none'>
-<source src='../doc/src/manual/mov/wave.mp4'  type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
-<source src='../doc/src/manual/mov/wave.webm' type='video/webm; codecs="vp8, vorbis"'>
-<source src='../doc/src/manual/mov/wave.ogg'  type='video/ogg; codecs="theora, vorbis"'>
+    <source src='../doc/src/manual/mov/wave.mp4'  type='video/mp4;  codecs="avc1.42E01E, mp4a.40.2"'>
+    <source src='../doc/src/manual/mov/wave.webm' type='video/webm; codecs="vp8, vorbis"'>
+    <source src='../doc/src/manual/mov/wave.ogg'  type='video/ogg;  codecs="theora, vorbis"'>
 </video>
 </div>
 <p><em>1D wave in Ogg format. <a name="mov:wave"></a>.</em></p>
@@ -29436,9 +29503,9 @@ corrected:
 
 <div>
 <video  loop controls width='700' height='400' preload='none'>
-<source src='../doc/src/manual/mov/wave.mp4'  type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
-<source src='../doc/src/manual/mov/wave.webm' type='video/webm; codecs="vp8, vorbis"'>
-<source src='../doc/src/manual/mov/wave.ogg'  type='video/ogg; codecs="theora, vorbis"'>
+    <source src='../doc/src/manual/mov/wave.mp4'  type='video/mp4;  codecs="avc1.42E01E, mp4a.40.2"'>
+    <source src='../doc/src/manual/mov/wave.webm' type='video/webm; codecs="vp8, vorbis"'>
+    <source src='../doc/src/manual/mov/wave.ogg'  type='video/ogg;  codecs="theora, vorbis"'>
 </video>
 </div>
 <p><em>Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). <a name="mymov"></a></em></p>
@@ -30830,6 +30897,10 @@ The point here is to test 1) <code>verbatim</code> code in headings, and 2)
 ending a heading with verbatim code as this triggers a special
 case in LaTeX.
 
+<p>
+And finally, what about admons, quotes, and boxes? They are tested
+in a separate document: <code>admon.do.txt</code>.
+
 <!-- ------------------- end of main content --------------- -->
 
 
@@ -30937,6 +31008,7 @@ final,                   % or draft (marks overfull hboxes)
 \usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
+
 \usepackage{ptex2tex}
 
 % #ifndef MOVIE
@@ -31453,8 +31525,8 @@ Here is a nested list:
 \noindent
 
 \begin{quote}
-    Here are two lines that make up
-    a block quote.
+Here are two lines that make up
+a block quote.
 \end{quote}
 
 
@@ -32779,6 +32851,9 @@ The point here is to test 1) \code{verbatim} code in headings, and 2)
 ending a heading with verbatim code as this triggers a special
 case in {\LaTeX}.
 
+And finally, what about admons, quotes, and boxes? They are tested
+in a separate document: \code{admon.do.txt}.
+
 % ------------------- end of main content ---------------
 
 
@@ -33495,10 +33570,10 @@ cp admon.html admon_paragraph.html
 system doconce format html admon --html_admon=colors
 cp admon.html admon_colors.html
 
-system doconce format html admon --html_admon=gray --html_style=blueish2
+system doconce format html admon --html_admon=gray --html_style=blueish2 --html_admon_shadow --html_box_shadow
 cp admon.html admon_gray.html
 
-system doconce format html admon --html_admon=yellow
+system doconce format html admon --html_admon=yellow --html_admon_shadow --html_box_shadow
 cp admon.html admon_yellow.html
 
 system doconce format html admon --html_admon=apricot --html_style=solarized
@@ -33509,7 +33584,8 @@ cp admon.html admon_vagrant.html
 
 system doconce sphinx_dir dirname=tmp_admon admon
 system python automake_sphinx.py
-cp tmp_admon/_build/html/admon.html admon_sphinx.html
+rm -rf admon_sphinx
+cp -r tmp_admon/_build/html admon_sphinx
 
 system doconce format mwiki admon
 cp admon.mwiki admon_mwiki.mwiki
@@ -34530,6 +34606,7 @@ final,                   % or draft (marks overfull hboxes)
 \usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
+
 \usepackage{ptex2tex}
 
 % #ifdef MINTED
@@ -36756,9 +36833,9 @@ Movie <a href="#mov:wave">mov:wave</a> shows a wave.
 
 <div>
 <video  loop controls width='700' height='400' preload='none'>
-<source src='../doc/src/manual/mov/wave.mp4'  type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
-<source src='../doc/src/manual/mov/wave.webm' type='video/webm; codecs="vp8, vorbis"'>
-<source src='../doc/src/manual/mov/wave.ogg'  type='video/ogg; codecs="theora, vorbis"'>
+    <source src='../doc/src/manual/mov/wave.mp4'  type='video/mp4;  codecs="avc1.42E01E, mp4a.40.2"'>
+    <source src='../doc/src/manual/mov/wave.webm' type='video/webm; codecs="vp8, vorbis"'>
+    <source src='../doc/src/manual/mov/wave.ogg'  type='video/ogg;  codecs="theora, vorbis"'>
 </video>
 </div>
 <p><em>1D wave in Ogg format. <a name="mov:wave"></a>.</em></p>
@@ -36781,9 +36858,9 @@ corrected:
 
 <div>
 <video  loop controls width='700' height='400' preload='none'>
-<source src='../doc/src/manual/mov/wave.mp4'  type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
-<source src='../doc/src/manual/mov/wave.webm' type='video/webm; codecs="vp8, vorbis"'>
-<source src='../doc/src/manual/mov/wave.ogg'  type='video/ogg; codecs="theora, vorbis"'>
+    <source src='../doc/src/manual/mov/wave.mp4'  type='video/mp4;  codecs="avc1.42E01E, mp4a.40.2"'>
+    <source src='../doc/src/manual/mov/wave.webm' type='video/webm; codecs="vp8, vorbis"'>
+    <source src='../doc/src/manual/mov/wave.ogg'  type='video/ogg;  codecs="theora, vorbis"'>
 </video>
 </div>
 <p><em>Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). <a name="mymov"></a></em></p>
@@ -38210,6 +38287,10 @@ ending a heading with verbatim code as this triggers a special
 case in LaTeX.
 
 <p>
+And finally, what about admons, quotes, and boxes? They are tested
+in a separate document: <code>admon.do.txt</code>.
+
+<p>
 <!-- ------------------- end of main content --------------- -->
 
 
@@ -38571,9 +38652,9 @@ Movie :ref:`mov:wave` shows a wave.
         
         <div>
         <video  loop controls width='700' height='400' preload='none'>
-        <source src='../doc/src/manual/mov/wave.mp4'  type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
-        <source src='../doc/src/manual/mov/wave.webm' type='video/webm; codecs="vp8, vorbis"'>
-        <source src='../doc/src/manual/mov/wave.ogg'  type='video/ogg; codecs="theora, vorbis"'>
+            <source src='../doc/src/manual/mov/wave.mp4'  type='video/mp4;  codecs="avc1.42E01E, mp4a.40.2"'>
+            <source src='../doc/src/manual/mov/wave.webm' type='video/webm; codecs="vp8, vorbis"'>
+            <source src='../doc/src/manual/mov/wave.ogg'  type='video/ogg;  codecs="theora, vorbis"'>
         </video>
         </div>
         <p><em>1D wave in Ogg format. .</em></p>
@@ -38596,9 +38677,9 @@ corrected:
         
         <div>
         <video  loop controls width='700' height='400' preload='none'>
-        <source src='../doc/src/manual/mov/wave.mp4'  type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
-        <source src='../doc/src/manual/mov/wave.webm' type='video/webm; codecs="vp8, vorbis"'>
-        <source src='../doc/src/manual/mov/wave.ogg'  type='video/ogg; codecs="theora, vorbis"'>
+            <source src='../doc/src/manual/mov/wave.mp4'  type='video/mp4;  codecs="avc1.42E01E, mp4a.40.2"'>
+            <source src='../doc/src/manual/mov/wave.webm' type='video/webm; codecs="vp8, vorbis"'>
+            <source src='../doc/src/manual/mov/wave.ogg'  type='video/ogg;  codecs="theora, vorbis"'>
         </video>
         </div>
         <p><em>Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie).</em></p>
@@ -40108,6 +40189,9 @@ The point here is to test 1) ``verbatim`` code in headings, and 2)
 ending a heading with verbatim code as this triggers a special
 case in LaTeX.
 
+And finally, what about admons, quotes, and boxes? They are tested
+in a separate document: ``admon.do.txt``.
+
 ************** File: admon.p.tex *****************
 %%
 %% Automatically generated file from Doconce source
@@ -40207,6 +40291,10 @@ final,                   % or draft (marks overfull hboxes)
 \usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
+
+\usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
+\setlength{\fboxsep}{8pt}
+
 \usepackage{ptex2tex}
 
 % #ifdef MINTED
@@ -40618,6 +40706,86 @@ x=1.0 y=0.9 z=0.4
 x=1.1 y=0.3 z=0.1
 \eccq
 
+\subsection{Quotes and boxes}
+
+Here is a plain quote environment.
+
+
+\begin{quote}
+Sayre's law states that
+"in any dispute the intensity of feeling is inversely
+proportional to the value of the issues at stake."
+By way of corollary, it adds:
+"That is why academic politics are so bitter."
+
+\emph{Source}: \href{{http://en.wikipedia.org/wiki/Sayre's_law}}{wikipedia}
+\end{quote}
+
+
+Does quotes with title also work? No...cannot work in {\LaTeX} and HTML
+and then it does not make sense to support it.
+
+
+A plain \emph{box} is sometimes useful. Let's show it here for comparison
+with admons (especially the block admon has much in common with a box).
+The box is more aimed at framing a law or an equation.
+
+First a simple block with text, an equation, and a list:
+
+
+\begin{center}
+\begin{Sbox}
+\begin{minipage}{0.85\textwidth}
+A generic equation
+
+\[ f(x) = 0 \]
+must be solved by a numerical method, such as
+
+\begin{itemize}
+ \item Newton's method
+
+ \item The Bisection method
+
+ \item Fixed-point (Picard) iteration by rewriting $f(x)=x - g(x)$
+
+ \item The Secant method
+\end{itemize}
+
+\noindent
+\end{minipage}
+\end{Sbox}
+\fbox{\TheSbox}
+\end{center}
+Now test a box with equation only (note that this line continues the
+box, it is not a new paragraph):
+
+
+\begin{center}
+\begin{Sbox}
+\begin{minipage}{0.85\textwidth}
+\begin{equation} f(x) = \sin(x)e^{1-x} \end{equation}
+\end{minipage}
+\end{Sbox}
+\fbox{\TheSbox}
+\end{center}
+
+Let's begin a new paragraph and show a box with code only:
+
+
+\begin{center}
+\begin{Sbox}
+\begin{minipage}{0.85\textwidth}
+\bpycod
+def some_code(x):
+    return sin(x)*exp(1-x)
+\epycod
+\end{minipage}
+\end{Sbox}
+\fbox{\TheSbox}
+\end{center}
+
+
+
 \subsection{Admonitions}
 
 Let us start with a plain warning environment.
@@ -40655,7 +40823,7 @@ Test warning with title:
 
 
 
-Test warning with title with math:
+Test warning with large title with math:
 
 
 \begin{warning_colors2admon}[{\large Watch out for $\nabla\cdot\bm{u}=0$ equations }]
@@ -40846,9 +41014,10 @@ And then we add a figure too.
 
 
 \begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/fig/wave1D.pdf}}
+  \centerline{\includegraphics[width=0.7\linewidth]{../doc/src/manual/fig/wave1D.pdf}}
 \end{center}
 \end{notice_colors2admon}
+
 
 
 
@@ -40866,6 +41035,10 @@ Titles should be optional.
 \end{summary_colors2admon}
 
 
+
+\paragraph{Remark.}
+The \code{remarks} and \code{hint} environments are not allowed outside
+exercises (and problems and projects too).
 
 % ------------------- end of main content ---------------
 
@@ -40901,6 +41074,10 @@ final,                   % or draft (marks overfull hboxes)
 \usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
+
+\usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
+\setlength{\fboxsep}{8pt}
+
 \usepackage{fancyvrb} % packages needed for verbatim environments
 
 \usepackage{minted}
@@ -41114,6 +41291,86 @@ x=1.0 y=0.9 z=0.4
 x=1.1 y=0.3 z=0.1
 \end{Verbatim}
 
+\subsection{Quotes and boxes}
+
+Here is a plain quote environment.
+
+
+\begin{quote}
+Sayre's law states that
+"in any dispute the intensity of feeling is inversely
+proportional to the value of the issues at stake."
+By way of corollary, it adds:
+"That is why academic politics are so bitter."
+
+\emph{Source}: \href{{http://en.wikipedia.org/wiki/Sayre's_law}}{wikipedia}
+\end{quote}
+
+
+Does quotes with title also work? No...cannot work in {\LaTeX} and HTML
+and then it does not make sense to support it.
+
+
+A plain \emph{box} is sometimes useful. Let's show it here for comparison
+with admons (especially the block admon has much in common with a box).
+The box is more aimed at framing a law or an equation.
+
+First a simple block with text, an equation, and a list:
+
+
+\begin{center}
+\begin{Sbox}
+\begin{minipage}{0.85\textwidth}
+A generic equation
+
+\[ f(x) = 0 \]
+must be solved by a numerical method, such as
+
+\begin{itemize}
+ \item Newton's method
+
+ \item The Bisection method
+
+ \item Fixed-point (Picard) iteration by rewriting $f(x)=x - g(x)$
+
+ \item The Secant method
+\end{itemize}
+
+\noindent
+\end{minipage}
+\end{Sbox}
+\fbox{\TheSbox}
+\end{center}
+Now test a box with equation only (note that this line continues the
+box, it is not a new paragraph):
+
+
+\begin{center}
+\begin{Sbox}
+\begin{minipage}{0.85\textwidth}
+\begin{equation} f(x) = \sin(x)e^{1-x} \end{equation}
+\end{minipage}
+\end{Sbox}
+\fbox{\TheSbox}
+\end{center}
+
+Let's begin a new paragraph and show a box with code only:
+
+
+\begin{center}
+\begin{Sbox}
+\begin{minipage}{0.85\textwidth}
+\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+def some_code(x):
+    return sin(x)*exp(1-x)
+\end{minted}
+\end{minipage}
+\end{Sbox}
+\fbox{\TheSbox}
+\end{center}
+
+
+
 \subsection{Admonitions}
 
 Let us start with a plain warning environment.
@@ -41151,7 +41408,7 @@ Test warning with title:
 
 
 
-Test warning with title with math:
+Test warning with large title with math:
 
 
 \begin{warning_colors1admon}[{\large Watch out for $\nabla\cdot\bm{u}=0$ equations }]
@@ -41342,9 +41599,10 @@ And then we add a figure too.
 
 
 \begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/fig/wave1D.pdf}}
+  \centerline{\includegraphics[width=0.7\linewidth]{../doc/src/manual/fig/wave1D.pdf}}
 \end{center}
 \end{notice_colors1admon}
+
 
 
 
@@ -41362,6 +41620,10 @@ Titles should be optional.
 \end{summary_colors1admon}
 
 
+
+\paragraph{Remark.}
+The \Verb!remarks! and \Verb!hint! environments are not allowed outside
+exercises (and problems and projects too).
 
 % ------------------- end of main content ---------------
 
@@ -41395,6 +41657,10 @@ final,                   % or draft (marks overfull hboxes)
 \usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
+
+\usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
+\setlength{\fboxsep}{8pt}
+
 \usepackage{fancyvrb} % packages needed for verbatim environments
 
 \usepackage{minted}
@@ -41615,6 +41881,86 @@ x=1.0 y=0.9 z=0.4
 x=1.1 y=0.3 z=0.1
 \end{Verbatim}
 
+\subsection{Quotes and boxes}
+
+Here is a plain quote environment.
+
+
+\begin{quote}
+Sayre's law states that
+"in any dispute the intensity of feeling is inversely
+proportional to the value of the issues at stake."
+By way of corollary, it adds:
+"That is why academic politics are so bitter."
+
+\emph{Source}: \href{{http://en.wikipedia.org/wiki/Sayre's_law}}{wikipedia}
+\end{quote}
+
+
+Does quotes with title also work? No...cannot work in {\LaTeX} and HTML
+and then it does not make sense to support it.
+
+
+A plain \emph{box} is sometimes useful. Let's show it here for comparison
+with admons (especially the block admon has much in common with a box).
+The box is more aimed at framing a law or an equation.
+
+First a simple block with text, an equation, and a list:
+
+
+\begin{center}
+\begin{Sbox}
+\begin{minipage}{0.85\textwidth}
+A generic equation
+
+\[ f(x) = 0 \]
+must be solved by a numerical method, such as
+
+\begin{itemize}
+ \item Newton's method
+
+ \item The Bisection method
+
+ \item Fixed-point (Picard) iteration by rewriting $f(x)=x - g(x)$
+
+ \item The Secant method
+\end{itemize}
+
+\noindent
+\end{minipage}
+\end{Sbox}
+\fbox{\TheSbox}
+\end{center}
+Now test a box with equation only (note that this line continues the
+box, it is not a new paragraph):
+
+
+\begin{center}
+\begin{Sbox}
+\begin{minipage}{0.85\textwidth}
+\begin{equation} f(x) = \sin(x)e^{1-x} \end{equation}
+\end{minipage}
+\end{Sbox}
+\fbox{\TheSbox}
+\end{center}
+
+Let's begin a new paragraph and show a box with code only:
+
+
+\begin{center}
+\begin{Sbox}
+\begin{minipage}{0.85\textwidth}
+\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+def some_code(x):
+    return sin(x)*exp(1-x)
+\end{minted}
+\end{minipage}
+\end{Sbox}
+\fbox{\TheSbox}
+\end{center}
+
+
+
 \subsection{Admonitions}
 
 Let us start with a plain warning environment.
@@ -41652,7 +41998,7 @@ Test warning with title:
 
 
 
-Test warning with title with math:
+Test warning with large title with math:
 
 
 \begin{warning_colors2admon}[{\large Watch out for $\nabla\cdot\bm{u}=0$ equations }]
@@ -41843,9 +42189,10 @@ And then we add a figure too.
 
 
 \begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/fig/wave1D.pdf}}
+  \centerline{\includegraphics[width=0.7\linewidth]{../doc/src/manual/fig/wave1D.pdf}}
 \end{center}
 \end{notice_colors2admon}
+
 
 
 
@@ -41863,6 +42210,10 @@ Titles should be optional.
 \end{summary_colors2admon}
 
 
+
+\paragraph{Remark.}
+The \Verb!remarks! and \Verb!hint! environments are not allowed outside
+exercises (and problems and projects too).
 
 % ------------------- end of main content ---------------
 
@@ -41896,6 +42247,10 @@ final,                   % or draft (marks overfull hboxes)
 \usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
+
+\usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
+\setlength{\fboxsep}{8pt}
+
 \usepackage{fancyvrb} % packages needed for verbatim environments
 
 \usepackage{minted}
@@ -42038,6 +42393,86 @@ x=1.0 y=0.9 z=0.4
 x=1.1 y=0.3 z=0.1
 \end{Verbatim}
 
+\subsection{Quotes and boxes}
+
+Here is a plain quote environment.
+
+
+\begin{quote}
+Sayre's law states that
+"in any dispute the intensity of feeling is inversely
+proportional to the value of the issues at stake."
+By way of corollary, it adds:
+"That is why academic politics are so bitter."
+
+\emph{Source}: \href{{http://en.wikipedia.org/wiki/Sayre's_law}}{wikipedia}
+\end{quote}
+
+
+Does quotes with title also work? No...cannot work in {\LaTeX} and HTML
+and then it does not make sense to support it.
+
+
+A plain \emph{box} is sometimes useful. Let's show it here for comparison
+with admons (especially the block admon has much in common with a box).
+The box is more aimed at framing a law or an equation.
+
+First a simple block with text, an equation, and a list:
+
+
+\begin{center}
+\begin{Sbox}
+\begin{minipage}{0.85\textwidth}
+A generic equation
+
+\[ f(x) = 0 \]
+must be solved by a numerical method, such as
+
+\begin{itemize}
+ \item Newton's method
+
+ \item The Bisection method
+
+ \item Fixed-point (Picard) iteration by rewriting $f(x)=x - g(x)$
+
+ \item The Secant method
+\end{itemize}
+
+\noindent
+\end{minipage}
+\end{Sbox}
+\fbox{\TheSbox}
+\end{center}
+Now test a box with equation only (note that this line continues the
+box, it is not a new paragraph):
+
+
+\begin{center}
+\begin{Sbox}
+\begin{minipage}{0.85\textwidth}
+\begin{equation} f(x) = \sin(x)e^{1-x} \end{equation}
+\end{minipage}
+\end{Sbox}
+\fbox{\TheSbox}
+\end{center}
+
+Let's begin a new paragraph and show a box with code only:
+
+
+\begin{center}
+\begin{Sbox}
+\begin{minipage}{0.85\textwidth}
+\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+def some_code(x):
+    return sin(x)*exp(1-x)
+\end{minted}
+\end{minipage}
+\end{Sbox}
+\fbox{\TheSbox}
+\end{center}
+
+
+
 \subsection{Admonitions}
 
 Let us start with a plain warning environment.
@@ -42075,7 +42510,7 @@ Test warning with title:
 
 
 
-Test warning with title with math:
+Test warning with large title with math:
 
 
 \begin{graybox1admon}[{\large Watch out for $\nabla\cdot\bm{u}=0$ equations }.]
@@ -42266,9 +42701,10 @@ And then we add a figure too.
 
 
 \begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/fig/wave1D.pdf}}
+  \centerline{\includegraphics[width=0.7\linewidth]{../doc/src/manual/fig/wave1D.pdf}}
 \end{center}
 \end{graybox1admon}
+
 
 
 
@@ -42286,6 +42722,10 @@ Titles should be optional.
 \end{graybox1admon}
 
 
+
+\paragraph{Remark.}
+The \Verb!remarks! and \Verb!hint! environments are not allowed outside
+exercises (and problems and projects too).
 
 % ------------------- end of main content ---------------
 
@@ -42319,6 +42759,10 @@ final,                   % or draft (marks overfull hboxes)
 \usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
+
+\usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
+\setlength{\fboxsep}{8pt}
+
 \usepackage{fancyvrb} % packages needed for verbatim environments
 
 \usepackage{minted}
@@ -42472,6 +42916,86 @@ x=1.0 y=0.9 z=0.4
 x=1.1 y=0.3 z=0.1
 \end{Verbatim}
 
+\subsection{Quotes and boxes}
+
+Here is a plain quote environment.
+
+
+\begin{quote}
+Sayre's law states that
+"in any dispute the intensity of feeling is inversely
+proportional to the value of the issues at stake."
+By way of corollary, it adds:
+"That is why academic politics are so bitter."
+
+\emph{Source}: \href{{http://en.wikipedia.org/wiki/Sayre's_law}}{wikipedia}
+\end{quote}
+
+
+Does quotes with title also work? No...cannot work in {\LaTeX} and HTML
+and then it does not make sense to support it.
+
+
+A plain \emph{box} is sometimes useful. Let's show it here for comparison
+with admons (especially the block admon has much in common with a box).
+The box is more aimed at framing a law or an equation.
+
+First a simple block with text, an equation, and a list:
+
+
+\begin{center}
+\begin{Sbox}
+\begin{minipage}{0.85\textwidth}
+A generic equation
+
+\[ f(x) = 0 \]
+must be solved by a numerical method, such as
+
+\begin{itemize}
+ \item Newton's method
+
+ \item The Bisection method
+
+ \item Fixed-point (Picard) iteration by rewriting $f(x)=x - g(x)$
+
+ \item The Secant method
+\end{itemize}
+
+\noindent
+\end{minipage}
+\end{Sbox}
+\fbox{\TheSbox}
+\end{center}
+Now test a box with equation only (note that this line continues the
+box, it is not a new paragraph):
+
+
+\begin{center}
+\begin{Sbox}
+\begin{minipage}{0.85\textwidth}
+\begin{equation} f(x) = \sin(x)e^{1-x} \end{equation}
+\end{minipage}
+\end{Sbox}
+\fbox{\TheSbox}
+\end{center}
+
+Let's begin a new paragraph and show a box with code only:
+
+
+\begin{center}
+\begin{Sbox}
+\begin{minipage}{0.85\textwidth}
+\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+def some_code(x):
+    return sin(x)*exp(1-x)
+\end{minted}
+\end{minipage}
+\end{Sbox}
+\fbox{\TheSbox}
+\end{center}
+
+
+
 \subsection{Admonitions}
 
 Let us start with a plain warning environment.
@@ -42513,7 +43037,7 @@ Test warning with title:
 
 
 
-Test warning with title with math:
+Test warning with large title with math:
 
 
 
@@ -42723,9 +43247,10 @@ And then we add a figure too.
 
 
 \begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/fig/wave1D.pdf}}
+  \centerline{\includegraphics[width=0.7\linewidth]{../doc/src/manual/fig/wave1D.pdf}}
 \end{center}
 \end{graybox2admon}
+
 
 
 
@@ -42743,6 +43268,10 @@ a different typesetting, and they may have a symbol.
 Titles should be optional.
 }
 
+
+\paragraph{Remark.}
+The \Verb!remarks! and \Verb!hint! environments are not allowed outside
+exercises (and problems and projects too).
 
 % ------------------- end of main content ---------------
 
@@ -42776,6 +43305,10 @@ final,                   % or draft (marks overfull hboxes)
 \usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
+
+\usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
+\setlength{\fboxsep}{8pt}
+
 \usepackage{fancyvrb} % packages needed for verbatim environments
 
 \usepackage{minted}
@@ -42996,6 +43529,86 @@ x=1.0 y=0.9 z=0.4
 x=1.1 y=0.3 z=0.1
 \end{Verbatim}
 
+\subsection{Quotes and boxes}
+
+Here is a plain quote environment.
+
+
+\begin{quote}
+Sayre's law states that
+"in any dispute the intensity of feeling is inversely
+proportional to the value of the issues at stake."
+By way of corollary, it adds:
+"That is why academic politics are so bitter."
+
+\emph{Source}: \href{{http://en.wikipedia.org/wiki/Sayre's_law}}{wikipedia}
+\end{quote}
+
+
+Does quotes with title also work? No...cannot work in {\LaTeX} and HTML
+and then it does not make sense to support it.
+
+
+A plain \emph{box} is sometimes useful. Let's show it here for comparison
+with admons (especially the block admon has much in common with a box).
+The box is more aimed at framing a law or an equation.
+
+First a simple block with text, an equation, and a list:
+
+
+\begin{center}
+\begin{Sbox}
+\begin{minipage}{0.85\textwidth}
+A generic equation
+
+\[ f(x) = 0 \]
+must be solved by a numerical method, such as
+
+\begin{itemize}
+ \item Newton's method
+
+ \item The Bisection method
+
+ \item Fixed-point (Picard) iteration by rewriting $f(x)=x - g(x)$
+
+ \item The Secant method
+\end{itemize}
+
+\noindent
+\end{minipage}
+\end{Sbox}
+\fbox{\TheSbox}
+\end{center}
+Now test a box with equation only (note that this line continues the
+box, it is not a new paragraph):
+
+
+\begin{center}
+\begin{Sbox}
+\begin{minipage}{0.85\textwidth}
+\begin{equation} f(x) = \sin(x)e^{1-x} \end{equation}
+\end{minipage}
+\end{Sbox}
+\fbox{\TheSbox}
+\end{center}
+
+Let's begin a new paragraph and show a box with code only:
+
+
+\begin{center}
+\begin{Sbox}
+\begin{minipage}{0.85\textwidth}
+\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+def some_code(x):
+    return sin(x)*exp(1-x)
+\end{minted}
+\end{minipage}
+\end{Sbox}
+\fbox{\TheSbox}
+\end{center}
+
+
+
 \subsection{Admonitions}
 
 Let us start with a plain warning environment.
@@ -43033,7 +43646,7 @@ Test warning with title:
 
 
 
-Test warning with title with math:
+Test warning with large title with math:
 
 
 \begin{warning_graybox3admon}[{\large Watch out for $\nabla\cdot\bm{u}=0$ equations }]
@@ -43224,9 +43837,10 @@ And then we add a figure too.
 
 
 \begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/fig/wave1D.pdf}}
+  \centerline{\includegraphics[width=0.7\linewidth]{../doc/src/manual/fig/wave1D.pdf}}
 \end{center}
 \end{notice_graybox3admon}
+
 
 
 
@@ -43244,6 +43858,10 @@ Titles should be optional.
 \end{summary_graybox3admon}
 
 
+
+\paragraph{Remark.}
+The \Verb!remarks! and \Verb!hint! environments are not allowed outside
+exercises (and problems and projects too).
 
 % ------------------- end of main content ---------------
 
@@ -43277,6 +43895,10 @@ final,                   % or draft (marks overfull hboxes)
 \usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
+
+\usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
+\setlength{\fboxsep}{8pt}
+
 \usepackage{fancyvrb} % packages needed for verbatim environments
 
 \usepackage{minted}
@@ -43403,6 +44025,86 @@ x=1.0 y=0.9 z=0.4
 x=1.1 y=0.3 z=0.1
 \end{Verbatim}
 
+\subsection{Quotes and boxes}
+
+Here is a plain quote environment.
+
+
+\begin{quote}
+Sayre's law states that
+"in any dispute the intensity of feeling is inversely
+proportional to the value of the issues at stake."
+By way of corollary, it adds:
+"That is why academic politics are so bitter."
+
+\emph{Source}: \href{{http://en.wikipedia.org/wiki/Sayre's_law}}{wikipedia}
+\end{quote}
+
+
+Does quotes with title also work? No...cannot work in {\LaTeX} and HTML
+and then it does not make sense to support it.
+
+
+A plain \emph{box} is sometimes useful. Let's show it here for comparison
+with admons (especially the block admon has much in common with a box).
+The box is more aimed at framing a law or an equation.
+
+First a simple block with text, an equation, and a list:
+
+
+\begin{center}
+\begin{Sbox}
+\begin{minipage}{0.85\textwidth}
+A generic equation
+
+\[ f(x) = 0 \]
+must be solved by a numerical method, such as
+
+\begin{itemize}
+ \item Newton's method
+
+ \item The Bisection method
+
+ \item Fixed-point (Picard) iteration by rewriting $f(x)=x - g(x)$
+
+ \item The Secant method
+\end{itemize}
+
+\noindent
+\end{minipage}
+\end{Sbox}
+\fbox{\TheSbox}
+\end{center}
+Now test a box with equation only (note that this line continues the
+box, it is not a new paragraph):
+
+
+\begin{center}
+\begin{Sbox}
+\begin{minipage}{0.85\textwidth}
+\begin{equation} f(x) = \sin(x)e^{1-x} \end{equation}
+\end{minipage}
+\end{Sbox}
+\fbox{\TheSbox}
+\end{center}
+
+Let's begin a new paragraph and show a box with code only:
+
+
+\begin{center}
+\begin{Sbox}
+\begin{minipage}{0.85\textwidth}
+\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+def some_code(x):
+    return sin(x)*exp(1-x)
+\end{minted}
+\end{minipage}
+\end{Sbox}
+\fbox{\TheSbox}
+\end{center}
+
+
+
 \subsection{Admonitions}
 
 Let us start with a plain warning environment.
@@ -43440,7 +44142,7 @@ Test warning with title:
 
 
 
-Test warning with title with math:
+Test warning with large title with math:
 
 
 \begin{paragraphadmon}[{\large Watch out for $\nabla\cdot\bm{u}=0$ equations }.]
@@ -43630,9 +44332,10 @@ And then we add a figure too.
 
 
 \begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/fig/wave1D.pdf}}
+  \centerline{\includegraphics[width=0.7\linewidth]{../doc/src/manual/fig/wave1D.pdf}}
 \end{center}
 \end{paragraphadmon}
+
 
 
 
@@ -43650,6 +44353,10 @@ Titles should be optional.
 \end{paragraphadmon}
 
 
+
+\paragraph{Remark.}
+The \Verb!remarks! and \Verb!hint! environments are not allowed outside
+exercises (and problems and projects too).
 
 % ------------------- end of main content ---------------
 
@@ -43683,6 +44390,10 @@ final,                   % or draft (marks overfull hboxes)
 \usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
+
+\usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
+\setlength{\fboxsep}{8pt}
+
 \usepackage{fancyvrb} % packages needed for verbatim environments
 
 \usepackage{minted}
@@ -43903,6 +44614,86 @@ x=1.0 y=0.9 z=0.4
 x=1.1 y=0.3 z=0.1
 \end{Verbatim}
 
+\subsection{Quotes and boxes}
+
+Here is a plain quote environment.
+
+
+\begin{quote}
+Sayre's law states that
+"in any dispute the intensity of feeling is inversely
+proportional to the value of the issues at stake."
+By way of corollary, it adds:
+"That is why academic politics are so bitter."
+
+\emph{Source}: \href{{http://en.wikipedia.org/wiki/Sayre's_law}}{wikipedia}
+\end{quote}
+
+
+Does quotes with title also work? No...cannot work in {\LaTeX} and HTML
+and then it does not make sense to support it.
+
+
+A plain \emph{box} is sometimes useful. Let's show it here for comparison
+with admons (especially the block admon has much in common with a box).
+The box is more aimed at framing a law or an equation.
+
+First a simple block with text, an equation, and a list:
+
+
+\begin{center}
+\begin{Sbox}
+\begin{minipage}{0.85\textwidth}
+A generic equation
+
+\[ f(x) = 0 \]
+must be solved by a numerical method, such as
+
+\begin{itemize}
+ \item Newton's method
+
+ \item The Bisection method
+
+ \item Fixed-point (Picard) iteration by rewriting $f(x)=x - g(x)$
+
+ \item The Secant method
+\end{itemize}
+
+\noindent
+\end{minipage}
+\end{Sbox}
+\fbox{\TheSbox}
+\end{center}
+Now test a box with equation only (note that this line continues the
+box, it is not a new paragraph):
+
+
+\begin{center}
+\begin{Sbox}
+\begin{minipage}{0.85\textwidth}
+\begin{equation} f(x) = \sin(x)e^{1-x} \end{equation}
+\end{minipage}
+\end{Sbox}
+\fbox{\TheSbox}
+\end{center}
+
+Let's begin a new paragraph and show a box with code only:
+
+
+\begin{center}
+\begin{Sbox}
+\begin{minipage}{0.85\textwidth}
+\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+def some_code(x):
+    return sin(x)*exp(1-x)
+\end{minted}
+\end{minipage}
+\end{Sbox}
+\fbox{\TheSbox}
+\end{center}
+
+
+
 \subsection{Admonitions}
 
 Let us start with a plain warning environment.
@@ -43940,7 +44731,7 @@ Test warning with title:
 
 
 
-Test warning with title with math:
+Test warning with large title with math:
 
 
 \begin{warning_yellowboxadmon}[{\large Watch out for $\nabla\cdot\bm{u}=0$ equations }]
@@ -44131,9 +44922,10 @@ And then we add a figure too.
 
 
 \begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/fig/wave1D.pdf}}
+  \centerline{\includegraphics[width=0.7\linewidth]{../doc/src/manual/fig/wave1D.pdf}}
 \end{center}
 \end{notice_yellowboxadmon}
+
 
 
 
@@ -44151,6 +44943,10 @@ Titles should be optional.
 \end{summary_yellowboxadmon}
 
 
+
+\paragraph{Remark.}
+The \Verb!remarks! and \Verb!hint! environments are not allowed outside
+exercises (and problems and projects too).
 
 % ------------------- end of main content ---------------
 
@@ -44221,9 +45017,10 @@ Automatically generated HTML file from Doconce source
 {'highest level': 1,
  'sections': [(' Introduction ', 1, None, '___sec0'),
               (' Code ', 2, None, '___sec1'),
-              (' Admonitions ', 2, None, '___sec2'),
-              (' Going deeper environments ', 2, None, '___sec3'),
-              (' The end ', 2, None, '___sec4')]}
+              (' Quotes and boxes ', 2, None, '___sec2'),
+              (' Admonitions ', 2, None, '___sec3'),
+              (' Going deeper environments ', 2, None, '___sec4'),
+              (' The end ', 2, None, '___sec5')]}
 end of tocinfo -->
 
 <body>
@@ -44314,7 +45111,91 @@ And some plain text verbatim:
 x=1.1 y=0.3 z=0.1
 </pre></div>
 
-<h3>Admonitions  <a name="___sec2"></a></h3>
+<h3>Quotes and boxes  <a name="___sec2"></a></h3>
+
+<p>
+Here is a plain quote environment.
+
+<p>
+<blockquote>
+    Sayre's law states that
+    "in any dispute the intensity of feeling is inversely
+    proportional to the value of the issues at stake."
+    By way of corollary, it adds:
+    "That is why academic politics are so bitter."
+    
+    <p>
+    <em>Source</em>: <a href="http://en.wikipedia.org/wiki/Sayre's_law" target="_self">wikipedia</a>
+</blockquote>
+
+
+<p>
+Does quotes with title also work? No...cannot work in LaTeX and HTML
+and then it does not make sense to support it.
+
+<p>
+A plain <em>box</em> is sometimes useful. Let's show it here for comparison
+with admons (especially the block admon has much in common with a box).
+The box is more aimed at framing a law or an equation.
+
+<p>
+First a simple block with text, an equation, and a list:
+
+<p>
+
+<!-- begin box -->
+<div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px;">
+A generic equation
+
+<p>
+$$ f(x) = 0 $$
+
+must be solved by a numerical method, such as
+
+<p>
+
+<ul>
+ <li> Newton's method</li>
+ <li> The Bisection method</li>
+ <li> Fixed-point (Picard) iteration by rewriting \( f(x)=x - g(x) \)</li>
+ <li> The Secant method</li>
+</ul>
+</div>
+<!-- end box -->
+
+Now test a box with equation only (note that this line continues the
+box, it is not a new paragraph):
+
+<p>
+
+<!-- begin box -->
+<div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px;">
+$$
+\begin{equation} f(x) = \sin(x)e^{1-x} \end{equation}
+$$
+</div>
+<!-- end box -->
+
+
+<p>
+Let's begin a new paragraph and show a box with code only:
+
+<p>
+
+<!-- begin box -->
+<div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px;">
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">some_code</span>(x):
+    <span style="color: #008000; font-weight: bold">return</span> sin(x)<span style="color: #666666">*</span>exp(<span style="color: #666666">1-</span>x)
+</pre></div>
+<p>
+</div>
+<!-- end box -->
+
+
+<h3>Admonitions  <a name="___sec3"></a></h3>
 
 <p>
 Let us start with a plain warning environment.
@@ -44352,7 +45233,7 @@ And here comes some text with bad news in larger font.
 
 
 <p>
-Test warning with title with math:
+Test warning with large title with math:
 
 <p>
 <div class="warning alert-text-large"><b>Watch out for \( \nabla\cdot\boldsymbol{u}=0 \) equations.</b>
@@ -44462,7 +45343,7 @@ And here comes some text with bad news.
 </div>
 
 
-<h3>Going deeper environments  <a name="___sec3"></a></h3>
+<h3>Going deeper environments  <a name="___sec4"></a></h3>
 
 <p>
 Here is a long notice environment with a custom title and much
@@ -44554,11 +45435,11 @@ Longer computer code requires vertical space:
 And then we add a figure too.
 
 <p>
-<center><p><img src="../doc/src/manual/fig/wave1D.png" align="bottom" ></p></center>
+<center><p><img src="../doc/src/manual/fig/wave1D.png" align="bottom" width=400></p></center>
 </div>
 
 
-<h3>The end  <a name="___sec4"></a></h3>
+<h3>The end  <a name="___sec5"></a></h3>
 
 <p>
 A bit of text before the summary, which we now call "Concluding remarks,
@@ -44572,6 +45453,11 @@ a different typesetting, and they may have a symbol.
 Titles should be optional.
 </div>
 
+
+<p>
+<b>Remark.</b>
+The <code>remarks</code> and <code>hint</code> environments are not allowed outside
+exercises (and problems and projects too).
 
 <!-- ------------------- end of main content --------------- -->
 
@@ -44626,8 +45512,9 @@ Automatically generated HTML file from Doconce source
              padding:8px 35px 8px 14px; margin-bottom:18px;
              text-shadow:0 1px 0 rgba(255,255,255,0.5);
              border:1px solid #bababa;
-             -webkit-border-radius: 4px; -moz-border-radius: 4px;
-             border-radius: 4px
+             border-radius: 4px; box-shadow: 8px 8px 5px #888888;
+             -webkit-border-radius: 4px; -webkit-box-shadow: 8px 8px 5px #888888;
+             -moz-border-radius: 4px; -moz-box-shadow: 8px 8px 5px #888888;
              color: #555;
              background-color: #f8f8f8;
              background-position: 10px 5px;
@@ -44653,9 +45540,10 @@ Automatically generated HTML file from Doconce source
 {'highest level': 1,
  'sections': [(' Introduction ', 1, None, '___sec0'),
               (' Code ', 2, None, '___sec1'),
-              (' Admonitions ', 2, None, '___sec2'),
-              (' Going deeper environments ', 2, None, '___sec3'),
-              (' The end ', 2, None, '___sec4')]}
+              (' Quotes and boxes ', 2, None, '___sec2'),
+              (' Admonitions ', 2, None, '___sec3'),
+              (' Going deeper environments ', 2, None, '___sec4'),
+              (' The end ', 2, None, '___sec5')]}
 end of tocinfo -->
 
 <body>
@@ -44746,7 +45634,91 @@ And some plain text verbatim:
 x=1.1 y=0.3 z=0.1
 </pre></div>
 
-<h3>Admonitions  <a name="___sec2"></a></h3>
+<h3>Quotes and boxes  <a name="___sec2"></a></h3>
+
+<p>
+Here is a plain quote environment.
+
+<p>
+<blockquote>
+    Sayre's law states that
+    "in any dispute the intensity of feeling is inversely
+    proportional to the value of the issues at stake."
+    By way of corollary, it adds:
+    "That is why academic politics are so bitter."
+    
+    <p>
+    <em>Source</em>: <a href="http://en.wikipedia.org/wiki/Sayre's_law" target="_self">wikipedia</a>
+</blockquote>
+
+
+<p>
+Does quotes with title also work? No...cannot work in LaTeX and HTML
+and then it does not make sense to support it.
+
+<p>
+A plain <em>box</em> is sometimes useful. Let's show it here for comparison
+with admons (especially the block admon has much in common with a box).
+The box is more aimed at framing a law or an equation.
+
+<p>
+First a simple block with text, an equation, and a list:
+
+<p>
+
+<!-- begin box -->
+<div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px; box-shadow: 8px 8px 5px #888888;">
+A generic equation
+
+<p>
+$$ f(x) = 0 $$
+
+must be solved by a numerical method, such as
+
+<p>
+
+<ul>
+ <li> Newton's method</li>
+ <li> The Bisection method</li>
+ <li> Fixed-point (Picard) iteration by rewriting \( f(x)=x - g(x) \)</li>
+ <li> The Secant method</li>
+</ul>
+</div>
+<!-- end box -->
+
+Now test a box with equation only (note that this line continues the
+box, it is not a new paragraph):
+
+<p>
+
+<!-- begin box -->
+<div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px; box-shadow: 8px 8px 5px #888888;">
+$$
+\begin{equation} f(x) = \sin(x)e^{1-x} \end{equation}
+$$
+</div>
+<!-- end box -->
+
+
+<p>
+Let's begin a new paragraph and show a box with code only:
+
+<p>
+
+<!-- begin box -->
+<div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px; box-shadow: 8px 8px 5px #888888;">
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">some_code</span>(x):
+    <span style="color: #008000; font-weight: bold">return</span> sin(x)<span style="color: #666666">*</span>exp(<span style="color: #666666">1-</span>x)
+</pre></div>
+<p>
+</div>
+<!-- end box -->
+
+
+<h3>Admonitions  <a name="___sec3"></a></h3>
 
 <p>
 Let us start with a plain warning environment.
@@ -44784,7 +45756,7 @@ And here comes some text with bad news in larger font.
 
 
 <p>
-Test warning with title with math:
+Test warning with large title with math:
 
 <p>
 <div class="alert alert-block alert-warning alert-text-large"><b>Watch out for \( \nabla\cdot\boldsymbol{u}=0 \) equations.</b>
@@ -44894,7 +45866,7 @@ And here comes some text with bad news.
 </div>
 
 
-<h3>Going deeper environments  <a name="___sec3"></a></h3>
+<h3>Going deeper environments  <a name="___sec4"></a></h3>
 
 <p>
 Here is a long notice environment with a custom title and much
@@ -44986,11 +45958,11 @@ Longer computer code requires vertical space:
 And then we add a figure too.
 
 <p>
-<center><p><img src="../doc/src/manual/fig/wave1D.png" align="bottom" ></p></center>
+<center><p><img src="../doc/src/manual/fig/wave1D.png" align="bottom" width=400></p></center>
 </div>
 
 
-<h3>The end  <a name="___sec4"></a></h3>
+<h3>The end  <a name="___sec5"></a></h3>
 
 <p>
 A bit of text before the summary, which we now call "Concluding remarks,
@@ -45004,6 +45976,11 @@ a different typesetting, and they may have a symbol.
 Titles should be optional.
 </div>
 
+
+<p>
+<b>Remark.</b>
+The <code>remarks</code> and <code>hint</code> environments are not allowed outside
+exercises (and problems and projects too).
 
 <!-- ------------------- end of main content --------------- -->
 
@@ -45056,8 +46033,9 @@ Automatically generated HTML file from Doconce source
              padding:8px 35px 8px 14px; margin-bottom:18px;
              text-shadow:0 1px 0 rgba(255,255,255,0.5);
              border:1px solid #fbeed5;
-             -webkit-border-radius: 4px; -moz-border-radius: 4px;
-             border-radius: 4px
+             border-radius: 4px; box-shadow: 8px 8px 5px #888888;
+             -webkit-border-radius: 4px; -webkit-box-shadow: 8px 8px 5px #888888;
+             -moz-border-radius: 4px; -moz-box-shadow: 8px 8px 5px #888888;
              color: #555;
              background-color: #fcf8e3;
              background-position: 10px 5px;
@@ -45083,9 +46061,10 @@ Automatically generated HTML file from Doconce source
 {'highest level': 1,
  'sections': [(' Introduction ', 1, None, '___sec0'),
               (' Code ', 2, None, '___sec1'),
-              (' Admonitions ', 2, None, '___sec2'),
-              (' Going deeper environments ', 2, None, '___sec3'),
-              (' The end ', 2, None, '___sec4')]}
+              (' Quotes and boxes ', 2, None, '___sec2'),
+              (' Admonitions ', 2, None, '___sec3'),
+              (' Going deeper environments ', 2, None, '___sec4'),
+              (' The end ', 2, None, '___sec5')]}
 end of tocinfo -->
 
 <body>
@@ -45176,7 +46155,91 @@ And some plain text verbatim:
 x=1.1 y=0.3 z=0.1
 </pre></div>
 
-<h3>Admonitions  <a name="___sec2"></a></h3>
+<h3>Quotes and boxes  <a name="___sec2"></a></h3>
+
+<p>
+Here is a plain quote environment.
+
+<p>
+<blockquote>
+    Sayre's law states that
+    "in any dispute the intensity of feeling is inversely
+    proportional to the value of the issues at stake."
+    By way of corollary, it adds:
+    "That is why academic politics are so bitter."
+    
+    <p>
+    <em>Source</em>: <a href="http://en.wikipedia.org/wiki/Sayre's_law" target="_self">wikipedia</a>
+</blockquote>
+
+
+<p>
+Does quotes with title also work? No...cannot work in LaTeX and HTML
+and then it does not make sense to support it.
+
+<p>
+A plain <em>box</em> is sometimes useful. Let's show it here for comparison
+with admons (especially the block admon has much in common with a box).
+The box is more aimed at framing a law or an equation.
+
+<p>
+First a simple block with text, an equation, and a list:
+
+<p>
+
+<!-- begin box -->
+<div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px; box-shadow: 8px 8px 5px #888888;">
+A generic equation
+
+<p>
+$$ f(x) = 0 $$
+
+must be solved by a numerical method, such as
+
+<p>
+
+<ul>
+ <li> Newton's method</li>
+ <li> The Bisection method</li>
+ <li> Fixed-point (Picard) iteration by rewriting \( f(x)=x - g(x) \)</li>
+ <li> The Secant method</li>
+</ul>
+</div>
+<!-- end box -->
+
+Now test a box with equation only (note that this line continues the
+box, it is not a new paragraph):
+
+<p>
+
+<!-- begin box -->
+<div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px; box-shadow: 8px 8px 5px #888888;">
+$$
+\begin{equation} f(x) = \sin(x)e^{1-x} \end{equation}
+$$
+</div>
+<!-- end box -->
+
+
+<p>
+Let's begin a new paragraph and show a box with code only:
+
+<p>
+
+<!-- begin box -->
+<div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px; box-shadow: 8px 8px 5px #888888;">
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">some_code</span>(x):
+    <span style="color: #008000; font-weight: bold">return</span> sin(x)<span style="color: #666666">*</span>exp(<span style="color: #666666">1-</span>x)
+</pre></div>
+<p>
+</div>
+<!-- end box -->
+
+
+<h3>Admonitions  <a name="___sec3"></a></h3>
 
 <p>
 Let us start with a plain warning environment.
@@ -45214,7 +46277,7 @@ And here comes some text with bad news in larger font.
 
 
 <p>
-Test warning with title with math:
+Test warning with large title with math:
 
 <p>
 <div class="alert alert-block alert-warning alert-text-large"><b>Watch out for \( \nabla\cdot\boldsymbol{u}=0 \) equations.</b>
@@ -45324,7 +46387,7 @@ And here comes some text with bad news.
 </div>
 
 
-<h3>Going deeper environments  <a name="___sec3"></a></h3>
+<h3>Going deeper environments  <a name="___sec4"></a></h3>
 
 <p>
 Here is a long notice environment with a custom title and much
@@ -45416,11 +46479,11 @@ Longer computer code requires vertical space:
 And then we add a figure too.
 
 <p>
-<center><p><img src="../doc/src/manual/fig/wave1D.png" align="bottom" ></p></center>
+<center><p><img src="../doc/src/manual/fig/wave1D.png" align="bottom" width=400></p></center>
 </div>
 
 
-<h3>The end  <a name="___sec4"></a></h3>
+<h3>The end  <a name="___sec5"></a></h3>
 
 <p>
 A bit of text before the summary, which we now call "Concluding remarks,
@@ -45434,6 +46497,11 @@ a different typesetting, and they may have a symbol.
 Titles should be optional.
 </div>
 
+
+<p>
+<b>Remark.</b>
+The <code>remarks</code> and <code>hint</code> environments are not allowed outside
+exercises (and problems and projects too).
 
 <!-- ------------------- end of main content --------------- -->
 
@@ -45552,6 +46620,51 @@ x=1.1 y=0.3 z=0.1
 </pre></div>
 </div>
 </div>
+<div class="section" id="quotes-and-boxes">
+<h2>Quotes and boxes<a class="headerlink" href="#quotes-and-boxes" title="Permalink to this headline">¶</a></h2>
+<p>Here is a plain quote environment.</p>
+<blockquote>
+<div><p>Sayre&#8217;s law states that
+&#8220;in any dispute the intensity of feeling is inversely
+proportional to the value of the issues at stake.&#8221;
+By way of corollary, it adds:
+&#8220;That is why academic politics are so bitter.&#8221;</p>
+<p><em>Source</em>: <a class="reference external" href="http://en.wikipedia.org/wiki/Sayre's_law">wikipedia</a></p>
+</div></blockquote>
+<p>Does quotes with title also work? No...cannot work in LaTeX and HTML
+and then it does not make sense to support it.</p>
+<p>A plain <em>box</em> is sometimes useful. Let&#8217;s show it here for comparison
+with admons (especially the block admon has much in common with a box).
+The box is more aimed at framing a law or an equation.</p>
+<p>First a simple block with text, an equation, and a list:</p>
+.. math::
+         f(x) = 0
+
+must be solved by a numerical method, such as
+
+ * Newton's method
+
+ * The Bisection method
+
+ * Fixed-point (Picard) iteration by rewriting :math:`f(x)=x - g(x)`
+
+ * The Secant method
+
+</div>
+<!-- end box --><p>Now test a box with equation only (note that this line continues the
+box, it is not a new paragraph):</p>
+.. math::
+         f(x) = \sin(x)e^{1-x}
+
+</div>
+<!-- end box --><p>Let&#8217;s begin a new paragraph and show a box with code only:</p>
+.. code-block:: python
+
+        def some_code(x):
+            return sin(x)*exp(1-x)
+
+</div>
+<!-- end box --></div>
 <div class="section" id="admonitions">
 <h2>Admonitions<a class="headerlink" href="#admonitions" title="Permalink to this headline">¶</a></h2>
 <p>Let us start with a plain warning environment.</p>
@@ -45736,6 +46849,9 @@ just because we can.</p>
 a different typesetting, and they may have a symbol.
 Titles should be optional.</p>
 </div>
+<p><strong>Remark.</strong>
+The <tt class="docutils literal"><span class="pre">remarks</span></tt> and <tt class="docutils literal"><span class="pre">hint</span></tt> environments are not allowed outside
+exercises (and problems and projects too).</p>
 </div>
 </div>
 
@@ -45750,6 +46866,7 @@ Titles should be optional.</p>
 <li><a class="reference internal" href="#">Testing admons</a></li>
 <li><a class="reference internal" href="#introduction">Introduction</a><ul>
 <li><a class="reference internal" href="#code">Code</a></li>
+<li><a class="reference internal" href="#quotes-and-boxes">Quotes and boxes</a></li>
 <li><a class="reference internal" href="#admonitions">Admonitions</a></li>
 <li><a class="reference internal" href="#going-deeper-environments">Going deeper environments</a></li>
 <li><a class="reference internal" href="#the-end">The end</a></li>
@@ -45850,9 +46967,10 @@ Automatically generated HTML file from Doconce source
 {'highest level': 1,
  'sections': [(' Introduction ', 1, None, '___sec0'),
               (' Code ', 2, None, '___sec1'),
-              (' Admonitions ', 2, None, '___sec2'),
-              (' Going deeper environments ', 2, None, '___sec3'),
-              (' The end ', 2, None, '___sec4')]}
+              (' Quotes and boxes ', 2, None, '___sec2'),
+              (' Admonitions ', 2, None, '___sec3'),
+              (' Going deeper environments ', 2, None, '___sec4'),
+              (' The end ', 2, None, '___sec5')]}
 end of tocinfo -->
 
 <body>
@@ -45943,7 +47061,91 @@ And some plain text verbatim:
 x=1.1 y=0.3 z=0.1
 </pre></div>
 
-<h3>Admonitions  <a name="___sec2"></a></h3>
+<h3>Quotes and boxes  <a name="___sec2"></a></h3>
+
+<p>
+Here is a plain quote environment.
+
+<p>
+<blockquote>
+    Sayre's law states that
+    "in any dispute the intensity of feeling is inversely
+    proportional to the value of the issues at stake."
+    By way of corollary, it adds:
+    "That is why academic politics are so bitter."
+    
+    <p>
+    <em>Source</em>: <a href="http://en.wikipedia.org/wiki/Sayre's_law" target="_self">wikipedia</a>
+</blockquote>
+
+
+<p>
+Does quotes with title also work? No...cannot work in LaTeX and HTML
+and then it does not make sense to support it.
+
+<p>
+A plain <em>box</em> is sometimes useful. Let's show it here for comparison
+with admons (especially the block admon has much in common with a box).
+The box is more aimed at framing a law or an equation.
+
+<p>
+First a simple block with text, an equation, and a list:
+
+<p>
+
+<!-- begin box -->
+<div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px;">
+A generic equation
+
+<p>
+$$ f(x) = 0 $$
+
+must be solved by a numerical method, such as
+
+<p>
+
+<ul>
+ <li> Newton's method</li>
+ <li> The Bisection method</li>
+ <li> Fixed-point (Picard) iteration by rewriting \( f(x)=x - g(x) \)</li>
+ <li> The Secant method</li>
+</ul>
+</div>
+<!-- end box -->
+
+Now test a box with equation only (note that this line continues the
+box, it is not a new paragraph):
+
+<p>
+
+<!-- begin box -->
+<div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px;">
+$$
+\begin{equation} f(x) = \sin(x)e^{1-x} \end{equation}
+$$
+</div>
+<!-- end box -->
+
+
+<p>
+Let's begin a new paragraph and show a box with code only:
+
+<p>
+
+<!-- begin box -->
+<div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px;">
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">some_code</span>(x):
+    <span style="color: #008000; font-weight: bold">return</span> sin(x)<span style="color: #666666">*</span>exp(<span style="color: #666666">1-</span>x)
+</pre></div>
+<p>
+</div>
+<!-- end box -->
+
+
+<h3>Admonitions  <a name="___sec3"></a></h3>
 
 <p>
 Let us start with a plain warning environment.
@@ -45997,7 +47199,7 @@ Test warning with title:
 
 
 <p>
-Test warning with title with math:
+Test warning with large title with math:
 
 <p>
 
@@ -46173,7 +47375,7 @@ Next is a warning without a title ("none" implies no title).
 </table>
 
 
-<h3>Going deeper environments  <a name="___sec3"></a></h3>
+<h3>Going deeper environments  <a name="___sec4"></a></h3>
 
 <p>
 Here is a long notice environment with a custom title and much
@@ -46272,12 +47474,12 @@ Longer computer code requires vertical space:
 And then we add a figure too.
 
 <p>
-<center><p><img src="../doc/src/manual/fig/wave1D.png" align="bottom" ></p></center></div>
+<center><p><img src="../doc/src/manual/fig/wave1D.png" align="bottom" width=400></p></center></div>
 </p></td></tr>
 </table>
 
 
-<h3>The end  <a name="___sec4"></a></h3>
+<h3>The end  <a name="___sec5"></a></h3>
 
 <p>
 A bit of text before the summary, which we now call "Concluding remarks,
@@ -46299,6 +47501,11 @@ Titles should be optional.</div>
 </p></td></tr>
 </table>
 
+
+<p>
+<b>Remark.</b>
+The <code>remarks</code> and <code>hint</code> environments are not allowed outside
+exercises (and problems and projects too).
 
 <!-- ------------------- end of main content --------------- -->
 
@@ -46358,9 +47565,10 @@ Automatically generated HTML file from Doconce source
 {'highest level': 1,
  'sections': [(' Introduction ', 1, None, '___sec0'),
               (' Code ', 2, None, '___sec1'),
-              (' Admonitions ', 2, None, '___sec2'),
-              (' Going deeper environments ', 2, None, '___sec3'),
-              (' The end ', 2, None, '___sec4')]}
+              (' Quotes and boxes ', 2, None, '___sec2'),
+              (' Admonitions ', 2, None, '___sec3'),
+              (' Going deeper environments ', 2, None, '___sec4'),
+              (' The end ', 2, None, '___sec5')]}
 end of tocinfo -->
 
 <body>
@@ -46451,7 +47659,91 @@ And some plain text verbatim:
 x=1.1 y=0.3 z=0.1
 </pre></div>
 
-<h3>Admonitions  <a name="___sec2"></a></h3>
+<h3>Quotes and boxes  <a name="___sec2"></a></h3>
+
+<p>
+Here is a plain quote environment.
+
+<p>
+<blockquote>
+    Sayre's law states that
+    "in any dispute the intensity of feeling is inversely
+    proportional to the value of the issues at stake."
+    By way of corollary, it adds:
+    "That is why academic politics are so bitter."
+    
+    <p>
+    <em>Source</em>: <a href="http://en.wikipedia.org/wiki/Sayre's_law" target="_self">wikipedia</a>
+</blockquote>
+
+
+<p>
+Does quotes with title also work? No...cannot work in LaTeX and HTML
+and then it does not make sense to support it.
+
+<p>
+A plain <em>box</em> is sometimes useful. Let's show it here for comparison
+with admons (especially the block admon has much in common with a box).
+The box is more aimed at framing a law or an equation.
+
+<p>
+First a simple block with text, an equation, and a list:
+
+<p>
+
+<!-- begin box -->
+<div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px;">
+A generic equation
+
+<p>
+$$ f(x) = 0 $$
+
+must be solved by a numerical method, such as
+
+<p>
+
+<ul>
+ <li> Newton's method</li>
+ <li> The Bisection method</li>
+ <li> Fixed-point (Picard) iteration by rewriting \( f(x)=x - g(x) \)</li>
+ <li> The Secant method</li>
+</ul>
+</div>
+<!-- end box -->
+
+Now test a box with equation only (note that this line continues the
+box, it is not a new paragraph):
+
+<p>
+
+<!-- begin box -->
+<div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px;">
+$$
+\begin{equation} f(x) = \sin(x)e^{1-x} \end{equation}
+$$
+</div>
+<!-- end box -->
+
+
+<p>
+Let's begin a new paragraph and show a box with code only:
+
+<p>
+
+<!-- begin box -->
+<div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px;">
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">some_code</span>(x):
+    <span style="color: #008000; font-weight: bold">return</span> sin(x)<span style="color: #666666">*</span>exp(<span style="color: #666666">1-</span>x)
+</pre></div>
+<p>
+</div>
+<!-- end box -->
+
+
+<h3>Admonitions  <a name="___sec3"></a></h3>
 
 <p>
 Let us start with a plain warning environment.
@@ -46495,7 +47787,7 @@ And here comes some text with bad news in larger font.
 
 
 <p>
-Test warning with title with math:
+Test warning with large title with math:
 
 <p>
 
@@ -46632,7 +47924,7 @@ And here comes some text with bad news.
 </div>
 
 
-<h3>Going deeper environments  <a name="___sec3"></a></h3>
+<h3>Going deeper environments  <a name="___sec4"></a></h3>
 
 <p>
 Here is a long notice environment with a custom title and much
@@ -46727,11 +48019,11 @@ Longer computer code requires vertical space:
 And then we add a figure too.
 
 <p>
-<center><p><img src="../doc/src/manual/fig/wave1D.png" align="bottom" ></p></center>
+<center><p><img src="../doc/src/manual/fig/wave1D.png" align="bottom" width=400></p></center>
 </div>
 
 
-<h3>The end  <a name="___sec4"></a></h3>
+<h3>The end  <a name="___sec5"></a></h3>
 
 <p>
 A bit of text before the summary, which we now call "Concluding remarks,
@@ -46748,6 +48040,11 @@ a different typesetting, and they may have a symbol.
 Titles should be optional.
 </div>
 
+
+<p>
+<b>Remark.</b>
+The <code>remarks</code> and <code>hint</code> environments are not allowed outside
+exercises (and problems and projects too).
 
 <!-- ------------------- end of main content --------------- -->
 
@@ -46817,8 +48114,9 @@ Automatically generated HTML file from Doconce source
              padding:8px 35px 8px 14px; margin-bottom:18px;
              text-shadow:0 1px 0 rgba(255,255,255,0.5);
              border:1px solid #FFBF00;
-             -webkit-border-radius: 4px; -moz-border-radius: 4px;
-             border-radius: 4px
+             border-radius: 4px;
+             -webkit-border-radius: 4px;
+             -moz-border-radius: 4px;
              color: #555;
              background-color: #fbeed5;
              background-position: 10px 5px;
@@ -46844,9 +48142,10 @@ Automatically generated HTML file from Doconce source
 {'highest level': 1,
  'sections': [(' Introduction ', 1, None, '___sec0'),
               (' Code ', 2, None, '___sec1'),
-              (' Admonitions ', 2, None, '___sec2'),
-              (' Going deeper environments ', 2, None, '___sec3'),
-              (' The end ', 2, None, '___sec4')]}
+              (' Quotes and boxes ', 2, None, '___sec2'),
+              (' Admonitions ', 2, None, '___sec3'),
+              (' Going deeper environments ', 2, None, '___sec4'),
+              (' The end ', 2, None, '___sec5')]}
 end of tocinfo -->
 
 <body>
@@ -46937,7 +48236,91 @@ And some plain text verbatim:
 x=1.1 y=0.3 z=0.1
 </pre></div>
 
-<h3>Admonitions  <a name="___sec2"></a></h3>
+<h3>Quotes and boxes  <a name="___sec2"></a></h3>
+
+<p>
+Here is a plain quote environment.
+
+<p>
+<blockquote>
+    Sayre's law states that
+    "in any dispute the intensity of feeling is inversely
+    proportional to the value of the issues at stake."
+    By way of corollary, it adds:
+    "That is why academic politics are so bitter."
+    
+    <p>
+    <em>Source</em>: <a href="http://en.wikipedia.org/wiki/Sayre's_law" target="_self">wikipedia</a>
+</blockquote>
+
+
+<p>
+Does quotes with title also work? No...cannot work in LaTeX and HTML
+and then it does not make sense to support it.
+
+<p>
+A plain <em>box</em> is sometimes useful. Let's show it here for comparison
+with admons (especially the block admon has much in common with a box).
+The box is more aimed at framing a law or an equation.
+
+<p>
+First a simple block with text, an equation, and a list:
+
+<p>
+
+<!-- begin box -->
+<div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px;">
+A generic equation
+
+<p>
+$$ f(x) = 0 $$
+
+must be solved by a numerical method, such as
+
+<p>
+
+<ul>
+ <li> Newton's method</li>
+ <li> The Bisection method</li>
+ <li> Fixed-point (Picard) iteration by rewriting \( f(x)=x - g(x) \)</li>
+ <li> The Secant method</li>
+</ul>
+</div>
+<!-- end box -->
+
+Now test a box with equation only (note that this line continues the
+box, it is not a new paragraph):
+
+<p>
+
+<!-- begin box -->
+<div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px;">
+$$
+\begin{equation} f(x) = \sin(x)e^{1-x} \end{equation}
+$$
+</div>
+<!-- end box -->
+
+
+<p>
+Let's begin a new paragraph and show a box with code only:
+
+<p>
+
+<!-- begin box -->
+<div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px;">
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">some_code</span>(x):
+    <span style="color: #8B008B; font-weight: bold">return</span> sin(x)*exp(<span style="color: #B452CD">1</span>-x)
+</pre></div>
+<p>
+</div>
+<!-- end box -->
+
+
+<h3>Admonitions  <a name="___sec3"></a></h3>
 
 <p>
 Let us start with a plain warning environment.
@@ -46975,7 +48358,7 @@ And here comes some text with bad news in larger font.
 
 
 <p>
-Test warning with title with math:
+Test warning with large title with math:
 
 <p>
 <div class="alert alert-block alert-warning alert-text-large"><b>Watch out for \( \nabla\cdot\boldsymbol{u}=0 \) equations.</b>
@@ -47085,7 +48468,7 @@ And here comes some text with bad news.
 </div>
 
 
-<h3>Going deeper environments  <a name="___sec3"></a></h3>
+<h3>Going deeper environments  <a name="___sec4"></a></h3>
 
 <p>
 Here is a long notice environment with a custom title and much
@@ -47177,11 +48560,11 @@ Longer computer code requires vertical space:
 And then we add a figure too.
 
 <p>
-<center><p><img src="../doc/src/manual/fig/wave1D.png" align="bottom" ></p></center>
+<center><p><img src="../doc/src/manual/fig/wave1D.png" align="bottom" width=400></p></center>
 </div>
 
 
-<h3>The end  <a name="___sec4"></a></h3>
+<h3>The end  <a name="___sec5"></a></h3>
 
 <p>
 A bit of text before the summary, which we now call "Concluding remarks,
@@ -47195,6 +48578,11 @@ a different typesetting, and they may have a symbol.
 Titles should be optional.
 </div>
 
+
+<p>
+<b>Remark.</b>
+The <code>remarks</code> and <code>hint</code> environments are not allowed outside
+exercises (and problems and projects too).
 
 <!-- ------------------- end of main content --------------- -->
 
@@ -47283,9 +48671,10 @@ h1, h2, h3, h4, h5, h6 {
      <!-- Doconce automatically fills in the table of contents -->
           <!-- vagrant nav toc: " Introduction " --> <li>  <a href="#___sec0"> Introduction </a>
      <!-- vagrant nav toc: " Code " --> <li> &nbsp;  <a href="#___sec1"> Code </a>
-     <!-- vagrant nav toc: " Admonitions " --> <li> &nbsp;  <a href="#___sec2"> Admonitions </a>
-     <!-- vagrant nav toc: " Going deeper environments " --> <li> &nbsp;  <a href="#___sec3"> Going deeper environments </a>
-     <!-- vagrant nav toc: " The end " --> <li> &nbsp;  <a href="#___sec4"> The end </a>
+     <!-- vagrant nav toc: " Quotes and boxes " --> <li> &nbsp;  <a href="#___sec2"> Quotes and boxes </a>
+     <!-- vagrant nav toc: " Admonitions " --> <li> &nbsp;  <a href="#___sec3"> Admonitions </a>
+     <!-- vagrant nav toc: " Going deeper environments " --> <li> &nbsp;  <a href="#___sec4"> Going deeper environments </a>
+     <!-- vagrant nav toc: " The end " --> <li> &nbsp;  <a href="#___sec5"> The end </a>
 
     </ul>
    </div>
@@ -47298,9 +48687,10 @@ h1, h2, h3, h4, h5, h6 {
 {'highest level': 1,
  'sections': [(' Introduction ', 1, None, '___sec0'),
               (' Code ', 2, None, '___sec1'),
-              (' Admonitions ', 2, None, '___sec2'),
-              (' Going deeper environments ', 2, None, '___sec3'),
-              (' The end ', 2, None, '___sec4')]}
+              (' Quotes and boxes ', 2, None, '___sec2'),
+              (' Admonitions ', 2, None, '___sec3'),
+              (' Going deeper environments ', 2, None, '___sec4'),
+              (' The end ', 2, None, '___sec5')]}
 end of tocinfo -->
 
 
@@ -47387,7 +48777,91 @@ And some plain text verbatim:
 x=1.1 y=0.3 z=0.1
 </pre></div>
 
-<h3>Admonitions  <a name="___sec2"></a></h3>
+<h3>Quotes and boxes  <a name="___sec2"></a></h3>
+
+<p>
+Here is a plain quote environment.
+
+<p>
+<blockquote>
+    Sayre's law states that
+    "in any dispute the intensity of feeling is inversely
+    proportional to the value of the issues at stake."
+    By way of corollary, it adds:
+    "That is why academic politics are so bitter."
+    
+    <p>
+    <em>Source</em>: <a href="http://en.wikipedia.org/wiki/Sayre's_law" target="_self">wikipedia</a>
+</blockquote>
+
+
+<p>
+Does quotes with title also work? No...cannot work in LaTeX and HTML
+and then it does not make sense to support it.
+
+<p>
+A plain <em>box</em> is sometimes useful. Let's show it here for comparison
+with admons (especially the block admon has much in common with a box).
+The box is more aimed at framing a law or an equation.
+
+<p>
+First a simple block with text, an equation, and a list:
+
+<p>
+
+<!-- begin box -->
+<div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px;">
+A generic equation
+
+<p>
+$$ f(x) = 0 $$
+
+must be solved by a numerical method, such as
+
+<p>
+
+<ul>
+ <li> Newton's method</li>
+ <li> The Bisection method</li>
+ <li> Fixed-point (Picard) iteration by rewriting \( f(x)=x - g(x) \)</li>
+ <li> The Secant method</li>
+</ul>
+</div>
+<!-- end box -->
+
+Now test a box with equation only (note that this line continues the
+box, it is not a new paragraph):
+
+<p>
+
+<!-- begin box -->
+<div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px;">
+$$
+\begin{equation} f(x) = \sin(x)e^{1-x} \end{equation}
+$$
+</div>
+<!-- end box -->
+
+
+<p>
+Let's begin a new paragraph and show a box with code only:
+
+<p>
+
+<!-- begin box -->
+<div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px;">
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">some_code</span>(x):
+    <span style="color: #008000; font-weight: bold">return</span> sin(x)<span style="color: #666666">*</span>exp(<span style="color: #666666">1-</span>x)
+</pre></div>
+<p>
+</div>
+<!-- end box -->
+
+
+<h3>Admonitions  <a name="___sec3"></a></h3>
 
 <p>
 Let us start with a plain warning environment.
@@ -47425,7 +48899,7 @@ And here comes some text with bad news in larger font.
 
 
 <p>
-Test warning with title with math:
+Test warning with large title with math:
 
 <p>
 <div class="alert alert-block alert-warning alert-text-large"><b>Watch out for \( \nabla\cdot\boldsymbol{u}=0 \) equations.</b>
@@ -47535,7 +49009,7 @@ And here comes some text with bad news.
 </div>
 
 
-<h3>Going deeper environments  <a name="___sec3"></a></h3>
+<h3>Going deeper environments  <a name="___sec4"></a></h3>
 
 <p>
 Here is a long notice environment with a custom title and much
@@ -47627,11 +49101,11 @@ Longer computer code requires vertical space:
 And then we add a figure too.
 
 <p>
-<center><p><img src="../doc/src/manual/fig/wave1D.png" align="bottom" ></p></center>
+<center><p><img src="../doc/src/manual/fig/wave1D.png" align="bottom" width=400></p></center>
 </div>
 
 
-<h3>The end  <a name="___sec4"></a></h3>
+<h3>The end  <a name="___sec5"></a></h3>
 
 <p>
 A bit of text before the summary, which we now call "Concluding remarks,
@@ -47645,6 +49119,11 @@ a different typesetting, and they may have a symbol.
 Titles should be optional.
 </div>
 
+
+<p>
+<b>Remark.</b>
+The <code>remarks</code> and <code>hint</code> environments are not allowed outside
+exercises (and problems and projects too).
 
 <!-- ------------------- end of main content --------------- -->
 
@@ -47716,6 +49195,84 @@ x=1.0 y=0.9 z=0.4
 x=1.1 y=0.3 z=0.1
 </syntaxhighlight>
 
+==== Quotes and boxes ====
+
+Here is a plain quote environment.
+
+
+{{quote box
+| quote = Sayre's law states that
+"in any dispute the intensity of feeling is inversely
+proportional to the value of the issues at stake."
+By way of corollary, it adds:
+"That is why academic politics are so bitter."
+
+''Source'': [http://en.wikipedia.org/wiki/Sayre's_law wikipedia]
+| textstyle = font-size: 90%;
+}}
+
+
+
+Does quotes with title also work? No...cannot work in LaTeX and HTML
+and then it does not make sense to support it.
+
+
+A plain ''box'' is sometimes useful. Let's show it here for comparison
+with admons (especially the block admon has much in common with a box).
+The box is more aimed at framing a law or an equation.
+
+First a simple block with text, an equation, and a list:
+
+
+{{mbox
+| type = 
+| textstyle = font-size: 90%;
+| text = '''''' A generic equation
+
+:<math>
+ f(x) = 0 
+</math>
+must be solved by a numerical method, such as
+
+
+<ul>
+ <li> Newton's method
+ <li> The Bisection method
+ <li> Fixed-point (Picard) iteration by rewriting <math>f(x)=x - g(x)</math>
+ <li> The Secant method
+</ul>
+}}
+
+
+Now test a box with equation only (note that this line continues the
+box, it is not a new paragraph):
+
+
+{{mbox
+| type = 
+| textstyle = font-size: 90%;
+| text = '''''' :<math>
+f(x) = \sin(x)e^{1-x} </math>
+}}
+
+
+
+Let's begin a new paragraph and show a box with code only:
+
+
+{{mbox
+| type = 
+| textstyle = font-size: 90%;
+| text = '''''' <syntaxhighlight lang="python">
+def some_code(x):
+    return sin(x)*exp(1-x)
+</syntaxhighlight>
+}}
+
+
+
+
+
 ==== Admonitions ====
 
 Let us start with a plain warning environment.
@@ -47756,7 +49313,7 @@ Test warning with title:
 
 
 
-Test warning with title with math:
+Test warning with large title with math:
 
 
 {{mbox
@@ -47770,19 +49327,28 @@ of view.
 
 Then we test a block, which is guaranteed to never have any admon icon.
 
-''Block with title''\n
-Here is a block of text with title. It is typeset
+
+{{mbox
+| type = Block with title.
+| textstyle = font-size: 80%;
+| text = '''Block with title.''' Here is a block of text with title. It is typeset
 ''without any icon'' and is useful when you want some admons with icon
 and some without. With the small font size, as used here, one can have
 more comment-style text or text that really goes deeper or talks
 about fun facts that are not strictly necessary for the main flow
 of understanding.
+}}
 
 
 
 
-Here is a block of text with no title. As above, it is typeset without any icon
+
+{{mbox
+| type = 
+| textstyle = font-size: 90%;
+| text = '''''' Here is a block of text with no title. As above, it is typeset without any icon
 and is useful when you want some admons with icon and some without.
+}}
 
 
 
@@ -47958,8 +49524,9 @@ class Forward3(Diff):
 And then we add a figure too.
 
 
-[[File:Wave1D.png|frame|alt=Wave1D.png|<span title=""></span>]] <!-- not yet uploaded to common.wikimedia.org -->
+[[File:Wave1D.png|frame|400px|alt=Wave1D.png|<span title=""></span>]] <!-- not yet uploaded to common.wikimedia.org -->
 }}
+
 
 
 
@@ -47980,6 +49547,410 @@ Titles should be optional.
 
 
 
+''Remark.''
+The <code>remarks</code> and <code>hint</code> environments are not allowed outside
+exercises (and problems and projects too).
+
+
+************** File: admon.rst *****************
+.. Automatically generated reST file from Doconce source
+   (https://github.com/hplgit/doconce/)
+
+Testing admons
+==============
+
+:Author: hpl
+:Date: Jan 32, 2100
+
+Introduction
+============
+First some ordinary text to compare font sizes in admonitions
+and the surrounding text.
+
+Note that ``automake_sphinx.py`` fixes the HTML file generated by Sphinx
+so that all styles for admonitions have a colored background.
+
+Code
+----
+
+Need some code outside admons for color and font comparisons:
+
+
+.. code-block:: python
+
+        def some_code(x):
+            return sin(x)*exp(1-x)
+
+
+And some plain text verbatim:
+
+
+.. code-block:: text
+
+
+        x=1.0 y=0.9 z=0.4
+        x=1.1 y=0.3 z=0.1
+
+
+Quotes and boxes
+----------------
+
+Here is a plain quote environment.
+
+
+..
+
+    Sayre's law states that
+    "in any dispute the intensity of feeling is inversely
+    proportional to the value of the issues at stake."
+    By way of corollary, it adds:
+    "That is why academic politics are so bitter."
+    
+    *Source*: `wikipedia <http://en.wikipedia.org/wiki/Sayre's_law>`_
+
+
+
+Does quotes with title also work? No...cannot work in LaTeX and HTML
+and then it does not make sense to support it.
+
+
+.. warning::
+    The boxes below are shown without any extra formatting in reST
+    and Sphinx. We could use an admonition environment, but requires
+    a title.
+
+
+
+
+A plain *box* is sometimes useful. Let's show it here for comparison
+with admons (especially the block admon has much in common with a box).
+The box is more aimed at framing a law or an equation.
+
+First a simple block with text, an equation, and a list:
+
+
+.. The below box could be typeset as .. admonition: Attention
+   but we have decided not to do so (the box formatting is just ignored)
+..
+A generic equation
+
+
+.. math::
+         f(x) = 0 
+
+must be solved by a numerical method, such as
+
+ * Newton's method
+
+ * The Bisection method
+
+ * Fixed-point (Picard) iteration by rewriting :math:`f(x)=x - g(x)`
+
+ * The Secant method
+
+Now test a box with equation only (note that this line continues the
+box, it is not a new paragraph):
+
+
+.. The below box could be typeset as .. admonition: Attention
+   but we have decided not to do so (the box formatting is just ignored)
+..
+
+.. math::
+         f(x) = \sin(x)e^{1-x}
+
+
+Let's begin a new paragraph and show a box with code only:
+
+
+.. The below box could be typeset as .. admonition: Attention
+   but we have decided not to do so (the box formatting is just ignored)
+..
+
+.. code-block:: python
+
+        def some_code(x):
+            return sin(x)*exp(1-x)
+
+
+
+
+Admonitions
+-----------
+
+Let us start with a plain warning environment.
+
+
+.. warning::
+    And here is a warning about something to pay attention to. We
+    test how the heading behave and add quite some extra texts
+    in comparison with the other admons.
+    
+      * and a list
+    
+      * with items
+    
+    We continue with more text to see how that affects the layout.
+    And more and more text.
+    And more and more text.
+    And more and more text.
+    And more and more text.
+    And more and more text.
+    And more and more text.
+
+
+
+
+Test warning with title:
+
+
+.. admonition:: Watch out
+
+   And here comes some text with bad news in larger font.
+
+
+
+
+Test warning with large title with math:
+(we have no impact on the font size in the title in Sphinx)
+
+
+.. admonition:: Watch out for :math:`\nabla\cdot\boldsymbol{u}=0` equations
+
+   Divergence freedom is often problematic from a numerical point
+   of view.
+
+
+
+
+Then we test a block, which is guaranteed to never have any admon icon.
+
+
+.. admonition:: Block with title
+
+   Here is a block of text with title. It is typeset
+   *without any icon* and is useful when you want some admons with icon
+   and some without. With the small font size, as used here, one can have
+   more comment-style text or text that really goes deeper or talks
+   about fun facts that are not strictly necessary for the main flow
+   of understanding.
+
+
+
+
+Admonitions must have a title in Sphinx, otherwise they are not
+shown. Here, for the following *block admon* (``!bblock``)
+we have not specified any title, and Doconce then
+applies the generic title "Notice:" for the Sphinx format:
+
+
+.. admonition:: Notice
+
+   Here is a block of text with no title. As above, it is typeset without any icon
+   and is useful when you want some admons with icon and some without.
+
+
+
+
+The next admonition features a title "Note, eventually!".
+
+.. Note that the final ! does not appear in Sphinx and reST since
+
+.. those formats automatically add : to the admonition title.
+
+
+
+.. admonition:: Note, eventually
+
+   Ah, we are soon close to the end (with illegal font size specification!).
+   But first a bit of math where we define :math:`\theta` and :math:`\boldsymbol{r}`:
+   
+   
+   .. math::
+           
+           \theta &= q^2,\\
+           \boldsymbol{r} &= \varrho\boldsymbol{i}
+
+
+
+
+.. Test one word with a number
+
+
+
+.. admonition:: Point1
+
+   Ah, we are soon close to the end.
+
+
+
+
+
+.. admonition:: Question
+
+   So, how many admonition environments does Doconce support?
+
+
+
+
+
+.. admonition:: Question
+
+    1. Once more, how many admonition environments does Doconce support?
+
+
+
+
+
+.. admonition:: Tip
+
+   It is of outmost important to
+   
+   1. stay cool
+   
+   2. read hints and tips carefully
+   
+   Because here the thing is to do
+   
+   
+   .. code-block:: python
+   
+           import urllib
+           
+           def grab(url, filename):
+               urllib.urlretrieve(url, filename=filename)
+
+
+
+
+Next is a warning without a title ("none" implies no title).
+Admonitions must have a title in Sphinx, otherwise they are not
+shown. Here, we have not specified any title, and Doconce then
+applies the generic title "Notice:"
+
+
+.. admonition:: Notice
+
+   And here comes some text with bad news.
+
+
+
+
+Going deeper environments
+-------------------------
+
+Here is a long notice environment with a custom title and much
+text, math and code.
+
+
+.. admonition:: Going deeper
+
+   We have some equations that should be preceded by much text, so the
+   task is to write and write. The number of words, and not the
+   meaning, is what counts here. We need desperately to fill up the
+   page in the hope that some admonitions will experience a page break,
+   which the LaTeX environment should handle with ease.
+   
+   Let us start with some equations:
+   
+   
+   .. math::
+           
+           \frac{Du}{dt} &= 0
+           \\
+           \frac{1}{2} &= {1/2}\\
+           \frac{1}{2}\pmb{x} &= \pmb{n}
+           
+   
+   
+   The implementation of such complicated equations in computer
+   code is task that this "Going deeper" environment targets.
+   
+   
+   .. code-block:: python
+   
+           def Dudt(u):
+               r = diff(u, t) + u*grad(u)
+               return r
+           
+           half = 0.5
+           x = 2*n
+   
+   And some more text that can help going into the next page.
+   Longer computer code requires vertical space:
+   
+   
+   .. code-block:: python
+   
+           class Diff:
+               def __init__(self, f, h=1E-5):
+                   self.f = f
+                   self.h = float(h)
+           
+           class Forward1(Diff):
+               def __call__(self, x):
+                   f, h = self.f, self.h
+                   return (f(x+h) - f(x))/h
+           
+           class Backward1(Diff):
+               def __call__(self, x):
+                   f, h = self.f, self.h
+                   return (f(x) - f(x-h))/h
+           
+           class Central2(Diff):
+               def __call__(self, x):
+                   f, h = self.f, self.h
+                   return (f(x+h) - f(x-h))/(2*h)
+           
+           class Central4(Diff):
+               def __call__(self, x):
+                   f, h = self.f, self.h
+                   return (4./3)*(f(x+h)   - f(x-h))  /(2*h) - \
+                          (1./3)*(f(x+2*h) - f(x-2*h))/(4*h)
+           
+           class Central6(Diff):
+               def __call__(self, x):
+                   f, h = self.f, self.h
+                   return (3./2) *(f(x+h)   - f(x-h))  /(2*h) - \
+                          (3./5) *(f(x+2*h) - f(x-2*h))/(4*h) + \
+                          (1./10)*(f(x+3*h) - f(x-3*h))/(6*h)
+           
+           class Forward3(Diff):
+               def __call__(self, x):
+                   f, h = self.f, self.h
+                   return (-(1./6)*f(x+2*h) + f(x+h) - 0.5*f(x) - \
+                           (1./3)*f(x-h))/h
+   
+   And then we add a figure too.
+   
+   
+   .. figure:: ../doc/src/manual/fig/wave1D.png
+      :width: 400
+
+
+
+
+
+The end
+-------
+
+A bit of text before the summary, which we now call "Concluding remarks,
+for the novice",
+just because we can.
+
+
+.. admonition:: Concluding remarks, for the novice
+
+   We can summarize the most important things with admons: they have
+   a different typesetting, and they may have a symbol.
+   Titles should be optional.
+
+
+
+
+**Remark.**
+The ``remarks`` and ``hint`` environments are not allowed outside
+exercises (and problems and projects too).
 
 ************** File: slides1.do.txt *****************
 TITLE: On the Technicalities of Scientific Writing Anno 2012: The Doconce Way
@@ -48753,8 +50724,9 @@ Automatically generated HTML file from Doconce source
              padding:8px 35px 8px 14px; margin-bottom:18px;
              text-shadow:0 1px 0 rgba(255,255,255,0.5);
              border:1px solid #bababa;
-             -webkit-border-radius: 4px; -moz-border-radius: 4px;
-             border-radius: 4px
+             border-radius: 4px;
+             -webkit-border-radius: 4px;
+             -moz-border-radius: 4px;
              color: #555;
              background-color: #f8f8f8;
              background-position: 10px 5px;
@@ -49851,6 +51823,7 @@ final,                   % or draft (marks overfull hboxes)
 \usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
+
 \usepackage{ptex2tex}
 
 % #ifdef MINTED
@@ -52506,6 +54479,7 @@ open=right               % start new chapters on odd-numbered pages
 \usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
+
 \usepackage{ptex2tex}
 
 % #ifndef MOVIE
@@ -55251,6 +57225,7 @@ final,                   % or draft (marks overfull hboxes)
 \usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
+
 \usepackage{ptex2tex}
 
 % #ifdef MINTED
@@ -57581,8 +59556,9 @@ Automatically generated HTML file from Doconce source
              padding:8px 35px 8px 14px; margin-bottom:18px;
              text-shadow:0 1px 0 rgba(255,255,255,0.5);
              border:1px solid #bababa;
-             -webkit-border-radius: 4px; -moz-border-radius: 4px;
-             border-radius: 4px
+             border-radius: 4px;
+             -webkit-border-radius: 4px;
+             -moz-border-radius: 4px;
              color: #555;
              background-color: #f8f8f8;
              background-position: 10px 5px;
@@ -58915,6 +60891,7 @@ final,                   % or draft (marks overfull hboxes)
 \usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
+
 \usepackage{ptex2tex}
 
 % #ifndef MOVIE
@@ -70072,6 +72049,9 @@ figure file ../doc/src/manual/fig/wave1D:
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ... found!
 
 exporting publish database papers.pub to papers.bib:
+*** made link to new HTML file wave.html with code to display the movie ../doc/src/manual/mov/wave.ogg
+*** made link to new HTML file wave.html with code to display the movie ../doc/src/manual/mov/wave.mpeg
+*** made link to new HTML file wave.html with code to display the movie ../doc/src/manual/mov/wave.webm
 output in testdoc.p.tex
 + '[' 0 -ne 0 ']'
 + cp testdoc.p.tex testdoc_no_solutions.p.tex
@@ -70357,6 +72337,9 @@ figure file ../doc/src/manual/fig/wave1D:
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ... found!
 
 exporting publish database papers.pub to papers.bib:
+*** made link to new HTML file wave.html with code to display the movie ../doc/src/manual/mov/wave.ogg
+*** made link to new HTML file wave.html with code to display the movie ../doc/src/manual/mov/wave.mpeg
+*** made link to new HTML file wave.html with code to display the movie ../doc/src/manual/mov/wave.webm
 output in testdoc.p.tex
 + '[' 0 -ne 0 ']'
 + system doconce format pdflatex testdoc.do.txt --device=paper --examples_as_exercises --latex_double_hyphen
@@ -70439,6 +72422,9 @@ figure file ../doc/src/manual/fig/wave1D:
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ... found!
 
 exporting publish database papers.pub to papers.bib:
+*** made link to new HTML file wave.html with code to display the movie ../doc/src/manual/mov/wave.ogg
+*** made link to new HTML file wave.html with code to display the movie ../doc/src/manual/mov/wave.mpeg
+*** made link to new HTML file wave.html with code to display the movie ../doc/src/manual/mov/wave.webm
 *** warning: --latex_double_hyphen may lead to unwanted edits.
              search for all -- in the .p.tex file and check.
 output in testdoc.p.tex
@@ -70795,7 +72781,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 836.
+t line 837.
 
 
 
@@ -70815,7 +72801,7 @@ t line 836.
 
 
 
-t line 845.
+t line 846.
 
 
 
@@ -70835,7 +72821,7 @@ t line 845.
 
 
 
-t line 849.
+t line 850.
 
 
 
@@ -71526,7 +73512,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 836.
+t line 837.
 
 
 
@@ -71546,7 +73532,7 @@ t line 836.
 
 
 
-t line 845.
+t line 846.
 
 
 
@@ -71566,7 +73552,7 @@ t line 845.
 
 
 
-t line 849.
+t line 850.
 
 
 
@@ -72185,7 +74171,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 836.
+t line 837.
 
 
 
@@ -72205,7 +74191,7 @@ t line 836.
 
 
 
-t line 845.
+t line 846.
 
 
 
@@ -72225,7 +74211,7 @@ t line 845.
 
 
 
-t line 849.
+t line 850.
 
 
 
@@ -73124,6 +75110,9 @@ warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
 
 found info about 9 exercises, written to .testdoc.exerinfo
+*** made link to new HTML file wave.html with code to display the movie ../doc/src/manual/mov/wave.ogg
+*** made link to new HTML file wave.html with code to display the movie ../doc/src/manual/mov/wave.mpeg
+*** made link to new HTML file wave.html with code to display the movie ../doc/src/manual/mov/wave.webm
 output in testdoc.txt
 + '[' 0 -ne 0 ']'
 + system doconce format st testdoc.do.txt --examples_as_exercises
@@ -73179,6 +75168,9 @@ warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
 
 found info about 9 exercises, written to .testdoc.exerinfo
+*** made link to new HTML file wave.html with code to display the movie ../doc/src/manual/mov/wave.ogg
+*** made link to new HTML file wave.html with code to display the movie ../doc/src/manual/mov/wave.mpeg
+*** made link to new HTML file wave.html with code to display the movie ../doc/src/manual/mov/wave.webm
 output in testdoc.st
 + '[' 0 -ne 0 ']'
 + system doconce format sphinx testdoc.do.txt --examples_as_exercises
@@ -73534,6 +75526,9 @@ warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
 
 found info about 9 exercises, written to .testdoc.exerinfo
+*** made link to new HTML file wave.html with code to display the movie ../doc/src/manual/mov/wave.ogg
+*** made link to new HTML file wave.html with code to display the movie ../doc/src/manual/mov/wave.mpeg
+*** made link to new HTML file wave.html with code to display the movie ../doc/src/manual/mov/wave.webm
 output in testdoc.epytext
 + '[' 0 -ne 0 ']'
 + system doconce format pandoc testdoc.do.txt --examples_as_exercises
@@ -73676,6 +75671,9 @@ figure file ../doc/src/manual/fig/wave1D:
  ...for wikipedia/wikibooks you must upload image file df2s8765s_plot.png to
     common.wikimedia.org
  ...for now we use local file Df2s8765s plot.png
+*** made link to new HTML file wave.html with code to display the movie ../doc/src/manual/mov/wave.ogg
+*** made link to new HTML file wave.html with code to display the movie ../doc/src/manual/mov/wave.mpeg
+*** made link to new HTML file wave.html with code to display the movie ../doc/src/manual/mov/wave.webm
 *** warning: reference to label "my:eq1" in an equation does not work in MediaWiki
 output in testdoc.mwiki
 + '[' 0 -ne 0 ']'
@@ -73735,6 +75733,9 @@ found info about 9 exercises, written to .testdoc.exerinfo
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ... found!
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format cwiki
+*** made link to new HTML file wave.html with code to display the movie ../doc/src/manual/mov/wave.ogg
+*** made link to new HTML file wave.html with code to display the movie ../doc/src/manual/mov/wave.mpeg
+*** made link to new HTML file wave.html with code to display the movie ../doc/src/manual/mov/wave.webm
 output in testdoc.cwiki
 + '[' 0 -ne 0 ']'
 + system doconce format ipynb testdoc.do.txt --examples_as_exercises
@@ -73876,6 +75877,9 @@ NOTE: Place https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png
       or use the doconce script:
       doconce gwiki_figsubst.py mydoc.gwiki URL
 
+*** made link to new HTML file wave.html with code to display the movie ../doc/src/manual/mov/wave.ogg
+*** made link to new HTML file wave.html with code to display the movie ../doc/src/manual/mov/wave.mpeg
+*** made link to new HTML file wave.html with code to display the movie ../doc/src/manual/mov/wave.webm
 output in testdoc.gwiki
 + '[' 0 -ne 0 ']'
 + system doconce format latex testdoc.do.txt --examples_as_exercises
@@ -73958,6 +75962,9 @@ figure file ../doc/src/manual/fig/wave1D:
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ... found!
 
 exporting publish database papers.pub to papers.bib:
+*** made link to new HTML file wave.html with code to display the movie ../doc/src/manual/mov/wave.ogg
+*** made link to new HTML file wave.html with code to display the movie ../doc/src/manual/mov/wave.mpeg
+*** made link to new HTML file wave.html with code to display the movie ../doc/src/manual/mov/wave.webm
 output in testdoc.p.tex
 + '[' 0 -ne 0 ']'
 + system doconce ptex2tex testdoc -DBOOK -DLATEX_HEADING=traditional
@@ -74730,7 +76737,7 @@ running preprocess -DFORMAT=pdflatex -DDEVICE=screen  admon.do.txt > tmp_preproc
 translating doconce text in tmp_preprocess__admon.do.txt to pdflatex
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.pdf for format pdflatex
-*** error: wrong text size "illegal-size" specified in notice environment!
+*** warning: wrong text size "illegal-size" specified in notice environment!
     must be large or small - will be set to normal
 output in admon.p.tex
 + '[' 0 -ne 0 ']'
@@ -74778,7 +76785,9 @@ For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
 
 
-(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+(/usr/share/texlive/texmf-dist/tex/latex/fancybox/fancybox.sty
+Style option: `fancybox' v1.4 <2010/05/15> (tvz)
+) (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
 <2008/02/07> (tvz)) (/home/hpl/texmf/tex/latex/misc/minted.sty
 
@@ -74829,33 +76838,33 @@ No file admon_colors1.aux.
 
 
 (./admon_colors1.out.pyg)
-<latex_figs/warning.pdf, id=4, 89.33376pt x 89.33376pt>
-<use latex_figs/warning.pdf>
-Underfull \hbox (badness 10000) 
-
  [1{/var/lib/texmf/font
-s/map/pdftex/updmap/pdftex.map} <./latex_figs/warning.pdf>]
+s/map/pdftex/updmap/pdftex.map}] (./admon_colors1.out.pyg)
+<latex_figs/warning.pdf, id=19, 89.33376pt x 89.33376pt>
 <use latex_figs/warning.pdf>
 Underfull \hbox (badness 10000) 
 
 <use latex_figs/warning.pdf>
 Underfull \hbox (badness 10000) 
 
-
+[2 <./latex_figs/warning.pdf>] <use latex_figs/warning.pdf>
 Underfull \hbox (badness 10000) 
 
 
 Underfull \hbox (badness 10000) 
 
-<latex_figs/notice.pdf, id=22, 89.33376pt x 89.33376pt>
+
+Underfull \hbox (badness 10000) 
+
+<latex_figs/notice.pdf, id=34, 89.33376pt x 89.33376pt>
 <use latex_figs/notice.pdf>
 Underfull \hbox (badness 10000) 
 
 <use latex_figs/notice.pdf>
 Underfull \hbox (badness 10000) 
 
-[2 <./latex_figs/notice.pdf>]
-<latex_figs/question.pdf, id=37, 89.33376pt x 89.33376pt>
+[3 <./latex_figs/notice.pdf>]
+<latex_figs/question.pdf, id=47, 89.33376pt x 89.33376pt>
 <use latex_figs/question.pdf>
 Underfull \hbox (badness 10000) 
 
@@ -74868,23 +76877,19 @@ Underfull \hbox (badness 10000)
 (./admon_colors1.out.pyg) <use latex_figs/warning.pdf>
 Underfull \hbox (badness 10000) 
 
-[3 <./latex_figs/question.pdf>] <use latex_figs/notice.pdf>
+<use latex_figs/notice.pdf>
 Underfull \hbox (badness 10000) 
 
 (./admon_colors1.out.pyg) (./admon_colors1.out.pyg)
-<../doc/src/manual/fig/wave1D.pdf, id=50, 586.83241pt x 442.29242pt>
-<use ../doc/src/manual/fig/wave1D.pdf> [4]
-<latex_figs/summary.pdf, id=55, 89.33376pt x 89.33376pt>
+<../doc/src/manual/fig/wave1D.pdf, id=48, 586.83241pt x 442.29242pt>
+<use ../doc/src/manual/fig/wave1D.pdf> [4 <./latex_figs/question.pdf>] [5]
+<latex_figs/summary.pdf, id=65, 89.33376pt x 89.33376pt>
 <use latex_figs/summary.pdf>
 Underfull \hbox (badness 10000) 
 
-
-
-
-
-/src/manual/fig/wave1D.pdf>]
 No file admon_colors1.ind.
-[6 <./latex_figs/summary.pdf>] (./admon_colors1.aux)
+[6 <../doc/src/manual/fig/wave1D.pdf> <./latex_figs/summary.pdf>]
+(./admon_colors1.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -74917,6 +76922,7 @@ colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
+fancybox.sty    2010/05/15 1.4
 fancyvrb.sty    2008/02/07
   minted.sty    2010/01/27 v1.6 Yet another Pygments shim for LaTeX
    float.sty    2001/11/08 v1.3d Float enhancements (AL)
@@ -74979,8 +76985,9 @@ newcommands_replace.tex
     umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 admon_colors1.out.pyg
-latex_figs/warning.pdf
   omscmr.fd    1999/05/25 v2.5h Standard LaTeX font definitions
+admon_colors1.out.pyg
+latex_figs/warning.pdf
 latex_figs/warning.pdf
 latex_figs/warning.pdf
 latex_figs/notice.pdf
@@ -75007,13 +77014,17 @@ Package rerunfilecheck Warning: File `admon_colors1.out' has changed.
 ist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fo
 nts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/ty
 pe1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-r7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><
-/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/s
-hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/share/te
-xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
+blic/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+r12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/te
+xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/share/texlive/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmtt9.pfb>
 Output written on admon_colors1.pdf (6 pages, ).
 Transcript written on admon_colors1.log.
 + for admon_tp in '$admon_tps'
@@ -75023,7 +77034,7 @@ running preprocess -DFORMAT=pdflatex -DDEVICE=screen  admon.do.txt > tmp_preproc
 translating doconce text in tmp_preprocess__admon.do.txt to pdflatex
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.pdf for format pdflatex
-*** error: wrong text size "illegal-size" specified in notice environment!
+*** warning: wrong text size "illegal-size" specified in notice environment!
     must be large or small - will be set to normal
 output in admon.p.tex
 + '[' 0 -ne 0 ']'
@@ -75071,7 +77082,9 @@ For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
 
 
-(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+(/usr/share/texlive/texmf-dist/tex/latex/fancybox/fancybox.sty
+Style option: `fancybox' v1.4 <2010/05/15> (tvz)
+) (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
 <2008/02/07> (tvz)) (/home/hpl/texmf/tex/latex/misc/minted.sty
 
@@ -75213,46 +77226,11 @@ ABD: EveryShipout initializing macros (./newcommands_bfmath.tex)
 
 
 (./admon_graybox1.out.pyg)
-
-
-
-...rest of part of LaTeX line number...
-
-[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+ [1{/var/lib/texmf/font
+s/map/pdftex/updmap/pdftex.map}] (./admon_graybox1.out.pyg)
 
 
 ...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-Package mdframed Warning: You got a bad break
-(mdframed)                because the last box will be empty
-(mdframed)                you have to change it manually
-(mdframed)                by changing the text, the space
-(mdframed)                or something else on .
 
 
 
@@ -75263,7 +77241,31 @@ Package mdframed Warning: You got a bad break
 
 ...rest of part of LaTeX line number...
 
-(./admon_graybox1.out.pyg)
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+(./admon_graybox1.out.pyg) [3]
 
 
 ...rest of part of LaTeX line number...
@@ -75273,13 +77275,8 @@ Package mdframed Warning: You got a bad break
 ...rest of part of LaTeX line number...
 
 (./admon_graybox1.out.pyg) (./admon_graybox1.out.pyg)
-<../doc/src/manual/fig/wave1D.pdf, id=31, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=41, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf>
-
-
-...rest of part of LaTeX line number...
-
-[3]
 
 
 ...rest of part of LaTeX line number...
@@ -75289,12 +77286,17 @@ Package mdframed Warning: You got a bad break
 
 ...rest of part of LaTeX line number...
 
+[5]
+
+
+...rest of part of LaTeX line number...
+
 
 
 ...rest of part of LaTeX line number...
 
 No file admon_graybox1.ind.
-[5 <../doc/src/manual/fig/wave1D.pdf>] (./admon_graybox1.aux)
+[6 <../doc/src/manual/fig/wave1D.pdf>] (./admon_graybox1.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -75327,6 +77329,7 @@ colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
+fancybox.sty    2010/05/15 1.4
 fancyvrb.sty    2008/02/07
   minted.sty    2010/01/27 v1.6 Yet another Pygments shim for LaTeX
    float.sty    2001/11/08 v1.3d Float enhancements (AL)
@@ -75441,6 +77444,7 @@ admon_graybox1.out.pyg
 admon_graybox1.out.pyg
 admon_graybox1.out.pyg
 admon_graybox1.out.pyg
+admon_graybox1.out.pyg
 ../doc/src/manual/fig/wave1D.pdf
  ***********
 
@@ -75458,15 +77462,18 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
  )</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmti8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-tt9.pfb>
-Output written on admon_graybox1.pdf (5 pages, ).
+ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/font
+s/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+sy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pf
+b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
+Output written on admon_graybox1.pdf (6 pages, ).
 Transcript written on admon_graybox1.log.
 + for admon_tp in '$admon_tps'
 + system doconce format pdflatex admon --latex_admon=paragraph
@@ -75475,7 +77482,7 @@ running preprocess -DFORMAT=pdflatex -DDEVICE=screen  admon.do.txt > tmp_preproc
 translating doconce text in tmp_preprocess__admon.do.txt to pdflatex
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.pdf for format pdflatex
-*** error: wrong text size "illegal-size" specified in notice environment!
+*** warning: wrong text size "illegal-size" specified in notice environment!
     must be large or small - will be set to normal
 output in admon.p.tex
 + '[' 0 -ne 0 ']'
@@ -75523,7 +77530,9 @@ For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
 
 
-(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+(/usr/share/texlive/texmf-dist/tex/latex/fancybox/fancybox.sty
+Style option: `fancybox' v1.4 <2010/05/15> (tvz)
+) (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
 <2008/02/07> (tvz)) (/home/hpl/texmf/tex/latex/misc/minted.sty
 
@@ -75667,11 +77676,12 @@ ABD: EveryShipout initializing macros (./newcommands_bfmath.tex)
 (./admon_paragraph.out.pyg)
  [1{/var/lib/texmf/font
 s/map/pdftex/updmap/pdftex.map}] (./admon_paragraph.out.pyg) [2]
-(./admon_paragraph.out.pyg) (./admon_paragraph.out.pyg [3])
-<../doc/src/manual/fig/wave1D.pdf, id=50, 586.83241pt x 442.29242pt>
+(./admon_paragraph.out.pyg) [3] (./admon_paragraph.out.pyg)
+(./admon_paragraph.out.pyg [4])
+<../doc/src/manual/fig/wave1D.pdf, id=60, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf>
 No file admon_paragraph.ind.
-[4 <../doc/src/manual/fig/wave1D.pdf>] [5] (./admon_paragraph.aux)
+[5 <../doc/src/manual/fig/wave1D.pdf>] (./admon_paragraph.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -75704,6 +77714,7 @@ colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
+fancybox.sty    2010/05/15 1.4
 fancyvrb.sty    2008/02/07
   minted.sty    2010/01/27 v1.6 Yet another Pygments shim for LaTeX
    float.sty    2001/11/08 v1.3d Float enhancements (AL)
@@ -75818,6 +77829,7 @@ admon_paragraph.out.pyg
 admon_paragraph.out.pyg
 admon_paragraph.out.pyg
 admon_paragraph.out.pyg
+admon_paragraph.out.pyg
 ../doc/src/manual/fig/wave1D.pdf
  ***********
 
@@ -75829,14 +77841,17 @@ Package rerunfilecheck Warning: File `admon_paragraph.out' has changed.
  )</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmti8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-tt9.pfb>
+ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/font
+s/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+sy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pf
+b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
 Output written on admon_paragraph.pdf (5 pages, ).
 Transcript written on admon_paragraph.log.
 + for admon_tp in '$admon_tps'
@@ -75846,7 +77861,7 @@ running preprocess -DFORMAT=pdflatex -DDEVICE=screen  admon.do.txt > tmp_preproc
 translating doconce text in tmp_preprocess__admon.do.txt to pdflatex
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.pdf for format pdflatex
-*** error: wrong text size "illegal-size" specified in notice environment!
+*** warning: wrong text size "illegal-size" specified in notice environment!
     must be large or small - will be set to normal
 output in admon.p.tex
 + '[' 0 -ne 0 ']'
@@ -75894,7 +77909,9 @@ For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
 
 
-(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+(/usr/share/texlive/texmf-dist/tex/latex/fancybox/fancybox.sty
+Style option: `fancybox' v1.4 <2010/05/15> (tvz)
+) (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
 <2008/02/07> (tvz)) (/home/hpl/texmf/tex/latex/misc/minted.sty
 
@@ -76037,46 +78054,11 @@ ABD: EveryShipout initializing macros (./newcommands_bfmath.tex)
 
 
 (./admon_graybox2.out.pyg)
-
-
-
-...rest of part of LaTeX line number...
-
-[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+ [1{/var/lib/texmf/font
+s/map/pdftex/updmap/pdftex.map}] (./admon_graybox2.out.pyg)
 
 
 ...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-Package mdframed Warning: You got a bad break
-(mdframed)                because the last box will be empty
-(mdframed)                you have to change it manually
-(mdframed)                by changing the text, the space
-(mdframed)                or something else on .
 
 
 
@@ -76087,7 +78069,31 @@ Package mdframed Warning: You got a bad break
 
 ...rest of part of LaTeX line number...
 
-(./admon_graybox2.out.pyg)
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+(./admon_graybox2.out.pyg) [3]
 
 
 ...rest of part of LaTeX line number...
@@ -76097,13 +78103,8 @@ Package mdframed Warning: You got a bad break
 ...rest of part of LaTeX line number...
 
 (./admon_graybox2.out.pyg) (./admon_graybox2.out.pyg)
-<../doc/src/manual/fig/wave1D.pdf, id=31, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=41, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf>
-
-
-...rest of part of LaTeX line number...
-
-[3]
 
 
 ...rest of part of LaTeX line number...
@@ -76113,8 +78114,13 @@ Package mdframed Warning: You got a bad break
 
 ...rest of part of LaTeX line number...
 
+[5]
+
+
+...rest of part of LaTeX line number...
+
 No file admon_graybox2.ind.
-[5 <../doc/src/manual/fig/wave1D.pdf>] (./admon_graybox2.aux)
+[6 <../doc/src/manual/fig/wave1D.pdf>] (./admon_graybox2.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -76147,6 +78153,7 @@ colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
+fancybox.sty    2010/05/15 1.4
 fancyvrb.sty    2008/02/07
   minted.sty    2010/01/27 v1.6 Yet another Pygments shim for LaTeX
    float.sty    2001/11/08 v1.3d Float enhancements (AL)
@@ -76262,6 +78269,7 @@ admon_graybox2.out.pyg
 admon_graybox2.out.pyg
 admon_graybox2.out.pyg
 admon_graybox2.out.pyg
+admon_graybox2.out.pyg
 ../doc/src/manual/fig/wave1D.pdf
  ***********
 
@@ -76279,15 +78287,18 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
  )</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmti8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-tt9.pfb>
-Output written on admon_graybox2.pdf (5 pages, ).
+ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/font
+s/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+sy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pf
+b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
+Output written on admon_graybox2.pdf (6 pages, ).
 Transcript written on admon_graybox2.log.
 + for admon_tp in '$admon_tps'
 + system doconce format pdflatex admon --latex_admon=yellowbox
@@ -76296,7 +78307,7 @@ running preprocess -DFORMAT=pdflatex -DDEVICE=screen  admon.do.txt > tmp_preproc
 translating doconce text in tmp_preprocess__admon.do.txt to pdflatex
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.pdf for format pdflatex
-*** error: wrong text size "illegal-size" specified in notice environment!
+*** warning: wrong text size "illegal-size" specified in notice environment!
     must be large or small - will be set to normal
 output in admon.p.tex
 + '[' 0 -ne 0 ']'
@@ -76344,7 +78355,9 @@ For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
 
 
-(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+(/usr/share/texlive/texmf-dist/tex/latex/fancybox/fancybox.sty
+Style option: `fancybox' v1.4 <2010/05/15> (tvz)
+) (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
 <2008/02/07> (tvz)) (/home/hpl/texmf/tex/latex/misc/minted.sty
 
@@ -76396,32 +78409,32 @@ No file admon_yellowbox.aux.
 
 
 (./admon_yellowbox.out.pyg)
-<latex_figs/small_yellow_warning.pdf, id=4, 32.12pt x 32.12pt>
-<use latex_figs/small_yellow_warning.pdf>
  [1{/var/lib/texmf/font
-s/map/pdftex/updmap/pdftex.map} <./latex_figs/small_yellow_warning.pdf>]
+s/map/pdftex/updmap/pdftex.map}] (./admon_yellowbox.out.pyg)
+<latex_figs/small_yellow_warning.pdf, id=19, 32.12pt x 32.12pt>
 <use latex_figs/small_yellow_warning.pdf>
-<use latex_figs/small_yellow_warning.pdf>
-<latex_figs/small_yellow_notice.pdf, id=24, 32.12pt x 32.12pt>
+<use latex_figs/small_yellow_warning.pdf> [2 <./latex_figs/small_yellow_warning
+.pdf>] <use latex_figs/small_yellow_warning.pdf>
+<latex_figs/small_yellow_notice.pdf, id=37, 32.12pt x 32.12pt>
 <use latex_figs/small_yellow_notice.pdf>
 <use latex_figs/small_yellow_notice.pdf>
-<latex_figs/small_yellow_question.pdf, id=25, 32.12pt x 32.12pt>
-<use latex_figs/small_yellow_question.pdf> [2 <./latex_figs/small_yellow_notice
-.pdf> <./latex_figs/small_yellow_question.pdf>]
+<latex_figs/small_yellow_question.pdf, id=38, 32.12pt x 32.12pt>
 <use latex_figs/small_yellow_question.pdf>
+<use latex_figs/small_yellow_question.pdf> [3 <./latex_figs/small_yellow_notice
+.pdf> <./latex_figs/small_yellow_question.pdf>]
 <use latex_figs/small_yellow_warning.pdf> (./admon_yellowbox.out.pyg)
 <use latex_figs/small_yellow_warning.pdf>
 <use latex_figs/small_yellow_notice.pdf> (./admon_yellowbox.out.pyg)
 (./admon_yellowbox.out.pyg)
-<../doc/src/manual/fig/wave1D.pdf, id=48, 586.83241pt x 442.29242pt>
-<use ../doc/src/manual/fig/wave1D.pdf>
+<../doc/src/manual/fig/wave1D.pdf, id=59, 586.83241pt x 442.29242pt>
+<use ../doc/src/manual/fig/wave1D.pdf> [4]
 
 
 
-[4] <latex_figs/small_yellow_summary.pdf, id=61, 32.12pt x 32.12pt>
+[5] <latex_figs/small_yellow_summary.pdf, id=71, 32.12pt x 32.12pt>
 <use latex_figs/small_yellow_summary.pdf>
 No file admon_yellowbox.ind.
-[5 <../doc/src/manual/fig/wave1D.pdf> <./latex_figs/small_yellow_summary.pdf>]
+[6 <../doc/src/manual/fig/wave1D.pdf> <./latex_figs/small_yellow_summary.pdf>]
 (./admon_yellowbox.aux)
 
  *File List*
@@ -76455,6 +78468,7 @@ colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
+fancybox.sty    2010/05/15 1.4
 fancyvrb.sty    2008/02/07
   minted.sty    2010/01/27 v1.6 Yet another Pygments shim for LaTeX
    float.sty    2001/11/08 v1.3d Float enhancements (AL)
@@ -76518,8 +78532,9 @@ newcommands_replace.tex
     umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 admon_yellowbox.out.pyg
-latex_figs/small_yellow_warning.pdf
   omscmr.fd    1999/05/25 v2.5h Standard LaTeX font definitions
+admon_yellowbox.out.pyg
+latex_figs/small_yellow_warning.pdf
 latex_figs/small_yellow_warning.pdf
 latex_figs/small_yellow_warning.pdf
 latex_figs/small_yellow_notice.pdf
@@ -76546,14 +78561,18 @@ Package rerunfilecheck Warning: File `admon_yellowbox.out' has changed.
 ist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fo
 nts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/ty
 pe1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-r7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><
-/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/s
-hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/share/te
-xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on admon_yellowbox.pdf (5 pages, ).
+blic/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+r12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/te
+xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/share/texlive/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmtt9.pfb>
+Output written on admon_yellowbox.pdf (6 pages, ).
 Transcript written on admon_yellowbox.log.
 + for admon_tp in '$admon_tps'
 + system doconce format pdflatex admon --latex_admon=graybox3
@@ -76562,7 +78581,7 @@ running preprocess -DFORMAT=pdflatex -DDEVICE=screen  admon.do.txt > tmp_preproc
 translating doconce text in tmp_preprocess__admon.do.txt to pdflatex
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.pdf for format pdflatex
-*** error: wrong text size "illegal-size" specified in notice environment!
+*** warning: wrong text size "illegal-size" specified in notice environment!
     must be large or small - will be set to normal
 output in admon.p.tex
 + '[' 0 -ne 0 ']'
@@ -76610,7 +78629,9 @@ For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
 
 
-(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+(/usr/share/texlive/texmf-dist/tex/latex/fancybox/fancybox.sty
+Style option: `fancybox' v1.4 <2010/05/15> (tvz)
+) (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
 <2008/02/07> (tvz)) (/home/hpl/texmf/tex/latex/misc/minted.sty
 
@@ -76662,30 +78683,30 @@ No file admon_graybox3.aux.
 
 
 (./admon_graybox3.out.pyg)
-<latex_figs/small_gray_warning.pdf, id=4, 48.18pt x 48.18pt>
-<use latex_figs/small_gray_warning.pdf>
  [1{/var/lib/texmf/font
-s/map/pdftex/updmap/pdftex.map} <./latex_figs/small_gray_warning.pdf>]
+s/map/pdftex/updmap/pdftex.map}] (./admon_graybox3.out.pyg)
+<latex_figs/small_gray_warning.pdf, id=19, 48.18pt x 48.18pt>
 <use latex_figs/small_gray_warning.pdf>
-<use latex_figs/small_gray_warning.pdf>
-<latex_figs/small_gray_notice.pdf, id=24, 64.24pt x 64.24pt>
+<use latex_figs/small_gray_warning.pdf> [2 <./latex_figs/small_gray_warning.pdf
+>] <use latex_figs/small_gray_warning.pdf>
+<latex_figs/small_gray_notice.pdf, id=37, 64.24pt x 64.24pt>
 <use latex_figs/small_gray_notice.pdf> <use latex_figs/small_gray_notice.pdf>
-<latex_figs/small_gray_question2.pdf, id=25, 64.24pt x 64.24pt>
-<use latex_figs/small_gray_question2.pdf> [2 <./latex_figs/small_gray_notice.pd
-f> <./latex_figs/small_gray_question2.pdf>]
+<latex_figs/small_gray_question2.pdf, id=38, 64.24pt x 64.24pt>
 <use latex_figs/small_gray_question2.pdf>
+<use latex_figs/small_gray_question2.pdf> [3 <./latex_figs/small_gray_notice.pd
+f> <./latex_figs/small_gray_question2.pdf>]
 <use latex_figs/small_gray_warning.pdf> (./admon_graybox3.out.pyg)
 <use latex_figs/small_gray_warning.pdf> <use latex_figs/small_gray_notice.pdf>
 (./admon_graybox3.out.pyg) (./admon_graybox3.out.pyg)
-<../doc/src/manual/fig/wave1D.pdf, id=48, 586.83241pt x 442.29242pt>
-<use ../doc/src/manual/fig/wave1D.pdf>
+<../doc/src/manual/fig/wave1D.pdf, id=59, 586.83241pt x 442.29242pt>
+<use ../doc/src/manual/fig/wave1D.pdf> [4]
 
 
 
-[4] <latex_figs/small_gray_summary.pdf, id=61, 48.18pt x 48.18pt>
+[5] <latex_figs/small_gray_summary.pdf, id=71, 48.18pt x 48.18pt>
 <use latex_figs/small_gray_summary.pdf>
 No file admon_graybox3.ind.
-[5 <../doc/src/manual/fig/wave1D.pdf> <./latex_figs/small_gray_summary.pdf>]
+[6 <../doc/src/manual/fig/wave1D.pdf> <./latex_figs/small_gray_summary.pdf>]
 (./admon_graybox3.aux)
 
  *File List*
@@ -76719,6 +78740,7 @@ colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
+fancybox.sty    2010/05/15 1.4
 fancyvrb.sty    2008/02/07
   minted.sty    2010/01/27 v1.6 Yet another Pygments shim for LaTeX
    float.sty    2001/11/08 v1.3d Float enhancements (AL)
@@ -76782,8 +78804,9 @@ newcommands_replace.tex
     umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 admon_graybox3.out.pyg
-latex_figs/small_gray_warning.pdf
   omscmr.fd    1999/05/25 v2.5h Standard LaTeX font definitions
+admon_graybox3.out.pyg
+latex_figs/small_gray_warning.pdf
 latex_figs/small_gray_warning.pdf
 latex_figs/small_gray_warning.pdf
 latex_figs/small_gray_notice.pdf
@@ -76810,14 +78833,18 @@ Package rerunfilecheck Warning: File `admon_graybox3.out' has changed.
 ist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fo
 nts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/ty
 pe1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-r7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><
-/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/s
-hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/share/te
-xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on admon_graybox3.pdf (5 pages, ).
+blic/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+r12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/te
+xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/share/texlive/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmtt9.pfb>
+Output written on admon_graybox3.pdf (6 pages, ).
 Transcript written on admon_graybox3.log.
 + for admon_tp in '$admon_tps'
 + system doconce format pdflatex admon --latex_admon=colors2
@@ -76826,7 +78853,7 @@ running preprocess -DFORMAT=pdflatex -DDEVICE=screen  admon.do.txt > tmp_preproc
 translating doconce text in tmp_preprocess__admon.do.txt to pdflatex
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.pdf for format pdflatex
-*** error: wrong text size "illegal-size" specified in notice environment!
+*** warning: wrong text size "illegal-size" specified in notice environment!
     must be large or small - will be set to normal
 output in admon.p.tex
 + '[' 0 -ne 0 ']'
@@ -76874,7 +78901,9 @@ For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
 
 
-(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+(/usr/share/texlive/texmf-dist/tex/latex/fancybox/fancybox.sty
+Style option: `fancybox' v1.4 <2010/05/15> (tvz)
+) (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
 <2008/02/07> (tvz)) (/home/hpl/texmf/tex/latex/misc/minted.sty
 
@@ -76926,27 +78955,27 @@ No file admon_colors2.aux.
 
 
 (./admon_colors2.out.pyg)
-<latex_figs/warning.pdf, id=4, 89.33376pt x 89.33376pt>
-<use latex_figs/warning.pdf>
  [1{/var/lib/texmf/font
-s/map/pdftex/updmap/pdftex.map} <./latex_figs/warning.pdf>]
-<use latex_figs/warning.pdf> <use latex_figs/warning.pdf>
-<latex_figs/notice.pdf, id=22, 89.33376pt x 89.33376pt>
+s/map/pdftex/updmap/pdftex.map}] (./admon_colors2.out.pyg)
+<latex_figs/warning.pdf, id=19, 89.33376pt x 89.33376pt>
+<use latex_figs/warning.pdf> <use latex_figs/warning.pdf> [2 <./latex_figs/warn
+ing.pdf>] <use latex_figs/warning.pdf>
+<latex_figs/notice.pdf, id=35, 89.33376pt x 89.33376pt>
 <use latex_figs/notice.pdf> <use latex_figs/notice.pdf>
-<latex_figs/question.pdf, id=23, 89.33376pt x 89.33376pt>
-<use latex_figs/question.pdf> [2 <./latex_figs/notice.pdf> <./latex_figs/questi
-on.pdf>] <use latex_figs/question.pdf> <use latex_figs/warning.pdf>
+<latex_figs/question.pdf, id=36, 89.33376pt x 89.33376pt>
+<use latex_figs/question.pdf> <use latex_figs/question.pdf> [3 <./latex_figs/no
+tice.pdf> <./latex_figs/question.pdf>] <use latex_figs/warning.pdf>
 (./admon_colors2.out.pyg) <use latex_figs/warning.pdf>
 <use latex_figs/notice.pdf> (./admon_colors2.out.pyg) (./admon_colors2.out.pyg)
-<../doc/src/manual/fig/wave1D.pdf, id=42, 586.83241pt x 442.29242pt>
-<use ../doc/src/manual/fig/wave1D.pdf>
+<../doc/src/manual/fig/wave1D.pdf, id=53, 586.83241pt x 442.29242pt>
+<use ../doc/src/manual/fig/wave1D.pdf> [4]
 
 
 
-[4] <latex_figs/summary.pdf, id=55, 89.33376pt x 89.33376pt>
+[5] <latex_figs/summary.pdf, id=65, 89.33376pt x 89.33376pt>
 <use latex_figs/summary.pdf>
 No file admon_colors2.ind.
-[5 <../doc/src/manual/fig/wave1D.pdf> <./latex_figs/summary.pdf>]
+[6 <../doc/src/manual/fig/wave1D.pdf> <./latex_figs/summary.pdf>]
 (./admon_colors2.aux)
 
  *File List*
@@ -76980,6 +79009,7 @@ colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
+fancybox.sty    2010/05/15 1.4
 fancyvrb.sty    2008/02/07
   minted.sty    2010/01/27 v1.6 Yet another Pygments shim for LaTeX
    float.sty    2001/11/08 v1.3d Float enhancements (AL)
@@ -77043,8 +79073,9 @@ newcommands_replace.tex
     umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 admon_colors2.out.pyg
-latex_figs/warning.pdf
   omscmr.fd    1999/05/25 v2.5h Standard LaTeX font definitions
+admon_colors2.out.pyg
+latex_figs/warning.pdf
 latex_figs/warning.pdf
 latex_figs/warning.pdf
 latex_figs/notice.pdf
@@ -77071,14 +79102,18 @@ Package rerunfilecheck Warning: File `admon_colors2.out' has changed.
 ist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fo
 nts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/ty
 pe1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-r7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><
-/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/s
-hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/share/te
-xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on admon_colors2.pdf (5 pages, ).
+blic/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+r12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/te
+xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/share/texlive/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmtt9.pfb>
+Output written on admon_colors2.pdf (6 pages, ).
 Transcript written on admon_colors2.log.
 + system doconce format html admon --html_admon=lyx --html_style=blueish2
 + doconce format html admon --html_admon=lyx --html_style=blueish2
@@ -77087,7 +79122,7 @@ translating doconce text in tmp_preprocess__admon.do.txt to html
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
-*** error: wrong text size "illegal-size" specified in notice environment!
+*** warning: wrong text size "illegal-size" specified in notice environment!
     must be large or small - will be set to normal
 output in admon.html
 + '[' 0 -ne 0 ']'
@@ -77099,7 +79134,7 @@ translating doconce text in tmp_preprocess__admon.do.txt to html
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
-*** error: wrong text size "illegal-size" specified in notice environment!
+*** warning: wrong text size "illegal-size" specified in notice environment!
     must be large or small - will be set to normal
 output in admon.html
 + '[' 0 -ne 0 ']'
@@ -77111,31 +79146,31 @@ translating doconce text in tmp_preprocess__admon.do.txt to html
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
-*** error: wrong text size "illegal-size" specified in notice environment!
+*** warning: wrong text size "illegal-size" specified in notice environment!
     must be large or small - will be set to normal
 output in admon.html
 + '[' 0 -ne 0 ']'
 + cp admon.html admon_colors.html
-+ system doconce format html admon --html_admon=gray --html_style=blueish2
-+ doconce format html admon --html_admon=gray --html_style=blueish2
++ system doconce format html admon --html_admon=gray --html_style=blueish2 --html_admon_shadow --html_box_shadow
++ doconce format html admon --html_admon=gray --html_style=blueish2 --html_admon_shadow --html_box_shadow
 running preprocess -DFORMAT=html -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to html
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
-*** error: wrong text size "illegal-size" specified in notice environment!
+*** warning: wrong text size "illegal-size" specified in notice environment!
     must be large or small - will be set to normal
 output in admon.html
 + '[' 0 -ne 0 ']'
 + cp admon.html admon_gray.html
-+ system doconce format html admon --html_admon=yellow
-+ doconce format html admon --html_admon=yellow
++ system doconce format html admon --html_admon=yellow --html_admon_shadow --html_box_shadow
++ doconce format html admon --html_admon=yellow --html_admon_shadow --html_box_shadow
 running preprocess -DFORMAT=html -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to html
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
-*** error: wrong text size "illegal-size" specified in notice environment!
+*** warning: wrong text size "illegal-size" specified in notice environment!
     must be large or small - will be set to normal
 output in admon.html
 + '[' 0 -ne 0 ']'
@@ -77147,7 +79182,7 @@ translating doconce text in tmp_preprocess__admon.do.txt to html
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
-*** error: wrong text size "illegal-size" specified in notice environment!
+*** warning: wrong text size "illegal-size" specified in notice environment!
     must be large or small - will be set to normal
 output in admon.html
 + '[' 0 -ne 0 ']'
@@ -77164,7 +79199,7 @@ figure file ../doc/src/manual/fig/wave1D:
              it is recommended to comment out all authors: #AUTHOR.
              Better to hardcode authors in a footer in the template.
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
-*** error: wrong text size "illegal-size" specified in notice environment!
+*** warning: wrong text size "illegal-size" specified in notice environment!
     must be large or small - will be set to normal
 output in admon.html
 + '[' 0 -ne 0 ']'
@@ -77247,7 +79282,7 @@ translating doconce text in tmp_preprocess__admon.do.txt to sphinx
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format sphinx
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
-*** error: wrong text size "illegal-size" specified in notice environment!
+*** warning: wrong text size "illegal-size" specified in notice environment!
     must be large or small - will be set to normal
 output in admon.rst
 rm -rf _build/*
@@ -77260,6 +79295,7 @@ updating environment: 2 added, 0 changed, 0 removed
 reading sources... [ 50%] admon
 reading sources... [100%] index
 
+/home/hpl/vc/doconce/test/tmp_admon/admon.rst:80: WARNING: Explicit markup ends without a blank line; unexpected unindent.
 looking for now-outdated files... none found
 pickling environment... done
 checking consistency... done
@@ -77273,7 +79309,7 @@ copying images... [100%] wave1D.png
 copying static files... done
 dumping search index... done
 dumping object inventory... done
-build succeeded.
+build succeeded, 1 warning.
 
 Build finished. The HTML pages are in _build/html.
 <title>(.+?) &mdash;.+?</title> replaced by <title>\g<1></title> in search.html
@@ -77328,7 +79364,8 @@ Fix generated files:
 google-chrome tmp_admon/_build/html/index.html
 
 + '[' 0 -ne 0 ']'
-+ cp tmp_admon/_build/html/admon.html admon_sphinx.html
++ rm -rf admon_sphinx
++ cp -r tmp_admon/_build/html admon_sphinx
 + system doconce format mwiki admon
 + doconce format mwiki admon
 running preprocess -DFORMAT=mwiki -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
@@ -77339,7 +79376,7 @@ figure file ../doc/src/manual/fig/wave1D:
  ...for wikipedia/wikibooks you must upload image file wave1D.png to
     common.wikimedia.org
  ...for now we use local file Wave1D.png
-*** error: wrong text size "illegal-size" specified in notice environment!
+*** warning: wrong text size "illegal-size" specified in notice environment!
     must be large or small - will be set to normal
 output in admon.mwiki
 + '[' 0 -ne 0 ']'
@@ -77589,6 +79626,7 @@ figure file http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media
     can use http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png for format pdflatex
 ... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png ... found!
 *** warning: you have citations but no bibliography (BIBFILE: ...)
+*** made link to new HTML file movie99x9.html with code to display the movie http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.ogg
 output in tmp2.p.tex
 + doconce format sphinx tmp2
 translating doconce text in tmp2.do.txt to sphinx
@@ -77633,6 +79671,7 @@ figure file http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media
     can use http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png for format pdflatex
 ... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png ... found!
 *** warning: you have citations but no bibliography (BIBFILE: ...)
+*** made link to new HTML file movie.html with code to display the movie http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.ogg
 output in tmp2.p.tex
 + echo
 

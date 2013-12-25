@@ -342,6 +342,20 @@ def rst_index_bib(filestr, index, citations, pubfile, pubdata):
 
     return filestr
 
+def rst_box(block, format, text_size='normal'):
+    return """
+.. The below box could be typeset as .. admonition: Attention
+   but we have decided not to do so (the box formatting is just ignored)
+..
+
+%s
+""" % block
+#    return rst_quote(block, format, text_size)
+#    return """
+#.. addmonition:: some title
+#%s
+#""" % (indent_lines(block, format, ' '*4))
+
 def rst_quote(block, format, text_size='normal'):
     # Insert empty comment to distinguish from possibly
     # previous list, code, etc.
@@ -467,6 +481,7 @@ def define(FILENAME_EXTENSION,
         'notice':        rst_notice,
         'summary':       rst_summary,
         'block':         rst_block,
+        'box':           rst_box,
         }
 
     CODE['rst'] = rst_code  # function for typesetting code

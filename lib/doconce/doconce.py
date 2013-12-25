@@ -30,10 +30,17 @@ def doconce_envirs():                     # begin-end environments
             'ans', 'sol', 'subex',        # exercises
             'pop', 'slidecell', 'notes',  # slides
             'hint', 'remarks',            # exercises
-            'quote',
-            'notice', 'summary', 'warning', 'question', 'block']  # admon
+            'quote', 'box',
+            'notice', 'summary', 'warning', 'question', 'block', # admon
+            ]
 
 admons = 'notice', 'summary', 'warning', 'question', 'block'
+
+main_content_char = '-'
+main_content_begin = main_content_char*19 + ' main content ' + \
+                     main_content_char*22
+main_content_end = main_content_char*19 + ' end of main content ' + \
+                   main_content_char*15
 
 #----------------------------------------------------------------------------
 # Translators: (do not include, use import as shown above)
@@ -1256,7 +1263,7 @@ def typeset_envirs(filestr, format):
                     text_size = m2.group(1).lower()
                     title = title.replace('(%s)' % text_size, '').strip()
                     if text_size not in ('small', 'large'):
-                        print '*** error: wrong text size "%s" specified in %s environment!' % (text_size, envir)
+                        print '*** warning: wrong text size "%s" specified in %s environment!' % (text_size, envir)
                         print '    must be large or small - will be set to normal'
                 if title == '':
                     # Rely on the format's default title
@@ -1265,7 +1272,8 @@ def typeset_envirs(filestr, format):
                     return ENVIRS[format][envir](m.group(2), format, title, text_size=text_size)
         else:
             # subst functions for default handling in primitive formats
-            if envir == 'quote':
+            if envir in ('quote', 'box'):
+                # Just indent the block
                 def subst(m):
                     return indent_lines(m.group(1), format, ' '*4) + '\n'
             elif envir in admons + ('hint', 'remarks'):
@@ -2383,10 +2391,10 @@ def doconce2format(filestr, format):
     # puts the main body inside a user-given HTML template or LaTeX template).
     if format in ('latex', 'pdflatex', 'html'):
         comment_pattern = INLINE_TAGS_SUBST[format]['comment']
-        delimiter = '------------------- main content ----------------------'
+        delimiter = main_content_begin
         delimiter = '\n' + comment_pattern % delimiter + '\n'  # wrap as comment
         filestr = delimiter + '\n' + filestr
-        delimiter = '------------------- end of main content ---------------'
+        delimiter = main_content_end
         delimiter = comment_pattern % delimiter + '\n'  # wrap as comment
         filestr = filestr + '\n' + delimiter
     if has_title and not option('no_header_footer') and \
