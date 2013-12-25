@@ -254,6 +254,7 @@ cp -r tmp_admon/_build/html admon_sphinx
 
 system doconce format mwiki admon
 cp admon.mwiki admon_mwiki.mwiki
+mv -f admon_* admon/
 
 system doconce format pandoc github_md.do.txt --github_md
 
