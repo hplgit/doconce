@@ -803,6 +803,7 @@ def html_movie(m):
         text = """
 <p><a href="%s">Movie of files <tt>%s</tt></a>\n<em>%s</em></p>""" % \
                (moviehtml, filename, caption)
+        add_to_file_collection([moviehtml] + plotfiles)
         '''
     elif 'youtube.com' in filename:
         if not 'youtube.com/embed/' in filename:
