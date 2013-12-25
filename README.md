@@ -53,9 +53,7 @@ be used to [create slides](http://hplgit.github.io/doconce/doc/pub/slides/demo/i
 *Warning.* 
 These documents are under development...
 
-
-
- * Tutorial: [Sphinx](http://hplgit.github.io/doconce/doc/pub/tutorial/html/index.html),
+* Tutorial: [Sphinx](http://hplgit.github.io/doconce/doc/pub/tutorial/html/index.html),
    [HTML](http://hplgit.github.io/doconce/doc/pub/tutorial/tutorial.html),
    [PDF](http://hplgit.github.io/doconce/doc/pub/tutorial/tutorial.pdf)
 

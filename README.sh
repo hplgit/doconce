@@ -7,4 +7,6 @@ doconce format pandoc README --github_md
 # in README.do.txt should be propagated manually to the index.html page.
 doconce format html README
 doconce replace '<li>' '<p><li>' README.html
-# Copy the source manually into index.html
+cp README.html tmp.html
+rm -f README.html .*_html_file_collection
+# Copy the source manually from tmp.html into index.html
