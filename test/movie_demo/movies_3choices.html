@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="This is a demo of movies in Doconce">
+
+
+
+<style type="text/css">
+    /* blueish style */
+
+    /* Color definitions:  http://www.december.com/html/spec/color0.html
+       CSS examples:       http://www.w3schools.com/css/css_examples.asp */
+
+    body {
+      margin-top: 1.0em;
+      background-color: #ffffff;
+      font-family: Helvetica, Arial, FreeSans, san-serif;
+      color: #000000;
+    }
+    h1 { font-size: 1.8em; color: #1e36ce; }
+    h2 { font-size: 1.6em; color: #1e36ce; }
+    h3 { font-size: 1.4em; color: #1e36ce; }
+    a { color: #1e36ce; text-decoration:none; }
+    tt { font-family: "Courier New", Courier; }
+    
+    p { text-indent: 0px; }
+    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    p.caption { width: 80%; font-style: normal; text-align: left; }
+    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+
+</style>
+
+</head>
+
+<!-- tocinfo
+{'highest level': 4, 'sections': []}
+end of tocinfo -->
+
+<body>
+
+    
+<!-- ------------------- main content ---------------------- -->
+
+
+<title>This is a demo of movies in Doconce</title>
+
+<center><h1>This is a demo of movies in Doconce</h1></center>  <!-- document title -->
+
+<p>
+<!-- author(s): HPL -->
+
+<center>
+<b>HPL</b> 
+</center>
+
+
+<p>
+<!-- institution(s) -->
+<p>
+<center><h4>Dec 27, 2013</h4></center> <!-- date -->
+<p>
+Here is a movie in WebM format.
+Note that in HTML format a WebM movie
+may actually be the MP4 version of this movie
+three alternative sources (MP4, WebM, OGG)
+are inserted in the HTML code by default. The command-line
+option <code>--no_mp4_webm_ogg_alternatives</code> makes the HTML
+code use exactly the specified movie file.
+
+<p>
+
+<div>
+<video  loop controls width='700' height='400' preload='none'>
+    <source src='../doc/src/manual/mov/wave.mp4'  type='video/mp4;  codecs="avc1.42E01E, mp4a.40.2"'>
+    <source src='../doc/src/manual/mov/wave.webm' type='video/webm; codecs="vp8, vorbis"'>
+    <source src='../doc/src/manual/mov/wave.ogg'  type='video/ogg;  codecs="theora, vorbis"'>
+</video>
+</div>
+<p><em>1D wave in WebM.</em></p>
+
+
+<p>
+Here is the same movie in Ogg format:
+
+<p>
+
+<div>
+<video  loop controls width='700' height='400' preload='none'>
+    <source src='../doc/src/manual/mov/wave.mp4'  type='video/mp4;  codecs="avc1.42E01E, mp4a.40.2"'>
+    <source src='../doc/src/manual/mov/wave.webm' type='video/webm; codecs="vp8, vorbis"'>
+    <source src='../doc/src/manual/mov/wave.ogg'  type='video/ogg;  codecs="theora, vorbis"'>
+</video>
+</div>
+<p><em>1D wave in Ogg.</em></p>
+
+
+<p>
+Here is the same movie in MP4 format:
+
+<p>
+
+<div>
+<video  loop controls width='700' height='400' preload='none'>
+    <source src='../doc/src/manual/mov/wave.mp4'  type='video/mp4;  codecs="avc1.42E01E, mp4a.40.2"'>
+    <source src='../doc/src/manual/mov/wave.webm' type='video/webm; codecs="vp8, vorbis"'>
+    <source src='../doc/src/manual/mov/wave.ogg'  type='video/ogg;  codecs="theora, vorbis"'>
+</video>
+</div>
+<p><em>1D wave in MP4.</em></p>
+
+
+<p>
+Here is the same movie in Flash format:
+
+<p>
+
+<embed src="../doc/src/manual/mov/wave.flv" width=700 height=400 autoplay="false" loop="true"></embed>
+<p><em>1D wave in Flash.</em></p>
+
+
+<p>
+And here is a collection of images shown as an animation
+(<code>frame_*.png</code>):
+
+<p>
+
+<script language="Javascript">
+<!---
+var num_images____doc_src_manual_mov_wave_frames_frame_0080 = 50;
+var img_width____doc_src_manual_mov_wave_frames_frame_0080 = 700;
+var img_height____doc_src_manual_mov_wave_frames_frame_0080 = 400;
+var interval____doc_src_manual_mov_wave_frames_frame_0080 = 300;
+var images____doc_src_manual_mov_wave_frames_frame_0080 = new Array();
+
+function preload_images____doc_src_manual_mov_wave_frames_frame_0080()
+{
+   t = document.getElementById("progress");
+
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[0] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[0].src = "../doc/src/manual/mov/wave_frames/frame_0080.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[1] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[1].src = "../doc/src/manual/mov/wave_frames/frame_0081.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[2] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[2].src = "../doc/src/manual/mov/wave_frames/frame_0082.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[3] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[3].src = "../doc/src/manual/mov/wave_frames/frame_0083.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[4] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[4].src = "../doc/src/manual/mov/wave_frames/frame_0084.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[5] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[5].src = "../doc/src/manual/mov/wave_frames/frame_0085.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[6] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[6].src = "../doc/src/manual/mov/wave_frames/frame_0086.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[7] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[7].src = "../doc/src/manual/mov/wave_frames/frame_0087.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[8] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[8].src = "../doc/src/manual/mov/wave_frames/frame_0088.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[9] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[9].src = "../doc/src/manual/mov/wave_frames/frame_0089.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[10] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[10].src = "../doc/src/manual/mov/wave_frames/frame_0090.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[11] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[11].src = "../doc/src/manual/mov/wave_frames/frame_0091.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[12] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[12].src = "../doc/src/manual/mov/wave_frames/frame_0092.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[13] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[13].src = "../doc/src/manual/mov/wave_frames/frame_0093.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[14] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[14].src = "../doc/src/manual/mov/wave_frames/frame_0094.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[15] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[15].src = "../doc/src/manual/mov/wave_frames/frame_0095.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[16] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[16].src = "../doc/src/manual/mov/wave_frames/frame_0096.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[17] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[17].src = "../doc/src/manual/mov/wave_frames/frame_0097.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[18] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[18].src = "../doc/src/manual/mov/wave_frames/frame_0098.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[19] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[19].src = "../doc/src/manual/mov/wave_frames/frame_0099.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[20] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[20].src = "../doc/src/manual/mov/wave_frames/frame_0100.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[21] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[21].src = "../doc/src/manual/mov/wave_frames/frame_0101.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[22] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[22].src = "../doc/src/manual/mov/wave_frames/frame_0102.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[23] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[23].src = "../doc/src/manual/mov/wave_frames/frame_0103.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[24] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[24].src = "../doc/src/manual/mov/wave_frames/frame_0104.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[25] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[25].src = "../doc/src/manual/mov/wave_frames/frame_0105.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[26] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[26].src = "../doc/src/manual/mov/wave_frames/frame_0106.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[27] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[27].src = "../doc/src/manual/mov/wave_frames/frame_0107.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[28] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[28].src = "../doc/src/manual/mov/wave_frames/frame_0108.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[29] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[29].src = "../doc/src/manual/mov/wave_frames/frame_0109.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[30] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[30].src = "../doc/src/manual/mov/wave_frames/frame_0110.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[31] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[31].src = "../doc/src/manual/mov/wave_frames/frame_0111.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[32] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[32].src = "../doc/src/manual/mov/wave_frames/frame_0112.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[33] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[33].src = "../doc/src/manual/mov/wave_frames/frame_0113.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[34] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[34].src = "../doc/src/manual/mov/wave_frames/frame_0114.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[35] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[35].src = "../doc/src/manual/mov/wave_frames/frame_0115.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[36] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[36].src = "../doc/src/manual/mov/wave_frames/frame_0116.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[37] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[37].src = "../doc/src/manual/mov/wave_frames/frame_0117.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[38] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[38].src = "../doc/src/manual/mov/wave_frames/frame_0118.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[39] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[39].src = "../doc/src/manual/mov/wave_frames/frame_0119.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[40] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[40].src = "../doc/src/manual/mov/wave_frames/frame_0120.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[41] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[41].src = "../doc/src/manual/mov/wave_frames/frame_0121.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[42] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[42].src = "../doc/src/manual/mov/wave_frames/frame_0122.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[43] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[43].src = "../doc/src/manual/mov/wave_frames/frame_0123.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[44] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[44].src = "../doc/src/manual/mov/wave_frames/frame_0124.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[45] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[45].src = "../doc/src/manual/mov/wave_frames/frame_0125.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[46] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[46].src = "../doc/src/manual/mov/wave_frames/frame_0126.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[47] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[47].src = "../doc/src/manual/mov/wave_frames/frame_0127.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[48] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[48].src = "../doc/src/manual/mov/wave_frames/frame_0128.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[49] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[49].src = "../doc/src/manual/mov/wave_frames/frame_0129.png";
+        
+   t.innerHTML = "";
+}
+
+function tick____doc_src_manual_mov_wave_frames_frame_0080()
+{
+   if (frame____doc_src_manual_mov_wave_frames_frame_0080 > num_images____doc_src_manual_mov_wave_frames_frame_0080 - 1)
+       frame____doc_src_manual_mov_wave_frames_frame_0080 = 0;
+
+   document.name____doc_src_manual_mov_wave_frames_frame_0080.src = images____doc_src_manual_mov_wave_frames_frame_0080[frame____doc_src_manual_mov_wave_frames_frame_0080].src;
+   frame____doc_src_manual_mov_wave_frames_frame_0080 += 1;
+   tt = setTimeout("tick____doc_src_manual_mov_wave_frames_frame_0080()", interval____doc_src_manual_mov_wave_frames_frame_0080);
+}
+
+function startup____doc_src_manual_mov_wave_frames_frame_0080()
+{
+   preload_images____doc_src_manual_mov_wave_frames_frame_0080();
+   frame____doc_src_manual_mov_wave_frames_frame_0080 = 0;
+   setTimeout("tick____doc_src_manual_mov_wave_frames_frame_0080()", interval____doc_src_manual_mov_wave_frames_frame_0080);
+}
+
+function stopit____doc_src_manual_mov_wave_frames_frame_0080()
+{ clearTimeout(tt); }
+
+function restart____doc_src_manual_mov_wave_frames_frame_0080()
+{ tt = setTimeout("tick____doc_src_manual_mov_wave_frames_frame_0080()", interval____doc_src_manual_mov_wave_frames_frame_0080); }
+
+function slower____doc_src_manual_mov_wave_frames_frame_0080()
+{ interval____doc_src_manual_mov_wave_frames_frame_0080 = interval____doc_src_manual_mov_wave_frames_frame_0080/0.7; }
+
+function faster____doc_src_manual_mov_wave_frames_frame_0080()
+{ interval____doc_src_manual_mov_wave_frames_frame_0080 = interval____doc_src_manual_mov_wave_frames_frame_0080*0.7; }
+
+// --->
+</script>
+
+<form>
+&nbsp;
+<input type="button" value="Start movie" onClick="startup____doc_src_manual_mov_wave_frames_frame_0080()">
+<input type="button" value="Pause movie" onClick="stopit____doc_src_manual_mov_wave_frames_frame_0080()">
+<input type="button" value="Restart movie" onClick="restart____doc_src_manual_mov_wave_frames_frame_0080()">
+&nbsp;
+<input type="button" value="Slower" onClick="slower____doc_src_manual_mov_wave_frames_frame_0080()">
+<input type="button" value="Faster" onClick="faster____doc_src_manual_mov_wave_frames_frame_0080()">
+</form>
+
+<p><div ID="progress"></div></p>
+<img src="../doc/src/manual/mov/wave_frames/frame_0080.png" name="name____doc_src_manual_mov_wave_frames_frame_0080" border=2/>
+
+<br><em>Animated collection of images.</em><br>
+
+
+
+<p>
+Here is the same collection, but with images in cyberspace, given as URLs:
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">http://hplgit.github.io/animate/..../frame_%04d.png:80-&gt;129
+</pre></div>
+<p>
+
+<script language="Javascript">
+<!---
+var num_images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080 = 50;
+var img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080 = 800;
+var img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080 = 600;
+var interval_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080 = 300;
+var images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080 = new Array();
+
+function preload_images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080()
+{
+   t = document.getElementById("progress");
+
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[0] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[0].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0080.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[1] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[1].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0081.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[2] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[2].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0082.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[3] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[3].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0083.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[4] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[4].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0084.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[5] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[5].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0085.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[6] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[6].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0086.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[7] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[7].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0087.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[8] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[8].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0088.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[9] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[9].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0089.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[10] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[10].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0090.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[11] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[11].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0091.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[12] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[12].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0092.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[13] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[13].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0093.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[14] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[14].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0094.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[15] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[15].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0095.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[16] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[16].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0096.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[17] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[17].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0097.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[18] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[18].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0098.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[19] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[19].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0099.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[20] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[20].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0100.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[21] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[21].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0101.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[22] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[22].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0102.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[23] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[23].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0103.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[24] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[24].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0104.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[25] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[25].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0105.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[26] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[26].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0106.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[27] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[27].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0107.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[28] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[28].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0108.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[29] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[29].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0109.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[30] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[30].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0110.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[31] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[31].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0111.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[32] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[32].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0112.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[33] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[33].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0113.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[34] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[34].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0114.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[35] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[35].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0115.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[36] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[36].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0116.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[37] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[37].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0117.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[38] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[38].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0118.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[39] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[39].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0119.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[40] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[40].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0120.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[41] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[41].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0121.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[42] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[42].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0122.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[43] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[43].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0123.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[44] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[44].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0124.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[45] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[45].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0125.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[46] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[46].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0126.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[47] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[47].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0127.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[48] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[48].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0128.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[49] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[49].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0129.png";
+        
+   t.innerHTML = "";
+}
+
+function tick_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080()
+{
+   if (frame_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080 > num_images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080 - 1)
+       frame_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080 = 0;
+
+   document.name_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080.src = images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[frame_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080].src;
+   frame_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080 += 1;
+   tt = setTimeout("tick_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080()", interval_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+}
+
+function startup_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080()
+{
+   preload_images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080();
+   frame_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080 = 0;
+   setTimeout("tick_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080()", interval_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+}
+
+function stopit_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080()
+{ clearTimeout(tt); }
+
+function restart_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080()
+{ tt = setTimeout("tick_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080()", interval_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080); }
+
+function slower_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080()
+{ interval_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080 = interval_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080/0.7; }
+
+function faster_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080()
+{ interval_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080 = interval_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080*0.7; }
+
+// --->
+</script>
+
+<form>
+&nbsp;
+<input type="button" value="Start movie" onClick="startup_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080()">
+<input type="button" value="Pause movie" onClick="stopit_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080()">
+<input type="button" value="Restart movie" onClick="restart_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080()">
+&nbsp;
+<input type="button" value="Slower" onClick="slower_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080()">
+<input type="button" value="Faster" onClick="faster_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080()">
+</form>
+
+<p><div ID="progress"></div></p>
+<img src="http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0080.png" name="name_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080" border=2/>
+
+
+<p>
+The movie above in MPEG format, typeset in a box:
+
+<p>
+
+<!-- begin box -->
+<div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px;">
+
+<embed src="../doc/src/manual/mov/wave.mpeg" width=700 height=400 autoplay="false" loop="true"></embed>
+<p><em>1D wave in MPEG. <a name="mov:wave"></a></em></p>
+</div>
+<!-- end box -->
+
+
+<p>
+Here is the same movie in AVI format:
+
+<p>
+
+<embed src="../doc/src/manual/mov/wave.avi" width=700 height=400 autoplay="false" loop="true"></embed>
+<p><em>1D wave in AVI.</em></p>
+
+
+<p>
+Here is the same movie, but with a URL to GitHub:
+
+<p>
+
+<div>
+<video  loop controls width='640' height='365' preload='none'>
+    <source src='http://hplgit.github.io/animate/doc/pub/mov-animate/demo.mp4'  type='video/mp4;  codecs="avc1.42E01E, mp4a.40.2"'>
+    <source src='http://hplgit.github.io/animate/doc/pub/mov-animate/demo.webm' type='video/webm; codecs="vp8, vorbis"'>
+    <source src='http://hplgit.github.io/animate/doc/pub/mov-animate/demo.ogg'  type='video/ogg;  codecs="theora, vorbis"'>
+</video>
+</div>
+<p><em></em></p>
+
+
+<p>
+Here is a YouTube video:
+
+<p>
+
+<iframe width="420" height="315" src="http://www.youtube.com/embed/_O7iUiftbKU" frameborder="0" allowfullscreen></iframe>
+
+<em>YouTube movie.</em>
+
+
+
+<p>
+And a vimeo video:
+
+<p>
+
+<iframe width="500" height="278" src="http://player.vimeo.com/video/55562330" frameborder="0" allowfullscreen></iframe>
+
+<em>Vimeo movie.</em>
+
+
+
+<p>
+Finally, let us demonstrate referencing the movie <a href="#mov:wave">mov:wave</a>.
+
+<!-- ------------------- end of main content --------------- -->
+
+
+</body>
+</html>
+    
+

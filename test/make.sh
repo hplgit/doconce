@@ -264,7 +264,7 @@ system doconce format pandoc github_md.do.txt --github_md
 
 # Test movie handling
 name=movies
-system doconce format html $name --html_output=movies_3choices.html
+system doconce format html $name --html_output=movies_3choices
 cp movies_3choices.html movie_demo
 system doconce format html $name --no_mp4_webm_ogg_alternatives
 cp movies.html movie_demo
