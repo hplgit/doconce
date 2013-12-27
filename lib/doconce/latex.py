@@ -349,10 +349,10 @@ modestbranding=1   %% no YouTube logo in control bar
             # filenames on the form frame_%04d.png, only frame_%d.png.
             # Expand all plotfile names instead.
             text += r"""
-\begin{animateinline}[controls,loop]{%d}
+\begin{animateinline}[controls,loop]{%d} %% frames: %s -> %s
 %s
 \end{animateinline}
-""" % (framerate, commands)
+""" % (framerate, frames[0], frames[-1], commands)
     else:
         # Local movie file or URL (all the methods below handle
         # either local files or URLs)

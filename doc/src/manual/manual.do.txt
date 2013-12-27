@@ -501,6 +501,24 @@ be performed, while any other value than `files` leads to
 use of the `movie.ogg` in all but LaTeX formats. In HTML one will try
 to load `movie.mp4` (if it exists) and then `movie.webm` (if it exists)
 and then finally `movie.ogg`.
+
+There is no way to control the number of frames per second in
+LaTeX animations based on filename generators such as `myframes*.png`.
+However, with a little auto editing in a script one can control
+the frame rates of the various movies. The rate is specified as `2`
+in lines on the form
+
+!bc
+\begin{animateinline}[controls,loop]{2} % frames: f000.png -> f098.png
+!ec
+Setting the rate to 12 in for this particular movie based on the
+`f%03.png` files, the following `doconce subst` command does the job
+in a script:
+
+!bc
+doconce subst ',loop]{2}( .+: f000)' ',loop{12}\g<1>' mydoc.do.txt
+!ec
+
 !enotice
 
 ===== Copying Computer Code from Source Files =====
