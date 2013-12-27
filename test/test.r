@@ -227,7 +227,7 @@ And one more.} Some formats will only display this correctly when
 HTML is the output format.
 
 
-===== Subsection 2: Testing figures and movies =====
+===== Subsection 2: Testing figures =====
 label{subsec:ex}
 idx{figures}
 
@@ -241,35 +241,6 @@ Figures without captions are allowed and will be inlined.
 FIGURE:[../doc/src/manual/fig/wave1D, width=200]
 
 idx{movies}
-
-=== Test of movies ===
-
-Movie ref{mov:wave} shows a wave.
-
-MOVIE: [../doc/src/manual/mov/wave.ogg, width=700 height=400] 1D wave in Ogg format. label{mov:wave}.
-
-Test empty caption (for inline movie, here in MPEG format):
-
-MOVIE: [../doc/src/manual/mov/wave.mpeg, width=700 height=400]
-
-Test wrong syntax and multi-line caption, to see if it is automatically
-corrected:
-
-   MOVIE: [../doc/src/manual/mov/wave.webm, width=700 height=400] Movie
-based on collection of frames
-(here just a few frames compared with the full wavepacket.mpeg movie).
-label{mymov}
-
-We can show a series of images as an animation:
-
-MOVIE: [../doc/src/manual/mov/wave_frames/frame_*.png] Caption for animated collection of images.
-
-Check out the correct with and height of YouTube movies from the
-embed command that the YouTube page can generate. Similar for Vimeo.
-
-MOVIE: [http://www.youtube.com/watch?v=_O7iUiftbKU, width=420 height=315] YouTube movie.
-
-MOVIE: [http://vimeo.com/55562330, width=500 height=278] Vimeo movie.
 
 
 # Test multi-line caption in figure
@@ -297,6 +268,9 @@ FIGURE: [testfigs/df2s8765s_plot.png, width=200, frac=0.4]
 # #endif
 
 # Somewhat challenging heading with latex math, \t, \n, ? and parenthesis
+
+__Remark.__
+Movies are tested in separate file `movies.do.txt`.
 
 ===== The $\theta$ parameter (not $\nabla$?) =====
 label{decay:sec:theta}
@@ -1134,6 +1108,7 @@ case in LaTeX.
 
 And finally, what about admons, quotes, and boxes? They are tested
 in a separate document: `admon.do.txt`.
+
 ************** File: testdoc.html *****************
 <!DOCTYPE html>
 <!--
@@ -1223,32 +1198,31 @@ Automatically generated HTML file from Doconce source
 {'highest level': 1,
  'sections': [(' Section 1 ', 1, 'sec1', 'sec1'),
               (' Subsection 1 ', 2, None, '___sec1'),
-              (' Subsection 2: Testing figures and movies ',
+              (' Subsection 2: Testing figures ',
                2,
                'subsec:ex',
                'subsec:ex'),
-              (' Test of movies ', 3, None, '___sec3'),
               (' The $\\theta$ parameter (not $\\nabla$?) ',
                2,
                'decay:sec:theta',
                'decay:sec:theta'),
-              (' Custom Environments ', 2, None, '___sec5'),
+              (' Custom Environments ', 2, None, '___sec4'),
               (' Tables ', 2, 'subsec:table', 'subsec:table'),
               (' A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2` ',
                2,
                None,
-               '___sec7'),
-              (' Bibliography test ', 2, None, '___sec8'),
+               '___sec6'),
+              (' Bibliography test ', 2, None, '___sec7'),
               (' Example 1: Examples can be typeset as exercises ',
                2,
                'Example',
                'Example'),
               (' URLs ', 2, 'subsubsec:ex', 'subsubsec:ex'),
-              (' LaTeX Mathematics ', 2, None, '___sec11'),
-              (' Exercises ', 1, None, '___sec12'),
+              (' LaTeX Mathematics ', 2, None, '___sec10'),
+              (' Exercises ', 1, None, '___sec11'),
               (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
-              (' Remarks ', 3, None, '___sec14'),
-              (' Not an exercise ', 2, None, '___sec15'),
+              (' Remarks ', 3, None, '___sec13'),
+              (' Not an exercise ', 2, None, '___sec14'),
               (' Project 3: Compute a Probability ',
                2,
                'demo:ex:2',
@@ -1257,19 +1231,19 @@ Automatically generated HTML file from Doconce source
                2,
                'proj:circle1',
                'proj:circle1'),
-              (' Remarks ', 3, None, '___sec18'),
+              (' Remarks ', 3, None, '___sec17'),
               (' Exercise 5: Determine some Distance ',
                2,
                'exer:dist',
                'exer:dist'),
-              (' Remarks ', 3, None, '___sec20'),
+              (' Remarks ', 3, None, '___sec19'),
               (' Some exercise without the "Exercise:" prefix ',
                2,
                None,
-               '___sec21'),
-              (' Example 7: Just an example ', 2, None, '___sec22'),
-              (' Here goes another section ', 1, None, '___sec23'),
-              (' More Exercises ', 1, None, '___sec24'),
+               '___sec20'),
+              (' Example 7: Just an example ', 2, None, '___sec21'),
+              (' Here goes another section ', 1, None, '___sec22'),
+              (' More Exercises ', 1, None, '___sec23'),
               (' Exercise 8: Make references to projects and problems ',
                2,
                'exer:some:formula',
@@ -1278,11 +1252,11 @@ Automatically generated HTML file from Doconce source
                2,
                'exer:you',
                'exer:you'),
-              (' References ', 1, None, '___sec27'),
-              (' Appendix: Just for testing; part I ', 1, None, '___sec28'),
-              (' A subsection within an appendix ', 2, None, '___sec29'),
-              (' Appendix: Just for testing; part II ', 1, None, '___sec30'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec31'),
+              (' References ', 1, None, '___sec26'),
+              (' Appendix: Just for testing; part I ', 1, None, '___sec27'),
+              (' A subsection within an appendix ', 2, None, '___sec28'),
+              (' Appendix: Just for testing; part II ', 1, None, '___sec29'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec30'),
               (' Appendix: Testing identical titles ',
                2,
                'test:title:id1',
@@ -1291,12 +1265,12 @@ Automatically generated HTML file from Doconce source
                2,
                'test:title:id2',
                'test:title:id2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec34'),
-              (' Appendix: Testing inline comments ', 2, None, '___sec35'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec33'),
+              (' Appendix: Testing inline comments ', 2, None, '___sec34'),
               (' Appendix: Testing headings ending with `verbatim inline` ',
                2,
                None,
-               '___sec36')]}
+               '___sec35')]}
 end of tocinfo -->
 
 <body>
@@ -1397,41 +1371,40 @@ $$
 <p>
 <a href="._testdoc001.html#sec1"> Section 1 </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec1"> Subsection 1 </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#subsec:ex"> Subsection 2: Testing figures and movies </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec3"> Test of movies </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#subsec:ex"> Subsection 2: Testing figures </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec5"> Custom Environments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec4"> Custom Environments </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#subsec:table"> Tables </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec7"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec8"> Bibliography test </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec6"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec7"> Bibliography test </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#Example"> Example 1: Examples can be typeset as exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#subsubsec:ex"> URLs </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec11"> LaTeX Mathematics </a><br>
-<a href="._testdoc002.html#___sec12"> Exercises </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec10"> LaTeX Mathematics </a><br>
+<a href="._testdoc002.html#___sec11"> Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#demo:ex:1"> Problem 2: Flip a Coin </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec14"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec15"> Not an exercise </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec13"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec14"> Not an exercise </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#demo:ex:2"> Project 3: Compute a Probability </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec18"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec17"> Remarks </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#exer:dist"> Exercise 5: Determine some Distance </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec20"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec21"> Some exercise without the "Exercise:" prefix </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec22"> Example 7: Just an example </a><br>
-<a href="._testdoc002.html#___sec23"> Here goes another section </a><br>
-<a href="._testdoc002.html#___sec24"> More Exercises </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec19"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec20"> Some exercise without the "Exercise:" prefix </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec21"> Example 7: Just an example </a><br>
+<a href="._testdoc002.html#___sec22"> Here goes another section </a><br>
+<a href="._testdoc002.html#___sec23"> More Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#exer:some:formula"> Exercise 8: Make references to projects and problems </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#exer:you"> Project 9: References in a headings do not work well in html </a><br>
-<a href="._testdoc002.html#___sec27"> References </a><br>
-<a href="._testdoc002.html#___sec28"> Appendix: Just for testing; part I </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec29"> A subsection within an appendix </a><br>
-<a href="._testdoc002.html#___sec30"> Appendix: Just for testing; part II </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec31"> Appendix: Testing identical titles </a><br>
+<a href="._testdoc002.html#___sec26"> References </a><br>
+<a href="._testdoc002.html#___sec27"> Appendix: Just for testing; part I </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec28"> A subsection within an appendix </a><br>
+<a href="._testdoc002.html#___sec29"> Appendix: Just for testing; part II </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec30"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#test:title:id1"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#test:title:id2"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec34"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec35"> Appendix: Testing inline comments </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec36"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec33"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec34"> Appendix: Testing inline comments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec35"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
 
 <p>
 <p>
@@ -1546,19 +1519,6 @@ final,                   % or draft (marks overfull hboxes)
 \usepackage{bm,microtype}
 
 \usepackage{ptex2tex}
-
-% #ifndef MOVIE
-% #define MOVIE "media9"
-% #endif
-
-% #if MOVIE == "media9"
-\usepackage{media9}
-% #elif MOVIE == "movie15"
-\usepackage{movie15}
-% #elif MOVIE == "multimedia"
-\usepackage{multimedia}
-% #elif MOVIE == "href-run"
-% #endif
 
 % #ifdef MINTED
 \usepackage{minted}
@@ -2250,7 +2210,7 @@ And one more.} Some formats will only display this correctly when
 HTML is the output format.
 
 
-\subsection{Subsection 2: Testing figures and movies}
+\subsection{Subsection 2: Testing figures}
 \label{subsec:ex}
 \index{figures}
 
@@ -2276,206 +2236,6 @@ Figures without captions are allowed and will be inlined.
 
 
 \index{movies}
-
-\paragraph{Test of movies.}
-Movie~\ref{mov:wave} shows a wave.
-
-
-\begin{figure}[ht]
-\begin{center}
-
-% #if MOVIE == "media9"
-\includemedia[
-width=0.8\linewidth,
-label=../doc/src/manual/mov/wave.ogg,
-activate=pageopen,         % or onclick or pagevisible
-addresource=../doc/src/manual/mov/wave.ogg,  % embed the video in the PDF
-flashvars={
-source=../doc/src/manual/mov/wave.ogg
-&autoPlay=true
-&loop=true
-&scaleMode=letterbox       % preserve aspect ratio while scaling this video
-}]{}{VPlayer.swf}
-
-% #ifdef MOVIE_CONTROLS
-\mediabutton[
-  mediacommand=../doc/src/manual/mov/wave.ogg:playPause,
-  overface=\\textcolor{blue}{\fbox{\strut Play/Pause}},
-  downface=\\textcolor{red}{\fbox{\strut Play/Pause}}
-  ]{\fhox{\strut Play/Pause}}
-% #endif
-
-% #elif MOVIE == "movie15"
-\includemovie[poster,
-label=../doc/src/manual/mov/wave.ogg,
-autoplay,
-%controls,
-%toolbar,
-% #ifdef EXTERNAL_MOVIE_VIEWER
-externalviewer,
-% #endif
-text={\small (Loading ../doc/src/manual/mov/wave.ogg)},
-repeat,
-]{0.9\linewidth}{0.9\linewidth}{../doc/src/manual/mov/wave.ogg}
-% #ifndef EXTERNAL_MOVIE_VIEWER
-\movieref[rate=0.5]{../doc/src/manual/mov/wave.ogg}{Slower}
-\movieref[rate=2]{../doc/src/manual/mov/wave.ogg}{Faster}
-\movieref[default]{../doc/src/manual/mov/wave.ogg}{Normal}
-\movieref[pause]{../doc/src/manual/mov/wave.ogg}{Play/Pause}
-\movieref[stop]{../doc/src/manual/mov/wave.ogg}{Stop}
-% #else
-\href{run:../doc/src/manual/mov/wave.ogg}{../doc/src/manual/mov/wave.ogg}
-% #endif
-
-% #elif MOVIE == "multimedia"
-% Beamer-style \movie command
-\movie[
-label=../doc/src/manual/mov/wave.ogg,
-width=0.9\linewidth,
-autostart]{../doc/src/manual/mov/wave.ogg}{../doc/src/manual/mov/wave.ogg}
-% #else
-\href{run:../doc/src/manual/mov/wave.ogg}{../doc/src/manual/mov/wave.ogg}
-% #endif
-
-\end{center}
-\caption{1D wave in Ogg format. \label{mov:wave}.}
-\end{figure}
-
-
-Test empty caption (for inline movie, here in MPEG format):
-
- (Movie \code{../doc/src/manual/mov/wave.mpeg}: play \href{{wave.html}}{\nolinkurl{wave.html}})
-% #if MOVIE == "media9"
-\includemedia[
-width=0.8\linewidth,
-label=../doc/src/manual/mov/wave.mpeg,
-activate=pageopen,         % or onclick or pagevisible
-addresource=../doc/src/manual/mov/wave.mpeg,  % embed the video in the PDF
-flashvars={
-source=../doc/src/manual/mov/wave.mpeg
-&autoPlay=true
-&loop=true
-&scaleMode=letterbox       % preserve aspect ratio while scaling this video
-}]{}{VPlayer.swf}
-
-% #ifdef MOVIE_CONTROLS
-\mediabutton[
-  mediacommand=../doc/src/manual/mov/wave.mpeg:playPause,
-  overface=\\textcolor{blue}{\fbox{\strut Play/Pause}},
-  downface=\\textcolor{red}{\fbox{\strut Play/Pause}}
-  ]{\fhox{\strut Play/Pause}}
-% #endif
-
-% #elif MOVIE == "movie15"
-\includemovie[poster,
-label=../doc/src/manual/mov/wave.mpeg,
-autoplay,
-%controls,
-%toolbar,
-% #ifdef EXTERNAL_MOVIE_VIEWER
-externalviewer,
-% #endif
-text={\small (Loading ../doc/src/manual/mov/wave.mpeg)},
-repeat,
-]{0.9\linewidth}{0.9\linewidth}{../doc/src/manual/mov/wave.mpeg}
-% #ifndef EXTERNAL_MOVIE_VIEWER
-\movieref[rate=0.5]{../doc/src/manual/mov/wave.mpeg}{Slower}
-\movieref[rate=2]{../doc/src/manual/mov/wave.mpeg}{Faster}
-\movieref[default]{../doc/src/manual/mov/wave.mpeg}{Normal}
-\movieref[pause]{../doc/src/manual/mov/wave.mpeg}{Play/Pause}
-\movieref[stop]{../doc/src/manual/mov/wave.mpeg}{Stop}
-% #else
-\href{run:../doc/src/manual/mov/wave.mpeg}{../doc/src/manual/mov/wave.mpeg}
-% #endif
-
-% #elif MOVIE == "multimedia"
-% Beamer-style \movie command
-\movie[
-label=../doc/src/manual/mov/wave.mpeg,
-width=0.9\linewidth,
-autostart]{../doc/src/manual/mov/wave.mpeg}{../doc/src/manual/mov/wave.mpeg}
-% #else
-\href{run:../doc/src/manual/mov/wave.mpeg}{../doc/src/manual/mov/wave.mpeg}
-% #endif
-
-
-Test wrong syntax and multi-line caption, to see if it is automatically
-corrected:
-
-
-\begin{figure}[ht]
-\begin{center}
-
-% #if MOVIE == "media9"
-\includemedia[
-width=0.8\linewidth,
-label=../doc/src/manual/mov/wave.webm,
-activate=pageopen,         % or onclick or pagevisible
-addresource=../doc/src/manual/mov/wave.webm,  % embed the video in the PDF
-flashvars={
-source=../doc/src/manual/mov/wave.webm
-&autoPlay=true
-&loop=true
-&scaleMode=letterbox       % preserve aspect ratio while scaling this video
-}]{}{VPlayer.swf}
-
-% #ifdef MOVIE_CONTROLS
-\mediabutton[
-  mediacommand=../doc/src/manual/mov/wave.webm:playPause,
-  overface=\\textcolor{blue}{\fbox{\strut Play/Pause}},
-  downface=\\textcolor{red}{\fbox{\strut Play/Pause}}
-  ]{\fhox{\strut Play/Pause}}
-% #endif
-
-% #elif MOVIE == "movie15"
-\includemovie[poster,
-label=../doc/src/manual/mov/wave.webm,
-autoplay,
-%controls,
-%toolbar,
-% #ifdef EXTERNAL_MOVIE_VIEWER
-externalviewer,
-% #endif
-text={\small (Loading ../doc/src/manual/mov/wave.webm)},
-repeat,
-]{0.9\linewidth}{0.9\linewidth}{../doc/src/manual/mov/wave.webm}
-% #ifndef EXTERNAL_MOVIE_VIEWER
-\movieref[rate=0.5]{../doc/src/manual/mov/wave.webm}{Slower}
-\movieref[rate=2]{../doc/src/manual/mov/wave.webm}{Faster}
-\movieref[default]{../doc/src/manual/mov/wave.webm}{Normal}
-\movieref[pause]{../doc/src/manual/mov/wave.webm}{Play/Pause}
-\movieref[stop]{../doc/src/manual/mov/wave.webm}{Stop}
-% #else
-\href{run:../doc/src/manual/mov/wave.webm}{../doc/src/manual/mov/wave.webm}
-% #endif
-
-% #elif MOVIE == "multimedia"
-% Beamer-style \movie command
-\movie[
-label=../doc/src/manual/mov/wave.webm,
-width=0.9\linewidth,
-autostart]{../doc/src/manual/mov/wave.webm}{../doc/src/manual/mov/wave.webm}
-% #else
-\href{run:../doc/src/manual/mov/wave.webm}{../doc/src/manual/mov/wave.webm}
-% #endif
-
-\end{center}
-\caption{Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). \label{mymov}}
-\end{figure}
-
-
-We can show a series of images as an animation:
-
-
- Caption for animated collection of images. (Movie of files \code{../doc/src/manual/mov/wave_frames/frame_*.png} in \href{{file:///home/hpl/vc/doconce/test/frame_0080.html}}{\nolinkurl{file:///home/hpl/vc/doconce/test/frame_0080.html}})
-
-
-Check out the correct with and height of YouTube movies from the
-embed command that the YouTube page can generate. Similar for Vimeo.
-
- YouTube movie. \href{{http://www.youtube.com/watch?v=_O7iUiftbKU}}{\nolinkurl{http://www.youtube.com/watch?v=_O7iUiftbKU}}
-
- Vimeo movie. \href{{http://vimeo.com/55562330}}{\nolinkurl{http://vimeo.com/55562330}}
 
 
 % Test multi-line caption in figure
@@ -2506,6 +2266,9 @@ Test URL as figure name:
 % Test wikimedia type of files that otherwise reside in subdirs
 
 % Somewhat challenging heading with latex math, \t, \n, ? and parenthesis
+
+\paragraph{Remark.}
+Movies are tested in separate file \code{movies.do.txt}.
 
 \subsection{The $\theta$ parameter (not $\nabla$?)}
 \label{decay:sec:theta}
@@ -3490,9 +3253,6 @@ final,                   % or draft (marks overfull hboxes)
 
 \usepackage{ptex2tex}
 
-
-\usepackage{media9}
-
 \usepackage{minted}
 \usemintedstyle{default}
 
@@ -3989,7 +3749,7 @@ And one more.} Some formats will only display this correctly when
 HTML is the output format.
 
 
-\subsection{Subsection 2: Testing figures and movies}
+\subsection{Subsection 2: Testing figures}
 \label{subsec:ex}
 \index{figures}
 
@@ -4015,89 +3775,6 @@ Figures without captions are allowed and will be inlined.
 
 
 \index{movies}
-
-\paragraph{Test of movies.}
-Movie~\ref{mov:wave} shows a wave.
-
-
-\begin{figure}[ht]
-\begin{center}
-
-\includemedia[
-width=0.8\linewidth,
-label=../doc/src/manual/mov/wave.ogg,
-activate=pageopen,         % or onclick or pagevisible
-addresource=../doc/src/manual/mov/wave.ogg,  % embed the video in the PDF
-flashvars={
-source=../doc/src/manual/mov/wave.ogg
-&autoPlay=true
-&loop=true
-&scaleMode=letterbox       % preserve aspect ratio while scaling this video
-}]{}{VPlayer.swf}
-
-
-
-\end{center}
-\caption{1D wave in Ogg format. \label{mov:wave}.}
-\end{figure}
-
-
-Test empty caption (for inline movie, here in MPEG format):
-
- (Movie {\fontsize{10pt}{10pt}\Verb!../doc/src/manual/mov/wave.mpeg!}: play \href{{wave.html}}{\nolinkurl{wave.html}\footnote{\texttt{wave.html}}})
-\includemedia[
-width=0.8\linewidth,
-label=../doc/src/manual/mov/wave.mpeg,
-activate=pageopen,         % or onclick or pagevisible
-addresource=../doc/src/manual/mov/wave.mpeg,  % embed the video in the PDF
-flashvars={
-source=../doc/src/manual/mov/wave.mpeg
-&autoPlay=true
-&loop=true
-&scaleMode=letterbox       % preserve aspect ratio while scaling this video
-}]{}{VPlayer.swf}
-
-
-
-
-Test wrong syntax and multi--line caption, to see if it is automatically
-corrected:
-
-
-\begin{figure}[ht]
-\begin{center}
-
-\includemedia[
-width=0.8\linewidth,
-label=../doc/src/manual/mov/wave.webm,
-activate=pageopen,         % or onclick or pagevisible
-addresource=../doc/src/manual/mov/wave.webm,  % embed the video in the PDF
-flashvars={
-source=../doc/src/manual/mov/wave.webm
-&autoPlay=true
-&loop=true
-&scaleMode=letterbox       % preserve aspect ratio while scaling this video
-}]{}{VPlayer.swf}
-
-
-
-\end{center}
-\caption{Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). \label{mymov}}
-\end{figure}
-
-
-We can show a series of images as an animation:
-
-
- Caption for animated collection of images. (Movie of files {\fontsize{10pt}{10pt}\Verb!../doc/src/manual/mov/wave_frames/frame_*.png!} in \href{{file:///home/hpl/vc/doconce/test/frame_0080.html}}{\nolinkurl{file:///home/hpl/vc/doconce/test/frame_0080.html}\footnote{\texttt{file:///home/hpl/vc/doconce/test/frame\_0080.html}}})
-
-
-Check out the correct with and height of YouTube movies from the
-embed command that the YouTube page can generate. Similar for Vimeo.
-
- YouTube movie. \href{{http://www.youtube.com/watch?v=_O7iUiftbKU}}{\nolinkurl{http://www.youtube.com/watch?v=_O7iUiftbKU}}
-
- Vimeo movie. \href{{http://vimeo.com/55562330}}{\nolinkurl{http://vimeo.com/55562330}}
 
 
 % Test multi--line caption in figure
@@ -4128,6 +3805,9 @@ Test URL as figure name:
 % Test wikimedia type of files that otherwise reside in subdirs
 
 % Somewhat challenging heading with latex math, \t, \n, ? and parenthesis
+
+\paragraph{Remark.}
+Movies are tested in separate file {\fontsize{10pt}{10pt}\Verb!movies.do.txt!}.
 
 \subsection{The $\theta$ parameter (not $\nabla$?)}
 \label{decay:sec:theta}
@@ -5120,9 +4800,6 @@ final,                   % or draft (marks overfull hboxes)
 \usepackage{anslistings,minted,fancyvrb} % packages needed for verbatim environments
 
 
-\usepackage{media9}
-
-
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
 % Set palatino as the default font family:
@@ -5554,7 +5231,7 @@ And one more.} Some formats will only display this correctly when
 HTML is the output format.
 
 
-\subsection{Subsection 2: Testing figures and movies}
+\subsection{Subsection 2: Testing figures}
 \label{subsec:ex}
 \index{figures}
 
@@ -5580,89 +5257,6 @@ Figures without captions are allowed and will be inlined.
 
 
 \index{movies}
-
-\paragraph{Test of movies.}
-Movie~\ref{mov:wave} shows a wave.
-
-
-\begin{figure}[ht]
-\begin{center}
-
-\includemedia[
-width=0.8\linewidth,
-label=../doc/src/manual/mov/wave.ogg,
-activate=pageopen,         % or onclick or pagevisible
-addresource=../doc/src/manual/mov/wave.ogg,  % embed the video in the PDF
-flashvars={
-source=../doc/src/manual/mov/wave.ogg
-&autoPlay=true
-&loop=true
-&scaleMode=letterbox       % preserve aspect ratio while scaling this video
-}]{}{VPlayer.swf}
-
-
-
-\end{center}
-\caption{1D wave in Ogg format. \label{mov:wave}.}
-\end{figure}
-
-
-Test empty caption (for inline movie, here in MPEG format):
-
- (Movie \Verb!../doc/src/manual/mov/wave.mpeg!: play \href{{wave.html}}{\nolinkurl{wave.html}\footnote{\texttt{wave.html}}})
-\includemedia[
-width=0.8\linewidth,
-label=../doc/src/manual/mov/wave.mpeg,
-activate=pageopen,         % or onclick or pagevisible
-addresource=../doc/src/manual/mov/wave.mpeg,  % embed the video in the PDF
-flashvars={
-source=../doc/src/manual/mov/wave.mpeg
-&autoPlay=true
-&loop=true
-&scaleMode=letterbox       % preserve aspect ratio while scaling this video
-}]{}{VPlayer.swf}
-
-
-
-
-Test wrong syntax and multi--line caption, to see if it is automatically
-corrected:
-
-
-\begin{figure}[ht]
-\begin{center}
-
-\includemedia[
-width=0.8\linewidth,
-label=../doc/src/manual/mov/wave.webm,
-activate=pageopen,         % or onclick or pagevisible
-addresource=../doc/src/manual/mov/wave.webm,  % embed the video in the PDF
-flashvars={
-source=../doc/src/manual/mov/wave.webm
-&autoPlay=true
-&loop=true
-&scaleMode=letterbox       % preserve aspect ratio while scaling this video
-}]{}{VPlayer.swf}
-
-
-
-\end{center}
-\caption{Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). \label{mymov}}
-\end{figure}
-
-
-We can show a series of images as an animation:
-
-
- Caption for animated collection of images. (Movie of files \Verb!../doc/src/manual/mov/wave_frames/frame_*.png! in \href{{file:///home/hpl/vc/doconce/test/frame_0080.html}}{\nolinkurl{file:///home/hpl/vc/doconce/test/frame_0080.html}\footnote{\texttt{file:///home/hpl/vc/doconce/test/frame\_0080.html}}})
-
-
-Check out the correct with and height of YouTube movies from the
-embed command that the YouTube page can generate. Similar for Vimeo.
-
- YouTube movie. \href{{http://www.youtube.com/watch?v=_O7iUiftbKU}}{\nolinkurl{http://www.youtube.com/watch?v=_O7iUiftbKU}}
-
- Vimeo movie. \href{{http://vimeo.com/55562330}}{\nolinkurl{http://vimeo.com/55562330}}
 
 
 % Test multi--line caption in figure
@@ -5693,6 +5287,9 @@ Test URL as figure name:
 % Test wikimedia type of files that otherwise reside in subdirs
 
 % Somewhat challenging heading with latex math, \t, \n, ? and parenthesis
+
+\paragraph{Remark.}
+Movies are tested in separate file \Verb!movies.do.txt!.
 
 \subsection{The $\theta$ parameter (not $\nabla$?)}
 \label{decay:sec:theta}
@@ -6905,8 +6502,8 @@ HTML is the output format.
 
 .. _subsec:ex:
 
-Subsection 2: Testing figures and movies
-----------------------------------------
+Subsection 2: Testing figures
+-----------------------------
 
 Test of figures. In particular we refer to Figure `fig:impact`_ in which
 there is a flow.
@@ -6926,339 +6523,6 @@ Figures without captions are allowed and will be inlined.
 .. figure:: ../doc/src/manual/fig/wave1D.png
    :width: 200
 
-
-
-
-Test of movies
-~~~~~~~~~~~~~~
-
-Movie `mov:wave`_ shows a wave.
-
-.. raw:: html
-        
-        <div>
-        <video  loop controls width='700' height='400' preload='none'>
-            <source src='../doc/src/manual/mov/wave.mp4'  type='video/mp4;  codecs="avc1.42E01E, mp4a.40.2"'>
-            <source src='../doc/src/manual/mov/wave.webm' type='video/webm; codecs="vp8, vorbis"'>
-            <source src='../doc/src/manual/mov/wave.ogg'  type='video/ogg;  codecs="theora, vorbis"'>
-        </video>
-        </div>
-        <p><em>1D wave in Ogg format. .</em></p>
-
-
-
-Test empty caption (for inline movie, here in MPEG format):
-
-.. raw:: html
-        
-        <embed src="../doc/src/manual/mov/wave.mpeg" width=700 height=400 autoplay="false" loop="true"></embed>
-        <p><em></em></p>
-
-
-
-Test wrong syntax and multi-line caption, to see if it is automatically
-corrected:
-
-.. raw:: html
-        
-        <div>
-        <video  loop controls width='700' height='400' preload='none'>
-            <source src='../doc/src/manual/mov/wave.mp4'  type='video/mp4;  codecs="avc1.42E01E, mp4a.40.2"'>
-            <source src='../doc/src/manual/mov/wave.webm' type='video/webm; codecs="vp8, vorbis"'>
-            <source src='../doc/src/manual/mov/wave.ogg'  type='video/ogg;  codecs="theora, vorbis"'>
-        </video>
-        </div>
-        <p><em>Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie).</em></p>
-
-
-
-We can show a series of images as an animation:
-
-.. raw:: html
-        
-        <script language="Javascript">
-        <!---
-        var num_images_frame_0080 = 50;
-        var img_width_frame_0080 = 800;
-        var img_height_frame_0080 = 600;
-        var interval_frame_0080 = 300;
-        var images_frame_0080 = new Array();
-        
-        function preload_images_frame_0080()
-        {
-           t = document.getElementById("progress");
-        
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[0] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[0].src = "../doc/src/manual/mov/wave_frames/frame_0080.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[1] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[1].src = "../doc/src/manual/mov/wave_frames/frame_0081.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[2] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[2].src = "../doc/src/manual/mov/wave_frames/frame_0082.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[3] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[3].src = "../doc/src/manual/mov/wave_frames/frame_0083.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[4] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[4].src = "../doc/src/manual/mov/wave_frames/frame_0084.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[5] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[5].src = "../doc/src/manual/mov/wave_frames/frame_0085.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[6] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[6].src = "../doc/src/manual/mov/wave_frames/frame_0086.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[7] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[7].src = "../doc/src/manual/mov/wave_frames/frame_0087.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[8] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[8].src = "../doc/src/manual/mov/wave_frames/frame_0088.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[9] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[9].src = "../doc/src/manual/mov/wave_frames/frame_0089.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[10] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[10].src = "../doc/src/manual/mov/wave_frames/frame_0090.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[11] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[11].src = "../doc/src/manual/mov/wave_frames/frame_0091.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[12] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[12].src = "../doc/src/manual/mov/wave_frames/frame_0092.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[13] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[13].src = "../doc/src/manual/mov/wave_frames/frame_0093.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[14] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[14].src = "../doc/src/manual/mov/wave_frames/frame_0094.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[15] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[15].src = "../doc/src/manual/mov/wave_frames/frame_0095.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[16] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[16].src = "../doc/src/manual/mov/wave_frames/frame_0096.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[17] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[17].src = "../doc/src/manual/mov/wave_frames/frame_0097.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[18] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[18].src = "../doc/src/manual/mov/wave_frames/frame_0098.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[19] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[19].src = "../doc/src/manual/mov/wave_frames/frame_0099.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[20] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[20].src = "../doc/src/manual/mov/wave_frames/frame_0100.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[21] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[21].src = "../doc/src/manual/mov/wave_frames/frame_0101.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[22] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[22].src = "../doc/src/manual/mov/wave_frames/frame_0102.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[23] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[23].src = "../doc/src/manual/mov/wave_frames/frame_0103.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[24] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[24].src = "../doc/src/manual/mov/wave_frames/frame_0104.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[25] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[25].src = "../doc/src/manual/mov/wave_frames/frame_0105.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[26] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[26].src = "../doc/src/manual/mov/wave_frames/frame_0106.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[27] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[27].src = "../doc/src/manual/mov/wave_frames/frame_0107.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[28] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[28].src = "../doc/src/manual/mov/wave_frames/frame_0108.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[29] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[29].src = "../doc/src/manual/mov/wave_frames/frame_0109.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[30] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[30].src = "../doc/src/manual/mov/wave_frames/frame_0110.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[31] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[31].src = "../doc/src/manual/mov/wave_frames/frame_0111.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[32] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[32].src = "../doc/src/manual/mov/wave_frames/frame_0112.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[33] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[33].src = "../doc/src/manual/mov/wave_frames/frame_0113.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[34] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[34].src = "../doc/src/manual/mov/wave_frames/frame_0114.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[35] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[35].src = "../doc/src/manual/mov/wave_frames/frame_0115.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[36] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[36].src = "../doc/src/manual/mov/wave_frames/frame_0116.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[37] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[37].src = "../doc/src/manual/mov/wave_frames/frame_0117.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[38] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[38].src = "../doc/src/manual/mov/wave_frames/frame_0118.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[39] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[39].src = "../doc/src/manual/mov/wave_frames/frame_0119.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[40] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[40].src = "../doc/src/manual/mov/wave_frames/frame_0120.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[41] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[41].src = "../doc/src/manual/mov/wave_frames/frame_0121.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[42] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[42].src = "../doc/src/manual/mov/wave_frames/frame_0122.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[43] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[43].src = "../doc/src/manual/mov/wave_frames/frame_0123.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[44] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[44].src = "../doc/src/manual/mov/wave_frames/frame_0124.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[45] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[45].src = "../doc/src/manual/mov/wave_frames/frame_0125.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[46] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[46].src = "../doc/src/manual/mov/wave_frames/frame_0126.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[47] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[47].src = "../doc/src/manual/mov/wave_frames/frame_0127.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[48] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[48].src = "../doc/src/manual/mov/wave_frames/frame_0128.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[49] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[49].src = "../doc/src/manual/mov/wave_frames/frame_0129.png";
-                
-           t.innerHTML = "";
-        }
-        
-        function tick_frame_0080()
-        {
-           if (frame_frame_0080 > num_images_frame_0080 - 1)
-               frame_frame_0080 = 0;
-        
-           document.name_frame_0080.src = images_frame_0080[frame_frame_0080].src;
-           frame_frame_0080 += 1;
-           tt = setTimeout("tick_frame_0080()", interval_frame_0080);
-        }
-        
-        function startup_frame_0080()
-        {
-           preload_images_frame_0080();
-           frame_frame_0080 = 0;
-           setTimeout("tick_frame_0080()", interval_frame_0080);
-        }
-        
-        function stopit_frame_0080()
-        { clearTimeout(tt); }
-        
-        function restart_frame_0080()
-        { tt = setTimeout("tick_frame_0080()", interval_frame_0080); }
-        
-        function slower_frame_0080()
-        { interval_frame_0080 = interval_frame_0080/0.7; }
-        
-        function faster_frame_0080()
-        { interval_frame_0080 = interval_frame_0080*0.7; }
-        
-        // --->
-        </script>
-        
-        <form>
-        &nbsp;
-        <input type="button" value="Start movie" onClick="startup_frame_0080()">
-        <input type="button" value="Pause movie" onClick="stopit_frame_0080()">
-        <input type="button" value="Restart movie" onClick="restart_frame_0080()">
-        &nbsp;
-        <input type="button" value="Slower" onClick="slower_frame_0080()">
-        <input type="button" value="Faster" onClick="faster_frame_0080()">
-        </form>
-        
-        <p><div ID="progress"></div></p>
-        <img src="../doc/src/manual/mov/wave_frames/frame_0080.png" name="name_frame_0080" border=2/>
-        
-        <br><em>Caption for animated collection of images.</em><br>
-        
-
-
-
-Check out the correct with and height of YouTube movies from the
-embed command that the YouTube page can generate. Similar for Vimeo.
-
-.. raw:: html
-        
-        <iframe width="420" height="315" src="http://www.youtube.com/embed/_O7iUiftbKU" frameborder="0" allowfullscreen></iframe>
-        
-        <em>YouTube movie.</em>
-        
-
-
-
-.. raw:: html
-        
-        <iframe width="500" height="278" src="http://player.vimeo.com/video/55562330" frameborder="0" allowfullscreen></iframe>
-        
-        <em>Vimeo movie.</em>
-        
 
 
 
@@ -7294,6 +6558,9 @@ Test URL as figure name:
 
 .. Somewhat challenging heading with latex math, \t, \n, ? and parenthesis
 
+
+**Remark.**
+Movies are tested in separate file ``movies.do.txt``.
 
 .. _decay:sec:theta:
 
@@ -8603,8 +7870,8 @@ HTML is the output format.
 
 .. _subsec:ex:
 
-Subsection 2: Testing figures and movies
-----------------------------------------
+Subsection 2: Testing figures
+-----------------------------
 
 .. index:: figures
 
@@ -8631,339 +7898,6 @@ Figures without captions are allowed and will be inlined.
 
 
 .. index:: movies
-
-
-Test of movies
-~~~~~~~~~~~~~~
-
-Movie :ref:`mov:wave` shows a wave.
-
-.. raw:: html
-        
-        <div>
-        <video  loop controls width='700' height='400' preload='none'>
-            <source src='../doc/src/manual/mov/wave.mp4'  type='video/mp4;  codecs="avc1.42E01E, mp4a.40.2"'>
-            <source src='../doc/src/manual/mov/wave.webm' type='video/webm; codecs="vp8, vorbis"'>
-            <source src='../doc/src/manual/mov/wave.ogg'  type='video/ogg;  codecs="theora, vorbis"'>
-        </video>
-        </div>
-        <p><em>1D wave in Ogg format. .</em></p>
-
-
-
-Test empty caption (for inline movie, here in MPEG format):
-
-.. raw:: html
-        
-        <embed src="../doc/src/manual/mov/wave.mpeg" width=700 height=400 autoplay="false" loop="true"></embed>
-        <p><em></em></p>
-
-
-
-Test wrong syntax and multi-line caption, to see if it is automatically
-corrected:
-
-.. raw:: html
-        
-        <div>
-        <video  loop controls width='700' height='400' preload='none'>
-            <source src='../doc/src/manual/mov/wave.mp4'  type='video/mp4;  codecs="avc1.42E01E, mp4a.40.2"'>
-            <source src='../doc/src/manual/mov/wave.webm' type='video/webm; codecs="vp8, vorbis"'>
-            <source src='../doc/src/manual/mov/wave.ogg'  type='video/ogg;  codecs="theora, vorbis"'>
-        </video>
-        </div>
-        <p><em>Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie).</em></p>
-
-
-
-We can show a series of images as an animation:
-
-.. raw:: html
-        
-        <script language="Javascript">
-        <!---
-        var num_images_frame_0080 = 50;
-        var img_width_frame_0080 = 800;
-        var img_height_frame_0080 = 600;
-        var interval_frame_0080 = 300;
-        var images_frame_0080 = new Array();
-        
-        function preload_images_frame_0080()
-        {
-           t = document.getElementById("progress");
-        
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[0] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[0].src = "../doc/src/manual/mov/wave_frames/frame_0080.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[1] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[1].src = "../doc/src/manual/mov/wave_frames/frame_0081.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[2] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[2].src = "../doc/src/manual/mov/wave_frames/frame_0082.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[3] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[3].src = "../doc/src/manual/mov/wave_frames/frame_0083.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[4] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[4].src = "../doc/src/manual/mov/wave_frames/frame_0084.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[5] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[5].src = "../doc/src/manual/mov/wave_frames/frame_0085.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[6] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[6].src = "../doc/src/manual/mov/wave_frames/frame_0086.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[7] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[7].src = "../doc/src/manual/mov/wave_frames/frame_0087.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[8] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[8].src = "../doc/src/manual/mov/wave_frames/frame_0088.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[9] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[9].src = "../doc/src/manual/mov/wave_frames/frame_0089.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[10] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[10].src = "../doc/src/manual/mov/wave_frames/frame_0090.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[11] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[11].src = "../doc/src/manual/mov/wave_frames/frame_0091.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[12] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[12].src = "../doc/src/manual/mov/wave_frames/frame_0092.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[13] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[13].src = "../doc/src/manual/mov/wave_frames/frame_0093.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[14] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[14].src = "../doc/src/manual/mov/wave_frames/frame_0094.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[15] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[15].src = "../doc/src/manual/mov/wave_frames/frame_0095.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[16] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[16].src = "../doc/src/manual/mov/wave_frames/frame_0096.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[17] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[17].src = "../doc/src/manual/mov/wave_frames/frame_0097.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[18] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[18].src = "../doc/src/manual/mov/wave_frames/frame_0098.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[19] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[19].src = "../doc/src/manual/mov/wave_frames/frame_0099.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[20] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[20].src = "../doc/src/manual/mov/wave_frames/frame_0100.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[21] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[21].src = "../doc/src/manual/mov/wave_frames/frame_0101.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[22] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[22].src = "../doc/src/manual/mov/wave_frames/frame_0102.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[23] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[23].src = "../doc/src/manual/mov/wave_frames/frame_0103.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[24] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[24].src = "../doc/src/manual/mov/wave_frames/frame_0104.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[25] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[25].src = "../doc/src/manual/mov/wave_frames/frame_0105.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[26] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[26].src = "../doc/src/manual/mov/wave_frames/frame_0106.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[27] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[27].src = "../doc/src/manual/mov/wave_frames/frame_0107.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[28] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[28].src = "../doc/src/manual/mov/wave_frames/frame_0108.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[29] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[29].src = "../doc/src/manual/mov/wave_frames/frame_0109.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[30] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[30].src = "../doc/src/manual/mov/wave_frames/frame_0110.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[31] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[31].src = "../doc/src/manual/mov/wave_frames/frame_0111.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[32] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[32].src = "../doc/src/manual/mov/wave_frames/frame_0112.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[33] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[33].src = "../doc/src/manual/mov/wave_frames/frame_0113.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[34] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[34].src = "../doc/src/manual/mov/wave_frames/frame_0114.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[35] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[35].src = "../doc/src/manual/mov/wave_frames/frame_0115.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[36] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[36].src = "../doc/src/manual/mov/wave_frames/frame_0116.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[37] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[37].src = "../doc/src/manual/mov/wave_frames/frame_0117.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[38] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[38].src = "../doc/src/manual/mov/wave_frames/frame_0118.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[39] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[39].src = "../doc/src/manual/mov/wave_frames/frame_0119.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[40] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[40].src = "../doc/src/manual/mov/wave_frames/frame_0120.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[41] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[41].src = "../doc/src/manual/mov/wave_frames/frame_0121.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[42] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[42].src = "../doc/src/manual/mov/wave_frames/frame_0122.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[43] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[43].src = "../doc/src/manual/mov/wave_frames/frame_0123.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[44] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[44].src = "../doc/src/manual/mov/wave_frames/frame_0124.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[45] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[45].src = "../doc/src/manual/mov/wave_frames/frame_0125.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[46] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[46].src = "../doc/src/manual/mov/wave_frames/frame_0126.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[47] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[47].src = "../doc/src/manual/mov/wave_frames/frame_0127.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[48] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[48].src = "../doc/src/manual/mov/wave_frames/frame_0128.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[49] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[49].src = "../doc/src/manual/mov/wave_frames/frame_0129.png";
-                
-           t.innerHTML = "";
-        }
-        
-        function tick_frame_0080()
-        {
-           if (frame_frame_0080 > num_images_frame_0080 - 1)
-               frame_frame_0080 = 0;
-        
-           document.name_frame_0080.src = images_frame_0080[frame_frame_0080].src;
-           frame_frame_0080 += 1;
-           tt = setTimeout("tick_frame_0080()", interval_frame_0080);
-        }
-        
-        function startup_frame_0080()
-        {
-           preload_images_frame_0080();
-           frame_frame_0080 = 0;
-           setTimeout("tick_frame_0080()", interval_frame_0080);
-        }
-        
-        function stopit_frame_0080()
-        { clearTimeout(tt); }
-        
-        function restart_frame_0080()
-        { tt = setTimeout("tick_frame_0080()", interval_frame_0080); }
-        
-        function slower_frame_0080()
-        { interval_frame_0080 = interval_frame_0080/0.7; }
-        
-        function faster_frame_0080()
-        { interval_frame_0080 = interval_frame_0080*0.7; }
-        
-        // --->
-        </script>
-        
-        <form>
-        &nbsp;
-        <input type="button" value="Start movie" onClick="startup_frame_0080()">
-        <input type="button" value="Pause movie" onClick="stopit_frame_0080()">
-        <input type="button" value="Restart movie" onClick="restart_frame_0080()">
-        &nbsp;
-        <input type="button" value="Slower" onClick="slower_frame_0080()">
-        <input type="button" value="Faster" onClick="faster_frame_0080()">
-        </form>
-        
-        <p><div ID="progress"></div></p>
-        <img src="../doc/src/manual/mov/wave_frames/frame_0080.png" name="name_frame_0080" border=2/>
-        
-        <br><em>Caption for animated collection of images.</em><br>
-        
-
-
-
-Check out the correct with and height of YouTube movies from the
-embed command that the YouTube page can generate. Similar for Vimeo.
-
-.. raw:: html
-        
-        <iframe width="420" height="315" src="http://www.youtube.com/embed/_O7iUiftbKU" frameborder="0" allowfullscreen></iframe>
-        
-        <em>YouTube movie.</em>
-        
-
-
-
-.. raw:: html
-        
-        <iframe width="500" height="278" src="http://player.vimeo.com/video/55562330" frameborder="0" allowfullscreen></iframe>
-        
-        <em>Vimeo movie.</em>
-        
-
 
 
 
@@ -8998,6 +7932,9 @@ Test URL as figure name:
 
 .. Somewhat challenging heading with latex math, \t, \n, ? and parenthesis
 
+
+**Remark.**
+Movies are tested in separate file ``movies.do.txt``.
 
 .. _decay:sec:theta:
 
@@ -10406,7 +9343,7 @@ And one more.</font> Some formats will only display this correctly when
 HTML is the output format.
 
 
-==== Subsection 2: Testing figures and movies ====
+==== Subsection 2: Testing figures ====
 
 Test of figures. In particular we refer to Figure fig:impact in which
 there is a flow.
@@ -10445,34 +9382,6 @@ googlecode repository) and substitute the line above with the URL.
 
 
 
-
-==== Test of movies ====
-
-Movie mov:wave shows a wave.
-
- 1D wave in Ogg format. . (Movie `../doc/src/manual/mov/wave.ogg`: play wave.html)
-
-Test empty caption (for inline movie, here in MPEG format):
-
- (Movie `../doc/src/manual/mov/wave.mpeg`: play wave.html)
-
-Test wrong syntax and multi-line caption, to see if it is automatically
-corrected:
-
- Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie).   (Movie `../doc/src/manual/mov/wave.webm`: play wave.html)
-
-We can show a series of images as an animation:
-
-
- Caption for animated collection of images. (Movie of files `../doc/src/manual/mov/wave_frames/frame_*.png` in frame_0080.html)
-
-
-Check out the correct with and height of YouTube movies from the
-embed command that the YouTube page can generate. Similar for Vimeo.
-
- YouTube movie. http://www.youtube.com/watch?v=_O7iUiftbKU
-
- Vimeo movie. http://vimeo.com/55562330
 
 
 <wiki:comment> Test multi-line caption in figure </wiki:comment>
@@ -10519,6 +9428,8 @@ googlecode repository) and substitute the line above with the URL.
 <wiki:comment> Test wikimedia type of files that otherwise reside in subdirs </wiki:comment>
 
 <wiki:comment> Somewhat challenging heading with latex math, \t, \n, ? and parenthesis </wiki:comment>
+
+*Remark.* Movies are tested in separate file `movies.do.txt`.
 
 ==== The `\theta` parameter (not `\nabla`?) ====
 
@@ -11568,7 +10479,7 @@ And one more.</font> Some formats will only display this correctly when
 HTML is the output format.
 
 
-==== Subsection 2: Testing figures and movies ====
+==== Subsection 2: Testing figures ====
 
 Test of figures. In particular we refer to Figure fig:impact in which
 there is a flow.
@@ -11583,34 +10494,6 @@ Figures without captions are allowed and will be inlined.
 [[File:Wave1D.png|frame|200px|alt=Wave1D.png|<span title=""></span>]] <!-- not yet uploaded to common.wikimedia.org -->
 
 
-
-==== Test of movies ====
-
-Movie mov:wave shows a wave.
-
- 1D wave in Ogg format. . (Movie <code>../doc/src/manual/mov/wave.ogg</code>: play wave.html)
-
-Test empty caption (for inline movie, here in MPEG format):
-
- (Movie <code>../doc/src/manual/mov/wave.mpeg</code>: play wave.html)
-
-Test wrong syntax and multi-line caption, to see if it is automatically
-corrected:
-
- Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie).   (Movie <code>../doc/src/manual/mov/wave.webm</code>: play wave.html)
-
-We can show a series of images as an animation:
-
-
- Caption for animated collection of images. (Movie of files <code>../doc/src/manual/mov/wave_frames/frame_*.png</code> in frame_0080.html)
-
-
-Check out the correct with and height of YouTube movies from the
-embed command that the YouTube page can generate. Similar for Vimeo.
-
- YouTube movie. http://www.youtube.com/watch?v=_O7iUiftbKU
-
- Vimeo movie. http://vimeo.com/55562330
 
 
 <!-- Test multi-line caption in figure -->
@@ -11641,6 +10524,9 @@ Test URL as figure name:
 
 
 <!-- Somewhat challenging heading with latex math, \t, \n, ? and parenthesis -->
+
+''Remark.''
+Movies are tested in separate file <code>movies.do.txt</code>.
 
 ==== The <math>\theta</math> parameter (not <math>\nabla</math>?) ====
 
@@ -12812,7 +11698,7 @@ And one more.</font> Some formats will only display this correctly when
 HTML is the output format.
 
 
-== Subsection 2: Testing figures and movies ==
+== Subsection 2: Testing figures ==
 
 
 Test of figures. In particular we refer to Figure fig:impact in which
@@ -12824,34 +11710,6 @@ Figures without captions are allowed and will be inlined.
 
 {{../doc/src/manual/fig/wave1D.png|}}
 
-
-=== Test of movies ===
-
-Movie mov:wave shows a wave.
-
- 1D wave in Ogg format. . (Movie {{{../doc/src/manual/mov/wave.ogg}}}: play [[wave.html]])
-
-Test empty caption (for inline movie, here in MPEG format):
-
- (Movie {{{../doc/src/manual/mov/wave.mpeg}}}: play [[wave.html]])
-
-Test wrong syntax and multi-line caption, to see if it is automatically
-corrected:
-
- Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie).   (Movie {{{../doc/src/manual/mov/wave.webm}}}: play [[wave.html]])
-
-We can show a series of images as an animation:
-
-
- Caption for animated collection of images. (Movie of files {{{../doc/src/manual/mov/wave_frames/frame_*.png}}} in [[frame_0080.html]])
-
-
-Check out the correct with and height of YouTube movies from the
-embed command that the YouTube page can generate. Similar for Vimeo.
-
- YouTube movie. [[http://www.youtube.com/watch?v=_O7iUiftbKU]]
-
- Vimeo movie. [[http://vimeo.com/55562330]]
 
 
 <wiki:comment> Test multi-line caption in figure </wiki:comment>
@@ -12870,6 +11728,8 @@ Test URL as figure name:
 <wiki:comment> Test wikimedia type of files that otherwise reside in subdirs </wiki:comment>
 
 <wiki:comment> Somewhat challenging heading with latex math, \t, \n, ? and parenthesis </wiki:comment>
+
+//Remark.// Movies are tested in separate file {{{movies.do.txt}}}.
 
 == The {{{\theta}}} parameter (not {{{\nabla}}}?) ==
 
@@ -13915,7 +12775,7 @@ And one more. Some formats will only display this correctly when
 HTML is the output format.
 
 
-Subsection 2: Testing figures and movies
+Subsection 2: Testing figures
 
 
 Test of figures. In particular we refer to Figure ref{fig:impact} in which
@@ -13927,34 +12787,6 @@ Figures without captions are allowed and will be inlined.
 
 FIGURE:[../doc/src/manual/fig/wave1D, width=200]
 
-
-Test of movies
-
-Movie ref{mov:wave} shows a wave.
-
- 1D wave in Ogg format. . (Movie '../doc/src/manual/mov/wave.ogg': play "wave.html":wave.html)
-
-Test empty caption (for inline movie, here in MPEG format):
-
- (Movie '../doc/src/manual/mov/wave.mpeg': play "wave.html":wave.html)
-
-Test wrong syntax and multi-line caption, to see if it is automatically
-corrected:
-
- Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie).   (Movie '../doc/src/manual/mov/wave.webm': play "wave.html":wave.html)
-
-We can show a series of images as an animation:
-
-
- Caption for animated collection of images. (Movie of files '../doc/src/manual/mov/wave_frames/frame_*.png' in "frame_0080.html":frame_0080.html)
-
-
-Check out the correct with and height of YouTube movies from the
-embed command that the YouTube page can generate. Similar for Vimeo.
-
- YouTube movie. "http://www.youtube.com/watch?v=_O7iUiftbKU":http://www.youtube.com/watch?v=_O7iUiftbKU
-
- Vimeo movie. "http://vimeo.com/55562330":http://vimeo.com/55562330
 
 
 
@@ -13969,6 +12801,8 @@ Test URL as figure name:
 FIGURE: [https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png, width=500, frac=0.8]
 
 
+
+*Remark.* Movies are tested in separate file 'movies.do.txt'.
 
 The \theta parameter (not \nabla?)
 
@@ -15060,8 +13894,8 @@ And one more. Some formats will only display this correctly when
 HTML is the output format.
 
 
-Subsection 2: Testing figures and movies
-----------------------------------------
+Subsection 2: Testing figures
+-----------------------------
 
 
 Test of figures. In particular we refer to Figure ref{fig:impact} in which
@@ -15073,35 +13907,6 @@ Figures without captions are allowed and will be inlined.
 
 FIGURE:[../doc/src/manual/fig/wave1D, width=200]
 
-
-Test of movies
-~~~~~~~~~~~~~~
-
-Movie ref{mov:wave} shows a wave.
-
- 1D wave in Ogg format. . (Movie C{../doc/src/manual/mov/wave.ogg}: play U{wave.html<wave.html>})
-
-Test empty caption (for inline movie, here in MPEG format):
-
- (Movie C{../doc/src/manual/mov/wave.mpeg}: play U{wave.html<wave.html>})
-
-Test wrong syntax and multi-line caption, to see if it is automatically
-corrected:
-
- Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie).   (Movie C{../doc/src/manual/mov/wave.webm}: play U{wave.html<wave.html>})
-
-We can show a series of images as an animation:
-
-
- Caption for animated collection of images. (Movie of files C{../doc/src/manual/mov/wave_frames/frame_*.png} in U{frame_0080.html<frame_0080.html>})
-
-
-Check out the correct with and height of YouTube movies from the
-embed command that the YouTube page can generate. Similar for Vimeo.
-
- YouTube movie. U{http://www.youtube.com/watch?v=_O7iUiftbKU<http://www.youtube.com/watch?v=_O7iUiftbKU>}
-
- Vimeo movie. U{http://vimeo.com/55562330<http://vimeo.com/55562330>}
 
 
 
@@ -15116,6 +13921,8 @@ Test URL as figure name:
 FIGURE: [https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png, width=500, frac=0.8]
 
 
+
+I{Remark.} Movies are tested in separate file C{movies.do.txt}.
 
 The M{\theta} parameter (not M{\nabla}?)
 ----------------------------------------
@@ -16033,8 +14840,7 @@ Table of contents:
 
  Section 1 
    Subsection 1 
-   Subsection 2: Testing figures and movies 
-     Test of movies 
+   Subsection 2: Testing figures 
    The \theta parameter (not \nabla?) 
    Custom Environments 
    Tables 
@@ -16307,8 +15113,8 @@ And one more. Some formats will only display this correctly when
 HTML is the output format.
 
 
-Subsection 2: Testing figures and movies
-----------------------------------------
+Subsection 2: Testing figures
+-----------------------------
 
 
 Test of figures. In particular we refer to Figure ref{fig:impact} in which
@@ -16320,35 +15126,6 @@ Figures without captions are allowed and will be inlined.
 
 FIGURE:[../doc/src/manual/fig/wave1D, width=200]
 
-
-Test of movies
-~~~~~~~~~~~~~~
-
-Movie ref{mov:wave} shows a wave.
-
- 1D wave in Ogg format. . (Movie ../doc/src/manual/mov/wave.ogg: play wave.html)
-
-Test empty caption (for inline movie, here in MPEG format):
-
- (Movie ../doc/src/manual/mov/wave.mpeg: play wave.html)
-
-Test wrong syntax and multi-line caption, to see if it is automatically
-corrected:
-
- Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie).   (Movie ../doc/src/manual/mov/wave.webm: play wave.html)
-
-We can show a series of images as an animation:
-
-
- Caption for animated collection of images. (Movie of files ../doc/src/manual/mov/wave_frames/frame_*.png in frame_0080.html)
-
-
-Check out the correct with and height of YouTube movies from the
-embed command that the YouTube page can generate. Similar for Vimeo.
-
- YouTube movie. http://www.youtube.com/watch?v=_O7iUiftbKU
-
- Vimeo movie. http://vimeo.com/55562330
 
 
 
@@ -16363,6 +15140,8 @@ Test URL as figure name:
 FIGURE: [https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png, width=500, frac=0.8]
 
 
+
+*Remark.* Movies are tested in separate file movies.do.txt.
 
 The \theta parameter (not \nabla?)
 ----------------------------------
@@ -17538,7 +16317,7 @@ And one more.</font> Some formats will only display this correctly when
 HTML is the output format.
 
 
-### Subsection 2: Testing figures and movies
+### Subsection 2: Testing figures
 
 
 Test of figures. In particular we refer to Figure ref{fig:impact} in which
@@ -17549,326 +16328,6 @@ there is a flow.
 Figures without captions are allowed and will be inlined.
 
 ![](../doc/src/manual/fig/wave1D.png)
-
-
-#### Test of movies
-
-Movie ref{mov:wave} shows a wave.
-
-
-<div>
-<video  loop controls width='700' height='400' preload='none'>
-    <source src='../doc/src/manual/mov/wave.mp4'  type='video/mp4;  codecs="avc1.42E01E, mp4a.40.2"'>
-    <source src='../doc/src/manual/mov/wave.webm' type='video/webm; codecs="vp8, vorbis"'>
-    <source src='../doc/src/manual/mov/wave.ogg'  type='video/ogg;  codecs="theora, vorbis"'>
-</video>
-</div>
-<p><em>1D wave in Ogg format. .</em></p>
-
-
-Test empty caption (for inline movie, here in MPEG format):
-
-
-<embed src="../doc/src/manual/mov/wave.mpeg" width=700 height=400 autoplay="false" loop="true"></embed>
-<p><em></em></p>
-
-
-Test wrong syntax and multi-line caption, to see if it is automatically
-corrected:
-
-
-<div>
-<video  loop controls width='700' height='400' preload='none'>
-    <source src='../doc/src/manual/mov/wave.mp4'  type='video/mp4;  codecs="avc1.42E01E, mp4a.40.2"'>
-    <source src='../doc/src/manual/mov/wave.webm' type='video/webm; codecs="vp8, vorbis"'>
-    <source src='../doc/src/manual/mov/wave.ogg'  type='video/ogg;  codecs="theora, vorbis"'>
-</video>
-</div>
-<p><em>Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie).</em></p>
-
-
-We can show a series of images as an animation:
-
-
-<script language="Javascript">
-<!---
-var num_images_frame_0080 = 50;
-var img_width_frame_0080 = 800;
-var img_height_frame_0080 = 600;
-var interval_frame_0080 = 300;
-var images_frame_0080 = new Array();
-
-function preload_images_frame_0080()
-{
-   t = document.getElementById("progress");
-
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[0] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[0].src = "../doc/src/manual/mov/wave_frames/frame_0080.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[1] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[1].src = "../doc/src/manual/mov/wave_frames/frame_0081.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[2] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[2].src = "../doc/src/manual/mov/wave_frames/frame_0082.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[3] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[3].src = "../doc/src/manual/mov/wave_frames/frame_0083.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[4] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[4].src = "../doc/src/manual/mov/wave_frames/frame_0084.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[5] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[5].src = "../doc/src/manual/mov/wave_frames/frame_0085.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[6] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[6].src = "../doc/src/manual/mov/wave_frames/frame_0086.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[7] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[7].src = "../doc/src/manual/mov/wave_frames/frame_0087.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[8] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[8].src = "../doc/src/manual/mov/wave_frames/frame_0088.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[9] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[9].src = "../doc/src/manual/mov/wave_frames/frame_0089.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[10] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[10].src = "../doc/src/manual/mov/wave_frames/frame_0090.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[11] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[11].src = "../doc/src/manual/mov/wave_frames/frame_0091.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[12] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[12].src = "../doc/src/manual/mov/wave_frames/frame_0092.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[13] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[13].src = "../doc/src/manual/mov/wave_frames/frame_0093.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[14] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[14].src = "../doc/src/manual/mov/wave_frames/frame_0094.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[15] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[15].src = "../doc/src/manual/mov/wave_frames/frame_0095.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[16] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[16].src = "../doc/src/manual/mov/wave_frames/frame_0096.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[17] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[17].src = "../doc/src/manual/mov/wave_frames/frame_0097.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[18] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[18].src = "../doc/src/manual/mov/wave_frames/frame_0098.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[19] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[19].src = "../doc/src/manual/mov/wave_frames/frame_0099.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[20] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[20].src = "../doc/src/manual/mov/wave_frames/frame_0100.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[21] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[21].src = "../doc/src/manual/mov/wave_frames/frame_0101.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[22] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[22].src = "../doc/src/manual/mov/wave_frames/frame_0102.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[23] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[23].src = "../doc/src/manual/mov/wave_frames/frame_0103.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[24] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[24].src = "../doc/src/manual/mov/wave_frames/frame_0104.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[25] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[25].src = "../doc/src/manual/mov/wave_frames/frame_0105.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[26] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[26].src = "../doc/src/manual/mov/wave_frames/frame_0106.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[27] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[27].src = "../doc/src/manual/mov/wave_frames/frame_0107.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[28] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[28].src = "../doc/src/manual/mov/wave_frames/frame_0108.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[29] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[29].src = "../doc/src/manual/mov/wave_frames/frame_0109.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[30] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[30].src = "../doc/src/manual/mov/wave_frames/frame_0110.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[31] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[31].src = "../doc/src/manual/mov/wave_frames/frame_0111.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[32] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[32].src = "../doc/src/manual/mov/wave_frames/frame_0112.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[33] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[33].src = "../doc/src/manual/mov/wave_frames/frame_0113.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[34] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[34].src = "../doc/src/manual/mov/wave_frames/frame_0114.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[35] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[35].src = "../doc/src/manual/mov/wave_frames/frame_0115.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[36] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[36].src = "../doc/src/manual/mov/wave_frames/frame_0116.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[37] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[37].src = "../doc/src/manual/mov/wave_frames/frame_0117.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[38] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[38].src = "../doc/src/manual/mov/wave_frames/frame_0118.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[39] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[39].src = "../doc/src/manual/mov/wave_frames/frame_0119.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[40] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[40].src = "../doc/src/manual/mov/wave_frames/frame_0120.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[41] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[41].src = "../doc/src/manual/mov/wave_frames/frame_0121.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[42] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[42].src = "../doc/src/manual/mov/wave_frames/frame_0122.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[43] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[43].src = "../doc/src/manual/mov/wave_frames/frame_0123.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[44] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[44].src = "../doc/src/manual/mov/wave_frames/frame_0124.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[45] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[45].src = "../doc/src/manual/mov/wave_frames/frame_0125.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[46] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[46].src = "../doc/src/manual/mov/wave_frames/frame_0126.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[47] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[47].src = "../doc/src/manual/mov/wave_frames/frame_0127.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[48] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[48].src = "../doc/src/manual/mov/wave_frames/frame_0128.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[49] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[49].src = "../doc/src/manual/mov/wave_frames/frame_0129.png";
-        
-   t.innerHTML = "";
-}
-
-function tick_frame_0080()
-{
-   if (frame_frame_0080 > num_images_frame_0080 - 1)
-       frame_frame_0080 = 0;
-
-   document.name_frame_0080.src = images_frame_0080[frame_frame_0080].src;
-   frame_frame_0080 += 1;
-   tt = setTimeout("tick_frame_0080()", interval_frame_0080);
-}
-
-function startup_frame_0080()
-{
-   preload_images_frame_0080();
-   frame_frame_0080 = 0;
-   setTimeout("tick_frame_0080()", interval_frame_0080);
-}
-
-function stopit_frame_0080()
-{ clearTimeout(tt); }
-
-function restart_frame_0080()
-{ tt = setTimeout("tick_frame_0080()", interval_frame_0080); }
-
-function slower_frame_0080()
-{ interval_frame_0080 = interval_frame_0080/0.7; }
-
-function faster_frame_0080()
-{ interval_frame_0080 = interval_frame_0080*0.7; }
-
-// --->
-</script>
-
-<form>
-&nbsp;
-<input type="button" value="Start movie" onClick="startup_frame_0080()">
-<input type="button" value="Pause movie" onClick="stopit_frame_0080()">
-<input type="button" value="Restart movie" onClick="restart_frame_0080()">
-&nbsp;
-<input type="button" value="Slower" onClick="slower_frame_0080()">
-<input type="button" value="Faster" onClick="faster_frame_0080()">
-</form>
-
-<p><div ID="progress"></div></p>
-<img src="../doc/src/manual/mov/wave_frames/frame_0080.png" name="name_frame_0080" border=2/>
-
-<br><em>Caption for animated collection of images.</em><br>
-
-
-
-Check out the correct with and height of YouTube movies from the
-embed command that the YouTube page can generate. Similar for Vimeo.
-
-
-<iframe width="420" height="315" src="http://www.youtube.com/embed/_O7iUiftbKU" frameborder="0" allowfullscreen></iframe>
-
-<em>YouTube movie.</em>
-
-
-
-
-<iframe width="500" height="278" src="http://player.vimeo.com/video/55562330" frameborder="0" allowfullscreen></iframe>
-
-<em>Vimeo movie.</em>
-
 
 
 
@@ -17888,6 +16347,8 @@ Test URL as figure name:
 <!-- Test wikimedia type of files that otherwise reside in subdirs -->
 
 <!-- Somewhat challenging heading with latex math, \t, \n, ? and parenthesis -->
+
+*Remark.* Movies are tested in separate file `movies.do.txt`.
 
 ### The $\theta$ parameter (not $\nabla$?)
 
@@ -19313,7 +17774,7 @@ in a separate document: `admon.do.txt`.
       "HTML is the output format.\n",
       "\n",
       "\n",
-      "### Subsection 2: Testing figures and movies\n",
+      "### Subsection 2: Testing figures\n",
       "\n",
       "\n",
       "Test of figures. In particular we refer to Figure ref{fig:impact} in which\n",
@@ -19324,326 +17785,6 @@ in a separate document: `admon.do.txt`.
       "Figures without captions are allowed and will be inlined.\n",
       "\n",
       "![](files/../doc/src/manual/fig/wave1D.png)\n",
-      "\n",
-      "\n",
-      "#### Test of movies\n",
-      "\n",
-      "Movie ref{mov:wave} shows a wave.\n",
-      "\n",
-      "\n",
-      "<div>\n",
-      "<video  loop controls width='700' height='400' preload='none'>\n",
-      "    <source src='../doc/src/manual/mov/wave.mp4'  type='video/mp4;  codecs=\"avc1.42E01E, mp4a.40.2\"'>\n",
-      "    <source src='../doc/src/manual/mov/wave.webm' type='video/webm; codecs=\"vp8, vorbis\"'>\n",
-      "    <source src='../doc/src/manual/mov/wave.ogg'  type='video/ogg;  codecs=\"theora, vorbis\"'>\n",
-      "</video>\n",
-      "</div>\n",
-      "<p><em>1D wave in Ogg format. .</em></p>\n",
-      "\n",
-      "\n",
-      "Test empty caption (for inline movie, here in MPEG format):\n",
-      "\n",
-      "\n",
-      "<embed src=\"../doc/src/manual/mov/wave.mpeg\" width=700 height=400 autoplay=\"false\" loop=\"true\"></embed>\n",
-      "<p><em></em></p>\n",
-      "\n",
-      "\n",
-      "Test wrong syntax and multi-line caption, to see if it is automatically\n",
-      "corrected:\n",
-      "\n",
-      "\n",
-      "<div>\n",
-      "<video  loop controls width='700' height='400' preload='none'>\n",
-      "    <source src='../doc/src/manual/mov/wave.mp4'  type='video/mp4;  codecs=\"avc1.42E01E, mp4a.40.2\"'>\n",
-      "    <source src='../doc/src/manual/mov/wave.webm' type='video/webm; codecs=\"vp8, vorbis\"'>\n",
-      "    <source src='../doc/src/manual/mov/wave.ogg'  type='video/ogg;  codecs=\"theora, vorbis\"'>\n",
-      "</video>\n",
-      "</div>\n",
-      "<p><em>Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie).</em></p>\n",
-      "\n",
-      "\n",
-      "We can show a series of images as an animation:\n",
-      "\n",
-      "\n",
-      "<script language=\"Javascript\">\n",
-      "<!---\n",
-      "var num_images_frame_0080 = 50;\n",
-      "var img_width_frame_0080 = 800;\n",
-      "var img_height_frame_0080 = 600;\n",
-      "var interval_frame_0080 = 300;\n",
-      "var images_frame_0080 = new Array();\n",
-      "\n",
-      "function preload_images_frame_0080()\n",
-      "{\n",
-      "   t = document.getElementById(\"progress\");\n",
-      "\n",
-      "   t.innerHTML = \"Preloading image \";\n",
-      "   images_frame_0080[0] = new Image(img_width_frame_0080, img_height_frame_0080);\n",
-      "   images_frame_0080[0].src = \"../doc/src/manual/mov/wave_frames/frame_0080.png\";\n",
-      "        \n",
-      "   t.innerHTML = \"Preloading image \";\n",
-      "   images_frame_0080[1] = new Image(img_width_frame_0080, img_height_frame_0080);\n",
-      "   images_frame_0080[1].src = \"../doc/src/manual/mov/wave_frames/frame_0081.png\";\n",
-      "        \n",
-      "   t.innerHTML = \"Preloading image \";\n",
-      "   images_frame_0080[2] = new Image(img_width_frame_0080, img_height_frame_0080);\n",
-      "   images_frame_0080[2].src = \"../doc/src/manual/mov/wave_frames/frame_0082.png\";\n",
-      "        \n",
-      "   t.innerHTML = \"Preloading image \";\n",
-      "   images_frame_0080[3] = new Image(img_width_frame_0080, img_height_frame_0080);\n",
-      "   images_frame_0080[3].src = \"../doc/src/manual/mov/wave_frames/frame_0083.png\";\n",
-      "        \n",
-      "   t.innerHTML = \"Preloading image \";\n",
-      "   images_frame_0080[4] = new Image(img_width_frame_0080, img_height_frame_0080);\n",
-      "   images_frame_0080[4].src = \"../doc/src/manual/mov/wave_frames/frame_0084.png\";\n",
-      "        \n",
-      "   t.innerHTML = \"Preloading image \";\n",
-      "   images_frame_0080[5] = new Image(img_width_frame_0080, img_height_frame_0080);\n",
-      "   images_frame_0080[5].src = \"../doc/src/manual/mov/wave_frames/frame_0085.png\";\n",
-      "        \n",
-      "   t.innerHTML = \"Preloading image \";\n",
-      "   images_frame_0080[6] = new Image(img_width_frame_0080, img_height_frame_0080);\n",
-      "   images_frame_0080[6].src = \"../doc/src/manual/mov/wave_frames/frame_0086.png\";\n",
-      "        \n",
-      "   t.innerHTML = \"Preloading image \";\n",
-      "   images_frame_0080[7] = new Image(img_width_frame_0080, img_height_frame_0080);\n",
-      "   images_frame_0080[7].src = \"../doc/src/manual/mov/wave_frames/frame_0087.png\";\n",
-      "        \n",
-      "   t.innerHTML = \"Preloading image \";\n",
-      "   images_frame_0080[8] = new Image(img_width_frame_0080, img_height_frame_0080);\n",
-      "   images_frame_0080[8].src = \"../doc/src/manual/mov/wave_frames/frame_0088.png\";\n",
-      "        \n",
-      "   t.innerHTML = \"Preloading image \";\n",
-      "   images_frame_0080[9] = new Image(img_width_frame_0080, img_height_frame_0080);\n",
-      "   images_frame_0080[9].src = \"../doc/src/manual/mov/wave_frames/frame_0089.png\";\n",
-      "        \n",
-      "   t.innerHTML = \"Preloading image \";\n",
-      "   images_frame_0080[10] = new Image(img_width_frame_0080, img_height_frame_0080);\n",
-      "   images_frame_0080[10].src = \"../doc/src/manual/mov/wave_frames/frame_0090.png\";\n",
-      "        \n",
-      "   t.innerHTML = \"Preloading image \";\n",
-      "   images_frame_0080[11] = new Image(img_width_frame_0080, img_height_frame_0080);\n",
-      "   images_frame_0080[11].src = \"../doc/src/manual/mov/wave_frames/frame_0091.png\";\n",
-      "        \n",
-      "   t.innerHTML = \"Preloading image \";\n",
-      "   images_frame_0080[12] = new Image(img_width_frame_0080, img_height_frame_0080);\n",
-      "   images_frame_0080[12].src = \"../doc/src/manual/mov/wave_frames/frame_0092.png\";\n",
-      "        \n",
-      "   t.innerHTML = \"Preloading image \";\n",
-      "   images_frame_0080[13] = new Image(img_width_frame_0080, img_height_frame_0080);\n",
-      "   images_frame_0080[13].src = \"../doc/src/manual/mov/wave_frames/frame_0093.png\";\n",
-      "        \n",
-      "   t.innerHTML = \"Preloading image \";\n",
-      "   images_frame_0080[14] = new Image(img_width_frame_0080, img_height_frame_0080);\n",
-      "   images_frame_0080[14].src = \"../doc/src/manual/mov/wave_frames/frame_0094.png\";\n",
-      "        \n",
-      "   t.innerHTML = \"Preloading image \";\n",
-      "   images_frame_0080[15] = new Image(img_width_frame_0080, img_height_frame_0080);\n",
-      "   images_frame_0080[15].src = \"../doc/src/manual/mov/wave_frames/frame_0095.png\";\n",
-      "        \n",
-      "   t.innerHTML = \"Preloading image \";\n",
-      "   images_frame_0080[16] = new Image(img_width_frame_0080, img_height_frame_0080);\n",
-      "   images_frame_0080[16].src = \"../doc/src/manual/mov/wave_frames/frame_0096.png\";\n",
-      "        \n",
-      "   t.innerHTML = \"Preloading image \";\n",
-      "   images_frame_0080[17] = new Image(img_width_frame_0080, img_height_frame_0080);\n",
-      "   images_frame_0080[17].src = \"../doc/src/manual/mov/wave_frames/frame_0097.png\";\n",
-      "        \n",
-      "   t.innerHTML = \"Preloading image \";\n",
-      "   images_frame_0080[18] = new Image(img_width_frame_0080, img_height_frame_0080);\n",
-      "   images_frame_0080[18].src = \"../doc/src/manual/mov/wave_frames/frame_0098.png\";\n",
-      "        \n",
-      "   t.innerHTML = \"Preloading image \";\n",
-      "   images_frame_0080[19] = new Image(img_width_frame_0080, img_height_frame_0080);\n",
-      "   images_frame_0080[19].src = \"../doc/src/manual/mov/wave_frames/frame_0099.png\";\n",
-      "        \n",
-      "   t.innerHTML = \"Preloading image \";\n",
-      "   images_frame_0080[20] = new Image(img_width_frame_0080, img_height_frame_0080);\n",
-      "   images_frame_0080[20].src = \"../doc/src/manual/mov/wave_frames/frame_0100.png\";\n",
-      "        \n",
-      "   t.innerHTML = \"Preloading image \";\n",
-      "   images_frame_0080[21] = new Image(img_width_frame_0080, img_height_frame_0080);\n",
-      "   images_frame_0080[21].src = \"../doc/src/manual/mov/wave_frames/frame_0101.png\";\n",
-      "        \n",
-      "   t.innerHTML = \"Preloading image \";\n",
-      "   images_frame_0080[22] = new Image(img_width_frame_0080, img_height_frame_0080);\n",
-      "   images_frame_0080[22].src = \"../doc/src/manual/mov/wave_frames/frame_0102.png\";\n",
-      "        \n",
-      "   t.innerHTML = \"Preloading image \";\n",
-      "   images_frame_0080[23] = new Image(img_width_frame_0080, img_height_frame_0080);\n",
-      "   images_frame_0080[23].src = \"../doc/src/manual/mov/wave_frames/frame_0103.png\";\n",
-      "        \n",
-      "   t.innerHTML = \"Preloading image \";\n",
-      "   images_frame_0080[24] = new Image(img_width_frame_0080, img_height_frame_0080);\n",
-      "   images_frame_0080[24].src = \"../doc/src/manual/mov/wave_frames/frame_0104.png\";\n",
-      "        \n",
-      "   t.innerHTML = \"Preloading image \";\n",
-      "   images_frame_0080[25] = new Image(img_width_frame_0080, img_height_frame_0080);\n",
-      "   images_frame_0080[25].src = \"../doc/src/manual/mov/wave_frames/frame_0105.png\";\n",
-      "        \n",
-      "   t.innerHTML = \"Preloading image \";\n",
-      "   images_frame_0080[26] = new Image(img_width_frame_0080, img_height_frame_0080);\n",
-      "   images_frame_0080[26].src = \"../doc/src/manual/mov/wave_frames/frame_0106.png\";\n",
-      "        \n",
-      "   t.innerHTML = \"Preloading image \";\n",
-      "   images_frame_0080[27] = new Image(img_width_frame_0080, img_height_frame_0080);\n",
-      "   images_frame_0080[27].src = \"../doc/src/manual/mov/wave_frames/frame_0107.png\";\n",
-      "        \n",
-      "   t.innerHTML = \"Preloading image \";\n",
-      "   images_frame_0080[28] = new Image(img_width_frame_0080, img_height_frame_0080);\n",
-      "   images_frame_0080[28].src = \"../doc/src/manual/mov/wave_frames/frame_0108.png\";\n",
-      "        \n",
-      "   t.innerHTML = \"Preloading image \";\n",
-      "   images_frame_0080[29] = new Image(img_width_frame_0080, img_height_frame_0080);\n",
-      "   images_frame_0080[29].src = \"../doc/src/manual/mov/wave_frames/frame_0109.png\";\n",
-      "        \n",
-      "   t.innerHTML = \"Preloading image \";\n",
-      "   images_frame_0080[30] = new Image(img_width_frame_0080, img_height_frame_0080);\n",
-      "   images_frame_0080[30].src = \"../doc/src/manual/mov/wave_frames/frame_0110.png\";\n",
-      "        \n",
-      "   t.innerHTML = \"Preloading image \";\n",
-      "   images_frame_0080[31] = new Image(img_width_frame_0080, img_height_frame_0080);\n",
-      "   images_frame_0080[31].src = \"../doc/src/manual/mov/wave_frames/frame_0111.png\";\n",
-      "        \n",
-      "   t.innerHTML = \"Preloading image \";\n",
-      "   images_frame_0080[32] = new Image(img_width_frame_0080, img_height_frame_0080);\n",
-      "   images_frame_0080[32].src = \"../doc/src/manual/mov/wave_frames/frame_0112.png\";\n",
-      "        \n",
-      "   t.innerHTML = \"Preloading image \";\n",
-      "   images_frame_0080[33] = new Image(img_width_frame_0080, img_height_frame_0080);\n",
-      "   images_frame_0080[33].src = \"../doc/src/manual/mov/wave_frames/frame_0113.png\";\n",
-      "        \n",
-      "   t.innerHTML = \"Preloading image \";\n",
-      "   images_frame_0080[34] = new Image(img_width_frame_0080, img_height_frame_0080);\n",
-      "   images_frame_0080[34].src = \"../doc/src/manual/mov/wave_frames/frame_0114.png\";\n",
-      "        \n",
-      "   t.innerHTML = \"Preloading image \";\n",
-      "   images_frame_0080[35] = new Image(img_width_frame_0080, img_height_frame_0080);\n",
-      "   images_frame_0080[35].src = \"../doc/src/manual/mov/wave_frames/frame_0115.png\";\n",
-      "        \n",
-      "   t.innerHTML = \"Preloading image \";\n",
-      "   images_frame_0080[36] = new Image(img_width_frame_0080, img_height_frame_0080);\n",
-      "   images_frame_0080[36].src = \"../doc/src/manual/mov/wave_frames/frame_0116.png\";\n",
-      "        \n",
-      "   t.innerHTML = \"Preloading image \";\n",
-      "   images_frame_0080[37] = new Image(img_width_frame_0080, img_height_frame_0080);\n",
-      "   images_frame_0080[37].src = \"../doc/src/manual/mov/wave_frames/frame_0117.png\";\n",
-      "        \n",
-      "   t.innerHTML = \"Preloading image \";\n",
-      "   images_frame_0080[38] = new Image(img_width_frame_0080, img_height_frame_0080);\n",
-      "   images_frame_0080[38].src = \"../doc/src/manual/mov/wave_frames/frame_0118.png\";\n",
-      "        \n",
-      "   t.innerHTML = \"Preloading image \";\n",
-      "   images_frame_0080[39] = new Image(img_width_frame_0080, img_height_frame_0080);\n",
-      "   images_frame_0080[39].src = \"../doc/src/manual/mov/wave_frames/frame_0119.png\";\n",
-      "        \n",
-      "   t.innerHTML = \"Preloading image \";\n",
-      "   images_frame_0080[40] = new Image(img_width_frame_0080, img_height_frame_0080);\n",
-      "   images_frame_0080[40].src = \"../doc/src/manual/mov/wave_frames/frame_0120.png\";\n",
-      "        \n",
-      "   t.innerHTML = \"Preloading image \";\n",
-      "   images_frame_0080[41] = new Image(img_width_frame_0080, img_height_frame_0080);\n",
-      "   images_frame_0080[41].src = \"../doc/src/manual/mov/wave_frames/frame_0121.png\";\n",
-      "        \n",
-      "   t.innerHTML = \"Preloading image \";\n",
-      "   images_frame_0080[42] = new Image(img_width_frame_0080, img_height_frame_0080);\n",
-      "   images_frame_0080[42].src = \"../doc/src/manual/mov/wave_frames/frame_0122.png\";\n",
-      "        \n",
-      "   t.innerHTML = \"Preloading image \";\n",
-      "   images_frame_0080[43] = new Image(img_width_frame_0080, img_height_frame_0080);\n",
-      "   images_frame_0080[43].src = \"../doc/src/manual/mov/wave_frames/frame_0123.png\";\n",
-      "        \n",
-      "   t.innerHTML = \"Preloading image \";\n",
-      "   images_frame_0080[44] = new Image(img_width_frame_0080, img_height_frame_0080);\n",
-      "   images_frame_0080[44].src = \"../doc/src/manual/mov/wave_frames/frame_0124.png\";\n",
-      "        \n",
-      "   t.innerHTML = \"Preloading image \";\n",
-      "   images_frame_0080[45] = new Image(img_width_frame_0080, img_height_frame_0080);\n",
-      "   images_frame_0080[45].src = \"../doc/src/manual/mov/wave_frames/frame_0125.png\";\n",
-      "        \n",
-      "   t.innerHTML = \"Preloading image \";\n",
-      "   images_frame_0080[46] = new Image(img_width_frame_0080, img_height_frame_0080);\n",
-      "   images_frame_0080[46].src = \"../doc/src/manual/mov/wave_frames/frame_0126.png\";\n",
-      "        \n",
-      "   t.innerHTML = \"Preloading image \";\n",
-      "   images_frame_0080[47] = new Image(img_width_frame_0080, img_height_frame_0080);\n",
-      "   images_frame_0080[47].src = \"../doc/src/manual/mov/wave_frames/frame_0127.png\";\n",
-      "        \n",
-      "   t.innerHTML = \"Preloading image \";\n",
-      "   images_frame_0080[48] = new Image(img_width_frame_0080, img_height_frame_0080);\n",
-      "   images_frame_0080[48].src = \"../doc/src/manual/mov/wave_frames/frame_0128.png\";\n",
-      "        \n",
-      "   t.innerHTML = \"Preloading image \";\n",
-      "   images_frame_0080[49] = new Image(img_width_frame_0080, img_height_frame_0080);\n",
-      "   images_frame_0080[49].src = \"../doc/src/manual/mov/wave_frames/frame_0129.png\";\n",
-      "        \n",
-      "   t.innerHTML = \"\";\n",
-      "}\n",
-      "\n",
-      "function tick_frame_0080()\n",
-      "{\n",
-      "   if (frame_frame_0080 > num_images_frame_0080 - 1)\n",
-      "       frame_frame_0080 = 0;\n",
-      "\n",
-      "   document.name_frame_0080.src = images_frame_0080[frame_frame_0080].src;\n",
-      "   frame_frame_0080 += 1;\n",
-      "   tt = setTimeout(\"tick_frame_0080()\", interval_frame_0080);\n",
-      "}\n",
-      "\n",
-      "function startup_frame_0080()\n",
-      "{\n",
-      "   preload_images_frame_0080();\n",
-      "   frame_frame_0080 = 0;\n",
-      "   setTimeout(\"tick_frame_0080()\", interval_frame_0080);\n",
-      "}\n",
-      "\n",
-      "function stopit_frame_0080()\n",
-      "{ clearTimeout(tt); }\n",
-      "\n",
-      "function restart_frame_0080()\n",
-      "{ tt = setTimeout(\"tick_frame_0080()\", interval_frame_0080); }\n",
-      "\n",
-      "function slower_frame_0080()\n",
-      "{ interval_frame_0080 = interval_frame_0080/0.7; }\n",
-      "\n",
-      "function faster_frame_0080()\n",
-      "{ interval_frame_0080 = interval_frame_0080*0.7; }\n",
-      "\n",
-      "// --->\n",
-      "</script>\n",
-      "\n",
-      "<form>\n",
-      "&nbsp;\n",
-      "<input type=\"button\" value=\"Start movie\" onClick=\"startup_frame_0080()\">\n",
-      "<input type=\"button\" value=\"Pause movie\" onClick=\"stopit_frame_0080()\">\n",
-      "<input type=\"button\" value=\"Restart movie\" onClick=\"restart_frame_0080()\">\n",
-      "&nbsp;\n",
-      "<input type=\"button\" value=\"Slower\" onClick=\"slower_frame_0080()\">\n",
-      "<input type=\"button\" value=\"Faster\" onClick=\"faster_frame_0080()\">\n",
-      "</form>\n",
-      "\n",
-      "<p><div ID=\"progress\"></div></p>\n",
-      "<img src=\"../doc/src/manual/mov/wave_frames/frame_0080.png\" name=\"name_frame_0080\" border=2/>\n",
-      "\n",
-      "<br><em>Caption for animated collection of images.</em><br>\n",
-      "\n",
-      "\n",
-      "\n",
-      "Check out the correct with and height of YouTube movies from the\n",
-      "embed command that the YouTube page can generate. Similar for Vimeo.\n",
-      "\n",
-      "\n",
-      "<iframe width=\"420\" height=\"315\" src=\"http://www.youtube.com/embed/_O7iUiftbKU\" frameborder=\"0\" allowfullscreen></iframe>\n",
-      "\n",
-      "<em>YouTube movie.</em>\n",
-      "\n",
-      "\n",
-      "\n",
-      "\n",
-      "<iframe width=\"500\" height=\"278\" src=\"http://player.vimeo.com/video/55562330\" frameborder=\"0\" allowfullscreen></iframe>\n",
-      "\n",
-      "<em>Vimeo movie.</em>\n",
-      "\n",
       "\n",
       "\n",
       "\n",
@@ -19663,6 +17804,8 @@ in a separate document: `admon.do.txt`.
       "<!-- Test wikimedia type of files that otherwise reside in subdirs -->\n",
       "\n",
       "<!-- Somewhat challenging heading with latex math, \\t, \\n, ? and parenthesis -->\n",
+      "\n",
+      "*Remark.* Movies are tested in separate file `movies.do.txt`.\n",
       "\n",
       "### The $\\theta$ parameter (not $\\nabla$?)\n",
       "\n",
@@ -21180,7 +19323,7 @@ output1
 output2</code></pre>
 <p>It is time to test <code>verbatim inline font</code> especially with <code>a newline inside the text</code> and an exclamation mark at the end: <code>BEGIN</code>! The exclamation mark inside the verbatim text is potentially not smart since latex use ! in the <code>Verb</code> typesetting, but this should now be fixed: test  !bc  and  !ec  as well as  !bsummary . Also test backslashes and braces like <code>\begin</code>, <code>\begin{enumerate}</code>, <code>\end{this}\end{that}</code>, and <code>{something \inside braces}</code> in inline verbatim text.</p>
 <p>Here is some color and an attempt to write Some formats will only display this correctly when HTML is the output format.</p>
-<h2 id="subsection-2-testing-figures-and-movies">Subsection 2: Testing figures and movies</h2>
+<h2 id="subsection-2-testing-figures">Subsection 2: Testing figures</h2>
 <p>[subsec:ex]</p>
 <p>Test of figures. In particular we refer to Figure [fig:impact] in which there is a flow.</p>
 <p>[ht]</p>
@@ -21191,18 +19334,6 @@ output2</code></pre>
 <div class="figure">
 <embed src="../doc/src/manual/fig/wave1D.eps" /><p class="caption">image</p>
 </div>
-<h4 id="test-of-movies.">Test of movies.</h4>
-<p>Movie [mov:wave] shows a wave.</p>
-<p>[ht]</p>
-<p>Test empty caption (for inline movie, here in MPEG format):</p>
-<p>(Movie <code>../doc/src/manual/mov/wave.mpeg</code>: play <a href="{wave.html}"></a>)</p>
-<p>Test wrong syntax and multi-line caption, to see if it is automatically corrected:</p>
-<p>[ht]</p>
-<p>We can show a series of images as an animation:</p>
-<p>Caption for animated collection of images. (Movie of files <code>../doc/src/manual/mov/wave_frames/frame_*.png</code> in <a href="{file:///home/hpl/vc/doconce/test/frame_0080.html}"></a>)</p>
-<p>Check out the correct with and height of YouTube movies from the embed command that the YouTube page can generate. Similar for Vimeo.</p>
-<p>YouTube movie. <a href="{http://www.youtube.com/watch?v=_O7iUiftbKU}"></a></p>
-<p>Vimeo movie. <a href="{http://vimeo.com/55562330}"></a></p>
 <p>Here is figure [myfig] with a long multi-line caption and an extra space before the FIGURE keyword.</p>
 <p>[ht]</p>
 <div class="figure">
@@ -21212,6 +19343,8 @@ output2</code></pre>
 <div class="figure">
 <img src="downloaded_figures/f_plot.png" alt="image" /><p class="caption">image</p>
 </div>
+<h4 id="remark.">Remark.</h4>
+<p>Movies are tested in separate file <code>movies.do.txt</code>.</p>
 <h2 id="the-theta-parameter-not-nabla">The <span class="math">\(\theta\)</span> parameter (not <span class="math">\(\nabla\)</span>?)</h2>
 <p>[decay:sec:theta]</p>
 <p>Functions do not always need to be advanced, here is one involving <span class="math">\(\theta\)</span>:</p>
@@ -21835,7 +19968,7 @@ show()</code></pre>
 <span class="kw">output2</span></code></pre>
 <p>It is time to test <code>verbatim inline font</code> especially with <code>a newline inside the text</code> and an exclamation mark at the end: <code>BEGIN</code>! The exclamation mark inside the verbatim text is potentially not smart since latex use ! in the <code>Verb</code> typesetting, but this should now be fixed: test <code>!bc</code> and <code>!ec</code> as well as <code>!bsummary</code>. Also test backslashes and braces like <code>\begin</code>, <code>\begin{enumerate}</code>, <code>\end{this}\end{that}</code>, and <code>{something \inside braces}</code> in inline verbatim text.</p>
 <p>Here is some <font color="red">red</font> color and an attempt to write <font color="green">with green color containing a linebreak. And one more.</font> Some formats will only display this correctly when HTML is the output format.</p>
-<h3 id="subsection-2-testing-figures-and-movies">Subsection 2: Testing figures and movies</h3>
+<h3 id="subsection-2-testing-figures">Subsection 2: Testing figures</h3>
 <p>Test of figures. In particular we refer to Figure ref{fig:impact} in which there is a flow.</p>
 <div class="figure">
 <img src="../doc/src/manual/fig/wave1D.png" alt="Visualization of a wave." /><p class="caption">Visualization of a wave.</p>
@@ -21844,300 +19977,6 @@ show()</code></pre>
 <div class="figure">
 <img src="../doc/src/manual/fig/wave1D.png" />
 </div>
-<h4 id="test-of-movies">Test of movies</h4>
-<p>Movie ref{mov:wave} shows a wave.</p>
-<div>
-<video  loop controls width='700' height='400' preload='none'>
-    
-<source src='../doc/src/manual/mov/wave.mp4'  type='video/mp4;  codecs="avc1.42E01E, mp4a.40.2"'> <source src='../doc/src/manual/mov/wave.webm' type='video/webm; codecs="vp8, vorbis"'> <source src='../doc/src/manual/mov/wave.ogg'  type='video/ogg;  codecs="theora, vorbis"'>
-</video>
-</div>
-<p>
-<em>1D wave in Ogg format. .</em>
-</p>
-
-
-<p>Test empty caption (for inline movie, here in MPEG format):</p>
-<embed src="../doc/src/manual/mov/wave.mpeg" width=700 height=400 autoplay="false" loop="true"></embed>
-<p>
-<em></em>
-</p>
-
-
-<p>Test wrong syntax and multi-line caption, to see if it is automatically corrected:</p>
-<div>
-<video  loop controls width='700' height='400' preload='none'>
-    
-<source src='../doc/src/manual/mov/wave.mp4'  type='video/mp4;  codecs="avc1.42E01E, mp4a.40.2"'> <source src='../doc/src/manual/mov/wave.webm' type='video/webm; codecs="vp8, vorbis"'> <source src='../doc/src/manual/mov/wave.ogg'  type='video/ogg;  codecs="theora, vorbis"'>
-</video>
-</div>
-<p>
-<em>Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie).</em>
-</p>
-
-
-<p>We can show a series of images as an animation:</p>
-<script language="Javascript">
-<!---
-var num_images_frame_0080 = 50;
-var img_width_frame_0080 = 800;
-var img_height_frame_0080 = 600;
-var interval_frame_0080 = 300;
-var images_frame_0080 = new Array();
-
-function preload_images_frame_0080()
-{
-   t = document.getElementById("progress");
-
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[0] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[0].src = "../doc/src/manual/mov/wave_frames/frame_0080.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[1] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[1].src = "../doc/src/manual/mov/wave_frames/frame_0081.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[2] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[2].src = "../doc/src/manual/mov/wave_frames/frame_0082.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[3] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[3].src = "../doc/src/manual/mov/wave_frames/frame_0083.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[4] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[4].src = "../doc/src/manual/mov/wave_frames/frame_0084.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[5] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[5].src = "../doc/src/manual/mov/wave_frames/frame_0085.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[6] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[6].src = "../doc/src/manual/mov/wave_frames/frame_0086.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[7] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[7].src = "../doc/src/manual/mov/wave_frames/frame_0087.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[8] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[8].src = "../doc/src/manual/mov/wave_frames/frame_0088.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[9] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[9].src = "../doc/src/manual/mov/wave_frames/frame_0089.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[10] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[10].src = "../doc/src/manual/mov/wave_frames/frame_0090.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[11] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[11].src = "../doc/src/manual/mov/wave_frames/frame_0091.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[12] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[12].src = "../doc/src/manual/mov/wave_frames/frame_0092.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[13] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[13].src = "../doc/src/manual/mov/wave_frames/frame_0093.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[14] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[14].src = "../doc/src/manual/mov/wave_frames/frame_0094.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[15] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[15].src = "../doc/src/manual/mov/wave_frames/frame_0095.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[16] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[16].src = "../doc/src/manual/mov/wave_frames/frame_0096.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[17] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[17].src = "../doc/src/manual/mov/wave_frames/frame_0097.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[18] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[18].src = "../doc/src/manual/mov/wave_frames/frame_0098.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[19] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[19].src = "../doc/src/manual/mov/wave_frames/frame_0099.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[20] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[20].src = "../doc/src/manual/mov/wave_frames/frame_0100.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[21] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[21].src = "../doc/src/manual/mov/wave_frames/frame_0101.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[22] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[22].src = "../doc/src/manual/mov/wave_frames/frame_0102.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[23] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[23].src = "../doc/src/manual/mov/wave_frames/frame_0103.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[24] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[24].src = "../doc/src/manual/mov/wave_frames/frame_0104.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[25] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[25].src = "../doc/src/manual/mov/wave_frames/frame_0105.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[26] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[26].src = "../doc/src/manual/mov/wave_frames/frame_0106.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[27] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[27].src = "../doc/src/manual/mov/wave_frames/frame_0107.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[28] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[28].src = "../doc/src/manual/mov/wave_frames/frame_0108.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[29] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[29].src = "../doc/src/manual/mov/wave_frames/frame_0109.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[30] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[30].src = "../doc/src/manual/mov/wave_frames/frame_0110.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[31] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[31].src = "../doc/src/manual/mov/wave_frames/frame_0111.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[32] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[32].src = "../doc/src/manual/mov/wave_frames/frame_0112.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[33] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[33].src = "../doc/src/manual/mov/wave_frames/frame_0113.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[34] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[34].src = "../doc/src/manual/mov/wave_frames/frame_0114.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[35] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[35].src = "../doc/src/manual/mov/wave_frames/frame_0115.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[36] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[36].src = "../doc/src/manual/mov/wave_frames/frame_0116.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[37] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[37].src = "../doc/src/manual/mov/wave_frames/frame_0117.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[38] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[38].src = "../doc/src/manual/mov/wave_frames/frame_0118.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[39] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[39].src = "../doc/src/manual/mov/wave_frames/frame_0119.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[40] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[40].src = "../doc/src/manual/mov/wave_frames/frame_0120.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[41] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[41].src = "../doc/src/manual/mov/wave_frames/frame_0121.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[42] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[42].src = "../doc/src/manual/mov/wave_frames/frame_0122.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[43] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[43].src = "../doc/src/manual/mov/wave_frames/frame_0123.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[44] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[44].src = "../doc/src/manual/mov/wave_frames/frame_0124.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[45] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[45].src = "../doc/src/manual/mov/wave_frames/frame_0125.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[46] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[46].src = "../doc/src/manual/mov/wave_frames/frame_0126.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[47] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[47].src = "../doc/src/manual/mov/wave_frames/frame_0127.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[48] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[48].src = "../doc/src/manual/mov/wave_frames/frame_0128.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[49] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[49].src = "../doc/src/manual/mov/wave_frames/frame_0129.png";
-        
-   t.innerHTML = "";
-}
-
-function tick_frame_0080()
-{
-   if (frame_frame_0080 > num_images_frame_0080 - 1)
-       frame_frame_0080 = 0;
-
-   document.name_frame_0080.src = images_frame_0080[frame_frame_0080].src;
-   frame_frame_0080 += 1;
-   tt = setTimeout("tick_frame_0080()", interval_frame_0080);
-}
-
-function startup_frame_0080()
-{
-   preload_images_frame_0080();
-   frame_frame_0080 = 0;
-   setTimeout("tick_frame_0080()", interval_frame_0080);
-}
-
-function stopit_frame_0080()
-{ clearTimeout(tt); }
-
-function restart_frame_0080()
-{ tt = setTimeout("tick_frame_0080()", interval_frame_0080); }
-
-function slower_frame_0080()
-{ interval_frame_0080 = interval_frame_0080/0.7; }
-
-function faster_frame_0080()
-{ interval_frame_0080 = interval_frame_0080*0.7; }
-
-// --->
-</script>
-
-<form>
-  <input type="button" value="Start movie" onClick="startup_frame_0080()"> <input type="button" value="Pause movie" onClick="stopit_frame_0080()"> <input type="button" value="Restart movie" onClick="restart_frame_0080()">   <input type="button" value="Slower" onClick="slower_frame_0080()"> <input type="button" value="Faster" onClick="faster_frame_0080()">
-</form>
-
-<p><div ID="progress"></div></p>
-<p><img src="../doc/src/manual/mov/wave_frames/frame_0080.png" name="name_frame_0080" border=2/></p>
-<p><br><em>Caption for animated collection of images.</em><br></p>
-<p>Check out the correct with and height of YouTube movies from the embed command that the YouTube page can generate. Similar for Vimeo.</p>
-<iframe width="420" height="315" src="http://www.youtube.com/embed/_O7iUiftbKU" frameborder="0" allowfullscreen></iframe>
-
-<p><em>YouTube movie.</em></p>
-<iframe width="500" height="278" src="http://player.vimeo.com/video/55562330" frameborder="0" allowfullscreen></iframe>
-
-<p><em>Vimeo movie.</em></p>
 <!-- Test multi-line caption in figure -->
 
 <p>Here is figure ref{myfig} with a long multi-line caption and an extra space before the FIGURE keyword.</p>
@@ -22154,6 +19993,7 @@ function faster_frame_0080()
 
 <!-- Somewhat challenging heading with latex math, \t, \n, ? and parenthesis -->
 
+<p><em>Remark.</em> Movies are tested in separate file <code>movies.do.txt</code>.</p>
 <h3 id="the-theta-parameter-not-nabla">The <span class="math">\(\theta\)</span> parameter (not <span class="math">\(\nabla\)</span>?)</h3>
 <p>Functions do not always need to be advanced, here is one involving <span class="math">\(\theta\)</span>:</p>
 <pre><code>def f(theta):
@@ -24636,32 +22476,31 @@ Automatically generated HTML file from Doconce source
 {'highest level': 1,
  'sections': [(' Section 1 ', 1, 'sec1', 'sec1'),
               (' Subsection 1 ', 2, None, '___sec1'),
-              (' Subsection 2: Testing figures and movies ',
+              (' Subsection 2: Testing figures ',
                2,
                'subsec:ex',
                'subsec:ex'),
-              (' Test of movies ', 3, None, '___sec3'),
               (' The $\\theta$ parameter (not $\\nabla$?) ',
                2,
                'decay:sec:theta',
                'decay:sec:theta'),
-              (' Custom Environments ', 2, None, '___sec5'),
+              (' Custom Environments ', 2, None, '___sec4'),
               (' Tables ', 2, 'subsec:table', 'subsec:table'),
               (' A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2` ',
                2,
                None,
-               '___sec7'),
-              (' Bibliography test ', 2, None, '___sec8'),
+               '___sec6'),
+              (' Bibliography test ', 2, None, '___sec7'),
               (' Example 1: Examples can be typeset as exercises ',
                2,
                'Example',
                'Example'),
               (' URLs ', 2, 'subsubsec:ex', 'subsubsec:ex'),
-              (' LaTeX Mathematics ', 2, None, '___sec11'),
-              (' Exercises ', 1, None, '___sec12'),
+              (' LaTeX Mathematics ', 2, None, '___sec10'),
+              (' Exercises ', 1, None, '___sec11'),
               (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
-              (' Remarks ', 3, None, '___sec14'),
-              (' Not an exercise ', 2, None, '___sec15'),
+              (' Remarks ', 3, None, '___sec13'),
+              (' Not an exercise ', 2, None, '___sec14'),
               (' Project 3: Compute a Probability ',
                2,
                'demo:ex:2',
@@ -24670,19 +22509,19 @@ Automatically generated HTML file from Doconce source
                2,
                'proj:circle1',
                'proj:circle1'),
-              (' Remarks ', 3, None, '___sec18'),
+              (' Remarks ', 3, None, '___sec17'),
               (' Exercise 5: Determine some Distance ',
                2,
                'exer:dist',
                'exer:dist'),
-              (' Remarks ', 3, None, '___sec20'),
+              (' Remarks ', 3, None, '___sec19'),
               (' Some exercise without the "Exercise:" prefix ',
                2,
                None,
-               '___sec21'),
-              (' Example 7: Just an example ', 2, None, '___sec22'),
-              (' Here goes another section ', 1, None, '___sec23'),
-              (' More Exercises ', 1, None, '___sec24'),
+               '___sec20'),
+              (' Example 7: Just an example ', 2, None, '___sec21'),
+              (' Here goes another section ', 1, None, '___sec22'),
+              (' More Exercises ', 1, None, '___sec23'),
               (' Exercise 8: Make references to projects and problems ',
                2,
                'exer:some:formula',
@@ -24691,11 +22530,11 @@ Automatically generated HTML file from Doconce source
                2,
                'exer:you',
                'exer:you'),
-              (' References ', 1, None, '___sec27'),
-              (' Appendix: Just for testing; part I ', 1, None, '___sec28'),
-              (' A subsection within an appendix ', 2, None, '___sec29'),
-              (' Appendix: Just for testing; part II ', 1, None, '___sec30'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec31'),
+              (' References ', 1, None, '___sec26'),
+              (' Appendix: Just for testing; part I ', 1, None, '___sec27'),
+              (' A subsection within an appendix ', 2, None, '___sec28'),
+              (' Appendix: Just for testing; part II ', 1, None, '___sec29'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec30'),
               (' Appendix: Testing identical titles ',
                2,
                'test:title:id1',
@@ -24704,12 +22543,12 @@ Automatically generated HTML file from Doconce source
                2,
                'test:title:id2',
                'test:title:id2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec34'),
-              (' Appendix: Testing inline comments ', 2, None, '___sec35'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec33'),
+              (' Appendix: Testing inline comments ', 2, None, '___sec34'),
               (' Appendix: Testing headings ending with `verbatim inline` ',
                2,
                None,
-               '___sec36')]}
+               '___sec35')]}
 end of tocinfo -->
 
 <body>
@@ -24810,41 +22649,40 @@ $$
 <p>
 <a href="._testdoc001.html#sec1"> Section 1 </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec1"> Subsection 1 </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#subsec:ex"> Subsection 2: Testing figures and movies </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec3"> Test of movies </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#subsec:ex"> Subsection 2: Testing figures </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec5"> Custom Environments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec4"> Custom Environments </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#subsec:table"> Tables </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec7"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec8"> Bibliography test </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec6"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec7"> Bibliography test </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#Example"> Example 1: Examples can be typeset as exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#subsubsec:ex"> URLs </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec11"> LaTeX Mathematics </a><br>
-<a href="._testdoc002.html#___sec12"> Exercises </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec10"> LaTeX Mathematics </a><br>
+<a href="._testdoc002.html#___sec11"> Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#demo:ex:1"> Problem 2: Flip a Coin </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec14"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec15"> Not an exercise </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec13"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec14"> Not an exercise </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#demo:ex:2"> Project 3: Compute a Probability </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec18"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec17"> Remarks </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#exer:dist"> Exercise 5: Determine some Distance </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec20"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec21"> Some exercise without the "Exercise:" prefix </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec22"> Example 7: Just an example </a><br>
-<a href="._testdoc002.html#___sec23"> Here goes another section </a><br>
-<a href="._testdoc002.html#___sec24"> More Exercises </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec19"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec20"> Some exercise without the "Exercise:" prefix </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec21"> Example 7: Just an example </a><br>
+<a href="._testdoc002.html#___sec22"> Here goes another section </a><br>
+<a href="._testdoc002.html#___sec23"> More Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#exer:some:formula"> Exercise 8: Make references to projects and problems </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#exer:you"> Project 9: References in a headings do not work well in html </a><br>
-<a href="._testdoc002.html#___sec27"> References </a><br>
-<a href="._testdoc002.html#___sec28"> Appendix: Just for testing; part I </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec29"> A subsection within an appendix </a><br>
-<a href="._testdoc002.html#___sec30"> Appendix: Just for testing; part II </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec31"> Appendix: Testing identical titles </a><br>
+<a href="._testdoc002.html#___sec26"> References </a><br>
+<a href="._testdoc002.html#___sec27"> Appendix: Just for testing; part I </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec28"> A subsection within an appendix </a><br>
+<a href="._testdoc002.html#___sec29"> Appendix: Just for testing; part II </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec30"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#test:title:id1"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#test:title:id2"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec34"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec35"> Appendix: Testing inline comments </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec36"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec33"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec34"> Appendix: Testing inline comments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec35"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
 
 <p>
 <p>
@@ -24947,32 +22785,31 @@ Automatically generated HTML file from Doconce source
 {'highest level': 1,
  'sections': [(' Section 1 ', 1, 'sec1', 'sec1'),
               (' Subsection 1 ', 2, None, '___sec1'),
-              (' Subsection 2: Testing figures and movies ',
+              (' Subsection 2: Testing figures ',
                2,
                'subsec:ex',
                'subsec:ex'),
-              (' Test of movies ', 3, None, '___sec3'),
               (' The $\\theta$ parameter (not $\\nabla$?) ',
                2,
                'decay:sec:theta',
                'decay:sec:theta'),
-              (' Custom Environments ', 2, None, '___sec5'),
+              (' Custom Environments ', 2, None, '___sec4'),
               (' Tables ', 2, 'subsec:table', 'subsec:table'),
               (' A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2` ',
                2,
                None,
-               '___sec7'),
-              (' Bibliography test ', 2, None, '___sec8'),
+               '___sec6'),
+              (' Bibliography test ', 2, None, '___sec7'),
               (' Example 1: Examples can be typeset as exercises ',
                2,
                'Example',
                'Example'),
               (' URLs ', 2, 'subsubsec:ex', 'subsubsec:ex'),
-              (' LaTeX Mathematics ', 2, None, '___sec11'),
-              (' Exercises ', 1, None, '___sec12'),
+              (' LaTeX Mathematics ', 2, None, '___sec10'),
+              (' Exercises ', 1, None, '___sec11'),
               (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
-              (' Remarks ', 3, None, '___sec14'),
-              (' Not an exercise ', 2, None, '___sec15'),
+              (' Remarks ', 3, None, '___sec13'),
+              (' Not an exercise ', 2, None, '___sec14'),
               (' Project 3: Compute a Probability ',
                2,
                'demo:ex:2',
@@ -24981,19 +22818,19 @@ Automatically generated HTML file from Doconce source
                2,
                'proj:circle1',
                'proj:circle1'),
-              (' Remarks ', 3, None, '___sec18'),
+              (' Remarks ', 3, None, '___sec17'),
               (' Exercise 5: Determine some Distance ',
                2,
                'exer:dist',
                'exer:dist'),
-              (' Remarks ', 3, None, '___sec20'),
+              (' Remarks ', 3, None, '___sec19'),
               (' Some exercise without the "Exercise:" prefix ',
                2,
                None,
-               '___sec21'),
-              (' Example 7: Just an example ', 2, None, '___sec22'),
-              (' Here goes another section ', 1, None, '___sec23'),
-              (' More Exercises ', 1, None, '___sec24'),
+               '___sec20'),
+              (' Example 7: Just an example ', 2, None, '___sec21'),
+              (' Here goes another section ', 1, None, '___sec22'),
+              (' More Exercises ', 1, None, '___sec23'),
               (' Exercise 8: Make references to projects and problems ',
                2,
                'exer:some:formula',
@@ -25002,11 +22839,11 @@ Automatically generated HTML file from Doconce source
                2,
                'exer:you',
                'exer:you'),
-              (' References ', 1, None, '___sec27'),
-              (' Appendix: Just for testing; part I ', 1, None, '___sec28'),
-              (' A subsection within an appendix ', 2, None, '___sec29'),
-              (' Appendix: Just for testing; part II ', 1, None, '___sec30'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec31'),
+              (' References ', 1, None, '___sec26'),
+              (' Appendix: Just for testing; part I ', 1, None, '___sec27'),
+              (' A subsection within an appendix ', 2, None, '___sec28'),
+              (' Appendix: Just for testing; part II ', 1, None, '___sec29'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec30'),
               (' Appendix: Testing identical titles ',
                2,
                'test:title:id1',
@@ -25015,12 +22852,12 @@ Automatically generated HTML file from Doconce source
                2,
                'test:title:id2',
                'test:title:id2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec34'),
-              (' Appendix: Testing inline comments ', 2, None, '___sec35'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec33'),
+              (' Appendix: Testing inline comments ', 2, None, '___sec34'),
               (' Appendix: Testing headings ending with `verbatim inline` ',
                2,
                None,
-               '___sec36')]}
+               '___sec35')]}
 end of tocinfo -->
 
 <body>
@@ -25239,32 +23076,31 @@ Automatically generated HTML file from Doconce source
 {'highest level': 1,
  'sections': [(' Section 1 ', 1, 'sec1', 'sec1'),
               (' Subsection 1 ', 2, None, '___sec1'),
-              (' Subsection 2: Testing figures and movies ',
+              (' Subsection 2: Testing figures ',
                2,
                'subsec:ex',
                'subsec:ex'),
-              (' Test of movies ', 3, None, '___sec3'),
               (' The $\\theta$ parameter (not $\\nabla$?) ',
                2,
                'decay:sec:theta',
                'decay:sec:theta'),
-              (' Custom Environments ', 2, None, '___sec5'),
+              (' Custom Environments ', 2, None, '___sec4'),
               (' Tables ', 2, 'subsec:table', 'subsec:table'),
               (' A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2` ',
                2,
                None,
-               '___sec7'),
-              (' Bibliography test ', 2, None, '___sec8'),
+               '___sec6'),
+              (' Bibliography test ', 2, None, '___sec7'),
               (' Example 1: Examples can be typeset as exercises ',
                2,
                'Example',
                'Example'),
               (' URLs ', 2, 'subsubsec:ex', 'subsubsec:ex'),
-              (' LaTeX Mathematics ', 2, None, '___sec11'),
-              (' Exercises ', 1, None, '___sec12'),
+              (' LaTeX Mathematics ', 2, None, '___sec10'),
+              (' Exercises ', 1, None, '___sec11'),
               (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
-              (' Remarks ', 3, None, '___sec14'),
-              (' Not an exercise ', 2, None, '___sec15'),
+              (' Remarks ', 3, None, '___sec13'),
+              (' Not an exercise ', 2, None, '___sec14'),
               (' Project 3: Compute a Probability ',
                2,
                'demo:ex:2',
@@ -25273,19 +23109,19 @@ Automatically generated HTML file from Doconce source
                2,
                'proj:circle1',
                'proj:circle1'),
-              (' Remarks ', 3, None, '___sec18'),
+              (' Remarks ', 3, None, '___sec17'),
               (' Exercise 5: Determine some Distance ',
                2,
                'exer:dist',
                'exer:dist'),
-              (' Remarks ', 3, None, '___sec20'),
+              (' Remarks ', 3, None, '___sec19'),
               (' Some exercise without the "Exercise:" prefix ',
                2,
                None,
-               '___sec21'),
-              (' Example 7: Just an example ', 2, None, '___sec22'),
-              (' Here goes another section ', 1, None, '___sec23'),
-              (' More Exercises ', 1, None, '___sec24'),
+               '___sec20'),
+              (' Example 7: Just an example ', 2, None, '___sec21'),
+              (' Here goes another section ', 1, None, '___sec22'),
+              (' More Exercises ', 1, None, '___sec23'),
               (' Exercise 8: Make references to projects and problems ',
                2,
                'exer:some:formula',
@@ -25294,11 +23130,11 @@ Automatically generated HTML file from Doconce source
                2,
                'exer:you',
                'exer:you'),
-              (' References ', 1, None, '___sec27'),
-              (' Appendix: Just for testing; part I ', 1, None, '___sec28'),
-              (' A subsection within an appendix ', 2, None, '___sec29'),
-              (' Appendix: Just for testing; part II ', 1, None, '___sec30'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec31'),
+              (' References ', 1, None, '___sec26'),
+              (' Appendix: Just for testing; part I ', 1, None, '___sec27'),
+              (' A subsection within an appendix ', 2, None, '___sec28'),
+              (' Appendix: Just for testing; part II ', 1, None, '___sec29'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec30'),
               (' Appendix: Testing identical titles ',
                2,
                'test:title:id1',
@@ -25307,12 +23143,12 @@ Automatically generated HTML file from Doconce source
                2,
                'test:title:id2',
                'test:title:id2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec34'),
-              (' Appendix: Testing inline comments ', 2, None, '___sec35'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec33'),
+              (' Appendix: Testing inline comments ', 2, None, '___sec34'),
               (' Appendix: Testing headings ending with `verbatim inline` ',
                2,
                None,
-               '___sec36')]}
+               '___sec35')]}
 end of tocinfo -->
 
 <body>
@@ -25640,7 +23476,7 @@ green color containing a linebreak.
 And one more.</font> Some formats will only display this correctly when
 HTML is the output format.
 
-<h3>Subsection 2: Testing figures and movies <a name="subsec:ex"></a></h3>
+<h3>Subsection 2: Testing figures <a name="subsec:ex"></a></h3>
 
 <p>
 Test of figures. In particular we refer to Figure <a href="#fig:impact">1</a> in which
@@ -25658,337 +23494,6 @@ Figures without captions are allowed and will be inlined.
 
 <p>
 <center><p><img src="../doc/src/manual/fig/wave1D.png" align="bottom" width=200></p></center>
-
-<h4>Test of movies  <a name="___sec3"></a></h4>
-
-<p>
-Movie <a href="#mov:wave">mov:wave</a> shows a wave.
-
-<p>
-
-<div>
-<video  loop controls width='700' height='400' preload='none'>
-    <source src='../doc/src/manual/mov/wave.mp4'  type='video/mp4;  codecs="avc1.42E01E, mp4a.40.2"'>
-    <source src='../doc/src/manual/mov/wave.webm' type='video/webm; codecs="vp8, vorbis"'>
-    <source src='../doc/src/manual/mov/wave.ogg'  type='video/ogg;  codecs="theora, vorbis"'>
-</video>
-</div>
-<p><em>1D wave in Ogg format. <a name="mov:wave"></a>.</em></p>
-
-
-<p>
-Test empty caption (for inline movie, here in MPEG format):
-
-<p>
-
-<embed src="../doc/src/manual/mov/wave.mpeg" width=700 height=400 autoplay="false" loop="true"></embed>
-<p><em></em></p>
-
-
-<p>
-Test wrong syntax and multi-line caption, to see if it is automatically
-corrected:
-
-<p>
-
-<div>
-<video  loop controls width='700' height='400' preload='none'>
-    <source src='../doc/src/manual/mov/wave.mp4'  type='video/mp4;  codecs="avc1.42E01E, mp4a.40.2"'>
-    <source src='../doc/src/manual/mov/wave.webm' type='video/webm; codecs="vp8, vorbis"'>
-    <source src='../doc/src/manual/mov/wave.ogg'  type='video/ogg;  codecs="theora, vorbis"'>
-</video>
-</div>
-<p><em>Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). <a name="mymov"></a></em></p>
-
-
-<p>
-We can show a series of images as an animation:
-
-<p>
-
-<script language="Javascript">
-<!---
-var num_images_frame_0080 = 50;
-var img_width_frame_0080 = 800;
-var img_height_frame_0080 = 600;
-var interval_frame_0080 = 300;
-var images_frame_0080 = new Array();
-
-function preload_images_frame_0080()
-{
-   t = document.getElementById("progress");
-
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[0] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[0].src = "../doc/src/manual/mov/wave_frames/frame_0080.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[1] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[1].src = "../doc/src/manual/mov/wave_frames/frame_0081.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[2] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[2].src = "../doc/src/manual/mov/wave_frames/frame_0082.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[3] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[3].src = "../doc/src/manual/mov/wave_frames/frame_0083.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[4] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[4].src = "../doc/src/manual/mov/wave_frames/frame_0084.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[5] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[5].src = "../doc/src/manual/mov/wave_frames/frame_0085.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[6] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[6].src = "../doc/src/manual/mov/wave_frames/frame_0086.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[7] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[7].src = "../doc/src/manual/mov/wave_frames/frame_0087.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[8] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[8].src = "../doc/src/manual/mov/wave_frames/frame_0088.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[9] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[9].src = "../doc/src/manual/mov/wave_frames/frame_0089.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[10] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[10].src = "../doc/src/manual/mov/wave_frames/frame_0090.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[11] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[11].src = "../doc/src/manual/mov/wave_frames/frame_0091.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[12] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[12].src = "../doc/src/manual/mov/wave_frames/frame_0092.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[13] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[13].src = "../doc/src/manual/mov/wave_frames/frame_0093.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[14] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[14].src = "../doc/src/manual/mov/wave_frames/frame_0094.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[15] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[15].src = "../doc/src/manual/mov/wave_frames/frame_0095.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[16] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[16].src = "../doc/src/manual/mov/wave_frames/frame_0096.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[17] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[17].src = "../doc/src/manual/mov/wave_frames/frame_0097.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[18] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[18].src = "../doc/src/manual/mov/wave_frames/frame_0098.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[19] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[19].src = "../doc/src/manual/mov/wave_frames/frame_0099.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[20] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[20].src = "../doc/src/manual/mov/wave_frames/frame_0100.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[21] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[21].src = "../doc/src/manual/mov/wave_frames/frame_0101.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[22] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[22].src = "../doc/src/manual/mov/wave_frames/frame_0102.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[23] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[23].src = "../doc/src/manual/mov/wave_frames/frame_0103.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[24] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[24].src = "../doc/src/manual/mov/wave_frames/frame_0104.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[25] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[25].src = "../doc/src/manual/mov/wave_frames/frame_0105.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[26] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[26].src = "../doc/src/manual/mov/wave_frames/frame_0106.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[27] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[27].src = "../doc/src/manual/mov/wave_frames/frame_0107.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[28] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[28].src = "../doc/src/manual/mov/wave_frames/frame_0108.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[29] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[29].src = "../doc/src/manual/mov/wave_frames/frame_0109.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[30] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[30].src = "../doc/src/manual/mov/wave_frames/frame_0110.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[31] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[31].src = "../doc/src/manual/mov/wave_frames/frame_0111.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[32] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[32].src = "../doc/src/manual/mov/wave_frames/frame_0112.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[33] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[33].src = "../doc/src/manual/mov/wave_frames/frame_0113.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[34] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[34].src = "../doc/src/manual/mov/wave_frames/frame_0114.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[35] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[35].src = "../doc/src/manual/mov/wave_frames/frame_0115.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[36] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[36].src = "../doc/src/manual/mov/wave_frames/frame_0116.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[37] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[37].src = "../doc/src/manual/mov/wave_frames/frame_0117.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[38] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[38].src = "../doc/src/manual/mov/wave_frames/frame_0118.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[39] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[39].src = "../doc/src/manual/mov/wave_frames/frame_0119.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[40] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[40].src = "../doc/src/manual/mov/wave_frames/frame_0120.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[41] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[41].src = "../doc/src/manual/mov/wave_frames/frame_0121.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[42] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[42].src = "../doc/src/manual/mov/wave_frames/frame_0122.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[43] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[43].src = "../doc/src/manual/mov/wave_frames/frame_0123.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[44] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[44].src = "../doc/src/manual/mov/wave_frames/frame_0124.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[45] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[45].src = "../doc/src/manual/mov/wave_frames/frame_0125.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[46] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[46].src = "../doc/src/manual/mov/wave_frames/frame_0126.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[47] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[47].src = "../doc/src/manual/mov/wave_frames/frame_0127.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[48] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[48].src = "../doc/src/manual/mov/wave_frames/frame_0128.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[49] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[49].src = "../doc/src/manual/mov/wave_frames/frame_0129.png";
-        
-   t.innerHTML = "";
-}
-
-function tick_frame_0080()
-{
-   if (frame_frame_0080 > num_images_frame_0080 - 1)
-       frame_frame_0080 = 0;
-
-   document.name_frame_0080.src = images_frame_0080[frame_frame_0080].src;
-   frame_frame_0080 += 1;
-   tt = setTimeout("tick_frame_0080()", interval_frame_0080);
-}
-
-function startup_frame_0080()
-{
-   preload_images_frame_0080();
-   frame_frame_0080 = 0;
-   setTimeout("tick_frame_0080()", interval_frame_0080);
-}
-
-function stopit_frame_0080()
-{ clearTimeout(tt); }
-
-function restart_frame_0080()
-{ tt = setTimeout("tick_frame_0080()", interval_frame_0080); }
-
-function slower_frame_0080()
-{ interval_frame_0080 = interval_frame_0080/0.7; }
-
-function faster_frame_0080()
-{ interval_frame_0080 = interval_frame_0080*0.7; }
-
-// --->
-</script>
-
-<form>
-&nbsp;
-<input type="button" value="Start movie" onClick="startup_frame_0080()">
-<input type="button" value="Pause movie" onClick="stopit_frame_0080()">
-<input type="button" value="Restart movie" onClick="restart_frame_0080()">
-&nbsp;
-<input type="button" value="Slower" onClick="slower_frame_0080()">
-<input type="button" value="Faster" onClick="faster_frame_0080()">
-</form>
-
-<p><div ID="progress"></div></p>
-<img src="../doc/src/manual/mov/wave_frames/frame_0080.png" name="name_frame_0080" border=2/>
-
-<br><em>Caption for animated collection of images.</em><br>
-
-
-
-<p>
-Check out the correct with and height of YouTube movies from the
-embed command that the YouTube page can generate. Similar for Vimeo.
-
-<p>
-
-<iframe width="420" height="315" src="http://www.youtube.com/embed/_O7iUiftbKU" frameborder="0" allowfullscreen></iframe>
-
-<em>YouTube movie.</em>
-
-
-
-<p>
-
-<iframe width="500" height="278" src="http://player.vimeo.com/video/55562330" frameborder="0" allowfullscreen></iframe>
-
-<em>Vimeo movie.</em>
-
-
 
 <p>
 <!-- Test multi-line caption in figure -->
@@ -26018,6 +23523,10 @@ Test URL as figure name:
 
 <p>
 <!-- Somewhat challenging heading with latex math, \t, \n, ? and parenthesis -->
+
+<p>
+<b>Remark.</b>
+Movies are tested in separate file <code>movies.do.txt</code>.
 
 <h3>The \( \theta \) parameter (not \( \nabla \)?) <a name="decay:sec:theta"></a></h3>
 
@@ -26065,7 +23574,7 @@ $$
 \end{align}
 $$
 
-<h3>Custom Environments  <a name="___sec5"></a></h3>
+<h3>Custom Environments  <a name="___sec4"></a></h3>
 
 <p>
 Here is an attempt to create a theorem environment via Mako
@@ -26167,14 +23676,14 @@ and <code>|</code> right after verbatim word (with no space):
 <tr><td align="right">   0                               </td> <td align="right">   -9.19                           </td> <td align="right">   4.13                            </td> <td align="right">   -0.26                           </td> </tr>
 </table>
 
-<h3>A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code>  <a name="___sec7"></a></h3>
+<h3>A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code>  <a name="___sec6"></a></h3>
 
 <p>
 <b>Files <code>my_file_v1.py</code> and <code>my_file_v2.py</code> define some math \( a_{i-1} \).</b>
 Here is
 some text.
 
-<h3>Bibliography test  <a name="___sec8"></a></h3>
+<h3>Bibliography test  <a name="___sec7"></a></h3>
 
 <p>
 Here is an example: <a href="#Langtangen_Pedersen_2002">[1]</a> discussed propagation of
@@ -26289,7 +23798,7 @@ More tough tests: repeated URLs whose footnotes when using the
 <a href="http://google.com" target="_self">google</a>, which should result in exactly three
 footnotes.
 
-<h3>LaTeX Mathematics  <a name="___sec11"></a></h3>
+<h3>LaTeX Mathematics  <a name="___sec10"></a></h3>
 
 <p>
 Here is an equation without label using backslash-bracket environment:
@@ -26391,7 +23900,7 @@ Below, we have <a href="#demo:ex:1">Problem 2: Flip a Coin</a> and <a href="#dem
 as well as <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a> and <a href="#exer:you">Project 9: References in a headings do not work well in html</a>, and in
 between there we have <a href="#exer:some:formula">Exercise 8: Make references to projects and problems</a>.
 
-<h2>Exercises  <a name="___sec12"></a></h2>
+<h2>Exercises  <a name="___sec11"></a></h2>
 
 <p>
 <!-- --- begin exercise --- -->
@@ -26413,7 +23922,7 @@ let the program count the number of heads.
 <p>
 <!-- Test syntax error -->
 
-<h4>Remarks  <a name="___sec14"></a></h4>
+<h4>Remarks  <a name="___sec13"></a></h4>
 
 <p>
 Remarks with such a subsubsection heading would previously mark
@@ -26462,7 +23971,7 @@ Filenames: <code>flip_coin.py</code>, <code>flip_coin.pdf</code>.
 <p>
 <!-- --- end exercise --- -->
 
-<h3>Not an exercise  <a name="___sec15"></a></h3>
+<h3>Not an exercise  <a name="___sec14"></a></h3>
 
 <p>
 Should be possible to stick a normal section in the middle of many
@@ -26603,7 +24112,7 @@ Filename: <code>circles.pdf</code>.
 <p>
 <!-- Closing remarks for this Project -->
 
-<h4>Remarks  <a name="___sec18"></a></h4>
+<h4>Remarks  <a name="___sec17"></a></h4>
 
 <p>
 At the very end of the exercise it may be appropriate to summarize
@@ -26722,7 +24231,7 @@ Filename: <code>subexer_b.pdf</code>.
 <p>
 <!-- Closing remarks for this Exercise -->
 
-<h4>Remarks  <a name="___sec20"></a></h4>
+<h4>Remarks  <a name="___sec19"></a></h4>
 
 <p>
 Some final closing remarks, e.g., summarizing the main findings
@@ -26735,7 +24244,7 @@ remarks will appear at the end of the typeset exercise.
 <p>
 <!-- --- begin exercise --- -->
 
-<h3>Some exercise without the "Exercise:" prefix  <a name="___sec21"></a></h3>
+<h3>Some exercise without the "Exercise:" prefix  <a name="___sec20"></a></h3>
 
 <p>
 <!-- Another minimalistic exercise -->
@@ -26762,7 +24271,7 @@ And a test that the code <code>lambda x: x+2</code> is correctly placed here:
 <p>
 <!-- --- begin exercise --- -->
 
-<h3>Example 7: Just an example  <a name="___sec22"></a></h3>
+<h3>Example 7: Just an example  <a name="___sec21"></a></h3>
 
 <p>
 <!-- This example needs the --examples_as_exercises option, otherwise -->
@@ -26779,12 +24288,12 @@ Oslo.
 <p>
 <!-- --- end exercise --- -->
 
-<h2>Here goes another section  <a name="___sec23"></a></h2>
+<h2>Here goes another section  <a name="___sec22"></a></h2>
 
 <p>
 With some text, before we continue with exercises.
 
-<h2>More Exercises  <a name="___sec24"></a></h2>
+<h2>More Exercises  <a name="___sec23"></a></h2>
 
 <p>
 <!-- --- begin exercise --- -->
@@ -26831,7 +24340,7 @@ Filename: <code>selc_composed.pdf</code>.
 <p>
 <!-- --- end exercise --- -->
 
-<h2>References  <a name="___sec27"></a></h2>
+<h2>References  <a name="___sec26"></a></h2>
 
 <p>
 <!-- begin bibliography -->
@@ -26945,22 +24454,22 @@ Filename: <code>selc_composed.pdf</code>.
 
 <!-- end bibliography -->
 
-<h2>Appendix: Just for testing; part I  <a name="___sec28"></a></h2>
+<h2>Appendix: Just for testing; part I  <a name="___sec27"></a></h2>
 
 <p>
 This is the first appendix.
 
-<h3>A subsection within an appendix  <a name="___sec29"></a></h3>
+<h3>A subsection within an appendix  <a name="___sec28"></a></h3>
 
 <p>
 Some text.
 
-<h2>Appendix: Just for testing; part II  <a name="___sec30"></a></h2>
+<h2>Appendix: Just for testing; part II  <a name="___sec29"></a></h2>
 
 <p>
 This is more stuff for an appendix.
 
-<h3>Appendix: Testing identical titles  <a name="___sec31"></a></h3>
+<h3>Appendix: Testing identical titles  <a name="___sec30"></a></h3>
 
 <p>
 Without label.
@@ -26975,7 +24484,7 @@ With label.
 <p>
 With label.
 
-<h3>Appendix: Testing identical titles  <a name="___sec34"></a></h3>
+<h3>Appendix: Testing identical titles  <a name="___sec33"></a></h3>
 
 <p>
 Without label.
@@ -27065,7 +24574,7 @@ detailed information and constitute of course very valuable readings
 when you use version control systems every day. The point now is
 to get started.
 
-<h3>Appendix: Testing inline comments  <a name="___sec35"></a></h3>
+<h3>Appendix: Testing inline comments  <a name="___sec34"></a></h3>
 
 <p>
 Projects that you want to share among several computers or project
@@ -27102,7 +24611,7 @@ systems. Numerous other tutorials contain more comprehensive material
 and in-depth explanations of the concepts and tools.</em>]</font>
 <!-- end inline comment -->
 
-<h3>Appendix: Testing headings ending with <code>verbatim inline</code>  <a name="___sec36"></a></h3>
+<h3>Appendix: Testing headings ending with <code>verbatim inline</code>  <a name="___sec35"></a></h3>
 
 <p>
 The point here is to test 1) <code>verbatim</code> code in headings, and 2)
@@ -27246,41 +24755,40 @@ Automatically generated HTML file from Doconce source
 <p>
 <a href="#sec1"> Section 1 </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec1"> Subsection 1 </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#subsec:ex"> Subsection 2: Testing figures and movies </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec3"> Test of movies </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#subsec:ex"> Subsection 2: Testing figures </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#decay:sec:theta"> The $latex \theta$ parameter (not $latex \nabla$?) </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec5"> Custom Environments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec4"> Custom Environments </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#subsec:table"> Tables </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec7"> A test of verbatim words in heading with subscript $latex a_i$: <code>my_file_v1</code> and <code>my_file_v2</code> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec8"> Bibliography test </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec6"> A test of verbatim words in heading with subscript $latex a_i$: <code>my_file_v1</code> and <code>my_file_v2</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec7"> Bibliography test </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#Example"> Example 1: Examples can be typeset as exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#subsubsec:ex"> URLs </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec11"> LaTeX Mathematics </a><br>
-<a href="#___sec12"> Exercises </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec10"> LaTeX Mathematics </a><br>
+<a href="#___sec11"> Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#demo:ex:1"> Problem 2: Flip a Coin </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec14"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec15"> Not an exercise </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec13"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec14"> Not an exercise </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#demo:ex:2"> Project 3: Compute a Probability </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#proj:circle1"> Project 4: Explore Distributions of Random Circles </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec18"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec17"> Remarks </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#exer:dist"> Exercise 5: Determine some Distance </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec20"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec21"> Some exercise without the "Exercise:" prefix </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec22"> Example 7: Just an example </a><br>
-<a href="#___sec23"> Here goes another section </a><br>
-<a href="#___sec24"> More Exercises </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec19"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec20"> Some exercise without the "Exercise:" prefix </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec21"> Example 7: Just an example </a><br>
+<a href="#___sec22"> Here goes another section </a><br>
+<a href="#___sec23"> More Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#exer:some:formula"> Exercise 8: Make references to projects and problems </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#exer:you"> Project 9: References in a headings do not work well in html </a><br>
-<a href="#___sec27"> References </a><br>
-<a href="#___sec28"> Appendix: Just for testing; part I </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec29"> A subsection within an appendix </a><br>
-<a href="#___sec30"> Appendix: Just for testing; part II </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec31"> Appendix: Testing identical titles </a><br>
+<a href="#___sec26"> References </a><br>
+<a href="#___sec27"> Appendix: Just for testing; part I </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec28"> A subsection within an appendix </a><br>
+<a href="#___sec29"> Appendix: Just for testing; part II </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec30"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#test:title:id1"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#test:title:id2"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec34"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec35"> Appendix: Testing inline comments </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec36"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec33"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec34"> Appendix: Testing inline comments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec35"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
 
 <p>
 The format of this document is
@@ -27533,7 +25041,7 @@ green color containing a linebreak.
 And one more.</font> Some formats will only display this correctly when
 HTML is the output format.
 
-<h3>Subsection 2: Testing figures and movies <a name="subsec:ex"></a></h3>
+<h3>Subsection 2: Testing figures <a name="subsec:ex"></a></h3>
 
 <p>
 Test of figures. In particular we refer to Figure <a href="#fig:impact">1</a> in which
@@ -27552,337 +25060,6 @@ Figures without captions are allowed and will be inlined.
 <p>
 <center><p><img src="https://raw.github.com/hplgit/doconce/master/test/../doc/src/manual/fig/wave1D.png" align="bottom" width=200></p></center>
 
-<h4>Test of movies  <a name="___sec3"></a></h4>
-
-<p>
-Movie <a href="#mov:wave">mov:wave</a> shows a wave.
-
-<p>
-
-<div>
-<video  loop controls width='700' height='400' preload='none'>
-    <source src='https://raw.github.com/hplgit/doconce/master/test/../doc/src/manual/mov/wave.mp4'  type='video/mp4;  codecs="avc1.42E01E, mp4a.40.2"'>
-    <source src='https://raw.github.com/hplgit/doconce/master/test/../doc/src/manual/mov/wave.webm' type='video/webm; codecs="vp8, vorbis"'>
-    <source src='https://raw.github.com/hplgit/doconce/master/test/../doc/src/manual/mov/wave.ogg'  type='video/ogg;  codecs="theora, vorbis"'>
-</video>
-</div>
-<p><em>1D wave in Ogg format. <a name="mov:wave"></a>.</em></p>
-
-
-<p>
-Test empty caption (for inline movie, here in MPEG format):
-
-<p>
-
-<embed src="https://raw.github.com/hplgit/doconce/master/test/../doc/src/manual/mov/wave.mpeg" width=700 height=400 autoplay="false" loop="true"></embed>
-<p><em></em></p>
-
-
-<p>
-Test wrong syntax and multi-line caption, to see if it is automatically
-corrected:
-
-<p>
-
-<div>
-<video  loop controls width='700' height='400' preload='none'>
-    <source src='https://raw.github.com/hplgit/doconce/master/test/../doc/src/manual/mov/wave.mp4'  type='video/mp4;  codecs="avc1.42E01E, mp4a.40.2"'>
-    <source src='https://raw.github.com/hplgit/doconce/master/test/../doc/src/manual/mov/wave.webm' type='video/webm; codecs="vp8, vorbis"'>
-    <source src='https://raw.github.com/hplgit/doconce/master/test/../doc/src/manual/mov/wave.ogg'  type='video/ogg;  codecs="theora, vorbis"'>
-</video>
-</div>
-<p><em>Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). <a name="mymov"></a></em></p>
-
-
-<p>
-We can show a series of images as an animation:
-
-<p>
-
-<script language="Javascript">
-<!---
-var num_images_frame_0080 = 50;
-var img_width_frame_0080 = 800;
-var img_height_frame_0080 = 600;
-var interval_frame_0080 = 300;
-var images_frame_0080 = new Array();
-
-function preload_images_frame_0080()
-{
-   t = document.getElementById("progress");
-
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[0] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[0].src = "../doc/src/manual/mov/wave_frames/frame_0080.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[1] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[1].src = "../doc/src/manual/mov/wave_frames/frame_0081.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[2] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[2].src = "../doc/src/manual/mov/wave_frames/frame_0082.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[3] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[3].src = "../doc/src/manual/mov/wave_frames/frame_0083.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[4] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[4].src = "../doc/src/manual/mov/wave_frames/frame_0084.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[5] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[5].src = "../doc/src/manual/mov/wave_frames/frame_0085.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[6] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[6].src = "../doc/src/manual/mov/wave_frames/frame_0086.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[7] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[7].src = "../doc/src/manual/mov/wave_frames/frame_0087.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[8] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[8].src = "../doc/src/manual/mov/wave_frames/frame_0088.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[9] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[9].src = "../doc/src/manual/mov/wave_frames/frame_0089.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[10] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[10].src = "../doc/src/manual/mov/wave_frames/frame_0090.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[11] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[11].src = "../doc/src/manual/mov/wave_frames/frame_0091.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[12] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[12].src = "../doc/src/manual/mov/wave_frames/frame_0092.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[13] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[13].src = "../doc/src/manual/mov/wave_frames/frame_0093.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[14] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[14].src = "../doc/src/manual/mov/wave_frames/frame_0094.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[15] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[15].src = "../doc/src/manual/mov/wave_frames/frame_0095.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[16] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[16].src = "../doc/src/manual/mov/wave_frames/frame_0096.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[17] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[17].src = "../doc/src/manual/mov/wave_frames/frame_0097.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[18] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[18].src = "../doc/src/manual/mov/wave_frames/frame_0098.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[19] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[19].src = "../doc/src/manual/mov/wave_frames/frame_0099.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[20] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[20].src = "../doc/src/manual/mov/wave_frames/frame_0100.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[21] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[21].src = "../doc/src/manual/mov/wave_frames/frame_0101.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[22] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[22].src = "../doc/src/manual/mov/wave_frames/frame_0102.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[23] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[23].src = "../doc/src/manual/mov/wave_frames/frame_0103.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[24] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[24].src = "../doc/src/manual/mov/wave_frames/frame_0104.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[25] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[25].src = "../doc/src/manual/mov/wave_frames/frame_0105.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[26] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[26].src = "../doc/src/manual/mov/wave_frames/frame_0106.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[27] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[27].src = "../doc/src/manual/mov/wave_frames/frame_0107.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[28] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[28].src = "../doc/src/manual/mov/wave_frames/frame_0108.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[29] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[29].src = "../doc/src/manual/mov/wave_frames/frame_0109.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[30] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[30].src = "../doc/src/manual/mov/wave_frames/frame_0110.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[31] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[31].src = "../doc/src/manual/mov/wave_frames/frame_0111.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[32] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[32].src = "../doc/src/manual/mov/wave_frames/frame_0112.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[33] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[33].src = "../doc/src/manual/mov/wave_frames/frame_0113.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[34] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[34].src = "../doc/src/manual/mov/wave_frames/frame_0114.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[35] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[35].src = "../doc/src/manual/mov/wave_frames/frame_0115.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[36] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[36].src = "../doc/src/manual/mov/wave_frames/frame_0116.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[37] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[37].src = "../doc/src/manual/mov/wave_frames/frame_0117.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[38] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[38].src = "../doc/src/manual/mov/wave_frames/frame_0118.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[39] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[39].src = "../doc/src/manual/mov/wave_frames/frame_0119.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[40] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[40].src = "../doc/src/manual/mov/wave_frames/frame_0120.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[41] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[41].src = "../doc/src/manual/mov/wave_frames/frame_0121.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[42] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[42].src = "../doc/src/manual/mov/wave_frames/frame_0122.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[43] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[43].src = "../doc/src/manual/mov/wave_frames/frame_0123.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[44] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[44].src = "../doc/src/manual/mov/wave_frames/frame_0124.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[45] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[45].src = "../doc/src/manual/mov/wave_frames/frame_0125.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[46] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[46].src = "../doc/src/manual/mov/wave_frames/frame_0126.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[47] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[47].src = "../doc/src/manual/mov/wave_frames/frame_0127.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[48] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[48].src = "../doc/src/manual/mov/wave_frames/frame_0128.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[49] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[49].src = "../doc/src/manual/mov/wave_frames/frame_0129.png";
-        
-   t.innerHTML = "";
-}
-
-function tick_frame_0080()
-{
-   if (frame_frame_0080 > num_images_frame_0080 - 1)
-       frame_frame_0080 = 0;
-
-   document.name_frame_0080.src = images_frame_0080[frame_frame_0080].src;
-   frame_frame_0080 += 1;
-   tt = setTimeout("tick_frame_0080()", interval_frame_0080);
-}
-
-function startup_frame_0080()
-{
-   preload_images_frame_0080();
-   frame_frame_0080 = 0;
-   setTimeout("tick_frame_0080()", interval_frame_0080);
-}
-
-function stopit_frame_0080()
-{ clearTimeout(tt); }
-
-function restart_frame_0080()
-{ tt = setTimeout("tick_frame_0080()", interval_frame_0080); }
-
-function slower_frame_0080()
-{ interval_frame_0080 = interval_frame_0080/0.7; }
-
-function faster_frame_0080()
-{ interval_frame_0080 = interval_frame_0080*0.7; }
-
-// --->
-</script>
-
-<form>
-&nbsp;
-<input type="button" value="Start movie" onClick="startup_frame_0080()">
-<input type="button" value="Pause movie" onClick="stopit_frame_0080()">
-<input type="button" value="Restart movie" onClick="restart_frame_0080()">
-&nbsp;
-<input type="button" value="Slower" onClick="slower_frame_0080()">
-<input type="button" value="Faster" onClick="faster_frame_0080()">
-</form>
-
-<p><div ID="progress"></div></p>
-<img src="../doc/src/manual/mov/wave_frames/frame_0080.png" name="name_frame_0080" border=2/>
-
-<br><em>Caption for animated collection of images.</em><br>
-
-
-
-<p>
-Check out the correct with and height of YouTube movies from the
-embed command that the YouTube page can generate. Similar for Vimeo.
-
-<p>
-
-<iframe width="420" height="315" src="http://www.youtube.com/embed/_O7iUiftbKU" frameborder="0" allowfullscreen></iframe>
-
-<em>YouTube movie.</em>
-
-
-
-<p>
-
-<iframe width="500" height="278" src="http://player.vimeo.com/video/55562330" frameborder="0" allowfullscreen></iframe>
-
-<em>Vimeo movie.</em>
-
-
-
 <p>
 Here is figure <a href="#myfig">2</a> with a long multi-line caption
 and an extra space before the FIGURE keyword.
@@ -27899,6 +25076,10 @@ Test URL as figure name:
 
 <p>
 <center><p><img src="https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png" align="bottom" width=500,></p></center>
+
+<p>
+<b>Remark.</b>
+Movies are tested in separate file <code>movies.do.txt</code>.
 
 <h3>The $latex \theta$ parameter (not $latex \nabla$?) <a name="decay:sec:theta"></a></h3>
 
@@ -27952,7 +25133,7 @@ $latex
 
  $
 
-<h3>Custom Environments  <a name="___sec5"></a></h3>
+<h3>Custom Environments  <a name="___sec4"></a></h3>
 
 <p>
 Here is an attempt to create a theorem environment via Mako
@@ -28045,14 +25226,14 @@ and <code>|</code> right after verbatim word (with no space):
 <tr><td align="right">   0                                 </td> <td align="right">   -9.19                             </td> <td align="right">   4.13                              </td> <td align="right">   -0.26                             </td> </tr>
 </table>
 
-<h3>A test of verbatim words in heading with subscript $latex a_i$: <code>my_file_v1</code> and <code>my_file_v2</code>  <a name="___sec7"></a></h3>
+<h3>A test of verbatim words in heading with subscript $latex a_i$: <code>my_file_v1</code> and <code>my_file_v2</code>  <a name="___sec6"></a></h3>
 
 <p>
 <b>Files <code>my_file_v1.py</code> and <code>my_file_v2.py</code> define some math $latex a_{i-1}$.</b>
 Here is
 some text.
 
-<h3>Bibliography test  <a name="___sec8"></a></h3>
+<h3>Bibliography test  <a name="___sec7"></a></h3>
 
 <p>
 Here is an example: <a href="#Langtangen_Pedersen_2002">[1]</a> discussed propagation of
@@ -28152,7 +25333,7 @@ More tough tests: repeated URLs whose footnotes when using the
 <a href="http://google.com" target="_blank">google</a>, which should result in exactly three
 footnotes.
 
-<h3>LaTeX Mathematics  <a name="___sec11"></a></h3>
+<h3>LaTeX Mathematics  <a name="___sec10"></a></h3>
 
 <p>
 Here is an equation without label using backslash-bracket environment:
@@ -28258,7 +25439,7 @@ Below, we have <a href="#demo:ex:1">Problem 2: Flip a Coin</a> and <a href="#dem
 as well as <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a> and <a href="#exer:you">Project 9: References in a headings do not work well in html</a>, and in
 between there we have <a href="#exer:some:formula">Exercise 8: Make references to projects and problems</a>.
 
-<h2>Exercises  <a name="___sec12"></a></h2>
+<h2>Exercises  <a name="___sec11"></a></h2>
 
 <h3>Problem 2: Flip a Coin <a name="demo:ex:1"></a></h3>
 
@@ -28271,7 +25452,7 @@ Make a program that simulates flipping a coin $latex N$ times.
 Print out "tail" or "head" for each flip and
 let the program count the number of heads.
 
-<h4>Remarks  <a name="___sec14"></a></h4>
+<h4>Remarks  <a name="___sec13"></a></h4>
 
 <p>
 Remarks with such a subsubsection heading would previously mark
@@ -28321,7 +25502,7 @@ heads <span style="color: #666666">=</span> <span style="color: #666666">0</span
 
 Filenames: <code>flip_coin.py</code>, <code>flip_coin.pdf</code>.
 
-<h3>Not an exercise  <a name="___sec15"></a></h3>
+<h3>Not an exercise  <a name="___sec14"></a></h3>
 
 <p>
 Should be possible to stick a normal section in the middle of many
@@ -28428,7 +25609,7 @@ Let $latex R$ and $latex (x_0,y_0)$ be normally distributed.
 <p>
 Filename: <code>circles.pdf</code>.
 
-<h4>Remarks  <a name="___sec18"></a></h4>
+<h4>Remarks  <a name="___sec17"></a></h4>
 
 <p>
 At the very end of the exercise it may be appropriate to summarize
@@ -28545,14 +25726,14 @@ Filename: <code>subexer_b.pdf</code>.
 <b>Solution.</b>
 Here goes the solution of this subexercise.
 
-<h4>Remarks  <a name="___sec20"></a></h4>
+<h4>Remarks  <a name="___sec19"></a></h4>
 
 <p>
 Some final closing remarks, e.g., summarizing the main findings
 and their implications in other problems can be made. These
 remarks will appear at the end of the typeset exercise.
 
-<h3>Some exercise without the "Exercise:" prefix  <a name="___sec21"></a></h3>
+<h3>Some exercise without the "Exercise:" prefix  <a name="___sec20"></a></h3>
 
 <p>
 Just some text. And some math saying that $latex e^0=1$ on a single line,
@@ -28573,7 +25754,7 @@ And a test that the code <code>lambda x: x+2</code> is correctly placed here:
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">lambda x: x+2
 </pre></div>
 
-<h3>Example 7: Just an example  <a name="___sec22"></a></h3>
+<h3>Example 7: Just an example  <a name="___sec21"></a></h3>
 
 <p>
 <b>a)</b>
@@ -28583,12 +25764,12 @@ What is the capital of Norway?
 <b>Answer.</b>
 Oslo.
 
-<h2>Here goes another section  <a name="___sec23"></a></h2>
+<h2>Here goes another section  <a name="___sec22"></a></h2>
 
 <p>
 With some text, before we continue with exercises.
 
-<h2>More Exercises  <a name="___sec24"></a></h2>
+<h2>More Exercises  <a name="___sec23"></a></h2>
 
 <h3>Exercise 8: Make references to projects and problems <a name="exer:some:formula"></a></h3>
 
@@ -28623,7 +25804,7 @@ the two before that as <a href="#demo:ex:2">Project 3: Compute a Probability</a>
 and this one as <a href="#exer:you">Project 9: References in a headings do not work well in html</a>.
 Filename: <code>selc_composed.pdf</code>.
 
-<h2>References  <a name="___sec27"></a></h2>
+<h2>References  <a name="___sec26"></a></h2>
 
 <p>
 
@@ -28735,22 +25916,22 @@ Filename: <code>selc_composed.pdf</code>.
     1994.</li>
 </ol>
 
-<h2>Appendix: Just for testing; part I  <a name="___sec28"></a></h2>
+<h2>Appendix: Just for testing; part I  <a name="___sec27"></a></h2>
 
 <p>
 This is the first appendix.
 
-<h3>A subsection within an appendix  <a name="___sec29"></a></h3>
+<h3>A subsection within an appendix  <a name="___sec28"></a></h3>
 
 <p>
 Some text.
 
-<h2>Appendix: Just for testing; part II  <a name="___sec30"></a></h2>
+<h2>Appendix: Just for testing; part II  <a name="___sec29"></a></h2>
 
 <p>
 This is more stuff for an appendix.
 
-<h3>Appendix: Testing identical titles  <a name="___sec31"></a></h3>
+<h3>Appendix: Testing identical titles  <a name="___sec30"></a></h3>
 
 <p>
 Without label.
@@ -28765,7 +25946,7 @@ With label.
 <p>
 With label.
 
-<h3>Appendix: Testing identical titles  <a name="___sec34"></a></h3>
+<h3>Appendix: Testing identical titles  <a name="___sec33"></a></h3>
 
 <p>
 Without label.
@@ -28855,7 +26036,7 @@ detailed information and constitute of course very valuable readings
 when you use version control systems every day. The point now is
 to get started.
 
-<h3>Appendix: Testing inline comments  <a name="___sec35"></a></h3>
+<h3>Appendix: Testing inline comments  <a name="___sec34"></a></h3>
 
 <p>
 Projects that you want to share among several computers or project
@@ -28891,7 +26072,7 @@ you with the minimum information to started with such
 systems. Numerous other tutorials contain more comprehensive material
 and in-depth explanations of the concepts and tools.</em>]</font>
 
-<h3>Appendix: Testing headings ending with <code>verbatim inline</code>  <a name="___sec36"></a></h3>
+<h3>Appendix: Testing headings ending with <code>verbatim inline</code>  <a name="___sec35"></a></h3>
 
 <p>
 The point here is to test 1) <code>verbatim</code> code in headings, and 2)
@@ -28982,32 +26163,31 @@ Automatically generated HTML file from Doconce source
 {'highest level': 1,
  'sections': [(' Section 1 ', 1, 'sec1', 'sec1'),
               (' Subsection 1 ', 2, None, '___sec1'),
-              (' Subsection 2: Testing figures and movies ',
+              (' Subsection 2: Testing figures ',
                2,
                'subsec:ex',
                'subsec:ex'),
-              (' Test of movies ', 3, None, '___sec3'),
               (' The $\\theta$ parameter (not $\\nabla$?) ',
                2,
                'decay:sec:theta',
                'decay:sec:theta'),
-              (' Custom Environments ', 2, None, '___sec5'),
+              (' Custom Environments ', 2, None, '___sec4'),
               (' Tables ', 2, 'subsec:table', 'subsec:table'),
               (' A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2` ',
                2,
                None,
-               '___sec7'),
-              (' Bibliography test ', 2, None, '___sec8'),
+               '___sec6'),
+              (' Bibliography test ', 2, None, '___sec7'),
               (' Example 1: Examples can be typeset as exercises ',
                2,
                'Example',
                'Example'),
               (' URLs ', 2, 'subsubsec:ex', 'subsubsec:ex'),
-              (' LaTeX Mathematics ', 2, None, '___sec11'),
-              (' Exercises ', 1, None, '___sec12'),
+              (' LaTeX Mathematics ', 2, None, '___sec10'),
+              (' Exercises ', 1, None, '___sec11'),
               (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
-              (' Remarks ', 3, None, '___sec14'),
-              (' Not an exercise ', 2, None, '___sec15'),
+              (' Remarks ', 3, None, '___sec13'),
+              (' Not an exercise ', 2, None, '___sec14'),
               (' Project 3: Compute a Probability ',
                2,
                'demo:ex:2',
@@ -29016,19 +26196,19 @@ Automatically generated HTML file from Doconce source
                2,
                'proj:circle1',
                'proj:circle1'),
-              (' Remarks ', 3, None, '___sec18'),
+              (' Remarks ', 3, None, '___sec17'),
               (' Exercise 5: Determine some Distance ',
                2,
                'exer:dist',
                'exer:dist'),
-              (' Remarks ', 3, None, '___sec20'),
+              (' Remarks ', 3, None, '___sec19'),
               (' Some exercise without the "Exercise:" prefix ',
                2,
                None,
-               '___sec21'),
-              (' Example 7: Just an example ', 2, None, '___sec22'),
-              (' Here goes another section ', 1, None, '___sec23'),
-              (' More Exercises ', 1, None, '___sec24'),
+               '___sec20'),
+              (' Example 7: Just an example ', 2, None, '___sec21'),
+              (' Here goes another section ', 1, None, '___sec22'),
+              (' More Exercises ', 1, None, '___sec23'),
               (' Exercise 8: Make references to projects and problems ',
                2,
                'exer:some:formula',
@@ -29037,11 +26217,11 @@ Automatically generated HTML file from Doconce source
                2,
                'exer:you',
                'exer:you'),
-              (' References ', 1, None, '___sec27'),
-              (' Appendix: Just for testing; part I ', 1, None, '___sec28'),
-              (' A subsection within an appendix ', 2, None, '___sec29'),
-              (' Appendix: Just for testing; part II ', 1, None, '___sec30'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec31'),
+              (' References ', 1, None, '___sec26'),
+              (' Appendix: Just for testing; part I ', 1, None, '___sec27'),
+              (' A subsection within an appendix ', 2, None, '___sec28'),
+              (' Appendix: Just for testing; part II ', 1, None, '___sec29'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec30'),
               (' Appendix: Testing identical titles ',
                2,
                'test:title:id1',
@@ -29050,12 +26230,12 @@ Automatically generated HTML file from Doconce source
                2,
                'test:title:id2',
                'test:title:id2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec34'),
-              (' Appendix: Testing inline comments ', 2, None, '___sec35'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec33'),
+              (' Appendix: Testing inline comments ', 2, None, '___sec34'),
               (' Appendix: Testing headings ending with `verbatim inline` ',
                2,
                None,
-               '___sec36')]}
+               '___sec35')]}
 end of tocinfo -->
 
 <body>
@@ -29150,41 +26330,40 @@ $$
 <p>
 <a href="#sec1"> Section 1 </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec1"> Subsection 1 </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#subsec:ex"> Subsection 2: Testing figures and movies </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec3"> Test of movies </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#subsec:ex"> Subsection 2: Testing figures </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec5"> Custom Environments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec4"> Custom Environments </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#subsec:table"> Tables </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec7"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec8"> Bibliography test </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec6"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec7"> Bibliography test </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#Example"> Example 1: Examples can be typeset as exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#subsubsec:ex"> URLs </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec11"> LaTeX Mathematics </a><br>
-<a href="#___sec12"> Exercises </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec10"> LaTeX Mathematics </a><br>
+<a href="#___sec11"> Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#demo:ex:1"> Problem 2: Flip a Coin </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec14"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec15"> Not an exercise </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec13"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec14"> Not an exercise </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#demo:ex:2"> Project 3: Compute a Probability </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#proj:circle1"> Project 4: Explore Distributions of Random Circles </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec18"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec17"> Remarks </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#exer:dist"> Exercise 5: Determine some Distance </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec20"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec21"> Some exercise without the "Exercise:" prefix </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec22"> Example 7: Just an example </a><br>
-<a href="#___sec23"> Here goes another section </a><br>
-<a href="#___sec24"> More Exercises </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec19"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec20"> Some exercise without the "Exercise:" prefix </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec21"> Example 7: Just an example </a><br>
+<a href="#___sec22"> Here goes another section </a><br>
+<a href="#___sec23"> More Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#exer:some:formula"> Exercise 8: Make references to projects and problems </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#exer:you"> Project 9: References in a headings do not work well in html </a><br>
-<a href="#___sec27"> References </a><br>
-<a href="#___sec28"> Appendix: Just for testing; part I </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec29"> A subsection within an appendix </a><br>
-<a href="#___sec30"> Appendix: Just for testing; part II </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec31"> Appendix: Testing identical titles </a><br>
+<a href="#___sec26"> References </a><br>
+<a href="#___sec27"> Appendix: Just for testing; part I </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec28"> A subsection within an appendix </a><br>
+<a href="#___sec29"> Appendix: Just for testing; part II </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec30"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#test:title:id1"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#test:title:id2"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec34"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec35"> Appendix: Testing inline comments </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec36"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec33"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec34"> Appendix: Testing inline comments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec35"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
 
 <p>
 <!-- !split -->
@@ -29450,7 +26629,7 @@ green color containing a linebreak.
 And one more.</font> Some formats will only display this correctly when
 HTML is the output format.
 
-<h3>Subsection 2: Testing figures and movies <a name="subsec:ex"></a></h3>
+<h3>Subsection 2: Testing figures <a name="subsec:ex"></a></h3>
 
 <p>
 Test of figures. In particular we refer to Figure <a href="#fig:impact">1</a> in which
@@ -29468,337 +26647,6 @@ Figures without captions are allowed and will be inlined.
 
 <p>
 <center><p><img src="../doc/src/manual/fig/wave1D.png" align="bottom" width=200></p></center>
-
-<h4>Test of movies  <a name="___sec3"></a></h4>
-
-<p>
-Movie <a href="#mov:wave">mov:wave</a> shows a wave.
-
-<p>
-
-<div>
-<video  loop controls width='700' height='400' preload='none'>
-    <source src='../doc/src/manual/mov/wave.mp4'  type='video/mp4;  codecs="avc1.42E01E, mp4a.40.2"'>
-    <source src='../doc/src/manual/mov/wave.webm' type='video/webm; codecs="vp8, vorbis"'>
-    <source src='../doc/src/manual/mov/wave.ogg'  type='video/ogg;  codecs="theora, vorbis"'>
-</video>
-</div>
-<p><em>1D wave in Ogg format. <a name="mov:wave"></a>.</em></p>
-
-
-<p>
-Test empty caption (for inline movie, here in MPEG format):
-
-<p>
-
-<embed src="../doc/src/manual/mov/wave.mpeg" width=700 height=400 autoplay="false" loop="true"></embed>
-<p><em></em></p>
-
-
-<p>
-Test wrong syntax and multi-line caption, to see if it is automatically
-corrected:
-
-<p>
-
-<div>
-<video  loop controls width='700' height='400' preload='none'>
-    <source src='../doc/src/manual/mov/wave.mp4'  type='video/mp4;  codecs="avc1.42E01E, mp4a.40.2"'>
-    <source src='../doc/src/manual/mov/wave.webm' type='video/webm; codecs="vp8, vorbis"'>
-    <source src='../doc/src/manual/mov/wave.ogg'  type='video/ogg;  codecs="theora, vorbis"'>
-</video>
-</div>
-<p><em>Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). <a name="mymov"></a></em></p>
-
-
-<p>
-We can show a series of images as an animation:
-
-<p>
-
-<script language="Javascript">
-<!---
-var num_images_frame_0080 = 50;
-var img_width_frame_0080 = 800;
-var img_height_frame_0080 = 600;
-var interval_frame_0080 = 300;
-var images_frame_0080 = new Array();
-
-function preload_images_frame_0080()
-{
-   t = document.getElementById("progress");
-
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[0] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[0].src = "../doc/src/manual/mov/wave_frames/frame_0080.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[1] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[1].src = "../doc/src/manual/mov/wave_frames/frame_0081.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[2] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[2].src = "../doc/src/manual/mov/wave_frames/frame_0082.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[3] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[3].src = "../doc/src/manual/mov/wave_frames/frame_0083.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[4] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[4].src = "../doc/src/manual/mov/wave_frames/frame_0084.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[5] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[5].src = "../doc/src/manual/mov/wave_frames/frame_0085.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[6] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[6].src = "../doc/src/manual/mov/wave_frames/frame_0086.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[7] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[7].src = "../doc/src/manual/mov/wave_frames/frame_0087.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[8] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[8].src = "../doc/src/manual/mov/wave_frames/frame_0088.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[9] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[9].src = "../doc/src/manual/mov/wave_frames/frame_0089.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[10] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[10].src = "../doc/src/manual/mov/wave_frames/frame_0090.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[11] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[11].src = "../doc/src/manual/mov/wave_frames/frame_0091.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[12] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[12].src = "../doc/src/manual/mov/wave_frames/frame_0092.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[13] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[13].src = "../doc/src/manual/mov/wave_frames/frame_0093.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[14] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[14].src = "../doc/src/manual/mov/wave_frames/frame_0094.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[15] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[15].src = "../doc/src/manual/mov/wave_frames/frame_0095.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[16] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[16].src = "../doc/src/manual/mov/wave_frames/frame_0096.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[17] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[17].src = "../doc/src/manual/mov/wave_frames/frame_0097.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[18] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[18].src = "../doc/src/manual/mov/wave_frames/frame_0098.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[19] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[19].src = "../doc/src/manual/mov/wave_frames/frame_0099.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[20] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[20].src = "../doc/src/manual/mov/wave_frames/frame_0100.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[21] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[21].src = "../doc/src/manual/mov/wave_frames/frame_0101.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[22] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[22].src = "../doc/src/manual/mov/wave_frames/frame_0102.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[23] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[23].src = "../doc/src/manual/mov/wave_frames/frame_0103.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[24] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[24].src = "../doc/src/manual/mov/wave_frames/frame_0104.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[25] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[25].src = "../doc/src/manual/mov/wave_frames/frame_0105.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[26] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[26].src = "../doc/src/manual/mov/wave_frames/frame_0106.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[27] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[27].src = "../doc/src/manual/mov/wave_frames/frame_0107.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[28] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[28].src = "../doc/src/manual/mov/wave_frames/frame_0108.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[29] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[29].src = "../doc/src/manual/mov/wave_frames/frame_0109.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[30] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[30].src = "../doc/src/manual/mov/wave_frames/frame_0110.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[31] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[31].src = "../doc/src/manual/mov/wave_frames/frame_0111.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[32] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[32].src = "../doc/src/manual/mov/wave_frames/frame_0112.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[33] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[33].src = "../doc/src/manual/mov/wave_frames/frame_0113.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[34] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[34].src = "../doc/src/manual/mov/wave_frames/frame_0114.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[35] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[35].src = "../doc/src/manual/mov/wave_frames/frame_0115.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[36] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[36].src = "../doc/src/manual/mov/wave_frames/frame_0116.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[37] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[37].src = "../doc/src/manual/mov/wave_frames/frame_0117.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[38] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[38].src = "../doc/src/manual/mov/wave_frames/frame_0118.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[39] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[39].src = "../doc/src/manual/mov/wave_frames/frame_0119.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[40] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[40].src = "../doc/src/manual/mov/wave_frames/frame_0120.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[41] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[41].src = "../doc/src/manual/mov/wave_frames/frame_0121.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[42] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[42].src = "../doc/src/manual/mov/wave_frames/frame_0122.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[43] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[43].src = "../doc/src/manual/mov/wave_frames/frame_0123.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[44] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[44].src = "../doc/src/manual/mov/wave_frames/frame_0124.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[45] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[45].src = "../doc/src/manual/mov/wave_frames/frame_0125.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[46] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[46].src = "../doc/src/manual/mov/wave_frames/frame_0126.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[47] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[47].src = "../doc/src/manual/mov/wave_frames/frame_0127.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[48] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[48].src = "../doc/src/manual/mov/wave_frames/frame_0128.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[49] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[49].src = "../doc/src/manual/mov/wave_frames/frame_0129.png";
-        
-   t.innerHTML = "";
-}
-
-function tick_frame_0080()
-{
-   if (frame_frame_0080 > num_images_frame_0080 - 1)
-       frame_frame_0080 = 0;
-
-   document.name_frame_0080.src = images_frame_0080[frame_frame_0080].src;
-   frame_frame_0080 += 1;
-   tt = setTimeout("tick_frame_0080()", interval_frame_0080);
-}
-
-function startup_frame_0080()
-{
-   preload_images_frame_0080();
-   frame_frame_0080 = 0;
-   setTimeout("tick_frame_0080()", interval_frame_0080);
-}
-
-function stopit_frame_0080()
-{ clearTimeout(tt); }
-
-function restart_frame_0080()
-{ tt = setTimeout("tick_frame_0080()", interval_frame_0080); }
-
-function slower_frame_0080()
-{ interval_frame_0080 = interval_frame_0080/0.7; }
-
-function faster_frame_0080()
-{ interval_frame_0080 = interval_frame_0080*0.7; }
-
-// --->
-</script>
-
-<form>
-&nbsp;
-<input type="button" value="Start movie" onClick="startup_frame_0080()">
-<input type="button" value="Pause movie" onClick="stopit_frame_0080()">
-<input type="button" value="Restart movie" onClick="restart_frame_0080()">
-&nbsp;
-<input type="button" value="Slower" onClick="slower_frame_0080()">
-<input type="button" value="Faster" onClick="faster_frame_0080()">
-</form>
-
-<p><div ID="progress"></div></p>
-<img src="../doc/src/manual/mov/wave_frames/frame_0080.png" name="name_frame_0080" border=2/>
-
-<br><em>Caption for animated collection of images.</em><br>
-
-
-
-<p>
-Check out the correct with and height of YouTube movies from the
-embed command that the YouTube page can generate. Similar for Vimeo.
-
-<p>
-
-<iframe width="420" height="315" src="http://www.youtube.com/embed/_O7iUiftbKU" frameborder="0" allowfullscreen></iframe>
-
-<em>YouTube movie.</em>
-
-
-
-<p>
-
-<iframe width="500" height="278" src="http://player.vimeo.com/video/55562330" frameborder="0" allowfullscreen></iframe>
-
-<em>Vimeo movie.</em>
-
-
 
 <p>
 <!-- Test multi-line caption in figure -->
@@ -29828,6 +26676,10 @@ Test URL as figure name:
 
 <p>
 <!-- Somewhat challenging heading with latex math, \t, \n, ? and parenthesis -->
+
+<p>
+<b>Remark.</b>
+Movies are tested in separate file <code>movies.do.txt</code>.
 
 <h3>The \( \theta \) parameter (not \( \nabla \)?) <a name="decay:sec:theta"></a></h3>
 
@@ -29874,7 +26726,7 @@ $$
 \end{align}
 $$
 
-<h3>Custom Environments  <a name="___sec5"></a></h3>
+<h3>Custom Environments  <a name="___sec4"></a></h3>
 
 <p>
 Here is an attempt to create a theorem environment via Mako
@@ -29970,14 +26822,14 @@ and <code>|</code> right after verbatim word (with no space):
 <tr><td align="right">   0                               </td> <td align="right">   -9.19                           </td> <td align="right">   4.13                            </td> <td align="right">   -0.26                           </td> </tr>
 </table>
 
-<h3>A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code>  <a name="___sec7"></a></h3>
+<h3>A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code>  <a name="___sec6"></a></h3>
 
 <p>
 <b>Files <code>my_file_v1.py</code> and <code>my_file_v2.py</code> define some math \( a_{i-1} \).</b>
 Here is
 some text.
 
-<h3>Bibliography test  <a name="___sec8"></a></h3>
+<h3>Bibliography test  <a name="___sec7"></a></h3>
 
 <p>
 Here is an example: <a href="#Langtangen_Pedersen_2002">[1]</a> discussed propagation of
@@ -30092,7 +26944,7 @@ More tough tests: repeated URLs whose footnotes when using the
 <a href="http://google.com" target="_self">google</a>, which should result in exactly three
 footnotes.
 
-<h3>LaTeX Mathematics  <a name="___sec11"></a></h3>
+<h3>LaTeX Mathematics  <a name="___sec10"></a></h3>
 
 <p>
 Here is an equation without label using backslash-bracket environment:
@@ -30194,7 +27046,7 @@ Below, we have <a href="#demo:ex:1">Problem 2: Flip a Coin</a> and <a href="#dem
 as well as <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a> and <a href="#exer:you">Project 9: References in a headings do not work well in html</a>, and in
 between there we have <a href="#exer:some:formula">Exercise 8: Make references to projects and problems</a>.
 
-<h2>Exercises  <a name="___sec12"></a></h2>
+<h2>Exercises  <a name="___sec11"></a></h2>
 
 <p>
 <!-- --- begin exercise --- -->
@@ -30216,7 +27068,7 @@ let the program count the number of heads.
 <p>
 <!-- Test syntax error -->
 
-<h4>Remarks  <a name="___sec14"></a></h4>
+<h4>Remarks  <a name="___sec13"></a></h4>
 
 <p>
 Remarks with such a subsubsection heading would previously mark
@@ -30262,7 +27114,7 @@ Draw an integer among \( \{1,2\} \) with
 <p>
 <!-- --- end exercise --- -->
 
-<h3>Not an exercise  <a name="___sec15"></a></h3>
+<h3>Not an exercise  <a name="___sec14"></a></h3>
 
 <p>
 Should be possible to stick a normal section in the middle of many
@@ -30393,7 +27245,7 @@ Filename: <code>circles.pdf</code>.
 <p>
 <!-- Closing remarks for this Project -->
 
-<h4>Remarks  <a name="___sec18"></a></h4>
+<h4>Remarks  <a name="___sec17"></a></h4>
 
 <p>
 At the very end of the exercise it may be appropriate to summarize
@@ -30510,7 +27362,7 @@ Filename: <code>subexer_b.pdf</code>.
 <p>
 <!-- Closing remarks for this Exercise -->
 
-<h4>Remarks  <a name="___sec20"></a></h4>
+<h4>Remarks  <a name="___sec19"></a></h4>
 
 <p>
 Some final closing remarks, e.g., summarizing the main findings
@@ -30523,7 +27375,7 @@ remarks will appear at the end of the typeset exercise.
 <p>
 <!-- --- begin exercise --- -->
 
-<h3>Some exercise without the "Exercise:" prefix  <a name="___sec21"></a></h3>
+<h3>Some exercise without the "Exercise:" prefix  <a name="___sec20"></a></h3>
 
 <p>
 <!-- Another minimalistic exercise -->
@@ -30550,7 +27402,7 @@ And a test that the code <code>lambda x: x+2</code> is correctly placed here:
 <p>
 <!-- --- begin exercise --- -->
 
-<h3>Example 7: Just an example  <a name="___sec22"></a></h3>
+<h3>Example 7: Just an example  <a name="___sec21"></a></h3>
 
 <p>
 <!-- This example needs the --examples_as_exercises option, otherwise -->
@@ -30567,12 +27419,12 @@ Oslo.
 <p>
 <!-- --- end exercise --- -->
 
-<h2>Here goes another section  <a name="___sec23"></a></h2>
+<h2>Here goes another section  <a name="___sec22"></a></h2>
 
 <p>
 With some text, before we continue with exercises.
 
-<h2>More Exercises  <a name="___sec24"></a></h2>
+<h2>More Exercises  <a name="___sec23"></a></h2>
 
 <p>
 <!-- --- begin exercise --- -->
@@ -30619,7 +27471,7 @@ Filename: <code>selc_composed.pdf</code>.
 <p>
 <!-- --- end exercise --- -->
 
-<h2>References  <a name="___sec27"></a></h2>
+<h2>References  <a name="___sec26"></a></h2>
 
 <p>
 <!-- begin bibliography -->
@@ -30733,22 +27585,22 @@ Filename: <code>selc_composed.pdf</code>.
 
 <!-- end bibliography -->
 
-<h2>Appendix: Just for testing; part I  <a name="___sec28"></a></h2>
+<h2>Appendix: Just for testing; part I  <a name="___sec27"></a></h2>
 
 <p>
 This is the first appendix.
 
-<h3>A subsection within an appendix  <a name="___sec29"></a></h3>
+<h3>A subsection within an appendix  <a name="___sec28"></a></h3>
 
 <p>
 Some text.
 
-<h2>Appendix: Just for testing; part II  <a name="___sec30"></a></h2>
+<h2>Appendix: Just for testing; part II  <a name="___sec29"></a></h2>
 
 <p>
 This is more stuff for an appendix.
 
-<h3>Appendix: Testing identical titles  <a name="___sec31"></a></h3>
+<h3>Appendix: Testing identical titles  <a name="___sec30"></a></h3>
 
 <p>
 Without label.
@@ -30763,7 +27615,7 @@ With label.
 <p>
 With label.
 
-<h3>Appendix: Testing identical titles  <a name="___sec34"></a></h3>
+<h3>Appendix: Testing identical titles  <a name="___sec33"></a></h3>
 
 <p>
 Without label.
@@ -30853,7 +27705,7 @@ detailed information and constitute of course very valuable readings
 when you use version control systems every day. The point now is
 to get started.
 
-<h3>Appendix: Testing inline comments  <a name="___sec35"></a></h3>
+<h3>Appendix: Testing inline comments  <a name="___sec34"></a></h3>
 
 <p>
 Projects that you want to share among several computers or project
@@ -30890,7 +27742,7 @@ systems. Numerous other tutorials contain more comprehensive material
 and in-depth explanations of the concepts and tools.</em>]</font>
 <!-- end inline comment -->
 
-<h3>Appendix: Testing headings ending with <code>verbatim inline</code>  <a name="___sec36"></a></h3>
+<h3>Appendix: Testing headings ending with <code>verbatim inline</code>  <a name="___sec35"></a></h3>
 
 <p>
 The point here is to test 1) <code>verbatim</code> code in headings, and 2)
@@ -31010,19 +27862,6 @@ final,                   % or draft (marks overfull hboxes)
 \usepackage{bm,microtype}
 
 \usepackage{ptex2tex}
-
-% #ifndef MOVIE
-% #define MOVIE "media9"
-% #endif
-
-% #if MOVIE == "media9"
-\usepackage{media9}
-% #elif MOVIE == "movie15"
-\usepackage{movie15}
-% #elif MOVIE == "multimedia"
-\usepackage{multimedia}
-% #elif MOVIE == "href-run"
-% #endif
 
 % #ifdef MINTED
 \usepackage{minted}
@@ -31715,7 +28554,7 @@ And one more.} Some formats will only display this correctly when
 HTML is the output format.
 
 
-\paragraph{Subsection 2: Testing figures and movies.}
+\paragraph{Subsection 2: Testing figures.}
 \label{subsec:ex}
 \index{figures}
 
@@ -31741,206 +28580,6 @@ Figures without captions are allowed and will be inlined.
 
 
 \index{movies}
-
-\paragraph{Test of movies.}
-Movie~\ref{mov:wave} shows a wave.
-
-
-\begin{figure}[ht]
-\begin{center}
-
-% #if MOVIE == "media9"
-\includemedia[
-width=0.8\linewidth,
-label=../doc/src/manual/mov/wave.ogg,
-activate=pageopen,         % or onclick or pagevisible
-addresource=../doc/src/manual/mov/wave.ogg,  % embed the video in the PDF
-flashvars={
-source=../doc/src/manual/mov/wave.ogg
-&autoPlay=true
-&loop=true
-&scaleMode=letterbox       % preserve aspect ratio while scaling this video
-}]{}{VPlayer.swf}
-
-% #ifdef MOVIE_CONTROLS
-\mediabutton[
-  mediacommand=../doc/src/manual/mov/wave.ogg:playPause,
-  overface=\\textcolor{blue}{\fbox{\strut Play/Pause}},
-  downface=\\textcolor{red}{\fbox{\strut Play/Pause}}
-  ]{\fhox{\strut Play/Pause}}
-% #endif
-
-% #elif MOVIE == "movie15"
-\includemovie[poster,
-label=../doc/src/manual/mov/wave.ogg,
-autoplay,
-%controls,
-%toolbar,
-% #ifdef EXTERNAL_MOVIE_VIEWER
-externalviewer,
-% #endif
-text={\small (Loading ../doc/src/manual/mov/wave.ogg)},
-repeat,
-]{0.9\linewidth}{0.9\linewidth}{../doc/src/manual/mov/wave.ogg}
-% #ifndef EXTERNAL_MOVIE_VIEWER
-\movieref[rate=0.5]{../doc/src/manual/mov/wave.ogg}{Slower}
-\movieref[rate=2]{../doc/src/manual/mov/wave.ogg}{Faster}
-\movieref[default]{../doc/src/manual/mov/wave.ogg}{Normal}
-\movieref[pause]{../doc/src/manual/mov/wave.ogg}{Play/Pause}
-\movieref[stop]{../doc/src/manual/mov/wave.ogg}{Stop}
-% #else
-\href{run:../doc/src/manual/mov/wave.ogg}{../doc/src/manual/mov/wave.ogg}
-% #endif
-
-% #elif MOVIE == "multimedia"
-% Beamer-style \movie command
-\movie[
-label=../doc/src/manual/mov/wave.ogg,
-width=0.9\linewidth,
-autostart]{../doc/src/manual/mov/wave.ogg}{../doc/src/manual/mov/wave.ogg}
-% #else
-\href{run:../doc/src/manual/mov/wave.ogg}{../doc/src/manual/mov/wave.ogg}
-% #endif
-
-\end{center}
-\caption{1D wave in Ogg format. \label{mov:wave}.}
-\end{figure}
-
-
-Test empty caption (for inline movie, here in MPEG format):
-
- (Movie \code{../doc/src/manual/mov/wave.mpeg}: play \href{{wave.html}}{\nolinkurl{wave.html}})
-% #if MOVIE == "media9"
-\includemedia[
-width=0.8\linewidth,
-label=../doc/src/manual/mov/wave.mpeg,
-activate=pageopen,         % or onclick or pagevisible
-addresource=../doc/src/manual/mov/wave.mpeg,  % embed the video in the PDF
-flashvars={
-source=../doc/src/manual/mov/wave.mpeg
-&autoPlay=true
-&loop=true
-&scaleMode=letterbox       % preserve aspect ratio while scaling this video
-}]{}{VPlayer.swf}
-
-% #ifdef MOVIE_CONTROLS
-\mediabutton[
-  mediacommand=../doc/src/manual/mov/wave.mpeg:playPause,
-  overface=\\textcolor{blue}{\fbox{\strut Play/Pause}},
-  downface=\\textcolor{red}{\fbox{\strut Play/Pause}}
-  ]{\fhox{\strut Play/Pause}}
-% #endif
-
-% #elif MOVIE == "movie15"
-\includemovie[poster,
-label=../doc/src/manual/mov/wave.mpeg,
-autoplay,
-%controls,
-%toolbar,
-% #ifdef EXTERNAL_MOVIE_VIEWER
-externalviewer,
-% #endif
-text={\small (Loading ../doc/src/manual/mov/wave.mpeg)},
-repeat,
-]{0.9\linewidth}{0.9\linewidth}{../doc/src/manual/mov/wave.mpeg}
-% #ifndef EXTERNAL_MOVIE_VIEWER
-\movieref[rate=0.5]{../doc/src/manual/mov/wave.mpeg}{Slower}
-\movieref[rate=2]{../doc/src/manual/mov/wave.mpeg}{Faster}
-\movieref[default]{../doc/src/manual/mov/wave.mpeg}{Normal}
-\movieref[pause]{../doc/src/manual/mov/wave.mpeg}{Play/Pause}
-\movieref[stop]{../doc/src/manual/mov/wave.mpeg}{Stop}
-% #else
-\href{run:../doc/src/manual/mov/wave.mpeg}{../doc/src/manual/mov/wave.mpeg}
-% #endif
-
-% #elif MOVIE == "multimedia"
-% Beamer-style \movie command
-\movie[
-label=../doc/src/manual/mov/wave.mpeg,
-width=0.9\linewidth,
-autostart]{../doc/src/manual/mov/wave.mpeg}{../doc/src/manual/mov/wave.mpeg}
-% #else
-\href{run:../doc/src/manual/mov/wave.mpeg}{../doc/src/manual/mov/wave.mpeg}
-% #endif
-
-
-Test wrong syntax and multi-line caption, to see if it is automatically
-corrected:
-
-
-\begin{figure}[ht]
-\begin{center}
-
-% #if MOVIE == "media9"
-\includemedia[
-width=0.8\linewidth,
-label=../doc/src/manual/mov/wave.webm,
-activate=pageopen,         % or onclick or pagevisible
-addresource=../doc/src/manual/mov/wave.webm,  % embed the video in the PDF
-flashvars={
-source=../doc/src/manual/mov/wave.webm
-&autoPlay=true
-&loop=true
-&scaleMode=letterbox       % preserve aspect ratio while scaling this video
-}]{}{VPlayer.swf}
-
-% #ifdef MOVIE_CONTROLS
-\mediabutton[
-  mediacommand=../doc/src/manual/mov/wave.webm:playPause,
-  overface=\\textcolor{blue}{\fbox{\strut Play/Pause}},
-  downface=\\textcolor{red}{\fbox{\strut Play/Pause}}
-  ]{\fhox{\strut Play/Pause}}
-% #endif
-
-% #elif MOVIE == "movie15"
-\includemovie[poster,
-label=../doc/src/manual/mov/wave.webm,
-autoplay,
-%controls,
-%toolbar,
-% #ifdef EXTERNAL_MOVIE_VIEWER
-externalviewer,
-% #endif
-text={\small (Loading ../doc/src/manual/mov/wave.webm)},
-repeat,
-]{0.9\linewidth}{0.9\linewidth}{../doc/src/manual/mov/wave.webm}
-% #ifndef EXTERNAL_MOVIE_VIEWER
-\movieref[rate=0.5]{../doc/src/manual/mov/wave.webm}{Slower}
-\movieref[rate=2]{../doc/src/manual/mov/wave.webm}{Faster}
-\movieref[default]{../doc/src/manual/mov/wave.webm}{Normal}
-\movieref[pause]{../doc/src/manual/mov/wave.webm}{Play/Pause}
-\movieref[stop]{../doc/src/manual/mov/wave.webm}{Stop}
-% #else
-\href{run:../doc/src/manual/mov/wave.webm}{../doc/src/manual/mov/wave.webm}
-% #endif
-
-% #elif MOVIE == "multimedia"
-% Beamer-style \movie command
-\movie[
-label=../doc/src/manual/mov/wave.webm,
-width=0.9\linewidth,
-autostart]{../doc/src/manual/mov/wave.webm}{../doc/src/manual/mov/wave.webm}
-% #else
-\href{run:../doc/src/manual/mov/wave.webm}{../doc/src/manual/mov/wave.webm}
-% #endif
-
-\end{center}
-\caption{Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). \label{mymov}}
-\end{figure}
-
-
-We can show a series of images as an animation:
-
-
- Caption for animated collection of images. (Movie of files \code{../doc/src/manual/mov/wave_frames/frame_*.png} in \href{{file:///home/hpl/vc/doconce/test/frame_0080.html}}{\nolinkurl{file:///home/hpl/vc/doconce/test/frame_0080.html}})
-
-
-Check out the correct with and height of YouTube movies from the
-embed command that the YouTube page can generate. Similar for Vimeo.
-
- YouTube movie. \href{{http://www.youtube.com/watch?v=_O7iUiftbKU}}{\nolinkurl{http://www.youtube.com/watch?v=_O7iUiftbKU}}
-
- Vimeo movie. \href{{http://vimeo.com/55562330}}{\nolinkurl{http://vimeo.com/55562330}}
 
 
 % Test multi-line caption in figure
@@ -31971,6 +28610,9 @@ Test URL as figure name:
 % Test wikimedia type of files that otherwise reside in subdirs
 
 % Somewhat challenging heading with latex math, \t, \n, ? and parenthesis
+
+\paragraph{Remark.}
+Movies are tested in separate file \code{movies.do.txt}.
 
 \paragraph{The $\theta$ parameter (not $\nabla$?).}
 \label{decay:sec:theta}
@@ -33273,60 +29915,6 @@ google-chrome sphinx-rootdir-math/_build/html/index.html
 ************** File: .testdoc_html_file_collection *****************
 testdoc.html
 ../doc/src/manual/fig/wave1D.png
-../doc/src/manual/mov/wave.ogg
-../doc/src/manual/mov/wave.mpeg
-../doc/src/manual/mov/wave.webm
-../doc/src/manual/mov/wave_frames/frame_*.png
-../doc/src/manual/mov/wave_frames/frame_0080.png
-../doc/src/manual/mov/wave_frames/frame_0081.png
-../doc/src/manual/mov/wave_frames/frame_0082.png
-../doc/src/manual/mov/wave_frames/frame_0083.png
-../doc/src/manual/mov/wave_frames/frame_0084.png
-../doc/src/manual/mov/wave_frames/frame_0085.png
-../doc/src/manual/mov/wave_frames/frame_0086.png
-../doc/src/manual/mov/wave_frames/frame_0087.png
-../doc/src/manual/mov/wave_frames/frame_0088.png
-../doc/src/manual/mov/wave_frames/frame_0089.png
-../doc/src/manual/mov/wave_frames/frame_0090.png
-../doc/src/manual/mov/wave_frames/frame_0091.png
-../doc/src/manual/mov/wave_frames/frame_0092.png
-../doc/src/manual/mov/wave_frames/frame_0093.png
-../doc/src/manual/mov/wave_frames/frame_0094.png
-../doc/src/manual/mov/wave_frames/frame_0095.png
-../doc/src/manual/mov/wave_frames/frame_0096.png
-../doc/src/manual/mov/wave_frames/frame_0097.png
-../doc/src/manual/mov/wave_frames/frame_0098.png
-../doc/src/manual/mov/wave_frames/frame_0099.png
-../doc/src/manual/mov/wave_frames/frame_0100.png
-../doc/src/manual/mov/wave_frames/frame_0101.png
-../doc/src/manual/mov/wave_frames/frame_0102.png
-../doc/src/manual/mov/wave_frames/frame_0103.png
-../doc/src/manual/mov/wave_frames/frame_0104.png
-../doc/src/manual/mov/wave_frames/frame_0105.png
-../doc/src/manual/mov/wave_frames/frame_0106.png
-../doc/src/manual/mov/wave_frames/frame_0107.png
-../doc/src/manual/mov/wave_frames/frame_0108.png
-../doc/src/manual/mov/wave_frames/frame_0109.png
-../doc/src/manual/mov/wave_frames/frame_0110.png
-../doc/src/manual/mov/wave_frames/frame_0111.png
-../doc/src/manual/mov/wave_frames/frame_0112.png
-../doc/src/manual/mov/wave_frames/frame_0113.png
-../doc/src/manual/mov/wave_frames/frame_0114.png
-../doc/src/manual/mov/wave_frames/frame_0115.png
-../doc/src/manual/mov/wave_frames/frame_0116.png
-../doc/src/manual/mov/wave_frames/frame_0117.png
-../doc/src/manual/mov/wave_frames/frame_0118.png
-../doc/src/manual/mov/wave_frames/frame_0119.png
-../doc/src/manual/mov/wave_frames/frame_0120.png
-../doc/src/manual/mov/wave_frames/frame_0121.png
-../doc/src/manual/mov/wave_frames/frame_0122.png
-../doc/src/manual/mov/wave_frames/frame_0123.png
-../doc/src/manual/mov/wave_frames/frame_0124.png
-../doc/src/manual/mov/wave_frames/frame_0125.png
-../doc/src/manual/mov/wave_frames/frame_0126.png
-../doc/src/manual/mov/wave_frames/frame_0127.png
-../doc/src/manual/mov/wave_frames/frame_0128.png
-../doc/src/manual/mov/wave_frames/frame_0129.png
 testdoc.do.txt
 ._testdoc000.html
 ._testdoc001.html
@@ -33589,11 +30177,42 @@ cp -r tmp_admon/_build/html admon_sphinx
 
 system doconce format mwiki admon
 cp admon.mwiki admon_mwiki.mwiki
-
-system doconce format pandoc github_md.do.txt --github_md
+cp -f admon_* admon_demo/
 
 #google-chrome admon_*.html
 #for pdf in admon_*.pdf; do evince $pdf; done
+
+
+system doconce format pandoc github_md.do.txt --github_md
+
+# Test movie handling
+name=movies
+system doconce format html $name --html_output=movies_3choices.html
+cp movies_3choices.html movie_demo
+system doconce format html $name --no_mp4_webm_ogg_alternatives
+cp movies.html movie_demo
+
+rm -f $name.aux
+system doconce format pdflatex $name
+system doconce ptex2tex $name -DMOVIE=media9
+pdflatex $name
+pdflatex $name
+cp $name.pdf movie_demo/${name}_media9.pdf
+cp $name.tex ${name}_media9.tex
+
+# multimedia (beamer \movie command) does not work well
+#rm $name.aux
+#system doconce format pdflatex $name
+#system doconce ptex2tex $name -DMOVIE=multimedia
+#system pdflatex $name
+#cp $name.pdf movie_demo/${name}_multimedia.pdf
+#cp $name.tex ${name}_multimedia.tex
+
+rm -f $name.aux
+system doconce format pdflatex $name
+system doconce ptex2tex $name
+system pdflatex $name
+cp $name.pdf movie_demo
 
 # Test encoding
 system doconce guess_encoding encoding1.do.txt > tmp_encodings.txt
@@ -35358,41 +31977,40 @@ h1, h2, h3, h4, h5, h6 {
      <!-- Doconce automatically fills in the table of contents -->
           <!-- vagrant nav toc: " Section 1 " --> <li>  <a href="._testdoc_vagrant001.html#sec1"> Section 1 </a>
      <!-- vagrant nav toc: " Subsection 1 " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec1"> Subsection 1 </a>
-     <!-- vagrant nav toc: " Subsection 2: Testing figures and movies " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#subsec:ex"> Subsection 2: Testing figures and movies </a>
-     <!-- vagrant nav toc: " Test of movies " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec3"> Test of movies </a>
+     <!-- vagrant nav toc: " Subsection 2: Testing figures " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#subsec:ex"> Subsection 2: Testing figures </a>
      <!-- vagrant nav toc: " The \( \theta \) parameter (not \( \nabla \)?) " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a>
-     <!-- vagrant nav toc: " Custom Environments " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec5"> Custom Environments </a>
+     <!-- vagrant nav toc: " Custom Environments " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec4"> Custom Environments </a>
      <!-- vagrant nav toc: " Tables " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#subsec:table"> Tables </a>
-     <!-- vagrant nav toc: " A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec7"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a>
-     <!-- vagrant nav toc: " Bibliography test " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec8"> Bibliography test </a>
+     <!-- vagrant nav toc: " A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec6"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a>
+     <!-- vagrant nav toc: " Bibliography test " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec7"> Bibliography test </a>
      <!-- vagrant nav toc: " Example 1: Examples can be typeset as exercises " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#Example"> Example 1: Examples can be typeset as exercises </a>
      <!-- vagrant nav toc: " URLs " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#subsubsec:ex"> URLs </a>
-     <!-- vagrant nav toc: " LaTeX Mathematics " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec11"> LaTeX Mathematics </a>
-     <!-- vagrant nav toc: " Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec12"> Exercises </a>
+     <!-- vagrant nav toc: " LaTeX Mathematics " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec10"> LaTeX Mathematics </a>
+     <!-- vagrant nav toc: " Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec11"> Exercises </a>
      <!-- vagrant nav toc: " Problem 2: Flip a Coin " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:1"> Problem 2: Flip a Coin </a>
-     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec14"> Remarks </a>
-     <!-- vagrant nav toc: " Not an exercise " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec15"> Not an exercise </a>
+     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec13"> Remarks </a>
+     <!-- vagrant nav toc: " Not an exercise " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec14"> Not an exercise </a>
      <!-- vagrant nav toc: " Project 3: Compute a Probability " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:2"> Project 3: Compute a Probability </a>
      <!-- vagrant nav toc: " Project 4: Explore Distributions of Random Circles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a>
-     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec18"> Remarks </a>
+     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec17"> Remarks </a>
      <!-- vagrant nav toc: " Exercise 5: Determine some Distance " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 5: Determine some Distance </a>
-     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec20"> Remarks </a>
-     <!-- vagrant nav toc: " Some exercise without the "Exercise:" prefix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec21"> Some exercise without the "Exercise:" prefix </a>
-     <!-- vagrant nav toc: " Example 7: Just an example " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec22"> Example 7: Just an example </a>
-     <!-- vagrant nav toc: " Here goes another section " --> <li>  <a href="._testdoc_vagrant002.html#___sec23"> Here goes another section </a>
-     <!-- vagrant nav toc: " More Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec24"> More Exercises </a>
+     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec19"> Remarks </a>
+     <!-- vagrant nav toc: " Some exercise without the "Exercise:" prefix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec20"> Some exercise without the "Exercise:" prefix </a>
+     <!-- vagrant nav toc: " Example 7: Just an example " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec21"> Example 7: Just an example </a>
+     <!-- vagrant nav toc: " Here goes another section " --> <li>  <a href="._testdoc_vagrant002.html#___sec22"> Here goes another section </a>
+     <!-- vagrant nav toc: " More Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec23"> More Exercises </a>
      <!-- vagrant nav toc: " Exercise 8: Make references to projects and problems " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 8: Make references to projects and problems </a>
      <!-- vagrant nav toc: " Project 9: References in a headings do not work well in html " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:you"> Project 9: References in a headings do not work well in html </a>
-     <!-- vagrant nav toc: " References " --> <li>  <a href="._testdoc_vagrant002.html#___sec27"> References </a>
-     <!-- vagrant nav toc: " Appendix: Just for testing; part I " --> <li>  <a href="._testdoc_vagrant002.html#___sec28"> Appendix: Just for testing; part I </a>
-     <!-- vagrant nav toc: " A subsection within an appendix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec29"> A subsection within an appendix </a>
-     <!-- vagrant nav toc: " Appendix: Just for testing; part II " --> <li>  <a href="._testdoc_vagrant002.html#___sec30"> Appendix: Just for testing; part II </a>
-     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec31"> Appendix: Testing identical titles </a>
+     <!-- vagrant nav toc: " References " --> <li>  <a href="._testdoc_vagrant002.html#___sec26"> References </a>
+     <!-- vagrant nav toc: " Appendix: Just for testing; part I " --> <li>  <a href="._testdoc_vagrant002.html#___sec27"> Appendix: Just for testing; part I </a>
+     <!-- vagrant nav toc: " A subsection within an appendix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec28"> A subsection within an appendix </a>
+     <!-- vagrant nav toc: " Appendix: Just for testing; part II " --> <li>  <a href="._testdoc_vagrant002.html#___sec29"> Appendix: Just for testing; part II </a>
+     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec30"> Appendix: Testing identical titles </a>
      <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id1"> Appendix: Testing identical titles </a>
      <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id2"> Appendix: Testing identical titles </a>
-     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec34"> Appendix: Testing identical titles </a>
-     <!-- vagrant nav toc: " Appendix: Testing inline comments " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec35"> Appendix: Testing inline comments </a>
-     <!-- vagrant nav toc: " Appendix: Testing headings ending with <code>verbatim inline</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec36"> Appendix: Testing headings ending with <code>verbatim inline</code> </a>
+     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec33"> Appendix: Testing identical titles </a>
+     <!-- vagrant nav toc: " Appendix: Testing inline comments " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec34"> Appendix: Testing inline comments </a>
+     <!-- vagrant nav toc: " Appendix: Testing headings ending with <code>verbatim inline</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec35"> Appendix: Testing headings ending with <code>verbatim inline</code> </a>
 
     </ul>
    </div>
@@ -35405,32 +32023,31 @@ h1, h2, h3, h4, h5, h6 {
 {'highest level': 1,
  'sections': [(' Section 1 ', 1, 'sec1', 'sec1'),
               (' Subsection 1 ', 2, None, '___sec1'),
-              (' Subsection 2: Testing figures and movies ',
+              (' Subsection 2: Testing figures ',
                2,
                'subsec:ex',
                'subsec:ex'),
-              (' Test of movies ', 3, None, '___sec3'),
               (' The $\\theta$ parameter (not $\\nabla$?) ',
                2,
                'decay:sec:theta',
                'decay:sec:theta'),
-              (' Custom Environments ', 2, None, '___sec5'),
+              (' Custom Environments ', 2, None, '___sec4'),
               (' Tables ', 2, 'subsec:table', 'subsec:table'),
               (' A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2` ',
                2,
                None,
-               '___sec7'),
-              (' Bibliography test ', 2, None, '___sec8'),
+               '___sec6'),
+              (' Bibliography test ', 2, None, '___sec7'),
               (' Example 1: Examples can be typeset as exercises ',
                2,
                'Example',
                'Example'),
               (' URLs ', 2, 'subsubsec:ex', 'subsubsec:ex'),
-              (' LaTeX Mathematics ', 2, None, '___sec11'),
-              (' Exercises ', 1, None, '___sec12'),
+              (' LaTeX Mathematics ', 2, None, '___sec10'),
+              (' Exercises ', 1, None, '___sec11'),
               (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
-              (' Remarks ', 3, None, '___sec14'),
-              (' Not an exercise ', 2, None, '___sec15'),
+              (' Remarks ', 3, None, '___sec13'),
+              (' Not an exercise ', 2, None, '___sec14'),
               (' Project 3: Compute a Probability ',
                2,
                'demo:ex:2',
@@ -35439,19 +32056,19 @@ h1, h2, h3, h4, h5, h6 {
                2,
                'proj:circle1',
                'proj:circle1'),
-              (' Remarks ', 3, None, '___sec18'),
+              (' Remarks ', 3, None, '___sec17'),
               (' Exercise 5: Determine some Distance ',
                2,
                'exer:dist',
                'exer:dist'),
-              (' Remarks ', 3, None, '___sec20'),
+              (' Remarks ', 3, None, '___sec19'),
               (' Some exercise without the "Exercise:" prefix ',
                2,
                None,
-               '___sec21'),
-              (' Example 7: Just an example ', 2, None, '___sec22'),
-              (' Here goes another section ', 1, None, '___sec23'),
-              (' More Exercises ', 1, None, '___sec24'),
+               '___sec20'),
+              (' Example 7: Just an example ', 2, None, '___sec21'),
+              (' Here goes another section ', 1, None, '___sec22'),
+              (' More Exercises ', 1, None, '___sec23'),
               (' Exercise 8: Make references to projects and problems ',
                2,
                'exer:some:formula',
@@ -35460,11 +32077,11 @@ h1, h2, h3, h4, h5, h6 {
                2,
                'exer:you',
                'exer:you'),
-              (' References ', 1, None, '___sec27'),
-              (' Appendix: Just for testing; part I ', 1, None, '___sec28'),
-              (' A subsection within an appendix ', 2, None, '___sec29'),
-              (' Appendix: Just for testing; part II ', 1, None, '___sec30'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec31'),
+              (' References ', 1, None, '___sec26'),
+              (' Appendix: Just for testing; part I ', 1, None, '___sec27'),
+              (' A subsection within an appendix ', 2, None, '___sec28'),
+              (' Appendix: Just for testing; part II ', 1, None, '___sec29'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec30'),
               (' Appendix: Testing identical titles ',
                2,
                'test:title:id1',
@@ -35473,12 +32090,12 @@ h1, h2, h3, h4, h5, h6 {
                2,
                'test:title:id2',
                'test:title:id2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec34'),
-              (' Appendix: Testing inline comments ', 2, None, '___sec35'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec33'),
+              (' Appendix: Testing inline comments ', 2, None, '___sec34'),
               (' Appendix: Testing headings ending with `verbatim inline` ',
                2,
                None,
-               '___sec36')]}
+               '___sec35')]}
 end of tocinfo -->
 
 
@@ -35570,41 +32187,40 @@ $$
 <p>
 <a href="._testdoc_vagrant001.html#sec1"> Section 1 </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec1"> Subsection 1 </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#subsec:ex"> Subsection 2: Testing figures and movies </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec3"> Test of movies </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#subsec:ex"> Subsection 2: Testing figures </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec5"> Custom Environments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec4"> Custom Environments </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#subsec:table"> Tables </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec7"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec8"> Bibliography test </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec6"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec7"> Bibliography test </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#Example"> Example 1: Examples can be typeset as exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#subsubsec:ex"> URLs </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec11"> LaTeX Mathematics </a><br>
-<a href="._testdoc_vagrant002.html#___sec12"> Exercises </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec10"> LaTeX Mathematics </a><br>
+<a href="._testdoc_vagrant002.html#___sec11"> Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#demo:ex:1"> Problem 2: Flip a Coin </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec14"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec15"> Not an exercise </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec13"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec14"> Not an exercise </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#demo:ex:2"> Project 3: Compute a Probability </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec18"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec17"> Remarks </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 5: Determine some Distance </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec20"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec21"> Some exercise without the "Exercise:" prefix </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec22"> Example 7: Just an example </a><br>
-<a href="._testdoc_vagrant002.html#___sec23"> Here goes another section </a><br>
-<a href="._testdoc_vagrant002.html#___sec24"> More Exercises </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec19"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec20"> Some exercise without the "Exercise:" prefix </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec21"> Example 7: Just an example </a><br>
+<a href="._testdoc_vagrant002.html#___sec22"> Here goes another section </a><br>
+<a href="._testdoc_vagrant002.html#___sec23"> More Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 8: Make references to projects and problems </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#exer:you"> Project 9: References in a headings do not work well in html </a><br>
-<a href="._testdoc_vagrant002.html#___sec27"> References </a><br>
-<a href="._testdoc_vagrant002.html#___sec28"> Appendix: Just for testing; part I </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec29"> A subsection within an appendix </a><br>
-<a href="._testdoc_vagrant002.html#___sec30"> Appendix: Just for testing; part II </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec31"> Appendix: Testing identical titles </a><br>
+<a href="._testdoc_vagrant002.html#___sec26"> References </a><br>
+<a href="._testdoc_vagrant002.html#___sec27"> Appendix: Just for testing; part I </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec28"> A subsection within an appendix </a><br>
+<a href="._testdoc_vagrant002.html#___sec29"> Appendix: Just for testing; part II </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec30"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#test:title:id1"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#test:title:id2"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec34"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec35"> Appendix: Testing inline comments </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec36"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec33"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec34"> Appendix: Testing inline comments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec35"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
 
 <p>
 <p>
@@ -35725,41 +32341,40 @@ h1, h2, h3, h4, h5, h6 {
      <!-- Doconce automatically fills in the table of contents -->
           <!-- vagrant nav toc: " Section 1 " --> <li>  <a href="._testdoc_vagrant001.html#sec1"> Section 1 </a>
      <!-- vagrant nav toc: " Subsection 1 " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec1"> Subsection 1 </a>
-     <!-- vagrant nav toc: " Subsection 2: Testing figures and movies " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#subsec:ex"> Subsection 2: Testing figures and movies </a>
-     <!-- vagrant nav toc: " Test of movies " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec3"> Test of movies </a>
+     <!-- vagrant nav toc: " Subsection 2: Testing figures " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#subsec:ex"> Subsection 2: Testing figures </a>
      <!-- vagrant nav toc: " The \( \theta \) parameter (not \( \nabla \)?) " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a>
-     <!-- vagrant nav toc: " Custom Environments " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec5"> Custom Environments </a>
+     <!-- vagrant nav toc: " Custom Environments " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec4"> Custom Environments </a>
      <!-- vagrant nav toc: " Tables " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#subsec:table"> Tables </a>
-     <!-- vagrant nav toc: " A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec7"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a>
-     <!-- vagrant nav toc: " Bibliography test " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec8"> Bibliography test </a>
+     <!-- vagrant nav toc: " A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec6"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a>
+     <!-- vagrant nav toc: " Bibliography test " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec7"> Bibliography test </a>
      <!-- vagrant nav toc: " Example 1: Examples can be typeset as exercises " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#Example"> Example 1: Examples can be typeset as exercises </a>
      <!-- vagrant nav toc: " URLs " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#subsubsec:ex"> URLs </a>
-     <!-- vagrant nav toc: " LaTeX Mathematics " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec11"> LaTeX Mathematics </a>
-     <!-- vagrant nav toc: " Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec12"> Exercises </a>
+     <!-- vagrant nav toc: " LaTeX Mathematics " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec10"> LaTeX Mathematics </a>
+     <!-- vagrant nav toc: " Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec11"> Exercises </a>
      <!-- vagrant nav toc: " Problem 2: Flip a Coin " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:1"> Problem 2: Flip a Coin </a>
-     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec14"> Remarks </a>
-     <!-- vagrant nav toc: " Not an exercise " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec15"> Not an exercise </a>
+     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec13"> Remarks </a>
+     <!-- vagrant nav toc: " Not an exercise " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec14"> Not an exercise </a>
      <!-- vagrant nav toc: " Project 3: Compute a Probability " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:2"> Project 3: Compute a Probability </a>
      <!-- vagrant nav toc: " Project 4: Explore Distributions of Random Circles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a>
-     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec18"> Remarks </a>
+     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec17"> Remarks </a>
      <!-- vagrant nav toc: " Exercise 5: Determine some Distance " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 5: Determine some Distance </a>
-     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec20"> Remarks </a>
-     <!-- vagrant nav toc: " Some exercise without the "Exercise:" prefix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec21"> Some exercise without the "Exercise:" prefix </a>
-     <!-- vagrant nav toc: " Example 7: Just an example " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec22"> Example 7: Just an example </a>
-     <!-- vagrant nav toc: " Here goes another section " --> <li>  <a href="._testdoc_vagrant002.html#___sec23"> Here goes another section </a>
-     <!-- vagrant nav toc: " More Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec24"> More Exercises </a>
+     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec19"> Remarks </a>
+     <!-- vagrant nav toc: " Some exercise without the "Exercise:" prefix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec20"> Some exercise without the "Exercise:" prefix </a>
+     <!-- vagrant nav toc: " Example 7: Just an example " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec21"> Example 7: Just an example </a>
+     <!-- vagrant nav toc: " Here goes another section " --> <li>  <a href="._testdoc_vagrant002.html#___sec22"> Here goes another section </a>
+     <!-- vagrant nav toc: " More Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec23"> More Exercises </a>
      <!-- vagrant nav toc: " Exercise 8: Make references to projects and problems " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 8: Make references to projects and problems </a>
      <!-- vagrant nav toc: " Project 9: References in a headings do not work well in html " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:you"> Project 9: References in a headings do not work well in html </a>
-     <!-- vagrant nav toc: " References " --> <li>  <a href="._testdoc_vagrant002.html#___sec27"> References </a>
-     <!-- vagrant nav toc: " Appendix: Just for testing; part I " --> <li>  <a href="._testdoc_vagrant002.html#___sec28"> Appendix: Just for testing; part I </a>
-     <!-- vagrant nav toc: " A subsection within an appendix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec29"> A subsection within an appendix </a>
-     <!-- vagrant nav toc: " Appendix: Just for testing; part II " --> <li>  <a href="._testdoc_vagrant002.html#___sec30"> Appendix: Just for testing; part II </a>
-     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec31"> Appendix: Testing identical titles </a>
+     <!-- vagrant nav toc: " References " --> <li>  <a href="._testdoc_vagrant002.html#___sec26"> References </a>
+     <!-- vagrant nav toc: " Appendix: Just for testing; part I " --> <li>  <a href="._testdoc_vagrant002.html#___sec27"> Appendix: Just for testing; part I </a>
+     <!-- vagrant nav toc: " A subsection within an appendix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec28"> A subsection within an appendix </a>
+     <!-- vagrant nav toc: " Appendix: Just for testing; part II " --> <li>  <a href="._testdoc_vagrant002.html#___sec29"> Appendix: Just for testing; part II </a>
+     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec30"> Appendix: Testing identical titles </a>
      <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id1"> Appendix: Testing identical titles </a>
      <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id2"> Appendix: Testing identical titles </a>
-     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec34"> Appendix: Testing identical titles </a>
-     <!-- vagrant nav toc: " Appendix: Testing inline comments " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec35"> Appendix: Testing inline comments </a>
-     <!-- vagrant nav toc: " Appendix: Testing headings ending with <code>verbatim inline</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec36"> Appendix: Testing headings ending with <code>verbatim inline</code> </a>
+     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec33"> Appendix: Testing identical titles </a>
+     <!-- vagrant nav toc: " Appendix: Testing inline comments " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec34"> Appendix: Testing inline comments </a>
+     <!-- vagrant nav toc: " Appendix: Testing headings ending with <code>verbatim inline</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec35"> Appendix: Testing headings ending with <code>verbatim inline</code> </a>
 
     </ul>
    </div>
@@ -35772,32 +32387,31 @@ h1, h2, h3, h4, h5, h6 {
 {'highest level': 1,
  'sections': [(' Section 1 ', 1, 'sec1', 'sec1'),
               (' Subsection 1 ', 2, None, '___sec1'),
-              (' Subsection 2: Testing figures and movies ',
+              (' Subsection 2: Testing figures ',
                2,
                'subsec:ex',
                'subsec:ex'),
-              (' Test of movies ', 3, None, '___sec3'),
               (' The $\\theta$ parameter (not $\\nabla$?) ',
                2,
                'decay:sec:theta',
                'decay:sec:theta'),
-              (' Custom Environments ', 2, None, '___sec5'),
+              (' Custom Environments ', 2, None, '___sec4'),
               (' Tables ', 2, 'subsec:table', 'subsec:table'),
               (' A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2` ',
                2,
                None,
-               '___sec7'),
-              (' Bibliography test ', 2, None, '___sec8'),
+               '___sec6'),
+              (' Bibliography test ', 2, None, '___sec7'),
               (' Example 1: Examples can be typeset as exercises ',
                2,
                'Example',
                'Example'),
               (' URLs ', 2, 'subsubsec:ex', 'subsubsec:ex'),
-              (' LaTeX Mathematics ', 2, None, '___sec11'),
-              (' Exercises ', 1, None, '___sec12'),
+              (' LaTeX Mathematics ', 2, None, '___sec10'),
+              (' Exercises ', 1, None, '___sec11'),
               (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
-              (' Remarks ', 3, None, '___sec14'),
-              (' Not an exercise ', 2, None, '___sec15'),
+              (' Remarks ', 3, None, '___sec13'),
+              (' Not an exercise ', 2, None, '___sec14'),
               (' Project 3: Compute a Probability ',
                2,
                'demo:ex:2',
@@ -35806,19 +32420,19 @@ h1, h2, h3, h4, h5, h6 {
                2,
                'proj:circle1',
                'proj:circle1'),
-              (' Remarks ', 3, None, '___sec18'),
+              (' Remarks ', 3, None, '___sec17'),
               (' Exercise 5: Determine some Distance ',
                2,
                'exer:dist',
                'exer:dist'),
-              (' Remarks ', 3, None, '___sec20'),
+              (' Remarks ', 3, None, '___sec19'),
               (' Some exercise without the "Exercise:" prefix ',
                2,
                None,
-               '___sec21'),
-              (' Example 7: Just an example ', 2, None, '___sec22'),
-              (' Here goes another section ', 1, None, '___sec23'),
-              (' More Exercises ', 1, None, '___sec24'),
+               '___sec20'),
+              (' Example 7: Just an example ', 2, None, '___sec21'),
+              (' Here goes another section ', 1, None, '___sec22'),
+              (' More Exercises ', 1, None, '___sec23'),
               (' Exercise 8: Make references to projects and problems ',
                2,
                'exer:some:formula',
@@ -35827,11 +32441,11 @@ h1, h2, h3, h4, h5, h6 {
                2,
                'exer:you',
                'exer:you'),
-              (' References ', 1, None, '___sec27'),
-              (' Appendix: Just for testing; part I ', 1, None, '___sec28'),
-              (' A subsection within an appendix ', 2, None, '___sec29'),
-              (' Appendix: Just for testing; part II ', 1, None, '___sec30'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec31'),
+              (' References ', 1, None, '___sec26'),
+              (' Appendix: Just for testing; part I ', 1, None, '___sec27'),
+              (' A subsection within an appendix ', 2, None, '___sec28'),
+              (' Appendix: Just for testing; part II ', 1, None, '___sec29'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec30'),
               (' Appendix: Testing identical titles ',
                2,
                'test:title:id1',
@@ -35840,12 +32454,12 @@ h1, h2, h3, h4, h5, h6 {
                2,
                'test:title:id2',
                'test:title:id2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec34'),
-              (' Appendix: Testing inline comments ', 2, None, '___sec35'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec33'),
+              (' Appendix: Testing inline comments ', 2, None, '___sec34'),
               (' Appendix: Testing headings ending with `verbatim inline` ',
                2,
                None,
-               '___sec36')]}
+               '___sec35')]}
 end of tocinfo -->
 
 
@@ -35937,41 +32551,40 @@ $$
 <p>
 <a href="._testdoc_vagrant001.html#sec1"> Section 1 </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec1"> Subsection 1 </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#subsec:ex"> Subsection 2: Testing figures and movies </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec3"> Test of movies </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#subsec:ex"> Subsection 2: Testing figures </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec5"> Custom Environments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec4"> Custom Environments </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#subsec:table"> Tables </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec7"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec8"> Bibliography test </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec6"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec7"> Bibliography test </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#Example"> Example 1: Examples can be typeset as exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#subsubsec:ex"> URLs </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec11"> LaTeX Mathematics </a><br>
-<a href="._testdoc_vagrant002.html#___sec12"> Exercises </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec10"> LaTeX Mathematics </a><br>
+<a href="._testdoc_vagrant002.html#___sec11"> Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#demo:ex:1"> Problem 2: Flip a Coin </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec14"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec15"> Not an exercise </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec13"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec14"> Not an exercise </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#demo:ex:2"> Project 3: Compute a Probability </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec18"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec17"> Remarks </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 5: Determine some Distance </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec20"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec21"> Some exercise without the "Exercise:" prefix </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec22"> Example 7: Just an example </a><br>
-<a href="._testdoc_vagrant002.html#___sec23"> Here goes another section </a><br>
-<a href="._testdoc_vagrant002.html#___sec24"> More Exercises </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec19"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec20"> Some exercise without the "Exercise:" prefix </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec21"> Example 7: Just an example </a><br>
+<a href="._testdoc_vagrant002.html#___sec22"> Here goes another section </a><br>
+<a href="._testdoc_vagrant002.html#___sec23"> More Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 8: Make references to projects and problems </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#exer:you"> Project 9: References in a headings do not work well in html </a><br>
-<a href="._testdoc_vagrant002.html#___sec27"> References </a><br>
-<a href="._testdoc_vagrant002.html#___sec28"> Appendix: Just for testing; part I </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec29"> A subsection within an appendix </a><br>
-<a href="._testdoc_vagrant002.html#___sec30"> Appendix: Just for testing; part II </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec31"> Appendix: Testing identical titles </a><br>
+<a href="._testdoc_vagrant002.html#___sec26"> References </a><br>
+<a href="._testdoc_vagrant002.html#___sec27"> Appendix: Just for testing; part I </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec28"> A subsection within an appendix </a><br>
+<a href="._testdoc_vagrant002.html#___sec29"> Appendix: Just for testing; part II </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec30"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#test:title:id1"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#test:title:id2"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec34"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec35"> Appendix: Testing inline comments </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec36"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec33"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec34"> Appendix: Testing inline comments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec35"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
 
 <p>
 <p>
@@ -36092,41 +32705,40 @@ h1, h2, h3, h4, h5, h6 {
      <!-- Doconce automatically fills in the table of contents -->
           <!-- vagrant nav toc: " Section 1 " --> <li class="active">  <a href="._testdoc_vagrant001.html#sec1"> Section 1 </a>
      <!-- vagrant nav toc: " Subsection 1 " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec1"> Subsection 1 </a>
-     <!-- vagrant nav toc: " Subsection 2: Testing figures and movies " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#subsec:ex"> Subsection 2: Testing figures and movies </a>
-     <!-- vagrant nav toc: " Test of movies " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec3"> Test of movies </a>
+     <!-- vagrant nav toc: " Subsection 2: Testing figures " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#subsec:ex"> Subsection 2: Testing figures </a>
      <!-- vagrant nav toc: " The \( \theta \) parameter (not \( \nabla \)?) " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a>
-     <!-- vagrant nav toc: " Custom Environments " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec5"> Custom Environments </a>
+     <!-- vagrant nav toc: " Custom Environments " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec4"> Custom Environments </a>
      <!-- vagrant nav toc: " Tables " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#subsec:table"> Tables </a>
-     <!-- vagrant nav toc: " A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec7"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a>
-     <!-- vagrant nav toc: " Bibliography test " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec8"> Bibliography test </a>
+     <!-- vagrant nav toc: " A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec6"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a>
+     <!-- vagrant nav toc: " Bibliography test " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec7"> Bibliography test </a>
      <!-- vagrant nav toc: " Example 1: Examples can be typeset as exercises " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#Example"> Example 1: Examples can be typeset as exercises </a>
      <!-- vagrant nav toc: " URLs " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#subsubsec:ex"> URLs </a>
-     <!-- vagrant nav toc: " LaTeX Mathematics " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec11"> LaTeX Mathematics </a>
-     <!-- vagrant nav toc: " Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec12"> Exercises </a>
+     <!-- vagrant nav toc: " LaTeX Mathematics " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec10"> LaTeX Mathematics </a>
+     <!-- vagrant nav toc: " Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec11"> Exercises </a>
      <!-- vagrant nav toc: " Problem 2: Flip a Coin " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:1"> Problem 2: Flip a Coin </a>
-     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec14"> Remarks </a>
-     <!-- vagrant nav toc: " Not an exercise " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec15"> Not an exercise </a>
+     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec13"> Remarks </a>
+     <!-- vagrant nav toc: " Not an exercise " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec14"> Not an exercise </a>
      <!-- vagrant nav toc: " Project 3: Compute a Probability " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:2"> Project 3: Compute a Probability </a>
      <!-- vagrant nav toc: " Project 4: Explore Distributions of Random Circles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a>
-     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec18"> Remarks </a>
+     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec17"> Remarks </a>
      <!-- vagrant nav toc: " Exercise 5: Determine some Distance " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 5: Determine some Distance </a>
-     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec20"> Remarks </a>
-     <!-- vagrant nav toc: " Some exercise without the "Exercise:" prefix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec21"> Some exercise without the "Exercise:" prefix </a>
-     <!-- vagrant nav toc: " Example 7: Just an example " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec22"> Example 7: Just an example </a>
-     <!-- vagrant nav toc: " Here goes another section " --> <li>  <a href="._testdoc_vagrant002.html#___sec23"> Here goes another section </a>
-     <!-- vagrant nav toc: " More Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec24"> More Exercises </a>
+     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec19"> Remarks </a>
+     <!-- vagrant nav toc: " Some exercise without the "Exercise:" prefix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec20"> Some exercise without the "Exercise:" prefix </a>
+     <!-- vagrant nav toc: " Example 7: Just an example " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec21"> Example 7: Just an example </a>
+     <!-- vagrant nav toc: " Here goes another section " --> <li>  <a href="._testdoc_vagrant002.html#___sec22"> Here goes another section </a>
+     <!-- vagrant nav toc: " More Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec23"> More Exercises </a>
      <!-- vagrant nav toc: " Exercise 8: Make references to projects and problems " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 8: Make references to projects and problems </a>
      <!-- vagrant nav toc: " Project 9: References in a headings do not work well in html " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:you"> Project 9: References in a headings do not work well in html </a>
-     <!-- vagrant nav toc: " References " --> <li>  <a href="._testdoc_vagrant002.html#___sec27"> References </a>
-     <!-- vagrant nav toc: " Appendix: Just for testing; part I " --> <li>  <a href="._testdoc_vagrant002.html#___sec28"> Appendix: Just for testing; part I </a>
-     <!-- vagrant nav toc: " A subsection within an appendix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec29"> A subsection within an appendix </a>
-     <!-- vagrant nav toc: " Appendix: Just for testing; part II " --> <li>  <a href="._testdoc_vagrant002.html#___sec30"> Appendix: Just for testing; part II </a>
-     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec31"> Appendix: Testing identical titles </a>
+     <!-- vagrant nav toc: " References " --> <li>  <a href="._testdoc_vagrant002.html#___sec26"> References </a>
+     <!-- vagrant nav toc: " Appendix: Just for testing; part I " --> <li>  <a href="._testdoc_vagrant002.html#___sec27"> Appendix: Just for testing; part I </a>
+     <!-- vagrant nav toc: " A subsection within an appendix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec28"> A subsection within an appendix </a>
+     <!-- vagrant nav toc: " Appendix: Just for testing; part II " --> <li>  <a href="._testdoc_vagrant002.html#___sec29"> Appendix: Just for testing; part II </a>
+     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec30"> Appendix: Testing identical titles </a>
      <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id1"> Appendix: Testing identical titles </a>
      <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id2"> Appendix: Testing identical titles </a>
-     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec34"> Appendix: Testing identical titles </a>
-     <!-- vagrant nav toc: " Appendix: Testing inline comments " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec35"> Appendix: Testing inline comments </a>
-     <!-- vagrant nav toc: " Appendix: Testing headings ending with <code>verbatim inline</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec36"> Appendix: Testing headings ending with <code>verbatim inline</code> </a>
+     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec33"> Appendix: Testing identical titles </a>
+     <!-- vagrant nav toc: " Appendix: Testing inline comments " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec34"> Appendix: Testing inline comments </a>
+     <!-- vagrant nav toc: " Appendix: Testing headings ending with <code>verbatim inline</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec35"> Appendix: Testing headings ending with <code>verbatim inline</code> </a>
 
     </ul>
    </div>
@@ -36139,32 +32751,31 @@ h1, h2, h3, h4, h5, h6 {
 {'highest level': 1,
  'sections': [(' Section 1 ', 1, 'sec1', 'sec1'),
               (' Subsection 1 ', 2, None, '___sec1'),
-              (' Subsection 2: Testing figures and movies ',
+              (' Subsection 2: Testing figures ',
                2,
                'subsec:ex',
                'subsec:ex'),
-              (' Test of movies ', 3, None, '___sec3'),
               (' The $\\theta$ parameter (not $\\nabla$?) ',
                2,
                'decay:sec:theta',
                'decay:sec:theta'),
-              (' Custom Environments ', 2, None, '___sec5'),
+              (' Custom Environments ', 2, None, '___sec4'),
               (' Tables ', 2, 'subsec:table', 'subsec:table'),
               (' A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2` ',
                2,
                None,
-               '___sec7'),
-              (' Bibliography test ', 2, None, '___sec8'),
+               '___sec6'),
+              (' Bibliography test ', 2, None, '___sec7'),
               (' Example 1: Examples can be typeset as exercises ',
                2,
                'Example',
                'Example'),
               (' URLs ', 2, 'subsubsec:ex', 'subsubsec:ex'),
-              (' LaTeX Mathematics ', 2, None, '___sec11'),
-              (' Exercises ', 1, None, '___sec12'),
+              (' LaTeX Mathematics ', 2, None, '___sec10'),
+              (' Exercises ', 1, None, '___sec11'),
               (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
-              (' Remarks ', 3, None, '___sec14'),
-              (' Not an exercise ', 2, None, '___sec15'),
+              (' Remarks ', 3, None, '___sec13'),
+              (' Not an exercise ', 2, None, '___sec14'),
               (' Project 3: Compute a Probability ',
                2,
                'demo:ex:2',
@@ -36173,19 +32784,19 @@ h1, h2, h3, h4, h5, h6 {
                2,
                'proj:circle1',
                'proj:circle1'),
-              (' Remarks ', 3, None, '___sec18'),
+              (' Remarks ', 3, None, '___sec17'),
               (' Exercise 5: Determine some Distance ',
                2,
                'exer:dist',
                'exer:dist'),
-              (' Remarks ', 3, None, '___sec20'),
+              (' Remarks ', 3, None, '___sec19'),
               (' Some exercise without the "Exercise:" prefix ',
                2,
                None,
-               '___sec21'),
-              (' Example 7: Just an example ', 2, None, '___sec22'),
-              (' Here goes another section ', 1, None, '___sec23'),
-              (' More Exercises ', 1, None, '___sec24'),
+               '___sec20'),
+              (' Example 7: Just an example ', 2, None, '___sec21'),
+              (' Here goes another section ', 1, None, '___sec22'),
+              (' More Exercises ', 1, None, '___sec23'),
               (' Exercise 8: Make references to projects and problems ',
                2,
                'exer:some:formula',
@@ -36194,11 +32805,11 @@ h1, h2, h3, h4, h5, h6 {
                2,
                'exer:you',
                'exer:you'),
-              (' References ', 1, None, '___sec27'),
-              (' Appendix: Just for testing; part I ', 1, None, '___sec28'),
-              (' A subsection within an appendix ', 2, None, '___sec29'),
-              (' Appendix: Just for testing; part II ', 1, None, '___sec30'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec31'),
+              (' References ', 1, None, '___sec26'),
+              (' Appendix: Just for testing; part I ', 1, None, '___sec27'),
+              (' A subsection within an appendix ', 2, None, '___sec28'),
+              (' Appendix: Just for testing; part II ', 1, None, '___sec29'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec30'),
               (' Appendix: Testing identical titles ',
                2,
                'test:title:id1',
@@ -36207,12 +32818,12 @@ h1, h2, h3, h4, h5, h6 {
                2,
                'test:title:id2',
                'test:title:id2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec34'),
-              (' Appendix: Testing inline comments ', 2, None, '___sec35'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec33'),
+              (' Appendix: Testing inline comments ', 2, None, '___sec34'),
               (' Appendix: Testing headings ending with `verbatim inline` ',
                2,
                None,
-               '___sec36')]}
+               '___sec35')]}
 end of tocinfo -->
 
 
@@ -36438,41 +33049,40 @@ h1, h2, h3, h4, h5, h6 {
      <!-- Doconce automatically fills in the table of contents -->
           <!-- vagrant nav toc: " Section 1 " --> <li>  <a href="._testdoc_vagrant001.html#sec1"> Section 1 </a>
      <!-- vagrant nav toc: " Subsection 1 " --> <li class="active"> &nbsp;  <a href="._testdoc_vagrant002.html#___sec1"> Subsection 1 </a>
-     <!-- vagrant nav toc: " Subsection 2: Testing figures and movies " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#subsec:ex"> Subsection 2: Testing figures and movies </a>
-     <!-- vagrant nav toc: " Test of movies " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec3"> Test of movies </a>
+     <!-- vagrant nav toc: " Subsection 2: Testing figures " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#subsec:ex"> Subsection 2: Testing figures </a>
      <!-- vagrant nav toc: " The \( \theta \) parameter (not \( \nabla \)?) " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a>
-     <!-- vagrant nav toc: " Custom Environments " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec5"> Custom Environments </a>
+     <!-- vagrant nav toc: " Custom Environments " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec4"> Custom Environments </a>
      <!-- vagrant nav toc: " Tables " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#subsec:table"> Tables </a>
-     <!-- vagrant nav toc: " A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec7"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a>
-     <!-- vagrant nav toc: " Bibliography test " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec8"> Bibliography test </a>
+     <!-- vagrant nav toc: " A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec6"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a>
+     <!-- vagrant nav toc: " Bibliography test " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec7"> Bibliography test </a>
      <!-- vagrant nav toc: " Example 1: Examples can be typeset as exercises " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#Example"> Example 1: Examples can be typeset as exercises </a>
      <!-- vagrant nav toc: " URLs " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#subsubsec:ex"> URLs </a>
-     <!-- vagrant nav toc: " LaTeX Mathematics " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec11"> LaTeX Mathematics </a>
-     <!-- vagrant nav toc: " Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec12"> Exercises </a>
+     <!-- vagrant nav toc: " LaTeX Mathematics " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec10"> LaTeX Mathematics </a>
+     <!-- vagrant nav toc: " Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec11"> Exercises </a>
      <!-- vagrant nav toc: " Problem 2: Flip a Coin " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:1"> Problem 2: Flip a Coin </a>
-     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec14"> Remarks </a>
-     <!-- vagrant nav toc: " Not an exercise " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec15"> Not an exercise </a>
+     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec13"> Remarks </a>
+     <!-- vagrant nav toc: " Not an exercise " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec14"> Not an exercise </a>
      <!-- vagrant nav toc: " Project 3: Compute a Probability " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:2"> Project 3: Compute a Probability </a>
      <!-- vagrant nav toc: " Project 4: Explore Distributions of Random Circles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a>
-     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec18"> Remarks </a>
+     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec17"> Remarks </a>
      <!-- vagrant nav toc: " Exercise 5: Determine some Distance " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 5: Determine some Distance </a>
-     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec20"> Remarks </a>
-     <!-- vagrant nav toc: " Some exercise without the "Exercise:" prefix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec21"> Some exercise without the "Exercise:" prefix </a>
-     <!-- vagrant nav toc: " Example 7: Just an example " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec22"> Example 7: Just an example </a>
-     <!-- vagrant nav toc: " Here goes another section " --> <li>  <a href="._testdoc_vagrant002.html#___sec23"> Here goes another section </a>
-     <!-- vagrant nav toc: " More Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec24"> More Exercises </a>
+     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec19"> Remarks </a>
+     <!-- vagrant nav toc: " Some exercise without the "Exercise:" prefix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec20"> Some exercise without the "Exercise:" prefix </a>
+     <!-- vagrant nav toc: " Example 7: Just an example " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec21"> Example 7: Just an example </a>
+     <!-- vagrant nav toc: " Here goes another section " --> <li>  <a href="._testdoc_vagrant002.html#___sec22"> Here goes another section </a>
+     <!-- vagrant nav toc: " More Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec23"> More Exercises </a>
      <!-- vagrant nav toc: " Exercise 8: Make references to projects and problems " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 8: Make references to projects and problems </a>
      <!-- vagrant nav toc: " Project 9: References in a headings do not work well in html " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:you"> Project 9: References in a headings do not work well in html </a>
-     <!-- vagrant nav toc: " References " --> <li>  <a href="._testdoc_vagrant002.html#___sec27"> References </a>
-     <!-- vagrant nav toc: " Appendix: Just for testing; part I " --> <li>  <a href="._testdoc_vagrant002.html#___sec28"> Appendix: Just for testing; part I </a>
-     <!-- vagrant nav toc: " A subsection within an appendix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec29"> A subsection within an appendix </a>
-     <!-- vagrant nav toc: " Appendix: Just for testing; part II " --> <li>  <a href="._testdoc_vagrant002.html#___sec30"> Appendix: Just for testing; part II </a>
-     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec31"> Appendix: Testing identical titles </a>
+     <!-- vagrant nav toc: " References " --> <li>  <a href="._testdoc_vagrant002.html#___sec26"> References </a>
+     <!-- vagrant nav toc: " Appendix: Just for testing; part I " --> <li>  <a href="._testdoc_vagrant002.html#___sec27"> Appendix: Just for testing; part I </a>
+     <!-- vagrant nav toc: " A subsection within an appendix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec28"> A subsection within an appendix </a>
+     <!-- vagrant nav toc: " Appendix: Just for testing; part II " --> <li>  <a href="._testdoc_vagrant002.html#___sec29"> Appendix: Just for testing; part II </a>
+     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec30"> Appendix: Testing identical titles </a>
      <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id1"> Appendix: Testing identical titles </a>
      <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id2"> Appendix: Testing identical titles </a>
-     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec34"> Appendix: Testing identical titles </a>
-     <!-- vagrant nav toc: " Appendix: Testing inline comments " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec35"> Appendix: Testing inline comments </a>
-     <!-- vagrant nav toc: " Appendix: Testing headings ending with <code>verbatim inline</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec36"> Appendix: Testing headings ending with <code>verbatim inline</code> </a>
+     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec33"> Appendix: Testing identical titles </a>
+     <!-- vagrant nav toc: " Appendix: Testing inline comments " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec34"> Appendix: Testing inline comments </a>
+     <!-- vagrant nav toc: " Appendix: Testing headings ending with <code>verbatim inline</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec35"> Appendix: Testing headings ending with <code>verbatim inline</code> </a>
 
     </ul>
    </div>
@@ -36485,32 +33095,31 @@ h1, h2, h3, h4, h5, h6 {
 {'highest level': 1,
  'sections': [(' Section 1 ', 1, 'sec1', 'sec1'),
               (' Subsection 1 ', 2, None, '___sec1'),
-              (' Subsection 2: Testing figures and movies ',
+              (' Subsection 2: Testing figures ',
                2,
                'subsec:ex',
                'subsec:ex'),
-              (' Test of movies ', 3, None, '___sec3'),
               (' The $\\theta$ parameter (not $\\nabla$?) ',
                2,
                'decay:sec:theta',
                'decay:sec:theta'),
-              (' Custom Environments ', 2, None, '___sec5'),
+              (' Custom Environments ', 2, None, '___sec4'),
               (' Tables ', 2, 'subsec:table', 'subsec:table'),
               (' A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2` ',
                2,
                None,
-               '___sec7'),
-              (' Bibliography test ', 2, None, '___sec8'),
+               '___sec6'),
+              (' Bibliography test ', 2, None, '___sec7'),
               (' Example 1: Examples can be typeset as exercises ',
                2,
                'Example',
                'Example'),
               (' URLs ', 2, 'subsubsec:ex', 'subsubsec:ex'),
-              (' LaTeX Mathematics ', 2, None, '___sec11'),
-              (' Exercises ', 1, None, '___sec12'),
+              (' LaTeX Mathematics ', 2, None, '___sec10'),
+              (' Exercises ', 1, None, '___sec11'),
               (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
-              (' Remarks ', 3, None, '___sec14'),
-              (' Not an exercise ', 2, None, '___sec15'),
+              (' Remarks ', 3, None, '___sec13'),
+              (' Not an exercise ', 2, None, '___sec14'),
               (' Project 3: Compute a Probability ',
                2,
                'demo:ex:2',
@@ -36519,19 +33128,19 @@ h1, h2, h3, h4, h5, h6 {
                2,
                'proj:circle1',
                'proj:circle1'),
-              (' Remarks ', 3, None, '___sec18'),
+              (' Remarks ', 3, None, '___sec17'),
               (' Exercise 5: Determine some Distance ',
                2,
                'exer:dist',
                'exer:dist'),
-              (' Remarks ', 3, None, '___sec20'),
+              (' Remarks ', 3, None, '___sec19'),
               (' Some exercise without the "Exercise:" prefix ',
                2,
                None,
-               '___sec21'),
-              (' Example 7: Just an example ', 2, None, '___sec22'),
-              (' Here goes another section ', 1, None, '___sec23'),
-              (' More Exercises ', 1, None, '___sec24'),
+               '___sec20'),
+              (' Example 7: Just an example ', 2, None, '___sec21'),
+              (' Here goes another section ', 1, None, '___sec22'),
+              (' More Exercises ', 1, None, '___sec23'),
               (' Exercise 8: Make references to projects and problems ',
                2,
                'exer:some:formula',
@@ -36540,11 +33149,11 @@ h1, h2, h3, h4, h5, h6 {
                2,
                'exer:you',
                'exer:you'),
-              (' References ', 1, None, '___sec27'),
-              (' Appendix: Just for testing; part I ', 1, None, '___sec28'),
-              (' A subsection within an appendix ', 2, None, '___sec29'),
-              (' Appendix: Just for testing; part II ', 1, None, '___sec30'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec31'),
+              (' References ', 1, None, '___sec26'),
+              (' Appendix: Just for testing; part I ', 1, None, '___sec27'),
+              (' A subsection within an appendix ', 2, None, '___sec28'),
+              (' Appendix: Just for testing; part II ', 1, None, '___sec29'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec30'),
               (' Appendix: Testing identical titles ',
                2,
                'test:title:id1',
@@ -36553,12 +33162,12 @@ h1, h2, h3, h4, h5, h6 {
                2,
                'test:title:id2',
                'test:title:id2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec34'),
-              (' Appendix: Testing inline comments ', 2, None, '___sec35'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec33'),
+              (' Appendix: Testing inline comments ', 2, None, '___sec34'),
               (' Appendix: Testing headings ending with `verbatim inline` ',
                2,
                None,
-               '___sec36')]}
+               '___sec35')]}
 end of tocinfo -->
 
 
@@ -36805,7 +33414,7 @@ green color containing a linebreak.
 And one more.</font> Some formats will only display this correctly when
 HTML is the output format.
 
-<h3>Subsection 2: Testing figures and movies <a name="subsec:ex"></a></h3>
+<h3>Subsection 2: Testing figures <a name="subsec:ex"></a></h3>
 
 <p>
 Test of figures. In particular we refer to Figure <a href="#fig:impact">1</a> in which
@@ -36823,337 +33432,6 @@ Figures without captions are allowed and will be inlined.
 
 <p>
 <center><p><img src="../doc/src/manual/fig/wave1D.png" align="bottom" width=200></p></center>
-
-<h4>Test of movies  <a name="___sec3"></a></h4>
-
-<p>
-Movie <a href="#mov:wave">mov:wave</a> shows a wave.
-
-<p>
-
-<div>
-<video  loop controls width='700' height='400' preload='none'>
-    <source src='../doc/src/manual/mov/wave.mp4'  type='video/mp4;  codecs="avc1.42E01E, mp4a.40.2"'>
-    <source src='../doc/src/manual/mov/wave.webm' type='video/webm; codecs="vp8, vorbis"'>
-    <source src='../doc/src/manual/mov/wave.ogg'  type='video/ogg;  codecs="theora, vorbis"'>
-</video>
-</div>
-<p><em>1D wave in Ogg format. <a name="mov:wave"></a>.</em></p>
-
-
-<p>
-Test empty caption (for inline movie, here in MPEG format):
-
-<p>
-
-<embed src="../doc/src/manual/mov/wave.mpeg" width=700 height=400 autoplay="false" loop="true"></embed>
-<p><em></em></p>
-
-
-<p>
-Test wrong syntax and multi-line caption, to see if it is automatically
-corrected:
-
-<p>
-
-<div>
-<video  loop controls width='700' height='400' preload='none'>
-    <source src='../doc/src/manual/mov/wave.mp4'  type='video/mp4;  codecs="avc1.42E01E, mp4a.40.2"'>
-    <source src='../doc/src/manual/mov/wave.webm' type='video/webm; codecs="vp8, vorbis"'>
-    <source src='../doc/src/manual/mov/wave.ogg'  type='video/ogg;  codecs="theora, vorbis"'>
-</video>
-</div>
-<p><em>Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). <a name="mymov"></a></em></p>
-
-
-<p>
-We can show a series of images as an animation:
-
-<p>
-
-<script language="Javascript">
-<!---
-var num_images_frame_0080 = 50;
-var img_width_frame_0080 = 800;
-var img_height_frame_0080 = 600;
-var interval_frame_0080 = 300;
-var images_frame_0080 = new Array();
-
-function preload_images_frame_0080()
-{
-   t = document.getElementById("progress");
-
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[0] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[0].src = "../doc/src/manual/mov/wave_frames/frame_0080.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[1] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[1].src = "../doc/src/manual/mov/wave_frames/frame_0081.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[2] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[2].src = "../doc/src/manual/mov/wave_frames/frame_0082.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[3] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[3].src = "../doc/src/manual/mov/wave_frames/frame_0083.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[4] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[4].src = "../doc/src/manual/mov/wave_frames/frame_0084.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[5] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[5].src = "../doc/src/manual/mov/wave_frames/frame_0085.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[6] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[6].src = "../doc/src/manual/mov/wave_frames/frame_0086.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[7] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[7].src = "../doc/src/manual/mov/wave_frames/frame_0087.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[8] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[8].src = "../doc/src/manual/mov/wave_frames/frame_0088.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[9] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[9].src = "../doc/src/manual/mov/wave_frames/frame_0089.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[10] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[10].src = "../doc/src/manual/mov/wave_frames/frame_0090.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[11] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[11].src = "../doc/src/manual/mov/wave_frames/frame_0091.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[12] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[12].src = "../doc/src/manual/mov/wave_frames/frame_0092.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[13] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[13].src = "../doc/src/manual/mov/wave_frames/frame_0093.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[14] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[14].src = "../doc/src/manual/mov/wave_frames/frame_0094.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[15] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[15].src = "../doc/src/manual/mov/wave_frames/frame_0095.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[16] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[16].src = "../doc/src/manual/mov/wave_frames/frame_0096.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[17] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[17].src = "../doc/src/manual/mov/wave_frames/frame_0097.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[18] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[18].src = "../doc/src/manual/mov/wave_frames/frame_0098.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[19] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[19].src = "../doc/src/manual/mov/wave_frames/frame_0099.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[20] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[20].src = "../doc/src/manual/mov/wave_frames/frame_0100.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[21] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[21].src = "../doc/src/manual/mov/wave_frames/frame_0101.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[22] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[22].src = "../doc/src/manual/mov/wave_frames/frame_0102.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[23] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[23].src = "../doc/src/manual/mov/wave_frames/frame_0103.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[24] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[24].src = "../doc/src/manual/mov/wave_frames/frame_0104.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[25] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[25].src = "../doc/src/manual/mov/wave_frames/frame_0105.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[26] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[26].src = "../doc/src/manual/mov/wave_frames/frame_0106.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[27] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[27].src = "../doc/src/manual/mov/wave_frames/frame_0107.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[28] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[28].src = "../doc/src/manual/mov/wave_frames/frame_0108.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[29] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[29].src = "../doc/src/manual/mov/wave_frames/frame_0109.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[30] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[30].src = "../doc/src/manual/mov/wave_frames/frame_0110.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[31] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[31].src = "../doc/src/manual/mov/wave_frames/frame_0111.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[32] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[32].src = "../doc/src/manual/mov/wave_frames/frame_0112.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[33] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[33].src = "../doc/src/manual/mov/wave_frames/frame_0113.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[34] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[34].src = "../doc/src/manual/mov/wave_frames/frame_0114.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[35] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[35].src = "../doc/src/manual/mov/wave_frames/frame_0115.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[36] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[36].src = "../doc/src/manual/mov/wave_frames/frame_0116.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[37] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[37].src = "../doc/src/manual/mov/wave_frames/frame_0117.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[38] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[38].src = "../doc/src/manual/mov/wave_frames/frame_0118.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[39] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[39].src = "../doc/src/manual/mov/wave_frames/frame_0119.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[40] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[40].src = "../doc/src/manual/mov/wave_frames/frame_0120.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[41] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[41].src = "../doc/src/manual/mov/wave_frames/frame_0121.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[42] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[42].src = "../doc/src/manual/mov/wave_frames/frame_0122.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[43] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[43].src = "../doc/src/manual/mov/wave_frames/frame_0123.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[44] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[44].src = "../doc/src/manual/mov/wave_frames/frame_0124.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[45] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[45].src = "../doc/src/manual/mov/wave_frames/frame_0125.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[46] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[46].src = "../doc/src/manual/mov/wave_frames/frame_0126.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[47] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[47].src = "../doc/src/manual/mov/wave_frames/frame_0127.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[48] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[48].src = "../doc/src/manual/mov/wave_frames/frame_0128.png";
-        
-   t.innerHTML = "Preloading image ";
-   images_frame_0080[49] = new Image(img_width_frame_0080, img_height_frame_0080);
-   images_frame_0080[49].src = "../doc/src/manual/mov/wave_frames/frame_0129.png";
-        
-   t.innerHTML = "";
-}
-
-function tick_frame_0080()
-{
-   if (frame_frame_0080 > num_images_frame_0080 - 1)
-       frame_frame_0080 = 0;
-
-   document.name_frame_0080.src = images_frame_0080[frame_frame_0080].src;
-   frame_frame_0080 += 1;
-   tt = setTimeout("tick_frame_0080()", interval_frame_0080);
-}
-
-function startup_frame_0080()
-{
-   preload_images_frame_0080();
-   frame_frame_0080 = 0;
-   setTimeout("tick_frame_0080()", interval_frame_0080);
-}
-
-function stopit_frame_0080()
-{ clearTimeout(tt); }
-
-function restart_frame_0080()
-{ tt = setTimeout("tick_frame_0080()", interval_frame_0080); }
-
-function slower_frame_0080()
-{ interval_frame_0080 = interval_frame_0080/0.7; }
-
-function faster_frame_0080()
-{ interval_frame_0080 = interval_frame_0080*0.7; }
-
-// --->
-</script>
-
-<form>
-&nbsp;
-<input type="button" value="Start movie" onClick="startup_frame_0080()">
-<input type="button" value="Pause movie" onClick="stopit_frame_0080()">
-<input type="button" value="Restart movie" onClick="restart_frame_0080()">
-&nbsp;
-<input type="button" value="Slower" onClick="slower_frame_0080()">
-<input type="button" value="Faster" onClick="faster_frame_0080()">
-</form>
-
-<p><div ID="progress"></div></p>
-<img src="../doc/src/manual/mov/wave_frames/frame_0080.png" name="name_frame_0080" border=2/>
-
-<br><em>Caption for animated collection of images.</em><br>
-
-
-
-<p>
-Check out the correct with and height of YouTube movies from the
-embed command that the YouTube page can generate. Similar for Vimeo.
-
-<p>
-
-<iframe width="420" height="315" src="http://www.youtube.com/embed/_O7iUiftbKU" frameborder="0" allowfullscreen></iframe>
-
-<em>YouTube movie.</em>
-
-
-
-<p>
-
-<iframe width="500" height="278" src="http://player.vimeo.com/video/55562330" frameborder="0" allowfullscreen></iframe>
-
-<em>Vimeo movie.</em>
-
-
 
 <p>
 <!-- Test multi-line caption in figure -->
@@ -37183,6 +33461,10 @@ Test URL as figure name:
 
 <p>
 <!-- Somewhat challenging heading with latex math, \t, \n, ? and parenthesis -->
+
+<p>
+<b>Remark.</b>
+Movies are tested in separate file <code>movies.do.txt</code>.
 
 <h3>The \( \theta \) parameter (not \( \nabla \)?) <a name="decay:sec:theta"></a></h3>
 
@@ -37229,7 +33511,7 @@ $$
 \end{align}
 $$
 
-<h3>Custom Environments  <a name="___sec5"></a></h3>
+<h3>Custom Environments  <a name="___sec4"></a></h3>
 
 <p>
 Here is an attempt to create a theorem environment via Mako
@@ -37325,14 +33607,14 @@ and <code>|</code> right after verbatim word (with no space):
 <tr><td align="right">   0                               </td> <td align="right">   -9.19                           </td> <td align="right">   4.13                            </td> <td align="right">   -0.26                           </td> </tr>
 </table>
 
-<h3>A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code>  <a name="___sec7"></a></h3>
+<h3>A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code>  <a name="___sec6"></a></h3>
 
 <p>
 <b>Files <code>my_file_v1.py</code> and <code>my_file_v2.py</code> define some math \( a_{i-1} \).</b>
 Here is
 some text.
 
-<h3>Bibliography test  <a name="___sec8"></a></h3>
+<h3>Bibliography test  <a name="___sec7"></a></h3>
 
 <p>
 Here is an example: <a href="#Langtangen_Pedersen_2002">[1]</a> discussed propagation of
@@ -37447,7 +33729,7 @@ More tough tests: repeated URLs whose footnotes when using the
 <a href="http://google.com" target="_self">google</a>, which should result in exactly three
 footnotes.
 
-<h3>LaTeX Mathematics  <a name="___sec11"></a></h3>
+<h3>LaTeX Mathematics  <a name="___sec10"></a></h3>
 
 <p>
 Here is an equation without label using backslash-bracket environment:
@@ -37549,7 +33831,7 @@ Below, we have <a href="#demo:ex:1">Problem 2: Flip a Coin</a> and <a href="#dem
 as well as <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a> and <a href="#exer:you">Project 9: References in a headings do not work well in html</a>, and in
 between there we have <a href="#exer:some:formula">Exercise 8: Make references to projects and problems</a>.
 
-<h2>Exercises  <a name="___sec12"></a></h2>
+<h2>Exercises  <a name="___sec11"></a></h2>
 
 <p>
 <!-- --- begin exercise --- -->
@@ -37568,7 +33850,7 @@ let the program count the number of heads.
 <p>
 <!-- Test syntax error -->
 
-<h4>Remarks  <a name="___sec14"></a></h4>
+<h4>Remarks  <a name="___sec13"></a></h4>
 
 <p>
 Remarks with such a subsubsection heading would previously mark
@@ -37634,7 +33916,7 @@ Filenames: <code>flip_coin.py</code>, <code>flip_coin.pdf</code>.
 <p>
 <!-- --- end exercise --- -->
 
-<h3>Not an exercise  <a name="___sec15"></a></h3>
+<h3>Not an exercise  <a name="___sec14"></a></h3>
 
 <p>
 Should be possible to stick a normal section in the middle of many
@@ -37767,7 +34049,7 @@ Filename: <code>circles.pdf</code>.
 <p>
 <!-- Closing remarks for this Project -->
 
-<h4>Remarks  <a name="___sec18"></a></h4>
+<h4>Remarks  <a name="___sec17"></a></h4>
 
 <p>
 At the very end of the exercise it may be appropriate to summarize
@@ -37905,7 +34187,7 @@ Here goes the solution of this subexercise.
 <p>
 <!-- Closing remarks for this Exercise -->
 
-<h4>Remarks  <a name="___sec20"></a></h4>
+<h4>Remarks  <a name="___sec19"></a></h4>
 
 <p>
 Some final closing remarks, e.g., summarizing the main findings
@@ -37918,7 +34200,7 @@ remarks will appear at the end of the typeset exercise.
 <p>
 <!-- --- begin exercise --- -->
 
-<h3>Some exercise without the "Exercise:" prefix  <a name="___sec21"></a></h3>
+<h3>Some exercise without the "Exercise:" prefix  <a name="___sec20"></a></h3>
 
 <p>
 <!-- Another minimalistic exercise -->
@@ -37945,7 +34227,7 @@ And a test that the code <code>lambda x: x+2</code> is correctly placed here:
 <p>
 <!-- --- begin exercise --- -->
 
-<h3>Example 7: Just an example  <a name="___sec22"></a></h3>
+<h3>Example 7: Just an example  <a name="___sec21"></a></h3>
 
 <p>
 <!-- This example needs the --examples_as_exercises option, otherwise -->
@@ -37962,12 +34244,12 @@ Oslo.
 <p>
 <!-- --- end exercise --- -->
 
-<h2>Here goes another section  <a name="___sec23"></a></h2>
+<h2>Here goes another section  <a name="___sec22"></a></h2>
 
 <p>
 With some text, before we continue with exercises.
 
-<h2>More Exercises  <a name="___sec24"></a></h2>
+<h2>More Exercises  <a name="___sec23"></a></h2>
 
 <p>
 <!-- --- begin exercise --- -->
@@ -38008,7 +34290,7 @@ Filename: <code>selc_composed.pdf</code>.
 <p>
 <!-- --- end exercise --- -->
 
-<h2>References  <a name="___sec27"></a></h2>
+<h2>References  <a name="___sec26"></a></h2>
 
 <p>
 <!-- begin bibliography -->
@@ -38122,22 +34404,22 @@ Filename: <code>selc_composed.pdf</code>.
 
 <!-- end bibliography -->
 
-<h2>Appendix: Just for testing; part I  <a name="___sec28"></a></h2>
+<h2>Appendix: Just for testing; part I  <a name="___sec27"></a></h2>
 
 <p>
 This is the first appendix.
 
-<h3>A subsection within an appendix  <a name="___sec29"></a></h3>
+<h3>A subsection within an appendix  <a name="___sec28"></a></h3>
 
 <p>
 Some text.
 
-<h2>Appendix: Just for testing; part II  <a name="___sec30"></a></h2>
+<h2>Appendix: Just for testing; part II  <a name="___sec29"></a></h2>
 
 <p>
 This is more stuff for an appendix.
 
-<h3>Appendix: Testing identical titles  <a name="___sec31"></a></h3>
+<h3>Appendix: Testing identical titles  <a name="___sec30"></a></h3>
 
 <p>
 Without label.
@@ -38152,7 +34434,7 @@ With label.
 <p>
 With label.
 
-<h3>Appendix: Testing identical titles  <a name="___sec34"></a></h3>
+<h3>Appendix: Testing identical titles  <a name="___sec33"></a></h3>
 
 <p>
 Without label.
@@ -38242,7 +34524,7 @@ detailed information and constitute of course very valuable readings
 when you use version control systems every day. The point now is
 to get started.
 
-<h3>Appendix: Testing inline comments  <a name="___sec35"></a></h3>
+<h3>Appendix: Testing inline comments  <a name="___sec34"></a></h3>
 
 <p>
 Projects that you want to share among several computers or project
@@ -38279,7 +34561,7 @@ systems. Numerous other tutorials contain more comprehensive material
 and in-depth explanations of the concepts and tools.</em>]</font>
 <!-- end inline comment -->
 
-<h3>Appendix: Testing headings ending with <code>verbatim inline</code>  <a name="___sec36"></a></h3>
+<h3>Appendix: Testing headings ending with <code>verbatim inline</code>  <a name="___sec35"></a></h3>
 
 <p>
 The point here is to test 1) <code>verbatim</code> code in headings, and 2)
@@ -38613,8 +34895,8 @@ HTML is the output format.
 
 .. _subsec:ex:
 
-Subsection 2: Testing figures and movies
-----------------------------------------
+Subsection 2: Testing figures
+-----------------------------
 
 .. index:: figures
 
@@ -38641,339 +34923,6 @@ Figures without captions are allowed and will be inlined.
 
 
 .. index:: movies
-
-
-Test of movies
-~~~~~~~~~~~~~~
-
-Movie :ref:`mov:wave` shows a wave.
-
-.. raw:: html
-        
-        <div>
-        <video  loop controls width='700' height='400' preload='none'>
-            <source src='../doc/src/manual/mov/wave.mp4'  type='video/mp4;  codecs="avc1.42E01E, mp4a.40.2"'>
-            <source src='../doc/src/manual/mov/wave.webm' type='video/webm; codecs="vp8, vorbis"'>
-            <source src='../doc/src/manual/mov/wave.ogg'  type='video/ogg;  codecs="theora, vorbis"'>
-        </video>
-        </div>
-        <p><em>1D wave in Ogg format. .</em></p>
-
-
-
-Test empty caption (for inline movie, here in MPEG format):
-
-.. raw:: html
-        
-        <embed src="../doc/src/manual/mov/wave.mpeg" width=700 height=400 autoplay="false" loop="true"></embed>
-        <p><em></em></p>
-
-
-
-Test wrong syntax and multi-line caption, to see if it is automatically
-corrected:
-
-.. raw:: html
-        
-        <div>
-        <video  loop controls width='700' height='400' preload='none'>
-            <source src='../doc/src/manual/mov/wave.mp4'  type='video/mp4;  codecs="avc1.42E01E, mp4a.40.2"'>
-            <source src='../doc/src/manual/mov/wave.webm' type='video/webm; codecs="vp8, vorbis"'>
-            <source src='../doc/src/manual/mov/wave.ogg'  type='video/ogg;  codecs="theora, vorbis"'>
-        </video>
-        </div>
-        <p><em>Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie).</em></p>
-
-
-
-We can show a series of images as an animation:
-
-.. raw:: html
-        
-        <script language="Javascript">
-        <!---
-        var num_images_frame_0080 = 50;
-        var img_width_frame_0080 = 800;
-        var img_height_frame_0080 = 600;
-        var interval_frame_0080 = 300;
-        var images_frame_0080 = new Array();
-        
-        function preload_images_frame_0080()
-        {
-           t = document.getElementById("progress");
-        
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[0] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[0].src = "../doc/src/manual/mov/wave_frames/frame_0080.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[1] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[1].src = "../doc/src/manual/mov/wave_frames/frame_0081.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[2] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[2].src = "../doc/src/manual/mov/wave_frames/frame_0082.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[3] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[3].src = "../doc/src/manual/mov/wave_frames/frame_0083.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[4] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[4].src = "../doc/src/manual/mov/wave_frames/frame_0084.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[5] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[5].src = "../doc/src/manual/mov/wave_frames/frame_0085.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[6] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[6].src = "../doc/src/manual/mov/wave_frames/frame_0086.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[7] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[7].src = "../doc/src/manual/mov/wave_frames/frame_0087.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[8] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[8].src = "../doc/src/manual/mov/wave_frames/frame_0088.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[9] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[9].src = "../doc/src/manual/mov/wave_frames/frame_0089.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[10] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[10].src = "../doc/src/manual/mov/wave_frames/frame_0090.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[11] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[11].src = "../doc/src/manual/mov/wave_frames/frame_0091.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[12] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[12].src = "../doc/src/manual/mov/wave_frames/frame_0092.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[13] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[13].src = "../doc/src/manual/mov/wave_frames/frame_0093.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[14] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[14].src = "../doc/src/manual/mov/wave_frames/frame_0094.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[15] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[15].src = "../doc/src/manual/mov/wave_frames/frame_0095.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[16] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[16].src = "../doc/src/manual/mov/wave_frames/frame_0096.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[17] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[17].src = "../doc/src/manual/mov/wave_frames/frame_0097.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[18] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[18].src = "../doc/src/manual/mov/wave_frames/frame_0098.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[19] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[19].src = "../doc/src/manual/mov/wave_frames/frame_0099.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[20] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[20].src = "../doc/src/manual/mov/wave_frames/frame_0100.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[21] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[21].src = "../doc/src/manual/mov/wave_frames/frame_0101.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[22] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[22].src = "../doc/src/manual/mov/wave_frames/frame_0102.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[23] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[23].src = "../doc/src/manual/mov/wave_frames/frame_0103.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[24] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[24].src = "../doc/src/manual/mov/wave_frames/frame_0104.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[25] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[25].src = "../doc/src/manual/mov/wave_frames/frame_0105.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[26] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[26].src = "../doc/src/manual/mov/wave_frames/frame_0106.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[27] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[27].src = "../doc/src/manual/mov/wave_frames/frame_0107.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[28] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[28].src = "../doc/src/manual/mov/wave_frames/frame_0108.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[29] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[29].src = "../doc/src/manual/mov/wave_frames/frame_0109.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[30] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[30].src = "../doc/src/manual/mov/wave_frames/frame_0110.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[31] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[31].src = "../doc/src/manual/mov/wave_frames/frame_0111.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[32] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[32].src = "../doc/src/manual/mov/wave_frames/frame_0112.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[33] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[33].src = "../doc/src/manual/mov/wave_frames/frame_0113.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[34] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[34].src = "../doc/src/manual/mov/wave_frames/frame_0114.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[35] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[35].src = "../doc/src/manual/mov/wave_frames/frame_0115.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[36] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[36].src = "../doc/src/manual/mov/wave_frames/frame_0116.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[37] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[37].src = "../doc/src/manual/mov/wave_frames/frame_0117.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[38] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[38].src = "../doc/src/manual/mov/wave_frames/frame_0118.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[39] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[39].src = "../doc/src/manual/mov/wave_frames/frame_0119.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[40] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[40].src = "../doc/src/manual/mov/wave_frames/frame_0120.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[41] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[41].src = "../doc/src/manual/mov/wave_frames/frame_0121.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[42] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[42].src = "../doc/src/manual/mov/wave_frames/frame_0122.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[43] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[43].src = "../doc/src/manual/mov/wave_frames/frame_0123.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[44] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[44].src = "../doc/src/manual/mov/wave_frames/frame_0124.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[45] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[45].src = "../doc/src/manual/mov/wave_frames/frame_0125.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[46] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[46].src = "../doc/src/manual/mov/wave_frames/frame_0126.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[47] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[47].src = "../doc/src/manual/mov/wave_frames/frame_0127.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[48] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[48].src = "../doc/src/manual/mov/wave_frames/frame_0128.png";
-                
-           t.innerHTML = "Preloading image ";
-           images_frame_0080[49] = new Image(img_width_frame_0080, img_height_frame_0080);
-           images_frame_0080[49].src = "../doc/src/manual/mov/wave_frames/frame_0129.png";
-                
-           t.innerHTML = "";
-        }
-        
-        function tick_frame_0080()
-        {
-           if (frame_frame_0080 > num_images_frame_0080 - 1)
-               frame_frame_0080 = 0;
-        
-           document.name_frame_0080.src = images_frame_0080[frame_frame_0080].src;
-           frame_frame_0080 += 1;
-           tt = setTimeout("tick_frame_0080()", interval_frame_0080);
-        }
-        
-        function startup_frame_0080()
-        {
-           preload_images_frame_0080();
-           frame_frame_0080 = 0;
-           setTimeout("tick_frame_0080()", interval_frame_0080);
-        }
-        
-        function stopit_frame_0080()
-        { clearTimeout(tt); }
-        
-        function restart_frame_0080()
-        { tt = setTimeout("tick_frame_0080()", interval_frame_0080); }
-        
-        function slower_frame_0080()
-        { interval_frame_0080 = interval_frame_0080/0.7; }
-        
-        function faster_frame_0080()
-        { interval_frame_0080 = interval_frame_0080*0.7; }
-        
-        // --->
-        </script>
-        
-        <form>
-        &nbsp;
-        <input type="button" value="Start movie" onClick="startup_frame_0080()">
-        <input type="button" value="Pause movie" onClick="stopit_frame_0080()">
-        <input type="button" value="Restart movie" onClick="restart_frame_0080()">
-        &nbsp;
-        <input type="button" value="Slower" onClick="slower_frame_0080()">
-        <input type="button" value="Faster" onClick="faster_frame_0080()">
-        </form>
-        
-        <p><div ID="progress"></div></p>
-        <img src="../doc/src/manual/mov/wave_frames/frame_0080.png" name="name_frame_0080" border=2/>
-        
-        <br><em>Caption for animated collection of images.</em><br>
-        
-
-
-
-Check out the correct with and height of YouTube movies from the
-embed command that the YouTube page can generate. Similar for Vimeo.
-
-.. raw:: html
-        
-        <iframe width="420" height="315" src="http://www.youtube.com/embed/_O7iUiftbKU" frameborder="0" allowfullscreen></iframe>
-        
-        <em>YouTube movie.</em>
-        
-
-
-
-.. raw:: html
-        
-        <iframe width="500" height="278" src="http://player.vimeo.com/video/55562330" frameborder="0" allowfullscreen></iframe>
-        
-        <em>Vimeo movie.</em>
-        
-
 
 
 
@@ -39008,6 +34957,9 @@ Test URL as figure name:
 
 .. Somewhat challenging heading with latex math, \t, \n, ? and parenthesis
 
+
+**Remark.**
+Movies are tested in separate file ``movies.do.txt``.
 
 .. _decay:sec:theta:
 
@@ -46512,411 +42464,7 @@ exercises (and problems and projects too).
 
 
 ************** File: admon_sphinx.html *****************
-
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>Testing admons</title>
-    
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '1.0',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-        <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
-        <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
-
-        <script>sagecell.makeSagecell({inputLocation: ".sage"});</script>
-
-        <style type="text/css">
-                .sagecell .CodeMirror-scroll {
-                        overflow-y: hidden;
-                        overflow-x: auto;
-                }
-                .sagecell .CodeMirror {
-                        height: auto;
-                }
-        </style>
-
-    
-    <link rel="top" title="Testing admons" href="index.html" />
-    <link rel="prev" title="Testing admons" href="index.html" />
- 
-  
-   <style type=text/css>
-     div.admonition {
-       background-color: whiteSmoke;
-       border: 1px solid #bababa;
-     }
-   </style>
-  </head>
-
-  <body>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="index.html" title="Testing admons"
-             accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Testing admons</a> &raquo;</li> 
-      </ul>
-    </div>  
-
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body">
-            
-  <div class="section" id="testing-admons">
-<h1>Testing admons<a class="headerlink" href="#testing-admons" title="Permalink to this headline">¶</a></h1>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Author:</th><td class="field-body">hpl</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jan 32, 2100</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section" id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
-<p>First some ordinary text to compare font sizes in admonitions
-and the surrounding text.</p>
-<p>Note that <tt class="docutils literal"><span class="pre">automake_sphinx.py</span></tt> fixes the HTML file generated by Sphinx
-so that all styles for admonitions have a colored background.</p>
-<div class="section" id="code">
-<h2>Code<a class="headerlink" href="#code" title="Permalink to this headline">¶</a></h2>
-<p>Need some code outside admons for color and font comparisons:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">some_code</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="n">exp</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">x</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>And some plain text verbatim:</p>
-<div class="highlight-text"><div class="highlight"><pre>x=1.0 y=0.9 z=0.4
-x=1.1 y=0.3 z=0.1
-</pre></div>
-</div>
-</div>
-<div class="section" id="quotes-and-boxes">
-<h2>Quotes and boxes<a class="headerlink" href="#quotes-and-boxes" title="Permalink to this headline">¶</a></h2>
-<p>Here is a plain quote environment.</p>
-<blockquote>
-<div><p>Sayre&#8217;s law states that
-&#8220;in any dispute the intensity of feeling is inversely
-proportional to the value of the issues at stake.&#8221;
-By way of corollary, it adds:
-&#8220;That is why academic politics are so bitter.&#8221;</p>
-<p><em>Source</em>: <a class="reference external" href="http://en.wikipedia.org/wiki/Sayre's_law">wikipedia</a></p>
-</div></blockquote>
-<p>Does quotes with title also work? No...cannot work in LaTeX and HTML
-and then it does not make sense to support it.</p>
-<p>A plain <em>box</em> is sometimes useful. Let&#8217;s show it here for comparison
-with admons (especially the block admon has much in common with a box).
-The box is more aimed at framing a law or an equation.</p>
-<p>First a simple block with text, an equation, and a list:</p>
-.. math::
-         f(x) = 0
-
-must be solved by a numerical method, such as
-
- * Newton's method
-
- * The Bisection method
-
- * Fixed-point (Picard) iteration by rewriting :math:`f(x)=x - g(x)`
-
- * The Secant method
-
-</div>
-<!-- end box --><p>Now test a box with equation only (note that this line continues the
-box, it is not a new paragraph):</p>
-.. math::
-         f(x) = \sin(x)e^{1-x}
-
-</div>
-<!-- end box --><p>Let&#8217;s begin a new paragraph and show a box with code only:</p>
-.. code-block:: python
-
-        def some_code(x):
-            return sin(x)*exp(1-x)
-
-</div>
-<!-- end box --></div>
-<div class="section" id="admonitions">
-<h2>Admonitions<a class="headerlink" href="#admonitions" title="Permalink to this headline">¶</a></h2>
-<p>Let us start with a plain warning environment.</p>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p>And here is a warning about something to pay attention to. We
-test how the heading behave and add quite some extra texts
-in comparison with the other admons.</p>
-<blockquote>
-<div><ul class="simple">
-<li>and a list</li>
-<li>with items</li>
-</ul>
-</div></blockquote>
-<p class="last">We continue with more text to see how that affects the layout.
-And more and more text.
-And more and more text.
-And more and more text.
-And more and more text.
-And more and more text.
-And more and more text.</p>
-</div>
-<p>Test warning with title:</p>
-<div class="admonition-watch-out admonition">
-<p class="first admonition-title">Watch out</p>
-<p class="last">And here comes some text with bad news in larger font.</p>
-</div>
-<p>Test warning with title with math:</p>
-<div class="admonition-watch-out-for-math-nabla-cdot-boldsymbol-u-0-equations admonition">
-<p class="first admonition-title">Watch out for <span class="math">\(\nabla\cdot\boldsymbol{u}=0\)</span> equations</p>
-<p class="last">Divergence freedom is often problematic from a numerical point
-of view.</p>
-</div>
-<p>Then we test a block, which is guaranteed to never have any admon icon.</p>
-<div class="admonition-block-with-title admonition">
-<p class="first admonition-title">Block with title</p>
-<p class="last">Here is a block of text with title. It is typeset
-<em>without any icon</em> and is useful when you want some admons with icon
-and some without. With the small font size, as used here, one can have
-more comment-style text or text that really goes deeper or talks
-about fun facts that are not strictly necessary for the main flow
-of understanding.</p>
-</div>
-<p>Admonitions must have a title in Sphinx, otherwise they are not
-shown. Here, we have not specified any title, and Doconce then
-applies the generic title &#8220;Notice:&#8221;</p>
-<div class="admonition-notice admonition">
-<p class="first admonition-title">Notice</p>
-<p class="last">Here is a block of text with no title. As above, it is typeset without any icon
-and is useful when you want some admons with icon and some without.</p>
-</div>
-<p>The next admonition features a title &#8220;Note, eventually!&#8221;.</p>
-<div class="admonition-note-eventually admonition">
-<p class="first admonition-title">Note, eventually</p>
-<p>Ah, we are soon close to the end (with illegal font size specification!).
-But first a bit of math where we define <span class="math">\(\theta\)</span> and <span class="math">\(\boldsymbol{r}\)</span>:</p>
-<div class="last math">
-\[\begin{split}\theta &amp;= q^2,\\
-\boldsymbol{r} &amp;= \varrho\boldsymbol{i}\end{split}\]</div>
-</div>
-<div class="admonition-point1 admonition">
-<p class="first admonition-title">Point1</p>
-<p class="last">Ah, we are soon close to the end.</p>
-</div>
-<div class="admonition-question admonition">
-<p class="first admonition-title">Question</p>
-<p class="last">So, how many admonition environments does Doconce support?</p>
-</div>
-<div class="admonition-question admonition">
-<p class="first admonition-title">Question</p>
-<ol class="last arabic simple">
-<li>Once more, how many admonition environments does Doconce support?</li>
-</ol>
-</div>
-<div class="admonition-tip admonition">
-<p class="first admonition-title">Tip</p>
-<p>It is of outmost important to</p>
-<ol class="arabic simple">
-<li>stay cool</li>
-<li>read hints and tips carefully</li>
-</ol>
-<p>Because here the thing is to do</p>
-<div class="last highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">urllib</span>
-
-<span class="k">def</span> <span class="nf">grab</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
-    <span class="n">urllib</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="n">filename</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<p>Next is a warning without a title (&#8220;none&#8221; implies no title).
-Admonitions must have a title in Sphinx, otherwise they are not
-shown. Here, we have not specified any title, and Doconce then
-applies the generic title &#8220;Notice:&#8221;</p>
-<div class="admonition-notice admonition">
-<p class="first admonition-title">Notice</p>
-<p class="last">And here comes some text with bad news.</p>
-</div>
-</div>
-<div class="section" id="going-deeper-environments">
-<h2>Going deeper environments<a class="headerlink" href="#going-deeper-environments" title="Permalink to this headline">¶</a></h2>
-<p>Here is a long notice environment with a custom title and much
-text, math and code.</p>
-<div class="admonition-going-deeper admonition">
-<p class="first admonition-title">Going deeper</p>
-<p>We have some equations that should be preceded by much text, so the
-task is to write and write. The number of words, and not the
-meaning, is what counts here. We need desperately to fill up the
-page in the hope that some admonitions will experience a page break,
-which the LaTeX environment should handle with ease.</p>
-<p>Let us start with some equations:</p>
-<div class="math">
-\[\begin{split}\frac{Du}{dt} &amp;= 0
-\\
-\frac{1}{2} &amp;= {1/2}\\
-\frac{1}{2}\pmb{x} &amp;= \pmb{n}\end{split}\]</div>
-<p>The implementation of such complicated equations in computer
-code is task that this &#8220;Going deeper&#8221; environment targets.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">Dudt</span><span class="p">(</span><span class="n">u</span><span class="p">):</span>
-    <span class="n">r</span> <span class="o">=</span> <span class="n">diff</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span> <span class="o">+</span> <span class="n">u</span><span class="o">*</span><span class="n">grad</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">r</span>
-
-<span class="n">half</span> <span class="o">=</span> <span class="mf">0.5</span>
-<span class="n">x</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">n</span>
-</pre></div>
-</div>
-<p>And some more text that can help going into the next page.
-Longer computer code requires vertical space:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Diff</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">1E-5</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">f</span> <span class="o">=</span> <span class="n">f</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">h</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
-
-<span class="k">class</span> <span class="nc">Forward1</span><span class="p">(</span><span class="n">Diff</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-        <span class="n">f</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">h</span>
-        <span class="k">return</span> <span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">h</span><span class="p">)</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="o">/</span><span class="n">h</span>
-
-<span class="k">class</span> <span class="nc">Backward1</span><span class="p">(</span><span class="n">Diff</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-        <span class="n">f</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">h</span>
-        <span class="k">return</span> <span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">h</span><span class="p">))</span><span class="o">/</span><span class="n">h</span>
-
-<span class="k">class</span> <span class="nc">Central2</span><span class="p">(</span><span class="n">Diff</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-        <span class="n">f</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">h</span>
-        <span class="k">return</span> <span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">h</span><span class="p">)</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">h</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">h</span><span class="p">)</span>
-
-<span class="k">class</span> <span class="nc">Central4</span><span class="p">(</span><span class="n">Diff</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-        <span class="n">f</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">h</span>
-        <span class="k">return</span> <span class="p">(</span><span class="mf">4.</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">h</span><span class="p">)</span>   <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">h</span><span class="p">))</span>  <span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">h</span><span class="p">)</span> <span class="o">-</span> \
-               <span class="p">(</span><span class="mf">1.</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">h</span><span class="p">)</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">h</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">h</span><span class="p">)</span>
-
-<span class="k">class</span> <span class="nc">Central6</span><span class="p">(</span><span class="n">Diff</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-        <span class="n">f</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">h</span>
-        <span class="k">return</span> <span class="p">(</span><span class="mf">3.</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">h</span><span class="p">)</span>   <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">h</span><span class="p">))</span>  <span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">h</span><span class="p">)</span> <span class="o">-</span> \
-               <span class="p">(</span><span class="mf">3.</span><span class="o">/</span><span class="mi">5</span><span class="p">)</span> <span class="o">*</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">h</span><span class="p">)</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">h</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">h</span><span class="p">)</span> <span class="o">+</span> \
-               <span class="p">(</span><span class="mf">1.</span><span class="o">/</span><span class="mi">10</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="mi">3</span><span class="o">*</span><span class="n">h</span><span class="p">)</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="mi">3</span><span class="o">*</span><span class="n">h</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">6</span><span class="o">*</span><span class="n">h</span><span class="p">)</span>
-
-<span class="k">class</span> <span class="nc">Forward3</span><span class="p">(</span><span class="n">Diff</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-        <span class="n">f</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">h</span>
-        <span class="k">return</span> <span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="mf">1.</span><span class="o">/</span><span class="mi">6</span><span class="p">)</span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">h</span><span class="p">)</span> <span class="o">+</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">h</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> \
-                <span class="p">(</span><span class="mf">1.</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">h</span><span class="p">))</span><span class="o">/</span><span class="n">h</span>
-</pre></div>
-</div>
-<p>And then we add a figure too.</p>
-<div class="last figure">
-<img alt="_images/wave1D.png" src="_images/wave1D.png" />
-</div>
-</div>
-</div>
-<div class="section" id="the-end">
-<h2>The end<a class="headerlink" href="#the-end" title="Permalink to this headline">¶</a></h2>
-<p>A bit of text before the summary, which we now call &#8220;Concluding remarks,
-for the novice&#8221;,
-just because we can.</p>
-<div class="admonition-concluding-remarks-for-the-novice admonition">
-<p class="first admonition-title">Concluding remarks, for the novice</p>
-<p class="last">We can summarize the most important things with admons: they have
-a different typesetting, and they may have a symbol.
-Titles should be optional.</p>
-</div>
-<p><strong>Remark.</strong>
-The <tt class="docutils literal"><span class="pre">remarks</span></tt> and <tt class="docutils literal"><span class="pre">hint</span></tt> environments are not allowed outside
-exercises (and problems and projects too).</p>
-</div>
-</div>
-
-
-          </div>
-        </div>
-      </div>
-      <div class="sphinxsidebar">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Testing admons</a></li>
-<li><a class="reference internal" href="#introduction">Introduction</a><ul>
-<li><a class="reference internal" href="#code">Code</a></li>
-<li><a class="reference internal" href="#quotes-and-boxes">Quotes and boxes</a></li>
-<li><a class="reference internal" href="#admonitions">Admonitions</a></li>
-<li><a class="reference internal" href="#going-deeper-environments">Going deeper environments</a></li>
-<li><a class="reference internal" href="#the-end">The end</a></li>
-</ul>
-</li>
-</ul>
-
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="index.html"
-                        title="previous chapter">Testing admons</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/admon.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
-  <h3>Quick search</h3>
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" size="18" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
-      </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="index.html" title="Testing admons"
-             >previous</a> |</li>
-        <li><a href="index.html">Testing admons</a> &raquo;</li> 
-      </ul>
-    </div>
-    <div class="footer">
-        &copy; Copyright 2013, hpl.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2pre.
-    </div>
-  </body>
-</html>
+NOT FOUND!
 ************** File: admon_lyx.html *****************
 <!DOCTYPE html>
 <!--
@@ -49632,6 +45180,7 @@ First a simple block with text, an equation, and a list:
 .. The below box could be typeset as .. admonition: Attention
    but we have decided not to do so (the box formatting is just ignored)
 ..
+
 A generic equation
 
 
@@ -49656,6 +45205,7 @@ box, it is not a new paragraph):
    but we have decided not to do so (the box formatting is just ignored)
 ..
 
+
 .. math::
          f(x) = \sin(x)e^{1-x}
 
@@ -49666,6 +45216,7 @@ Let's begin a new paragraph and show a box with code only:
 .. The below box could be typeset as .. admonition: Attention
    but we have decided not to do so (the box formatting is just ignored)
 ..
+
 
 .. code-block:: python
 
@@ -54483,16 +50034,28 @@ open=right               % start new chapters on odd-numbered pages
 \usepackage{ptex2tex}
 
 % #ifndef MOVIE
-% #define MOVIE "media9"
+% #define MOVIE "href"
+% #ifndef MOVIE_CONTROLS
+% #define MOVIE_CONTROLS
+% #endif
+% #endif
+
+\newenvironment{doconce:movie}{}{}
+\newcounter{doconce:movie:counter}
+
+% #if MOVIE == "media9"
+% #ifdef XELATEX
+\usepackage[xetex]{media9}
+% #else
+\usepackage{media9}
+% #endif
+% #elif MOVIE == "multimedia"
+\usepackage{multimedia}
+% #elif MOVIE == "href"
 % #endif
 
 % #if MOVIE == "media9"
-\usepackage{media9}
-% #elif MOVIE == "movie15"
 \usepackage{movie15}
-% #elif MOVIE == "multimedia"
-\usepackage{multimedia}
-% #elif MOVIE == "href-run"
 % #endif
 
 % #ifdef MINTED
@@ -55254,7 +50817,27 @@ MOVIE: [http://www.youtube.com/embed/P8VcZzgdfSc, width=420 height=315]
 \eccq
 and rendered as
 
- \href{{http://www.youtube.com/watch?v=P8VcZzgdfSc}}{\nolinkurl{http://www.youtube.com/watch?v=P8VcZzgdfSc}}
+
+\begin{doconce:movie}
+\refstepcounter{doconce:movie:counter}
+\begin{center}
+% #if MOVIE == "media9"
+\includemedia[
+width=0.6\linewidth,height=0.45\linewidth,
+activate=pageopen,
+flashvars={
+modestbranding=1   % no YouTube logo in control bar
+&autohide=1        % controlbar autohide
+&showinfo=0        % no title and other info before start
+&rel=0             % no related videos after end
+},
+]{}{http://www.youtube.com/embed/P8VcZzgdfSc}
+% #else
+\href{{http://www.youtube.com/embed/P8VcZzgdfSc}}{\nolinkurl{http://www.youtube.com/embed/P8VcZzgdfSc}}
+% #endif
+\end{center}
+\end{doconce:movie}
+
 
 % !split
 \section{Doconce: math}
@@ -56173,7 +51756,13 @@ MOVIE: [http://www.youtube.com/embed/P8VcZzgdfSc, width=420 height=315]
 \end{Verbatim}
 and rendered as
 
- \href{{http://www.youtube.com/watch?v=P8VcZzgdfSc}}{\nolinkurl{http://www.youtube.com/watch?v=P8VcZzgdfSc}}
+
+\begin{doconce:movie}
+\refstepcounter{doconce:movie:counter}
+\begin{center}
+\href{{http://www.youtube.com/embed/P8VcZzgdfSc}}{\nolinkurl{http://www.youtube.com/embed/P8VcZzgdfSc}}
+\end{center}
+\end{doconce:movie}
 \end{frame}
 
 \begin{frame}[plain,fragile]
@@ -58109,6 +53698,2511 @@ def f(x, a=1, b=1, c=1):
 <tr><td align="left">   <code>h(x)</code>                            </td> <td align="left">   Heaviside function.               </td> <td align="left">   Formula ready.                    </td> </tr>
 <tr><td align="left">   <code>I(x)</code>                            </td> <td align="left">   Indicator function.               </td> <td align="left">   Nothing done yet.                 </td> </tr>
 </table>
+
+
+************** File: movies.do.txt *****************
+TITLE: This is a demo of movies in Doconce
+AUTHOR: HPL
+DATE: today
+
+
+Here is a movie in WebM format.
+# #if FORMAT == "html"
+Note that in HTML format a WebM movie
+may actually be the MP4 version of this movie
+three alternative sources (MP4, WebM, OGG)
+are inserted in the HTML code by default. The command-line
+option `--no_mp4_webm_ogg_alternatives` makes the HTML
+code use exactly the specified movie file.
+# #endif
+
+MOVIE: [../doc/src/manual/mov/wave.webm, width=700 height=400] 1D wave in WebM.
+
+Here is the same movie in Ogg format:
+
+MOVIE: [../doc/src/manual/mov/wave.ogg, width=700 height=400] 1D wave in Ogg.
+
+Here is the same movie in MP4 format:
+
+MOVIE: [../doc/src/manual/mov/wave.mp4, width=700 height=400] 1D wave in MP4.
+
+Here is the same movie in Flash format:
+
+MOVIE: [../doc/src/manual/mov/wave.flv, width=700 height=400] 1D wave in Flash.
+
+And here is a collection of images shown as an animation
+(`frame_*.png`):
+
+MOVIE: [../doc/src/manual/mov/wave_frames/frame_*.png, width=700 height=400] Animated collection of images.
+
+Here is the same collection, but with images in cyberspace, given as URLs:
+
+!bc
+http://hplgit.github.io/animate/..../frame_%04d.png:80->129
+!ec
+
+MOVIE: [http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_%04d.png:80->129]
+
+The movie above in MPEG format, typeset in a box:
+
+!bbox
+MOVIE: [../doc/src/manual/mov/wave.mpeg, width=700 height=400] 1D wave in MPEG. label{mov:wave}
+!ebox
+
+Here is the same movie in AVI format:
+
+MOVIE: [../doc/src/manual/mov/wave.avi, width=700 height=400] 1D wave in AVI.
+
+Here is the same movie, but with a URL to GitHub:
+
+MOVIE: [http://hplgit.github.io/animate/doc/pub/mov-animate/demo.ogg]
+
+Here is a YouTube video:
+
+MOVIE: [http://www.youtube.com/watch?v=_O7iUiftbKU, width=420 height=315] YouTube movie.
+
+And a vimeo video:
+
+MOVIE: [http://vimeo.com/55562330, width=500 height=278] Vimeo movie.
+
+
+Finally, let us demonstrate referencing the movie ref{mov:wave}.
+************** File: movies_3hoices.html *****************
+NOT FOUND!
+************** File: movies.html *****************
+<!DOCTYPE html>
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="This is a demo of movies in Doconce">
+
+
+
+<style type="text/css">
+    /* blueish style */
+
+    /* Color definitions:  http://www.december.com/html/spec/color0.html
+       CSS examples:       http://www.w3schools.com/css/css_examples.asp */
+
+    body {
+      margin-top: 1.0em;
+      background-color: #ffffff;
+      font-family: Helvetica, Arial, FreeSans, san-serif;
+      color: #000000;
+    }
+    h1 { font-size: 1.8em; color: #1e36ce; }
+    h2 { font-size: 1.6em; color: #1e36ce; }
+    h3 { font-size: 1.4em; color: #1e36ce; }
+    a { color: #1e36ce; text-decoration:none; }
+    tt { font-family: "Courier New", Courier; }
+    
+    p { text-indent: 0px; }
+    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    p.caption { width: 80%; font-style: normal; text-align: left; }
+    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+
+</style>
+
+</head>
+
+<!-- tocinfo
+{'highest level': 4, 'sections': []}
+end of tocinfo -->
+
+<body>
+
+    
+<!-- ------------------- main content ---------------------- -->
+
+
+<title>This is a demo of movies in Doconce</title>
+
+<center><h1>This is a demo of movies in Doconce</h1></center>  <!-- document title -->
+
+<p>
+<!-- author(s): HPL -->
+
+<center>
+<b>HPL</b> 
+</center>
+
+
+<p>
+<!-- institution(s) -->
+<p>
+<center><h4>Jan 32, 2100</h4></center> <!-- date -->
+<p>
+Here is a movie in WebM format.
+Note that in HTML format a WebM movie
+may actually be the MP4 version of this movie
+three alternative sources (MP4, WebM, OGG)
+are inserted in the HTML code by default. The command-line
+option <code>--no_mp4_webm_ogg_alternatives</code> makes the HTML
+code use exactly the specified movie file.
+
+<p>
+
+<div>
+<video  loop controls width='700' height='400' preload='none'>
+    <source src='../doc/src/manual/mov/wave.mp4'  type='video/mp4;  codecs="avc1.42E01E, mp4a.40.2"'>
+    <source src='../doc/src/manual/mov/wave.webm' type='video/webm; codecs="vp8, vorbis"'>
+    <source src='../doc/src/manual/mov/wave.ogg'  type='video/ogg;  codecs="theora, vorbis"'>
+</video>
+</div>
+<p><em>1D wave in WebM.</em></p>
+
+
+<p>
+Here is the same movie in Ogg format:
+
+<p>
+
+<div>
+<video  loop controls width='700' height='400' preload='none'>
+    <source src='../doc/src/manual/mov/wave.mp4'  type='video/mp4;  codecs="avc1.42E01E, mp4a.40.2"'>
+    <source src='../doc/src/manual/mov/wave.webm' type='video/webm; codecs="vp8, vorbis"'>
+    <source src='../doc/src/manual/mov/wave.ogg'  type='video/ogg;  codecs="theora, vorbis"'>
+</video>
+</div>
+<p><em>1D wave in Ogg.</em></p>
+
+
+<p>
+Here is the same movie in MP4 format:
+
+<p>
+
+<div>
+<video  loop controls width='700' height='400' preload='none'>
+    <source src='../doc/src/manual/mov/wave.mp4'  type='video/mp4;  codecs="avc1.42E01E, mp4a.40.2"'>
+    <source src='../doc/src/manual/mov/wave.webm' type='video/webm; codecs="vp8, vorbis"'>
+    <source src='../doc/src/manual/mov/wave.ogg'  type='video/ogg;  codecs="theora, vorbis"'>
+</video>
+</div>
+<p><em>1D wave in MP4.</em></p>
+
+
+<p>
+Here is the same movie in Flash format:
+
+<p>
+
+<embed src="../doc/src/manual/mov/wave.flv" width=700 height=400 autoplay="false" loop="true"></embed>
+<p><em>1D wave in Flash.</em></p>
+
+
+<p>
+And here is a collection of images shown as an animation
+(<code>frame_*.png</code>):
+
+<p>
+
+<script language="Javascript">
+<!---
+var num_images____doc_src_manual_mov_wave_frames_frame_0080 = 50;
+var img_width____doc_src_manual_mov_wave_frames_frame_0080 = 700;
+var img_height____doc_src_manual_mov_wave_frames_frame_0080 = 400;
+var interval____doc_src_manual_mov_wave_frames_frame_0080 = 300;
+var images____doc_src_manual_mov_wave_frames_frame_0080 = new Array();
+
+function preload_images____doc_src_manual_mov_wave_frames_frame_0080()
+{
+   t = document.getElementById("progress");
+
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[0] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[0].src = "../doc/src/manual/mov/wave_frames/frame_0080.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[1] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[1].src = "../doc/src/manual/mov/wave_frames/frame_0081.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[2] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[2].src = "../doc/src/manual/mov/wave_frames/frame_0082.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[3] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[3].src = "../doc/src/manual/mov/wave_frames/frame_0083.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[4] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[4].src = "../doc/src/manual/mov/wave_frames/frame_0084.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[5] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[5].src = "../doc/src/manual/mov/wave_frames/frame_0085.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[6] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[6].src = "../doc/src/manual/mov/wave_frames/frame_0086.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[7] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[7].src = "../doc/src/manual/mov/wave_frames/frame_0087.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[8] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[8].src = "../doc/src/manual/mov/wave_frames/frame_0088.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[9] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[9].src = "../doc/src/manual/mov/wave_frames/frame_0089.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[10] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[10].src = "../doc/src/manual/mov/wave_frames/frame_0090.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[11] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[11].src = "../doc/src/manual/mov/wave_frames/frame_0091.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[12] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[12].src = "../doc/src/manual/mov/wave_frames/frame_0092.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[13] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[13].src = "../doc/src/manual/mov/wave_frames/frame_0093.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[14] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[14].src = "../doc/src/manual/mov/wave_frames/frame_0094.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[15] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[15].src = "../doc/src/manual/mov/wave_frames/frame_0095.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[16] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[16].src = "../doc/src/manual/mov/wave_frames/frame_0096.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[17] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[17].src = "../doc/src/manual/mov/wave_frames/frame_0097.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[18] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[18].src = "../doc/src/manual/mov/wave_frames/frame_0098.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[19] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[19].src = "../doc/src/manual/mov/wave_frames/frame_0099.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[20] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[20].src = "../doc/src/manual/mov/wave_frames/frame_0100.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[21] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[21].src = "../doc/src/manual/mov/wave_frames/frame_0101.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[22] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[22].src = "../doc/src/manual/mov/wave_frames/frame_0102.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[23] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[23].src = "../doc/src/manual/mov/wave_frames/frame_0103.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[24] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[24].src = "../doc/src/manual/mov/wave_frames/frame_0104.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[25] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[25].src = "../doc/src/manual/mov/wave_frames/frame_0105.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[26] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[26].src = "../doc/src/manual/mov/wave_frames/frame_0106.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[27] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[27].src = "../doc/src/manual/mov/wave_frames/frame_0107.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[28] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[28].src = "../doc/src/manual/mov/wave_frames/frame_0108.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[29] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[29].src = "../doc/src/manual/mov/wave_frames/frame_0109.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[30] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[30].src = "../doc/src/manual/mov/wave_frames/frame_0110.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[31] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[31].src = "../doc/src/manual/mov/wave_frames/frame_0111.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[32] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[32].src = "../doc/src/manual/mov/wave_frames/frame_0112.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[33] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[33].src = "../doc/src/manual/mov/wave_frames/frame_0113.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[34] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[34].src = "../doc/src/manual/mov/wave_frames/frame_0114.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[35] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[35].src = "../doc/src/manual/mov/wave_frames/frame_0115.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[36] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[36].src = "../doc/src/manual/mov/wave_frames/frame_0116.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[37] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[37].src = "../doc/src/manual/mov/wave_frames/frame_0117.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[38] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[38].src = "../doc/src/manual/mov/wave_frames/frame_0118.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[39] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[39].src = "../doc/src/manual/mov/wave_frames/frame_0119.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[40] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[40].src = "../doc/src/manual/mov/wave_frames/frame_0120.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[41] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[41].src = "../doc/src/manual/mov/wave_frames/frame_0121.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[42] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[42].src = "../doc/src/manual/mov/wave_frames/frame_0122.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[43] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[43].src = "../doc/src/manual/mov/wave_frames/frame_0123.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[44] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[44].src = "../doc/src/manual/mov/wave_frames/frame_0124.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[45] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[45].src = "../doc/src/manual/mov/wave_frames/frame_0125.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[46] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[46].src = "../doc/src/manual/mov/wave_frames/frame_0126.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[47] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[47].src = "../doc/src/manual/mov/wave_frames/frame_0127.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[48] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[48].src = "../doc/src/manual/mov/wave_frames/frame_0128.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[49] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[49].src = "../doc/src/manual/mov/wave_frames/frame_0129.png";
+        
+   t.innerHTML = "";
+}
+
+function tick____doc_src_manual_mov_wave_frames_frame_0080()
+{
+   if (frame____doc_src_manual_mov_wave_frames_frame_0080 > num_images____doc_src_manual_mov_wave_frames_frame_0080 - 1)
+       frame____doc_src_manual_mov_wave_frames_frame_0080 = 0;
+
+   document.name____doc_src_manual_mov_wave_frames_frame_0080.src = images____doc_src_manual_mov_wave_frames_frame_0080[frame____doc_src_manual_mov_wave_frames_frame_0080].src;
+   frame____doc_src_manual_mov_wave_frames_frame_0080 += 1;
+   tt = setTimeout("tick____doc_src_manual_mov_wave_frames_frame_0080()", interval____doc_src_manual_mov_wave_frames_frame_0080);
+}
+
+function startup____doc_src_manual_mov_wave_frames_frame_0080()
+{
+   preload_images____doc_src_manual_mov_wave_frames_frame_0080();
+   frame____doc_src_manual_mov_wave_frames_frame_0080 = 0;
+   setTimeout("tick____doc_src_manual_mov_wave_frames_frame_0080()", interval____doc_src_manual_mov_wave_frames_frame_0080);
+}
+
+function stopit____doc_src_manual_mov_wave_frames_frame_0080()
+{ clearTimeout(tt); }
+
+function restart____doc_src_manual_mov_wave_frames_frame_0080()
+{ tt = setTimeout("tick____doc_src_manual_mov_wave_frames_frame_0080()", interval____doc_src_manual_mov_wave_frames_frame_0080); }
+
+function slower____doc_src_manual_mov_wave_frames_frame_0080()
+{ interval____doc_src_manual_mov_wave_frames_frame_0080 = interval____doc_src_manual_mov_wave_frames_frame_0080/0.7; }
+
+function faster____doc_src_manual_mov_wave_frames_frame_0080()
+{ interval____doc_src_manual_mov_wave_frames_frame_0080 = interval____doc_src_manual_mov_wave_frames_frame_0080*0.7; }
+
+// --->
+</script>
+
+<form>
+&nbsp;
+<input type="button" value="Start movie" onClick="startup____doc_src_manual_mov_wave_frames_frame_0080()">
+<input type="button" value="Pause movie" onClick="stopit____doc_src_manual_mov_wave_frames_frame_0080()">
+<input type="button" value="Restart movie" onClick="restart____doc_src_manual_mov_wave_frames_frame_0080()">
+&nbsp;
+<input type="button" value="Slower" onClick="slower____doc_src_manual_mov_wave_frames_frame_0080()">
+<input type="button" value="Faster" onClick="faster____doc_src_manual_mov_wave_frames_frame_0080()">
+</form>
+
+<p><div ID="progress"></div></p>
+<img src="../doc/src/manual/mov/wave_frames/frame_0080.png" name="name____doc_src_manual_mov_wave_frames_frame_0080" border=2/>
+
+<br><em>Animated collection of images.</em><br>
+
+
+
+<p>
+Here is the same collection, but with images in cyberspace, given as URLs:
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">http://hplgit.github.io/animate/..../frame_%04d.png:80-&gt;129
+</pre></div>
+<p>
+
+<script language="Javascript">
+<!---
+var num_images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080 = 50;
+var img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080 = 800;
+var img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080 = 600;
+var interval_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080 = 300;
+var images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080 = new Array();
+
+function preload_images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080()
+{
+   t = document.getElementById("progress");
+
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[0] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[0].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0080.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[1] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[1].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0081.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[2] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[2].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0082.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[3] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[3].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0083.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[4] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[4].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0084.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[5] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[5].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0085.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[6] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[6].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0086.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[7] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[7].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0087.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[8] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[8].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0088.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[9] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[9].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0089.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[10] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[10].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0090.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[11] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[11].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0091.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[12] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[12].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0092.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[13] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[13].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0093.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[14] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[14].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0094.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[15] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[15].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0095.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[16] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[16].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0096.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[17] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[17].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0097.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[18] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[18].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0098.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[19] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[19].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0099.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[20] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[20].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0100.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[21] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[21].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0101.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[22] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[22].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0102.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[23] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[23].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0103.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[24] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[24].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0104.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[25] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[25].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0105.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[26] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[26].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0106.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[27] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[27].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0107.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[28] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[28].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0108.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[29] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[29].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0109.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[30] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[30].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0110.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[31] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[31].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0111.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[32] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[32].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0112.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[33] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[33].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0113.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[34] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[34].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0114.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[35] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[35].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0115.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[36] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[36].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0116.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[37] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[37].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0117.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[38] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[38].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0118.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[39] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[39].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0119.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[40] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[40].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0120.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[41] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[41].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0121.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[42] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[42].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0122.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[43] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[43].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0123.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[44] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[44].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0124.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[45] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[45].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0125.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[46] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[46].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0126.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[47] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[47].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0127.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[48] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[48].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0128.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[49] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[49].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0129.png";
+        
+   t.innerHTML = "";
+}
+
+function tick_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080()
+{
+   if (frame_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080 > num_images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080 - 1)
+       frame_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080 = 0;
+
+   document.name_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080.src = images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[frame_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080].src;
+   frame_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080 += 1;
+   tt = setTimeout("tick_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080()", interval_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+}
+
+function startup_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080()
+{
+   preload_images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080();
+   frame_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080 = 0;
+   setTimeout("tick_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080()", interval_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+}
+
+function stopit_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080()
+{ clearTimeout(tt); }
+
+function restart_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080()
+{ tt = setTimeout("tick_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080()", interval_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080); }
+
+function slower_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080()
+{ interval_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080 = interval_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080/0.7; }
+
+function faster_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080()
+{ interval_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080 = interval_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080*0.7; }
+
+// --->
+</script>
+
+<form>
+&nbsp;
+<input type="button" value="Start movie" onClick="startup_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080()">
+<input type="button" value="Pause movie" onClick="stopit_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080()">
+<input type="button" value="Restart movie" onClick="restart_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080()">
+&nbsp;
+<input type="button" value="Slower" onClick="slower_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080()">
+<input type="button" value="Faster" onClick="faster_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080()">
+</form>
+
+<p><div ID="progress"></div></p>
+<img src="http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0080.png" name="name_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080" border=2/>
+
+
+<p>
+The movie above in MPEG format, typeset in a box:
+
+<p>
+
+<!-- begin box -->
+<div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px;">
+
+<embed src="../doc/src/manual/mov/wave.mpeg" width=700 height=400 autoplay="false" loop="true"></embed>
+<p><em>1D wave in MPEG. <a name="mov:wave"></a></em></p>
+</div>
+<!-- end box -->
+
+
+<p>
+Here is the same movie in AVI format:
+
+<p>
+
+<embed src="../doc/src/manual/mov/wave.avi" width=700 height=400 autoplay="false" loop="true"></embed>
+<p><em>1D wave in AVI.</em></p>
+
+
+<p>
+Here is the same movie, but with a URL to GitHub:
+
+<p>
+
+<div>
+<video  loop controls width='640' height='365' preload='none'>
+    <source src='http://hplgit.github.io/animate/doc/pub/mov-animate/demo.mp4'  type='video/mp4;  codecs="avc1.42E01E, mp4a.40.2"'>
+    <source src='http://hplgit.github.io/animate/doc/pub/mov-animate/demo.webm' type='video/webm; codecs="vp8, vorbis"'>
+    <source src='http://hplgit.github.io/animate/doc/pub/mov-animate/demo.ogg'  type='video/ogg;  codecs="theora, vorbis"'>
+</video>
+</div>
+<p><em></em></p>
+
+
+<p>
+Here is a YouTube video:
+
+<p>
+
+<iframe width="420" height="315" src="http://www.youtube.com/embed/_O7iUiftbKU" frameborder="0" allowfullscreen></iframe>
+
+<em>YouTube movie.</em>
+
+
+
+<p>
+And a vimeo video:
+
+<p>
+
+<iframe width="500" height="278" src="http://player.vimeo.com/video/55562330" frameborder="0" allowfullscreen></iframe>
+
+<em>Vimeo movie.</em>
+
+
+
+<p>
+Finally, let us demonstrate referencing the movie <a href="#mov:wave">mov:wave</a>.
+
+<!-- ------------------- end of main content --------------- -->
+
+
+</body>
+</html>
+    
+
+
+************** File: movies.p.tex *****************
+%%
+%% Automatically generated file from Doconce source
+%% (https://github.com/hplgit/doconce/)
+%%
+% #ifdef PTEX2TEX_EXPLANATION
+%%
+%% The file follows the ptex2tex extended LaTeX format, see
+%% ptex2tex: http://code.google.com/p/ptex2tex/
+%%
+%% Run
+%%      ptex2tex myfile
+%% or
+%%      doconce ptex2tex myfile
+%%
+%% to turn myfile.p.tex into an ordinary LaTeX file myfile.tex.
+%% (The ptex2tex program: http://code.google.com/p/ptex2tex)
+%% Many preprocess options can be added to ptex2tex or doconce ptex2tex
+%%
+%%      ptex2tex -DMINTED -DPALATINO -DA6PAPER -DLATEX_HEADING=traditional myfile
+%%      doconce ptex2tex myfile -DMINTED -DLATEX_HEADING=titlepage
+%%
+%% ptex2tex will typeset code environments according to a global or local
+%% .ptex2tex.cfg configure file. doconce ptex2tex will typeset code
+%% according to options on the command line (just type doconce ptex2tex to
+%% see examples).
+% #endif
+
+% #ifndef LATEX_STYLE
+% #define LATEX_STYLE "std"
+% #endif
+
+% #ifndef LATEX_HEADING
+% #define LATEX_HEADING "doconce_heading"
+% #endif
+
+% #ifndef PREAMBLE
+% #if LATEX_HEADING == "Springer_collection"
+% #undef PREAMBLE
+% #else
+% #define PREAMBLE
+% #endif
+% #endif
+
+
+% #ifdef PREAMBLE
+%-------------------- begin preamble ----------------------
+% #if LATEX_STYLE == "std"
+
+\documentclass[%
+twoside,                 % oneside: electronic viewing, twoside: printing
+% #ifdef DOUBLE_SPACING
+draft,                   % or final
+% #else
+final,                   % or draft (marks overfull hboxes)
+% #endif
+10pt]{article}
+
+% #elif LATEX_STYLE == "Springer_lncse"
+% Style: Lecture Notes in Computational Science and Engineering (Springer)
+\documentclass[envcountsect,open=right]{lncse}
+\pagestyle{headings}
+% #elif LATEX_STYLE == "Springer_T2"
+% Style: T2 (Springer)
+\documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmono}
+\usepackage{t2}
+% #elif LATEX_STYLE == "Springer_llcse"
+% Style: Lecture Notes in Computer Science (Springer)
+\documentclass[oribib]{llncs}
+% #elif LATEX_STYLE == "Koma_Script"
+% Style: Koma-Script
+\documentclass[10pt]{scrartcl}
+% #elif LATEX_STYLE == "siamltex"
+% Style: SIAM LaTeX2e
+\documentclass[leqno]{siamltex}
+% #elif LATEX_STYLE == "siamltexmm"
+% Style: SIAM LaTeX2e multimedia
+\documentclass[leqno]{siamltexmm}
+% #endif
+
+\listfiles               % print all files needed to compile this document
+
+% #ifdef A4PAPER
+\usepackage[a4paper]{geometry}
+% #endif
+% #ifdef A6PAPER
+% a6paper is suitable for mobile devices
+\usepackage[%
+  a6paper,
+  text={90mm,130mm},
+  inner={5mm},           % inner margin (two sided documents)
+  top=5mm,
+  headsep=4mm
+  ]{geometry}
+% #endif
+
+\usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
+\usepackage[table]{xcolor}
+\usepackage{bm,microtype}
+
+\usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
+\setlength{\fboxsep}{8pt}
+
+\usepackage{ptex2tex}
+
+% #ifndef MOVIE
+% #define MOVIE "href"
+% #ifndef MOVIE_CONTROLS
+% #define MOVIE_CONTROLS
+% #endif
+% #endif
+
+\newenvironment{doconce:movie}{}{}
+\newcounter{doconce:movie:counter}
+
+% #if MOVIE == "media9"
+% #ifdef XELATEX
+\usepackage[xetex]{media9}
+% #else
+\usepackage{media9}
+% #endif
+% #elif MOVIE == "multimedia"
+\usepackage{multimedia}
+% #elif MOVIE == "href"
+% #endif
+
+% #if MOVIE == "media9"
+\usepackage{movie15}
+% #endif
+
+% #ifdef XELATEX
+\usepackage[xetex]{animate}
+\usepackage{graphicx}
+% #else
+\usepackage{animate,graphicx}
+% #endif
+
+% #ifdef MINTED
+\usepackage{minted}
+\usemintedstyle{default}
+% #endif
+
+% #ifdef XELATEX
+% xelatex settings
+\usepackage{fontspec}
+\usepackage{xunicode}
+\defaultfontfeatures{Mapping=tex-text} % To support LaTeX quoting style
+\defaultfontfeatures{Ligatures=TeX}
+\setromanfont{Kinnari}
+% Examples of font types (Ubuntu): Gentium Book Basic (Palatino-like),
+% Liberation Sans (Helvetica-like), Norasi, Purisa (handwriting), UnDoum
+% #else
+%\usepackage[latin1]{inputenc}
+\usepackage[utf8]{inputenc}
+% #ifdef HELVETICA
+% Set helvetica as the default font family:
+\RequirePackage{helvet}
+\renewcommand\familydefault{phv}
+% #endif
+% #ifdef PALATINO
+% Set palatino as the default font family:
+\usepackage[sc]{mathpazo}    % Palatino fonts
+\linespread{1.05}            % Palatino needs extra line spread to look nice
+% #endif
+% #endif
+
+% Hyperlinks in PDF:
+\definecolor{linkcolor}{rgb}{0,0,0.4}
+\usepackage[%
+    colorlinks=true,
+    linkcolor=linkcolor,
+    urlcolor=linkcolor,
+    citecolor=black,
+    filecolor=black,
+    %filecolor=blue,
+    pdfmenubar=true,
+    pdftoolbar=true,
+    bookmarksdepth=3   % Uncomment (and tweak) for PDF bookmarks with more levels than the TOC
+            ]{hyperref}
+%\hyperbaseurl{}   % hyperlinks are relative to this root
+
+\setcounter{tocdepth}{2}  % number chapter, section, subsection
+
+% --- end of definitions of admonition environments ---
+
+% prevent orhpans and widows
+\clubpenalty = 10000
+\widowpenalty = 10000
+
+% #ifndef SECTION_HEADINGS
+% #define SECTION_HEADINGS "std"
+% #else
+% http://www.ctex.org/documents/packages/layout/titlesec.pdf
+\usepackage[compact]{titlesec}  % reduce the spacing above/below the heading
+% #endif
+% #if SECTION_HEADINGS == "blue"
+% --- section/subsection headings with blue color ---
+\definecolor{seccolor}{cmyk}{.9,.5,0,.35}  % siamltexmm.sty section color
+\titleformat{name=\section}
+{\color{seccolor}\normalfont\Large\bfseries}
+{\color{seccolor}\thesection}{1em}{}
+\titleformat{name=\subsection}
+{\color{seccolor}\normalfont\large\bfseries}
+{\color{seccolor}\thesubsection}{1em}{}
+\titleformat{name=\paragraph}[runin]
+{\color{seccolor}\normalfont\normalsize\bfseries}
+{}{}{\indent}
+% #ifdef FANCY_HEADER
+% let the header have a thick gray hrule with section and page in blue above
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{{\color{gray!50}%
+\hrule width\headwidth height\headrulewidth \vskip-\headrulewidth}}
+\fancyhead[LE,RO]{{\color{seccolor}\rightmark}} %section
+\fancyhead[RE,LO]{{\color{seccolor}\thepage}}
+% #endif
+% #elif SECTION_HEADINGS == "strongblue"
+% --- section/subsection headings with a strong blue color ---
+\definecolor{seccolor}{rgb}{0.2,0.2,0.8}
+\titleformat{name=\section}
+{\color{seccolor}\normalfont\Large\bfseries}
+{\color{seccolor}\thesection}{1em}{}
+\titleformat{name=\subsection}
+{\color{seccolor}\normalfont\large\bfseries}
+{\color{seccolor}\thesubsection}{1em}{}
+\titleformat{name=\paragraph}[runin]
+{\color{seccolor}\normalfont\normalsize\bfseries}
+{}{}{\indent}
+% #elif SECTION_HEADINGS == "gray"
+% --- section/subsection headings with white text on gray background ---
+\titleformat{name=\section}[block]
+  {\sffamily\Large}{}{0pt}{\colorsection}
+\titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip}
+
+\newcommand{\colorsection}[1]{%
+  \colorbox{gray!50}{{\color{white}\thesection\ #1}}}
+
+\titleformat{name=\subsection}[block]
+  {\sffamily\large}{}{0pt}{\colorsubsection}
+\titlespacing*{\subsection}{0pt}{\baselineskip}{\baselineskip}
+
+\newcommand{\colorsubsection}[1]{%
+  \colorbox{gray!50}{{\color{white}\thesubsection\ #1}}}
+% #elif SECTION_HEADINGS == "gray-wide"
+% --- section/subsection headings with white text on wide gray background ---
+\titleformat{name=\section}[block]
+  {\sffamily\Large}{}{0pt}{\colorsection}
+\titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip}
+
+\newcommand{\colorsection}[1]{%
+  \colorbox{gray!50}{\parbox{\dimexpr\textwidth-2\fboxsep}%
+           {\color{white}\thesection\ #1}}}
+
+\titleformat{name=\subsection}[block]
+  {\sffamily\large}{}{0pt}{\colorsubsection}
+\titlespacing*{\subsection}{0pt}{\baselineskip}{\baselineskip}
+
+\newcommand{\colorsubsection}[1]{%
+  \colorbox{gray!50}{\parbox{\dimexpr\textwidth-2\fboxsep}%
+           {\color{white}\thesubsection\ #1}}}
+% #endif
+
+% #ifdef COLORED_TABLE_ROWS
+% color every two table rows
+\let\oldtabular\tabular
+\let\endoldtabular\endtabular
+% #if COLORED_TABLE_ROWS not in ("gray", "blue")
+% #define COLORED_TABLE_ROWS gray
+% #endif
+% #else
+% #define COLORED_TABLE_ROWS no
+% #endif
+% #if COLORED_TABLE_ROWS == "gray"
+\definecolor{rowgray}{gray}{0.9}
+\renewenvironment{tabular}{\rowcolors{2}{white}{rowgray}%
+\oldtabular}{\endoldtabular}
+% #elif COLORED_TABLE_ROWS == "blue"
+\definecolor{appleblue}{rgb}{0.93,0.95,1.0}  % Apple blue
+\renewenvironment{tabular}{\rowcolors{2}{white}{appleblue}%
+\oldtabular}{\endoldtabular}
+% #endif
+
+% --- end of standard preamble for documents ---
+
+
+% insert custom LaTeX commands...
+
+\makeindex
+
+%-------------------- end preamble ----------------------
+
+\begin{document}
+
+% #endif
+
+\input{newcommands_bfmath}
+\input{newcommands_replace}
+
+% ------------------- main content ----------------------
+
+
+
+% ----------------- title -------------------------
+
+% #if LATEX_HEADING == "traditional"
+
+% #if SECTION_HEADINGS in ("blue", "strongblue")
+\title{{\color{seccolor} This is a demo of movies in Doconce}}
+% #else
+\title{This is a demo of movies in Doconce}
+% #endif
+
+% #elif LATEX_HEADING == "titlepage"
+
+\thispagestyle{empty}
+\hbox{\ \ }
+\vfill
+\begin{center}
+{\huge{\bfseries{
+\begin{spacing}{1.25}
+% #if SECTION_HEADINGS in ("blue", "strongblue")
+{\color{seccolor}\rule{\linewidth}{0.5mm}} \\[0.4cm]
+{\color{seccolor}This is a demo of movies in Doconce}
+\\[0.4cm] {\color{seccolor}\rule{\linewidth}{0.5mm}} \\[1.5cm]
+% #else
+{\rule{\linewidth}{0.5mm}} \\[0.4cm]
+{This is a demo of movies in Doconce}
+\\[0.4cm] {\rule{\linewidth}{0.5mm}} \\[1.5cm]
+% #endif
+\end{spacing}
+}}}
+
+% #elif LATEX_HEADING == "Springer_collection"
+\title*{This is a demo of movies in Doconce}
+% Short version of title:
+\titlerunning{This is a demo of movies in Doconce}
+
+% #elif LATEX_HEADING == "beamer"
+\title{This is a demo of movies in Doconce}
+% #else
+\thispagestyle{empty}
+
+\begin{center}
+{\LARGE\bf
+\begin{spacing}{1.25}
+This is a demo of movies in Doconce
+\end{spacing}
+}
+\end{center}
+% #endif
+
+% ----------------- author(s) -------------------------
+% #if LATEX_HEADING == "traditional"
+\author{HPL}
+
+% #elif LATEX_HEADING == "titlepage"
+\vspace{1.3cm}
+
+    {\Large\textsf{HPL${}^{}$}}\\ [3mm]
+    
+\ \\ [2mm]
+
+% #elif LATEX_HEADING == "Springer_collection"
+
+\author{HPL}
+% Short version of authors:
+%\authorrunning{...}
+\institute{HPL}
+
+% #elif LATEX_HEADING == "beamer"
+\author{HPL\inst{}}
+\institute{}
+% #else
+
+\begin{center}
+{\bf HPL${}^{}$} \\ [0mm]
+\end{center}
+
+\begin{center}
+% List of all institutions:
+\end{center}
+% #endif
+% ----------------- end author(s) -------------------------
+
+
+% #if LATEX_HEADING == "traditional"
+\date{Jan 32, 2100}
+\maketitle
+% #elif LATEX_HEADING == "beamer"
+\date{Jan 32, 2100
+% <titlepage figure>
+}
+% #elif LATEX_HEADING == "titlepage"
+
+\ \\ [10mm]
+{\large\textsf{Jan 32, 2100}}
+
+\end{center}
+\vfill
+\clearpage
+
+% #else
+\begin{center}
+Jan 32, 2100
+\end{center}
+
+\vspace{1cm}
+
+% #endif
+
+
+Here is a movie in WebM format.
+
+
+\begin{doconce:movie}
+\refstepcounter{doconce:movie:counter}
+\begin{center}
+% #if MOVIE == "media9"
+\href{run:../doc/src/manual/mov/wave.webm}{\nolinkurl{../doc/src/manual/mov/wave.webm}}
+
+% #elif MOVIE == "multimedia"
+% Beamer-style \movie command
+\movie[
+showcontrols,
+label=../doc/src/manual/mov/wave.webm,
+width=0.9\linewidth,
+autostart]{\nolinkurl{../doc/src/manual/mov/wave.webm}}{../doc/src/manual/mov/wave.webm}
+% #else
+\href{run:../doc/src/manual/mov/wave.webm}{\nolinkurl{../doc/src/manual/mov/wave.webm}}
+% #endif
+\end{center}
+
+\begin{center}  % movie caption
+Movie \arabic{doconce:movie:counter}: 1D wave in WebM.
+\end{center}
+\end{doconce:movie}
+
+
+Here is the same movie in Ogg format:
+
+
+\begin{doconce:movie}
+\refstepcounter{doconce:movie:counter}
+\begin{center}
+% #if MOVIE == "media9"
+\href{run:../doc/src/manual/mov/wave.ogg}{\nolinkurl{../doc/src/manual/mov/wave.ogg}}
+
+% #elif MOVIE == "multimedia"
+% Beamer-style \movie command
+\movie[
+showcontrols,
+label=../doc/src/manual/mov/wave.ogg,
+width=0.9\linewidth,
+autostart]{\nolinkurl{../doc/src/manual/mov/wave.ogg}}{../doc/src/manual/mov/wave.ogg}
+% #else
+\href{run:../doc/src/manual/mov/wave.ogg}{\nolinkurl{../doc/src/manual/mov/wave.ogg}}
+% #endif
+\end{center}
+
+\begin{center}  % movie caption
+Movie \arabic{doconce:movie:counter}: 1D wave in Ogg.
+\end{center}
+\end{doconce:movie}
+
+
+Here is the same movie in MP4 format:
+
+
+\begin{doconce:movie}
+\refstepcounter{doconce:movie:counter}
+\begin{center}
+% #if MOVIE == "media9"
+\includemedia[
+label=docsrcmanualmovwavemp4,
+width=0.8\linewidth,
+activate=pageopen,         % or onclick or pagevisible
+addresource=../doc/src/manual/mov/wave.mp4,  % embed the video in the PDF
+flashvars={
+source=../doc/src/manual/mov/wave.mp4
+&autoPlay=true
+&loop=true
+&scaleMode=letterbox       % preserve aspect ratio while scaling this video
+}]{}{VPlayer.swf}
+
+% #ifdef MOVIE_CONTROLS
+%\mediabutton[mediacommand=docsrcmanualmovwavemp4:playPause]{\fbox{\strut Play/Pause}}
+% #endif
+% #elif MOVIE == "multimedia"
+% Beamer-style \movie command
+\movie[
+showcontrols,
+label=../doc/src/manual/mov/wave.mp4,
+width=0.9\linewidth,
+autostart]{\nolinkurl{../doc/src/manual/mov/wave.mp4}}{../doc/src/manual/mov/wave.mp4}
+% #else
+\href{run:../doc/src/manual/mov/wave.mp4}{\nolinkurl{../doc/src/manual/mov/wave.mp4}}
+% #endif
+\end{center}
+
+\begin{center}  % movie caption
+Movie \arabic{doconce:movie:counter}: 1D wave in MP4.
+\end{center}
+\end{doconce:movie}
+
+
+Here is the same movie in Flash format:
+
+
+\begin{doconce:movie}
+\refstepcounter{doconce:movie:counter}
+\begin{center}
+% #if MOVIE == "media9"
+\includemedia[
+label=docsrcmanualmovwaveflv,
+width=0.8\linewidth,
+activate=pageopen,         % or onclick or pagevisible
+addresource=../doc/src/manual/mov/wave.flv,  % embed the video in the PDF
+flashvars={
+source=../doc/src/manual/mov/wave.flv
+&autoPlay=true
+&loop=true
+&scaleMode=letterbox       % preserve aspect ratio while scaling this video
+}]{}{VPlayer.swf}
+
+% #ifdef MOVIE_CONTROLS
+%\mediabutton[mediacommand=docsrcmanualmovwaveflv:playPause]{\fbox{\strut Play/Pause}}
+% #endif
+% #elif MOVIE == "multimedia"
+% Beamer-style \movie command
+\movie[
+showcontrols,
+label=../doc/src/manual/mov/wave.flv,
+width=0.9\linewidth,
+autostart]{\nolinkurl{../doc/src/manual/mov/wave.flv}}{../doc/src/manual/mov/wave.flv}
+% #else
+\href{run:../doc/src/manual/mov/wave.flv}{\nolinkurl{../doc/src/manual/mov/wave.flv}}
+% #endif
+\end{center}
+
+\begin{center}  % movie caption
+Movie \arabic{doconce:movie:counter}: 1D wave in Flash.
+\end{center}
+\end{doconce:movie}
+
+
+And here is a collection of images shown as an animation
+(\code{frame_*.png}):
+
+
+\begin{doconce:movie}
+\refstepcounter{doconce:movie:counter}
+\begin{center}
+\begin{animateinline}[controls,loop]{1}
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0080.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0081.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0082.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0083.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0084.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0085.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0086.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0087.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0088.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0089.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0090.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0091.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0092.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0093.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0094.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0095.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0096.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0097.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0098.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0099.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0100.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0101.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0102.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0103.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0104.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0105.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0106.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0107.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0108.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0109.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0110.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0111.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0112.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0113.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0114.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0115.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0116.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0117.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0118.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0119.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0120.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0121.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0122.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0123.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0124.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0125.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0126.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0127.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0128.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0129.png}
+\end{animateinline}
+\end{center}
+
+\begin{center}  % movie caption
+Movie \arabic{doconce:movie:counter}: Animated collection of images.
+\end{center}
+\end{doconce:movie}
+
+
+Here is the same collection, but with images in cyberspace, given as URLs:
+
+\bccq
+http://hplgit.github.io/animate/..../frame_%04d.png:80->129
+\eccq
+
+
+\begin{doconce:movie}
+\refstepcounter{doconce:movie:counter}
+\begin{center}
+ (Movie of files \code{http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_%04d.png:80->129} in \href{{file:///home/hpl/vc/doconce/test/movie_player1.html}}{\nolinkurl{file:///home/hpl/vc/doconce/test/movie_player1.html}})
+\end{center}
+\end{doconce:movie}
+
+
+The movie above in MPEG format, typeset in a box:
+
+
+\begin{center}
+\begin{Sbox}
+\begin{minipage}{0.85\textwidth}
+
+\begin{doconce:movie}
+\refstepcounter{doconce:movie:counter}
+\begin{center}
+% #if MOVIE == "media9"
+\includemovie[poster,
+label=docsrcmanualmovwavempeg,
+autoplay,
+%controls,
+%toolbar,
+% #ifdef EXTERNAL_MOVIE_VIEWER
+externalviewer,
+% #endif
+text={\small (Loading ../doc/src/manual/mov/wave.mpeg)},
+repeat,
+]{0.9\linewidth}{0.9\linewidth}{../doc/src/manual/mov/wave.mpeg}
+% #ifndef EXTERNAL_MOVIE_VIEWER
+\movieref[rate=0.5]{docsrcmanualmovwavempeg}{Slower}
+\movieref[rate=2]{docsrcmanualmovwavempeg}{Faster}
+\movieref[default]{../doc/src/manual/mov/wave.mpeg}{Normal}
+\movieref[pause]{docsrcmanualmovwavempeg}{Play/Pause}
+\movieref[stop]{docsrcmanualmovwavempeg}{Stop}
+% #endif
+% #elif MOVIE == "multimedia"
+% Beamer-style \movie command
+\movie[
+showcontrols,
+label=../doc/src/manual/mov/wave.mpeg,
+width=0.9\linewidth,
+autostart]{\nolinkurl{../doc/src/manual/mov/wave.mpeg}}{../doc/src/manual/mov/wave.mpeg}
+% #else
+\href{run:../doc/src/manual/mov/wave.mpeg}{\nolinkurl{../doc/src/manual/mov/wave.mpeg}}
+% #endif
+\end{center}
+
+\begin{center}  % movie caption
+Movie \arabic{doconce:movie:counter}: 1D wave in MPEG. \label{mov:wave}
+\end{center}
+\end{doconce:movie}
+\end{minipage}
+\end{Sbox}
+\fbox{\TheSbox}
+\end{center}
+
+Here is the same movie in AVI format:
+
+
+\begin{doconce:movie}
+\refstepcounter{doconce:movie:counter}
+\begin{center}
+% #if MOVIE == "media9"
+\includemovie[poster,
+label=docsrcmanualmovwaveavi,
+autoplay,
+%controls,
+%toolbar,
+% #ifdef EXTERNAL_MOVIE_VIEWER
+externalviewer,
+% #endif
+text={\small (Loading ../doc/src/manual/mov/wave.avi)},
+repeat,
+]{0.9\linewidth}{0.9\linewidth}{../doc/src/manual/mov/wave.avi}
+% #ifndef EXTERNAL_MOVIE_VIEWER
+\movieref[rate=0.5]{docsrcmanualmovwaveavi}{Slower}
+\movieref[rate=2]{docsrcmanualmovwaveavi}{Faster}
+\movieref[default]{../doc/src/manual/mov/wave.avi}{Normal}
+\movieref[pause]{docsrcmanualmovwaveavi}{Play/Pause}
+\movieref[stop]{docsrcmanualmovwaveavi}{Stop}
+% #endif
+% #elif MOVIE == "multimedia"
+% Beamer-style \movie command
+\movie[
+showcontrols,
+label=../doc/src/manual/mov/wave.avi,
+width=0.9\linewidth,
+autostart]{\nolinkurl{../doc/src/manual/mov/wave.avi}}{../doc/src/manual/mov/wave.avi}
+% #else
+\href{run:../doc/src/manual/mov/wave.avi}{\nolinkurl{../doc/src/manual/mov/wave.avi}}
+% #endif
+\end{center}
+
+\begin{center}  % movie caption
+Movie \arabic{doconce:movie:counter}: 1D wave in AVI.
+\end{center}
+\end{doconce:movie}
+
+
+Here is the same movie, but with a URL to GitHub:
+
+
+\begin{doconce:movie}
+\refstepcounter{doconce:movie:counter}
+\begin{center}
+% #if MOVIE == "media9"
+\href{run:http://hplgit.github.io/animate/doc/pub/mov-animate/demo.ogg}{\nolinkurl{http://hplgit.github.io/animate/doc/pub/mov-animate/demo.ogg}}
+
+% #elif MOVIE == "multimedia"
+% Beamer-style \movie command
+\movie[
+showcontrols,
+label=http://hplgit.github.io/animate/doc/pub/mov-animate/demo.ogg,
+width=0.9\linewidth,
+autostart]{\nolinkurl{http://hplgit.github.io/animate/doc/pub/mov-animate/demo.ogg}}{http://hplgit.github.io/animate/doc/pub/mov-animate/demo.ogg}
+% #else
+\href{http://hplgit.github.io/animate/doc/pub/mov-animate/demo.ogg}{\nolinkurl{http://hplgit.github.io/animate/doc/pub/mov-animate/demo.ogg}}
+% #endif
+\end{center}
+\end{doconce:movie}
+
+
+Here is a YouTube video:
+
+
+\begin{doconce:movie}
+\refstepcounter{doconce:movie:counter}
+\begin{center}
+% #if MOVIE == "media9"
+\includemedia[
+width=0.6\linewidth,height=0.45\linewidth,
+activate=pageopen,
+flashvars={
+modestbranding=1   % no YouTube logo in control bar
+&autohide=1        % controlbar autohide
+&showinfo=0        % no title and other info before start
+&rel=0             % no related videos after end
+},
+]{}{http://www.youtube.com/watch?v=_O7iUiftbKU}
+% #else
+\href{{http://www.youtube.com/watch?v=_O7iUiftbKU}}{\nolinkurl{http://www.youtube.com/watch?v=_O7iUiftbKU}}
+% #endif
+\end{center}
+
+\begin{center}  % movie caption
+Movie \arabic{doconce:movie:counter}: YouTube movie.
+\end{center}
+\end{doconce:movie}
+
+
+And a vimeo video:
+
+
+\begin{doconce:movie}
+\refstepcounter{doconce:movie:counter}
+\begin{center}\href{{http://vimeo.com/55562330}}{\nolinkurl{http://vimeo.com/55562330}}\end{center}
+
+\begin{center}  % movie caption
+Movie \arabic{doconce:movie:counter}: Vimeo movie.
+\end{center}
+\end{doconce:movie}
+
+
+
+Finally, let us demonstrate referencing the movie~\ref{mov:wave}.
+
+% ------------------- end of main content ---------------
+
+
+% #ifdef PREAMBLE
+\printindex
+
+\end{document}
+% #endif
+
+
+************** File: movies.tex *****************
+%%
+%% Automatically generated file from Doconce source
+%% (https://github.com/hplgit/doconce/)
+%%
+
+
+
+
+
+%-------------------- begin preamble ----------------------
+
+\documentclass[%
+twoside,                 % oneside: electronic viewing, twoside: printing
+final,                   % or draft (marks overfull hboxes)
+10pt]{article}
+
+
+\listfiles               % print all files needed to compile this document
+
+
+\usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
+\usepackage[table]{xcolor}
+\usepackage{bm,microtype}
+
+\usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
+\setlength{\fboxsep}{8pt}
+
+\usepackage{fancyvrb} % packages needed for verbatim environments
+
+
+\newenvironment{doconce:movie}{}{}
+\newcounter{doconce:movie:counter}
+
+
+
+\usepackage{animate,graphicx}
+
+
+%\usepackage[latin1]{inputenc}
+\usepackage[utf8]{inputenc}
+
+% Hyperlinks in PDF:
+\definecolor{linkcolor}{rgb}{0,0,0.4}
+\usepackage[%
+    colorlinks=true,
+    linkcolor=linkcolor,
+    urlcolor=linkcolor,
+    citecolor=black,
+    filecolor=black,
+    %filecolor=blue,
+    pdfmenubar=true,
+    pdftoolbar=true,
+    bookmarksdepth=3   % Uncomment (and tweak) for PDF bookmarks with more levels than the TOC
+            ]{hyperref}
+%\hyperbaseurl{}   % hyperlinks are relative to this root
+
+\setcounter{tocdepth}{2}  % number chapter, section, subsection
+
+% --- end of definitions of admonition environments ---
+
+% prevent orhpans and widows
+\clubpenalty = 10000
+\widowpenalty = 10000
+
+
+
+% --- end of standard preamble for documents ---
+
+
+% insert custom LaTeX commands...
+
+\makeindex
+
+%-------------------- end preamble ----------------------
+
+\begin{document}
+
+
+\input{newcommands_bfmath}
+\input{newcommands_replace}
+
+% ------------------- main content ----------------------
+
+
+
+% ----------------- title -------------------------
+
+\thispagestyle{empty}
+
+\begin{center}
+{\LARGE\bf
+\begin{spacing}{1.25}
+This is a demo of movies in Doconce
+\end{spacing}
+}
+\end{center}
+
+% ----------------- author(s) -------------------------
+
+\begin{center}
+{\bf HPL${}^{}$} \\ [0mm]
+\end{center}
+
+\begin{center}
+% List of all institutions:
+\end{center}
+% ----------------- end author(s) -------------------------
+
+
+\begin{center}
+Jan 32, 2100
+\end{center}
+
+\vspace{1cm}
+
+
+
+Here is a movie in WebM format.
+
+
+\begin{doconce:movie}
+\refstepcounter{doconce:movie:counter}
+\begin{center}
+\href{run:../doc/src/manual/mov/wave.webm}{\nolinkurl{../doc/src/manual/mov/wave.webm}}
+\end{center}
+
+\begin{center}  % movie caption
+Movie \arabic{doconce:movie:counter}: 1D wave in WebM.
+\end{center}
+\end{doconce:movie}
+
+
+Here is the same movie in Ogg format:
+
+
+\begin{doconce:movie}
+\refstepcounter{doconce:movie:counter}
+\begin{center}
+\href{run:../doc/src/manual/mov/wave.ogg}{\nolinkurl{../doc/src/manual/mov/wave.ogg}}
+\end{center}
+
+\begin{center}  % movie caption
+Movie \arabic{doconce:movie:counter}: 1D wave in Ogg.
+\end{center}
+\end{doconce:movie}
+
+
+Here is the same movie in MP4 format:
+
+
+\begin{doconce:movie}
+\refstepcounter{doconce:movie:counter}
+\begin{center}
+\href{run:../doc/src/manual/mov/wave.mp4}{\nolinkurl{../doc/src/manual/mov/wave.mp4}}
+\end{center}
+
+\begin{center}  % movie caption
+Movie \arabic{doconce:movie:counter}: 1D wave in MP4.
+\end{center}
+\end{doconce:movie}
+
+
+Here is the same movie in Flash format:
+
+
+\begin{doconce:movie}
+\refstepcounter{doconce:movie:counter}
+\begin{center}
+\href{run:../doc/src/manual/mov/wave.flv}{\nolinkurl{../doc/src/manual/mov/wave.flv}}
+\end{center}
+
+\begin{center}  % movie caption
+Movie \arabic{doconce:movie:counter}: 1D wave in Flash.
+\end{center}
+\end{doconce:movie}
+
+
+And here is a collection of images shown as an animation
+(\Verb!frame_*.png!):
+
+
+\begin{doconce:movie}
+\refstepcounter{doconce:movie:counter}
+\begin{center}
+\begin{animateinline}[controls,loop]{1}
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0080.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0081.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0082.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0083.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0084.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0085.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0086.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0087.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0088.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0089.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0090.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0091.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0092.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0093.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0094.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0095.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0096.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0097.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0098.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0099.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0100.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0101.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0102.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0103.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0104.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0105.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0106.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0107.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0108.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0109.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0110.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0111.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0112.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0113.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0114.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0115.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0116.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0117.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0118.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0119.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0120.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0121.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0122.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0123.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0124.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0125.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0126.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0127.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0128.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0129.png}
+\end{animateinline}
+\end{center}
+
+\begin{center}  % movie caption
+Movie \arabic{doconce:movie:counter}: Animated collection of images.
+\end{center}
+\end{doconce:movie}
+
+
+Here is the same collection, but with images in cyberspace, given as URLs:
+
+\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
+http://hplgit.github.io/animate/..../frame_%04d.png:80->129
+\end{Verbatim}
+
+
+\begin{doconce:movie}
+\refstepcounter{doconce:movie:counter}
+\begin{center}
+ (Movie of files \Verb!http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_%04d.png:80->129! in \href{{file:///home/hpl/vc/doconce/test/movie_player1.html}}{\nolinkurl{file:///home/hpl/vc/doconce/test/movie_player1.html}})
+\end{center}
+\end{doconce:movie}
+
+
+The movie above in MPEG format, typeset in a box:
+
+
+\begin{center}
+\begin{Sbox}
+\begin{minipage}{0.85\textwidth}
+
+\begin{doconce:movie}
+\refstepcounter{doconce:movie:counter}
+\begin{center}
+\href{run:../doc/src/manual/mov/wave.mpeg}{\nolinkurl{../doc/src/manual/mov/wave.mpeg}}
+\end{center}
+
+\begin{center}  % movie caption
+Movie \arabic{doconce:movie:counter}: 1D wave in MPEG. \label{mov:wave}
+\end{center}
+\end{doconce:movie}
+\end{minipage}
+\end{Sbox}
+\fbox{\TheSbox}
+\end{center}
+
+Here is the same movie in AVI format:
+
+
+\begin{doconce:movie}
+\refstepcounter{doconce:movie:counter}
+\begin{center}
+\href{run:../doc/src/manual/mov/wave.avi}{\nolinkurl{../doc/src/manual/mov/wave.avi}}
+\end{center}
+
+\begin{center}  % movie caption
+Movie \arabic{doconce:movie:counter}: 1D wave in AVI.
+\end{center}
+\end{doconce:movie}
+
+
+Here is the same movie, but with a URL to GitHub:
+
+
+\begin{doconce:movie}
+\refstepcounter{doconce:movie:counter}
+\begin{center}
+\href{http://hplgit.github.io/animate/doc/pub/mov-animate/demo.ogg}{\nolinkurl{http://hplgit.github.io/animate/doc/pub/mov-animate/demo.ogg}}
+\end{center}
+\end{doconce:movie}
+
+
+Here is a YouTube video:
+
+
+\begin{doconce:movie}
+\refstepcounter{doconce:movie:counter}
+\begin{center}
+\href{{http://www.youtube.com/watch?v=_O7iUiftbKU}}{\nolinkurl{http://www.youtube.com/watch?v=_O7iUiftbKU}}
+\end{center}
+
+\begin{center}  % movie caption
+Movie \arabic{doconce:movie:counter}: YouTube movie.
+\end{center}
+\end{doconce:movie}
+
+
+And a vimeo video:
+
+
+\begin{doconce:movie}
+\refstepcounter{doconce:movie:counter}
+\begin{center}\href{{http://vimeo.com/55562330}}{\nolinkurl{http://vimeo.com/55562330}}\end{center}
+
+\begin{center}  % movie caption
+Movie \arabic{doconce:movie:counter}: Vimeo movie.
+\end{center}
+\end{doconce:movie}
+
+
+
+Finally, let us demonstrate referencing the movie~\ref{mov:wave}.
+
+% ------------------- end of main content ---------------
+
+
+\printindex
+
+\end{document}
+
+
+************** File: movies_media9.tex *****************
+%%
+%% Automatically generated file from Doconce source
+%% (https://github.com/hplgit/doconce/)
+%%
+
+
+
+
+
+%-------------------- begin preamble ----------------------
+
+\documentclass[%
+twoside,                 % oneside: electronic viewing, twoside: printing
+final,                   % or draft (marks overfull hboxes)
+10pt]{article}
+
+
+\listfiles               % print all files needed to compile this document
+
+
+\usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
+\usepackage[table]{xcolor}
+\usepackage{bm,microtype}
+
+\usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
+\setlength{\fboxsep}{8pt}
+
+\usepackage{fancyvrb} % packages needed for verbatim environments
+
+
+\newenvironment{doconce:movie}{}{}
+\newcounter{doconce:movie:counter}
+
+\usepackage{media9}
+
+\usepackage{movie15}
+
+\usepackage{animate,graphicx}
+
+
+%\usepackage[latin1]{inputenc}
+\usepackage[utf8]{inputenc}
+
+% Hyperlinks in PDF:
+\definecolor{linkcolor}{rgb}{0,0,0.4}
+\usepackage[%
+    colorlinks=true,
+    linkcolor=linkcolor,
+    urlcolor=linkcolor,
+    citecolor=black,
+    filecolor=black,
+    %filecolor=blue,
+    pdfmenubar=true,
+    pdftoolbar=true,
+    bookmarksdepth=3   % Uncomment (and tweak) for PDF bookmarks with more levels than the TOC
+            ]{hyperref}
+%\hyperbaseurl{}   % hyperlinks are relative to this root
+
+\setcounter{tocdepth}{2}  % number chapter, section, subsection
+
+% --- end of definitions of admonition environments ---
+
+% prevent orhpans and widows
+\clubpenalty = 10000
+\widowpenalty = 10000
+
+
+
+% --- end of standard preamble for documents ---
+
+
+% insert custom LaTeX commands...
+
+\makeindex
+
+%-------------------- end preamble ----------------------
+
+\begin{document}
+
+
+\input{newcommands_bfmath}
+\input{newcommands_replace}
+
+% ------------------- main content ----------------------
+
+
+
+% ----------------- title -------------------------
+
+\thispagestyle{empty}
+
+\begin{center}
+{\LARGE\bf
+\begin{spacing}{1.25}
+This is a demo of movies in Doconce
+\end{spacing}
+}
+\end{center}
+
+% ----------------- author(s) -------------------------
+
+\begin{center}
+{\bf HPL${}^{}$} \\ [0mm]
+\end{center}
+
+\begin{center}
+% List of all institutions:
+\end{center}
+% ----------------- end author(s) -------------------------
+
+
+\begin{center}
+Jan 32, 2100
+\end{center}
+
+\vspace{1cm}
+
+
+
+Here is a movie in WebM format.
+
+
+\begin{doconce:movie}
+\refstepcounter{doconce:movie:counter}
+\begin{center}
+\href{run:../doc/src/manual/mov/wave.webm}{\nolinkurl{../doc/src/manual/mov/wave.webm}}
+
+\end{center}
+
+\begin{center}  % movie caption
+Movie \arabic{doconce:movie:counter}: 1D wave in WebM.
+\end{center}
+\end{doconce:movie}
+
+
+Here is the same movie in Ogg format:
+
+
+\begin{doconce:movie}
+\refstepcounter{doconce:movie:counter}
+\begin{center}
+\href{run:../doc/src/manual/mov/wave.ogg}{\nolinkurl{../doc/src/manual/mov/wave.ogg}}
+
+\end{center}
+
+\begin{center}  % movie caption
+Movie \arabic{doconce:movie:counter}: 1D wave in Ogg.
+\end{center}
+\end{doconce:movie}
+
+
+Here is the same movie in MP4 format:
+
+
+\begin{doconce:movie}
+\refstepcounter{doconce:movie:counter}
+\begin{center}
+\includemedia[
+label=docsrcmanualmovwavemp4,
+width=0.8\linewidth,
+activate=pageopen,         % or onclick or pagevisible
+addresource=../doc/src/manual/mov/wave.mp4,  % embed the video in the PDF
+flashvars={
+source=../doc/src/manual/mov/wave.mp4
+&autoPlay=true
+&loop=true
+&scaleMode=letterbox       % preserve aspect ratio while scaling this video
+}]{}{VPlayer.swf}
+
+\end{center}
+
+\begin{center}  % movie caption
+Movie \arabic{doconce:movie:counter}: 1D wave in MP4.
+\end{center}
+\end{doconce:movie}
+
+
+Here is the same movie in Flash format:
+
+
+\begin{doconce:movie}
+\refstepcounter{doconce:movie:counter}
+\begin{center}
+\includemedia[
+label=docsrcmanualmovwaveflv,
+width=0.8\linewidth,
+activate=pageopen,         % or onclick or pagevisible
+addresource=../doc/src/manual/mov/wave.flv,  % embed the video in the PDF
+flashvars={
+source=../doc/src/manual/mov/wave.flv
+&autoPlay=true
+&loop=true
+&scaleMode=letterbox       % preserve aspect ratio while scaling this video
+}]{}{VPlayer.swf}
+
+\end{center}
+
+\begin{center}  % movie caption
+Movie \arabic{doconce:movie:counter}: 1D wave in Flash.
+\end{center}
+\end{doconce:movie}
+
+
+And here is a collection of images shown as an animation
+(\Verb!frame_*.png!):
+
+
+\begin{doconce:movie}
+\refstepcounter{doconce:movie:counter}
+\begin{center}
+\begin{animateinline}[controls,loop]{1}
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0080.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0081.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0082.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0083.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0084.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0085.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0086.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0087.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0088.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0089.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0090.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0091.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0092.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0093.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0094.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0095.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0096.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0097.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0098.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0099.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0100.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0101.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0102.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0103.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0104.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0105.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0106.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0107.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0108.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0109.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0110.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0111.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0112.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0113.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0114.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0115.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0116.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0117.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0118.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0119.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0120.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0121.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0122.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0123.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0124.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0125.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0126.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0127.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0128.png}
+\newframe
+\includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0129.png}
+\end{animateinline}
+\end{center}
+
+\begin{center}  % movie caption
+Movie \arabic{doconce:movie:counter}: Animated collection of images.
+\end{center}
+\end{doconce:movie}
+
+
+Here is the same collection, but with images in cyberspace, given as URLs:
+
+\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
+http://hplgit.github.io/animate/..../frame_%04d.png:80->129
+\end{Verbatim}
+
+
+\begin{doconce:movie}
+\refstepcounter{doconce:movie:counter}
+\begin{center}
+ (Movie of files \Verb!http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_%04d.png:80->129! in \href{{file:///home/hpl/vc/doconce/test/movie_player1.html}}{\nolinkurl{file:///home/hpl/vc/doconce/test/movie_player1.html}})
+\end{center}
+\end{doconce:movie}
+
+
+The movie above in MPEG format, typeset in a box:
+
+
+\begin{center}
+\begin{Sbox}
+\begin{minipage}{0.85\textwidth}
+
+\begin{doconce:movie}
+\refstepcounter{doconce:movie:counter}
+\begin{center}
+\includemovie[poster,
+label=docsrcmanualmovwavempeg,
+autoplay,
+%controls,
+%toolbar,
+text={\small (Loading ../doc/src/manual/mov/wave.mpeg)},
+repeat,
+]{0.9\linewidth}{0.9\linewidth}{../doc/src/manual/mov/wave.mpeg}
+\movieref[rate=0.5]{docsrcmanualmovwavempeg}{Slower}
+\movieref[rate=2]{docsrcmanualmovwavempeg}{Faster}
+\movieref[default]{../doc/src/manual/mov/wave.mpeg}{Normal}
+\movieref[pause]{docsrcmanualmovwavempeg}{Play/Pause}
+\movieref[stop]{docsrcmanualmovwavempeg}{Stop}
+\end{center}
+
+\begin{center}  % movie caption
+Movie \arabic{doconce:movie:counter}: 1D wave in MPEG. \label{mov:wave}
+\end{center}
+\end{doconce:movie}
+\end{minipage}
+\end{Sbox}
+\fbox{\TheSbox}
+\end{center}
+
+Here is the same movie in AVI format:
+
+
+\begin{doconce:movie}
+\refstepcounter{doconce:movie:counter}
+\begin{center}
+\includemovie[poster,
+label=docsrcmanualmovwaveavi,
+autoplay,
+%controls,
+%toolbar,
+text={\small (Loading ../doc/src/manual/mov/wave.avi)},
+repeat,
+]{0.9\linewidth}{0.9\linewidth}{../doc/src/manual/mov/wave.avi}
+\movieref[rate=0.5]{docsrcmanualmovwaveavi}{Slower}
+\movieref[rate=2]{docsrcmanualmovwaveavi}{Faster}
+\movieref[default]{../doc/src/manual/mov/wave.avi}{Normal}
+\movieref[pause]{docsrcmanualmovwaveavi}{Play/Pause}
+\movieref[stop]{docsrcmanualmovwaveavi}{Stop}
+\end{center}
+
+\begin{center}  % movie caption
+Movie \arabic{doconce:movie:counter}: 1D wave in AVI.
+\end{center}
+\end{doconce:movie}
+
+
+Here is the same movie, but with a URL to GitHub:
+
+
+\begin{doconce:movie}
+\refstepcounter{doconce:movie:counter}
+\begin{center}
+\href{run:http://hplgit.github.io/animate/doc/pub/mov-animate/demo.ogg}{\nolinkurl{http://hplgit.github.io/animate/doc/pub/mov-animate/demo.ogg}}
+
+\end{center}
+\end{doconce:movie}
+
+
+Here is a YouTube video:
+
+
+\begin{doconce:movie}
+\refstepcounter{doconce:movie:counter}
+\begin{center}
+\includemedia[
+width=0.6\linewidth,height=0.45\linewidth,
+activate=pageopen,
+flashvars={
+modestbranding=1   % no YouTube logo in control bar
+&autohide=1        % controlbar autohide
+&showinfo=0        % no title and other info before start
+&rel=0             % no related videos after end
+},
+]{}{http://www.youtube.com/watch?v=_O7iUiftbKU}
+\end{center}
+
+\begin{center}  % movie caption
+Movie \arabic{doconce:movie:counter}: YouTube movie.
+\end{center}
+\end{doconce:movie}
+
+
+And a vimeo video:
+
+
+\begin{doconce:movie}
+\refstepcounter{doconce:movie:counter}
+\begin{center}\href{{http://vimeo.com/55562330}}{\nolinkurl{http://vimeo.com/55562330}}\end{center}
+
+\begin{center}  % movie caption
+Movie \arabic{doconce:movie:counter}: Vimeo movie.
+\end{center}
+\end{doconce:movie}
+
+
+
+Finally, let us demonstrate referencing the movie~\ref{mov:wave}.
+
+% ------------------- end of main content ---------------
+
+
+\printindex
+
+\end{document}
 
 
 ************** File: tmp_Doconce.do.txt *****************
@@ -60895,16 +58989,28 @@ final,                   % or draft (marks overfull hboxes)
 \usepackage{ptex2tex}
 
 % #ifndef MOVIE
-% #define MOVIE "media9"
+% #define MOVIE "href"
+% #ifndef MOVIE_CONTROLS
+% #define MOVIE_CONTROLS
+% #endif
+% #endif
+
+\newenvironment{doconce:movie}{}{}
+\newcounter{doconce:movie:counter}
+
+% #if MOVIE == "media9"
+% #ifdef XELATEX
+\usepackage[xetex]{media9}
+% #else
+\usepackage{media9}
+% #endif
+% #elif MOVIE == "multimedia"
+\usepackage{multimedia}
+% #elif MOVIE == "href"
 % #endif
 
 % #if MOVIE == "media9"
-\usepackage{media9}
-% #elif MOVIE == "movie15"
 \usepackage{movie15}
-% #elif MOVIE == "multimedia"
-\usepackage{multimedia}
-% #elif MOVIE == "href-run"
 % #endif
 
 % #ifdef MINTED
@@ -61829,7 +59935,16 @@ MOVIE: [http://vimeo.com/55562330, width=500 height=278] Vimeo movie.
 \eccq
 The latter results in
 
- Vimeo movie. \href{{http://vimeo.com/55562330}}{\nolinkurl{http://vimeo.com/55562330}}
+
+\begin{doconce:movie}
+\refstepcounter{doconce:movie:counter}
+\begin{center}\href{{http://vimeo.com/55562330}}{\nolinkurl{http://vimeo.com/55562330}}\end{center}
+
+\begin{center}  % movie caption
+Movie \arabic{doconce:movie:counter}: Vimeo movie.
+\end{center}
+\end{doconce:movie}
+
 
 
 \subsection{Tables}
@@ -71847,15 +69962,6 @@ translating doconce text in tmp_mako__testdoc.do.txt to html
 
 FIX: multi-line caption
 
- Movie
-based on collection of frames
-(here just a few frames compared with the full wavepacket.mpeg movie).
-label{mymov}
-
--- fixed to one line
-
-FIX: multi-line caption
-
  A long
 caption spanning
 several lines and containing verbatim words like `my_file_v1` and `my_file_v2`
@@ -71867,10 +69973,6 @@ FIX: FIGURE not at the beginning of the line - 1 fixes
  FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
 
 
-FIX: MOVIE not at the beginning of the line - 1 fixes
-   MOVIE: [../doc/src/manual/mov/wave.webm, width=700 height=400] Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). label{mymov} 
-
-
 FIX: !bhint not at the beginning of the line - 1 fixes
   !bhint
 
@@ -71879,7 +69981,7 @@ FIX: !ehint not at the beginning of the line - 1 fixes
   !ehint
 
 
-*** The total of 6 fixes above should be incorporated in the file!
+*** The total of 4 fixes above should be incorporated in the file!
 
 
 copying from regex "subroutine" until end of file
@@ -71895,12 +69997,6 @@ found info about 9 exercises, written to .testdoc.exerinfo
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ... found!
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
-... movie: trying to find https://raw.github.com/hplgit/doconce/master/test/../doc/src/manual/mov/wave.mp4 ... found!
-... movie: trying to find https://raw.github.com/hplgit/doconce/master/test/../doc/src/manual/mov/wave.webm ... found!
-... movie: trying to find https://raw.github.com/hplgit/doconce/master/test/../doc/src/manual/mov/wave.ogg ... found!
-... movie: trying to find https://raw.github.com/hplgit/doconce/master/test/../doc/src/manual/mov/wave.mp4 ... found!
-... movie: trying to find https://raw.github.com/hplgit/doconce/master/test/../doc/src/manual/mov/wave.webm ... found!
-... movie: trying to find https://raw.github.com/hplgit/doconce/master/test/../doc/src/manual/mov/wave.ogg ... found!
 output in testdoc.html
 + '[' 0 -ne 0 ']'
 + cp testdoc.html testdoc_wordpress.html
@@ -71910,15 +70006,6 @@ running preprocess -DFORMAT=html -DDEVICE=screen -DSOMEVAR testdoc.do.txt > tmp_
 running mako on tmp_preprocess__testdoc.do.txt to make tmp_mako__testdoc.do.txt
 mako variables: {'DEVICE': 'screen', 'SOMEVAR': True, 'FORMAT': 'html'}
 translating doconce text in tmp_mako__testdoc.do.txt to html
-
-FIX: multi-line caption
-
- Movie
-based on collection of frames
-(here just a few frames compared with the full wavepacket.mpeg movie).
-label{mymov}
-
--- fixed to one line
 
 FIX: multi-line caption
 
@@ -71933,10 +70020,6 @@ FIX: FIGURE not at the beginning of the line - 1 fixes
  FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
 
 
-FIX: MOVIE not at the beginning of the line - 1 fixes
-   MOVIE: [../doc/src/manual/mov/wave.webm, width=700 height=400] Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). label{mymov} 
-
-
 FIX: !bhint not at the beginning of the line - 1 fixes
   !bhint
 
@@ -71945,7 +70028,7 @@ FIX: !ehint not at the beginning of the line - 1 fixes
   !ehint
 
 
-*** The total of 6 fixes above should be incorporated in the file!
+*** The total of 4 fixes above should be incorporated in the file!
 
 
 copying from regex "subroutine" until end of file
@@ -71995,15 +70078,6 @@ translating doconce text in tmp_mako__testdoc.do.txt to latex
 
 FIX: multi-line caption
 
- Movie
-based on collection of frames
-(here just a few frames compared with the full wavepacket.mpeg movie).
-label{mymov}
-
--- fixed to one line
-
-FIX: multi-line caption
-
  A long
 caption spanning
 several lines and containing verbatim words like `my_file_v1` and `my_file_v2`
@@ -72015,10 +70089,6 @@ FIX: FIGURE not at the beginning of the line - 1 fixes
  FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
 
 
-FIX: MOVIE not at the beginning of the line - 1 fixes
-   MOVIE: [../doc/src/manual/mov/wave.webm, width=700 height=400] Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). label{mymov} 
-
-
 FIX: !bhint not at the beginning of the line - 1 fixes
   !bhint
 
@@ -72027,7 +70097,7 @@ FIX: !ehint not at the beginning of the line - 1 fixes
   !ehint
 
 
-*** The total of 6 fixes above should be incorporated in the file!
+*** The total of 4 fixes above should be incorporated in the file!
 
 
 copying from regex "subroutine" until end of file
@@ -72049,9 +70119,6 @@ figure file ../doc/src/manual/fig/wave1D:
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ... found!
 
 exporting publish database papers.pub to papers.bib:
-*** made link to new HTML file wave.html with code to display the movie ../doc/src/manual/mov/wave.ogg
-*** made link to new HTML file wave.html with code to display the movie ../doc/src/manual/mov/wave.mpeg
-*** made link to new HTML file wave.html with code to display the movie ../doc/src/manual/mov/wave.webm
 output in testdoc.p.tex
 + '[' 0 -ne 0 ']'
 + cp testdoc.p.tex testdoc_no_solutions.p.tex
@@ -72066,15 +70133,6 @@ translating doconce text in tmp_mako__testdoc.do.txt to html
 
 FIX: multi-line caption
 
- Movie
-based on collection of frames
-(here just a few frames compared with the full wavepacket.mpeg movie).
-label{mymov}
-
--- fixed to one line
-
-FIX: multi-line caption
-
  A long
 caption spanning
 several lines and containing verbatim words like `my_file_v1` and `my_file_v2`
@@ -72086,10 +70144,6 @@ FIX: FIGURE not at the beginning of the line - 1 fixes
  FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
 
 
-FIX: MOVIE not at the beginning of the line - 1 fixes
-   MOVIE: [../doc/src/manual/mov/wave.webm, width=700 height=400] Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). label{mymov} 
-
-
 FIX: !bhint not at the beginning of the line - 1 fixes
   !bhint
 
@@ -72098,7 +70152,7 @@ FIX: !ehint not at the beginning of the line - 1 fixes
   !ehint
 
 
-*** The total of 6 fixes above should be incorporated in the file!
+*** The total of 4 fixes above should be incorporated in the file!
 
 
 copying from regex "subroutine" until end of file
@@ -72134,15 +70188,6 @@ translating doconce text in tmp_mako__testdoc.do.txt to html
 
 FIX: multi-line caption
 
- Movie
-based on collection of frames
-(here just a few frames compared with the full wavepacket.mpeg movie).
-label{mymov}
-
--- fixed to one line
-
-FIX: multi-line caption
-
  A long
 caption spanning
 several lines and containing verbatim words like `my_file_v1` and `my_file_v2`
@@ -72154,10 +70199,6 @@ FIX: FIGURE not at the beginning of the line - 1 fixes
  FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
 
 
-FIX: MOVIE not at the beginning of the line - 1 fixes
-   MOVIE: [../doc/src/manual/mov/wave.webm, width=700 height=400] Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). label{mymov} 
-
-
 FIX: !bhint not at the beginning of the line - 1 fixes
   !bhint
 
@@ -72166,7 +70207,7 @@ FIX: !ehint not at the beginning of the line - 1 fixes
   !ehint
 
 
-*** The total of 6 fixes above should be incorporated in the file!
+*** The total of 4 fixes above should be incorporated in the file!
 
 
 copying from regex "subroutine" until end of file
@@ -72205,15 +70246,6 @@ translating doconce text in tmp_mako__testdoc.do.txt to html
 
 FIX: multi-line caption
 
- Movie
-based on collection of frames
-(here just a few frames compared with the full wavepacket.mpeg movie).
-label{mymov}
-
--- fixed to one line
-
-FIX: multi-line caption
-
  A long
 caption spanning
 several lines and containing verbatim words like `my_file_v1` and `my_file_v2`
@@ -72225,10 +70257,6 @@ FIX: FIGURE not at the beginning of the line - 1 fixes
  FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
 
 
-FIX: MOVIE not at the beginning of the line - 1 fixes
-   MOVIE: [../doc/src/manual/mov/wave.webm, width=700 height=400] Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). label{mymov} 
-
-
 FIX: !bhint not at the beginning of the line - 1 fixes
   !bhint
 
@@ -72237,7 +70265,7 @@ FIX: !ehint not at the beginning of the line - 1 fixes
   !ehint
 
 
-*** The total of 6 fixes above should be incorporated in the file!
+*** The total of 4 fixes above should be incorporated in the file!
 
 
 copying from regex "subroutine" until end of file
@@ -72286,15 +70314,6 @@ translating doconce text in tmp_mako__testdoc.do.txt to latex
 
 FIX: multi-line caption
 
- Movie
-based on collection of frames
-(here just a few frames compared with the full wavepacket.mpeg movie).
-label{mymov}
-
--- fixed to one line
-
-FIX: multi-line caption
-
  A long
 caption spanning
 several lines and containing verbatim words like `my_file_v1` and `my_file_v2`
@@ -72306,10 +70325,6 @@ FIX: FIGURE not at the beginning of the line - 1 fixes
  FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
 
 
-FIX: MOVIE not at the beginning of the line - 1 fixes
-   MOVIE: [../doc/src/manual/mov/wave.webm, width=700 height=400] Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). label{mymov} 
-
-
 FIX: !bhint not at the beginning of the line - 1 fixes
   !bhint
 
@@ -72318,7 +70333,7 @@ FIX: !ehint not at the beginning of the line - 1 fixes
   !ehint
 
 
-*** The total of 6 fixes above should be incorporated in the file!
+*** The total of 4 fixes above should be incorporated in the file!
 
 
 copying from regex "subroutine" until end of file
@@ -72337,9 +70352,6 @@ figure file ../doc/src/manual/fig/wave1D:
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ... found!
 
 exporting publish database papers.pub to papers.bib:
-*** made link to new HTML file wave.html with code to display the movie ../doc/src/manual/mov/wave.ogg
-*** made link to new HTML file wave.html with code to display the movie ../doc/src/manual/mov/wave.mpeg
-*** made link to new HTML file wave.html with code to display the movie ../doc/src/manual/mov/wave.webm
 output in testdoc.p.tex
 + '[' 0 -ne 0 ']'
 + system doconce format pdflatex testdoc.do.txt --device=paper --examples_as_exercises --latex_double_hyphen
@@ -72371,15 +70383,6 @@ translating doconce text in tmp_mako__testdoc.do.txt to pdflatex
 
 FIX: multi-line caption
 
- Movie
-based on collection of frames
-(here just a few frames compared with the full wavepacket.mpeg movie).
-label{mymov}
-
--- fixed to one line
-
-FIX: multi-line caption
-
  A long
 caption spanning
 several lines and containing verbatim words like `my_file_v1` and `my_file_v2`
@@ -72391,10 +70394,6 @@ FIX: FIGURE not at the beginning of the line - 1 fixes
  FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
 
 
-FIX: MOVIE not at the beginning of the line - 1 fixes
-   MOVIE: [../doc/src/manual/mov/wave.webm, width=700 height=400] Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). label{mymov} 
-
-
 FIX: !bhint not at the beginning of the line - 1 fixes
   !bhint
 
@@ -72403,7 +70402,7 @@ FIX: !ehint not at the beginning of the line - 1 fixes
   !ehint
 
 
-*** The total of 6 fixes above should be incorporated in the file!
+*** The total of 4 fixes above should be incorporated in the file!
 
 
 copying from regex "subroutine" until end of file
@@ -72422,9 +70421,6 @@ figure file ../doc/src/manual/fig/wave1D:
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ... found!
 
 exporting publish database papers.pub to papers.bib:
-*** made link to new HTML file wave.html with code to display the movie ../doc/src/manual/mov/wave.ogg
-*** made link to new HTML file wave.html with code to display the movie ../doc/src/manual/mov/wave.mpeg
-*** made link to new HTML file wave.html with code to display the movie ../doc/src/manual/mov/wave.webm
 *** warning: --latex_double_hyphen may lead to unwanted edits.
              search for all -- in the .p.tex file and check.
 output in testdoc.p.tex
@@ -72508,40 +70504,6 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
 
 
-(/usr/share/texlive/texmf-dist/tex/latex/media9/media9.sty
-(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
-(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/l3names.sty
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/l3experimental/l3str/l3regex.sty
-
-(/usr/share/texlive/texmf-dist/tex/latex/l3experimental/l3str/l3tl-analysis.sty
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/l3experimental/l3str/l3str-convert.sty
-)) 
-
-
 (/home/hpl/texmf/tex/latex/misc/minted.sty
 
 
@@ -72645,6 +70607,31 @@ gs.code.tex
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/mdframed/mdframed.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/l3names.sty
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-abspage.sty
 
@@ -72716,24 +70703,12 @@ f/fonts/map/pdftex/updmap/pdftex.map}] [2]
 
 
 
-<<VPlayer.swf>><<../doc/src/manual/mov/wave.ogg>><<../doc/src/manual/mov/wave.m
-peg>>
-Overfull \hbox (210.5516pt too wide) 
-[]\OT1/cmr/m/n/10 (-20) (Movie []: play [][]$\OT1/cmtt/m/n/10 wave . html$[][][
-][][][][]\OT1/cmr/m/n/10 (-20) ) [][][][][] 
-<<../doc/src/manual/mov/wave.webm>>
-Overfull \hbox (74.3882pt too wide) 
-[]\OT1/cmr/m/n/10 (-20) Caption for an-i-mated col-lec-tion of im-ages. (Movie 
-of files []
-
-
-
-[9] <../doc/src/manual/fig/wave1D.png, id=133, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=87, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=135, 578.16pt x 433.62pt>
+<downloaded_figures/f_plot.png, id=89, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png>
 
-c/src/manual/fig/wave1D.png>]
+[10 <../doc/src/manual/fig/wave1D.png> <./downloaded_figures/f_plot.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -72758,7 +70733,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
-[11 <./downloaded_figures/f_plot.png>] [12]
+[11]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -72781,7 +70756,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 837.
+t line 754.
 
 
 
@@ -72801,7 +70776,7 @@ t line 837.
 
 
 
-t line 846.
+t line 763.
 
 
 
@@ -72821,7 +70796,7 @@ t line 846.
 
 
 
-t line 850.
+t line 767.
 
 
 
@@ -72891,10 +70866,11 @@ t line 850.
 
 .
 
-[13]
+[12]
 Overfull \hbox (5.05241pt too wide) 
 [][][]\OT1/cmtt/m/n/8 http://www.springer.com/mathematics/computational+science
 +%26+engineering/book/978-3-642-23098-1| 
+[13]
 
 
 
@@ -72916,7 +70892,6 @@ Package amsmath Warning: Foreign command \over;
 
 ...rest of part of LaTeX line number...
 
-[14]
 
 
 
@@ -72940,7 +70915,7 @@ Package amsmath Warning: Foreign command \over;
 
 
 
-.
+
 
 
 
@@ -72949,7 +70924,7 @@ Package amsmath Warning: Foreign command \over;
 
 ...rest of part of LaTeX line number...
 
-(./testdoc.out.pyg) [15] (./testdoc.out.pyg) [16] [17]
+[14] (./testdoc.out.pyg) [15] (./testdoc.out.pyg) [16]
 
 
 .
@@ -72957,6 +70932,7 @@ Package amsmath Warning: Foreign command \over;
 
 
 
+[17]
 
 
 
@@ -72975,6 +70951,10 @@ Package amsmath Warning: Foreign command \over;
 
 
 No file testdoc.bbl.
+
+
+...rest of part of LaTeX line number...
+
 [18]
 
 
@@ -72982,21 +70962,11 @@ No file testdoc.bbl.
 
 [19]
 
-
-...rest of part of LaTeX line number...
-
-[20]
-
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
 No file testdoc.ind.
-*************************************************
-* media9 warning: "rerun"
-* 
-* Rerun to get media labels right!
-*************************************************
-[21] (./testdoc.aux)
+[20] (./testdoc.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -73043,41 +71013,6 @@ livier@maths.lth.se>
 listings.sty    2013/07/10 1.5 (Carsten Heinz)
  lstmisc.sty    2013/07/10 1.5 (Carsten Heinz)
 listings.cfg    2013/06/27 1.5pre1 listings configuration
-  media9.sty    2013/07/19 v0.29 acrobat-9/X compatible media
-   expl3.sty    2013/07/12 v4544 L3 Experimental code bundle wrapper
- l3names.sty    2012/12/07 v4346 L3 Namespace for primitives
-l3bootstrap.sty    2013/01/08 v4420 L3 Experimental bootstrap code
-    etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
-l3basics.sty    2013/07/09 v4521 L3 Basic definitions
- l3expan.sty    2013/07/09 v4521 L3 Argument expansion
-    l3tl.sty    2013/04/24 v4482 L3 Token lists
-   l3seq.sty    2013/05/26 v4500 L3 Sequences and stacks
-   l3int.sty    2013/04/24 v4482 L3 Integers
- l3quark.sty    2013/07/09 v4521 L3 Quarks
-   l3prg.sty    2013/04/24 v4482 L3 Control structures
- l3clist.sty    2013/05/26 v4500 L3 Comma separated lists
- l3token.sty    2013/04/24 v4482 L3 Experimental token manipulation
-  l3prop.sty    2013/01/09 v4423 L3 Property lists
-   l3msg.sty    2013/01/08 v4412 L3 Messages
-  l3file.sty    2013/05/01 v4483 L3 File and I/O operations
-  l3skip.sty    2013/01/13 v4444 L3 Dimensions and skips
-  l3keys.sty    2013/07/12 v4544 L3 Experimental key-value interfaces
-    l3fp.sty    2013/07/09 v4521 L3 Floating points
-   l3box.sty    2013/04/24 v4482 L3 Experimental boxes
-l3coffins.sty    2012/09/09 v4212 L3 Coffin code layer
- l3color.sty    2012/08/29 v4156 L3 Experimental color support
-l3luatex.sty    2012/08/03 v4049 L3 Experimental LuaTeX-specific functions
-l3candidates.sty    2013/07/09 v4521 L3 Experimental additions to l3kernel
- l3regex.sty    2013/04/24 v4482 L3 Experimental regular expressions
-l3tl-build.sty    2011/12/08 v3039 L3 Experimental token list construction
-l3tl-analysis.sty    2011/12/08 v3039 L3 Experimental token lists analysis
-   l3str.sty    2013/04/24 v4482 L3 Experimental strings
-  l3flag.sty    2011/12/08 v3039 L3 Experimental flags
-l3str-convert.sty    2013/01/08 v4339 L3 Experimental string encoding conversio
-ns
-l3keys2e.sty    2013/07/12 v4544 LaTeX2e option processing using LaTeX3 keys
-  xparse.sty    2013/07/12 v4544 L3 Experimental document command parser
-atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
   minted.sty    2010/01/27 v1.6 Yet another Pygments shim for LaTeX
    float.sty    2001/11/08 v1.3d Float enhancements (AL)
   ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
@@ -73109,6 +71044,7 @@ letltxmacro.sty    2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
  hopatch.sty    2012/05/28 v1.2 Wrapper for package hooks (HO)
 xcolor-patch.sty    2011/01/30 xcolor patch
 atveryend.sty    2011/06/30 v1.8 Hooks at the very end of document (HO)
+atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
 refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
  hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
  auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
@@ -73143,6 +71079,31 @@ todonotes.sty    2012/07/25
   lineno.sty    2005/11/02 line numbers on paragraphs v4.41
 fancyhdr.sty    
 mdframed.sty    2013/07/01 1.9b: mdframed
+  xparse.sty    2013/07/12 v4544 L3 Experimental document command parser
+   expl3.sty    2013/07/12 v4544 L3 Experimental code bundle wrapper
+ l3names.sty    2012/12/07 v4346 L3 Namespace for primitives
+l3bootstrap.sty    2013/01/08 v4420 L3 Experimental bootstrap code
+    etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
+l3basics.sty    2013/07/09 v4521 L3 Basic definitions
+ l3expan.sty    2013/07/09 v4521 L3 Argument expansion
+    l3tl.sty    2013/04/24 v4482 L3 Token lists
+   l3seq.sty    2013/05/26 v4500 L3 Sequences and stacks
+   l3int.sty    2013/04/24 v4482 L3 Integers
+ l3quark.sty    2013/07/09 v4521 L3 Quarks
+   l3prg.sty    2013/04/24 v4482 L3 Control structures
+ l3clist.sty    2013/05/26 v4500 L3 Comma separated lists
+ l3token.sty    2013/04/24 v4482 L3 Experimental token manipulation
+  l3prop.sty    2013/01/09 v4423 L3 Property lists
+   l3msg.sty    2013/01/08 v4412 L3 Messages
+  l3file.sty    2013/05/01 v4483 L3 File and I/O operations
+  l3skip.sty    2013/01/13 v4444 L3 Dimensions and skips
+  l3keys.sty    2013/07/12 v4544 L3 Experimental key-value interfaces
+    l3fp.sty    2013/07/09 v4521 L3 Floating points
+   l3box.sty    2013/04/24 v4482 L3 Experimental boxes
+l3coffins.sty    2012/09/09 v4212 L3 Coffin code layer
+ l3color.sty    2012/08/29 v4156 L3 Experimental color support
+l3luatex.sty    2012/08/03 v4049 L3 Experimental LuaTeX-specific functions
+l3candidates.sty    2013/07/09 v4521 L3 Experimental additions to l3kernel
 etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
@@ -73220,7 +71181,7 @@ are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/te
 xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/share/texlive/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/share/texlive/texmf-di
 st/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on testdoc.pdf (21 pages, ).
+Output written on testdoc.pdf (20 pages, ).
 Transcript written on testdoc.log.
 + '[' 0 -ne 0 ']'
 + pdflatex -shell-escape testdoc
@@ -73275,40 +71236,6 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (/home/hpl/texmf/tex/latex/misc/anslistings.sty
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/media9/media9.sty
-(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
-(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/l3names.sty
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/l3experimental/l3str/l3regex.sty
-
-(/usr/share/texlive/texmf-dist/tex/latex/l3experimental/l3str/l3tl-analysis.sty
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/l3experimental/l3str/l3str-convert.sty
-)) 
 
 
 (/home/hpl/texmf/tex/latex/misc/minted.sty
@@ -73414,6 +71341,31 @@ gs.code.tex
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/mdframed/mdframed.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/l3names.sty
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-abspage.sty
 
@@ -73450,21 +71402,11 @@ f/fonts/map/pdftex/updmap/pdftex.map}] (./testdoc.toc) [2] [3] (./testdoc.tdo)
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
 [7]
 
-/src/manual/fig/wave1D.pdf>]<<VPlayer.swf>><<../doc/src/manual/mov/wave.ogg>><<
-../doc/src/manual/mov/wave.mpeg>>
-Overfull \hbox (210.5516pt too wide) 
-[]\OT1/cmr/m/n/10 (-20) (Movie []: play [][]$\OT1/cmtt/m/n/10 wave . html$[][][
-][][][][]\OT1/cmr/m/n/10 (-20) ) [][][][][] 
-<<../doc/src/manual/mov/wave.webm>>
-Overfull \hbox (74.3882pt too wide) 
-[]\OT1/cmr/m/n/10 (-20) Caption for an-i-mated col-lec-tion of im-ages. (Movie 
-of files []
-[9] <../doc/src/manual/fig/wave1D.png, id=288, 586.8324pt x 442.2924pt>
+/src/manual/fig/wave1D.pdf>]
+<../doc/src/manual/fig/wave1D.png, id=241, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=290, 578.16pt x 433.62pt>
-<use downloaded_figures/f_plot.png>
-
-c/src/manual/fig/wave1D.png>]
+<downloaded_figures/f_plot.png, id=243, 578.16pt x 433.62pt>
+<use downloaded_figures/f_plot.png> [9 <./downloaded_figures/f_plot.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -73489,7 +71431,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
-[11 <./downloaded_figures/f_plot.png>] [12]
+[10 <../doc/src/manual/fig/wave1D.png>] [11]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -73512,7 +71454,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 837.
+t line 754.
 
 
 
@@ -73532,7 +71474,7 @@ t line 837.
 
 
 
-t line 846.
+t line 763.
 
 
 
@@ -73552,7 +71494,7 @@ t line 846.
 
 
 
-t line 850.
+t line 767.
 
 
 
@@ -73622,7 +71564,7 @@ t line 850.
 
 .
 
-[13]
+[12]
 Overfull \hbox (5.05241pt too wide) 
 [][][]\OT1/cmtt/m/n/8 http://www.springer.com/mathematics/computational+science
 +%26+engineering/book/978-3-642-23098-1| 
@@ -73631,20 +71573,15 @@ Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on .
 
-[14] (./testdoc.out.pyg) [15] (./testdoc.out.pyg) [16] [17]
+[13] [14] (./testdoc.out.pyg) (./testdoc.out.pyg) [15] [16]
 No file testdoc.bbl.
-[18] [19] [20]
+[17] [18] [19]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
 No file testdoc.ind.
-*************************************************
-* media9 warning: "rerun"
-* 
-* Rerun to get media labels right!
-*************************************************
-[21] (./testdoc.aux)
+[20] (./testdoc.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -73691,41 +71628,6 @@ livier@maths.lth.se>
 listings.sty    2013/07/10 1.5 (Carsten Heinz)
  lstmisc.sty    2013/07/10 1.5 (Carsten Heinz)
 listings.cfg    2013/06/27 1.5pre1 listings configuration
-  media9.sty    2013/07/19 v0.29 acrobat-9/X compatible media
-   expl3.sty    2013/07/12 v4544 L3 Experimental code bundle wrapper
- l3names.sty    2012/12/07 v4346 L3 Namespace for primitives
-l3bootstrap.sty    2013/01/08 v4420 L3 Experimental bootstrap code
-    etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
-l3basics.sty    2013/07/09 v4521 L3 Basic definitions
- l3expan.sty    2013/07/09 v4521 L3 Argument expansion
-    l3tl.sty    2013/04/24 v4482 L3 Token lists
-   l3seq.sty    2013/05/26 v4500 L3 Sequences and stacks
-   l3int.sty    2013/04/24 v4482 L3 Integers
- l3quark.sty    2013/07/09 v4521 L3 Quarks
-   l3prg.sty    2013/04/24 v4482 L3 Control structures
- l3clist.sty    2013/05/26 v4500 L3 Comma separated lists
- l3token.sty    2013/04/24 v4482 L3 Experimental token manipulation
-  l3prop.sty    2013/01/09 v4423 L3 Property lists
-   l3msg.sty    2013/01/08 v4412 L3 Messages
-  l3file.sty    2013/05/01 v4483 L3 File and I/O operations
-  l3skip.sty    2013/01/13 v4444 L3 Dimensions and skips
-  l3keys.sty    2013/07/12 v4544 L3 Experimental key-value interfaces
-    l3fp.sty    2013/07/09 v4521 L3 Floating points
-   l3box.sty    2013/04/24 v4482 L3 Experimental boxes
-l3coffins.sty    2012/09/09 v4212 L3 Coffin code layer
- l3color.sty    2012/08/29 v4156 L3 Experimental color support
-l3luatex.sty    2012/08/03 v4049 L3 Experimental LuaTeX-specific functions
-l3candidates.sty    2013/07/09 v4521 L3 Experimental additions to l3kernel
- l3regex.sty    2013/04/24 v4482 L3 Experimental regular expressions
-l3tl-build.sty    2011/12/08 v3039 L3 Experimental token list construction
-l3tl-analysis.sty    2011/12/08 v3039 L3 Experimental token lists analysis
-   l3str.sty    2013/04/24 v4482 L3 Experimental strings
-  l3flag.sty    2011/12/08 v3039 L3 Experimental flags
-l3str-convert.sty    2013/01/08 v4339 L3 Experimental string encoding conversio
-ns
-l3keys2e.sty    2013/07/12 v4544 LaTeX2e option processing using LaTeX3 keys
-  xparse.sty    2013/07/12 v4544 L3 Experimental document command parser
-atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
   minted.sty    2010/01/27 v1.6 Yet another Pygments shim for LaTeX
    float.sty    2001/11/08 v1.3d Float enhancements (AL)
   ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
@@ -73757,6 +71659,7 @@ letltxmacro.sty    2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
  hopatch.sty    2012/05/28 v1.2 Wrapper for package hooks (HO)
 xcolor-patch.sty    2011/01/30 xcolor patch
 atveryend.sty    2011/06/30 v1.8 Hooks at the very end of document (HO)
+atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
 refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
  hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
  auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
@@ -73791,6 +71694,31 @@ todonotes.sty    2012/07/25
   lineno.sty    2005/11/02 line numbers on paragraphs v4.41
 fancyhdr.sty    
 mdframed.sty    2013/07/01 1.9b: mdframed
+  xparse.sty    2013/07/12 v4544 L3 Experimental document command parser
+   expl3.sty    2013/07/12 v4544 L3 Experimental code bundle wrapper
+ l3names.sty    2012/12/07 v4346 L3 Namespace for primitives
+l3bootstrap.sty    2013/01/08 v4420 L3 Experimental bootstrap code
+    etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
+l3basics.sty    2013/07/09 v4521 L3 Basic definitions
+ l3expan.sty    2013/07/09 v4521 L3 Argument expansion
+    l3tl.sty    2013/04/24 v4482 L3 Token lists
+   l3seq.sty    2013/05/26 v4500 L3 Sequences and stacks
+   l3int.sty    2013/04/24 v4482 L3 Integers
+ l3quark.sty    2013/07/09 v4521 L3 Quarks
+   l3prg.sty    2013/04/24 v4482 L3 Control structures
+ l3clist.sty    2013/05/26 v4500 L3 Comma separated lists
+ l3token.sty    2013/04/24 v4482 L3 Experimental token manipulation
+  l3prop.sty    2013/01/09 v4423 L3 Property lists
+   l3msg.sty    2013/01/08 v4412 L3 Messages
+  l3file.sty    2013/05/01 v4483 L3 File and I/O operations
+  l3skip.sty    2013/01/13 v4444 L3 Dimensions and skips
+  l3keys.sty    2013/07/12 v4544 L3 Experimental key-value interfaces
+    l3fp.sty    2013/07/09 v4521 L3 Floating points
+   l3box.sty    2013/04/24 v4482 L3 Experimental boxes
+l3coffins.sty    2012/09/09 v4212 L3 Coffin code layer
+ l3color.sty    2012/08/29 v4156 L3 Experimental color support
+l3luatex.sty    2012/08/03 v4049 L3 Experimental LuaTeX-specific functions
+l3candidates.sty    2013/07/09 v4521 L3 Experimental additions to l3kernel
 etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
@@ -73837,6 +71765,9 @@ downloaded_figures/f_plot.png
 
 LaTeX Warning: There were undefined references.
 
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
  )
 (see the transcript file for additional information)</usr/share/texlive/texmf-d
 ist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fo
@@ -73862,7 +71793,7 @@ are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/te
 xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/share/texlive/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/share/texlive/texmf-di
 st/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on testdoc.pdf (21 pages, ).
+Output written on testdoc.pdf (20 pages, ).
 Transcript written on testdoc.log.
 + makeindex testdoc
 This is makeindex, version 2.15 [TeX Live 2013] (kpathsea + Thai support).
@@ -73936,40 +71867,6 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
 
 
-(/usr/share/texlive/texmf-dist/tex/latex/media9/media9.sty
-(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
-(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/l3names.sty
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/l3experimental/l3str/l3regex.sty
-
-(/usr/share/texlive/texmf-dist/tex/latex/l3experimental/l3str/l3tl-analysis.sty
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/l3experimental/l3str/l3str-convert.sty
-)) 
-
-
 (/home/hpl/texmf/tex/latex/misc/minted.sty
 
 
@@ -74073,6 +71970,31 @@ gs.code.tex
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/mdframed/mdframed.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/l3names.sty
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-abspage.sty
 
@@ -74109,21 +72031,11 @@ f/fonts/map/pdftex/updmap/pdftex.map}] (./testdoc.toc) [2] [3] (./testdoc.tdo)
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
 [7]
 
-/src/manual/fig/wave1D.pdf>]<<VPlayer.swf>><<../doc/src/manual/mov/wave.ogg>><<
-../doc/src/manual/mov/wave.mpeg>>
-Overfull \hbox (210.5516pt too wide) 
-[]\OT1/cmr/m/n/10 (-20) (Movie []: play [][]$\OT1/cmtt/m/n/10 wave . html$[][][
-][][][][]\OT1/cmr/m/n/10 (-20) ) [][][][][] 
-<<../doc/src/manual/mov/wave.webm>>
-Overfull \hbox (74.3882pt too wide) 
-[]\OT1/cmr/m/n/10 (-20) Caption for an-i-mated col-lec-tion of im-ages. (Movie 
-of files []
-[9] <../doc/src/manual/fig/wave1D.png, id=288, 586.8324pt x 442.2924pt>
+/src/manual/fig/wave1D.pdf>]
+<../doc/src/manual/fig/wave1D.png, id=241, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=290, 578.16pt x 433.62pt>
-<use downloaded_figures/f_plot.png>
-
-c/src/manual/fig/wave1D.png>]
+<downloaded_figures/f_plot.png, id=243, 578.16pt x 433.62pt>
+<use downloaded_figures/f_plot.png> [9 <./downloaded_figures/f_plot.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -74148,7 +72060,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
-[11 <./downloaded_figures/f_plot.png>] [12]
+[10 <../doc/src/manual/fig/wave1D.png>] [11]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -74171,7 +72083,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 837.
+t line 754.
 
 
 
@@ -74191,7 +72103,7 @@ t line 837.
 
 
 
-t line 846.
+t line 763.
 
 
 
@@ -74211,7 +72123,7 @@ t line 846.
 
 
 
-t line 850.
+t line 767.
 
 
 
@@ -74281,7 +72193,7 @@ t line 850.
 
 .
 
-[13]
+[12]
 Overfull \hbox (5.05241pt too wide) 
 [][][]\OT1/cmtt/m/n/8 http://www.springer.com/mathematics/computational+science
 +%26+engineering/book/978-3-642-23098-1| 
@@ -74290,17 +72202,17 @@ Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on .
 
-[14] (./testdoc.out.pyg) [15] (./testdoc.out.pyg) [16] [17] (./testdoc.bbl
-[18]) [19] [20] [21]
+[13] [14] (./testdoc.out.pyg) (./testdoc.out.pyg) [15] [16] (./testdoc.bbl
+[17] [18]) [19] [20]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
-(./testdoc.ind [22]
+(./testdoc.ind [21]
 Overfull \hbox (9.21391pt too wide) 
 []\OT1/cmr/m/n/10 (-20) test \OT1/cmtt/m/n/10 two \OT1/cmr/m/n/10 (-20) (sep-a-
 rate) \OT1/cmtt/m/n/10 verbatim expressions \OT1/cmr/m/n/10 (-20) which
-[23]) (./testdoc.aux)
+[22]) (./testdoc.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -74347,41 +72259,6 @@ livier@maths.lth.se>
 listings.sty    2013/07/10 1.5 (Carsten Heinz)
  lstmisc.sty    2013/07/10 1.5 (Carsten Heinz)
 listings.cfg    2013/06/27 1.5pre1 listings configuration
-  media9.sty    2013/07/19 v0.29 acrobat-9/X compatible media
-   expl3.sty    2013/07/12 v4544 L3 Experimental code bundle wrapper
- l3names.sty    2012/12/07 v4346 L3 Namespace for primitives
-l3bootstrap.sty    2013/01/08 v4420 L3 Experimental bootstrap code
-    etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
-l3basics.sty    2013/07/09 v4521 L3 Basic definitions
- l3expan.sty    2013/07/09 v4521 L3 Argument expansion
-    l3tl.sty    2013/04/24 v4482 L3 Token lists
-   l3seq.sty    2013/05/26 v4500 L3 Sequences and stacks
-   l3int.sty    2013/04/24 v4482 L3 Integers
- l3quark.sty    2013/07/09 v4521 L3 Quarks
-   l3prg.sty    2013/04/24 v4482 L3 Control structures
- l3clist.sty    2013/05/26 v4500 L3 Comma separated lists
- l3token.sty    2013/04/24 v4482 L3 Experimental token manipulation
-  l3prop.sty    2013/01/09 v4423 L3 Property lists
-   l3msg.sty    2013/01/08 v4412 L3 Messages
-  l3file.sty    2013/05/01 v4483 L3 File and I/O operations
-  l3skip.sty    2013/01/13 v4444 L3 Dimensions and skips
-  l3keys.sty    2013/07/12 v4544 L3 Experimental key-value interfaces
-    l3fp.sty    2013/07/09 v4521 L3 Floating points
-   l3box.sty    2013/04/24 v4482 L3 Experimental boxes
-l3coffins.sty    2012/09/09 v4212 L3 Coffin code layer
- l3color.sty    2012/08/29 v4156 L3 Experimental color support
-l3luatex.sty    2012/08/03 v4049 L3 Experimental LuaTeX-specific functions
-l3candidates.sty    2013/07/09 v4521 L3 Experimental additions to l3kernel
- l3regex.sty    2013/04/24 v4482 L3 Experimental regular expressions
-l3tl-build.sty    2011/12/08 v3039 L3 Experimental token list construction
-l3tl-analysis.sty    2011/12/08 v3039 L3 Experimental token lists analysis
-   l3str.sty    2013/04/24 v4482 L3 Experimental strings
-  l3flag.sty    2011/12/08 v3039 L3 Experimental flags
-l3str-convert.sty    2013/01/08 v4339 L3 Experimental string encoding conversio
-ns
-l3keys2e.sty    2013/07/12 v4544 LaTeX2e option processing using LaTeX3 keys
-  xparse.sty    2013/07/12 v4544 L3 Experimental document command parser
-atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
   minted.sty    2010/01/27 v1.6 Yet another Pygments shim for LaTeX
    float.sty    2001/11/08 v1.3d Float enhancements (AL)
   ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
@@ -74413,6 +72290,7 @@ letltxmacro.sty    2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
  hopatch.sty    2012/05/28 v1.2 Wrapper for package hooks (HO)
 xcolor-patch.sty    2011/01/30 xcolor patch
 atveryend.sty    2011/06/30 v1.8 Hooks at the very end of document (HO)
+atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
 refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
  hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
  auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
@@ -74447,6 +72325,31 @@ todonotes.sty    2012/07/25
   lineno.sty    2005/11/02 line numbers on paragraphs v4.41
 fancyhdr.sty    
 mdframed.sty    2013/07/01 1.9b: mdframed
+  xparse.sty    2013/07/12 v4544 L3 Experimental document command parser
+   expl3.sty    2013/07/12 v4544 L3 Experimental code bundle wrapper
+ l3names.sty    2012/12/07 v4346 L3 Namespace for primitives
+l3bootstrap.sty    2013/01/08 v4420 L3 Experimental bootstrap code
+    etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
+l3basics.sty    2013/07/09 v4521 L3 Basic definitions
+ l3expan.sty    2013/07/09 v4521 L3 Argument expansion
+    l3tl.sty    2013/04/24 v4482 L3 Token lists
+   l3seq.sty    2013/05/26 v4500 L3 Sequences and stacks
+   l3int.sty    2013/04/24 v4482 L3 Integers
+ l3quark.sty    2013/07/09 v4521 L3 Quarks
+   l3prg.sty    2013/04/24 v4482 L3 Control structures
+ l3clist.sty    2013/05/26 v4500 L3 Comma separated lists
+ l3token.sty    2013/04/24 v4482 L3 Experimental token manipulation
+  l3prop.sty    2013/01/09 v4423 L3 Property lists
+   l3msg.sty    2013/01/08 v4412 L3 Messages
+  l3file.sty    2013/05/01 v4483 L3 File and I/O operations
+  l3skip.sty    2013/01/13 v4444 L3 Dimensions and skips
+  l3keys.sty    2013/07/12 v4544 L3 Experimental key-value interfaces
+    l3fp.sty    2013/07/09 v4521 L3 Floating points
+   l3box.sty    2013/04/24 v4482 L3 Experimental boxes
+l3coffins.sty    2012/09/09 v4212 L3 Coffin code layer
+ l3color.sty    2012/08/29 v4156 L3 Experimental color support
+l3luatex.sty    2012/08/03 v4049 L3 Experimental LuaTeX-specific functions
+l3candidates.sty    2013/07/09 v4521 L3 Experimental additions to l3kernel
 etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
@@ -74523,7 +72426,7 @@ are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/te
 xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/share/texlive/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/share/texlive/texmf-di
 st/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on testdoc.pdf (23 pages, ).
+Output written on testdoc.pdf (22 pages, ).
 Transcript written on testdoc.log.
 + pdflatex -shell-escape testdoc
 This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
@@ -74577,40 +72480,6 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (/home/hpl/texmf/tex/latex/misc/anslistings.sty
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/media9/media9.sty
-(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
-(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/l3names.sty
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/l3experimental/l3str/l3regex.sty
-
-(/usr/share/texlive/texmf-dist/tex/latex/l3experimental/l3str/l3tl-analysis.sty
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/l3experimental/l3str/l3str-convert.sty
-)) 
 
 
 (/home/hpl/texmf/tex/latex/misc/minted.sty
@@ -74716,6 +72585,31 @@ gs.code.tex
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/mdframed/mdframed.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/l3names.sty
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-abspage.sty
 
@@ -74752,21 +72646,11 @@ f/fonts/map/pdftex/updmap/pdftex.map}] (./testdoc.toc) [2] [3] (./testdoc.tdo)
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
 [7]
 
-/src/manual/fig/wave1D.pdf>]<<VPlayer.swf>><<../doc/src/manual/mov/wave.ogg>><<
-../doc/src/manual/mov/wave.mpeg>>
-Overfull \hbox (210.5516pt too wide) 
-[]\OT1/cmr/m/n/10 (-20) (Movie []: play [][]$\OT1/cmtt/m/n/10 wave . html$[][][
-][][][][]\OT1/cmr/m/n/10 (-20) ) [][][][][] 
-<<../doc/src/manual/mov/wave.webm>>
-Overfull \hbox (74.3882pt too wide) 
-[]\OT1/cmr/m/n/10 (-20) Caption for an-i-mated col-lec-tion of im-ages. (Movie 
-of files []
-[9] <../doc/src/manual/fig/wave1D.png, id=288, 586.8324pt x 442.2924pt>
+/src/manual/fig/wave1D.pdf>]
+<../doc/src/manual/fig/wave1D.png, id=241, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=290, 578.16pt x 433.62pt>
-<use downloaded_figures/f_plot.png>
-
-c/src/manual/fig/wave1D.png>]
+<downloaded_figures/f_plot.png, id=243, 578.16pt x 433.62pt>
+<use downloaded_figures/f_plot.png> [9 <./downloaded_figures/f_plot.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -74791,7 +72675,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
-[11 <./downloaded_figures/f_plot.png>] [12]
+[10 <../doc/src/manual/fig/wave1D.png>] [11]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -74812,7 +72696,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
-[13]
+[12]
 Overfull \hbox (5.05241pt too wide) 
 [][][]\OT1/cmtt/m/n/8 http://www.springer.com/mathematics/computational+science
 +%26+engineering/book/978-3-642-23098-1| 
@@ -74821,17 +72705,17 @@ Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on .
 
-[14] (./testdoc.out.pyg) [15] (./testdoc.out.pyg) [16] [17] (./testdoc.bbl
-[18]) [19] [20] [21]
+[13] [14] (./testdoc.out.pyg) (./testdoc.out.pyg) [15] [16] (./testdoc.bbl
+[17] [18]) [19] [20]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
-(./testdoc.ind [22]
+(./testdoc.ind [21]
 Overfull \hbox (9.21391pt too wide) 
 []\OT1/cmr/m/n/10 (-20) test \OT1/cmtt/m/n/10 two \OT1/cmr/m/n/10 (-20) (sep-a-
 rate) \OT1/cmtt/m/n/10 verbatim expressions \OT1/cmr/m/n/10 (-20) which
-[23]) (./testdoc.aux)
+[22]) (./testdoc.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -74878,41 +72762,6 @@ livier@maths.lth.se>
 listings.sty    2013/07/10 1.5 (Carsten Heinz)
  lstmisc.sty    2013/07/10 1.5 (Carsten Heinz)
 listings.cfg    2013/06/27 1.5pre1 listings configuration
-  media9.sty    2013/07/19 v0.29 acrobat-9/X compatible media
-   expl3.sty    2013/07/12 v4544 L3 Experimental code bundle wrapper
- l3names.sty    2012/12/07 v4346 L3 Namespace for primitives
-l3bootstrap.sty    2013/01/08 v4420 L3 Experimental bootstrap code
-    etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
-l3basics.sty    2013/07/09 v4521 L3 Basic definitions
- l3expan.sty    2013/07/09 v4521 L3 Argument expansion
-    l3tl.sty    2013/04/24 v4482 L3 Token lists
-   l3seq.sty    2013/05/26 v4500 L3 Sequences and stacks
-   l3int.sty    2013/04/24 v4482 L3 Integers
- l3quark.sty    2013/07/09 v4521 L3 Quarks
-   l3prg.sty    2013/04/24 v4482 L3 Control structures
- l3clist.sty    2013/05/26 v4500 L3 Comma separated lists
- l3token.sty    2013/04/24 v4482 L3 Experimental token manipulation
-  l3prop.sty    2013/01/09 v4423 L3 Property lists
-   l3msg.sty    2013/01/08 v4412 L3 Messages
-  l3file.sty    2013/05/01 v4483 L3 File and I/O operations
-  l3skip.sty    2013/01/13 v4444 L3 Dimensions and skips
-  l3keys.sty    2013/07/12 v4544 L3 Experimental key-value interfaces
-    l3fp.sty    2013/07/09 v4521 L3 Floating points
-   l3box.sty    2013/04/24 v4482 L3 Experimental boxes
-l3coffins.sty    2012/09/09 v4212 L3 Coffin code layer
- l3color.sty    2012/08/29 v4156 L3 Experimental color support
-l3luatex.sty    2012/08/03 v4049 L3 Experimental LuaTeX-specific functions
-l3candidates.sty    2013/07/09 v4521 L3 Experimental additions to l3kernel
- l3regex.sty    2013/04/24 v4482 L3 Experimental regular expressions
-l3tl-build.sty    2011/12/08 v3039 L3 Experimental token list construction
-l3tl-analysis.sty    2011/12/08 v3039 L3 Experimental token lists analysis
-   l3str.sty    2013/04/24 v4482 L3 Experimental strings
-  l3flag.sty    2011/12/08 v3039 L3 Experimental flags
-l3str-convert.sty    2013/01/08 v4339 L3 Experimental string encoding conversio
-ns
-l3keys2e.sty    2013/07/12 v4544 LaTeX2e option processing using LaTeX3 keys
-  xparse.sty    2013/07/12 v4544 L3 Experimental document command parser
-atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
   minted.sty    2010/01/27 v1.6 Yet another Pygments shim for LaTeX
    float.sty    2001/11/08 v1.3d Float enhancements (AL)
   ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
@@ -74944,6 +72793,7 @@ letltxmacro.sty    2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
  hopatch.sty    2012/05/28 v1.2 Wrapper for package hooks (HO)
 xcolor-patch.sty    2011/01/30 xcolor patch
 atveryend.sty    2011/06/30 v1.8 Hooks at the very end of document (HO)
+atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
 refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
  hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
  auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
@@ -74978,6 +72828,31 @@ todonotes.sty    2012/07/25
   lineno.sty    2005/11/02 line numbers on paragraphs v4.41
 fancyhdr.sty    
 mdframed.sty    2013/07/01 1.9b: mdframed
+  xparse.sty    2013/07/12 v4544 L3 Experimental document command parser
+   expl3.sty    2013/07/12 v4544 L3 Experimental code bundle wrapper
+ l3names.sty    2012/12/07 v4346 L3 Namespace for primitives
+l3bootstrap.sty    2013/01/08 v4420 L3 Experimental bootstrap code
+    etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
+l3basics.sty    2013/07/09 v4521 L3 Basic definitions
+ l3expan.sty    2013/07/09 v4521 L3 Argument expansion
+    l3tl.sty    2013/04/24 v4482 L3 Token lists
+   l3seq.sty    2013/05/26 v4500 L3 Sequences and stacks
+   l3int.sty    2013/04/24 v4482 L3 Integers
+ l3quark.sty    2013/07/09 v4521 L3 Quarks
+   l3prg.sty    2013/04/24 v4482 L3 Control structures
+ l3clist.sty    2013/05/26 v4500 L3 Comma separated lists
+ l3token.sty    2013/04/24 v4482 L3 Experimental token manipulation
+  l3prop.sty    2013/01/09 v4423 L3 Property lists
+   l3msg.sty    2013/01/08 v4412 L3 Messages
+  l3file.sty    2013/05/01 v4483 L3 File and I/O operations
+  l3skip.sty    2013/01/13 v4444 L3 Dimensions and skips
+  l3keys.sty    2013/07/12 v4544 L3 Experimental key-value interfaces
+    l3fp.sty    2013/07/09 v4521 L3 Floating points
+   l3box.sty    2013/04/24 v4482 L3 Experimental boxes
+l3coffins.sty    2012/09/09 v4212 L3 Coffin code layer
+ l3color.sty    2012/08/29 v4156 L3 Experimental color support
+l3luatex.sty    2012/08/03 v4049 L3 Experimental LuaTeX-specific functions
+l3candidates.sty    2013/07/09 v4521 L3 Experimental additions to l3kernel
 etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
@@ -75048,7 +72923,7 @@ are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/te
 xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/share/texlive/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/share/texlive/texmf-di
 st/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on testdoc.pdf (23 pages, ).
+Output written on testdoc.pdf (22 pages, ).
 Transcript written on testdoc.log.
 + cp testdoc.tex testdoc.tex_ptex2tex
 + system doconce ptex2tex testdoc -DBOOK -DPALATINO 'sys=begin{quote}begin{Verbatim}@end{Verbatim}end{quote}' pypro=ans:nt envir=minted
@@ -75065,15 +72940,6 @@ translating doconce text in tmp_mako__testdoc.do.txt to plain
 
 FIX: multi-line caption
 
- Movie
-based on collection of frames
-(here just a few frames compared with the full wavepacket.mpeg movie).
-label{mymov}
-
--- fixed to one line
-
-FIX: multi-line caption
-
  A long
 caption spanning
 several lines and containing verbatim words like `my_file_v1` and `my_file_v2`
@@ -75085,10 +72951,6 @@ FIX: FIGURE not at the beginning of the line - 1 fixes
  FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
 
 
-FIX: MOVIE not at the beginning of the line - 1 fixes
-   MOVIE: [../doc/src/manual/mov/wave.webm, width=700 height=400] Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). label{mymov} 
-
-
 FIX: !bhint not at the beginning of the line - 1 fixes
   !bhint
 
@@ -75097,7 +72959,7 @@ FIX: !ehint not at the beginning of the line - 1 fixes
   !ehint
 
 
-*** The total of 6 fixes above should be incorporated in the file!
+*** The total of 4 fixes above should be incorporated in the file!
 
 
 copying from regex "subroutine" until end of file
@@ -75110,9 +72972,6 @@ warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
 
 found info about 9 exercises, written to .testdoc.exerinfo
-*** made link to new HTML file wave.html with code to display the movie ../doc/src/manual/mov/wave.ogg
-*** made link to new HTML file wave.html with code to display the movie ../doc/src/manual/mov/wave.mpeg
-*** made link to new HTML file wave.html with code to display the movie ../doc/src/manual/mov/wave.webm
 output in testdoc.txt
 + '[' 0 -ne 0 ']'
 + system doconce format st testdoc.do.txt --examples_as_exercises
@@ -75123,15 +72982,6 @@ translating doconce text in tmp_mako__testdoc.do.txt to st
 
 FIX: multi-line caption
 
- Movie
-based on collection of frames
-(here just a few frames compared with the full wavepacket.mpeg movie).
-label{mymov}
-
--- fixed to one line
-
-FIX: multi-line caption
-
  A long
 caption spanning
 several lines and containing verbatim words like `my_file_v1` and `my_file_v2`
@@ -75143,10 +72993,6 @@ FIX: FIGURE not at the beginning of the line - 1 fixes
  FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
 
 
-FIX: MOVIE not at the beginning of the line - 1 fixes
-   MOVIE: [../doc/src/manual/mov/wave.webm, width=700 height=400] Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). label{mymov} 
-
-
 FIX: !bhint not at the beginning of the line - 1 fixes
   !bhint
 
@@ -75155,7 +73001,7 @@ FIX: !ehint not at the beginning of the line - 1 fixes
   !ehint
 
 
-*** The total of 6 fixes above should be incorporated in the file!
+*** The total of 4 fixes above should be incorporated in the file!
 
 
 copying from regex "subroutine" until end of file
@@ -75168,9 +73014,6 @@ warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
 
 found info about 9 exercises, written to .testdoc.exerinfo
-*** made link to new HTML file wave.html with code to display the movie ../doc/src/manual/mov/wave.ogg
-*** made link to new HTML file wave.html with code to display the movie ../doc/src/manual/mov/wave.mpeg
-*** made link to new HTML file wave.html with code to display the movie ../doc/src/manual/mov/wave.webm
 output in testdoc.st
 + '[' 0 -ne 0 ']'
 + system doconce format sphinx testdoc.do.txt --examples_as_exercises
@@ -75178,15 +73021,6 @@ output in testdoc.st
 running preprocess -DFORMAT=sphinx -DDEVICE=screen  testdoc.do.txt > tmp_preprocess__testdoc.do.txt
 running mako on tmp_preprocess__testdoc.do.txt to make tmp_mako__testdoc.do.txt
 translating doconce text in tmp_mako__testdoc.do.txt to sphinx
-
-FIX: multi-line caption
-
- Movie
-based on collection of frames
-(here just a few frames compared with the full wavepacket.mpeg movie).
-label{mymov}
-
--- fixed to one line
 
 FIX: multi-line caption
 
@@ -75201,10 +73035,6 @@ FIX: FIGURE not at the beginning of the line - 1 fixes
  FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
 
 
-FIX: MOVIE not at the beginning of the line - 1 fixes
-   MOVIE: [../doc/src/manual/mov/wave.webm, width=700 height=400] Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). label{mymov} 
-
-
 FIX: !bhint not at the beginning of the line - 1 fixes
   !bhint
 
@@ -75213,7 +73043,7 @@ FIX: !ehint not at the beginning of the line - 1 fixes
   !ehint
 
 
-*** The total of 6 fixes above should be incorporated in the file!
+*** The total of 4 fixes above should be incorporated in the file!
 
 
 
@@ -75267,15 +73097,6 @@ translating doconce text in tmp_mako__testdoc.do.txt to sphinx
 
 FIX: multi-line caption
 
- Movie
-based on collection of frames
-(here just a few frames compared with the full wavepacket.mpeg movie).
-label{mymov}
-
--- fixed to one line
-
-FIX: multi-line caption
-
  A long
 caption spanning
 several lines and containing verbatim words like `my_file_v1` and `my_file_v2`
@@ -75287,10 +73108,6 @@ FIX: FIGURE not at the beginning of the line - 1 fixes
  FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
 
 
-FIX: MOVIE not at the beginning of the line - 1 fixes
-   MOVIE: [../doc/src/manual/mov/wave.webm, width=700 height=400] Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). label{mymov} 
-
-
 FIX: !bhint not at the beginning of the line - 1 fixes
   !bhint
 
@@ -75299,7 +73116,7 @@ FIX: !ehint not at the beginning of the line - 1 fixes
   !ehint
 
 
-*** The total of 6 fixes above should be incorporated in the file!
+*** The total of 4 fixes above should be incorporated in the file!
 
 
 
@@ -75423,15 +73240,6 @@ translating doconce text in tmp_mako__testdoc.do.txt to rst
 
 FIX: multi-line caption
 
- Movie
-based on collection of frames
-(here just a few frames compared with the full wavepacket.mpeg movie).
-label{mymov}
-
--- fixed to one line
-
-FIX: multi-line caption
-
  A long
 caption spanning
 several lines and containing verbatim words like `my_file_v1` and `my_file_v2`
@@ -75443,10 +73251,6 @@ FIX: FIGURE not at the beginning of the line - 1 fixes
  FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
 
 
-FIX: MOVIE not at the beginning of the line - 1 fixes
-   MOVIE: [../doc/src/manual/mov/wave.webm, width=700 height=400] Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). label{mymov} 
-
-
 FIX: !bhint not at the beginning of the line - 1 fixes
   !bhint
 
@@ -75455,7 +73259,7 @@ FIX: !ehint not at the beginning of the line - 1 fixes
   !ehint
 
 
-*** The total of 6 fixes above should be incorporated in the file!
+*** The total of 4 fixes above should be incorporated in the file!
 
 
 copying from regex "subroutine" until end of file
@@ -75481,15 +73285,6 @@ translating doconce text in tmp_mako__testdoc.do.txt to epytext
 
 FIX: multi-line caption
 
- Movie
-based on collection of frames
-(here just a few frames compared with the full wavepacket.mpeg movie).
-label{mymov}
-
--- fixed to one line
-
-FIX: multi-line caption
-
  A long
 caption spanning
 several lines and containing verbatim words like `my_file_v1` and `my_file_v2`
@@ -75501,10 +73296,6 @@ FIX: FIGURE not at the beginning of the line - 1 fixes
  FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
 
 
-FIX: MOVIE not at the beginning of the line - 1 fixes
-   MOVIE: [../doc/src/manual/mov/wave.webm, width=700 height=400] Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). label{mymov} 
-
-
 FIX: !bhint not at the beginning of the line - 1 fixes
   !bhint
 
@@ -75513,7 +73304,7 @@ FIX: !ehint not at the beginning of the line - 1 fixes
   !ehint
 
 
-*** The total of 6 fixes above should be incorporated in the file!
+*** The total of 4 fixes above should be incorporated in the file!
 
 
 copying from regex "subroutine" until end of file
@@ -75526,9 +73317,6 @@ warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
 
 found info about 9 exercises, written to .testdoc.exerinfo
-*** made link to new HTML file wave.html with code to display the movie ../doc/src/manual/mov/wave.ogg
-*** made link to new HTML file wave.html with code to display the movie ../doc/src/manual/mov/wave.mpeg
-*** made link to new HTML file wave.html with code to display the movie ../doc/src/manual/mov/wave.webm
 output in testdoc.epytext
 + '[' 0 -ne 0 ']'
 + system doconce format pandoc testdoc.do.txt --examples_as_exercises
@@ -75536,15 +73324,6 @@ output in testdoc.epytext
 running preprocess -DFORMAT=pandoc -DDEVICE=screen  testdoc.do.txt > tmp_preprocess__testdoc.do.txt
 running mako on tmp_preprocess__testdoc.do.txt to make tmp_mako__testdoc.do.txt
 translating doconce text in tmp_mako__testdoc.do.txt to pandoc
-
-FIX: multi-line caption
-
- Movie
-based on collection of frames
-(here just a few frames compared with the full wavepacket.mpeg movie).
-label{mymov}
-
--- fixed to one line
 
 FIX: multi-line caption
 
@@ -75559,10 +73338,6 @@ FIX: FIGURE not at the beginning of the line - 1 fixes
  FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
 
 
-FIX: MOVIE not at the beginning of the line - 1 fixes
-   MOVIE: [../doc/src/manual/mov/wave.webm, width=700 height=400] Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). label{mymov} 
-
-
 FIX: !bhint not at the beginning of the line - 1 fixes
   !bhint
 
@@ -75571,7 +73346,7 @@ FIX: !ehint not at the beginning of the line - 1 fixes
   !ehint
 
 
-*** The total of 6 fixes above should be incorporated in the file!
+*** The total of 4 fixes above should be incorporated in the file!
 
 
 copying from regex "subroutine" until end of file
@@ -75605,15 +73380,6 @@ translating doconce text in tmp_mako__testdoc.do.txt to mwiki
 
 FIX: multi-line caption
 
- Movie
-based on collection of frames
-(here just a few frames compared with the full wavepacket.mpeg movie).
-label{mymov}
-
--- fixed to one line
-
-FIX: multi-line caption
-
  A long
 caption spanning
 several lines and containing verbatim words like `my_file_v1` and `my_file_v2`
@@ -75625,10 +73391,6 @@ FIX: FIGURE not at the beginning of the line - 1 fixes
  FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
 
 
-FIX: MOVIE not at the beginning of the line - 1 fixes
-   MOVIE: [../doc/src/manual/mov/wave.webm, width=700 height=400] Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). label{mymov} 
-
-
 FIX: !bhint not at the beginning of the line - 1 fixes
   !bhint
 
@@ -75637,7 +73399,7 @@ FIX: !ehint not at the beginning of the line - 1 fixes
   !ehint
 
 
-*** The total of 6 fixes above should be incorporated in the file!
+*** The total of 4 fixes above should be incorporated in the file!
 
 
 copying from regex "subroutine" until end of file
@@ -75671,9 +73433,6 @@ figure file ../doc/src/manual/fig/wave1D:
  ...for wikipedia/wikibooks you must upload image file df2s8765s_plot.png to
     common.wikimedia.org
  ...for now we use local file Df2s8765s plot.png
-*** made link to new HTML file wave.html with code to display the movie ../doc/src/manual/mov/wave.ogg
-*** made link to new HTML file wave.html with code to display the movie ../doc/src/manual/mov/wave.mpeg
-*** made link to new HTML file wave.html with code to display the movie ../doc/src/manual/mov/wave.webm
 *** warning: reference to label "my:eq1" in an equation does not work in MediaWiki
 output in testdoc.mwiki
 + '[' 0 -ne 0 ']'
@@ -75682,15 +73441,6 @@ output in testdoc.mwiki
 running preprocess -DFORMAT=cwiki -DDEVICE=screen  testdoc.do.txt > tmp_preprocess__testdoc.do.txt
 running mako on tmp_preprocess__testdoc.do.txt to make tmp_mako__testdoc.do.txt
 translating doconce text in tmp_mako__testdoc.do.txt to cwiki
-
-FIX: multi-line caption
-
- Movie
-based on collection of frames
-(here just a few frames compared with the full wavepacket.mpeg movie).
-label{mymov}
-
--- fixed to one line
 
 FIX: multi-line caption
 
@@ -75705,10 +73455,6 @@ FIX: FIGURE not at the beginning of the line - 1 fixes
  FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
 
 
-FIX: MOVIE not at the beginning of the line - 1 fixes
-   MOVIE: [../doc/src/manual/mov/wave.webm, width=700 height=400] Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). label{mymov} 
-
-
 FIX: !bhint not at the beginning of the line - 1 fixes
   !bhint
 
@@ -75717,7 +73463,7 @@ FIX: !ehint not at the beginning of the line - 1 fixes
   !ehint
 
 
-*** The total of 6 fixes above should be incorporated in the file!
+*** The total of 4 fixes above should be incorporated in the file!
 
 
 copying from regex "subroutine" until end of file
@@ -75733,9 +73479,6 @@ found info about 9 exercises, written to .testdoc.exerinfo
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ... found!
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format cwiki
-*** made link to new HTML file wave.html with code to display the movie ../doc/src/manual/mov/wave.ogg
-*** made link to new HTML file wave.html with code to display the movie ../doc/src/manual/mov/wave.mpeg
-*** made link to new HTML file wave.html with code to display the movie ../doc/src/manual/mov/wave.webm
 output in testdoc.cwiki
 + '[' 0 -ne 0 ']'
 + system doconce format ipynb testdoc.do.txt --examples_as_exercises
@@ -75743,15 +73486,6 @@ output in testdoc.cwiki
 running preprocess -DFORMAT=ipynb -DDEVICE=screen  testdoc.do.txt > tmp_preprocess__testdoc.do.txt
 running mako on tmp_preprocess__testdoc.do.txt to make tmp_mako__testdoc.do.txt
 translating doconce text in tmp_mako__testdoc.do.txt to ipynb
-
-FIX: multi-line caption
-
- Movie
-based on collection of frames
-(here just a few frames compared with the full wavepacket.mpeg movie).
-label{mymov}
-
--- fixed to one line
 
 FIX: multi-line caption
 
@@ -75766,10 +73500,6 @@ FIX: FIGURE not at the beginning of the line - 1 fixes
  FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
 
 
-FIX: MOVIE not at the beginning of the line - 1 fixes
-   MOVIE: [../doc/src/manual/mov/wave.webm, width=700 height=400] Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). label{mymov} 
-
-
 FIX: !bhint not at the beginning of the line - 1 fixes
   !bhint
 
@@ -75778,7 +73508,7 @@ FIX: !ehint not at the beginning of the line - 1 fixes
   !ehint
 
 
-*** The total of 6 fixes above should be incorporated in the file!
+*** The total of 4 fixes above should be incorporated in the file!
 
 
 copying from regex "subroutine" until end of file
@@ -75805,15 +73535,6 @@ translating doconce text in tmp_mako__testdoc.do.txt to gwiki
 
 FIX: multi-line caption
 
- Movie
-based on collection of frames
-(here just a few frames compared with the full wavepacket.mpeg movie).
-label{mymov}
-
--- fixed to one line
-
-FIX: multi-line caption
-
  A long
 caption spanning
 several lines and containing verbatim words like `my_file_v1` and `my_file_v2`
@@ -75825,10 +73546,6 @@ FIX: FIGURE not at the beginning of the line - 1 fixes
  FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
 
 
-FIX: MOVIE not at the beginning of the line - 1 fixes
-   MOVIE: [../doc/src/manual/mov/wave.webm, width=700 height=400] Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). label{mymov} 
-
-
 FIX: !bhint not at the beginning of the line - 1 fixes
   !bhint
 
@@ -75837,7 +73554,7 @@ FIX: !ehint not at the beginning of the line - 1 fixes
   !ehint
 
 
-*** The total of 6 fixes above should be incorporated in the file!
+*** The total of 4 fixes above should be incorporated in the file!
 
 
 copying from regex "subroutine" until end of file
@@ -75877,9 +73594,6 @@ NOTE: Place https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png
       or use the doconce script:
       doconce gwiki_figsubst.py mydoc.gwiki URL
 
-*** made link to new HTML file wave.html with code to display the movie ../doc/src/manual/mov/wave.ogg
-*** made link to new HTML file wave.html with code to display the movie ../doc/src/manual/mov/wave.mpeg
-*** made link to new HTML file wave.html with code to display the movie ../doc/src/manual/mov/wave.webm
 output in testdoc.gwiki
 + '[' 0 -ne 0 ']'
 + system doconce format latex testdoc.do.txt --examples_as_exercises
@@ -75911,15 +73625,6 @@ translating doconce text in tmp_mako__testdoc.do.txt to latex
 
 FIX: multi-line caption
 
- Movie
-based on collection of frames
-(here just a few frames compared with the full wavepacket.mpeg movie).
-label{mymov}
-
--- fixed to one line
-
-FIX: multi-line caption
-
  A long
 caption spanning
 several lines and containing verbatim words like `my_file_v1` and `my_file_v2`
@@ -75931,10 +73636,6 @@ FIX: FIGURE not at the beginning of the line - 1 fixes
  FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
 
 
-FIX: MOVIE not at the beginning of the line - 1 fixes
-   MOVIE: [../doc/src/manual/mov/wave.webm, width=700 height=400] Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). label{mymov} 
-
-
 FIX: !bhint not at the beginning of the line - 1 fixes
   !bhint
 
@@ -75943,7 +73644,7 @@ FIX: !ehint not at the beginning of the line - 1 fixes
   !ehint
 
 
-*** The total of 6 fixes above should be incorporated in the file!
+*** The total of 4 fixes above should be incorporated in the file!
 
 
 copying from regex "subroutine" until end of file
@@ -75962,9 +73663,6 @@ figure file ../doc/src/manual/fig/wave1D:
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ... found!
 
 exporting publish database papers.pub to papers.bib:
-*** made link to new HTML file wave.html with code to display the movie ../doc/src/manual/mov/wave.ogg
-*** made link to new HTML file wave.html with code to display the movie ../doc/src/manual/mov/wave.mpeg
-*** made link to new HTML file wave.html with code to display the movie ../doc/src/manual/mov/wave.webm
 output in testdoc.p.tex
 + '[' 0 -ne 0 ']'
 + system doconce ptex2tex testdoc -DBOOK -DLATEX_HEADING=traditional
@@ -76004,15 +73702,6 @@ translating doconce text in tmp_mako__testdoc.do.txt to pandoc
 
 FIX: multi-line caption
 
- Movie
-based on collection of frames
-(here just a few frames compared with the full wavepacket.mpeg movie).
-label{mymov}
-
--- fixed to one line
-
-FIX: multi-line caption
-
  A long
 caption spanning
 several lines and containing verbatim words like `my_file_v1` and `my_file_v2`
@@ -76024,10 +73713,6 @@ FIX: FIGURE not at the beginning of the line - 1 fixes
  FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
 
 
-FIX: MOVIE not at the beginning of the line - 1 fixes
-   MOVIE: [../doc/src/manual/mov/wave.webm, width=700 height=400] Movie based on collection of frames (here just a few frames compared with the full wavepacket.mpeg movie). label{mymov} 
-
-
 FIX: !bhint not at the beginning of the line - 1 fixes
   !bhint
 
@@ -76036,7 +73721,7 @@ FIX: !ehint not at the beginning of the line - 1 fixes
   !ehint
 
 
-*** The total of 6 fixes above should be incorporated in the file!
+*** The total of 4 fixes above should be incorporated in the file!
 
 
 copying from regex "subroutine" until end of file
@@ -76696,6 +74381,7 @@ replacing </head> by
    </style>
   </head>
  in index.html
+copying movie_demo to sphinx-rootdir-math
 /home/hpl/vc/doconce/test/sphinx-rootdir-math
 running make clean
 running make html
@@ -79295,7 +76981,6 @@ updating environment: 2 added, 0 changed, 0 removed
 reading sources... [ 50%] admon
 reading sources... [100%] index
 
-/home/hpl/vc/doconce/test/tmp_admon/admon.rst:80: WARNING: Explicit markup ends without a blank line; unexpected unindent.
 looking for now-outdated files... none found
 pickling environment... done
 checking consistency... done
@@ -79309,7 +76994,7 @@ copying images... [100%] wave1D.png
 copying static files... done
 dumping search index... done
 dumping object inventory... done
-build succeeded, 1 warning.
+build succeeded.
 
 Build finished. The HTML pages are in _build/html.
 <title>(.+?) &mdash;.+?</title> replaced by <title>\g<1></title> in search.html
@@ -79355,6 +77040,7 @@ replacing </head> by
 doconce format sphinx admon 
 running doconce format sphinx admon 
 running doconce guess_encoding admon.rst
+copying movie_demo to tmp_admon
 copying ../doc/src/manual/fig/wave1D.png to tmp_admon
 /home/hpl/vc/doconce/test/tmp_admon
 running make clean
@@ -79381,11 +77067,1470 @@ figure file ../doc/src/manual/fig/wave1D:
 output in admon.mwiki
 + '[' 0 -ne 0 ']'
 + cp admon.mwiki admon_mwiki.mwiki
++ cp -f admon_apricot.html admon_colors1.aux admon_colors1.idx admon_colors1.log admon_colors1.out admon_colors1.pdf admon_colors1.tex admon_colors2.aux admon_colors2.idx admon_colors2.log admon_colors2.out admon_colors2.pdf admon_colors2.tex admon_colors.html admon_graybox1.aux admon_graybox1.idx admon_graybox1.log admon_graybox1.out admon_graybox1.pdf admon_graybox1.tex admon_graybox2.aux admon_graybox2.idx admon_graybox2.log admon_graybox2.out admon_graybox2.pdf admon_graybox2.tex admon_graybox3.aux admon_graybox3.idx admon_graybox3.log admon_graybox3.out admon_graybox3.pdf admon_graybox3.tex admon_gray.html admon_lyx.html admon_mwiki.mwiki admon_paragraph.aux admon_paragraph.html admon_paragraph.idx admon_paragraph.log admon_paragraph.out admon_paragraph.pdf admon_paragraph.tex admon_sphinx admon_vagrant.html admon_yellowbox.aux admon_yellowbox.idx admon_yellowbox.log admon_yellowbox.out admon_yellowbox.pdf admon_yellowbox.tex admon_yellow.html admon_demo/
+cp: target ‘admon_demo/’ is not a directory
 + system doconce format pandoc github_md.do.txt --github_md
 + doconce format pandoc github_md.do.txt --github_md
 translating doconce text in github_md.do.txt to pandoc
 output in github_md.md
 + '[' 0 -ne 0 ']'
++ name=movies
++ system doconce format html movies --html_output=movies_3choices.html
++ doconce format html movies --html_output=movies_3choices.html
+running preprocess -DFORMAT=html -DDEVICE=screen  movies.do.txt > tmp_preprocess__movies.do.txt
+translating doconce text in tmp_preprocess__movies.do.txt to html
+... movie: trying to find http://hplgit.github.io/animate/doc/pub/mov-animate/demo.mp4 ... found!
+... movie: trying to find http://hplgit.github.io/animate/doc/pub/mov-animate/demo.webm ... found!
+... movie: trying to find http://hplgit.github.io/animate/doc/pub/mov-animate/demo.ogg ... found!
+output in movies_3choices.html.html
++ '[' 0 -ne 0 ']'
++ cp movies_3choices.html movie_demo
+cp: cannot stat ‘movies_3choices.html’: No such file or directory
++ system doconce format html movies --no_mp4_webm_ogg_alternatives
++ doconce format html movies --no_mp4_webm_ogg_alternatives
+running preprocess -DFORMAT=html -DDEVICE=screen  movies.do.txt > tmp_preprocess__movies.do.txt
+translating doconce text in tmp_preprocess__movies.do.txt to html
+... movie: trying to find http://hplgit.github.io/animate/doc/pub/mov-animate/demo.mp4 ... found!
+... movie: trying to find http://hplgit.github.io/animate/doc/pub/mov-animate/demo.webm ... found!
+... movie: trying to find http://hplgit.github.io/animate/doc/pub/mov-animate/demo.ogg ... found!
+output in movies.html
++ '[' 0 -ne 0 ']'
++ cp movies.html movie_demo
++ rm -f movies.aux
++ system doconce format pdflatex movies
++ doconce format pdflatex movies
+running preprocess -DFORMAT=pdflatex -DDEVICE=screen  movies.do.txt > tmp_preprocess__movies.do.txt
+translating doconce text in tmp_preprocess__movies.do.txt to pdflatex
+*** made link to new HTML file movie_player1.html
+    with code to display the movie
+    http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_%04d.png:80->129
+output in movies.p.tex
++ '[' 0 -ne 0 ']'
++ system doconce ptex2tex movies -DMOVIE=media9
++ doconce ptex2tex movies -DMOVIE=media9
+\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
+output in movies.tex
++ '[' 0 -ne 0 ']'
++ pdflatex movies
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
+ restricted \write18 enabled.
+entering extended mode
+(./movies.tex
+LaTeX2e <2011/06/27>
+Babel <3.9f> and hyphenation patterns for 2 languages loaded.
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/epsfig.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+
+
+
+
+(/usr/share/texmf/tex/latex/xcolor/xcolor.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/colortbl/colortbl.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/fancybox/fancybox.sty
+Style option: `fancybox' v1.4 <2010/05/15> (tvz)
+) (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
+<2008/02/07> (tvz)) (/usr/share/texlive/texmf-dist/tex/latex/media9/media9.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/l3names.sty
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/l3experimental/l3str/l3regex.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/l3experimental/l3str/l3tl-analysis.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/l3experimental/l3str/l3str-convert.sty
+)) 
+
+
+(/home/hpl/texmf/tex/latex/misc/movie15.sty
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/animate/animate.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+)) (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+
+
+
+
+
+
+
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
+
+Writing index file movies.idx
+No file movies.aux.
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+
+
+
+ABD: EveryShipout initializing macros
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+
+(./newcommands_bfmath.tex) (./newcommands_replace.tex)
+
+
+
+<<VPlayer.swf>><<
+../doc/src/manual/mov/wave.mp4>><<../doc/src/manual/mov/wave.flv>>
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=47, 586.8324pt x 442.2924
+pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/m
+ov/wave_frames/frame_0080.png> <a0,fr0>
+<../doc/src/manual/mov/wave_frames/frame_0081.png, id=55, 586.8324pt x 442.2924
+pt> <use ../doc/src/manual/mov/wave_frames/frame_0081.png> <../doc/src/manual/m
+ov/wave_frames/frame_0081.png> <a0,fr1>
+<../doc/src/manual/mov/wave_frames/frame_0082.png, id=62, 586.8324pt x 442.2924
+pt> <use ../doc/src/manual/mov/wave_frames/frame_0082.png> <../doc/src/manual/m
+ov/wave_frames/frame_0082.png> <a0,fr2>
+<../doc/src/manual/mov/wave_frames/frame_0083.png, id=69, 586.8324pt x 442.2924
+pt> <use ../doc/src/manual/mov/wave_frames/frame_0083.png> <../doc/src/manual/m
+ov/wave_frames/frame_0083.png> <a0,fr3>
+<../doc/src/manual/mov/wave_frames/frame_0084.png, id=76, 586.8324pt x 442.2924
+pt> <use ../doc/src/manual/mov/wave_frames/frame_0084.png> <../doc/src/manual/m
+ov/wave_frames/frame_0084.png> <a0,fr4>
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=83, 586.8324pt x 442.2924
+pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png> <../doc/src/manual/m
+ov/wave_frames/frame_0085.png> <a0,fr5>
+<../doc/src/manual/mov/wave_frames/frame_0086.png, id=90, 586.8324pt x 442.2924
+pt> <use ../doc/src/manual/mov/wave_frames/frame_0086.png> <../doc/src/manual/m
+ov/wave_frames/frame_0086.png> <a0,fr6>
+<../doc/src/manual/mov/wave_frames/frame_0087.png, id=97, 586.8324pt x 442.2924
+pt> <use ../doc/src/manual/mov/wave_frames/frame_0087.png> <../doc/src/manual/m
+ov/wave_frames/frame_0087.png> <a0,fr7>
+<../doc/src/manual/mov/wave_frames/frame_0088.png, id=104, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0088.png> <../doc/src/manual/
+mov/wave_frames/frame_0088.png> <a0,fr8>
+<../doc/src/manual/mov/wave_frames/frame_0089.png, id=111, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0089.png> <../doc/src/manual/
+mov/wave_frames/frame_0089.png> <a0,fr9>
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=118, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png> <../doc/src/manual/
+mov/wave_frames/frame_0090.png> <a0,fr10>
+<../doc/src/manual/mov/wave_frames/frame_0091.png, id=125, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0091.png> <../doc/src/manual/
+mov/wave_frames/frame_0091.png> <a0,fr11>
+<../doc/src/manual/mov/wave_frames/frame_0092.png, id=132, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0092.png> <../doc/src/manual/
+mov/wave_frames/frame_0092.png> <a0,fr12>
+<../doc/src/manual/mov/wave_frames/frame_0093.png, id=139, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0093.png> <../doc/src/manual/
+mov/wave_frames/frame_0093.png> <a0,fr13>
+<../doc/src/manual/mov/wave_frames/frame_0094.png, id=146, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0094.png> <../doc/src/manual/
+mov/wave_frames/frame_0094.png> <a0,fr14>
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=153, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/
+mov/wave_frames/frame_0095.png> <a0,fr15>
+<../doc/src/manual/mov/wave_frames/frame_0096.png, id=160, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0096.png> <../doc/src/manual/
+mov/wave_frames/frame_0096.png> <a0,fr16>
+<../doc/src/manual/mov/wave_frames/frame_0097.png, id=167, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0097.png> <../doc/src/manual/
+mov/wave_frames/frame_0097.png> <a0,fr17>
+<../doc/src/manual/mov/wave_frames/frame_0098.png, id=174, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0098.png> <../doc/src/manual/
+mov/wave_frames/frame_0098.png> <a0,fr18>
+<../doc/src/manual/mov/wave_frames/frame_0099.png, id=181, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0099.png> <../doc/src/manual/
+mov/wave_frames/frame_0099.png> <a0,fr19>
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=188, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png> <../doc/src/manual/
+mov/wave_frames/frame_0100.png> <a0,fr20>
+<../doc/src/manual/mov/wave_frames/frame_0101.png, id=195, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0101.png> <../doc/src/manual/
+mov/wave_frames/frame_0101.png> <a0,fr21>
+<../doc/src/manual/mov/wave_frames/frame_0102.png, id=202, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0102.png> <../doc/src/manual/
+mov/wave_frames/frame_0102.png> <a0,fr22>
+<../doc/src/manual/mov/wave_frames/frame_0103.png, id=209, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0103.png> <../doc/src/manual/
+mov/wave_frames/frame_0103.png> <a0,fr23>
+<../doc/src/manual/mov/wave_frames/frame_0104.png, id=216, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0104.png> <../doc/src/manual/
+mov/wave_frames/frame_0104.png> <a0,fr24>
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=223, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png> <../doc/src/manual/
+mov/wave_frames/frame_0105.png> <a0,fr25>
+<../doc/src/manual/mov/wave_frames/frame_0106.png, id=230, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0106.png> <../doc/src/manual/
+mov/wave_frames/frame_0106.png> <a0,fr26>
+<../doc/src/manual/mov/wave_frames/frame_0107.png, id=237, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0107.png> <../doc/src/manual/
+mov/wave_frames/frame_0107.png> <a0,fr27>
+<../doc/src/manual/mov/wave_frames/frame_0108.png, id=244, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0108.png> <../doc/src/manual/
+mov/wave_frames/frame_0108.png> <a0,fr28>
+<../doc/src/manual/mov/wave_frames/frame_0109.png, id=251, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0109.png> <../doc/src/manual/
+mov/wave_frames/frame_0109.png> <a0,fr29>
+<../doc/src/manual/mov/wave_frames/frame_0110.png, id=258, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0110.png> <../doc/src/manual/
+mov/wave_frames/frame_0110.png> <a0,fr30>
+<../doc/src/manual/mov/wave_frames/frame_0111.png, id=265, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0111.png> <../doc/src/manual/
+mov/wave_frames/frame_0111.png> <a0,fr31>
+<../doc/src/manual/mov/wave_frames/frame_0112.png, id=272, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0112.png> <../doc/src/manual/
+mov/wave_frames/frame_0112.png> <a0,fr32>
+<../doc/src/manual/mov/wave_frames/frame_0113.png, id=279, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0113.png> <../doc/src/manual/
+mov/wave_frames/frame_0113.png> <a0,fr33>
+<../doc/src/manual/mov/wave_frames/frame_0114.png, id=286, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0114.png> <../doc/src/manual/
+mov/wave_frames/frame_0114.png> <a0,fr34>
+<../doc/src/manual/mov/wave_frames/frame_0115.png, id=293, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0115.png> <../doc/src/manual/
+mov/wave_frames/frame_0115.png> <a0,fr35>
+<../doc/src/manual/mov/wave_frames/frame_0116.png, id=300, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0116.png> <../doc/src/manual/
+mov/wave_frames/frame_0116.png> <a0,fr36>
+<../doc/src/manual/mov/wave_frames/frame_0117.png, id=307, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0117.png> <../doc/src/manual/
+mov/wave_frames/frame_0117.png> <a0,fr37>
+<../doc/src/manual/mov/wave_frames/frame_0118.png, id=314, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0118.png> <../doc/src/manual/
+mov/wave_frames/frame_0118.png> <a0,fr38>
+<../doc/src/manual/mov/wave_frames/frame_0119.png, id=321, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0119.png> <../doc/src/manual/
+mov/wave_frames/frame_0119.png> <a0,fr39>
+<../doc/src/manual/mov/wave_frames/frame_0120.png, id=328, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0120.png> <../doc/src/manual/
+mov/wave_frames/frame_0120.png> <a0,fr40>
+<../doc/src/manual/mov/wave_frames/frame_0121.png, id=336, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0121.png> <../doc/src/manual/
+mov/wave_frames/frame_0121.png> <a0,fr41>
+<../doc/src/manual/mov/wave_frames/frame_0122.png, id=343, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0122.png> <../doc/src/manual/
+mov/wave_frames/frame_0122.png> <a0,fr42>
+<../doc/src/manual/mov/wave_frames/frame_0123.png, id=350, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0123.png> <../doc/src/manual/
+mov/wave_frames/frame_0123.png> <a0,fr43>
+<../doc/src/manual/mov/wave_frames/frame_0124.png, id=357, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0124.png> <../doc/src/manual/
+mov/wave_frames/frame_0124.png> <a0,fr44>
+<../doc/src/manual/mov/wave_frames/frame_0125.png, id=364, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0125.png> <../doc/src/manual/
+mov/wave_frames/frame_0125.png> <a0,fr45>
+<../doc/src/manual/mov/wave_frames/frame_0126.png, id=371, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0126.png> <../doc/src/manual/
+mov/wave_frames/frame_0126.png> <a0,fr46>
+<../doc/src/manual/mov/wave_frames/frame_0127.png, id=378, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0127.png> <../doc/src/manual/
+mov/wave_frames/frame_0127.png> <a0,fr47>
+<../doc/src/manual/mov/wave_frames/frame_0128.png, id=385, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0128.png> <../doc/src/manual/
+mov/wave_frames/frame_0128.png> <a0,fr48>
+<../doc/src/manual/mov/wave_frames/frame_0129.png, id=392, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0129.png> <../doc/src/manual/
+mov/wave_frames/frame_0129.png> <a0,fr49> [1{/var/lib/texmf/fonts/map/pdftex/up
+dmap/pdftex.map}]
+Overfull \hbox (80.24629pt too wide) 
+ [] 
+
+Package movie15 Warning: Reference `../doc/src/manual/mov/wave.mpeg' on page 2 
+
+
+
+
+
+Package movie15 Warning: Reference `../doc/src/manual/mov/wave.avi' on page 3 u
+ndefined on .
+
+
+
+/src/manual/mov/wave.mpeg>>]
+
+/src/manual/mov/wave.avi>>]
+
+
+
+No file movies.ind.
+*************************************************
+* media9 warning: "rerun"
+* 
+* Rerun to get media labels right!
+*************************************************
+
+Package movie15 Warning: @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+(movie15)                @@ Rerun to get object references right! @@
+(movie15)                @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@.
+
+
+Package movie15 Warning: @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+(movie15)                @@ There were undefined references! @@
+(movie15)                @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@.
+
+[5] (./movies.aux)
+
+ *File List*
+ article.cls    2007/10/19 v1.4h Standard LaTeX document class
+  size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
+ relsize.sty    2013/03/29 ver 4.1
+  epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
+graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+  keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
+graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
+graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
+  pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
+infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
+ ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+ makeidx.sty    2000/03/29 v1.0m Standard LaTeX package
+   color.sty    1999/02/16
+   color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
+setspace.sty    2011/12/19 v6.7a set line spacing
+ amsmath.sty    2013/01/14 v2.14 AMS math features
+ amstext.sty    2000/06/29 v2.01
+  amsgen.sty    1999/11/30 v2.0
+  amsbsy.sty    1999/11/29 v1.2d
+  amsopn.sty    1999/12/14 v2.01 operator names
+amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
+  xcolor.sty    2007/01/21 v2.11 LaTeX color extensions (UK)
+   color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
+colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
+   array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
+      bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
+microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
+microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
+microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
+fancybox.sty    2010/05/15 1.4
+fancyvrb.sty    2008/02/07
+  media9.sty    2013/07/19 v0.29 acrobat-9/X compatible media
+   expl3.sty    2013/07/12 v4544 L3 Experimental code bundle wrapper
+ l3names.sty    2012/12/07 v4346 L3 Namespace for primitives
+l3bootstrap.sty    2013/01/08 v4420 L3 Experimental bootstrap code
+    etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
+l3basics.sty    2013/07/09 v4521 L3 Basic definitions
+ l3expan.sty    2013/07/09 v4521 L3 Argument expansion
+    l3tl.sty    2013/04/24 v4482 L3 Token lists
+   l3seq.sty    2013/05/26 v4500 L3 Sequences and stacks
+   l3int.sty    2013/04/24 v4482 L3 Integers
+ l3quark.sty    2013/07/09 v4521 L3 Quarks
+   l3prg.sty    2013/04/24 v4482 L3 Control structures
+ l3clist.sty    2013/05/26 v4500 L3 Comma separated lists
+ l3token.sty    2013/04/24 v4482 L3 Experimental token manipulation
+  l3prop.sty    2013/01/09 v4423 L3 Property lists
+   l3msg.sty    2013/01/08 v4412 L3 Messages
+  l3file.sty    2013/05/01 v4483 L3 File and I/O operations
+  l3skip.sty    2013/01/13 v4444 L3 Dimensions and skips
+  l3keys.sty    2013/07/12 v4544 L3 Experimental key-value interfaces
+    l3fp.sty    2013/07/09 v4521 L3 Floating points
+   l3box.sty    2013/04/24 v4482 L3 Experimental boxes
+l3coffins.sty    2012/09/09 v4212 L3 Coffin code layer
+ l3color.sty    2012/08/29 v4156 L3 Experimental color support
+l3luatex.sty    2012/08/03 v4049 L3 Experimental LuaTeX-specific functions
+l3candidates.sty    2013/07/09 v4521 L3 Experimental additions to l3kernel
+   ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
+ l3regex.sty    2013/04/24 v4482 L3 Experimental regular expressions
+l3tl-build.sty    2011/12/08 v3039 L3 Experimental token list construction
+l3tl-analysis.sty    2011/12/08 v3039 L3 Experimental token lists analysis
+   l3str.sty    2013/04/24 v4482 L3 Experimental strings
+  l3flag.sty    2011/12/08 v3039 L3 Experimental flags
+l3str-convert.sty    2013/01/08 v4339 L3 Experimental string encoding conversio
+ns
+l3keys2e.sty    2013/07/12 v4544 LaTeX2e option processing using LaTeX3 keys
+  xparse.sty    2013/07/12 v4544 L3 Experimental document command parser
+atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
+ movie15.sty    2009/07/07
+  ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+ ifdraft.sty    2008/08/11 v1.3 Detect class options draft and final (HO)
+everyshi.sty    2001/05/15 v3.00 EveryShipout Package (MS)
+ animate.sty    2013/07/19 PDF animations from files and inline graphics
+    calc.sty    2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
+  animfp.sty    2009/07/23 fixed point addition for animate.sty
+supp-pdf.mkii
+inputenc.sty    2008/03/30 v1.1d Input encoding file
+    utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
+   t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+  ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+  omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
+hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
+hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
+  hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
+ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
+  ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+ intcalc.sty    2007/09/27 v1.1 Expandable calculations with integers (HO)
+etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
+kvdefinekeys.sty    2011/04/07 v1.3 Define keys (HO)
+pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
+pdfescape.sty    2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
+bigintcalc.sty    2012/04/08 v1.3 Expandable calculations on big integers (HO)
+  bitset.sty    2011/01/30 v1.1 Handle bit-vector datatype (HO)
+uniquecounter.sty    2011/01/30 v1.2 Provide unlimited unique counter (HO)
+letltxmacro.sty    2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
+ hopatch.sty    2012/05/28 v1.2 Wrapper for package hooks (HO)
+xcolor-patch.sty    2011/01/30 xcolor patch
+atveryend.sty    2011/06/30 v1.8 Hooks at the very end of document (HO)
+refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
+ hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
+ ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
+ auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
+kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
+  pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
+hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
+     url.sty    2006/04/12  ver 3.3  Verb mode for urls, etc.
+ hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
+rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
+epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
+  grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
+epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
+RS)
+ nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
+gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
+newcommands_bfmath.tex
+newcommands_replace.tex
+    umsa.fd    2013/01/14 v3.01 AMS symbols A
+  mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
+    umsb.fd    2013/01/14 v3.01 AMS symbols B
+  mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+../doc/src/manual/mov/wave_frames/frame_0080.png
+../doc/src/manual/mov/wave_frames/frame_0081.png
+../doc/src/manual/mov/wave_frames/frame_0082.png
+../doc/src/manual/mov/wave_frames/frame_0083.png
+../doc/src/manual/mov/wave_frames/frame_0084.png
+../doc/src/manual/mov/wave_frames/frame_0085.png
+../doc/src/manual/mov/wave_frames/frame_0086.png
+../doc/src/manual/mov/wave_frames/frame_0087.png
+../doc/src/manual/mov/wave_frames/frame_0088.png
+../doc/src/manual/mov/wave_frames/frame_0089.png
+../doc/src/manual/mov/wave_frames/frame_0090.png
+../doc/src/manual/mov/wave_frames/frame_0091.png
+../doc/src/manual/mov/wave_frames/frame_0092.png
+../doc/src/manual/mov/wave_frames/frame_0093.png
+../doc/src/manual/mov/wave_frames/frame_0094.png
+../doc/src/manual/mov/wave_frames/frame_0095.png
+../doc/src/manual/mov/wave_frames/frame_0096.png
+../doc/src/manual/mov/wave_frames/frame_0097.png
+../doc/src/manual/mov/wave_frames/frame_0098.png
+../doc/src/manual/mov/wave_frames/frame_0099.png
+../doc/src/manual/mov/wave_frames/frame_0100.png
+../doc/src/manual/mov/wave_frames/frame_0101.png
+../doc/src/manual/mov/wave_frames/frame_0102.png
+../doc/src/manual/mov/wave_frames/frame_0103.png
+../doc/src/manual/mov/wave_frames/frame_0104.png
+../doc/src/manual/mov/wave_frames/frame_0105.png
+../doc/src/manual/mov/wave_frames/frame_0106.png
+../doc/src/manual/mov/wave_frames/frame_0107.png
+../doc/src/manual/mov/wave_frames/frame_0108.png
+../doc/src/manual/mov/wave_frames/frame_0109.png
+../doc/src/manual/mov/wave_frames/frame_0110.png
+../doc/src/manual/mov/wave_frames/frame_0111.png
+../doc/src/manual/mov/wave_frames/frame_0112.png
+../doc/src/manual/mov/wave_frames/frame_0113.png
+../doc/src/manual/mov/wave_frames/frame_0114.png
+../doc/src/manual/mov/wave_frames/frame_0115.png
+../doc/src/manual/mov/wave_frames/frame_0116.png
+../doc/src/manual/mov/wave_frames/frame_0117.png
+../doc/src/manual/mov/wave_frames/frame_0118.png
+../doc/src/manual/mov/wave_frames/frame_0119.png
+../doc/src/manual/mov/wave_frames/frame_0120.png
+../doc/src/manual/mov/wave_frames/frame_0121.png
+../doc/src/manual/mov/wave_frames/frame_0122.png
+../doc/src/manual/mov/wave_frames/frame_0123.png
+../doc/src/manual/mov/wave_frames/frame_0124.png
+../doc/src/manual/mov/wave_frames/frame_0125.png
+../doc/src/manual/mov/wave_frames/frame_0126.png
+../doc/src/manual/mov/wave_frames/frame_0127.png
+../doc/src/manual/mov/wave_frames/frame_0128.png
+../doc/src/manual/mov/wave_frames/frame_0129.png
+ ***********
+
+
+Package rerunfilecheck Warning: File `movies.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ )
+(see the transcript file for additional information)</usr/share/texlive/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmtt9.pfb>
+Output written on movies.pdf (5 pages, ).
+Transcript written on movies.log.
++ pdflatex movies
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
+ restricted \write18 enabled.
+entering extended mode
+(./movies.tex
+LaTeX2e <2011/06/27>
+Babel <3.9f> and hyphenation patterns for 2 languages loaded.
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/epsfig.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+
+
+
+
+(/usr/share/texmf/tex/latex/xcolor/xcolor.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/colortbl/colortbl.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/fancybox/fancybox.sty
+Style option: `fancybox' v1.4 <2010/05/15> (tvz)
+) (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
+<2008/02/07> (tvz)) (/usr/share/texlive/texmf-dist/tex/latex/media9/media9.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/l3names.sty
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/l3experimental/l3str/l3regex.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/l3experimental/l3str/l3tl-analysis.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/l3experimental/l3str/l3str-convert.sty
+)) 
+
+
+(/home/hpl/texmf/tex/latex/misc/movie15.sty
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/animate/animate.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+)) (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+
+
+
+
+
+
+
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
+
+Writing index file movies.idx
+(./movies.aux)
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+
+
+
+ABD: EveryShipout initializing macros
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+
+(./movies.out) (./movies.out) (./newcommands_bfmath.tex)
+(./newcommands_replace.tex)
+
+
+
+<<VPlayer.swf>><<
+../doc/src/manual/mov/wave.mp4>><<../doc/src/manual/mov/wave.flv>>
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=47, 586.8324pt x 442.2924
+pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/m
+ov/wave_frames/frame_0080.png> <a0,fr0>
+<../doc/src/manual/mov/wave_frames/frame_0081.png, id=55, 586.8324pt x 442.2924
+pt> <use ../doc/src/manual/mov/wave_frames/frame_0081.png> <../doc/src/manual/m
+ov/wave_frames/frame_0081.png> <a0,fr1>
+<../doc/src/manual/mov/wave_frames/frame_0082.png, id=62, 586.8324pt x 442.2924
+pt> <use ../doc/src/manual/mov/wave_frames/frame_0082.png> <../doc/src/manual/m
+ov/wave_frames/frame_0082.png> <a0,fr2>
+<../doc/src/manual/mov/wave_frames/frame_0083.png, id=69, 586.8324pt x 442.2924
+pt> <use ../doc/src/manual/mov/wave_frames/frame_0083.png> <../doc/src/manual/m
+ov/wave_frames/frame_0083.png> <a0,fr3>
+<../doc/src/manual/mov/wave_frames/frame_0084.png, id=76, 586.8324pt x 442.2924
+pt> <use ../doc/src/manual/mov/wave_frames/frame_0084.png> <../doc/src/manual/m
+ov/wave_frames/frame_0084.png> <a0,fr4>
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=83, 586.8324pt x 442.2924
+pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png> <../doc/src/manual/m
+ov/wave_frames/frame_0085.png> <a0,fr5>
+<../doc/src/manual/mov/wave_frames/frame_0086.png, id=90, 586.8324pt x 442.2924
+pt> <use ../doc/src/manual/mov/wave_frames/frame_0086.png> <../doc/src/manual/m
+ov/wave_frames/frame_0086.png> <a0,fr6>
+<../doc/src/manual/mov/wave_frames/frame_0087.png, id=97, 586.8324pt x 442.2924
+pt> <use ../doc/src/manual/mov/wave_frames/frame_0087.png> <../doc/src/manual/m
+ov/wave_frames/frame_0087.png> <a0,fr7>
+<../doc/src/manual/mov/wave_frames/frame_0088.png, id=104, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0088.png> <../doc/src/manual/
+mov/wave_frames/frame_0088.png> <a0,fr8>
+<../doc/src/manual/mov/wave_frames/frame_0089.png, id=111, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0089.png> <../doc/src/manual/
+mov/wave_frames/frame_0089.png> <a0,fr9>
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=118, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png> <../doc/src/manual/
+mov/wave_frames/frame_0090.png> <a0,fr10>
+<../doc/src/manual/mov/wave_frames/frame_0091.png, id=125, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0091.png> <../doc/src/manual/
+mov/wave_frames/frame_0091.png> <a0,fr11>
+<../doc/src/manual/mov/wave_frames/frame_0092.png, id=132, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0092.png> <../doc/src/manual/
+mov/wave_frames/frame_0092.png> <a0,fr12>
+<../doc/src/manual/mov/wave_frames/frame_0093.png, id=139, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0093.png> <../doc/src/manual/
+mov/wave_frames/frame_0093.png> <a0,fr13>
+<../doc/src/manual/mov/wave_frames/frame_0094.png, id=146, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0094.png> <../doc/src/manual/
+mov/wave_frames/frame_0094.png> <a0,fr14>
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=153, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/
+mov/wave_frames/frame_0095.png> <a0,fr15>
+<../doc/src/manual/mov/wave_frames/frame_0096.png, id=160, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0096.png> <../doc/src/manual/
+mov/wave_frames/frame_0096.png> <a0,fr16>
+<../doc/src/manual/mov/wave_frames/frame_0097.png, id=167, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0097.png> <../doc/src/manual/
+mov/wave_frames/frame_0097.png> <a0,fr17>
+<../doc/src/manual/mov/wave_frames/frame_0098.png, id=174, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0098.png> <../doc/src/manual/
+mov/wave_frames/frame_0098.png> <a0,fr18>
+<../doc/src/manual/mov/wave_frames/frame_0099.png, id=181, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0099.png> <../doc/src/manual/
+mov/wave_frames/frame_0099.png> <a0,fr19>
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=188, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png> <../doc/src/manual/
+mov/wave_frames/frame_0100.png> <a0,fr20>
+<../doc/src/manual/mov/wave_frames/frame_0101.png, id=195, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0101.png> <../doc/src/manual/
+mov/wave_frames/frame_0101.png> <a0,fr21>
+<../doc/src/manual/mov/wave_frames/frame_0102.png, id=202, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0102.png> <../doc/src/manual/
+mov/wave_frames/frame_0102.png> <a0,fr22>
+<../doc/src/manual/mov/wave_frames/frame_0103.png, id=209, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0103.png> <../doc/src/manual/
+mov/wave_frames/frame_0103.png> <a0,fr23>
+<../doc/src/manual/mov/wave_frames/frame_0104.png, id=216, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0104.png> <../doc/src/manual/
+mov/wave_frames/frame_0104.png> <a0,fr24>
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=223, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png> <../doc/src/manual/
+mov/wave_frames/frame_0105.png> <a0,fr25>
+<../doc/src/manual/mov/wave_frames/frame_0106.png, id=230, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0106.png> <../doc/src/manual/
+mov/wave_frames/frame_0106.png> <a0,fr26>
+<../doc/src/manual/mov/wave_frames/frame_0107.png, id=237, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0107.png> <../doc/src/manual/
+mov/wave_frames/frame_0107.png> <a0,fr27>
+<../doc/src/manual/mov/wave_frames/frame_0108.png, id=244, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0108.png> <../doc/src/manual/
+mov/wave_frames/frame_0108.png> <a0,fr28>
+<../doc/src/manual/mov/wave_frames/frame_0109.png, id=251, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0109.png> <../doc/src/manual/
+mov/wave_frames/frame_0109.png> <a0,fr29>
+<../doc/src/manual/mov/wave_frames/frame_0110.png, id=258, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0110.png> <../doc/src/manual/
+mov/wave_frames/frame_0110.png> <a0,fr30>
+<../doc/src/manual/mov/wave_frames/frame_0111.png, id=265, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0111.png> <../doc/src/manual/
+mov/wave_frames/frame_0111.png> <a0,fr31>
+<../doc/src/manual/mov/wave_frames/frame_0112.png, id=272, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0112.png> <../doc/src/manual/
+mov/wave_frames/frame_0112.png> <a0,fr32>
+<../doc/src/manual/mov/wave_frames/frame_0113.png, id=279, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0113.png> <../doc/src/manual/
+mov/wave_frames/frame_0113.png> <a0,fr33>
+<../doc/src/manual/mov/wave_frames/frame_0114.png, id=286, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0114.png> <../doc/src/manual/
+mov/wave_frames/frame_0114.png> <a0,fr34>
+<../doc/src/manual/mov/wave_frames/frame_0115.png, id=293, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0115.png> <../doc/src/manual/
+mov/wave_frames/frame_0115.png> <a0,fr35>
+<../doc/src/manual/mov/wave_frames/frame_0116.png, id=300, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0116.png> <../doc/src/manual/
+mov/wave_frames/frame_0116.png> <a0,fr36>
+<../doc/src/manual/mov/wave_frames/frame_0117.png, id=307, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0117.png> <../doc/src/manual/
+mov/wave_frames/frame_0117.png> <a0,fr37>
+<../doc/src/manual/mov/wave_frames/frame_0118.png, id=314, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0118.png> <../doc/src/manual/
+mov/wave_frames/frame_0118.png> <a0,fr38>
+<../doc/src/manual/mov/wave_frames/frame_0119.png, id=321, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0119.png> <../doc/src/manual/
+mov/wave_frames/frame_0119.png> <a0,fr39>
+<../doc/src/manual/mov/wave_frames/frame_0120.png, id=328, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0120.png> <../doc/src/manual/
+mov/wave_frames/frame_0120.png> <a0,fr40>
+<../doc/src/manual/mov/wave_frames/frame_0121.png, id=336, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0121.png> <../doc/src/manual/
+mov/wave_frames/frame_0121.png> <a0,fr41>
+<../doc/src/manual/mov/wave_frames/frame_0122.png, id=343, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0122.png> <../doc/src/manual/
+mov/wave_frames/frame_0122.png> <a0,fr42>
+<../doc/src/manual/mov/wave_frames/frame_0123.png, id=350, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0123.png> <../doc/src/manual/
+mov/wave_frames/frame_0123.png> <a0,fr43>
+<../doc/src/manual/mov/wave_frames/frame_0124.png, id=357, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0124.png> <../doc/src/manual/
+mov/wave_frames/frame_0124.png> <a0,fr44>
+<../doc/src/manual/mov/wave_frames/frame_0125.png, id=364, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0125.png> <../doc/src/manual/
+mov/wave_frames/frame_0125.png> <a0,fr45>
+<../doc/src/manual/mov/wave_frames/frame_0126.png, id=371, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0126.png> <../doc/src/manual/
+mov/wave_frames/frame_0126.png> <a0,fr46>
+<../doc/src/manual/mov/wave_frames/frame_0127.png, id=378, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0127.png> <../doc/src/manual/
+mov/wave_frames/frame_0127.png> <a0,fr47>
+<../doc/src/manual/mov/wave_frames/frame_0128.png, id=385, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0128.png> <../doc/src/manual/
+mov/wave_frames/frame_0128.png> <a0,fr48>
+<../doc/src/manual/mov/wave_frames/frame_0129.png, id=392, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0129.png> <../doc/src/manual/
+mov/wave_frames/frame_0129.png> <a0,fr49> [1{/var/lib/texmf/fonts/map/pdftex/up
+dmap/pdftex.map}]
+Overfull \hbox (80.24629pt too wide) 
+ [] 
+
+Package movie15 Warning: Reference `../doc/src/manual/mov/wave.mpeg' on page 2 
+
+
+
+
+
+Package movie15 Warning: Reference `../doc/src/manual/mov/wave.avi' on page 3 u
+ndefined on .
+
+
+
+/src/manual/mov/wave.mpeg>>]
+
+/src/manual/mov/wave.avi>>]
+No file movies.ind.
+
+Package movie15 Warning: @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+(movie15)                @@ Rerun to get object references right! @@
+(movie15)                @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@.
+
+
+Package movie15 Warning: @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+(movie15)                @@ There were undefined references! @@
+(movie15)                @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@.
+
+[5] (./movies.aux)
+
+ *File List*
+ article.cls    2007/10/19 v1.4h Standard LaTeX document class
+  size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
+ relsize.sty    2013/03/29 ver 4.1
+  epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
+graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+  keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
+graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
+graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
+  pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
+infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
+ ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+ makeidx.sty    2000/03/29 v1.0m Standard LaTeX package
+   color.sty    1999/02/16
+   color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
+setspace.sty    2011/12/19 v6.7a set line spacing
+ amsmath.sty    2013/01/14 v2.14 AMS math features
+ amstext.sty    2000/06/29 v2.01
+  amsgen.sty    1999/11/30 v2.0
+  amsbsy.sty    1999/11/29 v1.2d
+  amsopn.sty    1999/12/14 v2.01 operator names
+amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
+  xcolor.sty    2007/01/21 v2.11 LaTeX color extensions (UK)
+   color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
+colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
+   array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
+      bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
+microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
+microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
+microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
+fancybox.sty    2010/05/15 1.4
+fancyvrb.sty    2008/02/07
+  media9.sty    2013/07/19 v0.29 acrobat-9/X compatible media
+   expl3.sty    2013/07/12 v4544 L3 Experimental code bundle wrapper
+ l3names.sty    2012/12/07 v4346 L3 Namespace for primitives
+l3bootstrap.sty    2013/01/08 v4420 L3 Experimental bootstrap code
+    etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
+l3basics.sty    2013/07/09 v4521 L3 Basic definitions
+ l3expan.sty    2013/07/09 v4521 L3 Argument expansion
+    l3tl.sty    2013/04/24 v4482 L3 Token lists
+   l3seq.sty    2013/05/26 v4500 L3 Sequences and stacks
+   l3int.sty    2013/04/24 v4482 L3 Integers
+ l3quark.sty    2013/07/09 v4521 L3 Quarks
+   l3prg.sty    2013/04/24 v4482 L3 Control structures
+ l3clist.sty    2013/05/26 v4500 L3 Comma separated lists
+ l3token.sty    2013/04/24 v4482 L3 Experimental token manipulation
+  l3prop.sty    2013/01/09 v4423 L3 Property lists
+   l3msg.sty    2013/01/08 v4412 L3 Messages
+  l3file.sty    2013/05/01 v4483 L3 File and I/O operations
+  l3skip.sty    2013/01/13 v4444 L3 Dimensions and skips
+  l3keys.sty    2013/07/12 v4544 L3 Experimental key-value interfaces
+    l3fp.sty    2013/07/09 v4521 L3 Floating points
+   l3box.sty    2013/04/24 v4482 L3 Experimental boxes
+l3coffins.sty    2012/09/09 v4212 L3 Coffin code layer
+ l3color.sty    2012/08/29 v4156 L3 Experimental color support
+l3luatex.sty    2012/08/03 v4049 L3 Experimental LuaTeX-specific functions
+l3candidates.sty    2013/07/09 v4521 L3 Experimental additions to l3kernel
+   ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
+ l3regex.sty    2013/04/24 v4482 L3 Experimental regular expressions
+l3tl-build.sty    2011/12/08 v3039 L3 Experimental token list construction
+l3tl-analysis.sty    2011/12/08 v3039 L3 Experimental token lists analysis
+   l3str.sty    2013/04/24 v4482 L3 Experimental strings
+  l3flag.sty    2011/12/08 v3039 L3 Experimental flags
+l3str-convert.sty    2013/01/08 v4339 L3 Experimental string encoding conversio
+ns
+l3keys2e.sty    2013/07/12 v4544 LaTeX2e option processing using LaTeX3 keys
+  xparse.sty    2013/07/12 v4544 L3 Experimental document command parser
+atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
+ movie15.sty    2009/07/07
+  ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+ ifdraft.sty    2008/08/11 v1.3 Detect class options draft and final (HO)
+everyshi.sty    2001/05/15 v3.00 EveryShipout Package (MS)
+ animate.sty    2013/07/19 PDF animations from files and inline graphics
+    calc.sty    2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
+  animfp.sty    2009/07/23 fixed point addition for animate.sty
+supp-pdf.mkii
+inputenc.sty    2008/03/30 v1.1d Input encoding file
+    utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
+   t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+  ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+  omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
+hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
+hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
+  hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
+ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
+  ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+ intcalc.sty    2007/09/27 v1.1 Expandable calculations with integers (HO)
+etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
+kvdefinekeys.sty    2011/04/07 v1.3 Define keys (HO)
+pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
+pdfescape.sty    2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
+bigintcalc.sty    2012/04/08 v1.3 Expandable calculations on big integers (HO)
+  bitset.sty    2011/01/30 v1.1 Handle bit-vector datatype (HO)
+uniquecounter.sty    2011/01/30 v1.2 Provide unlimited unique counter (HO)
+letltxmacro.sty    2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
+ hopatch.sty    2012/05/28 v1.2 Wrapper for package hooks (HO)
+xcolor-patch.sty    2011/01/30 xcolor patch
+atveryend.sty    2011/06/30 v1.8 Hooks at the very end of document (HO)
+refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
+ hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
+ ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
+ auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
+kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
+  pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
+hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
+     url.sty    2006/04/12  ver 3.3  Verb mode for urls, etc.
+ hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
+rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
+epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
+  grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
+epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
+RS)
+ nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
+gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
+  movies.out
+  movies.out
+newcommands_bfmath.tex
+newcommands_replace.tex
+    umsa.fd    2013/01/14 v3.01 AMS symbols A
+  mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
+    umsb.fd    2013/01/14 v3.01 AMS symbols B
+  mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+../doc/src/manual/mov/wave_frames/frame_0080.png
+../doc/src/manual/mov/wave_frames/frame_0081.png
+../doc/src/manual/mov/wave_frames/frame_0082.png
+../doc/src/manual/mov/wave_frames/frame_0083.png
+../doc/src/manual/mov/wave_frames/frame_0084.png
+../doc/src/manual/mov/wave_frames/frame_0085.png
+../doc/src/manual/mov/wave_frames/frame_0086.png
+../doc/src/manual/mov/wave_frames/frame_0087.png
+../doc/src/manual/mov/wave_frames/frame_0088.png
+../doc/src/manual/mov/wave_frames/frame_0089.png
+../doc/src/manual/mov/wave_frames/frame_0090.png
+../doc/src/manual/mov/wave_frames/frame_0091.png
+../doc/src/manual/mov/wave_frames/frame_0092.png
+../doc/src/manual/mov/wave_frames/frame_0093.png
+../doc/src/manual/mov/wave_frames/frame_0094.png
+../doc/src/manual/mov/wave_frames/frame_0095.png
+../doc/src/manual/mov/wave_frames/frame_0096.png
+../doc/src/manual/mov/wave_frames/frame_0097.png
+../doc/src/manual/mov/wave_frames/frame_0098.png
+../doc/src/manual/mov/wave_frames/frame_0099.png
+../doc/src/manual/mov/wave_frames/frame_0100.png
+../doc/src/manual/mov/wave_frames/frame_0101.png
+../doc/src/manual/mov/wave_frames/frame_0102.png
+../doc/src/manual/mov/wave_frames/frame_0103.png
+../doc/src/manual/mov/wave_frames/frame_0104.png
+../doc/src/manual/mov/wave_frames/frame_0105.png
+../doc/src/manual/mov/wave_frames/frame_0106.png
+../doc/src/manual/mov/wave_frames/frame_0107.png
+../doc/src/manual/mov/wave_frames/frame_0108.png
+../doc/src/manual/mov/wave_frames/frame_0109.png
+../doc/src/manual/mov/wave_frames/frame_0110.png
+../doc/src/manual/mov/wave_frames/frame_0111.png
+../doc/src/manual/mov/wave_frames/frame_0112.png
+../doc/src/manual/mov/wave_frames/frame_0113.png
+../doc/src/manual/mov/wave_frames/frame_0114.png
+../doc/src/manual/mov/wave_frames/frame_0115.png
+../doc/src/manual/mov/wave_frames/frame_0116.png
+../doc/src/manual/mov/wave_frames/frame_0117.png
+../doc/src/manual/mov/wave_frames/frame_0118.png
+../doc/src/manual/mov/wave_frames/frame_0119.png
+../doc/src/manual/mov/wave_frames/frame_0120.png
+../doc/src/manual/mov/wave_frames/frame_0121.png
+../doc/src/manual/mov/wave_frames/frame_0122.png
+../doc/src/manual/mov/wave_frames/frame_0123.png
+../doc/src/manual/mov/wave_frames/frame_0124.png
+../doc/src/manual/mov/wave_frames/frame_0125.png
+../doc/src/manual/mov/wave_frames/frame_0126.png
+../doc/src/manual/mov/wave_frames/frame_0127.png
+../doc/src/manual/mov/wave_frames/frame_0128.png
+../doc/src/manual/mov/wave_frames/frame_0129.png
+ ***********
+
+ )
+(see the transcript file for additional information)</usr/share/texlive/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmtt9.pfb>
+Output written on movies.pdf (5 pages, ).
+Transcript written on movies.log.
++ cp movies.pdf movie_demo/movies_media9.pdf
++ cp movies.tex movies_media9.tex
++ rm -f movies.aux
++ system doconce format pdflatex movies
++ doconce format pdflatex movies
+running preprocess -DFORMAT=pdflatex -DDEVICE=screen  movies.do.txt > tmp_preprocess__movies.do.txt
+translating doconce text in tmp_preprocess__movies.do.txt to pdflatex
+*** made link to new HTML file movie_player1.html
+    with code to display the movie
+    http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_%04d.png:80->129
+output in movies.p.tex
++ '[' 0 -ne 0 ']'
++ system doconce ptex2tex movies
++ doconce ptex2tex movies
+\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
+output in movies.tex
++ '[' 0 -ne 0 ']'
++ system pdflatex movies
++ pdflatex movies
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
+ restricted \write18 enabled.
+entering extended mode
+(./movies.tex
+LaTeX2e <2011/06/27>
+Babel <3.9f> and hyphenation patterns for 2 languages loaded.
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/epsfig.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+
+
+
+
+(/usr/share/texmf/tex/latex/xcolor/xcolor.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/colortbl/colortbl.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/fancybox/fancybox.sty
+Style option: `fancybox' v1.4 <2010/05/15> (tvz)
+) (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
+<2008/02/07> (tvz))
+(/usr/share/texlive/texmf-dist/tex/latex/animate/animate.sty
+
+
+
+
+
+(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+)) (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+
+
+
+
+
+
+
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
+
+Writing index file movies.idx
+No file movies.aux.
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+
+(./movies.out) (./movies.out) (./newcommands_bfmath.tex)
+(./newcommands_replace.tex)
+
+
+
+
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=27, 586.8324pt x 442.2924
+pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/m
+ov/wave_frames/frame_0080.png> <a0,fr0>
+<../doc/src/manual/mov/wave_frames/frame_0081.png, id=35, 586.8324pt x 442.2924
+pt> <use ../doc/src/manual/mov/wave_frames/frame_0081.png> <../doc/src/manual/m
+ov/wave_frames/frame_0081.png> <a0,fr1>
+<../doc/src/manual/mov/wave_frames/frame_0082.png, id=42, 586.8324pt x 442.2924
+pt> <use ../doc/src/manual/mov/wave_frames/frame_0082.png> <../doc/src/manual/m
+ov/wave_frames/frame_0082.png> <a0,fr2>
+<../doc/src/manual/mov/wave_frames/frame_0083.png, id=49, 586.8324pt x 442.2924
+pt> <use ../doc/src/manual/mov/wave_frames/frame_0083.png> <../doc/src/manual/m
+ov/wave_frames/frame_0083.png> <a0,fr3>
+<../doc/src/manual/mov/wave_frames/frame_0084.png, id=56, 586.8324pt x 442.2924
+pt> <use ../doc/src/manual/mov/wave_frames/frame_0084.png> <../doc/src/manual/m
+ov/wave_frames/frame_0084.png> <a0,fr4>
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=63, 586.8324pt x 442.2924
+pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png> <../doc/src/manual/m
+ov/wave_frames/frame_0085.png> <a0,fr5>
+<../doc/src/manual/mov/wave_frames/frame_0086.png, id=70, 586.8324pt x 442.2924
+pt> <use ../doc/src/manual/mov/wave_frames/frame_0086.png> <../doc/src/manual/m
+ov/wave_frames/frame_0086.png> <a0,fr6>
+<../doc/src/manual/mov/wave_frames/frame_0087.png, id=77, 586.8324pt x 442.2924
+pt> <use ../doc/src/manual/mov/wave_frames/frame_0087.png> <../doc/src/manual/m
+ov/wave_frames/frame_0087.png> <a0,fr7>
+<../doc/src/manual/mov/wave_frames/frame_0088.png, id=84, 586.8324pt x 442.2924
+pt> <use ../doc/src/manual/mov/wave_frames/frame_0088.png> <../doc/src/manual/m
+ov/wave_frames/frame_0088.png> <a0,fr8>
+<../doc/src/manual/mov/wave_frames/frame_0089.png, id=91, 586.8324pt x 442.2924
+pt> <use ../doc/src/manual/mov/wave_frames/frame_0089.png> <../doc/src/manual/m
+ov/wave_frames/frame_0089.png> <a0,fr9>
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=98, 586.8324pt x 442.2924
+pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png> <../doc/src/manual/m
+ov/wave_frames/frame_0090.png> <a0,fr10>
+<../doc/src/manual/mov/wave_frames/frame_0091.png, id=105, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0091.png> <../doc/src/manual/
+mov/wave_frames/frame_0091.png> <a0,fr11>
+<../doc/src/manual/mov/wave_frames/frame_0092.png, id=112, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0092.png> <../doc/src/manual/
+mov/wave_frames/frame_0092.png> <a0,fr12>
+<../doc/src/manual/mov/wave_frames/frame_0093.png, id=119, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0093.png> <../doc/src/manual/
+mov/wave_frames/frame_0093.png> <a0,fr13>
+<../doc/src/manual/mov/wave_frames/frame_0094.png, id=126, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0094.png> <../doc/src/manual/
+mov/wave_frames/frame_0094.png> <a0,fr14>
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=133, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/
+mov/wave_frames/frame_0095.png> <a0,fr15>
+<../doc/src/manual/mov/wave_frames/frame_0096.png, id=140, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0096.png> <../doc/src/manual/
+mov/wave_frames/frame_0096.png> <a0,fr16>
+<../doc/src/manual/mov/wave_frames/frame_0097.png, id=147, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0097.png> <../doc/src/manual/
+mov/wave_frames/frame_0097.png> <a0,fr17>
+<../doc/src/manual/mov/wave_frames/frame_0098.png, id=154, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0098.png> <../doc/src/manual/
+mov/wave_frames/frame_0098.png> <a0,fr18>
+<../doc/src/manual/mov/wave_frames/frame_0099.png, id=161, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0099.png> <../doc/src/manual/
+mov/wave_frames/frame_0099.png> <a0,fr19>
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=168, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png> <../doc/src/manual/
+mov/wave_frames/frame_0100.png> <a0,fr20>
+<../doc/src/manual/mov/wave_frames/frame_0101.png, id=175, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0101.png> <../doc/src/manual/
+mov/wave_frames/frame_0101.png> <a0,fr21>
+<../doc/src/manual/mov/wave_frames/frame_0102.png, id=182, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0102.png> <../doc/src/manual/
+mov/wave_frames/frame_0102.png> <a0,fr22>
+<../doc/src/manual/mov/wave_frames/frame_0103.png, id=189, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0103.png> <../doc/src/manual/
+mov/wave_frames/frame_0103.png> <a0,fr23>
+<../doc/src/manual/mov/wave_frames/frame_0104.png, id=196, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0104.png> <../doc/src/manual/
+mov/wave_frames/frame_0104.png> <a0,fr24>
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=203, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png> <../doc/src/manual/
+mov/wave_frames/frame_0105.png> <a0,fr25>
+<../doc/src/manual/mov/wave_frames/frame_0106.png, id=210, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0106.png> <../doc/src/manual/
+mov/wave_frames/frame_0106.png> <a0,fr26>
+<../doc/src/manual/mov/wave_frames/frame_0107.png, id=217, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0107.png> <../doc/src/manual/
+mov/wave_frames/frame_0107.png> <a0,fr27>
+<../doc/src/manual/mov/wave_frames/frame_0108.png, id=224, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0108.png> <../doc/src/manual/
+mov/wave_frames/frame_0108.png> <a0,fr28>
+<../doc/src/manual/mov/wave_frames/frame_0109.png, id=231, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0109.png> <../doc/src/manual/
+mov/wave_frames/frame_0109.png> <a0,fr29>
+<../doc/src/manual/mov/wave_frames/frame_0110.png, id=238, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0110.png> <../doc/src/manual/
+mov/wave_frames/frame_0110.png> <a0,fr30>
+<../doc/src/manual/mov/wave_frames/frame_0111.png, id=245, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0111.png> <../doc/src/manual/
+mov/wave_frames/frame_0111.png> <a0,fr31>
+<../doc/src/manual/mov/wave_frames/frame_0112.png, id=252, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0112.png> <../doc/src/manual/
+mov/wave_frames/frame_0112.png> <a0,fr32>
+<../doc/src/manual/mov/wave_frames/frame_0113.png, id=259, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0113.png> <../doc/src/manual/
+mov/wave_frames/frame_0113.png> <a0,fr33>
+<../doc/src/manual/mov/wave_frames/frame_0114.png, id=266, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0114.png> <../doc/src/manual/
+mov/wave_frames/frame_0114.png> <a0,fr34>
+<../doc/src/manual/mov/wave_frames/frame_0115.png, id=273, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0115.png> <../doc/src/manual/
+mov/wave_frames/frame_0115.png> <a0,fr35>
+<../doc/src/manual/mov/wave_frames/frame_0116.png, id=280, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0116.png> <../doc/src/manual/
+mov/wave_frames/frame_0116.png> <a0,fr36>
+<../doc/src/manual/mov/wave_frames/frame_0117.png, id=287, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0117.png> <../doc/src/manual/
+mov/wave_frames/frame_0117.png> <a0,fr37>
+<../doc/src/manual/mov/wave_frames/frame_0118.png, id=294, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0118.png> <../doc/src/manual/
+mov/wave_frames/frame_0118.png> <a0,fr38>
+<../doc/src/manual/mov/wave_frames/frame_0119.png, id=301, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0119.png> <../doc/src/manual/
+mov/wave_frames/frame_0119.png> <a0,fr39>
+<../doc/src/manual/mov/wave_frames/frame_0120.png, id=308, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0120.png> <../doc/src/manual/
+mov/wave_frames/frame_0120.png> <a0,fr40>
+<../doc/src/manual/mov/wave_frames/frame_0121.png, id=315, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0121.png> <../doc/src/manual/
+mov/wave_frames/frame_0121.png> <a0,fr41>
+<../doc/src/manual/mov/wave_frames/frame_0122.png, id=322, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0122.png> <../doc/src/manual/
+mov/wave_frames/frame_0122.png> <a0,fr42>
+<../doc/src/manual/mov/wave_frames/frame_0123.png, id=329, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0123.png> <../doc/src/manual/
+mov/wave_frames/frame_0123.png> <a0,fr43>
+<../doc/src/manual/mov/wave_frames/frame_0124.png, id=336, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0124.png> <../doc/src/manual/
+mov/wave_frames/frame_0124.png> <a0,fr44>
+<../doc/src/manual/mov/wave_frames/frame_0125.png, id=343, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0125.png> <../doc/src/manual/
+mov/wave_frames/frame_0125.png> <a0,fr45>
+<../doc/src/manual/mov/wave_frames/frame_0126.png, id=350, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0126.png> <../doc/src/manual/
+mov/wave_frames/frame_0126.png> <a0,fr46>
+<../doc/src/manual/mov/wave_frames/frame_0127.png, id=357, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0127.png> <../doc/src/manual/
+mov/wave_frames/frame_0127.png> <a0,fr47>
+<../doc/src/manual/mov/wave_frames/frame_0128.png, id=365, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0128.png> <../doc/src/manual/
+mov/wave_frames/frame_0128.png> <a0,fr48>
+<../doc/src/manual/mov/wave_frames/frame_0129.png, id=372, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0129.png> <../doc/src/manual/
+mov/wave_frames/frame_0129.png> <a0,fr49> [1{/var/lib/texmf/fonts/map/pdftex/up
+dmap/pdftex.map}]
+Overfull \hbox (80.24629pt too wide) 
+ [] 
+[2]
+
+
+
+No file movies.ind.
+[3] (./movies.aux)
+
+ *File List*
+ article.cls    2007/10/19 v1.4h Standard LaTeX document class
+  size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
+ relsize.sty    2013/03/29 ver 4.1
+  epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
+graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+  keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
+graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
+graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
+  pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
+infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
+ ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+ makeidx.sty    2000/03/29 v1.0m Standard LaTeX package
+   color.sty    1999/02/16
+   color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
+setspace.sty    2011/12/19 v6.7a set line spacing
+ amsmath.sty    2013/01/14 v2.14 AMS math features
+ amstext.sty    2000/06/29 v2.01
+  amsgen.sty    1999/11/30 v2.0
+  amsbsy.sty    1999/11/29 v1.2d
+  amsopn.sty    1999/12/14 v2.01 operator names
+amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
+  xcolor.sty    2007/01/21 v2.11 LaTeX color extensions (UK)
+   color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
+colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
+   array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
+      bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
+microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
+microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
+microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
+fancybox.sty    2010/05/15 1.4
+fancyvrb.sty    2008/02/07
+ animate.sty    2013/07/19 PDF animations from files and inline graphics
+  ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+   ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
+ ifdraft.sty    2008/08/11 v1.3 Detect class options draft and final (HO)
+    calc.sty    2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
+  animfp.sty    2009/07/23 fixed point addition for animate.sty
+supp-pdf.mkii
+inputenc.sty    2008/03/30 v1.1d Input encoding file
+    utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
+   t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+  ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+  omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
+hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
+hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
+  hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
+ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
+  ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+ intcalc.sty    2007/09/27 v1.1 Expandable calculations with integers (HO)
+etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
+kvdefinekeys.sty    2011/04/07 v1.3 Define keys (HO)
+pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
+pdfescape.sty    2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
+bigintcalc.sty    2012/04/08 v1.3 Expandable calculations on big integers (HO)
+  bitset.sty    2011/01/30 v1.1 Handle bit-vector datatype (HO)
+uniquecounter.sty    2011/01/30 v1.2 Provide unlimited unique counter (HO)
+letltxmacro.sty    2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
+ hopatch.sty    2012/05/28 v1.2 Wrapper for package hooks (HO)
+xcolor-patch.sty    2011/01/30 xcolor patch
+atveryend.sty    2011/06/30 v1.8 Hooks at the very end of document (HO)
+atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
+refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
+ hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
+ ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
+ auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
+kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
+  pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
+hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
+     url.sty    2006/04/12  ver 3.3  Verb mode for urls, etc.
+ hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
+rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
+epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
+  grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
+epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
+RS)
+ nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
+gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
+  movies.out
+  movies.out
+newcommands_bfmath.tex
+newcommands_replace.tex
+    umsa.fd    2013/01/14 v3.01 AMS symbols A
+  mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
+    umsb.fd    2013/01/14 v3.01 AMS symbols B
+  mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+../doc/src/manual/mov/wave_frames/frame_0080.png
+../doc/src/manual/mov/wave_frames/frame_0081.png
+../doc/src/manual/mov/wave_frames/frame_0082.png
+../doc/src/manual/mov/wave_frames/frame_0083.png
+../doc/src/manual/mov/wave_frames/frame_0084.png
+../doc/src/manual/mov/wave_frames/frame_0085.png
+../doc/src/manual/mov/wave_frames/frame_0086.png
+../doc/src/manual/mov/wave_frames/frame_0087.png
+../doc/src/manual/mov/wave_frames/frame_0088.png
+../doc/src/manual/mov/wave_frames/frame_0089.png
+../doc/src/manual/mov/wave_frames/frame_0090.png
+../doc/src/manual/mov/wave_frames/frame_0091.png
+../doc/src/manual/mov/wave_frames/frame_0092.png
+../doc/src/manual/mov/wave_frames/frame_0093.png
+../doc/src/manual/mov/wave_frames/frame_0094.png
+../doc/src/manual/mov/wave_frames/frame_0095.png
+../doc/src/manual/mov/wave_frames/frame_0096.png
+../doc/src/manual/mov/wave_frames/frame_0097.png
+../doc/src/manual/mov/wave_frames/frame_0098.png
+../doc/src/manual/mov/wave_frames/frame_0099.png
+../doc/src/manual/mov/wave_frames/frame_0100.png
+../doc/src/manual/mov/wave_frames/frame_0101.png
+../doc/src/manual/mov/wave_frames/frame_0102.png
+../doc/src/manual/mov/wave_frames/frame_0103.png
+../doc/src/manual/mov/wave_frames/frame_0104.png
+../doc/src/manual/mov/wave_frames/frame_0105.png
+../doc/src/manual/mov/wave_frames/frame_0106.png
+../doc/src/manual/mov/wave_frames/frame_0107.png
+../doc/src/manual/mov/wave_frames/frame_0108.png
+../doc/src/manual/mov/wave_frames/frame_0109.png
+../doc/src/manual/mov/wave_frames/frame_0110.png
+../doc/src/manual/mov/wave_frames/frame_0111.png
+../doc/src/manual/mov/wave_frames/frame_0112.png
+../doc/src/manual/mov/wave_frames/frame_0113.png
+../doc/src/manual/mov/wave_frames/frame_0114.png
+../doc/src/manual/mov/wave_frames/frame_0115.png
+../doc/src/manual/mov/wave_frames/frame_0116.png
+../doc/src/manual/mov/wave_frames/frame_0117.png
+../doc/src/manual/mov/wave_frames/frame_0118.png
+../doc/src/manual/mov/wave_frames/frame_0119.png
+../doc/src/manual/mov/wave_frames/frame_0120.png
+../doc/src/manual/mov/wave_frames/frame_0121.png
+../doc/src/manual/mov/wave_frames/frame_0122.png
+../doc/src/manual/mov/wave_frames/frame_0123.png
+../doc/src/manual/mov/wave_frames/frame_0124.png
+../doc/src/manual/mov/wave_frames/frame_0125.png
+../doc/src/manual/mov/wave_frames/frame_0126.png
+../doc/src/manual/mov/wave_frames/frame_0127.png
+../doc/src/manual/mov/wave_frames/frame_0128.png
+../doc/src/manual/mov/wave_frames/frame_0129.png
+ ***********
+
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ )
+(see the transcript file for additional information)</usr/share/texlive/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmtt9.pfb>
+Output written on movies.pdf (3 pages, ).
+Transcript written on movies.log.
++ '[' 0 -ne 0 ']'
++ cp movies.pdf movie_demo
 + system doconce guess_encoding encoding1.do.txt
 + doconce guess_encoding encoding1.do.txt
 + '[' 0 -ne 0 ']'
@@ -79626,7 +78771,6 @@ figure file http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media
     can use http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png for format pdflatex
 ... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png ... found!
 *** warning: you have citations but no bibliography (BIBFILE: ...)
-*** made link to new HTML file movie99x9.html with code to display the movie http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.ogg
 output in tmp2.p.tex
 + doconce format sphinx tmp2
 translating doconce text in tmp2.do.txt to sphinx
@@ -79671,7 +78815,6 @@ figure file http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media
     can use http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png for format pdflatex
 ... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png ... found!
 *** warning: you have citations but no bibliography (BIBFILE: ...)
-*** made link to new HTML file movie.html with code to display the movie http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.ogg
 output in tmp2.p.tex
 + echo
 
@@ -79740,49 +78883,15 @@ For additional information on amsmath, use the `?' option.
 
 (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
-<2008/02/07> (tvz)) (/usr/share/texlive/texmf-dist/tex/latex/media9/media9.sty
-(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
-(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/l3names.sty
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/l3experimental/l3str/l3regex.sty
-
-(/usr/share/texlive/texmf-dist/tex/latex/l3experimental/l3str/l3tl-analysis.sty
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/l3experimental/l3str/l3str-convert.sty
-)) 
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/atbegshi.sty
-
-
-(/home/hpl/texmf/tex/latex/misc/minted.sty
+<2008/02/07> (tvz)) (/home/hpl/texmf/tex/latex/misc/minted.sty
 
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/ifplatform/ifplatform.sty
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+
+
+
 
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/catchfile.sty
 
@@ -79811,6 +78920,31 @@ Package hyperref Message: Driver (default): hdvips.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/mdframed/mdframed.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/l3names.sty
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-abspage.sty
 
@@ -79980,51 +79114,16 @@ microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
 fancyvrb.sty    2008/02/07
-  media9.sty    2013/07/19 v0.29 acrobat-9/X compatible media
-   expl3.sty    2013/07/12 v4544 L3 Experimental code bundle wrapper
- l3names.sty    2012/12/07 v4346 L3 Namespace for primitives
-l3bootstrap.sty    2013/01/08 v4420 L3 Experimental bootstrap code
-    etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
-l3basics.sty    2013/07/09 v4521 L3 Basic definitions
- l3expan.sty    2013/07/09 v4521 L3 Argument expansion
-    l3tl.sty    2013/04/24 v4482 L3 Token lists
-   l3seq.sty    2013/05/26 v4500 L3 Sequences and stacks
-   l3int.sty    2013/04/24 v4482 L3 Integers
- l3quark.sty    2013/07/09 v4521 L3 Quarks
-   l3prg.sty    2013/04/24 v4482 L3 Control structures
- l3clist.sty    2013/05/26 v4500 L3 Comma separated lists
- l3token.sty    2013/04/24 v4482 L3 Experimental token manipulation
-  l3prop.sty    2013/01/09 v4423 L3 Property lists
-   l3msg.sty    2013/01/08 v4412 L3 Messages
-  l3file.sty    2013/05/01 v4483 L3 File and I/O operations
-  l3skip.sty    2013/01/13 v4444 L3 Dimensions and skips
-  l3keys.sty    2013/07/12 v4544 L3 Experimental key-value interfaces
-    l3fp.sty    2013/07/09 v4521 L3 Floating points
-   l3box.sty    2013/04/24 v4482 L3 Experimental boxes
-l3coffins.sty    2012/09/09 v4212 L3 Coffin code layer
- l3color.sty    2012/08/29 v4156 L3 Experimental color support
-l3luatex.sty    2012/08/03 v4049 L3 Experimental LuaTeX-specific functions
-l3candidates.sty    2013/07/09 v4521 L3 Experimental additions to l3kernel
-   ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
- l3regex.sty    2013/04/24 v4482 L3 Experimental regular expressions
-l3tl-build.sty    2011/12/08 v3039 L3 Experimental token list construction
-l3tl-analysis.sty    2011/12/08 v3039 L3 Experimental token lists analysis
-   l3str.sty    2013/04/24 v4482 L3 Experimental strings
-  l3flag.sty    2011/12/08 v3039 L3 Experimental flags
-l3str-convert.sty    2013/01/08 v4339 L3 Experimental string encoding conversio
-ns
-l3keys2e.sty    2013/07/12 v4544 LaTeX2e option processing using LaTeX3 keys
-  xparse.sty    2013/07/12 v4544 L3 Experimental document command parser
-atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
-infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
- ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
   minted.sty    2010/01/27 v1.6 Yet another Pygments shim for LaTeX
    float.sty    2001/11/08 v1.3d Float enhancements (AL)
   ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
     calc.sty    2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
 ifplatform.sty    2010/10/22 v0.4 Testing for the operating system
 pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
+infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
 ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
+ ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+   ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
 catchfile.sty    2011/03/01 v1.6 Catch the contents of a file (HO)
 etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
 quickref.w18
@@ -80051,6 +79150,7 @@ letltxmacro.sty    2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
  hopatch.sty    2012/05/28 v1.2 Wrapper for package hooks (HO)
 xcolor-patch.sty    2011/01/30 xcolor patch
 atveryend.sty    2011/06/30 v1.8 Hooks at the very end of document (HO)
+atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
 refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
  hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
  ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
@@ -80064,6 +79164,31 @@ hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
 mdframed.sty    2013/07/01 1.9b: mdframed
+  xparse.sty    2013/07/12 v4544 L3 Experimental document command parser
+   expl3.sty    2013/07/12 v4544 L3 Experimental code bundle wrapper
+ l3names.sty    2012/12/07 v4346 L3 Namespace for primitives
+l3bootstrap.sty    2013/01/08 v4420 L3 Experimental bootstrap code
+    etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
+l3basics.sty    2013/07/09 v4521 L3 Basic definitions
+ l3expan.sty    2013/07/09 v4521 L3 Argument expansion
+    l3tl.sty    2013/04/24 v4482 L3 Token lists
+   l3seq.sty    2013/05/26 v4500 L3 Sequences and stacks
+   l3int.sty    2013/04/24 v4482 L3 Integers
+ l3quark.sty    2013/07/09 v4521 L3 Quarks
+   l3prg.sty    2013/04/24 v4482 L3 Control structures
+ l3clist.sty    2013/05/26 v4500 L3 Comma separated lists
+ l3token.sty    2013/04/24 v4482 L3 Experimental token manipulation
+  l3prop.sty    2013/01/09 v4423 L3 Property lists
+   l3msg.sty    2013/01/08 v4412 L3 Messages
+  l3file.sty    2013/05/01 v4483 L3 File and I/O operations
+  l3skip.sty    2013/01/13 v4444 L3 Dimensions and skips
+  l3keys.sty    2013/07/12 v4544 L3 Experimental key-value interfaces
+    l3fp.sty    2013/07/09 v4521 L3 Floating points
+   l3box.sty    2013/04/24 v4482 L3 Experimental boxes
+l3coffins.sty    2012/09/09 v4212 L3 Coffin code layer
+ l3color.sty    2012/08/29 v4156 L3 Experimental color support
+l3luatex.sty    2012/08/03 v4049 L3 Experimental LuaTeX-specific functions
+l3candidates.sty    2013/07/09 v4521 L3 Experimental additions to l3kernel
 etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
@@ -80154,49 +79279,15 @@ For additional information on amsmath, use the `?' option.
 
 (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
-<2008/02/07> (tvz)) (/usr/share/texlive/texmf-dist/tex/latex/media9/media9.sty
-(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
-(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/l3names.sty
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/l3experimental/l3str/l3regex.sty
-
-(/usr/share/texlive/texmf-dist/tex/latex/l3experimental/l3str/l3tl-analysis.sty
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/l3experimental/l3str/l3str-convert.sty
-)) 
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/atbegshi.sty
-
-
-(/home/hpl/texmf/tex/latex/misc/minted.sty
+<2008/02/07> (tvz)) (/home/hpl/texmf/tex/latex/misc/minted.sty
 
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/ifplatform/ifplatform.sty
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+
+
+
 
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/catchfile.sty
 
@@ -80225,6 +79316,31 @@ Package hyperref Message: Driver (default): hdvips.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/mdframed/mdframed.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/l3names.sty
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-abspage.sty
 
@@ -80324,21 +79440,19 @@ Overfull \hbox (49.67618pt too wide)
 Overfull \hbox (59.2456pt too wide) 
 \OT1/phv/m/n/10 sert a back-slash). Bib-li-og-ra-phy ci-ta-tions of-ten have []
  on the form [],
-
+[11]
 Overfull \hbox (20.06894pt too wide) 
 []\OT1/phv/m/n/10 The bib-li-og-ra-phy is spec-i-fied by a line [], where []
-[11]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
-[12]
+[12] [13]
 
-
-[15]
+[15] [16]
 Overfull \hbox (7.76833pt too wide) 
 \OT1/phv/m/n/10 Doconce en-vi-ron-ments start with [] and end with [], where
-[16]
+
 Overfull \hbox (0.45856pt too wide) 
 \OT1/phv/m/n/10 Doconce doc-u-ments may uti-lize a pre-pro-ces-sor, ei-ther [] 
 and/or [].
@@ -80380,51 +79494,16 @@ microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
 fancyvrb.sty    2008/02/07
-  media9.sty    2013/07/19 v0.29 acrobat-9/X compatible media
-   expl3.sty    2013/07/12 v4544 L3 Experimental code bundle wrapper
- l3names.sty    2012/12/07 v4346 L3 Namespace for primitives
-l3bootstrap.sty    2013/01/08 v4420 L3 Experimental bootstrap code
-    etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
-l3basics.sty    2013/07/09 v4521 L3 Basic definitions
- l3expan.sty    2013/07/09 v4521 L3 Argument expansion
-    l3tl.sty    2013/04/24 v4482 L3 Token lists
-   l3seq.sty    2013/05/26 v4500 L3 Sequences and stacks
-   l3int.sty    2013/04/24 v4482 L3 Integers
- l3quark.sty    2013/07/09 v4521 L3 Quarks
-   l3prg.sty    2013/04/24 v4482 L3 Control structures
- l3clist.sty    2013/05/26 v4500 L3 Comma separated lists
- l3token.sty    2013/04/24 v4482 L3 Experimental token manipulation
-  l3prop.sty    2013/01/09 v4423 L3 Property lists
-   l3msg.sty    2013/01/08 v4412 L3 Messages
-  l3file.sty    2013/05/01 v4483 L3 File and I/O operations
-  l3skip.sty    2013/01/13 v4444 L3 Dimensions and skips
-  l3keys.sty    2013/07/12 v4544 L3 Experimental key-value interfaces
-    l3fp.sty    2013/07/09 v4521 L3 Floating points
-   l3box.sty    2013/04/24 v4482 L3 Experimental boxes
-l3coffins.sty    2012/09/09 v4212 L3 Coffin code layer
- l3color.sty    2012/08/29 v4156 L3 Experimental color support
-l3luatex.sty    2012/08/03 v4049 L3 Experimental LuaTeX-specific functions
-l3candidates.sty    2013/07/09 v4521 L3 Experimental additions to l3kernel
-   ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
- l3regex.sty    2013/04/24 v4482 L3 Experimental regular expressions
-l3tl-build.sty    2011/12/08 v3039 L3 Experimental token list construction
-l3tl-analysis.sty    2011/12/08 v3039 L3 Experimental token lists analysis
-   l3str.sty    2013/04/24 v4482 L3 Experimental strings
-  l3flag.sty    2011/12/08 v3039 L3 Experimental flags
-l3str-convert.sty    2013/01/08 v4339 L3 Experimental string encoding conversio
-ns
-l3keys2e.sty    2013/07/12 v4544 LaTeX2e option processing using LaTeX3 keys
-  xparse.sty    2013/07/12 v4544 L3 Experimental document command parser
-atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
-infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
- ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
   minted.sty    2010/01/27 v1.6 Yet another Pygments shim for LaTeX
    float.sty    2001/11/08 v1.3d Float enhancements (AL)
   ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
     calc.sty    2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
 ifplatform.sty    2010/10/22 v0.4 Testing for the operating system
 pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
+infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
 ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
+ ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+   ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
 catchfile.sty    2011/03/01 v1.6 Catch the contents of a file (HO)
 etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
 quickref.w18
@@ -80451,6 +79530,7 @@ letltxmacro.sty    2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
  hopatch.sty    2012/05/28 v1.2 Wrapper for package hooks (HO)
 xcolor-patch.sty    2011/01/30 xcolor patch
 atveryend.sty    2011/06/30 v1.8 Hooks at the very end of document (HO)
+atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
 refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
  hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
  ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
@@ -80464,6 +79544,31 @@ hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
 mdframed.sty    2013/07/01 1.9b: mdframed
+  xparse.sty    2013/07/12 v4544 L3 Experimental document command parser
+   expl3.sty    2013/07/12 v4544 L3 Experimental code bundle wrapper
+ l3names.sty    2012/12/07 v4346 L3 Namespace for primitives
+l3bootstrap.sty    2013/01/08 v4420 L3 Experimental bootstrap code
+    etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
+l3basics.sty    2013/07/09 v4521 L3 Basic definitions
+ l3expan.sty    2013/07/09 v4521 L3 Argument expansion
+    l3tl.sty    2013/04/24 v4482 L3 Token lists
+   l3seq.sty    2013/05/26 v4500 L3 Sequences and stacks
+   l3int.sty    2013/04/24 v4482 L3 Integers
+ l3quark.sty    2013/07/09 v4521 L3 Quarks
+   l3prg.sty    2013/04/24 v4482 L3 Control structures
+ l3clist.sty    2013/05/26 v4500 L3 Comma separated lists
+ l3token.sty    2013/04/24 v4482 L3 Experimental token manipulation
+  l3prop.sty    2013/01/09 v4423 L3 Property lists
+   l3msg.sty    2013/01/08 v4412 L3 Messages
+  l3file.sty    2013/05/01 v4483 L3 File and I/O operations
+  l3skip.sty    2013/01/13 v4444 L3 Dimensions and skips
+  l3keys.sty    2013/07/12 v4544 L3 Experimental key-value interfaces
+    l3fp.sty    2013/07/09 v4521 L3 Floating points
+   l3box.sty    2013/04/24 v4482 L3 Experimental boxes
+l3coffins.sty    2012/09/09 v4212 L3 Coffin code layer
+ l3color.sty    2012/08/29 v4156 L3 Experimental color support
+l3luatex.sty    2012/08/03 v4049 L3 Experimental LuaTeX-specific functions
+l3candidates.sty    2013/07/09 v4521 L3 Experimental additions to l3kernel
 etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
@@ -80509,22 +79614,6 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 Output written on quickref.dvi (18 pages, ).
 Transcript written on quickref.log.
 + dvipdf quickref.dvi
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-@@    Warning: DVI resolution greater than 1200 dpi!     @@
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-@@                                                       @@
-@@ Media poster and button faces may be distorted or     @@
-@@ invisible.                                            @@
-@@                                                       @@
-@@ Dvips should be called either without option `-Ppdf': @@
-@@                                                       @@
-@@   dvips quickref
-@@                                                       @@
-@@ or with a different resolution setting:               @@
-@@                                                       @@
-@@   dvips -Ppdf -D1200 quickref
-@@                                                       @@
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 + doconce format sphinx quickref --no_preprocess
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to sphinx

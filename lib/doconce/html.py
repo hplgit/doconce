@@ -782,35 +782,18 @@ def html_movie(m):
     if 'youtu.be' in filename:
         filename = filename.replace('youtu.be', 'youtube.com')
 
-    if '*' in filename:
-        # Glob files and use DocWriter.html_movie to make inline javascript
-        # code for viewing the set of files
-        plotfiles = glob.glob(filename)
-        if not plotfiles:
-            print 'No plotfiles on the form', filename
-            _abort()
-        plotfiles.sort()
-        basename  = os.path.basename(plotfiles[0])
-        stem, ext = os.path.splitext(basename)
-        kwargs['casename'] = stem
+    if '*' in filename or '->' in filename:
+        # frame_*.png
+        # frame_%04d.png:0->120
+        # http://some.net/files/frame_%04d.png:0->120
         import DocWriter
-        header, jscode, form, footer = DocWriter.html_movie(plotfiles, **kwargs)
+        header, jscode, form, footer, frames = \
+                DocWriter.html_movie(filename, **kwargs)
         text = jscode + form
         if caption:
             text += '\n<br><em>' + caption + '</em><br>\n\n'
-        add_to_file_collection(plotfiles)
-        # Movie in separate file
-        # (better with inline javascript)
-        '''
-        moviehtml = stem + '.html'
-        f = open(moviehtml, 'w')
-        f.write(header + jscode + form + footer)
-        f.close()
-        text = """
-<p><a href="%s">Movie of files <tt>%s</tt></a>\n<em>%s</em></p>""" % \
-               (moviehtml, filename, caption)
-        add_to_file_collection([moviehtml] + plotfiles)
-        '''
+        if not frames[0].startswith('http'):
+            add_to_file_collection(frames)
     elif 'youtube.com' in filename:
         if not 'youtube.com/embed/' in filename:
             filename = filename.replace('watch?v=', '')
@@ -838,25 +821,17 @@ def html_movie(m):
         if caption:
             text += """\n<em>%s</em>\n\n""" % caption
     else:
+        # Some movie file
         width = kwargs.get('width', 640)
         height = kwargs.get('height', 365)
         #basename = os.path.basename(filename)
         stem, ext = os.path.splitext(filename)
-        #<source src='%(stem)s.mp4'  type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'/>  # here we have /> at the end
-
-        # ffmpeg -qscale 5 -r 20 -b 9600 -i img%04d.png movie.mp4
-        # http://www.miscdebris.net/blog/2008/04/28/create-a-movie-file-from-single-image-files-png-jpegs/
-
-        # ffmpeg -i video.avi -vcodec libx264 -x264opts keyint=30 -r 30 video.mp4
-        # ffmpeg -i frame-%d.png -vcodec libx264 -x264opts keyint=30 -r 30 video.mp4
-        # sudo apt-get install libx264-dev x264 libavcodec-extra-53
-        # git clone git://source.ffmpeg.org/ffmpeg.git ffmpeg
-
-
         if ext == '':
-            print 'do not specify movie file without extension'
+            print '*** error: never specify movie file without extension'
+            _abort()
+
         if ext in ('.mp4', '.ogg', '.webm'):
-            # Use HTML video tag
+            # Use new HTML5 video tag
             autoplay = 'autoplay' if autoplay else ''
             sources3 = option('no_mp4_webm_ogg_alternatives', True)
             text = """

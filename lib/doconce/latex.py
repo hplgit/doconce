@@ -275,34 +275,36 @@ def latex_figure(m, includegraphics=True):
     return result
 
 def latex_movie(m):
-    from common import default_movie
-    text = default = default_movie(m)
     filename = m.group('filename')
     caption = m.group('caption').strip()
 
     if 'youtu.be' in filename:
         filename = filename.replace('youtu.be', 'youtube.com')
 
-    # URL to HTML viewer file must have absolute path in \href
-    html_viewer_file_pattern = r'Movie of files `.+` in URL:"(.+)"'
-    m2 = re.search(html_viewer_file_pattern, text)
-    if m2:
-        html_viewer_file = m2.group(1)
-        if os.path.isfile(html_viewer_file):
-            html_viewer_file_abs = os.path.abspath(html_viewer_file)
-            text = text.replace('URL:"%s"' % html_viewer_file,
-                                'URL:"file://%s"' % html_viewer_file_abs)
+    def link_to_local_html_movie_player():
+        """Use simple solution where an HTML file is made for playing the movie."""
+        from common import default_movie
+        text = default_movie(m)
 
+        # URL to HTML viewer file must have absolute path in \href
+        html_viewer_file_pattern = r'Movie of files `.+` in URL:"(.+)"'
+        m2 = re.search(html_viewer_file_pattern, text)
+        if m2:
+            html_viewer_file = m2.group(1)
+            if os.path.isfile(html_viewer_file):
+                html_viewer_file_abs = os.path.abspath(html_viewer_file)
+                text = text.replace('URL:"%s"' % html_viewer_file,
+                                    'URL:"file://%s"' % html_viewer_file_abs)
+        return text
 
-    if ': play URL:' in text:
-        # Drop default_movie, embed in PDF instead using various techniques
-        if caption:
-            text = r"""
-\begin{figure}[ht]
-\begin{center}
-"""
-        if 'youtube.com' in filename:
-            text += r"""
+    # Do not typeset movies in figure environments since Doconce documents
+    # assume inline movies
+    text = r"""
+\begin{doconce:movie}
+\refstepcounter{doconce:movie:counter}
+\begin{center}"""
+    if 'youtube.com' in filename:
+        text += r"""
 %% #if MOVIE == "media9"
 \includemedia[
 width=0.6\linewidth,height=0.45\linewidth,
@@ -313,19 +315,57 @@ modestbranding=1   %% no YouTube logo in control bar
 &showinfo=0        %% no title and other info before start
 &rel=0             %% no related videos after end
 },
-url %% Flash loaded from URL
 ]{}{%(filename)s}
 %% #else
-%(default)s
+"`%(filename)s`": "%(filename)s"
 %% #endif
 """ % vars()
-
+    elif 'vimeo.com' in filename:
+        # Can only provide a link to the Vimeo movie
+        # Rename embedded files to ordinary Vimeo URL
+        filename = filename.replace('http://player.vimeo.com/video',
+                                    'http://vimeo.com')
+        text += '"`%(filename)s`": "%(filename)s"' % vars()
+    elif '*' in filename or '->' in filename:
+        # Filename generator
+        # frame_*.png
+        # frame_%04d.png:0->120
+        # http://some.net/files/frame_%04d.png:0->120
+        if filename.startswith('http'):
+            # Cannot handle animation of frames on the web,
+            # make a separate html file that can play the animation
+            text += link_to_local_html_movie_player()
         else:
+            import DocWriter
+            header, jscode, form, footer, frames = \
+                    DocWriter.html_movie(filename)
+            # Make a good estimate of the frame rate: it takes 30 secs
+            # to run the animation: rate*30 = no of frames
+            framerate = int(len(frames)/30.)
+            commands = [r'\includegraphics[width=0.9\textwidth]{%s}' %
+                        f for f in frames]
+            commands = ('\n\\newframe\n').join(commands)
+            # Note: cannot use animategraphics because it cannot handle
+            # filenames on the form frame_%04d.png, only frame_%d.png.
+            # Expand all plotfile names instead.
+            text += r"""
+\begin{animateinline}[controls,loop]{%d}
+%s
+\end{animateinline}
+""" % (framerate, commands)
+    else:
+        # Local movie file or URL (all the methods below handle
+        # either local files or URLs)
+
+        label = filename.replace('/', '').replace('.', '').replace('-','')
+        stem, ext = os.path.splitext(filename)
+        if ext.lower() in ('.mp4', '.flv'):
+            # Can use media9 package
             text += r"""
 %% #if MOVIE == "media9"
 \includemedia[
+label=%(label)s,
 width=0.8\linewidth,
-label=%(filename)s,
 activate=pageopen,         %% or onclick or pagevisible
 addresource=%(filename)s,  %% embed the video in the PDF
 flashvars={
@@ -336,16 +376,15 @@ source=%(filename)s
 }]{}{VPlayer.swf}
 
 %% #ifdef MOVIE_CONTROLS
-\mediabutton[
-  mediacommand=%(filename)s:playPause,
-  overface=\color{blue}{\fbox{\strut Play/Pause}},
-  downface=\color{red}{\fbox{\strut Play/Pause}}
-  ]{\fhox{\strut Play/Pause}}
-%% #endif
-
-%% #elif MOVIE == "movie15"
+%%\mediabutton[mediacommand=%(label)s:playPause]{\fbox{\strut Play/Pause}}
+%% #endif""" % vars()
+        elif ext.lower() in ('.mpg', '.mpeg', '.avi'):
+            # Use old movie15 package which will launch a separate
+            # player
+            text += r"""
+%% #if MOVIE == "media9"
 \includemovie[poster,
-label=%(filename)s,
+label=%(label)s,
 autoplay,
 %%controls,
 %%toolbar,
@@ -356,32 +395,47 @@ text={\small (Loading %(filename)s)},
 repeat,
 ]{0.9\linewidth}{0.9\linewidth}{%(filename)s}
 %% #ifndef EXTERNAL_MOVIE_VIEWER
-\movieref[rate=0.5]{%(filename)s}{Slower}
-\movieref[rate=2]{%(filename)s}{Faster}
+\movieref[rate=0.5]{%(label)s}{Slower}
+\movieref[rate=2]{%(label)s}{Faster}
 \movieref[default]{%(filename)s}{Normal}
-\movieref[pause]{%(filename)s}{Play/Pause}
-\movieref[stop]{%(filename)s}{Stop}
-%% #else
-\href{run:%(filename)s}{%(filename)s}
-%% #endif
-
+\movieref[pause]{%(label)s}{Play/Pause}
+\movieref[stop]{%(label)s}{Stop}
+%% #endif""" % vars()
+        else:
+            # Use simple old href technique since neither media9 nor movie15
+            # can handle this format (typically .webm or .ogg)
+            text += r"""
+%% #if MOVIE == "media9"
+\href{run:%(filename)s}{\nolinkurl{%(filename)s}}
+""" % vars()
+        # Add latex code for other methods for showing movies
+        # (these are the same for all movie types)
+        text += r"""
 %% #elif MOVIE == "multimedia"
 %% Beamer-style \movie command
 \movie[
+showcontrols,
 label=%(filename)s,
 width=0.9\linewidth,
-autostart]{%(filename)s}{%(filename)s}
+autostart]{\nolinkurl{%(filename)s}}{%(filename)s}
 %% #else
-\href{run:%(filename)s}{%(filename)s}
-%% #endif
-""" % {'filename': filename}
-        if caption:
-            # Note: caption may contain a label
-            text += r"""
+""" % vars()
+        if filename.startswith('http'):
+            # Just plain link
+            text += r'\href{%(filename)s}{\nolinkurl{%(filename)s}}' % vars()
+        else:
+            # \href{run:localfile}{linktext}
+            text += r'\href{run:%(filename)s}{\nolinkurl{%(filename)s}}' % vars()
+        text += '\n% #endif\n'
+
+    text += '\\end{center}\n'
+    if caption:
+        text += r"""
+\begin{center}  %% movie caption
+Movie \arabic{doconce:movie:counter}: %s
 \end{center}
-\caption{%s}
-\end{figure}
 """ % caption
+    text += '\\end{doconce:movie}\n'
     return text
 
 def latex_table(table):
@@ -1365,20 +1419,52 @@ final,                   %% or draft (marks overfull hboxes)
 \usepackage{ptex2tex}
 """
     # Add packages for movies
-    m = re.search(r'^MOVIE:\s*\[', filestr, flags=re.MULTILINE)
-    if m:
+    if re.search(r'^MOVIE:\s*\[', filestr, flags=re.MULTILINE):
         INTRO['latex'] += r"""
 % #ifndef MOVIE
-% #define MOVIE "media9"
+% #define MOVIE "href"
+% #ifndef MOVIE_CONTROLS
+% #define MOVIE_CONTROLS
+% #endif
 % #endif
 
+\newenvironment{doconce:movie}{}{}
+\newcounter{doconce:movie:counter}
+
 % #if MOVIE == "media9"
+% #ifdef XELATEX
+\usepackage[xetex]{media9}
+% #else
 \usepackage{media9}
-% #elif MOVIE == "movie15"
-\usepackage{movie15}
+% #endif
 % #elif MOVIE == "multimedia"
 \usepackage{multimedia}
-% #elif MOVIE == "href-run"
+% #elif MOVIE == "href"
+% #endif
+"""
+    movies = re.findall(r'^MOVIE: \[(.+?)\]', filestr, flags=re.MULTILINE)
+    animated_files = False
+    non_flv_mp4_files = False  # need for old movie15?
+    for filename in movies:
+        if '*' in filename or '->' in filename:
+            animated_files = True
+        if '.mp4' in filename.lower() or '.flv' in filename.lower():
+            pass # ok, media9 can be used
+        else:
+            non_flv_mp4_files = True
+    if non_flv_mp4_files:
+        INTRO['latex'] += r"""
+% #if MOVIE == "media9"
+\usepackage{movie15}
+% #endif
+"""
+    if animated_files:
+        INTRO['latex'] += r"""
+% #ifdef XELATEX
+\usepackage[xetex]{animate}
+\usepackage{graphicx}
+% #else
+\usepackage{animate,graphicx}
 % #endif
 """
 

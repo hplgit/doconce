@@ -254,12 +254,45 @@ cp -r tmp_admon/_build/html admon_sphinx
 
 system doconce format mwiki admon
 cp admon.mwiki admon_mwiki.mwiki
-mv -f admon_* admon/
-
-system doconce format pandoc github_md.do.txt --github_md
+cp -f admon_* admon_demo/
 
 #google-chrome admon_*.html
 #for pdf in admon_*.pdf; do evince $pdf; done
+
+
+system doconce format pandoc github_md.do.txt --github_md
+
+# Test movie handling
+name=movies
+system doconce format html $name --html_output=movies_3choices.html
+cp movies_3choices.html movie_demo
+system doconce format html $name --no_mp4_webm_ogg_alternatives
+cp movies.html movie_demo
+
+rm -f $name.aux
+system doconce format pdflatex $name
+system doconce ptex2tex $name -DMOVIE=media9
+pdflatex $name
+pdflatex $name
+cp $name.pdf movie_demo/${name}_media9.pdf
+cp $name.tex ${name}_media9.tex
+
+# multimedia (beamer \movie command) does not work well
+#rm $name.aux
+#system doconce format pdflatex $name
+#system doconce ptex2tex $name -DMOVIE=multimedia
+#system pdflatex $name
+#cp $name.pdf movie_demo/${name}_multimedia.pdf
+#cp $name.tex ${name}_multimedia.tex
+
+rm -f $name.aux
+system doconce format pdflatex $name
+system doconce ptex2tex $name
+system pdflatex $name
+cp $name.pdf movie_demo
+
+# Status movies: everything works in html and sphinx, only href works
+# in latex, media9 is unreliable
 
 # Test encoding
 system doconce guess_encoding encoding1.do.txt > tmp_encodings.txt

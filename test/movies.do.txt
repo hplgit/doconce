@@ -2,13 +2,15 @@ TITLE: This is a demo of movies in Doconce
 AUTHOR: HPL
 DATE: today
 
-Let us refer to movie ref{mov:wave}.
 
 Here is a movie in WebM format.
 # #if FORMAT == "html"
-Note that in HTML format it may be the MP4 version of this movie that is
-actually played since three alternative sources (MP4, WebM, OGG)
-are given.
+Note that in HTML format a WebM movie
+may actually be the MP4 version of this movie
+three alternative sources (MP4, WebM, OGG)
+are inserted in the HTML code by default. The command-line
+option `--no_mp4_webm_ogg_alternatives` makes the HTML
+code use exactly the specified movie file.
 # #endif
 
 MOVIE: [../doc/src/manual/mov/wave.webm, width=700 height=400] 1D wave in WebM.
@@ -25,15 +27,40 @@ Here is the same movie in Flash format:
 
 MOVIE: [../doc/src/manual/mov/wave.flv, width=700 height=400] 1D wave in Flash.
 
-And here is a collection of images shown as an animation:
+And here is a collection of images shown as an animation
+(`frame_*.png`):
 
 MOVIE: [../doc/src/manual/mov/wave_frames/frame_*.png, width=700 height=400] Animated collection of images.
 
-The movie above in MPEG format:
+Here is the same collection, but with images in cyberspace, given as URLs:
 
+!bc
+http://hplgit.github.io/animate/..../frame_%04d.png:80->129
+!ec
+
+MOVIE: [http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_%04d.png:80->129]
+
+The movie above in MPEG format, typeset in a box:
+
+!bbox
 MOVIE: [../doc/src/manual/mov/wave.mpeg, width=700 height=400] 1D wave in MPEG. label{mov:wave}
+!ebox
 
 Here is the same movie in AVI format:
 
 MOVIE: [../doc/src/manual/mov/wave.avi, width=700 height=400] 1D wave in AVI.
 
+Here is the same movie, but with a URL to GitHub:
+
+MOVIE: [http://hplgit.github.io/animate/doc/pub/mov-animate/demo.ogg]
+
+Here is a YouTube video:
+
+MOVIE: [http://www.youtube.com/watch?v=_O7iUiftbKU, width=420 height=315] YouTube movie.
+
+And a vimeo video:
+
+MOVIE: [http://vimeo.com/55562330, width=500 height=278] Vimeo movie.
+
+
+Finally, let us demonstrate referencing the movie ref{mov:wave}.

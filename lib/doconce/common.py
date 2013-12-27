@@ -28,6 +28,8 @@ envir_delimiter_lines = {
      '--- end exercise ---'),
 }
 
+_counter_for_html_movie_player = 0
+
 def _abort():
     if '--no_abort' in sys.argv:
         print 'avoided abortion because of --no-abort'
@@ -297,6 +299,8 @@ def default_movie(m):
     """Replace a movie entry by a proper URL with text."""
     # Note: essentially same code as html_movie
     import os, glob
+    global _counter_for_html_movie_player
+
     filename = m.group('filename')
     options = m.group('options')
     caption = m.group('caption')
@@ -316,23 +320,19 @@ def default_movie(m):
     if 'youtu.be' in filename:
         filename = filename.replace('youtu.be', 'youtube.com')
 
-    if '*' in filename:
-        # Glob files and use DocWriter.html_movie to make a separate
-        # HTML page for viewing the set of files
-        plotfiles = sorted(glob.glob(filename))
-        if not plotfiles:
-            print 'No plotfiles on the form', filename
-            _abort()
-        basename  = os.path.basename(plotfiles[0])
-        stem, ext = os.path.splitext(basename)
-        kwargs['casename'] = stem
+    if '*' in filename or '->' in filename:
+        # frame_*.png
+        # frame_%04d.png:0->120
+        # http://some.net/files/frame_%04d.png:0->120
         import DocWriter
-        header, jscode, form, footer = DocWriter.html_movie(plotfiles, **kwargs)
-        #text = jscode + form  # does not work well with several movies
-        moviehtml = stem + '.html'
+        header, jscode, form, footer, frames = \
+            DocWriter.html_movie(filename, **kwargs)
+        _counter_for_html_movie_player += 1
+        moviehtml = 'movie_player%d' % _counter_for_html_movie_player + '.html'
         f = open(moviehtml, 'w')
         f.write(header + jscode + form + footer)
         f.close()
+        print '*** made link to new HTML file %s\n    with code to display the movie\n    %s' % (moviehtml, filename)
         text = """\n%s (Movie of files `%s` in URL:"%s")\n""" % \
                (caption, filename, moviehtml)
     elif 'youtube.com' in filename:
@@ -347,22 +347,22 @@ def default_movie(m):
     else:
         # Make an HTML file where the movie file can be played
         # (alternative to launching a player manually)
-        stem  = os.path.splitext(os.path.basename(filename))[0]
-        moviehtml = stem + '.html'
+        _counter_for_html_movie_player += 1
+        moviehtml = 'movie_player%d' % \
+            _counter_for_html_movie_player + '.html'
         f = open(moviehtml, 'w')
         f.write("""
 <html>
 <body>
 <title>Embedding movie in HTML</title>
-   <embed SRC="%s" %s AUTOPLAY="TRUE" LOOP="TRUE"></embed>
+   <embed src="%s" %s autoplay="false" loop="true"></embed>
    <p>
    <em>%s</em>
    </p>
 </body>
 </html>
 """ % (filename, ' '.join(options), caption))
-        print '*** made link to new HTML file %s with code to display the movie %s' % \
-        (moviehtml, filename)
+        print '*** made link to new HTML file %s\n    with code to display the movie \n    %s' % (moviehtml, filename)
         text = '%s (Movie `%s`: play URL:"%s")' % (caption, filename, moviehtml)
     return text
 

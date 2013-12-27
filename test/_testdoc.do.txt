@@ -211,7 +211,7 @@ And one more.} Some formats will only display this correctly when
 HTML is the output format.
 
 
-===== Subsection 2: Testing figures and movies =====
+===== Subsection 2: Testing figures =====
 label{subsec:ex}
 idx{figures}
 
@@ -225,35 +225,6 @@ Figures without captions are allowed and will be inlined.
 FIGURE:[../doc/src/manual/fig/wave1D, width=200]
 
 idx{movies}
-
-=== Test of movies ===
-
-Movie ref{mov:wave} shows a wave.
-
-MOVIE: [../doc/src/manual/mov/wave.ogg, width=700 height=400] 1D wave in Ogg format. label{mov:wave}.
-
-Test empty caption (for inline movie, here in MPEG format):
-
-MOVIE: [../doc/src/manual/mov/wave.mpeg, width=700 height=400]
-
-Test wrong syntax and multi-line caption, to see if it is automatically
-corrected:
-
-   MOVIE: [../doc/src/manual/mov/wave.webm, width=700 height=400] Movie
-based on collection of frames
-(here just a few frames compared with the full wavepacket.mpeg movie).
-label{mymov}
-
-We can show a series of images as an animation:
-
-MOVIE: [../doc/src/manual/mov/wave_frames/frame_*.png] Caption for animated collection of images.
-
-Check out the correct with and height of YouTube movies from the
-embed command that the YouTube page can generate. Similar for Vimeo.
-
-MOVIE: [http://www.youtube.com/watch?v=_O7iUiftbKU, width=420 height=315] YouTube movie.
-
-MOVIE: [http://vimeo.com/55562330, width=500 height=278] Vimeo movie.
 
 
 # Test multi-line caption in figure
@@ -281,6 +252,9 @@ FIGURE: [testfigs/df2s8765s_plot.png, width=200, frac=0.4]
 # #endif
 
 # Somewhat challenging heading with latex math, \t, \n, ? and parenthesis
+
+__Remark.__
+Movies are tested in separate file `movies.do.txt`.
 
 ===== The $\theta$ parameter (not $\nabla$?) =====
 label{decay:sec:theta}
