@@ -5,7 +5,7 @@ Doconce Description
 ===================
 
 :Author: Hans Petter Langtangen
-:Date: Dec 24, 2013
+:Date: Dec 27, 2013
 
 .. lines beginning with # are doconce comment lines
 
@@ -790,6 +790,16 @@ Pygments style is set by ``--pygments_html_style=style``, where ``style``
 can be ``default``, ``emacs``, ``perldoc``, and other valid names for
 Pygments styles.
 
+Handling of Movies
+~~~~~~~~~~~~~~~~~~
+
+MP4, WebM, and Ogg movies are typeset with the HTML5 ``video`` tag
+and the HTML code tries to load as many versions among MP4, WebM,
+and Ogg as exist (and the files are loaded in the mentioned order).
+If just the specified file is to be loaded, use the
+``--no_mp4_webm_ogg_alternatives`` command-line option.
+Other movie formats, e.g., ``.flv``, ``.mpeg`` and ``.avi``, are embedded via
+the older ``embed`` tag.
 
 HTML Styles
 ~~~~~~~~~~~
@@ -1209,10 +1219,13 @@ Preprocessor variables to be defined or undefined are
  * ``A6PAPER`` for A6 paper size (suitable for reading PDFs on phones)
 
  * ``MOVIE`` for specifying how movies are handled: the value ``media9``
-   implies the ``media9`` package and the ``\includemedia`` command (default),
-   while other values are ``movie15`` (``\includemovie`` command),
-   ``multimedia`` (for Beamer-style ``\movie`` command),
-   or ``href-run`` (for the plain `\h:ref:`run:file`` command)
+   implies the ``media9`` package and the ``\includemedia`` command
+   for ``.flv`` and ``.mp4`` movies,
+   or ``movie15`` and the ``\includemovie`` command for ``.mpeg`` and ``.avi``
+   movies;
+   ``multimedia`` for Beamer-style ``\movie`` command,
+   or ``href`` for the plain `\h:ref:`run:file`` command. The latter
+   is default.
 
  * ``MOVIE_CONTROLS`` adds buttons for starting/stopping movies if the
    ``media9`` package is used.
@@ -2257,17 +2270,27 @@ remove surrounding whitespace):
 Movies
 ------
 
-Here is an example on the ``MOVIE:`` keyword for embedding movies. This
+Movies/videos are inserted using the ``MOVIE:`` keyword. This
 feature works well for the ``latex``, ``html``, ``rst``, and ``sphinx`` formats.
 Other formats try to generate some HTML file and link to that file
 for showing the movie.
+
+The Basic Command
+~~~~~~~~~~~~~~~~~
+
+As with ``FIGURE``, the ``MOVIE`` command expands just *one line* and is of
+the form
+
 
 .. code-block:: text
 
 
         MOVIE: [filename, height=xxx width=yyy] possible caption
-        
 
+
+Note that there must be a blank line after every ``MOVIE:`` command.
+The width and height parameters are not required, but leaving them out
+may lead to movie sizes you do not want.
 
 Here is a movie in the MPEG format:
 
@@ -2283,15 +2306,34 @@ And here is a movie in the Ogg format:
 .. raw:: html
         
         <div>
-        <video  loop controls width='600' height='470' preload='none'>
-        <source src='mov/wave.mp4'  type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
-        <source src='mov/wave.webm' type='video/webm; codecs="vp8, vorbis"'>
-        <source src='mov/wave.ogg'  type='video/ogg; codecs="theora, vorbis"'>
+        <video  loop controls width='600' height='365' preload='none'>
+            <source src='mov/wave.mp4'  type='video/mp4;  codecs="avc1.42E01E, mp4a.40.2"'>
+            <source src='mov/wave.webm' type='video/webm; codecs="vp8, vorbis"'>
+            <source src='mov/wave.ogg'  type='video/ogg;  codecs="theora, vorbis"'>
         </video>
         </div>
-        <p><em></em></p>
+        <p><em>A movie in Ogg format.</em></p>
 
 
+
+A URL works too as movie address:
+
+.. raw:: html
+        
+        <div>
+        <video  loop controls width='640' height='365' preload='none'>
+            <source src='http://hplgit.github.io/animate/doc/pub/mov-animate/demo.mp4'  type='video/mp4;  codecs="avc1.42E01E, mp4a.40.2"'>
+            <source src='http://hplgit.github.io/animate/doc/pub/mov-animate/demo.webm' type='video/webm; codecs="vp8, vorbis"'>
+            <source src='http://hplgit.github.io/animate/doc/pub/mov-animate/demo.ogg'  type='video/ogg;  codecs="theora, vorbis"'>
+        </video>
+        </div>
+        <p><em>Ogg movie in cyberspace.</em></p>
+
+
+
+
+MP4, WebM, and Ogg Movies in HTML
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If a movie is in Ogg, MP4, or WebM format, and the output format is HTML,
 Doconce will check if the movie file is also in the other formats among
@@ -2300,30 +2342,47 @@ backup formats in case the browser does not support a particular format.
 Providing a movie in Ogg, MP4, *and* WebM format is therefore the safest
 way to ensure that the movie can be played in any browser on any device.
 
-The LaTeX format results in a file that can either make use of
-the movie9 package (requires the PDF to be shown in Acrobat Reader)
-or just a plain address to the movie. The HTML, reST, and
-Sphinx formats will play
-the movie right away by embedding the file in a standard HTML code,
-provided the output format is HTML.
-For all other formats a URL to an HTML file, which can play the code,
-is inserted in the output document.
 
-When movies are embedded in the PDF file via LaTeX and
-the ``movie9`` package wanted, one has to turn on the preprocessor
-variable ``MOVIE9``. There is an associated variable
-``EXTERNAL_MOVIE_VIEWER`` which can be defined to launch an external
-viewer when displaying the PDF file (in Acrobat Reader):
-
-.. code-block:: console
-
-        Terminal> ptex2tex -DMOVIE15 -DEXTERNAL_MOVIE_VIEWER mydoc
+.. note::
+   If you specify a movie in Ogg or WebM format and it also exists in
+   MP4 format, the MP4 format will be loaded first. To avoid having
+   alternative movie formats in HTML, use the ``--no_mp4_webm_ogg_alternatives``
+   command-line option when running ``doconce format``.
 
 
-The HTML, reST, and Sphinx formats can also treat filenames of the form
-``myframes*.png``. In that case, an HTML file for showing the sequence of frames
-is generated, and a link to this file is inserted in the output document.
-That is, a simple "movie viewer" for the frames is made.
+
+
+Movie Handling in Various Formats
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Movies are easiest shown in the HTML format.
+The reST and Sphinx formats apply the same raw HTML code as the
+HTML format and therefore have the same capabilities.
+The LaTeX format results in a ``.p.tex`` file that have three
+methods for showing movies, set by the option ``-DMOVIE=...`` to
+``ptex2tex`` or ``doconce ptex2tex``. The values of ``MOVIE`` are
+
+1. ``media9``:
+   the ``media9`` package is used for Flash and MP4 movies, ``movie15``
+   for MPEG and AVI files, and a simple `\h:ref:`run:file`{link}` command
+   for other formats. Only Acrobat Reader support displaying these
+   type of movies.
+
+2. ``multimedia``: the ``\movie`` command (known from LaTeX Beamer) is used
+   for movies.
+
+3. ``href``: the `\h:ref:`run:file`{link}` is used for all movies (default).
+
+For all other formats, an HTML file that acts as a movie player is
+generated and linked from the output document. This movie player
+has essentially the same code as the HTML format would have, except
+that the ``video`` tag is not used, only the ``embed`` tag. Some wiki
+types do have support for videos, e.g., Wikipedia can work with
+Ogg files, but Doconce has not yet implemented robust schemes for
+anything but LaTeX, HTML, and Sphinx output.
+
+YouTube and Vimeo Movies
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 Many publish their scientific movies on YouTube or Vimeo, and Doconce recognizes
 YouTube and Vimeo URLs as movies. When the output from Doconce
@@ -2346,22 +2405,1446 @@ A typical ``MOVIE`` command with a YouTube movie is then
         
         MOVIE: [http://vimeo.com/55562330, width=500 height=278] CFD.
 
-Note that there must be a blank line after every ``MOVIE:`` command.
-The width and height parameters are not required, but leaving them out
-may lead to movie sizes you do not want.
+
+Animation Based on Filename Generators
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+It is possible to define a movie from a set of files, usually plot files,
+which can be shown in sequence to create an animation.
+If the files are local on the computer, one can specify them by a
+simple Unix wildcard notation, as in
+
+
+.. code-block:: text
+
+
+        MOVIE: [../experiments/frame_*.png]
+
+Output in the HTML, reST, and Sphinx formats will make use of inline
+JavaScript code to show the frames in sequence.
+LaTeX employs the ``animate`` package for the same purpose.
+Other formats generates a file (``movie_playerX.py``, where ``X`` is a number)
+containing the HTML code with JavaScript to show and control the animation.
+The Doconce document has a link to this movie viewer.
+
+There is an alternative syntax to the Unix wildcard notation:
+
+
+.. code-block:: text
+
+
+        MOVIE: [../experiments/frame_%04d.png:0->320]
+
+The filename is specified via printf syntax (typically the same
+syntax as used to generate the individual frame files). The postfix
+``:0->320`` specifies the lower and upper limit of the counter
+that is used in the printf specification ``%04d``.
+This latter syntax must be used if the plot files reside on some
+web server, e.g.,
+
+
+.. code-block:: text
+
+
+        MOVIE: [http://some.where.net/experiments/frame_%04d.png:0->320]
+
+
+Here is an example:
 
 .. raw:: html
         
-        <iframe width="420" height="315" src="http://www.youtube.com/embed/sI2uCHH3qIM" frameborder="0" allowfullscreen></iframe>
+        <script language="Javascript">
+        <!---
+        var num_images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000 = 321;
+        var img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000 = 800;
+        var img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000 = 600;
+        var interval_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000 = 300;
+        var images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000 = new Array();
+        
+        function preload_images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000()
+        {
+           t = document.getElementById("progress");
+        
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[0] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[0].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0000.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[1] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[1].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0001.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[2] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[2].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0002.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[3] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[3].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0003.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[4] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[4].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0004.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[5] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[5].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0005.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[6] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[6].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0006.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[7] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[7].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0007.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[8] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[8].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0008.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[9] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[9].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0009.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[10] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[10].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0010.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[11] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[11].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0011.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[12] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[12].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0012.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[13] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[13].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0013.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[14] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[14].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0014.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[15] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[15].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0015.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[16] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[16].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0016.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[17] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[17].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0017.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[18] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[18].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0018.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[19] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[19].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0019.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[20] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[20].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0020.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[21] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[21].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0021.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[22] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[22].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0022.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[23] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[23].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0023.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[24] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[24].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0024.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[25] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[25].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0025.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[26] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[26].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0026.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[27] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[27].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0027.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[28] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[28].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0028.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[29] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[29].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0029.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[30] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[30].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0030.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[31] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[31].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0031.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[32] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[32].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0032.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[33] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[33].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0033.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[34] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[34].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0034.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[35] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[35].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0035.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[36] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[36].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0036.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[37] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[37].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0037.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[38] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[38].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0038.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[39] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[39].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0039.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[40] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[40].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0040.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[41] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[41].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0041.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[42] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[42].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0042.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[43] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[43].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0043.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[44] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[44].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0044.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[45] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[45].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0045.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[46] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[46].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0046.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[47] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[47].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0047.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[48] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[48].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0048.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[49] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[49].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0049.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[50] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[50].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0050.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[51] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[51].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0051.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[52] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[52].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0052.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[53] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[53].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0053.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[54] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[54].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0054.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[55] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[55].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0055.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[56] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[56].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0056.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[57] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[57].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0057.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[58] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[58].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0058.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[59] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[59].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0059.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[60] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[60].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0060.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[61] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[61].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0061.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[62] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[62].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0062.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[63] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[63].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0063.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[64] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[64].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0064.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[65] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[65].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0065.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[66] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[66].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0066.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[67] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[67].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0067.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[68] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[68].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0068.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[69] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[69].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0069.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[70] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[70].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0070.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[71] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[71].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0071.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[72] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[72].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0072.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[73] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[73].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0073.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[74] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[74].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0074.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[75] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[75].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0075.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[76] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[76].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0076.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[77] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[77].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0077.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[78] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[78].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0078.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[79] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[79].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0079.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[80] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[80].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0080.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[81] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[81].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0081.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[82] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[82].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0082.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[83] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[83].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0083.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[84] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[84].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0084.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[85] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[85].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0085.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[86] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[86].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0086.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[87] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[87].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0087.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[88] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[88].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0088.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[89] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[89].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0089.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[90] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[90].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0090.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[91] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[91].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0091.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[92] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[92].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0092.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[93] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[93].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0093.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[94] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[94].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0094.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[95] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[95].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0095.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[96] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[96].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0096.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[97] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[97].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0097.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[98] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[98].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0098.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[99] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[99].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0099.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[100] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[100].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0100.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[101] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[101].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0101.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[102] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[102].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0102.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[103] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[103].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0103.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[104] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[104].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0104.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[105] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[105].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0105.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[106] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[106].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0106.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[107] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[107].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0107.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[108] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[108].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0108.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[109] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[109].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0109.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[110] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[110].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0110.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[111] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[111].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0111.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[112] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[112].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0112.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[113] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[113].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0113.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[114] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[114].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0114.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[115] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[115].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0115.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[116] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[116].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0116.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[117] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[117].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0117.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[118] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[118].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0118.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[119] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[119].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0119.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[120] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[120].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0120.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[121] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[121].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0121.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[122] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[122].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0122.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[123] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[123].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0123.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[124] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[124].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0124.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[125] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[125].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0125.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[126] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[126].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0126.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[127] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[127].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0127.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[128] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[128].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0128.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[129] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[129].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0129.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[130] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[130].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0130.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[131] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[131].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0131.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[132] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[132].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0132.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[133] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[133].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0133.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[134] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[134].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0134.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[135] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[135].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0135.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[136] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[136].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0136.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[137] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[137].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0137.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[138] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[138].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0138.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[139] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[139].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0139.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[140] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[140].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0140.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[141] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[141].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0141.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[142] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[142].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0142.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[143] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[143].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0143.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[144] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[144].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0144.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[145] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[145].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0145.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[146] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[146].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0146.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[147] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[147].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0147.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[148] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[148].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0148.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[149] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[149].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0149.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[150] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[150].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0150.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[151] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[151].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0151.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[152] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[152].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0152.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[153] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[153].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0153.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[154] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[154].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0154.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[155] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[155].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0155.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[156] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[156].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0156.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[157] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[157].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0157.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[158] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[158].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0158.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[159] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[159].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0159.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[160] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[160].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0160.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[161] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[161].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0161.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[162] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[162].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0162.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[163] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[163].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0163.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[164] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[164].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0164.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[165] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[165].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0165.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[166] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[166].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0166.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[167] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[167].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0167.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[168] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[168].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0168.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[169] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[169].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0169.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[170] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[170].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0170.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[171] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[171].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0171.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[172] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[172].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0172.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[173] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[173].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0173.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[174] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[174].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0174.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[175] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[175].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0175.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[176] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[176].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0176.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[177] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[177].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0177.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[178] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[178].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0178.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[179] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[179].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0179.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[180] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[180].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0180.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[181] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[181].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0181.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[182] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[182].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0182.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[183] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[183].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0183.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[184] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[184].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0184.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[185] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[185].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0185.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[186] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[186].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0186.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[187] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[187].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0187.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[188] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[188].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0188.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[189] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[189].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0189.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[190] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[190].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0190.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[191] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[191].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0191.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[192] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[192].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0192.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[193] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[193].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0193.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[194] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[194].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0194.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[195] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[195].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0195.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[196] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[196].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0196.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[197] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[197].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0197.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[198] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[198].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0198.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[199] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[199].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0199.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[200] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[200].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0200.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[201] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[201].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0201.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[202] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[202].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0202.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[203] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[203].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0203.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[204] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[204].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0204.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[205] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[205].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0205.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[206] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[206].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0206.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[207] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[207].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0207.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[208] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[208].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0208.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[209] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[209].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0209.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[210] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[210].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0210.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[211] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[211].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0211.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[212] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[212].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0212.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[213] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[213].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0213.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[214] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[214].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0214.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[215] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[215].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0215.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[216] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[216].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0216.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[217] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[217].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0217.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[218] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[218].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0218.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[219] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[219].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0219.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[220] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[220].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0220.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[221] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[221].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0221.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[222] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[222].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0222.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[223] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[223].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0223.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[224] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[224].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0224.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[225] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[225].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0225.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[226] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[226].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0226.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[227] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[227].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0227.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[228] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[228].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0228.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[229] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[229].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0229.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[230] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[230].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0230.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[231] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[231].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0231.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[232] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[232].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0232.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[233] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[233].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0233.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[234] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[234].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0234.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[235] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[235].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0235.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[236] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[236].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0236.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[237] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[237].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0237.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[238] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[238].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0238.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[239] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[239].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0239.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[240] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[240].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0240.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[241] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[241].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0241.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[242] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[242].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0242.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[243] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[243].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0243.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[244] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[244].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0244.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[245] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[245].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0245.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[246] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[246].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0246.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[247] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[247].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0247.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[248] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[248].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0248.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[249] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[249].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0249.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[250] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[250].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0250.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[251] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[251].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0251.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[252] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[252].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0252.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[253] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[253].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0253.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[254] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[254].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0254.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[255] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[255].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0255.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[256] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[256].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0256.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[257] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[257].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0257.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[258] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[258].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0258.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[259] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[259].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0259.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[260] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[260].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0260.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[261] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[261].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0261.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[262] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[262].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0262.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[263] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[263].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0263.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[264] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[264].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0264.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[265] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[265].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0265.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[266] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[266].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0266.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[267] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[267].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0267.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[268] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[268].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0268.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[269] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[269].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0269.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[270] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[270].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0270.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[271] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[271].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0271.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[272] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[272].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0272.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[273] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[273].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0273.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[274] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[274].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0274.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[275] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[275].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0275.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[276] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[276].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0276.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[277] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[277].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0277.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[278] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[278].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0278.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[279] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[279].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0279.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[280] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[280].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0280.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[281] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[281].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0281.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[282] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[282].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0282.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[283] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[283].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0283.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[284] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[284].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0284.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[285] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[285].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0285.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[286] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[286].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0286.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[287] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[287].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0287.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[288] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[288].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0288.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[289] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[289].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0289.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[290] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[290].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0290.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[291] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[291].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0291.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[292] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[292].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0292.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[293] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[293].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0293.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[294] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[294].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0294.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[295] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[295].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0295.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[296] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[296].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0296.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[297] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[297].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0297.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[298] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[298].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0298.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[299] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[299].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0299.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[300] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[300].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0300.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[301] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[301].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0301.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[302] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[302].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0302.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[303] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[303].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0303.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[304] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[304].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0304.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[305] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[305].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0305.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[306] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[306].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0306.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[307] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[307].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0307.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[308] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[308].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0308.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[309] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[309].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0309.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[310] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[310].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0310.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[311] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[311].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0311.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[312] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[312].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0312.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[313] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[313].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0313.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[314] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[314].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0314.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[315] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[315].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0315.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[316] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[316].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0316.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[317] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[317].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0317.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[318] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[318].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0318.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[319] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[319].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0319.png";
+                
+           t.innerHTML = "Preloading image ";
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[320] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+           images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[320].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0320.png";
+                
+           t.innerHTML = "";
+        }
+        
+        function tick_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000()
+        {
+           if (frame_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000 > num_images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000 - 1)
+               frame_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000 = 0;
+        
+           document.name_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000.src = images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000[frame_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000].src;
+           frame_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000 += 1;
+           tt = setTimeout("tick_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000()", interval_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+        }
+        
+        function startup_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000()
+        {
+           preload_images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000();
+           frame_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000 = 0;
+           setTimeout("tick_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000()", interval_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000);
+        }
+        
+        function stopit_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000()
+        { clearTimeout(tt); }
+        
+        function restart_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000()
+        { tt = setTimeout("tick_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000()", interval_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000); }
+        
+        function slower_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000()
+        { interval_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000 = interval_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000/0.7; }
+        
+        function faster_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000()
+        { interval_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000 = interval_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000*0.7; }
+        
+        // --->
+        </script>
+        
+        <form>
+        &nbsp;
+        <input type="button" value="Start movie" onClick="startup_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000()">
+        <input type="button" value="Pause movie" onClick="stopit_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000()">
+        <input type="button" value="Restart movie" onClick="restart_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000()">
+        &nbsp;
+        <input type="button" value="Slower" onClick="slower_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000()">
+        <input type="button" value="Faster" onClick="faster_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000()">
+        </form>
+        
+        <p><div ID="progress"></div></p>
+        <img src="http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0000.png" name="name_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0000" border=2/>
 
 
 
-.. raw:: html
-        
-        <iframe width="500" height="278" src="http://player.vimeo.com/video/55562330" frameborder="0" allowfullscreen></iframe>
-        
-        <em>CFD.</em>
-        
+
+.. admonition:: Recommendations
+
+   It is challenging to write robust Doconce code with movies.
+   The recommended formats in HTML are MP4, WebM, and Ogg. One should
+   preferably make all three. These also works in reST and Sphinx.
+   
+   The filename generation works very well in LaTeX, while true movie formats
+   pose big challenges. On Linux systems, the ``media9``
+   does not work well because a proper Flash player for embedding in
+   the PDF file is not always available. The ``movie15`` package also leads
+   to problems because Acrobat Reader depends on an external player to
+   show the files, and the correct plugins to launch players with support
+   for a given format are not trivial to install. Even the plain `h:ref:`run:file``
+   command relies on an external player and not all formats will be
+   supported on a given computer.
+   
+   To have really robust code, use filename generators and not movie files.
+   
+   
+   .. code-block:: text
+   
+   
+           MOVIE: [../experiments/frame_*.png]
+   
+   
+   One can, of course, write flexible Doconce code and decide at run time
+   if HTML output should have movie files or filename generators.
+   A relevant snippet using Mako is
+   
+   
+   .. code-block:: text
+   
+   
+           % FORMAT in ("latex", "pdflatex") or HTMLMOVIE == "files":
+           MOVIE: [../experiments/frame_*.png]
+           % else:
+           MOVIE: [../experiments/movie.ogg]
+           % endif
+   
+   With the ``-DHTMLMOVIE=files`` flag, animation of individual files will
+   be performed, while any other value than ``files`` leads to
+   use of the ``movie.ogg`` in all but LaTeX formats. In HTML one will try
+   to load ``movie.mp4`` (if it exists) and then ``movie.webm`` (if it exists)
+   and then finally ``movie.ogg``.
+
 
 
 

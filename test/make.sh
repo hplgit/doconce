@@ -291,6 +291,9 @@ system doconce ptex2tex $name
 system pdflatex $name
 cp $name.pdf movie_demo
 
+system doconce format plain movies
+
+
 # Status movies: everything works in html and sphinx, only href works
 # in latex, media9 is unreliable
 

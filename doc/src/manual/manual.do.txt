@@ -334,14 +334,23 @@ Terminal> pdfcrop tmp-nup.pdf result.png  # output in FE1.png
 
 ===== Movies =====
 
-Here is an example on the `MOVIE:` keyword for embedding movies. This
+Movies/videos are inserted using the `MOVIE:` keyword. This
 feature works well for the `latex`, `html`, `rst`, and `sphinx` formats.
 Other formats try to generate some HTML file and link to that file
 for showing the movie.
+
+=== The Basic Command ===
+
+As with `FIGURE`, the `MOVIE` command expands just *one line* and is of
+the form
+
 !bc
 MOVIE: [filename, height=xxx width=yyy] possible caption
-
 !ec
+
+Note that there must be a blank line after every `MOVIE:` command.
+The width and height parameters are not required, but leaving them out
+may lead to movie sizes you do not want.
 
 Here is a movie in the MPEG format:
 
@@ -349,7 +358,14 @@ MOVIE: [mov/wave.mpeg, width=600 height=470]
 
 And here is a movie in the Ogg format:
 
-MOVIE: [mov/wave.ogg, width=600 height=470]
+MOVIE: [mov/wave.ogg, width=600] A movie in Ogg format.
+
+A URL works too as movie address:
+
+MOVIE: [http://hplgit.github.io/animate/doc/pub/mov-animate/demo.ogg] Ogg movie in cyberspace.
+
+
+=== MP4, WebM, and Ogg Movies in HTML ===
 
 If a movie is in Ogg, MP4, or WebM format, and the output format is HTML,
 Doconce will check if the movie file is also in the other formats among
@@ -358,18 +374,40 @@ backup formats in case the browser does not support a particular format.
 Providing a movie in Ogg, MP4, *and* WebM format is therefore the safest
 way to ensure that the movie can be played in any browser on any device.
 
-The LaTeX format results in a file that can either make use of the
-movie9 package (requires the PDF to be shown in Acrobat Reader) or
-just a plain address to the movie. The HTML, reST, and Sphinx formats
-will play the movie right away by embedding the file in a standard
-HTML code, provided the output format is HTML.  For all other formats
-a URL to an HTML file, which can play the code, is inserted in the
-output document.
+!bnotice
+If you specify a movie in Ogg or WebM format and it also exists in
+MP4 format, the MP4 format will be loaded first. To avoid having
+alternative movie formats in HTML, use the `--no_mp4_webm_ogg_alternatives`
+command-line option when running `doconce format`.
+!enotice
 
-The HTML, reST, and Sphinx formats can also treat filenames of the form
-`myframes*.png`. In that case, an HTML file for showing the sequence of frames
-is generated, and a link to this file is inserted in the output document.
-That is, a simple "movie viewer" for the frames is made.
+=== Movie Handling in Various Formats ===
+
+Movies are easiest shown in the HTML format.
+The reST and Sphinx formats apply the same raw HTML code as the
+HTML format and therefore have the same capabilities.
+The LaTeX format results in a `.p.tex` file that have three
+methods for showing movies, set by the option `-DMOVIE=...` to
+`ptex2tex` or `doconce ptex2tex`. The values of `MOVIE` are
+
+ o `media9`:
+   the `media9` package is used for Flash and MP4 movies, `movie15`
+   for MPEG and AVI files, and a simple `\href{run:file}{link}` command
+   for other formats. Only Acrobat Reader support displaying these
+   type of movies.
+ o `multimedia`: the `\movie` command (known from LaTeX Beamer) is used
+   for movies.
+ o `href`: the `\href{run:file}{link}` is used for all movies (default).
+
+For all other formats, an HTML file that acts as a movie player is
+generated and linked from the output document. This movie player
+has essentially the same code as the HTML format would have, except
+that the `video` tag is not used, only the `embed` tag. Some wiki
+types do have support for videos, e.g., Wikipedia can work with
+Ogg files, but Doconce has not yet implemented robust schemes for
+anything but LaTeX, HTML, and Sphinx output.
+
+=== YouTube and Vimeo Movies ===
 
 Many publish their scientific movies on YouTube or Vimeo, and Doconce recognizes
 YouTube and Vimeo URLs as movies. When the output from Doconce
@@ -388,13 +426,82 @@ MOVIE: [http://www.youtube.com/watch?v=sI2uCHH3qIM, width=420 height=315]
 
 MOVIE: [http://vimeo.com/55562330, width=500 height=278] CFD.
 !ec
-Note that there must be a blank line after every `MOVIE:` command.
-The width and height parameters are not required, but leaving them out
-may lead to movie sizes you do not want.
 
-MOVIE: [http://www.youtube.com/watch?v=sI2uCHH3qIM, width=420 height=315]
+=== Animation Based on Filename Generators ===
 
-MOVIE: [http://vimeo.com/55562330, width=500 height=278] CFD.
+It is possible to define a movie from a set of files, usually plot files,
+which can be shown in sequence to create an animation.
+If the files are local on the computer, one can specify them by a
+simple Unix wildcard notation, as in
+
+!bc
+MOVIE: [../experiments/frame_*.png]
+!ec
+Output in the HTML, reST, and Sphinx formats will make use of inline
+JavaScript code to show the frames in sequence.
+LaTeX employs the `animate` package for the same purpose.
+Other formats generates a file (`movie_playerX.py`, where `X` is a number)
+containing the HTML code with JavaScript to show and control the animation.
+The Doconce document has a link to this movie viewer.
+
+There is an alternative syntax to the Unix wildcard notation:
+
+!bc
+MOVIE: [../experiments/frame_%04d.png:0->320]
+!ec
+The filename is specified via printf syntax (typically the same
+syntax as used to generate the individual frame files). The postfix
+`:0->320` specifies the lower and upper limit of the counter
+that is used in the printf specification `%04d`.
+This latter syntax must be used if the plot files reside on some
+web server, e.g.,
+
+!bc
+MOVIE: [http://some.where.net/experiments/frame_%04d.png:0->320]
+!ec
+
+Here is an example:
+
+MOVIE: [http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_%04d.png:0->320]
+
+!bnotice Recommendations
+It is challenging to write robust Doconce code with movies.
+The recommended formats in HTML are MP4, WebM, and Ogg. One should
+preferably make all three. These also works in reST and Sphinx.
+
+The filename generation works very well in LaTeX, while true movie formats
+pose big challenges. On Linux systems, the `media9`
+does not work well because a proper Flash player for embedding in
+the PDF file is not always available. The `movie15` package also leads
+to problems because Acrobat Reader depends on an external player to
+show the files, and the correct plugins to launch players with support
+for a given format are not trivial to install. Even the plain `href{run:file}`
+command relies on an external player and not all formats will be
+supported on a given computer.
+
+To have really robust code, use filename generators and not movie files.
+
+!bc
+MOVIE: [../experiments/frame_*.png]
+!ec
+
+One can, of course, write flexible Doconce code and decide at run time
+if HTML output should have movie files or filename generators.
+A relevant snippet using Mako is
+
+!bc
+% FORMAT in ("latex", "pdflatex") or HTMLMOVIE == "files":
+MOVIE: [../experiments/frame_*.png]
+% else:
+MOVIE: [../experiments/movie.ogg]
+% endif
+!ec
+With the `-DHTMLMOVIE=files` flag, animation of individual files will
+be performed, while any other value than `files` leads to
+use of the `movie.ogg` in all but LaTeX formats. In HTML one will try
+to load `movie.mp4` (if it exists) and then `movie.webm` (if it exists)
+and then finally `movie.ogg`.
+!enotice
 
 ===== Copying Computer Code from Source Files =====
 
