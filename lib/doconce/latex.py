@@ -386,8 +386,8 @@ source=%(filename)s
 \includemovie[poster,
 label=%(label)s,
 autoplay,
-%%controls,
-%%toolbar,
+controls,
+toolbar,
 %% #ifdef EXTERNAL_MOVIE_VIEWER
 externalviewer,
 %% #endif
@@ -397,7 +397,7 @@ repeat,
 %% #ifndef EXTERNAL_MOVIE_VIEWER
 \movieref[rate=0.5]{%(label)s}{Slower}
 \movieref[rate=2]{%(label)s}{Faster}
-\movieref[default]{%(filename)s}{Normal}
+\movieref[default]{%(label)s}{Normal}
 \movieref[pause]{%(label)s}{Play/Pause}
 \movieref[stop]{%(label)s}{Stop}
 %% #endif""" % vars()

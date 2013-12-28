@@ -30004,7 +30004,7 @@ doconce replace --examples_as__exercises $ex testdoc.p.tex
 
 # A4PAPER trigger summary environment to be smaller paragraph
 # within the text (fine for proposals or articles).
-system ptex2tex -DMINTED -DMOVIE=media9 -DLATEX_HEADING=titlepage -DA4PAPER -DTODONOTES -DLINENUMBERS -DCOLORED_TABLE_ROWS=blue -DFANCY_HEADER -DSECTION_HEADINGS=blue testdoc
+system ptex2tex -DMINTED -DLATEX_HEADING=titlepage -DA4PAPER -DTODONOTES -DLINENUMBERS -DCOLORED_TABLE_ROWS=blue -DFANCY_HEADER -DSECTION_HEADINGS=blue testdoc
 
 # test that pdflatex works
 system pdflatex -shell-escape testdoc
@@ -30200,6 +30200,11 @@ pdflatex $name
 cp $name.pdf movie_demo/${name}_media9.pdf
 cp $name.tex ${name}_media9.tex
 
+system doconce format pdflatex $name
+system doconce ptex2tex $name -DMOVIE=media9 -DEXTERNAL_MOVIE_VIEWER
+pdflatex $name
+cp $name.pdf movie_demo/${name}_media9_extviewer.pdf
+
 # multimedia (beamer \movie command) does not work well
 #rm $name.aux
 #system doconce format pdflatex $name
@@ -30213,6 +30218,9 @@ system doconce format pdflatex $name
 system doconce ptex2tex $name
 system pdflatex $name
 cp $name.pdf movie_demo
+
+system doconce format plain movies
+
 
 # Status movies: everything works in html and sphinx, only href works
 # in latex, media9 is unreliable
@@ -55799,7 +55807,7 @@ And here is a collection of images shown as an animation
 \begin{doconce:movie}
 \refstepcounter{doconce:movie:counter}
 \begin{center}
-\begin{animateinline}[controls,loop]{1}
+\begin{animateinline}[controls,loop]{1} % frames: ../doc/src/manual/mov/wave_frames/frame_0080.png -> ../doc/src/manual/mov/wave_frames/frame_0129.png
 \includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0080.png}
 \newframe
 \includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0081.png}
@@ -55937,8 +55945,8 @@ The movie above in MPEG format, typeset in a box:
 \includemovie[poster,
 label=docsrcmanualmovwavempeg,
 autoplay,
-%controls,
-%toolbar,
+controls,
+toolbar,
 % #ifdef EXTERNAL_MOVIE_VIEWER
 externalviewer,
 % #endif
@@ -55948,7 +55956,7 @@ repeat,
 % #ifndef EXTERNAL_MOVIE_VIEWER
 \movieref[rate=0.5]{docsrcmanualmovwavempeg}{Slower}
 \movieref[rate=2]{docsrcmanualmovwavempeg}{Faster}
-\movieref[default]{../doc/src/manual/mov/wave.mpeg}{Normal}
+\movieref[default]{docsrcmanualmovwavempeg}{Normal}
 \movieref[pause]{docsrcmanualmovwavempeg}{Play/Pause}
 \movieref[stop]{docsrcmanualmovwavempeg}{Stop}
 % #endif
@@ -55983,8 +55991,8 @@ Here is the same movie in AVI format:
 \includemovie[poster,
 label=docsrcmanualmovwaveavi,
 autoplay,
-%controls,
-%toolbar,
+controls,
+toolbar,
 % #ifdef EXTERNAL_MOVIE_VIEWER
 externalviewer,
 % #endif
@@ -55994,7 +56002,7 @@ repeat,
 % #ifndef EXTERNAL_MOVIE_VIEWER
 \movieref[rate=0.5]{docsrcmanualmovwaveavi}{Slower}
 \movieref[rate=2]{docsrcmanualmovwaveavi}{Faster}
-\movieref[default]{../doc/src/manual/mov/wave.avi}{Normal}
+\movieref[default]{docsrcmanualmovwaveavi}{Normal}
 \movieref[pause]{docsrcmanualmovwaveavi}{Play/Pause}
 \movieref[stop]{docsrcmanualmovwaveavi}{Stop}
 % #endif
@@ -56278,7 +56286,7 @@ And here is a collection of images shown as an animation
 \begin{doconce:movie}
 \refstepcounter{doconce:movie:counter}
 \begin{center}
-\begin{animateinline}[controls,loop]{1}
+\begin{animateinline}[controls,loop]{1} % frames: ../doc/src/manual/mov/wave_frames/frame_0080.png -> ../doc/src/manual/mov/wave_frames/frame_0129.png
 \includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0080.png}
 \newframe
 \includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0081.png}
@@ -56700,7 +56708,7 @@ And here is a collection of images shown as an animation
 \begin{doconce:movie}
 \refstepcounter{doconce:movie:counter}
 \begin{center}
-\begin{animateinline}[controls,loop]{1}
+\begin{animateinline}[controls,loop]{1} % frames: ../doc/src/manual/mov/wave_frames/frame_0080.png -> ../doc/src/manual/mov/wave_frames/frame_0129.png
 \includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0080.png}
 \newframe
 \includegraphics[width=0.9\textwidth]{../doc/src/manual/mov/wave_frames/frame_0081.png}
@@ -56837,14 +56845,14 @@ The movie above in MPEG format, typeset in a box:
 \includemovie[poster,
 label=docsrcmanualmovwavempeg,
 autoplay,
-%controls,
-%toolbar,
+controls,
+toolbar,
 text={\small (Loading ../doc/src/manual/mov/wave.mpeg)},
 repeat,
 ]{0.9\linewidth}{0.9\linewidth}{../doc/src/manual/mov/wave.mpeg}
 \movieref[rate=0.5]{docsrcmanualmovwavempeg}{Slower}
 \movieref[rate=2]{docsrcmanualmovwavempeg}{Faster}
-\movieref[default]{../doc/src/manual/mov/wave.mpeg}{Normal}
+\movieref[default]{docsrcmanualmovwavempeg}{Normal}
 \movieref[pause]{docsrcmanualmovwavempeg}{Play/Pause}
 \movieref[stop]{docsrcmanualmovwavempeg}{Stop}
 \end{center}
@@ -56867,14 +56875,14 @@ Here is the same movie in AVI format:
 \includemovie[poster,
 label=docsrcmanualmovwaveavi,
 autoplay,
-%controls,
-%toolbar,
+controls,
+toolbar,
 text={\small (Loading ../doc/src/manual/mov/wave.avi)},
 repeat,
 ]{0.9\linewidth}{0.9\linewidth}{../doc/src/manual/mov/wave.avi}
 \movieref[rate=0.5]{docsrcmanualmovwaveavi}{Slower}
 \movieref[rate=2]{docsrcmanualmovwaveavi}{Faster}
-\movieref[default]{../doc/src/manual/mov/wave.avi}{Normal}
+\movieref[default]{docsrcmanualmovwaveavi}{Normal}
 \movieref[pause]{docsrcmanualmovwaveavi}{Play/Pause}
 \movieref[stop]{docsrcmanualmovwaveavi}{Stop}
 \end{center}
@@ -56944,6 +56952,622 @@ Finally, let us demonstrate referencing the movie~\ref{mov:wave}.
 
 \end{document}
 
+
+************** File: movies.txt *****************
+This is a demo of movies in Doconce
+===================================
+
+HPL
+
+Date: Jan 32, 2100
+
+Here is a movie in WebM format.
+
+ 1D wave in WebM. (Movie ../doc/src/manual/mov/wave.webm: play movie_player1.html)
+
+Here is the same movie in Ogg format:
+
+ 1D wave in Ogg. (Movie ../doc/src/manual/mov/wave.ogg: play movie_player2.html)
+
+Here is the same movie in MP4 format:
+
+ 1D wave in MP4. (Movie ../doc/src/manual/mov/wave.mp4: play movie_player3.html)
+
+Here is the same movie in Flash format:
+
+ 1D wave in Flash. (Movie ../doc/src/manual/mov/wave.flv: play movie_player4.html)
+
+And here is a collection of images shown as an animation
+(frame_*.png):
+
+
+ Animated collection of images. (Movie of files ../doc/src/manual/mov/wave_frames/frame_*.png in movie_player5.html)
+
+
+Here is the same collection, but with images in cyberspace, given as URLs::
+
+
+        http://hplgit.github.io/animate/..../frame_%04d.png:80->129
+
+
+
+ (Movie of files http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_%04d.png:80->129 in movie_player6.html)
+
+
+The movie above in MPEG format, typeset in a box:
+
+
+
+
+
+Here is the same movie in AVI format:
+
+ 1D wave in AVI. (Movie ../doc/src/manual/mov/wave.avi: play movie_player8.html)
+
+Here is the same movie, but with a URL to GitHub:
+
+ (Movie http://hplgit.github.io/animate/doc/pub/mov-animate/demo.ogg: play movie_player9.html)
+
+Here is a YouTube video:
+
+ YouTube movie. http://www.youtube.com/watch?v=_O7iUiftbKU
+
+And a vimeo video:
+
+ Vimeo movie. http://vimeo.com/55562330
+
+
+Finally, let us demonstrate referencing the movie ref{mov:wave}.
+
+************** File: movie_player4.html *****************
+
+<html>
+<body>
+<title>Embedding movie in HTML</title>
+   <embed src="../doc/src/manual/mov/wave.flv" width=700 height=400 autoplay="false" loop="true"></embed>
+   <p>
+   <em> 1D wave in Flash.</em>
+   </p>
+</body>
+</html>
+
+************** File: movie_player5.html *****************
+<html>
+<head>
+</head>
+<body>
+
+<script language="Javascript">
+<!---
+var num_images____doc_src_manual_mov_wave_frames_frame_0080 = 50;
+var img_width____doc_src_manual_mov_wave_frames_frame_0080 = 700;
+var img_height____doc_src_manual_mov_wave_frames_frame_0080 = 400;
+var interval____doc_src_manual_mov_wave_frames_frame_0080 = 300;
+var images____doc_src_manual_mov_wave_frames_frame_0080 = new Array();
+
+function preload_images____doc_src_manual_mov_wave_frames_frame_0080()
+{
+   t = document.getElementById("progress");
+
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[0] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[0].src = "../doc/src/manual/mov/wave_frames/frame_0080.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[1] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[1].src = "../doc/src/manual/mov/wave_frames/frame_0081.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[2] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[2].src = "../doc/src/manual/mov/wave_frames/frame_0082.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[3] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[3].src = "../doc/src/manual/mov/wave_frames/frame_0083.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[4] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[4].src = "../doc/src/manual/mov/wave_frames/frame_0084.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[5] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[5].src = "../doc/src/manual/mov/wave_frames/frame_0085.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[6] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[6].src = "../doc/src/manual/mov/wave_frames/frame_0086.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[7] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[7].src = "../doc/src/manual/mov/wave_frames/frame_0087.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[8] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[8].src = "../doc/src/manual/mov/wave_frames/frame_0088.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[9] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[9].src = "../doc/src/manual/mov/wave_frames/frame_0089.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[10] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[10].src = "../doc/src/manual/mov/wave_frames/frame_0090.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[11] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[11].src = "../doc/src/manual/mov/wave_frames/frame_0091.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[12] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[12].src = "../doc/src/manual/mov/wave_frames/frame_0092.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[13] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[13].src = "../doc/src/manual/mov/wave_frames/frame_0093.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[14] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[14].src = "../doc/src/manual/mov/wave_frames/frame_0094.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[15] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[15].src = "../doc/src/manual/mov/wave_frames/frame_0095.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[16] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[16].src = "../doc/src/manual/mov/wave_frames/frame_0096.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[17] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[17].src = "../doc/src/manual/mov/wave_frames/frame_0097.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[18] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[18].src = "../doc/src/manual/mov/wave_frames/frame_0098.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[19] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[19].src = "../doc/src/manual/mov/wave_frames/frame_0099.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[20] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[20].src = "../doc/src/manual/mov/wave_frames/frame_0100.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[21] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[21].src = "../doc/src/manual/mov/wave_frames/frame_0101.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[22] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[22].src = "../doc/src/manual/mov/wave_frames/frame_0102.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[23] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[23].src = "../doc/src/manual/mov/wave_frames/frame_0103.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[24] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[24].src = "../doc/src/manual/mov/wave_frames/frame_0104.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[25] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[25].src = "../doc/src/manual/mov/wave_frames/frame_0105.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[26] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[26].src = "../doc/src/manual/mov/wave_frames/frame_0106.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[27] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[27].src = "../doc/src/manual/mov/wave_frames/frame_0107.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[28] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[28].src = "../doc/src/manual/mov/wave_frames/frame_0108.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[29] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[29].src = "../doc/src/manual/mov/wave_frames/frame_0109.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[30] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[30].src = "../doc/src/manual/mov/wave_frames/frame_0110.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[31] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[31].src = "../doc/src/manual/mov/wave_frames/frame_0111.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[32] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[32].src = "../doc/src/manual/mov/wave_frames/frame_0112.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[33] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[33].src = "../doc/src/manual/mov/wave_frames/frame_0113.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[34] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[34].src = "../doc/src/manual/mov/wave_frames/frame_0114.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[35] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[35].src = "../doc/src/manual/mov/wave_frames/frame_0115.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[36] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[36].src = "../doc/src/manual/mov/wave_frames/frame_0116.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[37] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[37].src = "../doc/src/manual/mov/wave_frames/frame_0117.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[38] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[38].src = "../doc/src/manual/mov/wave_frames/frame_0118.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[39] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[39].src = "../doc/src/manual/mov/wave_frames/frame_0119.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[40] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[40].src = "../doc/src/manual/mov/wave_frames/frame_0120.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[41] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[41].src = "../doc/src/manual/mov/wave_frames/frame_0121.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[42] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[42].src = "../doc/src/manual/mov/wave_frames/frame_0122.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[43] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[43].src = "../doc/src/manual/mov/wave_frames/frame_0123.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[44] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[44].src = "../doc/src/manual/mov/wave_frames/frame_0124.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[45] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[45].src = "../doc/src/manual/mov/wave_frames/frame_0125.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[46] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[46].src = "../doc/src/manual/mov/wave_frames/frame_0126.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[47] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[47].src = "../doc/src/manual/mov/wave_frames/frame_0127.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[48] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[48].src = "../doc/src/manual/mov/wave_frames/frame_0128.png";
+        
+   t.innerHTML = "Preloading image ";
+   images____doc_src_manual_mov_wave_frames_frame_0080[49] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
+   images____doc_src_manual_mov_wave_frames_frame_0080[49].src = "../doc/src/manual/mov/wave_frames/frame_0129.png";
+        
+   t.innerHTML = "";
+}
+
+function tick____doc_src_manual_mov_wave_frames_frame_0080()
+{
+   if (frame____doc_src_manual_mov_wave_frames_frame_0080 > num_images____doc_src_manual_mov_wave_frames_frame_0080 - 1)
+       frame____doc_src_manual_mov_wave_frames_frame_0080 = 0;
+
+   document.name____doc_src_manual_mov_wave_frames_frame_0080.src = images____doc_src_manual_mov_wave_frames_frame_0080[frame____doc_src_manual_mov_wave_frames_frame_0080].src;
+   frame____doc_src_manual_mov_wave_frames_frame_0080 += 1;
+   tt = setTimeout("tick____doc_src_manual_mov_wave_frames_frame_0080()", interval____doc_src_manual_mov_wave_frames_frame_0080);
+}
+
+function startup____doc_src_manual_mov_wave_frames_frame_0080()
+{
+   preload_images____doc_src_manual_mov_wave_frames_frame_0080();
+   frame____doc_src_manual_mov_wave_frames_frame_0080 = 0;
+   setTimeout("tick____doc_src_manual_mov_wave_frames_frame_0080()", interval____doc_src_manual_mov_wave_frames_frame_0080);
+}
+
+function stopit____doc_src_manual_mov_wave_frames_frame_0080()
+{ clearTimeout(tt); }
+
+function restart____doc_src_manual_mov_wave_frames_frame_0080()
+{ tt = setTimeout("tick____doc_src_manual_mov_wave_frames_frame_0080()", interval____doc_src_manual_mov_wave_frames_frame_0080); }
+
+function slower____doc_src_manual_mov_wave_frames_frame_0080()
+{ interval____doc_src_manual_mov_wave_frames_frame_0080 = interval____doc_src_manual_mov_wave_frames_frame_0080/0.7; }
+
+function faster____doc_src_manual_mov_wave_frames_frame_0080()
+{ interval____doc_src_manual_mov_wave_frames_frame_0080 = interval____doc_src_manual_mov_wave_frames_frame_0080*0.7; }
+
+// --->
+</script>
+
+<form>
+&nbsp;
+<input type="button" value="Start movie" onClick="startup____doc_src_manual_mov_wave_frames_frame_0080()">
+<input type="button" value="Pause movie" onClick="stopit____doc_src_manual_mov_wave_frames_frame_0080()">
+<input type="button" value="Restart movie" onClick="restart____doc_src_manual_mov_wave_frames_frame_0080()">
+&nbsp;
+<input type="button" value="Slower" onClick="slower____doc_src_manual_mov_wave_frames_frame_0080()">
+<input type="button" value="Faster" onClick="faster____doc_src_manual_mov_wave_frames_frame_0080()">
+</form>
+
+<p><div ID="progress"></div></p>
+<img src="../doc/src/manual/mov/wave_frames/frame_0080.png" name="name____doc_src_manual_mov_wave_frames_frame_0080" border=2/>
+
+</body>
+</html>
+
+************** File: movie_player6.html *****************
+<html>
+<head>
+</head>
+<body>
+
+<script language="Javascript">
+<!---
+var num_images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080 = 50;
+var img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080 = 800;
+var img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080 = 600;
+var interval_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080 = 300;
+var images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080 = new Array();
+
+function preload_images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080()
+{
+   t = document.getElementById("progress");
+
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[0] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[0].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0080.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[1] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[1].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0081.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[2] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[2].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0082.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[3] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[3].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0083.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[4] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[4].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0084.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[5] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[5].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0085.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[6] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[6].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0086.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[7] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[7].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0087.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[8] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[8].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0088.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[9] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[9].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0089.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[10] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[10].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0090.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[11] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[11].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0091.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[12] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[12].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0092.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[13] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[13].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0093.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[14] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[14].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0094.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[15] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[15].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0095.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[16] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[16].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0096.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[17] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[17].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0097.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[18] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[18].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0098.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[19] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[19].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0099.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[20] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[20].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0100.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[21] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[21].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0101.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[22] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[22].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0102.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[23] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[23].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0103.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[24] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[24].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0104.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[25] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[25].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0105.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[26] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[26].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0106.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[27] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[27].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0107.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[28] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[28].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0108.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[29] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[29].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0109.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[30] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[30].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0110.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[31] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[31].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0111.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[32] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[32].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0112.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[33] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[33].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0113.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[34] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[34].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0114.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[35] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[35].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0115.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[36] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[36].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0116.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[37] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[37].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0117.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[38] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[38].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0118.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[39] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[39].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0119.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[40] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[40].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0120.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[41] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[41].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0121.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[42] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[42].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0122.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[43] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[43].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0123.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[44] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[44].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0124.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[45] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[45].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0125.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[46] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[46].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0126.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[47] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[47].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0127.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[48] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[48].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0128.png";
+        
+   t.innerHTML = "Preloading image ";
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[49] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+   images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[49].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0129.png";
+        
+   t.innerHTML = "";
+}
+
+function tick_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080()
+{
+   if (frame_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080 > num_images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080 - 1)
+       frame_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080 = 0;
+
+   document.name_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080.src = images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[frame_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080].src;
+   frame_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080 += 1;
+   tt = setTimeout("tick_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080()", interval_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+}
+
+function startup_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080()
+{
+   preload_images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080();
+   frame_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080 = 0;
+   setTimeout("tick_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080()", interval_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
+}
+
+function stopit_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080()
+{ clearTimeout(tt); }
+
+function restart_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080()
+{ tt = setTimeout("tick_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080()", interval_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080); }
+
+function slower_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080()
+{ interval_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080 = interval_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080/0.7; }
+
+function faster_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080()
+{ interval_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080 = interval_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080*0.7; }
+
+// --->
+</script>
+
+<form>
+&nbsp;
+<input type="button" value="Start movie" onClick="startup_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080()">
+<input type="button" value="Pause movie" onClick="stopit_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080()">
+<input type="button" value="Restart movie" onClick="restart_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080()">
+&nbsp;
+<input type="button" value="Slower" onClick="slower_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080()">
+<input type="button" value="Faster" onClick="faster_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080()">
+</form>
+
+<p><div ID="progress"></div></p>
+<img src="http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0080.png" name="name_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080" border=2/>
+
+</body>
+</html>
 
 ************** File: tmp_Doconce.do.txt *****************
 
@@ -71183,10 +71807,10 @@ replacing % end theorem by \end{theorem} in testdoc.p.tex
 + doconce replace Newton--Cotes Newton-Cotes testdoc.p.tex
 replacing Newton--Cotes by Newton-Cotes in testdoc.p.tex
 + doconce replace --examples_as__exercises --examples_as_exercises testdoc.p.tex
-+ system ptex2tex -DMINTED -DMOVIE=media9 -DLATEX_HEADING=titlepage -DA4PAPER -DTODONOTES -DLINENUMBERS -DCOLORED_TABLE_ROWS=blue -DFANCY_HEADER -DSECTION_HEADINGS=blue testdoc
-+ ptex2tex -DMINTED -DMOVIE=media9 -DLATEX_HEADING=titlepage -DA4PAPER -DTODONOTES -DLINENUMBERS -DCOLORED_TABLE_ROWS=blue -DFANCY_HEADER -DSECTION_HEADINGS=blue testdoc
++ system ptex2tex -DMINTED -DLATEX_HEADING=titlepage -DA4PAPER -DTODONOTES -DLINENUMBERS -DCOLORED_TABLE_ROWS=blue -DFANCY_HEADER -DSECTION_HEADINGS=blue testdoc
++ ptex2tex -DMINTED -DLATEX_HEADING=titlepage -DA4PAPER -DTODONOTES -DLINENUMBERS -DCOLORED_TABLE_ROWS=blue -DFANCY_HEADER -DSECTION_HEADINGS=blue testdoc
 using local config file .ptex2tex.cfg
-running preprocessor on testdoc.p.tex...  defines: 'A4PAPER', 'MINTED', 'LATEX_HEADING', 'MOVIE', 'LINENUMBERS', 'SECTION_HEADINGS', 'COLORED_TABLE_ROWS', 'FANCY_HEADER', 'TODONOTES'  done
+running preprocessor on testdoc.p.tex...  defines: 'A4PAPER', 'MINTED', 'LATEX_HEADING', 'LINENUMBERS', 'SECTION_HEADINGS', 'COLORED_TABLE_ROWS', 'FANCY_HEADER', 'TODONOTES'  done
 done testdoc.p.tex -> testdoc.tex
 + '[' 0 -ne 0 ']'
 + system pdflatex -shell-escape testdoc
@@ -78126,15 +78750,6 @@ dmap/pdftex.map}]
 Overfull \hbox (80.24629pt too wide) 
  [] 
 
-Package movie15 Warning: Reference `../doc/src/manual/mov/wave.mpeg' on page 2 
-
-
-
-
-
-Package movie15 Warning: Reference `../doc/src/manual/mov/wave.avi' on page 3 u
-ndefined on .
-
 
 
 /src/manual/mov/wave.mpeg>>]
@@ -78153,11 +78768,6 @@ No file movies.ind.
 Package movie15 Warning: @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 (movie15)                @@ Rerun to get object references right! @@
 (movie15)                @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@.
-
-
-Package movie15 Warning: @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-(movie15)                @@ There were undefined references! @@
-(movie15)                @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@.
 
 [5] (./movies.aux)
 
@@ -78634,15 +79244,6 @@ dmap/pdftex.map}]
 Overfull \hbox (80.24629pt too wide) 
  [] 
 
-Package movie15 Warning: Reference `../doc/src/manual/mov/wave.mpeg' on page 2 
-
-
-
-
-
-Package movie15 Warning: Reference `../doc/src/manual/mov/wave.avi' on page 3 u
-ndefined on .
-
 
 
 /src/manual/mov/wave.mpeg>>]
@@ -78653,11 +79254,6 @@ No file movies.ind.
 Package movie15 Warning: @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 (movie15)                @@ Rerun to get object references right! @@
 (movie15)                @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@.
-
-
-Package movie15 Warning: @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-(movie15)                @@ There were undefined references! @@
-(movie15)                @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@.
 
 [5] (./movies.aux)
 
@@ -78851,6 +79447,491 @@ Output written on movies.pdf (5 pages, ).
 Transcript written on movies.log.
 + cp movies.pdf movie_demo/movies_media9.pdf
 + cp movies.tex movies_media9.tex
++ system doconce format pdflatex movies
++ doconce format pdflatex movies
+running preprocess -DFORMAT=pdflatex -DDEVICE=screen  movies.do.txt > tmp_preprocess__movies.do.txt
+translating doconce text in tmp_preprocess__movies.do.txt to pdflatex
+*** made link to new HTML file movie_player1.html
+    with code to display the movie
+    http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_%04d.png:80->129
+output in movies.p.tex
++ '[' 0 -ne 0 ']'
++ system doconce ptex2tex movies -DMOVIE=media9 -DEXTERNAL_MOVIE_VIEWER
++ doconce ptex2tex movies -DMOVIE=media9 -DEXTERNAL_MOVIE_VIEWER
+\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
+output in movies.tex
++ '[' 0 -ne 0 ']'
++ pdflatex movies
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
+ restricted \write18 enabled.
+entering extended mode
+(./movies.tex
+LaTeX2e <2011/06/27>
+Babel <3.9f> and hyphenation patterns for 2 languages loaded.
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/epsfig.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+
+
+
+
+(/usr/share/texmf/tex/latex/xcolor/xcolor.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/colortbl/colortbl.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/fancybox/fancybox.sty
+Style option: `fancybox' v1.4 <2010/05/15> (tvz)
+) (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
+<2008/02/07> (tvz)) (/usr/share/texlive/texmf-dist/tex/latex/media9/media9.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/l3names.sty
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/l3experimental/l3str/l3regex.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/l3experimental/l3str/l3tl-analysis.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/l3experimental/l3str/l3str-convert.sty
+)) 
+
+
+(/home/hpl/texmf/tex/latex/misc/movie15.sty
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/animate/animate.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+)) (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+
+
+
+
+
+
+
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
+
+Writing index file movies.idx
+(./movies.aux)
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+
+
+
+ABD: EveryShipout initializing macros
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+
+(./movies.out) (./movies.out) (./newcommands_bfmath.tex)
+(./newcommands_replace.tex)
+
+
+
+<<VPlayer.swf>><<
+../doc/src/manual/mov/wave.mp4>><<../doc/src/manual/mov/wave.flv>>
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=47, 586.8324pt x 442.2924
+pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/m
+ov/wave_frames/frame_0080.png> <a0,fr0>
+<../doc/src/manual/mov/wave_frames/frame_0081.png, id=55, 586.8324pt x 442.2924
+pt> <use ../doc/src/manual/mov/wave_frames/frame_0081.png> <../doc/src/manual/m
+ov/wave_frames/frame_0081.png> <a0,fr1>
+<../doc/src/manual/mov/wave_frames/frame_0082.png, id=62, 586.8324pt x 442.2924
+pt> <use ../doc/src/manual/mov/wave_frames/frame_0082.png> <../doc/src/manual/m
+ov/wave_frames/frame_0082.png> <a0,fr2>
+<../doc/src/manual/mov/wave_frames/frame_0083.png, id=69, 586.8324pt x 442.2924
+pt> <use ../doc/src/manual/mov/wave_frames/frame_0083.png> <../doc/src/manual/m
+ov/wave_frames/frame_0083.png> <a0,fr3>
+<../doc/src/manual/mov/wave_frames/frame_0084.png, id=76, 586.8324pt x 442.2924
+pt> <use ../doc/src/manual/mov/wave_frames/frame_0084.png> <../doc/src/manual/m
+ov/wave_frames/frame_0084.png> <a0,fr4>
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=83, 586.8324pt x 442.2924
+pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png> <../doc/src/manual/m
+ov/wave_frames/frame_0085.png> <a0,fr5>
+<../doc/src/manual/mov/wave_frames/frame_0086.png, id=90, 586.8324pt x 442.2924
+pt> <use ../doc/src/manual/mov/wave_frames/frame_0086.png> <../doc/src/manual/m
+ov/wave_frames/frame_0086.png> <a0,fr6>
+<../doc/src/manual/mov/wave_frames/frame_0087.png, id=97, 586.8324pt x 442.2924
+pt> <use ../doc/src/manual/mov/wave_frames/frame_0087.png> <../doc/src/manual/m
+ov/wave_frames/frame_0087.png> <a0,fr7>
+<../doc/src/manual/mov/wave_frames/frame_0088.png, id=104, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0088.png> <../doc/src/manual/
+mov/wave_frames/frame_0088.png> <a0,fr8>
+<../doc/src/manual/mov/wave_frames/frame_0089.png, id=111, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0089.png> <../doc/src/manual/
+mov/wave_frames/frame_0089.png> <a0,fr9>
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=118, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png> <../doc/src/manual/
+mov/wave_frames/frame_0090.png> <a0,fr10>
+<../doc/src/manual/mov/wave_frames/frame_0091.png, id=125, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0091.png> <../doc/src/manual/
+mov/wave_frames/frame_0091.png> <a0,fr11>
+<../doc/src/manual/mov/wave_frames/frame_0092.png, id=132, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0092.png> <../doc/src/manual/
+mov/wave_frames/frame_0092.png> <a0,fr12>
+<../doc/src/manual/mov/wave_frames/frame_0093.png, id=139, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0093.png> <../doc/src/manual/
+mov/wave_frames/frame_0093.png> <a0,fr13>
+<../doc/src/manual/mov/wave_frames/frame_0094.png, id=146, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0094.png> <../doc/src/manual/
+mov/wave_frames/frame_0094.png> <a0,fr14>
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=153, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/
+mov/wave_frames/frame_0095.png> <a0,fr15>
+<../doc/src/manual/mov/wave_frames/frame_0096.png, id=160, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0096.png> <../doc/src/manual/
+mov/wave_frames/frame_0096.png> <a0,fr16>
+<../doc/src/manual/mov/wave_frames/frame_0097.png, id=167, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0097.png> <../doc/src/manual/
+mov/wave_frames/frame_0097.png> <a0,fr17>
+<../doc/src/manual/mov/wave_frames/frame_0098.png, id=174, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0098.png> <../doc/src/manual/
+mov/wave_frames/frame_0098.png> <a0,fr18>
+<../doc/src/manual/mov/wave_frames/frame_0099.png, id=181, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0099.png> <../doc/src/manual/
+mov/wave_frames/frame_0099.png> <a0,fr19>
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=188, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png> <../doc/src/manual/
+mov/wave_frames/frame_0100.png> <a0,fr20>
+<../doc/src/manual/mov/wave_frames/frame_0101.png, id=195, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0101.png> <../doc/src/manual/
+mov/wave_frames/frame_0101.png> <a0,fr21>
+<../doc/src/manual/mov/wave_frames/frame_0102.png, id=202, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0102.png> <../doc/src/manual/
+mov/wave_frames/frame_0102.png> <a0,fr22>
+<../doc/src/manual/mov/wave_frames/frame_0103.png, id=209, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0103.png> <../doc/src/manual/
+mov/wave_frames/frame_0103.png> <a0,fr23>
+<../doc/src/manual/mov/wave_frames/frame_0104.png, id=216, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0104.png> <../doc/src/manual/
+mov/wave_frames/frame_0104.png> <a0,fr24>
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=223, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png> <../doc/src/manual/
+mov/wave_frames/frame_0105.png> <a0,fr25>
+<../doc/src/manual/mov/wave_frames/frame_0106.png, id=230, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0106.png> <../doc/src/manual/
+mov/wave_frames/frame_0106.png> <a0,fr26>
+<../doc/src/manual/mov/wave_frames/frame_0107.png, id=237, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0107.png> <../doc/src/manual/
+mov/wave_frames/frame_0107.png> <a0,fr27>
+<../doc/src/manual/mov/wave_frames/frame_0108.png, id=244, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0108.png> <../doc/src/manual/
+mov/wave_frames/frame_0108.png> <a0,fr28>
+<../doc/src/manual/mov/wave_frames/frame_0109.png, id=251, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0109.png> <../doc/src/manual/
+mov/wave_frames/frame_0109.png> <a0,fr29>
+<../doc/src/manual/mov/wave_frames/frame_0110.png, id=258, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0110.png> <../doc/src/manual/
+mov/wave_frames/frame_0110.png> <a0,fr30>
+<../doc/src/manual/mov/wave_frames/frame_0111.png, id=265, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0111.png> <../doc/src/manual/
+mov/wave_frames/frame_0111.png> <a0,fr31>
+<../doc/src/manual/mov/wave_frames/frame_0112.png, id=272, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0112.png> <../doc/src/manual/
+mov/wave_frames/frame_0112.png> <a0,fr32>
+<../doc/src/manual/mov/wave_frames/frame_0113.png, id=279, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0113.png> <../doc/src/manual/
+mov/wave_frames/frame_0113.png> <a0,fr33>
+<../doc/src/manual/mov/wave_frames/frame_0114.png, id=286, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0114.png> <../doc/src/manual/
+mov/wave_frames/frame_0114.png> <a0,fr34>
+<../doc/src/manual/mov/wave_frames/frame_0115.png, id=293, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0115.png> <../doc/src/manual/
+mov/wave_frames/frame_0115.png> <a0,fr35>
+<../doc/src/manual/mov/wave_frames/frame_0116.png, id=300, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0116.png> <../doc/src/manual/
+mov/wave_frames/frame_0116.png> <a0,fr36>
+<../doc/src/manual/mov/wave_frames/frame_0117.png, id=307, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0117.png> <../doc/src/manual/
+mov/wave_frames/frame_0117.png> <a0,fr37>
+<../doc/src/manual/mov/wave_frames/frame_0118.png, id=314, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0118.png> <../doc/src/manual/
+mov/wave_frames/frame_0118.png> <a0,fr38>
+<../doc/src/manual/mov/wave_frames/frame_0119.png, id=321, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0119.png> <../doc/src/manual/
+mov/wave_frames/frame_0119.png> <a0,fr39>
+<../doc/src/manual/mov/wave_frames/frame_0120.png, id=328, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0120.png> <../doc/src/manual/
+mov/wave_frames/frame_0120.png> <a0,fr40>
+<../doc/src/manual/mov/wave_frames/frame_0121.png, id=336, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0121.png> <../doc/src/manual/
+mov/wave_frames/frame_0121.png> <a0,fr41>
+<../doc/src/manual/mov/wave_frames/frame_0122.png, id=343, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0122.png> <../doc/src/manual/
+mov/wave_frames/frame_0122.png> <a0,fr42>
+<../doc/src/manual/mov/wave_frames/frame_0123.png, id=350, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0123.png> <../doc/src/manual/
+mov/wave_frames/frame_0123.png> <a0,fr43>
+<../doc/src/manual/mov/wave_frames/frame_0124.png, id=357, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0124.png> <../doc/src/manual/
+mov/wave_frames/frame_0124.png> <a0,fr44>
+<../doc/src/manual/mov/wave_frames/frame_0125.png, id=364, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0125.png> <../doc/src/manual/
+mov/wave_frames/frame_0125.png> <a0,fr45>
+<../doc/src/manual/mov/wave_frames/frame_0126.png, id=371, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0126.png> <../doc/src/manual/
+mov/wave_frames/frame_0126.png> <a0,fr46>
+<../doc/src/manual/mov/wave_frames/frame_0127.png, id=378, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0127.png> <../doc/src/manual/
+mov/wave_frames/frame_0127.png> <a0,fr47>
+<../doc/src/manual/mov/wave_frames/frame_0128.png, id=385, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0128.png> <../doc/src/manual/
+mov/wave_frames/frame_0128.png> <a0,fr48>
+<../doc/src/manual/mov/wave_frames/frame_0129.png, id=392, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0129.png> <../doc/src/manual/
+mov/wave_frames/frame_0129.png> <a0,fr49> [1{/var/lib/texmf/fonts/map/pdftex/up
+dmap/pdftex.map}]
+Overfull \hbox (80.24629pt too wide) 
+ [] 
+
+
+
+/src/manual/mov/wave.mpeg>>] [4<<../doc/src/manual/mov/wave.avi>>]
+No file movies.ind.
+[5] (./movies.aux)
+
+ *File List*
+ article.cls    2007/10/19 v1.4h Standard LaTeX document class
+  size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
+ relsize.sty    2013/03/29 ver 4.1
+  epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
+graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+  keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
+graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
+graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
+  pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
+infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
+ ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+ makeidx.sty    2000/03/29 v1.0m Standard LaTeX package
+   color.sty    1999/02/16
+   color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
+setspace.sty    2011/12/19 v6.7a set line spacing
+ amsmath.sty    2013/01/14 v2.14 AMS math features
+ amstext.sty    2000/06/29 v2.01
+  amsgen.sty    1999/11/30 v2.0
+  amsbsy.sty    1999/11/29 v1.2d
+  amsopn.sty    1999/12/14 v2.01 operator names
+amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
+  xcolor.sty    2007/01/21 v2.11 LaTeX color extensions (UK)
+   color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
+colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
+   array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
+      bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
+microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
+microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
+microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
+fancybox.sty    2010/05/15 1.4
+fancyvrb.sty    2008/02/07
+  media9.sty    2013/07/19 v0.29 acrobat-9/X compatible media
+   expl3.sty    2013/07/12 v4544 L3 Experimental code bundle wrapper
+ l3names.sty    2012/12/07 v4346 L3 Namespace for primitives
+l3bootstrap.sty    2013/01/08 v4420 L3 Experimental bootstrap code
+    etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
+l3basics.sty    2013/07/09 v4521 L3 Basic definitions
+ l3expan.sty    2013/07/09 v4521 L3 Argument expansion
+    l3tl.sty    2013/04/24 v4482 L3 Token lists
+   l3seq.sty    2013/05/26 v4500 L3 Sequences and stacks
+   l3int.sty    2013/04/24 v4482 L3 Integers
+ l3quark.sty    2013/07/09 v4521 L3 Quarks
+   l3prg.sty    2013/04/24 v4482 L3 Control structures
+ l3clist.sty    2013/05/26 v4500 L3 Comma separated lists
+ l3token.sty    2013/04/24 v4482 L3 Experimental token manipulation
+  l3prop.sty    2013/01/09 v4423 L3 Property lists
+   l3msg.sty    2013/01/08 v4412 L3 Messages
+  l3file.sty    2013/05/01 v4483 L3 File and I/O operations
+  l3skip.sty    2013/01/13 v4444 L3 Dimensions and skips
+  l3keys.sty    2013/07/12 v4544 L3 Experimental key-value interfaces
+    l3fp.sty    2013/07/09 v4521 L3 Floating points
+   l3box.sty    2013/04/24 v4482 L3 Experimental boxes
+l3coffins.sty    2012/09/09 v4212 L3 Coffin code layer
+ l3color.sty    2012/08/29 v4156 L3 Experimental color support
+l3luatex.sty    2012/08/03 v4049 L3 Experimental LuaTeX-specific functions
+l3candidates.sty    2013/07/09 v4521 L3 Experimental additions to l3kernel
+   ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
+ l3regex.sty    2013/04/24 v4482 L3 Experimental regular expressions
+l3tl-build.sty    2011/12/08 v3039 L3 Experimental token list construction
+l3tl-analysis.sty    2011/12/08 v3039 L3 Experimental token lists analysis
+   l3str.sty    2013/04/24 v4482 L3 Experimental strings
+  l3flag.sty    2011/12/08 v3039 L3 Experimental flags
+l3str-convert.sty    2013/01/08 v4339 L3 Experimental string encoding conversio
+ns
+l3keys2e.sty    2013/07/12 v4544 LaTeX2e option processing using LaTeX3 keys
+  xparse.sty    2013/07/12 v4544 L3 Experimental document command parser
+atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
+ movie15.sty    2009/07/07
+  ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+ ifdraft.sty    2008/08/11 v1.3 Detect class options draft and final (HO)
+everyshi.sty    2001/05/15 v3.00 EveryShipout Package (MS)
+ animate.sty    2013/07/19 PDF animations from files and inline graphics
+    calc.sty    2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
+  animfp.sty    2009/07/23 fixed point addition for animate.sty
+supp-pdf.mkii
+inputenc.sty    2008/03/30 v1.1d Input encoding file
+    utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
+   t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+  ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+  omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
+hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
+hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
+  hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
+ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
+  ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+ intcalc.sty    2007/09/27 v1.1 Expandable calculations with integers (HO)
+etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
+kvdefinekeys.sty    2011/04/07 v1.3 Define keys (HO)
+pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
+pdfescape.sty    2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
+bigintcalc.sty    2012/04/08 v1.3 Expandable calculations on big integers (HO)
+  bitset.sty    2011/01/30 v1.1 Handle bit-vector datatype (HO)
+uniquecounter.sty    2011/01/30 v1.2 Provide unlimited unique counter (HO)
+letltxmacro.sty    2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
+ hopatch.sty    2012/05/28 v1.2 Wrapper for package hooks (HO)
+xcolor-patch.sty    2011/01/30 xcolor patch
+atveryend.sty    2011/06/30 v1.8 Hooks at the very end of document (HO)
+refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
+ hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
+ ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
+ auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
+kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
+  pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
+hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
+     url.sty    2006/04/12  ver 3.3  Verb mode for urls, etc.
+ hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
+rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
+epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
+  grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
+epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
+RS)
+ nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
+gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
+  movies.out
+  movies.out
+newcommands_bfmath.tex
+newcommands_replace.tex
+    umsa.fd    2013/01/14 v3.01 AMS symbols A
+  mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
+    umsb.fd    2013/01/14 v3.01 AMS symbols B
+  mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+../doc/src/manual/mov/wave_frames/frame_0080.png
+../doc/src/manual/mov/wave_frames/frame_0081.png
+../doc/src/manual/mov/wave_frames/frame_0082.png
+../doc/src/manual/mov/wave_frames/frame_0083.png
+../doc/src/manual/mov/wave_frames/frame_0084.png
+../doc/src/manual/mov/wave_frames/frame_0085.png
+../doc/src/manual/mov/wave_frames/frame_0086.png
+../doc/src/manual/mov/wave_frames/frame_0087.png
+../doc/src/manual/mov/wave_frames/frame_0088.png
+../doc/src/manual/mov/wave_frames/frame_0089.png
+../doc/src/manual/mov/wave_frames/frame_0090.png
+../doc/src/manual/mov/wave_frames/frame_0091.png
+../doc/src/manual/mov/wave_frames/frame_0092.png
+../doc/src/manual/mov/wave_frames/frame_0093.png
+../doc/src/manual/mov/wave_frames/frame_0094.png
+../doc/src/manual/mov/wave_frames/frame_0095.png
+../doc/src/manual/mov/wave_frames/frame_0096.png
+../doc/src/manual/mov/wave_frames/frame_0097.png
+../doc/src/manual/mov/wave_frames/frame_0098.png
+../doc/src/manual/mov/wave_frames/frame_0099.png
+../doc/src/manual/mov/wave_frames/frame_0100.png
+../doc/src/manual/mov/wave_frames/frame_0101.png
+../doc/src/manual/mov/wave_frames/frame_0102.png
+../doc/src/manual/mov/wave_frames/frame_0103.png
+../doc/src/manual/mov/wave_frames/frame_0104.png
+../doc/src/manual/mov/wave_frames/frame_0105.png
+../doc/src/manual/mov/wave_frames/frame_0106.png
+../doc/src/manual/mov/wave_frames/frame_0107.png
+../doc/src/manual/mov/wave_frames/frame_0108.png
+../doc/src/manual/mov/wave_frames/frame_0109.png
+../doc/src/manual/mov/wave_frames/frame_0110.png
+../doc/src/manual/mov/wave_frames/frame_0111.png
+../doc/src/manual/mov/wave_frames/frame_0112.png
+../doc/src/manual/mov/wave_frames/frame_0113.png
+../doc/src/manual/mov/wave_frames/frame_0114.png
+../doc/src/manual/mov/wave_frames/frame_0115.png
+../doc/src/manual/mov/wave_frames/frame_0116.png
+../doc/src/manual/mov/wave_frames/frame_0117.png
+../doc/src/manual/mov/wave_frames/frame_0118.png
+../doc/src/manual/mov/wave_frames/frame_0119.png
+../doc/src/manual/mov/wave_frames/frame_0120.png
+../doc/src/manual/mov/wave_frames/frame_0121.png
+../doc/src/manual/mov/wave_frames/frame_0122.png
+../doc/src/manual/mov/wave_frames/frame_0123.png
+../doc/src/manual/mov/wave_frames/frame_0124.png
+../doc/src/manual/mov/wave_frames/frame_0125.png
+../doc/src/manual/mov/wave_frames/frame_0126.png
+../doc/src/manual/mov/wave_frames/frame_0127.png
+../doc/src/manual/mov/wave_frames/frame_0128.png
+../doc/src/manual/mov/wave_frames/frame_0129.png
+ ***********
+
+ )
+(see the transcript file for additional information)</usr/share/texlive/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmtt9.pfb>
+Output written on movies.pdf (5 pages, ).
+Transcript written on movies.log.
++ cp movies.pdf movie_demo/movies_media9_extviewer.pdf
 + rm -f movies.aux
 + system doconce format pdflatex movies
 + doconce format pdflatex movies
@@ -79271,6 +80352,39 @@ Output written on movies.pdf (3 pages, ).
 Transcript written on movies.log.
 + '[' 0 -ne 0 ']'
 + cp movies.pdf movie_demo
++ system doconce format plain movies
++ doconce format plain movies
+running preprocess -DFORMAT=plain -DDEVICE=screen  movies.do.txt > tmp_preprocess__movies.do.txt
+translating doconce text in tmp_preprocess__movies.do.txt to plain
+*** made link to new HTML file movie_player1.html
+    with code to display the movie 
+    ../doc/src/manual/mov/wave.webm
+*** made link to new HTML file movie_player2.html
+    with code to display the movie 
+    ../doc/src/manual/mov/wave.ogg
+*** made link to new HTML file movie_player3.html
+    with code to display the movie 
+    ../doc/src/manual/mov/wave.mp4
+*** made link to new HTML file movie_player4.html
+    with code to display the movie 
+    ../doc/src/manual/mov/wave.flv
+*** made link to new HTML file movie_player5.html
+    with code to display the movie
+    ../doc/src/manual/mov/wave_frames/frame_*.png
+*** made link to new HTML file movie_player6.html
+    with code to display the movie
+    http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_%04d.png:80->129
+*** made link to new HTML file movie_player7.html
+    with code to display the movie 
+    ../doc/src/manual/mov/wave.mpeg
+*** made link to new HTML file movie_player8.html
+    with code to display the movie 
+    ../doc/src/manual/mov/wave.avi
+*** made link to new HTML file movie_player9.html
+    with code to display the movie 
+    http://hplgit.github.io/animate/doc/pub/mov-animate/demo.ogg
+output in movies.txt
++ '[' 0 -ne 0 ']'
 + system doconce guess_encoding encoding1.do.txt
 + doconce guess_encoding encoding1.do.txt
 + '[' 0 -ne 0 ']'
