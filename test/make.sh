@@ -254,6 +254,10 @@ cp -r tmp_admon/_build/html admon_sphinx
 
 system doconce format mwiki admon
 cp admon.mwiki admon_mwiki.mwiki
+
+system doconce format plain admon
+cp admon.txt admon_plain.txt
+
 cp -f admon_* admon_demo/
 
 #google-chrome admon_*.html

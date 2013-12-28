@@ -14921,8 +14921,8 @@ Here is a nested list:
       continuing on a new line
 
 
-
-
+        Here are two lines that make up
+        a block quote.
 
 
 Here is a reference to Equation (my:eq1).
@@ -15944,9 +15944,11 @@ Appendix: Testing identical titles
 
 Without label.
 
-*Tip.* 
-Here is a tip or hint box, typeset as a notice box.
 
+Tip --------------------------------------------------|
+|                                                     |
+| Here is a tip or hint box, typeset as a notice box. |
+|-----------------------------------------------------|
 
 
 
@@ -15963,18 +15965,20 @@ have the latest updates of the files.
 Greg Wilson' excellent Script for Introduction to Version Control (http://software-carpentry.org/2010/07/script-for-introduction-to-version-control/) provides a more detailed motivation why you will benefit greatly
 from using version control systems.
 
-*Summary.* 
-_Bold remark:_ Make some text with this summary.
-Much testing in this document, otherwise stupid content.
-Much testing in this document, otherwise stupid content.
-Much testing in this document, otherwise stupid content.
-Much testing in this document, otherwise stupid content.
-Much testing in this document, otherwise stupid content.
-Much testing in this document, otherwise stupid content.
-Much testing in this document, otherwise stupid content.
-Much testing in this document, otherwise stupid content.
-Much testing in this document, otherwise stupid content.
 
+Summary ---------------------------------------------------|
+|                                                          |
+| _Bold remark:_ Make some text with this summary.         |
+| Much testing in this document, otherwise stupid content. |
+| Much testing in this document, otherwise stupid content. |
+| Much testing in this document, otherwise stupid content. |
+| Much testing in this document, otherwise stupid content. |
+| Much testing in this document, otherwise stupid content. |
+| Much testing in this document, otherwise stupid content. |
+| Much testing in this document, otherwise stupid content. |
+| Much testing in this document, otherwise stupid content. |
+| Much testing in this document, otherwise stupid content. |
+|----------------------------------------------------------|
 
 
 Projects that you want to share among several computers or project
@@ -30177,6 +30181,10 @@ cp -r tmp_admon/_build/html admon_sphinx
 
 system doconce format mwiki admon
 cp admon.mwiki admon_mwiki.mwiki
+
+system doconce format plain admon
+cp admon.txt admon_plain.txt
+
 cp -f admon_* admon_demo/
 
 #google-chrome admon_*.html
@@ -45514,6 +45522,336 @@ just because we can.
 The ``remarks`` and ``hint`` environments are not allowed outside
 exercises (and problems and projects too).
 
+************** File: admon.txt *****************
+Testing admons
+==============
+
+hpl
+
+Date: Jan 32, 2100
+
+Introduction
+============
+First some ordinary text to compare font sizes in admonitions
+and the surrounding text.
+
+
+Code
+----
+
+Need some code outside admons for color and font comparisons::
+
+
+        def some_code(x):
+            return sin(x)*exp(1-x)
+
+
+And some plain text verbatim::
+
+
+        x=1.0 y=0.9 z=0.4
+        x=1.1 y=0.3 z=0.1
+
+
+Quotes and boxes
+----------------
+
+Here is a plain quote environment.
+
+        Sayre's law states that
+        "in any dispute the intensity of feeling is inversely
+        proportional to the value of the issues at stake."
+        By way of corollary, it adds:
+        "That is why academic politics are so bitter."
+        
+        *Source*: wikipedia (http://en.wikipedia.org/wiki/Sayre's_law)
+
+
+Does quotes with title also work? No...cannot work in LaTeX and HTML
+and then it does not make sense to support it.
+
+
+A plain *box* is sometimes useful. Let's show it here for comparison
+with admons (especially the block admon has much in common with a box).
+The box is more aimed at framing a law or an equation.
+
+First a simple block with text, an equation, and a list:
+
+
+|--------------------------------------------------------------|
+| A generic equation::                                         |
+|                                                              |
+|         \[ f(x) = 0 \]                                       |
+|                                                              |
+| must be solved by a numerical method, such as                |
+|                                                              |
+|  * Newton's method                                           |
+|                                                              |
+|  * The Bisection method                                      |
+|                                                              |
+|  * Fixed-point (Picard) iteration by rewriting f(x)=x - g(x) |
+|                                                              |
+|  * The Secant method                                         |
+|--------------------------------------------------------------|
+
+Now test a box with equation only (note that this line continues the
+box, it is not a new paragraph):
+
+
+|---------------------------------------------------------------|
+|         \begin{equation} f(x) = \sin(x)e^{1-x} \end{equation} |
+|---------------------------------------------------------------|
+
+
+Let's begin a new paragraph and show a box with code only:
+
+
+|------------------------------------|
+|         def some_code(x):          |
+|             return sin(x)*exp(1-x) |
+|------------------------------------|
+
+
+
+
+Admonitions
+-----------
+
+Let us start with a plain warning environment.
+
+
+Warning ---------------------------------------------------------|
+|                                                                |
+| And here is a warning about something to pay attention to. We  |
+| test how the heading behave and add quite some extra texts     |
+| in comparison with the other admons.                           |
+|                                                                |
+|   * and a list                                                 |
+|                                                                |
+|   * with items                                                 |
+|                                                                |
+| We continue with more text to see how that affects the layout. |
+| And more and more text.                                        |
+| And more and more text.                                        |
+| And more and more text.                                        |
+| And more and more text.                                        |
+| And more and more text.                                        |
+| And more and more text.                                        |
+|----------------------------------------------------------------|
+
+
+Test warning with title:
+
+
+Watch out -----------------------------------------------|
+|                                                        |
+| And here comes some text with bad news in larger font. |
+|--------------------------------------------------------|
+
+
+Test warning with large title with math:
+
+
+Watch out for \nabla\cdot\bm{u}=0 equations ---------------------|
+|                                                                |
+| Divergence freedom is often problematic from a numerical point |
+| of view.                                                       |
+|----------------------------------------------------------------|
+
+
+Then we test a block, which is guaranteed to never have any admon icon.
+
+
+Block with title --------------------------------------------------------|
+|                                                                        |
+| Here is a block of text with title. It is typeset                      |
+| *without any icon* and is useful when you want some admons with icon   |
+| and some without. With the small font size, as used here, one can have |
+| more comment-style text or text that really goes deeper or talks       |
+| about fun facts that are not strictly necessary for the main flow      |
+| of understanding.                                                      |
+|------------------------------------------------------------------------|
+
+
+
+
+Block ----------------------------------------------------------------------------|
+|                                                                                 |
+| Here is a block of text with no title. As above, it is typeset without any icon |
+| and is useful when you want some admons with icon and some without.             |
+|---------------------------------------------------------------------------------|
+
+
+The next admonition features a title "Note, eventually!".
+
+
+
+Note, eventually! ----------------------------------------------------------|
+|                                                                           |
+| Ah, we are soon close to the end (with illegal font size specification!). |
+| But first a bit of math where we define \theta and \bm{r}::               |
+|                                                                           |
+|         \begin{align*}                                                    |
+|         \theta &= q^2,\\                                                  |
+|         \bm{r} &= \varrho\bm{i}                                           |
+|         \end{align*}                                                      |
+|---------------------------------------------------------------------------|
+
+
+
+
+Point1 -----------------------------|
+|                                   |
+| Ah, we are soon close to the end. |
+|-----------------------------------|
+
+
+
+Question ----------------------------------------------------|
+|                                                            |
+| So, how many admonition environments does Doconce support? |
+|------------------------------------------------------------|
+
+
+
+Question ---------------------------------------------------------------|
+|                                                                       |
+|  1. Once more, how many admonition environments does Doconce support? |
+|-----------------------------------------------------------------------|
+
+
+
+Tip -----------------------------------------------------|
+|                                                        |
+| It is of outmost important to                          |
+|                                                        |
+| 1. stay cool                                           |
+|                                                        |
+| 2. read hints and tips carefully                       |
+|                                                        |
+| Because here the thing is to do::                      |
+|                                                        |
+|                                                        |
+|         import urllib                                  |
+|                                                        |
+|         def grab(url, filename):                       |
+|             urllib.urlretrieve(url, filename=filename) |
+|--------------------------------------------------------|
+
+
+Next is a warning without a title ("none" implies no title).
+
+
+|-----------------------------------------|
+| And here comes some text with bad news. |
+|-----------------------------------------|
+
+
+Going deeper environments
+-------------------------
+
+Here is a long notice environment with a custom title and much
+text, math and code.
+
+
+Going deeper. ---------------------------------------------------------|
+|                                                                      |
+| We have some equations that should be preceded by much text, so the  |
+| task is to write and write. The number of words, and not the         |
+| meaning, is what counts here. We need desperately to fill up the     |
+| page in the hope that some admonitions will experience a page break, |
+| which the LaTeX environment should handle with ease.                 |
+|                                                                      |
+| Let us start with some equations::                                   |
+|                                                                      |
+|         \begin{align*}                                               |
+|         \frac{Du}{dt} &= 0                                           |
+|         \\                                                           |
+|         \frac{1}{2} &= {1/2}\\                                       |
+|         \frac{1}{2}\pmb{x} &= \pmb{n}                                |
+|         \end{align*}                                                 |
+|                                                                      |
+|                                                                      |
+| The implementation of such complicated equations in computer         |
+| code is task that this "Going deeper" environment targets::          |
+|                                                                      |
+|                                                                      |
+|         def Dudt(u):                                                 |
+|             r = diff(u, t) + u*grad(u)                               |
+|             return r                                                 |
+|                                                                      |
+|         half = 0.5                                                   |
+|         x = 2*n                                                      |
+|                                                                      |
+| And some more text that can help going into the next page.           |
+| Longer computer code requires vertical space::                       |
+|                                                                      |
+|                                                                      |
+|         class Diff:                                                  |
+|             def __init__(self, f, h=1E-5):                           |
+|                 self.f = f                                           |
+|                 self.h = float(h)                                    |
+|                                                                      |
+|         class Forward1(Diff):                                        |
+|             def __call__(self, x):                                   |
+|                 f, h = self.f, self.h                                |
+|                 return (f(x+h) - f(x))/h                             |
+|                                                                      |
+|         class Backward1(Diff):                                       |
+|             def __call__(self, x):                                   |
+|                 f, h = self.f, self.h                                |
+|                 return (f(x) - f(x-h))/h                             |
+|                                                                      |
+|         class Central2(Diff):                                        |
+|             def __call__(self, x):                                   |
+|                 f, h = self.f, self.h                                |
+|                 return (f(x+h) - f(x-h))/(2*h)                       |
+|                                                                      |
+|         class Central4(Diff):                                        |
+|             def __call__(self, x):                                   |
+|                 f, h = self.f, self.h                                |
+|                 return (4./3)*(f(x+h)   - f(x-h))  /(2*h) - \        |
+|                        (1./3)*(f(x+2*h) - f(x-2*h))/(4*h)            |
+|                                                                      |
+|         class Central6(Diff):                                        |
+|             def __call__(self, x):                                   |
+|                 f, h = self.f, self.h                                |
+|                 return (3./2) *(f(x+h)   - f(x-h))  /(2*h) - \       |
+|                        (3./5) *(f(x+2*h) - f(x-2*h))/(4*h) + \       |
+|                        (1./10)*(f(x+3*h) - f(x-3*h))/(6*h)           |
+|                                                                      |
+|         class Forward3(Diff):                                        |
+|             def __call__(self, x):                                   |
+|                 f, h = self.f, self.h                                |
+|                 return (-(1./6)*f(x+2*h) + f(x+h) - 0.5*f(x) - \     |
+|                         (1./3)*f(x-h))/h                             |
+|                                                                      |
+| And then we add a figure too.                                        |
+|                                                                      |
+| FIGURE: [../doc/src/manual/fig/wave1D, width=400 frac=0.7]           |
+|----------------------------------------------------------------------|
+
+
+
+The end
+-------
+
+A bit of text before the summary, which we now call "Concluding remarks,
+for the novice",
+just because we can.
+
+
+Concluding remarks, for the novice ---------------------------------|
+|                                                                   |
+| We can summarize the most important things with admons: they have |
+| a different typesetting, and they may have a symbol.              |
+| Titles should be optional.                                        |
+|-------------------------------------------------------------------|
+
+
+*Remark.* The remarks and hint environments are not allowed outside
+exercises (and problems and projects too).
+
 ************** File: slides1.do.txt *****************
 TITLE: On the Technicalities of Scientific Writing Anno 2012: The Doconce Way
 AUTHOR: Hans Petter Langtangen at Simula Research Laboratory and University of Oslo
@@ -56997,7 +57335,9 @@ Here is the same collection, but with images in cyberspace, given as URLs::
 The movie above in MPEG format, typeset in a box:
 
 
-
+|-------------------------------------------------------------------------------------|
+|  1D wave in MPEG.  (Movie ../doc/src/manual/mov/wave.mpeg: play movie_player7.html) |
+|-------------------------------------------------------------------------------------|
 
 
 Here is the same movie in AVI format:
@@ -69362,18 +69702,20 @@ is also important, one should follow these rules:
 (Doconce performs extensions to sphinx and other formats such that
 labels in align environments work well.)
 
-*Notice.* 
-LaTeX supports lots of fancy formatting, for example, multiple
-plots in the same figure, footnotes, margin notes, etc.
-Allowing other output formats, such as sphinx, makes it necessary
-to only utilze very standard LaTeX and avoid, for instance, more than
-one plot per figure. However, one can use preprocessor if-tests on
-the format (typically if FORMAT in ("latex", "pdflatex")) to
-include special code for latex and pdflatex output and more
-straightforward typesetting for other formats. In this way, one can
-also allow advanced LaTeX features and fine tuning of resulting
-PDF document.
 
+Notice -----------------------------------------------------------------|
+|                                                                       |
+| LaTeX supports lots of fancy formatting, for example, multiple        |
+| plots in the same figure, footnotes, margin notes, etc.               |
+| Allowing other output formats, such as sphinx, makes it necessary     |
+| to only utilze very standard LaTeX and avoid, for instance, more than |
+| one plot per figure. However, one can use preprocessor if-tests on    |
+| the format (typically if FORMAT in ("latex", "pdflatex")) to          |
+| include special code for latex and pdflatex output and more           |
+| straightforward typesetting for other formats. In this way, one can   |
+| also allow advanced LaTeX features and fine tuning of resulting       |
+| PDF document.                                                         |
+|-----------------------------------------------------------------------|
 
 
 *LaTeX Newcommands.* The author can define newcommand statements in files with names
@@ -78432,7 +78774,16 @@ figure file ../doc/src/manual/fig/wave1D:
 output in admon.mwiki
 + '[' 0 -ne 0 ']'
 + cp admon.mwiki admon_mwiki.mwiki
-+ cp -f admon_apricot.html admon_colors1.aux admon_colors1.idx admon_colors1.log admon_colors1.out admon_colors1.pdf admon_colors1.tex admon_colors2.aux admon_colors2.idx admon_colors2.log admon_colors2.out admon_colors2.pdf admon_colors2.tex admon_colors.html admon_graybox1.aux admon_graybox1.idx admon_graybox1.log admon_graybox1.out admon_graybox1.pdf admon_graybox1.tex admon_graybox2.aux admon_graybox2.idx admon_graybox2.log admon_graybox2.out admon_graybox2.pdf admon_graybox2.tex admon_graybox3.aux admon_graybox3.idx admon_graybox3.log admon_graybox3.out admon_graybox3.pdf admon_graybox3.tex admon_gray.html admon_lyx.html admon_mwiki.mwiki admon_paragraph.aux admon_paragraph.html admon_paragraph.idx admon_paragraph.log admon_paragraph.out admon_paragraph.pdf admon_paragraph.tex admon_sphinx admon_vagrant.html admon_yellowbox.aux admon_yellowbox.idx admon_yellowbox.log admon_yellowbox.out admon_yellowbox.pdf admon_yellowbox.tex admon_yellow.html admon_demo/
++ system doconce format plain admon
++ doconce format plain admon
+running preprocess -DFORMAT=plain -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
+translating doconce text in tmp_preprocess__admon.do.txt to plain
+*** warning: wrong text size "illegal-size" specified in notice environment!
+    must be large or small - will be set to normal
+output in admon.txt
++ '[' 0 -ne 0 ']'
++ cp admon.txt admon_plain.txt
++ cp -f admon_apricot.html admon_colors1.aux admon_colors1.idx admon_colors1.log admon_colors1.out admon_colors1.pdf admon_colors1.tex admon_colors2.aux admon_colors2.idx admon_colors2.log admon_colors2.out admon_colors2.pdf admon_colors2.tex admon_colors.html admon_graybox1.aux admon_graybox1.idx admon_graybox1.log admon_graybox1.out admon_graybox1.pdf admon_graybox1.tex admon_graybox2.aux admon_graybox2.idx admon_graybox2.log admon_graybox2.out admon_graybox2.pdf admon_graybox2.tex admon_graybox3.aux admon_graybox3.idx admon_graybox3.log admon_graybox3.out admon_graybox3.pdf admon_graybox3.tex admon_gray.html admon_lyx.html admon_mwiki.mwiki admon_paragraph.aux admon_paragraph.html admon_paragraph.idx admon_paragraph.log admon_paragraph.out admon_paragraph.pdf admon_paragraph.tex admon_plain.txt admon_sphinx admon_vagrant.html admon_yellowbox.aux admon_yellowbox.idx admon_yellowbox.log admon_yellowbox.out admon_yellowbox.pdf admon_yellowbox.tex admon_yellow.html admon_demo/
 cp: target ‘admon_demo/’ is not a directory
 + system doconce format pandoc github_md.do.txt --github_md
 + doconce format pandoc github_md.do.txt --github_md

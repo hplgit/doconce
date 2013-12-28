@@ -391,7 +391,7 @@ def define(FILENAME_EXTENSION,
         'summary':   lambda block, format, title='Summary', text_size='normal':
            mwiki_admon(block, format, title, text_size, 'summary'),
         'block':     lambda block, format, title='Block', text_size='normal':
-           mwiki_admon(block, format, title, text_size, 'block'),
+        mwiki_admon(block, format, title, text_size, 'block'),
         'box':       lambda block, format, title='none', text_size='normal':
            mwiki_admon(block, format, title, text_size, 'box'),
         'quote':     lambda block, format, title='none', text_size='normal':
