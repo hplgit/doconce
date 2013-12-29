@@ -73,10 +73,14 @@ def fix(filestr, format, verbose=0):
     for fig in figs:
         caption = fig[3]
         if '\n' in caption.strip():   # multiline caption?
-            # Allow environments to the figure,
-            # also drop editing if new lines are figures or movies
-            if not '!e' in caption and not 'FIGURE:' in caption \
-               and not 'MOVIE:' in caption:
+            # Do not allow figures and movies without a nice blank line after
+            if 'FIGURE:' in caption or 'MOVIE:' in caption:
+                print '*** error: missing blank line after\n    %s: [%s, ...' % (fig[1], fig[2])
+                _abort()
+            # Allow environments to the figure
+            if not '!e' in caption:
+                #and not 'FIGURE:' in caption \
+                #and not 'MOVIE:' in caption:
                 caption1 = caption.replace('\n', ' ') + '\n'
                 filestr = filestr.replace(caption, caption1)
                 num_fixes += 1
