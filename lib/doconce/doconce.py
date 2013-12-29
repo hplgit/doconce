@@ -75,7 +75,7 @@ def fix(filestr, format, verbose=0):
         if '\n' in caption.strip():   # multiline caption?
             # Do not allow figures and movies without a nice blank line after
             if 'FIGURE:' in caption or 'MOVIE:' in caption:
-                print '*** error: missing blank line after\n    %s: [%s, ...' % (fig[1], fig[2])
+                print '*** error: missing blank line between multiple figures/movies\n    %s: [%s, ...' % (fig[1], fig[2])
                 _abort()
             # Allow environments to the figure
             if not '!e' in caption:
