@@ -425,9 +425,9 @@ def syntax_check(filestr, format):
 
     # Keywords without colon:
     for kw in keywords:
-        pattern = '^' + kw + ' +'
+        pattern = '(^' + kw + ' +)(.*)'
         cpattern = re.compile(pattern, re.MULTILINE)
-        matches = cpattern.findall(filestr)
+        matches = [keyword + rest for keyword, rest in cpattern.findall(filestr)]
         if matches:
             print '\n*** error: missing colon after %s specification' % kw
             print '\n'.join(matches)
