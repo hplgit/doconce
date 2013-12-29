@@ -378,6 +378,29 @@ source=%(filename)s
 %% #ifdef MOVIE_CONTROLS
 %%\mediabutton[mediacommand=%(label)s:playPause]{\fbox{\strut Play/Pause}}
 %% #endif""" % vars()
+        elif ext.lower() in ('.mp3',):
+            # Can use media9 package
+            text += r"""
+%% #if MOVIE == "media9"
+\includemedia[
+label=%(label)s,
+addresource=%(filename)s,  %% embed the video in the PDF
+flashvars={
+source=%(filename)s
+&autoPlay=true
+},
+transparent
+]{\framebox[0.5\linewidth[c]{\nolinkurl{%(filename)s}}}{APlayer9.swf}
+%% #else
+""" % vars()
+            if filename.startswith('http'):
+                # Just plain link
+                text += r'\href{%(filename)s}{\nolinkurl{%(filename)s}}' % vars()
+            else:
+                # \href{run:localfile}{linktext}
+                text += r'\href{run:%(filename)s}{\nolinkurl{%(filename)s}}' % vars()
+            text += '\n% #endif\n'
+
         elif ext.lower() in ('.mpg', '.mpeg', '.avi'):
             # Use old movie15 package which will launch a separate
             # player

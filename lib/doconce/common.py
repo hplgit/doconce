@@ -296,74 +296,34 @@ def ref2equations(filestr):
     return filestr
 
 def default_movie(m):
-    """Replace a movie entry by a proper URL with text."""
+    """
+    Replace a movie entry by a proper URL with text.
+    The idea is to link to an HTML file with the media element.
+    """
     # Note: essentially same code as html_movie
-    import os, glob
     global _counter_for_html_movie_player
-
     filename = m.group('filename')
-    options = m.group('options')
-    caption = m.group('caption')
+    caption = m.group('caption').strip()
+    from html import html_movie
+    text = html_movie(m)
 
-    # Turn options to dictionary
-    if ',' in options:
-        options = options.split(',')
-    else:
-        options = options.split()
-    kwargs = {}
-    for opt in options:
-        if opt.startswith('width') or opt.startswith('WIDTH'):
-            kwargs['width'] = int(opt.split('=')[1])
-        if opt.startswith('height') or opt.startswith('HEIGHT'):
-            kwargs['height'] = int(opt.split('=')[1])
-
-    if 'youtu.be' in filename:
-        filename = filename.replace('youtu.be', 'youtube.com')
-
-    if '*' in filename or '->' in filename:
-        # frame_*.png
-        # frame_%04d.png:0->120
-        # http://some.net/files/frame_%04d.png:0->120
-        import DocWriter
-        header, jscode, form, footer, frames = \
-            DocWriter.html_movie(filename, **kwargs)
-        _counter_for_html_movie_player += 1
-        moviehtml = 'movie_player%d' % _counter_for_html_movie_player + '.html'
-        f = open(moviehtml, 'w')
-        f.write(header + jscode + form + footer)
-        f.close()
-        print '*** made link to new HTML file %s\n    with code to display the movie\n    %s' % (moviehtml, filename)
-        text = """\n%s (Movie of files `%s` in URL:"%s")\n""" % \
-               (caption, filename, moviehtml)
-    elif 'youtube.com' in filename:
-        # Rename embedded files to ordinary YouTube
-        filename = filename.replace('embed/', 'watch?v=')
-        text = '%s URL:"%s"' % (caption, filename)
-    elif 'vimeo.com' in filename:
-        # Rename embedded files to ordinary Vimeo
-        filename = filename.replace('http://player.vimeo.com/video',
-                                    'http://vimeo.com')
-        text = '%s URL:"%s"' % (caption, filename)
-    else:
-        # Make an HTML file where the movie file can be played
-        # (alternative to launching a player manually)
-        _counter_for_html_movie_player += 1
-        moviehtml = 'movie_player%d' % \
-            _counter_for_html_movie_player + '.html'
-        f = open(moviehtml, 'w')
-        f.write("""
+    # Make an HTML file where the movie file can be played
+    # (alternative to launching a player manually)
+    _counter_for_html_movie_player += 1
+    moviehtml = 'movie_player%d' % \
+    _counter_for_html_movie_player + '.html'
+    f = open(moviehtml, 'w')
+    f.write("""
 <html>
 <body>
-<title>Embedding movie in HTML</title>
-   <embed src="%s" %s autoplay="false" loop="true"></embed>
-   <p>
-   <em>%s</em>
-   </p>
+<title>Embedding media in HTML</title>
+%s
 </body>
 </html>
-""" % (filename, ' '.join(options), caption))
-        print '*** made link to new HTML file %s\n    with code to display the movie \n    %s' % (moviehtml, filename)
-        text = '%s (Movie `%s`: play URL:"%s")' % (caption, filename, moviehtml)
+""" % text
+    print '*** made link to new HTML file %s\n    with code to display the movie \n    %s' % (moviehtml, filename)
+    text = '%s file: %s, load "`%s`" :"%s" into a browser' % \
+       (caption, filename, moviehtml, moviehtml)
     return text
 
 def begin_end_consistency_checks(filestr, envirs):

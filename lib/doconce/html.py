@@ -865,6 +865,12 @@ def html_movie(m):
 </div>
 <p><em>%(caption)s</em></p>
 """ % vars()
+        elif ext in ('.mp3', '.m4a',):
+            # Use HTML5 audio tag
+            text = """
+<audio src="%s"><p>Your browser does not support the audio element.</p>
+</audio>
+""" % filename
         else:
             # Old HTML embed tag
             autoplay = 'true' if autoplay else 'false'
