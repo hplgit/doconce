@@ -51,7 +51,8 @@ main_content_end = main_content_char*19 + ' end of main content ' + \
 
 def fix(filestr, format, verbose=0):
     """Fix issues with the text (correct wrong syntax)."""
-    # A special case: `!bc`, `!bt`, `!ec`, and `!et` at the beginning
+    # Fix a special case:
+    # `!bc`, `!bt`, `!ec`, and `!et` at the beginning
     # of a line gives wrong consistency checks for plaintext format,
     # so we avoid having these at the beginning of a line.
     if format == 'plain':
@@ -72,12 +73,15 @@ def fix(filestr, format, verbose=0):
     for fig in figs:
         caption = fig[3]
         if '\n' in caption.strip():   # multiline caption?
-            if not '!e' in caption:   # environments that end the figure...
+            # Allow environments to the figure,
+            # also drop editing if new lines are figures or movies
+            if not '!e' in caption and not 'FIGURE:' in caption \
+               and not 'MOVIE:' in caption:
                 caption1 = caption.replace('\n', ' ') + '\n'
                 filestr = filestr.replace(caption, caption1)
                 num_fixes += 1
                 if verbose > 0:
-                    print '\nFIX: multi-line caption\n\n%s\n-- fixed to one line' % caption
+                    print '\n*** warning: found multi-line %s caption\n\n%s\n    fix: collected this text to one single line (right?)' % (fig[1], caption)
 
     # Space before commands that should begin in 1st column at a line?
     commands = 'FIGURE MOVIE TITLE AUTHOR DATE TOC BIBFILE'.split()
@@ -96,7 +100,7 @@ def fix(filestr, format, verbose=0):
                 print lines
 
     if verbose and num_fixes:
-        print '\n*** The total of %d fixes above should be incorporated in the file!\n\n' % num_fixes
+        print '\n*** warning: the total of %d fixes above should be manually edited in the file!!\n    (also note: some fixes may not be what you want)\n' % num_fixes
     return filestr
 
 
