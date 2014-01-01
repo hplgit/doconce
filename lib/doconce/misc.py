@@ -5341,12 +5341,14 @@ def _latex2doconce(filestr):
         if lines[i].startswith('@@@CODE'):
             # Translate ptex2tex CODE envir to doconce w/regex
             words = lines[i].split()
-            new_line = ' '.join(words[:2])  # command filename
-            new_line += ' fromto: '
-            from_, to_ = ' '.join(words[2:]).split('@')[:2]
-            new_line += re.escape(from_)  # regex in doconce
-            new_line += '@' + re.escape(to_)
-            new_line = new_line.replace(r'\ ', ' ').replace(r'\,', ',').replace(r'\:', ':')
+            new_line = ' '.join(words[:2])  # command filename, no space in name
+            if len(words) > 2:
+                new_line += ' fromto: '
+                from_, to_ = ' '.join(words[2:]).split('@')[:2]
+                from_, to_ = ' '.join(words[2:]).split('@')[:2]
+                new_line += re.escape(from_)  # regex in doconce
+                new_line += '@' + re.escape(to_)
+                new_line = new_line.replace(r'\ ', ' ').replace(r'\,', ',').replace(r'\:', ':')
             lines[i] = new_line
 
         # two types of lists (but not nested lists):

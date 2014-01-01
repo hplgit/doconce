@@ -320,7 +320,7 @@ def default_movie(m):
 %s
 </body>
 </html>
-""" % text
+""" % text)
     print '*** made link to new HTML file %s\n    with code to display the movie \n    %s' % (moviehtml, filename)
     text = '%s file: %s, load "`%s`" :"%s" into a browser' % \
        (caption, filename, moviehtml, moviehtml)
