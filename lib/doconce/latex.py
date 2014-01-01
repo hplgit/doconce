@@ -282,20 +282,21 @@ def latex_movie(m):
         filename = filename.replace('youtu.be', 'youtube.com')
 
     def link_to_local_html_movie_player():
-        """Use simple solution where an HTML file is made for playing the movie."""
+        """Simple solution where an HTML file is made for playing the movie."""
         from common import default_movie
         text = default_movie(m)
 
         # URL to HTML viewer file must have absolute path in \href
-        html_viewer_file_pattern = r'Movie of files `.+` in URL:"(.+)"'
+        html_viewer_file_pattern = \
+             r'(.+?) `(.+?)`: load "`(.+?)`": "(.+?)" into a browser'
         m2 = re.search(html_viewer_file_pattern, text)
         if m2:
-            html_viewer_file = m2.group(1)
+            html_viewer_file = m2.group(4)
             if os.path.isfile(html_viewer_file):
                 html_viewer_file_abs = os.path.abspath(html_viewer_file)
-                text = text.replace('URL:"%s"' % html_viewer_file,
-                                    'URL:"file://%s"' % html_viewer_file_abs)
-        return text
+                text = text.replace(': "%s"' % html_viewer_file,
+                                    ': "file://%s"' % html_viewer_file_abs)
+        return '\n' + text + '\n'
 
     # Do not typeset movies in figure environments since Doconce documents
     # assume inline movies

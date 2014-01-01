@@ -300,7 +300,9 @@ def default_movie(m):
     Replace a movie entry by a proper URL with text.
     The idea is to link to an HTML file with the media element.
     """
-    # Note: essentially same code as html_movie
+    # Note: essentially same code as html_movie, but
+    # the HTML code is embedded in a file.
+
     global _counter_for_html_movie_player
     filename = m.group('filename')
     caption = m.group('caption').strip()
@@ -308,13 +310,15 @@ def default_movie(m):
     text = html_movie(m)
 
     # Make an HTML file where the movie file can be played
-    # (alternative to launching a player manually)
+    # (alternative to launching a player manually).
     _counter_for_html_movie_player += 1
     moviehtml = 'movie_player%d' % \
     _counter_for_html_movie_player + '.html'
     f = open(moviehtml, 'w')
     f.write("""
 <html>
+<head>
+</head>
 <body>
 <title>Embedding media in HTML</title>
 %s
@@ -322,7 +326,7 @@ def default_movie(m):
 </html>
 """ % text)
     print '*** made link to new HTML file %s\n    with code to display the movie \n    %s' % (moviehtml, filename)
-    text = '%s file: %s, load "`%s`" :"%s" into a browser' % \
+    text = '%s `%s`: load "`%s`": "%s" into a browser' % \
        (caption, filename, moviehtml, moviehtml)
     return text
 

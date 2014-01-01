@@ -85,7 +85,7 @@ def fix(filestr, format, verbose=0):
                 filestr = filestr.replace(caption, caption1)
                 num_fixes += 1
                 if verbose > 0:
-                    print '\n*** warning: found multi-line %s caption\n\n%s\n    fix: collected this text to one single line (right?)' % (fig[1], caption)
+                    print '\n*** warning: found multi-line caption for %s\n\n%s\n    fix: collected this text to one single line (right?)' % (fig[1], caption)
 
     # Space before commands that should begin in 1st column at a line?
     commands = 'FIGURE MOVIE TITLE AUTHOR DATE TOC BIBFILE'.split()

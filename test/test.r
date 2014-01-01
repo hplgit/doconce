@@ -30150,7 +30150,7 @@ for admon_tp in $admon_tps; do
 system doconce format pdflatex admon --latex_admon=$admon_tp
 doconce ptex2tex admon envir=minted
 cp admon.tex admon_${admon_tp}.tex
-pdflatex -shell-escape admon_${admon_tp}
+system pdflatex -shell-escape admon_${admon_tp}
 done
 
 system doconce format html admon --html_admon=lyx --html_style=blueish2
@@ -30203,14 +30203,14 @@ cp movies.html movie_demo
 rm -f $name.aux
 system doconce format pdflatex $name
 system doconce ptex2tex $name -DMOVIE=media9
-pdflatex $name
+system pdflatex $name
 pdflatex $name
 cp $name.pdf movie_demo/${name}_media9.pdf
 cp $name.tex ${name}_media9.tex
 
 system doconce format pdflatex $name
 system doconce ptex2tex $name -DMOVIE=media9 -DEXTERNAL_MOVIE_VIEWER
-pdflatex $name
+system pdflatex $name
 cp $name.pdf movie_demo/${name}_media9_extviewer.pdf
 
 # multimedia (beamer \movie command) does not work well
@@ -54090,7 +54090,7 @@ Here is the same collection, but with images in cyberspace, given as URLs:
 http://hplgit.github.io/animate/..../frame_%04d.png:80->129
 !ec
 
-MOVIE: [http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_%04d.png:80->129]
+MOVIE: [http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_%04d.png:80->129] Taking images to animate from cyberspace.
 
 The movie above in MPEG format, typeset in a box:
 
@@ -54782,6 +54782,9 @@ function faster_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame
 
 <p><div ID="progress"></div></p>
 <img src="http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0080.png" name="name_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080" border=2/>
+
+<br><em>Taking images to animate from cyberspace.</em><br>
+
 
 
 <p>
@@ -55521,6 +55524,9 @@ function faster_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame
 
 <p><div ID="progress"></div></p>
 <img src="http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0080.png" name="name_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080" border=2/>
+
+<br><em>Taking images to animate from cyberspace.</em><br>
+
 
 
 <p>
@@ -56264,7 +56270,11 @@ http://hplgit.github.io/animate/..../frame_%04d.png:80->129
 \begin{doconce:movie}
 \refstepcounter{doconce:movie:counter}
 \begin{center}
- (Movie of files \code{http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_%04d.png:80->129} in \href{{file:///home/hpl/vc/doconce/test/movie_player1.html}}{\nolinkurl{file:///home/hpl/vc/doconce/test/movie_player1.html}})
+Taking images to animate from cyberspace. \code{http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_%04d.png:80->129}: load \href{{file:///home/hpl/vc/doconce/test/movie_player1.html}}{\nolinkurl{movie_player1.html}} into a browser
+\end{center}
+
+\begin{center}  % movie caption
+Movie \arabic{doconce:movie:counter}: Taking images to animate from cyberspace.
 \end{center}
 \end{doconce:movie}
 
@@ -56743,7 +56753,11 @@ http://hplgit.github.io/animate/..../frame_%04d.png:80->129
 \begin{doconce:movie}
 \refstepcounter{doconce:movie:counter}
 \begin{center}
- (Movie of files \Verb!http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_%04d.png:80->129! in \href{{file:///home/hpl/vc/doconce/test/movie_player1.html}}{\nolinkurl{file:///home/hpl/vc/doconce/test/movie_player1.html}})
+Taking images to animate from cyberspace. \Verb!http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_%04d.png:80->129!: load \href{{file:///home/hpl/vc/doconce/test/movie_player1.html}}{\nolinkurl{movie_player1.html}} into a browser
+\end{center}
+
+\begin{center}  % movie caption
+Movie \arabic{doconce:movie:counter}: Taking images to animate from cyberspace.
 \end{center}
 \end{doconce:movie}
 
@@ -57165,7 +57179,11 @@ http://hplgit.github.io/animate/..../frame_%04d.png:80->129
 \begin{doconce:movie}
 \refstepcounter{doconce:movie:counter}
 \begin{center}
- (Movie of files \Verb!http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_%04d.png:80->129! in \href{{file:///home/hpl/vc/doconce/test/movie_player1.html}}{\nolinkurl{file:///home/hpl/vc/doconce/test/movie_player1.html}})
+Taking images to animate from cyberspace. \Verb!http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_%04d.png:80->129!: load \href{{file:///home/hpl/vc/doconce/test/movie_player1.html}}{\nolinkurl{movie_player1.html}} into a browser
+\end{center}
+
+\begin{center}  % movie caption
+Movie \arabic{doconce:movie:counter}: Taking images to animate from cyberspace.
 \end{center}
 \end{doconce:movie}
 
@@ -57301,26 +57319,24 @@ Date: Jan 32, 2100
 
 Here is a movie in WebM format.
 
- 1D wave in WebM. (Movie ../doc/src/manual/mov/wave.webm: play movie_player1.html)
+1D wave in WebM. ../doc/src/manual/mov/wave.webm: load movie_player1.html (movie_player1.html) into a browser
 
 Here is the same movie in Ogg format:
 
- 1D wave in Ogg. (Movie ../doc/src/manual/mov/wave.ogg: play movie_player2.html)
+1D wave in Ogg. ../doc/src/manual/mov/wave.ogg: load movie_player2.html (movie_player2.html) into a browser
 
 Here is the same movie in MP4 format:
 
- 1D wave in MP4. (Movie ../doc/src/manual/mov/wave.mp4: play movie_player3.html)
+1D wave in MP4. ../doc/src/manual/mov/wave.mp4: load movie_player3.html (movie_player3.html) into a browser
 
 Here is the same movie in Flash format:
 
- 1D wave in Flash. (Movie ../doc/src/manual/mov/wave.flv: play movie_player4.html)
+1D wave in Flash. ../doc/src/manual/mov/wave.flv: load movie_player4.html (movie_player4.html) into a browser
 
 And here is a collection of images shown as an animation
 (frame_*.png):
 
-
- Animated collection of images. (Movie of files ../doc/src/manual/mov/wave_frames/frame_*.png in movie_player5.html)
-
+Animated collection of images. ../doc/src/manual/mov/wave_frames/frame_*.png: load movie_player5.html (movie_player5.html) into a browser
 
 Here is the same collection, but with images in cyberspace, given as URLs::
 
@@ -57328,33 +57344,31 @@ Here is the same collection, but with images in cyberspace, given as URLs::
         http://hplgit.github.io/animate/..../frame_%04d.png:80->129
 
 
-
- (Movie of files http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_%04d.png:80->129 in movie_player6.html)
-
+Taking images to animate from cyberspace. http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_%04d.png:80->129: load movie_player6.html (movie_player6.html) into a browser
 
 The movie above in MPEG format, typeset in a box:
 
 
-|-------------------------------------------------------------------------------------|
-|  1D wave in MPEG.  (Movie ../doc/src/manual/mov/wave.mpeg: play movie_player7.html) |
-|-------------------------------------------------------------------------------------|
+|---------------------------------------------------------------------------------------------------------------|
+| 1D wave in MPEG. ../doc/src/manual/mov/wave.mpeg: load movie_player7.html (movie_player7.html) into a browser |
+|---------------------------------------------------------------------------------------------------------------|
 
 
 Here is the same movie in AVI format:
 
- 1D wave in AVI. (Movie ../doc/src/manual/mov/wave.avi: play movie_player8.html)
+1D wave in AVI. ../doc/src/manual/mov/wave.avi: load movie_player8.html (movie_player8.html) into a browser
 
 Here is the same movie, but with a URL to GitHub:
 
- (Movie http://hplgit.github.io/animate/doc/pub/mov-animate/demo.ogg: play movie_player9.html)
+ http://hplgit.github.io/animate/doc/pub/mov-animate/demo.ogg: load movie_player9.html (movie_player9.html) into a browser
 
 Here is a YouTube video:
 
- YouTube movie. http://www.youtube.com/watch?v=_O7iUiftbKU
+YouTube movie. http://www.youtube.com/watch?v=_O7iUiftbKU: load movie_player10.html (movie_player10.html) into a browser
 
 And a vimeo video:
 
- Vimeo movie. http://vimeo.com/55562330
+Vimeo movie. http://vimeo.com/55562330: load movie_player11.html (movie_player11.html) into a browser
 
 
 Finally, let us demonstrate referencing the movie ref{mov:wave}.
@@ -57362,20 +57376,24 @@ Finally, let us demonstrate referencing the movie ref{mov:wave}.
 ************** File: movie_player4.html *****************
 
 <html>
+<head>
+</head>
 <body>
-<title>Embedding movie in HTML</title>
-   <embed src="../doc/src/manual/mov/wave.flv" width=700 height=400 autoplay="false" loop="true"></embed>
-   <p>
-   <em> 1D wave in Flash.</em>
-   </p>
+<title>Embedding media in HTML</title>
+
+<embed src="../doc/src/manual/mov/wave.flv" width=700 height=400 autoplay="false" loop="true"></embed>
+<p><em>1D wave in Flash.</em></p>
+
 </body>
 </html>
 
 ************** File: movie_player5.html *****************
+
 <html>
 <head>
 </head>
 <body>
+<title>Embedding media in HTML</title>
 
 <script language="Javascript">
 <!---
@@ -57637,14 +57655,19 @@ function faster____doc_src_manual_mov_wave_frames_frame_0080()
 <p><div ID="progress"></div></p>
 <img src="../doc/src/manual/mov/wave_frames/frame_0080.png" name="name____doc_src_manual_mov_wave_frames_frame_0080" border=2/>
 
+<br><em>Animated collection of images.</em><br>
+
+
 </body>
 </html>
 
 ************** File: movie_player6.html *****************
+
 <html>
 <head>
 </head>
 <body>
+<title>Embedding media in HTML</title>
 
 <script language="Javascript">
 <!---
@@ -57905,6 +57928,9 @@ function faster_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame
 
 <p><div ID="progress"></div></p>
 <img src="http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0080.png" name="name_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080" border=2/>
+
+<br><em>Taking images to animate from cyberspace.</em><br>
+
 
 </body>
 </html>
@@ -64858,7 +64884,7 @@ MOVIE: [http://vimeo.com/55562330, width=500 height=278] Vimeo movie.
 }}}
 The latter results in
 
- Vimeo movie. http://vimeo.com/55562330
+Vimeo movie. `http://vimeo.com/55562330`: load [movie_player1.html `movie_player1.html`] into a browser
 
 
 ==== Tables ====
@@ -65841,7 +65867,7 @@ MOVIE: [http://vimeo.com/55562330, width=500 height=278] Vimeo movie.
 </syntaxhighlight>
 The latter results in
 
- Vimeo movie. http://vimeo.com/55562330
+Vimeo movie. <code>http://vimeo.com/55562330</code>: load [movie_player1.html <code>movie_player1.html</code>] into a browser
 
 
 ==== Tables ====
@@ -66816,7 +66842,7 @@ MOVIE: [http://vimeo.com/55562330, width=500 height=278] Vimeo movie.
 }}}
 The latter results in
 
- Vimeo movie. [[http://vimeo.com/55562330]]
+Vimeo movie. {{{http://vimeo.com/55562330}}}: load [[movie_player1.html|{{{movie_player1.html}}}]] into a browser
 
 
 == Tables ==
@@ -67774,7 +67800,7 @@ and otherwise be represented by a link. The syntax is::
 
 The latter results in
 
- Vimeo movie. "http://vimeo.com/55562330":http://vimeo.com/55562330
+Vimeo movie. 'http://vimeo.com/55562330': load movie_player1.html:'movie_player1.html' into a browser
 
 
 Tables
@@ -68767,7 +68793,7 @@ and otherwise be represented by a link. The syntax is::
 
 The latter results in
 
- Vimeo movie. U{http://vimeo.com/55562330<http://vimeo.com/55562330>}
+Vimeo movie. C{http://vimeo.com/55562330}: load U{C{movie_player1.html}<movie_player1.html>} into a browser
 
 
 Tables
@@ -69804,7 +69830,7 @@ and otherwise be represented by a link. The syntax is::
 
 The latter results in
 
- Vimeo movie. http://vimeo.com/55562330
+Vimeo movie. http://vimeo.com/55562330: load movie_player1.html (movie_player1.html) into a browser
 
 
 Tables
@@ -71666,14 +71692,14 @@ running preprocess -DFORMAT=html -DDEVICE=screen  testdoc.do.txt > tmp_preproces
 running mako on tmp_preprocess__testdoc.do.txt to make tmp_mako__testdoc.do.txt
 translating doconce text in tmp_mako__testdoc.do.txt to html
 
-FIX: multi-line caption
+*** warning: found multi-line caption for ../doc/src/manual/fig/wave1D.png
 
  A long
 caption spanning
 several lines and containing verbatim words like `my_file_v1` and `my_file_v2`
 as well as math with subscript as in $t_{i+1}$. label{myfig}
 
--- fixed to one line
+    fix: collected this text to one single line (right?)
 
 FIX: FIGURE not at the beginning of the line - 1 fixes
  FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
@@ -71687,8 +71713,8 @@ FIX: !ehint not at the beginning of the line - 1 fixes
   !ehint
 
 
-*** The total of 4 fixes above should be incorporated in the file!
-
+*** warning: the total of 4 fixes above should be manually edited in the file!!
+    (also note: some fixes may not be what you want)
 
 copying from regex "subroutine" until end of file
      file: ../doc/src/manual/__testcode.f,  lines 3-16  (format: fcod)
@@ -71713,14 +71739,14 @@ running mako on tmp_preprocess__testdoc.do.txt to make tmp_mako__testdoc.do.txt
 mako variables: {'DEVICE': 'screen', 'SOMEVAR': True, 'FORMAT': 'html'}
 translating doconce text in tmp_mako__testdoc.do.txt to html
 
-FIX: multi-line caption
+*** warning: found multi-line caption for ../doc/src/manual/fig/wave1D.png
 
  A long
 caption spanning
 several lines and containing verbatim words like `my_file_v1` and `my_file_v2`
 as well as math with subscript as in $t_{i+1}$. label{myfig}
 
--- fixed to one line
+    fix: collected this text to one single line (right?)
 
 FIX: FIGURE not at the beginning of the line - 1 fixes
  FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
@@ -71734,8 +71760,8 @@ FIX: !ehint not at the beginning of the line - 1 fixes
   !ehint
 
 
-*** The total of 4 fixes above should be incorporated in the file!
-
+*** warning: the total of 4 fixes above should be manually edited in the file!!
+    (also note: some fixes may not be what you want)
 
 copying from regex "subroutine" until end of file
      file: ../doc/src/manual/__testcode.f,  lines 3-16  (format: fcod)
@@ -71782,14 +71808,14 @@ running mako on tmp_preprocess__testdoc.do.txt to make tmp_mako__testdoc.do.txt
 mako variables: {'DEVICE': 'screen', 'SOMEVAR': True, 'FORMAT': 'latex'}
 translating doconce text in tmp_mako__testdoc.do.txt to latex
 
-FIX: multi-line caption
+*** warning: found multi-line caption for ../doc/src/manual/fig/wave1D.png
 
  A long
 caption spanning
 several lines and containing verbatim words like `my_file_v1` and `my_file_v2`
 as well as math with subscript as in $t_{i+1}$. label{myfig}
 
--- fixed to one line
+    fix: collected this text to one single line (right?)
 
 FIX: FIGURE not at the beginning of the line - 1 fixes
  FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
@@ -71803,8 +71829,8 @@ FIX: !ehint not at the beginning of the line - 1 fixes
   !ehint
 
 
-*** The total of 4 fixes above should be incorporated in the file!
-
+*** warning: the total of 4 fixes above should be manually edited in the file!!
+    (also note: some fixes may not be what you want)
 
 copying from regex "subroutine" until end of file
      file: ../doc/src/manual/__testcode.f,  lines 3-16  (format: fcod)
@@ -71837,14 +71863,14 @@ running preprocess -DFORMAT=html -DDEVICE=screen  testdoc.do.txt > tmp_preproces
 running mako on tmp_preprocess__testdoc.do.txt to make tmp_mako__testdoc.do.txt
 translating doconce text in tmp_mako__testdoc.do.txt to html
 
-FIX: multi-line caption
+*** warning: found multi-line caption for ../doc/src/manual/fig/wave1D.png
 
  A long
 caption spanning
 several lines and containing verbatim words like `my_file_v1` and `my_file_v2`
 as well as math with subscript as in $t_{i+1}$. label{myfig}
 
--- fixed to one line
+    fix: collected this text to one single line (right?)
 
 FIX: FIGURE not at the beginning of the line - 1 fixes
  FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
@@ -71858,8 +71884,8 @@ FIX: !ehint not at the beginning of the line - 1 fixes
   !ehint
 
 
-*** The total of 4 fixes above should be incorporated in the file!
-
+*** warning: the total of 4 fixes above should be manually edited in the file!!
+    (also note: some fixes may not be what you want)
 
 copying from regex "subroutine" until end of file
      file: ../doc/src/manual/__testcode.f,  lines 3-16  (format: fcod)
@@ -71892,14 +71918,14 @@ running preprocess -DFORMAT=html -DDEVICE=screen  testdoc.do.txt > tmp_preproces
 running mako on tmp_preprocess__testdoc.do.txt to make tmp_mako__testdoc.do.txt
 translating doconce text in tmp_mako__testdoc.do.txt to html
 
-FIX: multi-line caption
+*** warning: found multi-line caption for ../doc/src/manual/fig/wave1D.png
 
  A long
 caption spanning
 several lines and containing verbatim words like `my_file_v1` and `my_file_v2`
 as well as math with subscript as in $t_{i+1}$. label{myfig}
 
--- fixed to one line
+    fix: collected this text to one single line (right?)
 
 FIX: FIGURE not at the beginning of the line - 1 fixes
  FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
@@ -71913,8 +71939,8 @@ FIX: !ehint not at the beginning of the line - 1 fixes
   !ehint
 
 
-*** The total of 4 fixes above should be incorporated in the file!
-
+*** warning: the total of 4 fixes above should be manually edited in the file!!
+    (also note: some fixes may not be what you want)
 
 copying from regex "subroutine" until end of file
      file: ../doc/src/manual/__testcode.f,  lines 3-16  (format: fcod)
@@ -71950,14 +71976,14 @@ running preprocess -DFORMAT=html -DDEVICE=screen  testdoc.do.txt > tmp_preproces
 running mako on tmp_preprocess__testdoc.do.txt to make tmp_mako__testdoc.do.txt
 translating doconce text in tmp_mako__testdoc.do.txt to html
 
-FIX: multi-line caption
+*** warning: found multi-line caption for ../doc/src/manual/fig/wave1D.png
 
  A long
 caption spanning
 several lines and containing verbatim words like `my_file_v1` and `my_file_v2`
 as well as math with subscript as in $t_{i+1}$. label{myfig}
 
--- fixed to one line
+    fix: collected this text to one single line (right?)
 
 FIX: FIGURE not at the beginning of the line - 1 fixes
  FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
@@ -71971,8 +71997,8 @@ FIX: !ehint not at the beginning of the line - 1 fixes
   !ehint
 
 
-*** The total of 4 fixes above should be incorporated in the file!
-
+*** warning: the total of 4 fixes above should be manually edited in the file!!
+    (also note: some fixes may not be what you want)
 
 copying from regex "subroutine" until end of file
      file: ../doc/src/manual/__testcode.f,  lines 3-16  (format: fcod)
@@ -72018,14 +72044,14 @@ running mako on tmp_preprocess__testdoc.do.txt to make tmp_mako__testdoc.do.txt
 mako variables: {'DEVICE': 'screen', 'SOMEVAR': True, 'FORMAT': 'latex'}
 translating doconce text in tmp_mako__testdoc.do.txt to latex
 
-FIX: multi-line caption
+*** warning: found multi-line caption for ../doc/src/manual/fig/wave1D.png
 
  A long
 caption spanning
 several lines and containing verbatim words like `my_file_v1` and `my_file_v2`
 as well as math with subscript as in $t_{i+1}$. label{myfig}
 
--- fixed to one line
+    fix: collected this text to one single line (right?)
 
 FIX: FIGURE not at the beginning of the line - 1 fixes
  FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
@@ -72039,8 +72065,8 @@ FIX: !ehint not at the beginning of the line - 1 fixes
   !ehint
 
 
-*** The total of 4 fixes above should be incorporated in the file!
-
+*** warning: the total of 4 fixes above should be manually edited in the file!!
+    (also note: some fixes may not be what you want)
 
 copying from regex "subroutine" until end of file
      file: ../doc/src/manual/__testcode.f,  lines 3-16  (format: fcod)
@@ -72087,14 +72113,14 @@ running preprocess -DFORMAT=pdflatex -DDEVICE=paper  testdoc.do.txt > tmp_prepro
 running mako on tmp_preprocess__testdoc.do.txt to make tmp_mako__testdoc.do.txt
 translating doconce text in tmp_mako__testdoc.do.txt to pdflatex
 
-FIX: multi-line caption
+*** warning: found multi-line caption for ../doc/src/manual/fig/wave1D.png
 
  A long
 caption spanning
 several lines and containing verbatim words like `my_file_v1` and `my_file_v2`
 as well as math with subscript as in $t_{i+1}$. label{myfig}
 
--- fixed to one line
+    fix: collected this text to one single line (right?)
 
 FIX: FIGURE not at the beginning of the line - 1 fixes
  FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
@@ -72108,8 +72134,8 @@ FIX: !ehint not at the beginning of the line - 1 fixes
   !ehint
 
 
-*** The total of 4 fixes above should be incorporated in the file!
-
+*** warning: the total of 4 fixes above should be manually edited in the file!!
+    (also note: some fixes may not be what you want)
 
 copying from regex "subroutine" until end of file
      file: ../doc/src/manual/__testcode.f,  lines 3-16  (format: fcod)
@@ -74644,14 +74670,14 @@ running mako on tmp_preprocess__testdoc.do.txt to make tmp_mako__testdoc.do.txt
 mako variables: {'DEVICE': 'screen', 'SOMEVAR': 1, 'FORMAT': 'plain'}
 translating doconce text in tmp_mako__testdoc.do.txt to plain
 
-FIX: multi-line caption
+*** warning: found multi-line caption for ../doc/src/manual/fig/wave1D.png
 
  A long
 caption spanning
 several lines and containing verbatim words like `my_file_v1` and `my_file_v2`
 as well as math with subscript as in $t_{i+1}$. label{myfig}
 
--- fixed to one line
+    fix: collected this text to one single line (right?)
 
 FIX: FIGURE not at the beginning of the line - 1 fixes
  FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
@@ -74665,8 +74691,8 @@ FIX: !ehint not at the beginning of the line - 1 fixes
   !ehint
 
 
-*** The total of 4 fixes above should be incorporated in the file!
-
+*** warning: the total of 4 fixes above should be manually edited in the file!!
+    (also note: some fixes may not be what you want)
 
 copying from regex "subroutine" until end of file
      file: ../doc/src/manual/__testcode.f,  lines 3-16  (format: fcod)
@@ -74686,14 +74712,14 @@ running preprocess -DFORMAT=st -DDEVICE=screen  testdoc.do.txt > tmp_preprocess_
 running mako on tmp_preprocess__testdoc.do.txt to make tmp_mako__testdoc.do.txt
 translating doconce text in tmp_mako__testdoc.do.txt to st
 
-FIX: multi-line caption
+*** warning: found multi-line caption for ../doc/src/manual/fig/wave1D.png
 
  A long
 caption spanning
 several lines and containing verbatim words like `my_file_v1` and `my_file_v2`
 as well as math with subscript as in $t_{i+1}$. label{myfig}
 
--- fixed to one line
+    fix: collected this text to one single line (right?)
 
 FIX: FIGURE not at the beginning of the line - 1 fixes
  FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
@@ -74707,8 +74733,8 @@ FIX: !ehint not at the beginning of the line - 1 fixes
   !ehint
 
 
-*** The total of 4 fixes above should be incorporated in the file!
-
+*** warning: the total of 4 fixes above should be manually edited in the file!!
+    (also note: some fixes may not be what you want)
 
 copying from regex "subroutine" until end of file
      file: ../doc/src/manual/__testcode.f,  lines 3-16  (format: fcod)
@@ -74728,14 +74754,14 @@ running preprocess -DFORMAT=sphinx -DDEVICE=screen  testdoc.do.txt > tmp_preproc
 running mako on tmp_preprocess__testdoc.do.txt to make tmp_mako__testdoc.do.txt
 translating doconce text in tmp_mako__testdoc.do.txt to sphinx
 
-FIX: multi-line caption
+*** warning: found multi-line caption for ../doc/src/manual/fig/wave1D.png
 
  A long
 caption spanning
 several lines and containing verbatim words like `my_file_v1` and `my_file_v2`
 as well as math with subscript as in $t_{i+1}$. label{myfig}
 
--- fixed to one line
+    fix: collected this text to one single line (right?)
 
 FIX: FIGURE not at the beginning of the line - 1 fixes
  FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
@@ -74749,8 +74775,8 @@ FIX: !ehint not at the beginning of the line - 1 fixes
   !ehint
 
 
-*** The total of 4 fixes above should be incorporated in the file!
-
+*** warning: the total of 4 fixes above should be manually edited in the file!!
+    (also note: some fixes may not be what you want)
 
 
 *** warning:
@@ -74801,14 +74827,14 @@ running preprocess -DFORMAT=sphinx -DDEVICE=screen  testdoc.do.txt > tmp_preproc
 running mako on tmp_preprocess__testdoc.do.txt to make tmp_mako__testdoc.do.txt
 translating doconce text in tmp_mako__testdoc.do.txt to sphinx
 
-FIX: multi-line caption
+*** warning: found multi-line caption for ../doc/src/manual/fig/wave1D.png
 
  A long
 caption spanning
 several lines and containing verbatim words like `my_file_v1` and `my_file_v2`
 as well as math with subscript as in $t_{i+1}$. label{myfig}
 
--- fixed to one line
+    fix: collected this text to one single line (right?)
 
 FIX: FIGURE not at the beginning of the line - 1 fixes
  FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
@@ -74822,8 +74848,8 @@ FIX: !ehint not at the beginning of the line - 1 fixes
   !ehint
 
 
-*** The total of 4 fixes above should be incorporated in the file!
-
+*** warning: the total of 4 fixes above should be manually edited in the file!!
+    (also note: some fixes may not be what you want)
 
 
 *** warning:
@@ -74944,14 +74970,14 @@ running preprocess -DFORMAT=rst -DDEVICE=screen  testdoc.do.txt > tmp_preprocess
 running mako on tmp_preprocess__testdoc.do.txt to make tmp_mako__testdoc.do.txt
 translating doconce text in tmp_mako__testdoc.do.txt to rst
 
-FIX: multi-line caption
+*** warning: found multi-line caption for ../doc/src/manual/fig/wave1D.png
 
  A long
 caption spanning
 several lines and containing verbatim words like `my_file_v1` and `my_file_v2`
 as well as math with subscript as in $t_{i+1}$. label{myfig}
 
--- fixed to one line
+    fix: collected this text to one single line (right?)
 
 FIX: FIGURE not at the beginning of the line - 1 fixes
  FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
@@ -74965,8 +74991,8 @@ FIX: !ehint not at the beginning of the line - 1 fixes
   !ehint
 
 
-*** The total of 4 fixes above should be incorporated in the file!
-
+*** warning: the total of 4 fixes above should be manually edited in the file!!
+    (also note: some fixes may not be what you want)
 
 copying from regex "subroutine" until end of file
      file: ../doc/src/manual/__testcode.f,  lines 3-16  (format: fcod)
@@ -74989,14 +75015,14 @@ running preprocess -DFORMAT=epytext -DDEVICE=screen  testdoc.do.txt > tmp_prepro
 running mako on tmp_preprocess__testdoc.do.txt to make tmp_mako__testdoc.do.txt
 translating doconce text in tmp_mako__testdoc.do.txt to epytext
 
-FIX: multi-line caption
+*** warning: found multi-line caption for ../doc/src/manual/fig/wave1D.png
 
  A long
 caption spanning
 several lines and containing verbatim words like `my_file_v1` and `my_file_v2`
 as well as math with subscript as in $t_{i+1}$. label{myfig}
 
--- fixed to one line
+    fix: collected this text to one single line (right?)
 
 FIX: FIGURE not at the beginning of the line - 1 fixes
  FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
@@ -75010,8 +75036,8 @@ FIX: !ehint not at the beginning of the line - 1 fixes
   !ehint
 
 
-*** The total of 4 fixes above should be incorporated in the file!
-
+*** warning: the total of 4 fixes above should be manually edited in the file!!
+    (also note: some fixes may not be what you want)
 
 copying from regex "subroutine" until end of file
      file: ../doc/src/manual/__testcode.f,  lines 3-16  (format: fcod)
@@ -75031,14 +75057,14 @@ running preprocess -DFORMAT=pandoc -DDEVICE=screen  testdoc.do.txt > tmp_preproc
 running mako on tmp_preprocess__testdoc.do.txt to make tmp_mako__testdoc.do.txt
 translating doconce text in tmp_mako__testdoc.do.txt to pandoc
 
-FIX: multi-line caption
+*** warning: found multi-line caption for ../doc/src/manual/fig/wave1D.png
 
  A long
 caption spanning
 several lines and containing verbatim words like `my_file_v1` and `my_file_v2`
 as well as math with subscript as in $t_{i+1}$. label{myfig}
 
--- fixed to one line
+    fix: collected this text to one single line (right?)
 
 FIX: FIGURE not at the beginning of the line - 1 fixes
  FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
@@ -75052,8 +75078,8 @@ FIX: !ehint not at the beginning of the line - 1 fixes
   !ehint
 
 
-*** The total of 4 fixes above should be incorporated in the file!
-
+*** warning: the total of 4 fixes above should be manually edited in the file!!
+    (also note: some fixes may not be what you want)
 
 copying from regex "subroutine" until end of file
      file: ../doc/src/manual/__testcode.f,  lines 3-16  (format: fcod)
@@ -75084,14 +75110,14 @@ running preprocess -DFORMAT=mwiki -DDEVICE=screen  testdoc.do.txt > tmp_preproce
 running mako on tmp_preprocess__testdoc.do.txt to make tmp_mako__testdoc.do.txt
 translating doconce text in tmp_mako__testdoc.do.txt to mwiki
 
-FIX: multi-line caption
+*** warning: found multi-line caption for ../doc/src/manual/fig/wave1D.png
 
  A long
 caption spanning
 several lines and containing verbatim words like `my_file_v1` and `my_file_v2`
 as well as math with subscript as in $t_{i+1}$. label{myfig}
 
--- fixed to one line
+    fix: collected this text to one single line (right?)
 
 FIX: FIGURE not at the beginning of the line - 1 fixes
  FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
@@ -75105,8 +75131,8 @@ FIX: !ehint not at the beginning of the line - 1 fixes
   !ehint
 
 
-*** The total of 4 fixes above should be incorporated in the file!
-
+*** warning: the total of 4 fixes above should be manually edited in the file!!
+    (also note: some fixes may not be what you want)
 
 copying from regex "subroutine" until end of file
      file: ../doc/src/manual/__testcode.f,  lines 3-16  (format: fcod)
@@ -75148,14 +75174,14 @@ running preprocess -DFORMAT=cwiki -DDEVICE=screen  testdoc.do.txt > tmp_preproce
 running mako on tmp_preprocess__testdoc.do.txt to make tmp_mako__testdoc.do.txt
 translating doconce text in tmp_mako__testdoc.do.txt to cwiki
 
-FIX: multi-line caption
+*** warning: found multi-line caption for ../doc/src/manual/fig/wave1D.png
 
  A long
 caption spanning
 several lines and containing verbatim words like `my_file_v1` and `my_file_v2`
 as well as math with subscript as in $t_{i+1}$. label{myfig}
 
--- fixed to one line
+    fix: collected this text to one single line (right?)
 
 FIX: FIGURE not at the beginning of the line - 1 fixes
  FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
@@ -75169,8 +75195,8 @@ FIX: !ehint not at the beginning of the line - 1 fixes
   !ehint
 
 
-*** The total of 4 fixes above should be incorporated in the file!
-
+*** warning: the total of 4 fixes above should be manually edited in the file!!
+    (also note: some fixes may not be what you want)
 
 copying from regex "subroutine" until end of file
      file: ../doc/src/manual/__testcode.f,  lines 3-16  (format: fcod)
@@ -75193,14 +75219,14 @@ running preprocess -DFORMAT=ipynb -DDEVICE=screen  testdoc.do.txt > tmp_preproce
 running mako on tmp_preprocess__testdoc.do.txt to make tmp_mako__testdoc.do.txt
 translating doconce text in tmp_mako__testdoc.do.txt to ipynb
 
-FIX: multi-line caption
+*** warning: found multi-line caption for ../doc/src/manual/fig/wave1D.png
 
  A long
 caption spanning
 several lines and containing verbatim words like `my_file_v1` and `my_file_v2`
 as well as math with subscript as in $t_{i+1}$. label{myfig}
 
--- fixed to one line
+    fix: collected this text to one single line (right?)
 
 FIX: FIGURE not at the beginning of the line - 1 fixes
  FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
@@ -75214,8 +75240,8 @@ FIX: !ehint not at the beginning of the line - 1 fixes
   !ehint
 
 
-*** The total of 4 fixes above should be incorporated in the file!
-
+*** warning: the total of 4 fixes above should be manually edited in the file!!
+    (also note: some fixes may not be what you want)
 
 copying from regex "subroutine" until end of file
      file: ../doc/src/manual/__testcode.f,  lines 3-16  (format: fcod)
@@ -75239,14 +75265,14 @@ running mako on tmp_preprocess__testdoc.do.txt to make tmp_mako__testdoc.do.txt
 mako variables: {'DEVICE': 'screen', 'MYVAR1': 3, 'MYVAR2': 'a string', 'FORMAT': 'gwiki'}
 translating doconce text in tmp_mako__testdoc.do.txt to gwiki
 
-FIX: multi-line caption
+*** warning: found multi-line caption for ../doc/src/manual/fig/wave1D.png
 
  A long
 caption spanning
 several lines and containing verbatim words like `my_file_v1` and `my_file_v2`
 as well as math with subscript as in $t_{i+1}$. label{myfig}
 
--- fixed to one line
+    fix: collected this text to one single line (right?)
 
 FIX: FIGURE not at the beginning of the line - 1 fixes
  FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
@@ -75260,8 +75286,8 @@ FIX: !ehint not at the beginning of the line - 1 fixes
   !ehint
 
 
-*** The total of 4 fixes above should be incorporated in the file!
-
+*** warning: the total of 4 fixes above should be manually edited in the file!!
+    (also note: some fixes may not be what you want)
 
 copying from regex "subroutine" until end of file
      file: ../doc/src/manual/__testcode.f,  lines 3-16  (format: fcod)
@@ -75329,14 +75355,14 @@ running preprocess -DFORMAT=latex -DDEVICE=screen  testdoc.do.txt > tmp_preproce
 running mako on tmp_preprocess__testdoc.do.txt to make tmp_mako__testdoc.do.txt
 translating doconce text in tmp_mako__testdoc.do.txt to latex
 
-FIX: multi-line caption
+*** warning: found multi-line caption for ../doc/src/manual/fig/wave1D.png
 
  A long
 caption spanning
 several lines and containing verbatim words like `my_file_v1` and `my_file_v2`
 as well as math with subscript as in $t_{i+1}$. label{myfig}
 
--- fixed to one line
+    fix: collected this text to one single line (right?)
 
 FIX: FIGURE not at the beginning of the line - 1 fixes
  FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
@@ -75350,8 +75376,8 @@ FIX: !ehint not at the beginning of the line - 1 fixes
   !ehint
 
 
-*** The total of 4 fixes above should be incorporated in the file!
-
+*** warning: the total of 4 fixes above should be manually edited in the file!!
+    (also note: some fixes may not be what you want)
 
 copying from regex "subroutine" until end of file
      file: ../doc/src/manual/__testcode.f,  lines 3-16  (format: fcod)
@@ -75406,14 +75432,14 @@ running preprocess -DFORMAT=pandoc -DDEVICE=screen  testdoc.do.txt > tmp_preproc
 running mako on tmp_preprocess__testdoc.do.txt to make tmp_mako__testdoc.do.txt
 translating doconce text in tmp_mako__testdoc.do.txt to pandoc
 
-FIX: multi-line caption
+*** warning: found multi-line caption for ../doc/src/manual/fig/wave1D.png
 
  A long
 caption spanning
 several lines and containing verbatim words like `my_file_v1` and `my_file_v2`
 as well as math with subscript as in $t_{i+1}$. label{myfig}
 
--- fixed to one line
+    fix: collected this text to one single line (right?)
 
 FIX: FIGURE not at the beginning of the line - 1 fixes
  FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
@@ -75427,8 +75453,8 @@ FIX: !ehint not at the beginning of the line - 1 fixes
   !ehint
 
 
-*** The total of 4 fixes above should be incorporated in the file!
-
+*** warning: the total of 4 fixes above should be manually edited in the file!!
+    (also note: some fixes may not be what you want)
 
 copying from regex "subroutine" until end of file
      file: ../doc/src/manual/__testcode.f,  lines 3-16  (format: fcod)
@@ -76139,6 +76165,7 @@ output in admon.p.tex
 \bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
 output in admon.tex
 + cp admon.tex admon_colors1.tex
++ system pdflatex -shell-escape admon_colors1
 + pdflatex -shell-escape admon_colors1
 This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
  \write18 enabled.
@@ -76420,6 +76447,7 @@ ts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/typ
 e1/public/amsfonts/cm/cmtt9.pfb>
 Output written on admon_colors1.pdf (6 pages, ).
 Transcript written on admon_colors1.log.
++ '[' 0 -ne 0 ']'
 + for admon_tp in '$admon_tps'
 + system doconce format pdflatex admon --latex_admon=graybox1
 + doconce format pdflatex admon --latex_admon=graybox1
@@ -76436,6 +76464,7 @@ output in admon.p.tex
 \bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
 output in admon.tex
 + cp admon.tex admon_graybox1.tex
++ system pdflatex -shell-escape admon_graybox1
 + pdflatex -shell-escape admon_graybox1
 This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
  \write18 enabled.
@@ -76868,6 +76897,7 @@ b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr
 /texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
 Output written on admon_graybox1.pdf (6 pages, ).
 Transcript written on admon_graybox1.log.
++ '[' 0 -ne 0 ']'
 + for admon_tp in '$admon_tps'
 + system doconce format pdflatex admon --latex_admon=paragraph
 + doconce format pdflatex admon --latex_admon=paragraph
@@ -76884,6 +76914,7 @@ output in admon.p.tex
 \bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
 output in admon.tex
 + cp admon.tex admon_paragraph.tex
++ system pdflatex -shell-escape admon_paragraph
 + pdflatex -shell-escape admon_paragraph
 This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
  \write18 enabled.
@@ -77247,6 +77278,7 @@ b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr
 /texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
 Output written on admon_paragraph.pdf (5 pages, ).
 Transcript written on admon_paragraph.log.
++ '[' 0 -ne 0 ']'
 + for admon_tp in '$admon_tps'
 + system doconce format pdflatex admon --latex_admon=graybox2
 + doconce format pdflatex admon --latex_admon=graybox2
@@ -77263,6 +77295,7 @@ output in admon.p.tex
 \bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
 output in admon.tex
 + cp admon.tex admon_graybox2.tex
++ system pdflatex -shell-escape admon_graybox2
 + pdflatex -shell-escape admon_graybox2
 This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
  \write18 enabled.
@@ -77693,6 +77726,7 @@ b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr
 /texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
 Output written on admon_graybox2.pdf (6 pages, ).
 Transcript written on admon_graybox2.log.
++ '[' 0 -ne 0 ']'
 + for admon_tp in '$admon_tps'
 + system doconce format pdflatex admon --latex_admon=yellowbox
 + doconce format pdflatex admon --latex_admon=yellowbox
@@ -77709,6 +77743,7 @@ output in admon.p.tex
 \bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
 output in admon.tex
 + cp admon.tex admon_yellowbox.tex
++ system pdflatex -shell-escape admon_yellowbox
 + pdflatex -shell-escape admon_yellowbox
 This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
  \write18 enabled.
@@ -77967,6 +78002,7 @@ ts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/typ
 e1/public/amsfonts/cm/cmtt9.pfb>
 Output written on admon_yellowbox.pdf (6 pages, ).
 Transcript written on admon_yellowbox.log.
++ '[' 0 -ne 0 ']'
 + for admon_tp in '$admon_tps'
 + system doconce format pdflatex admon --latex_admon=graybox3
 + doconce format pdflatex admon --latex_admon=graybox3
@@ -77983,6 +78019,7 @@ output in admon.p.tex
 \bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
 output in admon.tex
 + cp admon.tex admon_graybox3.tex
++ system pdflatex -shell-escape admon_graybox3
 + pdflatex -shell-escape admon_graybox3
 This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
  \write18 enabled.
@@ -78239,6 +78276,7 @@ ts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/typ
 e1/public/amsfonts/cm/cmtt9.pfb>
 Output written on admon_graybox3.pdf (6 pages, ).
 Transcript written on admon_graybox3.log.
++ '[' 0 -ne 0 ']'
 + for admon_tp in '$admon_tps'
 + system doconce format pdflatex admon --latex_admon=colors2
 + doconce format pdflatex admon --latex_admon=colors2
@@ -78255,6 +78293,7 @@ output in admon.p.tex
 \bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
 output in admon.tex
 + cp admon.tex admon_colors2.tex
++ system pdflatex -shell-escape admon_colors2
 + pdflatex -shell-escape admon_colors2
 This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
  \write18 enabled.
@@ -78508,6 +78547,7 @@ ts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/typ
 e1/public/amsfonts/cm/cmtt9.pfb>
 Output written on admon_colors2.pdf (6 pages, ).
 Transcript written on admon_colors2.log.
++ '[' 0 -ne 0 ']'
 + system doconce format html admon --html_admon=lyx --html_style=blueish2
 + doconce format html admon --html_admon=lyx --html_style=blueish2
 running preprocess -DFORMAT=html -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
@@ -78817,7 +78857,7 @@ output in movies.html
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  movies.do.txt > tmp_preprocess__movies.do.txt
 translating doconce text in tmp_preprocess__movies.do.txt to pdflatex
 *** made link to new HTML file movie_player1.html
-    with code to display the movie
+    with code to display the movie 
     http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_%04d.png:80->129
 output in movies.p.tex
 + '[' 0 -ne 0 ']'
@@ -78826,6 +78866,7 @@ output in movies.p.tex
 \bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
 output in movies.tex
 + '[' 0 -ne 0 ']'
++ system pdflatex movies
 + pdflatex movies
 This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
  restricted \write18 enabled.
@@ -79098,8 +79139,8 @@ mov/wave_frames/frame_0128.png> <a0,fr48>
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0129.png> <../doc/src/manual/
 mov/wave_frames/frame_0129.png> <a0,fr49> [1{/var/lib/texmf/fonts/map/pdftex/up
 dmap/pdftex.map}]
-Overfull \hbox (80.24629pt too wide) 
- [] 
+Overfull \hbox (81.57852pt too wide) 
+ []\OT1/cmr/m/n/10 (-20) : 
 
 
 
@@ -79319,6 +79360,7 @@ onts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
 m/cmtt9.pfb>
 Output written on movies.pdf (5 pages, ).
 Transcript written on movies.log.
++ '[' 0 -ne 0 ']'
 + pdflatex movies
 This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
  restricted \write18 enabled.
@@ -79592,8 +79634,8 @@ mov/wave_frames/frame_0128.png> <a0,fr48>
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0129.png> <../doc/src/manual/
 mov/wave_frames/frame_0129.png> <a0,fr49> [1{/var/lib/texmf/fonts/map/pdftex/up
 dmap/pdftex.map}]
-Overfull \hbox (80.24629pt too wide) 
- [] 
+Overfull \hbox (81.57852pt too wide) 
+ []\OT1/cmr/m/n/10 (-20) : 
 
 
 
@@ -79803,7 +79845,7 @@ Transcript written on movies.log.
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  movies.do.txt > tmp_preprocess__movies.do.txt
 translating doconce text in tmp_preprocess__movies.do.txt to pdflatex
 *** made link to new HTML file movie_player1.html
-    with code to display the movie
+    with code to display the movie 
     http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_%04d.png:80->129
 output in movies.p.tex
 + '[' 0 -ne 0 ']'
@@ -79812,6 +79854,7 @@ output in movies.p.tex
 \bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
 output in movies.tex
 + '[' 0 -ne 0 ']'
++ system pdflatex movies
 + pdflatex movies
 This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
  restricted \write18 enabled.
@@ -80085,8 +80128,8 @@ mov/wave_frames/frame_0128.png> <a0,fr48>
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0129.png> <../doc/src/manual/
 mov/wave_frames/frame_0129.png> <a0,fr49> [1{/var/lib/texmf/fonts/map/pdftex/up
 dmap/pdftex.map}]
-Overfull \hbox (80.24629pt too wide) 
- [] 
+Overfull \hbox (81.57852pt too wide) 
+ []\OT1/cmr/m/n/10 (-20) : 
 
 
 
@@ -80282,6 +80325,7 @@ onts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
 m/cmtt9.pfb>
 Output written on movies.pdf (5 pages, ).
 Transcript written on movies.log.
++ '[' 0 -ne 0 ']'
 + cp movies.pdf movie_demo/movies_media9_extviewer.pdf
 + rm -f movies.aux
 + system doconce format pdflatex movies
@@ -80289,7 +80333,7 @@ Transcript written on movies.log.
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  movies.do.txt > tmp_preprocess__movies.do.txt
 translating doconce text in tmp_preprocess__movies.do.txt to pdflatex
 *** made link to new HTML file movie_player1.html
-    with code to display the movie
+    with code to display the movie 
     http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_%04d.png:80->129
 output in movies.p.tex
 + '[' 0 -ne 0 ']'
@@ -80535,8 +80579,8 @@ mov/wave_frames/frame_0128.png> <a0,fr48>
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0129.png> <../doc/src/manual/
 mov/wave_frames/frame_0129.png> <a0,fr49> [1{/var/lib/texmf/fonts/map/pdftex/up
 dmap/pdftex.map}]
-Overfull \hbox (80.24629pt too wide) 
- [] 
+Overfull \hbox (81.57852pt too wide) 
+ []\OT1/cmr/m/n/10 (-20) : 
 [2]
 
 
@@ -80720,10 +80764,10 @@ translating doconce text in tmp_preprocess__movies.do.txt to plain
     with code to display the movie 
     ../doc/src/manual/mov/wave.flv
 *** made link to new HTML file movie_player5.html
-    with code to display the movie
+    with code to display the movie 
     ../doc/src/manual/mov/wave_frames/frame_*.png
 *** made link to new HTML file movie_player6.html
-    with code to display the movie
+    with code to display the movie 
     http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_%04d.png:80->129
 *** made link to new HTML file movie_player7.html
     with code to display the movie 
@@ -80731,9 +80775,18 @@ translating doconce text in tmp_preprocess__movies.do.txt to plain
 *** made link to new HTML file movie_player8.html
     with code to display the movie 
     ../doc/src/manual/mov/wave.avi
+... movie: trying to find http://hplgit.github.io/animate/doc/pub/mov-animate/demo.mp4 ... found!
+... movie: trying to find http://hplgit.github.io/animate/doc/pub/mov-animate/demo.webm ... found!
+... movie: trying to find http://hplgit.github.io/animate/doc/pub/mov-animate/demo.ogg ... found!
 *** made link to new HTML file movie_player9.html
     with code to display the movie 
     http://hplgit.github.io/animate/doc/pub/mov-animate/demo.ogg
+*** made link to new HTML file movie_player10.html
+    with code to display the movie 
+    http://www.youtube.com/watch?v=_O7iUiftbKU
+*** made link to new HTML file movie_player11.html
+    with code to display the movie 
+    http://vimeo.com/55562330
 output in movies.txt
 + '[' 0 -ne 0 ']'
 + system doconce guess_encoding encoding1.do.txt
@@ -82898,31 +82951,49 @@ Transcript written on quickref.rst.log.
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to plain
 copy complete file doconce_program.sh  (format: shpro)
+*** made link to new HTML file movie_player1.html
+    with code to display the movie 
+    http://vimeo.com/55562330
 output in quickref.txt
 + doconce format gwiki quickref --no_preprocess
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to gwiki
 copy complete file doconce_program.sh  (format: shpro)
+*** made link to new HTML file movie_player1.html
+    with code to display the movie 
+    http://vimeo.com/55562330
 output in quickref.gwiki
 + doconce format mwiki quickref --no_preprocess
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to mwiki
 copy complete file doconce_program.sh  (format: shpro)
+*** made link to new HTML file movie_player1.html
+    with code to display the movie 
+    http://vimeo.com/55562330
 output in quickref.mwiki
 + doconce format cwiki quickref --no_preprocess
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to cwiki
 copy complete file doconce_program.sh  (format: shpro)
+*** made link to new HTML file movie_player1.html
+    with code to display the movie 
+    http://vimeo.com/55562330
 output in quickref.cwiki
 + doconce format st quickref --no_preprocess
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to st
 copy complete file doconce_program.sh  (format: shpro)
+*** made link to new HTML file movie_player1.html
+    with code to display the movie 
+    http://vimeo.com/55562330
 output in quickref.st
 + doconce format epytext quickref --no_preprocess
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to epytext
 copy complete file doconce_program.sh  (format: shpro)
+*** made link to new HTML file movie_player1.html
+    with code to display the movie 
+    http://vimeo.com/55562330
 output in quickref.epytext
 + doconce format pandoc quickref --no_preprocess
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt

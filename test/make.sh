@@ -223,7 +223,7 @@ for admon_tp in $admon_tps; do
 system doconce format pdflatex admon --latex_admon=$admon_tp
 doconce ptex2tex admon envir=minted
 cp admon.tex admon_${admon_tp}.tex
-pdflatex -shell-escape admon_${admon_tp}
+system pdflatex -shell-escape admon_${admon_tp}
 done
 
 system doconce format html admon --html_admon=lyx --html_style=blueish2
@@ -276,14 +276,14 @@ cp movies.html movie_demo
 rm -f $name.aux
 system doconce format pdflatex $name
 system doconce ptex2tex $name -DMOVIE=media9
-pdflatex $name
+system pdflatex $name
 pdflatex $name
 cp $name.pdf movie_demo/${name}_media9.pdf
 cp $name.tex ${name}_media9.tex
 
 system doconce format pdflatex $name
 system doconce ptex2tex $name -DMOVIE=media9 -DEXTERNAL_MOVIE_VIEWER
-pdflatex $name
+system pdflatex $name
 cp $name.pdf movie_demo/${name}_media9_extviewer.pdf
 
 # multimedia (beamer \movie command) does not work well
