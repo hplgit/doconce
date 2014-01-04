@@ -977,7 +977,7 @@ cite{key}
 to refer to a publication with bibliographic key `key`.
 Here is an example: cite{Langtangen_Pedersen_2002} discussed propagation of
 large destructive water waves, cite{Langtangen_et_al_2002} gave
-an overview of numerical methods for solvin the Navier-Stokes equations,
+an overview of numerical methods for solving the Navier-Stokes equations,
 while the use of Backward Kolmogorov equations for analyzing
 random vibrations was investigated in cite{Langtangen_1994a}.
 The book chapter cite{Mardal_et_al_2003a} contains information on
@@ -985,6 +985,14 @@ C++ software tools for programming multigrid methods. A real retro
 reference is cite{Langtangen_1988d} about a big FORTRAN package.
 Multiple references are also possible, e.g., see
 cite{Langtangen_Pedersen_2002,Mardal_et_al_2003a}.
+
+A LaTeX-style cite command with additional detailed reference is also possible,
+
+!bc
+cite[details]{key}
+!ec
+for example as in cite[Section 2]{Langtangen_et_al_2002}
+or cite[Equation (4.2)]{Langtangen_et_al_2002}.
 
 In LaTeX, the `cite` command is directly translated to the
 corresponding LaTeX version of the command with a backslash; in reST
@@ -2248,7 +2256,8 @@ Even better, HTML output looks nice as well.
 
 Note that Doconce supports fancy environments for verbatim code via
 the `ptex2tex` program with all its flexibility for choosing environments.
-Also `doconce ptex2tex` has some flexibility for typesetting computer code.
+Also `doconce ptex2tex` has quite some flexibility for typesetting
+computer code.
 
 
 

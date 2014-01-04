@@ -1,6 +1,6 @@
 TITLE: A Document for Testing Doconce
-AUTHOR: Hans Petter Langtangen Email: hpl@simula.no at Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo
-AUTHOR: Kaare Dump at Segfault Inc, Cyberspace
+AUTHOR: Hans Petter Langtangen Email: hpl@simula.no at Center for Biomedical Computing, Simula Research Laboratory & Department of Informatics, University of Oslo
+AUTHOR: Kaare Dump at Segfault and Core Dump Inc, Cyberspace & Debugging Ltd
 AUTHOR: A. Dummy Author
 AUTHOR: I. S. Overworked at Inst1 and Inst2, Somewhere and Third Inst, Elsewhere and Fourth Inst
 AUTHOR: J. Doe mail: j_doe@cyberspace.com

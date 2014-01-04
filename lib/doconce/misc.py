@@ -101,10 +101,12 @@ inserted to the right in exercises - "default" and "none" are allowed
      'Upgrade all sections: sections to chapters, subsections to sections, etc.'),
     ('--sections_down',
      'Downgrade all sections: chapters to sections, sections to subsections, etc.'),
+    ('--code_prefix=',
+     'Prefix all @@@CODE imports with some path.'),
     ('--figure_prefix=',
-     'Prefix all figure filenames with, e.g., an URL'),
+     'Prefix all figure filenames with, e.g., an URL.'),
     ('--movie_prefix=',
-     'Prefix all movie filenames with, e.g., an URL'),
+     'Prefix all movie filenames with, e.g., an URL.'),
     ('--no_mp4_webm_ogg_alternatives',
      'Use just the specified (.mp4, .webm, .ogg) movie file; do not allow alternatives in HTML5 video tag. Used if the just the specified movie format should be played.'),
     ('--handout',
@@ -543,6 +545,82 @@ def replace_from_file():
                     text = text.replace(from_text, to_text)
                     replacements = True
         if replacements:
+            f = open(filename, 'w')
+            f.write(text)
+            f.close()
+
+def _usage_expand_mako():
+    print 'Usage: doconce expand_mnako mako_code_file.txt funcname mydoc.do.txt'
+
+# This replacement function for re.sub must be global since expand_mako,
+# where it is used, has an exec statement
+
+def expand_mako():
+    if len(sys.argv) < 4:
+        _usage_expand_mako()
+        sys.exit(1)
+
+    mako_filename = sys.argv[1]
+    funcname = sys.argv[2]
+    filenames = wildcard_notation(sys.argv[3:])
+
+    # Get mako function code
+    f = open(mako_filename, 'r')
+    mako_text = f.read()
+    f.close()
+    func_lines = []
+    inside_func = False
+    for line in mako_text.splitlines():
+        if re.search(r'^\s*def\s+%s' % funcname, line):  # starts with funcname?
+            inside_func = True
+            func_lines.append(line)
+        elif inside_func:
+            if line == '' or line[0] == ' ':  # indented line?
+                func_lines.append(line)
+            else:
+                inside_func = False
+
+    funcname_text = '\n'.join(func_lines)
+    print 'Extracted function %s from %s:\n' % (funcname, mako_filename), funcname_text
+    print func_lines
+    try:
+        exec(funcname_text)
+    except Exception as e:
+        print '*** error: could not turn function code into a Python function'
+        print e
+        _abort()
+        # Note: if funcname has FORMAT tests the exec will fail, but
+        # one can make an alternative version of funcname in another file
+        # where one returns preprocess # #if FORMAT in ... statements
+        # in the returned text.
+
+    # Substitute ${funcname(..., ..., ...)}
+    pattern = r'(\$\{(%(funcname)s\s*\(.+?\))\})' % vars()
+
+    for filename in filenames:
+        # Just the filestem without .do.txt is allowed
+        if not filename.endswith('.do.txt'):
+            filename += '.do.txt'
+        if not os.path.isfile(filename):
+            print '*** error: file %s does not exist!' % filename
+            continue
+        f = open(filename, 'r')
+        text = f.read()
+        f.close()
+        m = re.search(pattern, text, flags=re.DOTALL)
+        if m:
+            backup_filename = filename + '.old~~'
+            shutil.copy(filename, backup_filename)
+            print 'expanding mako function %s in' % funcname, filename
+            calls = re.findall(pattern, text, flags=re.DOTALL)
+            for mako_call, python_call in calls:
+                try:
+                    replacement = eval(python_call)
+                except Exception as e:
+                    print '*** error: could not run call\n%s' % python_call
+                    _abort()
+                text = text.replace(mako_call, replacement)
+
             f = open(filename, 'w')
             f.write(text)
             f.close()
@@ -5129,52 +5207,55 @@ def _latex2doconce(filestr):
 
     subst = [
         # hpl specific things:
-    #(r'\\ep(\\|\s+|\n)', r'\thinspace . \g<1>*'), # gives tab hinspace .
-    #(r'^\ep\n', r'\\thinspace .\n', re.MULTILINE),
-    #(r'\ep\n', r' \\thinspace .\n'),
-    #(r'\ep\s*\\\]', r' \\thinspace . \]'),
-    #(r'\ep\s*\\e', r' \\thinspace . \e'),
-    #(r'\\thinspace', 'thinspace'),
-    (r'\\code\{(?P<subst>[^}]+)\}', r'`\g<subst>`'),
-    (r'\\emp\{(?P<subst>[^}]+)\}', r'`\g<subst>`'),
-    (r'\\codett\{(?P<subst>[^}]+)\}', r'`\g<subst>`'),
-    (r'\{\\rm\\texttt\{(?P<subst>[^}]+)\}\}', r'`\g<subst>`'),
-    (r'\\idx\{(?P<subst>.+?)\}', r'idx{`\g<subst>`}'),
-    (r'\\idxf\{(?P<subst>.+?)\}', r'idx{`\g<subst>` function}'),
-    (r'\\idxs\{(?P<subst>.+?)\}', r'idx{`\g<subst>` script}'),
-    (r'\\idxp\{(?P<subst>.+?)\}', r'idx{`\g<subst>` program}'),
-    (r'\\idxc\{(?P<subst>.+?)\}', r'idx{`\g<subst>` class}'),
-    (r'\\idxm\{(?P<subst>.+?)\}', r'idx{`\g<subst>` module}'),
-    (r'\\idxnumpy\{(?P<subst>.+?)\}', r'idx{`\g<subst>` (from `numpy`)}'),
-    (r'\\idxst\{(?P<subst>.+?)\}', r'idx{`\g<subst>` (from `scitools`)}'),
-    (r'\\idxfn\{(?P<subst>.+?)\}', r'idx{`\g<subst>` (FEniCS)}'),
-    (r'\\para\{(?P<subst>.+?)\}', r'__\g<subst>__'),
-    (r'\\refeq\{(?P<subst>.+?)\}', r'(ref{\g<subst>})'),
-    (r'^\bpy\s+', r'\bipy' + '\n', re.MULTILINE),
-    (r'^\epy\s+', r'\eipy' + '\n', re.MULTILINE),
-                    # general latex constructions
-    (r'\\author\{(?P<subst>.+)\}', subst_author_latex2doconce),
-    (r'\\title\{(?P<subst>.+)\}', r'TITLE: \g<subst>'),
-    (r'\\chapter\*?\{(?P<subst>.+)\}', r'========= \g<subst> ========='),
-    (r'\\section\*?\{(?P<subst>.+)\}', r'======= \g<subst> ======='),
-    (r'\\subsection\*?\{(?P<subst>.+)\}', r'===== \g<subst> ====='),
-    (r'\\subsubsection\*?\{(?P<subst>.+)\}', r'=== \g<subst> ==='),
-    (r'\\paragraph\{(?P<subst>.+?)\}', r'__\g<subst>__'),
-    (r'\\chapter\*?\[.+\]\{(?P<subst>.+)\}', r'========= \g<subst> ========='),
-    (r'\\section\*?\[.+\]\{(?P<subst>.+)\}', r'======= \g<subst> ======='),
-    (r'\\subsection\*?\[.+\]\{(?P<subst>.+)\}', r'===== \g<subst> ====='),
-    (r'\\subsubsection\*?\[.+\]\{(?P<subst>.+)\}', r'=== \g<subst> ==='),
-    (r'\\emph\{(?P<subst>.+?)\}', r'*\g<subst>*'),
-    (r'\\texttt\{(?P<subst>[^}]+)\}', r'`\g<subst>`'),
-    (r'\{\\em\s+(?P<subst>.+?)\}', r'*\g<subst>*'),
-    (r'\{\\bf\s+(?P<subst>.+?)\}', r'_\g<subst>_'),
-    (r'\\textbf\{(?P<subst>.+?)\}', r'_\g<subst>_'),
-    (r'\\eqref\{(?P<subst>.+?)\}', r'(ref{\g<subst>})'),
-    (r'(\S)\\label\{', r'\g<1> \\label{'),
-    (r'(\S)\\idx(.?)\{', r'\g<1> \\idx\g<2>{'),
-    (r'(\S)\\index\{', r'\g<1> \\index{'),
-    (r'\\index\{(?P<subst>.+?)\}', r'idx{\g<subst>}'),
-    ] + user_subst
+        # \ep is difficult to replace automatically...
+        #(r'\\ep(\\|\s+|\n)', r'\thinspace . \g<1>*'), # gives tab hinspace .
+        #(r'^\ep\n', r'\\thinspace .\n', re.MULTILINE),
+        #(r'\ep\n', r' \\thinspace .\n'),
+        #(r'\ep\s*\\\]', r' \\thinspace . \]'),
+        #(r'\ep\s*\\e', r' \\thinspace . \e'),
+        #(r'\\thinspace', 'thinspace'),
+        (r'\\code\{(?P<subst>[^}]+)\}', r'`\g<subst>`'),
+        (r'\\emp\{(?P<subst>[^}]+)\}', r'`\g<subst>`'),
+        (r'\\codett\{(?P<subst>[^}]+)\}', r'`\g<subst>`'),
+        (r'\{\\rm\\texttt\{(?P<subst>[^}]+)\}\}', r'`\g<subst>`'),
+        (r'\\idx\{(?P<subst>.+?)\}', r'idx{`\g<subst>`}'),
+        (r'\\idxf\{(?P<subst>.+?)\}', r'idx{`\g<subst>` function}'),
+        (r'\\idxs\{(?P<subst>.+?)\}', r'idx{`\g<subst>` script}'),
+        (r'\\idxp\{(?P<subst>.+?)\}', r'idx{`\g<subst>` program}'),
+        (r'\\idxc\{(?P<subst>.+?)\}', r'idx{`\g<subst>` class}'),
+        (r'\\idxm\{(?P<subst>.+?)\}', r'idx{`\g<subst>` module}'),
+        (r'\\idxnumpy\{(?P<subst>.+?)\}', r'idx{`\g<subst>` (from `numpy`)}'),
+        (r'\\idxst\{(?P<subst>.+?)\}', r'idx{`\g<subst>` (from `scitools`)}'),
+        (r'\\idxfn\{(?P<subst>.+?)\}', r'idx{`\g<subst>` (FEniCS)}'),
+        (r'\\refeq\{(?P<subst>.+?)\}', r'(ref{\g<subst>})'),
+        (r'^\bpy\s+', r'\bipy' + '\n', re.MULTILINE),
+        (r'^\epy\s+', r'\eipy' + '\n', re.MULTILINE),
+        # general latex constructions
+        (r'\\author\{(?P<subst>.+)\}', subst_author_latex2doconce),
+        (r'\\title\{(?P<subst>.+)\}', r'TITLE: \g<subst>'),
+        (r'\\chapter\*?\{(?P<subst>.+)\}', r'========= \g<subst> ========='),
+        (r'\\section\*?\{(?P<subst>.+)\}', r'======= \g<subst> ======='),
+        (r'\\subsection\*?\{(?P<subst>.+)\}', r'===== \g<subst> ====='),
+        (r'\\subsubsection\*?\{(?P<subst>.+)\}', r'=== \g<subst> ==='),
+        (r'\\paragraph\{(?P<subst>.+?)\}', r'__\g<subst>__'),
+        (r'\\chapter\*?\[.+\]\{(?P<subst>.+)\}', r'========= \g<subst> ========='),
+        (r'\\section\*?\[.+\]\{(?P<subst>.+)\}', r'======= \g<subst> ======='),
+        (r'\\subsection\*?\[.+\]\{(?P<subst>.+)\}', r'===== \g<subst> ====='),
+        (r'\\subsubsection\*?\[.+\]\{(?P<subst>.+)\}', r'=== \g<subst> ==='),
+        (r'\\emph\{(?P<subst>.+?)\}', r'*\g<subst>*'),
+        (r'\\texttt\{(?P<subst>[^}]+)\}', r'`\g<subst>`'),
+        (r'\{\\em\s+(?P<subst>.+?)\}', r'*\g<subst>*'),
+        (r'\{\\bf\s+(?P<subst>.+?)\}', r'_\g<subst>_'),
+        (r'\\textbf\{(?P<subst>.+?)\}', r'_\g<subst>_'),
+        (r'\\eqref\{(?P<subst>.+?)\}', r'(ref{\g<subst>})'),
+        (r'(\S)\\label\{', r'\g<1> \\label{'),
+        (r'(\S)\\idx(.?)\{', r'\g<1> \\idx\g<2>{'),
+        (r'(\S)\\index\{', r'\g<1> \\index{'),
+        (r'\\idxfont\{(.+?)\}', r'`\g<1>`'),
+        (r'\\index\{(?P<sortkey>.+?)@(?P<index>.+?)\}', r'idx{\g<index>}'),
+        (r'\\index\{(?P<subst>.+?)\}', r'idx{\g<subst>}'),
+        (r'\\href\{(?P<url>.+?)\}\{(?P<text>.+?)\}', r'"\g<2>": "\g<1>"'),
+        ] + user_subst
     try:
         for item in subst:
             if len(item) == 2:
@@ -5228,6 +5309,7 @@ def _latex2doconce(filestr):
         ("App.~", "Appendix "),
         ("Fig.~", "Figure "),
         ("Tab.~", "Table "),
+        (".~", ". "),
         ] + user_replace
 
     # Pure string replacements:
@@ -5381,17 +5463,21 @@ def _latex2doconce(filestr):
 
 
     # put all newcommands in a file (note: newcommands must occupy only one line!)
-    newcommands_file = 'newcommands_keep.tex'
-    nf = open(newcommands_file, 'w')
     newlines = []
+    newcommands = []
     for line in lines:
         l = line.lstrip()
         if l.startswith('\\newcommand{'):
-            nf.write(l)
+            newcommands.append(l)
         else:
             newlines.append(line)
 
-    filestr = '\n'.join(newlines)
+    if newcommands:
+        filestr = '\n'.join(newlines)
+        newcommands_file = 'newcommands_keep.tex'
+        nf = open(newcommands_file, 'w')
+        nf.writelines(newcommands)
+        nf.close()
 
     # Exercises of the following particular format
     pattern = re.compile(r'\\begin\{exercise\}\s*\\label\{(.*?)\}\s*\\exerentry\{(.*?)\}\s*$\s*(.+?)\\hfill\s*\$\\diamond\$\s*\\end\{exercise\}', re.DOTALL|re.MULTILINE)
@@ -5418,13 +5504,17 @@ def _latex2doconce(filestr):
 
     # Find subfigures (problems)
     if filestr.count('\\subfigure{') > 0:
-        print '\nfound \\subfigure{...} - should be changed (combine individual'
+        print '\nPROBLEM: found \\subfigure{...} - should be changed (combine individual'
         print '      figure files into a single file; now subfigures are just ignored!)\n'
 
     # Figures: assumptions are that subfigure is not used and that the label
     # sits inside the caption. Also, width should be a fraction of
     # \linewidth.
 
+    # figures with width spec: psfig, group1: filename, group2: width, group3: caption
+    pattern = re.compile(r'\\begin{figure}.*?\psfig\{.*?=([^,]+?),\s*width=(.+?)\\linewidth.*?\caption\{(.*?)\}\s*\\end{figure}', re.DOTALL)
+    filestr = pattern.sub(r'FIGURE: [\g<1>, width=\g<2>] {{{{\g<3>}}}}', filestr)
+    # note: cannot treat width=10cm, only width=0.8\linewidth
     # figures: psfig, group1: filename, group2: caption
     pattern = re.compile(r'\\begin{figure}.*?\psfig\{.*?=([^,]+).*?\caption\{(.*?)\}\s*\\end{figure}', re.DOTALL)
     filestr = pattern.sub(r'FIGURE: [\g<1>, width=400] {{{{\g<2>}}}}', filestr)
@@ -5438,7 +5528,10 @@ def _latex2doconce(filestr):
     pattern = re.compile(r'\\begin{figure}.*?\caption\{(.*?)\}\includegraphics\[(.+?)]\{(.+?)\}.*?\s*\\end{figure}', re.DOTALL)
     filestr = pattern.sub(r'# original latex figure with \g<2>\n\nFIGURE: [\g<3>, width=400 frac=1.0] {{{{\g<1>}}}}', filestr)
 
-    # Better method: grab all begin and end figures and analyze each fig
+    # Better method: grab all begin and end figures and analyze the complete
+    # text between begin and end. That can handle comment lines in figures,
+    # which now destroy the regex'es above since they will grab the
+    # first image anyway.
 
     captions = re.findall(r'\{\{\{\{(.*?)\}\}\}\}', filestr, flags=re.DOTALL)
     for caption in captions:
@@ -5450,8 +5543,13 @@ def _latex2doconce(filestr):
             label = m.group(1)
             caption = caption.replace(label, '')
             caption = caption.strip() + ' ' + label
+        # Strip off comments
+        lines = caption.splitlines()
+        for i in range(len(lines)):
+            if '%' in lines[i] and not r'\%' in lines[i]:
+                lines[i] = lines[i].split('%')[0]
         # Make one line
-        caption = ' '.join(caption.splitlines())
+        caption = ' '.join(lines)
         filestr = filestr.replace('{{{{%s}}}}' % orig_caption, caption)
 
     # Check idx{} inside paragraphs
@@ -5478,6 +5576,17 @@ def _latex2doconce(filestr):
                 lines[i] = '# REMOVE (there was just a single idx{...} on this line)'
             lines[last_blank_line] = '\n' + ' '.join(idx) + \
                                      ' ' + lines[last_blank_line]
+
+    # Let paragraphs be subsubsections === ... ===
+    pattern = r'__(.+?)([.?!:])__'
+    def subst_paragraph(m):
+        title = m.group(1)
+        ending = m.group(2)
+        if ending != '.':
+            title += ending
+        return '=== %s ===\n' % title
+
+    filestr = re.sub(pattern, subst_paragraph, filestr)
 
     # Tables are difficult: require manual editing?
     inside_table = False
@@ -5579,19 +5688,24 @@ def _latex2doconce(filestr):
         if ref not in labels:
             print 'found reference but no label{%s}' % ref
             problems = True
+            # Attempt to do a generalized reference
+            # (Make table of chapters, stand-alone docs and their labels - quite easy if associated chapters and their URLs are in a file!!!)
             filestr = filestr.replace(r'\ref{%s}' % ref,
-                r'(_PROBLEM: EXTERNAL REF_) ref{%s}' % ref)
+                                      r'_PROBLEM: external ref_ ref{%(ref)s}')
+            print r'FIX external ref: ref[%(ref)s]["section where %(ref)s is": "http URL with %(ref)s" cite{doc_with_%(ref)s}]["section where %(ref)s is": "http URL with %(ref)s" cite{doc_with_%(ref)s}]' % vars()
     for ref in pagerefs:
         print 'pageref{%s} should be rewritten' % ref
         filestr = filestr.replace(r'\pageref{%s}' % ref,
-            r'(_PROBLEM: PAGEREF_) pageref{%s}' % ref)
+            r'_PROBLEM: pageref_ pageref{%s}' % ref)
         problems = True
 
+    print '\n## search for CHECK to see if auto editing was correct\n'
     if problems:
         print '\n## search for PROBLEM: to see need for manual adjustments\n\n\n'
     filestr = filestr.replace(r'\label{', 'label{')  # done above
     filestr = filestr.replace(r'\ref{', 'ref{')
     filestr = filestr.replace(r'\cite{', 'cite{')
+    filestr = filestr.replace(r'\cite[', 'cite[')
     filestr = filestr.replace(r'\noindent', '')
     filestr = filestr.replace(r'\_', '_')
     filestr = filestr.replace(r' -- ', ' - ')
@@ -5600,11 +5714,13 @@ def _latex2doconce(filestr):
     filestr = filestr.replace(r'\end{table}', '')
 
     # Treat footnotes
+    # Footnote at the end of a sentence: enclose in parenthesis
+    # (regex is not perfect so
     pattern = r'\\footnote\{([^}]+)\}\.'
-    filestr = re.sub(pattern, '. (\g<1>) ', filestr)
+    filestr = re.sub(pattern, '. _CHECK: footnote at end of sentence placed in parenthesis_: (\g<1>) ', filestr)
     # Without final . means footnote in the middle of a sentence
     pattern = r'\\footnote\{([^}]+)\}'
-    filestr = re.sub(pattern, ' (_PROBLEM: FIX FOOTNOTE_ \g<1>)', filestr)
+    filestr = re.sub(pattern, ' _PROBLEM: footnote in the middle of a sentence must be rewritten: (\g<1>)', filestr)
 
     # Check that !bc, !ec, !bt, !ec are at the beginning of the line
     for envir in 'c', 't':

@@ -52,6 +52,7 @@ tables2csv = False
 github_md = False
 sections_up = False
 sections_down = False
+#code_prefix = 
 #figure_prefix = 
 #movie_prefix = 
 no_mp4_webm_ogg_alternatives = False

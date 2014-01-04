@@ -16,6 +16,7 @@ from doconce.misc import (
     replace_from_file,
     replace,
     subst,
+    expand_mako,
     wildcard_notation,
     teamod,
     list_labels,
@@ -788,9 +789,10 @@ replace_from_file
 clean
 spellcheck
 ptex2tex
-expand_commands
-combine_images
 guess_encoding
+expand_commands
+expand_mako
+combine_images
 change_encoding
 gwiki_figsubst
 md2html
@@ -846,8 +848,8 @@ doconce replace from-text to-text file1 file2 ...
 doconce replace_from_file file-with-from-to file1 file2 ...
 (exact text substitution, but a set of from-to relations)
 
-# gwiki format requires substitution of figure file names by URLs
-doconce gwiki_figsubst file.gwiki URL-of-fig-dir
+# replace all mako function calls by the results of the calls
+doconce expand_mako mako_code_file funcname file1 file2 ...
 
 # remove all inline comments in a doconce file
 doconce remove_inline_comments file.do.txt

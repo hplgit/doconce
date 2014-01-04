@@ -407,7 +407,7 @@ The default answer is LaTeX.
 
 !bc
 TITLE: Some Title
-AUTHOR: name1 at institution1, with more info, and institution2
+AUTHOR: name1 at institution1, with more info & institution2
 AUTHOR: name2 email:name2@web.com at institution
 DATE: today
 

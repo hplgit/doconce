@@ -801,8 +801,8 @@ def latex_ref_and_label(section_label2title, format, filestr):
     filestr = re.sub(r'( [0-9]{1,3})%', r'\g<1>\%', filestr)
     filestr = re.sub(r'(^[0-9]{1,3})%', r'\g<1>\%', filestr, flags=re.MULTILINE)
 
-    # Fix errors such as et. al. cite{ (et. -> et)
-    filestr = re.sub(r'et\. +al +cite\{', 'et al. cite{', filestr)
+    # Fix common error et. al. cite{ (et. should be just et)
+    filestr = re.sub(r'et\. +al +cite(\{|\[)', r'et al. cite\g<1>', filestr)
 
     # fix periods followed by too long space:
     prefix = r'Prof\.', r'Profs\.', r'prof\.', r'profs\.', r'Dr\.', \
@@ -830,6 +830,11 @@ def latex_index_bib(filestr, index, citations, pubfile, pubdata):
     #print 'index:', index
     #print 'citations:', citations
     filestr = filestr.replace('cite{', r'\cite{')
+    filestr = filestr.replace('cite[', r'\cite[')
+    # Fix spaces after . inside cite[] and insert ~
+    pattern = r'cite\[(.+)\.\s+'
+    filestr = re.sub(pattern, r'cite[\g<1>.~', filestr)
+
     for word in index:
         pattern = 'idx{%s}' % word
         if '`' in word:
@@ -1398,6 +1403,7 @@ final,                   %% or draft (marks overfull hboxes)
 % Style: T2 (Springer)
 \documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmono}
 \usepackage{t2}
+\special{papersize=193mm,260mm}
 % #elif LATEX_STYLE == "Springer_llcse"
 % Style: Lecture Notes in Computer Science (Springer)
 \documentclass[oribib]{llncs}
@@ -1511,6 +1517,7 @@ final,                   %% or draft (marks overfull hboxes)
 % Examples of font types (Ubuntu): Gentium Book Basic (Palatino-like),
 % Liberation Sans (Helvetica-like), Norasi, Purisa (handwriting), UnDoum
 % #else
+\usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
 % #ifdef HELVETICA
@@ -1524,6 +1531,7 @@ final,                   %% or draft (marks overfull hboxes)
 \linespread{1.05}            % Palatino needs extra line spread to look nice
 % #endif
 % #endif
+\usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 """
     # Make sure hyperlinks are black (as the text) for printout
     # and otherwise set to the dark blue linkcolor
@@ -1994,6 +2002,7 @@ final,                   %% or draft (marks overfull hboxes)
 % USER PREAMBLE
 % insert custom LaTeX commands...
 
+\raggedbottom
 \makeindex
 
 %-------------------- end preamble ----------------------

@@ -1,6 +1,6 @@
 
 TITLE: Experiments with Schemes for Exponential Decay
-AUTHOR: Hans Petter Langtangen Email:hpl@simula.no at Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo.
+AUTHOR: Hans Petter Langtangen Email:hpl@simula.no at Center for Biomedical Computing, Simula Research Laboratory & Department of Informatics, University of Oslo.
 DATE: today
 
 The body text has font *${BODY_FONT}*, while the headings have font

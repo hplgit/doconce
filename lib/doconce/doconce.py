@@ -540,7 +540,13 @@ def make_one_line_paragraphs(filestr, format):
     return filestr
 
 def insert_code_from_file(filestr, format):
-    CREATE_DUMMY_FILE = False # create dummy file if specified file not found?
+    # Create dummy file if specified file not found?
+    CREATE_DUMMY_FILE = False
+    # Filename prefix
+    path_prefix = option('code_prefix=', '')
+    if '~' in path_prefix:
+        path_prefix = os.path.expanduser(path_prefix)
+
     lines = filestr.splitlines()
     inside_verbatim = False
     for i in range(len(lines)):
@@ -563,6 +569,10 @@ def insert_code_from_file(filestr, format):
             except IndexError:
                 raise SyntaxError, \
                       'Syntax error: missing filename in line\n  %s' % line
+            orig_filename = filename # keep a copy in case we have a prefix
+            if path_prefix:
+                filename = os.path.join(path_prefix, filename)
+
             try:
                 codefile = open(filename, 'r')
             except IOError, e:
@@ -1546,23 +1556,27 @@ def handle_figures(filestr, format):
     pattern = INLINE_TAGS['figure']
     c = re.compile(pattern, re.MULTILINE)
 
-    # First check if the figure files are of right type, then
+    # Plan: first check if the figure files are of right type, then
     # call format-specific functions for how to format the figures.
 
-    files = [filename.strip()
-             for filename, options, caption in c.findall(filestr)]
     if type(FIGURE_EXT[format]) is str:
         extensions = [FIGURE_EXT[format]]  # wrap in list
     else:
         extensions = FIGURE_EXT[format]
-    import sets; files = sets.Set(files)   # remove multiple occurences
 
+    figfiles = [filename.strip()
+             for filename, options, caption in c.findall(filestr)]
+    import sets; figfiles = sets.Set(figfiles)   # remove multiple occurences
+
+    # Prefix figure paths if user has requested it
     figure_prefix = option('figure_prefix=')
     if figure_prefix is not None:
-        # substitute all figfile names in files with figure_prefix + figfile
-        for figfile in files:
+        # substitute all figfile names in figfiles with figure_prefix + figfile
+        if '~' in figure_prefix:
+            figure_prefix = os.path.expanduser(figure_prefix)
+        for figfile in figfiles:
             if not figfile.startswith('http'):
-                newname = figure_prefix + figfile
+                newname = os.path.join(figure_prefix, figfile)
                 filestr = re.sub(r'%s([,\]])' % figfile,
                                  '%s\g<1>' % newname, filestr)
     # Prefix movies also
@@ -1572,14 +1586,20 @@ def handle_figures(filestr, format):
                    re.findall(movie_pattern, filestr, flags=re.MULTILINE)]
     movie_prefix = option('movie_prefix=')
     if movie_prefix is not None:
+        if '~' in movie_prefix:
+            movie_prefix = os.path.expanduser(movie_prefix)
         for movfile in movie_files:
             if not movfile.startswith('http'):
-                newname = movie_prefix + movfile
+                newname = os.path.join(movie_prefix, movfile)
                 filestr = re.sub(r'%s([,\]])' % movfile,
                                  '%s\g<1>' % newname, filestr)
 
+    # Find new filenames
+    figfiles = [filename.strip()
+             for filename, options, caption in c.findall(filestr)]
+    import sets; figfiles = sets.Set(figfiles)   # remove multiple occurences
 
-    for figfile in files:
+    for figfile in figfiles:
         if figfile.startswith('http'):
             # latex, pdflatex must download the file,
             # html, sphinx and web-based formats can use the URL directly
@@ -1781,6 +1801,19 @@ def handle_cross_referencing(filestr, format):
 
 def handle_index_and_bib(filestr, format, has_title):
     """Process idx{...} and cite{...} instructions."""
+    if not format in ('latex', 'pdflatex'):
+        # Make cite[]{} to cite{} (...)
+        def cite_subst(m):
+            detailed_ref = m.group(1)
+            citekey = m.group(2)
+            if not detailed_ref:
+                print '*** error: empty text inside parenthesis: %s' % m.group(0)
+                _abort()
+            return 'cite{%s} (%s)' % (citekey, detailed_ref)
+
+        filestr = re.sub(r'cite\[(.+?)\]\{(.+?)\}', cite_subst, filestr)
+    # else: latex can work with cite[]{}
+
     pubfile = None
     pubdata = None
     index = {}  # index[word] = lineno
@@ -1829,6 +1862,9 @@ def handle_index_and_bib(filestr, format, has_title):
                 # value for the end format file...anyway, we make them...
 
             cite_args = re.findall(r'cite\{(.+?)\}', line)
+            if format in ('latex', 'pdflatex'):
+                # latex keeps cite[]{} (other formats rewrites to cite{} ([]))
+                cite_args += re.findall(r'cite\[.+?\]\{(.+?)\}', line)
             if cite_args:
                 # multiple labels can be separated by comma:
                 cite_labels = []
@@ -1904,8 +1940,8 @@ def interpret_authors(filestr, format):
             a = a.strip()
             if ' & ' in i:
                 i = [w.strip() for w in i.split(' & ')]
-            elif ' and ' in i:
-                i = [w.strip() for w in i.split(' and ')]
+            #elif ' and ' in i:
+            #    i = [w.strip() for w in i.split(' and ')]
             else:
                 i = (i.strip(),)
         else:  # just author's name
