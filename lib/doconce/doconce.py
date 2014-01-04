@@ -2131,7 +2131,7 @@ def file2file(in_filename, format, basename):
 
     # if trouble with encoding:
     # Unix> doconce guess_encoding myfile.do.txt
-    # Unix> doconce change_encoding utf-8 latin1 myfile.do.txt
+    # Unix> doconce change_encoding latin1 utf-8 myfile.do.txt
     # or plain Unix:
     # Unix> file myfile.do.txt
     # myfile.do.txt: UTF-8 Unicode English text
@@ -2157,13 +2157,11 @@ def file2file(in_filename, format, basename):
     else:
         f = open(out_filename, 'w')
 
-    try:
-        f.write(filestr)
-    except UnicodeEncodeError, e:
+    def error_message():
         m = str(e)
         if "codec can't encode character" in m:
             pos = m.split('position')[1].split(':')[0]
-            print 'Problem with character when writing to file:'
+            print '*** error: problem with character when writing to file:'
             print '(text position %s)' % pos
             try:
                 pos = int(pos)
@@ -2172,8 +2170,29 @@ def file2file(in_filename, format, basename):
                     pos = pos.split('-')[0]
                     pos = int(pos)
             print filestr[pos-40:pos], '|', filestr[pos], '|', filestr[pos+1:pos+40]
-            print 'Fix character or try --encoding=utf-8'
+            print '    fix character or try --encoding=utf-8'
             _abort()
+
+    try:
+        f.write(filestr)
+    except UnicodeEncodeError, e:
+        # Provide error message and abortion, because the code
+        # below that tries UTF-8 will result in strange characters
+        # in the output. It is better that the user specifies
+        # correct encoding and gets correct results.
+        error_message()
+        # Try UTF-8 (not a good fallback as the output may be corrupt)
+        """
+        try:
+            f.close()
+            f = codecs.open(out_filename, 'w', encoding='utf-8')
+            f.write(filestr)
+        except UnicodeEncodeError, e:
+            # Cannot write ASCII or UTF-8 - giving up...
+            # (could have tested latin1 on older systems)
+            error_message()
+        """
+
     f.close()
     return out_filename
 
