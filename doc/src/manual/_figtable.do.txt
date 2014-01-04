@@ -1,0 +1,45 @@
+# Exemplify how Mako can be used to created tailored syntax for
+# inserting figures in a table
+
+<%
+def tfig(fileno):
+    p = 'mov/wave_frames/frame_0' + fileno + '.png'  # path
+    if FORMAT in ("latex", "pdflatex"):
+        text = r'\includegraphics[width=2cm]{%s}' % p
+    elif FORMAT in ("html", "rst", "sphinx"):
+        text = '<a href="%s"><img src="%s" width="300"></a>' % (p, p)
+    else:
+        text = '"`%s`": "%s"' % (fileno, p)  # plain link
+    return text
+%>
+
+
+# Use empty heading (but the heading must be there!)
+
+|-------------------------------------------------|
+|               |                |                |
+|-------c---------------c----------------c--------|
+|${tfig('080')} | ${tfig('085')} | ${tfig('090')} |
+|${tfig('095')} | ${tfig('100')} | ${tfig('105')} |
+|${tfig('110')} | ${tfig('115')} | ${tfig('120')} |
+|-------------------------------------------------|
+
+<%
+def generate_table(start, end, step, no_of_columns):
+    # Heading
+    text = ''
+    horizontal_rule = '|----|\n'
+    text += horizontal_rule
+    text += '|  '*no_of_columns + '|\n'
+    text += horizontal_rule
+    fig_counter = 0
+    for counter in range(start, end+1, step):
+        fig_counter += 1
+        text += '| ' + tfig('%03d' % counter) + ' '
+        if fig_counter % no_of_columns == 0:
+            text += '|\n'
+    text += horizontal_rule
+    return text
+%>
+
+${generate_table(80, 120, 5, 3)}

@@ -204,18 +204,22 @@ Automatically generated HTML file from Doconce source
               (' Themes ', 3, None, '___sec95'),
               (' Mako Programming ', 1, None, '___sec96'),
               (' The Basics of Mako ', 2, None, '___sec97'),
+              (' Example: Extending Tables to Handle Figures ',
+               2,
+               'manual:tables:wfigs',
+               'manual:tables:wfigs'),
               (' Example: Defining a Theorem Environment ',
                2,
                'manual:theorem:envir',
                'manual:theorem:envir'),
-              (' Tools for Writing Doconce Documents ', 2, None, '___sec99'),
-              (' Debugging ', 2, None, '___sec100'),
-              (' Basic Parsing Ideas ', 1, None, '___sec101'),
+              (' Tools for Writing Doconce Documents ', 2, None, '___sec100'),
+              (' Debugging ', 2, None, '___sec101'),
+              (' Basic Parsing Ideas ', 1, None, '___sec102'),
               (' Typesetting of Function Arguments, Return Values, and Variables ',
                2,
                None,
-               '___sec102'),
-              (' References ', 1, None, '___sec103')]}
+               '___sec103'),
+              (' References ', 1, None, '___sec104')]}
 end of tocinfo -->
 
 <body>
@@ -267,7 +271,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>Dec 27, 2013</h4></center> <!-- date -->
+<center><h4>Jan 4, 2014</h4></center> <!-- date -->
 <p>
 <!-- lines beginning with # are doconce comment lines -->
 <!-- (documents can also have mako comment lines) -->
@@ -4036,8 +4040,10 @@ A relevant snippet using Mako is
 <!-- begin verbatim block -->
 <pre><code>% FORMAT in (&quot;latex&quot;, &quot;pdflatex&quot;) or HTMLMOVIE == &quot;files&quot;:
 MOVIE: [../experiments/frame_*.png]
+
 % else:
 MOVIE: [../experiments/movie.ogg]
+
 % endif
 </code></pre>
 <!-- end verbatim block -->
@@ -4046,6 +4052,30 @@ be performed, while any other value than <code>files</code> leads to
 use of the <code>movie.ogg</code> in all but LaTeX formats. In HTML one will try
 to load <code>movie.mp4</code> (if it exists) and then <code>movie.webm</code> (if it exists)
 and then finally <code>movie.ogg</code>.
+
+<p>
+There is no way to control the number of frames per second in
+LaTeX animations based on filename generators such as <code>myframes*.png</code>.
+However, with a little auto editing in a script one can control
+the frame rates of the various movies. The rate is specified as <code>2</code>
+in lines on the form
+
+<p>
+<!-- begin verbatim block -->
+<pre><code>\begin{animateinline}[controls,loop]{2} % frames: f000.png -&gt; f098.png
+</code></pre>
+<!-- end verbatim block -->
+Setting the rate to 12 in for this particular movie based on the
+<code>f%03.png</code> files, the following <code>doconce subst</code> command does the job
+in a script:
+
+<p>
+<!-- begin verbatim block -->
+<pre><code>doconce subst ',loop]{2}( .+: f000)' ',loop{12}\g&lt;1&gt;' mydoc.do.txt
+</code></pre>
+<!-- end verbatim block -->
+
+<p>
 </div>
 
 
@@ -4574,7 +4604,7 @@ We use the command
 to refer to a publication with bibliographic key <code>key</code>.
 Here is an example: <a href="#Langtangen_Pedersen_2002">[1]</a> discussed propagation of
 large destructive water waves, <a href="#Langtangen_et_al_2002">[2]</a> gave
-an overview of numerical methods for solvin the Navier-Stokes equations,
+an overview of numerical methods for solving the Navier-Stokes equations,
 while the use of Backward Kolmogorov equations for analyzing
 random vibrations was investigated in <a href="#Langtangen_1994a">[3]</a>.
 The book chapter <a href="#Mardal_et_al_2003a">[4]</a> contains information on
@@ -4582,6 +4612,17 @@ C++ software tools for programming multigrid methods. A real retro
 reference is <a href="#Langtangen_1988d">[5]</a> about a big FORTRAN package.
 Multiple references are also possible, e.g., see
 <a href="#Langtangen_Pedersen_2002">[1]</a> <a href="#Mardal_et_al_2003a">[4]</a>.
+
+<p>
+A LaTeX-style cite command with additional detailed reference is also possible,
+
+<p>
+<!-- begin verbatim block -->
+<pre><code>cite[details]{key}
+</code></pre>
+<!-- end verbatim block -->
+for example as in <a href="#Langtangen_et_al_2002">[2]</a> (Section 2)
+or <a href="#Langtangen_et_al_2002">[2]</a> (Equation (4.2)).
 
 <p>
 In LaTeX, the <code>cite</code> command is directly translated to the
@@ -5865,6 +5906,109 @@ comment in Mako.
 </code></pre>
 <!-- end verbatim block -->
 
+<p>
+One can use Mako to extend the Doconce syntax. Two examples are given next.
+
+<h3>Example: Extending Tables to Handle Figures <a name="manual:tables:wfigs"></a></h3>
+
+<p>
+Doconce tables cannot contain figures, since figures must appear on
+a single line with the special syntax <code>FIGURE: [file, ...]</code>.
+What if you want a table of thumbnail figures with hyperlinks?
+
+<p>
+You can create a Mako function with the desired call syntax and let
+this function return the proper code, depending on the output format.
+Let us create a normal Doconce table, but insert a Mako call
+<code>${tfig('080')}</code> to insert a figure <code>mov/wave_frames/frame_0080.png</code>.
+A 3x3 table of figures then look like
+
+<p>
+<!-- begin verbatim block -->
+<pre><code>|-------------------------------------------------|
+|               |                |                |
+|-------c---------------c----------------c--------|
+|${tfig('080')} | ${tfig('085')} | ${tfig('090')} |
+|${tfig('095')} | ${tfig('100')} | ${tfig('105')} |
+|${tfig('110')} | ${tfig('115')} | ${tfig('120')} |
+|-------------------------------------------------|
+</code></pre>
+<!-- end verbatim block -->
+We do not want a heading, just a grid of figures, but a heading is
+required in Doconce figures. An empty heading as about cases a
+warning, but will give acceptable results in HTML and LaTeX.
+
+<p>
+The Mako function can be a plain Python function:
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>&lt;%
+def tfig(fileno):
+    p = 'mov/wave_frames/frame_0' + fileno + '.png'  # path
+    if FORMAT in (&quot;latex&quot;, &quot;pdflatex&quot;):
+        text = r'\includegraphics[width=2cm]{%s}' % p
+    elif FORMAT in (&quot;html&quot;, &quot;rst&quot;, &quot;sphinx&quot;):
+        text = '&lt;a href=&quot;%s&quot;&gt;&lt;img src=&quot;%s&quot; width=&quot;300&quot;&gt;&lt;/a&gt;' % (p, p)
+    else:
+        text = '&quot;`%s`&quot;: &quot;%s&quot;' % (fileno, p)  # plain link
+    return text
+%&gt;
+</code></pre>
+<!-- end verbatim block -->
+The resulting table is displayed below.
+
+<p>
+<!-- Cannot just have the Mako code here and generate the table -->
+<!-- because this manual cannot be run with Mako (--no_mako -->
+<!-- is used in make.sh). -->
+<!-- The code below is generated by having the Mako function -->
+<!-- and table in a separate file _figtable.do.txt and then -->
+<!-- manually generating the various formats and inserting -->
+<!-- them here. -->
+
+<p>
+<!-- html -->
+<p>
+<table border="1">
+<tr></tr>
+<tr><td align="center">   <a href="mov/wave_frames/frame_0080.png"><img src="mov/wave_frames/frame_0080.png" width="300"></a>    </td> <td align="center">   <a href="mov/wave_frames/frame_0085.png"><img src="mov/wave_frames/frame_0085.png" width="300"></a>    </td> <td align="center">   <a href="mov/wave_frames/frame_0090.png"><img src="mov/wave_frames/frame_0090.png" width="300"></a>    </td> </tr>
+<tr><td align="center">   <a href="mov/wave_frames/frame_0095.png"><img src="mov/wave_frames/frame_0095.png" width="300"></a>    </td> <td align="center">   <a href="mov/wave_frames/frame_0100.png"><img src="mov/wave_frames/frame_0100.png" width="300"></a>    </td> <td align="center">   <a href="mov/wave_frames/frame_0105.png"><img src="mov/wave_frames/frame_0105.png" width="300"></a>    </td> </tr>
+<tr><td align="center">   <a href="mov/wave_frames/frame_0110.png"><img src="mov/wave_frames/frame_0110.png" width="300"></a>    </td> <td align="center">   <a href="mov/wave_frames/frame_0115.png"><img src="mov/wave_frames/frame_0115.png" width="300"></a>    </td> <td align="center">   <a href="mov/wave_frames/frame_0120.png"><img src="mov/wave_frames/frame_0120.png" width="300"></a>    </td> </tr>
+</table>
+
+<p>
+<b>Remark.</b>
+The specific structure of this table also suggest using Mako
+to generate the whole table:
+
+<p>
+<!-- begin verbatim block -->
+<pre><code>&lt;%
+def generate_table(start, end, step, no_of_columns):
+    # Heading
+    text = ''
+    horizontal_rule = '|----|\n'
+    text += horizontal_rule
+    text += '|  '*no_of_columns + '|\n'
+    text += horizontal_rule
+    fig_counter = 0
+    for counter in range(start, end+1, step):
+        fig_counter += 1
+        text += '| ' + tfig('%03d' % counter) + ' '
+        if fig_counter % no_of_columns == 0:
+            text += '|\n'
+    text += horizontal_rule
+    return text
+%&gt;
+
+${generate_table(80, 120, 5, 3)}
+</code></pre>
+<!-- end verbatim block -->
+The result is a table like the one above, except that the horizontal rules
+and the heading are very short lines (but this is okay, it just does not
+look appealing in the Doconce source).
+
 <h3>Example: Defining a Theorem Environment <a name="manual:theorem:envir"></a></h3>
 
 <p>
@@ -5976,9 +6120,10 @@ Even better, HTML output looks nice as well.
 <p>
 Note that Doconce supports fancy environments for verbatim code via
 the <code>ptex2tex</code> program with all its flexibility for choosing environments.
-Also <code>doconce ptex2tex</code> has some flexibility for typesetting computer code.
+Also <code>doconce ptex2tex</code> has quite some flexibility for typesetting
+computer code.
 
-<h3>Tools for Writing Doconce Documents  <a name="___sec99"></a></h3>
+<h3>Tools for Writing Doconce Documents  <a name="___sec100"></a></h3>
 
 <p>
 
@@ -5987,7 +6132,7 @@ Also <code>doconce ptex2tex</code> has some flexibility for typesetting computer
  <li> <a href="http://www.xm1math.net/texmaker/" target="_self">TeXMaker</a> and <a href="http://kile.sourceforge.net/" target="_self">Kile</a> can in theory be adapted to handle Doconce compilation and maybe even Doconce constructs.</li>
 </ul>
 
-<h3>Debugging  <a name="___sec100"></a></h3>
+<h3>Debugging  <a name="___sec101"></a></h3>
 
 <p>
 Given a problem, extract a small portion of text surrounding the
@@ -6000,7 +6145,7 @@ may still give some idea of what is wrong.  The section "Basic Parsing
 Ideas" explains how the Doconce text is transformed into a specific
 format, and you need to know these steps to make use of the logfile.
 
-<h2>Basic Parsing Ideas  <a name="___sec101"></a></h2>
+<h2>Basic Parsing Ideas  <a name="___sec102"></a></h2>
 
 <p>
 <!-- avoid list here since we have code in between (never a good idea) -->
@@ -6053,7 +6198,7 @@ sufficient to getting the layout you want, it is suggested to filter
 the document to another, more complex format, say reST or
 LaTeX, and work further on the document in this format.
 
-<h3>Typesetting of Function Arguments, Return Values, and Variables  <a name="___sec102"></a></h3>
+<h3>Typesetting of Function Arguments, Return Values, and Variables  <a name="___sec103"></a></h3>
 
 <p>
 As part of comments (or doc strings) in computer code one often wishes
@@ -6096,7 +6241,7 @@ and Sphinx just typeset the list as a list with keywords.
       the iterations.
 </dl>
 
-<h2>References  <a name="___sec103"></a></h2>
+<h2>References  <a name="___sec104"></a></h2>
 
 <p>
 <!-- begin bibliography -->

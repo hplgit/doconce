@@ -1243,11 +1243,12 @@ def typeset_tables(filestr, format):
                 except IndexError:
                     ok = False
                 if not ok:
-                    print '*** error: syntax error in table:'
+                    print '*** error: syntax error in table!'
+                    print '    missing three horizontal rules and heading:'
                     for row in table['rows']:
                         if row != ['horizontal rule']:
                             print '| ' + ' | '.join(row) + ' |'
-                            print '(Maybe not a table, just an opening pip at the beginning of the line?)'
+                            print '(or maybe not a table, just an opening pip at the beginning of the line?)'
                     _abort()
 
                 result.write(TABLE[format](table))   # typeset table
