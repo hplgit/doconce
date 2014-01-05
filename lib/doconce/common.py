@@ -676,7 +676,8 @@ ENVIRS = {}
 
 # regular expressions for inline tags:
 inline_tag_begin = r"""(?P<begin>(^|[(\s]))"""
-inline_tag_end = r"""(?P<end>($|[.,?!;:)}\s-]))"""
+# ' is included as apostrophe in end tag
+inline_tag_end = r"""(?P<end>($|[.,?!;:)}'\s-]))"""
 # alternatives using positive lookbehind and lookahead (not tested!):
 inline_tag_before = r"""(?<=(^|[(\s]))"""
 inline_tag_after = r"""(?=$|[.,?!;:)\s])"""
@@ -709,7 +710,8 @@ INLINE_TAGS = {
     # `verbatim inline text is enclosed in back quotes`
     'verbatim':
     r'%s`(?P<subst>[^ ][^`]*)`%s' % \
-    (inline_tag_begin, r"(?P<end>($|[.,?!;:)}'\s-]))"), # inline_tag_end and '
+    (inline_tag_begin, inline_tag_end),
+    #(inline_tag_begin, r"(?P<end>($|[.,?!;:)}'\s|-]))"),
 
     # _underscore before and after signifies bold_
     'bold':

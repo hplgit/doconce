@@ -390,26 +390,28 @@ one table:
   |--------------------------------|
 
 And one with math headings (that are expanded and must be treated
-accordingly) and verbatim heading and entry:
+accordingly), verbatim heading and entry, and no space around the pipe
+symbol:
 
-|-------------------------------|
-|$i$ | $h_i$|$\bar T_i$ | `L_i` |
-|-l-----r---------r---------r---|
-|0   |0     |288        |-0.0065|
-|1   |11,000|216        |0.0	|
-|2   |20,000|216        |0.001	|
-|3   |32,000|228        |0.0028	|
-|4   |47,000|270        |0.0	|
-|5   |51,000|270        |-0.0028|
-|6   |71,000|214        |`NaN`	|
-|-------------------------------|
+|--------------------------|
+|$i$|$h_i$|$\bar T_i$|`L_i`|
+|-l-----r-------r----r-----|
+|0   |0     |288   |-0.0065|
+|1   |11,000|216   |0.0	   |
+|2   |20,000|216   |0.001  |
+|3   |32,000|228   |0.0028 |
+|4   |47,000|270   |0.0	   |
+|5   |51,000|270   |-0.0028|
+|6   |71,000|214   |`NaN`  |
+|--------------------------|
 
 And add one with verbatim headings (with underscores),
 and rows starting with `|-` because of a negative number,
-and `|` right after verbatim word (with no space):
+and `|` right before and after verbatim word (with no space):
+## +`v_2` does not work, need space + `v_2`
 
 |-----------------------------------------|
-| exact | `v_1`   | $a_i$ + `v_2`|`verb_3_`|
+| exact | `v_1`   |$a_i$ + `v_2`|`verb_3_`|
 |---r--------r---------r-----------r------|
 |9      | 9.62    | 5.57      |  8.98     |
 |-20    | -23.39  | -7.65     | -19.93    |
@@ -428,7 +430,7 @@ and URLs.
 # (These types of tables did not work before Jan 2014)
 <%
 def tfig(fileno):
-    p = 'mov/wave_frames/frame_0' + fileno + '.png'  # path
+    p = '../doc/src/manual/mov/wave_frames/frame_0' + fileno + '.png'  # path
     if FORMAT in ("latex", "pdflatex"):
         text = r'\includegraphics[width=2cm]{%s}' % p
     elif FORMAT == "html":

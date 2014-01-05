@@ -212,7 +212,7 @@ $$
 <center><h1>A Document for Testing Doconce</h1></center>  <!-- document title -->
 
 <p>
-<!-- author(s): Hans Petter Langtangen, Kaare Dump, A. Dummy Author, I. S. Overworked, and J. Doe -->
+<!-- author(s): Hans Petter Langtangen, Kaare Dump, A. Dummy Author, I. S. Overworked and Outburned, and J. Doe -->
 
 <center>
 <b>Hans Petter Langtangen</b> [1, 2] (<tt>hpl at simula.no</tt>)
@@ -227,7 +227,7 @@ $$
 </center>
 
 <center>
-<b>I. S. Overworked</b> [4, 5, 6, 7]
+<b>I. S. Overworked and Outburned</b> [4, 5, 6, 7]
 </center>
 
 <center>
@@ -240,13 +240,13 @@ $$
 
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
-<center>[3] <b>Segfault Inc, Cyberspace</b></center>
+<center>[3] <b>Segfault, Cyberspace</b></center>
 <center>[4] <b>Inst1</b></center>
 <center>[5] <b>Inst2, Somewhere</b></center>
 <center>[6] <b>Third Inst, Elsewhere</b></center>
 <center>[7] <b>Fourth Inst</b></center>
 <p>
-<center><h4>Jan 1, 2014</h4></center> <!-- date -->
+<center><h4>Jan 5, 2014</h4></center> <!-- date -->
 
 <h2>Table of contents</h2>
 
@@ -797,7 +797,8 @@ one table:
 </table>
 <p>
 And one with math headings (that are expanded and must be treated
-accordingly) and verbatim heading and entry:
+accordingly), verbatim heading and entry, and no space around the pipe
+symbol:
 
 <p>
 <table border="1">
@@ -813,7 +814,7 @@ accordingly) and verbatim heading and entry:
 <p>
 And add one with verbatim headings (with underscores),
 and rows starting with <code>|-</code> because of a negative number,
-and <code>|</code> right after verbatim word (with no space):
+and <code>|</code> right before and after verbatim word (with no space):
 
 <p>
 <table border="1">
@@ -822,6 +823,23 @@ and <code>|</code> right after verbatim word (with no space):
 <tr><td align="right">   -20                             </td> <td align="right">   -23.39                          </td> <td align="right">   -7.65                           </td> <td align="right">   -19.93                          </td> </tr>
 <tr><td align="right">   10                              </td> <td align="right">   17.74                           </td> <td align="right">   -4.50                           </td> <td align="right">   9.96                            </td> </tr>
 <tr><td align="right">   0                               </td> <td align="right">   -9.19                           </td> <td align="right">   4.13                            </td> <td align="right">   -0.26                           </td> </tr>
+</table>
+<p>
+Finally, a table with math
+(<code>bm</code> that expands to <code>boldsymbol</code>, was tricky, but
+cleanly handled now)
+and URLs.
+
+<p>
+<!-- Mako code to expand URLs in the table -->
+<!-- (These types of tables did not work before Jan 2014) -->
+
+<p>
+<table border="1">
+<tr></tr>
+<tr><td align="center">   \( \mathcal{L}=0 \)                                                                                                                        </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0080.png"><img src="../doc/src/manual/mov/wave_frames/frame_0080.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0085.png"><img src="../doc/src/manual/mov/wave_frames/frame_0085.png" width="300"></a>    </td> </tr>
+<tr><td align="center">   \( a=b \)                                                                                                                                  </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0090.png"><img src="../doc/src/manual/mov/wave_frames/frame_0090.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0095.png"><img src="../doc/src/manual/mov/wave_frames/frame_0095.png" width="300"></a>    </td> </tr>
+<tr><td align="center">   \( \nabla\cdot\boldsymbol{u} =0  \)                                                                                                        </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0100.png"><img src="../doc/src/manual/mov/wave_frames/frame_0100.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0105.png"><img src="../doc/src/manual/mov/wave_frames/frame_0105.png" width="300"></a>    </td> </tr>
 </table>
 
 <h3>A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code>  <a name="___sec6"></a></h3>

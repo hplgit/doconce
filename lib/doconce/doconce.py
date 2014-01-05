@@ -1141,6 +1141,21 @@ def parse_keyword(keyword, format):
         return keyword
 
 
+def space_in_tables(filestr):
+    """
+    Add spaces around | in tables such that substitutions $...$ and
+    `...` get right.
+    """
+    pattern = r'^\s*\|.+\| *$'
+    table_lines = re.findall(pattern, filestr, re.MULTILINE)
+    horizontal_rule = r'^\s*\|[-lrc]+\|\s*$'
+    for line in table_lines:
+        if not re.search(horizontal_rule, line, flags=re.MULTILINE) \
+           and re.search(r'[^ ]|[^ ]', line) and line.count('|') > 2:
+            line_wspaces = ' | '.join(line.split('|'))
+            filestr = filestr.replace(line, line_wspaces)
+    return filestr
+
 def typeset_tables(filestr, format):
     """
     Translate tables with pipes and dashes to a list of
@@ -1217,10 +1232,6 @@ def typeset_tables(filestr, format):
                     _abort()
 
             columns = line.strip().split('|')  # does not work with math2 syntax
-            # Possible fix so that | $\bar T$|$T$ | $...$ | ... is possible:
-            # .split(' | '), but need to make sure the syntax and no of columns
-            # are correct
-
             # remove empty columns and extra white space:
             #columns = [c.strip() for c in columns if c]
             columns = [c.strip() for c in columns if c.strip()]
@@ -1248,7 +1259,7 @@ def typeset_tables(filestr, format):
                     for row in table['rows']:
                         if row != ['horizontal rule']:
                             print '| ' + ' | '.join(row) + ' |'
-                            print '(or maybe not a table, just an opening pip at the beginning of the line?)'
+                            print '(or maybe not a table, just an opening pipe symbol at the beginning of the line?)'
                     _abort()
 
                 result.write(TABLE[format](table))   # typeset table
@@ -2408,18 +2419,21 @@ def doconce2format(filestr, format):
     # Next step: deal with lists
     filestr = typeset_lists(filestr, format,
                             debug_info=[code_blocks, tex_blocks])
-    debugpr('%s\n**** The file after typesetting of list:\n\n%s\n\n' % \
-          ('*'*80, filestr))
+    debugpr('%s\n**** The file after typesetting of list:\n\n%s\n\n' %
+            ('*'*80, filestr))
+
+    # Next step: add space around | in tables for substitutions to get right
+    filestr = space_in_tables(filestr)
+    debugpr('%s\n**** The file after adding space around | in tables:\n\n%s\n\n' % ('*'*80, filestr))
 
     # Next step: do substitutions
     filestr = inline_tag_subst(filestr, format)
+    debugpr('%s\n**** The file after all inline substitutions:\n\n%s\n\n' % ('*'*80, filestr))
 
     # Next step: deal with tables
     filestr = typeset_tables(filestr, format)
-    debugpr('%s\n**** The file after typesetting of tables:\n\n%s\n\n' % \
-          ('*'*80, filestr))
-
-    debugpr('%s\n**** The file after all inline substitutions:\n\n%s\n\n' % ('*'*80, filestr))
+    debugpr('%s\n**** The file after typesetting of tables:\n\n%s\n\n' %
+            ('*'*80, filestr))
 
     # Next step: deal with various commands and envirs to be put as comments
     commands = ['!split', '!bpop', '!epop', '!bslidecell', '!eslidecell',
@@ -2432,6 +2446,8 @@ def doconce2format(filestr, format):
             split_comment = comment_action((command + r'\g<1>'))
         cpattern = re.compile('^%s( *| +.*)$' % command, re.MULTILINE)
         filestr = cpattern.sub(split_comment, filestr)
+    debugpr('%s\n**** The file after commenting out %s:\n\n%s\n\n' %
+            ('*'*80, ', '.join(commands), filestr))
 
     # Next step: substitute latex-style newcommands in filestr and tex_blocks
     # (not in code_blocks)

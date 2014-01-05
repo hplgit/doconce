@@ -1,10 +1,10 @@
 
 ************** File: testdoc.do.txt *****************
 TITLE: A Document for Testing Doconce
-AUTHOR: Hans Petter Langtangen Email: hpl@simula.no at Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo
-AUTHOR: Kaare Dump at Segfault Inc, Cyberspace
+AUTHOR: Hans Petter Langtangen Email: hpl@simula.no at Center for Biomedical Computing, Simula Research Laboratory & Department of Informatics, University of Oslo
+AUTHOR: Kaare Dump at Segfault, Cyberspace
 AUTHOR: A. Dummy Author
-AUTHOR: I. S. Overworked at Inst1 and Inst2, Somewhere and Third Inst, Elsewhere and Fourth Inst
+AUTHOR: I. S. Overworked and Outburned at Inst1 & Inst2, Somewhere & Third Inst, Elsewhere & Fourth Inst
 AUTHOR: J. Doe mail: j_doe@cyberspace.com
 DATE: today
 
@@ -406,32 +406,63 @@ one table:
   |--------------------------------|
 
 And one with math headings (that are expanded and must be treated
-accordingly) and verbatim heading and entry:
+accordingly), verbatim heading and entry, and no space around the pipe
+symbol:
 
-|-------------------------------|
-|$i$ | $h_i$|$\bar T_i$ | `L_i` |
-|-l-----r---------r---------r---|
-|0   |0     |288        |-0.0065|
-|1   |11,000|216        |0.0	|
-|2   |20,000|216        |0.001	|
-|3   |32,000|228        |0.0028	|
-|4   |47,000|270        |0.0	|
-|5   |51,000|270        |-0.0028|
-|6   |71,000|214        |`NaN`	|
-|-------------------------------|
+|--------------------------|
+|$i$|$h_i$|$\bar T_i$|`L_i`|
+|-l-----r-------r----r-----|
+|0   |0     |288   |-0.0065|
+|1   |11,000|216   |0.0	   |
+|2   |20,000|216   |0.001  |
+|3   |32,000|228   |0.0028 |
+|4   |47,000|270   |0.0	   |
+|5   |51,000|270   |-0.0028|
+|6   |71,000|214   |`NaN`  |
+|--------------------------|
 
 And add one with verbatim headings (with underscores),
 and rows starting with `|-` because of a negative number,
-and `|` right after verbatim word (with no space):
+and `|` right before and after verbatim word (with no space):
+## +`v_2` does not work, need space + `v_2`
 
 |-----------------------------------------|
-| exact | `v_1`   | $a_i$ + `v_2`|`verb_3_`|
+| exact | `v_1`   |$a_i$ + `v_2`|`verb_3_`|
 |---r--------r---------r-----------r------|
 |9      | 9.62    | 5.57      |  8.98     |
 |-20    | -23.39  | -7.65     | -19.93    |
 |10     | 17.74   | -4.50     |  9.96     |
 |0      | -9.19   | 4.13      | -0.26     |
 |-----------------------------------------|
+
+Finally, a table with math
+# #if FORMAT in ("rst", "html", "sphinx", "pandoc")
+(`bm` that expands to `boldsymbol`, was tricky, but
+cleanly handled now)
+# #endif
+and URLs.
+
+# Mako code to expand URLs in the table
+# (These types of tables did not work before Jan 2014)
+<%
+def tfig(fileno):
+    p = '../doc/src/manual/mov/wave_frames/frame_0' + fileno + '.png'  # path
+    if FORMAT in ("latex", "pdflatex"):
+        text = r'\includegraphics[width=2cm]{%s}' % p
+    elif FORMAT == "html":
+        text = '<a href="%s"><img src="%s" width="300"></a>' % (p, p)
+    else:
+        text = '"`%s`": "%s"' % (fileno, p)  # plain link
+    return text
+%>
+
+|-----------------------------------------------------------|
+|                         |                |                |
+|--------------c------------------c----------------c--------|
+| $\mathcal{L}=0$         | ${tfig('080')} | ${tfig('085')} |
+| $a=b$                   | ${tfig('090')} | ${tfig('095')} |
+| $\nabla\cdot\bm{u} =0 $ | ${tfig('100')} | ${tfig('105')} |
+|-----------------------------------------------------------|
 
 
 ===== A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2` =====
@@ -1330,7 +1361,7 @@ $$
 <center><h1>A Document for Testing Doconce</h1></center>  <!-- document title -->
 
 <p>
-<!-- author(s): Hans Petter Langtangen, Kaare Dump, A. Dummy Author, I. S. Overworked, and J. Doe -->
+<!-- author(s): Hans Petter Langtangen, Kaare Dump, A. Dummy Author, I. S. Overworked and Outburned, and J. Doe -->
 
 <center>
 <b>Hans Petter Langtangen</b> [1, 2] (<tt>hpl at simula.no</tt>)
@@ -1345,7 +1376,7 @@ $$
 </center>
 
 <center>
-<b>I. S. Overworked</b> [4, 5, 6, 7]
+<b>I. S. Overworked and Outburned</b> [4, 5, 6, 7]
 </center>
 
 <center>
@@ -1358,7 +1389,7 @@ $$
 
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
-<center>[3] <b>Segfault Inc, Cyberspace</b></center>
+<center>[3] <b>Segfault, Cyberspace</b></center>
 <center>[4] <b>Inst1</b></center>
 <center>[5] <b>Inst2, Somewhere</b></center>
 <center>[6] <b>Third Inst, Elsewhere</b></center>
@@ -1484,6 +1515,7 @@ final,                   % or draft (marks overfull hboxes)
 % Style: T2 (Springer)
 \documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmono}
 \usepackage{t2}
+\special{papersize=193mm,260mm}
 % #elif LATEX_STYLE == "Springer_llcse"
 % Style: Lecture Notes in Computer Science (Springer)
 \documentclass[oribib]{llncs}
@@ -1535,6 +1567,7 @@ final,                   % or draft (marks overfull hboxes)
 % Examples of font types (Ubuntu): Gentium Book Basic (Palatino-like),
 % Liberation Sans (Helvetica-like), Norasi, Purisa (handwriting), UnDoum
 % #else
+\usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
 % #ifdef HELVETICA
@@ -1548,6 +1581,7 @@ final,                   % or draft (marks overfull hboxes)
 \linespread{1.05}            % Palatino needs extra line spread to look nice
 % #endif
 % #endif
+\usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
@@ -1747,6 +1781,7 @@ final,                   % or draft (marks overfull hboxes)
 
 % insert custom LaTeX commands...
 
+\raggedbottom
 \makeindex
 
 %-------------------- end preamble ----------------------
@@ -1814,9 +1849,9 @@ A Document for Testing Doconce
 % ----------------- author(s) -------------------------
 % #if LATEX_HEADING == "traditional"
 \author{Hans Petter Langtangen\footnote{Email: \texttt{hpl@simula.no}. Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo.}
-\and Kaare Dump\footnote{Segfault Inc, Cyberspace.}
+\and Kaare Dump\footnote{Segfault, Cyberspace.}
 \and A. Dummy Author
-\and I. S. Overworked\footnote{Inst1; Inst2, Somewhere; Third Inst, Elsewhere; and Fourth Inst.}
+\and I. S. Overworked and Outburned\footnote{Inst1; Inst2, Somewhere; Third Inst, Elsewhere; and Fourth Inst.}
 \and J. Doe\footnote{Email: \texttt{j\_doe@cyberspace.com}.}}
 
 % #elif LATEX_HEADING == "titlepage"
@@ -1828,7 +1863,7 @@ A Document for Testing Doconce
     
     {\Large\textsf{A. Dummy Author${}^{}$}}\\ [3mm]
     
-    {\Large\textsf{I. S. Overworked${}^{4, 5, 6, 7}$}}\\ [3mm]
+    {\Large\textsf{I. S. Overworked and Outburned${}^{4, 5, 6, 7}$}}\\ [3mm]
     
     {\Large\textsf{J. Doe${}^{}$ (\texttt{j\_doe@cyberspace.com})}}\\ [3mm]
     
@@ -1836,17 +1871,17 @@ A Document for Testing Doconce
 
 {\large\textsf{${}^1$Center for Biomedical Computing, Simula Research Laboratory} \\ [1.5mm]}
 {\large\textsf{${}^2$Department of Informatics, University of Oslo} \\ [1.5mm]}
-{\large\textsf{${}^3$Segfault Inc, Cyberspace} \\ [1.5mm]}
+{\large\textsf{${}^3$Segfault, Cyberspace} \\ [1.5mm]}
 {\large\textsf{${}^4$Inst1} \\ [1.5mm]}
 {\large\textsf{${}^5$Inst2, Somewhere} \\ [1.5mm]}
 {\large\textsf{${}^6$Third Inst, Elsewhere} \\ [1.5mm]}
 {\large\textsf{${}^7$Fourth Inst} \\ [1.5mm]}
 % #elif LATEX_HEADING == "Springer_collection"
 
-\author{Hans Petter Langtangen and Kaare Dump and A. Dummy Author and I. S. Overworked and J. Doe}
+\author{Hans Petter Langtangen and Kaare Dump and A. Dummy Author and I. S. Overworked and Outburned and J. Doe}
 % Short version of authors:
 %\authorrunning{...}
-\institute{Hans Petter Langtangen\at Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo\email{hpl@simula.no} \and Kaare Dump\at Segfault Inc, Cyberspace \and A. Dummy Author \and I. S. Overworked\at Inst1 and Inst2, Somewhere and Third Inst, Elsewhere and and Fourth Inst \and J. Doe\email{j_doe@cyberspace.com}}
+\institute{Hans Petter Langtangen\at Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo\email{hpl@simula.no} \and Kaare Dump\at Segfault, Cyberspace \and A. Dummy Author \and I. S. Overworked and Outburned\at Inst1 and Inst2, Somewhere and Third Inst, Elsewhere and and Fourth Inst \and J. Doe\email{j_doe@cyberspace.com}}
 
 % #elif LATEX_HEADING == "beamer"
 \author{Hans Petter Langtangen\inst{1,2}
@@ -1855,14 +1890,14 @@ Kaare Dump\inst{3}
 \and
 A. Dummy Author\inst{}
 \and
-I. S. Overworked\inst{4,5,6,7}
+I. S. Overworked and Outburned\inst{4,5,6,7}
 \and
 J. Doe\inst{}}
 \institute{Center for Biomedical Computing, Simula Research Laboratory\inst{1}
 \and
 Department of Informatics, University of Oslo\inst{2}
 \and
-Segfault Inc, Cyberspace\inst{3}
+Segfault, Cyberspace\inst{3}
 \and
 Inst1\inst{4}
 \and
@@ -1889,7 +1924,7 @@ Fourth Inst\inst{7}}
 
 
 \begin{center}
-{\bf I. S. Overworked${}^{4, 5, 6, 7}$} \\ [0mm]
+{\bf I. S. Overworked and Outburned${}^{4, 5, 6, 7}$} \\ [0mm]
 \end{center}
 
 
@@ -1901,7 +1936,7 @@ Fourth Inst\inst{7}}
 % List of all institutions:
 \centerline{{\small ${}^1$Center for Biomedical Computing, Simula Research Laboratory}}
 \centerline{{\small ${}^2$Department of Informatics, University of Oslo}}
-\centerline{{\small ${}^3$Segfault Inc, Cyberspace}}
+\centerline{{\small ${}^3$Segfault, Cyberspace}}
 \centerline{{\small ${}^4$Inst1}}
 \centerline{{\small ${}^5$Inst2, Somewhere}}
 \centerline{{\small ${}^6$Third Inst, Elsewhere}}
@@ -2392,7 +2427,8 @@ one table:
 
 \noindent
 And one with math headings (that are expanded and must be treated
-accordingly) and verbatim heading and entry:
+accordingly), verbatim heading and entry, and no space around the pipe
+symbol:
 
 
 \begin{quote}\begin{tabular}{lrrr}
@@ -2412,7 +2448,7 @@ accordingly) and verbatim heading and entry:
 \noindent
 And add one with verbatim headings (with underscores),
 and rows starting with \code{|-} because of a negative number,
-and \code{|} right after verbatim word (with no space):
+and \code{|} right before and after verbatim word (with no space):
 
 
 \begin{quote}\begin{tabular}{rrrr}
@@ -2423,6 +2459,25 @@ and \code{|} right after verbatim word (with no space):
 -20                & -23.39             & -7.65              & -19.93             \\
 10                 & 17.74              & -4.50              & 9.96               \\
 0                  & -9.19              & 4.13               & -0.26              \\
+\hline
+\end{tabular}\end{quote}
+
+\noindent
+Finally, a table with math
+and URLs.
+
+% Mako code to expand URLs in the table
+% (These types of tables did not work before Jan 2014)
+
+
+
+\begin{quote}\begin{tabular}{ccc}
+\hline
+ \\
+\hline
+$\mathcal{L}=0$                                                               & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0080.png} & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0085.png} \\
+$a=b$                                                                         & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0090.png} & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0095.png} \\
+$\nabla\cdot\bm{u} =0 $                                                       & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0100.png} & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0105.png} \\
 \hline
 \end{tabular}\end{quote}
 
@@ -3256,8 +3311,10 @@ final,                   % or draft (marks overfull hboxes)
 \usepackage{minted}
 \usemintedstyle{default}
 
+\usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
+\usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
@@ -3379,6 +3436,7 @@ final,                   % or draft (marks overfull hboxes)
 \usepackage{theorem}
 \newtheorem{theorem}{Theorem}[section]
 
+\raggedbottom
 \makeindex
 
 %-------------------- end preamble ----------------------
@@ -3418,7 +3476,7 @@ final,                   % or draft (marks overfull hboxes)
     
     {\Large\textsf{A. Dummy Author${}^{}$}}\\ [3mm]
     
-    {\Large\textsf{I. S. Overworked${}^{4, 5, 6, 7}$}}\\ [3mm]
+    {\Large\textsf{I. S. Overworked and Outburned${}^{4, 5, 6, 7}$}}\\ [3mm]
     
     {\Large\textsf{J. Doe${}^{}$ (\texttt{j\_doe@cyberspace.com})}}\\ [3mm]
     
@@ -3426,7 +3484,7 @@ final,                   % or draft (marks overfull hboxes)
 
 {\large\textsf{${}^1$Center for Biomedical Computing, Simula Research Laboratory} \\ [1.5mm]}
 {\large\textsf{${}^2$Department of Informatics, University of Oslo} \\ [1.5mm]}
-{\large\textsf{${}^3$Segfault Inc, Cyberspace} \\ [1.5mm]}
+{\large\textsf{${}^3$Segfault, Cyberspace} \\ [1.5mm]}
 {\large\textsf{${}^4$Inst1} \\ [1.5mm]}
 {\large\textsf{${}^5$Inst2, Somewhere} \\ [1.5mm]}
 {\large\textsf{${}^6$Third Inst, Elsewhere} \\ [1.5mm]}
@@ -3935,7 +3993,8 @@ one table:
 
 \noindent
 And one with math headings (that are expanded and must be treated
-accordingly) and verbatim heading and entry:
+accordingly), verbatim heading and entry, and no space around the pipe
+symbol:
 
 
 \begin{quote}\begin{tabular}{lrrr}
@@ -3955,7 +4014,7 @@ accordingly) and verbatim heading and entry:
 \noindent
 And add one with verbatim headings (with underscores),
 and rows starting with {\fontsize{10pt}{10pt}\Verb!|-!} because of a negative number,
-and {\fontsize{10pt}{10pt}\Verb!|!} right after verbatim word (with no space):
+and {\fontsize{10pt}{10pt}\Verb!|!} right before and after verbatim word (with no space):
 
 
 \begin{quote}\begin{tabular}{rrrr}
@@ -3966,6 +4025,25 @@ and {\fontsize{10pt}{10pt}\Verb!|!} right after verbatim word (with no space):
 -20                & -23.39             & -7.65              & -19.93             \\
 10                 & 17.74              & -4.50              & 9.96               \\
 0                  & -9.19              & 4.13               & -0.26              \\
+\hline
+\end{tabular}\end{quote}
+
+\noindent
+Finally, a table with math
+and URLs.
+
+% Mako code to expand URLs in the table
+% (These types of tables did not work before Jan 2014)
+
+
+
+\begin{quote}\begin{tabular}{ccc}
+\hline
+ \\
+\hline
+$\mathcal{L}=0$                                                               & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0080.png} & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0085.png} \\
+$a=b$                                                                         & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0090.png} & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0095.png} \\
+$\nabla\cdot\bm{u} =0 $                                                       & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0100.png} & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0105.png} \\
 \hline
 \end{tabular}\end{quote}
 
@@ -4800,11 +4878,13 @@ final,                   % or draft (marks overfull hboxes)
 \usepackage{anslistings,minted,fancyvrb} % packages needed for verbatim environments
 
 
+\usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
 % Set palatino as the default font family:
 \usepackage[sc]{mathpazo}    % Palatino fonts
 \linespread{1.05}            % Palatino needs extra line spread to look nice
+\usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
@@ -4886,6 +4966,7 @@ final,                   % or draft (marks overfull hboxes)
 \usepackage{theorem}
 \newtheorem{theorem}{Theorem}[section]
 
+\raggedbottom
 \makeindex
 
 %-------------------- end preamble ----------------------
@@ -4930,7 +5011,7 @@ A Document for Testing Doconce
 
 
 \begin{center}
-{\bf I. S. Overworked${}^{4, 5, 6, 7}$} \\ [0mm]
+{\bf I. S. Overworked and Outburned${}^{4, 5, 6, 7}$} \\ [0mm]
 \end{center}
 
 
@@ -4942,7 +5023,7 @@ A Document for Testing Doconce
 % List of all institutions:
 \centerline{{\small ${}^1$Center for Biomedical Computing, Simula Research Laboratory}}
 \centerline{{\small ${}^2$Department of Informatics, University of Oslo}}
-\centerline{{\small ${}^3$Segfault Inc, Cyberspace}}
+\centerline{{\small ${}^3$Segfault, Cyberspace}}
 \centerline{{\small ${}^4$Inst1}}
 \centerline{{\small ${}^5$Inst2, Somewhere}}
 \centerline{{\small ${}^6$Third Inst, Elsewhere}}
@@ -5413,7 +5494,8 @@ one table:
 
 \noindent
 And one with math headings (that are expanded and must be treated
-accordingly) and verbatim heading and entry:
+accordingly), verbatim heading and entry, and no space around the pipe
+symbol:
 
 
 \begin{quote}\begin{tabular}{lrrr}
@@ -5433,7 +5515,7 @@ accordingly) and verbatim heading and entry:
 \noindent
 And add one with verbatim headings (with underscores),
 and rows starting with \Verb!|-! because of a negative number,
-and \Verb!|! right after verbatim word (with no space):
+and \Verb!|! right before and after verbatim word (with no space):
 
 
 \begin{quote}\begin{tabular}{rrrr}
@@ -5444,6 +5526,25 @@ and \Verb!|! right after verbatim word (with no space):
 -20                & -23.39             & -7.65              & -19.93             \\
 10                 & 17.74              & -4.50              & 9.96               \\
 0                  & -9.19              & 4.13               & -0.26              \\
+\hline
+\end{tabular}\end{quote}
+
+\noindent
+Finally, a table with math
+and URLs.
+
+% Mako code to expand URLs in the table
+% (These types of tables did not work before Jan 2014)
+
+
+
+\begin{quote}\begin{tabular}{ccc}
+\hline
+ \\
+\hline
+$\mathcal{L}=0$                                                               & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0080.png} & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0085.png} \\
+$a=b$                                                                         & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0090.png} & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0095.png} \\
+$\nabla\cdot\bm{u} =0 $                                                       & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0100.png} & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0105.png} \\
 \hline
 \end{tabular}\end{quote}
 
@@ -6238,7 +6339,7 @@ in a separate document: \Verb!admon.do.txt!.
 A Document for Testing Doconce
 ==============================
 
-:Author: Hans Petter Langtangen (hpl at simula.no), Kaare Dump, A. Dummy Author, I. S. Overworked, J. Doe (j_doe at cyberspace.com)
+:Author: Hans Petter Langtangen (hpl at simula.no), Kaare Dump, A. Dummy Author, I. S. Overworked and Outburned, J. Doe (j_doe at cyberspace.com)
 :Date: Jan 32, 2100
 
 .. contents:: Table of Contents
@@ -6678,7 +6779,8 @@ one table:
 ============  ============  ============  
 
 And one with math headings (that are expanded and must be treated
-accordingly) and verbatim heading and entry:
+accordingly), verbatim heading and entry, and no space around the pipe
+symbol:
 
 ========  ========  ========  ========  
    i        h_i     \bar T_i  ``L_i``   
@@ -6694,7 +6796,7 @@ accordingly) and verbatim heading and entry:
 
 And add one with verbatim headings (with underscores),
 and rows starting with ``|-`` because of a negative number,
-and ``|`` right after verbatim word (with no space):
+and ``|`` right before and after verbatim word (with no space):
 
 =============  =============  =============  =============  
     exact         ``v_1``     a_i + ``v_2``   ``verb_3_``   
@@ -6704,6 +6806,25 @@ and ``|`` right after verbatim word (with no space):
            10          17.74          -4.50           9.96  
             0          -9.19           4.13          -0.26  
 =============  =============  =============  =============  
+
+Finally, a table with math
+(``bm`` that expands to ``boldsymbol``, was tricky, but
+cleanly handled now)
+and URLs.
+
+.. Mako code to expand URLs in the table
+
+.. (These types of tables did not work before Jan 2014)
+
+
+
+=========================================================  =========================================================  =========================================================  
+
+=========================================================  =========================================================  =========================================================  
+                      \mathcal{L}=0                        `080 <../doc/src/manual/mov/wave_frames/frame_0080.png>`_  `085 <../doc/src/manual/mov/wave_frames/frame_0085.png>`_  
+                           a=b                             `090 <../doc/src/manual/mov/wave_frames/frame_0090.png>`_  `095 <../doc/src/manual/mov/wave_frames/frame_0095.png>`_  
+                   \nabla\cdot\bm{u} =0                    `100 <../doc/src/manual/mov/wave_frames/frame_0100.png>`_  `105 <../doc/src/manual/mov/wave_frames/frame_0105.png>`_  
+=========================================================  =========================================================  =========================================================  
 
 
 A test of verbatim words in heading with subscript a_i: ``my_file_v1`` and ``my_file_v2``
@@ -7597,7 +7718,7 @@ in a separate document: ``admon.do.txt``.
 A Document for Testing Doconce
 ==============================
 
-:Author: Hans Petter Langtangen (hpl at simula.no), Kaare Dump, A. Dummy Author, I. S. Overworked, J. Doe (j_doe at cyberspace.com)
+:Author: Hans Petter Langtangen (hpl at simula.no), Kaare Dump, A. Dummy Author, I. S. Overworked and Outburned, J. Doe (j_doe at cyberspace.com)
 :Date: Jan 32, 2100
 
 .. !split
@@ -8090,7 +8211,8 @@ one table:
 ============  ============  ============  
 
 And one with math headings (that are expanded and must be treated
-accordingly) and verbatim heading and entry:
+accordingly), verbatim heading and entry, and no space around the pipe
+symbol:
 
 ================  ================  ================  ================  
    :math:`i`        :math:`h_i`     :math:`\bar T_i`      ``L_i``       
@@ -8106,7 +8228,7 @@ accordingly) and verbatim heading and entry:
 
 And add one with verbatim headings (with underscores),
 and rows starting with ``|-`` because of a negative number,
-and ``|`` right after verbatim word (with no space):
+and ``|`` right before and after verbatim word (with no space):
 
 =====================  =====================  =====================  =====================  
         exact                 ``v_1``         :math:`a_i` + ``v_2``       ``verb_3_``       
@@ -8116,6 +8238,25 @@ and ``|`` right after verbatim word (with no space):
                    10                  17.74                  -4.50                   9.96  
                     0                  -9.19                   4.13                  -0.26  
 =====================  =====================  =====================  =====================  
+
+Finally, a table with math
+(``bm`` that expands to ``boldsymbol``, was tricky, but
+cleanly handled now)
+and URLs.
+
+.. Mako code to expand URLs in the table
+
+.. (These types of tables did not work before Jan 2014)
+
+
+
+=========================================================  =========================================================  =========================================================  
+
+=========================================================  =========================================================  =========================================================  
+                  :math:`\mathcal{L}=0`                    `080 <../doc/src/manual/mov/wave_frames/frame_0080.png>`_  `085 <../doc/src/manual/mov/wave_frames/frame_0085.png>`_  
+                       :math:`a=b`                         `090 <../doc/src/manual/mov/wave_frames/frame_0090.png>`_  `095 <../doc/src/manual/mov/wave_frames/frame_0095.png>`_  
+          :math:`\nabla\cdot\boldsymbol{u} =0 `            `100 <../doc/src/manual/mov/wave_frames/frame_0100.png>`_  `105 <../doc/src/manual/mov/wave_frames/frame_0105.png>`_  
+=========================================================  =========================================================  =========================================================  
 
 
 A test of verbatim words in heading with subscript :math:`a_i`: ``my_file_v1`` and ``my_file_v2``
@@ -9108,7 +9249,7 @@ in a separate document: ``admon.do.txt``.
 ************** File: testdoc.gwiki *****************
 #summary A Document for Testing Doconce
 
-By *Hans Petter Langtangen* (hpl at simula.no), *Kaare Dump*, *A. Dummy Author*, *I. S. Overworked*, and *J. Doe* (j_doe at cyberspace.com)
+By *Hans Petter Langtangen* (hpl at simula.no), *Kaare Dump*, *A. Dummy Author*, *I. S. Overworked and Outburned*, and *J. Doe* (j_doe at cyberspace.com)
 ==== Jan 32, 2100 ====
 
 <wiki: toc max_depth="2" />
@@ -9501,7 +9642,7 @@ Let us take this table from the manual:
 
 
 
- ||      *time*       ||    *velocity*     ||  *acceleration*   ||
+ ||      _time_       ||    _velocity_     ||  _acceleration_   ||
  ||  0.0              ||  1.4186           ||  -5.01            ||
  ||  2.0              ||  1.376512         ||  11.919           ||
  ||  4.0              ||  1.1E+1           ||  14.717624        ||
@@ -9523,14 +9664,15 @@ Here is yet another table to test that we can handle more than
 one table:
 
 
- ||      *time*       ||    *velocity*     ||  *acceleration*   ||
+ ||      _time_       ||    _velocity_     ||  _acceleration_   ||
  ||  0.0              ||  1.4186           ||  -5.01            ||
  ||  1.0              ||  1.376512         ||  11.919           ||
  ||  3.0              ||  1.1E+1           ||  14.717624        ||
 
 
 And one with math headings (that are expanded and must be treated
-accordingly) and verbatim heading and entry:
+accordingly), verbatim heading and entry, and no space around the pipe
+symbol:
 
 
  ||     _`i`_       ||    _`h_i`_      ||  _`\bar T_i`_   ||    _`L_i`_      ||
@@ -9545,14 +9687,28 @@ accordingly) and verbatim heading and entry:
 
 And add one with verbatim headings (with underscores),
 and rows starting with `|-` because of a negative number,
-and `|` right after verbatim word (with no space):
+and `|` right before and after verbatim word (with no space):
 
 
- ||      *exact*       ||      _`v_1`_       ||  _`a_i` + `v_2`_   ||    _`verb_3_`_     ||
+ ||      _exact_       ||      _`v_1`_       ||  _`a_i` + `v_2`_   ||    _`verb_3_`_     ||
  ||  9                 ||  9.62              ||  5.57              ||  8.98              ||
  ||  -20               ||  -23.39            ||  -7.65             ||  -19.93            ||
  ||  10                ||  17.74             ||  -4.50             ||  9.96              ||
  ||  0                 ||  -9.19             ||  4.13              ||  -0.26             ||
+
+
+Finally, a table with math
+and URLs.
+
+<wiki:comment> Mako code to expand URLs in the table </wiki:comment>
+<wiki:comment> (These types of tables did not work before Jan 2014) </wiki:comment>
+
+
+
+ ||
+ ||  `\mathcal{L}=0`                                              ||  [../doc/src/manual/mov/wave_frames/frame_0080.png `080`]     ||  [../doc/src/manual/mov/wave_frames/frame_0085.png `085`]     ||
+ ||  `a=b`                                                        ||  [../doc/src/manual/mov/wave_frames/frame_0090.png `090`]     ||  [../doc/src/manual/mov/wave_frames/frame_0095.png `095`]     ||
+ ||  `\nabla\cdot\bm{u} =0 `                                      ||  [../doc/src/manual/mov/wave_frames/frame_0100.png `100`]     ||  [../doc/src/manual/mov/wave_frames/frame_0105.png `105`]     ||
 
 
 
@@ -10234,7 +10390,7 @@ in a separate document: `admon.do.txt`.
 ************** File: testdoc.mwiki *****************
 #TITLE (actually governed by the filename): A Document for Testing Doconce
 
-By '''Hans Petter Langtangen''' (hpl at simula.no), '''Kaare Dump''', '''A. Dummy Author''', '''I. S. Overworked''', and '''J. Doe''' (j_doe at cyberspace.com)
+By '''Hans Petter Langtangen''' (hpl at simula.no), '''Kaare Dump''', '''A. Dummy Author''', '''I. S. Overworked and Outburned''', and '''J. Doe''' (j_doe at cyberspace.com)
 ==== Jan 32, 2100 ====
 
 __TOC__
@@ -10629,7 +10785,8 @@ one table:
 <tr><td align="left">   3.0             </td> <td align="left">   1.1E+1          </td> <td align="left">   14.717624       </td> </tr>
 </table>
 And one with math headings (that are expanded and must be treated
-accordingly) and verbatim heading and entry:
+accordingly), verbatim heading and entry, and no space around the pipe
+symbol:
 
 <table border="1">
 <tr><td align="center"><b>     <math>i</math>    </b></td> <td align="center"><b>    <math>h_i</math>   </b></td> <td align="center"><b> <math>\bar T_i</math> </b></td> <td align="center"><b>    <code>L_i</code>   </b></td> </tr>
@@ -10643,7 +10800,7 @@ accordingly) and verbatim heading and entry:
 </table>
 And add one with verbatim headings (with underscores),
 and rows starting with <code>|-</code> because of a negative number,
-and <code>|</code> right after verbatim word (with no space):
+and <code>|</code> right before and after verbatim word (with no space):
 
 <table border="1">
 <tr><td align="center"><b>                exact                </b></td> <td align="center"><b>           <code>v_1</code>          </b></td> <td align="center"><b> <math>a_i</math> + <code>v_2</code> </b></td> <td align="center"><b>         <code>verb_3_</code>        </b></td> </tr>
@@ -10651,6 +10808,19 @@ and <code>|</code> right after verbatim word (with no space):
 <tr><td align="right">   -20                                    </td> <td align="right">   -23.39                                 </td> <td align="right">   -7.65                                  </td> <td align="right">   -19.93                                 </td> </tr>
 <tr><td align="right">   10                                     </td> <td align="right">   17.74                                  </td> <td align="right">   -4.50                                  </td> <td align="right">   9.96                                   </td> </tr>
 <tr><td align="right">   0                                      </td> <td align="right">   -9.19                                  </td> <td align="right">   4.13                                   </td> <td align="right">   -0.26                                  </td> </tr>
+</table>
+Finally, a table with math
+and URLs.
+
+<!-- Mako code to expand URLs in the table -->
+<!-- (These types of tables did not work before Jan 2014) -->
+
+
+<table border="1">
+<tr></tr>
+<tr><td align="center">   <math>\mathcal{L}=0</math>                                             </td> <td align="center">   [../doc/src/manual/mov/wave_frames/frame_0080.png <code>080</code>]    </td> <td align="center">   [../doc/src/manual/mov/wave_frames/frame_0085.png <code>085</code>]    </td> </tr>
+<tr><td align="center">   <math>a=b</math>                                                       </td> <td align="center">   [../doc/src/manual/mov/wave_frames/frame_0090.png <code>090</code>]    </td> <td align="center">   [../doc/src/manual/mov/wave_frames/frame_0095.png <code>095</code>]    </td> </tr>
+<tr><td align="center">   <math>\nabla\cdot\bm{u} =0 </math>                                     </td> <td align="center">   [../doc/src/manual/mov/wave_frames/frame_0100.png <code>100</code>]    </td> <td align="center">   [../doc/src/manual/mov/wave_frames/frame_0105.png <code>105</code>]    </td> </tr>
 </table>
 
 ==== A test of verbatim words in heading with subscript <math>a_i</math>: <code>my_file_v1</code> and <code>my_file_v2</code> ====
@@ -11463,7 +11633,7 @@ in a separate document: <code>admon.do.txt</code>.
 ************** File: testdoc.cwiki *****************
 #summary A Document for Testing Doconce
 <wiki:toc max_depth="2" />
-By **Hans Petter Langtangen** (hpl at simula.no), **Kaare Dump**, **A. Dummy Author**, **I. S. Overworked**, and **J. Doe** (j_doe at cyberspace.com)
+By **Hans Petter Langtangen** (hpl at simula.no), **Kaare Dump**, **A. Dummy Author**, **I. S. Overworked and Outburned**, and **J. Doe** (j_doe at cyberspace.com)
 === Jan 32, 2100 ===
 
 <<TableOfContents>>
@@ -11833,7 +12003,8 @@ one table:
 
 
 And one with math headings (that are expanded and must be treated
-accordingly) and verbatim heading and entry:
+accordingly), verbatim heading and entry, and no space around the pipe
+symbol:
 
 
  | ={{{i}}}            | ={{{h_i}}}          | ={{{\bar T_i}}}     | ={{{L_i}}}          |
@@ -11848,7 +12019,7 @@ accordingly) and verbatim heading and entry:
 
 And add one with verbatim headings (with underscores),
 and rows starting with {{{|-}}} because of a negative number,
-and {{{|}}} right after verbatim word (with no space):
+and {{{|}}} right before and after verbatim word (with no space):
 
 
  | =exact                     | ={{{v_1}}}                 | ={{{a_i}}} + {{{v_2}}}     | ={{{verb_3_}}}             |
@@ -11856,6 +12027,20 @@ and {{{|}}} right after verbatim word (with no space):
  |  -20                       |  -23.39                    |  -7.65                     |  -19.93                    |
  |  10                        |  17.74                     |  -4.50                     |  9.96                      |
  |  0                         |  -9.19                     |  4.13                      |  -0.26                     |
+
+
+Finally, a table with math
+and URLs.
+
+<wiki:comment> Mako code to expand URLs in the table </wiki:comment>
+<wiki:comment> (These types of tables did not work before Jan 2014) </wiki:comment>
+
+
+
+ |
+ |  {{{\mathcal{L}=0}}}                                    |  [[../doc/src/manual/mov/wave_frames/frame_0080.png     |  {{{080}}}]]                                            |  [[../doc/src/manual/mov/wave_frames/frame_0085.png     |  {{{085}}}]]                                            |
+ |  {{{a=b}}}                                              |  [[../doc/src/manual/mov/wave_frames/frame_0090.png     |  {{{090}}}]]                                            |  [[../doc/src/manual/mov/wave_frames/frame_0095.png     |  {{{095}}}]]                                            |
+ |  {{{\nabla\cdot\bm{u} =0 }}}                            |  [[../doc/src/manual/mov/wave_frames/frame_0100.png     |  {{{100}}}]]                                            |  [[../doc/src/manual/mov/wave_frames/frame_0105.png     |  {{{105}}}]]                                            |
 
 
 
@@ -12548,7 +12733,7 @@ in a separate document: {{{admon.do.txt}}}.
 
 ************** File: testdoc.st *****************
 TITLE: A Document for Testing Doconce
-BY: Hans Petter Langtangen (Center for Biomedical Computing, Simula Research Laboratory, and Department of Informatics, University of Oslo); Kaare Dump (Segfault Inc, Cyberspace); A. Dummy Author; I. S. Overworked (Inst1, and Inst2, Somewhere, and Third Inst, Elsewhere, and Fourth Inst); J. Doe
+BY: Hans Petter Langtangen (Center for Biomedical Computing, Simula Research Laboratory, and Department of Informatics, University of Oslo); Kaare Dump (Segfault, Cyberspace); A. Dummy Author; I. S. Overworked and Outburned (Inst1, and Inst2, Somewhere, and Third Inst, Elsewhere, and Fourth Inst); J. Doe
 DATE: Jan 32, 2100
 # !split
 
@@ -12899,7 +13084,8 @@ one table:
 ============  ============  ============  
 
 And one with math headings (that are expanded and must be treated
-accordingly) and verbatim heading and entry:
+accordingly), verbatim heading and entry, and no space around the pipe
+symbol:
 
 ========  ========  ========  ========  
    i        h_i     \bar T_i   'L_i'    
@@ -12915,7 +13101,7 @@ accordingly) and verbatim heading and entry:
 
 And add one with verbatim headings (with underscores),
 and rows starting with '|-' because of a negative number,
-and '|' right after verbatim word (with no space):
+and '|' right before and after verbatim word (with no space):
 
 ===========  ===========  ===========  ===========  
    exact        'v_1'     a_i + 'v_2'   'verb_3_'   
@@ -12925,6 +13111,19 @@ and '|' right after verbatim word (with no space):
          10        17.74        -4.50         9.96  
           0        -9.19         4.13        -0.26  
 ===========  ===========  ===========  ===========  
+
+Finally, a table with math
+and URLs.
+
+
+
+======================================================  ======================================================  ======================================================  
+
+======================================================  ======================================================  ======================================================  
+                    \mathcal{L}=0                       ../doc/src/manual/mov/wave_frames/frame_0080.png:'080'  ../doc/src/manual/mov/wave_frames/frame_0085.png:'085'  
+                         a=b                            ../doc/src/manual/mov/wave_frames/frame_0090.png:'090'  ../doc/src/manual/mov/wave_frames/frame_0095.png:'095'  
+                 \nabla\cdot\bm{u} =0                   ../doc/src/manual/mov/wave_frames/frame_0100.png:'100'  ../doc/src/manual/mov/wave_frames/frame_0105.png:'105'  
+======================================================  ======================================================  ======================================================  
 
 
 A test of verbatim words in heading with subscript a_i: 'my_file_v1' and 'my_file_v2'
@@ -13664,7 +13863,7 @@ in a separate document: 'admon.do.txt'.
 
 ************** File: testdoc.epytext *****************
 TITLE: A Document for Testing Doconce
-BY: Hans Petter Langtangen (Center for Biomedical Computing, Simula Research Laboratory, and Department of Informatics, University of Oslo); Kaare Dump (Segfault Inc, Cyberspace); A. Dummy Author; I. S. Overworked (Inst1, and Inst2, Somewhere, and Third Inst, Elsewhere, and Fourth Inst); J. Doe
+BY: Hans Petter Langtangen (Center for Biomedical Computing, Simula Research Laboratory, and Department of Informatics, University of Oslo); Kaare Dump (Segfault, Cyberspace); A. Dummy Author; I. S. Overworked and Outburned (Inst1, and Inst2, Somewhere, and Third Inst, Elsewhere, and Fourth Inst); J. Doe
 DATE: Jan 32, 2100
 # !split
 
@@ -14022,7 +14221,8 @@ one table:
 ============  ============  ============  
 
 And one with math headings (that are expanded and must be treated
-accordingly) and verbatim heading and entry:
+accordingly), verbatim heading and entry, and no space around the pipe
+symbol:
 
 ===========  ===========  ===========  ===========  
     M{i}        M{h_i}    M{\bar T_i}     C{L_i}    
@@ -14038,7 +14238,7 @@ accordingly) and verbatim heading and entry:
 
 And add one with verbatim headings (with underscores),
 and rows starting with C{|-} because of a negative number,
-and C{|} right after verbatim word (with no space):
+and C{|} right before and after verbatim word (with no space):
 
 ===============  ===============  ===============  ===============  
      exact            C{v_1}      M{a_i} + C{v_2}     C{verb_3_}    
@@ -14048,6 +14248,19 @@ and C{|} right after verbatim word (with no space):
              10            17.74            -4.50             9.96  
               0            -9.19             4.13            -0.26  
 ===============  ===============  ===============  ===============  
+
+Finally, a table with math
+and URLs.
+
+
+
+===========================================================  ===========================================================  ===========================================================  
+
+===========================================================  ===========================================================  ===========================================================  
+                      M{\mathcal{L}=0}                       U{C{080}<../doc/src/manual/mov/wave_frames/frame_0080.png>}  U{C{085}<../doc/src/manual/mov/wave_frames/frame_0085.png>}  
+                           M{a=b}                            U{C{090}<../doc/src/manual/mov/wave_frames/frame_0090.png>}  U{C{095}<../doc/src/manual/mov/wave_frames/frame_0095.png>}  
+                  M{\nabla\cdot\bm{u} =0 }                   U{C{100}<../doc/src/manual/mov/wave_frames/frame_0100.png>}  U{C{105}<../doc/src/manual/mov/wave_frames/frame_0105.png>}  
+===========================================================  ===========================================================  ===========================================================  
 
 
 A test of verbatim words in heading with subscript M{a_i}: C{my_file_v1} and C{my_file_v2}
@@ -14823,12 +15036,12 @@ A Document for Testing Doconce
 Hans Petter Langtangen [1, 2] (hpl@simula.no)
 Kaare Dump [3] 
 A. Dummy Author  
-I. S. Overworked [4, 5, 6, 7] 
+I. S. Overworked and Outburned [4, 5, 6, 7] 
 J. Doe  (j_doe@cyberspace.com)
 
 [1] Center for Biomedical Computing, Simula Research Laboratory
 [2] Department of Informatics, University of Oslo
-[3] Segfault Inc, Cyberspace
+[3] Segfault, Cyberspace
 [4] Inst1
 [5] Inst2, Somewhere
 [6] Third Inst, Elsewhere
@@ -15241,7 +15454,8 @@ one table:
 ============  ============  ============  
 
 And one with math headings (that are expanded and must be treated
-accordingly) and verbatim heading and entry:
+accordingly), verbatim heading and entry, and no space around the pipe
+symbol:
 
 ========  ========  ========  ========  
    i        h_i     \bar T_i    L_i     
@@ -15257,7 +15471,7 @@ accordingly) and verbatim heading and entry:
 
 And add one with verbatim headings (with underscores),
 and rows starting with |- because of a negative number,
-and | right after verbatim word (with no space):
+and | right before and after verbatim word (with no space):
 
 =========  =========  =========  =========  
   exact       v_1     a_i + v_2   verb_3_   
@@ -15267,6 +15481,19 @@ and | right after verbatim word (with no space):
        10      17.74      -4.50       9.96  
         0      -9.19       4.13      -0.26  
 =========  =========  =========  =========  
+
+Finally, a table with math
+and URLs.
+
+
+
+======================================================  ======================================================  ======================================================  
+
+======================================================  ======================================================  ======================================================  
+                    \mathcal{L}=0                       080 (../doc/src/manual/mov/wave_frames/frame_0080.png)  085 (../doc/src/manual/mov/wave_frames/frame_0085.png)  
+                         a=b                            090 (../doc/src/manual/mov/wave_frames/frame_0090.png)  095 (../doc/src/manual/mov/wave_frames/frame_0095.png)  
+                 \nabla\cdot\bm{u} =0                   100 (../doc/src/manual/mov/wave_frames/frame_0100.png)  105 (../doc/src/manual/mov/wave_frames/frame_0105.png)  
+======================================================  ======================================================  ======================================================  
 
 
 A test of verbatim words in heading with subscript a_i: my_file_v1 and my_file_v2
@@ -16064,7 +16291,7 @@ in a separate document: admon.do.txt.
 
 ************** File: testdoc.md *****************
 % A Document for Testing Doconce
-% Hans Petter Langtangen at Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo;  Kaare Dump at Segfault Inc, Cyberspace;  A. Dummy Author;  I. S. Overworked at Inst1 and Inst2, Somewhere and Third Inst, Elsewhere and Fourth Inst;  J. Doe
+% Hans Petter Langtangen at Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo;  Kaare Dump at Segfault, Cyberspace;  A. Dummy Author;  I. S. Overworked and Outburned at Inst1 and Inst2, Somewhere and Third Inst, Elsewhere and Fourth Inst;  J. Doe
 % Jan 32, 2100
 
 <!-- Table of contents: Run pandoc with --toc option -->
@@ -16476,7 +16703,8 @@ one table:
 
 
 And one with math headings (that are expanded and must be treated
-accordingly) and verbatim heading and entry:
+accordingly), verbatim heading and entry, and no space around the pipe
+symbol:
 
 
    $i$        $h_i$     $\bar T_i$    `L_i`     
@@ -16492,7 +16720,7 @@ accordingly) and verbatim heading and entry:
 
 And add one with verbatim headings (with underscores),
 and rows starting with `|-` because of a negative number,
-and `|` right after verbatim word (with no space):
+and `|` right before and after verbatim word (with no space):
 
 
     exact          `v_1`      $a_i$ + `v_2`    `verb_3_`    
@@ -16501,6 +16729,23 @@ and `|` right after verbatim word (with no space):
           -20         -23.39          -7.65         -19.93  
            10          17.74          -4.50           9.96  
             0          -9.19           4.13          -0.26  
+
+
+Finally, a table with math
+(`bm` that expands to `boldsymbol`, was tricky, but
+cleanly handled now)
+and URLs.
+
+<!-- Mako code to expand URLs in the table -->
+<!-- (These types of tables did not work before Jan 2014) -->
+
+
+
+
+---------------------------------------------------------  ---------------------------------------------------------  ---------------------------------------------------------  
+                     $\mathcal{L}=0$                       [`080`](../doc/src/manual/mov/wave_frames/frame_0080.png)  [`085`](../doc/src/manual/mov/wave_frames/frame_0085.png)  
+                          $a=b$                            [`090`](../doc/src/manual/mov/wave_frames/frame_0090.png)  [`095`](../doc/src/manual/mov/wave_frames/frame_0095.png)  
+             $\nabla\cdot\boldsymbol{u} =0 $               [`100`](../doc/src/manual/mov/wave_frames/frame_0100.png)  [`105`](../doc/src/manual/mov/wave_frames/frame_0105.png)  
 
 
 
@@ -17989,7 +18234,8 @@ in a separate document: `admon.do.txt`.
       "\n",
       "\n",
       "And one with math headings (that are expanded and must be treated\n",
-      "accordingly) and verbatim heading and entry:\n",
+      "accordingly), verbatim heading and entry, and no space around the pipe\n",
+      "symbol:\n",
       "\n",
       "\n",
       "   $i$        $h_i$     $\\bar T_i$    `L_i`     \n",
@@ -18005,7 +18251,7 @@ in a separate document: `admon.do.txt`.
       "\n",
       "And add one with verbatim headings (with underscores),\n",
       "and rows starting with `|-` because of a negative number,\n",
-      "and `|` right after verbatim word (with no space):\n",
+      "and `|` right before and after verbatim word (with no space):\n",
       "\n",
       "\n",
       "    exact          `v_1`      $a_i$ + `v_2`    `verb_3_`    \n",
@@ -18014,6 +18260,21 @@ in a separate document: `admon.do.txt`.
       "          -20         -23.39          -7.65         -19.93  \n",
       "           10          17.74          -4.50           9.96  \n",
       "            0          -9.19           4.13          -0.26  \n",
+      "\n",
+      "\n",
+      "Finally, a table with math\n",
+      "and URLs.\n",
+      "\n",
+      "<!-- Mako code to expand URLs in the table -->\n",
+      "<!-- (These types of tables did not work before Jan 2014) -->\n",
+      "\n",
+      "\n",
+      "\n",
+      "\n",
+      "---------------------------------------------------------  ---------------------------------------------------------  ---------------------------------------------------------  \n",
+      "                     $\\mathcal{L}=0$                       [`080`](../doc/src/manual/mov/wave_frames/frame_0080.png)  [`085`](../doc/src/manual/mov/wave_frames/frame_0085.png)  \n",
+      "                          $a=b$                            [`090`](../doc/src/manual/mov/wave_frames/frame_0090.png)  [`095`](../doc/src/manual/mov/wave_frames/frame_0095.png)  \n",
+      "             $\\nabla\\cdot\\boldsymbol{u} =0 $               [`100`](../doc/src/manual/mov/wave_frames/frame_0100.png)  [`105`](../doc/src/manual/mov/wave_frames/frame_0105.png)  \n",
       "\n",
       "\n",
       "\n",
@@ -19430,7 +19691,7 @@ output2</code></pre>
 </tr>
 </tbody>
 </table>
-<p>And one with math headings (that are expanded and must be treated accordingly) and verbatim heading and entry:</p>
+<p>And one with math headings (that are expanded and must be treated accordingly), verbatim heading and entry, and no space around the pipe symbol:</p>
 </blockquote>
 <blockquote>
 <table>
@@ -19479,7 +19740,7 @@ output2</code></pre>
 </tr>
 </tbody>
 </table>
-<p>And add one with verbatim headings (with underscores), and rows starting with <code>|-</code> because of a negative number, and <code>|</code> right after verbatim word (with no space):</p>
+<p>And add one with verbatim headings (with underscores), and rows starting with <code>|-</code> because of a negative number, and <code>|</code> right before and after verbatim word (with no space):</p>
 </blockquote>
 <blockquote>
 <table>
@@ -19510,8 +19771,12 @@ output2</code></pre>
 </tr>
 </tbody>
 </table>
-<h2>A test of verbatim words in heading with subscript <span class="math">\(a_i\)</span>: <code>my\_file\_v1</code> and <code>my\_file\_v2</code></h2>
+<p>Finally, a table with math and URLs.</p>
 </blockquote>
+<blockquote>
+ccc<br /><span class="math">\(\mathcal{L}=0\)</span> &amp; <img src="../doc/src/manual/mov/wave_frames/frame_0080.png" alt="image" /> &amp; <img src="../doc/src/manual/mov/wave_frames/frame_0085.png" alt="image" /><br /><span class="math">\(a=b\)</span> &amp; <img src="../doc/src/manual/mov/wave_frames/frame_0090.png" alt="image" /> &amp; <img src="../doc/src/manual/mov/wave_frames/frame_0095.png" alt="image" /><br /><span class="math">\(\nabla\cdot\bm{u} =0 \)</span> &amp; <img src="../doc/src/manual/mov/wave_frames/frame_0100.png" alt="image" /> &amp; <img src="../doc/src/manual/mov/wave_frames/frame_0105.png" alt="image" /><br />
+</blockquote>
+<h2 id="a-test-of-verbatim-words-in-heading-with-subscript-a_i-my_file_v1-and-my_file_v2">A test of verbatim words in heading with subscript <span class="math">\(a_i\)</span>: <code>my\_file\_v1</code> and <code>my\_file\_v2</code></h2>
 <h4 id="files-my_file_v1.py-and-my_file_v2.py-define-some-math-a_i-1.">Files <code>my\_file\_v1.py</code> and <code>my\_file\_v2.py</code> define some math <span class="math">\(a_{i-1}\)</span>.</h4>
 <p>Here is some text.</p>
 <h2 id="bibliography-test">Bibliography test</h2>
@@ -19779,9 +20044,9 @@ warranty, not even for merchantability or fitness for a particular purpose.
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
   <meta name="author" content="Hans Petter Langtangen at Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo" />
-  <meta name="author" content="Kaare Dump at Segfault Inc, Cyberspace" />
+  <meta name="author" content="Kaare Dump at Segfault, Cyberspace" />
   <meta name="author" content="A. Dummy Author" />
-  <meta name="author" content="I. S. Overworked at Inst1 and Inst2, Somewhere and Third Inst, Elsewhere and Fourth Inst" />
+  <meta name="author" content="I. S. Overworked and Outburned at Inst1 and Inst2, Somewhere and Third Inst, Elsewhere and Fourth Inst" />
   <meta name="author" content="J. Doe" />
   <title>A Document for Testing Doconce</title>
   <style type="text/css">code{white-space: pre;}</style>
@@ -19810,9 +20075,9 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <div id="header">
 <h1 class="title">A Document for Testing Doconce</h1>
 <h2 class="author">Hans Petter Langtangen at Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo</h2>
-<h2 class="author">Kaare Dump at Segfault Inc, Cyberspace</h2>
+<h2 class="author">Kaare Dump at Segfault, Cyberspace</h2>
 <h2 class="author">A. Dummy Author</h2>
-<h2 class="author">I. S. Overworked at Inst1 and Inst2, Somewhere and Third Inst, Elsewhere and Fourth Inst</h2>
+<h2 class="author">I. S. Overworked and Outburned at Inst1 and Inst2, Somewhere and Third Inst, Elsewhere and Fourth Inst</h2>
 <h2 class="author">J. Doe</h2>
 <h3 class="date">Jan 32, 2100</h3>
 </div>
@@ -20104,7 +20369,7 @@ show()</code></pre>
 </tr>
 </tbody>
 </table>
-<p>And one with math headings (that are expanded and must be treated accordingly) and verbatim heading and entry:</p>
+<p>And one with math headings (that are expanded and must be treated accordingly), verbatim heading and entry, and no space around the pipe symbol:</p>
 <table>
 <thead>
 <tr class="header">
@@ -20159,7 +20424,7 @@ show()</code></pre>
 </tr>
 </tbody>
 </table>
-<p>And add one with verbatim headings (with underscores), and rows starting with <code>|-</code> because of a negative number, and <code>|</code> right after verbatim word (with no space):</p>
+<p>And add one with verbatim headings (with underscores), and rows starting with <code>|-</code> because of a negative number, and <code>|</code> right before and after verbatim word (with no space):</p>
 <table>
 <thead>
 <tr class="header">
@@ -20196,6 +20461,17 @@ show()</code></pre>
 </tr>
 </tbody>
 </table>
+<p>Finally, a table with math (<code>bm</code> that expands to <code>boldsymbol</code>, was tricky, but cleanly handled now) and URLs.</p>
+<!-- Mako code to expand URLs in the table -->
+<!-- (These types of tables did not work before Jan 2014) -->
+
+
+
+
+<hr />
+<pre><code>                 $\mathcal{L}=0$                       [`080`](../doc/src/manual/mov/wave_frames/frame_0080.png)  [`085`](../doc/src/manual/mov/wave_frames/frame_0085.png)  
+                      $a=b$                            [`090`](../doc/src/manual/mov/wave_frames/frame_0090.png)  [`095`](../doc/src/manual/mov/wave_frames/frame_0095.png)  
+         $\nabla\cdot\boldsymbol{u} =0 $               [`100`](../doc/src/manual/mov/wave_frames/frame_0100.png)  [`105`](../doc/src/manual/mov/wave_frames/frame_0105.png)  </code></pre>
 <h3 id="a-test-of-verbatim-words-in-heading-with-subscript-a_i-my_file_v1-and-my_file_v2">A test of verbatim words in heading with subscript <span class="math">\(a_i\)</span>: <code>my_file_v1</code> and <code>my_file_v2</code></h3>
 <p><em>Files <code>my_file_v1.py</code> and <code>my_file_v2.py</code> define some math <span class="math">\(a_{i-1}\)</span>.</em> Here is some text.</p>
 <h3 id="bibliography-test">Bibliography test</h3>
@@ -21814,6 +22090,7 @@ open=right               % start new chapters on odd-numbered pages
 % Style: T2 (Springer)
 \documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmono}
 \usepackage{t2}
+\special{papersize=193mm,260mm}
 % #elif LATEX_STYLE == "Springer_llcse"
 % Style: Lecture Notes in Computer Science (Springer)
 \documentclass[oribib]{llncs}
@@ -21865,6 +22142,7 @@ open=right               % start new chapters on odd-numbered pages
 % Examples of font types (Ubuntu): Gentium Book Basic (Palatino-like),
 % Liberation Sans (Helvetica-like), Norasi, Purisa (handwriting), UnDoum
 % #else
+\usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
 % #ifdef HELVETICA
@@ -21878,6 +22156,7 @@ open=right               % start new chapters on odd-numbered pages
 \linespread{1.05}            % Palatino needs extra line spread to look nice
 % #endif
 % #endif
+\usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
@@ -22006,6 +22285,7 @@ open=right               % start new chapters on odd-numbered pages
 % insert custom LaTeX commands...
 
 
+\raggedbottom
 \makeindex
 
 %-------------------- end preamble ----------------------
@@ -22612,7 +22892,7 @@ $$
 <center><h1>A Document for Testing Doconce</h1></center>  <!-- document title -->
 
 <p>
-<!-- author(s): Hans Petter Langtangen, Kaare Dump, A. Dummy Author, I. S. Overworked, and J. Doe -->
+<!-- author(s): Hans Petter Langtangen, Kaare Dump, A. Dummy Author, I. S. Overworked and Outburned, and J. Doe -->
 
 <center>
 <b>Hans Petter Langtangen</b> [1, 2] (<tt>hpl at simula.no</tt>)
@@ -22627,7 +22907,7 @@ $$
 </center>
 
 <center>
-<b>I. S. Overworked</b> [4, 5, 6, 7]
+<b>I. S. Overworked and Outburned</b> [4, 5, 6, 7]
 </center>
 
 <center>
@@ -22640,7 +22920,7 @@ $$
 
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
-<center>[3] <b>Segfault Inc, Cyberspace</b></center>
+<center>[3] <b>Segfault, Cyberspace</b></center>
 <center>[4] <b>Inst1</b></center>
 <center>[5] <b>Inst2, Somewhere</b></center>
 <center>[6] <b>Third Inst, Elsewhere</b></center>
@@ -23653,7 +23933,8 @@ one table:
 </table>
 <p>
 And one with math headings (that are expanded and must be treated
-accordingly) and verbatim heading and entry:
+accordingly), verbatim heading and entry, and no space around the pipe
+symbol:
 
 <p>
 <table border="1">
@@ -23669,7 +23950,7 @@ accordingly) and verbatim heading and entry:
 <p>
 And add one with verbatim headings (with underscores),
 and rows starting with <code>|-</code> because of a negative number,
-and <code>|</code> right after verbatim word (with no space):
+and <code>|</code> right before and after verbatim word (with no space):
 
 <p>
 <table border="1">
@@ -23678,6 +23959,23 @@ and <code>|</code> right after verbatim word (with no space):
 <tr><td align="right">   -20                             </td> <td align="right">   -23.39                          </td> <td align="right">   -7.65                           </td> <td align="right">   -19.93                          </td> </tr>
 <tr><td align="right">   10                              </td> <td align="right">   17.74                           </td> <td align="right">   -4.50                           </td> <td align="right">   9.96                            </td> </tr>
 <tr><td align="right">   0                               </td> <td align="right">   -9.19                           </td> <td align="right">   4.13                            </td> <td align="right">   -0.26                           </td> </tr>
+</table>
+<p>
+Finally, a table with math
+(<code>bm</code> that expands to <code>boldsymbol</code>, was tricky, but
+cleanly handled now)
+and URLs.
+
+<p>
+<!-- Mako code to expand URLs in the table -->
+<!-- (These types of tables did not work before Jan 2014) -->
+
+<p>
+<table border="1">
+<tr></tr>
+<tr><td align="center">   \( \mathcal{L}=0 \)                                                                                                                        </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0080.png"><img src="../doc/src/manual/mov/wave_frames/frame_0080.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0085.png"><img src="../doc/src/manual/mov/wave_frames/frame_0085.png" width="300"></a>    </td> </tr>
+<tr><td align="center">   \( a=b \)                                                                                                                                  </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0090.png"><img src="../doc/src/manual/mov/wave_frames/frame_0090.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0095.png"><img src="../doc/src/manual/mov/wave_frames/frame_0095.png" width="300"></a>    </td> </tr>
+<tr><td align="center">   \( \nabla\cdot\boldsymbol{u} =0  \)                                                                                                        </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0100.png"><img src="../doc/src/manual/mov/wave_frames/frame_0100.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0105.png"><img src="../doc/src/manual/mov/wave_frames/frame_0105.png" width="300"></a>    </td> </tr>
 </table>
 
 <h3>A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code>  <a name="___sec6"></a></h3>
@@ -24733,7 +25031,7 @@ Automatically generated HTML file from Doconce source
 </center>
 
 <center>
-<b>I. S. Overworked</b> [4, 5, 6, 7]
+<b>I. S. Overworked and Outburned</b> [4, 5, 6, 7]
 </center>
 
 <center>
@@ -24746,7 +25044,7 @@ Automatically generated HTML file from Doconce source
 
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
-<center>[3] <b>Segfault Inc, Cyberspace</b></center>
+<center>[3] <b>Segfault, Cyberspace</b></center>
 <center>[4] <b>Inst1</b></center>
 <center>[5] <b>Inst2, Somewhere</b></center>
 <center>[6] <b>Third Inst, Elsewhere</b></center>
@@ -25203,11 +25501,12 @@ one table:
 </table>
 <p>
 And one with math headings (that are expanded and must be treated
-accordingly) and verbatim heading and entry:
+accordingly), verbatim heading and entry, and no space around the pipe
+symbol:
 
 <p>
 <table border="1">
-<tr><td align="center"><b>    $latex latex i$     </b></td> <td align="center"><b>   $latex latex h_i$    </b></td> <td align="center"><b> $latex latex \bar T_i$ </b></td> <td align="center"><b> <code>L_i</code> </b></td> </tr>
+<tr><td align="center"><b>    $latex i$     </b></td> <td align="center"><b>   $latex h_i$    </b></td> <td align="center"><b> $latex \bar T_i$ </b></td> <td align="center"><b> <code>L_i</code> </b></td> </tr>
 <tr><td align="left">   0                   </td> <td align="right">   0                   </td> <td align="right">   288                 </td> <td align="right">   -0.0065             </td> </tr>
 <tr><td align="left">   1                   </td> <td align="right">   11,000              </td> <td align="right">   216                 </td> <td align="right">   0.0                 </td> </tr>
 <tr><td align="left">   2                   </td> <td align="right">   20,000              </td> <td align="right">   216                 </td> <td align="right">   0.001               </td> </tr>
@@ -25219,15 +25518,28 @@ accordingly) and verbatim heading and entry:
 <p>
 And add one with verbatim headings (with underscores),
 and rows starting with <code>|-</code> because of a negative number,
-and <code>|</code> right after verbatim word (with no space):
+and <code>|</code> right before and after verbatim word (with no space):
 
 <p>
 <table border="1">
-<tr><td align="center"><b>             exact              </b></td> <td align="center"><b>        <code>v_1</code>        </b></td> <td align="center"><b> $latex latex a_i$ + <code>v_2</code> </b></td> <td align="center"><b>      <code>verb_3_</code>      </b></td> </tr>
+<tr><td align="center"><b>             exact              </b></td> <td align="center"><b>        <code>v_1</code>        </b></td> <td align="center"><b> $latex a_i$ + <code>v_2</code> </b></td> <td align="center"><b>      <code>verb_3_</code>      </b></td> </tr>
 <tr><td align="right">   9                                 </td> <td align="right">   9.62                              </td> <td align="right">   5.57                              </td> <td align="right">   8.98                              </td> </tr>
 <tr><td align="right">   -20                               </td> <td align="right">   -23.39                            </td> <td align="right">   -7.65                             </td> <td align="right">   -19.93                            </td> </tr>
 <tr><td align="right">   10                                </td> <td align="right">   17.74                             </td> <td align="right">   -4.50                             </td> <td align="right">   9.96                              </td> </tr>
 <tr><td align="right">   0                                 </td> <td align="right">   -9.19                             </td> <td align="right">   4.13                              </td> <td align="right">   -0.26                             </td> </tr>
+</table>
+<p>
+Finally, a table with math
+(<code>bm</code> that expands to <code>boldsymbol</code>, was tricky, but
+cleanly handled now)
+and URLs.
+
+<p>
+<table border="1">
+<tr></tr>
+<tr><td align="center">   $latex \mathcal{L}=0$                                                                                                                      </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0080.png"><img src="../doc/src/manual/mov/wave_frames/frame_0080.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0085.png"><img src="../doc/src/manual/mov/wave_frames/frame_0085.png" width="300"></a>    </td> </tr>
+<tr><td align="center">   $latex a=b$                                                                                                                                </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0090.png"><img src="../doc/src/manual/mov/wave_frames/frame_0090.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0095.png"><img src="../doc/src/manual/mov/wave_frames/frame_0095.png" width="300"></a>    </td> </tr>
+<tr><td align="center">   $latex \nabla\cdot\boldsymbol{u} =0 $                                                                                                      </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0100.png"><img src="../doc/src/manual/mov/wave_frames/frame_0100.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0105.png"><img src="../doc/src/manual/mov/wave_frames/frame_0105.png" width="300"></a>    </td> </tr>
 </table>
 
 <h3>A test of verbatim words in heading with subscript $latex a_i$: <code>my_file_v1</code> and <code>my_file_v2</code>  <a name="___sec6"></a></h3>
@@ -26293,7 +26605,7 @@ $$
 <center><h1>A Document for Testing Doconce</h1></center>  <!-- document title -->
 
 <p>
-<!-- author(s): Hans Petter Langtangen, Kaare Dump, A. Dummy Author, I. S. Overworked, and J. Doe -->
+<!-- author(s): Hans Petter Langtangen, Kaare Dump, A. Dummy Author, I. S. Overworked and Outburned, and J. Doe -->
 
 <center>
 <b>Hans Petter Langtangen</b> [1, 2] (<tt>hpl at simula.no</tt>)
@@ -26308,7 +26620,7 @@ $$
 </center>
 
 <center>
-<b>I. S. Overworked</b> [4, 5, 6, 7]
+<b>I. S. Overworked and Outburned</b> [4, 5, 6, 7]
 </center>
 
 <center>
@@ -26321,7 +26633,7 @@ $$
 
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
-<center>[3] <b>Segfault Inc, Cyberspace</b></center>
+<center>[3] <b>Segfault, Cyberspace</b></center>
 <center>[4] <b>Inst1</b></center>
 <center>[5] <b>Inst2, Somewhere</b></center>
 <center>[6] <b>Third Inst, Elsewhere</b></center>
@@ -26799,7 +27111,8 @@ one table:
 </table>
 <p>
 And one with math headings (that are expanded and must be treated
-accordingly) and verbatim heading and entry:
+accordingly), verbatim heading and entry, and no space around the pipe
+symbol:
 
 <p>
 <table border="1">
@@ -26815,7 +27128,7 @@ accordingly) and verbatim heading and entry:
 <p>
 And add one with verbatim headings (with underscores),
 and rows starting with <code>|-</code> because of a negative number,
-and <code>|</code> right after verbatim word (with no space):
+and <code>|</code> right before and after verbatim word (with no space):
 
 <p>
 <table border="1">
@@ -26824,6 +27137,23 @@ and <code>|</code> right after verbatim word (with no space):
 <tr><td align="right">   -20                             </td> <td align="right">   -23.39                          </td> <td align="right">   -7.65                           </td> <td align="right">   -19.93                          </td> </tr>
 <tr><td align="right">   10                              </td> <td align="right">   17.74                           </td> <td align="right">   -4.50                           </td> <td align="right">   9.96                            </td> </tr>
 <tr><td align="right">   0                               </td> <td align="right">   -9.19                           </td> <td align="right">   4.13                            </td> <td align="right">   -0.26                           </td> </tr>
+</table>
+<p>
+Finally, a table with math
+(<code>bm</code> that expands to <code>boldsymbol</code>, was tricky, but
+cleanly handled now)
+and URLs.
+
+<p>
+<!-- Mako code to expand URLs in the table -->
+<!-- (These types of tables did not work before Jan 2014) -->
+
+<p>
+<table border="1">
+<tr></tr>
+<tr><td align="center">   \( \mathcal{L}=0 \)                                                                                                                        </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0080.png"><img src="../doc/src/manual/mov/wave_frames/frame_0080.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0085.png"><img src="../doc/src/manual/mov/wave_frames/frame_0085.png" width="300"></a>    </td> </tr>
+<tr><td align="center">   \( a=b \)                                                                                                                                  </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0090.png"><img src="../doc/src/manual/mov/wave_frames/frame_0090.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0095.png"><img src="../doc/src/manual/mov/wave_frames/frame_0095.png" width="300"></a>    </td> </tr>
+<tr><td align="center">   \( \nabla\cdot\boldsymbol{u} =0  \)                                                                                                        </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0100.png"><img src="../doc/src/manual/mov/wave_frames/frame_0100.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0105.png"><img src="../doc/src/manual/mov/wave_frames/frame_0105.png" width="300"></a>    </td> </tr>
 </table>
 
 <h3>A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code>  <a name="___sec6"></a></h3>
@@ -27831,6 +28161,7 @@ final,                   % or draft (marks overfull hboxes)
 % Style: T2 (Springer)
 \documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmono}
 \usepackage{t2}
+\special{papersize=193mm,260mm}
 % #elif LATEX_STYLE == "Springer_llcse"
 % Style: Lecture Notes in Computer Science (Springer)
 \documentclass[oribib]{llncs}
@@ -27882,6 +28213,7 @@ final,                   % or draft (marks overfull hboxes)
 % Examples of font types (Ubuntu): Gentium Book Basic (Palatino-like),
 % Liberation Sans (Helvetica-like), Norasi, Purisa (handwriting), UnDoum
 % #else
+\usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
 % #ifdef HELVETICA
@@ -27895,6 +28227,7 @@ final,                   % or draft (marks overfull hboxes)
 \linespread{1.05}            % Palatino needs extra line spread to look nice
 % #endif
 % #endif
+\usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
@@ -28094,6 +28427,7 @@ final,                   % or draft (marks overfull hboxes)
 
 % insert custom LaTeX commands...
 
+\raggedbottom
 \makeindex
 
 %-------------------- end preamble ----------------------
@@ -28161,9 +28495,9 @@ A Document for Testing Doconce
 % ----------------- author(s) -------------------------
 % #if LATEX_HEADING == "traditional"
 \author{Hans Petter Langtangen\footnote{Email: \texttt{hpl@simula.no}. Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo.}
-\and Kaare Dump\footnote{Segfault Inc, Cyberspace.}
+\and Kaare Dump\footnote{Segfault, Cyberspace.}
 \and A. Dummy Author
-\and I. S. Overworked\footnote{Inst1; Inst2, Somewhere; Third Inst, Elsewhere; and Fourth Inst.}
+\and I. S. Overworked and Outburned\footnote{Inst1; Inst2, Somewhere; Third Inst, Elsewhere; and Fourth Inst.}
 \and J. Doe\footnote{Email: \texttt{j\_doe@cyberspace.com}.}}
 
 % #elif LATEX_HEADING == "titlepage"
@@ -28175,7 +28509,7 @@ A Document for Testing Doconce
     
     {\Large\textsf{A. Dummy Author${}^{}$}}\\ [3mm]
     
-    {\Large\textsf{I. S. Overworked${}^{4, 5, 6, 7}$}}\\ [3mm]
+    {\Large\textsf{I. S. Overworked and Outburned${}^{4, 5, 6, 7}$}}\\ [3mm]
     
     {\Large\textsf{J. Doe${}^{}$ (\texttt{j\_doe@cyberspace.com})}}\\ [3mm]
     
@@ -28183,17 +28517,17 @@ A Document for Testing Doconce
 
 {\large\textsf{${}^1$Center for Biomedical Computing, Simula Research Laboratory} \\ [1.5mm]}
 {\large\textsf{${}^2$Department of Informatics, University of Oslo} \\ [1.5mm]}
-{\large\textsf{${}^3$Segfault Inc, Cyberspace} \\ [1.5mm]}
+{\large\textsf{${}^3$Segfault, Cyberspace} \\ [1.5mm]}
 {\large\textsf{${}^4$Inst1} \\ [1.5mm]}
 {\large\textsf{${}^5$Inst2, Somewhere} \\ [1.5mm]}
 {\large\textsf{${}^6$Third Inst, Elsewhere} \\ [1.5mm]}
 {\large\textsf{${}^7$Fourth Inst} \\ [1.5mm]}
 % #elif LATEX_HEADING == "Springer_collection"
 
-\author{Hans Petter Langtangen and Kaare Dump and A. Dummy Author and I. S. Overworked and J. Doe}
+\author{Hans Petter Langtangen and Kaare Dump and A. Dummy Author and I. S. Overworked and Outburned and J. Doe}
 % Short version of authors:
 %\authorrunning{...}
-\institute{Hans Petter Langtangen\at Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo\email{hpl@simula.no} \and Kaare Dump\at Segfault Inc, Cyberspace \and A. Dummy Author \and I. S. Overworked\at Inst1 and Inst2, Somewhere and Third Inst, Elsewhere and and Fourth Inst \and J. Doe\email{j_doe@cyberspace.com}}
+\institute{Hans Petter Langtangen\at Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo\email{hpl@simula.no} \and Kaare Dump\at Segfault, Cyberspace \and A. Dummy Author \and I. S. Overworked and Outburned\at Inst1 and Inst2, Somewhere and Third Inst, Elsewhere and and Fourth Inst \and J. Doe\email{j_doe@cyberspace.com}}
 
 % #elif LATEX_HEADING == "beamer"
 \author{Hans Petter Langtangen\inst{1,2}
@@ -28202,14 +28536,14 @@ Kaare Dump\inst{3}
 \and
 A. Dummy Author\inst{}
 \and
-I. S. Overworked\inst{4,5,6,7}
+I. S. Overworked and Outburned\inst{4,5,6,7}
 \and
 J. Doe\inst{}}
 \institute{Center for Biomedical Computing, Simula Research Laboratory\inst{1}
 \and
 Department of Informatics, University of Oslo\inst{2}
 \and
-Segfault Inc, Cyberspace\inst{3}
+Segfault, Cyberspace\inst{3}
 \and
 Inst1\inst{4}
 \and
@@ -28236,7 +28570,7 @@ Fourth Inst\inst{7}}
 
 
 \begin{center}
-{\bf I. S. Overworked${}^{4, 5, 6, 7}$} \\ [0mm]
+{\bf I. S. Overworked and Outburned${}^{4, 5, 6, 7}$} \\ [0mm]
 \end{center}
 
 
@@ -28248,7 +28582,7 @@ Fourth Inst\inst{7}}
 % List of all institutions:
 \centerline{{\small ${}^1$Center for Biomedical Computing, Simula Research Laboratory}}
 \centerline{{\small ${}^2$Department of Informatics, University of Oslo}}
-\centerline{{\small ${}^3$Segfault Inc, Cyberspace}}
+\centerline{{\small ${}^3$Segfault, Cyberspace}}
 \centerline{{\small ${}^4$Inst1}}
 \centerline{{\small ${}^5$Inst2, Somewhere}}
 \centerline{{\small ${}^6$Third Inst, Elsewhere}}
@@ -28739,7 +29073,8 @@ one table:
 
 \noindent
 And one with math headings (that are expanded and must be treated
-accordingly) and verbatim heading and entry:
+accordingly), verbatim heading and entry, and no space around the pipe
+symbol:
 
 
 \begin{quote}\begin{tabular}{lrrr}
@@ -28759,7 +29094,7 @@ accordingly) and verbatim heading and entry:
 \noindent
 And add one with verbatim headings (with underscores),
 and rows starting with \code{|-} because of a negative number,
-and \code{|} right after verbatim word (with no space):
+and \code{|} right before and after verbatim word (with no space):
 
 
 \begin{quote}\begin{tabular}{rrrr}
@@ -28770,6 +29105,25 @@ and \code{|} right after verbatim word (with no space):
 -20                & -23.39             & -7.65              & -19.93             \\
 10                 & 17.74              & -4.50              & 9.96               \\
 0                  & -9.19              & 4.13               & -0.26              \\
+\hline
+\end{tabular}\end{quote}
+
+\noindent
+Finally, a table with math
+and URLs.
+
+% Mako code to expand URLs in the table
+% (These types of tables did not work before Jan 2014)
+
+
+
+\begin{quote}\begin{tabular}{ccc}
+\hline
+ \\
+\hline
+$\mathcal{L}=0$                                                               & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0080.png} & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0085.png} \\
+$a=b$                                                                         & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0090.png} & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0095.png} \\
+$\nabla\cdot\bm{u} =0 $                                                       & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0100.png} & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0105.png} \\
 \hline
 \end{tabular}\end{quote}
 
@@ -29695,7 +30049,7 @@ import glob, sys, os, commands, shutil
 
 command_line_options = ' '.join(['"%s"' % arg for arg in sys.argv[1:]])
 
-sphinx_rootdir = 'sphinx-rootdir'
+sphinx_rootdir = 'sphinx-testdoc'
 
 def system(cmd, capture_output=False, echo=True):
     if echo:
@@ -29753,10 +30107,10 @@ for rstfile in glob.glob(os.path.join(sphinx_rootdir, '*.rst')) + \
         f.write(text)
         f.close()
 
-# Copy linked local files, placed in _static*, to sphinx-rootdir/_static
+# Copy linked local files, placed in _static*, to sphinx-testdoc/_static
 staticdirs = glob.glob('_static*')
 for staticdir in staticdirs:
-    system('cp -r %s/* sphinx-rootdir/_static/' % staticdir)
+    system('cp -r %s/* sphinx-testdoc/_static/' % staticdir)
     # (Note: must do cp -r since shutil.copy/copytree cannot copy a la cp -r)
 
 # Compile web version of the sphinx document
@@ -29789,7 +30143,7 @@ for filename in glob.glob('*.html') + glob.glob('.*.html'):
                             '<a class="reference external" target="_blank"')
         f = open(filename, 'w');  f.write(text);  f.close()
 print """
-google-chrome sphinx-rootdir/_build/html/index.html
+google-chrome sphinx-testdoc/_build/html/index.html
 """
 
 ************** File: automake_sphinx_math_test.py *****************
@@ -29919,6 +30273,12 @@ google-chrome sphinx-rootdir-math/_build/html/index.html
 ************** File: .testdoc_html_file_collection *****************
 testdoc.html
 ../doc/src/manual/fig/wave1D.png
+../doc/src/manual/mov/wave_frames/frame_0080.png
+../doc/src/manual/mov/wave_frames/frame_0085.png
+../doc/src/manual/mov/wave_frames/frame_0090.png
+../doc/src/manual/mov/wave_frames/frame_0095.png
+../doc/src/manual/mov/wave_frames/frame_0100.png
+../doc/src/manual/mov/wave_frames/frame_0105.png
 testdoc.do.txt
 ._testdoc000.html
 ._testdoc001.html
@@ -30034,8 +30394,9 @@ mv -f testdoc.rst testdoc.sphinx.rst
 
 doconce format sphinx testdoc $ex
 doconce split_rst testdoc
-system doconce sphinx_dir author=HPL title='Just a test' version=0.1 theme=agni testdoc
+system doconce sphinx_dir author=HPL title='Just a test' dirname='sphinx-testdoc' version=0.1 theme=agni testdoc
 cp automake_sphinx.py automake_sphinx_testdoc.py
+system python automake_sphinx.py
 
 system doconce format rst testdoc.do.txt $ex
 
@@ -31211,6 +31572,7 @@ final,                   % or draft (marks overfull hboxes)
 % Style: T2 (Springer)
 \documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmono}
 \usepackage{t2}
+\special{papersize=193mm,260mm}
 % #elif LATEX_STYLE == "Springer_llcse"
 % Style: Lecture Notes in Computer Science (Springer)
 \documentclass[oribib]{llncs}
@@ -31262,6 +31624,7 @@ final,                   % or draft (marks overfull hboxes)
 % Examples of font types (Ubuntu): Gentium Book Basic (Palatino-like),
 % Liberation Sans (Helvetica-like), Norasi, Purisa (handwriting), UnDoum
 % #else
+\usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
 % #ifdef HELVETICA
@@ -31275,6 +31638,7 @@ final,                   % or draft (marks overfull hboxes)
 \linespread{1.05}            % Palatino needs extra line spread to look nice
 % #endif
 % #endif
+\usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
@@ -31396,6 +31760,7 @@ final,                   % or draft (marks overfull hboxes)
 
 % insert custom LaTeX commands...
 
+\raggedbottom
 \makeindex
 
 %-------------------- end preamble ----------------------
@@ -32167,7 +32532,7 @@ $$
 <center><h1>A Document for Testing Doconce</h1></center>  <!-- document title -->
 
 <p>
-<!-- author(s): Hans Petter Langtangen, Kaare Dump, A. Dummy Author, I. S. Overworked, and J. Doe -->
+<!-- author(s): Hans Petter Langtangen, Kaare Dump, A. Dummy Author, I. S. Overworked and Outburned, and J. Doe -->
 
 <center>
 <b>Hans Petter Langtangen</b> [1, 2] (<tt>hpl at simula.no</tt>)
@@ -32182,7 +32547,7 @@ $$
 </center>
 
 <center>
-<b>I. S. Overworked</b> [4, 5, 6, 7]
+<b>I. S. Overworked and Outburned</b> [4, 5, 6, 7]
 </center>
 
 <center>
@@ -32195,7 +32560,7 @@ $$
 
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
-<center>[3] <b>Segfault Inc, Cyberspace</b></center>
+<center>[3] <b>Segfault, Cyberspace</b></center>
 <center>[4] <b>Inst1</b></center>
 <center>[5] <b>Inst2, Somewhere</b></center>
 <center>[6] <b>Third Inst, Elsewhere</b></center>
@@ -32531,7 +32896,7 @@ $$
 <center><h1>A Document for Testing Doconce</h1></center>  <!-- document title -->
 
 <p>
-<!-- author(s): Hans Petter Langtangen, Kaare Dump, A. Dummy Author, I. S. Overworked, and J. Doe -->
+<!-- author(s): Hans Petter Langtangen, Kaare Dump, A. Dummy Author, I. S. Overworked and Outburned, and J. Doe -->
 
 <center>
 <b>Hans Petter Langtangen</b> [1, 2] (<tt>hpl at simula.no</tt>)
@@ -32546,7 +32911,7 @@ $$
 </center>
 
 <center>
-<b>I. S. Overworked</b> [4, 5, 6, 7]
+<b>I. S. Overworked and Outburned</b> [4, 5, 6, 7]
 </center>
 
 <center>
@@ -32559,7 +32924,7 @@ $$
 
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
-<center>[3] <b>Segfault Inc, Cyberspace</b></center>
+<center>[3] <b>Segfault, Cyberspace</b></center>
 <center>[4] <b>Inst1</b></center>
 <center>[5] <b>Inst2, Somewhere</b></center>
 <center>[6] <b>Third Inst, Elsewhere</b></center>
@@ -33599,7 +33964,8 @@ one table:
 </table>
 <p>
 And one with math headings (that are expanded and must be treated
-accordingly) and verbatim heading and entry:
+accordingly), verbatim heading and entry, and no space around the pipe
+symbol:
 
 <p>
 <table border="1">
@@ -33615,7 +33981,7 @@ accordingly) and verbatim heading and entry:
 <p>
 And add one with verbatim headings (with underscores),
 and rows starting with <code>|-</code> because of a negative number,
-and <code>|</code> right after verbatim word (with no space):
+and <code>|</code> right before and after verbatim word (with no space):
 
 <p>
 <table border="1">
@@ -33624,6 +33990,23 @@ and <code>|</code> right after verbatim word (with no space):
 <tr><td align="right">   -20                             </td> <td align="right">   -23.39                          </td> <td align="right">   -7.65                           </td> <td align="right">   -19.93                          </td> </tr>
 <tr><td align="right">   10                              </td> <td align="right">   17.74                           </td> <td align="right">   -4.50                           </td> <td align="right">   9.96                            </td> </tr>
 <tr><td align="right">   0                               </td> <td align="right">   -9.19                           </td> <td align="right">   4.13                            </td> <td align="right">   -0.26                           </td> </tr>
+</table>
+<p>
+Finally, a table with math
+(<code>bm</code> that expands to <code>boldsymbol</code>, was tricky, but
+cleanly handled now)
+and URLs.
+
+<p>
+<!-- Mako code to expand URLs in the table -->
+<!-- (These types of tables did not work before Jan 2014) -->
+
+<p>
+<table border="1">
+<tr></tr>
+<tr><td align="center">   \( \mathcal{L}=0 \)                                                                                                                        </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0080.png"><img src="../doc/src/manual/mov/wave_frames/frame_0080.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0085.png"><img src="../doc/src/manual/mov/wave_frames/frame_0085.png" width="300"></a>    </td> </tr>
+<tr><td align="center">   \( a=b \)                                                                                                                                  </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0090.png"><img src="../doc/src/manual/mov/wave_frames/frame_0090.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0095.png"><img src="../doc/src/manual/mov/wave_frames/frame_0095.png" width="300"></a>    </td> </tr>
+<tr><td align="center">   \( \nabla\cdot\boldsymbol{u} =0  \)                                                                                                        </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0100.png"><img src="../doc/src/manual/mov/wave_frames/frame_0100.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0105.png"><img src="../doc/src/manual/mov/wave_frames/frame_0105.png" width="300"></a>    </td> </tr>
 </table>
 
 <h3>A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code>  <a name="___sec6"></a></h3>
@@ -34637,7 +35020,7 @@ While the <div class="deep-blue">rest of the</div> getting started
 A Document for Testing Doconce
 ==============================
 
-:Author: Hans Petter Langtangen (hpl at simula.no), Kaare Dump, A. Dummy Author, I. S. Overworked, J. Doe (j_doe at cyberspace.com)
+:Author: Hans Petter Langtangen (hpl at simula.no), Kaare Dump, A. Dummy Author, I. S. Overworked and Outburned, J. Doe (j_doe at cyberspace.com)
 :Date: Jan 32, 2100
 
 
@@ -35138,7 +35521,8 @@ one table:
 ============  ============  ============  
 
 And one with math headings (that are expanded and must be treated
-accordingly) and verbatim heading and entry:
+accordingly), verbatim heading and entry, and no space around the pipe
+symbol:
 
 ================  ================  ================  ================  
    :math:`i`        :math:`h_i`     :math:`\bar T_i`      ``L_i``       
@@ -35154,7 +35538,7 @@ accordingly) and verbatim heading and entry:
 
 And add one with verbatim headings (with underscores),
 and rows starting with ``|-`` because of a negative number,
-and ``|`` right after verbatim word (with no space):
+and ``|`` right before and after verbatim word (with no space):
 
 =====================  =====================  =====================  =====================  
         exact                 ``v_1``         :math:`a_i` + ``v_2``       ``verb_3_``       
@@ -35164,6 +35548,25 @@ and ``|`` right after verbatim word (with no space):
                    10                  17.74                  -4.50                   9.96  
                     0                  -9.19                   4.13                  -0.26  
 =====================  =====================  =====================  =====================  
+
+Finally, a table with math
+(``bm`` that expands to ``boldsymbol``, was tricky, but
+cleanly handled now)
+and URLs.
+
+.. Mako code to expand URLs in the table
+
+.. (These types of tables did not work before Jan 2014)
+
+
+
+=========================================================  =========================================================  =========================================================  
+
+=========================================================  =========================================================  =========================================================  
+                  :math:`\mathcal{L}=0`                    `080 <../doc/src/manual/mov/wave_frames/frame_0080.png>`_  `085 <../doc/src/manual/mov/wave_frames/frame_0085.png>`_  
+                       :math:`a=b`                         `090 <../doc/src/manual/mov/wave_frames/frame_0090.png>`_  `095 <../doc/src/manual/mov/wave_frames/frame_0095.png>`_  
+          :math:`\nabla\cdot\boldsymbol{u} =0 `            `100 <../doc/src/manual/mov/wave_frames/frame_0100.png>`_  `105 <../doc/src/manual/mov/wave_frames/frame_0105.png>`_  
+=========================================================  =========================================================  =========================================================  
 
 
 A test of verbatim words in heading with subscript :math:`a_i`: ``my_file_v1`` and ``my_file_v2``
@@ -36229,6 +36632,7 @@ final,                   % or draft (marks overfull hboxes)
 % Style: T2 (Springer)
 \documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmono}
 \usepackage{t2}
+\special{papersize=193mm,260mm}
 % #elif LATEX_STYLE == "Springer_llcse"
 % Style: Lecture Notes in Computer Science (Springer)
 \documentclass[oribib]{llncs}
@@ -36283,6 +36687,7 @@ final,                   % or draft (marks overfull hboxes)
 % Examples of font types (Ubuntu): Gentium Book Basic (Palatino-like),
 % Liberation Sans (Helvetica-like), Norasi, Purisa (handwriting), UnDoum
 % #else
+\usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
 % #ifdef HELVETICA
@@ -36296,6 +36701,7 @@ final,                   % or draft (marks overfull hboxes)
 \linespread{1.05}            % Palatino needs extra line spread to look nice
 % #endif
 % #endif
+\usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
@@ -36532,6 +36938,7 @@ final,                   % or draft (marks overfull hboxes)
 
 % insert custom LaTeX commands...
 
+\raggedbottom
 \makeindex
 
 %-------------------- end preamble ----------------------
@@ -37054,8 +37461,10 @@ final,                   % or draft (marks overfull hboxes)
 \usepackage{minted}
 \usemintedstyle{default}
 
+\usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
+\usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
@@ -37195,6 +37604,7 @@ final,                   % or draft (marks overfull hboxes)
 
 % insert custom LaTeX commands...
 
+\raggedbottom
 \makeindex
 
 %-------------------- end preamble ----------------------
@@ -37637,8 +38047,10 @@ final,                   % or draft (marks overfull hboxes)
 \usepackage{minted}
 \usemintedstyle{default}
 
+\usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
+\usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
@@ -37785,6 +38197,7 @@ final,                   % or draft (marks overfull hboxes)
 
 % insert custom LaTeX commands...
 
+\raggedbottom
 \makeindex
 
 %-------------------- end preamble ----------------------
@@ -38227,8 +38640,10 @@ final,                   % or draft (marks overfull hboxes)
 \usepackage{minted}
 \usemintedstyle{default}
 
+\usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
+\usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
@@ -38297,6 +38712,7 @@ final,                   % or draft (marks overfull hboxes)
 
 % insert custom LaTeX commands...
 
+\raggedbottom
 \makeindex
 
 %-------------------- end preamble ----------------------
@@ -38739,8 +39155,10 @@ final,                   % or draft (marks overfull hboxes)
 \usepackage{minted}
 \usemintedstyle{default}
 
+\usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
+\usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
@@ -38820,6 +39238,7 @@ final,                   % or draft (marks overfull hboxes)
 
 % insert custom LaTeX commands...
 
+\raggedbottom
 \makeindex
 
 %-------------------- end preamble ----------------------
@@ -39285,8 +39704,10 @@ final,                   % or draft (marks overfull hboxes)
 \usepackage{minted}
 \usemintedstyle{default}
 
+\usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
+\usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
@@ -39433,6 +39854,7 @@ final,                   % or draft (marks overfull hboxes)
 
 % insert custom LaTeX commands...
 
+\raggedbottom
 \makeindex
 
 %-------------------- end preamble ----------------------
@@ -39875,8 +40297,10 @@ final,                   % or draft (marks overfull hboxes)
 \usepackage{minted}
 \usemintedstyle{default}
 
+\usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
+\usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
@@ -39929,6 +40353,7 @@ final,                   % or draft (marks overfull hboxes)
 
 % insert custom LaTeX commands...
 
+\raggedbottom
 \makeindex
 
 %-------------------- end preamble ----------------------
@@ -40370,8 +40795,10 @@ final,                   % or draft (marks overfull hboxes)
 \usepackage{minted}
 \usemintedstyle{default}
 
+\usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
+\usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
@@ -40518,6 +40945,7 @@ final,                   % or draft (marks overfull hboxes)
 
 % insert custom LaTeX commands...
 
+\raggedbottom
 \makeindex
 
 %-------------------- end preamble ----------------------
@@ -45854,7 +46282,7 @@ exercises (and problems and projects too).
 
 ************** File: slides1.do.txt *****************
 TITLE: On the Technicalities of Scientific Writing Anno 2012: The Doconce Way
-AUTHOR: Hans Petter Langtangen at Simula Research Laboratory and University of Oslo
+AUTHOR: Hans Petter Langtangen at Simula Research Laboratory & Univiversity of Oslo
 DATE: Today
 
 
@@ -46111,7 +46539,7 @@ $$
 <!-- institution(s) -->
 
 <center>[1] <b>Simula Research Laboratory</b></center>
-<center>[2] <b>University of Oslo</b></center>
+<center>[2] <b>Univiversity of Oslo</b></center>
 <p>&nbsp;<br>
 <center><h4>Jan 32, 2100</h4></center> <!-- date -->
 <p>
@@ -46721,7 +47149,7 @@ $$
 <!-- institution(s) -->
 
 <center>[1] <b>Simula Research Laboratory</b></center>
-<center>[2] <b>University of Oslo</b></center>
+<center>[2] <b>Univiversity of Oslo</b></center>
 <p>
 <center><h4>Jan 32, 2100</h4></center> <!-- date -->
 <p>
@@ -47072,7 +47500,7 @@ $$
 <!-- institution(s) -->
 
 <center>[1] <b style="font-weight: bold">Simula Research Laboratory</b></center>
-<center>[2] <b style="font-weight: bold">University of Oslo</b></center>
+<center>[2] <b style="font-weight: bold">Univiversity of Oslo</b></center>
 <p>
 <center><h4>Jan 32, 2100</h4></center> <!-- date -->
 <p>
@@ -47690,6 +48118,7 @@ final,                   % or draft (marks overfull hboxes)
 % Style: T2 (Springer)
 \documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmono}
 \usepackage{t2}
+\special{papersize=193mm,260mm}
 % #elif LATEX_STYLE == "Springer_llcse"
 % Style: Lecture Notes in Computer Science (Springer)
 \documentclass[oribib]{llncs}
@@ -47741,6 +48170,7 @@ final,                   % or draft (marks overfull hboxes)
 % Examples of font types (Ubuntu): Gentium Book Basic (Palatino-like),
 % Liberation Sans (Helvetica-like), Norasi, Purisa (handwriting), UnDoum
 % #else
+\usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
 % #ifdef HELVETICA
@@ -47754,6 +48184,7 @@ final,                   % or draft (marks overfull hboxes)
 \linespread{1.05}            % Palatino needs extra line spread to look nice
 % #endif
 % #endif
+\usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
@@ -47950,6 +48381,7 @@ final,                   % or draft (marks overfull hboxes)
 
 % insert custom LaTeX commands...
 
+\raggedbottom
 \makeindex
 
 %-------------------- end preamble ----------------------
@@ -48016,7 +48448,7 @@ On the Technicalities of Scientific Writing Anno 2012: The Doconce Way
 
 % ----------------- author(s) -------------------------
 % #if LATEX_HEADING == "traditional"
-\author{Hans Petter Langtangen\footnote{Simula Research Laboratory and University of Oslo.}}
+\author{Hans Petter Langtangen\footnote{Simula Research Laboratory and Univiversity of Oslo.}}
 
 % #elif LATEX_HEADING == "titlepage"
 \vspace{1.3cm}
@@ -48026,19 +48458,19 @@ On the Technicalities of Scientific Writing Anno 2012: The Doconce Way
 \ \\ [2mm]
 
 {\large\textsf{${}^1$Simula Research Laboratory} \\ [1.5mm]}
-{\large\textsf{${}^2$University of Oslo} \\ [1.5mm]}
+{\large\textsf{${}^2$Univiversity of Oslo} \\ [1.5mm]}
 % #elif LATEX_HEADING == "Springer_collection"
 
 \author{Hans Petter Langtangen}
 % Short version of authors:
 %\authorrunning{...}
-\institute{Hans Petter Langtangen\at Simula Research Laboratory and University of Oslo}
+\institute{Hans Petter Langtangen\at Simula Research Laboratory and Univiversity of Oslo}
 
 % #elif LATEX_HEADING == "beamer"
 \author{Hans Petter Langtangen\inst{1,2}}
 \institute{Simula Research Laboratory\inst{1}
 \and
-University of Oslo\inst{2}}
+Univiversity of Oslo\inst{2}}
 % #else
 
 \begin{center}
@@ -48048,7 +48480,7 @@ University of Oslo\inst{2}}
 \begin{center}
 % List of all institutions:
 \centerline{{\small ${}^1$Simula Research Laboratory}}
-\centerline{{\small ${}^2$University of Oslo}}
+\centerline{{\small ${}^2$Univiversity of Oslo}}
 \end{center}
 % #endif
 % ----------------- end author(s) -------------------------
@@ -48320,6 +48752,7 @@ title (Warning) since no title is specified. \par}
 
 % insert custom LaTeX commands...
 
+\raggedbottom
 \makeindex
 
 %-------------------- end preamble ----------------------
@@ -48343,7 +48776,7 @@ title (Warning) since no title is specified. \par}
 \author{Hans Petter Langtangen\inst{1,2}}
 \institute{Simula Research Laboratory\inst{1}
 \and
-University of Oslo\inst{2}}
+Univiversity of Oslo\inst{2}}
 % ----------------- end author(s) -------------------------
 
 
@@ -48674,7 +49107,7 @@ URL: "http://hplgit.github.com/teamods/writing_reports/"
 
 !bc
 TITLE: Some Title
-AUTHOR: name1 at institution1, with more info, and institution2
+AUTHOR: name1 at institution1, with more info & institution2
 AUTHOR: name2 email:name2@web.com at institution
 DATE: today
 
@@ -49632,7 +50065,7 @@ based on HTML and vice versa.
 
 <!-- code=text typeset with pygments style "emacs" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">TITLE: Some Title
-AUTHOR: name1 at institution1, with more info, and institution2
+AUTHOR: name1 at institution1, with more info &amp; institution2
 AUTHOR: name2 email:name2@web.com at institution
 DATE: today
 
@@ -50346,6 +50779,7 @@ open=right               % start new chapters on odd-numbered pages
 % Style: T2 (Springer)
 \documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmono}
 \usepackage{t2}
+\special{papersize=193mm,260mm}
 % #elif LATEX_STYLE == "Springer_llcse"
 % Style: Lecture Notes in Computer Science (Springer)
 \documentclass[oribib]{llncs}
@@ -50422,6 +50856,7 @@ open=right               % start new chapters on odd-numbered pages
 % Examples of font types (Ubuntu): Gentium Book Basic (Palatino-like),
 % Liberation Sans (Helvetica-like), Norasi, Purisa (handwriting), UnDoum
 % #else
+\usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
 % #ifdef HELVETICA
@@ -50435,6 +50870,7 @@ open=right               % start new chapters on odd-numbered pages
 \linespread{1.05}            % Palatino needs extra line spread to look nice
 % #endif
 % #endif
+\usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
@@ -50596,6 +51032,7 @@ open=right               % start new chapters on odd-numbered pages
 
 % insert custom LaTeX commands...
 
+\raggedbottom
 \makeindex
 
 %-------------------- end preamble ----------------------
@@ -51022,7 +51459,7 @@ based on HTML and vice versa.
 
 \bccq
 TITLE: Some Title
-AUTHOR: name1 at institution1, with more info, and institution2
+AUTHOR: name1 at institution1, with more info & institution2
 AUTHOR: name2 email:name2@web.com at institution
 DATE: today
 
@@ -51644,6 +52081,7 @@ Last page gets rendered to
 
 % insert custom LaTeX commands...
 
+\raggedbottom
 \makeindex
 
 %-------------------- end preamble ----------------------
@@ -51958,7 +52396,7 @@ based on HTML and vice versa.
 
 \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
 TITLE: Some Title
-AUTHOR: name1 at institution1, with more info, and institution2
+AUTHOR: name1 at institution1, with more info & institution2
 AUTHOR: name2 email:name2@web.com at institution
 DATE: today
 
@@ -52464,7 +52902,7 @@ Last page gets rendered to
 
 ************** File: slides3.do.txt *****************
 TITLE: On Schemes for Exponential Decay
-AUTHOR: Hans Petter Langtangen at Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo
+AUTHOR: Hans Petter Langtangen at Center for Biomedical Computing, Simula Research Laboratory & Department of Informatics, University of Oslo
 DATE: today
 
 FIGURE: [../doc/src/slides/fig/CN_logo, width=300 frac=0.4]
@@ -53130,6 +53568,7 @@ final,                   % or draft (marks overfull hboxes)
 % Style: T2 (Springer)
 \documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmono}
 \usepackage{t2}
+\special{papersize=193mm,260mm}
 % #elif LATEX_STYLE == "Springer_llcse"
 % Style: Lecture Notes in Computer Science (Springer)
 \documentclass[oribib]{llncs}
@@ -53181,6 +53620,7 @@ final,                   % or draft (marks overfull hboxes)
 % Examples of font types (Ubuntu): Gentium Book Basic (Palatino-like),
 % Liberation Sans (Helvetica-like), Norasi, Purisa (handwriting), UnDoum
 % #else
+\usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
 % #ifdef HELVETICA
@@ -53194,6 +53634,7 @@ final,                   % or draft (marks overfull hboxes)
 \linespread{1.05}            % Palatino needs extra line spread to look nice
 % #endif
 % #endif
+\usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
@@ -53352,6 +53793,7 @@ final,                   % or draft (marks overfull hboxes)
 
 % insert custom LaTeX commands...
 
+\raggedbottom
 \makeindex
 
 %-------------------- end preamble ----------------------
@@ -53753,6 +54195,7 @@ qualitatively correct results.
 
 % insert custom LaTeX commands...
 
+\raggedbottom
 \makeindex
 
 %-------------------- end preamble ----------------------
@@ -55666,6 +56109,7 @@ final,                   % or draft (marks overfull hboxes)
 % Style: T2 (Springer)
 \documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmono}
 \usepackage{t2}
+\special{papersize=193mm,260mm}
 % #elif LATEX_STYLE == "Springer_llcse"
 % Style: Lecture Notes in Computer Science (Springer)
 \documentclass[oribib]{llncs}
@@ -55752,6 +56196,7 @@ final,                   % or draft (marks overfull hboxes)
 % Examples of font types (Ubuntu): Gentium Book Basic (Palatino-like),
 % Liberation Sans (Helvetica-like), Norasi, Purisa (handwriting), UnDoum
 % #else
+\usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
 % #ifdef HELVETICA
@@ -55765,6 +56210,7 @@ final,                   % or draft (marks overfull hboxes)
 \linespread{1.05}            % Palatino needs extra line spread to look nice
 % #endif
 % #endif
+\usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
@@ -55886,6 +56332,7 @@ final,                   % or draft (marks overfull hboxes)
 
 % insert custom LaTeX commands...
 
+\raggedbottom
 \makeindex
 
 %-------------------- end preamble ----------------------
@@ -56488,8 +56935,10 @@ final,                   % or draft (marks overfull hboxes)
 \usepackage{animate,graphicx}
 
 
+\usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
+\usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
@@ -56521,6 +56970,7 @@ final,                   % or draft (marks overfull hboxes)
 
 % insert custom LaTeX commands...
 
+\raggedbottom
 \makeindex
 
 %-------------------- end preamble ----------------------
@@ -56890,8 +57340,10 @@ final,                   % or draft (marks overfull hboxes)
 \usepackage{animate,graphicx}
 
 
+\usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
+\usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
@@ -56923,6 +57375,7 @@ final,                   % or draft (marks overfull hboxes)
 
 % insert custom LaTeX commands...
 
+\raggedbottom
 \makeindex
 
 %-------------------- end preamble ----------------------
@@ -58406,49 +58859,59 @@ And here is a table:
 </html>
 
 ************** File: make.sh *****************
-#!/bin/sh -x
+#!/bin/bash -x
+
+function system {
+  "$@"
+  if [ $? -ne 0 ]; then
+    echo "make.sh: unsuccessful command $@"
+    echo "abort!"
+    exit 1
+  fi
+}
+
 set -x
 sh ./clean.sh
 
 # Make latest bin/doconce doc
 doconce > doconce_program.sh
 
-doconce format html quickref --no_pygments_html --no_preprocess
+system doconce format html quickref --no_pygments_html --no_preprocess
 
 # latex (shpro because of @@@CODE copy, need minted style)
-doconce format latex quickref --no_preprocess
-doconce ptex2tex quickref -DMINTED -DHELVETICA envir=Verbatim
+system doconce format latex quickref --no_preprocess
+system doconce ptex2tex quickref -DMINTED -DHELVETICA envir=Verbatim
 # cannot run ptex2tex since it always runs preprocess
-latex -shell-escape quickref.tex
+system latex -shell-escape quickref.tex
 latex -shell-escape quickref.tex
 dvipdf quickref.dvi
 
 # Sphinx
-doconce format sphinx quickref --no_preprocess
+system doconce format sphinx quickref --no_preprocess
 rm -rf sphinx-rootdir
-doconce sphinx_dir author='HPL' version=0.7 quickref
+system doconce sphinx_dir author='HPL' version=0.7 quickref
 doconce replace 'doconce format sphinx %s' 'doconce format sphinx %s --no-preprocess' automake_sphinx.py
-python automake_sphinx.py
+system python automake_sphinx.py
 cp quickref.rst quickref.sphinx.rst  # save
 
 # reStructuredText:
-doconce format rst quickref --no_preprocess
+system doconce format rst quickref --no_preprocess
 rst2xml.py quickref.rst > quickref.xml
 rst2odt.py quickref.rst > quickref.odt
 rst2html.py quickref.rst > quickref.rst.html
 rst2latex.py quickref.rst > quickref.rst.tex
-latex quickref.rst.tex
+system latex quickref.rst.tex
 latex quickref.rst.tex
 dvipdf quickref.rst.dvi
 
 # Other formats:
-doconce format plain quickref --no_preprocess
-doconce format gwiki quickref --no_preprocess
-doconce format mwiki quickref --no_preprocess
-doconce format cwiki quickref --no_preprocess
-doconce format st quickref --no_preprocess
-doconce format epytext quickref --no_preprocess
-doconce format pandoc quickref --no_preprocess
+system doconce format plain quickref --no_preprocess
+system doconce format gwiki quickref --no_preprocess
+system doconce format mwiki quickref --no_preprocess
+system doconce format cwiki quickref --no_preprocess
+system doconce format st quickref --no_preprocess
+system doconce format epytext quickref --no_preprocess
+system doconce format pandoc quickref --no_preprocess
 
 rm -rf demo
 mkdir demo
@@ -58494,7 +58957,7 @@ Doconce can also be converted to
 <a href="quickref.gwiki">Googlecode wiki</a>,
 <a href="quickref.mwiki">MediaWiki</a>,
 <a href="quickref.cwiki">Creole wiki</a>,
-<a href="quickref.md">a Pandoc</a>,
+<a href="quickref.md">aPandoc</a>,
 <a href="quickref.st">Structured Text</a>,
 <a href="quickref.epytext">Epytext</a>,
 and maybe the most important format of all:
@@ -58619,9 +59082,9 @@ The table of contents is removed by writing `TOC: off`.
 ===== Section Types =====
 label{quick:sections}
 
-|----------------c--------|------------------c---------------------------|
+|----------------c---------------------------c---------------------------|
 |      Section type       |        Syntax                                |
-|----------------l--------|------------------l---------------------------|
+|----------------l---------------------------l---------------------------|
 | chapter                 | `========= Heading ========` (9 `=`)         |
 | section                 | `======= Heading =======`    (7 `=`)         |
 | subsection              | `===== Heading =====`        (5 `=`)         |
@@ -60264,7 +60727,7 @@ list of capabilities:
 <p>
 <!-- begin verbatim block  shpro-->
 <pre><code>Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex expand_commands combine_images guess_encoding change_encoding gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 # transform doconce file to another format
@@ -60283,8 +60746,8 @@ doconce replace from-text to-text file1 file2 ...
 doconce replace_from_file file-with-from-to file1 file2 ...
 (exact text substitution, but a set of from-to relations)
 
-# gwiki format requires substitution of figure file names by URLs
-doconce gwiki_figsubst file.gwiki URL-of-fig-dir
+# replace all mako function calls by the results of the calls
+doconce expand_mako mako_code_file funcname file1 file2 ...
 
 # remove all inline comments in a doconce file
 doconce remove_inline_comments file.do.txt
@@ -60682,6 +61145,7 @@ final,                   % or draft (marks overfull hboxes)
 % Style: T2 (Springer)
 \documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmono}
 \usepackage{t2}
+\special{papersize=193mm,260mm}
 % #elif LATEX_STYLE == "Springer_llcse"
 % Style: Lecture Notes in Computer Science (Springer)
 \documentclass[oribib]{llncs}
@@ -60758,6 +61222,7 @@ final,                   % or draft (marks overfull hboxes)
 % Examples of font types (Ubuntu): Gentium Book Basic (Palatino-like),
 % Liberation Sans (Helvetica-like), Norasi, Purisa (handwriting), UnDoum
 % #else
+\usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
 % #ifdef HELVETICA
@@ -60771,6 +61236,7 @@ final,                   % or draft (marks overfull hboxes)
 \linespread{1.05}            % Palatino needs extra line spread to look nice
 % #endif
 % #endif
+\usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
@@ -60970,6 +61436,7 @@ final,                   % or draft (marks overfull hboxes)
 
 % insert custom LaTeX commands...
 
+\raggedbottom
 \makeindex
 
 %-------------------- end preamble ----------------------
@@ -61825,7 +62292,7 @@ list of capabilities:
 
 \bshpro
 Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex expand_commands combine_images guess_encoding change_encoding gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 # transform doconce file to another format
@@ -61844,8 +62311,8 @@ doconce replace from-text to-text file1 file2 ...
 doconce replace_from_file file-with-from-to file1 file2 ...
 (exact text substitution, but a set of from-to relations)
 
-# gwiki format requires substitution of figure file names by URLs
-doconce gwiki_figsubst file.gwiki URL-of-fig-dir
+# replace all mako function calls by the results of the calls
+doconce expand_mako mako_code_file funcname file1 file2 ...
 
 # remove all inline comments in a doconce file
 doconce remove_inline_comments file.do.txt
@@ -62911,7 +63378,7 @@ list of capabilities::
 
 
         Usage: doconce command [optional arguments]
-        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex expand_commands combine_images guess_encoding change_encoding gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
         
         
         # transform doconce file to another format
@@ -62930,8 +63397,8 @@ list of capabilities::
         doconce replace_from_file file-with-from-to file1 file2 ...
         (exact text substitution, but a set of from-to relations)
         
-        # gwiki format requires substitution of figure file names by URLs
-        doconce gwiki_figsubst file.gwiki URL-of-fig-dir
+        # replace all mako function calls by the results of the calls
+        doconce expand_mako mako_code_file funcname file1 file2 ...
         
         # remove all inline comments in a doconce file
         doconce remove_inline_comments file.do.txt
@@ -64035,7 +64502,7 @@ list of capabilities:
 .. code-block:: bash
 
         Usage: doconce command [optional arguments]
-        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex expand_commands combine_images guess_encoding change_encoding gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
         
         
         # transform doconce file to another format
@@ -64054,8 +64521,8 @@ list of capabilities:
         doconce replace_from_file file-with-from-to file1 file2 ...
         (exact text substitution, but a set of from-to relations)
         
-        # gwiki format requires substitution of figure file names by URLs
-        doconce gwiki_figsubst file.gwiki URL-of-fig-dir
+        # replace all mako function calls by the results of the calls
+        doconce expand_mako mako_code_file funcname file1 file2 ...
         
         # remove all inline comments in a doconce file
         doconce remove_inline_comments file.do.txt
@@ -64441,7 +64908,7 @@ Besides syntax highlighting of Doconce documents, this Emacs mode
 provides a lot of shortcuts for setting up many elements in a document:
 
 
- ||              *Emacs key*                ||                *Action*                 ||
+ ||              _Emacs key_                ||                _Action_                 ||
  ||  Ctrl+c f                               ||  figure                                 ||
  ||  Ctrl+c v                               ||  movie/video                            ||
  ||  Ctrl+c h1                              ||  heading level 1 (section/h1)           ||
@@ -64495,7 +64962,8 @@ The table of contents is removed by writing `TOC: off`.
 
 ==== Section Types ====
 
- ||                  *Section type*                  ||                     *Syntax*                     ||
+
+ ||                  _Section type_                  ||                     _Syntax_                     ||
  ||  chapter                                         ||  `========= Heading ========` (9 `=`)            ||
  ||  section                                         ||  `======= Heading =======`    (7 `=`)            ||
  ||  subsection                                      ||  `===== Heading =====`        (5 `=`)            ||
@@ -65020,7 +65488,7 @@ list of capabilities:
 
 {{{
 Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex expand_commands combine_images guess_encoding change_encoding gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 # transform doconce file to another format
@@ -65039,8 +65507,8 @@ doconce replace from-text to-text file1 file2 ...
 doconce replace_from_file file-with-from-to file1 file2 ...
 (exact text substitution, but a set of from-to relations)
 
-# gwiki format requires substitution of figure file names by URLs
-doconce gwiki_figsubst file.gwiki URL-of-fig-dir
+# replace all mako function calls by the results of the calls
+doconce expand_mako mako_code_file funcname file1 file2 ...
 
 # remove all inline comments in a doconce file
 doconce remove_inline_comments file.do.txt
@@ -66014,7 +66482,7 @@ list of capabilities:
 
 <syntaxhighlight lang="bash">
 Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex expand_commands combine_images guess_encoding change_encoding gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 # transform doconce file to another format
@@ -66033,8 +66501,8 @@ doconce replace from-text to-text file1 file2 ...
 doconce replace_from_file file-with-from-to file1 file2 ...
 (exact text substitution, but a set of from-to relations)
 
-# gwiki format requires substitution of figure file names by URLs
-doconce gwiki_figsubst file.gwiki URL-of-fig-dir
+# replace all mako function calls by the results of the calls
+doconce expand_mako mako_code_file funcname file1 file2 ...
 
 # remove all inline comments in a doconce file
 doconce remove_inline_comments file.do.txt
@@ -66978,7 +67446,7 @@ list of capabilities:
 
 {{{
 Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex expand_commands combine_images guess_encoding change_encoding gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 # transform doconce file to another format
@@ -66997,8 +67465,8 @@ doconce replace from-text to-text file1 file2 ...
 doconce replace_from_file file-with-from-to file1 file2 ...
 (exact text substitution, but a set of from-to relations)
 
-# gwiki format requires substitution of figure file names by URLs
-doconce gwiki_figsubst file.gwiki URL-of-fig-dir
+# replace all mako function calls by the results of the calls
+doconce expand_mako mako_code_file funcname file1 file2 ...
 
 # remove all inline comments in a doconce file
 doconce remove_inline_comments file.do.txt
@@ -67951,7 +68419,7 @@ list of capabilities::
 
 
         Usage: doconce command [optional arguments]
-        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex expand_commands combine_images guess_encoding change_encoding gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
         
         
         # transform doconce file to another format
@@ -67970,8 +68438,8 @@ list of capabilities::
         doconce replace_from_file file-with-from-to file1 file2 ...
         (exact text substitution, but a set of from-to relations)
         
-        # gwiki format requires substitution of figure file names by URLs
-        doconce gwiki_figsubst file.gwiki URL-of-fig-dir
+        # replace all mako function calls by the results of the calls
+        doconce expand_mako mako_code_file funcname file1 file2 ...
         
         # remove all inline comments in a doconce file
         doconce remove_inline_comments file.do.txt
@@ -68950,7 +69418,7 @@ list of capabilities::
 
 
         Usage: doconce command [optional arguments]
-        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex expand_commands combine_images guess_encoding change_encoding gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
         
         
         # transform doconce file to another format
@@ -68969,8 +69437,8 @@ list of capabilities::
         doconce replace_from_file file-with-from-to file1 file2 ...
         (exact text substitution, but a set of from-to relations)
         
-        # gwiki format requires substitution of figure file names by URLs
-        doconce gwiki_figsubst file.gwiki URL-of-fig-dir
+        # replace all mako function calls by the results of the calls
+        doconce expand_mako mako_code_file funcname file1 file2 ...
         
         # remove all inline comments in a doconce file
         doconce remove_inline_comments file.do.txt
@@ -69991,7 +70459,7 @@ list of capabilities::
 
 
         Usage: doconce command [optional arguments]
-        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex expand_commands combine_images guess_encoding change_encoding gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
         
         
         # transform doconce file to another format
@@ -70010,8 +70478,8 @@ list of capabilities::
         doconce replace_from_file file-with-from-to file1 file2 ...
         (exact text substitution, but a set of from-to relations)
         
-        # gwiki format requires substitution of figure file names by URLs
-        doconce gwiki_figsubst file.gwiki URL-of-fig-dir
+        # replace all mako function calls by the results of the calls
+        doconce expand_mako mako_code_file funcname file1 file2 ...
         
         # remove all inline comments in a doconce file
         doconce remove_inline_comments file.do.txt
@@ -71059,7 +71527,7 @@ list of capabilities:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex expand_commands combine_images guess_encoding change_encoding gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 # transform doconce file to another format
@@ -71078,8 +71546,8 @@ doconce replace from-text to-text file1 file2 ...
 doconce replace_from_file file-with-from-to file1 file2 ...
 (exact text substitution, but a set of from-to relations)
 
-# gwiki format requires substitution of figure file names by URLs
-doconce gwiki_figsubst file.gwiki URL-of-fig-dir
+# replace all mako function calls by the results of the calls
+doconce expand_mako mako_code_file funcname file1 file2 ...
 
 # remove all inline comments in a doconce file
 doconce remove_inline_comments file.do.txt
@@ -71721,14 +72189,20 @@ copying from regex "subroutine" until end of file
 copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 
 warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
 
 found info about 9 exercises, written to .testdoc.exerinfo
+... checking existence of https://raw.github.com/hplgit/doconce/master/test/../doc/src/manual/fig/wave1D.png ... found!
+figure file https://raw.github.com/hplgit/doconce/master/test/../doc/src/manual/fig/wave1D:
+    can use https://raw.github.com/hplgit/doconce/master/test/../doc/src/manual/fig/wave1D.png for format html
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ... found!
-figure file ../doc/src/manual/fig/wave1D:
-    can use ../doc/src/manual/fig/wave1D.png for format html
+... checking existence of https://raw.github.com/hplgit/doconce/master/test/../doc/src/manual/fig/wave1D.png ... found!
+*** warning: table headline with entries
+    |  |
+   has 0 columns while further down there are 3 columns
 output in testdoc.html
 + '[' 0 -ne 0 ']'
 + cp testdoc.html testdoc_wordpress.html
@@ -71768,6 +72242,7 @@ copying from regex "subroutine" until end of file
 copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 
 warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
@@ -71776,6 +72251,9 @@ found info about 9 exercises, written to .testdoc.exerinfo
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ... found!
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
+*** warning: table headline with entries
+    |  |
+   has 0 columns while further down there are 3 columns
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in testdoc.html
 + '[' 0 -ne 0 ']'
@@ -71851,6 +72329,9 @@ figure file ../doc/src/manual/fig/wave1D:
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ... found!
 
 exporting publish database papers.pub to papers.bib:
+*** warning: table headline with entries
+    |  |
+   has 0 columns while further down there are 3 columns
 output in testdoc.p.tex
 + '[' 0 -ne 0 ']'
 + cp testdoc.p.tex testdoc_no_solutions.p.tex
@@ -71892,6 +72373,7 @@ copying from regex "subroutine" until end of file
 copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 
 warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
@@ -71900,6 +72382,9 @@ found info about 9 exercises, written to .testdoc.exerinfo
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ... found!
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
+*** warning: table headline with entries
+    |  |
+   has 0 columns while further down there are 3 columns
 *** warning: TITLE may look strange with a template -
              it is recommended to comment out the title: #TITLE:
 *** warning: AUTHOR may look strange with a template -
@@ -71947,6 +72432,7 @@ copying from regex "subroutine" until end of file
 copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 
 warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
@@ -71955,6 +72441,9 @@ found info about 9 exercises, written to .testdoc.exerinfo
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ... found!
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
+*** warning: table headline with entries
+    |  |
+   has 0 columns while further down there are 3 columns
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in testdoc.html
 + '[' 0 -ne 0 ']'
@@ -72005,6 +72494,7 @@ copying from regex "subroutine" until end of file
 copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 
 warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
@@ -72013,6 +72503,9 @@ found info about 9 exercises, written to .testdoc.exerinfo
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ... found!
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
+*** warning: table headline with entries
+    |  |
+   has 0 columns while further down there are 3 columns
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in demo_testdoc.html
 + '[' 0 -ne 0 ']'
@@ -72084,6 +72577,9 @@ figure file ../doc/src/manual/fig/wave1D:
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ... found!
 
 exporting publish database papers.pub to papers.bib:
+*** warning: table headline with entries
+    |  |
+   has 0 columns while further down there are 3 columns
 output in testdoc.p.tex
 + '[' 0 -ne 0 ']'
 + system doconce format pdflatex testdoc.do.txt --device=paper --examples_as_exercises --latex_double_hyphen
@@ -72153,6 +72649,9 @@ figure file ../doc/src/manual/fig/wave1D:
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ... found!
 
 exporting publish database papers.pub to papers.bib:
+*** warning: table headline with entries
+    |  |
+   has 0 columns while further down there are 3 columns
 *** warning: --latex_double_hyphen may lead to unwanted edits.
              search for all -- in the .p.tex file and check.
 output in testdoc.p.tex
@@ -72247,8 +72746,11 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (./testdoc.w18))/usr/local/bin/pygmentize
 ) (./testdoc.pyg)
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+
 
 
 
@@ -72375,6 +72877,7 @@ gs.code.tex
 
 Writing index file testdoc.idx
 No file testdoc.aux.
+
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
@@ -72386,12 +72889,17 @@ No file testdoc.aux.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 
 ABD: EveryShipout initializing macros (./newcommands_bfmath.tex)
-(./newcommands_replace.tex)
+(./newcommands_replace.tex) 
 
 
 
- [1{/var/lib/texm
-f/fonts/map/pdftex/updmap/pdftex.map}] [2]
+
+
+
+
+
+ [1{/var/lib/texmf/fonts/map/pdftex/up
+dmap/pdftex.map}] [2]
 
 
 
@@ -72427,20 +72935,17 @@ f/fonts/map/pdftex/updmap/pdftex.map}] [2]
 
 
 
-<../doc/src/manual/fig/wave1D.pdf, id=67, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=69, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
-[7]
-
-/src/manual/fig/wave1D.pdf>]
+[7] [8 <../doc/src/manual/fig/wave1D.pdf>]
 
 
 
-<../doc/src/manual/fig/wave1D.png, id=87, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=89, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=89, 578.16pt x 433.62pt>
-<use downloaded_figures/f_plot.png>
-
-[10 <../doc/src/manual/fig/wave1D.png> <./downloaded_figures/f_plot.png>]
+<downloaded_figures/f_plot.png, id=91, 578.16pt x 433.62pt>
+<use downloaded_figures/f_plot.png> [9] [10 <../doc/src/manual/fig/wave1D.png> 
+<./downloaded_figures/f_plot.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -72466,6 +72971,22 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
 [11]
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=119, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=120, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=121, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=122, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=123, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=124, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png> [12 <../doc/src/man
+ual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/wave_frames/frame_00
+85.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <../doc/src/manual/m
+ov/wave_frames/frame_0095.png> <../doc/src/manual/mov/wave_frames/frame_0100.pn
+g> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -72488,7 +73009,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 754.
+t line 777.
 
 
 
@@ -72508,7 +73029,7 @@ t line 754.
 
 
 
-t line 763.
+t line 786.
 
 
 
@@ -72528,7 +73049,7 @@ t line 763.
 
 
 
-t line 767.
+t line 790.
 
 
 
@@ -72598,10 +73119,10 @@ t line 767.
 
 .
 
-[12]
-Overfull \hbox (5.05241pt too wide) 
-[][][]\OT1/cmtt/m/n/8 http://www.springer.com/mathematics/computational+science
-+%26+engineering/book/978-3-642-23098-1| 
+
+Overfull \hbox (5.03835pt too wide) 
+[][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
+%26+engineering/book/978-3-642-23098-1| 
 [13]
 
 
@@ -72624,6 +73145,7 @@ Package amsmath Warning: Foreign command \over;
 
 ...rest of part of LaTeX line number...
 
+[14]
 
 
 
@@ -72656,7 +73178,7 @@ Package amsmath Warning: Foreign command \over;
 
 ...rest of part of LaTeX line number...
 
-[14] (./testdoc.out.pyg) [15] (./testdoc.out.pyg) [16]
+(./testdoc.out.pyg) [15] (./testdoc.out.pyg) [16] [17]
 
 
 .
@@ -72664,7 +73186,6 @@ Package amsmath Warning: Foreign command \over;
 
 
 
-[17]
 
 
 
@@ -72683,10 +73204,6 @@ Package amsmath Warning: Foreign command \over;
 
 
 No file testdoc.bbl.
-
-
-...rest of part of LaTeX line number...
-
 [18]
 
 
@@ -72694,11 +73211,16 @@ No file testdoc.bbl.
 
 [19]
 
+
+...rest of part of LaTeX line number...
+
+[20]
+
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
 No file testdoc.ind.
-[20] (./testdoc.aux)
+[21] (./testdoc.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -72756,11 +73278,14 @@ catchfile.sty    2011/03/01 v1.6 Catch the contents of a file (HO)
 etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
  testdoc.w18
  testdoc.pyg
+ fontenc.sty
+   t1enc.def    2005/09/27 v1.99g Standard LaTeX file
 inputenc.sty    2008/03/30 v1.1d Input encoding file
     utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+ lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
 hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
@@ -72845,6 +73370,7 @@ titlesec.sty    2011/12/15 v2.10.0 Sectioning titles
  ttlkeys.def    2011/12/15
  theorem.sty    1995/11/23 v2.2c Theorem extension package (FMi)
      thp.sty    1995/11/23 v2.2c Theorem extension package (FMi)
+   t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 supp-pdf.mkii
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
@@ -72855,11 +73381,17 @@ RS)
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
 newcommands_bfmath.tex
 newcommands_replace.tex
+  t1lmss.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  ot1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omllmm.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omxlmex.fd    2009/10/30 v1.6 Font defs for Latin Modern
     umsa.fd    2013/01/14 v3.01 AMS symbols A
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
     umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
-  omscmr.fd    1999/05/25 v2.5h Standard LaTeX font definitions
+  t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omslmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
  testdoc.out.pyg
  testdoc.out.pyg
  testdoc.out.pyg
@@ -72873,6 +73405,12 @@ newcommands_replace.tex
 ../doc/src/manual/fig/wave1D.pdf
 ../doc/src/manual/fig/wave1D.png
 downloaded_figures/f_plot.png
+../doc/src/manual/mov/wave_frames/frame_0080.png
+../doc/src/manual/mov/wave_frames/frame_0085.png
+../doc/src/manual/mov/wave_frames/frame_0090.png
+../doc/src/manual/mov/wave_frames/frame_0095.png
+../doc/src/manual/mov/wave_frames/frame_0100.png
+../doc/src/manual/mov/wave_frames/frame_0105.png
  testdoc.out.pyg
  testdoc.out.pyg
  ***********
@@ -72889,31 +73427,29 @@ LaTeX Warning: There were undefined references.
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  )
-(see the transcript file for additional information)</usr/share/texlive/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmbx8.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmbx9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmcsc10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmitt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></u
-sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf
--dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmss12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></
-usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/te
-xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on testdoc.pdf (20 pages, ).
+(see the transcript file for additional information){/usr/share/texmf/fonts/enc
+/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/sh
+are/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm
+/lm-rm.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib1
+0.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/font
+s/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx8.pfb>
+</usr/share/texmf/fonts/type1/public/lm/lmbx9.pfb></usr/share/texmf/fonts/type1
+/public/lm/lmcsc10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr
+/share/texmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/type1/pub
+lic/lm/lmmi7.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/
+texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/l
+mr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/font
+s/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></u
+sr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/p
+ublic/lm/lmss12.pfb></usr/share/texmf/fonts/type1/public/lm/lmss8.pfb></usr/sha
+re/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/
+lm/lmsy7.pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb></usr/share/tex
+mf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmt
+t12.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt8.pfb></usr/share/texmf/fon
+ts/type1/public/lm/lmtt9.pfb></usr/share/texmf/fonts/type1/public/lm/lmtti10.pf
+b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb
+>
+Output written on testdoc.pdf (21 pages, ).
 Transcript written on testdoc.log.
 + '[' 0 -ne 0 ']'
 + pdflatex -shell-escape testdoc
@@ -72981,8 +73517,11 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (./testdoc.w18))/usr/local/bin/pygmentize
 ) (./testdoc.pyg)
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+
 
 
 
@@ -73108,7 +73647,7 @@ gs.code.tex
 (/usr/share/texlive/texmf-dist/tex/latex/tools/theorem.sty
 
 Writing index file testdoc.idx
-(./testdoc.aux)
+(./testdoc.aux) 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
@@ -73124,20 +73663,24 @@ Writing index file testdoc.idx
 
 
 
- [1{/var/lib/texm
-f/fonts/map/pdftex/updmap/pdftex.map}] (./testdoc.toc) [2] [3] (./testdoc.tdo)
-[4]  (./testdoc.out.pyg
-) (./testdoc.out.pyg) (./testdoc.out.pyg [5]) (./testdoc.out.pyg)
+
+
+
+
+
+
+ [1{/var/lib/texmf/fonts/map/pdftex/up
+dmap/pdftex.map}] (./testdoc.toc) [2] [3] (./testdoc.tdo) [4]
+
+(./testdoc.out.pyg) (./testdoc.out.pyg [5]) (./testdoc.out.pyg)
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg [6])
 (./testdoc.out.pyg) (./testdoc.out.pyg)
-<../doc/src/manual/fig/wave1D.pdf, id=222, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=224, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
-[7]
-
-/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=241, 586.8324pt x 442.2924pt>
+[7] [8 <../doc/src/manual/fig/wave1D.pdf>]
+<../doc/src/manual/fig/wave1D.png, id=243, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=243, 578.16pt x 433.62pt>
+<downloaded_figures/f_plot.png, id=245, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png> [9 <./downloaded_figures/f_plot.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -73164,6 +73707,18 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
 [10 <../doc/src/manual/fig/wave1D.png>] [11]
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=270, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=271, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=272, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=273, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=274, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=275, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -73186,7 +73741,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 754.
+t line 777.
 
 
 
@@ -73206,7 +73761,7 @@ t line 754.
 
 
 
-t line 763.
+t line 786.
 
 
 
@@ -73226,7 +73781,7 @@ t line 763.
 
 
 
-t line 767.
+t line 790.
 
 
 
@@ -73296,18 +73851,22 @@ t line 767.
 
 .
 
-[12]
-Overfull \hbox (5.05241pt too wide) 
-[][][]\OT1/cmtt/m/n/8 http://www.springer.com/mathematics/computational+science
-+%26+engineering/book/978-3-642-23098-1| 
+[12 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
+ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
+../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/mov/wave_f
+rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
+Overfull \hbox (5.03835pt too wide) 
+[][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
+%26+engineering/book/978-3-642-23098-1| 
+[13]
 
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on .
 
-[13] [14] (./testdoc.out.pyg) (./testdoc.out.pyg) [15] [16]
+[14] (./testdoc.out.pyg) [15] (./testdoc.out.pyg) [16] [17]
 No file testdoc.bbl.
-[17] [18] [19]
+[18] [19]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
@@ -73371,11 +73930,14 @@ catchfile.sty    2011/03/01 v1.6 Catch the contents of a file (HO)
 etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
  testdoc.w18
  testdoc.pyg
+ fontenc.sty
+   t1enc.def    2005/09/27 v1.99g Standard LaTeX file
 inputenc.sty    2008/03/30 v1.1d Input encoding file
     utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+ lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
 hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
@@ -73460,6 +74022,7 @@ titlesec.sty    2011/12/15 v2.10.0 Sectioning titles
  ttlkeys.def    2011/12/15
  theorem.sty    1995/11/23 v2.2c Theorem extension package (FMi)
      thp.sty    1995/11/23 v2.2c Theorem extension package (FMi)
+   t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 supp-pdf.mkii
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
@@ -73472,11 +74035,17 @@ gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
  testdoc.out
 newcommands_bfmath.tex
 newcommands_replace.tex
+  t1lmss.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  ot1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omllmm.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omxlmex.fd    2009/10/30 v1.6 Font defs for Latin Modern
     umsa.fd    2013/01/14 v3.01 AMS symbols A
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
     umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
-  omscmr.fd    1999/05/25 v2.5h Standard LaTeX font definitions
+  t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omslmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
  testdoc.out.pyg
  testdoc.out.pyg
  testdoc.out.pyg
@@ -73490,6 +74059,12 @@ newcommands_replace.tex
 ../doc/src/manual/fig/wave1D.pdf
 ../doc/src/manual/fig/wave1D.png
 downloaded_figures/f_plot.png
+../doc/src/manual/mov/wave_frames/frame_0080.png
+../doc/src/manual/mov/wave_frames/frame_0085.png
+../doc/src/manual/mov/wave_frames/frame_0090.png
+../doc/src/manual/mov/wave_frames/frame_0095.png
+../doc/src/manual/mov/wave_frames/frame_0100.png
+../doc/src/manual/mov/wave_frames/frame_0105.png
  testdoc.out.pyg
  testdoc.out.pyg
  ***********
@@ -73501,30 +74076,28 @@ LaTeX Warning: There were undefined references.
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  )
-(see the transcript file for additional information)</usr/share/texlive/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmbx8.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmbx9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmcsc10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmitt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></u
-sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf
--dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmss12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></
-usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/te
-xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/symbols/msam10.pfb>
+(see the transcript file for additional information){/usr/share/texmf/fonts/enc
+/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/sh
+are/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm
+/lm-rm.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib1
+0.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/font
+s/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx8.pfb>
+</usr/share/texmf/fonts/type1/public/lm/lmbx9.pfb></usr/share/texmf/fonts/type1
+/public/lm/lmcsc10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr
+/share/texmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/type1/pub
+lic/lm/lmmi7.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/
+texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/l
+mr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/font
+s/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></u
+sr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/p
+ublic/lm/lmss12.pfb></usr/share/texmf/fonts/type1/public/lm/lmss8.pfb></usr/sha
+re/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/
+lm/lmsy7.pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb></usr/share/tex
+mf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmt
+t12.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt8.pfb></usr/share/texmf/fon
+ts/type1/public/lm/lmtt9.pfb></usr/share/texmf/fonts/type1/public/lm/lmtti10.pf
+b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb
+>
 Output written on testdoc.pdf (20 pages, ).
 Transcript written on testdoc.log.
 + makeindex testdoc
@@ -73610,8 +74183,11 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (./testdoc.w18))/usr/local/bin/pygmentize
 ) (./testdoc.pyg)
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+
 
 
 
@@ -73737,7 +74313,7 @@ gs.code.tex
 (/usr/share/texlive/texmf-dist/tex/latex/tools/theorem.sty
 
 Writing index file testdoc.idx
-(./testdoc.aux)
+(./testdoc.aux) 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
@@ -73753,20 +74329,24 @@ Writing index file testdoc.idx
 
 
 
- [1{/var/lib/texm
-f/fonts/map/pdftex/updmap/pdftex.map}] (./testdoc.toc) [2] [3] (./testdoc.tdo)
-[4]  (./testdoc.out.pyg
-) (./testdoc.out.pyg) (./testdoc.out.pyg [5]) (./testdoc.out.pyg)
+
+
+
+
+
+
+ [1{/var/lib/texmf/fonts/map/pdftex/up
+dmap/pdftex.map}] (./testdoc.toc) [2] [3] (./testdoc.tdo) [4]
+
+(./testdoc.out.pyg) (./testdoc.out.pyg [5]) (./testdoc.out.pyg)
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg [6])
 (./testdoc.out.pyg) (./testdoc.out.pyg)
-<../doc/src/manual/fig/wave1D.pdf, id=222, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=224, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
-[7]
-
-/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=241, 586.8324pt x 442.2924pt>
+[7] [8 <../doc/src/manual/fig/wave1D.pdf>]
+<../doc/src/manual/fig/wave1D.png, id=243, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=243, 578.16pt x 433.62pt>
+<downloaded_figures/f_plot.png, id=245, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png> [9 <./downloaded_figures/f_plot.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -73793,6 +74373,18 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
 [10 <../doc/src/manual/fig/wave1D.png>] [11]
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=270, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=271, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=272, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=273, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=274, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=275, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -73815,7 +74407,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 754.
+t line 777.
 
 
 
@@ -73835,7 +74427,7 @@ t line 754.
 
 
 
-t line 763.
+t line 786.
 
 
 
@@ -73855,7 +74447,7 @@ t line 763.
 
 
 
-t line 767.
+t line 790.
 
 
 
@@ -73925,26 +74517,30 @@ t line 767.
 
 .
 
-[12]
-Overfull \hbox (5.05241pt too wide) 
-[][][]\OT1/cmtt/m/n/8 http://www.springer.com/mathematics/computational+science
-+%26+engineering/book/978-3-642-23098-1| 
+[12 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
+ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
+../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/mov/wave_f
+rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
+Overfull \hbox (5.03835pt too wide) 
+[][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
+%26+engineering/book/978-3-642-23098-1| 
+[13]
 
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on .
 
-[13] [14] (./testdoc.out.pyg) (./testdoc.out.pyg) [15] [16] (./testdoc.bbl
-[17] [18]) [19] [20]
+[14] (./testdoc.out.pyg) [15] (./testdoc.out.pyg) [16] [17] (./testdoc.bbl
+[18]) [19] [20] [21]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
-(./testdoc.ind [21]
-Overfull \hbox (9.21391pt too wide) 
-[]\OT1/cmr/m/n/10 (-20) test \OT1/cmtt/m/n/10 two \OT1/cmr/m/n/10 (-20) (sep-a-
-rate) \OT1/cmtt/m/n/10 verbatim expressions \OT1/cmr/m/n/10 (-20) which
-[22]) (./testdoc.aux)
+(./testdoc.ind [22]
+Overfull \hbox (9.21497pt too wide) 
+[]\T1/lmr/m/n/10 (-20) test \T1/lmtt/m/n/10 two \T1/lmr/m/n/10 (-20) (sep-a-rat
+e) \T1/lmtt/m/n/10 verbatim expressions \T1/lmr/m/n/10 (-20) which
+[23]) (./testdoc.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -74002,11 +74598,14 @@ catchfile.sty    2011/03/01 v1.6 Catch the contents of a file (HO)
 etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
  testdoc.w18
  testdoc.pyg
+ fontenc.sty
+   t1enc.def    2005/09/27 v1.99g Standard LaTeX file
 inputenc.sty    2008/03/30 v1.1d Input encoding file
     utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+ lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
 hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
@@ -74091,6 +74690,7 @@ titlesec.sty    2011/12/15 v2.10.0 Sectioning titles
  ttlkeys.def    2011/12/15
  theorem.sty    1995/11/23 v2.2c Theorem extension package (FMi)
      thp.sty    1995/11/23 v2.2c Theorem extension package (FMi)
+   t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 supp-pdf.mkii
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
@@ -74103,11 +74703,17 @@ gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
  testdoc.out
 newcommands_bfmath.tex
 newcommands_replace.tex
+  t1lmss.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  ot1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omllmm.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omxlmex.fd    2009/10/30 v1.6 Font defs for Latin Modern
     umsa.fd    2013/01/14 v3.01 AMS symbols A
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
     umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
-  omscmr.fd    1999/05/25 v2.5h Standard LaTeX font definitions
+  t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omslmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
  testdoc.out.pyg
  testdoc.out.pyg
  testdoc.out.pyg
@@ -74121,6 +74727,12 @@ newcommands_replace.tex
 ../doc/src/manual/fig/wave1D.pdf
 ../doc/src/manual/fig/wave1D.png
 downloaded_figures/f_plot.png
+../doc/src/manual/mov/wave_frames/frame_0080.png
+../doc/src/manual/mov/wave_frames/frame_0085.png
+../doc/src/manual/mov/wave_frames/frame_0090.png
+../doc/src/manual/mov/wave_frames/frame_0095.png
+../doc/src/manual/mov/wave_frames/frame_0100.png
+../doc/src/manual/mov/wave_frames/frame_0105.png
  testdoc.out.pyg
  testdoc.out.pyg
  testdoc.bbl
@@ -74134,31 +74746,29 @@ LaTeX Warning: There were undefined references.
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  )
-(see the transcript file for additional information)</usr/share/texlive/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmbx8.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmbx9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmcsc10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmitt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></u
-sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf
--dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmss12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></
-usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/te
-xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on testdoc.pdf (22 pages, ).
+(see the transcript file for additional information){/usr/share/texmf/fonts/enc
+/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/sh
+are/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm
+/lm-rm.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib1
+0.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/font
+s/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx8.pfb>
+</usr/share/texmf/fonts/type1/public/lm/lmbx9.pfb></usr/share/texmf/fonts/type1
+/public/lm/lmcsc10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr
+/share/texmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/type1/pub
+lic/lm/lmmi7.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/
+texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/l
+mr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/font
+s/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></u
+sr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/p
+ublic/lm/lmss12.pfb></usr/share/texmf/fonts/type1/public/lm/lmss8.pfb></usr/sha
+re/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/
+lm/lmsy7.pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb></usr/share/tex
+mf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmt
+t12.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt8.pfb></usr/share/texmf/fon
+ts/type1/public/lm/lmtt9.pfb></usr/share/texmf/fonts/type1/public/lm/lmtti10.pf
+b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb
+>
+Output written on testdoc.pdf (23 pages, ).
 Transcript written on testdoc.log.
 + pdflatex -shell-escape testdoc
 This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
@@ -74225,8 +74835,11 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (./testdoc.w18))/usr/local/bin/pygmentize
 ) (./testdoc.pyg)
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+
 
 
 
@@ -74352,7 +74965,7 @@ gs.code.tex
 (/usr/share/texlive/texmf-dist/tex/latex/tools/theorem.sty
 
 Writing index file testdoc.idx
-(./testdoc.aux)
+(./testdoc.aux) 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
@@ -74368,20 +74981,24 @@ Writing index file testdoc.idx
 
 
 
- [1{/var/lib/texm
-f/fonts/map/pdftex/updmap/pdftex.map}] (./testdoc.toc) [2] [3] (./testdoc.tdo)
-[4]  (./testdoc.out.pyg
-) (./testdoc.out.pyg) (./testdoc.out.pyg [5]) (./testdoc.out.pyg)
+
+
+
+
+
+
+ [1{/var/lib/texmf/fonts/map/pdftex/up
+dmap/pdftex.map}] (./testdoc.toc) [2] [3] (./testdoc.tdo) [4]
+
+(./testdoc.out.pyg) (./testdoc.out.pyg [5]) (./testdoc.out.pyg)
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg [6])
 (./testdoc.out.pyg) (./testdoc.out.pyg)
-<../doc/src/manual/fig/wave1D.pdf, id=222, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=224, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
-[7]
-
-/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=241, 586.8324pt x 442.2924pt>
+[7] [8 <../doc/src/manual/fig/wave1D.pdf>]
+<../doc/src/manual/fig/wave1D.png, id=243, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=243, 578.16pt x 433.62pt>
+<downloaded_figures/f_plot.png, id=245, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png> [9 <./downloaded_figures/f_plot.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -74408,6 +75025,18 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
 [10 <../doc/src/manual/fig/wave1D.png>] [11]
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=270, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=271, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=272, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=273, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=274, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=275, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -74428,26 +75057,30 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
-[12]
-Overfull \hbox (5.05241pt too wide) 
-[][][]\OT1/cmtt/m/n/8 http://www.springer.com/mathematics/computational+science
-+%26+engineering/book/978-3-642-23098-1| 
+[12 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
+ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
+../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/mov/wave_f
+rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
+Overfull \hbox (5.03835pt too wide) 
+[][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
+%26+engineering/book/978-3-642-23098-1| 
+[13]
 
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on .
 
-[13] [14] (./testdoc.out.pyg) (./testdoc.out.pyg) [15] [16] (./testdoc.bbl
-[17] [18]) [19] [20]
+[14] (./testdoc.out.pyg) [15] (./testdoc.out.pyg) [16] [17] (./testdoc.bbl
+[18]) [19] [20] [21]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
-(./testdoc.ind [21]
-Overfull \hbox (9.21391pt too wide) 
-[]\OT1/cmr/m/n/10 (-20) test \OT1/cmtt/m/n/10 two \OT1/cmr/m/n/10 (-20) (sep-a-
-rate) \OT1/cmtt/m/n/10 verbatim expressions \OT1/cmr/m/n/10 (-20) which
-[22]) (./testdoc.aux)
+(./testdoc.ind [22]
+Overfull \hbox (9.21497pt too wide) 
+[]\T1/lmr/m/n/10 (-20) test \T1/lmtt/m/n/10 two \T1/lmr/m/n/10 (-20) (sep-a-rat
+e) \T1/lmtt/m/n/10 verbatim expressions \T1/lmr/m/n/10 (-20) which
+[23]) (./testdoc.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -74505,11 +75138,14 @@ catchfile.sty    2011/03/01 v1.6 Catch the contents of a file (HO)
 etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
  testdoc.w18
  testdoc.pyg
+ fontenc.sty
+   t1enc.def    2005/09/27 v1.99g Standard LaTeX file
 inputenc.sty    2008/03/30 v1.1d Input encoding file
     utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+ lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
 hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
@@ -74594,6 +75230,7 @@ titlesec.sty    2011/12/15 v2.10.0 Sectioning titles
  ttlkeys.def    2011/12/15
  theorem.sty    1995/11/23 v2.2c Theorem extension package (FMi)
      thp.sty    1995/11/23 v2.2c Theorem extension package (FMi)
+   t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 supp-pdf.mkii
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
@@ -74606,11 +75243,17 @@ gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
  testdoc.out
 newcommands_bfmath.tex
 newcommands_replace.tex
+  t1lmss.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  ot1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omllmm.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omxlmex.fd    2009/10/30 v1.6 Font defs for Latin Modern
     umsa.fd    2013/01/14 v3.01 AMS symbols A
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
     umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
-  omscmr.fd    1999/05/25 v2.5h Standard LaTeX font definitions
+  t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omslmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
  testdoc.out.pyg
  testdoc.out.pyg
  testdoc.out.pyg
@@ -74624,6 +75267,12 @@ newcommands_replace.tex
 ../doc/src/manual/fig/wave1D.pdf
 ../doc/src/manual/fig/wave1D.png
 downloaded_figures/f_plot.png
+../doc/src/manual/mov/wave_frames/frame_0080.png
+../doc/src/manual/mov/wave_frames/frame_0085.png
+../doc/src/manual/mov/wave_frames/frame_0090.png
+../doc/src/manual/mov/wave_frames/frame_0095.png
+../doc/src/manual/mov/wave_frames/frame_0100.png
+../doc/src/manual/mov/wave_frames/frame_0105.png
  testdoc.out.pyg
  testdoc.out.pyg
  testdoc.bbl
@@ -74631,31 +75280,29 @@ downloaded_figures/f_plot.png
  ***********
 
  )
-(see the transcript file for additional information)</usr/share/texlive/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmbx8.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmbx9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmcsc10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmitt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></u
-sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf
--dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmss12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></
-usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/te
-xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on testdoc.pdf (22 pages, ).
+(see the transcript file for additional information){/usr/share/texmf/fonts/enc
+/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/sh
+are/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm
+/lm-rm.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib1
+0.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/font
+s/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx8.pfb>
+</usr/share/texmf/fonts/type1/public/lm/lmbx9.pfb></usr/share/texmf/fonts/type1
+/public/lm/lmcsc10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr
+/share/texmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/type1/pub
+lic/lm/lmmi7.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/
+texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/l
+mr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/font
+s/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></u
+sr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/p
+ublic/lm/lmss12.pfb></usr/share/texmf/fonts/type1/public/lm/lmss8.pfb></usr/sha
+re/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/
+lm/lmsy7.pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb></usr/share/tex
+mf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmt
+t12.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt8.pfb></usr/share/texmf/fon
+ts/type1/public/lm/lmtt9.pfb></usr/share/texmf/fonts/type1/public/lm/lmtti10.pf
+b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb
+>
+Output written on testdoc.pdf (23 pages, ).
 Transcript written on testdoc.log.
 + cp testdoc.tex testdoc.tex_ptex2tex
 + system doconce ptex2tex testdoc -DBOOK -DPALATINO 'sys=begin{quote}begin{Verbatim}@end{Verbatim}end{quote}' pypro=ans:nt envir=minted
@@ -74704,6 +75351,9 @@ warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
 
 found info about 9 exercises, written to .testdoc.exerinfo
+*** warning: table headline with entries
+    |  |
+   has 0 columns while further down there are 3 columns
 output in testdoc.txt
 + '[' 0 -ne 0 ']'
 + system doconce format st testdoc.do.txt --examples_as_exercises
@@ -74746,6 +75396,9 @@ warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
 
 found info about 9 exercises, written to .testdoc.exerinfo
+*** warning: table headline with entries
+    |  |
+   has 0 columns while further down there are 3 columns
 output in testdoc.st
 + '[' 0 -ne 0 ']'
 + system doconce format sphinx testdoc.do.txt --examples_as_exercises
@@ -74784,8 +75437,20 @@ Not recommended for sphinx output: math environment {eqnarray}
 (use equation, equation*, \[ \], or align/align*)
 Not recommended for sphinx output: math environment {multline}
 Not recommended for sphinx output: math environment {gather}
+*** warning: hyperlink to URL ../doc/src/manual/mov/wave_frames/frame_0095.png is to a local file,
+    recommended to be _static/frame_0095.png for sphinx
 *** warning: hyperlink to URL mailto:hpl@simula.no is to a local file,
     recommended to be _static/mailto:hpl@simula.no for sphinx
+*** warning: hyperlink to URL ../doc/src/manual/mov/wave_frames/frame_0105.png is to a local file,
+    recommended to be _static/frame_0105.png for sphinx
+*** warning: hyperlink to URL ../doc/src/manual/mov/wave_frames/frame_0090.png is to a local file,
+    recommended to be _static/frame_0090.png for sphinx
+*** warning: hyperlink to URL ../doc/src/manual/mov/wave_frames/frame_0100.png is to a local file,
+    recommended to be _static/frame_0100.png for sphinx
+*** warning: hyperlink to URL ../doc/src/manual/mov/wave_frames/frame_0085.png is to a local file,
+    recommended to be _static/frame_0085.png for sphinx
+*** warning: hyperlink to URL ../doc/src/manual/mov/wave_frames/frame_0080.png is to a local file,
+    recommended to be _static/frame_0080.png for sphinx
 *** warning: hyperlink to URL testdoc.do.txt is to a local file,
     recommended to be _static/testdoc.do.txt for sphinx
     move linked file to _static and change URLs unless
@@ -74796,6 +75461,7 @@ copying from regex "subroutine" until end of file
 copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 
 warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
@@ -74804,6 +75470,9 @@ found info about 9 exercises, written to .testdoc.exerinfo
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ... found!
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format sphinx
+*** warning: table headline with entries
+    |  |
+   has 0 columns while further down there are 3 columns
 *** warning: the "alignat" environment will give errors in Sphinx:
 
         \begin{alignat}{2}
@@ -74857,8 +75526,20 @@ Not recommended for sphinx output: math environment {eqnarray}
 (use equation, equation*, \[ \], or align/align*)
 Not recommended for sphinx output: math environment {multline}
 Not recommended for sphinx output: math environment {gather}
+*** warning: hyperlink to URL ../doc/src/manual/mov/wave_frames/frame_0095.png is to a local file,
+    recommended to be _static/frame_0095.png for sphinx
 *** warning: hyperlink to URL mailto:hpl@simula.no is to a local file,
     recommended to be _static/mailto:hpl@simula.no for sphinx
+*** warning: hyperlink to URL ../doc/src/manual/mov/wave_frames/frame_0105.png is to a local file,
+    recommended to be _static/frame_0105.png for sphinx
+*** warning: hyperlink to URL ../doc/src/manual/mov/wave_frames/frame_0090.png is to a local file,
+    recommended to be _static/frame_0090.png for sphinx
+*** warning: hyperlink to URL ../doc/src/manual/mov/wave_frames/frame_0100.png is to a local file,
+    recommended to be _static/frame_0100.png for sphinx
+*** warning: hyperlink to URL ../doc/src/manual/mov/wave_frames/frame_0085.png is to a local file,
+    recommended to be _static/frame_0085.png for sphinx
+*** warning: hyperlink to URL ../doc/src/manual/mov/wave_frames/frame_0080.png is to a local file,
+    recommended to be _static/frame_0080.png for sphinx
 *** warning: hyperlink to URL testdoc.do.txt is to a local file,
     recommended to be _static/testdoc.do.txt for sphinx
     move linked file to _static and change URLs unless
@@ -74869,6 +75550,7 @@ copying from regex "subroutine" until end of file
 copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 
 warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
@@ -74877,6 +75559,9 @@ found info about 9 exercises, written to .testdoc.exerinfo
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ... found!
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format sphinx
+*** warning: table headline with entries
+    |  |
+   has 0 columns while further down there are 3 columns
 *** warning: the "alignat" environment will give errors in Sphinx:
 
         \begin{alignat}{2}
@@ -74896,9 +75581,9 @@ output in testdoc.rst
 + doconce split_rst testdoc
 testdoc split into
 ._testdoc000.rst ._testdoc001.rst ._testdoc002.rst
-+ system doconce sphinx_dir author=HPL 'title=Just a test' version=0.1 theme=agni testdoc
-+ doconce sphinx_dir author=HPL 'title=Just a test' version=0.1 theme=agni testdoc
-Making sphinx-rootdir
++ system doconce sphinx_dir author=HPL 'title=Just a test' dirname=sphinx-testdoc version=0.1 theme=agni testdoc
++ doconce sphinx_dir author=HPL 'title=Just a test' dirname=sphinx-testdoc version=0.1 theme=agni testdoc
+Making sphinx-testdoc
 Welcome to the Sphinx 1.2pre quickstart utility.
 
 Please enter values for the following settings (just press Enter to
@@ -74939,14 +75624,14 @@ A Makefile and a Windows command file can be generated for you so that you
 only have to run e.g. `make html' instead of invoking sphinx-build
 directly.
 > Create Makefile? (Y/n) [y]: > Create Windows command file? (Y/n) [y]: 
-Creating file sphinx-rootdir/conf.py.
-Creating file sphinx-rootdir/index.rst.
-Creating file sphinx-rootdir/Makefile.
-Creating file sphinx-rootdir/make.bat.
+Creating file sphinx-testdoc/conf.py.
+Creating file sphinx-testdoc/index.rst.
+Creating file sphinx-testdoc/Makefile.
+Creating file sphinx-testdoc/make.bat.
 
 Finished: An initial directory structure has been created.
 
-You should now populate your master file sphinx-rootdir/index.rst and create other documentation
+You should now populate your master file sphinx-testdoc/index.rst and create other documentation
 source files. Use the Makefile to build the docs, like so:
    make builder
 where "builder" is one of the supported builders, e.g. html, latex or linkcheck.
@@ -74964,6 +75649,134 @@ or just run it by
 
 + '[' 0 -ne 0 ']'
 + cp automake_sphinx.py automake_sphinx_testdoc.py
++ system python automake_sphinx.py
++ python automake_sphinx.py
+rm -rf _build/*
+sphinx-build -b html -d _build/doctrees   . _build/html
+Making output directory...
+Running Sphinx v1.2pre
+loading pickled environment... not yet created
+building [html]: targets for 4 source files that are out of date
+updating environment: 4 added, 0 changed, 0 removed
+reading sources... [ 25%] ._testdoc000
+reading sources... [ 50%] ._testdoc001
+reading sources... [ 75%] ._testdoc002
+reading sources... [100%] index
+
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc002.rst:478: WARNING: Inline interpreted text or phrase reference start-string without end-string.
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc002.rst:750: SEVERE: Title level inconsistent:
+
+Remarks  (1)
+~~~~~~~~~~~~
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc002.rst:777: WARNING: Explicit markup ends without a blank line; unexpected unindent.
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc002.rst:785: WARNING: Explicit markup ends without a blank line; unexpected unindent.
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc002.rst:801: WARNING: Explicit markup ends without a blank line; unexpected unindent.
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc002.rst:918: WARNING: Explicit markup ends without a blank line; unexpected unindent.
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc002.rst:925: WARNING: Explicit markup ends without a blank line; unexpected unindent.
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc002.rst:942: SEVERE: Title level inconsistent:
+
+Remarks  (2)
+~~~~~~~~~~~~
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc002.rst:979: WARNING: Explicit markup ends without a blank line; unexpected unindent.
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc002.rst:1035: WARNING: Explicit markup ends without a blank line; unexpected unindent.
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc002.rst:1039: WARNING: Explicit markup ends without a blank line; unexpected unindent.
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc002.rst:1062: WARNING: Explicit markup ends without a blank line; unexpected unindent.
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc002.rst:1066: WARNING: Explicit markup ends without a blank line; unexpected unindent.
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc002.rst:1074: SEVERE: Title level inconsistent:
+
+Remarks  (3)
+~~~~~~~~~~~~
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc002.rst:None: WARNING: nonlocal image URI found: https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png
+looking for now-outdated files... none found
+pickling environment... done
+checking consistency... done
+preparing documents... done
+writing output... [ 25%] ._testdoc000
+writing output... [ 50%] ._testdoc001
+writing output... [ 75%] ._testdoc002
+writing output... [100%] index
+
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc002.rst:704: WARNING: undefined label: eq:eq1a (if the link has no caption the label must precede a section header)
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc002.rst:704: WARNING: undefined label: eq:eq2a (if the link has no caption the label must precede a section header)
+writing additional files... (0 module code pages) genindex search
+copying images... [100%] wave1D.png
+
+copying static files... done
+dumping search index... done
+dumping object inventory... done
+build succeeded, 17 warnings.
+
+Build finished. The HTML pages are in _build/html.
+<title>(.+?) &mdash;.+?</title> replaced by <title>\g<1></title> in search.html
+replacing </head> by 
+   <style type=text/css>
+     div.admonition {
+       background-color: whiteSmoke;
+       border: 1px solid #bababa;
+     }
+   </style>
+  </head>
+ in search.html
+<title>(.+?) &mdash;.+?</title> replaced by <title>\g<1></title> in genindex.html
+replacing </head> by 
+   <style type=text/css>
+     div.admonition {
+       background-color: whiteSmoke;
+       border: 1px solid #bababa;
+     }
+   </style>
+  </head>
+ in genindex.html
+<title>(.+?) &mdash;.+?</title> replaced by <title>\g<1></title> in index.html
+replacing </head> by 
+   <style type=text/css>
+     div.admonition {
+       background-color: whiteSmoke;
+       border: 1px solid #bababa;
+     }
+   </style>
+  </head>
+ in index.html
+<title>(.+?) &mdash;.+?</title> replaced by <title>\g<1></title> in ._testdoc002.html
+replacing </head> by 
+   <style type=text/css>
+     div.admonition {
+       background-color: whiteSmoke;
+       border: 1px solid #bababa;
+     }
+   </style>
+  </head>
+ in ._testdoc002.html
+<title>(.+?) &mdash;.+?</title> replaced by <title>\g<1></title> in ._testdoc001.html
+replacing </head> by 
+   <style type=text/css>
+     div.admonition {
+       background-color: whiteSmoke;
+       border: 1px solid #bababa;
+     }
+   </style>
+  </head>
+ in ._testdoc001.html
+<title>(.+?) &mdash;.+?</title> replaced by <title>\g<1></title> in ._testdoc000.html
+replacing </head> by 
+   <style type=text/css>
+     div.admonition {
+       background-color: whiteSmoke;
+       border: 1px solid #bababa;
+     }
+   </style>
+  </head>
+ in ._testdoc000.html
+copying movie_demo to sphinx-testdoc
+copying ../doc/src/manual/fig/wave1D.png to sphinx-testdoc
+/home/hpl/vc/doconce/test/sphinx-testdoc
+running make clean
+running make html
+Fix generated files:
+
+google-chrome sphinx-testdoc/_build/html/index.html
+
++ '[' 0 -ne 0 ']'
 + system doconce format rst testdoc.do.txt --examples_as_exercises
 + doconce format rst testdoc.do.txt --examples_as_exercises
 running preprocess -DFORMAT=rst -DDEVICE=screen  testdoc.do.txt > tmp_preprocess__testdoc.do.txt
@@ -75007,6 +75820,9 @@ found info about 9 exercises, written to .testdoc.exerinfo
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ... found!
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format rst
+*** warning: table headline with entries
+    |  |
+   has 0 columns while further down there are 3 columns
 output in testdoc.rst
 + '[' 0 -ne 0 ']'
 + system doconce format epytext testdoc.do.txt --examples_as_exercises
@@ -75049,6 +75865,9 @@ warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
 
 found info about 9 exercises, written to .testdoc.exerinfo
+*** warning: table headline with entries
+    |  |
+   has 0 columns while further down there are 3 columns
 output in testdoc.epytext
 + '[' 0 -ne 0 ']'
 + system doconce format pandoc testdoc.do.txt --examples_as_exercises
@@ -75086,6 +75905,7 @@ copying from regex "subroutine" until end of file
 copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 
 warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
@@ -75094,6 +75914,9 @@ found info about 9 exercises, written to .testdoc.exerinfo
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ... found!
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format pandoc
+*** warning: table headline with entries
+    |  |
+   has 0 columns while further down there are 3 columns
 *** warning: latex envir \begin{multline} does not work well.
 
 *** warning: latex envir \begin{gather} does not work well.
@@ -75165,6 +75988,9 @@ figure file ../doc/src/manual/fig/wave1D:
  ...for wikipedia/wikibooks you must upload image file df2s8765s_plot.png to
     common.wikimedia.org
  ...for now we use local file Df2s8765s plot.png
+*** warning: table headline with entries
+    |  |
+   has 0 columns while further down there are 3 columns
 *** warning: reference to label "my:eq1" in an equation does not work in MediaWiki
 output in testdoc.mwiki
 + '[' 0 -ne 0 ']'
@@ -75211,6 +76037,9 @@ found info about 9 exercises, written to .testdoc.exerinfo
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ... found!
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format cwiki
+*** warning: table headline with entries
+    |  |
+   has 0 columns while further down there are 5 columns
 output in testdoc.cwiki
 + '[' 0 -ne 0 ']'
 + system doconce format ipynb testdoc.do.txt --examples_as_exercises
@@ -75248,6 +76077,7 @@ copying from regex "subroutine" until end of file
 copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 
 warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
@@ -75256,6 +76086,9 @@ found info about 9 exercises, written to .testdoc.exerinfo
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ... found!
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format ipynb
+*** warning: table headline with entries
+    |  |
+   has 0 columns while further down there are 3 columns
 output in testdoc.ipynb
 + '[' 0 -ne 0 ']'
 + system doconce format gwiki testdoc.do.txt --skip_inline_comments MYVAR1=3 'MYVAR2=a string' --examples_as_exercises
@@ -75326,6 +76159,9 @@ NOTE: Place https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png
       or use the doconce script:
       doconce gwiki_figsubst.py mydoc.gwiki URL
 
+*** warning: table headline with entries
+    |  |
+   has 0 columns while further down there are 3 columns
 output in testdoc.gwiki
 + '[' 0 -ne 0 ']'
 + system doconce format latex testdoc.do.txt --examples_as_exercises
@@ -75395,6 +76231,9 @@ figure file ../doc/src/manual/fig/wave1D:
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ... found!
 
 exporting publish database papers.pub to papers.bib:
+*** warning: table headline with entries
+    |  |
+   has 0 columns while further down there are 3 columns
 output in testdoc.p.tex
 + '[' 0 -ne 0 ']'
 + system doconce ptex2tex testdoc -DBOOK -DLATEX_HEADING=traditional
@@ -75461,6 +76300,7 @@ copying from regex "subroutine" until end of file
 copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 
 warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
@@ -75469,6 +76309,9 @@ found info about 9 exercises, written to .testdoc.exerinfo
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ... found!
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format pandoc
+*** warning: table headline with entries
+    |  |
+   has 0 columns while further down there are 3 columns
 *** warning: latex envir \begin{multline} does not work well.
 
 *** warning: latex envir \begin{gather} does not work well.
@@ -75790,8 +76633,11 @@ For additional information on amsmath, use the `?' option.
 
 (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
-<2008/02/07> (tvz)) (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+<2008/02/07> (tvz)) (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+
 
 
 
@@ -75811,6 +76657,7 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 
 Writing index file math_test.idx
 No file math_test.aux.
+
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
@@ -75820,6 +76667,11 @@ No file math_test.aux.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 
 (./newcommands_bfmath.tex) (./newcommands_replace.tex)
+
+
+
+
+
 
 
 
@@ -75876,11 +76728,14 @@ microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
 fancyvrb.sty    2008/02/07
+ fontenc.sty
+   t1enc.def    2005/09/27 v1.99g Standard LaTeX file
 inputenc.sty    2008/03/30 v1.1d Input encoding file
     utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+ lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
 hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
@@ -75912,6 +76767,7 @@ hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
      url.sty    2006/04/12  ver 3.3  Verb mode for urls, etc.
  hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
+   t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 supp-pdf.mkii
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
@@ -75922,10 +76778,15 @@ RS)
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
 newcommands_bfmath.tex
 newcommands_replace.tex
+  ot1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omllmm.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omxlmex.fd    2009/10/30 v1.6 Font defs for Latin Modern
     umsa.fd    2013/01/14 v3.01 AMS symbols A
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
     umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+  t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
  ***********
 
 
@@ -75939,17 +76800,16 @@ LaTeX Warning: There were undefined references.
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
- )</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmtt9.pfb>
+ ){/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dv
+ips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share
+/texmf/fonts/enc/dvips/lm/lm-mathit.enc}</usr/share/texlive/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmmib10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx
+10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fon
+ts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi7.pfb
+></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type
+1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/s
+hare/texmf/fonts/type1/public/lm/lmsy7.pfb></usr/share/texmf/fonts/type1/public
+/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
 Output written on math_test.pdf (3 pages, ).
 Transcript written on math_test.log.
 + system doconce format html math_test
@@ -76147,7 +77007,7 @@ output in math_test.md
 + doconce md2latex math_test
 command "md2latex" is not legal, must be among
 
-format, help, sphinx_dir, subst, replace, replace_from_file, clean, spellcheck, ptex2tex, expand_commands, combine_images, guess_encoding, change_encoding, gwiki_figsubst, md2html, remove_inline_comments, grab, remove, remove_exercise_answers, split_rst, split_html, slides_html, slides_beamer, latin2html, latex_header, latex_footer, bbl2rst, html_colorbullets, list_labels, teamod, sphinxfix_localURLs, make_figure_code_links, latex_exercise_toc, insertdocstr, old2new_format, linkchecker, latex2doconce, latex_dislikes, pygmentize, makefile, diff, gitdiff, fix_bibtex4publish, csv2table
+format, help, sphinx_dir, subst, replace, replace_from_file, clean, spellcheck, ptex2tex, guess_encoding, expand_commands, expand_mako, combine_images, change_encoding, gwiki_figsubst, md2html, remove_inline_comments, grab, remove, remove_exercise_answers, split_rst, split_html, slides_html, slides_beamer, latin2html, latex_header, latex_footer, bbl2rst, html_colorbullets, list_labels, teamod, sphinxfix_localURLs, make_figure_code_links, latex_exercise_toc, insertdocstr, old2new_format, linkchecker, latex2doconce, latex_dislikes, pygmentize, makefile, diff, gitdiff, fix_bibtex4publish, csv2table
 + admon_tps='colors1 graybox1 paragraph graybox2 yellowbox graybox3 colors2'
 + for admon_tp in '$admon_tps'
 + system doconce format pdflatex admon --latex_admon=colors1
@@ -76221,8 +77081,11 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (./admon_colors1.w18))/usr/local/bin/pygmentize
 ) (./admon_colors1.pyg)
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+
 
 
 
@@ -76244,6 +77107,7 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 
 Writing index file admon_colors1.idx
 No file admon_colors1.aux.
+
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
@@ -76257,10 +77121,14 @@ No file admon_colors1.aux.
 
 
 
-(./admon_colors1.out.pyg)
- [1{/var/lib/texmf/font
-s/map/pdftex/updmap/pdftex.map}] (./admon_colors1.out.pyg)
-<latex_figs/warning.pdf, id=19, 89.33376pt x 89.33376pt>
+
+
+
+
+(./admon_colors1.out.pyg 
+ [1{/var/lib/texmf/fonts/map/pdftex/up
+dmap/pdftex.map}] (./admon_colors1.out.pyg)
+<latex_figs/warning.pdf, id=20, 89.33376pt x 89.33376pt>
 <use latex_figs/warning.pdf>
 Underfull \hbox (badness 10000) 
 
@@ -76276,7 +77144,7 @@ Underfull \hbox (badness 10000)
 
 Underfull \hbox (badness 10000) 
 
-<latex_figs/notice.pdf, id=34, 89.33376pt x 89.33376pt>
+<latex_figs/notice.pdf, id=37, 89.33376pt x 89.33376pt>
 <use latex_figs/notice.pdf>
 Underfull \hbox (badness 10000) 
 
@@ -76284,7 +77152,7 @@ Underfull \hbox (badness 10000)
 Underfull \hbox (badness 10000) 
 
 [3 <./latex_figs/notice.pdf>]
-<latex_figs/question.pdf, id=47, 89.33376pt x 89.33376pt>
+<latex_figs/question.pdf, id=51, 89.33376pt x 89.33376pt>
 <use latex_figs/question.pdf>
 Underfull \hbox (badness 10000) 
 
@@ -76301,9 +77169,9 @@ Underfull \hbox (badness 10000)
 Underfull \hbox (badness 10000) 
 
 (./admon_colors1.out.pyg) (./admon_colors1.out.pyg)
-<../doc/src/manual/fig/wave1D.pdf, id=48, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=52, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> [4 <./latex_figs/question.pdf>] [5]
-<latex_figs/summary.pdf, id=65, 89.33376pt x 89.33376pt>
+<latex_figs/summary.pdf, id=69, 89.33376pt x 89.33376pt>
 <use latex_figs/summary.pdf>
 Underfull \hbox (badness 10000) 
 
@@ -76356,11 +77224,14 @@ catchfile.sty    2011/03/01 v1.6 Catch the contents of a file (HO)
 etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
 admon_colors1.w18
 admon_colors1.pyg
+ fontenc.sty
+   t1enc.def    2005/09/27 v1.99g Standard LaTeX file
 inputenc.sty    2008/03/30 v1.1d Input encoding file
     utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+ lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
 hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
@@ -76390,6 +77261,7 @@ hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
   framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
+   t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 supp-pdf.mkii
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
@@ -76400,12 +77272,17 @@ RS)
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
 newcommands_bfmath.tex
 newcommands_replace.tex
+  ot1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omllmm.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omxlmex.fd    2009/10/30 v1.6 Font defs for Latin Modern
     umsa.fd    2013/01/14 v3.01 AMS symbols A
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
     umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 admon_colors1.out.pyg
-  omscmr.fd    1999/05/25 v2.5h Standard LaTeX font definitions
+  t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omslmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 admon_colors1.out.pyg
 latex_figs/warning.pdf
 latex_figs/warning.pdf
@@ -76430,21 +77307,20 @@ Package rerunfilecheck Warning: File `admon_colors1.out' has changed.
 (rerunfilecheck)                or use package `bookmark'.
 
  )
-(see the transcript file for additional information)</usr/share/texlive/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-r12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb>
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/te
-xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/share/texlive/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmtt9.pfb>
+(see the transcript file for additional information){/usr/share/texmf/fonts/enc
+/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/
+texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-
+mathsy.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib1
+0.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/font
+s/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb
+></usr/share/texmf/fonts/type1/public/lm/lmmi7.pfb></usr/share/texmf/fonts/type
+1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/s
+hare/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/
+lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texm
+f/fonts/type1/public/lm/lmri8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy1
+0.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy7.pfb></usr/share/texmf/fonts
+/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb>
+</usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
 Output written on admon_colors1.pdf (6 pages, ).
 Transcript written on admon_colors1.log.
 + '[' 0 -ne 0 ']'
@@ -76520,8 +77396,11 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (./admon_graybox1.w18))/usr/local/bin/pygmentize
 ) (./admon_graybox1.pyg)
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+
 
 
 
@@ -76633,6 +77512,7 @@ hs.code.tex))) (/usr/share/texlive/texmf-dist/tex/latex/mdframed/md-frame-1.mdf
 ))
 Writing index file admon_graybox1.idx
 No file admon_graybox1.aux.
+
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
@@ -76642,14 +77522,17 @@ No file admon_graybox1.aux.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 
 ABD: EveryShipout initializing macros (./newcommands_bfmath.tex)
-(./newcommands_replace.tex)
+(./newcommands_replace.tex) 
 
 
 
 
-(./admon_graybox1.out.pyg)
- [1{/var/lib/texmf/font
-s/map/pdftex/updmap/pdftex.map}] (./admon_graybox1.out.pyg)
+
+
+
+(./admon_graybox1.out.pyg 
+ [1{/var/lib/texmf/fonts/map/pdftex/up
+dmap/pdftex.map}] (./admon_graybox1.out.pyg)
 
 
 ...rest of part of LaTeX line number...
@@ -76697,7 +77580,7 @@ s/map/pdftex/updmap/pdftex.map}] (./admon_graybox1.out.pyg)
 ...rest of part of LaTeX line number...
 
 (./admon_graybox1.out.pyg) (./admon_graybox1.out.pyg)
-<../doc/src/manual/fig/wave1D.pdf, id=41, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=45, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf>
 
 
@@ -76765,11 +77648,14 @@ catchfile.sty    2011/03/01 v1.6 Catch the contents of a file (HO)
 etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
 admon_graybox1.w18
 admon_graybox1.pyg
+ fontenc.sty
+   t1enc.def    2005/09/27 v1.99g Standard LaTeX file
 inputenc.sty    2008/03/30 v1.1d Input encoding file
     utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+ lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
 hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
@@ -76847,6 +77733,7 @@ pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
   pgffor.code.tex
     tikz.code.tex
 md-frame-1.mdf    2013/07/01\ 1.9b: md-frame-1
+   t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 supp-pdf.mkii
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
@@ -76857,12 +77744,17 @@ RS)
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
 newcommands_bfmath.tex
 newcommands_replace.tex
+  ot1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omllmm.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omxlmex.fd    2009/10/30 v1.6 Font defs for Latin Modern
     umsa.fd    2013/01/14 v3.01 AMS symbols A
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
     umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 admon_graybox1.out.pyg
-  omscmr.fd    1999/05/25 v2.5h Standard LaTeX font definitions
+  t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omslmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 admon_graybox1.out.pyg
 admon_graybox1.out.pyg
 admon_graybox1.out.pyg
@@ -76881,20 +77773,19 @@ LaTeX Warning: There were undefined references.
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
- )</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-sy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pf
-b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
+ ){/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dv
+ips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share
+/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}</usr/share/texlive/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmmib10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx
+10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fon
+ts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi7.pfb
+></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type
+1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/sh
+are/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/l
+m/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmri8.pfb></usr/share/texm
+f/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy
+7.pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb></usr/share/texmf/font
+s/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
 Output written on admon_graybox1.pdf (6 pages, ).
 Transcript written on admon_graybox1.log.
 + '[' 0 -ne 0 ']'
@@ -76970,8 +77861,11 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (./admon_paragraph.w18))/usr/local/bin/pygmentize
 ) (./admon_paragraph.pyg)
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+
 
 
 
@@ -77083,6 +77977,7 @@ hs.code.tex))) (/usr/share/texlive/texmf-dist/tex/latex/mdframed/md-frame-1.mdf
 ))
 Writing index file admon_paragraph.idx
 No file admon_paragraph.aux.
+
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
@@ -77092,17 +77987,19 @@ No file admon_paragraph.aux.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 
 ABD: EveryShipout initializing macros (./newcommands_bfmath.tex)
-(./newcommands_replace.tex)
+(./newcommands_replace.tex) 
 
 
 
 
-(./admon_paragraph.out.pyg)
- [1{/var/lib/texmf/font
-s/map/pdftex/updmap/pdftex.map}] (./admon_paragraph.out.pyg) [2]
-(./admon_paragraph.out.pyg) [3] (./admon_paragraph.out.pyg)
-(./admon_paragraph.out.pyg [4])
-<../doc/src/manual/fig/wave1D.pdf, id=60, 586.83241pt x 442.29242pt>
+
+
+
+(./admon_paragraph.out.pyg 
+ [1{/var/lib/texmf/fonts/map/pdftex/up
+dmap/pdftex.map}] (./admon_paragraph.out.pyg) [2] (./admon_paragraph.out.pyg)
+[3] (./admon_paragraph.out.pyg) (./admon_paragraph.out.pyg [4])
+<../doc/src/manual/fig/wave1D.pdf, id=64, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf>
 No file admon_paragraph.ind.
 [5 <../doc/src/manual/fig/wave1D.pdf>] (./admon_paragraph.aux)
@@ -77152,11 +78049,14 @@ catchfile.sty    2011/03/01 v1.6 Catch the contents of a file (HO)
 etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
 admon_paragraph.w18
 admon_paragraph.pyg
+ fontenc.sty
+   t1enc.def    2005/09/27 v1.99g Standard LaTeX file
 inputenc.sty    2008/03/30 v1.1d Input encoding file
     utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+ lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
 hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
@@ -77234,6 +78134,7 @@ pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
   pgffor.code.tex
     tikz.code.tex
 md-frame-1.mdf    2013/07/01\ 1.9b: md-frame-1
+   t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 supp-pdf.mkii
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
@@ -77244,12 +78145,17 @@ RS)
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
 newcommands_bfmath.tex
 newcommands_replace.tex
+  ot1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omllmm.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omxlmex.fd    2009/10/30 v1.6 Font defs for Latin Modern
     umsa.fd    2013/01/14 v3.01 AMS symbols A
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
     umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 admon_paragraph.out.pyg
-  omscmr.fd    1999/05/25 v2.5h Standard LaTeX font definitions
+  t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omslmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 admon_paragraph.out.pyg
 admon_paragraph.out.pyg
 admon_paragraph.out.pyg
@@ -77262,20 +78168,19 @@ Package rerunfilecheck Warning: File `admon_paragraph.out' has changed.
 (rerunfilecheck)                Rerun to get outlines right
 (rerunfilecheck)                or use package `bookmark'.
 
- )</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-sy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pf
-b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
+ ){/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dv
+ips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share
+/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}</usr/share/texlive/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmmib10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx
+10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fon
+ts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi7.pfb
+></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type
+1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/sh
+are/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/l
+m/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmri8.pfb></usr/share/texm
+f/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy
+7.pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb></usr/share/texmf/font
+s/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
 Output written on admon_paragraph.pdf (5 pages, ).
 Transcript written on admon_paragraph.log.
 + '[' 0 -ne 0 ']'
@@ -77351,8 +78256,11 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (./admon_graybox2.w18))/usr/local/bin/pygmentize
 ) (./admon_graybox2.pyg)
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+
 
 
 
@@ -77465,6 +78373,7 @@ hs.code.tex))) (/usr/share/texlive/texmf-dist/tex/latex/mdframed/md-frame-1.mdf
 ))
 Writing index file admon_graybox2.idx
 No file admon_graybox2.aux.
+
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
@@ -77474,14 +78383,17 @@ No file admon_graybox2.aux.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 
 ABD: EveryShipout initializing macros (./newcommands_bfmath.tex)
-(./newcommands_replace.tex)
+(./newcommands_replace.tex) 
 
 
 
 
-(./admon_graybox2.out.pyg)
- [1{/var/lib/texmf/font
-s/map/pdftex/updmap/pdftex.map}] (./admon_graybox2.out.pyg)
+
+
+
+(./admon_graybox2.out.pyg 
+ [1{/var/lib/texmf/fonts/map/pdftex/up
+dmap/pdftex.map}] (./admon_graybox2.out.pyg)
 
 
 ...rest of part of LaTeX line number...
@@ -77529,7 +78441,7 @@ s/map/pdftex/updmap/pdftex.map}] (./admon_graybox2.out.pyg)
 ...rest of part of LaTeX line number...
 
 (./admon_graybox2.out.pyg) (./admon_graybox2.out.pyg)
-<../doc/src/manual/fig/wave1D.pdf, id=41, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=45, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf>
 
 
@@ -77593,11 +78505,14 @@ catchfile.sty    2011/03/01 v1.6 Catch the contents of a file (HO)
 etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
 admon_graybox2.w18
 admon_graybox2.pyg
+ fontenc.sty
+   t1enc.def    2005/09/27 v1.99g Standard LaTeX file
 inputenc.sty    2008/03/30 v1.1d Input encoding file
     utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+ lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
 hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
@@ -77676,6 +78591,7 @@ pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
   pgffor.code.tex
     tikz.code.tex
 md-frame-1.mdf    2013/07/01\ 1.9b: md-frame-1
+   t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 supp-pdf.mkii
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
@@ -77686,12 +78602,17 @@ RS)
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
 newcommands_bfmath.tex
 newcommands_replace.tex
+  ot1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omllmm.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omxlmex.fd    2009/10/30 v1.6 Font defs for Latin Modern
     umsa.fd    2013/01/14 v3.01 AMS symbols A
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
     umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 admon_graybox2.out.pyg
-  omscmr.fd    1999/05/25 v2.5h Standard LaTeX font definitions
+  t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omslmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 admon_graybox2.out.pyg
 admon_graybox2.out.pyg
 admon_graybox2.out.pyg
@@ -77710,20 +78631,19 @@ LaTeX Warning: There were undefined references.
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
- )</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-sy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pf
-b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
+ ){/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dv
+ips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share
+/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}</usr/share/texlive/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmmib10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx
+10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fon
+ts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi7.pfb
+></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type
+1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/sh
+are/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/l
+m/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmri8.pfb></usr/share/texm
+f/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy
+7.pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb></usr/share/texmf/font
+s/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
 Output written on admon_graybox2.pdf (6 pages, ).
 Transcript written on admon_graybox2.log.
 + '[' 0 -ne 0 ']'
@@ -77799,8 +78719,11 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (./admon_yellowbox.w18))/usr/local/bin/pygmentize
 ) (./admon_yellowbox.pyg)
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+
 
 
 
@@ -77823,6 +78746,7 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 
 Writing index file admon_yellowbox.idx
 No file admon_yellowbox.aux.
+
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
@@ -77836,17 +78760,21 @@ No file admon_yellowbox.aux.
 
 
 
-(./admon_yellowbox.out.pyg)
- [1{/var/lib/texmf/font
-s/map/pdftex/updmap/pdftex.map}] (./admon_yellowbox.out.pyg)
-<latex_figs/small_yellow_warning.pdf, id=19, 32.12pt x 32.12pt>
+
+
+
+
+(./admon_yellowbox.out.pyg 
+ [1{/var/lib/texmf/fonts/map/pdftex/up
+dmap/pdftex.map}] (./admon_yellowbox.out.pyg)
+<latex_figs/small_yellow_warning.pdf, id=20, 32.12pt x 32.12pt>
 <use latex_figs/small_yellow_warning.pdf>
 <use latex_figs/small_yellow_warning.pdf> [2 <./latex_figs/small_yellow_warning
 .pdf>] <use latex_figs/small_yellow_warning.pdf>
-<latex_figs/small_yellow_notice.pdf, id=37, 32.12pt x 32.12pt>
+<latex_figs/small_yellow_notice.pdf, id=40, 32.12pt x 32.12pt>
 <use latex_figs/small_yellow_notice.pdf>
 <use latex_figs/small_yellow_notice.pdf>
-<latex_figs/small_yellow_question.pdf, id=38, 32.12pt x 32.12pt>
+<latex_figs/small_yellow_question.pdf, id=41, 32.12pt x 32.12pt>
 <use latex_figs/small_yellow_question.pdf>
 <use latex_figs/small_yellow_question.pdf> [3 <./latex_figs/small_yellow_notice
 .pdf> <./latex_figs/small_yellow_question.pdf>]
@@ -77854,12 +78782,12 @@ s/map/pdftex/updmap/pdftex.map}] (./admon_yellowbox.out.pyg)
 <use latex_figs/small_yellow_warning.pdf>
 <use latex_figs/small_yellow_notice.pdf> (./admon_yellowbox.out.pyg)
 (./admon_yellowbox.out.pyg)
-<../doc/src/manual/fig/wave1D.pdf, id=59, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=63, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> [4]
 
 
 
-[5] <latex_figs/small_yellow_summary.pdf, id=71, 32.12pt x 32.12pt>
+[5] <latex_figs/small_yellow_summary.pdf, id=75, 32.12pt x 32.12pt>
 <use latex_figs/small_yellow_summary.pdf>
 No file admon_yellowbox.ind.
 [6 <../doc/src/manual/fig/wave1D.pdf> <./latex_figs/small_yellow_summary.pdf>]
@@ -77910,11 +78838,14 @@ catchfile.sty    2011/03/01 v1.6 Catch the contents of a file (HO)
 etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
 admon_yellowbox.w18
 admon_yellowbox.pyg
+ fontenc.sty
+   t1enc.def    2005/09/27 v1.99g Standard LaTeX file
 inputenc.sty    2008/03/30 v1.1d Input encoding file
     utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+ lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
 hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
@@ -77945,6 +78876,7 @@ rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
   framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
  wrapfig.sty    2003/01/31  v 3.6
+   t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 supp-pdf.mkii
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
@@ -77955,12 +78887,17 @@ RS)
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
 newcommands_bfmath.tex
 newcommands_replace.tex
+  ot1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omllmm.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omxlmex.fd    2009/10/30 v1.6 Font defs for Latin Modern
     umsa.fd    2013/01/14 v3.01 AMS symbols A
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
     umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 admon_yellowbox.out.pyg
-  omscmr.fd    1999/05/25 v2.5h Standard LaTeX font definitions
+  t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omslmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 admon_yellowbox.out.pyg
 latex_figs/small_yellow_warning.pdf
 latex_figs/small_yellow_warning.pdf
@@ -77985,21 +78922,20 @@ Package rerunfilecheck Warning: File `admon_yellowbox.out' has changed.
 (rerunfilecheck)                or use package `bookmark'.
 
  )
-(see the transcript file for additional information)</usr/share/texlive/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-r12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb>
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/te
-xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/share/texlive/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmtt9.pfb>
+(see the transcript file for additional information){/usr/share/texmf/fonts/enc
+/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/
+texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-
+mathsy.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib1
+0.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/font
+s/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb
+></usr/share/texmf/fonts/type1/public/lm/lmmi7.pfb></usr/share/texmf/fonts/type
+1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/s
+hare/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/
+lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texm
+f/fonts/type1/public/lm/lmri8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy1
+0.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy7.pfb></usr/share/texmf/fonts
+/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb>
+</usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
 Output written on admon_yellowbox.pdf (6 pages, ).
 Transcript written on admon_yellowbox.log.
 + '[' 0 -ne 0 ']'
@@ -78075,8 +79011,11 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (./admon_graybox3.w18))/usr/local/bin/pygmentize
 ) (./admon_graybox3.pyg)
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+
 
 
 
@@ -78099,6 +79038,7 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 
 Writing index file admon_graybox3.idx
 No file admon_graybox3.aux.
+
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
@@ -78112,28 +79052,32 @@ No file admon_graybox3.aux.
 
 
 
-(./admon_graybox3.out.pyg)
- [1{/var/lib/texmf/font
-s/map/pdftex/updmap/pdftex.map}] (./admon_graybox3.out.pyg)
-<latex_figs/small_gray_warning.pdf, id=19, 48.18pt x 48.18pt>
+
+
+
+
+(./admon_graybox3.out.pyg 
+ [1{/var/lib/texmf/fonts/map/pdftex/up
+dmap/pdftex.map}] (./admon_graybox3.out.pyg)
+<latex_figs/small_gray_warning.pdf, id=20, 48.18pt x 48.18pt>
 <use latex_figs/small_gray_warning.pdf>
 <use latex_figs/small_gray_warning.pdf> [2 <./latex_figs/small_gray_warning.pdf
 >] <use latex_figs/small_gray_warning.pdf>
-<latex_figs/small_gray_notice.pdf, id=37, 64.24pt x 64.24pt>
+<latex_figs/small_gray_notice.pdf, id=40, 64.24pt x 64.24pt>
 <use latex_figs/small_gray_notice.pdf> <use latex_figs/small_gray_notice.pdf>
-<latex_figs/small_gray_question2.pdf, id=38, 64.24pt x 64.24pt>
+<latex_figs/small_gray_question2.pdf, id=41, 64.24pt x 64.24pt>
 <use latex_figs/small_gray_question2.pdf>
 <use latex_figs/small_gray_question2.pdf> [3 <./latex_figs/small_gray_notice.pd
 f> <./latex_figs/small_gray_question2.pdf>]
 <use latex_figs/small_gray_warning.pdf> (./admon_graybox3.out.pyg)
 <use latex_figs/small_gray_warning.pdf> <use latex_figs/small_gray_notice.pdf>
 (./admon_graybox3.out.pyg) (./admon_graybox3.out.pyg)
-<../doc/src/manual/fig/wave1D.pdf, id=59, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=63, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> [4]
 
 
 
-[5] <latex_figs/small_gray_summary.pdf, id=71, 48.18pt x 48.18pt>
+[5] <latex_figs/small_gray_summary.pdf, id=75, 48.18pt x 48.18pt>
 <use latex_figs/small_gray_summary.pdf>
 No file admon_graybox3.ind.
 [6 <../doc/src/manual/fig/wave1D.pdf> <./latex_figs/small_gray_summary.pdf>]
@@ -78184,11 +79128,14 @@ catchfile.sty    2011/03/01 v1.6 Catch the contents of a file (HO)
 etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
 admon_graybox3.w18
 admon_graybox3.pyg
+ fontenc.sty
+   t1enc.def    2005/09/27 v1.99g Standard LaTeX file
 inputenc.sty    2008/03/30 v1.1d Input encoding file
     utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+ lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
 hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
@@ -78219,6 +79166,7 @@ rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
   framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
  wrapfig.sty    2003/01/31  v 3.6
+   t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 supp-pdf.mkii
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
@@ -78229,12 +79177,17 @@ RS)
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
 newcommands_bfmath.tex
 newcommands_replace.tex
+  ot1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omllmm.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omxlmex.fd    2009/10/30 v1.6 Font defs for Latin Modern
     umsa.fd    2013/01/14 v3.01 AMS symbols A
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
     umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 admon_graybox3.out.pyg
-  omscmr.fd    1999/05/25 v2.5h Standard LaTeX font definitions
+  t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omslmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 admon_graybox3.out.pyg
 latex_figs/small_gray_warning.pdf
 latex_figs/small_gray_warning.pdf
@@ -78259,21 +79212,20 @@ Package rerunfilecheck Warning: File `admon_graybox3.out' has changed.
 (rerunfilecheck)                or use package `bookmark'.
 
  )
-(see the transcript file for additional information)</usr/share/texlive/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-r12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb>
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/te
-xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/share/texlive/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmtt9.pfb>
+(see the transcript file for additional information){/usr/share/texmf/fonts/enc
+/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/
+texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-
+mathsy.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib1
+0.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/font
+s/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb
+></usr/share/texmf/fonts/type1/public/lm/lmmi7.pfb></usr/share/texmf/fonts/type
+1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/s
+hare/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/
+lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texm
+f/fonts/type1/public/lm/lmri8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy1
+0.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy7.pfb></usr/share/texmf/fonts
+/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb>
+</usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
 Output written on admon_graybox3.pdf (6 pages, ).
 Transcript written on admon_graybox3.log.
 + '[' 0 -ne 0 ']'
@@ -78349,8 +79301,11 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (./admon_colors2.w18))/usr/local/bin/pygmentize
 ) (./admon_colors2.pyg)
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+
 
 
 
@@ -78373,6 +79328,7 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 
 Writing index file admon_colors2.idx
 No file admon_colors2.aux.
+
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
@@ -78386,25 +79342,29 @@ No file admon_colors2.aux.
 
 
 
-(./admon_colors2.out.pyg)
- [1{/var/lib/texmf/font
-s/map/pdftex/updmap/pdftex.map}] (./admon_colors2.out.pyg)
-<latex_figs/warning.pdf, id=19, 89.33376pt x 89.33376pt>
+
+
+
+
+(./admon_colors2.out.pyg 
+ [1{/var/lib/texmf/fonts/map/pdftex/up
+dmap/pdftex.map}] (./admon_colors2.out.pyg)
+<latex_figs/warning.pdf, id=20, 89.33376pt x 89.33376pt>
 <use latex_figs/warning.pdf> <use latex_figs/warning.pdf> [2 <./latex_figs/warn
 ing.pdf>] <use latex_figs/warning.pdf>
-<latex_figs/notice.pdf, id=35, 89.33376pt x 89.33376pt>
+<latex_figs/notice.pdf, id=38, 89.33376pt x 89.33376pt>
 <use latex_figs/notice.pdf> <use latex_figs/notice.pdf>
-<latex_figs/question.pdf, id=36, 89.33376pt x 89.33376pt>
+<latex_figs/question.pdf, id=39, 89.33376pt x 89.33376pt>
 <use latex_figs/question.pdf> <use latex_figs/question.pdf> [3 <./latex_figs/no
 tice.pdf> <./latex_figs/question.pdf>] <use latex_figs/warning.pdf>
 (./admon_colors2.out.pyg) <use latex_figs/warning.pdf>
 <use latex_figs/notice.pdf> (./admon_colors2.out.pyg) (./admon_colors2.out.pyg)
-<../doc/src/manual/fig/wave1D.pdf, id=53, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=57, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> [4]
 
 
 
-[5] <latex_figs/summary.pdf, id=65, 89.33376pt x 89.33376pt>
+[5] <latex_figs/summary.pdf, id=69, 89.33376pt x 89.33376pt>
 <use latex_figs/summary.pdf>
 No file admon_colors2.ind.
 [6 <../doc/src/manual/fig/wave1D.pdf> <./latex_figs/summary.pdf>]
@@ -78455,11 +79415,14 @@ catchfile.sty    2011/03/01 v1.6 Catch the contents of a file (HO)
 etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
 admon_colors2.w18
 admon_colors2.pyg
+ fontenc.sty
+   t1enc.def    2005/09/27 v1.99g Standard LaTeX file
 inputenc.sty    2008/03/30 v1.1d Input encoding file
     utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+ lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
 hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
@@ -78490,6 +79453,7 @@ rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
   framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
  wrapfig.sty    2003/01/31  v 3.6
+   t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 supp-pdf.mkii
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
@@ -78500,12 +79464,17 @@ RS)
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
 newcommands_bfmath.tex
 newcommands_replace.tex
+  ot1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omllmm.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omxlmex.fd    2009/10/30 v1.6 Font defs for Latin Modern
     umsa.fd    2013/01/14 v3.01 AMS symbols A
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
     umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 admon_colors2.out.pyg
-  omscmr.fd    1999/05/25 v2.5h Standard LaTeX font definitions
+  t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omslmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 admon_colors2.out.pyg
 latex_figs/warning.pdf
 latex_figs/warning.pdf
@@ -78530,21 +79499,20 @@ Package rerunfilecheck Warning: File `admon_colors2.out' has changed.
 (rerunfilecheck)                or use package `bookmark'.
 
  )
-(see the transcript file for additional information)</usr/share/texlive/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-r12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb>
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/te
-xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/share/texlive/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmtt9.pfb>
+(see the transcript file for additional information){/usr/share/texmf/fonts/enc
+/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/
+texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-
+mathsy.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib1
+0.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/font
+s/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb
+></usr/share/texmf/fonts/type1/public/lm/lmmi7.pfb></usr/share/texmf/fonts/type
+1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/s
+hare/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/
+lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texm
+f/fonts/type1/public/lm/lmri8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy1
+0.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy7.pfb></usr/share/texmf/fonts
+/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb>
+</usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
 Output written on admon_colors2.pdf (6 pages, ).
 Transcript written on admon_colors2.log.
 + '[' 0 -ne 0 ']'
@@ -78552,11 +79520,12 @@ Transcript written on admon_colors2.log.
 + doconce format html admon --html_admon=lyx --html_style=blueish2
 running preprocess -DFORMAT=html -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to html
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
-*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 *** warning: wrong text size "illegal-size" specified in notice environment!
     must be large or small - will be set to normal
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in admon.html
 + '[' 0 -ne 0 ']'
 + cp admon.html admon_lyx.html
@@ -78564,11 +79533,12 @@ output in admon.html
 + doconce format html admon --html_admon=paragraph --html_style=blueish2
 running preprocess -DFORMAT=html -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to html
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
-*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 *** warning: wrong text size "illegal-size" specified in notice environment!
     must be large or small - will be set to normal
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in admon.html
 + '[' 0 -ne 0 ']'
 + cp admon.html admon_paragraph.html
@@ -78576,11 +79546,12 @@ output in admon.html
 + doconce format html admon --html_admon=colors
 running preprocess -DFORMAT=html -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to html
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
-*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 *** warning: wrong text size "illegal-size" specified in notice environment!
     must be large or small - will be set to normal
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in admon.html
 + '[' 0 -ne 0 ']'
 + cp admon.html admon_colors.html
@@ -78588,11 +79559,12 @@ output in admon.html
 + doconce format html admon --html_admon=gray --html_style=blueish2 --html_admon_shadow --html_box_shadow
 running preprocess -DFORMAT=html -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to html
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
-*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 *** warning: wrong text size "illegal-size" specified in notice environment!
     must be large or small - will be set to normal
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in admon.html
 + '[' 0 -ne 0 ']'
 + cp admon.html admon_gray.html
@@ -78600,11 +79572,12 @@ output in admon.html
 + doconce format html admon --html_admon=yellow --html_admon_shadow --html_box_shadow
 running preprocess -DFORMAT=html -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to html
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
-*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 *** warning: wrong text size "illegal-size" specified in notice environment!
     must be large or small - will be set to normal
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in admon.html
 + '[' 0 -ne 0 ']'
 + cp admon.html admon_yellow.html
@@ -78612,11 +79585,12 @@ output in admon.html
 + doconce format html admon --html_admon=apricot --html_style=solarized
 running preprocess -DFORMAT=html -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to html
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
-*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 *** warning: wrong text size "illegal-size" specified in notice environment!
     must be large or small - will be set to normal
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in admon.html
 + '[' 0 -ne 0 ']'
 + cp admon.html admon_apricot.html
@@ -78624,6 +79598,7 @@ output in admon.html
 + doconce format html admon --html_style=vagrant --pygments_html_style=default --html_template=style_vagrant/template_vagrant.html
 running preprocess -DFORMAT=html -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to html
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
 *** warning: TITLE may look strange with a template -
@@ -78631,9 +79606,9 @@ figure file ../doc/src/manual/fig/wave1D:
 *** warning: AUTHOR may look strange with a template -
              it is recommended to comment out all authors: #AUTHOR.
              Better to hardcode authors in a footer in the template.
-*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 *** warning: wrong text size "illegal-size" specified in notice environment!
     must be large or small - will be set to normal
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in admon.html
 + '[' 0 -ne 0 ']'
 + cp admon.html admon_vagrant.html
@@ -78712,9 +79687,9 @@ or just run it by
 + python automake_sphinx.py
 running preprocess -DFORMAT=sphinx -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to sphinx
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format sphinx
-*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 *** warning: wrong text size "illegal-size" specified in notice environment!
     must be large or small - will be set to normal
 output in admon.rst
@@ -78954,8 +79929,11 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-)) (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+)) (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+
 
 
 
@@ -78975,6 +79953,7 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 
 Writing index file movies.idx
 No file movies.aux.
+
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 
 
@@ -78986,8 +79965,13 @@ ABD: EveryShipout initializing macros
 
 
 
-<<VPlayer.swf>><<
-../doc/src/manual/mov/wave.mp4>><<../doc/src/manual/mov/wave.flv>>
+
+
+
+
+
+<<VPlayer.swf>><<../doc/src/manual/mov
+/wave.mp4>><<../doc/src/manual/mov/wave.flv>>
 <../doc/src/manual/mov/wave_frames/frame_0080.png, id=47, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/m
 ov/wave_frames/frame_0080.png> <a0,fr0>
@@ -79139,14 +80123,10 @@ mov/wave_frames/frame_0128.png> <a0,fr48>
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0129.png> <../doc/src/manual/
 mov/wave_frames/frame_0129.png> <a0,fr49> [1{/var/lib/texmf/fonts/map/pdftex/up
 dmap/pdftex.map}]
-Overfull \hbox (81.57852pt too wide) 
- []\OT1/cmr/m/n/10 (-20) : 
-
-
-
-/src/manual/mov/wave.mpeg>>]
-
-/src/manual/mov/wave.avi>>]
+Overfull \hbox (81.58096pt too wide) 
+ []\T1/lmr/m/n/10 (-20) : 
+[2] [3<<../doc/src/manual/mov/wave.mpeg>>] [4<<../doc/src/manual/mov/wave.avi>>
+]
 
 
 
@@ -79240,11 +80220,14 @@ everyshi.sty    2001/05/15 v3.00 EveryShipout Package (MS)
     calc.sty    2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
   animfp.sty    2009/07/23 fixed point addition for animate.sty
 supp-pdf.mkii
+ fontenc.sty
+   t1enc.def    2005/09/27 v1.99g Standard LaTeX file
 inputenc.sty    2008/03/30 v1.1d Input encoding file
     utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+ lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
 hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
@@ -79274,6 +80257,7 @@ hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
      url.sty    2006/04/12  ver 3.3  Verb mode for urls, etc.
  hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
+   t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
 epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
@@ -79283,10 +80267,15 @@ RS)
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
 newcommands_bfmath.tex
 newcommands_replace.tex
+  ot1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omllmm.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omxlmex.fd    2009/10/30 v1.6 Font defs for Latin Modern
     umsa.fd    2013/01/14 v3.01 AMS symbols A
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
     umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+  t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
 ../doc/src/manual/mov/wave_frames/frame_0080.png
 ../doc/src/manual/mov/wave_frames/frame_0081.png
 ../doc/src/manual/mov/wave_frames/frame_0082.png
@@ -79351,13 +80340,12 @@ LaTeX Warning: There were undefined references.
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  )
-(see the transcript file for additional information)</usr/share/texlive/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmtt9.pfb>
+(see the transcript file for additional information){/usr/share/texmf/fonts/enc
+/dvips/lm/lm-ec.enc}</usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/sh
+are/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public
+/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texm
+f/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt
+9.pfb>
 Output written on movies.pdf (5 pages, ).
 Transcript written on movies.log.
 + '[' 0 -ne 0 ']'
@@ -79448,8 +80436,11 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-)) (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+)) (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+
 
 
 
@@ -79468,7 +80459,7 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
 
 Writing index file movies.idx
-(./movies.aux)
+(./movies.aux) 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 
 
@@ -79477,12 +80468,16 @@ ABD: EveryShipout initializing macros
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 
 (./movies.out) (./movies.out) (./newcommands_bfmath.tex)
-(./newcommands_replace.tex)
+(./newcommands_replace.tex) 
 
 
 
-<<VPlayer.swf>><<
-../doc/src/manual/mov/wave.mp4>><<../doc/src/manual/mov/wave.flv>>
+
+
+
+
+<<VPlayer.swf>><<../doc/src/manual/mov
+/wave.mp4>><<../doc/src/manual/mov/wave.flv>>
 <../doc/src/manual/mov/wave_frames/frame_0080.png, id=47, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/m
 ov/wave_frames/frame_0080.png> <a0,fr0>
@@ -79634,14 +80629,10 @@ mov/wave_frames/frame_0128.png> <a0,fr48>
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0129.png> <../doc/src/manual/
 mov/wave_frames/frame_0129.png> <a0,fr49> [1{/var/lib/texmf/fonts/map/pdftex/up
 dmap/pdftex.map}]
-Overfull \hbox (81.57852pt too wide) 
- []\OT1/cmr/m/n/10 (-20) : 
-
-
-
-/src/manual/mov/wave.mpeg>>]
-
-/src/manual/mov/wave.avi>>]
+Overfull \hbox (81.58096pt too wide) 
+ []\T1/lmr/m/n/10 (-20) : 
+[2] [3<<../doc/src/manual/mov/wave.mpeg>>] [4<<../doc/src/manual/mov/wave.avi>>
+]
 No file movies.ind.
 
 Package movie15 Warning: @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -79727,11 +80718,14 @@ everyshi.sty    2001/05/15 v3.00 EveryShipout Package (MS)
     calc.sty    2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
   animfp.sty    2009/07/23 fixed point addition for animate.sty
 supp-pdf.mkii
+ fontenc.sty
+   t1enc.def    2005/09/27 v1.99g Standard LaTeX file
 inputenc.sty    2008/03/30 v1.1d Input encoding file
     utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+ lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
 hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
@@ -79761,6 +80755,7 @@ hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
      url.sty    2006/04/12  ver 3.3  Verb mode for urls, etc.
  hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
+   t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
 epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
@@ -79772,10 +80767,15 @@ gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
   movies.out
 newcommands_bfmath.tex
 newcommands_replace.tex
+  ot1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omllmm.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omxlmex.fd    2009/10/30 v1.6 Font defs for Latin Modern
     umsa.fd    2013/01/14 v3.01 AMS symbols A
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
     umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+  t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
 ../doc/src/manual/mov/wave_frames/frame_0080.png
 ../doc/src/manual/mov/wave_frames/frame_0081.png
 ../doc/src/manual/mov/wave_frames/frame_0082.png
@@ -79829,13 +80829,12 @@ newcommands_replace.tex
  ***********
 
  )
-(see the transcript file for additional information)</usr/share/texlive/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmtt9.pfb>
+(see the transcript file for additional information){/usr/share/texmf/fonts/enc
+/dvips/lm/lm-ec.enc}</usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/sh
+are/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public
+/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texm
+f/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt
+9.pfb>
 Output written on movies.pdf (5 pages, ).
 Transcript written on movies.log.
 + cp movies.pdf movie_demo/movies_media9.pdf
@@ -79942,8 +80941,11 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-)) (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+)) (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+
 
 
 
@@ -79962,7 +80964,7 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
 
 Writing index file movies.idx
-(./movies.aux)
+(./movies.aux) 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 
 
@@ -79971,12 +80973,16 @@ ABD: EveryShipout initializing macros
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 
 (./movies.out) (./movies.out) (./newcommands_bfmath.tex)
-(./newcommands_replace.tex)
+(./newcommands_replace.tex) 
 
 
 
-<<VPlayer.swf>><<
-../doc/src/manual/mov/wave.mp4>><<../doc/src/manual/mov/wave.flv>>
+
+
+
+
+<<VPlayer.swf>><<../doc/src/manual/mov
+/wave.mp4>><<../doc/src/manual/mov/wave.flv>>
 <../doc/src/manual/mov/wave_frames/frame_0080.png, id=47, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/m
 ov/wave_frames/frame_0080.png> <a0,fr0>
@@ -80128,12 +81134,10 @@ mov/wave_frames/frame_0128.png> <a0,fr48>
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0129.png> <../doc/src/manual/
 mov/wave_frames/frame_0129.png> <a0,fr49> [1{/var/lib/texmf/fonts/map/pdftex/up
 dmap/pdftex.map}]
-Overfull \hbox (81.57852pt too wide) 
- []\OT1/cmr/m/n/10 (-20) : 
-
-
-
-/src/manual/mov/wave.mpeg>>] [4<<../doc/src/manual/mov/wave.avi>>]
+Overfull \hbox (81.58096pt too wide) 
+ []\T1/lmr/m/n/10 (-20) : 
+[2] [3<<../doc/src/manual/mov/wave.mpeg>>] [4<<../doc/src/manual/mov/wave.avi>>
+]
 No file movies.ind.
 [5] (./movies.aux)
 
@@ -80214,11 +81218,14 @@ everyshi.sty    2001/05/15 v3.00 EveryShipout Package (MS)
     calc.sty    2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
   animfp.sty    2009/07/23 fixed point addition for animate.sty
 supp-pdf.mkii
+ fontenc.sty
+   t1enc.def    2005/09/27 v1.99g Standard LaTeX file
 inputenc.sty    2008/03/30 v1.1d Input encoding file
     utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+ lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
 hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
@@ -80248,6 +81255,7 @@ hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
      url.sty    2006/04/12  ver 3.3  Verb mode for urls, etc.
  hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
+   t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
 epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
@@ -80259,10 +81267,15 @@ gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
   movies.out
 newcommands_bfmath.tex
 newcommands_replace.tex
+  ot1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omllmm.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omxlmex.fd    2009/10/30 v1.6 Font defs for Latin Modern
     umsa.fd    2013/01/14 v3.01 AMS symbols A
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
     umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+  t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
 ../doc/src/manual/mov/wave_frames/frame_0080.png
 ../doc/src/manual/mov/wave_frames/frame_0081.png
 ../doc/src/manual/mov/wave_frames/frame_0082.png
@@ -80316,13 +81329,12 @@ newcommands_replace.tex
  ***********
 
  )
-(see the transcript file for additional information)</usr/share/texlive/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmtt9.pfb>
+(see the transcript file for additional information){/usr/share/texmf/fonts/enc
+/dvips/lm/lm-ec.enc}</usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/sh
+are/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public
+/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texm
+f/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt
+9.pfb>
 Output written on movies.pdf (5 pages, ).
 Transcript written on movies.log.
 + '[' 0 -ne 0 ']'
@@ -80395,8 +81407,11 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-)) (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+)) (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+
 
 
 
@@ -80416,6 +81431,7 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 
 Writing index file movies.idx
 No file movies.aux.
+
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 
 
@@ -80423,7 +81439,11 @@ No file movies.aux.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 
 (./movies.out) (./movies.out) (./newcommands_bfmath.tex)
-(./newcommands_replace.tex)
+(./newcommands_replace.tex) 
+
+
+
+
 
 
 
@@ -80579,8 +81599,8 @@ mov/wave_frames/frame_0128.png> <a0,fr48>
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0129.png> <../doc/src/manual/
 mov/wave_frames/frame_0129.png> <a0,fr49> [1{/var/lib/texmf/fonts/map/pdftex/up
 dmap/pdftex.map}]
-Overfull \hbox (81.57852pt too wide) 
- []\OT1/cmr/m/n/10 (-20) : 
+Overfull \hbox (81.58096pt too wide) 
+ []\T1/lmr/m/n/10 (-20) : 
 [2]
 
 
@@ -80628,11 +81648,14 @@ fancyvrb.sty    2008/02/07
     calc.sty    2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
   animfp.sty    2009/07/23 fixed point addition for animate.sty
 supp-pdf.mkii
+ fontenc.sty
+   t1enc.def    2005/09/27 v1.99g Standard LaTeX file
 inputenc.sty    2008/03/30 v1.1d Input encoding file
     utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+ lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
 hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
@@ -80663,6 +81686,7 @@ hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
      url.sty    2006/04/12  ver 3.3  Verb mode for urls, etc.
  hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
+   t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
 epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
@@ -80674,10 +81698,15 @@ gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
   movies.out
 newcommands_bfmath.tex
 newcommands_replace.tex
+  ot1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omllmm.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omxlmex.fd    2009/10/30 v1.6 Font defs for Latin Modern
     umsa.fd    2013/01/14 v3.01 AMS symbols A
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
     umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+  t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
 ../doc/src/manual/mov/wave_frames/frame_0080.png
 ../doc/src/manual/mov/wave_frames/frame_0081.png
 ../doc/src/manual/mov/wave_frames/frame_0082.png
@@ -80737,12 +81766,11 @@ LaTeX Warning: There were undefined references.
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  )
-(see the transcript file for additional information)</usr/share/texlive/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmtt9.pfb>
+(see the transcript file for additional information){/usr/share/texmf/fonts/enc
+/dvips/lm/lm-ec.enc}</usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/sh
+are/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public
+/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/share/te
+xmf/fonts/type1/public/lm/lmtt9.pfb>
 Output written on movies.pdf (3 pages, ).
 Transcript written on movies.log.
 + '[' 0 -ne 0 ']'
@@ -81085,22 +82113,29 @@ it is clearly a successful run of all tests!
 + sh ./clean.sh
 Removing in /home/hpl/vc/doconce/doc/src/quickref:
 + doconce
++ system doconce format html quickref --no_pygments_html --no_preprocess
 + doconce format html quickref --no_pygments_html --no_preprocess
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to html
 copy complete file doconce_program.sh  (format: shpro)
 output in quickref.html
++ '[' 0 -ne 0 ']'
++ system doconce format latex quickref --no_preprocess
 + doconce format latex quickref --no_preprocess
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to latex
 copy complete file doconce_program.sh  (format: shpro)
 output in quickref.p.tex
++ '[' 0 -ne 0 ']'
++ system doconce ptex2tex quickref -DMINTED -DHELVETICA envir=Verbatim
 + doconce ptex2tex quickref -DMINTED -DHELVETICA envir=Verbatim
 \bshpro (!bc shpro) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=0mm]
 \bcod (!bc cod) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=0mm]
 \bsys (!bc sys) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=0mm]
 \bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=0mm]
 output in quickref.tex
++ '[' 0 -ne 0 ']'
++ system latex -shell-escape quickref.tex
 + latex -shell-escape quickref.tex
 This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
  \write18 enabled.
@@ -81155,8 +82190,11 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (./quickref.w18))/usr/local/bin/pygmentize
 ) (./quickref.pyg)
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+
 
 
 
@@ -81276,7 +82314,10 @@ No file quickref.aux.
 
 Package hyperref Warning: Rerun to get /PageLabels entry.
 
-ABD: EveryShipout initializing macros
+ABD: EveryShipout initializing macros 
+ 
+
+
 
 
 
@@ -81285,25 +82326,26 @@ ABD: EveryShipout initializing macros
 
 Package hyperref Warning: old toc file detected, not used; run LaTeX again.
 
- [1] [2]
-Overfull \hbox (19.14615pt too wide) 
-\OT1/phv/m/n/10 Note that ab-stracts are rec-og-nized by start-ing with [] or [
-]
-[3] [4]
-Overfull \hbox (29.09346pt too wide) 
-[]\OT1/phv/m/n/10 Large por-tions of text can be left out us-ing Pre-pro-cess. 
-Just place []
-[5]
-Overfull \hbox (4.40137pt too wide) 
-\OT1/phv/m/n/10 fi-ca-tion copies from the first line match-ing the \OT1/phv/m/
-sl/10 reg-u-lar ex-pres-sion []
 
-Overfull \hbox (25.94281pt too wide) 
-\OT1/phv/m/n/10 up to, but not in-clud-ing the line match-ing the \OT1/phv/m/sl
-/10 reg-u-lar ex-pres-sion []\OT1/phv/m/n/10 .
+ [1] [2]
+Overfull \hbox (18.62192pt too wide) 
+\T1/phv/m/n/10 Note that ab-stracts are rec-og-nized by start-ing with [] or []
+
+[3] [4]
+Overfull \hbox (29.09389pt too wide) 
+[]\T1/phv/m/n/10 Large por-tions of text can be left out us-ing Pre-pro-cess. J
+ust place []
+[5]
+Overfull \hbox (4.40176pt too wide) 
+\T1/phv/m/n/10 fi-ca-tion copies from the first line match-ing the \T1/phv/m/sl
+/10 reg-u-lar ex-pres-sion []
+
+Overfull \hbox (25.94336pt too wide) 
+\T1/phv/m/n/10 up to, but not in-clud-ing the line match-ing the \T1/phv/m/sl/1
+0 reg-u-lar ex-pres-sion []\T1/phv/m/n/10 .
 [6] [7]
-Overfull \hbox (49.67618pt too wide) 
-\OT1/phv/m/n/10 pre-pro-ces-sor if-tests on the for-mat (typ-i-cally [])
+Overfull \hbox (49.67722pt too wide) 
+\T1/phv/m/n/10 pre-pro-ces-sor if-tests on the for-mat (typ-i-cally [])
 
 
 ...rest of part of LaTeX line number...
@@ -81314,30 +82356,28 @@ Overfull \hbox (49.67618pt too wide)
 .
 
 [9] [10]
-Overfull \hbox (59.2456pt too wide) 
-\OT1/phv/m/n/10 sert a back-slash). Bib-li-og-ra-phy ci-ta-tions of-ten have []
- on the form [],
+Overfull \hbox (59.24634pt too wide) 
+\T1/phv/m/n/10 sert a back-slash). Bib-li-og-ra-phy ci-ta-tions of-ten have [] 
+on the form [],
 
-Overfull \hbox (20.06894pt too wide) 
-[]\OT1/phv/m/n/10 The bib-li-og-ra-phy is spec-i-fied by a line [], where []
+Overfull \hbox (20.06982pt too wide) 
+[]\T1/phv/m/n/10 The bib-li-og-ra-phy is spec-i-fied by a line [], where []
 [11]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
-[12]
+[12] [13] [14] [15]
+Overfull \hbox (7.769pt too wide) 
+\T1/phv/m/n/10 Doconce en-vi-ron-ments start with [] and end with [], where
 
-[14] [15]
-Overfull \hbox (7.76833pt too wide) 
-\OT1/phv/m/n/10 Doconce en-vi-ron-ments start with [] and end with [], where
-
-Overfull \hbox (0.45856pt too wide) 
-\OT1/phv/m/n/10 Doconce doc-u-ments may uti-lize a pre-pro-ces-sor, ei-ther [] 
-and/or [].
+Overfull \hbox (0.45898pt too wide) 
+\T1/phv/m/n/10 Doconce doc-u-ments may uti-lize a pre-pro-ces-sor, ei-ther [] a
+nd/or [].
 [16]
-Overfull \hbox (86.48466pt too wide) 
-[]\OT1/phv/m/n/10 Excellent "Sphinx Tu-to-rial" by C. Reller: "http://people.ee
-.ethz.ch/ creller/web/tricks/reST.html" 
+Overfull \hbox (88.36455pt too wide) 
+[]\T1/phv/m/n/10 Excellent "Sphinx Tu-to-rial" by C. Reller: "http://people.ee.
+ethz.ch/ creller/web/tricks/reST.html" 
 No file quickref.ind.
 [17] (./quickref.aux)
 
@@ -81386,12 +82426,15 @@ catchfile.sty    2011/03/01 v1.6 Catch the contents of a file (HO)
 etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
 quickref.w18
 quickref.pyg
+ fontenc.sty
+   t1enc.def    2005/09/27 v1.99g Standard LaTeX file
 inputenc.sty    2008/03/30 v1.1d Input encoding file
     utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   helvet.sty    2005/04/12 PSNFSS-v9.2a (WaS) 
+ lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
 hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
@@ -81470,15 +82513,20 @@ pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
   pgffor.code.tex
     tikz.code.tex
 md-frame-1.mdf    2013/07/01\ 1.9b: md-frame-1
-  ot1phv.fd    2001/06/04 scalable font definitions for OT1/phv.
+   t1phv.fd    2001/06/04 scalable font definitions for T1/phv.
  nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
+  ot1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
   mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
 RS)
+  omllmm.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omxlmex.fd    2009/10/30 v1.6 Font defs for Latin Modern
     umsa.fd    2013/01/14 v3.01 AMS symbols A
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
     umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+  t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
   omsphv.fd    
  ***********
 
@@ -81497,6 +82545,7 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 (see the transcript file for additional information)
 Output written on quickref.dvi (17 pages, ).
 Transcript written on quickref.log.
++ '[' 0 -ne 0 ']'
 + latex -shell-escape quickref.tex
 This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
  \write18 enabled.
@@ -81551,8 +82600,11 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (./quickref.w18))/usr/local/bin/pygmentize
 ) (./quickref.pyg)
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+
 
 
 
@@ -81674,50 +82726,52 @@ Writing index file quickref.idx
 
 
 
-[1]  [2]
 
-Overfull \hbox (19.14615pt too wide) 
-\OT1/phv/m/n/10 Note that ab-stracts are rec-og-nized by start-ing with [] or [
-]
+
+
+ (./quickref.toc
+ [1]
+ [2] [3]
+Overfull \hbox (18.62192pt too wide) 
+\T1/phv/m/n/10 Note that ab-stracts are rec-og-nized by start-ing with [] or []
+
 [4] [5]
-Overfull \hbox (29.09346pt too wide) 
-[]\OT1/phv/m/n/10 Large por-tions of text can be left out us-ing Pre-pro-cess. 
-Just place []
+Overfull \hbox (29.09389pt too wide) 
+[]\T1/phv/m/n/10 Large por-tions of text can be left out us-ing Pre-pro-cess. J
+ust place []
 [6]
-Overfull \hbox (4.40137pt too wide) 
-\OT1/phv/m/n/10 fi-ca-tion copies from the first line match-ing the \OT1/phv/m/
-sl/10 reg-u-lar ex-pres-sion []
+Overfull \hbox (4.40176pt too wide) 
+\T1/phv/m/n/10 fi-ca-tion copies from the first line match-ing the \T1/phv/m/sl
+/10 reg-u-lar ex-pres-sion []
 
-Overfull \hbox (25.94281pt too wide) 
-\OT1/phv/m/n/10 up to, but not in-clud-ing the line match-ing the \OT1/phv/m/sl
-/10 reg-u-lar ex-pres-sion []\OT1/phv/m/n/10 .
+Overfull \hbox (25.94336pt too wide) 
+\T1/phv/m/n/10 up to, but not in-clud-ing the line match-ing the \T1/phv/m/sl/1
+0 reg-u-lar ex-pres-sion []\T1/phv/m/n/10 .
 [7]
-Overfull \hbox (49.67618pt too wide) 
-\OT1/phv/m/n/10 pre-pro-ces-sor if-tests on the for-mat (typ-i-cally [])
+Overfull \hbox (49.67722pt too wide) 
+\T1/phv/m/n/10 pre-pro-ces-sor if-tests on the for-mat (typ-i-cally [])
 [8] [9] [10]
-Overfull \hbox (59.2456pt too wide) 
-\OT1/phv/m/n/10 sert a back-slash). Bib-li-og-ra-phy ci-ta-tions of-ten have []
- on the form [],
+Overfull \hbox (59.24634pt too wide) 
+\T1/phv/m/n/10 sert a back-slash). Bib-li-og-ra-phy ci-ta-tions of-ten have [] 
+on the form [],
 [11]
-Overfull \hbox (20.06894pt too wide) 
-[]\OT1/phv/m/n/10 The bib-li-og-ra-phy is spec-i-fied by a line [], where []
+Overfull \hbox (20.06982pt too wide) 
+[]\T1/phv/m/n/10 The bib-li-og-ra-phy is spec-i-fied by a line [], where []
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
-[12] [13]
+[12] [13] [14] [15] [16]
+Overfull \hbox (7.769pt too wide) 
+\T1/phv/m/n/10 Doconce en-vi-ron-ments start with [] and end with [], where
 
-[15] [16]
-Overfull \hbox (7.76833pt too wide) 
-\OT1/phv/m/n/10 Doconce en-vi-ron-ments start with [] and end with [], where
-
-Overfull \hbox (0.45856pt too wide) 
-\OT1/phv/m/n/10 Doconce doc-u-ments may uti-lize a pre-pro-ces-sor, ei-ther [] 
-and/or [].
+Overfull \hbox (0.45898pt too wide) 
+\T1/phv/m/n/10 Doconce doc-u-ments may uti-lize a pre-pro-ces-sor, ei-ther [] a
+nd/or [].
 [17]
-Overfull \hbox (86.48466pt too wide) 
-[]\OT1/phv/m/n/10 Excellent "Sphinx Tu-to-rial" by C. Reller: "http://people.ee
-.ethz.ch/ creller/web/tricks/reST.html" 
+Overfull \hbox (88.36455pt too wide) 
+[]\T1/phv/m/n/10 Excellent "Sphinx Tu-to-rial" by C. Reller: "http://people.ee.
+ethz.ch/ creller/web/tricks/reST.html" 
 No file quickref.ind.
 [18] (./quickref.aux)
 
@@ -81766,12 +82820,15 @@ catchfile.sty    2011/03/01 v1.6 Catch the contents of a file (HO)
 etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
 quickref.w18
 quickref.pyg
+ fontenc.sty
+   t1enc.def    2005/09/27 v1.99g Standard LaTeX file
 inputenc.sty    2008/03/30 v1.1d Input encoding file
     utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   helvet.sty    2005/04/12 PSNFSS-v9.2a (WaS) 
+ lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
 hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
@@ -81850,17 +82907,22 @@ pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
   pgffor.code.tex
     tikz.code.tex
 md-frame-1.mdf    2013/07/01\ 1.9b: md-frame-1
-  ot1phv.fd    2001/06/04 scalable font definitions for OT1/phv.
+   t1phv.fd    2001/06/04 scalable font definitions for T1/phv.
  nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
 quickref.out
 quickref.out
+  ot1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
   mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
 RS)
+  omllmm.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omxlmex.fd    2009/10/30 v1.6 Font defs for Latin Modern
     umsa.fd    2013/01/14 v3.01 AMS symbols A
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
     umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+  t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
   omsphv.fd    
  ***********
 
@@ -81872,12 +82934,15 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 Output written on quickref.dvi (18 pages, ).
 Transcript written on quickref.log.
 + dvipdf quickref.dvi
++ system doconce format sphinx quickref --no_preprocess
 + doconce format sphinx quickref --no_preprocess
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to sphinx
 copy complete file doconce_program.sh  (format: shpro)
 output in quickref.rst
++ '[' 0 -ne 0 ']'
 + rm -rf sphinx-rootdir
++ system doconce sphinx_dir author=HPL version=0.7 quickref
 + doconce sphinx_dir author=HPL version=0.7 quickref
 Making sphinx-rootdir
 Welcome to the Sphinx 1.2pre quickstart utility.
@@ -81946,8 +83011,10 @@ or just run it by
 
   python automake_sphinx.py
 
++ '[' 0 -ne 0 ']'
 + doconce replace 'doconce format sphinx %s' 'doconce format sphinx %s --no-preprocess' automake_sphinx.py
 replacing doconce format sphinx %s by doconce format sphinx %s --no-preprocess in automake_sphinx.py
++ system python automake_sphinx.py
 + python automake_sphinx.py
 rm -rf _build/*
 sphinx-build -b html -d _build/doctrees   . _build/html
@@ -82020,16 +83087,20 @@ Fix generated files:
 
 google-chrome sphinx-rootdir/_build/html/index.html
 
++ '[' 0 -ne 0 ']'
 + cp quickref.rst quickref.sphinx.rst
++ system doconce format rst quickref --no_preprocess
 + doconce format rst quickref --no_preprocess
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to rst
 copy complete file doconce_program.sh  (format: shpro)
 output in quickref.rst
++ '[' 0 -ne 0 ']'
 + rst2xml.py quickref.rst
 + rst2odt.py quickref.rst
 + rst2html.py quickref.rst
 + rst2latex.py quickref.rst
++ system latex quickref.rst.tex
 + latex quickref.rst.tex
 This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
  restricted \write18 enabled.
@@ -82281,15 +83352,15 @@ Overfull \hbox (107.00006pt too wide)
 []\T1/pcr/m/n/10 "A Document for Testing Doconce": "testdoc.html" cite{testdoc:
 12}],  
 
-Overfull \hbox (3041.00006pt too wide) 
+Overfull \hbox (3113.00006pt too wide) 
 []\T1/pcr/m/n/10 commands: format help sphinx_dir subst replace replace_from_fi
-le clean spellcheck ptex2tex expand_commands combine_images guess_encoding chan
-ge_encoding gwiki_figsubst md2html remove_inline_comments grab remove remove_ex
-ercise_answers split_rst split_html slides_html slides_beamer latin2html latex_
-header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_loca
-lURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format lin
-kchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibt
-ex4publish csv2table  
+le clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine
+_images change_encoding gwiki_figsubst md2html remove_inline_comments grab remo
+ve remove_exercise_answers split_rst split_html slides_html slides_beamer latin
+2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sp
+hinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2ne
+w_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitd
+iff fix_bibtex4publish csv2table  
 
 Overfull \hbox (299.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwik
@@ -82319,9 +83390,12 @@ Overfull \hbox (59.00006pt too wide)
 Overfull \hbox (47.00006pt too wide) 
 []\T1/pcr/m/n/10 (exact text substitution, but a set of from-to relations)  
 
-Overfull \hbox (95.00006pt too wide) 
-[]\T1/pcr/m/n/10 # gwiki format requires substitution of figure file names by U
-RLs  
+Overfull \hbox (71.00006pt too wide) 
+[]\T1/pcr/m/n/10 # replace all mako function calls by the results of the calls 
+ 
+
+Overfull \hbox (59.00006pt too wide) 
+[]\T1/pcr/m/n/10 doconce expand_mako mako_code_file funcname file1 file2 ...  
 
 Overfull \hbox (47.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce sphinx_dir author='John Doe' title='Long title' \  
@@ -82497,6 +83571,7 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 (see the transcript file for additional information)
 Output written on quickref.rst.dvi (18 pages, ).
 Transcript written on quickref.rst.log.
++ '[' 0 -ne 0 ']'
 + latex quickref.rst.tex
 This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
  restricted \write18 enabled.
@@ -82738,15 +83813,15 @@ Overfull \hbox (107.00006pt too wide)
 []\T1/pcr/m/n/10 "A Document for Testing Doconce": "testdoc.html" cite{testdoc:
 12}],  
 
-Overfull \hbox (3041.00006pt too wide) 
+Overfull \hbox (3113.00006pt too wide) 
 []\T1/pcr/m/n/10 commands: format help sphinx_dir subst replace replace_from_fi
-le clean spellcheck ptex2tex expand_commands combine_images guess_encoding chan
-ge_encoding gwiki_figsubst md2html remove_inline_comments grab remove remove_ex
-ercise_answers split_rst split_html slides_html slides_beamer latin2html latex_
-header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_loca
-lURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format lin
-kchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibt
-ex4publish csv2table  
+le clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine
+_images change_encoding gwiki_figsubst md2html remove_inline_comments grab remo
+ve remove_exercise_answers split_rst split_html slides_html slides_beamer latin
+2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sp
+hinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2ne
+w_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitd
+iff fix_bibtex4publish csv2table  
 
 Overfull \hbox (299.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwik
@@ -82776,9 +83851,12 @@ Overfull \hbox (59.00006pt too wide)
 Overfull \hbox (47.00006pt too wide) 
 []\T1/pcr/m/n/10 (exact text substitution, but a set of from-to relations)  
 
-Overfull \hbox (95.00006pt too wide) 
-[]\T1/pcr/m/n/10 # gwiki format requires substitution of figure file names by U
-RLs  
+Overfull \hbox (71.00006pt too wide) 
+[]\T1/pcr/m/n/10 # replace all mako function calls by the results of the calls 
+ 
+
+Overfull \hbox (59.00006pt too wide) 
+[]\T1/pcr/m/n/10 doconce expand_mako mako_code_file funcname file1 file2 ...  
 
 Overfull \hbox (47.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce sphinx_dir author='John Doe' title='Long title' \  
@@ -82947,6 +84025,7 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 Output written on quickref.rst.dvi (19 pages, ).
 Transcript written on quickref.rst.log.
 + dvipdf quickref.rst.dvi
++ system doconce format plain quickref --no_preprocess
 + doconce format plain quickref --no_preprocess
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to plain
@@ -82955,6 +84034,8 @@ copy complete file doconce_program.sh  (format: shpro)
     with code to display the movie 
     http://vimeo.com/55562330
 output in quickref.txt
++ '[' 0 -ne 0 ']'
++ system doconce format gwiki quickref --no_preprocess
 + doconce format gwiki quickref --no_preprocess
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to gwiki
@@ -82963,6 +84044,8 @@ copy complete file doconce_program.sh  (format: shpro)
     with code to display the movie 
     http://vimeo.com/55562330
 output in quickref.gwiki
++ '[' 0 -ne 0 ']'
++ system doconce format mwiki quickref --no_preprocess
 + doconce format mwiki quickref --no_preprocess
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to mwiki
@@ -82971,6 +84054,8 @@ copy complete file doconce_program.sh  (format: shpro)
     with code to display the movie 
     http://vimeo.com/55562330
 output in quickref.mwiki
++ '[' 0 -ne 0 ']'
++ system doconce format cwiki quickref --no_preprocess
 + doconce format cwiki quickref --no_preprocess
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to cwiki
@@ -82979,6 +84064,8 @@ copy complete file doconce_program.sh  (format: shpro)
     with code to display the movie 
     http://vimeo.com/55562330
 output in quickref.cwiki
++ '[' 0 -ne 0 ']'
++ system doconce format st quickref --no_preprocess
 + doconce format st quickref --no_preprocess
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to st
@@ -82987,6 +84074,8 @@ copy complete file doconce_program.sh  (format: shpro)
     with code to display the movie 
     http://vimeo.com/55562330
 output in quickref.st
++ '[' 0 -ne 0 ']'
++ system doconce format epytext quickref --no_preprocess
 + doconce format epytext quickref --no_preprocess
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to epytext
@@ -82995,11 +84084,14 @@ copy complete file doconce_program.sh  (format: shpro)
     with code to display the movie 
     http://vimeo.com/55562330
 output in quickref.epytext
++ '[' 0 -ne 0 ']'
++ system doconce format pandoc quickref --no_preprocess
 + doconce format pandoc quickref --no_preprocess
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to pandoc
 copy complete file doconce_program.sh  (format: shpro)
 output in quickref.md
++ '[' 0 -ne 0 ']'
 + rm -rf demo
 + mkdir demo
 + cp -r quickref.do.txt quickref.html quickref.p.tex quickref.tex quickref.pdf quickref.rst quickref.xml quickref.rst.html quickref.rst.tex quickref.rst.pdf quickref.gwiki quickref.mwiki quickref.cwiki quickref.txt quickref.epytext quickref.st quickref.md sphinx-rootdir/_build/html demo
