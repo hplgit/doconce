@@ -417,6 +417,35 @@ and `|` right after verbatim word (with no space):
 |0      | -9.19   | 4.13      | -0.26     |
 |-----------------------------------------|
 
+Finally, a table with math
+# #if FORMAT in ("rst", "html", "sphinx", "pandoc")
+(`bm` that expands to `boldsymbol`, was tricky, but
+cleanly handled now)
+# #endif
+and URLs.
+
+# Mako code to expand URLs in the table
+# (These types of tables did not work before Jan 2014)
+<%
+def tfig(fileno):
+    p = 'mov/wave_frames/frame_0' + fileno + '.png'  # path
+    if FORMAT in ("latex", "pdflatex"):
+        text = r'\includegraphics[width=2cm]{%s}' % p
+    elif FORMAT == "html":
+        text = '<a href="%s"><img src="%s" width="300"></a>' % (p, p)
+    else:
+        text = '"`%s`": "%s"' % (fileno, p)  # plain link
+    return text
+%>
+
+|-----------------------------------------------------------|
+|                         |                |                |
+|--------------c------------------c----------------c--------|
+| $\mathcal{L}=0$         | ${tfig('080')} | ${tfig('085')} |
+| $a=b$                   | ${tfig('090')} | ${tfig('095')} |
+| $\nabla\cdot\bm{u} =0 $ | ${tfig('100')} | ${tfig('105')} |
+|-----------------------------------------------------------|
+
 
 ===== A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2` =====
 

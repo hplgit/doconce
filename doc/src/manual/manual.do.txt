@@ -2191,7 +2191,7 @@ def tfig(fileno):
     p = 'mov/wave_frames/frame_0' + fileno + '.png'  # path
     if FORMAT in ("latex", "pdflatex"):
         text = r'\includegraphics[width=2cm]{%s}' % p
-    elif FORMAT in ("html", "rst", "sphinx"):
+    elif FORMAT == "html":
         text = '<a href="%s"><img src="%s" width="300"></a>' % (p, p)
     else:
         text = '"`%s`": "%s"' % (fileno, p)  # plain link
@@ -2202,6 +2202,10 @@ The resulting table is displayed below.
 
 PROBLEM: sphinx cannot have picts and html code in the table.
 Need to generate html code and then indent.
+
+Part II:
+@@@FIGTABLE 3x3 080 085 090 095 100 105 110 115 120
+Or will !bquote with table work?
 
 # Cannot just have the Mako code here and generate the table
 # because this manual cannot be run with Mako (--no_mako
@@ -2231,15 +2235,16 @@ Need to generate html code and then indent.
 <tr><td align="center">   <a href="mov/wave_frames/frame_0095.png"><img src="mov/wave_frames/frame_0095.png" width="300"></a>    </td> <td align="center">   <a href="mov/wave_frames/frame_0100.png"><img src="mov/wave_frames/frame_0100.png" width="300"></a>    </td> <td align="center">   <a href="mov/wave_frames/frame_0105.png"><img src="mov/wave_frames/frame_0105.png" width="300"></a>    </td> </tr>
 <tr><td align="center">   <a href="mov/wave_frames/frame_0110.png"><img src="mov/wave_frames/frame_0110.png" width="300"></a>    </td> <td align="center">   <a href="mov/wave_frames/frame_0115.png"><img src="mov/wave_frames/frame_0115.png" width="300"></a>    </td> <td align="center">   <a href="mov/wave_frames/frame_0120.png"><img src="mov/wave_frames/frame_0120.png" width="300"></a>    </td> </tr>
 </table>
-# #elif FORMAT in ("rst", "sphinx")
+# #elif FORMAT in ("rst-cannotwork", "sphinx-cannotwork")
 # sphinx/rst
-===================================================================================================  ===================================================================================================  ===================================================================================================
-
-===================================================================================================  ===================================================================================================  ===================================================================================================
-<a href="mov/wave_frames/frame_0080.png"><img src="mov/wave_frames/frame_0080.png" width="300"></a>  <a href="mov/wave_frames/frame_0085.png"><img src="mov/wave_frames/frame_0085.png" width="300"></a>  <a href="mov/wave_frames/frame_0090.png"><img src="mov/wave_frames/frame_0090.png" width="300"></a>
-<a href="mov/wave_frames/frame_0095.png"><img src="mov/wave_frames/frame_0095.png" width="300"></a>  <a href="mov/wave_frames/frame_0100.png"><img src="mov/wave_frames/frame_0100.png" width="300"></a>  <a href="mov/wave_frames/frame_0105.png"><img src="mov/wave_frames/frame_0105.png" width="300"></a>
-<a href="mov/wave_frames/frame_0110.png"><img src="mov/wave_frames/frame_0110.png" width="300"></a>  <a href="mov/wave_frames/frame_0115.png"><img src="mov/wave_frames/frame_0115.png" width="300"></a>  <a href="mov/wave_frames/frame_0120.png"><img src="mov/wave_frames/frame_0120.png" width="300"></a>
-===================================================================================================  ===================================================================================================  ===================================================================================================
+DOES NOT WORK
+|-------------------------------------------------|
+|  F             |     S           |      T          |
+|-------c---------------c----------------c--------|
+|<a href="mov/wave_frames/frame_0080.png"><img src="mov/wave_frames/frame_0080.png" width="300"></a>  | <a href="mov/wave_frames/frame_0085.png"><img src="mov/wave_frames/frame_0085.png" width="300"></a>  | <a href="mov/wave_frames/frame_0090.png"><img src="mov/wave_frames/frame_0090.png" width="300"></a> |
+|<a href="mov/wave_frames/frame_0095.png"><img src="mov/wave_frames/frame_0095.png" width="300"></a>  | <a href="mov/wave_frames/frame_0100.png"><img src="mov/wave_frames/frame_0100.png" width="300"></a>  | <a href="mov/wave_frames/frame_0105.png"><img src="mov/wave_frames/frame_0105.png" width="300"></a> |
+|<a href="mov/wave_frames/frame_0110.png"><img src="mov/wave_frames/frame_0110.png" width="300"></a>  | <a href="mov/wave_frames/frame_0115.png"><img src="mov/wave_frames/frame_0115.png" width="300"></a>  | <a href="mov/wave_frames/frame_0120.png"><img src="mov/wave_frames/frame_0120.png" width="300"></a> |
+|-------------------------------------------------|
 # #else
 |-------------------------------------------------|
 |               |                |                |

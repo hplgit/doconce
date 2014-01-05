@@ -6,7 +6,7 @@ def tfig(fileno):
     p = 'mov/wave_frames/frame_0' + fileno + '.png'  # path
     if FORMAT in ("latex", "pdflatex"):
         text = r'\includegraphics[width=2cm]{%s}' % p
-    elif FORMAT in ("html", "rst", "sphinx"):
+    elif FORMAT == "html":
         text = '<a href="%s"><img src="%s" width="300"></a>' % (p, p)
     else:
         text = '"`%s`": "%s"' % (fileno, p)  # plain link
@@ -23,6 +23,17 @@ def tfig(fileno):
 |${tfig('095')} | ${tfig('100')} | ${tfig('105')} |
 |${tfig('110')} | ${tfig('115')} | ${tfig('120')} |
 |-------------------------------------------------|
+
+
+|-----------------------------------------------------------|
+|                         |                |                |
+|--------------c------------------c----------------c--------|
+| $\mathcal{L}=0$         | ${tfig('080')} | ${tfig('085')} |
+| $a=b$                   | ${tfig('090')} | ${tfig('095')} |
+| $\nabla\cdot\bm{u} =0 $ | ${tfig('100')} | ${tfig('105')} |
+|-----------------------------------------------------------|
+
+
 
 <%
 def generate_table(start, end, step, no_of_columns):

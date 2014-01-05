@@ -539,6 +539,14 @@ def make_one_line_paragraphs(filestr, format):
     debugpr('\n\n\n**** ONELINE4:\n\n%s\n\n' % filestr)
     return filestr
 
+def bm2boldsymbol(filestr, format):
+    if format in ("html", "sphinx", "pandoc", "ipynb"):
+        if r'\bm{' in filestr:
+            print r'*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)'
+            filestr = filestr.replace(r'\bm{', r'\boldsymbol{')
+            # See http://www.wikidot.com/doc:math
+    return filestr
+
 def insert_code_from_file(filestr, format):
     # Create dummy file if specified file not found?
     CREATE_DUMMY_FILE = False
@@ -1216,14 +1224,6 @@ def typeset_tables(filestr, format):
             # remove empty columns and extra white space:
             #columns = [c.strip() for c in columns if c]
             columns = [c.strip() for c in columns if c.strip()]
-            # substitute math (may expand columns significantly)
-            for tag in ['math', 'verbatim']:  #, 'math2']:
-                replacement = INLINE_TAGS_SUBST[format][tag]
-                if replacement is not None:
-                    for i in range(len(columns)):
-                        columns[i] = re.sub(INLINE_TAGS[tag],
-                                            replacement,
-                                            columns[i])
             table['rows'].append(columns)
         elif lin.startswith('#') and inside_table:
             continue  # just skip commented table lines
@@ -2305,6 +2305,11 @@ def doconce2format(filestr, format):
         if filestr.endswith('!ec') or filestr.endswith('!et'):
             filestr += '\n'*10
 
+    # Next step: change \bm{} to \boldsymbol{} for all MathJax-based formats
+    # (must be done before math blocks are removed and again after
+    # newcommands files are inserted)
+    filestr = bm2boldsymbol(filestr, format)
+
     # Hack for transforming align envirs to separate equations
     if format in ("sphinx", "pandoc", "ipynb"):
         filestr = align2equations(filestr, format)
@@ -2406,13 +2411,13 @@ def doconce2format(filestr, format):
     debugpr('%s\n**** The file after typesetting of list:\n\n%s\n\n' % \
           ('*'*80, filestr))
 
+    # Next step: do substitutions
+    filestr = inline_tag_subst(filestr, format)
+
     # Next step: deal with tables
     filestr = typeset_tables(filestr, format)
     debugpr('%s\n**** The file after typesetting of tables:\n\n%s\n\n' % \
           ('*'*80, filestr))
-
-    # Next step: do substitutions:
-    filestr = inline_tag_subst(filestr, format)
 
     debugpr('%s\n**** The file after all inline substitutions:\n\n%s\n\n' % ('*'*80, filestr))
 
@@ -2479,14 +2484,6 @@ def doconce2format(filestr, format):
     debugpr('%s\n**** The file after inserting intro/outro and tex/code blocks, and fixing last format-specific issues:\n\n%s\n\n' % \
           ('*'*80, filestr))
 
-    # Next step: change \bm{} to \boldsymbol{} for all MathJax-based formats
-    # (must be done after math blocks and newcommands files are inserted
-    if format in ("html", "sphinx", "pandoc", "ipynb"):
-        if r'\bm{' in filestr:
-            print r'*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)'
-            filestr = filestr.replace(r'\bm{', r'\boldsymbol{')
-            # See http://www.wikidot.com/doc:math
-
     # Next step: deal with !b... !e... environments
     # (done after code and text to ensure correct indentation
     # in the formats that applies indentation)
@@ -2531,6 +2528,11 @@ def doconce2format(filestr, format):
             print '     * or bug in doconce'
             _abort()
 
+
+    # Next step: change \bm{} to \boldsymbol{} for all MathJax-based formats
+    # (must be done before math blocks are removed and again after
+    # newcommands files are inserted)
+    filestr = bm2boldsymbol(filestr, format)
 
     # Final step: replace environments starting with | (instead of !)
     # by ! (for illustration of doconce syntax inside !bc/!ec directives).
