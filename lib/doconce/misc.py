@@ -2,7 +2,7 @@ import os, sys, shutil, re, glob, sets, time, commands
 from common import _abort
 
 _part_filename = '._%s%03d'
-_part_filename_wildcard = '._*[0-9][0-9][0-9].*'
+_part_filename_wildcard = '._*[0-9][0-9][0-9]'
 
 _registered_command_line_options = [
     ('--help',

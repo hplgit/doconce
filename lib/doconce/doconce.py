@@ -2102,7 +2102,7 @@ def file2file(in_filename, format, basename):
     # Unix> # convert to latin-1:
     # Unix> iconv -f utf-8 -t LATIN1 myfile.do.txt --output newfile
     if encoding:  # global variable
-        print 'Open file with encoding', encoding
+        print 'open file with encoding', encoding
         f = codecs.open(in_filename, 'r', encoding)
     else:
         f = open(in_filename, 'r')
