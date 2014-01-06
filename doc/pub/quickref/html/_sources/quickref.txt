@@ -5,7 +5,7 @@ Doconce Quick Reference
 -----------------------
 
 :Author: Hans Petter Langtangen
-:Date: Jan 5, 2014
+:Date: Jan 6, 2014
 
 **WARNING: This quick reference is very incomplete!**
 
@@ -860,10 +860,10 @@ list of capabilities:
         doconce html_colorbullets file1.html file2.html ...
         
         # grab selected text from a file
-        doconce grab   --from[-] from-text [--to[-] to-text] somefile
+        doconce grab   --from[-] from-text [--to[-] to-text] somefile > result
         
         # remove selected text from a file
-        doconce remove --from[-] from-text [--to[-] to-text] somefile
+        doconce remove --from[-] from-text [--to[-] to-text] somefile > result
         
         # run spellcheck on a set of files
         doconce spellcheck [-d .mydict.txt] *.do.txt

@@ -98,7 +98,7 @@ def is_file_or_url(filename, msg='checking existence of', debug=True):
         try:
             # Print a message in case the program hangs a while here
             if msg is not None or debug:
-                print '...', msg, filename, '...',
+                print '...', msg, filename, '...'
             f = urllib.urlopen(filename)
             text = f.read()
             f.close()
@@ -106,12 +106,12 @@ def is_file_or_url(filename, msg='checking existence of', debug=True):
             if ext in ('.html', 'htm'):
                 # Successful opening of an HTML file
                 if msg or debug:
-                    print 'found!'
+                    print '    found!'
                 return 'url'
             elif ext == '':
                 # Successful opening of a directory (meaning index.html)
                 if msg or debug:
-                    print 'found!'
+                    print '    found!'
                 return 'url'
             else:
                 # Seemingly successful opening of a file, but check if
@@ -125,17 +125,17 @@ def is_file_or_url(filename, msg='checking existence of', debug=True):
                 if special_host and '>404' in text:
                     # HTML file with an error message: file not found
                     if msg or debug:
-                        print 'not found (%s, 404 error)' % filename
+                        print '    not found (%s, 404 error)' % filename
                         return None
                 else:
                     if msg or debug:
-                        print 'found!'
+                        print '    found!'
                     return 'url'
         except IOError, e:
             if msg or debug:
-                print 'not found!'
+                print '    NOT found!'
             if debug:
-                print 'urllib.urlopen error:', e
+                print '    urllib.urlopen error:', e
             return None
     else:
         return ('file' if os.path.isfile(filename) else None)

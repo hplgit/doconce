@@ -496,27 +496,33 @@ def latex_table(table):
                table['rows'][i-1] == ['horizontal rule'] and \
                table['rows'][i+1] == ['horizontal rule']:
                 headline = True
+                # Empty column headings?
+                skip_headline = bool(''.join([column.strip()
+                                              for column in table['rows'][i]]))
             else:
                 headline = False
 
             if headline:
-                # First fix verbatim inside multicolumn
-                # (recall that doconce.py table preparations
-                # translates `...` to \code{...})
-                verbatim_pattern = r'code\{(.+?)\}'
-                for i in range(len(row)):
-                    m = re.search(verbatim_pattern, row[i])
-                    if m:
-                        #row[i] = re.sub(verbatim_pattern,
-                        #                r'texttt{%s}' % m.group(1),
-                        #                row[i])
-                        # (\code translates to \Verb, which is allowed here)
+                if skip_headline:
+                    row = []
+                else:
+                    # First fix verbatim inside multicolumn
+                    # (recall that doconce.py table preparations
+                    # translates `...` to \code{...})
+                    verbatim_pattern = r'code\{(.+?)\}'
+                    for i in range(len(row)):
+                        m = re.search(verbatim_pattern, row[i])
+                        if m:
+                            #row[i] = re.sub(verbatim_pattern,
+                            #                r'texttt{%s}' % m.group(1),
+                            #                row[i])
+                            # (\code translates to \Verb, which is allowed here)
 
-                        row[i] = re.sub(r'\\code\{(.*?)\}', underscore_in_code,
-                                        row[i])
+                            row[i] = re.sub(
+                                r'\\code\{(.*?)\}', underscore_in_code, row[i])
 
-                row = [r'\multicolumn{1}{%s}{ %s }' % (a, r) \
-                       for r, a in zip(row, heading_spec)]
+                    row = [r'\multicolumn{1}{%s}{ %s }' % (a, r) \
+                           for r, a in zip(row, heading_spec)]
             else:
                 row = [r.ljust(w) for r, w in zip(row, column_width)]
 

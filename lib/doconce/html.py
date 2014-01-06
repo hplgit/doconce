@@ -738,6 +738,9 @@ def html_table(table):
            table['rows'][i-1] == ['horizontal rule'] and \
            table['rows'][i+1] == ['horizontal rule']:
             headline = True
+            # Empty column headings?
+            skip_headline = bool(''.join([column.strip()
+                                          for column in table['rows'][i]]))
         else:
             headline = False
 
@@ -745,8 +748,9 @@ def html_table(table):
         for column, w, ha, ca in \
                 zip(row, column_width, heading_spec, column_spec):
             if headline:
-                s += '<td align="%s"><b> %s </b></td> ' % \
-                     (a2html[ha], column.center(w))
+                if not skip_headline:
+                    s += '<td align="%s"><b> %s </b></td> ' % \
+                         (a2html[ha], column.center(w))
             else:
                 s += '<td align="%s">   %s    </td> ' % \
                      (a2html[ca], column.ljust(w))

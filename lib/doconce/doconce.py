@@ -822,10 +822,10 @@ def exercises(filestr, format, code_blocks, tex_blocks):
 
     # Regex: no need for re.MULTILINE since we treat one line at a time
     if option('examples_as_exercises'):
-        exer_heading_pattern = re.compile(r'^\s*(=====)\s*\{?(Exercise|Problem|Project|Example)\}?:\s*(?P<title>[^ =-].+?)\s*=====')
+        exer_heading_pattern = r'^\s*(=====)\s*\{?(Exercise|Problem|Project|Example)\}?:\s*(?P<title>[^ =-].+?)\s*====='
     else:
-        exer_heading_pattern = re.compile(r'^\s*(=====)\s*\{?(Exercise|Problem|Project)\}?:\s*(?P<title>[^ =-].+?)\s*=====')
-    if not re.search(exer_heading_pattern, filestr):
+        exer_heading_pattern = r'^\s*(=====)\s*\{?(Exercise|Problem|Project)\}?:\s*(?P<title>[^ =-].+?)\s*====='
+    if not re.search(exer_heading_pattern, filestr, flags=re.MULTILINE):
         return filestr
 
     label_pattern = re.compile(r'^\s*label\{(.+?)\}')
@@ -855,7 +855,7 @@ def exercises(filestr, format, code_blocks, tex_blocks):
         #print 'LINE %d:' % i, line
         #import pprint; pprint.pprint(exer)
 
-        m_heading = exer_heading_pattern.search(line)
+        m_heading = re.search(exer_heading_pattern, line)
         if m_heading:
             inside_exer = True
 
@@ -1296,10 +1296,14 @@ def typeset_tables(filestr, format):
                     print line
                     _abort()
 
-            columns = line.strip().split('|')  # does not work with math2 syntax
+            # Extract columns, but drop first and last since these
+            # are always empty after .split('|')
+            columns = line.strip().split('|')[1:-1]  # does not work with math2 syntax
             # remove empty columns and extra white space:
             #columns = [c.strip() for c in columns if c]
-            columns = [c.strip() for c in columns if c.strip()]
+            #columns = [c.strip() for c in columns if c.strip()]
+            # Remove extra white space in columns
+            columns = [c.strip() for c in columns]
             table['rows'].append(columns)
         elif lin.startswith('#') and inside_table:
             continue  # just skip commented table lines
@@ -1733,7 +1737,7 @@ def handle_figures(filestr, format):
                     candidate_files = glob.glob(figfile + '.*')
                     for newname in candidate_files:
                         if os.path.isfile(newname):
-                            print 'Found', newname
+                            print 'found', newname
                             #dangerous: filestr = filestr.replace(figfile, newname)
                             filestr = re.sub(r'%s([,\]])' % figfile,
                                              '%s\g<1>' % newname, filestr)
@@ -1852,7 +1856,7 @@ def handle_cross_referencing(filestr, format):
     ref_pattern = r'ref(ch)?\[([^\]]*?)\]\[([^\]]*?)\]\[([^\]]*?)\]'
     general_refs = re.findall(ref_pattern, filestr)
     for chapref, internal, cite, external in general_refs:
-        ref_text = 'ref[%s][%s][%s]' % (internal, cite, external)
+        ref_text = 'ref%s[%s][%s][%s]' % (chapref, internal, cite, external)
         if not internal and not external:
             print ref_text, 'has empty fields'
             _abort()

@@ -78,10 +78,10 @@ doconce slides_beamer complete_file.tex
 doconce html_colorbullets file1.html file2.html ...
 
 # grab selected text from a file
-doconce grab   --from[-] from-text [--to[-] to-text] somefile
+doconce grab   --from[-] from-text [--to[-] to-text] somefile > result
 
 # remove selected text from a file
-doconce remove --from[-] from-text [--to[-] to-text] somefile
+doconce remove --from[-] from-text [--to[-] to-text] somefile > result
 
 # run spellcheck on a set of files
 doconce spellcheck [-d .mydict.txt] *.do.txt

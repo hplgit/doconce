@@ -5179,6 +5179,27 @@ def subst_minted_latex2doconce(m):
     else:
         return '!bc'
 
+def subst_paragraph_latex2doconce(m):
+    title = m.group(1)
+    ending = m.group(2)
+    if ending != '.':
+        title += ending
+    return '=== %s ===\n' % title
+
+def subst_CODE_latex2doconce(m):
+    line = m.group(0)
+    words = line.split()
+    filename = words[1]
+    if len(words) > 2:
+        spec = ' '.join(words[2:])
+        if not '\\' in spec:  # Has user escaped regex chars?
+            spec = re.escape(spec)
+        spec = ' fromto: ' + spec
+    else:
+        spec = ''
+    return '@@@CODE %s%s' % (filename, spec)
+
+
 def _latex2doconce(filestr):
     """Run latex to doconce transformations on filestr."""
     user_subst = []
@@ -5583,32 +5604,13 @@ def _latex2doconce(filestr):
 
     # Let paragraphs be subsubsections === ... ===
     pattern = r'__(.+?)([.?!:])__'
-    def subst_paragraph(m):
-        title = m.group(1)
-        ending = m.group(2)
-        if ending != '.':
-            title += ending
-        return '=== %s ===\n' % title
-
-    filestr = re.sub(pattern, subst_paragraph, filestr)
+    filestr = re.sub(pattern, subst_paragraph_latex2doconce, filestr)
 
     # @@@CODE envirs in ptex2tex applies replacement while Doconce
     # applies regular expressions
-    def subst_code(m):
-        line = m.group(0)
-        words = line.split()
-        filename = words[1]
-        if len(words) > 2:
-            spec = ' '.join(words[2:])
-            if not '\\' in spec:  # Has user escaped regex chars?
-                spec = re.escape(spec)
-            spec = ' fromto: ' + spec
-        else:
-            spec = ''
-        return '@@@CODE %s%s' % (filename, spec)
-
     pattern = r'^@@@CODE .+$'
-    filestr = re.sub(pattern, subst_code, filestr, flags=re.MULTILINE)
+    filestr = re.sub(pattern, subst_CODE_latex2doconce,
+                     filestr, flags=re.MULTILINE)
 
     # Tables are difficult: require manual editing?
     inside_table = False

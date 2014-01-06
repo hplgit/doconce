@@ -865,8 +865,10 @@ LaTeX package `xr` is used to handle the labels in the external documents.
 When referring to a complete chapter (not a section in it), which
 corresponds to a complete external document, it does not make sense
 to write out `internal cite` since the `internal` reference is a
-chapter number. In such cases, the `refch[][][]` syntax can be used,
-and if the label is in another LaTeX document, the output is just `cite`.
+chapter number. In such cases, the `refch[internal][cite][external]`
+syntax can be used,
+and if the label is in another LaTeX document, the output is just `cite`
+(rather than `internal cite`). An example below will illustrate the use.
 For all
 output formats other than `latex` and `pdflatex`, the `external`
 text will be the output.
@@ -881,20 +883,20 @@ cite{testdoc:12}][a "section":
 "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex" in
 the document "A Document for Testing Doconce":
 "http://hplgit.github.io/doconce/test/demo_testdoc.html"
-cite{testdoc:12}], Doconce documents may include movies.
+cite{testdoc:12}], Doconce documents may include tables.
 !ec
 With `latex` or `pdflatex` as output, this translates to
 !bc
 As explained in
-Section ref{subsec:ex}, Doconce documents may include movies.
+Section ref{subsec:ex}, Doconce documents may include tables.
 !ec
-if the `label{subsec:ex}` appears in the present Doconce source, and
+if the label `{subsec:ex}` appears in the present Doconce source, and
 otherwise
 !bc
 As explained in
 Section ref{subsec:ex} in "Langtangen, 2012":
 "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex"
-cite{testdoc:12}, Doconce documents may include movies.
+cite{testdoc:12}, Doconce documents may include tables.
 !ec
 The latter Doconce code is translated to the following
 LaTeX code:
@@ -902,9 +904,9 @@ LaTeX code:
 As explained in
 Section~\ref{subsec:ex} in
 \href{{http://hplgit.github.io/doconce/...}}{Langtangen, 2012}
-\cite{testdoc:12}, Doconce documents may include movies.
+\cite{testdoc:12}, Doconce documents may include tables.
 !ec
-In a format different from `latex` and `pdflatex`, the Doconce
+In a format different from `latex` and `pdflatex`, the effective Doconce
 text becomes
 !bc
 As explained in
@@ -912,21 +914,33 @@ a "section":
 "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex" in
 the document "A Document for Testing Doconce":
 "http://hplgit.github.io/doconce/test/demo_testdoc.html"
-cite{testdoc:12}, Doconce documents may include movies.
+cite{testdoc:12}, Doconce documents may include tables.
 !ec
+The rendered text in the current format becomes
+
+!bquote
+As explained in
+ref[Section ref{subsec:ex}][in "Langtangen, 2012":
+"http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex"
+cite{testdoc:12}][a "section":
+"http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex" in
+the document "A Document for Testing Doconce":
+"http://hplgit.github.io/doconce/test/demo_testdoc.html"
+cite{testdoc:12}], Doconce documents may include tables.
+!equote
 
 A reference to an entire external document, which is usually a chapter
-if the reference is internal in the Doconce source, applies the
-`refch` syntax:
+of a book if the reference is internal in the Doconce source,
+usually needs to apply the `refch` syntax:
 
 !bc
 As explained in
-refch[Chapter ref{ch:testdoc]["Langtangen, 2012":
+refch[Chapter ref{ch:testdoc}]["Langtangen, 2012":
 "http://hplgit.github.io/doconce/test/demo_testdoc.html"
 cite{testdoc:12}][the document
 "A Document for Testing Doconce":
 "http://hplgit.github.io/doconce/test/demo_testdoc.html"
-cite{testdoc:12}], Doconce documents may include movies.
+cite{testdoc:12}], Doconce documents may include tables.
 !ec
 The output now if `ch:testdoc` is not a label in the document,
 becomes in the `latex` and `pdflatex` case
@@ -935,10 +949,20 @@ becomes in the `latex` and `pdflatex` case
 As explained in
 "Langtangen, 2012":
 "http://hplgit.github.io/doconce/test/demo_testdoc.html"
-cite{testdoc:12}, Doconce documents may include movies.
+cite{testdoc:12}, Doconce documents may include tables.
 !ec
 That is, the internal reference `Chapter ...` is omitted since
 it is not meaningful to refer to an external document as "Chapter".
+The resulting rendered text in the current format becomes
+!bquote
+As explained in
+refch[Chapter ref{ch:testdoc}]["Langtangen, 2012":
+"http://hplgit.github.io/doconce/test/demo_testdoc.html"
+cite{testdoc:12}][the document
+"A Document for Testing Doconce":
+"http://hplgit.github.io/doconce/test/demo_testdoc.html"
+cite{testdoc:12}], Doconce documents may include tables.
+!equote
 
 Note that LaTeX cannot
 have links to local files, so a complete URL on the form
@@ -2760,6 +2784,11 @@ and Sphinx just typeset the list as a list with keywords.
       the iterations.
 
 ======= References =======
+
+!bwarning Note
+The references below are just for illustrating and testing citation
+syntax and not references for explaining parts of the text.
+!ewarning
 
 BIBFILE: papers.pub
 

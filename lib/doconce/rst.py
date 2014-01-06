@@ -130,8 +130,10 @@ that %s is not preceded by text which can be extended with :: (required).
     # Final fixes
 
     filestr = fix_underlines_in_headings(filestr)
-    # Ensure blank line before comments
+    # Ensure blank line before and after comments
     filestr = re.sub(r'([.:;?!])\n^\.\. ', r'\g<1>\n\n.. ',
+                     filestr, flags=re.MULTILINE)
+    filestr = re.sub(r'(^\.\. .+)\n([^ \n]+)', r'\g<1>\n\n\g<2>',
                      filestr, flags=re.MULTILINE)
 
     return filestr
