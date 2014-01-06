@@ -5312,6 +5312,8 @@ def _latex2doconce(filestr):
         ("Fig.~", "Figure "),
         ("Tab.~", "Table "),
         (".~", ". "),
+        ('@@@CMD ', '@@@OSCMD '),
+
         ] + user_replace
 
     # Pure string replacements:
@@ -5589,6 +5591,24 @@ def _latex2doconce(filestr):
         return '=== %s ===\n' % title
 
     filestr = re.sub(pattern, subst_paragraph, filestr)
+
+    # @@@CODE envirs in ptex2tex applies replacement while Doconce
+    # applies regular expressions
+    def subst_code(m):
+        line = m.group(0)
+        words = line.split()
+        filename = words[1]
+        if len(words) > 2:
+            spec = ' '.join(words[2:])
+            if not '\\' in spec:  # Has user escaped regex chars?
+                spec = re.escape(spec)
+            spec = ' fromto: ' + spec
+        else:
+            spec = ''
+        return '@@@CODE %s%s' % (filename, spec)
+
+    pattern = r'^@@@CODE .+$'
+    filestr = re.sub(pattern, subst_code, filestr, flags=re.MULTILINE)
 
     # Tables are difficult: require manual editing?
     inside_table = False
