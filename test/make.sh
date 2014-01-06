@@ -67,7 +67,7 @@ system doconce format latex testdoc.do.txt $ex SOMEVAR=True --skip_inline_commen
 system doconce format pdflatex testdoc.do.txt --device=paper $ex --latex_double_hyphen
 system doconce latex_exercise_toc testdoc
 
-# doconce replace does not work well with system without quotes
+# doconce replace does not work well with system bash func above without quotes
 doconce replace 'vspace{1cm} % after toc' 'clearpage % after toc' testdoc.p.tex
 thpack='\\usepackage{theorem}\n\\newtheorem{theorem}{Theorem}[section]'
 doconce subst '% insert custom LaTeX commands\.\.\.' $thpack testdoc.p.tex
@@ -107,8 +107,9 @@ mv -f testdoc.rst testdoc.sphinx.rst
 
 doconce format sphinx testdoc $ex
 doconce split_rst testdoc
-system doconce sphinx_dir author=HPL title='Just a test' version=0.1 theme=agni testdoc
+system doconce sphinx_dir author=HPL title='Just a test' dirname='sphinx-testdoc' version=0.1 theme=agni testdoc
 cp automake_sphinx.py automake_sphinx_testdoc.py
+system python automake_sphinx.py
 
 system doconce format rst testdoc.do.txt $ex
 
@@ -349,21 +350,20 @@ doconce format rst tmp2
 doconce replace '\label' 'label' tmp2.do.txt
 doconce replace 'wave1D width' 'wave1D,  width' tmp2.do.txt
 doconce format sphinx tmp2
+doconce replace 'doc/manual' 'doc/src/manual' tmp2.do.txt
+doconce format sphinx tmp2
 doconce replace '../lib/doconce/doconce.py' '_static/doconce.py' tmp2.do.txt
+doconce replace 'two_media99' 'two_media' tmp2.do.txt
+doconce format html tmp2
+doconce replace '99x9.ogg' '.ogg' tmp2.do.txt
+doconce format html tmp2
 doconce subst -s -m '^!bsol.+?!esol' ''  tmp2.do.txt
 doconce format sphinx tmp2
 doconce subst -s -m '^!bhint.+?!ehint' ''  tmp2.do.txt
 doconce format sphinx tmp2
-doconce replace 'doc/manual' 'doc/src/manual' tmp2.do.txt
-doconce format html tmp2
 doconce format pdflatex tmp2
-doconce replace 'two_media99' 'two_media' tmp2.do.txt
-doconce format html tmp2
 doconce format pdflatex tmp2
 doconce format sphinx tmp2
-doconce replace '99x9.ogg' '.ogg' tmp2.do.txt
-doconce format html tmp2
-doconce format pdflatex tmp2
 #doconce replace '# Comment before math is ok' '' tmp2.do.txt
 echo
 echo "When we reach this point in the script,"

@@ -54,6 +54,9 @@ software. However, if you want other formats as output
 as preprocesors, spellcheck, file differences, bibliographies,
 and so on, the software below must be installed.
 
+To install all needed packages on a GNU/Linux Debian system, such as
+Ubuntu, you can jump to the script in Section ref{install:debian:script}.
+
 # Make a debpkg_doconce.txt file with everything that is needed on Debian
 
 === Preprocessors ===
@@ -92,11 +95,13 @@ the usual `sudo python setup.py install`.
 === Image file handling ===
 
 Different output formats require different formats of image files.
-For example, PostScript or Encapuslated PostScript is required for `latex`
-output, while HTML needs JPEG, GIF, or PNG formats.
-Doconce calls up programs from the ImageMagick suite for converting
-image files to a proper format if needed. The "ImageMagick suite": "http://www.imagemagick.org/script/index.php" can be installed on all major platforms.
-On Debian Linux (including Ubuntu) systems one can simply write
+For example, PostScript or Encapuslated PostScript is required for
+`latex` output, while HTML needs JPEG, GIF, or PNG formats.  Doconce
+calls up programs from the ImageMagick suite for converting image
+files to a proper format if needed. The "ImageMagick suite":
+"http://www.imagemagick.org/script/index.php" can be installed on all
+major platforms.  On Debian Linux (including Ubuntu) systems one can
+simply write
 
 !bc sys
 sudo apt-get install imagemagick
@@ -355,7 +360,7 @@ run `svn update`, and then `sudo python setup.py install`. For
 Mercurial (`hg`) directories, go to the directory, run
 `hg pull; hg update`, and then `sudo python setup.py install`.
 
-=== The `doconce diff` command ===
+=== Analyzing file differences ===
 
 The `doconce diff file1 file prog` command for illustrating differences between
 two files `file1` and `file2` using the program `prog` requires `prog`
@@ -378,6 +383,7 @@ appear in the table below.
 |---------------------------------------------------------------------------|
 
 ===== Quick Debian/Ubuntu Install =====
+label{install:debian:script}
 
 On Debian (including Ubuntu) systems, it is straightforward to install the
 long series of Doconce dependencies:
@@ -389,19 +395,13 @@ sudo apt-get install -y mercurial git subversion
 # Python
 sudo apt-get install -y idle ipython python-pip python-pdftools texinfo
 
-# These lines are only necessary for Ubuntu 12.04 to install texlive 2012
-ubuntu_version=`lsb_release -r | awl '{print $2}'`
-if [ $ubuntu_version = "12.04" ]; then
-  sudo add-apt-repository ppa:texlive-backports/ppa
-  sudo apt-get update
-fi
 # LaTeX
 sudo apt-get install -y texlive texlive-extra-utils texlive-latex-extra texlive-math-extra texlive-font-utils
 # or sudo apt-get install -y texlive-full  # get everything
 sudo apt-get install -y latexdiff auctex
 
 # Image and movie tools
-sudo apt-get install -y imagemagick netpbm mjpegtools pdftk giftrans gv evince smpeg-plaympeg mplayer totem ffmpeg libav-tools
+sudo apt-get install -y imagemagick netpbm mjpegtools pdftk giftrans gv libav-tools libavcodec-extra-53 libx264-dev ffmpeg mencoder evince mplayer gnome-mplayer totem vlc browser-plugin-vlc
 
 # Misc
 sudo apt-get install -y ispell pandoc libreoffice unoconv libreoffice-dmaths curl a2ps wdiff meld xxdiff diffpdf kdiff3 diffuse

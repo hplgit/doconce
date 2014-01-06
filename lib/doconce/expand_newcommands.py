@@ -67,8 +67,9 @@ def parse_newcommands(filename):
             pattern, replacement = process_newcommand(line)
             newcommands.append((pattern, replacement))
         else:
-            raise SyntaxError('Illegal line\n  %s\nline' % line + \
-                              'must start with %% or ' + r'\newcommand')
+            raise SyntaxError(
+                '*** error: illegal line\n  %s\n    line' % line +
+                'must start with %% or ' + r'\newcommand')
     return newcommands
 
 def substitute(source, newcommands):
@@ -103,7 +104,6 @@ def substitute(source, newcommands):
             if n:
                 debugpr('newcommand replacement: %s -> %s (%d times)'
                         % (pattern, replacement, n))
-
 
     if os.path.isfile(source):
         f = open(source, 'w')

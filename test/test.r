@@ -1,10 +1,10 @@
 
 ************** File: testdoc.do.txt *****************
 TITLE: A Document for Testing Doconce
-AUTHOR: Hans Petter Langtangen Email: hpl@simula.no at Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo
-AUTHOR: Kaare Dump at Segfault Inc, Cyberspace
+AUTHOR: Hans Petter Langtangen Email: hpl@simula.no at Center for Biomedical Computing, Simula Research Laboratory & Department of Informatics, University of Oslo
+AUTHOR: Kaare Dump at Segfault, Cyberspace
 AUTHOR: A. Dummy Author
-AUTHOR: I. S. Overworked at Inst1 and Inst2, Somewhere and Third Inst, Elsewhere and Fourth Inst
+AUTHOR: I. S. Overworked and Outburned at Inst1 & Inst2, Somewhere & Third Inst, Elsewhere & Fourth Inst
 AUTHOR: J. Doe mail: j_doe@cyberspace.com
 DATE: today
 
@@ -75,7 +75,6 @@ Here is a reference to Equation (ref{my:eq1}).
 This equation appears in another part if this document is split.
 # #endif
 
-!split and check if these extra words are included properly in the comment
 
 ===== Subsection 1 =====
 
@@ -83,6 +82,8 @@ More text, with a reference back to Section ref{sec1} and further
 to Section ref{subsubsec:ex}. idx{`somefunc` function}
 
 # sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console
+
+=== Computer code ===
 
 Let's do some copying from files too. First from subroutine up to the very end,
 
@@ -226,6 +227,9 @@ green color containing a linebreak.
 And one more.} Some formats will only display this correctly when
 HTML is the output format.
 
+=== Running OS commands ===
+
+@@@OSCMD python -c 'print "Testing\noutput\nfrom\nPython."'
 
 ===== Subsection 2: Testing figures =====
 label{subsec:ex}
@@ -406,32 +410,63 @@ one table:
   |--------------------------------|
 
 And one with math headings (that are expanded and must be treated
-accordingly) and verbatim heading and entry:
+accordingly), verbatim heading and entry, and no space around the pipe
+symbol:
 
-|-------------------------------|
-|$i$ | $h_i$|$\bar T_i$ | `L_i` |
-|-l-----r---------r---------r---|
-|0   |0     |288        |-0.0065|
-|1   |11,000|216        |0.0	|
-|2   |20,000|216        |0.001	|
-|3   |32,000|228        |0.0028	|
-|4   |47,000|270        |0.0	|
-|5   |51,000|270        |-0.0028|
-|6   |71,000|214        |`NaN`	|
-|-------------------------------|
+|--------------------------|
+|$i$|$h_i$|$\bar T_i$|`L_i`|
+|-l-----r-------r----r-----|
+|0   |0     |288   |-0.0065|
+|1   |11,000|216   |0.0	   |
+|2   |20,000|216   |0.001  |
+|3   |32,000|228   |0.0028 |
+|4   |47,000|270   |0.0	   |
+|5   |51,000|270   |-0.0028|
+|6   |71,000|214   |`NaN`  |
+|--------------------------|
 
 And add one with verbatim headings (with underscores),
 and rows starting with `|-` because of a negative number,
-and `|` right after verbatim word (with no space):
+and `|` right before and after verbatim word (with no space):
+## +`v_2` does not work, need space + `v_2`
 
 |-----------------------------------------|
-| exact | `v_1`   | $a_i$ + `v_2`|`verb_3_`|
+| exact | `v_1`   |$a_i$ + `v_2`|`verb_3_`|
 |---r--------r---------r-----------r------|
 |9      | 9.62    | 5.57      |  8.98     |
 |-20    | -23.39  | -7.65     | -19.93    |
 |10     | 17.74   | -4.50     |  9.96     |
 |0      | -9.19   | 4.13      | -0.26     |
 |-----------------------------------------|
+
+Finally, a table with math
+# #if FORMAT in ("rst", "html", "sphinx", "pandoc")
+(`bm` that expands to `boldsymbol`, was tricky, but
+cleanly handled now)
+# #endif
+and URLs.
+
+# Mako code to expand URLs in the table
+# (These types of tables did not work before Jan 2014)
+<%
+def tfig(fileno):
+    p = '../doc/src/manual/mov/wave_frames/frame_0' + fileno + '.png'  # path
+    if FORMAT in ("latex", "pdflatex"):
+        text = r'\includegraphics[width=2cm]{%s}' % p
+    elif FORMAT == "html":
+        text = '<a href="%s"><img src="%s" width="300"></a>' % (p, p)
+    else:
+        text = '"`%s`": "%s"' % (fileno, p)  # plain link
+    return text
+%>
+
+|-----------------------------------------------------------|
+|                         |                |                |
+|--------------c------------------c----------------c--------|
+| $\mathcal{L}=0$         | ${tfig('080')} | ${tfig('085')} |
+| $a=b$                   | ${tfig('090')} | ${tfig('095')} |
+| $\nabla\cdot\bm{u} =0 $ | ${tfig('100')} | ${tfig('105')} |
+|-----------------------------------------------------------|
 
 
 ===== A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2` =====
@@ -548,7 +583,7 @@ More tough tests: repeated URLs whose footnotes when using the
 footnotes.
 
 
-% if FORMAT == "latex":
+% if FORMAT in ("latex", "pdflatex"):
 
 ===== Test of Some LaTeX Fixes =====
 
@@ -564,7 +599,9 @@ fool a regex substitution with only i.e. since the dot matches anything.
 Also, look at Fig. 4 to see how the data compares with Tab. ref{mytab}.
 % endif
 
-===== LaTeX Mathematics =====
+!split and check if these extra words are included properly in the comment
+
+======= LaTeX Mathematics =======
 
 Here is an equation without label using backslash-bracket environment:
 !bt
@@ -1158,7 +1195,7 @@ Automatically generated HTML file from Doconce source
       -webkit-background-clip: padding-box;
       background-clip: padding-box;
     }
-    tt { font-family: "Courier New", Courier; }
+    tt, code { font-family: "Courier New", Courier; }
     hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
     p { text-indent: 0px; }
     p.caption { width: 80%; font-style: normal; text-align: left; }
@@ -1198,6 +1235,8 @@ Automatically generated HTML file from Doconce source
 {'highest level': 1,
  'sections': [(' Section 1 ', 1, 'sec1', 'sec1'),
               (' Subsection 1 ', 2, None, '___sec1'),
+              (' Computer code ', 3, None, '___sec2'),
+              (' Running OS commands ', 3, None, '___sec3'),
               (' Subsection 2: Testing figures ',
                2,
                'subsec:ex',
@@ -1206,23 +1245,23 @@ Automatically generated HTML file from Doconce source
                2,
                'decay:sec:theta',
                'decay:sec:theta'),
-              (' Custom Environments ', 2, None, '___sec4'),
+              (' Custom Environments ', 2, None, '___sec6'),
               (' Tables ', 2, 'subsec:table', 'subsec:table'),
               (' A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2` ',
                2,
                None,
-               '___sec6'),
-              (' Bibliography test ', 2, None, '___sec7'),
+               '___sec8'),
+              (' Bibliography test ', 2, None, '___sec9'),
               (' Example 1: Examples can be typeset as exercises ',
                2,
                'Example',
                'Example'),
               (' URLs ', 2, 'subsubsec:ex', 'subsubsec:ex'),
-              (' LaTeX Mathematics ', 2, None, '___sec10'),
-              (' Exercises ', 1, None, '___sec11'),
+              (' LaTeX Mathematics ', 1, None, '___sec12'),
+              (' Exercises ', 1, None, '___sec13'),
               (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
-              (' Remarks ', 3, None, '___sec13'),
-              (' Not an exercise ', 2, None, '___sec14'),
+              (' Remarks ', 3, None, '___sec15'),
+              (' Not an exercise ', 2, None, '___sec16'),
               (' Project 3: Compute a Probability ',
                2,
                'demo:ex:2',
@@ -1231,19 +1270,19 @@ Automatically generated HTML file from Doconce source
                2,
                'proj:circle1',
                'proj:circle1'),
-              (' Remarks ', 3, None, '___sec17'),
+              (' Remarks ', 3, None, '___sec19'),
               (' Exercise 5: Determine some Distance ',
                2,
                'exer:dist',
                'exer:dist'),
-              (' Remarks ', 3, None, '___sec19'),
+              (' Remarks ', 3, None, '___sec21'),
               (' Some exercise without the "Exercise:" prefix ',
                2,
                None,
-               '___sec20'),
-              (' Example 7: Just an example ', 2, None, '___sec21'),
-              (' Here goes another section ', 1, None, '___sec22'),
-              (' More Exercises ', 1, None, '___sec23'),
+               '___sec22'),
+              (' Example 7: Just an example ', 2, None, '___sec23'),
+              (' Here goes another section ', 1, None, '___sec24'),
+              (' More Exercises ', 1, None, '___sec25'),
               (' Exercise 8: Make references to projects and problems ',
                2,
                'exer:some:formula',
@@ -1252,11 +1291,11 @@ Automatically generated HTML file from Doconce source
                2,
                'exer:you',
                'exer:you'),
-              (' References ', 1, None, '___sec26'),
-              (' Appendix: Just for testing; part I ', 1, None, '___sec27'),
-              (' A subsection within an appendix ', 2, None, '___sec28'),
-              (' Appendix: Just for testing; part II ', 1, None, '___sec29'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec30'),
+              (' References ', 1, None, '___sec28'),
+              (' Appendix: Just for testing; part I ', 1, None, '___sec29'),
+              (' A subsection within an appendix ', 2, None, '___sec30'),
+              (' Appendix: Just for testing; part II ', 1, None, '___sec31'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec32'),
               (' Appendix: Testing identical titles ',
                2,
                'test:title:id1',
@@ -1265,12 +1304,12 @@ Automatically generated HTML file from Doconce source
                2,
                'test:title:id2',
                'test:title:id2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec33'),
-              (' Appendix: Testing inline comments ', 2, None, '___sec34'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec35'),
+              (' Appendix: Testing inline comments ', 2, None, '___sec36'),
               (' Appendix: Testing headings ending with `verbatim inline` ',
                2,
                None,
-               '___sec35')]}
+               '___sec37')]}
 end of tocinfo -->
 
 <body>
@@ -1330,7 +1369,7 @@ $$
 <center><h1>A Document for Testing Doconce</h1></center>  <!-- document title -->
 
 <p>
-<!-- author(s): Hans Petter Langtangen, Kaare Dump, A. Dummy Author, I. S. Overworked, and J. Doe -->
+<!-- author(s): Hans Petter Langtangen, Kaare Dump, A. Dummy Author, I. S. Overworked and Outburned, and J. Doe -->
 
 <center>
 <b>Hans Petter Langtangen</b> [1, 2] (<tt>hpl at simula.no</tt>)
@@ -1345,7 +1384,7 @@ $$
 </center>
 
 <center>
-<b>I. S. Overworked</b> [4, 5, 6, 7]
+<b>I. S. Overworked and Outburned</b> [4, 5, 6, 7]
 </center>
 
 <center>
@@ -1358,7 +1397,7 @@ $$
 
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
-<center>[3] <b>Segfault Inc, Cyberspace</b></center>
+<center>[3] <b>Segfault, Cyberspace</b></center>
 <center>[4] <b>Inst1</b></center>
 <center>[5] <b>Inst2, Somewhere</b></center>
 <center>[6] <b>Third Inst, Elsewhere</b></center>
@@ -1370,41 +1409,43 @@ $$
 
 <p>
 <a href="._testdoc001.html#sec1"> Section 1 </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec1"> Subsection 1 </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#subsec:ex"> Subsection 2: Testing figures </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec4"> Custom Environments </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#subsec:table"> Tables </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec6"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec7"> Bibliography test </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#Example"> Example 1: Examples can be typeset as exercises </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#subsubsec:ex"> URLs </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec10"> LaTeX Mathematics </a><br>
-<a href="._testdoc002.html#___sec11"> Exercises </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec1"> Subsection 1 </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec2"> Computer code </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec3"> Running OS commands </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#subsec:ex"> Subsection 2: Testing figures </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec6"> Custom Environments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#subsec:table"> Tables </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec8"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec9"> Bibliography test </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#Example"> Example 1: Examples can be typeset as exercises </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#subsubsec:ex"> URLs </a><br>
+<a href="._testdoc002.html#___sec12"> LaTeX Mathematics </a><br>
+<a href="._testdoc002.html#___sec13"> Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#demo:ex:1"> Problem 2: Flip a Coin </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec13"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec14"> Not an exercise </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec15"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec16"> Not an exercise </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#demo:ex:2"> Project 3: Compute a Probability </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec17"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#exer:dist"> Exercise 5: Determine some Distance </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec19"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec20"> Some exercise without the "Exercise:" prefix </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec21"> Example 7: Just an example </a><br>
-<a href="._testdoc002.html#___sec22"> Here goes another section </a><br>
-<a href="._testdoc002.html#___sec23"> More Exercises </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#exer:dist"> Exercise 5: Determine some Distance </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec21"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec22"> Some exercise without the "Exercise:" prefix </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec23"> Example 7: Just an example </a><br>
+<a href="._testdoc002.html#___sec24"> Here goes another section </a><br>
+<a href="._testdoc002.html#___sec25"> More Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#exer:some:formula"> Exercise 8: Make references to projects and problems </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#exer:you"> Project 9: References in a headings do not work well in html </a><br>
-<a href="._testdoc002.html#___sec26"> References </a><br>
-<a href="._testdoc002.html#___sec27"> Appendix: Just for testing; part I </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec28"> A subsection within an appendix </a><br>
-<a href="._testdoc002.html#___sec29"> Appendix: Just for testing; part II </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec30"> Appendix: Testing identical titles </a><br>
+<a href="._testdoc002.html#___sec28"> References </a><br>
+<a href="._testdoc002.html#___sec29"> Appendix: Just for testing; part I </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec30"> A subsection within an appendix </a><br>
+<a href="._testdoc002.html#___sec31"> Appendix: Just for testing; part II </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec32"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#test:title:id1"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#test:title:id2"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec33"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec34"> Appendix: Testing inline comments </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec35"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec35"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec36"> Appendix: Testing inline comments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec37"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
 
 <p>
 <p>
@@ -1484,6 +1525,7 @@ final,                   % or draft (marks overfull hboxes)
 % Style: T2 (Springer)
 \documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmono}
 \usepackage{t2}
+\special{papersize=193mm,260mm}
 % #elif LATEX_STYLE == "Springer_llcse"
 % Style: Lecture Notes in Computer Science (Springer)
 \documentclass[oribib]{llncs}
@@ -1535,6 +1577,7 @@ final,                   % or draft (marks overfull hboxes)
 % Examples of font types (Ubuntu): Gentium Book Basic (Palatino-like),
 % Liberation Sans (Helvetica-like), Norasi, Purisa (handwriting), UnDoum
 % #else
+\usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
 % #ifdef HELVETICA
@@ -1548,6 +1591,7 @@ final,                   % or draft (marks overfull hboxes)
 \linespread{1.05}            % Palatino needs extra line spread to look nice
 % #endif
 % #endif
+\usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
@@ -1747,6 +1791,7 @@ final,                   % or draft (marks overfull hboxes)
 
 % insert custom LaTeX commands...
 
+\raggedbottom
 \makeindex
 
 %-------------------- end preamble ----------------------
@@ -1814,9 +1859,9 @@ A Document for Testing Doconce
 % ----------------- author(s) -------------------------
 % #if LATEX_HEADING == "traditional"
 \author{Hans Petter Langtangen\footnote{Email: \texttt{hpl@simula.no}. Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo.}
-\and Kaare Dump\footnote{Segfault Inc, Cyberspace.}
+\and Kaare Dump\footnote{Segfault, Cyberspace.}
 \and A. Dummy Author
-\and I. S. Overworked\footnote{Inst1; Inst2, Somewhere; Third Inst, Elsewhere; and Fourth Inst.}
+\and I. S. Overworked and Outburned\footnote{Inst1; Inst2, Somewhere; Third Inst, Elsewhere; and Fourth Inst.}
 \and J. Doe\footnote{Email: \texttt{j\_doe@cyberspace.com}.}}
 
 % #elif LATEX_HEADING == "titlepage"
@@ -1828,7 +1873,7 @@ A Document for Testing Doconce
     
     {\Large\textsf{A. Dummy Author${}^{}$}}\\ [3mm]
     
-    {\Large\textsf{I. S. Overworked${}^{4, 5, 6, 7}$}}\\ [3mm]
+    {\Large\textsf{I. S. Overworked and Outburned${}^{4, 5, 6, 7}$}}\\ [3mm]
     
     {\Large\textsf{J. Doe${}^{}$ (\texttt{j\_doe@cyberspace.com})}}\\ [3mm]
     
@@ -1836,17 +1881,17 @@ A Document for Testing Doconce
 
 {\large\textsf{${}^1$Center for Biomedical Computing, Simula Research Laboratory} \\ [1.5mm]}
 {\large\textsf{${}^2$Department of Informatics, University of Oslo} \\ [1.5mm]}
-{\large\textsf{${}^3$Segfault Inc, Cyberspace} \\ [1.5mm]}
+{\large\textsf{${}^3$Segfault, Cyberspace} \\ [1.5mm]}
 {\large\textsf{${}^4$Inst1} \\ [1.5mm]}
 {\large\textsf{${}^5$Inst2, Somewhere} \\ [1.5mm]}
 {\large\textsf{${}^6$Third Inst, Elsewhere} \\ [1.5mm]}
 {\large\textsf{${}^7$Fourth Inst} \\ [1.5mm]}
 % #elif LATEX_HEADING == "Springer_collection"
 
-\author{Hans Petter Langtangen and Kaare Dump and A. Dummy Author and I. S. Overworked and J. Doe}
+\author{Hans Petter Langtangen and Kaare Dump and A. Dummy Author and I. S. Overworked and Outburned and J. Doe}
 % Short version of authors:
 %\authorrunning{...}
-\institute{Hans Petter Langtangen\at Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo\email{hpl@simula.no} \and Kaare Dump\at Segfault Inc, Cyberspace \and A. Dummy Author \and I. S. Overworked\at Inst1 and Inst2, Somewhere and Third Inst, Elsewhere and and Fourth Inst \and J. Doe\email{j_doe@cyberspace.com}}
+\institute{Hans Petter Langtangen\at Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo\email{hpl@simula.no} \and Kaare Dump\at Segfault, Cyberspace \and A. Dummy Author \and I. S. Overworked and Outburned\at Inst1 and Inst2, Somewhere and Third Inst, Elsewhere and and Fourth Inst \and J. Doe\email{j_doe@cyberspace.com}}
 
 % #elif LATEX_HEADING == "beamer"
 \author{Hans Petter Langtangen\inst{1,2}
@@ -1855,14 +1900,14 @@ Kaare Dump\inst{3}
 \and
 A. Dummy Author\inst{}
 \and
-I. S. Overworked\inst{4,5,6,7}
+I. S. Overworked and Outburned\inst{4,5,6,7}
 \and
 J. Doe\inst{}}
 \institute{Center for Biomedical Computing, Simula Research Laboratory\inst{1}
 \and
 Department of Informatics, University of Oslo\inst{2}
 \and
-Segfault Inc, Cyberspace\inst{3}
+Segfault, Cyberspace\inst{3}
 \and
 Inst1\inst{4}
 \and
@@ -1889,7 +1934,7 @@ Fourth Inst\inst{7}}
 
 
 \begin{center}
-{\bf I. S. Overworked${}^{4, 5, 6, 7}$} \\ [0mm]
+{\bf I. S. Overworked and Outburned${}^{4, 5, 6, 7}$} \\ [0mm]
 \end{center}
 
 
@@ -1901,7 +1946,7 @@ Fourth Inst\inst{7}}
 % List of all institutions:
 \centerline{{\small ${}^1$Center for Biomedical Computing, Simula Research Laboratory}}
 \centerline{{\small ${}^2$Department of Informatics, University of Oslo}}
-\centerline{{\small ${}^3$Segfault Inc, Cyberspace}}
+\centerline{{\small ${}^3$Segfault, Cyberspace}}
 \centerline{{\small ${}^4$Inst1}}
 \centerline{{\small ${}^5$Inst2, Somewhere}}
 \centerline{{\small ${}^6$Third Inst, Elsewhere}}
@@ -2026,7 +2071,6 @@ a block quote.
 
 Here is a reference to Equation (\ref{my:eq1}).
 
-% !split and check if these extra words are included properly in the comment
 
 \subsection{Subsection 1}
 
@@ -2035,6 +2079,7 @@ to Section~\ref{subsubsec:ex}. \index{somefunc@{\rm\texttt{somefunc}} function}
 
 % sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console
 
+\paragraph{Computer code.}
 Let's do some copying from files too. First from subroutine up to the very end,
 
 \bfcod
@@ -2208,6 +2253,15 @@ Here is some \textcolor{red}{red} color and an attempt to write \textcolor{green
 green color containing a linebreak.
 And one more.} Some formats will only display this correctly when
 HTML is the output format.
+
+\paragraph{Running OS commands.}
+\bsys
+Terminal> python -c 'print "Testing\noutput\nfrom\nPython."'
+Testing
+output
+from
+Python.
+\esys
 
 
 \subsection{Subsection 2: Testing figures}
@@ -2392,7 +2446,8 @@ one table:
 
 \noindent
 And one with math headings (that are expanded and must be treated
-accordingly) and verbatim heading and entry:
+accordingly), verbatim heading and entry, and no space around the pipe
+symbol:
 
 
 \begin{quote}\begin{tabular}{lrrr}
@@ -2412,7 +2467,7 @@ accordingly) and verbatim heading and entry:
 \noindent
 And add one with verbatim headings (with underscores),
 and rows starting with \code{|-} because of a negative number,
-and \code{|} right after verbatim word (with no space):
+and \code{|} right before and after verbatim word (with no space):
 
 
 \begin{quote}\begin{tabular}{rrrr}
@@ -2423,6 +2478,25 @@ and \code{|} right after verbatim word (with no space):
 -20                & -23.39             & -7.65              & -19.93             \\
 10                 & 17.74              & -4.50              & 9.96               \\
 0                  & -9.19              & 4.13               & -0.26              \\
+\hline
+\end{tabular}\end{quote}
+
+\noindent
+Finally, a table with math
+and URLs.
+
+% Mako code to expand URLs in the table
+% (These types of tables did not work before Jan 2014)
+
+
+
+\begin{quote}\begin{tabular}{ccc}
+\hline
+ \\
+\hline
+$\mathcal{L}=0$                                                               & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0080.png} & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0085.png} \\
+$a=b$                                                                         & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0090.png} & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0095.png} \\
+$\nabla\cdot\bm{u} =0 $                                                       & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0100.png} & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0105.png} \\
 \hline
 \end{tabular}\end{quote}
 
@@ -2556,7 +2630,9 @@ A sentence containing "refines lines" could easily
 fool a regex substitution with only i.e.~since the dot matches anything.
 Also, look at Fig.~4 to see how the data compares with Tab.~\ref{mytab}.
 
-\subsection{{\LaTeX} Mathematics}
+% !split and check if these extra words are included properly in the comment
+
+\section{{\LaTeX} Mathematics}
 
 Here is an equation without label using backslash-bracket environment:
 \[ a = b + c \]
@@ -3256,8 +3332,10 @@ final,                   % or draft (marks overfull hboxes)
 \usepackage{minted}
 \usemintedstyle{default}
 
+\usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
+\usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
@@ -3379,6 +3457,7 @@ final,                   % or draft (marks overfull hboxes)
 \usepackage{theorem}
 \newtheorem{theorem}{Theorem}[section]
 
+\raggedbottom
 \makeindex
 
 %-------------------- end preamble ----------------------
@@ -3418,7 +3497,7 @@ final,                   % or draft (marks overfull hboxes)
     
     {\Large\textsf{A. Dummy Author${}^{}$}}\\ [3mm]
     
-    {\Large\textsf{I. S. Overworked${}^{4, 5, 6, 7}$}}\\ [3mm]
+    {\Large\textsf{I. S. Overworked and Outburned${}^{4, 5, 6, 7}$}}\\ [3mm]
     
     {\Large\textsf{J. Doe${}^{}$ (\texttt{j\_doe@cyberspace.com})}}\\ [3mm]
     
@@ -3426,7 +3505,7 @@ final,                   % or draft (marks overfull hboxes)
 
 {\large\textsf{${}^1$Center for Biomedical Computing, Simula Research Laboratory} \\ [1.5mm]}
 {\large\textsf{${}^2$Department of Informatics, University of Oslo} \\ [1.5mm]}
-{\large\textsf{${}^3$Segfault Inc, Cyberspace} \\ [1.5mm]}
+{\large\textsf{${}^3$Segfault, Cyberspace} \\ [1.5mm]}
 {\large\textsf{${}^4$Inst1} \\ [1.5mm]}
 {\large\textsf{${}^5$Inst2, Somewhere} \\ [1.5mm]}
 {\large\textsf{${}^6$Third Inst, Elsewhere} \\ [1.5mm]}
@@ -3537,7 +3616,6 @@ a block quote.
 
 Here is a reference to Equation (\ref{my:eq1}).
 
-% !split and check if these extra words are included properly in the comment
 
 \subsection{Subsection 1}
 
@@ -3546,6 +3624,7 @@ to Section~\ref{subsubsec:ex}. \index{somefunc@{\rm\texttt{somefunc}} function}
 
 % sphinx code--blocks: pycod=python cod=fortran cppcod=c++ sys=console
 
+\paragraph{Computer code.}
 Let's do some copying from files too. First from subroutine up to the very end,
 
 \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{fortran}
@@ -3748,6 +3827,17 @@ green color containing a linebreak.
 And one more.} Some formats will only display this correctly when
 HTML is the output format.
 
+\paragraph{Running OS commands.}
+\vspace{4pt}
+\begin{Verbatim}[numbers=none,frame=lines,label=\fbox{{\tiny Terminal}},fontsize=\fontsize{9pt}{9pt},
+labelposition=topline,framesep=2.5mm,framerule=0.7pt]
+Terminal> python -c 'print "Testing\noutput\nfrom\nPython."'
+Testing
+output
+from
+Python.
+\end{Verbatim}
+
 
 \subsection{Subsection 2: Testing figures}
 \label{subsec:ex}
@@ -3935,7 +4025,8 @@ one table:
 
 \noindent
 And one with math headings (that are expanded and must be treated
-accordingly) and verbatim heading and entry:
+accordingly), verbatim heading and entry, and no space around the pipe
+symbol:
 
 
 \begin{quote}\begin{tabular}{lrrr}
@@ -3955,7 +4046,7 @@ accordingly) and verbatim heading and entry:
 \noindent
 And add one with verbatim headings (with underscores),
 and rows starting with {\fontsize{10pt}{10pt}\Verb!|-!} because of a negative number,
-and {\fontsize{10pt}{10pt}\Verb!|!} right after verbatim word (with no space):
+and {\fontsize{10pt}{10pt}\Verb!|!} right before and after verbatim word (with no space):
 
 
 \begin{quote}\begin{tabular}{rrrr}
@@ -3966,6 +4057,25 @@ and {\fontsize{10pt}{10pt}\Verb!|!} right after verbatim word (with no space):
 -20                & -23.39             & -7.65              & -19.93             \\
 10                 & 17.74              & -4.50              & 9.96               \\
 0                  & -9.19              & 4.13               & -0.26              \\
+\hline
+\end{tabular}\end{quote}
+
+\noindent
+Finally, a table with math
+and URLs.
+
+% Mako code to expand URLs in the table
+% (These types of tables did not work before Jan 2014)
+
+
+
+\begin{quote}\begin{tabular}{ccc}
+\hline
+ \\
+\hline
+$\mathcal{L}=0$                                                               & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0080.png} & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0085.png} \\
+$a=b$                                                                         & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0090.png} & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0095.png} \\
+$\nabla\cdot\bm{u} =0 $                                                       & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0100.png} & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0105.png} \\
 \hline
 \end{tabular}\end{quote}
 
@@ -4086,7 +4196,22 @@ footnotes.
 
 
 
-\subsection{{\LaTeX} Mathematics}
+\subsection{Test of Some {\LaTeX} Fixes}
+
+Let's check abbr.~of some common kind, e.g.~the well--known i.e.
+expression as an example. Moreover, Dr.~Tang and Prof.~Monsen,
+or maybe also prof.~Ting,
+will go to the Dept.~of Science to test how Mr.~Hansen is doing together
+with Ms.~Larsen. A reference like Sec.~\ref{subsubsec:ex} or
+Ch.~\ref{subsubsec:ex}, or even App.~\ref{subsubsec:ex}, must also be
+handled. Likewise, this is test no.~$i$ of Doconce features.
+A sentence containing "refines lines" could easily
+fool a regex substitution with only i.e.~since the dot matches anything.
+Also, look at Fig.~4 to see how the data compares with Tab.~\ref{mytab}.
+
+% !split and check if these extra words are included properly in the comment
+
+\section{{\LaTeX} Mathematics}
 
 Here is an equation without label using backslash--bracket environment:
 \[ a = b + c \]
@@ -4800,11 +4925,13 @@ final,                   % or draft (marks overfull hboxes)
 \usepackage{anslistings,minted,fancyvrb} % packages needed for verbatim environments
 
 
+\usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
 % Set palatino as the default font family:
 \usepackage[sc]{mathpazo}    % Palatino fonts
 \linespread{1.05}            % Palatino needs extra line spread to look nice
+\usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
@@ -4886,6 +5013,7 @@ final,                   % or draft (marks overfull hboxes)
 \usepackage{theorem}
 \newtheorem{theorem}{Theorem}[section]
 
+\raggedbottom
 \makeindex
 
 %-------------------- end preamble ----------------------
@@ -4930,7 +5058,7 @@ A Document for Testing Doconce
 
 
 \begin{center}
-{\bf I. S. Overworked${}^{4, 5, 6, 7}$} \\ [0mm]
+{\bf I. S. Overworked and Outburned${}^{4, 5, 6, 7}$} \\ [0mm]
 \end{center}
 
 
@@ -4942,7 +5070,7 @@ A Document for Testing Doconce
 % List of all institutions:
 \centerline{{\small ${}^1$Center for Biomedical Computing, Simula Research Laboratory}}
 \centerline{{\small ${}^2$Department of Informatics, University of Oslo}}
-\centerline{{\small ${}^3$Segfault Inc, Cyberspace}}
+\centerline{{\small ${}^3$Segfault, Cyberspace}}
 \centerline{{\small ${}^4$Inst1}}
 \centerline{{\small ${}^5$Inst2, Somewhere}}
 \centerline{{\small ${}^6$Third Inst, Elsewhere}}
@@ -5051,7 +5179,6 @@ a block quote.
 
 Here is a reference to Equation (\ref{my:eq1}).
 
-% !split and check if these extra words are included properly in the comment
 
 \subsection{Subsection 1}
 
@@ -5060,6 +5187,7 @@ to Section~\ref{subsubsec:ex}. \index{somefunc@{\rm\texttt{somefunc}} function}
 
 % sphinx code--blocks: pycod=python cod=fortran cppcod=c++ sys=console
 
+\paragraph{Computer code.}
 Let's do some copying from files too. First from subroutine up to the very end,
 
 \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{fortran}
@@ -5229,6 +5357,15 @@ Here is some \textcolor{red}{red} color and an attempt to write \textcolor{green
 green color containing a linebreak.
 And one more.} Some formats will only display this correctly when
 HTML is the output format.
+
+\paragraph{Running OS commands.}
+begin{quote}begin{Verbatim}
+Terminal> python -c 'print "Testing\noutput\nfrom\nPython."'
+Testing
+output
+from
+Python.
+end{Verbatim}end{quote}
 
 
 \subsection{Subsection 2: Testing figures}
@@ -5413,7 +5550,8 @@ one table:
 
 \noindent
 And one with math headings (that are expanded and must be treated
-accordingly) and verbatim heading and entry:
+accordingly), verbatim heading and entry, and no space around the pipe
+symbol:
 
 
 \begin{quote}\begin{tabular}{lrrr}
@@ -5433,7 +5571,7 @@ accordingly) and verbatim heading and entry:
 \noindent
 And add one with verbatim headings (with underscores),
 and rows starting with \Verb!|-! because of a negative number,
-and \Verb!|! right after verbatim word (with no space):
+and \Verb!|! right before and after verbatim word (with no space):
 
 
 \begin{quote}\begin{tabular}{rrrr}
@@ -5444,6 +5582,25 @@ and \Verb!|! right after verbatim word (with no space):
 -20                & -23.39             & -7.65              & -19.93             \\
 10                 & 17.74              & -4.50              & 9.96               \\
 0                  & -9.19              & 4.13               & -0.26              \\
+\hline
+\end{tabular}\end{quote}
+
+\noindent
+Finally, a table with math
+and URLs.
+
+% Mako code to expand URLs in the table
+% (These types of tables did not work before Jan 2014)
+
+
+
+\begin{quote}\begin{tabular}{ccc}
+\hline
+ \\
+\hline
+$\mathcal{L}=0$                                                               & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0080.png} & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0085.png} \\
+$a=b$                                                                         & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0090.png} & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0095.png} \\
+$\nabla\cdot\bm{u} =0 $                                                       & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0100.png} & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0105.png} \\
 \hline
 \end{tabular}\end{quote}
 
@@ -5564,7 +5721,22 @@ footnotes.
 
 
 
-\subsection{{\LaTeX} Mathematics}
+\subsection{Test of Some {\LaTeX} Fixes}
+
+Let's check abbr.~of some common kind, e.g.~the well--known i.e.
+expression as an example. Moreover, Dr.~Tang and Prof.~Monsen,
+or maybe also prof.~Ting,
+will go to the Dept.~of Science to test how Mr.~Hansen is doing together
+with Ms.~Larsen. A reference like Sec.~\ref{subsubsec:ex} or
+Ch.~\ref{subsubsec:ex}, or even App.~\ref{subsubsec:ex}, must also be
+handled. Likewise, this is test no.~$i$ of Doconce features.
+A sentence containing "refines lines" could easily
+fool a regex substitution with only i.e.~since the dot matches anything.
+Also, look at Fig.~4 to see how the data compares with Tab.~\ref{mytab}.
+
+% !split and check if these extra words are included properly in the comment
+
+\section{{\LaTeX} Mathematics}
 
 Here is an equation without label using backslash--bracket environment:
 \[ a = b + c \]
@@ -6238,7 +6410,7 @@ in a separate document: \Verb!admon.do.txt!.
 A Document for Testing Doconce
 ==============================
 
-:Author: Hans Petter Langtangen (hpl at simula.no), Kaare Dump, A. Dummy Author, I. S. Overworked, J. Doe (j_doe at cyberspace.com)
+:Author: Hans Petter Langtangen (hpl at simula.no), Kaare Dump, A. Dummy Author, I. S. Overworked and Outburned, J. Doe (j_doe at cyberspace.com)
 :Date: Jan 32, 2100
 
 .. contents:: Table of Contents
@@ -6307,8 +6479,6 @@ Here is a nested list:
 
 Here is a reference to Equation (my:eq1).
 
-.. !split and check if these extra words are included properly in the comment
-
 
 Subsection 1
 ------------
@@ -6317,6 +6487,9 @@ More text, with a reference back to the section `Section 1`_ and further
 to the section `URLs`_. 
 .. sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console
 
+
+Computer code
+~~~~~~~~~~~~~
 
 Let's do some copying from files too. First from subroutine up to the very end::
 
@@ -6499,6 +6672,17 @@ green color containing a linebreak.
 And one more.</font> Some formats will only display this correctly when
 HTML is the output format.
 
+Running OS commands
+~~~~~~~~~~~~~~~~~~~
+
+
+        Terminal> python -c 'print "Testing\noutput\nfrom\nPython."'
+        Testing
+        output
+        from
+        Python.
+
+
 
 .. _subsec:ex:
 
@@ -6678,7 +6862,8 @@ one table:
 ============  ============  ============  
 
 And one with math headings (that are expanded and must be treated
-accordingly) and verbatim heading and entry:
+accordingly), verbatim heading and entry, and no space around the pipe
+symbol:
 
 ========  ========  ========  ========  
    i        h_i     \bar T_i  ``L_i``   
@@ -6694,7 +6879,7 @@ accordingly) and verbatim heading and entry:
 
 And add one with verbatim headings (with underscores),
 and rows starting with ``|-`` because of a negative number,
-and ``|`` right after verbatim word (with no space):
+and ``|`` right before and after verbatim word (with no space):
 
 =============  =============  =============  =============  
     exact         ``v_1``     a_i + ``v_2``   ``verb_3_``   
@@ -6704,6 +6889,25 @@ and ``|`` right after verbatim word (with no space):
            10          17.74          -4.50           9.96  
             0          -9.19           4.13          -0.26  
 =============  =============  =============  =============  
+
+Finally, a table with math
+(``bm`` that expands to ``boldsymbol``, was tricky, but
+cleanly handled now)
+and URLs.
+
+.. Mako code to expand URLs in the table
+
+.. (These types of tables did not work before Jan 2014)
+
+
+
+=========================================================  =========================================================  =========================================================  
+                                                                                                                                                                                 
+=========================================================  =========================================================  =========================================================  
+                      \mathcal{L}=0                        `080 <../doc/src/manual/mov/wave_frames/frame_0080.png>`_  `085 <../doc/src/manual/mov/wave_frames/frame_0085.png>`_  
+                           a=b                             `090 <../doc/src/manual/mov/wave_frames/frame_0090.png>`_  `095 <../doc/src/manual/mov/wave_frames/frame_0095.png>`_  
+                   \nabla\cdot\bm{u} =0                    `100 <../doc/src/manual/mov/wave_frames/frame_0100.png>`_  `105 <../doc/src/manual/mov/wave_frames/frame_0105.png>`_  
+=========================================================  =========================================================  =========================================================  
 
 
 A test of verbatim words in heading with subscript a_i: ``my_file_v1`` and ``my_file_v2``
@@ -6829,8 +7033,11 @@ footnotes.
 
 
 
+.. !split and check if these extra words are included properly in the comment
+
+
 LaTeX Mathematics
------------------
+=================
 
 Here is an equation without label using backslash-bracket environment::
 
@@ -6915,6 +7122,7 @@ Draw an integer among \{1,2\} with
 
 
 .. --- begin answer of exercise ---
+
 **Answer.**
 If the ``random.random()`` function returns a number <1/2, let it be
 head, otherwise tail. Repeat this N number of times.
@@ -6923,6 +7131,7 @@ head, otherwise tail. Repeat this N number of times.
 
 
 .. --- begin solution of exercise ---
+
 **Solution.**
 Code::
 
@@ -6938,6 +7147,7 @@ Code::
 
 
 .. --- end solution of exercise ---
+
 Filenames: ``flip_coin.py``, ``flip_coin.pdf``.
 
 .. solution files: mysol.txt, mysol_flip_coin.py, yet_another.file
@@ -7045,6 +7255,7 @@ x_0, y_0, and R quantities.
 
 
 .. --- begin answer of exercise ---
+
 **Answer.**
 Here goes the short answer to part a).
 
@@ -7052,6 +7263,7 @@ Here goes the short answer to part a).
 
 
 .. --- begin solution of exercise ---
+
 **Solution.**
 Here goes a full solution to part a).
 
@@ -7106,6 +7318,7 @@ Test list in exercise:
 2. item2
 
 .. --- begin solution of exercise ---
+
 **Solution.**
 Here goes a full solution of the whole exercise.
 With some math a=b in this solution::
@@ -7154,10 +7367,12 @@ Test list in hint:
 2. item2
 
 .. --- end hint in exercise ---
+
 Filename: ``subexer_a.pdf``.
 
 
 .. --- begin answer of exercise ---
+
 **Answer.**
 Short answer to subexercise a).
 With math in answer: a=b.
@@ -7179,10 +7394,12 @@ Some math \cos^2 x + \sin^2 x = 1 written one a single line::
 A hint for this subexercise.
 
 .. --- end hint in exercise ---
+
 Filename: ``subexer_b.pdf``.
 
 
 .. --- begin solution of exercise ---
+
 **Solution.**
 Here goes the solution of this subexercise.
 
@@ -7597,7 +7814,7 @@ in a separate document: ``admon.do.txt``.
 A Document for Testing Doconce
 ==============================
 
-:Author: Hans Petter Langtangen (hpl at simula.no), Kaare Dump, A. Dummy Author, I. S. Overworked, J. Doe (j_doe at cyberspace.com)
+:Author: Hans Petter Langtangen (hpl at simula.no), Kaare Dump, A. Dummy Author, I. S. Overworked and Outburned, J. Doe (j_doe at cyberspace.com)
 :Date: Jan 32, 2100
 
 .. !split
@@ -7662,8 +7879,6 @@ Here is a nested list:
 Here is a reference to Equation :eq:`my:eq1`.
 This equation appears in another part if this document is split.
 
-.. !split and check if these extra words are included properly in the comment
-
 
 Subsection 1
 ------------
@@ -7675,6 +7890,9 @@ to the section :ref:`subsubsec:ex`.
 
 .. sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console
 
+
+Computer code
+~~~~~~~~~~~~~
 
 Let's do some copying from files too. First from subroutine up to the very end,
 
@@ -7866,6 +8084,19 @@ Here is some <font color="red">red</font> color and an attempt to write <font co
 green color containing a linebreak.
 And one more.</font> Some formats will only display this correctly when
 HTML is the output format.
+
+Running OS commands
+~~~~~~~~~~~~~~~~~~~
+
+
+.. code-block:: console
+
+        Terminal> python -c 'print "Testing\noutput\nfrom\nPython."'
+        Testing
+        output
+        from
+        Python.
+
 
 
 .. _subsec:ex:
@@ -8090,7 +8321,8 @@ one table:
 ============  ============  ============  
 
 And one with math headings (that are expanded and must be treated
-accordingly) and verbatim heading and entry:
+accordingly), verbatim heading and entry, and no space around the pipe
+symbol:
 
 ================  ================  ================  ================  
    :math:`i`        :math:`h_i`     :math:`\bar T_i`      ``L_i``       
@@ -8106,7 +8338,7 @@ accordingly) and verbatim heading and entry:
 
 And add one with verbatim headings (with underscores),
 and rows starting with ``|-`` because of a negative number,
-and ``|`` right after verbatim word (with no space):
+and ``|`` right before and after verbatim word (with no space):
 
 =====================  =====================  =====================  =====================  
         exact                 ``v_1``         :math:`a_i` + ``v_2``       ``verb_3_``       
@@ -8116,6 +8348,25 @@ and ``|`` right after verbatim word (with no space):
                    10                  17.74                  -4.50                   9.96  
                     0                  -9.19                   4.13                  -0.26  
 =====================  =====================  =====================  =====================  
+
+Finally, a table with math
+(``bm`` that expands to ``boldsymbol``, was tricky, but
+cleanly handled now)
+and URLs.
+
+.. Mako code to expand URLs in the table
+
+.. (These types of tables did not work before Jan 2014)
+
+
+
+=========================================================  =========================================================  =========================================================  
+                                                                                                                                                                                 
+=========================================================  =========================================================  =========================================================  
+                  :math:`\mathcal{L}=0`                    `080 <../doc/src/manual/mov/wave_frames/frame_0080.png>`_  `085 <../doc/src/manual/mov/wave_frames/frame_0085.png>`_  
+                       :math:`a=b`                         `090 <../doc/src/manual/mov/wave_frames/frame_0090.png>`_  `095 <../doc/src/manual/mov/wave_frames/frame_0095.png>`_  
+          :math:`\nabla\cdot\boldsymbol{u} =0 `            `100 <../doc/src/manual/mov/wave_frames/frame_0100.png>`_  `105 <../doc/src/manual/mov/wave_frames/frame_0105.png>`_  
+=========================================================  =========================================================  =========================================================  
 
 
 A test of verbatim words in heading with subscript :math:`a_i`: ``my_file_v1`` and ``my_file_v2``
@@ -8241,8 +8492,11 @@ footnotes.
 
 
 
+.. !split and check if these extra words are included properly in the comment
+
+
 LaTeX Mathematics
------------------
+=================
 
 Here is an equation without label using backslash-bracket environment:
 
@@ -8404,6 +8658,7 @@ Draw an integer among :math:`\{1,2\}` with
 
 
 .. --- begin answer of exercise ---
+
 **Answer.**
 If the ``random.random()`` function returns a number :math:`<1/2`, let it be
 head, otherwise tail. Repeat this :math:`N` number of times.
@@ -8412,6 +8667,7 @@ head, otherwise tail. Repeat this :math:`N` number of times.
 
 
 .. --- begin solution of exercise ---
+
 **Solution.**
 Code:
 
@@ -8428,6 +8684,7 @@ Code:
 
 
 .. --- end solution of exercise ---
+
 Filenames: ``flip_coin.py``, ``flip_coin.pdf``.
 
 .. solution files: mysol.txt, mysol_flip_coin.py, yet_another.file
@@ -8545,6 +8802,7 @@ Use the ``numpy.random`` module to draw the
 
 
 .. --- begin answer of exercise ---
+
 **Answer.**
 Here goes the short answer to part a).
 
@@ -8552,6 +8810,7 @@ Here goes the short answer to part a).
 
 
 .. --- begin solution of exercise ---
+
 **Solution.**
 Here goes a full solution to part a).
 
@@ -8606,6 +8865,7 @@ Test list in exercise:
 2. item2
 
 .. --- begin solution of exercise ---
+
 **Solution.**
 Here goes a full solution of the whole exercise.
 With some math :math:`a=b` in this solution:
@@ -8662,10 +8922,12 @@ Test list in hint:
 2. item2
 
 .. --- end hint in exercise ---
+
 Filename: ``subexer_a.pdf``.
 
 
 .. --- begin answer of exercise ---
+
 **Answer.**
 Short answer to subexercise a).
 With math in answer: :math:`a=b`.
@@ -8689,10 +8951,12 @@ Some math :math:`\cos^2 x + \sin^2 x = 1` written one a single line:
 A hint for this subexercise.
 
 .. --- end hint in exercise ---
+
 Filename: ``subexer_b.pdf``.
 
 
 .. --- begin solution of exercise ---
+
 **Solution.**
 Here goes the solution of this subexercise.
 
@@ -9108,7 +9372,7 @@ in a separate document: ``admon.do.txt``.
 ************** File: testdoc.gwiki *****************
 #summary A Document for Testing Doconce
 
-By *Hans Petter Langtangen* (hpl at simula.no), *Kaare Dump*, *A. Dummy Author*, *I. S. Overworked*, and *J. Doe* (j_doe at cyberspace.com)
+By *Hans Petter Langtangen* (hpl at simula.no), *Kaare Dump*, *A. Dummy Author*, *I. S. Overworked and Outburned*, and *J. Doe* (j_doe at cyberspace.com)
 ==== Jan 32, 2100 ====
 
 <wiki: toc max_depth="2" />
@@ -9161,13 +9425,14 @@ Here is a nested list:
 
 Here is a reference to Equation (my:eq1).
 
-<wiki:comment> !split and check if these extra words are included properly in the comment </wiki:comment>
 
 ==== Subsection 1 ====
 
 More text, with a reference back to the section [#Section_1] and further
 to the section [#URLs]. 
 <wiki:comment> sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console </wiki:comment>
+
+==== Computer code ====
 
 Let's do some copying from files too. First from subroutine up to the very end,
 
@@ -9342,6 +9607,16 @@ green color containing a linebreak.
 And one more.</font> Some formats will only display this correctly when
 HTML is the output format.
 
+==== Running OS commands ====
+
+{{{
+Terminal> python -c 'print "Testing\noutput\nfrom\nPython."'
+Testing
+output
+from
+Python.
+}}}
+
 
 ==== Subsection 2: Testing figures ====
 
@@ -9501,7 +9776,7 @@ Let us take this table from the manual:
 
 
 
- ||      *time*       ||    *velocity*     ||  *acceleration*   ||
+ ||      _time_       ||    _velocity_     ||  _acceleration_   ||
  ||  0.0              ||  1.4186           ||  -5.01            ||
  ||  2.0              ||  1.376512         ||  11.919           ||
  ||  4.0              ||  1.1E+1           ||  14.717624        ||
@@ -9523,14 +9798,15 @@ Here is yet another table to test that we can handle more than
 one table:
 
 
- ||      *time*       ||    *velocity*     ||  *acceleration*   ||
+ ||      _time_       ||    _velocity_     ||  _acceleration_   ||
  ||  0.0              ||  1.4186           ||  -5.01            ||
  ||  1.0              ||  1.376512         ||  11.919           ||
  ||  3.0              ||  1.1E+1           ||  14.717624        ||
 
 
 And one with math headings (that are expanded and must be treated
-accordingly) and verbatim heading and entry:
+accordingly), verbatim heading and entry, and no space around the pipe
+symbol:
 
 
  ||     _`i`_       ||    _`h_i`_      ||  _`\bar T_i`_   ||    _`L_i`_      ||
@@ -9545,14 +9821,27 @@ accordingly) and verbatim heading and entry:
 
 And add one with verbatim headings (with underscores),
 and rows starting with `|-` because of a negative number,
-and `|` right after verbatim word (with no space):
+and `|` right before and after verbatim word (with no space):
 
 
- ||      *exact*       ||      _`v_1`_       ||  _`a_i` + `v_2`_   ||    _`verb_3_`_     ||
+ ||      _exact_       ||      _`v_1`_       ||  _`a_i` + `v_2`_   ||    _`verb_3_`_     ||
  ||  9                 ||  9.62              ||  5.57              ||  8.98              ||
  ||  -20               ||  -23.39            ||  -7.65             ||  -19.93            ||
  ||  10                ||  17.74             ||  -4.50             ||  9.96              ||
  ||  0                 ||  -9.19             ||  4.13              ||  -0.26             ||
+
+
+Finally, a table with math
+and URLs.
+
+<wiki:comment> Mako code to expand URLs in the table </wiki:comment>
+<wiki:comment> (These types of tables did not work before Jan 2014) </wiki:comment>
+
+
+
+ ||  `\mathcal{L}=0`                                              ||  [../doc/src/manual/mov/wave_frames/frame_0080.png `080`]     ||  [../doc/src/manual/mov/wave_frames/frame_0085.png `085`]     ||
+ ||  `a=b`                                                        ||  [../doc/src/manual/mov/wave_frames/frame_0090.png `090`]     ||  [../doc/src/manual/mov/wave_frames/frame_0095.png `095`]     ||
+ ||  `\nabla\cdot\bm{u} =0 `                                      ||  [../doc/src/manual/mov/wave_frames/frame_0100.png `100`]     ||  [../doc/src/manual/mov/wave_frames/frame_0105.png `105`]     ||
 
 
 
@@ -9659,7 +9948,9 @@ footnotes.
 
 
 
-==== LaTeX Mathematics ====
+<wiki:comment> !split and check if these extra words are included properly in the comment </wiki:comment>
+
+== LaTeX Mathematics ==
 
 Here is an equation without label using backslash-bracket environment:
 {{{
@@ -10234,7 +10525,7 @@ in a separate document: `admon.do.txt`.
 ************** File: testdoc.mwiki *****************
 #TITLE (actually governed by the filename): A Document for Testing Doconce
 
-By '''Hans Petter Langtangen''' (hpl at simula.no), '''Kaare Dump''', '''A. Dummy Author''', '''I. S. Overworked''', and '''J. Doe''' (j_doe at cyberspace.com)
+By '''Hans Petter Langtangen''' (hpl at simula.no), '''Kaare Dump''', '''A. Dummy Author''', '''I. S. Overworked and Outburned''', and '''J. Doe''' (j_doe at cyberspace.com)
 ==== Jan 32, 2100 ====
 
 __TOC__
@@ -10298,13 +10589,14 @@ a block quote.
 
 Here is a reference to Equation (my:eq1).
 
-<!-- !split and check if these extra words are included properly in the comment -->
 
 ==== Subsection 1 ====
 
 More text, with a reference back to the section [#Section_1] and further
 to the section [#URLs]. 
 <!-- sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console -->
+
+==== Computer code ====
 
 Let's do some copying from files too. First from subroutine up to the very end,
 
@@ -10478,6 +10770,16 @@ green color containing a linebreak.
 And one more.</font> Some formats will only display this correctly when
 HTML is the output format.
 
+==== Running OS commands ====
+
+<syntaxhighlight lang="bash">
+Terminal> python -c 'print "Testing\noutput\nfrom\nPython."'
+Testing
+output
+from
+Python.
+</syntaxhighlight>
+
 
 ==== Subsection 2: Testing figures ====
 
@@ -10629,7 +10931,8 @@ one table:
 <tr><td align="left">   3.0             </td> <td align="left">   1.1E+1          </td> <td align="left">   14.717624       </td> </tr>
 </table>
 And one with math headings (that are expanded and must be treated
-accordingly) and verbatim heading and entry:
+accordingly), verbatim heading and entry, and no space around the pipe
+symbol:
 
 <table border="1">
 <tr><td align="center"><b>     <math>i</math>    </b></td> <td align="center"><b>    <math>h_i</math>   </b></td> <td align="center"><b> <math>\bar T_i</math> </b></td> <td align="center"><b>    <code>L_i</code>   </b></td> </tr>
@@ -10643,7 +10946,7 @@ accordingly) and verbatim heading and entry:
 </table>
 And add one with verbatim headings (with underscores),
 and rows starting with <code>|-</code> because of a negative number,
-and <code>|</code> right after verbatim word (with no space):
+and <code>|</code> right before and after verbatim word (with no space):
 
 <table border="1">
 <tr><td align="center"><b>                exact                </b></td> <td align="center"><b>           <code>v_1</code>          </b></td> <td align="center"><b> <math>a_i</math> + <code>v_2</code> </b></td> <td align="center"><b>         <code>verb_3_</code>        </b></td> </tr>
@@ -10651,6 +10954,19 @@ and <code>|</code> right after verbatim word (with no space):
 <tr><td align="right">   -20                                    </td> <td align="right">   -23.39                                 </td> <td align="right">   -7.65                                  </td> <td align="right">   -19.93                                 </td> </tr>
 <tr><td align="right">   10                                     </td> <td align="right">   17.74                                  </td> <td align="right">   -4.50                                  </td> <td align="right">   9.96                                   </td> </tr>
 <tr><td align="right">   0                                      </td> <td align="right">   -9.19                                  </td> <td align="right">   4.13                                   </td> <td align="right">   -0.26                                  </td> </tr>
+</table>
+Finally, a table with math
+and URLs.
+
+<!-- Mako code to expand URLs in the table -->
+<!-- (These types of tables did not work before Jan 2014) -->
+
+
+<table border="1">
+<tr></tr>
+<tr><td align="center">   <math>\mathcal{L}=0</math>                                             </td> <td align="center">   [../doc/src/manual/mov/wave_frames/frame_0080.png <code>080</code>]    </td> <td align="center">   [../doc/src/manual/mov/wave_frames/frame_0085.png <code>085</code>]    </td> </tr>
+<tr><td align="center">   <math>a=b</math>                                                       </td> <td align="center">   [../doc/src/manual/mov/wave_frames/frame_0090.png <code>090</code>]    </td> <td align="center">   [../doc/src/manual/mov/wave_frames/frame_0095.png <code>095</code>]    </td> </tr>
+<tr><td align="center">   <math>\nabla\cdot\bm{u} =0 </math>                                     </td> <td align="center">   [../doc/src/manual/mov/wave_frames/frame_0100.png <code>100</code>]    </td> <td align="center">   [../doc/src/manual/mov/wave_frames/frame_0105.png <code>105</code>]    </td> </tr>
 </table>
 
 ==== A test of verbatim words in heading with subscript <math>a_i</math>: <code>my_file_v1</code> and <code>my_file_v2</code> ====
@@ -10763,7 +11079,9 @@ footnotes.
 
 
 
-==== LaTeX Mathematics ====
+<!-- !split and check if these extra words are included properly in the comment -->
+
+== LaTeX Mathematics ==
 
 Here is an equation without label using backslash-bracket environment:
 :<math>
@@ -11463,7 +11781,7 @@ in a separate document: <code>admon.do.txt</code>.
 ************** File: testdoc.cwiki *****************
 #summary A Document for Testing Doconce
 <wiki:toc max_depth="2" />
-By **Hans Petter Langtangen** (hpl at simula.no), **Kaare Dump**, **A. Dummy Author**, **I. S. Overworked**, and **J. Doe** (j_doe at cyberspace.com)
+By **Hans Petter Langtangen** (hpl at simula.no), **Kaare Dump**, **A. Dummy Author**, **I. S. Overworked and Outburned**, and **J. Doe** (j_doe at cyberspace.com)
 === Jan 32, 2100 ===
 
 <<TableOfContents>>
@@ -11516,13 +11834,14 @@ Here is a nested list:
 
 Here is a reference to Equation (my:eq1).
 
-<wiki:comment> !split and check if these extra words are included properly in the comment </wiki:comment>
 
 == Subsection 1 ==
 
 More text, with a reference back to the section [#Section_1] and further
 to the section [#URLs]. 
 <wiki:comment> sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console </wiki:comment>
+
+=== Computer code ===
 
 Let's do some copying from files too. First from subroutine up to the very end,
 
@@ -11697,6 +12016,16 @@ green color containing a linebreak.
 And one more.</font> Some formats will only display this correctly when
 HTML is the output format.
 
+=== Running OS commands ===
+
+{{{
+Terminal> python -c 'print "Testing\noutput\nfrom\nPython."'
+Testing
+output
+from
+Python.
+}}}
+
 
 == Subsection 2: Testing figures ==
 
@@ -11833,7 +12162,8 @@ one table:
 
 
 And one with math headings (that are expanded and must be treated
-accordingly) and verbatim heading and entry:
+accordingly), verbatim heading and entry, and no space around the pipe
+symbol:
 
 
  | ={{{i}}}            | ={{{h_i}}}          | ={{{\bar T_i}}}     | ={{{L_i}}}          |
@@ -11848,7 +12178,7 @@ accordingly) and verbatim heading and entry:
 
 And add one with verbatim headings (with underscores),
 and rows starting with {{{|-}}} because of a negative number,
-and {{{|}}} right after verbatim word (with no space):
+and {{{|}}} right before and after verbatim word (with no space):
 
 
  | =exact                     | ={{{v_1}}}                 | ={{{a_i}}} + {{{v_2}}}     | ={{{verb_3_}}}             |
@@ -11856,6 +12186,20 @@ and {{{|}}} right after verbatim word (with no space):
  |  -20                       |  -23.39                    |  -7.65                     |  -19.93                    |
  |  10                        |  17.74                     |  -4.50                     |  9.96                      |
  |  0                         |  -9.19                     |  4.13                      |  -0.26                     |
+
+
+Finally, a table with math
+and URLs.
+
+<wiki:comment> Mako code to expand URLs in the table </wiki:comment>
+<wiki:comment> (These types of tables did not work before Jan 2014) </wiki:comment>
+
+
+
+ | =                                                       | =                                                       | =                                                       |
+ |  {{{\mathcal{L}=0}}}                                    |  [[../doc/src/manual/mov/wave_frames/frame_0080.png     |  {{{080}}}]]                                            |  [[../doc/src/manual/mov/wave_frames/frame_0085.png     |  {{{085}}}]]                                            |
+ |  {{{a=b}}}                                              |  [[../doc/src/manual/mov/wave_frames/frame_0090.png     |  {{{090}}}]]                                            |  [[../doc/src/manual/mov/wave_frames/frame_0095.png     |  {{{095}}}]]                                            |
+ |  {{{\nabla\cdot\bm{u} =0 }}}                            |  [[../doc/src/manual/mov/wave_frames/frame_0100.png     |  {{{100}}}]]                                            |  [[../doc/src/manual/mov/wave_frames/frame_0105.png     |  {{{105}}}]]                                            |
 
 
 
@@ -11964,7 +12308,9 @@ footnotes.
 
 
 
-== LaTeX Mathematics ==
+<wiki:comment> !split and check if these extra words are included properly in the comment </wiki:comment>
+
+= LaTeX Mathematics =
 
 Here is an equation without label using backslash-bracket environment:
 {{{
@@ -12548,7 +12894,7 @@ in a separate document: {{{admon.do.txt}}}.
 
 ************** File: testdoc.st *****************
 TITLE: A Document for Testing Doconce
-BY: Hans Petter Langtangen (Center for Biomedical Computing, Simula Research Laboratory, and Department of Informatics, University of Oslo); Kaare Dump (Segfault Inc, Cyberspace); A. Dummy Author; I. S. Overworked (Inst1, and Inst2, Somewhere, and Third Inst, Elsewhere, and Fourth Inst); J. Doe
+BY: Hans Petter Langtangen (Center for Biomedical Computing, Simula Research Laboratory, and Department of Informatics, University of Oslo); Kaare Dump (Segfault, Cyberspace); A. Dummy Author; I. S. Overworked and Outburned (Inst1, and Inst2, Somewhere, and Third Inst, Elsewhere, and Fourth Inst); J. Doe
 DATE: Jan 32, 2100
 # !split
 
@@ -12590,12 +12936,13 @@ Here is a nested list:
 
 Here is a reference to Equation (my:eq1).
 
-# !split and check if these extra words are included properly in the comment
 
 Subsection 1
 
 More text, with a reference back to the section "Section 1" and further
 to the section "URLs". 
+
+Computer code
 
 Let's do some copying from files too. First from subroutine up to the very end::
 
@@ -12774,6 +13121,16 @@ green color containing a linebreak.
 And one more. Some formats will only display this correctly when
 HTML is the output format.
 
+Running OS commands::
+
+
+        Terminal> python -c 'print "Testing\noutput\nfrom\nPython."'
+        Testing
+        output
+        from
+        Python.
+
+
 
 Subsection 2: Testing figures
 
@@ -12899,7 +13256,8 @@ one table:
 ============  ============  ============  
 
 And one with math headings (that are expanded and must be treated
-accordingly) and verbatim heading and entry:
+accordingly), verbatim heading and entry, and no space around the pipe
+symbol:
 
 ========  ========  ========  ========  
    i        h_i     \bar T_i   'L_i'    
@@ -12915,7 +13273,7 @@ accordingly) and verbatim heading and entry:
 
 And add one with verbatim headings (with underscores),
 and rows starting with '|-' because of a negative number,
-and '|' right after verbatim word (with no space):
+and '|' right before and after verbatim word (with no space):
 
 ===========  ===========  ===========  ===========  
    exact        'v_1'     a_i + 'v_2'   'verb_3_'   
@@ -12925,6 +13283,19 @@ and '|' right after verbatim word (with no space):
          10        17.74        -4.50         9.96  
           0        -9.19         4.13        -0.26  
 ===========  ===========  ===========  ===========  
+
+Finally, a table with math
+and URLs.
+
+
+
+======================================================  ======================================================  ======================================================  
+                                                                                                                                                                        
+======================================================  ======================================================  ======================================================  
+                    \mathcal{L}=0                       ../doc/src/manual/mov/wave_frames/frame_0080.png:'080'  ../doc/src/manual/mov/wave_frames/frame_0085.png:'085'  
+                         a=b                            ../doc/src/manual/mov/wave_frames/frame_0090.png:'090'  ../doc/src/manual/mov/wave_frames/frame_0095.png:'095'  
+                 \nabla\cdot\bm{u} =0                   ../doc/src/manual/mov/wave_frames/frame_0100.png:'100'  ../doc/src/manual/mov/wave_frames/frame_0105.png:'105'  
+======================================================  ======================================================  ======================================================  
 
 
 A test of verbatim words in heading with subscript a_i: 'my_file_v1' and 'my_file_v2'
@@ -13024,6 +13395,8 @@ More tough tests: repeated URLs whose footnotes when using the
 footnotes.
 
 
+
+# !split and check if these extra words are included properly in the comment
 
 LaTeX Mathematics
 
@@ -13664,7 +14037,7 @@ in a separate document: 'admon.do.txt'.
 
 ************** File: testdoc.epytext *****************
 TITLE: A Document for Testing Doconce
-BY: Hans Petter Langtangen (Center for Biomedical Computing, Simula Research Laboratory, and Department of Informatics, University of Oslo); Kaare Dump (Segfault Inc, Cyberspace); A. Dummy Author; I. S. Overworked (Inst1, and Inst2, Somewhere, and Third Inst, Elsewhere, and Fourth Inst); J. Doe
+BY: Hans Petter Langtangen (Center for Biomedical Computing, Simula Research Laboratory, and Department of Informatics, University of Oslo); Kaare Dump (Segfault, Cyberspace); A. Dummy Author; I. S. Overworked and Outburned (Inst1, and Inst2, Somewhere, and Third Inst, Elsewhere, and Fourth Inst); J. Doe
 DATE: Jan 32, 2100
 # !split
 
@@ -13708,13 +14081,15 @@ Here is a nested list:
 
 Here is a reference to Equation (my:eq1).
 
-# !split and check if these extra words are included properly in the comment
 
 Subsection 1
 ------------
 
 More text, with a reference back to the section "Section 1" and further
 to the section "URLs". 
+
+Computer code
+~~~~~~~~~~~~~
 
 Let's do some copying from files too. First from subroutine up to the very end::
 
@@ -13893,6 +14268,16 @@ green color containing a linebreak.
 And one more. Some formats will only display this correctly when
 HTML is the output format.
 
+Running OS commands
+~~~~~~~~~~~~~~~~~~~
+
+
+
+            NOTE: A verbatim block has been removed because
+                  it causes problems for Epytext.
+
+
+
 
 Subsection 2: Testing figures
 -----------------------------
@@ -14022,7 +14407,8 @@ one table:
 ============  ============  ============  
 
 And one with math headings (that are expanded and must be treated
-accordingly) and verbatim heading and entry:
+accordingly), verbatim heading and entry, and no space around the pipe
+symbol:
 
 ===========  ===========  ===========  ===========  
     M{i}        M{h_i}    M{\bar T_i}     C{L_i}    
@@ -14038,7 +14424,7 @@ accordingly) and verbatim heading and entry:
 
 And add one with verbatim headings (with underscores),
 and rows starting with C{|-} because of a negative number,
-and C{|} right after verbatim word (with no space):
+and C{|} right before and after verbatim word (with no space):
 
 ===============  ===============  ===============  ===============  
      exact            C{v_1}      M{a_i} + C{v_2}     C{verb_3_}    
@@ -14048,6 +14434,19 @@ and C{|} right after verbatim word (with no space):
              10            17.74            -4.50             9.96  
               0            -9.19             4.13            -0.26  
 ===============  ===============  ===============  ===============  
+
+Finally, a table with math
+and URLs.
+
+
+
+===========================================================  ===========================================================  ===========================================================  
+                                                                                                                                                                                       
+===========================================================  ===========================================================  ===========================================================  
+                      M{\mathcal{L}=0}                       U{C{080}<../doc/src/manual/mov/wave_frames/frame_0080.png>}  U{C{085}<../doc/src/manual/mov/wave_frames/frame_0085.png>}  
+                           M{a=b}                            U{C{090}<../doc/src/manual/mov/wave_frames/frame_0090.png>}  U{C{095}<../doc/src/manual/mov/wave_frames/frame_0095.png>}  
+                  M{\nabla\cdot\bm{u} =0 }                   U{C{100}<../doc/src/manual/mov/wave_frames/frame_0100.png>}  U{C{105}<../doc/src/manual/mov/wave_frames/frame_0105.png>}  
+===========================================================  ===========================================================  ===========================================================  
 
 
 A test of verbatim words in heading with subscript M{a_i}: C{my_file_v1} and C{my_file_v2}
@@ -14152,8 +14551,10 @@ footnotes.
 
 
 
+# !split and check if these extra words are included properly in the comment
+
 LaTeX Mathematics
------------------
+=================
 
 Here is an equation without label using backslash-bracket environment::
 
@@ -14823,12 +15224,12 @@ A Document for Testing Doconce
 Hans Petter Langtangen [1, 2] (hpl@simula.no)
 Kaare Dump [3] 
 A. Dummy Author  
-I. S. Overworked [4, 5, 6, 7] 
+I. S. Overworked and Outburned [4, 5, 6, 7] 
 J. Doe  (j_doe@cyberspace.com)
 
 [1] Center for Biomedical Computing, Simula Research Laboratory
 [2] Department of Informatics, University of Oslo
-[3] Segfault Inc, Cyberspace
+[3] Segfault, Cyberspace
 [4] Inst1
 [5] Inst2, Somewhere
 [6] Third Inst, Elsewhere
@@ -14840,6 +15241,8 @@ Table of contents:
 
  Section 1 
    Subsection 1 
+     Computer code 
+     Running OS commands 
    Subsection 2: Testing figures 
    The \theta parameter (not \nabla?) 
    Custom Environments 
@@ -14848,7 +15251,7 @@ Table of contents:
    Bibliography test 
    Example 1: Examples can be typeset as exercises 
    URLs 
-   LaTeX Mathematics 
+ LaTeX Mathematics 
  Exercises 
    Problem 2: Flip a Coin 
      Remarks 
@@ -14927,13 +15330,15 @@ Here is a nested list:
 
 Here is a reference to Equation (my:eq1).
 
-# !split and check if these extra words are included properly in the comment
 
 Subsection 1
 ------------
 
 More text, with a reference back to the section "Section 1" and further
 to the section "URLs". 
+
+Computer code
+~~~~~~~~~~~~~
 
 Let's do some copying from files too. First from subroutine up to the very end::
 
@@ -15112,6 +15517,17 @@ green color containing a linebreak.
 And one more. Some formats will only display this correctly when
 HTML is the output format.
 
+Running OS commands
+~~~~~~~~~~~~~~~~~~~
+
+
+        Terminal> python -c 'print "Testing\noutput\nfrom\nPython."'
+        Testing
+        output
+        from
+        Python.
+
+
 
 Subsection 2: Testing figures
 -----------------------------
@@ -15241,7 +15657,8 @@ one table:
 ============  ============  ============  
 
 And one with math headings (that are expanded and must be treated
-accordingly) and verbatim heading and entry:
+accordingly), verbatim heading and entry, and no space around the pipe
+symbol:
 
 ========  ========  ========  ========  
    i        h_i     \bar T_i    L_i     
@@ -15257,7 +15674,7 @@ accordingly) and verbatim heading and entry:
 
 And add one with verbatim headings (with underscores),
 and rows starting with |- because of a negative number,
-and | right after verbatim word (with no space):
+and | right before and after verbatim word (with no space):
 
 =========  =========  =========  =========  
   exact       v_1     a_i + v_2   verb_3_   
@@ -15267,6 +15684,19 @@ and | right after verbatim word (with no space):
        10      17.74      -4.50       9.96  
         0      -9.19       4.13      -0.26  
 =========  =========  =========  =========  
+
+Finally, a table with math
+and URLs.
+
+
+
+======================================================  ======================================================  ======================================================  
+                                                                                                                                                                        
+======================================================  ======================================================  ======================================================  
+                    \mathcal{L}=0                       080 (../doc/src/manual/mov/wave_frames/frame_0080.png)  085 (../doc/src/manual/mov/wave_frames/frame_0085.png)  
+                         a=b                            090 (../doc/src/manual/mov/wave_frames/frame_0090.png)  095 (../doc/src/manual/mov/wave_frames/frame_0095.png)  
+                 \nabla\cdot\bm{u} =0                   100 (../doc/src/manual/mov/wave_frames/frame_0100.png)  105 (../doc/src/manual/mov/wave_frames/frame_0105.png)  
+======================================================  ======================================================  ======================================================  
 
 
 A test of verbatim words in heading with subscript a_i: my_file_v1 and my_file_v2
@@ -15371,8 +15801,10 @@ footnotes.
 
 
 
+# !split and check if these extra words are included properly in the comment
+
 LaTeX Mathematics
------------------
+=================
 
 Here is an equation without label using backslash-bracket environment::
 
@@ -16064,7 +16496,7 @@ in a separate document: admon.do.txt.
 
 ************** File: testdoc.md *****************
 % A Document for Testing Doconce
-% Hans Petter Langtangen at Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo;  Kaare Dump at Segfault Inc, Cyberspace;  A. Dummy Author;  I. S. Overworked at Inst1 and Inst2, Somewhere and Third Inst, Elsewhere and Fourth Inst;  J. Doe
+% Hans Petter Langtangen at Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo;  Kaare Dump at Segfault, Cyberspace;  A. Dummy Author;  I. S. Overworked and Outburned at Inst1 and Inst2, Somewhere and Third Inst, Elsewhere and Fourth Inst;  J. Doe
 % Jan 32, 2100
 
 <!-- Table of contents: Run pandoc with --toc option -->
@@ -16123,13 +16555,14 @@ Here is a nested list:
 
 Here is a reference to Equation \eqref{my:eq1}.
 
-<!-- !split and check if these extra words are included properly in the comment -->
 
 ### Subsection 1
 
 More text, with a reference back to the section [Section 1](#n-1) and further
 to the section [URLs](#s). 
 <!-- sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console -->
+
+#### Computer code
 
 Let's do some copying from files too. First from subroutine up to the very end,
 
@@ -16320,6 +16753,16 @@ green color containing a linebreak.
 And one more.</font> Some formats will only display this correctly when
 HTML is the output format.
 
+#### Running OS commands
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.Bash}
+Terminal> python -c 'print "Testing\noutput\nfrom\nPython."'
+Testing
+output
+from
+Python.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ### Subsection 2: Testing figures
 
@@ -16476,7 +16919,8 @@ one table:
 
 
 And one with math headings (that are expanded and must be treated
-accordingly) and verbatim heading and entry:
+accordingly), verbatim heading and entry, and no space around the pipe
+symbol:
 
 
    $i$        $h_i$     $\bar T_i$    `L_i`     
@@ -16492,7 +16936,7 @@ accordingly) and verbatim heading and entry:
 
 And add one with verbatim headings (with underscores),
 and rows starting with `|-` because of a negative number,
-and `|` right after verbatim word (with no space):
+and `|` right before and after verbatim word (with no space):
 
 
     exact          `v_1`      $a_i$ + `v_2`    `verb_3_`    
@@ -16501,6 +16945,23 @@ and `|` right after verbatim word (with no space):
           -20         -23.39          -7.65         -19.93  
            10          17.74          -4.50           9.96  
             0          -9.19           4.13          -0.26  
+
+
+Finally, a table with math
+(`bm` that expands to `boldsymbol`, was tricky, but
+cleanly handled now)
+and URLs.
+
+<!-- Mako code to expand URLs in the table -->
+<!-- (These types of tables did not work before Jan 2014) -->
+
+
+
+                                                                                                                                                                                 
+---------------------------------------------------------  ---------------------------------------------------------  ---------------------------------------------------------  
+                     $\mathcal{L}=0$                       [`080`](../doc/src/manual/mov/wave_frames/frame_0080.png)  [`085`](../doc/src/manual/mov/wave_frames/frame_0085.png)  
+                          $a=b$                            [`090`](../doc/src/manual/mov/wave_frames/frame_0090.png)  [`095`](../doc/src/manual/mov/wave_frames/frame_0095.png)  
+             $\nabla\cdot\boldsymbol{u} =0 $               [`100`](../doc/src/manual/mov/wave_frames/frame_0100.png)  [`105`](../doc/src/manual/mov/wave_frames/frame_0105.png)  
 
 
 
@@ -16607,7 +17068,9 @@ footnotes.
 
 
 
-### LaTeX Mathematics
+<!-- !split and check if these extra words are included properly in the comment -->
+
+## LaTeX Mathematics
 
 Here is an equation without label using backslash-bracket environment:
 $$
@@ -17430,13 +17893,14 @@ in a separate document: `admon.do.txt`.
       "\n",
       "Here is a reference to Equation Eq (my:eq1).\n",
       "\n",
-      "<!-- !split and check if these extra words are included properly in the comment -->\n",
       "\n",
       "### Subsection 1\n",
       "\n",
       "More text, with a reference back to the section [Section 1](#n-1) and further\n",
       "to the section [URLs](#s). \n",
       "<!-- sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console -->\n",
+      "\n",
+      "#### Computer code\n",
       "\n",
       "Let's do some copying from files too. First from subroutine up to the very end,"
      ]
@@ -17777,7 +18241,28 @@ in a separate document: `admon.do.txt`.
       "And one more.</font> Some formats will only display this correctly when\n",
       "HTML is the output format.\n",
       "\n",
-      "\n",
+      "#### Running OS commands"
+     ]
+    },
+    {
+     "cell_type": "code",
+     "collapsed": false,
+     "input": [
+      "Terminal> python -c 'print \"Testing\\noutput\\nfrom\\nPython.\"'\n",
+      "Testing\n",
+      "output\n",
+      "from\n",
+      "Python.\n"
+     ],
+     "language": "python",
+     "metadata": {},
+     "outputs": [],
+     "prompt_number": 1
+    },
+    {
+     "cell_type": "markdown",
+     "metadata": {},
+     "source": [
       "### Subsection 2: Testing figures\n",
       "\n",
       "\n",
@@ -17989,7 +18474,8 @@ in a separate document: `admon.do.txt`.
       "\n",
       "\n",
       "And one with math headings (that are expanded and must be treated\n",
-      "accordingly) and verbatim heading and entry:\n",
+      "accordingly), verbatim heading and entry, and no space around the pipe\n",
+      "symbol:\n",
       "\n",
       "\n",
       "   $i$        $h_i$     $\\bar T_i$    `L_i`     \n",
@@ -18005,7 +18491,7 @@ in a separate document: `admon.do.txt`.
       "\n",
       "And add one with verbatim headings (with underscores),\n",
       "and rows starting with `|-` because of a negative number,\n",
-      "and `|` right after verbatim word (with no space):\n",
+      "and `|` right before and after verbatim word (with no space):\n",
       "\n",
       "\n",
       "    exact          `v_1`      $a_i$ + `v_2`    `verb_3_`    \n",
@@ -18014,6 +18500,21 @@ in a separate document: `admon.do.txt`.
       "          -20         -23.39          -7.65         -19.93  \n",
       "           10          17.74          -4.50           9.96  \n",
       "            0          -9.19           4.13          -0.26  \n",
+      "\n",
+      "\n",
+      "Finally, a table with math\n",
+      "and URLs.\n",
+      "\n",
+      "<!-- Mako code to expand URLs in the table -->\n",
+      "<!-- (These types of tables did not work before Jan 2014) -->\n",
+      "\n",
+      "\n",
+      "\n",
+      "                                                                                                                                                                                 \n",
+      "---------------------------------------------------------  ---------------------------------------------------------  ---------------------------------------------------------  \n",
+      "                     $\\mathcal{L}=0$                       [`080`](../doc/src/manual/mov/wave_frames/frame_0080.png)  [`085`](../doc/src/manual/mov/wave_frames/frame_0085.png)  \n",
+      "                          $a=b$                            [`090`](../doc/src/manual/mov/wave_frames/frame_0090.png)  [`095`](../doc/src/manual/mov/wave_frames/frame_0095.png)  \n",
+      "             $\\nabla\\cdot\\boldsymbol{u} =0 $               [`100`](../doc/src/manual/mov/wave_frames/frame_0100.png)  [`105`](../doc/src/manual/mov/wave_frames/frame_0105.png)  \n",
       "\n",
       "\n",
       "\n",
@@ -18120,7 +18621,9 @@ in a separate document: `admon.do.txt`.
       "\n",
       "\n",
       "\n",
-      "### LaTeX Mathematics\n",
+      "<!-- !split and check if these extra words are included properly in the comment -->\n",
+      "\n",
+      "## LaTeX Mathematics\n",
       "\n",
       "Here is an equation without label using backslash-bracket environment:"
      ]
@@ -18974,6 +19477,8 @@ to Section ref{subsubsec:ex}. idx{`somefunc` function}
 
 # sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console
 
+=== Computer code ===
+
 Let's do some copying from files too. First from subroutine up to the very end,
 
 @@@CODE ../doc/src/manual/__testcode.f fromto: subroutine@
@@ -19090,7 +19595,7 @@ Could not find match for from regex "\*\s+\$.+normally"
   'solution_file': None,
   'subex': [{'answer': 'Short answer to subexercise a).\nWith math in answer: $a=b$.',
              'file': ['subexer_a.pdf'],
-             'hints': ['First hint to subexercise a).\nWith math $a=b$ in hint:\n\n19 <<<!!MATH_BLOCK\nAnd with code (in plain verbatim) returning $x+1$ in hint:\n\n17 <<<!!CODE_BLOCK',
+             'hints': ['First hint to subexercise a).\nWith math $a=b$ in hint:\n\n19 <<<!!MATH_BLOCK\nAnd with code (in plain verbatim) returning $x+1$ in hint:\n\n18 <<<!!CODE_BLOCK',
                        'Second hint to subexercise a).\n\nTest list in hint:\n\n o item1\n o item2'],
              'solution': '',
              'text': 'Subexercises are numbered a), b), etc.'},
@@ -19213,6 +19718,7 @@ iso-8859-1
 <p>Here is a reference to Equation ([my:eq1]).</p>
 <h2 id="subsection-1">Subsection 1</h2>
 <p>More text, with a reference back to Section [sec1] and further to Section [subsubsec:ex].</p>
+<h4 id="computer-code.">Computer code.</h4>
 <p>Let’s do some copying from files too. First from subroutine up to the very end,</p>
 <pre><code>subroutine test()
       integer i
@@ -19327,6 +19833,12 @@ output1
 output2</code></pre>
 <p>It is time to test <code>verbatim inline font</code> especially with <code>a newline inside the text</code> and an exclamation mark at the end: <code>BEGIN</code>! The exclamation mark inside the verbatim text is potentially not smart since latex use ! in the <code>Verb</code> typesetting, but this should now be fixed: test  !bc  and  !ec  as well as  !bsummary . Also test backslashes and braces like <code>\begin</code>, <code>\begin{enumerate}</code>, <code>\end{this}\end{that}</code>, and <code>{something \inside braces}</code> in inline verbatim text.</p>
 <p>Here is some color and an attempt to write Some formats will only display this correctly when HTML is the output format.</p>
+<h4 id="running-os-commands.">Running OS commands.</h4>
+<pre><code>Terminal&gt; python -c &#39;print &quot;Testing\noutput\nfrom\nPython.&quot;&#39;
+Testing
+output
+from
+Python.</code></pre>
 <h2 id="subsection-2-testing-figures">Subsection 2: Testing figures</h2>
 <p>[subsec:ex]</p>
 <p>Test of figures. In particular we refer to Figure [fig:impact] in which there is a flow.</p>
@@ -19430,7 +19942,7 @@ output2</code></pre>
 </tr>
 </tbody>
 </table>
-<p>And one with math headings (that are expanded and must be treated accordingly) and verbatim heading and entry:</p>
+<p>And one with math headings (that are expanded and must be treated accordingly), verbatim heading and entry, and no space around the pipe symbol:</p>
 </blockquote>
 <blockquote>
 <table>
@@ -19479,7 +19991,7 @@ output2</code></pre>
 </tr>
 </tbody>
 </table>
-<p>And add one with verbatim headings (with underscores), and rows starting with <code>|-</code> because of a negative number, and <code>|</code> right after verbatim word (with no space):</p>
+<p>And add one with verbatim headings (with underscores), and rows starting with <code>|-</code> because of a negative number, and <code>|</code> right before and after verbatim word (with no space):</p>
 </blockquote>
 <blockquote>
 <table>
@@ -19510,8 +20022,12 @@ output2</code></pre>
 </tr>
 </tbody>
 </table>
-<h2>A test of verbatim words in heading with subscript <span class="math">\(a_i\)</span>: <code>my\_file\_v1</code> and <code>my\_file\_v2</code></h2>
+<p>Finally, a table with math and URLs.</p>
 </blockquote>
+<blockquote>
+ccc<br /><span class="math">\(\mathcal{L}=0\)</span> &amp; <img src="../doc/src/manual/mov/wave_frames/frame_0080.png" alt="image" /> &amp; <img src="../doc/src/manual/mov/wave_frames/frame_0085.png" alt="image" /><br /><span class="math">\(a=b\)</span> &amp; <img src="../doc/src/manual/mov/wave_frames/frame_0090.png" alt="image" /> &amp; <img src="../doc/src/manual/mov/wave_frames/frame_0095.png" alt="image" /><br /><span class="math">\(\nabla\cdot\bm{u} =0 \)</span> &amp; <img src="../doc/src/manual/mov/wave_frames/frame_0100.png" alt="image" /> &amp; <img src="../doc/src/manual/mov/wave_frames/frame_0105.png" alt="image" /><br />
+</blockquote>
+<h2 id="a-test-of-verbatim-words-in-heading-with-subscript-a_i-my_file_v1-and-my_file_v2">A test of verbatim words in heading with subscript <span class="math">\(a_i\)</span>: <code>my\_file\_v1</code> and <code>my\_file\_v2</code></h2>
 <h4 id="files-my_file_v1.py-and-my_file_v2.py-define-some-math-a_i-1.">Files <code>my\_file\_v1.py</code> and <code>my\_file\_v2.py</code> define some math <span class="math">\(a_{i-1}\)</span>.</h4>
 <p>Here is some text.</p>
 <h2 id="bibliography-test">Bibliography test</h2>
@@ -19541,7 +20057,7 @@ output2</code></pre>
 <p>More tough tests: repeated URLs whose footnotes when using the <code>--device=paper</code> option must be correct. We have <a href="{http://google.com}">google</a>, <a href="{http://google.com}">google</a>, and <a href="{http://google.com}">google</a>, which should result in exactly three footnotes.</p>
 <h2 id="test-of-some-latex-fixes">Test of Some LaTeX Fixes</h2>
 <p>Let’s check abbr. of some common kind, e.g. the well-known i.e. expression as an example. Moreover, Dr. Tang and Prof. Monsen, or maybe also prof. Ting, will go to the Dept. of Science to test how Mr. Hansen is doing together with Ms. Larsen. A reference like Sec. [subsubsec:ex] or Ch. [subsubsec:ex], or even App. [subsubsec:ex], must also be handled. Likewise, this is test no. <span class="math">\(i\)</span> of Doconce features. A sentence containing &quot;refines lines&quot; could easily fool a regex substitution with only i.e. since the dot matches anything. Also, look at Fig. 4 to see how the data compares with Tab. [mytab].</p>
-<h2 id="latex-mathematics">LaTeX Mathematics</h2>
+<h1 id="latex-mathematics">LaTeX Mathematics</h1>
 <p>Here is an equation without label using backslash-bracket environment: <span class="math">\[a = b + c\]</span> or with number and label, as in ([my:eq1]), using the equation environment:</p>
 <p><span class="math">\[{\partial u\over\partial t} = \nabla^2 u \label{my:eq1}\]</span></p>
 <p>We can refer to this equation by ([my:eq1]).</p>
@@ -19779,9 +20295,9 @@ warranty, not even for merchantability or fitness for a particular purpose.
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
   <meta name="author" content="Hans Petter Langtangen at Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo" />
-  <meta name="author" content="Kaare Dump at Segfault Inc, Cyberspace" />
+  <meta name="author" content="Kaare Dump at Segfault, Cyberspace" />
   <meta name="author" content="A. Dummy Author" />
-  <meta name="author" content="I. S. Overworked at Inst1 and Inst2, Somewhere and Third Inst, Elsewhere and Fourth Inst" />
+  <meta name="author" content="I. S. Overworked and Outburned at Inst1 and Inst2, Somewhere and Third Inst, Elsewhere and Fourth Inst" />
   <meta name="author" content="J. Doe" />
   <title>A Document for Testing Doconce</title>
   <style type="text/css">code{white-space: pre;}</style>
@@ -19810,9 +20326,9 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <div id="header">
 <h1 class="title">A Document for Testing Doconce</h1>
 <h2 class="author">Hans Petter Langtangen at Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo</h2>
-<h2 class="author">Kaare Dump at Segfault Inc, Cyberspace</h2>
+<h2 class="author">Kaare Dump at Segfault, Cyberspace</h2>
 <h2 class="author">A. Dummy Author</h2>
-<h2 class="author">I. S. Overworked at Inst1 and Inst2, Somewhere and Third Inst, Elsewhere and Fourth Inst</h2>
+<h2 class="author">I. S. Overworked and Outburned at Inst1 and Inst2, Somewhere and Third Inst, Elsewhere and Fourth Inst</h2>
 <h2 class="author">J. Doe</h2>
 <h3 class="date">Jan 32, 2100</h3>
 </div>
@@ -19853,10 +20369,9 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <p>Here are two lines that make up a block quote.</p>
 </blockquote>
 <p>Here is a reference to Equation .</p>
-<!-- !split and check if these extra words are included properly in the comment -->
-
 <h3 id="subsection-1">Subsection 1</h3>
 <p>More text, with a reference back to the section <a href="#n-1">Section 1</a> and further to the section <a href="#s">URLs</a>. <!-- sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console --></p>
+<h4 id="computer-code">Computer code</h4>
 <p>Let's do some copying from files too. First from subroutine up to the very end,</p>
 <pre class="sourceCode Fortran"><code class="sourceCode fortran">      <span class="kw">subroutine</span> test()
       <span class="dt">integer</span> i
@@ -19972,6 +20487,12 @@ show()</code></pre>
 <span class="kw">output2</span></code></pre>
 <p>It is time to test <code>verbatim inline font</code> especially with <code>a newline inside the text</code> and an exclamation mark at the end: <code>BEGIN</code>! The exclamation mark inside the verbatim text is potentially not smart since latex use ! in the <code>Verb</code> typesetting, but this should now be fixed: test <code>!bc</code> and <code>!ec</code> as well as <code>!bsummary</code>. Also test backslashes and braces like <code>\begin</code>, <code>\begin{enumerate}</code>, <code>\end{this}\end{that}</code>, and <code>{something \inside braces}</code> in inline verbatim text.</p>
 <p>Here is some <font color="red">red</font> color and an attempt to write <font color="green">with green color containing a linebreak. And one more.</font> Some formats will only display this correctly when HTML is the output format.</p>
+<h4 id="running-os-commands">Running OS commands</h4>
+<pre class="sourceCode Bash"><code class="sourceCode bash"><span class="kw">Terminal&gt;</span> python -c <span class="st">&#39;print &quot;Testing\noutput\nfrom\nPython.&quot;&#39;</span>
+<span class="kw">Testing</span>
+<span class="kw">output</span>
+<span class="kw">from</span>
+<span class="kw">Python.</span></code></pre>
 <h3 id="subsection-2-testing-figures">Subsection 2: Testing figures</h3>
 <p>Test of figures. In particular we refer to Figure ref{fig:impact} in which there is a flow.</p>
 <div class="figure">
@@ -20104,7 +20625,7 @@ show()</code></pre>
 </tr>
 </tbody>
 </table>
-<p>And one with math headings (that are expanded and must be treated accordingly) and verbatim heading and entry:</p>
+<p>And one with math headings (that are expanded and must be treated accordingly), verbatim heading and entry, and no space around the pipe symbol:</p>
 <table>
 <thead>
 <tr class="header">
@@ -20159,7 +20680,7 @@ show()</code></pre>
 </tr>
 </tbody>
 </table>
-<p>And add one with verbatim headings (with underscores), and rows starting with <code>|-</code> because of a negative number, and <code>|</code> right after verbatim word (with no space):</p>
+<p>And add one with verbatim headings (with underscores), and rows starting with <code>|-</code> because of a negative number, and <code>|</code> right before and after verbatim word (with no space):</p>
 <table>
 <thead>
 <tr class="header">
@@ -20196,6 +20717,17 @@ show()</code></pre>
 </tr>
 </tbody>
 </table>
+<p>Finally, a table with math (<code>bm</code> that expands to <code>boldsymbol</code>, was tricky, but cleanly handled now) and URLs.</p>
+<!-- Mako code to expand URLs in the table -->
+<!-- (These types of tables did not work before Jan 2014) -->
+
+
+
+
+<hr />
+<pre><code>                 $\mathcal{L}=0$                       [`080`](../doc/src/manual/mov/wave_frames/frame_0080.png)  [`085`](../doc/src/manual/mov/wave_frames/frame_0085.png)  
+                      $a=b$                            [`090`](../doc/src/manual/mov/wave_frames/frame_0090.png)  [`095`](../doc/src/manual/mov/wave_frames/frame_0095.png)  
+         $\nabla\cdot\boldsymbol{u} =0 $               [`100`](../doc/src/manual/mov/wave_frames/frame_0100.png)  [`105`](../doc/src/manual/mov/wave_frames/frame_0105.png)  </code></pre>
 <h3 id="a-test-of-verbatim-words-in-heading-with-subscript-a_i-my_file_v1-and-my_file_v2">A test of verbatim words in heading with subscript <span class="math">\(a_i\)</span>: <code>my_file_v1</code> and <code>my_file_v2</code></h3>
 <p><em>Files <code>my_file_v1.py</code> and <code>my_file_v2.py</code> define some math <span class="math">\(a_{i-1}\)</span>.</em> Here is some text.</p>
 <h3 id="bibliography-test">Bibliography test</h3>
@@ -20242,7 +20774,9 @@ document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'">'+'mailto:hpl@simula.no'+'<\/
 <!-- if rst output is desired, but placed in a `_static*` folder. -->
 
 <p>More tough tests: repeated URLs whose footnotes when using the <code>--device=paper</code> option must be correct. We have <a href="http://google.com">google</a>, <a href="http://google.com">google</a>, and <a href="http://google.com">google</a>, which should result in exactly three footnotes.</p>
-<h3 id="latex-mathematics">LaTeX Mathematics</h3>
+<!-- !split and check if these extra words are included properly in the comment -->
+
+<h2 id="latex-mathematics">LaTeX Mathematics</h2>
 <p>Here is an equation without label using backslash-bracket environment: <span class="math">\[
  a = b + c 
 \]</span> or with number and label, as in , using the equation environment: <span class="math">\[
@@ -20760,6 +21294,8 @@ where <em>main</em> will become the Doconce file (the main body of text),
 <em>title</em> is the first heading in the Doconce file, and
 <em>date</em> is extracted from the Doconce file (if present).
 
+<p>
+
 <!-- ------------------- end of main content --------------- -->
 
 
@@ -21003,6 +21539,8 @@ three possible slots: <em>title</em>, <em>date</em> and <em>main</em>,
 where <em>main</em> will become the Doconce file (the main body of text),
 <em>title</em> is the first heading in the Doconce file, and
 <em>date</em> is extracted from the Doconce file (if present).
+
+<p>
 
 <!-- ------------------- end of main content --------------- -->
 
@@ -21679,45 +22217,145 @@ are to external documents declared by a comment line <code>#
 Externaldocuments: testdoc, mydoc</code> (usually after the title, authors,
 and date). In this case the output text is <code>internal cite</code> and the
 LaTeX package <code>xr</code> is used to handle the labels in the external documents.
-If none of the two situations above applies, the <code>external</code>
+When referring to a complete chapter (not a section in it), which
+corresponds to a complete external document, it does not make sense
+to write out <code>internal cite</code> since the <code>internal</code> reference is a
+chapter number. In such cases, the <code>internal</code> syntax can be used,
+and if the label is in another LaTeX document, the output is just <code>cite</code>.
+For all
+output formats other than <code>latex</code> and <code>pdflatex</code>, the <code>external</code>
 text will be the output.
 
 <p>
-Here is an example on a specific generalized reference:
+Here is an example on a specific generalized reference to a section
+in a document:
 <p>
 
 <!-- code=text typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">As explained in
 ref[Section ref{subsec:ex}][in &quot;Langtangen, 2012&quot;:
 &quot;http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex&quot;
-cite{testdoc:12}][a &quot;section&quot;: &quot;http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex&quot; in
-the document &quot;A Document for Testing Doconce&quot;: &quot;http://hplgit.github.io/doconce/test/demo_testdoc.html&quot;
-cite{testdoc:12}], Doconce documents may include movies.
+cite{testdoc:12}][a &quot;section&quot;:
+&quot;http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex&quot; in
+the document &quot;A Document for Testing Doconce&quot;:
+&quot;http://hplgit.github.io/doconce/test/demo_testdoc.html&quot;
+cite{testdoc:12}], Doconce documents may include tables.
 </pre></div>
 <p>
-This is renedered as follows:
-As explained in
-a <a href="http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex" target="_self">section</a> in
-the document <a href="http://hplgit.github.io/doconce/test/demo_testdoc.html" target="_self">A Document for Testing Doconce</a>
-<a href="#testdoc:12">[1]</a>, Doconce documents may include movies.
-
-<p>
-And here is another example with internal references only:
+With <code>latex</code> or <code>pdflatex</code> as output, this translates to
 <p>
 
 <!-- code=text typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Generalized references are described in ref[Section ref{genrefs}][][
-the document *author1*].
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">As explained in
+Section ref{subsec:ex}, Doconce documents may include tables.
 </pre></div>
 <p>
-The text is rendered to "Generalized references are described in
-the section <a href="#genrefs">Generalized References</a>."
+if the label <code>{subsec:ex}</code> appears in the present Doconce source, and
+otherwise
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">As explained in
+Section ref{subsec:ex} in &quot;Langtangen, 2012&quot;:
+&quot;http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex&quot;
+cite{testdoc:12}, Doconce documents may include tables.
+</pre></div>
+<p>
+In a format different from <code>latex</code> and <code>pdflatex</code>, the effective Doconce
+text becomes
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">As explained in
+a &quot;section&quot;:
+&quot;http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex&quot; in
+the document &quot;A Document for Testing Doconce&quot;:
+&quot;http://hplgit.github.io/doconce/test/demo_testdoc.html&quot;
+cite{testdoc:12}, Doconce documents may include tables.
+</pre></div>
+<p>
+The rendered text in the current format <code>html</code> becomes
 
 <p>
-<!-- We are testing chapter too to see if latex output then has -->
-<!-- book style rather than article style. -->
+<blockquote>
+    As explained in
+    a <a href="http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex" target="_self">section</a> in
+    the document <a href="http://hplgit.github.io/doconce/test/demo_testdoc.html" target="_self">A Document for Testing Doconce</a>
+    <a href="#testdoc:12">[1]</a>, Doconce documents may include tables.
+</blockquote>
+
+
+<p>
+A reference to an entire external document, which is usually a chapter
+if the reference is internal in the Doconce source, applies the
+<code>refch</code> syntax:
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">As explained in
+refch[Chapter ref{ch:testdoc}][&quot;Langtangen, 2012&quot;:
+&quot;http://hplgit.github.io/doconce/test/demo_testdoc.html&quot;
+cite{testdoc:12}][the document
+&quot;A Document for Testing Doconce&quot;:
+&quot;http://hplgit.github.io/doconce/test/demo_testdoc.html&quot;
+cite{testdoc:12}], Doconce documents may include tables.
+</pre></div>
+<p>
+The output now if <code>ch:testdoc</code> is not a label in the document,
+becomes in the <code>latex</code> and <code>pdflatex</code> case
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">As explained in
+&quot;Langtangen, 2012&quot;:
+&quot;http://hplgit.github.io/doconce/test/demo_testdoc.html&quot;
+cite{testdoc:12}, Doconce documents may include tables.
+</pre></div>
+<p>
+That is, the internal reference <code>Chapter ...</code> is omitted since
+it is not meaningful to refer to an external document as "Chapter".
+The resulting rendered text in the current format <code>html</code> becomes
+
+<p>
+<blockquote>
+    As explained in
+    the document
+    <a href="http://hplgit.github.io/doconce/test/demo_testdoc.html" target="_self">A Document for Testing Doconce</a>
+    <a href="#testdoc:12">[1]</a>, Doconce documents may include tables.
+</blockquote>
+
+
+<p>
+Note that LaTeX cannot
+have links to local files, so a complete URL on the form
+<code>http://...</code> must be used.
+
+<p>
+And here is another example with internal references only:
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Generalized references are described in ref[Section ref{genrefs}][dummy1][
+dummy2].
+</pre></div>
+<p>
+The text is rendered to
+
+<p>
+<blockquote>
+    Generalized references are described in
+    the section <a href="#genrefs">Generalized References</a>.
+</blockquote>
+
 
 <h1>Test of math  <a name="___sec1"></a></h1>
+
+<p>
+<!-- Here we test the chapter heading to see if latex output then has -->
+<!-- book style rather than article style. -->
 
 <p>
 Inline math, \( a=b \), is the only math in this document.
@@ -21814,6 +22452,7 @@ open=right               % start new chapters on odd-numbered pages
 % Style: T2 (Springer)
 \documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmono}
 \usepackage{t2}
+\special{papersize=193mm,260mm}
 % #elif LATEX_STYLE == "Springer_llcse"
 % Style: Lecture Notes in Computer Science (Springer)
 \documentclass[oribib]{llncs}
@@ -21865,6 +22504,7 @@ open=right               % start new chapters on odd-numbered pages
 % Examples of font types (Ubuntu): Gentium Book Basic (Palatino-like),
 % Liberation Sans (Helvetica-like), Norasi, Purisa (handwriting), UnDoum
 % #else
+\usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
 % #ifdef HELVETICA
@@ -21878,6 +22518,7 @@ open=right               % start new chapters on odd-numbered pages
 \linespread{1.05}            % Palatino needs extra line spread to look nice
 % #endif
 % #endif
+\usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
@@ -22006,6 +22647,7 @@ open=right               % start new chapters on odd-numbered pages
 % insert custom LaTeX commands...
 
 
+\raggedbottom
 \makeindex
 
 %-------------------- end preamble ----------------------
@@ -22163,35 +22805,117 @@ are to external documents declared by a comment line \code{#
 Externaldocuments: testdoc, mydoc} (usually after the title, authors,
 and date). In this case the output text is \code{internal cite} and the
 {\LaTeX} package \code{xr} is used to handle the labels in the external documents.
-If none of the two situations above applies, the \code{external}
+When referring to a complete chapter (not a section in it), which
+corresponds to a complete external document, it does not make sense
+to write out \code{internal cite} since the \code{internal} reference is a
+chapter number. In such cases, the \code{internal} syntax can be used,
+and if the label is in another {\LaTeX} document, the output is just \code{cite}.
+For all
+output formats other than \code{latex} and \code{pdflatex}, the \code{external}
 text will be the output.
 
-Here is an example on a specific generalized reference:
+Here is an example on a specific generalized reference to a section
+in a document:
 \bccq
 As explained in
 ref[Section ref{subsec:ex}][in "Langtangen, 2012":
 "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex"
-cite{testdoc:12}][a "section": "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex" in
-the document "A Document for Testing Doconce": "http://hplgit.github.io/doconce/test/demo_testdoc.html"
-cite{testdoc:12}], Doconce documents may include movies.
+cite{testdoc:12}][a "section":
+"http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex" in
+the document "A Document for Testing Doconce":
+"http://hplgit.github.io/doconce/test/demo_testdoc.html"
+cite{testdoc:12}], Doconce documents may include tables.
 \eccq
-This is renedered as follows:
+With \code{latex} or \code{pdflatex} as output, this translates to
+\bccq
 As explained in
-Section~\ref{subsec:ex} in \href{{http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex}}{Langtangen, 2012}
-\cite{testdoc:12}, Doconce documents may include movies.
+Section ref{subsec:ex}, Doconce documents may include tables.
+\eccq
+if the label \code{{subsec:ex}} appears in the present Doconce source, and
+otherwise
+\bccq
+As explained in
+Section ref{subsec:ex} in "Langtangen, 2012":
+"http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex"
+cite{testdoc:12}, Doconce documents may include tables.
+\eccq
+In a format different from \code{latex} and \code{pdflatex}, the effective Doconce
+text becomes
+\bccq
+As explained in
+a "section":
+"http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex" in
+the document "A Document for Testing Doconce":
+"http://hplgit.github.io/doconce/test/demo_testdoc.html"
+cite{testdoc:12}, Doconce documents may include tables.
+\eccq
+The rendered text in the current format \code{latex} becomes
+
+
+\begin{quote}
+As explained in
+Section~\ref{subsec:ex}in \href{{http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex}}{Langtangen, 2012}
+\cite{testdoc:12}, Doconce documents may include tables.
+\end{quote}
+
+
+A reference to an entire external document, which is usually a chapter
+if the reference is internal in the Doconce source, applies the
+\code{refch} syntax:
+
+\bccq
+As explained in
+refch[Chapter ref{ch:testdoc}]["Langtangen, 2012":
+"http://hplgit.github.io/doconce/test/demo_testdoc.html"
+cite{testdoc:12}][the document
+"A Document for Testing Doconce":
+"http://hplgit.github.io/doconce/test/demo_testdoc.html"
+cite{testdoc:12}], Doconce documents may include tables.
+\eccq
+The output now if \code{ch:testdoc} is not a label in the document,
+becomes in the \code{latex} and \code{pdflatex} case
+
+\bccq
+As explained in
+"Langtangen, 2012":
+"http://hplgit.github.io/doconce/test/demo_testdoc.html"
+cite{testdoc:12}, Doconce documents may include tables.
+\eccq
+That is, the internal reference \code{Chapter ...} is omitted since
+it is not meaningful to refer to an external document as "Chapter".
+The resulting rendered text in the current format \code{latex} becomes
+
+
+\begin{quote}
+As explained in
+\href{{http://hplgit.github.io/doconce/test/demo_testdoc.html}}{Langtangen, 2012}
+\cite{testdoc:12}, Doconce documents may include tables.
+\end{quote}
+
+
+Note that {\LaTeX} cannot
+have links to local files, so a complete URL on the form
+\code{http://...} must be used.
 
 And here is another example with internal references only:
-\bccq
-Generalized references are described in ref[Section ref{genrefs}][][
-the document *author1*].
-\eccq
-The text is rendered to "Generalized references are described in
-Section~\ref{genrefs}."
 
-% We are testing chapter too to see if latex output then has
-% book style rather than article style.
+\bccq
+Generalized references are described in ref[Section ref{genrefs}][dummy1][
+dummy2].
+\eccq
+The text is rendered to
+
+
+\begin{quote}
+Generalized references are described in
+Section~\ref{genrefs}.
+\end{quote}
+
 
 \chapter{Test of math}
+
+% Here we test the chapter heading to see if latex output then has
+% book style rather than article style.
 
 Inline math, $a=b$, is the only math in this document.
 
@@ -22200,6 +22924,7 @@ Inline math, $a=b$, is the only math in this document.
 
 \bibliographystyle{plain}
 \bibliography{papers}
+
 
 % ------------------- end of main content ---------------
 
@@ -22258,10 +22983,17 @@ are to external documents declared by a comment line ``#
 Externaldocuments: testdoc, mydoc`` (usually after the title, authors,
 and date). In this case the output text is ``internal cite`` and the
 LaTeX package ``xr`` is used to handle the labels in the external documents.
-If none of the two situations above applies, the ``external``
+When referring to a complete chapter (not a section in it), which
+corresponds to a complete external document, it does not make sense
+to write out ``internal cite`` since the ``internal`` reference is a
+chapter number. In such cases, the ``internal`` syntax can be used,
+and if the label is in another LaTeX document, the output is just ``cite``.
+For all
+output formats other than ``latex`` and ``pdflatex``, the ``external``
 text will be the output.
 
-Here is an example on a specific generalized reference:
+Here is an example on a specific generalized reference to a section
+in a document:
 
 .. code-block:: text
 
@@ -22269,34 +23001,128 @@ Here is an example on a specific generalized reference:
         As explained in
         ref[Section ref{subsec:ex}][in "Langtangen, 2012":
         "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex"
-        cite{testdoc:12}][a "section": "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex" in
-        the document "A Document for Testing Doconce": "http://hplgit.github.io/doconce/test/demo_testdoc.html"
-        cite{testdoc:12}], Doconce documents may include movies.
+        cite{testdoc:12}][a "section":
+        "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex" in
+        the document "A Document for Testing Doconce":
+        "http://hplgit.github.io/doconce/test/demo_testdoc.html"
+        cite{testdoc:12}], Doconce documents may include tables.
 
-This is renedered as follows:
-As explained in
-a `section <http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex>`_ in
-the document `A Document for Testing Doconce <http://hplgit.github.io/doconce/test/demo_testdoc.html>`_
-[Ref1]_, Doconce documents may include movies.
-
-And here is another example with internal references only:
+With ``latex`` or ``pdflatex`` as output, this translates to
 
 .. code-block:: text
 
 
-        Generalized references are described in ref[Section ref{genrefs}][][
-        the document *author1*].
+        As explained in
+        Section ref{subsec:ex}, Doconce documents may include tables.
 
-The text is rendered to "Generalized references are described in
-the section :ref:`genrefs`."
+if the label ``{subsec:ex}`` appears in the present Doconce source, and
+otherwise
 
-.. We are testing chapter too to see if latex output then has
+.. code-block:: text
 
-.. book style rather than article style.
+
+        As explained in
+        Section ref{subsec:ex} in "Langtangen, 2012":
+        "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex"
+        cite{testdoc:12}, Doconce documents may include tables.
+
+In a format different from ``latex`` and ``pdflatex``, the effective Doconce
+text becomes
+
+.. code-block:: text
+
+
+        As explained in
+        a "section":
+        "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex" in
+        the document "A Document for Testing Doconce":
+        "http://hplgit.github.io/doconce/test/demo_testdoc.html"
+        cite{testdoc:12}, Doconce documents may include tables.
+
+The rendered text in the current format ``sphinx`` becomes
+
+
+..
+
+    As explained in
+    a `section <http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex>`_ in
+    the document `A Document for Testing Doconce <http://hplgit.github.io/doconce/test/demo_testdoc.html>`_
+    [Ref1]_, Doconce documents may include tables.
+
+
+
+A reference to an entire external document, which is usually a chapter
+if the reference is internal in the Doconce source, applies the
+``refch`` syntax:
+
+
+.. code-block:: text
+
+
+        As explained in
+        refch[Chapter ref{ch:testdoc}]["Langtangen, 2012":
+        "http://hplgit.github.io/doconce/test/demo_testdoc.html"
+        cite{testdoc:12}][the document
+        "A Document for Testing Doconce":
+        "http://hplgit.github.io/doconce/test/demo_testdoc.html"
+        cite{testdoc:12}], Doconce documents may include tables.
+
+The output now if ``ch:testdoc`` is not a label in the document,
+becomes in the ``latex`` and ``pdflatex`` case
+
+
+.. code-block:: text
+
+
+        As explained in
+        "Langtangen, 2012":
+        "http://hplgit.github.io/doconce/test/demo_testdoc.html"
+        cite{testdoc:12}, Doconce documents may include tables.
+
+That is, the internal reference ``Chapter ...`` is omitted since
+it is not meaningful to refer to an external document as "Chapter".
+The resulting rendered text in the current format ``sphinx`` becomes
+
+
+..
+
+    As explained in
+    the document
+    `A Document for Testing Doconce <http://hplgit.github.io/doconce/test/demo_testdoc.html>`_
+    [Ref1]_, Doconce documents may include tables.
+
+
+
+Note that LaTeX cannot
+have links to local files, so a complete URL on the form
+``http://...`` must be used.
+
+And here is another example with internal references only:
+
+
+.. code-block:: text
+
+
+        Generalized references are described in ref[Section ref{genrefs}][dummy1][
+        dummy2].
+
+The text is rendered to
+
+
+..
+
+    Generalized references are described in
+    the section :ref:`genrefs`.
+
 
 
 Test of math
 %%%%%%%%%%%%
+
+.. Here we test the chapter heading to see if latex output then has
+
+.. book style rather than article style.
+
 
 Inline math, :math:`a=b`, is the only math in this document.
 
@@ -22307,6 +23133,7 @@ Inline math, :math:`a=b`, is the only math in this document.
    *Simula Research Laboratory*,
    2013,
    `http://doconce.googlecode.com/hg/test/demo_testdoc.html <http://doconce.googlecode.com/hg/test/demo_testdoc.html>`_.
+
 
 
 
@@ -22350,37 +23177,113 @@ are to external documents declared by a comment line #
 Externaldocuments: testdoc, mydoc (usually after the title, authors,
 and date). In this case the output text is internal cite and the
 LaTeX package xr is used to handle the labels in the external documents.
-If none of the two situations above applies, the external
+When referring to a complete chapter (not a section in it), which
+corresponds to a complete external document, it does not make sense
+to write out internal cite since the internal reference is a
+chapter number. In such cases, the internal syntax can be used,
+and if the label is in another LaTeX document, the output is just cite.
+For all
+output formats other than latex and pdflatex, the external
 text will be the output.
 
-Here is an example on a specific generalized reference::
+Here is an example on a specific generalized reference to a section
+in a document::
 
 
         As explained in
         ref[Section ref{subsec:ex}][in "Langtangen, 2012":
         "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex"
-        cite{testdoc:12}][a "section": "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex" in
-        the document "A Document for Testing Doconce": "http://hplgit.github.io/doconce/test/demo_testdoc.html"
-        cite{testdoc:12}], Doconce documents may include movies.
+        cite{testdoc:12}][a "section":
+        "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex" in
+        the document "A Document for Testing Doconce":
+        "http://hplgit.github.io/doconce/test/demo_testdoc.html"
+        cite{testdoc:12}], Doconce documents may include tables.
 
-This is renedered as follows:
-As explained in
-a section (http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex) in
-the document A Document for Testing Doconce (http://hplgit.github.io/doconce/test/demo_testdoc.html)
-[1], Doconce documents may include movies.
+With latex or pdflatex as output, this translates to::
+
+
+        As explained in
+        Section ref{subsec:ex}, Doconce documents may include tables.
+
+if the label {subsec:ex} appears in the present Doconce source, and
+otherwise::
+
+
+        As explained in
+        Section ref{subsec:ex} in "Langtangen, 2012":
+        "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex"
+        cite{testdoc:12}, Doconce documents may include tables.
+
+In a format different from latex and pdflatex, the effective Doconce
+text becomes::
+
+
+        As explained in
+        a "section":
+        "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex" in
+        the document "A Document for Testing Doconce":
+        "http://hplgit.github.io/doconce/test/demo_testdoc.html"
+        cite{testdoc:12}, Doconce documents may include tables.
+
+The rendered text in the current format plain becomes
+
+        As explained in
+        a section (http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex) in
+        the document A Document for Testing Doconce (http://hplgit.github.io/doconce/test/demo_testdoc.html)
+        [1], Doconce documents may include tables.
+
+
+A reference to an entire external document, which is usually a chapter
+if the reference is internal in the Doconce source, applies the
+refch syntax::
+
+
+        As explained in
+        refch[Chapter ref{ch:testdoc}]["Langtangen, 2012":
+        "http://hplgit.github.io/doconce/test/demo_testdoc.html"
+        cite{testdoc:12}][the document
+        "A Document for Testing Doconce":
+        "http://hplgit.github.io/doconce/test/demo_testdoc.html"
+        cite{testdoc:12}], Doconce documents may include tables.
+
+The output now if ch:testdoc is not a label in the document,
+becomes in the latex and pdflatex case::
+
+
+        As explained in
+        "Langtangen, 2012":
+        "http://hplgit.github.io/doconce/test/demo_testdoc.html"
+        cite{testdoc:12}, Doconce documents may include tables.
+
+That is, the internal reference Chapter ... is omitted since
+it is not meaningful to refer to an external document as "Chapter".
+The resulting rendered text in the current format plain becomes
+
+        As explained in
+        the document
+        A Document for Testing Doconce (http://hplgit.github.io/doconce/test/demo_testdoc.html)
+        [1], Doconce documents may include tables.
+
+
+Note that LaTeX cannot
+have links to local files, so a complete URL on the form
+http://... must be used.
 
 And here is another example with internal references only::
 
 
-        Generalized references are described in ref[Section ref{genrefs}][][
-        the document *author1*].
+        Generalized references are described in ref[Section ref{genrefs}][dummy1][
+        dummy2].
 
-The text is rendered to "Generalized references are described in
-the section "Generalized References"."
+The text is rendered to
+
+        Generalized references are described in
+        the section "Generalized References".
 
 
 Test of math
 %%%%%%%%%%%%
+
 
 Inline math, a=b, is the only math in this document.
 
@@ -22440,7 +23343,7 @@ Automatically generated HTML file from Doconce source
       -webkit-background-clip: padding-box;
       background-clip: padding-box;
     }
-    tt { font-family: "Courier New", Courier; }
+    tt, code { font-family: "Courier New", Courier; }
     hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
     p { text-indent: 0px; }
     p.caption { width: 80%; font-style: normal; text-align: left; }
@@ -22480,6 +23383,8 @@ Automatically generated HTML file from Doconce source
 {'highest level': 1,
  'sections': [(' Section 1 ', 1, 'sec1', 'sec1'),
               (' Subsection 1 ', 2, None, '___sec1'),
+              (' Computer code ', 3, None, '___sec2'),
+              (' Running OS commands ', 3, None, '___sec3'),
               (' Subsection 2: Testing figures ',
                2,
                'subsec:ex',
@@ -22488,23 +23393,23 @@ Automatically generated HTML file from Doconce source
                2,
                'decay:sec:theta',
                'decay:sec:theta'),
-              (' Custom Environments ', 2, None, '___sec4'),
+              (' Custom Environments ', 2, None, '___sec6'),
               (' Tables ', 2, 'subsec:table', 'subsec:table'),
               (' A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2` ',
                2,
                None,
-               '___sec6'),
-              (' Bibliography test ', 2, None, '___sec7'),
+               '___sec8'),
+              (' Bibliography test ', 2, None, '___sec9'),
               (' Example 1: Examples can be typeset as exercises ',
                2,
                'Example',
                'Example'),
               (' URLs ', 2, 'subsubsec:ex', 'subsubsec:ex'),
-              (' LaTeX Mathematics ', 2, None, '___sec10'),
-              (' Exercises ', 1, None, '___sec11'),
+              (' LaTeX Mathematics ', 1, None, '___sec12'),
+              (' Exercises ', 1, None, '___sec13'),
               (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
-              (' Remarks ', 3, None, '___sec13'),
-              (' Not an exercise ', 2, None, '___sec14'),
+              (' Remarks ', 3, None, '___sec15'),
+              (' Not an exercise ', 2, None, '___sec16'),
               (' Project 3: Compute a Probability ',
                2,
                'demo:ex:2',
@@ -22513,19 +23418,19 @@ Automatically generated HTML file from Doconce source
                2,
                'proj:circle1',
                'proj:circle1'),
-              (' Remarks ', 3, None, '___sec17'),
+              (' Remarks ', 3, None, '___sec19'),
               (' Exercise 5: Determine some Distance ',
                2,
                'exer:dist',
                'exer:dist'),
-              (' Remarks ', 3, None, '___sec19'),
+              (' Remarks ', 3, None, '___sec21'),
               (' Some exercise without the "Exercise:" prefix ',
                2,
                None,
-               '___sec20'),
-              (' Example 7: Just an example ', 2, None, '___sec21'),
-              (' Here goes another section ', 1, None, '___sec22'),
-              (' More Exercises ', 1, None, '___sec23'),
+               '___sec22'),
+              (' Example 7: Just an example ', 2, None, '___sec23'),
+              (' Here goes another section ', 1, None, '___sec24'),
+              (' More Exercises ', 1, None, '___sec25'),
               (' Exercise 8: Make references to projects and problems ',
                2,
                'exer:some:formula',
@@ -22534,11 +23439,11 @@ Automatically generated HTML file from Doconce source
                2,
                'exer:you',
                'exer:you'),
-              (' References ', 1, None, '___sec26'),
-              (' Appendix: Just for testing; part I ', 1, None, '___sec27'),
-              (' A subsection within an appendix ', 2, None, '___sec28'),
-              (' Appendix: Just for testing; part II ', 1, None, '___sec29'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec30'),
+              (' References ', 1, None, '___sec28'),
+              (' Appendix: Just for testing; part I ', 1, None, '___sec29'),
+              (' A subsection within an appendix ', 2, None, '___sec30'),
+              (' Appendix: Just for testing; part II ', 1, None, '___sec31'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec32'),
               (' Appendix: Testing identical titles ',
                2,
                'test:title:id1',
@@ -22547,12 +23452,12 @@ Automatically generated HTML file from Doconce source
                2,
                'test:title:id2',
                'test:title:id2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec33'),
-              (' Appendix: Testing inline comments ', 2, None, '___sec34'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec35'),
+              (' Appendix: Testing inline comments ', 2, None, '___sec36'),
               (' Appendix: Testing headings ending with `verbatim inline` ',
                2,
                None,
-               '___sec35')]}
+               '___sec37')]}
 end of tocinfo -->
 
 <body>
@@ -22612,7 +23517,7 @@ $$
 <center><h1>A Document for Testing Doconce</h1></center>  <!-- document title -->
 
 <p>
-<!-- author(s): Hans Petter Langtangen, Kaare Dump, A. Dummy Author, I. S. Overworked, and J. Doe -->
+<!-- author(s): Hans Petter Langtangen, Kaare Dump, A. Dummy Author, I. S. Overworked and Outburned, and J. Doe -->
 
 <center>
 <b>Hans Petter Langtangen</b> [1, 2] (<tt>hpl at simula.no</tt>)
@@ -22627,7 +23532,7 @@ $$
 </center>
 
 <center>
-<b>I. S. Overworked</b> [4, 5, 6, 7]
+<b>I. S. Overworked and Outburned</b> [4, 5, 6, 7]
 </center>
 
 <center>
@@ -22640,7 +23545,7 @@ $$
 
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
-<center>[3] <b>Segfault Inc, Cyberspace</b></center>
+<center>[3] <b>Segfault, Cyberspace</b></center>
 <center>[4] <b>Inst1</b></center>
 <center>[5] <b>Inst2, Somewhere</b></center>
 <center>[6] <b>Third Inst, Elsewhere</b></center>
@@ -22652,41 +23557,43 @@ $$
 
 <p>
 <a href="._testdoc001.html#sec1"> Section 1 </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec1"> Subsection 1 </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#subsec:ex"> Subsection 2: Testing figures </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec4"> Custom Environments </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#subsec:table"> Tables </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec6"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec7"> Bibliography test </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#Example"> Example 1: Examples can be typeset as exercises </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#subsubsec:ex"> URLs </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec10"> LaTeX Mathematics </a><br>
-<a href="._testdoc002.html#___sec11"> Exercises </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec1"> Subsection 1 </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec2"> Computer code </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec3"> Running OS commands </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#subsec:ex"> Subsection 2: Testing figures </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec6"> Custom Environments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#subsec:table"> Tables </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec8"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec9"> Bibliography test </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#Example"> Example 1: Examples can be typeset as exercises </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#subsubsec:ex"> URLs </a><br>
+<a href="._testdoc002.html#___sec12"> LaTeX Mathematics </a><br>
+<a href="._testdoc002.html#___sec13"> Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#demo:ex:1"> Problem 2: Flip a Coin </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec13"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec14"> Not an exercise </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec15"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec16"> Not an exercise </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#demo:ex:2"> Project 3: Compute a Probability </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec17"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#exer:dist"> Exercise 5: Determine some Distance </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec19"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec20"> Some exercise without the "Exercise:" prefix </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec21"> Example 7: Just an example </a><br>
-<a href="._testdoc002.html#___sec22"> Here goes another section </a><br>
-<a href="._testdoc002.html#___sec23"> More Exercises </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#exer:dist"> Exercise 5: Determine some Distance </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec21"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec22"> Some exercise without the "Exercise:" prefix </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec23"> Example 7: Just an example </a><br>
+<a href="._testdoc002.html#___sec24"> Here goes another section </a><br>
+<a href="._testdoc002.html#___sec25"> More Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#exer:some:formula"> Exercise 8: Make references to projects and problems </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#exer:you"> Project 9: References in a headings do not work well in html </a><br>
-<a href="._testdoc002.html#___sec26"> References </a><br>
-<a href="._testdoc002.html#___sec27"> Appendix: Just for testing; part I </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec28"> A subsection within an appendix </a><br>
-<a href="._testdoc002.html#___sec29"> Appendix: Just for testing; part II </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec30"> Appendix: Testing identical titles </a><br>
+<a href="._testdoc002.html#___sec28"> References </a><br>
+<a href="._testdoc002.html#___sec29"> Appendix: Just for testing; part I </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec30"> A subsection within an appendix </a><br>
+<a href="._testdoc002.html#___sec31"> Appendix: Just for testing; part II </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec32"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#test:title:id1"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#test:title:id2"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec33"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec34"> Appendix: Testing inline comments </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec35"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec35"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec36"> Appendix: Testing inline comments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec37"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
 
 <p>
 <p>
@@ -22749,7 +23656,7 @@ Automatically generated HTML file from Doconce source
       -webkit-background-clip: padding-box;
       background-clip: padding-box;
     }
-    tt { font-family: "Courier New", Courier; }
+    tt, code { font-family: "Courier New", Courier; }
     hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
     p { text-indent: 0px; }
     p.caption { width: 80%; font-style: normal; text-align: left; }
@@ -22789,6 +23696,8 @@ Automatically generated HTML file from Doconce source
 {'highest level': 1,
  'sections': [(' Section 1 ', 1, 'sec1', 'sec1'),
               (' Subsection 1 ', 2, None, '___sec1'),
+              (' Computer code ', 3, None, '___sec2'),
+              (' Running OS commands ', 3, None, '___sec3'),
               (' Subsection 2: Testing figures ',
                2,
                'subsec:ex',
@@ -22797,23 +23706,23 @@ Automatically generated HTML file from Doconce source
                2,
                'decay:sec:theta',
                'decay:sec:theta'),
-              (' Custom Environments ', 2, None, '___sec4'),
+              (' Custom Environments ', 2, None, '___sec6'),
               (' Tables ', 2, 'subsec:table', 'subsec:table'),
               (' A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2` ',
                2,
                None,
-               '___sec6'),
-              (' Bibliography test ', 2, None, '___sec7'),
+               '___sec8'),
+              (' Bibliography test ', 2, None, '___sec9'),
               (' Example 1: Examples can be typeset as exercises ',
                2,
                'Example',
                'Example'),
               (' URLs ', 2, 'subsubsec:ex', 'subsubsec:ex'),
-              (' LaTeX Mathematics ', 2, None, '___sec10'),
-              (' Exercises ', 1, None, '___sec11'),
+              (' LaTeX Mathematics ', 1, None, '___sec12'),
+              (' Exercises ', 1, None, '___sec13'),
               (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
-              (' Remarks ', 3, None, '___sec13'),
-              (' Not an exercise ', 2, None, '___sec14'),
+              (' Remarks ', 3, None, '___sec15'),
+              (' Not an exercise ', 2, None, '___sec16'),
               (' Project 3: Compute a Probability ',
                2,
                'demo:ex:2',
@@ -22822,19 +23731,19 @@ Automatically generated HTML file from Doconce source
                2,
                'proj:circle1',
                'proj:circle1'),
-              (' Remarks ', 3, None, '___sec17'),
+              (' Remarks ', 3, None, '___sec19'),
               (' Exercise 5: Determine some Distance ',
                2,
                'exer:dist',
                'exer:dist'),
-              (' Remarks ', 3, None, '___sec19'),
+              (' Remarks ', 3, None, '___sec21'),
               (' Some exercise without the "Exercise:" prefix ',
                2,
                None,
-               '___sec20'),
-              (' Example 7: Just an example ', 2, None, '___sec21'),
-              (' Here goes another section ', 1, None, '___sec22'),
-              (' More Exercises ', 1, None, '___sec23'),
+               '___sec22'),
+              (' Example 7: Just an example ', 2, None, '___sec23'),
+              (' Here goes another section ', 1, None, '___sec24'),
+              (' More Exercises ', 1, None, '___sec25'),
               (' Exercise 8: Make references to projects and problems ',
                2,
                'exer:some:formula',
@@ -22843,11 +23752,11 @@ Automatically generated HTML file from Doconce source
                2,
                'exer:you',
                'exer:you'),
-              (' References ', 1, None, '___sec26'),
-              (' Appendix: Just for testing; part I ', 1, None, '___sec27'),
-              (' A subsection within an appendix ', 2, None, '___sec28'),
-              (' Appendix: Just for testing; part II ', 1, None, '___sec29'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec30'),
+              (' References ', 1, None, '___sec28'),
+              (' Appendix: Just for testing; part I ', 1, None, '___sec29'),
+              (' A subsection within an appendix ', 2, None, '___sec30'),
+              (' Appendix: Just for testing; part II ', 1, None, '___sec31'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec32'),
               (' Appendix: Testing identical titles ',
                2,
                'test:title:id1',
@@ -22856,12 +23765,12 @@ Automatically generated HTML file from Doconce source
                2,
                'test:title:id2',
                'test:title:id2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec33'),
-              (' Appendix: Testing inline comments ', 2, None, '___sec34'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec35'),
+              (' Appendix: Testing inline comments ', 2, None, '___sec36'),
               (' Appendix: Testing headings ending with `verbatim inline` ',
                2,
                None,
-               '___sec35')]}
+               '___sec37')]}
 end of tocinfo -->
 
 <body>
@@ -22977,241 +23886,14 @@ Here is a nested list:
 Here is a reference to Equation <a href="._testdoc002.html#mjx-eqn-3">(3)</a>.
 This equation appears in another part if this document is split.
 
-<p>
-<p>
-<!-- begin bottom navigation -->
-<a href="._testdoc000.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
-
-<a href="._testdoc002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
-<!-- end bottom navigation -->
-
-<!-- ------------------- end of main content --------------- -->
-
-
-</body>
-</html>
-
-************** File: ._testdoc002.html *****************
-<!DOCTYPE html>
-<!--
-Automatically generated HTML file from Doconce source
-(https://github.com/hplgit/doconce/)
--->
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
-<meta name="description" content="A Document for Testing Doconce">
-<meta name="keywords" content="figures,movies,index with subindex,index, with comma, and one more">
-
-
-
-<style type="text/css">
-    /* solarized style */
-    body {
-      margin:5;
-      padding:0;
-      border:0;	/* Remove the border around the viewport in old versions of IE */
-      width:100%;
-      background: #fdf6e3;
-      min-width:600px;	/* Minimum width of layout - remove if not required */
-      font-family: Verdana, Helvetica, Arial, sans-serif;
-      font-size: 1.0em;
-      line-height: 1.3em;
-      color: #657b83;
-    }
-    a { color: #657b83; text-decoration:none; }
-    a:hover { color: #b58900; background: #eee8d5; text-decoration:none; }
-    h1, h2, h3 { margin:.8em 0 .2em 0; padding:0; line-height: 125%; }
-    h2 { font-variant: small-caps; }
-    pre {
-      background: #fdf6e3;
-      -webkit-box-shadow: inset 0 0 2px #000000;
-      -moz-box-shadow: inset 0 0 2px #000000;
-      box-shadow: inset 0 0 2px #000000;
-      color: #586e75;
-      margin-left: 0px;
-      font-family: 'Droid Sans Mono', monospace;
-      padding: 2px;
-      -webkit-border-radius: 4px;
-      -moz-border-radius: 4px;
-      border-radius: 4px;
-      -moz-background-clip: padding;
-      -webkit-background-clip: padding-box;
-      background-clip: padding-box;
-    }
-    tt { font-family: "Courier New", Courier; }
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    p { text-indent: 0px; }
-    p.caption { width: 80%; font-style: normal; text-align: left; }
-    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .alert-text-small   { font-size: 80%;  }
-    .alert-text-large   { font-size: 130%; }
-    .alert-text-normal  { font-size: 90%;  }
-    .alert {
-             padding:8px 35px 8px 14px; margin-bottom:18px;
-             text-shadow:0 1px 0 rgba(255,255,255,0.5);
-             border:1px solid #FFBF00;
-             border-radius: 4px;
-             -webkit-border-radius: 4px;
-             -moz-border-radius: 4px;
-             color: #555;
-             background-color: #fbeed5;
-             background-position: 10px 5px;
-             background-repeat: no-repeat;
-             background-size: 38px;
-             padding-left: 55px;
-             width: 75%;
-     }
-     .alert-block {padding-top:14px; padding-bottom:14px}
-     .alert-block > p, .alert-block > ul {margin-bottom:1em}
-     .alert li {margin-top: 1em}
-     .alert-block p+p {margin-top:5px}
-     .alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
-     .alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
-     .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
-     .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
-
-</style>
-
-</head>
-
-<!-- tocinfo
-{'highest level': 1,
- 'sections': [(' Section 1 ', 1, 'sec1', 'sec1'),
-              (' Subsection 1 ', 2, None, '___sec1'),
-              (' Subsection 2: Testing figures ',
-               2,
-               'subsec:ex',
-               'subsec:ex'),
-              (' The $\\theta$ parameter (not $\\nabla$?) ',
-               2,
-               'decay:sec:theta',
-               'decay:sec:theta'),
-              (' Custom Environments ', 2, None, '___sec4'),
-              (' Tables ', 2, 'subsec:table', 'subsec:table'),
-              (' A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2` ',
-               2,
-               None,
-               '___sec6'),
-              (' Bibliography test ', 2, None, '___sec7'),
-              (' Example 1: Examples can be typeset as exercises ',
-               2,
-               'Example',
-               'Example'),
-              (' URLs ', 2, 'subsubsec:ex', 'subsubsec:ex'),
-              (' LaTeX Mathematics ', 2, None, '___sec10'),
-              (' Exercises ', 1, None, '___sec11'),
-              (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
-              (' Remarks ', 3, None, '___sec13'),
-              (' Not an exercise ', 2, None, '___sec14'),
-              (' Project 3: Compute a Probability ',
-               2,
-               'demo:ex:2',
-               'demo:ex:2'),
-              (' Project 4: Explore Distributions of Random Circles ',
-               2,
-               'proj:circle1',
-               'proj:circle1'),
-              (' Remarks ', 3, None, '___sec17'),
-              (' Exercise 5: Determine some Distance ',
-               2,
-               'exer:dist',
-               'exer:dist'),
-              (' Remarks ', 3, None, '___sec19'),
-              (' Some exercise without the "Exercise:" prefix ',
-               2,
-               None,
-               '___sec20'),
-              (' Example 7: Just an example ', 2, None, '___sec21'),
-              (' Here goes another section ', 1, None, '___sec22'),
-              (' More Exercises ', 1, None, '___sec23'),
-              (' Exercise 8: Make references to projects and problems ',
-               2,
-               'exer:some:formula',
-               'exer:some:formula'),
-              (' Project 9: References in a headings do not work well in html ',
-               2,
-               'exer:you',
-               'exer:you'),
-              (' References ', 1, None, '___sec26'),
-              (' Appendix: Just for testing; part I ', 1, None, '___sec27'),
-              (' A subsection within an appendix ', 2, None, '___sec28'),
-              (' Appendix: Just for testing; part II ', 1, None, '___sec29'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec30'),
-              (' Appendix: Testing identical titles ',
-               2,
-               'test:title:id1',
-               'test:title:id1'),
-              (' Appendix: Testing identical titles ',
-               2,
-               'test:title:id2',
-               'test:title:id2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec33'),
-              (' Appendix: Testing inline comments ', 2, None, '___sec34'),
-              (' Appendix: Testing headings ending with `verbatim inline` ',
-               2,
-               None,
-               '___sec35')]}
-end of tocinfo -->
-
-<body>
-
-
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  TeX: {
-     equationNumbers: {  autoNumber: "none"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
-  }
-});
-</script>
-<script type="text/javascript"
- src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
-
-<!-- newcommands_bfmath.tex -->
-$$
-\renewcommand{\u}{\pmb{u}}
-
-\newcommand{\xbm}{\boldsymbol{x}}
-\newcommand{\normalvecbm}{\boldsymbol{n}}
-\newcommand{\ubm}{\boldsymbol{u}}
-$$
-
-
-<!-- newcommands_replace.tex -->
-$$
-\newcommand{\x}{\pmb{x}}
-\newcommand{\normalvec}{\pmb{n}}
-\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
-\newcommand{\halfi}{1/2}
-\newcommand{\half}{\frac{1}{2}}
-\newcommand{\report}{test report}
-$$
-
-
-
-
-    
-<a name="part0002"></a>
-<!-- begin top navigation -->
-<a href="._testdoc001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
-<!-- end top navigation -->
-
-<p>
-<!-- !split and check if these extra words are included properly in the comment -->
-
 <h3>Subsection 1  <a name="___sec1"></a></h3>
 
 <p>
-More text, with a reference back to the section <a href="._testdoc001.html#sec1">Section 1</a> and further
+More text, with a reference back to the section <a href="#sec1">Section 1</a> and further
 to the section <a href="#subsubsec:ex">URLs</a>. 
 <!-- sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console -->
+
+<h4>Computer code  <a name="___sec2"></a></h4>
 
 <p>
 Let's do some copying from files too. First from subroutine up to the very end,
@@ -23480,7 +24162,22 @@ green color containing a linebreak.
 And one more.</font> Some formats will only display this correctly when
 HTML is the output format.
 
-<h3>Subsection 2: Testing figures <a name="subsec:ex"></a></h3>
+<h4>Running OS commands  <a name="___sec3"></a></h4>
+
+<p>
+
+<!-- code=bash (from !bc sys) typeset with pygments style "emacs" -->
+<table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; python -c <span style="color: #BB4444">&#39;print &quot;Testing\noutput\nfrom\nPython.&quot;&#39;</span>
+Testing
+output
+from
+Python.
+</pre></div>
+</td></tr></table><h3>Subsection 2: Testing figures <a name="subsec:ex"></a></h3>
 
 <p>
 Test of figures. In particular we refer to Figure <a href="#fig:impact">1</a> in which
@@ -23578,7 +24275,7 @@ $$
 \end{align}
 $$
 
-<h3>Custom Environments  <a name="___sec4"></a></h3>
+<h3>Custom Environments  <a name="___sec6"></a></h3>
 
 <p>
 Here is an attempt to create a theorem environment via Mako
@@ -23653,7 +24350,8 @@ one table:
 </table>
 <p>
 And one with math headings (that are expanded and must be treated
-accordingly) and verbatim heading and entry:
+accordingly), verbatim heading and entry, and no space around the pipe
+symbol:
 
 <p>
 <table border="1">
@@ -23669,7 +24367,7 @@ accordingly) and verbatim heading and entry:
 <p>
 And add one with verbatim headings (with underscores),
 and rows starting with <code>|-</code> because of a negative number,
-and <code>|</code> right after verbatim word (with no space):
+and <code>|</code> right before and after verbatim word (with no space):
 
 <p>
 <table border="1">
@@ -23679,42 +24377,59 @@ and <code>|</code> right after verbatim word (with no space):
 <tr><td align="right">   10                              </td> <td align="right">   17.74                           </td> <td align="right">   -4.50                           </td> <td align="right">   9.96                            </td> </tr>
 <tr><td align="right">   0                               </td> <td align="right">   -9.19                           </td> <td align="right">   4.13                            </td> <td align="right">   -0.26                           </td> </tr>
 </table>
+<p>
+Finally, a table with math
+(<code>bm</code> that expands to <code>boldsymbol</code>, was tricky, but
+cleanly handled now)
+and URLs.
 
-<h3>A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code>  <a name="___sec6"></a></h3>
+<p>
+<!-- Mako code to expand URLs in the table -->
+<!-- (These types of tables did not work before Jan 2014) -->
+
+<p>
+<table border="1">
+<tr></tr>
+<tr><td align="center">   \( \mathcal{L}=0 \)                                                                                                                        </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0080.png"><img src="../doc/src/manual/mov/wave_frames/frame_0080.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0085.png"><img src="../doc/src/manual/mov/wave_frames/frame_0085.png" width="300"></a>    </td> </tr>
+<tr><td align="center">   \( a=b \)                                                                                                                                  </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0090.png"><img src="../doc/src/manual/mov/wave_frames/frame_0090.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0095.png"><img src="../doc/src/manual/mov/wave_frames/frame_0095.png" width="300"></a>    </td> </tr>
+<tr><td align="center">   \( \nabla\cdot\boldsymbol{u} =0  \)                                                                                                        </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0100.png"><img src="../doc/src/manual/mov/wave_frames/frame_0100.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0105.png"><img src="../doc/src/manual/mov/wave_frames/frame_0105.png" width="300"></a>    </td> </tr>
+</table>
+
+<h3>A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code>  <a name="___sec8"></a></h3>
 
 <p>
 <b>Files <code>my_file_v1.py</code> and <code>my_file_v2.py</code> define some math \( a_{i-1} \).</b>
 Here is
 some text.
 
-<h3>Bibliography test  <a name="___sec7"></a></h3>
+<h3>Bibliography test  <a name="___sec9"></a></h3>
 
 <p>
-Here is an example: <a href="#Langtangen_Pedersen_2002">[1]</a> discussed propagation of
-large destructive water waves, <a href="#Langtangen_et_al_2002">[2]</a> gave
+Here is an example: <a href="._testdoc002.html#Langtangen_Pedersen_2002">[1]</a> discussed propagation of
+large destructive water waves, <a href="._testdoc002.html#Langtangen_et_al_2002">[2]</a> gave
 an overview of numerical methods for solving the Navier-Stokes equations,
 while the use of Backward Kolmogorov equations for analyzing
-random vibrations was investigated in <a href="#Langtangen_1994a">[3]</a>.
-The book chapter <a href="#Mardal_et_al_2003a">[4]</a> contains information on
+random vibrations was investigated in <a href="._testdoc002.html#Langtangen_1994a">[3]</a>.
+The book chapter <a href="._testdoc002.html#Mardal_et_al_2003a">[4]</a> contains information on
 C++ software tools for programming multigrid methods. A real retro
-reference is <a href="#Langtangen_1988d">[5]</a> about a big FORTRAN package.
+reference is <a href="._testdoc002.html#Langtangen_1988d">[5]</a> about a big FORTRAN package.
 Multiple references are also possible, e.g., see
-<a href="#Langtangen_Pedersen_2002">[1]</a> <a href="#Mardal_et_al_2003a">[4]</a>.
+<a href="._testdoc002.html#Langtangen_Pedersen_2002">[1]</a> <a href="._testdoc002.html#Mardal_et_al_2003a">[4]</a>.
 
 <p>
 We need to cite more than 10 papers to reproduce an old formatting
 problem with blanks in the keys in reST format:
-<a href="#Langtangen_1992c">[6]</a> <a href="#Langtangen_1994a">[3]</a> <a href="#Mortensen_et_al_2011">[7]</a> <a href="#Langtangen_Pedersen_2002">[1]</a>
+<a href="._testdoc002.html#Langtangen_1992c">[6]</a> <a href="._testdoc002.html#Langtangen_1994a">[3]</a> <a href="._testdoc002.html#Mortensen_et_al_2011">[7]</a> <a href="._testdoc002.html#Langtangen_Pedersen_2002">[1]</a>
 and
-<a href="#Langtangen_et_al_2002">[2]</a> <a href="#Glimsdal_et_al_20006">[8]</a> <a href="#Rahman_et_al_2006b">[9]</a> <a href="#Haga_et_al_2011a">[10]</a> <a href="#Langtangen_2003a">[11]</a> <a href="#Langtangen_2008a">[12]</a> <a href="#Langtangen:95">[13]</a>
+<a href="._testdoc002.html#Langtangen_et_al_2002">[2]</a> <a href="._testdoc002.html#Glimsdal_et_al_20006">[8]</a> <a href="._testdoc002.html#Rahman_et_al_2006b">[9]</a> <a href="._testdoc002.html#Haga_et_al_2011a">[10]</a> <a href="._testdoc002.html#Langtangen_2003a">[11]</a> <a href="._testdoc002.html#Langtangen_2008a">[12]</a> <a href="._testdoc002.html#Langtangen:95">[13]</a>
 and all the work of
-<a href="#Langtangen_2012">[14]</a> <a href="#Mardal_et_al_2003a">[4]</a> <a href="#Jeberg_et_al_2004">[15]</a> as well as
-old work <a href="#Langtangen_1988d">[5]</a> and <a href="#Langtangen_1989e">[16]</a>, and the
-talk <a href="#Langtangen_talk_2007a">[17]</a>.
-Langtangen also had two thesis <a href="#Langtangen:85">[18]</a> <a href="#Langtangen_1989e">[16]</a>.
+<a href="._testdoc002.html#Langtangen_2012">[14]</a> <a href="._testdoc002.html#Mardal_et_al_2003a">[4]</a> <a href="._testdoc002.html#Jeberg_et_al_2004">[15]</a> as well as
+old work <a href="._testdoc002.html#Langtangen_1988d">[5]</a> and <a href="._testdoc002.html#Langtangen_1989e">[16]</a>, and the
+talk <a href="._testdoc002.html#Langtangen_talk_2007a">[17]</a>.
+Langtangen also had two thesis <a href="._testdoc002.html#Langtangen:85">[18]</a> <a href="._testdoc002.html#Langtangen_1989e">[16]</a>.
 More retro citations are
-the old ME-IN323 book <a href="#Langtangen:91">[19]</a> and the
-<a href="#Langtangen:94b">[20]</a> OONSKI '94 paper.
+the old ME-IN323 book <a href="._testdoc002.html#Langtangen:91">[19]</a> and the
+<a href="._testdoc002.html#Langtangen:94b">[20]</a> OONSKI '94 paper.
 
 <p>
 <!-- --- begin exercise --- -->
@@ -23802,7 +24517,238 @@ More tough tests: repeated URLs whose footnotes when using the
 <a href="http://google.com" target="_self">google</a>, which should result in exactly three
 footnotes.
 
-<h3>LaTeX Mathematics  <a name="___sec10"></a></h3>
+<p>
+<p>
+<!-- begin bottom navigation -->
+<a href="._testdoc000.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+
+<a href="._testdoc002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<!-- end bottom navigation -->
+
+<!-- ------------------- end of main content --------------- -->
+
+
+</body>
+</html>
+
+************** File: ._testdoc002.html *****************
+<!DOCTYPE html>
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="A Document for Testing Doconce">
+<meta name="keywords" content="figures,movies,index with subindex,index, with comma, and one more">
+
+
+
+<style type="text/css">
+    /* solarized style */
+    body {
+      margin:5;
+      padding:0;
+      border:0;	/* Remove the border around the viewport in old versions of IE */
+      width:100%;
+      background: #fdf6e3;
+      min-width:600px;	/* Minimum width of layout - remove if not required */
+      font-family: Verdana, Helvetica, Arial, sans-serif;
+      font-size: 1.0em;
+      line-height: 1.3em;
+      color: #657b83;
+    }
+    a { color: #657b83; text-decoration:none; }
+    a:hover { color: #b58900; background: #eee8d5; text-decoration:none; }
+    h1, h2, h3 { margin:.8em 0 .2em 0; padding:0; line-height: 125%; }
+    h2 { font-variant: small-caps; }
+    pre {
+      background: #fdf6e3;
+      -webkit-box-shadow: inset 0 0 2px #000000;
+      -moz-box-shadow: inset 0 0 2px #000000;
+      box-shadow: inset 0 0 2px #000000;
+      color: #586e75;
+      margin-left: 0px;
+      font-family: 'Droid Sans Mono', monospace;
+      padding: 2px;
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      border-radius: 4px;
+      -moz-background-clip: padding;
+      -webkit-background-clip: padding-box;
+      background-clip: padding-box;
+    }
+    tt, code { font-family: "Courier New", Courier; }
+    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    p { text-indent: 0px; }
+    p.caption { width: 80%; font-style: normal; text-align: left; }
+    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    .alert-text-small   { font-size: 80%;  }
+    .alert-text-large   { font-size: 130%; }
+    .alert-text-normal  { font-size: 90%;  }
+    .alert {
+             padding:8px 35px 8px 14px; margin-bottom:18px;
+             text-shadow:0 1px 0 rgba(255,255,255,0.5);
+             border:1px solid #FFBF00;
+             border-radius: 4px;
+             -webkit-border-radius: 4px;
+             -moz-border-radius: 4px;
+             color: #555;
+             background-color: #fbeed5;
+             background-position: 10px 5px;
+             background-repeat: no-repeat;
+             background-size: 38px;
+             padding-left: 55px;
+             width: 75%;
+     }
+     .alert-block {padding-top:14px; padding-bottom:14px}
+     .alert-block > p, .alert-block > ul {margin-bottom:1em}
+     .alert li {margin-top: 1em}
+     .alert-block p+p {margin-top:5px}
+     .alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
+     .alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
+     .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
+     .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
+
+</style>
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' Section 1 ', 1, 'sec1', 'sec1'),
+              (' Subsection 1 ', 2, None, '___sec1'),
+              (' Computer code ', 3, None, '___sec2'),
+              (' Running OS commands ', 3, None, '___sec3'),
+              (' Subsection 2: Testing figures ',
+               2,
+               'subsec:ex',
+               'subsec:ex'),
+              (' The $\\theta$ parameter (not $\\nabla$?) ',
+               2,
+               'decay:sec:theta',
+               'decay:sec:theta'),
+              (' Custom Environments ', 2, None, '___sec6'),
+              (' Tables ', 2, 'subsec:table', 'subsec:table'),
+              (' A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2` ',
+               2,
+               None,
+               '___sec8'),
+              (' Bibliography test ', 2, None, '___sec9'),
+              (' Example 1: Examples can be typeset as exercises ',
+               2,
+               'Example',
+               'Example'),
+              (' URLs ', 2, 'subsubsec:ex', 'subsubsec:ex'),
+              (' LaTeX Mathematics ', 1, None, '___sec12'),
+              (' Exercises ', 1, None, '___sec13'),
+              (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
+              (' Remarks ', 3, None, '___sec15'),
+              (' Not an exercise ', 2, None, '___sec16'),
+              (' Project 3: Compute a Probability ',
+               2,
+               'demo:ex:2',
+               'demo:ex:2'),
+              (' Project 4: Explore Distributions of Random Circles ',
+               2,
+               'proj:circle1',
+               'proj:circle1'),
+              (' Remarks ', 3, None, '___sec19'),
+              (' Exercise 5: Determine some Distance ',
+               2,
+               'exer:dist',
+               'exer:dist'),
+              (' Remarks ', 3, None, '___sec21'),
+              (' Some exercise without the "Exercise:" prefix ',
+               2,
+               None,
+               '___sec22'),
+              (' Example 7: Just an example ', 2, None, '___sec23'),
+              (' Here goes another section ', 1, None, '___sec24'),
+              (' More Exercises ', 1, None, '___sec25'),
+              (' Exercise 8: Make references to projects and problems ',
+               2,
+               'exer:some:formula',
+               'exer:some:formula'),
+              (' Project 9: References in a headings do not work well in html ',
+               2,
+               'exer:you',
+               'exer:you'),
+              (' References ', 1, None, '___sec28'),
+              (' Appendix: Just for testing; part I ', 1, None, '___sec29'),
+              (' A subsection within an appendix ', 2, None, '___sec30'),
+              (' Appendix: Just for testing; part II ', 1, None, '___sec31'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec32'),
+              (' Appendix: Testing identical titles ',
+               2,
+               'test:title:id1',
+               'test:title:id1'),
+              (' Appendix: Testing identical titles ',
+               2,
+               'test:title:id2',
+               'test:title:id2'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec35'),
+              (' Appendix: Testing inline comments ', 2, None, '___sec36'),
+              (' Appendix: Testing headings ending with `verbatim inline` ',
+               2,
+               None,
+               '___sec37')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+
+<!-- newcommands_bfmath.tex -->
+$$
+\renewcommand{\u}{\pmb{u}}
+
+\newcommand{\xbm}{\boldsymbol{x}}
+\newcommand{\normalvecbm}{\boldsymbol{n}}
+\newcommand{\ubm}{\boldsymbol{u}}
+$$
+
+
+<!-- newcommands_replace.tex -->
+$$
+\newcommand{\x}{\pmb{x}}
+\newcommand{\normalvec}{\pmb{n}}
+\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
+\newcommand{\halfi}{1/2}
+\newcommand{\half}{\frac{1}{2}}
+\newcommand{\report}{test report}
+$$
+
+
+
+
+    
+<a name="part0002"></a>
+<!-- begin top navigation -->
+<a href="._testdoc001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+<!-- end top navigation -->
+
+<p>
+<!-- !split and check if these extra words are included properly in the comment -->
+
+<h2>LaTeX Mathematics  <a name="___sec12"></a></h2>
 
 <p>
 Here is an equation without label using backslash-bracket environment:
@@ -23904,7 +24850,7 @@ Below, we have <a href="#demo:ex:1">Problem 2: Flip a Coin</a> and <a href="#dem
 as well as <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a> and <a href="#exer:you">Project 9: References in a headings do not work well in html</a>, and in
 between there we have <a href="#exer:some:formula">Exercise 8: Make references to projects and problems</a>.
 
-<h2>Exercises  <a name="___sec11"></a></h2>
+<h2>Exercises  <a name="___sec13"></a></h2>
 
 <p>
 <!-- --- begin exercise --- -->
@@ -23926,7 +24872,7 @@ let the program count the number of heads.
 <p>
 <!-- Test syntax error -->
 
-<h4>Remarks  <a name="___sec13"></a></h4>
+<h4>Remarks  <a name="___sec15"></a></h4>
 
 <p>
 Remarks with such a subsubsection heading would previously mark
@@ -23975,7 +24921,7 @@ Filenames: <code>flip_coin.py</code>, <code>flip_coin.pdf</code>.
 <p>
 <!-- --- end exercise --- -->
 
-<h3>Not an exercise  <a name="___sec14"></a></h3>
+<h3>Not an exercise  <a name="___sec16"></a></h3>
 
 <p>
 Should be possible to stick a normal section in the middle of many
@@ -24116,7 +25062,7 @@ Filename: <code>circles.pdf</code>.
 <p>
 <!-- Closing remarks for this Project -->
 
-<h4>Remarks  <a name="___sec17"></a></h4>
+<h4>Remarks  <a name="___sec19"></a></h4>
 
 <p>
 At the very end of the exercise it may be appropriate to summarize
@@ -24235,7 +25181,7 @@ Filename: <code>subexer_b.pdf</code>.
 <p>
 <!-- Closing remarks for this Exercise -->
 
-<h4>Remarks  <a name="___sec19"></a></h4>
+<h4>Remarks  <a name="___sec21"></a></h4>
 
 <p>
 Some final closing remarks, e.g., summarizing the main findings
@@ -24248,7 +25194,7 @@ remarks will appear at the end of the typeset exercise.
 <p>
 <!-- --- begin exercise --- -->
 
-<h3>Some exercise without the "Exercise:" prefix  <a name="___sec20"></a></h3>
+<h3>Some exercise without the "Exercise:" prefix  <a name="___sec22"></a></h3>
 
 <p>
 <!-- Another minimalistic exercise -->
@@ -24275,7 +25221,7 @@ And a test that the code <code>lambda x: x+2</code> is correctly placed here:
 <p>
 <!-- --- begin exercise --- -->
 
-<h3>Example 7: Just an example  <a name="___sec21"></a></h3>
+<h3>Example 7: Just an example  <a name="___sec23"></a></h3>
 
 <p>
 <!-- This example needs the --examples_as_exercises option, otherwise -->
@@ -24292,12 +25238,12 @@ Oslo.
 <p>
 <!-- --- end exercise --- -->
 
-<h2>Here goes another section  <a name="___sec22"></a></h2>
+<h2>Here goes another section  <a name="___sec24"></a></h2>
 
 <p>
 With some text, before we continue with exercises.
 
-<h2>More Exercises  <a name="___sec23"></a></h2>
+<h2>More Exercises  <a name="___sec25"></a></h2>
 
 <p>
 <!-- --- begin exercise --- -->
@@ -24344,7 +25290,7 @@ Filename: <code>selc_composed.pdf</code>.
 <p>
 <!-- --- end exercise --- -->
 
-<h2>References  <a name="___sec26"></a></h2>
+<h2>References  <a name="___sec28"></a></h2>
 
 <p>
 <!-- begin bibliography -->
@@ -24458,22 +25404,22 @@ Filename: <code>selc_composed.pdf</code>.
 
 <!-- end bibliography -->
 
-<h2>Appendix: Just for testing; part I  <a name="___sec27"></a></h2>
+<h2>Appendix: Just for testing; part I  <a name="___sec29"></a></h2>
 
 <p>
 This is the first appendix.
 
-<h3>A subsection within an appendix  <a name="___sec28"></a></h3>
+<h3>A subsection within an appendix  <a name="___sec30"></a></h3>
 
 <p>
 Some text.
 
-<h2>Appendix: Just for testing; part II  <a name="___sec29"></a></h2>
+<h2>Appendix: Just for testing; part II  <a name="___sec31"></a></h2>
 
 <p>
 This is more stuff for an appendix.
 
-<h3>Appendix: Testing identical titles  <a name="___sec30"></a></h3>
+<h3>Appendix: Testing identical titles  <a name="___sec32"></a></h3>
 
 <p>
 Without label.
@@ -24488,7 +25434,7 @@ With label.
 <p>
 With label.
 
-<h3>Appendix: Testing identical titles  <a name="___sec33"></a></h3>
+<h3>Appendix: Testing identical titles  <a name="___sec35"></a></h3>
 
 <p>
 Without label.
@@ -24578,7 +25524,7 @@ detailed information and constitute of course very valuable readings
 when you use version control systems every day. The point now is
 to get started.
 
-<h3>Appendix: Testing inline comments  <a name="___sec34"></a></h3>
+<h3>Appendix: Testing inline comments  <a name="___sec36"></a></h3>
 
 <p>
 Projects that you want to share among several computers or project
@@ -24615,7 +25561,7 @@ systems. Numerous other tutorials contain more comprehensive material
 and in-depth explanations of the concepts and tools.</em>]</font>
 <!-- end inline comment -->
 
-<h3>Appendix: Testing headings ending with <code>verbatim inline</code>  <a name="___sec35"></a></h3>
+<h3>Appendix: Testing headings ending with <code>verbatim inline</code>  <a name="___sec37"></a></h3>
 
 <p>
 The point here is to test 1) <code>verbatim</code> code in headings, and 2)
@@ -24733,7 +25679,7 @@ Automatically generated HTML file from Doconce source
 </center>
 
 <center>
-<b>I. S. Overworked</b> [4, 5, 6, 7]
+<b>I. S. Overworked and Outburned</b> [4, 5, 6, 7]
 </center>
 
 <center>
@@ -24746,7 +25692,7 @@ Automatically generated HTML file from Doconce source
 
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
-<center>[3] <b>Segfault Inc, Cyberspace</b></center>
+<center>[3] <b>Segfault, Cyberspace</b></center>
 <center>[4] <b>Inst1</b></center>
 <center>[5] <b>Inst2, Somewhere</b></center>
 <center>[6] <b>Third Inst, Elsewhere</b></center>
@@ -24759,40 +25705,42 @@ Automatically generated HTML file from Doconce source
 <p>
 <a href="#sec1"> Section 1 </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec1"> Subsection 1 </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec2"> Computer code </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec3"> Running OS commands </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#subsec:ex"> Subsection 2: Testing figures </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#decay:sec:theta"> The $latex \theta$ parameter (not $latex \nabla$?) </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec4"> Custom Environments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec6"> Custom Environments </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#subsec:table"> Tables </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec6"> A test of verbatim words in heading with subscript $latex a_i$: <code>my_file_v1</code> and <code>my_file_v2</code> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec7"> Bibliography test </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec8"> A test of verbatim words in heading with subscript $latex a_i$: <code>my_file_v1</code> and <code>my_file_v2</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec9"> Bibliography test </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#Example"> Example 1: Examples can be typeset as exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#subsubsec:ex"> URLs </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec10"> LaTeX Mathematics </a><br>
-<a href="#___sec11"> Exercises </a><br>
+<a href="#___sec12"> LaTeX Mathematics </a><br>
+<a href="#___sec13"> Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#demo:ex:1"> Problem 2: Flip a Coin </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec13"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec14"> Not an exercise </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec15"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec16"> Not an exercise </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#demo:ex:2"> Project 3: Compute a Probability </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#proj:circle1"> Project 4: Explore Distributions of Random Circles </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec17"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#exer:dist"> Exercise 5: Determine some Distance </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec19"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec20"> Some exercise without the "Exercise:" prefix </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec21"> Example 7: Just an example </a><br>
-<a href="#___sec22"> Here goes another section </a><br>
-<a href="#___sec23"> More Exercises </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#exer:dist"> Exercise 5: Determine some Distance </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec21"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec22"> Some exercise without the "Exercise:" prefix </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec23"> Example 7: Just an example </a><br>
+<a href="#___sec24"> Here goes another section </a><br>
+<a href="#___sec25"> More Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#exer:some:formula"> Exercise 8: Make references to projects and problems </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#exer:you"> Project 9: References in a headings do not work well in html </a><br>
-<a href="#___sec26"> References </a><br>
-<a href="#___sec27"> Appendix: Just for testing; part I </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec28"> A subsection within an appendix </a><br>
-<a href="#___sec29"> Appendix: Just for testing; part II </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec30"> Appendix: Testing identical titles </a><br>
+<a href="#___sec28"> References </a><br>
+<a href="#___sec29"> Appendix: Just for testing; part I </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec30"> A subsection within an appendix </a><br>
+<a href="#___sec31"> Appendix: Just for testing; part II </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec32"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#test:title:id1"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#test:title:id2"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec33"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec34"> Appendix: Testing inline comments </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec35"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec35"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec36"> Appendix: Testing inline comments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec37"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
 
 <p>
 The format of this document is
@@ -24850,8 +25798,9 @@ This equation appears in another part if this document is split.
 
 <p>
 More text, with a reference back to the section <a href="#sec1">Section 1</a> and further
-to the section <a href="#subsubsec:ex">URLs</a>. 
+to the section <a href="#subsubsec:ex">URLs</a>.
 
+<h4>Computer code  <a name="___sec2"></a></h4>
 
 <p>
 Let's do some copying from files too. First from subroutine up to the very end,
@@ -25045,6 +25994,18 @@ green color containing a linebreak.
 And one more.</font> Some formats will only display this correctly when
 HTML is the output format.
 
+<h4>Running OS commands  <a name="___sec3"></a></h4>
+
+<p>
+
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; python -c <span style="color: #BA2121">&#39;print &quot;Testing\noutput\nfrom\nPython.&quot;&#39;</span>
+Testing
+output
+from
+Python.
+</pre></div>
+
 <h3>Subsection 2: Testing figures <a name="subsec:ex"></a></h3>
 
 <p>
@@ -25137,7 +26098,7 @@ $latex
 
  $
 
-<h3>Custom Environments  <a name="___sec4"></a></h3>
+<h3>Custom Environments  <a name="___sec6"></a></h3>
 
 <p>
 Here is an attempt to create a theorem environment via Mako
@@ -25203,11 +26164,12 @@ one table:
 </table>
 <p>
 And one with math headings (that are expanded and must be treated
-accordingly) and verbatim heading and entry:
+accordingly), verbatim heading and entry, and no space around the pipe
+symbol:
 
 <p>
 <table border="1">
-<tr><td align="center"><b>    $latex latex i$     </b></td> <td align="center"><b>   $latex latex h_i$    </b></td> <td align="center"><b> $latex latex \bar T_i$ </b></td> <td align="center"><b> <code>L_i</code> </b></td> </tr>
+<tr><td align="center"><b>    $latex i$     </b></td> <td align="center"><b>   $latex h_i$    </b></td> <td align="center"><b> $latex \bar T_i$ </b></td> <td align="center"><b> <code>L_i</code> </b></td> </tr>
 <tr><td align="left">   0                   </td> <td align="right">   0                   </td> <td align="right">   288                 </td> <td align="right">   -0.0065             </td> </tr>
 <tr><td align="left">   1                   </td> <td align="right">   11,000              </td> <td align="right">   216                 </td> <td align="right">   0.0                 </td> </tr>
 <tr><td align="left">   2                   </td> <td align="right">   20,000              </td> <td align="right">   216                 </td> <td align="right">   0.001               </td> </tr>
@@ -25219,25 +26181,38 @@ accordingly) and verbatim heading and entry:
 <p>
 And add one with verbatim headings (with underscores),
 and rows starting with <code>|-</code> because of a negative number,
-and <code>|</code> right after verbatim word (with no space):
+and <code>|</code> right before and after verbatim word (with no space):
 
 <p>
 <table border="1">
-<tr><td align="center"><b>             exact              </b></td> <td align="center"><b>        <code>v_1</code>        </b></td> <td align="center"><b> $latex latex a_i$ + <code>v_2</code> </b></td> <td align="center"><b>      <code>verb_3_</code>      </b></td> </tr>
+<tr><td align="center"><b>             exact              </b></td> <td align="center"><b>        <code>v_1</code>        </b></td> <td align="center"><b> $latex a_i$ + <code>v_2</code> </b></td> <td align="center"><b>      <code>verb_3_</code>      </b></td> </tr>
 <tr><td align="right">   9                                 </td> <td align="right">   9.62                              </td> <td align="right">   5.57                              </td> <td align="right">   8.98                              </td> </tr>
 <tr><td align="right">   -20                               </td> <td align="right">   -23.39                            </td> <td align="right">   -7.65                             </td> <td align="right">   -19.93                            </td> </tr>
 <tr><td align="right">   10                                </td> <td align="right">   17.74                             </td> <td align="right">   -4.50                             </td> <td align="right">   9.96                              </td> </tr>
 <tr><td align="right">   0                                 </td> <td align="right">   -9.19                             </td> <td align="right">   4.13                              </td> <td align="right">   -0.26                             </td> </tr>
 </table>
+<p>
+Finally, a table with math
+(<code>bm</code> that expands to <code>boldsymbol</code>, was tricky, but
+cleanly handled now)
+and URLs.
 
-<h3>A test of verbatim words in heading with subscript $latex a_i$: <code>my_file_v1</code> and <code>my_file_v2</code>  <a name="___sec6"></a></h3>
+<p>
+<table border="1">
+<tr></tr>
+<tr><td align="center">   $latex \mathcal{L}=0$                                                                                                                      </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0080.png"><img src="../doc/src/manual/mov/wave_frames/frame_0080.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0085.png"><img src="../doc/src/manual/mov/wave_frames/frame_0085.png" width="300"></a>    </td> </tr>
+<tr><td align="center">   $latex a=b$                                                                                                                                </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0090.png"><img src="../doc/src/manual/mov/wave_frames/frame_0090.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0095.png"><img src="../doc/src/manual/mov/wave_frames/frame_0095.png" width="300"></a>    </td> </tr>
+<tr><td align="center">   $latex \nabla\cdot\boldsymbol{u} =0 $                                                                                                      </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0100.png"><img src="../doc/src/manual/mov/wave_frames/frame_0100.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0105.png"><img src="../doc/src/manual/mov/wave_frames/frame_0105.png" width="300"></a>    </td> </tr>
+</table>
+
+<h3>A test of verbatim words in heading with subscript $latex a_i$: <code>my_file_v1</code> and <code>my_file_v2</code>  <a name="___sec8"></a></h3>
 
 <p>
 <b>Files <code>my_file_v1.py</code> and <code>my_file_v2.py</code> define some math $latex a_{i-1}$.</b>
 Here is
 some text.
 
-<h3>Bibliography test  <a name="___sec7"></a></h3>
+<h3>Bibliography test  <a name="___sec9"></a></h3>
 
 <p>
 Here is an example: <a href="#Langtangen_Pedersen_2002">[1]</a> discussed propagation of
@@ -25337,7 +26312,7 @@ More tough tests: repeated URLs whose footnotes when using the
 <a href="http://google.com" target="_blank">google</a>, which should result in exactly three
 footnotes.
 
-<h3>LaTeX Mathematics  <a name="___sec10"></a></h3>
+<h2>LaTeX Mathematics  <a name="___sec12"></a></h2>
 
 <p>
 Here is an equation without label using backslash-bracket environment:
@@ -25443,7 +26418,7 @@ Below, we have <a href="#demo:ex:1">Problem 2: Flip a Coin</a> and <a href="#dem
 as well as <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a> and <a href="#exer:you">Project 9: References in a headings do not work well in html</a>, and in
 between there we have <a href="#exer:some:formula">Exercise 8: Make references to projects and problems</a>.
 
-<h2>Exercises  <a name="___sec11"></a></h2>
+<h2>Exercises  <a name="___sec13"></a></h2>
 
 <h3>Problem 2: Flip a Coin <a name="demo:ex:1"></a></h3>
 
@@ -25456,7 +26431,7 @@ Make a program that simulates flipping a coin $latex N$ times.
 Print out "tail" or "head" for each flip and
 let the program count the number of heads.
 
-<h4>Remarks  <a name="___sec13"></a></h4>
+<h4>Remarks  <a name="___sec15"></a></h4>
 
 <p>
 Remarks with such a subsubsection heading would previously mark
@@ -25506,7 +26481,7 @@ heads <span style="color: #666666">=</span> <span style="color: #666666">0</span
 
 Filenames: <code>flip_coin.py</code>, <code>flip_coin.pdf</code>.
 
-<h3>Not an exercise  <a name="___sec14"></a></h3>
+<h3>Not an exercise  <a name="___sec16"></a></h3>
 
 <p>
 Should be possible to stick a normal section in the middle of many
@@ -25613,7 +26588,7 @@ Let $latex R$ and $latex (x_0,y_0)$ be normally distributed.
 <p>
 Filename: <code>circles.pdf</code>.
 
-<h4>Remarks  <a name="___sec17"></a></h4>
+<h4>Remarks  <a name="___sec19"></a></h4>
 
 <p>
 At the very end of the exercise it may be appropriate to summarize
@@ -25730,14 +26705,14 @@ Filename: <code>subexer_b.pdf</code>.
 <b>Solution.</b>
 Here goes the solution of this subexercise.
 
-<h4>Remarks  <a name="___sec19"></a></h4>
+<h4>Remarks  <a name="___sec21"></a></h4>
 
 <p>
 Some final closing remarks, e.g., summarizing the main findings
 and their implications in other problems can be made. These
 remarks will appear at the end of the typeset exercise.
 
-<h3>Some exercise without the "Exercise:" prefix  <a name="___sec20"></a></h3>
+<h3>Some exercise without the "Exercise:" prefix  <a name="___sec22"></a></h3>
 
 <p>
 Just some text. And some math saying that $latex e^0=1$ on a single line,
@@ -25758,7 +26733,7 @@ And a test that the code <code>lambda x: x+2</code> is correctly placed here:
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">lambda x: x+2
 </pre></div>
 
-<h3>Example 7: Just an example  <a name="___sec21"></a></h3>
+<h3>Example 7: Just an example  <a name="___sec23"></a></h3>
 
 <p>
 <b>a)</b>
@@ -25768,12 +26743,12 @@ What is the capital of Norway?
 <b>Answer.</b>
 Oslo.
 
-<h2>Here goes another section  <a name="___sec22"></a></h2>
+<h2>Here goes another section  <a name="___sec24"></a></h2>
 
 <p>
 With some text, before we continue with exercises.
 
-<h2>More Exercises  <a name="___sec23"></a></h2>
+<h2>More Exercises  <a name="___sec25"></a></h2>
 
 <h3>Exercise 8: Make references to projects and problems <a name="exer:some:formula"></a></h3>
 
@@ -25808,7 +26783,7 @@ the two before that as <a href="#demo:ex:2">Project 3: Compute a Probability</a>
 and this one as <a href="#exer:you">Project 9: References in a headings do not work well in html</a>.
 Filename: <code>selc_composed.pdf</code>.
 
-<h2>References  <a name="___sec26"></a></h2>
+<h2>References  <a name="___sec28"></a></h2>
 
 <p>
 
@@ -25920,22 +26895,22 @@ Filename: <code>selc_composed.pdf</code>.
     1994.</li>
 </ol>
 
-<h2>Appendix: Just for testing; part I  <a name="___sec27"></a></h2>
+<h2>Appendix: Just for testing; part I  <a name="___sec29"></a></h2>
 
 <p>
 This is the first appendix.
 
-<h3>A subsection within an appendix  <a name="___sec28"></a></h3>
+<h3>A subsection within an appendix  <a name="___sec30"></a></h3>
 
 <p>
 Some text.
 
-<h2>Appendix: Just for testing; part II  <a name="___sec29"></a></h2>
+<h2>Appendix: Just for testing; part II  <a name="___sec31"></a></h2>
 
 <p>
 This is more stuff for an appendix.
 
-<h3>Appendix: Testing identical titles  <a name="___sec30"></a></h3>
+<h3>Appendix: Testing identical titles  <a name="___sec32"></a></h3>
 
 <p>
 Without label.
@@ -25950,7 +26925,7 @@ With label.
 <p>
 With label.
 
-<h3>Appendix: Testing identical titles  <a name="___sec33"></a></h3>
+<h3>Appendix: Testing identical titles  <a name="___sec35"></a></h3>
 
 <p>
 Without label.
@@ -26040,7 +27015,7 @@ detailed information and constitute of course very valuable readings
 when you use version control systems every day. The point now is
 to get started.
 
-<h3>Appendix: Testing inline comments  <a name="___sec34"></a></h3>
+<h3>Appendix: Testing inline comments  <a name="___sec36"></a></h3>
 
 <p>
 Projects that you want to share among several computers or project
@@ -26076,7 +27051,7 @@ you with the minimum information to started with such
 systems. Numerous other tutorials contain more comprehensive material
 and in-depth explanations of the concepts and tools.</em>]</font>
 
-<h3>Appendix: Testing headings ending with <code>verbatim inline</code>  <a name="___sec35"></a></h3>
+<h3>Appendix: Testing headings ending with <code>verbatim inline</code>  <a name="___sec37"></a></h3>
 
 <p>
 The point here is to test 1) <code>verbatim</code> code in headings, and 2)
@@ -26167,6 +27142,8 @@ Automatically generated HTML file from Doconce source
 {'highest level': 1,
  'sections': [(' Section 1 ', 1, 'sec1', 'sec1'),
               (' Subsection 1 ', 2, None, '___sec1'),
+              (' Computer code ', 3, None, '___sec2'),
+              (' Running OS commands ', 3, None, '___sec3'),
               (' Subsection 2: Testing figures ',
                2,
                'subsec:ex',
@@ -26175,23 +27152,23 @@ Automatically generated HTML file from Doconce source
                2,
                'decay:sec:theta',
                'decay:sec:theta'),
-              (' Custom Environments ', 2, None, '___sec4'),
+              (' Custom Environments ', 2, None, '___sec6'),
               (' Tables ', 2, 'subsec:table', 'subsec:table'),
               (' A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2` ',
                2,
                None,
-               '___sec6'),
-              (' Bibliography test ', 2, None, '___sec7'),
+               '___sec8'),
+              (' Bibliography test ', 2, None, '___sec9'),
               (' Example 1: Examples can be typeset as exercises ',
                2,
                'Example',
                'Example'),
               (' URLs ', 2, 'subsubsec:ex', 'subsubsec:ex'),
-              (' LaTeX Mathematics ', 2, None, '___sec10'),
-              (' Exercises ', 1, None, '___sec11'),
+              (' LaTeX Mathematics ', 1, None, '___sec12'),
+              (' Exercises ', 1, None, '___sec13'),
               (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
-              (' Remarks ', 3, None, '___sec13'),
-              (' Not an exercise ', 2, None, '___sec14'),
+              (' Remarks ', 3, None, '___sec15'),
+              (' Not an exercise ', 2, None, '___sec16'),
               (' Project 3: Compute a Probability ',
                2,
                'demo:ex:2',
@@ -26200,19 +27177,19 @@ Automatically generated HTML file from Doconce source
                2,
                'proj:circle1',
                'proj:circle1'),
-              (' Remarks ', 3, None, '___sec17'),
+              (' Remarks ', 3, None, '___sec19'),
               (' Exercise 5: Determine some Distance ',
                2,
                'exer:dist',
                'exer:dist'),
-              (' Remarks ', 3, None, '___sec19'),
+              (' Remarks ', 3, None, '___sec21'),
               (' Some exercise without the "Exercise:" prefix ',
                2,
                None,
-               '___sec20'),
-              (' Example 7: Just an example ', 2, None, '___sec21'),
-              (' Here goes another section ', 1, None, '___sec22'),
-              (' More Exercises ', 1, None, '___sec23'),
+               '___sec22'),
+              (' Example 7: Just an example ', 2, None, '___sec23'),
+              (' Here goes another section ', 1, None, '___sec24'),
+              (' More Exercises ', 1, None, '___sec25'),
               (' Exercise 8: Make references to projects and problems ',
                2,
                'exer:some:formula',
@@ -26221,11 +27198,11 @@ Automatically generated HTML file from Doconce source
                2,
                'exer:you',
                'exer:you'),
-              (' References ', 1, None, '___sec26'),
-              (' Appendix: Just for testing; part I ', 1, None, '___sec27'),
-              (' A subsection within an appendix ', 2, None, '___sec28'),
-              (' Appendix: Just for testing; part II ', 1, None, '___sec29'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec30'),
+              (' References ', 1, None, '___sec28'),
+              (' Appendix: Just for testing; part I ', 1, None, '___sec29'),
+              (' A subsection within an appendix ', 2, None, '___sec30'),
+              (' Appendix: Just for testing; part II ', 1, None, '___sec31'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec32'),
               (' Appendix: Testing identical titles ',
                2,
                'test:title:id1',
@@ -26234,12 +27211,12 @@ Automatically generated HTML file from Doconce source
                2,
                'test:title:id2',
                'test:title:id2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec33'),
-              (' Appendix: Testing inline comments ', 2, None, '___sec34'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec35'),
+              (' Appendix: Testing inline comments ', 2, None, '___sec36'),
               (' Appendix: Testing headings ending with `verbatim inline` ',
                2,
                None,
-               '___sec35')]}
+               '___sec37')]}
 end of tocinfo -->
 
 <body>
@@ -26293,7 +27270,7 @@ $$
 <center><h1>A Document for Testing Doconce</h1></center>  <!-- document title -->
 
 <p>
-<!-- author(s): Hans Petter Langtangen, Kaare Dump, A. Dummy Author, I. S. Overworked, and J. Doe -->
+<!-- author(s): Hans Petter Langtangen, Kaare Dump, A. Dummy Author, I. S. Overworked and Outburned, and J. Doe -->
 
 <center>
 <b>Hans Petter Langtangen</b> [1, 2] (<tt>hpl at simula.no</tt>)
@@ -26308,7 +27285,7 @@ $$
 </center>
 
 <center>
-<b>I. S. Overworked</b> [4, 5, 6, 7]
+<b>I. S. Overworked and Outburned</b> [4, 5, 6, 7]
 </center>
 
 <center>
@@ -26321,7 +27298,7 @@ $$
 
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
-<center>[3] <b>Segfault Inc, Cyberspace</b></center>
+<center>[3] <b>Segfault, Cyberspace</b></center>
 <center>[4] <b>Inst1</b></center>
 <center>[5] <b>Inst2, Somewhere</b></center>
 <center>[6] <b>Third Inst, Elsewhere</b></center>
@@ -26334,40 +27311,42 @@ $$
 <p>
 <a href="#sec1"> Section 1 </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec1"> Subsection 1 </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec2"> Computer code </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec3"> Running OS commands </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#subsec:ex"> Subsection 2: Testing figures </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec4"> Custom Environments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec6"> Custom Environments </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#subsec:table"> Tables </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec6"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec7"> Bibliography test </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec8"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec9"> Bibliography test </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#Example"> Example 1: Examples can be typeset as exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#subsubsec:ex"> URLs </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec10"> LaTeX Mathematics </a><br>
-<a href="#___sec11"> Exercises </a><br>
+<a href="#___sec12"> LaTeX Mathematics </a><br>
+<a href="#___sec13"> Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#demo:ex:1"> Problem 2: Flip a Coin </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec13"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec14"> Not an exercise </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec15"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec16"> Not an exercise </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#demo:ex:2"> Project 3: Compute a Probability </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#proj:circle1"> Project 4: Explore Distributions of Random Circles </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec17"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#exer:dist"> Exercise 5: Determine some Distance </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec19"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec20"> Some exercise without the "Exercise:" prefix </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec21"> Example 7: Just an example </a><br>
-<a href="#___sec22"> Here goes another section </a><br>
-<a href="#___sec23"> More Exercises </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#exer:dist"> Exercise 5: Determine some Distance </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec21"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec22"> Some exercise without the "Exercise:" prefix </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec23"> Example 7: Just an example </a><br>
+<a href="#___sec24"> Here goes another section </a><br>
+<a href="#___sec25"> More Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#exer:some:formula"> Exercise 8: Make references to projects and problems </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#exer:you"> Project 9: References in a headings do not work well in html </a><br>
-<a href="#___sec26"> References </a><br>
-<a href="#___sec27"> Appendix: Just for testing; part I </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec28"> A subsection within an appendix </a><br>
-<a href="#___sec29"> Appendix: Just for testing; part II </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec30"> Appendix: Testing identical titles </a><br>
+<a href="#___sec28"> References </a><br>
+<a href="#___sec29"> Appendix: Just for testing; part I </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec30"> A subsection within an appendix </a><br>
+<a href="#___sec31"> Appendix: Just for testing; part II </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec32"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#test:title:id1"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#test:title:id2"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec33"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec34"> Appendix: Testing inline comments </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec35"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec35"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec36"> Appendix: Testing inline comments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec37"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
 
 <p>
 <!-- !split -->
@@ -26431,15 +27410,14 @@ Here is a nested list:
 Here is a reference to Equation \eqref{my:eq1}.
 This equation appears in another part if this document is split.
 
-<p>
-<!-- !split and check if these extra words are included properly in the comment -->
-
 <h3>Subsection 1  <a name="___sec1"></a></h3>
 
 <p>
 More text, with a reference back to the section <a href="#sec1">Section 1</a> and further
 to the section <a href="#subsubsec:ex">URLs</a>. 
 <!-- sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console -->
+
+<h4>Computer code  <a name="___sec2"></a></h4>
 
 <p>
 Let's do some copying from files too. First from subroutine up to the very end,
@@ -26633,6 +27611,18 @@ green color containing a linebreak.
 And one more.</font> Some formats will only display this correctly when
 HTML is the output format.
 
+<h4>Running OS commands  <a name="___sec3"></a></h4>
+
+<p>
+
+<!-- code=bash (from !bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; python -c <span style="color: #BA2121">&#39;print &quot;Testing\noutput\nfrom\nPython.&quot;&#39;</span>
+Testing
+output
+from
+Python.
+</pre></div>
+
 <h3>Subsection 2: Testing figures <a name="subsec:ex"></a></h3>
 
 <p>
@@ -26730,7 +27720,7 @@ $$
 \end{align}
 $$
 
-<h3>Custom Environments  <a name="___sec4"></a></h3>
+<h3>Custom Environments  <a name="___sec6"></a></h3>
 
 <p>
 Here is an attempt to create a theorem environment via Mako
@@ -26799,7 +27789,8 @@ one table:
 </table>
 <p>
 And one with math headings (that are expanded and must be treated
-accordingly) and verbatim heading and entry:
+accordingly), verbatim heading and entry, and no space around the pipe
+symbol:
 
 <p>
 <table border="1">
@@ -26815,7 +27806,7 @@ accordingly) and verbatim heading and entry:
 <p>
 And add one with verbatim headings (with underscores),
 and rows starting with <code>|-</code> because of a negative number,
-and <code>|</code> right after verbatim word (with no space):
+and <code>|</code> right before and after verbatim word (with no space):
 
 <p>
 <table border="1">
@@ -26825,15 +27816,32 @@ and <code>|</code> right after verbatim word (with no space):
 <tr><td align="right">   10                              </td> <td align="right">   17.74                           </td> <td align="right">   -4.50                           </td> <td align="right">   9.96                            </td> </tr>
 <tr><td align="right">   0                               </td> <td align="right">   -9.19                           </td> <td align="right">   4.13                            </td> <td align="right">   -0.26                           </td> </tr>
 </table>
+<p>
+Finally, a table with math
+(<code>bm</code> that expands to <code>boldsymbol</code>, was tricky, but
+cleanly handled now)
+and URLs.
 
-<h3>A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code>  <a name="___sec6"></a></h3>
+<p>
+<!-- Mako code to expand URLs in the table -->
+<!-- (These types of tables did not work before Jan 2014) -->
+
+<p>
+<table border="1">
+<tr></tr>
+<tr><td align="center">   \( \mathcal{L}=0 \)                                                                                                                        </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0080.png"><img src="../doc/src/manual/mov/wave_frames/frame_0080.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0085.png"><img src="../doc/src/manual/mov/wave_frames/frame_0085.png" width="300"></a>    </td> </tr>
+<tr><td align="center">   \( a=b \)                                                                                                                                  </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0090.png"><img src="../doc/src/manual/mov/wave_frames/frame_0090.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0095.png"><img src="../doc/src/manual/mov/wave_frames/frame_0095.png" width="300"></a>    </td> </tr>
+<tr><td align="center">   \( \nabla\cdot\boldsymbol{u} =0  \)                                                                                                        </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0100.png"><img src="../doc/src/manual/mov/wave_frames/frame_0100.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0105.png"><img src="../doc/src/manual/mov/wave_frames/frame_0105.png" width="300"></a>    </td> </tr>
+</table>
+
+<h3>A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code>  <a name="___sec8"></a></h3>
 
 <p>
 <b>Files <code>my_file_v1.py</code> and <code>my_file_v2.py</code> define some math \( a_{i-1} \).</b>
 Here is
 some text.
 
-<h3>Bibliography test  <a name="___sec7"></a></h3>
+<h3>Bibliography test  <a name="___sec9"></a></h3>
 
 <p>
 Here is an example: <a href="#Langtangen_Pedersen_2002">[1]</a> discussed propagation of
@@ -26948,7 +27956,10 @@ More tough tests: repeated URLs whose footnotes when using the
 <a href="http://google.com" target="_self">google</a>, which should result in exactly three
 footnotes.
 
-<h3>LaTeX Mathematics  <a name="___sec10"></a></h3>
+<p>
+<!-- !split and check if these extra words are included properly in the comment -->
+
+<h2>LaTeX Mathematics  <a name="___sec12"></a></h2>
 
 <p>
 Here is an equation without label using backslash-bracket environment:
@@ -27050,7 +28061,7 @@ Below, we have <a href="#demo:ex:1">Problem 2: Flip a Coin</a> and <a href="#dem
 as well as <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a> and <a href="#exer:you">Project 9: References in a headings do not work well in html</a>, and in
 between there we have <a href="#exer:some:formula">Exercise 8: Make references to projects and problems</a>.
 
-<h2>Exercises  <a name="___sec11"></a></h2>
+<h2>Exercises  <a name="___sec13"></a></h2>
 
 <p>
 <!-- --- begin exercise --- -->
@@ -27072,7 +28083,7 @@ let the program count the number of heads.
 <p>
 <!-- Test syntax error -->
 
-<h4>Remarks  <a name="___sec13"></a></h4>
+<h4>Remarks  <a name="___sec15"></a></h4>
 
 <p>
 Remarks with such a subsubsection heading would previously mark
@@ -27118,7 +28129,7 @@ Draw an integer among \( \{1,2\} \) with
 <p>
 <!-- --- end exercise --- -->
 
-<h3>Not an exercise  <a name="___sec14"></a></h3>
+<h3>Not an exercise  <a name="___sec16"></a></h3>
 
 <p>
 Should be possible to stick a normal section in the middle of many
@@ -27249,7 +28260,7 @@ Filename: <code>circles.pdf</code>.
 <p>
 <!-- Closing remarks for this Project -->
 
-<h4>Remarks  <a name="___sec17"></a></h4>
+<h4>Remarks  <a name="___sec19"></a></h4>
 
 <p>
 At the very end of the exercise it may be appropriate to summarize
@@ -27366,7 +28377,7 @@ Filename: <code>subexer_b.pdf</code>.
 <p>
 <!-- Closing remarks for this Exercise -->
 
-<h4>Remarks  <a name="___sec19"></a></h4>
+<h4>Remarks  <a name="___sec21"></a></h4>
 
 <p>
 Some final closing remarks, e.g., summarizing the main findings
@@ -27379,7 +28390,7 @@ remarks will appear at the end of the typeset exercise.
 <p>
 <!-- --- begin exercise --- -->
 
-<h3>Some exercise without the "Exercise:" prefix  <a name="___sec20"></a></h3>
+<h3>Some exercise without the "Exercise:" prefix  <a name="___sec22"></a></h3>
 
 <p>
 <!-- Another minimalistic exercise -->
@@ -27406,7 +28417,7 @@ And a test that the code <code>lambda x: x+2</code> is correctly placed here:
 <p>
 <!-- --- begin exercise --- -->
 
-<h3>Example 7: Just an example  <a name="___sec21"></a></h3>
+<h3>Example 7: Just an example  <a name="___sec23"></a></h3>
 
 <p>
 <!-- This example needs the --examples_as_exercises option, otherwise -->
@@ -27423,12 +28434,12 @@ Oslo.
 <p>
 <!-- --- end exercise --- -->
 
-<h2>Here goes another section  <a name="___sec22"></a></h2>
+<h2>Here goes another section  <a name="___sec24"></a></h2>
 
 <p>
 With some text, before we continue with exercises.
 
-<h2>More Exercises  <a name="___sec23"></a></h2>
+<h2>More Exercises  <a name="___sec25"></a></h2>
 
 <p>
 <!-- --- begin exercise --- -->
@@ -27475,7 +28486,7 @@ Filename: <code>selc_composed.pdf</code>.
 <p>
 <!-- --- end exercise --- -->
 
-<h2>References  <a name="___sec26"></a></h2>
+<h2>References  <a name="___sec28"></a></h2>
 
 <p>
 <!-- begin bibliography -->
@@ -27589,22 +28600,22 @@ Filename: <code>selc_composed.pdf</code>.
 
 <!-- end bibliography -->
 
-<h2>Appendix: Just for testing; part I  <a name="___sec27"></a></h2>
+<h2>Appendix: Just for testing; part I  <a name="___sec29"></a></h2>
 
 <p>
 This is the first appendix.
 
-<h3>A subsection within an appendix  <a name="___sec28"></a></h3>
+<h3>A subsection within an appendix  <a name="___sec30"></a></h3>
 
 <p>
 Some text.
 
-<h2>Appendix: Just for testing; part II  <a name="___sec29"></a></h2>
+<h2>Appendix: Just for testing; part II  <a name="___sec31"></a></h2>
 
 <p>
 This is more stuff for an appendix.
 
-<h3>Appendix: Testing identical titles  <a name="___sec30"></a></h3>
+<h3>Appendix: Testing identical titles  <a name="___sec32"></a></h3>
 
 <p>
 Without label.
@@ -27619,7 +28630,7 @@ With label.
 <p>
 With label.
 
-<h3>Appendix: Testing identical titles  <a name="___sec33"></a></h3>
+<h3>Appendix: Testing identical titles  <a name="___sec35"></a></h3>
 
 <p>
 Without label.
@@ -27709,7 +28720,7 @@ detailed information and constitute of course very valuable readings
 when you use version control systems every day. The point now is
 to get started.
 
-<h3>Appendix: Testing inline comments  <a name="___sec34"></a></h3>
+<h3>Appendix: Testing inline comments  <a name="___sec36"></a></h3>
 
 <p>
 Projects that you want to share among several computers or project
@@ -27746,7 +28757,7 @@ systems. Numerous other tutorials contain more comprehensive material
 and in-depth explanations of the concepts and tools.</em>]</font>
 <!-- end inline comment -->
 
-<h3>Appendix: Testing headings ending with <code>verbatim inline</code>  <a name="___sec35"></a></h3>
+<h3>Appendix: Testing headings ending with <code>verbatim inline</code>  <a name="___sec37"></a></h3>
 
 <p>
 The point here is to test 1) <code>verbatim</code> code in headings, and 2)
@@ -27831,6 +28842,7 @@ final,                   % or draft (marks overfull hboxes)
 % Style: T2 (Springer)
 \documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmono}
 \usepackage{t2}
+\special{papersize=193mm,260mm}
 % #elif LATEX_STYLE == "Springer_llcse"
 % Style: Lecture Notes in Computer Science (Springer)
 \documentclass[oribib]{llncs}
@@ -27882,6 +28894,7 @@ final,                   % or draft (marks overfull hboxes)
 % Examples of font types (Ubuntu): Gentium Book Basic (Palatino-like),
 % Liberation Sans (Helvetica-like), Norasi, Purisa (handwriting), UnDoum
 % #else
+\usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
 % #ifdef HELVETICA
@@ -27895,6 +28908,7 @@ final,                   % or draft (marks overfull hboxes)
 \linespread{1.05}            % Palatino needs extra line spread to look nice
 % #endif
 % #endif
+\usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
@@ -28094,6 +29108,7 @@ final,                   % or draft (marks overfull hboxes)
 
 % insert custom LaTeX commands...
 
+\raggedbottom
 \makeindex
 
 %-------------------- end preamble ----------------------
@@ -28161,9 +29176,9 @@ A Document for Testing Doconce
 % ----------------- author(s) -------------------------
 % #if LATEX_HEADING == "traditional"
 \author{Hans Petter Langtangen\footnote{Email: \texttt{hpl@simula.no}. Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo.}
-\and Kaare Dump\footnote{Segfault Inc, Cyberspace.}
+\and Kaare Dump\footnote{Segfault, Cyberspace.}
 \and A. Dummy Author
-\and I. S. Overworked\footnote{Inst1; Inst2, Somewhere; Third Inst, Elsewhere; and Fourth Inst.}
+\and I. S. Overworked and Outburned\footnote{Inst1; Inst2, Somewhere; Third Inst, Elsewhere; and Fourth Inst.}
 \and J. Doe\footnote{Email: \texttt{j\_doe@cyberspace.com}.}}
 
 % #elif LATEX_HEADING == "titlepage"
@@ -28175,7 +29190,7 @@ A Document for Testing Doconce
     
     {\Large\textsf{A. Dummy Author${}^{}$}}\\ [3mm]
     
-    {\Large\textsf{I. S. Overworked${}^{4, 5, 6, 7}$}}\\ [3mm]
+    {\Large\textsf{I. S. Overworked and Outburned${}^{4, 5, 6, 7}$}}\\ [3mm]
     
     {\Large\textsf{J. Doe${}^{}$ (\texttt{j\_doe@cyberspace.com})}}\\ [3mm]
     
@@ -28183,17 +29198,17 @@ A Document for Testing Doconce
 
 {\large\textsf{${}^1$Center for Biomedical Computing, Simula Research Laboratory} \\ [1.5mm]}
 {\large\textsf{${}^2$Department of Informatics, University of Oslo} \\ [1.5mm]}
-{\large\textsf{${}^3$Segfault Inc, Cyberspace} \\ [1.5mm]}
+{\large\textsf{${}^3$Segfault, Cyberspace} \\ [1.5mm]}
 {\large\textsf{${}^4$Inst1} \\ [1.5mm]}
 {\large\textsf{${}^5$Inst2, Somewhere} \\ [1.5mm]}
 {\large\textsf{${}^6$Third Inst, Elsewhere} \\ [1.5mm]}
 {\large\textsf{${}^7$Fourth Inst} \\ [1.5mm]}
 % #elif LATEX_HEADING == "Springer_collection"
 
-\author{Hans Petter Langtangen and Kaare Dump and A. Dummy Author and I. S. Overworked and J. Doe}
+\author{Hans Petter Langtangen and Kaare Dump and A. Dummy Author and I. S. Overworked and Outburned and J. Doe}
 % Short version of authors:
 %\authorrunning{...}
-\institute{Hans Petter Langtangen\at Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo\email{hpl@simula.no} \and Kaare Dump\at Segfault Inc, Cyberspace \and A. Dummy Author \and I. S. Overworked\at Inst1 and Inst2, Somewhere and Third Inst, Elsewhere and and Fourth Inst \and J. Doe\email{j_doe@cyberspace.com}}
+\institute{Hans Petter Langtangen\at Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo\email{hpl@simula.no} \and Kaare Dump\at Segfault, Cyberspace \and A. Dummy Author \and I. S. Overworked and Outburned\at Inst1 and Inst2, Somewhere and Third Inst, Elsewhere and and Fourth Inst \and J. Doe\email{j_doe@cyberspace.com}}
 
 % #elif LATEX_HEADING == "beamer"
 \author{Hans Petter Langtangen\inst{1,2}
@@ -28202,14 +29217,14 @@ Kaare Dump\inst{3}
 \and
 A. Dummy Author\inst{}
 \and
-I. S. Overworked\inst{4,5,6,7}
+I. S. Overworked and Outburned\inst{4,5,6,7}
 \and
 J. Doe\inst{}}
 \institute{Center for Biomedical Computing, Simula Research Laboratory\inst{1}
 \and
 Department of Informatics, University of Oslo\inst{2}
 \and
-Segfault Inc, Cyberspace\inst{3}
+Segfault, Cyberspace\inst{3}
 \and
 Inst1\inst{4}
 \and
@@ -28236,7 +29251,7 @@ Fourth Inst\inst{7}}
 
 
 \begin{center}
-{\bf I. S. Overworked${}^{4, 5, 6, 7}$} \\ [0mm]
+{\bf I. S. Overworked and Outburned${}^{4, 5, 6, 7}$} \\ [0mm]
 \end{center}
 
 
@@ -28248,7 +29263,7 @@ Fourth Inst\inst{7}}
 % List of all institutions:
 \centerline{{\small ${}^1$Center for Biomedical Computing, Simula Research Laboratory}}
 \centerline{{\small ${}^2$Department of Informatics, University of Oslo}}
-\centerline{{\small ${}^3$Segfault Inc, Cyberspace}}
+\centerline{{\small ${}^3$Segfault, Cyberspace}}
 \centerline{{\small ${}^4$Inst1}}
 \centerline{{\small ${}^5$Inst2, Somewhere}}
 \centerline{{\small ${}^6$Third Inst, Elsewhere}}
@@ -28375,7 +29390,6 @@ a block quote.
 
 Here is a reference to Equation (\ref{my:eq1}).
 
-% !split and check if these extra words are included properly in the comment
 
 \paragraph{Subsection 1.}
 More text, with a reference back to Section~\ref{sec1} and further
@@ -28383,6 +29397,7 @@ to Section~\ref{subsubsec:ex}. \index{somefunc@{\rm\texttt{somefunc}} function}
 
 % sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console
 
+\paragraph{Computer code.}
 Let's do some copying from files too. First from subroutine up to the very end,
 
 \bfcod
@@ -28556,6 +29571,15 @@ Here is some \textcolor{red}{red} color and an attempt to write \textcolor{green
 green color containing a linebreak.
 And one more.} Some formats will only display this correctly when
 HTML is the output format.
+
+\paragraph{Running OS commands.}
+\bsys
+Terminal> python -c 'print "Testing\noutput\nfrom\nPython."'
+Testing
+output
+from
+Python.
+\esys
 
 
 \paragraph{Subsection 2: Testing figures.}
@@ -28739,7 +29763,8 @@ one table:
 
 \noindent
 And one with math headings (that are expanded and must be treated
-accordingly) and verbatim heading and entry:
+accordingly), verbatim heading and entry, and no space around the pipe
+symbol:
 
 
 \begin{quote}\begin{tabular}{lrrr}
@@ -28759,7 +29784,7 @@ accordingly) and verbatim heading and entry:
 \noindent
 And add one with verbatim headings (with underscores),
 and rows starting with \code{|-} because of a negative number,
-and \code{|} right after verbatim word (with no space):
+and \code{|} right before and after verbatim word (with no space):
 
 
 \begin{quote}\begin{tabular}{rrrr}
@@ -28770,6 +29795,25 @@ and \code{|} right after verbatim word (with no space):
 -20                & -23.39             & -7.65              & -19.93             \\
 10                 & 17.74              & -4.50              & 9.96               \\
 0                  & -9.19              & 4.13               & -0.26              \\
+\hline
+\end{tabular}\end{quote}
+
+\noindent
+Finally, a table with math
+and URLs.
+
+% Mako code to expand URLs in the table
+% (These types of tables did not work before Jan 2014)
+
+
+
+\begin{quote}\begin{tabular}{ccc}
+\hline
+ \\
+\hline
+$\mathcal{L}=0$                                                               & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0080.png} & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0085.png} \\
+$a=b$                                                                         & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0090.png} & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0095.png} \\
+$\nabla\cdot\bm{u} =0 $                                                       & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0100.png} & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0105.png} \\
 \hline
 \end{tabular}\end{quote}
 
@@ -28898,7 +29942,10 @@ A sentence containing "refines lines" could easily
 fool a regex substitution with only i.e.~since the dot matches anything.
 Also, look at Fig.~4 to see how the data compares with Tab.~\ref{mytab}.
 
-\paragraph{{\LaTeX} Mathematics.}
+% !split and check if these extra words are included properly in the comment
+
+\subsection{{\LaTeX} Mathematics}
+
 Here is an equation without label using backslash-bracket environment:
 \[ a = b + c \]
 or with number and label, as in (\ref{my:eq1}), using the equation environment:
@@ -29695,7 +30742,7 @@ import glob, sys, os, commands, shutil
 
 command_line_options = ' '.join(['"%s"' % arg for arg in sys.argv[1:]])
 
-sphinx_rootdir = 'sphinx-rootdir'
+sphinx_rootdir = 'sphinx-testdoc'
 
 def system(cmd, capture_output=False, echo=True):
     if echo:
@@ -29753,10 +30800,10 @@ for rstfile in glob.glob(os.path.join(sphinx_rootdir, '*.rst')) + \
         f.write(text)
         f.close()
 
-# Copy linked local files, placed in _static*, to sphinx-rootdir/_static
+# Copy linked local files, placed in _static*, to sphinx-testdoc/_static
 staticdirs = glob.glob('_static*')
 for staticdir in staticdirs:
-    system('cp -r %s/* sphinx-rootdir/_static/' % staticdir)
+    system('cp -r %s/* sphinx-testdoc/_static/' % staticdir)
     # (Note: must do cp -r since shutil.copy/copytree cannot copy a la cp -r)
 
 # Compile web version of the sphinx document
@@ -29789,7 +30836,7 @@ for filename in glob.glob('*.html') + glob.glob('.*.html'):
                             '<a class="reference external" target="_blank"')
         f = open(filename, 'w');  f.write(text);  f.close()
 print """
-google-chrome sphinx-rootdir/_build/html/index.html
+google-chrome sphinx-testdoc/_build/html/index.html
 """
 
 ************** File: automake_sphinx_math_test.py *****************
@@ -29919,6 +30966,12 @@ google-chrome sphinx-rootdir-math/_build/html/index.html
 ************** File: .testdoc_html_file_collection *****************
 testdoc.html
 ../doc/src/manual/fig/wave1D.png
+../doc/src/manual/mov/wave_frames/frame_0080.png
+../doc/src/manual/mov/wave_frames/frame_0085.png
+../doc/src/manual/mov/wave_frames/frame_0090.png
+../doc/src/manual/mov/wave_frames/frame_0095.png
+../doc/src/manual/mov/wave_frames/frame_0100.png
+../doc/src/manual/mov/wave_frames/frame_0105.png
 testdoc.do.txt
 ._testdoc000.html
 ._testdoc001.html
@@ -29994,7 +31047,7 @@ system doconce format latex testdoc.do.txt $ex SOMEVAR=True --skip_inline_commen
 system doconce format pdflatex testdoc.do.txt --device=paper $ex --latex_double_hyphen
 system doconce latex_exercise_toc testdoc
 
-# doconce replace does not work well with system without quotes
+# doconce replace does not work well with system bash func above without quotes
 doconce replace 'vspace{1cm} % after toc' 'clearpage % after toc' testdoc.p.tex
 thpack='\\usepackage{theorem}\n\\newtheorem{theorem}{Theorem}[section]'
 doconce subst '% insert custom LaTeX commands\.\.\.' $thpack testdoc.p.tex
@@ -30034,8 +31087,9 @@ mv -f testdoc.rst testdoc.sphinx.rst
 
 doconce format sphinx testdoc $ex
 doconce split_rst testdoc
-system doconce sphinx_dir author=HPL title='Just a test' version=0.1 theme=agni testdoc
+system doconce sphinx_dir author=HPL title='Just a test' dirname='sphinx-testdoc' version=0.1 theme=agni testdoc
 cp automake_sphinx.py automake_sphinx_testdoc.py
+system python automake_sphinx.py
 
 system doconce format rst testdoc.do.txt $ex
 
@@ -30276,21 +31330,20 @@ doconce format rst tmp2
 doconce replace '\label' 'label' tmp2.do.txt
 doconce replace 'wave1D width' 'wave1D,  width' tmp2.do.txt
 doconce format sphinx tmp2
+doconce replace 'doc/manual' 'doc/src/manual' tmp2.do.txt
+doconce format sphinx tmp2
 doconce replace '../lib/doconce/doconce.py' '_static/doconce.py' tmp2.do.txt
+doconce replace 'two_media99' 'two_media' tmp2.do.txt
+doconce format html tmp2
+doconce replace '99x9.ogg' '.ogg' tmp2.do.txt
+doconce format html tmp2
 doconce subst -s -m '^!bsol.+?!esol' ''  tmp2.do.txt
 doconce format sphinx tmp2
 doconce subst -s -m '^!bhint.+?!ehint' ''  tmp2.do.txt
 doconce format sphinx tmp2
-doconce replace 'doc/manual' 'doc/src/manual' tmp2.do.txt
-doconce format html tmp2
 doconce format pdflatex tmp2
-doconce replace 'two_media99' 'two_media' tmp2.do.txt
-doconce format html tmp2
 doconce format pdflatex tmp2
 doconce format sphinx tmp2
-doconce replace '99x9.ogg' '.ogg' tmp2.do.txt
-doconce format html tmp2
-doconce format pdflatex tmp2
 #doconce replace '# Comment before math is ok' '' tmp2.do.txt
 echo
 echo "When we reach this point in the script,"
@@ -30700,6 +31753,7 @@ Note: for the pandoc format, `\bm` was substituted by Doconce
 to `\boldsymbol`.
 
 
+
 ************** File: math_test_html.html *****************
 <!DOCTYPE html>
 <!--
@@ -31004,6 +32058,8 @@ and \( \nabla\ubm (\xbm)\cdot\normalvecbm \).
 Note: for the html format, <code>\bm</code> was substituted by Doconce
 to <code>\boldsymbol</code>.
 
+<p>
+
 <!-- ------------------- end of main content --------------- -->
 
 
@@ -31211,6 +32267,7 @@ final,                   % or draft (marks overfull hboxes)
 % Style: T2 (Springer)
 \documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmono}
 \usepackage{t2}
+\special{papersize=193mm,260mm}
 % #elif LATEX_STYLE == "Springer_llcse"
 % Style: Lecture Notes in Computer Science (Springer)
 \documentclass[oribib]{llncs}
@@ -31262,6 +32319,7 @@ final,                   % or draft (marks overfull hboxes)
 % Examples of font types (Ubuntu): Gentium Book Basic (Palatino-like),
 % Liberation Sans (Helvetica-like), Norasi, Purisa (handwriting), UnDoum
 % #else
+\usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
 % #ifdef HELVETICA
@@ -31275,6 +32333,7 @@ final,                   % or draft (marks overfull hboxes)
 \linespread{1.05}            % Palatino needs extra line spread to look nice
 % #endif
 % #endif
+\usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
@@ -31396,6 +32455,7 @@ final,                   % or draft (marks overfull hboxes)
 
 % insert custom LaTeX commands...
 
+\raggedbottom
 \makeindex
 
 %-------------------- end preamble ----------------------
@@ -31659,6 +32719,8 @@ with plain old pmb. Here are the same formulas using \code{\bm}:
 \nabla\cdot\nabla\ubm = \nu\nabla^2\ubm -
 \frac{1}{\varrho}\nabla p,\]
 and $\nabla\ubm (\xbm)\cdot\normalvecbm$.
+
+
 
 
 % ------------------- end of main content ---------------
@@ -31995,41 +33057,43 @@ h1, h2, h3, h4, h5, h6 {
      -->
      <!-- Doconce automatically fills in the table of contents -->
           <!-- vagrant nav toc: " Section 1 " --> <li>  <a href="._testdoc_vagrant001.html#sec1"> Section 1 </a>
-     <!-- vagrant nav toc: " Subsection 1 " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec1"> Subsection 1 </a>
-     <!-- vagrant nav toc: " Subsection 2: Testing figures " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#subsec:ex"> Subsection 2: Testing figures </a>
-     <!-- vagrant nav toc: " The \( \theta \) parameter (not \( \nabla \)?) " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a>
-     <!-- vagrant nav toc: " Custom Environments " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec4"> Custom Environments </a>
-     <!-- vagrant nav toc: " Tables " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#subsec:table"> Tables </a>
-     <!-- vagrant nav toc: " A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec6"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a>
-     <!-- vagrant nav toc: " Bibliography test " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec7"> Bibliography test </a>
-     <!-- vagrant nav toc: " Example 1: Examples can be typeset as exercises " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#Example"> Example 1: Examples can be typeset as exercises </a>
-     <!-- vagrant nav toc: " URLs " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#subsubsec:ex"> URLs </a>
-     <!-- vagrant nav toc: " LaTeX Mathematics " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec10"> LaTeX Mathematics </a>
-     <!-- vagrant nav toc: " Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec11"> Exercises </a>
+     <!-- vagrant nav toc: " Subsection 1 " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec1"> Subsection 1 </a>
+     <!-- vagrant nav toc: " Computer code " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec2"> Computer code </a>
+     <!-- vagrant nav toc: " Running OS commands " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec3"> Running OS commands </a>
+     <!-- vagrant nav toc: " Subsection 2: Testing figures " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec:ex"> Subsection 2: Testing figures </a>
+     <!-- vagrant nav toc: " The \( \theta \) parameter (not \( \nabla \)?) " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a>
+     <!-- vagrant nav toc: " Custom Environments " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec6"> Custom Environments </a>
+     <!-- vagrant nav toc: " Tables " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec:table"> Tables </a>
+     <!-- vagrant nav toc: " A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec8"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a>
+     <!-- vagrant nav toc: " Bibliography test " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec9"> Bibliography test </a>
+     <!-- vagrant nav toc: " Example 1: Examples can be typeset as exercises " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#Example"> Example 1: Examples can be typeset as exercises </a>
+     <!-- vagrant nav toc: " URLs " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsubsec:ex"> URLs </a>
+     <!-- vagrant nav toc: " LaTeX Mathematics " --> <li>  <a href="._testdoc_vagrant002.html#___sec12"> LaTeX Mathematics </a>
+     <!-- vagrant nav toc: " Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec13"> Exercises </a>
      <!-- vagrant nav toc: " Problem 2: Flip a Coin " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:1"> Problem 2: Flip a Coin </a>
-     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec13"> Remarks </a>
-     <!-- vagrant nav toc: " Not an exercise " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec14"> Not an exercise </a>
+     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec15"> Remarks </a>
+     <!-- vagrant nav toc: " Not an exercise " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec16"> Not an exercise </a>
      <!-- vagrant nav toc: " Project 3: Compute a Probability " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:2"> Project 3: Compute a Probability </a>
      <!-- vagrant nav toc: " Project 4: Explore Distributions of Random Circles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a>
-     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec17"> Remarks </a>
-     <!-- vagrant nav toc: " Exercise 5: Determine some Distance " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 5: Determine some Distance </a>
      <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec19"> Remarks </a>
-     <!-- vagrant nav toc: " Some exercise without the "Exercise:" prefix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec20"> Some exercise without the "Exercise:" prefix </a>
-     <!-- vagrant nav toc: " Example 7: Just an example " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec21"> Example 7: Just an example </a>
-     <!-- vagrant nav toc: " Here goes another section " --> <li>  <a href="._testdoc_vagrant002.html#___sec22"> Here goes another section </a>
-     <!-- vagrant nav toc: " More Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec23"> More Exercises </a>
+     <!-- vagrant nav toc: " Exercise 5: Determine some Distance " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 5: Determine some Distance </a>
+     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec21"> Remarks </a>
+     <!-- vagrant nav toc: " Some exercise without the "Exercise:" prefix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec22"> Some exercise without the "Exercise:" prefix </a>
+     <!-- vagrant nav toc: " Example 7: Just an example " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec23"> Example 7: Just an example </a>
+     <!-- vagrant nav toc: " Here goes another section " --> <li>  <a href="._testdoc_vagrant002.html#___sec24"> Here goes another section </a>
+     <!-- vagrant nav toc: " More Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec25"> More Exercises </a>
      <!-- vagrant nav toc: " Exercise 8: Make references to projects and problems " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 8: Make references to projects and problems </a>
      <!-- vagrant nav toc: " Project 9: References in a headings do not work well in html " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:you"> Project 9: References in a headings do not work well in html </a>
-     <!-- vagrant nav toc: " References " --> <li>  <a href="._testdoc_vagrant002.html#___sec26"> References </a>
-     <!-- vagrant nav toc: " Appendix: Just for testing; part I " --> <li>  <a href="._testdoc_vagrant002.html#___sec27"> Appendix: Just for testing; part I </a>
-     <!-- vagrant nav toc: " A subsection within an appendix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec28"> A subsection within an appendix </a>
-     <!-- vagrant nav toc: " Appendix: Just for testing; part II " --> <li>  <a href="._testdoc_vagrant002.html#___sec29"> Appendix: Just for testing; part II </a>
-     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec30"> Appendix: Testing identical titles </a>
+     <!-- vagrant nav toc: " References " --> <li>  <a href="._testdoc_vagrant002.html#___sec28"> References </a>
+     <!-- vagrant nav toc: " Appendix: Just for testing; part I " --> <li>  <a href="._testdoc_vagrant002.html#___sec29"> Appendix: Just for testing; part I </a>
+     <!-- vagrant nav toc: " A subsection within an appendix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec30"> A subsection within an appendix </a>
+     <!-- vagrant nav toc: " Appendix: Just for testing; part II " --> <li>  <a href="._testdoc_vagrant002.html#___sec31"> Appendix: Just for testing; part II </a>
+     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec32"> Appendix: Testing identical titles </a>
      <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id1"> Appendix: Testing identical titles </a>
      <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id2"> Appendix: Testing identical titles </a>
-     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec33"> Appendix: Testing identical titles </a>
-     <!-- vagrant nav toc: " Appendix: Testing inline comments " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec34"> Appendix: Testing inline comments </a>
-     <!-- vagrant nav toc: " Appendix: Testing headings ending with <code>verbatim inline</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec35"> Appendix: Testing headings ending with <code>verbatim inline</code> </a>
+     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec35"> Appendix: Testing identical titles </a>
+     <!-- vagrant nav toc: " Appendix: Testing inline comments " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec36"> Appendix: Testing inline comments </a>
+     <!-- vagrant nav toc: " Appendix: Testing headings ending with <code>verbatim inline</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec37"> Appendix: Testing headings ending with <code>verbatim inline</code> </a>
 
     </ul>
    </div>
@@ -32042,6 +33106,8 @@ h1, h2, h3, h4, h5, h6 {
 {'highest level': 1,
  'sections': [(' Section 1 ', 1, 'sec1', 'sec1'),
               (' Subsection 1 ', 2, None, '___sec1'),
+              (' Computer code ', 3, None, '___sec2'),
+              (' Running OS commands ', 3, None, '___sec3'),
               (' Subsection 2: Testing figures ',
                2,
                'subsec:ex',
@@ -32050,23 +33116,23 @@ h1, h2, h3, h4, h5, h6 {
                2,
                'decay:sec:theta',
                'decay:sec:theta'),
-              (' Custom Environments ', 2, None, '___sec4'),
+              (' Custom Environments ', 2, None, '___sec6'),
               (' Tables ', 2, 'subsec:table', 'subsec:table'),
               (' A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2` ',
                2,
                None,
-               '___sec6'),
-              (' Bibliography test ', 2, None, '___sec7'),
+               '___sec8'),
+              (' Bibliography test ', 2, None, '___sec9'),
               (' Example 1: Examples can be typeset as exercises ',
                2,
                'Example',
                'Example'),
               (' URLs ', 2, 'subsubsec:ex', 'subsubsec:ex'),
-              (' LaTeX Mathematics ', 2, None, '___sec10'),
-              (' Exercises ', 1, None, '___sec11'),
+              (' LaTeX Mathematics ', 1, None, '___sec12'),
+              (' Exercises ', 1, None, '___sec13'),
               (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
-              (' Remarks ', 3, None, '___sec13'),
-              (' Not an exercise ', 2, None, '___sec14'),
+              (' Remarks ', 3, None, '___sec15'),
+              (' Not an exercise ', 2, None, '___sec16'),
               (' Project 3: Compute a Probability ',
                2,
                'demo:ex:2',
@@ -32075,19 +33141,19 @@ h1, h2, h3, h4, h5, h6 {
                2,
                'proj:circle1',
                'proj:circle1'),
-              (' Remarks ', 3, None, '___sec17'),
+              (' Remarks ', 3, None, '___sec19'),
               (' Exercise 5: Determine some Distance ',
                2,
                'exer:dist',
                'exer:dist'),
-              (' Remarks ', 3, None, '___sec19'),
+              (' Remarks ', 3, None, '___sec21'),
               (' Some exercise without the "Exercise:" prefix ',
                2,
                None,
-               '___sec20'),
-              (' Example 7: Just an example ', 2, None, '___sec21'),
-              (' Here goes another section ', 1, None, '___sec22'),
-              (' More Exercises ', 1, None, '___sec23'),
+               '___sec22'),
+              (' Example 7: Just an example ', 2, None, '___sec23'),
+              (' Here goes another section ', 1, None, '___sec24'),
+              (' More Exercises ', 1, None, '___sec25'),
               (' Exercise 8: Make references to projects and problems ',
                2,
                'exer:some:formula',
@@ -32096,11 +33162,11 @@ h1, h2, h3, h4, h5, h6 {
                2,
                'exer:you',
                'exer:you'),
-              (' References ', 1, None, '___sec26'),
-              (' Appendix: Just for testing; part I ', 1, None, '___sec27'),
-              (' A subsection within an appendix ', 2, None, '___sec28'),
-              (' Appendix: Just for testing; part II ', 1, None, '___sec29'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec30'),
+              (' References ', 1, None, '___sec28'),
+              (' Appendix: Just for testing; part I ', 1, None, '___sec29'),
+              (' A subsection within an appendix ', 2, None, '___sec30'),
+              (' Appendix: Just for testing; part II ', 1, None, '___sec31'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec32'),
               (' Appendix: Testing identical titles ',
                2,
                'test:title:id1',
@@ -32109,12 +33175,12 @@ h1, h2, h3, h4, h5, h6 {
                2,
                'test:title:id2',
                'test:title:id2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec33'),
-              (' Appendix: Testing inline comments ', 2, None, '___sec34'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec35'),
+              (' Appendix: Testing inline comments ', 2, None, '___sec36'),
               (' Appendix: Testing headings ending with `verbatim inline` ',
                2,
                None,
-               '___sec35')]}
+               '___sec37')]}
 end of tocinfo -->
 
 
@@ -32167,7 +33233,7 @@ $$
 <center><h1>A Document for Testing Doconce</h1></center>  <!-- document title -->
 
 <p>
-<!-- author(s): Hans Petter Langtangen, Kaare Dump, A. Dummy Author, I. S. Overworked, and J. Doe -->
+<!-- author(s): Hans Petter Langtangen, Kaare Dump, A. Dummy Author, I. S. Overworked and Outburned, and J. Doe -->
 
 <center>
 <b>Hans Petter Langtangen</b> [1, 2] (<tt>hpl at simula.no</tt>)
@@ -32182,7 +33248,7 @@ $$
 </center>
 
 <center>
-<b>I. S. Overworked</b> [4, 5, 6, 7]
+<b>I. S. Overworked and Outburned</b> [4, 5, 6, 7]
 </center>
 
 <center>
@@ -32195,7 +33261,7 @@ $$
 
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
-<center>[3] <b>Segfault Inc, Cyberspace</b></center>
+<center>[3] <b>Segfault, Cyberspace</b></center>
 <center>[4] <b>Inst1</b></center>
 <center>[5] <b>Inst2, Somewhere</b></center>
 <center>[6] <b>Third Inst, Elsewhere</b></center>
@@ -32205,41 +33271,43 @@ $$
 
 <p>
 <a href="._testdoc_vagrant001.html#sec1"> Section 1 </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec1"> Subsection 1 </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#subsec:ex"> Subsection 2: Testing figures </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec4"> Custom Environments </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#subsec:table"> Tables </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec6"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec7"> Bibliography test </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#Example"> Example 1: Examples can be typeset as exercises </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#subsubsec:ex"> URLs </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec10"> LaTeX Mathematics </a><br>
-<a href="._testdoc_vagrant002.html#___sec11"> Exercises </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec1"> Subsection 1 </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec2"> Computer code </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec3"> Running OS commands </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#subsec:ex"> Subsection 2: Testing figures </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec6"> Custom Environments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#subsec:table"> Tables </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec8"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec9"> Bibliography test </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#Example"> Example 1: Examples can be typeset as exercises </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#subsubsec:ex"> URLs </a><br>
+<a href="._testdoc_vagrant002.html#___sec12"> LaTeX Mathematics </a><br>
+<a href="._testdoc_vagrant002.html#___sec13"> Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#demo:ex:1"> Problem 2: Flip a Coin </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec13"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec14"> Not an exercise </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec15"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec16"> Not an exercise </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#demo:ex:2"> Project 3: Compute a Probability </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec17"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 5: Determine some Distance </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec19"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec20"> Some exercise without the "Exercise:" prefix </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec21"> Example 7: Just an example </a><br>
-<a href="._testdoc_vagrant002.html#___sec22"> Here goes another section </a><br>
-<a href="._testdoc_vagrant002.html#___sec23"> More Exercises </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 5: Determine some Distance </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec21"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec22"> Some exercise without the "Exercise:" prefix </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec23"> Example 7: Just an example </a><br>
+<a href="._testdoc_vagrant002.html#___sec24"> Here goes another section </a><br>
+<a href="._testdoc_vagrant002.html#___sec25"> More Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 8: Make references to projects and problems </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#exer:you"> Project 9: References in a headings do not work well in html </a><br>
-<a href="._testdoc_vagrant002.html#___sec26"> References </a><br>
-<a href="._testdoc_vagrant002.html#___sec27"> Appendix: Just for testing; part I </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec28"> A subsection within an appendix </a><br>
-<a href="._testdoc_vagrant002.html#___sec29"> Appendix: Just for testing; part II </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec30"> Appendix: Testing identical titles </a><br>
+<a href="._testdoc_vagrant002.html#___sec28"> References </a><br>
+<a href="._testdoc_vagrant002.html#___sec29"> Appendix: Just for testing; part I </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec30"> A subsection within an appendix </a><br>
+<a href="._testdoc_vagrant002.html#___sec31"> Appendix: Just for testing; part II </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec32"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#test:title:id1"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#test:title:id2"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec33"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec34"> Appendix: Testing inline comments </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec35"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec35"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec36"> Appendix: Testing inline comments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec37"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
 
 <p>
 <p>
@@ -32359,41 +33427,43 @@ h1, h2, h3, h4, h5, h6 {
      -->
      <!-- Doconce automatically fills in the table of contents -->
           <!-- vagrant nav toc: " Section 1 " --> <li>  <a href="._testdoc_vagrant001.html#sec1"> Section 1 </a>
-     <!-- vagrant nav toc: " Subsection 1 " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec1"> Subsection 1 </a>
-     <!-- vagrant nav toc: " Subsection 2: Testing figures " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#subsec:ex"> Subsection 2: Testing figures </a>
-     <!-- vagrant nav toc: " The \( \theta \) parameter (not \( \nabla \)?) " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a>
-     <!-- vagrant nav toc: " Custom Environments " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec4"> Custom Environments </a>
-     <!-- vagrant nav toc: " Tables " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#subsec:table"> Tables </a>
-     <!-- vagrant nav toc: " A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec6"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a>
-     <!-- vagrant nav toc: " Bibliography test " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec7"> Bibliography test </a>
-     <!-- vagrant nav toc: " Example 1: Examples can be typeset as exercises " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#Example"> Example 1: Examples can be typeset as exercises </a>
-     <!-- vagrant nav toc: " URLs " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#subsubsec:ex"> URLs </a>
-     <!-- vagrant nav toc: " LaTeX Mathematics " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec10"> LaTeX Mathematics </a>
-     <!-- vagrant nav toc: " Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec11"> Exercises </a>
+     <!-- vagrant nav toc: " Subsection 1 " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec1"> Subsection 1 </a>
+     <!-- vagrant nav toc: " Computer code " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec2"> Computer code </a>
+     <!-- vagrant nav toc: " Running OS commands " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec3"> Running OS commands </a>
+     <!-- vagrant nav toc: " Subsection 2: Testing figures " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec:ex"> Subsection 2: Testing figures </a>
+     <!-- vagrant nav toc: " The \( \theta \) parameter (not \( \nabla \)?) " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a>
+     <!-- vagrant nav toc: " Custom Environments " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec6"> Custom Environments </a>
+     <!-- vagrant nav toc: " Tables " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec:table"> Tables </a>
+     <!-- vagrant nav toc: " A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec8"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a>
+     <!-- vagrant nav toc: " Bibliography test " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec9"> Bibliography test </a>
+     <!-- vagrant nav toc: " Example 1: Examples can be typeset as exercises " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#Example"> Example 1: Examples can be typeset as exercises </a>
+     <!-- vagrant nav toc: " URLs " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsubsec:ex"> URLs </a>
+     <!-- vagrant nav toc: " LaTeX Mathematics " --> <li>  <a href="._testdoc_vagrant002.html#___sec12"> LaTeX Mathematics </a>
+     <!-- vagrant nav toc: " Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec13"> Exercises </a>
      <!-- vagrant nav toc: " Problem 2: Flip a Coin " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:1"> Problem 2: Flip a Coin </a>
-     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec13"> Remarks </a>
-     <!-- vagrant nav toc: " Not an exercise " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec14"> Not an exercise </a>
+     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec15"> Remarks </a>
+     <!-- vagrant nav toc: " Not an exercise " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec16"> Not an exercise </a>
      <!-- vagrant nav toc: " Project 3: Compute a Probability " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:2"> Project 3: Compute a Probability </a>
      <!-- vagrant nav toc: " Project 4: Explore Distributions of Random Circles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a>
-     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec17"> Remarks </a>
-     <!-- vagrant nav toc: " Exercise 5: Determine some Distance " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 5: Determine some Distance </a>
      <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec19"> Remarks </a>
-     <!-- vagrant nav toc: " Some exercise without the "Exercise:" prefix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec20"> Some exercise without the "Exercise:" prefix </a>
-     <!-- vagrant nav toc: " Example 7: Just an example " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec21"> Example 7: Just an example </a>
-     <!-- vagrant nav toc: " Here goes another section " --> <li>  <a href="._testdoc_vagrant002.html#___sec22"> Here goes another section </a>
-     <!-- vagrant nav toc: " More Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec23"> More Exercises </a>
+     <!-- vagrant nav toc: " Exercise 5: Determine some Distance " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 5: Determine some Distance </a>
+     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec21"> Remarks </a>
+     <!-- vagrant nav toc: " Some exercise without the "Exercise:" prefix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec22"> Some exercise without the "Exercise:" prefix </a>
+     <!-- vagrant nav toc: " Example 7: Just an example " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec23"> Example 7: Just an example </a>
+     <!-- vagrant nav toc: " Here goes another section " --> <li>  <a href="._testdoc_vagrant002.html#___sec24"> Here goes another section </a>
+     <!-- vagrant nav toc: " More Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec25"> More Exercises </a>
      <!-- vagrant nav toc: " Exercise 8: Make references to projects and problems " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 8: Make references to projects and problems </a>
      <!-- vagrant nav toc: " Project 9: References in a headings do not work well in html " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:you"> Project 9: References in a headings do not work well in html </a>
-     <!-- vagrant nav toc: " References " --> <li>  <a href="._testdoc_vagrant002.html#___sec26"> References </a>
-     <!-- vagrant nav toc: " Appendix: Just for testing; part I " --> <li>  <a href="._testdoc_vagrant002.html#___sec27"> Appendix: Just for testing; part I </a>
-     <!-- vagrant nav toc: " A subsection within an appendix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec28"> A subsection within an appendix </a>
-     <!-- vagrant nav toc: " Appendix: Just for testing; part II " --> <li>  <a href="._testdoc_vagrant002.html#___sec29"> Appendix: Just for testing; part II </a>
-     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec30"> Appendix: Testing identical titles </a>
+     <!-- vagrant nav toc: " References " --> <li>  <a href="._testdoc_vagrant002.html#___sec28"> References </a>
+     <!-- vagrant nav toc: " Appendix: Just for testing; part I " --> <li>  <a href="._testdoc_vagrant002.html#___sec29"> Appendix: Just for testing; part I </a>
+     <!-- vagrant nav toc: " A subsection within an appendix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec30"> A subsection within an appendix </a>
+     <!-- vagrant nav toc: " Appendix: Just for testing; part II " --> <li>  <a href="._testdoc_vagrant002.html#___sec31"> Appendix: Just for testing; part II </a>
+     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec32"> Appendix: Testing identical titles </a>
      <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id1"> Appendix: Testing identical titles </a>
      <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id2"> Appendix: Testing identical titles </a>
-     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec33"> Appendix: Testing identical titles </a>
-     <!-- vagrant nav toc: " Appendix: Testing inline comments " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec34"> Appendix: Testing inline comments </a>
-     <!-- vagrant nav toc: " Appendix: Testing headings ending with <code>verbatim inline</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec35"> Appendix: Testing headings ending with <code>verbatim inline</code> </a>
+     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec35"> Appendix: Testing identical titles </a>
+     <!-- vagrant nav toc: " Appendix: Testing inline comments " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec36"> Appendix: Testing inline comments </a>
+     <!-- vagrant nav toc: " Appendix: Testing headings ending with <code>verbatim inline</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec37"> Appendix: Testing headings ending with <code>verbatim inline</code> </a>
 
     </ul>
    </div>
@@ -32406,6 +33476,8 @@ h1, h2, h3, h4, h5, h6 {
 {'highest level': 1,
  'sections': [(' Section 1 ', 1, 'sec1', 'sec1'),
               (' Subsection 1 ', 2, None, '___sec1'),
+              (' Computer code ', 3, None, '___sec2'),
+              (' Running OS commands ', 3, None, '___sec3'),
               (' Subsection 2: Testing figures ',
                2,
                'subsec:ex',
@@ -32414,23 +33486,23 @@ h1, h2, h3, h4, h5, h6 {
                2,
                'decay:sec:theta',
                'decay:sec:theta'),
-              (' Custom Environments ', 2, None, '___sec4'),
+              (' Custom Environments ', 2, None, '___sec6'),
               (' Tables ', 2, 'subsec:table', 'subsec:table'),
               (' A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2` ',
                2,
                None,
-               '___sec6'),
-              (' Bibliography test ', 2, None, '___sec7'),
+               '___sec8'),
+              (' Bibliography test ', 2, None, '___sec9'),
               (' Example 1: Examples can be typeset as exercises ',
                2,
                'Example',
                'Example'),
               (' URLs ', 2, 'subsubsec:ex', 'subsubsec:ex'),
-              (' LaTeX Mathematics ', 2, None, '___sec10'),
-              (' Exercises ', 1, None, '___sec11'),
+              (' LaTeX Mathematics ', 1, None, '___sec12'),
+              (' Exercises ', 1, None, '___sec13'),
               (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
-              (' Remarks ', 3, None, '___sec13'),
-              (' Not an exercise ', 2, None, '___sec14'),
+              (' Remarks ', 3, None, '___sec15'),
+              (' Not an exercise ', 2, None, '___sec16'),
               (' Project 3: Compute a Probability ',
                2,
                'demo:ex:2',
@@ -32439,19 +33511,19 @@ h1, h2, h3, h4, h5, h6 {
                2,
                'proj:circle1',
                'proj:circle1'),
-              (' Remarks ', 3, None, '___sec17'),
+              (' Remarks ', 3, None, '___sec19'),
               (' Exercise 5: Determine some Distance ',
                2,
                'exer:dist',
                'exer:dist'),
-              (' Remarks ', 3, None, '___sec19'),
+              (' Remarks ', 3, None, '___sec21'),
               (' Some exercise without the "Exercise:" prefix ',
                2,
                None,
-               '___sec20'),
-              (' Example 7: Just an example ', 2, None, '___sec21'),
-              (' Here goes another section ', 1, None, '___sec22'),
-              (' More Exercises ', 1, None, '___sec23'),
+               '___sec22'),
+              (' Example 7: Just an example ', 2, None, '___sec23'),
+              (' Here goes another section ', 1, None, '___sec24'),
+              (' More Exercises ', 1, None, '___sec25'),
               (' Exercise 8: Make references to projects and problems ',
                2,
                'exer:some:formula',
@@ -32460,11 +33532,11 @@ h1, h2, h3, h4, h5, h6 {
                2,
                'exer:you',
                'exer:you'),
-              (' References ', 1, None, '___sec26'),
-              (' Appendix: Just for testing; part I ', 1, None, '___sec27'),
-              (' A subsection within an appendix ', 2, None, '___sec28'),
-              (' Appendix: Just for testing; part II ', 1, None, '___sec29'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec30'),
+              (' References ', 1, None, '___sec28'),
+              (' Appendix: Just for testing; part I ', 1, None, '___sec29'),
+              (' A subsection within an appendix ', 2, None, '___sec30'),
+              (' Appendix: Just for testing; part II ', 1, None, '___sec31'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec32'),
               (' Appendix: Testing identical titles ',
                2,
                'test:title:id1',
@@ -32473,12 +33545,12 @@ h1, h2, h3, h4, h5, h6 {
                2,
                'test:title:id2',
                'test:title:id2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec33'),
-              (' Appendix: Testing inline comments ', 2, None, '___sec34'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec35'),
+              (' Appendix: Testing inline comments ', 2, None, '___sec36'),
               (' Appendix: Testing headings ending with `verbatim inline` ',
                2,
                None,
-               '___sec35')]}
+               '___sec37')]}
 end of tocinfo -->
 
 
@@ -32531,7 +33603,7 @@ $$
 <center><h1>A Document for Testing Doconce</h1></center>  <!-- document title -->
 
 <p>
-<!-- author(s): Hans Petter Langtangen, Kaare Dump, A. Dummy Author, I. S. Overworked, and J. Doe -->
+<!-- author(s): Hans Petter Langtangen, Kaare Dump, A. Dummy Author, I. S. Overworked and Outburned, and J. Doe -->
 
 <center>
 <b>Hans Petter Langtangen</b> [1, 2] (<tt>hpl at simula.no</tt>)
@@ -32546,7 +33618,7 @@ $$
 </center>
 
 <center>
-<b>I. S. Overworked</b> [4, 5, 6, 7]
+<b>I. S. Overworked and Outburned</b> [4, 5, 6, 7]
 </center>
 
 <center>
@@ -32559,7 +33631,7 @@ $$
 
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
-<center>[3] <b>Segfault Inc, Cyberspace</b></center>
+<center>[3] <b>Segfault, Cyberspace</b></center>
 <center>[4] <b>Inst1</b></center>
 <center>[5] <b>Inst2, Somewhere</b></center>
 <center>[6] <b>Third Inst, Elsewhere</b></center>
@@ -32569,41 +33641,43 @@ $$
 
 <p>
 <a href="._testdoc_vagrant001.html#sec1"> Section 1 </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec1"> Subsection 1 </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#subsec:ex"> Subsection 2: Testing figures </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec4"> Custom Environments </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#subsec:table"> Tables </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec6"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec7"> Bibliography test </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#Example"> Example 1: Examples can be typeset as exercises </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#subsubsec:ex"> URLs </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec10"> LaTeX Mathematics </a><br>
-<a href="._testdoc_vagrant002.html#___sec11"> Exercises </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec1"> Subsection 1 </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec2"> Computer code </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec3"> Running OS commands </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#subsec:ex"> Subsection 2: Testing figures </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec6"> Custom Environments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#subsec:table"> Tables </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec8"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec9"> Bibliography test </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#Example"> Example 1: Examples can be typeset as exercises </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#subsubsec:ex"> URLs </a><br>
+<a href="._testdoc_vagrant002.html#___sec12"> LaTeX Mathematics </a><br>
+<a href="._testdoc_vagrant002.html#___sec13"> Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#demo:ex:1"> Problem 2: Flip a Coin </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec13"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec14"> Not an exercise </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec15"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec16"> Not an exercise </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#demo:ex:2"> Project 3: Compute a Probability </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec17"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 5: Determine some Distance </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec19"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec20"> Some exercise without the "Exercise:" prefix </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec21"> Example 7: Just an example </a><br>
-<a href="._testdoc_vagrant002.html#___sec22"> Here goes another section </a><br>
-<a href="._testdoc_vagrant002.html#___sec23"> More Exercises </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 5: Determine some Distance </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec21"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec22"> Some exercise without the "Exercise:" prefix </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec23"> Example 7: Just an example </a><br>
+<a href="._testdoc_vagrant002.html#___sec24"> Here goes another section </a><br>
+<a href="._testdoc_vagrant002.html#___sec25"> More Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 8: Make references to projects and problems </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#exer:you"> Project 9: References in a headings do not work well in html </a><br>
-<a href="._testdoc_vagrant002.html#___sec26"> References </a><br>
-<a href="._testdoc_vagrant002.html#___sec27"> Appendix: Just for testing; part I </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec28"> A subsection within an appendix </a><br>
-<a href="._testdoc_vagrant002.html#___sec29"> Appendix: Just for testing; part II </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec30"> Appendix: Testing identical titles </a><br>
+<a href="._testdoc_vagrant002.html#___sec28"> References </a><br>
+<a href="._testdoc_vagrant002.html#___sec29"> Appendix: Just for testing; part I </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec30"> A subsection within an appendix </a><br>
+<a href="._testdoc_vagrant002.html#___sec31"> Appendix: Just for testing; part II </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec32"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#test:title:id1"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#test:title:id2"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec33"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec34"> Appendix: Testing inline comments </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec35"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec35"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec36"> Appendix: Testing inline comments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec37"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
 
 <p>
 <p>
@@ -32723,41 +33797,43 @@ h1, h2, h3, h4, h5, h6 {
      -->
      <!-- Doconce automatically fills in the table of contents -->
           <!-- vagrant nav toc: " Section 1 " --> <li class="active">  <a href="._testdoc_vagrant001.html#sec1"> Section 1 </a>
-     <!-- vagrant nav toc: " Subsection 1 " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec1"> Subsection 1 </a>
-     <!-- vagrant nav toc: " Subsection 2: Testing figures " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#subsec:ex"> Subsection 2: Testing figures </a>
-     <!-- vagrant nav toc: " The \( \theta \) parameter (not \( \nabla \)?) " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a>
-     <!-- vagrant nav toc: " Custom Environments " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec4"> Custom Environments </a>
-     <!-- vagrant nav toc: " Tables " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#subsec:table"> Tables </a>
-     <!-- vagrant nav toc: " A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec6"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a>
-     <!-- vagrant nav toc: " Bibliography test " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec7"> Bibliography test </a>
-     <!-- vagrant nav toc: " Example 1: Examples can be typeset as exercises " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#Example"> Example 1: Examples can be typeset as exercises </a>
-     <!-- vagrant nav toc: " URLs " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#subsubsec:ex"> URLs </a>
-     <!-- vagrant nav toc: " LaTeX Mathematics " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec10"> LaTeX Mathematics </a>
-     <!-- vagrant nav toc: " Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec11"> Exercises </a>
+     <!-- vagrant nav toc: " Subsection 1 " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec1"> Subsection 1 </a>
+     <!-- vagrant nav toc: " Computer code " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec2"> Computer code </a>
+     <!-- vagrant nav toc: " Running OS commands " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec3"> Running OS commands </a>
+     <!-- vagrant nav toc: " Subsection 2: Testing figures " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec:ex"> Subsection 2: Testing figures </a>
+     <!-- vagrant nav toc: " The \( \theta \) parameter (not \( \nabla \)?) " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a>
+     <!-- vagrant nav toc: " Custom Environments " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec6"> Custom Environments </a>
+     <!-- vagrant nav toc: " Tables " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec:table"> Tables </a>
+     <!-- vagrant nav toc: " A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec8"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a>
+     <!-- vagrant nav toc: " Bibliography test " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec9"> Bibliography test </a>
+     <!-- vagrant nav toc: " Example 1: Examples can be typeset as exercises " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#Example"> Example 1: Examples can be typeset as exercises </a>
+     <!-- vagrant nav toc: " URLs " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsubsec:ex"> URLs </a>
+     <!-- vagrant nav toc: " LaTeX Mathematics " --> <li>  <a href="._testdoc_vagrant002.html#___sec12"> LaTeX Mathematics </a>
+     <!-- vagrant nav toc: " Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec13"> Exercises </a>
      <!-- vagrant nav toc: " Problem 2: Flip a Coin " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:1"> Problem 2: Flip a Coin </a>
-     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec13"> Remarks </a>
-     <!-- vagrant nav toc: " Not an exercise " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec14"> Not an exercise </a>
+     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec15"> Remarks </a>
+     <!-- vagrant nav toc: " Not an exercise " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec16"> Not an exercise </a>
      <!-- vagrant nav toc: " Project 3: Compute a Probability " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:2"> Project 3: Compute a Probability </a>
      <!-- vagrant nav toc: " Project 4: Explore Distributions of Random Circles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a>
-     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec17"> Remarks </a>
-     <!-- vagrant nav toc: " Exercise 5: Determine some Distance " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 5: Determine some Distance </a>
      <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec19"> Remarks </a>
-     <!-- vagrant nav toc: " Some exercise without the "Exercise:" prefix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec20"> Some exercise without the "Exercise:" prefix </a>
-     <!-- vagrant nav toc: " Example 7: Just an example " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec21"> Example 7: Just an example </a>
-     <!-- vagrant nav toc: " Here goes another section " --> <li>  <a href="._testdoc_vagrant002.html#___sec22"> Here goes another section </a>
-     <!-- vagrant nav toc: " More Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec23"> More Exercises </a>
+     <!-- vagrant nav toc: " Exercise 5: Determine some Distance " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 5: Determine some Distance </a>
+     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec21"> Remarks </a>
+     <!-- vagrant nav toc: " Some exercise without the "Exercise:" prefix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec22"> Some exercise without the "Exercise:" prefix </a>
+     <!-- vagrant nav toc: " Example 7: Just an example " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec23"> Example 7: Just an example </a>
+     <!-- vagrant nav toc: " Here goes another section " --> <li>  <a href="._testdoc_vagrant002.html#___sec24"> Here goes another section </a>
+     <!-- vagrant nav toc: " More Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec25"> More Exercises </a>
      <!-- vagrant nav toc: " Exercise 8: Make references to projects and problems " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 8: Make references to projects and problems </a>
      <!-- vagrant nav toc: " Project 9: References in a headings do not work well in html " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:you"> Project 9: References in a headings do not work well in html </a>
-     <!-- vagrant nav toc: " References " --> <li>  <a href="._testdoc_vagrant002.html#___sec26"> References </a>
-     <!-- vagrant nav toc: " Appendix: Just for testing; part I " --> <li>  <a href="._testdoc_vagrant002.html#___sec27"> Appendix: Just for testing; part I </a>
-     <!-- vagrant nav toc: " A subsection within an appendix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec28"> A subsection within an appendix </a>
-     <!-- vagrant nav toc: " Appendix: Just for testing; part II " --> <li>  <a href="._testdoc_vagrant002.html#___sec29"> Appendix: Just for testing; part II </a>
-     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec30"> Appendix: Testing identical titles </a>
+     <!-- vagrant nav toc: " References " --> <li>  <a href="._testdoc_vagrant002.html#___sec28"> References </a>
+     <!-- vagrant nav toc: " Appendix: Just for testing; part I " --> <li>  <a href="._testdoc_vagrant002.html#___sec29"> Appendix: Just for testing; part I </a>
+     <!-- vagrant nav toc: " A subsection within an appendix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec30"> A subsection within an appendix </a>
+     <!-- vagrant nav toc: " Appendix: Just for testing; part II " --> <li>  <a href="._testdoc_vagrant002.html#___sec31"> Appendix: Just for testing; part II </a>
+     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec32"> Appendix: Testing identical titles </a>
      <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id1"> Appendix: Testing identical titles </a>
      <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id2"> Appendix: Testing identical titles </a>
-     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec33"> Appendix: Testing identical titles </a>
-     <!-- vagrant nav toc: " Appendix: Testing inline comments " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec34"> Appendix: Testing inline comments </a>
-     <!-- vagrant nav toc: " Appendix: Testing headings ending with <code>verbatim inline</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec35"> Appendix: Testing headings ending with <code>verbatim inline</code> </a>
+     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec35"> Appendix: Testing identical titles </a>
+     <!-- vagrant nav toc: " Appendix: Testing inline comments " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec36"> Appendix: Testing inline comments </a>
+     <!-- vagrant nav toc: " Appendix: Testing headings ending with <code>verbatim inline</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec37"> Appendix: Testing headings ending with <code>verbatim inline</code> </a>
 
     </ul>
    </div>
@@ -32770,6 +33846,8 @@ h1, h2, h3, h4, h5, h6 {
 {'highest level': 1,
  'sections': [(' Section 1 ', 1, 'sec1', 'sec1'),
               (' Subsection 1 ', 2, None, '___sec1'),
+              (' Computer code ', 3, None, '___sec2'),
+              (' Running OS commands ', 3, None, '___sec3'),
               (' Subsection 2: Testing figures ',
                2,
                'subsec:ex',
@@ -32778,23 +33856,23 @@ h1, h2, h3, h4, h5, h6 {
                2,
                'decay:sec:theta',
                'decay:sec:theta'),
-              (' Custom Environments ', 2, None, '___sec4'),
+              (' Custom Environments ', 2, None, '___sec6'),
               (' Tables ', 2, 'subsec:table', 'subsec:table'),
               (' A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2` ',
                2,
                None,
-               '___sec6'),
-              (' Bibliography test ', 2, None, '___sec7'),
+               '___sec8'),
+              (' Bibliography test ', 2, None, '___sec9'),
               (' Example 1: Examples can be typeset as exercises ',
                2,
                'Example',
                'Example'),
               (' URLs ', 2, 'subsubsec:ex', 'subsubsec:ex'),
-              (' LaTeX Mathematics ', 2, None, '___sec10'),
-              (' Exercises ', 1, None, '___sec11'),
+              (' LaTeX Mathematics ', 1, None, '___sec12'),
+              (' Exercises ', 1, None, '___sec13'),
               (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
-              (' Remarks ', 3, None, '___sec13'),
-              (' Not an exercise ', 2, None, '___sec14'),
+              (' Remarks ', 3, None, '___sec15'),
+              (' Not an exercise ', 2, None, '___sec16'),
               (' Project 3: Compute a Probability ',
                2,
                'demo:ex:2',
@@ -32803,19 +33881,19 @@ h1, h2, h3, h4, h5, h6 {
                2,
                'proj:circle1',
                'proj:circle1'),
-              (' Remarks ', 3, None, '___sec17'),
+              (' Remarks ', 3, None, '___sec19'),
               (' Exercise 5: Determine some Distance ',
                2,
                'exer:dist',
                'exer:dist'),
-              (' Remarks ', 3, None, '___sec19'),
+              (' Remarks ', 3, None, '___sec21'),
               (' Some exercise without the "Exercise:" prefix ',
                2,
                None,
-               '___sec20'),
-              (' Example 7: Just an example ', 2, None, '___sec21'),
-              (' Here goes another section ', 1, None, '___sec22'),
-              (' More Exercises ', 1, None, '___sec23'),
+               '___sec22'),
+              (' Example 7: Just an example ', 2, None, '___sec23'),
+              (' Here goes another section ', 1, None, '___sec24'),
+              (' More Exercises ', 1, None, '___sec25'),
               (' Exercise 8: Make references to projects and problems ',
                2,
                'exer:some:formula',
@@ -32824,11 +33902,11 @@ h1, h2, h3, h4, h5, h6 {
                2,
                'exer:you',
                'exer:you'),
-              (' References ', 1, None, '___sec26'),
-              (' Appendix: Just for testing; part I ', 1, None, '___sec27'),
-              (' A subsection within an appendix ', 2, None, '___sec28'),
-              (' Appendix: Just for testing; part II ', 1, None, '___sec29'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec30'),
+              (' References ', 1, None, '___sec28'),
+              (' Appendix: Just for testing; part I ', 1, None, '___sec29'),
+              (' A subsection within an appendix ', 2, None, '___sec30'),
+              (' Appendix: Just for testing; part II ', 1, None, '___sec31'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec32'),
               (' Appendix: Testing identical titles ',
                2,
                'test:title:id1',
@@ -32837,12 +33915,12 @@ h1, h2, h3, h4, h5, h6 {
                2,
                'test:title:id2',
                'test:title:id2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec33'),
-              (' Appendix: Testing inline comments ', 2, None, '___sec34'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec35'),
+              (' Appendix: Testing inline comments ', 2, None, '___sec36'),
               (' Appendix: Testing headings ending with `verbatim inline` ',
                2,
                None,
-               '___sec35')]}
+               '___sec37')]}
 end of tocinfo -->
 
 
@@ -32946,300 +34024,14 @@ Here is a nested list:
 Here is a reference to Equation <a href="._testdoc_vagrant002.html#mjx-eqn-3">(3)</a>.
 This equation appears in another part if this document is split.
 
-<p>
-<p>
-<!-- ------------------- end of main content --------------- -->
-
-
-<!--
-Preliminary examples/discussion on vagrant style syntax
-
-<div class='alert alert-block alert-notice'>
-  <h3>What about PHP? Python? Java?</h3>
-<p>
-bla-bla.
-</div>
-
-<p>
-While the <div class="deep-blue">rest of the</div> getting started
--->
-
-<ul class="pager">
-  <li class="previous">
-    <a href="._testdoc_vagrant000.html">&larr; Prev</a>
-  </li>
-
-  <li class="next">
-    <a href="._testdoc_vagrant002.html">Next &rarr;</a>
-  </li>
-
-</ul>
-
- </div>
-
- <div class="row Footer">
-  <div class="span12">
-  Here goes a footer, if desired, maybe with a Copyright &copy;
-  </div>
- </div>
-</div>
-</body>
-</html>
-
-
-
-
-************** File: ._testdoc_vagrant002.html *****************
-<html>
-<head>
-<!--
-This style is adopted from the (now old) vagrant 1.0 web
-pages. The style builds on the Twitter Bootstrap style.
-Modifications by Hans Petter Langtangen, hpl@simula.no.
-
-This style file should be copied and the following
-elements edited:
-
-Logo heading:
-
- LogoWord
- withSubWord
-
-Navigation links at the top:
-
- GO TO 1
- GO TO 2
-
-Footer at the end:
-
- Here goes a footer, if desired, maybe with a Copyright &copy;
-
--->
-
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: http://code.google.com/p/doconce/" />
-
-<link rel="stylesheet" href="style_vagrant/css/twitter_bootstrap.css">
-<link rel="stylesheet" href="style_vagrant/css/vagrant.css">
-<!-- Define color of headings here (last definition counts) -->
-<style type="text/css">
-h1, h2, h3, h4, h5, h6 {
-  color: #000;     /* black */
-  color: #999;     /* gray */
-  color: #005580;  /* dark blue */
-  color: #08c;     /* characteristic blue */
-</style>
-</head>
-<body>
-
-<title> Appendix: Testing headings ending with `verbatim inline` </title>
-
-<div class="container">
- <div class="row Header with-border">
-  <div class="span3 Module logo">
-   <h1><a href="/">LogoWord<span class="subtitle">withSubWord</span></a></h1>
-  </div>
-  <div class="span9">
-   <div class="Module navigation">
-   <!-- Navigation at the top of the page -->
-    <ul>
-     <li> <a href="">GO TO 1</a></li>
-     <li> <a href="">GO TO 2</a></li>
-    </ul>
-   </div>
-  </div>
- </div>
-</div>
-
-
-<!-- Here goes the table of contents in the sidebar
-     <li class="active"> means dark blue background for current section
--->
-<div class="row">
- <div class="span3 Module sidebar">
-  <div class="well" style="padding: 8px 0px;">
-   <ul class="nav nav-list">
-     <!-- Syntax:
-     <li> <a href="...">Section 1</a></li>
-     <li class="active"> <a href="...">Section 2</a></li>
-     <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2a</a></li>
-     <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2b</a></li>
-     -->
-     <!-- Doconce automatically fills in the table of contents -->
-          <!-- vagrant nav toc: " Section 1 " --> <li>  <a href="._testdoc_vagrant001.html#sec1"> Section 1 </a>
-     <!-- vagrant nav toc: " Subsection 1 " --> <li class="active"> &nbsp;  <a href="._testdoc_vagrant002.html#___sec1"> Subsection 1 </a>
-     <!-- vagrant nav toc: " Subsection 2: Testing figures " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#subsec:ex"> Subsection 2: Testing figures </a>
-     <!-- vagrant nav toc: " The \( \theta \) parameter (not \( \nabla \)?) " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a>
-     <!-- vagrant nav toc: " Custom Environments " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec4"> Custom Environments </a>
-     <!-- vagrant nav toc: " Tables " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#subsec:table"> Tables </a>
-     <!-- vagrant nav toc: " A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec6"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a>
-     <!-- vagrant nav toc: " Bibliography test " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec7"> Bibliography test </a>
-     <!-- vagrant nav toc: " Example 1: Examples can be typeset as exercises " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#Example"> Example 1: Examples can be typeset as exercises </a>
-     <!-- vagrant nav toc: " URLs " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#subsubsec:ex"> URLs </a>
-     <!-- vagrant nav toc: " LaTeX Mathematics " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec10"> LaTeX Mathematics </a>
-     <!-- vagrant nav toc: " Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec11"> Exercises </a>
-     <!-- vagrant nav toc: " Problem 2: Flip a Coin " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:1"> Problem 2: Flip a Coin </a>
-     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec13"> Remarks </a>
-     <!-- vagrant nav toc: " Not an exercise " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec14"> Not an exercise </a>
-     <!-- vagrant nav toc: " Project 3: Compute a Probability " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:2"> Project 3: Compute a Probability </a>
-     <!-- vagrant nav toc: " Project 4: Explore Distributions of Random Circles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a>
-     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec17"> Remarks </a>
-     <!-- vagrant nav toc: " Exercise 5: Determine some Distance " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 5: Determine some Distance </a>
-     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec19"> Remarks </a>
-     <!-- vagrant nav toc: " Some exercise without the "Exercise:" prefix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec20"> Some exercise without the "Exercise:" prefix </a>
-     <!-- vagrant nav toc: " Example 7: Just an example " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec21"> Example 7: Just an example </a>
-     <!-- vagrant nav toc: " Here goes another section " --> <li>  <a href="._testdoc_vagrant002.html#___sec22"> Here goes another section </a>
-     <!-- vagrant nav toc: " More Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec23"> More Exercises </a>
-     <!-- vagrant nav toc: " Exercise 8: Make references to projects and problems " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 8: Make references to projects and problems </a>
-     <!-- vagrant nav toc: " Project 9: References in a headings do not work well in html " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:you"> Project 9: References in a headings do not work well in html </a>
-     <!-- vagrant nav toc: " References " --> <li>  <a href="._testdoc_vagrant002.html#___sec26"> References </a>
-     <!-- vagrant nav toc: " Appendix: Just for testing; part I " --> <li>  <a href="._testdoc_vagrant002.html#___sec27"> Appendix: Just for testing; part I </a>
-     <!-- vagrant nav toc: " A subsection within an appendix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec28"> A subsection within an appendix </a>
-     <!-- vagrant nav toc: " Appendix: Just for testing; part II " --> <li>  <a href="._testdoc_vagrant002.html#___sec29"> Appendix: Just for testing; part II </a>
-     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec30"> Appendix: Testing identical titles </a>
-     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id1"> Appendix: Testing identical titles </a>
-     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id2"> Appendix: Testing identical titles </a>
-     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec33"> Appendix: Testing identical titles </a>
-     <!-- vagrant nav toc: " Appendix: Testing inline comments " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec34"> Appendix: Testing inline comments </a>
-     <!-- vagrant nav toc: " Appendix: Testing headings ending with <code>verbatim inline</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec35"> Appendix: Testing headings ending with <code>verbatim inline</code> </a>
-
-    </ul>
-   </div>
-  </div>
-
-  <div class="span9">
-
-
-<!-- tocinfo
-{'highest level': 1,
- 'sections': [(' Section 1 ', 1, 'sec1', 'sec1'),
-              (' Subsection 1 ', 2, None, '___sec1'),
-              (' Subsection 2: Testing figures ',
-               2,
-               'subsec:ex',
-               'subsec:ex'),
-              (' The $\\theta$ parameter (not $\\nabla$?) ',
-               2,
-               'decay:sec:theta',
-               'decay:sec:theta'),
-              (' Custom Environments ', 2, None, '___sec4'),
-              (' Tables ', 2, 'subsec:table', 'subsec:table'),
-              (' A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2` ',
-               2,
-               None,
-               '___sec6'),
-              (' Bibliography test ', 2, None, '___sec7'),
-              (' Example 1: Examples can be typeset as exercises ',
-               2,
-               'Example',
-               'Example'),
-              (' URLs ', 2, 'subsubsec:ex', 'subsubsec:ex'),
-              (' LaTeX Mathematics ', 2, None, '___sec10'),
-              (' Exercises ', 1, None, '___sec11'),
-              (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
-              (' Remarks ', 3, None, '___sec13'),
-              (' Not an exercise ', 2, None, '___sec14'),
-              (' Project 3: Compute a Probability ',
-               2,
-               'demo:ex:2',
-               'demo:ex:2'),
-              (' Project 4: Explore Distributions of Random Circles ',
-               2,
-               'proj:circle1',
-               'proj:circle1'),
-              (' Remarks ', 3, None, '___sec17'),
-              (' Exercise 5: Determine some Distance ',
-               2,
-               'exer:dist',
-               'exer:dist'),
-              (' Remarks ', 3, None, '___sec19'),
-              (' Some exercise without the "Exercise:" prefix ',
-               2,
-               None,
-               '___sec20'),
-              (' Example 7: Just an example ', 2, None, '___sec21'),
-              (' Here goes another section ', 1, None, '___sec22'),
-              (' More Exercises ', 1, None, '___sec23'),
-              (' Exercise 8: Make references to projects and problems ',
-               2,
-               'exer:some:formula',
-               'exer:some:formula'),
-              (' Project 9: References in a headings do not work well in html ',
-               2,
-               'exer:you',
-               'exer:you'),
-              (' References ', 1, None, '___sec26'),
-              (' Appendix: Just for testing; part I ', 1, None, '___sec27'),
-              (' A subsection within an appendix ', 2, None, '___sec28'),
-              (' Appendix: Just for testing; part II ', 1, None, '___sec29'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec30'),
-              (' Appendix: Testing identical titles ',
-               2,
-               'test:title:id1',
-               'test:title:id1'),
-              (' Appendix: Testing identical titles ',
-               2,
-               'test:title:id2',
-               'test:title:id2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec33'),
-              (' Appendix: Testing inline comments ', 2, None, '___sec34'),
-              (' Appendix: Testing headings ending with `verbatim inline` ',
-               2,
-               None,
-               '___sec35')]}
-end of tocinfo -->
-
-
-
-
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  TeX: {
-     equationNumbers: {  autoNumber: "none"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
-  }
-});
-</script>
-<script type="text/javascript"
- src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
-
-<!-- newcommands_bfmath.tex -->
-$$
-\renewcommand{\u}{\pmb{u}}
-
-\newcommand{\xbm}{\boldsymbol{x}}
-\newcommand{\normalvecbm}{\boldsymbol{n}}
-\newcommand{\ubm}{\boldsymbol{u}}
-$$
-
-
-<!-- newcommands_replace.tex -->
-$$
-\newcommand{\x}{\pmb{x}}
-\newcommand{\normalvec}{\pmb{n}}
-\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
-\newcommand{\halfi}{1/2}
-\newcommand{\half}{\frac{1}{2}}
-\newcommand{\report}{test report}
-$$
-
-
-
-
-<a name="part0002"></a>
-<!-- !split and check if these extra words are included properly in the comment -->
-
 <h3>Subsection 1  <a name="___sec1"></a></h3>
 
 <p>
-More text, with a reference back to the section <a href="._testdoc_vagrant001.html#sec1">Section 1</a> and further
+More text, with a reference back to the section <a href="#sec1">Section 1</a> and further
 to the section <a href="#subsubsec:ex">URLs</a>. 
 <!-- sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console -->
+
+<h4>Computer code  <a name="___sec2"></a></h4>
 
 <p>
 Let's do some copying from files too. First from subroutine up to the very end,
@@ -33433,6 +34225,18 @@ green color containing a linebreak.
 And one more.</font> Some formats will only display this correctly when
 HTML is the output format.
 
+<h4>Running OS commands  <a name="___sec3"></a></h4>
+
+<p>
+
+<!-- code=bash (from !bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; python -c <span style="color: #BA2121">&#39;print &quot;Testing\noutput\nfrom\nPython.&quot;&#39;</span>
+Testing
+output
+from
+Python.
+</pre></div>
+
 <h3>Subsection 2: Testing figures <a name="subsec:ex"></a></h3>
 
 <p>
@@ -33530,7 +34334,7 @@ $$
 \end{align}
 $$
 
-<h3>Custom Environments  <a name="___sec4"></a></h3>
+<h3>Custom Environments  <a name="___sec6"></a></h3>
 
 <p>
 Here is an attempt to create a theorem environment via Mako
@@ -33599,7 +34403,8 @@ one table:
 </table>
 <p>
 And one with math headings (that are expanded and must be treated
-accordingly) and verbatim heading and entry:
+accordingly), verbatim heading and entry, and no space around the pipe
+symbol:
 
 <p>
 <table border="1">
@@ -33615,7 +34420,7 @@ accordingly) and verbatim heading and entry:
 <p>
 And add one with verbatim headings (with underscores),
 and rows starting with <code>|-</code> because of a negative number,
-and <code>|</code> right after verbatim word (with no space):
+and <code>|</code> right before and after verbatim word (with no space):
 
 <p>
 <table border="1">
@@ -33625,42 +34430,59 @@ and <code>|</code> right after verbatim word (with no space):
 <tr><td align="right">   10                              </td> <td align="right">   17.74                           </td> <td align="right">   -4.50                           </td> <td align="right">   9.96                            </td> </tr>
 <tr><td align="right">   0                               </td> <td align="right">   -9.19                           </td> <td align="right">   4.13                            </td> <td align="right">   -0.26                           </td> </tr>
 </table>
+<p>
+Finally, a table with math
+(<code>bm</code> that expands to <code>boldsymbol</code>, was tricky, but
+cleanly handled now)
+and URLs.
 
-<h3>A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code>  <a name="___sec6"></a></h3>
+<p>
+<!-- Mako code to expand URLs in the table -->
+<!-- (These types of tables did not work before Jan 2014) -->
+
+<p>
+<table border="1">
+<tr></tr>
+<tr><td align="center">   \( \mathcal{L}=0 \)                                                                                                                        </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0080.png"><img src="../doc/src/manual/mov/wave_frames/frame_0080.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0085.png"><img src="../doc/src/manual/mov/wave_frames/frame_0085.png" width="300"></a>    </td> </tr>
+<tr><td align="center">   \( a=b \)                                                                                                                                  </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0090.png"><img src="../doc/src/manual/mov/wave_frames/frame_0090.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0095.png"><img src="../doc/src/manual/mov/wave_frames/frame_0095.png" width="300"></a>    </td> </tr>
+<tr><td align="center">   \( \nabla\cdot\boldsymbol{u} =0  \)                                                                                                        </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0100.png"><img src="../doc/src/manual/mov/wave_frames/frame_0100.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0105.png"><img src="../doc/src/manual/mov/wave_frames/frame_0105.png" width="300"></a>    </td> </tr>
+</table>
+
+<h3>A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code>  <a name="___sec8"></a></h3>
 
 <p>
 <b>Files <code>my_file_v1.py</code> and <code>my_file_v2.py</code> define some math \( a_{i-1} \).</b>
 Here is
 some text.
 
-<h3>Bibliography test  <a name="___sec7"></a></h3>
+<h3>Bibliography test  <a name="___sec9"></a></h3>
 
 <p>
-Here is an example: <a href="#Langtangen_Pedersen_2002">[1]</a> discussed propagation of
-large destructive water waves, <a href="#Langtangen_et_al_2002">[2]</a> gave
+Here is an example: <a href="._testdoc_vagrant002.html#Langtangen_Pedersen_2002">[1]</a> discussed propagation of
+large destructive water waves, <a href="._testdoc_vagrant002.html#Langtangen_et_al_2002">[2]</a> gave
 an overview of numerical methods for solving the Navier-Stokes equations,
 while the use of Backward Kolmogorov equations for analyzing
-random vibrations was investigated in <a href="#Langtangen_1994a">[3]</a>.
-The book chapter <a href="#Mardal_et_al_2003a">[4]</a> contains information on
+random vibrations was investigated in <a href="._testdoc_vagrant002.html#Langtangen_1994a">[3]</a>.
+The book chapter <a href="._testdoc_vagrant002.html#Mardal_et_al_2003a">[4]</a> contains information on
 C++ software tools for programming multigrid methods. A real retro
-reference is <a href="#Langtangen_1988d">[5]</a> about a big FORTRAN package.
+reference is <a href="._testdoc_vagrant002.html#Langtangen_1988d">[5]</a> about a big FORTRAN package.
 Multiple references are also possible, e.g., see
-<a href="#Langtangen_Pedersen_2002">[1]</a> <a href="#Mardal_et_al_2003a">[4]</a>.
+<a href="._testdoc_vagrant002.html#Langtangen_Pedersen_2002">[1]</a> <a href="._testdoc_vagrant002.html#Mardal_et_al_2003a">[4]</a>.
 
 <p>
 We need to cite more than 10 papers to reproduce an old formatting
 problem with blanks in the keys in reST format:
-<a href="#Langtangen_1992c">[6]</a> <a href="#Langtangen_1994a">[3]</a> <a href="#Mortensen_et_al_2011">[7]</a> <a href="#Langtangen_Pedersen_2002">[1]</a>
+<a href="._testdoc_vagrant002.html#Langtangen_1992c">[6]</a> <a href="._testdoc_vagrant002.html#Langtangen_1994a">[3]</a> <a href="._testdoc_vagrant002.html#Mortensen_et_al_2011">[7]</a> <a href="._testdoc_vagrant002.html#Langtangen_Pedersen_2002">[1]</a>
 and
-<a href="#Langtangen_et_al_2002">[2]</a> <a href="#Glimsdal_et_al_20006">[8]</a> <a href="#Rahman_et_al_2006b">[9]</a> <a href="#Haga_et_al_2011a">[10]</a> <a href="#Langtangen_2003a">[11]</a> <a href="#Langtangen_2008a">[12]</a> <a href="#Langtangen:95">[13]</a>
+<a href="._testdoc_vagrant002.html#Langtangen_et_al_2002">[2]</a> <a href="._testdoc_vagrant002.html#Glimsdal_et_al_20006">[8]</a> <a href="._testdoc_vagrant002.html#Rahman_et_al_2006b">[9]</a> <a href="._testdoc_vagrant002.html#Haga_et_al_2011a">[10]</a> <a href="._testdoc_vagrant002.html#Langtangen_2003a">[11]</a> <a href="._testdoc_vagrant002.html#Langtangen_2008a">[12]</a> <a href="._testdoc_vagrant002.html#Langtangen:95">[13]</a>
 and all the work of
-<a href="#Langtangen_2012">[14]</a> <a href="#Mardal_et_al_2003a">[4]</a> <a href="#Jeberg_et_al_2004">[15]</a> as well as
-old work <a href="#Langtangen_1988d">[5]</a> and <a href="#Langtangen_1989e">[16]</a>, and the
-talk <a href="#Langtangen_talk_2007a">[17]</a>.
-Langtangen also had two thesis <a href="#Langtangen:85">[18]</a> <a href="#Langtangen_1989e">[16]</a>.
+<a href="._testdoc_vagrant002.html#Langtangen_2012">[14]</a> <a href="._testdoc_vagrant002.html#Mardal_et_al_2003a">[4]</a> <a href="._testdoc_vagrant002.html#Jeberg_et_al_2004">[15]</a> as well as
+old work <a href="._testdoc_vagrant002.html#Langtangen_1988d">[5]</a> and <a href="._testdoc_vagrant002.html#Langtangen_1989e">[16]</a>, and the
+talk <a href="._testdoc_vagrant002.html#Langtangen_talk_2007a">[17]</a>.
+Langtangen also had two thesis <a href="._testdoc_vagrant002.html#Langtangen:85">[18]</a> <a href="._testdoc_vagrant002.html#Langtangen_1989e">[16]</a>.
 More retro citations are
-the old ME-IN323 book <a href="#Langtangen:91">[19]</a> and the
-<a href="#Langtangen:94b">[20]</a> OONSKI '94 paper.
+the old ME-IN323 book <a href="._testdoc_vagrant002.html#Langtangen:91">[19]</a> and the
+<a href="._testdoc_vagrant002.html#Langtangen:94b">[20]</a> OONSKI '94 paper.
 
 <p>
 <!-- --- begin exercise --- -->
@@ -33748,7 +34570,299 @@ More tough tests: repeated URLs whose footnotes when using the
 <a href="http://google.com" target="_self">google</a>, which should result in exactly three
 footnotes.
 
-<h3>LaTeX Mathematics  <a name="___sec10"></a></h3>
+<p>
+<p>
+<!-- ------------------- end of main content --------------- -->
+
+
+<!--
+Preliminary examples/discussion on vagrant style syntax
+
+<div class='alert alert-block alert-notice'>
+  <h3>What about PHP? Python? Java?</h3>
+<p>
+bla-bla.
+</div>
+
+<p>
+While the <div class="deep-blue">rest of the</div> getting started
+-->
+
+<ul class="pager">
+  <li class="previous">
+    <a href="._testdoc_vagrant000.html">&larr; Prev</a>
+  </li>
+
+  <li class="next">
+    <a href="._testdoc_vagrant002.html">Next &rarr;</a>
+  </li>
+
+</ul>
+
+ </div>
+
+ <div class="row Footer">
+  <div class="span12">
+  Here goes a footer, if desired, maybe with a Copyright &copy;
+  </div>
+ </div>
+</div>
+</body>
+</html>
+
+
+
+
+************** File: ._testdoc_vagrant002.html *****************
+<html>
+<head>
+<!--
+This style is adopted from the (now old) vagrant 1.0 web
+pages. The style builds on the Twitter Bootstrap style.
+Modifications by Hans Petter Langtangen, hpl@simula.no.
+
+This style file should be copied and the following
+elements edited:
+
+Logo heading:
+
+ LogoWord
+ withSubWord
+
+Navigation links at the top:
+
+ GO TO 1
+ GO TO 2
+
+Footer at the end:
+
+ Here goes a footer, if desired, maybe with a Copyright &copy;
+
+-->
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: http://code.google.com/p/doconce/" />
+
+<link rel="stylesheet" href="style_vagrant/css/twitter_bootstrap.css">
+<link rel="stylesheet" href="style_vagrant/css/vagrant.css">
+<!-- Define color of headings here (last definition counts) -->
+<style type="text/css">
+h1, h2, h3, h4, h5, h6 {
+  color: #000;     /* black */
+  color: #999;     /* gray */
+  color: #005580;  /* dark blue */
+  color: #08c;     /* characteristic blue */
+</style>
+</head>
+<body>
+
+<title> Appendix: Testing headings ending with `verbatim inline` </title>
+
+<div class="container">
+ <div class="row Header with-border">
+  <div class="span3 Module logo">
+   <h1><a href="/">LogoWord<span class="subtitle">withSubWord</span></a></h1>
+  </div>
+  <div class="span9">
+   <div class="Module navigation">
+   <!-- Navigation at the top of the page -->
+    <ul>
+     <li> <a href="">GO TO 1</a></li>
+     <li> <a href="">GO TO 2</a></li>
+    </ul>
+   </div>
+  </div>
+ </div>
+</div>
+
+
+<!-- Here goes the table of contents in the sidebar
+     <li class="active"> means dark blue background for current section
+-->
+<div class="row">
+ <div class="span3 Module sidebar">
+  <div class="well" style="padding: 8px 0px;">
+   <ul class="nav nav-list">
+     <!-- Syntax:
+     <li> <a href="...">Section 1</a></li>
+     <li class="active"> <a href="...">Section 2</a></li>
+     <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2a</a></li>
+     <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2b</a></li>
+     -->
+     <!-- Doconce automatically fills in the table of contents -->
+          <!-- vagrant nav toc: " Section 1 " --> <li>  <a href="._testdoc_vagrant001.html#sec1"> Section 1 </a>
+     <!-- vagrant nav toc: " Subsection 1 " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec1"> Subsection 1 </a>
+     <!-- vagrant nav toc: " Computer code " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec2"> Computer code </a>
+     <!-- vagrant nav toc: " Running OS commands " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec3"> Running OS commands </a>
+     <!-- vagrant nav toc: " Subsection 2: Testing figures " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec:ex"> Subsection 2: Testing figures </a>
+     <!-- vagrant nav toc: " The \( \theta \) parameter (not \( \nabla \)?) " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a>
+     <!-- vagrant nav toc: " Custom Environments " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec6"> Custom Environments </a>
+     <!-- vagrant nav toc: " Tables " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec:table"> Tables </a>
+     <!-- vagrant nav toc: " A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec8"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a>
+     <!-- vagrant nav toc: " Bibliography test " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec9"> Bibliography test </a>
+     <!-- vagrant nav toc: " Example 1: Examples can be typeset as exercises " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#Example"> Example 1: Examples can be typeset as exercises </a>
+     <!-- vagrant nav toc: " URLs " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsubsec:ex"> URLs </a>
+     <!-- vagrant nav toc: " LaTeX Mathematics " --> <li class="active">  <a href="._testdoc_vagrant002.html#___sec12"> LaTeX Mathematics </a>
+     <!-- vagrant nav toc: " Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec13"> Exercises </a>
+     <!-- vagrant nav toc: " Problem 2: Flip a Coin " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:1"> Problem 2: Flip a Coin </a>
+     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec15"> Remarks </a>
+     <!-- vagrant nav toc: " Not an exercise " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec16"> Not an exercise </a>
+     <!-- vagrant nav toc: " Project 3: Compute a Probability " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:2"> Project 3: Compute a Probability </a>
+     <!-- vagrant nav toc: " Project 4: Explore Distributions of Random Circles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a>
+     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec19"> Remarks </a>
+     <!-- vagrant nav toc: " Exercise 5: Determine some Distance " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 5: Determine some Distance </a>
+     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec21"> Remarks </a>
+     <!-- vagrant nav toc: " Some exercise without the "Exercise:" prefix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec22"> Some exercise without the "Exercise:" prefix </a>
+     <!-- vagrant nav toc: " Example 7: Just an example " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec23"> Example 7: Just an example </a>
+     <!-- vagrant nav toc: " Here goes another section " --> <li>  <a href="._testdoc_vagrant002.html#___sec24"> Here goes another section </a>
+     <!-- vagrant nav toc: " More Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec25"> More Exercises </a>
+     <!-- vagrant nav toc: " Exercise 8: Make references to projects and problems " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 8: Make references to projects and problems </a>
+     <!-- vagrant nav toc: " Project 9: References in a headings do not work well in html " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:you"> Project 9: References in a headings do not work well in html </a>
+     <!-- vagrant nav toc: " References " --> <li>  <a href="._testdoc_vagrant002.html#___sec28"> References </a>
+     <!-- vagrant nav toc: " Appendix: Just for testing; part I " --> <li>  <a href="._testdoc_vagrant002.html#___sec29"> Appendix: Just for testing; part I </a>
+     <!-- vagrant nav toc: " A subsection within an appendix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec30"> A subsection within an appendix </a>
+     <!-- vagrant nav toc: " Appendix: Just for testing; part II " --> <li>  <a href="._testdoc_vagrant002.html#___sec31"> Appendix: Just for testing; part II </a>
+     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec32"> Appendix: Testing identical titles </a>
+     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id1"> Appendix: Testing identical titles </a>
+     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id2"> Appendix: Testing identical titles </a>
+     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec35"> Appendix: Testing identical titles </a>
+     <!-- vagrant nav toc: " Appendix: Testing inline comments " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec36"> Appendix: Testing inline comments </a>
+     <!-- vagrant nav toc: " Appendix: Testing headings ending with <code>verbatim inline</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec37"> Appendix: Testing headings ending with <code>verbatim inline</code> </a>
+
+    </ul>
+   </div>
+  </div>
+
+  <div class="span9">
+
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' Section 1 ', 1, 'sec1', 'sec1'),
+              (' Subsection 1 ', 2, None, '___sec1'),
+              (' Computer code ', 3, None, '___sec2'),
+              (' Running OS commands ', 3, None, '___sec3'),
+              (' Subsection 2: Testing figures ',
+               2,
+               'subsec:ex',
+               'subsec:ex'),
+              (' The $\\theta$ parameter (not $\\nabla$?) ',
+               2,
+               'decay:sec:theta',
+               'decay:sec:theta'),
+              (' Custom Environments ', 2, None, '___sec6'),
+              (' Tables ', 2, 'subsec:table', 'subsec:table'),
+              (' A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2` ',
+               2,
+               None,
+               '___sec8'),
+              (' Bibliography test ', 2, None, '___sec9'),
+              (' Example 1: Examples can be typeset as exercises ',
+               2,
+               'Example',
+               'Example'),
+              (' URLs ', 2, 'subsubsec:ex', 'subsubsec:ex'),
+              (' LaTeX Mathematics ', 1, None, '___sec12'),
+              (' Exercises ', 1, None, '___sec13'),
+              (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
+              (' Remarks ', 3, None, '___sec15'),
+              (' Not an exercise ', 2, None, '___sec16'),
+              (' Project 3: Compute a Probability ',
+               2,
+               'demo:ex:2',
+               'demo:ex:2'),
+              (' Project 4: Explore Distributions of Random Circles ',
+               2,
+               'proj:circle1',
+               'proj:circle1'),
+              (' Remarks ', 3, None, '___sec19'),
+              (' Exercise 5: Determine some Distance ',
+               2,
+               'exer:dist',
+               'exer:dist'),
+              (' Remarks ', 3, None, '___sec21'),
+              (' Some exercise without the "Exercise:" prefix ',
+               2,
+               None,
+               '___sec22'),
+              (' Example 7: Just an example ', 2, None, '___sec23'),
+              (' Here goes another section ', 1, None, '___sec24'),
+              (' More Exercises ', 1, None, '___sec25'),
+              (' Exercise 8: Make references to projects and problems ',
+               2,
+               'exer:some:formula',
+               'exer:some:formula'),
+              (' Project 9: References in a headings do not work well in html ',
+               2,
+               'exer:you',
+               'exer:you'),
+              (' References ', 1, None, '___sec28'),
+              (' Appendix: Just for testing; part I ', 1, None, '___sec29'),
+              (' A subsection within an appendix ', 2, None, '___sec30'),
+              (' Appendix: Just for testing; part II ', 1, None, '___sec31'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec32'),
+              (' Appendix: Testing identical titles ',
+               2,
+               'test:title:id1',
+               'test:title:id1'),
+              (' Appendix: Testing identical titles ',
+               2,
+               'test:title:id2',
+               'test:title:id2'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec35'),
+              (' Appendix: Testing inline comments ', 2, None, '___sec36'),
+              (' Appendix: Testing headings ending with `verbatim inline` ',
+               2,
+               None,
+               '___sec37')]}
+end of tocinfo -->
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+
+<!-- newcommands_bfmath.tex -->
+$$
+\renewcommand{\u}{\pmb{u}}
+
+\newcommand{\xbm}{\boldsymbol{x}}
+\newcommand{\normalvecbm}{\boldsymbol{n}}
+\newcommand{\ubm}{\boldsymbol{u}}
+$$
+
+
+<!-- newcommands_replace.tex -->
+$$
+\newcommand{\x}{\pmb{x}}
+\newcommand{\normalvec}{\pmb{n}}
+\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
+\newcommand{\halfi}{1/2}
+\newcommand{\half}{\frac{1}{2}}
+\newcommand{\report}{test report}
+$$
+
+
+
+
+<a name="part0002"></a>
+<!-- !split and check if these extra words are included properly in the comment -->
+
+<h2>LaTeX Mathematics  <a name="___sec12"></a></h2>
 
 <p>
 Here is an equation without label using backslash-bracket environment:
@@ -33850,7 +34964,7 @@ Below, we have <a href="#demo:ex:1">Problem 2: Flip a Coin</a> and <a href="#dem
 as well as <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a> and <a href="#exer:you">Project 9: References in a headings do not work well in html</a>, and in
 between there we have <a href="#exer:some:formula">Exercise 8: Make references to projects and problems</a>.
 
-<h2>Exercises  <a name="___sec11"></a></h2>
+<h2>Exercises  <a name="___sec13"></a></h2>
 
 <p>
 <!-- --- begin exercise --- -->
@@ -33869,7 +34983,7 @@ let the program count the number of heads.
 <p>
 <!-- Test syntax error -->
 
-<h4>Remarks  <a name="___sec13"></a></h4>
+<h4>Remarks  <a name="___sec15"></a></h4>
 
 <p>
 Remarks with such a subsubsection heading would previously mark
@@ -33935,7 +35049,7 @@ Filenames: <code>flip_coin.py</code>, <code>flip_coin.pdf</code>.
 <p>
 <!-- --- end exercise --- -->
 
-<h3>Not an exercise  <a name="___sec14"></a></h3>
+<h3>Not an exercise  <a name="___sec16"></a></h3>
 
 <p>
 Should be possible to stick a normal section in the middle of many
@@ -34068,7 +35182,7 @@ Filename: <code>circles.pdf</code>.
 <p>
 <!-- Closing remarks for this Project -->
 
-<h4>Remarks  <a name="___sec17"></a></h4>
+<h4>Remarks  <a name="___sec19"></a></h4>
 
 <p>
 At the very end of the exercise it may be appropriate to summarize
@@ -34206,7 +35320,7 @@ Here goes the solution of this subexercise.
 <p>
 <!-- Closing remarks for this Exercise -->
 
-<h4>Remarks  <a name="___sec19"></a></h4>
+<h4>Remarks  <a name="___sec21"></a></h4>
 
 <p>
 Some final closing remarks, e.g., summarizing the main findings
@@ -34219,7 +35333,7 @@ remarks will appear at the end of the typeset exercise.
 <p>
 <!-- --- begin exercise --- -->
 
-<h3>Some exercise without the "Exercise:" prefix  <a name="___sec20"></a></h3>
+<h3>Some exercise without the "Exercise:" prefix  <a name="___sec22"></a></h3>
 
 <p>
 <!-- Another minimalistic exercise -->
@@ -34246,7 +35360,7 @@ And a test that the code <code>lambda x: x+2</code> is correctly placed here:
 <p>
 <!-- --- begin exercise --- -->
 
-<h3>Example 7: Just an example  <a name="___sec21"></a></h3>
+<h3>Example 7: Just an example  <a name="___sec23"></a></h3>
 
 <p>
 <!-- This example needs the --examples_as_exercises option, otherwise -->
@@ -34263,12 +35377,12 @@ Oslo.
 <p>
 <!-- --- end exercise --- -->
 
-<h2>Here goes another section  <a name="___sec22"></a></h2>
+<h2>Here goes another section  <a name="___sec24"></a></h2>
 
 <p>
 With some text, before we continue with exercises.
 
-<h2>More Exercises  <a name="___sec23"></a></h2>
+<h2>More Exercises  <a name="___sec25"></a></h2>
 
 <p>
 <!-- --- begin exercise --- -->
@@ -34309,7 +35423,7 @@ Filename: <code>selc_composed.pdf</code>.
 <p>
 <!-- --- end exercise --- -->
 
-<h2>References  <a name="___sec26"></a></h2>
+<h2>References  <a name="___sec28"></a></h2>
 
 <p>
 <!-- begin bibliography -->
@@ -34423,22 +35537,22 @@ Filename: <code>selc_composed.pdf</code>.
 
 <!-- end bibliography -->
 
-<h2>Appendix: Just for testing; part I  <a name="___sec27"></a></h2>
+<h2>Appendix: Just for testing; part I  <a name="___sec29"></a></h2>
 
 <p>
 This is the first appendix.
 
-<h3>A subsection within an appendix  <a name="___sec28"></a></h3>
+<h3>A subsection within an appendix  <a name="___sec30"></a></h3>
 
 <p>
 Some text.
 
-<h2>Appendix: Just for testing; part II  <a name="___sec29"></a></h2>
+<h2>Appendix: Just for testing; part II  <a name="___sec31"></a></h2>
 
 <p>
 This is more stuff for an appendix.
 
-<h3>Appendix: Testing identical titles  <a name="___sec30"></a></h3>
+<h3>Appendix: Testing identical titles  <a name="___sec32"></a></h3>
 
 <p>
 Without label.
@@ -34453,7 +35567,7 @@ With label.
 <p>
 With label.
 
-<h3>Appendix: Testing identical titles  <a name="___sec33"></a></h3>
+<h3>Appendix: Testing identical titles  <a name="___sec35"></a></h3>
 
 <p>
 Without label.
@@ -34543,7 +35657,7 @@ detailed information and constitute of course very valuable readings
 when you use version control systems every day. The point now is
 to get started.
 
-<h3>Appendix: Testing inline comments  <a name="___sec34"></a></h3>
+<h3>Appendix: Testing inline comments  <a name="___sec36"></a></h3>
 
 <p>
 Projects that you want to share among several computers or project
@@ -34580,7 +35694,7 @@ systems. Numerous other tutorials contain more comprehensive material
 and in-depth explanations of the concepts and tools.</em>]</font>
 <!-- end inline comment -->
 
-<h3>Appendix: Testing headings ending with <code>verbatim inline</code>  <a name="___sec35"></a></h3>
+<h3>Appendix: Testing headings ending with <code>verbatim inline</code>  <a name="___sec37"></a></h3>
 
 <p>
 The point here is to test 1) <code>verbatim</code> code in headings, and 2)
@@ -34637,7 +35751,7 @@ While the <div class="deep-blue">rest of the</div> getting started
 A Document for Testing Doconce
 ==============================
 
-:Author: Hans Petter Langtangen (hpl at simula.no), Kaare Dump, A. Dummy Author, I. S. Overworked, J. Doe (j_doe at cyberspace.com)
+:Author: Hans Petter Langtangen (hpl at simula.no), Kaare Dump, A. Dummy Author, I. S. Overworked and Outburned, J. Doe (j_doe at cyberspace.com)
 :Date: Jan 32, 2100
 
 
@@ -34701,12 +35815,8 @@ Here is a nested list:
 
 
 
-Here is a reference to Equation :ref:`(3.3) <Eq:my:eq1>`.
+Here is a reference to Equation :ref:`(3.1) <Eq:my:eq1>`.
 This equation appears in another part if this document is split.
-
-
-************** File: ._testdoc002.rst *****************
-.. !split and check if these extra words are included properly in the comment
 
 
 Subsection 1
@@ -34719,6 +35829,9 @@ to the section :ref:`subsubsec:ex`.
 
 .. sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console
 
+
+Computer code
+~~~~~~~~~~~~~
 
 Let's do some copying from files too. First from subroutine up to the very end,
 
@@ -34910,6 +36023,19 @@ Here is some <font color="red">red</font> color and an attempt to write <font co
 green color containing a linebreak.
 And one more.</font> Some formats will only display this correctly when
 HTML is the output format.
+
+Running OS commands
+~~~~~~~~~~~~~~~~~~~
+
+
+.. code-block:: console
+
+        Terminal> python -c 'print "Testing\noutput\nfrom\nPython."'
+        Testing
+        output
+        from
+        Python.
+
 
 
 .. _subsec:ex:
@@ -35138,7 +36264,8 @@ one table:
 ============  ============  ============  
 
 And one with math headings (that are expanded and must be treated
-accordingly) and verbatim heading and entry:
+accordingly), verbatim heading and entry, and no space around the pipe
+symbol:
 
 ================  ================  ================  ================  
    :math:`i`        :math:`h_i`     :math:`\bar T_i`      ``L_i``       
@@ -35154,7 +36281,7 @@ accordingly) and verbatim heading and entry:
 
 And add one with verbatim headings (with underscores),
 and rows starting with ``|-`` because of a negative number,
-and ``|`` right after verbatim word (with no space):
+and ``|`` right before and after verbatim word (with no space):
 
 =====================  =====================  =====================  =====================  
         exact                 ``v_1``         :math:`a_i` + ``v_2``       ``verb_3_``       
@@ -35164,6 +36291,25 @@ and ``|`` right after verbatim word (with no space):
                    10                  17.74                  -4.50                   9.96  
                     0                  -9.19                   4.13                  -0.26  
 =====================  =====================  =====================  =====================  
+
+Finally, a table with math
+(``bm`` that expands to ``boldsymbol``, was tricky, but
+cleanly handled now)
+and URLs.
+
+.. Mako code to expand URLs in the table
+
+.. (These types of tables did not work before Jan 2014)
+
+
+
+=========================================================  =========================================================  =========================================================  
+                                                                                                                                                                                 
+=========================================================  =========================================================  =========================================================  
+                  :math:`\mathcal{L}=0`                    `080 <../doc/src/manual/mov/wave_frames/frame_0080.png>`_  `085 <../doc/src/manual/mov/wave_frames/frame_0085.png>`_  
+                       :math:`a=b`                         `090 <../doc/src/manual/mov/wave_frames/frame_0090.png>`_  `095 <../doc/src/manual/mov/wave_frames/frame_0095.png>`_  
+          :math:`\nabla\cdot\boldsymbol{u} =0 `            `100 <../doc/src/manual/mov/wave_frames/frame_0100.png>`_  `105 <../doc/src/manual/mov/wave_frames/frame_0105.png>`_  
+=========================================================  =========================================================  =========================================================  
 
 
 A test of verbatim words in heading with subscript :math:`a_i`: ``my_file_v1`` and ``my_file_v2``
@@ -35289,8 +36435,13 @@ footnotes.
 
 
 
+
+************** File: ._testdoc002.rst *****************
+.. !split and check if these extra words are included properly in the comment
+
+
 LaTeX Mathematics
------------------
+=================
 
 Here is an equation without label using backslash-bracket environment:
 
@@ -35462,6 +36613,7 @@ Draw an integer among :math:`\{1,2\}` with
 
 
 .. --- begin answer of exercise ---
+
 **Answer.**
 If the ``random.random()`` function returns a number :math:`<1/2`, let it be
 head, otherwise tail. Repeat this :math:`N` number of times.
@@ -35470,6 +36622,7 @@ head, otherwise tail. Repeat this :math:`N` number of times.
 
 
 .. --- begin solution of exercise ---
+
 **Solution.**
 Code:
 
@@ -35486,6 +36639,7 @@ Code:
 
 
 .. --- end solution of exercise ---
+
 Filenames: ``flip_coin.py``, ``flip_coin.pdf``.
 
 .. solution files: mysol.txt, mysol_flip_coin.py, yet_another.file
@@ -35603,6 +36757,7 @@ Use the ``numpy.random`` module to draw the
 
 
 .. --- begin answer of exercise ---
+
 **Answer.**
 Here goes the short answer to part a).
 
@@ -35610,6 +36765,7 @@ Here goes the short answer to part a).
 
 
 .. --- begin solution of exercise ---
+
 **Solution.**
 Here goes a full solution to part a).
 
@@ -35664,6 +36820,7 @@ Test list in exercise:
 2. item2
 
 .. --- begin solution of exercise ---
+
 **Solution.**
 Here goes a full solution of the whole exercise.
 With some math :math:`a=b` in this solution:
@@ -35720,10 +36877,12 @@ Test list in hint:
 2. item2
 
 .. --- end hint in exercise ---
+
 Filename: ``subexer_a.pdf``.
 
 
 .. --- begin answer of exercise ---
+
 **Answer.**
 Short answer to subexercise a).
 With math in answer: :math:`a=b`.
@@ -35747,10 +36906,12 @@ Some math :math:`\cos^2 x + \sin^2 x = 1` written one a single line:
 A hint for this subexercise.
 
 .. --- end hint in exercise ---
+
 Filename: ``subexer_b.pdf``.
 
 
 .. --- begin solution of exercise ---
+
 **Solution.**
 Here goes the solution of this subexercise.
 
@@ -36229,6 +37390,7 @@ final,                   % or draft (marks overfull hboxes)
 % Style: T2 (Springer)
 \documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmono}
 \usepackage{t2}
+\special{papersize=193mm,260mm}
 % #elif LATEX_STYLE == "Springer_llcse"
 % Style: Lecture Notes in Computer Science (Springer)
 \documentclass[oribib]{llncs}
@@ -36283,6 +37445,7 @@ final,                   % or draft (marks overfull hboxes)
 % Examples of font types (Ubuntu): Gentium Book Basic (Palatino-like),
 % Liberation Sans (Helvetica-like), Norasi, Purisa (handwriting), UnDoum
 % #else
+\usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
 % #ifdef HELVETICA
@@ -36296,6 +37459,7 @@ final,                   % or draft (marks overfull hboxes)
 \linespread{1.05}            % Palatino needs extra line spread to look nice
 % #endif
 % #endif
+\usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
@@ -36532,6 +37696,7 @@ final,                   % or draft (marks overfull hboxes)
 
 % insert custom LaTeX commands...
 
+\raggedbottom
 \makeindex
 
 %-------------------- end preamble ----------------------
@@ -37054,8 +38219,10 @@ final,                   % or draft (marks overfull hboxes)
 \usepackage{minted}
 \usemintedstyle{default}
 
+\usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
+\usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
@@ -37195,6 +38362,7 @@ final,                   % or draft (marks overfull hboxes)
 
 % insert custom LaTeX commands...
 
+\raggedbottom
 \makeindex
 
 %-------------------- end preamble ----------------------
@@ -37637,8 +38805,10 @@ final,                   % or draft (marks overfull hboxes)
 \usepackage{minted}
 \usemintedstyle{default}
 
+\usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
+\usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
@@ -37785,6 +38955,7 @@ final,                   % or draft (marks overfull hboxes)
 
 % insert custom LaTeX commands...
 
+\raggedbottom
 \makeindex
 
 %-------------------- end preamble ----------------------
@@ -38227,8 +39398,10 @@ final,                   % or draft (marks overfull hboxes)
 \usepackage{minted}
 \usemintedstyle{default}
 
+\usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
+\usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
@@ -38297,6 +39470,7 @@ final,                   % or draft (marks overfull hboxes)
 
 % insert custom LaTeX commands...
 
+\raggedbottom
 \makeindex
 
 %-------------------- end preamble ----------------------
@@ -38739,8 +39913,10 @@ final,                   % or draft (marks overfull hboxes)
 \usepackage{minted}
 \usemintedstyle{default}
 
+\usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
+\usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
@@ -38820,6 +39996,7 @@ final,                   % or draft (marks overfull hboxes)
 
 % insert custom LaTeX commands...
 
+\raggedbottom
 \makeindex
 
 %-------------------- end preamble ----------------------
@@ -39285,8 +40462,10 @@ final,                   % or draft (marks overfull hboxes)
 \usepackage{minted}
 \usemintedstyle{default}
 
+\usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
+\usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
@@ -39433,6 +40612,7 @@ final,                   % or draft (marks overfull hboxes)
 
 % insert custom LaTeX commands...
 
+\raggedbottom
 \makeindex
 
 %-------------------- end preamble ----------------------
@@ -39875,8 +41055,10 @@ final,                   % or draft (marks overfull hboxes)
 \usepackage{minted}
 \usemintedstyle{default}
 
+\usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
+\usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
@@ -39929,6 +41111,7 @@ final,                   % or draft (marks overfull hboxes)
 
 % insert custom LaTeX commands...
 
+\raggedbottom
 \makeindex
 
 %-------------------- end preamble ----------------------
@@ -40370,8 +41553,10 @@ final,                   % or draft (marks overfull hboxes)
 \usepackage{minted}
 \usemintedstyle{default}
 
+\usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
+\usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
@@ -40518,6 +41703,7 @@ final,                   % or draft (marks overfull hboxes)
 
 % insert custom LaTeX commands...
 
+\raggedbottom
 \makeindex
 
 %-------------------- end preamble ----------------------
@@ -43669,7 +44855,7 @@ Automatically generated HTML file from Doconce source
       -webkit-background-clip: padding-box;
       background-clip: padding-box;
     }
-    tt { font-family: "Courier New", Courier; }
+    tt, code { font-family: "Courier New", Courier; }
     hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
     p { text-indent: 0px; }
     p.caption { width: 80%; font-style: normal; text-align: left; }
@@ -45854,7 +47040,7 @@ exercises (and problems and projects too).
 
 ************** File: slides1.do.txt *****************
 TITLE: On the Technicalities of Scientific Writing Anno 2012: The Doconce Way
-AUTHOR: Hans Petter Langtangen at Simula Research Laboratory and University of Oslo
+AUTHOR: Hans Petter Langtangen at Simula Research Laboratory & Univiversity of Oslo
 DATE: Today
 
 
@@ -46111,7 +47297,7 @@ $$
 <!-- institution(s) -->
 
 <center>[1] <b>Simula Research Laboratory</b></center>
-<center>[2] <b>University of Oslo</b></center>
+<center>[2] <b>Univiversity of Oslo</b></center>
 <p>&nbsp;<br>
 <center><h4>Jan 32, 2100</h4></center> <!-- date -->
 <p>
@@ -46294,6 +47480,8 @@ This one is typeset in a small font and with the default
 title (Warning) since no title is specified.
 </div>
 
+
+<p>
 
 
 </section>
@@ -46721,7 +47909,7 @@ $$
 <!-- institution(s) -->
 
 <center>[1] <b>Simula Research Laboratory</b></center>
-<center>[2] <b>University of Oslo</b></center>
+<center>[2] <b>Univiversity of Oslo</b></center>
 <p>
 <center><h4>Jan 32, 2100</h4></center> <!-- date -->
 <p>
@@ -46858,6 +48046,8 @@ This one is typeset in a small font and with the default
 title (Warning) since no title is specified.
 </div>
 
+
+<p>
 
 <!-- ------------------- end of main content --------------- -->
 
@@ -47072,7 +48262,7 @@ $$
 <!-- institution(s) -->
 
 <center>[1] <b style="font-weight: bold">Simula Research Laboratory</b></center>
-<center>[2] <b style="font-weight: bold">University of Oslo</b></center>
+<center>[2] <b style="font-weight: bold">Univiversity of Oslo</b></center>
 <p>
 <center><h4>Jan 32, 2100</h4></center> <!-- date -->
 <p>
@@ -47251,6 +48441,8 @@ This one is typeset in a small font and with the default
 title (Warning) since no title is specified.
 </div>
 
+
+<p>
 
 
 </section>
@@ -47690,6 +48882,7 @@ final,                   % or draft (marks overfull hboxes)
 % Style: T2 (Springer)
 \documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmono}
 \usepackage{t2}
+\special{papersize=193mm,260mm}
 % #elif LATEX_STYLE == "Springer_llcse"
 % Style: Lecture Notes in Computer Science (Springer)
 \documentclass[oribib]{llncs}
@@ -47741,6 +48934,7 @@ final,                   % or draft (marks overfull hboxes)
 % Examples of font types (Ubuntu): Gentium Book Basic (Palatino-like),
 % Liberation Sans (Helvetica-like), Norasi, Purisa (handwriting), UnDoum
 % #else
+\usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
 % #ifdef HELVETICA
@@ -47754,6 +48948,7 @@ final,                   % or draft (marks overfull hboxes)
 \linespread{1.05}            % Palatino needs extra line spread to look nice
 % #endif
 % #endif
+\usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
@@ -47950,6 +49145,7 @@ final,                   % or draft (marks overfull hboxes)
 
 % insert custom LaTeX commands...
 
+\raggedbottom
 \makeindex
 
 %-------------------- end preamble ----------------------
@@ -48016,7 +49212,7 @@ On the Technicalities of Scientific Writing Anno 2012: The Doconce Way
 
 % ----------------- author(s) -------------------------
 % #if LATEX_HEADING == "traditional"
-\author{Hans Petter Langtangen\footnote{Simula Research Laboratory and University of Oslo.}}
+\author{Hans Petter Langtangen\footnote{Simula Research Laboratory and Univiversity of Oslo.}}
 
 % #elif LATEX_HEADING == "titlepage"
 \vspace{1.3cm}
@@ -48026,19 +49222,19 @@ On the Technicalities of Scientific Writing Anno 2012: The Doconce Way
 \ \\ [2mm]
 
 {\large\textsf{${}^1$Simula Research Laboratory} \\ [1.5mm]}
-{\large\textsf{${}^2$University of Oslo} \\ [1.5mm]}
+{\large\textsf{${}^2$Univiversity of Oslo} \\ [1.5mm]}
 % #elif LATEX_HEADING == "Springer_collection"
 
 \author{Hans Petter Langtangen}
 % Short version of authors:
 %\authorrunning{...}
-\institute{Hans Petter Langtangen\at Simula Research Laboratory and University of Oslo}
+\institute{Hans Petter Langtangen\at Simula Research Laboratory and Univiversity of Oslo}
 
 % #elif LATEX_HEADING == "beamer"
 \author{Hans Petter Langtangen\inst{1,2}}
 \institute{Simula Research Laboratory\inst{1}
 \and
-University of Oslo\inst{2}}
+Univiversity of Oslo\inst{2}}
 % #else
 
 \begin{center}
@@ -48048,7 +49244,7 @@ University of Oslo\inst{2}}
 \begin{center}
 % List of all institutions:
 \centerline{{\small ${}^1$Simula Research Laboratory}}
-\centerline{{\small ${}^2$University of Oslo}}
+\centerline{{\small ${}^2$Univiversity of Oslo}}
 \end{center}
 % #endif
 % ----------------- end author(s) -------------------------
@@ -48207,6 +49403,8 @@ title (Warning) since no title is specified. \par}
 
 
 
+
+
 % ------------------- end of main content ---------------
 
 
@@ -48320,6 +49518,7 @@ title (Warning) since no title is specified. \par}
 
 % insert custom LaTeX commands...
 
+\raggedbottom
 \makeindex
 
 %-------------------- end preamble ----------------------
@@ -48343,7 +49542,7 @@ title (Warning) since no title is specified. \par}
 \author{Hans Petter Langtangen\inst{1,2}}
 \institute{Simula Research Laboratory\inst{1}
 \and
-University of Oslo\inst{2}}
+Univiversity of Oslo\inst{2}}
 % ----------------- end author(s) -------------------------
 
 
@@ -48674,7 +49873,7 @@ URL: "http://hplgit.github.com/teamods/writing_reports/"
 
 !bc
 TITLE: Some Title
-AUTHOR: name1 at institution1, with more info, and institution2
+AUTHOR: name1 at institution1, with more info & institution2
 AUTHOR: name2 email:name2@web.com at institution
 DATE: today
 
@@ -49632,7 +50831,7 @@ based on HTML and vice versa.
 
 <!-- code=text typeset with pygments style "emacs" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">TITLE: Some Title
-AUTHOR: name1 at institution1, with more info, and institution2
+AUTHOR: name1 at institution1, with more info &amp; institution2
 AUTHOR: name2 email:name2@web.com at institution
 DATE: today
 
@@ -50346,6 +51545,7 @@ open=right               % start new chapters on odd-numbered pages
 % Style: T2 (Springer)
 \documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmono}
 \usepackage{t2}
+\special{papersize=193mm,260mm}
 % #elif LATEX_STYLE == "Springer_llcse"
 % Style: Lecture Notes in Computer Science (Springer)
 \documentclass[oribib]{llncs}
@@ -50422,6 +51622,7 @@ open=right               % start new chapters on odd-numbered pages
 % Examples of font types (Ubuntu): Gentium Book Basic (Palatino-like),
 % Liberation Sans (Helvetica-like), Norasi, Purisa (handwriting), UnDoum
 % #else
+\usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
 % #ifdef HELVETICA
@@ -50435,6 +51636,7 @@ open=right               % start new chapters on odd-numbered pages
 \linespread{1.05}            % Palatino needs extra line spread to look nice
 % #endif
 % #endif
+\usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
@@ -50596,6 +51798,7 @@ open=right               % start new chapters on odd-numbered pages
 
 % insert custom LaTeX commands...
 
+\raggedbottom
 \makeindex
 
 %-------------------- end preamble ----------------------
@@ -51022,7 +52225,7 @@ based on HTML and vice versa.
 
 \bccq
 TITLE: Some Title
-AUTHOR: name1 at institution1, with more info, and institution2
+AUTHOR: name1 at institution1, with more info & institution2
 AUTHOR: name2 email:name2@web.com at institution
 DATE: today
 
@@ -51644,6 +52847,7 @@ Last page gets rendered to
 
 % insert custom LaTeX commands...
 
+\raggedbottom
 \makeindex
 
 %-------------------- end preamble ----------------------
@@ -51958,7 +53162,7 @@ based on HTML and vice versa.
 
 \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
 TITLE: Some Title
-AUTHOR: name1 at institution1, with more info, and institution2
+AUTHOR: name1 at institution1, with more info & institution2
 AUTHOR: name2 email:name2@web.com at institution
 DATE: today
 
@@ -52464,7 +53668,7 @@ Last page gets rendered to
 
 ************** File: slides3.do.txt *****************
 TITLE: On Schemes for Exponential Decay
-AUTHOR: Hans Petter Langtangen at Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo
+AUTHOR: Hans Petter Langtangen at Center for Biomedical Computing, Simula Research Laboratory & Department of Informatics, University of Oslo
 DATE: today
 
 FIGURE: [../doc/src/slides/fig/CN_logo, width=300 frac=0.4]
@@ -53130,6 +54334,7 @@ final,                   % or draft (marks overfull hboxes)
 % Style: T2 (Springer)
 \documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmono}
 \usepackage{t2}
+\special{papersize=193mm,260mm}
 % #elif LATEX_STYLE == "Springer_llcse"
 % Style: Lecture Notes in Computer Science (Springer)
 \documentclass[oribib]{llncs}
@@ -53181,6 +54386,7 @@ final,                   % or draft (marks overfull hboxes)
 % Examples of font types (Ubuntu): Gentium Book Basic (Palatino-like),
 % Liberation Sans (Helvetica-like), Norasi, Purisa (handwriting), UnDoum
 % #else
+\usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
 % #ifdef HELVETICA
@@ -53194,6 +54400,7 @@ final,                   % or draft (marks overfull hboxes)
 \linespread{1.05}            % Palatino needs extra line spread to look nice
 % #endif
 % #endif
+\usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
@@ -53352,6 +54559,7 @@ final,                   % or draft (marks overfull hboxes)
 
 % insert custom LaTeX commands...
 
+\raggedbottom
 \makeindex
 
 %-------------------- end preamble ----------------------
@@ -53753,6 +54961,7 @@ qualitatively correct results.
 
 % insert custom LaTeX commands...
 
+\raggedbottom
 \makeindex
 
 %-------------------- end preamble ----------------------
@@ -55666,6 +56875,7 @@ final,                   % or draft (marks overfull hboxes)
 % Style: T2 (Springer)
 \documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmono}
 \usepackage{t2}
+\special{papersize=193mm,260mm}
 % #elif LATEX_STYLE == "Springer_llcse"
 % Style: Lecture Notes in Computer Science (Springer)
 \documentclass[oribib]{llncs}
@@ -55752,6 +56962,7 @@ final,                   % or draft (marks overfull hboxes)
 % Examples of font types (Ubuntu): Gentium Book Basic (Palatino-like),
 % Liberation Sans (Helvetica-like), Norasi, Purisa (handwriting), UnDoum
 % #else
+\usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
 % #ifdef HELVETICA
@@ -55765,6 +56976,7 @@ final,                   % or draft (marks overfull hboxes)
 \linespread{1.05}            % Palatino needs extra line spread to look nice
 % #endif
 % #endif
+\usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
@@ -55886,6 +57098,7 @@ final,                   % or draft (marks overfull hboxes)
 
 % insert custom LaTeX commands...
 
+\raggedbottom
 \makeindex
 
 %-------------------- end preamble ----------------------
@@ -56488,8 +57701,10 @@ final,                   % or draft (marks overfull hboxes)
 \usepackage{animate,graphicx}
 
 
+\usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
+\usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
@@ -56521,6 +57736,7 @@ final,                   % or draft (marks overfull hboxes)
 
 % insert custom LaTeX commands...
 
+\raggedbottom
 \makeindex
 
 %-------------------- end preamble ----------------------
@@ -56890,8 +58106,10 @@ final,                   % or draft (marks overfull hboxes)
 \usepackage{animate,graphicx}
 
 
+\usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
+\usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
@@ -56923,6 +58141,7 @@ final,                   % or draft (marks overfull hboxes)
 
 % insert custom LaTeX commands...
 
+\raggedbottom
 \makeindex
 
 %-------------------- end preamble ----------------------
@@ -58406,49 +59625,59 @@ And here is a table:
 </html>
 
 ************** File: make.sh *****************
-#!/bin/sh -x
+#!/bin/bash -x
+
+function system {
+  "$@"
+  if [ $? -ne 0 ]; then
+    echo "make.sh: unsuccessful command $@"
+    echo "abort!"
+    exit 1
+  fi
+}
+
 set -x
 sh ./clean.sh
 
 # Make latest bin/doconce doc
 doconce > doconce_program.sh
 
-doconce format html quickref --no_pygments_html --no_preprocess
+system doconce format html quickref --no_pygments_html --no_preprocess
 
 # latex (shpro because of @@@CODE copy, need minted style)
-doconce format latex quickref --no_preprocess
-doconce ptex2tex quickref -DMINTED -DHELVETICA envir=Verbatim
+system doconce format latex quickref --no_preprocess
+system doconce ptex2tex quickref -DMINTED -DHELVETICA envir=Verbatim
 # cannot run ptex2tex since it always runs preprocess
-latex -shell-escape quickref.tex
+system latex -shell-escape quickref.tex
 latex -shell-escape quickref.tex
 dvipdf quickref.dvi
 
 # Sphinx
-doconce format sphinx quickref --no_preprocess
+system doconce format sphinx quickref --no_preprocess
 rm -rf sphinx-rootdir
-doconce sphinx_dir author='HPL' version=0.7 quickref
+system doconce sphinx_dir author='HPL' version=0.7 quickref
 doconce replace 'doconce format sphinx %s' 'doconce format sphinx %s --no-preprocess' automake_sphinx.py
-python automake_sphinx.py
+system python automake_sphinx.py
 cp quickref.rst quickref.sphinx.rst  # save
 
 # reStructuredText:
-doconce format rst quickref --no_preprocess
+system doconce format rst quickref --no_preprocess
 rst2xml.py quickref.rst > quickref.xml
 rst2odt.py quickref.rst > quickref.odt
 rst2html.py quickref.rst > quickref.rst.html
 rst2latex.py quickref.rst > quickref.rst.tex
-latex quickref.rst.tex
+system latex quickref.rst.tex
 latex quickref.rst.tex
 dvipdf quickref.rst.dvi
 
 # Other formats:
-doconce format plain quickref --no_preprocess
-doconce format gwiki quickref --no_preprocess
-doconce format mwiki quickref --no_preprocess
-doconce format cwiki quickref --no_preprocess
-doconce format st quickref --no_preprocess
-doconce format epytext quickref --no_preprocess
-doconce format pandoc quickref --no_preprocess
+system doconce format plain quickref --no_preprocess
+system doconce format gwiki quickref --no_preprocess
+system doconce format mwiki quickref --no_preprocess
+system doconce format cwiki quickref --no_preprocess
+system doconce format st quickref --no_preprocess
+system doconce format epytext quickref --no_preprocess
+system doconce format pandoc quickref --no_preprocess
 
 rm -rf demo
 mkdir demo
@@ -58494,7 +59723,7 @@ Doconce can also be converted to
 <a href="quickref.gwiki">Googlecode wiki</a>,
 <a href="quickref.mwiki">MediaWiki</a>,
 <a href="quickref.cwiki">Creole wiki</a>,
-<a href="quickref.md">a Pandoc</a>,
+<a href="quickref.md">aPandoc</a>,
 <a href="quickref.st">Structured Text</a>,
 <a href="quickref.epytext">Epytext</a>,
 and maybe the most important format of all:
@@ -58619,9 +59848,9 @@ The table of contents is removed by writing `TOC: off`.
 ===== Section Types =====
 label{quick:sections}
 
-|----------------c--------|------------------c---------------------------|
+|----------------c---------------------------c---------------------------|
 |      Section type       |        Syntax                                |
-|----------------l--------|------------------l---------------------------|
+|----------------l---------------------------l---------------------------|
 | chapter                 | `========= Heading ========` (9 `=`)         |
 | section                 | `======= Heading =======`    (7 `=`)         |
 | subsection              | `===== Heading =====`        (5 `=`)         |
@@ -60264,7 +61493,7 @@ list of capabilities:
 <p>
 <!-- begin verbatim block  shpro-->
 <pre><code>Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex expand_commands combine_images guess_encoding change_encoding gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 # transform doconce file to another format
@@ -60283,8 +61512,8 @@ doconce replace from-text to-text file1 file2 ...
 doconce replace_from_file file-with-from-to file1 file2 ...
 (exact text substitution, but a set of from-to relations)
 
-# gwiki format requires substitution of figure file names by URLs
-doconce gwiki_figsubst file.gwiki URL-of-fig-dir
+# replace all mako function calls by the results of the calls
+doconce expand_mako mako_code_file funcname file1 file2 ...
 
 # remove all inline comments in a doconce file
 doconce remove_inline_comments file.do.txt
@@ -60343,10 +61572,10 @@ doconce slides_beamer complete_file.tex
 doconce html_colorbullets file1.html file2.html ...
 
 # grab selected text from a file
-doconce grab   --from[-] from-text [--to[-] to-text] somefile
+doconce grab   --from[-] from-text [--to[-] to-text] somefile &gt; result
 
 # remove selected text from a file
-doconce remove --from[-] from-text [--to[-] to-text] somefile
+doconce remove --from[-] from-text [--to[-] to-text] somefile &gt; result
 
 # run spellcheck on a set of files
 doconce spellcheck [-d .mydict.txt] *.do.txt
@@ -60682,6 +61911,7 @@ final,                   % or draft (marks overfull hboxes)
 % Style: T2 (Springer)
 \documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmono}
 \usepackage{t2}
+\special{papersize=193mm,260mm}
 % #elif LATEX_STYLE == "Springer_llcse"
 % Style: Lecture Notes in Computer Science (Springer)
 \documentclass[oribib]{llncs}
@@ -60758,6 +61988,7 @@ final,                   % or draft (marks overfull hboxes)
 % Examples of font types (Ubuntu): Gentium Book Basic (Palatino-like),
 % Liberation Sans (Helvetica-like), Norasi, Purisa (handwriting), UnDoum
 % #else
+\usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
 % #ifdef HELVETICA
@@ -60771,6 +62002,7 @@ final,                   % or draft (marks overfull hboxes)
 \linespread{1.05}            % Palatino needs extra line spread to look nice
 % #endif
 % #endif
+\usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
@@ -60970,6 +62202,7 @@ final,                   % or draft (marks overfull hboxes)
 
 % insert custom LaTeX commands...
 
+\raggedbottom
 \makeindex
 
 %-------------------- end preamble ----------------------
@@ -61825,7 +63058,7 @@ list of capabilities:
 
 \bshpro
 Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex expand_commands combine_images guess_encoding change_encoding gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 # transform doconce file to another format
@@ -61844,8 +63077,8 @@ doconce replace from-text to-text file1 file2 ...
 doconce replace_from_file file-with-from-to file1 file2 ...
 (exact text substitution, but a set of from-to relations)
 
-# gwiki format requires substitution of figure file names by URLs
-doconce gwiki_figsubst file.gwiki URL-of-fig-dir
+# replace all mako function calls by the results of the calls
+doconce expand_mako mako_code_file funcname file1 file2 ...
 
 # remove all inline comments in a doconce file
 doconce remove_inline_comments file.do.txt
@@ -61904,10 +63137,10 @@ doconce slides_beamer complete_file.tex
 doconce html_colorbullets file1.html file2.html ...
 
 # grab selected text from a file
-doconce grab   --from[-] from-text [--to[-] to-text] somefile
+doconce grab   --from[-] from-text [--to[-] to-text] somefile > result
 
 # remove selected text from a file
-doconce remove --from[-] from-text [--to[-] to-text] somefile
+doconce remove --from[-] from-text [--to[-] to-text] somefile > result
 
 # run spellcheck on a set of files
 doconce spellcheck [-d .mydict.txt] *.do.txt
@@ -62911,7 +64144,7 @@ list of capabilities::
 
 
         Usage: doconce command [optional arguments]
-        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex expand_commands combine_images guess_encoding change_encoding gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
         
         
         # transform doconce file to another format
@@ -62930,8 +64163,8 @@ list of capabilities::
         doconce replace_from_file file-with-from-to file1 file2 ...
         (exact text substitution, but a set of from-to relations)
         
-        # gwiki format requires substitution of figure file names by URLs
-        doconce gwiki_figsubst file.gwiki URL-of-fig-dir
+        # replace all mako function calls by the results of the calls
+        doconce expand_mako mako_code_file funcname file1 file2 ...
         
         # remove all inline comments in a doconce file
         doconce remove_inline_comments file.do.txt
@@ -62990,10 +64223,10 @@ list of capabilities::
         doconce html_colorbullets file1.html file2.html ...
         
         # grab selected text from a file
-        doconce grab   --from[-] from-text [--to[-] to-text] somefile
+        doconce grab   --from[-] from-text [--to[-] to-text] somefile > result
         
         # remove selected text from a file
-        doconce remove --from[-] from-text [--to[-] to-text] somefile
+        doconce remove --from[-] from-text [--to[-] to-text] somefile > result
         
         # run spellcheck on a set of files
         doconce spellcheck [-d .mydict.txt] *.do.txt
@@ -64035,7 +65268,7 @@ list of capabilities:
 .. code-block:: bash
 
         Usage: doconce command [optional arguments]
-        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex expand_commands combine_images guess_encoding change_encoding gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
         
         
         # transform doconce file to another format
@@ -64054,8 +65287,8 @@ list of capabilities:
         doconce replace_from_file file-with-from-to file1 file2 ...
         (exact text substitution, but a set of from-to relations)
         
-        # gwiki format requires substitution of figure file names by URLs
-        doconce gwiki_figsubst file.gwiki URL-of-fig-dir
+        # replace all mako function calls by the results of the calls
+        doconce expand_mako mako_code_file funcname file1 file2 ...
         
         # remove all inline comments in a doconce file
         doconce remove_inline_comments file.do.txt
@@ -64114,10 +65347,10 @@ list of capabilities:
         doconce html_colorbullets file1.html file2.html ...
         
         # grab selected text from a file
-        doconce grab   --from[-] from-text [--to[-] to-text] somefile
+        doconce grab   --from[-] from-text [--to[-] to-text] somefile > result
         
         # remove selected text from a file
-        doconce remove --from[-] from-text [--to[-] to-text] somefile
+        doconce remove --from[-] from-text [--to[-] to-text] somefile > result
         
         # run spellcheck on a set of files
         doconce spellcheck [-d .mydict.txt] *.do.txt
@@ -64441,7 +65674,7 @@ Besides syntax highlighting of Doconce documents, this Emacs mode
 provides a lot of shortcuts for setting up many elements in a document:
 
 
- ||              *Emacs key*                ||                *Action*                 ||
+ ||              _Emacs key_                ||                _Action_                 ||
  ||  Ctrl+c f                               ||  figure                                 ||
  ||  Ctrl+c v                               ||  movie/video                            ||
  ||  Ctrl+c h1                              ||  heading level 1 (section/h1)           ||
@@ -64495,7 +65728,8 @@ The table of contents is removed by writing `TOC: off`.
 
 ==== Section Types ====
 
- ||                  *Section type*                  ||                     *Syntax*                     ||
+
+ ||                  _Section type_                  ||                     _Syntax_                     ||
  ||  chapter                                         ||  `========= Heading ========` (9 `=`)            ||
  ||  section                                         ||  `======= Heading =======`    (7 `=`)            ||
  ||  subsection                                      ||  `===== Heading =====`        (5 `=`)            ||
@@ -65020,7 +66254,7 @@ list of capabilities:
 
 {{{
 Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex expand_commands combine_images guess_encoding change_encoding gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 # transform doconce file to another format
@@ -65039,8 +66273,8 @@ doconce replace from-text to-text file1 file2 ...
 doconce replace_from_file file-with-from-to file1 file2 ...
 (exact text substitution, but a set of from-to relations)
 
-# gwiki format requires substitution of figure file names by URLs
-doconce gwiki_figsubst file.gwiki URL-of-fig-dir
+# replace all mako function calls by the results of the calls
+doconce expand_mako mako_code_file funcname file1 file2 ...
 
 # remove all inline comments in a doconce file
 doconce remove_inline_comments file.do.txt
@@ -65099,10 +66333,10 @@ doconce slides_beamer complete_file.tex
 doconce html_colorbullets file1.html file2.html ...
 
 # grab selected text from a file
-doconce grab   --from[-] from-text [--to[-] to-text] somefile
+doconce grab   --from[-] from-text [--to[-] to-text] somefile > result
 
 # remove selected text from a file
-doconce remove --from[-] from-text [--to[-] to-text] somefile
+doconce remove --from[-] from-text [--to[-] to-text] somefile > result
 
 # run spellcheck on a set of files
 doconce spellcheck [-d .mydict.txt] *.do.txt
@@ -66014,7 +67248,7 @@ list of capabilities:
 
 <syntaxhighlight lang="bash">
 Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex expand_commands combine_images guess_encoding change_encoding gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 # transform doconce file to another format
@@ -66033,8 +67267,8 @@ doconce replace from-text to-text file1 file2 ...
 doconce replace_from_file file-with-from-to file1 file2 ...
 (exact text substitution, but a set of from-to relations)
 
-# gwiki format requires substitution of figure file names by URLs
-doconce gwiki_figsubst file.gwiki URL-of-fig-dir
+# replace all mako function calls by the results of the calls
+doconce expand_mako mako_code_file funcname file1 file2 ...
 
 # remove all inline comments in a doconce file
 doconce remove_inline_comments file.do.txt
@@ -66093,10 +67327,10 @@ doconce slides_beamer complete_file.tex
 doconce html_colorbullets file1.html file2.html ...
 
 # grab selected text from a file
-doconce grab   --from[-] from-text [--to[-] to-text] somefile
+doconce grab   --from[-] from-text [--to[-] to-text] somefile > result
 
 # remove selected text from a file
-doconce remove --from[-] from-text [--to[-] to-text] somefile
+doconce remove --from[-] from-text [--to[-] to-text] somefile > result
 
 # run spellcheck on a set of files
 doconce spellcheck [-d .mydict.txt] *.do.txt
@@ -66978,7 +68212,7 @@ list of capabilities:
 
 {{{
 Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex expand_commands combine_images guess_encoding change_encoding gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 # transform doconce file to another format
@@ -66997,8 +68231,8 @@ doconce replace from-text to-text file1 file2 ...
 doconce replace_from_file file-with-from-to file1 file2 ...
 (exact text substitution, but a set of from-to relations)
 
-# gwiki format requires substitution of figure file names by URLs
-doconce gwiki_figsubst file.gwiki URL-of-fig-dir
+# replace all mako function calls by the results of the calls
+doconce expand_mako mako_code_file funcname file1 file2 ...
 
 # remove all inline comments in a doconce file
 doconce remove_inline_comments file.do.txt
@@ -67057,10 +68291,10 @@ doconce slides_beamer complete_file.tex
 doconce html_colorbullets file1.html file2.html ...
 
 # grab selected text from a file
-doconce grab   --from[-] from-text [--to[-] to-text] somefile
+doconce grab   --from[-] from-text [--to[-] to-text] somefile > result
 
 # remove selected text from a file
-doconce remove --from[-] from-text [--to[-] to-text] somefile
+doconce remove --from[-] from-text [--to[-] to-text] somefile > result
 
 # run spellcheck on a set of files
 doconce spellcheck [-d .mydict.txt] *.do.txt
@@ -67951,7 +69185,7 @@ list of capabilities::
 
 
         Usage: doconce command [optional arguments]
-        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex expand_commands combine_images guess_encoding change_encoding gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
         
         
         # transform doconce file to another format
@@ -67970,8 +69204,8 @@ list of capabilities::
         doconce replace_from_file file-with-from-to file1 file2 ...
         (exact text substitution, but a set of from-to relations)
         
-        # gwiki format requires substitution of figure file names by URLs
-        doconce gwiki_figsubst file.gwiki URL-of-fig-dir
+        # replace all mako function calls by the results of the calls
+        doconce expand_mako mako_code_file funcname file1 file2 ...
         
         # remove all inline comments in a doconce file
         doconce remove_inline_comments file.do.txt
@@ -68030,10 +69264,10 @@ list of capabilities::
         doconce html_colorbullets file1.html file2.html ...
         
         # grab selected text from a file
-        doconce grab   --from[-] from-text [--to[-] to-text] somefile
+        doconce grab   --from[-] from-text [--to[-] to-text] somefile > result
         
         # remove selected text from a file
-        doconce remove --from[-] from-text [--to[-] to-text] somefile
+        doconce remove --from[-] from-text [--to[-] to-text] somefile > result
         
         # run spellcheck on a set of files
         doconce spellcheck [-d .mydict.txt] *.do.txt
@@ -68950,7 +70184,7 @@ list of capabilities::
 
 
         Usage: doconce command [optional arguments]
-        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex expand_commands combine_images guess_encoding change_encoding gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
         
         
         # transform doconce file to another format
@@ -68969,8 +70203,8 @@ list of capabilities::
         doconce replace_from_file file-with-from-to file1 file2 ...
         (exact text substitution, but a set of from-to relations)
         
-        # gwiki format requires substitution of figure file names by URLs
-        doconce gwiki_figsubst file.gwiki URL-of-fig-dir
+        # replace all mako function calls by the results of the calls
+        doconce expand_mako mako_code_file funcname file1 file2 ...
         
         # remove all inline comments in a doconce file
         doconce remove_inline_comments file.do.txt
@@ -69029,10 +70263,10 @@ list of capabilities::
         doconce html_colorbullets file1.html file2.html ...
         
         # grab selected text from a file
-        doconce grab   --from[-] from-text [--to[-] to-text] somefile
+        doconce grab   --from[-] from-text [--to[-] to-text] somefile > result
         
         # remove selected text from a file
-        doconce remove --from[-] from-text [--to[-] to-text] somefile
+        doconce remove --from[-] from-text [--to[-] to-text] somefile > result
         
         # run spellcheck on a set of files
         doconce spellcheck [-d .mydict.txt] *.do.txt
@@ -69991,7 +71225,7 @@ list of capabilities::
 
 
         Usage: doconce command [optional arguments]
-        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex expand_commands combine_images guess_encoding change_encoding gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
         
         
         # transform doconce file to another format
@@ -70010,8 +71244,8 @@ list of capabilities::
         doconce replace_from_file file-with-from-to file1 file2 ...
         (exact text substitution, but a set of from-to relations)
         
-        # gwiki format requires substitution of figure file names by URLs
-        doconce gwiki_figsubst file.gwiki URL-of-fig-dir
+        # replace all mako function calls by the results of the calls
+        doconce expand_mako mako_code_file funcname file1 file2 ...
         
         # remove all inline comments in a doconce file
         doconce remove_inline_comments file.do.txt
@@ -70070,10 +71304,10 @@ list of capabilities::
         doconce html_colorbullets file1.html file2.html ...
         
         # grab selected text from a file
-        doconce grab   --from[-] from-text [--to[-] to-text] somefile
+        doconce grab   --from[-] from-text [--to[-] to-text] somefile > result
         
         # remove selected text from a file
-        doconce remove --from[-] from-text [--to[-] to-text] somefile
+        doconce remove --from[-] from-text [--to[-] to-text] somefile > result
         
         # run spellcheck on a set of files
         doconce spellcheck [-d .mydict.txt] *.do.txt
@@ -71059,7 +72293,7 @@ list of capabilities:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex expand_commands combine_images guess_encoding change_encoding gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 # transform doconce file to another format
@@ -71078,8 +72312,8 @@ doconce replace from-text to-text file1 file2 ...
 doconce replace_from_file file-with-from-to file1 file2 ...
 (exact text substitution, but a set of from-to relations)
 
-# gwiki format requires substitution of figure file names by URLs
-doconce gwiki_figsubst file.gwiki URL-of-fig-dir
+# replace all mako function calls by the results of the calls
+doconce expand_mako mako_code_file funcname file1 file2 ...
 
 # remove all inline comments in a doconce file
 doconce remove_inline_comments file.do.txt
@@ -71138,10 +72372,10 @@ doconce slides_beamer complete_file.tex
 doconce html_colorbullets file1.html file2.html ...
 
 # grab selected text from a file
-doconce grab   --from[-] from-text [--to[-] to-text] somefile
+doconce grab   --from[-] from-text [--to[-] to-text] somefile > result
 
 # remove selected text from a file
-doconce remove --from[-] from-text [--to[-] to-text] somefile
+doconce remove --from[-] from-text [--to[-] to-text] somefile > result
 
 # run spellcheck on a set of files
 doconce spellcheck [-d .mydict.txt] *.do.txt
@@ -71716,19 +72950,32 @@ FIX: !ehint not at the beginning of the line - 1 fixes
 *** warning: the total of 4 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
+*** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
+-------- terminal output ----------
+Testing
+output
+from
+Python.
+-----------------------------------
 copying from regex "subroutine" until end of file
      file: ../doc/src/manual/__testcode.f,  lines 3-16  (format: fcod)
 copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 
 warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
 
 found info about 9 exercises, written to .testdoc.exerinfo
-... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ... found!
-figure file ../doc/src/manual/fig/wave1D:
-    can use ../doc/src/manual/fig/wave1D.png for format html
+... checking existence of https://raw.github.com/hplgit/doconce/master/test/../doc/src/manual/fig/wave1D.png ...
+    found!
+figure file https://raw.github.com/hplgit/doconce/master/test/../doc/src/manual/fig/wave1D:
+    can use https://raw.github.com/hplgit/doconce/master/test/../doc/src/manual/fig/wave1D.png for format html
+... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
+    found!
+... checking existence of https://raw.github.com/hplgit/doconce/master/test/../doc/src/manual/fig/wave1D.png ...
+    found!
 output in testdoc.html
 + '[' 0 -ne 0 ']'
 + cp testdoc.html testdoc_wordpress.html
@@ -71763,17 +73010,26 @@ FIX: !ehint not at the beginning of the line - 1 fixes
 *** warning: the total of 4 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
+*** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
+-------- terminal output ----------
+Testing
+output
+from
+Python.
+-----------------------------------
 copying from regex "subroutine" until end of file
      file: ../doc/src/manual/__testcode.f,  lines 3-16  (format: fcod)
 copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 
 warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
 
 found info about 9 exercises, written to .testdoc.exerinfo
-... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ... found!
+... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
+    found!
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
@@ -71832,6 +73088,13 @@ FIX: !ehint not at the beginning of the line - 1 fixes
 *** warning: the total of 4 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
+*** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
+-------- terminal output ----------
+Testing
+output
+from
+Python.
+-----------------------------------
 copying from regex "subroutine" until end of file
      file: ../doc/src/manual/__testcode.f,  lines 3-16  (format: fcod)
 copying after regex "a comment" until "^C\s+END1"
@@ -71845,10 +73108,12 @@ warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
 
 found info about 9 exercises, written to .testdoc.exerinfo
-... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ... found!
+... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
+    found!
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.eps for format latex
-... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ... found!
+... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
+    found!
 
 exporting publish database papers.pub to papers.bib:
 output in testdoc.p.tex
@@ -71887,17 +73152,26 @@ FIX: !ehint not at the beginning of the line - 1 fixes
 *** warning: the total of 4 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
+*** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
+-------- terminal output ----------
+Testing
+output
+from
+Python.
+-----------------------------------
 copying from regex "subroutine" until end of file
      file: ../doc/src/manual/__testcode.f,  lines 3-16  (format: fcod)
 copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 
 warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
 
 found info about 9 exercises, written to .testdoc.exerinfo
-... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ... found!
+... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
+    found!
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
 *** warning: TITLE may look strange with a template -
@@ -71942,17 +73216,26 @@ FIX: !ehint not at the beginning of the line - 1 fixes
 *** warning: the total of 4 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
+*** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
+-------- terminal output ----------
+Testing
+output
+from
+Python.
+-----------------------------------
 copying from regex "subroutine" until end of file
      file: ../doc/src/manual/__testcode.f,  lines 3-16  (format: fcod)
 copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 
 warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
 
 found info about 9 exercises, written to .testdoc.exerinfo
-... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ... found!
+... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
+    found!
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
@@ -72000,17 +73283,26 @@ FIX: !ehint not at the beginning of the line - 1 fixes
 *** warning: the total of 4 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
+*** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
+-------- terminal output ----------
+Testing
+output
+from
+Python.
+-----------------------------------
 copying from regex "subroutine" until end of file
      file: ../doc/src/manual/__testcode.f,  lines 3-16  (format: fcod)
 copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 
 warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
 
 found info about 9 exercises, written to .testdoc.exerinfo
-... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ... found!
+... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
+    found!
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
@@ -72068,6 +73360,13 @@ FIX: !ehint not at the beginning of the line - 1 fixes
 *** warning: the total of 4 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
+*** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
+-------- terminal output ----------
+Testing
+output
+from
+Python.
+-----------------------------------
 copying from regex "subroutine" until end of file
      file: ../doc/src/manual/__testcode.f,  lines 3-16  (format: fcod)
 copying after regex "a comment" until "^C\s+END1"
@@ -72078,10 +73377,12 @@ warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
 
 found info about 9 exercises, written to .testdoc.exerinfo
-... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ... found!
+... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
+    found!
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.eps for format latex
-... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ... found!
+... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
+    found!
 
 exporting publish database papers.pub to papers.bib:
 output in testdoc.p.tex
@@ -72137,6 +73438,13 @@ FIX: !ehint not at the beginning of the line - 1 fixes
 *** warning: the total of 4 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
+*** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
+-------- terminal output ----------
+Testing
+output
+from
+Python.
+-----------------------------------
 copying from regex "subroutine" until end of file
      file: ../doc/src/manual/__testcode.f,  lines 3-16  (format: fcod)
 copying after regex "a comment" until "^C\s+END1"
@@ -72147,10 +73455,12 @@ warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
 
 found info about 9 exercises, written to .testdoc.exerinfo
-... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ... found!
+... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
+    found!
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.pdf for format pdflatex
-... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ... found!
+... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
+    found!
 
 exporting publish database papers.pub to papers.bib:
 *** warning: --latex_double_hyphen may lead to unwanted edits.
@@ -72247,8 +73557,11 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (./testdoc.w18))/usr/local/bin/pygmentize
 ) (./testdoc.pyg)
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+
 
 
 
@@ -72375,6 +73688,7 @@ gs.code.tex
 
 Writing index file testdoc.idx
 No file testdoc.aux.
+
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
@@ -72386,12 +73700,17 @@ No file testdoc.aux.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 
 ABD: EveryShipout initializing macros (./newcommands_bfmath.tex)
-(./newcommands_replace.tex)
+(./newcommands_replace.tex) 
 
 
 
- [1{/var/lib/texm
-f/fonts/map/pdftex/updmap/pdftex.map}] [2]
+
+
+
+
+
+ [1{/var/lib/texmf/fonts/map/pdftex/up
+dmap/pdftex.map}] [2]
 
 
 
@@ -72423,24 +73742,21 @@ f/fonts/map/pdftex/updmap/pdftex.map}] [2]
 
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg [5])
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg
-[6]) (./testdoc.out.pyg) (./testdoc.out.pyg)
+[6]) (./testdoc.out.pyg) (./testdoc.out.pyg) [7]
 
 
 
-<../doc/src/manual/fig/wave1D.pdf, id=67, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=76, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
-[7]
-
-/src/manual/fig/wave1D.pdf>]
+[8 <../doc/src/manual/fig/wave1D.pdf>]
 
 
 
-<../doc/src/manual/fig/wave1D.png, id=87, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=89, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=89, 578.16pt x 433.62pt>
-<use downloaded_figures/f_plot.png>
-
-[10 <../doc/src/manual/fig/wave1D.png> <./downloaded_figures/f_plot.png>]
+<downloaded_figures/f_plot.png, id=91, 578.16pt x 433.62pt>
+<use downloaded_figures/f_plot.png> [9] [10 <../doc/src/manual/fig/wave1D.png> 
+<./downloaded_figures/f_plot.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -72466,6 +73782,22 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
 [11]
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=119, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=120, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=121, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=122, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=123, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=124, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png> [12 <../doc/src/man
+ual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/wave_frames/frame_00
+85.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <../doc/src/manual/m
+ov/wave_frames/frame_0095.png> <../doc/src/manual/mov/wave_frames/frame_0100.pn
+g> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -72488,7 +73820,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 754.
+t line 788.
 
 
 
@@ -72508,7 +73840,7 @@ t line 754.
 
 
 
-t line 763.
+t line 797.
 
 
 
@@ -72528,7 +73860,7 @@ t line 763.
 
 
 
-t line 767.
+t line 801.
 
 
 
@@ -72598,11 +73930,26 @@ t line 767.
 
 .
 
-[12]
-Overfull \hbox (5.05241pt too wide) 
-[][][]\OT1/cmtt/m/n/8 http://www.springer.com/mathematics/computational+science
-+%26+engineering/book/978-3-642-23098-1| 
+
+Overfull \hbox (5.03835pt too wide) 
+[][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
+%26+engineering/book/978-3-642-23098-1| 
 [13]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -72620,6 +73967,7 @@ Package amsmath Warning: Foreign command \over;
 
 
 
+[14]
 
 
 ...rest of part of LaTeX line number...
@@ -72656,7 +74004,7 @@ Package amsmath Warning: Foreign command \over;
 
 ...rest of part of LaTeX line number...
 
-[14] (./testdoc.out.pyg) [15] (./testdoc.out.pyg) [16]
+(./testdoc.out.pyg) [15] (./testdoc.out.pyg) [16] [17]
 
 
 .
@@ -72664,7 +74012,6 @@ Package amsmath Warning: Foreign command \over;
 
 
 
-[17]
 
 
 
@@ -72683,10 +74030,6 @@ Package amsmath Warning: Foreign command \over;
 
 
 No file testdoc.bbl.
-
-
-...rest of part of LaTeX line number...
-
 [18]
 
 
@@ -72694,11 +74037,16 @@ No file testdoc.bbl.
 
 [19]
 
+
+...rest of part of LaTeX line number...
+
+[20]
+
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
 No file testdoc.ind.
-[20] (./testdoc.aux)
+[21] (./testdoc.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -72756,11 +74104,14 @@ catchfile.sty    2011/03/01 v1.6 Catch the contents of a file (HO)
 etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
  testdoc.w18
  testdoc.pyg
+ fontenc.sty
+   t1enc.def    2005/09/27 v1.99g Standard LaTeX file
 inputenc.sty    2008/03/30 v1.1d Input encoding file
     utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+ lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
 hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
@@ -72845,6 +74196,7 @@ titlesec.sty    2011/12/15 v2.10.0 Sectioning titles
  ttlkeys.def    2011/12/15
  theorem.sty    1995/11/23 v2.2c Theorem extension package (FMi)
      thp.sty    1995/11/23 v2.2c Theorem extension package (FMi)
+   t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 supp-pdf.mkii
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
@@ -72855,11 +74207,17 @@ RS)
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
 newcommands_bfmath.tex
 newcommands_replace.tex
+  t1lmss.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  ot1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omllmm.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omxlmex.fd    2009/10/30 v1.6 Font defs for Latin Modern
     umsa.fd    2013/01/14 v3.01 AMS symbols A
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
     umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
-  omscmr.fd    1999/05/25 v2.5h Standard LaTeX font definitions
+  t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omslmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
  testdoc.out.pyg
  testdoc.out.pyg
  testdoc.out.pyg
@@ -72873,6 +74231,12 @@ newcommands_replace.tex
 ../doc/src/manual/fig/wave1D.pdf
 ../doc/src/manual/fig/wave1D.png
 downloaded_figures/f_plot.png
+../doc/src/manual/mov/wave_frames/frame_0080.png
+../doc/src/manual/mov/wave_frames/frame_0085.png
+../doc/src/manual/mov/wave_frames/frame_0090.png
+../doc/src/manual/mov/wave_frames/frame_0095.png
+../doc/src/manual/mov/wave_frames/frame_0100.png
+../doc/src/manual/mov/wave_frames/frame_0105.png
  testdoc.out.pyg
  testdoc.out.pyg
  ***********
@@ -72889,31 +74253,29 @@ LaTeX Warning: There were undefined references.
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  )
-(see the transcript file for additional information)</usr/share/texlive/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmbx8.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmbx9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmcsc10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmitt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></u
-sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf
--dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmss12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></
-usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/te
-xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on testdoc.pdf (20 pages, ).
+(see the transcript file for additional information){/usr/share/texmf/fonts/enc
+/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/sh
+are/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm
+/lm-rm.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib1
+0.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/font
+s/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx8.pfb>
+</usr/share/texmf/fonts/type1/public/lm/lmbx9.pfb></usr/share/texmf/fonts/type1
+/public/lm/lmcsc10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr
+/share/texmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/type1/pub
+lic/lm/lmmi7.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/
+texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/l
+mr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/font
+s/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></u
+sr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/p
+ublic/lm/lmss12.pfb></usr/share/texmf/fonts/type1/public/lm/lmss8.pfb></usr/sha
+re/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/
+lm/lmsy7.pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb></usr/share/tex
+mf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmt
+t12.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt8.pfb></usr/share/texmf/fon
+ts/type1/public/lm/lmtt9.pfb></usr/share/texmf/fonts/type1/public/lm/lmtti10.pf
+b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb
+>
+Output written on testdoc.pdf (21 pages, ).
 Transcript written on testdoc.log.
 + '[' 0 -ne 0 ']'
 + pdflatex -shell-escape testdoc
@@ -72981,8 +74343,11 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (./testdoc.w18))/usr/local/bin/pygmentize
 ) (./testdoc.pyg)
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+
 
 
 
@@ -73108,7 +74473,7 @@ gs.code.tex
 (/usr/share/texlive/texmf-dist/tex/latex/tools/theorem.sty
 
 Writing index file testdoc.idx
-(./testdoc.aux)
+(./testdoc.aux) 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
@@ -73124,20 +74489,24 @@ Writing index file testdoc.idx
 
 
 
- [1{/var/lib/texm
-f/fonts/map/pdftex/updmap/pdftex.map}] (./testdoc.toc) [2] [3] (./testdoc.tdo)
-[4]  (./testdoc.out.pyg
-) (./testdoc.out.pyg) (./testdoc.out.pyg [5]) (./testdoc.out.pyg)
-(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg [6])
-(./testdoc.out.pyg) (./testdoc.out.pyg)
-<../doc/src/manual/fig/wave1D.pdf, id=222, 586.83241pt x 442.29242pt>
-<use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
-[7]
 
-/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=241, 586.8324pt x 442.2924pt>
+
+
+
+
+
+ [1{/var/lib/texmf/fonts/map/pdftex/up
+dmap/pdftex.map}] (./testdoc.toc) [2] [3] (./testdoc.tdo) [4]
+
+(./testdoc.out.pyg) (./testdoc.out.pyg [5]) (./testdoc.out.pyg)
+(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg [6])
+(./testdoc.out.pyg) (./testdoc.out.pyg) [7]
+<../doc/src/manual/fig/wave1D.pdf, id=236, 586.83241pt x 442.29242pt>
+<use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
+[8 <../doc/src/manual/fig/wave1D.pdf>]
+<../doc/src/manual/fig/wave1D.png, id=249, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=243, 578.16pt x 433.62pt>
+<downloaded_figures/f_plot.png, id=251, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png> [9 <./downloaded_figures/f_plot.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -73164,6 +74533,18 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
 [10 <../doc/src/manual/fig/wave1D.png>] [11]
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=276, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=277, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=278, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=279, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=280, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=281, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -73186,7 +74567,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 754.
+t line 788.
 
 
 
@@ -73206,7 +74587,7 @@ t line 754.
 
 
 
-t line 763.
+t line 797.
 
 
 
@@ -73226,7 +74607,7 @@ t line 763.
 
 
 
-t line 767.
+t line 801.
 
 
 
@@ -73296,18 +74677,22 @@ t line 767.
 
 .
 
-[12]
-Overfull \hbox (5.05241pt too wide) 
-[][][]\OT1/cmtt/m/n/8 http://www.springer.com/mathematics/computational+science
-+%26+engineering/book/978-3-642-23098-1| 
+[12 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
+ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
+../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/mov/wave_f
+rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
+Overfull \hbox (5.03835pt too wide) 
+[][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
+%26+engineering/book/978-3-642-23098-1| 
+[13]
 
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on .
 
-[13] [14] (./testdoc.out.pyg) (./testdoc.out.pyg) [15] [16]
+[14] (./testdoc.out.pyg) [15] (./testdoc.out.pyg) [16] [17]
 No file testdoc.bbl.
-[17] [18] [19]
+[18] [19]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
@@ -73371,11 +74756,14 @@ catchfile.sty    2011/03/01 v1.6 Catch the contents of a file (HO)
 etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
  testdoc.w18
  testdoc.pyg
+ fontenc.sty
+   t1enc.def    2005/09/27 v1.99g Standard LaTeX file
 inputenc.sty    2008/03/30 v1.1d Input encoding file
     utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+ lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
 hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
@@ -73460,6 +74848,7 @@ titlesec.sty    2011/12/15 v2.10.0 Sectioning titles
  ttlkeys.def    2011/12/15
  theorem.sty    1995/11/23 v2.2c Theorem extension package (FMi)
      thp.sty    1995/11/23 v2.2c Theorem extension package (FMi)
+   t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 supp-pdf.mkii
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
@@ -73472,11 +74861,17 @@ gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
  testdoc.out
 newcommands_bfmath.tex
 newcommands_replace.tex
+  t1lmss.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  ot1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omllmm.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omxlmex.fd    2009/10/30 v1.6 Font defs for Latin Modern
     umsa.fd    2013/01/14 v3.01 AMS symbols A
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
     umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
-  omscmr.fd    1999/05/25 v2.5h Standard LaTeX font definitions
+  t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omslmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
  testdoc.out.pyg
  testdoc.out.pyg
  testdoc.out.pyg
@@ -73490,6 +74885,12 @@ newcommands_replace.tex
 ../doc/src/manual/fig/wave1D.pdf
 ../doc/src/manual/fig/wave1D.png
 downloaded_figures/f_plot.png
+../doc/src/manual/mov/wave_frames/frame_0080.png
+../doc/src/manual/mov/wave_frames/frame_0085.png
+../doc/src/manual/mov/wave_frames/frame_0090.png
+../doc/src/manual/mov/wave_frames/frame_0095.png
+../doc/src/manual/mov/wave_frames/frame_0100.png
+../doc/src/manual/mov/wave_frames/frame_0105.png
  testdoc.out.pyg
  testdoc.out.pyg
  ***********
@@ -73501,30 +74902,28 @@ LaTeX Warning: There were undefined references.
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  )
-(see the transcript file for additional information)</usr/share/texlive/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmbx8.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmbx9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmcsc10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmitt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></u
-sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf
--dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmss12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></
-usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/te
-xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/symbols/msam10.pfb>
+(see the transcript file for additional information){/usr/share/texmf/fonts/enc
+/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/sh
+are/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm
+/lm-rm.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib1
+0.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/font
+s/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx7.pfb>
+</usr/share/texmf/fonts/type1/public/lm/lmbx8.pfb></usr/share/texmf/fonts/type1
+/public/lm/lmbx9.pfb></usr/share/texmf/fonts/type1/public/lm/lmcsc10.pfb></usr/
+share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/publ
+ic/lm/lmmi12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi7.pfb></usr/share/
+texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/l
+mr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fon
+ts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></
+usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf/fonts/type1/pu
+blic/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmss12.pfb></usr/sha
+re/texmf/fonts/type1/public/lm/lmss8.pfb></usr/share/texmf/fonts/type1/public/l
+m/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy7.pfb></usr/share/texm
+f/fonts/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt
+10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb></usr/share/texmf/fon
+ts/type1/public/lm/lmtt8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
+</usr/share/texmf/fonts/type1/public/lm/lmtti10.pfb></usr/share/texlive/texmf-d
+ist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
 Output written on testdoc.pdf (20 pages, ).
 Transcript written on testdoc.log.
 + makeindex testdoc
@@ -73610,8 +75009,11 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (./testdoc.w18))/usr/local/bin/pygmentize
 ) (./testdoc.pyg)
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+
 
 
 
@@ -73737,7 +75139,7 @@ gs.code.tex
 (/usr/share/texlive/texmf-dist/tex/latex/tools/theorem.sty
 
 Writing index file testdoc.idx
-(./testdoc.aux)
+(./testdoc.aux) 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
@@ -73753,20 +75155,24 @@ Writing index file testdoc.idx
 
 
 
- [1{/var/lib/texm
-f/fonts/map/pdftex/updmap/pdftex.map}] (./testdoc.toc) [2] [3] (./testdoc.tdo)
-[4]  (./testdoc.out.pyg
-) (./testdoc.out.pyg) (./testdoc.out.pyg [5]) (./testdoc.out.pyg)
-(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg [6])
-(./testdoc.out.pyg) (./testdoc.out.pyg)
-<../doc/src/manual/fig/wave1D.pdf, id=222, 586.83241pt x 442.29242pt>
-<use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
-[7]
 
-/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=241, 586.8324pt x 442.2924pt>
+
+
+
+
+
+ [1{/var/lib/texmf/fonts/map/pdftex/up
+dmap/pdftex.map}] (./testdoc.toc) [2] [3] (./testdoc.tdo) [4]
+
+(./testdoc.out.pyg) (./testdoc.out.pyg [5]) (./testdoc.out.pyg)
+(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg [6])
+(./testdoc.out.pyg) (./testdoc.out.pyg) [7]
+<../doc/src/manual/fig/wave1D.pdf, id=236, 586.83241pt x 442.29242pt>
+<use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
+[8 <../doc/src/manual/fig/wave1D.pdf>]
+<../doc/src/manual/fig/wave1D.png, id=249, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=243, 578.16pt x 433.62pt>
+<downloaded_figures/f_plot.png, id=251, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png> [9 <./downloaded_figures/f_plot.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -73793,6 +75199,18 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
 [10 <../doc/src/manual/fig/wave1D.png>] [11]
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=276, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=277, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=278, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=279, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=280, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=281, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -73815,7 +75233,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 754.
+t line 788.
 
 
 
@@ -73835,7 +75253,7 @@ t line 754.
 
 
 
-t line 763.
+t line 797.
 
 
 
@@ -73855,7 +75273,7 @@ t line 763.
 
 
 
-t line 767.
+t line 801.
 
 
 
@@ -73925,26 +75343,30 @@ t line 767.
 
 .
 
-[12]
-Overfull \hbox (5.05241pt too wide) 
-[][][]\OT1/cmtt/m/n/8 http://www.springer.com/mathematics/computational+science
-+%26+engineering/book/978-3-642-23098-1| 
+[12 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
+ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
+../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/mov/wave_f
+rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
+Overfull \hbox (5.03835pt too wide) 
+[][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
+%26+engineering/book/978-3-642-23098-1| 
+[13]
 
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on .
 
-[13] [14] (./testdoc.out.pyg) (./testdoc.out.pyg) [15] [16] (./testdoc.bbl
-[17] [18]) [19] [20]
+[14] (./testdoc.out.pyg) [15] (./testdoc.out.pyg) [16] [17] (./testdoc.bbl
+[18]) [19] [20] [21]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
-(./testdoc.ind [21]
-Overfull \hbox (9.21391pt too wide) 
-[]\OT1/cmr/m/n/10 (-20) test \OT1/cmtt/m/n/10 two \OT1/cmr/m/n/10 (-20) (sep-a-
-rate) \OT1/cmtt/m/n/10 verbatim expressions \OT1/cmr/m/n/10 (-20) which
-[22]) (./testdoc.aux)
+(./testdoc.ind [22]
+Overfull \hbox (9.21497pt too wide) 
+[]\T1/lmr/m/n/10 (-20) test \T1/lmtt/m/n/10 two \T1/lmr/m/n/10 (-20) (sep-a-rat
+e) \T1/lmtt/m/n/10 verbatim expressions \T1/lmr/m/n/10 (-20) which
+[23]) (./testdoc.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -74002,11 +75424,14 @@ catchfile.sty    2011/03/01 v1.6 Catch the contents of a file (HO)
 etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
  testdoc.w18
  testdoc.pyg
+ fontenc.sty
+   t1enc.def    2005/09/27 v1.99g Standard LaTeX file
 inputenc.sty    2008/03/30 v1.1d Input encoding file
     utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+ lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
 hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
@@ -74091,6 +75516,7 @@ titlesec.sty    2011/12/15 v2.10.0 Sectioning titles
  ttlkeys.def    2011/12/15
  theorem.sty    1995/11/23 v2.2c Theorem extension package (FMi)
      thp.sty    1995/11/23 v2.2c Theorem extension package (FMi)
+   t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 supp-pdf.mkii
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
@@ -74103,11 +75529,17 @@ gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
  testdoc.out
 newcommands_bfmath.tex
 newcommands_replace.tex
+  t1lmss.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  ot1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omllmm.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omxlmex.fd    2009/10/30 v1.6 Font defs for Latin Modern
     umsa.fd    2013/01/14 v3.01 AMS symbols A
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
     umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
-  omscmr.fd    1999/05/25 v2.5h Standard LaTeX font definitions
+  t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omslmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
  testdoc.out.pyg
  testdoc.out.pyg
  testdoc.out.pyg
@@ -74121,6 +75553,12 @@ newcommands_replace.tex
 ../doc/src/manual/fig/wave1D.pdf
 ../doc/src/manual/fig/wave1D.png
 downloaded_figures/f_plot.png
+../doc/src/manual/mov/wave_frames/frame_0080.png
+../doc/src/manual/mov/wave_frames/frame_0085.png
+../doc/src/manual/mov/wave_frames/frame_0090.png
+../doc/src/manual/mov/wave_frames/frame_0095.png
+../doc/src/manual/mov/wave_frames/frame_0100.png
+../doc/src/manual/mov/wave_frames/frame_0105.png
  testdoc.out.pyg
  testdoc.out.pyg
  testdoc.bbl
@@ -74134,31 +75572,29 @@ LaTeX Warning: There were undefined references.
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  )
-(see the transcript file for additional information)</usr/share/texlive/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmbx8.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmbx9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmcsc10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmitt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></u
-sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf
--dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmss12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></
-usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/te
-xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on testdoc.pdf (22 pages, ).
+(see the transcript file for additional information){/usr/share/texmf/fonts/enc
+/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/sh
+are/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm
+/lm-rm.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib1
+0.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/font
+s/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx7.pfb>
+</usr/share/texmf/fonts/type1/public/lm/lmbx8.pfb></usr/share/texmf/fonts/type1
+/public/lm/lmbx9.pfb></usr/share/texmf/fonts/type1/public/lm/lmcsc10.pfb></usr/
+share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/publ
+ic/lm/lmmi12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi7.pfb></usr/share/
+texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/l
+mr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fon
+ts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></
+usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf/fonts/type1/pu
+blic/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmss12.pfb></usr/sha
+re/texmf/fonts/type1/public/lm/lmss8.pfb></usr/share/texmf/fonts/type1/public/l
+m/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy7.pfb></usr/share/texm
+f/fonts/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt
+10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb></usr/share/texmf/fon
+ts/type1/public/lm/lmtt8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
+</usr/share/texmf/fonts/type1/public/lm/lmtti10.pfb></usr/share/texlive/texmf-d
+ist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
+Output written on testdoc.pdf (23 pages, ).
 Transcript written on testdoc.log.
 + pdflatex -shell-escape testdoc
 This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
@@ -74225,8 +75661,11 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (./testdoc.w18))/usr/local/bin/pygmentize
 ) (./testdoc.pyg)
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+
 
 
 
@@ -74352,7 +75791,7 @@ gs.code.tex
 (/usr/share/texlive/texmf-dist/tex/latex/tools/theorem.sty
 
 Writing index file testdoc.idx
-(./testdoc.aux)
+(./testdoc.aux) 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
@@ -74368,20 +75807,24 @@ Writing index file testdoc.idx
 
 
 
- [1{/var/lib/texm
-f/fonts/map/pdftex/updmap/pdftex.map}] (./testdoc.toc) [2] [3] (./testdoc.tdo)
-[4]  (./testdoc.out.pyg
-) (./testdoc.out.pyg) (./testdoc.out.pyg [5]) (./testdoc.out.pyg)
-(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg [6])
-(./testdoc.out.pyg) (./testdoc.out.pyg)
-<../doc/src/manual/fig/wave1D.pdf, id=222, 586.83241pt x 442.29242pt>
-<use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
-[7]
 
-/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=241, 586.8324pt x 442.2924pt>
+
+
+
+
+
+ [1{/var/lib/texmf/fonts/map/pdftex/up
+dmap/pdftex.map}] (./testdoc.toc) [2] [3] (./testdoc.tdo) [4]
+
+(./testdoc.out.pyg) (./testdoc.out.pyg [5]) (./testdoc.out.pyg)
+(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg [6])
+(./testdoc.out.pyg) (./testdoc.out.pyg) [7]
+<../doc/src/manual/fig/wave1D.pdf, id=236, 586.83241pt x 442.29242pt>
+<use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
+[8 <../doc/src/manual/fig/wave1D.pdf>]
+<../doc/src/manual/fig/wave1D.png, id=249, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=243, 578.16pt x 433.62pt>
+<downloaded_figures/f_plot.png, id=251, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png> [9 <./downloaded_figures/f_plot.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -74408,6 +75851,18 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
 [10 <../doc/src/manual/fig/wave1D.png>] [11]
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=276, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=277, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=278, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=279, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=280, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=281, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -74428,26 +75883,30 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
-[12]
-Overfull \hbox (5.05241pt too wide) 
-[][][]\OT1/cmtt/m/n/8 http://www.springer.com/mathematics/computational+science
-+%26+engineering/book/978-3-642-23098-1| 
+[12 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
+ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
+../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/mov/wave_f
+rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
+Overfull \hbox (5.03835pt too wide) 
+[][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
+%26+engineering/book/978-3-642-23098-1| 
+[13]
 
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on .
 
-[13] [14] (./testdoc.out.pyg) (./testdoc.out.pyg) [15] [16] (./testdoc.bbl
-[17] [18]) [19] [20]
+[14] (./testdoc.out.pyg) [15] (./testdoc.out.pyg) [16] [17] (./testdoc.bbl
+[18]) [19] [20] [21]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
-(./testdoc.ind [21]
-Overfull \hbox (9.21391pt too wide) 
-[]\OT1/cmr/m/n/10 (-20) test \OT1/cmtt/m/n/10 two \OT1/cmr/m/n/10 (-20) (sep-a-
-rate) \OT1/cmtt/m/n/10 verbatim expressions \OT1/cmr/m/n/10 (-20) which
-[22]) (./testdoc.aux)
+(./testdoc.ind [22]
+Overfull \hbox (9.21497pt too wide) 
+[]\T1/lmr/m/n/10 (-20) test \T1/lmtt/m/n/10 two \T1/lmr/m/n/10 (-20) (sep-a-rat
+e) \T1/lmtt/m/n/10 verbatim expressions \T1/lmr/m/n/10 (-20) which
+[23]) (./testdoc.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -74505,11 +75964,14 @@ catchfile.sty    2011/03/01 v1.6 Catch the contents of a file (HO)
 etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
  testdoc.w18
  testdoc.pyg
+ fontenc.sty
+   t1enc.def    2005/09/27 v1.99g Standard LaTeX file
 inputenc.sty    2008/03/30 v1.1d Input encoding file
     utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+ lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
 hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
@@ -74594,6 +76056,7 @@ titlesec.sty    2011/12/15 v2.10.0 Sectioning titles
  ttlkeys.def    2011/12/15
  theorem.sty    1995/11/23 v2.2c Theorem extension package (FMi)
      thp.sty    1995/11/23 v2.2c Theorem extension package (FMi)
+   t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 supp-pdf.mkii
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
@@ -74606,11 +76069,17 @@ gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
  testdoc.out
 newcommands_bfmath.tex
 newcommands_replace.tex
+  t1lmss.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  ot1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omllmm.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omxlmex.fd    2009/10/30 v1.6 Font defs for Latin Modern
     umsa.fd    2013/01/14 v3.01 AMS symbols A
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
     umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
-  omscmr.fd    1999/05/25 v2.5h Standard LaTeX font definitions
+  t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omslmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
  testdoc.out.pyg
  testdoc.out.pyg
  testdoc.out.pyg
@@ -74624,6 +76093,12 @@ newcommands_replace.tex
 ../doc/src/manual/fig/wave1D.pdf
 ../doc/src/manual/fig/wave1D.png
 downloaded_figures/f_plot.png
+../doc/src/manual/mov/wave_frames/frame_0080.png
+../doc/src/manual/mov/wave_frames/frame_0085.png
+../doc/src/manual/mov/wave_frames/frame_0090.png
+../doc/src/manual/mov/wave_frames/frame_0095.png
+../doc/src/manual/mov/wave_frames/frame_0100.png
+../doc/src/manual/mov/wave_frames/frame_0105.png
  testdoc.out.pyg
  testdoc.out.pyg
  testdoc.bbl
@@ -74631,31 +76106,29 @@ downloaded_figures/f_plot.png
  ***********
 
  )
-(see the transcript file for additional information)</usr/share/texlive/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmbx8.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmbx9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmcsc10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmitt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></u
-sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf
--dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmss12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></
-usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/te
-xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on testdoc.pdf (22 pages, ).
+(see the transcript file for additional information){/usr/share/texmf/fonts/enc
+/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/sh
+are/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm
+/lm-rm.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib1
+0.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/font
+s/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx7.pfb>
+</usr/share/texmf/fonts/type1/public/lm/lmbx8.pfb></usr/share/texmf/fonts/type1
+/public/lm/lmbx9.pfb></usr/share/texmf/fonts/type1/public/lm/lmcsc10.pfb></usr/
+share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/publ
+ic/lm/lmmi12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi7.pfb></usr/share/
+texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/l
+mr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fon
+ts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></
+usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf/fonts/type1/pu
+blic/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmss12.pfb></usr/sha
+re/texmf/fonts/type1/public/lm/lmss8.pfb></usr/share/texmf/fonts/type1/public/l
+m/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy7.pfb></usr/share/texm
+f/fonts/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt
+10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb></usr/share/texmf/fon
+ts/type1/public/lm/lmtt8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
+</usr/share/texmf/fonts/type1/public/lm/lmtti10.pfb></usr/share/texlive/texmf-d
+ist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
+Output written on testdoc.pdf (23 pages, ).
 Transcript written on testdoc.log.
 + cp testdoc.tex testdoc.tex_ptex2tex
 + system doconce ptex2tex testdoc -DBOOK -DPALATINO 'sys=begin{quote}begin{Verbatim}@end{Verbatim}end{quote}' pypro=ans:nt envir=minted
@@ -74694,6 +76167,13 @@ FIX: !ehint not at the beginning of the line - 1 fixes
 *** warning: the total of 4 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
+*** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
+-------- terminal output ----------
+Testing
+output
+from
+Python.
+-----------------------------------
 copying from regex "subroutine" until end of file
      file: ../doc/src/manual/__testcode.f,  lines 3-16  (format: fcod)
 copying after regex "a comment" until "^C\s+END1"
@@ -74736,6 +76216,13 @@ FIX: !ehint not at the beginning of the line - 1 fixes
 *** warning: the total of 4 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
+*** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
+-------- terminal output ----------
+Testing
+output
+from
+Python.
+-----------------------------------
 copying from regex "subroutine" until end of file
      file: ../doc/src/manual/__testcode.f,  lines 3-16  (format: fcod)
 copying after regex "a comment" until "^C\s+END1"
@@ -74784,24 +76271,45 @@ Not recommended for sphinx output: math environment {eqnarray}
 (use equation, equation*, \[ \], or align/align*)
 Not recommended for sphinx output: math environment {multline}
 Not recommended for sphinx output: math environment {gather}
+*** warning: hyperlink to URL ../doc/src/manual/mov/wave_frames/frame_0095.png is to a local file,
+    recommended to be _static/frame_0095.png for sphinx
 *** warning: hyperlink to URL mailto:hpl@simula.no is to a local file,
     recommended to be _static/mailto:hpl@simula.no for sphinx
+*** warning: hyperlink to URL ../doc/src/manual/mov/wave_frames/frame_0105.png is to a local file,
+    recommended to be _static/frame_0105.png for sphinx
+*** warning: hyperlink to URL ../doc/src/manual/mov/wave_frames/frame_0090.png is to a local file,
+    recommended to be _static/frame_0090.png for sphinx
+*** warning: hyperlink to URL ../doc/src/manual/mov/wave_frames/frame_0100.png is to a local file,
+    recommended to be _static/frame_0100.png for sphinx
+*** warning: hyperlink to URL ../doc/src/manual/mov/wave_frames/frame_0085.png is to a local file,
+    recommended to be _static/frame_0085.png for sphinx
+*** warning: hyperlink to URL ../doc/src/manual/mov/wave_frames/frame_0080.png is to a local file,
+    recommended to be _static/frame_0080.png for sphinx
 *** warning: hyperlink to URL testdoc.do.txt is to a local file,
     recommended to be _static/testdoc.do.txt for sphinx
     move linked file to _static and change URLs unless
     you really know that the links will be correct when the
     sphinx build directory is moved to its final destination
+*** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
+-------- terminal output ----------
+Testing
+output
+from
+Python.
+-----------------------------------
 copying from regex "subroutine" until end of file
      file: ../doc/src/manual/__testcode.f,  lines 3-16  (format: fcod)
 copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 
 warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
 
 found info about 9 exercises, written to .testdoc.exerinfo
-... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ... found!
+... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
+    found!
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format sphinx
 *** warning: the "alignat" environment will give errors in Sphinx:
@@ -74857,24 +76365,45 @@ Not recommended for sphinx output: math environment {eqnarray}
 (use equation, equation*, \[ \], or align/align*)
 Not recommended for sphinx output: math environment {multline}
 Not recommended for sphinx output: math environment {gather}
+*** warning: hyperlink to URL ../doc/src/manual/mov/wave_frames/frame_0095.png is to a local file,
+    recommended to be _static/frame_0095.png for sphinx
 *** warning: hyperlink to URL mailto:hpl@simula.no is to a local file,
     recommended to be _static/mailto:hpl@simula.no for sphinx
+*** warning: hyperlink to URL ../doc/src/manual/mov/wave_frames/frame_0105.png is to a local file,
+    recommended to be _static/frame_0105.png for sphinx
+*** warning: hyperlink to URL ../doc/src/manual/mov/wave_frames/frame_0090.png is to a local file,
+    recommended to be _static/frame_0090.png for sphinx
+*** warning: hyperlink to URL ../doc/src/manual/mov/wave_frames/frame_0100.png is to a local file,
+    recommended to be _static/frame_0100.png for sphinx
+*** warning: hyperlink to URL ../doc/src/manual/mov/wave_frames/frame_0085.png is to a local file,
+    recommended to be _static/frame_0085.png for sphinx
+*** warning: hyperlink to URL ../doc/src/manual/mov/wave_frames/frame_0080.png is to a local file,
+    recommended to be _static/frame_0080.png for sphinx
 *** warning: hyperlink to URL testdoc.do.txt is to a local file,
     recommended to be _static/testdoc.do.txt for sphinx
     move linked file to _static and change URLs unless
     you really know that the links will be correct when the
     sphinx build directory is moved to its final destination
+*** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
+-------- terminal output ----------
+Testing
+output
+from
+Python.
+-----------------------------------
 copying from regex "subroutine" until end of file
      file: ../doc/src/manual/__testcode.f,  lines 3-16  (format: fcod)
 copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 
 warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
 
 found info about 9 exercises, written to .testdoc.exerinfo
-... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ... found!
+... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
+    found!
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format sphinx
 *** warning: the "alignat" environment will give errors in Sphinx:
@@ -74896,9 +76425,9 @@ output in testdoc.rst
 + doconce split_rst testdoc
 testdoc split into
 ._testdoc000.rst ._testdoc001.rst ._testdoc002.rst
-+ system doconce sphinx_dir author=HPL 'title=Just a test' version=0.1 theme=agni testdoc
-+ doconce sphinx_dir author=HPL 'title=Just a test' version=0.1 theme=agni testdoc
-Making sphinx-rootdir
++ system doconce sphinx_dir author=HPL 'title=Just a test' dirname=sphinx-testdoc version=0.1 theme=agni testdoc
++ doconce sphinx_dir author=HPL 'title=Just a test' dirname=sphinx-testdoc version=0.1 theme=agni testdoc
+Making sphinx-testdoc
 Welcome to the Sphinx 1.2pre quickstart utility.
 
 Please enter values for the following settings (just press Enter to
@@ -74939,14 +76468,14 @@ A Makefile and a Windows command file can be generated for you so that you
 only have to run e.g. `make html' instead of invoking sphinx-build
 directly.
 > Create Makefile? (Y/n) [y]: > Create Windows command file? (Y/n) [y]: 
-Creating file sphinx-rootdir/conf.py.
-Creating file sphinx-rootdir/index.rst.
-Creating file sphinx-rootdir/Makefile.
-Creating file sphinx-rootdir/make.bat.
+Creating file sphinx-testdoc/conf.py.
+Creating file sphinx-testdoc/index.rst.
+Creating file sphinx-testdoc/Makefile.
+Creating file sphinx-testdoc/make.bat.
 
 Finished: An initial directory structure has been created.
 
-You should now populate your master file sphinx-rootdir/index.rst and create other documentation
+You should now populate your master file sphinx-testdoc/index.rst and create other documentation
 source files. Use the Makefile to build the docs, like so:
    make builder
 where "builder" is one of the supported builders, e.g. html, latex or linkcheck.
@@ -74964,6 +76493,112 @@ or just run it by
 
 + '[' 0 -ne 0 ']'
 + cp automake_sphinx.py automake_sphinx_testdoc.py
++ system python automake_sphinx.py
++ python automake_sphinx.py
+rm -rf _build/*
+sphinx-build -b html -d _build/doctrees   . _build/html
+Making output directory...
+Running Sphinx v1.2pre
+loading pickled environment... not yet created
+building [html]: targets for 4 source files that are out of date
+updating environment: 4 added, 0 changed, 0 removed
+reading sources... [ 25%] ._testdoc000
+reading sources... [ 50%] ._testdoc001
+reading sources... [ 75%] ._testdoc002
+reading sources... [100%] index
+
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:554: WARNING: Inline interpreted text or phrase reference start-string without end-string.
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:None: WARNING: nonlocal image URI found: https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png
+looking for now-outdated files... none found
+pickling environment... done
+checking consistency... done
+preparing documents... done
+writing output... [ 25%] ._testdoc000
+writing output... [ 50%] ._testdoc001
+writing output... [ 75%] ._testdoc002
+writing output... [100%] index
+
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc002.rst:104: WARNING: undefined label: eq:eq1a (if the link has no caption the label must precede a section header)
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc002.rst:104: WARNING: undefined label: eq:eq2a (if the link has no caption the label must precede a section header)
+writing additional files... (0 module code pages) genindex search
+copying images... [100%] wave1D.png
+
+copying static files... done
+dumping search index... done
+dumping object inventory... done
+build succeeded, 4 warnings.
+
+Build finished. The HTML pages are in _build/html.
+<title>(.+?) &mdash;.+?</title> replaced by <title>\g<1></title> in search.html
+replacing </head> by 
+   <style type=text/css>
+     div.admonition {
+       background-color: whiteSmoke;
+       border: 1px solid #bababa;
+     }
+   </style>
+  </head>
+ in search.html
+<title>(.+?) &mdash;.+?</title> replaced by <title>\g<1></title> in genindex.html
+replacing </head> by 
+   <style type=text/css>
+     div.admonition {
+       background-color: whiteSmoke;
+       border: 1px solid #bababa;
+     }
+   </style>
+  </head>
+ in genindex.html
+<title>(.+?) &mdash;.+?</title> replaced by <title>\g<1></title> in index.html
+replacing </head> by 
+   <style type=text/css>
+     div.admonition {
+       background-color: whiteSmoke;
+       border: 1px solid #bababa;
+     }
+   </style>
+  </head>
+ in index.html
+<title>(.+?) &mdash;.+?</title> replaced by <title>\g<1></title> in ._testdoc002.html
+replacing </head> by 
+   <style type=text/css>
+     div.admonition {
+       background-color: whiteSmoke;
+       border: 1px solid #bababa;
+     }
+   </style>
+  </head>
+ in ._testdoc002.html
+<title>(.+?) &mdash;.+?</title> replaced by <title>\g<1></title> in ._testdoc001.html
+replacing </head> by 
+   <style type=text/css>
+     div.admonition {
+       background-color: whiteSmoke;
+       border: 1px solid #bababa;
+     }
+   </style>
+  </head>
+ in ._testdoc001.html
+<title>(.+?) &mdash;.+?</title> replaced by <title>\g<1></title> in ._testdoc000.html
+replacing </head> by 
+   <style type=text/css>
+     div.admonition {
+       background-color: whiteSmoke;
+       border: 1px solid #bababa;
+     }
+   </style>
+  </head>
+ in ._testdoc000.html
+copying movie_demo to sphinx-testdoc
+copying ../doc/src/manual/fig/wave1D.png to sphinx-testdoc
+/home/hpl/vc/doconce/test/sphinx-testdoc
+running make clean
+running make html
+Fix generated files:
+
+google-chrome sphinx-testdoc/_build/html/index.html
+
++ '[' 0 -ne 0 ']'
 + system doconce format rst testdoc.do.txt --examples_as_exercises
 + doconce format rst testdoc.do.txt --examples_as_exercises
 running preprocess -DFORMAT=rst -DDEVICE=screen  testdoc.do.txt > tmp_preprocess__testdoc.do.txt
@@ -74994,6 +76629,13 @@ FIX: !ehint not at the beginning of the line - 1 fixes
 *** warning: the total of 4 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
+*** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
+-------- terminal output ----------
+Testing
+output
+from
+Python.
+-----------------------------------
 copying from regex "subroutine" until end of file
      file: ../doc/src/manual/__testcode.f,  lines 3-16  (format: fcod)
 copying after regex "a comment" until "^C\s+END1"
@@ -75004,7 +76646,8 @@ warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
 
 found info about 9 exercises, written to .testdoc.exerinfo
-... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ... found!
+... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
+    found!
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format rst
 output in testdoc.rst
@@ -75039,6 +76682,13 @@ FIX: !ehint not at the beginning of the line - 1 fixes
 *** warning: the total of 4 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
+*** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
+-------- terminal output ----------
+Testing
+output
+from
+Python.
+-----------------------------------
 copying from regex "subroutine" until end of file
      file: ../doc/src/manual/__testcode.f,  lines 3-16  (format: fcod)
 copying after regex "a comment" until "^C\s+END1"
@@ -75081,17 +76731,26 @@ FIX: !ehint not at the beginning of the line - 1 fixes
 *** warning: the total of 4 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
+*** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
+-------- terminal output ----------
+Testing
+output
+from
+Python.
+-----------------------------------
 copying from regex "subroutine" until end of file
      file: ../doc/src/manual/__testcode.f,  lines 3-16  (format: fcod)
 copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 
 warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
 
 found info about 9 exercises, written to .testdoc.exerinfo
-... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ... found!
+... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
+    found!
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format pandoc
 *** warning: latex envir \begin{multline} does not work well.
@@ -75134,6 +76793,13 @@ FIX: !ehint not at the beginning of the line - 1 fixes
 *** warning: the total of 4 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
+*** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
+-------- terminal output ----------
+Testing
+output
+from
+Python.
+-----------------------------------
 copying from regex "subroutine" until end of file
      file: ../doc/src/manual/__testcode.f,  lines 3-16  (format: fcod)
 copying after regex "a comment" until "^C\s+END1"
@@ -75144,7 +76810,8 @@ warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
 
 found info about 9 exercises, written to .testdoc.exerinfo
-... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ... found!
+... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
+    found!
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format mwiki
  ...checking if wave1D.png is stored at en.wikipedia.org/w/api.php...
@@ -75198,6 +76865,13 @@ FIX: !ehint not at the beginning of the line - 1 fixes
 *** warning: the total of 4 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
+*** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
+-------- terminal output ----------
+Testing
+output
+from
+Python.
+-----------------------------------
 copying from regex "subroutine" until end of file
      file: ../doc/src/manual/__testcode.f,  lines 3-16  (format: fcod)
 copying after regex "a comment" until "^C\s+END1"
@@ -75208,9 +76882,13 @@ warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
 
 found info about 9 exercises, written to .testdoc.exerinfo
-... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ... found!
+... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
+    found!
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format cwiki
+*** warning: table headline with entries
+    |  |  |  |
+   has 3 columns while further down there are 5 columns
 output in testdoc.cwiki
 + '[' 0 -ne 0 ']'
 + system doconce format ipynb testdoc.do.txt --examples_as_exercises
@@ -75243,17 +76921,26 @@ FIX: !ehint not at the beginning of the line - 1 fixes
 *** warning: the total of 4 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
+*** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
+-------- terminal output ----------
+Testing
+output
+from
+Python.
+-----------------------------------
 copying from regex "subroutine" until end of file
      file: ../doc/src/manual/__testcode.f,  lines 3-16  (format: fcod)
 copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 
 warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
 
 found info about 9 exercises, written to .testdoc.exerinfo
-... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ... found!
+... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
+    found!
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format ipynb
 output in testdoc.ipynb
@@ -75289,6 +76976,13 @@ FIX: !ehint not at the beginning of the line - 1 fixes
 *** warning: the total of 4 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
+*** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
+-------- terminal output ----------
+Testing
+output
+from
+Python.
+-----------------------------------
 copying from regex "subroutine" until end of file
      file: ../doc/src/manual/__testcode.f,  lines 3-16  (format: fcod)
 copying after regex "a comment" until "^C\s+END1"
@@ -75299,7 +76993,8 @@ warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
 
 found info about 9 exercises, written to .testdoc.exerinfo
-... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ... found!
+... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
+    found!
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format gwiki
 
@@ -75379,6 +77074,13 @@ FIX: !ehint not at the beginning of the line - 1 fixes
 *** warning: the total of 4 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
+*** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
+-------- terminal output ----------
+Testing
+output
+from
+Python.
+-----------------------------------
 copying from regex "subroutine" until end of file
      file: ../doc/src/manual/__testcode.f,  lines 3-16  (format: fcod)
 copying after regex "a comment" until "^C\s+END1"
@@ -75389,10 +77091,12 @@ warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
 
 found info about 9 exercises, written to .testdoc.exerinfo
-... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ... found!
+... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
+    found!
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.eps for format latex
-... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ... found!
+... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
+    found!
 
 exporting publish database papers.pub to papers.bib:
 output in testdoc.p.tex
@@ -75456,17 +77160,26 @@ FIX: !ehint not at the beginning of the line - 1 fixes
 *** warning: the total of 4 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
+*** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
+-------- terminal output ----------
+Testing
+output
+from
+Python.
+-----------------------------------
 copying from regex "subroutine" until end of file
      file: ../doc/src/manual/__testcode.f,  lines 3-16  (format: fcod)
 copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 
 warning: open the solution in exercise "Flip a Coin" with a line of
 text before the code! (Now "Code:" is inserted)
 
 found info about 9 exercises, written to .testdoc.exerinfo
-... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ... found!
+... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
+    found!
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format pandoc
 *** warning: latex envir \begin{multline} does not work well.
@@ -75698,7 +77411,8 @@ output in html_template.html
 + '[' 0 -ne 0 ']'
 + system doconce format html author1
 + doconce format html author1
-translating doconce text in author1.do.txt to html
+running mako on author1.do.txt to make tmp_mako__author1.do.txt
+translating doconce text in tmp_mako__author1.do.txt to html
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in author1.html
 + '[' 0 -ne 0 ']'
@@ -75725,19 +77439,22 @@ Other Publications:                 1
 Total:                              21
 
 Exported 21 paper(s) to papers.bib.
-translating doconce text in author1.do.txt to latex
+running mako on author1.do.txt to make tmp_mako__author1.do.txt
+translating doconce text in tmp_mako__author1.do.txt to latex
 
 exporting publish database papers.pub to papers.bib:
 output in author1.p.tex
 + '[' 0 -ne 0 ']'
 + system doconce format sphinx author1
 + doconce format sphinx author1
-translating doconce text in author1.do.txt to sphinx
+running mako on author1.do.txt to make tmp_mako__author1.do.txt
+translating doconce text in tmp_mako__author1.do.txt to sphinx
 output in author1.rst
 + '[' 0 -ne 0 ']'
 + system doconce format plain author1
 + doconce format plain author1
-translating doconce text in author1.do.txt to plain
+running mako on author1.do.txt to make tmp_mako__author1.do.txt
+translating doconce text in tmp_mako__author1.do.txt to plain
 output in author1.txt
 + '[' 0 -ne 0 ']'
 + name=math_test
@@ -75790,8 +77507,11 @@ For additional information on amsmath, use the `?' option.
 
 (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
-<2008/02/07> (tvz)) (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+<2008/02/07> (tvz)) (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+
 
 
 
@@ -75811,6 +77531,7 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 
 Writing index file math_test.idx
 No file math_test.aux.
+
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
@@ -75820,6 +77541,11 @@ No file math_test.aux.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 
 (./newcommands_bfmath.tex) (./newcommands_replace.tex)
+
+
+
+
+
 
 
 
@@ -75876,11 +77602,14 @@ microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
 fancyvrb.sty    2008/02/07
+ fontenc.sty
+   t1enc.def    2005/09/27 v1.99g Standard LaTeX file
 inputenc.sty    2008/03/30 v1.1d Input encoding file
     utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+ lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
 hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
@@ -75912,6 +77641,7 @@ hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
      url.sty    2006/04/12  ver 3.3  Verb mode for urls, etc.
  hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
+   t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 supp-pdf.mkii
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
@@ -75922,10 +77652,15 @@ RS)
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
 newcommands_bfmath.tex
 newcommands_replace.tex
+  ot1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omllmm.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omxlmex.fd    2009/10/30 v1.6 Font defs for Latin Modern
     umsa.fd    2013/01/14 v3.01 AMS symbols A
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
     umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+  t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
  ***********
 
 
@@ -75939,17 +77674,16 @@ LaTeX Warning: There were undefined references.
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
- )</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmtt9.pfb>
+ ){/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dv
+ips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share
+/texmf/fonts/enc/dvips/lm/lm-mathit.enc}</usr/share/texlive/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmmib10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx
+10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fon
+ts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi7.pfb
+></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type
+1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/s
+hare/texmf/fonts/type1/public/lm/lmsy7.pfb></usr/share/texmf/fonts/type1/public
+/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
 Output written on math_test.pdf (3 pages, ).
 Transcript written on math_test.log.
 + system doconce format html math_test
@@ -76147,7 +77881,7 @@ output in math_test.md
 + doconce md2latex math_test
 command "md2latex" is not legal, must be among
 
-format, help, sphinx_dir, subst, replace, replace_from_file, clean, spellcheck, ptex2tex, expand_commands, combine_images, guess_encoding, change_encoding, gwiki_figsubst, md2html, remove_inline_comments, grab, remove, remove_exercise_answers, split_rst, split_html, slides_html, slides_beamer, latin2html, latex_header, latex_footer, bbl2rst, html_colorbullets, list_labels, teamod, sphinxfix_localURLs, make_figure_code_links, latex_exercise_toc, insertdocstr, old2new_format, linkchecker, latex2doconce, latex_dislikes, pygmentize, makefile, diff, gitdiff, fix_bibtex4publish, csv2table
+format, help, sphinx_dir, subst, replace, replace_from_file, clean, spellcheck, ptex2tex, guess_encoding, expand_commands, expand_mako, combine_images, change_encoding, gwiki_figsubst, md2html, remove_inline_comments, grab, remove, remove_exercise_answers, split_rst, split_html, slides_html, slides_beamer, latin2html, latex_header, latex_footer, bbl2rst, html_colorbullets, list_labels, teamod, sphinxfix_localURLs, make_figure_code_links, latex_exercise_toc, insertdocstr, old2new_format, linkchecker, latex2doconce, latex_dislikes, pygmentize, makefile, diff, gitdiff, fix_bibtex4publish, csv2table
 + admon_tps='colors1 graybox1 paragraph graybox2 yellowbox graybox3 colors2'
 + for admon_tp in '$admon_tps'
 + system doconce format pdflatex admon --latex_admon=colors1
@@ -76221,8 +77955,11 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (./admon_colors1.w18))/usr/local/bin/pygmentize
 ) (./admon_colors1.pyg)
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+
 
 
 
@@ -76244,6 +77981,7 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 
 Writing index file admon_colors1.idx
 No file admon_colors1.aux.
+
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
@@ -76257,10 +77995,14 @@ No file admon_colors1.aux.
 
 
 
-(./admon_colors1.out.pyg)
- [1{/var/lib/texmf/font
-s/map/pdftex/updmap/pdftex.map}] (./admon_colors1.out.pyg)
-<latex_figs/warning.pdf, id=19, 89.33376pt x 89.33376pt>
+
+
+
+
+(./admon_colors1.out.pyg 
+ [1{/var/lib/texmf/fonts/map/pdftex/up
+dmap/pdftex.map}] (./admon_colors1.out.pyg)
+<latex_figs/warning.pdf, id=20, 89.33376pt x 89.33376pt>
 <use latex_figs/warning.pdf>
 Underfull \hbox (badness 10000) 
 
@@ -76276,7 +78018,7 @@ Underfull \hbox (badness 10000)
 
 Underfull \hbox (badness 10000) 
 
-<latex_figs/notice.pdf, id=34, 89.33376pt x 89.33376pt>
+<latex_figs/notice.pdf, id=37, 89.33376pt x 89.33376pt>
 <use latex_figs/notice.pdf>
 Underfull \hbox (badness 10000) 
 
@@ -76284,7 +78026,7 @@ Underfull \hbox (badness 10000)
 Underfull \hbox (badness 10000) 
 
 [3 <./latex_figs/notice.pdf>]
-<latex_figs/question.pdf, id=47, 89.33376pt x 89.33376pt>
+<latex_figs/question.pdf, id=51, 89.33376pt x 89.33376pt>
 <use latex_figs/question.pdf>
 Underfull \hbox (badness 10000) 
 
@@ -76301,9 +78043,9 @@ Underfull \hbox (badness 10000)
 Underfull \hbox (badness 10000) 
 
 (./admon_colors1.out.pyg) (./admon_colors1.out.pyg)
-<../doc/src/manual/fig/wave1D.pdf, id=48, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=52, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> [4 <./latex_figs/question.pdf>] [5]
-<latex_figs/summary.pdf, id=65, 89.33376pt x 89.33376pt>
+<latex_figs/summary.pdf, id=69, 89.33376pt x 89.33376pt>
 <use latex_figs/summary.pdf>
 Underfull \hbox (badness 10000) 
 
@@ -76356,11 +78098,14 @@ catchfile.sty    2011/03/01 v1.6 Catch the contents of a file (HO)
 etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
 admon_colors1.w18
 admon_colors1.pyg
+ fontenc.sty
+   t1enc.def    2005/09/27 v1.99g Standard LaTeX file
 inputenc.sty    2008/03/30 v1.1d Input encoding file
     utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+ lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
 hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
@@ -76390,6 +78135,7 @@ hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
   framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
+   t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 supp-pdf.mkii
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
@@ -76400,12 +78146,17 @@ RS)
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
 newcommands_bfmath.tex
 newcommands_replace.tex
+  ot1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omllmm.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omxlmex.fd    2009/10/30 v1.6 Font defs for Latin Modern
     umsa.fd    2013/01/14 v3.01 AMS symbols A
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
     umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 admon_colors1.out.pyg
-  omscmr.fd    1999/05/25 v2.5h Standard LaTeX font definitions
+  t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omslmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 admon_colors1.out.pyg
 latex_figs/warning.pdf
 latex_figs/warning.pdf
@@ -76430,21 +78181,20 @@ Package rerunfilecheck Warning: File `admon_colors1.out' has changed.
 (rerunfilecheck)                or use package `bookmark'.
 
  )
-(see the transcript file for additional information)</usr/share/texlive/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-r12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb>
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/te
-xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/share/texlive/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmtt9.pfb>
+(see the transcript file for additional information){/usr/share/texmf/fonts/enc
+/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/
+texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-
+mathsy.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib1
+0.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/font
+s/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb
+></usr/share/texmf/fonts/type1/public/lm/lmmi7.pfb></usr/share/texmf/fonts/type
+1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/s
+hare/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/
+lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texm
+f/fonts/type1/public/lm/lmri8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy1
+0.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy7.pfb></usr/share/texmf/fonts
+/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb>
+</usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
 Output written on admon_colors1.pdf (6 pages, ).
 Transcript written on admon_colors1.log.
 + '[' 0 -ne 0 ']'
@@ -76520,8 +78270,11 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (./admon_graybox1.w18))/usr/local/bin/pygmentize
 ) (./admon_graybox1.pyg)
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+
 
 
 
@@ -76633,6 +78386,7 @@ hs.code.tex))) (/usr/share/texlive/texmf-dist/tex/latex/mdframed/md-frame-1.mdf
 ))
 Writing index file admon_graybox1.idx
 No file admon_graybox1.aux.
+
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
@@ -76642,14 +78396,17 @@ No file admon_graybox1.aux.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 
 ABD: EveryShipout initializing macros (./newcommands_bfmath.tex)
-(./newcommands_replace.tex)
+(./newcommands_replace.tex) 
 
 
 
 
-(./admon_graybox1.out.pyg)
- [1{/var/lib/texmf/font
-s/map/pdftex/updmap/pdftex.map}] (./admon_graybox1.out.pyg)
+
+
+
+(./admon_graybox1.out.pyg 
+ [1{/var/lib/texmf/fonts/map/pdftex/up
+dmap/pdftex.map}] (./admon_graybox1.out.pyg)
 
 
 ...rest of part of LaTeX line number...
@@ -76697,7 +78454,7 @@ s/map/pdftex/updmap/pdftex.map}] (./admon_graybox1.out.pyg)
 ...rest of part of LaTeX line number...
 
 (./admon_graybox1.out.pyg) (./admon_graybox1.out.pyg)
-<../doc/src/manual/fig/wave1D.pdf, id=41, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=45, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf>
 
 
@@ -76765,11 +78522,14 @@ catchfile.sty    2011/03/01 v1.6 Catch the contents of a file (HO)
 etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
 admon_graybox1.w18
 admon_graybox1.pyg
+ fontenc.sty
+   t1enc.def    2005/09/27 v1.99g Standard LaTeX file
 inputenc.sty    2008/03/30 v1.1d Input encoding file
     utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+ lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
 hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
@@ -76847,6 +78607,7 @@ pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
   pgffor.code.tex
     tikz.code.tex
 md-frame-1.mdf    2013/07/01\ 1.9b: md-frame-1
+   t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 supp-pdf.mkii
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
@@ -76857,12 +78618,17 @@ RS)
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
 newcommands_bfmath.tex
 newcommands_replace.tex
+  ot1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omllmm.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omxlmex.fd    2009/10/30 v1.6 Font defs for Latin Modern
     umsa.fd    2013/01/14 v3.01 AMS symbols A
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
     umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 admon_graybox1.out.pyg
-  omscmr.fd    1999/05/25 v2.5h Standard LaTeX font definitions
+  t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omslmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 admon_graybox1.out.pyg
 admon_graybox1.out.pyg
 admon_graybox1.out.pyg
@@ -76881,20 +78647,19 @@ LaTeX Warning: There were undefined references.
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
- )</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-sy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pf
-b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
+ ){/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dv
+ips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share
+/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}</usr/share/texlive/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmmib10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx
+10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fon
+ts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi7.pfb
+></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type
+1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/sh
+are/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/l
+m/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmri8.pfb></usr/share/texm
+f/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy
+7.pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb></usr/share/texmf/font
+s/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
 Output written on admon_graybox1.pdf (6 pages, ).
 Transcript written on admon_graybox1.log.
 + '[' 0 -ne 0 ']'
@@ -76970,8 +78735,11 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (./admon_paragraph.w18))/usr/local/bin/pygmentize
 ) (./admon_paragraph.pyg)
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+
 
 
 
@@ -77083,6 +78851,7 @@ hs.code.tex))) (/usr/share/texlive/texmf-dist/tex/latex/mdframed/md-frame-1.mdf
 ))
 Writing index file admon_paragraph.idx
 No file admon_paragraph.aux.
+
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
@@ -77092,17 +78861,19 @@ No file admon_paragraph.aux.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 
 ABD: EveryShipout initializing macros (./newcommands_bfmath.tex)
-(./newcommands_replace.tex)
+(./newcommands_replace.tex) 
 
 
 
 
-(./admon_paragraph.out.pyg)
- [1{/var/lib/texmf/font
-s/map/pdftex/updmap/pdftex.map}] (./admon_paragraph.out.pyg) [2]
-(./admon_paragraph.out.pyg) [3] (./admon_paragraph.out.pyg)
-(./admon_paragraph.out.pyg [4])
-<../doc/src/manual/fig/wave1D.pdf, id=60, 586.83241pt x 442.29242pt>
+
+
+
+(./admon_paragraph.out.pyg 
+ [1{/var/lib/texmf/fonts/map/pdftex/up
+dmap/pdftex.map}] (./admon_paragraph.out.pyg) [2] (./admon_paragraph.out.pyg)
+[3] (./admon_paragraph.out.pyg) (./admon_paragraph.out.pyg [4])
+<../doc/src/manual/fig/wave1D.pdf, id=64, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf>
 No file admon_paragraph.ind.
 [5 <../doc/src/manual/fig/wave1D.pdf>] (./admon_paragraph.aux)
@@ -77152,11 +78923,14 @@ catchfile.sty    2011/03/01 v1.6 Catch the contents of a file (HO)
 etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
 admon_paragraph.w18
 admon_paragraph.pyg
+ fontenc.sty
+   t1enc.def    2005/09/27 v1.99g Standard LaTeX file
 inputenc.sty    2008/03/30 v1.1d Input encoding file
     utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+ lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
 hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
@@ -77234,6 +79008,7 @@ pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
   pgffor.code.tex
     tikz.code.tex
 md-frame-1.mdf    2013/07/01\ 1.9b: md-frame-1
+   t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 supp-pdf.mkii
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
@@ -77244,12 +79019,17 @@ RS)
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
 newcommands_bfmath.tex
 newcommands_replace.tex
+  ot1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omllmm.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omxlmex.fd    2009/10/30 v1.6 Font defs for Latin Modern
     umsa.fd    2013/01/14 v3.01 AMS symbols A
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
     umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 admon_paragraph.out.pyg
-  omscmr.fd    1999/05/25 v2.5h Standard LaTeX font definitions
+  t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omslmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 admon_paragraph.out.pyg
 admon_paragraph.out.pyg
 admon_paragraph.out.pyg
@@ -77262,20 +79042,19 @@ Package rerunfilecheck Warning: File `admon_paragraph.out' has changed.
 (rerunfilecheck)                Rerun to get outlines right
 (rerunfilecheck)                or use package `bookmark'.
 
- )</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-sy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pf
-b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
+ ){/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dv
+ips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share
+/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}</usr/share/texlive/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmmib10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx
+10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fon
+ts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi7.pfb
+></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type
+1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/sh
+are/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/l
+m/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmri8.pfb></usr/share/texm
+f/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy
+7.pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb></usr/share/texmf/font
+s/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
 Output written on admon_paragraph.pdf (5 pages, ).
 Transcript written on admon_paragraph.log.
 + '[' 0 -ne 0 ']'
@@ -77351,8 +79130,11 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (./admon_graybox2.w18))/usr/local/bin/pygmentize
 ) (./admon_graybox2.pyg)
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+
 
 
 
@@ -77465,6 +79247,7 @@ hs.code.tex))) (/usr/share/texlive/texmf-dist/tex/latex/mdframed/md-frame-1.mdf
 ))
 Writing index file admon_graybox2.idx
 No file admon_graybox2.aux.
+
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
@@ -77474,14 +79257,17 @@ No file admon_graybox2.aux.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 
 ABD: EveryShipout initializing macros (./newcommands_bfmath.tex)
-(./newcommands_replace.tex)
+(./newcommands_replace.tex) 
 
 
 
 
-(./admon_graybox2.out.pyg)
- [1{/var/lib/texmf/font
-s/map/pdftex/updmap/pdftex.map}] (./admon_graybox2.out.pyg)
+
+
+
+(./admon_graybox2.out.pyg 
+ [1{/var/lib/texmf/fonts/map/pdftex/up
+dmap/pdftex.map}] (./admon_graybox2.out.pyg)
 
 
 ...rest of part of LaTeX line number...
@@ -77529,7 +79315,7 @@ s/map/pdftex/updmap/pdftex.map}] (./admon_graybox2.out.pyg)
 ...rest of part of LaTeX line number...
 
 (./admon_graybox2.out.pyg) (./admon_graybox2.out.pyg)
-<../doc/src/manual/fig/wave1D.pdf, id=41, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=45, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf>
 
 
@@ -77593,11 +79379,14 @@ catchfile.sty    2011/03/01 v1.6 Catch the contents of a file (HO)
 etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
 admon_graybox2.w18
 admon_graybox2.pyg
+ fontenc.sty
+   t1enc.def    2005/09/27 v1.99g Standard LaTeX file
 inputenc.sty    2008/03/30 v1.1d Input encoding file
     utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+ lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
 hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
@@ -77676,6 +79465,7 @@ pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
   pgffor.code.tex
     tikz.code.tex
 md-frame-1.mdf    2013/07/01\ 1.9b: md-frame-1
+   t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 supp-pdf.mkii
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
@@ -77686,12 +79476,17 @@ RS)
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
 newcommands_bfmath.tex
 newcommands_replace.tex
+  ot1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omllmm.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omxlmex.fd    2009/10/30 v1.6 Font defs for Latin Modern
     umsa.fd    2013/01/14 v3.01 AMS symbols A
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
     umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 admon_graybox2.out.pyg
-  omscmr.fd    1999/05/25 v2.5h Standard LaTeX font definitions
+  t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omslmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 admon_graybox2.out.pyg
 admon_graybox2.out.pyg
 admon_graybox2.out.pyg
@@ -77710,20 +79505,19 @@ LaTeX Warning: There were undefined references.
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
- )</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-sy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pf
-b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
+ ){/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dv
+ips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share
+/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}</usr/share/texlive/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmmib10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx
+10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fon
+ts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi7.pfb
+></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type
+1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/sh
+are/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/l
+m/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmri8.pfb></usr/share/texm
+f/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy
+7.pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb></usr/share/texmf/font
+s/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
 Output written on admon_graybox2.pdf (6 pages, ).
 Transcript written on admon_graybox2.log.
 + '[' 0 -ne 0 ']'
@@ -77799,8 +79593,11 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (./admon_yellowbox.w18))/usr/local/bin/pygmentize
 ) (./admon_yellowbox.pyg)
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+
 
 
 
@@ -77823,6 +79620,7 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 
 Writing index file admon_yellowbox.idx
 No file admon_yellowbox.aux.
+
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
@@ -77836,17 +79634,21 @@ No file admon_yellowbox.aux.
 
 
 
-(./admon_yellowbox.out.pyg)
- [1{/var/lib/texmf/font
-s/map/pdftex/updmap/pdftex.map}] (./admon_yellowbox.out.pyg)
-<latex_figs/small_yellow_warning.pdf, id=19, 32.12pt x 32.12pt>
+
+
+
+
+(./admon_yellowbox.out.pyg 
+ [1{/var/lib/texmf/fonts/map/pdftex/up
+dmap/pdftex.map}] (./admon_yellowbox.out.pyg)
+<latex_figs/small_yellow_warning.pdf, id=20, 32.12pt x 32.12pt>
 <use latex_figs/small_yellow_warning.pdf>
 <use latex_figs/small_yellow_warning.pdf> [2 <./latex_figs/small_yellow_warning
 .pdf>] <use latex_figs/small_yellow_warning.pdf>
-<latex_figs/small_yellow_notice.pdf, id=37, 32.12pt x 32.12pt>
+<latex_figs/small_yellow_notice.pdf, id=40, 32.12pt x 32.12pt>
 <use latex_figs/small_yellow_notice.pdf>
 <use latex_figs/small_yellow_notice.pdf>
-<latex_figs/small_yellow_question.pdf, id=38, 32.12pt x 32.12pt>
+<latex_figs/small_yellow_question.pdf, id=41, 32.12pt x 32.12pt>
 <use latex_figs/small_yellow_question.pdf>
 <use latex_figs/small_yellow_question.pdf> [3 <./latex_figs/small_yellow_notice
 .pdf> <./latex_figs/small_yellow_question.pdf>]
@@ -77854,12 +79656,12 @@ s/map/pdftex/updmap/pdftex.map}] (./admon_yellowbox.out.pyg)
 <use latex_figs/small_yellow_warning.pdf>
 <use latex_figs/small_yellow_notice.pdf> (./admon_yellowbox.out.pyg)
 (./admon_yellowbox.out.pyg)
-<../doc/src/manual/fig/wave1D.pdf, id=59, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=63, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> [4]
 
 
 
-[5] <latex_figs/small_yellow_summary.pdf, id=71, 32.12pt x 32.12pt>
+[5] <latex_figs/small_yellow_summary.pdf, id=75, 32.12pt x 32.12pt>
 <use latex_figs/small_yellow_summary.pdf>
 No file admon_yellowbox.ind.
 [6 <../doc/src/manual/fig/wave1D.pdf> <./latex_figs/small_yellow_summary.pdf>]
@@ -77910,11 +79712,14 @@ catchfile.sty    2011/03/01 v1.6 Catch the contents of a file (HO)
 etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
 admon_yellowbox.w18
 admon_yellowbox.pyg
+ fontenc.sty
+   t1enc.def    2005/09/27 v1.99g Standard LaTeX file
 inputenc.sty    2008/03/30 v1.1d Input encoding file
     utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+ lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
 hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
@@ -77945,6 +79750,7 @@ rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
   framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
  wrapfig.sty    2003/01/31  v 3.6
+   t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 supp-pdf.mkii
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
@@ -77955,12 +79761,17 @@ RS)
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
 newcommands_bfmath.tex
 newcommands_replace.tex
+  ot1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omllmm.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omxlmex.fd    2009/10/30 v1.6 Font defs for Latin Modern
     umsa.fd    2013/01/14 v3.01 AMS symbols A
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
     umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 admon_yellowbox.out.pyg
-  omscmr.fd    1999/05/25 v2.5h Standard LaTeX font definitions
+  t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omslmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 admon_yellowbox.out.pyg
 latex_figs/small_yellow_warning.pdf
 latex_figs/small_yellow_warning.pdf
@@ -77985,21 +79796,20 @@ Package rerunfilecheck Warning: File `admon_yellowbox.out' has changed.
 (rerunfilecheck)                or use package `bookmark'.
 
  )
-(see the transcript file for additional information)</usr/share/texlive/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-r12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb>
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/te
-xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/share/texlive/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmtt9.pfb>
+(see the transcript file for additional information){/usr/share/texmf/fonts/enc
+/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/
+texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-
+mathsy.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib1
+0.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/font
+s/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb
+></usr/share/texmf/fonts/type1/public/lm/lmmi7.pfb></usr/share/texmf/fonts/type
+1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/s
+hare/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/
+lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texm
+f/fonts/type1/public/lm/lmri8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy1
+0.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy7.pfb></usr/share/texmf/fonts
+/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb>
+</usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
 Output written on admon_yellowbox.pdf (6 pages, ).
 Transcript written on admon_yellowbox.log.
 + '[' 0 -ne 0 ']'
@@ -78075,8 +79885,11 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (./admon_graybox3.w18))/usr/local/bin/pygmentize
 ) (./admon_graybox3.pyg)
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+
 
 
 
@@ -78099,6 +79912,7 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 
 Writing index file admon_graybox3.idx
 No file admon_graybox3.aux.
+
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
@@ -78112,28 +79926,32 @@ No file admon_graybox3.aux.
 
 
 
-(./admon_graybox3.out.pyg)
- [1{/var/lib/texmf/font
-s/map/pdftex/updmap/pdftex.map}] (./admon_graybox3.out.pyg)
-<latex_figs/small_gray_warning.pdf, id=19, 48.18pt x 48.18pt>
+
+
+
+
+(./admon_graybox3.out.pyg 
+ [1{/var/lib/texmf/fonts/map/pdftex/up
+dmap/pdftex.map}] (./admon_graybox3.out.pyg)
+<latex_figs/small_gray_warning.pdf, id=20, 48.18pt x 48.18pt>
 <use latex_figs/small_gray_warning.pdf>
 <use latex_figs/small_gray_warning.pdf> [2 <./latex_figs/small_gray_warning.pdf
 >] <use latex_figs/small_gray_warning.pdf>
-<latex_figs/small_gray_notice.pdf, id=37, 64.24pt x 64.24pt>
+<latex_figs/small_gray_notice.pdf, id=40, 64.24pt x 64.24pt>
 <use latex_figs/small_gray_notice.pdf> <use latex_figs/small_gray_notice.pdf>
-<latex_figs/small_gray_question2.pdf, id=38, 64.24pt x 64.24pt>
+<latex_figs/small_gray_question2.pdf, id=41, 64.24pt x 64.24pt>
 <use latex_figs/small_gray_question2.pdf>
 <use latex_figs/small_gray_question2.pdf> [3 <./latex_figs/small_gray_notice.pd
 f> <./latex_figs/small_gray_question2.pdf>]
 <use latex_figs/small_gray_warning.pdf> (./admon_graybox3.out.pyg)
 <use latex_figs/small_gray_warning.pdf> <use latex_figs/small_gray_notice.pdf>
 (./admon_graybox3.out.pyg) (./admon_graybox3.out.pyg)
-<../doc/src/manual/fig/wave1D.pdf, id=59, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=63, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> [4]
 
 
 
-[5] <latex_figs/small_gray_summary.pdf, id=71, 48.18pt x 48.18pt>
+[5] <latex_figs/small_gray_summary.pdf, id=75, 48.18pt x 48.18pt>
 <use latex_figs/small_gray_summary.pdf>
 No file admon_graybox3.ind.
 [6 <../doc/src/manual/fig/wave1D.pdf> <./latex_figs/small_gray_summary.pdf>]
@@ -78184,11 +80002,14 @@ catchfile.sty    2011/03/01 v1.6 Catch the contents of a file (HO)
 etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
 admon_graybox3.w18
 admon_graybox3.pyg
+ fontenc.sty
+   t1enc.def    2005/09/27 v1.99g Standard LaTeX file
 inputenc.sty    2008/03/30 v1.1d Input encoding file
     utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+ lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
 hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
@@ -78219,6 +80040,7 @@ rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
   framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
  wrapfig.sty    2003/01/31  v 3.6
+   t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 supp-pdf.mkii
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
@@ -78229,12 +80051,17 @@ RS)
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
 newcommands_bfmath.tex
 newcommands_replace.tex
+  ot1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omllmm.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omxlmex.fd    2009/10/30 v1.6 Font defs for Latin Modern
     umsa.fd    2013/01/14 v3.01 AMS symbols A
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
     umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 admon_graybox3.out.pyg
-  omscmr.fd    1999/05/25 v2.5h Standard LaTeX font definitions
+  t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omslmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 admon_graybox3.out.pyg
 latex_figs/small_gray_warning.pdf
 latex_figs/small_gray_warning.pdf
@@ -78259,21 +80086,20 @@ Package rerunfilecheck Warning: File `admon_graybox3.out' has changed.
 (rerunfilecheck)                or use package `bookmark'.
 
  )
-(see the transcript file for additional information)</usr/share/texlive/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-r12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb>
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/te
-xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/share/texlive/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmtt9.pfb>
+(see the transcript file for additional information){/usr/share/texmf/fonts/enc
+/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/
+texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-
+mathsy.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib1
+0.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/font
+s/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb
+></usr/share/texmf/fonts/type1/public/lm/lmmi7.pfb></usr/share/texmf/fonts/type
+1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/s
+hare/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/
+lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texm
+f/fonts/type1/public/lm/lmri8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy1
+0.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy7.pfb></usr/share/texmf/fonts
+/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb>
+</usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
 Output written on admon_graybox3.pdf (6 pages, ).
 Transcript written on admon_graybox3.log.
 + '[' 0 -ne 0 ']'
@@ -78349,8 +80175,11 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (./admon_colors2.w18))/usr/local/bin/pygmentize
 ) (./admon_colors2.pyg)
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+
 
 
 
@@ -78373,6 +80202,7 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 
 Writing index file admon_colors2.idx
 No file admon_colors2.aux.
+
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
@@ -78386,25 +80216,29 @@ No file admon_colors2.aux.
 
 
 
-(./admon_colors2.out.pyg)
- [1{/var/lib/texmf/font
-s/map/pdftex/updmap/pdftex.map}] (./admon_colors2.out.pyg)
-<latex_figs/warning.pdf, id=19, 89.33376pt x 89.33376pt>
+
+
+
+
+(./admon_colors2.out.pyg 
+ [1{/var/lib/texmf/fonts/map/pdftex/up
+dmap/pdftex.map}] (./admon_colors2.out.pyg)
+<latex_figs/warning.pdf, id=20, 89.33376pt x 89.33376pt>
 <use latex_figs/warning.pdf> <use latex_figs/warning.pdf> [2 <./latex_figs/warn
 ing.pdf>] <use latex_figs/warning.pdf>
-<latex_figs/notice.pdf, id=35, 89.33376pt x 89.33376pt>
+<latex_figs/notice.pdf, id=38, 89.33376pt x 89.33376pt>
 <use latex_figs/notice.pdf> <use latex_figs/notice.pdf>
-<latex_figs/question.pdf, id=36, 89.33376pt x 89.33376pt>
+<latex_figs/question.pdf, id=39, 89.33376pt x 89.33376pt>
 <use latex_figs/question.pdf> <use latex_figs/question.pdf> [3 <./latex_figs/no
 tice.pdf> <./latex_figs/question.pdf>] <use latex_figs/warning.pdf>
 (./admon_colors2.out.pyg) <use latex_figs/warning.pdf>
 <use latex_figs/notice.pdf> (./admon_colors2.out.pyg) (./admon_colors2.out.pyg)
-<../doc/src/manual/fig/wave1D.pdf, id=53, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=57, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> [4]
 
 
 
-[5] <latex_figs/summary.pdf, id=65, 89.33376pt x 89.33376pt>
+[5] <latex_figs/summary.pdf, id=69, 89.33376pt x 89.33376pt>
 <use latex_figs/summary.pdf>
 No file admon_colors2.ind.
 [6 <../doc/src/manual/fig/wave1D.pdf> <./latex_figs/summary.pdf>]
@@ -78455,11 +80289,14 @@ catchfile.sty    2011/03/01 v1.6 Catch the contents of a file (HO)
 etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
 admon_colors2.w18
 admon_colors2.pyg
+ fontenc.sty
+   t1enc.def    2005/09/27 v1.99g Standard LaTeX file
 inputenc.sty    2008/03/30 v1.1d Input encoding file
     utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+ lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
 hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
@@ -78490,6 +80327,7 @@ rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
   framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
  wrapfig.sty    2003/01/31  v 3.6
+   t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 supp-pdf.mkii
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
@@ -78500,12 +80338,17 @@ RS)
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
 newcommands_bfmath.tex
 newcommands_replace.tex
+  ot1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omllmm.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omxlmex.fd    2009/10/30 v1.6 Font defs for Latin Modern
     umsa.fd    2013/01/14 v3.01 AMS symbols A
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
     umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 admon_colors2.out.pyg
-  omscmr.fd    1999/05/25 v2.5h Standard LaTeX font definitions
+  t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omslmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 admon_colors2.out.pyg
 latex_figs/warning.pdf
 latex_figs/warning.pdf
@@ -78530,21 +80373,20 @@ Package rerunfilecheck Warning: File `admon_colors2.out' has changed.
 (rerunfilecheck)                or use package `bookmark'.
 
  )
-(see the transcript file for additional information)</usr/share/texlive/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-r12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb>
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/te
-xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/share/texlive/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmtt9.pfb>
+(see the transcript file for additional information){/usr/share/texmf/fonts/enc
+/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/
+texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-
+mathsy.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib1
+0.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/font
+s/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb
+></usr/share/texmf/fonts/type1/public/lm/lmmi7.pfb></usr/share/texmf/fonts/type
+1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/s
+hare/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/
+lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texm
+f/fonts/type1/public/lm/lmri8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy1
+0.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy7.pfb></usr/share/texmf/fonts
+/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb>
+</usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
 Output written on admon_colors2.pdf (6 pages, ).
 Transcript written on admon_colors2.log.
 + '[' 0 -ne 0 ']'
@@ -78552,11 +80394,12 @@ Transcript written on admon_colors2.log.
 + doconce format html admon --html_admon=lyx --html_style=blueish2
 running preprocess -DFORMAT=html -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to html
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
-*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 *** warning: wrong text size "illegal-size" specified in notice environment!
     must be large or small - will be set to normal
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in admon.html
 + '[' 0 -ne 0 ']'
 + cp admon.html admon_lyx.html
@@ -78564,11 +80407,12 @@ output in admon.html
 + doconce format html admon --html_admon=paragraph --html_style=blueish2
 running preprocess -DFORMAT=html -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to html
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
-*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 *** warning: wrong text size "illegal-size" specified in notice environment!
     must be large or small - will be set to normal
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in admon.html
 + '[' 0 -ne 0 ']'
 + cp admon.html admon_paragraph.html
@@ -78576,11 +80420,12 @@ output in admon.html
 + doconce format html admon --html_admon=colors
 running preprocess -DFORMAT=html -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to html
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
-*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 *** warning: wrong text size "illegal-size" specified in notice environment!
     must be large or small - will be set to normal
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in admon.html
 + '[' 0 -ne 0 ']'
 + cp admon.html admon_colors.html
@@ -78588,11 +80433,12 @@ output in admon.html
 + doconce format html admon --html_admon=gray --html_style=blueish2 --html_admon_shadow --html_box_shadow
 running preprocess -DFORMAT=html -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to html
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
-*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 *** warning: wrong text size "illegal-size" specified in notice environment!
     must be large or small - will be set to normal
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in admon.html
 + '[' 0 -ne 0 ']'
 + cp admon.html admon_gray.html
@@ -78600,11 +80446,12 @@ output in admon.html
 + doconce format html admon --html_admon=yellow --html_admon_shadow --html_box_shadow
 running preprocess -DFORMAT=html -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to html
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
-*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 *** warning: wrong text size "illegal-size" specified in notice environment!
     must be large or small - will be set to normal
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in admon.html
 + '[' 0 -ne 0 ']'
 + cp admon.html admon_yellow.html
@@ -78612,11 +80459,12 @@ output in admon.html
 + doconce format html admon --html_admon=apricot --html_style=solarized
 running preprocess -DFORMAT=html -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to html
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
-*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 *** warning: wrong text size "illegal-size" specified in notice environment!
     must be large or small - will be set to normal
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in admon.html
 + '[' 0 -ne 0 ']'
 + cp admon.html admon_apricot.html
@@ -78624,6 +80472,7 @@ output in admon.html
 + doconce format html admon --html_style=vagrant --pygments_html_style=default --html_template=style_vagrant/template_vagrant.html
 running preprocess -DFORMAT=html -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to html
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
 *** warning: TITLE may look strange with a template -
@@ -78631,9 +80480,9 @@ figure file ../doc/src/manual/fig/wave1D:
 *** warning: AUTHOR may look strange with a template -
              it is recommended to comment out all authors: #AUTHOR.
              Better to hardcode authors in a footer in the template.
-*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 *** warning: wrong text size "illegal-size" specified in notice environment!
     must be large or small - will be set to normal
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in admon.html
 + '[' 0 -ne 0 ']'
 + cp admon.html admon_vagrant.html
@@ -78712,9 +80561,9 @@ or just run it by
 + python automake_sphinx.py
 running preprocess -DFORMAT=sphinx -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to sphinx
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format sphinx
-*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 *** warning: wrong text size "illegal-size" specified in notice environment!
     must be large or small - will be set to normal
 output in admon.rst
@@ -78835,9 +80684,12 @@ output in github_md.md
 + doconce format html movies --html_output=movies_3choices
 running preprocess -DFORMAT=html -DDEVICE=screen  movies.do.txt > tmp_preprocess__movies.do.txt
 translating doconce text in tmp_preprocess__movies.do.txt to html
-... movie: trying to find http://hplgit.github.io/animate/doc/pub/mov-animate/demo.mp4 ... found!
-... movie: trying to find http://hplgit.github.io/animate/doc/pub/mov-animate/demo.webm ... found!
-... movie: trying to find http://hplgit.github.io/animate/doc/pub/mov-animate/demo.ogg ... found!
+... movie: trying to find http://hplgit.github.io/animate/doc/pub/mov-animate/demo.mp4 ...
+    found!
+... movie: trying to find http://hplgit.github.io/animate/doc/pub/mov-animate/demo.webm ...
+    found!
+... movie: trying to find http://hplgit.github.io/animate/doc/pub/mov-animate/demo.ogg ...
+    found!
 output in movies_3choices.html
 + '[' 0 -ne 0 ']'
 + cp movies_3choices.html movie_demo
@@ -78845,9 +80697,12 @@ output in movies_3choices.html
 + doconce format html movies --no_mp4_webm_ogg_alternatives
 running preprocess -DFORMAT=html -DDEVICE=screen  movies.do.txt > tmp_preprocess__movies.do.txt
 translating doconce text in tmp_preprocess__movies.do.txt to html
-... movie: trying to find http://hplgit.github.io/animate/doc/pub/mov-animate/demo.mp4 ... found!
-... movie: trying to find http://hplgit.github.io/animate/doc/pub/mov-animate/demo.webm ... found!
-... movie: trying to find http://hplgit.github.io/animate/doc/pub/mov-animate/demo.ogg ... found!
+... movie: trying to find http://hplgit.github.io/animate/doc/pub/mov-animate/demo.mp4 ...
+    found!
+... movie: trying to find http://hplgit.github.io/animate/doc/pub/mov-animate/demo.webm ...
+    found!
+... movie: trying to find http://hplgit.github.io/animate/doc/pub/mov-animate/demo.ogg ...
+    found!
 output in movies.html
 + '[' 0 -ne 0 ']'
 + cp movies.html movie_demo
@@ -78954,8 +80809,11 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-)) (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+)) (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+
 
 
 
@@ -78975,6 +80833,7 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 
 Writing index file movies.idx
 No file movies.aux.
+
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 
 
@@ -78986,8 +80845,13 @@ ABD: EveryShipout initializing macros
 
 
 
-<<VPlayer.swf>><<
-../doc/src/manual/mov/wave.mp4>><<../doc/src/manual/mov/wave.flv>>
+
+
+
+
+
+<<VPlayer.swf>><<../doc/src/manual/mov
+/wave.mp4>><<../doc/src/manual/mov/wave.flv>>
 <../doc/src/manual/mov/wave_frames/frame_0080.png, id=47, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/m
 ov/wave_frames/frame_0080.png> <a0,fr0>
@@ -79139,14 +81003,10 @@ mov/wave_frames/frame_0128.png> <a0,fr48>
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0129.png> <../doc/src/manual/
 mov/wave_frames/frame_0129.png> <a0,fr49> [1{/var/lib/texmf/fonts/map/pdftex/up
 dmap/pdftex.map}]
-Overfull \hbox (81.57852pt too wide) 
- []\OT1/cmr/m/n/10 (-20) : 
-
-
-
-/src/manual/mov/wave.mpeg>>]
-
-/src/manual/mov/wave.avi>>]
+Overfull \hbox (81.58096pt too wide) 
+ []\T1/lmr/m/n/10 (-20) : 
+[2] [3<<../doc/src/manual/mov/wave.mpeg>>] [4<<../doc/src/manual/mov/wave.avi>>
+]
 
 
 
@@ -79240,11 +81100,14 @@ everyshi.sty    2001/05/15 v3.00 EveryShipout Package (MS)
     calc.sty    2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
   animfp.sty    2009/07/23 fixed point addition for animate.sty
 supp-pdf.mkii
+ fontenc.sty
+   t1enc.def    2005/09/27 v1.99g Standard LaTeX file
 inputenc.sty    2008/03/30 v1.1d Input encoding file
     utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+ lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
 hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
@@ -79274,6 +81137,7 @@ hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
      url.sty    2006/04/12  ver 3.3  Verb mode for urls, etc.
  hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
+   t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
 epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
@@ -79283,10 +81147,15 @@ RS)
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
 newcommands_bfmath.tex
 newcommands_replace.tex
+  ot1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omllmm.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omxlmex.fd    2009/10/30 v1.6 Font defs for Latin Modern
     umsa.fd    2013/01/14 v3.01 AMS symbols A
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
     umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+  t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
 ../doc/src/manual/mov/wave_frames/frame_0080.png
 ../doc/src/manual/mov/wave_frames/frame_0081.png
 ../doc/src/manual/mov/wave_frames/frame_0082.png
@@ -79351,13 +81220,12 @@ LaTeX Warning: There were undefined references.
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  )
-(see the transcript file for additional information)</usr/share/texlive/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmtt9.pfb>
+(see the transcript file for additional information){/usr/share/texmf/fonts/enc
+/dvips/lm/lm-ec.enc}</usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/sh
+are/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public
+/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texm
+f/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt
+9.pfb>
 Output written on movies.pdf (5 pages, ).
 Transcript written on movies.log.
 + '[' 0 -ne 0 ']'
@@ -79448,8 +81316,11 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-)) (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+)) (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+
 
 
 
@@ -79468,7 +81339,7 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
 
 Writing index file movies.idx
-(./movies.aux)
+(./movies.aux) 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 
 
@@ -79477,12 +81348,16 @@ ABD: EveryShipout initializing macros
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 
 (./movies.out) (./movies.out) (./newcommands_bfmath.tex)
-(./newcommands_replace.tex)
+(./newcommands_replace.tex) 
 
 
 
-<<VPlayer.swf>><<
-../doc/src/manual/mov/wave.mp4>><<../doc/src/manual/mov/wave.flv>>
+
+
+
+
+<<VPlayer.swf>><<../doc/src/manual/mov
+/wave.mp4>><<../doc/src/manual/mov/wave.flv>>
 <../doc/src/manual/mov/wave_frames/frame_0080.png, id=47, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/m
 ov/wave_frames/frame_0080.png> <a0,fr0>
@@ -79634,14 +81509,10 @@ mov/wave_frames/frame_0128.png> <a0,fr48>
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0129.png> <../doc/src/manual/
 mov/wave_frames/frame_0129.png> <a0,fr49> [1{/var/lib/texmf/fonts/map/pdftex/up
 dmap/pdftex.map}]
-Overfull \hbox (81.57852pt too wide) 
- []\OT1/cmr/m/n/10 (-20) : 
-
-
-
-/src/manual/mov/wave.mpeg>>]
-
-/src/manual/mov/wave.avi>>]
+Overfull \hbox (81.58096pt too wide) 
+ []\T1/lmr/m/n/10 (-20) : 
+[2] [3<<../doc/src/manual/mov/wave.mpeg>>] [4<<../doc/src/manual/mov/wave.avi>>
+]
 No file movies.ind.
 
 Package movie15 Warning: @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -79727,11 +81598,14 @@ everyshi.sty    2001/05/15 v3.00 EveryShipout Package (MS)
     calc.sty    2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
   animfp.sty    2009/07/23 fixed point addition for animate.sty
 supp-pdf.mkii
+ fontenc.sty
+   t1enc.def    2005/09/27 v1.99g Standard LaTeX file
 inputenc.sty    2008/03/30 v1.1d Input encoding file
     utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+ lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
 hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
@@ -79761,6 +81635,7 @@ hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
      url.sty    2006/04/12  ver 3.3  Verb mode for urls, etc.
  hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
+   t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
 epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
@@ -79772,10 +81647,15 @@ gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
   movies.out
 newcommands_bfmath.tex
 newcommands_replace.tex
+  ot1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omllmm.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omxlmex.fd    2009/10/30 v1.6 Font defs for Latin Modern
     umsa.fd    2013/01/14 v3.01 AMS symbols A
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
     umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+  t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
 ../doc/src/manual/mov/wave_frames/frame_0080.png
 ../doc/src/manual/mov/wave_frames/frame_0081.png
 ../doc/src/manual/mov/wave_frames/frame_0082.png
@@ -79829,13 +81709,12 @@ newcommands_replace.tex
  ***********
 
  )
-(see the transcript file for additional information)</usr/share/texlive/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmtt9.pfb>
+(see the transcript file for additional information){/usr/share/texmf/fonts/enc
+/dvips/lm/lm-ec.enc}</usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/sh
+are/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public
+/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texm
+f/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt
+9.pfb>
 Output written on movies.pdf (5 pages, ).
 Transcript written on movies.log.
 + cp movies.pdf movie_demo/movies_media9.pdf
@@ -79942,8 +81821,11 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-)) (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+)) (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+
 
 
 
@@ -79962,7 +81844,7 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
 
 Writing index file movies.idx
-(./movies.aux)
+(./movies.aux) 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 
 
@@ -79971,12 +81853,16 @@ ABD: EveryShipout initializing macros
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 
 (./movies.out) (./movies.out) (./newcommands_bfmath.tex)
-(./newcommands_replace.tex)
+(./newcommands_replace.tex) 
 
 
 
-<<VPlayer.swf>><<
-../doc/src/manual/mov/wave.mp4>><<../doc/src/manual/mov/wave.flv>>
+
+
+
+
+<<VPlayer.swf>><<../doc/src/manual/mov
+/wave.mp4>><<../doc/src/manual/mov/wave.flv>>
 <../doc/src/manual/mov/wave_frames/frame_0080.png, id=47, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/m
 ov/wave_frames/frame_0080.png> <a0,fr0>
@@ -80128,12 +82014,10 @@ mov/wave_frames/frame_0128.png> <a0,fr48>
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0129.png> <../doc/src/manual/
 mov/wave_frames/frame_0129.png> <a0,fr49> [1{/var/lib/texmf/fonts/map/pdftex/up
 dmap/pdftex.map}]
-Overfull \hbox (81.57852pt too wide) 
- []\OT1/cmr/m/n/10 (-20) : 
-
-
-
-/src/manual/mov/wave.mpeg>>] [4<<../doc/src/manual/mov/wave.avi>>]
+Overfull \hbox (81.58096pt too wide) 
+ []\T1/lmr/m/n/10 (-20) : 
+[2] [3<<../doc/src/manual/mov/wave.mpeg>>] [4<<../doc/src/manual/mov/wave.avi>>
+]
 No file movies.ind.
 [5] (./movies.aux)
 
@@ -80214,11 +82098,14 @@ everyshi.sty    2001/05/15 v3.00 EveryShipout Package (MS)
     calc.sty    2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
   animfp.sty    2009/07/23 fixed point addition for animate.sty
 supp-pdf.mkii
+ fontenc.sty
+   t1enc.def    2005/09/27 v1.99g Standard LaTeX file
 inputenc.sty    2008/03/30 v1.1d Input encoding file
     utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+ lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
 hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
@@ -80248,6 +82135,7 @@ hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
      url.sty    2006/04/12  ver 3.3  Verb mode for urls, etc.
  hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
+   t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
 epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
@@ -80259,10 +82147,15 @@ gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
   movies.out
 newcommands_bfmath.tex
 newcommands_replace.tex
+  ot1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omllmm.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omxlmex.fd    2009/10/30 v1.6 Font defs for Latin Modern
     umsa.fd    2013/01/14 v3.01 AMS symbols A
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
     umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+  t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
 ../doc/src/manual/mov/wave_frames/frame_0080.png
 ../doc/src/manual/mov/wave_frames/frame_0081.png
 ../doc/src/manual/mov/wave_frames/frame_0082.png
@@ -80316,13 +82209,12 @@ newcommands_replace.tex
  ***********
 
  )
-(see the transcript file for additional information)</usr/share/texlive/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmtt9.pfb>
+(see the transcript file for additional information){/usr/share/texmf/fonts/enc
+/dvips/lm/lm-ec.enc}</usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/sh
+are/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public
+/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texm
+f/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt
+9.pfb>
 Output written on movies.pdf (5 pages, ).
 Transcript written on movies.log.
 + '[' 0 -ne 0 ']'
@@ -80395,8 +82287,11 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-)) (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+)) (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+
 
 
 
@@ -80416,6 +82311,7 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 
 Writing index file movies.idx
 No file movies.aux.
+
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 
 
@@ -80423,7 +82319,11 @@ No file movies.aux.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 
 (./movies.out) (./movies.out) (./newcommands_bfmath.tex)
-(./newcommands_replace.tex)
+(./newcommands_replace.tex) 
+
+
+
+
 
 
 
@@ -80579,8 +82479,8 @@ mov/wave_frames/frame_0128.png> <a0,fr48>
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0129.png> <../doc/src/manual/
 mov/wave_frames/frame_0129.png> <a0,fr49> [1{/var/lib/texmf/fonts/map/pdftex/up
 dmap/pdftex.map}]
-Overfull \hbox (81.57852pt too wide) 
- []\OT1/cmr/m/n/10 (-20) : 
+Overfull \hbox (81.58096pt too wide) 
+ []\T1/lmr/m/n/10 (-20) : 
 [2]
 
 
@@ -80628,11 +82528,14 @@ fancyvrb.sty    2008/02/07
     calc.sty    2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
   animfp.sty    2009/07/23 fixed point addition for animate.sty
 supp-pdf.mkii
+ fontenc.sty
+   t1enc.def    2005/09/27 v1.99g Standard LaTeX file
 inputenc.sty    2008/03/30 v1.1d Input encoding file
     utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+ lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
 hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
@@ -80663,6 +82566,7 @@ hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
      url.sty    2006/04/12  ver 3.3  Verb mode for urls, etc.
  hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
+   t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
 epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
@@ -80674,10 +82578,15 @@ gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
   movies.out
 newcommands_bfmath.tex
 newcommands_replace.tex
+  ot1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omllmm.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omxlmex.fd    2009/10/30 v1.6 Font defs for Latin Modern
     umsa.fd    2013/01/14 v3.01 AMS symbols A
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
     umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+  t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
 ../doc/src/manual/mov/wave_frames/frame_0080.png
 ../doc/src/manual/mov/wave_frames/frame_0081.png
 ../doc/src/manual/mov/wave_frames/frame_0082.png
@@ -80737,12 +82646,11 @@ LaTeX Warning: There were undefined references.
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  )
-(see the transcript file for additional information)</usr/share/texlive/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmtt9.pfb>
+(see the transcript file for additional information){/usr/share/texmf/fonts/enc
+/dvips/lm/lm-ec.enc}</usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/sh
+are/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public
+/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/share/te
+xmf/fonts/type1/public/lm/lmtt9.pfb>
 Output written on movies.pdf (3 pages, ).
 Transcript written on movies.log.
 + '[' 0 -ne 0 ']'
@@ -80775,9 +82683,12 @@ translating doconce text in tmp_preprocess__movies.do.txt to plain
 *** made link to new HTML file movie_player8.html
     with code to display the movie 
     ../doc/src/manual/mov/wave.avi
-... movie: trying to find http://hplgit.github.io/animate/doc/pub/mov-animate/demo.mp4 ... found!
-... movie: trying to find http://hplgit.github.io/animate/doc/pub/mov-animate/demo.webm ... found!
-... movie: trying to find http://hplgit.github.io/animate/doc/pub/mov-animate/demo.ogg ... found!
+... movie: trying to find http://hplgit.github.io/animate/doc/pub/mov-animate/demo.mp4 ...
+    found!
+... movie: trying to find http://hplgit.github.io/animate/doc/pub/mov-animate/demo.webm ...
+    found!
+... movie: trying to find http://hplgit.github.io/animate/doc/pub/mov-animate/demo.ogg ...
+    found!
 *** made link to new HTML file movie_player9.html
     with code to display the movie 
     http://hplgit.github.io/animate/doc/pub/mov-animate/demo.ogg
@@ -80952,89 +82863,112 @@ translating doconce text in tmp2.do.txt to sphinx
     move linked file to _static and change URLs unless
     you really know that the links will be correct when the
     sphinx build directory is moved to its final destination
-*** error: !bsol-!esol block is not legal outside an exercise
-    (or problem/project/example) section:
-!bsol
-Here is a solution.
-!esol
-Abort! (add --no_abort on the command line to avoid this abortion)
-+ doconce replace ../lib/doconce/doconce.py _static/doconce.py tmp2.do.txt
-replacing ../lib/doconce/doconce.py by _static/doconce.py in tmp2.do.txt
-+ doconce subst -s -m '^!bsol.+?!esol' '' tmp2.do.txt
-^!bsol.+?!esol replaced by  in tmp2.do.txt
-+ doconce format sphinx tmp2
-translating doconce text in tmp2.do.txt to sphinx
-*** error: !bhint-!ehint block is not legal outside an exercise
-    (or problem/project/example) section:
-!bhint
-Here is a hint.
-!ehint
-Abort! (add --no_abort on the command line to avoid this abortion)
-+ doconce subst -s -m '^!bhint.+?!ehint' '' tmp2.do.txt
-^!bhint.+?!ehint replaced by  in tmp2.do.txt
-+ doconce format sphinx tmp2
-translating doconce text in tmp2.do.txt to sphinx
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format sphinx
 *** error: figure file "../doc/manual/fig/wave1D" does not exist!
 Abort! (add --no_abort on the command line to avoid this abortion)
 + doconce replace doc/manual doc/src/manual tmp2.do.txt
 replacing doc/manual by doc/src/manual in tmp2.do.txt
-+ doconce format html tmp2
-translating doconce text in tmp2.do.txt to html
++ doconce format sphinx tmp2
+translating doconce text in tmp2.do.txt to sphinx
+*** warning: hyperlink to URL ../lib/doconce/doconce.py is to a local file,
+    recommended to be _static/doconce.py for sphinx
+    move linked file to _static and change URLs unless
+    you really know that the links will be correct when the
+    sphinx build directory is moved to its final destination
 figure file ../doc/src/manual/fig/wave1D:
-    can use ../doc/src/manual/fig/wave1D.png for format html
-... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media99.png ... not found (http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media99.png, 404 error)
-... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media99.gif ... not found (http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media99.gif, 404 error)
-... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media99.jpg ... not found (http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media99.jpg, 404 error)
-... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media99.jpeg ... not found (http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media99.jpeg, 404 error)
+    can use ../doc/src/manual/fig/wave1D.png for format sphinx
+... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media99.png ...
+    not found (http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media99.png, 404 error)
+... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media99.gif ...
+    not found (http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media99.gif, 404 error)
+... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media99.jpg ...
+    not found (http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media99.jpg, 404 error)
+... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media99.jpeg ...
+    not found (http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media99.jpeg, 404 error)
 *** error: figure http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media99:
     could not find URL with legal extension .png, .gif, .jpg, .jpeg
 Abort! (add --no_abort on the command line to avoid this abortion)
-+ doconce format pdflatex tmp2
-translating doconce text in tmp2.do.txt to pdflatex
-figure file ../doc/src/manual/fig/wave1D:
-    can use ../doc/src/manual/fig/wave1D.pdf for format pdflatex
-... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media99.pdf ... not found (http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media99.pdf, 404 error)
-... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media99.png ... not found (http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media99.png, 404 error)
-... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media99.jpg ... not found (http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media99.jpg, 404 error)
-... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media99.jpeg ... not found (http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media99.jpeg, 404 error)
-... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media99.tif ... not found (http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media99.tif, 404 error)
-... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media99.tiff ... not found (http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media99.tiff, 404 error)
-*** error: figure http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media99:
-    could not find URL with legal extension .pdf, .png, .jpg, .jpeg, .tif, .tiff
-Abort! (add --no_abort on the command line to avoid this abortion)
++ doconce replace ../lib/doconce/doconce.py _static/doconce.py tmp2.do.txt
+replacing ../lib/doconce/doconce.py by _static/doconce.py in tmp2.do.txt
 + doconce replace two_media99 two_media tmp2.do.txt
 replacing two_media99 by two_media in tmp2.do.txt
 + doconce format html tmp2
 translating doconce text in tmp2.do.txt to html
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
-... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png ... found!
+... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png ...
+    found!
 figure file http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media:
     can use http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png for format html
 *** warning: you have citations but no bibliography (BIBFILE: ...)
-... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.mp4 ... not found (http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.mp4, 404 error)
-... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.webm ... not found (http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.webm, 404 error)
-... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.ogg ... not found (http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.ogg, 404 error)
-*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
-output in tmp2.html
-+ doconce format pdflatex tmp2
-translating doconce text in tmp2.do.txt to pdflatex
+... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.mp4 ...
+    not found (http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.mp4, 404 error)
+... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.webm ...
+    not found (http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.webm, 404 error)
+... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.ogg ...
+    not found (http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.ogg, 404 error)
+*** error: could not translate environment: !bsol
+    context:
+
+Normal text.
+
+<p>
+Just a loner subexercise begin.
+!bsol
+Here is a solution.
+!esol
+Normal text.
+
+<h3>Links
+    possible reasons:
+     * syntax error in environment name
+     * environment inside code: use | instead of !
+     * or bug in doconce
+Abort! (add --no_abort on the command line to avoid this abortion)
++ doconce replace 99x9.ogg .ogg tmp2.do.txt
+replacing 99x9.ogg by .ogg in tmp2.do.txt
++ doconce format html tmp2
+translating doconce text in tmp2.do.txt to html
 figure file ../doc/src/manual/fig/wave1D:
-    can use ../doc/src/manual/fig/wave1D.pdf for format pdflatex
-... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.pdf ... not found (http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.pdf, 404 error)
-... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png ... found!
+    can use ../doc/src/manual/fig/wave1D.png for format html
+... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png ...
+    found!
 figure file http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media:
-    can use http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png for format pdflatex
-... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png ... found!
+    can use http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png for format html
 *** warning: you have citations but no bibliography (BIBFILE: ...)
-output in tmp2.p.tex
+... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.mp4 ...
+    not found (http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.mp4, 404 error)
+... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.webm ...
+    found!
+... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.ogg ...
+    found!
+*** error: could not translate environment: !bsol
+    context:
+
+Normal text.
+
+<p>
+Just a loner subexercise begin.
+!bsol
+Here is a solution.
+!esol
+Normal text.
+
+<h3>Links
+    possible reasons:
+     * syntax error in environment name
+     * environment inside code: use | instead of !
+     * or bug in doconce
+Abort! (add --no_abort on the command line to avoid this abortion)
++ doconce subst -s -m '^!bsol.+?!esol' '' tmp2.do.txt
+^!bsol.+?!esol replaced by  in tmp2.do.txt
 + doconce format sphinx tmp2
 translating doconce text in tmp2.do.txt to sphinx
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format sphinx
-... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png ... found!
+... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png ...
+    found!
 figure file http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media:
     can use http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png for format sphinx
 *** warning: math only in sphinx figure caption
@@ -81044,36 +82978,87 @@ figure file http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media
   $a=50$
     FIGURE: [http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png
 *** warning: you have citations but no bibliography (BIBFILE: ...)
-... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.mp4 ... not found (http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.mp4, 404 error)
-... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.webm ... not found (http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.webm, 404 error)
-... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.ogg ... not found (http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.ogg, 404 error)
+... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.mp4 ...
+    not found (http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.mp4, 404 error)
+... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.webm ...
+    found!
+... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.ogg ...
+    found!
 output in tmp2.rst
-+ doconce replace 99x9.ogg .ogg tmp2.do.txt
-replacing 99x9.ogg by .ogg in tmp2.do.txt
-+ doconce format html tmp2
-translating doconce text in tmp2.do.txt to html
++ doconce subst -s -m '^!bhint.+?!ehint' '' tmp2.do.txt
+^!bhint.+?!ehint replaced by  in tmp2.do.txt
++ doconce format sphinx tmp2
+translating doconce text in tmp2.do.txt to sphinx
 figure file ../doc/src/manual/fig/wave1D:
-    can use ../doc/src/manual/fig/wave1D.png for format html
-... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png ... found!
+    can use ../doc/src/manual/fig/wave1D.png for format sphinx
+... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png ...
+    found!
 figure file http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media:
-    can use http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png for format html
+    can use http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png for format sphinx
+*** warning: math only in sphinx figure caption
+  $a=50$
+    FIGURE: [../doc/src/manual/fig/wave1D.png
+*** warning: math only in sphinx figure caption
+  $a=50$
+    FIGURE: [http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png
 *** warning: you have citations but no bibliography (BIBFILE: ...)
-... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.mp4 ... not found (http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.mp4, 404 error)
-... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.webm ... found!
-... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.ogg ... found!
-*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
-output in tmp2.html
+... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.mp4 ...
+    not found (http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.mp4, 404 error)
+... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.webm ...
+    found!
+... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.ogg ...
+    found!
+output in tmp2.rst
 + doconce format pdflatex tmp2
 translating doconce text in tmp2.do.txt to pdflatex
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.pdf for format pdflatex
-... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.pdf ... not found (http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.pdf, 404 error)
-... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png ... found!
+... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.pdf ...
+    not found (http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.pdf, 404 error)
+... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png ...
+    found!
 figure file http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media:
     can use http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png for format pdflatex
-... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png ... found!
+... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png ...
+    found!
 *** warning: you have citations but no bibliography (BIBFILE: ...)
 output in tmp2.p.tex
++ doconce format pdflatex tmp2
+translating doconce text in tmp2.do.txt to pdflatex
+figure file ../doc/src/manual/fig/wave1D:
+    can use ../doc/src/manual/fig/wave1D.pdf for format pdflatex
+... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.pdf ...
+    not found (http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.pdf, 404 error)
+... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png ...
+    found!
+figure file http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media:
+    can use http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png for format pdflatex
+... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png ...
+    found!
+*** warning: you have citations but no bibliography (BIBFILE: ...)
+output in tmp2.p.tex
++ doconce format sphinx tmp2
+translating doconce text in tmp2.do.txt to sphinx
+figure file ../doc/src/manual/fig/wave1D:
+    can use ../doc/src/manual/fig/wave1D.png for format sphinx
+... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png ...
+    found!
+figure file http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media:
+    can use http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png for format sphinx
+*** warning: math only in sphinx figure caption
+  $a=50$
+    FIGURE: [../doc/src/manual/fig/wave1D.png
+*** warning: math only in sphinx figure caption
+  $a=50$
+    FIGURE: [http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png
+*** warning: you have citations but no bibliography (BIBFILE: ...)
+... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.mp4 ...
+    not found (http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.mp4, 404 error)
+... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.webm ...
+    found!
+... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.ogg ...
+    found!
+output in tmp2.rst
 + echo
 
 + echo 'When we reach this point in the script,'
@@ -81085,22 +83070,29 @@ it is clearly a successful run of all tests!
 + sh ./clean.sh
 Removing in /home/hpl/vc/doconce/doc/src/quickref:
 + doconce
++ system doconce format html quickref --no_pygments_html --no_preprocess
 + doconce format html quickref --no_pygments_html --no_preprocess
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to html
 copy complete file doconce_program.sh  (format: shpro)
 output in quickref.html
++ '[' 0 -ne 0 ']'
++ system doconce format latex quickref --no_preprocess
 + doconce format latex quickref --no_preprocess
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to latex
 copy complete file doconce_program.sh  (format: shpro)
 output in quickref.p.tex
++ '[' 0 -ne 0 ']'
++ system doconce ptex2tex quickref -DMINTED -DHELVETICA envir=Verbatim
 + doconce ptex2tex quickref -DMINTED -DHELVETICA envir=Verbatim
 \bshpro (!bc shpro) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=0mm]
 \bcod (!bc cod) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=0mm]
 \bsys (!bc sys) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=0mm]
 \bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=0mm]
 output in quickref.tex
++ '[' 0 -ne 0 ']'
++ system latex -shell-escape quickref.tex
 + latex -shell-escape quickref.tex
 This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
  \write18 enabled.
@@ -81155,8 +83147,11 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (./quickref.w18))/usr/local/bin/pygmentize
 ) (./quickref.pyg)
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+
 
 
 
@@ -81276,7 +83271,10 @@ No file quickref.aux.
 
 Package hyperref Warning: Rerun to get /PageLabels entry.
 
-ABD: EveryShipout initializing macros
+ABD: EveryShipout initializing macros 
+ 
+
+
 
 
 
@@ -81285,25 +83283,26 @@ ABD: EveryShipout initializing macros
 
 Package hyperref Warning: old toc file detected, not used; run LaTeX again.
 
- [1] [2]
-Overfull \hbox (19.14615pt too wide) 
-\OT1/phv/m/n/10 Note that ab-stracts are rec-og-nized by start-ing with [] or [
-]
-[3] [4]
-Overfull \hbox (29.09346pt too wide) 
-[]\OT1/phv/m/n/10 Large por-tions of text can be left out us-ing Pre-pro-cess. 
-Just place []
-[5]
-Overfull \hbox (4.40137pt too wide) 
-\OT1/phv/m/n/10 fi-ca-tion copies from the first line match-ing the \OT1/phv/m/
-sl/10 reg-u-lar ex-pres-sion []
 
-Overfull \hbox (25.94281pt too wide) 
-\OT1/phv/m/n/10 up to, but not in-clud-ing the line match-ing the \OT1/phv/m/sl
-/10 reg-u-lar ex-pres-sion []\OT1/phv/m/n/10 .
+ [1] [2]
+Overfull \hbox (18.62192pt too wide) 
+\T1/phv/m/n/10 Note that ab-stracts are rec-og-nized by start-ing with [] or []
+
+[3] [4]
+Overfull \hbox (29.09389pt too wide) 
+[]\T1/phv/m/n/10 Large por-tions of text can be left out us-ing Pre-pro-cess. J
+ust place []
+[5]
+Overfull \hbox (4.40176pt too wide) 
+\T1/phv/m/n/10 fi-ca-tion copies from the first line match-ing the \T1/phv/m/sl
+/10 reg-u-lar ex-pres-sion []
+
+Overfull \hbox (25.94336pt too wide) 
+\T1/phv/m/n/10 up to, but not in-clud-ing the line match-ing the \T1/phv/m/sl/1
+0 reg-u-lar ex-pres-sion []\T1/phv/m/n/10 .
 [6] [7]
-Overfull \hbox (49.67618pt too wide) 
-\OT1/phv/m/n/10 pre-pro-ces-sor if-tests on the for-mat (typ-i-cally [])
+Overfull \hbox (49.67722pt too wide) 
+\T1/phv/m/n/10 pre-pro-ces-sor if-tests on the for-mat (typ-i-cally [])
 
 
 ...rest of part of LaTeX line number...
@@ -81314,30 +83313,28 @@ Overfull \hbox (49.67618pt too wide)
 .
 
 [9] [10]
-Overfull \hbox (59.2456pt too wide) 
-\OT1/phv/m/n/10 sert a back-slash). Bib-li-og-ra-phy ci-ta-tions of-ten have []
- on the form [],
+Overfull \hbox (59.24634pt too wide) 
+\T1/phv/m/n/10 sert a back-slash). Bib-li-og-ra-phy ci-ta-tions of-ten have [] 
+on the form [],
 
-Overfull \hbox (20.06894pt too wide) 
-[]\OT1/phv/m/n/10 The bib-li-og-ra-phy is spec-i-fied by a line [], where []
+Overfull \hbox (20.06982pt too wide) 
+[]\T1/phv/m/n/10 The bib-li-og-ra-phy is spec-i-fied by a line [], where []
 [11]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
-[12]
+[12] [13] [14] [15]
+Overfull \hbox (7.769pt too wide) 
+\T1/phv/m/n/10 Doconce en-vi-ron-ments start with [] and end with [], where
 
-[14] [15]
-Overfull \hbox (7.76833pt too wide) 
-\OT1/phv/m/n/10 Doconce en-vi-ron-ments start with [] and end with [], where
-
-Overfull \hbox (0.45856pt too wide) 
-\OT1/phv/m/n/10 Doconce doc-u-ments may uti-lize a pre-pro-ces-sor, ei-ther [] 
-and/or [].
+Overfull \hbox (0.45898pt too wide) 
+\T1/phv/m/n/10 Doconce doc-u-ments may uti-lize a pre-pro-ces-sor, ei-ther [] a
+nd/or [].
 [16]
-Overfull \hbox (86.48466pt too wide) 
-[]\OT1/phv/m/n/10 Excellent "Sphinx Tu-to-rial" by C. Reller: "http://people.ee
-.ethz.ch/ creller/web/tricks/reST.html" 
+Overfull \hbox (88.36455pt too wide) 
+[]\T1/phv/m/n/10 Excellent "Sphinx Tu-to-rial" by C. Reller: "http://people.ee.
+ethz.ch/ creller/web/tricks/reST.html" 
 No file quickref.ind.
 [17] (./quickref.aux)
 
@@ -81386,12 +83383,15 @@ catchfile.sty    2011/03/01 v1.6 Catch the contents of a file (HO)
 etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
 quickref.w18
 quickref.pyg
+ fontenc.sty
+   t1enc.def    2005/09/27 v1.99g Standard LaTeX file
 inputenc.sty    2008/03/30 v1.1d Input encoding file
     utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   helvet.sty    2005/04/12 PSNFSS-v9.2a (WaS) 
+ lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
 hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
@@ -81470,15 +83470,20 @@ pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
   pgffor.code.tex
     tikz.code.tex
 md-frame-1.mdf    2013/07/01\ 1.9b: md-frame-1
-  ot1phv.fd    2001/06/04 scalable font definitions for OT1/phv.
+   t1phv.fd    2001/06/04 scalable font definitions for T1/phv.
  nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
+  ot1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
   mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
 RS)
+  omllmm.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omxlmex.fd    2009/10/30 v1.6 Font defs for Latin Modern
     umsa.fd    2013/01/14 v3.01 AMS symbols A
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
     umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+  t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
   omsphv.fd    
  ***********
 
@@ -81497,6 +83502,7 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 (see the transcript file for additional information)
 Output written on quickref.dvi (17 pages, ).
 Transcript written on quickref.log.
++ '[' 0 -ne 0 ']'
 + latex -shell-escape quickref.tex
 This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
  \write18 enabled.
@@ -81551,8 +83557,11 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (./quickref.w18))/usr/local/bin/pygmentize
 ) (./quickref.pyg)
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+
 
 
 
@@ -81674,50 +83683,52 @@ Writing index file quickref.idx
 
 
 
-[1]  [2]
 
-Overfull \hbox (19.14615pt too wide) 
-\OT1/phv/m/n/10 Note that ab-stracts are rec-og-nized by start-ing with [] or [
-]
+
+
+ (./quickref.toc
+ [1]
+ [2] [3]
+Overfull \hbox (18.62192pt too wide) 
+\T1/phv/m/n/10 Note that ab-stracts are rec-og-nized by start-ing with [] or []
+
 [4] [5]
-Overfull \hbox (29.09346pt too wide) 
-[]\OT1/phv/m/n/10 Large por-tions of text can be left out us-ing Pre-pro-cess. 
-Just place []
+Overfull \hbox (29.09389pt too wide) 
+[]\T1/phv/m/n/10 Large por-tions of text can be left out us-ing Pre-pro-cess. J
+ust place []
 [6]
-Overfull \hbox (4.40137pt too wide) 
-\OT1/phv/m/n/10 fi-ca-tion copies from the first line match-ing the \OT1/phv/m/
-sl/10 reg-u-lar ex-pres-sion []
+Overfull \hbox (4.40176pt too wide) 
+\T1/phv/m/n/10 fi-ca-tion copies from the first line match-ing the \T1/phv/m/sl
+/10 reg-u-lar ex-pres-sion []
 
-Overfull \hbox (25.94281pt too wide) 
-\OT1/phv/m/n/10 up to, but not in-clud-ing the line match-ing the \OT1/phv/m/sl
-/10 reg-u-lar ex-pres-sion []\OT1/phv/m/n/10 .
+Overfull \hbox (25.94336pt too wide) 
+\T1/phv/m/n/10 up to, but not in-clud-ing the line match-ing the \T1/phv/m/sl/1
+0 reg-u-lar ex-pres-sion []\T1/phv/m/n/10 .
 [7]
-Overfull \hbox (49.67618pt too wide) 
-\OT1/phv/m/n/10 pre-pro-ces-sor if-tests on the for-mat (typ-i-cally [])
+Overfull \hbox (49.67722pt too wide) 
+\T1/phv/m/n/10 pre-pro-ces-sor if-tests on the for-mat (typ-i-cally [])
 [8] [9] [10]
-Overfull \hbox (59.2456pt too wide) 
-\OT1/phv/m/n/10 sert a back-slash). Bib-li-og-ra-phy ci-ta-tions of-ten have []
- on the form [],
+Overfull \hbox (59.24634pt too wide) 
+\T1/phv/m/n/10 sert a back-slash). Bib-li-og-ra-phy ci-ta-tions of-ten have [] 
+on the form [],
 [11]
-Overfull \hbox (20.06894pt too wide) 
-[]\OT1/phv/m/n/10 The bib-li-og-ra-phy is spec-i-fied by a line [], where []
+Overfull \hbox (20.06982pt too wide) 
+[]\T1/phv/m/n/10 The bib-li-og-ra-phy is spec-i-fied by a line [], where []
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
-[12] [13]
+[12] [13] [14] [15] [16]
+Overfull \hbox (7.769pt too wide) 
+\T1/phv/m/n/10 Doconce en-vi-ron-ments start with [] and end with [], where
 
-[15] [16]
-Overfull \hbox (7.76833pt too wide) 
-\OT1/phv/m/n/10 Doconce en-vi-ron-ments start with [] and end with [], where
-
-Overfull \hbox (0.45856pt too wide) 
-\OT1/phv/m/n/10 Doconce doc-u-ments may uti-lize a pre-pro-ces-sor, ei-ther [] 
-and/or [].
+Overfull \hbox (0.45898pt too wide) 
+\T1/phv/m/n/10 Doconce doc-u-ments may uti-lize a pre-pro-ces-sor, ei-ther [] a
+nd/or [].
 [17]
-Overfull \hbox (86.48466pt too wide) 
-[]\OT1/phv/m/n/10 Excellent "Sphinx Tu-to-rial" by C. Reller: "http://people.ee
-.ethz.ch/ creller/web/tricks/reST.html" 
+Overfull \hbox (88.36455pt too wide) 
+[]\T1/phv/m/n/10 Excellent "Sphinx Tu-to-rial" by C. Reller: "http://people.ee.
+ethz.ch/ creller/web/tricks/reST.html" 
 No file quickref.ind.
 [18] (./quickref.aux)
 
@@ -81766,12 +83777,15 @@ catchfile.sty    2011/03/01 v1.6 Catch the contents of a file (HO)
 etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
 quickref.w18
 quickref.pyg
+ fontenc.sty
+   t1enc.def    2005/09/27 v1.99g Standard LaTeX file
 inputenc.sty    2008/03/30 v1.1d Input encoding file
     utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   helvet.sty    2005/04/12 PSNFSS-v9.2a (WaS) 
+ lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
 hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
@@ -81850,17 +83864,22 @@ pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
   pgffor.code.tex
     tikz.code.tex
 md-frame-1.mdf    2013/07/01\ 1.9b: md-frame-1
-  ot1phv.fd    2001/06/04 scalable font definitions for OT1/phv.
+   t1phv.fd    2001/06/04 scalable font definitions for T1/phv.
  nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
 quickref.out
 quickref.out
+  ot1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
   mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
 RS)
+  omllmm.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omxlmex.fd    2009/10/30 v1.6 Font defs for Latin Modern
     umsa.fd    2013/01/14 v3.01 AMS symbols A
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
     umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+  t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
   omsphv.fd    
  ***********
 
@@ -81872,12 +83891,15 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 Output written on quickref.dvi (18 pages, ).
 Transcript written on quickref.log.
 + dvipdf quickref.dvi
++ system doconce format sphinx quickref --no_preprocess
 + doconce format sphinx quickref --no_preprocess
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to sphinx
 copy complete file doconce_program.sh  (format: shpro)
 output in quickref.rst
++ '[' 0 -ne 0 ']'
 + rm -rf sphinx-rootdir
++ system doconce sphinx_dir author=HPL version=0.7 quickref
 + doconce sphinx_dir author=HPL version=0.7 quickref
 Making sphinx-rootdir
 Welcome to the Sphinx 1.2pre quickstart utility.
@@ -81946,8 +83968,10 @@ or just run it by
 
   python automake_sphinx.py
 
++ '[' 0 -ne 0 ']'
 + doconce replace 'doconce format sphinx %s' 'doconce format sphinx %s --no-preprocess' automake_sphinx.py
 replacing doconce format sphinx %s by doconce format sphinx %s --no-preprocess in automake_sphinx.py
++ system python automake_sphinx.py
 + python automake_sphinx.py
 rm -rf _build/*
 sphinx-build -b html -d _build/doctrees   . _build/html
@@ -82020,16 +84044,20 @@ Fix generated files:
 
 google-chrome sphinx-rootdir/_build/html/index.html
 
++ '[' 0 -ne 0 ']'
 + cp quickref.rst quickref.sphinx.rst
++ system doconce format rst quickref --no_preprocess
 + doconce format rst quickref --no_preprocess
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to rst
 copy complete file doconce_program.sh  (format: shpro)
 output in quickref.rst
++ '[' 0 -ne 0 ']'
 + rst2xml.py quickref.rst
 + rst2odt.py quickref.rst
 + rst2html.py quickref.rst
 + rst2latex.py quickref.rst
++ system latex quickref.rst.tex
 + latex quickref.rst.tex
 This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
  restricted \write18 enabled.
@@ -82281,15 +84309,15 @@ Overfull \hbox (107.00006pt too wide)
 []\T1/pcr/m/n/10 "A Document for Testing Doconce": "testdoc.html" cite{testdoc:
 12}],  
 
-Overfull \hbox (3041.00006pt too wide) 
+Overfull \hbox (3113.00006pt too wide) 
 []\T1/pcr/m/n/10 commands: format help sphinx_dir subst replace replace_from_fi
-le clean spellcheck ptex2tex expand_commands combine_images guess_encoding chan
-ge_encoding gwiki_figsubst md2html remove_inline_comments grab remove remove_ex
-ercise_answers split_rst split_html slides_html slides_beamer latin2html latex_
-header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_loca
-lURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format lin
-kchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibt
-ex4publish csv2table  
+le clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine
+_images change_encoding gwiki_figsubst md2html remove_inline_comments grab remo
+ve remove_exercise_answers split_rst split_html slides_html slides_beamer latin
+2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sp
+hinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2ne
+w_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitd
+iff fix_bibtex4publish csv2table  
 
 Overfull \hbox (299.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwik
@@ -82319,9 +84347,12 @@ Overfull \hbox (59.00006pt too wide)
 Overfull \hbox (47.00006pt too wide) 
 []\T1/pcr/m/n/10 (exact text substitution, but a set of from-to relations)  
 
-Overfull \hbox (95.00006pt too wide) 
-[]\T1/pcr/m/n/10 # gwiki format requires substitution of figure file names by U
-RLs  
+Overfull \hbox (71.00006pt too wide) 
+[]\T1/pcr/m/n/10 # replace all mako function calls by the results of the calls 
+ 
+
+Overfull \hbox (59.00006pt too wide) 
+[]\T1/pcr/m/n/10 doconce expand_mako mako_code_file funcname file1 file2 ...  
 
 Overfull \hbox (47.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce sphinx_dir author='John Doe' title='Long title' \  
@@ -82359,13 +84390,13 @@ ile
 Overfull \hbox (11.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce html_colorbullets file1.html file2.html ...  
 
-Overfull \hbox (71.00006pt too wide) 
+Overfull \hbox (125.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce grab   --from[-] from-text [--to[-] to-text] somefile 
- 
+> result  
 
-Overfull \hbox (71.00006pt too wide) 
+Overfull \hbox (125.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce remove --from[-] from-text [--to[-] to-text] somefile 
- 
+> result  
 
 Overfull \hbox (53.00006pt too wide) 
 []\T1/pcr/m/n/10 # transform ptex2tex files (.p.tex) to ordinary latex file  
@@ -82497,6 +84528,7 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 (see the transcript file for additional information)
 Output written on quickref.rst.dvi (18 pages, ).
 Transcript written on quickref.rst.log.
++ '[' 0 -ne 0 ']'
 + latex quickref.rst.tex
 This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
  restricted \write18 enabled.
@@ -82738,15 +84770,15 @@ Overfull \hbox (107.00006pt too wide)
 []\T1/pcr/m/n/10 "A Document for Testing Doconce": "testdoc.html" cite{testdoc:
 12}],  
 
-Overfull \hbox (3041.00006pt too wide) 
+Overfull \hbox (3113.00006pt too wide) 
 []\T1/pcr/m/n/10 commands: format help sphinx_dir subst replace replace_from_fi
-le clean spellcheck ptex2tex expand_commands combine_images guess_encoding chan
-ge_encoding gwiki_figsubst md2html remove_inline_comments grab remove remove_ex
-ercise_answers split_rst split_html slides_html slides_beamer latin2html latex_
-header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_loca
-lURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format lin
-kchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibt
-ex4publish csv2table  
+le clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine
+_images change_encoding gwiki_figsubst md2html remove_inline_comments grab remo
+ve remove_exercise_answers split_rst split_html slides_html slides_beamer latin
+2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sp
+hinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2ne
+w_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitd
+iff fix_bibtex4publish csv2table  
 
 Overfull \hbox (299.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwik
@@ -82776,9 +84808,12 @@ Overfull \hbox (59.00006pt too wide)
 Overfull \hbox (47.00006pt too wide) 
 []\T1/pcr/m/n/10 (exact text substitution, but a set of from-to relations)  
 
-Overfull \hbox (95.00006pt too wide) 
-[]\T1/pcr/m/n/10 # gwiki format requires substitution of figure file names by U
-RLs  
+Overfull \hbox (71.00006pt too wide) 
+[]\T1/pcr/m/n/10 # replace all mako function calls by the results of the calls 
+ 
+
+Overfull \hbox (59.00006pt too wide) 
+[]\T1/pcr/m/n/10 doconce expand_mako mako_code_file funcname file1 file2 ...  
 
 Overfull \hbox (47.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce sphinx_dir author='John Doe' title='Long title' \  
@@ -82816,13 +84851,13 @@ ile
 Overfull \hbox (11.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce html_colorbullets file1.html file2.html ...  
 
-Overfull \hbox (71.00006pt too wide) 
+Overfull \hbox (125.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce grab   --from[-] from-text [--to[-] to-text] somefile 
- 
+> result  
 
-Overfull \hbox (71.00006pt too wide) 
+Overfull \hbox (125.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce remove --from[-] from-text [--to[-] to-text] somefile 
- 
+> result  
 
 Overfull \hbox (53.00006pt too wide) 
 []\T1/pcr/m/n/10 # transform ptex2tex files (.p.tex) to ordinary latex file  
@@ -82947,6 +84982,7 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 Output written on quickref.rst.dvi (19 pages, ).
 Transcript written on quickref.rst.log.
 + dvipdf quickref.rst.dvi
++ system doconce format plain quickref --no_preprocess
 + doconce format plain quickref --no_preprocess
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to plain
@@ -82955,6 +84991,8 @@ copy complete file doconce_program.sh  (format: shpro)
     with code to display the movie 
     http://vimeo.com/55562330
 output in quickref.txt
++ '[' 0 -ne 0 ']'
++ system doconce format gwiki quickref --no_preprocess
 + doconce format gwiki quickref --no_preprocess
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to gwiki
@@ -82963,6 +85001,8 @@ copy complete file doconce_program.sh  (format: shpro)
     with code to display the movie 
     http://vimeo.com/55562330
 output in quickref.gwiki
++ '[' 0 -ne 0 ']'
++ system doconce format mwiki quickref --no_preprocess
 + doconce format mwiki quickref --no_preprocess
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to mwiki
@@ -82971,6 +85011,8 @@ copy complete file doconce_program.sh  (format: shpro)
     with code to display the movie 
     http://vimeo.com/55562330
 output in quickref.mwiki
++ '[' 0 -ne 0 ']'
++ system doconce format cwiki quickref --no_preprocess
 + doconce format cwiki quickref --no_preprocess
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to cwiki
@@ -82979,6 +85021,8 @@ copy complete file doconce_program.sh  (format: shpro)
     with code to display the movie 
     http://vimeo.com/55562330
 output in quickref.cwiki
++ '[' 0 -ne 0 ']'
++ system doconce format st quickref --no_preprocess
 + doconce format st quickref --no_preprocess
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to st
@@ -82987,6 +85031,8 @@ copy complete file doconce_program.sh  (format: shpro)
     with code to display the movie 
     http://vimeo.com/55562330
 output in quickref.st
++ '[' 0 -ne 0 ']'
++ system doconce format epytext quickref --no_preprocess
 + doconce format epytext quickref --no_preprocess
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to epytext
@@ -82995,11 +85041,14 @@ copy complete file doconce_program.sh  (format: shpro)
     with code to display the movie 
     http://vimeo.com/55562330
 output in quickref.epytext
++ '[' 0 -ne 0 ']'
++ system doconce format pandoc quickref --no_preprocess
 + doconce format pandoc quickref --no_preprocess
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to pandoc
 copy complete file doconce_program.sh  (format: shpro)
 output in quickref.md
++ '[' 0 -ne 0 ']'
 + rm -rf demo
 + mkdir demo
 + cp -r quickref.do.txt quickref.html quickref.p.tex quickref.tex quickref.pdf quickref.rst quickref.xml quickref.rst.html quickref.rst.tex quickref.rst.pdf quickref.gwiki quickref.mwiki quickref.cwiki quickref.txt quickref.epytext quickref.st quickref.md sphinx-rootdir/_build/html demo

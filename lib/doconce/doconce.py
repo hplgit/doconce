@@ -539,8 +539,26 @@ def make_one_line_paragraphs(filestr, format):
     debugpr('\n\n\n**** ONELINE4:\n\n%s\n\n' % filestr)
     return filestr
 
+def bm2boldsymbol(filestr, format):
+    if format in ("html", "sphinx", "pandoc", "ipynb"):
+        if r'\bm{' in filestr:
+            print r'*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)'
+            filestr = filestr.replace(r'\bm{', r'\boldsymbol{')
+            # See http://www.wikidot.com/doc:math
+    return filestr
+
 def insert_code_from_file(filestr, format):
-    CREATE_DUMMY_FILE = False # create dummy file if specified file not found?
+    if not '@@@CODE ' in filestr:
+        return filestr
+
+    # Create dummy file if specified file not found?
+    CREATE_DUMMY_FILE = False
+
+    # Filename prefix
+    path_prefix = option('code_prefix=', '')
+    if '~' in path_prefix:
+        path_prefix = os.path.expanduser(path_prefix)
+
     lines = filestr.splitlines()
     inside_verbatim = False
     for i in range(len(lines)):
@@ -555,7 +573,7 @@ def insert_code_from_file(filestr, format):
         if inside_verbatim:
             continue
 
-        if line.startswith('@@@CODE'):
+        if line.startswith('@@@CODE '):
             debugpr('\nFound verbatim copy (line %d):\n%s\n' % (i+1, line))
             words = line.split()
             try:
@@ -563,6 +581,10 @@ def insert_code_from_file(filestr, format):
             except IndexError:
                 raise SyntaxError, \
                       'Syntax error: missing filename in line\n  %s' % line
+            orig_filename = filename # keep a copy in case we have a prefix
+            if path_prefix:
+                filename = os.path.join(path_prefix, filename)
+
             try:
                 codefile = open(filename, 'r')
             except IOError, e:
@@ -724,6 +746,65 @@ def insert_code_from_file(filestr, format):
     return filestr
 
 
+def insert_os_commands(filestr, format):
+    if not '@@@OSCMD ' in filestr:
+        return filestr
+
+    # Filename prefix
+    path_prefix = option('code_prefix=', '')
+    if '~' in path_prefix:
+        path_prefix = os.path.expanduser(path_prefix)
+    os_prompt = option('os_prompt=', 'Terminal>')
+
+    import subprocess
+    def system(cmd):
+        """Run system command cmd."""
+        print '*** running OS command', cmd
+        try:
+            output = subprocess.check_output(cmd, shell=True,
+                                             stderr=subprocess.STDOUT)
+        except subprocess.CalledProcessError as e:
+            print '*** error: failure of @@@OSCMD %s' % cmd
+            print e.output
+            print 'Return code:', e.returncode
+            _abort()
+        print '-------- terminal output ----------'
+        print output.rstrip()
+        print '-----------------------------------'
+        return output
+
+    lines = filestr.splitlines()
+    inside_verbatim = False
+    for i in range(len(lines)):
+        line = lines[i]
+        line = line.lstrip()
+
+        # detect if we are inside verbatim blocks:
+        if line.startswith('!bc'):
+            inside_verbatim = True
+        if line.startswith('!ec'):
+            inside_verbatim = False
+        if inside_verbatim:
+            continue
+
+        if line.startswith('@@@OSCMD '):
+            cmd = line[9:].strip()
+            output = system(cmd)
+            text = '!bc sys\n'
+            if os_prompt in ('None', 'none', 'empty'):
+                text += cmd + '\n'
+            elif os_prompt == 'nocmd':
+                pass  # drop showing cmd
+            else:
+                text += os_prompt + ' ' + cmd + '\n'
+            text += output
+            if text[-1] != '\n':
+                text += '\n'
+            text += '!ec\n'
+            lines[i] = text
+    filestr = '\n'.join(lines)
+    return filestr
+
 def exercises(filestr, format, code_blocks, tex_blocks):
     # Exercise:
     # ===== Exercise: title ===== (starts with at least 3 =, max 5)
@@ -741,9 +822,11 @@ def exercises(filestr, format, code_blocks, tex_blocks):
 
     # Regex: no need for re.MULTILINE since we treat one line at a time
     if option('examples_as_exercises'):
-        exer_heading_pattern = re.compile(r'^\s*(=====)\s*\{?(Exercise|Problem|Project|Example)\}?:\s*(?P<title>[^ =-].+?)\s*=====')
+        exer_heading_pattern = r'^\s*(=====)\s*\{?(Exercise|Problem|Project|Example)\}?:\s*(?P<title>[^ =-].+?)\s*====='
     else:
-        exer_heading_pattern = re.compile(r'^\s*(=====)\s*\{?(Exercise|Problem|Project)\}?:\s*(?P<title>[^ =-].+?)\s*=====')
+        exer_heading_pattern = r'^\s*(=====)\s*\{?(Exercise|Problem|Project)\}?:\s*(?P<title>[^ =-].+?)\s*====='
+    if not re.search(exer_heading_pattern, filestr, flags=re.MULTILINE):
+        return filestr
 
     label_pattern = re.compile(r'^\s*label\{(.+?)\}')
     # We accept file and solution to be comment lines
@@ -772,7 +855,7 @@ def exercises(filestr, format, code_blocks, tex_blocks):
         #print 'LINE %d:' % i, line
         #import pprint; pprint.pprint(exer)
 
-        m_heading = exer_heading_pattern.search(line)
+        m_heading = re.search(exer_heading_pattern, line)
         if m_heading:
             inside_exer = True
 
@@ -1123,6 +1206,21 @@ def parse_keyword(keyword, format):
         return keyword
 
 
+def space_in_tables(filestr):
+    """
+    Add spaces around | in tables such that substitutions $...$ and
+    `...` get right.
+    """
+    pattern = r'^\s*\|.+\| *$'
+    table_lines = re.findall(pattern, filestr, re.MULTILINE)
+    horizontal_rule = r'^\s*\|[-lrc]+\|\s*$'
+    for line in table_lines:
+        if not re.search(horizontal_rule, line, flags=re.MULTILINE) \
+           and re.search(r'[^ ]|[^ ]', line) and line.count('|') > 2:
+            line_wspaces = ' | '.join(line.split('|'))
+            filestr = filestr.replace(line, line_wspaces)
+    return filestr
+
 def typeset_tables(filestr, format):
     """
     Translate tables with pipes and dashes to a list of
@@ -1198,22 +1296,14 @@ def typeset_tables(filestr, format):
                     print line
                     _abort()
 
-            columns = line.strip().split('|')  # does not work with math2 syntax
-            # Possible fix so that | $\bar T$|$T$ | $...$ | ... is possible:
-            # .split(' | '), but need to make sure the syntax and no of columns
-            # are correct
-
+            # Extract columns, but drop first and last since these
+            # are always empty after .split('|')
+            columns = line.strip().split('|')[1:-1]  # does not work with math2 syntax
             # remove empty columns and extra white space:
             #columns = [c.strip() for c in columns if c]
-            columns = [c.strip() for c in columns if c.strip()]
-            # substitute math (may expand columns significantly)
-            for tag in ['math', 'verbatim']:  #, 'math2']:
-                replacement = INLINE_TAGS_SUBST[format][tag]
-                if replacement is not None:
-                    for i in range(len(columns)):
-                        columns[i] = re.sub(INLINE_TAGS[tag],
-                                            replacement,
-                                            columns[i])
+            #columns = [c.strip() for c in columns if c.strip()]
+            # Remove extra white space in columns
+            columns = [c.strip() for c in columns]
             table['rows'].append(columns)
         elif lin.startswith('#') and inside_table:
             continue  # just skip commented table lines
@@ -1233,11 +1323,12 @@ def typeset_tables(filestr, format):
                 except IndexError:
                     ok = False
                 if not ok:
-                    print '*** error: syntax error in table:'
+                    print '*** error: syntax error in table!'
+                    print '    missing three horizontal rules and heading:'
                     for row in table['rows']:
                         if row != ['horizontal rule']:
                             print '| ' + ' | '.join(row) + ' |'
-                            print '(Maybe not a table, just an opening pip at the beginning of the line?)'
+                            print '(or maybe not a table, just an opening pipe symbol at the beginning of the line?)'
                     _abort()
 
                 result.write(TABLE[format](table))   # typeset table
@@ -1546,23 +1637,27 @@ def handle_figures(filestr, format):
     pattern = INLINE_TAGS['figure']
     c = re.compile(pattern, re.MULTILINE)
 
-    # First check if the figure files are of right type, then
+    # Plan: first check if the figure files are of right type, then
     # call format-specific functions for how to format the figures.
 
-    files = [filename.strip()
-             for filename, options, caption in c.findall(filestr)]
     if type(FIGURE_EXT[format]) is str:
         extensions = [FIGURE_EXT[format]]  # wrap in list
     else:
         extensions = FIGURE_EXT[format]
-    import sets; files = sets.Set(files)   # remove multiple occurences
 
+    figfiles = [filename.strip()
+             for filename, options, caption in c.findall(filestr)]
+    import sets; figfiles = sets.Set(figfiles)   # remove multiple occurences
+
+    # Prefix figure paths if user has requested it
     figure_prefix = option('figure_prefix=')
     if figure_prefix is not None:
-        # substitute all figfile names in files with figure_prefix + figfile
-        for figfile in files:
+        # substitute all figfile names in figfiles with figure_prefix + figfile
+        if '~' in figure_prefix:
+            figure_prefix = os.path.expanduser(figure_prefix)
+        for figfile in figfiles:
             if not figfile.startswith('http'):
-                newname = figure_prefix + figfile
+                newname = os.path.join(figure_prefix, figfile)
                 filestr = re.sub(r'%s([,\]])' % figfile,
                                  '%s\g<1>' % newname, filestr)
     # Prefix movies also
@@ -1572,14 +1667,20 @@ def handle_figures(filestr, format):
                    re.findall(movie_pattern, filestr, flags=re.MULTILINE)]
     movie_prefix = option('movie_prefix=')
     if movie_prefix is not None:
+        if '~' in movie_prefix:
+            movie_prefix = os.path.expanduser(movie_prefix)
         for movfile in movie_files:
             if not movfile.startswith('http'):
-                newname = movie_prefix + movfile
+                newname = os.path.join(movie_prefix, movfile)
                 filestr = re.sub(r'%s([,\]])' % movfile,
                                  '%s\g<1>' % newname, filestr)
 
+    # Find new filenames
+    figfiles = [filename.strip()
+             for filename, options, caption in c.findall(filestr)]
+    import sets; figfiles = sets.Set(figfiles)   # remove multiple occurences
 
-    for figfile in files:
+    for figfile in figfiles:
         if figfile.startswith('http'):
             # latex, pdflatex must download the file,
             # html, sphinx and web-based formats can use the URL directly
@@ -1636,7 +1737,7 @@ def handle_figures(filestr, format):
                     candidate_files = glob.glob(figfile + '.*')
                     for newname in candidate_files:
                         if os.path.isfile(newname):
-                            print 'Found', newname
+                            print 'found', newname
                             #dangerous: filestr = filestr.replace(figfile, newname)
                             filestr = re.sub(r'%s([,\]])' % figfile,
                                              '%s\g<1>' % newname, filestr)
@@ -1752,10 +1853,10 @@ def handle_cross_referencing(filestr, format):
     # 3. Handle references that can be internal or external
     #    ref[internal][cite][external-HTML]
     internal_labels = re.findall(r'label\{(.+?)\}', filestr)
-    ref_pattern = r'ref\[([^\]]*?)\]\[([^\]]*?)\]\[([^\]]*?)\]'
+    ref_pattern = r'ref(ch)?\[([^\]]*?)\]\[([^\]]*?)\]\[([^\]]*?)\]'
     general_refs = re.findall(ref_pattern, filestr)
-    for internal, cite, external in general_refs:
-        ref_text = 'ref[%s][%s][%s]' % (internal, cite, external)
+    for chapref, internal, cite, external in general_refs:
+        ref_text = 'ref%s[%s][%s][%s]' % (chapref, internal, cite, external)
         if not internal and not external:
             print ref_text, 'has empty fields'
             _abort()
@@ -1766,9 +1867,8 @@ def handle_cross_referencing(filestr, format):
             # All refs to labels in this doc
             filestr = filestr.replace(ref_text, internal)
         elif format in ('latex', 'pdflatex'):
-            replacement = internal
             if cite:
-                replacement += ' ' + cite
+                replacement = cite if chapref else internal + cite
             filestr = filestr.replace(ref_text, replacement)
         else:
             filestr = filestr.replace(ref_text, external)
@@ -1781,6 +1881,19 @@ def handle_cross_referencing(filestr, format):
 
 def handle_index_and_bib(filestr, format, has_title):
     """Process idx{...} and cite{...} instructions."""
+    if not format in ('latex', 'pdflatex'):
+        # Make cite[]{} to cite{} (...)
+        def cite_subst(m):
+            detailed_ref = m.group(1)
+            citekey = m.group(2)
+            if not detailed_ref:
+                print '*** error: empty text inside parenthesis: %s' % m.group(0)
+                _abort()
+            return 'cite{%s} (%s)' % (citekey, detailed_ref)
+
+        filestr = re.sub(r'cite\[(.+?)\]\{(.+?)\}', cite_subst, filestr)
+    # else: latex can work with cite[]{}
+
     pubfile = None
     pubdata = None
     index = {}  # index[word] = lineno
@@ -1829,6 +1942,9 @@ def handle_index_and_bib(filestr, format, has_title):
                 # value for the end format file...anyway, we make them...
 
             cite_args = re.findall(r'cite\{(.+?)\}', line)
+            if format in ('latex', 'pdflatex'):
+                # latex keeps cite[]{} (other formats rewrites to cite{} ([]))
+                cite_args += re.findall(r'cite\[.+?\]\{(.+?)\}', line)
             if cite_args:
                 # multiple labels can be separated by comma:
                 cite_labels = []
@@ -1904,8 +2020,8 @@ def interpret_authors(filestr, format):
             a = a.strip()
             if ' & ' in i:
                 i = [w.strip() for w in i.split(' & ')]
-            elif ' and ' in i:
-                i = [w.strip() for w in i.split(' and ')]
+            #elif ' and ' in i:
+            #    i = [w.strip() for w in i.split(' and ')]
             else:
                 i = (i.strip(),)
         else:  # just author's name
@@ -2249,14 +2365,19 @@ def doconce2format(filestr, format):
     else:
         has_title = False
 
+    # Next step: run operating system commands and insert output
+    filestr = insert_os_commands(filestr, format)
+    debugpr('%s\n**** The file after running @@@OSCMD (from file):\n\n%s\n\n' %
+            ('*'*80, filestr))
+
     # Next step: insert verbatim code from other (source code) files:
     # (if the format is latex, we could let ptex2tex do this, but
     # the CODE start@stop specifications may contain uderscores and
     # asterix, which will be replaced later and hence destroyed)
     #if format != 'latex':
     filestr = insert_code_from_file(filestr, format)
-    debugpr('%s\n**** The file after inserting @@@CODE (from file):\n\n%s\n\n' % \
-          ('*'*80, filestr))
+    debugpr('%s\n**** The file after inserting @@@CODE (from file):\n\n%s\n\n' %
+            ('*'*80, filestr))
 
     # Hack to fix a bug with !ec/!et at the end of files, which is not
     # correctly substituted by '' in rst, sphinx, st, epytext, plain, wikis
@@ -2267,6 +2388,11 @@ def doconce2format(filestr, format):
         filestr = filestr.rstrip()
         if filestr.endswith('!ec') or filestr.endswith('!et'):
             filestr += '\n'*10
+
+    # Next step: change \bm{} to \boldsymbol{} for all MathJax-based formats
+    # (must be done before math blocks are removed and again after
+    # newcommands files are inserted)
+    filestr = bm2boldsymbol(filestr, format)
 
     # Hack for transforming align envirs to separate equations
     if format in ("sphinx", "pandoc", "ipynb"):
@@ -2366,18 +2492,21 @@ def doconce2format(filestr, format):
     # Next step: deal with lists
     filestr = typeset_lists(filestr, format,
                             debug_info=[code_blocks, tex_blocks])
-    debugpr('%s\n**** The file after typesetting of list:\n\n%s\n\n' % \
-          ('*'*80, filestr))
+    debugpr('%s\n**** The file after typesetting of list:\n\n%s\n\n' %
+            ('*'*80, filestr))
+
+    # Next step: add space around | in tables for substitutions to get right
+    filestr = space_in_tables(filestr)
+    debugpr('%s\n**** The file after adding space around | in tables:\n\n%s\n\n' % ('*'*80, filestr))
+
+    # Next step: do substitutions
+    filestr = inline_tag_subst(filestr, format)
+    debugpr('%s\n**** The file after all inline substitutions:\n\n%s\n\n' % ('*'*80, filestr))
 
     # Next step: deal with tables
     filestr = typeset_tables(filestr, format)
-    debugpr('%s\n**** The file after typesetting of tables:\n\n%s\n\n' % \
-          ('*'*80, filestr))
-
-    # Next step: do substitutions:
-    filestr = inline_tag_subst(filestr, format)
-
-    debugpr('%s\n**** The file after all inline substitutions:\n\n%s\n\n' % ('*'*80, filestr))
+    debugpr('%s\n**** The file after typesetting of tables:\n\n%s\n\n' %
+            ('*'*80, filestr))
 
     # Next step: deal with various commands and envirs to be put as comments
     commands = ['!split', '!bpop', '!epop', '!bslidecell', '!eslidecell',
@@ -2390,6 +2519,8 @@ def doconce2format(filestr, format):
             split_comment = comment_action((command + r'\g<1>'))
         cpattern = re.compile('^%s( *| +.*)$' % command, re.MULTILINE)
         filestr = cpattern.sub(split_comment, filestr)
+    debugpr('%s\n**** The file after commenting out %s:\n\n%s\n\n' %
+            ('*'*80, ', '.join(commands), filestr))
 
     # Next step: substitute latex-style newcommands in filestr and tex_blocks
     # (not in code_blocks)
@@ -2442,14 +2573,6 @@ def doconce2format(filestr, format):
     debugpr('%s\n**** The file after inserting intro/outro and tex/code blocks, and fixing last format-specific issues:\n\n%s\n\n' % \
           ('*'*80, filestr))
 
-    # Next step: change \bm{} to \boldsymbol{} for all MathJax-based formats
-    # (must be done after math blocks and newcommands files are inserted
-    if format in ("html", "sphinx", "pandoc", "ipynb"):
-        if r'\bm{' in filestr:
-            print r'*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)'
-            filestr = filestr.replace(r'\bm{', r'\boldsymbol{')
-            # See http://www.wikidot.com/doc:math
-
     # Next step: deal with !b... !e... environments
     # (done after code and text to ensure correct indentation
     # in the formats that applies indentation)
@@ -2494,6 +2617,11 @@ def doconce2format(filestr, format):
             print '     * or bug in doconce'
             _abort()
 
+
+    # Next step: change \bm{} to \boldsymbol{} for all MathJax-based formats
+    # (must be done before math blocks are removed and again after
+    # newcommands files are inserted)
+    filestr = bm2boldsymbol(filestr, format)
 
     # Final step: replace environments starting with | (instead of !)
     # by ! (for illustration of doconce syntax inside !bc/!ec directives).

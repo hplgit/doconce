@@ -98,7 +98,7 @@ def is_file_or_url(filename, msg='checking existence of', debug=True):
         try:
             # Print a message in case the program hangs a while here
             if msg is not None or debug:
-                print '...', msg, filename, '...',
+                print '...', msg, filename, '...'
             f = urllib.urlopen(filename)
             text = f.read()
             f.close()
@@ -106,12 +106,12 @@ def is_file_or_url(filename, msg='checking existence of', debug=True):
             if ext in ('.html', 'htm'):
                 # Successful opening of an HTML file
                 if msg or debug:
-                    print 'found!'
+                    print '    found!'
                 return 'url'
             elif ext == '':
                 # Successful opening of a directory (meaning index.html)
                 if msg or debug:
-                    print 'found!'
+                    print '    found!'
                 return 'url'
             else:
                 # Seemingly successful opening of a file, but check if
@@ -125,17 +125,17 @@ def is_file_or_url(filename, msg='checking existence of', debug=True):
                 if special_host and '>404' in text:
                     # HTML file with an error message: file not found
                     if msg or debug:
-                        print 'not found (%s, 404 error)' % filename
+                        print '    not found (%s, 404 error)' % filename
                         return None
                 else:
                     if msg or debug:
-                        print 'found!'
+                        print '    found!'
                     return 'url'
         except IOError, e:
             if msg or debug:
-                print 'not found!'
+                print '    NOT found!'
             if debug:
-                print 'urllib.urlopen error:', e
+                print '    urllib.urlopen error:', e
             return None
     else:
         return ('file' if os.path.isfile(filename) else None)
@@ -676,13 +676,15 @@ ENVIRS = {}
 
 # regular expressions for inline tags:
 inline_tag_begin = r"""(?P<begin>(^|[(\s]))"""
-inline_tag_end = r"""(?P<end>($|[.,?!;:)}\s-]))"""
+# ' is included as apostrophe in end tag
+inline_tag_end = r"""(?P<end>($|[.,?!;:)}'\s-]))"""
 # alternatives using positive lookbehind and lookahead (not tested!):
 inline_tag_before = r"""(?<=(^|[(\s]))"""
 inline_tag_after = r"""(?=$|[.,?!;:)\s])"""
 # the begin-end works, so don't touch (must be tested in a safe branch....)
 
-_linked_files = '''\s*"(?P<url>([^"]+?\.html?|[^"]+?\.html?\#[^"]+?|[^"]+?\.txt|[^"]+?\.pdf|[^"]+?\.f|[^"]+?\.c|[^"]+?\.cpp|[^"]+?\.cxx|[^"]+?\.py|[^"]+?\.java|[^"]+?\.pl|[^"]+?\.sh|[^"]+?\.csh|[^"]+?\.zsh|[^"]+?\.ksh|[^"]+?\.tar\.gz|[^"]+?\.tar|[^"]+?\.f77|[^"]+?\.f90|[^"]+?\.f95|_static-?[^/]*/[^"]+?))"'''
+_linked_files = '''\s*"(?P<url>([^"]+?\.html?|[^"]+?\.html?\#[^"]+?|[^"]+?\.txt|[^"]+?\.pdf|[^"]+?\.f|[^"]+?\.c|[^"]+?\.cpp|[^"]+?\.cxx|[^"]+?\.py|[^"]+?\.java|[^"]+?\.pl|[^"]+?\.sh|[^"]+?\.csh|[^"]+?\.zsh|[^"]+?\.ksh|[^"]+?\.tar\.gz|[^"]+?\.tar|[^"]+?\.f77|[^"]+?\.f90|[^"]+?\.f95|[^"]+?\.png|[^"]+?\.jpe?g|[^"]+?\.gif|[^"]+?\.pdf|[^"]+?\.e?ps|_static-?[^/]*/[^"]+?))"'''
+#_linked_files = '''\s*"(?P<url>([^"]+?))"'''  # any file is accepted
 
 INLINE_TAGS = {
     # math: text inside $ signs, as in $a = b$, with space before the
@@ -708,7 +710,8 @@ INLINE_TAGS = {
     # `verbatim inline text is enclosed in back quotes`
     'verbatim':
     r'%s`(?P<subst>[^ ][^`]*)`%s' % \
-    (inline_tag_begin, r"(?P<end>($|[.,?!;:)}'\s-]))"), # inline_tag_end and '
+    (inline_tag_begin, inline_tag_end),
+    #(inline_tag_begin, r"(?P<end>($|[.,?!;:)}'\s|-]))"),
 
     # _underscore before and after signifies bold_
     'bold':
