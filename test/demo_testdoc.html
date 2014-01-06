@@ -46,7 +46,7 @@ Automatically generated HTML file from Doconce source
       -webkit-background-clip: padding-box;
       background-clip: padding-box;
     }
-    tt { font-family: "Courier New", Courier; }
+    tt, code { font-family: "Courier New", Courier; }
     hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
     p { text-indent: 0px; }
     p.caption { width: 80%; font-style: normal; text-align: left; }
@@ -108,7 +108,7 @@ Automatically generated HTML file from Doconce source
                'Example',
                'Example'),
               (' URLs ', 2, 'subsubsec:ex', 'subsubsec:ex'),
-              (' LaTeX Mathematics ', 2, None, '___sec12'),
+              (' LaTeX Mathematics ', 1, None, '___sec12'),
               (' Exercises ', 1, None, '___sec13'),
               (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
               (' Remarks ', 3, None, '___sec15'),
@@ -265,7 +265,7 @@ $$
 &nbsp; &nbsp; &nbsp; <a href="#___sec9"> Bibliography test </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#Example"> Example 1: Examples can be typeset as exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#subsubsec:ex"> URLs </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec12"> LaTeX Mathematics </a><br>
+<a href="#___sec12"> LaTeX Mathematics </a><br>
 <a href="#___sec13"> Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#demo:ex:1"> Problem 2: Flip a Coin </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec15"> Remarks </a><br>
@@ -350,9 +350,6 @@ Here is a nested list:
 <p>
 Here is a reference to Equation \eqref{my:eq1}.
 This equation appears in another part if this document is split.
-
-<p>
-<!-- !split and check if these extra words are included properly in the comment -->
 
 <h3>Subsection 1  <a name="___sec1"></a></h3>
 
@@ -857,7 +854,7 @@ and URLs.
 
 <p>
 <table border="1">
-<tr><td align="center">                                                                                                                                              </td> <td align="center">                                                                                                                                              </td> <td align="center">                                                                                                                                              </td> </tr>
+<tr></tr>
 <tr><td align="center">   \( \mathcal{L}=0 \)                                                                                                                        </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0080.png"><img src="../doc/src/manual/mov/wave_frames/frame_0080.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0085.png"><img src="../doc/src/manual/mov/wave_frames/frame_0085.png" width="300"></a>    </td> </tr>
 <tr><td align="center">   \( a=b \)                                                                                                                                  </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0090.png"><img src="../doc/src/manual/mov/wave_frames/frame_0090.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0095.png"><img src="../doc/src/manual/mov/wave_frames/frame_0095.png" width="300"></a>    </td> </tr>
 <tr><td align="center">   \( \nabla\cdot\boldsymbol{u} =0  \)                                                                                                        </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0100.png"><img src="../doc/src/manual/mov/wave_frames/frame_0100.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0105.png"><img src="../doc/src/manual/mov/wave_frames/frame_0105.png" width="300"></a>    </td> </tr>
@@ -985,7 +982,10 @@ More tough tests: repeated URLs whose footnotes when using the
 <a href="http://google.com" target="_self">google</a>, which should result in exactly three
 footnotes.
 
-<h3>LaTeX Mathematics  <a name="___sec12"></a></h3>
+<p>
+<!-- !split and check if these extra words are included properly in the comment -->
+
+<h2>LaTeX Mathematics  <a name="___sec12"></a></h2>
 
 <p>
 Here is an equation without label using backslash-bracket environment:

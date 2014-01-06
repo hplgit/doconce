@@ -75,7 +75,6 @@ Here is a reference to Equation (ref{my:eq1}).
 This equation appears in another part if this document is split.
 # #endif
 
-!split and check if these extra words are included properly in the comment
 
 ===== Subsection 1 =====
 
@@ -584,7 +583,7 @@ More tough tests: repeated URLs whose footnotes when using the
 footnotes.
 
 
-% if FORMAT == "latex":
+% if FORMAT in ("latex", "pdflatex"):
 
 ===== Test of Some LaTeX Fixes =====
 
@@ -600,7 +599,9 @@ fool a regex substitution with only i.e. since the dot matches anything.
 Also, look at Fig. 4 to see how the data compares with Tab. ref{mytab}.
 % endif
 
-===== LaTeX Mathematics =====
+!split and check if these extra words are included properly in the comment
+
+======= LaTeX Mathematics =======
 
 Here is an equation without label using backslash-bracket environment:
 !bt
@@ -1194,7 +1195,7 @@ Automatically generated HTML file from Doconce source
       -webkit-background-clip: padding-box;
       background-clip: padding-box;
     }
-    tt { font-family: "Courier New", Courier; }
+    tt, code { font-family: "Courier New", Courier; }
     hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
     p { text-indent: 0px; }
     p.caption { width: 80%; font-style: normal; text-align: left; }
@@ -1256,7 +1257,7 @@ Automatically generated HTML file from Doconce source
                'Example',
                'Example'),
               (' URLs ', 2, 'subsubsec:ex', 'subsubsec:ex'),
-              (' LaTeX Mathematics ', 2, None, '___sec12'),
+              (' LaTeX Mathematics ', 1, None, '___sec12'),
               (' Exercises ', 1, None, '___sec13'),
               (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
               (' Remarks ', 3, None, '___sec15'),
@@ -1408,18 +1409,18 @@ $$
 
 <p>
 <a href="._testdoc001.html#sec1"> Section 1 </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec1"> Subsection 1 </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec2"> Computer code </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec3"> Running OS commands </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#subsec:ex"> Subsection 2: Testing figures </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec6"> Custom Environments </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#subsec:table"> Tables </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec8"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec9"> Bibliography test </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#Example"> Example 1: Examples can be typeset as exercises </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#subsubsec:ex"> URLs </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec12"> LaTeX Mathematics </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec1"> Subsection 1 </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec2"> Computer code </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec3"> Running OS commands </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#subsec:ex"> Subsection 2: Testing figures </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec6"> Custom Environments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#subsec:table"> Tables </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec8"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec9"> Bibliography test </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#Example"> Example 1: Examples can be typeset as exercises </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#subsubsec:ex"> URLs </a><br>
+<a href="._testdoc002.html#___sec12"> LaTeX Mathematics </a><br>
 <a href="._testdoc002.html#___sec13"> Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#demo:ex:1"> Problem 2: Flip a Coin </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec15"> Remarks </a><br>
@@ -2070,7 +2071,6 @@ a block quote.
 
 Here is a reference to Equation (\ref{my:eq1}).
 
-% !split and check if these extra words are included properly in the comment
 
 \subsection{Subsection 1}
 
@@ -2630,7 +2630,9 @@ A sentence containing "refines lines" could easily
 fool a regex substitution with only i.e.~since the dot matches anything.
 Also, look at Fig.~4 to see how the data compares with Tab.~\ref{mytab}.
 
-\subsection{{\LaTeX} Mathematics}
+% !split and check if these extra words are included properly in the comment
+
+\section{{\LaTeX} Mathematics}
 
 Here is an equation without label using backslash-bracket environment:
 \[ a = b + c \]
@@ -3614,7 +3616,6 @@ a block quote.
 
 Here is a reference to Equation (\ref{my:eq1}).
 
-% !split and check if these extra words are included properly in the comment
 
 \subsection{Subsection 1}
 
@@ -4195,7 +4196,22 @@ footnotes.
 
 
 
-\subsection{{\LaTeX} Mathematics}
+\subsection{Test of Some {\LaTeX} Fixes}
+
+Let's check abbr.~of some common kind, e.g.~the well--known i.e.
+expression as an example. Moreover, Dr.~Tang and Prof.~Monsen,
+or maybe also prof.~Ting,
+will go to the Dept.~of Science to test how Mr.~Hansen is doing together
+with Ms.~Larsen. A reference like Sec.~\ref{subsubsec:ex} or
+Ch.~\ref{subsubsec:ex}, or even App.~\ref{subsubsec:ex}, must also be
+handled. Likewise, this is test no.~$i$ of Doconce features.
+A sentence containing "refines lines" could easily
+fool a regex substitution with only i.e.~since the dot matches anything.
+Also, look at Fig.~4 to see how the data compares with Tab.~\ref{mytab}.
+
+% !split and check if these extra words are included properly in the comment
+
+\section{{\LaTeX} Mathematics}
 
 Here is an equation without label using backslash--bracket environment:
 \[ a = b + c \]
@@ -5163,7 +5179,6 @@ a block quote.
 
 Here is a reference to Equation (\ref{my:eq1}).
 
-% !split and check if these extra words are included properly in the comment
 
 \subsection{Subsection 1}
 
@@ -5706,7 +5721,22 @@ footnotes.
 
 
 
-\subsection{{\LaTeX} Mathematics}
+\subsection{Test of Some {\LaTeX} Fixes}
+
+Let's check abbr.~of some common kind, e.g.~the well--known i.e.
+expression as an example. Moreover, Dr.~Tang and Prof.~Monsen,
+or maybe also prof.~Ting,
+will go to the Dept.~of Science to test how Mr.~Hansen is doing together
+with Ms.~Larsen. A reference like Sec.~\ref{subsubsec:ex} or
+Ch.~\ref{subsubsec:ex}, or even App.~\ref{subsubsec:ex}, must also be
+handled. Likewise, this is test no.~$i$ of Doconce features.
+A sentence containing "refines lines" could easily
+fool a regex substitution with only i.e.~since the dot matches anything.
+Also, look at Fig.~4 to see how the data compares with Tab.~\ref{mytab}.
+
+% !split and check if these extra words are included properly in the comment
+
+\section{{\LaTeX} Mathematics}
 
 Here is an equation without label using backslash--bracket environment:
 \[ a = b + c \]
@@ -6449,8 +6479,6 @@ Here is a nested list:
 
 Here is a reference to Equation (my:eq1).
 
-.. !split and check if these extra words are included properly in the comment
-
 
 Subsection 1
 ------------
@@ -7005,8 +7033,11 @@ footnotes.
 
 
 
+.. !split and check if these extra words are included properly in the comment
+
+
 LaTeX Mathematics
------------------
+=================
 
 Here is an equation without label using backslash-bracket environment::
 
@@ -7848,8 +7879,6 @@ Here is a nested list:
 Here is a reference to Equation :eq:`my:eq1`.
 This equation appears in another part if this document is split.
 
-.. !split and check if these extra words are included properly in the comment
-
 
 Subsection 1
 ------------
@@ -8463,8 +8492,11 @@ footnotes.
 
 
 
+.. !split and check if these extra words are included properly in the comment
+
+
 LaTeX Mathematics
------------------
+=================
 
 Here is an equation without label using backslash-bracket environment:
 
@@ -9393,7 +9425,6 @@ Here is a nested list:
 
 Here is a reference to Equation (my:eq1).
 
-<wiki:comment> !split and check if these extra words are included properly in the comment </wiki:comment>
 
 ==== Subsection 1 ====
 
@@ -9808,7 +9839,6 @@ and URLs.
 
 
 
- ||                              __                               ||                              __                               ||                              __                               ||
  ||  `\mathcal{L}=0`                                              ||  [../doc/src/manual/mov/wave_frames/frame_0080.png `080`]     ||  [../doc/src/manual/mov/wave_frames/frame_0085.png `085`]     ||
  ||  `a=b`                                                        ||  [../doc/src/manual/mov/wave_frames/frame_0090.png `090`]     ||  [../doc/src/manual/mov/wave_frames/frame_0095.png `095`]     ||
  ||  `\nabla\cdot\bm{u} =0 `                                      ||  [../doc/src/manual/mov/wave_frames/frame_0100.png `100`]     ||  [../doc/src/manual/mov/wave_frames/frame_0105.png `105`]     ||
@@ -9918,7 +9948,9 @@ footnotes.
 
 
 
-==== LaTeX Mathematics ====
+<wiki:comment> !split and check if these extra words are included properly in the comment </wiki:comment>
+
+== LaTeX Mathematics ==
 
 Here is an equation without label using backslash-bracket environment:
 {{{
@@ -10557,7 +10589,6 @@ a block quote.
 
 Here is a reference to Equation (my:eq1).
 
-<!-- !split and check if these extra words are included properly in the comment -->
 
 ==== Subsection 1 ====
 
@@ -10932,7 +10963,7 @@ and URLs.
 
 
 <table border="1">
-<tr><td align="center">                                                                          </td> <td align="center">                                                                          </td> <td align="center">                                                                          </td> </tr>
+<tr></tr>
 <tr><td align="center">   <math>\mathcal{L}=0</math>                                             </td> <td align="center">   [../doc/src/manual/mov/wave_frames/frame_0080.png <code>080</code>]    </td> <td align="center">   [../doc/src/manual/mov/wave_frames/frame_0085.png <code>085</code>]    </td> </tr>
 <tr><td align="center">   <math>a=b</math>                                                       </td> <td align="center">   [../doc/src/manual/mov/wave_frames/frame_0090.png <code>090</code>]    </td> <td align="center">   [../doc/src/manual/mov/wave_frames/frame_0095.png <code>095</code>]    </td> </tr>
 <tr><td align="center">   <math>\nabla\cdot\bm{u} =0 </math>                                     </td> <td align="center">   [../doc/src/manual/mov/wave_frames/frame_0100.png <code>100</code>]    </td> <td align="center">   [../doc/src/manual/mov/wave_frames/frame_0105.png <code>105</code>]    </td> </tr>
@@ -11048,7 +11079,9 @@ footnotes.
 
 
 
-==== LaTeX Mathematics ====
+<!-- !split and check if these extra words are included properly in the comment -->
+
+== LaTeX Mathematics ==
 
 Here is an equation without label using backslash-bracket environment:
 :<math>
@@ -11801,7 +11834,6 @@ Here is a nested list:
 
 Here is a reference to Equation (my:eq1).
 
-<wiki:comment> !split and check if these extra words are included properly in the comment </wiki:comment>
 
 == Subsection 1 ==
 
@@ -12276,7 +12308,9 @@ footnotes.
 
 
 
-== LaTeX Mathematics ==
+<wiki:comment> !split and check if these extra words are included properly in the comment </wiki:comment>
+
+= LaTeX Mathematics =
 
 Here is an equation without label using backslash-bracket environment:
 {{{
@@ -12902,7 +12936,6 @@ Here is a nested list:
 
 Here is a reference to Equation (my:eq1).
 
-# !split and check if these extra words are included properly in the comment
 
 Subsection 1
 
@@ -13362,6 +13395,8 @@ More tough tests: repeated URLs whose footnotes when using the
 footnotes.
 
 
+
+# !split and check if these extra words are included properly in the comment
 
 LaTeX Mathematics
 
@@ -14046,7 +14081,6 @@ Here is a nested list:
 
 Here is a reference to Equation (my:eq1).
 
-# !split and check if these extra words are included properly in the comment
 
 Subsection 1
 ------------
@@ -14517,8 +14551,10 @@ footnotes.
 
 
 
+# !split and check if these extra words are included properly in the comment
+
 LaTeX Mathematics
------------------
+=================
 
 Here is an equation without label using backslash-bracket environment::
 
@@ -15215,7 +15251,7 @@ Table of contents:
    Bibliography test 
    Example 1: Examples can be typeset as exercises 
    URLs 
-   LaTeX Mathematics 
+ LaTeX Mathematics 
  Exercises 
    Problem 2: Flip a Coin 
      Remarks 
@@ -15294,7 +15330,6 @@ Here is a nested list:
 
 Here is a reference to Equation (my:eq1).
 
-# !split and check if these extra words are included properly in the comment
 
 Subsection 1
 ------------
@@ -15766,8 +15801,10 @@ footnotes.
 
 
 
+# !split and check if these extra words are included properly in the comment
+
 LaTeX Mathematics
------------------
+=================
 
 Here is an equation without label using backslash-bracket environment::
 
@@ -16518,7 +16555,6 @@ Here is a nested list:
 
 Here is a reference to Equation \eqref{my:eq1}.
 
-<!-- !split and check if these extra words are included properly in the comment -->
 
 ### Subsection 1
 
@@ -17032,7 +17068,9 @@ footnotes.
 
 
 
-### LaTeX Mathematics
+<!-- !split and check if these extra words are included properly in the comment -->
+
+## LaTeX Mathematics
 
 Here is an equation without label using backslash-bracket environment:
 $$
@@ -17855,7 +17893,6 @@ in a separate document: `admon.do.txt`.
       "\n",
       "Here is a reference to Equation Eq (my:eq1).\n",
       "\n",
-      "<!-- !split and check if these extra words are included properly in the comment -->\n",
       "\n",
       "### Subsection 1\n",
       "\n",
@@ -18584,7 +18621,9 @@ in a separate document: `admon.do.txt`.
       "\n",
       "\n",
       "\n",
-      "### LaTeX Mathematics\n",
+      "<!-- !split and check if these extra words are included properly in the comment -->\n",
+      "\n",
+      "## LaTeX Mathematics\n",
       "\n",
       "Here is an equation without label using backslash-bracket environment:"
      ]
@@ -20018,7 +20057,7 @@ ccc<br /><span class="math">\(\mathcal{L}=0\)</span> &amp; <img src="../doc/src/
 <p>More tough tests: repeated URLs whose footnotes when using the <code>--device=paper</code> option must be correct. We have <a href="{http://google.com}">google</a>, <a href="{http://google.com}">google</a>, and <a href="{http://google.com}">google</a>, which should result in exactly three footnotes.</p>
 <h2 id="test-of-some-latex-fixes">Test of Some LaTeX Fixes</h2>
 <p>Let’s check abbr. of some common kind, e.g. the well-known i.e. expression as an example. Moreover, Dr. Tang and Prof. Monsen, or maybe also prof. Ting, will go to the Dept. of Science to test how Mr. Hansen is doing together with Ms. Larsen. A reference like Sec. [subsubsec:ex] or Ch. [subsubsec:ex], or even App. [subsubsec:ex], must also be handled. Likewise, this is test no. <span class="math">\(i\)</span> of Doconce features. A sentence containing &quot;refines lines&quot; could easily fool a regex substitution with only i.e. since the dot matches anything. Also, look at Fig. 4 to see how the data compares with Tab. [mytab].</p>
-<h2 id="latex-mathematics">LaTeX Mathematics</h2>
+<h1 id="latex-mathematics">LaTeX Mathematics</h1>
 <p>Here is an equation without label using backslash-bracket environment: <span class="math">\[a = b + c\]</span> or with number and label, as in ([my:eq1]), using the equation environment:</p>
 <p><span class="math">\[{\partial u\over\partial t} = \nabla^2 u \label{my:eq1}\]</span></p>
 <p>We can refer to this equation by ([my:eq1]).</p>
@@ -20330,8 +20369,6 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <p>Here are two lines that make up a block quote.</p>
 </blockquote>
 <p>Here is a reference to Equation .</p>
-<!-- !split and check if these extra words are included properly in the comment -->
-
 <h3 id="subsection-1">Subsection 1</h3>
 <p>More text, with a reference back to the section <a href="#n-1">Section 1</a> and further to the section <a href="#s">URLs</a>. <!-- sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console --></p>
 <h4 id="computer-code">Computer code</h4>
@@ -20737,7 +20774,9 @@ document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'">'+'mailto:hpl@simula.no'+'<\/
 <!-- if rst output is desired, but placed in a `_static*` folder. -->
 
 <p>More tough tests: repeated URLs whose footnotes when using the <code>--device=paper</code> option must be correct. We have <a href="http://google.com">google</a>, <a href="http://google.com">google</a>, and <a href="http://google.com">google</a>, which should result in exactly three footnotes.</p>
-<h3 id="latex-mathematics">LaTeX Mathematics</h3>
+<!-- !split and check if these extra words are included properly in the comment -->
+
+<h2 id="latex-mathematics">LaTeX Mathematics</h2>
 <p>Here is an equation without label using backslash-bracket environment: <span class="math">\[
  a = b + c 
 \]</span> or with number and label, as in , using the equation environment: <span class="math">\[
@@ -23304,7 +23343,7 @@ Automatically generated HTML file from Doconce source
       -webkit-background-clip: padding-box;
       background-clip: padding-box;
     }
-    tt { font-family: "Courier New", Courier; }
+    tt, code { font-family: "Courier New", Courier; }
     hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
     p { text-indent: 0px; }
     p.caption { width: 80%; font-style: normal; text-align: left; }
@@ -23366,7 +23405,7 @@ Automatically generated HTML file from Doconce source
                'Example',
                'Example'),
               (' URLs ', 2, 'subsubsec:ex', 'subsubsec:ex'),
-              (' LaTeX Mathematics ', 2, None, '___sec12'),
+              (' LaTeX Mathematics ', 1, None, '___sec12'),
               (' Exercises ', 1, None, '___sec13'),
               (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
               (' Remarks ', 3, None, '___sec15'),
@@ -23518,18 +23557,18 @@ $$
 
 <p>
 <a href="._testdoc001.html#sec1"> Section 1 </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec1"> Subsection 1 </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec2"> Computer code </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec3"> Running OS commands </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#subsec:ex"> Subsection 2: Testing figures </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec6"> Custom Environments </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#subsec:table"> Tables </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec8"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec9"> Bibliography test </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#Example"> Example 1: Examples can be typeset as exercises </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#subsubsec:ex"> URLs </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec12"> LaTeX Mathematics </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec1"> Subsection 1 </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec2"> Computer code </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec3"> Running OS commands </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#subsec:ex"> Subsection 2: Testing figures </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec6"> Custom Environments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#subsec:table"> Tables </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec8"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec9"> Bibliography test </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#Example"> Example 1: Examples can be typeset as exercises </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#subsubsec:ex"> URLs </a><br>
+<a href="._testdoc002.html#___sec12"> LaTeX Mathematics </a><br>
 <a href="._testdoc002.html#___sec13"> Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#demo:ex:1"> Problem 2: Flip a Coin </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec15"> Remarks </a><br>
@@ -23617,7 +23656,7 @@ Automatically generated HTML file from Doconce source
       -webkit-background-clip: padding-box;
       background-clip: padding-box;
     }
-    tt { font-family: "Courier New", Courier; }
+    tt, code { font-family: "Courier New", Courier; }
     hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
     p { text-indent: 0px; }
     p.caption { width: 80%; font-style: normal; text-align: left; }
@@ -23679,7 +23718,7 @@ Automatically generated HTML file from Doconce source
                'Example',
                'Example'),
               (' URLs ', 2, 'subsubsec:ex', 'subsubsec:ex'),
-              (' LaTeX Mathematics ', 2, None, '___sec12'),
+              (' LaTeX Mathematics ', 1, None, '___sec12'),
               (' Exercises ', 1, None, '___sec13'),
               (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
               (' Remarks ', 3, None, '___sec15'),
@@ -23847,241 +23886,10 @@ Here is a nested list:
 Here is a reference to Equation <a href="._testdoc002.html#mjx-eqn-3">(3)</a>.
 This equation appears in another part if this document is split.
 
-<p>
-<p>
-<!-- begin bottom navigation -->
-<a href="._testdoc000.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
-
-<a href="._testdoc002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
-<!-- end bottom navigation -->
-
-<!-- ------------------- end of main content --------------- -->
-
-
-</body>
-</html>
-
-************** File: ._testdoc002.html *****************
-<!DOCTYPE html>
-<!--
-Automatically generated HTML file from Doconce source
-(https://github.com/hplgit/doconce/)
--->
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
-<meta name="description" content="A Document for Testing Doconce">
-<meta name="keywords" content="figures,movies,index with subindex,index, with comma, and one more">
-
-
-
-<style type="text/css">
-    /* solarized style */
-    body {
-      margin:5;
-      padding:0;
-      border:0;	/* Remove the border around the viewport in old versions of IE */
-      width:100%;
-      background: #fdf6e3;
-      min-width:600px;	/* Minimum width of layout - remove if not required */
-      font-family: Verdana, Helvetica, Arial, sans-serif;
-      font-size: 1.0em;
-      line-height: 1.3em;
-      color: #657b83;
-    }
-    a { color: #657b83; text-decoration:none; }
-    a:hover { color: #b58900; background: #eee8d5; text-decoration:none; }
-    h1, h2, h3 { margin:.8em 0 .2em 0; padding:0; line-height: 125%; }
-    h2 { font-variant: small-caps; }
-    pre {
-      background: #fdf6e3;
-      -webkit-box-shadow: inset 0 0 2px #000000;
-      -moz-box-shadow: inset 0 0 2px #000000;
-      box-shadow: inset 0 0 2px #000000;
-      color: #586e75;
-      margin-left: 0px;
-      font-family: 'Droid Sans Mono', monospace;
-      padding: 2px;
-      -webkit-border-radius: 4px;
-      -moz-border-radius: 4px;
-      border-radius: 4px;
-      -moz-background-clip: padding;
-      -webkit-background-clip: padding-box;
-      background-clip: padding-box;
-    }
-    tt { font-family: "Courier New", Courier; }
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    p { text-indent: 0px; }
-    p.caption { width: 80%; font-style: normal; text-align: left; }
-    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .alert-text-small   { font-size: 80%;  }
-    .alert-text-large   { font-size: 130%; }
-    .alert-text-normal  { font-size: 90%;  }
-    .alert {
-             padding:8px 35px 8px 14px; margin-bottom:18px;
-             text-shadow:0 1px 0 rgba(255,255,255,0.5);
-             border:1px solid #FFBF00;
-             border-radius: 4px;
-             -webkit-border-radius: 4px;
-             -moz-border-radius: 4px;
-             color: #555;
-             background-color: #fbeed5;
-             background-position: 10px 5px;
-             background-repeat: no-repeat;
-             background-size: 38px;
-             padding-left: 55px;
-             width: 75%;
-     }
-     .alert-block {padding-top:14px; padding-bottom:14px}
-     .alert-block > p, .alert-block > ul {margin-bottom:1em}
-     .alert li {margin-top: 1em}
-     .alert-block p+p {margin-top:5px}
-     .alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
-     .alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
-     .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
-     .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
-
-</style>
-
-</head>
-
-<!-- tocinfo
-{'highest level': 1,
- 'sections': [(' Section 1 ', 1, 'sec1', 'sec1'),
-              (' Subsection 1 ', 2, None, '___sec1'),
-              (' Computer code ', 3, None, '___sec2'),
-              (' Running OS commands ', 3, None, '___sec3'),
-              (' Subsection 2: Testing figures ',
-               2,
-               'subsec:ex',
-               'subsec:ex'),
-              (' The $\\theta$ parameter (not $\\nabla$?) ',
-               2,
-               'decay:sec:theta',
-               'decay:sec:theta'),
-              (' Custom Environments ', 2, None, '___sec6'),
-              (' Tables ', 2, 'subsec:table', 'subsec:table'),
-              (' A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2` ',
-               2,
-               None,
-               '___sec8'),
-              (' Bibliography test ', 2, None, '___sec9'),
-              (' Example 1: Examples can be typeset as exercises ',
-               2,
-               'Example',
-               'Example'),
-              (' URLs ', 2, 'subsubsec:ex', 'subsubsec:ex'),
-              (' LaTeX Mathematics ', 2, None, '___sec12'),
-              (' Exercises ', 1, None, '___sec13'),
-              (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
-              (' Remarks ', 3, None, '___sec15'),
-              (' Not an exercise ', 2, None, '___sec16'),
-              (' Project 3: Compute a Probability ',
-               2,
-               'demo:ex:2',
-               'demo:ex:2'),
-              (' Project 4: Explore Distributions of Random Circles ',
-               2,
-               'proj:circle1',
-               'proj:circle1'),
-              (' Remarks ', 3, None, '___sec19'),
-              (' Exercise 5: Determine some Distance ',
-               2,
-               'exer:dist',
-               'exer:dist'),
-              (' Remarks ', 3, None, '___sec21'),
-              (' Some exercise without the "Exercise:" prefix ',
-               2,
-               None,
-               '___sec22'),
-              (' Example 7: Just an example ', 2, None, '___sec23'),
-              (' Here goes another section ', 1, None, '___sec24'),
-              (' More Exercises ', 1, None, '___sec25'),
-              (' Exercise 8: Make references to projects and problems ',
-               2,
-               'exer:some:formula',
-               'exer:some:formula'),
-              (' Project 9: References in a headings do not work well in html ',
-               2,
-               'exer:you',
-               'exer:you'),
-              (' References ', 1, None, '___sec28'),
-              (' Appendix: Just for testing; part I ', 1, None, '___sec29'),
-              (' A subsection within an appendix ', 2, None, '___sec30'),
-              (' Appendix: Just for testing; part II ', 1, None, '___sec31'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec32'),
-              (' Appendix: Testing identical titles ',
-               2,
-               'test:title:id1',
-               'test:title:id1'),
-              (' Appendix: Testing identical titles ',
-               2,
-               'test:title:id2',
-               'test:title:id2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec35'),
-              (' Appendix: Testing inline comments ', 2, None, '___sec36'),
-              (' Appendix: Testing headings ending with `verbatim inline` ',
-               2,
-               None,
-               '___sec37')]}
-end of tocinfo -->
-
-<body>
-
-
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  TeX: {
-     equationNumbers: {  autoNumber: "none"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
-  }
-});
-</script>
-<script type="text/javascript"
- src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
-
-<!-- newcommands_bfmath.tex -->
-$$
-\renewcommand{\u}{\pmb{u}}
-
-\newcommand{\xbm}{\boldsymbol{x}}
-\newcommand{\normalvecbm}{\boldsymbol{n}}
-\newcommand{\ubm}{\boldsymbol{u}}
-$$
-
-
-<!-- newcommands_replace.tex -->
-$$
-\newcommand{\x}{\pmb{x}}
-\newcommand{\normalvec}{\pmb{n}}
-\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
-\newcommand{\halfi}{1/2}
-\newcommand{\half}{\frac{1}{2}}
-\newcommand{\report}{test report}
-$$
-
-
-
-
-    
-<a name="part0002"></a>
-<!-- begin top navigation -->
-<a href="._testdoc001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
-<!-- end top navigation -->
-
-<p>
-<!-- !split and check if these extra words are included properly in the comment -->
-
 <h3>Subsection 1  <a name="___sec1"></a></h3>
 
 <p>
-More text, with a reference back to the section <a href="._testdoc001.html#sec1">Section 1</a> and further
+More text, with a reference back to the section <a href="#sec1">Section 1</a> and further
 to the section <a href="#subsubsec:ex">URLs</a>. 
 <!-- sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console -->
 
@@ -24581,7 +24389,7 @@ and URLs.
 
 <p>
 <table border="1">
-<tr><td align="center">                                                                                                                                              </td> <td align="center">                                                                                                                                              </td> <td align="center">                                                                                                                                              </td> </tr>
+<tr></tr>
 <tr><td align="center">   \( \mathcal{L}=0 \)                                                                                                                        </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0080.png"><img src="../doc/src/manual/mov/wave_frames/frame_0080.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0085.png"><img src="../doc/src/manual/mov/wave_frames/frame_0085.png" width="300"></a>    </td> </tr>
 <tr><td align="center">   \( a=b \)                                                                                                                                  </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0090.png"><img src="../doc/src/manual/mov/wave_frames/frame_0090.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0095.png"><img src="../doc/src/manual/mov/wave_frames/frame_0095.png" width="300"></a>    </td> </tr>
 <tr><td align="center">   \( \nabla\cdot\boldsymbol{u} =0  \)                                                                                                        </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0100.png"><img src="../doc/src/manual/mov/wave_frames/frame_0100.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0105.png"><img src="../doc/src/manual/mov/wave_frames/frame_0105.png" width="300"></a>    </td> </tr>
@@ -24597,31 +24405,31 @@ some text.
 <h3>Bibliography test  <a name="___sec9"></a></h3>
 
 <p>
-Here is an example: <a href="#Langtangen_Pedersen_2002">[1]</a> discussed propagation of
-large destructive water waves, <a href="#Langtangen_et_al_2002">[2]</a> gave
+Here is an example: <a href="._testdoc002.html#Langtangen_Pedersen_2002">[1]</a> discussed propagation of
+large destructive water waves, <a href="._testdoc002.html#Langtangen_et_al_2002">[2]</a> gave
 an overview of numerical methods for solving the Navier-Stokes equations,
 while the use of Backward Kolmogorov equations for analyzing
-random vibrations was investigated in <a href="#Langtangen_1994a">[3]</a>.
-The book chapter <a href="#Mardal_et_al_2003a">[4]</a> contains information on
+random vibrations was investigated in <a href="._testdoc002.html#Langtangen_1994a">[3]</a>.
+The book chapter <a href="._testdoc002.html#Mardal_et_al_2003a">[4]</a> contains information on
 C++ software tools for programming multigrid methods. A real retro
-reference is <a href="#Langtangen_1988d">[5]</a> about a big FORTRAN package.
+reference is <a href="._testdoc002.html#Langtangen_1988d">[5]</a> about a big FORTRAN package.
 Multiple references are also possible, e.g., see
-<a href="#Langtangen_Pedersen_2002">[1]</a> <a href="#Mardal_et_al_2003a">[4]</a>.
+<a href="._testdoc002.html#Langtangen_Pedersen_2002">[1]</a> <a href="._testdoc002.html#Mardal_et_al_2003a">[4]</a>.
 
 <p>
 We need to cite more than 10 papers to reproduce an old formatting
 problem with blanks in the keys in reST format:
-<a href="#Langtangen_1992c">[6]</a> <a href="#Langtangen_1994a">[3]</a> <a href="#Mortensen_et_al_2011">[7]</a> <a href="#Langtangen_Pedersen_2002">[1]</a>
+<a href="._testdoc002.html#Langtangen_1992c">[6]</a> <a href="._testdoc002.html#Langtangen_1994a">[3]</a> <a href="._testdoc002.html#Mortensen_et_al_2011">[7]</a> <a href="._testdoc002.html#Langtangen_Pedersen_2002">[1]</a>
 and
-<a href="#Langtangen_et_al_2002">[2]</a> <a href="#Glimsdal_et_al_20006">[8]</a> <a href="#Rahman_et_al_2006b">[9]</a> <a href="#Haga_et_al_2011a">[10]</a> <a href="#Langtangen_2003a">[11]</a> <a href="#Langtangen_2008a">[12]</a> <a href="#Langtangen:95">[13]</a>
+<a href="._testdoc002.html#Langtangen_et_al_2002">[2]</a> <a href="._testdoc002.html#Glimsdal_et_al_20006">[8]</a> <a href="._testdoc002.html#Rahman_et_al_2006b">[9]</a> <a href="._testdoc002.html#Haga_et_al_2011a">[10]</a> <a href="._testdoc002.html#Langtangen_2003a">[11]</a> <a href="._testdoc002.html#Langtangen_2008a">[12]</a> <a href="._testdoc002.html#Langtangen:95">[13]</a>
 and all the work of
-<a href="#Langtangen_2012">[14]</a> <a href="#Mardal_et_al_2003a">[4]</a> <a href="#Jeberg_et_al_2004">[15]</a> as well as
-old work <a href="#Langtangen_1988d">[5]</a> and <a href="#Langtangen_1989e">[16]</a>, and the
-talk <a href="#Langtangen_talk_2007a">[17]</a>.
-Langtangen also had two thesis <a href="#Langtangen:85">[18]</a> <a href="#Langtangen_1989e">[16]</a>.
+<a href="._testdoc002.html#Langtangen_2012">[14]</a> <a href="._testdoc002.html#Mardal_et_al_2003a">[4]</a> <a href="._testdoc002.html#Jeberg_et_al_2004">[15]</a> as well as
+old work <a href="._testdoc002.html#Langtangen_1988d">[5]</a> and <a href="._testdoc002.html#Langtangen_1989e">[16]</a>, and the
+talk <a href="._testdoc002.html#Langtangen_talk_2007a">[17]</a>.
+Langtangen also had two thesis <a href="._testdoc002.html#Langtangen:85">[18]</a> <a href="._testdoc002.html#Langtangen_1989e">[16]</a>.
 More retro citations are
-the old ME-IN323 book <a href="#Langtangen:91">[19]</a> and the
-<a href="#Langtangen:94b">[20]</a> OONSKI '94 paper.
+the old ME-IN323 book <a href="._testdoc002.html#Langtangen:91">[19]</a> and the
+<a href="._testdoc002.html#Langtangen:94b">[20]</a> OONSKI '94 paper.
 
 <p>
 <!-- --- begin exercise --- -->
@@ -24709,7 +24517,238 @@ More tough tests: repeated URLs whose footnotes when using the
 <a href="http://google.com" target="_self">google</a>, which should result in exactly three
 footnotes.
 
-<h3>LaTeX Mathematics  <a name="___sec12"></a></h3>
+<p>
+<p>
+<!-- begin bottom navigation -->
+<a href="._testdoc000.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+
+<a href="._testdoc002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<!-- end bottom navigation -->
+
+<!-- ------------------- end of main content --------------- -->
+
+
+</body>
+</html>
+
+************** File: ._testdoc002.html *****************
+<!DOCTYPE html>
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="A Document for Testing Doconce">
+<meta name="keywords" content="figures,movies,index with subindex,index, with comma, and one more">
+
+
+
+<style type="text/css">
+    /* solarized style */
+    body {
+      margin:5;
+      padding:0;
+      border:0;	/* Remove the border around the viewport in old versions of IE */
+      width:100%;
+      background: #fdf6e3;
+      min-width:600px;	/* Minimum width of layout - remove if not required */
+      font-family: Verdana, Helvetica, Arial, sans-serif;
+      font-size: 1.0em;
+      line-height: 1.3em;
+      color: #657b83;
+    }
+    a { color: #657b83; text-decoration:none; }
+    a:hover { color: #b58900; background: #eee8d5; text-decoration:none; }
+    h1, h2, h3 { margin:.8em 0 .2em 0; padding:0; line-height: 125%; }
+    h2 { font-variant: small-caps; }
+    pre {
+      background: #fdf6e3;
+      -webkit-box-shadow: inset 0 0 2px #000000;
+      -moz-box-shadow: inset 0 0 2px #000000;
+      box-shadow: inset 0 0 2px #000000;
+      color: #586e75;
+      margin-left: 0px;
+      font-family: 'Droid Sans Mono', monospace;
+      padding: 2px;
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      border-radius: 4px;
+      -moz-background-clip: padding;
+      -webkit-background-clip: padding-box;
+      background-clip: padding-box;
+    }
+    tt, code { font-family: "Courier New", Courier; }
+    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    p { text-indent: 0px; }
+    p.caption { width: 80%; font-style: normal; text-align: left; }
+    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    .alert-text-small   { font-size: 80%;  }
+    .alert-text-large   { font-size: 130%; }
+    .alert-text-normal  { font-size: 90%;  }
+    .alert {
+             padding:8px 35px 8px 14px; margin-bottom:18px;
+             text-shadow:0 1px 0 rgba(255,255,255,0.5);
+             border:1px solid #FFBF00;
+             border-radius: 4px;
+             -webkit-border-radius: 4px;
+             -moz-border-radius: 4px;
+             color: #555;
+             background-color: #fbeed5;
+             background-position: 10px 5px;
+             background-repeat: no-repeat;
+             background-size: 38px;
+             padding-left: 55px;
+             width: 75%;
+     }
+     .alert-block {padding-top:14px; padding-bottom:14px}
+     .alert-block > p, .alert-block > ul {margin-bottom:1em}
+     .alert li {margin-top: 1em}
+     .alert-block p+p {margin-top:5px}
+     .alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
+     .alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
+     .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
+     .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
+
+</style>
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' Section 1 ', 1, 'sec1', 'sec1'),
+              (' Subsection 1 ', 2, None, '___sec1'),
+              (' Computer code ', 3, None, '___sec2'),
+              (' Running OS commands ', 3, None, '___sec3'),
+              (' Subsection 2: Testing figures ',
+               2,
+               'subsec:ex',
+               'subsec:ex'),
+              (' The $\\theta$ parameter (not $\\nabla$?) ',
+               2,
+               'decay:sec:theta',
+               'decay:sec:theta'),
+              (' Custom Environments ', 2, None, '___sec6'),
+              (' Tables ', 2, 'subsec:table', 'subsec:table'),
+              (' A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2` ',
+               2,
+               None,
+               '___sec8'),
+              (' Bibliography test ', 2, None, '___sec9'),
+              (' Example 1: Examples can be typeset as exercises ',
+               2,
+               'Example',
+               'Example'),
+              (' URLs ', 2, 'subsubsec:ex', 'subsubsec:ex'),
+              (' LaTeX Mathematics ', 1, None, '___sec12'),
+              (' Exercises ', 1, None, '___sec13'),
+              (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
+              (' Remarks ', 3, None, '___sec15'),
+              (' Not an exercise ', 2, None, '___sec16'),
+              (' Project 3: Compute a Probability ',
+               2,
+               'demo:ex:2',
+               'demo:ex:2'),
+              (' Project 4: Explore Distributions of Random Circles ',
+               2,
+               'proj:circle1',
+               'proj:circle1'),
+              (' Remarks ', 3, None, '___sec19'),
+              (' Exercise 5: Determine some Distance ',
+               2,
+               'exer:dist',
+               'exer:dist'),
+              (' Remarks ', 3, None, '___sec21'),
+              (' Some exercise without the "Exercise:" prefix ',
+               2,
+               None,
+               '___sec22'),
+              (' Example 7: Just an example ', 2, None, '___sec23'),
+              (' Here goes another section ', 1, None, '___sec24'),
+              (' More Exercises ', 1, None, '___sec25'),
+              (' Exercise 8: Make references to projects and problems ',
+               2,
+               'exer:some:formula',
+               'exer:some:formula'),
+              (' Project 9: References in a headings do not work well in html ',
+               2,
+               'exer:you',
+               'exer:you'),
+              (' References ', 1, None, '___sec28'),
+              (' Appendix: Just for testing; part I ', 1, None, '___sec29'),
+              (' A subsection within an appendix ', 2, None, '___sec30'),
+              (' Appendix: Just for testing; part II ', 1, None, '___sec31'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec32'),
+              (' Appendix: Testing identical titles ',
+               2,
+               'test:title:id1',
+               'test:title:id1'),
+              (' Appendix: Testing identical titles ',
+               2,
+               'test:title:id2',
+               'test:title:id2'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec35'),
+              (' Appendix: Testing inline comments ', 2, None, '___sec36'),
+              (' Appendix: Testing headings ending with `verbatim inline` ',
+               2,
+               None,
+               '___sec37')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+
+<!-- newcommands_bfmath.tex -->
+$$
+\renewcommand{\u}{\pmb{u}}
+
+\newcommand{\xbm}{\boldsymbol{x}}
+\newcommand{\normalvecbm}{\boldsymbol{n}}
+\newcommand{\ubm}{\boldsymbol{u}}
+$$
+
+
+<!-- newcommands_replace.tex -->
+$$
+\newcommand{\x}{\pmb{x}}
+\newcommand{\normalvec}{\pmb{n}}
+\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
+\newcommand{\halfi}{1/2}
+\newcommand{\half}{\frac{1}{2}}
+\newcommand{\report}{test report}
+$$
+
+
+
+
+    
+<a name="part0002"></a>
+<!-- begin top navigation -->
+<a href="._testdoc001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+<!-- end top navigation -->
+
+<p>
+<!-- !split and check if these extra words are included properly in the comment -->
+
+<h2>LaTeX Mathematics  <a name="___sec12"></a></h2>
 
 <p>
 Here is an equation without label using backslash-bracket environment:
@@ -25676,7 +25715,7 @@ Automatically generated HTML file from Doconce source
 &nbsp; &nbsp; &nbsp; <a href="#___sec9"> Bibliography test </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#Example"> Example 1: Examples can be typeset as exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#subsubsec:ex"> URLs </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec12"> LaTeX Mathematics </a><br>
+<a href="#___sec12"> LaTeX Mathematics </a><br>
 <a href="#___sec13"> Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#demo:ex:1"> Problem 2: Flip a Coin </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec15"> Remarks </a><br>
@@ -26160,7 +26199,7 @@ and URLs.
 
 <p>
 <table border="1">
-<tr><td align="center">                                                                                                                                              </td> <td align="center">                                                                                                                                              </td> <td align="center">                                                                                                                                              </td> </tr>
+<tr></tr>
 <tr><td align="center">   $latex \mathcal{L}=0$                                                                                                                      </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0080.png"><img src="../doc/src/manual/mov/wave_frames/frame_0080.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0085.png"><img src="../doc/src/manual/mov/wave_frames/frame_0085.png" width="300"></a>    </td> </tr>
 <tr><td align="center">   $latex a=b$                                                                                                                                </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0090.png"><img src="../doc/src/manual/mov/wave_frames/frame_0090.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0095.png"><img src="../doc/src/manual/mov/wave_frames/frame_0095.png" width="300"></a>    </td> </tr>
 <tr><td align="center">   $latex \nabla\cdot\boldsymbol{u} =0 $                                                                                                      </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0100.png"><img src="../doc/src/manual/mov/wave_frames/frame_0100.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0105.png"><img src="../doc/src/manual/mov/wave_frames/frame_0105.png" width="300"></a>    </td> </tr>
@@ -26273,7 +26312,7 @@ More tough tests: repeated URLs whose footnotes when using the
 <a href="http://google.com" target="_blank">google</a>, which should result in exactly three
 footnotes.
 
-<h3>LaTeX Mathematics  <a name="___sec12"></a></h3>
+<h2>LaTeX Mathematics  <a name="___sec12"></a></h2>
 
 <p>
 Here is an equation without label using backslash-bracket environment:
@@ -27125,7 +27164,7 @@ Automatically generated HTML file from Doconce source
                'Example',
                'Example'),
               (' URLs ', 2, 'subsubsec:ex', 'subsubsec:ex'),
-              (' LaTeX Mathematics ', 2, None, '___sec12'),
+              (' LaTeX Mathematics ', 1, None, '___sec12'),
               (' Exercises ', 1, None, '___sec13'),
               (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
               (' Remarks ', 3, None, '___sec15'),
@@ -27282,7 +27321,7 @@ $$
 &nbsp; &nbsp; &nbsp; <a href="#___sec9"> Bibliography test </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#Example"> Example 1: Examples can be typeset as exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#subsubsec:ex"> URLs </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec12"> LaTeX Mathematics </a><br>
+<a href="#___sec12"> LaTeX Mathematics </a><br>
 <a href="#___sec13"> Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#demo:ex:1"> Problem 2: Flip a Coin </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec15"> Remarks </a><br>
@@ -27370,9 +27409,6 @@ Here is a nested list:
 <p>
 Here is a reference to Equation \eqref{my:eq1}.
 This equation appears in another part if this document is split.
-
-<p>
-<!-- !split and check if these extra words are included properly in the comment -->
 
 <h3>Subsection 1  <a name="___sec1"></a></h3>
 
@@ -27792,7 +27828,7 @@ and URLs.
 
 <p>
 <table border="1">
-<tr><td align="center">                                                                                                                                              </td> <td align="center">                                                                                                                                              </td> <td align="center">                                                                                                                                              </td> </tr>
+<tr></tr>
 <tr><td align="center">   \( \mathcal{L}=0 \)                                                                                                                        </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0080.png"><img src="../doc/src/manual/mov/wave_frames/frame_0080.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0085.png"><img src="../doc/src/manual/mov/wave_frames/frame_0085.png" width="300"></a>    </td> </tr>
 <tr><td align="center">   \( a=b \)                                                                                                                                  </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0090.png"><img src="../doc/src/manual/mov/wave_frames/frame_0090.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0095.png"><img src="../doc/src/manual/mov/wave_frames/frame_0095.png" width="300"></a>    </td> </tr>
 <tr><td align="center">   \( \nabla\cdot\boldsymbol{u} =0  \)                                                                                                        </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0100.png"><img src="../doc/src/manual/mov/wave_frames/frame_0100.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0105.png"><img src="../doc/src/manual/mov/wave_frames/frame_0105.png" width="300"></a>    </td> </tr>
@@ -27920,7 +27956,10 @@ More tough tests: repeated URLs whose footnotes when using the
 <a href="http://google.com" target="_self">google</a>, which should result in exactly three
 footnotes.
 
-<h3>LaTeX Mathematics  <a name="___sec12"></a></h3>
+<p>
+<!-- !split and check if these extra words are included properly in the comment -->
+
+<h2>LaTeX Mathematics  <a name="___sec12"></a></h2>
 
 <p>
 Here is an equation without label using backslash-bracket environment:
@@ -29351,7 +29390,6 @@ a block quote.
 
 Here is a reference to Equation (\ref{my:eq1}).
 
-% !split and check if these extra words are included properly in the comment
 
 \paragraph{Subsection 1.}
 More text, with a reference back to Section~\ref{sec1} and further
@@ -29904,7 +29942,10 @@ A sentence containing "refines lines" could easily
 fool a regex substitution with only i.e.~since the dot matches anything.
 Also, look at Fig.~4 to see how the data compares with Tab.~\ref{mytab}.
 
-\paragraph{{\LaTeX} Mathematics.}
+% !split and check if these extra words are included properly in the comment
+
+\subsection{{\LaTeX} Mathematics}
+
 Here is an equation without label using backslash-bracket environment:
 \[ a = b + c \]
 or with number and label, as in (\ref{my:eq1}), using the equation environment:
@@ -33016,18 +33057,18 @@ h1, h2, h3, h4, h5, h6 {
      -->
      <!-- Doconce automatically fills in the table of contents -->
           <!-- vagrant nav toc: " Section 1 " --> <li>  <a href="._testdoc_vagrant001.html#sec1"> Section 1 </a>
-     <!-- vagrant nav toc: " Subsection 1 " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec1"> Subsection 1 </a>
-     <!-- vagrant nav toc: " Computer code " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec2"> Computer code </a>
-     <!-- vagrant nav toc: " Running OS commands " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec3"> Running OS commands </a>
-     <!-- vagrant nav toc: " Subsection 2: Testing figures " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#subsec:ex"> Subsection 2: Testing figures </a>
-     <!-- vagrant nav toc: " The \( \theta \) parameter (not \( \nabla \)?) " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a>
-     <!-- vagrant nav toc: " Custom Environments " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec6"> Custom Environments </a>
-     <!-- vagrant nav toc: " Tables " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#subsec:table"> Tables </a>
-     <!-- vagrant nav toc: " A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec8"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a>
-     <!-- vagrant nav toc: " Bibliography test " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec9"> Bibliography test </a>
-     <!-- vagrant nav toc: " Example 1: Examples can be typeset as exercises " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#Example"> Example 1: Examples can be typeset as exercises </a>
-     <!-- vagrant nav toc: " URLs " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#subsubsec:ex"> URLs </a>
-     <!-- vagrant nav toc: " LaTeX Mathematics " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec12"> LaTeX Mathematics </a>
+     <!-- vagrant nav toc: " Subsection 1 " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec1"> Subsection 1 </a>
+     <!-- vagrant nav toc: " Computer code " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec2"> Computer code </a>
+     <!-- vagrant nav toc: " Running OS commands " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec3"> Running OS commands </a>
+     <!-- vagrant nav toc: " Subsection 2: Testing figures " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec:ex"> Subsection 2: Testing figures </a>
+     <!-- vagrant nav toc: " The \( \theta \) parameter (not \( \nabla \)?) " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a>
+     <!-- vagrant nav toc: " Custom Environments " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec6"> Custom Environments </a>
+     <!-- vagrant nav toc: " Tables " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec:table"> Tables </a>
+     <!-- vagrant nav toc: " A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec8"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a>
+     <!-- vagrant nav toc: " Bibliography test " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec9"> Bibliography test </a>
+     <!-- vagrant nav toc: " Example 1: Examples can be typeset as exercises " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#Example"> Example 1: Examples can be typeset as exercises </a>
+     <!-- vagrant nav toc: " URLs " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsubsec:ex"> URLs </a>
+     <!-- vagrant nav toc: " LaTeX Mathematics " --> <li>  <a href="._testdoc_vagrant002.html#___sec12"> LaTeX Mathematics </a>
      <!-- vagrant nav toc: " Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec13"> Exercises </a>
      <!-- vagrant nav toc: " Problem 2: Flip a Coin " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:1"> Problem 2: Flip a Coin </a>
      <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec15"> Remarks </a>
@@ -33087,7 +33128,7 @@ h1, h2, h3, h4, h5, h6 {
                'Example',
                'Example'),
               (' URLs ', 2, 'subsubsec:ex', 'subsubsec:ex'),
-              (' LaTeX Mathematics ', 2, None, '___sec12'),
+              (' LaTeX Mathematics ', 1, None, '___sec12'),
               (' Exercises ', 1, None, '___sec13'),
               (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
               (' Remarks ', 3, None, '___sec15'),
@@ -33230,18 +33271,18 @@ $$
 
 <p>
 <a href="._testdoc_vagrant001.html#sec1"> Section 1 </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec1"> Subsection 1 </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec2"> Computer code </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec3"> Running OS commands </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#subsec:ex"> Subsection 2: Testing figures </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec6"> Custom Environments </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#subsec:table"> Tables </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec8"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec9"> Bibliography test </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#Example"> Example 1: Examples can be typeset as exercises </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#subsubsec:ex"> URLs </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec12"> LaTeX Mathematics </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec1"> Subsection 1 </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec2"> Computer code </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec3"> Running OS commands </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#subsec:ex"> Subsection 2: Testing figures </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec6"> Custom Environments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#subsec:table"> Tables </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec8"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec9"> Bibliography test </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#Example"> Example 1: Examples can be typeset as exercises </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#subsubsec:ex"> URLs </a><br>
+<a href="._testdoc_vagrant002.html#___sec12"> LaTeX Mathematics </a><br>
 <a href="._testdoc_vagrant002.html#___sec13"> Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#demo:ex:1"> Problem 2: Flip a Coin </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec15"> Remarks </a><br>
@@ -33386,18 +33427,18 @@ h1, h2, h3, h4, h5, h6 {
      -->
      <!-- Doconce automatically fills in the table of contents -->
           <!-- vagrant nav toc: " Section 1 " --> <li>  <a href="._testdoc_vagrant001.html#sec1"> Section 1 </a>
-     <!-- vagrant nav toc: " Subsection 1 " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec1"> Subsection 1 </a>
-     <!-- vagrant nav toc: " Computer code " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec2"> Computer code </a>
-     <!-- vagrant nav toc: " Running OS commands " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec3"> Running OS commands </a>
-     <!-- vagrant nav toc: " Subsection 2: Testing figures " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#subsec:ex"> Subsection 2: Testing figures </a>
-     <!-- vagrant nav toc: " The \( \theta \) parameter (not \( \nabla \)?) " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a>
-     <!-- vagrant nav toc: " Custom Environments " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec6"> Custom Environments </a>
-     <!-- vagrant nav toc: " Tables " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#subsec:table"> Tables </a>
-     <!-- vagrant nav toc: " A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec8"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a>
-     <!-- vagrant nav toc: " Bibliography test " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec9"> Bibliography test </a>
-     <!-- vagrant nav toc: " Example 1: Examples can be typeset as exercises " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#Example"> Example 1: Examples can be typeset as exercises </a>
-     <!-- vagrant nav toc: " URLs " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#subsubsec:ex"> URLs </a>
-     <!-- vagrant nav toc: " LaTeX Mathematics " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec12"> LaTeX Mathematics </a>
+     <!-- vagrant nav toc: " Subsection 1 " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec1"> Subsection 1 </a>
+     <!-- vagrant nav toc: " Computer code " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec2"> Computer code </a>
+     <!-- vagrant nav toc: " Running OS commands " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec3"> Running OS commands </a>
+     <!-- vagrant nav toc: " Subsection 2: Testing figures " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec:ex"> Subsection 2: Testing figures </a>
+     <!-- vagrant nav toc: " The \( \theta \) parameter (not \( \nabla \)?) " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a>
+     <!-- vagrant nav toc: " Custom Environments " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec6"> Custom Environments </a>
+     <!-- vagrant nav toc: " Tables " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec:table"> Tables </a>
+     <!-- vagrant nav toc: " A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec8"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a>
+     <!-- vagrant nav toc: " Bibliography test " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec9"> Bibliography test </a>
+     <!-- vagrant nav toc: " Example 1: Examples can be typeset as exercises " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#Example"> Example 1: Examples can be typeset as exercises </a>
+     <!-- vagrant nav toc: " URLs " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsubsec:ex"> URLs </a>
+     <!-- vagrant nav toc: " LaTeX Mathematics " --> <li>  <a href="._testdoc_vagrant002.html#___sec12"> LaTeX Mathematics </a>
      <!-- vagrant nav toc: " Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec13"> Exercises </a>
      <!-- vagrant nav toc: " Problem 2: Flip a Coin " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:1"> Problem 2: Flip a Coin </a>
      <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec15"> Remarks </a>
@@ -33457,7 +33498,7 @@ h1, h2, h3, h4, h5, h6 {
                'Example',
                'Example'),
               (' URLs ', 2, 'subsubsec:ex', 'subsubsec:ex'),
-              (' LaTeX Mathematics ', 2, None, '___sec12'),
+              (' LaTeX Mathematics ', 1, None, '___sec12'),
               (' Exercises ', 1, None, '___sec13'),
               (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
               (' Remarks ', 3, None, '___sec15'),
@@ -33600,18 +33641,18 @@ $$
 
 <p>
 <a href="._testdoc_vagrant001.html#sec1"> Section 1 </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec1"> Subsection 1 </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec2"> Computer code </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec3"> Running OS commands </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#subsec:ex"> Subsection 2: Testing figures </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec6"> Custom Environments </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#subsec:table"> Tables </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec8"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec9"> Bibliography test </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#Example"> Example 1: Examples can be typeset as exercises </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#subsubsec:ex"> URLs </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec12"> LaTeX Mathematics </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec1"> Subsection 1 </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec2"> Computer code </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec3"> Running OS commands </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#subsec:ex"> Subsection 2: Testing figures </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec6"> Custom Environments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#subsec:table"> Tables </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec8"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec9"> Bibliography test </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#Example"> Example 1: Examples can be typeset as exercises </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#subsubsec:ex"> URLs </a><br>
+<a href="._testdoc_vagrant002.html#___sec12"> LaTeX Mathematics </a><br>
 <a href="._testdoc_vagrant002.html#___sec13"> Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#demo:ex:1"> Problem 2: Flip a Coin </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec15"> Remarks </a><br>
@@ -33756,18 +33797,18 @@ h1, h2, h3, h4, h5, h6 {
      -->
      <!-- Doconce automatically fills in the table of contents -->
           <!-- vagrant nav toc: " Section 1 " --> <li class="active">  <a href="._testdoc_vagrant001.html#sec1"> Section 1 </a>
-     <!-- vagrant nav toc: " Subsection 1 " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec1"> Subsection 1 </a>
-     <!-- vagrant nav toc: " Computer code " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec2"> Computer code </a>
-     <!-- vagrant nav toc: " Running OS commands " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec3"> Running OS commands </a>
-     <!-- vagrant nav toc: " Subsection 2: Testing figures " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#subsec:ex"> Subsection 2: Testing figures </a>
-     <!-- vagrant nav toc: " The \( \theta \) parameter (not \( \nabla \)?) " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a>
-     <!-- vagrant nav toc: " Custom Environments " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec6"> Custom Environments </a>
-     <!-- vagrant nav toc: " Tables " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#subsec:table"> Tables </a>
-     <!-- vagrant nav toc: " A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec8"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a>
-     <!-- vagrant nav toc: " Bibliography test " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec9"> Bibliography test </a>
-     <!-- vagrant nav toc: " Example 1: Examples can be typeset as exercises " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#Example"> Example 1: Examples can be typeset as exercises </a>
-     <!-- vagrant nav toc: " URLs " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#subsubsec:ex"> URLs </a>
-     <!-- vagrant nav toc: " LaTeX Mathematics " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec12"> LaTeX Mathematics </a>
+     <!-- vagrant nav toc: " Subsection 1 " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec1"> Subsection 1 </a>
+     <!-- vagrant nav toc: " Computer code " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec2"> Computer code </a>
+     <!-- vagrant nav toc: " Running OS commands " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec3"> Running OS commands </a>
+     <!-- vagrant nav toc: " Subsection 2: Testing figures " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec:ex"> Subsection 2: Testing figures </a>
+     <!-- vagrant nav toc: " The \( \theta \) parameter (not \( \nabla \)?) " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a>
+     <!-- vagrant nav toc: " Custom Environments " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec6"> Custom Environments </a>
+     <!-- vagrant nav toc: " Tables " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec:table"> Tables </a>
+     <!-- vagrant nav toc: " A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec8"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a>
+     <!-- vagrant nav toc: " Bibliography test " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec9"> Bibliography test </a>
+     <!-- vagrant nav toc: " Example 1: Examples can be typeset as exercises " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#Example"> Example 1: Examples can be typeset as exercises </a>
+     <!-- vagrant nav toc: " URLs " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsubsec:ex"> URLs </a>
+     <!-- vagrant nav toc: " LaTeX Mathematics " --> <li>  <a href="._testdoc_vagrant002.html#___sec12"> LaTeX Mathematics </a>
      <!-- vagrant nav toc: " Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec13"> Exercises </a>
      <!-- vagrant nav toc: " Problem 2: Flip a Coin " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:1"> Problem 2: Flip a Coin </a>
      <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec15"> Remarks </a>
@@ -33827,7 +33868,7 @@ h1, h2, h3, h4, h5, h6 {
                'Example',
                'Example'),
               (' URLs ', 2, 'subsubsec:ex', 'subsubsec:ex'),
-              (' LaTeX Mathematics ', 2, None, '___sec12'),
+              (' LaTeX Mathematics ', 1, None, '___sec12'),
               (' Exercises ', 1, None, '___sec13'),
               (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
               (' Remarks ', 3, None, '___sec15'),
@@ -33983,302 +34024,10 @@ Here is a nested list:
 Here is a reference to Equation <a href="._testdoc_vagrant002.html#mjx-eqn-3">(3)</a>.
 This equation appears in another part if this document is split.
 
-<p>
-<p>
-<!-- ------------------- end of main content --------------- -->
-
-
-<!--
-Preliminary examples/discussion on vagrant style syntax
-
-<div class='alert alert-block alert-notice'>
-  <h3>What about PHP? Python? Java?</h3>
-<p>
-bla-bla.
-</div>
-
-<p>
-While the <div class="deep-blue">rest of the</div> getting started
--->
-
-<ul class="pager">
-  <li class="previous">
-    <a href="._testdoc_vagrant000.html">&larr; Prev</a>
-  </li>
-
-  <li class="next">
-    <a href="._testdoc_vagrant002.html">Next &rarr;</a>
-  </li>
-
-</ul>
-
- </div>
-
- <div class="row Footer">
-  <div class="span12">
-  Here goes a footer, if desired, maybe with a Copyright &copy;
-  </div>
- </div>
-</div>
-</body>
-</html>
-
-
-
-
-************** File: ._testdoc_vagrant002.html *****************
-<html>
-<head>
-<!--
-This style is adopted from the (now old) vagrant 1.0 web
-pages. The style builds on the Twitter Bootstrap style.
-Modifications by Hans Petter Langtangen, hpl@simula.no.
-
-This style file should be copied and the following
-elements edited:
-
-Logo heading:
-
- LogoWord
- withSubWord
-
-Navigation links at the top:
-
- GO TO 1
- GO TO 2
-
-Footer at the end:
-
- Here goes a footer, if desired, maybe with a Copyright &copy;
-
--->
-
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: http://code.google.com/p/doconce/" />
-
-<link rel="stylesheet" href="style_vagrant/css/twitter_bootstrap.css">
-<link rel="stylesheet" href="style_vagrant/css/vagrant.css">
-<!-- Define color of headings here (last definition counts) -->
-<style type="text/css">
-h1, h2, h3, h4, h5, h6 {
-  color: #000;     /* black */
-  color: #999;     /* gray */
-  color: #005580;  /* dark blue */
-  color: #08c;     /* characteristic blue */
-</style>
-</head>
-<body>
-
-<title> Appendix: Testing headings ending with `verbatim inline` </title>
-
-<div class="container">
- <div class="row Header with-border">
-  <div class="span3 Module logo">
-   <h1><a href="/">LogoWord<span class="subtitle">withSubWord</span></a></h1>
-  </div>
-  <div class="span9">
-   <div class="Module navigation">
-   <!-- Navigation at the top of the page -->
-    <ul>
-     <li> <a href="">GO TO 1</a></li>
-     <li> <a href="">GO TO 2</a></li>
-    </ul>
-   </div>
-  </div>
- </div>
-</div>
-
-
-<!-- Here goes the table of contents in the sidebar
-     <li class="active"> means dark blue background for current section
--->
-<div class="row">
- <div class="span3 Module sidebar">
-  <div class="well" style="padding: 8px 0px;">
-   <ul class="nav nav-list">
-     <!-- Syntax:
-     <li> <a href="...">Section 1</a></li>
-     <li class="active"> <a href="...">Section 2</a></li>
-     <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2a</a></li>
-     <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2b</a></li>
-     -->
-     <!-- Doconce automatically fills in the table of contents -->
-          <!-- vagrant nav toc: " Section 1 " --> <li>  <a href="._testdoc_vagrant001.html#sec1"> Section 1 </a>
-     <!-- vagrant nav toc: " Subsection 1 " --> <li class="active"> &nbsp;  <a href="._testdoc_vagrant002.html#___sec1"> Subsection 1 </a>
-     <!-- vagrant nav toc: " Computer code " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec2"> Computer code </a>
-     <!-- vagrant nav toc: " Running OS commands " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec3"> Running OS commands </a>
-     <!-- vagrant nav toc: " Subsection 2: Testing figures " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#subsec:ex"> Subsection 2: Testing figures </a>
-     <!-- vagrant nav toc: " The \( \theta \) parameter (not \( \nabla \)?) " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a>
-     <!-- vagrant nav toc: " Custom Environments " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec6"> Custom Environments </a>
-     <!-- vagrant nav toc: " Tables " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#subsec:table"> Tables </a>
-     <!-- vagrant nav toc: " A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec8"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a>
-     <!-- vagrant nav toc: " Bibliography test " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec9"> Bibliography test </a>
-     <!-- vagrant nav toc: " Example 1: Examples can be typeset as exercises " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#Example"> Example 1: Examples can be typeset as exercises </a>
-     <!-- vagrant nav toc: " URLs " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#subsubsec:ex"> URLs </a>
-     <!-- vagrant nav toc: " LaTeX Mathematics " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec12"> LaTeX Mathematics </a>
-     <!-- vagrant nav toc: " Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec13"> Exercises </a>
-     <!-- vagrant nav toc: " Problem 2: Flip a Coin " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:1"> Problem 2: Flip a Coin </a>
-     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec15"> Remarks </a>
-     <!-- vagrant nav toc: " Not an exercise " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec16"> Not an exercise </a>
-     <!-- vagrant nav toc: " Project 3: Compute a Probability " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:2"> Project 3: Compute a Probability </a>
-     <!-- vagrant nav toc: " Project 4: Explore Distributions of Random Circles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a>
-     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec19"> Remarks </a>
-     <!-- vagrant nav toc: " Exercise 5: Determine some Distance " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 5: Determine some Distance </a>
-     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec21"> Remarks </a>
-     <!-- vagrant nav toc: " Some exercise without the "Exercise:" prefix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec22"> Some exercise without the "Exercise:" prefix </a>
-     <!-- vagrant nav toc: " Example 7: Just an example " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec23"> Example 7: Just an example </a>
-     <!-- vagrant nav toc: " Here goes another section " --> <li>  <a href="._testdoc_vagrant002.html#___sec24"> Here goes another section </a>
-     <!-- vagrant nav toc: " More Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec25"> More Exercises </a>
-     <!-- vagrant nav toc: " Exercise 8: Make references to projects and problems " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 8: Make references to projects and problems </a>
-     <!-- vagrant nav toc: " Project 9: References in a headings do not work well in html " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:you"> Project 9: References in a headings do not work well in html </a>
-     <!-- vagrant nav toc: " References " --> <li>  <a href="._testdoc_vagrant002.html#___sec28"> References </a>
-     <!-- vagrant nav toc: " Appendix: Just for testing; part I " --> <li>  <a href="._testdoc_vagrant002.html#___sec29"> Appendix: Just for testing; part I </a>
-     <!-- vagrant nav toc: " A subsection within an appendix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec30"> A subsection within an appendix </a>
-     <!-- vagrant nav toc: " Appendix: Just for testing; part II " --> <li>  <a href="._testdoc_vagrant002.html#___sec31"> Appendix: Just for testing; part II </a>
-     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec32"> Appendix: Testing identical titles </a>
-     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id1"> Appendix: Testing identical titles </a>
-     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id2"> Appendix: Testing identical titles </a>
-     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec35"> Appendix: Testing identical titles </a>
-     <!-- vagrant nav toc: " Appendix: Testing inline comments " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec36"> Appendix: Testing inline comments </a>
-     <!-- vagrant nav toc: " Appendix: Testing headings ending with <code>verbatim inline</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec37"> Appendix: Testing headings ending with <code>verbatim inline</code> </a>
-
-    </ul>
-   </div>
-  </div>
-
-  <div class="span9">
-
-
-<!-- tocinfo
-{'highest level': 1,
- 'sections': [(' Section 1 ', 1, 'sec1', 'sec1'),
-              (' Subsection 1 ', 2, None, '___sec1'),
-              (' Computer code ', 3, None, '___sec2'),
-              (' Running OS commands ', 3, None, '___sec3'),
-              (' Subsection 2: Testing figures ',
-               2,
-               'subsec:ex',
-               'subsec:ex'),
-              (' The $\\theta$ parameter (not $\\nabla$?) ',
-               2,
-               'decay:sec:theta',
-               'decay:sec:theta'),
-              (' Custom Environments ', 2, None, '___sec6'),
-              (' Tables ', 2, 'subsec:table', 'subsec:table'),
-              (' A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2` ',
-               2,
-               None,
-               '___sec8'),
-              (' Bibliography test ', 2, None, '___sec9'),
-              (' Example 1: Examples can be typeset as exercises ',
-               2,
-               'Example',
-               'Example'),
-              (' URLs ', 2, 'subsubsec:ex', 'subsubsec:ex'),
-              (' LaTeX Mathematics ', 2, None, '___sec12'),
-              (' Exercises ', 1, None, '___sec13'),
-              (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
-              (' Remarks ', 3, None, '___sec15'),
-              (' Not an exercise ', 2, None, '___sec16'),
-              (' Project 3: Compute a Probability ',
-               2,
-               'demo:ex:2',
-               'demo:ex:2'),
-              (' Project 4: Explore Distributions of Random Circles ',
-               2,
-               'proj:circle1',
-               'proj:circle1'),
-              (' Remarks ', 3, None, '___sec19'),
-              (' Exercise 5: Determine some Distance ',
-               2,
-               'exer:dist',
-               'exer:dist'),
-              (' Remarks ', 3, None, '___sec21'),
-              (' Some exercise without the "Exercise:" prefix ',
-               2,
-               None,
-               '___sec22'),
-              (' Example 7: Just an example ', 2, None, '___sec23'),
-              (' Here goes another section ', 1, None, '___sec24'),
-              (' More Exercises ', 1, None, '___sec25'),
-              (' Exercise 8: Make references to projects and problems ',
-               2,
-               'exer:some:formula',
-               'exer:some:formula'),
-              (' Project 9: References in a headings do not work well in html ',
-               2,
-               'exer:you',
-               'exer:you'),
-              (' References ', 1, None, '___sec28'),
-              (' Appendix: Just for testing; part I ', 1, None, '___sec29'),
-              (' A subsection within an appendix ', 2, None, '___sec30'),
-              (' Appendix: Just for testing; part II ', 1, None, '___sec31'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec32'),
-              (' Appendix: Testing identical titles ',
-               2,
-               'test:title:id1',
-               'test:title:id1'),
-              (' Appendix: Testing identical titles ',
-               2,
-               'test:title:id2',
-               'test:title:id2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec35'),
-              (' Appendix: Testing inline comments ', 2, None, '___sec36'),
-              (' Appendix: Testing headings ending with `verbatim inline` ',
-               2,
-               None,
-               '___sec37')]}
-end of tocinfo -->
-
-
-
-
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  TeX: {
-     equationNumbers: {  autoNumber: "none"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
-  }
-});
-</script>
-<script type="text/javascript"
- src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
-
-<!-- newcommands_bfmath.tex -->
-$$
-\renewcommand{\u}{\pmb{u}}
-
-\newcommand{\xbm}{\boldsymbol{x}}
-\newcommand{\normalvecbm}{\boldsymbol{n}}
-\newcommand{\ubm}{\boldsymbol{u}}
-$$
-
-
-<!-- newcommands_replace.tex -->
-$$
-\newcommand{\x}{\pmb{x}}
-\newcommand{\normalvec}{\pmb{n}}
-\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
-\newcommand{\halfi}{1/2}
-\newcommand{\half}{\frac{1}{2}}
-\newcommand{\report}{test report}
-$$
-
-
-
-
-<a name="part0002"></a>
-<!-- !split and check if these extra words are included properly in the comment -->
-
 <h3>Subsection 1  <a name="___sec1"></a></h3>
 
 <p>
-More text, with a reference back to the section <a href="._testdoc_vagrant001.html#sec1">Section 1</a> and further
+More text, with a reference back to the section <a href="#sec1">Section 1</a> and further
 to the section <a href="#subsubsec:ex">URLs</a>. 
 <!-- sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console -->
 
@@ -34693,7 +34442,7 @@ and URLs.
 
 <p>
 <table border="1">
-<tr><td align="center">                                                                                                                                              </td> <td align="center">                                                                                                                                              </td> <td align="center">                                                                                                                                              </td> </tr>
+<tr></tr>
 <tr><td align="center">   \( \mathcal{L}=0 \)                                                                                                                        </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0080.png"><img src="../doc/src/manual/mov/wave_frames/frame_0080.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0085.png"><img src="../doc/src/manual/mov/wave_frames/frame_0085.png" width="300"></a>    </td> </tr>
 <tr><td align="center">   \( a=b \)                                                                                                                                  </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0090.png"><img src="../doc/src/manual/mov/wave_frames/frame_0090.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0095.png"><img src="../doc/src/manual/mov/wave_frames/frame_0095.png" width="300"></a>    </td> </tr>
 <tr><td align="center">   \( \nabla\cdot\boldsymbol{u} =0  \)                                                                                                        </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0100.png"><img src="../doc/src/manual/mov/wave_frames/frame_0100.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0105.png"><img src="../doc/src/manual/mov/wave_frames/frame_0105.png" width="300"></a>    </td> </tr>
@@ -34709,31 +34458,31 @@ some text.
 <h3>Bibliography test  <a name="___sec9"></a></h3>
 
 <p>
-Here is an example: <a href="#Langtangen_Pedersen_2002">[1]</a> discussed propagation of
-large destructive water waves, <a href="#Langtangen_et_al_2002">[2]</a> gave
+Here is an example: <a href="._testdoc_vagrant002.html#Langtangen_Pedersen_2002">[1]</a> discussed propagation of
+large destructive water waves, <a href="._testdoc_vagrant002.html#Langtangen_et_al_2002">[2]</a> gave
 an overview of numerical methods for solving the Navier-Stokes equations,
 while the use of Backward Kolmogorov equations for analyzing
-random vibrations was investigated in <a href="#Langtangen_1994a">[3]</a>.
-The book chapter <a href="#Mardal_et_al_2003a">[4]</a> contains information on
+random vibrations was investigated in <a href="._testdoc_vagrant002.html#Langtangen_1994a">[3]</a>.
+The book chapter <a href="._testdoc_vagrant002.html#Mardal_et_al_2003a">[4]</a> contains information on
 C++ software tools for programming multigrid methods. A real retro
-reference is <a href="#Langtangen_1988d">[5]</a> about a big FORTRAN package.
+reference is <a href="._testdoc_vagrant002.html#Langtangen_1988d">[5]</a> about a big FORTRAN package.
 Multiple references are also possible, e.g., see
-<a href="#Langtangen_Pedersen_2002">[1]</a> <a href="#Mardal_et_al_2003a">[4]</a>.
+<a href="._testdoc_vagrant002.html#Langtangen_Pedersen_2002">[1]</a> <a href="._testdoc_vagrant002.html#Mardal_et_al_2003a">[4]</a>.
 
 <p>
 We need to cite more than 10 papers to reproduce an old formatting
 problem with blanks in the keys in reST format:
-<a href="#Langtangen_1992c">[6]</a> <a href="#Langtangen_1994a">[3]</a> <a href="#Mortensen_et_al_2011">[7]</a> <a href="#Langtangen_Pedersen_2002">[1]</a>
+<a href="._testdoc_vagrant002.html#Langtangen_1992c">[6]</a> <a href="._testdoc_vagrant002.html#Langtangen_1994a">[3]</a> <a href="._testdoc_vagrant002.html#Mortensen_et_al_2011">[7]</a> <a href="._testdoc_vagrant002.html#Langtangen_Pedersen_2002">[1]</a>
 and
-<a href="#Langtangen_et_al_2002">[2]</a> <a href="#Glimsdal_et_al_20006">[8]</a> <a href="#Rahman_et_al_2006b">[9]</a> <a href="#Haga_et_al_2011a">[10]</a> <a href="#Langtangen_2003a">[11]</a> <a href="#Langtangen_2008a">[12]</a> <a href="#Langtangen:95">[13]</a>
+<a href="._testdoc_vagrant002.html#Langtangen_et_al_2002">[2]</a> <a href="._testdoc_vagrant002.html#Glimsdal_et_al_20006">[8]</a> <a href="._testdoc_vagrant002.html#Rahman_et_al_2006b">[9]</a> <a href="._testdoc_vagrant002.html#Haga_et_al_2011a">[10]</a> <a href="._testdoc_vagrant002.html#Langtangen_2003a">[11]</a> <a href="._testdoc_vagrant002.html#Langtangen_2008a">[12]</a> <a href="._testdoc_vagrant002.html#Langtangen:95">[13]</a>
 and all the work of
-<a href="#Langtangen_2012">[14]</a> <a href="#Mardal_et_al_2003a">[4]</a> <a href="#Jeberg_et_al_2004">[15]</a> as well as
-old work <a href="#Langtangen_1988d">[5]</a> and <a href="#Langtangen_1989e">[16]</a>, and the
-talk <a href="#Langtangen_talk_2007a">[17]</a>.
-Langtangen also had two thesis <a href="#Langtangen:85">[18]</a> <a href="#Langtangen_1989e">[16]</a>.
+<a href="._testdoc_vagrant002.html#Langtangen_2012">[14]</a> <a href="._testdoc_vagrant002.html#Mardal_et_al_2003a">[4]</a> <a href="._testdoc_vagrant002.html#Jeberg_et_al_2004">[15]</a> as well as
+old work <a href="._testdoc_vagrant002.html#Langtangen_1988d">[5]</a> and <a href="._testdoc_vagrant002.html#Langtangen_1989e">[16]</a>, and the
+talk <a href="._testdoc_vagrant002.html#Langtangen_talk_2007a">[17]</a>.
+Langtangen also had two thesis <a href="._testdoc_vagrant002.html#Langtangen:85">[18]</a> <a href="._testdoc_vagrant002.html#Langtangen_1989e">[16]</a>.
 More retro citations are
-the old ME-IN323 book <a href="#Langtangen:91">[19]</a> and the
-<a href="#Langtangen:94b">[20]</a> OONSKI '94 paper.
+the old ME-IN323 book <a href="._testdoc_vagrant002.html#Langtangen:91">[19]</a> and the
+<a href="._testdoc_vagrant002.html#Langtangen:94b">[20]</a> OONSKI '94 paper.
 
 <p>
 <!-- --- begin exercise --- -->
@@ -34821,7 +34570,299 @@ More tough tests: repeated URLs whose footnotes when using the
 <a href="http://google.com" target="_self">google</a>, which should result in exactly three
 footnotes.
 
-<h3>LaTeX Mathematics  <a name="___sec12"></a></h3>
+<p>
+<p>
+<!-- ------------------- end of main content --------------- -->
+
+
+<!--
+Preliminary examples/discussion on vagrant style syntax
+
+<div class='alert alert-block alert-notice'>
+  <h3>What about PHP? Python? Java?</h3>
+<p>
+bla-bla.
+</div>
+
+<p>
+While the <div class="deep-blue">rest of the</div> getting started
+-->
+
+<ul class="pager">
+  <li class="previous">
+    <a href="._testdoc_vagrant000.html">&larr; Prev</a>
+  </li>
+
+  <li class="next">
+    <a href="._testdoc_vagrant002.html">Next &rarr;</a>
+  </li>
+
+</ul>
+
+ </div>
+
+ <div class="row Footer">
+  <div class="span12">
+  Here goes a footer, if desired, maybe with a Copyright &copy;
+  </div>
+ </div>
+</div>
+</body>
+</html>
+
+
+
+
+************** File: ._testdoc_vagrant002.html *****************
+<html>
+<head>
+<!--
+This style is adopted from the (now old) vagrant 1.0 web
+pages. The style builds on the Twitter Bootstrap style.
+Modifications by Hans Petter Langtangen, hpl@simula.no.
+
+This style file should be copied and the following
+elements edited:
+
+Logo heading:
+
+ LogoWord
+ withSubWord
+
+Navigation links at the top:
+
+ GO TO 1
+ GO TO 2
+
+Footer at the end:
+
+ Here goes a footer, if desired, maybe with a Copyright &copy;
+
+-->
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: http://code.google.com/p/doconce/" />
+
+<link rel="stylesheet" href="style_vagrant/css/twitter_bootstrap.css">
+<link rel="stylesheet" href="style_vagrant/css/vagrant.css">
+<!-- Define color of headings here (last definition counts) -->
+<style type="text/css">
+h1, h2, h3, h4, h5, h6 {
+  color: #000;     /* black */
+  color: #999;     /* gray */
+  color: #005580;  /* dark blue */
+  color: #08c;     /* characteristic blue */
+</style>
+</head>
+<body>
+
+<title> Appendix: Testing headings ending with `verbatim inline` </title>
+
+<div class="container">
+ <div class="row Header with-border">
+  <div class="span3 Module logo">
+   <h1><a href="/">LogoWord<span class="subtitle">withSubWord</span></a></h1>
+  </div>
+  <div class="span9">
+   <div class="Module navigation">
+   <!-- Navigation at the top of the page -->
+    <ul>
+     <li> <a href="">GO TO 1</a></li>
+     <li> <a href="">GO TO 2</a></li>
+    </ul>
+   </div>
+  </div>
+ </div>
+</div>
+
+
+<!-- Here goes the table of contents in the sidebar
+     <li class="active"> means dark blue background for current section
+-->
+<div class="row">
+ <div class="span3 Module sidebar">
+  <div class="well" style="padding: 8px 0px;">
+   <ul class="nav nav-list">
+     <!-- Syntax:
+     <li> <a href="...">Section 1</a></li>
+     <li class="active"> <a href="...">Section 2</a></li>
+     <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2a</a></li>
+     <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2b</a></li>
+     -->
+     <!-- Doconce automatically fills in the table of contents -->
+          <!-- vagrant nav toc: " Section 1 " --> <li>  <a href="._testdoc_vagrant001.html#sec1"> Section 1 </a>
+     <!-- vagrant nav toc: " Subsection 1 " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec1"> Subsection 1 </a>
+     <!-- vagrant nav toc: " Computer code " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec2"> Computer code </a>
+     <!-- vagrant nav toc: " Running OS commands " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec3"> Running OS commands </a>
+     <!-- vagrant nav toc: " Subsection 2: Testing figures " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec:ex"> Subsection 2: Testing figures </a>
+     <!-- vagrant nav toc: " The \( \theta \) parameter (not \( \nabla \)?) " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a>
+     <!-- vagrant nav toc: " Custom Environments " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec6"> Custom Environments </a>
+     <!-- vagrant nav toc: " Tables " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec:table"> Tables </a>
+     <!-- vagrant nav toc: " A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec8"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a>
+     <!-- vagrant nav toc: " Bibliography test " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec9"> Bibliography test </a>
+     <!-- vagrant nav toc: " Example 1: Examples can be typeset as exercises " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#Example"> Example 1: Examples can be typeset as exercises </a>
+     <!-- vagrant nav toc: " URLs " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsubsec:ex"> URLs </a>
+     <!-- vagrant nav toc: " LaTeX Mathematics " --> <li class="active">  <a href="._testdoc_vagrant002.html#___sec12"> LaTeX Mathematics </a>
+     <!-- vagrant nav toc: " Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec13"> Exercises </a>
+     <!-- vagrant nav toc: " Problem 2: Flip a Coin " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:1"> Problem 2: Flip a Coin </a>
+     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec15"> Remarks </a>
+     <!-- vagrant nav toc: " Not an exercise " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec16"> Not an exercise </a>
+     <!-- vagrant nav toc: " Project 3: Compute a Probability " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:2"> Project 3: Compute a Probability </a>
+     <!-- vagrant nav toc: " Project 4: Explore Distributions of Random Circles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a>
+     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec19"> Remarks </a>
+     <!-- vagrant nav toc: " Exercise 5: Determine some Distance " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 5: Determine some Distance </a>
+     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec21"> Remarks </a>
+     <!-- vagrant nav toc: " Some exercise without the "Exercise:" prefix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec22"> Some exercise without the "Exercise:" prefix </a>
+     <!-- vagrant nav toc: " Example 7: Just an example " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec23"> Example 7: Just an example </a>
+     <!-- vagrant nav toc: " Here goes another section " --> <li>  <a href="._testdoc_vagrant002.html#___sec24"> Here goes another section </a>
+     <!-- vagrant nav toc: " More Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec25"> More Exercises </a>
+     <!-- vagrant nav toc: " Exercise 8: Make references to projects and problems " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 8: Make references to projects and problems </a>
+     <!-- vagrant nav toc: " Project 9: References in a headings do not work well in html " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:you"> Project 9: References in a headings do not work well in html </a>
+     <!-- vagrant nav toc: " References " --> <li>  <a href="._testdoc_vagrant002.html#___sec28"> References </a>
+     <!-- vagrant nav toc: " Appendix: Just for testing; part I " --> <li>  <a href="._testdoc_vagrant002.html#___sec29"> Appendix: Just for testing; part I </a>
+     <!-- vagrant nav toc: " A subsection within an appendix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec30"> A subsection within an appendix </a>
+     <!-- vagrant nav toc: " Appendix: Just for testing; part II " --> <li>  <a href="._testdoc_vagrant002.html#___sec31"> Appendix: Just for testing; part II </a>
+     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec32"> Appendix: Testing identical titles </a>
+     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id1"> Appendix: Testing identical titles </a>
+     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id2"> Appendix: Testing identical titles </a>
+     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec35"> Appendix: Testing identical titles </a>
+     <!-- vagrant nav toc: " Appendix: Testing inline comments " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec36"> Appendix: Testing inline comments </a>
+     <!-- vagrant nav toc: " Appendix: Testing headings ending with <code>verbatim inline</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec37"> Appendix: Testing headings ending with <code>verbatim inline</code> </a>
+
+    </ul>
+   </div>
+  </div>
+
+  <div class="span9">
+
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' Section 1 ', 1, 'sec1', 'sec1'),
+              (' Subsection 1 ', 2, None, '___sec1'),
+              (' Computer code ', 3, None, '___sec2'),
+              (' Running OS commands ', 3, None, '___sec3'),
+              (' Subsection 2: Testing figures ',
+               2,
+               'subsec:ex',
+               'subsec:ex'),
+              (' The $\\theta$ parameter (not $\\nabla$?) ',
+               2,
+               'decay:sec:theta',
+               'decay:sec:theta'),
+              (' Custom Environments ', 2, None, '___sec6'),
+              (' Tables ', 2, 'subsec:table', 'subsec:table'),
+              (' A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2` ',
+               2,
+               None,
+               '___sec8'),
+              (' Bibliography test ', 2, None, '___sec9'),
+              (' Example 1: Examples can be typeset as exercises ',
+               2,
+               'Example',
+               'Example'),
+              (' URLs ', 2, 'subsubsec:ex', 'subsubsec:ex'),
+              (' LaTeX Mathematics ', 1, None, '___sec12'),
+              (' Exercises ', 1, None, '___sec13'),
+              (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
+              (' Remarks ', 3, None, '___sec15'),
+              (' Not an exercise ', 2, None, '___sec16'),
+              (' Project 3: Compute a Probability ',
+               2,
+               'demo:ex:2',
+               'demo:ex:2'),
+              (' Project 4: Explore Distributions of Random Circles ',
+               2,
+               'proj:circle1',
+               'proj:circle1'),
+              (' Remarks ', 3, None, '___sec19'),
+              (' Exercise 5: Determine some Distance ',
+               2,
+               'exer:dist',
+               'exer:dist'),
+              (' Remarks ', 3, None, '___sec21'),
+              (' Some exercise without the "Exercise:" prefix ',
+               2,
+               None,
+               '___sec22'),
+              (' Example 7: Just an example ', 2, None, '___sec23'),
+              (' Here goes another section ', 1, None, '___sec24'),
+              (' More Exercises ', 1, None, '___sec25'),
+              (' Exercise 8: Make references to projects and problems ',
+               2,
+               'exer:some:formula',
+               'exer:some:formula'),
+              (' Project 9: References in a headings do not work well in html ',
+               2,
+               'exer:you',
+               'exer:you'),
+              (' References ', 1, None, '___sec28'),
+              (' Appendix: Just for testing; part I ', 1, None, '___sec29'),
+              (' A subsection within an appendix ', 2, None, '___sec30'),
+              (' Appendix: Just for testing; part II ', 1, None, '___sec31'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec32'),
+              (' Appendix: Testing identical titles ',
+               2,
+               'test:title:id1',
+               'test:title:id1'),
+              (' Appendix: Testing identical titles ',
+               2,
+               'test:title:id2',
+               'test:title:id2'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec35'),
+              (' Appendix: Testing inline comments ', 2, None, '___sec36'),
+              (' Appendix: Testing headings ending with `verbatim inline` ',
+               2,
+               None,
+               '___sec37')]}
+end of tocinfo -->
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+
+<!-- newcommands_bfmath.tex -->
+$$
+\renewcommand{\u}{\pmb{u}}
+
+\newcommand{\xbm}{\boldsymbol{x}}
+\newcommand{\normalvecbm}{\boldsymbol{n}}
+\newcommand{\ubm}{\boldsymbol{u}}
+$$
+
+
+<!-- newcommands_replace.tex -->
+$$
+\newcommand{\x}{\pmb{x}}
+\newcommand{\normalvec}{\pmb{n}}
+\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
+\newcommand{\halfi}{1/2}
+\newcommand{\half}{\frac{1}{2}}
+\newcommand{\report}{test report}
+$$
+
+
+
+
+<a name="part0002"></a>
+<!-- !split and check if these extra words are included properly in the comment -->
+
+<h2>LaTeX Mathematics  <a name="___sec12"></a></h2>
 
 <p>
 Here is an equation without label using backslash-bracket environment:
@@ -35774,12 +35815,8 @@ Here is a nested list:
 
 
 
-Here is a reference to Equation :ref:`(3.3) <Eq:my:eq1>`.
+Here is a reference to Equation :ref:`(3.1) <Eq:my:eq1>`.
 This equation appears in another part if this document is split.
-
-
-************** File: ._testdoc002.rst *****************
-.. !split and check if these extra words are included properly in the comment
 
 
 Subsection 1
@@ -36398,8 +36435,13 @@ footnotes.
 
 
 
+
+************** File: ._testdoc002.rst *****************
+.. !split and check if these extra words are included properly in the comment
+
+
 LaTeX Mathematics
------------------
+=================
 
 Here is an equation without label using backslash-bracket environment:
 
@@ -44813,7 +44855,7 @@ Automatically generated HTML file from Doconce source
       -webkit-background-clip: padding-box;
       background-clip: padding-box;
     }
-    tt { font-family: "Courier New", Courier; }
+    tt, code { font-family: "Courier New", Courier; }
     hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
     p { text-indent: 0px; }
     p.caption { width: 80%; font-style: normal; text-align: left; }
@@ -73778,7 +73820,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 789.
+t line 788.
 
 
 
@@ -73798,7 +73840,7 @@ t line 789.
 
 
 
-t line 798.
+t line 797.
 
 
 
@@ -73818,7 +73860,7 @@ t line 798.
 
 
 
-t line 802.
+t line 801.
 
 
 
@@ -73897,6 +73939,21 @@ Overfull \hbox (5.03835pt too wide)
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on .
@@ -73910,11 +73967,11 @@ Package amsmath Warning: Foreign command \over;
 
 
 
+[14]
 
 
 ...rest of part of LaTeX line number...
 
-[14]
 
 
 
@@ -74444,12 +74501,12 @@ dmap/pdftex.map}] (./testdoc.toc) [2] [3] (./testdoc.tdo) [4]
 (./testdoc.out.pyg) (./testdoc.out.pyg [5]) (./testdoc.out.pyg)
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg [6])
 (./testdoc.out.pyg) (./testdoc.out.pyg) [7]
-<../doc/src/manual/fig/wave1D.pdf, id=230, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=236, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
 [8 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=243, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=249, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=245, 578.16pt x 433.62pt>
+<downloaded_figures/f_plot.png, id=251, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png> [9 <./downloaded_figures/f_plot.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -74476,17 +74533,17 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
 [10 <../doc/src/manual/fig/wave1D.png>] [11]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=270, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=276, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=271, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=277, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=272, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=278, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=273, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=279, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=274, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=280, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=275, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=281, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -74510,7 +74567,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 789.
+t line 788.
 
 
 
@@ -74530,7 +74587,7 @@ t line 789.
 
 
 
-t line 798.
+t line 797.
 
 
 
@@ -74550,7 +74607,7 @@ t line 798.
 
 
 
-t line 802.
+t line 801.
 
 
 
@@ -74850,23 +74907,23 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 are/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm
 /lm-rm.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib1
 0.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/font
-s/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx8.pfb>
-</usr/share/texmf/fonts/type1/public/lm/lmbx9.pfb></usr/share/texmf/fonts/type1
-/public/lm/lmcsc10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr
-/share/texmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/type1/pub
-lic/lm/lmmi7.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/
-texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/l
-mr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/font
-s/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></u
-sr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/p
-ublic/lm/lmss12.pfb></usr/share/texmf/fonts/type1/public/lm/lmss8.pfb></usr/sha
-re/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/
-lm/lmsy7.pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb></usr/share/tex
-mf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmt
-t12.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt8.pfb></usr/share/texmf/fon
-ts/type1/public/lm/lmtt9.pfb></usr/share/texmf/fonts/type1/public/lm/lmtti10.pf
-b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb
->
+s/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx7.pfb>
+</usr/share/texmf/fonts/type1/public/lm/lmbx8.pfb></usr/share/texmf/fonts/type1
+/public/lm/lmbx9.pfb></usr/share/texmf/fonts/type1/public/lm/lmcsc10.pfb></usr/
+share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/publ
+ic/lm/lmmi12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi7.pfb></usr/share/
+texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/l
+mr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fon
+ts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></
+usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf/fonts/type1/pu
+blic/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmss12.pfb></usr/sha
+re/texmf/fonts/type1/public/lm/lmss8.pfb></usr/share/texmf/fonts/type1/public/l
+m/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy7.pfb></usr/share/texm
+f/fonts/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt
+10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb></usr/share/texmf/fon
+ts/type1/public/lm/lmtt8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
+</usr/share/texmf/fonts/type1/public/lm/lmtti10.pfb></usr/share/texlive/texmf-d
+ist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
 Output written on testdoc.pdf (20 pages, ).
 Transcript written on testdoc.log.
 + makeindex testdoc
@@ -75110,12 +75167,12 @@ dmap/pdftex.map}] (./testdoc.toc) [2] [3] (./testdoc.tdo) [4]
 (./testdoc.out.pyg) (./testdoc.out.pyg [5]) (./testdoc.out.pyg)
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg [6])
 (./testdoc.out.pyg) (./testdoc.out.pyg) [7]
-<../doc/src/manual/fig/wave1D.pdf, id=230, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=236, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
 [8 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=243, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=249, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=245, 578.16pt x 433.62pt>
+<downloaded_figures/f_plot.png, id=251, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png> [9 <./downloaded_figures/f_plot.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -75142,17 +75199,17 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
 [10 <../doc/src/manual/fig/wave1D.png>] [11]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=270, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=276, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=271, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=277, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=272, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=278, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=273, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=279, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=274, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=280, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=275, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=281, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -75176,7 +75233,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 789.
+t line 788.
 
 
 
@@ -75196,7 +75253,7 @@ t line 789.
 
 
 
-t line 798.
+t line 797.
 
 
 
@@ -75216,7 +75273,7 @@ t line 798.
 
 
 
-t line 802.
+t line 801.
 
 
 
@@ -75520,23 +75577,23 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 are/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm
 /lm-rm.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib1
 0.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/font
-s/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx8.pfb>
-</usr/share/texmf/fonts/type1/public/lm/lmbx9.pfb></usr/share/texmf/fonts/type1
-/public/lm/lmcsc10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr
-/share/texmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/type1/pub
-lic/lm/lmmi7.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/
-texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/l
-mr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/font
-s/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></u
-sr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/p
-ublic/lm/lmss12.pfb></usr/share/texmf/fonts/type1/public/lm/lmss8.pfb></usr/sha
-re/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/
-lm/lmsy7.pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb></usr/share/tex
-mf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmt
-t12.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt8.pfb></usr/share/texmf/fon
-ts/type1/public/lm/lmtt9.pfb></usr/share/texmf/fonts/type1/public/lm/lmtti10.pf
-b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb
->
+s/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx7.pfb>
+</usr/share/texmf/fonts/type1/public/lm/lmbx8.pfb></usr/share/texmf/fonts/type1
+/public/lm/lmbx9.pfb></usr/share/texmf/fonts/type1/public/lm/lmcsc10.pfb></usr/
+share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/publ
+ic/lm/lmmi12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi7.pfb></usr/share/
+texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/l
+mr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fon
+ts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></
+usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf/fonts/type1/pu
+blic/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmss12.pfb></usr/sha
+re/texmf/fonts/type1/public/lm/lmss8.pfb></usr/share/texmf/fonts/type1/public/l
+m/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy7.pfb></usr/share/texm
+f/fonts/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt
+10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb></usr/share/texmf/fon
+ts/type1/public/lm/lmtt8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
+</usr/share/texmf/fonts/type1/public/lm/lmtti10.pfb></usr/share/texlive/texmf-d
+ist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
 Output written on testdoc.pdf (23 pages, ).
 Transcript written on testdoc.log.
 + pdflatex -shell-escape testdoc
@@ -75762,12 +75819,12 @@ dmap/pdftex.map}] (./testdoc.toc) [2] [3] (./testdoc.tdo) [4]
 (./testdoc.out.pyg) (./testdoc.out.pyg [5]) (./testdoc.out.pyg)
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg [6])
 (./testdoc.out.pyg) (./testdoc.out.pyg) [7]
-<../doc/src/manual/fig/wave1D.pdf, id=230, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=236, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
 [8 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=243, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=249, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=245, 578.16pt x 433.62pt>
+<downloaded_figures/f_plot.png, id=251, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png> [9 <./downloaded_figures/f_plot.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -75794,17 +75851,17 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
 [10 <../doc/src/manual/fig/wave1D.png>] [11]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=270, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=276, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=271, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=277, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=272, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=278, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=273, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=279, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=274, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=280, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=275, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=281, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -76054,23 +76111,23 @@ downloaded_figures/f_plot.png
 are/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm
 /lm-rm.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib1
 0.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/font
-s/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx8.pfb>
-</usr/share/texmf/fonts/type1/public/lm/lmbx9.pfb></usr/share/texmf/fonts/type1
-/public/lm/lmcsc10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr
-/share/texmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/type1/pub
-lic/lm/lmmi7.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/
-texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/l
-mr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/font
-s/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></u
-sr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/p
-ublic/lm/lmss12.pfb></usr/share/texmf/fonts/type1/public/lm/lmss8.pfb></usr/sha
-re/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/
-lm/lmsy7.pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb></usr/share/tex
-mf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmt
-t12.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt8.pfb></usr/share/texmf/fon
-ts/type1/public/lm/lmtt9.pfb></usr/share/texmf/fonts/type1/public/lm/lmtti10.pf
-b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb
->
+s/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx7.pfb>
+</usr/share/texmf/fonts/type1/public/lm/lmbx8.pfb></usr/share/texmf/fonts/type1
+/public/lm/lmbx9.pfb></usr/share/texmf/fonts/type1/public/lm/lmcsc10.pfb></usr/
+share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/publ
+ic/lm/lmmi12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi7.pfb></usr/share/
+texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/l
+mr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fon
+ts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></
+usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf/fonts/type1/pu
+blic/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmss12.pfb></usr/sha
+re/texmf/fonts/type1/public/lm/lmss8.pfb></usr/share/texmf/fonts/type1/public/l
+m/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy7.pfb></usr/share/texm
+f/fonts/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt
+10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb></usr/share/texmf/fon
+ts/type1/public/lm/lmtt8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
+</usr/share/texmf/fonts/type1/public/lm/lmtti10.pfb></usr/share/texlive/texmf-d
+ist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
 Output written on testdoc.pdf (23 pages, ).
 Transcript written on testdoc.log.
 + cp testdoc.tex testdoc.tex_ptex2tex
@@ -76450,32 +76507,8 @@ reading sources... [ 50%] ._testdoc001
 reading sources... [ 75%] ._testdoc002
 reading sources... [100%] index
 
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc002.rst:494: WARNING: Inline interpreted text or phrase reference start-string without end-string.
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc002.rst:738: SEVERE: Title level inconsistent:
-
-Exercises
-=========
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc002.rst:1163: SEVERE: Title level inconsistent:
-
-Here goes another section
-=========================
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc002.rst:1168: SEVERE: Title level inconsistent:
-
-More Exercises
-==============
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc002.rst:1212: SEVERE: Title level inconsistent:
-
-References
-==========
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc002.rst:1344: SEVERE: Title level inconsistent:
-
-Appendix: Just for testing; part I
-==================================
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc002.rst:1354: SEVERE: Title level inconsistent:
-
-Appendix: Just for testing; part II
-===================================
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc002.rst:None: WARNING: nonlocal image URI found: https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:554: WARNING: Inline interpreted text or phrase reference start-string without end-string.
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:None: WARNING: nonlocal image URI found: https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png
 looking for now-outdated files... none found
 pickling environment... done
 checking consistency... done
@@ -76485,15 +76518,15 @@ writing output... [ 50%] ._testdoc001
 writing output... [ 75%] ._testdoc002
 writing output... [100%] index
 
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc002.rst:720: WARNING: undefined label: eq:eq1a (if the link has no caption the label must precede a section header)
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc002.rst:720: WARNING: undefined label: eq:eq2a (if the link has no caption the label must precede a section header)
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc002.rst:104: WARNING: undefined label: eq:eq1a (if the link has no caption the label must precede a section header)
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc002.rst:104: WARNING: undefined label: eq:eq2a (if the link has no caption the label must precede a section header)
 writing additional files... (0 module code pages) genindex search
 copying images... [100%] wave1D.png
 
 copying static files... done
 dumping search index... done
 dumping object inventory... done
-build succeeded, 10 warnings.
+build succeeded, 4 warnings.
 
 Build finished. The HTML pages are in _build/html.
 <title>(.+?) &mdash;.+?</title> replaced by <title>\g<1></title> in search.html

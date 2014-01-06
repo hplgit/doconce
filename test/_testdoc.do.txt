@@ -59,7 +59,6 @@ Here is a reference to Equation (ref{my:eq1}).
 This equation appears in another part if this document is split.
 # #endif
 
-!split and check if these extra words are included properly in the comment
 
 ===== Subsection 1 =====
 
@@ -568,7 +567,7 @@ More tough tests: repeated URLs whose footnotes when using the
 footnotes.
 
 
-% if FORMAT == "latex":
+% if FORMAT in ("latex", "pdflatex"):
 
 ===== Test of Some LaTeX Fixes =====
 
@@ -584,7 +583,9 @@ fool a regex substitution with only i.e. since the dot matches anything.
 Also, look at Fig. 4 to see how the data compares with Tab. ref{mytab}.
 % endif
 
-===== LaTeX Mathematics =====
+!split and check if these extra words are included properly in the comment
+
+======= LaTeX Mathematics =======
 
 Here is an equation without label using backslash-bracket environment:
 !bt

@@ -4044,13 +4044,6 @@ def doconce_rst_split(parts, basename, filename):
     """Native doconce style splitting of rst file into parts."""
     # Write the parts to file and fix references to equations.
 
-    # Fix cross-referencing of equations between parts:
-    # Replace all labels inside math environments with ordinary
-    # sphinx anchors and replace all :eq: references to equations
-    # in other parts with ordinary :ref: references. Number labels
-    # locally in files (as Sphinx automatically does), but use
-    # links of the type partnumber.labelnumber (where labelnumber
-    # is local.
     label_pattern = r'.. math::\s+:label: (.+?)$'
     parts_label = [re.findall(label_pattern, ''.join(part), flags=re.MULTILINE)
                    for part in parts]
@@ -4068,9 +4061,36 @@ def doconce_rst_split(parts, basename, filename):
 
     generated_files = []
     for pn, part in enumerate(parts):
+        text = ''.join(part)
+        # Check if headings are consistent: the first heading must be
+        # the highest one
+        m = re.search(r'^(%%+|==+|--+|~~+)$', text, flags=re.MULTILINE)
+        if m:
+            first_heading = m.group(1)
+            if first_heading.startswith('='):
+                if re.search(r'^(%%+)$', text, flags=re.MULTILINE):
+                    print """
+*** error: first heading in part %d is a section, but the part
+    also contains a chapter.
+    !split must be moved to avoid such inconsistent reST headings""" % pn
+                    _abort()
+            elif first_heading.startswith('-'):
+                if re.search(r'^(%%+|==+)$', text, flags=re.MULTILINE):
+                    print """
+*** error: first heading in part %d is a subsection, but the part
+    also contains a chapter or section.
+    !split must be moved to avoid such inconsistent reST headings""" % pn
+                    _abort()
+            elif first_heading.startswith('~'):
+                if re.search(r'^(%%+|==+|--+)$', text, flags=re.MULTILINE):
+                    print """
+*** error: first heading in part %d is a subsubsection, but the part
+    also contains a chapter, section, or subsection.
+    !split must be moved to avoid such inconsistent reST headings""" % pn
+                    _abort()
+
         part_filename = _part_filename % (basename, pn) + '.rst'
         generated_files.append(part_filename)
-        text = ''.join(part)
 
         for label in parts_label[pn]:
             # All math labels get an anchor above for equation refs

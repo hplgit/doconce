@@ -497,8 +497,8 @@ def latex_table(table):
                table['rows'][i+1] == ['horizontal rule']:
                 headline = True
                 # Empty column headings?
-                skip_headline = bool(''.join([column.strip()
-                                              for column in table['rows'][i]]))
+                skip_headline = max([len(column.strip())
+                                     for column in row]) == 0
             else:
                 headline = False
 
