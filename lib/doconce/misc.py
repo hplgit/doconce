@@ -101,6 +101,8 @@ inserted to the right in exercises - "default" and "none" are allowed
      'Upgrade all sections: sections to chapters, subsections to sections, etc.'),
     ('--sections_down',
      'Downgrade all sections: chapters to sections, sections to subsections, etc.'),
+    ('--os_prompt=',
+     'Terminal prompt in output from running OS commands (@@@OSCMD). None or empty: no prompt, just the command; nocmd: no command, just the output. Default is "Terminal>".'),
     ('--code_prefix=',
      'Prefix all @@@CODE imports with some path.'),
     ('--figure_prefix=',

@@ -548,8 +548,12 @@ def bm2boldsymbol(filestr, format):
     return filestr
 
 def insert_code_from_file(filestr, format):
+    if not '@@@CODE ' in filestr:
+        return filestr
+
     # Create dummy file if specified file not found?
     CREATE_DUMMY_FILE = False
+
     # Filename prefix
     path_prefix = option('code_prefix=', '')
     if '~' in path_prefix:
@@ -569,7 +573,7 @@ def insert_code_from_file(filestr, format):
         if inside_verbatim:
             continue
 
-        if line.startswith('@@@CODE'):
+        if line.startswith('@@@CODE '):
             debugpr('\nFound verbatim copy (line %d):\n%s\n' % (i+1, line))
             words = line.split()
             try:
@@ -742,6 +746,65 @@ def insert_code_from_file(filestr, format):
     return filestr
 
 
+def insert_os_commands(filestr, format):
+    if not '@@@OSCMD ' in filestr:
+        return filestr
+
+    # Filename prefix
+    path_prefix = option('code_prefix=', '')
+    if '~' in path_prefix:
+        path_prefix = os.path.expanduser(path_prefix)
+    os_prompt = option('os_prompt=', 'Terminal>')
+
+    import subprocess
+    def system(cmd):
+        """Run system command cmd."""
+        print '*** running OS command', cmd
+        try:
+            output = subprocess.check_output(cmd, shell=True,
+                                             stderr=subprocess.STDOUT)
+        except subprocess.CalledProcessError as e:
+            print '*** error: failure of @@@OSCMD %s' % cmd
+            print e.output
+            print 'Return code:', e.returncode
+            _abort()
+        print '-------- terminal output ----------'
+        print output.rstrip()
+        print '-----------------------------------'
+        return output
+
+    lines = filestr.splitlines()
+    inside_verbatim = False
+    for i in range(len(lines)):
+        line = lines[i]
+        line = line.lstrip()
+
+        # detect if we are inside verbatim blocks:
+        if line.startswith('!bc'):
+            inside_verbatim = True
+        if line.startswith('!ec'):
+            inside_verbatim = False
+        if inside_verbatim:
+            continue
+
+        if line.startswith('@@@OSCMD '):
+            cmd = line[9:].strip()
+            output = system(cmd)
+            text = '!bc sys\n'
+            if os_prompt in ('None', 'none', 'empty'):
+                text += cmd + '\n'
+            elif os_prompt == 'nocmd':
+                pass  # drop showing cmd
+            else:
+                text += os_prompt + ' ' + cmd + '\n'
+            text += output
+            if text[-1] != '\n':
+                text += '\n'
+            text += '!ec\n'
+            lines[i] = text
+    filestr = '\n'.join(lines)
+    return filestr
+
 def exercises(filestr, format, code_blocks, tex_blocks):
     # Exercise:
     # ===== Exercise: title ===== (starts with at least 3 =, max 5)
@@ -762,6 +825,8 @@ def exercises(filestr, format, code_blocks, tex_blocks):
         exer_heading_pattern = re.compile(r'^\s*(=====)\s*\{?(Exercise|Problem|Project|Example)\}?:\s*(?P<title>[^ =-].+?)\s*=====')
     else:
         exer_heading_pattern = re.compile(r'^\s*(=====)\s*\{?(Exercise|Problem|Project)\}?:\s*(?P<title>[^ =-].+?)\s*=====')
+    if not re.search(exer_heading_pattern, filestr):
+        return filestr
 
     label_pattern = re.compile(r'^\s*label\{(.+?)\}')
     # We accept file and solution to be comment lines
@@ -2297,14 +2362,19 @@ def doconce2format(filestr, format):
     else:
         has_title = False
 
+    # Next step: run operating system commands and insert output
+    filestr = insert_os_commands(filestr, format)
+    debugpr('%s\n**** The file after running @@@OSCMD (from file):\n\n%s\n\n' %
+            ('*'*80, filestr))
+
     # Next step: insert verbatim code from other (source code) files:
     # (if the format is latex, we could let ptex2tex do this, but
     # the CODE start@stop specifications may contain uderscores and
     # asterix, which will be replaced later and hence destroyed)
     #if format != 'latex':
     filestr = insert_code_from_file(filestr, format)
-    debugpr('%s\n**** The file after inserting @@@CODE (from file):\n\n%s\n\n' % \
-          ('*'*80, filestr))
+    debugpr('%s\n**** The file after inserting @@@CODE (from file):\n\n%s\n\n' %
+            ('*'*80, filestr))
 
     # Hack to fix a bug with !ec/!et at the end of files, which is not
     # correctly substituted by '' in rst, sphinx, st, epytext, plain, wikis

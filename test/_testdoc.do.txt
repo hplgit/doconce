@@ -68,6 +68,8 @@ to Section ref{subsubsec:ex}. idx{`somefunc` function}
 
 # sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console
 
+=== Computer code ===
+
 Let's do some copying from files too. First from subroutine up to the very end,
 
 @@@CODE ../doc/src/manual/__testcode.f fromto: subroutine@
@@ -210,6 +212,9 @@ green color containing a linebreak.
 And one more.} Some formats will only display this correctly when
 HTML is the output format.
 
+=== Running OS commands ===
+
+@@@OSCMD python -c 'print "Testing\noutput\nfrom\nPython."'
 
 ===== Subsection 2: Testing figures =====
 label{subsec:ex}
