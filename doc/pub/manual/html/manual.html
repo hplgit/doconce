@@ -3679,31 +3679,83 @@ are to external documents declared by a comment line <tt class="docutils literal
 <span class="pre">Externaldocuments:</span> <span class="pre">testdoc,</span> <span class="pre">mydoc</span></tt> (usually after the title, authors,
 and date). In this case the output text is <tt class="docutils literal"><span class="pre">internal</span> <span class="pre">cite</span></tt> and the
 LaTeX package <tt class="docutils literal"><span class="pre">xr</span></tt> is used to handle the labels in the external documents.
-If none of the two situations above applies, the <tt class="docutils literal"><span class="pre">external</span></tt>
+When referring to a complete chapter (not a section in it), which
+corresponds to a complete external document, it does not make sense
+to write out <tt class="docutils literal"><span class="pre">internal</span> <span class="pre">cite</span></tt> since the <tt class="docutils literal"><span class="pre">internal</span></tt> reference is a
+chapter number. In such cases, the <tt class="docutils literal"><span class="pre">refch[][][]</span></tt> syntax can be used,
+and if the label is in another LaTeX document, the output is just <tt class="docutils literal"><span class="pre">cite</span></tt>.
+For all
+output formats other than <tt class="docutils literal"><span class="pre">latex</span></tt> and <tt class="docutils literal"><span class="pre">pdflatex</span></tt>, the <tt class="docutils literal"><span class="pre">external</span></tt>
 text will be the output.</p>
-<p>Here is an example on a specific generalized reference:</p>
+<p>Here is an example on a specific generalized reference to a section
+in a document:</p>
 <div class="highlight-text"><div class="highlight"><pre>As explained in
 ref[Section ref{subsec:ex}][in &quot;Langtangen, 2012&quot;:
 &quot;http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex&quot;
-cite{testdoc:12}][a &quot;section&quot;: &quot;http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex&quot; in
-the document &quot;A Document for Testing Doconce&quot;: &quot;http://hplgit.github.io/doconce/test/demo_testdoc.html&quot;
+cite{testdoc:12}][a &quot;section&quot;:
+&quot;http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex&quot; in
+the document &quot;A Document for Testing Doconce&quot;:
+&quot;http://hplgit.github.io/doconce/test/demo_testdoc.html&quot;
 cite{testdoc:12}], Doconce documents may include movies.
 </pre></div>
 </div>
-<p>In LaTeX, this becomes something like</p>
+<p>With <tt class="docutils literal"><span class="pre">latex</span></tt> or <tt class="docutils literal"><span class="pre">pdflatex</span></tt> as output, this translates to</p>
+<div class="highlight-text"><div class="highlight"><pre>As explained in
+Section ref{subsec:ex}, Doconce documents may include movies.
+</pre></div>
+</div>
+<p>if the `` appears in the present Doconce source, and
+otherwise</p>
+<div class="highlight-text"><div class="highlight"><pre>As explained in
+Section ref{subsec:ex} in &quot;Langtangen, 2012&quot;:
+&quot;http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex&quot;
+cite{testdoc:12}, Doconce documents may include movies.
+</pre></div>
+</div>
+<p>The
+The latter Doconce code is translated to the following
+LaTeX code:</p>
 <div class="highlight-text"><div class="highlight"><pre>As explained in
 Section~\ref{subsec:ex} in
 \href{{http://hplgit.github.io/doconce/...}}{Langtangen, 2012}
 \cite{testdoc:12}, Doconce documents may include movies.
 </pre></div>
 </div>
-<p>Note that there is a specific numbered reference to an external
-document, if <tt class="docutils literal"><span class="pre">subsec:ex</span></tt> is not a label in the present document,
-and that we add a citation in the usual way, but also include
-a link to the document using the name of the other or some other
-relevant link text. The link can be the same or different from
-links used in the &#8220;external&#8221; part of the reference (LaTeX cannot
-have links to local files, so a complete URL must be used).</p>
+<p>In a format different from <tt class="docutils literal"><span class="pre">latex</span></tt> and <tt class="docutils literal"><span class="pre">pdflatex</span></tt>, the Doconce
+text becomes</p>
+<div class="highlight-text"><div class="highlight"><pre>As explained in
+a &quot;section&quot;:
+&quot;http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex&quot; in
+the document &quot;A Document for Testing Doconce&quot;:
+&quot;http://hplgit.github.io/doconce/test/demo_testdoc.html&quot;
+cite{testdoc:12}, Doconce documents may include movies.
+</pre></div>
+</div>
+<p>A reference to an entire external document, which is usually a chapter
+if the reference is internal in the Doconce source, applies the
+<tt class="docutils literal"><span class="pre">refch</span></tt> syntax:</p>
+<div class="highlight-text"><div class="highlight"><pre>As explained in
+refch[Chapter ref{ch:testdoc][&quot;Langtangen, 2012&quot;:
+&quot;http://hplgit.github.io/doconce/test/demo_testdoc.html&quot;
+cite{testdoc:12}][the document
+&quot;A Document for Testing Doconce&quot;:
+&quot;http://hplgit.github.io/doconce/test/demo_testdoc.html&quot;
+cite{testdoc:12}], Doconce documents may include movies.
+</pre></div>
+</div>
+<p>The output now if <tt class="docutils literal"><span class="pre">ch:testdoc</span></tt> is not a label in the document,
+becomes in the <tt class="docutils literal"><span class="pre">latex</span></tt> and <tt class="docutils literal"><span class="pre">pdflatex</span></tt> case</p>
+<div class="highlight-text"><div class="highlight"><pre>As explained in
+&quot;Langtangen, 2012&quot;:
+&quot;http://hplgit.github.io/doconce/test/demo_testdoc.html&quot;
+cite{testdoc:12}, Doconce documents may include movies.
+</pre></div>
+</div>
+<p>That is, the internal reference <tt class="docutils literal"><span class="pre">Chapter</span> <span class="pre">...</span></tt> is omitted since
+it is not meaningful to refer to an external document as &#8220;Chapter&#8221;.</p>
+<p>Note that LaTeX cannot
+have links to local files, so a complete URL on the form
+<tt class="docutils literal"><span class="pre">http://...</span></tt> must be used.</p>
 </div>
 <div class="section" id="index">
 <h2>Index<a class="headerlink" href="#index" title="Permalink to this headline">¶</a></h2>

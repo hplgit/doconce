@@ -1849,9 +1849,9 @@ def handle_cross_referencing(filestr, format):
     # 3. Handle references that can be internal or external
     #    ref[internal][cite][external-HTML]
     internal_labels = re.findall(r'label\{(.+?)\}', filestr)
-    ref_pattern = r'ref\[([^\]]*?)\]\[([^\]]*?)\]\[([^\]]*?)\]'
+    ref_pattern = r'ref(ch)?\[([^\]]*?)\]\[([^\]]*?)\]\[([^\]]*?)\]'
     general_refs = re.findall(ref_pattern, filestr)
-    for internal, cite, external in general_refs:
+    for chapref, internal, cite, external in general_refs:
         ref_text = 'ref[%s][%s][%s]' % (internal, cite, external)
         if not internal and not external:
             print ref_text, 'has empty fields'
@@ -1863,9 +1863,8 @@ def handle_cross_referencing(filestr, format):
             # All refs to labels in this doc
             filestr = filestr.replace(ref_text, internal)
         elif format in ('latex', 'pdflatex'):
-            replacement = internal
             if cite:
-                replacement += ' ' + cite
+                replacement = cite if chapref else internal + cite
             filestr = filestr.replace(ref_text, replacement)
         else:
             filestr = filestr.replace(ref_text, external)

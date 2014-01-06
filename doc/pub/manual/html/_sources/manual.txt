@@ -4313,10 +4313,17 @@ are to external documents declared by a comment line ``#
 Externaldocuments: testdoc, mydoc`` (usually after the title, authors,
 and date). In this case the output text is ``internal cite`` and the
 LaTeX package ``xr`` is used to handle the labels in the external documents.
-If none of the two situations above applies, the ``external``
+When referring to a complete chapter (not a section in it), which
+corresponds to a complete external document, it does not make sense
+to write out ``internal cite`` since the ``internal`` reference is a
+chapter number. In such cases, the ``refch[][][]`` syntax can be used,
+and if the label is in another LaTeX document, the output is just ``cite``.
+For all
+output formats other than ``latex`` and ``pdflatex``, the ``external``
 text will be the output.
 
-Here is an example on a specific generalized reference:
+Here is an example on a specific generalized reference to a section
+in a document:
 
 .. code-block:: text
 
@@ -4324,11 +4331,34 @@ Here is an example on a specific generalized reference:
         As explained in
         ref[Section ref{subsec:ex}][in "Langtangen, 2012":
         "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex"
-        cite{testdoc:12}][a "section": "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex" in
-        the document "A Document for Testing Doconce": "http://hplgit.github.io/doconce/test/demo_testdoc.html"
+        cite{testdoc:12}][a "section":
+        "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex" in
+        the document "A Document for Testing Doconce":
+        "http://hplgit.github.io/doconce/test/demo_testdoc.html"
         cite{testdoc:12}], Doconce documents may include movies.
 
-In LaTeX, this becomes something like
+With ``latex`` or ``pdflatex`` as output, this translates to
+
+.. code-block:: text
+
+
+        As explained in
+        Section ref{subsec:ex}, Doconce documents may include movies.
+
+if the `` appears in the present Doconce source, and
+otherwise
+
+.. code-block:: text
+
+
+        As explained in
+        Section ref{subsec:ex} in "Langtangen, 2012":
+        "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex"
+        cite{testdoc:12}, Doconce documents may include movies.
+
+The
+The latter Doconce code is translated to the following
+LaTeX code:
 
 .. code-block:: text
 
@@ -4338,13 +4368,54 @@ In LaTeX, this becomes something like
         \href{{http://hplgit.github.io/doconce/...}}{Langtangen, 2012}
         \cite{testdoc:12}, Doconce documents may include movies.
 
-Note that there is a specific numbered reference to an external
-document, if ``subsec:ex`` is not a label in the present document,
-and that we add a citation in the usual way, but also include
-a link to the document using the name of the other or some other
-relevant link text. The link can be the same or different from
-links used in the "external" part of the reference (LaTeX cannot
-have links to local files, so a complete URL must be used).
+In a format different from ``latex`` and ``pdflatex``, the Doconce
+text becomes
+
+.. code-block:: text
+
+
+        As explained in
+        a "section":
+        "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex" in
+        the document "A Document for Testing Doconce":
+        "http://hplgit.github.io/doconce/test/demo_testdoc.html"
+        cite{testdoc:12}, Doconce documents may include movies.
+
+
+A reference to an entire external document, which is usually a chapter
+if the reference is internal in the Doconce source, applies the
+``refch`` syntax:
+
+
+.. code-block:: text
+
+
+        As explained in
+        refch[Chapter ref{ch:testdoc]["Langtangen, 2012":
+        "http://hplgit.github.io/doconce/test/demo_testdoc.html"
+        cite{testdoc:12}][the document
+        "A Document for Testing Doconce":
+        "http://hplgit.github.io/doconce/test/demo_testdoc.html"
+        cite{testdoc:12}], Doconce documents may include movies.
+
+The output now if ``ch:testdoc`` is not a label in the document,
+becomes in the ``latex`` and ``pdflatex`` case
+
+
+.. code-block:: text
+
+
+        As explained in
+        "Langtangen, 2012":
+        "http://hplgit.github.io/doconce/test/demo_testdoc.html"
+        cite{testdoc:12}, Doconce documents may include movies.
+
+That is, the internal reference ``Chapter ...`` is omitted since
+it is not meaningful to refer to an external document as "Chapter".
+
+Note that LaTeX cannot
+have links to local files, so a complete URL on the form
+``http://...`` must be used.
 
 
 Index

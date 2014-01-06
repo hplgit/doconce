@@ -4494,21 +4494,47 @@ are to external documents declared by a comment line <code>#
 Externaldocuments: testdoc, mydoc</code> (usually after the title, authors,
 and date). In this case the output text is <code>internal cite</code> and the
 LaTeX package <code>xr</code> is used to handle the labels in the external documents.
-If none of the two situations above applies, the <code>external</code>
+When referring to a complete chapter (not a section in it), which
+corresponds to a complete external document, it does not make sense
+to write out <code>internal cite</code> since the <code>internal</code> reference is a
+chapter number. In such cases, the <code>refch[][][]</code> syntax can be used,
+and if the label is in another LaTeX document, the output is just <code>cite</code>.
+For all
+output formats other than <code>latex</code> and <code>pdflatex</code>, the <code>external</code>
 text will be the output.
 
 <p>
-Here is an example on a specific generalized reference:
+Here is an example on a specific generalized reference to a section
+in a document:
 <!-- begin verbatim block -->
 <pre><code>As explained in
 ref[Section ref{subsec:ex}][in &quot;Langtangen, 2012&quot;:
 &quot;http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex&quot;
-cite{testdoc:12}][a &quot;section&quot;: &quot;http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex&quot; in
-the document &quot;A Document for Testing Doconce&quot;: &quot;http://hplgit.github.io/doconce/test/demo_testdoc.html&quot;
+cite{testdoc:12}][a &quot;section&quot;:
+&quot;http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex&quot; in
+the document &quot;A Document for Testing Doconce&quot;:
+&quot;http://hplgit.github.io/doconce/test/demo_testdoc.html&quot;
 cite{testdoc:12}], Doconce documents may include movies.
 </code></pre>
 <!-- end verbatim block -->
-In LaTeX, this becomes something like
+With <code>latex</code> or <code>pdflatex</code> as output, this translates to
+<!-- begin verbatim block -->
+<pre><code>As explained in
+Section ref{subsec:ex}, Doconce documents may include movies.
+</code></pre>
+<!-- end verbatim block -->
+if the <code><a name="subsec:ex"></a></code> appears in the present Doconce source, and
+otherwise
+<!-- begin verbatim block -->
+<pre><code>As explained in
+Section ref{subsec:ex} in &quot;Langtangen, 2012&quot;:
+&quot;http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex&quot;
+cite{testdoc:12}, Doconce documents may include movies.
+</code></pre>
+<!-- end verbatim block -->
+The
+The latter Doconce code is translated to the following
+LaTeX code:
 <!-- begin verbatim block -->
 <pre><code>As explained in
 Section~\ref{subsec:ex} in
@@ -4516,13 +4542,52 @@ Section~\ref{subsec:ex} in
 \cite{testdoc:12}, Doconce documents may include movies.
 </code></pre>
 <!-- end verbatim block -->
-Note that there is a specific numbered reference to an external
-document, if <code>subsec:ex</code> is not a label in the present document,
-and that we add a citation in the usual way, but also include
-a link to the document using the name of the other or some other
-relevant link text. The link can be the same or different from
-links used in the "external" part of the reference (LaTeX cannot
-have links to local files, so a complete URL must be used).
+In a format different from <code>latex</code> and <code>pdflatex</code>, the Doconce
+text becomes
+<!-- begin verbatim block -->
+<pre><code>As explained in
+a &quot;section&quot;:
+&quot;http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex&quot; in
+the document &quot;A Document for Testing Doconce&quot;:
+&quot;http://hplgit.github.io/doconce/test/demo_testdoc.html&quot;
+cite{testdoc:12}, Doconce documents may include movies.
+</code></pre>
+<!-- end verbatim block -->
+
+<p>
+A reference to an entire external document, which is usually a chapter
+if the reference is internal in the Doconce source, applies the
+<code>refch</code> syntax:
+
+<p>
+<!-- begin verbatim block -->
+<pre><code>As explained in
+refch[Chapter ref{ch:testdoc][&quot;Langtangen, 2012&quot;:
+&quot;http://hplgit.github.io/doconce/test/demo_testdoc.html&quot;
+cite{testdoc:12}][the document
+&quot;A Document for Testing Doconce&quot;:
+&quot;http://hplgit.github.io/doconce/test/demo_testdoc.html&quot;
+cite{testdoc:12}], Doconce documents may include movies.
+</code></pre>
+<!-- end verbatim block -->
+The output now if <code>ch:testdoc</code> is not a label in the document,
+becomes in the <code>latex</code> and <code>pdflatex</code> case
+
+<p>
+<!-- begin verbatim block -->
+<pre><code>As explained in
+&quot;Langtangen, 2012&quot;:
+&quot;http://hplgit.github.io/doconce/test/demo_testdoc.html&quot;
+cite{testdoc:12}, Doconce documents may include movies.
+</code></pre>
+<!-- end verbatim block -->
+That is, the internal reference <code>Chapter ...</code> is omitted since
+it is not meaningful to refer to an external document as "Chapter".
+
+<p>
+Note that LaTeX cannot
+have links to local files, so a complete URL on the form
+<code>http://...</code> must be used.
 
 <h3>Index  <a name="___sec70"></a></h3>
 
