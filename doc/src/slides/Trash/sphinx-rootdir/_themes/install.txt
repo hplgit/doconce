@@ -1,0 +1,25 @@
+Source code for additional themes (not in basic sphinx distribution):
+
+basicstrap:
+https://github.com/tell-k/sphinxjp.themes.basicstrap
+(no module, probably not necessary to install)
+
+bootstrap:
+https://github.com/ryan-roemer/sphinx-bootstrap-theme
+#http://ryan-roemer.github.com/sphinx-bootstrap-theme/README.html
+
+cloud and redcloud:
+https://bitbucket.org/ecollins/cloud_sptheme
+
+solarized:
+https://bitbucket.org/miiton/sphinxjp.themes.solarized
+
+impressjs:
+https://github.com/shkumagai/sphinxjp.themes.impressjs
+
+# Not yet Doconce supported:
+htmlslide:
+https://bitbucket.org/shimizukawa/sphinxjp.themes.htmlslide
+
+s6:
+https://bitbucket.org/shimizukawa/sphinxjp.themes.s6

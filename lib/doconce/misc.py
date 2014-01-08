@@ -253,11 +253,12 @@ def recommended_html_styles_and_pygments_styles():
         'serif': ['perldoc'],
         'simple': ['autumn', 'default', 'perldoc'],
         'blood': ['monokai', 'native'],
-        'cbc': ['default', 'autumn'],
         'sky': ['default'],
         'night': ['fruity', 'native'],
         'moon': ['fruity', 'native'],
         'darkgray': ['native', 'monokai'],
+        'cbc': ['default', 'autumn'],
+        'simula': ['autumn', 'default'],
         },
         'csss': {
         'csss_default': ['monokai'],
@@ -2402,14 +2403,20 @@ def generate_html5_slides(header, parts, footer, basename, filename,
 <link rel="stylesheet" href="reveal.js/css/reveal.css">
 <link rel="stylesheet" href="reveal.js/css/theme/beige.css" id="theme">
 <link rel="stylesheet" href="reveal.js/css/theme/beigesmall.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/solarized.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/serif.css" id="theme">
 <link rel="stylesheet" href="reveal.js/css/theme/night.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/moon.css" id="theme">
 <link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">
 <link rel="stylesheet" href="reveal.js/css/theme/sky.css" id="theme">
 <link rel="stylesheet" href="reveal.js/css/theme/darkgray.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/default.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/cbc.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/simula.css" id="theme">
 -->
 
 <!-- For syntax highlighting -->
-<link rel="stylesheet" href="lib/css/zenburn.css">
+<link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
 
 <!-- If the query includes 'print-pdf', use the PDF print sheet -->
 <script>
@@ -2459,22 +2466,22 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
 </div> <!-- class="slides" -->
 </div> <!-- class="reveal" -->
 
-<script src="reveal.js/lib/js/head.js"></script>
-<script src="reveal.js/js/reveal.js"></script>
+<script src="reveal.js/lib/js/head.min.js"></script>
+<script src="reveal.js/js/reveal.min.js"></script>
 
 <script>
 // Full list of configuration options available here:
 // https://github.com/hakimel/reveal.js#configuration
 Reveal.initialize({
 
-    // Display controls in the bottom right corner
+    // Display navigation controls in the bottom right corner
     controls: true,
 
-    // Display a presentation progress bar
+    // Display progress bar (below the horiz. slider)
     progress: true,
 
     // Display the page number of the current slide
-    slideNumber: false,
+    slideNumber: true,
 
     // Push each slide change to the browser history
     history: false,
@@ -2486,7 +2493,8 @@ Reveal.initialize({
     overview: true,
 
     // Vertical centering of slides
-    center: true,
+    //center: true,
+    center: false,
 
     // Enables touch navigation on devices with touch input
     touch: true,
@@ -2547,33 +2555,50 @@ Reveal.initialize({
 Reveal.initialize({
     dependencies: [
         // Cross-browser shim that fully implements classList - https://github.com/eligrey/classList.js/
-        { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+        { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
 
         // Interpret Markdown in <section> elements
-        { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-        { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+        { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+        { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 
         // Syntax highlight for <code> elements
-        { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+        { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
 
         // Zoom in and out with Alt+click
-        { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+        { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
 
         // Speaker notes
-        { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+        { src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
 
         // Remote control your reveal.js presentation using a touch device
-        //{ src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } },
+        //{ src: 'reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } },
 
         // MathJax
-        //{ src: 'plugin/math/math.js', async: true }
+        //{ src: 'reveal.js/plugin/math/math.js', async: true }
     ]
+});
+
+Reveal.initialize({
+
+    // The "normal" size of the presentation, aspect ratio will be preserved
+    // when the presentation is scaled to fit different resolutions. Can be
+    // specified using percentage units.
+    width:  960,
+    height: 700,
+
+    // Factor of the display size that should remain empty around the content
+    margin: 0.1,
+
+    // Bounds for smallest/largest possible scale to apply to content
+    minScale: 0.2,
+    maxScale: 1.0
+
 });
 </script>
 
 <!-- begin footer logo
 <div style="position: absolute; bottom: 0px; left: 0; margin-left: 0px">
-<img src="%(footer_logo)s">
+<img src="somelogo.png">
 </div>
      end footer logo -->
 
@@ -3519,9 +3544,7 @@ git://github.com/barraq/deck.ext.js.git
         )
 
     theme = option('html_slide_theme=', default='default')
-    footer_logo = option('html_footer_logo=', default=None)
-    if footer_logo == 'cbc':
-        footer_logo = 'reveal.js/css/theme/cbc_footer.png'
+
     # Check that the theme name is registered
     #from doconce.misc import recommended_html_styles_and_pygments_styles
     all_combinations = recommended_html_styles_and_pygments_styles()
@@ -3560,15 +3583,55 @@ git://github.com/barraq/deck.ext.js.git
            slide_syntax[slide_tp]['head_header'] % slide_syntax[slide_tp]
     slide_syntax[slide_tp]['body_header'] = \
            slide_syntax[slide_tp]['body_header'] % slide_syntax[slide_tp]
+
+    footer_logo = option('html_footer_logo=', default=None)
+    if footer_logo == 'cbc':
+        footer_logo = 'cbc_footer'
+    elif footer_logo == 'simula':
+        footer_logo = 'simula_footer'
+    elif footer_logo == 'uio':
+        footer_logo = 'uio_footer'
+    pattern = r'<!-- begin footer logo\s+(.+?)\s+end footer logo -->'
+    if footer_logo == 'cbc_footer':
+        repl = """
+<div style="position: absolute; bottom: 0px; left: 0; margin-left: 0px;">
+<img src="reveal.js/css/theme/cbc_footer.png" width=110%;></div>
+"""
+    elif footer_logo == 'cbc_symbol':
+        repl = """
+<div style="position: absolute; bottom: 0px; left: 0; margin-left: 20px; margin-bottom: 20px;">
+<img src="reveal.js/css/theme/cbc_symbol.png"></div>
+"""
+    elif footer_logo == 'simula_footer':
+        repl = """
+<div style="position: absolute; bottom: 0px; left: 0; margin-left: 0px;">
+<img src="reveal.js/css/theme/simula_footer.png" width=700></div>
+"""
+    elif footer_logo == 'simula_symbol':
+        repl = """
+<div style="position: absolute; bottom: 0px; left: 0; margin-left: 20px; margin-bottom: 10px;">
+<img src="reveal.js/css/theme/simula_symbol.png" width=200></div>
+"""
+    elif footer_logo == 'uio_footer':
+        repl = """
+<div style="position: absolute; bottom: 0px; left: 0; margin-left: 20px; margin-bottom: 0px;">
+<img src="reveal.js/css/theme/uio_footer.png" width=450></div>
+"""
+    elif footer_logo == 'uio_symbol':
+        repl = """
+<div style="position: absolute; bottom: 0px; left: 0; margin-left: 20px; margin-bottom: 20px;">
+<img src="reveal.js/css/theme/uio_symbol.png" width=100></div>
+"""
+    elif footer_logo == 'uio_simula_symbol':
+        repl = """
+<div style="position: absolute; bottom: 0px; left: 0; margin-left: 20px; margin-bottom: 0px;">
+<img src="reveal.js/css/theme/uio_footer.png" width=180></div>
+<div style="position: absolute; bottom: 0px; left: 0; margin-left: 250px; margin-bottom: 0px;">
+<img src="reveal.js/css/theme/simula_symbol.png" width=250></div>
+"""
     if footer_logo is not None:
-        slide_syntax[slide_tp]['footer'] = \
-            slide_syntax[slide_tp]['footer'] % vars()
-        slide_syntax[slide_tp]['footer'] = \
-            slide_syntax[slide_tp]['footer'].replace(
-                '<!-- begin footer logo',   '<!-- begin footer logo -->')
-        slide_syntax[slide_tp]['footer'] = \
-            slide_syntax[slide_tp]['footer'].replace(
-                '     end footer logo -->', '<!-- end footer logo -->')
+        slide_syntax[slide_tp]['footer'] = re.sub(
+            pattern, repl, slide_syntax[slide_tp]['footer'], flags=re.DOTALL)
 
     # Grab the relevant lines in the <head> and <body> parts of
     # the original header
@@ -3691,8 +3754,8 @@ td.padding {
                             for combination in
                             recommended_combinations[html_style]]))
 
-        # Fix styles: native should have black background for neon and night
-        if slide_syntax[slide_tp]['theme'] in ['neon', 'night']:
+        # Fix styles: native should have black background for dark themes
+        if slide_syntax[slide_tp]['theme'] in ['neon', 'night', 'moon', 'blood']:
             if pygm_style == 'native':
                 # Change to black background
                 part = part.replace('background: #202020',
@@ -3748,11 +3811,14 @@ td.padding {
 
         # Special treatment of the text for some slide tools
         if slide_tp == 'deck':
-            part = part.replace('<pre>', '<pre><code>')
-            part = part.replace('</pre>', '</code></pre>')
+            part = re.sub(r'<pre>(.+?)</pre>',
+                          r'<pre><code>\g<1></code></pre>',
+                          part, flags=re.DOTALL)
         if slide_tp == 'reveal':
-            part = part.replace('<pre>', '<pre><code data-trim contenteditable>')
-            part = part.replace('</pre>', '</code></pre>')
+            part = re.sub(r'<pre><code>(.+?)</code></pre>',
+                          r'<pre><code data-trim contenteditable>\g<1></code></pre>',
+                          part,
+                          flags=re.DOTALL)
 
         part = part.replace('</ul>', '</ul>\n<p>')
         part = part.replace('</ol>', '</ol>\n<p>')

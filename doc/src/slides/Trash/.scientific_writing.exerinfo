@@ -1,0 +1,31 @@
+
+# Information about all exercises in the file scientific_writing.do.txt.
+# The information can be loaded into a Python list of dicts by
+#
+# f = open('.scientific_writing.exerinfo', 'r')
+# exer = eval(f.read())
+#
+[{'answer': '',
+  'closing_remarks': '',
+  'file': ['flip_coin.py', 'flip_coin.pdf'],
+  'heading': '=====',
+  'hints': [],
+  'keywords': ['random numbers', 'Monte Carlo simulation'],
+  'label': None,
+  'no': 1,
+  'solution': '',
+  'solution_file': ['mysol.txt', 'mysol_flip_coin.py'],
+  'subex': [{'answer': '',
+             'file': None,
+             'hints': ['Use `r = random.random()` and define head as `r <= 0.5`.'],
+             'solution': '',
+             'text': 'Make a program that simulates flipping a coin $N$ times.'},
+            {'answer': '0.5.',
+             'file': None,
+             'hints': [],
+             'solution': '',
+             'text': 'Compute the probability of getting heads.'}],
+  'text': '',
+  'title': 'Flip a Coin',
+  'type': 'Problem',
+  'type_visible': True}]

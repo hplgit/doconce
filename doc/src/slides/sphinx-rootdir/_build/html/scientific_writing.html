@@ -1,0 +1,1332 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Scientific Writing and Publishing Anno 2013</title>
+    
+    <link rel="stylesheet" href="_static/pyramid.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
+        <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
+
+        <script>sagecell.makeSagecell({inputLocation: ".sage"});</script>
+
+        <style type="text/css">
+                .sagecell .CodeMirror-scroll {
+                        overflow-y: hidden;
+                        overflow-x: auto;
+                }
+                .sagecell .CodeMirror {
+                        height: auto;
+                }
+        </style>
+
+    
+    <link rel="top" title="Some Title" href="index.html" />
+    <link rel="prev" title="Some Title" href="index.html" />
+
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  
+   <style type=text/css>
+     div.admonition {
+       background-color: whiteSmoke;
+       border: 1px solid #bababa;
+     }
+   </style>
+  </head>
+
+  <body>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="index.html" title="Some Title"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Some Title</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="scientific-writing-and-publishing-anno-2013">
+<h1>Scientific Writing and Publishing Anno 2013<a class="headerlink" href="#scientific-writing-and-publishing-anno-2013" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Author:</th><td class="field-body">Hans Petter Langtangen</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jan 8, 2014</td>
+</tr>
+</tbody>
+</table>
+<div class="figure">
+<a class="reference internal image-reference" href="_images/doconce1b.png"><img alt="_images/doconce1b.png" src="_images/doconce1b.png" style="width: 400px;" /></a>
+</div>
+</div>
+<div class="section" id="challenges-with-tools-for-scientific-writing">
+<h1>Challenges with tools for scientific writing<a class="headerlink" href="#challenges-with-tools-for-scientific-writing" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="scientific-writing-latex">
+<h2>Scientific writing = LaTeX<a class="headerlink" href="#scientific-writing-latex" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>Pre 1980: Handwriting + publisher (paper or book)</li>
+<li>Post 1984: scientists write TeX and LaTeX</li>
+<li>Post 1995: publish LaTeX on the web or in journals and books</li>
+</ul>
+</div></blockquote>
+<div class="highlight-text"><div class="highlight"><pre>\providecommand{\shadedskip}{}
+\definecolor{shadecolor}{rgb}{0.87843, 0.95686, 1.0}
+\renewenvironment{shadedskip}{
+\def\FrameCommand{\colorbox{shadecolor}}\FrameRule0.6pt
+\MakeFramed {\FrameRestore}\vskip3mm}{\vskip0mm\endMakeFramed}
+\providecommand{\shadedquoteBlue}{}
+\renewenvironment{shadedquoteBlue}[1][]{
+\bgroup\rmfamily\fboxsep=0mm\relax
+\begin{shadedskip}
+\list{}{\parsep=-2mm\parskip=0mm\topsep=0pt\leftmargin=2mm
+\rightmargin=2\leftmargin\leftmargin=4pt\relax}
+\relax}{\endlist\end{shadedskip}\egroup}\begin{shadedquoteBlue}
+\fontsize{9pt}{9pt}
+\begin{Verbatim}
+print &#39;Hello, World!&#39;
+\end{Verbatim}
+</pre></div>
+</div>
+<p>Big late 1990s question: Will MS Word replace LaTeX? It never did!</p>
+</div>
+<div class="section" id="scientific-publishing-needs-to-address-new-media">
+<h2>Scientific publishing needs to address new media<a class="headerlink" href="#scientific-publishing-needs-to-address-new-media" title="Permalink to this headline">¶</a></h2>
+<div class="figure">
+<a class="reference internal image-reference" href="_images/ipad.png"><img alt="_images/ipad.png" src="_images/ipad.png" style="width: 400px;" /></a>
+</div>
+<div class="figure">
+<a class="reference internal image-reference" href="_images/iphones.jpg"><img alt="_images/iphones.jpg" src="_images/iphones.jpg" style="width: 100px;" /></a>
+</div>
+<div class="figure">
+<a class="reference internal image-reference" href="_images/imac.png"><img alt="_images/imac.png" src="_images/imac.png" style="width: 350px;" /></a>
+</div>
+</div>
+<div class="section" id="the-book-will-probably-survive">
+<h2>The book will probably survive<a class="headerlink" href="#the-book-will-probably-survive" title="Permalink to this headline">¶</a></h2>
+<div class="figure">
+<a class="reference internal image-reference" href="_images/oldbooks.jpg"><img alt="_images/oldbooks.jpg" src="_images/oldbooks.jpg" style="width: 800px;" /></a>
+</div>
+</div>
+<div class="section" id="the-classical-report-will-survive">
+<h2>The classical report will survive<a class="headerlink" href="#the-classical-report-will-survive" title="Permalink to this headline">¶</a></h2>
+<div class="figure">
+<a class="reference internal image-reference" href="_images/latex_thesis.jpg"><img alt="_images/latex_thesis.jpg" src="_images/latex_thesis.jpg" style="width: 400px;" /></a>
+</div>
+<div class="figure">
+<a class="reference internal image-reference" href="_images/latex_paper1.png"><img alt="_images/latex_paper1.png" src="_images/latex_paper1.png" style="width: 400px;" /></a>
+</div>
+</div>
+<div class="section" id="scope-of-this-presentation">
+<h2>Scope of this presentation<a class="headerlink" href="#scope-of-this-presentation" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>Focus: documents with &lt;font color=&#8221;red&#8221;&gt;much&lt;/font&gt; <em>math</em> and <em>computer code</em></li>
+<li>Key question: What tools should I use for scientific writing?</li>
+</ul>
+</div></blockquote>
+<div class="admonition-notice admonition">
+<p class="first admonition-title">Notice</p>
+<p class="last">The default answer is LaTeX, but there are many
+recent popular alternative tools: HTML w/MathJax,
+Sphinx, Markdown, MediaWiki, IPython notebook.</p>
+</div>
+<div class="figure">
+<a class="reference internal image-reference" href="_images/LaTeX_logo.jpg"><img alt="_images/LaTeX_logo.jpg" src="_images/LaTeX_logo.jpg" style="width: 120px;" /></a>
+</div>
+<div class="figure">
+<a class="reference internal image-reference" href="_images/MS_Word_logo.jpg"><img alt="_images/MS_Word_logo.jpg" src="_images/MS_Word_logo.jpg" style="width: 80px;" /></a>
+</div>
+<div class="figure">
+<a class="reference internal image-reference" href="_images/sphinx_logo.png"><img alt="_images/sphinx_logo.png" src="_images/sphinx_logo.png" style="width: 200px;" /></a>
+</div>
+<div class="figure">
+<a class="reference internal image-reference" href="_images/markdown_logo.jpg"><img alt="_images/markdown_logo.jpg" src="_images/markdown_logo.jpg" style="width: 80px;" /></a>
+</div>
+<div class="figure">
+<a class="reference internal image-reference" href="_images/MediaWiki_logo.jpg"><img alt="_images/MediaWiki_logo.jpg" src="_images/MediaWiki_logo.jpg" style="width: 80px;" /></a>
+</div>
+<div class="figure">
+<a class="reference internal image-reference" href="_images/IPython_logo.png"><img alt="_images/IPython_logo.png" src="_images/IPython_logo.png" style="width: 300px;" /></a>
+</div>
+</div>
+<div class="section" id="does-your-scientific-writing-today-need-to-address-new-media-in-the-future">
+<h2>Does your scientific writing today need to address new media (in the future)?<a class="headerlink" href="#does-your-scientific-writing-today-need-to-address-new-media-in-the-future" title="Permalink to this headline">¶</a></h2>
+<div class="figure">
+<a class="reference internal image-reference" href="_images/jungle_with_mess.jpg"><img alt="_images/jungle_with_mess.jpg" src="_images/jungle_with_mess.jpg" style="width: 500px;" /></a>
+</div>
+</div>
+<div class="section" id="can-we-factor-pieces-from-a-heterogeneous-world-to-one-coherent-piece-in-the-future">
+<h2>Can we factor pieces from a heterogeneous world to one coherent piece in the future?<a class="headerlink" href="#can-we-factor-pieces-from-a-heterogeneous-world-to-one-coherent-piece-in-the-future" title="Permalink to this headline">¶</a></h2>
+<p>When I write some scientific material,</p>
+<blockquote>
+<div><ul class="simple">
+<li>a LaTeX document,</li>
+<li>a blog post (HTML),</li>
+<li>some web pages (HTML),</li>
+<li>a Sphinx document,</li>
+<li>an IPython notebook,</li>
+<li>some Markdown files,</li>
+</ul>
+</div></blockquote>
+<p>and later want to collect the pieces into a larger document, maybe
+some book, or one big web document, or a set of slides,
+is that at all feasible?</p>
+<p>Probably not, but I have a solution :-)
+.. !epop</p>
+</div>
+<div class="section" id="popular-tools-anno-2013-and-their-math-support">
+<h2>Popular tools anno 2013 and their math support<a class="headerlink" href="#popular-tools-anno-2013-and-their-math-support" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="latex-is-very-rich-other-tools-support-much-less-1">
+<h2>LaTeX is very rich; other tools support much less  (1)<a class="headerlink" href="#latex-is-very-rich-other-tools-support-much-less-1" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul>
+<li><p class="first">LaTeX inline math: works with all (LaTeX, MathJax, Sphinx, Markdown, MediaWiki)</p>
+</li>
+<li><p class="first">LaTeX equation math:</p>
+<blockquote>
+<div><ul class="simple">
+<li><strong>LaTeX</strong>: <tt class="docutils literal"><span class="pre">equation*</span></tt>, <tt class="docutils literal"><span class="pre">equation</span></tt>, <tt class="docutils literal"><span class="pre">align*</span></tt>, <tt class="docutils literal"><span class="pre">align</span></tt> +
+<tt class="docutils literal"><span class="pre">eqnarray</span></tt>, <tt class="docutils literal"><span class="pre">split</span></tt>, <tt class="docutils literal"><span class="pre">alignat</span></tt>, ... (numerous!)</li>
+<li><strong>MathJax</strong>: <tt class="docutils literal"><span class="pre">equation*</span></tt>, <tt class="docutils literal"><span class="pre">equation</span></tt>, <tt class="docutils literal"><span class="pre">align*</span></tt>, <tt class="docutils literal"><span class="pre">align</span></tt></li>
+<li><strong>MediaWiki</strong>: <tt class="docutils literal"><span class="pre">equation*</span></tt>, <tt class="docutils literal"><span class="pre">equation</span></tt>, <tt class="docutils literal"><span class="pre">align*</span></tt>, <tt class="docutils literal"><span class="pre">align</span></tt></li>
+<li><strong>Sphinx</strong>: <tt class="docutils literal"><span class="pre">equation*</span></tt>, <tt class="docutils literal"><span class="pre">equation</span></tt>, <tt class="docutils literal"><span class="pre">align*</span></tt></li>
+<li><strong>Markdown</strong>: <tt class="docutils literal"><span class="pre">equation*</span></tt>, <tt class="docutils literal"><span class="pre">equation</span></tt>, <tt class="docutils literal"><span class="pre">eqnarray*</span></tt>, <tt class="docutils literal"><span class="pre">align*</span></tt> (but no labels)</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="latex-is-very-rich-other-tools-support-much-less-2">
+<h2>LaTeX is very rich; other tools support much less  (2)<a class="headerlink" href="#latex-is-very-rich-other-tools-support-much-less-2" title="Permalink to this headline">¶</a></h2>
+<p>Conclusion: Highly non-trivial to translate a LaTeX document into something
+based on HTML and vice versa.</p>
+</div>
+<div class="section" id="typesetting-concerns-i">
+<h2>Typesetting concerns I<a class="headerlink" href="#typesetting-concerns-i" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="typesetting-concerns-ii">
+<h2>Typesetting concerns II<a class="headerlink" href="#typesetting-concerns-ii" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="typesetting-concerns-iii">
+<h2>Typesetting concerns III<a class="headerlink" href="#typesetting-concerns-iii" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="solution-i-use-a-format-that-translates-to-many">
+<h2>Solution I: Use a format that translates to many<a class="headerlink" href="#solution-i-use-a-format-that-translates-to-many" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>Sphinx can do nice HTML, LaTeX, epub, (almost) plain text,
+man pages, Gnome devhelp files, Qt help files, texinfo, JSON</li>
+<li>Markdown can do LaTeX, HTML, MS Word, OpenOffice, XML,
+reStructuredText, epub, DocBook, ... but not Sphinx</li>
+<li>IPython notebook: can do LaTeX, reStructuredText, HTML, PDF,
+Python script</li>
+<li>Sphinx and Markdown has some limited math support</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="solution-ii-use-doconce">
+<h2>Solution II: Use Doconce<a class="headerlink" href="#solution-ii-use-doconce" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://hplgit.github.io/doconce/doc/web/index.html">Doconce</a>
+offers minimalistic typing, great flexibility wrt format,
+especially for scientific writing with <em>much math and code</em>.</p>
+<blockquote>
+<div><ul class="simple">
+<li>Can generate LaTeX, HTML, Sphinx, Markdown, MediaWiki, Google wiki,
+Creole wiki, reST, plain text</li>
+<li>Made for large science books <em>and</em> small notes</li>
+<li>Targets paper and screen</li>
+<li>Many special features (code snippets from files, embedded movies,
+admonitions, modern LaTeX layouts, ...)</li>
+<li>Very effective for generating slides from ordinary text</li>
+<li>Applies Mako: Doconce text is a program (!)</li>
+<li>Much like Markdown, less tagged than LaTeX, HTML, Sphinx</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="id1">
+<h1>Doconce<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="doconce-demos">
+<h2>Doconce demos<a class="headerlink" href="#doconce-demos" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://hplgit.github.com/teamods/writing_reports/">http://hplgit.github.com/teamods/writing_reports/</a></p>
+<blockquote>
+<div><ul class="simple">
+<li>LaTeX-based PDF <a class="reference external" href="http://hplgit.github.com/teamods/writing_reports/_static/report.pdf">for screen</a>, <a class="reference external" href="http://hplgit.github.com/teamods/writing_reports/_static/report_4printing.pdf">for printing</a>, <a class="reference external" href="http://hplgit.github.com/teamods/writing_reports/_static/report_4phone.pdf">for phone</a></li>
+<li><a class="reference external" href="http://hplgit.github.com/teamods/writing_reports/_static/report_do.html">Plain HTML</a> or with a <a class="reference external" href="http://hplgit.github.com/teamods/writing_reports/_static/report_vagrant.html">template</a> or <a class="reference external" href="http://hplgit.github.com/teamods/writing_reports/_static/report_github_minimal.html">another template</a> or <a class="reference external" href="http://hplgit.github.com/teamods/writing_reports/_static/report_solarized.html">solarized</a></li>
+<li>Sphinx: <a class="reference external" href="http://hplgit.github.com/teamods/writing_reports/_static/sphinx-agni/index.html">agni</a>, <a class="reference external" href="http://hplgit.github.com/teamods/writing_reports/_static/sphinx-pyramid/report.html">pyramid</a>, <a class="reference external" href="http://hplgit.github.com/teamods/writing_reports/_static/sphinx-classy/report.html">classy</a>, <a class="reference external" href="http://hplgit.github.com/teamods/writing_reports/_static/sphinx-fenics_minimal/report.html">fenics</a>, <a class="reference external" href="http://hplgit.github.com/teamods/writing_reports/_static/sphinx-redcloud/report.html">redcloud</a></li>
+<li>HTML for <a class="reference external" href="http://doconce-report-demo.blogspot.no/">Google</a> or <a class="reference external" href="http://doconcereportdemo.wordpress.com/">Wordpress</a> for blog posts</li>
+<li><a class="reference external" href="http://doconcedemo.shoutwiki.com/wiki/Doconce_demo_page">MediaWiki</a> (Wikipedia, Wikibooks, etc)</li>
+<li>Doconce <a class="reference external" href="http://hplgit.github.com/teamods/writing_reports/_static/report.do.txt.html">source code</a> and <a class="reference external" href="http://hplgit.github.io/doconce/doc/pub/tutorial/html/index.html">tutorial</a></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="doconce-disclaimer">
+<h2>Doconce disclaimer<a class="headerlink" href="#doconce-disclaimer" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>Based on text transformations (reg.exp.) so valid syntax may
+occasionally give problems</li>
+</ul>
+</div></blockquote>
+<div class="admonition-doconce-divorce admonition">
+<p class="first admonition-title">Doconce divorce</p>
+<p class="last">At any time one can divorce from Doconce and marry one of the output
+formats, such as LaTeX or Sphinx. The generated code is clean.</p>
+</div>
+</div>
+<div class="section" id="doconce-experience-code-generation-is-a-great-thing">
+<h2>Doconce experience: code generation is a great thing<a class="headerlink" href="#doconce-experience-code-generation-is-a-great-thing" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-notice admonition">
+<p class="first admonition-title">Notice</p>
+<p>Regardless of what format you write in, introduce a step where
+you can generate (parts of) the syntax.</p>
+<blockquote>
+<div><ul class="simple">
+<li>Use a preprocessor a la Mako</li>
+<li>Write your own read-and-generate code</li>
+<li>or both (like Doconce)</li>
+</ul>
+</div></blockquote>
+<p>Advantages:</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li>Less writing</li>
+<li>Repository of syntax for nice constructions</li>
+<li>Implements structure/rules across documents</li>
+<li>Easier to change layout/structure</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="example-generate-reveal-js-or-deck-js-slides-from-html">
+<h3>Example: generate reveal.js or deck.js slides from HTML<a class="headerlink" href="#example-generate-reveal-js-or-deck-js-slides-from-html" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul>
+<li><p class="first">Write the content of each slide in plain HTML(5)</p>
+</li>
+<li><p class="first">Use e.g. <tt class="docutils literal"><span class="pre">#slide</span></tt> as delimiter between slides</p>
+</li>
+<li><p class="first">Read file, splitting wrt <tt class="docutils literal"><span class="pre">#slide</span></tt> yields a list of
+slides (HTML code)</p>
+</li>
+<li><p class="first">For a specific format (reveal.js, deck.js, csss, ...):</p>
+<blockquote>
+<div><ul class="simple">
+<li>write header</li>
+<li>for slide in slides:<ul>
+<li>embed slide in correct HTML code</li>
+</ul>
+</li>
+<li>write footer</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;h2&gt;</span>Scope of this presentation<span class="nt">&lt;/h2&gt;</span>
+<span class="nt">&lt;ul&gt;</span>
+  <span class="nt">&lt;li&gt;</span>Focus: documents with much <span class="nt">&lt;em&gt;</span>math<span class="nt">&lt;/em&gt;</span> and
+      <span class="nt">&lt;em&gt;</span>computer code<span class="nt">&lt;/em&gt;</span>
+  <span class="nt">&lt;li&gt;</span>Key question: What tools should I use for scientific writing?
+<span class="nt">&lt;/ul&gt;</span>
+<span class="nt">&lt;p&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;alert&quot;</span><span class="nt">&gt;</span>
+The default answer is LaTeX.
+<span class="nt">&lt;/div&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="a-tour-of-doconce">
+<h1>A tour of Doconce<a class="headerlink" href="#a-tour-of-doconce" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="title-authors-date-toc">
+<h2>Title, authors, date, toc<a class="headerlink" href="#title-authors-date-toc" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-text"><div class="highlight"><pre>TITLE: Some Title
+AUTHOR: name1 at institution1, with more info &amp; institution2
+AUTHOR: name2 email:name2@web.com at institution
+DATE: today
+
+# A table of contents is optional:
+TOC: on
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Title and authors must have all information <em>on a single line</em>!</p>
+</div>
+</div>
+<div class="section" id="abstract">
+<h2>Abstract<a class="headerlink" href="#abstract" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-text"><div class="highlight"><pre>__Abstract.__
+Here goes the abstract...
+</pre></div>
+</div>
+<p>Or:</p>
+<div class="highlight-text"><div class="highlight"><pre>__Summary.__
+Here goes the summary...
+</pre></div>
+</div>
+</div>
+<div class="section" id="section-headings">
+<h2>Section headings<a class="headerlink" href="#section-headings" title="Permalink to this headline">¶</a></h2>
+<p>Headings are surrounded by <tt class="docutils literal"><span class="pre">=</span></tt> signs:</p>
+<div class="highlight-text"><div class="highlight"><pre>========= This is an H1/chapter heading =========
+
+======= This is an H2/section heading =======
+
+===== This is an H3/subsection heading =====
+
+=== This is an H4/paragraph heading ===
+
+__This is a paragraph heading.__
+</pre></div>
+</div>
+<p>Result:</p>
+</div>
+</div>
+<div class="section" id="this-is-an-h1-chapter-heading">
+<h1>This is an H1/chapter heading<a class="headerlink" href="#this-is-an-h1-chapter-heading" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="this-is-an-h2-section-heading">
+<h2>This is an H2/section heading<a class="headerlink" href="#this-is-an-h2-section-heading" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="this-is-an-h3-subsection-heading">
+<h3>This is an H3/subsection heading<a class="headerlink" href="#this-is-an-h3-subsection-heading" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="this-is-an-h4-paragraph-heading">
+<h4>This is an H4/paragraph heading<a class="headerlink" href="#this-is-an-h4-paragraph-heading" title="Permalink to this headline">¶</a></h4>
+<p><strong>This is a paragraph heading.</strong>
+.. !split</p>
+</div>
+</div>
+</div>
+<div class="section" id="markup-and-lists">
+<h2>Markup and lists<a class="headerlink" href="#markup-and-lists" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-text"><div class="highlight"><pre>* Bullet list items start with `*`
+  and may span several lines
+* *Emphasized words* are possible
+* _Boldface words_ are also possible
+* color{red}{colored words} too
+* `inline verbatim code` is featured
+  o and sublists with enumerated items starting with `o`
+  o items are just indented as you would do in email
+</pre></div>
+</div>
+<p>This gets rendered as</p>
+<blockquote>
+<div><ul class="simple">
+<li>Bullet lists start with <tt class="docutils literal"><span class="pre">*</span></tt>
+and may span several lines</li>
+<li><em>Emphasized words</em> are possible</li>
+<li><strong>Boldface words</strong> are also possible</li>
+<li>&lt;font color=&#8221;red&#8221;&gt;colored words&lt;/font&gt; too</li>
+<li><tt class="docutils literal"><span class="pre">inline</span> <span class="pre">verbatim</span> <span class="pre">code</span></tt> is featured</li>
+</ul>
+<blockquote>
+<div><ol class="arabic simple">
+<li>and sublists with enumerated items starting with <tt class="docutils literal"><span class="pre">o</span></tt></li>
+<li>items are just indented as you would do in email</li>
+</ol>
+</div></blockquote>
+</div></blockquote>
+</div>
+<div class="section" id="labels-references-index-items">
+<h2>Labels, references, index items<a class="headerlink" href="#labels-references-index-items" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-text"><div class="highlight"><pre># Insert index items in the source
+idx{key word1} idx{key word2}
+
+# Label
+===== Some section =====
+label{this:section}
+
+# Make reference
+As we saw in Section ref{this:section}, references, index
+items and labels follow a syntax similar to LaTeX
+but without backslashes.
+
+# Make reference to equations
+See (ref{eq1})-(ref{myeq}).
+
+# Make hyperlink
+&quot;some link text&quot;: &quot;https://github.com/hplgit/doconce&quot;
+
+# Hyperlink with complete URL as link text
+URL: &quot;https://github.com/hplgit/doconce&quot;
+</pre></div>
+</div>
+</div>
+<div class="section" id="figures-and-movies">
+<h2>Figures and movies<a class="headerlink" href="#figures-and-movies" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-important admonition">
+<p class="first admonition-title">Important</p>
+<p class="last">Figures with HTML and LaTeX size info, and caption: <em>everything on one line</em></p>
+</div>
+<div class="highlight-text"><div class="highlight"><pre>FIGURE: [figdir/myfig, width=300 frac=1.2] My caption. label{fig1}
+</pre></div>
+</div>
+<p>Movies are also supported:</p>
+<div class="highlight-text"><div class="highlight"><pre>MOVIE: [http://youtu.be/IDeGDFZSYo8, width=420 height=315]
+</pre></div>
+</div>
+<p>and rendered as</p>
+<iframe width="420" height="315" src="http://www.youtube.com/embed/IDeGDFZSYo8" frameborder="0" allowfullscreen></iframe></div>
+<div class="section" id="math">
+<h2>Math<a class="headerlink" href="#math" title="Permalink to this headline">¶</a></h2>
+<p>Inline math as in LaTeX:</p>
+<div class="highlight-text"><div class="highlight"><pre>...where $a=\int_{\Omega}fdx$ is an integral.
+</pre></div>
+</div>
+<p>gets rendered as ...where <span class="math">\(a=\int_{\Omega}fdx\)</span> is an integral.</p>
+<p>An equation environment is surrounded by <tt class="docutils literal"><span class="pre">!bt</span></tt> and <tt class="docutils literal"><span class="pre">!et</span></tt> tags,
+the rest is plain LaTeX:</p>
+<div class="highlight-text"><div class="highlight"><pre>!bt
+\begin{align}
+\frac{\partial u}{\partial t} &amp;= \nabla^2 u,
+label{a:eq}\\
+\nabla\cdot\pmb{v} &amp; = 0
+label{b:eq}
+\end{align}
+!et
+</pre></div>
+</div>
+<p>which is rendered as</p>
+<div class="math" id="equation-a:eq">
+<span class="eqno">(1)</span>\[     \frac{\partial u}{\partial t} = \nabla^2 u,\]</div>
+<div class="math" id="equation-b:eq">
+<span class="eqno">(2)</span>\[     \nabla\cdot\pmb{v}  = 0\]</div>
+</div>
+<div class="section" id="math-flexibility">
+<h2>Math flexibility<a class="headerlink" href="#math-flexibility" title="Permalink to this headline">¶</a></h2>
+<p>Limit math environments to</p>
+<div class="highlight-text"><div class="highlight"><pre>\[ ... \]
+
+\begin{equation*}
+\end{equation*}
+
+\begin{equation}
+\end{equation}
+
+\begin{align*}
+\end{align*}
+
+\begin{align}
+\end{align}
+</pre></div>
+</div>
+<div class="admonition-doconce-fix-of-shortcomings admonition">
+<p class="first admonition-title">Doconce fix of shortcomings</p>
+<ul class="last simple">
+<li>Sphinx, Markdown, and MediaWiki cannot have
+<tt class="docutils literal"><span class="pre">align</span></tt> with labels</li>
+<li>MathJax (HTML, Sphinx, Markdown, Mediawiki, ...) cannot
+handle equation references across web pages</li>
+</ul>
+</div>
+</div>
+<div class="section" id="displaying-code">
+<h2>Displaying code<a class="headerlink" href="#displaying-code" title="Permalink to this headline">¶</a></h2>
+<p>Code is enclosed in <tt class="docutils literal"><span class="pre">!bc</span></tt> and <tt class="docutils literal"><span class="pre">!ec</span></tt> tags:</p>
+<div class="highlight-text"><div class="highlight"><pre>!bc pycod
+def solver(I, a, T, dt, theta):
+    &quot;&quot;&quot;Solve u&#39;=-a*u, u(0)=I, for t in (0,T] with steps of dt.&quot;&quot;&quot;
+    dt = float(dt); N = int(round(T/dt)); T = N*dt
+    u = zeros(N+1); t = linspace(0, T, N+1)
+
+    u[0] = I
+    for n in range(0, N):
+        u[n+1] = (1 - (1-theta)*a*dt)/(1 + theta*dt*a)*u[n]
+    return u, t
+!ec
+</pre></div>
+</div>
+<p>This gets rendered as</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">solver</span><span class="p">(</span><span class="n">I</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">theta</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Solve u&#39;=-a*u, u(0)=I, for t in (0,T] with steps of dt.&quot;&quot;&quot;</span>
+    <span class="n">dt</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">dt</span><span class="p">);</span> <span class="n">N</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">T</span><span class="o">/</span><span class="n">dt</span><span class="p">));</span> <span class="n">T</span> <span class="o">=</span> <span class="n">N</span><span class="o">*</span><span class="n">dt</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span> <span class="n">t</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">u</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">I</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
+        <span class="n">u</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">theta</span><span class="p">)</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">dt</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">theta</span><span class="o">*</span><span class="n">dt</span><span class="o">*</span><span class="n">a</span><span class="p">)</span><span class="o">*</span><span class="n">u</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">u</span><span class="p">,</span> <span class="n">t</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="copying-code-from-source-files">
+<h2>Copying code from source files<a class="headerlink" href="#copying-code-from-source-files" title="Permalink to this headline">¶</a></h2>
+<p>We recommend to copy as much code as possible directly from the
+source files:</p>
+<div class="highlight-text"><div class="highlight"><pre>@@@CODE path/to/file
+@@@CODE path/to/file   fromto: start-regex@end-regex
+</pre></div>
+</div>
+<p>For example, copying a code snippet starting with <tt class="docutils literal"><span class="pre">def</span> <span class="pre">solver(</span></tt> and
+ending with (line not included) <tt class="docutils literal"><span class="pre">def</span> <span class="pre">next(x,</span> <span class="pre">y,</span></tt> is specified by
+start and end regular expressions:</p>
+<div class="highlight-text"><div class="highlight"><pre>@@@CODE src/dc_mod.py  fromto: def solver\(@def next\(x,\s*y,
+</pre></div>
+</div>
+</div>
+<div class="section" id="typesetting-of-code-is-implied-by-the-file-extension">
+<h2>Typesetting of code is implied by the file extension<a class="headerlink" href="#typesetting-of-code-is-implied-by-the-file-extension" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">.py</span></tt>: <tt class="docutils literal"><span class="pre">pypro</span></tt> if complete file, <tt class="docutils literal"><span class="pre">pycod</span></tt> if snippet</li>
+<li><tt class="docutils literal"><span class="pre">.pyopt</span></tt>: visualized execution via the <a class="reference external" href="http://pythontutor.com">Online Python Tutor</a></li>
+<li><tt class="docutils literal"><span class="pre">.f</span></tt>, <tt class="docutils literal"><span class="pre">.f90</span></tt>, <tt class="docutils literal"><span class="pre">f.95</span></tt>: <tt class="docutils literal"><span class="pre">fpro</span></tt> and <tt class="docutils literal"><span class="pre">fcod</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">.cpp</span></tt>, <tt class="docutils literal"><span class="pre">.cxx</span></tt>: <tt class="docutils literal"><span class="pre">cpppro</span></tt> and <tt class="docutils literal"><span class="pre">cppcod</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">.c</span></tt>: <tt class="docutils literal"><span class="pre">cpro</span></tt> and <tt class="docutils literal"><span class="pre">ccod</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">.*sh</span></tt>: <tt class="docutils literal"><span class="pre">shpro</span></tt> and <tt class="docutils literal"><span class="pre">shcod</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">.m</span></tt>: <tt class="docutils literal"><span class="pre">mpro</span></tt> and <tt class="docutils literal"><span class="pre">mcod</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">ptex2tex</span></tt>: between 40+ code styles in LaTeX</li>
+<li><tt class="docutils literal"><span class="pre">pygments</span></tt> is used for code in HTML (ca 10 styles)</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="demonstrating-code-execution-online-python-tutor">
+<span id="slide-opt"></span><h2>Demonstrating code execution; Online Python Tutor<a class="headerlink" href="#demonstrating-code-execution-online-python-tutor" title="Permalink to this headline">¶</a></h2>
+<p>With <tt class="docutils literal"><span class="pre">!bc</span> <span class="pre">pyoptpro</span></tt> or a file <tt class="docutils literal"><span class="pre">*.pyopt</span></tt>, the code applies the
+<a class="reference external" href="http://pythontutor.com">Online Python Tutor</a> for displaying
+program flow and state of variables:</p>
+<iframe width="950" height="500" frameborder="0"
+        src="http://pythontutor.com/iframe-embed.html#code=def+solver%28I%2C+a%2C+T%2C+dt%2C+theta%29%3A%0A++++dt+%3D+float%28dt%29%0A++++N+%3D+int%28round%28T%2Fdt%29%29%0A++++T+%3D+N%2Adt%0A++++u+%3D+%5B0.0%5D%2A%28N%2B1%29%0A++++t+%3D+%5Bi%2Adt+for+i+in+range%28N%2B1%29%5D%0A%0A++++u%5B0%5D+%3D+I%0A++++for+n+in+range%280%2C+N%29%3A%0A++++++++u%5Bn%2B1%5D+%3D+%281+-+%281-theta%29%2Aa%2Adt%29%2F%281+%2B+theta%2Adt%2Aa%29%2Au%5Bn%5D%0A++++return+u%2C+t%0A%0Au%2C+t+%3D+solver%28I%3D1%2C+a%3D1%2C+T%3D3%2C+dt%3D1.%2C+theta%3D0.5%29%0Aprint+u&curInstr=0&py=2&cumulative=false">
+</iframe></div>
+<div class="section" id="demonstrating-code-execution-sage-cell-server">
+<span id="slide-sage-cell"></span><h2>Demonstrating code execution; Sage Cell Server<a class="headerlink" href="#demonstrating-code-execution-sage-cell-server" title="Permalink to this headline">¶</a></h2>
+<p>With <tt class="docutils literal"><span class="pre">!bc</span> <span class="pre">pyscpro</span></tt> or a file <tt class="docutils literal"><span class="pre">*.pysc</span></tt>, the code is typeset in
+a sage cell:</p>
+<div class='sage'><script type='text/x-sage'>a = 2
+b = 3
+print 'a+b:', a + b
+
+# In a sage cell we can also plot
+from matplotlib.pyplot import *
+from numpy import *
+x = linspace(0, 4*pi, 101)
+y = exp(-0.1*x)*cos(x)
+plot(x, y)
+xlabel('x'); ylabel('y')
+show()</script></div><div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Works only in Sphinx documents (but HTML support is possible).</p>
+</div>
+</div>
+<div class="section" id="demonstrating-code-execution-ipython-notebook">
+<span id="slide-ipynb"></span><h2>Demonstrating code execution; IPython notebook<a class="headerlink" href="#demonstrating-code-execution-ipython-notebook" title="Permalink to this headline">¶</a></h2>
+<p>Can take a <a class="reference external" href="http://hplgit.github.com/teamods/writing_reports/_static/report.do.txt.html">Doconce source</a> and transform to an <a class="reference external" href="http://nbviewer.ipython.org/url/hplgit.github.com/teamods/writing_reports/_static/report.ipynb">IPython notebook</a> with <a class="reference external" href="http://hplgit.github.com/teamods/writing_reports/_static/report.ipynb.html">source</a></p>
+</div>
+<div class="section" id="tables">
+<h2>Tables<a class="headerlink" href="#tables" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-text"><div class="highlight"><pre>|--------------------------------|
+|time  | velocity | acceleration |
+|---r-------r-----------r--------|
+| 0.0  | 1.4186   | -5.01        |
+| 2.0  | 1.376512 | 11.919       |
+| 4.0  | 1.1E+1   | 14.717624    |
+|--------------------------------|
+</pre></div>
+</div>
+<p>Gets rendered as</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">time</th>
+<th class="head">velocity</th>
+<th class="head">acceleration</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>0.0</td>
+<td>1.4186</td>
+<td>-5.01</td>
+</tr>
+<tr class="row-odd"><td>2.0</td>
+<td>1.376512</td>
+<td>11.919</td>
+</tr>
+<tr class="row-even"><td>4.0</td>
+<td>1.1E+1</td>
+<td>14.717624</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="newcommands-for-math">
+<h2>Newcommands for math<a class="headerlink" href="#newcommands-for-math" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">newcommands*.tex</span></tt> files contain newcommands</li>
+<li>Used directly in LaTeX</li>
+<li>Substitution made for many other formats</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="labels-citations-index-bibliography">
+<h2>Labels, citations, index, bibliography<a class="headerlink" href="#labels-citations-index-bibliography" title="Permalink to this headline">¶</a></h2>
+<p>Lables, citations, index, and bibliography follow the ideas of
+LaTeX, but without backslashes:</p>
+<div class="highlight-text"><div class="highlight"><pre>===== My Section =====
+label{sec:mysec}
+
+idx{key equation} idx{$\u$ conservation}
+
+We refer to Section ref{sec:yoursec} for background material on
+the *key equation*. Here we focus on the extension
+
+
+!bt
+\begin{equation}
+\Ddt{\u} = \mycommand{v} label{mysec:eq:Dudt}
+\end{equation}
+!et
+Equation (ref{mysec:eq:Dudt}) is important, see
+cite{Larsen_et_al_2002,Johnson_Friedman_2010a}.
+Also, cite{Miller_2000} supports such a view.
+
+Figure ref{mysec:fig:myfig} displays the features.
+
+FIGURE: [fig/myfile, width=600] My figure. label{mysec:fig:myfig}
+
+===== References =====
+
+BIBFILE: papers.pub
+</pre></div>
+</div>
+<p>The <tt class="docutils literal"><span class="pre">papers.pub</span></tt> file must be in <a class="reference external" href="https://bitbucket.org/logg/publish">Publish</a>
+format (easy to make from BibTeX).</p>
+</div>
+<div class="section" id="exercises-1">
+<h2>Exercises  (1)<a class="headerlink" href="#exercises-1" title="Permalink to this headline">¶</a></h2>
+<p>Doconce offers a special format for <em>exercises</em>, <em>problems</em>, <em>projects</em>,
+and <em>examples</em>:</p>
+<div class="highlight-text"><div class="highlight"><pre>===== Problem: Flip a Coin =====
+label{demo:ex:1}
+files=flip_coin.py, flip_coin.pdf
+solutions=mysol.txt, mysol_flip_coin.py
+keywords = random numbers; Monte Carlo simulation
+
+!bsubex
+Make a program that simulates flipping a coin $N$ times.
+
+!bhint
+Use `r = random.random()` and define head as `r &lt;= 0.5`.
+!ehint
+!esubex
+
+!bsubex
+Compute the probability of getting heads.
+
+!bans
+0.5.
+!eans
+!esubex
+</pre></div>
+</div>
+</div>
+<div class="section" id="rendering-of-the-previous-page">
+<h2>Rendering of the previous page<a class="headerlink" href="#rendering-of-the-previous-page" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="problem-1-flip-a-coin">
+<h3>Problem 1: Flip a Coin<a class="headerlink" href="#problem-1-flip-a-coin" title="Permalink to this headline">¶</a></h3>
+<p><strong>a)</strong>
+Make a program that simulates flipping a coin <span class="math">\(N\)</span> times.</p>
+<p><strong>Hint.</strong>
+Use <tt class="docutils literal"><span class="pre">r</span> <span class="pre">=</span> <span class="pre">random.random()</span></tt> and define head as <tt class="docutils literal"><span class="pre">r</span> <span class="pre">&lt;=</span> <span class="pre">0.5</span></tt>.</p>
+<p><strong>b)</strong>
+Compute the probability of getting heads.</p>
+<p><strong>Answer.</strong>
+0.5.</p>
+<p>Filenames: <tt class="docutils literal"><span class="pre">flip_coin.py</span></tt>, <tt class="docutils literal"><span class="pre">flip_coin.pdf</span></tt>.</p>
+</div>
+</div>
+<div class="section" id="exercises-2">
+<h2>Exercises  (2)<a class="headerlink" href="#exercises-2" title="Permalink to this headline">¶</a></h2>
+<p>All <em>exercises</em>, <em>problems</em>, and <em>projects</em> in a document are parsed
+and available in a data structure (list of dicts) for further
+processing (e.g., making a book of problems).</p>
+<div class="highlight-text"><div class="highlight"><pre>[{&#39;answer&#39;: &#39;&#39;,
+  &#39;closing_remarks&#39;: &#39;&#39;,
+  &#39;file&#39;: [&#39;flip_coin.py&#39;, &#39;flip_coin.pdf&#39;],
+  &#39;hints&#39;: [],
+  &#39;keywords&#39;: [&#39;random numbers&#39;, &#39;Monte Carlo simulation&#39;],
+  &#39;label&#39;: &#39;demo:ex:1&#39;,
+  &#39;solution_file&#39;: [&#39;mysol.txt&#39;, &#39;mysol_flip_coin.py&#39;],
+  &#39;subex&#39;: [{&#39;answer&#39;: &#39;&#39;,
+             &#39;file&#39;: None,
+             &#39;hints&#39;: [&#39;Use `r = random.random()` ...&#39;],
+             &#39;solution&#39;: &#39;&#39;,
+             &#39;text&#39;: &#39;Make a program that simulates ...&#39;},],
+  &#39;title&#39;: &#39;Flip a Coin&#39;,
+  &#39;type&#39;: &#39;Problem&#39;}]
+</pre></div>
+</div>
+</div>
+<div class="section" id="use-of-preprocessors">
+<h2>Use of preprocessors<a class="headerlink" href="#use-of-preprocessors" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul>
+<li><p class="first">Simple if-else tests a la the C/C++ preprocessor</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">FORMAT</span></tt> variable can be used to test on format, e.g.,</p>
+<blockquote>
+<div><ul class="simple">
+<li>if latex/pdflatex do one sort of code (raw LaTeX)</li>
+<li>if html, do another type of code (raw HTML)</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Easy to comment out large portions of text</p>
+</li>
+<li><p class="first">Easy to make different versions of the document</p>
+</li>
+<li><p class="first">The mako preprocessor is really powerful - gives a
+complete programming language inside the document!</p>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="doconce-admonitions">
+<h2>Doconce admonitions<a class="headerlink" href="#doconce-admonitions" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-use-with-caution admonition">
+<p class="first admonition-title">Use with caution</p>
+<p class="last">Such environments may light up the document, but can be disturbing too.
+Some admon styles have icons.</p>
+</div>
+<div class="admonition-going-deeper admonition">
+<p class="first admonition-title">Going deeper</p>
+<p class="last">More details can be separated from the rest.</p>
+</div>
+<div class="admonition-time-for-review admonition">
+<p class="first admonition-title">Time for review</p>
+<p>Tasks:</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li>Maybe ask a question?</li>
+<li>Or two?</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="admonition-notice admonition">
+<p class="first admonition-title">Notice</p>
+<p>Conclusion:</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li>A special &#8220;block&#8221; admonition has less pronounced typesetting and
+can be used when no special icon is desired. Good for slides.</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="slides">
+<h2>Slides<a class="headerlink" href="#slides" title="Permalink to this headline">¶</a></h2>
+<p>Very effective way to generate slides from running text:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Take a copy of your Doconce prose</li>
+<li>Strip off as much text as possible</li>
+<li>Emphasize key points in bullet items</li>
+<li>Focus on key equations, figures, movies, key code snippets</li>
+<li>Insert <tt class="docutils literal"><span class="pre">!split</span></tt> wherever you want a new slide to begin</li>
+<li>Insert <tt class="docutils literal"><span class="pre">!bpop</span></tt> and <tt class="docutils literal"><span class="pre">!epop</span></tt> around elements to pop up
+in sequence</li>
+<li>Use 7 <tt class="docutils literal"><span class="pre">=</span></tt> or 5 <tt class="docutils literal"><span class="pre">=</span></tt> in headings (H2 or H3)</li>
+<li>Supported slide types: Beamer, HTML,
+HTML5 (reveal.js, deck.js, csss, dzslides)</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="example-on-slide-code-1">
+<h2>Example on slide code  (1)<a class="headerlink" href="#example-on-slide-code-1" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-text"><div class="highlight"><pre>!split
+======= Headline =======
+
+ * Key point 1
+ * Key point 2
+ * Key point 3: Although long
+   bullet points are not recommended in general, we need
+   it here for demonstration purposes to investigate
+   what happens with the slide layout where there is
+   so much text under one point
+
+FIGURE: [fig/teacher1, width=100 frac=0.4]
+
+Key equation:
+
+!bt
+\[ -\nabla^2 u = f \quad\hbox{in }\Omega \]
+!et
+
+And maybe a final comment?
+
+!split
+======= Next slide... =======
+</pre></div>
+</div>
+</div>
+<div class="section" id="example-on-slide-code-2">
+<h2>Example on slide code  (2)<a class="headerlink" href="#example-on-slide-code-2" title="Permalink to this headline">¶</a></h2>
+<p>Last page gets rendered to</p>
+</div>
+<div class="section" id="headline-1">
+<h2>Headline  (1)<a class="headerlink" href="#headline-1" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>Key point 1</li>
+<li>Key point 2</li>
+</ul>
+</div></blockquote>
+<div class="figure">
+<a class="reference internal image-reference" href="_images/teacher1.gif"><img alt="_images/teacher1.gif" src="_images/teacher1.gif" style="width: 100px;" /></a>
+</div>
+<p>Key equation:</p>
+<div class="math">
+\[-\nabla^2 u = f \quad\hbox{in }\Omega\]</div>
+<p>And maybe a final comment?</p>
+</div>
+<div class="section" id="grid-layout-of-slide-mxn-cells">
+<h2>Grid layout of slide: MxN cells<a class="headerlink" href="#grid-layout-of-slide-mxn-cells" title="Permalink to this headline">¶</a></h2>
+<p>Example with a bullet list to the left and
+a figure to the right (two cells: 00 and 01):</p>
+<div class="highlight-text"><div class="highlight"><pre>!split
+======= Headline =======
+
+!bslidecell 00
+!bpop
+ * Key point 1
+ * Key point 2
+ * Key point 3
+!epop
+
+!bpop
+!bt
+\[ -\nabla^2 u = f \quad\hbox{in }\Omega \]
+!et
+!epop
+
+!eslidecell
+
+!bslidecell 01
+FIGURE: [fig/broken_pen_and_paper, width=400, frac=0.8]
+!eslidecell
+
+!split
+======= Next slide... =======
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>Grid layout of slide: MxN cells<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>Last page gets rendered to</p>
+</div>
+<div class="section" id="headline-2">
+<h2>Headline  (2)<a class="headerlink" href="#headline-2" title="Permalink to this headline">¶</a></h2>
+<div class="math">
+\[-\nabla^2 u = f \quad\hbox{in }\Omega\]</div>
+<div class="figure">
+<a class="reference internal image-reference" href="_images/broken_pen_and_paper.jpg"><img alt="_images/broken_pen_and_paper.jpg" src="_images/broken_pen_and_paper.jpg" style="width: 400px;" /></a>
+</div>
+</div>
+<div class="section" id="classic-slide-types">
+<h2>Classic slide types<a class="headerlink" href="#classic-slide-types" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>LaTeX Beamer</li>
+<li>Plain HTML w/various styles<ul>
+<li>separate slides w/navigation</li>
+<li>one big slide</li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="html5-slide-types">
+<h2>HTML5 slide types<a class="headerlink" href="#html5-slide-types" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="doconce-to-html">
+<h2>Doconce to HTML<a class="headerlink" href="#doconce-to-html" title="Permalink to this headline">¶</a></h2>
+<p>Run in terminal window:</p>
+<div class="highlight-text"><div class="highlight"><pre>doconce format html doconcefile
+
+# Solarized HTML style
+doconce format html doconcefile --html_solarized
+
+# Control pygments typesetting of code
+doconce format html doconcefile --pygments_html_style=native
+
+# Or use plain &lt;pre&gt; tag for code
+doconce format html doconcefile --no_pygments_html
+
+# Further making of slides
+doconce slides_html doconcefile reveal --html_slide_theme=darkgray
+</pre></div>
+</div>
+</div>
+<div class="section" id="output-for-blog-posts">
+<h2>Output for blog posts<a class="headerlink" href="#output-for-blog-posts" title="Permalink to this headline">¶</a></h2>
+<p>Two formats of blog posts are supported:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Google&#8217;s <a class="reference external" href="http://doconce-report-demo.blogspot.no/">blogspot.com</a>:
+just paste the raw HTML (full support of math and code)</li>
+<li><a class="reference external" href="http://doconcereportdemo.wordpress.com/">Wordpress</a>:
+despite limited math, Doconce manipulates the math
+such that even <tt class="docutils literal"><span class="pre">equation</span></tt> and <tt class="docutils literal"><span class="pre">align</span></tt> work in Wordpress :-)</li>
+</ul>
+</div></blockquote>
+<p>For wordpress, add <tt class="docutils literal"><span class="pre">--wordpress</span></tt>:</p>
+<div class="highlight-text"><div class="highlight"><pre>doconce format html doconcefile --wordpress
+</pre></div>
+</div>
+<p>and paste the code into the text area.</p>
+</div>
+<div class="section" id="doconce-to-pdflatex">
+<h2>Doconce to pdfLaTeX<a class="headerlink" href="#doconce-to-pdflatex" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-text"><div class="highlight"><pre>doconce format pdflatex doconcefile
+
+# Result: doconcefile.p.tex (ptex2tex file)
+# Run either
+ptex2tex doconcefile
+# or
+doconce ptex2tex doconcefile -DHELVETICA envir=minted
+
+pdflatex doconcefile
+bibtex doconcefile
+pdflatex doconcefile
+
+# More control of how code is typeset
+doconce format pdflatex doconcefile --minted_latex_style=trac
+doconce ptex2tex doconcefile envir=minted
+
+doconce format pdflatex doconcefile
+doconce ptex2tex doconcefile envir=ans:nt
+</pre></div>
+</div>
+</div>
+<div class="section" id="doconce-to-sphinx">
+<h2>Doconce to Sphinx<a class="headerlink" href="#doconce-to-sphinx" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-text"><div class="highlight"><pre>doconce format sphinx doconcefile
+
+# Autocreate sphinx directory
+doconce sphinx_dir theme=pyramid doconcefile
+
+# Copy files and build HTML document
+python automake-sphinx.py
+
+google-chrome sphinx-rootdir/_build/html/index.html
+</pre></div>
+</div>
+<p>Much easier than running the Sphinx tools manually!</p>
+</div>
+<div class="section" id="output-for-wiki">
+<h2>Output for wiki<a class="headerlink" href="#output-for-wiki" title="Permalink to this headline">¶</a></h2>
+<p>Only MediaWiki supports math.</p>
+<div class="highlight-text"><div class="highlight"><pre>doconce format mwiki doconcefile
+</pre></div>
+</div>
+<p>Recommended site:</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="http://doconcedemo.shoutwiki.com/wiki/Doconce_demo_page">ShoutWiki</a>
+for standard wikis</li>
+</ul>
+</div></blockquote>
+<p>Publishing of &#8220;official&#8221; documents:</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="http://en.wikibooks.org/wiki/Wikibooks:WIW">Wikibooks</a>
+(can test code in the <a class="reference external" href="http://en.wikibooks.org/wiki/Wikibooks:Sandbox">sandbox</a>)</li>
+<li>Wikipedia</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="doconce-to-other-formats">
+<h2>Doconce to other formats<a class="headerlink" href="#doconce-to-other-formats" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-text"><div class="highlight"><pre>doconce format pandoc doconcefile  # (Pandoc extended) Markdown
+doconce format gwiki  doconcefile  # Googlecode wiki
+doconce format cwiki  doconcefile  # Creole wiki (Bitbucket)
+doconce format rst    doconcefile  # reStructuredText
+doconce format plain  doconcefile  # plain, untagged text for email
+</pre></div>
+</div>
+</div>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>Ubuntu: <tt class="docutils literal"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">python-doconce</span></tt> (old!)</li>
+<li>Source at <a class="reference external" href="https://github.com/hplgit/doconce">GitHub</a> (recommended!)<ul>
+<li><tt class="docutils literal"><span class="pre">hg</span> <span class="pre">clone</span></tt> + <tt class="docutils literal"><span class="pre">sudo</span> <span class="pre">python</span> <span class="pre">setyp.py</span> <span class="pre">install</span></tt></li>
+</ul>
+</li>
+<li>Many <a class="reference external" href="http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html#installation-of-doconce-and-its-dependencies">dependencies...</a><ul>
+<li>Must have <tt class="docutils literal"><span class="pre">preprocess</span></tt> and <tt class="docutils literal"><span class="pre">mako</span></tt></li>
+<li>Need <tt class="docutils literal"><span class="pre">latex</span></tt>, <tt class="docutils literal"><span class="pre">sphinx</span></tt>, <tt class="docutils literal"><span class="pre">pandoc</span></tt>, etc. (see the <a class="reference external" href="http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html#installation-of-doconce-and-its-dependencies">Installation</a> description)</li>
+<li>Easy for slides: only <tt class="docutils literal"><span class="pre">preprocess</span></tt> is needed :-)</li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="writing-tips-for-latex-writers-who-want-to-convert-to-doconce">
+<h2>Writing tips for LaTeX writers who want to convert to Doconce<a class="headerlink" href="#writing-tips-for-latex-writers-who-want-to-convert-to-doconce" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">latex2doconce</span></tt> helps the translation</li>
+<li>Use <tt class="docutils literal"><span class="pre">\[</span> <span class="pre">\]</span></tt>, <tt class="docutils literal"><span class="pre">equation</span></tt>, <tt class="docutils literal"><span class="pre">equation*</span></tt>, <tt class="docutils literal"><span class="pre">align</span></tt>, <tt class="docutils literal"><span class="pre">align*</span></tt> and nothing more for
+equations</li>
+<li>Figures: avoid subfigures (combine image files instead), use <tt class="docutils literal"><span class="pre">\includegraphics</span></tt>, have captions after graphics, use short figure captions, position exactly where needed</li>
+<li>Tables: have them inline (not floating), with no caption</li>
+<li>Computer codes: have them inline (not floating)</li>
+<li>Avoid footnotes, <tt class="docutils literal"><span class="pre">pageref</span></tt></li>
+<li>Do not use <em>algorithm</em> environments, use simple list formatting instead</li>
+<li>Avoid math in section headings</li>
+<li>Use <tt class="docutils literal"><span class="pre">pdflatex</span></tt> or <tt class="docutils literal"><span class="pre">xetex</span></tt></li>
+<li>Use BibTeX (can easily be converted to <a class="reference external" href="https://bitbucket.org/logg/publish">publish</a> used by Doconce)</li>
+<li>Use <tt class="docutils literal"><span class="pre">\href</span></tt> for links (and insert links frequently)</li>
+<li>Use the <tt class="docutils literal"><span class="pre">bm</span></tt> package for boldface <span class="math">\(\boldsymbol{u}\)</span></li>
+<li>Place all newcommands in a separate file, with one definition per line
+(multiline definitions goes to a separate LaTeX preamble file in Doconce)</li>
+<li>Avoid all fancy LaTeX constructs - more backslashes than needed in math
+and sections is a bad thing...</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="doconce-writing-tips-1">
+<h2>Doconce writing tips  (1)<a class="headerlink" href="#doconce-writing-tips-1" title="Permalink to this headline">¶</a></h2>
+<p>Figures:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Prepare figures in the right format: EPS for <tt class="docutils literal"><span class="pre">latex</span></tt>, PDF for <tt class="docutils literal"><span class="pre">pdflatex</span></tt>,
+PNG, GIF or JPEG for HTML formats (<tt class="docutils literal"><span class="pre">html</span></tt>, and HTML output from
+<tt class="docutils literal"><span class="pre">sphinx</span></tt>, <tt class="docutils literal"><span class="pre">rst</span></tt>, <tt class="docutils literal"><span class="pre">pandoc</span></tt>). One can omit the figure file extension and
+<tt class="docutils literal"><span class="pre">doconce</span></tt> will pick the most appropriate file for the given output format.</li>
+<li>Let plotting programs produce both PDF/EPS and PNG files.
+(Recall that PDF and EPS are vector graphics formats that can scale to
+any size with much higher quality than PNG or other bitmap formats.)</li>
+<li>Use <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">combine_images</span></tt> to combine several images into one.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="doconce-writing-tips-2">
+<h2>Doconce writing tips  (2)<a class="headerlink" href="#doconce-writing-tips-2" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">\boldsymbol{u}</span></tt> gives nicer boldface typesetting of math symbols than
+the alternatives <tt class="docutils literal"><span class="pre">\boldsymbol{u}</span></tt> and <tt class="docutils literal"><span class="pre">\pmb{u}</span></tt>.</li>
+<li>For HTML-based formats using MathJax, <tt class="docutils literal"><span class="pre">\boldsymbol{u}</span></tt> is not supported
+and therefore automatically replaced by <tt class="docutils literal"><span class="pre">\boldsymbol{u}</span></tt> by Doconce.</li>
+<li>Use <tt class="docutils literal"><span class="pre">\&lt;font</span> <span class="pre">color=&quot;blue&quot;&gt;formula&lt;/font&gt;</span></tt> in math expressions to color a part.</li>
+<li>Not all LaTeX math is supported by MathJax. Some legal LaTeX math
+might give MathJax problems - then one has to rewrite the expression
+to find a syntax that works both with LaTeX and MathJax.</li>
+<li>Use <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">spellcheck</span> <span class="pre">*.do.txt</span></tt> to automatically spellcheck files.</li>
+<li>Avoid page references and footnotes.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="writing-tips-for-sphinx-and-other-formats">
+<h2>Writing tips for sphinx and other formats<a class="headerlink" href="#writing-tips-for-sphinx-and-other-formats" title="Permalink to this headline">¶</a></h2>
+<p>For output formats different from <tt class="docutils literal"><span class="pre">latex</span></tt>, <tt class="docutils literal"><span class="pre">pdflatex</span></tt>, and <tt class="docutils literal"><span class="pre">html</span></tt>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Use labels only right after section headings and in equations.</li>
+<li>Be careful with labels in <tt class="docutils literal"><span class="pre">align</span></tt> math environments: <tt class="docutils literal"><span class="pre">pandoc</span></tt>
+and <tt class="docutils literal"><span class="pre">mwiki</span></tt> cannot refer to them.</li>
+<li><tt class="docutils literal"><span class="pre">sphinx</span></tt> output requires<ul>
+<li>no math in section headings or figure captions
+(gets removed in references).</li>
+<li>running text to start in column 1.</li>
+<li>progressive section headings: after chapter (9 <tt class="docutils literal"><span class="pre">=</span></tt>) comes
+section (7 <tt class="docutils literal"><span class="pre">=</span></tt>), then subsection (5 <tt class="docutils literal"><span class="pre">=</span></tt>), then paragraph
+(3 <tt class="docutils literal"><span class="pre">=</span></tt>). Do not make jumps in this progression.</li>
+<li>index entries (``</li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+<dl class="docutils" id="index-0">
+<dt><a href="#id7"><span class="problematic" id="id8">``</span></a>) before the paragraph where they</dt>
+<dd><blockquote class="first">
+<div>are introduced and place them <em>before</em> subsubsection
+headings (<tt class="docutils literal"><span class="pre">===</span> <span class="pre">...</span> <span class="pre">===</span></tt>) and after subsection and section headings.</div></blockquote>
+<ul class="last simple">
+<li>a line of text and no comment or math before code or list.</li>
+</ul>
+</dd>
+</dl>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Scientific Writing and Publishing Anno 2013</a></li>
+<li><a class="reference internal" href="#challenges-with-tools-for-scientific-writing">Challenges with tools for scientific writing</a><ul>
+<li><a class="reference internal" href="#scientific-writing-latex">Scientific writing = LaTeX</a></li>
+<li><a class="reference internal" href="#scientific-publishing-needs-to-address-new-media">Scientific publishing needs to address new media</a></li>
+<li><a class="reference internal" href="#the-book-will-probably-survive">The book will probably survive</a></li>
+<li><a class="reference internal" href="#the-classical-report-will-survive">The classical report will survive</a></li>
+<li><a class="reference internal" href="#scope-of-this-presentation">Scope of this presentation</a></li>
+<li><a class="reference internal" href="#does-your-scientific-writing-today-need-to-address-new-media-in-the-future">Does your scientific writing today need to address new media (in the future)?</a></li>
+<li><a class="reference internal" href="#can-we-factor-pieces-from-a-heterogeneous-world-to-one-coherent-piece-in-the-future">Can we factor pieces from a heterogeneous world to one coherent piece in the future?</a></li>
+<li><a class="reference internal" href="#popular-tools-anno-2013-and-their-math-support">Popular tools anno 2013 and their math support</a></li>
+<li><a class="reference internal" href="#latex-is-very-rich-other-tools-support-much-less-1">LaTeX is very rich; other tools support much less  (1)</a></li>
+<li><a class="reference internal" href="#latex-is-very-rich-other-tools-support-much-less-2">LaTeX is very rich; other tools support much less  (2)</a></li>
+<li><a class="reference internal" href="#typesetting-concerns-i">Typesetting concerns I</a></li>
+<li><a class="reference internal" href="#typesetting-concerns-ii">Typesetting concerns II</a></li>
+<li><a class="reference internal" href="#typesetting-concerns-iii">Typesetting concerns III</a></li>
+<li><a class="reference internal" href="#solution-i-use-a-format-that-translates-to-many">Solution I: Use a format that translates to many</a></li>
+<li><a class="reference internal" href="#solution-ii-use-doconce">Solution II: Use Doconce</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id1">Doconce</a><ul>
+<li><a class="reference internal" href="#doconce-demos">Doconce demos</a></li>
+<li><a class="reference internal" href="#doconce-disclaimer">Doconce disclaimer</a></li>
+<li><a class="reference internal" href="#doconce-experience-code-generation-is-a-great-thing">Doconce experience: code generation is a great thing</a><ul>
+<li><a class="reference internal" href="#example-generate-reveal-js-or-deck-js-slides-from-html">Example: generate reveal.js or deck.js slides from HTML</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#a-tour-of-doconce">A tour of Doconce</a><ul>
+<li><a class="reference internal" href="#title-authors-date-toc">Title, authors, date, toc</a></li>
+<li><a class="reference internal" href="#abstract">Abstract</a></li>
+<li><a class="reference internal" href="#section-headings">Section headings</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#this-is-an-h1-chapter-heading">This is an H1/chapter heading</a><ul>
+<li><a class="reference internal" href="#this-is-an-h2-section-heading">This is an H2/section heading</a><ul>
+<li><a class="reference internal" href="#this-is-an-h3-subsection-heading">This is an H3/subsection heading</a><ul>
+<li><a class="reference internal" href="#this-is-an-h4-paragraph-heading">This is an H4/paragraph heading</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#markup-and-lists">Markup and lists</a></li>
+<li><a class="reference internal" href="#labels-references-index-items">Labels, references, index items</a></li>
+<li><a class="reference internal" href="#figures-and-movies">Figures and movies</a></li>
+<li><a class="reference internal" href="#math">Math</a></li>
+<li><a class="reference internal" href="#math-flexibility">Math flexibility</a></li>
+<li><a class="reference internal" href="#displaying-code">Displaying code</a></li>
+<li><a class="reference internal" href="#copying-code-from-source-files">Copying code from source files</a></li>
+<li><a class="reference internal" href="#typesetting-of-code-is-implied-by-the-file-extension">Typesetting of code is implied by the file extension</a></li>
+<li><a class="reference internal" href="#demonstrating-code-execution-online-python-tutor">Demonstrating code execution; Online Python Tutor</a></li>
+<li><a class="reference internal" href="#demonstrating-code-execution-sage-cell-server">Demonstrating code execution; Sage Cell Server</a></li>
+<li><a class="reference internal" href="#demonstrating-code-execution-ipython-notebook">Demonstrating code execution; IPython notebook</a></li>
+<li><a class="reference internal" href="#tables">Tables</a></li>
+<li><a class="reference internal" href="#newcommands-for-math">Newcommands for math</a></li>
+<li><a class="reference internal" href="#labels-citations-index-bibliography">Labels, citations, index, bibliography</a></li>
+<li><a class="reference internal" href="#exercises-1">Exercises  (1)</a></li>
+<li><a class="reference internal" href="#rendering-of-the-previous-page">Rendering of the previous page</a><ul>
+<li><a class="reference internal" href="#problem-1-flip-a-coin">Problem 1: Flip a Coin</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#exercises-2">Exercises  (2)</a></li>
+<li><a class="reference internal" href="#use-of-preprocessors">Use of preprocessors</a></li>
+<li><a class="reference internal" href="#doconce-admonitions">Doconce admonitions</a></li>
+<li><a class="reference internal" href="#slides">Slides</a></li>
+<li><a class="reference internal" href="#example-on-slide-code-1">Example on slide code  (1)</a></li>
+<li><a class="reference internal" href="#example-on-slide-code-2">Example on slide code  (2)</a></li>
+<li><a class="reference internal" href="#headline-1">Headline  (1)</a></li>
+<li><a class="reference internal" href="#grid-layout-of-slide-mxn-cells">Grid layout of slide: MxN cells</a></li>
+<li><a class="reference internal" href="#id3">Grid layout of slide: MxN cells</a></li>
+<li><a class="reference internal" href="#headline-2">Headline  (2)</a></li>
+<li><a class="reference internal" href="#classic-slide-types">Classic slide types</a></li>
+<li><a class="reference internal" href="#html5-slide-types">HTML5 slide types</a></li>
+<li><a class="reference internal" href="#doconce-to-html">Doconce to HTML</a></li>
+<li><a class="reference internal" href="#output-for-blog-posts">Output for blog posts</a></li>
+<li><a class="reference internal" href="#doconce-to-pdflatex">Doconce to pdfLaTeX</a></li>
+<li><a class="reference internal" href="#doconce-to-sphinx">Doconce to Sphinx</a></li>
+<li><a class="reference internal" href="#output-for-wiki">Output for wiki</a></li>
+<li><a class="reference internal" href="#doconce-to-other-formats">Doconce to other formats</a></li>
+<li><a class="reference internal" href="#installation">Installation</a></li>
+<li><a class="reference internal" href="#writing-tips-for-latex-writers-who-want-to-convert-to-doconce">Writing tips for LaTeX writers who want to convert to Doconce</a></li>
+<li><a class="reference internal" href="#doconce-writing-tips-1">Doconce writing tips  (1)</a></li>
+<li><a class="reference internal" href="#doconce-writing-tips-2">Doconce writing tips  (2)</a></li>
+<li><a class="reference internal" href="#writing-tips-for-sphinx-and-other-formats">Writing tips for sphinx and other formats</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Some Title</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="index.html" title="Some Title"
+             >previous</a> |</li>
+        <li><a href="index.html">Some Title</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, H. P. Langtangen.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2pre.
+    </div>
+  </body>
+</html>

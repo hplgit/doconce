@@ -1,0 +1,4 @@
+- check for class 'slide' instead of checking for section tag
+- get comment for first slide on initial load (where no hash is present)
+- styling, of course
+- calculate size of preview window & iframe depending on the screen with & height
