@@ -57,6 +57,8 @@ document is embedded."""),
     ('--html_slide_theme=',
      """Specify a theme for the present slide type.
 (See the HTML header for a list of theme files and their names."""),
+    ('--html_footer_logo=',
+     """Specify a filename or a style name for a logo in the slide footer."""),
     ('--beamer_slide_theme=',
      """Specify a theme for beamer slides."""),
     ('--html_exercise_icon=',
@@ -250,8 +252,8 @@ def recommended_html_styles_and_pygments_styles():
         'solarized': ['perldoc',],
         'serif': ['perldoc'],
         'simple': ['autumn', 'default', 'perldoc'],
-        'blood': ['autumn', 'default', 'perldoc'],
-        #'cbc': ['autumn', 'default', 'perldoc'],
+        'blood': ['monokai', 'native'],
+        'cbc': ['default', 'autumn'],
         'sky': ['default'],
         'moon': ['fruity', 'native'],
         'night': ['fruity', 'native'],
@@ -2572,9 +2574,9 @@ Reveal.initialize({
 
 <!-- begin footer logo
 <div style="position: absolute; bottom: 0px; left: 0; margin-left: 0px">
-<img src="logo.png" width=1150>
+<img src="%(footer_logo)s">
 </div>
--->
+     end footer logo -->
 
 """,
             theme=None,
@@ -3518,6 +3520,9 @@ git://github.com/barraq/deck.ext.js.git
         )
 
     theme = option('html_slide_theme=', default='default')
+    footer_logo = option('html_footer_logo=', default=None)
+    if footer_logo == 'cbc':
+        footer_logo = 'reveal.js/css/theme/cbc_footer.png'
     # Check that the theme name is registered
     #from doconce.misc import recommended_html_styles_and_pygments_styles
     all_combinations = recommended_html_styles_and_pygments_styles()
@@ -3556,6 +3561,15 @@ git://github.com/barraq/deck.ext.js.git
            slide_syntax[slide_tp]['head_header'] % slide_syntax[slide_tp]
     slide_syntax[slide_tp]['body_header'] = \
            slide_syntax[slide_tp]['body_header'] % slide_syntax[slide_tp]
+    if footer_logo is not None:
+        slide_syntax[slide_tp]['footer'] = \
+            slide_syntax[slide_tp]['footer'] % vars()
+        slide_syntax[slide_tp]['footer'] = \
+            slide_syntax[slide_tp]['footer'].replace(
+                '<!-- begin footer logo',   '<!-- begin footer logo -->')
+        slide_syntax[slide_tp]['footer'] = \
+            slide_syntax[slide_tp]['footer'].replace(
+                '     end footer logo -->', '<!-- end footer logo -->')
 
     # Grab the relevant lines in the <head> and <body> parts of
     # the original header

@@ -4,8 +4,9 @@
  *
  * Copyright (C) 2011-2012 Hakim El Hattab, http://hakim.se
  */
-/* changed (by hpl) from 36px; */
-/* changed (by hpl) from uppercase; */
+/* changed by hpl from 36px; */
+/* changed by hpl from 'League Gothic', Impact, sans-serif; */
+/* changed by hpl from uppercase; */
 @font-face {
   font-family: 'League Gothic';
   src: url("../../lib/font/league_gothic-webfont.eot");
@@ -49,7 +50,7 @@ body {
 .reveal h6 {
   margin: 0 0 20px 0;
   color: #eeeeee;
-  font-family: "League Gothic", Impact, sans-serif;
+  font-family: "Helvetica", Impact, sans-serif;
   line-height: 0.9em;
   letter-spacing: 0.02em;
   text-transform: none;

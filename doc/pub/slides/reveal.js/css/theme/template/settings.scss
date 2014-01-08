@@ -6,16 +6,16 @@ $backgroundColor: #2b2b2b;
 
 // Primary/body text
 $mainFont: 'Lato', sans-serif;
-$mainFontSize: 30px;              /* changed (by hpl) from 36px; */
+$mainFontSize: 30px;              /* changed by hpl from 36px; */
 $mainColor: #eee;
 
 // Headings
 $headingMargin: 0 0 20px 0;
-$headingFont: 'League Gothic', Impact, sans-serif;
+$headingFont: 'Helvetica', Impact, sans-serif; /* changed by hpl from 'League Gothic', Impact, sans-serif; */
 $headingColor: #eee;
 $headingLineHeight: 0.9em;
 $headingLetterSpacing: 0.02em;
-$headingTextTransform: none;      /* changed (by hpl) from uppercase; */
+$headingTextTransform: none;      /* changed by hpl from uppercase; */
 $headingTextShadow: 0px 0px 6px rgba(0,0,0,0.2);
 $heading1TextShadow: $headingTextShadow;
 

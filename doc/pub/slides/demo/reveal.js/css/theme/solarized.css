@@ -3,8 +3,9 @@
  * Solarized Light theme for reveal.js.
  * Author: Achim Staebler
  */
-/* changed (by hpl) from 36px; */
-/* changed (by hpl) from uppercase; */
+/* changed by hpl from 36px; */
+/* changed by hpl from 'League Gothic', Impact, sans-serif; */
+/* changed by hpl from uppercase; */
 @font-face {
   font-family: 'League Gothic';
   src: url("../../lib/font/league_gothic-webfont.eot");
@@ -49,7 +50,7 @@ body {
 .reveal h6 {
   margin: 0 0 20px 0;
   color: #586e75;
-  font-family: "League Gothic", Impact, sans-serif;
+  font-family: "Helvetica", Impact, sans-serif;
   line-height: 0.9em;
   letter-spacing: 0.02em;
   text-transform: none;
