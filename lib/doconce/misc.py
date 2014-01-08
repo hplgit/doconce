@@ -251,6 +251,7 @@ def recommended_html_styles_and_pygments_styles():
         'serif': ['perldoc'],
         'simple': ['autumn', 'default', 'perldoc'],
         'blood': ['autumn', 'default', 'perldoc'],
+        #'cbc': ['autumn', 'default', 'perldoc'],
         'sky': ['default'],
         'night': ['fruity', 'native'],
         'moon': ['fruity', 'native'],
@@ -2531,10 +2532,10 @@ Reveal.initialize({
     viewDistance: 3,
 
     // Parallax background image
-    parallaxBackgroundImage: '', // e.g. "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'"
+    //parallaxBackgroundImage: '', // e.g. "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'"
 
     // Parallax background size
-    parallaxBackgroundSize: '' // CSS syntax, e.g. "2100px 900px"
+    //parallaxBackgroundSize: '' // CSS syntax, e.g. "2100px 900px"
 
     theme: Reveal.getQueryHash().theme, // available themes are in reveal.js/css/theme
     transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
@@ -3854,8 +3855,8 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
 \usepackage{relsize}
 
 \usepackage{fancyvrb}
-%\usepackage{minted} % requires pygments and latex -shell-escape filename
-%\usepackage{anslistings}
+%%\usepackage{minted} %% requires pygments and latex -shell-escape filename
+%%\usepackage{anslistings}
 
 \usepackage{amsmath,amssymb,bm}
 %%\usepackage[latin1]{inputenc}
