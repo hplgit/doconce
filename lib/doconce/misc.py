@@ -2377,7 +2377,6 @@ def generate_html5_slides(header, parts, footer, basename, filename,
         reveal=dict(
             subdir='reveal.js',
             default_theme='beige',
-            #main_style='reveal.min',
             main_style='reveal',
             slide_envir_begin='<section>',
             slide_envir_end='</section>',
@@ -2386,6 +2385,8 @@ def generate_html5_slides(header, parts, footer, basename, filename,
             head_header="""
 <!-- reveal.js: http://lab.hakim.se/reveal-js/ -->
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
@@ -2393,7 +2394,6 @@ def generate_html5_slides(header, parts, footer, basename, filename,
 <link rel="stylesheet" href="reveal.js/css/theme/%(theme)s.css" id="theme">
 <!--
 <link rel="stylesheet" href="reveal.js/css/reveal.css">
-<link rel="stylesheet" href="reveal.js/css/reveal.min.css">
 <link rel="stylesheet" href="reveal.js/css/theme/beige.css" id="theme">
 <link rel="stylesheet" href="reveal.js/css/theme/beigesmall.css" id="theme">
 <link rel="stylesheet" href="reveal.js/css/theme/night.css" id="theme">
@@ -2402,6 +2402,10 @@ def generate_html5_slides(header, parts, footer, basename, filename,
 <link rel="stylesheet" href="reveal.js/css/theme/darkgray.css" id="theme">
 -->
 
+<!-- For syntax highlighting -->
+<link rel="stylesheet" href="lib/css/zenburn.css">
+
+<!-- If the query includes 'print-pdf', use the PDF print sheet -->
 <script>
 document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
 </script>
@@ -3636,6 +3640,9 @@ td.padding {
         # Special treatment of the text for some slide tools
         if slide_tp == 'deck':
             part = part.replace('<pre>', '<pre><code>')
+            part = part.replace('</pre>', '</code></pre>')
+        if slide_tp == 'reveal':
+            part = part.replace('<pre>', '<pre><code data-trim contenteditable>')
             part = part.replace('</pre>', '</code></pre>')
 
         part = part.replace('</ul>', '</ul>\n<p>')
