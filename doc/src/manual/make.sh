@@ -44,13 +44,11 @@ rm -rf sphinx-rootdir
 # authors we have to specify
 doconce sphinx_dir author=HPL title='Doconce Manual' theme=cbc version=0.6 manual.do.txt
 cp manual.rst manual.sphinx.rst
-cp manual.rst sphinx-rootdir
-cp -r fig sphinx-rootdir
-# run sphinx:
-cd sphinx-rootdir
-make clean
-make html
-cd ..
+python automake_sphinx.py
+# automake_sphinx.py can only copy figures in FIGURE lines, not
+# the ones we have in the special figure table
+mkdir sphinx-rootdir/_build/html/mov
+cp -r mov/wave_frames sphinx-rootdir/_build/html/mov
 
 # rst:
 $d2f rst manual.do.txt --no_mako
@@ -60,7 +58,9 @@ rst2html.py manual.rst > manual.rst.html
 
 rst2xml.py manual.rst > manual.xml
 
-rst2latex.py manual.rst > manual.rst.tex
+# The Mako generated HTML table must be removed before creating latex
+doconce remove --from '.. end sphinx-figtable-in-html' --to '.. end sphinx-figtable-in-html' manual.rst > manual.4latex.rst
+rst2latex.py manual.4latex.rst > manual.rst.tex
 
 pdflatex manual.rst.tex
 # fix figure extension: rst will use .png file for wave1D, but this is not

@@ -1,6 +1,6 @@
 /* global module:false */
 module.exports = function(grunt) {
-
+	var port = grunt.option('port') || 8000;
 	// Project configuration
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
@@ -15,9 +15,8 @@ module.exports = function(grunt) {
 				' */'
 		},
 
-		// Tests will be added soon
 		qunit: {
-			files: [ 'test/**/*.html' ]
+			files: [ 'test/*.html' ]
 		},
 
 		uglify: {
@@ -42,13 +41,18 @@ module.exports = function(grunt) {
 			main: {
 				files: {
 					'css/theme/default.css': 'css/theme/source/default.scss',
+					'css/theme/darkgray.css': 'css/theme/source/darkgray.scss',
 					'css/theme/beige.css': 'css/theme/source/beige.scss',
+					'css/theme/beigesmall.css': 'css/theme/source/beigesmall.scss',
+					'css/theme/cbc.css': 'css/theme/source/cbc.scss',
+					'css/theme/simula.css': 'css/theme/source/simula.scss',
 					'css/theme/night.css': 'css/theme/source/night.scss',
 					'css/theme/serif.css': 'css/theme/source/serif.scss',
 					'css/theme/simple.css': 'css/theme/source/simple.scss',
 					'css/theme/sky.css': 'css/theme/source/sky.scss',
 					'css/theme/moon.css': 'css/theme/source/moon.scss',
-					'css/theme/solarized.css': 'css/theme/source/solarized.scss'
+					'css/theme/solarized.css': 'css/theme/source/solarized.scss',
+					'css/theme/blood.css': 'css/theme/source/blood.scss'
 				}
 			}
 		},
@@ -69,7 +73,8 @@ module.exports = function(grunt) {
 				globals: {
 					head: false,
 					module: false,
-					console: false
+					console: false,
+					unescape: false
 				}
 			},
 			files: [ 'Gruntfile.js', 'js/reveal.js' ]
@@ -78,7 +83,7 @@ module.exports = function(grunt) {
 		connect: {
 			server: {
 				options: {
-					port: 8000,
+					port: port,
 					base: '.'
 				}
 			}
@@ -109,6 +114,7 @@ module.exports = function(grunt) {
 	});
 
 	// Dependencies
+	grunt.loadNpmTasks( 'grunt-contrib-qunit' );
 	grunt.loadNpmTasks( 'grunt-contrib-jshint' );
 	grunt.loadNpmTasks( 'grunt-contrib-cssmin' );
 	grunt.loadNpmTasks( 'grunt-contrib-uglify' );
@@ -118,7 +124,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks( 'grunt-zip' );
 
 	// Default task
-	grunt.registerTask( 'default', [ 'jshint', 'cssmin', 'uglify' ] );
+	grunt.registerTask( 'default', [ 'jshint', 'cssmin', 'uglify', 'qunit' ] );
 
 	// Theme task
 	grunt.registerTask( 'themes', [ 'sass' ] );
@@ -128,5 +134,8 @@ module.exports = function(grunt) {
 
 	// Serve presentation locally
 	grunt.registerTask( 'serve', [ 'connect', 'watch' ] );
+
+	// Run tests
+	grunt.registerTask( 'test', [ 'jshint', 'qunit' ] );
 
 };

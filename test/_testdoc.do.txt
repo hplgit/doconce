@@ -59,7 +59,6 @@ Here is a reference to Equation (ref{my:eq1}).
 This equation appears in another part if this document is split.
 # #endif
 
-!split and check if these extra words are included properly in the comment
 
 ===== Subsection 1 =====
 
@@ -67,6 +66,8 @@ More text, with a reference back to Section ref{sec1} and further
 to Section ref{subsubsec:ex}. idx{`somefunc` function}
 
 # sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console
+
+=== Computer code ===
 
 Let's do some copying from files too. First from subroutine up to the very end,
 
@@ -210,8 +211,11 @@ green color containing a linebreak.
 And one more.} Some formats will only display this correctly when
 HTML is the output format.
 
+=== Running OS commands ===
 
-===== Subsection 2: Testing figures and movies =====
+@@@OSCMD python -c 'print "Testing\noutput\nfrom\nPython."'
+
+===== Subsection 2: Testing figures =====
 label{subsec:ex}
 idx{figures}
 
@@ -225,35 +229,6 @@ Figures without captions are allowed and will be inlined.
 FIGURE:[../doc/src/manual/fig/wave1D, width=200]
 
 idx{movies}
-
-=== Test of movies ===
-
-Movie ref{mov:wave} shows a wave.
-
-MOVIE: [../doc/src/manual/mov/wave.ogg, width=700 height=400] 1D wave in Ogg format. label{mov:wave}.
-
-Test empty caption (for inline movie, here in MPEG format):
-
-MOVIE: [../doc/src/manual/mov/wave.mpeg, width=700 height=400]
-
-Test wrong syntax and multi-line caption, to see if it is automatically
-corrected:
-
-   MOVIE: [../doc/src/manual/mov/wave.webm, width=700 height=400] Movie
-based on collection of frames
-(here just a few frames compared with the full wavepacket.mpeg movie).
-label{mymov}
-
-We can show a series of images as an animation:
-
-MOVIE: [../doc/src/manual/mov/wave_frames/frame_*.png] Caption for animated collection of images.
-
-Check out the correct with and height of YouTube movies from the
-embed command that the YouTube page can generate. Similar for Vimeo.
-
-MOVIE: [http://www.youtube.com/watch?v=_O7iUiftbKU, width=420 height=315] YouTube movie.
-
-MOVIE: [http://vimeo.com/55562330, width=500 height=278] Vimeo movie.
 
 
 # Test multi-line caption in figure
@@ -281,6 +256,9 @@ FIGURE: [testfigs/df2s8765s_plot.png, width=200, frac=0.4]
 # #endif
 
 # Somewhat challenging heading with latex math, \t, \n, ? and parenthesis
+
+__Remark.__
+Movies are tested in separate file `movies.do.txt`.
 
 ===== The $\theta$ parameter (not $\nabla$?) =====
 label{decay:sec:theta}
@@ -416,32 +394,63 @@ one table:
   |--------------------------------|
 
 And one with math headings (that are expanded and must be treated
-accordingly) and verbatim heading and entry:
+accordingly), verbatim heading and entry, and no space around the pipe
+symbol:
 
-|-------------------------------|
-|$i$ | $h_i$|$\bar T_i$ | `L_i` |
-|-l-----r---------r---------r---|
-|0   |0     |288        |-0.0065|
-|1   |11,000|216        |0.0	|
-|2   |20,000|216        |0.001	|
-|3   |32,000|228        |0.0028	|
-|4   |47,000|270        |0.0	|
-|5   |51,000|270        |-0.0028|
-|6   |71,000|214        |`NaN`	|
-|-------------------------------|
+|--------------------------|
+|$i$|$h_i$|$\bar T_i$|`L_i`|
+|-l-----r-------r----r-----|
+|0   |0     |288   |-0.0065|
+|1   |11,000|216   |0.0	   |
+|2   |20,000|216   |0.001  |
+|3   |32,000|228   |0.0028 |
+|4   |47,000|270   |0.0	   |
+|5   |51,000|270   |-0.0028|
+|6   |71,000|214   |`NaN`  |
+|--------------------------|
 
 And add one with verbatim headings (with underscores),
 and rows starting with `|-` because of a negative number,
-and `|` right after verbatim word (with no space):
+and `|` right before and after verbatim word (with no space):
+## +`v_2` does not work, need space + `v_2`
 
 |-----------------------------------------|
-| exact | `v_1`   | $a_i$ + `v_2`|`verb_3_`|
+| exact | `v_1`   |$a_i$ + `v_2`|`verb_3_`|
 |---r--------r---------r-----------r------|
 |9      | 9.62    | 5.57      |  8.98     |
 |-20    | -23.39  | -7.65     | -19.93    |
 |10     | 17.74   | -4.50     |  9.96     |
 |0      | -9.19   | 4.13      | -0.26     |
 |-----------------------------------------|
+
+Finally, a table with math
+# #if FORMAT in ("rst", "html", "sphinx", "pandoc")
+(`bm` that expands to `boldsymbol`, was tricky, but
+cleanly handled now)
+# #endif
+and URLs.
+
+# Mako code to expand URLs in the table
+# (These types of tables did not work before Jan 2014)
+<%
+def tfig(fileno):
+    p = '../doc/src/manual/mov/wave_frames/frame_0' + fileno + '.png'  # path
+    if FORMAT in ("latex", "pdflatex"):
+        text = r'\includegraphics[width=2cm]{%s}' % p
+    elif FORMAT == "html":
+        text = '<a href="%s"><img src="%s" width="300"></a>' % (p, p)
+    else:
+        text = '"`%s`": "%s"' % (fileno, p)  # plain link
+    return text
+%>
+
+|-----------------------------------------------------------|
+|                         |                |                |
+|--------------c------------------c----------------c--------|
+| $\mathcal{L}=0$         | ${tfig('080')} | ${tfig('085')} |
+| $a=b$                   | ${tfig('090')} | ${tfig('095')} |
+| $\nabla\cdot\bm{u} =0 $ | ${tfig('100')} | ${tfig('105')} |
+|-----------------------------------------------------------|
 
 
 ===== A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2` =====
@@ -558,7 +567,7 @@ More tough tests: repeated URLs whose footnotes when using the
 footnotes.
 
 
-% if FORMAT == "latex":
+% if FORMAT in ("latex", "pdflatex"):
 
 ===== Test of Some LaTeX Fixes =====
 
@@ -574,7 +583,9 @@ fool a regex substitution with only i.e. since the dot matches anything.
 Also, look at Fig. 4 to see how the data compares with Tab. ref{mytab}.
 % endif
 
-===== LaTeX Mathematics =====
+!split and check if these extra words are included properly in the comment
+
+======= LaTeX Mathematics =======
 
 Here is an equation without label using backslash-bracket environment:
 !bt

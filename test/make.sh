@@ -67,7 +67,7 @@ system doconce format latex testdoc.do.txt $ex SOMEVAR=True --skip_inline_commen
 system doconce format pdflatex testdoc.do.txt --device=paper $ex --latex_double_hyphen
 system doconce latex_exercise_toc testdoc
 
-# doconce replace does not work well with system without quotes
+# doconce replace does not work well with system bash func above without quotes
 doconce replace 'vspace{1cm} % after toc' 'clearpage % after toc' testdoc.p.tex
 thpack='\\usepackage{theorem}\n\\newtheorem{theorem}{Theorem}[section]'
 doconce subst '% insert custom LaTeX commands\.\.\.' $thpack testdoc.p.tex
@@ -81,7 +81,7 @@ doconce replace --examples_as__exercises $ex testdoc.p.tex
 
 # A4PAPER trigger summary environment to be smaller paragraph
 # within the text (fine for proposals or articles).
-system ptex2tex -DMINTED -DMOVIE=media9 -DLATEX_HEADING=titlepage -DA4PAPER -DTODONOTES -DLINENUMBERS -DCOLORED_TABLE_ROWS=blue -DFANCY_HEADER -DSECTION_HEADINGS=blue testdoc
+system ptex2tex -DMINTED -DLATEX_HEADING=titlepage -DA4PAPER -DTODONOTES -DLINENUMBERS -DCOLORED_TABLE_ROWS=blue -DFANCY_HEADER -DSECTION_HEADINGS=blue testdoc
 
 # test that pdflatex works
 system pdflatex -shell-escape testdoc
@@ -107,8 +107,9 @@ mv -f testdoc.rst testdoc.sphinx.rst
 
 doconce format sphinx testdoc $ex
 doconce split_rst testdoc
-system doconce sphinx_dir author=HPL title='Just a test' version=0.1 theme=agni testdoc
+system doconce sphinx_dir author=HPL title='Just a test' dirname='sphinx-testdoc' version=0.1 theme=agni testdoc
 cp automake_sphinx.py automake_sphinx_testdoc.py
+system python automake_sphinx.py
 
 system doconce format rst testdoc.do.txt $ex
 
@@ -223,7 +224,7 @@ for admon_tp in $admon_tps; do
 system doconce format pdflatex admon --latex_admon=$admon_tp
 doconce ptex2tex admon envir=minted
 cp admon.tex admon_${admon_tp}.tex
-pdflatex -shell-escape admon_${admon_tp}
+system pdflatex -shell-escape admon_${admon_tp}
 done
 
 system doconce format html admon --html_admon=lyx --html_style=blueish2
@@ -254,12 +255,57 @@ cp -r tmp_admon/_build/html admon_sphinx
 
 system doconce format mwiki admon
 cp admon.mwiki admon_mwiki.mwiki
-mv -f admon_* admon/
 
-system doconce format pandoc github_md.do.txt --github_md
+system doconce format plain admon
+cp admon.txt admon_plain.txt
+
+cp -f admon_* admon_demo/
 
 #google-chrome admon_*.html
 #for pdf in admon_*.pdf; do evince $pdf; done
+
+
+system doconce format pandoc github_md.do.txt --github_md
+
+# Test movie handling
+name=movies
+system doconce format html $name --html_output=movies_3choices
+cp movies_3choices.html movie_demo
+system doconce format html $name --no_mp4_webm_ogg_alternatives
+cp movies.html movie_demo
+
+rm -f $name.aux
+system doconce format pdflatex $name
+system doconce ptex2tex $name -DMOVIE=media9
+system pdflatex $name
+pdflatex $name
+cp $name.pdf movie_demo/${name}_media9.pdf
+cp $name.tex ${name}_media9.tex
+
+system doconce format pdflatex $name
+system doconce ptex2tex $name -DMOVIE=media9 -DEXTERNAL_MOVIE_VIEWER
+system pdflatex $name
+cp $name.pdf movie_demo/${name}_media9_extviewer.pdf
+
+# multimedia (beamer \movie command) does not work well
+#rm $name.aux
+#system doconce format pdflatex $name
+#system doconce ptex2tex $name -DMOVIE=multimedia
+#system pdflatex $name
+#cp $name.pdf movie_demo/${name}_multimedia.pdf
+#cp $name.tex ${name}_multimedia.tex
+
+rm -f $name.aux
+system doconce format pdflatex $name
+system doconce ptex2tex $name
+system pdflatex $name
+cp $name.pdf movie_demo
+
+system doconce format plain movies
+
+
+# Status movies: everything works in html and sphinx, only href works
+# in latex, media9 is unreliable
 
 # Test encoding
 system doconce guess_encoding encoding1.do.txt > tmp_encodings.txt
@@ -304,21 +350,20 @@ doconce format rst tmp2
 doconce replace '\label' 'label' tmp2.do.txt
 doconce replace 'wave1D width' 'wave1D,  width' tmp2.do.txt
 doconce format sphinx tmp2
+doconce replace 'doc/manual' 'doc/src/manual' tmp2.do.txt
+doconce format sphinx tmp2
 doconce replace '../lib/doconce/doconce.py' '_static/doconce.py' tmp2.do.txt
+doconce replace 'two_media99' 'two_media' tmp2.do.txt
+doconce format html tmp2
+doconce replace '99x9.ogg' '.ogg' tmp2.do.txt
+doconce format html tmp2
 doconce subst -s -m '^!bsol.+?!esol' ''  tmp2.do.txt
 doconce format sphinx tmp2
 doconce subst -s -m '^!bhint.+?!ehint' ''  tmp2.do.txt
 doconce format sphinx tmp2
-doconce replace 'doc/manual' 'doc/src/manual' tmp2.do.txt
-doconce format html tmp2
 doconce format pdflatex tmp2
-doconce replace 'two_media99' 'two_media' tmp2.do.txt
-doconce format html tmp2
 doconce format pdflatex tmp2
 doconce format sphinx tmp2
-doconce replace '99x9.ogg' '.ogg' tmp2.do.txt
-doconce format html tmp2
-doconce format pdflatex tmp2
 #doconce replace '# Comment before math is ok' '' tmp2.do.txt
 echo
 echo "When we reach this point in the script,"

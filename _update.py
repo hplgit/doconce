@@ -64,13 +64,20 @@ def zipfiles2lib():
 
 
 def pack_reveal_deck_csss():
-    system('sh clean.sh')
 
     if clone:
+        system('sh clean.sh')
         rmtree('reveal.js')
         system('git clone git://github.com/hakimel/reveal.js.git')
     os.system('cp doconce_modifications/reveal/css/reveal*.css reveal.js/css/')
     os.system('cp doconce_modifications/reveal/css/theme/*.css reveal.js/css/theme/')
+    os.system('cp doconce_modifications/reveal/css/theme/*.png reveal.js/css/theme/')
+    os.system('cp doconce_modifications/reveal/css/theme/source/*.scss reveal.js/css/theme/source/')
+    os.system('cp doconce_modifications/reveal/css/theme/template/*.scss reveal.js/css/theme/template/')
+    os.system('cp doconce_modifications/reveal/Gruntfile.js reveal.js/')
+    # Building new .css files is only necessary if .scss are modified
+    #os.system('cp doconce_modifications/reveal/Gruntfile.js reveal.js/')
+    #os.system('cd reveal.js; npm install; grunt themes; cd ..')
     zip_dir('reveal.js')
 
     if clone:

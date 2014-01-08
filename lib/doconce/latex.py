@@ -275,34 +275,37 @@ def latex_figure(m, includegraphics=True):
     return result
 
 def latex_movie(m):
-    from common import default_movie
-    text = default = default_movie(m)
     filename = m.group('filename')
     caption = m.group('caption').strip()
 
     if 'youtu.be' in filename:
         filename = filename.replace('youtu.be', 'youtube.com')
 
-    # URL to HTML viewer file must have absolute path in \href
-    html_viewer_file_pattern = r'Movie of files `.+` in URL:"(.+)"'
-    m2 = re.search(html_viewer_file_pattern, text)
-    if m2:
-        html_viewer_file = m2.group(1)
-        if os.path.isfile(html_viewer_file):
-            html_viewer_file_abs = os.path.abspath(html_viewer_file)
-            text = text.replace('URL:"%s"' % html_viewer_file,
-                                'URL:"file://%s"' % html_viewer_file_abs)
+    def link_to_local_html_movie_player():
+        """Simple solution where an HTML file is made for playing the movie."""
+        from common import default_movie
+        text = default_movie(m)
 
+        # URL to HTML viewer file must have absolute path in \href
+        html_viewer_file_pattern = \
+             r'(.+?) `(.+?)`: load "`(.+?)`": "(.+?)" into a browser'
+        m2 = re.search(html_viewer_file_pattern, text)
+        if m2:
+            html_viewer_file = m2.group(4)
+            if os.path.isfile(html_viewer_file):
+                html_viewer_file_abs = os.path.abspath(html_viewer_file)
+                text = text.replace(': "%s"' % html_viewer_file,
+                                    ': "file://%s"' % html_viewer_file_abs)
+        return '\n' + text + '\n'
 
-    if ': play URL:' in text:
-        # Drop default_movie, embed in PDF instead using various techniques
-        if caption:
-            text = r"""
-\begin{figure}[ht]
-\begin{center}
-"""
-        if 'youtube.com' in filename:
-            text += r"""
+    # Do not typeset movies in figure environments since Doconce documents
+    # assume inline movies
+    text = r"""
+\begin{doconce:movie}
+\refstepcounter{doconce:movie:counter}
+\begin{center}"""
+    if 'youtube.com' in filename:
+        text += r"""
 %% #if MOVIE == "media9"
 \includemedia[
 width=0.6\linewidth,height=0.45\linewidth,
@@ -313,19 +316,57 @@ modestbranding=1   %% no YouTube logo in control bar
 &showinfo=0        %% no title and other info before start
 &rel=0             %% no related videos after end
 },
-url %% Flash loaded from URL
 ]{}{%(filename)s}
 %% #else
-%(default)s
+"`%(filename)s`": "%(filename)s"
 %% #endif
 """ % vars()
-
+    elif 'vimeo.com' in filename:
+        # Can only provide a link to the Vimeo movie
+        # Rename embedded files to ordinary Vimeo URL
+        filename = filename.replace('http://player.vimeo.com/video',
+                                    'http://vimeo.com')
+        text += '"`%(filename)s`": "%(filename)s"' % vars()
+    elif '*' in filename or '->' in filename:
+        # Filename generator
+        # frame_*.png
+        # frame_%04d.png:0->120
+        # http://some.net/files/frame_%04d.png:0->120
+        if filename.startswith('http'):
+            # Cannot handle animation of frames on the web,
+            # make a separate html file that can play the animation
+            text += link_to_local_html_movie_player()
         else:
+            import DocWriter
+            header, jscode, form, footer, frames = \
+                    DocWriter.html_movie(filename)
+            # Make a good estimate of the frame rate: it takes 30 secs
+            # to run the animation: rate*30 = no of frames
+            framerate = int(len(frames)/30.)
+            commands = [r'\includegraphics[width=0.9\textwidth]{%s}' %
+                        f for f in frames]
+            commands = ('\n\\newframe\n').join(commands)
+            # Note: cannot use animategraphics because it cannot handle
+            # filenames on the form frame_%04d.png, only frame_%d.png.
+            # Expand all plotfile names instead.
+            text += r"""
+\begin{animateinline}[controls,loop]{%d} %% frames: %s -> %s
+%s
+\end{animateinline}
+""" % (framerate, frames[0], frames[-1], commands)
+    else:
+        # Local movie file or URL (all the methods below handle
+        # either local files or URLs)
+
+        label = filename.replace('/', '').replace('.', '').replace('-','')
+        stem, ext = os.path.splitext(filename)
+        if ext.lower() in ('.mp4', '.flv'):
+            # Can use media9 package
             text += r"""
 %% #if MOVIE == "media9"
 \includemedia[
+label=%(label)s,
 width=0.8\linewidth,
-label=%(filename)s,
 activate=pageopen,         %% or onclick or pagevisible
 addresource=%(filename)s,  %% embed the video in the PDF
 flashvars={
@@ -336,19 +377,41 @@ source=%(filename)s
 }]{}{VPlayer.swf}
 
 %% #ifdef MOVIE_CONTROLS
-\mediabutton[
-  mediacommand=%(filename)s:playPause,
-  overface=\color{blue}{\fbox{\strut Play/Pause}},
-  downface=\color{red}{\fbox{\strut Play/Pause}}
-  ]{\fhox{\strut Play/Pause}}
-%% #endif
+%%\mediabutton[mediacommand=%(label)s:playPause]{\fbox{\strut Play/Pause}}
+%% #endif""" % vars()
+        elif ext.lower() in ('.mp3',):
+            # Can use media9 package
+            text += r"""
+%% #if MOVIE == "media9"
+\includemedia[
+label=%(label)s,
+addresource=%(filename)s,  %% embed the video in the PDF
+flashvars={
+source=%(filename)s
+&autoPlay=true
+},
+transparent
+]{\framebox[0.5\linewidth[c]{\nolinkurl{%(filename)s}}}{APlayer9.swf}
+%% #else
+""" % vars()
+            if filename.startswith('http'):
+                # Just plain link
+                text += r'\href{%(filename)s}{\nolinkurl{%(filename)s}}' % vars()
+            else:
+                # \href{run:localfile}{linktext}
+                text += r'\href{run:%(filename)s}{\nolinkurl{%(filename)s}}' % vars()
+            text += '\n% #endif\n'
 
-%% #elif MOVIE == "movie15"
+        elif ext.lower() in ('.mpg', '.mpeg', '.avi'):
+            # Use old movie15 package which will launch a separate
+            # player
+            text += r"""
+%% #if MOVIE == "media9"
 \includemovie[poster,
-label=%(filename)s,
+label=%(label)s,
 autoplay,
-%%controls,
-%%toolbar,
+controls,
+toolbar,
 %% #ifdef EXTERNAL_MOVIE_VIEWER
 externalviewer,
 %% #endif
@@ -356,32 +419,47 @@ text={\small (Loading %(filename)s)},
 repeat,
 ]{0.9\linewidth}{0.9\linewidth}{%(filename)s}
 %% #ifndef EXTERNAL_MOVIE_VIEWER
-\movieref[rate=0.5]{%(filename)s}{Slower}
-\movieref[rate=2]{%(filename)s}{Faster}
-\movieref[default]{%(filename)s}{Normal}
-\movieref[pause]{%(filename)s}{Play/Pause}
-\movieref[stop]{%(filename)s}{Stop}
-%% #else
-\href{run:%(filename)s}{%(filename)s}
-%% #endif
-
+\movieref[rate=0.5]{%(label)s}{Slower}
+\movieref[rate=2]{%(label)s}{Faster}
+\movieref[default]{%(label)s}{Normal}
+\movieref[pause]{%(label)s}{Play/Pause}
+\movieref[stop]{%(label)s}{Stop}
+%% #endif""" % vars()
+        else:
+            # Use simple old href technique since neither media9 nor movie15
+            # can handle this format (typically .webm or .ogg)
+            text += r"""
+%% #if MOVIE == "media9"
+\href{run:%(filename)s}{\nolinkurl{%(filename)s}}
+""" % vars()
+        # Add latex code for other methods for showing movies
+        # (these are the same for all movie types)
+        text += r"""
 %% #elif MOVIE == "multimedia"
 %% Beamer-style \movie command
 \movie[
+showcontrols,
 label=%(filename)s,
 width=0.9\linewidth,
-autostart]{%(filename)s}{%(filename)s}
+autostart]{\nolinkurl{%(filename)s}}{%(filename)s}
 %% #else
-\href{run:%(filename)s}{%(filename)s}
-%% #endif
-""" % {'filename': filename}
-        if caption:
-            # Note: caption may contain a label
-            text += r"""
+""" % vars()
+        if filename.startswith('http'):
+            # Just plain link
+            text += r'\href{%(filename)s}{\nolinkurl{%(filename)s}}' % vars()
+        else:
+            # \href{run:localfile}{linktext}
+            text += r'\href{run:%(filename)s}{\nolinkurl{%(filename)s}}' % vars()
+        text += '\n% #endif\n'
+
+    text += '\\end{center}\n'
+    if caption:
+        text += r"""
+\begin{center}  %% movie caption
+Movie \arabic{doconce:movie:counter}: %s
 \end{center}
-\caption{%s}
-\end{figure}
 """ % caption
+    text += '\\end{doconce:movie}\n'
     return text
 
 def latex_table(table):
@@ -418,27 +496,33 @@ def latex_table(table):
                table['rows'][i-1] == ['horizontal rule'] and \
                table['rows'][i+1] == ['horizontal rule']:
                 headline = True
+                # Empty column headings?
+                skip_headline = max([len(column.strip())
+                                     for column in row]) == 0
             else:
                 headline = False
 
             if headline:
-                # First fix verbatim inside multicolumn
-                # (recall that doconce.py table preparations
-                # translates `...` to \code{...})
-                verbatim_pattern = r'code\{(.+?)\}'
-                for i in range(len(row)):
-                    m = re.search(verbatim_pattern, row[i])
-                    if m:
-                        #row[i] = re.sub(verbatim_pattern,
-                        #                r'texttt{%s}' % m.group(1),
-                        #                row[i])
-                        # (\code translates to \Verb, which is allowed here)
+                if skip_headline:
+                    row = []
+                else:
+                    # First fix verbatim inside multicolumn
+                    # (recall that doconce.py table preparations
+                    # translates `...` to \code{...})
+                    verbatim_pattern = r'code\{(.+?)\}'
+                    for i in range(len(row)):
+                        m = re.search(verbatim_pattern, row[i])
+                        if m:
+                            #row[i] = re.sub(verbatim_pattern,
+                            #                r'texttt{%s}' % m.group(1),
+                            #                row[i])
+                            # (\code translates to \Verb, which is allowed here)
 
-                        row[i] = re.sub(r'\\code\{(.*?)\}', underscore_in_code,
-                                        row[i])
+                            row[i] = re.sub(
+                                r'\\code\{(.*?)\}', underscore_in_code, row[i])
 
-                row = [r'\multicolumn{1}{%s}{ %s }' % (a, r) \
-                       for r, a in zip(row, heading_spec)]
+                    row = [r'\multicolumn{1}{%s}{ %s }' % (a, r) \
+                           for r, a in zip(row, heading_spec)]
             else:
                 row = [r.ljust(w) for r, w in zip(row, column_width)]
 
@@ -723,8 +807,8 @@ def latex_ref_and_label(section_label2title, format, filestr):
     filestr = re.sub(r'( [0-9]{1,3})%', r'\g<1>\%', filestr)
     filestr = re.sub(r'(^[0-9]{1,3})%', r'\g<1>\%', filestr, flags=re.MULTILINE)
 
-    # Fix errors such as et. al. cite{ (et. -> et)
-    filestr = re.sub(r'et\. +al +cite\{', 'et al. cite{', filestr)
+    # Fix common error et. al. cite{ (et. should be just et)
+    filestr = re.sub(r'et\. +al +cite(\{|\[)', r'et al. cite\g<1>', filestr)
 
     # fix periods followed by too long space:
     prefix = r'Prof\.', r'Profs\.', r'prof\.', r'profs\.', r'Dr\.', \
@@ -752,6 +836,11 @@ def latex_index_bib(filestr, index, citations, pubfile, pubdata):
     #print 'index:', index
     #print 'citations:', citations
     filestr = filestr.replace('cite{', r'\cite{')
+    filestr = filestr.replace('cite[', r'\cite[')
+    # Fix spaces after . inside cite[] and insert ~
+    pattern = r'cite\[(.+)\.\s+'
+    filestr = re.sub(pattern, r'cite[\g<1>.~', filestr)
+
     for word in index:
         pattern = 'idx{%s}' % word
         if '`' in word:
@@ -1251,12 +1340,13 @@ def define(FILENAME_EXTENSION,
 %% Many preprocess options can be added to ptex2tex or doconce ptex2tex
 %%
 %%      ptex2tex -DMINTED -DPALATINO -DA6PAPER -DLATEX_HEADING=traditional myfile
-%%      doconce ptex2tex myfile -DMINTED -DLATEX_HEADING=titlepage
+%%      doconce ptex2tex myfile -DLATEX_HEADING=titlepage envir=minted
 %%
 %% ptex2tex will typeset code environments according to a global or local
 %% .ptex2tex.cfg configure file. doconce ptex2tex will typeset code
 %% according to options on the command line (just type doconce ptex2tex to
-%% see examples).
+%% see examples). If doconce ptex2tex has envir=minted, it enables the
+%% minted style without needing -DMINTED.
 % #endif
 
 % #ifndef LATEX_STYLE
@@ -1320,6 +1410,7 @@ final,                   %% or draft (marks overfull hboxes)
 % Style: T2 (Springer)
 \documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmono}
 \usepackage{t2}
+\special{papersize=193mm,260mm}
 % #elif LATEX_STYLE == "Springer_llcse"
 % Style: Lecture Notes in Computer Science (Springer)
 \documentclass[oribib]{llncs}
@@ -1365,20 +1456,52 @@ final,                   %% or draft (marks overfull hboxes)
 \usepackage{ptex2tex}
 """
     # Add packages for movies
-    m = re.search(r'^MOVIE:\s*\[', filestr, flags=re.MULTILINE)
-    if m:
+    if re.search(r'^MOVIE:\s*\[', filestr, flags=re.MULTILINE):
         INTRO['latex'] += r"""
 % #ifndef MOVIE
-% #define MOVIE "media9"
+% #define MOVIE "href"
+% #ifndef MOVIE_CONTROLS
+% #define MOVIE_CONTROLS
+% #endif
 % #endif
 
+\newenvironment{doconce:movie}{}{}
+\newcounter{doconce:movie:counter}
+
 % #if MOVIE == "media9"
+% #ifdef XELATEX
+\usepackage[xetex]{media9}
+% #else
 \usepackage{media9}
-% #elif MOVIE == "movie15"
-\usepackage{movie15}
+% #endif
 % #elif MOVIE == "multimedia"
 \usepackage{multimedia}
-% #elif MOVIE == "href-run"
+% #elif MOVIE == "href"
+% #endif
+"""
+    movies = re.findall(r'^MOVIE: \[(.+?)\]', filestr, flags=re.MULTILINE)
+    animated_files = False
+    non_flv_mp4_files = False  # need for old movie15?
+    for filename in movies:
+        if '*' in filename or '->' in filename:
+            animated_files = True
+        if '.mp4' in filename.lower() or '.flv' in filename.lower():
+            pass # ok, media9 can be used
+        else:
+            non_flv_mp4_files = True
+    if non_flv_mp4_files:
+        INTRO['latex'] += r"""
+% #if MOVIE == "media9"
+\usepackage{movie15}
+% #endif
+"""
+    if animated_files:
+        INTRO['latex'] += r"""
+% #ifdef XELATEX
+\usepackage[xetex]{animate}
+\usepackage{graphicx}
+% #else
+\usepackage{animate,graphicx}
 % #endif
 """
 
@@ -1401,6 +1524,7 @@ final,                   %% or draft (marks overfull hboxes)
 % Examples of font types (Ubuntu): Gentium Book Basic (Palatino-like),
 % Liberation Sans (Helvetica-like), Norasi, Purisa (handwriting), UnDoum
 % #else
+\usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
 % #ifdef HELVETICA
@@ -1414,6 +1538,7 @@ final,                   %% or draft (marks overfull hboxes)
 \linespread{1.05}            % Palatino needs extra line spread to look nice
 % #endif
 % #endif
+\usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 """
     # Make sure hyperlinks are black (as the text) for printout
     # and otherwise set to the dark blue linkcolor
@@ -1864,7 +1989,6 @@ final,                   %% or draft (marks overfull hboxes)
 \oldtabular}{\endoldtabular}
 % #endif
 
-% --- end of standard preamble for documents ---
 """
     # Note: the line above is key for extracting the correct part
     # of the preamble for beamer slides in misc.slides_beamer
@@ -1881,9 +2005,14 @@ final,                   %% or draft (marks overfull hboxes)
             break
 
     INTRO['latex'] += r"""
+% --- end of standard preamble for documents ---
+"""
+
+    INTRO['latex'] += r"""
 % USER PREAMBLE
 % insert custom LaTeX commands...
 
+\raggedbottom
 \makeindex
 
 %-------------------- end preamble ----------------------

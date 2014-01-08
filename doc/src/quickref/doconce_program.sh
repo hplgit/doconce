@@ -1,5 +1,5 @@
 Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex expand_commands combine_images guess_encoding change_encoding gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 # transform doconce file to another format
@@ -18,8 +18,8 @@ doconce replace from-text to-text file1 file2 ...
 doconce replace_from_file file-with-from-to file1 file2 ...
 (exact text substitution, but a set of from-to relations)
 
-# gwiki format requires substitution of figure file names by URLs
-doconce gwiki_figsubst file.gwiki URL-of-fig-dir
+# replace all mako function calls by the results of the calls
+doconce expand_mako mako_code_file funcname file1 file2 ...
 
 # remove all inline comments in a doconce file
 doconce remove_inline_comments file.do.txt
@@ -78,10 +78,10 @@ doconce slides_beamer complete_file.tex
 doconce html_colorbullets file1.html file2.html ...
 
 # grab selected text from a file
-doconce grab   --from[-] from-text [--to[-] to-text] somefile
+doconce grab   --from[-] from-text [--to[-] to-text] somefile > result
 
 # remove selected text from a file
-doconce remove --from[-] from-text [--to[-] to-text] somefile
+doconce remove --from[-] from-text [--to[-] to-text] somefile > result
 
 # run spellcheck on a set of files
 doconce spellcheck [-d .mydict.txt] *.do.txt

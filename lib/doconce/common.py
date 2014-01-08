@@ -28,6 +28,8 @@ envir_delimiter_lines = {
      '--- end exercise ---'),
 }
 
+_counter_for_html_movie_player = 0
+
 def _abort():
     if '--no_abort' in sys.argv:
         print 'avoided abortion because of --no-abort'
@@ -96,7 +98,7 @@ def is_file_or_url(filename, msg='checking existence of', debug=True):
         try:
             # Print a message in case the program hangs a while here
             if msg is not None or debug:
-                print '...', msg, filename, '...',
+                print '...', msg, filename, '...'
             f = urllib.urlopen(filename)
             text = f.read()
             f.close()
@@ -104,12 +106,12 @@ def is_file_or_url(filename, msg='checking existence of', debug=True):
             if ext in ('.html', 'htm'):
                 # Successful opening of an HTML file
                 if msg or debug:
-                    print 'found!'
+                    print '    found!'
                 return 'url'
             elif ext == '':
                 # Successful opening of a directory (meaning index.html)
                 if msg or debug:
-                    print 'found!'
+                    print '    found!'
                 return 'url'
             else:
                 # Seemingly successful opening of a file, but check if
@@ -123,17 +125,17 @@ def is_file_or_url(filename, msg='checking existence of', debug=True):
                 if special_host and '>404' in text:
                     # HTML file with an error message: file not found
                     if msg or debug:
-                        print 'not found (%s, 404 error)' % filename
+                        print '    not found (%s, 404 error)' % filename
                         return None
                 else:
                     if msg or debug:
-                        print 'found!'
+                        print '    found!'
                     return 'url'
         except IOError, e:
             if msg or debug:
-                print 'not found!'
+                print '    NOT found!'
             if debug:
-                print 'urllib.urlopen error:', e
+                print '    urllib.urlopen error:', e
             return None
     else:
         return ('file' if os.path.isfile(filename) else None)
@@ -294,76 +296,38 @@ def ref2equations(filestr):
     return filestr
 
 def default_movie(m):
-    """Replace a movie entry by a proper URL with text."""
-    # Note: essentially same code as html_movie
-    import os, glob
+    """
+    Replace a movie entry by a proper URL with text.
+    The idea is to link to an HTML file with the media element.
+    """
+    # Note: essentially same code as html_movie, but
+    # the HTML code is embedded in a file.
+
+    global _counter_for_html_movie_player
     filename = m.group('filename')
-    options = m.group('options')
-    caption = m.group('caption')
+    caption = m.group('caption').strip()
+    from html import html_movie
+    text = html_movie(m)
 
-    # Turn options to dictionary
-    if ',' in options:
-        options = options.split(',')
-    else:
-        options = options.split()
-    kwargs = {}
-    for opt in options:
-        if opt.startswith('width') or opt.startswith('WIDTH'):
-            kwargs['width'] = int(opt.split('=')[1])
-        if opt.startswith('height') or opt.startswith('HEIGHT'):
-            kwargs['height'] = int(opt.split('=')[1])
-
-    if 'youtu.be' in filename:
-        filename = filename.replace('youtu.be', 'youtube.com')
-
-    if '*' in filename:
-        # Glob files and use DocWriter.html_movie to make a separate
-        # HTML page for viewing the set of files
-        plotfiles = sorted(glob.glob(filename))
-        if not plotfiles:
-            print 'No plotfiles on the form', filename
-            _abort()
-        basename  = os.path.basename(plotfiles[0])
-        stem, ext = os.path.splitext(basename)
-        kwargs['casename'] = stem
-        import DocWriter
-        header, jscode, form, footer = DocWriter.html_movie(plotfiles, **kwargs)
-        #text = jscode + form  # does not work well with several movies
-        moviehtml = stem + '.html'
-        f = open(moviehtml, 'w')
-        f.write(header + jscode + form + footer)
-        f.close()
-        text = """\n%s (Movie of files `%s` in URL:"%s")\n""" % \
-               (caption, filename, moviehtml)
-    elif 'youtube.com' in filename:
-        # Rename embedded files to ordinary YouTube
-        filename = filename.replace('embed/', 'watch?v=')
-        text = '%s URL:"%s"' % (caption, filename)
-    elif 'vimeo.com' in filename:
-        # Rename embedded files to ordinary Vimeo
-        filename = filename.replace('http://player.vimeo.com/video',
-                                    'http://vimeo.com')
-        text = '%s URL:"%s"' % (caption, filename)
-    else:
-        # Make an HTML file where the movie file can be played
-        # (alternative to launching a player manually)
-        stem  = os.path.splitext(os.path.basename(filename))[0]
-        moviehtml = stem + '.html'
-        f = open(moviehtml, 'w')
-        f.write("""
+    # Make an HTML file where the movie file can be played
+    # (alternative to launching a player manually).
+    _counter_for_html_movie_player += 1
+    moviehtml = 'movie_player%d' % \
+    _counter_for_html_movie_player + '.html'
+    f = open(moviehtml, 'w')
+    f.write("""
 <html>
+<head>
+</head>
 <body>
-<title>Embedding movie in HTML</title>
-   <embed SRC="%s" %s AUTOPLAY="TRUE" LOOP="TRUE"></embed>
-   <p>
-   <em>%s</em>
-   </p>
+<title>Embedding media in HTML</title>
+%s
 </body>
 </html>
-""" % (filename, ' '.join(options), caption))
-        print '*** made link to new HTML file %s with code to display the movie %s' % \
-        (moviehtml, filename)
-        text = '%s (Movie `%s`: play URL:"%s")' % (caption, filename, moviehtml)
+""" % text)
+    print '*** made link to new HTML file %s\n    with code to display the movie \n    %s' % (moviehtml, filename)
+    text = '%s `%s`: load "`%s`": "%s" into a browser' % \
+       (caption, filename, moviehtml, moviehtml)
     return text
 
 def begin_end_consistency_checks(filestr, envirs):
@@ -712,13 +676,15 @@ ENVIRS = {}
 
 # regular expressions for inline tags:
 inline_tag_begin = r"""(?P<begin>(^|[(\s]))"""
-inline_tag_end = r"""(?P<end>($|[.,?!;:)}\s-]))"""
+# ' is included as apostrophe in end tag
+inline_tag_end = r"""(?P<end>($|[.,?!;:)}'\s-]))"""
 # alternatives using positive lookbehind and lookahead (not tested!):
 inline_tag_before = r"""(?<=(^|[(\s]))"""
 inline_tag_after = r"""(?=$|[.,?!;:)\s])"""
 # the begin-end works, so don't touch (must be tested in a safe branch....)
 
-_linked_files = '''\s*"(?P<url>([^"]+?\.html?|[^"]+?\.html?\#[^"]+?|[^"]+?\.txt|[^"]+?\.pdf|[^"]+?\.f|[^"]+?\.c|[^"]+?\.cpp|[^"]+?\.cxx|[^"]+?\.py|[^"]+?\.java|[^"]+?\.pl|[^"]+?\.sh|[^"]+?\.csh|[^"]+?\.zsh|[^"]+?\.ksh|[^"]+?\.tar\.gz|[^"]+?\.tar|[^"]+?\.f77|[^"]+?\.f90|[^"]+?\.f95|_static-?[^/]*/[^"]+?))"'''
+_linked_files = '''\s*"(?P<url>([^"]+?\.html?|[^"]+?\.html?\#[^"]+?|[^"]+?\.txt|[^"]+?\.pdf|[^"]+?\.f|[^"]+?\.c|[^"]+?\.cpp|[^"]+?\.cxx|[^"]+?\.py|[^"]+?\.java|[^"]+?\.pl|[^"]+?\.sh|[^"]+?\.csh|[^"]+?\.zsh|[^"]+?\.ksh|[^"]+?\.tar\.gz|[^"]+?\.tar|[^"]+?\.f77|[^"]+?\.f90|[^"]+?\.f95|[^"]+?\.png|[^"]+?\.jpe?g|[^"]+?\.gif|[^"]+?\.pdf|[^"]+?\.e?ps|_static-?[^/]*/[^"]+?))"'''
+#_linked_files = '''\s*"(?P<url>([^"]+?))"'''  # any file is accepted
 
 INLINE_TAGS = {
     # math: text inside $ signs, as in $a = b$, with space before the
@@ -744,7 +710,8 @@ INLINE_TAGS = {
     # `verbatim inline text is enclosed in back quotes`
     'verbatim':
     r'%s`(?P<subst>[^ ][^`]*)`%s' % \
-    (inline_tag_begin, r"(?P<end>($|[.,?!;:)}'\s-]))"), # inline_tag_end and '
+    (inline_tag_begin, inline_tag_end),
+    #(inline_tag_begin, r"(?P<end>($|[.,?!;:)}'\s|-]))"),
 
     # _underscore before and after signifies bold_
     'bold':

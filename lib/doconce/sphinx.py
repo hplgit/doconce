@@ -326,8 +326,10 @@ def sphinx_code(filestr, code_blocks, code_block_types,
     # Final fixes
 
     filestr = fix_underlines_in_headings(filestr)
-    # Ensure blank line before comments
+    # Ensure blank line before and after comments
     filestr = re.sub(r'([.:;?!])\n^\.\. ', r'\g<1>\n\n.. ',
+                     filestr, flags=re.MULTILINE)
+    filestr = re.sub(r'(^\.\. .+)\n([^ \n]+)', r'\g<1>\n\n\g<2>',
                      filestr, flags=re.MULTILINE)
 
     if option('html_links_in_new_window'):

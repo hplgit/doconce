@@ -723,46 +723,106 @@ func_to_method(_%s, DocWriter, '%s')
     exec code
 
 def html_movie(plotfiles, interval_ms=300, width=800, height=600,
-               casename='movie'):
+               casename=None):
     """
-    Takes a list plotfiles which should be for example of the form::
+    Takes a list plotfiles, such as::
 
-        ['frame00.png', 'frame01.png', ... ]
+        'frame00.png', 'frame01.png', ...
 
-    where each string should be the name of an image file and they should be
-    in the proper order for viewing as an animation.
+    and creates javascript code for animating the frames as a movie in HTML.
 
-    The result is html text strings that incorporate javascript to
+    The `plotfiles` argument can be of three types:
+
+      * A Python list of the names of the image files, sorted in correct
+        order. The names can be filenames of files reachable by the
+        HTML code, or the names can be URLs.
+      * A filename generator using Unix wildcard notation, e.g.,
+        ``frame*.png`` (the files most be accessible for the HTML code).
+      * A filename generator using printf notation for frame numbering
+        and limits for the numbers. An example is ``frame%0d.png:0->92``,
+        which means ``frame00.png``, ``frame01.png``, ..., ``frame92.png``.
+        This specification of `plotfiles` also allows URLs, e.g.,
+        ``http://mysite.net/files/frames/frame_%04d.png:0->320``.
+
+    If `casename` is None, a casename based on the full relative path of the
+    first plotfile is used as tag in the variables in the javascript code
+    such that the code for several movies can appear in the same file
+    (i.e., the various code blocks employ different variables because
+    the variable names differ).
+
+    The returned result is text strings that incorporate javascript to
     loop through the plots one after another.  The html text also features
     buttons for controlling the movie.
-    The parameter iterval_ms is the time interval between loading
+    The parameter `iterval_ms` is the time interval between loading
     successive images and is in milliseconds.
 
-    The width and height parameters do not seem to have any effect
+    The `width` and `height` parameters do not seem to have any effect
     for reasons not understood.
 
     The following strings are returned: header, javascript code, form
-    with movie and buttons, and footer. Concatenating these strings
-    and dumping to an html file yields a kind of movie file to be
-    viewed in a browser. The images variable in the javascript code
-    is unique for each movie, because it is annotated by the casename
-    string, so several such javascript sections can be used in the
-    same html file. If casename is just 'movie', the name of the plot
-    files is used as casename.
+    with movie and buttons, footer, and plotfiles::
+
+       header, jscode, form, footer, plotfiles = html_movie('frames*.png')
+       # Insert javascript code in some HTML file
+       htmlfile.write(jscode + form)
+       # Or write a new standalone file that act as movie player
+       filename = plotfiles[0][:-4] + '.html'
+       htmlfile = open(filename, 'w')
+       htmlfile.write(header + jscode + form + footer)
+       htmlfile.close
 
     This function is based on code written by R. J. LeVeque, based on
     a template from Alan McIntyre.
     """
     # Alternative method:
     # http://stackoverflow.com/questions/9486961/animated-image-with-javascript
-    import os
+
+    # Start with expanding plotfiles if it is a filename generator
     if not isinstance(plotfiles, (tuple,list)):
-        raise TypeError('html_movie: plotfiles=%s of wrong type %s' %
-                        (str(plotfiles), type(plotfiles)))
-    # Check that the plot files really exist
-    missing_files = [fname for fname in plotfiles if not os.path.isfile(fname)]
-    if missing_files:
-        raise ValueError('Missing plot files: %s' % str(missing_files)[1:-1])
+        if not isinstance(plotfiles, (str,unicode)):
+            raise TypeError('plotfiles must be list or filename generator, not %s' % type(plotfiles))
+
+        filename_generator = plotfiles
+        if '*' in filename_generator:
+            # frame_*.png
+            if filename_generator.startswith('http'):
+                raise ValueError('Filename generator %s cannot contain *; must be like http://some.net/files/frame_%%04d.png:0->120' % filename_generator)
+
+            plotfiles = glob.glob(filename_generator)
+            if not plotfiles:
+                raise ValueError('No plotfiles on the form' %
+                                 filename_generator)
+            plotfiles.sort()
+        elif '->' in filename_generator:
+            # frame_%04d.png:0->120
+            # http://some.net/files/frame_%04d.png:0->120
+            p = filename_generator.split(':')
+            filename = ':'.join(p[:-1])
+            if not re.search(r'%0?\d+', filename):
+                raise ValueError('Filename generator %s has wrong syntax; missing printf specification as in frame_%%04d.png:0->120' % filename_generator)
+            if not re.search(r'\d+->\d+', p[-1]):
+                raise ValueError('Filename generator %s has wrong syntax; must be like frame_%%04d.png:0->120' % filename_generator)
+            p = p[-1].split('->')
+            lo, hi = int(p[0]), int(p[1])
+            plotfiles = [filename % i for i in range(lo,hi+1,1)]
+
+    # Check that the plot files really exist, if they are local on the computer
+    if not plotfiles[0].startswith('http'):
+        missing_files = [fname for fname in plotfiles
+                         if not os.path.isfile(fname)]
+        if missing_files:
+            raise ValueError('Missing plot files: %s' %
+                             str(missing_files)[1:-1])
+
+    if casename is None:
+        # Use plotfiles[0] as the casename, but remove illegal
+        # characters in variable names since the casename will be
+        # used as part of javascript variable names.
+        casename = os.path.splitext(plotfiles[0])[0]
+        # Use _ for invalid characters
+        casename = re.sub('[^0-9a-zA-Z_]', '_', casename)
+        # Remove leading illegal characters until we find a letter or underscore
+        casename = re.sub('^[^a-zA-Z_]+', '', casename)
 
     filestem, ext = os.path.splitext(plotfiles[0])
     if ext == '.png' or ext == '.jpg' or ext == '.jpeg' or ext == 'gif':
@@ -770,13 +830,6 @@ def html_movie(plotfiles, interval_ms=300, width=800, height=600,
     else:
         raise ValueError('Plotfiles (%s, ...) must be PNG, JPEG, or GIF files with '\
                          'extension .png, .jpg/.jpeg, or .gif' % plotfiles[0])
-    if casename == 'movie' : # default
-        # Make a valid variable name for Javascript out of filestem
-        filestem = re.sub(r'_?\d+\.', '', filestem)
-        filestem = filestem.replace('/', '_')
-        for c in """ ,.[]{}\\"'^&%$#@!=|?""":
-            filestem = filestem.replace(c, '')
-        casename = filestem
 
     header = """\
 <html>
@@ -859,7 +912,7 @@ function faster_%(casename)s()
 <img src="%(plotfile0)s" name="name_%(casename)s" border=2/>
 """ % vars()
     footer = '\n</body>\n</html>\n'
-    return header, jscode, form, footer
+    return header, jscode, form, footer, plotfiles
 
 def html_movie_embed(moviefile, width=400, height=400):
     """

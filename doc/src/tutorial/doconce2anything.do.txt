@@ -111,6 +111,15 @@ Pygments style is set by `--pygments_html_style=style`, where `style`
 can be `default`, `emacs`, `perldoc`, and other valid names for
 Pygments styles.
 
+=== Handling of Movies ===
+
+MP4, WebM, and Ogg movies are typeset with the HTML5 `video` tag
+and the HTML code tries to load as many versions among MP4, WebM,
+and Ogg as exist (and the files are loaded in the mentioned order).
+If just the specified file is to be loaded, use the
+`--no_mp4_webm_ogg_alternatives` command-line option.
+Other movie formats, e.g., `.flv`, `.mpeg` and `.avi`, are embedded via
+the older `embed` tag.
 
 === HTML Styles ===
 
@@ -471,10 +480,13 @@ Preprocessor variables to be defined or undefined are
  * `A4PAPER` for A4 paper size
  * `A6PAPER` for A6 paper size (suitable for reading PDFs on phones)
  * `MOVIE` for specifying how movies are handled: the value `media9`
-   implies the `media9` package and the `\includemedia` command (default),
-   while other values are `movie15` (`\includemovie` command),
-   `multimedia` (for Beamer-style `\movie` command),
-   or `href-run` (for the plain `\href{run:file}` command)
+   implies the `media9` package and the `\includemedia` command
+   for `.flv` and `.mp4` movies,
+   or `movie15` and the `\includemovie` command for `.mpeg` and `.avi`
+   movies;
+   `multimedia` for Beamer-style `\movie` command,
+   or `href` for the plain `\href{run:file}` command. The latter
+   is default.
  * `MOVIE_CONTROLS` adds buttons for starting/stopping movies if the
    `media9` package is used.
  * `PREAMBLE` to turn the LaTeX preamble on or off (i.e., complete document

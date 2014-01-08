@@ -92,6 +92,44 @@ def plain_toc(sections):
         s += ' '*(2*(tp-tp_min)) + title + '\n'
     return s
 
+def plain_box(text, title=''):
+    """Wrap a box around the text, with a title on the upper box border."""
+    lines = text.splitlines()
+    maxlen = max([len(line) for line in lines])
+    newlines = []
+    # title can be :: since equations and code must be preceeded by ::
+    # and plaintext inserts a double colon
+    if title == '' or title.lower() == 'none' or title == '::':
+        newlines.append('|-' + '-'*maxlen + '-|')
+    else:
+        newlines.append(title + ' ' + '-'*(maxlen-len(title)) + '--|')
+    for line in lines:
+        newlines.append('| ' + line + ' '*(maxlen-len(line)) + ' |')
+    newlines.append('|-' + '-'*maxlen + '-|')
+    # Drop blank lines at the beginning
+    drop = 0
+    for line in newlines[1:]:
+        if re.search(r'[^\-| ]', line):
+            break
+        else:
+            drop += 1
+    for i in range(drop):
+        del newlines[1]
+    if re.search(r'^\w', newlines[0]):
+        # Insert a blank line
+        newlines.insert(1, '| ' + ' '*maxlen + ' |')
+    # Drop blank lines at the end
+    drop = 0
+    for line in reversed(newlines[:-1]):
+        if re.search(r'[^\-| ]', line):
+            break
+        else:
+            drop += 1
+    for i in range(1, drop+1, 1):
+        del newlines[-2]
+
+    return '\n' + '\n'.join(newlines) + '\n'
+
 
 def define(FILENAME_EXTENSION,
            BLANKLINE,
@@ -163,5 +201,25 @@ def define(FILENAME_EXTENSION,
     EXERCISE['plain'] = plain_exercise
     INDEX_BIB['plain'] = plain_index_bib
     TOC['plain'] = plain_toc
+
+    from common import indent_lines
+    ENVIRS['plain'] = {
+        'warning':   lambda block, format, title='Warning', text_size='normal':
+           plain_box(block, title),
+        'notice':    lambda block, format, title='Notice', text_size='normal':
+           plain_box(block, title),
+        'question':  lambda block, format, title='Question', text_size='normal':
+           plain_box(block, title),
+        'hint':      lambda block, format, title='Hint', text_size='normal':
+           plain_box(block, title),
+        'summary':   lambda block, format, title='Summary', text_size='normal':
+           plain_box(block, title),
+        'block':     lambda block, format, title='Block', text_size='normal':
+           plain_box(block, title),
+        'box':       lambda block, format, title='none', text_size='normal':
+           plain_box(block, title),
+        'quote':     lambda block, format, title='none', text_size='normal':
+           indent_lines(block, 'plain'),
+        }
 
     # no return, rely on in-place modification of dictionaries
