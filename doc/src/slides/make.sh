@@ -142,6 +142,11 @@ system doconce slides_html demo all  # generates tmp_slides_html_all.sh
 pygmentize -l text -f html -o demo_doconce.html demo.do.txt
 sh -x tmp_slides_html_all.sh
 
+# Redo cbc theme with logo
+doconce format html demo --pygments_html_style=default --keep_pygments_html_bg SLIDE_TYPE=reveal SLIDE_THEME=cbc
+doconce slides_html demo reveal --html_slide_theme=cbc --html_footer_logo=cbc
+cp demo.html demo_reveal_cbc.html
+
 # LaTeX Beamer slides
 themes="blue_plain blue_shadow red_plain red_shadow cbc simula"
 beamer_pdfs=""
@@ -222,6 +227,11 @@ doconce slides_html demo reveal --html_slide_theme=simple
 <pre>
 doconce format html demo --pygments_html_style=autumn --keep_pygments_html_bg SLIDE_TYPE=reveal SLIDE_THEME=blood
 doconce slides_html demo reveal --html_slide_theme=blood
+</pre>
+<li><a href="demo_reveal_cbc.html">reveal, cbc theme</a>
+<pre>
+doconce format html demo --pygments_html_style=default --keep_pygments_html_bg SLIDE_TYPE=reveal SLIDE_THEME=cbc
+doconce slides_html demo reveal --html_slide_theme=cbc --html_footer_logo=cbc
 </pre>
 <li><a href="demo_reveal_sky.html">reveal, sky theme</a>
 </ul>

@@ -7,8 +7,10 @@
  * This theme is Copyright (C) 2012 Owen Versteeg, https://github.com/StereotypicalApps. It is MIT licensed.
  * reveal.js is Copyright (C) 2011-2012 Hakim El Hattab, http://hakim.se
  */
-/* changed (by hpl) from 36px; */
-/* changed (by hpl) from uppercase; */
+/* changed by hpl from 36px; */
+/* changed by hpl from 'League Gothic', Impact, sans-serif; */
+/* changed by hpl from uppercase; */
+/* changed (by hpl) from 'News Cycle', Impact, sans-serif; */
 /*********************************************
  * GLOBAL STYLES
  *********************************************/
@@ -39,7 +41,7 @@ body {
 .reveal h6 {
   margin: 0 0 20px 0;
   color: black;
-  font-family: "News Cycle", Impact, sans-serif;
+  font-family: "Helvetica", Impact, sans-serif;
   line-height: 0.9em;
   letter-spacing: 0.02em;
   text-transform: none;

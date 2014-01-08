@@ -4,8 +4,9 @@
  *
  * This theme is Copyright (C) 2012-2013 Owen Versteeg, http://owenversteeg.com - it is MIT licensed.
  */
-/* changed (by hpl) from 36px; */
-/* changed (by hpl) from uppercase; */
+/* changed by hpl from 36px; */
+/* changed by hpl from 'League Gothic', Impact, sans-serif; */
+/* changed by hpl from uppercase; */
 .reveal a:not(.image) {
   line-height: 1.3em; }
 

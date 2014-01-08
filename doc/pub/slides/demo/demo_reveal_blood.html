@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="On Schemes for Exponential Decay">
+
+
+
+
+
+
+
+<!-- reveal.js: http://lab.hakim.se/reveal-js/ -->
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+<link rel="stylesheet" href="reveal.js/css/reveal.css">
+<link rel="stylesheet" href="reveal.js/css/theme/blood.css" id="theme">
+<!--
+<link rel="stylesheet" href="reveal.js/css/reveal.css">
+<link rel="stylesheet" href="reveal.js/css/theme/beige.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/beigesmall.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/night.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/sky.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/darkgray.css" id="theme">
+-->
+
+<!-- For syntax highlighting -->
+<link rel="stylesheet" href="lib/css/zenburn.css">
+
+<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+<script>
+document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+</script>
+
+<style type="text/css">
+    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    p.caption { width: 80%; font-size: 60%; font-style: italic; text-align: left; }
+    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    .reveal .alert-text-small   { font-size: 80%;  }
+    .reveal .alert-text-large   { font-size: 130%; }
+    .reveal .alert-text-normal  { font-size: 90%;  }
+    .reveal .alert {
+             padding:8px 35px 8px 14px; margin-bottom:18px;
+             text-shadow:0 1px 0 rgba(255,255,255,0.5);
+             border:5px solid #bababa;
+             -webkit-border-radius: 14px; -moz-border-radius: 14px;
+             border-radius:14px
+             background-position: 10px 10px;
+             background-repeat: no-repeat;
+             background-size: 38px;
+             padding-left: 30px; /* 55px; if icon */
+     }
+     .reveal .alert-block {padding-top:14px; padding-bottom:14px}
+     .reveal .alert-block > p, .alert-block > ul {margin-bottom:1em}
+     /*.reveal .alert li {margin-top: 1em}*/
+     .reveal .alert-block p+p {margin-top:5px}
+     /*.reveal .alert-notice { background-image: url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_notice.png); }
+     .reveal .alert-summary  { background-image:url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_summary.png); }
+     .reveal .alert-warning { background-image: url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_warning.png); }
+     .reveal .alert-question {background-image:url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_question.png); } */
+
+</style>
+
+
+
+<!-- Styles for table layout of slides -->
+<style type="text/css">
+td.padding {
+  padding-top:20px;
+  padding-bottom:20px;
+  padding-right:50px;
+  padding-left:50px;
+}
+</style>
+
+</head>
+
+<body>
+<div class="reveal">
+
+<!-- Any section element inside the <div class="slides"> container
+     is displayed as a slide -->
+
+<div class="slides">
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+
+
+
+    
+
+
+
+<section>
+<!-- ------------------- main content ---------------------- -->
+
+
+<title>On Schemes for Exponential Decay</title>
+
+<center><h1>On Schemes for Exponential Decay</h1></center>  <!-- document title -->
+
+<p>
+<!-- author(s): Hans Petter Langtangen -->
+
+<center>
+<b>Hans Petter Langtangen</b> [1, 2]
+</center>
+
+
+<p>&nbsp;<br>
+<!-- institution(s) -->
+
+<center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
+<center>[2] <b>Department of Informatics, University of Oslo</b></center>
+<p>&nbsp;<br>
+<center><h4>Jan 8, 2014</h4></center> <!-- date -->
+<p>
+<center><p><img src="fig/CN_logo.png" align="bottom" width=300></p></center>
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Goal  <a name="___sec0"></a></h2>
+
+<p>
+The primary goal of this demo talk is to demonstrate how to write
+talks with <a href="https://github.com/hplgit/doconce" target="_self">Doconce</a>
+and get them rendered in numerous HTML formats.
+<div class="alert alert-block alert-notice alert-text-normal"><b>Layout.</b>
+This version
+utilizes reveal slides with the theme <code>blood</code>.
+</div>
+
+
+<p>
+<div class="alert alert-block alert-notice alert-text-normal"><b>Notice.</b>
+Speaker notes show up by
+pressing "s".
+</div>
+
+
+<p>
+<aside class="notes">
+<!-- click "s" to activate -->
+
+The talk investigates the accuracy of three finite difference
+schemes for the ordinary differential equation \( u'=-au \) with the
+aid of numerical experiments. Numerical artifacts are in particular
+demonstrated.
+
+</aside>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Mathematical problem  <a name="___sec1"></a></h2>
+
+<p>
+
+<table border="0">
+<tr>
+<td class="padding">
+<p>
+<p>&nbsp;<br>
+$$
+\begin{align}
+u'(t) &= -au(t),
+\tag{1}\\ 
+u(0)  &= I,
+\tag{2}
+\end{align}
+$$
+<p>&nbsp;<br>
+
+
+<p>
+
+<ul>
+ <p><li> \( t\in (0,T] \)</li>
+ <p><li> \( a \), \( I \), and \( T \) are prescribed parameters</li>
+ <p><li> \( u(t) \) is the unknown function</li>
+</ul>
+<p>
+
+</td>
+<td class="padding">
+<center><p><img src="fig/teacher2.jpg" align="bottom" width=250></p></center>
+</td>
+</tr>
+</table>
+
+
+<p>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Numerical solution method  <a name="___sec2"></a></h2>
+
+<p>
+
+
+<ul>
+ <p><li class="fragment"> Mesh in time: \( 0= t_0< t_1 \cdots < t_N=T \)</li>
+ <p><li class="fragment"> Assume constant \( \Delta t = t_{n}-t_{n-1} \)</li>
+ <p><li class="fragment"> \( u^n \): numerical approx to the exact solution at \( t_n \)</li>
+</ul>
+<p>
+
+
+
+<p>
+
+<p class="fragment">
+
+Numerical scheme:
+&nbsp;<br>&nbsp;<br>
+$$
+   u^{n+1} = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}u^n,
+   \quad n=0,1,\ldots,N-1
+   $$
+&nbsp;<br>&nbsp;<br>
+
+
+</p>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h3>Forward Euler explained  <a name="___sec3"></a></h3>
+
+<p>
+
+<iframe width="640" height="480" src="http://www.youtube.com/embed/PtJrPEIHNJw" frameborder="0" allowfullscreen></iframe>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Implementation  <a name="___sec4"></a></h2>
+
+<p>
+The numerical method is implemented in a Python function:
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "monokai" -->
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #66d9ef">def</span> <span style="color: #a6e22e">solver</span><span style="color: #f8f8f2">(I,</span> <span style="color: #f8f8f2">a,</span> <span style="color: #f8f8f2">T,</span> <span style="color: #f8f8f2">dt,</span> <span style="color: #f8f8f2">theta):</span>
+    <span style="color: #e6db74">&quot;&quot;&quot;Solve u&#39;=-a*u, u(0)=I, for t in (0,T] with steps of dt.&quot;&quot;&quot;</span>
+    <span style="color: #f8f8f2">dt</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">float(dt)</span>           <span style="color: #75715e"># avoid integer division</span>
+    <span style="color: #f8f8f2">N</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">int(round(T</span><span style="color: #f92672">/</span><span style="color: #f8f8f2">dt))</span>     <span style="color: #75715e"># no of time intervals</span>
+    <span style="color: #f8f8f2">T</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">N</span><span style="color: #f92672">*</span><span style="color: #f8f8f2">dt</span>                 <span style="color: #75715e"># adjust T to fit time step dt</span>
+    <span style="color: #f8f8f2">u</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">zeros(N</span><span style="color: #f92672">+</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">)</span>           <span style="color: #75715e"># array of u[n] values</span>
+    <span style="color: #f8f8f2">t</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">linspace(</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">T,</span> <span style="color: #f8f8f2">N</span><span style="color: #f92672">+</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">)</span>  <span style="color: #75715e"># time mesh</span>
+
+    <span style="color: #f8f8f2">u[</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">]</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">I</span>                 <span style="color: #75715e"># assign initial condition</span>
+    <span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">n</span> <span style="color: #f92672">in</span> <span style="color: #f8f8f2">range(</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">N):</span>    <span style="color: #75715e"># n=0,1,...,N-1</span>
+        <span style="color: #f8f8f2">u[n</span><span style="color: #f92672">+</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">]</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">(</span><span style="color: #ae81ff">1</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">(</span><span style="color: #ae81ff">1</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">theta)</span><span style="color: #f92672">*</span><span style="color: #f8f8f2">a</span><span style="color: #f92672">*</span><span style="color: #f8f8f2">dt)</span><span style="color: #f92672">/</span><span style="color: #f8f8f2">(</span><span style="color: #ae81ff">1</span> <span style="color: #f92672">+</span> <span style="color: #f8f8f2">theta</span><span style="color: #f92672">*</span><span style="color: #f8f8f2">dt</span><span style="color: #f92672">*</span><span style="color: #f8f8f2">a)</span><span style="color: #f92672">*</span><span style="color: #f8f8f2">u[n]</span>
+    <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">u,</span> <span style="color: #f8f8f2">t</span>
+</code></pre></div>
+<p>
+
+</section>
+
+
+<section>
+
+<h3>The Crank-Nicolson method  <a name="___sec5"></a></h3>
+
+<p>
+<center><p><img src="fig/CN.png" align="bottom" width=600></p></center>
+
+<p>
+
+</section>
+
+
+<section>
+
+<h3>The artifacts can be explained by some theory  <a name="___sec6"></a></h3>
+
+<p>
+
+<p class="fragment">
+
+Exact solution of the scheme:
+
+
+&nbsp;<br>&nbsp;<br>
+$$ u^n = A^n,\quad A = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}\thinspace .$$
+&nbsp;<br>&nbsp;<br>
+
+
+</p>
+
+
+<p>
+
+
+<ul>
+ <p><li class="fragment"> Stability: \( |A| < 1 \)</li>
+ <p><li class="fragment"> No oscillations: \( A>0 \)</li>
+ <p><li class="fragment"> Always for Backward Euler (\( \theta=1 \))</li>
+ <p><li class="fragment"> \( \Delta t < 1/a \) for Forward Euler (\( \theta=0 \))</li>
+ <p><li class="fragment"> \( \Delta t < 2/a \) for Crank-Nicolson (\( \theta=1/2 \))</li>
+</ul>
+<p>
+
+
+
+<p>
+
+<p class="fragment">
+
+<div class="fragment alert alert-block alert-summary alert-text-normal"><b>Concluding remarks:</b>
+Only the Backward Euler scheme is guaranteed to always give
+qualitatively correct results.
+</div>
+
+
+</p>
+
+
+
+</section>
+
+
+
+</div> <!-- class="slides" -->
+</div> <!-- class="reveal" -->
+
+<script src="reveal.js/lib/js/head.js"></script>
+<script src="reveal.js/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+    // Display controls in the bottom right corner
+    controls: true,
+
+    // Display a presentation progress bar
+    progress: true,
+
+    // Display the page number of the current slide
+    slideNumber: false,
+
+    // Push each slide change to the browser history
+    history: false,
+
+    // Enable keyboard shortcuts for navigation
+    keyboard: true,
+
+    // Enable the slide overview mode
+    overview: true,
+
+    // Vertical centering of slides
+    center: true,
+
+    // Enables touch navigation on devices with touch input
+    touch: true,
+
+    // Loop the presentation
+    loop: false,
+
+    // Change the presentation direction to be RTL
+    rtl: false,
+
+    // Turns fragments on and off globally
+    fragments: true,
+
+    // Flags if the presentation is running in an embedded mode,
+    // i.e. contained within a limited portion of the screen
+    embedded: false,
+
+    // Number of milliseconds between automatically proceeding to the
+    // next slide, disabled when set to 0, this value can be overwritten
+    // by using a data-autoslide attribute on your slides
+    autoSlide: 0,
+
+    // Stop auto-sliding after user input
+    autoSlideStoppable: true,
+
+    // Enable slide navigation via mouse wheel
+    mouseWheel: false,
+
+    // Hides the address bar on mobile devices
+    hideAddressBar: true,
+
+    // Opens links in an iframe preview overlay
+    previewLinks: false,
+
+    // Transition style
+    transition: 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+    // Transition speed
+    transitionSpeed: 'default', // default/fast/slow
+
+    // Transition style for full page slide backgrounds
+    backgroundTransition: 'default', // default/none/slide/concave/convex/zoom
+
+    // Number of slides away from the current that are visible
+    viewDistance: 3,
+
+    // Parallax background image
+    //parallaxBackgroundImage: '', // e.g. "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'"
+
+    // Parallax background size
+    //parallaxBackgroundSize: '' // CSS syntax, e.g. "2100px 900px"
+
+    theme: Reveal.getQueryHash().theme, // available themes are in reveal.js/css/theme
+    transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
+
+});
+
+Reveal.initialize({
+    dependencies: [
+        // Cross-browser shim that fully implements classList - https://github.com/eligrey/classList.js/
+        { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+
+        // Interpret Markdown in <section> elements
+        { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+        { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+
+        // Syntax highlight for <code> elements
+        { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+
+        // Zoom in and out with Alt+click
+        { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+
+        // Speaker notes
+        { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+
+        // Remote control your reveal.js presentation using a touch device
+        //{ src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } },
+
+        // MathJax
+        //{ src: 'plugin/math/math.js', async: true }
+    ]
+});
+</script>
+
+<!-- begin footer logo
+<div style="position: absolute; bottom: 0px; left: 0; margin-left: 0px">
+<img src="%(footer_logo)s">
+</div>
+     end footer logo -->
+
+
+
+</body>
+</html>
