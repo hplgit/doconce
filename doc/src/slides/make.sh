@@ -121,7 +121,7 @@ cp sw_index.html $dest/index.html
 
 #drop demo part
 #echo 'STOPPED HERE AND SKIPPED COMPILING DEMO TALK!'
-exit
+#exit
 
 # --------- short demo talk ------------
 
@@ -192,6 +192,10 @@ doconce slides_html demo reveal --html_slide_theme=serif
 <pre>
 doconce format html demo --pygments_html_style=fruity --keep_pygments_html_bg SLIDE_TYPE=reveal SLIDE_THEME=night
 doconce slides_html demo reveal --html_slide_theme=night
+<li><a href="demo_reveal_moon.html">reveal, moon theme</a>
+<pre>
+doconce format html demo --pygments_html_style=fruity --keep_pygments_html_bg SLIDE_TYPE=reveal SLIDE_THEME=moon
+doconce slides_html demo reveal --html_slide_theme=moon
 </pre>
 <li><a href="demo_reveal_simple.html">reveal, simple theme</a>
 <pre>

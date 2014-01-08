@@ -12,6 +12,8 @@
 
 <!-- reveal.js: http://lab.hakim.se/reveal-js/ -->
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
@@ -19,7 +21,6 @@
 <link rel="stylesheet" href="reveal.js/css/theme/serif.css" id="theme">
 <!--
 <link rel="stylesheet" href="reveal.js/css/reveal.css">
-<link rel="stylesheet" href="reveal.js/css/reveal.min.css">
 <link rel="stylesheet" href="reveal.js/css/theme/beige.css" id="theme">
 <link rel="stylesheet" href="reveal.js/css/theme/beigesmall.css" id="theme">
 <link rel="stylesheet" href="reveal.js/css/theme/night.css" id="theme">
@@ -28,6 +29,10 @@
 <link rel="stylesheet" href="reveal.js/css/theme/darkgray.css" id="theme">
 -->
 
+<!-- For syntax highlighting -->
+<link rel="stylesheet" href="lib/css/zenburn.css">
+
+<!-- If the query includes 'print-pdf', use the PDF print sheet -->
 <script>
 document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
 </script>
@@ -130,7 +135,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <p>&nbsp;<br>
-<center><h4>Nov 28, 2013</h4></center> <!-- date -->
+<center><h4>Jan 8, 2014</h4></center> <!-- date -->
 <p>
 <center><p><img src="fig/CN_logo.png" align="bottom" width=300></p></center>
 
@@ -297,7 +302,7 @@ The numerical method is implemented in a Python function:
     <span style="color: #8B008B; font-weight: bold">for</span> n <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(<span style="color: #B452CD">0</span>, N):    <span style="color: #228B22"># n=0,1,...,N-1</span>
         u[n+<span style="color: #B452CD">1</span>] = (<span style="color: #B452CD">1</span> - (<span style="color: #B452CD">1</span>-theta)*a*dt)/(<span style="color: #B452CD">1</span> + theta*dt*a)*u[n]
     <span style="color: #8B008B; font-weight: bold">return</span> u, t
-</pre></div>
+</code></pre></div>
 <p>
 
 </section>

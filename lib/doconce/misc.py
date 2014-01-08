@@ -249,11 +249,12 @@ def recommended_html_styles_and_pygments_styles():
         'beigesmall': ['perldoc',],
         'solarized': ['perldoc',],
         'serif': ['perldoc'],
-        'blood': ['perldoc',],
         'simple': ['autumn', 'default', 'perldoc'],
+        'blood': ['autumn', 'default', 'perldoc'],
         'sky': ['default'],
         'moon': ['fruity', 'native'],
         'night': ['fruity', 'native'],
+        'moon': ['fruity', 'native'],
         'darkgray': ['native', 'monokai'],
         },
         'csss': {
@@ -2537,7 +2538,6 @@ Reveal.initialize({
     parallaxBackgroundSize: '' // CSS syntax, e.g. "2100px 900px"
 
     theme: Reveal.getQueryHash().theme, // available themes are in reveal.js/css/theme
-
     transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
 
 });
@@ -2561,21 +2561,19 @@ Reveal.initialize({
         { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
 
         // Remote control your reveal.js presentation using a touch device
-        { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } },
+        //{ src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } },
 
         // MathJax
-        { src: 'plugin/math/math.js', async: true }
+        //{ src: 'plugin/math/math.js', async: true }
     ]
 });
 </script>
 
-<!-- begin logo/footer -->
-<!--
+<!-- begin footer logo
 <div style="position: absolute; bottom: 0px; left: 0; margin-left: 0px">
 <img src="logo.png" width=1150>
-</div
+</div>
 -->
-<!-- end logo/footer -->
 
 """,
             theme=None,
@@ -3824,7 +3822,7 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
 %% LaTeX Beamer file automatically generated from Doconce
 %% https://github.com/hplgit/doconce
 
-%%-------------------- begin preamble ----------------------
+%%-------------------- begin beamer-specific preamble ----------------------
 
 \documentclass%(handout)s{beamer}
 
@@ -3854,7 +3852,12 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
 \usepackage{pgf,pgfarrows,pgfnodes,pgfautomata,pgfheaps,pgfshade}
 \usepackage{graphicx}
 \usepackage{epsfig}
-\usepackage{fancyvrb,relsize}
+\usepackage{relsize}
+
+\usepackage{fancyvrb}
+%\usepackage{minted} % requires pygments and latex -shell-escape filename
+%\usepackage{anslistings}
+
 \usepackage{amsmath,amssymb,bm}
 %%\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
@@ -3895,11 +3898,13 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
 
 """ % vars()
 
-    # Check if we need minted:
-    pattern = '\\usepackage.+minted'
-    m = re.search(pattern, header)
-    if m:
-        slides = slides.replace('{epsfig}', r'{epsfig}' + '\n' + r'\usepackage{minted} % requires pygments and latex -shell-escape filename')
+    # Check if we need minted or anslistings:
+    if re.search('\\usepackage.+minted', header):
+        slides = slides.replace(
+            r'%\usepackage{minted}', r'\usepackage{minted}')
+    if re.search('\\usepackage.+anslistings', header):
+        slides = slides.replace(
+            r'%\usepackage{anslistings}', r'\usepackage{anslistings}')
 
     # Override all admon environments from latex.py by Beamer block envirs
     admons = 'notice', 'summary', 'warning', 'question', 'block'
@@ -3912,6 +3917,16 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
         slides += r"""\newenvironment{%(envir)sadmon}[1][]{\begin{block}{#1}}{\end{block}}
 """ % vars()
     slides += r"""\newcommand{\grayboxhrules}[1]{\begin{block}{}#1\end{block}}
+
+\newenvironment{doconce:exercise}{}{}
+\newcounter{doconce:exercise:counter}
+\newenvironment{doconce:movie}{}{}
+\newcounter{doconce:movie:counter}
+
+%-------------------- end beamer-specific preamble ----------------------
+
+% Add user's preamble
+
 """
 
     # Add possible user customization from the original latex file,

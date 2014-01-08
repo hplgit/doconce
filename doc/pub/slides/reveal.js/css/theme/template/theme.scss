@@ -12,7 +12,7 @@ body {
 .reveal {
 	font-family: $mainFont;
 	font-size: $mainFontSize;
-	font-weight: 200;
+	font-weight: normal;
 	letter-spacing: -0.02em;
 	color: $mainColor;
 }
@@ -45,6 +45,7 @@ body {
 }
 
 .reveal h1 {
+        line-height: 1.2em;    /* added by hpl */
 	text-shadow: $heading1TextShadow;
 }
 
@@ -159,5 +160,12 @@ body {
 		     -o-transition: width 800ms cubic-bezier(0.260, 0.860, 0.440, 0.985);
 		        transition: width 800ms cubic-bezier(0.260, 0.860, 0.440, 0.985);
 	}
+
+/*********************************************
+ * SLIDE NUMBER
+ *********************************************/
+.reveal .slide-number {
+  color: $linkColor;
+}
 
 
