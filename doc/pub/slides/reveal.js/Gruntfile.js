@@ -45,6 +45,7 @@ module.exports = function(grunt) {
 					'css/theme/beige.css': 'css/theme/source/beige.scss',
 					'css/theme/beigesmall.css': 'css/theme/source/beigesmall.scss',
 					'css/theme/cbc.css': 'css/theme/source/cbc.scss',
+					'css/theme/simula.css': 'css/theme/source/simula.scss',
 					'css/theme/night.css': 'css/theme/source/night.scss',
 					'css/theme/serif.css': 'css/theme/source/serif.scss',
 					'css/theme/simple.css': 'css/theme/source/simple.scss',

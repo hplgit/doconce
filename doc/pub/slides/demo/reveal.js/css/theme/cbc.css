@@ -1,4 +1,3 @@
-@import url(https://fonts.googleapis.com/css?family=News+Cycle:400,700);
 @import url(https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic);
 /**
  * A simple theme for reveal.js presentations, similar
@@ -6,6 +5,8 @@
  *
  * This theme is Copyright (C) 2012 Owen Versteeg, https://github.com/StereotypicalApps. It is MIT licensed.
  * reveal.js is Copyright (C) 2011-2012 Hakim El Hattab, http://hakim.se
+
+ * Center for Biomedical Computing theme made by Hans Petter Langtangen.
  */
 /* changed by hpl from 36px; */
 /* changed by hpl from 'League Gothic', Impact, sans-serif; */
