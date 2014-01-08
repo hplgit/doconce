@@ -13,6 +13,8 @@
 
 <!-- reveal.js: http://lab.hakim.se/reveal-js/ -->
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
@@ -20,7 +22,6 @@
 <link rel="stylesheet" href="reveal.js/css/theme/darkgray.css" id="theme">
 <!--
 <link rel="stylesheet" href="reveal.js/css/reveal.css">
-<link rel="stylesheet" href="reveal.js/css/reveal.min.css">
 <link rel="stylesheet" href="reveal.js/css/theme/beige.css" id="theme">
 <link rel="stylesheet" href="reveal.js/css/theme/beigesmall.css" id="theme">
 <link rel="stylesheet" href="reveal.js/css/theme/night.css" id="theme">
@@ -29,6 +30,10 @@
 <link rel="stylesheet" href="reveal.js/css/theme/darkgray.css" id="theme">
 -->
 
+<!-- For syntax highlighting -->
+<link rel="stylesheet" href="lib/css/zenburn.css">
+
+<!-- If the query includes 'print-pdf', use the PDF print sheet -->
 <script>
 document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
 </script>
@@ -132,7 +137,7 @@ MathJax.Hub.Config({
 <p>&nbsp;<br>
 <!-- institution(s) -->
 <p>&nbsp;<br>
-<center><h4>Nov 29, 2013</h4></center> <!-- date -->
+<center><h4>Jan 8, 2014</h4></center> <!-- date -->
 <p>
 <center><p><img src="fig/doconce1b.png" align="bottom" width=400></p></center>
 
@@ -183,7 +188,7 @@ MathJax.Hub.Config({
 <span style="color: #6ab825; font-weight: bold">\begin</span><span style="color: #24909d">{</span>Verbatim<span style="color: #24909d">}</span>
 print &#39;Hello, World!&#39;
 <span style="color: #6ab825; font-weight: bold">\end</span><span style="color: #24909d">{</span>Verbatim<span style="color: #24909d">}</span>
-</pre></div>
+</code></pre></div>
 <p>
 Big late 1990s question: Will MS Word replace LaTeX? It never did!
 
@@ -796,7 +801,7 @@ Advantages:
 <span style="color: #6ab825; font-weight: bold">&lt;p&gt;&lt;div</span> <span style="color: #bbbbbb">class=</span><span style="color: #ed9d13">&quot;alert&quot;</span><span style="color: #6ab825; font-weight: bold">&gt;</span>
 The default answer is LaTeX.
 <span style="color: #6ab825; font-weight: bold">&lt;/div&gt;</span>
-</pre></div>
+</code></pre></div>
 <p>
 
 </section>
@@ -819,13 +824,13 @@ The default answer is LaTeX.
 
 <!-- code=text typeset with pygments style "native" -->
 <div class="highlight" style="background: #202020"><pre style="line-height: 125%">TITLE: Some Title
-AUTHOR: name1 at institution1, with more info, and institution2
+AUTHOR: name1 at institution1, with more info &amp; institution2
 AUTHOR: name2 email:name2@web.com at institution
 DATE: today
 
 # A table of contents is optional:
 TOC: on
-</pre></div>
+</code></pre></div>
 <p>
 <div class="alert alert-block alert-notice alert-text-normal"><b>Notice.</b>
 Title and authors must have all information <em>on a single line</em>!
@@ -846,7 +851,7 @@ Title and authors must have all information <em>on a single line</em>!
 <!-- code=text typeset with pygments style "native" -->
 <div class="highlight" style="background: #202020"><pre style="line-height: 125%">__Abstract.__
 Here goes the abstract...
-</pre></div>
+</code></pre></div>
 <p>
 Or:
 <p>
@@ -854,7 +859,7 @@ Or:
 <!-- code=text typeset with pygments style "native" -->
 <div class="highlight" style="background: #202020"><pre style="line-height: 125%">__Summary.__
 Here goes the summary...
-</pre></div>
+</code></pre></div>
 <p>
 
 </section>
@@ -878,7 +883,7 @@ Headings are surrounded by <code>=</code> signs:
 === This is an H4/paragraph heading ===
 
 __This is a paragraph heading.__
-</pre></div>
+</code></pre></div>
 <p>
 Result:
 
@@ -912,7 +917,7 @@ Result:
  * `inline verbatim code` is featured
    o and sublists with enumerated items starting with `o`
    o items are just indented as you would do in email
-</pre></div>
+</code></pre></div>
 <p>
 This gets rendered as
 
@@ -966,7 +971,7 @@ See (ref{eq1})-(ref{myeq}).
 
 # Hyperlink with complete URL as link text
 URL: &quot;https://github.com/hplgit/doconce&quot;
-</pre></div>
+</code></pre></div>
 <p>
 
 </section>
@@ -986,7 +991,7 @@ Figures with HTML and LaTeX size info, and caption: <em>everything on one line</
 
 <!-- code=text typeset with pygments style "native" -->
 <div class="highlight" style="background: #202020"><pre style="line-height: 125%">FIGURE: [figdir/myfig, width=300 frac=1.2] My caption. label{fig1}
-</pre></div>
+</code></pre></div>
 <p>
 Movies are also supported:
 
@@ -994,7 +999,7 @@ Movies are also supported:
 
 <!-- code=text typeset with pygments style "native" -->
 <div class="highlight" style="background: #202020"><pre style="line-height: 125%">MOVIE: [http://youtu.be/IDeGDFZSYo8, width=420 height=315]
-</pre></div>
+</code></pre></div>
 <p>
 and rendered as
 
@@ -1019,7 +1024,7 @@ Inline math as in LaTeX:
 
 <!-- code=text typeset with pygments style "native" -->
 <div class="highlight" style="background: #202020"><pre style="line-height: 125%">...where $a=\int_{\Omega}fdx$ is an integral.
-</pre></div>
+</code></pre></div>
 <p>
 gets rendered as ...where \( a=\int_{\Omega}fdx \) is an integral.
 
@@ -1038,7 +1043,7 @@ label{a:eq}\\
 label{b:eq}
 \end{align}
 !et
-</pre></div>
+</code></pre></div>
 <p>
 which is rendered as
 
@@ -1083,7 +1088,7 @@ Limit math environments to
 
 \begin{align}
 \end{align}
-</pre></div>
+</code></pre></div>
 <p>
 <div class="alert alert-block alert-notice alert-text-normal"><b>Doconce fix of shortcomings.</b>
 
@@ -1123,7 +1128,7 @@ def solver(I, a, T, dt, theta):
         u[n+1] = (1 - (1-theta)*a*dt)/(1 + theta*dt*a)*u[n]
     return u, t
 !ec
-</pre></div>
+</code></pre></div>
 <p>
 This gets rendered as
 
@@ -1139,7 +1144,7 @@ This gets rendered as
     <span style="color: #6ab825; font-weight: bold">for</span> <span style="color: #d0d0d0">n</span> <span style="color: #6ab825; font-weight: bold">in</span> <span style="color: #24909d">range</span><span style="color: #d0d0d0">(</span><span style="color: #3677a9">0</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">N):</span>
         <span style="color: #d0d0d0">u[n+</span><span style="color: #3677a9">1</span><span style="color: #d0d0d0">]</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">(</span><span style="color: #3677a9">1</span> <span style="color: #d0d0d0">-</span> <span style="color: #d0d0d0">(</span><span style="color: #3677a9">1</span><span style="color: #d0d0d0">-theta)*a*dt)/(</span><span style="color: #3677a9">1</span> <span style="color: #d0d0d0">+</span> <span style="color: #d0d0d0">theta*dt*a)*u[n]</span>
     <span style="color: #6ab825; font-weight: bold">return</span> <span style="color: #d0d0d0">u,</span> <span style="color: #d0d0d0">t</span>
-</pre></div>
+</code></pre></div>
 <p>
 
 </section>
@@ -1158,7 +1163,7 @@ source files:
 <!-- code=text typeset with pygments style "native" -->
 <div class="highlight" style="background: #202020"><pre style="line-height: 125%">@@@CODE path/to/file
 @@@CODE path/to/file   fromto: start-regex@end-regex
-</pre></div>
+</code></pre></div>
 <p>
 For example, copying a code snippet starting with <code>def solver(</code> and
 ending with (line not included) <code>def next(x, y,</code> is specified by
@@ -1168,7 +1173,7 @@ start and end regular expressions:
 
 <!-- code=text typeset with pygments style "native" -->
 <div class="highlight" style="background: #202020"><pre style="line-height: 125%">@@@CODE src/dc_mod.py  fromto: def solver\(@def next\(x,\s*y,
-</pre></div>
+</code></pre></div>
 <p>
 
 </section>
@@ -1239,7 +1244,7 @@ y = exp(-0.1*x)*cos(x)
 plot(x, y)
 xlabel(&#39;x&#39;); ylabel(&#39;y&#39;)
 show()
-</pre></div>
+</code></pre></div>
 <p>
 <div class="alert alert-block alert-warning alert-text-normal"><b>Warning.</b>
 Works only in Sphinx documents (but HTML support is possible).
@@ -1277,7 +1282,7 @@ Can take a <a href="http://hplgit.github.com/teamods/writing_reports/_static/rep
   | 2.0  | 1.376512 | 11.919       |
   | 4.0  | 1.1E+1   | 14.717624    |
   |--------------------------------|
-</pre></div>
+</code></pre></div>
 <p>
 Gets rendered as
 
@@ -1346,7 +1351,7 @@ FIGURE: [fig/myfile, width=600] My figure. label{mysec:fig:myfig}
 ===== References =====
 
 BIBFILE: papers.pub
-</pre></div>
+</code></pre></div>
 <p>
 The <code>papers.pub</code> file must be in <a href="https://bitbucket.org/logg/publish" target="_blank">Publish</a>
 format (easy to make from BibTeX).
@@ -1388,7 +1393,7 @@ Compute the probability of getting heads.
 0.5.
 !eans
 !esubex
-</pre></div>
+</code></pre></div>
 <p>
 
 </section>
@@ -1468,7 +1473,7 @@ processing (e.g., making a book of problems).
              &#39;text&#39;: &#39;Make a program that simulates ...&#39;},],
   &#39;title&#39;: &#39;Flip a Coin&#39;,
   &#39;type&#39;: &#39;Problem&#39;}]
-</pre></div>
+</code></pre></div>
 <p>
 
 </section>
@@ -1608,7 +1613,7 @@ And maybe a final comment?
 
 !split
 ======= Next slide... =======
-</pre></div>
+</code></pre></div>
 <p>
 
 </section>
@@ -1685,7 +1690,7 @@ FIGURE: [fig/broken_pen_and_paper, width=400, frac=0.8]
 
 !split
 ======= Next slide... =======
-</pre></div>
+</code></pre></div>
 <p>
 
 </section>
@@ -1848,7 +1853,7 @@ doconce format html doconcefile --no_pygments_html
 
 # Further making of slides
 doconce slides_html doconcefile reveal --html_slide_theme=darkgray
-</pre></div>
+</code></pre></div>
 <p>
 
 </section>
@@ -1877,7 +1882,7 @@ For wordpress, add <code>--wordpress</code>:
 
 <!-- code=text typeset with pygments style "native" -->
 <div class="highlight" style="background: #202020"><pre style="line-height: 125%">doconce format html doconcefile --wordpress
-</pre></div>
+</code></pre></div>
 <p>
 and paste the code into the text area.
 
@@ -1911,7 +1916,7 @@ doconce ptex2tex doconcefile envir=minted
 
 doconce format pdflatex doconcefile
 doconce ptex2tex doconcefile envir=ans:nt
-</pre></div>
+</code></pre></div>
 <p>
 
 </section>
@@ -1933,7 +1938,7 @@ doconce sphinx_dir theme=pyramid doconcefile
 python automake-sphinx.py
 
 google-chrome sphinx-rootdir/_build/html/index.html
-</pre></div>
+</code></pre></div>
 <p>
 Much easier than running the Sphinx tools manually!
 
@@ -1953,7 +1958,7 @@ Only MediaWiki supports math.
 
 <!-- code=text typeset with pygments style "native" -->
 <div class="highlight" style="background: #202020"><pre style="line-height: 125%">doconce format mwiki doconcefile
-</pre></div>
+</code></pre></div>
 <p>
 Recommended site:
 
@@ -1992,7 +1997,7 @@ doconce format gwiki  doconcefile  # Googlecode wiki
 doconce format cwiki  doconcefile  # Creole wiki (Bitbucket)
 doconce format rst    doconcefile  # reStructuredText
 doconce format plain  doconcefile  # plain, untagged text for email
-</pre></div>
+</code></pre></div>
 <p>
 
 </section>
