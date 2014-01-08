@@ -47522,7 +47522,7 @@ title (Warning) since no title is specified.
 </div> <!-- class="reveal" -->
 
 <script src="reveal.js/lib/js/head.min.js"></script>
-<script src="reveal.js/js/reveal.js"></script>
+<script src="reveal.js/js/reveal.min.js"></script>
 
 <script>
 // Full list of configuration options available here:
@@ -47530,9 +47530,9 @@ title (Warning) since no title is specified.
 Reveal.initialize({
 
     // Display navigation controls in the bottom right corner
-    controls: false,
+    controls: true,
 
-    // Display a presentation progress bar (below the horiz. slider
+    // Display progress bar (below the horiz. slider)
     progress: true,
 
     // Display the page number of the current slide
@@ -56354,7 +56354,7 @@ $$ -\nabla^2 u = f \quad\hbox{in }\Omega $$
 </div> <!-- class="reveal" -->
 
 <script src="reveal.js/lib/js/head.min.js"></script>
-<script src="reveal.js/js/reveal.js"></script>
+<script src="reveal.js/js/reveal.min.js"></script>
 
 <script>
 // Full list of configuration options available here:
@@ -56362,9 +56362,9 @@ $$ -\nabla^2 u = f \quad\hbox{in }\Omega $$
 Reveal.initialize({
 
     // Display navigation controls in the bottom right corner
-    controls: false,
+    controls: true,
 
-    // Display a presentation progress bar (below the horiz. slider
+    // Display progress bar (below the horiz. slider)
     progress: true,
 
     // Display the page number of the current slide
@@ -59278,7 +59278,7 @@ qualitatively correct results.
 </div> <!-- class="reveal" -->
 
 <script src="reveal.js/lib/js/head.min.js"></script>
-<script src="reveal.js/js/reveal.js"></script>
+<script src="reveal.js/js/reveal.min.js"></script>
 
 <script>
 // Full list of configuration options available here:
@@ -59286,9 +59286,9 @@ qualitatively correct results.
 Reveal.initialize({
 
     // Display navigation controls in the bottom right corner
-    controls: false,
+    controls: true,
 
-    // Display a presentation progress bar (below the horiz. slider
+    // Display progress bar (below the horiz. slider)
     progress: true,
 
     // Display the page number of the current slide
