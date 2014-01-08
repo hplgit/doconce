@@ -48,9 +48,9 @@ module.exports = function(grunt) {
 					'css/theme/sky.css': 'css/theme/source/sky.scss',
 					'css/theme/moon.css': 'css/theme/source/moon.scss',
 					'css/theme/solarized.css': 'css/theme/source/solarized.scss',
-					'css/theme/blood.css': 'css/theme/source/blood.scss'
-					'css/theme/beigesmall.css': 'css/theme/source/beigesmall.scss'
-					'css/theme/darkgray.css': 'css/theme/source/darkgray.scss'
+				        'css/theme/blood.css': 'css/theme/source/blood.scss',
+		   		        'css/theme/beigesmall.css': 'css/theme/source/beigesmall.scss',
+	   			        'css/theme/darkgray.css': 'css/theme/source/darkgray.scss'
 				}
 			}
 		},
