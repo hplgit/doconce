@@ -2,6 +2,15 @@
 set -x
 bash clean.sh
 
+function system {
+  "$@"
+  if [ $? -ne 0 ]; then
+    echo "make.sh: unsuccessful command $@"
+    echo "abort!"
+    exit 1
+  fi
+}
+
 # ----- scientific_writing talk -------
 name=scientific_writing
 
@@ -9,9 +18,9 @@ name=scientific_writing
 # blocks we need a few fixes
 
 html=${name}-reveal
-doconce format html $name --pygments_html_style=native --keep_pygments_html_bg --html_links_in_new_window --html_output=$html
+system doconce format html $name --pygments_html_style=native --keep_pygments_html_bg --html_links_in_new_window --html_output=$html
 if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
-doconce slides_html $html reveal --html_slide_theme=darkgray
+system doconce slides_html $html reveal --html_slide_theme=darkgray
 if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
 
 function editfix {
@@ -29,81 +38,81 @@ doconce replace '\eqref{mysec:eq:Dudt}' '(ref{mysec:eq:Dudt})' $1
 editfix $html.html
 
 html=${name}-reveal-beige
-doconce format html $name --pygments_html_style=perldoc --keep_pygments_html_bg --html_links_in_new_window --html_output=$html
-doconce slides_html $html reveal --html_slide_theme=beige
+system doconce format html $name --pygments_html_style=perldoc --keep_pygments_html_bg --html_links_in_new_window --html_output=$html
+system doconce slides_html $html reveal --html_slide_theme=beige
 editfix $html.html
 
 html=${name}-reveal-white
-doconce format html $name --pygments_html_style=default --keep_pygments_html_bg --html_links_in_new_window --html_output=$html
-doconce slides_html $html reveal --html_slide_theme=simple
+system doconce format html $name --pygments_html_style=default --keep_pygments_html_bg --html_links_in_new_window --html_output=$html
+system doconce slides_html $html reveal --html_slide_theme=simple
 editfix $html.html
 
 html=${name}-deck
-doconce format html $name --pygments_html_style=perldoc --keep_pygments_html_bg --html_links_in_new_window --html_output=$html
+system doconce format html $name --pygments_html_style=perldoc --keep_pygments_html_bg --html_links_in_new_window --html_output=$html
 if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
-doconce slides_html $html deck --html_slide_theme=sandstone.default
+system doconce slides_html $html deck --html_slide_theme=sandstone.default
 if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
 editfix $html.html
 
 # Plain HTML documents
 html=${name}-solarized
-doconce format html $name --pygments_html_style=perldoc --html_style=solarized --html_admon=apricot --html_links_in_new_window --html_output=$html
+system doconce format html $name --pygments_html_style=perldoc --html_style=solarized --html_admon=apricot --html_links_in_new_window --html_output=$html
 if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
 editfix $html.html
 
 html=${name}-plain
-doconce format html $name --pygments_html_style=default --html_links_in_new_window --html_output=$html
+system doconce format html $name --pygments_html_style=default --html_links_in_new_window --html_output=$html
 editfix $html.html
-doconce split_html $html.html
+system doconce split_html $html.html
 # Remove top navigation in all parts
 doconce subst -s '<!-- begin top navigation.+?end top navigation -->' '' ${name}-plain.html ._${name}*.html
 
 # One big HTML file with space between the slides
 html=${name}-1
-doconce format html $name --html_style=bloodish --html_links_in_new_window --html_output=$html
+system doconce format html $name --html_style=bloodish --html_links_in_new_window --html_output=$html
 editfix $html.html
 # Add space:
 doconce replace '<!-- !split -->' '<!-- !split --><br><br><br><br><br><br><br><br>' $html.html
 
 # LaTeX Beamer slides
 beamertheme=red_shadow
-doconce format pdflatex $name
+system doconce format pdflatex $name
 editfix ${name}.p.tex
-doconce ptex2tex $name -DLATEX_HEADING=beamer envir=minted
-doconce slides_beamer $name --beamer_slide_theme=$beamertheme
+system doconce ptex2tex $name -DLATEX_HEADING=beamer envir=minted
+system doconce slides_beamer $name --beamer_slide_theme=$beamertheme
 cp $name.tex ${name}-beamer-${beamertheme}.tex
-pdflatex -shell-escape ${name}-beamer-$beamertheme
+system pdflatex -shell-escape ${name}-beamer-$beamertheme
 
 # LaTeX documents
-doconce format pdflatex $name --minted_latex_style=trac
+system doconce format pdflatex $name --minted_latex_style=trac
 editfix ${name}.p.tex
-doconce ptex2tex $name envir=minted -DBOOK
+system doconce ptex2tex $name envir=minted -DBOOK
 doconce replace 'section{' 'section*{' $name.tex
-pdflatex -shell-escape $name
+system pdflatex -shell-escape $name
 mv -f $name.pdf ${name}-minted.pdf
 cp $name.tex ${name}-minted.tex
 
-doconce format pdflatex $name
+system doconce format pdflatex $name
 if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
 editfix ${name}.p.tex
 doconce replace 'section{' 'section*{' ${name}.p.tex
-doconce ptex2tex $name envir=ans:nt -DBOOK
+system doconce ptex2tex $name envir=ans:nt -DBOOK
 if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
-pdflatex $name
+system pdflatex $name
 mv -f $name.pdf ${name}-anslistings.pdf
 cp $name.tex ${name}-anslistings.tex
 
 # sphinx doesn't handle math inside code well, we drop it since
 # other formats demonstrate doconce writing this way
-doconce format sphinx $name
+system doconce format sphinx $name
 if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
 editfix ${name}.rst
-doconce sphinx_dir author="H. P. Langtangen" theme=pyramid $name
-python automake_sphinx.py
+system doconce sphinx_dir author="H. P. Langtangen" theme=pyramid $name
+system python automake_sphinx.py
 
-doconce format pandoc $name  # Markdown (pandoc extended)
+system doconce format pandoc $name  # Markdown (pandoc extended)
 if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
-doconce format gwiki  $name  # Googlecode wiki
+system doconce format gwiki  $name  # Googlecode wiki
 if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
 
 # These don't like slides with code after heading:
@@ -125,11 +134,11 @@ cp sw_index.html $dest/index.html
 
 # --------- short demo talk ------------
 
-doconce format html demo SLIDE_TYPE=dummy SLIDE_THEME=dummy # test
+system doconce format html demo SLIDE_TYPE=dummy SLIDE_THEME=dummy # test
 if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
 
 # Make all the styles for the short demo talk
-doconce slides_html demo all  # generates tmp_slides_html_all.sh
+system doconce slides_html demo all  # generates tmp_slides_html_all.sh
 pygmentize -l text -f html -o demo_doconce.html demo.do.txt
 sh -x tmp_slides_html_all.sh
 
@@ -178,6 +187,12 @@ doconce slides_html demo reveal --html_slide_theme=beige
 doconce format html demo --pygments_html_style=perldoc --keep_pygments_html_bg SLIDE_TYPE=reveal SLIDE_THEME=beigesmall
 doconce slides_html demo reveal --html_slide_theme=beigesmall
 </pre>
+<p><li><a href="demo_reveal_solarized.html">reveal, solarized theme</a>
+<pre>
+doconce format html demo --pygments_html_style=perldoc --keep_pygments_html_bg SLIDE_TYPE=reveal SLIDE_THEME=solarized
+doconce slides_html demo reveal --html_slide_theme=solarized
+</pre>
+</pre>
 <li><a href="demo_reveal_darkgray.html">reveal, darkgray theme</a>
 <pre>
 doconce format html demo --pygments_html_style=native --keep_pygments_html_bg SLIDE_TYPE=reveal SLIDE_THEME=darkgray
@@ -192,6 +207,7 @@ doconce slides_html demo reveal --html_slide_theme=serif
 <pre>
 doconce format html demo --pygments_html_style=fruity --keep_pygments_html_bg SLIDE_TYPE=reveal SLIDE_THEME=night
 doconce slides_html demo reveal --html_slide_theme=night
+</pre>
 <li><a href="demo_reveal_moon.html">reveal, moon theme</a>
 <pre>
 doconce format html demo --pygments_html_style=fruity --keep_pygments_html_bg SLIDE_TYPE=reveal SLIDE_THEME=moon
@@ -201,6 +217,11 @@ doconce slides_html demo reveal --html_slide_theme=moon
 <pre>
 doconce format html demo --pygments_html_style=autumn --keep_pygments_html_bg SLIDE_TYPE=reveal SLIDE_THEME=simple
 doconce slides_html demo reveal --html_slide_theme=simple
+</pre>
+<li><a href="demo_reveal_blood.html">reveal, blood theme</a>
+<pre>
+doconce format html demo --pygments_html_style=autumn --keep_pygments_html_bg SLIDE_TYPE=reveal SLIDE_THEME=blood
+doconce slides_html demo reveal --html_slide_theme=blood
 </pre>
 <li><a href="demo_reveal_sky.html">reveal, sky theme</a>
 </ul>
