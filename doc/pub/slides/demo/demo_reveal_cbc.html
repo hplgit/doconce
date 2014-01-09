@@ -381,7 +381,7 @@ qualitatively correct results.
 </div> <!-- class="reveal" -->
 
 <script src="reveal.js/lib/js/head.min.js"></script>
-<script src="reveal.js/js/reveal.js"></script>
+<script src="reveal.js/js/reveal.min.js"></script>
 
 <script>
 // Full list of configuration options available here:
@@ -389,9 +389,9 @@ qualitatively correct results.
 Reveal.initialize({
 
     // Display navigation controls in the bottom right corner
-    controls: false,
+    controls: true,
 
-    // Display a presentation progress bar (below the horiz. slider
+    // Display progress bar (below the horiz. slider)
     progress: true,
 
     // Display the page number of the current slide
@@ -444,7 +444,7 @@ Reveal.initialize({
     previewLinks: false,
 
     // Transition style
-    transition: 'cube', // default/cube/page/concave/zoom/linear/fade/none
+    transition: 'default', // default/cube/page/concave/zoom/linear/fade/none
 
     // Transition speed
     transitionSpeed: 'default', // default/fast/slow
@@ -510,10 +510,11 @@ Reveal.initialize({
 });
 </script>
 
-
-<div style="position: absolute; bottom: 0px; left: 0; margin-left: 0px;">
-<img src="reveal.js/css/theme/cbc_footer.png" width=110%;></div>
-
+<!-- begin footer logo
+<div style="position: absolute; bottom: 0px; left: 0; margin-left: 0px">
+<img src="somelogo.png">
+</div>
+     end footer logo -->
 
 
 
