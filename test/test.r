@@ -1479,12 +1479,13 @@ $$
 %% Many preprocess options can be added to ptex2tex or doconce ptex2tex
 %%
 %%      ptex2tex -DMINTED -DPALATINO -DA6PAPER -DLATEX_HEADING=traditional myfile
-%%      doconce ptex2tex myfile -DMINTED -DLATEX_HEADING=titlepage
+%%      doconce ptex2tex myfile -DLATEX_HEADING=titlepage envir=minted
 %%
 %% ptex2tex will typeset code environments according to a global or local
 %% .ptex2tex.cfg configure file. doconce ptex2tex will typeset code
 %% according to options on the command line (just type doconce ptex2tex to
-%% see examples).
+%% see examples). If doconce ptex2tex has envir=minted, it enables the
+%% minted style without needing -DMINTED.
 % #endif
 
 % #ifndef LATEX_STYLE
@@ -1783,10 +1784,11 @@ final,                   % or draft (marks overfull hboxes)
 \oldtabular}{\endoldtabular}
 % #endif
 
-% --- end of standard preamble for documents ---
 
 \newenvironment{doconce:exercise}{}{}
 \newcounter{doconce:exercise:counter}
+
+% --- end of standard preamble for documents ---
 
 
 % insert custom LaTeX commands...
@@ -3448,10 +3450,11 @@ final,                   % or draft (marks overfull hboxes)
 \renewenvironment{tabular}{\rowcolors{2}{white}{appleblue}%
 \oldtabular}{\endoldtabular}
 
-% --- end of standard preamble for documents ---
 
 \newenvironment{doconce:exercise}{}{}
 \newcounter{doconce:exercise:counter}
+
+% --- end of standard preamble for documents ---
 
 
 \usepackage{theorem}
@@ -5004,10 +5007,11 @@ final,                   % or draft (marks overfull hboxes)
 
 
 
-% --- end of standard preamble for documents ---
 
 \newenvironment{doconce:exercise}{}{}
 \newcounter{doconce:exercise:counter}
+
+% --- end of standard preamble for documents ---
 
 
 \usepackage{theorem}
@@ -22404,12 +22408,13 @@ Inline math, \( a=b \), is the only math in this document.
 %% Many preprocess options can be added to ptex2tex or doconce ptex2tex
 %%
 %%      ptex2tex -DMINTED -DPALATINO -DA6PAPER -DLATEX_HEADING=traditional myfile
-%%      doconce ptex2tex myfile -DMINTED -DLATEX_HEADING=titlepage
+%%      doconce ptex2tex myfile -DLATEX_HEADING=titlepage envir=minted
 %%
 %% ptex2tex will typeset code environments according to a global or local
 %% .ptex2tex.cfg configure file. doconce ptex2tex will typeset code
 %% according to options on the command line (just type doconce ptex2tex to
-%% see examples).
+%% see examples). If doconce ptex2tex has envir=minted, it enables the
+%% minted style without needing -DMINTED.
 % #endif
 
 % #ifndef LATEX_STYLE
@@ -22634,6 +22639,7 @@ open=right               % start new chapters on odd-numbered pages
 \renewenvironment{tabular}{\rowcolors{2}{white}{appleblue}%
 \oldtabular}{\endoldtabular}
 % #endif
+
 
 % --- end of standard preamble for documents ---
 
@@ -28796,12 +28802,13 @@ in a separate document: <code>admon.do.txt</code>.
 %% Many preprocess options can be added to ptex2tex or doconce ptex2tex
 %%
 %%      ptex2tex -DMINTED -DPALATINO -DA6PAPER -DLATEX_HEADING=traditional myfile
-%%      doconce ptex2tex myfile -DMINTED -DLATEX_HEADING=titlepage
+%%      doconce ptex2tex myfile -DLATEX_HEADING=titlepage envir=minted
 %%
 %% ptex2tex will typeset code environments according to a global or local
 %% .ptex2tex.cfg configure file. doconce ptex2tex will typeset code
 %% according to options on the command line (just type doconce ptex2tex to
-%% see examples).
+%% see examples). If doconce ptex2tex has envir=minted, it enables the
+%% minted style without needing -DMINTED.
 % #endif
 
 % #ifndef LATEX_STYLE
@@ -29100,10 +29107,11 @@ final,                   % or draft (marks overfull hboxes)
 \oldtabular}{\endoldtabular}
 % #endif
 
-% --- end of standard preamble for documents ---
 
 \newenvironment{doconce:exercise}{}{}
 \newcounter{doconce:exercise:counter}
+
+% --- end of standard preamble for documents ---
 
 
 % insert custom LaTeX commands...
@@ -32221,12 +32229,13 @@ v(t) - 1 &amp;=&amp; \frac{du}{dt} \label{eq3c}
 %% Many preprocess options can be added to ptex2tex or doconce ptex2tex
 %%
 %%      ptex2tex -DMINTED -DPALATINO -DA6PAPER -DLATEX_HEADING=traditional myfile
-%%      doconce ptex2tex myfile -DMINTED -DLATEX_HEADING=titlepage
+%%      doconce ptex2tex myfile -DLATEX_HEADING=titlepage envir=minted
 %%
 %% ptex2tex will typeset code environments according to a global or local
 %% .ptex2tex.cfg configure file. doconce ptex2tex will typeset code
 %% according to options on the command line (just type doconce ptex2tex to
-%% see examples).
+%% see examples). If doconce ptex2tex has envir=minted, it enables the
+%% minted style without needing -DMINTED.
 % #endif
 
 % #ifndef LATEX_STYLE
@@ -32449,6 +32458,7 @@ final,                   % or draft (marks overfull hboxes)
 \renewenvironment{tabular}{\rowcolors{2}{white}{appleblue}%
 \oldtabular}{\endoldtabular}
 % #endif
+
 
 % --- end of standard preamble for documents ---
 
@@ -37344,12 +37354,13 @@ in a separate document: ``admon.do.txt``.
 %% Many preprocess options can be added to ptex2tex or doconce ptex2tex
 %%
 %%      ptex2tex -DMINTED -DPALATINO -DA6PAPER -DLATEX_HEADING=traditional myfile
-%%      doconce ptex2tex myfile -DMINTED -DLATEX_HEADING=titlepage
+%%      doconce ptex2tex myfile -DLATEX_HEADING=titlepage envir=minted
 %%
 %% ptex2tex will typeset code environments according to a global or local
 %% .ptex2tex.cfg configure file. doconce ptex2tex will typeset code
 %% according to options on the command line (just type doconce ptex2tex to
-%% see examples).
+%% see examples). If doconce ptex2tex has envir=minted, it enables the
+%% minted style without needing -DMINTED.
 % #endif
 
 % #ifndef LATEX_STYLE
@@ -37690,6 +37701,7 @@ final,                   % or draft (marks overfull hboxes)
 \renewenvironment{tabular}{\rowcolors{2}{white}{appleblue}%
 \oldtabular}{\endoldtabular}
 % #endif
+
 
 % --- end of standard preamble for documents ---
 
@@ -38357,6 +38369,7 @@ final,                   % or draft (marks overfull hboxes)
 
 
 
+
 % --- end of standard preamble for documents ---
 
 
@@ -38950,6 +38963,7 @@ final,                   % or draft (marks overfull hboxes)
 
 
 
+
 % --- end of standard preamble for documents ---
 
 
@@ -39462,6 +39476,7 @@ final,                   % or draft (marks overfull hboxes)
 % prevent orhpans and widows
 \clubpenalty = 10000
 \widowpenalty = 10000
+
 
 
 
@@ -39988,6 +40003,7 @@ final,                   % or draft (marks overfull hboxes)
 % prevent orhpans and widows
 \clubpenalty = 10000
 \widowpenalty = 10000
+
 
 
 
@@ -40607,6 +40623,7 @@ final,                   % or draft (marks overfull hboxes)
 
 
 
+
 % --- end of standard preamble for documents ---
 
 
@@ -41103,6 +41120,7 @@ final,                   % or draft (marks overfull hboxes)
 % prevent orhpans and widows
 \clubpenalty = 10000
 \widowpenalty = 10000
+
 
 
 
@@ -41695,6 +41713,7 @@ final,                   % or draft (marks overfull hboxes)
 % prevent orhpans and widows
 \clubpenalty = 10000
 \widowpenalty = 10000
+
 
 
 
@@ -47160,6 +47179,8 @@ title (Warning) since no title is specified.
 
 <!-- reveal.js: http://lab.hakim.se/reveal-js/ -->
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
@@ -47167,15 +47188,24 @@ title (Warning) since no title is specified.
 <link rel="stylesheet" href="reveal.js/css/theme/beige.css" id="theme">
 <!--
 <link rel="stylesheet" href="reveal.js/css/reveal.css">
-<link rel="stylesheet" href="reveal.js/css/reveal.min.css">
 <link rel="stylesheet" href="reveal.js/css/theme/beige.css" id="theme">
 <link rel="stylesheet" href="reveal.js/css/theme/beigesmall.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/solarized.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/serif.css" id="theme">
 <link rel="stylesheet" href="reveal.js/css/theme/night.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/moon.css" id="theme">
 <link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">
 <link rel="stylesheet" href="reveal.js/css/theme/sky.css" id="theme">
 <link rel="stylesheet" href="reveal.js/css/theme/darkgray.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/default.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/cbc.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/simula.css" id="theme">
 -->
 
+<!-- For syntax highlighting -->
+<link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+<!-- If the query includes 'print-pdf', use the PDF print sheet -->
 <script>
 document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
 </script>
@@ -47495,44 +47525,155 @@ title (Warning) since no title is specified.
 <script src="reveal.js/js/reveal.min.js"></script>
 
 <script>
-
 // Full list of configuration options available here:
 // https://github.com/hakimel/reveal.js#configuration
 Reveal.initialize({
-controls: true,
-progress: true,
-history: true,
-center: true,
-theme: Reveal.getQueryHash().theme, // available themes are in reveal.js/css/theme
-transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
 
-// Optional libraries used to extend on reveal.js
-dependencies: [
-{ src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-{ src: 'reveal.js/plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-{ src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-{ src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-{ src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-{ src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
-// { src: 'reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
-]
+    // Display navigation controls in the bottom right corner
+    controls: true,
+
+    // Display progress bar (below the horiz. slider)
+    progress: true,
+
+    // Display the page number of the current slide
+    slideNumber: true,
+
+    // Push each slide change to the browser history
+    history: false,
+
+    // Enable keyboard shortcuts for navigation
+    keyboard: true,
+
+    // Enable the slide overview mode
+    overview: true,
+
+    // Vertical centering of slides
+    //center: true,
+    center: false,
+
+    // Enables touch navigation on devices with touch input
+    touch: true,
+
+    // Loop the presentation
+    loop: false,
+
+    // Change the presentation direction to be RTL
+    rtl: false,
+
+    // Turns fragments on and off globally
+    fragments: true,
+
+    // Flags if the presentation is running in an embedded mode,
+    // i.e. contained within a limited portion of the screen
+    embedded: false,
+
+    // Number of milliseconds between automatically proceeding to the
+    // next slide, disabled when set to 0, this value can be overwritten
+    // by using a data-autoslide attribute on your slides
+    autoSlide: 0,
+
+    // Stop auto-sliding after user input
+    autoSlideStoppable: true,
+
+    // Enable slide navigation via mouse wheel
+    mouseWheel: false,
+
+    // Hides the address bar on mobile devices
+    hideAddressBar: true,
+
+    // Opens links in an iframe preview overlay
+    previewLinks: false,
+
+    // Transition style
+    transition: 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+    // Transition speed
+    transitionSpeed: 'default', // default/fast/slow
+
+    // Transition style for full page slide backgrounds
+    backgroundTransition: 'default', // default/none/slide/concave/convex/zoom
+
+    // Number of slides away from the current that are visible
+    viewDistance: 3,
+
+    // Parallax background image
+    //parallaxBackgroundImage: '', // e.g. "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'"
+
+    // Parallax background size
+    //parallaxBackgroundSize: '' // CSS syntax, e.g. "2100px 900px"
+
+    theme: Reveal.getQueryHash().theme, // available themes are in reveal.js/css/theme
+    transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
+
+});
+
+Reveal.initialize({
+    dependencies: [
+        // Cross-browser shim that fully implements classList - https://github.com/eligrey/classList.js/
+        { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+
+        // Interpret Markdown in <section> elements
+        { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+        { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+
+        // Syntax highlight for <code> elements
+        { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+
+        // Zoom in and out with Alt+click
+        { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+
+        // Speaker notes
+        { src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+
+        // Remote control your reveal.js presentation using a touch device
+        //{ src: 'reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } },
+
+        // MathJax
+        //{ src: 'reveal.js/plugin/math/math.js', async: true }
+    ]
+});
+
+Reveal.initialize({
+
+    // The "normal" size of the presentation, aspect ratio will be preserved
+    // when the presentation is scaled to fit different resolutions. Can be
+    // specified using percentage units.
+    width:  960,
+    height: 700,
+
+    // Factor of the display size that should remain empty around the content
+    margin: 0.1,
+
+    // Bounds for smallest/largest possible scale to apply to content
+    minScale: 0.2,
+    maxScale: 1.0
+
 });
 </script>
+
+<!-- begin footer logo
+<div style="position: absolute; bottom: 0px; left: 0; margin-left: 0px">
+<img src="somelogo.png">
+</div>
+     end footer logo -->
+
 
 
 </body>
 </html>
 reveal.js:
 css
-examples
 Gruntfile.js
+Gruntfile.js~
 index.html
 js
 lib
 LICENSE
+node_modules
 package.json
 plugin
 README.md
+test
 
 reveal.js/css:
 print
@@ -47547,6 +47688,10 @@ pdf.css
 reveal.js/css/theme:
 beige.css
 beigesmall.css
+blood.css
+cbc.css
+cbc_footer.png
+cbc_symbol.png
 darkgray.css
 default.css
 moon.css
@@ -47554,18 +47699,32 @@ night.css
 README.md
 serif.css
 simple.css
+simula.css
+simula_footer.png
+simula_logo.png
+simula_symbol.png
 sky.css
 solarized.css
 source
 template
+uio_footer.png
+uio_symbol.png
 
 reveal.js/css/theme/source:
 beige.scss
+beigesmall.scss
+blood.scss
+cbc.scss
+cbc.scss~
+darkgray.scss
 default.scss
 moon.scss
 night.scss
 serif.scss
 simple.scss
+simple.scss~
+simula.scss
+simula.scss~
 sky.scss
 solarized.scss
 
@@ -47573,17 +47732,6 @@ reveal.js/css/theme/template:
 mixins.scss
 settings.scss
 theme.scss
-
-reveal.js/examples:
-assets
-barebones.html
-embedded-media.html
-math.html
-slide-backgrounds.html
-
-reveal.js/examples/assets:
-image1.png
-image2.png
 
 reveal.js/js:
 reveal.js
@@ -47608,6 +47756,4701 @@ reveal.js/lib/js:
 classList.js
 head.min.js
 html5shiv.js
+
+reveal.js/node_modules:
+express
+grunt
+grunt-contrib-connect
+grunt-contrib-cssmin
+grunt-contrib-jshint
+grunt-contrib-qunit
+grunt-contrib-sass
+grunt-contrib-uglify
+grunt-contrib-watch
+grunt-zip
+mustache
+socket.io
+underscore
+
+reveal.js/node_modules/express:
+bin
+History.md
+index.js
+lib
+LICENSE
+Makefile
+node_modules
+package.json
+Readme.md
+test.js
+
+reveal.js/node_modules/express/bin:
+express
+
+reveal.js/node_modules/express/lib:
+express.js
+http.js
+https.js
+request.js
+response.js
+router
+utils.js
+view
+view.js
+
+reveal.js/node_modules/express/lib/router:
+collection.js
+index.js
+methods.js
+route.js
+
+reveal.js/node_modules/express/lib/view:
+partial.js
+view.js
+
+reveal.js/node_modules/express/node_modules:
+connect
+mime
+mkdirp
+qs
+
+reveal.js/node_modules/express/node_modules/connect:
+index.js
+lib
+LICENSE
+node_modules
+package.json
+test.js
+
+reveal.js/node_modules/express/node_modules/connect/lib:
+cache.js
+connect.js
+http.js
+https.js
+index.js
+middleware
+patch.js
+public
+utils.js
+
+reveal.js/node_modules/express/node_modules/connect/lib/middleware:
+basicAuth.js
+bodyParser.js
+compiler.js
+compress.js
+cookieParser.js
+csrf.js
+directory.js
+errorHandler.js
+favicon.js
+limit.js
+logger.js
+methodOverride.js
+profiler.js
+query.js
+responseTime.js
+router.js
+session
+session.js
+staticCache.js
+static.js
+vhost.js
+
+reveal.js/node_modules/express/node_modules/connect/lib/middleware/session:
+cookie.js
+memory.js
+session.js
+store.js
+
+reveal.js/node_modules/express/node_modules/connect/lib/public:
+directory.html
+error.html
+favicon.ico
+icons
+style.css
+
+reveal.js/node_modules/express/node_modules/connect/lib/public/icons:
+page_add.png
+page_attach.png
+page_code.png
+page_copy.png
+page_delete.png
+page_edit.png
+page_error.png
+page_excel.png
+page_find.png
+page_gear.png
+page_go.png
+page_green.png
+page_key.png
+page_lightning.png
+page_link.png
+page_paintbrush.png
+page_paste.png
+page.png
+page_red.png
+page_refresh.png
+page_save.png
+page_white_acrobat.png
+page_white_actionscript.png
+page_white_add.png
+page_white_camera.png
+page_white_cd.png
+page_white_code.png
+page_white_code_red.png
+page_white_coldfusion.png
+page_white_compressed.png
+page_white_copy.png
+page_white_cplusplus.png
+page_white_c.png
+page_white_csharp.png
+page_white_cup.png
+page_white_database.png
+page_white_delete.png
+page_white_dvd.png
+page_white_edit.png
+page_white_error.png
+page_white_excel.png
+page_white_find.png
+page_white_flash.png
+page_white_freehand.png
+page_white_gear.png
+page_white_get.png
+page_white_go.png
+page_white_horizontal.png
+page_white_h.png
+page_white_key.png
+page_white_lightning.png
+page_white_link.png
+page_white_magnify.png
+page_white_medal.png
+page_white_office.png
+page_white_paintbrush.png
+page_white_paint.png
+page_white_paste.png
+page_white_php.png
+page_white_picture.png
+page_white.png
+page_white_powerpoint.png
+page_white_put.png
+page_white_ruby.png
+page_white_stack.png
+page_white_star.png
+page_white_swoosh.png
+page_white_text.png
+page_white_text_width.png
+page_white_tux.png
+page_white_vector.png
+page_white_visualstudio.png
+page_white_width.png
+page_white_word.png
+page_white_world.png
+page_white_wrench.png
+page_white_zip.png
+page_word.png
+page_world.png
+
+reveal.js/node_modules/express/node_modules/connect/node_modules:
+formidable
+
+reveal.js/node_modules/express/node_modules/connect/node_modules/formidable:
+benchmark
+example
+index.js
+lib
+LICENSE
+package.json
+Readme.md
+test
+tool
+
+reveal.js/node_modules/express/node_modules/connect/node_modules/formidable/benchmark:
+bench-multipart-parser.js
+
+reveal.js/node_modules/express/node_modules/connect/node_modules/formidable/example:
+json.js
+post.js
+upload.js
+
+reveal.js/node_modules/express/node_modules/connect/node_modules/formidable/lib:
+file.js
+incoming_form.js
+index.js
+json_parser.js
+multipart_parser.js
+octet_parser.js
+querystring_parser.js
+
+reveal.js/node_modules/express/node_modules/connect/node_modules/formidable/test:
+common.js
+fixture
+integration
+legacy
+run.js
+standalone
+tools
+unit
+
+reveal.js/node_modules/express/node_modules/connect/node_modules/formidable/test/fixture:
+file
+http
+js
+multipart.js
+
+reveal.js/node_modules/express/node_modules/connect/node_modules/formidable/test/fixture/file:
+beta-sticker-1.png
+binaryfile.tar.gz
+blank.gif
+funkyfilename.txt
+menu_separator.png
+plain.txt
+
+reveal.js/node_modules/express/node_modules/connect/node_modules/formidable/test/fixture/http:
+special-chars-in-filename
+
+reveal.js/node_modules/express/node_modules/connect/node_modules/formidable/test/fixture/http/special-chars-in-filename:
+info.md
+
+reveal.js/node_modules/express/node_modules/connect/node_modules/formidable/test/fixture/js:
+encoding.js
+misc.js
+no-filename.js
+preamble.js
+special-chars-in-filename.js
+workarounds.js
+
+reveal.js/node_modules/express/node_modules/connect/node_modules/formidable/test/integration:
+test-fixtures.js
+test-json.js
+test-octet-stream.js
+
+reveal.js/node_modules/express/node_modules/connect/node_modules/formidable/test/legacy:
+common.js
+integration
+simple
+system
+
+reveal.js/node_modules/express/node_modules/connect/node_modules/formidable/test/legacy/integration:
+test-multipart-parser.js
+
+reveal.js/node_modules/express/node_modules/connect/node_modules/formidable/test/legacy/simple:
+test-file.js
+test-incoming-form.js
+test-multipart-parser.js
+test-querystring-parser.js
+
+reveal.js/node_modules/express/node_modules/connect/node_modules/formidable/test/legacy/system:
+test-multi-video-upload.js
+
+reveal.js/node_modules/express/node_modules/connect/node_modules/formidable/test/standalone:
+test-connection-aborted.js
+test-content-transfer-encoding.js
+test-issue-46.js
+
+reveal.js/node_modules/express/node_modules/connect/node_modules/formidable/test/tools:
+base64.html
+
+reveal.js/node_modules/express/node_modules/connect/node_modules/formidable/test/unit:
+test-file.js
+test-incoming-form.js
+
+reveal.js/node_modules/express/node_modules/connect/node_modules/formidable/tool:
+record.js
+
+reveal.js/node_modules/express/node_modules/mime:
+LICENSE
+mime.js
+package.json
+README.md
+test.js
+types
+
+reveal.js/node_modules/express/node_modules/mime/types:
+mime.types
+node.types
+
+reveal.js/node_modules/express/node_modules/mkdirp:
+examples
+index.js
+LICENSE
+package.json
+README.markdown
+test
+
+reveal.js/node_modules/express/node_modules/mkdirp/examples:
+pow.js
+pow.js.orig
+pow.js.rej
+
+reveal.js/node_modules/express/node_modules/mkdirp/test:
+chmod.js
+clobber.js
+mkdirp.js
+perm.js
+perm_sync.js
+race.js
+rel.js
+sync.js
+umask.js
+umask_sync.js
+
+reveal.js/node_modules/express/node_modules/qs:
+benchmark.js
+examples.js
+History.md
+index.js
+lib
+Makefile
+package.json
+Readme.md
+test
+
+reveal.js/node_modules/express/node_modules/qs/lib:
+querystring.js
+
+reveal.js/node_modules/express/node_modules/qs/test:
+mocha.opts
+parse.js
+stringify.js
+
+reveal.js/node_modules/grunt:
+CONTRIBUTING.md
+internal-tasks
+lib
+LICENSE-MIT
+node_modules
+package.json
+README.md
+
+reveal.js/node_modules/grunt/internal-tasks:
+bump.js
+subgrunt.js
+
+reveal.js/node_modules/grunt/lib:
+grunt
+grunt.js
+util
+
+reveal.js/node_modules/grunt/lib/grunt:
+cli.js
+config.js
+event.js
+fail.js
+file.js
+help.js
+log.js
+option.js
+task.js
+template.js
+util.js
+
+reveal.js/node_modules/grunt/lib/util:
+task.js
+
+reveal.js/node_modules/grunt/node_modules:
+async
+coffee-script
+colors
+dateformat
+eventemitter2
+exit
+findup-sync
+getobject
+glob
+hooker
+iconv-lite
+js-yaml
+lodash
+minimatch
+nopt
+rimraf
+underscore.string
+which
+
+reveal.js/node_modules/grunt/node_modules/async:
+index.js
+lib
+LICENSE
+Makefile
+package.json
+README.md
+
+reveal.js/node_modules/grunt/node_modules/async/lib:
+async.js
+
+reveal.js/node_modules/grunt/node_modules/coffee-script:
+bin
+CNAME
+extras
+lib
+LICENSE
+package.json
+Rakefile
+README
+
+reveal.js/node_modules/grunt/node_modules/coffee-script/bin:
+cake
+coffee
+
+reveal.js/node_modules/grunt/node_modules/coffee-script/extras:
+jsl.conf
+
+reveal.js/node_modules/grunt/node_modules/coffee-script/lib:
+coffee-script
+
+reveal.js/node_modules/grunt/node_modules/coffee-script/lib/coffee-script:
+browser.js
+cake.js
+coffee-script.js
+command.js
+grammar.js
+helpers.js
+index.js
+lexer.js
+nodes.js
+optparse.js
+parser.js
+repl.js
+rewriter.js
+scope.js
+
+reveal.js/node_modules/grunt/node_modules/colors:
+colors.js
+example.html
+example.js
+MIT-LICENSE.txt
+package.json
+ReadMe.md
+test.js
+themes
+
+reveal.js/node_modules/grunt/node_modules/colors/themes:
+winston-dark.js
+winston-light.js
+
+reveal.js/node_modules/grunt/node_modules/dateformat:
+lib
+package.json
+Readme.md
+test
+
+reveal.js/node_modules/grunt/node_modules/dateformat/lib:
+dateformat.js
+
+reveal.js/node_modules/grunt/node_modules/dateformat/test:
+test_weekofyear.js
+test_weekofyear.sh
+
+reveal.js/node_modules/grunt/node_modules/eventemitter2:
+index.js
+lib
+package.json
+README.md
+
+reveal.js/node_modules/grunt/node_modules/eventemitter2/lib:
+eventemitter2.js
+
+reveal.js/node_modules/grunt/node_modules/exit:
+Gruntfile.js
+lib
+LICENSE-MIT
+package.json
+README.md
+test
+
+reveal.js/node_modules/grunt/node_modules/exit/lib:
+exit.js
+
+reveal.js/node_modules/grunt/node_modules/exit/test:
+exit_test.js
+fixtures
+
+reveal.js/node_modules/grunt/node_modules/exit/test/fixtures:
+1000-stderr.txt
+1000-stdout-stderr.txt
+1000-stdout.txt
+100-stderr.txt
+100-stdout-stderr.txt
+100-stdout.txt
+10-stderr.txt
+10-stdout-stderr.txt
+10-stdout.txt
+create-files.sh
+log-broken.js
+log.js
+
+reveal.js/node_modules/grunt/node_modules/findup-sync:
+Gruntfile.js
+lib
+LICENSE-MIT
+node_modules
+package.json
+README.md
+test
+
+reveal.js/node_modules/grunt/node_modules/findup-sync/lib:
+findup-sync.js
+
+reveal.js/node_modules/grunt/node_modules/findup-sync/node_modules:
+lodash
+
+reveal.js/node_modules/grunt/node_modules/findup-sync/node_modules/lodash:
+dist
+package.json
+README.md
+
+reveal.js/node_modules/grunt/node_modules/findup-sync/node_modules/lodash/dist:
+lodash.compat.js
+lodash.compat.min.js
+lodash.js
+lodash.min.js
+lodash.underscore.js
+lodash.underscore.min.js
+
+reveal.js/node_modules/grunt/node_modules/findup-sync/test:
+findup-sync_test.js
+fixtures
+
+reveal.js/node_modules/grunt/node_modules/findup-sync/test/fixtures:
+a
+aaa.txt
+a.txt
+
+reveal.js/node_modules/grunt/node_modules/findup-sync/test/fixtures/a:
+b
+foo.txt
+
+reveal.js/node_modules/grunt/node_modules/findup-sync/test/fixtures/a/b:
+bar.txt
+
+reveal.js/node_modules/grunt/node_modules/getobject:
+Gruntfile.js
+lib
+LICENSE-MIT
+package.json
+README.md
+test
+
+reveal.js/node_modules/grunt/node_modules/getobject/lib:
+getobject.js
+
+reveal.js/node_modules/grunt/node_modules/getobject/test:
+namespace_test.js
+
+reveal.js/node_modules/grunt/node_modules/glob:
+examples
+glob.js
+LICENSE
+node_modules
+package.json
+README.md
+test
+
+reveal.js/node_modules/grunt/node_modules/glob/examples:
+g.js
+usr-local.js
+
+reveal.js/node_modules/grunt/node_modules/glob/node_modules:
+graceful-fs
+inherits
+
+reveal.js/node_modules/grunt/node_modules/glob/node_modules/graceful-fs:
+graceful-fs.js
+LICENSE
+package.json
+README.md
+test
+
+reveal.js/node_modules/grunt/node_modules/glob/node_modules/graceful-fs/test:
+open.js
+ulimit.js
+
+reveal.js/node_modules/grunt/node_modules/glob/node_modules/inherits:
+inherits.js
+package.json
+README.md
+
+reveal.js/node_modules/grunt/node_modules/glob/test:
+00-setup.js
+bash-comparison.js
+bash-results.json
+cwd-test.js
+mark.js
+nocase-nomagic.js
+pause-resume.js
+root.js
+root-nomount.js
+zz-cleanup.js
+
+reveal.js/node_modules/grunt/node_modules/hooker:
+child.js
+dist
+grunt.js
+lib
+LICENSE-MIT
+package.json
+parent.js
+README.md
+test
+
+reveal.js/node_modules/grunt/node_modules/hooker/dist:
+ba-hooker.js
+ba-hooker.min.js
+
+reveal.js/node_modules/grunt/node_modules/hooker/lib:
+hooker.js
+
+reveal.js/node_modules/grunt/node_modules/hooker/test:
+hooker_test.js
+
+reveal.js/node_modules/grunt/node_modules/iconv-lite:
+encodings
+generation
+index.js
+LICENSE
+package.json
+README.md
+README.md~
+test
+
+reveal.js/node_modules/grunt/node_modules/iconv-lite/encodings:
+big5.js
+gbk.js
+singlebyte.js
+table
+
+reveal.js/node_modules/grunt/node_modules/iconv-lite/encodings/table:
+big5.js
+gbk.js
+
+reveal.js/node_modules/grunt/node_modules/iconv-lite/generation:
+generate-big5-table.js
+generate-singlebyte.js
+
+reveal.js/node_modules/grunt/node_modules/iconv-lite/test:
+big5File.txt
+big5-test.js
+cyrillic-test.js
+gbkFile.txt
+gbk-test.js
+greek-test.js
+main-test.js
+performance.js
+turkish-test.js
+
+reveal.js/node_modules/grunt/node_modules/js-yaml:
+bin
+examples
+HISTORY.md
+index.js
+lib
+LICENSE
+node_modules
+package.json
+README.md
+
+reveal.js/node_modules/grunt/node_modules/js-yaml/bin:
+js-yaml.js
+
+reveal.js/node_modules/grunt/node_modules/js-yaml/examples:
+custom_types.js
+custom_types.yaml
+dumper.js
+dumper.json
+sample_document.js
+sample_document.yaml
+
+reveal.js/node_modules/grunt/node_modules/js-yaml/lib:
+js-yaml
+js-yaml.js
+
+reveal.js/node_modules/grunt/node_modules/js-yaml/lib/js-yaml:
+common.js
+dumper.js
+exception.js
+loader.js
+mark.js
+require.js
+schema
+schema.js
+type
+type.js
+
+reveal.js/node_modules/grunt/node_modules/js-yaml/lib/js-yaml/schema:
+default.js
+minimal.js
+safe.js
+
+reveal.js/node_modules/grunt/node_modules/js-yaml/lib/js-yaml/type:
+binary.js
+bool.js
+float.js
+int.js
+js
+map.js
+merge.js
+null.js
+omap.js
+pairs.js
+seq.js
+set.js
+str.js
+timestamp.js
+
+reveal.js/node_modules/grunt/node_modules/js-yaml/lib/js-yaml/type/js:
+function.js
+regexp.js
+undefined.js
+
+reveal.js/node_modules/grunt/node_modules/js-yaml/node_modules:
+argparse
+esprima
+
+reveal.js/node_modules/grunt/node_modules/js-yaml/node_modules/argparse:
+examples
+HISTORY.md
+index.js
+lib
+LICENSE
+node_modules
+package.json
+README.md
+
+reveal.js/node_modules/grunt/node_modules/js-yaml/node_modules/argparse/examples:
+arguments.js
+choice.js
+constants.js
+help.js
+nargs.js
+parents.js
+prefix_chars.js
+sub_commands.js
+sum.js
+testformatters.js
+
+reveal.js/node_modules/grunt/node_modules/js-yaml/node_modules/argparse/lib:
+action
+action_container.js
+action.js
+argparse.js
+argument
+argument_parser.js
+const.js
+help
+namespace.js
+
+reveal.js/node_modules/grunt/node_modules/js-yaml/node_modules/argparse/lib/action:
+append
+append.js
+count.js
+help.js
+store
+store.js
+subparsers.js
+version.js
+
+reveal.js/node_modules/grunt/node_modules/js-yaml/node_modules/argparse/lib/action/append:
+constant.js
+
+reveal.js/node_modules/grunt/node_modules/js-yaml/node_modules/argparse/lib/action/store:
+constant.js
+false.js
+true.js
+
+reveal.js/node_modules/grunt/node_modules/js-yaml/node_modules/argparse/lib/argument:
+error.js
+exclusive.js
+group.js
+
+reveal.js/node_modules/grunt/node_modules/js-yaml/node_modules/argparse/lib/help:
+added_formatters.js
+formatter.js
+
+reveal.js/node_modules/grunt/node_modules/js-yaml/node_modules/argparse/node_modules:
+underscore
+underscore.string
+
+reveal.js/node_modules/grunt/node_modules/js-yaml/node_modules/argparse/node_modules/underscore:
+CNAME
+CONTRIBUTING.md
+favicon.ico
+index.html
+index.js
+LICENSE
+package.json
+README.md
+underscore.js
+underscore-min.js
+
+reveal.js/node_modules/grunt/node_modules/js-yaml/node_modules/argparse/node_modules/underscore.string:
+component.json
+dist
+Gemfile
+Gemfile.lock
+lib
+libpeerconnection.log
+package.json
+Rakefile
+README.markdown
+test
+
+reveal.js/node_modules/grunt/node_modules/js-yaml/node_modules/argparse/node_modules/underscore.string/dist:
+underscore.string.min.js
+
+reveal.js/node_modules/grunt/node_modules/js-yaml/node_modules/argparse/node_modules/underscore.string/lib:
+underscore.string.js
+
+reveal.js/node_modules/grunt/node_modules/js-yaml/node_modules/argparse/node_modules/underscore.string/test:
+run-qunit.js
+speed.js
+strings.js
+strings_standalone.js
+test.html
+test_standalone.html
+test_underscore
+underscore.js
+
+reveal.js/node_modules/grunt/node_modules/js-yaml/node_modules/argparse/node_modules/underscore.string/test/test_underscore:
+arrays.js
+chaining.js
+collections.js
+functions.js
+index.html
+objects.js
+speed.js
+utility.js
+vendor
+
+reveal.js/node_modules/grunt/node_modules/js-yaml/node_modules/argparse/node_modules/underscore.string/test/test_underscore/vendor:
+jquery.js
+jslitmus.js
+qunit.css
+qunit.js
+
+reveal.js/node_modules/grunt/node_modules/js-yaml/node_modules/esprima:
+bin
+esprima.js
+package.json
+README.md
+test
+
+reveal.js/node_modules/grunt/node_modules/js-yaml/node_modules/esprima/bin:
+esparse.js
+esvalidate.js
+
+reveal.js/node_modules/grunt/node_modules/js-yaml/node_modules/esprima/test:
+compat.js
+reflect.js
+run.js
+runner.js
+test.js
+
+reveal.js/node_modules/grunt/node_modules/lodash:
+lodash.js
+lodash.min.js
+lodash.underscore.js
+lodash.underscore.min.js
+package.json
+README.md
+
+reveal.js/node_modules/grunt/node_modules/minimatch:
+LICENSE
+minimatch.js
+node_modules
+package.json
+README.md
+test
+
+reveal.js/node_modules/grunt/node_modules/minimatch/node_modules:
+lru-cache
+sigmund
+
+reveal.js/node_modules/grunt/node_modules/minimatch/node_modules/lru-cache:
+CONTRIBUTORS
+lib
+LICENSE
+package.json
+README.md
+test
+
+reveal.js/node_modules/grunt/node_modules/minimatch/node_modules/lru-cache/lib:
+lru-cache.js
+
+reveal.js/node_modules/grunt/node_modules/minimatch/node_modules/lru-cache/test:
+basic.js
+foreach.js
+memory-leak.js
+
+reveal.js/node_modules/grunt/node_modules/minimatch/node_modules/sigmund:
+bench.js
+LICENSE
+package.json
+README.md
+sigmund.js
+test
+
+reveal.js/node_modules/grunt/node_modules/minimatch/node_modules/sigmund/test:
+basic.js
+
+reveal.js/node_modules/grunt/node_modules/minimatch/test:
+basic.js
+brace-expand.js
+caching.js
+defaults.js
+extglob-ending-with-state-char.js
+
+reveal.js/node_modules/grunt/node_modules/nopt:
+bin
+examples
+lib
+LICENSE
+node_modules
+package.json
+README.md
+
+reveal.js/node_modules/grunt/node_modules/nopt/bin:
+nopt.js
+
+reveal.js/node_modules/grunt/node_modules/nopt/examples:
+my-program.js
+
+reveal.js/node_modules/grunt/node_modules/nopt/lib:
+nopt.js
+
+reveal.js/node_modules/grunt/node_modules/nopt/node_modules:
+abbrev
+
+reveal.js/node_modules/grunt/node_modules/nopt/node_modules/abbrev:
+lib
+LICENSE
+package.json
+README.md
+
+reveal.js/node_modules/grunt/node_modules/nopt/node_modules/abbrev/lib:
+abbrev.js
+
+reveal.js/node_modules/grunt/node_modules/rimraf:
+AUTHORS
+LICENSE
+node_modules
+package.json
+README.md
+rimraf.js
+test
+
+reveal.js/node_modules/grunt/node_modules/rimraf/node_modules:
+graceful-fs
+
+reveal.js/node_modules/grunt/node_modules/rimraf/node_modules/graceful-fs:
+graceful-fs.js
+LICENSE
+package.json
+README.md
+test
+
+reveal.js/node_modules/grunt/node_modules/rimraf/node_modules/graceful-fs/test:
+open.js
+
+reveal.js/node_modules/grunt/node_modules/rimraf/test:
+run.sh
+setup.sh
+test-async.js
+test-fiber.js
+test-sync.js
+
+reveal.js/node_modules/grunt/node_modules/underscore.string:
+dist
+Gemfile
+Gemfile.lock
+lib
+package.json
+Rakefile
+README.markdown
+test
+
+reveal.js/node_modules/grunt/node_modules/underscore.string/dist:
+underscore.string.min.js
+
+reveal.js/node_modules/grunt/node_modules/underscore.string/lib:
+underscore.string.js
+
+reveal.js/node_modules/grunt/node_modules/underscore.string/test:
+run-qunit.js
+speed.js
+strings.js
+strings_standalone.js
+test.html
+test_standalone.html
+test_underscore
+underscore.js
+
+reveal.js/node_modules/grunt/node_modules/underscore.string/test/test_underscore:
+arrays.js
+chaining.js
+collections.js
+functions.js
+objects.js
+speed.js
+temp.js
+temp_tests.html
+test.html
+utility.js
+vendor
+
+reveal.js/node_modules/grunt/node_modules/underscore.string/test/test_underscore/vendor:
+jquery.js
+jslitmus.js
+qunit.css
+qunit.js
+
+reveal.js/node_modules/grunt/node_modules/which:
+bin
+LICENSE
+package.json
+README.md
+which.js
+
+reveal.js/node_modules/grunt/node_modules/which/bin:
+which
+
+reveal.js/node_modules/grunt-contrib-connect:
+AUTHORS
+CHANGELOG
+CONTRIBUTING.md
+Gruntfile.js
+LICENSE-MIT
+node_modules
+package.json
+README.md
+tasks
+
+reveal.js/node_modules/grunt-contrib-connect/node_modules:
+connect
+connect-livereload
+
+reveal.js/node_modules/grunt-contrib-connect/node_modules/connect:
+index.js
+lib
+LICENSE
+node_modules
+package.json
+Readme.md
+test.js
+
+reveal.js/node_modules/grunt-contrib-connect/node_modules/connect/lib:
+cache.js
+connect.js
+index.js
+middleware
+patch.js
+proto.js
+public
+utils.js
+
+reveal.js/node_modules/grunt-contrib-connect/node_modules/connect/lib/middleware:
+basicAuth.js
+bodyParser.js
+compress.js
+cookieParser.js
+cookieSession.js
+csrf.js
+directory.js
+errorHandler.js
+favicon.js
+json.js
+limit.js
+logger.js
+methodOverride.js
+multipart.js
+query.js
+responseTime.js
+session
+session.js
+staticCache.js
+static.js
+timeout.js
+urlencoded.js
+vhost.js
+
+reveal.js/node_modules/grunt-contrib-connect/node_modules/connect/lib/middleware/session:
+cookie.js
+memory.js
+session.js
+store.js
+
+reveal.js/node_modules/grunt-contrib-connect/node_modules/connect/lib/public:
+directory.html
+error.html
+favicon.ico
+icons
+style.css
+
+reveal.js/node_modules/grunt-contrib-connect/node_modules/connect/lib/public/icons:
+page_add.png
+page_attach.png
+page_code.png
+page_copy.png
+page_delete.png
+page_edit.png
+page_error.png
+page_excel.png
+page_find.png
+page_gear.png
+page_go.png
+page_green.png
+page_key.png
+page_lightning.png
+page_link.png
+page_paintbrush.png
+page_paste.png
+page.png
+page_red.png
+page_refresh.png
+page_save.png
+page_white_acrobat.png
+page_white_actionscript.png
+page_white_add.png
+page_white_camera.png
+page_white_cd.png
+page_white_code.png
+page_white_code_red.png
+page_white_coldfusion.png
+page_white_compressed.png
+page_white_copy.png
+page_white_cplusplus.png
+page_white_c.png
+page_white_csharp.png
+page_white_cup.png
+page_white_database.png
+page_white_delete.png
+page_white_dvd.png
+page_white_edit.png
+page_white_error.png
+page_white_excel.png
+page_white_find.png
+page_white_flash.png
+page_white_freehand.png
+page_white_gear.png
+page_white_get.png
+page_white_go.png
+page_white_horizontal.png
+page_white_h.png
+page_white_key.png
+page_white_lightning.png
+page_white_link.png
+page_white_magnify.png
+page_white_medal.png
+page_white_office.png
+page_white_paintbrush.png
+page_white_paint.png
+page_white_paste.png
+page_white_php.png
+page_white_picture.png
+page_white.png
+page_white_powerpoint.png
+page_white_put.png
+page_white_ruby.png
+page_white_stack.png
+page_white_star.png
+page_white_swoosh.png
+page_white_text.png
+page_white_text_width.png
+page_white_tux.png
+page_white_vector.png
+page_white_visualstudio.png
+page_white_width.png
+page_white_word.png
+page_white_world.png
+page_white_wrench.png
+page_white_zip.png
+page_word.png
+page_world.png
+
+reveal.js/node_modules/grunt-contrib-connect/node_modules/connect/node_modules:
+buffer-crc32
+bytes
+cookie
+cookie-signature
+debug
+formidable
+fresh
+pause
+qs
+send
+
+reveal.js/node_modules/grunt-contrib-connect/node_modules/connect/node_modules/buffer-crc32:
+index.js
+package.json
+README.md
+tests
+
+reveal.js/node_modules/grunt-contrib-connect/node_modules/connect/node_modules/buffer-crc32/tests:
+crc.test.js
+
+reveal.js/node_modules/grunt-contrib-connect/node_modules/connect/node_modules/bytes:
+component.json
+History.md
+index.js
+Makefile
+package.json
+Readme.md
+
+reveal.js/node_modules/grunt-contrib-connect/node_modules/connect/node_modules/cookie:
+index.js
+package.json
+README.md
+test
+
+reveal.js/node_modules/grunt-contrib-connect/node_modules/connect/node_modules/cookie/test:
+mocha.opts
+parse.js
+serialize.js
+
+reveal.js/node_modules/grunt-contrib-connect/node_modules/connect/node_modules/cookie-signature:
+History.md
+index.js
+Makefile
+package.json
+Readme.md
+
+reveal.js/node_modules/grunt-contrib-connect/node_modules/connect/node_modules/debug:
+debug.js
+index.js
+lib
+package.json
+Readme.md
+
+reveal.js/node_modules/grunt-contrib-connect/node_modules/connect/node_modules/debug/lib:
+debug.js
+
+reveal.js/node_modules/grunt-contrib-connect/node_modules/connect/node_modules/formidable:
+benchmark
+example
+index.js
+lib
+LICENSE
+package.json
+Readme.md
+test
+tool
+
+reveal.js/node_modules/grunt-contrib-connect/node_modules/connect/node_modules/formidable/benchmark:
+bench-multipart-parser.js
+
+reveal.js/node_modules/grunt-contrib-connect/node_modules/connect/node_modules/formidable/example:
+json.js
+post.js
+upload.js
+
+reveal.js/node_modules/grunt-contrib-connect/node_modules/connect/node_modules/formidable/lib:
+file.js
+incoming_form.js
+index.js
+json_parser.js
+multipart_parser.js
+octet_parser.js
+querystring_parser.js
+
+reveal.js/node_modules/grunt-contrib-connect/node_modules/connect/node_modules/formidable/test:
+common.js
+fixture
+integration
+legacy
+run.js
+standalone
+tools
+unit
+
+reveal.js/node_modules/grunt-contrib-connect/node_modules/connect/node_modules/formidable/test/fixture:
+file
+http
+js
+multipart.js
+
+reveal.js/node_modules/grunt-contrib-connect/node_modules/connect/node_modules/formidable/test/fixture/file:
+beta-sticker-1.png
+binaryfile.tar.gz
+blank.gif
+funkyfilename.txt
+menu_separator.png
+plain.txt
+
+reveal.js/node_modules/grunt-contrib-connect/node_modules/connect/node_modules/formidable/test/fixture/http:
+special-chars-in-filename
+
+reveal.js/node_modules/grunt-contrib-connect/node_modules/connect/node_modules/formidable/test/fixture/http/special-chars-in-filename:
+info.md
+
+reveal.js/node_modules/grunt-contrib-connect/node_modules/connect/node_modules/formidable/test/fixture/js:
+encoding.js
+misc.js
+no-filename.js
+preamble.js
+special-chars-in-filename.js
+workarounds.js
+
+reveal.js/node_modules/grunt-contrib-connect/node_modules/connect/node_modules/formidable/test/integration:
+test-fixtures.js
+test-json.js
+test-octet-stream.js
+
+reveal.js/node_modules/grunt-contrib-connect/node_modules/connect/node_modules/formidable/test/legacy:
+common.js
+integration
+simple
+system
+
+reveal.js/node_modules/grunt-contrib-connect/node_modules/connect/node_modules/formidable/test/legacy/integration:
+test-multipart-parser.js
+
+reveal.js/node_modules/grunt-contrib-connect/node_modules/connect/node_modules/formidable/test/legacy/simple:
+test-file.js
+test-incoming-form.js
+test-multipart-parser.js
+test-querystring-parser.js
+
+reveal.js/node_modules/grunt-contrib-connect/node_modules/connect/node_modules/formidable/test/legacy/system:
+test-multi-video-upload.js
+
+reveal.js/node_modules/grunt-contrib-connect/node_modules/connect/node_modules/formidable/test/standalone:
+test-connection-aborted.js
+test-content-transfer-encoding.js
+test-issue-46.js
+
+reveal.js/node_modules/grunt-contrib-connect/node_modules/connect/node_modules/formidable/test/tools:
+base64.html
+
+reveal.js/node_modules/grunt-contrib-connect/node_modules/connect/node_modules/formidable/test/unit:
+test-file.js
+test-incoming-form.js
+
+reveal.js/node_modules/grunt-contrib-connect/node_modules/connect/node_modules/formidable/tool:
+record.js
+
+reveal.js/node_modules/grunt-contrib-connect/node_modules/connect/node_modules/fresh:
+index.js
+Makefile
+package.json
+Readme.md
+
+reveal.js/node_modules/grunt-contrib-connect/node_modules/connect/node_modules/pause:
+History.md
+index.js
+Makefile
+package.json
+Readme.md
+
+reveal.js/node_modules/grunt-contrib-connect/node_modules/connect/node_modules/qs:
+index.js
+package.json
+Readme.md
+
+reveal.js/node_modules/grunt-contrib-connect/node_modules/connect/node_modules/send:
+History.md
+index.js
+lib
+Makefile
+node_modules
+package.json
+Readme.md
+
+reveal.js/node_modules/grunt-contrib-connect/node_modules/connect/node_modules/send/lib:
+send.js
+utils.js
+
+reveal.js/node_modules/grunt-contrib-connect/node_modules/connect/node_modules/send/node_modules:
+mime
+range-parser
+
+reveal.js/node_modules/grunt-contrib-connect/node_modules/connect/node_modules/send/node_modules/mime:
+LICENSE
+mime.js
+package.json
+README.md
+test.js
+types
+
+reveal.js/node_modules/grunt-contrib-connect/node_modules/connect/node_modules/send/node_modules/mime/types:
+mime.types
+node.types
+
+reveal.js/node_modules/grunt-contrib-connect/node_modules/connect/node_modules/send/node_modules/range-parser:
+History.md
+index.js
+Makefile
+package.json
+Readme.md
+
+reveal.js/node_modules/grunt-contrib-connect/node_modules/connect-livereload:
+index.js
+LICENSE
+package.json
+README.md
+
+reveal.js/node_modules/grunt-contrib-connect/tasks:
+certs
+connect.js
+
+reveal.js/node_modules/grunt-contrib-connect/tasks/certs:
+ca.crt
+ca.key
+ca.srl
+server.crt
+server.csr
+server.key
+
+reveal.js/node_modules/grunt-contrib-cssmin:
+AUTHORS
+CHANGELOG
+CONTRIBUTING.md
+docs
+Gruntfile.js
+LICENSE-MIT
+node_modules
+package.json
+README.md
+tasks
+test
+
+reveal.js/node_modules/grunt-contrib-cssmin/docs:
+cssmin-examples.md
+cssmin-options.md
+cssmin-overview.md
+overview.md
+
+reveal.js/node_modules/grunt-contrib-cssmin/node_modules:
+clean-css
+grunt-lib-contrib
+
+reveal.js/node_modules/grunt-contrib-cssmin/node_modules/clean-css:
+bin
+History.md
+index.js
+lib
+LICENSE
+node_modules
+package.json
+README.md
+test
+
+reveal.js/node_modules/grunt-contrib-cssmin/node_modules/clean-css/bin:
+cleancss
+
+reveal.js/node_modules/grunt-contrib-cssmin/node_modules/clean-css/lib:
+clean.js
+
+reveal.js/node_modules/grunt-contrib-cssmin/node_modules/clean-css/node_modules:
+commander
+
+reveal.js/node_modules/grunt-contrib-cssmin/node_modules/clean-css/node_modules/commander:
+History.md
+index.js
+Makefile
+node_modules
+package.json
+Readme.md
+
+reveal.js/node_modules/grunt-contrib-cssmin/node_modules/clean-css/node_modules/commander/node_modules:
+keypress
+
+reveal.js/node_modules/grunt-contrib-cssmin/node_modules/clean-css/node_modules/commander/node_modules/keypress:
+index.js
+package.json
+README.md
+test.js
+
+reveal.js/node_modules/grunt-contrib-cssmin/node_modules/clean-css/test:
+batch-test.js
+bench.js
+binary-test.js
+custom-test.js
+data
+unit-test.js
+
+reveal.js/node_modules/grunt-contrib-cssmin/node_modules/clean-css/test/data:
+960.css
+960-min.css
+big.css
+big-min.css
+blueprint.css
+blueprint-min.css
+reset.css
+reset-min.css
+sample1.css
+sample1-min.css
+
+reveal.js/node_modules/grunt-contrib-cssmin/node_modules/grunt-lib-contrib:
+AUTHORS
+CHANGELOG
+Gruntfile.js
+lib
+LICENSE-MIT
+node_modules
+package.json
+README.md
+test
+
+reveal.js/node_modules/grunt-contrib-cssmin/node_modules/grunt-lib-contrib/lib:
+contrib.js
+
+reveal.js/node_modules/grunt-contrib-cssmin/node_modules/grunt-lib-contrib/node_modules:
+zlib-browserify
+
+reveal.js/node_modules/grunt-contrib-cssmin/node_modules/grunt-lib-contrib/node_modules/zlib-browserify:
+index.js
+package.json
+readme.md
+test
+zlib.js
+
+reveal.js/node_modules/grunt-contrib-cssmin/node_modules/grunt-lib-contrib/node_modules/zlib-browserify/test:
+zlib.test.js
+
+reveal.js/node_modules/grunt-contrib-cssmin/node_modules/grunt-lib-contrib/test:
+lib_test.js
+
+reveal.js/node_modules/grunt-contrib-cssmin/tasks:
+cssmin.js
+
+reveal.js/node_modules/grunt-contrib-cssmin/test:
+cssmin_test.js
+expected
+fixtures
+
+reveal.js/node_modules/grunt-contrib-cssmin/test/expected:
+input_bannered.css
+style.css
+with-banner.css
+
+reveal.js/node_modules/grunt-contrib-cssmin/test/fixtures:
+input_bannered.css
+input_one.css
+input_two.css
+
+reveal.js/node_modules/grunt-contrib-jshint:
+AUTHORS
+CHANGELOG
+CONTRIBUTING.md
+docs
+Gruntfile.js
+LICENSE-MIT
+node_modules
+package.json
+README.md
+tasks
+test
+
+reveal.js/node_modules/grunt-contrib-jshint/docs:
+jshint-examples.md
+jshint-options.md
+jshint-overview.md
+
+reveal.js/node_modules/grunt-contrib-jshint/node_modules:
+jshint
+
+reveal.js/node_modules/grunt-contrib-jshint/node_modules/jshint:
+bin
+node_modules
+package.json
+README.md
+src
+
+reveal.js/node_modules/grunt-contrib-jshint/node_modules/jshint/bin:
+apply
+build
+changelog
+jshint
+land
+
+reveal.js/node_modules/grunt-contrib-jshint/node_modules/jshint/node_modules:
+cli
+console-browserify
+minimatch
+shelljs
+underscore
+
+reveal.js/node_modules/grunt-contrib-jshint/node_modules/jshint/node_modules/cli:
+cli.js
+examples
+index.js
+node_modules
+package.json
+README.md
+
+reveal.js/node_modules/grunt-contrib-jshint/node_modules/jshint/node_modules/cli/examples:
+cat.js
+command.js
+echo.js
+glob.js
+long_desc.js
+progress.js
+sort.js
+spinner.js
+static.coffee
+static.js
+
+reveal.js/node_modules/grunt-contrib-jshint/node_modules/jshint/node_modules/cli/node_modules:
+glob
+
+reveal.js/node_modules/grunt-contrib-jshint/node_modules/jshint/node_modules/cli/node_modules/glob:
+examples
+glob.js
+LICENSE
+node_modules
+package.json
+README.md
+test
+
+reveal.js/node_modules/grunt-contrib-jshint/node_modules/jshint/node_modules/cli/node_modules/glob/examples:
+g.js
+usr-local.js
+
+reveal.js/node_modules/grunt-contrib-jshint/node_modules/jshint/node_modules/cli/node_modules/glob/node_modules:
+inherits
+
+reveal.js/node_modules/grunt-contrib-jshint/node_modules/jshint/node_modules/cli/node_modules/glob/node_modules/inherits:
+inherits_browser.js
+inherits.js
+LICENSE
+package.json
+README.md
+test.js
+
+reveal.js/node_modules/grunt-contrib-jshint/node_modules/jshint/node_modules/cli/node_modules/glob/test:
+00-setup.js
+bash-comparison.js
+bash-results.json
+cwd-test.js
+globstar-match.js
+mark.js
+new-glob-optional-options.js
+nocase-nomagic.js
+pause-resume.js
+root.js
+root-nomount.js
+stat.js
+zz-cleanup.js
+
+reveal.js/node_modules/grunt-contrib-jshint/node_modules/jshint/node_modules/console-browserify:
+index.js
+LICENCE
+package.json
+README.md
+test
+
+reveal.js/node_modules/grunt-contrib-jshint/node_modules/jshint/node_modules/console-browserify/test:
+index.js
+static
+
+reveal.js/node_modules/grunt-contrib-jshint/node_modules/jshint/node_modules/console-browserify/test/static:
+index.html
+test-adapter.js
+
+reveal.js/node_modules/grunt-contrib-jshint/node_modules/jshint/node_modules/minimatch:
+LICENSE
+minimatch.js
+node_modules
+package.json
+README.md
+test
+
+reveal.js/node_modules/grunt-contrib-jshint/node_modules/jshint/node_modules/minimatch/node_modules:
+lru-cache
+sigmund
+
+reveal.js/node_modules/grunt-contrib-jshint/node_modules/jshint/node_modules/minimatch/node_modules/lru-cache:
+CONTRIBUTORS
+lib
+LICENSE
+package.json
+README.md
+test
+
+reveal.js/node_modules/grunt-contrib-jshint/node_modules/jshint/node_modules/minimatch/node_modules/lru-cache/lib:
+lru-cache.js
+
+reveal.js/node_modules/grunt-contrib-jshint/node_modules/jshint/node_modules/minimatch/node_modules/lru-cache/test:
+basic.js
+foreach.js
+memory-leak.js
+
+reveal.js/node_modules/grunt-contrib-jshint/node_modules/jshint/node_modules/minimatch/node_modules/sigmund:
+bench.js
+LICENSE
+package.json
+README.md
+sigmund.js
+test
+
+reveal.js/node_modules/grunt-contrib-jshint/node_modules/jshint/node_modules/minimatch/node_modules/sigmund/test:
+basic.js
+
+reveal.js/node_modules/grunt-contrib-jshint/node_modules/jshint/node_modules/minimatch/test:
+basic.js
+brace-expand.js
+caching.js
+defaults.js
+extglob-ending-with-state-char.js
+
+reveal.js/node_modules/grunt-contrib-jshint/node_modules/jshint/node_modules/shelljs:
+bin
+global.js
+jshint.json
+LICENSE
+make.js
+package.json
+README.md
+scripts
+shell.js
+test
+
+reveal.js/node_modules/grunt-contrib-jshint/node_modules/jshint/node_modules/shelljs/bin:
+shjs
+
+reveal.js/node_modules/grunt-contrib-jshint/node_modules/jshint/node_modules/shelljs/scripts:
+docs.js
+run-tests.js
+
+reveal.js/node_modules/grunt-contrib-jshint/node_modules/jshint/node_modules/shelljs/test:
+cat.js
+cd.js
+chmod.js
+config.js
+cp.js
+dirs.js
+echo.js
+env.js
+exec.js
+find.js
+grep.js
+ls.js
+make.js
+mkdir.js
+mv.js
+popd.js
+pushd.js
+pwd.js
+resources
+rm.js
+sed.js
+tempdir.js
+test.js
+to.js
+which.js
+
+reveal.js/node_modules/grunt-contrib-jshint/node_modules/jshint/node_modules/shelljs/test/resources:
+a.txt
+chmod
+cp
+external
+file1
+file1.js
+file1.txt
+file2
+file2.js
+file2.txt
+find
+issue44
+ls
+pushd
+
+reveal.js/node_modules/grunt-contrib-jshint/node_modules/jshint/node_modules/shelljs/test/resources/chmod:
+a
+b
+c
+file1
+
+reveal.js/node_modules/grunt-contrib-jshint/node_modules/jshint/node_modules/shelljs/test/resources/chmod/a:
+b
+
+reveal.js/node_modules/grunt-contrib-jshint/node_modules/jshint/node_modules/shelljs/test/resources/chmod/a/b:
+c
+
+reveal.js/node_modules/grunt-contrib-jshint/node_modules/jshint/node_modules/shelljs/test/resources/chmod/a/b/c:
+
+reveal.js/node_modules/grunt-contrib-jshint/node_modules/jshint/node_modules/shelljs/test/resources/chmod/b:
+a
+
+reveal.js/node_modules/grunt-contrib-jshint/node_modules/jshint/node_modules/shelljs/test/resources/chmod/b/a:
+b
+
+reveal.js/node_modules/grunt-contrib-jshint/node_modules/jshint/node_modules/shelljs/test/resources/chmod/b/a/b:
+
+reveal.js/node_modules/grunt-contrib-jshint/node_modules/jshint/node_modules/shelljs/test/resources/chmod/c:
+a
+
+reveal.js/node_modules/grunt-contrib-jshint/node_modules/jshint/node_modules/shelljs/test/resources/chmod/c/a:
+b
+
+reveal.js/node_modules/grunt-contrib-jshint/node_modules/jshint/node_modules/shelljs/test/resources/chmod/c/a/b:
+
+reveal.js/node_modules/grunt-contrib-jshint/node_modules/jshint/node_modules/shelljs/test/resources/cp:
+a
+b
+dir_a
+dir_b
+
+reveal.js/node_modules/grunt-contrib-jshint/node_modules/jshint/node_modules/shelljs/test/resources/cp/dir_a:
+z
+
+reveal.js/node_modules/grunt-contrib-jshint/node_modules/jshint/node_modules/shelljs/test/resources/cp/dir_b:
+dir_b_a
+
+reveal.js/node_modules/grunt-contrib-jshint/node_modules/jshint/node_modules/shelljs/test/resources/cp/dir_b/dir_b_a:
+dir_b_a_a
+
+reveal.js/node_modules/grunt-contrib-jshint/node_modules/jshint/node_modules/shelljs/test/resources/cp/dir_b/dir_b_a/dir_b_a_a:
+z
+
+reveal.js/node_modules/grunt-contrib-jshint/node_modules/jshint/node_modules/shelljs/test/resources/external:
+node_script.js
+
+reveal.js/node_modules/grunt-contrib-jshint/node_modules/jshint/node_modules/shelljs/test/resources/find:
+a
+b
+dir1
+dir2
+
+reveal.js/node_modules/grunt-contrib-jshint/node_modules/jshint/node_modules/shelljs/test/resources/find/dir1:
+a_dir1
+dir11
+
+reveal.js/node_modules/grunt-contrib-jshint/node_modules/jshint/node_modules/shelljs/test/resources/find/dir1/dir11:
+a_dir11
+
+reveal.js/node_modules/grunt-contrib-jshint/node_modules/jshint/node_modules/shelljs/test/resources/find/dir2:
+a_dir1
+
+reveal.js/node_modules/grunt-contrib-jshint/node_modules/jshint/node_modules/shelljs/test/resources/issue44:
+main.js
+
+reveal.js/node_modules/grunt-contrib-jshint/node_modules/jshint/node_modules/shelljs/test/resources/ls:
+a_dir
+file1
+file1.js
+file2
+file2.js
+filename(with)[chars$]^that.must+be-escaped
+
+reveal.js/node_modules/grunt-contrib-jshint/node_modules/jshint/node_modules/shelljs/test/resources/ls/a_dir:
+b_dir
+nada
+
+reveal.js/node_modules/grunt-contrib-jshint/node_modules/jshint/node_modules/shelljs/test/resources/ls/a_dir/b_dir:
+z
+
+reveal.js/node_modules/grunt-contrib-jshint/node_modules/jshint/node_modules/shelljs/test/resources/pushd:
+a
+b
+
+reveal.js/node_modules/grunt-contrib-jshint/node_modules/jshint/node_modules/shelljs/test/resources/pushd/a:
+dummy
+
+reveal.js/node_modules/grunt-contrib-jshint/node_modules/jshint/node_modules/shelljs/test/resources/pushd/b:
+c
+
+reveal.js/node_modules/grunt-contrib-jshint/node_modules/jshint/node_modules/shelljs/test/resources/pushd/b/c:
+dummy
+
+reveal.js/node_modules/grunt-contrib-jshint/node_modules/jshint/node_modules/underscore:
+CNAME
+CONTRIBUTING.md
+favicon.ico
+index.html
+index.js
+LICENSE
+package.json
+README.md
+underscore.js
+underscore-min.js
+
+reveal.js/node_modules/grunt-contrib-jshint/node_modules/jshint/src:
+cli.js
+jshint.js
+lex.js
+messages.js
+platforms
+reg.js
+reporters
+state.js
+style.js
+vars.js
+
+reveal.js/node_modules/grunt-contrib-jshint/node_modules/jshint/src/platforms:
+rhino.js
+
+reveal.js/node_modules/grunt-contrib-jshint/node_modules/jshint/src/reporters:
+checkstyle.js
+default.js
+jslint_xml.js
+non_error.js
+
+reveal.js/node_modules/grunt-contrib-jshint/tasks:
+jshint.js
+lib
+
+reveal.js/node_modules/grunt-contrib-jshint/tasks/lib:
+jshint.js
+
+reveal.js/node_modules/grunt-contrib-jshint/test:
+fixtures
+jshint_test.js
+
+reveal.js/node_modules/grunt-contrib-jshint/test/fixtures:
+dontlint.txt
+lint.txt
+missingsemicolon.js
+nodemodule.js
+
+reveal.js/node_modules/grunt-contrib-qunit:
+AUTHORS
+CHANGELOG
+CONTRIBUTING.md
+docs
+Gruntfile.js
+LICENSE-MIT
+node_modules
+package.json
+phantomjs
+README.md
+tasks
+test
+
+reveal.js/node_modules/grunt-contrib-qunit/docs:
+qunit-examples.md
+qunit-options.md
+qunit-overview.md
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules:
+grunt-lib-phantomjs
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs:
+CHANGELOG
+Gruntfile.js
+lib
+LICENSE-MIT
+node_modules
+package.json
+phantomjs
+README.md
+test
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/lib:
+phantomjs.js
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules:
+eventemitter2
+phantomjs
+semver
+temporary
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules/eventemitter2:
+index.js
+lib
+package.json
+README.md
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules/eventemitter2/lib:
+eventemitter2.js
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules/phantomjs:
+bin
+install.js
+lib
+LICENSE.txt
+node_modules
+package.json
+README.md
+test
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules/phantomjs/bin:
+phantomjs
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules/phantomjs/lib:
+location.js
+phantom
+phantomjs.js
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules/phantomjs/lib/phantom:
+bin
+ChangeLog
+examples
+LICENSE.BSD
+README.md
+third-party.txt
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules/phantomjs/lib/phantom/bin:
+phantomjs
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules/phantomjs/lib/phantom/examples:
+arguments.coffee
+arguments.js
+child_process-examples.coffee
+child_process-examples.js
+colorwheel.coffee
+colorwheel.js
+countdown.coffee
+countdown.js
+detectsniff.coffee
+detectsniff.js
+direction.coffee
+direction.js
+echoToFile.coffee
+echoToFile.js
+features.coffee
+features.js
+fibo.coffee
+fibo.js
+follow.coffee
+follow.js
+hello.coffee
+hello.js
+imagebin.coffee
+imagebin.js
+injectme.coffee
+injectme.js
+ipgeocode.coffee
+ipgeocode.js
+loadspeed.coffee
+loadspeed.js
+loadurlwithoutcss.coffee
+loadurlwithoutcss.js
+modernizr.js
+module.coffee
+module.js
+movies.coffee
+movies.js
+netlog.coffee
+netlog.js
+netsniff.coffee
+netsniff.js
+outputEncoding.coffee
+outputEncoding.js
+pagecallback.coffee
+pagecallback.js
+page_events.coffee
+page_events.js
+phantomwebintro.coffee
+phantomwebintro.js
+pizza.coffee
+pizza.js
+post.coffee
+post.js
+postserver.coffee
+postserver.js
+printenv.coffee
+printenv.js
+printheaderfooter.coffee
+printheaderfooter.js
+printmargins.coffee
+printmargins.js
+rasterize.coffee
+rasterize.js
+render_multi_url.coffee
+render_multi_url.js
+run-jasmine.coffee
+run-jasmine.js
+run-qunit.coffee
+run-qunit.js
+scandir.coffee
+scandir.js
+seasonfood.coffee
+seasonfood.js
+server.coffee
+server.js
+serverkeepalive.coffee
+serverkeepalive.js
+simpleserver.coffee
+simpleserver.js
+sleepsort.coffee
+sleepsort.js
+stdin-stdout-stderr.coffee
+stdin-stdout-stderr.js
+technews.coffee
+technews.js
+tweets.coffee
+tweets.js
+universe.js
+unrandomize.coffee
+unrandomize.js
+useragent.coffee
+useragent.js
+version.coffee
+version.js
+waitfor.coffee
+waitfor.js
+walk_through_frames.coffee
+walk_through_frames.js
+weather.coffee
+weather.js
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules/phantomjs/node_modules:
+adm-zip
+kew
+mkdirp
+ncp
+npmconf
+rimraf
+which
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules/phantomjs/node_modules/adm-zip:
+adm-zip.js
+headers
+methods
+MIT-LICENSE.txt
+package.json
+README.md
+sandbox.js
+util
+zipEntry.js
+zipFile.js
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules/phantomjs/node_modules/adm-zip/headers:
+dataHeader.js
+entryHeader.js
+index.js
+mainHeader.js
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules/phantomjs/node_modules/adm-zip/methods:
+deflater.js
+index.js
+inflater.js
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules/phantomjs/node_modules/adm-zip/util:
+constants.js
+errors.js
+fattr.js
+index.js
+utils.js
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules/phantomjs/node_modules/kew:
+kew.js
+LICENSE.TXT
+package.json
+README.md
+test
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules/phantomjs/node_modules/kew/test:
+chain.js
+context.js
+defer.js
+static.js
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules/phantomjs/node_modules/mkdirp:
+examples
+index.js
+LICENSE
+package.json
+readme.markdown
+test
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules/phantomjs/node_modules/mkdirp/examples:
+pow.js
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules/phantomjs/node_modules/mkdirp/test:
+chmod.js
+clobber.js
+mkdirp.js
+perm.js
+perm_sync.js
+race.js
+rel.js
+return.js
+return_sync.js
+root.js
+sync.js
+umask.js
+umask_sync.js
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules/phantomjs/node_modules/ncp:
+bin
+lib
+LICENSE.md
+package.json
+README.md
+test
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules/phantomjs/node_modules/ncp/bin:
+ncp
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules/phantomjs/node_modules/ncp/lib:
+ncp.js
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules/phantomjs/node_modules/ncp/test:
+fixtures
+ncp-test.js
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules/phantomjs/node_modules/ncp/test/fixtures:
+src
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules/phantomjs/node_modules/ncp/test/fixtures/src:
+a
+b
+c
+d
+e
+f
+sub
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules/phantomjs/node_modules/ncp/test/fixtures/src/sub:
+a
+b
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules/phantomjs/node_modules/npmconf:
+config-defs.js
+LICENSE
+node_modules
+npmconf.js
+package.json
+README.md
+test
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules/phantomjs/node_modules/npmconf/node_modules:
+config-chain
+inherits
+ini
+nopt
+once
+osenv
+semver
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules/phantomjs/node_modules/npmconf/node_modules/config-chain:
+index.js
+LICENCE
+node_modules
+package.json
+readme.markdown
+test
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules/phantomjs/node_modules/npmconf/node_modules/config-chain/node_modules:
+proto-list
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules/phantomjs/node_modules/npmconf/node_modules/config-chain/node_modules/proto-list:
+LICENSE
+package.json
+proto-list.js
+README.md
+test
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules/phantomjs/node_modules/npmconf/node_modules/config-chain/node_modules/proto-list/test:
+basic.js
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules/phantomjs/node_modules/npmconf/node_modules/config-chain/test:
+broken.js
+broken.json
+chain-class.js
+env.js
+find-file.js
+get.js
+ignore-unfound-file.js
+ini.js
+save.js
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules/phantomjs/node_modules/npmconf/node_modules/inherits:
+inherits.js
+package.json
+README.md
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules/phantomjs/node_modules/npmconf/node_modules/ini:
+ini.js
+LICENSE
+package.json
+README.md
+test
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules/phantomjs/node_modules/npmconf/node_modules/ini/test:
+bar.js
+fixtures
+foo.js
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules/phantomjs/node_modules/npmconf/node_modules/ini/test/fixtures:
+foo.ini
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules/phantomjs/node_modules/npmconf/node_modules/nopt:
+bin
+examples
+lib
+LICENSE
+node_modules
+package.json
+README.md
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules/phantomjs/node_modules/npmconf/node_modules/nopt/bin:
+nopt.js
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules/phantomjs/node_modules/npmconf/node_modules/nopt/examples:
+my-program.js
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules/phantomjs/node_modules/npmconf/node_modules/nopt/lib:
+nopt.js
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules/phantomjs/node_modules/npmconf/node_modules/nopt/node_modules:
+abbrev
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules/phantomjs/node_modules/npmconf/node_modules/nopt/node_modules/abbrev:
+lib
+LICENSE
+package.json
+README.md
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules/phantomjs/node_modules/npmconf/node_modules/nopt/node_modules/abbrev/lib:
+abbrev.js
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules/phantomjs/node_modules/npmconf/node_modules/once:
+LICENSE
+once.js
+package.json
+README.md
+test
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules/phantomjs/node_modules/npmconf/node_modules/once/test:
+once.js
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules/phantomjs/node_modules/npmconf/node_modules/osenv:
+LICENSE
+osenv.js
+package.json
+README.md
+test
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules/phantomjs/node_modules/npmconf/node_modules/osenv/test:
+unix.js
+windows.js
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules/phantomjs/node_modules/npmconf/node_modules/semver:
+bin
+LICENSE
+package.json
+README.md
+semver.js
+test.js
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules/phantomjs/node_modules/npmconf/node_modules/semver/bin:
+semver
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules/phantomjs/node_modules/npmconf/test:
+00-setup.js
+basic.js
+builtin.js
+fixtures
+save.js
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules/phantomjs/node_modules/npmconf/test/fixtures:
+builtin
+globalconfig
+userconfig
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules/phantomjs/node_modules/rimraf:
+AUTHORS
+bin.js
+LICENSE
+package.json
+README.md
+rimraf.js
+test
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules/phantomjs/node_modules/rimraf/test:
+run.sh
+setup.sh
+test-async.js
+test-sync.js
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules/phantomjs/node_modules/which:
+bin
+LICENSE
+package.json
+README.md
+which.js
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules/phantomjs/node_modules/which/bin:
+which
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules/phantomjs/test:
+exit.js
+loadspeed.js
+tests.js
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules/semver:
+bin
+LICENSE
+package.json
+README.md
+semver.js
+test.js
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules/semver/bin:
+semver
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules/temporary:
+examples
+History.md
+index.js
+lib
+Makefile
+node_modules
+package.json
+Readme.md
+test
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules/temporary/examples:
+dir.js
+file.js
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules/temporary/lib:
+base.js
+detector.js
+dir.js
+file.js
+generator.js
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules/temporary/node_modules:
+package
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules/temporary/node_modules/package:
+examples
+History.md
+lib
+Makefile
+package.json
+Readme.md
+test
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules/temporary/node_modules/package/examples:
+custom_path.js
+module.js
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules/temporary/node_modules/package/lib:
+package.js
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules/temporary/node_modules/package/test:
+index.test.js
+nested
+package.json
+support
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules/temporary/node_modules/package/test/nested:
+two
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules/temporary/node_modules/package/test/nested/two:
+nested.test.js
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules/temporary/node_modules/package/test/support:
+package.json
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/node_modules/temporary/test:
+base.test.js
+detector.test.js
+dir.test.js
+file.test.js
+generator.test.js
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/phantomjs:
+main.js
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/test:
+fixtures
+
+reveal.js/node_modules/grunt-contrib-qunit/node_modules/grunt-lib-phantomjs/test/fixtures:
+basic.html
+inject.html
+inject.js
+
+reveal.js/node_modules/grunt-contrib-qunit/phantomjs:
+bridge.js
+
+reveal.js/node_modules/grunt-contrib-qunit/tasks:
+qunit.js
+
+reveal.js/node_modules/grunt-contrib-qunit/test:
+libs
+qunit1.html
+qunit2.html
+qunit_test_error.js
+qunit_test.js
+
+reveal.js/node_modules/grunt-contrib-qunit/test/libs:
+qunit.css
+qunit.js
+
+reveal.js/node_modules/grunt-contrib-sass:
+AUTHORS
+CHANGELOG
+CONTRIBUTING.md
+docs
+Gruntfile.js
+LICENSE-MIT
+node_modules
+package.json
+README.md
+tasks
+
+reveal.js/node_modules/grunt-contrib-sass/docs:
+sass-examples.md
+sass-options.md
+sass-overview.md
+
+reveal.js/node_modules/grunt-contrib-sass/node_modules:
+async
+dargs
+
+reveal.js/node_modules/grunt-contrib-sass/node_modules/async:
+component.json
+lib
+LICENSE
+package.json
+README.md
+
+reveal.js/node_modules/grunt-contrib-sass/node_modules/async/lib:
+async.js
+
+reveal.js/node_modules/grunt-contrib-sass/node_modules/dargs:
+dargs.js
+package.json
+readme.md
+
+reveal.js/node_modules/grunt-contrib-sass/tasks:
+sass.js
+
+reveal.js/node_modules/grunt-contrib-uglify:
+AUTHORS
+CHANGELOG
+CONTRIBUTING.md
+docs
+Gruntfile.js
+LICENSE-MIT
+node_modules
+package.json
+README.md
+tasks
+test
+
+reveal.js/node_modules/grunt-contrib-uglify/docs:
+uglify-examples.md
+uglify-options.md
+uglify-overview.md
+
+reveal.js/node_modules/grunt-contrib-uglify/node_modules:
+grunt-lib-contrib
+uglify-js
+
+reveal.js/node_modules/grunt-contrib-uglify/node_modules/grunt-lib-contrib:
+AUTHORS
+CHANGELOG
+Gruntfile.js
+lib
+LICENSE-MIT
+node_modules
+package.json
+README.md
+test
+
+reveal.js/node_modules/grunt-contrib-uglify/node_modules/grunt-lib-contrib/lib:
+contrib.js
+
+reveal.js/node_modules/grunt-contrib-uglify/node_modules/grunt-lib-contrib/node_modules:
+zlib-browserify
+
+reveal.js/node_modules/grunt-contrib-uglify/node_modules/grunt-lib-contrib/node_modules/zlib-browserify:
+index.js
+package.json
+readme.md
+test
+zlib.js
+
+reveal.js/node_modules/grunt-contrib-uglify/node_modules/grunt-lib-contrib/node_modules/zlib-browserify/test:
+zlib.test.js
+
+reveal.js/node_modules/grunt-contrib-uglify/node_modules/grunt-lib-contrib/test:
+lib_test.js
+
+reveal.js/node_modules/grunt-contrib-uglify/node_modules/uglify-js:
+bin
+lib
+LICENSE
+node_modules
+package.json
+README.md
+test
+tools
+
+reveal.js/node_modules/grunt-contrib-uglify/node_modules/uglify-js/bin:
+uglifyjs
+
+reveal.js/node_modules/grunt-contrib-uglify/node_modules/uglify-js/lib:
+ast.js
+compress.js
+mozilla-ast.js
+output.js
+parse.js
+scope.js
+sourcemap.js
+transform.js
+utils.js
+
+reveal.js/node_modules/grunt-contrib-uglify/node_modules/uglify-js/node_modules:
+async
+optimist
+source-map
+uglify-to-browserify
+
+reveal.js/node_modules/grunt-contrib-uglify/node_modules/uglify-js/node_modules/async:
+component.json
+lib
+LICENSE
+package.json
+README.md
+
+reveal.js/node_modules/grunt-contrib-uglify/node_modules/uglify-js/node_modules/async/lib:
+async.js
+
+reveal.js/node_modules/grunt-contrib-uglify/node_modules/uglify-js/node_modules/optimist:
+example
+index.js
+LICENSE
+node_modules
+package.json
+readme.markdown
+test
+
+reveal.js/node_modules/grunt-contrib-uglify/node_modules/uglify-js/node_modules/optimist/example:
+boolean_double.js
+boolean_single.js
+bool.js
+default_hash.js
+default_singles.js
+divide.js
+line_count.js
+line_count_options.js
+line_count_wrap.js
+nonopt.js
+reflect.js
+short.js
+string.js
+usage-options.js
+xup.js
+
+reveal.js/node_modules/grunt-contrib-uglify/node_modules/uglify-js/node_modules/optimist/node_modules:
+wordwrap
+
+reveal.js/node_modules/grunt-contrib-uglify/node_modules/uglify-js/node_modules/optimist/node_modules/wordwrap:
+example
+index.js
+package.json
+README.markdown
+test
+
+reveal.js/node_modules/grunt-contrib-uglify/node_modules/uglify-js/node_modules/optimist/node_modules/wordwrap/example:
+center.js
+meat.js
+
+reveal.js/node_modules/grunt-contrib-uglify/node_modules/uglify-js/node_modules/optimist/node_modules/wordwrap/test:
+break.js
+idleness.txt
+wrap.js
+
+reveal.js/node_modules/grunt-contrib-uglify/node_modules/uglify-js/node_modules/optimist/test:
+_
+_.js
+parse.js
+usage.js
+
+reveal.js/node_modules/grunt-contrib-uglify/node_modules/uglify-js/node_modules/optimist/test/_:
+argv.js
+bin.js
+
+reveal.js/node_modules/grunt-contrib-uglify/node_modules/uglify-js/node_modules/source-map:
+build
+CHANGELOG.md
+lib
+LICENSE
+Makefile.dryice.js
+node_modules
+package.json
+README.md
+test
+
+reveal.js/node_modules/grunt-contrib-uglify/node_modules/uglify-js/node_modules/source-map/build:
+assert-shim.js
+mini-require.js
+prefix-source-map.jsm
+prefix-utils.jsm
+suffix-browser.js
+suffix-source-map.jsm
+suffix-utils.jsm
+test-prefix.js
+test-suffix.js
+
+reveal.js/node_modules/grunt-contrib-uglify/node_modules/uglify-js/node_modules/source-map/lib:
+source-map
+source-map.js
+
+reveal.js/node_modules/grunt-contrib-uglify/node_modules/uglify-js/node_modules/source-map/lib/source-map:
+array-set.js
+base64.js
+base64-vlq.js
+binary-search.js
+source-map-consumer.js
+source-map-generator.js
+source-node.js
+util.js
+
+reveal.js/node_modules/grunt-contrib-uglify/node_modules/uglify-js/node_modules/source-map/node_modules:
+amdefine
+
+reveal.js/node_modules/grunt-contrib-uglify/node_modules/uglify-js/node_modules/source-map/node_modules/amdefine:
+amdefine.js
+intercept.js
+LICENSE
+package.json
+README.md
+
+reveal.js/node_modules/grunt-contrib-uglify/node_modules/uglify-js/node_modules/source-map/test:
+run-tests.js
+source-map
+
+reveal.js/node_modules/grunt-contrib-uglify/node_modules/uglify-js/node_modules/source-map/test/source-map:
+test-api.js
+test-array-set.js
+test-base64.js
+test-base64-vlq.js
+test-binary-search.js
+test-dog-fooding.js
+test-source-map-consumer.js
+test-source-map-generator.js
+test-source-node.js
+util.js
+
+reveal.js/node_modules/grunt-contrib-uglify/node_modules/uglify-js/node_modules/uglify-to-browserify:
+index.js
+LICENSE
+package.json
+README.md
+test
+
+reveal.js/node_modules/grunt-contrib-uglify/node_modules/uglify-js/node_modules/uglify-to-browserify/test:
+index.js
+
+reveal.js/node_modules/grunt-contrib-uglify/node_modules/uglify-js/test:
+compress
+run-tests.js
+
+reveal.js/node_modules/grunt-contrib-uglify/node_modules/uglify-js/test/compress:
+arrays.js
+blocks.js
+concat-strings.js
+conditionals.js
+dead-code.js
+debugger.js
+drop-unused.js
+issue-105.js
+issue-126.js
+issue-12.js
+issue-143.js
+issue-22.js
+issue-267.js
+issue-269.js
+issue-44.js
+issue-59.js
+labels.js
+loops.js
+negate-iife.js
+properties.js
+sequences.js
+switch.js
+typeof.js
+
+reveal.js/node_modules/grunt-contrib-uglify/node_modules/uglify-js/tools:
+node.js
+
+reveal.js/node_modules/grunt-contrib-uglify/tasks:
+lib
+uglify.js
+
+reveal.js/node_modules/grunt-contrib-uglify/tasks/lib:
+uglify.js
+
+reveal.js/node_modules/grunt-contrib-uglify/test:
+fixtures
+uglify_test.js
+
+reveal.js/node_modules/grunt-contrib-uglify/test/fixtures:
+expected
+src
+
+reveal.js/node_modules/grunt-contrib-uglify/test/fixtures/expected:
+comments.js
+compress.js
+compress_mangle_banner.js
+compress_mangle_beautify.js
+compress_mangle_except.js
+compress_mangle.js
+compress_mangle_sourcemap
+enclose.js
+exportAll.js
+multifile.js
+multiple_sourcemaps1.js
+multiple_sourcemaps1.map
+multiple_sourcemaps2.js
+multiple_sourcemaps2.map
+sourcemapin
+sourcemapin.js
+sourcemap_prefix
+sourcemapurl.js
+wrap.js
+
+reveal.js/node_modules/grunt-contrib-uglify/test/fixtures/src:
+comments.js
+simple2.coffee
+simple2.js
+simple2.map
+simple.js
+
+reveal.js/node_modules/grunt-contrib-watch:
+AUTHORS
+CHANGELOG
+CONTRIBUTING.md
+docs
+Gruntfile.js
+LICENSE-MIT
+node_modules
+package.json
+README.md
+tasks
+test
+
+reveal.js/node_modules/grunt-contrib-watch/docs:
+watch-examples.md
+watch-options.md
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules:
+gaze
+tiny-lr
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/gaze:
+AUTHORS
+benchmarks
+Gruntfile.js
+lib
+LICENSE-MIT
+node_modules
+package.json
+README.md
+test
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/gaze/benchmarks:
+gaze100s.js
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/gaze/lib:
+gaze.js
+helper.js
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/gaze/node_modules:
+globule
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/gaze/node_modules/globule:
+Gruntfile.js
+lib
+LICENSE-MIT
+node_modules
+package.json
+README.md
+test
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/gaze/node_modules/globule/lib:
+globule.js
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/gaze/node_modules/globule/node_modules:
+glob
+lodash
+minimatch
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/gaze/node_modules/globule/node_modules/glob:
+examples
+glob.js
+LICENSE
+node_modules
+package.json
+README.md
+test
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/gaze/node_modules/globule/node_modules/glob/examples:
+g.js
+usr-local.js
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/gaze/node_modules/globule/node_modules/glob/node_modules:
+graceful-fs
+inherits
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/gaze/node_modules/globule/node_modules/glob/node_modules/graceful-fs:
+graceful-fs.js
+LICENSE
+package.json
+README.md
+test
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/gaze/node_modules/globule/node_modules/glob/node_modules/graceful-fs/test:
+open.js
+ulimit.js
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/gaze/node_modules/globule/node_modules/glob/node_modules/inherits:
+inherits.js
+package.json
+README.md
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/gaze/node_modules/globule/node_modules/glob/test:
+00-setup.js
+bash-comparison.js
+bash-results.json
+cwd-test.js
+mark.js
+nocase-nomagic.js
+pause-resume.js
+root.js
+root-nomount.js
+zz-cleanup.js
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/gaze/node_modules/globule/node_modules/lodash:
+dist
+package.json
+README.md
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/gaze/node_modules/globule/node_modules/lodash/dist:
+lodash.compat.js
+lodash.compat.min.js
+lodash.js
+lodash.min.js
+lodash.underscore.js
+lodash.underscore.min.js
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/gaze/node_modules/globule/node_modules/minimatch:
+LICENSE
+minimatch.js
+node_modules
+package.json
+README.md
+test
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/gaze/node_modules/globule/node_modules/minimatch/node_modules:
+lru-cache
+sigmund
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/gaze/node_modules/globule/node_modules/minimatch/node_modules/lru-cache:
+CONTRIBUTORS
+lib
+LICENSE
+package.json
+README.md
+test
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/gaze/node_modules/globule/node_modules/minimatch/node_modules/lru-cache/lib:
+lru-cache.js
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/gaze/node_modules/globule/node_modules/minimatch/node_modules/lru-cache/test:
+basic.js
+foreach.js
+memory-leak.js
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/gaze/node_modules/globule/node_modules/minimatch/node_modules/sigmund:
+bench.js
+LICENSE
+package.json
+README.md
+sigmund.js
+test
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/gaze/node_modules/globule/node_modules/minimatch/node_modules/sigmund/test:
+basic.js
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/gaze/node_modules/globule/node_modules/minimatch/test:
+basic.js
+brace-expand.js
+caching.js
+defaults.js
+extglob-ending-with-state-char.js
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/gaze/node_modules/globule/test:
+fixtures
+globule_test.js
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/gaze/node_modules/globule/test/fixtures:
+expand
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/gaze/node_modules/globule/test/fixtures/expand:
+css
+deep
+js
+README.md
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/gaze/node_modules/globule/test/fixtures/expand/css:
+baz.css
+qux.css
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/gaze/node_modules/globule/test/fixtures/expand/deep:
+deeper
+deep.txt
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/gaze/node_modules/globule/test/fixtures/expand/deep/deeper:
+deeper.txt
+deepest
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/gaze/node_modules/globule/test/fixtures/expand/deep/deeper/deepest:
+deepest.txt
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/gaze/node_modules/globule/test/fixtures/expand/js:
+bar.js
+foo.js
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/gaze/test:
+add_test.js
+api_test.js
+file_poller.js
+fixtures
+helper.js
+matching_test.js
+patterns_test.js
+relative_test.js
+rename_test.js
+safewrite_test.js
+watch_race_test.js
+watch_test.js
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/gaze/test/fixtures:
+nested
+one.js
+Project (LO)
+sub
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/gaze/test/fixtures/nested:
+one.js
+sub
+sub2
+three.js
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/gaze/test/fixtures/nested/sub:
+two.js
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/gaze/test/fixtures/nested/sub2:
+two.js
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/gaze/test/fixtures/Project (LO):
+one.js
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/gaze/test/fixtures/sub:
+one.js
+two.js
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/tiny-lr:
+bin
+lib
+node_modules
+package.json
+readme.md
+tasks
+test
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/tiny-lr/bin:
+tiny-lr
+update-livereload
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/tiny-lr/lib:
+client.js
+index.js
+public
+server.js
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/tiny-lr/lib/public:
+livereload.js
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/tiny-lr/node_modules:
+debug
+faye-websocket
+noptify
+qs
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/tiny-lr/node_modules/debug:
+debug.js
+index.js
+lib
+package.json
+Readme.md
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/tiny-lr/node_modules/debug/lib:
+debug.js
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/tiny-lr/node_modules/faye-websocket:
+CHANGELOG.txt
+examples
+lib
+package.json
+README.markdown
+spec
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/tiny-lr/node_modules/faye-websocket/examples:
+autobahn_client.js
+client.js
+haproxy.conf
+server.js
+sse.html
+ws.html
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/tiny-lr/node_modules/faye-websocket/lib:
+faye
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/tiny-lr/node_modules/faye-websocket/lib/faye:
+eventsource.js
+websocket
+websocket.js
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/tiny-lr/node_modules/faye-websocket/lib/faye/websocket:
+api
+api.js
+client.js
+draft75_parser.js
+draft76_parser.js
+hybi_parser
+hybi_parser.js
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/tiny-lr/node_modules/faye-websocket/lib/faye/websocket/api:
+event.js
+event_target.js
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/tiny-lr/node_modules/faye-websocket/lib/faye/websocket/hybi_parser:
+handshake.js
+stream_reader.js
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/tiny-lr/node_modules/faye-websocket/spec:
+faye
+runner.js
+server.crt
+server.key
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/tiny-lr/node_modules/faye-websocket/spec/faye:
+websocket
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/tiny-lr/node_modules/faye-websocket/spec/faye/websocket:
+client_spec.js
+draft75parser_spec.js
+draft76parser_spec.js
+hybi_parser_spec.js
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/tiny-lr/node_modules/noptify:
+actions
+index.js
+node_modules
+package.json
+readme.md
+test
+util
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/tiny-lr/node_modules/noptify/actions:
+collectable.js
+commandable.js
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/tiny-lr/node_modules/noptify/node_modules:
+nopt
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/tiny-lr/node_modules/noptify/node_modules/nopt:
+bin
+examples
+lib
+LICENSE
+node_modules
+package.json
+README.md
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/tiny-lr/node_modules/noptify/node_modules/nopt/bin:
+nopt.js
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/tiny-lr/node_modules/noptify/node_modules/nopt/examples:
+my-program.js
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/tiny-lr/node_modules/noptify/node_modules/nopt/lib:
+nopt.js
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/tiny-lr/node_modules/noptify/node_modules/nopt/node_modules:
+abbrev
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/tiny-lr/node_modules/noptify/node_modules/nopt/node_modules/abbrev:
+lib
+LICENSE
+package.json
+README.md
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/tiny-lr/node_modules/noptify/node_modules/nopt/node_modules/abbrev/lib:
+abbrev.js
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/tiny-lr/node_modules/noptify/test:
+api.js
+collectable.js
+commandable.js
+fixtures
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/tiny-lr/node_modules/noptify/test/fixtures:
+a.js
+b.js
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/tiny-lr/node_modules/noptify/util:
+extend.js
+index.js
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/tiny-lr/node_modules/qs:
+benchmark.js
+component.json
+examples.js
+History.md
+index.js
+Makefile
+package.json
+Readme.md
+test
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/tiny-lr/node_modules/qs/test:
+browser
+parse.js
+stringify.js
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/tiny-lr/node_modules/qs/test/browser:
+expect.js
+index.html
+jquery.js
+mocha.css
+mocha.js
+qs.css
+qs.js
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/tiny-lr/tasks:
+tiny-lr.js
+tiny-lr.mk
+
+reveal.js/node_modules/grunt-contrib-watch/node_modules/tiny-lr/test:
+client.js
+middleware.js
+server.js
+
+reveal.js/node_modules/grunt-contrib-watch/tasks:
+lib
+watch.js
+
+reveal.js/node_modules/grunt-contrib-watch/tasks/lib:
+livereload.js
+taskrun.js
+taskrunner.js
+
+reveal.js/node_modules/grunt-contrib-watch/test:
+fixtures
+tasks
+
+reveal.js/node_modules/grunt-contrib-watch/test/fixtures:
+atBegin
+dateFormat
+events
+fail
+livereload
+multiTargets
+nospawn
+oneTarget
+patterns
+tasks
+
+reveal.js/node_modules/grunt-contrib-watch/test/fixtures/atBegin:
+Gruntfile.js
+lib
+
+reveal.js/node_modules/grunt-contrib-watch/test/fixtures/atBegin/lib:
+one.js
+
+reveal.js/node_modules/grunt-contrib-watch/test/fixtures/dateFormat:
+Gruntfile.js
+lib
+
+reveal.js/node_modules/grunt-contrib-watch/test/fixtures/dateFormat/lib:
+one.js
+
+reveal.js/node_modules/grunt-contrib-watch/test/fixtures/events:
+Gruntfile.js
+lib
+
+reveal.js/node_modules/grunt-contrib-watch/test/fixtures/events/lib:
+one
+one.js
+two
+
+reveal.js/node_modules/grunt-contrib-watch/test/fixtures/events/lib/one:
+test.js
+
+reveal.js/node_modules/grunt-contrib-watch/test/fixtures/events/lib/two:
+test.js
+
+reveal.js/node_modules/grunt-contrib-watch/test/fixtures/fail:
+Gruntfile.js
+lib
+
+reveal.js/node_modules/grunt-contrib-watch/test/fixtures/fail/lib:
+one.js
+
+reveal.js/node_modules/grunt-contrib-watch/test/fixtures/livereload:
+css
+Gruntfile.js
+lib
+sass
+
+reveal.js/node_modules/grunt-contrib-watch/test/fixtures/livereload/css:
+one.css
+
+reveal.js/node_modules/grunt-contrib-watch/test/fixtures/livereload/lib:
+one.js
+two.js
+
+reveal.js/node_modules/grunt-contrib-watch/test/fixtures/livereload/sass:
+one.scss
+
+reveal.js/node_modules/grunt-contrib-watch/test/fixtures/multiTargets:
+Gruntfile.js
+lib
+
+reveal.js/node_modules/grunt-contrib-watch/test/fixtures/multiTargets/lib:
+fail.js
+interrupt.js
+one.js
+two.js
+wait.js
+
+reveal.js/node_modules/grunt-contrib-watch/test/fixtures/nospawn:
+Gruntfile.js
+lib
+
+reveal.js/node_modules/grunt-contrib-watch/test/fixtures/nospawn/lib:
+interrupt.js
+nospawn.js
+spawn.js
+
+reveal.js/node_modules/grunt-contrib-watch/test/fixtures/oneTarget:
+Gruntfile.js
+lib
+
+reveal.js/node_modules/grunt-contrib-watch/test/fixtures/oneTarget/lib:
+one.js
+
+reveal.js/node_modules/grunt-contrib-watch/test/fixtures/patterns:
+Gruntfile.js
+lib
+
+reveal.js/node_modules/grunt-contrib-watch/test/fixtures/patterns/lib:
+edit.js
+sub
+
+reveal.js/node_modules/grunt-contrib-watch/test/fixtures/patterns/lib/sub:
+dontedit.js
+
+reveal.js/node_modules/grunt-contrib-watch/test/fixtures/tasks:
+echo.js
+
+reveal.js/node_modules/grunt-contrib-watch/test/tasks:
+events_test.js
+fail_test.js
+helper.js
+livereload_test.js
+nospawn_test.js
+patterns_test.js
+reloadgruntfile_test.js
+watch_test.js
+
+reveal.js/node_modules/grunt-zip:
+bin
+grunt.js
+LICENSE-MIT
+node_modules
+package.json
+README.md
+tasks
+test
+
+reveal.js/node_modules/grunt-zip/bin:
+grunt-zip
+
+reveal.js/node_modules/grunt-zip/node_modules:
+grunt-retro
+node-zip
+
+reveal.js/node_modules/grunt-zip/node_modules/grunt-retro:
+bin
+grunt.js
+LICENSE-MIT
+package.json
+README.md
+tasks
+test
+
+reveal.js/node_modules/grunt-zip/node_modules/grunt-retro/bin:
+grunt-retro
+
+reveal.js/node_modules/grunt-zip/node_modules/grunt-retro/tasks:
+retro.js
+
+reveal.js/node_modules/grunt-zip/node_modules/grunt-retro/test:
+0.4_test.js
+actual
+expected
+grunt.common.js
+Gruntfile.js
+grunt.js
+retro_test.js
+test_files
+
+reveal.js/node_modules/grunt-zip/node_modules/grunt-retro/test/actual:
+dest_compact.txt
+dest_simple.txt
+dest_template.txt
+expand_dirs_array.txt
+expand_dirs_options.txt
+expand_dirs_string.txt
+expand_files_array.txt
+expand_files_options.txt
+expand_files_string.txt
+src_compact.txt
+src_expansion.txt
+src_multi.txt
+src_single.txt
+src_template.txt
+src_uri.txt
+
+reveal.js/node_modules/grunt-zip/node_modules/grunt-retro/test/expected:
+dest_compact.txt
+dest_simple.txt
+dest_template.txt
+expand_dirs_array.txt
+expand_dirs_options.txt
+expand_dirs_string.txt
+expand_files_array.txt
+expand_files_options.txt
+expand_files_string.txt
+src_compact.txt
+src_expansion.txt
+src_multi.txt
+src_single.txt
+src_template.txt
+src_uri.txt
+
+reveal.js/node_modules/grunt-zip/node_modules/grunt-retro/test/test_files:
+example4
+example7
+file2.js
+file.js
+
+reveal.js/node_modules/grunt-zip/node_modules/grunt-retro/test/test_files/example7:
+example8
+
+reveal.js/node_modules/grunt-zip/node_modules/node-zip:
+lib
+package.json
+README.md
+vendor
+
+reveal.js/node_modules/grunt-zip/node_modules/node-zip/lib:
+nodeZip.js
+
+reveal.js/node_modules/grunt-zip/node_modules/node-zip/vendor:
+jszip
+
+reveal.js/node_modules/grunt-zip/node_modules/node-zip/vendor/jszip:
+jszip-deflate.js
+jszip-inflate.js
+jszip.js
+jszip-load.js
+
+reveal.js/node_modules/grunt-zip/tasks:
+zip.js
+
+reveal.js/node_modules/grunt-zip/test:
+0.4_test.js
+expected
+Gruntfile.js
+grunt.js
+test_files
+zip_test.js
+
+reveal.js/node_modules/grunt-zip/test/expected:
+cwd_zip
+dot_zip
+image_zip
+multi_zip
+nested_unzip
+nested_zip
+router_unzip
+router_zip
+single_unzip
+single_zip
+
+reveal.js/node_modules/grunt-zip/test/expected/cwd_zip:
+unzip
+
+reveal.js/node_modules/grunt-zip/test/expected/cwd_zip/unzip:
+hello.js
+nested2
+
+reveal.js/node_modules/grunt-zip/test/expected/cwd_zip/unzip/nested2:
+hello10.txt
+
+reveal.js/node_modules/grunt-zip/test/expected/dot_zip:
+unzip
+
+reveal.js/node_modules/grunt-zip/test/expected/dot_zip/unzip:
+test_files
+
+reveal.js/node_modules/grunt-zip/test/expected/dot_zip/unzip/test_files:
+dot
+
+reveal.js/node_modules/grunt-zip/test/expected/dot_zip/unzip/test_files/dot:
+test
+
+reveal.js/node_modules/grunt-zip/test/expected/dot_zip/unzip/test_files/dot/test:
+
+reveal.js/node_modules/grunt-zip/test/expected/image_zip:
+unzip
+
+reveal.js/node_modules/grunt-zip/test/expected/image_zip/unzip:
+test_files
+
+reveal.js/node_modules/grunt-zip/test/expected/image_zip/unzip/test_files:
+smile.gif
+
+reveal.js/node_modules/grunt-zip/test/expected/multi_zip:
+file.zip
+
+reveal.js/node_modules/grunt-zip/test/expected/nested_unzip:
+bootstrap
+
+reveal.js/node_modules/grunt-zip/test/expected/nested_unzip/bootstrap:
+css
+img
+js
+
+reveal.js/node_modules/grunt-zip/test/expected/nested_unzip/bootstrap/css:
+bootstrap.css
+bootstrap.min.css
+bootstrap-responsive.css
+bootstrap-responsive.min.css
+
+reveal.js/node_modules/grunt-zip/test/expected/nested_unzip/bootstrap/img:
+glyphicons-halflings.png
+glyphicons-halflings-white.png
+
+reveal.js/node_modules/grunt-zip/test/expected/nested_unzip/bootstrap/js:
+bootstrap.js
+bootstrap.min.js
+
+reveal.js/node_modules/grunt-zip/test/expected/nested_zip:
+unzip
+
+reveal.js/node_modules/grunt-zip/test/expected/nested_zip/unzip:
+test_files
+
+reveal.js/node_modules/grunt-zip/test/expected/nested_zip/unzip/test_files:
+nested
+
+reveal.js/node_modules/grunt-zip/test/expected/nested_zip/unzip/test_files/nested:
+glyphicons-halflings.png
+hello.js
+nested2
+world.txt
+
+reveal.js/node_modules/grunt-zip/test/expected/nested_zip/unzip/test_files/nested/nested2:
+hello10.txt
+hello20.js
+
+reveal.js/node_modules/grunt-zip/test/expected/router_unzip:
+bootstrap.css
+bootstrap.js
+bootstrap.min.css
+bootstrap.min.js
+bootstrap-responsive.css
+bootstrap-responsive.min.css
+glyphicons-halflings.png
+glyphicons-halflings-white.png
+
+reveal.js/node_modules/grunt-zip/test/expected/router_zip:
+unzip
+
+reveal.js/node_modules/grunt-zip/test/expected/router_zip/unzip:
+hello10.txt
+hello.js
+
+reveal.js/node_modules/grunt-zip/test/expected/single_unzip:
+a.js
+b.js
+
+reveal.js/node_modules/grunt-zip/test/expected/single_zip:
+file.zip
+
+reveal.js/node_modules/grunt-zip/test/test_files:
+dot
+file2.js
+file.js
+file.zip
+nested
+nested.zip
+smile.gif
+
+reveal.js/node_modules/grunt-zip/test/test_files/dot:
+test
+
+reveal.js/node_modules/grunt-zip/test/test_files/dot/test:
+
+reveal.js/node_modules/grunt-zip/test/test_files/nested:
+glyphicons-halflings.png
+hello.js
+nested2
+world.txt
+
+reveal.js/node_modules/grunt-zip/test/test_files/nested/nested2:
+hello10.txt
+hello20.js
+
+reveal.js/node_modules/mustache:
+CHANGES
+LICENSE
+mustache.js
+mustache.js.nuspec
+package.json
+Rakefile
+README.md
+test
+wrappers
+
+reveal.js/node_modules/mustache/test:
+context-test.js
+_files
+helper.js
+mustache-spec-test.js
+parse-test.js
+render-test.js
+scanner-test.js
+spec
+writer-test.js
+
+reveal.js/node_modules/mustache/test/_files:
+ampersand_escape.js
+ampersand_escape.mustache
+ampersand_escape.txt
+apostrophe.js
+apostrophe.mustache
+apostrophe.txt
+array_of_strings.js
+array_of_strings.mustache
+array_of_strings.txt
+backslashes.js
+backslashes.mustache
+backslashes.txt
+bug_11_eating_whitespace.js
+bug_11_eating_whitespace.mustache
+bug_11_eating_whitespace.txt
+changing_delimiters.js
+changing_delimiters.mustache
+changing_delimiters.txt
+check_falsy.js
+check_falsy.mustache
+check_falsy.txt
+comments.js
+comments.mustache
+comments.txt
+complex.js
+complex.mustache
+complex.txt
+context_lookup.js
+context_lookup.mustache
+context_lookup.txt
+delimiters.js
+delimiters.mustache
+delimiters.txt
+disappearing_whitespace.js
+disappearing_whitespace.mustache
+disappearing_whitespace.txt
+dot_notation.js
+dot_notation.mustache
+dot_notation.txt
+double_render.js
+double_render.mustache
+double_render.txt
+empty_list.js
+empty_list.mustache
+empty_list.txt
+empty_sections.js
+empty_sections.mustache
+empty_sections.txt
+empty_string.js
+empty_string.mustache
+empty_string.txt
+empty_template.js
+empty_template.mustache
+empty_template.txt
+error_not_found.js
+error_not_found.mustache
+error_not_found.txt
+escaped.js
+escaped.mustache
+escaped.txt
+falsy.js
+falsy.mustache
+falsy.txt
+grandparent_context.js
+grandparent_context.mustache
+grandparent_context.txt
+higher_order_sections.js
+higher_order_sections.mustache
+higher_order_sections.txt
+included_tag.js
+included_tag.mustache
+included_tag.txt
+inverted_section.js
+inverted_section.mustache
+inverted_section.txt
+keys_with_questionmarks.js
+keys_with_questionmarks.mustache
+keys_with_questionmarks.txt
+malicious_template.js
+malicious_template.mustache
+malicious_template.txt
+multiline_comment.js
+multiline_comment.mustache
+multiline_comment.txt
+nested_dot.js
+nested_dot.mustache
+nested_dot.txt
+nested_higher_order_sections.js
+nested_higher_order_sections.mustache
+nested_higher_order_sections.txt
+nested_iterating.js
+nested_iterating.mustache
+nested_iterating.txt
+nesting.js
+nesting.mustache
+nesting_same_name.js
+nesting_same_name.mustache
+nesting_same_name.txt
+nesting.txt
+null_string.js
+null_string.mustache
+null_string.txt
+null_view.js
+null_view.mustache
+null_view.txt
+partial_array.js
+partial_array.mustache
+partial_array_of_partials_implicit.js
+partial_array_of_partials_implicit.mustache
+partial_array_of_partials_implicit.partial
+partial_array_of_partials_implicit.txt
+partial_array_of_partials.js
+partial_array_of_partials.mustache
+partial_array_of_partials.partial
+partial_array_of_partials.txt
+partial_array.partial
+partial_array.txt
+partial_empty.js
+partial_empty.mustache
+partial_empty.partial
+partial_empty.txt
+partial_template.js
+partial_template.mustache
+partial_template.partial
+partial_template.txt
+partial_view.js
+partial_view.mustache
+partial_view.partial
+partial_view.txt
+partial_whitespace.js
+partial_whitespace.mustache
+partial_whitespace.partial
+partial_whitespace.txt
+recursion_with_same_names.js
+recursion_with_same_names.mustache
+recursion_with_same_names.txt
+reuse_of_enumerables.js
+reuse_of_enumerables.mustache
+reuse_of_enumerables.txt
+section_as_context.js
+section_as_context.mustache
+section_as_context.txt
+simple.js
+simple.mustache
+simple.txt
+string_as_context.js
+string_as_context.mustache
+string_as_context.txt
+two_in_a_row.js
+two_in_a_row.mustache
+two_in_a_row.txt
+two_sections.js
+two_sections.mustache
+two_sections.txt
+unescaped.js
+unescaped.mustache
+unescaped.txt
+whitespace.js
+whitespace.mustache
+whitespace.txt
+zero_view.js
+zero_view.mustache
+zero_view.txt
+
+reveal.js/node_modules/mustache/test/spec:
+Changes
+Rakefile
+README.md
+specs
+TESTING.md
+
+reveal.js/node_modules/mustache/test/spec/specs:
+comments.json
+comments.yml
+delimiters.json
+delimiters.yml
+interpolation.json
+interpolation.yml
+inverted.json
+inverted.yml
+~lambdas.json
+~lambdas.yml
+partials.json
+partials.yml
+sections.json
+sections.yml
+
+reveal.js/node_modules/mustache/wrappers:
+dojo
+jquery
+mootools
+qooxdoo
+
+reveal.js/node_modules/mustache/wrappers/dojo:
+mustache.js.post
+mustache.js.pre
+
+reveal.js/node_modules/mustache/wrappers/jquery:
+mustache.js.post
+mustache.js.pre
+
+reveal.js/node_modules/mustache/wrappers/mootools:
+mustache.js.post
+mustache.js.pre
+
+reveal.js/node_modules/mustache/wrappers/qooxdoo:
+mustache.js.post
+mustache.js.pre
+
+reveal.js/node_modules/socket.io:
+benchmarks
+History.md
+index.js
+lib
+LICENSE
+Makefile
+node_modules
+package.json
+Readme.md
+
+reveal.js/node_modules/socket.io/benchmarks:
+decode.bench.js
+encode.bench.js
+runner.js
+
+reveal.js/node_modules/socket.io/lib:
+logger.js
+manager.js
+namespace.js
+parser.js
+socket.io.js
+socket.js
+static.js
+store.js
+stores
+transport.js
+transports
+util.js
+
+reveal.js/node_modules/socket.io/lib/stores:
+memory.js
+redis.js
+
+reveal.js/node_modules/socket.io/lib/transports:
+flashsocket.js
+htmlfile.js
+http.js
+http-polling.js
+index.js
+jsonp-polling.js
+websocket
+websocket.js
+xhr-polling.js
+
+reveal.js/node_modules/socket.io/lib/transports/websocket:
+default.js
+hybi-07-12.js
+hybi-16.js
+index.js
+
+reveal.js/node_modules/socket.io/node_modules:
+base64id
+policyfile
+redis
+socket.io-client
+
+reveal.js/node_modules/socket.io/node_modules/base64id:
+lib
+package.json
+README.md
+
+reveal.js/node_modules/socket.io/node_modules/base64id/lib:
+base64id.js
+
+reveal.js/node_modules/socket.io/node_modules/policyfile:
+doc
+examples
+index.js
+lib
+LICENSE
+Makefile
+package.json
+README.md
+tests
+
+reveal.js/node_modules/socket.io/node_modules/policyfile/doc:
+index.html
+
+reveal.js/node_modules/socket.io/node_modules/policyfile/examples:
+basic.fallback.js
+basic.js
+
+reveal.js/node_modules/socket.io/node_modules/policyfile/lib:
+server.js
+
+reveal.js/node_modules/socket.io/node_modules/policyfile/tests:
+ssl
+unit.test.js
+
+reveal.js/node_modules/socket.io/node_modules/policyfile/tests/ssl:
+ssl.crt
+ssl.private.key
+
+reveal.js/node_modules/socket.io/node_modules/redis:
+benches
+changelog.md
+diff_multi_bench_output.js
+examples
+generate_commands.js
+index.js
+lib
+mem.js
+multi_bench.js
+package.json
+README.md
+test.js
+
+reveal.js/node_modules/socket.io/node_modules/redis/benches:
+buffer_bench.js
+hiredis_parser.js
+reconnect_test.js
+re_sub_test.js
+stress
+sub_quit_test.js
+
+reveal.js/node_modules/socket.io/node_modules/redis/benches/stress:
+codec.js
+pubsub
+rpushblpop
+speed
+
+reveal.js/node_modules/socket.io/node_modules/redis/benches/stress/pubsub:
+pub.js
+run
+server.js
+
+reveal.js/node_modules/socket.io/node_modules/redis/benches/stress/rpushblpop:
+pub.js
+run
+server.js
+
+reveal.js/node_modules/socket.io/node_modules/redis/benches/stress/speed:
+00
+plot
+size-rate.png
+speed.js
+
+reveal.js/node_modules/socket.io/node_modules/redis/examples:
+auth.js
+backpressure_drain.js
+eval.js
+extend.js
+file.js
+mget.js
+monitor.js
+multi2.js
+multi.js
+psubscribe.js
+pub_sub.js
+simple.js
+sort.js
+subqueries.js
+subquery.js
+unix_socket.js
+web_server.js
+
+reveal.js/node_modules/socket.io/node_modules/redis/lib:
+commands.js
+parser
+queue.js
+to_array.js
+util.js
+
+reveal.js/node_modules/socket.io/node_modules/redis/lib/parser:
+hiredis.js
+javascript.js
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client:
+bin
+components
+dist
+History.md
+lib
+Makefile
+node_modules
+package.json
+README.md
+test
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/bin:
+builder.js
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/components:
+component-bind
+component-emitter
+component-json
+component-json-fallback
+learnboost-engine.io-client
+learnboost-socket.io-protocol
+timoxley-to-array
+visionmedia-debug
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/components/component-bind:
+component.json
+index.js
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/components/component-emitter:
+component.json
+index.js
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/components/component-json:
+component.json
+index.js
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/components/component-json-fallback:
+component.json
+index.js
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/components/learnboost-engine.io-client:
+component.json
+lib
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/components/learnboost-engine.io-client/lib:
+emitter.js
+index.js
+parser.js
+socket.js
+transport.js
+transports
+util.js
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/components/learnboost-engine.io-client/lib/transports:
+flashsocket.js
+index.js
+polling.js
+polling-jsonp.js
+polling-xhr.js
+websocket.js
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/components/learnboost-socket.io-protocol:
+component.json
+index.js
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/components/timoxley-to-array:
+component.json
+index.js
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/components/visionmedia-debug:
+component.json
+debug.js
+index.js
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/dist:
+socket.io.js
+socket.io.min.js
+WebSocketMainInsecure.swf
+WebSocketMain.swf
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/lib:
+events.js
+io.js
+json.js
+namespace.js
+parser.js
+socket.js
+transport.js
+transports
+util.js
+vendor
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/lib/transports:
+flashsocket.js
+htmlfile.js
+jsonp-polling.js
+websocket.js
+xhr.js
+xhr-polling.js
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/lib/vendor:
+web-socket-js
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/lib/vendor/web-socket-js:
+flash-src
+README.md
+sample.html
+swfobject.js
+web_socket.js
+WebSocketMainInsecure.zip
+WebSocketMain.swf
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src:
+build.sh
+com
+IWebSocketLogger.as
+WebSocket.as
+WebSocketEvent.as
+WebSocketMain.as
+WebSocketMainInsecure.as
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com:
+adobe
+gsolo
+hurlant
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/adobe:
+net
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/adobe/net:
+proxies
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/adobe/net/proxies:
+RFC2817Socket.as
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/gsolo:
+encryption
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/gsolo/encryption:
+MD5.as
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant:
+crypto
+math
+util
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto:
+cert
+Crypto.as
+hash
+prng
+rsa
+symmetric
+tests
+tls
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/cert:
+MozillaRootCertificates.as
+X509Certificate.as
+X509CertificateCollection.as
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/hash:
+HMAC.as
+IHash.as
+IHMAC.as
+MAC.as
+MD2.as
+MD5.as
+SHA1.as
+SHA224.as
+SHA256.as
+SHABase.as
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/prng:
+ARC4.as
+IPRNG.as
+Random.as
+TLSPRF.as
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/rsa:
+RSAKey.as
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/symmetric:
+AESKey.as
+aeskey.pl
+BlowFishKey.as
+CBCMode.as
+CFB8Mode.as
+CFBMode.as
+CTRMode.as
+DESKey.as
+dump.txt
+ECBMode.as
+ICipher.as
+IMode.as
+IPad.as
+IStreamCipher.as
+ISymmetricKey.as
+IVMode.as
+NullPad.as
+OFBMode.as
+PKCS5.as
+SimpleIVMode.as
+SSLPad.as
+TLSPad.as
+TripleDESKey.as
+XTeaKey.as
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/tests:
+AESKeyTest.as
+ARC4Test.as
+BigIntegerTest.as
+BlowFishKeyTest.as
+CBCModeTest.as
+CFB8ModeTest.as
+CFBModeTest.as
+CTRModeTest.as
+DESKeyTest.as
+ECBModeTest.as
+HMACTest.as
+ITestHarness.as
+MD2Test.as
+MD5Test.as
+OFBModeTest.as
+RSAKeyTest.as
+SHA1Test.as
+SHA224Test.as
+SHA256Test.as
+TestCase.as
+TLSPRFTest.as
+TripleDESKeyTest.as
+XTeaKeyTest.as
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/tls:
+BulkCiphers.as
+CipherSuites.as
+IConnectionState.as
+ISecurityParameters.as
+KeyExchanges.as
+MACs.as
+SSLConnectionState.as
+SSLEvent.as
+SSLSecurityParameters.as
+TLSConfig.as
+TLSConnectionState.as
+TLSEngine.as
+TLSError.as
+TLSEvent.as
+TLSSecurityParameters.as
+TLSSocket.as
+TLSSocketEvent.as
+TLSTest.as
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/math:
+BarrettReduction.as
+BigInteger.as
+bi_internal.as
+ClassicReduction.as
+IReduction.as
+MontgomeryReduction.as
+NullReduction.as
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/util:
+ArrayUtil.as
+Base64.as
+der
+Hex.as
+Memory.as
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/util/der:
+ByteString.as
+DER.as
+IAsn1Type.as
+Integer.as
+ObjectIdentifier.as
+OID.as
+PEM.as
+PrintableString.as
+Sequence.as
+Set.as
+Type.as
+UTCTime.as
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/node_modules:
+active-x-obfuscator
+uglify-js
+ws
+xmlhttprequest
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/node_modules/active-x-obfuscator:
+index.js
+node_modules
+package.json
+Readme.md
+test.js
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/node_modules/active-x-obfuscator/node_modules:
+zeparser
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/node_modules/active-x-obfuscator/node_modules/zeparser:
+benchmark.html
+index.js
+LICENSE
+package.json
+README
+test-parser.html
+tests.js
+test-tokenizer.html
+Tokenizer.js
+unicodecategories.js
+ZeParser.js
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/node_modules/uglify-js:
+bin
+docstyle.css
+lib
+package.json
+package.json~
+README.html
+README.org
+test
+tmp
+uglify-js.js
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/node_modules/uglify-js/bin:
+uglifyjs
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/node_modules/uglify-js/lib:
+object-ast.js
+parse-js.js
+process.js
+squeeze-more.js
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/node_modules/uglify-js/test:
+beautify.js
+testparser.js
+unit
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/node_modules/uglify-js/test/unit:
+compress
+scripts.js
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/node_modules/uglify-js/test/unit/compress:
+expected
+test
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/node_modules/uglify-js/test/unit/compress/expected:
+array1.js
+array2.js
+array3.js
+array4.js
+assignment.js
+concatstring.js
+const.js
+empty-blocks.js
+forstatement.js
+if.js
+ifreturn2.js
+ifreturn.js
+issue10.js
+issue11.js
+issue13.js
+issue14.js
+issue16.js
+issue17.js
+issue20.js
+issue21.js
+issue25.js
+issue278.js
+issue27.js
+issue28.js
+issue29.js
+issue30.js
+issue34.js
+issue48.js
+issue4.js
+issue50.js
+issue53.js
+issue54.1.js
+issue68.js
+issue69.js
+issue9.js
+mangle.js
+null_string.js
+strict-equals.js
+var.js
+whitespace.js
+with.js
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/node_modules/uglify-js/test/unit/compress/test:
+array1.js
+array2.js
+array3.js
+array4.js
+assignment.js
+concatstring.js
+const.js
+empty-blocks.js
+forstatement.js
+if.js
+ifreturn2.js
+ifreturn.js
+issue10.js
+issue11.js
+issue13.js
+issue14.js
+issue16.js
+issue17.js
+issue20.js
+issue21.js
+issue25.js
+issue278.js
+issue27.js
+issue28.js
+issue29.js
+issue30.js
+issue34.js
+issue48.js
+issue4.js
+issue50.js
+issue53.js
+issue54.1.js
+issue68.js
+issue69.js
+issue9.js
+mangle.js
+null_string.js
+strict-equals.js
+var.js
+whitespace.js
+with.js
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/node_modules/uglify-js/tmp:
+269.js
+app.js
+embed-tokens.js
+goto2.js
+goto.js
+hoist.js
+instrument2.js
+instrument.js
+liftvars.js
+test.js
+uglify-hangs2.js
+uglify-hangs.js
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/node_modules/ws:
+bench
+bin
+binding.gyp
+build
+builderror.log
+doc
+examples
+History.md
+index.js
+lib
+Makefile
+node_modules
+package.json
+README.md
+src
+test
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/node_modules/ws/bench:
+parser.benchmark.js
+sender.benchmark.js
+speed.js
+util.js
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/node_modules/ws/bin:
+wscat
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/node_modules/ws/build:
+config.gypi
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/node_modules/ws/doc:
+ws.md
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/node_modules/ws/examples:
+fileapi
+serverstats
+serverstats-express_3
+ssl.js
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/node_modules/ws/examples/fileapi:
+package.json
+public
+server.js
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/node_modules/ws/examples/fileapi/public:
+app.js
+index.html
+uploader.js
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/node_modules/ws/examples/serverstats:
+package.json
+public
+server.js
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/node_modules/ws/examples/serverstats/public:
+index.html
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/node_modules/ws/examples/serverstats-express_3:
+package.json
+public
+server.js
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/node_modules/ws/examples/serverstats-express_3/public:
+index.html
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/node_modules/ws/lib:
+browser.js
+BufferPool.js
+BufferUtil.fallback.js
+BufferUtil.js
+ErrorCodes.js
+Receiver.hixie.js
+Receiver.js
+Sender.hixie.js
+Sender.js
+Validation.fallback.js
+Validation.js
+WebSocket.js
+WebSocketServer.js
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/node_modules/ws/node_modules:
+commander
+nan
+options
+tinycolor
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/node_modules/ws/node_modules/commander:
+History.md
+index.js
+lib
+Makefile
+package.json
+Readme.md
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/node_modules/ws/node_modules/commander/lib:
+commander.js
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/node_modules/ws/node_modules/nan:
+LICENSE
+nan.h
+package.json
+README.md
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/node_modules/ws/node_modules/options:
+lib
+Makefile
+package.json
+README.md
+test
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/node_modules/ws/node_modules/options/lib:
+options.js
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/node_modules/ws/node_modules/options/test:
+fixtures
+options.test.js
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/node_modules/ws/node_modules/options/test/fixtures:
+test.conf
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/node_modules/ws/node_modules/tinycolor:
+example.js
+package.json
+README.md
+tinycolor.js
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/node_modules/ws/src:
+bufferutil.cc
+validation.cc
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/node_modules/ws/test:
+autobahn.js
+autobahn-server.js
+BufferPool.test.js
+fixtures
+hybi-common.js
+Receiver.hixie.test.js
+Receiver.test.js
+Sender.hixie.test.js
+Sender.test.js
+testserver.js
+Validation.test.js
+WebSocket.integration.js
+WebSocketServer.test.js
+WebSocket.test.js
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/node_modules/ws/test/fixtures:
+agent1-cert.pem
+agent1-key.pem
+ca1-cert.pem
+ca1-key.pem
+certificate.pem
+key.pem
+request.pem
+textfile
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/node_modules/xmlhttprequest:
+autotest.watchr
+example
+lib
+package.json
+README.md
+tests
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/node_modules/xmlhttprequest/example:
+demo.js
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/node_modules/xmlhttprequest/lib:
+XMLHttpRequest.js
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/node_modules/xmlhttprequest/tests:
+test-constants.js
+testdata.txt
+test-events.js
+test-exceptions.js
+test-headers.js
+test-request-methods.js
+test-request-protocols.js
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/test:
+events.test.js
+io.test.js
+node
+parser.test.js
+socket.test.js
+util.test.js
+worker.js
+
+reveal.js/node_modules/socket.io/node_modules/socket.io-client/test/node:
+builder.common.js
+builder.test.js
+
+reveal.js/node_modules/underscore:
+LICENSE
+package.json
+README.md
+underscore.js
+underscore-min.js
 
 reveal.js/plugin:
 highlight
@@ -47668,6 +52511,30 @@ search.js
 reveal.js/plugin/zoom-js:
 zoom.js
 
+reveal.js/test:
+examples
+qunit-1.12.0.css
+qunit-1.12.0.js
+test.html
+test.js
+test-markdown-element-attributes.html
+test-markdown-element-attributes.js
+test-markdown.html
+test-markdown.js
+test-markdown-slide-attributes.html
+test-markdown-slide-attributes.js
+
+reveal.js/test/examples:
+assets
+barebones.html
+embedded-media.html
+math.html
+slide-backgrounds.html
+
+reveal.js/test/examples/assets:
+image1.png
+image2.png
+
 ************** File: tmp_slides_html_all.sh *****************
 #!/bin/sh
 
@@ -47678,13 +52545,33 @@ doconce format html slides1 --pygments_html_style=monokai --keep_pygments_html_b
 doconce slides_html slides1 csss --html_slide_theme=csss_default
 cp slides1.html slides1_csss_csss_default.html
 
-doconce format html slides1 --pygments_html_style=perldoc --keep_pygments_html_bg SLIDE_TYPE=reveal SLIDE_THEME=beigesmall
-doconce slides_html slides1 reveal --html_slide_theme=beigesmall
-cp slides1.html slides1_reveal_beigesmall.html
+doconce format html slides1 --pygments_html_style=default --keep_pygments_html_bg SLIDE_TYPE=reveal SLIDE_THEME=cbc
+doconce slides_html slides1 reveal --html_slide_theme=cbc
+cp slides1.html slides1_reveal_cbc.html
 
 doconce format html slides1 --pygments_html_style=autumn --keep_pygments_html_bg SLIDE_TYPE=reveal SLIDE_THEME=simple
 doconce slides_html slides1 reveal --html_slide_theme=simple
 cp slides1.html slides1_reveal_simple.html
+
+doconce format html slides1 --pygments_html_style=perldoc --keep_pygments_html_bg SLIDE_TYPE=reveal SLIDE_THEME=serif
+doconce slides_html slides1 reveal --html_slide_theme=serif
+cp slides1.html slides1_reveal_serif.html
+
+doconce format html slides1 --pygments_html_style=monokai --keep_pygments_html_bg SLIDE_TYPE=reveal SLIDE_THEME=blood
+doconce slides_html slides1 reveal --html_slide_theme=blood
+cp slides1.html slides1_reveal_blood.html
+
+doconce format html slides1 --pygments_html_style=autumn --keep_pygments_html_bg SLIDE_TYPE=reveal SLIDE_THEME=simula
+doconce slides_html slides1 reveal --html_slide_theme=simula
+cp slides1.html slides1_reveal_simula.html
+
+doconce format html slides1 --pygments_html_style=perldoc --keep_pygments_html_bg SLIDE_TYPE=reveal SLIDE_THEME=solarized
+doconce slides_html slides1 reveal --html_slide_theme=solarized
+cp slides1.html slides1_reveal_solarized.html
+
+doconce format html slides1 --pygments_html_style=perldoc --keep_pygments_html_bg SLIDE_TYPE=reveal SLIDE_THEME=beigesmall
+doconce slides_html slides1 reveal --html_slide_theme=beigesmall
+cp slides1.html slides1_reveal_beigesmall.html
 
 doconce format html slides1 --pygments_html_style=native --keep_pygments_html_bg SLIDE_TYPE=reveal SLIDE_THEME=darkgray
 doconce slides_html slides1 reveal --html_slide_theme=darkgray
@@ -47694,9 +52581,9 @@ doconce format html slides1 --pygments_html_style=default --keep_pygments_html_b
 doconce slides_html slides1 reveal --html_slide_theme=sky
 cp slides1.html slides1_reveal_sky.html
 
-doconce format html slides1 --pygments_html_style=perldoc --keep_pygments_html_bg SLIDE_TYPE=reveal SLIDE_THEME=serif
-doconce slides_html slides1 reveal --html_slide_theme=serif
-cp slides1.html slides1_reveal_serif.html
+doconce format html slides1 --pygments_html_style=fruity --keep_pygments_html_bg SLIDE_TYPE=reveal SLIDE_THEME=moon
+doconce slides_html slides1 reveal --html_slide_theme=moon
+cp slides1.html slides1_reveal_moon.html
 
 doconce format html slides1 --pygments_html_style=perldoc --keep_pygments_html_bg SLIDE_TYPE=reveal SLIDE_THEME=beige
 doconce slides_html slides1 reveal --html_slide_theme=beige
@@ -48398,7 +53285,7 @@ Python implementation:
         <span style="color: #AA22FF; font-weight: bold">return</span> f(x, y, t)
 
 f2 <span style="color: #666666">=</span> Fancy()
-</code></pre></div>
+</pre></div>
 <p>
 
 </section>
@@ -48518,9 +53405,9 @@ deck.js:
 boilerplate.html
 core
 extensions
-GPL-license.txt
 introduction
-jquery-1.7.2.min.js
+jquery.min.js
+Makefile
 MIT-license.txt
 modernizr.custom.js
 README.md
@@ -48531,12 +53418,13 @@ deck.js/core:
 deck.core.css
 deck.core.js
 deck.core.scss
+print.css
+print.scss
 
 deck.js/extensions:
 codemirror
 deck.annotate.js
 goto
-hash
 menu
 navigation
 notes
@@ -48697,6 +53585,7 @@ neat.css
 night.css
 
 deck.js/extensions/deck.annotate.js:
+bower.json
 deck.annotate.css
 deck.annotate.js
 example.png
@@ -48707,12 +53596,6 @@ deck.goto.css
 deck.goto.html
 deck.goto.js
 deck.goto.scss
-
-deck.js/extensions/hash:
-deck.hash.css
-deck.hash.html
-deck.hash.js
-deck.hash.scss
 
 deck.js/extensions/menu:
 deck.menu.css
@@ -48764,17 +53647,13 @@ lib
 settings.js
 spec.core.js
 spec.goto.js
-spec.hash.js
 spec.menu.js
 spec.navigation.js
 spec.scale.js
 spec.status.js
 
 deck.js/test/fixtures:
-complex.html
 empty.html
-iframes.html
-iframe_simple.html
 nesteds.html
 standard.html
 
@@ -48794,6 +53673,7 @@ beamer.scss
 mnml.css
 neon.css
 neon.scss
+_reset.scss
 sandstone.aurora.css
 sandstone.css
 sandstone.dark.css
@@ -48836,12 +53716,13 @@ vertical-slide.scss
 %% Many preprocess options can be added to ptex2tex or doconce ptex2tex
 %%
 %%      ptex2tex -DMINTED -DPALATINO -DA6PAPER -DLATEX_HEADING=traditional myfile
-%%      doconce ptex2tex myfile -DMINTED -DLATEX_HEADING=titlepage
+%%      doconce ptex2tex myfile -DLATEX_HEADING=titlepage envir=minted
 %%
 %% ptex2tex will typeset code environments according to a global or local
 %% .ptex2tex.cfg configure file. doconce ptex2tex will typeset code
 %% according to options on the command line (just type doconce ptex2tex to
-%% see examples).
+%% see examples). If doconce ptex2tex has envir=minted, it enables the
+%% minted style without needing -DMINTED.
 % #endif
 
 % #ifndef LATEX_STYLE
@@ -49140,6 +54021,7 @@ final,                   % or draft (marks overfull hboxes)
 \oldtabular}{\endoldtabular}
 % #endif
 
+
 % --- end of standard preamble for documents ---
 
 
@@ -49420,7 +54302,7 @@ title (Warning) since no title is specified. \par}
 % LaTeX Beamer file automatically generated from Doconce
 % https://github.com/hplgit/doconce
 
-%-------------------- begin preamble ----------------------
+%-------------------- begin beamer-specific preamble ----------------------
 
 \documentclass{beamer}
 
@@ -49450,7 +54332,12 @@ title (Warning) since no title is specified. \par}
 \usepackage{pgf,pgfarrows,pgfnodes,pgfautomata,pgfheaps,pgfshade}
 \usepackage{graphicx}
 \usepackage{epsfig}
-\usepackage{fancyvrb,relsize}
+\usepackage{relsize}
+
+\usepackage{fancyvrb}
+%\usepackage{minted} % requires pygments and latex -shell-escape filename
+%\usepackage{anslistings}
+
 \usepackage{amsmath,amssymb,bm}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
@@ -49513,6 +54400,16 @@ title (Warning) since no title is specified. \par}
 \newenvironment{graybox1admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{graybox2admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newcommand{\grayboxhrules}[1]{\begin{block}{}#1\end{block}}
+
+\newenvironment{doconce:exercise}{}{}
+\newcounter{doconce:exercise:counter}
+\newenvironment{doconce:movie}{}{}
+\newcounter{doconce:movie:counter}
+
+%-------------------- end beamer-specific preamble ----------------------
+
+% Add user's preamble
+
 
 
 
@@ -50310,6 +55207,8 @@ FIGURE: [../doc/src/slides/fig/broken_pen_and_paper, width=400]
 
 <!-- reveal.js: http://lab.hakim.se/reveal-js/ -->
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
@@ -50317,15 +55216,24 @@ FIGURE: [../doc/src/slides/fig/broken_pen_and_paper, width=400]
 <link rel="stylesheet" href="reveal.js/css/theme/beige.css" id="theme">
 <!--
 <link rel="stylesheet" href="reveal.js/css/reveal.css">
-<link rel="stylesheet" href="reveal.js/css/reveal.min.css">
 <link rel="stylesheet" href="reveal.js/css/theme/beige.css" id="theme">
 <link rel="stylesheet" href="reveal.js/css/theme/beigesmall.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/solarized.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/serif.css" id="theme">
 <link rel="stylesheet" href="reveal.js/css/theme/night.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/moon.css" id="theme">
 <link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">
 <link rel="stylesheet" href="reveal.js/css/theme/sky.css" id="theme">
 <link rel="stylesheet" href="reveal.js/css/theme/darkgray.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/default.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/cbc.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/simula.css" id="theme">
 -->
 
+<!-- For syntax highlighting -->
+<link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+<!-- If the query includes 'print-pdf', use the PDF print sheet -->
 <script>
 document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
 </script>
@@ -51449,29 +56357,138 @@ $$ -\nabla^2 u = f \quad\hbox{in }\Omega $$
 <script src="reveal.js/js/reveal.min.js"></script>
 
 <script>
-
 // Full list of configuration options available here:
 // https://github.com/hakimel/reveal.js#configuration
 Reveal.initialize({
-controls: true,
-progress: true,
-history: true,
-center: true,
-theme: Reveal.getQueryHash().theme, // available themes are in reveal.js/css/theme
-transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
 
-// Optional libraries used to extend on reveal.js
-dependencies: [
-{ src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-{ src: 'reveal.js/plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-{ src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-{ src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-{ src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-{ src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
-// { src: 'reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
-]
+    // Display navigation controls in the bottom right corner
+    controls: true,
+
+    // Display progress bar (below the horiz. slider)
+    progress: true,
+
+    // Display the page number of the current slide
+    slideNumber: true,
+
+    // Push each slide change to the browser history
+    history: false,
+
+    // Enable keyboard shortcuts for navigation
+    keyboard: true,
+
+    // Enable the slide overview mode
+    overview: true,
+
+    // Vertical centering of slides
+    //center: true,
+    center: false,
+
+    // Enables touch navigation on devices with touch input
+    touch: true,
+
+    // Loop the presentation
+    loop: false,
+
+    // Change the presentation direction to be RTL
+    rtl: false,
+
+    // Turns fragments on and off globally
+    fragments: true,
+
+    // Flags if the presentation is running in an embedded mode,
+    // i.e. contained within a limited portion of the screen
+    embedded: false,
+
+    // Number of milliseconds between automatically proceeding to the
+    // next slide, disabled when set to 0, this value can be overwritten
+    // by using a data-autoslide attribute on your slides
+    autoSlide: 0,
+
+    // Stop auto-sliding after user input
+    autoSlideStoppable: true,
+
+    // Enable slide navigation via mouse wheel
+    mouseWheel: false,
+
+    // Hides the address bar on mobile devices
+    hideAddressBar: true,
+
+    // Opens links in an iframe preview overlay
+    previewLinks: false,
+
+    // Transition style
+    transition: 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+    // Transition speed
+    transitionSpeed: 'default', // default/fast/slow
+
+    // Transition style for full page slide backgrounds
+    backgroundTransition: 'default', // default/none/slide/concave/convex/zoom
+
+    // Number of slides away from the current that are visible
+    viewDistance: 3,
+
+    // Parallax background image
+    //parallaxBackgroundImage: '', // e.g. "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'"
+
+    // Parallax background size
+    //parallaxBackgroundSize: '' // CSS syntax, e.g. "2100px 900px"
+
+    theme: Reveal.getQueryHash().theme, // available themes are in reveal.js/css/theme
+    transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
+
+});
+
+Reveal.initialize({
+    dependencies: [
+        // Cross-browser shim that fully implements classList - https://github.com/eligrey/classList.js/
+        { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+
+        // Interpret Markdown in <section> elements
+        { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+        { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+
+        // Syntax highlight for <code> elements
+        { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+
+        // Zoom in and out with Alt+click
+        { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+
+        // Speaker notes
+        { src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+
+        // Remote control your reveal.js presentation using a touch device
+        //{ src: 'reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } },
+
+        // MathJax
+        //{ src: 'reveal.js/plugin/math/math.js', async: true }
+    ]
+});
+
+Reveal.initialize({
+
+    // The "normal" size of the presentation, aspect ratio will be preserved
+    // when the presentation is scaled to fit different resolutions. Can be
+    // specified using percentage units.
+    width:  960,
+    height: 700,
+
+    // Factor of the display size that should remain empty around the content
+    margin: 0.1,
+
+    // Bounds for smallest/largest possible scale to apply to content
+    minScale: 0.2,
+    maxScale: 1.0
+
 });
 </script>
+
+<!-- begin footer logo
+<div style="position: absolute; bottom: 0px; left: 0; margin-left: 0px">
+<img src="somelogo.png">
+</div>
+     end footer logo -->
+
 
 
 </body>
@@ -51497,12 +56514,13 @@ dependencies: [
 %% Many preprocess options can be added to ptex2tex or doconce ptex2tex
 %%
 %%      ptex2tex -DMINTED -DPALATINO -DA6PAPER -DLATEX_HEADING=traditional myfile
-%%      doconce ptex2tex myfile -DMINTED -DLATEX_HEADING=titlepage
+%%      doconce ptex2tex myfile -DLATEX_HEADING=titlepage envir=minted
 %%
 %% ptex2tex will typeset code environments according to a global or local
 %% .ptex2tex.cfg configure file. doconce ptex2tex will typeset code
 %% according to options on the command line (just type doconce ptex2tex to
-%% see examples).
+%% see examples). If doconce ptex2tex has envir=minted, it enables the
+%% minted style without needing -DMINTED.
 % #endif
 
 % #ifndef LATEX_STYLE
@@ -51790,10 +56808,11 @@ open=right               % start new chapters on odd-numbered pages
 \oldtabular}{\endoldtabular}
 % #endif
 
-% --- end of standard preamble for documents ---
 
 \newenvironment{doconce:exercise}{}{}
 \newcounter{doconce:exercise:counter}
+
+% --- end of standard preamble for documents ---
 
 
 % insert custom LaTeX commands...
@@ -52745,7 +57764,7 @@ Last page gets rendered to
 % LaTeX Beamer file automatically generated from Doconce
 % https://github.com/hplgit/doconce
 
-%-------------------- begin preamble ----------------------
+%-------------------- begin beamer-specific preamble ----------------------
 
 \documentclass{beamer}
 
@@ -52775,8 +57794,12 @@ Last page gets rendered to
 \usepackage{pgf,pgfarrows,pgfnodes,pgfautomata,pgfheaps,pgfshade}
 \usepackage{graphicx}
 \usepackage{epsfig}
+\usepackage{relsize}
+
+\usepackage{fancyvrb}
 \usepackage{minted} % requires pygments and latex -shell-escape filename
-\usepackage{fancyvrb,relsize}
+%\usepackage{anslistings}
+
 \usepackage{amsmath,amssymb,bm}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
@@ -52840,9 +57863,16 @@ Last page gets rendered to
 \newenvironment{graybox2admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newcommand{\grayboxhrules}[1]{\begin{block}{}#1\end{block}}
 
-
 \newenvironment{doconce:exercise}{}{}
 \newcounter{doconce:exercise:counter}
+\newenvironment{doconce:movie}{}{}
+\newcounter{doconce:movie:counter}
+
+%-------------------- end beamer-specific preamble ----------------------
+
+% Add user's preamble
+
+
 
 
 % insert custom LaTeX commands...
@@ -53858,6 +58888,8 @@ qualitatively correct results.
 
 <!-- reveal.js: http://lab.hakim.se/reveal-js/ -->
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
@@ -53865,15 +58897,24 @@ qualitatively correct results.
 <link rel="stylesheet" href="reveal.js/css/theme/beige.css" id="theme">
 <!--
 <link rel="stylesheet" href="reveal.js/css/reveal.css">
-<link rel="stylesheet" href="reveal.js/css/reveal.min.css">
 <link rel="stylesheet" href="reveal.js/css/theme/beige.css" id="theme">
 <link rel="stylesheet" href="reveal.js/css/theme/beigesmall.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/solarized.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/serif.css" id="theme">
 <link rel="stylesheet" href="reveal.js/css/theme/night.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/moon.css" id="theme">
 <link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">
 <link rel="stylesheet" href="reveal.js/css/theme/sky.css" id="theme">
 <link rel="stylesheet" href="reveal.js/css/theme/darkgray.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/default.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/cbc.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/simula.css" id="theme">
 -->
 
+<!-- For syntax highlighting -->
+<link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+<!-- If the query includes 'print-pdf', use the PDF print sheet -->
 <script>
 document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
 </script>
@@ -54240,29 +59281,138 @@ qualitatively correct results.
 <script src="reveal.js/js/reveal.min.js"></script>
 
 <script>
-
 // Full list of configuration options available here:
 // https://github.com/hakimel/reveal.js#configuration
 Reveal.initialize({
-controls: true,
-progress: true,
-history: true,
-center: true,
-theme: Reveal.getQueryHash().theme, // available themes are in reveal.js/css/theme
-transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
 
-// Optional libraries used to extend on reveal.js
-dependencies: [
-{ src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-{ src: 'reveal.js/plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-{ src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-{ src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-{ src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-{ src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
-// { src: 'reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
-]
+    // Display navigation controls in the bottom right corner
+    controls: true,
+
+    // Display progress bar (below the horiz. slider)
+    progress: true,
+
+    // Display the page number of the current slide
+    slideNumber: true,
+
+    // Push each slide change to the browser history
+    history: false,
+
+    // Enable keyboard shortcuts for navigation
+    keyboard: true,
+
+    // Enable the slide overview mode
+    overview: true,
+
+    // Vertical centering of slides
+    //center: true,
+    center: false,
+
+    // Enables touch navigation on devices with touch input
+    touch: true,
+
+    // Loop the presentation
+    loop: false,
+
+    // Change the presentation direction to be RTL
+    rtl: false,
+
+    // Turns fragments on and off globally
+    fragments: true,
+
+    // Flags if the presentation is running in an embedded mode,
+    // i.e. contained within a limited portion of the screen
+    embedded: false,
+
+    // Number of milliseconds between automatically proceeding to the
+    // next slide, disabled when set to 0, this value can be overwritten
+    // by using a data-autoslide attribute on your slides
+    autoSlide: 0,
+
+    // Stop auto-sliding after user input
+    autoSlideStoppable: true,
+
+    // Enable slide navigation via mouse wheel
+    mouseWheel: false,
+
+    // Hides the address bar on mobile devices
+    hideAddressBar: true,
+
+    // Opens links in an iframe preview overlay
+    previewLinks: false,
+
+    // Transition style
+    transition: 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+    // Transition speed
+    transitionSpeed: 'default', // default/fast/slow
+
+    // Transition style for full page slide backgrounds
+    backgroundTransition: 'default', // default/none/slide/concave/convex/zoom
+
+    // Number of slides away from the current that are visible
+    viewDistance: 3,
+
+    // Parallax background image
+    //parallaxBackgroundImage: '', // e.g. "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'"
+
+    // Parallax background size
+    //parallaxBackgroundSize: '' // CSS syntax, e.g. "2100px 900px"
+
+    theme: Reveal.getQueryHash().theme, // available themes are in reveal.js/css/theme
+    transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
+
+});
+
+Reveal.initialize({
+    dependencies: [
+        // Cross-browser shim that fully implements classList - https://github.com/eligrey/classList.js/
+        { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+
+        // Interpret Markdown in <section> elements
+        { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+        { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+
+        // Syntax highlight for <code> elements
+        { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+
+        // Zoom in and out with Alt+click
+        { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+
+        // Speaker notes
+        { src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+
+        // Remote control your reveal.js presentation using a touch device
+        //{ src: 'reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } },
+
+        // MathJax
+        //{ src: 'reveal.js/plugin/math/math.js', async: true }
+    ]
+});
+
+Reveal.initialize({
+
+    // The "normal" size of the presentation, aspect ratio will be preserved
+    // when the presentation is scaled to fit different resolutions. Can be
+    // specified using percentage units.
+    width:  960,
+    height: 700,
+
+    // Factor of the display size that should remain empty around the content
+    margin: 0.1,
+
+    // Bounds for smallest/largest possible scale to apply to content
+    minScale: 0.2,
+    maxScale: 1.0
+
 });
 </script>
+
+<!-- begin footer logo
+<div style="position: absolute; bottom: 0px; left: 0; margin-left: 0px">
+<img src="somelogo.png">
+</div>
+     end footer logo -->
+
 
 
 </body>
@@ -54288,12 +59438,13 @@ dependencies: [
 %% Many preprocess options can be added to ptex2tex or doconce ptex2tex
 %%
 %%      ptex2tex -DMINTED -DPALATINO -DA6PAPER -DLATEX_HEADING=traditional myfile
-%%      doconce ptex2tex myfile -DMINTED -DLATEX_HEADING=titlepage
+%%      doconce ptex2tex myfile -DLATEX_HEADING=titlepage envir=minted
 %%
 %% ptex2tex will typeset code environments according to a global or local
 %% .ptex2tex.cfg configure file. doconce ptex2tex will typeset code
 %% according to options on the command line (just type doconce ptex2tex to
-%% see examples).
+%% see examples). If doconce ptex2tex has envir=minted, it enables the
+%% minted style without needing -DMINTED.
 % #endif
 
 % #ifndef LATEX_STYLE
@@ -54553,6 +59704,7 @@ final,                   % or draft (marks overfull hboxes)
 \renewenvironment{tabular}{\rowcolors{2}{white}{appleblue}%
 \oldtabular}{\endoldtabular}
 % #endif
+
 
 % --- end of standard preamble for documents ---
 
@@ -54862,7 +60014,7 @@ qualitatively correct results.
 % LaTeX Beamer file automatically generated from Doconce
 % https://github.com/hplgit/doconce
 
-%-------------------- begin preamble ----------------------
+%-------------------- begin beamer-specific preamble ----------------------
 
 \documentclass{beamer}
 
@@ -54892,8 +60044,12 @@ qualitatively correct results.
 \usepackage{pgf,pgfarrows,pgfnodes,pgfautomata,pgfheaps,pgfshade}
 \usepackage{graphicx}
 \usepackage{epsfig}
+\usepackage{relsize}
+
+\usepackage{fancyvrb}
 \usepackage{minted} % requires pygments and latex -shell-escape filename
-\usepackage{fancyvrb,relsize}
+%\usepackage{anslistings}
+
 \usepackage{amsmath,amssymb,bm}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
@@ -54956,6 +60112,16 @@ qualitatively correct results.
 \newenvironment{graybox1admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{graybox2admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newcommand{\grayboxhrules}[1]{\begin{block}{}#1\end{block}}
+
+\newenvironment{doconce:exercise}{}{}
+\newcounter{doconce:exercise:counter}
+\newenvironment{doconce:movie}{}{}
+\newcounter{doconce:movie:counter}
+
+%-------------------- end beamer-specific preamble ----------------------
+
+% Add user's preamble
+
 
 
 
@@ -56829,12 +61995,13 @@ Finally, let us demonstrate referencing the movie <a href="#mov:wave">mov:wave</
 %% Many preprocess options can be added to ptex2tex or doconce ptex2tex
 %%
 %%      ptex2tex -DMINTED -DPALATINO -DA6PAPER -DLATEX_HEADING=traditional myfile
-%%      doconce ptex2tex myfile -DMINTED -DLATEX_HEADING=titlepage
+%%      doconce ptex2tex myfile -DLATEX_HEADING=titlepage envir=minted
 %%
 %% ptex2tex will typeset code environments according to a global or local
 %% .ptex2tex.cfg configure file. doconce ptex2tex will typeset code
 %% according to options on the command line (just type doconce ptex2tex to
-%% see examples).
+%% see examples). If doconce ptex2tex has envir=minted, it enables the
+%% minted style without needing -DMINTED.
 % #endif
 
 % #ifndef LATEX_STYLE
@@ -57092,6 +62259,7 @@ final,                   % or draft (marks overfull hboxes)
 \renewenvironment{tabular}{\rowcolors{2}{white}{appleblue}%
 \oldtabular}{\endoldtabular}
 % #endif
+
 
 % --- end of standard preamble for documents ---
 
@@ -57731,6 +62899,7 @@ final,                   % or draft (marks overfull hboxes)
 
 
 
+
 % --- end of standard preamble for documents ---
 
 
@@ -58133,6 +63302,7 @@ final,                   % or draft (marks overfull hboxes)
 % prevent orhpans and widows
 \clubpenalty = 10000
 \widowpenalty = 10000
+
 
 
 
@@ -61865,12 +67035,13 @@ examine the Doconce source and the <code>doc/src/make.sh</code> script).
 %% Many preprocess options can be added to ptex2tex or doconce ptex2tex
 %%
 %%      ptex2tex -DMINTED -DPALATINO -DA6PAPER -DLATEX_HEADING=traditional myfile
-%%      doconce ptex2tex myfile -DMINTED -DLATEX_HEADING=titlepage
+%%      doconce ptex2tex myfile -DLATEX_HEADING=titlepage envir=minted
 %%
 %% ptex2tex will typeset code environments according to a global or local
 %% .ptex2tex.cfg configure file. doconce ptex2tex will typeset code
 %% according to options on the command line (just type doconce ptex2tex to
-%% see examples).
+%% see examples). If doconce ptex2tex has envir=minted, it enables the
+%% minted style without needing -DMINTED.
 % #endif
 
 % #ifndef LATEX_STYLE
@@ -62194,10 +67365,11 @@ final,                   % or draft (marks overfull hboxes)
 \oldtabular}{\endoldtabular}
 % #endif
 
-% --- end of standard preamble for documents ---
 
 \newenvironment{doconce:exercise}{}{}
 \newcounter{doconce:exercise:counter}
+
+% --- end of standard preamble for documents ---
 
 
 % insert custom LaTeX commands...
@@ -73489,6 +78661,21 @@ replacing Newton--Cotes by Newton-Cotes in testdoc.p.tex
 + ptex2tex -DMINTED -DLATEX_HEADING=titlepage -DA4PAPER -DTODONOTES -DLINENUMBERS -DCOLORED_TABLE_ROWS=blue -DFANCY_HEADER -DSECTION_HEADINGS=blue testdoc
 using local config file .ptex2tex.cfg
 running preprocessor on testdoc.p.tex...  defines: 'A4PAPER', 'MINTED', 'LATEX_HEADING', 'LINENUMBERS', 'SECTION_HEADINGS', 'COLORED_TABLE_ROWS', 'FANCY_HEADER', 'TODONOTES'  done
+
+*** warning: found inline verbatim "!bc" containing "!", which
+    is used as delimiter in \Verb!!bc! - avoid "!" in inline verbatim
+    (or use \emp{!bc} instead or use doconce ptex2tex which handles "!")
+
+
+*** warning: found inline verbatim "!ec" containing "!", which
+    is used as delimiter in \Verb!!ec! - avoid "!" in inline verbatim
+    (or use \emp{!ec} instead or use doconce ptex2tex which handles "!")
+
+
+*** warning: found inline verbatim "!bsummary" containing "!", which
+    is used as delimiter in \Verb!!bsummary! - avoid "!" in inline verbatim
+    (or use \emp{!bsummary} instead or use doconce ptex2tex which handles "!")
+
 done testdoc.p.tex -> testdoc.tex
 + '[' 0 -ne 0 ']'
 + system pdflatex -shell-escape testdoc
@@ -73640,8 +78827,7 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 
 
 (/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopat
-hs.code.tex))) (/usr/share/texlive/texmf-dist/tex/latex/todonotes/todonotes.sty
-
+hs.code.tex))) (/home/hpl/texmf/tex/latex/misc/todonotes.sty
 (/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryposit
 ioning.code.tex)
 (/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshado
@@ -73651,7 +78837,7 @@ gs.code.tex
 
 
 
-(/usr/share/texlive/texmf-dist/tex/latex/mdframed/mdframed.sty
+(/home/hpl/texmf/tex/latex/misc/mdframed.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/l3names.sty
@@ -73820,7 +79006,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 788.
+t line 789.
 
 
 
@@ -73840,7 +79026,7 @@ t line 788.
 
 
 
-t line 797.
+t line 798.
 
 
 
@@ -73860,7 +79046,7 @@ t line 797.
 
 
 
-t line 801.
+t line 802.
 
 
 
@@ -74161,7 +79347,7 @@ pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
 todonotes.sty    2012/07/25
   lineno.sty    2005/11/02 line numbers on paragraphs v4.41
 fancyhdr.sty    
-mdframed.sty    2013/07/01 1.9b: mdframed
+mdframed.sty    2013/08/18 1.9d: mdframed
   xparse.sty    2013/07/12 v4544 L3 Experimental document command parser
    expl3.sty    2013/07/12 v4544 L3 Experimental code bundle wrapper
  l3names.sty    2012/12/07 v4346 L3 Namespace for primitives
@@ -74191,7 +79377,7 @@ etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
 needspace.sty    2010/09/12 v1.3d reserve vertical space
-md-frame-1.mdf    2013/07/01\ 1.9b: md-frame-1
+md-frame-1.mdf    2013/08/18\ 1.9d: md-frame-1
 titlesec.sty    2011/12/15 v2.10.0 Sectioning titles
  ttlkeys.def    2011/12/15
  theorem.sty    1995/11/23 v2.2c Theorem extension package (FMi)
@@ -74426,8 +79612,7 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 
 
 (/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopat
-hs.code.tex))) (/usr/share/texlive/texmf-dist/tex/latex/todonotes/todonotes.sty
-
+hs.code.tex))) (/home/hpl/texmf/tex/latex/misc/todonotes.sty
 (/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryposit
 ioning.code.tex)
 (/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshado
@@ -74437,7 +79622,7 @@ gs.code.tex
 
 
 
-(/usr/share/texlive/texmf-dist/tex/latex/mdframed/mdframed.sty
+(/home/hpl/texmf/tex/latex/misc/mdframed.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/l3names.sty
@@ -74567,7 +79752,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 788.
+t line 789.
 
 
 
@@ -74587,7 +79772,7 @@ t line 788.
 
 
 
-t line 797.
+t line 798.
 
 
 
@@ -74607,7 +79792,7 @@ t line 797.
 
 
 
-t line 801.
+t line 802.
 
 
 
@@ -74813,7 +79998,7 @@ pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
 todonotes.sty    2012/07/25
   lineno.sty    2005/11/02 line numbers on paragraphs v4.41
 fancyhdr.sty    
-mdframed.sty    2013/07/01 1.9b: mdframed
+mdframed.sty    2013/08/18 1.9d: mdframed
   xparse.sty    2013/07/12 v4544 L3 Experimental document command parser
    expl3.sty    2013/07/12 v4544 L3 Experimental code bundle wrapper
  l3names.sty    2012/12/07 v4346 L3 Namespace for primitives
@@ -74843,7 +80028,7 @@ etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
 needspace.sty    2010/09/12 v1.3d reserve vertical space
-md-frame-1.mdf    2013/07/01\ 1.9b: md-frame-1
+md-frame-1.mdf    2013/08/18\ 1.9d: md-frame-1
 titlesec.sty    2011/12/15 v2.10.0 Sectioning titles
  ttlkeys.def    2011/12/15
  theorem.sty    1995/11/23 v2.2c Theorem extension package (FMi)
@@ -75092,8 +80277,7 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 
 
 (/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopat
-hs.code.tex))) (/usr/share/texlive/texmf-dist/tex/latex/todonotes/todonotes.sty
-
+hs.code.tex))) (/home/hpl/texmf/tex/latex/misc/todonotes.sty
 (/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryposit
 ioning.code.tex)
 (/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshado
@@ -75103,7 +80287,7 @@ gs.code.tex
 
 
 
-(/usr/share/texlive/texmf-dist/tex/latex/mdframed/mdframed.sty
+(/home/hpl/texmf/tex/latex/misc/mdframed.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/l3names.sty
@@ -75233,7 +80417,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 788.
+t line 789.
 
 
 
@@ -75253,7 +80437,7 @@ t line 788.
 
 
 
-t line 797.
+t line 798.
 
 
 
@@ -75273,7 +80457,7 @@ t line 797.
 
 
 
-t line 801.
+t line 802.
 
 
 
@@ -75481,7 +80665,7 @@ pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
 todonotes.sty    2012/07/25
   lineno.sty    2005/11/02 line numbers on paragraphs v4.41
 fancyhdr.sty    
-mdframed.sty    2013/07/01 1.9b: mdframed
+mdframed.sty    2013/08/18 1.9d: mdframed
   xparse.sty    2013/07/12 v4544 L3 Experimental document command parser
    expl3.sty    2013/07/12 v4544 L3 Experimental code bundle wrapper
  l3names.sty    2012/12/07 v4346 L3 Namespace for primitives
@@ -75511,7 +80695,7 @@ etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
 needspace.sty    2010/09/12 v1.3d reserve vertical space
-md-frame-1.mdf    2013/07/01\ 1.9b: md-frame-1
+md-frame-1.mdf    2013/08/18\ 1.9d: md-frame-1
 titlesec.sty    2011/12/15 v2.10.0 Sectioning titles
  ttlkeys.def    2011/12/15
  theorem.sty    1995/11/23 v2.2c Theorem extension package (FMi)
@@ -75744,8 +80928,7 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 
 
 (/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopat
-hs.code.tex))) (/usr/share/texlive/texmf-dist/tex/latex/todonotes/todonotes.sty
-
+hs.code.tex))) (/home/hpl/texmf/tex/latex/misc/todonotes.sty
 (/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryposit
 ioning.code.tex)
 (/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshado
@@ -75755,7 +80938,7 @@ gs.code.tex
 
 
 
-(/usr/share/texlive/texmf-dist/tex/latex/mdframed/mdframed.sty
+(/home/hpl/texmf/tex/latex/misc/mdframed.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/l3names.sty
@@ -76021,7 +81204,7 @@ pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
 todonotes.sty    2012/07/25
   lineno.sty    2005/11/02 line numbers on paragraphs v4.41
 fancyhdr.sty    
-mdframed.sty    2013/07/01 1.9b: mdframed
+mdframed.sty    2013/08/18 1.9d: mdframed
   xparse.sty    2013/07/12 v4544 L3 Experimental document command parser
    expl3.sty    2013/07/12 v4544 L3 Experimental code bundle wrapper
  l3names.sty    2012/12/07 v4346 L3 Namespace for primitives
@@ -76051,7 +81234,7 @@ etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
 needspace.sty    2010/09/12 v1.3d reserve vertical space
-md-frame-1.mdf    2013/07/01\ 1.9b: md-frame-1
+md-frame-1.mdf    2013/08/18\ 1.9d: md-frame-1
 titlesec.sty    2011/12/15 v2.10.0 Sectioning titles
  ttlkeys.def    2011/12/15
  theorem.sty    1995/11/23 v2.2c Theorem extension package (FMi)
@@ -78293,7 +83476,7 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
 
 
-(/usr/share/texlive/texmf-dist/tex/latex/mdframed/mdframed.sty
+(/home/hpl/texmf/tex/latex/misc/mdframed.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/l3names.sty
@@ -78444,7 +83627,12 @@ dmap/pdftex.map}] (./admon_graybox1.out.pyg)
 
 ...rest of part of LaTeX line number...
 
-(./admon_graybox1.out.pyg) [3]
+(./admon_graybox1.out.pyg)
+
+
+...rest of part of LaTeX line number...
+
+[3]
 
 
 ...rest of part of LaTeX line number...
@@ -78454,7 +83642,7 @@ dmap/pdftex.map}] (./admon_graybox1.out.pyg)
 ...rest of part of LaTeX line number...
 
 (./admon_graybox1.out.pyg) (./admon_graybox1.out.pyg)
-<../doc/src/manual/fig/wave1D.pdf, id=45, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=46, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf>
 
 
@@ -78465,17 +83653,13 @@ dmap/pdftex.map}] (./admon_graybox1.out.pyg)
 
 ...rest of part of LaTeX line number...
 
-[5]
-
-
-...rest of part of LaTeX line number...
-
+[5 <../doc/src/manual/fig/wave1D.pdf>]
 
 
 ...rest of part of LaTeX line number...
 
 No file admon_graybox1.ind.
-[6 <../doc/src/manual/fig/wave1D.pdf>] (./admon_graybox1.aux)
+[6] (./admon_graybox1.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -78558,7 +83742,7 @@ hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
  hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
-mdframed.sty    2013/07/01 1.9b: mdframed
+mdframed.sty    2013/08/18 1.9d: mdframed
   xparse.sty    2013/07/12 v4544 L3 Experimental document command parser
    expl3.sty    2013/07/12 v4544 L3 Experimental code bundle wrapper
  l3names.sty    2012/12/07 v4346 L3 Namespace for primitives
@@ -78606,7 +83790,7 @@ pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
  pgfkeys.code.tex
   pgffor.code.tex
     tikz.code.tex
-md-frame-1.mdf    2013/07/01\ 1.9b: md-frame-1
+md-frame-1.mdf    2013/08/18\ 1.9d: md-frame-1
    t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 supp-pdf.mkii
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
@@ -78758,7 +83942,7 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
 
 
-(/usr/share/texlive/texmf-dist/tex/latex/mdframed/mdframed.sty
+(/home/hpl/texmf/tex/latex/misc/mdframed.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/l3names.sty
@@ -78959,7 +84143,7 @@ hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
  hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
-mdframed.sty    2013/07/01 1.9b: mdframed
+mdframed.sty    2013/08/18 1.9d: mdframed
   xparse.sty    2013/07/12 v4544 L3 Experimental document command parser
    expl3.sty    2013/07/12 v4544 L3 Experimental code bundle wrapper
  l3names.sty    2012/12/07 v4346 L3 Namespace for primitives
@@ -79007,7 +84191,7 @@ pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
  pgfkeys.code.tex
   pgffor.code.tex
     tikz.code.tex
-md-frame-1.mdf    2013/07/01\ 1.9b: md-frame-1
+md-frame-1.mdf    2013/08/18\ 1.9d: md-frame-1
    t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 supp-pdf.mkii
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
@@ -79154,7 +84338,7 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 
 
 
-(/usr/share/texlive/texmf-dist/tex/latex/mdframed/mdframed.sty
+(/home/hpl/texmf/tex/latex/misc/mdframed.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/l3names.sty
@@ -79305,7 +84489,12 @@ dmap/pdftex.map}] (./admon_graybox2.out.pyg)
 
 ...rest of part of LaTeX line number...
 
-(./admon_graybox2.out.pyg) [3]
+(./admon_graybox2.out.pyg)
+
+
+...rest of part of LaTeX line number...
+
+[3]
 
 
 ...rest of part of LaTeX line number...
@@ -79315,7 +84504,7 @@ dmap/pdftex.map}] (./admon_graybox2.out.pyg)
 ...rest of part of LaTeX line number...
 
 (./admon_graybox2.out.pyg) (./admon_graybox2.out.pyg)
-<../doc/src/manual/fig/wave1D.pdf, id=45, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=46, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf>
 
 
@@ -79326,13 +84515,9 @@ dmap/pdftex.map}] (./admon_graybox2.out.pyg)
 
 ...rest of part of LaTeX line number...
 
-[5]
-
-
-...rest of part of LaTeX line number...
-
+[5 <../doc/src/manual/fig/wave1D.pdf>]
 No file admon_graybox2.ind.
-[6 <../doc/src/manual/fig/wave1D.pdf>] (./admon_graybox2.aux)
+[6] (./admon_graybox2.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -79416,7 +84601,7 @@ hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
  wrapfig.sty    2003/01/31  v 3.6
-mdframed.sty    2013/07/01 1.9b: mdframed
+mdframed.sty    2013/08/18 1.9d: mdframed
   xparse.sty    2013/07/12 v4544 L3 Experimental document command parser
    expl3.sty    2013/07/12 v4544 L3 Experimental code bundle wrapper
  l3names.sty    2012/12/07 v4346 L3 Namespace for primitives
@@ -79464,7 +84649,7 @@ pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
  pgfkeys.code.tex
   pgffor.code.tex
     tikz.code.tex
-md-frame-1.mdf    2013/07/01\ 1.9b: md-frame-1
+md-frame-1.mdf    2013/08/18\ 1.9d: md-frame-1
    t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 supp-pdf.mkii
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
@@ -83172,7 +88357,7 @@ Package hyperref Message: Driver (default): hdvips.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/pdfmark.def
 
 
-(/usr/share/texlive/texmf-dist/tex/latex/mdframed/mdframed.sty
+(/home/hpl/texmf/tex/latex/misc/mdframed.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/l3names.sty
@@ -83421,7 +88606,7 @@ hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
  pdfmark.def    2012/11/06 v6.83m Hyperref definitions for pdfmark specials
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
-mdframed.sty    2013/07/01 1.9b: mdframed
+mdframed.sty    2013/08/18 1.9d: mdframed
   xparse.sty    2013/07/12 v4544 L3 Experimental document command parser
    expl3.sty    2013/07/12 v4544 L3 Experimental code bundle wrapper
  l3names.sty    2012/12/07 v4346 L3 Namespace for primitives
@@ -83469,7 +88654,7 @@ pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
  pgfkeys.code.tex
   pgffor.code.tex
     tikz.code.tex
-md-frame-1.mdf    2013/07/01\ 1.9b: md-frame-1
+md-frame-1.mdf    2013/08/18\ 1.9d: md-frame-1
    t1phv.fd    2001/06/04 scalable font definitions for T1/phv.
  nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
@@ -83582,7 +88767,7 @@ Package hyperref Message: Driver (default): hdvips.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/pdfmark.def
 
 
-(/usr/share/texlive/texmf-dist/tex/latex/mdframed/mdframed.sty
+(/home/hpl/texmf/tex/latex/misc/mdframed.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/l3names.sty
@@ -83714,11 +88899,12 @@ on the form [],
 [11]
 Overfull \hbox (20.06982pt too wide) 
 []\T1/phv/m/n/10 The bib-li-og-ra-phy is spec-i-fied by a line [], where []
+[12]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
-[12] [13] [14] [15] [16]
+[13] [14] [15] [16]
 Overfull \hbox (7.769pt too wide) 
 \T1/phv/m/n/10 Doconce en-vi-ron-ments start with [] and end with [], where
 
@@ -83815,7 +89001,7 @@ hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
  pdfmark.def    2012/11/06 v6.83m Hyperref definitions for pdfmark specials
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
-mdframed.sty    2013/07/01 1.9b: mdframed
+mdframed.sty    2013/08/18 1.9d: mdframed
   xparse.sty    2013/07/12 v4544 L3 Experimental document command parser
    expl3.sty    2013/07/12 v4544 L3 Experimental code bundle wrapper
  l3names.sty    2012/12/07 v4346 L3 Namespace for primitives
@@ -83863,7 +89049,7 @@ pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
  pgfkeys.code.tex
   pgffor.code.tex
     tikz.code.tex
-md-frame-1.mdf    2013/07/01\ 1.9b: md-frame-1
+md-frame-1.mdf    2013/08/18\ 1.9d: md-frame-1
    t1phv.fd    2001/06/04 scalable font definitions for T1/phv.
  nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)

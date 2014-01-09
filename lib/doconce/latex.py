@@ -1340,12 +1340,13 @@ def define(FILENAME_EXTENSION,
 %% Many preprocess options can be added to ptex2tex or doconce ptex2tex
 %%
 %%      ptex2tex -DMINTED -DPALATINO -DA6PAPER -DLATEX_HEADING=traditional myfile
-%%      doconce ptex2tex myfile -DMINTED -DLATEX_HEADING=titlepage
+%%      doconce ptex2tex myfile -DLATEX_HEADING=titlepage envir=minted
 %%
 %% ptex2tex will typeset code environments according to a global or local
 %% .ptex2tex.cfg configure file. doconce ptex2tex will typeset code
 %% according to options on the command line (just type doconce ptex2tex to
-%% see examples).
+%% see examples). If doconce ptex2tex has envir=minted, it enables the
+%% minted style without needing -DMINTED.
 % #endif
 
 % #ifndef LATEX_STYLE
@@ -1988,7 +1989,6 @@ final,                   %% or draft (marks overfull hboxes)
 \oldtabular}{\endoldtabular}
 % #endif
 
-% --- end of standard preamble for documents ---
 """
     # Note: the line above is key for extracting the correct part
     # of the preamble for beamer slides in misc.slides_beamer
@@ -2003,6 +2003,10 @@ final,                   %% or draft (marks overfull hboxes)
 \newcounter{doconce:exercise:counter}
 """
             break
+
+    INTRO['latex'] += r"""
+% --- end of standard preamble for documents ---
+"""
 
     INTRO['latex'] += r"""
 % USER PREAMBLE

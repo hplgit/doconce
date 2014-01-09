@@ -31,6 +31,7 @@ pygments_html_linenos = False
 #html_video_autoplay = 
 html_box_shadow = False
 #html_slide_theme = 
+#html_footer_logo = 
 #beamer_slide_theme = 
 #html_exercise_icon = 
 #html_exercise_icon_width = 

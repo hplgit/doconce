@@ -57,6 +57,8 @@ document is embedded."""),
     ('--html_slide_theme=',
      """Specify a theme for the present slide type.
 (See the HTML header for a list of theme files and their names."""),
+    ('--html_footer_logo=',
+     """Specify a filename or a style name for a logo in the slide footer."""),
     ('--beamer_slide_theme=',
      """Specify a theme for beamer slides."""),
     ('--html_exercise_icon=',
@@ -247,11 +249,16 @@ def recommended_html_styles_and_pygments_styles():
         'reveal': {
         'beige': ['perldoc',],
         'beigesmall': ['perldoc',],
+        'solarized': ['perldoc',],
+        'serif': ['perldoc'],
         'simple': ['autumn', 'default', 'perldoc'],
+        'blood': ['monokai', 'native'],
         'sky': ['default'],
         'night': ['fruity', 'native'],
+        'moon': ['fruity', 'native'],
         'darkgray': ['native', 'monokai'],
-        'serif': ['perldoc'],
+        'cbc': ['default', 'autumn'],
+        'simula': ['autumn', 'default'],
         },
         'csss': {
         'csss_default': ['monokai'],
@@ -2377,7 +2384,6 @@ def generate_html5_slides(header, parts, footer, basename, filename,
         reveal=dict(
             subdir='reveal.js',
             default_theme='beige',
-            #main_style='reveal.min',
             main_style='reveal',
             slide_envir_begin='<section>',
             slide_envir_end='</section>',
@@ -2386,6 +2392,8 @@ def generate_html5_slides(header, parts, footer, basename, filename,
             head_header="""
 <!-- reveal.js: http://lab.hakim.se/reveal-js/ -->
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
@@ -2393,15 +2401,24 @@ def generate_html5_slides(header, parts, footer, basename, filename,
 <link rel="stylesheet" href="reveal.js/css/theme/%(theme)s.css" id="theme">
 <!--
 <link rel="stylesheet" href="reveal.js/css/reveal.css">
-<link rel="stylesheet" href="reveal.js/css/reveal.min.css">
 <link rel="stylesheet" href="reveal.js/css/theme/beige.css" id="theme">
 <link rel="stylesheet" href="reveal.js/css/theme/beigesmall.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/solarized.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/serif.css" id="theme">
 <link rel="stylesheet" href="reveal.js/css/theme/night.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/moon.css" id="theme">
 <link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">
 <link rel="stylesheet" href="reveal.js/css/theme/sky.css" id="theme">
 <link rel="stylesheet" href="reveal.js/css/theme/darkgray.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/default.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/cbc.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/simula.css" id="theme">
 -->
 
+<!-- For syntax highlighting -->
+<link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+<!-- If the query includes 'print-pdf', use the PDF print sheet -->
 <script>
 document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
 </script>
@@ -2453,29 +2470,138 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
 <script src="reveal.js/js/reveal.min.js"></script>
 
 <script>
-
 // Full list of configuration options available here:
 // https://github.com/hakimel/reveal.js#configuration
 Reveal.initialize({
-controls: true,
-progress: true,
-history: true,
-center: true,
-theme: Reveal.getQueryHash().theme, // available themes are in reveal.js/css/theme
-transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
 
-// Optional libraries used to extend on reveal.js
-dependencies: [
-{ src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-{ src: 'reveal.js/plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-{ src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-{ src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-{ src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-{ src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
-// { src: 'reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
-]
+    // Display navigation controls in the bottom right corner
+    controls: true,
+
+    // Display progress bar (below the horiz. slider)
+    progress: true,
+
+    // Display the page number of the current slide
+    slideNumber: true,
+
+    // Push each slide change to the browser history
+    history: false,
+
+    // Enable keyboard shortcuts for navigation
+    keyboard: true,
+
+    // Enable the slide overview mode
+    overview: true,
+
+    // Vertical centering of slides
+    //center: true,
+    center: false,
+
+    // Enables touch navigation on devices with touch input
+    touch: true,
+
+    // Loop the presentation
+    loop: false,
+
+    // Change the presentation direction to be RTL
+    rtl: false,
+
+    // Turns fragments on and off globally
+    fragments: true,
+
+    // Flags if the presentation is running in an embedded mode,
+    // i.e. contained within a limited portion of the screen
+    embedded: false,
+
+    // Number of milliseconds between automatically proceeding to the
+    // next slide, disabled when set to 0, this value can be overwritten
+    // by using a data-autoslide attribute on your slides
+    autoSlide: 0,
+
+    // Stop auto-sliding after user input
+    autoSlideStoppable: true,
+
+    // Enable slide navigation via mouse wheel
+    mouseWheel: false,
+
+    // Hides the address bar on mobile devices
+    hideAddressBar: true,
+
+    // Opens links in an iframe preview overlay
+    previewLinks: false,
+
+    // Transition style
+    transition: 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+    // Transition speed
+    transitionSpeed: 'default', // default/fast/slow
+
+    // Transition style for full page slide backgrounds
+    backgroundTransition: 'default', // default/none/slide/concave/convex/zoom
+
+    // Number of slides away from the current that are visible
+    viewDistance: 3,
+
+    // Parallax background image
+    //parallaxBackgroundImage: '', // e.g. "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'"
+
+    // Parallax background size
+    //parallaxBackgroundSize: '' // CSS syntax, e.g. "2100px 900px"
+
+    theme: Reveal.getQueryHash().theme, // available themes are in reveal.js/css/theme
+    transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
+
+});
+
+Reveal.initialize({
+    dependencies: [
+        // Cross-browser shim that fully implements classList - https://github.com/eligrey/classList.js/
+        { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+
+        // Interpret Markdown in <section> elements
+        { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+        { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+
+        // Syntax highlight for <code> elements
+        { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+
+        // Zoom in and out with Alt+click
+        { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+
+        // Speaker notes
+        { src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+
+        // Remote control your reveal.js presentation using a touch device
+        //{ src: 'reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } },
+
+        // MathJax
+        //{ src: 'reveal.js/plugin/math/math.js', async: true }
+    ]
+});
+
+Reveal.initialize({
+
+    // The "normal" size of the presentation, aspect ratio will be preserved
+    // when the presentation is scaled to fit different resolutions. Can be
+    // specified using percentage units.
+    width:  960,
+    height: 700,
+
+    // Factor of the display size that should remain empty around the content
+    margin: 0.1,
+
+    // Bounds for smallest/largest possible scale to apply to content
+    minScale: 0.2,
+    maxScale: 1.0
+
 });
 </script>
+
+<!-- begin footer logo
+<div style="position: absolute; bottom: 0px; left: 0; margin-left: 0px">
+<img src="somelogo.png">
+</div>
+     end footer logo -->
+
 """,
             theme=None,
             title=None,
@@ -3418,6 +3544,7 @@ git://github.com/barraq/deck.ext.js.git
         )
 
     theme = option('html_slide_theme=', default='default')
+
     # Check that the theme name is registered
     #from doconce.misc import recommended_html_styles_and_pygments_styles
     all_combinations = recommended_html_styles_and_pygments_styles()
@@ -3456,6 +3583,55 @@ git://github.com/barraq/deck.ext.js.git
            slide_syntax[slide_tp]['head_header'] % slide_syntax[slide_tp]
     slide_syntax[slide_tp]['body_header'] = \
            slide_syntax[slide_tp]['body_header'] % slide_syntax[slide_tp]
+
+    footer_logo = option('html_footer_logo=', default=None)
+    if footer_logo == 'cbc':
+        footer_logo = 'cbc_footer'
+    elif footer_logo == 'simula':
+        footer_logo = 'simula_footer'
+    elif footer_logo == 'uio':
+        footer_logo = 'uio_footer'
+    pattern = r'<!-- begin footer logo\s+(.+?)\s+end footer logo -->'
+    if footer_logo == 'cbc_footer':
+        repl = """
+<div style="position: absolute; bottom: 0px; left: 0; margin-left: 0px;">
+<img src="reveal.js/css/theme/cbc_footer.png" width=110%;></div>
+"""
+    elif footer_logo == 'cbc_symbol':
+        repl = """
+<div style="position: absolute; bottom: 0px; left: 0; margin-left: 20px; margin-bottom: 20px;">
+<img src="reveal.js/css/theme/cbc_symbol.png"></div>
+"""
+    elif footer_logo == 'simula_footer':
+        repl = """
+<div style="position: absolute; bottom: 0px; left: 0; margin-left: 0px;">
+<img src="reveal.js/css/theme/simula_footer.png" width=700></div>
+"""
+    elif footer_logo == 'simula_symbol':
+        repl = """
+<div style="position: absolute; bottom: 0px; left: 0; margin-left: 20px; margin-bottom: 10px;">
+<img src="reveal.js/css/theme/simula_symbol.png" width=200></div>
+"""
+    elif footer_logo == 'uio_footer':
+        repl = """
+<div style="position: absolute; bottom: 0px; left: 0; margin-left: 20px; margin-bottom: 0px;">
+<img src="reveal.js/css/theme/uio_footer.png" width=450></div>
+"""
+    elif footer_logo == 'uio_symbol':
+        repl = """
+<div style="position: absolute; bottom: 0px; left: 0; margin-left: 20px; margin-bottom: 20px;">
+<img src="reveal.js/css/theme/uio_symbol.png" width=100></div>
+"""
+    elif footer_logo == 'uio_simula_symbol':
+        repl = """
+<div style="position: absolute; bottom: 0px; left: 0; margin-left: 20px; margin-bottom: 0px;">
+<img src="reveal.js/css/theme/uio_footer.png" width=180></div>
+<div style="position: absolute; bottom: 0px; left: 0; margin-left: 250px; margin-bottom: 0px;">
+<img src="reveal.js/css/theme/simula_symbol.png" width=250></div>
+"""
+    if footer_logo is not None:
+        slide_syntax[slide_tp]['footer'] = re.sub(
+            pattern, repl, slide_syntax[slide_tp]['footer'], flags=re.DOTALL)
 
     # Grab the relevant lines in the <head> and <body> parts of
     # the original header
@@ -3578,8 +3754,8 @@ td.padding {
                             for combination in
                             recommended_combinations[html_style]]))
 
-        # Fix styles: native should have black background for neon and night
-        if slide_syntax[slide_tp]['theme'] in ['neon', 'night']:
+        # Fix styles: native should have black background for dark themes
+        if slide_syntax[slide_tp]['theme'] in ['neon', 'night', 'moon', 'blood']:
             if pygm_style == 'native':
                 # Change to black background
                 part = part.replace('background: #202020',
@@ -3635,8 +3811,14 @@ td.padding {
 
         # Special treatment of the text for some slide tools
         if slide_tp == 'deck':
-            part = part.replace('<pre>', '<pre><code>')
-            part = part.replace('</pre>', '</code></pre>')
+            part = re.sub(r'<pre>(.+?)</pre>',
+                          r'<pre><code>\g<1></code></pre>',
+                          part, flags=re.DOTALL)
+        if slide_tp == 'reveal':
+            part = re.sub(r'<pre><code>(.+?)</code></pre>',
+                          r'<pre><code data-trim contenteditable>\g<1></code></pre>',
+                          part,
+                          flags=re.DOTALL)
 
         part = part.replace('</ul>', '</ul>\n<p>')
         part = part.replace('</ol>', '</ol>\n<p>')
@@ -3720,7 +3902,7 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
 %% LaTeX Beamer file automatically generated from Doconce
 %% https://github.com/hplgit/doconce
 
-%%-------------------- begin preamble ----------------------
+%%-------------------- begin beamer-specific preamble ----------------------
 
 \documentclass%(handout)s{beamer}
 
@@ -3750,7 +3932,12 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
 \usepackage{pgf,pgfarrows,pgfnodes,pgfautomata,pgfheaps,pgfshade}
 \usepackage{graphicx}
 \usepackage{epsfig}
-\usepackage{fancyvrb,relsize}
+\usepackage{relsize}
+
+\usepackage{fancyvrb}
+%%\usepackage{minted} %% requires pygments and latex -shell-escape filename
+%%\usepackage{anslistings}
+
 \usepackage{amsmath,amssymb,bm}
 %%\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
@@ -3791,11 +3978,13 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
 
 """ % vars()
 
-    # Check if we need minted:
-    pattern = '\\usepackage.+minted'
-    m = re.search(pattern, header)
-    if m:
-        slides = slides.replace('{epsfig}', r'{epsfig}' + '\n' + r'\usepackage{minted} % requires pygments and latex -shell-escape filename')
+    # Check if we need minted or anslistings:
+    if re.search('\\usepackage.+minted', header):
+        slides = slides.replace(
+            r'%\usepackage{minted}', r'\usepackage{minted}')
+    if re.search('\\usepackage.+anslistings', header):
+        slides = slides.replace(
+            r'%\usepackage{anslistings}', r'\usepackage{anslistings}')
 
     # Override all admon environments from latex.py by Beamer block envirs
     admons = 'notice', 'summary', 'warning', 'question', 'block'
@@ -3808,6 +3997,16 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
         slides += r"""\newenvironment{%(envir)sadmon}[1][]{\begin{block}{#1}}{\end{block}}
 """ % vars()
     slides += r"""\newcommand{\grayboxhrules}[1]{\begin{block}{}#1\end{block}}
+
+\newenvironment{doconce:exercise}{}{}
+\newcounter{doconce:exercise:counter}
+\newenvironment{doconce:movie}{}{}
+\newcounter{doconce:movie:counter}
+
+%-------------------- end beamer-specific preamble ----------------------
+
+% Add user's preamble
+
 """
 
     # Add possible user customization from the original latex file,

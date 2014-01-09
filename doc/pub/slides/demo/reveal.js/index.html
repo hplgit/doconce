@@ -167,12 +167,14 @@
 					<h2>Themes</h2>
 					<p>
 						Reveal.js comes with a few themes built in: <br>
+						<a href="?#/themes">Default</a> -
 						<a href="?theme=sky#/themes">Sky</a> -
 						<a href="?theme=beige#/themes">Beige</a> -
 						<a href="?theme=simple#/themes">Simple</a> -
 						<a href="?theme=serif#/themes">Serif</a> -
-						<a href="?theme=night#/themes">Night</a> -
-						<a href="?#/themes">Default</a>
+						<a href="?theme=night#/themes">Night</a> <br>
+						<a href="?theme=moon#/themes">Moon</a> -
+						<a href="?theme=solarized#/themes">Solarized</a>
 					</p>
 					<p>
 						<small>
@@ -259,10 +261,10 @@ function linkify( selector ) {
     for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
       var node = nodes[i];
 
-      if( !node.className ) ) {
+      if( !node.className ) {
         node.className += ' roll';
       }
-    };
+    }
   }
 }
 					</code></pre>
@@ -278,7 +280,7 @@ function linkify( selector ) {
 				</section>
 
 				<section>
-					<section>
+					<section id="fragments">
 						<h2>Fragmented Views</h2>
 						<p>Hit the next arrow...</p>
 						<p class="fragment">... to step through ...</p>
@@ -302,6 +304,8 @@ function linkify( selector ) {
 						<p class="fragment highlight-red">highlight-red</p>
 						<p class="fragment highlight-green">highlight-green</p>
 						<p class="fragment highlight-blue">highlight-blue</p>
+						<p class="fragment current-visible">current-visible</p>
+						<p class="fragment highlight-current-blue">highlight-current-blue</p>
 					</section>
 				</section>
 
@@ -362,6 +366,10 @@ function linkify( selector ) {
 
 				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
 				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
 
 				// Optional libraries used to extend on reveal.js
 				dependencies: [
