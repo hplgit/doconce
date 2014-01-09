@@ -1,0 +1,11 @@
+.deck-container .pointer {
+    display:block;
+    width:10px;
+    height:10px;
+    position:absolute;
+    background:#f00;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+    border-radius: 5px;
+    z-index:999;
+}

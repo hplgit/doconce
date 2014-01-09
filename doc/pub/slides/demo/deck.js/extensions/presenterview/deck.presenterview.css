@@ -1,0 +1,22 @@
+.wrapper {
+  height: 100%;
+  width: 100%;
+}
+
+.wrapper section {
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+#note, #next-slide  {
+  height: 100%;
+  float: left;
+}
+
+#note {
+    width: 40%;
+}
+
+#next-slide {
+    width: 60%;
+}

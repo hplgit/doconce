@@ -64,6 +64,19 @@ def zipfiles2lib():
 
 
 def pack_reveal_deck_csss():
+    print """
+NOTE: cloning repos like reveal.js and deck.js may bring in new
+versions of styles that are not compatible with previous tuning.
+Be careful to mix doconce tunings with new versions.
+If styles are to be tuned more, a good idea can be to pack out
+the zip file instead and tune directly those style files.
+
+(Detected time-consuming incompatibilities Jan, 2014, after reveal and
+deck had undergone significant developments.)
+"""
+    ans = raw_input('Sure you want to proceed? ')
+    if ans.lower().startswith('n'):
+        return
 
     if clone:
         system('sh clean.sh')
@@ -118,7 +131,7 @@ def pack_reveal_deck_csss():
         system('cp -r deck.annotate.js deck.js/extensions/')
         system('cp -r deck.js-notes deck.js/extensions/notes')
 
-    system('cp doconce_modifications/deck/core/*.css deck.js/core/')
+    #system('cp doconce_modifications/deck/core/*.css deck.js/core/')
     system('cp doconce_modifications/deck/themes/style/*.css deck.js/themes/style/')
 
     # this find will always generate errors..., use os.system

@@ -3439,11 +3439,9 @@ git://github.com/barraq/deck.ext.js.git
 <!-- Here goes a potential header -->
 </header>
 
-<article>
-
+<!-- do not use the article tag - it gives strange sizings -->
 """,
             footer="""
-</article>
 
 <footer>
 <!-- Here goes a footer -->
