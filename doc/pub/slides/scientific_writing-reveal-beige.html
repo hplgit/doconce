@@ -2167,7 +2167,7 @@ For output formats different from <code>latex</code>, <code>pdflatex</code>, and
 </div> <!-- class="reveal" -->
 
 <script src="reveal.js/lib/js/head.min.js"></script>
-<script src="reveal.js/js/reveal.js"></script>
+<script src="reveal.js/js/reveal.min.js"></script>
 
 <script>
 // Full list of configuration options available here:
@@ -2175,9 +2175,9 @@ For output formats different from <code>latex</code>, <code>pdflatex</code>, and
 Reveal.initialize({
 
     // Display navigation controls in the bottom right corner
-    controls: false,
+    controls: true,
 
-    // Display a presentation progress bar (below the horiz. slider
+    // Display progress bar (below the horiz. slider)
     progress: true,
 
     // Display the page number of the current slide
@@ -2230,7 +2230,7 @@ Reveal.initialize({
     previewLinks: false,
 
     // Transition style
-    transition: 'cube', // default/cube/page/concave/zoom/linear/fade/none
+    transition: 'default', // default/cube/page/concave/zoom/linear/fade/none
 
     // Transition speed
     transitionSpeed: 'default', // default/fast/slow

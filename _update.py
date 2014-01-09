@@ -71,10 +71,11 @@ def pack_reveal_deck_csss():
         system('git clone git://github.com/hakimel/reveal.js.git')
     os.system('cp doconce_modifications/reveal/css/reveal*.css reveal.js/css/')
     os.system('cp doconce_modifications/reveal/css/theme/*.css reveal.js/css/theme/')
-    os.system('cp doconce_modifications/reveal/css/theme/*.png reveal.js/css/theme/')
     os.system('cp doconce_modifications/reveal/css/theme/source/*.scss reveal.js/css/theme/source/')
     os.system('cp doconce_modifications/reveal/css/theme/template/*.scss reveal.js/css/theme/template/')
     os.system('cp doconce_modifications/reveal/Gruntfile.js reveal.js/')
+    os.system('mkdir reveal.js/css/images')
+    os.system('cp doconce_modifications/reveal/css/images/*.png reveal.js/css/images/')
     # Building new .css files is only necessary if .scss are modified
     #os.system('cp doconce_modifications/reveal/Gruntfile.js reveal.js/')
     #os.system('cd reveal.js; npm install; grunt themes; cd ..')
