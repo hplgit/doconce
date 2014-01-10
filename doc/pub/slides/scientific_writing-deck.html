@@ -76,6 +76,7 @@ git://github.com/groovecoder/deckjs-theme-mozilla.git
 <link rel="stylesheet" href="deck.js/themes/style/sandstone.light.css">
 <link rel="stylesheet" href="deck.js/themes/style/sandstone.mdn.css">
 <link rel="stylesheet" href="deck.js/themes/style/sandstone.nightly.css">
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.cbc.css">
 
 git://github.com/barraq/deck.ext.js.git
 <link rel="stylesheet" href="deck.js/themes/style/beamer.css">
@@ -136,6 +137,12 @@ td.padding {
 </head>
 
 <body class="deck-container">
+
+<header>
+<!-- Here goes a potential header -->
+</header>
+
+<!-- do not use the article tag - it gives strange sizings -->
 
 
 
@@ -2201,6 +2208,11 @@ For output formats different from <code>latex</code>, <code>pdflatex</code>, and
 
 
 
+
+<footer>
+<!-- Here goes a footer -->
+</footer>
+
 <!-- Begin extension snippets. Add or remove as needed. -->
 
 <!-- deck.navigation snippet -->
@@ -2232,7 +2244,7 @@ For output formats different from <code>latex</code>, <code>pdflatex</code>, and
 
 
 <!-- Required JS files. -->
-<script src="deck.js/jquery-1.7.2.min.js"></script>
+<script src="deck.js/jquery.min.js"></script>
 <script src="deck.js/core/deck.core.js"></script>
 
 <!-- Extension JS files. Add or remove as needed. -->
@@ -2248,8 +2260,8 @@ For output formats different from <code>latex</code>, <code>pdflatex</code>, and
 <!-- From https://github.com/mikeharris100/deck.pointer.js -->
 <script src="deck.js/extensions/pointer/deck.pointer.js"></script>
 
-<!-- From https://github.com/stvnwrgs/presenterview -->
-<script type="text/javascript" src="deck.js/extensions/presenterview/deck.presenterview.js"></script>
+<!-- From https://github.com/stvnwrgs/presenterview
+<script type="text/javascript" src="deck.js/extensions/presenterview/deck.presenterview.js"></script> -->
 
 <!-- From https://github.com/nemec/deck.annotate.js
 <script type="text/javascript" src="deck.js/extensions/deck.annotate.js/deck.annotate.js"></script>

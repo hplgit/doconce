@@ -47676,10 +47676,19 @@ README.md
 test
 
 reveal.js/css:
+images
 print
 reveal.css
 reveal.min.css
 theme
+
+reveal.js/css/images:
+cbc_footer.png
+cbc_symbol.png
+simula_footer.png
+simula_symbol.png
+uio_footer.png
+uio_symbol.png
 
 reveal.js/css/print:
 paper.css
@@ -52605,6 +52614,10 @@ doconce format html slides1 --pygments_html_style=autumn --keep_pygments_html_bg
 doconce slides_html slides1 html5slides --html_slide_theme=template-default
 cp slides1.html slides1_html5slides_template-default.html
 
+doconce format html slides1 --pygments_html_style=default --keep_pygments_html_bg SLIDE_TYPE=deck SLIDE_THEME=cbc
+doconce slides_html slides1 deck --html_slide_theme=cbc
+cp slides1.html slides1_deck_cbc.html
+
 doconce format html slides1 --pygments_html_style=fruity --keep_pygments_html_bg SLIDE_TYPE=deck SLIDE_THEME=sandstone.mightly
 doconce slides_html slides1 deck --html_slide_theme=sandstone.mightly
 cp slides1.html slides1_deck_sandstone_mightly.html
@@ -53022,6 +53035,7 @@ git://github.com/groovecoder/deckjs-theme-mozilla.git
 <link rel="stylesheet" href="deck.js/themes/style/sandstone.light.css">
 <link rel="stylesheet" href="deck.js/themes/style/sandstone.mdn.css">
 <link rel="stylesheet" href="deck.js/themes/style/sandstone.nightly.css">
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.cbc.css">
 
 git://github.com/barraq/deck.ext.js.git
 <link rel="stylesheet" href="deck.js/themes/style/beamer.css">
@@ -53082,6 +53096,12 @@ td.padding {
 </head>
 
 <body class="deck-container">
+
+<header>
+<!-- Here goes a potential header -->
+</header>
+
+<!-- do not use the article tag - it gives strange sizings -->
 
 
 
@@ -53336,6 +53356,11 @@ title (Warning) since no title is specified.
 
 
 
+
+<footer>
+<!-- Here goes a footer -->
+</footer>
+
 <!-- Begin extension snippets. Add or remove as needed. -->
 
 <!-- deck.navigation snippet -->
@@ -53367,7 +53392,7 @@ title (Warning) since no title is specified.
 
 
 <!-- Required JS files. -->
-<script src="deck.js/jquery-1.7.2.min.js"></script>
+<script src="deck.js/jquery.min.js"></script>
 <script src="deck.js/core/deck.core.js"></script>
 
 <!-- Extension JS files. Add or remove as needed. -->
@@ -53383,8 +53408,8 @@ title (Warning) since no title is specified.
 <!-- From https://github.com/mikeharris100/deck.pointer.js -->
 <script src="deck.js/extensions/pointer/deck.pointer.js"></script>
 
-<!-- From https://github.com/stvnwrgs/presenterview -->
-<script type="text/javascript" src="deck.js/extensions/presenterview/deck.presenterview.js"></script>
+<!-- From https://github.com/stvnwrgs/presenterview
+<script type="text/javascript" src="deck.js/extensions/presenterview/deck.presenterview.js"></script> -->
 
 <!-- From https://github.com/nemec/deck.annotate.js
 <script type="text/javascript" src="deck.js/extensions/deck.annotate.js/deck.annotate.js"></script>
@@ -53664,12 +53689,22 @@ jasmine-jquery.js
 jasmine.js
 
 deck.js/themes:
+images
 style
 transition
+
+deck.js/themes/images:
+cbc_footer.png
+cbc_symbol.png
+simula_footer.png
+simula_symbol.png
+uio_footer.png
+uio_symbol.png
 
 deck.js/themes/style:
 beamer.css
 beamer.scss
+cbc.css
 mnml.css
 neon.css
 neon.scss
@@ -53684,6 +53719,7 @@ sandstone.mdn.css
 sandstone.nightly.css
 sandstone.scss
 swiss.css
+swiss.css~
 swiss.scss
 web-2.0.css
 web-2.0.scss

@@ -144,26 +144,35 @@ sh -x tmp_slides_html_all.sh
 
 # Redo cbc, simula, and uio themes with logo
 
+slide_types="reveal deck"
+footer_types="footer symbol"
+for slide_tp in $slide_types; do
+for footer_tp in $footer_types; do
 # CBC
-doconce format html demo --pygments_html_style=default --keep_pygments_html_bg SLIDE_TYPE=reveal SLIDE_THEME=cbc
-doconce slides_html demo reveal --html_slide_theme=cbc --html_footer_logo=cbc_footer
+doconce format html demo --pygments_html_style=default --keep_pygments_html_bg SLIDE_TYPE=${slide_tp} SLIDE_THEME=cbc
+doconce slides_html demo ${slide_tp} --html_slide_theme=cbc --html_footer_logo=cbc_${footer_tp}
 doconce replace 'controls: true,' 'controls: false,' demo.html  # turn off nav.
-cp demo.html demo_reveal_cbc.html
+cp demo.html demo_${slide_tp}_cbc_${footer_tp}.html
+done
+done
+
+# Do just reveal for the following (no deck simula and uio style yet)
+slide_tp=reveal
 
 # Simula
-doconce format html demo --pygments_html_style=default --keep_pygments_html_bg SLIDE_TYPE=reveal SLIDE_THEME=simula
-doconce slides_html demo reveal --html_slide_theme=simula --html_footer_logo=simula_symbol
-cp demo.html demo_reveal_simula.html
+doconce format html demo --pygments_html_style=default --keep_pygments_html_bg SLIDE_TYPE=${slide_tp} SLIDE_THEME=simula
+doconce slides_html demo ${slide_tp} --html_slide_theme=simula --html_footer_logo=simula_symbol
+cp demo.html demo_${slide_tp}_simula.html
 
 # UiO
-doconce format html demo --pygments_html_style=default --keep_pygments_html_bg SLIDE_TYPE=reveal SLIDE_THEME=uio
-doconce slides_html demo reveal --html_slide_theme=simple --html_footer_logo=uio_symbol
-cp demo.html demo_reveal_uio.html
+doconce format html demo --pygments_html_style=default --keep_pygments_html_bg SLIDE_TYPE=${slide_tp} SLIDE_THEME=uio
+doconce slides_html demo ${slide_tp} --html_slide_theme=simple --html_footer_logo=uio_symbol
+cp demo.html demo_${slide_tp}_uio.html
 
 # Combined UiO and Simula footer
-doconce format html demo --no_pygments_html SLIDE_TYPE=reveal SLIDE_THEME="uio+simula"
-doconce slides_html demo reveal --html_slide_theme=simula --html_footer_logo=uio_simula_symbol
-cp demo.html demo_reveal_uio_simula.html
+doconce format html demo --no_pygments_html SLIDE_TYPE=${slide_tp} SLIDE_THEME="uio+simula"
+doconce slides_html demo ${slide_tp} --html_slide_theme=simula --html_footer_logo=uio_simula_symbol
+cp demo.html demo_${slide_tp}_uio_simula.html
 
 # Solarized without pygments
 doconce format html demo --no_pygments_html SLIDE_TYPE=reveal SLIDE_THEME=solarized
@@ -256,11 +265,15 @@ doconce slides_html demo reveal --html_slide_theme=simple
 doconce format html demo --pygments_html_style=autumn --keep_pygments_html_bg SLIDE_TYPE=reveal SLIDE_THEME=blood
 doconce slides_html demo reveal --html_slide_theme=blood
 </pre>
-<li><a target="_blank" href="demo_reveal_cbc.html">reveal, cbc theme</a>
+<li><a target="_blank" href="demo_reveal_cbc_footer.html">reveal, cbc footer theme</a>
 <pre>
 doconce format html demo --pygments_html_style=default --keep_pygments_html_bg SLIDE_TYPE=reveal SLIDE_THEME=cbc
 doconce slides_html demo reveal --html_slide_theme=cbc --html_footer_logo=cbc_footer
-#doconce slides_html demo reveal --html_slide_theme=cbc --html_footer_logo=cbc_symbol
+</pre>
+<li><a target="_blank" href="demo_reveal_cbc_symbol.html">reveal, cbc symbol theme</a>
+<pre>
+doconce format html demo --pygments_html_style=default --keep_pygments_html_bg SLIDE_TYPE=reveal SLIDE_THEME=cbc
+doconce slides_html demo reveal --html_slide_theme=cbc --html_footer_logo=cbc_symbol
 </pre>
 <li><a target="_blank" href="demo_reveal_simula.html">reveal, simula theme</a>
 <pre>
@@ -337,6 +350,16 @@ doconce slides_html demo deck --html_slide_theme=swiss
 <pre>
 doconce format html demo --pygments_html_style=autumn --keep_pygments_html_bg SLIDE_TYPE=deck SLIDE_THEME=web-2.0
 doconce slides_html demo deck --html_slide_theme=web-2.0
+</pre>
+<li><a target="_blank" href="demo_deck_cbc_footer.html">deck, cbc footer theme</a>
+<pre>
+doconce format html demo --pygments_html_style=autumn --keep_pygments_html_bg SLIDE_TYPE=deck SLIDE_THEME=cbc
+doconce slides_html demo deck --html_slide_theme=cbc --html_footer_logo=cbc_footer.png
+</pre>
+<li><a target="_blank" href="demo_deck_cbc_symbol.html">deck, cbc symbol theme</a>
+<pre>
+doconce format html demo --pygments_html_style=autumn --keep_pygments_html_bg SLIDE_TYPE=deck SLIDE_THEME=cbc
+doconce slides_html demo deck --html_slide_theme=cbc --html_footer_logo=cbc_symbol.png
 </pre>
 </ul>
 <li><a target="_blank" href="demo_dzslides_dzslides_default.html">dzslides</a>

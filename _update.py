@@ -64,6 +64,19 @@ def zipfiles2lib():
 
 
 def pack_reveal_deck_csss():
+    print """
+NOTE: cloning repos like reveal.js and deck.js may bring in new
+versions of styles that are not compatible with previous tuning.
+Be careful to mix doconce tunings with new versions.
+If styles are to be tuned more, a good idea can be to pack out
+the zip file instead and tune directly those style files.
+
+(Detected time-consuming incompatibilities Jan, 2014, after reveal and
+deck had undergone significant developments.)
+"""
+    ans = raw_input('Sure you want to proceed? ')
+    if ans.lower().startswith('n'):
+        return
 
     if clone:
         system('sh clean.sh')
@@ -71,10 +84,11 @@ def pack_reveal_deck_csss():
         system('git clone git://github.com/hakimel/reveal.js.git')
     os.system('cp doconce_modifications/reveal/css/reveal*.css reveal.js/css/')
     os.system('cp doconce_modifications/reveal/css/theme/*.css reveal.js/css/theme/')
-    os.system('cp doconce_modifications/reveal/css/theme/*.png reveal.js/css/theme/')
     os.system('cp doconce_modifications/reveal/css/theme/source/*.scss reveal.js/css/theme/source/')
     os.system('cp doconce_modifications/reveal/css/theme/template/*.scss reveal.js/css/theme/template/')
     os.system('cp doconce_modifications/reveal/Gruntfile.js reveal.js/')
+    os.system('mkdir reveal.js/css/images')
+    os.system('cp doconce_modifications/reveal/css/images/*.png reveal.js/css/images/')
     # Building new .css files is only necessary if .scss are modified
     #os.system('cp doconce_modifications/reveal/Gruntfile.js reveal.js/')
     #os.system('cd reveal.js; npm install; grunt themes; cd ..')
@@ -117,7 +131,7 @@ def pack_reveal_deck_csss():
         system('cp -r deck.annotate.js deck.js/extensions/')
         system('cp -r deck.js-notes deck.js/extensions/notes')
 
-    system('cp doconce_modifications/deck/core/*.css deck.js/core/')
+    #system('cp doconce_modifications/deck/core/*.css deck.js/core/')
     system('cp doconce_modifications/deck/themes/style/*.css deck.js/themes/style/')
 
     # this find will always generate errors..., use os.system

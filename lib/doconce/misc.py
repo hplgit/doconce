@@ -245,6 +245,7 @@ def recommended_html_styles_and_pygments_styles():
         'sandstone.light': ['emacs', 'autumn'],  # purple
         'swiss': ['autumn', 'default', 'perldoc', 'manni', 'emacs'],
         'web-2.0': ['autumn', 'default', 'perldoc', 'emacs'],
+        'cbc': ['default', 'autumn'],
         },
         'reveal': {
         'beige': ['perldoc',],
@@ -3384,6 +3385,7 @@ git://github.com/groovecoder/deckjs-theme-mozilla.git
 <link rel="stylesheet" href="deck.js/themes/style/sandstone.light.css">
 <link rel="stylesheet" href="deck.js/themes/style/sandstone.mdn.css">
 <link rel="stylesheet" href="deck.js/themes/style/sandstone.nightly.css">
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.cbc.css">
 
 git://github.com/barraq/deck.ext.js.git
 <link rel="stylesheet" href="deck.js/themes/style/beamer.css">
@@ -3432,8 +3434,19 @@ git://github.com/barraq/deck.ext.js.git
 """,
             body_header="""\
 <body class="deck-container">
+
+<header>
+<!-- Here goes a potential header -->
+</header>
+
+<!-- do not use the article tag - it gives strange sizings -->
 """,
             footer="""
+
+<footer>
+<!-- Here goes a footer -->
+</footer>
+
 <!-- Begin extension snippets. Add or remove as needed. -->
 
 <!-- deck.navigation snippet -->
@@ -3465,7 +3478,7 @@ git://github.com/barraq/deck.ext.js.git
 
 
 <!-- Required JS files. -->
-<script src="deck.js/jquery-1.7.2.min.js"></script>
+<script src="deck.js/jquery.min.js"></script>
 <script src="deck.js/core/deck.core.js"></script>
 
 <!-- Extension JS files. Add or remove as needed. -->
@@ -3481,8 +3494,8 @@ git://github.com/barraq/deck.ext.js.git
 <!-- From https://github.com/mikeharris100/deck.pointer.js -->
 <script src="deck.js/extensions/pointer/deck.pointer.js"></script>
 
-<!-- From https://github.com/stvnwrgs/presenterview -->
-<script type="text/javascript" src="deck.js/extensions/presenterview/deck.presenterview.js"></script>
+<!-- From https://github.com/stvnwrgs/presenterview
+<script type="text/javascript" src="deck.js/extensions/presenterview/deck.presenterview.js"></script> -->
 
 <!-- From https://github.com/nemec/deck.annotate.js
 <script type="text/javascript" src="deck.js/extensions/deck.annotate.js/deck.annotate.js"></script>
@@ -3591,47 +3604,55 @@ git://github.com/barraq/deck.ext.js.git
         footer_logo = 'simula_footer'
     elif footer_logo == 'uio':
         footer_logo = 'uio_footer'
-    pattern = r'<!-- begin footer logo\s+(.+?)\s+end footer logo -->'
+    footer_logo_path = dict(reveal='reveal.js/css/images',
+                            deck='deck.js/themes/images')
+    pattern = dict(
+        reveal=r'<!-- begin footer logo\s+(.+?)\s+end footer logo -->',
+        deck=r'<!-- Here goes a footer -->')
+
     if footer_logo == 'cbc_footer':
+        if slide_tp not in ('reveal', 'deck'):
+            raise ValueError('slide type "%s" cannot have --html_footer_logo' ^ slide_tp)
         repl = """
 <div style="position: absolute; bottom: 0px; left: 0; margin-left: 0px;">
-<img src="reveal.js/css/theme/cbc_footer.png" width=110%;></div>
-"""
+<img src="%s/cbc_footer.png" width=110%%;></div>
+""" % footer_logo_path[slide_tp]
     elif footer_logo == 'cbc_symbol':
         repl = """
 <div style="position: absolute; bottom: 0px; left: 0; margin-left: 20px; margin-bottom: 20px;">
-<img src="reveal.js/css/theme/cbc_symbol.png"></div>
-"""
+<img src="%s/cbc_symbol.png"></div>
+""" % footer_logo_path[slide_tp]
     elif footer_logo == 'simula_footer':
         repl = """
 <div style="position: absolute; bottom: 0px; left: 0; margin-left: 0px;">
-<img src="reveal.js/css/theme/simula_footer.png" width=700></div>
-"""
+<img src="%s/simula_footer.png" width=700></div>
+""" % footer_logo_path[slide_tp]
     elif footer_logo == 'simula_symbol':
         repl = """
 <div style="position: absolute; bottom: 0px; left: 0; margin-left: 20px; margin-bottom: 10px;">
-<img src="reveal.js/css/theme/simula_symbol.png" width=200></div>
-"""
+<img src="%s/simula_symbol.png" width=200></div>
+""" % footer_logo_path[slide_tp]
     elif footer_logo == 'uio_footer':
         repl = """
 <div style="position: absolute; bottom: 0px; left: 0; margin-left: 20px; margin-bottom: 0px;">
-<img src="reveal.js/css/theme/uio_footer.png" width=450></div>
-"""
+<img src="%s/uio_footer.png" width=450></div>
+""" % footer_logo_path[slide_tp]
     elif footer_logo == 'uio_symbol':
         repl = """
 <div style="position: absolute; bottom: 0px; left: 0; margin-left: 20px; margin-bottom: 20px;">
-<img src="reveal.js/css/theme/uio_symbol.png" width=100></div>
-"""
+<img src="%s/uio_symbol.png" width=100></div>
+""" % footer_logo_path[slide_tp]
     elif footer_logo == 'uio_simula_symbol':
         repl = """
 <div style="position: absolute; bottom: 0px; left: 0; margin-left: 20px; margin-bottom: 0px;">
-<img src="reveal.js/css/theme/uio_footer.png" width=180></div>
+<img src="%s/uio_footer.png" width=180></div>
 <div style="position: absolute; bottom: 0px; left: 0; margin-left: 250px; margin-bottom: 0px;">
-<img src="reveal.js/css/theme/simula_symbol.png" width=250></div>
-"""
+<img src="%s/simula_symbol.png" width=250></div>
+""" % footer_logo_path[slide_tp]
     if footer_logo is not None:
         slide_syntax[slide_tp]['footer'] = re.sub(
-            pattern, repl, slide_syntax[slide_tp]['footer'], flags=re.DOTALL)
+            pattern[slide_tp], repl,
+            slide_syntax[slide_tp]['footer'], flags=re.DOTALL)
 
     # Grab the relevant lines in the <head> and <body> parts of
     # the original header
