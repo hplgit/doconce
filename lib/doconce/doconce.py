@@ -2862,8 +2862,16 @@ python-mako package (sudo apt-get install python-mako).
         from mako.template import Template
         from mako.lookup import TemplateLookup
         lookup = TemplateLookup(directories=[os.curdir])
-        temp = Template(filename=resultfile2, lookup=lookup,
-                        strict_undefined=strict_undefined)
+        #temp = Template(filename=resultfile2, lookup=lookup,
+        #                strict_undefined=strict_undefined)
+        if encoding:
+            filestr = unicode(filestr, encoding)
+        try:
+            temp = Template(text=filestr, lookup=lookup,
+                            strict_undefined=strict_undefined)
+        except Exception as e:
+            print e
+            _abort()
 
         debugpr('Keyword arguments to be sent to mako: %s' % \
                 pprint.pformat(mako_kwargs))
@@ -2886,8 +2894,8 @@ python-mako package (sudo apt-get install python-mako).
         except NameError, e:
             if "Undefined" in str(e):
                 print '*** mako error: NameError Undefined variable,'
-                print '                one or more ${var} variables are undefined.\n'
-                print '                Rerun doconce format with --mako_strict_undefined to see where the problem is.'
+                print '    one or more ${var} variables are undefined.\n'
+                print '    Rerun doconce format with --mako_strict_undefined to see where the problem is.'
                 _abort()
             elif "is not defined" in str(e):
                 print '*** mako error: NameError', e
@@ -2897,7 +2905,10 @@ python-mako package (sudo apt-get install python-mako).
                 print '*** mako error:'
                 filestr = temp.render(**mako_kwargs)
 
-        f = open(resultfile2, 'w')
+        if encoding:
+            f = codecs.open(resultfile2, 'w', encoding)
+        else:
+            f = open(resultfile2, 'w')
         f.write(filestr)
         f.close()
         resultfile = resultfile2

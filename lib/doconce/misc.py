@@ -5109,6 +5109,139 @@ def spellcheck():
     _spellcheck_all(newdict='misspellings.txt~', remove_multiplicity=False,
                     dictionaries=dictionary,)
 
+
+def _usage_capitalize():
+    print 'doconce capitalize doconce-file [-d file_with_cap_words]'
+    print 'list of capitalized words can also be in .dict4cap.txt'
+    print '(typically, Python, Unix, etc. must be capitalized)'
+
+def capitalize():
+    if len(sys.argv) >= 2 and sys.argv[1] == '-d':
+        dictionary = [sys.argv[2]]
+        del sys.argv[1:3]
+    else:
+        if os.path.isfile('.dict4spell.txt'):
+            dictionary = '.dict4cap.txt'
+        else:
+            dictionary = ''
+
+    if len(sys.argv) < 2:
+        _usage_capitalize()
+        sys.exit(1)
+
+    filename = sys.argv[1]
+
+    cap_words = [
+         'Celsius', 'Fahrenheit', 'Kelvin',
+        'Newton', 'Gauss', 'Legendre', 'Laguerre', 'Taylor', 'Einstein',
+        'Maxwell', 'Euler', 'Gaussian', 'Eulerian', 'Lagrange', 'Lagrangian',
+        'Python', 'IPython', 'Cython', 'Idle', 'NumPy', 'SciPy',
+        'Matplotlib',
+        'C++', 'C', 'Fortran', 'MATLAB', 'SWIG', 'Perl', 'Ruby',
+        ]
+
+    if dictionary:
+        f = open(dictionary, 'a')
+        cap_words += f.read().split()
+
+    f = open(filename, 'r')
+    filestr = f.read()
+    f.close()
+    shutil.copy(filename, filename + '.old~~')
+
+    filestr, old2new = _capitalize(filestr, cap_words)
+
+    #f = open(filename, 'w')
+    #f.write(filestr)
+    #f.close()
+    print 'Edits of titles:'
+    for old, new in old2new:
+        if old != new:
+            print old
+            print new
+            print
+
+def _capitalize(filestr, cap_words):
+    pattern1 = r'^\s*(={3,9})(.+?)(={3,9})'  # sections
+    pattern2 = r'__(.+?[.:?;!])__'       # paragraphs
+
+    sections   = re.findall(pattern1, filestr, flags=re.MULTILINE)
+    paragraphs = re.findall(pattern2, filestr, flags=re.MULTILINE)
+    orig_titles1 = [t.strip() for s1, t, s2 in sections]
+    orig_equals1 = [s1 for s1, t, s2 in sections]
+    orig_titles2 = [t.strip() for t in paragraphs]
+    orig_headings1 = [s1 + t + s2 for s1, t, s2 in sections]
+    orig_headings2 = ['__' + t + '__' for t
+                      in re.findall(pattern2, filestr, flags=re.MULTILINE)]
+
+    #print orig_titles1
+    #print orig_titles2
+
+    def capitalize_titles(orig_titles, cap_words):
+        cap_words_lower = [s.lower() for s in cap_words]
+        new_titles = []
+        for title in orig_titles:
+            #print '*', title
+
+            # Exercises, problems, are exceptions (view title as what
+            # comes after the initial word)
+            word0 = title.split()[0]
+            if word0 in ['Exercise:', 'Problem:', 'Project:', 'Example:',
+                         '[Exercise}:', '{Problem}:', '{Project}:', '{Example}:',]:
+                title = title.replace(word0, '').strip()
+                new_title = word0 + ' ' + title.capitalize()
+            else:
+                new_title = title.capitalize()
+
+            words = new_title.split()
+            # Handle hyphens
+            old_words = words[:]
+            for word in old_words:
+                if '-' in word:
+                    words.remove(word)
+                    words += word.split('-')
+                if word[0] == '`' and word[-1] == '`':
+                    words.remove(word)
+
+            for word in words:
+                #print '    ', word
+                # Strip away non-alphabetic characters
+                word_stripped = ''.join([w for w in list(word)
+                                         if w.isalpha()])
+                #if word != word_stripped:
+                    #print '        ', word_stripped
+                if word_stripped.lower() in cap_words_lower:
+                    #print '        found',
+                    try:
+                        i = cap_words_lower.index(word.lower())
+                        new_word = word.replace(word_stripped, cap_words[i])
+                        new_title = new_title.replace(word, new_word)
+                        #print 'as', cap_words[i]
+                    except ValueError:
+                        pass
+                        #print 'Did not find', word_stripped.lower(), 'in', cap_words_lower
+                        pass
+            #print '>', new_title
+            new_titles.append(new_title)
+        return new_titles
+
+    new_titles1 = capitalize_titles(orig_titles1, cap_words)
+    new_titles2 = capitalize_titles(orig_titles2, cap_words)
+
+    old2new = []
+    for new_title, orig_title, orig_heading, s1 in \
+            zip(new_titles1, orig_titles1, orig_headings1, orig_equals1):
+        new_heading = '%s %s %s' % (s1, new_title, s2)
+        filestr = filestr.replace(orig_heading, new_heading)
+        old2new.append((orig_title, new_title))
+    for new_title, orig_title, orig_heading in \
+            zip(new_titles2, orig_titles2, orig_headings2):
+        new_heading = '__%s__' % new_title
+        filestr = filestr.replace(orig_heading, new_heading)
+        old2new.append((orig_title, new_title))
+    return filestr, old2new
+
+
 def _usage_md2html():
     print 'Usage: doconce md2html doconce-file'
     print 'Make HTML from pandoc-exteded Markdown'

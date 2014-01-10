@@ -5,6 +5,7 @@ from doconce.misc import system, option
 from doconce.misc import (
     insertdocstr,
     spellcheck,
+    capitalize,
     #sphinx_dir,
     gwiki_figsubst,
     latin2html,
@@ -794,6 +795,7 @@ expand_commands
 expand_mako
 combine_images
 change_encoding
+capitalize
 gwiki_figsubst
 md2html
 remove_inline_comments
@@ -941,6 +943,9 @@ doconce list_labels myfile
 
 # check all links in HTML files
 doconce linkchecker *.html
+
+# change headings from "This is a Heading" to "This is a heading"
+doconce capitalize [-d .mydict.txt] *.do.txt
 
 # translate a latex document to doconce (requires usually manual fixing)
 doconce latex2doconce latexfile
