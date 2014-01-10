@@ -1324,11 +1324,17 @@ def typeset_tables(filestr, format):
                     ok = False
                 if not ok:
                     print '*** error: syntax error in table!'
-                    print '    missing three horizontal rules and heading:'
+                    print '    missing three horizontal rules and heading'
                     for row in table['rows']:
                         if row != ['horizontal rule']:
+                            # Check for common syntax error: |--l--|--r--|
+                            if sum([bool(re.search('[lrc-]{%d}' % len(c), c)) for c in row]) > 0:
+                                print 'NOTE: do not use pipes in horizontal rule of this type:'
+                                print '(write instead |%s|)' % '-'.join(row)
                             print '| ' + ' | '.join(row) + ' |'
-                            print '(or maybe not a table, just an opening pipe symbol at the beginning of the line?)'
+                        else:
+                            print '|---------------------| (horizontal rule)'
+                    print '(or maybe not a table, just an opening pipe symbol at the beginning of the line?)'
                     _abort()
 
                 result.write(TABLE[format](table))   # typeset table
@@ -2645,6 +2651,8 @@ def preprocess(filename, format, preprocessor_options=[]):
     In addition, the preprocessor option FORMAT (=format) is
     always defined.
     """
+    orig_filename = filename
+
     device = None
     # Is DEVICE set as command-line option?
     for arg in sys.argv[1:]:
@@ -2870,7 +2878,13 @@ python-mako package (sudo apt-get install python-mako).
             temp = Template(text=filestr, lookup=lookup,
                             strict_undefined=strict_undefined)
         except Exception as e:
-            print e
+            print '*** mako error:', str(type(e)).split("'")[1]
+            print '   ', e
+            if "'ascii'" in str(e):
+                print '    reason: doconce file contains non-ascii characters'
+                print '    rerun with --encoding=utf-8 (or similar):'
+                print '    doconce format %s %s %s --encoding=utf-8' \
+                      % (format, orig_filename, ' '.join(sys.argv[1:]))
             _abort()
 
         debugpr('Keyword arguments to be sent to mako: %s' % \

@@ -307,7 +307,7 @@ system doconce format plain movies
 # Status movies: everything works in html and sphinx, only href works
 # in latex, media9 is unreliable
 
-# Test encoding
+# Test encoding: guess and change
 system doconce guess_encoding encoding1.do.txt > tmp_encodings.txt
 cp encoding1.do.txt tmp1.do.txt
 system doconce change_encoding utf-8 latin1 tmp1.do.txt
@@ -318,6 +318,15 @@ system doconce guess_encoding encoding2.do.txt >> tmp_encodings.txt
 cp encoding1.do.txt tmp2.do.txt
 system doconce change_encoding utf-8 latin1 tmp2.do.txt
 doconce guess_encoding tmp2.do.txt >> tmp_encodings.txt
+
+# Handle encoding problems
+doconce format latex encoding3 -DPURE_PREPROCESS  # preprocess handles utf-8
+cp encoding3.p.tex encoding3.p.tex-preprocess
+doconce format html encoding3 -DPURE_PREPROCESS  # html fails with utf-8
+doconce format html encoding3 -DPURE_PREPROCESS  --encoding=utf-8
+doconce format latex encoding3 -DTURN_ON_MAKO_PART  # mako fails
+doconce format latex encoding3 -DTURN_ON_MAKO_PART  --encoding=utf-8
+cp encoding3.p.tex encoding3.p.tex-mako
 
 # Test mako problems
 system doconce format html mako_test1 --no_pygments_html  # mako variable only, no % lines
@@ -354,6 +363,8 @@ doconce replace 'doc/manual' 'doc/src/manual' tmp2.do.txt
 doconce format sphinx tmp2
 doconce replace '../lib/doconce/doconce.py' '_static/doconce.py' tmp2.do.txt
 doconce replace 'two_media99' 'two_media' tmp2.do.txt
+doconce format html tmp2
+doconce replace '|--l---|---l---|' '|--l-------l---|' tmp2.do.txt
 doconce format html tmp2
 doconce replace '99x9.ogg' '.ogg' tmp2.do.txt
 doconce format html tmp2

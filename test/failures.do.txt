@@ -91,3 +91,12 @@ Normal text.
 
 Try this "link": "../lib/doconce/doconce.py".
 
+===== Failure of tables =====
+
+|--------------------------------------|
+|  heading1  |  heading2 |
+|--l---|---l---|
+|`%s`|`%e`|
+|$a=b$|$\mbox{math}$|
+|--------------------------------------|
+
