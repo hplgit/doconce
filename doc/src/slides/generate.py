@@ -15,7 +15,8 @@ def system(cmd):
 
 from collections import OrderedDict as dict
 themes = dict(
-    reveal=['beige', 'beigesmall', 'night', 'simple', 'sky'],
+    reveal=['beige', 'beigesmall', 'blood', 'darkgray', 'moon',
+            'night', 'serif', 'simple', 'sky', 'solarized'],
     deck=['neon', 'swiss','web-2.0', 'mnml', 'sandstone.aurora',
           'sandstone.dark', 'sandstone.default', 'sandstone.firefox',
           'sandstone.light', 'sandstone.mdn', 'sandstone.nightly',
@@ -25,7 +26,8 @@ themes = dict(
     )
 
 dark_styles = ['csss_default',
-               'night', 'neon', 'sandstone.aurora', 'sandstone.dark',
+               'night', 'moon',
+               'neon', 'sandstone.aurora', 'sandstone.dark',
                'sandstone.mdn', 'sandstone.nightly']
 dark_pygments=['monokai', 'fruity', 'native']
 light_pygments = ['default', 'manni', 'autumn', 'perldoc', 'emacs']
