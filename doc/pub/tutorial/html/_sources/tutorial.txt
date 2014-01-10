@@ -6,7 +6,7 @@ Doconce: Document Once, Include Anywhere
 ========================================
 
 :Author: Hans Petter Langtangen
-:Date: Dec 1, 2013
+:Date: Jan 10, 2014
 
  * When writing a note, report, manual, etc., do you find it difficult
    to choose the typesetting format? That is, to choose between plain
@@ -587,6 +587,16 @@ Pygments style is set by ``--pygments_html_style=style``, where ``style``
 can be ``default``, ``emacs``, ``perldoc``, and other valid names for
 Pygments styles.
 
+Handling of Movies
+~~~~~~~~~~~~~~~~~~
+
+MP4, WebM, and Ogg movies are typeset with the HTML5 ``video`` tag
+and the HTML code tries to load as many versions among MP4, WebM,
+and Ogg as exist (and the files are loaded in the mentioned order).
+If just the specified file is to be loaded, use the
+``--no_mp4_webm_ogg_alternatives`` command-line option.
+Other movie formats, e.g., ``.flv``, ``.mpeg`` and ``.avi``, are embedded via
+the older ``embed`` tag.
 
 HTML Styles
 ~~~~~~~~~~~
@@ -1006,10 +1016,13 @@ Preprocessor variables to be defined or undefined are
  * ``A6PAPER`` for A6 paper size (suitable for reading PDFs on phones)
 
  * ``MOVIE`` for specifying how movies are handled: the value ``media9``
-   implies the ``media9`` package and the ``\includemedia`` command (default),
-   while other values are ``movie15`` (``\includemovie`` command),
-   ``multimedia`` (for Beamer-style ``\movie`` command),
-   or ``href-run`` (for the plain `\h:ref:`run:file`` command)
+   implies the ``media9`` package and the ``\includemedia`` command
+   for ``.flv`` and ``.mp4`` movies,
+   or ``movie15`` and the ``\includemovie`` command for ``.mpeg`` and ``.avi``
+   movies;
+   ``multimedia`` for Beamer-style ``\movie`` command,
+   or ``href`` for the plain `\h:ref:`run:file`` command. The latter
+   is default.
 
  * ``MOVIE_CONTROLS`` adds buttons for starting/stopping movies if the
    ``media9`` package is used.
@@ -1032,6 +1045,12 @@ Preprocessor variables to be defined or undefined are
 
  * ``COLORED_TABLE_ROWS`` for coloring every other table rows (set this
    variable to ``gray`` or ``blue``).
+
+ * ``FANCY_HEADER`` for turning on headers with section title and page
+   (and also chapter title on odd numbered pages if chapters exist).
+
+ * ``DOUBLE_SPACING`` for 50 percent larger line spacing (useful for
+   pen corrections) and LaTeX "draft" mode.
 
 There are also preprocessor variables with specific values:
 
@@ -1771,6 +1790,9 @@ software. However, if you want other formats as output
 as preprocesors, spellcheck, file differences, bibliographies,
 and so on, the software below must be installed.
 
+To install all needed packages on a GNU/Linux Debian system, such as
+Ubuntu, you can jump to the script in the section :ref:`install:debian:script`.
+
 .. Make a debpkg_doconce.txt file with everything that is needed on Debian
 
 
@@ -1818,11 +1840,12 @@ Image file handling
 ~~~~~~~~~~~~~~~~~~~
 
 Different output formats require different formats of image files.
-For example, PostScript or Encapuslated PostScript is required for ``latex``
-output, while HTML needs JPEG, GIF, or PNG formats.
-Doconce calls up programs from the ImageMagick suite for converting
-image files to a proper format if needed. The `ImageMagick suite <http://www.imagemagick.org/script/index.php>`_ can be installed on all major platforms.
-On Debian Linux (including Ubuntu) systems one can simply write
+For example, PostScript or Encapuslated PostScript is required for
+``latex`` output, while HTML needs JPEG, GIF, or PNG formats.  Doconce
+calls up programs from the ImageMagick suite for converting image
+files to a proper format if needed. The `ImageMagick suite <http://www.imagemagick.org/script/index.php>`_ can be installed on all
+major platforms.  On Debian Linux (including Ubuntu) systems one can
+simply write
 
 
 .. code-block:: console
@@ -2135,8 +2158,8 @@ run ``svn update``, and then ``sudo python setup.py install``. For
 Mercurial (``hg``) directories, go to the directory, run
 ``hg pull; hg update``, and then ``sudo python setup.py install``.
 
-The ``doconce diff`` command
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Analyzing file differences
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The ``doconce diff file1 file prog`` command for illustrating differences between
 two files ``file1`` and ``file2`` using the program ``prog`` requires ``prog``
@@ -2158,6 +2181,8 @@ appear in the table below.
 ``tkdiff.tcl``                                                                             `tkdiff <https://sourceforge.net/projects/tkdiff/>`_                                       not in Debian                                                                              
 =========================================================================================  =========================================================================================  =========================================================================================  
 
+.. _install:debian:script:
+
 Quick Debian/Ubuntu Install
 ---------------------------
 
@@ -2174,19 +2199,13 @@ long series of Doconce dependencies:
         # Python
         sudo apt-get install -y idle ipython python-pip python-pdftools texinfo
         
-        # These lines are only necessary for Ubuntu 12.04 to install texlive 2012
-        ubuntu_version=`lsb_release -r | awl '{print $2}'`
-        if [ $ubuntu_version = "12.04" ]; then
-          sudo add-apt-repository ppa:texlive-backports/ppa
-          sudo apt-get update
-        fi
         # LaTeX
         sudo apt-get install -y texlive texlive-extra-utils texlive-latex-extra texlive-math-extra texlive-font-utils
         # or sudo apt-get install -y texlive-full  # get everything
         sudo apt-get install -y latexdiff auctex
         
         # Image and movie tools
-        sudo apt-get install -y imagemagick netpbm mjpegtools pdftk giftrans gv evince smpeg-plaympeg mplayer totem ffmpeg libav-tools
+        sudo apt-get install -y imagemagick netpbm mjpegtools pdftk giftrans gv libav-tools libavcodec-extra-53 libx264-dev ffmpeg mencoder evince mplayer gnome-mplayer totem vlc browser-plugin-vlc
         
         # Misc
         sudo apt-get install -y ispell pandoc libreoffice unoconv libreoffice-dmaths curl a2ps wdiff meld xxdiff diffpdf kdiff3 diffuse
@@ -2221,6 +2240,7 @@ long series of Doconce dependencies:
         cd latex
         sh cp2texmf.sh  # copy stylefiles to ~/texmf directory
         cd ../../..
+
 
 
 
