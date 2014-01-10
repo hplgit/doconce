@@ -5639,6 +5639,7 @@ def _latex2doconce(filestr):
         (r'\\index\{(?P<sortkey>.+?)@(?P<index>.+?)\}', r'idx{\g<index>}'),
         (r'\\index\{(?P<subst>.+?)\}', r'idx{\g<subst>}'),
         (r'\\href\{(?P<url>.+?)\}\{(?P<text>.+?)\}', r'"\g<2>": "\g<1>"'),
+        (r'\\input\{(?P<subst>.+?)\}', r'# #include "\g<subst>.do.txt"'),
         ] + user_subst
     try:
         for item in subst:

@@ -288,7 +288,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>Jan 6, 2014</h4></center> <!-- date -->
+<center><h4>Jan 10, 2014</h4></center> <!-- date -->
 <p>
 <!-- lines beginning with # are doconce comment lines -->
 <!-- (documents can also have mako comment lines) -->
@@ -4497,8 +4497,10 @@ LaTeX package <code>xr</code> is used to handle the labels in the external docum
 When referring to a complete chapter (not a section in it), which
 corresponds to a complete external document, it does not make sense
 to write out <code>internal cite</code> since the <code>internal</code> reference is a
-chapter number. In such cases, the <code>refch[][][]</code> syntax can be used,
-and if the label is in another LaTeX document, the output is just <code>cite</code>.
+chapter number. In such cases, the <code>internal</code>
+syntax can be used,
+and if the label is in another LaTeX document, the output is just <code>cite</code>
+(rather than <code>internal cite</code>). An example below will illustrate the use.
 For all
 output formats other than <code>latex</code> and <code>pdflatex</code>, the <code>external</code>
 text will be the output.
@@ -4510,39 +4512,38 @@ in a document:
 <pre><code>As explained in
 ref[Section ref{subsec:ex}][in &quot;Langtangen, 2012&quot;:
 &quot;http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex&quot;
-cite{testdoc:12}][a &quot;section&quot;:
+cite{Doconce:test}][a &quot;section&quot;:
 &quot;http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex&quot; in
 the document &quot;A Document for Testing Doconce&quot;:
 &quot;http://hplgit.github.io/doconce/test/demo_testdoc.html&quot;
-cite{testdoc:12}], Doconce documents may include movies.
+cite{Doconce:test}], Doconce documents may include tables.
 </code></pre>
 <!-- end verbatim block -->
 With <code>latex</code> or <code>pdflatex</code> as output, this translates to
 <!-- begin verbatim block -->
 <pre><code>As explained in
-Section ref{subsec:ex}, Doconce documents may include movies.
+Section ref{subsec:ex}, Doconce documents may include tables.
 </code></pre>
 <!-- end verbatim block -->
-if the <code><a name="subsec:ex"></a></code> appears in the present Doconce source, and
+if the label <code>{subsec:ex}</code> appears in the present Doconce source, and
 otherwise
 <!-- begin verbatim block -->
 <pre><code>As explained in
 Section ref{subsec:ex} in &quot;Langtangen, 2012&quot;:
 &quot;http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex&quot;
-cite{testdoc:12}, Doconce documents may include movies.
+cite{Doconce:test}, Doconce documents may include tables.
 </code></pre>
 <!-- end verbatim block -->
-The
 The latter Doconce code is translated to the following
 LaTeX code:
 <!-- begin verbatim block -->
 <pre><code>As explained in
 Section~\ref{subsec:ex} in
 \href{{http://hplgit.github.io/doconce/...}}{Langtangen, 2012}
-\cite{testdoc:12}, Doconce documents may include movies.
+\cite{Doconce:test}, Doconce documents may include tables.
 </code></pre>
 <!-- end verbatim block -->
-In a format different from <code>latex</code> and <code>pdflatex</code>, the Doconce
+In a format different from <code>latex</code> and <code>pdflatex</code>, the effective Doconce
 text becomes
 <!-- begin verbatim block -->
 <pre><code>As explained in
@@ -4550,24 +4551,34 @@ a &quot;section&quot;:
 &quot;http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex&quot; in
 the document &quot;A Document for Testing Doconce&quot;:
 &quot;http://hplgit.github.io/doconce/test/demo_testdoc.html&quot;
-cite{testdoc:12}, Doconce documents may include movies.
+cite{Doconce:test}, Doconce documents may include tables.
 </code></pre>
 <!-- end verbatim block -->
+The rendered text in the current format becomes
+
+<p>
+<blockquote>
+    As explained in
+    a <a href="http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex" target="_self">section</a> in
+    the document <a href="http://hplgit.github.io/doconce/test/demo_testdoc.html" target="_self">A Document for Testing Doconce</a>
+    <a href="#Doconce:test">[1]</a>, Doconce documents may include tables.
+</blockquote>
+
 
 <p>
 A reference to an entire external document, which is usually a chapter
-if the reference is internal in the Doconce source, applies the
-<code>refch</code> syntax:
+of a book if the reference is internal in the Doconce source,
+usually needs to apply the <code>refch</code> syntax:
 
 <p>
 <!-- begin verbatim block -->
 <pre><code>As explained in
-refch[Chapter ref{ch:testdoc][&quot;Langtangen, 2012&quot;:
+refch[Chapter ref{ch:testdoc}][&quot;Langtangen, 2012&quot;:
 &quot;http://hplgit.github.io/doconce/test/demo_testdoc.html&quot;
-cite{testdoc:12}][the document
+cite{Doconce:test}][the document
 &quot;A Document for Testing Doconce&quot;:
 &quot;http://hplgit.github.io/doconce/test/demo_testdoc.html&quot;
-cite{testdoc:12}], Doconce documents may include movies.
+cite{Doconce:test}], Doconce documents may include tables.
 </code></pre>
 <!-- end verbatim block -->
 The output now if <code>ch:testdoc</code> is not a label in the document,
@@ -4578,11 +4589,19 @@ becomes in the <code>latex</code> and <code>pdflatex</code> case
 <pre><code>As explained in
 &quot;Langtangen, 2012&quot;:
 &quot;http://hplgit.github.io/doconce/test/demo_testdoc.html&quot;
-cite{testdoc:12}, Doconce documents may include movies.
+cite{Doconce:test}, Doconce documents may include tables.
 </code></pre>
 <!-- end verbatim block -->
 That is, the internal reference <code>Chapter ...</code> is omitted since
 it is not meaningful to refer to an external document as "Chapter".
+The resulting rendered text in the current format becomes
+<blockquote>
+    As explained in
+    the document
+    <a href="http://hplgit.github.io/doconce/test/demo_testdoc.html" target="_self">A Document for Testing Doconce</a>
+    <a href="#Doconce:test">[1]</a>, Doconce documents may include tables.
+</blockquote>
+
 
 <p>
 Note that LaTeX cannot
@@ -4727,16 +4746,16 @@ We use the command
 </code></pre>
 <!-- end verbatim block -->
 to refer to a publication with bibliographic key <code>key</code>.
-Here is an example: <a href="#Langtangen_Pedersen_2002">[1]</a> discussed propagation of
-large destructive water waves, <a href="#Langtangen_et_al_2002">[2]</a> gave
+Here is an example: <a href="#Langtangen_Pedersen_2002">[2]</a> discussed propagation of
+large destructive water waves, <a href="#Langtangen_et_al_2002">[3]</a> gave
 an overview of numerical methods for solving the Navier-Stokes equations,
 while the use of Backward Kolmogorov equations for analyzing
-random vibrations was investigated in <a href="#Langtangen_1994a">[3]</a>.
-The book chapter <a href="#Mardal_et_al_2003a">[4]</a> contains information on
+random vibrations was investigated in <a href="#Langtangen_1994a">[4]</a>.
+The book chapter <a href="#Mardal_et_al_2003a">[5]</a> contains information on
 C++ software tools for programming multigrid methods. A real retro
-reference is <a href="#Langtangen_1988d">[5]</a> about a big FORTRAN package.
+reference is <a href="#Langtangen_1988d">[6]</a> about a big FORTRAN package.
 Multiple references are also possible, e.g., see
-<a href="#Langtangen_Pedersen_2002">[1]</a> <a href="#Mardal_et_al_2003a">[4]</a>.
+<a href="#Langtangen_Pedersen_2002">[2]</a> <a href="#Mardal_et_al_2003a">[5]</a>.
 
 <p>
 A LaTeX-style cite command with additional detailed reference is also possible,
@@ -4746,8 +4765,8 @@ A LaTeX-style cite command with additional detailed reference is also possible,
 <pre><code>cite[details]{key}
 </code></pre>
 <!-- end verbatim block -->
-for example as in <a href="#Langtangen_et_al_2002">[2]</a> (Section 2)
-or <a href="#Langtangen_et_al_2002">[2]</a> (Equation (4.2)).
+for example as in <a href="#Langtangen_et_al_2002">[3]</a> (Section 2)
+or <a href="#Langtangen_et_al_2002">[3]</a> (Equation (4.2)).
 
 <p>
 In LaTeX, the <code>cite</code> command is directly translated to the
@@ -6563,9 +6582,19 @@ and Sphinx just typeset the list as a list with keywords.
 <h2>References  <a name="___sec109"></a></h2>
 
 <p>
+<div class="alert alert-block alert-warning alert-text-normal"><b>Note.</b>
+The references below are just for illustrating and testing citation
+syntax and not references for explaining parts of the text.
+</div>
+
+
+<p>
 <!-- begin bibliography -->
 
 <ol>
+ <li> <a name="Doconce:test"></a> <b>H. P. Langtangen</b>. 
+    A Document for Testing Doconce,
+    <a href="http://hplgit.github.io/doconce/test/demo_testdoc.html" target="_self"><tt>http://hplgit.github.io/doconce/test/demo_testdoc.html</tt></a>.</li>
  <li> <a name="Langtangen_Pedersen_2002"></a> <b>H. P. Langtangen and G. Pedersen</b>. 
     Propagation of Large Destructive Waves,
     <em>International Journal of Applied Mechanics and Engineering</em>,
