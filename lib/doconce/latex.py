@@ -821,10 +821,9 @@ def latex_ref_and_label(section_label2title, format, filestr):
         filestr = re.sub(r'(%s) +([\\A-Za-z0-9$])' % p, r'\g<1>~\g<2>',
                          filestr)
     # Allow C# and F# languages
-    # (filestr is here without code so side effects for
-    # notes/chords/music notation should not be relevant)
-    filestr = filestr.replace('C#', 'C\\#')
-    filestr = filestr.replace('F#', 'F\\#')
+    # (No: affects music notation!)
+    #filestr = filestr.replace('C#', 'C\\#')
+    #filestr = filestr.replace('F#', 'F\\#')
 
     return filestr
 
@@ -1615,6 +1614,12 @@ final,                   %% or draft (marks overfull hboxes)
 \linenumbers
 % #endif
 
+% #ifdef LABELS_IN_MARGIN
+% Display labels for sections, equations, and citations in the margin
+\usepackage{showlabels}
+\showlabels{cite}
+% #endif
+
 % #ifdef DOUBLE_SPACING
 \onehalfspacing    % from setspace package
 %\doublespacing
@@ -1653,6 +1658,7 @@ final,                   %% or draft (marks overfull hboxes)
 
     # Admonitions
     if re.search(r'^!b(%s)' % '|'.join(admons), filestr, flags=re.MULTILINE):
+        # Found one !b... command for an admonition
         latex_admon = option('latex_admon=', 'graybox1')
         if latex_admon in ('colors1',):
             packages = r'\usepackage{framed}'
