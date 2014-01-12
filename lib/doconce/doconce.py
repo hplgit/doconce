@@ -1449,6 +1449,7 @@ def typeset_lists(filestr, format, debug_info=[]):
                     print '    surrounding text is\n'
                     for l in lines[i-4:i+5]:
                         print l
+                    _abort()
 
         if not line or line.isspace():  # blank line?
             if not lists:

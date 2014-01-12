@@ -887,15 +887,23 @@ def latex_exercise_toc():
 
 
 def _usage_combine_images():
-    print 'Usage: doconce combine_images image1 image2 ... output_file'
-    print 'Use montage if not PDF or EPS images, else use'
+    print 'Usage: doconce combine_images [-4] image1 image2 ... output_file'
+    print 'Applies montage if not PDF or EPS images, else use'
     print 'pdftk, pdfnup and pdfcrop.'
+    print 'Images are combined with two each row, by default, but'
+    print 'doconce combine_images -3 ... gives 3 images in each row.'
 
 def combine_images():
 
     if len(sys.argv) < 3:
         _usage_combine_images()
         sys.exit(1)
+
+    if sys.argv[1].startswith('-'):
+        num_columns = int(sys.argv[1][1:])
+        del sys.argv[1]
+    else:
+        num_columns = 2
 
     imagefiles = sys.argv[1:-1]
     output_file = sys.argv[-1]
@@ -909,8 +917,7 @@ def combine_images():
 
     cmds = []
     if montage:
-        cmds.append('montage -background white -geometry 100%% -tile 2x %s %s' % \
-                    (' '.join(imagefiles), output_file))
+        cmds.append('montage -background white -geometry 100%% -tile %dx %s %s' % (num_columns, ' '.join(imagefiles), output_file))
         cmds.append('convert -trim %s %s' % (output_file, output_file))
 
     else:
@@ -923,9 +930,9 @@ def combine_images():
                 imagefiles[i] = f.replace('.eps', '.pdf')
 
         # Combine PDF images
-        rows = int(round(len(imagefiles)/2.))
+        num_rows = int(round(len(imagefiles)/float(num_columns)))
         cmds.append('pdftk %s output tmp.pdf' % ' '.join(imagefiles))
-        cmds.append('pdfnup --nup 2x%d tmp.pdf' % rows)
+        cmds.append('pdfnup --nup %dx%d tmp.pdf' % (num_columns, num_rows))
         cmds.append('pdfcrop tmp-nup.pdf')
         cmds.append('cp tmp-nup-crop.pdf %s' % output_file)
         cmds.append('rm -f tmp.pdf tmp-nup.pdf tmp-nup-crop.pdf')
@@ -5132,7 +5139,7 @@ def spellcheck():
 
 
 def _usage_capitalize():
-    print 'doconce capitalize doconce-file [-d file_with_cap_words]'
+    print 'doconce capitalize [-d file_with_cap_words] doconce-file'
     print 'list of capitalized words can also be in .dict4cap.txt'
     print '(typically, Python, Unix, etc. must be capitalized)'
 
@@ -5141,7 +5148,7 @@ def capitalize():
         dictionary = [sys.argv[2]]
         del sys.argv[1:3]
     else:
-        if os.path.isfile('.dict4spell.txt'):
+        if os.path.isfile('.dict4cap.txt'):
             dictionary = '.dict4cap.txt'
         else:
             dictionary = ''
@@ -5153,12 +5160,30 @@ def capitalize():
     filename = sys.argv[1]
 
     cap_words = [
-         'Celsius', 'Fahrenheit', 'Kelvin',
+        'Celsius', 'Fahrenheit', 'Kelvin',
         'Newton', 'Gauss', 'Legendre', 'Laguerre', 'Taylor', 'Einstein',
         'Maxwell', 'Euler', 'Gaussian', 'Eulerian', 'Lagrange', 'Lagrangian',
+        'Heaviside',
         'Python', 'IPython', 'Cython', 'Idle', 'NumPy', 'SciPy',
         'Matplotlib',
-        'C++', 'C', 'Fortran', 'MATLAB', 'SWIG', 'Perl', 'Ruby',
+        'Fortran', 'MATLAB', 'SWIG', 'Perl', 'Ruby',
+        'DNA',
+        ]
+    cap_words_fix = [
+        ('exer. ref{', 'Exer. ref{'),
+        ('exer. (_', 'Exer. (_'),  # latex2doconce external reference
+        ('subsection. ref{', 'Subsection. ref{'),
+        ('section. ref{', 'Section. ref{'),
+        ('chapter. ref{', 'Chapter ref{'),
+        ('Python library reference', 'Python Library Reference'),
+        # Cannot have C and C++ as a special word since an equation with c
+        # will then get capital C...try to repair these cases:
+        (' c code', ' C code'),
+        (' c program', ' C program'),
+        (' c++ ', ' C++ '),
+        (' 1d ', ' 1D '),
+        (' 2d ', ' 2D '),
+        (' 3d ', ' 3D '),
         ]
 
     if dictionary:
@@ -5170,11 +5195,11 @@ def capitalize():
     f.close()
     shutil.copy(filename, filename + '.old~~')
 
-    filestr, old2new = _capitalize(filestr, cap_words)
+    filestr, old2new = _capitalize(filestr, cap_words, cap_words_fix)
 
-    #f = open(filename, 'w')
-    #f.write(filestr)
-    #f.close()
+    f = open(filename, 'w')
+    f.write(filestr)
+    f.close()
     print 'Edits of titles:'
     for old, new in old2new:
         if old != new:
@@ -5182,7 +5207,7 @@ def capitalize():
             print new
             print
 
-def _capitalize(filestr, cap_words):
+def _capitalize(filestr, cap_words, cap_words_fix):
     pattern1 = r'^\s*(={3,9})(.+?)(={3,9})'  # sections
     pattern2 = r'__(.+?[.:?;!])__'       # paragraphs
 
@@ -5243,6 +5268,9 @@ def _capitalize(filestr, cap_words):
                         #print 'Did not find', word_stripped.lower(), 'in', cap_words_lower
                         pass
             #print '>', new_title
+            for wrong_words, fixed_words in cap_words_fix:
+                if wrong_words in new_title:
+                    new_title = new_title.replace(wrong_words, fixed_words)
             new_titles.append(new_title)
         return new_titles
 
@@ -5252,7 +5280,7 @@ def _capitalize(filestr, cap_words):
     old2new = []
     for new_title, orig_title, orig_heading, s1 in \
             zip(new_titles1, orig_titles1, orig_headings1, orig_equals1):
-        new_heading = '%s %s %s' % (s1, new_title, s2)
+        new_heading = '%s %s %s' % (s1, new_title, s1)
         filestr = filestr.replace(orig_heading, new_heading)
         old2new.append((orig_title, new_title))
     for new_title, orig_title, orig_heading in \
@@ -5610,6 +5638,7 @@ def _latex2doconce(filestr):
         (r'\\idxnumpy\{(?P<subst>.+?)\}', r'idx{`\g<subst>` (from `numpy`)}'),
         (r'\\idxst\{(?P<subst>.+?)\}', r'idx{`\g<subst>` (from `scitools`)}'),
         (r'\\idxfn\{(?P<subst>.+?)\}', r'idx{`\g<subst>` (FEniCS)}'),
+        (r'\\idxe\{(?P<attr>.+?)\}\{(?P<obj>.+?)\}', r'idx{`\g<attr>` \g<obj>}'),
         (r'\\refeq\{(?P<subst>.+?)\}', r'(ref{\g<subst>})'),
         (r'^\bpy\s+', r'\bipy' + '\n', re.MULTILINE),
         (r'^\epy\s+', r'\eipy' + '\n', re.MULTILINE),
@@ -6044,7 +6073,10 @@ def _latex2doconce(filestr):
                 table = '\n\n' + separator1 + '\n' + table_lines[0] + '\n' + \
                         separator2 + '\n' + '\n'.join(table_lines[1:]) + \
                         '\n' + separator0 + '\n\n'
-                new_lines[-1] += table
+                if new_lines:
+                    new_lines[-1] += table
+                else:
+                    new_lines.append(table)
 
     filestr = '\n'.join(new_lines)
     filestr = re.sub(r'^# REMOVE \(there was.+$\s*', '', filestr,
@@ -6070,12 +6102,12 @@ def _latex2doconce(filestr):
             # Attempt to do a generalized reference
             # (Make table of chapters, stand-alone docs and their labels - quite easy if associated chapters and their URLs are in a file!!!)
             filestr = filestr.replace(r'\ref{%s}' % ref,
-                      r'_PROBLEM: external ref_ ref{%s}' % ref)
-            print r'FIX external ref: ref[%(ref)s]["section where %(ref)s is": "http URL with %(ref)s" cite{doc_with_%(ref)s}]["section where %(ref)s is": "http URL with %(ref)s" cite{doc_with_%(ref)s}]' % vars()
+                      r'(_PROBLEM: external ref_) ref{%s}' % ref)
+            #print r'FIX external ref: ref[%(ref)s]["section where %(ref)s is": "http URL with %(ref)s" cite{doc_with_%(ref)s}]["section where %(ref)s is": "http URL with %(ref)s" cite{doc_with_%(ref)s}]' % vars()
     for ref in pagerefs:
         print 'pageref{%s} should be rewritten' % ref
         filestr = filestr.replace(r'\pageref{%s}' % ref,
-            r'_PROBLEM: pageref_ pageref{%s}' % ref)
+            r'(_PROBLEM: pageref_) \pageref{%s}' % ref)
         problems = True
 
     print '\n## search for CHECK to see if auto editing was correct\n'
@@ -6096,10 +6128,10 @@ def _latex2doconce(filestr):
     # Footnote at the end of a sentence: enclose in parenthesis
     # (regex is not perfect so
     pattern = r'\\footnote\{([^}]+)\}\.'
-    filestr = re.sub(pattern, '. _CHECK: footnote at end of sentence placed in parenthesis_: (\g<1>) ', filestr)
+    filestr = re.sub(pattern, '.( _CHECK: footnote_ at end of sentence placed in parenthesis) (\g<1>) ', filestr)
     # Without final . means footnote in the middle of a sentence
     pattern = r'\\footnote\{([^}]+)\}'
-    filestr = re.sub(pattern, ' _PROBLEM: footnote in the middle of a sentence must be rewritten: (\g<1>)', filestr)
+    filestr = re.sub(pattern, '( _PROBLEM: footnote_ in the middle of a sentence must be rewritten) (\g<1>)', filestr)
 
     # Check that !bc, !ec, !bt, !ec are at the beginning of the line
     for envir in 'c', 't':
