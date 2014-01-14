@@ -1,6 +1,6 @@
 # -*- coding: iso-8859-15 -*-
 
-import os, commands, re, sys, glob
+import os, commands, re, sys, glob, shutil
 from common import plain_exercise, table_analysis, \
      _CODE_BLOCK, _MATH_BLOCK, doconce_exercise_output, indent_lines, \
      online_python_tutor, envir_delimiter_lines, safe_join, \
@@ -943,13 +943,20 @@ def latex_quote(block, format, text_size='normal'):
 latexfigdir = 'latex_figs'
 
 def _get_admon_figs(filename):
+    if filename is None:
+        return
     # Extract graphics file from latex_styles.zip, when needed
+    # Idea: copy all latex_styles.zip files to a pool, latex_figs.all
+    # Copy from latex_figs.all to latex_figs as needed.
+    # Remove latex_figs.all at the end of typeset_envirs
+    # (cannot do it in latex_code cleanup since typeset_envirs is
+    # called after)
     datafile = 'latex_styles.zip'
-    if not os.path.isdir(latexfigdir):
-        os.mkdir(latexfigdir)
-    if not os.path.isfile(os.path.join(latexfigdir, filename)):
-        os.chdir(latexfigdir)
-        import doconce, shutil
+    latexfigdir_all = latexfigdir + '.all'
+    if not os.path.isdir(latexfigdir_all):
+        os.mkdir(latexfigdir_all)
+        os.chdir(latexfigdir_all)
+        import doconce
         doconce_dir = os.path.dirname(doconce.__file__)
         doconce_datafile = os.path.join(doconce_dir, datafile)
         #print 'copying admon figures from %s to subdirectory %s' % \
@@ -959,12 +966,44 @@ def _get_admon_figs(filename):
         zipfile.ZipFile(datafile).extractall()
         os.remove(datafile)
         os.chdir(os.pardir)
+    if not os.path.isdir(latexfigdir):
+        os.mkdir(latexfigdir)
+        print '*** made directory %s for admon figures' % latexfigdir
+    if not os.path.isfile(os.path.join(latexfigdir, filename)):
+        shutil.copy(os.path.join(latexfigdir_all, filename), latexfigdir)
+
+_admon_latex_figs = dict(
+    graybox3=dict(
+        warning='small_gray_warning',
+        question='small_gray_question2',  # 'small_gray_question3'
+        notice='small_gray_notice',
+        summary='small_gray_summary',
+        ),
+    yellowbox=dict(
+        warning='small_yellow_warning',
+        question='small_yellow_question',
+        notice='small_yellow_notice',
+        summary='small_yellow_summary',
+        ),
+    )
+
+def get_admon_figname(admon_tp, admon_name):
+    if admon_tp in _admon_latex_figs:
+        if admon_name in _admon_latex_figs[admon_tp]:
+            return _admon_latex_figs[admon_tp][admon_name]
+        else:
+            return None
+    else:
+        if admon_name in ('notice', 'warning', 'summary', 'question'):
+            return admon_name
+        else:
+            return None
 
 admons = 'notice', 'summary', 'warning', 'question', 'block'
 for _admon in admons:
     _Admon = _admon.capitalize()
     text = r"""
-def latex_%(_admon)s(block, format, title='%(_Admon)s', text_size='normal'):
+def latex_%(_admon)s(text_block, format, title='%(_Admon)s', text_size='normal'):
     if title.lower().strip() == 'none':
         title = ''
     if title == 'Block':  # block admon has no default title
@@ -973,17 +1012,17 @@ def latex_%(_admon)s(block, format, title='%(_Admon)s', text_size='normal'):
     latex_admon = option('latex_admon=', 'graybox1')
     if text_size == 'small':
         # When a font size changing command is used, incl a \par at the end
-        block = r'{\footnotesize ' + block + r' \par}'
+        text_block = r'{\footnotesize ' + text_block + r' \par}'
         # Add reduced initial vertical space?
         if latex_admon in ("yellowbox", "graybox3", "colors2"):
-            block = r'\vspace{-2.5mm}\par\noindent' + '\n' + block
+            text_block = r'\vspace{-2.5mm}\par\noindent' + '\n' + text_block
         elif latex_admon == "colors1":
             # Add reduced initial vertical space
-            block = r'\vspace{-3.5mm}\par\noindent' + '\n' + block
+            text_block = r'\vspace{-3.5mm}\par\noindent' + '\n' + text_block
         elif latex_admon in ("graybox1", "graybox2"):
-            block = r'\vspace{0.5mm}\par\noindent' + '\n' + block
+            text_block = r'\vspace{0.5mm}\par\noindent' + '\n' + text_block
     elif text_size == 'large':
-        block = r'{\large ' + block + r' \par}'
+        text_block = r'{\large ' + text_block + r' \par}'
         title = r'{\large ' + title + ' }'
 
     title_graybox1 = title.replace(',', '')  # title in graybox1 cannot handle ,
@@ -998,17 +1037,17 @@ def latex_%(_admon)s(block, format, title='%(_Admon)s', text_size='normal'):
     # then \grayboxhrules is used (which can be wrapped in a small box of 50 percent
     # with in the text for A4 format)
     grayboxhrules = False
-    block_graybox2 = block
+    text_block_graybox2 = text_block
     title_graybox2 = title
     if '%(_admon)s' == 'summary':
         if title != 'Summary':
             if title_graybox2 and title_graybox2[-1] not in ('.', '!', '?', ';', ':'):
                 title_graybox2 += ':'
-            block_graybox2 = r'\textbf{%%s} ' %% title_graybox2 + block_graybox2
+            text_block_graybox2 = r'\textbf{%%s} ' %% title_graybox2 + text_block_graybox2
         # else: no title if title == 'Summary' for graybox2
-        # Any code in block_graybox2?
-        m1 = re.search(r'^\\(b|e).*(cod|pro)', block_graybox2, flags=re.MULTILINE)
-        m2 = '\\code{' in block_graybox2
+        # Any code in text_block_graybox2?
+        m1 = re.search(r'^\\(b|e).*(cod|pro)', text_block_graybox2, flags=re.MULTILINE)
+        m2 = '\\code{' in text_block_graybox2
         if m1 or m2:
             grayboxhrules = False
         else:
@@ -1017,7 +1056,7 @@ def latex_%(_admon)s(block, format, title='%(_Admon)s', text_size='normal'):
     if grayboxhrules:
         envir_graybox2 = r'''\grayboxhrules{
 %%s
-}''' %% block_graybox2
+}''' %% text_block_graybox2
     else:
         # same mdframed package as for graybox1 admon, use title_graybox1
         envir_graybox2 = r'''
@@ -1025,20 +1064,25 @@ def latex_%(_admon)s(block, format, title='%(_Admon)s', text_size='normal'):
 %%s
 \end{graybox2admon}
 
-''' %% (title_graybox1, block_graybox2)
+''' %% (title_graybox1, text_block_graybox2)
 
     if latex_admon in ('colors1', 'colors2', 'graybox3', 'yellowbox'):
         text = r'''
 \begin{%(_admon)s_%%(latex_admon)sadmon}[%%(title)s]
-%%(block)s
+%%(text_block)s
 \end{%(_admon)s_%%(latex_admon)sadmon}
 
 ''' %% vars()
-
+        figname = get_admon_figname(latex_admon, '%(_admon)s')
+        if format == 'pdflatex':
+            figname += '.pdf'
+        elif format == 'latex':
+            figname += '.eps'
+        _get_admon_figs(figname)
     elif latex_admon == 'paragraph':
         text = r'''
 \begin{paragraphadmon}[%%(title_para)s]
-%%(block)s
+%%(text_block)s
 \end{paragraphadmon}
 
 ''' %% vars()
@@ -1051,7 +1095,7 @@ def latex_%(_admon)s(block, format, title='%(_Admon)s', text_size='normal'):
     else:
         text = r'''
 \begin{graybox1admon}[%%(title_graybox1)s]
-%%(block)s
+%%(text_block)s
 \end{graybox1admon}
 
 ''' %% vars()
@@ -1763,38 +1807,17 @@ final,                   %% or draft (marks overfull hboxes)
             #block=_gray2,
             block=_light_yellow1,
             )
-        graybox3_figs = dict(
-            warning='small_gray_warning',
-            question='small_gray_question2',  # 'small_gray_question3'
-            notice='small_gray_notice',
-            summary='small_gray_summary',
-            )
-        yellowbox_figs = dict(
-            warning='small_yellow_warning',
-            question='small_yellow_question',
-            notice='small_yellow_notice',
-            summary='small_yellow_summary',
-            )
 
         for admon in admons:
             Admon = admon.upper()[0] + admon[1:]
 
-            if admon != 'block':
-                # Copy figure file if necessary
-                # Note: .eps changed to .pdf in pdflatex.py
-                figname_colors = admon + '.eps'
-                _get_admon_figs(figname_colors)
-                figname_graybox3 = graybox3_figs[admon] + '.eps'
-                _get_admon_figs(figname_graybox3)
-                figname_yellowbox = yellowbox_figs[admon] + '.eps'
-                _get_admon_figs(figname_yellowbox)
-
+            # Figure files are copied when necessary
             color_colors = str(_admon2colors[admon])[1:-1]
-            graphics_colors1 = r'\includegraphics[height=0.3in]{latex_figs/%s}\ \ \ ' % admon
+            graphics_colors1 = r'\includegraphics[height=0.3in]{latex_figs/%s}\ \ \ ' % get_admon_figname('colors1', admon)
             graphics_colors2 = r"""\begin{wrapfigure}{l}{0.07\textwidth}
 \vspace{-13pt}
 \includegraphics[width=0.07\textwidth]{latex_figs/%s}
-\end{wrapfigure}""" % admon
+\end{wrapfigure}""" % get_admon_figname('colors2', admon)
             # Old typesetting of title (for latex_admon==colors1): {\large\sc #1}
 
             #color_graybox3 = str(_gray3)[1:-1]
@@ -1802,14 +1825,14 @@ final,                   %% or draft (marks overfull hboxes)
             graphics_graybox3 = r"""\begin{wrapfigure}{l}{0.07\textwidth}
 \vspace{-13pt}
 \includegraphics[width=0.07\textwidth]{latex_figs/%s}
-\end{wrapfigure}"""% figname_graybox3
+\end{wrapfigure}"""% get_admon_figname('graybox3', admon)
 
             #color_yellowbox = str(_light_yellow2)[1:-1]
             color_yellowbox = str(_light_yellow1)[1:-1]
             graphics_yellowbox = r"""\begin{wrapfigure}{l}{0.07\textwidth}
 \vspace{-13pt}
 \includegraphics[width=0.07\textwidth]{latex_figs/%s}
-\end{wrapfigure}""" % figname_yellowbox
+\end{wrapfigure}""" % get_admon_figname('yellowbox', admon)
 
             if admon == 'block':
                 # No figures for block admon

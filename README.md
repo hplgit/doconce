@@ -29,10 +29,9 @@ You should take a look at Doconce if any of these questions are of interest.
 Doconce is a pure Python package and installed by
 
 
-```Bash
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.Bash}
 Terminal> sudo python setup.py install
-
-```
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 However, Doconce has *a lot* of dependencies, depending on what type of
 formats you want to work with. On Debian/Ubuntu it is fairly straightforward
