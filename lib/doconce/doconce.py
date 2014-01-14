@@ -1352,6 +1352,10 @@ def typeset_envirs(filestr, format):
     envirs = doconce_envirs()[8:]
 
     for envir in envirs:
+        if not '!b' + envir in filestr:
+            # Drop re.sub below on envirs that are not used in the document
+            continue
+
         if format in ENVIRS and envir in ENVIRS[format]:
             def subst(m):  # m: match object from re.sub, group(1) is the text
                 title = m.group(1).strip()
@@ -1371,6 +1375,7 @@ def typeset_envirs(filestr, format):
                     return ENVIRS[format][envir](m.group(2), format, title, text_size=text_size)
         else:
             # subst functions for default handling in primitive formats
+            # that do not support the current environment
             if envir in ('quote', 'box'):
                 # Just indent the block
                 def subst(m):
@@ -1398,7 +1403,8 @@ def typeset_envirs(filestr, format):
                         title = INLINE_TAGS_SUBST[format]['paragraph'].replace(
                             r'\g<subst>', '%s') % title + '\n'
                         # Could also consider subsubsection formatting
-                    return title + m.group(2) + '\n\n'
+                    text = title + m.group(2) + '\n\n'
+                    return text
 
             # else: other envirs for slides are treated later with
             # the begin and end directives set in comments, see doconce2format
@@ -1407,6 +1413,10 @@ def typeset_envirs(filestr, format):
         pattern = r'^!b%s(.*?)\n(.+?)\s*^!e%s' % (envir, envir)
         filestr = re.sub(pattern, subst, filestr,
                          flags=re.DOTALL | re.MULTILINE)
+
+        latexfigdir_all = latex.latexfigdir + '.all'
+        if os.path.isdir(latexfigdir_all):
+            shutil.rmtree(latexfigdir_all)
     return filestr
 
 
@@ -2464,6 +2474,7 @@ def doconce2format(filestr, format):
                 '[%s %d: %s]' % (name, counter, comment))
             counter += 1
 
+
     # Remove comments starting with ##
     pattern = r'^##.+$\n'
     filestr = re.sub(pattern, '', filestr, flags=re.MULTILINE)
@@ -2488,6 +2499,7 @@ def doconce2format(filestr, format):
     filestr = handle_index_and_bib(filestr, format, has_title)
 
     debugpr('%s\n**** The file after handling index and bibliography\n\n%s\n\n' % ('*'*80, filestr))
+
 
     # Next step: deal with lists
     filestr = typeset_lists(filestr, format,
@@ -2521,6 +2533,7 @@ def doconce2format(filestr, format):
         filestr = cpattern.sub(split_comment, filestr)
     debugpr('%s\n**** The file after commenting out %s:\n\n%s\n\n' %
             ('*'*80, ', '.join(commands), filestr))
+
 
     # Next step: substitute latex-style newcommands in filestr and tex_blocks
     # (not in code_blocks)
@@ -2812,7 +2825,8 @@ away from the beginning of the line.
             _abort()
             return filename if preprocessor is None else resultfile
 
-        # Check if LaTeX math has ${...} problems
+        # Check if LaTeX math has ${...} constructions that cause problems
+        # for mako
         inline_math = re.findall(INLINE_TAGS['math'], filestr_without_code)
         for groups in inline_math:
             formula = groups[2]
