@@ -1074,11 +1074,12 @@ def latex_%(_admon)s(text_block, format, title='%(_Admon)s', text_size='normal')
 
 ''' %% vars()
         figname = get_admon_figname(latex_admon, '%(_admon)s')
-        if format == 'pdflatex':
-            figname += '.pdf'
-        elif format == 'latex':
-            figname += '.eps'
-        _get_admon_figs(figname)
+        if figname is not None:
+            if format == 'pdflatex':
+                figname += '.pdf'
+            elif format == 'latex':
+                figname += '.eps'
+            _get_admon_figs(figname)
     elif latex_admon == 'paragraph':
         text = r'''
 \begin{paragraphadmon}[%%(title_para)s]
@@ -1422,11 +1423,7 @@ def define(FILENAME_EXTENSION,
         INTRO['latex'] += r"""
 \documentclass[%%
 %(side_tp)s,                 %% oneside: electronic viewing, twoside: printing
-%% #ifdef DOUBLE_SPACING
-draft,                   %% or final
-%% #else
-final,                   %% or draft (marks overfull hboxes)
-%% #endif
+final,                   %% or draft (marks overfull hboxes, figures with paths)
 chapterprefix=true,      %% "Chapter" word at beginning of each chapter
 open=right               %% start new chapters on odd-numbered pages
 10pt]{book}
@@ -1436,11 +1433,7 @@ open=right               %% start new chapters on odd-numbered pages
         INTRO['latex'] += r"""
 \documentclass[%%
 %(side_tp)s,                 %% oneside: electronic viewing, twoside: printing
-%% #ifdef DOUBLE_SPACING
-draft,                   %% or final
-%% #else
-final,                   %% or draft (marks overfull hboxes)
-%% #endif
+final,                   %% or draft (marks overfull hboxes, figures with paths)
 10pt]{article}
 """ % vars()
 

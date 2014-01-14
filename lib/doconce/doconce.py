@@ -1373,7 +1373,7 @@ def typeset_envirs(filestr, format):
                     title = title.replace('(%s)' % text_size, '').strip()
                     if text_size not in ('small', 'large'):
                         print '*** warning: wrong text size "%s" specified in %s environment!' % (text_size, envir)
-                        print '    must be large or small - will be set to normal'
+                        print '    must be "large" or "small" - will be set to normal'
                 if title == '':
                     # Rely on the format's default title
                     return ENVIRS[format][envir](m.group(2), format, text_size=text_size)
@@ -1875,7 +1875,7 @@ def handle_cross_referencing(filestr, format):
     for chapref, internal, cite, external in general_refs:
         ref_text = 'ref%s[%s][%s][%s]' % (chapref, internal, cite, external)
         if not internal and not external:
-            print ref_text, 'has empty fields'
+            print '*** error:', ref_text, 'has empty fields'
             _abort()
         ref2labels = re.findall(r'ref\{(.+?)\}', internal)
         refs_to_this_doc = [label for label in ref2labels

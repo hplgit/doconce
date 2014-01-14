@@ -81,7 +81,7 @@ doconce replace --examples_as__exercises $ex testdoc.p.tex
 
 # A4PAPER trigger summary environment to be smaller paragraph
 # within the text (fine for proposals or articles).
-system ptex2tex -DMINTED -DLATEX_HEADING=titlepage -DA4PAPER -DTODONOTES -DLINENUMBERS -DCOLORED_TABLE_ROWS=blue -DFANCY_HEADER -DSECTION_HEADINGS=blue testdoc
+system ptex2tex -DMINTED -DLATEX_HEADING=titlepage -DA4PAPER -DTODONOTES -DLINENUMBERS -DCOLORED_TABLE_ROWS=blue -DFANCY_HEADER -DSECTION_HEADINGS=blue -DLABELS_IN_MARGIN -DDOUBLE_SPACING testdoc
 
 # test that pdflatex works
 system pdflatex -shell-escape testdoc
@@ -265,15 +265,16 @@ system doconce format mwiki admon
 cp admon.mwiki admon_mwiki.mwiki
 
 system doconce format plain admon
-cp admon.txt admon_plain.txt
+cp admon.txt admon_paragraph.txt
 
-cp -f admon_* admon_demo/
+cp -f admon_*.html admon_*.pdf admon_*.*wiki admon_*.txt admon_sphinx admon_demo/
 
 #google-chrome admon_*.html
 #for pdf in admon_*.pdf; do evince $pdf; done
 
 if [ -d latex_figs ]; then
     echo "BUG: latex_figs was made by some non-latex format..."
+fi
 
 system doconce format pandoc github_md.do.txt --github_md
 
@@ -330,12 +331,12 @@ system doconce change_encoding utf-8 latin1 tmp2.do.txt
 doconce guess_encoding tmp2.do.txt >> tmp_encodings.txt
 
 # Handle encoding problems
-doconce format latex encoding3 -DPURE_PREPROCESS  # preprocess handles utf-8
+doconce format latex encoding3 -DPREPROCESS  # preprocess handles utf-8
 cp encoding3.p.tex encoding3.p.tex-preprocess
-doconce format html encoding3 -DPURE_PREPROCESS  # html fails with utf-8
-doconce format html encoding3 -DPURE_PREPROCESS  --encoding=utf-8
-doconce format latex encoding3 -DTURN_ON_MAKO_PART  # mako fails
-doconce format latex encoding3 -DTURN_ON_MAKO_PART  --encoding=utf-8
+doconce format html encoding3 -DPREPROCESS  # html fails with utf-8 in !bc
+doconce format html encoding3 -DPREPROCESS  --encoding=utf-8
+doconce format latex encoding3 -DMAKO  # mako fails
+doconce format latex encoding3 -DMAKO  --encoding=utf-8
 cp encoding3.p.tex encoding3.p.tex-mako
 
 # Test mako problems
