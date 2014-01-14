@@ -82,7 +82,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Author:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jan 6, 2014</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jan 10, 2014</td>
 </tr>
 </tbody>
 </table>
@@ -3682,8 +3682,10 @@ LaTeX package <tt class="docutils literal"><span class="pre">xr</span></tt> is u
 When referring to a complete chapter (not a section in it), which
 corresponds to a complete external document, it does not make sense
 to write out <tt class="docutils literal"><span class="pre">internal</span> <span class="pre">cite</span></tt> since the <tt class="docutils literal"><span class="pre">internal</span></tt> reference is a
-chapter number. In such cases, the <tt class="docutils literal"><span class="pre">refch[][][]</span></tt> syntax can be used,
-and if the label is in another LaTeX document, the output is just <tt class="docutils literal"><span class="pre">cite</span></tt>.
+chapter number. In such cases, the <tt class="docutils literal"><span class="pre">internal</span></tt>
+syntax can be used,
+and if the label is in another LaTeX document, the output is just <tt class="docutils literal"><span class="pre">cite</span></tt>
+(rather than <tt class="docutils literal"><span class="pre">internal</span> <span class="pre">cite</span></tt>). An example below will illustrate the use.
 For all
 output formats other than <tt class="docutils literal"><span class="pre">latex</span></tt> and <tt class="docutils literal"><span class="pre">pdflatex</span></tt>, the <tt class="docutils literal"><span class="pre">external</span></tt>
 text will be the output.</p>
@@ -3692,55 +3694,60 @@ in a document:</p>
 <div class="highlight-text"><div class="highlight"><pre>As explained in
 ref[Section ref{subsec:ex}][in &quot;Langtangen, 2012&quot;:
 &quot;http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex&quot;
-cite{testdoc:12}][a &quot;section&quot;:
+cite{Doconce:test}][a &quot;section&quot;:
 &quot;http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex&quot; in
 the document &quot;A Document for Testing Doconce&quot;:
 &quot;http://hplgit.github.io/doconce/test/demo_testdoc.html&quot;
-cite{testdoc:12}], Doconce documents may include movies.
+cite{Doconce:test}], Doconce documents may include tables.
 </pre></div>
 </div>
 <p>With <tt class="docutils literal"><span class="pre">latex</span></tt> or <tt class="docutils literal"><span class="pre">pdflatex</span></tt> as output, this translates to</p>
 <div class="highlight-text"><div class="highlight"><pre>As explained in
-Section ref{subsec:ex}, Doconce documents may include movies.
+Section ref{subsec:ex}, Doconce documents may include tables.
 </pre></div>
 </div>
-<p>if the `` appears in the present Doconce source, and
+<p>if the label <tt class="docutils literal"><span class="pre">{subsec:ex}</span></tt> appears in the present Doconce source, and
 otherwise</p>
 <div class="highlight-text"><div class="highlight"><pre>As explained in
 Section ref{subsec:ex} in &quot;Langtangen, 2012&quot;:
 &quot;http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex&quot;
-cite{testdoc:12}, Doconce documents may include movies.
+cite{Doconce:test}, Doconce documents may include tables.
 </pre></div>
 </div>
-<p>The
-The latter Doconce code is translated to the following
+<p>The latter Doconce code is translated to the following
 LaTeX code:</p>
 <div class="highlight-text"><div class="highlight"><pre>As explained in
 Section~\ref{subsec:ex} in
 \href{{http://hplgit.github.io/doconce/...}}{Langtangen, 2012}
-\cite{testdoc:12}, Doconce documents may include movies.
+\cite{Doconce:test}, Doconce documents may include tables.
 </pre></div>
 </div>
-<p>In a format different from <tt class="docutils literal"><span class="pre">latex</span></tt> and <tt class="docutils literal"><span class="pre">pdflatex</span></tt>, the Doconce
+<p>In a format different from <tt class="docutils literal"><span class="pre">latex</span></tt> and <tt class="docutils literal"><span class="pre">pdflatex</span></tt>, the effective Doconce
 text becomes</p>
 <div class="highlight-text"><div class="highlight"><pre>As explained in
 a &quot;section&quot;:
 &quot;http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex&quot; in
 the document &quot;A Document for Testing Doconce&quot;:
 &quot;http://hplgit.github.io/doconce/test/demo_testdoc.html&quot;
-cite{testdoc:12}, Doconce documents may include movies.
+cite{Doconce:test}, Doconce documents may include tables.
 </pre></div>
 </div>
+<p>The rendered text in the current format becomes</p>
+<blockquote>
+<div>As explained in
+a <a class="reference external" href="http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex">section</a> in
+the document <a class="reference external" href="http://hplgit.github.io/doconce/test/demo_testdoc.html">A Document for Testing Doconce</a>
+<a class="reference internal" href="#ref1">[Ref1]</a>, Doconce documents may include tables.</div></blockquote>
 <p>A reference to an entire external document, which is usually a chapter
-if the reference is internal in the Doconce source, applies the
-<tt class="docutils literal"><span class="pre">refch</span></tt> syntax:</p>
+of a book if the reference is internal in the Doconce source,
+usually needs to apply the <tt class="docutils literal"><span class="pre">refch</span></tt> syntax:</p>
 <div class="highlight-text"><div class="highlight"><pre>As explained in
-refch[Chapter ref{ch:testdoc][&quot;Langtangen, 2012&quot;:
+refch[Chapter ref{ch:testdoc}][&quot;Langtangen, 2012&quot;:
 &quot;http://hplgit.github.io/doconce/test/demo_testdoc.html&quot;
-cite{testdoc:12}][the document
+cite{Doconce:test}][the document
 &quot;A Document for Testing Doconce&quot;:
 &quot;http://hplgit.github.io/doconce/test/demo_testdoc.html&quot;
-cite{testdoc:12}], Doconce documents may include movies.
+cite{Doconce:test}], Doconce documents may include tables.
 </pre></div>
 </div>
 <p>The output now if <tt class="docutils literal"><span class="pre">ch:testdoc</span></tt> is not a label in the document,
@@ -3748,11 +3755,17 @@ becomes in the <tt class="docutils literal"><span class="pre">latex</span></tt> 
 <div class="highlight-text"><div class="highlight"><pre>As explained in
 &quot;Langtangen, 2012&quot;:
 &quot;http://hplgit.github.io/doconce/test/demo_testdoc.html&quot;
-cite{testdoc:12}, Doconce documents may include movies.
+cite{Doconce:test}, Doconce documents may include tables.
 </pre></div>
 </div>
 <p>That is, the internal reference <tt class="docutils literal"><span class="pre">Chapter</span> <span class="pre">...</span></tt> is omitted since
-it is not meaningful to refer to an external document as &#8220;Chapter&#8221;.</p>
+it is not meaningful to refer to an external document as &#8220;Chapter&#8221;.
+The resulting rendered text in the current format becomes</p>
+<blockquote>
+<div>As explained in
+the document
+<a class="reference external" href="http://hplgit.github.io/doconce/test/demo_testdoc.html">A Document for Testing Doconce</a>
+<a class="reference internal" href="#ref1">[Ref1]</a>, Doconce documents may include tables.</div></blockquote>
 <p>Note that LaTeX cannot
 have links to local files, so a complete URL on the form
 <tt class="docutils literal"><span class="pre">http://...</span></tt> must be used.</p>
@@ -3865,22 +3878,22 @@ the output format is <tt class="docutils literal"><span class="pre">latex</span>
 </pre></div>
 </div>
 <p>to refer to a publication with bibliographic key <tt class="docutils literal"><span class="pre">key</span></tt>.
-Here is an example: <a class="reference internal" href="#ref1">[Ref1]</a> discussed propagation of
-large destructive water waves, <a class="reference internal" href="#ref2">[Ref2]</a> gave
+Here is an example: <a class="reference internal" href="#ref2">[Ref2]</a> discussed propagation of
+large destructive water waves, <a class="reference internal" href="#ref3">[Ref3]</a> gave
 an overview of numerical methods for solving the Navier-Stokes equations,
 while the use of Backward Kolmogorov equations for analyzing
-random vibrations was investigated in <a class="reference internal" href="#ref3">[Ref3]</a>.
-The book chapter <a class="reference internal" href="#ref4">[Ref4]</a> contains information on
+random vibrations was investigated in <a class="reference internal" href="#ref4">[Ref4]</a>.
+The book chapter <a class="reference internal" href="#ref5">[Ref5]</a> contains information on
 C++ software tools for programming multigrid methods. A real retro
-reference is <a class="reference internal" href="#ref5">[Ref5]</a> about a big FORTRAN package.
+reference is <a class="reference internal" href="#ref6">[Ref6]</a> about a big FORTRAN package.
 Multiple references are also possible, e.g., see
-<a class="reference internal" href="#ref1">[Ref1]</a> <a class="reference internal" href="#ref4">[Ref4]</a>.</p>
+<a class="reference internal" href="#ref2">[Ref2]</a> <a class="reference internal" href="#ref5">[Ref5]</a>.</p>
 <p>A LaTeX-style cite command with additional detailed reference is also possible,</p>
 <div class="highlight-text"><div class="highlight"><pre>cite[details]{key}
 </pre></div>
 </div>
-<p>for example as in <a class="reference internal" href="#ref2">[Ref2]</a> (Section 2)
-or <a class="reference internal" href="#ref2">[Ref2]</a> (Equation (4.2)).</p>
+<p>for example as in <a class="reference internal" href="#ref3">[Ref3]</a> (Section 2)
+or <a class="reference internal" href="#ref3">[Ref3]</a> (Equation (4.2)).</p>
 <p>In LaTeX, the <tt class="docutils literal"><span class="pre">cite</span></tt> command is directly translated to the
 corresponding LaTeX version of the command with a backslash; in reST
 and Sphinx the citations becomes links, with the citation keys as
@@ -5457,50 +5470,63 @@ the iterations.</td>
 </div>
 <div class="section" id="references">
 <h1>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h1>
+<div class="admonition-note admonition">
+<p class="first admonition-title">Note</p>
+<p class="last">The references below are just for illustrating and testing citation
+syntax and not references for explaining parts of the text.</p>
+</div>
 <table class="docutils citation" frame="void" id="ref1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[Ref1]</td><td><em>(<a class="fn-backref" href="#id8">1</a>, <a class="fn-backref" href="#id13">2</a>)</em> <strong>H. P. Langtangen and G. Pedersen</strong>. Propagation of Large Destructive Waves,
+<tr><td class="label">[Ref1]</td><td><em>(<a class="fn-backref" href="#id7">1</a>, <a class="fn-backref" href="#id9">2</a>)</em> [Ref1]. <strong>H. P. Langtangen</strong>,
+A Document for Testing Doconce,
+<a class="reference external" href="http://hplgit.github.io/doconce/test/demo_testdoc.html">http://hplgit.github.io/doconce/test/demo_testdoc.html</a>.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="ref2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[Ref2]</td><td><em>(<a class="fn-backref" href="#id11">1</a>, <a class="fn-backref" href="#id16">2</a>)</em> <strong>H. P. Langtangen and G. Pedersen</strong>. Propagation of Large Destructive Waves,
 <em>International Journal of Applied Mechanics and Engineering</em>,
 7(1),
 pp. 187-204,
 2002.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="ref2" rules="none">
+<table class="docutils citation" frame="void" id="ref3" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[Ref2]</td><td><em>(<a class="fn-backref" href="#id9">1</a>, <a class="fn-backref" href="#id15">2</a>, <a class="fn-backref" href="#id16">3</a>)</em> <strong>H. P. Langtangen, K.-A. Mardal and R. Winther</strong>. Numerical Methods for Incompressible Viscous Flow,
+<tr><td class="label">[Ref3]</td><td><em>(<a class="fn-backref" href="#id12">1</a>, <a class="fn-backref" href="#id18">2</a>, <a class="fn-backref" href="#id19">3</a>)</em> <strong>H. P. Langtangen, K.-A. Mardal and R. Winther</strong>. Numerical Methods for Incompressible Viscous Flow,
 <em>Advances in Water Resources</em>,
 25,
 pp. 1125-1146,
 2002.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="ref3" rules="none">
+<table class="docutils citation" frame="void" id="ref4" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id10">[Ref3]</a></td><td><strong>H. P. Langtangen</strong>. Numerical Solution of First Passage Problems in Random Vibrations,
+<tr><td class="label"><a class="fn-backref" href="#id13">[Ref4]</a></td><td><strong>H. P. Langtangen</strong>. Numerical Solution of First Passage Problems in Random Vibrations,
 <em>SIAM Journal of Scientific and Statistical Computing</em>,
 15,
 pp. 997-996,
 1994.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="ref4" rules="none">
+<table class="docutils citation" frame="void" id="ref5" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[Ref4]</td><td><em>(<a class="fn-backref" href="#id11">1</a>, <a class="fn-backref" href="#id14">2</a>)</em> <strong>K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen</strong>. Software Tools for Multigrid Methods,
+<tr><td class="label">[Ref5]</td><td><em>(<a class="fn-backref" href="#id14">1</a>, <a class="fn-backref" href="#id17">2</a>)</em> <strong>K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen</strong>. Software Tools for Multigrid Methods,
 Advanced Topics in Computational Partial Differential Equations &#8211; Numerical Methods and Diffpack Programming,
 edited by <strong>H. P. Langtangen and A. Tveito</strong>,
 Springer,
 2003.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="ref5" rules="none">
+<table class="docutils citation" frame="void" id="ref6" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id12">[Ref5]</a></td><td><strong>H. P. Langtangen</strong>. The FEMDEQS Program System,
+<tr><td class="label"><a class="fn-backref" href="#id15">[Ref6]</a></td><td><strong>H. P. Langtangen</strong>. The FEMDEQS Program System,
 <em>Department of Mathematics, University of Oslo</em>,
 1989.</td></tr>
 </tbody>

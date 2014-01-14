@@ -81,7 +81,7 @@ doconce replace --examples_as__exercises $ex testdoc.p.tex
 
 # A4PAPER trigger summary environment to be smaller paragraph
 # within the text (fine for proposals or articles).
-system ptex2tex -DMINTED -DLATEX_HEADING=titlepage -DA4PAPER -DTODONOTES -DLINENUMBERS -DCOLORED_TABLE_ROWS=blue -DFANCY_HEADER -DSECTION_HEADINGS=blue testdoc
+system ptex2tex -DMINTED -DLATEX_HEADING=titlepage -DA4PAPER -DTODONOTES -DLINENUMBERS -DCOLORED_TABLE_ROWS=blue -DFANCY_HEADER -DSECTION_HEADINGS=blue -DLABELS_IN_MARGIN -DDOUBLE_SPACING testdoc
 
 # test that pdflatex works
 system pdflatex -shell-escape testdoc
@@ -225,6 +225,14 @@ system doconce format pdflatex admon --latex_admon=$admon_tp
 doconce ptex2tex admon envir=minted
 cp admon.tex admon_${admon_tp}.tex
 system pdflatex -shell-escape admon_${admon_tp}
+echo "admon=$admon_tp"
+if [ -d latex_figs ]; then
+    echo "latex_figs:"
+    /bin/ls latex_figs
+else
+    echo "no latex_figs directory for this admon type"
+fi
+rm -rf latex_figs
 done
 
 system doconce format html admon --html_admon=lyx --html_style=blueish2
@@ -257,13 +265,16 @@ system doconce format mwiki admon
 cp admon.mwiki admon_mwiki.mwiki
 
 system doconce format plain admon
-cp admon.txt admon_plain.txt
+cp admon.txt admon_paragraph.txt
 
-cp -f admon_* admon_demo/
+cp -f admon_*.html admon_*.pdf admon_*.*wiki admon_*.txt admon_sphinx admon_demo/
 
 #google-chrome admon_*.html
 #for pdf in admon_*.pdf; do evince $pdf; done
 
+if [ -d latex_figs ]; then
+    echo "BUG: latex_figs was made by some non-latex format..."
+fi
 
 system doconce format pandoc github_md.do.txt --github_md
 
@@ -307,7 +318,7 @@ system doconce format plain movies
 # Status movies: everything works in html and sphinx, only href works
 # in latex, media9 is unreliable
 
-# Test encoding
+# Test encoding: guess and change
 system doconce guess_encoding encoding1.do.txt > tmp_encodings.txt
 cp encoding1.do.txt tmp1.do.txt
 system doconce change_encoding utf-8 latin1 tmp1.do.txt
@@ -318,6 +329,15 @@ system doconce guess_encoding encoding2.do.txt >> tmp_encodings.txt
 cp encoding1.do.txt tmp2.do.txt
 system doconce change_encoding utf-8 latin1 tmp2.do.txt
 doconce guess_encoding tmp2.do.txt >> tmp_encodings.txt
+
+# Handle encoding problems
+doconce format latex encoding3 -DPREPROCESS  # preprocess handles utf-8
+cp encoding3.p.tex encoding3.p.tex-preprocess
+doconce format html encoding3 -DPREPROCESS  # html fails with utf-8 in !bc
+doconce format html encoding3 -DPREPROCESS  --encoding=utf-8
+doconce format latex encoding3 -DMAKO  # mako fails
+doconce format latex encoding3 -DMAKO  --encoding=utf-8
+cp encoding3.p.tex encoding3.p.tex-mako
 
 # Test mako problems
 system doconce format html mako_test1 --no_pygments_html  # mako variable only, no % lines
@@ -354,6 +374,8 @@ doconce replace 'doc/manual' 'doc/src/manual' tmp2.do.txt
 doconce format sphinx tmp2
 doconce replace '../lib/doconce/doconce.py' '_static/doconce.py' tmp2.do.txt
 doconce replace 'two_media99' 'two_media' tmp2.do.txt
+doconce format html tmp2
+doconce replace '|--l---|---l---|' '|--l-------l---|' tmp2.do.txt
 doconce format html tmp2
 doconce replace '99x9.ogg' '.ogg' tmp2.do.txt
 doconce format html tmp2

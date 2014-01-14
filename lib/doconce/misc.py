@@ -888,15 +888,23 @@ def latex_exercise_toc():
 
 
 def _usage_combine_images():
-    print 'Usage: doconce combine_images image1 image2 ... output_file'
-    print 'Use montage if not PDF or EPS images, else use'
+    print 'Usage: doconce combine_images [-4] image1 image2 ... output_file'
+    print 'Applies montage if not PDF or EPS images, else use'
     print 'pdftk, pdfnup and pdfcrop.'
+    print 'Images are combined with two each row, by default, but'
+    print 'doconce combine_images -3 ... gives 3 images in each row.'
 
 def combine_images():
 
     if len(sys.argv) < 3:
         _usage_combine_images()
         sys.exit(1)
+
+    if sys.argv[1].startswith('-'):
+        num_columns = int(sys.argv[1][1:])
+        del sys.argv[1]
+    else:
+        num_columns = 2
 
     imagefiles = sys.argv[1:-1]
     output_file = sys.argv[-1]
@@ -910,8 +918,7 @@ def combine_images():
 
     cmds = []
     if montage:
-        cmds.append('montage -background white -geometry 100%% -tile 2x %s %s' % \
-                    (' '.join(imagefiles), output_file))
+        cmds.append('montage -background white -geometry 100%% -tile %dx %s %s' % (num_columns, ' '.join(imagefiles), output_file))
         cmds.append('convert -trim %s %s' % (output_file, output_file))
 
     else:
@@ -924,9 +931,9 @@ def combine_images():
                 imagefiles[i] = f.replace('.eps', '.pdf')
 
         # Combine PDF images
-        rows = int(round(len(imagefiles)/2.))
+        num_rows = int(round(len(imagefiles)/float(num_columns)))
         cmds.append('pdftk %s output tmp.pdf' % ' '.join(imagefiles))
-        cmds.append('pdfnup --nup 2x%d tmp.pdf' % rows)
+        cmds.append('pdfnup --nup %dx%d tmp.pdf' % (num_columns, num_rows))
         cmds.append('pdfcrop tmp-nup.pdf')
         cmds.append('cp tmp-nup-crop.pdf %s' % output_file)
         cmds.append('rm -f tmp.pdf tmp-nup.pdf tmp-nup-crop.pdf')
@@ -5131,6 +5138,160 @@ def spellcheck():
     _spellcheck_all(newdict='misspellings.txt~', remove_multiplicity=False,
                     dictionaries=dictionary,)
 
+
+def _usage_capitalize():
+    print 'doconce capitalize [-d file_with_cap_words] doconce-file'
+    print 'list of capitalized words can also be in .dict4cap.txt'
+    print '(typically, Python, Unix, etc. must be capitalized)'
+
+def capitalize():
+    if len(sys.argv) >= 2 and sys.argv[1] == '-d':
+        dictionary = [sys.argv[2]]
+        del sys.argv[1:3]
+    else:
+        if os.path.isfile('.dict4cap.txt'):
+            dictionary = '.dict4cap.txt'
+        else:
+            dictionary = ''
+
+    if len(sys.argv) < 2:
+        _usage_capitalize()
+        sys.exit(1)
+
+    filename = sys.argv[1]
+
+    cap_words = [
+        'Celsius', 'Fahrenheit', 'Kelvin',
+        'Newton', 'Gauss', 'Legendre', 'Laguerre', 'Taylor', 'Einstein',
+        'Maxwell', 'Euler', 'Gaussian', 'Eulerian', 'Lagrange', 'Lagrangian',
+        'Heaviside',
+        'Python', 'IPython', 'Cython', 'Idle', 'NumPy', 'SciPy',
+        'Matplotlib',
+        'Fortran', 'MATLAB', 'SWIG', 'Perl', 'Ruby',
+        'DNA',
+        ]
+    cap_words_fix = [
+        ('exer. ref{', 'Exer. ref{'),
+        ('exer. (_', 'Exer. (_'),  # latex2doconce external reference
+        ('subsection. ref{', 'Subsection. ref{'),
+        ('section. ref{', 'Section. ref{'),
+        ('chapter. ref{', 'Chapter ref{'),
+        ('Python library reference', 'Python Library Reference'),
+        # Cannot have C and C++ as a special word since an equation with c
+        # will then get capital C...try to repair these cases:
+        (' c code', ' C code'),
+        (' c program', ' C program'),
+        (' c++ ', ' C++ '),
+        (' 1d ', ' 1D '),
+        (' 2d ', ' 2D '),
+        (' 3d ', ' 3D '),
+        ]
+
+    if dictionary:
+        f = open(dictionary, 'a')
+        cap_words += f.read().split()
+
+    f = open(filename, 'r')
+    filestr = f.read()
+    f.close()
+    shutil.copy(filename, filename + '.old~~')
+
+    filestr, old2new = _capitalize(filestr, cap_words, cap_words_fix)
+
+    f = open(filename, 'w')
+    f.write(filestr)
+    f.close()
+    print 'Edits of titles:'
+    for old, new in old2new:
+        if old != new:
+            print old
+            print new
+            print
+
+def _capitalize(filestr, cap_words, cap_words_fix):
+    pattern1 = r'^\s*(={3,9})(.+?)(={3,9})'  # sections
+    pattern2 = r'__(.+?[.:?;!])__'       # paragraphs
+
+    sections   = re.findall(pattern1, filestr, flags=re.MULTILINE)
+    paragraphs = re.findall(pattern2, filestr, flags=re.MULTILINE)
+    orig_titles1 = [t.strip() for s1, t, s2 in sections]
+    orig_equals1 = [s1 for s1, t, s2 in sections]
+    orig_titles2 = [t.strip() for t in paragraphs]
+    orig_headings1 = [s1 + t + s2 for s1, t, s2 in sections]
+    orig_headings2 = ['__' + t + '__' for t
+                      in re.findall(pattern2, filestr, flags=re.MULTILINE)]
+
+    #print orig_titles1
+    #print orig_titles2
+
+    def capitalize_titles(orig_titles, cap_words):
+        cap_words_lower = [s.lower() for s in cap_words]
+        new_titles = []
+        for title in orig_titles:
+            #print '*', title
+
+            # Exercises, problems, are exceptions (view title as what
+            # comes after the initial word)
+            word0 = title.split()[0]
+            if word0 in ['Exercise:', 'Problem:', 'Project:', 'Example:',
+                         '[Exercise}:', '{Problem}:', '{Project}:', '{Example}:',]:
+                title = title.replace(word0, '').strip()
+                new_title = word0 + ' ' + title.capitalize()
+            else:
+                new_title = title.capitalize()
+
+            words = new_title.split()
+            # Handle hyphens
+            old_words = words[:]
+            for word in old_words:
+                if '-' in word:
+                    words.remove(word)
+                    words += word.split('-')
+                if word[0] == '`' and word[-1] == '`':
+                    words.remove(word)
+
+            for word in words:
+                #print '    ', word
+                # Strip away non-alphabetic characters
+                word_stripped = ''.join([w for w in list(word)
+                                         if w.isalpha()])
+                #if word != word_stripped:
+                    #print '        ', word_stripped
+                if word_stripped.lower() in cap_words_lower:
+                    #print '        found',
+                    try:
+                        i = cap_words_lower.index(word.lower())
+                        new_word = word.replace(word_stripped, cap_words[i])
+                        new_title = new_title.replace(word, new_word)
+                        #print 'as', cap_words[i]
+                    except ValueError:
+                        pass
+                        #print 'Did not find', word_stripped.lower(), 'in', cap_words_lower
+                        pass
+            #print '>', new_title
+            for wrong_words, fixed_words in cap_words_fix:
+                if wrong_words in new_title:
+                    new_title = new_title.replace(wrong_words, fixed_words)
+            new_titles.append(new_title)
+        return new_titles
+
+    new_titles1 = capitalize_titles(orig_titles1, cap_words)
+    new_titles2 = capitalize_titles(orig_titles2, cap_words)
+
+    old2new = []
+    for new_title, orig_title, orig_heading, s1 in \
+            zip(new_titles1, orig_titles1, orig_headings1, orig_equals1):
+        new_heading = '%s %s %s' % (s1, new_title, s1)
+        filestr = filestr.replace(orig_heading, new_heading)
+        old2new.append((orig_title, new_title))
+    for new_title, orig_title, orig_heading in \
+            zip(new_titles2, orig_titles2, orig_headings2):
+        new_heading = '__%s__' % new_title
+        filestr = filestr.replace(orig_heading, new_heading)
+        old2new.append((orig_title, new_title))
+    return filestr, old2new
+
+
 def _usage_md2html():
     print 'Usage: doconce md2html doconce-file'
     print 'Make HTML from pandoc-exteded Markdown'
@@ -5427,19 +5588,6 @@ def subst_paragraph_latex2doconce(m):
         title += ending
     return '=== %s ===\n' % title
 
-def subst_CODE_latex2doconce(m):
-    line = m.group(0)
-    words = line.split()
-    filename = words[1]
-    if len(words) > 2:
-        spec = ' '.join(words[2:])
-        if not '\\' in spec:  # Has user escaped regex chars?
-            spec = re.escape(spec)
-        spec = ' fromto: ' + spec
-    else:
-        spec = ''
-    return '@@@CODE %s%s' % (filename, spec)
-
 
 def _latex2doconce(filestr):
     """Run latex to doconce transformations on filestr."""
@@ -5491,17 +5639,19 @@ def _latex2doconce(filestr):
         (r'\\idxnumpy\{(?P<subst>.+?)\}', r'idx{`\g<subst>` (from `numpy`)}'),
         (r'\\idxst\{(?P<subst>.+?)\}', r'idx{`\g<subst>` (from `scitools`)}'),
         (r'\\idxfn\{(?P<subst>.+?)\}', r'idx{`\g<subst>` (FEniCS)}'),
+        (r'\\idxe\{(?P<attr>.+?)\}\{(?P<obj>.+?)\}', r'idx{`\g<attr>` \g<obj>}'),
         (r'\\refeq\{(?P<subst>.+?)\}', r'(ref{\g<subst>})'),
         (r'^\bpy\s+', r'\bipy' + '\n', re.MULTILINE),
         (r'^\epy\s+', r'\eipy' + '\n', re.MULTILINE),
         # general latex constructions
+        # (comments are removed line by line below)
         (r'\\author\{(?P<subst>.+)\}', subst_author_latex2doconce),
         (r'\\title\{(?P<subst>.+)\}', r'TITLE: \g<subst>'),
         (r'\\chapter\*?\{(?P<subst>.+)\}', r'========= \g<subst> ========='),
         (r'\\section\*?\{(?P<subst>.+)\}', r'======= \g<subst> ======='),
         (r'\\subsection\*?\{(?P<subst>.+)\}', r'===== \g<subst> ====='),
         (r'\\subsubsection\*?\{(?P<subst>.+)\}', r'=== \g<subst> ==='),
-        (r'\\paragraph\{(?P<subst>.+?)\}', r'__\g<subst>__'),
+        (r'\\paragraph\{(?P<subst>.+?)\}', r'__\g<subst>__'),  # modified later
         (r'\\chapter\*?\[.+\]\{(?P<subst>.+)\}', r'========= \g<subst> ========='),
         (r'\\section\*?\[.+\]\{(?P<subst>.+)\}', r'======= \g<subst> ======='),
         (r'\\subsection\*?\[.+\]\{(?P<subst>.+)\}', r'===== \g<subst> ====='),
@@ -5519,6 +5669,7 @@ def _latex2doconce(filestr):
         (r'\\index\{(?P<sortkey>.+?)@(?P<index>.+?)\}', r'idx{\g<index>}'),
         (r'\\index\{(?P<subst>.+?)\}', r'idx{\g<subst>}'),
         (r'\\href\{(?P<url>.+?)\}\{(?P<text>.+?)\}', r'"\g<2>": "\g<1>"'),
+        (r'\\input\{(?P<subst>.+?)\}', r'# #include "\g<subst>.do.txt"'),
         ] + user_subst
     try:
         for item in subst:
@@ -5640,7 +5791,7 @@ def _latex2doconce(filestr):
         filestr = filestr.replace(end_pattern, '!ec')
 
     # ptex2tex code environments:
-    code_envirs = ['ccq', 'cod', 'ccl', 'cc', 'sys',
+    code_envirs = ['ccq', 'cod', 'pro', 'ccl', 'cc', 'sys',
                    'dsni', 'sni', 'slin', 'ipy', 'rpy',
                    'py', 'plin', 'ver', 'warn', 'rule', 'summ'] # sequence important for replace!
     for language in 'py', 'f', 'c', 'cpp', 'sh', 'pl', 'm':
@@ -5669,104 +5820,6 @@ def _latex2doconce(filestr):
     list_items = re.findall(pattern, filestr, flags=re.DOTALL)
     for item in list_items:
         filestr = filestr.replace(item, ' '.join(item.splitlines()) + '\n\n')
-
-    # Process lists, comment lines, @@@CODE lines, and other stuff
-    inside_enumerate = False
-    inside_itemize = False
-    inside_code = False
-    appendix = False
-    lines = filestr.splitlines()
-    for i in range(len(lines)):
-        if lines[i].startswith('!bc'):
-            inside_code = True
-        if lines[i].startswith('!ec'):
-            inside_code = False
-        if not inside_code and lines[i].lstrip().startswith('%'):
-            lines[i] = '# ' + lines[i].lstrip()[1:]
-        if not inside_code and '%' in lines[i]:
-            w = lines[i].split('%')
-            lines[i] = w[0] + '\n#' + ''.join(w[1:])
-        if lines[i].startswith('@@@CODE'):
-            # Translate ptex2tex CODE envir to doconce w/regex
-            words = lines[i].split()
-            new_line = ' '.join(words[:2])  # command filename, no space in name
-            if len(words) > 2:
-                new_line += ' fromto: '
-                from_, to_ = ' '.join(words[2:]).split('@')[:2]
-                from_, to_ = ' '.join(words[2:]).split('@')[:2]
-                new_line += re.escape(from_)  # regex in doconce
-                new_line += '@' + re.escape(to_)
-                new_line = new_line.replace(r'\ ', ' ').replace(r'\,', ',').replace(r'\:', ':')
-            lines[i] = new_line
-
-        # two types of lists (but not nested lists):
-        if r'\begin{enumerate}' in lines[i] or r'\ben' in lines[i]:
-            inside_enumerate = True
-            lines[i] = ''
-        if r'\begin{itemize}' in lines[i] or r'\bit' in lines[i]:
-            inside_itemize = True
-            lines[i] = ''
-        if inside_enumerate or inside_itemize:
-            if lines[i].lstrip().startswith(r'\item'):
-                l = re.sub(r'\s*\\item\s*', '', lines[i]).strip()
-                lines[i] = '  * ' + l
-        if r'\end{enumerate}' in lines[i] or r'\een' in lines[i]:
-            inside_enumerate = False
-            lines[i] = ''
-        if r'\end{itemize}' in lines[i] or r'\eit' in lines[i]:
-            inside_itemize = False
-            lines[i] = ''
-        if re.search(r'^\s*\appendix', lines[i]):
-            appendix = True
-        if appendix and 'section{' in lines[i] or 'section*{' in lines[i]:
-            lines[i] = re.sub(r'section\*?\{(.+?)\}',
-                              'section{Appendix: \g<1>}', lines[i])
-        if r'\bibliography' in lines[i]:
-            lines[i] = re.sub(r'\\bibliography\{(.+?)\}',
-                              r'\n_Must run publish import on BibTeX file \g<1>!_\nBIBFILE: papers.pub\n',
-                              lines[i])
-            lines[i] = re.sub(r'\\bibliographystyle\{.+?\}', '', lines[i])
-
-
-    # put all newcommands in a file (note: newcommands must occupy only one line!)
-    newlines = []
-    newcommands = []
-    for line in lines:
-        l = line.lstrip()
-        if l.startswith('\\newcommand{'):
-            newcommands.append(l)
-        else:
-            newlines.append(line)
-
-    if newcommands:
-        filestr = '\n'.join(newlines)
-        newcommands_file = 'newcommands_keep.tex'
-        nf = open(newcommands_file, 'w')
-        nf.writelines(newcommands)
-        nf.close()
-
-    # Exercises of the following particular format
-    pattern = re.compile(r'\\begin\{exercise\}\s*\\label\{(.*?)\}\s*\\exerentry\{(.*?)\}\s*$\s*(.+?)\\hfill\s*\$\\diamond\$\s*\\end\{exercise\}', re.DOTALL|re.MULTILINE)
-    filestr = pattern.sub(r'===== Exercise: \g<2> =====\n\label{\g<1>}\nfile=\n\n\g<3>\n', filestr)
-
-    # Fix "Name of program file:" construction in exercises
-    lines = filestr.splitlines()
-    program_file = None
-    for i in range(len(lines)-1, -1, -1):
-        if 'Name of program file' in lines[i]:
-            m = re.search(r'Name of program file:\s*`([^`]+?)`', lines[i])
-            if m:
-                program_file = m.group(1)
-                lines[i] = ''
-        if lines[i] == 'file=':
-            if program_file is not None:
-                lines[i] = 'file=' + program_file
-                program_file = None
-            else:
-                # No "Name of program file" was found after last file=.
-                # This exercise does not have a program file specified.
-                lines[i] = ''
-    filestr = '\n'.join(lines)
 
     # Find subfigures (problems)
     if filestr.count('\\subfigure{') > 0:
@@ -5818,6 +5871,103 @@ def _latex2doconce(filestr):
         caption = ' '.join(lines)
         filestr = filestr.replace('{{{{%s}}}}' % orig_caption, caption)
 
+
+    # Process lists, comment lines, @@@CODE lines, and other stuff
+    inside_enumerate = False
+    inside_itemize = False
+    inside_code = False
+    appendix = False
+    lines = filestr.splitlines()
+    for i in range(len(lines)):
+        if lines[i].startswith('!bc'):
+            inside_code = True
+        if lines[i].startswith('!ec'):
+            inside_code = False
+        if (not inside_code) and lines[i].lstrip().startswith('%'):
+            lines[i] = '# ' + lines[i].lstrip()[1:]
+        if lines[i].startswith('@@@CODE'):
+            # Translate ptex2tex CODE envir to doconce w/regex
+            words = lines[i].split()
+            new_line = ' '.join(words[:2])  # command filename, no space in name
+            if len(words) > 2:
+                new_line += ' fromto: '
+                from_, to_ = ' '.join(words[2:]).split('@')[:2]
+                from_, to_ = ' '.join(words[2:]).split('@')[:2]
+                new_line += re.escape(from_)  # regex in doconce
+                new_line += '@' + re.escape(to_)
+                new_line = new_line.replace(r'\ ', ' ').replace(r'\,', ',').replace(r'\:', ':')
+            lines[i] = new_line
+
+        # two types of lists (but not nested lists):
+        if r'\begin{enumerate}' in lines[i] or r'\ben' in lines[i]:
+            inside_enumerate = True
+            lines[i] = ''
+        if r'\begin{itemize}' in lines[i] or r'\bit' in lines[i]:
+            inside_itemize = True
+            lines[i] = ''
+        if inside_enumerate or inside_itemize:
+            if lines[i].lstrip().startswith(r'\item'):
+                l = re.sub(r'\s*\\item\s*', '', lines[i]).strip()
+                lines[i] = '  * ' + l
+        if r'\end{enumerate}' in lines[i] or r'\een' in lines[i]:
+            inside_enumerate = False
+            lines[i] = ''
+        if r'\end{itemize}' in lines[i] or r'\eit' in lines[i]:
+            inside_itemize = False
+            lines[i] = ''
+        if re.search(r'^\s*\appendix', lines[i]):
+            appendix = True
+        if appendix and 'section{' in lines[i] or 'section*{' in lines[i]:
+            lines[i] = re.sub(r'section\*?\{(.+?)\}',
+                              'section{Appendix: \g<1>}', lines[i])
+        if r'\bibliography' in lines[i]:
+            lines[i] = re.sub(r'\\bibliography\{(.+?)\}',
+                              r'\n_Must run publish import on BibTeX file \g<1>!_\nBIBFILE: papers.pub\n',
+                              lines[i])
+            lines[i] = re.sub(r'\\bibliographystyle\{.+?\}', '', lines[i])
+
+
+
+    # put all newcommands in a file (note: newcommands must occupy only one line!)
+    newlines = []
+    newcommands = []
+    for line in lines:
+        l = line.lstrip()
+        if l.startswith('\\newcommand{'):
+            newcommands.append(l)
+        else:
+            newlines.append(line)
+
+    filestr = '\n'.join(newlines)
+    if newcommands:
+        newcommands_file = 'newcommands_keep.tex'
+        nf = open(newcommands_file, 'w')
+        nf.writelines(newcommands)
+        nf.close()
+
+    # Exercises of the following particular format
+    pattern = re.compile(r'\\begin\{exercise\}\s*\\label\{(.*?)\}\s*\\exerentry\{(.*?)\}\s*$\s*(.+?)\\hfill\s*\$\\diamond\$\s*\\end\{exercise\}', re.DOTALL|re.MULTILINE)
+    filestr = pattern.sub(r'===== Exercise: \g<2> =====\n\label{\g<1>}\nfile=\n\n\g<3>\n', filestr)
+
+    # Fix "Name of program file:" construction in exercises
+    lines = filestr.splitlines()
+    program_file = None
+    for i in range(len(lines)-1, -1, -1):
+        if 'Name of program file' in lines[i]:
+            m = re.search(r'Name of program file:\s*`([^`]+?)`', lines[i])
+            if m:
+                program_file = m.group(1)
+                lines[i] = ''
+        if lines[i] == 'file=':
+            if program_file is not None:
+                lines[i] = 'file=' + program_file
+                program_file = None
+            else:
+                # No "Name of program file" was found after last file=.
+                # This exercise does not have a program file specified.
+                lines[i] = ''
+    filestr = '\n'.join(lines)
+
     # Check idx{} inside paragraphs
     lines = filestr.splitlines()
     last_blank_line = -1
@@ -5842,16 +5992,6 @@ def _latex2doconce(filestr):
                 lines[i] = '# REMOVE (there was just a single idx{...} on this line)'
             lines[last_blank_line] = '\n' + ' '.join(idx) + \
                                      ' ' + lines[last_blank_line]
-
-    # Let paragraphs be subsubsections === ... ===
-    pattern = r'__(.+?)([.?!:])__'
-    filestr = re.sub(pattern, subst_paragraph_latex2doconce, filestr)
-
-    # @@@CODE envirs in ptex2tex applies replacement while Doconce
-    # applies regular expressions
-    pattern = r'^@@@CODE .+$'
-    filestr = re.sub(pattern, subst_CODE_latex2doconce,
-                     filestr, flags=re.MULTILINE)
 
     # Tables are difficult: require manual editing?
     inside_table = False
@@ -5934,12 +6074,19 @@ def _latex2doconce(filestr):
                 table = '\n\n' + separator1 + '\n' + table_lines[0] + '\n' + \
                         separator2 + '\n' + '\n'.join(table_lines[1:]) + \
                         '\n' + separator0 + '\n\n'
-                new_lines[-1] += table
+                if new_lines:
+                    new_lines[-1] += table
+                else:
+                    new_lines.append(table)
 
     filestr = '\n'.join(new_lines)
     filestr = re.sub(r'^# REMOVE \(there was.+$\s*', '', filestr,
                      flags=re.MULTILINE)
     filestr = re.sub(r'(idx\{.+?\})\s+([^i\n ])', r'\g<1>\n\n\g<2>', filestr)
+
+    # Let paragraphs be subsubsections === ... ===
+    pattern = r'__([A-Z].+?)([.?!:])__'
+    filestr = re.sub(pattern, subst_paragraph_latex2doconce, filestr)
 
     # Find all labels and refs and notify about refs to external
     # labels
@@ -5956,12 +6103,12 @@ def _latex2doconce(filestr):
             # Attempt to do a generalized reference
             # (Make table of chapters, stand-alone docs and their labels - quite easy if associated chapters and their URLs are in a file!!!)
             filestr = filestr.replace(r'\ref{%s}' % ref,
-                                      r'_PROBLEM: external ref_ ref{%(ref)s}')
-            print r'FIX external ref: ref[%(ref)s]["section where %(ref)s is": "http URL with %(ref)s" cite{doc_with_%(ref)s}]["section where %(ref)s is": "http URL with %(ref)s" cite{doc_with_%(ref)s}]' % vars()
+                      r'(_PROBLEM: external ref_) ref{%s}' % ref)
+            #print r'FIX external ref: ref[%(ref)s]["section where %(ref)s is": "http URL with %(ref)s" cite{doc_with_%(ref)s}]["section where %(ref)s is": "http URL with %(ref)s" cite{doc_with_%(ref)s}]' % vars()
     for ref in pagerefs:
         print 'pageref{%s} should be rewritten' % ref
         filestr = filestr.replace(r'\pageref{%s}' % ref,
-            r'_PROBLEM: pageref_ pageref{%s}' % ref)
+            r'(_PROBLEM: pageref_) \pageref{%s}' % ref)
         problems = True
 
     print '\n## search for CHECK to see if auto editing was correct\n'
@@ -5982,10 +6129,10 @@ def _latex2doconce(filestr):
     # Footnote at the end of a sentence: enclose in parenthesis
     # (regex is not perfect so
     pattern = r'\\footnote\{([^}]+)\}\.'
-    filestr = re.sub(pattern, '. _CHECK: footnote at end of sentence placed in parenthesis_: (\g<1>) ', filestr)
+    filestr = re.sub(pattern, '.( _CHECK: footnote_ at end of sentence placed in parenthesis) (\g<1>) ', filestr)
     # Without final . means footnote in the middle of a sentence
     pattern = r'\\footnote\{([^}]+)\}'
-    filestr = re.sub(pattern, ' _PROBLEM: footnote in the middle of a sentence must be rewritten: (\g<1>)', filestr)
+    filestr = re.sub(pattern, '( _PROBLEM: footnote_ in the middle of a sentence must be rewritten) (\g<1>)', filestr)
 
     # Check that !bc, !ec, !bt, !ec are at the beginning of the line
     for envir in 'c', 't':
@@ -6012,6 +6159,7 @@ def latex2doconce():
     by files combined to a single file, avoid footnotes, index inside
     paragraphs, do not start code blocks with indentation, ...
     """
+    print '# #ifdef LATEX2DOCONCE'
     print 'This is the result of the doconce latex2doconce program.'
     print 'The translation from LaTeX is just a helper. The text must'
     print 'be carefully examined! (Be prepared that some text might also'
@@ -6022,6 +6170,8 @@ def latex2doconce():
     filestr = f.read()
     f.close()
     filestr = _latex2doconce(filestr)
+
+    print '# #endif'   # end of intro with warnings etc.
 
     print filestr  # final output
 

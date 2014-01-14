@@ -1,0 +1,22 @@
+Text with a name like Åsmund Ødegård works in general.
+The problem with UTF-8 arises inside verbatim environments.
+# #ifdef PREPROCESS
+!bc
+a = 1  # Value suggested by Åsmund Ødegård.
+!ec
+# #endif
+
+# #ifdef MAKO
+<%
+# Make sure we have some Mako code.
+def f(x):
+    return x+1
+
+b = 0
+%>
+
+!bc
+b = 1  # Another value suggested by Åsmund Ødegård.
+!ec
+# #endif
+

@@ -5,7 +5,7 @@ Doconce Description
 ===================
 
 :Author: Hans Petter Langtangen
-:Date: Jan 6, 2014
+:Date: Jan 10, 2014
 
 .. lines beginning with # are doconce comment lines
 
@@ -4316,8 +4316,10 @@ LaTeX package ``xr`` is used to handle the labels in the external documents.
 When referring to a complete chapter (not a section in it), which
 corresponds to a complete external document, it does not make sense
 to write out ``internal cite`` since the ``internal`` reference is a
-chapter number. In such cases, the ``refch[][][]`` syntax can be used,
-and if the label is in another LaTeX document, the output is just ``cite``.
+chapter number. In such cases, the ``internal``
+syntax can be used,
+and if the label is in another LaTeX document, the output is just ``cite``
+(rather than ``internal cite``). An example below will illustrate the use.
 For all
 output formats other than ``latex`` and ``pdflatex``, the ``external``
 text will be the output.
@@ -4331,11 +4333,11 @@ in a document:
         As explained in
         ref[Section ref{subsec:ex}][in "Langtangen, 2012":
         "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex"
-        cite{testdoc:12}][a "section":
+        cite{Doconce:test}][a "section":
         "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex" in
         the document "A Document for Testing Doconce":
         "http://hplgit.github.io/doconce/test/demo_testdoc.html"
-        cite{testdoc:12}], Doconce documents may include movies.
+        cite{Doconce:test}], Doconce documents may include tables.
 
 With ``latex`` or ``pdflatex`` as output, this translates to
 
@@ -4343,9 +4345,9 @@ With ``latex`` or ``pdflatex`` as output, this translates to
 
 
         As explained in
-        Section ref{subsec:ex}, Doconce documents may include movies.
+        Section ref{subsec:ex}, Doconce documents may include tables.
 
-if the `` appears in the present Doconce source, and
+if the label ``{subsec:ex}`` appears in the present Doconce source, and
 otherwise
 
 .. code-block:: text
@@ -4354,9 +4356,8 @@ otherwise
         As explained in
         Section ref{subsec:ex} in "Langtangen, 2012":
         "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex"
-        cite{testdoc:12}, Doconce documents may include movies.
+        cite{Doconce:test}, Doconce documents may include tables.
 
-The
 The latter Doconce code is translated to the following
 LaTeX code:
 
@@ -4366,9 +4367,9 @@ LaTeX code:
         As explained in
         Section~\ref{subsec:ex} in
         \href{{http://hplgit.github.io/doconce/...}}{Langtangen, 2012}
-        \cite{testdoc:12}, Doconce documents may include movies.
+        \cite{Doconce:test}, Doconce documents may include tables.
 
-In a format different from ``latex`` and ``pdflatex``, the Doconce
+In a format different from ``latex`` and ``pdflatex``, the effective Doconce
 text becomes
 
 .. code-block:: text
@@ -4379,24 +4380,35 @@ text becomes
         "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex" in
         the document "A Document for Testing Doconce":
         "http://hplgit.github.io/doconce/test/demo_testdoc.html"
-        cite{testdoc:12}, Doconce documents may include movies.
+        cite{Doconce:test}, Doconce documents may include tables.
+
+The rendered text in the current format becomes
+
+
+..
+
+    As explained in
+    a `section <http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex>`_ in
+    the document `A Document for Testing Doconce <http://hplgit.github.io/doconce/test/demo_testdoc.html>`_
+    [Ref1]_, Doconce documents may include tables.
+
 
 
 A reference to an entire external document, which is usually a chapter
-if the reference is internal in the Doconce source, applies the
-``refch`` syntax:
+of a book if the reference is internal in the Doconce source,
+usually needs to apply the ``refch`` syntax:
 
 
 .. code-block:: text
 
 
         As explained in
-        refch[Chapter ref{ch:testdoc]["Langtangen, 2012":
+        refch[Chapter ref{ch:testdoc}]["Langtangen, 2012":
         "http://hplgit.github.io/doconce/test/demo_testdoc.html"
-        cite{testdoc:12}][the document
+        cite{Doconce:test}][the document
         "A Document for Testing Doconce":
         "http://hplgit.github.io/doconce/test/demo_testdoc.html"
-        cite{testdoc:12}], Doconce documents may include movies.
+        cite{Doconce:test}], Doconce documents may include tables.
 
 The output now if ``ch:testdoc`` is not a label in the document,
 becomes in the ``latex`` and ``pdflatex`` case
@@ -4408,10 +4420,20 @@ becomes in the ``latex`` and ``pdflatex`` case
         As explained in
         "Langtangen, 2012":
         "http://hplgit.github.io/doconce/test/demo_testdoc.html"
-        cite{testdoc:12}, Doconce documents may include movies.
+        cite{Doconce:test}, Doconce documents may include tables.
 
 That is, the internal reference ``Chapter ...`` is omitted since
 it is not meaningful to refer to an external document as "Chapter".
+The resulting rendered text in the current format becomes
+
+..
+
+    As explained in
+    the document
+    `A Document for Testing Doconce <http://hplgit.github.io/doconce/test/demo_testdoc.html>`_
+    [Ref1]_, Doconce documents may include tables.
+
+
 
 Note that LaTeX cannot
 have links to local files, so a complete URL on the form
@@ -4567,16 +4589,16 @@ We use the command
         cite{key}
 
 to refer to a publication with bibliographic key ``key``.
-Here is an example: [Ref1]_ discussed propagation of
-large destructive water waves, [Ref2]_ gave
+Here is an example: [Ref2]_ discussed propagation of
+large destructive water waves, [Ref3]_ gave
 an overview of numerical methods for solving the Navier-Stokes equations,
 while the use of Backward Kolmogorov equations for analyzing
-random vibrations was investigated in [Ref3]_.
-The book chapter [Ref4]_ contains information on
+random vibrations was investigated in [Ref4]_.
+The book chapter [Ref5]_ contains information on
 C++ software tools for programming multigrid methods. A real retro
-reference is [Ref5]_ about a big FORTRAN package.
+reference is [Ref6]_ about a big FORTRAN package.
 Multiple references are also possible, e.g., see
-[Ref1]_ [Ref4]_.
+[Ref2]_ [Ref5]_.
 
 A LaTeX-style cite command with additional detailed reference is also possible,
 
@@ -4586,8 +4608,8 @@ A LaTeX-style cite command with additional detailed reference is also possible,
 
         cite[details]{key}
 
-for example as in [Ref2]_ (Section 2)
-or [Ref2]_ (Equation (4.2)).
+for example as in [Ref3]_ (Section 2)
+or [Ref3]_ (Equation (4.2)).
 
 In LaTeX, the ``cite`` command is directly translated to the
 corresponding LaTeX version of the command with a backslash; in reST
@@ -5985,7 +6007,7 @@ The resulting table is displayed below.
 
 
 =======================================  =======================================  =======================================  
-
+                                                                                                                           
 =======================================  =======================================  =======================================  
 `080 <mov/wave_frames/frame_0080.png>`_  `085 <mov/wave_frames/frame_0085.png>`_  `090 <mov/wave_frames/frame_0090.png>`_  
 `095 <mov/wave_frames/frame_0095.png>`_  `100 <mov/wave_frames/frame_0100.png>`_  `105 <mov/wave_frames/frame_0105.png>`_  
@@ -6458,35 +6480,49 @@ and Sphinx just typeset the list as a list with keywords.
 References
 ==========
 
+
+.. admonition:: Note
+
+   The references below are just for illustrating and testing citation
+   syntax and not references for explaining parts of the text.
+
+
+
+
 .. [Ref1]
+   [Ref1]. **H. P. Langtangen**,
+   A Document for Testing Doconce,
+   `http://hplgit.github.io/doconce/test/demo_testdoc.html <http://hplgit.github.io/doconce/test/demo_testdoc.html>`_.
+
+.. [Ref2]
    **H. P. Langtangen and G. Pedersen**. Propagation of Large Destructive Waves,
    *International Journal of Applied Mechanics and Engineering*,
    7(1),
    pp. 187-204,
    2002.
 
-.. [Ref2]
+.. [Ref3]
    **H. P. Langtangen, K.-A. Mardal and R. Winther**. Numerical Methods for Incompressible Viscous Flow,
    *Advances in Water Resources*,
    25,
    pp. 1125-1146,
    2002.
 
-.. [Ref3]
+.. [Ref4]
    **H. P. Langtangen**. Numerical Solution of First Passage Problems in Random Vibrations,
    *SIAM Journal of Scientific and Statistical Computing*,
    15,
    pp. 997-996,
    1994.
 
-.. [Ref4]
+.. [Ref5]
    **K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen**. Software Tools for Multigrid Methods,
    Advanced Topics in Computational Partial Differential Equations -- Numerical Methods and Diffpack Programming,
    edited by **H. P. Langtangen and A. Tveito**,
    Springer,
    2003.
 
-.. [Ref5]
+.. [Ref6]
    **H. P. Langtangen**. The FEMDEQS Program System,
    *Department of Mathematics, University of Oslo*,
    1989.

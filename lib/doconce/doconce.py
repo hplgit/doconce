@@ -1324,11 +1324,17 @@ def typeset_tables(filestr, format):
                     ok = False
                 if not ok:
                     print '*** error: syntax error in table!'
-                    print '    missing three horizontal rules and heading:'
+                    print '    missing three horizontal rules and heading'
                     for row in table['rows']:
                         if row != ['horizontal rule']:
+                            # Check for common syntax error: |--l--|--r--|
+                            if sum([bool(re.search('[lrc-]{%d}' % len(c), c)) for c in row]) > 0:
+                                print 'NOTE: do not use pipes in horizontal rule of this type:'
+                                print '(write instead |%s|)' % '-'.join(row)
                             print '| ' + ' | '.join(row) + ' |'
-                            print '(or maybe not a table, just an opening pipe symbol at the beginning of the line?)'
+                        else:
+                            print '|---------------------| (horizontal rule)'
+                    print '(or maybe not a table, just an opening pipe symbol at the beginning of the line?)'
                     _abort()
 
                 result.write(TABLE[format](table))   # typeset table
@@ -1352,6 +1358,10 @@ def typeset_envirs(filestr, format):
     envirs = doconce_envirs()[8:]
 
     for envir in envirs:
+        if not '!b' + envir in filestr:
+            # Drop re.sub below on envirs that are not used in the document
+            continue
+
         if format in ENVIRS and envir in ENVIRS[format]:
             def subst(m):  # m: match object from re.sub, group(1) is the text
                 title = m.group(1).strip()
@@ -1363,7 +1373,7 @@ def typeset_envirs(filestr, format):
                     title = title.replace('(%s)' % text_size, '').strip()
                     if text_size not in ('small', 'large'):
                         print '*** warning: wrong text size "%s" specified in %s environment!' % (text_size, envir)
-                        print '    must be large or small - will be set to normal'
+                        print '    must be "large" or "small" - will be set to normal'
                 if title == '':
                     # Rely on the format's default title
                     return ENVIRS[format][envir](m.group(2), format, text_size=text_size)
@@ -1371,6 +1381,7 @@ def typeset_envirs(filestr, format):
                     return ENVIRS[format][envir](m.group(2), format, title, text_size=text_size)
         else:
             # subst functions for default handling in primitive formats
+            # that do not support the current environment
             if envir in ('quote', 'box'):
                 # Just indent the block
                 def subst(m):
@@ -1398,7 +1409,8 @@ def typeset_envirs(filestr, format):
                         title = INLINE_TAGS_SUBST[format]['paragraph'].replace(
                             r'\g<subst>', '%s') % title + '\n'
                         # Could also consider subsubsection formatting
-                    return title + m.group(2) + '\n\n'
+                    text = title + m.group(2) + '\n\n'
+                    return text
 
             # else: other envirs for slides are treated later with
             # the begin and end directives set in comments, see doconce2format
@@ -1407,6 +1419,10 @@ def typeset_envirs(filestr, format):
         pattern = r'^!b%s(.*?)\n(.+?)\s*^!e%s' % (envir, envir)
         filestr = re.sub(pattern, subst, filestr,
                          flags=re.DOTALL | re.MULTILINE)
+
+        latexfigdir_all = latex.latexfigdir + '.all'
+        if os.path.isdir(latexfigdir_all):
+            shutil.rmtree(latexfigdir_all)
     return filestr
 
 
@@ -1443,6 +1459,7 @@ def typeset_lists(filestr, format, debug_info=[]):
                     print '    surrounding text is\n'
                     for l in lines[i-4:i+5]:
                         print l
+                    _abort()
 
         if not line or line.isspace():  # blank line?
             if not lists:
@@ -1858,7 +1875,7 @@ def handle_cross_referencing(filestr, format):
     for chapref, internal, cite, external in general_refs:
         ref_text = 'ref%s[%s][%s][%s]' % (chapref, internal, cite, external)
         if not internal and not external:
-            print ref_text, 'has empty fields'
+            print '*** error:', ref_text, 'has empty fields'
             _abort()
         ref2labels = re.findall(r'ref\{(.+?)\}', internal)
         refs_to_this_doc = [label for label in ref2labels
@@ -2464,6 +2481,7 @@ def doconce2format(filestr, format):
                 '[%s %d: %s]' % (name, counter, comment))
             counter += 1
 
+
     # Remove comments starting with ##
     pattern = r'^##.+$\n'
     filestr = re.sub(pattern, '', filestr, flags=re.MULTILINE)
@@ -2488,6 +2506,7 @@ def doconce2format(filestr, format):
     filestr = handle_index_and_bib(filestr, format, has_title)
 
     debugpr('%s\n**** The file after handling index and bibliography\n\n%s\n\n' % ('*'*80, filestr))
+
 
     # Next step: deal with lists
     filestr = typeset_lists(filestr, format,
@@ -2521,6 +2540,7 @@ def doconce2format(filestr, format):
         filestr = cpattern.sub(split_comment, filestr)
     debugpr('%s\n**** The file after commenting out %s:\n\n%s\n\n' %
             ('*'*80, ', '.join(commands), filestr))
+
 
     # Next step: substitute latex-style newcommands in filestr and tex_blocks
     # (not in code_blocks)
@@ -2645,6 +2665,8 @@ def preprocess(filename, format, preprocessor_options=[]):
     In addition, the preprocessor option FORMAT (=format) is
     always defined.
     """
+    orig_filename = filename
+
     device = None
     # Is DEVICE set as command-line option?
     for arg in sys.argv[1:]:
@@ -2812,7 +2834,8 @@ away from the beginning of the line.
             _abort()
             return filename if preprocessor is None else resultfile
 
-        # Check if LaTeX math has ${...} problems
+        # Check if LaTeX math has ${...} constructions that cause problems
+        # for mako
         inline_math = re.findall(INLINE_TAGS['math'], filestr_without_code)
         for groups in inline_math:
             formula = groups[2]
@@ -2862,8 +2885,22 @@ python-mako package (sudo apt-get install python-mako).
         from mako.template import Template
         from mako.lookup import TemplateLookup
         lookup = TemplateLookup(directories=[os.curdir])
-        temp = Template(filename=resultfile2, lookup=lookup,
-                        strict_undefined=strict_undefined)
+        #temp = Template(filename=resultfile2, lookup=lookup,
+        #                strict_undefined=strict_undefined)
+        if encoding:
+            filestr = unicode(filestr, encoding)
+        try:
+            temp = Template(text=filestr, lookup=lookup,
+                            strict_undefined=strict_undefined)
+        except Exception as e:
+            print '*** mako error:', str(type(e)).split("'")[1]
+            print '   ', e
+            if "'ascii'" in str(e):
+                print '    reason: doconce file contains non-ascii characters'
+                print '    rerun with --encoding=utf-8 (or similar):'
+                print '    doconce format %s %s %s --encoding=utf-8' \
+                      % (format, orig_filename, ' '.join(sys.argv[1:]))
+            _abort()
 
         debugpr('Keyword arguments to be sent to mako: %s' % \
                 pprint.pformat(mako_kwargs))
@@ -2886,8 +2923,8 @@ python-mako package (sudo apt-get install python-mako).
         except NameError, e:
             if "Undefined" in str(e):
                 print '*** mako error: NameError Undefined variable,'
-                print '                one or more ${var} variables are undefined.\n'
-                print '                Rerun doconce format with --mako_strict_undefined to see where the problem is.'
+                print '    one or more ${var} variables are undefined.\n'
+                print '    Rerun doconce format with --mako_strict_undefined to see where the problem is.'
                 _abort()
             elif "is not defined" in str(e):
                 print '*** mako error: NameError', e
@@ -2897,7 +2934,10 @@ python-mako package (sudo apt-get install python-mako).
                 print '*** mako error:'
                 filestr = temp.render(**mako_kwargs)
 
-        f = open(resultfile2, 'w')
+        if encoding:
+            f = codecs.open(resultfile2, 'w', encoding)
+        else:
+            f = open(resultfile2, 'w')
         f.write(filestr)
         f.close()
         resultfile = resultfile2
