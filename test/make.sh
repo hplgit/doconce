@@ -225,6 +225,14 @@ system doconce format pdflatex admon --latex_admon=$admon_tp
 doconce ptex2tex admon envir=minted
 cp admon.tex admon_${admon_tp}.tex
 system pdflatex -shell-escape admon_${admon_tp}
+echo "admon=$admon_tp"
+if [ -d latex_figs ]; then
+    echo "latex_figs:"
+    /bin/ls latex_figs
+else
+    echo "no latex_figs directory for this admon type"
+fi
+rm -rf latex_figs
 done
 
 system doconce format html admon --html_admon=lyx --html_style=blueish2
@@ -264,6 +272,8 @@ cp -f admon_* admon_demo/
 #google-chrome admon_*.html
 #for pdf in admon_*.pdf; do evince $pdf; done
 
+if [ -d latex_figs ]; then
+    echo "BUG: latex_figs was made by some non-latex format..."
 
 system doconce format pandoc github_md.do.txt --github_md
 
