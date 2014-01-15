@@ -400,9 +400,9 @@ doconce subst -s -m '^!bsol.+?!esol' ''  tmp2.do.txt
 doconce format sphinx tmp2
 doconce subst -s -m '^!bhint.+?!ehint' ''  tmp2.do.txt
 doconce format sphinx tmp2
+doconce format pdflatex tmp2 --device=paper
+# Remedy: drop paper and rewrite, just run electronic
 doconce format pdflatex tmp2
-doconce format pdflatex tmp2
-doconce format sphinx tmp2
 #doconce replace '# Comment before math is ok' '' tmp2.do.txt
 echo
 echo "When we reach this point in the script,"
