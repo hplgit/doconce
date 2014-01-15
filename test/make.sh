@@ -330,14 +330,31 @@ cp encoding1.do.txt tmp2.do.txt
 system doconce change_encoding utf-8 latin1 tmp2.do.txt
 doconce guess_encoding tmp2.do.txt >> tmp_encodings.txt
 
-# Handle encoding problems
+# Handle encoding problems (and test debug output too)
+# Plain ASCII with Norwegian chars printed as is (and utf8 package mode)
+doconce format latex encoding3 --debug
+cp encoding3.p.tex encoding3.p.tex-ascii
+# Plain ASCII text with Norwegian chars coded as &#...;
+doconce format html encoding3 --no_pygments_html --debug
+cp encoding3.html encoding3.html-ascii
+cat _doconce_debugging.log >> encoding3.html-ascii
+
+# Plain ASCII with verbatim blocks with Norwegian chars
 doconce format latex encoding3 -DPREPROCESS  # preprocess handles utf-8
-cp encoding3.p.tex encoding3.p.tex-preprocess
+cp encoding3.p.tex encoding3.p.tex-ascii-verb
 doconce format html encoding3 -DPREPROCESS  # html fails with utf-8 in !bc
-doconce format html encoding3 -DPREPROCESS  --encoding=utf-8
-doconce format latex encoding3 -DMAKO  # mako fails
-doconce format latex encoding3 -DMAKO  --encoding=utf-8
-cp encoding3.p.tex encoding3.p.tex-mako
+# Unicode with Norwegian chars in plain text and verbatim blocks
+doconce format html encoding3 -DPREPROCESS  --encoding=utf-8  --no_pygments_html --debug # Keeps Norwegian chars since output is in utf-8
+cp encoding3.html encoding3.html-ascii-verb
+cat _doconce_debugging.log >> encoding3.html-ascii-verb
+
+doconce format latex encoding3 -DMAKO  # mako fails due to Norwegian chars
+# Unicode with Norwegian chars in plain text and verbatim blocks
+doconce format latex encoding3 -DMAKO  --encoding=utf-8  # utf-8 and unicode
+cp encoding3.p.tex encoding3.p.tex-utf8
+doconce format html encoding3 -DMAKO  --encoding=utf-8  --no_pygments_html --debug
+cp encoding3.html encoding3.html-utf8
+cat _doconce_debugging.log >> encoding3.html-utf8
 
 # Test mako problems
 system doconce format html mako_test1 --no_pygments_html  # mako variable only, no % lines

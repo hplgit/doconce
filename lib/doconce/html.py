@@ -378,17 +378,15 @@ def html_code(filestr, code_blocks, code_block_types,
 
 
     from doconce import debugpr
-    debugpr('File before call to insert_code_and_tex (format html)\n%s'
-            % filestr)
+    debugpr('File before call to insert_code_and_tex (format html):', filestr)
     filestr = insert_code_and_tex(filestr, code_blocks, tex_blocks, format)
-    debugpr('File after call to isnert_code_and tex (format html)\n%s'
-            % filestr)
+    debugpr('File after call to isnert_code_and tex (format html):', filestr)
 
     if pygm or needs_online_python_tutor:
         c = re.compile(r'^!bc(.*?)\n', re.MULTILINE)
         filestr = c.sub(r'<p>\n\n', filestr)
         filestr = re.sub(r'!ec\n', r'<p>\n', filestr)
-        debugpr('\n\nAfter replacement of !bc and !ec (pygmentized code)\n%s' % filestr)
+        debugpr('After replacement of !bc and !ec (pygmentized code):', filestr)
     else:
         c = re.compile(r'^!bc(.*?)\n', re.MULTILINE)
         # <code> gives an extra line at the top unless the code starts
