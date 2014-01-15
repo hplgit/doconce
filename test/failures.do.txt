@@ -47,6 +47,12 @@ empty figure name, is problematic.
 
 FIGURE: [../doc/manual/fig/wave1D, width=800] $a=50$
 
+Figure with hyperlink in caption creates problems with latex and --device=paper
+because the link becomes a footnote inside the caption.
+
+FIGURE: [../doc/manual/fig/wave1D, width=800] "Google": "http://google.com".
+
+
 # http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.webm
 Movie/figure with nonexistent URL must give error messages.
 

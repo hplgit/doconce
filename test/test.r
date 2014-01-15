@@ -271,10 +271,12 @@ FIGURE: [testfigs/df_plot.png, width=800] This is a wikimedia figure file.
 FIGURE: [testfigs/df2s8765s_plot.png, width=200, frac=0.4]
 # #endif
 
-# Somewhat challenging heading with latex math, \t, \n, ? and parenthesis
 
 __Remark.__
 Movies are tested in separate file `movies.do.txt`.
+
+
+# Somewhat challenging heading with latex math, \t, \n, ? and parenthesis
 
 ===== The $\theta$ parameter (not $\nabla$?) =====
 label{decay:sec:theta}
@@ -2323,10 +2325,12 @@ Test URL as figure name:
 
 % Test wikimedia type of files that otherwise reside in subdirs
 
-% Somewhat challenging heading with latex math, \t, \n, ? and parenthesis
 
 \paragraph{Remark.}
 Movies are tested in separate file \code{movies.do.txt}.
+
+
+% Somewhat challenging heading with latex math, \t, \n, ? and parenthesis
 
 \subsection{The $\theta$ parameter (not $\nabla$?)}
 \label{decay:sec:theta}
@@ -3905,10 +3909,12 @@ Test URL as figure name:
 
 % Test wikimedia type of files that otherwise reside in subdirs
 
-% Somewhat challenging heading with latex math, \t, \n, ? and parenthesis
 
 \paragraph{Remark.}
 Movies are tested in separate file {\fontsize{10pt}{10pt}\Verb!movies.do.txt!}.
+
+
+% Somewhat challenging heading with latex math, \t, \n, ? and parenthesis
 
 \subsection{The $\theta$ parameter (not $\nabla$?)}
 \label{decay:sec:theta}
@@ -5436,10 +5442,12 @@ Test URL as figure name:
 
 % Test wikimedia type of files that otherwise reside in subdirs
 
-% Somewhat challenging heading with latex math, \t, \n, ? and parenthesis
 
 \paragraph{Remark.}
 Movies are tested in separate file \Verb!movies.do.txt!.
+
+
+% Somewhat challenging heading with latex math, \t, \n, ? and parenthesis
 
 \subsection{The $\theta$ parameter (not $\nabla$?)}
 \label{decay:sec:theta}
@@ -6753,11 +6761,13 @@ Test URL as figure name:
 .. Test wikimedia type of files that otherwise reside in subdirs
 
 
-.. Somewhat challenging heading with latex math, \t, \n, ? and parenthesis
-
 
 **Remark.**
 Movies are tested in separate file ``movies.do.txt``.
+
+
+.. Somewhat challenging heading with latex math, \t, \n, ? and parenthesis
+
 
 .. _decay:sec:theta:
 
@@ -8174,11 +8184,13 @@ Test URL as figure name:
 .. Test wikimedia type of files that otherwise reside in subdirs
 
 
-.. Somewhat challenging heading with latex math, \t, \n, ? and parenthesis
-
 
 **Remark.**
 Movies are tested in separate file ``movies.do.txt``.
+
+
+.. Somewhat challenging heading with latex math, \t, \n, ? and parenthesis
+
 
 .. _decay:sec:theta:
 
@@ -9715,9 +9727,11 @@ googlecode repository) and substitute the line above with the URL.
 
 <wiki:comment> Test wikimedia type of files that otherwise reside in subdirs </wiki:comment>
 
-<wiki:comment> Somewhat challenging heading with latex math, \t, \n, ? and parenthesis </wiki:comment>
 
 *Remark.* Movies are tested in separate file `movies.do.txt`.
+
+
+<wiki:comment> Somewhat challenging heading with latex math, \t, \n, ? and parenthesis </wiki:comment>
 
 ==== The `\theta` parameter (not `\nabla`?) ====
 
@@ -10838,10 +10852,12 @@ Test URL as figure name:
 [[File:Df2s8765s plot.png|frame|200,px|alt=Df2s8765s plot.png|<span title=""></span>]] <!-- not yet uploaded to common.wikimedia.org -->
 
 
-<!-- Somewhat challenging heading with latex math, \t, \n, ? and parenthesis -->
 
 ''Remark.''
 Movies are tested in separate file <code>movies.do.txt</code>.
+
+
+<!-- Somewhat challenging heading with latex math, \t, \n, ? and parenthesis -->
 
 ==== The <math>\theta</math> parameter (not <math>\nabla</math>?) ====
 
@@ -12069,9 +12085,11 @@ Test URL as figure name:
 
 <wiki:comment> Test wikimedia type of files that otherwise reside in subdirs </wiki:comment>
 
-<wiki:comment> Somewhat challenging heading with latex math, \t, \n, ? and parenthesis </wiki:comment>
 
 //Remark.// Movies are tested in separate file {{{movies.do.txt}}}.
+
+
+<wiki:comment> Somewhat challenging heading with latex math, \t, \n, ? and parenthesis </wiki:comment>
 
 == The {{{\theta}}} parameter (not {{{\nabla}}}?) ==
 
@@ -13173,6 +13191,8 @@ FIGURE: [https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png, w
 
 
 *Remark.* Movies are tested in separate file 'movies.do.txt'.
+
+
 
 The \theta parameter (not \nabla?)
 
@@ -14321,6 +14341,8 @@ FIGURE: [https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png, w
 
 
 I{Remark.} Movies are tested in separate file C{movies.do.txt}.
+
+
 
 The M{\theta} parameter (not M{\nabla}?)
 ----------------------------------------
@@ -15572,6 +15594,8 @@ FIGURE: [https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png, w
 
 *Remark.* Movies are tested in separate file movies.do.txt.
 
+
+
 The \theta parameter (not \nabla?)
 ----------------------------------
 
@@ -16806,9 +16830,11 @@ Test URL as figure name:
 
 <!-- Test wikimedia type of files that otherwise reside in subdirs -->
 
-<!-- Somewhat challenging heading with latex math, \t, \n, ? and parenthesis -->
 
 *Remark.* Movies are tested in separate file `movies.do.txt`.
+
+
+<!-- Somewhat challenging heading with latex math, \t, \n, ? and parenthesis -->
 
 ### The $\theta$ parameter (not $\nabla$?)
 
@@ -18305,9 +18331,11 @@ in a separate document: `admon.do.txt`.
       "\n",
       "<!-- Test wikimedia type of files that otherwise reside in subdirs -->\n",
       "\n",
-      "<!-- Somewhat challenging heading with latex math, \\t, \\n, ? and parenthesis -->\n",
       "\n",
       "*Remark.* Movies are tested in separate file `movies.do.txt`.\n",
+      "\n",
+      "\n",
+      "<!-- Somewhat challenging heading with latex math, \\t, \\n, ? and parenthesis -->\n",
       "\n",
       "### The $\\theta$ parameter (not $\\nabla$?)\n",
       "\n",
@@ -20529,9 +20557,10 @@ show()</code></pre>
 </div>
 <!-- Test wikimedia type of files that otherwise reside in subdirs -->
 
-<!-- Somewhat challenging heading with latex math, \t, \n, ? and parenthesis -->
 
 <p><em>Remark.</em> Movies are tested in separate file <code>movies.do.txt</code>.</p>
+<!-- Somewhat challenging heading with latex math, \t, \n, ? and parenthesis -->
+
 <h3 id="the-theta-parameter-not-nabla">The <span class="math">\(\theta\)</span> parameter (not <span class="math">\(\nabla\)</span>?)</h3>
 <p>Functions do not always need to be advanced, here is one involving <span class="math">\(\theta\)</span>:</p>
 <pre><code>def f(theta):
@@ -24234,11 +24263,11 @@ Test URL as figure name:
 <!-- Test wikimedia type of files that otherwise reside in subdirs -->
 
 <p>
-<!-- Somewhat challenging heading with latex math, \t, \n, ? and parenthesis -->
-
-<p>
 <b>Remark.</b>
 Movies are tested in separate file <code>movies.do.txt</code>.
+
+<p>
+<!-- Somewhat challenging heading with latex math, \t, \n, ? and parenthesis -->
 
 <h3>The \( \theta \) parameter (not \( \nabla \)?) <a name="decay:sec:theta"></a></h3>
 
@@ -27680,11 +27709,11 @@ Test URL as figure name:
 <!-- Test wikimedia type of files that otherwise reside in subdirs -->
 
 <p>
-<!-- Somewhat challenging heading with latex math, \t, \n, ? and parenthesis -->
-
-<p>
 <b>Remark.</b>
 Movies are tested in separate file <code>movies.do.txt</code>.
+
+<p>
+<!-- Somewhat challenging heading with latex math, \t, \n, ? and parenthesis -->
 
 <h3>The \( \theta \) parameter (not \( \nabla \)?) <a name="decay:sec:theta"></a></h3>
 
@@ -29652,10 +29681,12 @@ Test URL as figure name:
 
 % Test wikimedia type of files that otherwise reside in subdirs
 
-% Somewhat challenging heading with latex math, \t, \n, ? and parenthesis
 
 \paragraph{Remark.}
 Movies are tested in separate file \code{movies.do.txt}.
+
+
+% Somewhat challenging heading with latex math, \t, \n, ? and parenthesis
 
 \paragraph{The $\theta$ parameter (not $\nabla$?).}
 \label{decay:sec:theta}
@@ -31395,9 +31426,9 @@ doconce subst -s -m '^!bsol.+?!esol' ''  tmp2.do.txt
 doconce format sphinx tmp2
 doconce subst -s -m '^!bhint.+?!ehint' ''  tmp2.do.txt
 doconce format sphinx tmp2
+doconce format pdflatex tmp2 --device=paper
+# Remedy: drop paper and rewrite, just run electronic
 doconce format pdflatex tmp2
-doconce format pdflatex tmp2
-doconce format sphinx tmp2
 #doconce replace '# Comment before math is ok' '' tmp2.do.txt
 echo
 echo "When we reach this point in the script,"
@@ -34335,11 +34366,11 @@ Test URL as figure name:
 <!-- Test wikimedia type of files that otherwise reside in subdirs -->
 
 <p>
-<!-- Somewhat challenging heading with latex math, \t, \n, ? and parenthesis -->
-
-<p>
 <b>Remark.</b>
 Movies are tested in separate file <code>movies.do.txt</code>.
+
+<p>
+<!-- Somewhat challenging heading with latex math, \t, \n, ? and parenthesis -->
 
 <h3>The \( \theta \) parameter (not \( \nabla \)?) <a name="decay:sec:theta"></a></h3>
 
@@ -36152,11 +36183,13 @@ Test URL as figure name:
 .. Test wikimedia type of files that otherwise reside in subdirs
 
 
-.. Somewhat challenging heading with latex math, \t, \n, ? and parenthesis
-
 
 **Remark.**
 Movies are tested in separate file ``movies.do.txt``.
+
+
+.. Somewhat challenging heading with latex math, \t, \n, ? and parenthesis
+
 
 .. _decay:sec:theta:
 
@@ -80987,7 +81020,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 795.
+t line 797.
 
 
 
@@ -81007,7 +81040,7 @@ t line 795.
 
 
 
-t line 804.
+t line 806.
 
 
 
@@ -81027,7 +81060,7 @@ t line 804.
 
 
 
-t line 808.
+t line 810.
 
 
 
@@ -81741,7 +81774,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 795.
+t line 797.
 
 
 
@@ -81761,7 +81794,7 @@ t line 795.
 
 
 
-t line 804.
+t line 806.
 
 
 
@@ -81781,7 +81814,7 @@ t line 804.
 
 
 
-t line 808.
+t line 810.
 
 
 
@@ -82408,7 +82441,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 795.
+t line 797.
 
 
 
@@ -82428,7 +82461,7 @@ t line 795.
 
 
 
-t line 804.
+t line 806.
 
 
 
@@ -82448,7 +82481,7 @@ t line 804.
 
 
 
-t line 808.
+t line 810.
 
 
 
@@ -83687,7 +83720,7 @@ reading sources... [ 50%] ._testdoc001
 reading sources... [ 75%] ._testdoc002
 reading sources... [100%] index
 
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:554: WARNING: Inline interpreted text or phrase reference start-string without end-string.
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:556: WARNING: Inline interpreted text or phrase reference start-string without end-string.
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:None: WARNING: nonlocal image URI found: https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png
 looking for now-outdated files... none found
 pickling environment... done
@@ -90361,6 +90394,27 @@ figure file http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media
 ... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.ogg ...
     found!
 output in tmp2.rst
++ doconce format pdflatex tmp2 --device=paper
+translating doconce text in tmp2.do.txt to pdflatex
+figure file ../doc/src/manual/fig/wave1D:
+    can use ../doc/src/manual/fig/wave1D.pdf for format pdflatex
+... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.pdf ...
+    not found (http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.pdf, 404 error)
+... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png ...
+    found!
+figure file http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media:
+    can use http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png for format pdflatex
+*** error: hyperlinks inside caption pose problems for
+    latex output and --device=paper because they lead
+    to footnotes in captions. (Footnotes in floats require
+    minipage.) The latex document with compile with
+    \protect\footnote, but the footnote is not shown.
+    Recommendation: rewrite caption.
+
+-----------
+"Google": "http://google.com". -----------
+
+Abort! (add --no_abort on the command line to avoid this abortion)
 + doconce format pdflatex tmp2
 translating doconce text in tmp2.do.txt to pdflatex
 figure file ../doc/src/manual/fig/wave1D:
@@ -90375,42 +90429,6 @@ figure file http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media
     found!
 *** warning: you have citations but no bibliography (BIBFILE: ...)
 output in tmp2.p.tex
-+ doconce format pdflatex tmp2
-translating doconce text in tmp2.do.txt to pdflatex
-figure file ../doc/src/manual/fig/wave1D:
-    can use ../doc/src/manual/fig/wave1D.pdf for format pdflatex
-... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.pdf ...
-    not found (http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.pdf, 404 error)
-... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png ...
-    found!
-figure file http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media:
-    can use http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png for format pdflatex
-... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png ...
-    found!
-*** warning: you have citations but no bibliography (BIBFILE: ...)
-output in tmp2.p.tex
-+ doconce format sphinx tmp2
-translating doconce text in tmp2.do.txt to sphinx
-figure file ../doc/src/manual/fig/wave1D:
-    can use ../doc/src/manual/fig/wave1D.png for format sphinx
-... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png ...
-    found!
-figure file http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media:
-    can use http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png for format sphinx
-*** warning: math only in sphinx figure caption
-  $a=50$
-    FIGURE: [../doc/src/manual/fig/wave1D.png
-*** warning: math only in sphinx figure caption
-  $a=50$
-    FIGURE: [http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png
-*** warning: you have citations but no bibliography (BIBFILE: ...)
-... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.mp4 ...
-    not found (http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.mp4, 404 error)
-... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.webm ...
-    found!
-... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.ogg ...
-    found!
-output in tmp2.rst
 + echo
 
 + echo 'When we reach this point in the script,'

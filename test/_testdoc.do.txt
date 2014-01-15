@@ -255,10 +255,12 @@ FIGURE: [testfigs/df_plot.png, width=800] This is a wikimedia figure file.
 FIGURE: [testfigs/df2s8765s_plot.png, width=200, frac=0.4]
 # #endif
 
-# Somewhat challenging heading with latex math, \t, \n, ? and parenthesis
 
 __Remark.__
 Movies are tested in separate file `movies.do.txt`.
+
+
+# Somewhat challenging heading with latex math, \t, \n, ? and parenthesis
 
 ===== The $\theta$ parameter (not $\nabla$?) =====
 label{decay:sec:theta}
