@@ -31325,14 +31325,31 @@ cp encoding1.do.txt tmp2.do.txt
 system doconce change_encoding utf-8 latin1 tmp2.do.txt
 doconce guess_encoding tmp2.do.txt >> tmp_encodings.txt
 
-# Handle encoding problems
+# Handle encoding problems (and test debug output too)
+# Plain ASCII with Norwegian chars printed as is (and utf8 package mode)
+doconce format latex encoding3 --debug
+cp encoding3.p.tex encoding3.p.tex-ascii
+# Plain ASCII text with Norwegian chars coded as &#...;
+doconce format html encoding3 --no_pygments_html --debug
+cp encoding3.html encoding3.html-ascii
+cat _doconce_debugging.log >> encoding3.html-ascii
+
+# Plain ASCII with verbatim blocks with Norwegian chars
 doconce format latex encoding3 -DPREPROCESS  # preprocess handles utf-8
-cp encoding3.p.tex encoding3.p.tex-preprocess
+cp encoding3.p.tex encoding3.p.tex-ascii-verb
 doconce format html encoding3 -DPREPROCESS  # html fails with utf-8 in !bc
-doconce format html encoding3 -DPREPROCESS  --encoding=utf-8
-doconce format latex encoding3 -DMAKO  # mako fails
-doconce format latex encoding3 -DMAKO  --encoding=utf-8
-cp encoding3.p.tex encoding3.p.tex-mako
+# Unicode with Norwegian chars in plain text and verbatim blocks
+doconce format html encoding3 -DPREPROCESS  --encoding=utf-8  --no_pygments_html --debug # Keeps Norwegian chars since output is in utf-8
+cp encoding3.html encoding3.html-ascii-verb
+cat _doconce_debugging.log >> encoding3.html-ascii-verb
+
+doconce format latex encoding3 -DMAKO  # mako fails due to Norwegian chars
+# Unicode with Norwegian chars in plain text and verbatim blocks
+doconce format latex encoding3 -DMAKO  --encoding=utf-8  # utf-8 and unicode
+cp encoding3.p.tex encoding3.p.tex-utf8
+doconce format html encoding3 -DMAKO  --encoding=utf-8  --no_pygments_html --debug
+cp encoding3.html encoding3.html-utf8
+cat _doconce_debugging.log >> encoding3.html-utf8
 
 # Test mako problems
 system doconce format html mako_test1 --no_pygments_html  # mako variable only, no % lines
@@ -64372,35 +64389,413 @@ function faster_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame
 </html>
 
 ************** File: encoding3.do.txt *****************
+## Test of handling non-ASCII characters in Doconce
 Text with a name like Åsmund Ødegård works in general.
-The problem with UTF-8 arises inside verbatim environments.
 # #ifdef PREPROCESS
+Verbatim blocks with non-ASCII text does not work for HTML, but it works
+for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
+
 !bc
 a = 1  # Value suggested by Åsmund Ødegård.
 !ec
 # #endif
 
 # #ifdef MAKO
-<%
-# Make sure we have some Mako code.
-def f(x):
-    return x+1
+## trigger Mako through the FORMAT variable...
+This block (in format ${FORMAT})
+triggers use of `mako`. For all formats, `mako` has
+problem with non-ASCII characters anywhere in the text. The remedy
+for all formats is to read the file with UTF-8 encoding. With --debug
+one can see the internal str/unicode representation of the text
+through the various stages of the text transformation process.
 
-b = 0
-%>
-
-!bc
-b = 1  # Another value suggested by Åsmund Ødegård.
-!ec
+## Mako fails whether plain text or verbatim block:
+$b = 1$ is a value suggested by Åsmund Ødegård.
 # #endif
 
 
-************** File: encoding3.p.tex-preprocess *****************
+************** File: encoding3.p.tex-ascii *****************
 
 % ------------------- main content ----------------------
 
 Text with a name like Åsmund Ødegård works in general.
-The problem with UTF-8 arises inside verbatim environments.
+
+
+
+% ------------------- end of main content ---------------
+
+
+************** File: encoding3.html-ascii *****************
+
+<!-- tocinfo
+{'highest level': 4, 'sections': []}
+end of tocinfo -->
+
+
+<!-- ------------------- main content ---------------------- -->
+
+Text with a name like &#197;smund &#216;deg&#229;rd works in general.
+
+<p>
+
+<!-- ------------------- end of main content --------------- -->
+
+
+    This is a log file for the doconce script.
+    Debugging is turned on by the command-line argument '--debug'
+    to doconce format. Without that command-line argument,
+    this file is not produced.
+
+    
+
+******* output format: html *******
+
+
+
+
+Found use of 2 preprocess directives # #if|define|include in file encoding3.do.txt
+
+
+
+************************************************************
+str>>> The file after running preprocess and/or mako:
+
+## Test of handling non-ASCII characters in Doconce
+Text with a name like Åsmund Ødegård works in general.
+
+
+
+
+************************************************************
+str>>> The file after running @@@OSCMD (from file):
+
+## Test of handling non-ASCII characters in Doconce
+Text with a name like Åsmund Ødegård works in general.
+
+
+
+
+************************************************************
+str>>> The file after inserting @@@CODE (from file):
+
+## Test of handling non-ASCII characters in Doconce
+Text with a name like Åsmund Ødegård works in general.
+
+
+
+
+************************************************************
+str>>> The file after removal of code/tex blocks:
+
+## Test of handling non-ASCII characters in Doconce
+Text with a name like Åsmund Ødegård works in general.
+
+
+
+
+************************************************************
+str>>> The code blocks:
+
+[]
+
+************************************************************
+str>>> The code block types:
+
+[]
+
+************************************************************
+str>>> The tex blocks:
+
+[]
+
+************************************************************
+unicode>>> The file after handling ref and label cross referencing:
+
+Text with a name like &#197;smund &#216;deg&#229;rd works in general.
+
+
+
+************************************************************
+unicode>>> The file after handling index and bibliography:
+
+Text with a name like &#197;smund &#216;deg&#229;rd works in general.
+
+
+*** List typesetting phase + comments and blank lines ***
+
+
+
+------------------------
+source line=[Text with a name like &#197;smund &#216;deg&#229;rd works in general.]
+
+
+  > indent=0 (previous indent=0), keyword=[None], text=[Text with a name like &#197;smund &#216;deg&#229;rd works in general.]
+
+
+  > This line belongs to the previous block since it has the same indent (0 blanks)
+
+
+  > This line is some ordinary line, no special list syntax involved
+
+
+text=[Text with a name like &#197;smund &#216;deg&#229;rd works in general.]
+
+
+
+------------------------
+source line=[]
+
+
+  > This is a blank line
+
+
+
+************************************************************
+unicode>>> The file after typesetting of lists:
+
+Text with a name like &#197;smund &#216;deg&#229;rd works in general.
+
+<p>
+
+
+************************************************************
+unicode>>> The file after adding space around | in tables:
+
+Text with a name like &#197;smund &#216;deg&#229;rd works in general.
+
+<p>
+
+
+*** Dealing with authors and institutions ***
+
+
+
+*** Inline tags substitution phase ***
+
+
+
+*************** Working with tag "title"
+
+
+
+*************** Working with tag "date"
+
+
+
+*************** Working with tag "movie"
+
+
+
+*************** Working with tag "abstract"
+
+
+
+*************** Working with tag "emphasize"
+
+
+
+*************** Working with tag "math2"
+
+
+
+*************** Working with tag "math"
+
+
+
+*************** Working with tag "chapter"
+
+
+
+*************** Working with tag "section"
+
+
+
+*************** Working with tag "subsection"
+
+
+
+*************** Working with tag "subsubsection"
+
+
+
+*************** Working with tag "bold"
+
+
+
+*************** Working with tag "inlinecomment"
+
+
+
+*************** Working with tag "colortext"
+
+
+
+*************** Working with tag "verbatim"
+
+
+
+*************** Working with tag "paragraph"
+
+
+
+*************** Working with tag "plainURL"
+
+
+
+*************** Working with tag "linkURL2v"
+
+
+
+*************** Working with tag "linkURL3v"
+
+
+
+*************** Working with tag "linkURL2"
+
+
+
+*************** Working with tag "linkURL3"
+
+
+
+*************** Working with tag "linkURL"
+
+
+
+************************************************************
+unicode>>> The file after all inline substitutions:
+
+Text with a name like &#197;smund &#216;deg&#229;rd works in general.
+
+<p>
+
+
+************************************************************
+unicode>>> The file after typesetting of tables:
+
+Text with a name like &#197;smund &#216;deg&#229;rd works in general.
+
+<p>
+
+
+************************************************************
+unicode>>> The file after commenting out !split, !bpop, !epop, !bslidecell, !eslidecell, !bnotes, !enotes:
+
+Text with a name like &#197;smund &#216;deg&#229;rd works in general.
+
+<p>
+
+
+************************************************************
+unicode>>> File before call to insert_code_and_tex (format html):
+
+
+<!-- ------------------- main content ---------------------- -->
+
+Text with a name like &#197;smund &#216;deg&#229;rd works in general.
+
+<p>
+
+<!-- ------------------- end of main content --------------- -->
+
+
+************************************************************
+unicode>>> File after call to isnert_code_and tex (format html):
+
+
+<!-- ------------------- main content ---------------------- -->
+
+Text with a name like &#197;smund &#216;deg&#229;rd works in general.
+
+<p>
+
+<!-- ------------------- end of main content --------------- -->
+
+
+************************************************************
+unicode>>> The file after inserting intro/outro and tex/code blocks, and fixing last format-specific issues:
+
+
+<!-- tocinfo
+{'highest level': 4, 'sections': []}
+end of tocinfo -->
+
+
+<!-- ------------------- main content ---------------------- -->
+
+Text with a name like &#197;smund &#216;deg&#229;rd works in general.
+
+<p>
+
+<!-- ------------------- end of main content --------------- -->
+
+
+
+************************************************************
+unicode>>> The file after typesetting of admons and the rest of the !b/!e environments:
+
+
+<!-- tocinfo
+{'highest level': 4, 'sections': []}
+end of tocinfo -->
+
+
+<!-- ------------------- main content ---------------------- -->
+
+Text with a name like &#197;smund &#216;deg&#229;rd works in general.
+
+<p>
+
+<!-- ------------------- end of main content --------------- -->
+
+
+
+************************************************************
+unicode>>> The file after removal of solutions, answers, notes, hints, etc.:
+
+
+<!-- tocinfo
+{'highest level': 4, 'sections': []}
+end of tocinfo -->
+
+
+<!-- ------------------- main content ---------------------- -->
+
+Text with a name like &#197;smund &#216;deg&#229;rd works in general.
+
+<p>
+
+<!-- ------------------- end of main content --------------- -->
+
+
+
+************************************************************
+unicode>>> The file after replacing |bc and |bt environments by true !bt and !et (in code blocks):
+
+
+<!-- tocinfo
+{'highest level': 4, 'sections': []}
+end of tocinfo -->
+
+
+<!-- ------------------- main content ---------------------- -->
+
+Text with a name like &#197;smund &#216;deg&#229;rd works in general.
+
+<p>
+
+<!-- ------------------- end of main content --------------- -->
+
+
+
+************** File: encoding3.p.tex-ascii-verb *****************
+
+% ------------------- main content ----------------------
+
+Text with a name like Åsmund Ødegård works in general.
+Verbatim blocks with non-ASCII text does not work for HTML, but it works
+for {\LaTeX}. The remedy for HTML is to read the file with UTF-8 encoding.
+
 \bccq
 a = 1  # Value suggested by Åsmund Ødegård.
 \eccq
@@ -64410,21 +64805,1470 @@ a = 1  # Value suggested by Åsmund Ødegård.
 % ------------------- end of main content ---------------
 
 
-************** File: encoding3.p.tex-mako *****************
+************** File: encoding3.html-ascii-verb *****************
+
+<!-- tocinfo
+{'highest level': 4, 'sections': []}
+end of tocinfo -->
+
+
+<!-- ------------------- main content ---------------------- -->
+
+Text with a name like Åsmund Ødegård works in general.
+Verbatim blocks with non-ASCII text does not work for HTML, but it works
+for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
+
+<p>
+<!-- begin verbatim block -->
+<pre><code>a = 1  # Value suggested by Åsmund Ødegård.
+</code></pre>
+<!-- end verbatim block -->
+
+<p>
+
+<!-- ------------------- end of main content --------------- -->
+
+
+    This is a log file for the doconce script.
+    Debugging is turned on by the command-line argument '--debug'
+    to doconce format. Without that command-line argument,
+    this file is not produced.
+
+    
+
+******* output format: html *******
+
+
+
+
+Found use of 2 preprocess directives # #if|define|include in file encoding3.do.txt
+
+
+
+************************************************************
+unicode>>> The file after running preprocess and/or mako:
+
+## Test of handling non-ASCII characters in Doconce
+Text with a name like Åsmund Ødegård works in general.
+Verbatim blocks with non-ASCII text does not work for HTML, but it works
+for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
+
+!bc
+a = 1  # Value suggested by Åsmund Ødegård.
+!ec
+
+
+
+
+************************************************************
+unicode>>> The file after running @@@OSCMD (from file):
+
+## Test of handling non-ASCII characters in Doconce
+Text with a name like Åsmund Ødegård works in general.
+Verbatim blocks with non-ASCII text does not work for HTML, but it works
+for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
+
+!bc
+a = 1  # Value suggested by Åsmund Ødegård.
+!ec
+
+
+
+
+************************************************************
+unicode>>> The file after inserting @@@CODE (from file):
+
+## Test of handling non-ASCII characters in Doconce
+Text with a name like Åsmund Ødegård works in general.
+Verbatim blocks with non-ASCII text does not work for HTML, but it works
+for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
+
+!bc
+a = 1  # Value suggested by Åsmund Ødegård.
+!ec
+
+
+
+
+************************************************************
+unicode>>> The file after removal of code/tex blocks:
+
+## Test of handling non-ASCII characters in Doconce
+Text with a name like Åsmund Ødegård works in general.
+Verbatim blocks with non-ASCII text does not work for HTML, but it works
+for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
+
+0 <<<!!CODE_BLOCK 
+
+
+
+
+************************************************************
+unicode>>> The code blocks:
+
+[u'a = 1  # Value suggested by \xc5smund \xd8deg\xe5rd.\n']
+
+************************************************************
+unicode>>> The code block types:
+
+[u'']
+
+************************************************************
+unicode>>> The tex blocks:
+
+[]
+
+************************************************************
+unicode>>> The file after handling ref and label cross referencing:
+
+Text with a name like Åsmund Ødegård works in general.
+Verbatim blocks with non-ASCII text does not work for HTML, but it works
+for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
+
+0 <<<!!CODE_BLOCK 
+
+
+
+************************************************************
+unicode>>> The file after handling index and bibliography:
+
+Text with a name like Åsmund Ødegård works in general.
+Verbatim blocks with non-ASCII text does not work for HTML, but it works
+for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
+
+0 <<<!!CODE_BLOCK 
+
+
+*** List typesetting phase + comments and blank lines ***
+
+
+
+------------------------
+source line=[Text with a name like Åsmund Ødegård works in general.]
+
+
+  > indent=0 (previous indent=0), keyword=[None], text=[Text with a name like Åsmund Ødegård works in general.]
+
+
+  > This line belongs to the previous block since it has the same indent (0 blanks)
+
+
+  > This line is some ordinary line, no special list syntax involved
+
+
+text=[Text with a name like Åsmund Ødegård works in general.]
+
+
+
+------------------------
+source line=[Verbatim blocks with non-ASCII text does not work for HTML, but it works]
+
+
+  > indent=0 (previous indent=0), keyword=[None], text=[Verbatim blocks with non-ASCII text does not work for HTML, but it works]
+
+
+  > This line belongs to the previous block since it has the same indent (0 blanks)
+
+
+  > This line is some ordinary line, no special list syntax involved
+
+
+text=[Verbatim blocks with non-ASCII text does not work for HTML, but it works]
+
+
+
+------------------------
+source line=[for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.]
+
+
+  > indent=0 (previous indent=0), keyword=[None], text=[for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.]
+
+
+  > This line belongs to the previous block since it has the same indent (0 blanks)
+
+
+  > This line is some ordinary line, no special list syntax involved
+
+
+text=[for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.]
+
+
+
+------------------------
+source line=[]
+
+
+  > This is a blank line
+
+
+
+------------------------
+source line=[0 <<<!!CODE_BLOCK ]
+
+
+  > indent=0 (previous indent=0), keyword=[None], text=[0 <<<!!CODE_BLOCK ]
+
+
+  > This line belongs to the previous block since it has the same indent (0 blanks)
+
+
+  > This line is some ordinary line, no special list syntax involved
+
+
+text=[0 <<<!!CODE_BLOCK ]
+
+
+
+------------------------
+source line=[]
+
+
+  > This is a blank line
+
+
+
+************************************************************
+unicode>>> The file after typesetting of lists:
+
+Text with a name like Åsmund Ødegård works in general.
+Verbatim blocks with non-ASCII text does not work for HTML, but it works
+for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
+
+<p>
+0 <<<!!CODE_BLOCK 
+
+<p>
+
+
+************************************************************
+unicode>>> The file after adding space around | in tables:
+
+Text with a name like Åsmund Ødegård works in general.
+Verbatim blocks with non-ASCII text does not work for HTML, but it works
+for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
+
+<p>
+0 <<<!!CODE_BLOCK 
+
+<p>
+
+
+*** Dealing with authors and institutions ***
+
+
+
+*** Inline tags substitution phase ***
+
+
+
+*************** Working with tag "title"
+
+
+
+*************** Working with tag "date"
+
+
+
+*************** Working with tag "movie"
+
+
+
+*************** Working with tag "abstract"
+
+
+
+*************** Working with tag "emphasize"
+
+
+
+*************** Working with tag "math2"
+
+
+
+*************** Working with tag "math"
+
+
+
+*************** Working with tag "chapter"
+
+
+
+*************** Working with tag "section"
+
+
+
+*************** Working with tag "subsection"
+
+
+
+*************** Working with tag "subsubsection"
+
+
+
+*************** Working with tag "bold"
+
+
+
+*************** Working with tag "inlinecomment"
+
+
+
+*************** Working with tag "colortext"
+
+
+
+*************** Working with tag "verbatim"
+
+
+
+*************** Working with tag "paragraph"
+
+
+
+*************** Working with tag "plainURL"
+
+
+
+*************** Working with tag "linkURL2v"
+
+
+
+*************** Working with tag "linkURL3v"
+
+
+
+*************** Working with tag "linkURL2"
+
+
+
+*************** Working with tag "linkURL3"
+
+
+
+*************** Working with tag "linkURL"
+
+
+
+************************************************************
+unicode>>> The file after all inline substitutions:
+
+Text with a name like Åsmund Ødegård works in general.
+Verbatim blocks with non-ASCII text does not work for HTML, but it works
+for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
+
+<p>
+0 <<<!!CODE_BLOCK 
+
+<p>
+
+
+************************************************************
+unicode>>> The file after typesetting of tables:
+
+Text with a name like Åsmund Ødegård works in general.
+Verbatim blocks with non-ASCII text does not work for HTML, but it works
+for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
+
+<p>
+0 <<<!!CODE_BLOCK 
+
+<p>
+
+
+************************************************************
+unicode>>> The file after commenting out !split, !bpop, !epop, !bslidecell, !eslidecell, !bnotes, !enotes:
+
+Text with a name like Åsmund Ødegård works in general.
+Verbatim blocks with non-ASCII text does not work for HTML, but it works
+for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
+
+<p>
+0 <<<!!CODE_BLOCK 
+
+<p>
+
+
+************************************************************
+unicode>>> File before call to insert_code_and_tex (format html):
+
+
+<!-- ------------------- main content ---------------------- -->
+
+Text with a name like Åsmund Ødegård works in general.
+Verbatim blocks with non-ASCII text does not work for HTML, but it works
+for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
+
+<p>
+0 <<<!!CODE_BLOCK 
+
+<p>
+
+<!-- ------------------- end of main content --------------- -->
+
+
+************************************************************
+unicode>>> File after call to isnert_code_and tex (format html):
+
+
+<!-- ------------------- main content ---------------------- -->
+
+Text with a name like Åsmund Ødegård works in general.
+Verbatim blocks with non-ASCII text does not work for HTML, but it works
+for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
+
+<p>
+!bc
+a = 1  # Value suggested by Åsmund Ødegård.
+!ec
+
+<p>
+
+<!-- ------------------- end of main content --------------- -->
+
+
+************************************************************
+unicode>>> The file after inserting intro/outro and tex/code blocks, and fixing last format-specific issues:
+
+
+<!-- tocinfo
+{'highest level': 4, 'sections': []}
+end of tocinfo -->
+
+
+<!-- ------------------- main content ---------------------- -->
+
+Text with a name like Åsmund Ødegård works in general.
+Verbatim blocks with non-ASCII text does not work for HTML, but it works
+for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
+
+<p>
+<!-- begin verbatim block -->
+<pre><code>a = 1  # Value suggested by Åsmund Ødegård.
+</code></pre>
+<!-- end verbatim block -->
+
+<p>
+
+<!-- ------------------- end of main content --------------- -->
+
+
+
+************************************************************
+unicode>>> The file after typesetting of admons and the rest of the !b/!e environments:
+
+
+<!-- tocinfo
+{'highest level': 4, 'sections': []}
+end of tocinfo -->
+
+
+<!-- ------------------- main content ---------------------- -->
+
+Text with a name like Åsmund Ødegård works in general.
+Verbatim blocks with non-ASCII text does not work for HTML, but it works
+for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
+
+<p>
+<!-- begin verbatim block -->
+<pre><code>a = 1  # Value suggested by Åsmund Ødegård.
+</code></pre>
+<!-- end verbatim block -->
+
+<p>
+
+<!-- ------------------- end of main content --------------- -->
+
+
+
+************************************************************
+unicode>>> The file after removal of solutions, answers, notes, hints, etc.:
+
+
+<!-- tocinfo
+{'highest level': 4, 'sections': []}
+end of tocinfo -->
+
+
+<!-- ------------------- main content ---------------------- -->
+
+Text with a name like Åsmund Ødegård works in general.
+Verbatim blocks with non-ASCII text does not work for HTML, but it works
+for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
+
+<p>
+<!-- begin verbatim block -->
+<pre><code>a = 1  # Value suggested by Åsmund Ødegård.
+</code></pre>
+<!-- end verbatim block -->
+
+<p>
+
+<!-- ------------------- end of main content --------------- -->
+
+
+
+************************************************************
+unicode>>> The file after replacing |bc and |bt environments by true !bt and !et (in code blocks):
+
+
+<!-- tocinfo
+{'highest level': 4, 'sections': []}
+end of tocinfo -->
+
+
+<!-- ------------------- main content ---------------------- -->
+
+Text with a name like Åsmund Ødegård works in general.
+Verbatim blocks with non-ASCII text does not work for HTML, but it works
+for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
+
+<p>
+<!-- begin verbatim block -->
+<pre><code>a = 1  # Value suggested by Åsmund Ødegård.
+</code></pre>
+<!-- end verbatim block -->
+
+<p>
+
+<!-- ------------------- end of main content --------------- -->
+
+
+
+************** File: encoding3.p.tex-utf8 *****************
 
 % ------------------- main content ----------------------
 
 Text with a name like Åsmund Ødegård works in general.
-The problem with UTF-8 arises inside verbatim environments.
 
+This block (in format latex)
+triggers use of \code{mako}. For all formats, \code{mako} has
+problem with non-ASCII characters anywhere in the text. The remedy
+for all formats is to read the file with UTF-8 encoding. With --debug
+one can see the internal str/unicode representation of the text
+through the various stages of the text transformation process.
 
-
-\bccq
-b = 1  # Another value suggested by Åsmund Ødegård.
-\eccq
+$b = 1$ is a value suggested by Åsmund Ødegård.
 
 
 % ------------------- end of main content ---------------
+
+
+************** File: encoding3.html-utf8 *****************
+
+<!-- tocinfo
+{'highest level': 4, 'sections': []}
+end of tocinfo -->
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "AMS"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+
+<!-- newcommands_bfmath.tex -->
+$$
+\renewcommand{\u}{\pmb{u}}
+
+\newcommand{\xbm}{\boldsymbol{x}}
+\newcommand{\normalvecbm}{\boldsymbol{n}}
+\newcommand{\ubm}{\boldsymbol{u}}
+$$
+
+
+<!-- newcommands_replace.tex -->
+$$
+\newcommand{\x}{\pmb{x}}
+\newcommand{\normalvec}{\pmb{n}}
+\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
+\newcommand{\halfi}{1/2}
+\newcommand{\half}{\frac{1}{2}}
+\newcommand{\report}{test report}
+$$
+
+
+
+
+<!-- ------------------- main content ---------------------- -->
+
+Text with a name like Åsmund Ødegård works in general.
+
+<p>
+This block (in format html)
+triggers use of <code>mako</code>. For all formats, <code>mako</code> has
+problem with non-ASCII characters anywhere in the text. The remedy
+for all formats is to read the file with UTF-8 encoding. With --debug
+one can see the internal str/unicode representation of the text
+through the various stages of the text transformation process.
+
+<p>
+\( b = 1 \) is a value suggested by Åsmund Ødegård.
+
+<!-- ------------------- end of main content --------------- -->
+
+
+    This is a log file for the doconce script.
+    Debugging is turned on by the command-line argument '--debug'
+    to doconce format. Without that command-line argument,
+    this file is not produced.
+
+    
+
+******* output format: html *******
+
+
+
+
+Found use of 2 preprocess directives # #if|define|include in file encoding3.do.txt
+
+
+Found use of mako variable(s) in tmp_preprocess__encoding3.do.txt: ${FORMAT}
+
+
+Keyword arguments to be sent to mako: {'DEVICE': 'screen', 'FORMAT': 'html', 'MAKO': True}
+
+
+
+************************************************************
+unicode>>> The file after running preprocess and/or mako:
+
+Text with a name like Åsmund Ødegård works in general.
+
+This block (in format html)
+triggers use of `mako`. For all formats, `mako` has
+problem with non-ASCII characters anywhere in the text. The remedy
+for all formats is to read the file with UTF-8 encoding. With --debug
+one can see the internal str/unicode representation of the text
+through the various stages of the text transformation process.
+
+$b = 1$ is a value suggested by Åsmund Ødegård.
+
+
+
+************************************************************
+unicode>>> The file after running @@@OSCMD (from file):
+
+Text with a name like Åsmund Ødegård works in general.
+
+This block (in format html)
+triggers use of `mako`. For all formats, `mako` has
+problem with non-ASCII characters anywhere in the text. The remedy
+for all formats is to read the file with UTF-8 encoding. With --debug
+one can see the internal str/unicode representation of the text
+through the various stages of the text transformation process.
+
+$b = 1$ is a value suggested by Åsmund Ødegård.
+
+
+
+************************************************************
+unicode>>> The file after inserting @@@CODE (from file):
+
+Text with a name like Åsmund Ødegård works in general.
+
+This block (in format html)
+triggers use of `mako`. For all formats, `mako` has
+problem with non-ASCII characters anywhere in the text. The remedy
+for all formats is to read the file with UTF-8 encoding. With --debug
+one can see the internal str/unicode representation of the text
+through the various stages of the text transformation process.
+
+$b = 1$ is a value suggested by Åsmund Ødegård.
+
+
+
+************************************************************
+unicode>>> The file after removal of code/tex blocks:
+
+Text with a name like Åsmund Ødegård works in general.
+
+This block (in format html)
+triggers use of `mako`. For all formats, `mako` has
+problem with non-ASCII characters anywhere in the text. The remedy
+for all formats is to read the file with UTF-8 encoding. With --debug
+one can see the internal str/unicode representation of the text
+through the various stages of the text transformation process.
+
+$b = 1$ is a value suggested by Åsmund Ødegård.
+
+
+
+************************************************************
+unicode>>> The code blocks:
+
+[]
+
+************************************************************
+unicode>>> The code block types:
+
+[]
+
+************************************************************
+unicode>>> The tex blocks:
+
+[]
+
+************************************************************
+unicode>>> The file after handling ref and label cross referencing:
+
+Text with a name like Åsmund Ødegård works in general.
+
+This block (in format html)
+triggers use of `mako`. For all formats, `mako` has
+problem with non-ASCII characters anywhere in the text. The remedy
+for all formats is to read the file with UTF-8 encoding. With --debug
+one can see the internal str/unicode representation of the text
+through the various stages of the text transformation process.
+
+$b = 1$ is a value suggested by Åsmund Ødegård.
+
+
+************************************************************
+unicode>>> The file after handling index and bibliography:
+
+Text with a name like Åsmund Ødegård works in general.
+
+This block (in format html)
+triggers use of `mako`. For all formats, `mako` has
+problem with non-ASCII characters anywhere in the text. The remedy
+for all formats is to read the file with UTF-8 encoding. With --debug
+one can see the internal str/unicode representation of the text
+through the various stages of the text transformation process.
+
+$b = 1$ is a value suggested by Åsmund Ødegård.
+
+*** List typesetting phase + comments and blank lines ***
+
+
+
+------------------------
+source line=[Text with a name like Åsmund Ødegård works in general.]
+
+
+  > indent=0 (previous indent=0), keyword=[None], text=[Text with a name like Åsmund Ødegård works in general.]
+
+
+  > This line belongs to the previous block since it has the same indent (0 blanks)
+
+
+  > This line is some ordinary line, no special list syntax involved
+
+
+text=[Text with a name like Åsmund Ødegård works in general.]
+
+
+
+------------------------
+source line=[]
+
+
+  > This is a blank line
+
+
+
+------------------------
+source line=[This block (in format html)]
+
+
+  > indent=0 (previous indent=0), keyword=[None], text=[This block (in format html)]
+
+
+  > This line belongs to the previous block since it has the same indent (0 blanks)
+
+
+  > This line is some ordinary line, no special list syntax involved
+
+
+text=[This block (in format html)]
+
+
+
+------------------------
+source line=[triggers use of `mako`. For all formats, `mako` has]
+
+
+  > indent=0 (previous indent=0), keyword=[None], text=[triggers use of `mako`. For all formats, `mako` has]
+
+
+  > This line belongs to the previous block since it has the same indent (0 blanks)
+
+
+  > This line is some ordinary line, no special list syntax involved
+
+
+text=[triggers use of `mako`. For all formats, `mako` has]
+
+
+
+------------------------
+source line=[problem with non-ASCII characters anywhere in the text. The remedy]
+
+
+  > indent=0 (previous indent=0), keyword=[None], text=[problem with non-ASCII characters anywhere in the text. The remedy]
+
+
+  > This line belongs to the previous block since it has the same indent (0 blanks)
+
+
+  > This line is some ordinary line, no special list syntax involved
+
+
+text=[problem with non-ASCII characters anywhere in the text. The remedy]
+
+
+
+------------------------
+source line=[for all formats is to read the file with UTF-8 encoding. With --debug]
+
+
+  > indent=0 (previous indent=0), keyword=[None], text=[for all formats is to read the file with UTF-8 encoding. With --debug]
+
+
+  > This line belongs to the previous block since it has the same indent (0 blanks)
+
+
+  > This line is some ordinary line, no special list syntax involved
+
+
+text=[for all formats is to read the file with UTF-8 encoding. With --debug]
+
+
+
+------------------------
+source line=[one can see the internal str/unicode representation of the text]
+
+
+  > indent=0 (previous indent=0), keyword=[None], text=[one can see the internal str/unicode representation of the text]
+
+
+  > This line belongs to the previous block since it has the same indent (0 blanks)
+
+
+  > This line is some ordinary line, no special list syntax involved
+
+
+text=[one can see the internal str/unicode representation of the text]
+
+
+
+------------------------
+source line=[through the various stages of the text transformation process.]
+
+
+  > indent=0 (previous indent=0), keyword=[None], text=[through the various stages of the text transformation process.]
+
+
+  > This line belongs to the previous block since it has the same indent (0 blanks)
+
+
+  > This line is some ordinary line, no special list syntax involved
+
+
+text=[through the various stages of the text transformation process.]
+
+
+
+------------------------
+source line=[]
+
+
+  > This is a blank line
+
+
+
+------------------------
+source line=[$b = 1$ is a value suggested by Åsmund Ødegård.]
+
+
+  > indent=0 (previous indent=0), keyword=[None], text=[$b = 1$ is a value suggested by Åsmund Ødegård.]
+
+
+  > This line belongs to the previous block since it has the same indent (0 blanks)
+
+
+  > This line is some ordinary line, no special list syntax involved
+
+
+text=[$b = 1$ is a value suggested by Åsmund Ødegård.]
+
+
+
+************************************************************
+unicode>>> The file after typesetting of lists:
+
+Text with a name like Åsmund Ødegård works in general.
+
+<p>
+This block (in format html)
+triggers use of `mako`. For all formats, `mako` has
+problem with non-ASCII characters anywhere in the text. The remedy
+for all formats is to read the file with UTF-8 encoding. With --debug
+one can see the internal str/unicode representation of the text
+through the various stages of the text transformation process.
+
+<p>
+$b = 1$ is a value suggested by Åsmund Ødegård.
+
+
+************************************************************
+unicode>>> The file after adding space around | in tables:
+
+Text with a name like Åsmund Ødegård works in general.
+
+<p>
+This block (in format html)
+triggers use of `mako`. For all formats, `mako` has
+problem with non-ASCII characters anywhere in the text. The remedy
+for all formats is to read the file with UTF-8 encoding. With --debug
+one can see the internal str/unicode representation of the text
+through the various stages of the text transformation process.
+
+<p>
+$b = 1$ is a value suggested by Åsmund Ødegård.
+
+
+*** Dealing with authors and institutions ***
+
+
+
+*** Inline tags substitution phase ***
+
+
+
+*************** Working with tag "title"
+
+
+
+*************** Working with tag "date"
+
+
+
+*************** Working with tag "movie"
+
+
+
+*************** Working with tag "abstract"
+
+
+
+*************** Working with tag "emphasize"
+
+
+
+*************** Working with tag "math2"
+
+
+
+*************** Working with tag "math"
+
+
+Found 1 occurences of "math":
+findall list: [(u'\n', u'\n', u'b = 1', u' ', u' ')]
+
+
+math is to be replaced using \g<begin>\( \g<subst> \)\g<end>
+
+
+First occurence: "
+$b = 1$ "
+groups: (u'\n', u'\n', u'b = 1', u' ', u' ')
+named groups: {'begin': u'\n', 'end': u' ', 'subst': u'b = 1'}
+
+
+
+**** The file after 1 "math" substitutions ***
+Text with a name like Åsmund Ødegård works in general.
+
+<p>
+This block (in format html)
+triggers use of `mako`. For all formats, `mako` has
+problem with non-ASCII characters anywhere in the text. The remedy
+for all formats is to read the file with UTF-8 encoding. With --debug
+one can see the internal str/unicode representation of the text
+through the various stages of the text transformation process.
+
+<p>
+\( b = 1 \) is a value suggested by Åsmund Ødegård.
+
+--------------------------------------------------------------------------------
+
+
+
+
+
+*************** Working with tag "chapter"
+
+
+
+*************** Working with tag "section"
+
+
+
+*************** Working with tag "subsection"
+
+
+
+*************** Working with tag "subsubsection"
+
+
+
+*************** Working with tag "bold"
+
+
+
+*************** Working with tag "inlinecomment"
+
+
+
+*************** Working with tag "colortext"
+
+
+
+*************** Working with tag "verbatim"
+
+
+Found 2 occurences of "verbatim":
+findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
+
+
+verbatim is to be replaced using \g<begin><code>\g<subst></code>\g<end>
+
+
+First occurence: " `mako`."
+groups: (u' ', u' ', u'mako', u'.', u'.')
+named groups: {'begin': u' ', 'end': u'.', 'subst': u'mako'}
+
+
+
+**** The file after 2 "verbatim" substitutions ***
+Text with a name like Åsmund Ødegård works in general.
+
+<p>
+This block (in format html)
+triggers use of <code>mako</code>. For all formats, <code>mako</code> has
+problem with non-ASCII characters anywhere in the text. The remedy
+for all formats is to read the file with UTF-8 encoding. With --debug
+one can see the internal str/unicode representation of the text
+through the various stages of the text transformation process.
+
+<p>
+\( b = 1 \) is a value suggested by Åsmund Ødegård.
+
+--------------------------------------------------------------------------------
+
+
+
+
+
+*************** Working with tag "paragraph"
+
+
+
+*************** Working with tag "plainURL"
+
+
+
+*************** Working with tag "linkURL2v"
+
+
+
+*************** Working with tag "linkURL3v"
+
+
+
+*************** Working with tag "linkURL2"
+
+
+
+*************** Working with tag "linkURL3"
+
+
+
+*************** Working with tag "linkURL"
+
+
+
+************************************************************
+unicode>>> The file after all inline substitutions:
+
+Text with a name like Åsmund Ødegård works in general.
+
+<p>
+This block (in format html)
+triggers use of <code>mako</code>. For all formats, <code>mako</code> has
+problem with non-ASCII characters anywhere in the text. The remedy
+for all formats is to read the file with UTF-8 encoding. With --debug
+one can see the internal str/unicode representation of the text
+through the various stages of the text transformation process.
+
+<p>
+\( b = 1 \) is a value suggested by Åsmund Ødegård.
+
+
+************************************************************
+unicode>>> The file after typesetting of tables:
+
+Text with a name like Åsmund Ødegård works in general.
+
+<p>
+This block (in format html)
+triggers use of <code>mako</code>. For all formats, <code>mako</code> has
+problem with non-ASCII characters anywhere in the text. The remedy
+for all formats is to read the file with UTF-8 encoding. With --debug
+one can see the internal str/unicode representation of the text
+through the various stages of the text transformation process.
+
+<p>
+\( b = 1 \) is a value suggested by Åsmund Ødegård.
+
+
+************************************************************
+unicode>>> The file after commenting out !split, !bpop, !epop, !bslidecell, !eslidecell, !bnotes, !enotes:
+
+Text with a name like Åsmund Ødegård works in general.
+
+<p>
+This block (in format html)
+triggers use of <code>mako</code>. For all formats, <code>mako</code> has
+problem with non-ASCII characters anywhere in the text. The remedy
+for all formats is to read the file with UTF-8 encoding. With --debug
+one can see the internal str/unicode representation of the text
+through the various stages of the text transformation process.
+
+<p>
+\( b = 1 \) is a value suggested by Åsmund Ødegård.
+
+
+************************************************************
+unicode>>> File before call to insert_code_and_tex (format html):
+
+
+<!-- ------------------- main content ---------------------- -->
+
+Text with a name like Åsmund Ødegård works in general.
+
+<p>
+This block (in format html)
+triggers use of <code>mako</code>. For all formats, <code>mako</code> has
+problem with non-ASCII characters anywhere in the text. The remedy
+for all formats is to read the file with UTF-8 encoding. With --debug
+one can see the internal str/unicode representation of the text
+through the various stages of the text transformation process.
+
+<p>
+\( b = 1 \) is a value suggested by Åsmund Ødegård.
+
+<!-- ------------------- end of main content --------------- -->
+
+
+************************************************************
+unicode>>> File after call to isnert_code_and tex (format html):
+
+
+<!-- ------------------- main content ---------------------- -->
+
+Text with a name like Åsmund Ødegård works in general.
+
+<p>
+This block (in format html)
+triggers use of <code>mako</code>. For all formats, <code>mako</code> has
+problem with non-ASCII characters anywhere in the text. The remedy
+for all formats is to read the file with UTF-8 encoding. With --debug
+one can see the internal str/unicode representation of the text
+through the various stages of the text transformation process.
+
+<p>
+\( b = 1 \) is a value suggested by Åsmund Ødegård.
+
+<!-- ------------------- end of main content --------------- -->
+
+
+************************************************************
+unicode>>> The file after inserting intro/outro and tex/code blocks, and fixing last format-specific issues:
+
+
+<!-- tocinfo
+{'highest level': 4, 'sections': []}
+end of tocinfo -->
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "AMS"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+
+<!-- newcommands_bfmath.tex -->
+$$
+\renewcommand{\u}{\pmb{u}}
+
+\newcommand{\xbm}{\bm{x}}
+\newcommand{\normalvecbm}{\bm{n}}
+\newcommand{\ubm}{\bm{u}}
+$$
+
+
+<!-- newcommands_replace.tex -->
+$$
+\newcommand{\x}{\pmb{x}}
+\newcommand{\normalvec}{\pmb{n}}
+\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
+\newcommand{\halfi}{1/2}
+\newcommand{\half}{\frac{1}{2}}
+\newcommand{\report}{test report}
+$$
+
+
+
+
+<!-- ------------------- main content ---------------------- -->
+
+Text with a name like Åsmund Ødegård works in general.
+
+<p>
+This block (in format html)
+triggers use of <code>mako</code>. For all formats, <code>mako</code> has
+problem with non-ASCII characters anywhere in the text. The remedy
+for all formats is to read the file with UTF-8 encoding. With --debug
+one can see the internal str/unicode representation of the text
+through the various stages of the text transformation process.
+
+<p>
+\( b = 1 \) is a value suggested by Åsmund Ødegård.
+
+<!-- ------------------- end of main content --------------- -->
+
+
+
+************************************************************
+unicode>>> The file after typesetting of admons and the rest of the !b/!e environments:
+
+
+<!-- tocinfo
+{'highest level': 4, 'sections': []}
+end of tocinfo -->
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "AMS"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+
+<!-- newcommands_bfmath.tex -->
+$$
+\renewcommand{\u}{\pmb{u}}
+
+\newcommand{\xbm}{\bm{x}}
+\newcommand{\normalvecbm}{\bm{n}}
+\newcommand{\ubm}{\bm{u}}
+$$
+
+
+<!-- newcommands_replace.tex -->
+$$
+\newcommand{\x}{\pmb{x}}
+\newcommand{\normalvec}{\pmb{n}}
+\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
+\newcommand{\halfi}{1/2}
+\newcommand{\half}{\frac{1}{2}}
+\newcommand{\report}{test report}
+$$
+
+
+
+
+<!-- ------------------- main content ---------------------- -->
+
+Text with a name like Åsmund Ødegård works in general.
+
+<p>
+This block (in format html)
+triggers use of <code>mako</code>. For all formats, <code>mako</code> has
+problem with non-ASCII characters anywhere in the text. The remedy
+for all formats is to read the file with UTF-8 encoding. With --debug
+one can see the internal str/unicode representation of the text
+through the various stages of the text transformation process.
+
+<p>
+\( b = 1 \) is a value suggested by Åsmund Ødegård.
+
+<!-- ------------------- end of main content --------------- -->
+
+
+
+************************************************************
+unicode>>> The file after removal of solutions, answers, notes, hints, etc.:
+
+
+<!-- tocinfo
+{'highest level': 4, 'sections': []}
+end of tocinfo -->
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "AMS"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+
+<!-- newcommands_bfmath.tex -->
+$$
+\renewcommand{\u}{\pmb{u}}
+
+\newcommand{\xbm}{\bm{x}}
+\newcommand{\normalvecbm}{\bm{n}}
+\newcommand{\ubm}{\bm{u}}
+$$
+
+
+<!-- newcommands_replace.tex -->
+$$
+\newcommand{\x}{\pmb{x}}
+\newcommand{\normalvec}{\pmb{n}}
+\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
+\newcommand{\halfi}{1/2}
+\newcommand{\half}{\frac{1}{2}}
+\newcommand{\report}{test report}
+$$
+
+
+
+
+<!-- ------------------- main content ---------------------- -->
+
+Text with a name like Åsmund Ødegård works in general.
+
+<p>
+This block (in format html)
+triggers use of <code>mako</code>. For all formats, <code>mako</code> has
+problem with non-ASCII characters anywhere in the text. The remedy
+for all formats is to read the file with UTF-8 encoding. With --debug
+one can see the internal str/unicode representation of the text
+through the various stages of the text transformation process.
+
+<p>
+\( b = 1 \) is a value suggested by Åsmund Ødegård.
+
+<!-- ------------------- end of main content --------------- -->
+
+
+
+************************************************************
+unicode>>> The file after replacing |bc and |bt environments by true !bt and !et (in code blocks):
+
+
+<!-- tocinfo
+{'highest level': 4, 'sections': []}
+end of tocinfo -->
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "AMS"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+
+<!-- newcommands_bfmath.tex -->
+$$
+\renewcommand{\u}{\pmb{u}}
+
+\newcommand{\xbm}{\boldsymbol{x}}
+\newcommand{\normalvecbm}{\boldsymbol{n}}
+\newcommand{\ubm}{\boldsymbol{u}}
+$$
+
+
+<!-- newcommands_replace.tex -->
+$$
+\newcommand{\x}{\pmb{x}}
+\newcommand{\normalvec}{\pmb{n}}
+\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
+\newcommand{\halfi}{1/2}
+\newcommand{\half}{\frac{1}{2}}
+\newcommand{\report}{test report}
+$$
+
+
+
+
+<!-- ------------------- main content ---------------------- -->
+
+Text with a name like Åsmund Ødegård works in general.
+
+<p>
+This block (in format html)
+triggers use of <code>mako</code>. For all formats, <code>mako</code> has
+problem with non-ASCII characters anywhere in the text. The remedy
+for all formats is to read the file with UTF-8 encoding. With --debug
+one can see the internal str/unicode representation of the text
+through the various stages of the text transformation process.
+
+<p>
+\( b = 1 \) is a value suggested by Åsmund Ødegård.
+
+<!-- ------------------- end of main content --------------- -->
+
 
 
 ************** File: tmp_Doconce.do.txt *****************
@@ -88129,16 +89973,29 @@ output in movies.txt
 + doconce change_encoding utf-8 latin1 tmp2.do.txt
 + '[' 0 -ne 0 ']'
 + doconce guess_encoding tmp2.do.txt
++ doconce format latex encoding3 --debug
+*** debug output in _doconce_debugging.log
+running preprocess -DFORMAT=latex -DDEVICE=screen  encoding3.do.txt > tmp_preprocess__encoding3.do.txt
+translating doconce text in tmp_preprocess__encoding3.do.txt to latex
+output in encoding3.p.tex
++ cp encoding3.p.tex encoding3.p.tex-ascii
++ doconce format html encoding3 --no_pygments_html --debug
+*** debug output in _doconce_debugging.log
+running preprocess -DFORMAT=html -DDEVICE=screen  encoding3.do.txt > tmp_preprocess__encoding3.do.txt
+translating doconce text in tmp_preprocess__encoding3.do.txt to html
+output in encoding3.html
++ cp encoding3.html encoding3.html-ascii
++ cat _doconce_debugging.log
 + doconce format latex encoding3 -DPREPROCESS
 running preprocess -DFORMAT=latex -DDEVICE=screen -DPREPROCESS encoding3.do.txt > tmp_preprocess__encoding3.do.txt
 translating doconce text in tmp_preprocess__encoding3.do.txt to latex
 output in encoding3.p.tex
-+ cp encoding3.p.tex encoding3.p.tex-preprocess
++ cp encoding3.p.tex encoding3.p.tex-ascii-verb
 + doconce format html encoding3 -DPREPROCESS
 running preprocess -DFORMAT=html -DDEVICE=screen -DPREPROCESS encoding3.do.txt > tmp_preprocess__encoding3.do.txt
 translating doconce text in tmp_preprocess__encoding3.do.txt to html
 *** error: problem with character when writing to file:
-(text position  440-441)
+(text position  526-527)
 ight: 125%">a = 1  # Value suggested by  | Traceback (most recent call last):
   File "/usr/local/bin/doconce", line 1013, in <module>
     main()
@@ -88147,18 +90004,21 @@ ight: 125%">a = 1  # Value suggested by  | Traceback (most recent call last):
   File "<string>", line 1, in <module>
   File "/usr/local/bin/doconce", line 83, in format
     doconce.doconce.format_driver()
-  File "/usr/local/lib/python2.7/dist-packages/doconce/doconce.py", line 3026, in format_driver
+  File "/usr/local/lib/python2.7/dist-packages/doconce/doconce.py", line 3018, in format_driver
     out_filename = file2file(filename_preprocessed, format, basename)
-  File "/usr/local/lib/python2.7/dist-packages/doconce/doconce.py", line 2280, in file2file
+  File "/usr/local/lib/python2.7/dist-packages/doconce/doconce.py", line 2287, in file2file
     error_message()
-  File "/usr/local/lib/python2.7/dist-packages/doconce/doconce.py", line 2269, in error_message
+  File "/usr/local/lib/python2.7/dist-packages/doconce/doconce.py", line 2276, in error_message
     print filestr[pos-40:pos], '|', filestr[pos], '|', filestr[pos+1:pos+40]
 UnicodeEncodeError: 'ascii' codec can't encode character u'\xc3' in position 0: ordinal not in range(128)
-+ doconce format html encoding3 -DPREPROCESS --encoding=utf-8
++ doconce format html encoding3 -DPREPROCESS --encoding=utf-8 --no_pygments_html --debug
+*** debug output in _doconce_debugging.log
 running preprocess -DFORMAT=html -DDEVICE=screen -DPREPROCESS encoding3.do.txt > tmp_preprocess__encoding3.do.txt
 translating doconce text in tmp_preprocess__encoding3.do.txt to html
 open file with encoding utf-8
 output in encoding3.html
++ cp encoding3.html encoding3.html-ascii-verb
++ cat _doconce_debugging.log
 + doconce format latex encoding3 -DMAKO
 running preprocess -DFORMAT=latex -DDEVICE=screen -DMAKO encoding3.do.txt > tmp_preprocess__encoding3.do.txt
 running mako on tmp_preprocess__encoding3.do.txt to make tmp_mako__encoding3.do.txt
@@ -88175,7 +90035,18 @@ mako variables: {'DEVICE': 'screen', 'MAKO': True, 'FORMAT': 'latex'}
 translating doconce text in tmp_mako__encoding3.do.txt to latex
 open file with encoding utf-8
 output in encoding3.p.tex
-+ cp encoding3.p.tex encoding3.p.tex-mako
++ cp encoding3.p.tex encoding3.p.tex-utf8
++ doconce format html encoding3 -DMAKO --encoding=utf-8 --no_pygments_html --debug
+*** debug output in _doconce_debugging.log
+running preprocess -DFORMAT=html -DDEVICE=screen -DMAKO encoding3.do.txt > tmp_preprocess__encoding3.do.txt
+running mako on tmp_preprocess__encoding3.do.txt to make tmp_mako__encoding3.do.txt
+mako variables: {'DEVICE': 'screen', 'MAKO': True, 'FORMAT': 'html'}
+translating doconce text in tmp_mako__encoding3.do.txt to html
+open file with encoding utf-8
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
+output in encoding3.html
++ cp encoding3.html encoding3.html-utf8
++ cat _doconce_debugging.log
 + system doconce format html mako_test1 --no_pygments_html
 + doconce format html mako_test1 --no_pygments_html
 running mako on mako_test1.do.txt to make tmp_mako__mako_test1.do.txt
