@@ -985,8 +985,17 @@ def exercises(filestr, format, code_blocks, tex_blocks):
             # How to do multiple choice in exer or subex (or inside admons
             # and elsewhere, e.g., survey questions):
             # !bmchoice, !emchoice (bchoices does not work since it starts with bc!)
-            # inside_mchoice: store all that text in subex/exer['multiple_choice']
-            # afterwards: interpret the text in multiple_choices
+            # inside_mchoice: store all that text in subex/exer['multiple_choice'],
+            # perhaps not: mchoice should be an envir that can appear anywhere
+            # so it would be best for the exercise function to just
+            # gather all mchoice statements in one text and get it processed
+            # to some useful data structure for subex/exer.
+
+            # Regarding syntax: must allow the question to be arbitrarily
+            # doconce-complex, i.e., have movies, lists, whatever.
+            # Each choice and explanation can also be complex or quick.
+            # Maybe have two types of syntax: one begin-end for complex
+            # stuff, and one compact and simple as suggested below.
             # syntax: Cf/Cr: ..., required E: ... for explanation (can be empty)
             # Cf is a false choice, Cr is a right choice (or False:/True:)
             # Easy to use a regex to pick out the structure of the multiple
@@ -1001,6 +1010,8 @@ def exercises(filestr, format, code_blocks, tex_blocks):
             # Should have possibility to have textarea as answer to
             # question for future smart regex checks of the answer, maybe
             # also upload files.
+            # Should also have the possibility to include sound files
+            # for applause etc. from Dropbox/collected../ideas/doconce/sound
             if inside_subex and not instruction_line:
                 if inside_answer:
                     subex['answer'].append(lines[line_no])
