@@ -37,14 +37,26 @@ def _abort():
         print 'Abort! (add --no_abort on the command line to avoid this abortion)'
         sys.exit(1)
 
+def internet_access():
+    """Return True if internet is on, else False."""
+    import urllib2
+    try:
+        # Check google.com with numerical IP-address (which avoids
+        # DNS loopup) and set timeout to 1 sec so this does not
+        # take much time (google.com should respond quickly)
+       response=urllib2.urlopen('http://74.125.228.100', timeout=1)
+       return True
+    except urllib2.URLError as err:
+        pass
+    return False
+
 def safe_join(lines, delimiter):
     try:
         filestr = delimiter.join(lines) + '\n' # will fail if ord(char) > 127
         return filestr
     except UnicodeDecodeError, e:
-        if "'ascii' codec can't decode" in e and 'position' in e:
-            pos = int(e.split('position')[1].split(':'))
-            print filestr[pos-50:pos], '[problematic char]', filestr[pos+1:pos+51]
+        if "'ascii' codec can't decode":
+            print '*** error: non-ascii character - rerun with --encoding=utf-8'
             _abort()
         else:
             print e
@@ -227,7 +239,7 @@ def online_python_tutor(code, return_tp='iframe'):
         url = url.replace('%', '\\%').replace('#', '\\#')
         return url
     else:
-        print 'BUG'; _abort()
+        raise ValueError('BUG!')
 
 def align2equations(filestr, format):
     """Turn align environments into separate equation environments."""

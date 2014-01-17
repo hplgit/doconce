@@ -5162,14 +5162,24 @@ def capitalize():
 
     cap_words = [
         'Celsius', 'Fahrenheit', 'Kelvin',
-        'Newton', 'Gauss', 'Legendre', 'Laguerre', 'Taylor', 'Einstein',
-        'Maxwell', 'Euler', 'Gaussian', 'Eulerian', 'Lagrange', 'Lagrangian',
-        'Heaviside',
-        'Python', 'IPython', 'Cython', 'Idle', 'NumPy', 'SciPy',
-        'Matplotlib',
+        'Fahrenheit-Celsius',
+        'Newton', 'Gauss', "Gauss'",
+        'Legendre', 'Lagrange',
+        'Laguerre', 'Taylor', 'Einstein',
+        'Maxwell', 'Euler', 'Gaussian', 'Eulerian', 'Lagrangian',
+        'Poisson',
+        'Heaviside', 'MATLAB', 'Matlab',
+        'Trapezoidal', "Simpson's", 'Monte', 'Carlo',
+        'ODE', 'PDE', 'Adams-Bashforth', 'Runge-Kutta', 'SIR', 'SIZR', 'SIRV',
+        'Python', 'IPython', 'Cython', 'Idle', 'NumPy', 'SciPy', 'SymPy',
+        'Matplotlib', 'None', '$N$',
         'Fortran', 'MATLAB', 'SWIG', 'Perl', 'Ruby',
-        'DNA',
+        'DNA', 'British', 'American',
+        'HTML', 'MSWord', 'OpenOffice',
+        'StringFunction', 'Vec2D', 'Vec3D', 'SciTools', 'Easyviz',
         ]
+    # This functionality is not well implemented so instead of finding
+    # a perfect solution we fix well-known special cases
     cap_words_fix = [
         ('exer. ref{', 'Exer. ref{'),
         ('exer. (_', 'Exer. (_'),  # latex2doconce external reference
@@ -5185,7 +5195,14 @@ def capitalize():
         (' 1d ', ' 1D '),
         (' 2d ', ' 2D '),
         (' 3d ', ' 3D '),
+        ('hello, world!', 'Hello, World!'),
+        ('hello world', 'Hello World'),
+        ('midpoint integration', 'Midpoint integration'),
+        ('midpoint rule', 'Midpoint rule'),
         ]
+    for name in 'Newton', 'Lagrange', 'Einstein', 'Poisson', 'Taylor', 'Gibb':
+        genetive = "'s"
+        cap_words_fix.append((name.lower()+genetive, name+genetive))
 
     if dictionary:
         f = open(dictionary, 'a')
@@ -5260,7 +5277,7 @@ def _capitalize(filestr, cap_words, cap_words_fix):
                 if word_stripped.lower() in cap_words_lower:
                     #print '        found',
                     try:
-                        i = cap_words_lower.index(word.lower())
+                        i = cap_words_lower.index(word_stripped.lower())
                         new_word = word.replace(word_stripped, cap_words[i])
                         new_title = new_title.replace(word, new_word)
                         #print 'as', cap_words[i]
@@ -5887,14 +5904,17 @@ def _latex2doconce(filestr):
             lines[i] = '# ' + lines[i].lstrip()[1:]
         if lines[i].startswith('@@@CODE'):
             # Translate ptex2tex CODE envir to doconce w/regex
-            words = lines[i].split()
+            words = lines[i].split(' ')  # preserve whitespace!
             new_line = ' '.join(words[:2])  # command filename, no space in name
             if len(words) > 2:
+                restline = ' '.join(words[2:])
                 new_line += ' fromto: '
-                from_, to_ = ' '.join(words[2:]).split('@')[:2]
-                from_, to_ = ' '.join(words[2:]).split('@')[:2]
-                new_line += re.escape(from_)  # regex in doconce
-                new_line += '@' + re.escape(to_)
+                if '@' in restline:
+                    from_, to_ = restline.split('@')[:2]
+                    new_line += re.escape(from_)  # regex in doconce
+                    new_line += '@' + re.escape(to_)
+                else:
+                    new_line += re.escape(restline) + '@'
                 new_line = new_line.replace(r'\ ', ' ').replace(r'\,', ',').replace(r'\:', ':')
             lines[i] = new_line
 
@@ -6122,6 +6142,7 @@ def _latex2doconce(filestr):
     filestr = filestr.replace(r'\_', '_')
     filestr = filestr.replace(r' -- ', ' - ')
     filestr = filestr.replace(r'}--ref', '}-ref')
+    filestr = filestr.replace(r'})--(ref', '})-(ref')
     filestr = filestr.replace(r'~', ' ')
     filestr = filestr.replace(r'\end{table}', '')
 

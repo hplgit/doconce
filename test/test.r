@@ -271,10 +271,12 @@ FIGURE: [testfigs/df_plot.png, width=800] This is a wikimedia figure file.
 FIGURE: [testfigs/df2s8765s_plot.png, width=200, frac=0.4]
 # #endif
 
-# Somewhat challenging heading with latex math, \t, \n, ? and parenthesis
 
 __Remark.__
 Movies are tested in separate file `movies.do.txt`.
+
+
+# Somewhat challenging heading with latex math, \t, \n, ? and parenthesis
 
 ===== The $\theta$ parameter (not $\nabla$?) =====
 label{decay:sec:theta}
@@ -1511,11 +1513,7 @@ $$
 
 \documentclass[%
 twoside,                 % oneside: electronic viewing, twoside: printing
-% #ifdef DOUBLE_SPACING
-draft,                   % or final
-% #else
-final,                   % or draft (marks overfull hboxes)
-% #endif
+final,                   % or draft (marks overfull hboxes, figures with paths)
 10pt]{article}
 
 % #elif LATEX_STYLE == "Springer_lncse"
@@ -1644,6 +1642,12 @@ final,                   % or draft (marks overfull hboxes)
 % #ifdef LINENUMBERS
 \usepackage[mathlines]{lineno}  % show line numbers
 \linenumbers
+% #endif
+
+% #ifdef LABELS_IN_MARGIN
+% Display labels for sections, equations, and citations in the margin
+\usepackage{showlabels}
+\showlabels{cite}
 % #endif
 
 % #ifdef DOUBLE_SPACING
@@ -2321,10 +2325,12 @@ Test URL as figure name:
 
 % Test wikimedia type of files that otherwise reside in subdirs
 
-% Somewhat challenging heading with latex math, \t, \n, ? and parenthesis
 
 \paragraph{Remark.}
 Movies are tested in separate file \code{movies.do.txt}.
+
+
+% Somewhat challenging heading with latex math, \t, \n, ? and parenthesis
 
 \subsection{The $\theta$ parameter (not $\nabla$?)}
 \label{decay:sec:theta}
@@ -3317,7 +3323,7 @@ in a separate document: \code{admon.do.txt}.
 
 \documentclass[%
 twoside,                 % oneside: electronic viewing, twoside: printing
-final,                   % or draft (marks overfull hboxes)
+final,                   % or draft (marks overfull hboxes, figures with paths)
 10pt]{article}
 
 
@@ -3383,6 +3389,12 @@ final,                   % or draft (marks overfull hboxes)
 \usepackage[mathlines]{lineno}  % show line numbers
 \linenumbers
 
+% Display labels for sections, equations, and citations in the margin
+\usepackage{showlabels}
+\showlabels{cite}
+
+\onehalfspacing    % from setspace package
+%\doublespacing
 
 % --- fancyhdr package for fancy headers ---
 \usepackage{fancyhdr}
@@ -3897,10 +3909,12 @@ Test URL as figure name:
 
 % Test wikimedia type of files that otherwise reside in subdirs
 
-% Somewhat challenging heading with latex math, \t, \n, ? and parenthesis
 
 \paragraph{Remark.}
 Movies are tested in separate file {\fontsize{10pt}{10pt}\Verb!movies.do.txt!}.
+
+
+% Somewhat challenging heading with latex math, \t, \n, ? and parenthesis
 
 \subsection{The $\theta$ parameter (not $\nabla$?)}
 \label{decay:sec:theta}
@@ -4914,7 +4928,7 @@ output in testdoc.tex
 
 \documentclass[%
 twoside,                 % oneside: electronic viewing, twoside: printing
-final,                   % or draft (marks overfull hboxes)
+final,                   % or draft (marks overfull hboxes, figures with paths)
 10pt]{article}
 
 
@@ -4971,6 +4985,7 @@ final,                   % or draft (marks overfull hboxes)
 % newcommands for typesetting inline (doconce) comments
 \newcommand{\shortinlinecomment}[3]{{\bf #1}: \emph{#2}}
 \newcommand{\longinlinecomment}[3]{{\bf #1}: \emph{#2}}
+
 
 
 
@@ -5427,10 +5442,12 @@ Test URL as figure name:
 
 % Test wikimedia type of files that otherwise reside in subdirs
 
-% Somewhat challenging heading with latex math, \t, \n, ? and parenthesis
 
 \paragraph{Remark.}
 Movies are tested in separate file \Verb!movies.do.txt!.
+
+
+% Somewhat challenging heading with latex math, \t, \n, ? and parenthesis
 
 \subsection{The $\theta$ parameter (not $\nabla$?)}
 \label{decay:sec:theta}
@@ -6744,11 +6761,13 @@ Test URL as figure name:
 .. Test wikimedia type of files that otherwise reside in subdirs
 
 
-.. Somewhat challenging heading with latex math, \t, \n, ? and parenthesis
-
 
 **Remark.**
 Movies are tested in separate file ``movies.do.txt``.
+
+
+.. Somewhat challenging heading with latex math, \t, \n, ? and parenthesis
+
 
 .. _decay:sec:theta:
 
@@ -8165,11 +8184,13 @@ Test URL as figure name:
 .. Test wikimedia type of files that otherwise reside in subdirs
 
 
-.. Somewhat challenging heading with latex math, \t, \n, ? and parenthesis
-
 
 **Remark.**
 Movies are tested in separate file ``movies.do.txt``.
+
+
+.. Somewhat challenging heading with latex math, \t, \n, ? and parenthesis
+
 
 .. _decay:sec:theta:
 
@@ -9706,9 +9727,11 @@ googlecode repository) and substitute the line above with the URL.
 
 <wiki:comment> Test wikimedia type of files that otherwise reside in subdirs </wiki:comment>
 
-<wiki:comment> Somewhat challenging heading with latex math, \t, \n, ? and parenthesis </wiki:comment>
 
 *Remark.* Movies are tested in separate file `movies.do.txt`.
+
+
+<wiki:comment> Somewhat challenging heading with latex math, \t, \n, ? and parenthesis </wiki:comment>
 
 ==== The `\theta` parameter (not `\nabla`?) ====
 
@@ -10829,10 +10852,12 @@ Test URL as figure name:
 [[File:Df2s8765s plot.png|frame|200,px|alt=Df2s8765s plot.png|<span title=""></span>]] <!-- not yet uploaded to common.wikimedia.org -->
 
 
-<!-- Somewhat challenging heading with latex math, \t, \n, ? and parenthesis -->
 
 ''Remark.''
 Movies are tested in separate file <code>movies.do.txt</code>.
+
+
+<!-- Somewhat challenging heading with latex math, \t, \n, ? and parenthesis -->
 
 ==== The <math>\theta</math> parameter (not <math>\nabla</math>?) ====
 
@@ -12060,9 +12085,11 @@ Test URL as figure name:
 
 <wiki:comment> Test wikimedia type of files that otherwise reside in subdirs </wiki:comment>
 
-<wiki:comment> Somewhat challenging heading with latex math, \t, \n, ? and parenthesis </wiki:comment>
 
 //Remark.// Movies are tested in separate file {{{movies.do.txt}}}.
+
+
+<wiki:comment> Somewhat challenging heading with latex math, \t, \n, ? and parenthesis </wiki:comment>
 
 == The {{{\theta}}} parameter (not {{{\nabla}}}?) ==
 
@@ -13164,6 +13191,8 @@ FIGURE: [https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png, w
 
 
 *Remark.* Movies are tested in separate file 'movies.do.txt'.
+
+
 
 The \theta parameter (not \nabla?)
 
@@ -14312,6 +14341,8 @@ FIGURE: [https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png, w
 
 
 I{Remark.} Movies are tested in separate file C{movies.do.txt}.
+
+
 
 The M{\theta} parameter (not M{\nabla}?)
 ----------------------------------------
@@ -15563,6 +15594,8 @@ FIGURE: [https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png, w
 
 *Remark.* Movies are tested in separate file movies.do.txt.
 
+
+
 The \theta parameter (not \nabla?)
 ----------------------------------
 
@@ -16797,9 +16830,11 @@ Test URL as figure name:
 
 <!-- Test wikimedia type of files that otherwise reside in subdirs -->
 
-<!-- Somewhat challenging heading with latex math, \t, \n, ? and parenthesis -->
 
 *Remark.* Movies are tested in separate file `movies.do.txt`.
+
+
+<!-- Somewhat challenging heading with latex math, \t, \n, ? and parenthesis -->
 
 ### The $\theta$ parameter (not $\nabla$?)
 
@@ -18296,9 +18331,11 @@ in a separate document: `admon.do.txt`.
       "\n",
       "<!-- Test wikimedia type of files that otherwise reside in subdirs -->\n",
       "\n",
-      "<!-- Somewhat challenging heading with latex math, \\t, \\n, ? and parenthesis -->\n",
       "\n",
       "*Remark.* Movies are tested in separate file `movies.do.txt`.\n",
+      "\n",
+      "\n",
+      "<!-- Somewhat challenging heading with latex math, \\t, \\n, ? and parenthesis -->\n",
       "\n",
       "### The $\\theta$ parameter (not $\\nabla$?)\n",
       "\n",
@@ -20520,9 +20557,10 @@ show()</code></pre>
 </div>
 <!-- Test wikimedia type of files that otherwise reside in subdirs -->
 
-<!-- Somewhat challenging heading with latex math, \t, \n, ? and parenthesis -->
 
 <p><em>Remark.</em> Movies are tested in separate file <code>movies.do.txt</code>.</p>
+<!-- Somewhat challenging heading with latex math, \t, \n, ? and parenthesis -->
+
 <h3 id="the-theta-parameter-not-nabla">The <span class="math">\(\theta\)</span> parameter (not <span class="math">\(\nabla\)</span>?)</h3>
 <p>Functions do not always need to be advanced, here is one involving <span class="math">\(\theta\)</span>:</p>
 <pre><code>def f(theta):
@@ -22440,11 +22478,7 @@ Inline math, \( a=b \), is the only math in this document.
 
 \documentclass[%
 twoside,                 % oneside: electronic viewing, twoside: printing
-% #ifdef DOUBLE_SPACING
-draft,                   % or final
-% #else
-final,                   % or draft (marks overfull hboxes)
-% #endif
+final,                   % or draft (marks overfull hboxes, figures with paths)
 chapterprefix=true,      % "Chapter" word at beginning of each chapter
 open=right               % start new chapters on odd-numbered pages
 10pt]{book}
@@ -24229,11 +24263,11 @@ Test URL as figure name:
 <!-- Test wikimedia type of files that otherwise reside in subdirs -->
 
 <p>
-<!-- Somewhat challenging heading with latex math, \t, \n, ? and parenthesis -->
-
-<p>
 <b>Remark.</b>
 Movies are tested in separate file <code>movies.do.txt</code>.
+
+<p>
+<!-- Somewhat challenging heading with latex math, \t, \n, ? and parenthesis -->
 
 <h3>The \( \theta \) parameter (not \( \nabla \)?) <a name="decay:sec:theta"></a></h3>
 
@@ -27675,11 +27709,11 @@ Test URL as figure name:
 <!-- Test wikimedia type of files that otherwise reside in subdirs -->
 
 <p>
-<!-- Somewhat challenging heading with latex math, \t, \n, ? and parenthesis -->
-
-<p>
 <b>Remark.</b>
 Movies are tested in separate file <code>movies.do.txt</code>.
+
+<p>
+<!-- Somewhat challenging heading with latex math, \t, \n, ? and parenthesis -->
 
 <h3>The \( \theta \) parameter (not \( \nabla \)?) <a name="decay:sec:theta"></a></h3>
 
@@ -28834,11 +28868,7 @@ in a separate document: <code>admon.do.txt</code>.
 
 \documentclass[%
 twoside,                 % oneside: electronic viewing, twoside: printing
-% #ifdef DOUBLE_SPACING
-draft,                   % or final
-% #else
-final,                   % or draft (marks overfull hboxes)
-% #endif
+final,                   % or draft (marks overfull hboxes, figures with paths)
 10pt]{article}
 
 % #elif LATEX_STYLE == "Springer_lncse"
@@ -28967,6 +28997,12 @@ final,                   % or draft (marks overfull hboxes)
 % #ifdef LINENUMBERS
 \usepackage[mathlines]{lineno}  % show line numbers
 \linenumbers
+% #endif
+
+% #ifdef LABELS_IN_MARGIN
+% Display labels for sections, equations, and citations in the margin
+\usepackage{showlabels}
+\showlabels{cite}
 % #endif
 
 % #ifdef DOUBLE_SPACING
@@ -29645,10 +29681,12 @@ Test URL as figure name:
 
 % Test wikimedia type of files that otherwise reside in subdirs
 
-% Somewhat challenging heading with latex math, \t, \n, ? and parenthesis
 
 \paragraph{Remark.}
 Movies are tested in separate file \code{movies.do.txt}.
+
+
+% Somewhat challenging heading with latex math, \t, \n, ? and parenthesis
 
 \paragraph{The $\theta$ parameter (not $\nabla$?).}
 \label{decay:sec:theta}
@@ -31069,7 +31107,7 @@ doconce replace --examples_as__exercises $ex testdoc.p.tex
 
 # A4PAPER trigger summary environment to be smaller paragraph
 # within the text (fine for proposals or articles).
-system ptex2tex -DMINTED -DLATEX_HEADING=titlepage -DA4PAPER -DTODONOTES -DLINENUMBERS -DCOLORED_TABLE_ROWS=blue -DFANCY_HEADER -DSECTION_HEADINGS=blue testdoc
+system ptex2tex -DMINTED -DLATEX_HEADING=titlepage -DA4PAPER -DTODONOTES -DLINENUMBERS -DCOLORED_TABLE_ROWS=blue -DFANCY_HEADER -DSECTION_HEADINGS=blue -DLABELS_IN_MARGIN -DDOUBLE_SPACING testdoc
 
 # test that pdflatex works
 system pdflatex -shell-escape testdoc
@@ -31213,6 +31251,14 @@ system doconce format pdflatex admon --latex_admon=$admon_tp
 doconce ptex2tex admon envir=minted
 cp admon.tex admon_${admon_tp}.tex
 system pdflatex -shell-escape admon_${admon_tp}
+echo "admon=$admon_tp"
+if [ -d latex_figs ]; then
+    echo "latex_figs:"
+    /bin/ls latex_figs
+else
+    echo "no latex_figs directory for this admon type"
+fi
+rm -rf latex_figs
 done
 
 system doconce format html admon --html_admon=lyx --html_style=blueish2
@@ -31245,13 +31291,16 @@ system doconce format mwiki admon
 cp admon.mwiki admon_mwiki.mwiki
 
 system doconce format plain admon
-cp admon.txt admon_plain.txt
+cp admon.txt admon_paragraph.txt
 
-cp -f admon_* admon_demo/
+cp -f admon_*.html admon_*.pdf admon_*.*wiki admon_*.txt admon_sphinx admon_demo/
 
 #google-chrome admon_*.html
 #for pdf in admon_*.pdf; do evince $pdf; done
 
+if [ -d latex_figs ]; then
+    echo "BUG: latex_figs was made by some non-latex format..."
+fi
 
 system doconce format pandoc github_md.do.txt --github_md
 
@@ -31295,7 +31344,7 @@ system doconce format plain movies
 # Status movies: everything works in html and sphinx, only href works
 # in latex, media9 is unreliable
 
-# Test encoding
+# Test encoding: guess and change
 system doconce guess_encoding encoding1.do.txt > tmp_encodings.txt
 cp encoding1.do.txt tmp1.do.txt
 system doconce change_encoding utf-8 latin1 tmp1.do.txt
@@ -31306,6 +31355,32 @@ system doconce guess_encoding encoding2.do.txt >> tmp_encodings.txt
 cp encoding1.do.txt tmp2.do.txt
 system doconce change_encoding utf-8 latin1 tmp2.do.txt
 doconce guess_encoding tmp2.do.txt >> tmp_encodings.txt
+
+# Handle encoding problems (and test debug output too)
+# Plain ASCII with Norwegian chars printed as is (and utf8 package mode)
+doconce format latex encoding3 --debug
+cp encoding3.p.tex encoding3.p.tex-ascii
+# Plain ASCII text with Norwegian chars coded as &#...;
+doconce format html encoding3 --no_pygments_html --debug
+cp encoding3.html encoding3.html-ascii
+cat _doconce_debugging.log >> encoding3.html-ascii
+
+# Plain ASCII with verbatim blocks with Norwegian chars
+doconce format latex encoding3 -DPREPROCESS  # preprocess handles utf-8
+cp encoding3.p.tex encoding3.p.tex-ascii-verb
+doconce format html encoding3 -DPREPROCESS  # html fails with utf-8 in !bc
+# Unicode with Norwegian chars in plain text and verbatim blocks
+doconce format html encoding3 -DPREPROCESS  --encoding=utf-8  --no_pygments_html --debug # Keeps Norwegian chars since output is in utf-8
+cp encoding3.html encoding3.html-ascii-verb
+cat _doconce_debugging.log >> encoding3.html-ascii-verb
+
+doconce format latex encoding3 -DMAKO  # mako fails due to Norwegian chars
+# Unicode with Norwegian chars in plain text and verbatim blocks
+doconce format latex encoding3 -DMAKO  --encoding=utf-8  # utf-8 and unicode
+cp encoding3.p.tex encoding3.p.tex-utf8
+doconce format html encoding3 -DMAKO  --encoding=utf-8  --no_pygments_html --debug
+cp encoding3.html encoding3.html-utf8
+cat _doconce_debugging.log >> encoding3.html-utf8
 
 # Test mako problems
 system doconce format html mako_test1 --no_pygments_html  # mako variable only, no % lines
@@ -31343,15 +31418,17 @@ doconce format sphinx tmp2
 doconce replace '../lib/doconce/doconce.py' '_static/doconce.py' tmp2.do.txt
 doconce replace 'two_media99' 'two_media' tmp2.do.txt
 doconce format html tmp2
+doconce replace '|--l---|---l---|' '|--l-------l---|' tmp2.do.txt
+doconce format html tmp2
 doconce replace '99x9.ogg' '.ogg' tmp2.do.txt
 doconce format html tmp2
 doconce subst -s -m '^!bsol.+?!esol' ''  tmp2.do.txt
 doconce format sphinx tmp2
 doconce subst -s -m '^!bhint.+?!ehint' ''  tmp2.do.txt
 doconce format sphinx tmp2
+doconce format pdflatex tmp2 --device=paper
+# Remedy: drop paper and rewrite, just run electronic
 doconce format pdflatex tmp2
-doconce format pdflatex tmp2
-doconce format sphinx tmp2
 #doconce replace '# Comment before math is ok' '' tmp2.do.txt
 echo
 echo "When we reach this point in the script,"
@@ -32261,11 +32338,7 @@ v(t) - 1 &amp;=&amp; \frac{du}{dt} \label{eq3c}
 
 \documentclass[%
 twoside,                 % oneside: electronic viewing, twoside: printing
-% #ifdef DOUBLE_SPACING
-draft,                   % or final
-% #else
-final,                   % or draft (marks overfull hboxes)
-% #endif
+final,                   % or draft (marks overfull hboxes, figures with paths)
 10pt]{article}
 
 % #elif LATEX_STYLE == "Springer_lncse"
@@ -34293,11 +34366,11 @@ Test URL as figure name:
 <!-- Test wikimedia type of files that otherwise reside in subdirs -->
 
 <p>
-<!-- Somewhat challenging heading with latex math, \t, \n, ? and parenthesis -->
-
-<p>
 <b>Remark.</b>
 Movies are tested in separate file <code>movies.do.txt</code>.
+
+<p>
+<!-- Somewhat challenging heading with latex math, \t, \n, ? and parenthesis -->
 
 <h3>The \( \theta \) parameter (not \( \nabla \)?) <a name="decay:sec:theta"></a></h3>
 
@@ -36110,11 +36183,13 @@ Test URL as figure name:
 .. Test wikimedia type of files that otherwise reside in subdirs
 
 
-.. Somewhat challenging heading with latex math, \t, \n, ? and parenthesis
-
 
 **Remark.**
 Movies are tested in separate file ``movies.do.txt``.
+
+
+.. Somewhat challenging heading with latex math, \t, \n, ? and parenthesis
+
 
 .. _decay:sec:theta:
 
@@ -37386,11 +37461,7 @@ in a separate document: ``admon.do.txt``.
 
 \documentclass[%
 twoside,                 % oneside: electronic viewing, twoside: printing
-% #ifdef DOUBLE_SPACING
-draft,                   % or final
-% #else
-final,                   % or draft (marks overfull hboxes)
-% #endif
+final,                   % or draft (marks overfull hboxes, figures with paths)
 10pt]{article}
 
 % #elif LATEX_STYLE == "Springer_lncse"
@@ -38212,7 +38283,7 @@ exercises (and problems and projects too).
 
 \documentclass[%
 twoside,                 % oneside: electronic viewing, twoside: printing
-final,                   % or draft (marks overfull hboxes)
+final,                   % or draft (marks overfull hboxes, figures with paths)
 10pt]{article}
 
 
@@ -38799,7 +38870,7 @@ exercises (and problems and projects too).
 
 \documentclass[%
 twoside,                 % oneside: electronic viewing, twoside: printing
-final,                   % or draft (marks overfull hboxes)
+final,                   % or draft (marks overfull hboxes, figures with paths)
 10pt]{article}
 
 
@@ -39393,7 +39464,7 @@ exercises (and problems and projects too).
 
 \documentclass[%
 twoside,                 % oneside: electronic viewing, twoside: printing
-final,                   % or draft (marks overfull hboxes)
+final,                   % or draft (marks overfull hboxes, figures with paths)
 10pt]{article}
 
 
@@ -39909,7 +39980,7 @@ exercises (and problems and projects too).
 
 \documentclass[%
 twoside,                 % oneside: electronic viewing, twoside: printing
-final,                   % or draft (marks overfull hboxes)
+final,                   % or draft (marks overfull hboxes, figures with paths)
 10pt]{article}
 
 
@@ -40459,7 +40530,7 @@ exercises (and problems and projects too).
 
 \documentclass[%
 twoside,                 % oneside: electronic viewing, twoside: printing
-final,                   % or draft (marks overfull hboxes)
+final,                   % or draft (marks overfull hboxes, figures with paths)
 10pt]{article}
 
 
@@ -40530,7 +40601,7 @@ final,                   % or draft (marks overfull hboxes)
 \noindent
 \begin{wrapfigure}{l}{0.07\textwidth}
 \vspace{-13pt}
-\includegraphics[width=0.07\textwidth]{latex_figs/small_gray_notice.pdf}
+\includegraphics[width=0.07\textwidth]{latex_figs/small_gray_notice}
 \end{wrapfigure} \textbf{#1}\par
 \nobreak\noindent\ignorespaces
 }
@@ -40550,7 +40621,7 @@ final,                   % or draft (marks overfull hboxes)
 \noindent
 \begin{wrapfigure}{l}{0.07\textwidth}
 \vspace{-13pt}
-\includegraphics[width=0.07\textwidth]{latex_figs/small_gray_summary.pdf}
+\includegraphics[width=0.07\textwidth]{latex_figs/small_gray_summary}
 \end{wrapfigure} \textbf{#1}\par
 \nobreak\noindent\ignorespaces
 }
@@ -40570,7 +40641,7 @@ final,                   % or draft (marks overfull hboxes)
 \noindent
 \begin{wrapfigure}{l}{0.07\textwidth}
 \vspace{-13pt}
-\includegraphics[width=0.07\textwidth]{latex_figs/small_gray_warning.pdf}
+\includegraphics[width=0.07\textwidth]{latex_figs/small_gray_warning}
 \end{wrapfigure} \textbf{#1}\par
 \nobreak\noindent\ignorespaces
 }
@@ -40590,7 +40661,7 @@ final,                   % or draft (marks overfull hboxes)
 \noindent
 \begin{wrapfigure}{l}{0.07\textwidth}
 \vspace{-13pt}
-\includegraphics[width=0.07\textwidth]{latex_figs/small_gray_question2.pdf}
+\includegraphics[width=0.07\textwidth]{latex_figs/small_gray_question2}
 \end{wrapfigure} \textbf{#1}\par
 \nobreak\noindent\ignorespaces
 }
@@ -41053,7 +41124,7 @@ exercises (and problems and projects too).
 
 \documentclass[%
 twoside,                 % oneside: electronic viewing, twoside: printing
-final,                   % or draft (marks overfull hboxes)
+final,                   % or draft (marks overfull hboxes, figures with paths)
 10pt]{article}
 
 
@@ -41552,7 +41623,7 @@ exercises (and problems and projects too).
 
 \documentclass[%
 twoside,                 % oneside: electronic viewing, twoside: printing
-final,                   % or draft (marks overfull hboxes)
+final,                   % or draft (marks overfull hboxes, figures with paths)
 10pt]{article}
 
 
@@ -41623,7 +41694,7 @@ final,                   % or draft (marks overfull hboxes)
 \noindent
 \begin{wrapfigure}{l}{0.07\textwidth}
 \vspace{-13pt}
-\includegraphics[width=0.07\textwidth]{latex_figs/small_yellow_notice.pdf}
+\includegraphics[width=0.07\textwidth]{latex_figs/small_yellow_notice}
 \end{wrapfigure} \textbf{#1}\par
 \nobreak\noindent\ignorespaces
 }
@@ -41643,7 +41714,7 @@ final,                   % or draft (marks overfull hboxes)
 \noindent
 \begin{wrapfigure}{l}{0.07\textwidth}
 \vspace{-13pt}
-\includegraphics[width=0.07\textwidth]{latex_figs/small_yellow_summary.pdf}
+\includegraphics[width=0.07\textwidth]{latex_figs/small_yellow_summary}
 \end{wrapfigure} \textbf{#1}\par
 \nobreak\noindent\ignorespaces
 }
@@ -41663,7 +41734,7 @@ final,                   % or draft (marks overfull hboxes)
 \noindent
 \begin{wrapfigure}{l}{0.07\textwidth}
 \vspace{-13pt}
-\includegraphics[width=0.07\textwidth]{latex_figs/small_yellow_warning.pdf}
+\includegraphics[width=0.07\textwidth]{latex_figs/small_yellow_warning}
 \end{wrapfigure} \textbf{#1}\par
 \nobreak\noindent\ignorespaces
 }
@@ -41683,7 +41754,7 @@ final,                   % or draft (marks overfull hboxes)
 \noindent
 \begin{wrapfigure}{l}{0.07\textwidth}
 \vspace{-13pt}
-\includegraphics[width=0.07\textwidth]{latex_figs/small_yellow_question.pdf}
+\includegraphics[width=0.07\textwidth]{latex_figs/small_yellow_question}
 \end{wrapfigure} \textbf{#1}\par
 \nobreak\noindent\ignorespaces
 }
@@ -46727,7 +46798,7 @@ just because we can.
 The ``remarks`` and ``hint`` environments are not allowed outside
 exercises (and problems and projects too).
 
-************** File: admon.txt *****************
+************** File: admon_paragraph.txt *****************
 Testing admons
 ==============
 
@@ -53784,11 +53855,7 @@ vertical-slide.scss
 
 \documentclass[%
 twoside,                 % oneside: electronic viewing, twoside: printing
-% #ifdef DOUBLE_SPACING
-draft,                   % or final
-% #else
-final,                   % or draft (marks overfull hboxes)
-% #endif
+final,                   % or draft (marks overfull hboxes, figures with paths)
 10pt]{article}
 
 % #elif LATEX_STYLE == "Springer_lncse"
@@ -53917,6 +53984,12 @@ final,                   % or draft (marks overfull hboxes)
 % #ifdef LINENUMBERS
 \usepackage[mathlines]{lineno}  % show line numbers
 \linenumbers
+% #endif
+
+% #ifdef LABELS_IN_MARGIN
+% Display labels for sections, equations, and citations in the margin
+\usepackage{showlabels}
+\showlabels{cite}
 % #endif
 
 % #ifdef DOUBLE_SPACING
@@ -56582,11 +56655,7 @@ Reveal.initialize({
 
 \documentclass[%
 twoside,                 % oneside: electronic viewing, twoside: printing
-% #ifdef DOUBLE_SPACING
-draft,                   % or final
-% #else
-final,                   % or draft (marks overfull hboxes)
-% #endif
+final,                   % or draft (marks overfull hboxes, figures with paths)
 chapterprefix=true,      % "Chapter" word at beginning of each chapter
 open=right               % start new chapters on odd-numbered pages
 10pt]{book}
@@ -59506,11 +59575,7 @@ Reveal.initialize({
 
 \documentclass[%
 twoside,                 % oneside: electronic viewing, twoside: printing
-% #ifdef DOUBLE_SPACING
-draft,                   % or final
-% #else
-final,                   % or draft (marks overfull hboxes)
-% #endif
+final,                   % or draft (marks overfull hboxes, figures with paths)
 10pt]{article}
 
 % #elif LATEX_STYLE == "Springer_lncse"
@@ -62063,11 +62128,7 @@ Finally, let us demonstrate referencing the movie <a href="#mov:wave">mov:wave</
 
 \documentclass[%
 twoside,                 % oneside: electronic viewing, twoside: printing
-% #ifdef DOUBLE_SPACING
-draft,                   % or final
-% #else
-final,                   % or draft (marks overfull hboxes)
-% #endif
+final,                   % or draft (marks overfull hboxes, figures with paths)
 10pt]{article}
 
 % #elif LATEX_STYLE == "Springer_lncse"
@@ -62880,7 +62941,7 @@ Finally, let us demonstrate referencing the movie~\ref{mov:wave}.
 
 \documentclass[%
 twoside,                 % oneside: electronic viewing, twoside: printing
-final,                   % or draft (marks overfull hboxes)
+final,                   % or draft (marks overfull hboxes, figures with paths)
 10pt]{article}
 
 
@@ -63284,7 +63345,7 @@ Finally, let us demonstrate referencing the movie~\ref{mov:wave}.
 
 \documentclass[%
 twoside,                 % oneside: electronic viewing, twoside: printing
-final,                   % or draft (marks overfull hboxes)
+final,                   % or draft (marks overfull hboxes, figures with paths)
 10pt]{article}
 
 
@@ -64359,6 +64420,1889 @@ function faster_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame
 
 </body>
 </html>
+
+************** File: encoding3.do.txt *****************
+## Test of handling non-ASCII characters in Doconce
+Text with a name like Åsmund Ødegård works in general.
+# #ifdef PREPROCESS
+Verbatim blocks with non-ASCII text does not work for HTML, but it works
+for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
+
+!bc
+a = 1  # Value suggested by Åsmund Ødegård.
+!ec
+# #endif
+
+# #ifdef MAKO
+## trigger Mako through the FORMAT variable...
+This block (in format ${FORMAT})
+triggers use of `mako`. For all formats, `mako` has
+problem with non-ASCII characters anywhere in the text. The remedy
+for all formats is to read the file with UTF-8 encoding. With --debug
+one can see the internal str/unicode representation of the text
+through the various stages of the text transformation process.
+
+## Mako fails whether plain text or verbatim block:
+$b = 1$ is a value suggested by Åsmund Ødegård.
+# #endif
+
+
+************** File: encoding3.p.tex-ascii *****************
+
+% ------------------- main content ----------------------
+
+Text with a name like Åsmund Ødegård works in general.
+
+
+
+% ------------------- end of main content ---------------
+
+
+************** File: encoding3.html-ascii *****************
+
+<!-- tocinfo
+{'highest level': 4, 'sections': []}
+end of tocinfo -->
+
+
+<!-- ------------------- main content ---------------------- -->
+
+Text with a name like &#197;smund &#216;deg&#229;rd works in general.
+
+<p>
+
+<!-- ------------------- end of main content --------------- -->
+
+
+    This is a log file for the doconce script.
+    Debugging is turned on by the command-line argument '--debug'
+    to doconce format. Without that command-line argument,
+    this file is not produced.
+
+    
+
+******* output format: html *******
+
+
+
+
+Found use of 2 preprocess directives # #if|define|include in file encoding3.do.txt
+
+
+
+************************************************************
+str>>> The file after running preprocess and/or mako:
+
+## Test of handling non-ASCII characters in Doconce
+Text with a name like Åsmund Ødegård works in general.
+
+
+
+
+************************************************************
+str>>> The file after running @@@OSCMD (from file):
+
+## Test of handling non-ASCII characters in Doconce
+Text with a name like Åsmund Ødegård works in general.
+
+
+
+
+************************************************************
+str>>> The file after inserting @@@CODE (from file):
+
+## Test of handling non-ASCII characters in Doconce
+Text with a name like Åsmund Ødegård works in general.
+
+
+
+
+************************************************************
+str>>> The file after removal of code/tex blocks:
+
+## Test of handling non-ASCII characters in Doconce
+Text with a name like Åsmund Ødegård works in general.
+
+
+
+
+************************************************************
+str>>> The code blocks:
+
+[]
+
+************************************************************
+str>>> The code block types:
+
+[]
+
+************************************************************
+str>>> The tex blocks:
+
+[]
+
+************************************************************
+unicode>>> The file after handling ref and label cross referencing:
+
+Text with a name like &#197;smund &#216;deg&#229;rd works in general.
+
+
+
+************************************************************
+unicode>>> The file after handling index and bibliography:
+
+Text with a name like &#197;smund &#216;deg&#229;rd works in general.
+
+
+*** List typesetting phase + comments and blank lines ***
+
+
+
+------------------------
+source line=[Text with a name like &#197;smund &#216;deg&#229;rd works in general.]
+
+
+  > indent=0 (previous indent=0), keyword=[None], text=[Text with a name like &#197;smund &#216;deg&#229;rd works in general.]
+
+
+  > This line belongs to the previous block since it has the same indent (0 blanks)
+
+
+  > This line is some ordinary line, no special list syntax involved
+
+
+text=[Text with a name like &#197;smund &#216;deg&#229;rd works in general.]
+
+
+
+------------------------
+source line=[]
+
+
+  > This is a blank line
+
+
+
+************************************************************
+unicode>>> The file after typesetting of lists:
+
+Text with a name like &#197;smund &#216;deg&#229;rd works in general.
+
+<p>
+
+
+************************************************************
+unicode>>> The file after adding space around | in tables:
+
+Text with a name like &#197;smund &#216;deg&#229;rd works in general.
+
+<p>
+
+
+*** Dealing with authors and institutions ***
+
+
+
+*** Inline tags substitution phase ***
+
+
+
+*************** Working with tag "title"
+
+
+
+*************** Working with tag "date"
+
+
+
+*************** Working with tag "movie"
+
+
+
+*************** Working with tag "abstract"
+
+
+
+*************** Working with tag "emphasize"
+
+
+
+*************** Working with tag "math2"
+
+
+
+*************** Working with tag "math"
+
+
+
+*************** Working with tag "chapter"
+
+
+
+*************** Working with tag "section"
+
+
+
+*************** Working with tag "subsection"
+
+
+
+*************** Working with tag "subsubsection"
+
+
+
+*************** Working with tag "bold"
+
+
+
+*************** Working with tag "inlinecomment"
+
+
+
+*************** Working with tag "colortext"
+
+
+
+*************** Working with tag "verbatim"
+
+
+
+*************** Working with tag "paragraph"
+
+
+
+*************** Working with tag "plainURL"
+
+
+
+*************** Working with tag "linkURL2v"
+
+
+
+*************** Working with tag "linkURL3v"
+
+
+
+*************** Working with tag "linkURL2"
+
+
+
+*************** Working with tag "linkURL3"
+
+
+
+*************** Working with tag "linkURL"
+
+
+
+************************************************************
+unicode>>> The file after all inline substitutions:
+
+Text with a name like &#197;smund &#216;deg&#229;rd works in general.
+
+<p>
+
+
+************************************************************
+unicode>>> The file after typesetting of tables:
+
+Text with a name like &#197;smund &#216;deg&#229;rd works in general.
+
+<p>
+
+
+************************************************************
+unicode>>> The file after commenting out !split, !bpop, !epop, !bslidecell, !eslidecell, !bnotes, !enotes:
+
+Text with a name like &#197;smund &#216;deg&#229;rd works in general.
+
+<p>
+
+
+************************************************************
+unicode>>> File before call to insert_code_and_tex (format html):
+
+
+<!-- ------------------- main content ---------------------- -->
+
+Text with a name like &#197;smund &#216;deg&#229;rd works in general.
+
+<p>
+
+<!-- ------------------- end of main content --------------- -->
+
+
+************************************************************
+unicode>>> File after call to isnert_code_and tex (format html):
+
+
+<!-- ------------------- main content ---------------------- -->
+
+Text with a name like &#197;smund &#216;deg&#229;rd works in general.
+
+<p>
+
+<!-- ------------------- end of main content --------------- -->
+
+
+************************************************************
+unicode>>> The file after inserting intro/outro and tex/code blocks, and fixing last format-specific issues:
+
+
+<!-- tocinfo
+{'highest level': 4, 'sections': []}
+end of tocinfo -->
+
+
+<!-- ------------------- main content ---------------------- -->
+
+Text with a name like &#197;smund &#216;deg&#229;rd works in general.
+
+<p>
+
+<!-- ------------------- end of main content --------------- -->
+
+
+
+************************************************************
+unicode>>> The file after typesetting of admons and the rest of the !b/!e environments:
+
+
+<!-- tocinfo
+{'highest level': 4, 'sections': []}
+end of tocinfo -->
+
+
+<!-- ------------------- main content ---------------------- -->
+
+Text with a name like &#197;smund &#216;deg&#229;rd works in general.
+
+<p>
+
+<!-- ------------------- end of main content --------------- -->
+
+
+
+************************************************************
+unicode>>> The file after removal of solutions, answers, notes, hints, etc.:
+
+
+<!-- tocinfo
+{'highest level': 4, 'sections': []}
+end of tocinfo -->
+
+
+<!-- ------------------- main content ---------------------- -->
+
+Text with a name like &#197;smund &#216;deg&#229;rd works in general.
+
+<p>
+
+<!-- ------------------- end of main content --------------- -->
+
+
+
+************************************************************
+unicode>>> The file after replacing |bc and |bt environments by true !bt and !et (in code blocks):
+
+
+<!-- tocinfo
+{'highest level': 4, 'sections': []}
+end of tocinfo -->
+
+
+<!-- ------------------- main content ---------------------- -->
+
+Text with a name like &#197;smund &#216;deg&#229;rd works in general.
+
+<p>
+
+<!-- ------------------- end of main content --------------- -->
+
+
+
+************** File: encoding3.p.tex-ascii-verb *****************
+
+% ------------------- main content ----------------------
+
+Text with a name like Åsmund Ødegård works in general.
+Verbatim blocks with non-ASCII text does not work for HTML, but it works
+for {\LaTeX}. The remedy for HTML is to read the file with UTF-8 encoding.
+
+\bccq
+a = 1  # Value suggested by Åsmund Ødegård.
+\eccq
+
+
+
+% ------------------- end of main content ---------------
+
+
+************** File: encoding3.html-ascii-verb *****************
+
+<!-- tocinfo
+{'highest level': 4, 'sections': []}
+end of tocinfo -->
+
+
+<!-- ------------------- main content ---------------------- -->
+
+Text with a name like Åsmund Ødegård works in general.
+Verbatim blocks with non-ASCII text does not work for HTML, but it works
+for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
+
+<p>
+<!-- begin verbatim block -->
+<pre><code>a = 1  # Value suggested by Åsmund Ødegård.
+</code></pre>
+<!-- end verbatim block -->
+
+<p>
+
+<!-- ------------------- end of main content --------------- -->
+
+
+    This is a log file for the doconce script.
+    Debugging is turned on by the command-line argument '--debug'
+    to doconce format. Without that command-line argument,
+    this file is not produced.
+
+    
+
+******* output format: html *******
+
+
+
+
+Found use of 2 preprocess directives # #if|define|include in file encoding3.do.txt
+
+
+
+************************************************************
+unicode>>> The file after running preprocess and/or mako:
+
+## Test of handling non-ASCII characters in Doconce
+Text with a name like Åsmund Ødegård works in general.
+Verbatim blocks with non-ASCII text does not work for HTML, but it works
+for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
+
+!bc
+a = 1  # Value suggested by Åsmund Ødegård.
+!ec
+
+
+
+
+************************************************************
+unicode>>> The file after running @@@OSCMD (from file):
+
+## Test of handling non-ASCII characters in Doconce
+Text with a name like Åsmund Ødegård works in general.
+Verbatim blocks with non-ASCII text does not work for HTML, but it works
+for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
+
+!bc
+a = 1  # Value suggested by Åsmund Ødegård.
+!ec
+
+
+
+
+************************************************************
+unicode>>> The file after inserting @@@CODE (from file):
+
+## Test of handling non-ASCII characters in Doconce
+Text with a name like Åsmund Ødegård works in general.
+Verbatim blocks with non-ASCII text does not work for HTML, but it works
+for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
+
+!bc
+a = 1  # Value suggested by Åsmund Ødegård.
+!ec
+
+
+
+
+************************************************************
+unicode>>> The file after removal of code/tex blocks:
+
+## Test of handling non-ASCII characters in Doconce
+Text with a name like Åsmund Ødegård works in general.
+Verbatim blocks with non-ASCII text does not work for HTML, but it works
+for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
+
+0 <<<!!CODE_BLOCK 
+
+
+
+
+************************************************************
+unicode>>> The code blocks:
+
+[u'a = 1  # Value suggested by \xc5smund \xd8deg\xe5rd.\n']
+
+************************************************************
+unicode>>> The code block types:
+
+[u'']
+
+************************************************************
+unicode>>> The tex blocks:
+
+[]
+
+************************************************************
+unicode>>> The file after handling ref and label cross referencing:
+
+Text with a name like Åsmund Ødegård works in general.
+Verbatim blocks with non-ASCII text does not work for HTML, but it works
+for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
+
+0 <<<!!CODE_BLOCK 
+
+
+
+************************************************************
+unicode>>> The file after handling index and bibliography:
+
+Text with a name like Åsmund Ødegård works in general.
+Verbatim blocks with non-ASCII text does not work for HTML, but it works
+for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
+
+0 <<<!!CODE_BLOCK 
+
+
+*** List typesetting phase + comments and blank lines ***
+
+
+
+------------------------
+source line=[Text with a name like Åsmund Ødegård works in general.]
+
+
+  > indent=0 (previous indent=0), keyword=[None], text=[Text with a name like Åsmund Ødegård works in general.]
+
+
+  > This line belongs to the previous block since it has the same indent (0 blanks)
+
+
+  > This line is some ordinary line, no special list syntax involved
+
+
+text=[Text with a name like Åsmund Ødegård works in general.]
+
+
+
+------------------------
+source line=[Verbatim blocks with non-ASCII text does not work for HTML, but it works]
+
+
+  > indent=0 (previous indent=0), keyword=[None], text=[Verbatim blocks with non-ASCII text does not work for HTML, but it works]
+
+
+  > This line belongs to the previous block since it has the same indent (0 blanks)
+
+
+  > This line is some ordinary line, no special list syntax involved
+
+
+text=[Verbatim blocks with non-ASCII text does not work for HTML, but it works]
+
+
+
+------------------------
+source line=[for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.]
+
+
+  > indent=0 (previous indent=0), keyword=[None], text=[for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.]
+
+
+  > This line belongs to the previous block since it has the same indent (0 blanks)
+
+
+  > This line is some ordinary line, no special list syntax involved
+
+
+text=[for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.]
+
+
+
+------------------------
+source line=[]
+
+
+  > This is a blank line
+
+
+
+------------------------
+source line=[0 <<<!!CODE_BLOCK ]
+
+
+  > indent=0 (previous indent=0), keyword=[None], text=[0 <<<!!CODE_BLOCK ]
+
+
+  > This line belongs to the previous block since it has the same indent (0 blanks)
+
+
+  > This line is some ordinary line, no special list syntax involved
+
+
+text=[0 <<<!!CODE_BLOCK ]
+
+
+
+------------------------
+source line=[]
+
+
+  > This is a blank line
+
+
+
+************************************************************
+unicode>>> The file after typesetting of lists:
+
+Text with a name like Åsmund Ødegård works in general.
+Verbatim blocks with non-ASCII text does not work for HTML, but it works
+for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
+
+<p>
+0 <<<!!CODE_BLOCK 
+
+<p>
+
+
+************************************************************
+unicode>>> The file after adding space around | in tables:
+
+Text with a name like Åsmund Ødegård works in general.
+Verbatim blocks with non-ASCII text does not work for HTML, but it works
+for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
+
+<p>
+0 <<<!!CODE_BLOCK 
+
+<p>
+
+
+*** Dealing with authors and institutions ***
+
+
+
+*** Inline tags substitution phase ***
+
+
+
+*************** Working with tag "title"
+
+
+
+*************** Working with tag "date"
+
+
+
+*************** Working with tag "movie"
+
+
+
+*************** Working with tag "abstract"
+
+
+
+*************** Working with tag "emphasize"
+
+
+
+*************** Working with tag "math2"
+
+
+
+*************** Working with tag "math"
+
+
+
+*************** Working with tag "chapter"
+
+
+
+*************** Working with tag "section"
+
+
+
+*************** Working with tag "subsection"
+
+
+
+*************** Working with tag "subsubsection"
+
+
+
+*************** Working with tag "bold"
+
+
+
+*************** Working with tag "inlinecomment"
+
+
+
+*************** Working with tag "colortext"
+
+
+
+*************** Working with tag "verbatim"
+
+
+
+*************** Working with tag "paragraph"
+
+
+
+*************** Working with tag "plainURL"
+
+
+
+*************** Working with tag "linkURL2v"
+
+
+
+*************** Working with tag "linkURL3v"
+
+
+
+*************** Working with tag "linkURL2"
+
+
+
+*************** Working with tag "linkURL3"
+
+
+
+*************** Working with tag "linkURL"
+
+
+
+************************************************************
+unicode>>> The file after all inline substitutions:
+
+Text with a name like Åsmund Ødegård works in general.
+Verbatim blocks with non-ASCII text does not work for HTML, but it works
+for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
+
+<p>
+0 <<<!!CODE_BLOCK 
+
+<p>
+
+
+************************************************************
+unicode>>> The file after typesetting of tables:
+
+Text with a name like Åsmund Ødegård works in general.
+Verbatim blocks with non-ASCII text does not work for HTML, but it works
+for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
+
+<p>
+0 <<<!!CODE_BLOCK 
+
+<p>
+
+
+************************************************************
+unicode>>> The file after commenting out !split, !bpop, !epop, !bslidecell, !eslidecell, !bnotes, !enotes:
+
+Text with a name like Åsmund Ødegård works in general.
+Verbatim blocks with non-ASCII text does not work for HTML, but it works
+for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
+
+<p>
+0 <<<!!CODE_BLOCK 
+
+<p>
+
+
+************************************************************
+unicode>>> File before call to insert_code_and_tex (format html):
+
+
+<!-- ------------------- main content ---------------------- -->
+
+Text with a name like Åsmund Ødegård works in general.
+Verbatim blocks with non-ASCII text does not work for HTML, but it works
+for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
+
+<p>
+0 <<<!!CODE_BLOCK 
+
+<p>
+
+<!-- ------------------- end of main content --------------- -->
+
+
+************************************************************
+unicode>>> File after call to isnert_code_and tex (format html):
+
+
+<!-- ------------------- main content ---------------------- -->
+
+Text with a name like Åsmund Ødegård works in general.
+Verbatim blocks with non-ASCII text does not work for HTML, but it works
+for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
+
+<p>
+!bc
+a = 1  # Value suggested by Åsmund Ødegård.
+!ec
+
+<p>
+
+<!-- ------------------- end of main content --------------- -->
+
+
+************************************************************
+unicode>>> The file after inserting intro/outro and tex/code blocks, and fixing last format-specific issues:
+
+
+<!-- tocinfo
+{'highest level': 4, 'sections': []}
+end of tocinfo -->
+
+
+<!-- ------------------- main content ---------------------- -->
+
+Text with a name like Åsmund Ødegård works in general.
+Verbatim blocks with non-ASCII text does not work for HTML, but it works
+for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
+
+<p>
+<!-- begin verbatim block -->
+<pre><code>a = 1  # Value suggested by Åsmund Ødegård.
+</code></pre>
+<!-- end verbatim block -->
+
+<p>
+
+<!-- ------------------- end of main content --------------- -->
+
+
+
+************************************************************
+unicode>>> The file after typesetting of admons and the rest of the !b/!e environments:
+
+
+<!-- tocinfo
+{'highest level': 4, 'sections': []}
+end of tocinfo -->
+
+
+<!-- ------------------- main content ---------------------- -->
+
+Text with a name like Åsmund Ødegård works in general.
+Verbatim blocks with non-ASCII text does not work for HTML, but it works
+for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
+
+<p>
+<!-- begin verbatim block -->
+<pre><code>a = 1  # Value suggested by Åsmund Ødegård.
+</code></pre>
+<!-- end verbatim block -->
+
+<p>
+
+<!-- ------------------- end of main content --------------- -->
+
+
+
+************************************************************
+unicode>>> The file after removal of solutions, answers, notes, hints, etc.:
+
+
+<!-- tocinfo
+{'highest level': 4, 'sections': []}
+end of tocinfo -->
+
+
+<!-- ------------------- main content ---------------------- -->
+
+Text with a name like Åsmund Ødegård works in general.
+Verbatim blocks with non-ASCII text does not work for HTML, but it works
+for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
+
+<p>
+<!-- begin verbatim block -->
+<pre><code>a = 1  # Value suggested by Åsmund Ødegård.
+</code></pre>
+<!-- end verbatim block -->
+
+<p>
+
+<!-- ------------------- end of main content --------------- -->
+
+
+
+************************************************************
+unicode>>> The file after replacing |bc and |bt environments by true !bt and !et (in code blocks):
+
+
+<!-- tocinfo
+{'highest level': 4, 'sections': []}
+end of tocinfo -->
+
+
+<!-- ------------------- main content ---------------------- -->
+
+Text with a name like Åsmund Ødegård works in general.
+Verbatim blocks with non-ASCII text does not work for HTML, but it works
+for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
+
+<p>
+<!-- begin verbatim block -->
+<pre><code>a = 1  # Value suggested by Åsmund Ødegård.
+</code></pre>
+<!-- end verbatim block -->
+
+<p>
+
+<!-- ------------------- end of main content --------------- -->
+
+
+
+************** File: encoding3.p.tex-utf8 *****************
+
+% ------------------- main content ----------------------
+
+Text with a name like Åsmund Ødegård works in general.
+
+This block (in format latex)
+triggers use of \code{mako}. For all formats, \code{mako} has
+problem with non-ASCII characters anywhere in the text. The remedy
+for all formats is to read the file with UTF-8 encoding. With --debug
+one can see the internal str/unicode representation of the text
+through the various stages of the text transformation process.
+
+$b = 1$ is a value suggested by Åsmund Ødegård.
+
+
+% ------------------- end of main content ---------------
+
+
+************** File: encoding3.html-utf8 *****************
+
+<!-- tocinfo
+{'highest level': 4, 'sections': []}
+end of tocinfo -->
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "AMS"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+
+<!-- newcommands_bfmath.tex -->
+$$
+\renewcommand{\u}{\pmb{u}}
+
+\newcommand{\xbm}{\boldsymbol{x}}
+\newcommand{\normalvecbm}{\boldsymbol{n}}
+\newcommand{\ubm}{\boldsymbol{u}}
+$$
+
+
+<!-- newcommands_replace.tex -->
+$$
+\newcommand{\x}{\pmb{x}}
+\newcommand{\normalvec}{\pmb{n}}
+\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
+\newcommand{\halfi}{1/2}
+\newcommand{\half}{\frac{1}{2}}
+\newcommand{\report}{test report}
+$$
+
+
+
+
+<!-- ------------------- main content ---------------------- -->
+
+Text with a name like Åsmund Ødegård works in general.
+
+<p>
+This block (in format html)
+triggers use of <code>mako</code>. For all formats, <code>mako</code> has
+problem with non-ASCII characters anywhere in the text. The remedy
+for all formats is to read the file with UTF-8 encoding. With --debug
+one can see the internal str/unicode representation of the text
+through the various stages of the text transformation process.
+
+<p>
+\( b = 1 \) is a value suggested by Åsmund Ødegård.
+
+<!-- ------------------- end of main content --------------- -->
+
+
+    This is a log file for the doconce script.
+    Debugging is turned on by the command-line argument '--debug'
+    to doconce format. Without that command-line argument,
+    this file is not produced.
+
+    
+
+******* output format: html *******
+
+
+
+
+Found use of 2 preprocess directives # #if|define|include in file encoding3.do.txt
+
+
+Found use of mako variable(s) in tmp_preprocess__encoding3.do.txt: ${FORMAT}
+
+
+Keyword arguments to be sent to mako: {'DEVICE': 'screen', 'FORMAT': 'html', 'MAKO': True}
+
+
+
+************************************************************
+unicode>>> The file after running preprocess and/or mako:
+
+Text with a name like Åsmund Ødegård works in general.
+
+This block (in format html)
+triggers use of `mako`. For all formats, `mako` has
+problem with non-ASCII characters anywhere in the text. The remedy
+for all formats is to read the file with UTF-8 encoding. With --debug
+one can see the internal str/unicode representation of the text
+through the various stages of the text transformation process.
+
+$b = 1$ is a value suggested by Åsmund Ødegård.
+
+
+
+************************************************************
+unicode>>> The file after running @@@OSCMD (from file):
+
+Text with a name like Åsmund Ødegård works in general.
+
+This block (in format html)
+triggers use of `mako`. For all formats, `mako` has
+problem with non-ASCII characters anywhere in the text. The remedy
+for all formats is to read the file with UTF-8 encoding. With --debug
+one can see the internal str/unicode representation of the text
+through the various stages of the text transformation process.
+
+$b = 1$ is a value suggested by Åsmund Ødegård.
+
+
+
+************************************************************
+unicode>>> The file after inserting @@@CODE (from file):
+
+Text with a name like Åsmund Ødegård works in general.
+
+This block (in format html)
+triggers use of `mako`. For all formats, `mako` has
+problem with non-ASCII characters anywhere in the text. The remedy
+for all formats is to read the file with UTF-8 encoding. With --debug
+one can see the internal str/unicode representation of the text
+through the various stages of the text transformation process.
+
+$b = 1$ is a value suggested by Åsmund Ødegård.
+
+
+
+************************************************************
+unicode>>> The file after removal of code/tex blocks:
+
+Text with a name like Åsmund Ødegård works in general.
+
+This block (in format html)
+triggers use of `mako`. For all formats, `mako` has
+problem with non-ASCII characters anywhere in the text. The remedy
+for all formats is to read the file with UTF-8 encoding. With --debug
+one can see the internal str/unicode representation of the text
+through the various stages of the text transformation process.
+
+$b = 1$ is a value suggested by Åsmund Ødegård.
+
+
+
+************************************************************
+unicode>>> The code blocks:
+
+[]
+
+************************************************************
+unicode>>> The code block types:
+
+[]
+
+************************************************************
+unicode>>> The tex blocks:
+
+[]
+
+************************************************************
+unicode>>> The file after handling ref and label cross referencing:
+
+Text with a name like Åsmund Ødegård works in general.
+
+This block (in format html)
+triggers use of `mako`. For all formats, `mako` has
+problem with non-ASCII characters anywhere in the text. The remedy
+for all formats is to read the file with UTF-8 encoding. With --debug
+one can see the internal str/unicode representation of the text
+through the various stages of the text transformation process.
+
+$b = 1$ is a value suggested by Åsmund Ødegård.
+
+
+************************************************************
+unicode>>> The file after handling index and bibliography:
+
+Text with a name like Åsmund Ødegård works in general.
+
+This block (in format html)
+triggers use of `mako`. For all formats, `mako` has
+problem with non-ASCII characters anywhere in the text. The remedy
+for all formats is to read the file with UTF-8 encoding. With --debug
+one can see the internal str/unicode representation of the text
+through the various stages of the text transformation process.
+
+$b = 1$ is a value suggested by Åsmund Ødegård.
+
+*** List typesetting phase + comments and blank lines ***
+
+
+
+------------------------
+source line=[Text with a name like Åsmund Ødegård works in general.]
+
+
+  > indent=0 (previous indent=0), keyword=[None], text=[Text with a name like Åsmund Ødegård works in general.]
+
+
+  > This line belongs to the previous block since it has the same indent (0 blanks)
+
+
+  > This line is some ordinary line, no special list syntax involved
+
+
+text=[Text with a name like Åsmund Ødegård works in general.]
+
+
+
+------------------------
+source line=[]
+
+
+  > This is a blank line
+
+
+
+------------------------
+source line=[This block (in format html)]
+
+
+  > indent=0 (previous indent=0), keyword=[None], text=[This block (in format html)]
+
+
+  > This line belongs to the previous block since it has the same indent (0 blanks)
+
+
+  > This line is some ordinary line, no special list syntax involved
+
+
+text=[This block (in format html)]
+
+
+
+------------------------
+source line=[triggers use of `mako`. For all formats, `mako` has]
+
+
+  > indent=0 (previous indent=0), keyword=[None], text=[triggers use of `mako`. For all formats, `mako` has]
+
+
+  > This line belongs to the previous block since it has the same indent (0 blanks)
+
+
+  > This line is some ordinary line, no special list syntax involved
+
+
+text=[triggers use of `mako`. For all formats, `mako` has]
+
+
+
+------------------------
+source line=[problem with non-ASCII characters anywhere in the text. The remedy]
+
+
+  > indent=0 (previous indent=0), keyword=[None], text=[problem with non-ASCII characters anywhere in the text. The remedy]
+
+
+  > This line belongs to the previous block since it has the same indent (0 blanks)
+
+
+  > This line is some ordinary line, no special list syntax involved
+
+
+text=[problem with non-ASCII characters anywhere in the text. The remedy]
+
+
+
+------------------------
+source line=[for all formats is to read the file with UTF-8 encoding. With --debug]
+
+
+  > indent=0 (previous indent=0), keyword=[None], text=[for all formats is to read the file with UTF-8 encoding. With --debug]
+
+
+  > This line belongs to the previous block since it has the same indent (0 blanks)
+
+
+  > This line is some ordinary line, no special list syntax involved
+
+
+text=[for all formats is to read the file with UTF-8 encoding. With --debug]
+
+
+
+------------------------
+source line=[one can see the internal str/unicode representation of the text]
+
+
+  > indent=0 (previous indent=0), keyword=[None], text=[one can see the internal str/unicode representation of the text]
+
+
+  > This line belongs to the previous block since it has the same indent (0 blanks)
+
+
+  > This line is some ordinary line, no special list syntax involved
+
+
+text=[one can see the internal str/unicode representation of the text]
+
+
+
+------------------------
+source line=[through the various stages of the text transformation process.]
+
+
+  > indent=0 (previous indent=0), keyword=[None], text=[through the various stages of the text transformation process.]
+
+
+  > This line belongs to the previous block since it has the same indent (0 blanks)
+
+
+  > This line is some ordinary line, no special list syntax involved
+
+
+text=[through the various stages of the text transformation process.]
+
+
+
+------------------------
+source line=[]
+
+
+  > This is a blank line
+
+
+
+------------------------
+source line=[$b = 1$ is a value suggested by Åsmund Ødegård.]
+
+
+  > indent=0 (previous indent=0), keyword=[None], text=[$b = 1$ is a value suggested by Åsmund Ødegård.]
+
+
+  > This line belongs to the previous block since it has the same indent (0 blanks)
+
+
+  > This line is some ordinary line, no special list syntax involved
+
+
+text=[$b = 1$ is a value suggested by Åsmund Ødegård.]
+
+
+
+************************************************************
+unicode>>> The file after typesetting of lists:
+
+Text with a name like Åsmund Ødegård works in general.
+
+<p>
+This block (in format html)
+triggers use of `mako`. For all formats, `mako` has
+problem with non-ASCII characters anywhere in the text. The remedy
+for all formats is to read the file with UTF-8 encoding. With --debug
+one can see the internal str/unicode representation of the text
+through the various stages of the text transformation process.
+
+<p>
+$b = 1$ is a value suggested by Åsmund Ødegård.
+
+
+************************************************************
+unicode>>> The file after adding space around | in tables:
+
+Text with a name like Åsmund Ødegård works in general.
+
+<p>
+This block (in format html)
+triggers use of `mako`. For all formats, `mako` has
+problem with non-ASCII characters anywhere in the text. The remedy
+for all formats is to read the file with UTF-8 encoding. With --debug
+one can see the internal str/unicode representation of the text
+through the various stages of the text transformation process.
+
+<p>
+$b = 1$ is a value suggested by Åsmund Ødegård.
+
+
+*** Dealing with authors and institutions ***
+
+
+
+*** Inline tags substitution phase ***
+
+
+
+*************** Working with tag "title"
+
+
+
+*************** Working with tag "date"
+
+
+
+*************** Working with tag "movie"
+
+
+
+*************** Working with tag "abstract"
+
+
+
+*************** Working with tag "emphasize"
+
+
+
+*************** Working with tag "math2"
+
+
+
+*************** Working with tag "math"
+
+
+Found 1 occurences of "math":
+findall list: [(u'\n', u'\n', u'b = 1', u' ', u' ')]
+
+
+math is to be replaced using \g<begin>\( \g<subst> \)\g<end>
+
+
+First occurence: "
+$b = 1$ "
+groups: (u'\n', u'\n', u'b = 1', u' ', u' ')
+named groups: {'begin': u'\n', 'end': u' ', 'subst': u'b = 1'}
+
+
+
+**** The file after 1 "math" substitutions ***
+Text with a name like Åsmund Ødegård works in general.
+
+<p>
+This block (in format html)
+triggers use of `mako`. For all formats, `mako` has
+problem with non-ASCII characters anywhere in the text. The remedy
+for all formats is to read the file with UTF-8 encoding. With --debug
+one can see the internal str/unicode representation of the text
+through the various stages of the text transformation process.
+
+<p>
+\( b = 1 \) is a value suggested by Åsmund Ødegård.
+
+--------------------------------------------------------------------------------
+
+
+
+
+
+*************** Working with tag "chapter"
+
+
+
+*************** Working with tag "section"
+
+
+
+*************** Working with tag "subsection"
+
+
+
+*************** Working with tag "subsubsection"
+
+
+
+*************** Working with tag "bold"
+
+
+
+*************** Working with tag "inlinecomment"
+
+
+
+*************** Working with tag "colortext"
+
+
+
+*************** Working with tag "verbatim"
+
+
+Found 2 occurences of "verbatim":
+findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
+
+
+verbatim is to be replaced using \g<begin><code>\g<subst></code>\g<end>
+
+
+First occurence: " `mako`."
+groups: (u' ', u' ', u'mako', u'.', u'.')
+named groups: {'begin': u' ', 'end': u'.', 'subst': u'mako'}
+
+
+
+**** The file after 2 "verbatim" substitutions ***
+Text with a name like Åsmund Ødegård works in general.
+
+<p>
+This block (in format html)
+triggers use of <code>mako</code>. For all formats, <code>mako</code> has
+problem with non-ASCII characters anywhere in the text. The remedy
+for all formats is to read the file with UTF-8 encoding. With --debug
+one can see the internal str/unicode representation of the text
+through the various stages of the text transformation process.
+
+<p>
+\( b = 1 \) is a value suggested by Åsmund Ødegård.
+
+--------------------------------------------------------------------------------
+
+
+
+
+
+*************** Working with tag "paragraph"
+
+
+
+*************** Working with tag "plainURL"
+
+
+
+*************** Working with tag "linkURL2v"
+
+
+
+*************** Working with tag "linkURL3v"
+
+
+
+*************** Working with tag "linkURL2"
+
+
+
+*************** Working with tag "linkURL3"
+
+
+
+*************** Working with tag "linkURL"
+
+
+
+************************************************************
+unicode>>> The file after all inline substitutions:
+
+Text with a name like Åsmund Ødegård works in general.
+
+<p>
+This block (in format html)
+triggers use of <code>mako</code>. For all formats, <code>mako</code> has
+problem with non-ASCII characters anywhere in the text. The remedy
+for all formats is to read the file with UTF-8 encoding. With --debug
+one can see the internal str/unicode representation of the text
+through the various stages of the text transformation process.
+
+<p>
+\( b = 1 \) is a value suggested by Åsmund Ødegård.
+
+
+************************************************************
+unicode>>> The file after typesetting of tables:
+
+Text with a name like Åsmund Ødegård works in general.
+
+<p>
+This block (in format html)
+triggers use of <code>mako</code>. For all formats, <code>mako</code> has
+problem with non-ASCII characters anywhere in the text. The remedy
+for all formats is to read the file with UTF-8 encoding. With --debug
+one can see the internal str/unicode representation of the text
+through the various stages of the text transformation process.
+
+<p>
+\( b = 1 \) is a value suggested by Åsmund Ødegård.
+
+
+************************************************************
+unicode>>> The file after commenting out !split, !bpop, !epop, !bslidecell, !eslidecell, !bnotes, !enotes:
+
+Text with a name like Åsmund Ødegård works in general.
+
+<p>
+This block (in format html)
+triggers use of <code>mako</code>. For all formats, <code>mako</code> has
+problem with non-ASCII characters anywhere in the text. The remedy
+for all formats is to read the file with UTF-8 encoding. With --debug
+one can see the internal str/unicode representation of the text
+through the various stages of the text transformation process.
+
+<p>
+\( b = 1 \) is a value suggested by Åsmund Ødegård.
+
+
+************************************************************
+unicode>>> File before call to insert_code_and_tex (format html):
+
+
+<!-- ------------------- main content ---------------------- -->
+
+Text with a name like Åsmund Ødegård works in general.
+
+<p>
+This block (in format html)
+triggers use of <code>mako</code>. For all formats, <code>mako</code> has
+problem with non-ASCII characters anywhere in the text. The remedy
+for all formats is to read the file with UTF-8 encoding. With --debug
+one can see the internal str/unicode representation of the text
+through the various stages of the text transformation process.
+
+<p>
+\( b = 1 \) is a value suggested by Åsmund Ødegård.
+
+<!-- ------------------- end of main content --------------- -->
+
+
+************************************************************
+unicode>>> File after call to isnert_code_and tex (format html):
+
+
+<!-- ------------------- main content ---------------------- -->
+
+Text with a name like Åsmund Ødegård works in general.
+
+<p>
+This block (in format html)
+triggers use of <code>mako</code>. For all formats, <code>mako</code> has
+problem with non-ASCII characters anywhere in the text. The remedy
+for all formats is to read the file with UTF-8 encoding. With --debug
+one can see the internal str/unicode representation of the text
+through the various stages of the text transformation process.
+
+<p>
+\( b = 1 \) is a value suggested by Åsmund Ødegård.
+
+<!-- ------------------- end of main content --------------- -->
+
+
+************************************************************
+unicode>>> The file after inserting intro/outro and tex/code blocks, and fixing last format-specific issues:
+
+
+<!-- tocinfo
+{'highest level': 4, 'sections': []}
+end of tocinfo -->
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "AMS"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+
+<!-- newcommands_bfmath.tex -->
+$$
+\renewcommand{\u}{\pmb{u}}
+
+\newcommand{\xbm}{\bm{x}}
+\newcommand{\normalvecbm}{\bm{n}}
+\newcommand{\ubm}{\bm{u}}
+$$
+
+
+<!-- newcommands_replace.tex -->
+$$
+\newcommand{\x}{\pmb{x}}
+\newcommand{\normalvec}{\pmb{n}}
+\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
+\newcommand{\halfi}{1/2}
+\newcommand{\half}{\frac{1}{2}}
+\newcommand{\report}{test report}
+$$
+
+
+
+
+<!-- ------------------- main content ---------------------- -->
+
+Text with a name like Åsmund Ødegård works in general.
+
+<p>
+This block (in format html)
+triggers use of <code>mako</code>. For all formats, <code>mako</code> has
+problem with non-ASCII characters anywhere in the text. The remedy
+for all formats is to read the file with UTF-8 encoding. With --debug
+one can see the internal str/unicode representation of the text
+through the various stages of the text transformation process.
+
+<p>
+\( b = 1 \) is a value suggested by Åsmund Ødegård.
+
+<!-- ------------------- end of main content --------------- -->
+
+
+
+************************************************************
+unicode>>> The file after typesetting of admons and the rest of the !b/!e environments:
+
+
+<!-- tocinfo
+{'highest level': 4, 'sections': []}
+end of tocinfo -->
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "AMS"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+
+<!-- newcommands_bfmath.tex -->
+$$
+\renewcommand{\u}{\pmb{u}}
+
+\newcommand{\xbm}{\bm{x}}
+\newcommand{\normalvecbm}{\bm{n}}
+\newcommand{\ubm}{\bm{u}}
+$$
+
+
+<!-- newcommands_replace.tex -->
+$$
+\newcommand{\x}{\pmb{x}}
+\newcommand{\normalvec}{\pmb{n}}
+\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
+\newcommand{\halfi}{1/2}
+\newcommand{\half}{\frac{1}{2}}
+\newcommand{\report}{test report}
+$$
+
+
+
+
+<!-- ------------------- main content ---------------------- -->
+
+Text with a name like Åsmund Ødegård works in general.
+
+<p>
+This block (in format html)
+triggers use of <code>mako</code>. For all formats, <code>mako</code> has
+problem with non-ASCII characters anywhere in the text. The remedy
+for all formats is to read the file with UTF-8 encoding. With --debug
+one can see the internal str/unicode representation of the text
+through the various stages of the text transformation process.
+
+<p>
+\( b = 1 \) is a value suggested by Åsmund Ødegård.
+
+<!-- ------------------- end of main content --------------- -->
+
+
+
+************************************************************
+unicode>>> The file after removal of solutions, answers, notes, hints, etc.:
+
+
+<!-- tocinfo
+{'highest level': 4, 'sections': []}
+end of tocinfo -->
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "AMS"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+
+<!-- newcommands_bfmath.tex -->
+$$
+\renewcommand{\u}{\pmb{u}}
+
+\newcommand{\xbm}{\bm{x}}
+\newcommand{\normalvecbm}{\bm{n}}
+\newcommand{\ubm}{\bm{u}}
+$$
+
+
+<!-- newcommands_replace.tex -->
+$$
+\newcommand{\x}{\pmb{x}}
+\newcommand{\normalvec}{\pmb{n}}
+\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
+\newcommand{\halfi}{1/2}
+\newcommand{\half}{\frac{1}{2}}
+\newcommand{\report}{test report}
+$$
+
+
+
+
+<!-- ------------------- main content ---------------------- -->
+
+Text with a name like Åsmund Ødegård works in general.
+
+<p>
+This block (in format html)
+triggers use of <code>mako</code>. For all formats, <code>mako</code> has
+problem with non-ASCII characters anywhere in the text. The remedy
+for all formats is to read the file with UTF-8 encoding. With --debug
+one can see the internal str/unicode representation of the text
+through the various stages of the text transformation process.
+
+<p>
+\( b = 1 \) is a value suggested by Åsmund Ødegård.
+
+<!-- ------------------- end of main content --------------- -->
+
+
+
+************************************************************
+unicode>>> The file after replacing |bc and |bt environments by true !bt and !et (in code blocks):
+
+
+<!-- tocinfo
+{'highest level': 4, 'sections': []}
+end of tocinfo -->
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "AMS"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+
+<!-- newcommands_bfmath.tex -->
+$$
+\renewcommand{\u}{\pmb{u}}
+
+\newcommand{\xbm}{\boldsymbol{x}}
+\newcommand{\normalvecbm}{\boldsymbol{n}}
+\newcommand{\ubm}{\boldsymbol{u}}
+$$
+
+
+<!-- newcommands_replace.tex -->
+$$
+\newcommand{\x}{\pmb{x}}
+\newcommand{\normalvec}{\pmb{n}}
+\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
+\newcommand{\halfi}{1/2}
+\newcommand{\half}{\frac{1}{2}}
+\newcommand{\report}{test report}
+$$
+
+
+
+
+<!-- ------------------- main content ---------------------- -->
+
+Text with a name like Åsmund Ødegård works in general.
+
+<p>
+This block (in format html)
+triggers use of <code>mako</code>. For all formats, <code>mako</code> has
+problem with non-ASCII characters anywhere in the text. The remedy
+for all formats is to read the file with UTF-8 encoding. With --debug
+one can see the internal str/unicode representation of the text
+through the various stages of the text transformation process.
+
+<p>
+\( b = 1 \) is a value suggested by Åsmund Ødegård.
+
+<!-- ------------------- end of main content --------------- -->
+
+
 
 ************** File: tmp_Doconce.do.txt *****************
 
@@ -66699,7 +68643,7 @@ list of capabilities:
 <p>
 <!-- begin verbatim block  shpro-->
 <pre><code>Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 # transform doconce file to another format
@@ -66811,6 +68755,9 @@ doconce list_labels myfile
 
 # check all links in HTML files
 doconce linkchecker *.html
+
+# change headings from &quot;This is a Heading&quot; to &quot;This is a heading&quot;
+doconce capitalize [-d .mydict.txt] *.do.txt
 
 # translate a latex document to doconce (requires usually manual fixing)
 doconce latex2doconce latexfile
@@ -67103,11 +69050,7 @@ examine the Doconce source and the <code>doc/src/make.sh</code> script).
 
 \documentclass[%
 twoside,                 % oneside: electronic viewing, twoside: printing
-% #ifdef DOUBLE_SPACING
-draft,                   % or final
-% #else
-final,                   % or draft (marks overfull hboxes)
-% #endif
+final,                   % or draft (marks overfull hboxes, figures with paths)
 10pt]{article}
 
 % #elif LATEX_STYLE == "Springer_lncse"
@@ -67261,6 +69204,12 @@ final,                   % or draft (marks overfull hboxes)
 % #ifdef LINENUMBERS
 \usepackage[mathlines]{lineno}  % show line numbers
 \linenumbers
+% #endif
+
+% #ifdef LABELS_IN_MARGIN
+% Display labels for sections, equations, and citations in the margin
+\usepackage{showlabels}
+\showlabels{cite}
 % #endif
 
 % #ifdef DOUBLE_SPACING
@@ -68266,7 +70215,7 @@ list of capabilities:
 
 \bshpro
 Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 # transform doconce file to another format
@@ -68378,6 +70327,9 @@ doconce list_labels myfile
 
 # check all links in HTML files
 doconce linkchecker *.html
+
+# change headings from "This is a Heading" to "This is a heading"
+doconce capitalize [-d .mydict.txt] *.do.txt
 
 # translate a latex document to doconce (requires usually manual fixing)
 doconce latex2doconce latexfile
@@ -69352,7 +71304,7 @@ list of capabilities::
 
 
         Usage: doconce command [optional arguments]
-        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
         
         
         # transform doconce file to another format
@@ -69464,6 +71416,9 @@ list of capabilities::
         
         # check all links in HTML files
         doconce linkchecker *.html
+        
+        # change headings from "This is a Heading" to "This is a heading"
+        doconce capitalize [-d .mydict.txt] *.do.txt
         
         # translate a latex document to doconce (requires usually manual fixing)
         doconce latex2doconce latexfile
@@ -70476,7 +72431,7 @@ list of capabilities:
 .. code-block:: bash
 
         Usage: doconce command [optional arguments]
-        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
         
         
         # transform doconce file to another format
@@ -70588,6 +72543,9 @@ list of capabilities:
         
         # check all links in HTML files
         doconce linkchecker *.html
+        
+        # change headings from "This is a Heading" to "This is a heading"
+        doconce capitalize [-d .mydict.txt] *.do.txt
         
         # translate a latex document to doconce (requires usually manual fixing)
         doconce latex2doconce latexfile
@@ -71462,7 +73420,7 @@ list of capabilities:
 
 {{{
 Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 # transform doconce file to another format
@@ -71574,6 +73532,9 @@ doconce list_labels myfile
 
 # check all links in HTML files
 doconce linkchecker *.html
+
+# change headings from "This is a Heading" to "This is a heading"
+doconce capitalize [-d .mydict.txt] *.do.txt
 
 # translate a latex document to doconce (requires usually manual fixing)
 doconce latex2doconce latexfile
@@ -72456,7 +74417,7 @@ list of capabilities:
 
 <syntaxhighlight lang="bash">
 Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 # transform doconce file to another format
@@ -72568,6 +74529,9 @@ doconce list_labels myfile
 
 # check all links in HTML files
 doconce linkchecker *.html
+
+# change headings from "This is a Heading" to "This is a heading"
+doconce capitalize [-d .mydict.txt] *.do.txt
 
 # translate a latex document to doconce (requires usually manual fixing)
 doconce latex2doconce latexfile
@@ -73420,7 +75384,7 @@ list of capabilities:
 
 {{{
 Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 # transform doconce file to another format
@@ -73532,6 +75496,9 @@ doconce list_labels myfile
 
 # check all links in HTML files
 doconce linkchecker *.html
+
+# change headings from "This is a Heading" to "This is a heading"
+doconce capitalize [-d .mydict.txt] *.do.txt
 
 # translate a latex document to doconce (requires usually manual fixing)
 doconce latex2doconce latexfile
@@ -74393,7 +76360,7 @@ list of capabilities::
 
 
         Usage: doconce command [optional arguments]
-        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
         
         
         # transform doconce file to another format
@@ -74505,6 +76472,9 @@ list of capabilities::
         
         # check all links in HTML files
         doconce linkchecker *.html
+        
+        # change headings from "This is a Heading" to "This is a heading"
+        doconce capitalize [-d .mydict.txt] *.do.txt
         
         # translate a latex document to doconce (requires usually manual fixing)
         doconce latex2doconce latexfile
@@ -75392,7 +77362,7 @@ list of capabilities::
 
 
         Usage: doconce command [optional arguments]
-        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
         
         
         # transform doconce file to another format
@@ -75504,6 +77474,9 @@ list of capabilities::
         
         # check all links in HTML files
         doconce linkchecker *.html
+        
+        # change headings from "This is a Heading" to "This is a heading"
+        doconce capitalize [-d .mydict.txt] *.do.txt
         
         # translate a latex document to doconce (requires usually manual fixing)
         doconce latex2doconce latexfile
@@ -76433,7 +78406,7 @@ list of capabilities::
 
 
         Usage: doconce command [optional arguments]
-        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
         
         
         # transform doconce file to another format
@@ -76545,6 +78518,9 @@ list of capabilities::
         
         # check all links in HTML files
         doconce linkchecker *.html
+        
+        # change headings from "This is a Heading" to "This is a heading"
+        doconce capitalize [-d .mydict.txt] *.do.txt
         
         # translate a latex document to doconce (requires usually manual fixing)
         doconce latex2doconce latexfile
@@ -77501,7 +79477,7 @@ list of capabilities:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 # transform doconce file to another format
@@ -77613,6 +79589,9 @@ doconce list_labels myfile
 
 # check all links in HTML files
 doconce linkchecker *.html
+
+# change headings from "This is a Heading" to "This is a heading"
+doconce capitalize [-d .mydict.txt] *.do.txt
 
 # translate a latex document to doconce (requires usually manual fixing)
 doconce latex2doconce latexfile
@@ -78693,10 +80672,10 @@ replacing % end theorem by \end{theorem} in testdoc.p.tex
 + doconce replace Newton--Cotes Newton-Cotes testdoc.p.tex
 replacing Newton--Cotes by Newton-Cotes in testdoc.p.tex
 + doconce replace --examples_as__exercises --examples_as_exercises testdoc.p.tex
-+ system ptex2tex -DMINTED -DLATEX_HEADING=titlepage -DA4PAPER -DTODONOTES -DLINENUMBERS -DCOLORED_TABLE_ROWS=blue -DFANCY_HEADER -DSECTION_HEADINGS=blue testdoc
-+ ptex2tex -DMINTED -DLATEX_HEADING=titlepage -DA4PAPER -DTODONOTES -DLINENUMBERS -DCOLORED_TABLE_ROWS=blue -DFANCY_HEADER -DSECTION_HEADINGS=blue testdoc
++ system ptex2tex -DMINTED -DLATEX_HEADING=titlepage -DA4PAPER -DTODONOTES -DLINENUMBERS -DCOLORED_TABLE_ROWS=blue -DFANCY_HEADER -DSECTION_HEADINGS=blue -DLABELS_IN_MARGIN -DDOUBLE_SPACING testdoc
++ ptex2tex -DMINTED -DLATEX_HEADING=titlepage -DA4PAPER -DTODONOTES -DLINENUMBERS -DCOLORED_TABLE_ROWS=blue -DFANCY_HEADER -DSECTION_HEADINGS=blue -DLABELS_IN_MARGIN -DDOUBLE_SPACING testdoc
 using local config file .ptex2tex.cfg
-running preprocessor on testdoc.p.tex...  defines: 'A4PAPER', 'MINTED', 'LATEX_HEADING', 'LINENUMBERS', 'SECTION_HEADINGS', 'COLORED_TABLE_ROWS', 'FANCY_HEADER', 'TODONOTES'  done
+running preprocessor on testdoc.p.tex...  defines: 'A4PAPER', 'MINTED', 'LATEX_HEADING', 'LINENUMBERS', 'LABELS_IN_MARGIN', 'SECTION_HEADINGS', 'DOUBLE_SPACING', 'COLORED_TABLE_ROWS', 'FANCY_HEADER', 'TODONOTES'  done
 
 *** warning: found inline verbatim "!bc" containing "!", which
     is used as delimiter in \Verb!!bc! - avoid "!" in inline verbatim
@@ -78872,7 +80851,10 @@ ws.code.tex
 gs.code.tex
 
 
-
+(/usr/share/texlive/texmf-dist/tex/latex/showlabels/showlabels.sty
+Package: `showlabels' v1.6.5 <2009/05/29>
+with amsmath equation tags
+) 
 (/home/hpl/texmf/tex/latex/misc/mdframed.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
@@ -78962,13 +80944,13 @@ dmap/pdftex.map}] [2]
 
 
 
-(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg [5])
-(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg
-[6]) (./testdoc.out.pyg) (./testdoc.out.pyg) [7]
+(./testdoc.out.pyg) (./testdoc.out.pyg [5]) (./testdoc.out.pyg)
+(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg [6])
+(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) [7]
 
 
 
-<../doc/src/manual/fig/wave1D.pdf, id=76, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=75, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
 [8 <../doc/src/manual/fig/wave1D.pdf>]
 
@@ -79015,11 +80997,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 <../doc/src/manual/mov/wave_frames/frame_0100.png, id=123, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
 <../doc/src/manual/mov/wave_frames/frame_0105.png, id=124, 586.8324pt x 442.292
-4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png> [12 <../doc/src/man
-ual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/wave_frames/frame_00
-85.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <../doc/src/manual/m
-ov/wave_frames/frame_0095.png> <../doc/src/manual/mov/wave_frames/frame_0100.pn
-g> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png> [12]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -79042,7 +81020,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 789.
+t line 797.
 
 
 
@@ -79062,7 +81040,7 @@ t line 789.
 
 
 
-t line 798.
+t line 806.
 
 
 
@@ -79082,7 +81060,7 @@ t line 798.
 
 
 
-t line 802.
+t line 810.
 
 
 
@@ -79152,11 +81130,13 @@ t line 802.
 
 .
 
-
+[13 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
+ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
+../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/mov/wave_f
+rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 Overfull \hbox (5.03835pt too wide) 
 [][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
 %26+engineering/book/978-3-642-23098-1| 
-[13]
 
 
 
@@ -79172,6 +81152,7 @@ Overfull \hbox (5.03835pt too wide)
 
 
 
+[14]
 
 
 
@@ -79189,11 +81170,11 @@ Package amsmath Warning: Foreign command \over;
 
 
 
-[14]
 
 
 ...rest of part of LaTeX line number...
 
+[15]
 
 
 
@@ -79226,7 +81207,7 @@ Package amsmath Warning: Foreign command \over;
 
 ...rest of part of LaTeX line number...
 
-(./testdoc.out.pyg) [15] (./testdoc.out.pyg) [16] [17]
+(./testdoc.out.pyg) [16] (./testdoc.out.pyg) [17] [18]
 
 
 .
@@ -79250,25 +81231,25 @@ Package amsmath Warning: Foreign command \over;
 
 
 
-
-No file testdoc.bbl.
-[18]
-
-
-...rest of part of LaTeX line number...
 
 [19]
+No file testdoc.bbl.
 
 
 ...rest of part of LaTeX line number...
 
 [20]
 
+
+...rest of part of LaTeX line number...
+
+[21]
+
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
 No file testdoc.ind.
-[21] (./testdoc.aux)
+[22] (./testdoc.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -79382,6 +81363,7 @@ pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
     tikz.code.tex
 todonotes.sty    2012/07/25
   lineno.sty    2005/11/02 line numbers on paragraphs v4.41
+showlabels.sty    2009/05/29 v1.6.5
 fancyhdr.sty    
 mdframed.sty    2013/08/18 1.9d: mdframed
   xparse.sty    2013/07/12 v4544 L3 Experimental document command parser
@@ -79497,7 +81479,7 @@ t12.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt8.pfb></usr/share/texmf/fon
 ts/type1/public/lm/lmtt9.pfb></usr/share/texmf/fonts/type1/public/lm/lmtti10.pf
 b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb
 >
-Output written on testdoc.pdf (21 pages, ).
+Output written on testdoc.pdf (22 pages, ).
 Transcript written on testdoc.log.
 + '[' 0 -ne 0 ']'
 + pdflatex -shell-escape testdoc
@@ -79657,7 +81639,10 @@ ws.code.tex
 gs.code.tex
 
 
-
+(/usr/share/texlive/texmf-dist/tex/latex/showlabels/showlabels.sty
+Package: `showlabels' v1.6.5 <2009/05/29>
+with amsmath equation tags
+) 
 (/home/hpl/texmf/tex/latex/misc/mdframed.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
@@ -79719,8 +81704,8 @@ Writing index file testdoc.idx
  [1{/var/lib/texmf/fonts/map/pdftex/up
 dmap/pdftex.map}] (./testdoc.toc) [2] [3] (./testdoc.tdo) [4]
 
-(./testdoc.out.pyg) (./testdoc.out.pyg [5]) (./testdoc.out.pyg)
-(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg [6])
+(./testdoc.out.pyg [5]) (./testdoc.out.pyg) (./testdoc.out.pyg)
+(./testdoc.out.pyg) (./testdoc.out.pyg [6]) (./testdoc.out.pyg)
 (./testdoc.out.pyg) (./testdoc.out.pyg) [7]
 <../doc/src/manual/fig/wave1D.pdf, id=236, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
@@ -79728,7 +81713,8 @@ dmap/pdftex.map}] (./testdoc.toc) [2] [3] (./testdoc.tdo) [4]
 <../doc/src/manual/fig/wave1D.png, id=249, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
 <downloaded_figures/f_plot.png, id=251, 578.16pt x 433.62pt>
-<use downloaded_figures/f_plot.png> [9 <./downloaded_figures/f_plot.png>]
+<use downloaded_figures/f_plot.png> [9] [10 <../doc/src/manual/fig/wave1D.png> 
+<./downloaded_figures/f_plot.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -79753,19 +81739,19 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
-[10 <../doc/src/manual/fig/wave1D.png>] [11]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=276, 586.8324pt x 442.292
+[11]
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=275, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=277, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=276, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=278, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=277, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=279, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=278, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=280, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=279, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=281, 586.8324pt x 442.292
-4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=280, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png> [12]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -79788,7 +81774,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 789.
+t line 797.
 
 
 
@@ -79808,7 +81794,7 @@ t line 789.
 
 
 
-t line 798.
+t line 806.
 
 
 
@@ -79828,7 +81814,7 @@ t line 798.
 
 
 
-t line 802.
+t line 810.
 
 
 
@@ -79898,28 +81884,28 @@ t line 802.
 
 .
 
-[12 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
+[13 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
 ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
 ../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/mov/wave_f
 rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 Overfull \hbox (5.03835pt too wide) 
 [][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
 %26+engineering/book/978-3-642-23098-1| 
-[13]
+[14]
 
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on .
 
-[14] (./testdoc.out.pyg) [15] (./testdoc.out.pyg) [16] [17]
+[15] (./testdoc.out.pyg) [16] (./testdoc.out.pyg) [17] [18] [19]
 No file testdoc.bbl.
-[18] [19]
+[20] [21]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
 No file testdoc.ind.
-[20] (./testdoc.aux)
+[22] (./testdoc.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -80033,6 +82019,7 @@ pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
     tikz.code.tex
 todonotes.sty    2012/07/25
   lineno.sty    2005/11/02 line numbers on paragraphs v4.41
+showlabels.sty    2009/05/29 v1.6.5
 fancyhdr.sty    
 mdframed.sty    2013/08/18 1.9d: mdframed
   xparse.sty    2013/07/12 v4544 L3 Experimental document command parser
@@ -80119,9 +82106,6 @@ downloaded_figures/f_plot.png
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
  )
 (see the transcript file for additional information){/usr/share/texmf/fonts/enc
 /dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/sh
@@ -80145,7 +82129,7 @@ f/fonts/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt
 ts/type1/public/lm/lmtt8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
 </usr/share/texmf/fonts/type1/public/lm/lmtti10.pfb></usr/share/texlive/texmf-d
 ist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on testdoc.pdf (20 pages, ).
+Output written on testdoc.pdf (22 pages, ).
 Transcript written on testdoc.log.
 + makeindex testdoc
 This is makeindex, version 2.15 [TeX Live 2013] (kpathsea + Thai support).
@@ -80322,7 +82306,10 @@ ws.code.tex
 gs.code.tex
 
 
-
+(/usr/share/texlive/texmf-dist/tex/latex/showlabels/showlabels.sty
+Package: `showlabels' v1.6.5 <2009/05/29>
+with amsmath equation tags
+) 
 (/home/hpl/texmf/tex/latex/misc/mdframed.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
@@ -80384,8 +82371,8 @@ Writing index file testdoc.idx
  [1{/var/lib/texmf/fonts/map/pdftex/up
 dmap/pdftex.map}] (./testdoc.toc) [2] [3] (./testdoc.tdo) [4]
 
-(./testdoc.out.pyg) (./testdoc.out.pyg [5]) (./testdoc.out.pyg)
-(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg [6])
+(./testdoc.out.pyg [5]) (./testdoc.out.pyg) (./testdoc.out.pyg)
+(./testdoc.out.pyg) (./testdoc.out.pyg [6]) (./testdoc.out.pyg)
 (./testdoc.out.pyg) (./testdoc.out.pyg) [7]
 <../doc/src/manual/fig/wave1D.pdf, id=236, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
@@ -80393,7 +82380,8 @@ dmap/pdftex.map}] (./testdoc.toc) [2] [3] (./testdoc.tdo) [4]
 <../doc/src/manual/fig/wave1D.png, id=249, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
 <downloaded_figures/f_plot.png, id=251, 578.16pt x 433.62pt>
-<use downloaded_figures/f_plot.png> [9 <./downloaded_figures/f_plot.png>]
+<use downloaded_figures/f_plot.png> [9] [10 <../doc/src/manual/fig/wave1D.png> 
+<./downloaded_figures/f_plot.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -80418,19 +82406,19 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
-[10 <../doc/src/manual/fig/wave1D.png>] [11]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=276, 586.8324pt x 442.292
+[11]
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=275, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=277, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=276, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=278, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=277, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=279, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=278, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=280, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=279, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=281, 586.8324pt x 442.292
-4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=280, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png> [12]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -80453,7 +82441,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 789.
+t line 797.
 
 
 
@@ -80473,7 +82461,7 @@ t line 789.
 
 
 
-t line 798.
+t line 806.
 
 
 
@@ -80493,7 +82481,7 @@ t line 798.
 
 
 
-t line 802.
+t line 810.
 
 
 
@@ -80563,30 +82551,30 @@ t line 802.
 
 .
 
-[12 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
+[13 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
 ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
 ../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/mov/wave_f
 rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 Overfull \hbox (5.03835pt too wide) 
 [][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
 %26+engineering/book/978-3-642-23098-1| 
-[13]
+[14]
 
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on .
 
-[14] (./testdoc.out.pyg) [15] (./testdoc.out.pyg) [16] [17] (./testdoc.bbl
-[18]) [19] [20] [21]
+[15] (./testdoc.out.pyg) [16] (./testdoc.out.pyg) [17] [18] [19] (./testdoc.bbl
+ [20]) [21] [22] [23]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
-(./testdoc.ind [22]
+(./testdoc.ind [24]
 Overfull \hbox (9.21497pt too wide) 
 []\T1/lmr/m/n/10 (-20) test \T1/lmtt/m/n/10 two \T1/lmr/m/n/10 (-20) (sep-a-rat
 e) \T1/lmtt/m/n/10 verbatim expressions \T1/lmr/m/n/10 (-20) which
-[23]) (./testdoc.aux)
+[25]) (./testdoc.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -80700,6 +82688,7 @@ pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
     tikz.code.tex
 todonotes.sty    2012/07/25
   lineno.sty    2005/11/02 line numbers on paragraphs v4.41
+showlabels.sty    2009/05/29 v1.6.5
 fancyhdr.sty    
 mdframed.sty    2013/08/18 1.9d: mdframed
   xparse.sty    2013/07/12 v4544 L3 Experimental document command parser
@@ -80814,7 +82803,7 @@ f/fonts/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt
 ts/type1/public/lm/lmtt8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
 </usr/share/texmf/fonts/type1/public/lm/lmtti10.pfb></usr/share/texlive/texmf-d
 ist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on testdoc.pdf (23 pages, ).
+Output written on testdoc.pdf (25 pages, ).
 Transcript written on testdoc.log.
 + pdflatex -shell-escape testdoc
 This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
@@ -80973,7 +82962,10 @@ ws.code.tex
 gs.code.tex
 
 
-
+(/usr/share/texlive/texmf-dist/tex/latex/showlabels/showlabels.sty
+Package: `showlabels' v1.6.5 <2009/05/29>
+with amsmath equation tags
+) 
 (/home/hpl/texmf/tex/latex/misc/mdframed.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
@@ -81035,8 +83027,8 @@ Writing index file testdoc.idx
  [1{/var/lib/texmf/fonts/map/pdftex/up
 dmap/pdftex.map}] (./testdoc.toc) [2] [3] (./testdoc.tdo) [4]
 
-(./testdoc.out.pyg) (./testdoc.out.pyg [5]) (./testdoc.out.pyg)
-(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg [6])
+(./testdoc.out.pyg [5]) (./testdoc.out.pyg) (./testdoc.out.pyg)
+(./testdoc.out.pyg) (./testdoc.out.pyg [6]) (./testdoc.out.pyg)
 (./testdoc.out.pyg) (./testdoc.out.pyg) [7]
 <../doc/src/manual/fig/wave1D.pdf, id=236, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
@@ -81044,7 +83036,8 @@ dmap/pdftex.map}] (./testdoc.toc) [2] [3] (./testdoc.tdo) [4]
 <../doc/src/manual/fig/wave1D.png, id=249, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
 <downloaded_figures/f_plot.png, id=251, 578.16pt x 433.62pt>
-<use downloaded_figures/f_plot.png> [9 <./downloaded_figures/f_plot.png>]
+<use downloaded_figures/f_plot.png> [9] [10 <../doc/src/manual/fig/wave1D.png> 
+<./downloaded_figures/f_plot.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -81069,19 +83062,19 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
-[10 <../doc/src/manual/fig/wave1D.png>] [11]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=276, 586.8324pt x 442.292
+[11]
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=275, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=277, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=276, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=278, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=277, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=279, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=278, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=280, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=279, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=281, 586.8324pt x 442.292
-4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=280, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png> [12]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -81102,30 +83095,30 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
-[12 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
+[13 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
 ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
 ../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/mov/wave_f
 rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 Overfull \hbox (5.03835pt too wide) 
 [][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
 %26+engineering/book/978-3-642-23098-1| 
-[13]
+[14]
 
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on .
 
-[14] (./testdoc.out.pyg) [15] (./testdoc.out.pyg) [16] [17] (./testdoc.bbl
-[18]) [19] [20] [21]
+[15] (./testdoc.out.pyg) [16] (./testdoc.out.pyg) [17] [18] [19] (./testdoc.bbl
+ [20]) [21] [22] [23]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
-(./testdoc.ind [22]
+(./testdoc.ind [24]
 Overfull \hbox (9.21497pt too wide) 
 []\T1/lmr/m/n/10 (-20) test \T1/lmtt/m/n/10 two \T1/lmr/m/n/10 (-20) (sep-a-rat
 e) \T1/lmtt/m/n/10 verbatim expressions \T1/lmr/m/n/10 (-20) which
-[23]) (./testdoc.aux)
+[25]) (./testdoc.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -81239,6 +83232,7 @@ pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
     tikz.code.tex
 todonotes.sty    2012/07/25
   lineno.sty    2005/11/02 line numbers on paragraphs v4.41
+showlabels.sty    2009/05/29 v1.6.5
 fancyhdr.sty    
 mdframed.sty    2013/08/18 1.9d: mdframed
   xparse.sty    2013/07/12 v4544 L3 Experimental document command parser
@@ -81347,7 +83341,7 @@ f/fonts/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt
 ts/type1/public/lm/lmtt8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
 </usr/share/texmf/fonts/type1/public/lm/lmtti10.pfb></usr/share/texlive/texmf-d
 ist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on testdoc.pdf (23 pages, ).
+Output written on testdoc.pdf (25 pages, ).
 Transcript written on testdoc.log.
 + cp testdoc.tex testdoc.tex_ptex2tex
 + system doconce ptex2tex testdoc -DBOOK -DPALATINO 'sys=begin{quote}begin{Verbatim}@end{Verbatim}end{quote}' pypro=ans:nt envir=minted
@@ -81726,7 +83720,7 @@ reading sources... [ 50%] ._testdoc001
 reading sources... [ 75%] ._testdoc002
 reading sources... [100%] index
 
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:554: WARNING: Inline interpreted text or phrase reference start-string without end-string.
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:556: WARNING: Inline interpreted text or phrase reference start-string without end-string.
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:None: WARNING: nonlocal image URI found: https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png
 looking for now-outdated files... none found
 pickling environment... done
@@ -83100,7 +85094,7 @@ output in math_test.md
 + doconce md2latex math_test
 command "md2latex" is not legal, must be among
 
-format, help, sphinx_dir, subst, replace, replace_from_file, clean, spellcheck, ptex2tex, guess_encoding, expand_commands, expand_mako, combine_images, change_encoding, gwiki_figsubst, md2html, remove_inline_comments, grab, remove, remove_exercise_answers, split_rst, split_html, slides_html, slides_beamer, latin2html, latex_header, latex_footer, bbl2rst, html_colorbullets, list_labels, teamod, sphinxfix_localURLs, make_figure_code_links, latex_exercise_toc, insertdocstr, old2new_format, linkchecker, latex2doconce, latex_dislikes, pygmentize, makefile, diff, gitdiff, fix_bibtex4publish, csv2table
+format, help, sphinx_dir, subst, replace, replace_from_file, clean, spellcheck, ptex2tex, guess_encoding, expand_commands, expand_mako, combine_images, change_encoding, capitalize, gwiki_figsubst, md2html, remove_inline_comments, grab, remove, remove_exercise_answers, split_rst, split_html, slides_html, slides_beamer, latin2html, latex_header, latex_footer, bbl2rst, html_colorbullets, list_labels, teamod, sphinxfix_localURLs, make_figure_code_links, latex_exercise_toc, insertdocstr, old2new_format, linkchecker, latex2doconce, latex_dislikes, pygmentize, makefile, diff, gitdiff, fix_bibtex4publish, csv2table
 + admon_tps='colors1 graybox1 paragraph graybox2 yellowbox graybox3 colors2'
 + for admon_tp in '$admon_tps'
 + system doconce format pdflatex admon --latex_admon=colors1
@@ -83110,7 +85104,8 @@ translating doconce text in tmp_preprocess__admon.do.txt to pdflatex
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.pdf for format pdflatex
 *** warning: wrong text size "illegal-size" specified in notice environment!
-    must be large or small - will be set to normal
+    must be "large" or "small" - will be set to normal
+*** made directory latex_figs for admon figures
 output in admon.p.tex
 + '[' 0 -ne 0 ']'
 + doconce ptex2tex admon envir=minted
@@ -83417,6 +85412,17 @@ f/fonts/type1/public/lm/lmri8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy1
 Output written on admon_colors1.pdf (6 pages, ).
 Transcript written on admon_colors1.log.
 + '[' 0 -ne 0 ']'
++ echo admon=colors1
+admon=colors1
++ '[' -d latex_figs ']'
++ echo latex_figs:
+latex_figs:
++ /bin/ls latex_figs
+notice.pdf
+question.pdf
+summary.pdf
+warning.pdf
++ rm -rf latex_figs
 + for admon_tp in '$admon_tps'
 + system doconce format pdflatex admon --latex_admon=graybox1
 + doconce format pdflatex admon --latex_admon=graybox1
@@ -83425,7 +85431,7 @@ translating doconce text in tmp_preprocess__admon.do.txt to pdflatex
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.pdf for format pdflatex
 *** warning: wrong text size "illegal-size" specified in notice environment!
-    must be large or small - will be set to normal
+    must be "large" or "small" - will be set to normal
 output in admon.p.tex
 + '[' 0 -ne 0 ']'
 + doconce ptex2tex admon envir=minted
@@ -83883,6 +85889,12 @@ s/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
 Output written on admon_graybox1.pdf (6 pages, ).
 Transcript written on admon_graybox1.log.
 + '[' 0 -ne 0 ']'
++ echo admon=graybox1
+admon=graybox1
++ '[' -d latex_figs ']'
++ echo 'no latex_figs directory for this admon type'
+no latex_figs directory for this admon type
++ rm -rf latex_figs
 + for admon_tp in '$admon_tps'
 + system doconce format pdflatex admon --latex_admon=paragraph
 + doconce format pdflatex admon --latex_admon=paragraph
@@ -83891,7 +85903,7 @@ translating doconce text in tmp_preprocess__admon.do.txt to pdflatex
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.pdf for format pdflatex
 *** warning: wrong text size "illegal-size" specified in notice environment!
-    must be large or small - will be set to normal
+    must be "large" or "small" - will be set to normal
 output in admon.p.tex
 + '[' 0 -ne 0 ']'
 + doconce ptex2tex admon envir=minted
@@ -84278,6 +86290,12 @@ s/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
 Output written on admon_paragraph.pdf (5 pages, ).
 Transcript written on admon_paragraph.log.
 + '[' 0 -ne 0 ']'
++ echo admon=paragraph
+admon=paragraph
++ '[' -d latex_figs ']'
++ echo 'no latex_figs directory for this admon type'
+no latex_figs directory for this admon type
++ rm -rf latex_figs
 + for admon_tp in '$admon_tps'
 + system doconce format pdflatex admon --latex_admon=graybox2
 + doconce format pdflatex admon --latex_admon=graybox2
@@ -84286,7 +86304,7 @@ translating doconce text in tmp_preprocess__admon.do.txt to pdflatex
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.pdf for format pdflatex
 *** warning: wrong text size "illegal-size" specified in notice environment!
-    must be large or small - will be set to normal
+    must be "large" or "small" - will be set to normal
 output in admon.p.tex
 + '[' 0 -ne 0 ']'
 + doconce ptex2tex admon envir=minted
@@ -84742,6 +86760,12 @@ s/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
 Output written on admon_graybox2.pdf (6 pages, ).
 Transcript written on admon_graybox2.log.
 + '[' 0 -ne 0 ']'
++ echo admon=graybox2
+admon=graybox2
++ '[' -d latex_figs ']'
++ echo 'no latex_figs directory for this admon type'
+no latex_figs directory for this admon type
++ rm -rf latex_figs
 + for admon_tp in '$admon_tps'
 + system doconce format pdflatex admon --latex_admon=yellowbox
 + doconce format pdflatex admon --latex_admon=yellowbox
@@ -84750,7 +86774,8 @@ translating doconce text in tmp_preprocess__admon.do.txt to pdflatex
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.pdf for format pdflatex
 *** warning: wrong text size "illegal-size" specified in notice environment!
-    must be large or small - will be set to normal
+    must be "large" or "small" - will be set to normal
+*** made directory latex_figs for admon figures
 output in admon.p.tex
 + '[' 0 -ne 0 ']'
 + doconce ptex2tex admon envir=minted
@@ -85034,6 +87059,17 @@ f/fonts/type1/public/lm/lmri8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy1
 Output written on admon_yellowbox.pdf (6 pages, ).
 Transcript written on admon_yellowbox.log.
 + '[' 0 -ne 0 ']'
++ echo admon=yellowbox
+admon=yellowbox
++ '[' -d latex_figs ']'
++ echo latex_figs:
+latex_figs:
++ /bin/ls latex_figs
+small_yellow_notice.pdf
+small_yellow_question.pdf
+small_yellow_summary.pdf
+small_yellow_warning.pdf
++ rm -rf latex_figs
 + for admon_tp in '$admon_tps'
 + system doconce format pdflatex admon --latex_admon=graybox3
 + doconce format pdflatex admon --latex_admon=graybox3
@@ -85042,7 +87078,8 @@ translating doconce text in tmp_preprocess__admon.do.txt to pdflatex
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.pdf for format pdflatex
 *** warning: wrong text size "illegal-size" specified in notice environment!
-    must be large or small - will be set to normal
+    must be "large" or "small" - will be set to normal
+*** made directory latex_figs for admon figures
 output in admon.p.tex
 + '[' 0 -ne 0 ']'
 + doconce ptex2tex admon envir=minted
@@ -85324,6 +87361,17 @@ f/fonts/type1/public/lm/lmri8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy1
 Output written on admon_graybox3.pdf (6 pages, ).
 Transcript written on admon_graybox3.log.
 + '[' 0 -ne 0 ']'
++ echo admon=graybox3
+admon=graybox3
++ '[' -d latex_figs ']'
++ echo latex_figs:
+latex_figs:
++ /bin/ls latex_figs
+small_gray_notice.pdf
+small_gray_question2.pdf
+small_gray_summary.pdf
+small_gray_warning.pdf
++ rm -rf latex_figs
 + for admon_tp in '$admon_tps'
 + system doconce format pdflatex admon --latex_admon=colors2
 + doconce format pdflatex admon --latex_admon=colors2
@@ -85332,7 +87380,8 @@ translating doconce text in tmp_preprocess__admon.do.txt to pdflatex
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.pdf for format pdflatex
 *** warning: wrong text size "illegal-size" specified in notice environment!
-    must be large or small - will be set to normal
+    must be "large" or "small" - will be set to normal
+*** made directory latex_figs for admon figures
 output in admon.p.tex
 + '[' 0 -ne 0 ']'
 + doconce ptex2tex admon envir=minted
@@ -85611,6 +87660,17 @@ f/fonts/type1/public/lm/lmri8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy1
 Output written on admon_colors2.pdf (6 pages, ).
 Transcript written on admon_colors2.log.
 + '[' 0 -ne 0 ']'
++ echo admon=colors2
+admon=colors2
++ '[' -d latex_figs ']'
++ echo latex_figs:
+latex_figs:
++ /bin/ls latex_figs
+notice.pdf
+question.pdf
+summary.pdf
+warning.pdf
++ rm -rf latex_figs
 + system doconce format html admon --html_admon=lyx --html_style=blueish2
 + doconce format html admon --html_admon=lyx --html_style=blueish2
 running preprocess -DFORMAT=html -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
@@ -85619,7 +87679,7 @@ translating doconce text in tmp_preprocess__admon.do.txt to html
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
 *** warning: wrong text size "illegal-size" specified in notice environment!
-    must be large or small - will be set to normal
+    must be "large" or "small" - will be set to normal
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in admon.html
 + '[' 0 -ne 0 ']'
@@ -85632,7 +87692,7 @@ translating doconce text in tmp_preprocess__admon.do.txt to html
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
 *** warning: wrong text size "illegal-size" specified in notice environment!
-    must be large or small - will be set to normal
+    must be "large" or "small" - will be set to normal
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in admon.html
 + '[' 0 -ne 0 ']'
@@ -85645,7 +87705,7 @@ translating doconce text in tmp_preprocess__admon.do.txt to html
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
 *** warning: wrong text size "illegal-size" specified in notice environment!
-    must be large or small - will be set to normal
+    must be "large" or "small" - will be set to normal
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in admon.html
 + '[' 0 -ne 0 ']'
@@ -85658,7 +87718,7 @@ translating doconce text in tmp_preprocess__admon.do.txt to html
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
 *** warning: wrong text size "illegal-size" specified in notice environment!
-    must be large or small - will be set to normal
+    must be "large" or "small" - will be set to normal
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in admon.html
 + '[' 0 -ne 0 ']'
@@ -85671,7 +87731,7 @@ translating doconce text in tmp_preprocess__admon.do.txt to html
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
 *** warning: wrong text size "illegal-size" specified in notice environment!
-    must be large or small - will be set to normal
+    must be "large" or "small" - will be set to normal
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in admon.html
 + '[' 0 -ne 0 ']'
@@ -85684,7 +87744,7 @@ translating doconce text in tmp_preprocess__admon.do.txt to html
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
 *** warning: wrong text size "illegal-size" specified in notice environment!
-    must be large or small - will be set to normal
+    must be "large" or "small" - will be set to normal
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in admon.html
 + '[' 0 -ne 0 ']'
@@ -85702,7 +87762,7 @@ figure file ../doc/src/manual/fig/wave1D:
              it is recommended to comment out all authors: #AUTHOR.
              Better to hardcode authors in a footer in the template.
 *** warning: wrong text size "illegal-size" specified in notice environment!
-    must be large or small - will be set to normal
+    must be "large" or "small" - will be set to normal
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in admon.html
 + '[' 0 -ne 0 ']'
@@ -85786,7 +87846,7 @@ translating doconce text in tmp_preprocess__admon.do.txt to sphinx
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format sphinx
 *** warning: wrong text size "illegal-size" specified in notice environment!
-    must be large or small - will be set to normal
+    must be "large" or "small" - will be set to normal
 output in admon.rst
 rm -rf _build/*
 sphinx-build -b html -d _build/doctrees   . _build/html
@@ -85880,7 +87940,7 @@ figure file ../doc/src/manual/fig/wave1D:
     common.wikimedia.org
  ...for now we use local file Wave1D.png
 *** warning: wrong text size "illegal-size" specified in notice environment!
-    must be large or small - will be set to normal
+    must be "large" or "small" - will be set to normal
 output in admon.mwiki
 + '[' 0 -ne 0 ']'
 + cp admon.mwiki admon_mwiki.mwiki
@@ -85889,12 +87949,13 @@ output in admon.mwiki
 running preprocess -DFORMAT=plain -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to plain
 *** warning: wrong text size "illegal-size" specified in notice environment!
-    must be large or small - will be set to normal
+    must be "large" or "small" - will be set to normal
 output in admon.txt
 + '[' 0 -ne 0 ']'
-+ cp admon.txt admon_plain.txt
-+ cp -f admon_apricot.html admon_colors1.aux admon_colors1.idx admon_colors1.log admon_colors1.out admon_colors1.pdf admon_colors1.tex admon_colors2.aux admon_colors2.idx admon_colors2.log admon_colors2.out admon_colors2.pdf admon_colors2.tex admon_colors.html admon_graybox1.aux admon_graybox1.idx admon_graybox1.log admon_graybox1.out admon_graybox1.pdf admon_graybox1.tex admon_graybox2.aux admon_graybox2.idx admon_graybox2.log admon_graybox2.out admon_graybox2.pdf admon_graybox2.tex admon_graybox3.aux admon_graybox3.idx admon_graybox3.log admon_graybox3.out admon_graybox3.pdf admon_graybox3.tex admon_gray.html admon_lyx.html admon_mwiki.mwiki admon_paragraph.aux admon_paragraph.html admon_paragraph.idx admon_paragraph.log admon_paragraph.out admon_paragraph.pdf admon_paragraph.tex admon_plain.txt admon_sphinx admon_vagrant.html admon_yellowbox.aux admon_yellowbox.idx admon_yellowbox.log admon_yellowbox.out admon_yellowbox.pdf admon_yellowbox.tex admon_yellow.html admon_demo/
-cp: target ‘admon_demo/’ is not a directory
++ cp admon.txt admon_paragraph.txt
++ cp -f admon_apricot.html admon_colors.html admon_gray.html admon_lyx.html admon_paragraph.html admon_vagrant.html admon_yellow.html admon_colors1.pdf admon_colors2.pdf admon_graybox1.pdf admon_graybox2.pdf admon_graybox3.pdf admon_paragraph.pdf admon_yellowbox.pdf admon_mwiki.mwiki admon_paragraph.txt admon_sphinx admon_demo/
+cp: omitting directory ‘admon_sphinx’
++ '[' -d latex_figs ']'
 + system doconce format pandoc github_md.do.txt --github_md
 + doconce format pandoc github_md.do.txt --github_md
 translating doconce text in github_md.do.txt to pandoc
@@ -87945,6 +90006,80 @@ output in movies.txt
 + doconce change_encoding utf-8 latin1 tmp2.do.txt
 + '[' 0 -ne 0 ']'
 + doconce guess_encoding tmp2.do.txt
++ doconce format latex encoding3 --debug
+*** debug output in _doconce_debugging.log
+running preprocess -DFORMAT=latex -DDEVICE=screen  encoding3.do.txt > tmp_preprocess__encoding3.do.txt
+translating doconce text in tmp_preprocess__encoding3.do.txt to latex
+output in encoding3.p.tex
++ cp encoding3.p.tex encoding3.p.tex-ascii
++ doconce format html encoding3 --no_pygments_html --debug
+*** debug output in _doconce_debugging.log
+running preprocess -DFORMAT=html -DDEVICE=screen  encoding3.do.txt > tmp_preprocess__encoding3.do.txt
+translating doconce text in tmp_preprocess__encoding3.do.txt to html
+output in encoding3.html
++ cp encoding3.html encoding3.html-ascii
++ cat _doconce_debugging.log
++ doconce format latex encoding3 -DPREPROCESS
+running preprocess -DFORMAT=latex -DDEVICE=screen -DPREPROCESS encoding3.do.txt > tmp_preprocess__encoding3.do.txt
+translating doconce text in tmp_preprocess__encoding3.do.txt to latex
+output in encoding3.p.tex
++ cp encoding3.p.tex encoding3.p.tex-ascii-verb
++ doconce format html encoding3 -DPREPROCESS
+running preprocess -DFORMAT=html -DDEVICE=screen -DPREPROCESS encoding3.do.txt > tmp_preprocess__encoding3.do.txt
+translating doconce text in tmp_preprocess__encoding3.do.txt to html
+*** error: problem with character when writing to file:
+(text position  526-527)
+ight: 125%">a = 1  # Value suggested by  | Traceback (most recent call last):
+  File "/usr/local/bin/doconce", line 1013, in <module>
+    main()
+  File "/usr/local/bin/doconce", line 1003, in main
+    eval(command + '()')
+  File "<string>", line 1, in <module>
+  File "/usr/local/bin/doconce", line 83, in format
+    doconce.doconce.format_driver()
+  File "/usr/local/lib/python2.7/dist-packages/doconce/doconce.py", line 3018, in format_driver
+    out_filename = file2file(filename_preprocessed, format, basename)
+  File "/usr/local/lib/python2.7/dist-packages/doconce/doconce.py", line 2287, in file2file
+    error_message()
+  File "/usr/local/lib/python2.7/dist-packages/doconce/doconce.py", line 2276, in error_message
+    print filestr[pos-40:pos], '|', filestr[pos], '|', filestr[pos+1:pos+40]
+UnicodeEncodeError: 'ascii' codec can't encode character u'\xc3' in position 0: ordinal not in range(128)
++ doconce format html encoding3 -DPREPROCESS --encoding=utf-8 --no_pygments_html --debug
+*** debug output in _doconce_debugging.log
+running preprocess -DFORMAT=html -DDEVICE=screen -DPREPROCESS encoding3.do.txt > tmp_preprocess__encoding3.do.txt
+translating doconce text in tmp_preprocess__encoding3.do.txt to html
+open file with encoding utf-8
+output in encoding3.html
++ cp encoding3.html encoding3.html-ascii-verb
++ cat _doconce_debugging.log
++ doconce format latex encoding3 -DMAKO
+running preprocess -DFORMAT=latex -DDEVICE=screen -DMAKO encoding3.do.txt > tmp_preprocess__encoding3.do.txt
+running mako on tmp_preprocess__encoding3.do.txt to make tmp_mako__encoding3.do.txt
+*** mako error: mako.exceptions.CompileException
+    Unicode decode operation of encoding 'ascii' failed at line: 0 char: 0
+    reason: doconce file contains non-ascii characters
+    rerun with --encoding=utf-8 (or similar):
+    doconce format latex encoding3.do.txt -DMAKO --encoding=utf-8
+Abort! (add --no_abort on the command line to avoid this abortion)
++ doconce format latex encoding3 -DMAKO --encoding=utf-8
+running preprocess -DFORMAT=latex -DDEVICE=screen -DMAKO encoding3.do.txt > tmp_preprocess__encoding3.do.txt
+running mako on tmp_preprocess__encoding3.do.txt to make tmp_mako__encoding3.do.txt
+mako variables: {'DEVICE': 'screen', 'MAKO': True, 'FORMAT': 'latex'}
+translating doconce text in tmp_mako__encoding3.do.txt to latex
+open file with encoding utf-8
+output in encoding3.p.tex
++ cp encoding3.p.tex encoding3.p.tex-utf8
++ doconce format html encoding3 -DMAKO --encoding=utf-8 --no_pygments_html --debug
+*** debug output in _doconce_debugging.log
+running preprocess -DFORMAT=html -DDEVICE=screen -DMAKO encoding3.do.txt > tmp_preprocess__encoding3.do.txt
+running mako on tmp_preprocess__encoding3.do.txt to make tmp_mako__encoding3.do.txt
+mako variables: {'DEVICE': 'screen', 'MAKO': True, 'FORMAT': 'html'}
+translating doconce text in tmp_mako__encoding3.do.txt to html
+open file with encoding utf-8
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
+output in encoding3.html
++ cp encoding3.html encoding3.html-utf8
++ cat _doconce_debugging.log
 + system doconce format html mako_test1 --no_pygments_html
 + doconce format html mako_test1 --no_pygments_html
 running mako on mako_test1.do.txt to make tmp_mako__mako_test1.do.txt
@@ -88129,6 +90264,35 @@ figure file http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media
     not found (http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.webm, 404 error)
 ... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.ogg ...
     not found (http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.ogg, 404 error)
+*** error: syntax error in table!
+    missing three horizontal rules and heading
+|---------------------| (horizontal rule)
+| heading1 | heading2 |
+NOTE: do not use pipes in horizontal rule of this type:
+(write instead |--l-------l---|)
+| --l--- | ---l--- |
+| <code>%s</code> | <code>%e</code> |
+| \( a=b \) | \( \mbox{math} \) |
+|---------------------| (horizontal rule)
+(or maybe not a table, just an opening pipe symbol at the beginning of the line?)
+Abort! (add --no_abort on the command line to avoid this abortion)
++ doconce replace '|--l---|---l---|' '|--l-------l---|' tmp2.do.txt
+replacing |--l---|---l---| by |--l-------l---| in tmp2.do.txt
++ doconce format html tmp2
+translating doconce text in tmp2.do.txt to html
+figure file ../doc/src/manual/fig/wave1D:
+    can use ../doc/src/manual/fig/wave1D.png for format html
+... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png ...
+    found!
+figure file http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media:
+    can use http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png for format html
+*** warning: you have citations but no bibliography (BIBFILE: ...)
+... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.mp4 ...
+    not found (http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.mp4, 404 error)
+... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.webm ...
+    not found (http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.webm, 404 error)
+... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.ogg ...
+    not found (http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.ogg, 404 error)
 *** error: could not translate environment: !bsol
     context:
 
@@ -88230,6 +90394,27 @@ figure file http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media
 ... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.ogg ...
     found!
 output in tmp2.rst
++ doconce format pdflatex tmp2 --device=paper
+translating doconce text in tmp2.do.txt to pdflatex
+figure file ../doc/src/manual/fig/wave1D:
+    can use ../doc/src/manual/fig/wave1D.pdf for format pdflatex
+... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.pdf ...
+    not found (http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.pdf, 404 error)
+... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png ...
+    found!
+figure file http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media:
+    can use http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png for format pdflatex
+*** error: hyperlinks inside caption pose problems for
+    latex output and --device=paper because they lead
+    to footnotes in captions. (Footnotes in floats require
+    minipage.) The latex document with compile with
+    \protect\footnote, but the footnote is not shown.
+    Recommendation: rewrite caption.
+
+-----------
+"Google": "http://google.com". -----------
+
+Abort! (add --no_abort on the command line to avoid this abortion)
 + doconce format pdflatex tmp2
 translating doconce text in tmp2.do.txt to pdflatex
 figure file ../doc/src/manual/fig/wave1D:
@@ -88244,42 +90429,6 @@ figure file http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media
     found!
 *** warning: you have citations but no bibliography (BIBFILE: ...)
 output in tmp2.p.tex
-+ doconce format pdflatex tmp2
-translating doconce text in tmp2.do.txt to pdflatex
-figure file ../doc/src/manual/fig/wave1D:
-    can use ../doc/src/manual/fig/wave1D.pdf for format pdflatex
-... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.pdf ...
-    not found (http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.pdf, 404 error)
-... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png ...
-    found!
-figure file http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media:
-    can use http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png for format pdflatex
-... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png ...
-    found!
-*** warning: you have citations but no bibliography (BIBFILE: ...)
-output in tmp2.p.tex
-+ doconce format sphinx tmp2
-translating doconce text in tmp2.do.txt to sphinx
-figure file ../doc/src/manual/fig/wave1D:
-    can use ../doc/src/manual/fig/wave1D.png for format sphinx
-... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png ...
-    found!
-figure file http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media:
-    can use http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png for format sphinx
-*** warning: math only in sphinx figure caption
-  $a=50$
-    FIGURE: [../doc/src/manual/fig/wave1D.png
-*** warning: math only in sphinx figure caption
-  $a=50$
-    FIGURE: [http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png
-*** warning: you have citations but no bibliography (BIBFILE: ...)
-... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.mp4 ...
-    not found (http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.mp4, 404 error)
-... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.webm ...
-    found!
-... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.ogg ...
-    found!
-output in tmp2.rst
 + echo
 
 + echo 'When we reach this point in the script,'
@@ -89531,15 +91680,15 @@ Overfull \hbox (107.00006pt too wide)
 []\T1/pcr/m/n/10 "A Document for Testing Doconce": "testdoc.html" cite{testdoc:
 12}],  
 
-Overfull \hbox (3113.00006pt too wide) 
+Overfull \hbox (3179.00006pt too wide) 
 []\T1/pcr/m/n/10 commands: format help sphinx_dir subst replace replace_from_fi
 le clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine
-_images change_encoding gwiki_figsubst md2html remove_inline_comments grab remo
-ve remove_exercise_answers split_rst split_html slides_html slides_beamer latin
-2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sp
-hinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2ne
-w_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitd
-iff fix_bibtex4publish csv2table  
+_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comment
+s grab remove remove_exercise_answers split_rst split_html slides_html slides_b
+eamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_label
+s teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdo
+cstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefil
+e diff gitdiff fix_bibtex4publish csv2table  
 
 Overfull \hbox (299.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwik
@@ -89646,6 +91795,10 @@ Overfull \hbox (101.00006pt too wide)
 []\T1/pcr/m/n/10 # list all labels in a document (for purposes of cleaning them
  up)  
 
+Overfull \hbox (95.00006pt too wide) 
+[]\T1/pcr/m/n/10 # change headings from "This is a Heading" to "This is a headi
+ng"  
+
 Overfull \hbox (137.00006pt too wide) 
 []\T1/pcr/m/n/10 # translate a latex document to doconce (requires usually manu
 al fixing)  
@@ -89719,10 +91872,10 @@ Overfull \hbox (41.00006pt too wide)
 Overfull \hbox (2.38828pt too wide) 
 \T1/ptm/m/n/10 Doconce en-vi-ron-ments start with \T1/pcr/m/n/10 !benvirname \T
 1/ptm/m/n/10 and end with \T1/pcr/m/n/10 !eenvirname\T1/ptm/m/n/10 , where
-
+[16]
 Overfull \hbox (47.10902pt too wide) 
 []
-[16]
+
 Overfull \hbox (263.00006pt too wide) 
 []\T1/pcr/m/n/10 \multicolumn{1}{c}{time} & \multicolumn{1}{c}{velocity} & \mul
 ticolumn{1}{c}{acceleration} \\  
@@ -89992,15 +92145,15 @@ Overfull \hbox (107.00006pt too wide)
 []\T1/pcr/m/n/10 "A Document for Testing Doconce": "testdoc.html" cite{testdoc:
 12}],  
 
-Overfull \hbox (3113.00006pt too wide) 
+Overfull \hbox (3179.00006pt too wide) 
 []\T1/pcr/m/n/10 commands: format help sphinx_dir subst replace replace_from_fi
 le clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine
-_images change_encoding gwiki_figsubst md2html remove_inline_comments grab remo
-ve remove_exercise_answers split_rst split_html slides_html slides_beamer latin
-2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sp
-hinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2ne
-w_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitd
-iff fix_bibtex4publish csv2table  
+_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comment
+s grab remove remove_exercise_answers split_rst split_html slides_html slides_b
+eamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_label
+s teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdo
+cstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefil
+e diff gitdiff fix_bibtex4publish csv2table  
 
 Overfull \hbox (299.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwik
@@ -90107,6 +92260,10 @@ Overfull \hbox (101.00006pt too wide)
 []\T1/pcr/m/n/10 # list all labels in a document (for purposes of cleaning them
  up)  
 
+Overfull \hbox (95.00006pt too wide) 
+[]\T1/pcr/m/n/10 # change headings from "This is a Heading" to "This is a headi
+ng"  
+
 Overfull \hbox (137.00006pt too wide) 
 []\T1/pcr/m/n/10 # translate a latex document to doconce (requires usually manu
 al fixing)  
@@ -90180,10 +92337,10 @@ Overfull \hbox (41.00006pt too wide)
 Overfull \hbox (2.38828pt too wide) 
 \T1/ptm/m/n/10 Doconce en-vi-ron-ments start with \T1/pcr/m/n/10 !benvirname \T
 1/ptm/m/n/10 and end with \T1/pcr/m/n/10 !eenvirname\T1/ptm/m/n/10 , where
-
+[17]
 Overfull \hbox (47.10902pt too wide) 
 []
-[17]
+
 Overfull \hbox (263.00006pt too wide) 
 []\T1/pcr/m/n/10 \multicolumn{1}{c}{time} & \multicolumn{1}{c}{velocity} & \mul
 ticolumn{1}{c}{acceleration} \\  

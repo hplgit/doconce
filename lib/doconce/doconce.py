@@ -8,12 +8,20 @@ except ImportError:
     OrderedDict = dict
 
 
-def debugpr(out):
-    """Add the text in string `out` to the log file (name in _log variable)."""
+def debugpr(heading='', text=''):
+    """Add `heading` and `text` to the log/debug file."""
     if option('debug'):
         global _log
-        _log = open('_doconce_debugging.log','a')
-        _log.write(out + '\n')
+        if encoding:
+            if isinstance(text, str):
+                text = text.decode(encoding)
+            _log = codecs.open('_doconce_debugging.log','a', encoding)
+        else:
+            _log = open('_doconce_debugging.log','a')
+        out_class = str(type(text)).split("'")[1]
+        pre = '\n' + '*'*60 + '\n%s>>> ' % out_class if text else ''
+        _log.write(pre + heading + '\n\n')
+        _log.write(text + '\n')
         _log.close()
 
 
@@ -525,18 +533,18 @@ def make_one_line_paragraphs(filestr, format):
     # idx/label/ref{}
     filestr = re.sub('(\\}\\s*)\n', r'\g<1>[[[[[SINGLE_NEWLINE]]]]]\n', filestr)
     filestr = re.sub('\n(AUTHOR|TITLE|DATE|FIGURE)', r'\n[[[[[SINGLE_NEWLINE]]]]]\g<1>', filestr)
-    debugpr('\n\n\n**** ONELINE1:\n\n%s\n\n' % filestr)
+    debugpr('ONELINE1:', filestr)
 
     # then remove all single linebreaks + following indentation
     filestr = re.sub('\n *', ' ', filestr)
-    debugpr('\n\n\n**** ONELINE2:\n\n%s\n\n' % filestr)
+    debugpr('ONELINE2:', filestr)
     # finally insert single and double linebreaks
     filestr = filestr.replace('[[[[[SINGLE_NEWLINE]]]]] ', '\n')
     filestr = filestr.replace('[[[[[SINGLE_NEWLINE]]]]]', '\n')
-    debugpr('\n\n\n**** ONELINE3:\n\n%s\n\n' % filestr)
+    debugpr('ONELINE3:', filestr)
     filestr = filestr.replace('[[[[[DOUBLE_NEWLINE]]]]] ', '\n\n')
     filestr = filestr.replace('[[[[[DOUBLE_NEWLINE]]]]]', '\n\n')
-    debugpr('\n\n\n**** ONELINE4:\n\n%s\n\n' % filestr)
+    debugpr('ONELINE4:', filestr)
     return filestr
 
 def bm2boldsymbol(filestr, format):
@@ -574,7 +582,7 @@ def insert_code_from_file(filestr, format):
             continue
 
         if line.startswith('@@@CODE '):
-            debugpr('\nFound verbatim copy (line %d):\n%s\n' % (i+1, line))
+            debugpr('found verbatim copy (line %d):\n%s\n' % (i+1, line))
             words = line.split()
             try:
                 filename = words[1]
@@ -812,8 +820,6 @@ def exercises(filestr, format, code_blocks, tex_blocks):
     # __Hint 1.__ some paragraph...,
     # __Hint 2.__ ...
 
-    debugpr('\n\n***** Data structure from interpreting exercises *****\n')
-
     all_exer = []   # collection of all exercises
     exer = {}       # data for one exercise, to be appended to all_exer
     inside_exer = False
@@ -1040,7 +1046,8 @@ def exercises(filestr, format, code_blocks, tex_blocks):
             for i_ in range(len(exer['hints'])):
                 exer['hints'][i_] = '\n'.join(exer['hints'][i_]).strip()
 
-            debugpr(pprint.pformat(exer))
+            debugpr('Data structure from interpreting exercises:',
+                    pprint.pformat(exer))
             formatted_exercise = EXERCISE[format](exer)
             newlines.append(formatted_exercise)
             all_exer.append(exer)
@@ -1117,9 +1124,9 @@ def exercises(filestr, format, code_blocks, tex_blocks):
         f.close()
         print 'found info about %d exercises, written to %s' % \
               (len(all_exer), exer_filename)
-        debugpr('\n%s\n**** The file after interpreting exercises ***\n\n%s\n%s\n\n\n' % ('-'*80, filestr, '-'*80))
+        debugpr('The file after interpreting exercises:', filestr)
     else:
-        debugpr('No exercises found.\n')
+        debugpr('No exercises found.')
 
     # Syntax check: must be no more exercise-specific environments left
     envirs = ['ans', 'sol', 'subex', 'hint', 'remarks']
@@ -1373,7 +1380,7 @@ def typeset_envirs(filestr, format):
                     title = title.replace('(%s)' % text_size, '').strip()
                     if text_size not in ('small', 'large'):
                         print '*** warning: wrong text size "%s" specified in %s environment!' % (text_size, envir)
-                        print '    must be large or small - will be set to normal'
+                        print '    must be "large" or "small" - will be set to normal'
                 if title == '':
                     # Rely on the format's default title
                     return ENVIRS[format][envir](m.group(2), format, text_size=text_size)
@@ -1875,7 +1882,7 @@ def handle_cross_referencing(filestr, format):
     for chapref, internal, cite, external in general_refs:
         ref_text = 'ref%s[%s][%s][%s]' % (chapref, internal, cite, external)
         if not internal and not external:
-            print ref_text, 'has empty fields'
+            print '*** error:', ref_text, 'has empty fields'
             _abort()
         ref2labels = re.findall(r'ref\{(.+?)\}', internal)
         refs_to_this_doc = [label for label in ref2labels
@@ -2384,8 +2391,7 @@ def doconce2format(filestr, format):
 
     # Next step: run operating system commands and insert output
     filestr = insert_os_commands(filestr, format)
-    debugpr('%s\n**** The file after running @@@OSCMD (from file):\n\n%s\n\n' %
-            ('*'*80, filestr))
+    debugpr('The file after running @@@OSCMD (from file):', filestr)
 
     # Next step: insert verbatim code from other (source code) files:
     # (if the format is latex, we could let ptex2tex do this, but
@@ -2393,8 +2399,7 @@ def doconce2format(filestr, format):
     # asterix, which will be replaced later and hence destroyed)
     #if format != 'latex':
     filestr = insert_code_from_file(filestr, format)
-    debugpr('%s\n**** The file after inserting @@@CODE (from file):\n\n%s\n\n' %
-            ('*'*80, filestr))
+    debugpr('The file after inserting @@@CODE (from file):', filestr)
 
     # Hack to fix a bug with !ec/!et at the end of files, which is not
     # correctly substituted by '' in rst, sphinx, st, epytext, plain, wikis
@@ -2414,22 +2419,17 @@ def doconce2format(filestr, format):
     # Hack for transforming align envirs to separate equations
     if format in ("sphinx", "pandoc", "ipynb"):
         filestr = align2equations(filestr, format)
-        debugpr('%s\n**** The file after {align} envirs are rewritten as separate equations:\n\n%s\n\n' % \
-          ('*'*80, filestr))
+        debugpr('The file after {align} envirs are rewritten as separate equations:', filestr)
 
     # Next step: remove all verbatim and math blocks
 
     filestr, code_blocks, code_block_types, tex_blocks = \
              remove_code_and_tex(filestr)
 
-    debugpr('%s\n**** The file after removal of code/tex blocks:\n\n%s\n\n' % \
-          ('*'*80, filestr))
-    debugpr('%s\n**** The code blocks:\n\n%s\n\n' % \
-          ('*'*80, pprint.pformat(code_blocks)))
-    debugpr('%s\n**** The code block types:\n\n%s\n\n' % \
-          ('*'*80, pprint.pformat(code_block_types)))
-    debugpr('%s\n**** The tex blocks:\n\n%s\n\n' % \
-          ('*'*80, pprint.pformat(tex_blocks)))
+    debugpr('The file after removal of code/tex blocks:', filestr)
+    debugpr('The code blocks:', pprint.pformat(code_blocks))
+    debugpr('The code block types:', pprint.pformat(code_block_types))
+    debugpr('The tex blocks:', pprint.pformat(tex_blocks))
 
     # Check URLs to see if they are valid
     if option('urlcheck'):
@@ -2500,32 +2500,29 @@ def doconce2format(filestr, format):
     # Next step: deal with cross referencing (must occur before other format subst)
     filestr = handle_cross_referencing(filestr, format)
 
-    debugpr('%s\n**** The file after handling ref and label cross referencing\n\n%s\n\n' % ('*'*80, filestr))
-
+    debugpr('The file after handling ref and label cross referencing:', filestr)
     # Next step: deal with index and bibliography (must be done before lists):
     filestr = handle_index_and_bib(filestr, format, has_title)
 
-    debugpr('%s\n**** The file after handling index and bibliography\n\n%s\n\n' % ('*'*80, filestr))
+    debugpr('The file after handling index and bibliography:', filestr)
 
 
     # Next step: deal with lists
     filestr = typeset_lists(filestr, format,
                             debug_info=[code_blocks, tex_blocks])
-    debugpr('%s\n**** The file after typesetting of list:\n\n%s\n\n' %
-            ('*'*80, filestr))
+    debugpr('The file after typesetting of lists:', filestr)
 
     # Next step: add space around | in tables for substitutions to get right
     filestr = space_in_tables(filestr)
-    debugpr('%s\n**** The file after adding space around | in tables:\n\n%s\n\n' % ('*'*80, filestr))
+    debugpr('The file after adding space around | in tables:', filestr)
 
     # Next step: do substitutions
     filestr = inline_tag_subst(filestr, format)
-    debugpr('%s\n**** The file after all inline substitutions:\n\n%s\n\n' % ('*'*80, filestr))
+    debugpr('The file after all inline substitutions:', filestr)
 
     # Next step: deal with tables
     filestr = typeset_tables(filestr, format)
-    debugpr('%s\n**** The file after typesetting of tables:\n\n%s\n\n' %
-            ('*'*80, filestr))
+    debugpr('The file after typesetting of tables:', filestr)
 
     # Next step: deal with various commands and envirs to be put as comments
     commands = ['!split', '!bpop', '!epop', '!bslidecell', '!eslidecell',
@@ -2538,8 +2535,7 @@ def doconce2format(filestr, format):
             split_comment = comment_action((command + r'\g<1>'))
         cpattern = re.compile('^%s( *| +.*)$' % command, re.MULTILINE)
         filestr = cpattern.sub(split_comment, filestr)
-    debugpr('%s\n**** The file after commenting out %s:\n\n%s\n\n' %
-            ('*'*80, ', '.join(commands), filestr))
+    debugpr('The file after commenting out %s:' % ', '.join(commands), filestr)
 
 
     # Next step: substitute latex-style newcommands in filestr and tex_blocks
@@ -2590,16 +2586,14 @@ def doconce2format(filestr, format):
                            tex_blocks, format)
     filestr += '\n'
 
-    debugpr('%s\n**** The file after inserting intro/outro and tex/code blocks, and fixing last format-specific issues:\n\n%s\n\n' % \
-          ('*'*80, filestr))
+    debugpr('The file after inserting intro/outro and tex/code blocks, and fixing last format-specific issues:', filestr)
 
     # Next step: deal with !b... !e... environments
     # (done after code and text to ensure correct indentation
     # in the formats that applies indentation)
     filestr = typeset_envirs(filestr, format)
 
-    debugpr('%s\n**** The file after typesetting of admons and the rest of the !b/!e environments:\n\n%s\n\n' % \
-          ('*'*80, filestr))
+    debugpr('The file after typesetting of admons and the rest of the !b/!e environments:', filestr)
 
     # Next step: remove exercise solution/answers, notes, etc
     # (Note: must be done after code and tex blocks are inserted!
@@ -2618,8 +2612,7 @@ def doconce2format(filestr, format):
             filestr = re.sub(pattern, replacement, filestr, flags=re.DOTALL)
 
 
-    debugpr('%s\n**** The file after removal of solutions, answers, notes, hints, etc.:\n\n%s\n\n' % \
-          ('*'*80, filestr))
+    debugpr('The file after removal of solutions, answers, notes, hints, etc.:', filestr)
 
     # Check if we have wrong-spelled environments
     if not option('examples_as_exercises'):
@@ -2651,8 +2644,7 @@ def doconce2format(filestr, format):
         filestr = filestr.replace('|b' + envir, '!b' + envir)
         filestr = filestr.replace('|e' + envir, '!e' + envir)
 
-    debugpr('%s\n**** The file after replacing |bc and |bt environments by true !bt and !et (in code blocks):\n\n%s\n\n' % \
-          ('*'*80, filestr))
+    debugpr('The file after replacing |bc and |bt environments by true !bt and !et (in code blocks):', filestr)
 
     return filestr
 
@@ -2729,7 +2721,7 @@ def preprocess(filename, format, preprocessor_options=[]):
 
     preprocess_commands = r'^#\s*#(if|define|include)'
     if re.search(preprocess_commands, filestr_without_code, re.MULTILINE):
-        debugpr('found use of %d preprocess directives # #if|define|include in file %s' % (len(re.findall(preprocess_commands, filestr_without_code, flags=re.MULTILINE)), filename))
+        debugpr('Found use of %d preprocess directives # #if|define|include in file %s' % (len(re.findall(preprocess_commands, filestr_without_code, flags=re.MULTILINE)), filename))
 
         #print 'run preprocess on', filename, 'to make', resultfile
         preprocessor = 'preprocess'
@@ -2783,19 +2775,19 @@ preprocess package (sudo apt-get install preprocess).
     match_percentage = re.search(mako_commands, filestr_without_code,
                                  re.MULTILINE)  # match %
     if match_percentage:
-        debugpr('found use of %% sign(s) for mako code in %s:\n%s' % (resultfile, ', '.join(re.findall(mako_commands, filestr_without_code))))
+        debugpr('Found use of %% sign(s) for mako code in %s:\n%s' % (resultfile, ', '.join(re.findall(mako_commands, filestr_without_code))))
 
     match_mako_variable = False
     for name in mako_kwargs:
         pattern = r'\$\{%s\}' % name  # ${name}
         if re.search(pattern, filestr_without_code):
             match_mako_variable = True
-            debugpr('found use of mako variable(s) in %s: %s' % (resultfile, ', '.join(re.findall(pattern, filestr_without_code))))
+            debugpr('Found use of mako variable(s) in %s: %s' % (resultfile, ', '.join(re.findall(pattern, filestr_without_code))))
             break
         pattern = r'\b%s\b' % name    # e.g. % if name == 'a' (or Python code)
         if re.search(pattern, filestr_without_code):
             match_mako_variable = True
-            debugpr('found use mako variable(s) in mako code in %s: %s' % (resultfile, ', '.join(re.findall(pattern, filestr_without_code))))
+            debugpr('Found use mako variable(s) in mako code in %s: %s' % (resultfile, ', '.join(re.findall(pattern, filestr_without_code))))
             break
 
     if (match_percentage or match_mako_variable) and option('no_mako'):
@@ -2946,7 +2938,7 @@ python-mako package (sudo apt-get install python-mako).
         # no preprocessor syntax detected
         resultfile = filename
     else:
-        debugpr('%s\n**** The file after running preprocess and/or mako:\n\n%s\n\n' % (' '*80, filestr))
+        debugpr('The file after running preprocess and/or mako:', filestr)
 
     return resultfile
 
@@ -3004,10 +2996,10 @@ def format_driver():
     this file is not produced.
 
     """)
-        print 'debug output in', _log_filename
+        print '*** debug output in', _log_filename
 
 
-    debugpr('\n\n>>>>>>>>>>>>>>>>> %s >>>>>>>>>>>>>>>>>\n\n' % format)
+    debugpr('\n\n******* output format: %s *******\n\n' % format)
 
     if not os.path.isfile(filename):
         basename = filename

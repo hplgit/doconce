@@ -378,17 +378,15 @@ def html_code(filestr, code_blocks, code_block_types,
 
 
     from doconce import debugpr
-    debugpr('File before call to insert_code_and_tex (format html)\n%s'
-            % filestr)
+    debugpr('File before call to insert_code_and_tex (format html):', filestr)
     filestr = insert_code_and_tex(filestr, code_blocks, tex_blocks, format)
-    debugpr('File after call to isnert_code_and tex (format html)\n%s'
-            % filestr)
+    debugpr('File after call to isnert_code_and tex (format html):', filestr)
 
     if pygm or needs_online_python_tutor:
         c = re.compile(r'^!bc(.*?)\n', re.MULTILINE)
         filestr = c.sub(r'<p>\n\n', filestr)
         filestr = re.sub(r'!ec\n', r'<p>\n', filestr)
-        debugpr('\n\nAfter replacement of !bc and !ec (pygmentized code)\n%s' % filestr)
+        debugpr('After replacement of !bc and !ec (pygmentized code):', filestr)
     else:
         c = re.compile(r'^!bc(.*?)\n', re.MULTILINE)
         # <code> gives an extra line at the top unless the code starts
@@ -1496,6 +1494,14 @@ def latin2html(text):
     (However, the method below shows how to cope with special
     European characters in general.)
     """
+    # Only run this algorithm for plain ascii files, otherwise
+    # text is unicode utf-8 which is easily shown without encoding
+    # non-ascii characters in html.
+    if not isinstance(text, str):
+        return text
+
+    # Turn ascii into utf-8 or latin-1 before finding the ord(c)
+    # codes and writing them out in html
     text_new = []
     try:
         text = text.decode('utf-8')

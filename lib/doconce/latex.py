@@ -157,6 +157,8 @@ def latex_code(filestr, code_blocks, code_block_types,
                 # The link text does not display the URL so we include it
                 # in a footnote (\nolinkurl{} indicates URL: "...")
                 texttt_url = url.replace('_', '\\_').replace('#', '\\#').replace('%', '\\%').replace('&', '\\&')
+                # use \protect\footnote such that hyperlinks works within
+                # captions and other places (works well outside too with \protect)
                 return '\\href{{%s}}{%s}' % (url, text) + \
                        '\\footnote{\\texttt{%s}}' % texttt_url
             else: # no substitution, URL is in the link text
@@ -218,8 +220,8 @@ def latex_figure(m, includegraphics=True):
     opts = m.group('options')
     if opts:
         info = [s.split('=') for s in opts.split()]
-        for option, value in info:
-            if option == 'frac':
+        for opt, value in info:
+            if opt == 'frac':
                 frac = float(value)
     if includegraphics:
         includeline = r'\centerline{\includegraphics[width=%s\linewidth]{%s}}' % (frac, filename)
@@ -232,6 +234,22 @@ def latex_figure(m, includegraphics=True):
         label = m.group(1).strip()
     else:
         label = ''
+
+    # URLs that become footnotes pose problems inside a caption.
+    # It is not recommended to have footnotes in floats (safe solutions
+    # require minipage).
+    if option('device=', '') == 'paper':
+        pattern = r'".+?"\s*:\s*"https?:.+?"'
+        links = re.findall(pattern, caption, flags=re.DOTALL)
+        if links:
+            print '*** error: hyperlinks inside caption pose problems for'
+            print '    latex output and --device=paper because they lead'
+            print '    to footnotes in captions. (Footnotes in floats require'
+            print '    minipage.) The latex document with compile with'
+            print '    \\protect\\footnote, but the footnote is not shown.'
+            print '    Recommendation: rewrite caption.\n'
+            print '-----------\n', caption, '\n-----------\n'
+            _abort()
 
     # `verbatim_text` in backquotes is translated to \code{verbatim\_text}
     # which then becomes \Verb!verbatim\_text! when running ptex2tex or
@@ -1074,11 +1092,12 @@ def latex_%(_admon)s(text_block, format, title='%(_Admon)s', text_size='normal')
 
 ''' %% vars()
         figname = get_admon_figname(latex_admon, '%(_admon)s')
-        if format == 'pdflatex':
-            figname += '.pdf'
-        elif format == 'latex':
-            figname += '.eps'
-        _get_admon_figs(figname)
+        if figname is not None:
+            if format == 'pdflatex':
+                figname += '.pdf'
+            elif format == 'latex':
+                figname += '.eps'
+            _get_admon_figs(figname)
     elif latex_admon == 'paragraph':
         text = r'''
 \begin{paragraphadmon}[%%(title_para)s]
@@ -1422,11 +1441,7 @@ def define(FILENAME_EXTENSION,
         INTRO['latex'] += r"""
 \documentclass[%%
 %(side_tp)s,                 %% oneside: electronic viewing, twoside: printing
-%% #ifdef DOUBLE_SPACING
-draft,                   %% or final
-%% #else
-final,                   %% or draft (marks overfull hboxes)
-%% #endif
+final,                   %% or draft (marks overfull hboxes, figures with paths)
 chapterprefix=true,      %% "Chapter" word at beginning of each chapter
 open=right               %% start new chapters on odd-numbered pages
 10pt]{book}
@@ -1436,11 +1451,7 @@ open=right               %% start new chapters on odd-numbered pages
         INTRO['latex'] += r"""
 \documentclass[%%
 %(side_tp)s,                 %% oneside: electronic viewing, twoside: printing
-%% #ifdef DOUBLE_SPACING
-draft,                   %% or final
-%% #else
-final,                   %% or draft (marks overfull hboxes)
-%% #endif
+final,                   %% or draft (marks overfull hboxes, figures with paths)
 10pt]{article}
 """ % vars()
 

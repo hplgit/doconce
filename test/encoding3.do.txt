@@ -1,0 +1,24 @@
+## Test of handling non-ASCII characters in Doconce
+Text with a name like Åsmund Ødegård works in general.
+# #ifdef PREPROCESS
+Verbatim blocks with non-ASCII text does not work for HTML, but it works
+for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
+
+!bc
+a = 1  # Value suggested by Åsmund Ødegård.
+!ec
+# #endif
+
+# #ifdef MAKO
+## trigger Mako through the FORMAT variable...
+This block (in format ${FORMAT})
+triggers use of `mako`. For all formats, `mako` has
+problem with non-ASCII characters anywhere in the text. The remedy
+for all formats is to read the file with UTF-8 encoding. With --debug
+one can see the internal str/unicode representation of the text
+through the various stages of the text transformation process.
+
+## Mako fails whether plain text or verbatim block:
+$b = 1$ is a value suggested by Åsmund Ødegård.
+# #endif
+

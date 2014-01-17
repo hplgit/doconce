@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Testing admons">
+
+
+
+<style type="text/css">
+    /* solarized style */
+    body {
+      margin:5;
+      padding:0;
+      border:0;	/* Remove the border around the viewport in old versions of IE */
+      width:100%;
+      background: #fdf6e3;
+      min-width:600px;	/* Minimum width of layout - remove if not required */
+      font-family: Verdana, Helvetica, Arial, sans-serif;
+      font-size: 1.0em;
+      line-height: 1.3em;
+      color: #657b83;
+    }
+    a { color: #657b83; text-decoration:none; }
+    a:hover { color: #b58900; background: #eee8d5; text-decoration:none; }
+    h1, h2, h3 { margin:.8em 0 .2em 0; padding:0; line-height: 125%; }
+    h2 { font-variant: small-caps; }
+    pre {
+      background: #fdf6e3;
+      -webkit-box-shadow: inset 0 0 2px #000000;
+      -moz-box-shadow: inset 0 0 2px #000000;
+      box-shadow: inset 0 0 2px #000000;
+      color: #586e75;
+      margin-left: 0px;
+      font-family: 'Droid Sans Mono', monospace;
+      padding: 2px;
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      border-radius: 4px;
+      -moz-background-clip: padding;
+      -webkit-background-clip: padding-box;
+      background-clip: padding-box;
+    }
+    tt, code { font-family: "Courier New", Courier; }
+    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    p { text-indent: 0px; }
+    p.caption { width: 80%; font-style: normal; text-align: left; }
+    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    .alert-text-small   { font-size: 80%;  }
+    .alert-text-large   { font-size: 130%; }
+    .alert-text-normal  { font-size: 90%;  }
+    .alert {
+             padding:8px 35px 8px 14px; margin-bottom:18px;
+             text-shadow:0 1px 0 rgba(255,255,255,0.5);
+             border:1px solid #FFBF00;
+             border-radius: 4px;
+             -webkit-border-radius: 4px;
+             -moz-border-radius: 4px;
+             color: #555;
+             background-color: #fbeed5;
+             background-position: 10px 5px;
+             background-repeat: no-repeat;
+             background-size: 38px;
+             padding-left: 55px;
+             width: 75%;
+     }
+     .alert-block {padding-top:14px; padding-bottom:14px}
+     .alert-block > p, .alert-block > ul {margin-bottom:1em}
+     .alert li {margin-top: 1em}
+     .alert-block p+p {margin-top:5px}
+     .alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
+     .alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
+     .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
+     .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
+
+</style>
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' Introduction ', 1, None, '___sec0'),
+              (' Code ', 2, None, '___sec1'),
+              (' Quotes and boxes ', 2, None, '___sec2'),
+              (' Admonitions ', 2, None, '___sec3'),
+              (' Going deeper environments ', 2, None, '___sec4'),
+              (' The end ', 2, None, '___sec5')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "AMS"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+
+<!-- newcommands_bfmath.tex -->
+$$
+\renewcommand{\u}{\pmb{u}}
+
+\newcommand{\xbm}{\boldsymbol{x}}
+\newcommand{\normalvecbm}{\boldsymbol{n}}
+\newcommand{\ubm}{\boldsymbol{u}}
+$$
+
+
+<!-- newcommands_replace.tex -->
+$$
+\newcommand{\x}{\pmb{x}}
+\newcommand{\normalvec}{\pmb{n}}
+\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
+\newcommand{\halfi}{1/2}
+\newcommand{\half}{\frac{1}{2}}
+\newcommand{\report}{test report}
+$$
+
+
+
+
+    
+<!-- ------------------- main content ---------------------- -->
+
+
+<title>Testing admons</title>
+
+<center><h1>Testing admons</h1></center>  <!-- document title -->
+
+<p>
+<!-- author(s): hpl -->
+
+<center>
+<b>hpl</b> 
+</center>
+
+
+<p>
+<!-- institution(s) -->
+<p>
+<center><h4>Jan 15, 2014</h4></center> <!-- date -->
+
+<h2>Introduction  <a name="___sec0"></a></h2>
+First some ordinary text to compare font sizes in admonitions
+and the surrounding text.
+
+<h3>Code  <a name="___sec1"></a></h3>
+
+<p>
+Need some code outside admons for color and font comparisons:
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">some_code</span>(x):
+    <span style="color: #8B008B; font-weight: bold">return</span> sin(x)*exp(<span style="color: #B452CD">1</span>-x)
+</pre></div>
+<p>
+And some plain text verbatim:
+
+<p>
+
+<!-- code=text typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">x=1.0 y=0.9 z=0.4
+x=1.1 y=0.3 z=0.1
+</pre></div>
+
+<h3>Quotes and boxes  <a name="___sec2"></a></h3>
+
+<p>
+Here is a plain quote environment.
+
+<p>
+<blockquote>
+    Sayre's law states that
+    "in any dispute the intensity of feeling is inversely
+    proportional to the value of the issues at stake."
+    By way of corollary, it adds:
+    "That is why academic politics are so bitter."
+    
+    <p>
+    <em>Source</em>: <a href="http://en.wikipedia.org/wiki/Sayre's_law" target="_self">wikipedia</a>
+</blockquote>
+
+
+<p>
+Does quotes with title also work? No...cannot work in LaTeX and HTML
+and then it does not make sense to support it.
+
+<p>
+A plain <em>box</em> is sometimes useful. Let's show it here for comparison
+with admons (especially the block admon has much in common with a box).
+The box is more aimed at framing a law or an equation.
+
+<p>
+First a simple block with text, an equation, and a list:
+
+<p>
+
+<!-- begin box -->
+<div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px;">
+A generic equation
+
+<p>
+$$ f(x) = 0 $$
+
+must be solved by a numerical method, such as
+
+<p>
+
+<ul>
+ <li> Newton's method</li>
+ <li> The Bisection method</li>
+ <li> Fixed-point (Picard) iteration by rewriting \( f(x)=x - g(x) \)</li>
+ <li> The Secant method</li>
+</ul>
+</div>
+<!-- end box -->
+
+Now test a box with equation only (note that this line continues the
+box, it is not a new paragraph):
+
+<p>
+
+<!-- begin box -->
+<div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px;">
+$$
+\begin{equation} f(x) = \sin(x)e^{1-x} \end{equation}
+$$
+</div>
+<!-- end box -->
+
+
+<p>
+Let's begin a new paragraph and show a box with code only:
+
+<p>
+
+<!-- begin box -->
+<div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px;">
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">some_code</span>(x):
+    <span style="color: #8B008B; font-weight: bold">return</span> sin(x)*exp(<span style="color: #B452CD">1</span>-x)
+</pre></div>
+<p>
+</div>
+<!-- end box -->
+
+
+<h3>Admonitions  <a name="___sec3"></a></h3>
+
+<p>
+Let us start with a plain warning environment.
+
+<p>
+<div class="alert alert-block alert-warning alert-text-normal"><b>Warning.</b>
+And here is a warning about something to pay attention to. We
+test how the heading behave and add quite some extra texts
+in comparison with the other admons.
+
+<p>
+
+<ul>
+  <li> and a list</li>
+  <li> with items</li>
+</ul>
+
+We continue with more text to see how that affects the layout.
+And more and more text.
+And more and more text.
+And more and more text.
+And more and more text.
+And more and more text.
+And more and more text.
+</div>
+
+
+<p>
+Test warning with title:
+
+<p>
+<div class="alert alert-block alert-warning alert-text-large"><b>Watch out.</b>
+And here comes some text with bad news in larger font.
+</div>
+
+
+<p>
+Test warning with large title with math:
+
+<p>
+<div class="alert alert-block alert-warning alert-text-large"><b>Watch out for \( \nabla\cdot\boldsymbol{u}=0 \) equations.</b>
+Divergence freedom is often problematic from a numerical point
+of view.
+</div>
+
+
+<p>
+Then we test a block, which is guaranteed to never have any admon icon.
+
+<p>
+<div class="alert alert-block alert-block alert-text-small"><b>Block with title.</b>
+Here is a block of text with title. It is typeset
+<em>without any icon</em> and is useful when you want some admons with icon
+and some without. With the small font size, as used here, one can have
+more comment-style text or text that really goes deeper or talks
+about fun facts that are not strictly necessary for the main flow
+of understanding.
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal"><b></b>
+Here is a block of text with no title. As above, it is typeset without any icon
+and is useful when you want some admons with icon and some without.
+</div>
+
+
+<p>
+The next admonition features a title "Note, eventually!".
+
+<p>
+<!-- Note that the final ! does not appear in Sphinx and reST since -->
+<!-- those formats automatically add : to the admonition title. -->
+
+<p>
+<div class="alert alert-block alert-notice alert-text-illegal-size"><b>Note, eventually!</b>
+Ah, we are soon close to the end (with illegal font size specification!).
+But first a bit of math where we define \( \theta \) and \( \boldsymbol{r} \):
+
+<p>
+$$
+\begin{align*}
+\theta &= q^2,\\
+\boldsymbol{r} &= \varrho\boldsymbol{i}
+\end{align*}
+$$
+</div>
+
+
+<p>
+<!-- Test one word with a number -->
+
+<p>
+<div class="alert alert-block alert-notice alert-text-normal"><b>Point1.</b>
+Ah, we are soon close to the end.
+</div>
+
+
+<p>
+<div class="alert alert-block alert-question alert-text-normal"><b>Question.</b>
+So, how many admonition environments does Doconce support?
+</div>
+
+
+<p>
+<div class="alert alert-block alert-question alert-text-normal"><b>Question.</b>
+
+<ol>
+ <li> Once more, how many admonition environments does Doconce support?</li>
+</ol>
+</div>
+
+
+<p>
+<div class="alert alert-block alert-warning alert-text-normal"><b>Tip.</b>
+It is of outmost important to
+
+<p>
+
+<ol>
+<li> stay cool</li>
+<li> read hints and tips carefully</li>
+</ol>
+
+Because here the thing is to do
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #fbeed5"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">urllib</span>
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">grab</span>(url, filename):
+    urllib.urlretrieve(url, filename=filename)
+</pre></div>
+<p>
+</div>
+
+
+<p>
+Next is a warning without a title ("none" implies no title).
+
+<p>
+<div class="alert alert-block alert-warning alert-text-normal"><b></b>
+And here comes some text with bad news.
+</div>
+
+
+<h3>Going deeper environments  <a name="___sec4"></a></h3>
+
+<p>
+Here is a long notice environment with a custom title and much
+text, math and code.
+
+<p>
+<div class="alert alert-block alert-notice alert-text-normal"><b>Going deeper.</b>
+We have some equations that should be preceded by much text, so the
+task is to write and write. The number of words, and not the
+meaning, is what counts here. We need desperately to fill up the
+page in the hope that some admonitions will experience a page break,
+which the LaTeX environment should handle with ease.
+
+<p>
+Let us start with some equations:
+
+<p>
+$$
+\begin{align*}
+\frac{Du}{dt} &= 0
+\\
+\frac{1}{2} &= {1/2}\\
+\frac{1}{2}\pmb{x} &= \pmb{n}
+\end{align*}
+$$
+
+
+<p>
+The implementation of such complicated equations in computer
+code is task that this "Going deeper" environment targets.
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #fbeed5"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">Dudt</span>(u):
+    r = diff(u, t) + u*grad(u)
+    <span style="color: #8B008B; font-weight: bold">return</span> r
+
+half = <span style="color: #B452CD">0.5</span>
+x = <span style="color: #B452CD">2</span>*n
+</pre></div>
+<p>
+And some more text that can help going into the next page.
+Longer computer code requires vertical space:
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #fbeed5"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Diff</span>:
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__init__</span>(<span style="color: #658b00">self</span>, f, h=<span style="color: #B452CD">1E-5</span>):
+        <span style="color: #658b00">self</span>.f = f
+        <span style="color: #658b00">self</span>.h = <span style="color: #658b00">float</span>(h)
+
+<span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Forward1</span>(Diff):
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__call__</span>(<span style="color: #658b00">self</span>, x):
+        f, h = <span style="color: #658b00">self</span>.f, <span style="color: #658b00">self</span>.h
+        <span style="color: #8B008B; font-weight: bold">return</span> (f(x+h) - f(x))/h
+
+<span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Backward1</span>(Diff):
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__call__</span>(<span style="color: #658b00">self</span>, x):
+        f, h = <span style="color: #658b00">self</span>.f, <span style="color: #658b00">self</span>.h
+        <span style="color: #8B008B; font-weight: bold">return</span> (f(x) - f(x-h))/h
+
+<span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Central2</span>(Diff):
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__call__</span>(<span style="color: #658b00">self</span>, x):
+        f, h = <span style="color: #658b00">self</span>.f, <span style="color: #658b00">self</span>.h
+        <span style="color: #8B008B; font-weight: bold">return</span> (f(x+h) - f(x-h))/(<span style="color: #B452CD">2</span>*h)
+
+<span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Central4</span>(Diff):
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__call__</span>(<span style="color: #658b00">self</span>, x):
+        f, h = <span style="color: #658b00">self</span>.f, <span style="color: #658b00">self</span>.h
+        <span style="color: #8B008B; font-weight: bold">return</span> (<span style="color: #B452CD">4.</span>/<span style="color: #B452CD">3</span>)*(f(x+h)   - f(x-h))  /(<span style="color: #B452CD">2</span>*h) - \
+               (<span style="color: #B452CD">1.</span>/<span style="color: #B452CD">3</span>)*(f(x+<span style="color: #B452CD">2</span>*h) - f(x-<span style="color: #B452CD">2</span>*h))/(<span style="color: #B452CD">4</span>*h)
+
+<span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Central6</span>(Diff):
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__call__</span>(<span style="color: #658b00">self</span>, x):
+        f, h = <span style="color: #658b00">self</span>.f, <span style="color: #658b00">self</span>.h
+        <span style="color: #8B008B; font-weight: bold">return</span> (<span style="color: #B452CD">3.</span>/<span style="color: #B452CD">2</span>) *(f(x+h)   - f(x-h))  /(<span style="color: #B452CD">2</span>*h) - \
+               (<span style="color: #B452CD">3.</span>/<span style="color: #B452CD">5</span>) *(f(x+<span style="color: #B452CD">2</span>*h) - f(x-<span style="color: #B452CD">2</span>*h))/(<span style="color: #B452CD">4</span>*h) + \
+               (<span style="color: #B452CD">1.</span>/<span style="color: #B452CD">10</span>)*(f(x+<span style="color: #B452CD">3</span>*h) - f(x-<span style="color: #B452CD">3</span>*h))/(<span style="color: #B452CD">6</span>*h)
+
+<span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Forward3</span>(Diff):
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__call__</span>(<span style="color: #658b00">self</span>, x):
+        f, h = <span style="color: #658b00">self</span>.f, <span style="color: #658b00">self</span>.h
+        <span style="color: #8B008B; font-weight: bold">return</span> (-(<span style="color: #B452CD">1.</span>/<span style="color: #B452CD">6</span>)*f(x+<span style="color: #B452CD">2</span>*h) + f(x+h) - <span style="color: #B452CD">0.5</span>*f(x) - \
+                (<span style="color: #B452CD">1.</span>/<span style="color: #B452CD">3</span>)*f(x-h))/h
+</pre></div>
+<p>
+And then we add a figure too.
+
+<p>
+<center><p><img src="../doc/src/manual/fig/wave1D.png" align="bottom" width=400></p></center>
+</div>
+
+
+<h3>The end  <a name="___sec5"></a></h3>
+
+<p>
+A bit of text before the summary, which we now call "Concluding remarks,
+for the novice",
+just because we can.
+
+<p>
+<div class="alert alert-block alert-summary alert-text-normal"><b>Concluding remarks, for the novice.</b>
+We can summarize the most important things with admons: they have
+a different typesetting, and they may have a symbol.
+Titles should be optional.
+</div>
+
+
+<p>
+<b>Remark.</b>
+The <code>remarks</code> and <code>hint</code> environments are not allowed outside
+exercises (and problems and projects too).
+
+<!-- ------------------- end of main content --------------- -->
+
+
+</body>
+</html>
+    
+
