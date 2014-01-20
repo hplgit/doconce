@@ -1383,6 +1383,16 @@ def define(FILENAME_EXTENSION,
     admon_css_vars['apricot'] = dict(boundary='#FFBF00', background='#fbeed5')
     #admon_css_vars['gray']    = dict(boundary='#bababa', background='whiteSmoke')
     admon_css_vars['gray']    = dict(boundary='#bababa', background='#f8f8f8') # same color as in pygments light gray background
+    # Override with user's values
+    html_admon_bg_color = option('html_admon_bg_color=', None)
+    html_admon_bd_color = option('html_admon_bd_color=', None)
+    if html_admon_bg_color is not None:
+        for tp in ('yellow', 'apricot', 'gray'):
+            admon_css_vars[tp]['background'] = html_admon_bg_color
+    if html_admon_bd_color is not None:
+        for tp in ('yellow', 'apricot', 'gray'):
+            admon_css_vars[tp]['boundary'] = html_admon_bd_color
+
     for a in admons:
         if a != 'block':
             admon_css_vars['yellow']['icon_' + a]  = 'small_yellow_%s.png' % a
