@@ -42,6 +42,7 @@ latex_double_hyphen = False
 #html_admon = 
 html_admon_shadow = False
 #latex_admon = 
+#latex_admon_color = 
 #css = 
 verbose = False
 examples_as_exercises = False
