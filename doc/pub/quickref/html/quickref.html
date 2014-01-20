@@ -82,7 +82,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Author:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jan 15, 2014</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jan 20, 2014</td>
 </tr>
 </tbody>
 </table>
@@ -764,7 +764,7 @@ forthcoming text. The index is only produced for the <tt class="docutils literal
 transforming a <tt class="docutils literal"><span class="pre">.do.txt</span></tt> file to some format. Here is the
 list of capabilities:</p>
 <div class="highlight-bash"><div class="highlight"><pre>Usage: doconce <span class="nb">command</span> <span class="o">[</span>optional arguments<span class="o">]</span>
-commands: format <span class="nb">help </span>sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format <span class="nb">help </span>sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 <span class="c"># transform doconce file to another format</span>
@@ -870,6 +870,9 @@ doconce combine_images image1 image2 ... output_file
 
 <span class="c"># insert a table of exercises in a latex file myfile.p.tex</span>
 doconce latex_exercise_toc myfile
+
+<span class="c"># list all figure, movie or included code files</span>
+doconce grab FIGURE|MOVIE|CODE myfile
 
 <span class="c"># list all labels in a document (for purposes of cleaning them up)</span>
 doconce list_labels myfile

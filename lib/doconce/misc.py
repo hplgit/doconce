@@ -5210,7 +5210,7 @@ def capitalize():
         'Python', 'IPython', 'Cython', 'Idle', 'NumPy', 'SciPy', 'SymPy',
         'Matplotlib', 'None', '$N$',
         'Fortran', 'MATLAB', 'SWIG', 'Perl', 'Ruby', 'CPU',
-        'DNA', 'British', 'American',
+        'DNA', 'British', 'American', 'Internet', # 'Web',
         'HTML', 'MSWord', 'OpenOffice',
         'StringFunction', 'Vec2D', 'Vec3D', 'SciTools', 'Easyviz',
         ]
@@ -5235,6 +5235,7 @@ def capitalize():
         ('hello world', 'Hello World'),
         ('midpoint integration', 'Midpoint integration'),
         ('midpoint rule', 'Midpoint rule'),
+        ('world wide web', 'World Wide Web'),
         ]
     for name in 'Newton', 'Lagrange', 'Einstein', 'Poisson', 'Taylor', 'Gibb':
         genetive = "'s"

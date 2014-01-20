@@ -8324,7 +8324,6 @@ The Doconce source code reads
 
 .. code-block:: text
 
-
           |--------------------------------|
           |time  | velocity | acceleration |
           |--l--------r-----------r--------|
@@ -16768,7 +16767,7 @@ HTML:
 
 System call:
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.Bash}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Terminal> mkdir test
 Terminal> cd test
 Terminal> myprog -f
@@ -16793,7 +16792,7 @@ HTML is the output format.
 #### Running OS commands
 
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.Bash}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Terminal> python -c 'print "Testing\noutput\nfrom\nPython."'
 Testing
 output
@@ -20521,19 +20520,19 @@ show()</code></pre>
 &lt;!-- comment --&gt;
 &lt;/table&gt;</code></pre>
 <p>System call:</p>
-<pre class="sourceCode Bash"><code class="sourceCode bash"><span class="kw">Terminal&gt;</span> mkdir test
-<span class="kw">Terminal&gt;</span> cd test
-<span class="kw">Terminal&gt;</span> myprog -f
-<span class="kw">output1</span>
-<span class="kw">output2</span></code></pre>
+<pre><code>Terminal&gt; mkdir test
+Terminal&gt; cd test
+Terminal&gt; myprog -f
+output1
+output2</code></pre>
 <p>It is time to test <code>verbatim inline font</code> especially with <code>a newline inside the text</code> and an exclamation mark at the end: <code>BEGIN</code>! The exclamation mark inside the verbatim text is potentially not smart since latex use ! in the <code>Verb</code> typesetting, but this should now be fixed: test <code>!bc</code> and <code>!ec</code> as well as <code>!bsummary</code>. Also test backslashes and braces like <code>\begin</code>, <code>\begin{enumerate}</code>, <code>\end{this}\end{that}</code>, and <code>{something \inside braces}</code> in inline verbatim text.</p>
 <p>Here is some <font color="red">red</font> color and an attempt to write <font color="green">with green color containing a linebreak. And one more.</font> Some formats will only display this correctly when HTML is the output format.</p>
 <h4 id="running-os-commands">Running OS commands</h4>
-<pre class="sourceCode Bash"><code class="sourceCode bash"><span class="kw">Terminal&gt;</span> python -c <span class="st">&#39;print &quot;Testing\noutput\nfrom\nPython.&quot;&#39;</span>
-<span class="kw">Testing</span>
-<span class="kw">output</span>
-<span class="kw">from</span>
-<span class="kw">Python.</span></code></pre>
+<pre><code>Terminal&gt; python -c &#39;print &quot;Testing\noutput\nfrom\nPython.&quot;&#39;
+Testing
+output
+from
+Python.</code></pre>
 <h3 id="subsection-2-testing-figures">Subsection 2: Testing figures</h3>
 <p>Test of figures. In particular we refer to Figure ref{fig:impact} in which there is a flow.</p>
 <div class="figure">
@@ -22962,6 +22961,10 @@ Inline math, $a=b$, is the only math in this document.
 % Need BIBFILE because of \cite{} examples
 
 
+\clearemptydoublepage
+\markboth{Bibliography}{Bibliography}
+\thispagestyle{empty}
+
 \bibliographystyle{plain}
 \bibliography{papers}
 
@@ -22970,6 +22973,9 @@ Inline math, $a=b$, is the only math in this document.
 
 
 % #ifdef PREAMBLE
+\clearemptydoublepage
+\markboth{Index}{Index}
+\thispagestyle{empty}
 \printindex
 
 \end{document}
@@ -24060,7 +24066,7 @@ such cells are not supported by this format).
 
 <p>
 
-<!-- code=text (from !bc pyscpro) typeset with pygments style "emacs" -->
+<!-- code=python (from !bc pyscpro) typeset with pygments style "emacs" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%"> 1
  2
  3
@@ -24072,17 +24078,17 @@ such cells are not supported by this format).
  9
 10
 11
-12</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a = 2
-b = 3
-print &#39;a+b:&#39;, a + b
+12</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a <span style="color: #666666">=</span> <span style="color: #666666">2</span>
+b <span style="color: #666666">=</span> <span style="color: #666666">3</span>
+<span style="color: #AA22FF; font-weight: bold">print</span> <span style="color: #BB4444">&#39;a+b:&#39;</span>, a <span style="color: #666666">+</span> b
 
-# In a sage cell we can also plot
-from matplotlib.pyplot import *
-from numpy import *
-x = linspace(0, 4*pi, 101)
-y = exp(-0.1*x)*cos(x)
+<span style="color: #008800; font-style: italic"># In a sage cell we can also plot</span>
+<span style="color: #AA22FF; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #666666">*</span>
+<span style="color: #AA22FF; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #666666">*</span>
+x <span style="color: #666666">=</span> linspace(<span style="color: #666666">0</span>, <span style="color: #666666">4*</span>pi, <span style="color: #666666">101</span>)
+y <span style="color: #666666">=</span> exp(<span style="color: #666666">-0.1*</span>x)<span style="color: #666666">*</span>cos(x)
 plot(x, y)
-xlabel(&#39;x&#39;); ylabel(&#39;y&#39;)
+xlabel(<span style="color: #BB4444">&#39;x&#39;</span>); ylabel(<span style="color: #BB4444">&#39;y&#39;</span>)
 show()
 </pre></div>
 </td></tr></table><p>
@@ -24175,16 +24181,16 @@ HTML:
 System call:
 <p>
 
-<!-- code=bash (from !bc sys) typeset with pygments style "emacs" -->
+<!-- code=console (from !bc sys) typeset with pygments style "emacs" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
 3
 4
-5</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; mkdir <span style="color: #AA22FF">test</span>
-Terminal&gt; <span style="color: #AA22FF">cd test</span>
-Terminal&gt; myprog -f
-output1
-output2
+5</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #808080">Terminal&gt; mkdir test</span>
+<span style="color: #808080">Terminal&gt; cd test</span>
+<span style="color: #808080">Terminal&gt; myprog -f</span>
+<span style="color: #808080">output1</span>
+<span style="color: #808080">output2</span>
 </pre></div>
 </td></tr></table><p>
 It is time to test <code>verbatim inline font</code> especially with <code>a newline
@@ -24206,16 +24212,16 @@ HTML is the output format.
 
 <p>
 
-<!-- code=bash (from !bc sys) typeset with pygments style "emacs" -->
+<!-- code=console (from !bc sys) typeset with pygments style "emacs" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
 3
 4
-5</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; python -c <span style="color: #BB4444">&#39;print &quot;Testing\noutput\nfrom\nPython.&quot;&#39;</span>
-Testing
-output
-from
-Python.
+5</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #808080">Terminal&gt; python -c &#39;print &quot;Testing\noutput\nfrom\nPython.&quot;&#39;</span>
+<span style="color: #808080">Testing</span>
+<span style="color: #808080">output</span>
+<span style="color: #808080">from</span>
+<span style="color: #808080">Python.</span>
 </pre></div>
 </td></tr></table><h3>Subsection 2: Testing figures <a name="subsec:ex"></a></h3>
 
@@ -24363,6 +24369,7 @@ The Doconce source code reads
 <p>
 
 <!-- code=text (from !bc ccq) typeset with pygments style "emacs" -->
+<blockquote>
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
 3
@@ -24377,7 +24384,7 @@ The Doconce source code reads
   | 4.0  | 1.1E+1   | 14.717624    |
   |--------------------------------|
 </pre></div>
-</td></tr></table><p>
+</td></tr></table></blockquote><p>
 Here is yet another table to test that we can handle more than
 one table:
 
@@ -25931,17 +25938,17 @@ such cells are not supported by this format).
 <p>
 
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a = 2
-b = 3
-print &#39;a+b:&#39;, a + b
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a <span style="color: #666666">=</span> <span style="color: #666666">2</span>
+b <span style="color: #666666">=</span> <span style="color: #666666">3</span>
+<span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;a+b:&#39;</span>, a <span style="color: #666666">+</span> b
 
-# In a sage cell we can also plot
-from matplotlib.pyplot import *
-from numpy import *
-x = linspace(0, 4*pi, 101)
-y = exp(-0.1*x)*cos(x)
+<span style="color: #408080; font-style: italic"># In a sage cell we can also plot</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
+x <span style="color: #666666">=</span> linspace(<span style="color: #666666">0</span>, <span style="color: #666666">4*</span>pi, <span style="color: #666666">101</span>)
+y <span style="color: #666666">=</span> exp(<span style="color: #666666">-0.1*</span>x)<span style="color: #666666">*</span>cos(x)
 plot(x, y)
-xlabel(&#39;x&#39;); ylabel(&#39;y&#39;)
+xlabel(<span style="color: #BA2121">&#39;x&#39;</span>); ylabel(<span style="color: #BA2121">&#39;y&#39;</span>)
 show()
 </pre></div>
 <p>
@@ -26012,11 +26019,11 @@ System call:
 <p>
 
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; mkdir <span style="color: #008000">test</span>
-Terminal&gt; <span style="color: #008000">cd test</span>
-Terminal&gt; myprog -f
-output1
-output2
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #808080">Terminal&gt; mkdir test</span>
+<span style="color: #808080">Terminal&gt; cd test</span>
+<span style="color: #808080">Terminal&gt; myprog -f</span>
+<span style="color: #808080">output1</span>
+<span style="color: #808080">output2</span>
 </pre></div>
 <p>
 It is time to test <code>verbatim inline font</code> especially with <code>a newline
@@ -26039,11 +26046,11 @@ HTML is the output format.
 <p>
 
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; python -c <span style="color: #BA2121">&#39;print &quot;Testing\noutput\nfrom\nPython.&quot;&#39;</span>
-Testing
-output
-from
-Python.
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #808080">Terminal&gt; python -c &#39;print &quot;Testing\noutput\nfrom\nPython.&quot;&#39;</span>
+<span style="color: #808080">Testing</span>
+<span style="color: #808080">output</span>
+<span style="color: #808080">from</span>
+<span style="color: #808080">Python.</span>
 </pre></div>
 
 <h3>Subsection 2: Testing figures <a name="subsec:ex"></a></h3>
@@ -26183,6 +26190,7 @@ The Doconce source code reads
 <p>
 
 
+<blockquote>
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">  |--------------------------------|
   |time  | velocity | acceleration |
   |--l--------r-----------r--------|
@@ -26191,7 +26199,7 @@ The Doconce source code reads
   | 4.0  | 1.1E+1   | 14.717624    |
   |--------------------------------|
 </pre></div>
-<p>
+</blockquote><p>
 Here is yet another table to test that we can handle more than
 one table:
 
@@ -27547,18 +27555,18 @@ such cells are not supported by this format).
 
 <p>
 
-<!-- code=text (from !bc pyscpro) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a = 2
-b = 3
-print &#39;a+b:&#39;, a + b
+<!-- code=python (from !bc pyscpro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a <span style="color: #666666">=</span> <span style="color: #666666">2</span>
+b <span style="color: #666666">=</span> <span style="color: #666666">3</span>
+<span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;a+b:&#39;</span>, a <span style="color: #666666">+</span> b
 
-# In a sage cell we can also plot
-from matplotlib.pyplot import *
-from numpy import *
-x = linspace(0, 4*pi, 101)
-y = exp(-0.1*x)*cos(x)
+<span style="color: #408080; font-style: italic"># In a sage cell we can also plot</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
+x <span style="color: #666666">=</span> linspace(<span style="color: #666666">0</span>, <span style="color: #666666">4*</span>pi, <span style="color: #666666">101</span>)
+y <span style="color: #666666">=</span> exp(<span style="color: #666666">-0.1*</span>x)<span style="color: #666666">*</span>cos(x)
 plot(x, y)
-xlabel(&#39;x&#39;); ylabel(&#39;y&#39;)
+xlabel(<span style="color: #BA2121">&#39;x&#39;</span>); ylabel(<span style="color: #BA2121">&#39;y&#39;</span>)
 show()
 </pre></div>
 <p>
@@ -27628,12 +27636,12 @@ HTML:
 System call:
 <p>
 
-<!-- code=bash (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; mkdir <span style="color: #008000">test</span>
-Terminal&gt; <span style="color: #008000">cd test</span>
-Terminal&gt; myprog -f
-output1
-output2
+<!-- code=console (from !bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #808080">Terminal&gt; mkdir test</span>
+<span style="color: #808080">Terminal&gt; cd test</span>
+<span style="color: #808080">Terminal&gt; myprog -f</span>
+<span style="color: #808080">output1</span>
+<span style="color: #808080">output2</span>
 </pre></div>
 <p>
 It is time to test <code>verbatim inline font</code> especially with <code>a newline
@@ -27655,12 +27663,12 @@ HTML is the output format.
 
 <p>
 
-<!-- code=bash (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; python -c <span style="color: #BA2121">&#39;print &quot;Testing\noutput\nfrom\nPython.&quot;&#39;</span>
-Testing
-output
-from
-Python.
+<!-- code=console (from !bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #808080">Terminal&gt; python -c &#39;print &quot;Testing\noutput\nfrom\nPython.&quot;&#39;</span>
+<span style="color: #808080">Testing</span>
+<span style="color: #808080">output</span>
+<span style="color: #808080">from</span>
+<span style="color: #808080">Python.</span>
 </pre></div>
 
 <h3>Subsection 2: Testing figures <a name="subsec:ex"></a></h3>
@@ -27808,6 +27816,7 @@ The Doconce source code reads
 <p>
 
 <!-- code=text (from !bc ccq) typeset with pygments style "default" -->
+<blockquote>
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">  |--------------------------------|
   |time  | velocity | acceleration |
   |--l--------r-----------r--------|
@@ -27816,7 +27825,7 @@ The Doconce source code reads
   | 4.0  | 1.1E+1   | 14.717624    |
   |--------------------------------|
 </pre></div>
-<p>
+</blockquote><p>
 Here is yet another table to test that we can handle more than
 one table:
 
@@ -34204,18 +34213,18 @@ such cells are not supported by this format).
 
 <p>
 
-<!-- code=text (from !bc pyscpro) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a = 2
-b = 3
-print &#39;a+b:&#39;, a + b
+<!-- code=python (from !bc pyscpro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a <span style="color: #666666">=</span> <span style="color: #666666">2</span>
+b <span style="color: #666666">=</span> <span style="color: #666666">3</span>
+<span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;a+b:&#39;</span>, a <span style="color: #666666">+</span> b
 
-# In a sage cell we can also plot
-from matplotlib.pyplot import *
-from numpy import *
-x = linspace(0, 4*pi, 101)
-y = exp(-0.1*x)*cos(x)
+<span style="color: #408080; font-style: italic"># In a sage cell we can also plot</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
+x <span style="color: #666666">=</span> linspace(<span style="color: #666666">0</span>, <span style="color: #666666">4*</span>pi, <span style="color: #666666">101</span>)
+y <span style="color: #666666">=</span> exp(<span style="color: #666666">-0.1*</span>x)<span style="color: #666666">*</span>cos(x)
 plot(x, y)
-xlabel(&#39;x&#39;); ylabel(&#39;y&#39;)
+xlabel(<span style="color: #BA2121">&#39;x&#39;</span>); ylabel(<span style="color: #BA2121">&#39;y&#39;</span>)
 show()
 </pre></div>
 <p>
@@ -34285,12 +34294,12 @@ HTML:
 System call:
 <p>
 
-<!-- code=bash (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; mkdir <span style="color: #008000">test</span>
-Terminal&gt; <span style="color: #008000">cd test</span>
-Terminal&gt; myprog -f
-output1
-output2
+<!-- code=console (from !bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #808080">Terminal&gt; mkdir test</span>
+<span style="color: #808080">Terminal&gt; cd test</span>
+<span style="color: #808080">Terminal&gt; myprog -f</span>
+<span style="color: #808080">output1</span>
+<span style="color: #808080">output2</span>
 </pre></div>
 <p>
 It is time to test <code>verbatim inline font</code> especially with <code>a newline
@@ -34312,12 +34321,12 @@ HTML is the output format.
 
 <p>
 
-<!-- code=bash (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; python -c <span style="color: #BA2121">&#39;print &quot;Testing\noutput\nfrom\nPython.&quot;&#39;</span>
-Testing
-output
-from
-Python.
+<!-- code=console (from !bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #808080">Terminal&gt; python -c &#39;print &quot;Testing\noutput\nfrom\nPython.&quot;&#39;</span>
+<span style="color: #808080">Testing</span>
+<span style="color: #808080">output</span>
+<span style="color: #808080">from</span>
+<span style="color: #808080">Python.</span>
 </pre></div>
 
 <h3>Subsection 2: Testing figures <a name="subsec:ex"></a></h3>
@@ -34465,6 +34474,7 @@ The Doconce source code reads
 <p>
 
 <!-- code=text (from !bc ccq) typeset with pygments style "default" -->
+<blockquote>
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">  |--------------------------------|
   |time  | velocity | acceleration |
   |--l--------r-----------r--------|
@@ -34473,7 +34483,7 @@ The Doconce source code reads
   | 4.0  | 1.1E+1   | 14.717624    |
   |--------------------------------|
 </pre></div>
-<p>
+</blockquote><p>
 Here is yet another table to test that we can handle more than
 one table:
 
@@ -36326,7 +36336,6 @@ Let us take this table from the manual:
 The Doconce source code reads
 
 .. code-block:: text
-
 
           |--------------------------------|
           |time  | velocity | acceleration |
@@ -57858,6 +57867,9 @@ Last page gets rendered to
 
 
 % #ifdef PREAMBLE
+\clearemptydoublepage
+\markboth{Index}{Index}
+\thispagestyle{empty}
 \printindex
 
 \end{document}
@@ -68643,7 +68655,7 @@ list of capabilities:
 <p>
 <!-- begin verbatim block  shpro-->
 <pre><code>Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 # transform doconce file to another format
@@ -68749,6 +68761,9 @@ doconce combine_images image1 image2 ... output_file
 
 # insert a table of exercises in a latex file myfile.p.tex
 doconce latex_exercise_toc myfile
+
+# list all figure, movie or included code files
+doconce grab FIGURE|MOVIE|CODE myfile
 
 # list all labels in a document (for purposes of cleaning them up)
 doconce list_labels myfile
@@ -70215,7 +70230,7 @@ list of capabilities:
 
 \bshpro
 Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 # transform doconce file to another format
@@ -70321,6 +70336,9 @@ doconce combine_images image1 image2 ... output_file
 
 # insert a table of exercises in a latex file myfile.p.tex
 doconce latex_exercise_toc myfile
+
+# list all figure, movie or included code files
+doconce grab FIGURE|MOVIE|CODE myfile
 
 # list all labels in a document (for purposes of cleaning them up)
 doconce list_labels myfile
@@ -71304,7 +71322,7 @@ list of capabilities::
 
 
         Usage: doconce command [optional arguments]
-        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
         
         
         # transform doconce file to another format
@@ -71410,6 +71428,9 @@ list of capabilities::
         
         # insert a table of exercises in a latex file myfile.p.tex
         doconce latex_exercise_toc myfile
+        
+        # list all figure, movie or included code files
+        doconce grab FIGURE|MOVIE|CODE myfile
         
         # list all labels in a document (for purposes of cleaning them up)
         doconce list_labels myfile
@@ -72431,7 +72452,7 @@ list of capabilities:
 .. code-block:: bash
 
         Usage: doconce command [optional arguments]
-        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
         
         
         # transform doconce file to another format
@@ -72537,6 +72558,9 @@ list of capabilities:
         
         # insert a table of exercises in a latex file myfile.p.tex
         doconce latex_exercise_toc myfile
+        
+        # list all figure, movie or included code files
+        doconce grab FIGURE|MOVIE|CODE myfile
         
         # list all labels in a document (for purposes of cleaning them up)
         doconce list_labels myfile
@@ -73420,7 +73444,7 @@ list of capabilities:
 
 {{{
 Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 # transform doconce file to another format
@@ -73526,6 +73550,9 @@ doconce combine_images image1 image2 ... output_file
 
 # insert a table of exercises in a latex file myfile.p.tex
 doconce latex_exercise_toc myfile
+
+# list all figure, movie or included code files
+doconce grab FIGURE|MOVIE|CODE myfile
 
 # list all labels in a document (for purposes of cleaning them up)
 doconce list_labels myfile
@@ -74417,7 +74444,7 @@ list of capabilities:
 
 <syntaxhighlight lang="bash">
 Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 # transform doconce file to another format
@@ -74523,6 +74550,9 @@ doconce combine_images image1 image2 ... output_file
 
 # insert a table of exercises in a latex file myfile.p.tex
 doconce latex_exercise_toc myfile
+
+# list all figure, movie or included code files
+doconce grab FIGURE|MOVIE|CODE myfile
 
 # list all labels in a document (for purposes of cleaning them up)
 doconce list_labels myfile
@@ -75384,7 +75414,7 @@ list of capabilities:
 
 {{{
 Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 # transform doconce file to another format
@@ -75490,6 +75520,9 @@ doconce combine_images image1 image2 ... output_file
 
 # insert a table of exercises in a latex file myfile.p.tex
 doconce latex_exercise_toc myfile
+
+# list all figure, movie or included code files
+doconce grab FIGURE|MOVIE|CODE myfile
 
 # list all labels in a document (for purposes of cleaning them up)
 doconce list_labels myfile
@@ -76360,7 +76393,7 @@ list of capabilities::
 
 
         Usage: doconce command [optional arguments]
-        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
         
         
         # transform doconce file to another format
@@ -76466,6 +76499,9 @@ list of capabilities::
         
         # insert a table of exercises in a latex file myfile.p.tex
         doconce latex_exercise_toc myfile
+        
+        # list all figure, movie or included code files
+        doconce grab FIGURE|MOVIE|CODE myfile
         
         # list all labels in a document (for purposes of cleaning them up)
         doconce list_labels myfile
@@ -77362,7 +77398,7 @@ list of capabilities::
 
 
         Usage: doconce command [optional arguments]
-        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
         
         
         # transform doconce file to another format
@@ -77468,6 +77504,9 @@ list of capabilities::
         
         # insert a table of exercises in a latex file myfile.p.tex
         doconce latex_exercise_toc myfile
+        
+        # list all figure, movie or included code files
+        doconce grab FIGURE|MOVIE|CODE myfile
         
         # list all labels in a document (for purposes of cleaning them up)
         doconce list_labels myfile
@@ -78406,7 +78445,7 @@ list of capabilities::
 
 
         Usage: doconce command [optional arguments]
-        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
         
         
         # transform doconce file to another format
@@ -78512,6 +78551,9 @@ list of capabilities::
         
         # insert a table of exercises in a latex file myfile.p.tex
         doconce latex_exercise_toc myfile
+        
+        # list all figure, movie or included code files
+        doconce grab FIGURE|MOVIE|CODE myfile
         
         # list all labels in a document (for purposes of cleaning them up)
         doconce list_labels myfile
@@ -79039,7 +79081,7 @@ make it very easy to spot the comments.
 
 Running
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.Bash}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 doconce format html mydoc.do.txt --skip_inline_comments
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -79049,7 +79091,7 @@ to turn on and off notes to authors during the development of the document.
 All inline comments to readers can also be physically
 removed from the Doconce source by
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.Bash}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 doconce remove_inline_comments mydoc.do.txt
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -79291,7 +79333,7 @@ will display the individual frame files as a movie.
 
 Combining several image files into one can be done by the
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.Bash}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 doconce combine_images image1 image2 ... output_image
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -79477,7 +79519,7 @@ list of capabilities:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 # transform doconce file to another format
@@ -79583,6 +79625,9 @@ doconce combine_images image1 image2 ... output_file
 
 # insert a table of exercises in a latex file myfile.p.tex
 doconce latex_exercise_toc myfile
+
+# list all figure, movie or included code files
+doconce grab FIGURE|MOVIE|CODE myfile
 
 # list all labels in a document (for purposes of cleaning them up)
 doconce list_labels myfile
@@ -83720,7 +83765,7 @@ reading sources... [ 50%] ._testdoc001
 reading sources... [ 75%] ._testdoc002
 reading sources... [100%] index
 
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:556: WARNING: Inline interpreted text or phrase reference start-string without end-string.
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:555: WARNING: Inline interpreted text or phrase reference start-string without end-string.
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:None: WARNING: nonlocal image URI found: https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png
 looking for now-outdated files... none found
 pickling environment... done
@@ -85094,7 +85139,7 @@ output in math_test.md
 + doconce md2latex math_test
 command "md2latex" is not legal, must be among
 
-format, help, sphinx_dir, subst, replace, replace_from_file, clean, spellcheck, ptex2tex, guess_encoding, expand_commands, expand_mako, combine_images, change_encoding, capitalize, gwiki_figsubst, md2html, remove_inline_comments, grab, remove, remove_exercise_answers, split_rst, split_html, slides_html, slides_beamer, latin2html, latex_header, latex_footer, bbl2rst, html_colorbullets, list_labels, teamod, sphinxfix_localURLs, make_figure_code_links, latex_exercise_toc, insertdocstr, old2new_format, linkchecker, latex2doconce, latex_dislikes, pygmentize, makefile, diff, gitdiff, fix_bibtex4publish, csv2table
+format, help, sphinx_dir, subst, replace, replace_from_file, clean, spellcheck, ptex2tex, guess_encoding, expand_commands, expand_mako, combine_images, change_encoding, capitalize, gwiki_figsubst, md2html, remove_inline_comments, grab, remove, remove_exercise_answers, split_rst, split_html, slides_html, slides_beamer, latin2html, grep, latex_header, latex_footer, bbl2rst, html_colorbullets, list_labels, teamod, sphinxfix_localURLs, make_figure_code_links, latex_exercise_toc, insertdocstr, old2new_format, linkchecker, latex2doconce, latex_dislikes, pygmentize, makefile, diff, gitdiff, fix_bibtex4publish, csv2table
 + admon_tps='colors1 graybox1 paragraph graybox2 yellowbox graybox3 colors2'
 + for admon_tp in '$admon_tps'
 + system doconce format pdflatex admon --latex_admon=colors1
@@ -90030,18 +90075,18 @@ translating doconce text in tmp_preprocess__encoding3.do.txt to html
 *** error: problem with character when writing to file:
 (text position  526-527)
 ight: 125%">a = 1  # Value suggested by  | Traceback (most recent call last):
-  File "/usr/local/bin/doconce", line 1013, in <module>
+  File "/usr/local/bin/doconce", line 1018, in <module>
     main()
-  File "/usr/local/bin/doconce", line 1003, in main
+  File "/usr/local/bin/doconce", line 1008, in main
     eval(command + '()')
   File "<string>", line 1, in <module>
-  File "/usr/local/bin/doconce", line 83, in format
+  File "/usr/local/bin/doconce", line 84, in format
     doconce.doconce.format_driver()
-  File "/usr/local/lib/python2.7/dist-packages/doconce/doconce.py", line 3018, in format_driver
+  File "/usr/local/lib/python2.7/dist-packages/doconce/doconce.py", line 3019, in format_driver
     out_filename = file2file(filename_preprocessed, format, basename)
-  File "/usr/local/lib/python2.7/dist-packages/doconce/doconce.py", line 2287, in file2file
+  File "/usr/local/lib/python2.7/dist-packages/doconce/doconce.py", line 2288, in file2file
     error_message()
-  File "/usr/local/lib/python2.7/dist-packages/doconce/doconce.py", line 2276, in error_message
+  File "/usr/local/lib/python2.7/dist-packages/doconce/doconce.py", line 2277, in error_message
     print filestr[pos-40:pos], '|', filestr[pos], '|', filestr[pos+1:pos+40]
 UnicodeEncodeError: 'ascii' codec can't encode character u'\xc3' in position 0: ordinal not in range(128)
 + doconce format html encoding3 -DPREPROCESS --encoding=utf-8 --no_pygments_html --debug
@@ -90412,7 +90457,8 @@ figure file http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media
     Recommendation: rewrite caption.
 
 -----------
-"Google": "http://google.com". -----------
+"Google": "http://google.com". 
+-----------
 
 Abort! (add --no_abort on the command line to avoid this abortion)
 + doconce format pdflatex tmp2
@@ -91680,15 +91726,15 @@ Overfull \hbox (107.00006pt too wide)
 []\T1/pcr/m/n/10 "A Document for Testing Doconce": "testdoc.html" cite{testdoc:
 12}],  
 
-Overfull \hbox (3179.00006pt too wide) 
+Overfull \hbox (3209.00006pt too wide) 
 []\T1/pcr/m/n/10 commands: format help sphinx_dir subst replace replace_from_fi
 le clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine
 _images change_encoding capitalize gwiki_figsubst md2html remove_inline_comment
 s grab remove remove_exercise_answers split_rst split_html slides_html slides_b
-eamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_label
-s teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdo
-cstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefil
-e diff gitdiff fix_bibtex4publish csv2table  
+eamer latin2html grep latex_header latex_footer bbl2rst html_colorbullets list_
+labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc ins
+ertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize ma
+kefile diff gitdiff fix_bibtex4publish csv2table  
 
 Overfull \hbox (299.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwik
@@ -91883,11 +91929,11 @@ ticolumn{1}{c}{acceleration} \\
 Overfull \hbox (4.19656pt too wide) 
 [][][][][][] \T1/ptm/m/n/10 con-tains some il-lus-tra-tions on how to uti-lize 
 \T1/pcr/m/n/10 mako \T1/ptm/m/n/10 (clone the GitHub
-
+[17]
 Overfull \hbox (114.855pt too wide) 
 []\T1/ptm/m/n/10 Excellent ``Sphinx Tu-to-rial'' by C. Reller: ``[][][][][][]''
  
-[17] [18] (./quickref.rst.aux)
+[18] (./quickref.rst.aux)
 
 Package rerunfilecheck Warning: File `quickref.rst.out' has changed.
 (rerunfilecheck)                Rerun to get outlines right
@@ -92145,15 +92191,15 @@ Overfull \hbox (107.00006pt too wide)
 []\T1/pcr/m/n/10 "A Document for Testing Doconce": "testdoc.html" cite{testdoc:
 12}],  
 
-Overfull \hbox (3179.00006pt too wide) 
+Overfull \hbox (3209.00006pt too wide) 
 []\T1/pcr/m/n/10 commands: format help sphinx_dir subst replace replace_from_fi
 le clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine
 _images change_encoding capitalize gwiki_figsubst md2html remove_inline_comment
 s grab remove remove_exercise_answers split_rst split_html slides_html slides_b
-eamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_label
-s teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdo
-cstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefil
-e diff gitdiff fix_bibtex4publish csv2table  
+eamer latin2html grep latex_header latex_footer bbl2rst html_colorbullets list_
+labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc ins
+ertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize ma
+kefile diff gitdiff fix_bibtex4publish csv2table  
 
 Overfull \hbox (299.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwik
@@ -92348,11 +92394,11 @@ ticolumn{1}{c}{acceleration} \\
 Overfull \hbox (4.19656pt too wide) 
 [][][][][][] \T1/ptm/m/n/10 con-tains some il-lus-tra-tions on how to uti-lize 
 \T1/pcr/m/n/10 mako \T1/ptm/m/n/10 (clone the GitHub
-
+[18]
 Overfull \hbox (114.855pt too wide) 
 []\T1/ptm/m/n/10 Excellent ``Sphinx Tu-to-rial'' by C. Reller: ``[][][][][][]''
  
-[18] [19] (./quickref.rst.aux)
+[19] (./quickref.rst.aux)
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
