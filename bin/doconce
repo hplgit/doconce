@@ -48,6 +48,7 @@ from doconce.misc import (
     gitdiff,
     csv2table,
     linkchecker,
+    grep
     )
 
 def remove_options_from_command_line():
@@ -807,6 +808,7 @@ split_html
 slides_html
 slides_beamer
 latin2html
+grep
 latex_header
 latex_footer
 bbl2rst
@@ -937,6 +939,9 @@ doconce combine_images image1 image2 ... output_file
 
 # insert a table of exercises in a latex file myfile.p.tex
 doconce latex_exercise_toc myfile
+
+# list all figure, movie or included code files
+doconce grab FIGURE|MOVIE|CODE myfile
 
 # list all labels in a document (for purposes of cleaning them up)
 doconce list_labels myfile
