@@ -5138,6 +5138,42 @@ def spellcheck():
                     dictionaries=dictionary,)
 
 
+def _usage_grep():
+    print 'doconce grep FIGURE|MOVIE|CODE doconce-file'
+
+def grep():
+    if len(sys.argv) < 3:
+        _usage_grep()
+        sys.exit(1)
+
+    file_tp = sys.argv[1]
+    filenames = []
+    for filename in sys.argv[2:]:
+        if not filename.endswith('.do.txt'):
+            filename += '.do.txt'
+        if not os.path.isfile(filename):
+            continue  # just drop non-existing files to avoid corrupt output
+        f = open(filename, 'r')
+        filestr = f.read()
+        f.close()
+
+        if file_tp == 'FIGURE':
+            pattern = r'^FIGURE:\s*\[(?P<filename>[^,\]]+),?(?P<options>[^\]]*)\]'
+            filenames += [filename for filename, dummy in
+                          re.findall(pattern, filestr, re.MULTILINE)]
+        elif file_tp == 'MOVIE':
+            pattern = r'^MOVIE:\s*\[(?P<filename>[^,\]]+),?(?P<options>[^\]]*)\]'
+            filenames += [filename for filename, dummy in
+                          re.findall(pattern, filestr, re.MULTILINE)]
+        elif file_tp == 'CODE':
+            pattern = '^@@@CODE +(.+?)\s+'
+            filenames += re.findall(pattern, filestr, re.MULTILINE)
+        else:
+            print '*** error: cannot grep', file_tp, '(not implemented)'
+    import sets
+    filenames = list(sets.Set(filenames))  # remove multiple filenames
+    print ' '.join(filenames)
+
 def _usage_capitalize():
     print 'doconce capitalize [-d file_with_cap_words] doconce-file'
     print 'list of capitalized words can also be in .dict4cap.txt'
@@ -5172,7 +5208,7 @@ def capitalize():
         'ODE', 'PDE', 'Adams-Bashforth', 'Runge-Kutta', 'SIR', 'SIZR', 'SIRV',
         'Python', 'IPython', 'Cython', 'Idle', 'NumPy', 'SciPy', 'SymPy',
         'Matplotlib', 'None', '$N$',
-        'Fortran', 'MATLAB', 'SWIG', 'Perl', 'Ruby',
+        'Fortran', 'MATLAB', 'SWIG', 'Perl', 'Ruby', 'CPU',
         'DNA', 'British', 'American',
         'HTML', 'MSWord', 'OpenOffice',
         'StringFunction', 'Vec2D', 'Vec3D', 'SciTools', 'Easyviz',
@@ -5217,7 +5253,6 @@ def capitalize():
     f = open(filename, 'w')
     f.write(filestr)
     f.close()
-    print 'Edits of titles:'
     for old, new in old2new:
         if old != new:
             print old
