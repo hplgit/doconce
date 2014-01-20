@@ -252,13 +252,17 @@ def html_code(filestr, code_blocks, code_block_types,
               tex_blocks, format):
     """Replace code and LaTeX blocks by html environments."""
 
+    # Mapping from envir (+cod/pro if present) to pygment style
     types2languages = dict(py='python', cy='cython', f='fortran',
                            c='c', cpp='c++', sh='bash', rst='rst',
                            m ='matlab', pl='perl', rb='ruby',
                            swig='c++', latex='latex', tex='latex',
                            html='html', xml='xml',
-                           js='js', sys='bash',
-                           pyoptpro='python', pyscpro='python')
+                           js='js',
+                           sys='console', # sys='text', sys='bash'
+                           dat='text', txt='text', csv='text',
+                           cc='txt', ccq='text',
+                           pyopt='python', pysc='python')
     try:
         import pygments as pygm
         from pygments.lexers import guess_lexer, get_lexer_by_name
@@ -320,6 +324,9 @@ def html_code(filestr, code_blocks, code_block_types,
             formatter = HtmlFormatter(linenos=linenos, noclasses=True,
                                       style=pygm_style)
             result = highlight(code_blocks[i], lexer, formatter)
+
+            if code_block_types[i] == 'ccq':
+                result = '<blockquote>\n%s</blockquote>' % result
 
             result = '<!-- code=%s%s typeset with pygments style "%s" -->\n' % (language, '' if code_block_types[i] == '' else ' (from !bc %s)' % code_block_types[i], pygm_style) + result
             # Fix ugly error boxes
@@ -396,6 +403,10 @@ def html_code(filestr, code_blocks, code_block_types,
         filestr = re.sub(r'!ec\n',
                 r'</code></pre>\n<!-- end verbatim block -->\n',
                 filestr)
+        # Note: ccq envir is not put in blockquote tags, only if
+        # pygments is used (would need to first substitute !bc ccq, but
+        # !ec poses problems - drop this for plan pre/code tags since
+        # pygments is the dominating style)
 
     if option('wordpress'):
         MATH_TYPESETTING = 'WordPress'

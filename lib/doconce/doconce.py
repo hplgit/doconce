@@ -629,7 +629,8 @@ def insert_code_from_file(filestr, format):
                             'm', 'pl', 'cy', 'rst',
                             'pyopt',  # Online Python Tutor
                             'pysc',   # Sage cell
-                            'rb', 'html', 'xml', 'js'):
+                            'rb', 'html', 'xml', 'js',
+                            'txt', 'csv', 'dat'):
                 code_envir = filetype
             elif filetype == 'tex':
                 code_envir = 'latex'

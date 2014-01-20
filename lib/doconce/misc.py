@@ -5139,6 +5139,42 @@ def spellcheck():
                     dictionaries=dictionary,)
 
 
+def _usage_grep():
+    print 'doconce grep FIGURE|MOVIE|CODE doconce-file'
+
+def grep():
+    if len(sys.argv) < 3:
+        _usage_grep()
+        sys.exit(1)
+
+    file_tp = sys.argv[1]
+    filenames = []
+    for filename in sys.argv[2:]:
+        if not filename.endswith('.do.txt'):
+            filename += '.do.txt'
+        if not os.path.isfile(filename):
+            continue  # just drop non-existing files to avoid corrupt output
+        f = open(filename, 'r')
+        filestr = f.read()
+        f.close()
+
+        if file_tp == 'FIGURE':
+            pattern = r'^FIGURE:\s*\[(?P<filename>[^,\]]+),?(?P<options>[^\]]*)\]'
+            filenames += [filename for filename, dummy in
+                          re.findall(pattern, filestr, re.MULTILINE)]
+        elif file_tp == 'MOVIE':
+            pattern = r'^MOVIE:\s*\[(?P<filename>[^,\]]+),?(?P<options>[^\]]*)\]'
+            filenames += [filename for filename, dummy in
+                          re.findall(pattern, filestr, re.MULTILINE)]
+        elif file_tp == 'CODE':
+            pattern = '^@@@CODE +(.+?)\s+'
+            filenames += re.findall(pattern, filestr, re.MULTILINE)
+        else:
+            print '*** error: cannot grep', file_tp, '(not implemented)'
+    import sets
+    filenames = list(sets.Set(filenames))  # remove multiple filenames
+    print ' '.join(filenames)
+
 def _usage_capitalize():
     print 'doconce capitalize [-d file_with_cap_words] doconce-file'
     print 'list of capitalized words can also be in .dict4cap.txt'
@@ -5162,14 +5198,24 @@ def capitalize():
 
     cap_words = [
         'Celsius', 'Fahrenheit', 'Kelvin',
-        'Newton', 'Gauss', 'Legendre', 'Laguerre', 'Taylor', 'Einstein',
-        'Maxwell', 'Euler', 'Gaussian', 'Eulerian', 'Lagrange', 'Lagrangian',
-        'Heaviside',
-        'Python', 'IPython', 'Cython', 'Idle', 'NumPy', 'SciPy',
-        'Matplotlib',
-        'Fortran', 'MATLAB', 'SWIG', 'Perl', 'Ruby',
-        'DNA',
+        'Fahrenheit-Celsius',
+        'Newton', 'Gauss', "Gauss'",
+        'Legendre', 'Lagrange',
+        'Laguerre', 'Taylor', 'Einstein',
+        'Maxwell', 'Euler', 'Gaussian', 'Eulerian', 'Lagrangian',
+        'Poisson',
+        'Heaviside', 'MATLAB', 'Matlab',
+        'Trapezoidal', "Simpson's", 'Monte', 'Carlo',
+        'ODE', 'PDE', 'Adams-Bashforth', 'Runge-Kutta', 'SIR', 'SIZR', 'SIRV',
+        'Python', 'IPython', 'Cython', 'Idle', 'NumPy', 'SciPy', 'SymPy',
+        'Matplotlib', 'None', '$N$',
+        'Fortran', 'MATLAB', 'SWIG', 'Perl', 'Ruby', 'CPU',
+        'DNA', 'British', 'American',
+        'HTML', 'MSWord', 'OpenOffice',
+        'StringFunction', 'Vec2D', 'Vec3D', 'SciTools', 'Easyviz',
         ]
+    # This functionality is not well implemented so instead of finding
+    # a perfect solution we fix well-known special cases
     cap_words_fix = [
         ('exer. ref{', 'Exer. ref{'),
         ('exer. (_', 'Exer. (_'),  # latex2doconce external reference
@@ -5185,7 +5231,14 @@ def capitalize():
         (' 1d ', ' 1D '),
         (' 2d ', ' 2D '),
         (' 3d ', ' 3D '),
+        ('hello, world!', 'Hello, World!'),
+        ('hello world', 'Hello World'),
+        ('midpoint integration', 'Midpoint integration'),
+        ('midpoint rule', 'Midpoint rule'),
         ]
+    for name in 'Newton', 'Lagrange', 'Einstein', 'Poisson', 'Taylor', 'Gibb':
+        genetive = "'s"
+        cap_words_fix.append((name.lower()+genetive, name+genetive))
 
     if dictionary:
         f = open(dictionary, 'a')
@@ -5201,7 +5254,6 @@ def capitalize():
     f = open(filename, 'w')
     f.write(filestr)
     f.close()
-    print 'Edits of titles:'
     for old, new in old2new:
         if old != new:
             print old
@@ -5260,7 +5312,7 @@ def _capitalize(filestr, cap_words, cap_words_fix):
                 if word_stripped.lower() in cap_words_lower:
                     #print '        found',
                     try:
-                        i = cap_words_lower.index(word.lower())
+                        i = cap_words_lower.index(word_stripped.lower())
                         new_word = word.replace(word_stripped, cap_words[i])
                         new_title = new_title.replace(word, new_word)
                         #print 'as', cap_words[i]
@@ -5660,6 +5712,7 @@ def _latex2doconce(filestr):
         (r'\\texttt\{(?P<subst>[^}]+)\}', r'`\g<subst>`'),
         (r'\{\\em\s+(?P<subst>.+?)\}', r'*\g<subst>*'),
         (r'\{\\bf\s+(?P<subst>.+?)\}', r'_\g<subst>_'),
+        (r'\{\\it\s+(?P<subst>.+?)\}', r'*\g<subst>*'),
         (r'\\textbf\{(?P<subst>.+?)\}', r'_\g<subst>_'),
         (r'\\eqref\{(?P<subst>.+?)\}', r'(ref{\g<subst>})'),
         (r'(\S)\\label\{', r'\g<1> \\label{'),
@@ -5887,14 +5940,17 @@ def _latex2doconce(filestr):
             lines[i] = '# ' + lines[i].lstrip()[1:]
         if lines[i].startswith('@@@CODE'):
             # Translate ptex2tex CODE envir to doconce w/regex
-            words = lines[i].split()
+            words = lines[i].split(' ')  # preserve whitespace!
             new_line = ' '.join(words[:2])  # command filename, no space in name
             if len(words) > 2:
+                restline = ' '.join(words[2:])
                 new_line += ' fromto: '
-                from_, to_ = ' '.join(words[2:]).split('@')[:2]
-                from_, to_ = ' '.join(words[2:]).split('@')[:2]
-                new_line += re.escape(from_)  # regex in doconce
-                new_line += '@' + re.escape(to_)
+                if '@' in restline:
+                    from_, to_ = restline.split('@')[:2]
+                    new_line += re.escape(from_)  # regex in doconce
+                    new_line += '@' + re.escape(to_)
+                else:
+                    new_line += re.escape(restline) + '@'
                 new_line = new_line.replace(r'\ ', ' ').replace(r'\,', ',').replace(r'\:', ':')
             lines[i] = new_line
 
@@ -6118,10 +6174,16 @@ def _latex2doconce(filestr):
     filestr = filestr.replace(r'\ref{', 'ref{')
     filestr = filestr.replace(r'\cite{', 'cite{')
     filestr = filestr.replace(r'\cite[', 'cite[')
-    filestr = filestr.replace(r'\noindent', '')
+    filestr = filestr.replace(r'\noindent', r"""# #if FORMAT in ("latex", "pdflatex")
+\noindent
+# #endif""")
+    filestr = re.sub(r'\\vspace\{(.+?)\}', r"""# #if FORMAT in ("latex", "pdflatex")
+\\vspace{\g<1>}
+# #endif""", filestr)
     filestr = filestr.replace(r'\_', '_')
     filestr = filestr.replace(r' -- ', ' - ')
     filestr = filestr.replace(r'}--ref', '}-ref')
+    filestr = filestr.replace(r'})--(ref', '})-(ref')
     filestr = filestr.replace(r'~', ' ')
     filestr = filestr.replace(r'\end{table}', '')
 
