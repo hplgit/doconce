@@ -221,7 +221,14 @@ doconce md2latex $name
 # Test admonitions
 admon_tps="colors1 graybox1 paragraph graybox2 yellowbox graybox3 colors2"
 for admon_tp in $admon_tps; do
-system doconce format pdflatex admon --latex_admon=$admon_tp
+if [ $admon_tp = 'graybox1' ]; then
+   color="--latex_admon_color=gray!6"
+elif [ $admon_tp = 'graybox3' ]; then
+   color="--latex_admon_color=gray!20"
+else
+   color=
+fi
+system doconce format pdflatex admon --latex_admon=$admon_tp $color
 doconce ptex2tex admon envir=minted
 cp admon.tex admon_${admon_tp}.tex
 system pdflatex -shell-escape admon_${admon_tp}
@@ -267,7 +274,7 @@ cp admon.mwiki admon_mwiki.mwiki
 system doconce format plain admon
 cp admon.txt admon_paragraph.txt
 
-cp -f admon_*.html admon_*.pdf admon_*.*wiki admon_*.txt admon_sphinx admon_demo/
+cp -fr admon_*.html admon_*.pdf admon_*.*wiki admon_*.txt admon_sphinx admon_demo/
 
 #google-chrome admon_*.html
 #for pdf in admon_*.pdf; do evince $pdf; done

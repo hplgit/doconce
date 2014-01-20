@@ -1671,9 +1671,10 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % --- begin definitions of admonition environments ---
 
-% Admonition is an oval gray box
+% Admonition style "graybox1" is an oval colored box
+\colorlet{graybox1_background}{gray!5}
 \newmdenv[
-  backgroundcolor=gray!5,  %% white with 5%% gray
+  backgroundcolor=graybox1_background,
   skipabove=\topsep,
   skipbelow=\topsep,
   outerlinewidth=0,
@@ -3410,9 +3411,10 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % --- begin definitions of admonition environments ---
 
-% Admonition is an oval gray box
+% Admonition style "graybox1" is an oval colored box
+\colorlet{graybox1_background}{gray!5}
 \newmdenv[
-  backgroundcolor=gray!5,  %% white with 5%% gray
+  backgroundcolor=graybox1_background,
   skipabove=\topsep,
   skipbelow=\topsep,
   outerlinewidth=0,
@@ -4995,9 +4997,10 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % --- begin definitions of admonition environments ---
 
-% Admonition is an oval gray box
+% Admonition style "graybox1" is an oval colored box
+\colorlet{graybox1_background}{gray!5}
 \newmdenv[
-  backgroundcolor=gray!5,  %% white with 5%% gray
+  backgroundcolor=graybox1_background,
   skipabove=\topsep,
   skipbelow=\topsep,
   outerlinewidth=0,
@@ -29035,9 +29038,10 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % --- begin definitions of admonition environments ---
 
-% Admonition is an oval gray box
+% Admonition style "graybox1" is an oval colored box
+\colorlet{graybox1_background}{gray!5}
 \newmdenv[
-  backgroundcolor=gray!5,  %% white with 5%% gray
+  backgroundcolor=graybox1_background,
   skipabove=\topsep,
   skipbelow=\topsep,
   outerlinewidth=0,
@@ -31256,7 +31260,14 @@ doconce md2latex $name
 # Test admonitions
 admon_tps="colors1 graybox1 paragraph graybox2 yellowbox graybox3 colors2"
 for admon_tp in $admon_tps; do
-system doconce format pdflatex admon --latex_admon=$admon_tp
+if [ $admon_tp = 'graybox1' ]; then
+   color="--latex_admon_color=gray!6"
+elif [ $admon_tp = 'graybox3' ]; then
+   color="--latex_admon_color=gray!20"
+else
+   color=
+fi
+system doconce format pdflatex admon --latex_admon=$admon_tp $color
 doconce ptex2tex admon envir=minted
 cp admon.tex admon_${admon_tp}.tex
 system pdflatex -shell-escape admon_${admon_tp}
@@ -31302,7 +31313,7 @@ cp admon.mwiki admon_mwiki.mwiki
 system doconce format plain admon
 cp admon.txt admon_paragraph.txt
 
-cp -f admon_*.html admon_*.pdf admon_*.*wiki admon_*.txt admon_sphinx admon_demo/
+cp -fr admon_*.html admon_*.pdf admon_*.*wiki admon_*.txt admon_sphinx admon_demo/
 
 #google-chrome admon_*.html
 #for pdf in admon_*.pdf; do evince $pdf; done
@@ -37587,11 +37598,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % --- begin definitions of admonition environments ---
 
-% Admonition environment for "notice"
-\definecolor{noticebackground}{rgb}{0.988235, 0.964706, 0.862745}
+% Admonition style "colors2", admon "notice"
+\definecolor{colors2_notice_background}{rgb}{0.988235,0.964706,0.862745}
 % \fboxsep sets the space between the text and the box
 \newenvironment{noticeshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{noticebackground}}
+{\def\FrameCommand{\fboxsep=3mm\colorbox{colors2_notice_background}}
  \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
 
 \newenvironment{notice_colors2admon}[1][Notice]{
@@ -37607,11 +37618,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \end{noticeshaded}
 }
 
-% Admonition environment for "summary"
-\definecolor{summarybackground}{rgb}{0.988235, 0.964706, 0.862745}
+% Admonition style "colors2", admon "summary"
+\definecolor{colors2_summary_background}{rgb}{0.988235,0.964706,0.862745}
 % \fboxsep sets the space between the text and the box
 \newenvironment{summaryshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{summarybackground}}
+{\def\FrameCommand{\fboxsep=3mm\colorbox{colors2_summary_background}}
  \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
 
 \newenvironment{summary_colors2admon}[1][Summary]{
@@ -37627,11 +37638,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \end{summaryshaded}
 }
 
-% Admonition environment for "warning"
-\definecolor{warningbackground}{rgb}{1.0, 0.8235294, 0.8235294}
+% Admonition style "colors2", admon "warning"
+\definecolor{colors2_warning_background}{rgb}{1.0,0.8235294,0.8235294}
 % \fboxsep sets the space between the text and the box
 \newenvironment{warningshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{warningbackground}}
+{\def\FrameCommand{\fboxsep=3mm\colorbox{colors2_warning_background}}
  \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
 
 \newenvironment{warning_colors2admon}[1][Warning]{
@@ -37647,11 +37658,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \end{warningshaded}
 }
 
-% Admonition environment for "question"
-\definecolor{questionbackground}{rgb}{0.988235, 0.964706, 0.862745}
+% Admonition style "colors2", admon "question"
+\definecolor{colors2_question_background}{rgb}{0.988235,0.964706,0.862745}
 % \fboxsep sets the space between the text and the box
 \newenvironment{questionshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{questionbackground}}
+{\def\FrameCommand{\fboxsep=3mm\colorbox{colors2_question_background}}
  \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
 
 \newenvironment{question_colors2admon}[1][Question]{
@@ -37667,11 +37678,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \end{questionshaded}
 }
 
-% Admonition environment for "block"
-\definecolor{blockbackground}{rgb}{0.988235, 0.964706, 0.862745}
+% Admonition style "colors2", admon "block"
+\definecolor{colors2_block_background}{rgb}{0.988235,0.964706,0.862745}
 % \fboxsep sets the space between the text and the box
 \newenvironment{blockshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{blockbackground}}
+{\def\FrameCommand{\fboxsep=3mm\colorbox{colors2_block_background}}
  \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
 
 \newenvironment{block_colors2admon}[1][Block]{
@@ -38045,7 +38056,7 @@ And more and more text.
 Test warning with title:
 
 
-\begin{warning_colors2admon}[{\large Watch out }]
+\begin{warning_colors2admon}[{\large Title ending with math $\sqrt{2}\approx 1.4$}]
 {\large And here comes some text with bad news in larger font. \par}
 \end{warning_colors2admon}
 
@@ -38054,7 +38065,7 @@ Test warning with title:
 Test warning with large title with math:
 
 
-\begin{warning_colors2admon}[{\large Watch out for $\nabla\cdot\bm{u}=0$ equations }]
+\begin{warning_colors2admon}[{\large Watch out for $\nabla\cdot\bm{u}=0$ equations}]
 {\large Divergence freedom is often problematic from a numerical point
 of view. \par}
 \end{warning_colors2admon}
@@ -38351,12 +38362,12 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % --- begin definitions of admonition environments ---
 
-% Admonition environment for "notice"
-% Style from NumPy User Guide
-\definecolor{noticebackground}{rgb}{0.988235, 0.964706, 0.862745}
+% Admonition style "colors1" has its style taken from the NumPy User Guide
+% "notice" admon
+\definecolor{colors1_notice_background}{rgb}{0.988235,0.964706,0.862745}
 % \fboxsep sets the space between the text and the box
 \newenvironment{noticeshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{noticebackground}}
+{\def\FrameCommand{\fboxsep=3mm\colorbox{colors1_notice_background}}
  \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
 
 \newenvironment{notice_colors1admon}[1][Notice]{
@@ -38369,12 +38380,12 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \end{noticeshaded}
 }
 
-% Admonition environment for "summary"
-% Style from NumPy User Guide
-\definecolor{summarybackground}{rgb}{0.988235, 0.964706, 0.862745}
+% Admonition style "colors1" has its style taken from the NumPy User Guide
+% "summary" admon
+\definecolor{colors1_summary_background}{rgb}{0.988235,0.964706,0.862745}
 % \fboxsep sets the space between the text and the box
 \newenvironment{summaryshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{summarybackground}}
+{\def\FrameCommand{\fboxsep=3mm\colorbox{colors1_summary_background}}
  \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
 
 \newenvironment{summary_colors1admon}[1][Summary]{
@@ -38387,12 +38398,12 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \end{summaryshaded}
 }
 
-% Admonition environment for "warning"
-% Style from NumPy User Guide
-\definecolor{warningbackground}{rgb}{1.0, 0.8235294, 0.8235294}
+% Admonition style "colors1" has its style taken from the NumPy User Guide
+% "warning" admon
+\definecolor{colors1_warning_background}{rgb}{1.0,0.8235294,0.8235294}
 % \fboxsep sets the space between the text and the box
 \newenvironment{warningshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{warningbackground}}
+{\def\FrameCommand{\fboxsep=3mm\colorbox{colors1_warning_background}}
  \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
 
 \newenvironment{warning_colors1admon}[1][Warning]{
@@ -38405,12 +38416,12 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \end{warningshaded}
 }
 
-% Admonition environment for "question"
-% Style from NumPy User Guide
-\definecolor{questionbackground}{rgb}{0.988235, 0.964706, 0.862745}
+% Admonition style "colors1" has its style taken from the NumPy User Guide
+% "question" admon
+\definecolor{colors1_question_background}{rgb}{0.988235,0.964706,0.862745}
 % \fboxsep sets the space between the text and the box
 \newenvironment{questionshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{questionbackground}}
+{\def\FrameCommand{\fboxsep=3mm\colorbox{colors1_question_background}}
  \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
 
 \newenvironment{question_colors1admon}[1][Question]{
@@ -38423,12 +38434,12 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \end{questionshaded}
 }
 
-% Admonition environment for "block"
-% Style from NumPy User Guide
-\definecolor{blockbackground}{rgb}{0.988235, 0.964706, 0.862745}
+% Admonition style "colors1" has its style taken from the NumPy User Guide
+% "block" admon
+\definecolor{colors1_block_background}{rgb}{0.988235,0.964706,0.862745}
 % \fboxsep sets the space between the text and the box
 \newenvironment{blockshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{blockbackground}}
+{\def\FrameCommand{\fboxsep=3mm\colorbox{colors1_block_background}}
  \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
 
 \newenvironment{block_colors1admon}[1][Block]{
@@ -38634,7 +38645,7 @@ And more and more text.
 Test warning with title:
 
 
-\begin{warning_colors1admon}[{\large Watch out }]
+\begin{warning_colors1admon}[{\large Title ending with math $\sqrt{2}\approx 1.4$}]
 {\large And here comes some text with bad news in larger font. \par}
 \end{warning_colors1admon}
 
@@ -38643,7 +38654,7 @@ Test warning with title:
 Test warning with large title with math:
 
 
-\begin{warning_colors1admon}[{\large Watch out for $\nabla\cdot\bm{u}=0$ equations }]
+\begin{warning_colors1admon}[{\large Watch out for $\nabla\cdot\bm{u}=0$ equations}]
 {\large Divergence freedom is often problematic from a numerical point
 of view. \par}
 \end{warning_colors1admon}
@@ -38938,11 +38949,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % --- begin definitions of admonition environments ---
 
-% Admonition environment for "notice"
-\definecolor{noticebackground}{rgb}{0.988235, 0.964706, 0.862745}
+% Admonition style "colors2", admon "notice"
+\definecolor{colors2_notice_background}{rgb}{0.988235,0.964706,0.862745}
 % \fboxsep sets the space between the text and the box
 \newenvironment{noticeshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{noticebackground}}
+{\def\FrameCommand{\fboxsep=3mm\colorbox{colors2_notice_background}}
  \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
 
 \newenvironment{notice_colors2admon}[1][Notice]{
@@ -38958,11 +38969,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \end{noticeshaded}
 }
 
-% Admonition environment for "summary"
-\definecolor{summarybackground}{rgb}{0.988235, 0.964706, 0.862745}
+% Admonition style "colors2", admon "summary"
+\definecolor{colors2_summary_background}{rgb}{0.988235,0.964706,0.862745}
 % \fboxsep sets the space between the text and the box
 \newenvironment{summaryshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{summarybackground}}
+{\def\FrameCommand{\fboxsep=3mm\colorbox{colors2_summary_background}}
  \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
 
 \newenvironment{summary_colors2admon}[1][Summary]{
@@ -38978,11 +38989,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \end{summaryshaded}
 }
 
-% Admonition environment for "warning"
-\definecolor{warningbackground}{rgb}{1.0, 0.8235294, 0.8235294}
+% Admonition style "colors2", admon "warning"
+\definecolor{colors2_warning_background}{rgb}{1.0,0.8235294,0.8235294}
 % \fboxsep sets the space between the text and the box
 \newenvironment{warningshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{warningbackground}}
+{\def\FrameCommand{\fboxsep=3mm\colorbox{colors2_warning_background}}
  \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
 
 \newenvironment{warning_colors2admon}[1][Warning]{
@@ -38998,11 +39009,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \end{warningshaded}
 }
 
-% Admonition environment for "question"
-\definecolor{questionbackground}{rgb}{0.988235, 0.964706, 0.862745}
+% Admonition style "colors2", admon "question"
+\definecolor{colors2_question_background}{rgb}{0.988235,0.964706,0.862745}
 % \fboxsep sets the space between the text and the box
 \newenvironment{questionshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{questionbackground}}
+{\def\FrameCommand{\fboxsep=3mm\colorbox{colors2_question_background}}
  \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
 
 \newenvironment{question_colors2admon}[1][Question]{
@@ -39018,11 +39029,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \end{questionshaded}
 }
 
-% Admonition environment for "block"
-\definecolor{blockbackground}{rgb}{0.988235, 0.964706, 0.862745}
+% Admonition style "colors2", admon "block"
+\definecolor{colors2_block_background}{rgb}{0.988235,0.964706,0.862745}
 % \fboxsep sets the space between the text and the box
 \newenvironment{blockshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{blockbackground}}
+{\def\FrameCommand{\fboxsep=3mm\colorbox{colors2_block_background}}
  \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
 
 \newenvironment{block_colors2admon}[1][Block]{
@@ -39228,7 +39239,7 @@ And more and more text.
 Test warning with title:
 
 
-\begin{warning_colors2admon}[{\large Watch out }]
+\begin{warning_colors2admon}[{\large Title ending with math $\sqrt{2}\approx 1.4$}]
 {\large And here comes some text with bad news in larger font. \par}
 \end{warning_colors2admon}
 
@@ -39237,7 +39248,7 @@ Test warning with title:
 Test warning with large title with math:
 
 
-\begin{warning_colors2admon}[{\large Watch out for $\nabla\cdot\bm{u}=0$ equations }]
+\begin{warning_colors2admon}[{\large Watch out for $\nabla\cdot\bm{u}=0$ equations}]
 {\large Divergence freedom is often problematic from a numerical point
 of view. \par}
 \end{warning_colors2admon}
@@ -39532,9 +39543,10 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % --- begin definitions of admonition environments ---
 
-% Admonition is an oval gray box
+% Admonition style "graybox1" is an oval colored box
+\colorlet{graybox1_background}{gray!6}
 \newmdenv[
-  backgroundcolor=gray!5,  %% white with 5%% gray
+  backgroundcolor=graybox1_background,
   skipabove=\topsep,
   skipbelow=\topsep,
   outerlinewidth=0,
@@ -39744,7 +39756,7 @@ And more and more text.
 Test warning with title:
 
 
-\begin{graybox1admon}[{\large Watch out }.]
+\begin{graybox1admon}[{\large Title ending with math $\sqrt{2}\approx 1.4$}.]
 {\large And here comes some text with bad news in larger font. \par}
 \end{graybox1admon}
 
@@ -39753,7 +39765,7 @@ Test warning with title:
 Test warning with large title with math:
 
 
-\begin{graybox1admon}[{\large Watch out for $\nabla\cdot\bm{u}=0$ equations }.]
+\begin{graybox1admon}[{\large Watch out for $\nabla\cdot\bm{u}=0$ equations}.]
 {\large Divergence freedom is often problematic from a numerical point
 of view. \par}
 \end{graybox1admon}
@@ -40049,11 +40061,13 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % --- begin definitions of admonition environments ---
 
-% gray box with horizontal rules (cannot handle verbatim text)
-\definecolor{lightgray}{rgb}{0.94,0.94,0.94}
-% gray box of 80% width
+% Admonition style "graybox2" is a gray or colored box with a square
+% frame, except for the summary admon which has horizontal rules only
+% Note: this admonition type cannot handle verbatim text!
+\definecolor{graybox2_background}{rgb}{0.94,0.94,0.94}
+% colored box of 80% width
 \newcommand{\grayboxhrules}[1]{\begin{center}
-\colorbox{lightgray}{\rule{6pt}{0pt}
+\colorbox{graybox2_background}{\rule{6pt}{0pt}
 \begin{minipage}{0.8\linewidth}
 \parbox[t]{0mm}{\rule[0pt]{0mm}{0.5\baselineskip}}\hrule
 \vspace*{0.5\baselineskip}\noindent #1
@@ -40063,7 +40077,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % Fallback for verbatim content in \grayboxhrules
 \newmdenv[
-  backgroundcolor=lightgray,
+  backgroundcolor=graybox2_background,
   skipabove=\topsep,
   skipbelow=\topsep,
   leftmargin=23,
@@ -40274,7 +40288,7 @@ Test warning with title:
 
 
 
-\begin{graybox2admon}[{\large Watch out }.]
+\begin{graybox2admon}[{\large Title ending with math $\sqrt{2}\approx 1.4$}.]
 {\large And here comes some text with bad news in larger font. \par}
 \end{graybox2admon}
 
@@ -40285,7 +40299,7 @@ Test warning with large title with math:
 
 
 
-\begin{graybox2admon}[{\large Watch out for $\nabla\cdot\bm{u}=0$ equations }.]
+\begin{graybox2admon}[{\large Watch out for $\nabla\cdot\bm{u}=0$ equations}.]
 {\large Divergence freedom is often problematic from a numerical point
 of view. \par}
 \end{graybox2admon}
@@ -40598,11 +40612,12 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % --- begin definitions of admonition environments ---
 
-% Admonition environment for "notice"
-\definecolor{noticebackground}{rgb}{0.91, 0.91, 0.91}
+% Admonition style "graybox3" has colored background, no frame, and an icon
+% Admon "notice"
+\colorlet{graybox3_notice_background}{gray!20}
 % \fboxsep sets the space between the text and the box
 \newenvironment{noticeshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{noticebackground}}
+{\def\FrameCommand{\fboxsep=3mm\colorbox{graybox3_notice_background}}
  \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
 
 \newenvironment{notice_graybox3admon}[1][Notice]{
@@ -40618,11 +40633,12 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \end{noticeshaded}
 }
 
-% Admonition environment for "summary"
-\definecolor{summarybackground}{rgb}{0.91, 0.91, 0.91}
+% Admonition style "graybox3" has colored background, no frame, and an icon
+% Admon "summary"
+\colorlet{graybox3_summary_background}{gray!20}
 % \fboxsep sets the space between the text and the box
 \newenvironment{summaryshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{summarybackground}}
+{\def\FrameCommand{\fboxsep=3mm\colorbox{graybox3_summary_background}}
  \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
 
 \newenvironment{summary_graybox3admon}[1][Summary]{
@@ -40638,11 +40654,12 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \end{summaryshaded}
 }
 
-% Admonition environment for "warning"
-\definecolor{warningbackground}{rgb}{0.91, 0.91, 0.91}
+% Admonition style "graybox3" has colored background, no frame, and an icon
+% Admon "warning"
+\colorlet{graybox3_warning_background}{gray!20}
 % \fboxsep sets the space between the text and the box
 \newenvironment{warningshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{warningbackground}}
+{\def\FrameCommand{\fboxsep=3mm\colorbox{graybox3_warning_background}}
  \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
 
 \newenvironment{warning_graybox3admon}[1][Warning]{
@@ -40658,11 +40675,12 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \end{warningshaded}
 }
 
-% Admonition environment for "question"
-\definecolor{questionbackground}{rgb}{0.91, 0.91, 0.91}
+% Admonition style "graybox3" has colored background, no frame, and an icon
+% Admon "question"
+\colorlet{graybox3_question_background}{gray!20}
 % \fboxsep sets the space between the text and the box
 \newenvironment{questionshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{questionbackground}}
+{\def\FrameCommand{\fboxsep=3mm\colorbox{graybox3_question_background}}
  \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
 
 \newenvironment{question_graybox3admon}[1][Question]{
@@ -40678,11 +40696,12 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \end{questionshaded}
 }
 
-% Admonition environment for "block"
-\definecolor{blockbackground}{rgb}{0.91, 0.91, 0.91}
+% Admonition style "graybox3" has colored background, no frame, and an icon
+% Admon "block"
+\colorlet{graybox3_block_background}{gray!20}
 % \fboxsep sets the space between the text and the box
 \newenvironment{blockshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{blockbackground}}
+{\def\FrameCommand{\fboxsep=3mm\colorbox{graybox3_block_background}}
  \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
 
 \newenvironment{block_graybox3admon}[1][Block]{
@@ -40888,7 +40907,7 @@ And more and more text.
 Test warning with title:
 
 
-\begin{warning_graybox3admon}[{\large Watch out }]
+\begin{warning_graybox3admon}[{\large Title ending with math $\sqrt{2}\approx 1.4$}]
 {\large And here comes some text with bad news in larger font. \par}
 \end{warning_graybox3admon}
 
@@ -40897,7 +40916,7 @@ Test warning with title:
 Test warning with large title with math:
 
 
-\begin{warning_graybox3admon}[{\large Watch out for $\nabla\cdot\bm{u}=0$ equations }]
+\begin{warning_graybox3admon}[{\large Watch out for $\nabla\cdot\bm{u}=0$ equations}]
 {\large Divergence freedom is often problematic from a numerical point
 of view. \par}
 \end{warning_graybox3admon}
@@ -41192,7 +41211,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % --- begin definitions of admonition environments ---
 
-% Admonition is just a paragraph
+% Admonition style "paragraph" is just a plain paragraph
 \newenvironment{paragraphadmon}[1][]{\paragraph{#1}}{}
 
 % --- end of definitions of admonition environments ---
@@ -41388,7 +41407,7 @@ And more and more text.
 Test warning with title:
 
 
-\begin{paragraphadmon}[{\large Watch out }.]
+\begin{paragraphadmon}[{\large Title ending with math $\sqrt{2}\approx 1.4$}.]
 {\large And here comes some text with bad news in larger font. \par}
 \end{paragraphadmon}
 
@@ -41397,7 +41416,7 @@ Test warning with title:
 Test warning with large title with math:
 
 
-\begin{paragraphadmon}[{\large Watch out for $\nabla\cdot\bm{u}=0$ equations }.]
+\begin{paragraphadmon}[{\large Watch out for $\nabla\cdot\bm{u}=0$ equations}.]
 {\large Divergence freedom is often problematic from a numerical point
 of view. \par}
 \end{paragraphadmon}
@@ -41691,11 +41710,12 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % --- begin definitions of admonition environments ---
 
-% Admonition environment for "notice"
-\definecolor{noticebackground}{rgb}{0.988235, 0.964706, 0.862745}
+% Admonition style "yellowbox" has colored background, yellow icons, and no farme
+% Admon "notice"
+\definecolor{yellowbox_notice_background}{rgb}{0.988235,0.964706,0.862745}
 % \fboxsep sets the space between the text and the box
 \newenvironment{noticeshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{noticebackground}}
+{\def\FrameCommand{\fboxsep=3mm\colorbox{yellowbox_notice_background}}
  \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
 
 \newenvironment{notice_yellowboxadmon}[1][Notice]{
@@ -41711,11 +41731,12 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \end{noticeshaded}
 }
 
-% Admonition environment for "summary"
-\definecolor{summarybackground}{rgb}{0.988235, 0.964706, 0.862745}
+% Admonition style "yellowbox" has colored background, yellow icons, and no farme
+% Admon "summary"
+\definecolor{yellowbox_summary_background}{rgb}{0.988235,0.964706,0.862745}
 % \fboxsep sets the space between the text and the box
 \newenvironment{summaryshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{summarybackground}}
+{\def\FrameCommand{\fboxsep=3mm\colorbox{yellowbox_summary_background}}
  \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
 
 \newenvironment{summary_yellowboxadmon}[1][Summary]{
@@ -41731,11 +41752,12 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \end{summaryshaded}
 }
 
-% Admonition environment for "warning"
-\definecolor{warningbackground}{rgb}{0.988235, 0.964706, 0.862745}
+% Admonition style "yellowbox" has colored background, yellow icons, and no farme
+% Admon "warning"
+\definecolor{yellowbox_warning_background}{rgb}{0.988235,0.964706,0.862745}
 % \fboxsep sets the space between the text and the box
 \newenvironment{warningshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{warningbackground}}
+{\def\FrameCommand{\fboxsep=3mm\colorbox{yellowbox_warning_background}}
  \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
 
 \newenvironment{warning_yellowboxadmon}[1][Warning]{
@@ -41751,11 +41773,12 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \end{warningshaded}
 }
 
-% Admonition environment for "question"
-\definecolor{questionbackground}{rgb}{0.988235, 0.964706, 0.862745}
+% Admonition style "yellowbox" has colored background, yellow icons, and no farme
+% Admon "question"
+\definecolor{yellowbox_question_background}{rgb}{0.988235,0.964706,0.862745}
 % \fboxsep sets the space between the text and the box
 \newenvironment{questionshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{questionbackground}}
+{\def\FrameCommand{\fboxsep=3mm\colorbox{yellowbox_question_background}}
  \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
 
 \newenvironment{question_yellowboxadmon}[1][Question]{
@@ -41771,11 +41794,12 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \end{questionshaded}
 }
 
-% Admonition environment for "block"
-\definecolor{blockbackground}{rgb}{0.988235, 0.964706, 0.862745}
+% Admonition style "yellowbox" has colored background, yellow icons, and no farme
+% Admon "block"
+\definecolor{yellowbox_block_background}{rgb}{0.988235,0.964706,0.862745}
 % \fboxsep sets the space between the text and the box
 \newenvironment{blockshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{blockbackground}}
+{\def\FrameCommand{\fboxsep=3mm\colorbox{yellowbox_block_background}}
  \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
 
 \newenvironment{block_yellowboxadmon}[1][Block]{
@@ -41981,7 +42005,7 @@ And more and more text.
 Test warning with title:
 
 
-\begin{warning_yellowboxadmon}[{\large Watch out }]
+\begin{warning_yellowboxadmon}[{\large Title ending with math $\sqrt{2}\approx 1.4$}]
 {\large And here comes some text with bad news in larger font. \par}
 \end{warning_yellowboxadmon}
 
@@ -41990,7 +42014,7 @@ Test warning with title:
 Test warning with large title with math:
 
 
-\begin{warning_yellowboxadmon}[{\large Watch out for $\nabla\cdot\bm{u}=0$ equations }]
+\begin{warning_yellowboxadmon}[{\large Watch out for $\nabla\cdot\bm{u}=0$ equations}]
 {\large Divergence freedom is often problematic from a numerical point
 of view. \par}
 \end{warning_yellowboxadmon}
@@ -42483,7 +42507,7 @@ And more and more text.
 Test warning with title:
 
 <p>
-<div class="warning alert-text-large"><b>Watch out.</b>
+<div class="warning alert-text-large"><b>Title ending with math \( \sqrt{2}\approx 1.4 \).</b>
 And here comes some text with bad news in larger font.
 </div>
 
@@ -43006,7 +43030,7 @@ And more and more text.
 Test warning with title:
 
 <p>
-<div class="alert alert-block alert-warning alert-text-large"><b>Watch out.</b>
+<div class="alert alert-block alert-warning alert-text-large"><b>Title ending with math \( \sqrt{2}\approx 1.4 \).</b>
 And here comes some text with bad news in larger font.
 </div>
 
@@ -43527,7 +43551,7 @@ And more and more text.
 Test warning with title:
 
 <p>
-<div class="alert alert-block alert-warning alert-text-large"><b>Watch out.</b>
+<div class="alert alert-block alert-warning alert-text-large"><b>Title ending with math \( \sqrt{2}\approx 1.4 \).</b>
 And here comes some text with bad news in larger font.
 </div>
 
@@ -44042,7 +44066,7 @@ Test warning with title:
 <tr>
 <td width="25" align="center" valign="top">
 <img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/lyx_warning.png" hspace="5" alt="warning"></td>
-<th align="left" valign="middle"><b>Watch out.</b></th>
+<th align="left" valign="middle"><b>Title ending with math \( \sqrt{2}\approx 1.4 \).</b></th>
 </tr>
 <tr><td>&nbsp;</td> <td align="left" valign="top"><p>
 <div class="alert-text-large">And here comes some text with bad news in larger font.</div>
@@ -44633,7 +44657,7 @@ Test warning with title:
 
 
 <!-- admonition: warning, typeset as paragraph -->
-<div class="alert-text-large"><b>Watch out.</b>
+<div class="alert-text-large"><b>Title ending with math \( \sqrt{2}\approx 1.4 \).</b>
 And here comes some text with bad news in larger font.
 </div>
 
@@ -45204,7 +45228,7 @@ And more and more text.
 Test warning with title:
 
 <p>
-<div class="alert alert-block alert-warning alert-text-large"><b>Watch out.</b>
+<div class="alert alert-block alert-warning alert-text-large"><b>Title ending with math \( \sqrt{2}\approx 1.4 \).</b>
 And here comes some text with bad news in larger font.
 </div>
 
@@ -45745,7 +45769,7 @@ And more and more text.
 Test warning with title:
 
 <p>
-<div class="alert alert-block alert-warning alert-text-large"><b>Watch out.</b>
+<div class="alert alert-block alert-warning alert-text-large"><b>Title ending with math \( \sqrt{2}\approx 1.4 \).</b>
 And here comes some text with bad news in larger font.
 </div>
 
@@ -46160,7 +46184,7 @@ Test warning with title:
 {{mbox
 | type = warning
 | textstyle = font-size: 130%;
-| text = '''Watch out.''' And here comes some text with bad news in larger font.
+| text = '''Title ending with math <math>\sqrt{2}\approx 1.4</math>.''' And here comes some text with bad news in larger font.
 }}
 
 
@@ -46559,7 +46583,7 @@ Let us start with a plain warning environment.
 Test warning with title:
 
 
-.. admonition:: Watch out
+.. admonition:: Title ending with math :math:`\sqrt{2}\approx 1.4`
 
    And here comes some text with bad news in larger font.
 
@@ -46928,7 +46952,7 @@ Warning ---------------------------------------------------------|
 Test warning with title:
 
 
-Watch out -----------------------------------------------|
+Title ending with math \sqrt{2}\approx 1.4 --------------|
 |                                                        |
 | And here comes some text with bad news in larger font. |
 |--------------------------------------------------------|
@@ -54022,9 +54046,10 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % --- begin definitions of admonition environments ---
 
-% Admonition is an oval gray box
+% Admonition style "graybox1" is an oval colored box
+\colorlet{graybox1_background}{gray!5}
 \newmdenv[
-  backgroundcolor=gray!5,  %% white with 5%% gray
+  backgroundcolor=graybox1_background,
   skipabove=\topsep,
   skipbelow=\topsep,
   outerlinewidth=0,
@@ -56805,9 +56830,10 @@ open=right               % start new chapters on odd-numbered pages
 
 % --- begin definitions of admonition environments ---
 
-% Admonition is an oval gray box
+% Admonition style "graybox1" is an oval colored box
+\colorlet{graybox1_background}{gray!5}
 \newmdenv[
-  backgroundcolor=gray!5,  %% white with 5%% gray
+  backgroundcolor=graybox1_background,
   skipabove=\topsep,
   skipbelow=\topsep,
   outerlinewidth=0,
@@ -59701,9 +59727,10 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % --- begin definitions of admonition environments ---
 
-% Admonition is an oval gray box
+% Admonition style "graybox1" is an oval colored box
+\colorlet{graybox1_background}{gray!5}
 \newmdenv[
-  backgroundcolor=gray!5,  %% white with 5%% gray
+  backgroundcolor=graybox1_background,
   skipabove=\topsep,
   skipbelow=\topsep,
   outerlinewidth=0,
@@ -69248,9 +69275,10 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % --- begin definitions of admonition environments ---
 
-% Admonition is an oval gray box
+% Admonition style "graybox1" is an oval colored box
+\colorlet{graybox1_background}{gray!5}
 \newmdenv[
-  backgroundcolor=gray!5,  %% white with 5%% gray
+  backgroundcolor=graybox1_background,
   skipabove=\topsep,
   skipbelow=\topsep,
   outerlinewidth=0,
@@ -81065,7 +81093,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 797.
+t line 798.
 
 
 
@@ -81085,7 +81113,7 @@ t line 797.
 
 
 
-t line 806.
+t line 807.
 
 
 
@@ -81105,7 +81133,7 @@ t line 806.
 
 
 
-t line 810.
+t line 811.
 
 
 
@@ -81819,7 +81847,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 797.
+t line 798.
 
 
 
@@ -81839,7 +81867,7 @@ t line 797.
 
 
 
-t line 806.
+t line 807.
 
 
 
@@ -81859,7 +81887,7 @@ t line 806.
 
 
 
-t line 810.
+t line 811.
 
 
 
@@ -82486,7 +82514,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 797.
+t line 798.
 
 
 
@@ -82506,7 +82534,7 @@ t line 797.
 
 
 
-t line 806.
+t line 807.
 
 
 
@@ -82526,7 +82554,7 @@ t line 806.
 
 
 
-t line 810.
+t line 811.
 
 
 
@@ -85142,6 +85170,9 @@ command "md2latex" is not legal, must be among
 format, help, sphinx_dir, subst, replace, replace_from_file, clean, spellcheck, ptex2tex, guess_encoding, expand_commands, expand_mako, combine_images, change_encoding, capitalize, gwiki_figsubst, md2html, remove_inline_comments, grab, remove, remove_exercise_answers, split_rst, split_html, slides_html, slides_beamer, latin2html, grep, latex_header, latex_footer, bbl2rst, html_colorbullets, list_labels, teamod, sphinxfix_localURLs, make_figure_code_links, latex_exercise_toc, insertdocstr, old2new_format, linkchecker, latex2doconce, latex_dislikes, pygmentize, makefile, diff, gitdiff, fix_bibtex4publish, csv2table
 + admon_tps='colors1 graybox1 paragraph graybox2 yellowbox graybox3 colors2'
 + for admon_tp in '$admon_tps'
++ '[' colors1 = graybox1 ']'
++ '[' colors1 = graybox3 ']'
++ color=
 + system doconce format pdflatex admon --latex_admon=colors1
 + doconce format pdflatex admon --latex_admon=colors1
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
@@ -85285,7 +85316,7 @@ Underfull \hbox (badness 10000)
 Underfull \hbox (badness 10000) 
 
 [3 <./latex_figs/notice.pdf>]
-<latex_figs/question.pdf, id=51, 89.33376pt x 89.33376pt>
+<latex_figs/question.pdf, id=52, 89.33376pt x 89.33376pt>
 <use latex_figs/question.pdf>
 Underfull \hbox (badness 10000) 
 
@@ -85302,9 +85333,9 @@ Underfull \hbox (badness 10000)
 Underfull \hbox (badness 10000) 
 
 (./admon_colors1.out.pyg) (./admon_colors1.out.pyg)
-<../doc/src/manual/fig/wave1D.pdf, id=52, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=53, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> [4 <./latex_figs/question.pdf>] [5]
-<latex_figs/summary.pdf, id=69, 89.33376pt x 89.33376pt>
+<latex_figs/summary.pdf, id=70, 89.33376pt x 89.33376pt>
 <use latex_figs/summary.pdf>
 Underfull \hbox (badness 10000) 
 
@@ -85441,19 +85472,20 @@ Package rerunfilecheck Warning: File `admon_colors1.out' has changed.
 
  )
 (see the transcript file for additional information){/usr/share/texmf/fonts/enc
-/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/
-texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-
+/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/sh
+are/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-
 mathsy.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib1
 0.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/font
 s/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb
-></usr/share/texmf/fonts/type1/public/lm/lmmi7.pfb></usr/share/texmf/fonts/type
-1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/s
-hare/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/
-lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texm
-f/fonts/type1/public/lm/lmri8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy1
-0.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy7.pfb></usr/share/texmf/fonts
-/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb>
-</usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
+></usr/share/texmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/typ
+e1/public/lm/lmmi7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/
+share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/publi
+c/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texm
+f/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmri
+8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/font
+s/type1/public/lm/lmsy7.pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb>
+</usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type
+1/public/lm/lmtt9.pfb>
 Output written on admon_colors1.pdf (6 pages, ).
 Transcript written on admon_colors1.log.
 + '[' 0 -ne 0 ']'
@@ -85469,8 +85501,10 @@ summary.pdf
 warning.pdf
 + rm -rf latex_figs
 + for admon_tp in '$admon_tps'
-+ system doconce format pdflatex admon --latex_admon=graybox1
-+ doconce format pdflatex admon --latex_admon=graybox1
++ '[' graybox1 = graybox1 ']'
++ color='--latex_admon_color=gray!6'
++ system doconce format pdflatex admon --latex_admon=graybox1 '--latex_admon_color=gray!6'
++ doconce format pdflatex admon --latex_admon=graybox1 '--latex_admon_color=gray!6'
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to pdflatex
 figure file ../doc/src/manual/fig/wave1D:
@@ -85729,7 +85763,7 @@ dmap/pdftex.map}] (./admon_graybox1.out.pyg)
 ...rest of part of LaTeX line number...
 
 (./admon_graybox1.out.pyg) (./admon_graybox1.out.pyg)
-<../doc/src/manual/fig/wave1D.pdf, id=46, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=47, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf>
 
 
@@ -85919,18 +85953,19 @@ LaTeX Warning: There were undefined references.
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ){/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dv
-ips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share
+ips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share
 /texmf/fonts/enc/dvips/lm/lm-mathsy.enc}</usr/share/texlive/texmf-dist/fonts/ty
 pe1/public/amsfonts/cm/cmmib10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx
 10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fon
-ts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi7.pfb
-></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type
-1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/sh
-are/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/l
-m/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmri8.pfb></usr/share/texm
-f/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy
-7.pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb></usr/share/texmf/font
-s/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
+ts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi12.pf
+b></usr/share/texmf/fonts/type1/public/lm/lmmi7.pfb></usr/share/texmf/fonts/typ
+e1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/
+share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public
+/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/tex
+mf/fonts/type1/public/lm/lmri8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy
+10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy7.pfb></usr/share/texmf/font
+s/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb
+></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
 Output written on admon_graybox1.pdf (6 pages, ).
 Transcript written on admon_graybox1.log.
 + '[' 0 -ne 0 ']'
@@ -85941,6 +85976,9 @@ admon=graybox1
 no latex_figs directory for this admon type
 + rm -rf latex_figs
 + for admon_tp in '$admon_tps'
++ '[' paragraph = graybox1 ']'
++ '[' paragraph = graybox3 ']'
++ color=
 + system doconce format pdflatex admon --latex_admon=paragraph
 + doconce format pdflatex admon --latex_admon=paragraph
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
@@ -86150,7 +86188,7 @@ ABD: EveryShipout initializing macros (./newcommands_bfmath.tex)
  [1{/var/lib/texmf/fonts/map/pdftex/up
 dmap/pdftex.map}] (./admon_paragraph.out.pyg) [2] (./admon_paragraph.out.pyg)
 [3] (./admon_paragraph.out.pyg) (./admon_paragraph.out.pyg [4])
-<../doc/src/manual/fig/wave1D.pdf, id=64, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=65, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf>
 No file admon_paragraph.ind.
 [5 <../doc/src/manual/fig/wave1D.pdf>] (./admon_paragraph.aux)
@@ -86320,18 +86358,19 @@ Package rerunfilecheck Warning: File `admon_paragraph.out' has changed.
 (rerunfilecheck)                or use package `bookmark'.
 
  ){/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dv
-ips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share
+ips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share
 /texmf/fonts/enc/dvips/lm/lm-mathsy.enc}</usr/share/texlive/texmf-dist/fonts/ty
 pe1/public/amsfonts/cm/cmmib10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx
 10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fon
-ts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi7.pfb
-></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type
-1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/sh
-are/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/l
-m/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmri8.pfb></usr/share/texm
-f/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy
-7.pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb></usr/share/texmf/font
-s/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
+ts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi12.pf
+b></usr/share/texmf/fonts/type1/public/lm/lmmi7.pfb></usr/share/texmf/fonts/typ
+e1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/
+share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public
+/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/tex
+mf/fonts/type1/public/lm/lmri8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy
+10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy7.pfb></usr/share/texmf/font
+s/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb
+></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
 Output written on admon_paragraph.pdf (5 pages, ).
 Transcript written on admon_paragraph.log.
 + '[' 0 -ne 0 ']'
@@ -86342,6 +86381,9 @@ admon=paragraph
 no latex_figs directory for this admon type
 + rm -rf latex_figs
 + for admon_tp in '$admon_tps'
++ '[' graybox2 = graybox1 ']'
++ '[' graybox2 = graybox3 ']'
++ color=
 + system doconce format pdflatex admon --latex_admon=graybox2
 + doconce format pdflatex admon --latex_admon=graybox2
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
@@ -86603,7 +86645,7 @@ dmap/pdftex.map}] (./admon_graybox2.out.pyg)
 ...rest of part of LaTeX line number...
 
 (./admon_graybox2.out.pyg) (./admon_graybox2.out.pyg)
-<../doc/src/manual/fig/wave1D.pdf, id=46, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=47, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf>
 
 
@@ -86790,18 +86832,19 @@ LaTeX Warning: There were undefined references.
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ){/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dv
-ips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share
+ips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share
 /texmf/fonts/enc/dvips/lm/lm-mathsy.enc}</usr/share/texlive/texmf-dist/fonts/ty
 pe1/public/amsfonts/cm/cmmib10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx
 10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fon
-ts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi7.pfb
-></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type
-1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/sh
-are/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/l
-m/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmri8.pfb></usr/share/texm
-f/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy
-7.pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb></usr/share/texmf/font
-s/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
+ts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi12.pf
+b></usr/share/texmf/fonts/type1/public/lm/lmmi7.pfb></usr/share/texmf/fonts/typ
+e1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/
+share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public
+/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/tex
+mf/fonts/type1/public/lm/lmri8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy
+10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy7.pfb></usr/share/texmf/font
+s/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb
+></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
 Output written on admon_graybox2.pdf (6 pages, ).
 Transcript written on admon_graybox2.log.
 + '[' 0 -ne 0 ']'
@@ -86812,6 +86855,9 @@ admon=graybox2
 no latex_figs directory for this admon type
 + rm -rf latex_figs
 + for admon_tp in '$admon_tps'
++ '[' yellowbox = graybox1 ']'
++ '[' yellowbox = graybox3 ']'
++ color=
 + system doconce format pdflatex admon --latex_admon=yellowbox
 + doconce format pdflatex admon --latex_admon=yellowbox
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
@@ -86936,10 +86982,10 @@ dmap/pdftex.map}] (./admon_yellowbox.out.pyg)
 <use latex_figs/small_yellow_warning.pdf>
 <use latex_figs/small_yellow_warning.pdf> [2 <./latex_figs/small_yellow_warning
 .pdf>] <use latex_figs/small_yellow_warning.pdf>
-<latex_figs/small_yellow_notice.pdf, id=40, 32.12pt x 32.12pt>
+<latex_figs/small_yellow_notice.pdf, id=42, 32.12pt x 32.12pt>
 <use latex_figs/small_yellow_notice.pdf>
 <use latex_figs/small_yellow_notice.pdf>
-<latex_figs/small_yellow_question.pdf, id=41, 32.12pt x 32.12pt>
+<latex_figs/small_yellow_question.pdf, id=43, 32.12pt x 32.12pt>
 <use latex_figs/small_yellow_question.pdf>
 <use latex_figs/small_yellow_question.pdf> [3 <./latex_figs/small_yellow_notice
 .pdf> <./latex_figs/small_yellow_question.pdf>]
@@ -86947,12 +86993,12 @@ dmap/pdftex.map}] (./admon_yellowbox.out.pyg)
 <use latex_figs/small_yellow_warning.pdf>
 <use latex_figs/small_yellow_notice.pdf> (./admon_yellowbox.out.pyg)
 (./admon_yellowbox.out.pyg)
-<../doc/src/manual/fig/wave1D.pdf, id=63, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=64, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> [4]
 
 
 
-[5] <latex_figs/small_yellow_summary.pdf, id=75, 32.12pt x 32.12pt>
+[5] <latex_figs/small_yellow_summary.pdf, id=76, 32.12pt x 32.12pt>
 <use latex_figs/small_yellow_summary.pdf>
 No file admon_yellowbox.ind.
 [6 <../doc/src/manual/fig/wave1D.pdf> <./latex_figs/small_yellow_summary.pdf>]
@@ -87088,19 +87134,20 @@ Package rerunfilecheck Warning: File `admon_yellowbox.out' has changed.
 
  )
 (see the transcript file for additional information){/usr/share/texmf/fonts/enc
-/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/
-texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-
+/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/sh
+are/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-
 mathsy.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib1
 0.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/font
 s/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb
-></usr/share/texmf/fonts/type1/public/lm/lmmi7.pfb></usr/share/texmf/fonts/type
-1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/s
-hare/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/
-lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texm
-f/fonts/type1/public/lm/lmri8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy1
-0.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy7.pfb></usr/share/texmf/fonts
-/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb>
-</usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
+></usr/share/texmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/typ
+e1/public/lm/lmmi7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/
+share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/publi
+c/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texm
+f/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmri
+8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/font
+s/type1/public/lm/lmsy7.pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb>
+</usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type
+1/public/lm/lmtt9.pfb>
 Output written on admon_yellowbox.pdf (6 pages, ).
 Transcript written on admon_yellowbox.log.
 + '[' 0 -ne 0 ']'
@@ -87116,8 +87163,11 @@ small_yellow_summary.pdf
 small_yellow_warning.pdf
 + rm -rf latex_figs
 + for admon_tp in '$admon_tps'
-+ system doconce format pdflatex admon --latex_admon=graybox3
-+ doconce format pdflatex admon --latex_admon=graybox3
++ '[' graybox3 = graybox1 ']'
++ '[' graybox3 = graybox3 ']'
++ color='--latex_admon_color=gray!20'
++ system doconce format pdflatex admon --latex_admon=graybox3 '--latex_admon_color=gray!20'
++ doconce format pdflatex admon --latex_admon=graybox3 '--latex_admon_color=gray!20'
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to pdflatex
 figure file ../doc/src/manual/fig/wave1D:
@@ -87240,21 +87290,21 @@ dmap/pdftex.map}] (./admon_graybox3.out.pyg)
 <use latex_figs/small_gray_warning.pdf>
 <use latex_figs/small_gray_warning.pdf> [2 <./latex_figs/small_gray_warning.pdf
 >] <use latex_figs/small_gray_warning.pdf>
-<latex_figs/small_gray_notice.pdf, id=40, 64.24pt x 64.24pt>
+<latex_figs/small_gray_notice.pdf, id=42, 64.24pt x 64.24pt>
 <use latex_figs/small_gray_notice.pdf> <use latex_figs/small_gray_notice.pdf>
-<latex_figs/small_gray_question2.pdf, id=41, 64.24pt x 64.24pt>
+<latex_figs/small_gray_question2.pdf, id=43, 64.24pt x 64.24pt>
 <use latex_figs/small_gray_question2.pdf>
 <use latex_figs/small_gray_question2.pdf> [3 <./latex_figs/small_gray_notice.pd
 f> <./latex_figs/small_gray_question2.pdf>]
 <use latex_figs/small_gray_warning.pdf> (./admon_graybox3.out.pyg)
 <use latex_figs/small_gray_warning.pdf> <use latex_figs/small_gray_notice.pdf>
 (./admon_graybox3.out.pyg) (./admon_graybox3.out.pyg)
-<../doc/src/manual/fig/wave1D.pdf, id=63, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=64, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> [4]
 
 
 
-[5] <latex_figs/small_gray_summary.pdf, id=75, 48.18pt x 48.18pt>
+[5] <latex_figs/small_gray_summary.pdf, id=76, 48.18pt x 48.18pt>
 <use latex_figs/small_gray_summary.pdf>
 No file admon_graybox3.ind.
 [6 <../doc/src/manual/fig/wave1D.pdf> <./latex_figs/small_gray_summary.pdf>]
@@ -87390,19 +87440,20 @@ Package rerunfilecheck Warning: File `admon_graybox3.out' has changed.
 
  )
 (see the transcript file for additional information){/usr/share/texmf/fonts/enc
-/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/
-texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-
+/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/sh
+are/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-
 mathsy.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib1
 0.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/font
 s/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb
-></usr/share/texmf/fonts/type1/public/lm/lmmi7.pfb></usr/share/texmf/fonts/type
-1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/s
-hare/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/
-lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texm
-f/fonts/type1/public/lm/lmri8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy1
-0.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy7.pfb></usr/share/texmf/fonts
-/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb>
-</usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
+></usr/share/texmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/typ
+e1/public/lm/lmmi7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/
+share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/publi
+c/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texm
+f/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmri
+8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/font
+s/type1/public/lm/lmsy7.pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb>
+</usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type
+1/public/lm/lmtt9.pfb>
 Output written on admon_graybox3.pdf (6 pages, ).
 Transcript written on admon_graybox3.log.
 + '[' 0 -ne 0 ']'
@@ -87418,6 +87469,9 @@ small_gray_summary.pdf
 small_gray_warning.pdf
 + rm -rf latex_figs
 + for admon_tp in '$admon_tps'
++ '[' colors2 = graybox1 ']'
++ '[' colors2 = graybox3 ']'
++ color=
 + system doconce format pdflatex admon --latex_admon=colors2
 + doconce format pdflatex admon --latex_admon=colors2
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
@@ -87541,19 +87595,19 @@ dmap/pdftex.map}] (./admon_colors2.out.pyg)
 <latex_figs/warning.pdf, id=20, 89.33376pt x 89.33376pt>
 <use latex_figs/warning.pdf> <use latex_figs/warning.pdf> [2 <./latex_figs/warn
 ing.pdf>] <use latex_figs/warning.pdf>
-<latex_figs/notice.pdf, id=38, 89.33376pt x 89.33376pt>
+<latex_figs/notice.pdf, id=40, 89.33376pt x 89.33376pt>
 <use latex_figs/notice.pdf> <use latex_figs/notice.pdf>
-<latex_figs/question.pdf, id=39, 89.33376pt x 89.33376pt>
+<latex_figs/question.pdf, id=41, 89.33376pt x 89.33376pt>
 <use latex_figs/question.pdf> <use latex_figs/question.pdf> [3 <./latex_figs/no
 tice.pdf> <./latex_figs/question.pdf>] <use latex_figs/warning.pdf>
 (./admon_colors2.out.pyg) <use latex_figs/warning.pdf>
 <use latex_figs/notice.pdf> (./admon_colors2.out.pyg) (./admon_colors2.out.pyg)
-<../doc/src/manual/fig/wave1D.pdf, id=57, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=58, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> [4]
 
 
 
-[5] <latex_figs/summary.pdf, id=69, 89.33376pt x 89.33376pt>
+[5] <latex_figs/summary.pdf, id=70, 89.33376pt x 89.33376pt>
 <use latex_figs/summary.pdf>
 No file admon_colors2.ind.
 [6 <../doc/src/manual/fig/wave1D.pdf> <./latex_figs/summary.pdf>]
@@ -87689,19 +87743,20 @@ Package rerunfilecheck Warning: File `admon_colors2.out' has changed.
 
  )
 (see the transcript file for additional information){/usr/share/texmf/fonts/enc
-/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/
-texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-
+/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/sh
+are/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-
 mathsy.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib1
 0.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/font
 s/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb
-></usr/share/texmf/fonts/type1/public/lm/lmmi7.pfb></usr/share/texmf/fonts/type
-1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/s
-hare/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/
-lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texm
-f/fonts/type1/public/lm/lmri8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy1
-0.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy7.pfb></usr/share/texmf/fonts
-/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb>
-</usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
+></usr/share/texmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/typ
+e1/public/lm/lmmi7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/
+share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/publi
+c/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texm
+f/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmri
+8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/font
+s/type1/public/lm/lmsy7.pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb>
+</usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type
+1/public/lm/lmtt9.pfb>
 Output written on admon_colors2.pdf (6 pages, ).
 Transcript written on admon_colors2.log.
 + '[' 0 -ne 0 ']'
@@ -87998,8 +88053,7 @@ translating doconce text in tmp_preprocess__admon.do.txt to plain
 output in admon.txt
 + '[' 0 -ne 0 ']'
 + cp admon.txt admon_paragraph.txt
-+ cp -f admon_apricot.html admon_colors.html admon_gray.html admon_lyx.html admon_paragraph.html admon_vagrant.html admon_yellow.html admon_colors1.pdf admon_colors2.pdf admon_graybox1.pdf admon_graybox2.pdf admon_graybox3.pdf admon_paragraph.pdf admon_yellowbox.pdf admon_mwiki.mwiki admon_paragraph.txt admon_sphinx admon_demo/
-cp: omitting directory ‘admon_sphinx’
++ cp -fr admon_apricot.html admon_colors.html admon_gray.html admon_lyx.html admon_paragraph.html admon_vagrant.html admon_yellow.html admon_colors1.pdf admon_colors2.pdf admon_graybox1.pdf admon_graybox2.pdf admon_graybox3.pdf admon_paragraph.pdf admon_yellowbox.pdf admon_mwiki.mwiki admon_paragraph.txt admon_sphinx admon_demo/
 + '[' -d latex_figs ']'
 + system doconce format pandoc github_md.do.txt --github_md
 + doconce format pandoc github_md.do.txt --github_md
@@ -90082,11 +90136,11 @@ ight: 125%">a = 1  # Value suggested by  | Traceback (most recent call last):
   File "<string>", line 1, in <module>
   File "/usr/local/bin/doconce", line 84, in format
     doconce.doconce.format_driver()
-  File "/usr/local/lib/python2.7/dist-packages/doconce/doconce.py", line 3019, in format_driver
+  File "/usr/local/lib/python2.7/dist-packages/doconce/doconce.py", line 3037, in format_driver
     out_filename = file2file(filename_preprocessed, format, basename)
-  File "/usr/local/lib/python2.7/dist-packages/doconce/doconce.py", line 2288, in file2file
+  File "/usr/local/lib/python2.7/dist-packages/doconce/doconce.py", line 2306, in file2file
     error_message()
-  File "/usr/local/lib/python2.7/dist-packages/doconce/doconce.py", line 2277, in error_message
+  File "/usr/local/lib/python2.7/dist-packages/doconce/doconce.py", line 2295, in error_message
     print filestr[pos-40:pos], '|', filestr[pos], '|', filestr[pos+1:pos+40]
 UnicodeEncodeError: 'ascii' codec can't encode character u'\xc3' in position 0: ordinal not in range(128)
 + doconce format html encoding3 -DPREPROCESS --encoding=utf-8 --no_pygments_html --debug
@@ -90215,10 +90269,11 @@ replacing # Comment before list by  in tmp2.do.txt
 + doconce format sphinx tmp2
 translating doconce text in tmp2.do.txt to sphinx
 
-*** warning: found \cite{...} (cite{...} has no backslash)
+*** warning: found \cite{...} with backslash
+    (cite{...} has no backslash in Doconce syntax)
 \cite{mybook}
 
-*** warning: found \idx{...} (indx{...} has no backslash)
+*** warning: found \idx{...} (idx{...} has no backslash)
 \idx{youridx}
 Abort! (add --no_abort on the command line to avoid this abortion)
 + doconce replace '\idx' idx tmp2.do.txt
@@ -90248,7 +90303,8 @@ __Paragraph before.+!bc replaced by !bc in tmp2.do.txt
 + doconce format rst tmp2
 translating doconce text in tmp2.do.txt to rst
 
-*** warning: found \label{...} (label{...} has no backslash)
+*** warning: found \label{...} with backslash
+    (label{...} has no backslash in Doconce syntax)
 \label{mylab}
 *** error: missing comma after filename, before options in FIGURE
 FIGURE: [../doc/manual/fig/wave1D width=800]

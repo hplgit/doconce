@@ -1051,7 +1051,7 @@ def latex_%(_admon)s(text_block, format, title='%(_Admon)s', text_size='normal')
             text_block = r'\vspace{0.5mm}\par\noindent' + '\n' + text_block
     elif text_size == 'large':
         text_block = r'{\large ' + text_block + r' \par}'
-        title = r'{\large ' + title + ' }'
+        title = r'{\large ' + title + '}'
 
     title_graybox1 = title.replace(',', '')  # title in graybox1 cannot handle ,
     if title_graybox1 and title_graybox1[-1] not in ('.', ':', '!', '?'):
@@ -1725,6 +1725,51 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
     if re.search(r'^!b(%s)' % '|'.join(admons), filestr, flags=re.MULTILINE):
         # Found one !b... command for an admonition
         latex_admon = option('latex_admon=', 'graybox1')
+        latex_admon_color = option('latex_admon_color=', None)
+
+        if latex_admon_color is None:
+            # colors1, colors2 color
+            light_blue = (0.87843, 0.95686, 1.0)
+            pink = (1.0, 0.8235294, 0.8235294)
+            # colors1, colors2, yellowbox color
+            yellow1 = (0.988235, 0.964706, 0.862745)
+            yellow1b = (0.97, 0.88, 0.62)  # alt, not used
+            # graybox1 color
+            gray1 = "gray!5"
+            # graybox2 color
+            gray2 = (0.94, 0.94, 0.94)
+            # graybox3 color
+            gray3 = (0.91, 0.91, 0.91)   # lighter gray
+            gray3l = (0.97, 0.97, 0.97)  # even lighter gray, not used
+        else:
+            # use latex_admon_color for everything
+            try:
+                # RGB input?
+                latex_admon_color = tuple(eval(latex_admon_color))
+            except (NameError, SyntaxError) as e:
+                # Color name input
+                pass
+
+            light_blue = latex_admon_color
+            pink = latex_admon_color
+            # colors1, colors2, yellowbox color
+            yellow1 = latex_admon_color
+            # graybox1 color
+            gray1 = latex_admon_color
+            # graybox2 color
+            gray2 = latex_admon_color
+            # graybox3 color
+            gray3 = latex_admon_color
+
+        _colorsadmon2colors = dict(
+            warning=pink,
+            question=yellow1,
+            notice=yellow1,
+            summary=yellow1,
+            #block=_gray2,
+            block=yellow1,
+            )
+
         if latex_admon in ('colors1',):
             packages = r'\usepackage{framed}'
         elif latex_admon in ('colors2', 'graybox3', 'yellowbox'):
@@ -1735,41 +1780,51 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
         else: # graybox1
             packages = r'\usepackage[framemethod=TikZ]{mdframed}'
         INTRO['latex'] += '\n' + packages + '\n\n% --- begin definitions of admonition environments ---\n'
+
         if latex_admon == 'graybox2':
+            if isinstance(gray2, tuple):
+                gray2_rgb = ','.join([str(cl) for cl in gray2])
+                define_graybox2_color = r'\definecolor{%(latex_admon)s_background}{rgb}{%(gray2_rgb)s}' % vars()
+            else:
+                define_graybox2_color = r'\colorlet{%(latex_admon)s_background}{%(gray2)s}' % vars()
+
+            # First define environments independent of admon type
             INTRO['latex'] += r"""
-% gray box with horizontal rules (cannot handle verbatim text)
-\definecolor{lightgray}{rgb}{0.94,0.94,0.94}
-% #ifdef A4PAPER
+%% Admonition style "graybox2" is a gray or colored box with a square
+%% frame, except for the summary admon which has horizontal rules only
+%% Note: this admonition type cannot handle verbatim text!
+%(define_graybox2_color)s
+%% #ifdef A4PAPER
 \newdimen\barheight
 \def\barthickness{0.5pt}
 
-% small box to the right for A4 paper
+%% small box to the right for A4 paper
 \newcommand{\grayboxhrules}[1]{\begin{wrapfigure}{r}{0.5\textwidth}
-\vspace*{-\baselineskip}\colorbox{lightgray}{\rule{3pt}{0pt}
+\vspace*{-\baselineskip}\colorbox{%(latex_admon)s_background}{\rule{3pt}{0pt}
 \begin{minipage}{0.5\textwidth-6pt-\columnsep}
 \hspace*{3mm}
 \setbox2=\hbox{\parbox[t]{55mm}{
-#1 \rule[-8pt]{0pt}{10pt}}}%
+#1 \rule[-8pt]{0pt}{10pt}}}%%
 \barheight=\ht2 \advance\barheight by \dp2
-\parbox[t]{3mm}{\rule[0pt]{0mm}{22pt}%\hspace*{-2pt}%
-\hspace*{-1mm}\rule[-\barheight+16pt]{\barthickness}{\barheight-8pt}%}
+\parbox[t]{3mm}{\rule[0pt]{0mm}{22pt}%%\hspace*{-2pt}%%
+\hspace*{-1mm}\rule[-\barheight+16pt]{\barthickness}{\barheight-8pt}%%}
 }\box2\end{minipage}\rule{3pt}{0pt}}\vspace*{-\baselineskip}
 \end{wrapfigure}}
-% #else
-% gray box of 80% width
+%% #else
+%% colored box of 80%% width
 \newcommand{\grayboxhrules}[1]{\begin{center}
-\colorbox{lightgray}{\rule{6pt}{0pt}
+\colorbox{%(latex_admon)s_background}{\rule{6pt}{0pt}
 \begin{minipage}{0.8\linewidth}
 \parbox[t]{0mm}{\rule[0pt]{0mm}{0.5\baselineskip}}\hrule
 \vspace*{0.5\baselineskip}\noindent #1
-\parbox[t]{0mm}{\rule[-0.5\baselineskip]{0mm}%
+\parbox[t]{0mm}{\rule[-0.5\baselineskip]{0mm}%%
 {\baselineskip}}\hrule\vspace*{0.5\baselineskip}\end{minipage}
 \rule{6pt}{0pt}}\end{center}}
-% #endif
+%% #endif
 
-% Fallback for verbatim content in \grayboxhrules
+%% Fallback for verbatim content in \grayboxhrules
 \newmdenv[
-  backgroundcolor=lightgray,
+  backgroundcolor=%(latex_admon)s_background,
   skipabove=\topsep,
   skipbelow=\topsep,
   leftmargin=23,
@@ -1783,19 +1838,28 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 {
 \end{graybox2mdframed}
 }
-"""
+""" % vars()
+
         elif latex_admon == 'paragraph':
             INTRO['latex'] += r"""
-% Admonition is just a paragraph
+% Admonition style "paragraph" is just a plain paragraph
 \newenvironment{paragraphadmon}[1][]{\paragraph{#1}}{}
 """
         elif latex_admon in ('colors1', 'colors2', 'graybox3', 'yellowbox'):
             pass
         else:
+            # graybox1
+            if isinstance(gray1, tuple):
+                gray1_rgb = ','.join([str(cl) for cl in gray1])
+                define_graybox1_color = r'\definecolor{%(latex_admon)s_background}{rgb}{%(gray1_rgb)s}' % vars()
+            else:
+                define_graybox1_color = r'\colorlet{%(latex_admon)s_background}{%(gray1)s}' % vars()
+
             INTRO['latex'] += r"""
-% Admonition is an oval gray box
+%% Admonition style "graybox1" is an oval colored box
+%(define_graybox1_color)s
 \newmdenv[
-  backgroundcolor=gray!5,  %% white with 5%% gray
+  backgroundcolor=%(latex_admon)s_background,
   skipabove=\topsep,
   skipbelow=\topsep,
   outerlinewidth=0,
@@ -1811,29 +1875,20 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 {
 \end{graybox1mdframed}
 }
-"""
-        _light_blue = (0.87843, 0.95686, 1.0)
-        _light_yellow1 = (0.988235, 0.964706, 0.862745)
-        _pink = (1.0, 0.8235294, 0.8235294)
-        _gray1 = (0.86, 0.86, 0.86)
-        _gray2 = (0.91, 0.91, 0.91)  # lighter gray
-        _gray3 = (0.97, 0.97, 0.97)  # even lighter gray
-        _light_yellow2 = (0.97, 0.88, 0.62)
+""" % vars()
 
-        _admon2colors = dict(
-            warning=_pink,
-            question=_light_yellow1,
-            notice=_light_yellow1,
-            summary=_light_yellow1,
-            #block=_gray2,
-            block=_light_yellow1,
-            )
-
+        # Define environments depending on the admon type
         for admon in admons:
             Admon = admon.upper()[0] + admon[1:]
 
             # Figure files are copied when necessary
-            color_colors = str(_admon2colors[admon])[1:-1]
+            if isinstance(_colorsadmon2colors[admon], tuple):
+                colors12_color_rgb = ','.join([str(cl) for cl in _colorsadmon2colors[admon]])
+                define_colors12_color = r'\definecolor{%(latex_admon)s_%(admon)s_background}{rgb}{%(colors12_color_rgb)s}' % vars()
+            else:
+                colors12_color = _colorsadmon2colors[admon]
+                define_colors12_color = r'\colorlet{%(latex_admon)s_%(admon)s_background}{%(colors12_color)s}' % vars()
+
             graphics_colors1 = r'\includegraphics[height=0.3in]{latex_figs/%s}\ \ \ ' % get_admon_figname('colors1', admon)
             graphics_colors2 = r"""\begin{wrapfigure}{l}{0.07\textwidth}
 \vspace{-13pt}
@@ -1841,15 +1896,24 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 \end{wrapfigure}""" % get_admon_figname('colors2', admon)
             # Old typesetting of title (for latex_admon==colors1): {\large\sc #1}
 
-            #color_graybox3 = str(_gray3)[1:-1]
-            color_graybox3 = str(_gray2)[1:-1]
+            if isinstance(gray3, tuple):
+                gray3_rgb = ','.join([str(cl) for cl in gray3])
+                define_graybox3_color = r'\definecolor{%(latex_admon)s_%(admon)s_background}{rgb}{%(gray3_rgb)s}' % vars()
+            else:
+                define_graybox3_color = r'\colorlet{%(latex_admon)s_%(admon)s_background}{%(gray3)s}' % vars()
+
             graphics_graybox3 = r"""\begin{wrapfigure}{l}{0.07\textwidth}
 \vspace{-13pt}
 \includegraphics[width=0.07\textwidth]{latex_figs/%s}
 \end{wrapfigure}"""% get_admon_figname('graybox3', admon)
 
-            #color_yellowbox = str(_light_yellow2)[1:-1]
-            color_yellowbox = str(_light_yellow1)[1:-1]
+
+            if isinstance(yellow1, tuple):
+                yellow1_rgb = ','.join([str(cl) for cl in yellow1])
+                define_yellowbox_color = r'\definecolor{%(latex_admon)s_%(admon)s_background}{rgb}{%(yellow1_rgb)s}' % vars()
+            else:
+                define_yellowbox_color = r'\colorlet{%(latex_admon)s_%(admon)s_background}{%(yellow1)s}' % vars()
+
             graphics_yellowbox = r"""\begin{wrapfigure}{l}{0.07\textwidth}
 \vspace{-13pt}
 \includegraphics[width=0.07\textwidth]{latex_figs/%s}
@@ -1864,12 +1928,12 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 
             if latex_admon == 'colors1':
                 INTRO['latex'] += r"""
-%% Admonition environment for "%(admon)s"
-%% Style from NumPy User Guide
-\definecolor{%(admon)sbackground}{rgb}{%(color_colors)s}
+%% Admonition style "colors1" has its style taken from the NumPy User Guide
+%% "%(admon)s" admon
+%(define_colors12_color)s
 %% \fboxsep sets the space between the text and the box
 \newenvironment{%(admon)sshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{%(admon)sbackground}}
+{\def\FrameCommand{\fboxsep=3mm\colorbox{%(latex_admon)s_%(admon)s_background}}
  \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
 
 \newenvironment{%(admon)s_colors1admon}[1][%(Admon)s]{
@@ -1884,11 +1948,11 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 """ % vars()
             elif latex_admon == 'colors2':
                 INTRO['latex'] += r"""
-%% Admonition environment for "%(admon)s"
-\definecolor{%(admon)sbackground}{rgb}{%(color_colors)s}
+%% Admonition style "colors2", admon "%(admon)s"
+%(define_colors12_color)s
 %% \fboxsep sets the space between the text and the box
 \newenvironment{%(admon)sshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{%(admon)sbackground}}
+{\def\FrameCommand{\fboxsep=3mm\colorbox{%(latex_admon)s_%(admon)s_background}}
  \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
 
 \newenvironment{%(admon)s_colors2admon}[1][%(Admon)s]{
@@ -1903,11 +1967,12 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 """ % vars()
             elif latex_admon == 'graybox3':
                 INTRO['latex'] += r"""
-%% Admonition environment for "%(admon)s"
-\definecolor{%(admon)sbackground}{rgb}{%(color_graybox3)s}
+%% Admonition style "graybox3" has colored background, no frame, and an icon
+%% Admon "%(admon)s"
+%(define_graybox3_color)s
 %% \fboxsep sets the space between the text and the box
 \newenvironment{%(admon)sshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{%(admon)sbackground}}
+{\def\FrameCommand{\fboxsep=3mm\colorbox{%(latex_admon)s_%(admon)s_background}}
  \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
 
 \newenvironment{%(admon)s_graybox3admon}[1][%(Admon)s]{
@@ -1922,11 +1987,12 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 """ % vars()
             elif latex_admon == 'yellowbox':
                 INTRO['latex'] += r"""
-%% Admonition environment for "%(admon)s"
-\definecolor{%(admon)sbackground}{rgb}{%(color_yellowbox)s}
+%% Admonition style "yellowbox" has colored background, yellow icons, and no farme
+%% Admon "%(admon)s"
+%(define_yellowbox_color)s
 %% \fboxsep sets the space between the text and the box
 \newenvironment{%(admon)sshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{%(admon)sbackground}}
+{\def\FrameCommand{\fboxsep=3mm\colorbox{%(latex_admon)s_%(admon)s_background}}
  \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
 
 \newenvironment{%(admon)s_yellowboxadmon}[1][%(Admon)s]{

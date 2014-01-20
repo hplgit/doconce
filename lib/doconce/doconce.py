@@ -333,12 +333,13 @@ def syntax_check(filestr, format):
 
     matches = re.findall(r'\\cite\{.+?\}', filestr)
     if matches:
-        print '\n*** warning: found \\cite{...} (cite{...} has no backslash)'
+        print '\n*** warning: found \\cite{...} with backslash'
+        print '    (cite{...} has no backslash in Doconce syntax)'
         print '\n'.join(matches)
 
     matches = re.findall(r'\\idx\{.+?\}', filestr)
     if matches:
-        print '\n*** warning: found \\idx{...} (indx{...} has no backslash)'
+        print '\n*** warning: found \\idx{...} (idx{...} has no backslash)'
         print '\n'.join(matches)
         _abort()
 
@@ -350,12 +351,14 @@ def syntax_check(filestr, format):
     # There should only be ref and label *without* the latex-ish backslash
     matches = re.findall(r'\\label\{.+?\}', filestr)
     if matches:
-        print '\n*** warning: found \\label{...} (label{...} has no backslash)'
+        print '\n*** warning: found \\label{...} with backslash'
+        print '    (label{...} has no backslash in Doconce syntax)'
         print '\n'.join(matches)
 
     matches = re.findall(r'\\ref\{.+?\}', filestr)
     if matches:
-        print '\n*** warning: found \\ref{...} (ref{...} has no backslash)'
+        print '\n*** warning: found \\ref{...} with backslash'
+        print '    (ref{...} has no backslash in Doconce syntax)'
         print '\n'.join(matches)
 
     # consistency check between label{} and ref{}:
@@ -612,6 +615,7 @@ def insert_code_from_file(filestr, format):
 
             # Determine code environment from filename extension
             filetype = os.path.splitext(filename)[1][1:]  # drop dot
+
             if filetype == 'cxx' or filetype == 'C' or filetype == 'h' \
                    or filetype == 'i':
                 filetype = 'cpp'
@@ -623,8 +627,13 @@ def insert_code_from_file(filestr, format):
                 filetype = 'py'
             elif filetype == 'htm':
                 filetype = 'html'
+            elif filetype == 'text':
+                filetype = 'txt'
+            elif filetype == 'data':
+                filetype = 'dat'
             elif filetype in ('csh', 'ksh', 'zsh', 'tcsh'):
                 filetype = 'sh'
+
             if filetype in ('py', 'f', 'c', 'cpp', 'sh',
                             'm', 'pl', 'cy', 'rst',
                             'pyopt',  # Online Python Tutor
@@ -636,6 +645,10 @@ def insert_code_from_file(filestr, format):
                 code_envir = 'latex'
             else:
                 code_envir = ''
+            if code_envir in ('txt', 'csv', 'dat', ''):
+                code_envir_tp = 'filedata'
+            else:
+                code_envir_tp = 'program'
 
             m = re.search(r'from-?to:', line)
             if m:
@@ -739,7 +752,7 @@ def insert_code_from_file(filestr, format):
 
             #if format == 'latex' or format == 'pdflatex' or format == 'sphinx':
                 # Insert a cod or pro directive for ptex2tex and sphinx.
-            if True:
+            if code_envir_tp == 'program':
                 if complete_file:
                     code = "!bc %spro\n%s\n!ec" % (code_envir, code)
                     print ' (format: %spro)' % code_envir
@@ -747,8 +760,13 @@ def insert_code_from_file(filestr, format):
                     code = "!bc %scod\n%s\n!ec" % (code_envir, code)
                     print ' (format: %scod)' % code_envir
             else:
-                code = "!bc\n%s\n!ec" % code
-                print
+                # filedata (.txt, .csv, .dat, etc)
+                if code_envir:
+                    code = "!bc %s\n%s\n!ec" % (code_envir, code)
+                    print ' (format: %s)' % code_envir
+                else:
+                    code = "!bc\n%s\n!ec" % code
+                    print ' (format: plain !bc, not special type)'
             lines[i] = code
 
     filestr = '\n'.join(lines)

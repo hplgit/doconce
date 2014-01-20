@@ -79,8 +79,14 @@ inserted to the right in exercises - "default" and "none" are allowed
      "Type of admonition and color: white, colors, gray, yellow."),
     ('--html_admon_shadow',
      'Add a shadow effect to HTML admon boxes (gray, yellow, apricot).'),
+    ('--html_admon_bg_color=',
+     'Background color of admon in HTML.'),
+    ('--html_admon_bd_color=',
+     'Boundary color of admon in HTML.'),
     ('--latex_admon=',
-     "Type of admonition and color: colors1-2, graybox1-3, yellowbox, paragraph."),
+     "Type of admonition in LaTeX: colors1-2, graybox1-3, yellowbox, paragraph."),
+    ('--latex_admon_color=',
+     "Admonition color in LaTeX, rgb tuple or saturated color a la gray!5."),
     ('--css=',
      """Specify a .css style file for HTML output. If the file does not exist, the default or specified style (--html_style=) is written to it."""),
     ('--verbose',
@@ -5210,7 +5216,7 @@ def capitalize():
         'Python', 'IPython', 'Cython', 'Idle', 'NumPy', 'SciPy', 'SymPy',
         'Matplotlib', 'None', '$N$',
         'Fortran', 'MATLAB', 'SWIG', 'Perl', 'Ruby', 'CPU',
-        'DNA', 'British', 'American',
+        'DNA', 'British', 'American', 'Internet', # 'Web',
         'HTML', 'MSWord', 'OpenOffice',
         'StringFunction', 'Vec2D', 'Vec3D', 'SciTools', 'Easyviz',
         ]
@@ -5235,6 +5241,7 @@ def capitalize():
         ('hello world', 'Hello World'),
         ('midpoint integration', 'Midpoint integration'),
         ('midpoint rule', 'Midpoint rule'),
+        ('world wide web', 'World Wide Web'),
         ]
     for name in 'Newton', 'Lagrange', 'Einstein', 'Poisson', 'Taylor', 'Gibb':
         genetive = "'s"
