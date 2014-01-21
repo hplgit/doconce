@@ -1812,13 +1812,24 @@ In `rst` and `sphinx` one applies the native admonitions, but
 in `sphinx` the `automake_sphinx.py` script manipulates the HTML
 file to set a gray background for all admonitions.
 In `html` one has a command-line argument `--html_admon` that
-can be set to different styles: `--html_admon=white` for
-white background and small icons, `--html_admon=gray` for
-larger icons with gray background and small font, `--html_admon=yellow`
-and `--html_admon=apricot`
-works as the `gray` style, but the color is different.
-With `--html_admon=colors` one gets quite bright colors
-as backgrounds for the different admonitions.
+can be set to different styles:
+
+ * `--html_admon=gray` for
+   icons with gray background and small font,
+ * `--html_admon=yellow`
+   and `--html_admon=apricot` are similar,
+   but the icons and colors are different,
+ * `--html_admon=colors` has quite bright colors
+   as backgrounds for the different admonitions,
+ * `--html_admon=lyx`
+   gives a white background and small icons,
+ * `--html_admon=paragraph` results in a simple paragraph with the
+   admon title as heading.
+
+The options `--html_admon_bg_color=...` and `--html_admon_bd_color=...`
+can be used to override the default background and boundary frame colors
+of the admon styles (respectively). These options have only effect
+for the `apricot`, `yellow`, and `gray` styles.
 
 Some recommended combinations for admonitions in HTML are
 
@@ -1835,8 +1846,8 @@ icon (defined in `vagrant.css`), while the others are yellow (defined
 in `twitter_bootstrap.css`). The `--html_admon` color has no effect
 for the `vagrant` style.
 
-In `latex` and `pdflatex`, the type of admonition is configured in the
-`.p.tex` file through the `ADMON` preprocessor variable.
+In `latex` and `pdflatex`, the type of admonition style is set by
+the command-line option `--latex_admon=`.
 Several values are available:
 
  * `paragraph` is the simplest type of admonition and typeset
@@ -1857,11 +1868,18 @@ Several values are available:
  * `graybox3` has icons and a light gray background.
  * `yellowbox` has icons and a light yellow background.
 
+There is also an option `--latex_admon_color=...` that can be used
+to override the default color. Values are either saturated colors
+like `gray!10` or an RGB tuple `0.95,0.91,0.97`. The chosen color
+replaces all default colors for all admon styles except `paragraph`.
+For example, an oval white box is produced by `--latex_admon=graybox1`
+and `--latex_admon_color=white`.
+
 === The Box Environment ===
 
-A plain box without any title, just a rectangular frame, is also
-available. One application is to frame an equation or a
-key result. The syntax goes like
+A plain box without any title or colored background,
+just a rectangular frame, is also
+available. The syntax goes like
 
 !bc
 |bbox
@@ -1880,8 +1898,9 @@ resulting in
 
 Admonitions are usually used to typeset something that should be distinct
 from the running text: a warning, a remark, a notification, a question,
-a summary, while a box is often used to highlight a key result
-in the running text: an equation, a hypothesis, or a brief main result.
+a summary, while a box is often used to highlight a key finding
+in the running text: an equation, a hypothesis, a theorem, a
+rule, or a conclusion.
 
 ===== Typesetting of Algorithms =====
 

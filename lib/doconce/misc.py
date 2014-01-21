@@ -5767,8 +5767,8 @@ def _latex2doconce(filestr):
         (r'\eit', r'\end{itemize}'),
         (r'\para{', r'\paragraph{'),
         (r'\refeq', r'\eqref'),
-        ("''", '"'),
-        ("``", '"'),
+        # dangerous double derivative: ("''", '"'),
+        # should be corrected manually ("``", '"'),
         ("Chapter~", "Chapter "),
         ("Section~", "Section "),
         ("Appendix~", "Appendix "),
@@ -5868,7 +5868,7 @@ def _latex2doconce(filestr):
     # eqnarray -> align
     filestr = filestr.replace(r'{eqnarray', '{align')
     filestr = re.sub(r'&(\s*)=(\s*)&', '&\g<1>=\g<2>', filestr)
-    filestr = re.sub(r'&(\s*)\\approx(\s*)&', '&\g<1>\\approx\g<2>', filestr)
+    filestr = re.sub(r'&(\s*)\\approx(\s*)&', '&\g<1>\\\\approx\g<2>', filestr)
 
     # \item alone on line: join with next line (indentation is fixed later)
     filestr = re.sub(r'\\item\s+(\w)', r'\item \g<1>', filestr)
