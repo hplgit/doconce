@@ -137,7 +137,7 @@ Test warning with title:
 {{mbox
 | type = warning
 | textstyle = font-size: 130%;
-| text = '''Watch out.''' And here comes some text with bad news in larger font.
+| text = '''Title ending with math <math>\sqrt{2}\approx 1.4</math>.''' And here comes some text with bad news in larger font.
 }}
 
 

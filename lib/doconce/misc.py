@@ -79,8 +79,14 @@ inserted to the right in exercises - "default" and "none" are allowed
      "Type of admonition and color: white, colors, gray, yellow."),
     ('--html_admon_shadow',
      'Add a shadow effect to HTML admon boxes (gray, yellow, apricot).'),
+    ('--html_admon_bg_color=',
+     'Background color of admon in HTML.'),
+    ('--html_admon_bd_color=',
+     'Boundary color of admon in HTML.'),
     ('--latex_admon=',
-     "Type of admonition and color: colors1-2, graybox1-3, yellowbox, paragraph."),
+     "Type of admonition in LaTeX: colors1-2, graybox1-3, yellowbox, paragraph."),
+    ('--latex_admon_color=',
+     "Admonition color in LaTeX, rgb tuple or saturated color a la gray!5."),
     ('--css=',
      """Specify a .css style file for HTML output. If the file does not exist, the default or specified style (--html_style=) is written to it."""),
     ('--verbose',
@@ -5762,8 +5768,8 @@ def _latex2doconce(filestr):
         (r'\eit', r'\end{itemize}'),
         (r'\para{', r'\paragraph{'),
         (r'\refeq', r'\eqref'),
-        ("''", '"'),
-        ("``", '"'),
+        # dangerous double derivative: ("''", '"'),
+        # should be corrected manually ("``", '"'),
         ("Chapter~", "Chapter "),
         ("Section~", "Section "),
         ("Appendix~", "Appendix "),
@@ -5863,7 +5869,7 @@ def _latex2doconce(filestr):
     # eqnarray -> align
     filestr = filestr.replace(r'{eqnarray', '{align')
     filestr = re.sub(r'&(\s*)=(\s*)&', '&\g<1>=\g<2>', filestr)
-    filestr = re.sub(r'&(\s*)\\approx(\s*)&', '&\g<1>\\approx\g<2>', filestr)
+    filestr = re.sub(r'&(\s*)\\approx(\s*)&', '&\g<1>\\\\approx\g<2>', filestr)
 
     # \item alone on line: join with next line (indentation is fixed later)
     filestr = re.sub(r'\\item\s+(\w)', r'\item \g<1>', filestr)

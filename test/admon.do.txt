@@ -115,7 +115,7 @@ And more and more text.
 
 Test warning with title:
 
-!bwarning (large) Watch out
+!bwarning (large) Title ending with math $\sqrt{2}\approx 1.4$
 And here comes some text with bad news in larger font.
 !ewarning
 

@@ -105,7 +105,7 @@ def latex_code(filestr, code_blocks, code_block_types,
     filestr = re.sub(r'!et\n', '', filestr)
 
     # Check for misspellings
-    envirs = 'pro pypro cypro cpppro cpro fpro plpro shpro mpro cod pycod cycod cppcod ccod fcod plcod shcod mcod htmlcod htmlpro rstcod rstpro xmlcod xmlpro cppans pyans fans bashans swigans uflans sni dat dsni sys slin ipy rpy plin ver warn rule summ ccq cc ccl py pyoptpro pyscpro'.split()
+    envirs = 'pro pypro cypro cpppro cpro fpro plpro shpro mpro cod pycod cycod cppcod ccod fcod plcod shcod mcod htmlcod htmlpro rstcod rstpro xmlcod xmlpro cppans pyans fans bashans swigans uflans sni dat dsni csv txt sys slin ipy rpy plin ver warn rule summ ccq cc ccl py pyoptpro pyscpro'.split()
     for envir in code_block_types:
         if envir and envir not in envirs:
             print 'Warning: found "!bc %s", but %s is not a standard predefined ptex2tex environment' % (envir, envir)
@@ -907,6 +907,7 @@ def latex_index_bib(filestr, index, citations, pubfile, pubdata):
 \clearemptydoublepage
 \markboth{Bibliography}{Bibliography}
 \thispagestyle{empty}""") + bibtext
+            # (the \cleardoublepage might not work well with Koma-script)
 
         filestr = re.sub(r'^BIBFILE:.+$', bibtext, filestr,
                          flags=re.MULTILINE)
@@ -1051,7 +1052,7 @@ def latex_%(_admon)s(text_block, format, title='%(_Admon)s', text_size='normal')
             text_block = r'\vspace{0.5mm}\par\noindent' + '\n' + text_block
     elif text_size == 'large':
         text_block = r'{\large ' + text_block + r' \par}'
-        title = r'{\large ' + title + ' }'
+        title = r'{\large ' + title + '}'
 
     title_graybox1 = title.replace(',', '')  # title in graybox1 cannot handle ,
     if title_graybox1 and title_graybox1[-1] not in ('.', ':', '!', '?'):
@@ -1729,19 +1730,18 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 
         if latex_admon_color is None:
             # colors1, colors2 color
-            _light_blue = (0.87843, 0.95686, 1.0)
-            _pink = (1.0, 0.8235294, 0.8235294)
+            light_blue = (0.87843, 0.95686, 1.0)
+            pink = (1.0, 0.8235294, 0.8235294)
             # colors1, colors2, yellowbox color
-            _yellow1 = (0.988235, 0.964706, 0.862745)
-            _yellow1b = (0.97, 0.88, 0.62)  # alt, not used
+            yellow1 = (0.988235, 0.964706, 0.862745)
+            yellow1b = (0.97, 0.88, 0.62)  # alt, not used
             # graybox1 color
-            _gray1 = "gray!5"
+            gray1 = "gray!5"
             # graybox2 color
-            _gray2 = (0.94, 0.94, 0.94)
+            gray2 = (0.94, 0.94, 0.94)
             # graybox3 color
-            _gray3 = (0.91, 0.91, 0.91)   # lighter gray
-            _gray3l = (0.97, 0.97, 0.97)  # even lighter gray, not used
-
+            gray3 = (0.91, 0.91, 0.91)   # lighter gray
+            gray3l = (0.97, 0.97, 0.97)  # even lighter gray, not used
         else:
             # use latex_admon_color for everything
             try:
@@ -1751,24 +1751,24 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
                 # Color name input
                 pass
 
-            _light_blue = latex_admon_color
-            _pink = latex_admon_color
+            light_blue = latex_admon_color
+            pink = latex_admon_color
             # colors1, colors2, yellowbox color
-            _yellow1 = latex_admon_color
+            yellow1 = latex_admon_color
             # graybox1 color
-            _gray1 = latex_admon_color
+            gray1 = latex_admon_color
             # graybox2 color
-            _gray2 = latex_admon_color
+            gray2 = latex_admon_color
             # graybox3 color
-            _gray3 = latex_admon_color
+            gray3 = latex_admon_color
 
         _colorsadmon2colors = dict(
-            warning=_pink,
-            question=_yellow1,
-            notice=_yellow1,
-            summary=_yellow1,
+            warning=pink,
+            question=yellow1,
+            notice=yellow1,
+            summary=yellow1,
             #block=_gray2,
-            block=_yellow1,
+            block=yellow1,
             )
 
         if latex_admon in ('colors1',):
@@ -1783,15 +1783,17 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
         INTRO['latex'] += '\n' + packages + '\n\n% --- begin definitions of admonition environments ---\n'
 
         if latex_admon == 'graybox2':
-            if instance(_gray2, tuple):
-                _gray2 = ','.join(_gray2)
-                define_graybox2_color = r'\definecolor{%(latex_admon)s_background}{rgb}{%(_gray2)s}' % vars()
+            if isinstance(gray2, tuple):
+                gray2_rgb = ','.join([str(cl) for cl in gray2])
+                define_graybox2_color = r'\definecolor{%(latex_admon)s_background}{rgb}{%(gray2_rgb)s}' % vars()
             else:
-                define_graybox2_color = r'\colorlet{%(latex_admon)s_background}{%(_gray2)s}' % vars()
+                define_graybox2_color = r'\colorlet{%(latex_admon)s_background}{%(gray2)s}' % vars()
 
             # First define environments independent of admon type
             INTRO['latex'] += r"""
-%% gray (or colored) box with horizontal rules (cannot handle verbatim text)
+%% Admonition style "graybox2" is a gray or colored box with a square
+%% frame, except for the summary admon which has horizontal rules only
+%% Note: this admonition type cannot handle verbatim text!
 %(define_graybox2_color)s
 %% #ifdef A4PAPER
 \newdimen\barheight
@@ -1841,21 +1843,21 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 
         elif latex_admon == 'paragraph':
             INTRO['latex'] += r"""
-% Admonition is just a paragraph
+% Admonition style "paragraph" is just a plain paragraph
 \newenvironment{paragraphadmon}[1][]{\paragraph{#1}}{}
 """
         elif latex_admon in ('colors1', 'colors2', 'graybox3', 'yellowbox'):
             pass
         else:
             # graybox1
-            if instance(_gray1, tuple):
-                _gray1 = ','.join(_gray1)
-                define_graybox1_color = r'\definecolor{%(latex_admon)s_background}{rgb}{%(_gray1)s}' % vars()
+            if isinstance(gray1, tuple):
+                gray1_rgb = ','.join([str(cl) for cl in gray1])
+                define_graybox1_color = r'\definecolor{%(latex_admon)s_background}{rgb}{%(gray1_rgb)s}' % vars()
             else:
-                define_graybox1_color = r'\colorlet{%(latex_admon)s_background}{%(_gray1)s}' % vars()
+                define_graybox1_color = r'\colorlet{%(latex_admon)s_background}{%(gray1)s}' % vars()
 
             INTRO['latex'] += r"""
-%% Admonition is an oval colored box
+%% Admonition style "graybox1" is an oval colored box
 %(define_graybox1_color)s
 \newmdenv[
   backgroundcolor=%(latex_admon)s_background,
@@ -1882,8 +1884,8 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 
             # Figure files are copied when necessary
             if isinstance(_colorsadmon2colors[admon], tuple):
-                colors12_color = ','.join(_colorsadmon2colors[admon])
-                define_colors12_color = r'\definecolor{%(latex_admon)s_%(admon)s_background}{rgb}{%(colors12_color)s}' % vars()
+                colors12_color_rgb = ','.join([str(cl) for cl in _colorsadmon2colors[admon]])
+                define_colors12_color = r'\definecolor{%(latex_admon)s_%(admon)s_background}{rgb}{%(colors12_color_rgb)s}' % vars()
             else:
                 colors12_color = _colorsadmon2colors[admon]
                 define_colors12_color = r'\colorlet{%(latex_admon)s_%(admon)s_background}{%(colors12_color)s}' % vars()
@@ -1895,11 +1897,11 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 \end{wrapfigure}""" % get_admon_figname('colors2', admon)
             # Old typesetting of title (for latex_admon==colors1): {\large\sc #1}
 
-            if instance(_gray3, tuple):
-                _gray3 = ','.join(_gray3)
-                define_graybox3_color = r'\definecolor{%(latex_admon)s_%(admon)s_background}{rgb}{%(_gray3)s}' % vars()
+            if isinstance(gray3, tuple):
+                gray3_rgb = ','.join([str(cl) for cl in gray3])
+                define_graybox3_color = r'\definecolor{%(latex_admon)s_%(admon)s_background}{rgb}{%(gray3_rgb)s}' % vars()
             else:
-                define_graybox3_color = r'\colorlet{%(latex_admon)s_%(admon)s_background}{%(_gray3)s}' % vars()
+                define_graybox3_color = r'\colorlet{%(latex_admon)s_%(admon)s_background}{%(gray3)s}' % vars()
 
             graphics_graybox3 = r"""\begin{wrapfigure}{l}{0.07\textwidth}
 \vspace{-13pt}
@@ -1907,11 +1909,11 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 \end{wrapfigure}"""% get_admon_figname('graybox3', admon)
 
 
-            if instance(_yellow1, tuple):
-                _yellow1 = ','.join(_yellow1)
-                define_yellowbox_color = r'\definecolor{%(latex_admon)s_%(admon)s_background}{rgb}{%(_yellow1)s}' % vars()
+            if isinstance(yellow1, tuple):
+                yellow1_rgb = ','.join([str(cl) for cl in yellow1])
+                define_yellowbox_color = r'\definecolor{%(latex_admon)s_%(admon)s_background}{rgb}{%(yellow1_rgb)s}' % vars()
             else:
-                define_yellowbox_color = r'\colorlet{%(latex_admon)s_%(admon)s_background}{%(_yellow1)s}' % vars()
+                define_yellowbox_color = r'\colorlet{%(latex_admon)s_%(admon)s_background}{%(yellow1)s}' % vars()
 
             graphics_yellowbox = r"""\begin{wrapfigure}{l}{0.07\textwidth}
 \vspace{-13pt}
@@ -1927,8 +1929,8 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 
             if latex_admon == 'colors1':
                 INTRO['latex'] += r"""
-%% Admonition environment for "%(admon)s"
-%% Style from NumPy User Guide
+%% Admonition style "colors1" has its style taken from the NumPy User Guide
+%% "%(admon)s" admon
 %(define_colors12_color)s
 %% \fboxsep sets the space between the text and the box
 \newenvironment{%(admon)sshaded}
@@ -1947,7 +1949,7 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 """ % vars()
             elif latex_admon == 'colors2':
                 INTRO['latex'] += r"""
-%% Admonition environment for "%(admon)s"
+%% Admonition style "colors2", admon "%(admon)s"
 %(define_colors12_color)s
 %% \fboxsep sets the space between the text and the box
 \newenvironment{%(admon)sshaded}
@@ -1966,7 +1968,8 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 """ % vars()
             elif latex_admon == 'graybox3':
                 INTRO['latex'] += r"""
-%% Admonition environment for "%(admon)s"
+%% Admonition style "graybox3" has colored background, no frame, and an icon
+%% Admon "%(admon)s"
 %(define_graybox3_color)s
 %% \fboxsep sets the space between the text and the box
 \newenvironment{%(admon)sshaded}
@@ -1985,7 +1988,8 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 """ % vars()
             elif latex_admon == 'yellowbox':
                 INTRO['latex'] += r"""
-%% Admonition environment for "%(admon)s"
+%% Admonition style "yellowbox" has colored background, yellow icons, and no farme
+%% Admon "%(admon)s"
 %(define_yellowbox_color)s
 %% \fboxsep sets the space between the text and the box
 \newenvironment{%(admon)sshaded}
@@ -2116,6 +2120,19 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 \newcounter{doconce:exercise:counter}
 """
             break
+
+    if chapters:
+        # Follow advice from fancyhdr: redefine \cleardoublepage
+        # see http://www.tex.ac.uk/cgi-bin/texfaq2html?label=reallyblank
+        # (Koma has its own solution to the problem)
+        INTRO['latex'] += r"""
+% #if LATEX_STYLE not in ("Koma_Script", "Springer_T2")
+% Make sure blank even-numbered pages before new chapters are
+% totally blank with no header
+\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
+%\let\cleardoublepage\clearemptydoublepage % caused error in \tableofcontents...
+% #endif
+"""
 
     INTRO['latex'] += r"""
 % --- end of standard preamble for documents ---
