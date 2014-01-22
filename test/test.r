@@ -2719,6 +2719,7 @@ between there we have Exercise~\ref{exer:some:formula}.
 \refstepcounter{doconce:exercise:counter}
 
 \subsection*{Problem 2: Flip a Coin}
+\addcontentsline{toc}{subsection}{2: Flip a Coin}
 \label{demo:ex:1}
 % keywords = random numbers; Monte Carlo simulation
 
@@ -2803,6 +2804,7 @@ exercises.
 \refstepcounter{doconce:exercise:counter}
 
 \subsection*{Project 3: Compute a Probability}
+\addcontentsline{toc}{subsection}{3: Compute a Probability}
 \label{demo:ex:2}
 
 % Minimalistic exercise
@@ -2843,6 +2845,7 @@ compute the probability as $M/N$.
 \refstepcounter{doconce:exercise:counter}
 
 \subsection*{Project 4: Explore Distributions of Random Circles}
+\addcontentsline{toc}{subsection}{4: Explore Distributions of Random Circles}
 \label{proj:circle1}
 
 The formula for a circle is given by
@@ -2928,6 +2931,7 @@ and give some perspectives.
 \refstepcounter{doconce:exercise:counter}
 
 \subsection*{Exercise 5: Determine some Distance}
+\addcontentsline{toc}{subsection}{5: Determine some Distance}
 \label{exer:dist}
 
 Intro to this exercise. Questions are in subexercises below.
@@ -3102,6 +3106,7 @@ With some text, before we continue with exercises.
 \refstepcounter{doconce:exercise:counter}
 
 \subsection*{Exercise 8: Make references to projects and problems}
+\addcontentsline{toc}{subsection}{8: Make references to projects and problems}
 \label{exer:some:formula}
 
 Pick a statement from Project~\ref{proj:circle1} or Problem~\ref{demo:ex:1}
@@ -3130,6 +3135,7 @@ Filename: \code{verify_formula.py}.
 \refstepcounter{doconce:exercise:counter}
 
 \subsection*{Project 9: References to Project~\ref{demo:ex:2} in a heading works for latex}
+\addcontentsline{toc}{subsection}{9: References to Project~\ref{demo:ex:2} in a heading works for latex}
 \label{exer:you}
 
 Refer to the previous exercise as Exercise~\ref{exer:some:formula},
@@ -4308,6 +4314,7 @@ between there we have Exercise~\ref{exer:some:formula}.
 \refstepcounter{doconce:exercise:counter}
 
 \subsection*{Problem 2: Flip a Coin}
+\addcontentsline{toc}{subsection}{2: Flip a Coin}
 \label{demo:ex:1}
 % keywords = random numbers; Monte Carlo simulation
 
@@ -4393,6 +4400,7 @@ exercises.
 \refstepcounter{doconce:exercise:counter}
 
 \subsection*{Project 3: Compute a Probability}
+\addcontentsline{toc}{subsection}{3: Compute a Probability}
 \label{demo:ex:2}
 
 % Minimalistic exercise
@@ -4433,6 +4441,7 @@ compute the probability as $M/N$.
 \refstepcounter{doconce:exercise:counter}
 
 \subsection*{Project 4: Explore Distributions of Random Circles}
+\addcontentsline{toc}{subsection}{4: Explore Distributions of Random Circles}
 \label{proj:circle1}
 
 The formula for a circle is given by
@@ -4519,6 +4528,7 @@ and give some perspectives.
 \refstepcounter{doconce:exercise:counter}
 
 \subsection*{Exercise 5: Determine some Distance}
+\addcontentsline{toc}{subsection}{5: Determine some Distance}
 \label{exer:dist}
 
 Intro to this exercise. Questions are in subexercises below.
@@ -4699,6 +4709,7 @@ With some text, before we continue with exercises.
 \refstepcounter{doconce:exercise:counter}
 
 \subsection*{Exercise 8: Make references to projects and problems}
+\addcontentsline{toc}{subsection}{8: Make references to projects and problems}
 \label{exer:some:formula}
 
 Pick a statement from Project~\ref{proj:circle1} or Problem~\ref{demo:ex:1}
@@ -4727,6 +4738,7 @@ Filename: {\fontsize{10pt}{10pt}\Verb!verify_formula.py!}.
 \refstepcounter{doconce:exercise:counter}
 
 \subsection*{Project 9: References to Project~\ref{demo:ex:2} in a heading works for pdflatex}
+\addcontentsline{toc}{subsection}{9: References to Project~\ref{demo:ex:2} in a heading works for pdflatex}
 \label{exer:you}
 
 Refer to the previous exercise as Exercise~\ref{exer:some:formula},
@@ -5838,6 +5850,7 @@ between there we have Exercise~\ref{exer:some:formula}.
 \refstepcounter{doconce:exercise:counter}
 
 \subsection*{Problem 2: Flip a Coin}
+\addcontentsline{toc}{subsection}{2: Flip a Coin}
 \label{demo:ex:1}
 % keywords = random numbers; Monte Carlo simulation
 
@@ -5922,6 +5935,7 @@ exercises.
 \refstepcounter{doconce:exercise:counter}
 
 \subsection*{Project 3: Compute a Probability}
+\addcontentsline{toc}{subsection}{3: Compute a Probability}
 \label{demo:ex:2}
 
 % Minimalistic exercise
@@ -5962,6 +5976,7 @@ compute the probability as $M/N$.
 \refstepcounter{doconce:exercise:counter}
 
 \subsection*{Project 4: Explore Distributions of Random Circles}
+\addcontentsline{toc}{subsection}{4: Explore Distributions of Random Circles}
 \label{proj:circle1}
 
 The formula for a circle is given by
@@ -6047,6 +6062,7 @@ and give some perspectives.
 \refstepcounter{doconce:exercise:counter}
 
 \subsection*{Exercise 5: Determine some Distance}
+\addcontentsline{toc}{subsection}{5: Determine some Distance}
 \label{exer:dist}
 
 Intro to this exercise. Questions are in subexercises below.
@@ -6221,6 +6237,7 @@ With some text, before we continue with exercises.
 \refstepcounter{doconce:exercise:counter}
 
 \subsection*{Exercise 8: Make references to projects and problems}
+\addcontentsline{toc}{subsection}{8: Make references to projects and problems}
 \label{exer:some:formula}
 
 Pick a statement from Project~\ref{proj:circle1} or Problem~\ref{demo:ex:1}
@@ -6249,6 +6266,7 @@ Filename: \Verb!verify_formula.py!.
 \refstepcounter{doconce:exercise:counter}
 
 \subsection*{Project 9: References to Project~\ref{demo:ex:2} in a heading works for pdflatex}
+\addcontentsline{toc}{subsection}{9: References to Project~\ref{demo:ex:2} in a heading works for pdflatex}
 \label{exer:you}
 
 Refer to the previous exercise as Exercise~\ref{exer:some:formula},
@@ -22677,6 +22695,13 @@ open=right               % start new chapters on odd-numbered pages
 % #endif
 
 
+% #if LATEX_STYLE not in ("Koma_Script", "Springer_T2")
+% Make sure blank even-numbered pages before new chapters are
+% totally blank with no header
+\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
+%\let\cleardoublepage\clearemptydoublepage % caused error in \tableofcontents...
+% #endif
+
 % --- end of standard preamble for documents ---
 
 
@@ -30080,6 +30105,7 @@ between there we have Exercise~\ref{exer:some:formula}.
 \refstepcounter{doconce:exercise:counter}
 
 \subsection*{Problem 2: Flip a Coin}
+\addcontentsline{toc}{subsection}{2: Flip a Coin}
 \label{demo:ex:1}
 % keywords = random numbers; Monte Carlo simulation
 
@@ -30142,6 +30168,7 @@ exercises.
 \refstepcounter{doconce:exercise:counter}
 
 \subsection*{Project 3: Compute a Probability}
+\addcontentsline{toc}{subsection}{3: Compute a Probability}
 \label{demo:ex:2}
 
 % Minimalistic exercise
@@ -30182,6 +30209,7 @@ compute the probability as $M/N$.
 \refstepcounter{doconce:exercise:counter}
 
 \subsection*{Project 4: Explore Distributions of Random Circles}
+\addcontentsline{toc}{subsection}{4: Explore Distributions of Random Circles}
 \label{proj:circle1}
 
 The formula for a circle is given by
@@ -30261,6 +30289,7 @@ and give some perspectives.
 \refstepcounter{doconce:exercise:counter}
 
 \subsection*{Exercise 5: Determine some Distance}
+\addcontentsline{toc}{subsection}{5: Determine some Distance}
 \label{exer:dist}
 
 Intro to this exercise. Questions are in subexercises below.
@@ -30417,6 +30446,7 @@ With some text, before we continue with exercises.
 \refstepcounter{doconce:exercise:counter}
 
 \subsection*{Exercise 8: Make references to projects and problems}
+\addcontentsline{toc}{subsection}{8: Make references to projects and problems}
 \label{exer:some:formula}
 
 Pick a statement from Project~\ref{proj:circle1} or Problem~\ref{demo:ex:1}
@@ -30445,6 +30475,7 @@ Filename: \code{verify_formula.py}.
 \refstepcounter{doconce:exercise:counter}
 
 \subsection*{Project 9: References to Project~\ref{demo:ex:2} in a heading works for latex}
+\addcontentsline{toc}{subsection}{9: References to Project~\ref{demo:ex:2} in a heading works for latex}
 \label{exer:you}
 
 Refer to the previous exercise as Exercise~\ref{exer:some:formula},
@@ -56952,6 +56983,13 @@ open=right               % start new chapters on odd-numbered pages
 \newenvironment{doconce:exercise}{}{}
 \newcounter{doconce:exercise:counter}
 
+% #if LATEX_STYLE not in ("Koma_Script", "Springer_T2")
+% Make sure blank even-numbered pages before new chapters are
+% totally blank with no header
+\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
+%\let\cleardoublepage\clearemptydoublepage % caused error in \tableofcontents...
+% #endif
+
 % --- end of standard preamble for documents ---
 
 
@@ -57718,6 +57756,7 @@ Last page gets rendered as follows:
 \refstepcounter{doconce:exercise:counter}
 
 \subsection*{Problem 1: Flip a Coin}
+\addcontentsline{toc}{subsection}{1: Flip a Coin}
 \label{demo:ex:1}
 % keywords = random numbers; Monte Carlo simulation
 
@@ -58656,6 +58695,7 @@ Last page gets rendered as follows:
 \refstepcounter{doconce:exercise:counter}
 
 \subsection*{Problem 1: Flip a Coin}
+\addcontentsline{toc}{subsection}{1: Flip a Coin}
 \label{demo:ex:1}
 % keywords = random numbers; Monte Carlo simulation
 
@@ -68682,7 +68722,7 @@ list of capabilities:
 <p>
 <!-- begin verbatim block  shpro-->
 <pre><code>Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 # transform doconce file to another format
@@ -68766,6 +68806,9 @@ doconce grab   --from[-] from-text [--to[-] to-text] somefile &gt; result
 # remove selected text from a file
 doconce remove --from[-] from-text [--to[-] to-text] somefile &gt; result
 
+# list all figure, movie or included code files
+doconce grep FIGURE|MOVIE|CODE myfile
+
 # run spellcheck on a set of files
 doconce spellcheck [-d .mydict.txt] *.do.txt
 
@@ -68789,8 +68832,8 @@ doconce combine_images image1 image2 ... output_file
 # insert a table of exercises in a latex file myfile.p.tex
 doconce latex_exercise_toc myfile
 
-# list all figure, movie or included code files
-doconce grab FIGURE|MOVIE|CODE myfile
+# report problems from a LaTeX .log file
+doconce latex_problems mydoc.log [overfull-hbox-limit]
 
 # list all labels in a document (for purposes of cleaning them up)
 doconce list_labels myfile
@@ -70258,7 +70301,7 @@ list of capabilities:
 
 \bshpro
 Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 # transform doconce file to another format
@@ -70342,6 +70385,9 @@ doconce grab   --from[-] from-text [--to[-] to-text] somefile > result
 # remove selected text from a file
 doconce remove --from[-] from-text [--to[-] to-text] somefile > result
 
+# list all figure, movie or included code files
+doconce grep FIGURE|MOVIE|CODE myfile
+
 # run spellcheck on a set of files
 doconce spellcheck [-d .mydict.txt] *.do.txt
 
@@ -70365,8 +70411,8 @@ doconce combine_images image1 image2 ... output_file
 # insert a table of exercises in a latex file myfile.p.tex
 doconce latex_exercise_toc myfile
 
-# list all figure, movie or included code files
-doconce grab FIGURE|MOVIE|CODE myfile
+# report problems from a LaTeX .log file
+doconce latex_problems mydoc.log [overfull-hbox-limit]
 
 # list all labels in a document (for purposes of cleaning them up)
 doconce list_labels myfile
@@ -71350,7 +71396,7 @@ list of capabilities::
 
 
         Usage: doconce command [optional arguments]
-        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
         
         
         # transform doconce file to another format
@@ -71434,6 +71480,9 @@ list of capabilities::
         # remove selected text from a file
         doconce remove --from[-] from-text [--to[-] to-text] somefile > result
         
+        # list all figure, movie or included code files
+        doconce grep FIGURE|MOVIE|CODE myfile
+        
         # run spellcheck on a set of files
         doconce spellcheck [-d .mydict.txt] *.do.txt
         
@@ -71457,8 +71506,8 @@ list of capabilities::
         # insert a table of exercises in a latex file myfile.p.tex
         doconce latex_exercise_toc myfile
         
-        # list all figure, movie or included code files
-        doconce grab FIGURE|MOVIE|CODE myfile
+        # report problems from a LaTeX .log file
+        doconce latex_problems mydoc.log [overfull-hbox-limit]
         
         # list all labels in a document (for purposes of cleaning them up)
         doconce list_labels myfile
@@ -72480,7 +72529,7 @@ list of capabilities:
 .. code-block:: bash
 
         Usage: doconce command [optional arguments]
-        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
         
         
         # transform doconce file to another format
@@ -72564,6 +72613,9 @@ list of capabilities:
         # remove selected text from a file
         doconce remove --from[-] from-text [--to[-] to-text] somefile > result
         
+        # list all figure, movie or included code files
+        doconce grep FIGURE|MOVIE|CODE myfile
+        
         # run spellcheck on a set of files
         doconce spellcheck [-d .mydict.txt] *.do.txt
         
@@ -72587,8 +72639,8 @@ list of capabilities:
         # insert a table of exercises in a latex file myfile.p.tex
         doconce latex_exercise_toc myfile
         
-        # list all figure, movie or included code files
-        doconce grab FIGURE|MOVIE|CODE myfile
+        # report problems from a LaTeX .log file
+        doconce latex_problems mydoc.log [overfull-hbox-limit]
         
         # list all labels in a document (for purposes of cleaning them up)
         doconce list_labels myfile
@@ -73472,7 +73524,7 @@ list of capabilities:
 
 {{{
 Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 # transform doconce file to another format
@@ -73556,6 +73608,9 @@ doconce grab   --from[-] from-text [--to[-] to-text] somefile > result
 # remove selected text from a file
 doconce remove --from[-] from-text [--to[-] to-text] somefile > result
 
+# list all figure, movie or included code files
+doconce grep FIGURE|MOVIE|CODE myfile
+
 # run spellcheck on a set of files
 doconce spellcheck [-d .mydict.txt] *.do.txt
 
@@ -73579,8 +73634,8 @@ doconce combine_images image1 image2 ... output_file
 # insert a table of exercises in a latex file myfile.p.tex
 doconce latex_exercise_toc myfile
 
-# list all figure, movie or included code files
-doconce grab FIGURE|MOVIE|CODE myfile
+# report problems from a LaTeX .log file
+doconce latex_problems mydoc.log [overfull-hbox-limit]
 
 # list all labels in a document (for purposes of cleaning them up)
 doconce list_labels myfile
@@ -74472,7 +74527,7 @@ list of capabilities:
 
 <syntaxhighlight lang="bash">
 Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 # transform doconce file to another format
@@ -74556,6 +74611,9 @@ doconce grab   --from[-] from-text [--to[-] to-text] somefile > result
 # remove selected text from a file
 doconce remove --from[-] from-text [--to[-] to-text] somefile > result
 
+# list all figure, movie or included code files
+doconce grep FIGURE|MOVIE|CODE myfile
+
 # run spellcheck on a set of files
 doconce spellcheck [-d .mydict.txt] *.do.txt
 
@@ -74579,8 +74637,8 @@ doconce combine_images image1 image2 ... output_file
 # insert a table of exercises in a latex file myfile.p.tex
 doconce latex_exercise_toc myfile
 
-# list all figure, movie or included code files
-doconce grab FIGURE|MOVIE|CODE myfile
+# report problems from a LaTeX .log file
+doconce latex_problems mydoc.log [overfull-hbox-limit]
 
 # list all labels in a document (for purposes of cleaning them up)
 doconce list_labels myfile
@@ -75442,7 +75500,7 @@ list of capabilities:
 
 {{{
 Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 # transform doconce file to another format
@@ -75526,6 +75584,9 @@ doconce grab   --from[-] from-text [--to[-] to-text] somefile > result
 # remove selected text from a file
 doconce remove --from[-] from-text [--to[-] to-text] somefile > result
 
+# list all figure, movie or included code files
+doconce grep FIGURE|MOVIE|CODE myfile
+
 # run spellcheck on a set of files
 doconce spellcheck [-d .mydict.txt] *.do.txt
 
@@ -75549,8 +75610,8 @@ doconce combine_images image1 image2 ... output_file
 # insert a table of exercises in a latex file myfile.p.tex
 doconce latex_exercise_toc myfile
 
-# list all figure, movie or included code files
-doconce grab FIGURE|MOVIE|CODE myfile
+# report problems from a LaTeX .log file
+doconce latex_problems mydoc.log [overfull-hbox-limit]
 
 # list all labels in a document (for purposes of cleaning them up)
 doconce list_labels myfile
@@ -76421,7 +76482,7 @@ list of capabilities::
 
 
         Usage: doconce command [optional arguments]
-        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
         
         
         # transform doconce file to another format
@@ -76505,6 +76566,9 @@ list of capabilities::
         # remove selected text from a file
         doconce remove --from[-] from-text [--to[-] to-text] somefile > result
         
+        # list all figure, movie or included code files
+        doconce grep FIGURE|MOVIE|CODE myfile
+        
         # run spellcheck on a set of files
         doconce spellcheck [-d .mydict.txt] *.do.txt
         
@@ -76528,8 +76592,8 @@ list of capabilities::
         # insert a table of exercises in a latex file myfile.p.tex
         doconce latex_exercise_toc myfile
         
-        # list all figure, movie or included code files
-        doconce grab FIGURE|MOVIE|CODE myfile
+        # report problems from a LaTeX .log file
+        doconce latex_problems mydoc.log [overfull-hbox-limit]
         
         # list all labels in a document (for purposes of cleaning them up)
         doconce list_labels myfile
@@ -77426,7 +77490,7 @@ list of capabilities::
 
 
         Usage: doconce command [optional arguments]
-        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
         
         
         # transform doconce file to another format
@@ -77510,6 +77574,9 @@ list of capabilities::
         # remove selected text from a file
         doconce remove --from[-] from-text [--to[-] to-text] somefile > result
         
+        # list all figure, movie or included code files
+        doconce grep FIGURE|MOVIE|CODE myfile
+        
         # run spellcheck on a set of files
         doconce spellcheck [-d .mydict.txt] *.do.txt
         
@@ -77533,8 +77600,8 @@ list of capabilities::
         # insert a table of exercises in a latex file myfile.p.tex
         doconce latex_exercise_toc myfile
         
-        # list all figure, movie or included code files
-        doconce grab FIGURE|MOVIE|CODE myfile
+        # report problems from a LaTeX .log file
+        doconce latex_problems mydoc.log [overfull-hbox-limit]
         
         # list all labels in a document (for purposes of cleaning them up)
         doconce list_labels myfile
@@ -78473,7 +78540,7 @@ list of capabilities::
 
 
         Usage: doconce command [optional arguments]
-        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
         
         
         # transform doconce file to another format
@@ -78557,6 +78624,9 @@ list of capabilities::
         # remove selected text from a file
         doconce remove --from[-] from-text [--to[-] to-text] somefile > result
         
+        # list all figure, movie or included code files
+        doconce grep FIGURE|MOVIE|CODE myfile
+        
         # run spellcheck on a set of files
         doconce spellcheck [-d .mydict.txt] *.do.txt
         
@@ -78580,8 +78650,8 @@ list of capabilities::
         # insert a table of exercises in a latex file myfile.p.tex
         doconce latex_exercise_toc myfile
         
-        # list all figure, movie or included code files
-        doconce grab FIGURE|MOVIE|CODE myfile
+        # report problems from a LaTeX .log file
+        doconce latex_problems mydoc.log [overfull-hbox-limit]
         
         # list all labels in a document (for purposes of cleaning them up)
         doconce list_labels myfile
@@ -79547,7 +79617,7 @@ list of capabilities:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 # transform doconce file to another format
@@ -79631,6 +79701,9 @@ doconce grab   --from[-] from-text [--to[-] to-text] somefile > result
 # remove selected text from a file
 doconce remove --from[-] from-text [--to[-] to-text] somefile > result
 
+# list all figure, movie or included code files
+doconce grep FIGURE|MOVIE|CODE myfile
+
 # run spellcheck on a set of files
 doconce spellcheck [-d .mydict.txt] *.do.txt
 
@@ -79654,8 +79727,8 @@ doconce combine_images image1 image2 ... output_file
 # insert a table of exercises in a latex file myfile.p.tex
 doconce latex_exercise_toc myfile
 
-# list all figure, movie or included code files
-doconce grab FIGURE|MOVIE|CODE myfile
+# report problems from a LaTeX .log file
+doconce latex_problems mydoc.log [overfull-hbox-limit]
 
 # list all labels in a document (for purposes of cleaning them up)
 doconce list_labels myfile
@@ -81780,12 +81853,12 @@ dmap/pdftex.map}] (./testdoc.toc) [2] [3] (./testdoc.tdo) [4]
 (./testdoc.out.pyg [5]) (./testdoc.out.pyg) (./testdoc.out.pyg)
 (./testdoc.out.pyg) (./testdoc.out.pyg [6]) (./testdoc.out.pyg)
 (./testdoc.out.pyg) (./testdoc.out.pyg) [7]
-<../doc/src/manual/fig/wave1D.pdf, id=236, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=261, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
 [8 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=249, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=274, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=251, 578.16pt x 433.62pt>
+<downloaded_figures/f_plot.png, id=276, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png> [9] [10 <../doc/src/manual/fig/wave1D.png> 
 <./downloaded_figures/f_plot.png>]
 
@@ -81813,17 +81886,17 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
 [11]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=275, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=300, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=276, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=301, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=277, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=302, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=278, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=303, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=279, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=304, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=280, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=305, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png> [12]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -82177,6 +82250,11 @@ downloaded_figures/f_plot.png
  ***********
 
 
+Package rerunfilecheck Warning: File `testdoc.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+
 LaTeX Warning: There were undefined references.
 
  )
@@ -82447,12 +82525,12 @@ dmap/pdftex.map}] (./testdoc.toc) [2] [3] (./testdoc.tdo) [4]
 (./testdoc.out.pyg [5]) (./testdoc.out.pyg) (./testdoc.out.pyg)
 (./testdoc.out.pyg) (./testdoc.out.pyg [6]) (./testdoc.out.pyg)
 (./testdoc.out.pyg) (./testdoc.out.pyg) [7]
-<../doc/src/manual/fig/wave1D.pdf, id=236, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=261, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
 [8 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=249, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=274, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=251, 578.16pt x 433.62pt>
+<downloaded_figures/f_plot.png, id=276, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png> [9] [10 <../doc/src/manual/fig/wave1D.png> 
 <./downloaded_figures/f_plot.png>]
 
@@ -82480,17 +82558,17 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
 [11]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=275, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=300, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=276, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=301, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=277, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=302, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=278, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=303, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=279, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=304, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=280, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=305, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png> [12]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -83103,12 +83181,12 @@ dmap/pdftex.map}] (./testdoc.toc) [2] [3] (./testdoc.tdo) [4]
 (./testdoc.out.pyg [5]) (./testdoc.out.pyg) (./testdoc.out.pyg)
 (./testdoc.out.pyg) (./testdoc.out.pyg [6]) (./testdoc.out.pyg)
 (./testdoc.out.pyg) (./testdoc.out.pyg) [7]
-<../doc/src/manual/fig/wave1D.pdf, id=236, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=261, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
 [8 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=249, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=274, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=251, 578.16pt x 433.62pt>
+<downloaded_figures/f_plot.png, id=276, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png> [9] [10 <../doc/src/manual/fig/wave1D.png> 
 <./downloaded_figures/f_plot.png>]
 
@@ -83136,17 +83214,17 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
 [11]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=275, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=300, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=276, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=301, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=277, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=302, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=278, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=303, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=279, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=304, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=280, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=305, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png> [12]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -85167,7 +85245,7 @@ output in math_test.md
 + doconce md2latex math_test
 command "md2latex" is not legal, must be among
 
-format, help, sphinx_dir, subst, replace, replace_from_file, clean, spellcheck, ptex2tex, guess_encoding, expand_commands, expand_mako, combine_images, change_encoding, capitalize, gwiki_figsubst, md2html, remove_inline_comments, grab, remove, remove_exercise_answers, split_rst, split_html, slides_html, slides_beamer, latin2html, grep, latex_header, latex_footer, bbl2rst, html_colorbullets, list_labels, teamod, sphinxfix_localURLs, make_figure_code_links, latex_exercise_toc, insertdocstr, old2new_format, linkchecker, latex2doconce, latex_dislikes, pygmentize, makefile, diff, gitdiff, fix_bibtex4publish, csv2table
+format, help, sphinx_dir, subst, replace, replace_from_file, clean, spellcheck, ptex2tex, guess_encoding, expand_commands, expand_mako, combine_images, change_encoding, capitalize, gwiki_figsubst, md2html, remove_inline_comments, grab, remove, remove_exercise_answers, split_rst, split_html, slides_html, slides_beamer, latin2html, grep, latex_header, latex_footer, latex_problems, bbl2rst, html_colorbullets, list_labels, teamod, sphinxfix_localURLs, make_figure_code_links, latex_exercise_toc, insertdocstr, old2new_format, linkchecker, latex2doconce, latex_dislikes, pygmentize, makefile, diff, gitdiff, fix_bibtex4publish, csv2table
 + admon_tps='colors1 graybox1 paragraph graybox2 yellowbox graybox3 colors2'
 + for admon_tp in '$admon_tps'
 + '[' colors1 = graybox1 ']'
@@ -90129,12 +90207,12 @@ translating doconce text in tmp_preprocess__encoding3.do.txt to html
 *** error: problem with character when writing to file:
 (text position  526-527)
 ight: 125%">a = 1  # Value suggested by  | Traceback (most recent call last):
-  File "/usr/local/bin/doconce", line 1018, in <module>
+  File "/usr/local/bin/doconce", line 1023, in <module>
     main()
-  File "/usr/local/bin/doconce", line 1008, in main
+  File "/usr/local/bin/doconce", line 1013, in main
     eval(command + '()')
   File "<string>", line 1, in <module>
-  File "/usr/local/bin/doconce", line 84, in format
+  File "/usr/local/bin/doconce", line 85, in format
     doconce.doconce.format_driver()
   File "/usr/local/lib/python2.7/dist-packages/doconce/doconce.py", line 3037, in format_driver
     out_filename = file2file(filename_preprocessed, format, basename)
@@ -91782,15 +91860,15 @@ Overfull \hbox (107.00006pt too wide)
 []\T1/pcr/m/n/10 "A Document for Testing Doconce": "testdoc.html" cite{testdoc:
 12}],  
 
-Overfull \hbox (3209.00006pt too wide) 
+Overfull \hbox (3299.00006pt too wide) 
 []\T1/pcr/m/n/10 commands: format help sphinx_dir subst replace replace_from_fi
 le clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine
 _images change_encoding capitalize gwiki_figsubst md2html remove_inline_comment
 s grab remove remove_exercise_answers split_rst split_html slides_html slides_b
-eamer latin2html grep latex_header latex_footer bbl2rst html_colorbullets list_
-labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc ins
-ertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize ma
-kefile diff gitdiff fix_bibtex4publish csv2table  
+eamer latin2html grep latex_header latex_footer latex_problems bbl2rst html_col
+orbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_e
+xercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislike
+s pygmentize makefile diff gitdiff fix_bibtex4publish csv2table  
 
 Overfull \hbox (299.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwik
@@ -91889,10 +91967,13 @@ Overfull \hbox (23.00006pt too wide)
 
 Overfull \hbox (17.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce combine_images image1 image2 ... output_file  
-
+[13]
 Overfull \hbox (53.00006pt too wide) 
 []\T1/pcr/m/n/10 # insert a table of exercises in a latex file myfile.p.tex  
-[13]
+
+Overfull \hbox (29.00006pt too wide) 
+[]\T1/pcr/m/n/10 doconce latex_problems mydoc.log [overfull-hbox-limit]  
+
 Overfull \hbox (101.00006pt too wide) 
 []\T1/pcr/m/n/10 # list all labels in a document (for purposes of cleaning them
  up)  
@@ -91981,11 +92062,11 @@ Overfull \hbox (47.10902pt too wide)
 Overfull \hbox (263.00006pt too wide) 
 []\T1/pcr/m/n/10 \multicolumn{1}{c}{time} & \multicolumn{1}{c}{velocity} & \mul
 ticolumn{1}{c}{acceleration} \\  
-
+[17]
 Overfull \hbox (4.19656pt too wide) 
 [][][][][][] \T1/ptm/m/n/10 con-tains some il-lus-tra-tions on how to uti-lize 
 \T1/pcr/m/n/10 mako \T1/ptm/m/n/10 (clone the GitHub
-[17]
+
 Overfull \hbox (114.855pt too wide) 
 []\T1/ptm/m/n/10 Excellent ``Sphinx Tu-to-rial'' by C. Reller: ``[][][][][][]''
  
@@ -92247,15 +92328,15 @@ Overfull \hbox (107.00006pt too wide)
 []\T1/pcr/m/n/10 "A Document for Testing Doconce": "testdoc.html" cite{testdoc:
 12}],  
 
-Overfull \hbox (3209.00006pt too wide) 
+Overfull \hbox (3299.00006pt too wide) 
 []\T1/pcr/m/n/10 commands: format help sphinx_dir subst replace replace_from_fi
 le clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine
 _images change_encoding capitalize gwiki_figsubst md2html remove_inline_comment
 s grab remove remove_exercise_answers split_rst split_html slides_html slides_b
-eamer latin2html grep latex_header latex_footer bbl2rst html_colorbullets list_
-labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc ins
-ertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize ma
-kefile diff gitdiff fix_bibtex4publish csv2table  
+eamer latin2html grep latex_header latex_footer latex_problems bbl2rst html_col
+orbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_e
+xercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislike
+s pygmentize makefile diff gitdiff fix_bibtex4publish csv2table  
 
 Overfull \hbox (299.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwik
@@ -92354,10 +92435,13 @@ Overfull \hbox (23.00006pt too wide)
 
 Overfull \hbox (17.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce combine_images image1 image2 ... output_file  
-
+[14]
 Overfull \hbox (53.00006pt too wide) 
 []\T1/pcr/m/n/10 # insert a table of exercises in a latex file myfile.p.tex  
-[14]
+
+Overfull \hbox (29.00006pt too wide) 
+[]\T1/pcr/m/n/10 doconce latex_problems mydoc.log [overfull-hbox-limit]  
+
 Overfull \hbox (101.00006pt too wide) 
 []\T1/pcr/m/n/10 # list all labels in a document (for purposes of cleaning them
  up)  
@@ -92446,11 +92530,11 @@ Overfull \hbox (47.10902pt too wide)
 Overfull \hbox (263.00006pt too wide) 
 []\T1/pcr/m/n/10 \multicolumn{1}{c}{time} & \multicolumn{1}{c}{velocity} & \mul
 ticolumn{1}{c}{acceleration} \\  
-
+[18]
 Overfull \hbox (4.19656pt too wide) 
 [][][][][][] \T1/ptm/m/n/10 con-tains some il-lus-tra-tions on how to uti-lize 
 \T1/pcr/m/n/10 mako \T1/ptm/m/n/10 (clone the GitHub
-[18]
+
 Overfull \hbox (114.855pt too wide) 
 []\T1/ptm/m/n/10 Excellent ``Sphinx Tu-to-rial'' by C. Reller: ``[][][][][][]''
  
