@@ -10,6 +10,8 @@ additional_packages = ''  # comma-sep. list of packages for \usepackage{}
 
 include_numbering_of_exercises = True
 
+chapter_pattern = r'^\s*=========\s*[A-Za-z0-9].+?========='  # chapter regex
+
 def underscore_in_code(m):
     """For pattern r'\\code\{(.*?)\}', insert \_ for _ in group 1."""
     text = m.group(1)
@@ -888,7 +890,6 @@ def latex_index_bib(filestr, index, citations, pubfile, pubdata):
         os.chdir(pubfile_dir)
         os.system(publish_cmd)
         os.chdir(this_dir)
-
         # Remove heading right before BIBFILE because latex has its own heading
         pattern = '={5,9} .+? ={5,9}\s+^BIBFILE'
         filestr = re.sub(pattern, 'BIBFILE', filestr, flags=re.MULTILINE)
@@ -898,6 +899,15 @@ def latex_index_bib(filestr, index, citations, pubfile, pubdata):
 \bibliographystyle{plain}
 \bibliography{%s}
 """ % bibtexfile[:-4], application='replacement')
+        if re.search(chapter_pattern, filestr, flags=re.MULTILINE):
+            # Let a document with chapters have Bibliography on a new
+            # page and in the toc
+            bibtext = fix_latex_command_regex(r"""
+
+\clearemptydoublepage
+\markboth{Bibliography}{Bibliography}
+\thispagestyle{empty}""") + bibtext
+
         filestr = re.sub(r'^BIBFILE:.+$', bibtext, filestr,
                          flags=re.MULTILINE)
         cpattern = re.compile(r'^BIBFILE:.+$', re.MULTILINE)
@@ -1434,7 +1444,7 @@ def define(FILENAME_EXTENSION,
 """
 
     side_tp = 'oneside' if option('device=') == 'paper' else 'twoside'
-    m = re.search(r'^\s*=========\s*[A-Za-z0-9].+?=========', filestr, flags=re.MULTILINE)
+    m = re.search(chapter_pattern, filestr, flags=re.MULTILINE)
     # (use A-Z etc to avoid sphinx table headings to indicate chapters...
     if m:  # We have chapters, use book style
         chapters = True
@@ -2098,8 +2108,22 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
             #print '... did not find', filename
             pass
 
+    if chapters:
+        # Let a document with chapters have Index on a new
+        # page and in the toc
+        OUTRO['latex'] = r"""
 
-    OUTRO['latex'] = r"""
+% #ifdef PREAMBLE
+\clearemptydoublepage
+\markboth{Index}{Index}
+\thispagestyle{empty}
+\printindex
+
+\end{document}
+% #endif
+"""
+    else:
+        OUTRO['latex'] = r"""
 
 % #ifdef PREAMBLE
 \printindex
