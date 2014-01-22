@@ -133,8 +133,11 @@ def latex_code(filestr, code_blocks, code_block_types,
 
     if include_numbering_of_exercises:
         # Remove section numbers of exercise sections
-        filestr = re.sub(r'section\{(Exercise|Problem|Project)(\s+\d+):( +[^}])',
-                         r'section*{\g<1>\g<2>:\g<3>', filestr)
+        filestr = re.sub(r'subsection\{(Exercise|Problem|Project) +(\d+)\s*: +(.+\})',
+                         r'subsection*{\g<1> \g<2>: \g<3>\n\\addcontentsline{toc}{subsection}{\g<2>: \g<3>', filestr)
+
+    # Avoid Filename: as a new paragraph with indentation
+    filestr = filestr.replace('Filename: {', '\\noindent Name of program file: {')  # or should it be Filename: ...?
 
     # Fix % and # in link texts (-> \%, \# - % is otherwise a comment...)
     pattern = r'\\href\{\{(.+?)\}\}\{(.+?)\}'
