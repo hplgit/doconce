@@ -537,6 +537,14 @@ There are also preprocessor variables with specific values:
      * `gray-wide` for white text in a gray box that spans the whole
        page width.
 
+ * `LIST_OF_EXERCISES` for controlling how lists of exercises, problems,
+   and projects are typeset:
+
+     * `non`: no listing of exercises, problems, and projects (default)
+     * `toc`: include exercises, problems, and projects as part of
+       the ordinary table of contents
+     * `loe`: make a separate list of exercises, problems, and projects,
+       which appears after the table of contents
 
 If you are not satisfied with the generated Doconce preamble, you can provide
 your own preamble by adding the command-line option `--latex_preamble=myfile`.

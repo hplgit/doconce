@@ -2971,7 +2971,7 @@ def format_driver():
 
     # oneline is inactive (doesn't work well yet)
 
-    global _log, encoding, filename
+    global _log, encoding, filename, dofile_basename
 
     if '--options' in sys.argv:
         from misc import help_format
@@ -3028,6 +3028,8 @@ def format_driver():
             _abort()
     else:
         basename = filename[:-7]
+
+    dofile_basename = basename  # global variable
 
     #print '\n----- doconce format %s %s' % (format, filename)
     preprocessor_options = [arg for arg in sys.argv[1:]

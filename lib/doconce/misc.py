@@ -888,8 +888,8 @@ def latex_exercise_toc():
         print 'table of exercises inserted in', ptexfile
         f.close()
     else:
-        print 'cannot insert table of exercises because there is no'
-        print 'table of contents requested in the', dofile, 'document'
+        print '*** error: cannot insert table of exercises because there is no'
+        print '    table of contents requested in the', dofile, 'document'
 
 
 def _usage_combine_images():
