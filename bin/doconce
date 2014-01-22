@@ -14,6 +14,7 @@ from doconce.misc import (
     old2new_format,
     latex_header,
     latex_footer,
+    latex_problems,
     replace_from_file,
     replace,
     subst,
@@ -811,6 +812,7 @@ latin2html
 grep
 latex_header
 latex_footer
+latex_problems
 bbl2rst
 html_colorbullets
 list_labels
@@ -917,6 +919,9 @@ doconce grab   --from[-] from-text [--to[-] to-text] somefile > result
 # remove selected text from a file
 doconce remove --from[-] from-text [--to[-] to-text] somefile > result
 
+# list all figure, movie or included code files
+doconce grep FIGURE|MOVIE|CODE myfile
+
 # run spellcheck on a set of files
 doconce spellcheck [-d .mydict.txt] *.do.txt
 
@@ -940,8 +945,8 @@ doconce combine_images image1 image2 ... output_file
 # insert a table of exercises in a latex file myfile.p.tex
 doconce latex_exercise_toc myfile
 
-# list all figure, movie or included code files
-doconce grab FIGURE|MOVIE|CODE myfile
+# report problems from a LaTeX .log file
+doconce latex_problems mydoc.log [overfull-hbox-limit]
 
 # list all labels in a document (for purposes of cleaning them up)
 doconce list_labels myfile

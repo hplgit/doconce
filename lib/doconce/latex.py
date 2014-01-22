@@ -105,7 +105,7 @@ def latex_code(filestr, code_blocks, code_block_types,
     filestr = re.sub(r'!et\n', '', filestr)
 
     # Check for misspellings
-    envirs = 'pro pypro cypro cpppro cpro fpro plpro shpro mpro cod pycod cycod cppcod ccod fcod plcod shcod mcod htmlcod htmlpro rstcod rstpro xmlcod xmlpro cppans pyans fans bashans swigans uflans sni dat dsni sys slin ipy rpy plin ver warn rule summ ccq cc ccl py pyoptpro pyscpro'.split()
+    envirs = 'pro pypro cypro cpppro cpro fpro plpro shpro mpro cod pycod cycod cppcod ccod fcod plcod shcod mcod htmlcod htmlpro rstcod rstpro xmlcod xmlpro cppans pyans fans bashans swigans uflans sni dat dsni csv txt sys slin ipy rpy plin ver warn rule summ ccq cc ccl py pyoptpro pyscpro'.split()
     for envir in code_block_types:
         if envir and envir not in envirs:
             print 'Warning: found "!bc %s", but %s is not a standard predefined ptex2tex environment' % (envir, envir)
@@ -133,8 +133,11 @@ def latex_code(filestr, code_blocks, code_block_types,
 
     if include_numbering_of_exercises:
         # Remove section numbers of exercise sections
-        filestr = re.sub(r'section\{(Exercise|Problem|Project)(\s+\d+):( +[^}])',
-                         r'section*{\g<1>\g<2>:\g<3>', filestr)
+        filestr = re.sub(r'subsection\{(Exercise|Problem|Project) +(\d+)\s*: +(.+\})',
+                         r'subsection*{\g<1> \g<2>: \g<3>\n\\addcontentsline{toc}{subsection}{\g<2>: \g<3>', filestr)
+
+    # Avoid Filename: as a new paragraph with indentation
+    filestr = filestr.replace('Filename: {', '\\noindent Name of program file: {')  # or should it be Filename: ...?
 
     # Fix % and # in link texts (-> \%, \# - % is otherwise a comment...)
     pattern = r'\\href\{\{(.+?)\}\}\{(.+?)\}'
@@ -907,6 +910,7 @@ def latex_index_bib(filestr, index, citations, pubfile, pubdata):
 \clearemptydoublepage
 \markboth{Bibliography}{Bibliography}
 \thispagestyle{empty}""") + bibtext
+            # (the \cleardoublepage might not work well with Koma-script)
 
         filestr = re.sub(r'^BIBFILE:.+$', bibtext, filestr,
                          flags=re.MULTILINE)
@@ -2119,6 +2123,19 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 \newcounter{doconce:exercise:counter}
 """
             break
+
+    if chapters:
+        # Follow advice from fancyhdr: redefine \cleardoublepage
+        # see http://www.tex.ac.uk/cgi-bin/texfaq2html?label=reallyblank
+        # (Koma has its own solution to the problem)
+        INTRO['latex'] += r"""
+% #if LATEX_STYLE not in ("Koma_Script", "Springer_T2")
+% Make sure blank even-numbered pages before new chapters are
+% totally blank with no header
+\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
+%\let\cleardoublepage\clearemptydoublepage % caused error in \tableofcontents...
+% #endif
+"""
 
     INTRO['latex'] += r"""
 % --- end of standard preamble for documents ---

@@ -5145,6 +5145,63 @@ def spellcheck():
                     dictionaries=dictionary,)
 
 
+def _usage_latex_problems():
+    print 'doconce latex_problems mydoc.log [overfull-hbox-limit]'
+
+def latex_problems():
+    if len(sys.argv) < 2:
+        _usage_latex_problems()
+        sys.exit(1)
+
+    try:
+        overfull_hbox_limit = float(sys.argv[2])
+    except IndexError:
+        overfull_hbox_limit = 20
+
+    filename = sys.argv[1]
+    if not filename.endswith('.log'):
+        filename += '.log'
+    f = open(filename, 'r')
+    lines = f.readlines()
+    f.close()
+    multiply_defined_labels = []
+    multiply_defined_labels_pattern = r"LaTeX Warning: Label `(.+?)' multiply defined"
+    undefined_references = []
+    undefined_references_pattern = r"LaTeX Warning: Reference `(.+?)' on page (.+?) undefined"
+    overfull_hboxes = []
+    overfull_hboxes_pattern = r"Overfull \\hbox \((.+)pt too wide\) .+lines (.+)"
+    for line in lines:
+        m = re.search(multiply_defined_labels_pattern, line)
+        if m:
+            multiply_defined_labels.append(m.group(1))
+        m = re.search(undefined_references_pattern, line)
+        if m:
+            undefined_references.append((m.group(1), m.group(2)))
+        m = re.search(overfull_hboxes_pattern, line)
+        if m:
+            overfull_hboxes.append((float(m.group(1)), m.group(2).strip()))
+    problems = False
+    if multiply_defined_labels:
+        problems = True
+        print '\nMultiply defined labels:'
+        for label in multiply_defined_labels:
+            print '    ', label
+    if undefined_references:
+        problems = True
+        print '\nUndefined references:'
+        for ref, page in undefined_references:
+            print '    ', ref, 'on page', page
+    if overfull_hboxes:
+        problems = True
+        print "\nOverfull hbox'es:"
+        for npt, at_lines in overfull_hboxes:
+            if npt > overfull_hbox_limit:
+                print '    ', '%7.1f' % npt, 'lines', at_lines
+
+    if not problems:
+        print 'no serious LaTeX problems found in %s!' % filename
+
+
 def _usage_grep():
     print 'doconce grep FIGURE|MOVIE|CODE doconce-file'
 
@@ -5237,6 +5294,8 @@ def capitalize():
         (' 1d ', ' 1D '),
         (' 2d ', ' 2D '),
         (' 3d ', ' 3D '),
+        ('vec2d', 'Vec2D'),
+        ('vec3d', 'Vec3D'),
         ('hello, world!', 'Hello, World!'),
         ('hello world', 'Hello World'),
         ('midpoint integration', 'Midpoint integration'),
@@ -5768,8 +5827,8 @@ def _latex2doconce(filestr):
         (r'\eit', r'\end{itemize}'),
         (r'\para{', r'\paragraph{'),
         (r'\refeq', r'\eqref'),
-        ("''", '"'),
-        ("``", '"'),
+        # dangerous double derivative: ("''", '"'),
+        # should be corrected manually ("``", '"'),
         ("Chapter~", "Chapter "),
         ("Section~", "Section "),
         ("Appendix~", "Appendix "),
@@ -5869,7 +5928,7 @@ def _latex2doconce(filestr):
     # eqnarray -> align
     filestr = filestr.replace(r'{eqnarray', '{align')
     filestr = re.sub(r'&(\s*)=(\s*)&', '&\g<1>=\g<2>', filestr)
-    filestr = re.sub(r'&(\s*)\\approx(\s*)&', '&\g<1>\\approx\g<2>', filestr)
+    filestr = re.sub(r'&(\s*)\\approx(\s*)&', '&\g<1>\\\\approx\g<2>', filestr)
 
     # \item alone on line: join with next line (indentation is fixed later)
     filestr = re.sub(r'\\item\s+(\w)', r'\item \g<1>', filestr)
