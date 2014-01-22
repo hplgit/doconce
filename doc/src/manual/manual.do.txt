@@ -1380,7 +1380,18 @@ one can use the `!bsubex` and `!bsol`
 commands to indicate a subproblem and a solution. In this way, the
 typesetting of the example looks like an exercise equipped with a solution.
 
+=== List of Exercises, Problems, and Projects ===
 
+Doconce also supports listing all exercises, problems, and projects
+with corresponding page numbers.
+By default, no such listing is enabled. When running `doconce ptex2tex` or
+`ptex2tex`, there is a preprocessor variable `LIST_OF_EXERCISES`
+that can be set to
+
+ * `toc`: include exercises, problems, and projects as part of
+   the table of contents
+ * `loe`: make a separate list of exercises, problems, and projects,
+   which appears after the table of contents
 
 ===== Blocks of Verbatim Computer Code =====
 label{sec:verbatim:blocks}

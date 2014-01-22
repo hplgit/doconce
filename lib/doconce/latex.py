@@ -118,26 +118,92 @@ def latex_code(filestr, code_blocks, code_block_types,
                      count=1)
     filestr = re.sub(appendix_pattern, r'\\\g<1>{', filestr) # all others
 
-    # Make sure exercises are surrounded by \begin{doconce:exercise} and
-    # \end{doconce:exercise} with some exercise counter
+    # Make sure exercises are surrounded by \begin{doconceexercise} and
+    # \end{doconceexercise} with some exercise counter
     #comment_pattern = INLINE_TAGS_SUBST[format]['comment'] # only in doconce.py
     comment_pattern = '%% %s'
     pattern = comment_pattern % envir_delimiter_lines['exercise'][0] + '\n'
-    replacement = pattern + r"""\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+    replacement = pattern + r"""\begin{doconceexercise}
+\refstepcounter{doconceexercise:counter}
 """
     filestr = filestr.replace(pattern, replacement)
     pattern = comment_pattern % envir_delimiter_lines['exercise'][1] + '\n'
-    replacement = r'\end{doconce:exercise}' + '\n' + pattern
+    replacement = r'\end{doconceexercise}' + '\n' + pattern
     filestr = filestr.replace(pattern, replacement)
 
     if include_numbering_of_exercises:
         # Remove section numbers of exercise sections
-        filestr = re.sub(r'subsection\{(Exercise|Problem|Project) +(\d+)\s*: +(.+\})',
-                         r'subsection*{\g<1> \g<2>: \g<3>\n\\addcontentsline{toc}{subsection}{\g<2>: \g<3>', filestr)
+        exercise_pattern = r'subsection\*?\{(Exercise|Problem|Project) +(\d+)\s*: +(.+\})'
+        filestr, n = re.subn(exercise_pattern,
+                         r"""subsection*{\g<1> \g<2>: \g<3>
+% #if LIST_OF_EXERCISES == "toc"
+\\addcontentsline{toc}{subsection}{\g<2>: \g<3>
+% #elif LIST_OF_EXERCISES == "loe"
+\\addcontentsline{loe}{doconceexercise}{\g<1> \g<2>: \g<3>
+% #endif
+""", filestr)
+        if n > 0:
+            # We have exercises, make list of exercises
+            # Find suitable title
+            import sets
+            types_of_exer = sets.Set()
+            for exer_tp, dummy, dummy in re.findall(exercise_pattern, filestr):
+                types_of_exer.add(exer_tp)
+            types_of_exer = list(types_of_exer)
+            types_of_exer = ['%ss' % tp for tp in types_of_exer]  # plural
+            types_of_exer = [tp for tp in sorted(types_of_exer)]  # alphabetic order
+            if len(types_of_exer) == 1:
+                types_of_exer = types_of_exer[0]
+            elif len(types_of_exer) == 2:
+                types_of_exer = ' and '.join(types_of_exer)
+            elif len(types_of_exer) > 2:
+                types_of_exer[-1] = 'and ' + types_of_exer[-1]
+                types_of_exer = ', '.join(types_of_exer)
+            heading = "List of %s" % types_of_exer
+            # Insert definition of \listofexercises
+            if r'\tableofcontents' in filestr:
+                # Here we take fragments normally found in a stylefile
+                # and put them in the .text file, which requires
+                # \makeatletter, \makeatother, etc, see
+                # http://www.tex.ac.uk/cgi-bin/texfaq2html?label=atsigns
+                # Also, the name of the doconce exercise environment
+                # cannot be doconce:exercise (previous name), but
+                # must be doconceexercise because of the \l@... command
+                style_listofexercises = r"""
+%% --- begin definition of \listofexercises command ---
+\makeatletter
+\newcommand\listofexercises{
+\chapter*{%(heading)s
+          \@mkboth{%(heading)s}{%(heading)s}}
+\markboth{%(heading)s}{%(heading)s}
+\@starttoc{loe}
+}
+\newcommand*{\l@doconceexercise}{\@dottedtocline{0}{0pt}{6.5em}}
+\makeatother
+%% --- end definition of \listofexercises command ---
+""" % vars()
+                insert_listofexercises = r"""
+
+%% #ifndef LIST_OF_EXERCISES
+%% #define LIST_OF_EXERCISES "none"
+%% #endif
+
+%% #if LIST_OF_EXERCISES == "loe"
+\clearemptydoublepage
+\listofexercises
+\clearemptydoublepage
+%% #endif
+""" % vars()
+                target = r'\newcounter{doconceexercise:counter}'
+                filestr = filestr.replace(
+                    target, target + style_listofexercises)
+                target = r'\tableofcontents'
+                filestr = filestr.replace(
+                    target, target + insert_listofexercises)
+
 
     # Avoid Filename: as a new paragraph with indentation
-    filestr = filestr.replace('Filename: {', '\\noindent Name of program file: {')  # or should it be Filename: ...?
+    filestr = filestr.replace('Filename: {', '\\noindent Filename: {')
 
     # Fix % and # in link texts (-> \%, \# - % is otherwise a comment...)
     pattern = r'\\href\{\{(.+?)\}\}\{(.+?)\}'
@@ -2119,8 +2185,8 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
     for exer_envir in exer_envirs:
         if exer_envir + ':' in filestr:
             INTRO['latex'] += r"""
-\newenvironment{doconce:exercise}{}{}
-\newcounter{doconce:exercise:counter}
+\newenvironment{doconceexercise}{}{}
+\newcounter{doconceexercise:counter}
 """
             break
 
