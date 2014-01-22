@@ -75,7 +75,7 @@
 <tr class="field-odd field"><th class="field-name">Author:</th><td class="field-body"><p class="first">Hans Petter Langtangen</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body"><p class="first">Dec 1, 2013</p>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body"><p class="first">Jan 10, 2014</p>
 <ul class="last simple">
 <li>When writing a note, report, manual, etc., do you find it difficult
 to choose the typesetting format? That is, to choose between plain
@@ -563,6 +563,16 @@ Pygments style is set by <tt class="docutils literal"><span class="pre">--pygmen
 can be <tt class="docutils literal"><span class="pre">default</span></tt>, <tt class="docutils literal"><span class="pre">emacs</span></tt>, <tt class="docutils literal"><span class="pre">perldoc</span></tt>, and other valid names for
 Pygments styles.</p>
 </div>
+<div class="section" id="handling-of-movies">
+<h3>Handling of Movies<a class="headerlink" href="#handling-of-movies" title="Permalink to this headline">¶</a></h3>
+<p>MP4, WebM, and Ogg movies are typeset with the HTML5 <tt class="docutils literal"><span class="pre">video</span></tt> tag
+and the HTML code tries to load as many versions among MP4, WebM,
+and Ogg as exist (and the files are loaded in the mentioned order).
+If just the specified file is to be loaded, use the
+<tt class="docutils literal"><span class="pre">--no_mp4_webm_ogg_alternatives</span></tt> command-line option.
+Other movie formats, e.g., <tt class="docutils literal"><span class="pre">.flv</span></tt>, <tt class="docutils literal"><span class="pre">.mpeg</span></tt> and <tt class="docutils literal"><span class="pre">.avi</span></tt>, are embedded via
+the older <tt class="docutils literal"><span class="pre">embed</span></tt> tag.</p>
+</div>
 <div class="section" id="html-styles">
 <h3>HTML Styles<a class="headerlink" href="#html-styles" title="Permalink to this headline">¶</a></h3>
 <p>The HTML style can be defined either in the header of the HTML file,
@@ -899,10 +909,13 @@ Computer Modern font, run</p>
 <li><tt class="docutils literal"><span class="pre">A4PAPER</span></tt> for A4 paper size</li>
 <li><tt class="docutils literal"><span class="pre">A6PAPER</span></tt> for A6 paper size (suitable for reading PDFs on phones)</li>
 <li><tt class="docutils literal"><span class="pre">MOVIE</span></tt> for specifying how movies are handled: the value <tt class="docutils literal"><span class="pre">media9</span></tt>
-implies the <tt class="docutils literal"><span class="pre">media9</span></tt> package and the <tt class="docutils literal"><span class="pre">\includemedia</span></tt> command (default),
-while other values are <tt class="docutils literal"><span class="pre">movie15</span></tt> (<tt class="docutils literal"><span class="pre">\includemovie</span></tt> command),
-<tt class="docutils literal"><span class="pre">multimedia</span></tt> (for Beamer-style <tt class="docutils literal"><span class="pre">\movie</span></tt> command),
-or <tt class="docutils literal"><span class="pre">href-run</span></tt> (for the plain <cite>h:ref:`run:file`</cite> command)</li>
+implies the <tt class="docutils literal"><span class="pre">media9</span></tt> package and the <tt class="docutils literal"><span class="pre">\includemedia</span></tt> command
+for <tt class="docutils literal"><span class="pre">.flv</span></tt> and <tt class="docutils literal"><span class="pre">.mp4</span></tt> movies,
+or <tt class="docutils literal"><span class="pre">movie15</span></tt> and the <tt class="docutils literal"><span class="pre">\includemovie</span></tt> command for <tt class="docutils literal"><span class="pre">.mpeg</span></tt> and <tt class="docutils literal"><span class="pre">.avi</span></tt>
+movies;
+<tt class="docutils literal"><span class="pre">multimedia</span></tt> for Beamer-style <tt class="docutils literal"><span class="pre">\movie</span></tt> command,
+or <tt class="docutils literal"><span class="pre">href</span></tt> for the plain <cite>h:ref:`run:file`</cite> command. The latter
+is default.</li>
 <li><tt class="docutils literal"><span class="pre">MOVIE_CONTROLS</span></tt> adds buttons for starting/stopping movies if the
 <tt class="docutils literal"><span class="pre">media9</span></tt> package is used.</li>
 <li><tt class="docutils literal"><span class="pre">PREAMBLE</span></tt> to turn the LaTeX preamble on or off (i.e., complete document
@@ -919,6 +932,10 @@ and comment inside brackets).</li>
 <li><tt class="docutils literal"><span class="pre">LINENUMBERS</span></tt> for inclusion of line numbers in the text.</li>
 <li><tt class="docutils literal"><span class="pre">COLORED_TABLE_ROWS</span></tt> for coloring every other table rows (set this
 variable to <tt class="docutils literal"><span class="pre">gray</span></tt> or <tt class="docutils literal"><span class="pre">blue</span></tt>).</li>
+<li><tt class="docutils literal"><span class="pre">FANCY_HEADER</span></tt> for turning on headers with section title and page
+(and also chapter title on odd numbered pages if chapters exist).</li>
+<li><tt class="docutils literal"><span class="pre">DOUBLE_SPACING</span></tt> for 50 percent larger line spacing (useful for
+pen corrections) and LaTeX &#8220;draft&#8221; mode.</li>
 </ul>
 </div></blockquote>
 <p>There are also preprocessor variables with specific values:</p>
@@ -1522,6 +1539,8 @@ software. However, if you want other formats as output
 (LaTeX, Sphinx, reStructuredText) and assisting utilities such
 as preprocesors, spellcheck, file differences, bibliographies,
 and so on, the software below must be installed.</p>
+<p>To install all needed packages on a GNU/Linux Debian system, such as
+Ubuntu, you can jump to the script in the section <a class="reference internal" href="#install-debian-script"><em>Quick Debian/Ubuntu Install</em></a>.</p>
 <div class="section" id="preprocessors">
 <h3>Preprocessors<a class="headerlink" href="#preprocessors" title="Permalink to this headline">¶</a></h3>
 <p>If you make use of the <a class="reference external" href="http://code.google.com/p/preprocess">Preprocess</a>
@@ -1553,11 +1572,12 @@ the usual <tt class="docutils literal"><span class="pre">sudo</span> <span class
 <div class="section" id="image-file-handling">
 <h3>Image file handling<a class="headerlink" href="#image-file-handling" title="Permalink to this headline">¶</a></h3>
 <p>Different output formats require different formats of image files.
-For example, PostScript or Encapuslated PostScript is required for <tt class="docutils literal"><span class="pre">latex</span></tt>
-output, while HTML needs JPEG, GIF, or PNG formats.
-Doconce calls up programs from the ImageMagick suite for converting
-image files to a proper format if needed. The <a class="reference external" href="http://www.imagemagick.org/script/index.php">ImageMagick suite</a> can be installed on all major platforms.
-On Debian Linux (including Ubuntu) systems one can simply write</p>
+For example, PostScript or Encapuslated PostScript is required for
+<tt class="docutils literal"><span class="pre">latex</span></tt> output, while HTML needs JPEG, GIF, or PNG formats.  Doconce
+calls up programs from the ImageMagick suite for converting image
+files to a proper format if needed. The <a class="reference external" href="http://www.imagemagick.org/script/index.php">ImageMagick suite</a> can be installed on all
+major platforms.  On Debian Linux (including Ubuntu) systems one can
+simply write</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">sudo apt-get install imagemagick</span>
 </pre></div>
 </div>
@@ -1783,8 +1803,8 @@ run <tt class="docutils literal"><span class="pre">svn</span> <span class="pre">
 Mercurial (<tt class="docutils literal"><span class="pre">hg</span></tt>) directories, go to the directory, run
 <tt class="docutils literal"><span class="pre">hg</span> <span class="pre">pull;</span> <span class="pre">hg</span> <span class="pre">update</span></tt>, and then <tt class="docutils literal"><span class="pre">sudo</span> <span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></tt>.</p>
 </div>
-<div class="section" id="the-doconce-diff-command">
-<h3>The <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">diff</span></tt> command<a class="headerlink" href="#the-doconce-diff-command" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="analyzing-file-differences">
+<h3>Analyzing file differences<a class="headerlink" href="#analyzing-file-differences" title="Permalink to this headline">¶</a></h3>
 <p>The <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">diff</span> <span class="pre">file1</span> <span class="pre">file</span> <span class="pre">prog</span></tt> command for illustrating differences between
 two files <tt class="docutils literal"><span class="pre">file1</span></tt> and <tt class="docutils literal"><span class="pre">file2</span></tt> using the program <tt class="docutils literal"><span class="pre">prog</span></tt> requires <tt class="docutils literal"><span class="pre">prog</span></tt>
 to be installed. By default, <tt class="docutils literal"><span class="pre">prog</span></tt> is <tt class="docutils literal"><span class="pre">difflib</span></tt> which comes with Python
@@ -1838,7 +1858,7 @@ appear in the table below.</p>
 </div>
 </div>
 <div class="section" id="quick-debian-ubuntu-install">
-<h2>Quick Debian/Ubuntu Install<a class="headerlink" href="#quick-debian-ubuntu-install" title="Permalink to this headline">¶</a></h2>
+<span id="install-debian-script"></span><h2>Quick Debian/Ubuntu Install<a class="headerlink" href="#quick-debian-ubuntu-install" title="Permalink to this headline">¶</a></h2>
 <p>On Debian (including Ubuntu) systems, it is straightforward to install the
 long series of Doconce dependencies:</p>
 <div class="highlight-text"><div class="highlight"><pre># Version control systems
@@ -1847,19 +1867,13 @@ sudo apt-get install -y mercurial git subversion
 # Python
 sudo apt-get install -y idle ipython python-pip python-pdftools texinfo
 
-# These lines are only necessary for Ubuntu 12.04 to install texlive 2012
-ubuntu_version=`lsb_release -r | awl &#39;{print $2}&#39;`
-if [ $ubuntu_version = &quot;12.04&quot; ]; then
-  sudo add-apt-repository ppa:texlive-backports/ppa
-  sudo apt-get update
-fi
 # LaTeX
 sudo apt-get install -y texlive texlive-extra-utils texlive-latex-extra texlive-math-extra texlive-font-utils
 # or sudo apt-get install -y texlive-full  # get everything
 sudo apt-get install -y latexdiff auctex
 
 # Image and movie tools
-sudo apt-get install -y imagemagick netpbm mjpegtools pdftk giftrans gv evince smpeg-plaympeg mplayer totem ffmpeg libav-tools
+sudo apt-get install -y imagemagick netpbm mjpegtools pdftk giftrans gv libav-tools libavcodec-extra-53 libx264-dev ffmpeg mencoder evince mplayer gnome-mplayer totem vlc browser-plugin-vlc
 
 # Misc
 sudo apt-get install -y ispell pandoc libreoffice unoconv libreoffice-dmaths curl a2ps wdiff meld xxdiff diffpdf kdiff3 diffuse
@@ -1929,6 +1943,7 @@ cd ../../..
 <li><a class="reference internal" href="#id1">HTML</a><ul>
 <li><a class="reference internal" href="#basics">Basics</a></li>
 <li><a class="reference internal" href="#typesetting-of-code">Typesetting of Code</a></li>
+<li><a class="reference internal" href="#handling-of-movies">Handling of Movies</a></li>
 <li><a class="reference internal" href="#html-styles">HTML Styles</a></li>
 <li><a class="reference internal" href="#html-templates">HTML templates</a></li>
 <li><a class="reference internal" href="#the-html-file-collection">The HTML File Collection</a></li>
@@ -1968,7 +1983,7 @@ cd ../../..
 <li><a class="reference internal" href="#sphinx-output">Sphinx Output</a></li>
 <li><a class="reference internal" href="#markdown-and-pandoc-output">Markdown and Pandoc Output</a></li>
 <li><a class="reference internal" href="#epydoc-output">Epydoc Output</a></li>
-<li><a class="reference internal" href="#the-doconce-diff-command">The <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">diff</span></tt> command</a></li>
+<li><a class="reference internal" href="#analyzing-file-differences">Analyzing file differences</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#quick-debian-ubuntu-install">Quick Debian/Ubuntu Install</a></li>
@@ -2014,7 +2029,7 @@ cd ../../..
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2013, Hans Petter Langtangen.
+        &copy; Copyright 2014, Hans Petter Langtangen.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>

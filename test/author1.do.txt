@@ -33,39 +33,121 @@ are to external documents declared by a comment line `#
 Externaldocuments: testdoc, mydoc` (usually after the title, authors,
 and date). In this case the output text is `internal cite` and the
 LaTeX package `xr` is used to handle the labels in the external documents.
-If none of the two situations above applies, the `external`
+When referring to a complete chapter (not a section in it), which
+corresponds to a complete external document, it does not make sense
+to write out `internal cite` since the `internal` reference is a
+chapter number. In such cases, the `refch[internal][cite][external]` syntax can be used,
+and if the label is in another LaTeX document, the output is just `cite`.
+For all
+output formats other than `latex` and `pdflatex`, the `external`
 text will be the output.
 
-Here is an example on a specific generalized reference:
+Here is an example on a specific generalized reference to a section
+in a document:
 !bc
 As explained in
 ref[Section ref{subsec:ex}][in "Langtangen, 2012":
 "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex"
-cite{testdoc:12}][a "section": "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex" in
-the document "A Document for Testing Doconce": "http://hplgit.github.io/doconce/test/demo_testdoc.html"
-cite{testdoc:12}], Doconce documents may include movies.
+cite{testdoc:12}][a "section":
+"http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex" in
+the document "A Document for Testing Doconce":
+"http://hplgit.github.io/doconce/test/demo_testdoc.html"
+cite{testdoc:12}], Doconce documents may include tables.
 !ec
-This is renedered as follows:
+With `latex` or `pdflatex` as output, this translates to
+!bc
+As explained in
+Section ref{subsec:ex}, Doconce documents may include tables.
+!ec
+if the label `{subsec:ex}` appears in the present Doconce source, and
+otherwise
+!bc
+As explained in
+Section ref{subsec:ex} in "Langtangen, 2012":
+"http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex"
+cite{testdoc:12}, Doconce documents may include tables.
+!ec
+In a format different from `latex` and `pdflatex`, the effective Doconce
+text becomes
+!bc
+As explained in
+a "section":
+"http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex" in
+the document "A Document for Testing Doconce":
+"http://hplgit.github.io/doconce/test/demo_testdoc.html"
+cite{testdoc:12}, Doconce documents may include tables.
+!ec
+The rendered text in the current format `${FORMAT}` becomes
+
+!bquote
 As explained in
 ref[Section ref{subsec:ex}][in "Langtangen, 2012":
 "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex"
-cite{testdoc:12}][a "section": "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex" in
-the document "A Document for Testing Doconce": "http://hplgit.github.io/doconce/test/demo_testdoc.html"
-cite{testdoc:12}], Doconce documents may include movies.
+cite{testdoc:12}][a "section":
+"http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex" in
+the document "A Document for Testing Doconce":
+"http://hplgit.github.io/doconce/test/demo_testdoc.html"
+cite{testdoc:12}], Doconce documents may include tables.
+!equote
+
+A reference to an entire external document, which is usually a chapter
+if the reference is internal in the Doconce source, applies the
+`refch` syntax:
+
+!bc
+As explained in
+refch[Chapter ref{ch:testdoc}]["Langtangen, 2012":
+"http://hplgit.github.io/doconce/test/demo_testdoc.html"
+cite{testdoc:12}][the document
+"A Document for Testing Doconce":
+"http://hplgit.github.io/doconce/test/demo_testdoc.html"
+cite{testdoc:12}], Doconce documents may include tables.
+!ec
+The output now if `ch:testdoc` is not a label in the document,
+becomes in the `latex` and `pdflatex` case
+
+!bc
+As explained in
+"Langtangen, 2012":
+"http://hplgit.github.io/doconce/test/demo_testdoc.html"
+cite{testdoc:12}, Doconce documents may include tables.
+!ec
+That is, the internal reference `Chapter ...` is omitted since
+it is not meaningful to refer to an external document as "Chapter".
+The resulting rendered text in the current format `${FORMAT}` becomes
+
+!bquote
+As explained in
+refch[Chapter ref{ch:testdoc}]["Langtangen, 2012":
+"http://hplgit.github.io/doconce/test/demo_testdoc.html"
+cite{testdoc:12}][the document
+"A Document for Testing Doconce":
+"http://hplgit.github.io/doconce/test/demo_testdoc.html"
+cite{testdoc:12}], Doconce documents may include tables.
+!equote
+
+Note that LaTeX cannot
+have links to local files, so a complete URL on the form
+`http://...` must be used.
 
 And here is another example with internal references only:
-!bc
-Generalized references are described in ref[Section ref{genrefs}][][
-the document *author1*].
-!ec
-The text is rendered to "Generalized references are described in
-ref[Section ref{genrefs}][][
-the document *author1*]."
 
-# We are testing chapter too to see if latex output then has
-# book style rather than article style.
+!bc
+Generalized references are described in ref[Section ref{genrefs}][dummy1][
+dummy2].
+!ec
+The text is rendered to
+
+!bquote
+Generalized references are described in
+ref[Section ref{genrefs}][dummy1][
+dummy2].
+!equote
 
 ========= Test of math =========
+
+# Here we test the chapter heading to see if latex output then has
+# book style rather than article style.
 
 Inline math, $a=b$, is the only math in this document.
 

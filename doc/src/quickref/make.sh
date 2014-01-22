@@ -1,46 +1,56 @@
-#!/bin/sh -x
+#!/bin/bash -x
+
+function system {
+  "$@"
+  if [ $? -ne 0 ]; then
+    echo "make.sh: unsuccessful command $@"
+    echo "abort!"
+    exit 1
+  fi
+}
+
 set -x
 sh ./clean.sh
 
 # Make latest bin/doconce doc
 doconce > doconce_program.sh
 
-doconce format html quickref --no_pygments_html --no_preprocess
+system doconce format html quickref --no_pygments_html --no_preprocess
 
 # latex (shpro because of @@@CODE copy, need minted style)
-doconce format latex quickref --no_preprocess
-doconce ptex2tex quickref -DMINTED -DHELVETICA envir=Verbatim
+system doconce format latex quickref --no_preprocess
+system doconce ptex2tex quickref -DMINTED -DHELVETICA envir=Verbatim
 # cannot run ptex2tex since it always runs preprocess
-latex -shell-escape quickref.tex
+system latex -shell-escape quickref.tex
 latex -shell-escape quickref.tex
 dvipdf quickref.dvi
 
 # Sphinx
-doconce format sphinx quickref --no_preprocess
+system doconce format sphinx quickref --no_preprocess
 rm -rf sphinx-rootdir
-doconce sphinx_dir author='HPL' version=0.7 quickref
+system doconce sphinx_dir author='HPL' version=0.7 quickref
 doconce replace 'doconce format sphinx %s' 'doconce format sphinx %s --no-preprocess' automake_sphinx.py
-python automake_sphinx.py
+system python automake_sphinx.py
 cp quickref.rst quickref.sphinx.rst  # save
 
 # reStructuredText:
-doconce format rst quickref --no_preprocess
+system doconce format rst quickref --no_preprocess
 rst2xml.py quickref.rst > quickref.xml
 rst2odt.py quickref.rst > quickref.odt
 rst2html.py quickref.rst > quickref.rst.html
 rst2latex.py quickref.rst > quickref.rst.tex
-latex quickref.rst.tex
+system latex quickref.rst.tex
 latex quickref.rst.tex
 dvipdf quickref.rst.dvi
 
 # Other formats:
-doconce format plain quickref --no_preprocess
-doconce format gwiki quickref --no_preprocess
-doconce format mwiki quickref --no_preprocess
-doconce format cwiki quickref --no_preprocess
-doconce format st quickref --no_preprocess
-doconce format epytext quickref --no_preprocess
-doconce format pandoc quickref --no_preprocess
+system doconce format plain quickref --no_preprocess
+system doconce format gwiki quickref --no_preprocess
+system doconce format mwiki quickref --no_preprocess
+system doconce format cwiki quickref --no_preprocess
+system doconce format st quickref --no_preprocess
+system doconce format epytext quickref --no_preprocess
+system doconce format pandoc quickref --no_preprocess
 
 rm -rf demo
 mkdir demo
@@ -86,7 +96,7 @@ Doconce can also be converted to
 <a href="quickref.gwiki">Googlecode wiki</a>,
 <a href="quickref.mwiki">MediaWiki</a>,
 <a href="quickref.cwiki">Creole wiki</a>,
-<a href="quickref.md">a Pandoc</a>,
+<a href="quickref.md">aPandoc</a>,
 <a href="quickref.st">Structured Text</a>,
 <a href="quickref.epytext">Epytext</a>,
 and maybe the most important format of all:

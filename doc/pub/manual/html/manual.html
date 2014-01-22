@@ -8,14 +8,14 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Doconce Description &mdash; Doconce Manual</title>
+    <title>Doconce Description</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
+        URL_ROOT:    '',
         VERSION:     '0.6',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
@@ -46,7 +46,15 @@
     <link rel="top" title="Doconce Manual" href="index.html" />
     <link rel="prev" title="Doconce Manual" href="index.html" />
  
+  
+   <style type=text/css>
+     div.admonition {
+       background-color: whiteSmoke;
+       border: 1px solid #bababa;
+     }
+   </style>
   </head>
+
   <body>
     <div class="related">
       <h3>Navigation</h3>
@@ -74,7 +82,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Author:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Dec 27, 2013</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jan 10, 2014</td>
 </tr>
 </tbody>
 </table>
@@ -184,6 +192,8 @@ software. However, if you want other formats as output
 (LaTeX, Sphinx, reStructuredText) and assisting utilities such
 as preprocesors, spellcheck, file differences, bibliographies,
 and so on, the software below must be installed.</p>
+<p>To install all needed packages on a GNU/Linux Debian system, such as
+Ubuntu, you can jump to the script in the section <a class="reference internal" href="#install-debian-script"><em>Quick Debian/Ubuntu Install</em></a>.</p>
 <div class="section" id="preprocessors">
 <h3>Preprocessors<a class="headerlink" href="#preprocessors" title="Permalink to this headline">¶</a></h3>
 <p>If you make use of the <a class="reference external" href="http://code.google.com/p/preprocess">Preprocess</a>
@@ -215,11 +225,12 @@ the usual <tt class="docutils literal"><span class="pre">sudo</span> <span class
 <div class="section" id="image-file-handling">
 <h3>Image file handling<a class="headerlink" href="#image-file-handling" title="Permalink to this headline">¶</a></h3>
 <p>Different output formats require different formats of image files.
-For example, PostScript or Encapuslated PostScript is required for <tt class="docutils literal"><span class="pre">latex</span></tt>
-output, while HTML needs JPEG, GIF, or PNG formats.
-Doconce calls up programs from the ImageMagick suite for converting
-image files to a proper format if needed. The <a class="reference external" href="http://www.imagemagick.org/script/index.php">ImageMagick suite</a> can be installed on all major platforms.
-On Debian Linux (including Ubuntu) systems one can simply write</p>
+For example, PostScript or Encapuslated PostScript is required for
+<tt class="docutils literal"><span class="pre">latex</span></tt> output, while HTML needs JPEG, GIF, or PNG formats.  Doconce
+calls up programs from the ImageMagick suite for converting image
+files to a proper format if needed. The <a class="reference external" href="http://www.imagemagick.org/script/index.php">ImageMagick suite</a> can be installed on all
+major platforms.  On Debian Linux (including Ubuntu) systems one can
+simply write</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">sudo apt-get install imagemagick</span>
 </pre></div>
 </div>
@@ -445,8 +456,8 @@ run <tt class="docutils literal"><span class="pre">svn</span> <span class="pre">
 Mercurial (<tt class="docutils literal"><span class="pre">hg</span></tt>) directories, go to the directory, run
 <tt class="docutils literal"><span class="pre">hg</span> <span class="pre">pull;</span> <span class="pre">hg</span> <span class="pre">update</span></tt>, and then <tt class="docutils literal"><span class="pre">sudo</span> <span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></tt>.</p>
 </div>
-<div class="section" id="the-doconce-diff-command">
-<h3>The <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">diff</span></tt> command<a class="headerlink" href="#the-doconce-diff-command" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="analyzing-file-differences">
+<h3>Analyzing file differences<a class="headerlink" href="#analyzing-file-differences" title="Permalink to this headline">¶</a></h3>
 <p>The <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">diff</span> <span class="pre">file1</span> <span class="pre">file</span> <span class="pre">prog</span></tt> command for illustrating differences between
 two files <tt class="docutils literal"><span class="pre">file1</span></tt> and <tt class="docutils literal"><span class="pre">file2</span></tt> using the program <tt class="docutils literal"><span class="pre">prog</span></tt> requires <tt class="docutils literal"><span class="pre">prog</span></tt>
 to be installed. By default, <tt class="docutils literal"><span class="pre">prog</span></tt> is <tt class="docutils literal"><span class="pre">difflib</span></tt> which comes with Python
@@ -500,7 +511,7 @@ appear in the table below.</p>
 </div>
 </div>
 <div class="section" id="quick-debian-ubuntu-install">
-<h2>Quick Debian/Ubuntu Install<a class="headerlink" href="#quick-debian-ubuntu-install" title="Permalink to this headline">¶</a></h2>
+<span id="install-debian-script"></span><h2>Quick Debian/Ubuntu Install<a class="headerlink" href="#quick-debian-ubuntu-install" title="Permalink to this headline">¶</a></h2>
 <p>On Debian (including Ubuntu) systems, it is straightforward to install the
 long series of Doconce dependencies:</p>
 <div class="highlight-text"><div class="highlight"><pre># Version control systems
@@ -509,19 +520,13 @@ sudo apt-get install -y mercurial git subversion
 # Python
 sudo apt-get install -y idle ipython python-pip python-pdftools texinfo
 
-# These lines are only necessary for Ubuntu 12.04 to install texlive 2012
-ubuntu_version=`lsb_release -r | awl &#39;{print $2}&#39;`
-if [ $ubuntu_version = &quot;12.04&quot; ]; then
-  sudo add-apt-repository ppa:texlive-backports/ppa
-  sudo apt-get update
-fi
 # LaTeX
 sudo apt-get install -y texlive texlive-extra-utils texlive-latex-extra texlive-math-extra texlive-font-utils
 # or sudo apt-get install -y texlive-full  # get everything
 sudo apt-get install -y latexdiff auctex
 
 # Image and movie tools
-sudo apt-get install -y imagemagick netpbm mjpegtools pdftk giftrans gv evince smpeg-plaympeg mplayer totem ffmpeg libav-tools
+sudo apt-get install -y imagemagick netpbm mjpegtools pdftk giftrans gv libav-tools libavcodec-extra-53 libx264-dev ffmpeg mencoder evince mplayer gnome-mplayer totem vlc browser-plugin-vlc
 
 # Misc
 sudo apt-get install -y ispell pandoc libreoffice unoconv libreoffice-dmaths curl a2ps wdiff meld xxdiff diffpdf kdiff3 diffuse
@@ -811,7 +816,7 @@ to HTML format:</p>
 <div class="last highlight-bash"><div class="highlight"><pre>cp mydoc.do.txt mydoc2.do.txt
 <span class="nv">url</span><span class="o">=</span><span class="s2">&quot;https//raw.github.com/someuser/someuser.github.com&quot;</span>
 <span class="nv">dir</span><span class="o">=</span><span class="s2">&quot;master/project/dir1/dir2&quot;</span>
-<span class="k">for </span>figname in fig1 fig2 fig3; <span class="k">do</span>
+<span class="k">for </span>figname in fig1 fig2 fig3<span class="p">;</span> <span class="k">do</span>
 <span class="k">  </span>doconce replace <span class="s2">&quot;[$figname,&quot;</span> <span class="s2">&quot;[$site/$dir/$figname.png,&quot;</span> <span class="se">\</span>
           mydoc2.do.txt
 <span class="k">done</span>
@@ -1829,7 +1834,7 @@ part of the caption appearing on the same line as <tt class="docutils literal"><
 included in the formatted caption).</p>
 </div>
 <div class="figure" id="fig-viz">
-<a class="reference internal image-reference" href="_images/wave1D.png"><img alt="_images/wave1D.png" src="_images/wave1D.png" style="width: 400px;" /></a>
+<img alt="_images/wave1D.png" src="_images/wave1D.png" style="width: 400px;" />
 <p class="caption"><em>A wave</em></p>
 </div>
 <p>Combining several image files into one, in a table fashion, can be done by the
@@ -3342,16 +3347,32 @@ if HTML output should have movie files or filename generators.
 A relevant snippet using Mako is</p>
 <div class="highlight-text"><div class="highlight"><pre>% FORMAT in (&quot;latex&quot;, &quot;pdflatex&quot;) or HTMLMOVIE == &quot;files&quot;:
 MOVIE: [../experiments/frame_*.png]
+
 % else:
 MOVIE: [../experiments/movie.ogg]
+
 % endif
 </pre></div>
 </div>
-<p class="last">With the <tt class="docutils literal"><span class="pre">-DHTMLMOVIE=files</span></tt> flag, animation of individual files will
+<p>With the <tt class="docutils literal"><span class="pre">-DHTMLMOVIE=files</span></tt> flag, animation of individual files will
 be performed, while any other value than <tt class="docutils literal"><span class="pre">files</span></tt> leads to
 use of the <tt class="docutils literal"><span class="pre">movie.ogg</span></tt> in all but LaTeX formats. In HTML one will try
 to load <tt class="docutils literal"><span class="pre">movie.mp4</span></tt> (if it exists) and then <tt class="docutils literal"><span class="pre">movie.webm</span></tt> (if it exists)
 and then finally <tt class="docutils literal"><span class="pre">movie.ogg</span></tt>.</p>
+<p>There is no way to control the number of frames per second in
+LaTeX animations based on filename generators such as <tt class="docutils literal"><span class="pre">myframes*.png</span></tt>.
+However, with a little auto editing in a script one can control
+the frame rates of the various movies. The rate is specified as <tt class="docutils literal"><span class="pre">2</span></tt>
+in lines on the form</p>
+<div class="highlight-text"><div class="highlight"><pre>\begin{animateinline}[controls,loop]{2} % frames: f000.png -&gt; f098.png
+</pre></div>
+</div>
+<p>Setting the rate to 12 in for this particular movie based on the
+<tt class="docutils literal"><span class="pre">f%03.png</span></tt> files, the following <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">subst</span></tt> command does the job
+in a script:</p>
+<div class="last highlight-text"><div class="highlight"><pre>doconce subst &#39;,loop]{2}( .+: f000)&#39; &#39;,loop{12}\g&lt;1&gt;&#39; mydoc.do.txt
+</pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -3360,6 +3381,37 @@ and then finally <tt class="docutils literal"><span class="pre">movie.ogg</span>
 <p>Another type of special lines starts with <tt class="docutils literal"><span class="pre">&#64;&#64;&#64;CODE</span></tt> and enables copying
 of computer code from a file directly into a verbatim environment, see
 the section <a class="reference internal" href="#sec-verbatim-blocks"><em>Blocks of Verbatim Computer Code</em></a> below.</p>
+</div>
+<div class="section" id="inserting-the-output-from-operating-system-commands">
+<h2>Inserting the Output from Operating System Commands<a class="headerlink" href="#inserting-the-output-from-operating-system-commands" title="Permalink to this headline">¶</a></h2>
+<p>When Doconce is used to document computer program and results from
+computer code it is important to ensure that the document contains
+the latest version of the code and the corresponding output.
+The former is handled by the <tt class="docutils literal"><span class="pre">&#64;&#64;&#64;CODE</span></tt> directive, while the latter
+has its own directive <tt class="docutils literal"><span class="pre">&#64;&#64;&#64;OSCMD</span></tt>. The syntax reads</p>
+<div class="highlight-text"><div class="highlight"><pre>@@@OSCMD cmd
+</pre></div>
+</div>
+<p>where <tt class="docutils literal"><span class="pre">cmd</span></tt> is any text that can be run in the operating system.
+The output is copied into the Doconce source. For example,</p>
+<div class="highlight-text"><div class="highlight"><pre>@@@OSCMD python -c &#39;print &quot;Hello,\nWorld!&quot;&#39;
+</pre></div>
+</div>
+<p>results in</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; python -c &#39;print &quot;Hello,\nWorld!&quot;&#39;</span>
+<span class="go">Hello,</span>
+<span class="go">World!</span>
+</pre></div>
+</div>
+<p>There is a command-line option <tt class="docutils literal"><span class="pre">--os_prompt=</span></tt> that can be used to
+set the (terminal) prompt that prefixes the command:</p>
+<blockquote>
+<div><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">--os_prompt=None</span></tt> results in no prompt, just the command.</li>
+<li><tt class="docutils literal"><span class="pre">--os_prompt=nocmd</span></tt> results in no prompt and no command, just the output.</li>
+<li><tt class="docutils literal"><span class="pre">--os_prompt=Terminal&gt;</span></tt> is the default setting (as in the example above).</li>
+</ul>
+</div></blockquote>
 </div>
 <div class="section" id="inline-tagging">
 <span id="id5"></span><h2>Inline Tagging<a class="headerlink" href="#inline-tagging" title="Permalink to this headline">¶</a></h2>
@@ -3627,31 +3679,96 @@ are to external documents declared by a comment line <tt class="docutils literal
 <span class="pre">Externaldocuments:</span> <span class="pre">testdoc,</span> <span class="pre">mydoc</span></tt> (usually after the title, authors,
 and date). In this case the output text is <tt class="docutils literal"><span class="pre">internal</span> <span class="pre">cite</span></tt> and the
 LaTeX package <tt class="docutils literal"><span class="pre">xr</span></tt> is used to handle the labels in the external documents.
-If none of the two situations above applies, the <tt class="docutils literal"><span class="pre">external</span></tt>
+When referring to a complete chapter (not a section in it), which
+corresponds to a complete external document, it does not make sense
+to write out <tt class="docutils literal"><span class="pre">internal</span> <span class="pre">cite</span></tt> since the <tt class="docutils literal"><span class="pre">internal</span></tt> reference is a
+chapter number. In such cases, the <tt class="docutils literal"><span class="pre">internal</span></tt>
+syntax can be used,
+and if the label is in another LaTeX document, the output is just <tt class="docutils literal"><span class="pre">cite</span></tt>
+(rather than <tt class="docutils literal"><span class="pre">internal</span> <span class="pre">cite</span></tt>). An example below will illustrate the use.
+For all
+output formats other than <tt class="docutils literal"><span class="pre">latex</span></tt> and <tt class="docutils literal"><span class="pre">pdflatex</span></tt>, the <tt class="docutils literal"><span class="pre">external</span></tt>
 text will be the output.</p>
-<p>Here is an example on a specific generalized reference:</p>
+<p>Here is an example on a specific generalized reference to a section
+in a document:</p>
 <div class="highlight-text"><div class="highlight"><pre>As explained in
 ref[Section ref{subsec:ex}][in &quot;Langtangen, 2012&quot;:
 &quot;http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex&quot;
-cite{testdoc:12}][a &quot;section&quot;: &quot;http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex&quot; in
-the document &quot;A Document for Testing Doconce&quot;: &quot;http://hplgit.github.io/doconce/test/demo_testdoc.html&quot;
-cite{testdoc:12}], Doconce documents may include movies.
+cite{Doconce:test}][a &quot;section&quot;:
+&quot;http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex&quot; in
+the document &quot;A Document for Testing Doconce&quot;:
+&quot;http://hplgit.github.io/doconce/test/demo_testdoc.html&quot;
+cite{Doconce:test}], Doconce documents may include tables.
 </pre></div>
 </div>
-<p>In LaTeX, this becomes something like</p>
+<p>With <tt class="docutils literal"><span class="pre">latex</span></tt> or <tt class="docutils literal"><span class="pre">pdflatex</span></tt> as output, this translates to</p>
+<div class="highlight-text"><div class="highlight"><pre>As explained in
+Section ref{subsec:ex}, Doconce documents may include tables.
+</pre></div>
+</div>
+<p>if the label <tt class="docutils literal"><span class="pre">{subsec:ex}</span></tt> appears in the present Doconce source, and
+otherwise</p>
+<div class="highlight-text"><div class="highlight"><pre>As explained in
+Section ref{subsec:ex} in &quot;Langtangen, 2012&quot;:
+&quot;http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex&quot;
+cite{Doconce:test}, Doconce documents may include tables.
+</pre></div>
+</div>
+<p>The latter Doconce code is translated to the following
+LaTeX code:</p>
 <div class="highlight-text"><div class="highlight"><pre>As explained in
 Section~\ref{subsec:ex} in
 \href{{http://hplgit.github.io/doconce/...}}{Langtangen, 2012}
-\cite{testdoc:12}, Doconce documents may include movies.
+\cite{Doconce:test}, Doconce documents may include tables.
 </pre></div>
 </div>
-<p>Note that there is a specific numbered reference to an external
-document, if <tt class="docutils literal"><span class="pre">subsec:ex</span></tt> is not a label in the present document,
-and that we add a citation in the usual way, but also include
-a link to the document using the name of the other or some other
-relevant link text. The link can be the same or different from
-links used in the &#8220;external&#8221; part of the reference (LaTeX cannot
-have links to local files, so a complete URL must be used).</p>
+<p>In a format different from <tt class="docutils literal"><span class="pre">latex</span></tt> and <tt class="docutils literal"><span class="pre">pdflatex</span></tt>, the effective Doconce
+text becomes</p>
+<div class="highlight-text"><div class="highlight"><pre>As explained in
+a &quot;section&quot;:
+&quot;http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex&quot; in
+the document &quot;A Document for Testing Doconce&quot;:
+&quot;http://hplgit.github.io/doconce/test/demo_testdoc.html&quot;
+cite{Doconce:test}, Doconce documents may include tables.
+</pre></div>
+</div>
+<p>The rendered text in the current format becomes</p>
+<blockquote>
+<div>As explained in
+a <a class="reference external" href="http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex">section</a> in
+the document <a class="reference external" href="http://hplgit.github.io/doconce/test/demo_testdoc.html">A Document for Testing Doconce</a>
+<a class="reference internal" href="#ref1">[Ref1]</a>, Doconce documents may include tables.</div></blockquote>
+<p>A reference to an entire external document, which is usually a chapter
+of a book if the reference is internal in the Doconce source,
+usually needs to apply the <tt class="docutils literal"><span class="pre">refch</span></tt> syntax:</p>
+<div class="highlight-text"><div class="highlight"><pre>As explained in
+refch[Chapter ref{ch:testdoc}][&quot;Langtangen, 2012&quot;:
+&quot;http://hplgit.github.io/doconce/test/demo_testdoc.html&quot;
+cite{Doconce:test}][the document
+&quot;A Document for Testing Doconce&quot;:
+&quot;http://hplgit.github.io/doconce/test/demo_testdoc.html&quot;
+cite{Doconce:test}], Doconce documents may include tables.
+</pre></div>
+</div>
+<p>The output now if <tt class="docutils literal"><span class="pre">ch:testdoc</span></tt> is not a label in the document,
+becomes in the <tt class="docutils literal"><span class="pre">latex</span></tt> and <tt class="docutils literal"><span class="pre">pdflatex</span></tt> case</p>
+<div class="highlight-text"><div class="highlight"><pre>As explained in
+&quot;Langtangen, 2012&quot;:
+&quot;http://hplgit.github.io/doconce/test/demo_testdoc.html&quot;
+cite{Doconce:test}, Doconce documents may include tables.
+</pre></div>
+</div>
+<p>That is, the internal reference <tt class="docutils literal"><span class="pre">Chapter</span> <span class="pre">...</span></tt> is omitted since
+it is not meaningful to refer to an external document as &#8220;Chapter&#8221;.
+The resulting rendered text in the current format becomes</p>
+<blockquote>
+<div>As explained in
+the document
+<a class="reference external" href="http://hplgit.github.io/doconce/test/demo_testdoc.html">A Document for Testing Doconce</a>
+<a class="reference internal" href="#ref1">[Ref1]</a>, Doconce documents may include tables.</div></blockquote>
+<p>Note that LaTeX cannot
+have links to local files, so a complete URL on the form
+<tt class="docutils literal"><span class="pre">http://...</span></tt> must be used.</p>
 </div>
 <div class="section" id="index">
 <h2>Index<a class="headerlink" href="#index" title="Permalink to this headline">¶</a></h2>
@@ -3761,16 +3878,22 @@ the output format is <tt class="docutils literal"><span class="pre">latex</span>
 </pre></div>
 </div>
 <p>to refer to a publication with bibliographic key <tt class="docutils literal"><span class="pre">key</span></tt>.
-Here is an example: <a class="reference internal" href="#ref1">[Ref1]</a> discussed propagation of
-large destructive water waves, <a class="reference internal" href="#ref2">[Ref2]</a> gave
-an overview of numerical methods for solvin the Navier-Stokes equations,
+Here is an example: <a class="reference internal" href="#ref2">[Ref2]</a> discussed propagation of
+large destructive water waves, <a class="reference internal" href="#ref3">[Ref3]</a> gave
+an overview of numerical methods for solving the Navier-Stokes equations,
 while the use of Backward Kolmogorov equations for analyzing
-random vibrations was investigated in <a class="reference internal" href="#ref3">[Ref3]</a>.
-The book chapter <a class="reference internal" href="#ref4">[Ref4]</a> contains information on
+random vibrations was investigated in <a class="reference internal" href="#ref4">[Ref4]</a>.
+The book chapter <a class="reference internal" href="#ref5">[Ref5]</a> contains information on
 C++ software tools for programming multigrid methods. A real retro
-reference is <a class="reference internal" href="#ref5">[Ref5]</a> about a big FORTRAN package.
+reference is <a class="reference internal" href="#ref6">[Ref6]</a> about a big FORTRAN package.
 Multiple references are also possible, e.g., see
-<a class="reference internal" href="#ref1">[Ref1]</a> <a class="reference internal" href="#ref4">[Ref4]</a>.</p>
+<a class="reference internal" href="#ref2">[Ref2]</a> <a class="reference internal" href="#ref5">[Ref5]</a>.</p>
+<p>A LaTeX-style cite command with additional detailed reference is also possible,</p>
+<div class="highlight-text"><div class="highlight"><pre>cite[details]{key}
+</pre></div>
+</div>
+<p>for example as in <a class="reference internal" href="#ref3">[Ref3]</a> (Section 2)
+or <a class="reference internal" href="#ref3">[Ref3]</a> (Equation (4.2)).</p>
 <p>In LaTeX, the <tt class="docutils literal"><span class="pre">cite</span></tt> command is directly translated to the
 corresponding LaTeX version of the command with a backslash; in reST
 and Sphinx the citations becomes links, with the citation keys as
@@ -4154,7 +4277,7 @@ INLINE_TAGS = {
 </pre></div>
 </div>
 <p>And here is a C++ code snippet (<tt class="docutils literal"><span class="pre">cppcod</span></tt> style):</p>
-<div class="highlight-c++"><div class="highlight"><pre><span class="kt">void</span> <span class="n">myfunc</span><span class="p">(</span><span class="kt">double</span><span class="o">*</span> <span class="n">x</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span><span class="o">&amp;</span> <span class="n">myarr</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight-c++"><div class="highlight"><pre><span class="kt">void</span> <span class="nf">myfunc</span><span class="p">(</span><span class="kt">double</span><span class="o">*</span> <span class="n">x</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span><span class="o">&amp;</span> <span class="n">myarr</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">myarr</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">myarr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">myarr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">myarr</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
     <span class="p">}</span>
@@ -4881,6 +5004,272 @@ comment in Mako.
 &lt;%doc/&gt;
 </pre></div>
 </div>
+<p>One can use Mako to extend the Doconce syntax. Two examples are given next.</p>
+</div>
+<div class="section" id="example-extending-tables-to-handle-figures">
+<span id="manual-tables-wfigs"></span><h2>Example: Extending Tables to Handle Figures<a class="headerlink" href="#example-extending-tables-to-handle-figures" title="Permalink to this headline">¶</a></h2>
+<p>Doconce tables cannot contain figures, since figures must appear on
+a single line with the special syntax <tt class="docutils literal"><span class="pre">FIGURE:</span> <span class="pre">[file,</span> <span class="pre">...]</span></tt>.
+What if you want a table of thumbnail figures with hyperlinks?</p>
+<div class="section" id="solution-for-latex-and-html">
+<h3>Solution for LaTeX and HTML<a class="headerlink" href="#solution-for-latex-and-html" title="Permalink to this headline">¶</a></h3>
+<p>We first restrict the attention to LaTeX and HTML. In those cases
+we can create an ordinary table and insert a call to a Mako
+function in cells in the table to return the proper LaTeX or
+HTML code for displaying a figure.</p>
+<p>The Mako call syntax in a cell is decided to be
+<tt class="docutils literal"><span class="pre">${tfig('080')}</span></tt>, which insert the figure <tt class="docutils literal"><span class="pre">mov/wave_frames/frame_0080.png</span></tt>.
+A 3x3 table of figures then look like</p>
+<div class="highlight-text"><div class="highlight"><pre>|-------------------------------------------------|
+|               |                |                |
+|-------c---------------c----------------c--------|
+|${tfig(&#39;080&#39;)} | ${tfig(&#39;085&#39;)} | ${tfig(&#39;090&#39;)} |
+|${tfig(&#39;095&#39;)} | ${tfig(&#39;100&#39;)} | ${tfig(&#39;105&#39;)} |
+|${tfig(&#39;110&#39;)} | ${tfig(&#39;115&#39;)} | ${tfig(&#39;120&#39;)} |
+|-------------------------------------------------|
+</pre></div>
+</div>
+<p>We do not want a heading, just a grid of figures, but a heading is
+required in Doconce figures, so the solution is to provide
+empty column names in the heading. This solution
+gives acceptable results in HTML and LaTeX.</p>
+<p>The Mako function can be a plain Python function:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="o">&lt;%</span>
+<span class="k">def</span> <span class="nf">tfig</span><span class="p">(</span><span class="n">fileno</span><span class="p">):</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="s">&#39;mov/wave_frames/frame_0&#39;</span> <span class="o">+</span> <span class="n">fileno</span> <span class="o">+</span> <span class="s">&#39;.png&#39;</span>  <span class="c"># path</span>
+    <span class="k">if</span> <span class="n">FORMAT</span> <span class="ow">in</span> <span class="p">(</span><span class="s">&quot;latex&quot;</span><span class="p">,</span> <span class="s">&quot;pdflatex&quot;</span><span class="p">):</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="s">r&#39;\includegraphics[width=2cm]{</span><span class="si">%s</span><span class="s">}&#39;</span> <span class="o">%</span> <span class="n">p</span>
+    <span class="k">elif</span> <span class="n">FORMAT</span> <span class="o">==</span> <span class="s">&quot;html&quot;</span><span class="p">:</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="s">&#39;&lt;a href=&quot;</span><span class="si">%s</span><span class="s">&quot;&gt;&lt;img src=&quot;</span><span class="si">%s</span><span class="s">&quot; width=&quot;300&quot;&gt;&lt;/a&gt;&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="s">&#39;&quot;`</span><span class="si">%s</span><span class="s">`&quot;: &quot;</span><span class="si">%s</span><span class="s">&quot;&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">fileno</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>  <span class="c"># plain link</span>
+    <span class="k">return</span> <span class="n">text</span>
+<span class="o">%&gt;</span>
+</pre></div>
+</div>
+<p>Note that for other formats than LaTeX and HTML we just return a link to
+the figure.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">A corresponding solution
+for Sphinx will not work because inline figures in Sphinx has
+a syntax with pipe symbols (&#8216;|&#8217;) that interfer with the
+column separator in tables in Doconce. Returning the HTML
+code in case of Sphinx will just display that HTML code
+in the cells, not the rendered HTML code. A solution that
+includes Sphinx is provided later.</p>
+</div>
+<p>The resulting table is displayed below.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">&nbsp;</th>
+<th class="head">&nbsp;</th>
+<th class="head">&nbsp;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><a class="reference external" href="mov/wave_frames/frame_0080.png">080</a></td>
+<td><a class="reference external" href="mov/wave_frames/frame_0085.png">085</a></td>
+<td><a class="reference external" href="mov/wave_frames/frame_0090.png">090</a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="mov/wave_frames/frame_0095.png">095</a></td>
+<td><a class="reference external" href="mov/wave_frames/frame_0100.png">100</a></td>
+<td><a class="reference external" href="mov/wave_frames/frame_0105.png">105</a></td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="mov/wave_frames/frame_0110.png">110</a></td>
+<td><a class="reference external" href="mov/wave_frames/frame_0115.png">115</a></td>
+<td><a class="reference external" href="mov/wave_frames/frame_0120.png">120</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="generating-the-entire-table">
+<h3>Generating the Entire Table<a class="headerlink" href="#generating-the-entire-table" title="Permalink to this headline">¶</a></h3>
+<p>The specific structure of this table also suggest using Mako
+to generate the entire table:</p>
+<div class="highlight-python"><pre>&lt;%
+def generate_table(start, end, step, no_of_columns):
+    # Heading
+    text = ''
+    horizontal_rule = '|----|\n'
+    text += horizontal_rule
+    text += '|  '*no_of_columns + '|\n'
+    text += horizontal_rule
+    fig_counter = 0
+    for counter in range(start, end+1, step):
+        fig_counter += 1
+        text += '| ' + tfig('%03d' % counter) + ' '
+        if fig_counter % no_of_columns == 0:
+            text += '|\n'
+    text += horizontal_rule
+    return text
+%&gt;
+
+${generate_table(80, 120, 5, 3)}</pre>
+</div>
+<p>The result is a table like the one above, except that the horizontal rules
+and the heading are very short lines (but this is legal syntax -
+it just does not look appealing in the Doconce source).</p>
+</div>
+<div class="section" id="generating-the-entire-table-in-a-native-format-via-mako">
+<h3>Generating the Entire Table in a Native Format via Mako<a class="headerlink" href="#generating-the-entire-table-in-a-native-format-via-mako" title="Permalink to this headline">¶</a></h3>
+<p>To allow Sphinx and other formats, it is best to generate the entire
+table. This can be done either by a Mako function or as a post
+process after Doconce has created the output file. We show the Mako
+solution here.</p>
+<div class="admonition-tip admonition">
+<p class="first admonition-title">Tip</p>
+<p class="last">A pure Python function Mako is easiest to develop in a seperate
+Python program file because Python has better error messages
+than Mako. Also, Python has debugging facilities that make the
+development of the code much more efficient than writing in Mako.
+When the Python function works, it can be inserted in the Doconce
+file inside the Mako directives <tt class="docutils literal"><span class="pre">&lt;%</span></tt> and <tt class="docutils literal"><span class="pre">%&gt;</span></tt>.</p>
+</div>
+<p>The Mako function for generating the entire table in LaTeX, HTML,
+and Sphinx format goes as follows.</p>
+<div class="highlight-python"><pre>&lt;%
+def generate_native_table(start, end, step, no_of_columns):
+    text = ''
+    # Heading
+    if FORMAT in ("latex", "pdflatex"):
+        text += r"""\begin{quote}\begin{tabular}{%s}
+\hline
+ \\
+\hline
+""" % ('c'*no_of_columns)
+    elif FORMAT in ("sphinx", "rst", "html"):
+        text += '&lt;p&gt;&lt;table border="1"&gt;\n&lt;tr&gt;'
+    fig_counter = 0
+    latex_columns = []
+    for counter in range(start, end+1, step):
+        fig_counter += 1
+        if FORMAT in ("latex", "pdflatex"):
+            latex_columns.append(r'\includegraphics[width=2cm]'\
+                    '{mov/wave_frames/frame_%04d.png}\n' % counter)
+        elif FORMAT in ("sphinx", "rst", "html"):
+            text += '&lt;td align="center"&gt; '\
+            '&lt;a href="mov/wave_frames/frame_%04d.png"&gt;'\
+            '&lt;img src="mov/wave_frames/frame_%04d.png" width="300"&gt;'\
+            '&lt;/a&gt; &lt;/td&gt;\n' % (counter, counter)
+
+        if fig_counter % no_of_columns == 0:  # new row
+            if FORMAT in ("latex", "pdflatex"):
+                text += '   ' + ' &amp; '.join(latex_columns)
+                if counter != end:
+                    text += r'\\' + '\n'
+                latex_columns = []
+            elif FORMAT in ("sphinx", "rst", "html"):
+                text += '&lt;/tr&gt;\n'
+                if counter != end:
+                    text += '&lt;tr&gt;\n'  # begin new row
+    # Footer
+    if FORMAT in ("latex", "pdflatex"):
+        text += r"""\hline
+\end{tabular}\end{quote}
+"""
+    elif FORMAT in ("sphinx", "rst", "html"):
+        text += '&lt;/table&gt;\n'
+    if FORMAT in ("sphinx", "rst"):
+        # Wrap raw HTML code
+        lines = text.splitlines()
+        text = '\n.. raw:: html\n\n'
+        for line in lines:
+            text += '    ' + line + '\n'
+        text += '\n'
+    return text
+%&gt;
+
+## Example on call in Doconce source
+${generate_native_table(80, 120, 5, 3)}</pre>
+</div>
+<p>One can easily add support for various other formats, such as <tt class="docutils literal"><span class="pre">pandoc</span></tt>,
+<tt class="docutils literal"><span class="pre">gwiki</span></tt>, <tt class="docutils literal"><span class="pre">mwiki</span></tt>, etc.
+The output in the current format is shown below.</p>
+<p><table border="1">
+<tr><td align="center"> <a href="mov/wave_frames/frame_0080.png"><img src="mov/wave_frames/frame_0080.png" width="300"></a> </td>
+<td align="center"> <a href="mov/wave_frames/frame_0085.png"><img src="mov/wave_frames/frame_0085.png" width="300"></a> </td>
+<td align="center"> <a href="mov/wave_frames/frame_0090.png"><img src="mov/wave_frames/frame_0090.png" width="300"></a> </td>
+</tr>
+<tr>
+<td align="center"> <a href="mov/wave_frames/frame_0095.png"><img src="mov/wave_frames/frame_0095.png" width="300"></a> </td>
+<td align="center"> <a href="mov/wave_frames/frame_0100.png"><img src="mov/wave_frames/frame_0100.png" width="300"></a> </td>
+<td align="center"> <a href="mov/wave_frames/frame_0105.png"><img src="mov/wave_frames/frame_0105.png" width="300"></a> </td>
+</tr>
+<tr>
+<td align="center"> <a href="mov/wave_frames/frame_0110.png"><img src="mov/wave_frames/frame_0110.png" width="300"></a> </td>
+<td align="center"> <a href="mov/wave_frames/frame_0115.png"><img src="mov/wave_frames/frame_0115.png" width="300"></a> </td>
+<td align="center"> <a href="mov/wave_frames/frame_0120.png"><img src="mov/wave_frames/frame_0120.png" width="300"></a> </td>
+</tr>
+</table></div>
+<div class="section" id="generating-the-entire-table-in-a-native-format-as-a-post-process">
+<h3>Generating the Entire Table in a Native Format as a Post Process<a class="headerlink" href="#generating-the-entire-table-in-a-native-format-as-a-post-process" title="Permalink to this headline">¶</a></h3>
+<p>Instead of using Mako as shown above, we can invent our own syntax line
+for the table with figures and apply a script to the Doconce output file
+to replace the special line with proper native code.
+We use the same <tt class="docutils literal"><span class="pre">generate_native_table</span></tt> function as above, but this
+time in a Python script. In the Doconce source we place a line</p>
+<div class="highlight-text"><div class="highlight"><pre>@@@FIGTABLE 80 120 5 3
+</pre></div>
+</div>
+<p>which is meant to generate a table with figures where the numbers
+correspond to arguments in the <tt class="docutils literal"><span class="pre">generative_native_table</span></tt> function.</p>
+<p>Suppose we have run</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; doconce format sphinx mydoc</span>
+</pre></div>
+</div>
+<p>In the resulting <tt class="docutils literal"><span class="pre">mydoc.rst</span></tt> file we have the magic line <tt class="docutils literal"><span class="pre">&#64;&#64;&#64;FIGTABLE</span> <span class="pre">...</span></tt>.
+Such lines can now be processed in our Python script:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># read mydoc.rst into the string filestr</span>
+<span class="n">pattern</span> <span class="o">=</span> <span class="s">r&#39;@@@FIGTABLE (.+)&#39;</span>
+<span class="k">def</span> <span class="nf">replacement</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+    <span class="c"># m is a MatchObject</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="c"># Convert args to a tuple of words with right type</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="p">[</span><span class="nb">eval</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span> <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">args</span><span class="o">.</span><span class="n">split</span><span class="p">()]</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">generate_native_table</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+
+<span class="n">filestr</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">filestr</span><span class="p">,</span> <span class="n">replacement</span><span class="p">)</span>
+<span class="c"># write filestr back to manual.rst</span>
+</pre></div>
+</div>
+<p>This code makes use of a function for creating the replacement string
+for the <tt class="docutils literal"><span class="pre">re.sub</span></tt> command and demands a knowledge of regular expression
+syntax and the workings or <tt class="docutils literal"><span class="pre">re.sub</span></tt>. A more plain Python version
+goes like this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># read mydoc.rst into the string filestr</span>
+<span class="n">lines</span> <span class="o">=</span> <span class="n">filestr</span><span class="o">.</span><span class="n">splitsplines</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">lines</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="n">lines</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&#39;@@@FIGTABLE&#39;</span><span class="p">):</span>
+        <span class="n">args</span> <span class="o">=</span> <span class="n">lines</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">10</span><span class="p">:]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="c"># Convert args to a tuple of words with right type</span>
+        <span class="n">args</span> <span class="o">=</span> <span class="p">[</span><span class="nb">eval</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span> <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">args</span><span class="o">.</span><span class="n">split</span><span class="p">()]</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">generate_native_table</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+        <span class="n">lines</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">text</span>
+<span class="n">filestr</span> <span class="o">=</span> <span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>  <span class="c"># make one string from all separate lines</span>
+<span class="c"># write filestr back to manual.rst</span>
+</pre></div>
+</div>
+<div class="admonition-recommendation admonition">
+<p class="first admonition-title">Recommendation</p>
+<p class="last">This latter way of inserting specialized native text after Doconce
+has generated the output file is easier than using Mako and usually
+also safer.</p>
+</div>
+<div class="admonition-lesson-learned admonition">
+<p class="first admonition-title">Lesson Learned</p>
+<p class="last">The above examples show different techniques for extending the
+Doconce capabilities. The ideas are not restricted to Doconce: using
+Mako as a preprocessing step or inserting &#8220;magic&#8221; lines that you
+can later substitute by a script is possible in all types of
+ASCII-based documents, e.g., LaTeX, Sphinx, and Markdown.</p>
+</div>
+</div>
 </div>
 <div class="section" id="example-defining-a-theorem-environment">
 <span id="manual-theorem-envir"></span><h2>Example: Defining a Theorem Environment<a class="headerlink" href="#example-defining-a-theorem-environment" title="Permalink to this headline">¶</a></h2>
@@ -4980,7 +5369,8 @@ achievement.
 <p>Even better, HTML output looks nice as well.</p>
 <p>Note that Doconce supports fancy environments for verbatim code via
 the <tt class="docutils literal"><span class="pre">ptex2tex</span></tt> program with all its flexibility for choosing environments.
-Also <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">ptex2tex</span></tt> has some flexibility for typesetting computer code.</p>
+Also <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">ptex2tex</span></tt> has quite some flexibility for typesetting
+computer code.</p>
 </div>
 <div class="section" id="tools-for-writing-doconce-documents">
 <h2>Tools for Writing Doconce Documents<a class="headerlink" href="#tools-for-writing-doconce-documents" title="Permalink to this headline">¶</a></h2>
@@ -5080,50 +5470,63 @@ the iterations.</td>
 </div>
 <div class="section" id="references">
 <h1>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h1>
+<div class="admonition-note admonition">
+<p class="first admonition-title">Note</p>
+<p class="last">The references below are just for illustrating and testing citation
+syntax and not references for explaining parts of the text.</p>
+</div>
 <table class="docutils citation" frame="void" id="ref1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[Ref1]</td><td><em>(<a class="fn-backref" href="#id8">1</a>, <a class="fn-backref" href="#id13">2</a>)</em> <strong>H. P. Langtangen and G. Pedersen</strong>. Propagation of Large Destructive Waves,
+<tr><td class="label">[Ref1]</td><td><em>(<a class="fn-backref" href="#id7">1</a>, <a class="fn-backref" href="#id9">2</a>)</em> [Ref1]. <strong>H. P. Langtangen</strong>,
+A Document for Testing Doconce,
+<a class="reference external" href="http://hplgit.github.io/doconce/test/demo_testdoc.html">http://hplgit.github.io/doconce/test/demo_testdoc.html</a>.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="ref2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[Ref2]</td><td><em>(<a class="fn-backref" href="#id11">1</a>, <a class="fn-backref" href="#id16">2</a>)</em> <strong>H. P. Langtangen and G. Pedersen</strong>. Propagation of Large Destructive Waves,
 <em>International Journal of Applied Mechanics and Engineering</em>,
 7(1),
 pp. 187-204,
 2002.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="ref2" rules="none">
+<table class="docutils citation" frame="void" id="ref3" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id9">[Ref2]</a></td><td><strong>H. P. Langtangen, K.-A. Mardal and R. Winther</strong>. Numerical Methods for Incompressible Viscous Flow,
+<tr><td class="label">[Ref3]</td><td><em>(<a class="fn-backref" href="#id12">1</a>, <a class="fn-backref" href="#id18">2</a>, <a class="fn-backref" href="#id19">3</a>)</em> <strong>H. P. Langtangen, K.-A. Mardal and R. Winther</strong>. Numerical Methods for Incompressible Viscous Flow,
 <em>Advances in Water Resources</em>,
 25,
 pp. 1125-1146,
 2002.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="ref3" rules="none">
+<table class="docutils citation" frame="void" id="ref4" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id10">[Ref3]</a></td><td><strong>H. P. Langtangen</strong>. Numerical Solution of First Passage Problems in Random Vibrations,
+<tr><td class="label"><a class="fn-backref" href="#id13">[Ref4]</a></td><td><strong>H. P. Langtangen</strong>. Numerical Solution of First Passage Problems in Random Vibrations,
 <em>SIAM Journal of Scientific and Statistical Computing</em>,
 15,
 pp. 997-996,
 1994.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="ref4" rules="none">
+<table class="docutils citation" frame="void" id="ref5" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[Ref4]</td><td><em>(<a class="fn-backref" href="#id11">1</a>, <a class="fn-backref" href="#id14">2</a>)</em> <strong>K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen</strong>. Software Tools for Multigrid Methods,
+<tr><td class="label">[Ref5]</td><td><em>(<a class="fn-backref" href="#id14">1</a>, <a class="fn-backref" href="#id17">2</a>)</em> <strong>K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen</strong>. Software Tools for Multigrid Methods,
 Advanced Topics in Computational Partial Differential Equations &#8211; Numerical Methods and Diffpack Programming,
 edited by <strong>H. P. Langtangen and A. Tveito</strong>,
 Springer,
 2003.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="ref5" rules="none">
+<table class="docutils citation" frame="void" id="ref6" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id12">[Ref5]</a></td><td><strong>H. P. Langtangen</strong>. The FEMDEQS Program System,
+<tr><td class="label"><a class="fn-backref" href="#id15">[Ref6]</a></td><td><strong>H. P. Langtangen</strong>. The FEMDEQS Program System,
 <em>Department of Mathematics, University of Oslo</em>,
 1989.</td></tr>
 </tbody>
@@ -5156,7 +5559,7 @@ Springer,
 <li><a class="reference internal" href="#sphinx-output">Sphinx Output</a></li>
 <li><a class="reference internal" href="#markdown-and-pandoc-output">Markdown and Pandoc Output</a></li>
 <li><a class="reference internal" href="#epydoc-output">Epydoc Output</a></li>
-<li><a class="reference internal" href="#the-doconce-diff-command">The <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">diff</span></tt> command</a></li>
+<li><a class="reference internal" href="#analyzing-file-differences">Analyzing file differences</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#quick-debian-ubuntu-install">Quick Debian/Ubuntu Install</a></li>
@@ -5214,6 +5617,7 @@ Springer,
 </ul>
 </li>
 <li><a class="reference internal" href="#copying-computer-code-from-source-files">Copying Computer Code from Source Files</a></li>
+<li><a class="reference internal" href="#inserting-the-output-from-operating-system-commands">Inserting the Output from Operating System Commands</a></li>
 <li><a class="reference internal" href="#inline-tagging">Inline Tagging</a><ul>
 <li><a class="reference internal" href="#emphasized-words">Emphasized Words</a></li>
 <li><a class="reference internal" href="#inline-verbatim-text">Inline Verbatim Text</a></li>
@@ -5268,6 +5672,13 @@ Springer,
 </li>
 <li><a class="reference internal" href="#mako-programming">Mako Programming</a><ul>
 <li><a class="reference internal" href="#the-basics-of-mako">The Basics of Mako</a></li>
+<li><a class="reference internal" href="#example-extending-tables-to-handle-figures">Example: Extending Tables to Handle Figures</a><ul>
+<li><a class="reference internal" href="#solution-for-latex-and-html">Solution for LaTeX and HTML</a></li>
+<li><a class="reference internal" href="#generating-the-entire-table">Generating the Entire Table</a></li>
+<li><a class="reference internal" href="#generating-the-entire-table-in-a-native-format-via-mako">Generating the Entire Table in a Native Format via Mako</a></li>
+<li><a class="reference internal" href="#generating-the-entire-table-in-a-native-format-as-a-post-process">Generating the Entire Table in a Native Format as a Post Process</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#example-defining-a-theorem-environment">Example: Defining a Theorem Environment</a></li>
 <li><a class="reference internal" href="#tools-for-writing-doconce-documents">Tools for Writing Doconce Documents</a></li>
 <li><a class="reference internal" href="#debugging">Debugging</a></li>

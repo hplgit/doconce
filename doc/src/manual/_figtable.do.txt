@@ -1,0 +1,132 @@
+Exemplify how Mako can be used to created tailored syntax for
+inserting figures in a table.
+
+===== Solution 1: Mako Function for LaTeX and HTML Cells =====
+
+<%
+def tfig(fileno):
+    p = 'mov/wave_frames/frame_0' + fileno + '.png'  # path
+    if FORMAT in ("latex", "pdflatex"):
+        text = r'\includegraphics[width=2cm]{%s}' % p
+    elif FORMAT == "html":
+        text = '<a href="%s"><img src="%s" width="300"></a>' % (p, p)
+    else:
+        text = '"`%s`": "%s"' % (fileno, p)  # plain link
+    return text
+%>
+
+
+# Use empty heading (but the heading must be there!)
+
+|-------------------------------------------------|
+|               |                |                |
+|-------c---------------c----------------c--------|
+|${tfig('080')} | ${tfig('085')} | ${tfig('090')} |
+|${tfig('095')} | ${tfig('100')} | ${tfig('105')} |
+|${tfig('110')} | ${tfig('115')} | ${tfig('120')} |
+|-------------------------------------------------|
+
+===== Solution 2: Mako Function for the Entire Table in Doconce Format =====
+
+<%
+def generate_doconce_table(start, end, step, no_of_columns):
+    # Heading
+    text = ''
+    horizontal_rule = '|----|\n'
+    text += horizontal_rule
+    text += '|  '*no_of_columns + '|\n'
+    text += horizontal_rule
+    fig_counter = 0
+    for counter in range(start, end+1, step):
+        fig_counter += 1
+        text += '| ' + tfig('%03d' % counter) + ' '
+        if fig_counter % no_of_columns == 0:
+            text += '|\n'
+    text += horizontal_rule
+    return text
+%>
+
+${generate_doconce_table(80, 120, 5, 3)}
+
+===== Solution 3: Mako Function for the Entire Table in a Native Format =====
+
+<%
+def generate_native_table(start, end, step, no_of_columns):
+    text = ''
+    # Heading
+    if FORMAT in ("latex", "pdflatex"):
+        \begin{quote}\begin{tabular}{ccc}
+\hline
+ \\
+\hline
+
+    horizontal_rule = '|----|\n'
+    text += horizontal_rule
+    text += '|  '*no_of_columns + '|\n'
+    text += horizontal_rule
+    fig_counter = 0
+    for counter in range(start, end+1, step):
+        fig_counter += 1
+        text += '| ' + tfig('%03d' % counter) + ' '
+        if fig_counter % no_of_columns == 0:
+            text += '|\n'
+    text += horizontal_rule
+    return text
+%>
+
+${generate_table(80, 120, 5, 3)}
+
+<%
+def generate_native_table(start, end, step, no_of_columns):
+    text = ''
+    # Heading
+    if FORMAT in ("latex", "pdflatex"):
+        text += r"""\begin{quote}\begin{tabular}{%s}
+\hline
+ \\
+\hline
+""" % ('c'*no_of_columns)
+    elif FORMAT in ("sphinx", "rst", "html"):
+        text += '<p><table border="1">\n<tr>'
+    fig_counter = 0
+    latex_columns = []
+    for counter in range(start, end+1, step):
+        fig_counter += 1
+        if FORMAT in ("latex", "pdflatex"):
+            latex_columns.append(r'\includegraphics[width=2cm]'\
+                    '{mov/wave_frames/frame_%04d.png}\n' % counter)
+        elif FORMAT in ("sphinx", "rst", "html"):
+            text += '<td align="center"> '\
+            '<a href="mov/wave_frames/frame_%04d.png">'\
+            '<img src="mov/wave_frames/frame_%04d.png" width="300">'\
+            '</a> </td>\n' % (counter, counter)
+
+        if fig_counter % no_of_columns == 0:  # new row
+            if FORMAT in ("latex", "pdflatex"):
+                text += '   ' + ' & '.join(latex_columns)
+                if counter != end:
+                    text += r'\\' + '\n'
+                latex_columns = []
+            elif FORMAT in ("sphinx", "rst", "html"):
+                text += '</tr>\n'
+                if counter != end:
+                    text += '<tr>\n'  # begin new row
+    # Footer
+    if FORMAT in ("latex", "pdflatex"):
+        text += r"""\hline
+\end{tabular}\end{quote}
+"""
+    elif FORMAT in ("sphinx", "rst", "html"):
+        text += '</table>\n'
+    if FORMAT in ("sphinx", "rst"):
+        # Wrap raw HTML code
+        lines = text.splitlines()
+        text = '\n.. raw html::\n\n'
+        for line in lines:
+            text += '    ' + line + '\n'
+        text += '\n'
+    return text
+%>
+
+${generate_native_table(80, 120, 5, 3)}
+

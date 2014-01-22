@@ -5,7 +5,7 @@ Doconce Description
 ===================
 
 :Author: Hans Petter Langtangen
-:Date: Dec 27, 2013
+:Date: Jan 10, 2014
 
 .. lines beginning with # are doconce comment lines
 
@@ -148,6 +148,9 @@ software. However, if you want other formats as output
 as preprocesors, spellcheck, file differences, bibliographies,
 and so on, the software below must be installed.
 
+To install all needed packages on a GNU/Linux Debian system, such as
+Ubuntu, you can jump to the script in the section :ref:`install:debian:script`.
+
 .. Make a debpkg_doconce.txt file with everything that is needed on Debian
 
 
@@ -195,11 +198,12 @@ Image file handling
 ~~~~~~~~~~~~~~~~~~~
 
 Different output formats require different formats of image files.
-For example, PostScript or Encapuslated PostScript is required for ``latex``
-output, while HTML needs JPEG, GIF, or PNG formats.
-Doconce calls up programs from the ImageMagick suite for converting
-image files to a proper format if needed. The `ImageMagick suite <http://www.imagemagick.org/script/index.php>`_ can be installed on all major platforms.
-On Debian Linux (including Ubuntu) systems one can simply write
+For example, PostScript or Encapuslated PostScript is required for
+``latex`` output, while HTML needs JPEG, GIF, or PNG formats.  Doconce
+calls up programs from the ImageMagick suite for converting image
+files to a proper format if needed. The `ImageMagick suite <http://www.imagemagick.org/script/index.php>`_ can be installed on all
+major platforms.  On Debian Linux (including Ubuntu) systems one can
+simply write
 
 
 .. code-block:: console
@@ -512,8 +516,8 @@ run ``svn update``, and then ``sudo python setup.py install``. For
 Mercurial (``hg``) directories, go to the directory, run
 ``hg pull; hg update``, and then ``sudo python setup.py install``.
 
-The ``doconce diff`` command
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Analyzing file differences
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The ``doconce diff file1 file prog`` command for illustrating differences between
 two files ``file1`` and ``file2`` using the program ``prog`` requires ``prog``
@@ -535,6 +539,8 @@ appear in the table below.
 ``tkdiff.tcl``                                                                             `tkdiff <https://sourceforge.net/projects/tkdiff/>`_                                       not in Debian                                                                              
 =========================================================================================  =========================================================================================  =========================================================================================  
 
+.. _install:debian:script:
+
 Quick Debian/Ubuntu Install
 ---------------------------
 
@@ -551,19 +557,13 @@ long series of Doconce dependencies:
         # Python
         sudo apt-get install -y idle ipython python-pip python-pdftools texinfo
         
-        # These lines are only necessary for Ubuntu 12.04 to install texlive 2012
-        ubuntu_version=`lsb_release -r | awl '{print $2}'`
-        if [ $ubuntu_version = "12.04" ]; then
-          sudo add-apt-repository ppa:texlive-backports/ppa
-          sudo apt-get update
-        fi
         # LaTeX
         sudo apt-get install -y texlive texlive-extra-utils texlive-latex-extra texlive-math-extra texlive-font-utils
         # or sudo apt-get install -y texlive-full  # get everything
         sudo apt-get install -y latexdiff auctex
         
         # Image and movie tools
-        sudo apt-get install -y imagemagick netpbm mjpegtools pdftk giftrans gv evince smpeg-plaympeg mplayer totem ffmpeg libav-tools
+        sudo apt-get install -y imagemagick netpbm mjpegtools pdftk giftrans gv libav-tools libavcodec-extra-53 libx264-dev ffmpeg mencoder evince mplayer gnome-mplayer totem vlc browser-plugin-vlc
         
         # Misc
         sudo apt-get install -y ispell pandoc libreoffice unoconv libreoffice-dmaths curl a2ps wdiff meld xxdiff diffpdf kdiff3 diffuse
@@ -2234,7 +2234,7 @@ The caption may contain a label for referencing the figure.
 
 .. _fig:viz:
 
-.. figure:: fig/wave1D.png
+.. figure:: wave1D.png
    :width: 400
 
    *A wave*
@@ -3835,8 +3835,10 @@ Here is an example:
    
            % FORMAT in ("latex", "pdflatex") or HTMLMOVIE == "files":
            MOVIE: [../experiments/frame_*.png]
+           
            % else:
            MOVIE: [../experiments/movie.ogg]
+           
            % endif
    
    With the ``-DHTMLMOVIE=files`` flag, animation of individual files will
@@ -3844,6 +3846,28 @@ Here is an example:
    use of the ``movie.ogg`` in all but LaTeX formats. In HTML one will try
    to load ``movie.mp4`` (if it exists) and then ``movie.webm`` (if it exists)
    and then finally ``movie.ogg``.
+   
+   There is no way to control the number of frames per second in
+   LaTeX animations based on filename generators such as ``myframes*.png``.
+   However, with a little auto editing in a script one can control
+   the frame rates of the various movies. The rate is specified as ``2``
+   in lines on the form
+   
+   
+   .. code-block:: text
+   
+   
+           \begin{animateinline}[controls,loop]{2} % frames: f000.png -> f098.png
+   
+   Setting the rate to 12 in for this particular movie based on the
+   ``f%03.png`` files, the following ``doconce subst`` command does the job
+   in a script:
+   
+   
+   .. code-block:: text
+   
+   
+           doconce subst ',loop]{2}( .+: f000)' ',loop{12}\g<1>' mydoc.do.txt
 
 
 
@@ -3855,6 +3879,48 @@ Another type of special lines starts with ``@@@CODE`` and enables copying
 of computer code from a file directly into a verbatim environment, see
 the section :ref:`sec:verbatim:blocks` below.
 
+Inserting the Output from Operating System Commands
+---------------------------------------------------
+
+When Doconce is used to document computer program and results from
+computer code it is important to ensure that the document contains
+the latest version of the code and the corresponding output.
+The former is handled by the ``@@@CODE`` directive, while the latter
+has its own directive ``@@@OSCMD``. The syntax reads
+
+
+.. code-block:: text
+
+
+        @@@OSCMD cmd
+
+where ``cmd`` is any text that can be run in the operating system.
+The output is copied into the Doconce source. For example,
+
+
+.. code-block:: text
+
+
+        @@@OSCMD python -c 'print "Hello,\nWorld!"'
+
+results in
+
+
+.. code-block:: console
+
+        Terminal> python -c 'print "Hello,\nWorld!"'
+        Hello,
+        World!
+
+
+There is a command-line option ``--os_prompt=`` that can be used to
+set the (terminal) prompt that prefixes the command:
+
+ * ``--os_prompt=None`` results in no prompt, just the command.
+
+ * ``--os_prompt=nocmd`` results in no prompt and no command, just the output.
+
+ * ``--os_prompt=Terminal>`` is the default setting (as in the example above).
 
 .. _inline:tagging:
 
@@ -4247,10 +4313,19 @@ are to external documents declared by a comment line ``#
 Externaldocuments: testdoc, mydoc`` (usually after the title, authors,
 and date). In this case the output text is ``internal cite`` and the
 LaTeX package ``xr`` is used to handle the labels in the external documents.
-If none of the two situations above applies, the ``external``
+When referring to a complete chapter (not a section in it), which
+corresponds to a complete external document, it does not make sense
+to write out ``internal cite`` since the ``internal`` reference is a
+chapter number. In such cases, the ``internal``
+syntax can be used,
+and if the label is in another LaTeX document, the output is just ``cite``
+(rather than ``internal cite``). An example below will illustrate the use.
+For all
+output formats other than ``latex`` and ``pdflatex``, the ``external``
 text will be the output.
 
-Here is an example on a specific generalized reference:
+Here is an example on a specific generalized reference to a section
+in a document:
 
 .. code-block:: text
 
@@ -4258,11 +4333,33 @@ Here is an example on a specific generalized reference:
         As explained in
         ref[Section ref{subsec:ex}][in "Langtangen, 2012":
         "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex"
-        cite{testdoc:12}][a "section": "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex" in
-        the document "A Document for Testing Doconce": "http://hplgit.github.io/doconce/test/demo_testdoc.html"
-        cite{testdoc:12}], Doconce documents may include movies.
+        cite{Doconce:test}][a "section":
+        "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex" in
+        the document "A Document for Testing Doconce":
+        "http://hplgit.github.io/doconce/test/demo_testdoc.html"
+        cite{Doconce:test}], Doconce documents may include tables.
 
-In LaTeX, this becomes something like
+With ``latex`` or ``pdflatex`` as output, this translates to
+
+.. code-block:: text
+
+
+        As explained in
+        Section ref{subsec:ex}, Doconce documents may include tables.
+
+if the label ``{subsec:ex}`` appears in the present Doconce source, and
+otherwise
+
+.. code-block:: text
+
+
+        As explained in
+        Section ref{subsec:ex} in "Langtangen, 2012":
+        "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex"
+        cite{Doconce:test}, Doconce documents may include tables.
+
+The latter Doconce code is translated to the following
+LaTeX code:
 
 .. code-block:: text
 
@@ -4270,15 +4367,77 @@ In LaTeX, this becomes something like
         As explained in
         Section~\ref{subsec:ex} in
         \href{{http://hplgit.github.io/doconce/...}}{Langtangen, 2012}
-        \cite{testdoc:12}, Doconce documents may include movies.
+        \cite{Doconce:test}, Doconce documents may include tables.
 
-Note that there is a specific numbered reference to an external
-document, if ``subsec:ex`` is not a label in the present document,
-and that we add a citation in the usual way, but also include
-a link to the document using the name of the other or some other
-relevant link text. The link can be the same or different from
-links used in the "external" part of the reference (LaTeX cannot
-have links to local files, so a complete URL must be used).
+In a format different from ``latex`` and ``pdflatex``, the effective Doconce
+text becomes
+
+.. code-block:: text
+
+
+        As explained in
+        a "section":
+        "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex" in
+        the document "A Document for Testing Doconce":
+        "http://hplgit.github.io/doconce/test/demo_testdoc.html"
+        cite{Doconce:test}, Doconce documents may include tables.
+
+The rendered text in the current format becomes
+
+
+..
+
+    As explained in
+    a `section <http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex>`_ in
+    the document `A Document for Testing Doconce <http://hplgit.github.io/doconce/test/demo_testdoc.html>`_
+    [Ref1]_, Doconce documents may include tables.
+
+
+
+A reference to an entire external document, which is usually a chapter
+of a book if the reference is internal in the Doconce source,
+usually needs to apply the ``refch`` syntax:
+
+
+.. code-block:: text
+
+
+        As explained in
+        refch[Chapter ref{ch:testdoc}]["Langtangen, 2012":
+        "http://hplgit.github.io/doconce/test/demo_testdoc.html"
+        cite{Doconce:test}][the document
+        "A Document for Testing Doconce":
+        "http://hplgit.github.io/doconce/test/demo_testdoc.html"
+        cite{Doconce:test}], Doconce documents may include tables.
+
+The output now if ``ch:testdoc`` is not a label in the document,
+becomes in the ``latex`` and ``pdflatex`` case
+
+
+.. code-block:: text
+
+
+        As explained in
+        "Langtangen, 2012":
+        "http://hplgit.github.io/doconce/test/demo_testdoc.html"
+        cite{Doconce:test}, Doconce documents may include tables.
+
+That is, the internal reference ``Chapter ...`` is omitted since
+it is not meaningful to refer to an external document as "Chapter".
+The resulting rendered text in the current format becomes
+
+..
+
+    As explained in
+    the document
+    `A Document for Testing Doconce <http://hplgit.github.io/doconce/test/demo_testdoc.html>`_
+    [Ref1]_, Doconce documents may include tables.
+
+
+
+Note that LaTeX cannot
+have links to local files, so a complete URL on the form
+``http://...`` must be used.
 
 
 Index
@@ -4430,16 +4589,27 @@ We use the command
         cite{key}
 
 to refer to a publication with bibliographic key ``key``.
-Here is an example: [Ref1]_ discussed propagation of
-large destructive water waves, [Ref2]_ gave
-an overview of numerical methods for solvin the Navier-Stokes equations,
+Here is an example: [Ref2]_ discussed propagation of
+large destructive water waves, [Ref3]_ gave
+an overview of numerical methods for solving the Navier-Stokes equations,
 while the use of Backward Kolmogorov equations for analyzing
-random vibrations was investigated in [Ref3]_.
-The book chapter [Ref4]_ contains information on
+random vibrations was investigated in [Ref4]_.
+The book chapter [Ref5]_ contains information on
 C++ software tools for programming multigrid methods. A real retro
-reference is [Ref5]_ about a big FORTRAN package.
+reference is [Ref6]_ about a big FORTRAN package.
 Multiple references are also possible, e.g., see
-[Ref1]_ [Ref4]_.
+[Ref2]_ [Ref5]_.
+
+A LaTeX-style cite command with additional detailed reference is also possible,
+
+
+.. code-block:: text
+
+
+        cite[details]{key}
+
+for example as in [Ref3]_ (Section 2)
+or [Ref3]_ (Equation (4.2)).
 
 In LaTeX, the ``cite`` command is directly translated to the
 corresponding LaTeX version of the command with a backslash; in reST
@@ -5743,6 +5913,337 @@ Just a preliminary sketch of some Mako code (next example is better!):
         <%doc/>
 
 
+One can use Mako to extend the Doconce syntax. Two examples are given next.
+
+.. _manual:tables:wfigs:
+
+Example: Extending Tables to Handle Figures
+-------------------------------------------
+
+Doconce tables cannot contain figures, since figures must appear on
+a single line with the special syntax ``FIGURE: [file, ...]``.
+What if you want a table of thumbnail figures with hyperlinks?
+
+Solution for LaTeX and HTML
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+We first restrict the attention to LaTeX and HTML. In those cases
+we can create an ordinary table and insert a call to a Mako
+function in cells in the table to return the proper LaTeX or
+HTML code for displaying a figure.
+
+The Mako call syntax in a cell is decided to be
+``${tfig('080')}``, which insert the figure ``mov/wave_frames/frame_0080.png``.
+A 3x3 table of figures then look like
+
+
+.. code-block:: text
+
+
+        |-------------------------------------------------|
+        |               |                |                |
+        |-------c---------------c----------------c--------|
+        |${tfig('080')} | ${tfig('085')} | ${tfig('090')} |
+        |${tfig('095')} | ${tfig('100')} | ${tfig('105')} |
+        |${tfig('110')} | ${tfig('115')} | ${tfig('120')} |
+        |-------------------------------------------------|
+
+We do not want a heading, just a grid of figures, but a heading is
+required in Doconce figures, so the solution is to provide
+empty column names in the heading. This solution
+gives acceptable results in HTML and LaTeX.
+
+The Mako function can be a plain Python function:
+
+
+.. code-block:: python
+
+        <%
+        def tfig(fileno):
+            p = 'mov/wave_frames/frame_0' + fileno + '.png'  # path
+            if FORMAT in ("latex", "pdflatex"):
+                text = r'\includegraphics[width=2cm]{%s}' % p
+            elif FORMAT == "html":
+                text = '<a href="%s"><img src="%s" width="300"></a>' % (p, p)
+            else:
+                text = '"`%s`": "%s"' % (fileno, p)  # plain link
+            return text
+        %>
+
+Note that for other formats than LaTeX and HTML we just return a link to
+the figure.
+
+
+.. note::
+   A corresponding solution
+   for Sphinx will not work because inline figures in Sphinx has
+   a syntax with pipe symbols ('|') that interfer with the
+   column separator in tables in Doconce. Returning the HTML
+   code in case of Sphinx will just display that HTML code
+   in the cells, not the rendered HTML code. A solution that
+   includes Sphinx is provided later.
+
+
+
+
+The resulting table is displayed below.
+
+.. @@@FIGTABLE 3x3 080 085 090 095 100 105 110 115 120
+
+
+.. Cannot just have the Mako code here and generate the table
+
+.. because this manual cannot be run with Mako (--no_mako
+
+.. is used in make.sh).
+
+.. The code below is generated by having the Mako function
+
+.. and table in a separate file _figtable.do.txt and then
+
+.. manually generating the various formats and inserting
+
+.. them here.
+
+
+=======================================  =======================================  =======================================  
+                                                                                                                           
+=======================================  =======================================  =======================================  
+`080 <mov/wave_frames/frame_0080.png>`_  `085 <mov/wave_frames/frame_0085.png>`_  `090 <mov/wave_frames/frame_0090.png>`_  
+`095 <mov/wave_frames/frame_0095.png>`_  `100 <mov/wave_frames/frame_0100.png>`_  `105 <mov/wave_frames/frame_0105.png>`_  
+`110 <mov/wave_frames/frame_0110.png>`_  `115 <mov/wave_frames/frame_0115.png>`_  `120 <mov/wave_frames/frame_0120.png>`_  
+=======================================  =======================================  =======================================  
+
+Generating the Entire Table
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The specific structure of this table also suggest using Mako
+to generate the entire table:
+
+
+.. code-block:: python
+
+        <%
+        def generate_table(start, end, step, no_of_columns):
+            # Heading
+            text = ''
+            horizontal_rule = '|----|\n'
+            text += horizontal_rule
+            text += '|  '*no_of_columns + '|\n'
+            text += horizontal_rule
+            fig_counter = 0
+            for counter in range(start, end+1, step):
+                fig_counter += 1
+                text += '| ' + tfig('%03d' % counter) + ' '
+                if fig_counter % no_of_columns == 0:
+                    text += '|\n'
+            text += horizontal_rule
+            return text
+        %>
+        
+        ${generate_table(80, 120, 5, 3)}
+
+The result is a table like the one above, except that the horizontal rules
+and the heading are very short lines (but this is legal syntax -
+it just does not look appealing in the Doconce source).
+
+Generating the Entire Table in a Native Format via Mako
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To allow Sphinx and other formats, it is best to generate the entire
+table. This can be done either by a Mako function or as a post
+process after Doconce has created the output file. We show the Mako
+solution here.
+
+
+.. admonition:: Tip
+
+   A pure Python function Mako is easiest to develop in a seperate
+   Python program file because Python has better error messages
+   than Mako. Also, Python has debugging facilities that make the
+   development of the code much more efficient than writing in Mako.
+   When the Python function works, it can be inserted in the Doconce
+   file inside the Mako directives ``<%`` and ``%>``.
+
+
+
+
+The Mako function for generating the entire table in LaTeX, HTML,
+and Sphinx format goes as follows.
+
+
+.. code-block:: python
+
+        <%
+        def generate_native_table(start, end, step, no_of_columns):
+            text = ''
+            # Heading
+            if FORMAT in ("latex", "pdflatex"):
+                text += r"""\begin{quote}\begin{tabular}{%s}
+        \hline
+         \\
+        \hline
+        """ % ('c'*no_of_columns)
+            elif FORMAT in ("sphinx", "rst", "html"):
+                text += '<p><table border="1">\n<tr>'
+            fig_counter = 0
+            latex_columns = []
+            for counter in range(start, end+1, step):
+                fig_counter += 1
+                if FORMAT in ("latex", "pdflatex"):
+                    latex_columns.append(r'\includegraphics[width=2cm]'\
+                            '{mov/wave_frames/frame_%04d.png}\n' % counter)
+                elif FORMAT in ("sphinx", "rst", "html"):
+                    text += '<td align="center"> '\
+                    '<a href="mov/wave_frames/frame_%04d.png">'\
+                    '<img src="mov/wave_frames/frame_%04d.png" width="300">'\
+                    '</a> </td>\n' % (counter, counter)
+        
+                if fig_counter % no_of_columns == 0:  # new row
+                    if FORMAT in ("latex", "pdflatex"):
+                        text += '   ' + ' & '.join(latex_columns)
+                        if counter != end:
+                            text += r'\\' + '\n'
+                        latex_columns = []
+                    elif FORMAT in ("sphinx", "rst", "html"):
+                        text += '</tr>\n'
+                        if counter != end:
+                            text += '<tr>\n'  # begin new row
+            # Footer
+            if FORMAT in ("latex", "pdflatex"):
+                text += r"""\hline
+        \end{tabular}\end{quote}
+        """
+            elif FORMAT in ("sphinx", "rst", "html"):
+                text += '</table>\n'
+            if FORMAT in ("sphinx", "rst"):
+                # Wrap raw HTML code
+                lines = text.splitlines()
+                text = '\n.. raw:: html\n\n'
+                for line in lines:
+                    text += '    ' + line + '\n'
+                text += '\n'
+            return text
+        %>
+        
+        ## Example on call in Doconce source
+        ${generate_native_table(80, 120, 5, 3)}
+
+One can easily add support for various other formats, such as ``pandoc``,
+``gwiki``, ``mwiki``, etc.
+The output in the current format is shown below.
+
+.. begin sphinx-figtable-in-html
+
+.. raw:: html
+
+    <p><table border="1">
+    <tr><td align="center"> <a href="mov/wave_frames/frame_0080.png"><img src="mov/wave_frames/frame_0080.png" width="300"></a> </td>
+    <td align="center"> <a href="mov/wave_frames/frame_0085.png"><img src="mov/wave_frames/frame_0085.png" width="300"></a> </td>
+    <td align="center"> <a href="mov/wave_frames/frame_0090.png"><img src="mov/wave_frames/frame_0090.png" width="300"></a> </td>
+    </tr>
+    <tr>
+    <td align="center"> <a href="mov/wave_frames/frame_0095.png"><img src="mov/wave_frames/frame_0095.png" width="300"></a> </td>
+    <td align="center"> <a href="mov/wave_frames/frame_0100.png"><img src="mov/wave_frames/frame_0100.png" width="300"></a> </td>
+    <td align="center"> <a href="mov/wave_frames/frame_0105.png"><img src="mov/wave_frames/frame_0105.png" width="300"></a> </td>
+    </tr>
+    <tr>
+    <td align="center"> <a href="mov/wave_frames/frame_0110.png"><img src="mov/wave_frames/frame_0110.png" width="300"></a> </td>
+    <td align="center"> <a href="mov/wave_frames/frame_0115.png"><img src="mov/wave_frames/frame_0115.png" width="300"></a> </td>
+    <td align="center"> <a href="mov/wave_frames/frame_0120.png"><img src="mov/wave_frames/frame_0120.png" width="300"></a> </td>
+    </tr>
+    </table>
+
+.. end sphinx-figtable-in-html
+
+
+
+Generating the Entire Table in a Native Format as a Post Process
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Instead of using Mako as shown above, we can invent our own syntax line
+for the table with figures and apply a script to the Doconce output file
+to replace the special line with proper native code.
+We use the same ``generate_native_table`` function as above, but this
+time in a Python script. In the Doconce source we place a line
+
+
+.. code-block:: text
+
+
+        @@@FIGTABLE 80 120 5 3
+
+which is meant to generate a table with figures where the numbers
+correspond to arguments in the ``generative_native_table`` function.
+
+Suppose we have run
+
+
+.. code-block:: console
+
+        Terminal> doconce format sphinx mydoc
+
+In the resulting ``mydoc.rst`` file we have the magic line ``@@@FIGTABLE ...``.
+Such lines can now be processed in our Python script:
+
+
+.. code-block:: python
+
+        # read mydoc.rst into the string filestr
+        pattern = r'@@@FIGTABLE (.+)'
+        def replacement(m):
+            # m is a MatchObject
+            args = m.group(1)
+            # Convert args to a tuple of words with right type
+            args = [eval(arg) for arg in args.split()]
+            text = generate_native_table(*args)
+        
+        filestr = re.sub(pattern, filestr, replacement)
+        # write filestr back to manual.rst
+
+This code makes use of a function for creating the replacement string
+for the ``re.sub`` command and demands a knowledge of regular expression
+syntax and the workings or ``re.sub``. A more plain Python version
+goes like this:
+
+
+.. code-block:: python
+
+        # read mydoc.rst into the string filestr
+        lines = filestr.splitsplines()
+        for i in range(len(lines)):
+            if lines[i].startswith('@@@FIGTABLE'):
+                args = lines[i][10:].strip()
+                # Convert args to a tuple of words with right type
+                args = [eval(arg) for arg in args.split()]
+                text = generate_native_table(*args)
+                lines[i] = text
+        filestr = '\n'.join(lines)  # make one string from all separate lines
+        # write filestr back to manual.rst
+
+
+
+.. admonition:: Recommendation
+
+   This latter way of inserting specialized native text after Doconce
+   has generated the output file is easier than using Mako and usually
+   also safer.
+
+
+
+
+
+.. admonition:: Lesson Learned
+
+   The above examples show different techniques for extending the
+   Doconce capabilities. The ideas are not restricted to Doconce: using
+   Mako as a preprocessing step or inserting "magic" lines that you
+   can later substitute by a script is possible in all types of
+   ASCII-based documents, e.g., LaTeX, Sphinx, and Markdown.
+
+
+
+
 .. _manual:theorem:envir:
 
 Example: Defining a Theorem Environment
@@ -5859,7 +6360,8 @@ Even better, HTML output looks nice as well.
 
 Note that Doconce supports fancy environments for verbatim code via
 the ``ptex2tex`` program with all its flexibility for choosing environments.
-Also ``doconce ptex2tex`` has some flexibility for typesetting computer code.
+Also ``doconce ptex2tex`` has quite some flexibility for typesetting
+computer code.
 
 
 
@@ -5978,37 +6480,52 @@ and Sphinx just typeset the list as a list with keywords.
 References
 ==========
 
+
+.. admonition:: Note
+
+   The references below are just for illustrating and testing citation
+   syntax and not references for explaining parts of the text.
+
+
+
+
 .. [Ref1]
+   [Ref1]. **H. P. Langtangen**,
+   A Document for Testing Doconce,
+   `http://hplgit.github.io/doconce/test/demo_testdoc.html <http://hplgit.github.io/doconce/test/demo_testdoc.html>`_.
+
+.. [Ref2]
    **H. P. Langtangen and G. Pedersen**. Propagation of Large Destructive Waves,
    *International Journal of Applied Mechanics and Engineering*,
    7(1),
    pp. 187-204,
    2002.
 
-.. [Ref2]
+.. [Ref3]
    **H. P. Langtangen, K.-A. Mardal and R. Winther**. Numerical Methods for Incompressible Viscous Flow,
    *Advances in Water Resources*,
    25,
    pp. 1125-1146,
    2002.
 
-.. [Ref3]
+.. [Ref4]
    **H. P. Langtangen**. Numerical Solution of First Passage Problems in Random Vibrations,
    *SIAM Journal of Scientific and Statistical Computing*,
    15,
    pp. 997-996,
    1994.
 
-.. [Ref4]
+.. [Ref5]
    **K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen**. Software Tools for Multigrid Methods,
    Advanced Topics in Computational Partial Differential Equations -- Numerical Methods and Diffpack Programming,
    edited by **H. P. Langtangen and A. Tveito**,
    Springer,
    2003.
 
-.. [Ref5]
+.. [Ref6]
    **H. P. Langtangen**. The FEMDEQS Program System,
    *Department of Mathematics, University of Oslo*,
    1989.
+
 
 

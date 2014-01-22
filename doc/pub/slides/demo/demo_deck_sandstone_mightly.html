@@ -75,6 +75,7 @@ git://github.com/groovecoder/deckjs-theme-mozilla.git
 <link rel="stylesheet" href="deck.js/themes/style/sandstone.light.css">
 <link rel="stylesheet" href="deck.js/themes/style/sandstone.mdn.css">
 <link rel="stylesheet" href="deck.js/themes/style/sandstone.nightly.css">
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.cbc.css">
 
 git://github.com/barraq/deck.ext.js.git
 <link rel="stylesheet" href="deck.js/themes/style/beamer.css">
@@ -136,6 +137,12 @@ td.padding {
 
 <body class="deck-container">
 
+<header>
+<!-- Here goes a potential header -->
+</header>
+
+<!-- do not use the article tag - it gives strange sizings -->
+
 
 
 
@@ -183,7 +190,7 @@ MathJax.Hub.Config({
 <center>[1] <b style="font-weight: bold">Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b style="font-weight: bold">Department of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>Nov 28, 2013</h4></center> <!-- date -->
+<center><h4>Jan 8, 2014</h4></center> <!-- date -->
 <p>
 <center><p><img src="fig/CN_logo.png" align="bottom" width=300></p></center>
 
@@ -350,7 +357,7 @@ The numerical method is implemented in a Python function:
     <span style="color: #fb660a; font-weight: bold">for</span> <span style="color: #ffffff">n</span> <span style="color: #ffffff">in</span> <span style="color: #ffffff">range(</span><span style="color: #0086f7; font-weight: bold">0</span><span style="color: #ffffff">,</span> <span style="color: #ffffff">N):</span>    <span style="color: #008800; font-style: italic; background-color: #0f140f"># n=0,1,...,N-1</span>
         <span style="color: #ffffff">u[n+</span><span style="color: #0086f7; font-weight: bold">1</span><span style="color: #ffffff">]</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">(</span><span style="color: #0086f7; font-weight: bold">1</span> <span style="color: #ffffff">-</span> <span style="color: #ffffff">(</span><span style="color: #0086f7; font-weight: bold">1</span><span style="color: #ffffff">-theta)*a*dt)/(</span><span style="color: #0086f7; font-weight: bold">1</span> <span style="color: #ffffff">+</span> <span style="color: #ffffff">theta*dt*a)*u[n]</span>
     <span style="color: #fb660a; font-weight: bold">return</span> <span style="color: #ffffff">u,</span> <span style="color: #ffffff">t</span>
-</code></pre></div>
+</pre></div>
 <p>
 
 </section>
@@ -419,6 +426,11 @@ qualitatively correct results.
 
 
 
+
+<footer>
+<!-- Here goes a footer -->
+</footer>
+
 <!-- Begin extension snippets. Add or remove as needed. -->
 
 <!-- deck.navigation snippet -->
@@ -450,7 +462,7 @@ qualitatively correct results.
 
 
 <!-- Required JS files. -->
-<script src="deck.js/jquery-1.7.2.min.js"></script>
+<script src="deck.js/jquery.min.js"></script>
 <script src="deck.js/core/deck.core.js"></script>
 
 <!-- Extension JS files. Add or remove as needed. -->
@@ -466,8 +478,8 @@ qualitatively correct results.
 <!-- From https://github.com/mikeharris100/deck.pointer.js -->
 <script src="deck.js/extensions/pointer/deck.pointer.js"></script>
 
-<!-- From https://github.com/stvnwrgs/presenterview -->
-<script type="text/javascript" src="deck.js/extensions/presenterview/deck.presenterview.js"></script>
+<!-- From https://github.com/stvnwrgs/presenterview
+<script type="text/javascript" src="deck.js/extensions/presenterview/deck.presenterview.js"></script> -->
 
 <!-- From https://github.com/nemec/deck.annotate.js
 <script type="text/javascript" src="deck.js/extensions/deck.annotate.js/deck.annotate.js"></script>

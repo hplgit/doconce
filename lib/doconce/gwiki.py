@@ -92,9 +92,17 @@ def gwiki_table(table):
         else:
             headline = False
 
+        empty_row = max([len(column.strip())
+                         for column in row]) == 0
+        if empty_row:
+            continue
+
         for column, w in zip(row, column_width):
             if headline:
-                c = ' %s ' % (('_'+ column + '_').center(w))
+                if column:
+                    c = ' %s ' % (('_'+ column + '_').center(w))
+                else:
+                    c = ''
             else:
                 c = ' %s ' % column.ljust(w)
             s += ' || %s ' % c

@@ -37,14 +37,26 @@ def _abort():
         print 'Abort! (add --no_abort on the command line to avoid this abortion)'
         sys.exit(1)
 
+def internet_access():
+    """Return True if internet is on, else False."""
+    import urllib2
+    try:
+        # Check google.com with numerical IP-address (which avoids
+        # DNS loopup) and set timeout to 1 sec so this does not
+        # take much time (google.com should respond quickly)
+       response=urllib2.urlopen('http://74.125.228.100', timeout=1)
+       return True
+    except urllib2.URLError as err:
+        pass
+    return False
+
 def safe_join(lines, delimiter):
     try:
         filestr = delimiter.join(lines) + '\n' # will fail if ord(char) > 127
         return filestr
     except UnicodeDecodeError, e:
-        if "'ascii' codec can't decode" in e and 'position' in e:
-            pos = int(e.split('position')[1].split(':'))
-            print filestr[pos-50:pos], '[problematic char]', filestr[pos+1:pos+51]
+        if "'ascii' codec can't decode":
+            print '*** error: non-ascii character - rerun with --encoding=utf-8'
             _abort()
         else:
             print e
@@ -98,7 +110,7 @@ def is_file_or_url(filename, msg='checking existence of', debug=True):
         try:
             # Print a message in case the program hangs a while here
             if msg is not None or debug:
-                print '...', msg, filename, '...',
+                print '...', msg, filename, '...'
             f = urllib.urlopen(filename)
             text = f.read()
             f.close()
@@ -106,12 +118,12 @@ def is_file_or_url(filename, msg='checking existence of', debug=True):
             if ext in ('.html', 'htm'):
                 # Successful opening of an HTML file
                 if msg or debug:
-                    print 'found!'
+                    print '    found!'
                 return 'url'
             elif ext == '':
                 # Successful opening of a directory (meaning index.html)
                 if msg or debug:
-                    print 'found!'
+                    print '    found!'
                 return 'url'
             else:
                 # Seemingly successful opening of a file, but check if
@@ -125,17 +137,17 @@ def is_file_or_url(filename, msg='checking existence of', debug=True):
                 if special_host and '>404' in text:
                     # HTML file with an error message: file not found
                     if msg or debug:
-                        print 'not found (%s, 404 error)' % filename
+                        print '    not found (%s, 404 error)' % filename
                         return None
                 else:
                     if msg or debug:
-                        print 'found!'
+                        print '    found!'
                     return 'url'
         except IOError, e:
             if msg or debug:
-                print 'not found!'
+                print '    NOT found!'
             if debug:
-                print 'urllib.urlopen error:', e
+                print '    urllib.urlopen error:', e
             return None
     else:
         return ('file' if os.path.isfile(filename) else None)
@@ -227,7 +239,7 @@ def online_python_tutor(code, return_tp='iframe'):
         url = url.replace('%', '\\%').replace('#', '\\#')
         return url
     else:
-        print 'BUG'; _abort()
+        raise ValueError('BUG!')
 
 def align2equations(filestr, format):
     """Turn align environments into separate equation environments."""
@@ -300,7 +312,9 @@ def default_movie(m):
     Replace a movie entry by a proper URL with text.
     The idea is to link to an HTML file with the media element.
     """
-    # Note: essentially same code as html_movie
+    # Note: essentially same code as html_movie, but
+    # the HTML code is embedded in a file.
+
     global _counter_for_html_movie_player
     filename = m.group('filename')
     caption = m.group('caption').strip()
@@ -308,21 +322,23 @@ def default_movie(m):
     text = html_movie(m)
 
     # Make an HTML file where the movie file can be played
-    # (alternative to launching a player manually)
+    # (alternative to launching a player manually).
     _counter_for_html_movie_player += 1
     moviehtml = 'movie_player%d' % \
     _counter_for_html_movie_player + '.html'
     f = open(moviehtml, 'w')
     f.write("""
 <html>
+<head>
+</head>
 <body>
 <title>Embedding media in HTML</title>
 %s
 </body>
 </html>
-""" % text
+""" % text)
     print '*** made link to new HTML file %s\n    with code to display the movie \n    %s' % (moviehtml, filename)
-    text = '%s file: %s, load "`%s`" :"%s" into a browser' % \
+    text = '%s `%s`: load "`%s`": "%s" into a browser' % \
        (caption, filename, moviehtml, moviehtml)
     return text
 
@@ -672,13 +688,15 @@ ENVIRS = {}
 
 # regular expressions for inline tags:
 inline_tag_begin = r"""(?P<begin>(^|[(\s]))"""
-inline_tag_end = r"""(?P<end>($|[.,?!;:)}\s-]))"""
+# ' is included as apostrophe in end tag
+inline_tag_end = r"""(?P<end>($|[.,?!;:)}'\s-]))"""
 # alternatives using positive lookbehind and lookahead (not tested!):
 inline_tag_before = r"""(?<=(^|[(\s]))"""
 inline_tag_after = r"""(?=$|[.,?!;:)\s])"""
 # the begin-end works, so don't touch (must be tested in a safe branch....)
 
-_linked_files = '''\s*"(?P<url>([^"]+?\.html?|[^"]+?\.html?\#[^"]+?|[^"]+?\.txt|[^"]+?\.pdf|[^"]+?\.f|[^"]+?\.c|[^"]+?\.cpp|[^"]+?\.cxx|[^"]+?\.py|[^"]+?\.java|[^"]+?\.pl|[^"]+?\.sh|[^"]+?\.csh|[^"]+?\.zsh|[^"]+?\.ksh|[^"]+?\.tar\.gz|[^"]+?\.tar|[^"]+?\.f77|[^"]+?\.f90|[^"]+?\.f95|_static-?[^/]*/[^"]+?))"'''
+_linked_files = '''\s*"(?P<url>([^"]+?\.html?|[^"]+?\.html?\#[^"]+?|[^"]+?\.txt|[^"]+?\.pdf|[^"]+?\.f|[^"]+?\.c|[^"]+?\.cpp|[^"]+?\.cxx|[^"]+?\.py|[^"]+?\.java|[^"]+?\.pl|[^"]+?\.sh|[^"]+?\.csh|[^"]+?\.zsh|[^"]+?\.ksh|[^"]+?\.tar\.gz|[^"]+?\.tar|[^"]+?\.f77|[^"]+?\.f90|[^"]+?\.f95|[^"]+?\.png|[^"]+?\.jpe?g|[^"]+?\.gif|[^"]+?\.pdf|[^"]+?\.e?ps|_static-?[^/]*/[^"]+?))"'''
+#_linked_files = '''\s*"(?P<url>([^"]+?))"'''  # any file is accepted
 
 INLINE_TAGS = {
     # math: text inside $ signs, as in $a = b$, with space before the
@@ -704,7 +722,8 @@ INLINE_TAGS = {
     # `verbatim inline text is enclosed in back quotes`
     'verbatim':
     r'%s`(?P<subst>[^ ][^`]*)`%s' % \
-    (inline_tag_begin, r"(?P<end>($|[.,?!;:)}'\s-]))"), # inline_tag_end and '
+    (inline_tag_begin, inline_tag_end),
+    #(inline_tag_begin, r"(?P<end>($|[.,?!;:)}'\s|-]))"),
 
     # _underscore before and after signifies bold_
     'bold':

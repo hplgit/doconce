@@ -1,6 +1,6 @@
 # -*- coding: iso-8859-15 -*-
 
-import os, commands, re, sys, glob
+import os, commands, re, sys, glob, shutil
 from common import plain_exercise, table_analysis, \
      _CODE_BLOCK, _MATH_BLOCK, doconce_exercise_output, indent_lines, \
      online_python_tutor, envir_delimiter_lines, safe_join, \
@@ -157,6 +157,8 @@ def latex_code(filestr, code_blocks, code_block_types,
                 # The link text does not display the URL so we include it
                 # in a footnote (\nolinkurl{} indicates URL: "...")
                 texttt_url = url.replace('_', '\\_').replace('#', '\\#').replace('%', '\\%').replace('&', '\\&')
+                # use \protect\footnote such that hyperlinks works within
+                # captions and other places (works well outside too with \protect)
                 return '\\href{{%s}}{%s}' % (url, text) + \
                        '\\footnote{\\texttt{%s}}' % texttt_url
             else: # no substitution, URL is in the link text
@@ -218,8 +220,8 @@ def latex_figure(m, includegraphics=True):
     opts = m.group('options')
     if opts:
         info = [s.split('=') for s in opts.split()]
-        for option, value in info:
-            if option == 'frac':
+        for opt, value in info:
+            if opt == 'frac':
                 frac = float(value)
     if includegraphics:
         includeline = r'\centerline{\includegraphics[width=%s\linewidth]{%s}}' % (frac, filename)
@@ -232,6 +234,22 @@ def latex_figure(m, includegraphics=True):
         label = m.group(1).strip()
     else:
         label = ''
+
+    # URLs that become footnotes pose problems inside a caption.
+    # It is not recommended to have footnotes in floats (safe solutions
+    # require minipage).
+    if option('device=', '') == 'paper':
+        pattern = r'".+?"\s*:\s*"https?:.+?"'
+        links = re.findall(pattern, caption, flags=re.DOTALL)
+        if links:
+            print '*** error: hyperlinks inside caption pose problems for'
+            print '    latex output and --device=paper because they lead'
+            print '    to footnotes in captions. (Footnotes in floats require'
+            print '    minipage.) The latex document with compile with'
+            print '    \\protect\\footnote, but the footnote is not shown.'
+            print '    Recommendation: rewrite caption.\n'
+            print '-----------\n', caption, '\n-----------\n'
+            _abort()
 
     # `verbatim_text` in backquotes is translated to \code{verbatim\_text}
     # which then becomes \Verb!verbatim\_text! when running ptex2tex or
@@ -282,20 +300,21 @@ def latex_movie(m):
         filename = filename.replace('youtu.be', 'youtube.com')
 
     def link_to_local_html_movie_player():
-        """Use simple solution where an HTML file is made for playing the movie."""
+        """Simple solution where an HTML file is made for playing the movie."""
         from common import default_movie
         text = default_movie(m)
 
         # URL to HTML viewer file must have absolute path in \href
-        html_viewer_file_pattern = r'Movie of files `.+` in URL:"(.+)"'
+        html_viewer_file_pattern = \
+             r'(.+?) `(.+?)`: load "`(.+?)`": "(.+?)" into a browser'
         m2 = re.search(html_viewer_file_pattern, text)
         if m2:
-            html_viewer_file = m2.group(1)
+            html_viewer_file = m2.group(4)
             if os.path.isfile(html_viewer_file):
                 html_viewer_file_abs = os.path.abspath(html_viewer_file)
-                text = text.replace('URL:"%s"' % html_viewer_file,
-                                    'URL:"file://%s"' % html_viewer_file_abs)
-        return text
+                text = text.replace(': "%s"' % html_viewer_file,
+                                    ': "file://%s"' % html_viewer_file_abs)
+        return '\n' + text + '\n'
 
     # Do not typeset movies in figure environments since Doconce documents
     # assume inline movies
@@ -495,27 +514,33 @@ def latex_table(table):
                table['rows'][i-1] == ['horizontal rule'] and \
                table['rows'][i+1] == ['horizontal rule']:
                 headline = True
+                # Empty column headings?
+                skip_headline = max([len(column.strip())
+                                     for column in row]) == 0
             else:
                 headline = False
 
             if headline:
-                # First fix verbatim inside multicolumn
-                # (recall that doconce.py table preparations
-                # translates `...` to \code{...})
-                verbatim_pattern = r'code\{(.+?)\}'
-                for i in range(len(row)):
-                    m = re.search(verbatim_pattern, row[i])
-                    if m:
-                        #row[i] = re.sub(verbatim_pattern,
-                        #                r'texttt{%s}' % m.group(1),
-                        #                row[i])
-                        # (\code translates to \Verb, which is allowed here)
+                if skip_headline:
+                    row = []
+                else:
+                    # First fix verbatim inside multicolumn
+                    # (recall that doconce.py table preparations
+                    # translates `...` to \code{...})
+                    verbatim_pattern = r'code\{(.+?)\}'
+                    for i in range(len(row)):
+                        m = re.search(verbatim_pattern, row[i])
+                        if m:
+                            #row[i] = re.sub(verbatim_pattern,
+                            #                r'texttt{%s}' % m.group(1),
+                            #                row[i])
+                            # (\code translates to \Verb, which is allowed here)
 
-                        row[i] = re.sub(r'\\code\{(.*?)\}', underscore_in_code,
-                                        row[i])
+                            row[i] = re.sub(
+                                r'\\code\{(.*?)\}', underscore_in_code, row[i])
 
-                row = [r'\multicolumn{1}{%s}{ %s }' % (a, r) \
-                       for r, a in zip(row, heading_spec)]
+                    row = [r'\multicolumn{1}{%s}{ %s }' % (a, r) \
+                           for r, a in zip(row, heading_spec)]
             else:
                 row = [r.ljust(w) for r, w in zip(row, column_width)]
 
@@ -800,8 +825,8 @@ def latex_ref_and_label(section_label2title, format, filestr):
     filestr = re.sub(r'( [0-9]{1,3})%', r'\g<1>\%', filestr)
     filestr = re.sub(r'(^[0-9]{1,3})%', r'\g<1>\%', filestr, flags=re.MULTILINE)
 
-    # Fix errors such as et. al. cite{ (et. -> et)
-    filestr = re.sub(r'et\. +al +cite\{', 'et al. cite{', filestr)
+    # Fix common error et. al. cite{ (et. should be just et)
+    filestr = re.sub(r'et\. +al +cite(\{|\[)', r'et al. cite\g<1>', filestr)
 
     # fix periods followed by too long space:
     prefix = r'Prof\.', r'Profs\.', r'prof\.', r'profs\.', r'Dr\.', \
@@ -814,10 +839,9 @@ def latex_ref_and_label(section_label2title, format, filestr):
         filestr = re.sub(r'(%s) +([\\A-Za-z0-9$])' % p, r'\g<1>~\g<2>',
                          filestr)
     # Allow C# and F# languages
-    # (filestr is here without code so side effects for
-    # notes/chords/music notation should not be relevant)
-    filestr = filestr.replace('C#', 'C\\#')
-    filestr = filestr.replace('F#', 'F\\#')
+    # (No: affects music notation!)
+    #filestr = filestr.replace('C#', 'C\\#')
+    #filestr = filestr.replace('F#', 'F\\#')
 
     return filestr
 
@@ -829,6 +853,11 @@ def latex_index_bib(filestr, index, citations, pubfile, pubdata):
     #print 'index:', index
     #print 'citations:', citations
     filestr = filestr.replace('cite{', r'\cite{')
+    filestr = filestr.replace('cite[', r'\cite[')
+    # Fix spaces after . inside cite[] and insert ~
+    pattern = r'cite\[(.+)\.\s+'
+    filestr = re.sub(pattern, r'cite[\g<1>.~', filestr)
+
     for word in index:
         pattern = 'idx{%s}' % word
         if '`' in word:
@@ -932,13 +961,20 @@ def latex_quote(block, format, text_size='normal'):
 latexfigdir = 'latex_figs'
 
 def _get_admon_figs(filename):
+    if filename is None:
+        return
     # Extract graphics file from latex_styles.zip, when needed
+    # Idea: copy all latex_styles.zip files to a pool, latex_figs.all
+    # Copy from latex_figs.all to latex_figs as needed.
+    # Remove latex_figs.all at the end of typeset_envirs
+    # (cannot do it in latex_code cleanup since typeset_envirs is
+    # called after)
     datafile = 'latex_styles.zip'
-    if not os.path.isdir(latexfigdir):
-        os.mkdir(latexfigdir)
-    if not os.path.isfile(os.path.join(latexfigdir, filename)):
-        os.chdir(latexfigdir)
-        import doconce, shutil
+    latexfigdir_all = latexfigdir + '.all'
+    if not os.path.isdir(latexfigdir_all):
+        os.mkdir(latexfigdir_all)
+        os.chdir(latexfigdir_all)
+        import doconce
         doconce_dir = os.path.dirname(doconce.__file__)
         doconce_datafile = os.path.join(doconce_dir, datafile)
         #print 'copying admon figures from %s to subdirectory %s' % \
@@ -948,12 +984,44 @@ def _get_admon_figs(filename):
         zipfile.ZipFile(datafile).extractall()
         os.remove(datafile)
         os.chdir(os.pardir)
+    if not os.path.isdir(latexfigdir):
+        os.mkdir(latexfigdir)
+        print '*** made directory %s for admon figures' % latexfigdir
+    if not os.path.isfile(os.path.join(latexfigdir, filename)):
+        shutil.copy(os.path.join(latexfigdir_all, filename), latexfigdir)
+
+_admon_latex_figs = dict(
+    graybox3=dict(
+        warning='small_gray_warning',
+        question='small_gray_question2',  # 'small_gray_question3'
+        notice='small_gray_notice',
+        summary='small_gray_summary',
+        ),
+    yellowbox=dict(
+        warning='small_yellow_warning',
+        question='small_yellow_question',
+        notice='small_yellow_notice',
+        summary='small_yellow_summary',
+        ),
+    )
+
+def get_admon_figname(admon_tp, admon_name):
+    if admon_tp in _admon_latex_figs:
+        if admon_name in _admon_latex_figs[admon_tp]:
+            return _admon_latex_figs[admon_tp][admon_name]
+        else:
+            return None
+    else:
+        if admon_name in ('notice', 'warning', 'summary', 'question'):
+            return admon_name
+        else:
+            return None
 
 admons = 'notice', 'summary', 'warning', 'question', 'block'
 for _admon in admons:
     _Admon = _admon.capitalize()
     text = r"""
-def latex_%(_admon)s(block, format, title='%(_Admon)s', text_size='normal'):
+def latex_%(_admon)s(text_block, format, title='%(_Admon)s', text_size='normal'):
     if title.lower().strip() == 'none':
         title = ''
     if title == 'Block':  # block admon has no default title
@@ -962,17 +1030,17 @@ def latex_%(_admon)s(block, format, title='%(_Admon)s', text_size='normal'):
     latex_admon = option('latex_admon=', 'graybox1')
     if text_size == 'small':
         # When a font size changing command is used, incl a \par at the end
-        block = r'{\footnotesize ' + block + r' \par}'
+        text_block = r'{\footnotesize ' + text_block + r' \par}'
         # Add reduced initial vertical space?
         if latex_admon in ("yellowbox", "graybox3", "colors2"):
-            block = r'\vspace{-2.5mm}\par\noindent' + '\n' + block
+            text_block = r'\vspace{-2.5mm}\par\noindent' + '\n' + text_block
         elif latex_admon == "colors1":
             # Add reduced initial vertical space
-            block = r'\vspace{-3.5mm}\par\noindent' + '\n' + block
+            text_block = r'\vspace{-3.5mm}\par\noindent' + '\n' + text_block
         elif latex_admon in ("graybox1", "graybox2"):
-            block = r'\vspace{0.5mm}\par\noindent' + '\n' + block
+            text_block = r'\vspace{0.5mm}\par\noindent' + '\n' + text_block
     elif text_size == 'large':
-        block = r'{\large ' + block + r' \par}'
+        text_block = r'{\large ' + text_block + r' \par}'
         title = r'{\large ' + title + ' }'
 
     title_graybox1 = title.replace(',', '')  # title in graybox1 cannot handle ,
@@ -987,17 +1055,17 @@ def latex_%(_admon)s(block, format, title='%(_Admon)s', text_size='normal'):
     # then \grayboxhrules is used (which can be wrapped in a small box of 50 percent
     # with in the text for A4 format)
     grayboxhrules = False
-    block_graybox2 = block
+    text_block_graybox2 = text_block
     title_graybox2 = title
     if '%(_admon)s' == 'summary':
         if title != 'Summary':
             if title_graybox2 and title_graybox2[-1] not in ('.', '!', '?', ';', ':'):
                 title_graybox2 += ':'
-            block_graybox2 = r'\textbf{%%s} ' %% title_graybox2 + block_graybox2
+            text_block_graybox2 = r'\textbf{%%s} ' %% title_graybox2 + text_block_graybox2
         # else: no title if title == 'Summary' for graybox2
-        # Any code in block_graybox2?
-        m1 = re.search(r'^\\(b|e).*(cod|pro)', block_graybox2, flags=re.MULTILINE)
-        m2 = '\\code{' in block_graybox2
+        # Any code in text_block_graybox2?
+        m1 = re.search(r'^\\(b|e).*(cod|pro)', text_block_graybox2, flags=re.MULTILINE)
+        m2 = '\\code{' in text_block_graybox2
         if m1 or m2:
             grayboxhrules = False
         else:
@@ -1006,7 +1074,7 @@ def latex_%(_admon)s(block, format, title='%(_Admon)s', text_size='normal'):
     if grayboxhrules:
         envir_graybox2 = r'''\grayboxhrules{
 %%s
-}''' %% block_graybox2
+}''' %% text_block_graybox2
     else:
         # same mdframed package as for graybox1 admon, use title_graybox1
         envir_graybox2 = r'''
@@ -1014,20 +1082,26 @@ def latex_%(_admon)s(block, format, title='%(_Admon)s', text_size='normal'):
 %%s
 \end{graybox2admon}
 
-''' %% (title_graybox1, block_graybox2)
+''' %% (title_graybox1, text_block_graybox2)
 
     if latex_admon in ('colors1', 'colors2', 'graybox3', 'yellowbox'):
         text = r'''
 \begin{%(_admon)s_%%(latex_admon)sadmon}[%%(title)s]
-%%(block)s
+%%(text_block)s
 \end{%(_admon)s_%%(latex_admon)sadmon}
 
 ''' %% vars()
-
+        figname = get_admon_figname(latex_admon, '%(_admon)s')
+        if figname is not None:
+            if format == 'pdflatex':
+                figname += '.pdf'
+            elif format == 'latex':
+                figname += '.eps'
+            _get_admon_figs(figname)
     elif latex_admon == 'paragraph':
         text = r'''
 \begin{paragraphadmon}[%%(title_para)s]
-%%(block)s
+%%(text_block)s
 \end{paragraphadmon}
 
 ''' %% vars()
@@ -1040,7 +1114,7 @@ def latex_%(_admon)s(block, format, title='%(_Admon)s', text_size='normal'):
     else:
         text = r'''
 \begin{graybox1admon}[%%(title_graybox1)s]
-%%(block)s
+%%(text_block)s
 \end{graybox1admon}
 
 ''' %% vars()
@@ -1328,12 +1402,13 @@ def define(FILENAME_EXTENSION,
 %% Many preprocess options can be added to ptex2tex or doconce ptex2tex
 %%
 %%      ptex2tex -DMINTED -DPALATINO -DA6PAPER -DLATEX_HEADING=traditional myfile
-%%      doconce ptex2tex myfile -DMINTED -DLATEX_HEADING=titlepage
+%%      doconce ptex2tex myfile -DLATEX_HEADING=titlepage envir=minted
 %%
 %% ptex2tex will typeset code environments according to a global or local
 %% .ptex2tex.cfg configure file. doconce ptex2tex will typeset code
 %% according to options on the command line (just type doconce ptex2tex to
-%% see examples).
+%% see examples). If doconce ptex2tex has envir=minted, it enables the
+%% minted style without needing -DMINTED.
 % #endif
 
 % #ifndef LATEX_STYLE
@@ -1366,11 +1441,7 @@ def define(FILENAME_EXTENSION,
         INTRO['latex'] += r"""
 \documentclass[%%
 %(side_tp)s,                 %% oneside: electronic viewing, twoside: printing
-%% #ifdef DOUBLE_SPACING
-draft,                   %% or final
-%% #else
-final,                   %% or draft (marks overfull hboxes)
-%% #endif
+final,                   %% or draft (marks overfull hboxes, figures with paths)
 chapterprefix=true,      %% "Chapter" word at beginning of each chapter
 open=right               %% start new chapters on odd-numbered pages
 10pt]{book}
@@ -1380,11 +1451,7 @@ open=right               %% start new chapters on odd-numbered pages
         INTRO['latex'] += r"""
 \documentclass[%%
 %(side_tp)s,                 %% oneside: electronic viewing, twoside: printing
-%% #ifdef DOUBLE_SPACING
-draft,                   %% or final
-%% #else
-final,                   %% or draft (marks overfull hboxes)
-%% #endif
+final,                   %% or draft (marks overfull hboxes, figures with paths)
 10pt]{article}
 """ % vars()
 
@@ -1397,6 +1464,7 @@ final,                   %% or draft (marks overfull hboxes)
 % Style: T2 (Springer)
 \documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmono}
 \usepackage{t2}
+\special{papersize=193mm,260mm}
 % #elif LATEX_STYLE == "Springer_llcse"
 % Style: Lecture Notes in Computer Science (Springer)
 \documentclass[oribib]{llncs}
@@ -1510,6 +1578,7 @@ final,                   %% or draft (marks overfull hboxes)
 % Examples of font types (Ubuntu): Gentium Book Basic (Palatino-like),
 % Liberation Sans (Helvetica-like), Norasi, Purisa (handwriting), UnDoum
 % #else
+\usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
 % #ifdef HELVETICA
@@ -1523,6 +1592,7 @@ final,                   %% or draft (marks overfull hboxes)
 \linespread{1.05}            % Palatino needs extra line spread to look nice
 % #endif
 % #endif
+\usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 """
     # Make sure hyperlinks are black (as the text) for printout
     # and otherwise set to the dark blue linkcolor
@@ -1599,6 +1669,12 @@ final,                   %% or draft (marks overfull hboxes)
 \linenumbers
 % #endif
 
+% #ifdef LABELS_IN_MARGIN
+% Display labels for sections, equations, and citations in the margin
+\usepackage{showlabels}
+\showlabels{cite}
+% #endif
+
 % #ifdef DOUBLE_SPACING
 \onehalfspacing    % from setspace package
 %\doublespacing
@@ -1637,6 +1713,7 @@ final,                   %% or draft (marks overfull hboxes)
 
     # Admonitions
     if re.search(r'^!b(%s)' % '|'.join(admons), filestr, flags=re.MULTILINE):
+        # Found one !b... command for an admonition
         latex_admon = option('latex_admon=', 'graybox1')
         if latex_admon in ('colors1',):
             packages = r'\usepackage{framed}'
@@ -1741,38 +1818,17 @@ final,                   %% or draft (marks overfull hboxes)
             #block=_gray2,
             block=_light_yellow1,
             )
-        graybox3_figs = dict(
-            warning='small_gray_warning',
-            question='small_gray_question2',  # 'small_gray_question3'
-            notice='small_gray_notice',
-            summary='small_gray_summary',
-            )
-        yellowbox_figs = dict(
-            warning='small_yellow_warning',
-            question='small_yellow_question',
-            notice='small_yellow_notice',
-            summary='small_yellow_summary',
-            )
 
         for admon in admons:
             Admon = admon.upper()[0] + admon[1:]
 
-            if admon != 'block':
-                # Copy figure file if necessary
-                # Note: .eps changed to .pdf in pdflatex.py
-                figname_colors = admon + '.eps'
-                _get_admon_figs(figname_colors)
-                figname_graybox3 = graybox3_figs[admon] + '.eps'
-                _get_admon_figs(figname_graybox3)
-                figname_yellowbox = yellowbox_figs[admon] + '.eps'
-                _get_admon_figs(figname_yellowbox)
-
+            # Figure files are copied when necessary
             color_colors = str(_admon2colors[admon])[1:-1]
-            graphics_colors1 = r'\includegraphics[height=0.3in]{latex_figs/%s}\ \ \ ' % admon
+            graphics_colors1 = r'\includegraphics[height=0.3in]{latex_figs/%s}\ \ \ ' % get_admon_figname('colors1', admon)
             graphics_colors2 = r"""\begin{wrapfigure}{l}{0.07\textwidth}
 \vspace{-13pt}
 \includegraphics[width=0.07\textwidth]{latex_figs/%s}
-\end{wrapfigure}""" % admon
+\end{wrapfigure}""" % get_admon_figname('colors2', admon)
             # Old typesetting of title (for latex_admon==colors1): {\large\sc #1}
 
             #color_graybox3 = str(_gray3)[1:-1]
@@ -1780,14 +1836,14 @@ final,                   %% or draft (marks overfull hboxes)
             graphics_graybox3 = r"""\begin{wrapfigure}{l}{0.07\textwidth}
 \vspace{-13pt}
 \includegraphics[width=0.07\textwidth]{latex_figs/%s}
-\end{wrapfigure}"""% figname_graybox3
+\end{wrapfigure}"""% get_admon_figname('graybox3', admon)
 
             #color_yellowbox = str(_light_yellow2)[1:-1]
             color_yellowbox = str(_light_yellow1)[1:-1]
             graphics_yellowbox = r"""\begin{wrapfigure}{l}{0.07\textwidth}
 \vspace{-13pt}
 \includegraphics[width=0.07\textwidth]{latex_figs/%s}
-\end{wrapfigure}""" % figname_yellowbox
+\end{wrapfigure}""" % get_admon_figname('yellowbox', admon)
 
             if admon == 'block':
                 # No figures for block admon
@@ -1973,7 +2029,6 @@ final,                   %% or draft (marks overfull hboxes)
 \oldtabular}{\endoldtabular}
 % #endif
 
-% --- end of standard preamble for documents ---
 """
     # Note: the line above is key for extracting the correct part
     # of the preamble for beamer slides in misc.slides_beamer
@@ -1990,9 +2045,14 @@ final,                   %% or draft (marks overfull hboxes)
             break
 
     INTRO['latex'] += r"""
+% --- end of standard preamble for documents ---
+"""
+
+    INTRO['latex'] += r"""
 % USER PREAMBLE
 % insert custom LaTeX commands...
 
+\raggedbottom
 \makeindex
 
 %-------------------- end preamble ----------------------

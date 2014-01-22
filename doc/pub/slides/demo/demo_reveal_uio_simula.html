@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="On Schemes for Exponential Decay">
+
+
+
+<style type="text/css">
+    /* blueish style */
+
+    /* Color definitions:  http://www.december.com/html/spec/color0.html
+       CSS examples:       http://www.w3schools.com/css/css_examples.asp */
+
+    body {
+      margin-top: 1.0em;
+      background-color: #ffffff;
+      font-family: Helvetica, Arial, FreeSans, san-serif;
+      color: #000000;
+    }
+    h1 { font-size: 1.8em; color: #1e36ce; }
+    h2 { font-size: 1.6em; color: #1e36ce; }
+    h3 { font-size: 1.4em; color: #1e36ce; }
+    a { color: #1e36ce; text-decoration:none; }
+    tt { font-family: "Courier New", Courier; }
+    pre { background: #ededed; color: #000; padding: 15px;}
+    p { text-indent: 0px; }
+    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    p.caption { width: 80%; font-style: normal; text-align: left; }
+    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    .alert-text-small   { font-size: 80%;  }
+    .alert-text-large   { font-size: 130%; }
+    .alert-text-normal  { font-size: 90%;  }
+    .alert {
+             padding:8px 35px 8px 14px; margin-bottom:18px;
+             text-shadow:0 1px 0 rgba(255,255,255,0.5);
+             border:1px solid #bababa;
+             border-radius: 4px;
+             -webkit-border-radius: 4px;
+             -moz-border-radius: 4px;
+             color: #555;
+             background-color: #f8f8f8;
+             background-position: 10px 5px;
+             background-repeat: no-repeat;
+             background-size: 38px;
+             padding-left: 55px;
+             width: 75%;
+     }
+     .alert-block {padding-top:14px; padding-bottom:14px}
+     .alert-block > p, .alert-block > ul {margin-bottom:1em}
+     .alert li {margin-top: 1em}
+     .alert-block p+p {margin-top:5px}
+     .alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
+     .alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
+     .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
+     .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
+
+</style>
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' Goal ', 1, None, '___sec0'),
+              (' Mathematical problem ', 1, None, '___sec1'),
+              (' Numerical solution method ', 1, None, '___sec2'),
+              (' Forward Euler explained ', 2, None, '___sec3'),
+              (' Implementation ', 1, None, '___sec4'),
+              (' The Crank-Nicolson method ', 2, None, '___sec5'),
+              (' The artifacts can be explained by some theory ',
+               2,
+               None,
+               '___sec6')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "AMS"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+
+
+
+    
+<!-- ------------------- main content ---------------------- -->
+
+
+<title>On Schemes for Exponential Decay</title>
+
+<center><h1>On Schemes for Exponential Decay</h1></center>  <!-- document title -->
+
+<p>
+<!-- author(s): Hans Petter Langtangen -->
+
+<center>
+<b>Hans Petter Langtangen</b> [1, 2]
+</center>
+
+
+<p>
+<!-- institution(s) -->
+
+<center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
+<center>[2] <b>Department of Informatics, University of Oslo</b></center>
+<p>
+<center><h4>Jan 8, 2014</h4></center> <!-- date -->
+<p>
+<center><p><img src="fig/CN_logo.png" align="bottom" width=300></p></center>
+
+<p>
+<!-- !split -->
+
+<h2>Goal  <a name="___sec0"></a></h2>
+
+<p>
+The primary goal of this demo talk is to demonstrate how to write
+talks with <a href="https://github.com/hplgit/doconce" target="_self">Doconce</a>
+and get them rendered in numerous HTML formats.
+<div class="alert alert-block alert-notice alert-text-normal"><b>Layout.</b>
+This version
+utilizes reveal slides with the theme <code>uio+simula</code>.
+</div>
+
+
+<p>
+<div class="alert alert-block alert-notice alert-text-normal"><b>Notice.</b>
+Speaker notes show up by
+pressing "s".
+</div>
+
+
+<p>
+<!-- !bnotes -->
+The talk investigates the accuracy of three finite difference
+schemes for the ordinary differential equation \( u'=-au \) with the
+aid of numerical experiments. Numerical artifacts are in particular
+demonstrated.
+<!-- !enotes -->
+
+<p>
+<!-- !split -->
+
+<h2>Mathematical problem  <a name="___sec1"></a></h2>
+
+<p>
+<!-- !bslidecell 00 -->
+
+<p>
+$$
+\begin{align}
+u'(t) &= -au(t),
+\label{ode}\\ 
+u(0)  &= I,
+\label{initial:value}
+\end{align}
+$$
+
+
+<p>
+
+<ul>
+ <li> \( t\in (0,T] \)</li>
+ <li> \( a \), \( I \), and \( T \) are prescribed parameters</li>
+ <li> \( u(t) \) is the unknown function</li>
+</ul>
+
+<!-- !eslidecell -->
+
+<p>
+<!-- !bslidecell 01 -->
+<center><p><img src="fig/teacher2.jpg" align="bottom" width=250></p></center>
+<!-- !eslidecell -->
+
+<p>
+<!-- !split -->
+
+<h2>Numerical solution method  <a name="___sec2"></a></h2>
+
+<p>
+<!-- !bpop -->
+
+<ul>
+ <li> Mesh in time: \( 0= t_0< t_1 \cdots < t_N=T \)</li>
+ <li> Assume constant \( \Delta t = t_{n}-t_{n-1} \)</li>
+ <li> \( u^n \): numerical approx to the exact solution at \( t_n \)</li>
+</ul>
+
+<!-- !epop -->
+
+<p>
+<!-- !bpop -->
+Numerical scheme:
+$$
+   u^{n+1} = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}u^n,
+   \quad n=0,1,\ldots,N-1
+   $$
+
+<!-- !epop -->
+
+<p>
+<!-- !split -->
+
+<h3>Forward Euler explained  <a name="___sec3"></a></h3>
+
+<p>
+
+<iframe width="640" height="480" src="http://www.youtube.com/embed/PtJrPEIHNJw" frameborder="0" allowfullscreen></iframe>
+
+
+<p>
+<!-- !split -->
+
+<h2>Implementation  <a name="___sec4"></a></h2>
+
+<p>
+The numerical method is implemented in a Python function:
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>def solver(I, a, T, dt, theta):
+    &quot;&quot;&quot;Solve u'=-a*u, u(0)=I, for t in (0,T] with steps of dt.&quot;&quot;&quot;
+    dt = float(dt)           # avoid integer division
+    N = int(round(T/dt))     # no of time intervals
+    T = N*dt                 # adjust T to fit time step dt
+    u = zeros(N+1)           # array of u[n] values
+    t = linspace(0, T, N+1)  # time mesh
+
+    u[0] = I                 # assign initial condition
+    for n in range(0, N):    # n=0,1,...,N-1
+        u[n+1] = (1 - (1-theta)*a*dt)/(1 + theta*dt*a)*u[n]
+    return u, t
+</code></pre>
+<!-- end verbatim block -->
+
+<p>
+<!-- !split -->
+
+<h3>The Crank-Nicolson method  <a name="___sec5"></a></h3>
+
+<p>
+<center><p><img src="fig/CN.png" align="bottom" width=600></p></center>
+
+<p>
+<!-- !split -->
+
+<h3>The artifacts can be explained by some theory  <a name="___sec6"></a></h3>
+
+<p>
+<!-- !bpop -->
+Exact solution of the scheme:
+
+<p>
+$$ u^n = A^n,\quad A = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}\thinspace .$$
+
+<!-- !epop -->
+
+<p>
+<!-- !bpop -->
+
+<ul>
+ <li> Stability: \( |A| < 1 \)</li>
+ <li> No oscillations: \( A>0 \)</li>
+ <li> Always for Backward Euler (\( \theta=1 \))</li>
+ <li> \( \Delta t < 1/a \) for Forward Euler (\( \theta=0 \))</li>
+ <li> \( \Delta t < 2/a \) for Crank-Nicolson (\( \theta=1/2 \))</li>
+</ul>
+
+<!-- !epop -->
+
+<p>
+<!-- !bpop -->
+<div class="alert alert-block alert-summary alert-text-normal"><b>Concluding remarks:</b>
+Only the Backward Euler scheme is guaranteed to always give
+qualitatively correct results.
+</div>
+
+<!-- !epop -->
+
+<!-- ------------------- end of main content --------------- -->
+
+
+</body>
+</html>
+    
+

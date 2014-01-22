@@ -1,0 +1,121 @@
+% This package allows the definition of framed theorems.
+% If the last item in a framed theorem is an equation and LaTeX breaks
+% the page between the equation and the closing lower line of the frame,
+% \setlength\belowdisplayskip{0pt} might help.
+
+\RequirePackage{partial_boxframes}
+\RequirePackage{LaTeX_colors}
+\RequirePackage{ifthen}
+
+% Declare all options, the corresponding code below then simply sets all variables to Y
+\newboolean{print}
+\setboolean{print}{false}
+
+% Option proof => renew the proof environment, such that it can be used with a frame.
+\DeclareOption{proof}{
+	\renewenvironment{proof}[1][\proofname]{%
+		{\noindent\itshape%
+		#1\@addpunct{.}} \ignorespaces%
+		}{%
+	% \popQED\endtrivlist\@endpefalse
+	}
+}
+
+\DeclareOption{print}{
+	\setboolean{print}{true}
+}
+
+% Process these options
+\ProcessOptions
+
+\newtheoremstyle{colored}% name of the style to be used
+{0pt}% measure of space to leave above the theorem. E.g.: 3pt
+{0pt}% measure of space to leave below the theorem. E.g.: 3pt
+{}% name of font to use in the body of the theorem
+{0pt}% measure of space to indent
+{\bfseries}% name of head font
+{.}% punctuation between head and body
+{0.5em}% space after theorem head; " " = normal interword space
+{}% Manually specify head
+
+\theoremstyle{colored}
+
+\def\maketheoremcolored#1{%
+	% Save the old definition of \#1
+	\@temptokena=\expandafter{\csname #1\endcsname}
+	\edef\@temphelper{%
+		\let\csname FT@orig#1\endcsname\the\@temptokena
+	}
+	\@temphelper
+	% Save the old definition of \end#1
+	\@temptokena=\expandafter{\csname end#1\endcsname}
+	\edef\@temphelper{%
+		\let\csname FT@origold#1\endcsname\the\@temptokena
+	}
+	\@temphelper
+	% Define a standard default colors
+	\providecolor{#1framecolor}{rgb}{1.0,0.5,0.0}%
+	\providecolor{#1shadecolor}{rgb}{1.0,0.95,0.9}%
+	% Redefine \#1
+	\expandafter\def\csname #1\endcsname{\begin{fshaded}{#1framecolor}{#1shadecolor}\csname FT@orig#1\endcsname}
+	% Redefine \end#1
+	\expandafter\def\csname end#1\endcsname{\csname FT@origend#1\endcsname\end{fshaded}}
+}
+
+% Define color #1 to white if \print=Y, and #2 else
+\def\colorletwhiteprint#1#2{\ifthenelse{\boolean{print}}{\colorlet{#1}{white}}{\colorlet{#1}{#2}}}
+
+% Define the colors to some environments
+% Red theorems
+\colorlet{theoremframecolor}{red}
+\colorletwhiteprint{theoremshadecolor}{theoremframecolor!10!white}
+\colorlet{theorem*framecolor}{theoremframecolor}
+\colorletwhiteprint{theorem*shadecolor}{theoremshadecolor}
+% Green definitions
+\colorlet{definitionframecolor}{darkgreen}
+\colorletwhiteprint{definitionshadecolor}{darkgreen!10!white}
+\colorlet{definition*framecolor}{definitionframecolor}
+\colorletwhiteprint{definition*shadecolor}{definitionshadecolor}
+% Blue examples
+\colorlet{exampleframecolor}{darkblue}
+\colorletwhiteprint{exampleshadecolor}{exampleframecolor!10!white}
+\colorlet{example*framecolor}{exampleframecolor}
+\colorletwhiteprint{example*shadecolor}{exampleshadecolor}
+% Green assumptions
+\colorlet{assumptionframecolor}{darkgreen}
+\colorletwhiteprint{assumptionshadecolor}{assumptionframecolor!10!white}
+\colorlet{assumption*framecolor}{assumptionframecolor}
+\colorletwhiteprint{assumption*shadecolor}{assumptionshadecolor}
+% Blue lemmas
+\colorlet{lemmaframecolor}{darkblue}
+\colorletwhiteprint{lemmashadecolor}{lemmaframecolor!10!white}
+\colorlet{lemma*framecolor}{lemmaframecolor}
+\colorletwhiteprint{lemma*shadecolor}{lemmashadecolor}
+% Corollary the same as lemma
+\colorlet{corollaryframecolor}{lemmaframecolor}
+\colorletwhiteprint{corollaryshadecolor}{lemmashadecolor}
+\colorlet{corollary*framecolor}{corollaryframecolor}
+\colorletwhiteprint{corollary*shadecolor}{corollaryshadecolor}
+% Proposition the same as lemma
+\colorlet{propositionframecolor}{lemmaframecolor}
+\colorletwhiteprint{propositionshadecolor}{lemmashadecolor}
+\colorlet{proposition*framecolor}{propositionframecolor}
+\colorletwhiteprint{proposition*shadecolor}{propositionshadecolor}
+% Remark orange
+\colorlet{remarkframecolor}{tucorange}
+\colorletwhiteprint{remarkshadecolor}{tucorange!10!white}
+\colorlet{remark*framecolor}{remarkframecolor}
+\colorletwhiteprint{remark*shadecolor}{remarkshadecolor}
+% Algorithm red
+\colorlet{algorithmframecolor}{tucred}
+\colorletwhiteprint{algorithmshadecolor}{tucred!10!white}
+% Proof gray
+\colorlet{proofframecolor}{gray50}
+\colorletwhiteprint{proofshadecolor}{gray98}
+% Blanks, TODO: to be used in teaching.sty
+\colorlet{blankshownframecolor}{gray50}
+\colorletwhiteprint{blankshownshadecolor}{white}
+\colorlet{blanknotshownframecolor}{gray50}
+\colorlet{blanknotshownshadecolor}{white}
+\colorlet{blanknotshowntextcolor}{black}
+

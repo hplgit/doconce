@@ -1,12 +1,10 @@
 
-
-
 <wiki:comment> TITLE: On the Technicalities of Scientific Writing Anno 2012: The Doconce Way </wiki:comment>
 <wiki:comment> TITLE: Scientific Writing Anno 2013: The Doconce Way </wiki:comment>
 #summary Scientific Writing and Publishing Anno 2013
 
 By *Hans Petter Langtangen*
-==== Nov 29, 2013 ====
+==== Jan 8, 2014 ====
 
 ---------------------------------------------------------------
 
@@ -576,7 +574,7 @@ The default answer is LaTeX.
 
 {{{
 TITLE: Some Title
-AUTHOR: name1 at institution1, with more info, and institution2
+AUTHOR: name1 at institution1, with more info & institution2
 AUTHOR: name2 email:name2@web.com at institution
 DATE: today
 
@@ -703,7 +701,7 @@ MOVIE: [http://youtu.be/IDeGDFZSYo8, width=420 height=315]
 }}}
 and rendered as
 
- http://youtube.com/IDeGDFZSYo8
+ `http://youtu.be/IDeGDFZSYo8`: load [movie_player1.html `movie_player1.html`] into a browser
 
 <wiki:comment> !split </wiki:comment>
 == Math ==
@@ -907,7 +905,7 @@ Can take a [http://hplgit.github.com/teamods/writing_reports/_static/report.do.t
 Gets rendered as
 
 
- ||      *time*       ||    *velocity*     ||  *acceleration*   ||
+ ||      _time_       ||    _velocity_     ||  _acceleration_   ||
  ||  0.0              ||  1.4186           ||  -5.01            ||
  ||  2.0              ||  1.376512         ||  11.919           ||
  ||  4.0              ||  1.1E+1           ||  14.717624        ||

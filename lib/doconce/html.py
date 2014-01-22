@@ -160,7 +160,7 @@ css_solarized = """\
       -webkit-background-clip: padding-box;
       background-clip: padding-box;
     }
-    tt { font-family: "Courier New", Courier; }
+    tt, code { font-family: "Courier New", Courier; }
     hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
     p { text-indent: 0px; }
     p.caption { width: 80%; font-style: normal; text-align: left; }
@@ -378,17 +378,15 @@ def html_code(filestr, code_blocks, code_block_types,
 
 
     from doconce import debugpr
-    debugpr('File before call to insert_code_and_tex (format html)\n%s'
-            % filestr)
+    debugpr('File before call to insert_code_and_tex (format html):', filestr)
     filestr = insert_code_and_tex(filestr, code_blocks, tex_blocks, format)
-    debugpr('File after call to isnert_code_and tex (format html)\n%s'
-            % filestr)
+    debugpr('File after call to isnert_code_and tex (format html):', filestr)
 
     if pygm or needs_online_python_tutor:
         c = re.compile(r'^!bc(.*?)\n', re.MULTILINE)
         filestr = c.sub(r'<p>\n\n', filestr)
         filestr = re.sub(r'!ec\n', r'<p>\n', filestr)
-        debugpr('\n\nAfter replacement of !bc and !ec (pygmentized code)\n%s' % filestr)
+        debugpr('After replacement of !bc and !ec (pygmentized code):', filestr)
     else:
         c = re.compile(r'^!bc(.*?)\n', re.MULTILINE)
         # <code> gives an extra line at the top unless the code starts
@@ -738,6 +736,9 @@ def html_table(table):
            table['rows'][i-1] == ['horizontal rule'] and \
            table['rows'][i+1] == ['horizontal rule']:
             headline = True
+            # Empty column headings?
+            skip_headline = max([len(column.strip())
+                                 for column in row]) == 0
         else:
             headline = False
 
@@ -745,8 +746,9 @@ def html_table(table):
         for column, w, ha, ca in \
                 zip(row, column_width, heading_spec, column_spec):
             if headline:
-                s += '<td align="%s"><b> %s </b></td> ' % \
-                     (a2html[ha], column.center(w))
+                if not skip_headline:
+                    s += '<td align="%s"><b> %s </b></td> ' % \
+                         (a2html[ha], column.center(w))
             else:
                 s += '<td align="%s">   %s    </td> ' % \
                      (a2html[ca], column.ljust(w))
@@ -1492,6 +1494,14 @@ def latin2html(text):
     (However, the method below shows how to cope with special
     European characters in general.)
     """
+    # Only run this algorithm for plain ascii files, otherwise
+    # text is unicode utf-8 which is easily shown without encoding
+    # non-ascii characters in html.
+    if not isinstance(text, str):
+        return text
+
+    # Turn ascii into utf-8 or latin-1 before finding the ord(c)
+    # codes and writing them out in html
     text_new = []
     try:
         text = text.decode('utf-8')

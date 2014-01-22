@@ -1,0 +1,40 @@
+- consider qtip2.com/guides for tooltips when pointing at cite{} ref{} etc in html format, should also get up figures as in google attachment whhen pointing on a figure reference
+- consider supporting remark slides: https://github.com/gnab/remark
+- test latex2doconce og tabeller og idx
+- strip header according to what is found in filestr
+
+- consider filtering to Pweave :-)
+
+Handle files with licence headers or other things that should not be copied:
+- --rm-src-lines=10 in case full @@@CODE should skip licence header, doc string or similar
+- better alternative: @@@CODEp for complete program - leads to *pro despite fromto
+
+2. doconce diff_two_latest file, check git functionality first
+
+
+=== Merging modules ===
+
+Do examples and real-life projects first before
+making general rules and tools!!
+
+Do it first manually via sh or py script:
+   Module includes other modules
+   Module includes parts of other modules
+   Module adds some new material (bridging)
+
+doconce mergedir dirname source1 source2 source3 ...
+essentially mkdir dirname and then rsync all sources (rsync_del) so
+that source1/* etc are in dirname
+
+sphinx: py script for making index file from a set of wrap_* files,
+or make it manually? Look at fenics tutorial also and try it there
+as an alternative to splitting a big file.
+
+=== Nice tools ===
+
+ * URL: "https://github.com/jterrace/sphinxtr" extension of sphinx for
+   writing thesis with section numbers, citation numbers, etc.
+   Could add parts of this to doconce: numsec and natbib, the rest
+   is actually not of interest.
+ * "pybtex": "http://pybtex.sourceforge.net/" can load bibtex into python,
+   something a la publish.

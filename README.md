@@ -10,27 +10,28 @@ You should take a look at Doconce if any of these questions are of interest.
 
 ### Highlights
 
- * Minimally tagged markup language (like Markdown) with strong support for small and large scale projects involving much math and code in the text.
+ * Doconce is a minimally tagged markup language (like Markdown) with strong support for small and large scale projects involving much math and code in the text.
 
- * For documents with math and code, you can generate clean plain LaTeX (PDF), HTML (with MathJax and pygments - embedded in your own templates), Sphinx for nice web layouts, Markdown, IPython notebooks, HTML for Google or Wordpress blog posts, and MediaWiki. LaTeX output is in the ptex2tex format for very flexible typesetting of computer code. Doconce can output other formats (with no support for nicely typeset math and code): plain untagged text, Google wiki, Creole wiki, and reStructuredText. From Markdown or reStructuredText you can go to XML, DocBook, epub, OpenOffice/LibreOffice, MS Word, and many other formats.
+ * For documents with math and code, you can generate clean plain LaTeX (PDF), HTML (with MathJax and pygments - embedded in your own templates), Sphinx for nice web layouts, Markdown, IPython notebooks, HTML for Google or Wordpress blog posts, and MediaWiki. LaTeX output is in the ptex2tex format for very flexible typesetting of computer code.
 
- * The document source is first preprocessed by preprocess and mako, which gives you full programming capabilities in the text. For example, with mako it is easy to write a book with all computer code examples in two alternative languages (say Matlab and Python), and you determine at compile time of the Doconce document which language to choose.
+ * Doconce can also output other formats (though with no support for nicely typeset math and code): plain untagged text, Google wiki, Creole wiki, and reStructuredText. From Markdown or reStructuredText you can go to XML, DocBook, epub, OpenOffice/LibreOffice, MS Word, and other formats.
 
- * Doconce extends Sphinx, Markdown, and MediaWiki output such that LaTeX align environments with labels work for systems of equations. Doconce can also adjust Sphinx and HTML output such that it is possible to refer to equations outside the current HTML page.
+ * The document source is first preprocessed by preprocess and mako, which gives you full programming capabilities in the text. For example, with mako it is easy to write a book with all computer code examples in two alternative languages (say Matlab and Python), and you determine the language at compile time of the document.
 
- * One source for the text can be used for different media: traditional paper-based books, ebooks in PDF, ebooks in PDF for phones, ebooks in HTML with various layouts, and blog posts.
+ * Doconce extends Sphinx, Markdown, and MediaWiki output such that LaTeX align environments with labels work for systems of equations. Doconce also adjusts Sphinx and HTML code such that it is possible to refer to equations outside the current web page.
 
- * Doconce makes it very easy to write slides with nice math and code, especially if you have the contents in text already available in Doconce (basically you strip away text, insert bullet points or brief summary blocks, keep some figures, math, and code). Both LaTeX Beamer and HTML5 slides (reveal.js and deck.js) are supported. Slide elements can be arranged in cells to easily control the layout.
+ * One source for the text can be used for different media, such as traditional paper-based books, ebooks in PDF, PDF documents for phones, documents in HTML with various layouts, and blog posts.
+
+ * Doconce makes it very easy to write slides with nice math and code, especially if you have the contents already available as running text (basically you strip away text, insert bullet points or brief summary blocks, keep some figures, math, and code). Both LaTeX Beamer and HTML5 slides (reveal.js and deck.js) are supported. Slide elements can be arranged in a grid of cells to easily control the layout.
 
 ### Installation
 
 Doconce is a pure Python package and installed by
 
 
-```Bash
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.Bash}
 Terminal> sudo python setup.py install
-
-```
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 However, Doconce has *a lot* of dependencies, depending on what type of
 formats you want to work with. On Debian/Ubuntu it is fairly straightforward
@@ -53,7 +54,9 @@ be used to [create slides](http://hplgit.github.io/doconce/doc/pub/slides/demo/i
 *Warning.* 
 These documents are under development...
 
-* Tutorial: [Sphinx](http://hplgit.github.io/doconce/doc/pub/tutorial/html/index.html),
+
+
+ * Tutorial: [Sphinx](http://hplgit.github.io/doconce/doc/pub/tutorial/html/index.html),
    [HTML](http://hplgit.github.io/doconce/doc/pub/tutorial/tutorial.html),
    [PDF](http://hplgit.github.io/doconce/doc/pub/tutorial/tutorial.pdf)
 
@@ -72,4 +75,5 @@ These documents are under development...
 ### License
 
 Doconce is licensed under the BSD license, see the included LICENSE file.
+
 

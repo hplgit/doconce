@@ -2,7 +2,7 @@
 <!-- TITLE: Scientific Writing Anno 2013: The Doconce Way -->
 % Scientific Writing and Publishing Anno 2013
 % Hans Petter Langtangen
-% Nov 29, 2013
+% Jan 8, 2014
 
 ![](fig/doconce1b.png)
 
@@ -473,7 +473,7 @@ The default answer is LaTeX.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 TITLE: Some Title
-AUTHOR: name1 at institution1, with more info, and institution2
+AUTHOR: name1 at institution1, with more info & institution2
 AUTHOR: name2 email:name2@web.com at institution
 DATE: today
 

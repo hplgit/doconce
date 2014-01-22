@@ -76,6 +76,7 @@ git://github.com/groovecoder/deckjs-theme-mozilla.git
 <link rel="stylesheet" href="deck.js/themes/style/sandstone.light.css">
 <link rel="stylesheet" href="deck.js/themes/style/sandstone.mdn.css">
 <link rel="stylesheet" href="deck.js/themes/style/sandstone.nightly.css">
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.cbc.css">
 
 git://github.com/barraq/deck.ext.js.git
 <link rel="stylesheet" href="deck.js/themes/style/beamer.css">
@@ -137,6 +138,12 @@ td.padding {
 
 <body class="deck-container">
 
+<header>
+<!-- Here goes a potential header -->
+</header>
+
+<!-- do not use the article tag - it gives strange sizings -->
+
 
 
 
@@ -185,7 +192,7 @@ MathJax.Hub.Config({
 <p>
 <!-- institution(s) -->
 <p>
-<center><h4>Nov 29, 2013</h4></center> <!-- date -->
+<center><h4>Jan 8, 2014</h4></center> <!-- date -->
 <p>
 <center><p><img src="fig/doconce1b.png" align="bottom" width=400></p></center>
 
@@ -236,7 +243,7 @@ MathJax.Hub.Config({
 <span style="color: #8B008B; font-weight: bold">\begin</span><span style="color: #658b00">{</span>Verbatim<span style="color: #658b00">}</span>
 print &#39;Hello, World!&#39;
 <span style="color: #8B008B; font-weight: bold">\end</span><span style="color: #658b00">{</span>Verbatim<span style="color: #658b00">}</span>
-</code></pre></div>
+</pre></div>
 <p>
 Big late 1990s question: Will MS Word replace LaTeX? It never did!
 
@@ -845,7 +852,7 @@ Advantages:
 <span style="color: #8B008B; font-weight: bold">&lt;p&gt;&lt;div</span> <span style="color: #658b00">class=</span><span style="color: #CD5555">&quot;alert&quot;</span><span style="color: #8B008B; font-weight: bold">&gt;</span>
 The default answer is LaTeX.
 <span style="color: #8B008B; font-weight: bold">&lt;/div&gt;</span>
-</code></pre></div>
+</pre></div>
 <p>
 
 </section>
@@ -868,13 +875,13 @@ The default answer is LaTeX.
 
 <!-- code=text typeset with pygments style "perldoc" -->
 <div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">TITLE: Some Title
-AUTHOR: name1 at institution1, with more info, and institution2
+AUTHOR: name1 at institution1, with more info &amp; institution2
 AUTHOR: name2 email:name2@web.com at institution
 DATE: today
 
 # A table of contents is optional:
 TOC: on
-</code></pre></div>
+</pre></div>
 <p>
 <div class="alert alert-block alert-notice alert-text-normal"><b style="font-weight: bold">Notice.</b>
 Title and authors must have all information <em>on a single line</em>!
@@ -895,7 +902,7 @@ Title and authors must have all information <em>on a single line</em>!
 <!-- code=text typeset with pygments style "perldoc" -->
 <div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">__Abstract.__
 Here goes the abstract...
-</code></pre></div>
+</pre></div>
 <p>
 Or:
 <p>
@@ -903,7 +910,7 @@ Or:
 <!-- code=text typeset with pygments style "perldoc" -->
 <div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">__Summary.__
 Here goes the summary...
-</code></pre></div>
+</pre></div>
 <p>
 
 </section>
@@ -927,7 +934,7 @@ Headings are surrounded by <code>=</code> signs:
 === This is an H4/paragraph heading ===
 
 __This is a paragraph heading.__
-</code></pre></div>
+</pre></div>
 <p>
 Result:
 
@@ -961,7 +968,7 @@ Result:
  * `inline verbatim code` is featured
    o and sublists with enumerated items starting with `o`
    o items are just indented as you would do in email
-</code></pre></div>
+</pre></div>
 <p>
 This gets rendered as
 
@@ -1015,7 +1022,7 @@ See (ref{eq1})-(ref{myeq}).
 
 # Hyperlink with complete URL as link text
 URL: &quot;https://github.com/hplgit/doconce&quot;
-</code></pre></div>
+</pre></div>
 <p>
 
 </section>
@@ -1035,7 +1042,7 @@ Figures with HTML and LaTeX size info, and caption: <em>everything on one line</
 
 <!-- code=text typeset with pygments style "perldoc" -->
 <div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">FIGURE: [figdir/myfig, width=300 frac=1.2] My caption. label{fig1}
-</code></pre></div>
+</pre></div>
 <p>
 Movies are also supported:
 
@@ -1043,7 +1050,7 @@ Movies are also supported:
 
 <!-- code=text typeset with pygments style "perldoc" -->
 <div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">MOVIE: [http://youtu.be/IDeGDFZSYo8, width=420 height=315]
-</code></pre></div>
+</pre></div>
 <p>
 and rendered as
 
@@ -1068,7 +1075,7 @@ Inline math as in LaTeX:
 
 <!-- code=text typeset with pygments style "perldoc" -->
 <div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">...where $a=\int_{\Omega}fdx$ is an integral.
-</code></pre></div>
+</pre></div>
 <p>
 gets rendered as ...where \( a=\int_{\Omega}fdx \) is an integral.
 
@@ -1087,7 +1094,7 @@ label{a:eq}\\
 label{b:eq}
 \end{align}
 !et
-</code></pre></div>
+</pre></div>
 <p>
 which is rendered as
 
@@ -1132,7 +1139,7 @@ Limit math environments to
 
 \begin{align}
 \end{align}
-</code></pre></div>
+</pre></div>
 <p>
 <div class="alert alert-block alert-notice alert-text-normal"><b style="font-weight: bold">Doconce fix of shortcomings.</b>
 
@@ -1172,7 +1179,7 @@ def solver(I, a, T, dt, theta):
         u[n+1] = (1 - (1-theta)*a*dt)/(1 + theta*dt*a)*u[n]
     return u, t
 !ec
-</code></pre></div>
+</pre></div>
 <p>
 This gets rendered as
 
@@ -1188,7 +1195,7 @@ This gets rendered as
     <span style="color: #8B008B; font-weight: bold">for</span> n <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(<span style="color: #B452CD">0</span>, N):
         u[n+<span style="color: #B452CD">1</span>] = (<span style="color: #B452CD">1</span> - (<span style="color: #B452CD">1</span>-theta)*a*dt)/(<span style="color: #B452CD">1</span> + theta*dt*a)*u[n]
     <span style="color: #8B008B; font-weight: bold">return</span> u, t
-</code></pre></div>
+</pre></div>
 <p>
 
 </section>
@@ -1207,7 +1214,7 @@ source files:
 <!-- code=text typeset with pygments style "perldoc" -->
 <div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">@@@CODE path/to/file
 @@@CODE path/to/file   fromto: start-regex@end-regex
-</code></pre></div>
+</pre></div>
 <p>
 For example, copying a code snippet starting with <code>def solver(</code> and
 ending with (line not included) <code>def next(x, y,</code> is specified by
@@ -1217,7 +1224,7 @@ start and end regular expressions:
 
 <!-- code=text typeset with pygments style "perldoc" -->
 <div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">@@@CODE src/dc_mod.py  fromto: def solver\(@def next\(x,\s*y,
-</code></pre></div>
+</pre></div>
 <p>
 
 </section>
@@ -1288,7 +1295,7 @@ y = exp(-0.1*x)*cos(x)
 plot(x, y)
 xlabel(&#39;x&#39;); ylabel(&#39;y&#39;)
 show()
-</code></pre></div>
+</pre></div>
 <p>
 <div class="alert alert-block alert-warning alert-text-normal"><b style="font-weight: bold">Warning.</b>
 Works only in Sphinx documents (but HTML support is possible).
@@ -1326,7 +1333,7 @@ Can take a <a href="http://hplgit.github.com/teamods/writing_reports/_static/rep
   | 2.0  | 1.376512 | 11.919       |
   | 4.0  | 1.1E+1   | 14.717624    |
   |--------------------------------|
-</code></pre></div>
+</pre></div>
 <p>
 Gets rendered as
 
@@ -1395,7 +1402,7 @@ FIGURE: [fig/myfile, width=600] My figure. label{mysec:fig:myfig}
 ===== References =====
 
 BIBFILE: papers.pub
-</code></pre></div>
+</pre></div>
 <p>
 The <code>papers.pub</code> file must be in <a href="https://bitbucket.org/logg/publish" target="_blank">Publish</a>
 format (easy to make from BibTeX).
@@ -1437,7 +1444,7 @@ Compute the probability of getting heads.
 0.5.
 !eans
 !esubex
-</code></pre></div>
+</pre></div>
 <p>
 
 </section>
@@ -1517,7 +1524,7 @@ processing (e.g., making a book of problems).
              &#39;text&#39;: &#39;Make a program that simulates ...&#39;},],
   &#39;title&#39;: &#39;Flip a Coin&#39;,
   &#39;type&#39;: &#39;Problem&#39;}]
-</code></pre></div>
+</pre></div>
 <p>
 
 </section>
@@ -1657,7 +1664,7 @@ And maybe a final comment?
 
 !split
 ======= Next slide... =======
-</code></pre></div>
+</pre></div>
 <p>
 
 </section>
@@ -1734,7 +1741,7 @@ FIGURE: [fig/broken_pen_and_paper, width=400, frac=0.8]
 
 !split
 ======= Next slide... =======
-</code></pre></div>
+</pre></div>
 <p>
 
 </section>
@@ -1897,7 +1904,7 @@ doconce format html doconcefile --no_pygments_html
 
 # Further making of slides
 doconce slides_html doconcefile reveal --html_slide_theme=darkgray
-</code></pre></div>
+</pre></div>
 <p>
 
 </section>
@@ -1926,7 +1933,7 @@ For wordpress, add <code>--wordpress</code>:
 
 <!-- code=text typeset with pygments style "perldoc" -->
 <div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">doconce format html doconcefile --wordpress
-</code></pre></div>
+</pre></div>
 <p>
 and paste the code into the text area.
 
@@ -1960,7 +1967,7 @@ doconce ptex2tex doconcefile envir=minted
 
 doconce format pdflatex doconcefile
 doconce ptex2tex doconcefile envir=ans:nt
-</code></pre></div>
+</pre></div>
 <p>
 
 </section>
@@ -1982,7 +1989,7 @@ doconce sphinx_dir theme=pyramid doconcefile
 python automake-sphinx.py
 
 google-chrome sphinx-rootdir/_build/html/index.html
-</code></pre></div>
+</pre></div>
 <p>
 Much easier than running the Sphinx tools manually!
 
@@ -2002,7 +2009,7 @@ Only MediaWiki supports math.
 
 <!-- code=text typeset with pygments style "perldoc" -->
 <div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">doconce format mwiki doconcefile
-</code></pre></div>
+</pre></div>
 <p>
 Recommended site:
 
@@ -2041,7 +2048,7 @@ doconce format gwiki  doconcefile  # Googlecode wiki
 doconce format cwiki  doconcefile  # Creole wiki (Bitbucket)
 doconce format rst    doconcefile  # reStructuredText
 doconce format plain  doconcefile  # plain, untagged text for email
-</code></pre></div>
+</pre></div>
 <p>
 
 </section>
@@ -2201,6 +2208,11 @@ For output formats different from <code>latex</code>, <code>pdflatex</code>, and
 
 
 
+
+<footer>
+<!-- Here goes a footer -->
+</footer>
+
 <!-- Begin extension snippets. Add or remove as needed. -->
 
 <!-- deck.navigation snippet -->
@@ -2232,7 +2244,7 @@ For output formats different from <code>latex</code>, <code>pdflatex</code>, and
 
 
 <!-- Required JS files. -->
-<script src="deck.js/jquery-1.7.2.min.js"></script>
+<script src="deck.js/jquery.min.js"></script>
 <script src="deck.js/core/deck.core.js"></script>
 
 <!-- Extension JS files. Add or remove as needed. -->
@@ -2248,8 +2260,8 @@ For output formats different from <code>latex</code>, <code>pdflatex</code>, and
 <!-- From https://github.com/mikeharris100/deck.pointer.js -->
 <script src="deck.js/extensions/pointer/deck.pointer.js"></script>
 
-<!-- From https://github.com/stvnwrgs/presenterview -->
-<script type="text/javascript" src="deck.js/extensions/presenterview/deck.presenterview.js"></script>
+<!-- From https://github.com/stvnwrgs/presenterview
+<script type="text/javascript" src="deck.js/extensions/presenterview/deck.presenterview.js"></script> -->
 
 <!-- From https://github.com/nemec/deck.annotate.js
 <script type="text/javascript" src="deck.js/extensions/deck.annotate.js/deck.annotate.js"></script>

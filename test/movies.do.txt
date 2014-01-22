@@ -38,7 +38,7 @@ Here is the same collection, but with images in cyberspace, given as URLs:
 http://hplgit.github.io/animate/..../frame_%04d.png:80->129
 !ec
 
-MOVIE: [http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_%04d.png:80->129]
+MOVIE: [http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_%04d.png:80->129] Taking images to animate from cyberspace.
 
 The movie above in MPEG format, typeset in a box:
 

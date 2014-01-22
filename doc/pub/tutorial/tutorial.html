@@ -41,8 +41,9 @@ Automatically generated HTML file from Doconce source
              padding:8px 35px 8px 14px; margin-bottom:18px;
              text-shadow:0 1px 0 rgba(255,255,255,0.5);
              border:1px solid #bababa;
-             -webkit-border-radius: 4px; -moz-border-radius: 4px;
-             border-radius: 4px
+             border-radius: 4px;
+             -webkit-border-radius: 4px;
+             -moz-border-radius: 4px;
              color: #555;
              background-color: #f8f8f8;
              background-position: 10px 5px;
@@ -92,42 +93,46 @@ Automatically generated HTML file from Doconce source
               (' HTML ', 2, None, '___sec14'),
               (' Basics ', 3, None, '___sec15'),
               (' Typesetting of Code ', 3, None, '___sec16'),
-              (' HTML Styles ', 3, None, '___sec17'),
-              (' HTML templates ', 3, None, '___sec18'),
-              (' The HTML File Collection ', 3, None, '___sec19'),
-              (' Filenames ', 3, None, '___sec20'),
-              (' Blog Posts ', 2, None, '___sec21'),
-              (' Pandoc and Markdown ', 2, None, '___sec22'),
-              (' GitHub-flavored Markdown ', 3, None, '___sec23'),
-              (' LaTeX ', 2, None, '___sec24'),
-              (' PDFLaTeX ', 2, None, '___sec25'),
-              (' XeLaTeX ', 2, None, '___sec26'),
-              (' Plain ASCII Text ', 2, None, '___sec27'),
-              (' reStructuredText ', 2, None, '___sec28'),
-              (' Sphinx ', 2, None, '___sec29'),
-              (' The manual Sphinx procedure ', 3, None, '___sec30'),
-              (' Wiki Formats ', 2, None, '___sec31'),
-              (' Google Docs ', 2, None, '___sec32'),
-              (' Tweaking the Doconce Output ', 2, None, '___sec33'),
-              (' Demos ', 2, None, '___sec34'),
+              (' Handling of Movies ', 3, None, '___sec17'),
+              (' HTML Styles ', 3, None, '___sec18'),
+              (' HTML templates ', 3, None, '___sec19'),
+              (' The HTML File Collection ', 3, None, '___sec20'),
+              (' Filenames ', 3, None, '___sec21'),
+              (' Blog Posts ', 2, None, '___sec22'),
+              (' Pandoc and Markdown ', 2, None, '___sec23'),
+              (' GitHub-flavored Markdown ', 3, None, '___sec24'),
+              (' LaTeX ', 2, None, '___sec25'),
+              (' PDFLaTeX ', 2, None, '___sec26'),
+              (' XeLaTeX ', 2, None, '___sec27'),
+              (' Plain ASCII Text ', 2, None, '___sec28'),
+              (' reStructuredText ', 2, None, '___sec29'),
+              (' Sphinx ', 2, None, '___sec30'),
+              (' The manual Sphinx procedure ', 3, None, '___sec31'),
+              (' Wiki Formats ', 2, None, '___sec32'),
+              (' Google Docs ', 2, None, '___sec33'),
+              (' Tweaking the Doconce Output ', 2, None, '___sec34'),
+              (' Demos ', 2, None, '___sec35'),
               (' Installation of Doconce and its Dependencies ',
                1,
                None,
-               '___sec35'),
-              (' Doconce ', 2, None, '___sec36'),
-              (' Dependencies ', 2, None, '___sec37'),
-              (' Preprocessors ', 3, None, '___sec38'),
-              (' Image file handling ', 3, None, '___sec39'),
-              (' Spellcheck ', 3, None, '___sec40'),
-              (' Bibliography ', 3, None, '___sec41'),
-              (' Ptex2tex for LaTeX Output ', 3, None, '___sec42'),
-              (' LaTeX packages ', 3, None, '___sec43'),
-              (' reStructuredText (reST) Output ', 3, None, '___sec44'),
-              (' Sphinx Output ', 3, None, '___sec45'),
-              (' Markdown and Pandoc Output ', 3, None, '___sec46'),
-              (' Epydoc Output ', 3, None, '___sec47'),
-              (' The `doconce diff` command ', 3, None, '___sec48'),
-              (' Quick Debian/Ubuntu Install ', 2, None, '___sec49')]}
+               '___sec36'),
+              (' Doconce ', 2, None, '___sec37'),
+              (' Dependencies ', 2, None, '___sec38'),
+              (' Preprocessors ', 3, None, '___sec39'),
+              (' Image file handling ', 3, None, '___sec40'),
+              (' Spellcheck ', 3, None, '___sec41'),
+              (' Bibliography ', 3, None, '___sec42'),
+              (' Ptex2tex for LaTeX Output ', 3, None, '___sec43'),
+              (' LaTeX packages ', 3, None, '___sec44'),
+              (' reStructuredText (reST) Output ', 3, None, '___sec45'),
+              (' Sphinx Output ', 3, None, '___sec46'),
+              (' Markdown and Pandoc Output ', 3, None, '___sec47'),
+              (' Epydoc Output ', 3, None, '___sec48'),
+              (' Analyzing file differences ', 3, None, '___sec49'),
+              (' Quick Debian/Ubuntu Install ',
+               2,
+               'install:debian:script',
+               'install:debian:script')]}
 end of tocinfo -->
 
 <body>
@@ -175,7 +180,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>Dec 1, 2013</h4></center> <!-- date -->
+<center><h4>Jan 10, 2014</h4></center> <!-- date -->
 <p>
 
 <ul>
@@ -724,7 +729,18 @@ Pygments style is set by <code>--pygments_html_style=style</code>, where <code>s
 can be <code>default</code>, <code>emacs</code>, <code>perldoc</code>, and other valid names for
 Pygments styles.
 
-<h4>HTML Styles  <a name="___sec17"></a></h4>
+<h4>Handling of Movies  <a name="___sec17"></a></h4>
+
+<p>
+MP4, WebM, and Ogg movies are typeset with the HTML5 <code>video</code> tag
+and the HTML code tries to load as many versions among MP4, WebM,
+and Ogg as exist (and the files are loaded in the mentioned order).
+If just the specified file is to be loaded, use the
+<code>--no_mp4_webm_ogg_alternatives</code> command-line option.
+Other movie formats, e.g., <code>.flv</code>, <code>.mpeg</code> and <code>.avi</code>, are embedded via
+the older <code>embed</code> tag.
+
+<h4>HTML Styles  <a name="___sec18"></a></h4>
 
 <p>
 The HTML style can be defined either in the header of the HTML file,
@@ -751,7 +767,7 @@ Doconce write the built-in style to that file. Otherwise the HTML
 links to the CSS stylesheet in <code>filename</code>. Several stylesheets can
 be specified: <code>--ccs=file1.css,file2.css,file3.css</code>.
 
-<h4>HTML templates  <a name="___sec18"></a></h4>
+<h4>HTML templates  <a name="___sec19"></a></h4>
 
 <p>
 Templates are HTML files with "slots" <code>%(main)s</code> for the main body
@@ -785,7 +801,7 @@ The template in <code>style_vagrant</code> also needs an extra option
 that are used if the document contains <code>!split</code> commands for splitting
 it into many pages.
 
-<h4>The HTML File Collection  <a name="___sec19"></a></h4>
+<h4>The HTML File Collection  <a name="___sec20"></a></h4>
 
 <p>
 There are usually a range of files needed for an HTML document arising
@@ -793,7 +809,7 @@ from a Doconce source. The needed files are listed in
 <code>.basename_html_file_collection</code>, where <code>basename</code> is the filestem of
 the Doconce file (i.e., the Doconce source is in <code>basename.do.txt</code>).
 
-<h4>Filenames  <a name="___sec20"></a></h4>
+<h4>Filenames  <a name="___sec21"></a></h4>
 
 <p>
 An HTML version of a Doconce document is often made in different styles,
@@ -820,7 +836,7 @@ Terminal&gt; doconce split_html mydoc_vagrant.html
 </code></pre>
 <!-- end verbatim block -->
 
-<h3>Blog Posts  <a name="___sec21"></a></h3>
+<h3>Blog Posts  <a name="___sec22"></a></h3>
 
 <p>
 Doconce can be used for writing blog posts provided the blog site accepts
@@ -900,7 +916,7 @@ Speaking of WordPress, the related project <a href="http://pressbooks.com" targe
 instance) and produce very nice-looking books.  There is no support
 for mathematics in the text, though.
 
-<h3>Pandoc and Markdown  <a name="___sec22"></a></h3>
+<h3>Pandoc and Markdown  <a name="___sec23"></a></h3>
 
 <p>
 Output in Pandoc's extended Markdown format results from
@@ -969,7 +985,7 @@ Terminal&gt; pandoc -t html -o mydoc.html -s --mathjax mydoc.mkd
 The <code>-s</code> option adds a proper header and footer to the <code>mydoc.html</code> file.
 This recipe is a quick way of makeing HTML notes with (some) mathematics.
 
-<h4>GitHub-flavored Markdown  <a name="___sec23"></a></h4>
+<h4>GitHub-flavored Markdown  <a name="___sec24"></a></h4>
 
 <p>
 Adding the command-line option <code>github-md</code> turns on the GutHub-flavored
@@ -1031,7 +1047,7 @@ the GitHub issue tracker. Turning on Preview shows the typesetting of
 the quote, compute code, inline verbatim, headings, the task list, and
 the table.
 
-<h3>LaTeX  <a name="___sec24"></a></h3>
+<h3>LaTeX  <a name="___sec25"></a></h3>
 
 <p>
 <div class="alert alert-block alert-notice alert-text-normal"><b>Notice.</b>
@@ -1148,10 +1164,13 @@ Preprocessor variables to be defined or undefined are
  <li> <code>A4PAPER</code> for A4 paper size</li>
  <li> <code>A6PAPER</code> for A6 paper size (suitable for reading PDFs on phones)</li>
  <li> <code>MOVIE</code> for specifying how movies are handled: the value <code>media9</code>
-   implies the <code>media9</code> package and the <code>\includemedia</code> command (default),
-   while other values are <code>movie15</code> (<code>\includemovie</code> command),
-   <code>multimedia</code> (for Beamer-style <code>\movie</code> command),
-   or <code>href-run</code> (for the plain <code>\href{run:file}</code> command)</li>
+   implies the <code>media9</code> package and the <code>\includemedia</code> command
+   for <code>.flv</code> and <code>.mp4</code> movies,
+   or <code>movie15</code> and the <code>\includemovie</code> command for <code>.mpeg</code> and <code>.avi</code>
+   movies;
+   <code>multimedia</code> for Beamer-style <code>\movie</code> command,
+   or <code>href</code> for the plain <code>\href{run:file}</code> command. The latter
+   is default.</li>
  <li> <code>MOVIE_CONTROLS</code> adds buttons for starting/stopping movies if the
    <code>media9</code> package is used.</li>
  <li> <code>PREAMBLE</code> to turn the LaTeX preamble on or off (i.e., complete document
@@ -1168,6 +1187,10 @@ Preprocessor variables to be defined or undefined are
  <li> <code>LINENUMBERS</code> for inclusion of line numbers in the text.</li>
  <li> <code>COLORED_TABLE_ROWS</code> for coloring every other table rows (set this
    variable to <code>gray</code> or <code>blue</code>).</li>
+ <li> <code>FANCY_HEADER</code> for turning on headers with section title and page
+   (and also chapter title on odd numbered pages if chapters exist).</li>
+ <li> <code>DOUBLE_SPACING</code> for 50 percent larger line spacing (useful for
+   pen corrections) and LaTeX "draft" mode.</li>
 </ul>
 
 There are also preprocessor variables with specific values:
@@ -1340,7 +1363,7 @@ Terminal&gt; dvipdf mydoc
 </code></pre>
 <!-- end verbatim block -->
 
-<h3>PDFLaTeX  <a name="___sec25"></a></h3>
+<h3>PDFLaTeX  <a name="___sec26"></a></h3>
 
 <p>
 Running <code>pdflatex</code> instead of <code>latex</code> follows almost the same steps,
@@ -1358,7 +1381,7 @@ Terminal&gt; pdflatex -shell-escape mydoc
 </code></pre>
 <!-- end verbatim block -->
 
-<h3>XeLaTeX  <a name="___sec26"></a></h3>
+<h3>XeLaTeX  <a name="___sec27"></a></h3>
 
 <p>
 XeLaTeX is an alternative to pdfLaTeX and is run in almost the
@@ -1373,7 +1396,7 @@ Terminal&gt; xelatex mydoc
 </code></pre>
 <!-- end verbatim block -->
 
-<h3>Plain ASCII Text  <a name="___sec27"></a></h3>
+<h3>Plain ASCII Text  <a name="___sec28"></a></h3>
 
 <p>
 We can go from Doconce "back to" plain untagged text suitable for viewing
@@ -1384,7 +1407,7 @@ computer source code:
 </code></pre>
 <!-- end verbatim block -->
 
-<h3>reStructuredText  <a name="___sec28"></a></h3>
+<h3>reStructuredText  <a name="___sec29"></a></h3>
 
 <p>
 Going from Doconce to reStructuredText gives a lot of possibilities to
@@ -1440,7 +1463,7 @@ Some links for going from LaTeX to Word are listed below.
  <li> <a href="http://nileshbansal.blogspot.com/2007/12/latex-to-openofficeword.html" target="_self"><tt>http://nileshbansal.blogspot.com/2007/12/latex-to-openofficeword.html</tt></a></li>
 </ul>
 
-<h3>Sphinx  <a name="___sec29"></a></h3>
+<h3>Sphinx  <a name="___sec30"></a></h3>
 
 <p>
 Sphinx documents demand quite some steps in their creation. We have automated
@@ -1634,7 +1657,7 @@ and reuse it the next time <code>doconce sphinx_dir</code> is run
 </code></pre>
 <!-- end verbatim block -->
 
-<h4>The manual Sphinx procedure  <a name="___sec30"></a></h4>
+<h4>The manual Sphinx procedure  <a name="___sec31"></a></h4>
 
 <p>
 If it is not desirable to use the autogenerated scripts explained
@@ -1744,7 +1767,7 @@ depending the argument that follows <code>!bc</code>: <code>cod</code> gives Pyt
 (<code>code-block:: python</code> in Sphinx syntax) and <code>cppcod</code> gives C++, but
 all such arguments can be customized both for Sphinx and LaTeX output.
 
-<h3>Wiki Formats  <a name="___sec31"></a></h3>
+<h3>Wiki Formats  <a name="___sec32"></a></h3>
 
 <p>
 There are many different wiki formats, but Doconce only supports three:
@@ -1791,7 +1814,7 @@ the <code>.gwiki</code> file be replaced by a URL where the figure is
 available. There are instructions in the file for doing this. Usually,
 one performs this substitution automatically (see next section).
 
-<h3>Google Docs  <a name="___sec32"></a></h3>
+<h3>Google Docs  <a name="___sec33"></a></h3>
 
 <p>
 Google Docs are normally made online in the interactive editor. However,
@@ -1824,7 +1847,7 @@ Google Docs. Support for mathematics is probably impossible until
 Google Docs can import LaTeX files, but LaTeX mathematics can be embedded
 in Google Docs and the <a href="http://code.google.com/p/googledoc2latex" target="_self">googledoc2latex</a> script can convert a Google document to LaTeX.
 
-<h3>Tweaking the Doconce Output  <a name="___sec33"></a></h3>
+<h3>Tweaking the Doconce Output  <a name="___sec34"></a></h3>
 
 <p>
 Occasionally, one would like to tweak the output in a certain format
@@ -1839,7 +1862,7 @@ from a script to automate all steps in going from Doconce to the final
 format(s). The <code>make.sh</code> files in <code>docs/manual</code> and <code>docs/tutorial</code>
 constitute comprehensive examples on how such scripts can be made.
 
-<h3>Demos  <a name="___sec34"></a></h3>
+<h3>Demos  <a name="___sec35"></a></h3>
 
 <p>
 The current text is generated from a Doconce format stored in the file
@@ -1859,7 +1882,7 @@ There is another demo in the <code>docs/manual</code> directory which
 translates the more comprehensive documentation, <code>manual.do.txt</code>, to
 various formats. The <code>make.sh</code> script runs a set of translations.
 
-<h2>Installation of Doconce and its Dependencies  <a name="___sec35"></a></h2>
+<h2>Installation of Doconce and its Dependencies  <a name="___sec36"></a></h2>
 
 <p>
 Below, we explain the manual installation of all software that may be
@@ -1868,7 +1891,7 @@ The impatient way to install what is needed is to run the
 <a href="install_doconce.sh" target="_self"><tt>install_doconce.sh</tt></a> (or
 <a href="install_doconce.py" target="_self"><tt>install_doconce.py</tt></a>) script.
 
-<h3>Doconce  <a name="___sec36"></a></h3>
+<h3>Doconce  <a name="___sec37"></a></h3>
 
 <p>
 Doconce itself is pure Python code hosted at <a href="https://github.com/hplgit/doconce" target="_self"><tt>https://github.com/hplgit/doconce</tt></a>.  Its installation from the
@@ -1893,7 +1916,7 @@ sudo python setup.py install
 </code></pre>
 <!-- end verbatim block -->
 
-<h3>Dependencies  <a name="___sec37"></a></h3>
+<h3>Dependencies  <a name="___sec38"></a></h3>
 
 <p>
 Producing HTML documents, plain text, pandoc-extended Markdown,
@@ -1904,9 +1927,13 @@ as preprocesors, spellcheck, file differences, bibliographies,
 and so on, the software below must be installed.
 
 <p>
+To install all needed packages on a GNU/Linux Debian system, such as
+Ubuntu, you can jump to the script in the section <a href="#install:debian:script">Quick Debian/Ubuntu Install</a>.
+
+<p>
 <!-- Make a debpkg_doconce.txt file with everything that is needed on Debian -->
 
-<h4>Preprocessors  <a name="___sec38"></a></h4>
+<h4>Preprocessors  <a name="___sec39"></a></h4>
 
 <p>
 If you make use of the <a href="http://code.google.com/p/preprocess" target="_self">Preprocess</a>
@@ -1948,15 +1975,16 @@ Mako can also be installed directly from
 tarball, pack it out, go to the directory and run
 the usual <code>sudo python setup.py install</code>.
 
-<h4>Image file handling  <a name="___sec39"></a></h4>
+<h4>Image file handling  <a name="___sec40"></a></h4>
 
 <p>
 Different output formats require different formats of image files.
-For example, PostScript or Encapuslated PostScript is required for <code>latex</code>
-output, while HTML needs JPEG, GIF, or PNG formats.
-Doconce calls up programs from the ImageMagick suite for converting
-image files to a proper format if needed. The <a href="http://www.imagemagick.org/script/index.php" target="_self">ImageMagick suite</a> can be installed on all major platforms.
-On Debian Linux (including Ubuntu) systems one can simply write
+For example, PostScript or Encapuslated PostScript is required for
+<code>latex</code> output, while HTML needs JPEG, GIF, or PNG formats.  Doconce
+calls up programs from the ImageMagick suite for converting image
+files to a proper format if needed. The <a href="http://www.imagemagick.org/script/index.php" target="_self">ImageMagick suite</a> can be installed on all
+major platforms.  On Debian Linux (including Ubuntu) systems one can
+simply write
 
 <p>
 <!-- begin verbatim block  sys-->
@@ -1986,7 +2014,7 @@ can be installed by
 </code></pre>
 <!-- end verbatim block -->
 
-<h4>Spellcheck  <a name="___sec40"></a></h4>
+<h4>Spellcheck  <a name="___sec41"></a></h4>
 
 <p>
 The utility <code>doconce spellcheck</code> applies the <code>ispell</code> program for
@@ -1998,7 +2026,7 @@ spellcheck. On Debian (including Ubuntu) it is installed by
 </code></pre>
 <!-- end verbatim block -->
 
-<h4>Bibliography  <a name="___sec41"></a></h4>
+<h4>Bibliography  <a name="___sec42"></a></h4>
 
 <p>
 The Python package <a href="https://bitbucket.org/logg/publish" target="_self">Publish</a> is needed if you use a bibliography
@@ -2020,7 +2048,7 @@ sudo python setup.py
 </code></pre>
 <!-- end verbatim block -->
 
-<h4>Ptex2tex for LaTeX Output  <a name="___sec42"></a></h4>
+<h4>Ptex2tex for LaTeX Output  <a name="___sec43"></a></h4>
 
 <p>
 To make LaTeX documents with very flexible choice of typesetting of
@@ -2104,7 +2132,7 @@ or <code>doconce ptex2tex</code> command is run with <code>-DTODONOTES</code>.  
 <code>ifthen</code>, <code>xkeyval</code>, <code>tikz</code>, <code>calc</code>, <code>graphicx</code>, and <code>setspace</code>. The
 relevant Debian packages for installing all this are listed below.
 
-<h4>LaTeX packages  <a name="___sec43"></a></h4>
+<h4>LaTeX packages  <a name="___sec44"></a></h4>
 
 <p>
 Many LaTeX packages are potentially needed (depending on various
@@ -2154,7 +2182,7 @@ If you want to use the <em>anslistings</em> code environment with <code>ptex2tex
 the <a href="https://code.google.com/p/ptex2tex/source/browse/trunk/latex/styles/with_license/anslistings.sty" target="_self">ptex2tex source</a>. It should get installed
 by the <code>cp2texmf.sh</code> script executed above.
 
-<h4>reStructuredText (reST) Output  <a name="___sec44"></a></h4>
+<h4>reStructuredText (reST) Output  <a name="___sec45"></a></h4>
 
 <p>
 The <code>rst</code> output from Doconce allows further transformation to LaTeX,
@@ -2193,7 +2221,7 @@ using ReportLab instead of LaTeX. The enabling software is
 or clone the svn repository, go to the <code>rst2pdf</code> directory and
 run the usual <code>sudo python setup.py install</code>.
 
-<h4>Sphinx Output  <a name="___sec45"></a></h4>
+<h4>Sphinx Output  <a name="___sec46"></a></h4>
 
 <p>
 Output to <code>sphinx</code> requires of course the
@@ -2234,7 +2262,7 @@ additional Python/Sphinx modules to be installed:
 These must be downloaded or cloned, and <code>setup.py</code> must be run as shown
 above.
 
-<h4>Markdown and Pandoc Output  <a name="___sec46"></a></h4>
+<h4>Markdown and Pandoc Output  <a name="___sec47"></a></h4>
 
 <p>
 The Doconce format <code>pandoc</code> outputs the document in the Pandoc
@@ -2249,7 +2277,7 @@ easily done by
 <!-- end verbatim block -->
 on Debian (Ubuntu) systems.
 
-<h4>Epydoc Output  <a name="___sec47"></a></h4>
+<h4>Epydoc Output  <a name="___sec48"></a></h4>
 
 <p>
 When the output format is <code>epydoc</code> one needs that program too, installed
@@ -2273,7 +2301,7 @@ run <code>svn update</code>, and then <code>sudo python setup.py install</code>.
 Mercurial (<code>hg</code>) directories, go to the directory, run
 <code>hg pull; hg update</code>, and then <code>sudo python setup.py install</code>.
 
-<h4>The <code>doconce diff</code> command  <a name="___sec48"></a></h4>
+<h4>Analyzing file differences  <a name="___sec49"></a></h4>
 
 <p>
 The <code>doconce diff file1 file prog</code> command for illustrating differences between
@@ -2286,17 +2314,17 @@ appear in the table below.
 
 <p>
 <table border="1">
-<tr><td align="center"><b>                                          Program                                           </b></td> <td align="center"><b>                                            URL                                             </b></td> <td align="center"><b>                                   Debian/Ubuntu install                                    </b></td> </tr>
-<tr><td align="left">   <code>pdiff</code>                                                                            </td> <td align="left">   <a href="http://www.gnu.org/software/a2ps/" target="_self">a2ps</a> <a href="http://www.gnu.org/software/wdiff/" target="_self">wdiff</a>     </td> <td align="left">   <code>sudo apt-get install a2ps wdiff texlive-latex-extra texlive-latex-recommended</code>    </td> </tr>
-<tr><td align="left">   <code>latexdiff</code>                                                                        </td> <td align="left">   <a href="http://www.ctan.org/pkg/latexdiff" target="_self">latexdiff</a>                                              </td> <td align="left">   <code>sudo apt-get install latexdiff</code>                                                   </td> </tr>
-<tr><td align="left">   <code>kdiff3</code>                                                                           </td> <td align="left">   <a href="http://kdiff3.sourceforge.net/" target="_self">kdiff3</a>                                                    </td> <td align="left">   <code>sudo apt-get install kdiff3</code>                                                      </td> </tr>
-<tr><td align="left">   <code>diffuse</code>                                                                          </td> <td align="left">   <a href="http://diffuse.sourceforge.net/" target="_self">diffuse</a>                                                  </td> <td align="left">   <code>sudo apt-get install diffuse</code>                                                     </td> </tr>
-<tr><td align="left">   <code>xxdiff</code>                                                                           </td> <td align="left">   <a href="http://xxdiff.sourceforge.net/local/" target="_self">xxdiff</a>                                              </td> <td align="left">   <code>sudo apt-get install xxdiff</code>                                                      </td> </tr>
-<tr><td align="left">   <code>meld</code>                                                                             </td> <td align="left">   <a href="http://meldmerge.org/" target="_self">meld</a>                                                               </td> <td align="left">   <code>sudo apt-get install meld</code>                                                        </td> </tr>
-<tr><td align="left">   <code>tkdiff.tcl</code>                                                                       </td> <td align="left">   <a href="https://sourceforge.net/projects/tkdiff/" target="_self">tkdiff</a>                                          </td> <td align="left">   not in Debian                                                                                 </td> </tr>
+<tr><td align="center"><b>                                                                  Program                                                                  </b></td> <td align="center"><b>                                                                    URL                                                                    </b></td> <td align="center"><b>                                                           Debian/Ubuntu install                                                           </b></td> </tr>
+<tr><td align="left">   <code>pdiff</code>                                                                                                                           </td> <td align="left">   <a href="http://www.gnu.org/software/a2ps/" target="_self">a2ps</a> <a href="http://www.gnu.org/software/wdiff/" target="_self">wdiff</a>    </td> <td align="left">   <code>sudo apt-get install a2ps wdiff texlive-latex-extra texlive-latex-recommended</code>                                                   </td> </tr>
+<tr><td align="left">   <code>latexdiff</code>                                                                                                                       </td> <td align="left">   <a href="http://www.ctan.org/pkg/latexdiff" target="_self">latexdiff</a>                                                                     </td> <td align="left">   <code>sudo apt-get install latexdiff</code>                                                                                                  </td> </tr>
+<tr><td align="left">   <code>kdiff3</code>                                                                                                                          </td> <td align="left">   <a href="http://kdiff3.sourceforge.net/" target="_self">kdiff3</a>                                                                           </td> <td align="left">   <code>sudo apt-get install kdiff3</code>                                                                                                     </td> </tr>
+<tr><td align="left">   <code>diffuse</code>                                                                                                                         </td> <td align="left">   <a href="http://diffuse.sourceforge.net/" target="_self">diffuse</a>                                                                         </td> <td align="left">   <code>sudo apt-get install diffuse</code>                                                                                                    </td> </tr>
+<tr><td align="left">   <code>xxdiff</code>                                                                                                                          </td> <td align="left">   <a href="http://xxdiff.sourceforge.net/local/" target="_self">xxdiff</a>                                                                     </td> <td align="left">   <code>sudo apt-get install xxdiff</code>                                                                                                     </td> </tr>
+<tr><td align="left">   <code>meld</code>                                                                                                                            </td> <td align="left">   <a href="http://meldmerge.org/" target="_self">meld</a>                                                                                      </td> <td align="left">   <code>sudo apt-get install meld</code>                                                                                                       </td> </tr>
+<tr><td align="left">   <code>tkdiff.tcl</code>                                                                                                                      </td> <td align="left">   <a href="https://sourceforge.net/projects/tkdiff/" target="_self">tkdiff</a>                                                                 </td> <td align="left">   not in Debian                                                                                                                                </td> </tr>
 </table>
 
-<h3>Quick Debian/Ubuntu Install  <a name="___sec49"></a></h3>
+<h3>Quick Debian/Ubuntu Install <a name="install:debian:script"></a></h3>
 
 <p>
 On Debian (including Ubuntu) systems, it is straightforward to install the
@@ -2310,19 +2338,13 @@ sudo apt-get install -y mercurial git subversion
 # Python
 sudo apt-get install -y idle ipython python-pip python-pdftools texinfo
 
-# These lines are only necessary for Ubuntu 12.04 to install texlive 2012
-ubuntu_version=`lsb_release -r | awl '{print $2}'`
-if [ $ubuntu_version = &quot;12.04&quot; ]; then
-  sudo add-apt-repository ppa:texlive-backports/ppa
-  sudo apt-get update
-fi
 # LaTeX
 sudo apt-get install -y texlive texlive-extra-utils texlive-latex-extra texlive-math-extra texlive-font-utils
 # or sudo apt-get install -y texlive-full  # get everything
 sudo apt-get install -y latexdiff auctex
 
 # Image and movie tools
-sudo apt-get install -y imagemagick netpbm mjpegtools pdftk giftrans gv evince smpeg-plaympeg mplayer totem ffmpeg libav-tools
+sudo apt-get install -y imagemagick netpbm mjpegtools pdftk giftrans gv libav-tools libavcodec-extra-53 libx264-dev ffmpeg mencoder evince mplayer gnome-mplayer totem vlc browser-plugin-vlc
 
 # Misc
 sudo apt-get install -y ispell pandoc libreoffice unoconv libreoffice-dmaths curl a2ps wdiff meld xxdiff diffpdf kdiff3 diffuse
@@ -2359,6 +2381,8 @@ sh cp2texmf.sh  # copy stylefiles to ~/texmf directory
 cd ../../..
 </code></pre>
 <!-- end verbatim block -->
+
+<p>
 
 <!-- ------------------- end of main content --------------- -->
 
