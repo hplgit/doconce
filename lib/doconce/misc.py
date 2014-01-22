@@ -5676,6 +5676,7 @@ def _latex2doconce(filestr):
         (r'\\texttt\{(?P<subst>[^}]+)\}', r'`\g<subst>`'),
         (r'\{\\em\s+(?P<subst>.+?)\}', r'*\g<subst>*'),
         (r'\{\\bf\s+(?P<subst>.+?)\}', r'_\g<subst>_'),
+        (r'\{\\it\s+(?P<subst>.+?)\}', r'*\g<subst>*'),
         (r'\\textbf\{(?P<subst>.+?)\}', r'_\g<subst>_'),
         (r'\\eqref\{(?P<subst>.+?)\}', r'(ref{\g<subst>})'),
         (r'(\S)\\label\{', r'\g<1> \\label{'),
@@ -6137,7 +6138,12 @@ def _latex2doconce(filestr):
     filestr = filestr.replace(r'\ref{', 'ref{')
     filestr = filestr.replace(r'\cite{', 'cite{')
     filestr = filestr.replace(r'\cite[', 'cite[')
-    filestr = filestr.replace(r'\noindent', '')
+    filestr = filestr.replace(r'\noindent', r"""# #if FORMAT in ("latex", "pdflatex")
+\noindent
+# #endif""")
+    filestr = re.sub(r'\\vspace\{(.+?)\}', r"""# #if FORMAT in ("latex", "pdflatex")
+\\vspace{\g<1>}
+# #endif""", filestr)
     filestr = filestr.replace(r'\_', '_')
     filestr = filestr.replace(r' -- ', ' - ')
     filestr = filestr.replace(r'}--ref', '}-ref')

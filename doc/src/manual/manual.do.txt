@@ -1765,7 +1765,8 @@ This is a hint.
 |enotice
 
 |bblock This is a block.
-A block has never any icon.
+A block has never any icon. It is mostly used in slides
+and give the text block effect in LaTeX beamer.
 |eblock
 
 |bnotice Going deeper
@@ -1855,6 +1856,29 @@ Several values are available:
    of key points around.
  * `graybox3` has icons and a light gray background.
  * `yellowbox` has icons and a light yellow background.
+
+=== The Box Environment ===
+
+A plain box without any title, just a rectangular frame, is also
+available. One application is to frame an equation or a
+key result. The syntax goes like
+
+!bc
+|bbox
+|bt
+\[ \nabla\cdot\bm{u} = 0  \quad\hbox{(mass balance)}\]
+|et
+|ebox
+!ec
+resulting in
+
+!bbox
+!bt
+\[ \nabla\cdot\bm{u} = 0\quad\hbox{(mass balance)}\]
+!et
+!ebox
+
+
 
 ===== Preprocessing Steps =====
 
