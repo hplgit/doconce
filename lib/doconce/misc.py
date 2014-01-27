@@ -4702,7 +4702,8 @@ _replacements = [
     (r"\b[A-Za-z_0-9/.:]+\.(com|org|net|edu|)\b", ""),  # net name
     (r'\[[A-Za-z]+:\s+[^\]]*?\]', ''),  # inline comment
     (r'^\s*file=[A-Za-z_0-9., ]+\s*$', '', re.MULTILINE),
-    (r"^@@@CODE.*$",    "", re.MULTILINE),
+    (r"^@@@CODE.*$", "", re.MULTILINE),
+    (r"^@@@OSCMD.*$", "", re.MULTILINE),
     (r"^\s*(FIGURE|MOVIE):\s*\[.+?\]",    "", re.MULTILINE),
     (r"^\s*BIBFILE:.+$",    "", re.MULTILINE),
     (r"^\s*TOC:\s+(on|off)", "", re.MULTILINE),
@@ -5263,7 +5264,7 @@ def capitalize():
         'Celsius', 'Fahrenheit', 'Kelvin',
         'Fahrenheit-Celsius',
         'Newton', 'Gauss', "Gauss'",
-        'Legendre', 'Lagrange',
+        'Legendre', 'Lagrange', 'Markov',
         'Laguerre', 'Taylor', 'Einstein',
         'Maxwell', 'Euler', 'Gaussian', 'Eulerian', 'Lagrangian',
         'Poisson',
