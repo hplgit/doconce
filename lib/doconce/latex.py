@@ -134,6 +134,9 @@ def latex_code(filestr, code_blocks, code_block_types,
     if include_numbering_of_exercises:
         # Remove section numbers of exercise sections
         exercise_pattern = r'subsection\*?\{(Exercise|Problem|Project) +(\d+)\s*: +(.+\})'
+        # Make table of contents or list of exercises entry
+        # (might have to add \phantomsection right before because
+        # of the hyperref package?)
         filestr, n = re.subn(exercise_pattern,
                          r"""subsection*{\g<1> \g<2>: \g<3>
 % #if LIST_OF_EXERCISES == "toc"
@@ -943,6 +946,9 @@ def latex_index_bib(filestr, index, citations, pubfile, pubdata):
                                     application='replacement'), word)
             # fix underscores:
             word = word.replace('_', r'\_')
+
+            # fix %
+            word = word.replace('%', r'\%')
         replacement = r'\index{%s}' % word
         filestr = filestr.replace(pattern, replacement)
 
