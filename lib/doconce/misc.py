@@ -5257,7 +5257,7 @@ def ref_external():
 
     # Find labels and references in this doconce document
     dummy, dummy, dummy, mylabels, mytext = process_external_doc(basename)
-    refs = re.findall(r'\s+([A-Za-z]+?)\s+(ref\{.+\})', mytext)
+    refs = re.findall(r'\s+([A-Za-z]+?)\s+ref\{(.+?)\}', mytext)
     refs = [(prefix.strip(), ref.strip()) for prefix, ref in refs]
 
     extdocs_info = {}
@@ -5266,9 +5266,14 @@ def ref_external():
         title, key, url, labels, text = process_external_doc(external_doc)
         extdocs_info[external_doc] = dict(title=title, key=key,
                                           url=url, labels=labels)
+        print 'XXX external doc', external_doc, labels
         for prefix, ref in refs:
-            if ref in labels:
-                refs2extdoc[ref] = (external_doc, prefix)
+            if ref not in mylabels:
+                print 'XXX external ref', ref
+                if ref in labels:
+                    refs2extdoc[ref] = (external_doc, prefix)
+                else:
+                    print 'XXX no info about %s in %s' % (ref, external_doc)
     # We now have all references in refs2extdoc and can via extdocs_info
     # get additional info about all references
     for label in mylabels:
@@ -5282,13 +5287,18 @@ def ref_external():
     # Substitute all external references by ref[][][]
     f = open('substscript.sh', 'w')
     for prefix, ref in refs:
-        f.write(r'doconce subst "%(prefix)s\s+ref{%(ref)s}"' % vars())
-        f.write('"ref[%(prefix)s ref{%(ref)s}]' % vars())
-        f.write('[in cite{%s}]' % refs2extdoc[ref][0]['key'])
-        f.write('[in "%s": "%s" cite{%s}]' %
-                (refs2extdoc[ref][0]['title'], refs2extdoc[ref][0]['url'],
-                 refs2extdoc[ref][0]['key']))
-        f.write('"\n')
+        if ref not in mylabels:
+            f.write(r'doconce subst "%(prefix)s\s+ref{%(ref)s}"  ' % vars())
+            f.write('"ref[%(prefix)s ref{%(ref)s}]' % vars())
+            if ref in refs2extdoc:
+                f.write('[in cite{%s}]' % extdocs_info[refs2extdoc[ref][0]]['key'])
+                f.write('[in "%s": "%s" cite{%s}]' %
+                        (extdocs_info[refs2extdoc[ref][0]]['title'],
+                         extdocs_info[refs2extdoc[ref][0]]['url'],
+                         extdocs_info[refs2extdoc[ref][0]]['key']))
+            else:
+                f.write('[no cite info][no doc info]')
+            f.write('"\n\n')
 
 
 def _usage_latex_problems():

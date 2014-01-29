@@ -295,7 +295,7 @@ def syntax_check(filestr, format):
 
     # Check that references have parenthesis (equations) or
     # the right preceding keyword (Section, Chapter, Exercise, etc.)
-    pattern = re.compile(r'\s+([A-Za-z]+?)\s+(ref\{.+\})', re.MULTILINE)
+    pattern = re.compile(r'\s+([A-Za-z]+?)\s+(ref\{.+?\})', re.MULTILINE)
     refs = pattern.findall(filestr)
     prefixes = ['chapter', 'ch.',
                 'section', 'sec.',
