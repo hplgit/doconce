@@ -299,7 +299,7 @@ def syntax_check(filestr, format):
     refs = pattern.findall(filestr)
     prefixes = ['chapter', 'ch.',
                 'section', 'sec.',
-                'appendix', 'app.',
+                'appendix', 'app.', 'appendice',
                 'figure', 'fig.',
                 'movie',
                 'exercise',
@@ -309,9 +309,10 @@ def syntax_check(filestr, format):
                 'and', 'or']
     for prefix, ref in refs:
         if prefix[-1] == 's':
+            orig_prefix = prefix
             prefix = prefix[:-1]  # skip plural
         if not prefix.lower() in prefixes:
-            print '*** warning: found reference "%s %s" with unexpected word "%s" in front' % (prefix, ref, prefix),
+            print '*** warning: found reference "%s %s" with unexpected word "%s" in front' % (orig_prefix, ref, orig_prefix),
             print '    (reference to equation, but missing parenthesis in (%s)?)' % (ref)
 
     # Code/tex blocks cannot have a comment, table, figure, etc.

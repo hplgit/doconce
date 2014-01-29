@@ -87,6 +87,8 @@ inserted to the right in exercises - "default" and "none" are allowed
      "Type of admonition in LaTeX: colors1-2, graybox1-3, yellowbox, paragraph."),
     ('--latex_admon_color=',
      "Admonition color in LaTeX, rgb tuple or saturated color a la gray!5."),
+    ('--latex_exercise_numbering=',
+     'absolute: exercises numbered as 1, 2, ... chapter: exercises numbered as 1.1, 1.2, ... , 3.1, 3.2, etc. with a chapter prefix.'),
     ('--css=',
      """Specify a .css style file for HTML output. If the file does not exist, the default or specified style (--html_style=) is written to it."""),
     ('--verbose',
@@ -4719,6 +4721,8 @@ _replacements = [
     (r'![be]warning', ''),
     (r'![be]summary', ''),
     (r'![be]notice', ''),
+    (r'![be]quote', ''),
+    (r'![be]box', ''),
     (r'![be]remarks', ''),
     # Preprocess
     (r"^#.*ifn?def.*$", "", re.MULTILINE),
@@ -5276,6 +5280,7 @@ def capitalize():
         'DNA', 'British', 'American', 'Internet', # 'Web',
         'HTML', 'MSWord', 'OpenOffice',
         'StringFunction', 'Vec2D', 'Vec3D', 'SciTools', 'Easyviz',
+        'Pysketcher',
         ]
     # This functionality is not well implemented so instead of finding
     # a perfect solution we fix well-known special cases
@@ -5301,8 +5306,14 @@ def capitalize():
         ('midpoint integration', 'Midpoint integration'),
         ('midpoint rule', 'Midpoint rule'),
         ('world wide web', 'World Wide Web'),
+        ('cODE', 'code'),
+        ('runge-kutta', 'Runge-Kutta'),
+        ('on windows', 'on Windows'),
+        ('in windows', 'in Windows'),
+        ('under windows', 'under Windows'),
         ]
-    for name in 'Newton', 'Lagrange', 'Einstein', 'Poisson', 'Taylor', 'Gibb':
+    for name in 'Newton', 'Lagrange', 'Einstein', 'Poisson', 'Taylor', 'Gibb', \
+            'Heun', :
         genetive = "'s"
         cap_words_fix.append((name.lower()+genetive, name+genetive))
 
@@ -5328,7 +5339,7 @@ def capitalize():
 
 def _capitalize(filestr, cap_words, cap_words_fix):
     pattern1 = r'^\s*(={3,9})(.+?)(={3,9})'  # sections
-    pattern2 = r'__(.+?[.:?;!])__'       # paragraphs
+    pattern2 = r'^__(.+?[.:?;!])__'       # paragraphs
 
     sections   = re.findall(pattern1, filestr, flags=re.MULTILINE)
     paragraphs = re.findall(pattern2, filestr, flags=re.MULTILINE)
@@ -5755,6 +5766,7 @@ def _latex2doconce(filestr):
         (r'\\idxc\{(?P<subst>.+?)\}', r'idx{`\g<subst>` class}'),
         (r'\\idxm\{(?P<subst>.+?)\}', r'idx{`\g<subst>` module}'),
         (r'\\idxnumpy\{(?P<subst>.+?)\}', r'idx{`\g<subst>` (from `numpy`)}'),
+        (r'\\idxnumpyr\{(?P<subst>.+?)\}', r'idx{`\g<subst>` (from `numpy.random`)}'),
         (r'\\idxst\{(?P<subst>.+?)\}', r'idx{`\g<subst>` (from `scitools`)}'),
         (r'\\idxfn\{(?P<subst>.+?)\}', r'idx{`\g<subst>` (FEniCS)}'),
         (r'\\idxe\{(?P<attr>.+?)\}\{(?P<obj>.+?)\}', r'idx{`\g<attr>` \g<obj>}'),
@@ -5832,6 +5844,7 @@ def _latex2doconce(filestr):
         ("Chapter~", "Chapter "),
         ("Section~", "Section "),
         ("Appendix~", "Appendix "),
+        ("Appendices~", "Appendices "),
         ("Figure~", "Figure "),
         ("Table~", "Table "),
         ("Chapters~", "Chapters "),
@@ -5912,7 +5925,8 @@ def _latex2doconce(filestr):
     # ptex2tex code environments:
     code_envirs = ['ccq', 'cod', 'pro', 'ccl', 'cc', 'sys',
                    'dsni', 'sni', 'slin', 'ipy', 'rpy',
-                   'py', 'plin', 'ver', 'warn', 'rule', 'summ'] # sequence important for replace!
+                   'py', 'plin', 'ver', 'warn', 'rule', 'summ',
+                   'dat', ] # sequence important for replace!
     for language in 'py', 'f', 'c', 'cpp', 'sh', 'pl', 'm':
         for tp in 'cod', 'pro':
             code_envirs.append(language + tp)
@@ -6275,6 +6289,9 @@ def _latex2doconce(filestr):
     #filestr = re.sub(r'([A-Za-z0-9,:?!; ])\n^!bc', r'\g<1>\n\n!bc',
     #                 filestr, flags=re.MULTILINE)
     filestr = re.sub(r'\s+(?=^!bt|^!bc)', '\n\n', filestr, flags=re.MULTILINE)
+
+    # Inline equations cause trouble
+    filestr = re.sub(r'!et +([^\n])', '!et\n\g<1>', filestr)
 
     return filestr
 
