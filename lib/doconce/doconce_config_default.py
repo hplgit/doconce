@@ -45,6 +45,7 @@ html_admon_shadow = False
 #html_admon_bd_color = 
 #latex_admon = 
 #latex_admon_color = 
+#latex_exercise_numbering = 
 #css = 
 verbose = False
 examples_as_exercises = False

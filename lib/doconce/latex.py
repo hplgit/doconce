@@ -124,7 +124,7 @@ def latex_code(filestr, code_blocks, code_block_types,
     comment_pattern = '%% %s'
     pattern = comment_pattern % envir_delimiter_lines['exercise'][0] + '\n'
     replacement = pattern + r"""\begin{doconceexercise}
-\refstepcounter{doconceexercise:counter}
+\refstepcounter{doconceexercisecounter}
 """
     filestr = filestr.replace(pattern, replacement)
     pattern = comment_pattern % envir_delimiter_lines['exercise'][1] + '\n'
@@ -137,12 +137,20 @@ def latex_code(filestr, code_blocks, code_block_types,
         # Make table of contents or list of exercises entry
         # (might have to add \phantomsection right before because
         # of the hyperref package?)
+#        filestr, n = re.subn(exercise_pattern,
+#                         r"""subsection*{\g<1> \g<2>: \g<3>
+#% #if LIST_OF_EXERCISES == "toc"
+#\\addcontentsline{toc}{subsection}{\g<2>: \g<3>
+#% #elif LIST_OF_EXERCISES == "loe"
+#\\addcontentsline{loe}{doconceexercise}{\g<1> \g<2>: \g<3>
+#% #endif
+#""", filestr)
         filestr, n = re.subn(exercise_pattern,
-                         r"""subsection*{\g<1> \g<2>: \g<3>
+                         r"""subsection*{\g<1> \\thedoconceexercisecounter: \g<3>
 % #if LIST_OF_EXERCISES == "toc"
-\\addcontentsline{toc}{subsection}{\g<2>: \g<3>
+\\addcontentsline{toc}{subsection}{\\thedoconceexercisecounter: \g<3>
 % #elif LIST_OF_EXERCISES == "loe"
-\\addcontentsline{loe}{doconceexercise}{\g<1> \g<2>: \g<3>
+\\addcontentsline{loe}{doconceexercise}{\g<1> \\thedoconceexercisecounter: \g<3>
 % #endif
 """, filestr)
         if n > 0:
@@ -197,7 +205,7 @@ def latex_code(filestr, code_blocks, code_block_types,
 \clearemptydoublepage
 %% #endif
 """ % vars()
-                target = r'\newcounter{doconceexercise:counter}'
+                target = r'\newcounter{doconceexercisecounter}'
                 filestr = filestr.replace(
                     target, target + style_listofexercises)
                 target = r'\tableofcontents'
@@ -2192,7 +2200,14 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
         if exer_envir + ':' in filestr:
             INTRO['latex'] += r"""
 \newenvironment{doconceexercise}{}{}
-\newcounter{doconceexercise:counter}
+\newcounter{doconceexercisecounter}
+"""
+            exercise_numbering = option('latex_exercise_numbering=', 'absolute')
+            if chapters and exercise_numbering == 'chapter':
+                INTRO['latex'] += r"""
+% Let exercises, problems, and projects be numbered per chapter:
+\usepackage{chngcntr}
+\counterwithin{doconceexercisecounter}{chapter}
 """
             break
 
