@@ -5148,6 +5148,148 @@ def spellcheck():
     _spellcheck_all(newdict='misspellings.txt~', remove_multiplicity=False,
                     dictionaries=dictionary,)
 
+def _usage_ref_external():
+    print 'doconce ref_external dofile'
+
+def ref_external():
+    if len(sys.argv) < 2:
+        _usage_ref_external()
+        sys.exit(1)
+
+    filename = sys.argv[1]
+    if filename.endswith('.do.txt'):
+        basename = filename[:-7]
+    else:
+        basename = filename
+    # Analyze the topfile for external documents and publish file
+    f = open(basename + '.do.txt', 'r')
+    topfilestr = f.read()
+    f.close()
+    m = re.search('^#\s*[Ee]xternaldocuments:\s*(.+)$', topfilestr,
+                  flags=re.MULTILINE)
+    if m:
+        external_docs = [s.strip() for s in m.group(1).split(',')]
+        print 'XXX', external_docs
+    else:
+        print '*** error: no # Externaldocuments: file1, file2, ...'
+        print '    cannot get info about external documents and their labels!'
+        _abort()
+    m = re.search('^BIBFILE:\s*(.+)', topfilestr, re.MULTILINE)
+    if m:
+        pubfile = m.group(1).strip()
+    else:
+        if len(sys.argv) >= 3:
+            pubfile = sys.argv[2]
+        else:
+            print '*** error: no BIBFILE: file.pub, missing publish file on the command line!'
+            _abort()
+    print '    working with publish file', pubfile
+    import publish
+    # Note: we have to operate publish in the directory
+    # where pubfile resides
+    pubdir, pubname = os.path.split(pubfile)
+    if not pubdir:
+        pubdir = os.curdir
+    this_dir = os.getcwd()
+    os.chdir(pubdir)
+    pubdata = publish.database.read_database(pubname)
+    os.chdir(this_dir)
+
+    def process_external_doc(extdoc_basename):
+        topfile = extdoc_basename + '.do.txt'
+        if not os.path.isfile(topfile):
+            print '*** error: external document "%s" does not exist' % topfile
+            _abort()
+        f = open(topfile, 'r')
+        text = f.read()
+        m = re.search('^TITLE:\s*(.+)', text, flags=re.MULTILINE)
+        if m:
+            title = m.group(1).strip()
+        else:
+            print '*** error: no TITLE: ... in "%s"' % topfile
+            _abort()
+        found = False
+        key = None
+        url = None
+        for pub in pubdata:
+            if pub['title'].lower() == title.lower():
+                key = pub.get('key', None)
+                url = pub.get('url', None)
+                print '    ...%s has' % basename
+                print '    title:', title
+                print '    url:', url
+                print '    key:', key
+                found = True
+                break
+        if not found and extdoc_basename != basename:
+            print '*** warning: could not find the document'
+            print '   ', title
+            print '    in the publish database %s' % pubfile
+
+        # Try to load the full doconce file as the result of mako,
+        # or as the result of preprocess, or just extdoc_basename.do.txt
+        dname, bname = os.path.split(extdoc_basename)
+        dofile = os.path.join(dname, 'tmp_mako__' + bname + '.do.txt')
+        if os.path.isfile(dofile):
+            fullfile = dofile
+        else:
+            print 'XXX could not find', dofile
+            dofile = os.path.join(dname, 'tmp_preprocess__' + bname + '.do.txt')
+            if os.path.isfile(dofile):
+                fullfile = dofile
+            else:
+                print 'XXX could not find', dofile
+                fullfile = topfile
+                # Check that there are no includes:
+                m = re.search(r'^#\s+#include', text, flags=re.MULTILINE)
+                if m:
+                    print '*** error: doconce format is not run on %s' % topfile
+                    print '    cannot proceed...'
+                    _abort()
+
+        print '    ...found', fullfile
+        f = open(fullfile, 'r')
+        text = f.read()
+        f.close()
+        # Analyze the full text of the external doconce document
+        labels = re.findall(r'label\{(.+?)\}', text)
+        return title, key, url, labels, text
+
+    # Find labels and references in this doconce document
+    dummy, dummy, dummy, mylabels, mytext = process_external_doc(basename)
+    refs = re.findall(r'\s+([A-Za-z]+?)\s+(ref\{.+\})', mytext)
+    refs = [(prefix.strip(), ref.strip()) for prefix, ref in refs]
+
+    extdocs_info = {}
+    refs2extdoc = {}
+    for external_doc in external_docs:
+        title, key, url, labels, text = process_external_doc(external_doc)
+        extdocs_info[external_doc] = dict(title=title, key=key,
+                                          url=url, labels=labels)
+        for prefix, ref in refs:
+            if ref in labels:
+                refs2extdoc[ref] = (external_doc, prefix)
+    # We now have all references in refs2extdoc and can via extdocs_info
+    # get additional info about all references
+    for label in mylabels:
+        if label in refs2extdoc:
+            print '*** error: ref{%s} in %s was found as' % (label, basename)
+            print '    label{%s} in %s and %s' % \
+                  (label, basename, refs2extdoc[label][0])
+            _abort()
+    import pprint
+    pprint.pprint(refs2extdoc)
+    # Substitute all external references by ref[][][]
+    f = open('substscript.sh', 'w')
+    for prefix, ref in refs:
+        f.write(r'doconce subst "%(prefix)s\s+ref{%(ref)s}"' % vars())
+        f.write('"ref[%(prefix)s ref{%(ref)s}]' % vars())
+        f.write('[in cite{%s}]' % refs2extdoc[ref][0]['key'])
+        f.write('[in "%s": "%s" cite{%s}]' %
+                (refs2extdoc[ref][0]['title'], refs2extdoc[ref][0]['url'],
+                 refs2extdoc[ref][0]['key']))
+        f.write('"\n')
+
 
 def _usage_latex_problems():
     print 'doconce latex_problems mydoc.log [overfull-hbox-limit]'
