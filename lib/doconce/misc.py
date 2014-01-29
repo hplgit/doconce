@@ -5293,13 +5293,13 @@ def ref_external():
             f.write('"ref[%(prefix)s ref{%(ref)s}]' % vars())
             if ref in refs2extdoc:
                 f.write('[in cite{%s}]' % extdocs_info[refs2extdoc[ref][0]]['key'])
-                f.write('[in "%s": "%s" cite{%s}]' %
+                f.write('[in the document "%s": "%s" cite{%s}]' %
                         (extdocs_info[refs2extdoc[ref][0]]['title'],
                          extdocs_info[refs2extdoc[ref][0]]['url'],
                          extdocs_info[refs2extdoc[ref][0]]['key']))
             else:
                 f.write('[no cite info][no doc info]')
-            f.write('"\n\n')
+            f.write('" *.do.txt\n\n')
 
 
 def _usage_latex_problems():
