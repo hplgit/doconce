@@ -15,6 +15,7 @@ from doconce.misc import (
     latex_header,
     latex_footer,
     latex_problems,
+    ref_external,
     replace_from_file,
     replace,
     subst,
@@ -813,6 +814,7 @@ grep
 latex_header
 latex_footer
 latex_problems
+ref_external
 bbl2rst
 html_colorbullets
 list_labels
@@ -950,6 +952,9 @@ doconce latex_problems mydoc.log [overfull-hbox-limit]
 
 # list all labels in a document (for purposes of cleaning them up)
 doconce list_labels myfile
+
+# generate script for substituting generalized references
+doconce ref_external mydoc [pubfile]
 
 # check all links in HTML files
 doconce linkchecker *.html
