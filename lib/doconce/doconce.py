@@ -2018,7 +2018,7 @@ def handle_index_and_bib(filestr, format, has_title):
 
     if len(citations) > 0 and OrderedDict is dict:
         # version < 2.7 warning
-        print '*** warning: citations may appear in random order unless you upgrade to Python version 2.7 or 3.1'
+        print '*** warning: citations may appear in random order unless you upgrade to Python version 2.7 or 3.1 or later'
     if len(citations) > 0 and 'BIBFILE:' not in filestr:
         print '*** warning: you have citations but no bibliography (BIBFILE: ...)'
         #_abort()
@@ -2038,6 +2038,15 @@ def handle_index_and_bib(filestr, format, has_title):
                 _abort()
 
     filestr = INDEX_BIB[format](filestr, index, citations, pubfile, pubdata)
+
+    if not citations and pubfile is not None:
+        # No need for references, remove the section before BIBFILE
+        filestr = re.sub(r'={5,9} .+? ={5,9}\s+^BIBFILE:.+', '',
+                         filestr, flags=re.MULTILINE)
+        # In case we have no heading and just BIBFILE
+        filestr = re.sub(r'^BIBFILE:.+', '', filestr, flags=re.MULTILINE)
+        return filestr
+
     return filestr
 
 def interpret_authors(filestr, format):
