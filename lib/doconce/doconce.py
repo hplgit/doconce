@@ -308,8 +308,8 @@ def syntax_check(filestr, format):
                 'example', 'ex.',
                 'and', 'or']
     for prefix, ref in refs:
+        orig_prefix = prefix
         if prefix[-1] == 's':
-            orig_prefix = prefix
             prefix = prefix[:-1]  # skip plural
         if not prefix.lower() in prefixes:
             print '*** warning: found reference "%s %s" with unexpected word "%s" in front' % (orig_prefix, ref, orig_prefix),
