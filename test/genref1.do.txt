@@ -1,0 +1,5 @@
+TITLE: Some mathematics
+AUTHOR: hpl
+DATE: Jan 31, 3065
+
+# #include "_genref1.do.txt"

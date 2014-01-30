@@ -262,6 +262,13 @@ def latex_code(filestr, code_blocks, code_block_types,
                                  new_heading)
             filestr = filestr.replace(r'%s{%s}' % (tp, heading),
                                       r'%s{%s}' % (tp, new_heading))
+    # addcontentsline also needs \protect\code
+    addcontentslines = re.findall(r'^(\\addcontentsline\{.+)$', filestr,
+                                  flags=re.MULTILINE)
+    for line in addcontentslines:
+        if '\\code{' in line:
+            new_line = line.replace(r'\code{', r'\protect\code{')
+            filestr = filestr.replace(line, new_line)
 
     return filestr
 
@@ -865,7 +872,7 @@ def latex_ref_and_label(section_label2title, format, filestr):
     # range ref:
     filestr = re.sub(r'-ref\{', r'-\\ref{', filestr)
     # the rest of the ' ref{}' (single refs should have ~ in front):
-    filestr = re.sub(r'\sref\{', r'~\\ref{', filestr)
+    filestr = re.sub(r'\s+ref\{', r'~\\ref{', filestr)
     filestr = re.sub(r'\(ref\{', r'(\\ref{', filestr)
 
     # equations are ok in the doconce markup
