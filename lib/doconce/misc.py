@@ -137,6 +137,7 @@ def get_legal_command_line_options():
     return _legal_command_line_options
 
 def help_format():
+    print 'doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwiki|cwiki|pandoc|st|epytext dofile'
     for opt, help in _registered_command_line_options:
         if opt.endswith('='):
             opt += '...'
@@ -5233,12 +5234,10 @@ def ref_external():
         if os.path.isfile(dofile):
             fullfile = dofile
         else:
-            print 'XXX could not find', dofile
             dofile = os.path.join(dname, 'tmp_preprocess__' + bname + '.do.txt')
             if os.path.isfile(dofile):
                 fullfile = dofile
             else:
-                print 'XXX could not find', dofile
                 fullfile = topfile
                 # Check that there are no includes:
                 m = re.search(r'^#\s+#include', text, flags=re.MULTILINE)
@@ -5247,7 +5246,7 @@ def ref_external():
                     print '    cannot proceed...'
                     _abort()
 
-        print '    ...found', fullfile
+        print '    ...processing', fullfile
         f = open(fullfile, 'r')
         text = f.read()
         f.close()
@@ -5266,14 +5265,11 @@ def ref_external():
         title, key, url, labels, text = process_external_doc(external_doc)
         extdocs_info[external_doc] = dict(title=title, key=key,
                                           url=url, labels=labels)
-        print 'XXX external doc', external_doc, labels
         for prefix, ref in refs:
             if ref not in mylabels:
-                print 'XXX external ref', ref
                 if ref in labels:
                     refs2extdoc[ref] = (external_doc, prefix)
-                else:
-                    print 'XXX no info about %s in %s' % (ref, external_doc)
+
     # We now have all references in refs2extdoc and can via extdocs_info
     # get additional info about all references
     for label in mylabels:
@@ -5282,8 +5278,7 @@ def ref_external():
             print '    label{%s} in %s and %s' % \
                   (label, basename, refs2extdoc[label][0])
             _abort()
-    import pprint
-    pprint.pprint(refs2extdoc)
+
     # Substitute all external references by ref[][][]
     f = open('substscript.sh', 'w')
     for prefix, ref in refs:
@@ -5455,6 +5450,7 @@ def capitalize():
         ('vec3d', 'Vec3D'),
         ('hello, world!', 'Hello, World!'),
         ('hello world', 'Hello World'),
+        ('mac os x', 'Mac OS X'),
         ('midpoint integration', 'Midpoint integration'),
         ('midpoint rule', 'Midpoint rule'),
         ('world wide web', 'World Wide Web'),
@@ -6384,6 +6380,7 @@ def _latex2doconce(filestr):
     eqrefs = re.findall(r'\\eqref\{(.+?)\}', filestr)
     pagerefs = re.findall(r'\\pageref\{(.+?)\}', filestr)
     refs = refs + eqrefs + pagerefs
+    '''
     for ref in refs:
         if ref not in labels:
             print 'found reference but no label{%s}' % ref
@@ -6393,6 +6390,7 @@ def _latex2doconce(filestr):
             filestr = filestr.replace(r'\ref{%s}' % ref,
                       r'(_PROBLEM: external ref_) ref{%s}' % ref)
             #print r'FIX external ref: ref[%(ref)s]["section where %(ref)s is": "http URL with %(ref)s" cite{doc_with_%(ref)s}]["section where %(ref)s is": "http URL with %(ref)s" cite{doc_with_%(ref)s}]' % vars()
+    '''
     for ref in pagerefs:
         print 'pageref{%s} should be rewritten' % ref
         filestr = filestr.replace(r'\pageref{%s}' % ref,

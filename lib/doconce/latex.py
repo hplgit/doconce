@@ -974,7 +974,7 @@ def latex_index_bib(filestr, index, citations, pubfile, pubdata):
         os.system(publish_cmd)
         os.chdir(this_dir)
         # Remove heading right before BIBFILE because latex has its own heading
-        pattern = '={5,9} .+? ={5,9}\s+^BIBFILE'
+        pattern = r'={5,9} .+? ={5,9}\s+^BIBFILE'
         filestr = re.sub(pattern, 'BIBFILE', filestr, flags=re.MULTILINE)
 
         bibtext = fix_latex_command_regex(r"""
