@@ -336,12 +336,16 @@ def sphinx_code(filestr, code_blocks, code_block_types,
     lines = filestr.splitlines()
     inside_block = False
     for i in range(len(lines)):
-        if lines[i].startswith('<linebreakpipe>'):
+        if lines[i].startswith('<linebreakpipe>') and not inside_block:
             inside_block = True
-            lines[i] = lines[i].replace('<linebreakpipe>', '|')
-        elif inside_block:
+            lines[i] = lines[i].replace('<linebreakpipe> ', '') + '\n'
+            continue
+        if lines[i].startswith('<linebreakpipe>') and inside_block:
+            lines[i] = '|' + lines[i].replace('<linebreakpipe>', '')
+            continue
+        if inside_block and not lines[i].startswith('<linebreakpipe>'):
             inside_block = False
-            lines[i] = '\n' + lines[i]
+            lines[i] = '| ' + lines[i] + '\n'
     filestr = '\n'.join(lines)
 
     if option('html_links_in_new_window'):
