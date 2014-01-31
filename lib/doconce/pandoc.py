@@ -304,6 +304,7 @@ def define(FILENAME_EXTENSION,
         'paragraph':     r'*\g<subst>* ',  # extra blank
         'abstract':      r'*\g<type>.* \g<text>\n\n\g<rest>',
         'comment':       '<!-- %s -->',
+        'linebreak':     r'\g<text>\\n',
         }
 
     CODE['pandoc'] = pandoc_code

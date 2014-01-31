@@ -226,6 +226,7 @@ def define(FILENAME_EXTENSION,
         'paragraph':     r'*\g<subst>* ',  # extra blank
         'abstract':      r'\n*\g<type>.* \g<text>\n\n\g<rest>',
         'comment':       '<!-- %s -->',
+        'linebreak':     r'\g<text>',  # Not sure how this is supported; Markdown applies <br> but that cannot be used for latex output with ipynb...
         }
 
     CODE['ipynb'] = ipynb_code

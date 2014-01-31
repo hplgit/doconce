@@ -2163,6 +2163,7 @@ def inline_tag_subst(filestr, format):
         'linkURL2',
         'linkURL3',
         'linkURL',
+        'linebreak',
         )
     for tag in ordered_tags:
         debugpr('\n*************** Working with tag "%s"' % tag)

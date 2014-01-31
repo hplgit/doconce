@@ -1271,6 +1271,7 @@ def define(FILENAME_EXTENSION,
         'figure':        html_figure,
         'movie':         html_movie,
         'comment':       '<!-- %s -->',
+        'linebreak':     r'\g<text><br />',
         }
 
     if option('wordpress'):

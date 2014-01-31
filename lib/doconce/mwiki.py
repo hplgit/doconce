@@ -374,6 +374,7 @@ def define(FILENAME_EXTENSION,
         'movie':         default_movie,  # will not work for HTML movie player
         'comment':       '<!-- %s -->',
         'abstract':      r'\n*\g<type>.* \g<text>\g<rest>',
+        'linebreak':     r'\g<text><br />',
         }
 
     CODE['mwiki'] = mwiki_code

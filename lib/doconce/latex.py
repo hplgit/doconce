@@ -944,7 +944,7 @@ def latex_index_bib(filestr, index, citations, pubfile, pubdata):
     filestr = filestr.replace('cite{', r'\cite{')
     filestr = filestr.replace('cite[', r'\cite[')
     # Fix spaces after . inside cite[] and insert ~
-    pattern = r'cite\[(.+)\.\s+'
+    pattern = r'cite\[(.+?)\. +'
     filestr = re.sub(pattern, r'cite[\g<1>.~', filestr)
 
     for word in index:
@@ -1399,6 +1399,7 @@ def define(FILENAME_EXTENSION,
         'figure':        latex_figure,
         'movie':         latex_movie,
         'comment':       '%% %s',
+        'linebreak':     r'\g<text>\\\\',
         }
 
     ENVIRS['latex'] = {

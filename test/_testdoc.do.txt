@@ -207,9 +207,11 @@ Also test backslashes and braces like `\begin`, `\begin{enumerate}`,
 verbatim text.
 
 Here is some color{red}{red} color and an attempt to write color{green}{with
-green color containing a linebreak.
-And one more.} Some formats will only display this correctly when
-HTML is the output format.
+green color containing a linebreak. <linebreak>
+And one more.} Some formats will only display <linebreak>
+this correctly when HTML is the output format. <linebreak>
+But here some more running text is added which is not part of
+the previous blocks with line breaks.
 
 === Running OS commands ===
 

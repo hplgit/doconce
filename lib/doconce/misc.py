@@ -4695,6 +4695,8 @@ _replacements = [
     (r'"([^"]+?)":\s*"[^"]+?"', r'\g<1>'),  # links
     (r"^#.*$", "", re.MULTILINE),
     (r"(idx|label|ref|cite)\{.*?\}", ""),
+    (r"refch\[.*?\]\[.*?\]\[.*?\]", "", re.DOTALL),
+    ('<linebreak>', ''),
     (r"={3,}",  ""),
     (r'`[^ ][^`]*?`', ""),
     (r"`[A-Za-z0-9_.]+?`", ""),
@@ -5150,9 +5152,17 @@ def spellcheck():
                     dictionaries=dictionary,)
 
 def _usage_ref_external():
-    print 'doconce ref_external dofile'
+    print 'doconce ref_external dofile [pubfile --skip_chapter]'
+    print 'Must give pubfile if no BIBFILE in dofile.do.txt'
+    print '--skip_chapter avoids substitution of Chapter ref{} -> refch[Chapter ...][][].'
 
 def ref_external():
+    """
+    Examine "# Externaldocuments: ..." in doconce file and publish
+    file to suggest a substitution script for transforming
+    references to external labels to the ref[][][] generalized
+    reference form.
+    """
     if len(sys.argv) < 2:
         _usage_ref_external()
         sys.exit(1)
@@ -5252,16 +5262,20 @@ def ref_external():
         labels = re.findall(r'label\{(.+?)\}', text)
         return title, key, url, labels, text
 
+    import sets
     # Find labels and references in this doconce document
     dummy, dummy, dummy, mylabels, mytext = process_external_doc(basename)
-    refs = re.findall(r'\s+([A-Za-z]+?)\s+ref\{(.+?)\}', mytext)
+    refs = [(prefix, ref) for dummy, prefix, ref in
+            re.findall(r'(^|\(|\s+)([A-Za-z]+?)\s+ref\{(.+?)\}', mytext,
+                       flags=re.MULTILINE)]
     refs = [(prefix.strip(), ref.strip()) for prefix, ref in refs]
+    refs = list(sets.Set(refs))
     pattern = r'\(ref\{(.+?)\}\)-\(ref\{(.+?)\}\)'
-    eqrefs2 = re.findall(pattern, mytext)
+    eqrefs2 = list(sets.Set(re.findall(pattern, mytext)))
     mytext2 = re.sub(pattern, 'XXX', mytext)
     # Now all pairs of equation references are removed, search for triplets
     pattern = r'\(ref\{(.+?)\}\),\s+\(ref\{(.+?)\}\),?\s+and\s+\(ref\{(.+?)\}\)'
-    eqrefs3 = re.findall(pattern, mytext2)
+    eqrefs3 = list(sets.Set(re.findall(pattern, mytext2)))
     mytext3 = re.sub(pattern, 'XXX', mytext2)
     # Now all pairs and triplets are removed and we can collect the remaining
     # single equation references
@@ -5309,34 +5323,57 @@ def ref_external():
             _abort()
 
     # Substitute all external references by ref[][][]
-    f = open('substscript.sh', 'w')
-    f.write("files=*.do.txt  # files to which substitutions apply\n\n")
+    scriptname = 'tmp_subst_references.sh'
+    scriptname2 = 'tmp_grep_references.sh'
+    f = open(scriptname, 'w')
+    f2 = open(scriptname2, 'w')
+    print 'substitution script:', scriptname
+    print 'grep script (for context of each substitution):', scriptname2
+    dofiles = basename[5:] + '.do.txt' if basename.startswith('main_') else basename + '.do.txt'
+    f.write('files="%s"  # files to which substitutions apply\n\n' % dofiles)
+    f2.write('files="%s"  # files to which substitutions apply\n\nnlines=6  # no of context lines for each matched line' % dofiles)
+    skip_chapter = '--skip_chapter' in sys.argv
+    skip_eqs = '--skip_eqs' in sys.argv
     for prefix, ref in refs:
+        if skip_chapter and prefix.lower in ('chapter', 'appendix'):
+            continue
         if ref not in mylabels:
-            f.write(r'doconce subst "%(prefix)s\s+ref{%(ref)s}"  ' % vars())
-            ch = 'ch' if prefix.lower() == 'chapter' else ''
-            f.write('"ref%(ch)s[%(prefix)s ref{%(ref)s}]' % vars())
+            f.write(r"doconce subst '%(prefix)s\s+ref\{%(ref)s\}'  " % vars())
+            f2.write(r"grep --context=$nlines --line-number -E '%(prefix)s\s+ref\{%(ref)s\}' $files" % vars() + '\n\n')
+            ch = 'ch' if prefix.lower() in ('chapter', 'appendix') else ''
+            f.write("'ref%(ch)s[%(prefix)s ref{%(ref)s}]" % vars())
             if ref in refs2extdoc:
-                f.write('[ cite{%s}]' %
-                        extdocs_info[refs2extdoc[ref][0]]['key'])
-                f.write('[the document "%s"]' %
+                if ch:
+                    f.write('[ cite{%s}][' %
+                            extdocs_info[refs2extdoc[ref][0]]['key'])
+                else:
+                    f.write('[ in cite{%s}][' %
+                            extdocs_info[refs2extdoc[ref][0]]['key'])
+                f.write('the document "%s"' %
                         extdocs_info[refs2extdoc[ref][0]]['title'])
                 if extdocs_info[refs2extdoc[ref][0]]['url'] is not None:
-                    f.write('[: "%s"]' %
+                    f.write(': "%s"' %
                             extdocs_info[refs2extdoc[ref][0]]['url'])
                 if extdocs_info[refs2extdoc[ref][0]]['key'] is not None:
-                    f.write('[ cite{%s}]' %
+                    f.write(' cite{%s}' %
                             extdocs_info[refs2extdoc[ref][0]]['key'])
+                f.write("]'")
             else:
-                f.write('[no cite info][no doc info]')
-            f.write('" $files\n\n')
+                f.write("[no cite info][no doc info]'")
+            f.write(' $files\n\n')
+    if skip_eqs:
+        f.close()
+        return
 
+    if eqrefs1 or eqrefs2 or eqrefs3:
+        f.write('\n# Equations:\n')
     for ref in eqrefs1:
         if ref not in mylabels:
-            f.write(r'doconce replace "(ref{%(ref)s})"  ' % vars())
-            f.write('"ref[(ref{%(ref)s})]' % vars())
+            f.write(r"doconce replace '(ref{%(ref)s})'  " % vars())
+            f2.write(r"grep --context=$nlines --line-number '(ref{%(ref)s})' $files" % vars() + '\n\n')
+            f.write("'ref[(ref{%(ref)s})]" % vars())
             if ref in refs2extdoc:
-                f.write('[ cite{%s}]' %
+                f.write('[ in cite{%s}]' %
                         extdocs_info[refs2extdoc[ref][0]]['key'])
                 f.write('[reference to specific _equation_ (label %s) in external document "%s": "%s" cite{%s} is not recommended]' %
                         (ref,
@@ -5345,13 +5382,14 @@ def ref_external():
                          extdocs_info[refs2extdoc[ref][0]]['key']))
             else:
                 f.write('[no cite info][no doc info]')
-            f.write('" $files\n\n')
+            f.write("' $files\n\n")
     for ref1, ref2 in eqrefs2:
         if ref1 not in mylabels and ref2 not in mylabels:
-            f.write(r'doconce replace "(ref{%(ref1)s})-(ref{%(ref2)s})"  ' % vars())
-            f.write('"ref[(ref{%(ref1)s})-(ref{%(ref2)s})]' % vars())
+            f.write(r"doconce replace '(ref{%(ref1)s})-(ref{%(ref2)s})'  " % vars())
+            f2.write(r"grep --context=$nlines --line-number '(ref{%(ref1)s})-(ref{%(ref2)s})' $files" % vars() + '\n\n')
+            f.write("'ref[(ref{%(ref1)s})-(ref{%(ref2)s})]" % vars())
             if ref1 in refs2extdoc and ref2 in refs2extdoc:
-                f.write('[ cite{%s}]' %
+                f.write('[ in cite{%s}]' %
                         extdocs_info[refs2extdoc[ref1][0]]['key'])
                 f.write('[reference to specific _equations_ (label %s and %s) in external document "%s": "%s" cite{%s} is not recommended]' %
                         (ref1, ref2,
@@ -5360,21 +5398,21 @@ def ref_external():
                          extdocs_info[refs2extdoc[ref1][0]]['key']))
             else:
                 f.write('[no cite info][no doc info]')
-            f.write('" $files\n\n')
+            f.write("' $files\n\n")
     for ref1, ref2, ref3 in eqrefs3:
         if ref1 not in mylabels and ref2 not in mylabels \
                and ref3 not in mylabels:
-            f.write(r'doconce subst "\(ref\{%(ref1)s\}\),\s+\(ref\{%(ref2)s\}\),?\s+and\s+\(ref{%(ref3)s\}\)"  ' % vars())
-            f.write('"ref[(ref{%(ref1)s}), (ref{%(ref2)s}), and (ref{%(ref3)s})]' % vars())
+            f.write(r"doconce subst '\(ref\{%(ref1)s\}\),\s+\(ref\{%(ref2)s\}\),?\s+and\s+\(ref{%(ref3)s\}\)'  " % vars())
+            f2.write(r"grep --context=$nlines --line-number -E '\(ref\{%(ref1)s\}\),\s+\(ref\{%(ref2)s\}\),?\s+and\s+\(ref{%(ref3)s\}\)' $files" % vars() + '\n\n')
+            f.write("'ref[(ref{%(ref1)s}), (ref{%(ref2)s}), and (ref{%(ref3)s})]" % vars())
             if ref1 in refs2extdoc and ref2 in refs2extdoc \
                    and ref3 in refs2extdoc:
                 if refs2extdoc[ref1][0] == refs2extdoc[ref2][0] and \
                    refs2extdoc[ref2][0] == refs2extdoc[ref3][0]:
-                    f.write('[ cite{%s}]' %
+                    f.write('[ in cite{%s}]' %
                             extdocs_info[refs2extdoc[ref1][0]]['key'])
                 else:
                     # the equations come from different external docs
-                    import sets
                     s = sets.Set([extdocs_info[refs2extdoc[ref1][0]]['key'],
                                   extdocs_info[refs2extdoc[ref2][0]]['key'],
                                   extdocs_info[refs2extdoc[ref3][0]]['key']])
@@ -5387,7 +5425,8 @@ def ref_external():
                          extdocs_info[refs2extdoc[ref][0]]['key']))
             else:
                 f.write('[no cite info][no doc info]')
-            f.write('" $files\n\n')
+            f.write("' $files\n\n")
+    f.close()
 
 def _usage_latex_problems():
     print 'doconce latex_problems mydoc.log [overfull-hbox-limit]'

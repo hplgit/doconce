@@ -332,6 +332,17 @@ def sphinx_code(filestr, code_blocks, code_block_types,
                      filestr, flags=re.MULTILINE)
     filestr = re.sub(r'(^\.\. .+)\n([^ \n]+)', r'\g<1>\n\n\g<2>',
                      filestr, flags=re.MULTILINE)
+    # Line breaks interfer with tables and needs a final blank line too
+    lines = filestr.splitlines()
+    inside_block = False
+    for i in range(len(lines)):
+        if lines[i].startswith('<linebreakpipe>'):
+            inside_block = True
+            lines[i] = lines[i].replace('<linebreakpipe>', '|')
+        elif inside_block:
+            inside_block = False
+            lines[i] = '\n' + lines[i]
+    filestr = '\n'.join(lines)
 
     if option('html_links_in_new_window'):
         filestr = '\n\n.. Open external links in new windows.\n\n' + filestr
