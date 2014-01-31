@@ -819,6 +819,7 @@ INLINE_TAGS = {
     # MOVIE:[filename, options] some caption text label{some:label}
     'movie':
     r'^MOVIE:\s*\[(?P<filename>[^,\]]+),?(?P<options>[^\]]*)\]\s*?(?P<caption>.*)$',
+    'linebreak': '^(?P<text>.*)<linebreak> *$',
     }
 INLINE_TAGS_SUBST = {}
 

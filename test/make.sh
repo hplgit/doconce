@@ -373,6 +373,9 @@ system doconce format html mako_test4 --no_pygments_html  # works fine, lines st
 
 system doconce csv2table testtable.csv > testtable.do.txt
 
+# Test doconce ref_external command
+sh -x genref.sh
+
 # Test error detection (note: the sequence of the error tests is
 # crucial: an error must occur, then corrected before the next
 # one will occur!)

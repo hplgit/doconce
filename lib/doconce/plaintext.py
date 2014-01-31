@@ -176,6 +176,7 @@ def define(FILENAME_EXTENSION,
         'subsubsection': lambda m: '%s\n%s\n' % (m.group('subst'), '~'*len(m.group('subst').decode('latin-1'))),
         'paragraph':     r'*\g<subst>* ',  # extra blank
         'abstract':      r'\n*\g<type>.* \g<text>\g<rest>',
+        'linebreak':     r'\g<text>',
         }
 
     from rst import rst_code

@@ -87,6 +87,7 @@ def define(FILENAME_EXTENSION,
         'date':          r'DATE: \g<subst>',
         'author':        epytext_author,
         'movie':         default_movie,
+        'linebreak':     r'\g<text>',
         }
 
     from rst import rst_code, rst_table

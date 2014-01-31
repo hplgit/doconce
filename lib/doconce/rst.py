@@ -135,6 +135,17 @@ that %s is not preceded by text which can be extended with :: (required).
                      filestr, flags=re.MULTILINE)
     filestr = re.sub(r'(^\.\. .+)\n([^ \n]+)', r'\g<1>\n\n\g<2>',
                      filestr, flags=re.MULTILINE)
+    # Line breaks interfer with tables and needs a final blank line too
+    lines = filestr.splitlines()
+    inside_block = False
+    for i in range(len(lines)):
+        if lines[i].startswith('<linebreakpipe>'):
+            inside_block = True
+            lines[i] = lines[i].replace('<linebreakpipe>', '|')
+        elif inside_block:
+            inside_block = False
+            lines[i] = '\n' + lines[i]
+    filestr = '\n'.join(lines)
 
     return filestr
 
@@ -474,6 +485,8 @@ def define(FILENAME_EXTENSION,
         #'comment':       '.. %s',  # rst does not like empty comment lines:
         # so therefore we introduce a function to remove empty comment lines
         'comment':       lambda c: '' if c.isspace() or c == '' else '.. %s\n' % c,
+        #'linebreak':     r'| \g<text>',  # does not work: interfers with tables and requires a final blank line after block
+        'linebreak':     r'<linebreakpipe> \g<text>',  # fixed in rst_code/sphinx_code as a hack
         }
 
     ENVIRS['rst'] = {
