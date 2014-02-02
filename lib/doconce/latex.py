@@ -40,6 +40,11 @@ def latex_code(filestr, code_blocks, code_block_types,
             filestr = re.sub(pattern, replacement, filestr, flags=re.MULTILINE)
 
 
+    # Treat double quotes right
+    filestr = re.sub(r'"([^"]+?)"', r"""``\g<1>''""", filestr)
+    # Drop fixing of single quotes - it interferes with the double quotes fix
+    #filestr = re.sub(r"""'([^']+?)'""", r"""`\g<1>'""", filestr)
+
     # References to external documents (done before !bc blocks in
     # case such blocks explain the syntax of the external doc. feature)
     pattern = r'^%\s*[Ee]xternaldocuments?:\s*(.+)$'
@@ -927,10 +932,14 @@ def latex_ref_and_label(section_label2title, format, filestr):
     for p in prefix:
         filestr = re.sub(r'(%s) +([\\A-Za-z0-9$])' % p, r'\g<1>~\g<2>',
                          filestr)
+
     # Allow C# and F# languages
-    # (No: affects music notation!)
-    #filestr = filestr.replace('C#', 'C\\#')
-    #filestr = filestr.replace('F#', 'F\\#')
+    # (be careful as it can affect music notation!)
+    pattern = r'(^| )([A-Za-z]+)#([,.;:! ]|$)'
+    replacement = r'\g<1>\g<2>\#\g<3>'
+    filestr = re.sub(pattern, replacement, filestr, flags=re.MULTILINE)
+
+    # Treat quotes right just before we insert verbatim blocks
 
     return filestr
 
