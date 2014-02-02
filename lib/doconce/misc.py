@@ -6998,15 +6998,25 @@ Automatically generated file for compiling doconce documents.
 """
 import sys, glob, os, shutil
 
+logfile = 'tmp_output.log'  # store all output of all operating system commands
+f = open(logfile, 'w'); f.close()  # touch logfile so it can be appended
+
 unix_command_recorder = []
 
-def system(command):
-    failure = os.system(command)
-    if failure:
-        print 'Could not run\\n', command
+def system(cmd):
+    """Run system command cmd."""
+    print cmd
+    try:
+        output = subprocess.check_output(cmd, shell=True,
+                                         stderr=subprocess.STDOUT)
+    except subprocess.CalledProcessError as e:
+        print 'Command\n  %%s\nfailed.' %% cmd
+        print 'Return code:', e.returncode
+        print e.output
         sys.exit(1)
-    else:
-        unix_command_recorder.append(cmd)  # record command for bash script
+    print output
+    f = open(logfile, 'a'); f.write(output); f.close()
+    unix_command_recorder.append(cmd)  # record command for bash script
 
 def spellcheck():
     for filename in glob.glob('*.do.txt'):
