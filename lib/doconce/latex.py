@@ -42,8 +42,9 @@ def latex_code(filestr, code_blocks, code_block_types,
 
     # Treat double quotes right
     filestr = re.sub(r'"([^"]+?)"', r"""``\g<1>''""", filestr)
-    # Drop fixing of single quotes - it interferes with the double quotes fix
-    #filestr = re.sub(r"""'([^']+?)'""", r"""`\g<1>'""", filestr)
+    # Drop fixing of single quotes - it interferes with the double quotes fix,
+    # and it might lead to strange results for the apostrophe!
+    #NO: filestr = re.sub(r"""'([^']+?)'""", r"""`\g<1>'""", filestr)
 
     # References to external documents (done before !bc blocks in
     # case such blocks explain the syntax of the external doc. feature)
