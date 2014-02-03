@@ -40,8 +40,11 @@ def latex_code(filestr, code_blocks, code_block_types,
             filestr = re.sub(pattern, replacement, filestr, flags=re.MULTILINE)
 
 
+    # Note: cannot fix double quotes right here for it destroys
+    # preprocess/mako code too. Instead we had to introduce the LaTeX
+    # style for quotes: ``[A-Za-z][A-Za-z0-9 ]*?''
     # Treat double quotes right
-    filestr = re.sub(r'"([^"]+?)"', r"""``\g<1>''""", filestr)
+    #filestr = re.sub(r'([^\\])"([^"]+?)"', r"""\g<1>``\g<2>''""", filestr)
     # Drop fixing of single quotes - it interferes with the double quotes fix
     #filestr = re.sub(r"""'([^']+?)'""", r"""`\g<1>'""", filestr)
 

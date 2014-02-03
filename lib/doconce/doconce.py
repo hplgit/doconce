@@ -2143,6 +2143,15 @@ def inline_tag_subst(filestr, format):
 
     debugpr('\n*** Inline tags substitution phase ***')
 
+    # Do tags that require almost format-independent treatment such
+    # that everything is conveniently defined here
+    # 1. Quotes around normal text in LaTeX style:
+    pattern = "``([A-Za-z][A-Za-z0-9 ]*?)''"
+    if format not in ('pdflatex', 'latex'):
+        filestr = re.sub(pattern, '"\g<1>"', filestr)
+
+    # Treat tags that have format-dependent typesetting
+
     ordered_tags = (
         'title',
         'date',
