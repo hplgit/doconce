@@ -361,6 +361,10 @@ Testing table environment in LaTeX, enabled by testing on the "latex" format
 with the preprocessor.
 label{mytab}
 }
+
+Let us also add a test of quotes in LaTeX, "double
+quotes with
+a newline" and 'single quotes which should not be chaned'.
 % endif
 
   |--------------------------------|
