@@ -361,6 +361,11 @@ Testing table environment in LaTeX, enabled by testing on the "latex" format
 with the preprocessor.
 label{mytab}
 }
+
+Let us also add a test of quotes such as ``double
+quotes with
+a newline'' are written in the standard LaTeX-style and gives correct
+LaTeX formatting and ordinary double quotes for all non-LaTeX formats.
 % endif
 
   |--------------------------------|
