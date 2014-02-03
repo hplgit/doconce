@@ -159,6 +159,7 @@ def define(FILENAME_EXTENSION,
         'movie':         default_movie,  # will not work for HTML movie player
         'comment':       '<wiki:comment> %s </wiki:comment>',
         'abstract':      r'\n//\g<type>.// \g<text>\g<rest>',
+        'linebreak':     r'\g<text><br />',
         }
 
     CODE['cwiki'] = cwiki_code

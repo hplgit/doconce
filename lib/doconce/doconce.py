@@ -182,15 +182,6 @@ def syntax_check(filestr, format):
         if line.startswith('!et'):
             inside_math = False
 
-        if not inside_code:
-            if "``" in line:
-                print '''\n*** warning: Double back-quotes `` found in file - should be "?'''
-                print 'Line:', line
-        if not inside_math:
-            if "''" in line:
-                #print '''\n*** warning: Double forward-quotes '' found in file - should be "\n(unless derivatives in math)'''
-                pass
-
     commands = [
         r'\[',
         r'\]',
@@ -295,11 +286,11 @@ def syntax_check(filestr, format):
 
     # Check that references have parenthesis (equations) or
     # the right preceding keyword (Section, Chapter, Exercise, etc.)
-    pattern = re.compile(r'\s+([A-Za-z]+?)\s+(ref\{.+\})', re.MULTILINE)
+    pattern = re.compile(r'\s+([A-Za-z]+?)\s+(ref\{.+?\})', re.MULTILINE)
     refs = pattern.findall(filestr)
     prefixes = ['chapter', 'ch.',
                 'section', 'sec.',
-                'appendix', 'app.',
+                'appendix', 'app.', 'appendice',
                 'figure', 'fig.',
                 'movie',
                 'exercise',
@@ -308,10 +299,11 @@ def syntax_check(filestr, format):
                 'example', 'ex.',
                 'and', 'or']
     for prefix, ref in refs:
+        orig_prefix = prefix
         if prefix[-1] == 's':
             prefix = prefix[:-1]  # skip plural
         if not prefix.lower() in prefixes:
-            print '*** warning: found reference "%s %s" with unexpected word "%s" in front' % (prefix, ref, prefix),
+            print '*** warning: found reference "%s %s" with unexpected word "%s" in front' % (orig_prefix, ref, orig_prefix),
             print '    (reference to equation, but missing parenthesis in (%s)?)' % (ref)
 
     # Code/tex blocks cannot have a comment, table, figure, etc.
@@ -2017,7 +2009,7 @@ def handle_index_and_bib(filestr, format, has_title):
 
     if len(citations) > 0 and OrderedDict is dict:
         # version < 2.7 warning
-        print '*** warning: citations may appear in random order unless you upgrade to Python version 2.7 or 3.1'
+        print '*** warning: citations may appear in random order unless you upgrade to Python version 2.7 or 3.1 or later'
     if len(citations) > 0 and 'BIBFILE:' not in filestr:
         print '*** warning: you have citations but no bibliography (BIBFILE: ...)'
         #_abort()
@@ -2037,6 +2029,15 @@ def handle_index_and_bib(filestr, format, has_title):
                 _abort()
 
     filestr = INDEX_BIB[format](filestr, index, citations, pubfile, pubdata)
+
+    if not citations and pubfile is not None:
+        # No need for references, remove the section before BIBFILE
+        filestr = re.sub(r'={5,9} .+? ={5,9}\s+^BIBFILE:.+', '',
+                         filestr, flags=re.MULTILINE)
+        # In case we have no heading and just BIBFILE
+        filestr = re.sub(r'^BIBFILE:.+', '', filestr, flags=re.MULTILINE)
+        return filestr
+
     return filestr
 
 def interpret_authors(filestr, format):
@@ -2133,6 +2134,15 @@ def inline_tag_subst(filestr, format):
 
     debugpr('\n*** Inline tags substitution phase ***')
 
+    # Do tags that require almost format-independent treatment such
+    # that everything is conveniently defined here
+    # 1. Quotes around normal text in LaTeX style:
+    pattern = "``([A-Za-z][A-Za-z0-9\s,.;?!/:'() -]*?)''"
+    if format not in ('pdflatex', 'latex'):
+        filestr = re.sub(pattern, '"\g<1>"', filestr)
+
+    # Treat tags that have format-dependent typesetting
+
     ordered_tags = (
         'title',
         'date',
@@ -2153,6 +2163,7 @@ def inline_tag_subst(filestr, format):
         'linkURL2',
         'linkURL3',
         'linkURL',
+        'linebreak',
         )
     for tag in ordered_tags:
         debugpr('\n*************** Working with tag "%s"' % tag)
@@ -2292,8 +2303,9 @@ def file2file(in_filename, format, basename):
                 if '-' in pos:
                     pos = pos.split('-')[0]
                     pos = int(pos)
-            print filestr[pos-40:pos], '|', filestr[pos], '|', filestr[pos+1:pos+40]
-            print '    fix character or try --encoding=utf-8'
+            print repr(filestr[pos-40:pos+40])
+            print ' '*42 + '^'
+            print '    remedies: fix character or try --encoding=utf-8'
             _abort()
 
     try:
@@ -2971,7 +2983,7 @@ def format_driver():
 
     # oneline is inactive (doesn't work well yet)
 
-    global _log, encoding, filename
+    global _log, encoding, filename, dofile_basename
 
     if '--options' in sys.argv:
         from misc import help_format
@@ -3028,6 +3040,8 @@ def format_driver():
             _abort()
     else:
         basename = filename[:-7]
+
+    dofile_basename = basename  # global variable
 
     #print '\n----- doconce format %s %s' % (format, filename)
     preprocessor_options = [arg for arg in sys.argv[1:]

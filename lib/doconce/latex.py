@@ -40,6 +40,16 @@ def latex_code(filestr, code_blocks, code_block_types,
             filestr = re.sub(pattern, replacement, filestr, flags=re.MULTILINE)
 
 
+    # Note: cannot fix double quotes right here for it destroys
+    # preprocess/mako code too. Instead we had to introduce the LaTeX
+    # style for quotes: ``[A-Za-z][A-Za-z0-9 ]*?''
+    # The re.sub are really dangerous with a lot of side effects. They
+    # are still here as a warning of never adding such functionality!
+    #filestr = re.sub(r'([^\\])"([^"]+?)"', r"""\g<1>``\g<2>''""", filestr)
+    # Drop fixing of single quotes - it interferes with the double quotes fix,
+    # and it might lead to strange results for the apostrophe!
+    #NO: filestr = re.sub(r"""'([^']+?)'""", r"""`\g<1>'""", filestr)
+
     # References to external documents (done before !bc blocks in
     # case such blocks explain the syntax of the external doc. feature)
     pattern = r'^%\s*[Ee]xternaldocuments?:\s*(.+)$'
@@ -118,26 +128,103 @@ def latex_code(filestr, code_blocks, code_block_types,
                      count=1)
     filestr = re.sub(appendix_pattern, r'\\\g<1>{', filestr) # all others
 
-    # Make sure exercises are surrounded by \begin{doconce:exercise} and
-    # \end{doconce:exercise} with some exercise counter
+    # Make sure exercises are surrounded by \begin{doconceexercise} and
+    # \end{doconceexercise} with some exercise counter
     #comment_pattern = INLINE_TAGS_SUBST[format]['comment'] # only in doconce.py
     comment_pattern = '%% %s'
     pattern = comment_pattern % envir_delimiter_lines['exercise'][0] + '\n'
-    replacement = pattern + r"""\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+    replacement = pattern + r"""\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 """
     filestr = filestr.replace(pattern, replacement)
     pattern = comment_pattern % envir_delimiter_lines['exercise'][1] + '\n'
-    replacement = r'\end{doconce:exercise}' + '\n' + pattern
+    replacement = r'\end{doconceexercise}' + '\n' + pattern
     filestr = filestr.replace(pattern, replacement)
 
     if include_numbering_of_exercises:
         # Remove section numbers of exercise sections
-        filestr = re.sub(r'subsection\{(Exercise|Problem|Project) +(\d+)\s*: +(.+\})',
-                         r'subsection*{\g<1> \g<2>: \g<3>\n\\addcontentsline{toc}{subsection}{\g<2>: \g<3>', filestr)
+        exercise_pattern = r'subsection\*?\{(Exercise|Problem|Project) +(\d+)\s*: +(.+\})'
+        # Make table of contents or list of exercises entry
+        # (might have to add \phantomsection right before because
+        # of the hyperref package?)
+#        filestr, n = re.subn(exercise_pattern,
+#                         r"""subsection*{\g<1> \g<2>: \g<3>
+#% #if LIST_OF_EXERCISES == "toc"
+#\\addcontentsline{toc}{subsection}{\g<2>: \g<3>
+#% #elif LIST_OF_EXERCISES == "loe"
+#\\addcontentsline{loe}{doconceexercise}{\g<1> \g<2>: \g<3>
+#% #endif
+#""", filestr)
+        filestr, n = re.subn(exercise_pattern,
+                         r"""subsection*{\g<1> \\thedoconceexercisecounter: \g<3>
+% #if LIST_OF_EXERCISES == "toc"
+\\addcontentsline{toc}{subsection}{\\thedoconceexercisecounter: \g<3>
+% #elif LIST_OF_EXERCISES == "loe"
+\\addcontentsline{loe}{doconceexercise}{\g<1> \\thedoconceexercisecounter: \g<3>
+% #endif
+""", filestr)
+        if n > 0:
+            # We have exercises, make list of exercises
+            # Find suitable title
+            import sets
+            types_of_exer = sets.Set()
+            for exer_tp, dummy, dummy in re.findall(exercise_pattern, filestr):
+                types_of_exer.add(exer_tp)
+            types_of_exer = list(types_of_exer)
+            types_of_exer = ['%ss' % tp for tp in types_of_exer]  # plural
+            types_of_exer = [tp for tp in sorted(types_of_exer)]  # alphabetic order
+            if len(types_of_exer) == 1:
+                types_of_exer = types_of_exer[0]
+            elif len(types_of_exer) == 2:
+                types_of_exer = ' and '.join(types_of_exer)
+            elif len(types_of_exer) > 2:
+                types_of_exer[-1] = 'and ' + types_of_exer[-1]
+                types_of_exer = ', '.join(types_of_exer)
+            heading = "List of %s" % types_of_exer
+            # Insert definition of \listofexercises
+            if r'\tableofcontents' in filestr:
+                # Here we take fragments normally found in a stylefile
+                # and put them in the .text file, which requires
+                # \makeatletter, \makeatother, etc, see
+                # http://www.tex.ac.uk/cgi-bin/texfaq2html?label=atsigns
+                # Also, the name of the doconce exercise environment
+                # cannot be doconce:exercise (previous name), but
+                # must be doconceexercise because of the \l@... command
+                style_listofexercises = r"""
+
+%% #ifndef LIST_OF_EXERCISES
+%% #define LIST_OF_EXERCISES "none"
+%% #endif
+
+%% --- begin definition of \listofexercises command ---
+\makeatletter
+\newcommand\listofexercises{
+\chapter*{%(heading)s
+          \@mkboth{%(heading)s}{%(heading)s}}
+\markboth{%(heading)s}{%(heading)s}
+\@starttoc{loe}
+}
+\newcommand*{\l@doconceexercise}{\@dottedtocline{0}{0pt}{6.5em}}
+\makeatother
+%% --- end definition of \listofexercises command ---
+""" % vars()
+                insert_listofexercises = r"""
+%% #if LIST_OF_EXERCISES == "loe"
+\clearemptydoublepage
+\listofexercises
+\clearemptydoublepage
+%% #endif
+""" % vars()
+                target = r'\newcounter{doconceexercisecounter}'
+                filestr = filestr.replace(
+                    target, target + style_listofexercises)
+                target = r'\tableofcontents'
+                filestr = filestr.replace(
+                    target, target + insert_listofexercises)
+
 
     # Avoid Filename: as a new paragraph with indentation
-    filestr = filestr.replace('Filename: {', '\\noindent Name of program file: {')  # or should it be Filename: ...?
+    filestr = filestr.replace('Filename: {', '\\noindent Filename: {')
 
     # Fix % and # in link texts (-> \%, \# - % is otherwise a comment...)
     pattern = r'\\href\{\{(.+?)\}\}\{(.+?)\}'
@@ -185,6 +272,13 @@ def latex_code(filestr, code_blocks, code_block_types,
                                  new_heading)
             filestr = filestr.replace(r'%s{%s}' % (tp, heading),
                                       r'%s{%s}' % (tp, new_heading))
+    # addcontentsline also needs \protect\code
+    addcontentslines = re.findall(r'^(\\addcontentsline\{.+)$', filestr,
+                                  flags=re.MULTILINE)
+    for line in addcontentslines:
+        if '\\code{' in line:
+            new_line = line.replace(r'\code{', r'\protect\code{')
+            filestr = filestr.replace(line, new_line)
 
     return filestr
 
@@ -788,7 +882,7 @@ def latex_ref_and_label(section_label2title, format, filestr):
     # range ref:
     filestr = re.sub(r'-ref\{', r'-\\ref{', filestr)
     # the rest of the ' ref{}' (single refs should have ~ in front):
-    filestr = re.sub(r'\sref\{', r'~\\ref{', filestr)
+    filestr = re.sub(r'\s+ref\{', r'~\\ref{', filestr)
     filestr = re.sub(r'\(ref\{', r'(\\ref{', filestr)
 
     # equations are ok in the doconce markup
@@ -798,7 +892,9 @@ def latex_ref_and_label(section_label2title, format, filestr):
                                application='match'), 'LaTeX', filestr)
     #filestr = re.sub('''([^"'`*_A-Za-z0-9-])LaTeX([^"'`*_A-Za-z0-9-])''',
     #                 r'\g<1>{\LaTeX}\g<2>', filestr)
-    filestr = re.sub(r'''([^"'`*/-])\bLaTeX\b([^"'`*/-])''',
+    #filestr = re.sub(r'''([^"'`*/-])\bLaTeX\b([^"'`*/-])''',
+    #                 r'\g<1>{\LaTeX}\g<2>', filestr)
+    filestr = re.sub(r'''([^"'`*/])\bLaTeX\b([^"'`*/])''',
                      r'\g<1>{\LaTeX}\g<2>', filestr)
     filestr = re.sub(r'''([^"'`*-])\bpdfLaTeX\b([^"'`*-])''',
                      fix_latex_command_regex(
@@ -843,10 +939,14 @@ def latex_ref_and_label(section_label2title, format, filestr):
     for p in prefix:
         filestr = re.sub(r'(%s) +([\\A-Za-z0-9$])' % p, r'\g<1>~\g<2>',
                          filestr)
+
     # Allow C# and F# languages
-    # (No: affects music notation!)
-    #filestr = filestr.replace('C#', 'C\\#')
-    #filestr = filestr.replace('F#', 'F\\#')
+    # (be careful as it can affect music notation!)
+    pattern = r'(^| )([A-Za-z]+)#([,.;:! ]|$)'
+    replacement = r'\g<1>\g<2>\#\g<3>'
+    filestr = re.sub(pattern, replacement, filestr, flags=re.MULTILINE)
+
+    # Treat quotes right just before we insert verbatim blocks
 
     return filestr
 
@@ -860,7 +960,7 @@ def latex_index_bib(filestr, index, citations, pubfile, pubdata):
     filestr = filestr.replace('cite{', r'\cite{')
     filestr = filestr.replace('cite[', r'\cite[')
     # Fix spaces after . inside cite[] and insert ~
-    pattern = r'cite\[(.+)\.\s+'
+    pattern = r'cite\[(.+?)\. +'
     filestr = re.sub(pattern, r'cite[\g<1>.~', filestr)
 
     for word in index:
@@ -877,6 +977,9 @@ def latex_index_bib(filestr, index, citations, pubfile, pubdata):
                                     application='replacement'), word)
             # fix underscores:
             word = word.replace('_', r'\_')
+
+            # fix %
+            word = word.replace('%', r'\%')
         replacement = r'\index{%s}' % word
         filestr = filestr.replace(pattern, replacement)
 
@@ -894,7 +997,7 @@ def latex_index_bib(filestr, index, citations, pubfile, pubdata):
         os.system(publish_cmd)
         os.chdir(this_dir)
         # Remove heading right before BIBFILE because latex has its own heading
-        pattern = '={5,9} .+? ={5,9}\s+^BIBFILE'
+        pattern = r'={5,9} .+? ={5,9}\s+^BIBFILE'
         filestr = re.sub(pattern, 'BIBFILE', filestr, flags=re.MULTILINE)
 
         bibtext = fix_latex_command_regex(r"""
@@ -1312,6 +1415,7 @@ def define(FILENAME_EXTENSION,
         'figure':        latex_figure,
         'movie':         latex_movie,
         'comment':       '%% %s',
+        'linebreak':     r'\g<text>\\\\',
         }
 
     ENVIRS['latex'] = {
@@ -2119,21 +2223,27 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
     for exer_envir in exer_envirs:
         if exer_envir + ':' in filestr:
             INTRO['latex'] += r"""
-\newenvironment{doconce:exercise}{}{}
-\newcounter{doconce:exercise:counter}
+\newenvironment{doconceexercise}{}{}
+\newcounter{doconceexercisecounter}
+"""
+            exercise_numbering = option('latex_exercise_numbering=', 'absolute')
+            if chapters and exercise_numbering == 'chapter':
+                INTRO['latex'] += r"""
+% Let exercises, problems, and projects be numbered per chapter:
+\usepackage{chngcntr}
+\counterwithin{doconceexercisecounter}{chapter}
 """
             break
 
-    if chapters:
-        # Follow advice from fancyhdr: redefine \cleardoublepage
-        # see http://www.tex.ac.uk/cgi-bin/texfaq2html?label=reallyblank
-        # (Koma has its own solution to the problem)
-        INTRO['latex'] += r"""
+    # Follow advice from fancyhdr: redefine \cleardoublepage
+    # see http://www.tex.ac.uk/cgi-bin/texfaq2html?label=reallyblank
+    # (Koma has its own solution to the problem, svmono.cls has the command)
+    INTRO['latex'] += r"""
 % #if LATEX_STYLE not in ("Koma_Script", "Springer_T2")
 % Make sure blank even-numbered pages before new chapters are
 % totally blank with no header
 \newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
-%\let\cleardoublepage\clearemptydoublepage % caused error in \tableofcontents...
+%\let\cleardoublepage\clearemptydoublepage % caused error in the toc
 % #endif
 """
 

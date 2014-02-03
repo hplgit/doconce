@@ -207,9 +207,11 @@ Also test backslashes and braces like `\begin`, `\begin{enumerate}`,
 verbatim text.
 
 Here is some color{red}{red} color and an attempt to write color{green}{with
-green color containing a linebreak.
-And one more.} Some formats will only display this correctly when
-HTML is the output format.
+green color containing a linebreak. <linebreak>
+And one more.} Some formats will only display <linebreak>
+this correctly when HTML is the output format. <linebreak>
+But here some more running text is added which is not part of
+the previous blocks with line breaks.
 
 === Running OS commands ===
 
@@ -359,6 +361,7 @@ Testing table environment in LaTeX, enabled by testing on the "latex" format
 with the preprocessor.
 label{mytab}
 }
+
 % endif
 
   |--------------------------------|
@@ -459,6 +462,12 @@ def tfig(fileno):
 
 __Files `my_file_v1.py` and `my_file_v2.py` define some math $a_{i-1}$.__ Here is
 some text.
+
+Let us also add a test of quotes such as ``double
+quotes, with numbers like 3.14 and
+newline/comma and hyphen (as in double-quote)'';
+written in the standard LaTeX-style that gives correct
+LaTeX formatting and ordinary double quotes for all non-LaTeX formats.
 
 ===== Bibliography test =====
 
