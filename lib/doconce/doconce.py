@@ -182,15 +182,6 @@ def syntax_check(filestr, format):
         if line.startswith('!et'):
             inside_math = False
 
-        if not inside_code:
-            if "``" in line:
-                print '''\n*** warning: Double back-quotes `` found in file - should be "?'''
-                print 'Line:', line
-        if not inside_math:
-            if "''" in line:
-                #print '''\n*** warning: Double forward-quotes '' found in file - should be "\n(unless derivatives in math)'''
-                pass
-
     commands = [
         r'\[',
         r'\]',
@@ -2146,7 +2137,7 @@ def inline_tag_subst(filestr, format):
     # Do tags that require almost format-independent treatment such
     # that everything is conveniently defined here
     # 1. Quotes around normal text in LaTeX style:
-    pattern = "``([A-Za-z][A-Za-z0-9 ]*?)''"
+    pattern = "``([A-Za-z][A-Za-z0-9\s,.;?!/:'() -]*?)''"
     if format not in ('pdflatex', 'latex'):
         filestr = re.sub(pattern, '"\g<1>"', filestr)
 
@@ -2312,8 +2303,9 @@ def file2file(in_filename, format, basename):
                 if '-' in pos:
                     pos = pos.split('-')[0]
                     pos = int(pos)
-            print filestr[pos-40:pos], '|', filestr[pos], '|', filestr[pos+1:pos+40]
-            print '    fix character or try --encoding=utf-8'
+            print repr(filestr[pos-40:pos+40])
+            print ' '*42 + '^'
+            print '    remedies: fix character or try --encoding=utf-8'
             _abort()
 
     try:

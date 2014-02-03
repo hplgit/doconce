@@ -223,9 +223,11 @@ Also test backslashes and braces like `\begin`, `\begin{enumerate}`,
 verbatim text.
 
 Here is some color{red}{red} color and an attempt to write color{green}{with
-green color containing a linebreak.
-And one more.} Some formats will only display this correctly when
-HTML is the output format.
+green color containing a linebreak. <linebreak>
+And one more.} Some formats will only display <linebreak>
+this correctly when HTML is the output format. <linebreak>
+But here some more running text is added which is not part of
+the previous blocks with line breaks.
 
 === Running OS commands ===
 
@@ -375,6 +377,7 @@ Testing table environment in LaTeX, enabled by testing on the "latex" format
 with the preprocessor.
 label{mytab}
 }
+
 % endif
 
   |--------------------------------|
@@ -475,6 +478,12 @@ def tfig(fileno):
 
 __Files `my_file_v1.py` and `my_file_v2.py` define some math $a_{i-1}$.__ Here is
 some text.
+
+Let us also add a test of quotes such as ``double
+quotes, with numbers like 3.14 and
+newline/comma and hyphen (as in double-quote)'';
+written in the standard LaTeX-style that gives correct
+LaTeX formatting and ordinary double quotes for all non-LaTeX formats.
 
 ===== Bibliography test =====
 
@@ -1790,8 +1799,32 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 % #endif
 
 
-\newenvironment{doconce:exercise}{}{}
-\newcounter{doconce:exercise:counter}
+\newenvironment{doconceexercise}{}{}
+\newcounter{doconceexercisecounter}
+
+% #ifndef LIST_OF_EXERCISES
+% #define LIST_OF_EXERCISES "none"
+% #endif
+
+% --- begin definition of \listofexercises command ---
+\makeatletter
+\newcommand\listofexercises{
+\chapter*{List of []
+          \@mkboth{List of []}{List of []}}
+\markboth{List of []}{List of []}
+\@starttoc{loe}
+}
+\newcommand*{\l@doconceexercise}{\@dottedtocline{0}{0pt}{6.5em}}
+\makeatother
+% --- end definition of \listofexercises command ---
+
+
+% #if LATEX_STYLE not in ("Koma_Script", "Springer_T2")
+% Make sure blank even-numbered pages before new chapters are
+% totally blank with no header
+\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
+%\let\cleardoublepage\clearemptydoublepage % caused error in the toc
+% #endif
 
 % --- end of standard preamble for documents ---
 
@@ -1991,6 +2024,12 @@ Jan 32, 2100
 
 % #if LATEX_HEADING != "beamer"
 \tableofcontents
+% #if LIST_OF_EXERCISES == "loe"
+\clearemptydoublepage
+\listofexercises
+\clearemptydoublepage
+% #endif
+
 % #ifdef TODONOTES
 \listoftodos[List of inline comments]
 % #endif
@@ -2257,9 +2296,11 @@ Also test backslashes and braces like \code{\begin}, \code{\begin{enumerate}},
 verbatim text.
 
 Here is some \textcolor{red}{red} color and an attempt to write \textcolor{green}{with
-green color containing a linebreak.
-And one more.} Some formats will only display this correctly when
-HTML is the output format.
+green color containing a linebreak. \\
+And one more.} Some formats will only display \\
+this correctly when HTML is the output format. \\
+But here some more running text is added which is not part of
+the previous blocks with line breaks.
 
 \paragraph{Running OS commands.}
 \bsys
@@ -2415,6 +2456,7 @@ with the preprocessor.
 }
 
 
+
 \begin{quote}\begin{tabular}{lrr}
 \hline
 \multicolumn{1}{c}{ time } & \multicolumn{1}{c}{ velocity } & \multicolumn{1}{c}{ acceleration } \\
@@ -2517,6 +2559,12 @@ $\nabla\cdot\bm{u} =0 $                                                       & 
 Here is
 some text.
 
+Let us also add a test of quotes such as ``double
+quotes, with numbers like 3.14 and
+newline/comma and hyphen (as in double-quote)'';
+written in the standard {\LaTeX}-style that gives correct
+{\LaTeX} formatting and ordinary double quotes for all non-{\LaTeX} formats.
+
 \subsection{Bibliography test}
 
 Here is an example: \cite{Langtangen_Pedersen_2002} discussed propagation of
@@ -2548,8 +2596,8 @@ the old ME-IN323 book \cite{Langtangen:91} and the
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
 \subsection{Example 1: Examples can be typeset as exercises}
 \label{Example}
@@ -2579,7 +2627,7 @@ Maybe even another hint?
 The answer to this other subproblem goes here,
 maybe over multiple doconce input lines.
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 
 
@@ -2715,11 +2763,16 @@ between there we have Exercise~\ref{exer:some:formula}.
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
-\subsection*{Problem 2: Flip a Coin}
-\addcontentsline{toc}{subsection}{2: Flip a Coin}
+\subsection*{Problem \thedoconceexercisecounter: Flip a Coin}
+% #if LIST_OF_EXERCISES == "toc"
+\addcontentsline{toc}{subsection}{\thedoconceexercisecounter: Flip a Coin}
+% #elif LIST_OF_EXERCISES == "loe"
+\addcontentsline{loe}{doconceexercise}{Problem \thedoconceexercisecounter: Flip a Coin}
+% #endif
+
 \label{demo:ex:1}
 % keywords = random numbers; Monte Carlo simulation
 
@@ -2788,7 +2841,7 @@ print 'Flipping a coin %d times gave %d heads' % (N, heads)
 Filenames: \code{flip_coin.py}, \code{flip_coin.pdf}.
 % solution files: mysol.txt, mysol_flip_coin.py, yet_another.file
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 
 
@@ -2800,11 +2853,16 @@ exercises.
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
-\subsection*{Project 3: Compute a Probability}
-\addcontentsline{toc}{subsection}{3: Compute a Probability}
+\subsection*{Project \thedoconceexercisecounter: Compute a Probability}
+% #if LIST_OF_EXERCISES == "toc"
+\addcontentsline{toc}{subsection}{\thedoconceexercisecounter: Compute a Probability}
+% #elif LIST_OF_EXERCISES == "loe"
+\addcontentsline{loe}{doconceexercise}{Project \thedoconceexercisecounter: Compute a Probability}
+% #endif
+
 \label{demo:ex:2}
 
 % Minimalistic exercise
@@ -2834,18 +2892,23 @@ compute the probability as $M/N$.
 
 % --- end hint in exercise ---
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 
 
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
-\subsection*{Project 4: Explore Distributions of Random Circles}
-\addcontentsline{toc}{subsection}{4: Explore Distributions of Random Circles}
+\subsection*{Project \thedoconceexercisecounter: Explore Distributions of Random Circles}
+% #if LIST_OF_EXERCISES == "toc"
+\addcontentsline{toc}{subsection}{\thedoconceexercisecounter: Explore Distributions of Random Circles}
+% #elif LIST_OF_EXERCISES == "loe"
+\addcontentsline{loe}{doconceexercise}{Project \thedoconceexercisecounter: Explore Distributions of Random Circles}
+% #endif
+
 \label{proj:circle1}
 
 The formula for a circle is given by
@@ -2920,18 +2983,23 @@ At the very end of the exercise it may be appropriate to summarize
 and give some perspectives.
 
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 
 
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
-\subsection*{Exercise 5: Determine some Distance}
-\addcontentsline{toc}{subsection}{5: Determine some Distance}
+\subsection*{Exercise \thedoconceexercisecounter: Determine some Distance}
+% #if LIST_OF_EXERCISES == "toc"
+\addcontentsline{toc}{subsection}{\thedoconceexercisecounter: Determine some Distance}
+% #elif LIST_OF_EXERCISES == "loe"
+\addcontentsline{loe}{doconceexercise}{Exercise \thedoconceexercisecounter: Determine some Distance}
+% #endif
+
 \label{exer:dist}
 
 Intro to this exercise. Questions are in subexercises below.
@@ -3042,15 +3110,15 @@ and their implications in other problems can be made. These
 remarks will appear at the end of the typeset exercise.
 
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 
 
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
 \subsection{Some exercise without the "Exercise:" prefix}
 
@@ -3067,15 +3135,15 @@ And a test that the code \code{lambda x: x+2} is correctly placed here:
 lambda x: x+2
 \eccq
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 
 
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
 \subsection{Example 7: Just an example}
 
@@ -3089,7 +3157,7 @@ What is the capital of Norway?
 \paragraph{Answer.}
 Oslo.
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 
 
@@ -3102,11 +3170,16 @@ With some text, before we continue with exercises.
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
-\subsection*{Exercise 8: Make references to projects and problems}
-\addcontentsline{toc}{subsection}{8: Make references to projects and problems}
+\subsection*{Exercise \thedoconceexercisecounter: Make references to projects and problems}
+% #if LIST_OF_EXERCISES == "toc"
+\addcontentsline{toc}{subsection}{\thedoconceexercisecounter: Make references to projects and problems}
+% #elif LIST_OF_EXERCISES == "loe"
+\addcontentsline{loe}{doconceexercise}{Exercise \thedoconceexercisecounter: Make references to projects and problems}
+% #endif
+
 \label{exer:some:formula}
 
 Pick a statement from Project~\ref{proj:circle1} or Problem~\ref{demo:ex:1}
@@ -3124,18 +3197,23 @@ hint, etc.):
 \noindent
 Filename: \code{verify_formula.py}.
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 
 
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
-\subsection*{Project 9: References to Project~\ref{demo:ex:2} in a heading works for latex}
-\addcontentsline{toc}{subsection}{9: References to Project~\ref{demo:ex:2} in a heading works for latex}
+\subsection*{Project \thedoconceexercisecounter: References to Project~\ref{demo:ex:2} in a heading works for latex}
+% #if LIST_OF_EXERCISES == "toc"
+\addcontentsline{toc}{subsection}{\thedoconceexercisecounter: References to Project~\ref{demo:ex:2} in a heading works for latex}
+% #elif LIST_OF_EXERCISES == "loe"
+\addcontentsline{loe}{doconceexercise}{Project \thedoconceexercisecounter: References to Project~\ref{demo:ex:2} in a heading works for latex}
+% #endif
+
 \label{exer:you}
 
 Refer to the previous exercise as Exercise~\ref{exer:some:formula},
@@ -3143,7 +3221,7 @@ the two before that as Projects~\ref{demo:ex:2} and~\ref{proj:circle1},
 and this one as Project~\ref{exer:you}.
 Filename: \code{selc_composed.pdf}.
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 
 
@@ -3471,8 +3549,27 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \oldtabular}{\endoldtabular}
 
 
-\newenvironment{doconce:exercise}{}{}
-\newcounter{doconce:exercise:counter}
+\newenvironment{doconceexercise}{}{}
+\newcounter{doconceexercisecounter}
+
+
+% --- begin definition of \listofexercises command ---
+\makeatletter
+\newcommand\listofexercises{
+\chapter*{List of []
+          \@mkboth{List of []}{List of []}}
+\markboth{List of []}{List of []}
+\@starttoc{loe}
+}
+\newcommand*{\l@doconceexercise}{\@dottedtocline{0}{0pt}{6.5em}}
+\makeatother
+% --- end definition of \listofexercises command ---
+
+
+% Make sure blank even--numbered pages before new chapters are
+% totally blank with no header
+\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
+%\let\cleardoublepage\clearemptydoublepage % caused error in the toc
 
 % --- end of standard preamble for documents ---
 
@@ -3562,6 +3659,10 @@ Project & 9 & References to Project ref{demo:ex:2} in a ... & p.~\pageref{exer:y
 % --- end of table of exercises
 \clearpage % pagebreak after list of exercises
 
+
+\clearemptydoublepage
+\listofexercises
+\clearemptydoublepage
 
 \listoftodos[List of inline comments]
 
@@ -3846,9 +3947,11 @@ Also test backslashes and braces like {\fontsize{10pt}{10pt}\Verb!\begin!}, {\fo
 verbatim text.
 
 Here is some \textcolor{red}{red} color and an attempt to write \textcolor{green}{with
-green color containing a linebreak.
-And one more.} Some formats will only display this correctly when
-HTML is the output format.
+green color containing a linebreak. \\
+And one more.} Some formats will only display \\
+this correctly when HTML is the output format. \\
+But here some more running text is added which is not part of
+the previous blocks with line breaks.
 
 \paragraph{Running OS commands.}
 \vspace{4pt}
@@ -4008,6 +4111,7 @@ with the preprocessor.
 }
 
 
+
 \begin{quote}\begin{tabular}{lrr}
 \hline
 \multicolumn{1}{c}{ time } & \multicolumn{1}{c}{ velocity } & \multicolumn{1}{c}{ acceleration } \\
@@ -4112,6 +4216,12 @@ $\nabla\cdot\bm{u} =0 $                                                       & 
 Here is
 some text.
 
+Let us also add a test of quotes such as ``double
+quotes, with numbers like 3.14 and
+newline/comma and hyphen (as in double--quote)'';
+written in the standard {\LaTeX}-style that gives correct
+{\LaTeX} formatting and ordinary double quotes for all non-{\LaTeX} formats.
+
 \subsection{Bibliography test}
 
 Here is an example: \cite{Langtangen_Pedersen_2002} discussed propagation of
@@ -4143,8 +4253,8 @@ the old ME-IN323 book \cite{Langtangen:91} and the
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
 \subsection{Example 1: Examples can be typeset as exercises}
 \label{Example}
@@ -4174,7 +4284,7 @@ Maybe even another hint?
 The answer to this other subproblem goes here,
 maybe over multiple doconce input lines.
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 
 
@@ -4310,11 +4420,12 @@ between there we have Exercise~\ref{exer:some:formula}.
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
-\subsection*{Problem 2: Flip a Coin}
-\addcontentsline{toc}{subsection}{2: Flip a Coin}
+\subsection*{Problem \thedoconceexercisecounter: Flip a Coin}
+\addcontentsline{loe}{doconceexercise}{Problem \thedoconceexercisecounter: Flip a Coin}
+
 \label{demo:ex:1}
 % keywords = random numbers; Monte Carlo simulation
 
@@ -4384,7 +4495,7 @@ print 'Flipping a coin %d times gave %d heads' % (N, heads)
 Filenames: {\fontsize{10pt}{10pt}\Verb!flip_coin.py!}, {\fontsize{10pt}{10pt}\Verb!flip_coin.pdf!}.
 % solution files: mysol.txt, mysol_flip_coin.py, yet_another.file
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 
 
@@ -4396,11 +4507,12 @@ exercises.
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
-\subsection*{Project 3: Compute a Probability}
-\addcontentsline{toc}{subsection}{3: Compute a Probability}
+\subsection*{Project \thedoconceexercisecounter: Compute a Probability}
+\addcontentsline{loe}{doconceexercise}{Project \thedoconceexercisecounter: Compute a Probability}
+
 \label{demo:ex:2}
 
 % Minimalistic exercise
@@ -4430,18 +4542,19 @@ compute the probability as $M/N$.
 
 % --- end hint in exercise ---
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 
 
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
-\subsection*{Project 4: Explore Distributions of Random Circles}
-\addcontentsline{toc}{subsection}{4: Explore Distributions of Random Circles}
+\subsection*{Project \thedoconceexercisecounter: Explore Distributions of Random Circles}
+\addcontentsline{loe}{doconceexercise}{Project \thedoconceexercisecounter: Explore Distributions of Random Circles}
+
 \label{proj:circle1}
 
 The formula for a circle is given by
@@ -4517,18 +4630,19 @@ At the very end of the exercise it may be appropriate to summarize
 and give some perspectives.
 
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 
 
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
-\subsection*{Exercise 5: Determine some Distance}
-\addcontentsline{toc}{subsection}{5: Determine some Distance}
+\subsection*{Exercise \thedoconceexercisecounter: Determine some Distance}
+\addcontentsline{loe}{doconceexercise}{Exercise \thedoconceexercisecounter: Determine some Distance}
+
 \label{exer:dist}
 
 Intro to this exercise. Questions are in subexercises below.
@@ -4643,15 +4757,15 @@ and their implications in other problems can be made. These
 remarks will appear at the end of the typeset exercise.
 
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 
 
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
 \subsection{Some exercise without the "Exercise:" prefix}
 
@@ -4670,15 +4784,15 @@ lambda x: x+2
 \end{Verbatim}
 \noindent
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 
 
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
 \subsection{Example 7: Just an example}
 
@@ -4692,7 +4806,7 @@ What is the capital of Norway?
 \paragraph{Answer.}
 Oslo.
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 
 
@@ -4705,11 +4819,12 @@ With some text, before we continue with exercises.
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
-\subsection*{Exercise 8: Make references to projects and problems}
-\addcontentsline{toc}{subsection}{8: Make references to projects and problems}
+\subsection*{Exercise \thedoconceexercisecounter: Make references to projects and problems}
+\addcontentsline{loe}{doconceexercise}{Exercise \thedoconceexercisecounter: Make references to projects and problems}
+
 \label{exer:some:formula}
 
 Pick a statement from Project~\ref{proj:circle1} or Problem~\ref{demo:ex:1}
@@ -4727,18 +4842,19 @@ hint, etc.):
 \noindent
 Filename: {\fontsize{10pt}{10pt}\Verb!verify_formula.py!}.
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 
 
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
-\subsection*{Project 9: References to Project~\ref{demo:ex:2} in a heading works for pdflatex}
-\addcontentsline{toc}{subsection}{9: References to Project~\ref{demo:ex:2} in a heading works for pdflatex}
+\subsection*{Project \thedoconceexercisecounter: References to Project~\ref{demo:ex:2} in a heading works for pdflatex}
+\addcontentsline{loe}{doconceexercise}{Project \thedoconceexercisecounter: References to Project~\ref{demo:ex:2} in a heading works for pdflatex}
+
 \label{exer:you}
 
 Refer to the previous exercise as Exercise~\ref{exer:some:formula},
@@ -4746,7 +4862,7 @@ the two before that as Projects~\ref{demo:ex:2} and~\ref{proj:circle1},
 and this one as Project~\ref{exer:you}.
 Filename: {\fontsize{10pt}{10pt}\Verb!selc_composed.pdf!}.
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 
 
@@ -5038,8 +5154,27 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 
 
-\newenvironment{doconce:exercise}{}{}
-\newcounter{doconce:exercise:counter}
+\newenvironment{doconceexercise}{}{}
+\newcounter{doconceexercisecounter}
+
+
+% --- begin definition of \listofexercises command ---
+\makeatletter
+\newcommand\listofexercises{
+\chapter*{List of []
+          \@mkboth{List of []}{List of []}}
+\markboth{List of []}{List of []}
+\@starttoc{loe}
+}
+\newcommand*{\l@doconceexercise}{\@dottedtocline{0}{0pt}{6.5em}}
+\makeatother
+% --- end definition of \listofexercises command ---
+
+
+% Make sure blank even--numbered pages before new chapters are
+% totally blank with no header
+\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
+%\let\cleardoublepage\clearemptydoublepage % caused error in the toc
 
 % --- end of standard preamble for documents ---
 
@@ -5136,6 +5271,7 @@ Project & 9 & References to Project ref{demo:ex:2} in a ... & p.~\pageref{exer:y
 \end{tabular}
 % --- end of table of exercises
 \clearpage % pagebreak after list of exercises
+
 
 
 
@@ -5388,9 +5524,11 @@ Also test backslashes and braces like \Verb!\begin!, \Verb!\begin{enumerate}!,
 verbatim text.
 
 Here is some \textcolor{red}{red} color and an attempt to write \textcolor{green}{with
-green color containing a linebreak.
-And one more.} Some formats will only display this correctly when
-HTML is the output format.
+green color containing a linebreak. \\
+And one more.} Some formats will only display \\
+this correctly when HTML is the output format. \\
+But here some more running text is added which is not part of
+the previous blocks with line breaks.
 
 \paragraph{Running OS commands.}
 begin{quote}begin{Verbatim}
@@ -5546,6 +5684,7 @@ with the preprocessor.
 }
 
 
+
 \begin{quote}\begin{tabular}{lrr}
 \hline
 \multicolumn{1}{c}{ time } & \multicolumn{1}{c}{ velocity } & \multicolumn{1}{c}{ acceleration } \\
@@ -5648,6 +5787,12 @@ $\nabla\cdot\bm{u} =0 $                                                       & 
 Here is
 some text.
 
+Let us also add a test of quotes such as ``double
+quotes, with numbers like 3.14 and
+newline/comma and hyphen (as in double--quote)'';
+written in the standard {\LaTeX}-style that gives correct
+{\LaTeX} formatting and ordinary double quotes for all non-{\LaTeX} formats.
+
 \subsection{Bibliography test}
 
 Here is an example: \cite{Langtangen_Pedersen_2002} discussed propagation of
@@ -5679,8 +5824,8 @@ the old ME-IN323 book \cite{Langtangen:91} and the
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
 \subsection{Example 1: Examples can be typeset as exercises}
 \label{Example}
@@ -5710,7 +5855,7 @@ Maybe even another hint?
 The answer to this other subproblem goes here,
 maybe over multiple doconce input lines.
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 
 
@@ -5846,11 +5991,11 @@ between there we have Exercise~\ref{exer:some:formula}.
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
-\subsection*{Problem 2: Flip a Coin}
-\addcontentsline{toc}{subsection}{2: Flip a Coin}
+\subsection*{Problem \thedoconceexercisecounter: Flip a Coin}
+
 \label{demo:ex:1}
 % keywords = random numbers; Monte Carlo simulation
 
@@ -5919,7 +6064,7 @@ print 'Flipping a coin %d times gave %d heads' % (N, heads)
 Filenames: \Verb!flip_coin.py!, \Verb!flip_coin.pdf!.
 % solution files: mysol.txt, mysol_flip_coin.py, yet_another.file
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 
 
@@ -5931,11 +6076,11 @@ exercises.
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
-\subsection*{Project 3: Compute a Probability}
-\addcontentsline{toc}{subsection}{3: Compute a Probability}
+\subsection*{Project \thedoconceexercisecounter: Compute a Probability}
+
 \label{demo:ex:2}
 
 % Minimalistic exercise
@@ -5965,18 +6110,18 @@ compute the probability as $M/N$.
 
 % --- end hint in exercise ---
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 
 
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
-\subsection*{Project 4: Explore Distributions of Random Circles}
-\addcontentsline{toc}{subsection}{4: Explore Distributions of Random Circles}
+\subsection*{Project \thedoconceexercisecounter: Explore Distributions of Random Circles}
+
 \label{proj:circle1}
 
 The formula for a circle is given by
@@ -6051,18 +6196,18 @@ At the very end of the exercise it may be appropriate to summarize
 and give some perspectives.
 
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 
 
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
-\subsection*{Exercise 5: Determine some Distance}
-\addcontentsline{toc}{subsection}{5: Determine some Distance}
+\subsection*{Exercise \thedoconceexercisecounter: Determine some Distance}
+
 \label{exer:dist}
 
 Intro to this exercise. Questions are in subexercises below.
@@ -6173,15 +6318,15 @@ and their implications in other problems can be made. These
 remarks will appear at the end of the typeset exercise.
 
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 
 
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
 \subsection{Some exercise without the "Exercise:" prefix}
 
@@ -6198,15 +6343,15 @@ And a test that the code \Verb!lambda x: x+2! is correctly placed here:
 lambda x: x+2
 \end{Verbatim}
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 
 
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
 \subsection{Example 7: Just an example}
 
@@ -6220,7 +6365,7 @@ What is the capital of Norway?
 \paragraph{Answer.}
 Oslo.
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 
 
@@ -6233,11 +6378,11 @@ With some text, before we continue with exercises.
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
-\subsection*{Exercise 8: Make references to projects and problems}
-\addcontentsline{toc}{subsection}{8: Make references to projects and problems}
+\subsection*{Exercise \thedoconceexercisecounter: Make references to projects and problems}
+
 \label{exer:some:formula}
 
 Pick a statement from Project~\ref{proj:circle1} or Problem~\ref{demo:ex:1}
@@ -6255,18 +6400,18 @@ hint, etc.):
 \noindent
 Filename: \Verb!verify_formula.py!.
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 
 
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
-\subsection*{Project 9: References to Project~\ref{demo:ex:2} in a heading works for pdflatex}
-\addcontentsline{toc}{subsection}{9: References to Project~\ref{demo:ex:2} in a heading works for pdflatex}
+\subsection*{Project \thedoconceexercisecounter: References to Project~\ref{demo:ex:2} in a heading works for pdflatex}
+
 \label{exer:you}
 
 Refer to the previous exercise as Exercise~\ref{exer:some:formula},
@@ -6274,7 +6419,7 @@ the two before that as Projects~\ref{demo:ex:2} and~\ref{proj:circle1},
 and this one as Project~\ref{exer:you}.
 Filename: \Verb!selc_composed.pdf!.
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 
 
@@ -6710,9 +6855,13 @@ Also test backslashes and braces like ``\begin``, ``\begin{enumerate}``,
 verbatim text.
 
 Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
-green color containing a linebreak.
-And one more.</font> Some formats will only display this correctly when
-HTML is the output format.
+green color containing a linebreak. 
+
+| And one more.</font> Some formats will only display 
+| this correctly when HTML is the output format. 
+| But here some more running text is added which is not part of
+
+the previous blocks with line breaks.
 
 Running OS commands
 ~~~~~~~~~~~~~~~~~~~
@@ -6960,6 +7109,12 @@ A test of verbatim words in heading with subscript a_i: ``my_file_v1`` and ``my_
 **Files ``my_file_v1.py`` and ``my_file_v2.py`` define some math a_{i-1}.**
 Here is
 some text.
+
+Let us also add a test of quotes such as "double
+quotes, with numbers like 3.14 and
+newline/comma and hyphen (as in double-quote)";
+written in the standard LaTeX-style that gives correct
+LaTeX formatting and ordinary double quotes for all non-LaTeX formats.
 
 Bibliography test
 -----------------
@@ -8125,9 +8280,13 @@ Also test backslashes and braces like ``\begin``, ``\begin{enumerate}``,
 verbatim text.
 
 Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
-green color containing a linebreak.
-And one more.</font> Some formats will only display this correctly when
-HTML is the output format.
+green color containing a linebreak. 
+
+| And one more.</font> Some formats will only display 
+| this correctly when HTML is the output format. 
+| But here some more running text is added which is not part of
+
+the previous blocks with line breaks.
 
 Running OS commands
 ~~~~~~~~~~~~~~~~~~~
@@ -8420,6 +8579,12 @@ A test of verbatim words in heading with subscript :math:`a_i`: ``my_file_v1`` a
 **Files ``my_file_v1.py`` and ``my_file_v2.py`` define some math :math:`a_{i-1}`.**
 Here is
 some text.
+
+Let us also add a test of quotes such as "double
+quotes, with numbers like 3.14 and
+newline/comma and hyphen (as in double-quote)";
+written in the standard LaTeX-style that gives correct
+LaTeX formatting and ordinary double quotes for all non-LaTeX formats.
 
 Bibliography test
 -----------------
@@ -9648,9 +9813,14 @@ Also test backslashes and braces like `\begin`, `\begin{enumerate}`,
 verbatim text.
 
 Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
-green color containing a linebreak.
-And one more.</font> Some formats will only display this correctly when
-HTML is the output format.
+green color containing a linebreak. 
+
+And one more.</font> Some formats will only display 
+
+this correctly when HTML is the output format. 
+
+But here some more running text is added which is not part of
+the previous blocks with line breaks.
 
 ==== Running OS commands ====
 
@@ -9896,6 +10066,12 @@ and URLs.
 
 *Files `my_file_v1.py` and `my_file_v2.py` define some math `a_{i-1}`.* Here is
 some text.
+
+Let us also add a test of quotes such as "double
+quotes, with numbers like 3.14 and
+newline/comma and hyphen (as in double-quote)";
+written in the standard LaTeX-style that gives correct
+LaTeX formatting and ordinary double quotes for all non-LaTeX formats.
 
 ==== Bibliography test ====
 
@@ -10813,9 +10989,11 @@ Also test backslashes and braces like <code>\begin</code>, <code>\begin{enumerat
 verbatim text.
 
 Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
-green color containing a linebreak.
-And one more.</font> Some formats will only display this correctly when
-HTML is the output format.
+green color containing a linebreak. <br />
+And one more.</font> Some formats will only display <br />
+this correctly when HTML is the output format. <br />
+But here some more running text is added which is not part of
+the previous blocks with line breaks.
 
 ==== Running OS commands ====
 
@@ -11023,6 +11201,12 @@ and URLs.
 ''Files <code>my_file_v1.py</code> and <code>my_file_v2.py</code> define some math <math>a_{i-1}</math>.''
 Here is
 some text.
+
+Let us also add a test of quotes such as "double
+quotes, with numbers like 3.14 and
+newline/comma and hyphen (as in double-quote)";
+written in the standard LaTeX-style that gives correct
+LaTeX formatting and ordinary double quotes for all non-LaTeX formats.
 
 ==== Bibliography test ====
 
@@ -12061,9 +12245,11 @@ Also test backslashes and braces like {{{\begin}}}, {{{\begin{enumerate}}}},
 verbatim text.
 
 Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
-green color containing a linebreak.
-And one more.</font> Some formats will only display this correctly when
-HTML is the output format.
+green color containing a linebreak. <br />
+And one more.</font> Some formats will only display <br />
+this correctly when HTML is the output format. <br />
+But here some more running text is added which is not part of
+the previous blocks with line breaks.
 
 === Running OS commands ===
 
@@ -12258,6 +12444,12 @@ and URLs.
 
 //Files {{{my_file_v1.py}}} and {{{my_file_v2.py}}} define some math {{{a_{i-1}}}}.// Here is
 some text.
+
+Let us also add a test of quotes such as "double
+quotes, with numbers like 3.14 and
+newline/comma and hyphen (as in double-quote)";
+written in the standard LaTeX-style that gives correct
+LaTeX formatting and ordinary double quotes for all non-LaTeX formats.
 
 == Bibliography test ==
 
@@ -13168,9 +13360,11 @@ Also test backslashes and braces like '\begin', '\begin{enumerate}',
 verbatim text.
 
 Here is some red color and an attempt to write with
-green color containing a linebreak.
-And one more. Some formats will only display this correctly when
-HTML is the output format.
+green color containing a linebreak. 
+And one more. Some formats will only display 
+this correctly when HTML is the output format. 
+But here some more running text is added which is not part of
+the previous blocks with line breaks.
 
 Running OS commands::
 
@@ -13355,6 +13549,12 @@ A test of verbatim words in heading with subscript a_i: 'my_file_v1' and 'my_fil
 
 *Files 'my_file_v1.py' and 'my_file_v2.py' define some math a_{i-1}.* Here is
 some text.
+
+Let us also add a test of quotes such as "double
+quotes, with numbers like 3.14 and
+newline/comma and hyphen (as in double-quote)";
+written in the standard LaTeX-style that gives correct
+LaTeX formatting and ordinary double quotes for all non-LaTeX formats.
 
 Bibliography test
 
@@ -14317,9 +14517,11 @@ C{\end{this}\end{that}}, and C{{something \inside braces}} in inline
 verbatim text.
 
 Here is some red color and an attempt to write with
-green color containing a linebreak.
-And one more. Some formats will only display this correctly when
-HTML is the output format.
+green color containing a linebreak. 
+And one more. Some formats will only display 
+this correctly when HTML is the output format. 
+But here some more running text is added which is not part of
+the previous blocks with line breaks.
 
 Running OS commands
 ~~~~~~~~~~~~~~~~~~~
@@ -14509,6 +14711,12 @@ A test of verbatim words in heading with subscript M{a_i}: C{my_file_v1} and C{m
 
 I{Files C{my_file_v1.py} and C{my_file_v2.py} define some math M{a_{i-1}}.} Here is
 some text.
+
+Let us also add a test of quotes such as "double
+quotes, with numbers like 3.14 and
+newline/comma and hyphen (as in double-quote)";
+written in the standard LaTeX-style that gives correct
+LaTeX formatting and ordinary double quotes for all non-LaTeX formats.
 
 Bibliography test
 -----------------
@@ -15568,9 +15776,11 @@ Also test backslashes and braces like \begin, \begin{enumerate},
 verbatim text.
 
 Here is some red color and an attempt to write with
-green color containing a linebreak.
-And one more. Some formats will only display this correctly when
-HTML is the output format.
+green color containing a linebreak. 
+And one more. Some formats will only display 
+this correctly when HTML is the output format. 
+But here some more running text is added which is not part of
+the previous blocks with line breaks.
 
 Running OS commands
 ~~~~~~~~~~~~~~~~~~~
@@ -15761,6 +15971,12 @@ A test of verbatim words in heading with subscript a_i: my_file_v1 and my_file_v
 
 *Files my_file_v1.py and my_file_v2.py define some math a_{i-1}.* Here is
 some text.
+
+Let us also add a test of quotes such as "double
+quotes, with numbers like 3.14 and
+newline/comma and hyphen (as in double-quote)";
+written in the standard LaTeX-style that gives correct
+LaTeX formatting and ordinary double quotes for all non-LaTeX formats.
 
 Bibliography test
 -----------------
@@ -16806,9 +17022,11 @@ Also test backslashes and braces like `\begin`, `\begin{enumerate}`,
 verbatim text.
 
 Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
-green color containing a linebreak.
-And one more.</font> Some formats will only display this correctly when
-HTML is the output format.
+green color containing a linebreak. \n
+And one more.</font> Some formats will only display \n
+this correctly when HTML is the output format. \n
+But here some more running text is added which is not part of
+the previous blocks with line breaks.
 
 #### Running OS commands
 
@@ -17028,6 +17246,12 @@ and URLs.
 
 *Files `my_file_v1.py` and `my_file_v2.py` define some math $a_{i-1}$.* Here is
 some text.
+
+Let us also add a test of quotes such as "double
+quotes, with numbers like 3.14 and
+newline/comma and hyphen (as in double-quote)";
+written in the standard LaTeX-style that gives correct
+LaTeX formatting and ordinary double quotes for all non-LaTeX formats.
 
 ### Bibliography test
 
@@ -18296,9 +18520,11 @@ in a separate document: `admon.do.txt`.
       "verbatim text.\n",
       "\n",
       "Here is some <font color=\"red\">red</font> color and an attempt to write <font color=\"green\">with\n",
-      "green color containing a linebreak.\n",
-      "And one more.</font> Some formats will only display this correctly when\n",
-      "HTML is the output format.\n",
+      "green color containing a linebreak. \n",
+      "And one more.</font> Some formats will only display \n",
+      "this correctly when HTML is the output format. \n",
+      "But here some more running text is added which is not part of\n",
+      "the previous blocks with line breaks.\n",
       "\n",
       "#### Running OS commands"
      ]
@@ -18583,6 +18809,12 @@ in a separate document: `admon.do.txt`.
       "\n",
       "*Files `my_file_v1.py` and `my_file_v2.py` define some math $a_{i-1}$.* Here is\n",
       "some text.\n",
+      "\n",
+      "Let us also add a test of quotes such as \"double\n",
+      "quotes, with numbers like 3.14 and\n",
+      "newline/comma and hyphen (as in double-quote)\";\n",
+      "written in the standard LaTeX-style that gives correct\n",
+      "LaTeX formatting and ordinary double quotes for all non-LaTeX formats.\n",
       "\n",
       "### Bibliography test\n",
       "\n",
@@ -19893,7 +20125,7 @@ Terminal&gt; myprog -f
 output1
 output2</code></pre>
 <p>It is time to test <code>verbatim inline font</code> especially with <code>a newline inside the text</code> and an exclamation mark at the end: <code>BEGIN</code>! The exclamation mark inside the verbatim text is potentially not smart since latex use ! in the <code>Verb</code> typesetting, but this should now be fixed: test  !bc  and  !ec  as well as  !bsummary . Also test backslashes and braces like <code>\begin</code>, <code>\begin{enumerate}</code>, <code>\end{this}\end{that}</code>, and <code>{something \inside braces}</code> in inline verbatim text.</p>
-<p>Here is some color and an attempt to write Some formats will only display this correctly when HTML is the output format.</p>
+<p>Here is some color and an attempt to write Some formats will only display<br />this correctly when HTML is the output format.<br />But here some more running text is added which is not part of the previous blocks with line breaks.</p>
 <h4 id="running-os-commands.">Running OS commands.</h4>
 <pre><code>Terminal&gt; python -c &#39;print &quot;Testing\noutput\nfrom\nPython.&quot;&#39;
 Testing
@@ -20091,6 +20323,7 @@ ccc<br /><span class="math">\(\mathcal{L}=0\)</span> &amp; <img src="../doc/src/
 <h2 id="a-test-of-verbatim-words-in-heading-with-subscript-a_i-my_file_v1-and-my_file_v2">A test of verbatim words in heading with subscript <span class="math">\(a_i\)</span>: <code>my\_file\_v1</code> and <code>my\_file\_v2</code></h2>
 <h4 id="files-my_file_v1.py-and-my_file_v2.py-define-some-math-a_i-1.">Files <code>my\_file\_v1.py</code> and <code>my\_file\_v2.py</code> define some math <span class="math">\(a_{i-1}\)</span>.</h4>
 <p>Here is some text.</p>
+<p>Let us also add a test of quotes such as “double quotes, with numbers like 3.14 and newline/comma and hyphen (as in double-quote)”; written in the standard LaTeX-style that gives correct LaTeX formatting and ordinary double quotes for all non-LaTeX formats.</p>
 <h2 id="bibliography-test">Bibliography test</h2>
 <p>Here is an example: @Langtangen_Pedersen_2002 discussed propagation of large destructive water waves, @Langtangen_et_al_2002 gave an overview of numerical methods for solving the Navier-Stokes equations, while the use of Backward Kolmogorov equations for analyzing random vibrations was investigated in @Langtangen_1994a. The book chapter @Mardal_et_al_2003a contains information on C++ software tools for programming multigrid methods. A real retro reference is @Langtangen_1988d about a big FORTRAN package. Multiple references are also possible, e.g., see @Langtangen_Pedersen_2002 [@Mardal_et_al_2003a].</p>
 <p>We need to cite more than 10 papers to reproduce an old formatting problem with blanks in the keys in reST format: @Langtangen_1992c [@Langtangen_1994a; @Mortensen_et_al_2011; @Langtangen_Pedersen_2002] and @Langtangen_et_al_2002 [@Glimsdal_et_al_20006; @Rahman_et_al_2006b; @Haga_et_al_2011a; @Langtangen_2003a; @Langtangen_2008a; @Langtangen:95] and all the work of @Langtangen_2012 [@Mardal_et_al_2003a; @Jeberg_et_al_2004] as well as old work @Langtangen_1988d and @Langtangen_1989e, and the talk @Langtangen_talk_2007a. Langtangen also had two thesis @Langtangen:85 [@Langtangen_1989e]. More retro citations are the old ME-IN323 book @Langtangen:91 and the @Langtangen:94b OONSKI ’94 paper.</p>
@@ -20160,7 +20393,7 @@ b &amp;= \nabla^2 u + \nabla^4 x &amp; x\in\Omega \label{eq2a}\end{aligned}\]</s
 <p>More mathematical typesetting is demonstrated in the coming exercises.</p>
 <p>Below, we have Problem [demo:ex:1] and Project [demo:ex:2], as well as Projects [proj:circle1] and [exer:you], and in between there we have Exercise [exer:some:formula].</p>
 <h1 id="exercises">Exercises</h1>
-<h2 id="problem-2-flip-a-coin" class="unnumbered">Problem 2: Flip a Coin</h2>
+<h2 id="problem-flip-a-coin" class="unnumbered">Problem : Flip a Coin</h2>
 <p>[demo:ex:1]</p>
 <p>Make a program that simulates flipping a coin <span class="math">\(N\)</span> times. Print out &quot;tail&quot; or &quot;head&quot; for each flip and let the program count the number of heads.</p>
 <h4 id="remarks.">Remarks.</h4>
@@ -20188,7 +20421,7 @@ print &#39;Flipping a coin %d times gave %d heads&#39; % (N, heads)</code></pre>
 <p>Filenames: <code>flip_coin.py</code>, <code>flip_coin.pdf</code>.</p>
 <h2 id="not-an-exercise">Not an exercise</h2>
 <p>Should be possible to stick a normal section in the middle of many exercises.</p>
-<h2 id="project-3-compute-a-probability" class="unnumbered">Project 3: Compute a Probability</h2>
+<h2 id="project-compute-a-probability" class="unnumbered">Project : Compute a Probability</h2>
 <p>[demo:ex:2]</p>
 <p>What is the probability of getting a number between 0.5 and 0.6 when drawing uniformly distributed random numbers from the interval <span class="math">\([0,1)\)</span>?</p>
 <p>At the end we have a list because that caused problems in LaTeX in previous Doconce versions:</p>
@@ -20198,7 +20431,7 @@ print &#39;Flipping a coin %d times gave %d heads&#39; % (N, heads)</code></pre>
 </ol>
 <h4 id="hint.">Hint.</h4>
 <p>To answer this question empirically, let a program draw <span class="math">\(N\)</span> such random numbers using Python’s standard <code>random</code> module, count how many of them, <span class="math">\(M\)</span>, that fall in the interval <span class="math">\((0.5,0.6)\)</span>, and compute the probability as <span class="math">\(M/N\)</span>.</p>
-<h2 id="project-4-explore-distributions-of-random-circles" class="unnumbered">Project 4: Explore Distributions of Random Circles</h2>
+<h2 id="project-explore-distributions-of-random-circles" class="unnumbered">Project : Explore Distributions of Random Circles</h2>
 <p>[proj:circle1]</p>
 <p>The formula for a circle is given by</p>
 <p><span class="math">\[\begin{aligned}
@@ -20230,7 +20463,7 @@ x, y = circle(2.0, 0, 0)</code></pre>
 <p>Filename: <code>circles.pdf</code>.</p>
 <h4 id="remarks.-1">Remarks.</h4>
 <p>At the very end of the exercise it may be appropriate to summarize and give some perspectives.</p>
-<h2 id="exercise-5-determine-some-distance" class="unnumbered">Exercise 5: Determine some Distance</h2>
+<h2 id="exercise-determine-some-distance" class="unnumbered">Exercise : Determine some Distance</h2>
 <p>[exer:dist]</p>
 <p>Intro to this exercise. Questions are in subexercises below.</p>
 <p>The text here belongs to the main (intro) part of the exercise. Need closing remarks to have text after subexercises.</p>
@@ -20284,7 +20517,7 @@ x, y = circle(2.0, 0, 0)</code></pre>
 <h1 id="here-goes-another-section">Here goes another section</h1>
 <p>With some text, before we continue with exercises.</p>
 <h1 id="more-exercises">More Exercises</h1>
-<h2 id="exercise-8-make-references-to-projects-and-problems" class="unnumbered">Exercise 8: Make references to projects and problems</h2>
+<h2 id="exercise-make-references-to-projects-and-problems" class="unnumbered">Exercise : Make references to projects and problems</h2>
 <p>[exer:some:formula]</p>
 <p>Pick a statement from Project [proj:circle1] or Problem [demo:ex:1] and verify it.</p>
 <p>Test list at the end of an exercise without other elements (like subexercise, hint, etc.):</p>
@@ -20293,7 +20526,7 @@ x, y = circle(2.0, 0, 0)</code></pre>
 <li><p>item2</p></li>
 </ol>
 <p>Filename: <code>verify_formula.py</code>.</p>
-<h2 id="project-9-references-to-projectdemoex2-in-a-heading-works-for-latex" class="unnumbered">Project 9: References to Project [demo:ex:2] in a heading works for latex</h2>
+<h2 id="project-references-to-projectdemoex2-in-a-heading-works-for-latex" class="unnumbered">Project : References to Project [demo:ex:2] in a heading works for latex</h2>
 <p>[exer:you]</p>
 <p>Refer to the previous exercise as Exercise [exer:some:formula], the two before that as Projects [demo:ex:2] and [proj:circle1], and this one as Project [exer:you]. Filename: <code>selc_composed.pdf</code>.</p>
 <h1 id="just-for-testing-part-i">Just for testing; part I</h1>
@@ -20547,7 +20780,7 @@ Terminal&gt; myprog -f
 output1
 output2</code></pre>
 <p>It is time to test <code>verbatim inline font</code> especially with <code>a newline inside the text</code> and an exclamation mark at the end: <code>BEGIN</code>! The exclamation mark inside the verbatim text is potentially not smart since latex use ! in the <code>Verb</code> typesetting, but this should now be fixed: test <code>!bc</code> and <code>!ec</code> as well as <code>!bsummary</code>. Also test backslashes and braces like <code>\begin</code>, <code>\begin{enumerate}</code>, <code>\end{this}\end{that}</code>, and <code>{something \inside braces}</code> in inline verbatim text.</p>
-<p>Here is some <font color="red">red</font> color and an attempt to write <font color="green">with green color containing a linebreak. And one more.</font> Some formats will only display this correctly when HTML is the output format.</p>
+<p>Here is some <font color="red">red</font> color and an attempt to write <font color="green">with green color containing a linebreak. And one more.</font> Some formats will only display this correctly when HTML is the output format. But here some more running text is added which is not part of the previous blocks with line breaks.</p>
 <h4 id="running-os-commands">Running OS commands</h4>
 <pre><code>Terminal&gt; python -c &#39;print &quot;Testing\noutput\nfrom\nPython.&quot;&#39;
 Testing
@@ -20792,6 +21025,7 @@ Python.</code></pre>
          $\nabla\cdot\boldsymbol{u} =0 $               [`100`](../doc/src/manual/mov/wave_frames/frame_0100.png)  [`105`](../doc/src/manual/mov/wave_frames/frame_0105.png)  </code></pre>
 <h3 id="a-test-of-verbatim-words-in-heading-with-subscript-a_i-my_file_v1-and-my_file_v2">A test of verbatim words in heading with subscript <span class="math">\(a_i\)</span>: <code>my_file_v1</code> and <code>my_file_v2</code></h3>
 <p><em>Files <code>my_file_v1.py</code> and <code>my_file_v2.py</code> define some math <span class="math">\(a_{i-1}\)</span>.</em> Here is some text.</p>
+<p>Let us also add a test of quotes such as &quot;double quotes, with numbers like 3.14 and newline/comma and hyphen (as in double-quote)&quot;; written in the standard LaTeX-style that gives correct LaTeX formatting and ordinary double quotes for all non-LaTeX formats.</p>
 <h3 id="bibliography-test">Bibliography test</h3>
 <p>Here is an example: @Langtangen_Pedersen_2002 discussed propagation of large destructive water waves, @Langtangen_et_al_2002 gave an overview of numerical methods for solving the Navier-Stokes equations, while the use of Backward Kolmogorov equations for analyzing random vibrations was investigated in @Langtangen_1994a. The book chapter @Mardal_et_al_2003a contains information on C++ software tools for programming multigrid methods. A real retro reference is @Langtangen_1988d about a big FORTRAN package. Multiple references are also possible, e.g., see @Langtangen_Pedersen_2002;@Mardal_et_al_2003a.</p>
 <p>We need to cite more than 10 papers to reproduce an old formatting problem with blanks in the keys in reST format: @Langtangen_1992c;@Langtangen_1994a;@Mortensen_et_al_2011;@Langtangen_Pedersen_2002 and @Langtangen_et_al_2002;@Glimsdal_et_al_20006;@Rahman_et_al_2006b;@Haga_et_al_2011a;@Langtangen_2003a;@Langtangen_2008a;@Langtangen:95 and all the work of @Langtangen_2012;@Mardal_et_al_2003a;@Jeberg_et_al_2004 as well as old work @Langtangen_1988d and @Langtangen_1989e, and the talk @Langtangen_talk_2007a. Langtangen also had two thesis @Langtangen:85;@Langtangen_1989e. More retro citations are the old ME-IN323 book @Langtangen:91 and the @Langtangen:94b OONSKI '94 paper.</p>
@@ -22699,7 +22933,7 @@ open=right               % start new chapters on odd-numbered pages
 % Make sure blank even-numbered pages before new chapters are
 % totally blank with no header
 \newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
-%\let\cleardoublepage\clearemptydoublepage % caused error in \tableofcontents...
+%\let\cleardoublepage\clearemptydoublepage % caused error in the toc
 % #endif
 
 % --- end of standard preamble for documents ---
@@ -23210,7 +23444,6 @@ Inline math, :math:`a=b`, is the only math in this document.
 
 
 
-
 ************** File: author1.txt *****************
 Test of one author at one institution
 =====================================
@@ -23366,7 +23599,6 @@ Inline math, a=b, is the only math in this document.
     *Simula Research Laboratory*,
     2013,
     http://doconce.googlecode.com/hg/test/demotestdoc.html.
-
 
 ************** File: ._testdoc000.html *****************
 <!DOCTYPE html>
@@ -24232,9 +24464,11 @@ verbatim text.
 
 <p>
 Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
-green color containing a linebreak.
-And one more.</font> Some formats will only display this correctly when
-HTML is the output format.
+green color containing a linebreak. <br />
+And one more.</font> Some formats will only display <br />
+this correctly when HTML is the output format. <br />
+But here some more running text is added which is not part of
+the previous blocks with line breaks.
 
 <h4>Running OS commands  <a name="___sec3"></a></h4>
 
@@ -24476,6 +24710,13 @@ and URLs.
 <b>Files <code>my_file_v1.py</code> and <code>my_file_v2.py</code> define some math \( a_{i-1} \).</b>
 Here is
 some text.
+
+<p>
+Let us also add a test of quotes such as "double
+quotes, with numbers like 3.14 and
+newline/comma and hyphen (as in double-quote)";
+written in the standard LaTeX-style that gives correct
+LaTeX formatting and ordinary double quotes for all non-LaTeX formats.
 
 <h3>Bibliography test  <a name="___sec9"></a></h3>
 
@@ -26065,9 +26306,11 @@ verbatim text.
 
 <p>
 Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
-green color containing a linebreak.
-And one more.</font> Some formats will only display this correctly when
-HTML is the output format.
+green color containing a linebreak. <br />
+And one more.</font> Some formats will only display <br />
+this correctly when HTML is the output format. <br />
+But here some more running text is added which is not part of
+the previous blocks with line breaks.
 
 <h4>Running OS commands  <a name="___sec3"></a></h4>
 
@@ -26287,6 +26530,13 @@ and URLs.
 <b>Files <code>my_file_v1.py</code> and <code>my_file_v2.py</code> define some math $latex a_{i-1}$.</b>
 Here is
 some text.
+
+<p>
+Let us also add a test of quotes such as "double
+quotes, with numbers like 3.14 and
+newline/comma and hyphen (as in double-quote)";
+written in the standard LaTeX-style that gives correct
+LaTeX formatting and ordinary double quotes for all non-LaTeX formats.
 
 <h3>Bibliography test  <a name="___sec9"></a></h3>
 
@@ -27683,9 +27933,11 @@ verbatim text.
 
 <p>
 Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
-green color containing a linebreak.
-And one more.</font> Some formats will only display this correctly when
-HTML is the output format.
+green color containing a linebreak. <br />
+And one more.</font> Some formats will only display <br />
+this correctly when HTML is the output format. <br />
+But here some more running text is added which is not part of
+the previous blocks with line breaks.
 
 <h4>Running OS commands  <a name="___sec3"></a></h4>
 
@@ -27917,6 +28169,13 @@ and URLs.
 <b>Files <code>my_file_v1.py</code> and <code>my_file_v2.py</code> define some math \( a_{i-1} \).</b>
 Here is
 some text.
+
+<p>
+Let us also add a test of quotes such as "double
+quotes, with numbers like 3.14 and
+newline/comma and hyphen (as in double-quote)";
+written in the standard LaTeX-style that gives correct
+LaTeX formatting and ordinary double quotes for all non-LaTeX formats.
 
 <h3>Bibliography test  <a name="___sec9"></a></h3>
 
@@ -29182,8 +29441,32 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 % #endif
 
 
-\newenvironment{doconce:exercise}{}{}
-\newcounter{doconce:exercise:counter}
+\newenvironment{doconceexercise}{}{}
+\newcounter{doconceexercisecounter}
+
+% #ifndef LIST_OF_EXERCISES
+% #define LIST_OF_EXERCISES "none"
+% #endif
+
+% --- begin definition of \listofexercises command ---
+\makeatletter
+\newcommand\listofexercises{
+\chapter*{List of []
+          \@mkboth{List of []}{List of []}}
+\markboth{List of []}{List of []}
+\@starttoc{loe}
+}
+\newcommand*{\l@doconceexercise}{\@dottedtocline{0}{0pt}{6.5em}}
+\makeatother
+% --- end definition of \listofexercises command ---
+
+
+% #if LATEX_STYLE not in ("Koma_Script", "Springer_T2")
+% Make sure blank even-numbered pages before new chapters are
+% totally blank with no header
+\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
+%\let\cleardoublepage\clearemptydoublepage % caused error in the toc
+% #endif
 
 % --- end of standard preamble for documents ---
 
@@ -29383,6 +29666,12 @@ Jan 32, 2100
 
 % #if LATEX_HEADING != "beamer"
 \tableofcontents
+% #if LIST_OF_EXERCISES == "loe"
+\clearemptydoublepage
+\listofexercises
+\clearemptydoublepage
+% #endif
+
 % #ifdef TODONOTES
 \listoftodos[List of inline comments]
 % #endif
@@ -29650,9 +29939,11 @@ Also test backslashes and braces like \code{\begin}, \code{\begin{enumerate}},
 verbatim text.
 
 Here is some \textcolor{red}{red} color and an attempt to write \textcolor{green}{with
-green color containing a linebreak.
-And one more.} Some formats will only display this correctly when
-HTML is the output format.
+green color containing a linebreak. \\
+And one more.} Some formats will only display \\
+this correctly when HTML is the output format. \\
+But here some more running text is added which is not part of
+the previous blocks with line breaks.
 
 \paragraph{Running OS commands.}
 \bsys
@@ -29807,6 +30098,7 @@ with the preprocessor.
 }
 
 
+
 \begin{quote}\begin{tabular}{lrr}
 \hline
 \multicolumn{1}{c}{ time } & \multicolumn{1}{c}{ velocity } & \multicolumn{1}{c}{ acceleration } \\
@@ -29908,6 +30200,12 @@ $\nabla\cdot\bm{u} =0 $                                                       & 
 Here is
 some text.
 
+Let us also add a test of quotes such as ``double
+quotes, with numbers like 3.14 and
+newline/comma and hyphen (as in double-quote)'';
+written in the standard {\LaTeX}-style that gives correct
+{\LaTeX} formatting and ordinary double quotes for all non-{\LaTeX} formats.
+
 \paragraph{Bibliography test.}
 Here is an example: \cite{Langtangen_Pedersen_2002} discussed propagation of
 large destructive water waves, \cite{Langtangen_et_al_2002} gave
@@ -29936,8 +30234,8 @@ the old ME-IN323 book \cite{Langtangen:91} and the
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
 \subsection{Example 1: Examples can be typeset as exercises}
 \label{Example}
@@ -29967,7 +30265,7 @@ Maybe even another hint?
 The answer to this other subproblem goes here,
 maybe over multiple doconce input lines.
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 
 
@@ -30101,11 +30399,16 @@ between there we have Exercise~\ref{exer:some:formula}.
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
-\subsection*{Problem 2: Flip a Coin}
-\addcontentsline{toc}{subsection}{2: Flip a Coin}
+\subsection*{Problem \thedoconceexercisecounter: Flip a Coin}
+% #if LIST_OF_EXERCISES == "toc"
+\addcontentsline{toc}{subsection}{\thedoconceexercisecounter: Flip a Coin}
+% #elif LIST_OF_EXERCISES == "loe"
+\addcontentsline{loe}{doconceexercise}{Problem \thedoconceexercisecounter: Flip a Coin}
+% #endif
+
 \label{demo:ex:1}
 % keywords = random numbers; Monte Carlo simulation
 
@@ -30143,7 +30446,7 @@ Draw an integer among $\{1,2\}$ with
 Filenames: \code{flip_coin.py}, \code{flip_coin.pdf}.
 % solution files: mysol.txt, mysol_flip_coin.py, yet_another.file
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 
 
@@ -30164,11 +30467,16 @@ exercises.
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
-\subsection*{Project 3: Compute a Probability}
-\addcontentsline{toc}{subsection}{3: Compute a Probability}
+\subsection*{Project \thedoconceexercisecounter: Compute a Probability}
+% #if LIST_OF_EXERCISES == "toc"
+\addcontentsline{toc}{subsection}{\thedoconceexercisecounter: Compute a Probability}
+% #elif LIST_OF_EXERCISES == "loe"
+\addcontentsline{loe}{doconceexercise}{Project \thedoconceexercisecounter: Compute a Probability}
+% #endif
+
 \label{demo:ex:2}
 
 % Minimalistic exercise
@@ -30198,18 +30506,23 @@ compute the probability as $M/N$.
 
 % --- end hint in exercise ---
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 
 
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
-\subsection*{Project 4: Explore Distributions of Random Circles}
-\addcontentsline{toc}{subsection}{4: Explore Distributions of Random Circles}
+\subsection*{Project \thedoconceexercisecounter: Explore Distributions of Random Circles}
+% #if LIST_OF_EXERCISES == "toc"
+\addcontentsline{toc}{subsection}{\thedoconceexercisecounter: Explore Distributions of Random Circles}
+% #elif LIST_OF_EXERCISES == "loe"
+\addcontentsline{loe}{doconceexercise}{Project \thedoconceexercisecounter: Explore Distributions of Random Circles}
+% #endif
+
 \label{proj:circle1}
 
 The formula for a circle is given by
@@ -30278,18 +30591,23 @@ At the very end of the exercise it may be appropriate to summarize
 and give some perspectives.
 
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 
 
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
-\subsection*{Exercise 5: Determine some Distance}
-\addcontentsline{toc}{subsection}{5: Determine some Distance}
+\subsection*{Exercise \thedoconceexercisecounter: Determine some Distance}
+% #if LIST_OF_EXERCISES == "toc"
+\addcontentsline{toc}{subsection}{\thedoconceexercisecounter: Determine some Distance}
+% #elif LIST_OF_EXERCISES == "loe"
+\addcontentsline{loe}{doconceexercise}{Exercise \thedoconceexercisecounter: Determine some Distance}
+% #endif
+
 \label{exer:dist}
 
 Intro to this exercise. Questions are in subexercises below.
@@ -30383,15 +30701,15 @@ and their implications in other problems can be made. These
 remarks will appear at the end of the typeset exercise.
 
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 
 
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
 \subsection{Some exercise without the "Exercise:" prefix}
 
@@ -30408,15 +30726,15 @@ And a test that the code \code{lambda x: x+2} is correctly placed here:
 lambda x: x+2
 \eccq
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 
 
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
 \subsection{Example 7: Just an example}
 
@@ -30430,7 +30748,7 @@ What is the capital of Norway?
 \paragraph{Answer.}
 Oslo.
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 
 
@@ -30442,11 +30760,16 @@ With some text, before we continue with exercises.
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
-\subsection*{Exercise 8: Make references to projects and problems}
-\addcontentsline{toc}{subsection}{8: Make references to projects and problems}
+\subsection*{Exercise \thedoconceexercisecounter: Make references to projects and problems}
+% #if LIST_OF_EXERCISES == "toc"
+\addcontentsline{toc}{subsection}{\thedoconceexercisecounter: Make references to projects and problems}
+% #elif LIST_OF_EXERCISES == "loe"
+\addcontentsline{loe}{doconceexercise}{Exercise \thedoconceexercisecounter: Make references to projects and problems}
+% #endif
+
 \label{exer:some:formula}
 
 Pick a statement from Project~\ref{proj:circle1} or Problem~\ref{demo:ex:1}
@@ -30464,18 +30787,23 @@ hint, etc.):
 \noindent
 Filename: \code{verify_formula.py}.
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 
 
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
-\subsection*{Project 9: References to Project~\ref{demo:ex:2} in a heading works for latex}
-\addcontentsline{toc}{subsection}{9: References to Project~\ref{demo:ex:2} in a heading works for latex}
+\subsection*{Project \thedoconceexercisecounter: References to Project~\ref{demo:ex:2} in a heading works for latex}
+% #if LIST_OF_EXERCISES == "toc"
+\addcontentsline{toc}{subsection}{\thedoconceexercisecounter: References to Project~\ref{demo:ex:2} in a heading works for latex}
+% #elif LIST_OF_EXERCISES == "loe"
+\addcontentsline{loe}{doconceexercise}{Project \thedoconceexercisecounter: References to Project~\ref{demo:ex:2} in a heading works for latex}
+% #endif
+
 \label{exer:you}
 
 Refer to the previous exercise as Exercise~\ref{exer:some:formula},
@@ -30483,7 +30811,7 @@ the two before that as Projects~\ref{demo:ex:2} and~\ref{proj:circle1},
 and this one as Project~\ref{exer:you}.
 Filename: \code{selc_composed.pdf}.
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 
 
@@ -31151,7 +31479,7 @@ doconce replace --examples_as__exercises $ex testdoc.p.tex
 
 # A4PAPER trigger summary environment to be smaller paragraph
 # within the text (fine for proposals or articles).
-system ptex2tex -DMINTED -DLATEX_HEADING=titlepage -DA4PAPER -DTODONOTES -DLINENUMBERS -DCOLORED_TABLE_ROWS=blue -DFANCY_HEADER -DSECTION_HEADINGS=blue -DLABELS_IN_MARGIN -DDOUBLE_SPACING testdoc
+system ptex2tex -DMINTED -DLATEX_HEADING=titlepage -DA4PAPER -DTODONOTES -DLINENUMBERS -DCOLORED_TABLE_ROWS=blue -DFANCY_HEADER -DSECTION_HEADINGS=blue -DLABELS_IN_MARGIN -DDOUBLE_SPACING -DLIST_OF_EXERCISES=loe testdoc
 
 # test that pdflatex works
 system pdflatex -shell-escape testdoc
@@ -31442,6 +31770,9 @@ system doconce format html mako_test3 --no_pygments_html # no problem message
 system doconce format html mako_test4 --no_pygments_html  # works fine, lines start with %%
 
 system doconce csv2table testtable.csv > testtable.do.txt
+
+# Test doconce ref_external command
+sh -x genref.sh
 
 # Test error detection (note: the sequence of the error tests is
 # crucial: an error must occur, then corrected before the next
@@ -32583,6 +32914,13 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \oldtabular}{\endoldtabular}
 % #endif
 
+
+% #if LATEX_STYLE not in ("Koma_Script", "Springer_T2")
+% Make sure blank even-numbered pages before new chapters are
+% totally blank with no header
+\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
+%\let\cleardoublepage\clearemptydoublepage % caused error in the toc
+% #endif
 
 % --- end of standard preamble for documents ---
 
@@ -34355,9 +34693,11 @@ verbatim text.
 
 <p>
 Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
-green color containing a linebreak.
-And one more.</font> Some formats will only display this correctly when
-HTML is the output format.
+green color containing a linebreak. <br />
+And one more.</font> Some formats will only display <br />
+this correctly when HTML is the output format. <br />
+But here some more running text is added which is not part of
+the previous blocks with line breaks.
 
 <h4>Running OS commands  <a name="___sec3"></a></h4>
 
@@ -34589,6 +34929,13 @@ and URLs.
 <b>Files <code>my_file_v1.py</code> and <code>my_file_v2.py</code> define some math \( a_{i-1} \).</b>
 Here is
 some text.
+
+<p>
+Let us also add a test of quotes such as "double
+quotes, with numbers like 3.14 and
+newline/comma and hyphen (as in double-quote)";
+written in the standard LaTeX-style that gives correct
+LaTeX formatting and ordinary double quotes for all non-LaTeX formats.
 
 <h3>Bibliography test  <a name="___sec9"></a></h3>
 
@@ -36155,9 +36502,13 @@ Also test backslashes and braces like ``\begin``, ``\begin{enumerate}``,
 verbatim text.
 
 Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
-green color containing a linebreak.
-And one more.</font> Some formats will only display this correctly when
-HTML is the output format.
+green color containing a linebreak. 
+
+| And one more.</font> Some formats will only display 
+| this correctly when HTML is the output format. 
+| But here some more running text is added which is not part of
+
+the previous blocks with line breaks.
 
 Running OS commands
 ~~~~~~~~~~~~~~~~~~~
@@ -36454,6 +36805,12 @@ A test of verbatim words in heading with subscript :math:`a_i`: ``my_file_v1`` a
 **Files ``my_file_v1.py`` and ``my_file_v2.py`` define some math :math:`a_{i-1}`.**
 Here is
 some text.
+
+Let us also add a test of quotes such as "double
+quotes, with numbers like 3.14 and
+newline/comma and hyphen (as in double-quote)";
+written in the standard LaTeX-style that gives correct
+LaTeX formatting and ordinary double quotes for all non-LaTeX formats.
 
 Bibliography test
 -----------------
@@ -37825,6 +38182,13 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 % #endif
 
 
+% #if LATEX_STYLE not in ("Koma_Script", "Springer_T2")
+% Make sure blank even-numbered pages before new chapters are
+% totally blank with no header
+\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
+%\let\cleardoublepage\clearemptydoublepage % caused error in the toc
+% #endif
+
 % --- end of standard preamble for documents ---
 
 
@@ -38492,6 +38856,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 
 
+% Make sure blank even-numbered pages before new chapters are
+% totally blank with no header
+\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
+%\let\cleardoublepage\clearemptydoublepage % caused error in the toc
+
 % --- end of standard preamble for documents ---
 
 
@@ -39086,6 +39455,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 
 
+% Make sure blank even-numbered pages before new chapters are
+% totally blank with no header
+\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
+%\let\cleardoublepage\clearemptydoublepage % caused error in the toc
+
 % --- end of standard preamble for documents ---
 
 
@@ -39602,6 +39976,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 
 
+
+% Make sure blank even-numbered pages before new chapters are
+% totally blank with no header
+\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
+%\let\cleardoublepage\clearemptydoublepage % caused error in the toc
 
 % --- end of standard preamble for documents ---
 
@@ -40131,6 +40510,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 
 
+
+% Make sure blank even-numbered pages before new chapters are
+% totally blank with no header
+\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
+%\let\cleardoublepage\clearemptydoublepage % caused error in the toc
 
 % --- end of standard preamble for documents ---
 
@@ -40754,6 +41138,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 
 
+% Make sure blank even-numbered pages before new chapters are
+% totally blank with no header
+\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
+%\let\cleardoublepage\clearemptydoublepage % caused error in the toc
+
 % --- end of standard preamble for documents ---
 
 
@@ -41253,6 +41642,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 
 
+
+% Make sure blank even-numbered pages before new chapters are
+% totally blank with no header
+\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
+%\let\cleardoublepage\clearemptydoublepage % caused error in the toc
 
 % --- end of standard preamble for documents ---
 
@@ -41851,6 +42245,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 
 
+
+% Make sure blank even-numbered pages before new chapters are
+% totally blank with no header
+\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
+%\let\cleardoublepage\clearemptydoublepage % caused error in the toc
 
 % --- end of standard preamble for documents ---
 
@@ -54196,6 +54595,13 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 % #endif
 
 
+% #if LATEX_STYLE not in ("Koma_Script", "Springer_T2")
+% Make sure blank even-numbered pages before new chapters are
+% totally blank with no header
+\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
+%\let\cleardoublepage\clearemptydoublepage % caused error in the toc
+% #endif
+
 % --- end of standard preamble for documents ---
 
 
@@ -56980,14 +57386,31 @@ open=right               % start new chapters on odd-numbered pages
 % #endif
 
 
-\newenvironment{doconce:exercise}{}{}
-\newcounter{doconce:exercise:counter}
+\newenvironment{doconceexercise}{}{}
+\newcounter{doconceexercisecounter}
+
+% #ifndef LIST_OF_EXERCISES
+% #define LIST_OF_EXERCISES "none"
+% #endif
+
+% --- begin definition of \listofexercises command ---
+\makeatletter
+\newcommand\listofexercises{
+\chapter*{List of []
+          \@mkboth{List of []}{List of []}}
+\markboth{List of []}{List of []}
+\@starttoc{loe}
+}
+\newcommand*{\l@doconceexercise}{\@dottedtocline{0}{0pt}{6.5em}}
+\makeatother
+% --- end definition of \listofexercises command ---
+
 
 % #if LATEX_STYLE not in ("Koma_Script", "Springer_T2")
 % Make sure blank even-numbered pages before new chapters are
 % totally blank with no header
 \newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
-%\let\cleardoublepage\clearemptydoublepage % caused error in \tableofcontents...
+%\let\cleardoublepage\clearemptydoublepage % caused error in the toc
 % #endif
 
 % --- end of standard preamble for documents ---
@@ -57132,6 +57555,12 @@ Jan 32, 2100
 
 % #if LATEX_HEADING != "beamer"
 \tableofcontents
+% #if LIST_OF_EXERCISES == "loe"
+\clearemptydoublepage
+\listofexercises
+\clearemptydoublepage
+% #endif
+
 
 \vspace{1cm} % after toc'
 % #endif
@@ -57398,7 +57827,7 @@ based on HTML and vice versa.
 \href{{http://hplgit.github.com/teamods/writing_reports/}}{\nolinkurl{http://hplgit.github.com/teamods/writing_reports/}}
 
 \begin{itemize}
- \item LaTeX-based PDF \href{{http://hplgit.github.com/teamods/writing_reports/_static/report.pdf}}{for screen}, \href{{http://hplgit.github.com/teamods/writing_reports/_static/report_4printing.pdf}}{for printing}, \href{{http://hplgit.github.com/teamods/writing_reports/_static/report_4phone.pdf}}{for phone}
+ \item {\LaTeX}-based PDF \href{{http://hplgit.github.com/teamods/writing_reports/_static/report.pdf}}{for screen}, \href{{http://hplgit.github.com/teamods/writing_reports/_static/report_4printing.pdf}}{for printing}, \href{{http://hplgit.github.com/teamods/writing_reports/_static/report_4phone.pdf}}{for phone}
 
  \item \href{{http://hplgit.github.com/teamods/writing_reports/_static/report_do.html}}{Plain HTML} or with a \href{{http://hplgit.github.com/teamods/writing_reports/_static/report_vagrant.html}}{template} or \href{{http://hplgit.github.com/teamods/writing_reports/_static/report_github_minimal.html}}{another template} or \href{{http://hplgit.github.com/teamods/writing_reports/_static/report_solarized.html}}{solarized}
 
@@ -57752,11 +58181,16 @@ Last page gets rendered as follows:
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
-\subsection*{Problem 1: Flip a Coin}
-\addcontentsline{toc}{subsection}{1: Flip a Coin}
+\subsection*{Problem \thedoconceexercisecounter: Flip a Coin}
+% #if LIST_OF_EXERCISES == "toc"
+\addcontentsline{toc}{subsection}{\thedoconceexercisecounter: Flip a Coin}
+% #elif LIST_OF_EXERCISES == "loe"
+\addcontentsline{loe}{doconceexercise}{Problem \thedoconceexercisecounter: Flip a Coin}
+% #endif
+
 \label{demo:ex:1}
 % keywords = random numbers; Monte Carlo simulation
 
@@ -57795,7 +58229,7 @@ of getting at least three heads out of 5 throws.
 Filenames: \code{flip_coin.py}, \code{flip_coin.pdf}.
 % solution files: mysol.txt, mysol_flip_coin.py
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 
 
@@ -58353,7 +58787,7 @@ based on HTML and vice versa.
 \href{{http://hplgit.github.com/teamods/writing_reports/}}{\nolinkurl{http://hplgit.github.com/teamods/writing_reports/}}
 
 \begin{itemize}
- \item LaTeX-based PDF \href{{http://hplgit.github.com/teamods/writing_reports/_static/report.pdf}}{for screen}, \href{{http://hplgit.github.com/teamods/writing_reports/_static/report_4printing.pdf}}{for printing}, \href{{http://hplgit.github.com/teamods/writing_reports/_static/report_4phone.pdf}}{for phone}
+ \item {\LaTeX}-based PDF \href{{http://hplgit.github.com/teamods/writing_reports/_static/report.pdf}}{for screen}, \href{{http://hplgit.github.com/teamods/writing_reports/_static/report_4printing.pdf}}{for printing}, \href{{http://hplgit.github.com/teamods/writing_reports/_static/report_4phone.pdf}}{for phone}
 
  \item \href{{http://hplgit.github.com/teamods/writing_reports/_static/report_do.html}}{Plain HTML} or with a \href{{http://hplgit.github.com/teamods/writing_reports/_static/report_vagrant.html}}{template} or \href{{http://hplgit.github.com/teamods/writing_reports/_static/report_github_minimal.html}}{another template} or \href{{http://hplgit.github.com/teamods/writing_reports/_static/report_solarized.html}}{solarized}
 
@@ -58691,11 +59125,11 @@ Last page gets rendered as follows:
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
-\subsection*{Problem 1: Flip a Coin}
-\addcontentsline{toc}{subsection}{1: Flip a Coin}
+\subsection*{Problem \thedoconceexercisecounter: Flip a Coin}
+
 \label{demo:ex:1}
 % keywords = random numbers; Monte Carlo simulation
 
@@ -58734,7 +59168,7 @@ of getting at least three heads out of 5 throws.
 Filenames: \Verb!flip_coin.py!, \Verb!flip_coin.pdf!.
 % solution files: mysol.txt, mysol_flip_coin.py
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 \end{frame}
 
@@ -59885,6 +60319,13 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \oldtabular}{\endoldtabular}
 % #endif
 
+
+% #if LATEX_STYLE not in ("Koma_Script", "Springer_T2")
+% Make sure blank even-numbered pages before new chapters are
+% totally blank with no header
+\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
+%\let\cleardoublepage\clearemptydoublepage % caused error in the toc
+% #endif
 
 % --- end of standard preamble for documents ---
 
@@ -62437,6 +62878,13 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 % #endif
 
 
+% #if LATEX_STYLE not in ("Koma_Script", "Springer_T2")
+% Make sure blank even-numbered pages before new chapters are
+% totally blank with no header
+\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
+%\let\cleardoublepage\clearemptydoublepage % caused error in the toc
+% #endif
+
 % --- end of standard preamble for documents ---
 
 
@@ -63076,6 +63524,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 
 
+% Make sure blank even-numbered pages before new chapters are
+% totally blank with no header
+\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
+%\let\cleardoublepage\clearemptydoublepage % caused error in the toc
+
 % --- end of standard preamble for documents ---
 
 
@@ -63481,6 +63934,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 
 
+
+% Make sure blank even-numbered pages before new chapters are
+% totally blank with no header
+\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
+%\let\cleardoublepage\clearemptydoublepage % caused error in the toc
 
 % --- end of standard preamble for documents ---
 
@@ -64774,6 +65232,10 @@ Text with a name like &#197;smund &#216;deg&#229;rd works in general.
 
 
 
+*************** Working with tag "linebreak"
+
+
+
 ************************************************************
 unicode>>> The file after all inline substitutions:
 
@@ -65258,6 +65720,10 @@ for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
 
 
 *************** Working with tag "linkURL"
+
+
+
+*************** Working with tag "linebreak"
 
 
 
@@ -66012,6 +66478,10 @@ through the various stages of the text transformation process.
 
 
 
+*************** Working with tag "linebreak"
+
+
+
 ************************************************************
 unicode>>> The file after all inline substitutions:
 
@@ -66381,6 +66851,16 @@ through the various stages of the text transformation process.
 
 <!-- ------------------- end of main content --------------- -->
 
+
+
+************** File: _genref1.do.txt *****************
+NOT FOUND!
+************** File: _genref2.do.txt *****************
+NOT FOUND!
+************** File: _tmp_genref2.do.txt *****************
+NOT FOUND!
+************** File: tmp_subst_references.sh *****************
+files="genref2.do.txt"  # files to which substitutions apply
 
 
 ************** File: tmp_Doconce.do.txt *****************
@@ -68722,11 +69202,11 @@ list of capabilities:
 <p>
 <!-- begin verbatim block  shpro-->
 <pre><code>Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 # transform doconce file to another format
-doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwiki|cwiki|pandoc|st|epytext file.do.txt
+doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwiki|cwiki|pandoc|st|epytext dofile
 
 # substitute a phrase by another using regular expressions
 doconce subst [-s -m -x --restore] regex-pattern regex-replacement file1 file2 ...
@@ -68745,7 +69225,7 @@ doconce replace_from_file file-with-from-to file1 file2 ...
 doconce expand_mako mako_code_file funcname file1 file2 ...
 
 # remove all inline comments in a doconce file
-doconce remove_inline_comments file.do.txt
+doconce remove_inline_comments dofile
 
 # create a directory for the sphinx format
 doconce sphinx_dir author='John Doe' title='Long title' \
@@ -68754,9 +69234,6 @@ doconce sphinx_dir author='John Doe' title='Long title' \
     do_file [do_file2 do_file3 ...]
 (requires sphinx version &gt;= 1.1)
 
-# replace latex-1 (non-ascii) characters by html codes
-doconce latin2html file.html
-
 # walk through a directory tree and insert doconce files as
 # docstrings in *.p.py files
 doconce insertdocstr rootdir
@@ -68764,14 +69241,8 @@ doconce insertdocstr rootdir
 # remove all files that the doconce format can regenerate
 doconce clean
 
-# print the header (preamble) for latex file
-doconce latex_header
-
-# print the footer for latex files
-doconce latex_footer
-
 # change encoding
-doconce change_encoding utf-8 latin1 filename
+doconce change_encoding utf-8 latin1 dofile
 
 # guess the encoding in a text
 doconce guess_encoding filename
@@ -68784,9 +69255,6 @@ doconce format sphinx complete_file
 doconce split_rst complete_file        # !split delimiters
 doconce sphinx_dir complete_file
 python automake_sphinx.py
-
-# edit URLs to local files and place them in _static
-doconce sphinxfix_local_URLs file.rst
 
 # split an html file into parts according to !split commands
 doconce split_html complete_file.html
@@ -68807,7 +69275,7 @@ doconce grab   --from[-] from-text [--to[-] to-text] somefile &gt; result
 doconce remove --from[-] from-text [--to[-] to-text] somefile &gt; result
 
 # list all figure, movie or included code files
-doconce grep FIGURE|MOVIE|CODE myfile
+doconce grep FIGURE|MOVIE|CODE dofile
 
 # run spellcheck on a set of files
 doconce spellcheck [-d .mydict.txt] *.do.txt
@@ -68818,25 +69286,22 @@ doconce ptex2tex mydoc -DMINTED pycod=minted sys=Verbatim \
         dat=\begin{quote}\begin{verbatim};\end{verbatim}\end{quote}
 
 # make HTML file via pandoc from Markdown (.md) file
-doconce md2html file
+doconce md2html file.md
 
 # make LaTeX file via pandoc from Markdown (.md) file
-doconce md2latex file
-
-# expand short cut commands to full form in files
-doconce expand_commands file1 file2 ...
+doconce md2latex file.md
 
 # combine several images into one
 doconce combine_images image1 image2 ... output_file
-
-# insert a table of exercises in a latex file myfile.p.tex
-doconce latex_exercise_toc myfile
 
 # report problems from a LaTeX .log file
 doconce latex_problems mydoc.log [overfull-hbox-limit]
 
 # list all labels in a document (for purposes of cleaning them up)
 doconce list_labels myfile
+
+# generate script for substituting generalized references
+doconce ref_external mydoc [pubfile]
 
 # check all links in HTML files
 doconce linkchecker *.html
@@ -68856,9 +69321,6 @@ doconce pygmentize myfile [pygments-style]
 # generate a make.sh script for translating a doconce file to various formats
 doconce makefile docname doconcefile [html sphinx pdflatex ...]
 
-# fix common problems in bibtex files for publish import
-doconce fix_bibtex4publish file1.bib file2.bib ...
-
 # find differences between two files
 doconce diff file1.do.txt file2.do.txt [diffprog]
 (diffprog can be difflib, diff, pdiff, latexdiff, kdiff3, diffuse, ...)
@@ -68868,6 +69330,27 @@ doconce gitdiff file1 file2 file3 ...
 
 # convert csv file to doconce table format
 doconce csv2table somefile.csv
+
+# edit URLs to local files and place them in _static
+doconce sphinxfix_local_URLs file.rst
+
+# replace latex-1 (non-ascii) characters by html codes
+doconce latin2html file.html
+
+# fix common problems in bibtex files for publish import
+doconce fix_bibtex4publish file1.bib file2.bib ...
+
+# print the header (preamble) for latex file
+doconce latex_header
+
+# print the footer for latex files
+doconce latex_footer
+
+# expand short cut commands to full form in files
+doconce expand_commands file1 file2 ...
+
+# insert a table of exercises in a latex file myfile.p.tex
+doconce latex_exercise_toc myfile
 </code></pre>
 <!-- end verbatim block -->
 
@@ -69437,8 +69920,15 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 % #endif
 
 
-\newenvironment{doconce:exercise}{}{}
-\newcounter{doconce:exercise:counter}
+\newenvironment{doconceexercise}{}{}
+\newcounter{doconceexercisecounter}
+
+% #if LATEX_STYLE not in ("Koma_Script", "Springer_T2")
+% Make sure blank even-numbered pages before new chapters are
+% totally blank with no header
+\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
+%\let\cleardoublepage\clearemptydoublepage % caused error in the toc
+% #endif
 
 % --- end of standard preamble for documents ---
 
@@ -70301,11 +70791,11 @@ list of capabilities:
 
 \bshpro
 Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 # transform doconce file to another format
-doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwiki|cwiki|pandoc|st|epytext file.do.txt
+doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwiki|cwiki|pandoc|st|epytext dofile
 
 # substitute a phrase by another using regular expressions
 doconce subst [-s -m -x --restore] regex-pattern regex-replacement file1 file2 ...
@@ -70324,7 +70814,7 @@ doconce replace_from_file file-with-from-to file1 file2 ...
 doconce expand_mako mako_code_file funcname file1 file2 ...
 
 # remove all inline comments in a doconce file
-doconce remove_inline_comments file.do.txt
+doconce remove_inline_comments dofile
 
 # create a directory for the sphinx format
 doconce sphinx_dir author='John Doe' title='Long title' \
@@ -70333,9 +70823,6 @@ doconce sphinx_dir author='John Doe' title='Long title' \
     do_file [do_file2 do_file3 ...]
 (requires sphinx version >= 1.1)
 
-# replace latex-1 (non-ascii) characters by html codes
-doconce latin2html file.html
-
 # walk through a directory tree and insert doconce files as
 # docstrings in *.p.py files
 doconce insertdocstr rootdir
@@ -70343,14 +70830,8 @@ doconce insertdocstr rootdir
 # remove all files that the doconce format can regenerate
 doconce clean
 
-# print the header (preamble) for latex file
-doconce latex_header
-
-# print the footer for latex files
-doconce latex_footer
-
 # change encoding
-doconce change_encoding utf-8 latin1 filename
+doconce change_encoding utf-8 latin1 dofile
 
 # guess the encoding in a text
 doconce guess_encoding filename
@@ -70363,9 +70844,6 @@ doconce format sphinx complete_file
 doconce split_rst complete_file        # !split delimiters
 doconce sphinx_dir complete_file
 python automake_sphinx.py
-
-# edit URLs to local files and place them in _static
-doconce sphinxfix_local_URLs file.rst
 
 # split an html file into parts according to !split commands
 doconce split_html complete_file.html
@@ -70386,7 +70864,7 @@ doconce grab   --from[-] from-text [--to[-] to-text] somefile > result
 doconce remove --from[-] from-text [--to[-] to-text] somefile > result
 
 # list all figure, movie or included code files
-doconce grep FIGURE|MOVIE|CODE myfile
+doconce grep FIGURE|MOVIE|CODE dofile
 
 # run spellcheck on a set of files
 doconce spellcheck [-d .mydict.txt] *.do.txt
@@ -70397,25 +70875,22 @@ doconce ptex2tex mydoc -DMINTED pycod=minted sys=Verbatim \
         dat=\begin{quote}\begin{verbatim};\end{verbatim}\end{quote}
 
 # make HTML file via pandoc from Markdown (.md) file
-doconce md2html file
+doconce md2html file.md
 
 # make LaTeX file via pandoc from Markdown (.md) file
-doconce md2latex file
-
-# expand short cut commands to full form in files
-doconce expand_commands file1 file2 ...
+doconce md2latex file.md
 
 # combine several images into one
 doconce combine_images image1 image2 ... output_file
-
-# insert a table of exercises in a latex file myfile.p.tex
-doconce latex_exercise_toc myfile
 
 # report problems from a LaTeX .log file
 doconce latex_problems mydoc.log [overfull-hbox-limit]
 
 # list all labels in a document (for purposes of cleaning them up)
 doconce list_labels myfile
+
+# generate script for substituting generalized references
+doconce ref_external mydoc [pubfile]
 
 # check all links in HTML files
 doconce linkchecker *.html
@@ -70435,9 +70910,6 @@ doconce pygmentize myfile [pygments-style]
 # generate a make.sh script for translating a doconce file to various formats
 doconce makefile docname doconcefile [html sphinx pdflatex ...]
 
-# fix common problems in bibtex files for publish import
-doconce fix_bibtex4publish file1.bib file2.bib ...
-
 # find differences between two files
 doconce diff file1.do.txt file2.do.txt [diffprog]
 (diffprog can be difflib, diff, pdiff, latexdiff, kdiff3, diffuse, ...)
@@ -70447,6 +70919,27 @@ doconce gitdiff file1 file2 file3 ...
 
 # convert csv file to doconce table format
 doconce csv2table somefile.csv
+
+# edit URLs to local files and place them in _static
+doconce sphinxfix_local_URLs file.rst
+
+# replace latex-1 (non-ascii) characters by html codes
+doconce latin2html file.html
+
+# fix common problems in bibtex files for publish import
+doconce fix_bibtex4publish file1.bib file2.bib ...
+
+# print the header (preamble) for latex file
+doconce latex_header
+
+# print the footer for latex files
+doconce latex_footer
+
+# expand short cut commands to full form in files
+doconce expand_commands file1 file2 ...
+
+# insert a table of exercises in a latex file myfile.p.tex
+doconce latex_exercise_toc myfile
 \eshpro
 
 \subsection{Exercises}
@@ -71396,11 +71889,11 @@ list of capabilities::
 
 
         Usage: doconce command [optional arguments]
-        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
         
         
         # transform doconce file to another format
-        doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwiki|cwiki|pandoc|st|epytext file.do.txt
+        doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwiki|cwiki|pandoc|st|epytext dofile
         
         # substitute a phrase by another using regular expressions
         doconce subst [-s -m -x --restore] regex-pattern regex-replacement file1 file2 ...
@@ -71419,7 +71912,7 @@ list of capabilities::
         doconce expand_mako mako_code_file funcname file1 file2 ...
         
         # remove all inline comments in a doconce file
-        doconce remove_inline_comments file.do.txt
+        doconce remove_inline_comments dofile
         
         # create a directory for the sphinx format
         doconce sphinx_dir author='John Doe' title='Long title' \
@@ -71428,9 +71921,6 @@ list of capabilities::
             do_file [do_file2 do_file3 ...]
         (requires sphinx version >= 1.1)
         
-        # replace latex-1 (non-ascii) characters by html codes
-        doconce latin2html file.html
-        
         # walk through a directory tree and insert doconce files as
         # docstrings in *.p.py files
         doconce insertdocstr rootdir
@@ -71438,14 +71928,8 @@ list of capabilities::
         # remove all files that the doconce format can regenerate
         doconce clean
         
-        # print the header (preamble) for latex file
-        doconce latex_header
-        
-        # print the footer for latex files
-        doconce latex_footer
-        
         # change encoding
-        doconce change_encoding utf-8 latin1 filename
+        doconce change_encoding utf-8 latin1 dofile
         
         # guess the encoding in a text
         doconce guess_encoding filename
@@ -71458,9 +71942,6 @@ list of capabilities::
         doconce split_rst complete_file        # !split delimiters
         doconce sphinx_dir complete_file
         python automake_sphinx.py
-        
-        # edit URLs to local files and place them in _static
-        doconce sphinxfix_local_URLs file.rst
         
         # split an html file into parts according to !split commands
         doconce split_html complete_file.html
@@ -71481,7 +71962,7 @@ list of capabilities::
         doconce remove --from[-] from-text [--to[-] to-text] somefile > result
         
         # list all figure, movie or included code files
-        doconce grep FIGURE|MOVIE|CODE myfile
+        doconce grep FIGURE|MOVIE|CODE dofile
         
         # run spellcheck on a set of files
         doconce spellcheck [-d .mydict.txt] *.do.txt
@@ -71492,25 +71973,22 @@ list of capabilities::
                 dat=\begin{quote}\begin{verbatim};\end{verbatim}\end{quote}
         
         # make HTML file via pandoc from Markdown (.md) file
-        doconce md2html file
+        doconce md2html file.md
         
         # make LaTeX file via pandoc from Markdown (.md) file
-        doconce md2latex file
-        
-        # expand short cut commands to full form in files
-        doconce expand_commands file1 file2 ...
+        doconce md2latex file.md
         
         # combine several images into one
         doconce combine_images image1 image2 ... output_file
-        
-        # insert a table of exercises in a latex file myfile.p.tex
-        doconce latex_exercise_toc myfile
         
         # report problems from a LaTeX .log file
         doconce latex_problems mydoc.log [overfull-hbox-limit]
         
         # list all labels in a document (for purposes of cleaning them up)
         doconce list_labels myfile
+        
+        # generate script for substituting generalized references
+        doconce ref_external mydoc [pubfile]
         
         # check all links in HTML files
         doconce linkchecker *.html
@@ -71530,9 +72008,6 @@ list of capabilities::
         # generate a make.sh script for translating a doconce file to various formats
         doconce makefile docname doconcefile [html sphinx pdflatex ...]
         
-        # fix common problems in bibtex files for publish import
-        doconce fix_bibtex4publish file1.bib file2.bib ...
-        
         # find differences between two files
         doconce diff file1.do.txt file2.do.txt [diffprog]
         (diffprog can be difflib, diff, pdiff, latexdiff, kdiff3, diffuse, ...)
@@ -71542,6 +72017,27 @@ list of capabilities::
         
         # convert csv file to doconce table format
         doconce csv2table somefile.csv
+        
+        # edit URLs to local files and place them in _static
+        doconce sphinxfix_local_URLs file.rst
+        
+        # replace latex-1 (non-ascii) characters by html codes
+        doconce latin2html file.html
+        
+        # fix common problems in bibtex files for publish import
+        doconce fix_bibtex4publish file1.bib file2.bib ...
+        
+        # print the header (preamble) for latex file
+        doconce latex_header
+        
+        # print the footer for latex files
+        doconce latex_footer
+        
+        # expand short cut commands to full form in files
+        doconce expand_commands file1 file2 ...
+        
+        # insert a table of exercises in a latex file myfile.p.tex
+        doconce latex_exercise_toc myfile
 
 
 Exercises
@@ -71743,7 +72239,6 @@ Resources
 ---------
 
  * Excellent "Sphinx Tutorial" by C. Reller: "http://people.ee.ethz.ch/~creller/web/tricks/reST.html"
-
 
 ************** File: quickref.sphinx.rst *****************
 .. Automatically generated reST file from Doconce source
@@ -72529,11 +73024,11 @@ list of capabilities:
 .. code-block:: bash
 
         Usage: doconce command [optional arguments]
-        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
         
         
         # transform doconce file to another format
-        doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwiki|cwiki|pandoc|st|epytext file.do.txt
+        doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwiki|cwiki|pandoc|st|epytext dofile
         
         # substitute a phrase by another using regular expressions
         doconce subst [-s -m -x --restore] regex-pattern regex-replacement file1 file2 ...
@@ -72552,7 +73047,7 @@ list of capabilities:
         doconce expand_mako mako_code_file funcname file1 file2 ...
         
         # remove all inline comments in a doconce file
-        doconce remove_inline_comments file.do.txt
+        doconce remove_inline_comments dofile
         
         # create a directory for the sphinx format
         doconce sphinx_dir author='John Doe' title='Long title' \
@@ -72561,9 +73056,6 @@ list of capabilities:
             do_file [do_file2 do_file3 ...]
         (requires sphinx version >= 1.1)
         
-        # replace latex-1 (non-ascii) characters by html codes
-        doconce latin2html file.html
-        
         # walk through a directory tree and insert doconce files as
         # docstrings in *.p.py files
         doconce insertdocstr rootdir
@@ -72571,14 +73063,8 @@ list of capabilities:
         # remove all files that the doconce format can regenerate
         doconce clean
         
-        # print the header (preamble) for latex file
-        doconce latex_header
-        
-        # print the footer for latex files
-        doconce latex_footer
-        
         # change encoding
-        doconce change_encoding utf-8 latin1 filename
+        doconce change_encoding utf-8 latin1 dofile
         
         # guess the encoding in a text
         doconce guess_encoding filename
@@ -72591,9 +73077,6 @@ list of capabilities:
         doconce split_rst complete_file        # !split delimiters
         doconce sphinx_dir complete_file
         python automake_sphinx.py
-        
-        # edit URLs to local files and place them in _static
-        doconce sphinxfix_local_URLs file.rst
         
         # split an html file into parts according to !split commands
         doconce split_html complete_file.html
@@ -72614,7 +73097,7 @@ list of capabilities:
         doconce remove --from[-] from-text [--to[-] to-text] somefile > result
         
         # list all figure, movie or included code files
-        doconce grep FIGURE|MOVIE|CODE myfile
+        doconce grep FIGURE|MOVIE|CODE dofile
         
         # run spellcheck on a set of files
         doconce spellcheck [-d .mydict.txt] *.do.txt
@@ -72625,25 +73108,22 @@ list of capabilities:
                 dat=\begin{quote}\begin{verbatim};\end{verbatim}\end{quote}
         
         # make HTML file via pandoc from Markdown (.md) file
-        doconce md2html file
+        doconce md2html file.md
         
         # make LaTeX file via pandoc from Markdown (.md) file
-        doconce md2latex file
-        
-        # expand short cut commands to full form in files
-        doconce expand_commands file1 file2 ...
+        doconce md2latex file.md
         
         # combine several images into one
         doconce combine_images image1 image2 ... output_file
-        
-        # insert a table of exercises in a latex file myfile.p.tex
-        doconce latex_exercise_toc myfile
         
         # report problems from a LaTeX .log file
         doconce latex_problems mydoc.log [overfull-hbox-limit]
         
         # list all labels in a document (for purposes of cleaning them up)
         doconce list_labels myfile
+        
+        # generate script for substituting generalized references
+        doconce ref_external mydoc [pubfile]
         
         # check all links in HTML files
         doconce linkchecker *.html
@@ -72663,9 +73143,6 @@ list of capabilities:
         # generate a make.sh script for translating a doconce file to various formats
         doconce makefile docname doconcefile [html sphinx pdflatex ...]
         
-        # fix common problems in bibtex files for publish import
-        doconce fix_bibtex4publish file1.bib file2.bib ...
-        
         # find differences between two files
         doconce diff file1.do.txt file2.do.txt [diffprog]
         (diffprog can be difflib, diff, pdiff, latexdiff, kdiff3, diffuse, ...)
@@ -72675,6 +73152,27 @@ list of capabilities:
         
         # convert csv file to doconce table format
         doconce csv2table somefile.csv
+        
+        # edit URLs to local files and place them in _static
+        doconce sphinxfix_local_URLs file.rst
+        
+        # replace latex-1 (non-ascii) characters by html codes
+        doconce latin2html file.html
+        
+        # fix common problems in bibtex files for publish import
+        doconce fix_bibtex4publish file1.bib file2.bib ...
+        
+        # print the header (preamble) for latex file
+        doconce latex_header
+        
+        # print the footer for latex files
+        doconce latex_footer
+        
+        # expand short cut commands to full form in files
+        doconce expand_commands file1 file2 ...
+        
+        # insert a table of exercises in a latex file myfile.p.tex
+        doconce latex_exercise_toc myfile
 
 
 Exercises
@@ -72887,7 +73385,6 @@ Resources
 ---------
 
  * Excellent "Sphinx Tutorial" by C. Reller: "http://people.ee.ethz.ch/~creller/web/tricks/reST.html"
-
 
 ************** File: quickref.gwiki *****************
 #summary Doconce Quick Reference
@@ -73524,11 +74021,11 @@ list of capabilities:
 
 {{{
 Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 # transform doconce file to another format
-doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwiki|cwiki|pandoc|st|epytext file.do.txt
+doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwiki|cwiki|pandoc|st|epytext dofile
 
 # substitute a phrase by another using regular expressions
 doconce subst [-s -m -x --restore] regex-pattern regex-replacement file1 file2 ...
@@ -73547,7 +74044,7 @@ doconce replace_from_file file-with-from-to file1 file2 ...
 doconce expand_mako mako_code_file funcname file1 file2 ...
 
 # remove all inline comments in a doconce file
-doconce remove_inline_comments file.do.txt
+doconce remove_inline_comments dofile
 
 # create a directory for the sphinx format
 doconce sphinx_dir author='John Doe' title='Long title' \
@@ -73556,9 +74053,6 @@ doconce sphinx_dir author='John Doe' title='Long title' \
     do_file [do_file2 do_file3 ...]
 (requires sphinx version >= 1.1)
 
-# replace latex-1 (non-ascii) characters by html codes
-doconce latin2html file.html
-
 # walk through a directory tree and insert doconce files as
 # docstrings in *.p.py files
 doconce insertdocstr rootdir
@@ -73566,14 +74060,8 @@ doconce insertdocstr rootdir
 # remove all files that the doconce format can regenerate
 doconce clean
 
-# print the header (preamble) for latex file
-doconce latex_header
-
-# print the footer for latex files
-doconce latex_footer
-
 # change encoding
-doconce change_encoding utf-8 latin1 filename
+doconce change_encoding utf-8 latin1 dofile
 
 # guess the encoding in a text
 doconce guess_encoding filename
@@ -73586,9 +74074,6 @@ doconce format sphinx complete_file
 doconce split_rst complete_file        # !split delimiters
 doconce sphinx_dir complete_file
 python automake_sphinx.py
-
-# edit URLs to local files and place them in _static
-doconce sphinxfix_local_URLs file.rst
 
 # split an html file into parts according to !split commands
 doconce split_html complete_file.html
@@ -73609,7 +74094,7 @@ doconce grab   --from[-] from-text [--to[-] to-text] somefile > result
 doconce remove --from[-] from-text [--to[-] to-text] somefile > result
 
 # list all figure, movie or included code files
-doconce grep FIGURE|MOVIE|CODE myfile
+doconce grep FIGURE|MOVIE|CODE dofile
 
 # run spellcheck on a set of files
 doconce spellcheck [-d .mydict.txt] *.do.txt
@@ -73620,25 +74105,22 @@ doconce ptex2tex mydoc -DMINTED pycod=minted sys=Verbatim \
         dat=\begin{quote}\begin{verbatim};\end{verbatim}\end{quote}
 
 # make HTML file via pandoc from Markdown (.md) file
-doconce md2html file
+doconce md2html file.md
 
 # make LaTeX file via pandoc from Markdown (.md) file
-doconce md2latex file
-
-# expand short cut commands to full form in files
-doconce expand_commands file1 file2 ...
+doconce md2latex file.md
 
 # combine several images into one
 doconce combine_images image1 image2 ... output_file
-
-# insert a table of exercises in a latex file myfile.p.tex
-doconce latex_exercise_toc myfile
 
 # report problems from a LaTeX .log file
 doconce latex_problems mydoc.log [overfull-hbox-limit]
 
 # list all labels in a document (for purposes of cleaning them up)
 doconce list_labels myfile
+
+# generate script for substituting generalized references
+doconce ref_external mydoc [pubfile]
 
 # check all links in HTML files
 doconce linkchecker *.html
@@ -73658,9 +74140,6 @@ doconce pygmentize myfile [pygments-style]
 # generate a make.sh script for translating a doconce file to various formats
 doconce makefile docname doconcefile [html sphinx pdflatex ...]
 
-# fix common problems in bibtex files for publish import
-doconce fix_bibtex4publish file1.bib file2.bib ...
-
 # find differences between two files
 doconce diff file1.do.txt file2.do.txt [diffprog]
 (diffprog can be difflib, diff, pdiff, latexdiff, kdiff3, diffuse, ...)
@@ -73670,6 +74149,27 @@ doconce gitdiff file1 file2 file3 ...
 
 # convert csv file to doconce table format
 doconce csv2table somefile.csv
+
+# edit URLs to local files and place them in _static
+doconce sphinxfix_local_URLs file.rst
+
+# replace latex-1 (non-ascii) characters by html codes
+doconce latin2html file.html
+
+# fix common problems in bibtex files for publish import
+doconce fix_bibtex4publish file1.bib file2.bib ...
+
+# print the header (preamble) for latex file
+doconce latex_header
+
+# print the footer for latex files
+doconce latex_footer
+
+# expand short cut commands to full form in files
+doconce expand_commands file1 file2 ...
+
+# insert a table of exercises in a latex file myfile.p.tex
+doconce latex_exercise_toc myfile
 }}}
 
 ==== Exercises ====
@@ -74527,11 +75027,11 @@ list of capabilities:
 
 <syntaxhighlight lang="bash">
 Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 # transform doconce file to another format
-doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwiki|cwiki|pandoc|st|epytext file.do.txt
+doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwiki|cwiki|pandoc|st|epytext dofile
 
 # substitute a phrase by another using regular expressions
 doconce subst [-s -m -x --restore] regex-pattern regex-replacement file1 file2 ...
@@ -74550,7 +75050,7 @@ doconce replace_from_file file-with-from-to file1 file2 ...
 doconce expand_mako mako_code_file funcname file1 file2 ...
 
 # remove all inline comments in a doconce file
-doconce remove_inline_comments file.do.txt
+doconce remove_inline_comments dofile
 
 # create a directory for the sphinx format
 doconce sphinx_dir author='John Doe' title='Long title' \
@@ -74559,9 +75059,6 @@ doconce sphinx_dir author='John Doe' title='Long title' \
     do_file [do_file2 do_file3 ...]
 (requires sphinx version >= 1.1)
 
-# replace latex-1 (non-ascii) characters by html codes
-doconce latin2html file.html
-
 # walk through a directory tree and insert doconce files as
 # docstrings in *.p.py files
 doconce insertdocstr rootdir
@@ -74569,14 +75066,8 @@ doconce insertdocstr rootdir
 # remove all files that the doconce format can regenerate
 doconce clean
 
-# print the header (preamble) for latex file
-doconce latex_header
-
-# print the footer for latex files
-doconce latex_footer
-
 # change encoding
-doconce change_encoding utf-8 latin1 filename
+doconce change_encoding utf-8 latin1 dofile
 
 # guess the encoding in a text
 doconce guess_encoding filename
@@ -74589,9 +75080,6 @@ doconce format sphinx complete_file
 doconce split_rst complete_file        # !split delimiters
 doconce sphinx_dir complete_file
 python automake_sphinx.py
-
-# edit URLs to local files and place them in _static
-doconce sphinxfix_local_URLs file.rst
 
 # split an html file into parts according to !split commands
 doconce split_html complete_file.html
@@ -74612,7 +75100,7 @@ doconce grab   --from[-] from-text [--to[-] to-text] somefile > result
 doconce remove --from[-] from-text [--to[-] to-text] somefile > result
 
 # list all figure, movie or included code files
-doconce grep FIGURE|MOVIE|CODE myfile
+doconce grep FIGURE|MOVIE|CODE dofile
 
 # run spellcheck on a set of files
 doconce spellcheck [-d .mydict.txt] *.do.txt
@@ -74623,25 +75111,22 @@ doconce ptex2tex mydoc -DMINTED pycod=minted sys=Verbatim \
         dat=\begin{quote}\begin{verbatim};\end{verbatim}\end{quote}
 
 # make HTML file via pandoc from Markdown (.md) file
-doconce md2html file
+doconce md2html file.md
 
 # make LaTeX file via pandoc from Markdown (.md) file
-doconce md2latex file
-
-# expand short cut commands to full form in files
-doconce expand_commands file1 file2 ...
+doconce md2latex file.md
 
 # combine several images into one
 doconce combine_images image1 image2 ... output_file
-
-# insert a table of exercises in a latex file myfile.p.tex
-doconce latex_exercise_toc myfile
 
 # report problems from a LaTeX .log file
 doconce latex_problems mydoc.log [overfull-hbox-limit]
 
 # list all labels in a document (for purposes of cleaning them up)
 doconce list_labels myfile
+
+# generate script for substituting generalized references
+doconce ref_external mydoc [pubfile]
 
 # check all links in HTML files
 doconce linkchecker *.html
@@ -74661,9 +75146,6 @@ doconce pygmentize myfile [pygments-style]
 # generate a make.sh script for translating a doconce file to various formats
 doconce makefile docname doconcefile [html sphinx pdflatex ...]
 
-# fix common problems in bibtex files for publish import
-doconce fix_bibtex4publish file1.bib file2.bib ...
-
 # find differences between two files
 doconce diff file1.do.txt file2.do.txt [diffprog]
 (diffprog can be difflib, diff, pdiff, latexdiff, kdiff3, diffuse, ...)
@@ -74673,6 +75155,27 @@ doconce gitdiff file1 file2 file3 ...
 
 # convert csv file to doconce table format
 doconce csv2table somefile.csv
+
+# edit URLs to local files and place them in _static
+doconce sphinxfix_local_URLs file.rst
+
+# replace latex-1 (non-ascii) characters by html codes
+doconce latin2html file.html
+
+# fix common problems in bibtex files for publish import
+doconce fix_bibtex4publish file1.bib file2.bib ...
+
+# print the header (preamble) for latex file
+doconce latex_header
+
+# print the footer for latex files
+doconce latex_footer
+
+# expand short cut commands to full form in files
+doconce expand_commands file1 file2 ...
+
+# insert a table of exercises in a latex file myfile.p.tex
+doconce latex_exercise_toc myfile
 </syntaxhighlight>
 
 ==== Exercises ====
@@ -75500,11 +76003,11 @@ list of capabilities:
 
 {{{
 Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 # transform doconce file to another format
-doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwiki|cwiki|pandoc|st|epytext file.do.txt
+doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwiki|cwiki|pandoc|st|epytext dofile
 
 # substitute a phrase by another using regular expressions
 doconce subst [-s -m -x --restore] regex-pattern regex-replacement file1 file2 ...
@@ -75523,7 +76026,7 @@ doconce replace_from_file file-with-from-to file1 file2 ...
 doconce expand_mako mako_code_file funcname file1 file2 ...
 
 # remove all inline comments in a doconce file
-doconce remove_inline_comments file.do.txt
+doconce remove_inline_comments dofile
 
 # create a directory for the sphinx format
 doconce sphinx_dir author='John Doe' title='Long title' \
@@ -75532,9 +76035,6 @@ doconce sphinx_dir author='John Doe' title='Long title' \
     do_file [do_file2 do_file3 ...]
 (requires sphinx version >= 1.1)
 
-# replace latex-1 (non-ascii) characters by html codes
-doconce latin2html file.html
-
 # walk through a directory tree and insert doconce files as
 # docstrings in *.p.py files
 doconce insertdocstr rootdir
@@ -75542,14 +76042,8 @@ doconce insertdocstr rootdir
 # remove all files that the doconce format can regenerate
 doconce clean
 
-# print the header (preamble) for latex file
-doconce latex_header
-
-# print the footer for latex files
-doconce latex_footer
-
 # change encoding
-doconce change_encoding utf-8 latin1 filename
+doconce change_encoding utf-8 latin1 dofile
 
 # guess the encoding in a text
 doconce guess_encoding filename
@@ -75562,9 +76056,6 @@ doconce format sphinx complete_file
 doconce split_rst complete_file        # !split delimiters
 doconce sphinx_dir complete_file
 python automake_sphinx.py
-
-# edit URLs to local files and place them in _static
-doconce sphinxfix_local_URLs file.rst
 
 # split an html file into parts according to !split commands
 doconce split_html complete_file.html
@@ -75585,7 +76076,7 @@ doconce grab   --from[-] from-text [--to[-] to-text] somefile > result
 doconce remove --from[-] from-text [--to[-] to-text] somefile > result
 
 # list all figure, movie or included code files
-doconce grep FIGURE|MOVIE|CODE myfile
+doconce grep FIGURE|MOVIE|CODE dofile
 
 # run spellcheck on a set of files
 doconce spellcheck [-d .mydict.txt] *.do.txt
@@ -75596,25 +76087,22 @@ doconce ptex2tex mydoc -DMINTED pycod=minted sys=Verbatim \
         dat=\begin{quote}\begin{verbatim};\end{verbatim}\end{quote}
 
 # make HTML file via pandoc from Markdown (.md) file
-doconce md2html file
+doconce md2html file.md
 
 # make LaTeX file via pandoc from Markdown (.md) file
-doconce md2latex file
-
-# expand short cut commands to full form in files
-doconce expand_commands file1 file2 ...
+doconce md2latex file.md
 
 # combine several images into one
 doconce combine_images image1 image2 ... output_file
-
-# insert a table of exercises in a latex file myfile.p.tex
-doconce latex_exercise_toc myfile
 
 # report problems from a LaTeX .log file
 doconce latex_problems mydoc.log [overfull-hbox-limit]
 
 # list all labels in a document (for purposes of cleaning them up)
 doconce list_labels myfile
+
+# generate script for substituting generalized references
+doconce ref_external mydoc [pubfile]
 
 # check all links in HTML files
 doconce linkchecker *.html
@@ -75634,9 +76122,6 @@ doconce pygmentize myfile [pygments-style]
 # generate a make.sh script for translating a doconce file to various formats
 doconce makefile docname doconcefile [html sphinx pdflatex ...]
 
-# fix common problems in bibtex files for publish import
-doconce fix_bibtex4publish file1.bib file2.bib ...
-
 # find differences between two files
 doconce diff file1.do.txt file2.do.txt [diffprog]
 (diffprog can be difflib, diff, pdiff, latexdiff, kdiff3, diffuse, ...)
@@ -75646,6 +76131,27 @@ doconce gitdiff file1 file2 file3 ...
 
 # convert csv file to doconce table format
 doconce csv2table somefile.csv
+
+# edit URLs to local files and place them in _static
+doconce sphinxfix_local_URLs file.rst
+
+# replace latex-1 (non-ascii) characters by html codes
+doconce latin2html file.html
+
+# fix common problems in bibtex files for publish import
+doconce fix_bibtex4publish file1.bib file2.bib ...
+
+# print the header (preamble) for latex file
+doconce latex_header
+
+# print the footer for latex files
+doconce latex_footer
+
+# expand short cut commands to full form in files
+doconce expand_commands file1 file2 ...
+
+# insert a table of exercises in a latex file myfile.p.tex
+doconce latex_exercise_toc myfile
 }}}
 
 == Exercises ==
@@ -76482,11 +76988,11 @@ list of capabilities::
 
 
         Usage: doconce command [optional arguments]
-        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
         
         
         # transform doconce file to another format
-        doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwiki|cwiki|pandoc|st|epytext file.do.txt
+        doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwiki|cwiki|pandoc|st|epytext dofile
         
         # substitute a phrase by another using regular expressions
         doconce subst [-s -m -x --restore] regex-pattern regex-replacement file1 file2 ...
@@ -76505,7 +77011,7 @@ list of capabilities::
         doconce expand_mako mako_code_file funcname file1 file2 ...
         
         # remove all inline comments in a doconce file
-        doconce remove_inline_comments file.do.txt
+        doconce remove_inline_comments dofile
         
         # create a directory for the sphinx format
         doconce sphinx_dir author='John Doe' title='Long title' \
@@ -76514,9 +77020,6 @@ list of capabilities::
             do_file [do_file2 do_file3 ...]
         (requires sphinx version >= 1.1)
         
-        # replace latex-1 (non-ascii) characters by html codes
-        doconce latin2html file.html
-        
         # walk through a directory tree and insert doconce files as
         # docstrings in *.p.py files
         doconce insertdocstr rootdir
@@ -76524,14 +77027,8 @@ list of capabilities::
         # remove all files that the doconce format can regenerate
         doconce clean
         
-        # print the header (preamble) for latex file
-        doconce latex_header
-        
-        # print the footer for latex files
-        doconce latex_footer
-        
         # change encoding
-        doconce change_encoding utf-8 latin1 filename
+        doconce change_encoding utf-8 latin1 dofile
         
         # guess the encoding in a text
         doconce guess_encoding filename
@@ -76544,9 +77041,6 @@ list of capabilities::
         doconce split_rst complete_file        # !split delimiters
         doconce sphinx_dir complete_file
         python automake_sphinx.py
-        
-        # edit URLs to local files and place them in _static
-        doconce sphinxfix_local_URLs file.rst
         
         # split an html file into parts according to !split commands
         doconce split_html complete_file.html
@@ -76567,7 +77061,7 @@ list of capabilities::
         doconce remove --from[-] from-text [--to[-] to-text] somefile > result
         
         # list all figure, movie or included code files
-        doconce grep FIGURE|MOVIE|CODE myfile
+        doconce grep FIGURE|MOVIE|CODE dofile
         
         # run spellcheck on a set of files
         doconce spellcheck [-d .mydict.txt] *.do.txt
@@ -76578,25 +77072,22 @@ list of capabilities::
                 dat=\begin{quote}\begin{verbatim};\end{verbatim}\end{quote}
         
         # make HTML file via pandoc from Markdown (.md) file
-        doconce md2html file
+        doconce md2html file.md
         
         # make LaTeX file via pandoc from Markdown (.md) file
-        doconce md2latex file
-        
-        # expand short cut commands to full form in files
-        doconce expand_commands file1 file2 ...
+        doconce md2latex file.md
         
         # combine several images into one
         doconce combine_images image1 image2 ... output_file
-        
-        # insert a table of exercises in a latex file myfile.p.tex
-        doconce latex_exercise_toc myfile
         
         # report problems from a LaTeX .log file
         doconce latex_problems mydoc.log [overfull-hbox-limit]
         
         # list all labels in a document (for purposes of cleaning them up)
         doconce list_labels myfile
+        
+        # generate script for substituting generalized references
+        doconce ref_external mydoc [pubfile]
         
         # check all links in HTML files
         doconce linkchecker *.html
@@ -76616,9 +77107,6 @@ list of capabilities::
         # generate a make.sh script for translating a doconce file to various formats
         doconce makefile docname doconcefile [html sphinx pdflatex ...]
         
-        # fix common problems in bibtex files for publish import
-        doconce fix_bibtex4publish file1.bib file2.bib ...
-        
         # find differences between two files
         doconce diff file1.do.txt file2.do.txt [diffprog]
         (diffprog can be difflib, diff, pdiff, latexdiff, kdiff3, diffuse, ...)
@@ -76628,6 +77116,27 @@ list of capabilities::
         
         # convert csv file to doconce table format
         doconce csv2table somefile.csv
+        
+        # edit URLs to local files and place them in _static
+        doconce sphinxfix_local_URLs file.rst
+        
+        # replace latex-1 (non-ascii) characters by html codes
+        doconce latin2html file.html
+        
+        # fix common problems in bibtex files for publish import
+        doconce fix_bibtex4publish file1.bib file2.bib ...
+        
+        # print the header (preamble) for latex file
+        doconce latex_header
+        
+        # print the footer for latex files
+        doconce latex_footer
+        
+        # expand short cut commands to full form in files
+        doconce expand_commands file1 file2 ...
+        
+        # insert a table of exercises in a latex file myfile.p.tex
+        doconce latex_exercise_toc myfile
 
 
 Exercises
@@ -76809,7 +77318,6 @@ examine the Doconce source and the 'doc/src/make.sh' script).
 Resources
 
  - Excellent "Sphinx Tutorial" by C. Reller: "http://people.ee.ethz.ch/~creller/web/tricks/reST.html"
-
 
 ************** File: quickref.epytext *****************
 TITLE: Doconce Quick Reference
@@ -77490,11 +77998,11 @@ list of capabilities::
 
 
         Usage: doconce command [optional arguments]
-        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
         
         
         # transform doconce file to another format
-        doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwiki|cwiki|pandoc|st|epytext file.do.txt
+        doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwiki|cwiki|pandoc|st|epytext dofile
         
         # substitute a phrase by another using regular expressions
         doconce subst [-s -m -x --restore] regex-pattern regex-replacement file1 file2 ...
@@ -77513,7 +78021,7 @@ list of capabilities::
         doconce expand_mako mako_code_file funcname file1 file2 ...
         
         # remove all inline comments in a doconce file
-        doconce remove_inline_comments file.do.txt
+        doconce remove_inline_comments dofile
         
         # create a directory for the sphinx format
         doconce sphinx_dir author='John Doe' title='Long title' \
@@ -77522,9 +78030,6 @@ list of capabilities::
             do_file [do_file2 do_file3 ...]
         (requires sphinx version >= 1.1)
         
-        # replace latex-1 (non-ascii) characters by html codes
-        doconce latin2html file.html
-        
         # walk through a directory tree and insert doconce files as
         # docstrings in *.p.py files
         doconce insertdocstr rootdir
@@ -77532,14 +78037,8 @@ list of capabilities::
         # remove all files that the doconce format can regenerate
         doconce clean
         
-        # print the header (preamble) for latex file
-        doconce latex_header
-        
-        # print the footer for latex files
-        doconce latex_footer
-        
         # change encoding
-        doconce change_encoding utf-8 latin1 filename
+        doconce change_encoding utf-8 latin1 dofile
         
         # guess the encoding in a text
         doconce guess_encoding filename
@@ -77552,9 +78051,6 @@ list of capabilities::
         doconce split_rst complete_file        # !split delimiters
         doconce sphinx_dir complete_file
         python automake_sphinx.py
-        
-        # edit URLs to local files and place them in _static
-        doconce sphinxfix_local_URLs file.rst
         
         # split an html file into parts according to !split commands
         doconce split_html complete_file.html
@@ -77575,7 +78071,7 @@ list of capabilities::
         doconce remove --from[-] from-text [--to[-] to-text] somefile > result
         
         # list all figure, movie or included code files
-        doconce grep FIGURE|MOVIE|CODE myfile
+        doconce grep FIGURE|MOVIE|CODE dofile
         
         # run spellcheck on a set of files
         doconce spellcheck [-d .mydict.txt] *.do.txt
@@ -77586,25 +78082,22 @@ list of capabilities::
                 dat=\begin{quote}\begin{verbatim};\end{verbatim}\end{quote}
         
         # make HTML file via pandoc from Markdown (.md) file
-        doconce md2html file
+        doconce md2html file.md
         
         # make LaTeX file via pandoc from Markdown (.md) file
-        doconce md2latex file
-        
-        # expand short cut commands to full form in files
-        doconce expand_commands file1 file2 ...
+        doconce md2latex file.md
         
         # combine several images into one
         doconce combine_images image1 image2 ... output_file
-        
-        # insert a table of exercises in a latex file myfile.p.tex
-        doconce latex_exercise_toc myfile
         
         # report problems from a LaTeX .log file
         doconce latex_problems mydoc.log [overfull-hbox-limit]
         
         # list all labels in a document (for purposes of cleaning them up)
         doconce list_labels myfile
+        
+        # generate script for substituting generalized references
+        doconce ref_external mydoc [pubfile]
         
         # check all links in HTML files
         doconce linkchecker *.html
@@ -77624,9 +78117,6 @@ list of capabilities::
         # generate a make.sh script for translating a doconce file to various formats
         doconce makefile docname doconcefile [html sphinx pdflatex ...]
         
-        # fix common problems in bibtex files for publish import
-        doconce fix_bibtex4publish file1.bib file2.bib ...
-        
         # find differences between two files
         doconce diff file1.do.txt file2.do.txt [diffprog]
         (diffprog can be difflib, diff, pdiff, latexdiff, kdiff3, diffuse, ...)
@@ -77636,6 +78126,27 @@ list of capabilities::
         
         # convert csv file to doconce table format
         doconce csv2table somefile.csv
+        
+        # edit URLs to local files and place them in _static
+        doconce sphinxfix_local_URLs file.rst
+        
+        # replace latex-1 (non-ascii) characters by html codes
+        doconce latin2html file.html
+        
+        # fix common problems in bibtex files for publish import
+        doconce fix_bibtex4publish file1.bib file2.bib ...
+        
+        # print the header (preamble) for latex file
+        doconce latex_header
+        
+        # print the footer for latex files
+        doconce latex_footer
+        
+        # expand short cut commands to full form in files
+        doconce expand_commands file1 file2 ...
+        
+        # insert a table of exercises in a latex file myfile.p.tex
+        doconce latex_exercise_toc myfile
 
 
 Exercises
@@ -77797,7 +78308,6 @@ Resources
 ---------
 
  - Excellent "Sphinx Tutorial" by C. Reller: "http://people.ee.ethz.ch/~creller/web/tricks/reST.html"
-
 
 ************** File: quickref.txt *****************
 Doconce Quick Reference
@@ -78540,11 +79050,11 @@ list of capabilities::
 
 
         Usage: doconce command [optional arguments]
-        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
         
         
         # transform doconce file to another format
-        doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwiki|cwiki|pandoc|st|epytext file.do.txt
+        doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwiki|cwiki|pandoc|st|epytext dofile
         
         # substitute a phrase by another using regular expressions
         doconce subst [-s -m -x --restore] regex-pattern regex-replacement file1 file2 ...
@@ -78563,7 +79073,7 @@ list of capabilities::
         doconce expand_mako mako_code_file funcname file1 file2 ...
         
         # remove all inline comments in a doconce file
-        doconce remove_inline_comments file.do.txt
+        doconce remove_inline_comments dofile
         
         # create a directory for the sphinx format
         doconce sphinx_dir author='John Doe' title='Long title' \
@@ -78572,9 +79082,6 @@ list of capabilities::
             do_file [do_file2 do_file3 ...]
         (requires sphinx version >= 1.1)
         
-        # replace latex-1 (non-ascii) characters by html codes
-        doconce latin2html file.html
-        
         # walk through a directory tree and insert doconce files as
         # docstrings in *.p.py files
         doconce insertdocstr rootdir
@@ -78582,14 +79089,8 @@ list of capabilities::
         # remove all files that the doconce format can regenerate
         doconce clean
         
-        # print the header (preamble) for latex file
-        doconce latex_header
-        
-        # print the footer for latex files
-        doconce latex_footer
-        
         # change encoding
-        doconce change_encoding utf-8 latin1 filename
+        doconce change_encoding utf-8 latin1 dofile
         
         # guess the encoding in a text
         doconce guess_encoding filename
@@ -78602,9 +79103,6 @@ list of capabilities::
         doconce split_rst complete_file        # !split delimiters
         doconce sphinx_dir complete_file
         python automake_sphinx.py
-        
-        # edit URLs to local files and place them in _static
-        doconce sphinxfix_local_URLs file.rst
         
         # split an html file into parts according to !split commands
         doconce split_html complete_file.html
@@ -78625,7 +79123,7 @@ list of capabilities::
         doconce remove --from[-] from-text [--to[-] to-text] somefile > result
         
         # list all figure, movie or included code files
-        doconce grep FIGURE|MOVIE|CODE myfile
+        doconce grep FIGURE|MOVIE|CODE dofile
         
         # run spellcheck on a set of files
         doconce spellcheck [-d .mydict.txt] *.do.txt
@@ -78636,25 +79134,22 @@ list of capabilities::
                 dat=\begin{quote}\begin{verbatim};\end{verbatim}\end{quote}
         
         # make HTML file via pandoc from Markdown (.md) file
-        doconce md2html file
+        doconce md2html file.md
         
         # make LaTeX file via pandoc from Markdown (.md) file
-        doconce md2latex file
-        
-        # expand short cut commands to full form in files
-        doconce expand_commands file1 file2 ...
+        doconce md2latex file.md
         
         # combine several images into one
         doconce combine_images image1 image2 ... output_file
-        
-        # insert a table of exercises in a latex file myfile.p.tex
-        doconce latex_exercise_toc myfile
         
         # report problems from a LaTeX .log file
         doconce latex_problems mydoc.log [overfull-hbox-limit]
         
         # list all labels in a document (for purposes of cleaning them up)
         doconce list_labels myfile
+        
+        # generate script for substituting generalized references
+        doconce ref_external mydoc [pubfile]
         
         # check all links in HTML files
         doconce linkchecker *.html
@@ -78674,9 +79169,6 @@ list of capabilities::
         # generate a make.sh script for translating a doconce file to various formats
         doconce makefile docname doconcefile [html sphinx pdflatex ...]
         
-        # fix common problems in bibtex files for publish import
-        doconce fix_bibtex4publish file1.bib file2.bib ...
-        
         # find differences between two files
         doconce diff file1.do.txt file2.do.txt [diffprog]
         (diffprog can be difflib, diff, pdiff, latexdiff, kdiff3, diffuse, ...)
@@ -78686,6 +79178,27 @@ list of capabilities::
         
         # convert csv file to doconce table format
         doconce csv2table somefile.csv
+        
+        # edit URLs to local files and place them in _static
+        doconce sphinxfix_local_URLs file.rst
+        
+        # replace latex-1 (non-ascii) characters by html codes
+        doconce latin2html file.html
+        
+        # fix common problems in bibtex files for publish import
+        doconce fix_bibtex4publish file1.bib file2.bib ...
+        
+        # print the header (preamble) for latex file
+        doconce latex_header
+        
+        # print the footer for latex files
+        doconce latex_footer
+        
+        # expand short cut commands to full form in files
+        doconce expand_commands file1 file2 ...
+        
+        # insert a table of exercises in a latex file myfile.p.tex
+        doconce latex_exercise_toc myfile
 
 
 Exercises
@@ -78887,7 +79400,6 @@ Resources
 ---------
 
  * Excellent "Sphinx Tutorial" by C. Reller: "http://people.ee.ethz.ch/~creller/web/tricks/reST.html"
-
 
 ************** File: quickref.md *****************
 % Doconce Quick Reference
@@ -79617,11 +80129,11 @@ list of capabilities:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 # transform doconce file to another format
-doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwiki|cwiki|pandoc|st|epytext file.do.txt
+doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwiki|cwiki|pandoc|st|epytext dofile
 
 # substitute a phrase by another using regular expressions
 doconce subst [-s -m -x --restore] regex-pattern regex-replacement file1 file2 ...
@@ -79640,7 +80152,7 @@ doconce replace_from_file file-with-from-to file1 file2 ...
 doconce expand_mako mako_code_file funcname file1 file2 ...
 
 # remove all inline comments in a doconce file
-doconce remove_inline_comments file.do.txt
+doconce remove_inline_comments dofile
 
 # create a directory for the sphinx format
 doconce sphinx_dir author='John Doe' title='Long title' \
@@ -79649,9 +80161,6 @@ doconce sphinx_dir author='John Doe' title='Long title' \
     do_file [do_file2 do_file3 ...]
 (requires sphinx version >= 1.1)
 
-# replace latex-1 (non-ascii) characters by html codes
-doconce latin2html file.html
-
 # walk through a directory tree and insert doconce files as
 # docstrings in *.p.py files
 doconce insertdocstr rootdir
@@ -79659,14 +80168,8 @@ doconce insertdocstr rootdir
 # remove all files that the doconce format can regenerate
 doconce clean
 
-# print the header (preamble) for latex file
-doconce latex_header
-
-# print the footer for latex files
-doconce latex_footer
-
 # change encoding
-doconce change_encoding utf-8 latin1 filename
+doconce change_encoding utf-8 latin1 dofile
 
 # guess the encoding in a text
 doconce guess_encoding filename
@@ -79679,9 +80182,6 @@ doconce format sphinx complete_file
 doconce split_rst complete_file        # !split delimiters
 doconce sphinx_dir complete_file
 python automake_sphinx.py
-
-# edit URLs to local files and place them in _static
-doconce sphinxfix_local_URLs file.rst
 
 # split an html file into parts according to !split commands
 doconce split_html complete_file.html
@@ -79702,7 +80202,7 @@ doconce grab   --from[-] from-text [--to[-] to-text] somefile > result
 doconce remove --from[-] from-text [--to[-] to-text] somefile > result
 
 # list all figure, movie or included code files
-doconce grep FIGURE|MOVIE|CODE myfile
+doconce grep FIGURE|MOVIE|CODE dofile
 
 # run spellcheck on a set of files
 doconce spellcheck [-d .mydict.txt] *.do.txt
@@ -79713,25 +80213,22 @@ doconce ptex2tex mydoc -DMINTED pycod=minted sys=Verbatim \
         dat=\begin{quote}\begin{verbatim};\end{verbatim}\end{quote}
 
 # make HTML file via pandoc from Markdown (.md) file
-doconce md2html file
+doconce md2html file.md
 
 # make LaTeX file via pandoc from Markdown (.md) file
-doconce md2latex file
-
-# expand short cut commands to full form in files
-doconce expand_commands file1 file2 ...
+doconce md2latex file.md
 
 # combine several images into one
 doconce combine_images image1 image2 ... output_file
-
-# insert a table of exercises in a latex file myfile.p.tex
-doconce latex_exercise_toc myfile
 
 # report problems from a LaTeX .log file
 doconce latex_problems mydoc.log [overfull-hbox-limit]
 
 # list all labels in a document (for purposes of cleaning them up)
 doconce list_labels myfile
+
+# generate script for substituting generalized references
+doconce ref_external mydoc [pubfile]
 
 # check all links in HTML files
 doconce linkchecker *.html
@@ -79751,9 +80248,6 @@ doconce pygmentize myfile [pygments-style]
 # generate a make.sh script for translating a doconce file to various formats
 doconce makefile docname doconcefile [html sphinx pdflatex ...]
 
-# fix common problems in bibtex files for publish import
-doconce fix_bibtex4publish file1.bib file2.bib ...
-
 # find differences between two files
 doconce diff file1.do.txt file2.do.txt [diffprog]
 (diffprog can be difflib, diff, pdiff, latexdiff, kdiff3, diffuse, ...)
@@ -79763,6 +80257,27 @@ doconce gitdiff file1 file2 file3 ...
 
 # convert csv file to doconce table format
 doconce csv2table somefile.csv
+
+# edit URLs to local files and place them in _static
+doconce sphinxfix_local_URLs file.rst
+
+# replace latex-1 (non-ascii) characters by html codes
+doconce latin2html file.html
+
+# fix common problems in bibtex files for publish import
+doconce fix_bibtex4publish file1.bib file2.bib ...
+
+# print the header (preamble) for latex file
+doconce latex_header
+
+# print the footer for latex files
+doconce latex_footer
+
+# expand short cut commands to full form in files
+doconce expand_commands file1 file2 ...
+
+# insert a table of exercises in a latex file myfile.p.tex
+doconce latex_exercise_toc myfile
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ### Exercises
@@ -80818,10 +81333,10 @@ replacing % end theorem by \end{theorem} in testdoc.p.tex
 + doconce replace Newton--Cotes Newton-Cotes testdoc.p.tex
 replacing Newton--Cotes by Newton-Cotes in testdoc.p.tex
 + doconce replace --examples_as__exercises --examples_as_exercises testdoc.p.tex
-+ system ptex2tex -DMINTED -DLATEX_HEADING=titlepage -DA4PAPER -DTODONOTES -DLINENUMBERS -DCOLORED_TABLE_ROWS=blue -DFANCY_HEADER -DSECTION_HEADINGS=blue -DLABELS_IN_MARGIN -DDOUBLE_SPACING testdoc
-+ ptex2tex -DMINTED -DLATEX_HEADING=titlepage -DA4PAPER -DTODONOTES -DLINENUMBERS -DCOLORED_TABLE_ROWS=blue -DFANCY_HEADER -DSECTION_HEADINGS=blue -DLABELS_IN_MARGIN -DDOUBLE_SPACING testdoc
++ system ptex2tex -DMINTED -DLATEX_HEADING=titlepage -DA4PAPER -DTODONOTES -DLINENUMBERS -DCOLORED_TABLE_ROWS=blue -DFANCY_HEADER -DSECTION_HEADINGS=blue -DLABELS_IN_MARGIN -DDOUBLE_SPACING -DLIST_OF_EXERCISES=loe testdoc
++ ptex2tex -DMINTED -DLATEX_HEADING=titlepage -DA4PAPER -DTODONOTES -DLINENUMBERS -DCOLORED_TABLE_ROWS=blue -DFANCY_HEADER -DSECTION_HEADINGS=blue -DLABELS_IN_MARGIN -DDOUBLE_SPACING -DLIST_OF_EXERCISES=loe testdoc
 using local config file .ptex2tex.cfg
-running preprocessor on testdoc.p.tex...  defines: 'A4PAPER', 'MINTED', 'LATEX_HEADING', 'LINENUMBERS', 'LABELS_IN_MARGIN', 'SECTION_HEADINGS', 'DOUBLE_SPACING', 'COLORED_TABLE_ROWS', 'FANCY_HEADER', 'TODONOTES'  done
+running preprocessor on testdoc.p.tex...  defines: 'A4PAPER', 'MINTED', 'LATEX_HEADING', 'LIST_OF_EXERCISES', 'LINENUMBERS', 'LABELS_IN_MARGIN', 'SECTION_HEADINGS', 'DOUBLE_SPACING', 'COLORED_TABLE_ROWS', 'FANCY_HEADER', 'TODONOTES'  done
 
 *** warning: found inline verbatim "!bc" containing "!", which
     is used as delimiter in \Verb!!bc! - avoid "!" in inline verbatim
@@ -81080,7 +81595,11 @@ dmap/pdftex.map}] [2]
 
 
 
-[3] [4] 
+[3] [4]
+
+Package hyperref Warning: old loe file detected, not used; run LaTeX again.
+
+[5] [6] [7] 
 
 
 
@@ -81090,23 +81609,24 @@ dmap/pdftex.map}] [2]
 
 
 
-(./testdoc.out.pyg) (./testdoc.out.pyg [5]) (./testdoc.out.pyg)
-(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg [6])
-(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) [7]
+(./testdoc.out.pyg) (./testdoc.out.pyg [8]) (./testdoc.out.pyg)
+(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg [9])
+(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) [10]
 
 
 
-<../doc/src/manual/fig/wave1D.pdf, id=75, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=87, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
-[8 <../doc/src/manual/fig/wave1D.pdf>]
+[11]
+
+[12 <../doc/src/manual/fig/wave1D.pdf>]
 
 
 
-<../doc/src/manual/fig/wave1D.png, id=89, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=105, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=91, 578.16pt x 433.62pt>
-<use downloaded_figures/f_plot.png> [9] [10 <../doc/src/manual/fig/wave1D.png> 
-<./downloaded_figures/f_plot.png>]
+<downloaded_figures/f_plot.png, id=107, 578.16pt x 433.62pt>
+<use downloaded_figures/f_plot.png> [13 <../doc/src/manual/fig/wave1D.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -81131,19 +81651,19 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
-[11]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=119, 586.8324pt x 442.292
+[14 <./downloaded_figures/f_plot.png>] [15]
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=137, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=120, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=138, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=121, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=139, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=122, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=140, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=123, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=141, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=124, 586.8324pt x 442.292
-4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png> [12]
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=142, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -81166,7 +81686,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 798.
+t line 830.
 
 
 
@@ -81186,8 +81706,16 @@ t line 798.
 
 
 
-t line 807.
+t line 839.
 
+
+
+...rest of part of LaTeX line number...
+
+[16 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
+ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
+../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/mov/wave_f
+rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 
 
 ...rest of part of LaTeX line number...
@@ -81202,11 +81730,7 @@ t line 807.
 
 
 
-...rest of part of LaTeX line number...
-
-
-
-t line 811.
+t line 843.
 
 
 
@@ -81276,13 +81800,11 @@ t line 811.
 
 .
 
-[13 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
-ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
-../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/mov/wave_f
-rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
+
 Overfull \hbox (5.03835pt too wide) 
 [][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
 %26+engineering/book/978-3-642-23098-1| 
+[17]
 
 
 
@@ -81298,7 +81820,6 @@ Overfull \hbox (5.03835pt too wide)
 
 
 
-[14]
 
 
 
@@ -81310,6 +81831,7 @@ Package amsmath Warning: Foreign command \over;
 
 
 
+[18]
 
 
 
@@ -81320,7 +81842,6 @@ Package amsmath Warning: Foreign command \over;
 
 ...rest of part of LaTeX line number...
 
-[15]
 
 
 
@@ -81344,7 +81865,7 @@ Package amsmath Warning: Foreign command \over;
 
 
 
-
+.
 
 
 
@@ -81353,7 +81874,7 @@ Package amsmath Warning: Foreign command \over;
 
 ...rest of part of LaTeX line number...
 
-(./testdoc.out.pyg) [16] (./testdoc.out.pyg) [17] [18]
+[19] (./testdoc.out.pyg) [20] (./testdoc.out.pyg) [21] [22]
 
 
 .
@@ -81378,24 +81899,24 @@ Package amsmath Warning: Foreign command \over;
 
 
 
-[19]
 No file testdoc.bbl.
+[23]
 
 
 ...rest of part of LaTeX line number...
 
-[20]
+[24]
 
 
 ...rest of part of LaTeX line number...
 
-[21]
+[25]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
 No file testdoc.ind.
-[22] (./testdoc.aux)
+[26] (./testdoc.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -81625,7 +82146,7 @@ t12.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt8.pfb></usr/share/texmf/fon
 ts/type1/public/lm/lmtt9.pfb></usr/share/texmf/fonts/type1/public/lm/lmtti10.pf
 b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb
 >
-Output written on testdoc.pdf (22 pages, ).
+Output written on testdoc.pdf (26 pages, ).
 Transcript written on testdoc.log.
 + '[' 0 -ne 0 ']'
 + pdflatex -shell-escape testdoc
@@ -81848,19 +82369,20 @@ Writing index file testdoc.idx
 
 
  [1{/var/lib/texmf/fonts/map/pdftex/up
-dmap/pdftex.map}] (./testdoc.toc) [2] [3] (./testdoc.tdo) [4]
-
-(./testdoc.out.pyg [5]) (./testdoc.out.pyg) (./testdoc.out.pyg)
-(./testdoc.out.pyg) (./testdoc.out.pyg [6]) (./testdoc.out.pyg)
-(./testdoc.out.pyg) (./testdoc.out.pyg) [7]
-<../doc/src/manual/fig/wave1D.pdf, id=261, 586.83241pt x 442.29242pt>
+dmap/pdftex.map}] (./testdoc.toc) [2] [3] [4] (./testdoc.loe) [5] [6]
+(./testdoc.tdo) [7] 
+(./testdoc.out.pyg) (./testdoc.out.pyg [8]) (./testdoc.out.pyg)
+(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg [9])
+(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) [10]
+<../doc/src/manual/fig/wave1D.pdf, id=255, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
-[8 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=274, 586.8324pt x 442.2924pt>
+[11]
+
+[12 <../doc/src/manual/fig/wave1D.pdf>]
+<../doc/src/manual/fig/wave1D.png, id=272, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=276, 578.16pt x 433.62pt>
-<use downloaded_figures/f_plot.png> [9] [10 <../doc/src/manual/fig/wave1D.png> 
-<./downloaded_figures/f_plot.png>]
+<downloaded_figures/f_plot.png, id=274, 578.16pt x 433.62pt>
+<use downloaded_figures/f_plot.png> [13 <../doc/src/manual/fig/wave1D.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -81885,7 +82407,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
-[11]
+[14 <./downloaded_figures/f_plot.png>] [15]
 <../doc/src/manual/mov/wave_frames/frame_0080.png, id=300, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
 <../doc/src/manual/mov/wave_frames/frame_0085.png, id=301, 586.8324pt x 442.292
@@ -81897,7 +82419,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 <../doc/src/manual/mov/wave_frames/frame_0100.png, id=304, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
 <../doc/src/manual/mov/wave_frames/frame_0105.png, id=305, 586.8324pt x 442.292
-4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png> [12]
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -81920,7 +82442,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 798.
+t line 830.
 
 
 
@@ -81940,8 +82462,16 @@ t line 798.
 
 
 
-t line 807.
+t line 839.
 
+
+
+...rest of part of LaTeX line number...
+
+[16 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
+ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
+../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/mov/wave_f
+rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 
 
 ...rest of part of LaTeX line number...
@@ -81956,11 +82486,7 @@ t line 807.
 
 
 
-...rest of part of LaTeX line number...
-
-
-
-t line 811.
+t line 843.
 
 
 
@@ -82030,28 +82556,25 @@ t line 811.
 
 .
 
-[13 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
-ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
-../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/mov/wave_f
-rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
+
 Overfull \hbox (5.03835pt too wide) 
 [][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
 %26+engineering/book/978-3-642-23098-1| 
-[14]
+[17]
 
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on .
 
-[15] (./testdoc.out.pyg) [16] (./testdoc.out.pyg) [17] [18] [19]
+[18] [19] (./testdoc.out.pyg) [20] (./testdoc.out.pyg) [21] [22]
 No file testdoc.bbl.
-[20] [21]
+[23] [24] [25]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
 No file testdoc.ind.
-[22] (./testdoc.aux)
+[26] (./testdoc.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -82250,11 +82773,6 @@ downloaded_figures/f_plot.png
  ***********
 
 
-Package rerunfilecheck Warning: File `testdoc.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-
 LaTeX Warning: There were undefined references.
 
  )
@@ -82280,7 +82798,7 @@ f/fonts/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt
 ts/type1/public/lm/lmtt8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
 </usr/share/texmf/fonts/type1/public/lm/lmtti10.pfb></usr/share/texlive/texmf-d
 ist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on testdoc.pdf (22 pages, ).
+Output written on testdoc.pdf (26 pages, ).
 Transcript written on testdoc.log.
 + makeindex testdoc
 This is makeindex, version 2.15 [TeX Live 2013] (kpathsea + Thai support).
@@ -82520,19 +83038,20 @@ Writing index file testdoc.idx
 
 
  [1{/var/lib/texmf/fonts/map/pdftex/up
-dmap/pdftex.map}] (./testdoc.toc) [2] [3] (./testdoc.tdo) [4]
-
-(./testdoc.out.pyg [5]) (./testdoc.out.pyg) (./testdoc.out.pyg)
-(./testdoc.out.pyg) (./testdoc.out.pyg [6]) (./testdoc.out.pyg)
-(./testdoc.out.pyg) (./testdoc.out.pyg) [7]
-<../doc/src/manual/fig/wave1D.pdf, id=261, 586.83241pt x 442.29242pt>
+dmap/pdftex.map}] (./testdoc.toc) [2] [3] [4] (./testdoc.loe) [5] [6]
+(./testdoc.tdo) [7] 
+(./testdoc.out.pyg) (./testdoc.out.pyg [8]) (./testdoc.out.pyg)
+(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg [9])
+(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) [10]
+<../doc/src/manual/fig/wave1D.pdf, id=255, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
-[8 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=274, 586.8324pt x 442.2924pt>
+[11]
+
+[12 <../doc/src/manual/fig/wave1D.pdf>]
+<../doc/src/manual/fig/wave1D.png, id=272, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=276, 578.16pt x 433.62pt>
-<use downloaded_figures/f_plot.png> [9] [10 <../doc/src/manual/fig/wave1D.png> 
-<./downloaded_figures/f_plot.png>]
+<downloaded_figures/f_plot.png, id=274, 578.16pt x 433.62pt>
+<use downloaded_figures/f_plot.png> [13 <../doc/src/manual/fig/wave1D.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -82557,7 +83076,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
-[11]
+[14 <./downloaded_figures/f_plot.png>] [15]
 <../doc/src/manual/mov/wave_frames/frame_0080.png, id=300, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
 <../doc/src/manual/mov/wave_frames/frame_0085.png, id=301, 586.8324pt x 442.292
@@ -82569,7 +83088,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 <../doc/src/manual/mov/wave_frames/frame_0100.png, id=304, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
 <../doc/src/manual/mov/wave_frames/frame_0105.png, id=305, 586.8324pt x 442.292
-4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png> [12]
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -82592,7 +83111,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 798.
+t line 830.
 
 
 
@@ -82612,8 +83131,16 @@ t line 798.
 
 
 
-t line 807.
+t line 839.
 
+
+
+...rest of part of LaTeX line number...
+
+[16 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
+ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
+../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/mov/wave_f
+rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 
 
 ...rest of part of LaTeX line number...
@@ -82628,11 +83155,7 @@ t line 807.
 
 
 
-...rest of part of LaTeX line number...
-
-
-
-t line 811.
+t line 843.
 
 
 
@@ -82702,30 +83225,27 @@ t line 811.
 
 .
 
-[13 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
-ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
-../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/mov/wave_f
-rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
+
 Overfull \hbox (5.03835pt too wide) 
 [][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
 %26+engineering/book/978-3-642-23098-1| 
-[14]
+[17]
 
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on .
 
-[15] (./testdoc.out.pyg) [16] (./testdoc.out.pyg) [17] [18] [19] (./testdoc.bbl
- [20]) [21] [22] [23]
+[18] [19] (./testdoc.out.pyg) [20] (./testdoc.out.pyg) [21] [22] (./testdoc.bbl
+ [23] [24]) [25] [26]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
-(./testdoc.ind [24]
+(./testdoc.ind [27]
 Overfull \hbox (9.21497pt too wide) 
 []\T1/lmr/m/n/10 (-20) test \T1/lmtt/m/n/10 two \T1/lmr/m/n/10 (-20) (sep-a-rat
 e) \T1/lmtt/m/n/10 verbatim expressions \T1/lmr/m/n/10 (-20) which
-[25]) (./testdoc.aux)
+[28]) (./testdoc.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -82954,7 +83474,7 @@ f/fonts/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt
 ts/type1/public/lm/lmtt8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
 </usr/share/texmf/fonts/type1/public/lm/lmtti10.pfb></usr/share/texlive/texmf-d
 ist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on testdoc.pdf (25 pages, ).
+Output written on testdoc.pdf (28 pages, ).
 Transcript written on testdoc.log.
 + pdflatex -shell-escape testdoc
 This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
@@ -83176,19 +83696,20 @@ Writing index file testdoc.idx
 
 
  [1{/var/lib/texmf/fonts/map/pdftex/up
-dmap/pdftex.map}] (./testdoc.toc) [2] [3] (./testdoc.tdo) [4]
-
-(./testdoc.out.pyg [5]) (./testdoc.out.pyg) (./testdoc.out.pyg)
-(./testdoc.out.pyg) (./testdoc.out.pyg [6]) (./testdoc.out.pyg)
-(./testdoc.out.pyg) (./testdoc.out.pyg) [7]
-<../doc/src/manual/fig/wave1D.pdf, id=261, 586.83241pt x 442.29242pt>
+dmap/pdftex.map}] (./testdoc.toc) [2] [3] [4] (./testdoc.loe) [5] [6]
+(./testdoc.tdo) [7] 
+(./testdoc.out.pyg) (./testdoc.out.pyg [8]) (./testdoc.out.pyg)
+(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg [9])
+(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) [10]
+<../doc/src/manual/fig/wave1D.pdf, id=255, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
-[8 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=274, 586.8324pt x 442.2924pt>
+[11]
+
+[12 <../doc/src/manual/fig/wave1D.pdf>]
+<../doc/src/manual/fig/wave1D.png, id=272, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=276, 578.16pt x 433.62pt>
-<use downloaded_figures/f_plot.png> [9] [10 <../doc/src/manual/fig/wave1D.png> 
-<./downloaded_figures/f_plot.png>]
+<downloaded_figures/f_plot.png, id=274, 578.16pt x 433.62pt>
+<use downloaded_figures/f_plot.png> [13 <../doc/src/manual/fig/wave1D.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -83213,7 +83734,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
-[11]
+[14 <./downloaded_figures/f_plot.png>] [15]
 <../doc/src/manual/mov/wave_frames/frame_0080.png, id=300, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
 <../doc/src/manual/mov/wave_frames/frame_0085.png, id=301, 586.8324pt x 442.292
@@ -83225,7 +83746,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 <../doc/src/manual/mov/wave_frames/frame_0100.png, id=304, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
 <../doc/src/manual/mov/wave_frames/frame_0105.png, id=305, 586.8324pt x 442.292
-4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png> [12]
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -83246,30 +83767,30 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
-[13 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
+[16 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
 ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
 ../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/mov/wave_f
 rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 Overfull \hbox (5.03835pt too wide) 
 [][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
 %26+engineering/book/978-3-642-23098-1| 
-[14]
+[17]
 
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on .
 
-[15] (./testdoc.out.pyg) [16] (./testdoc.out.pyg) [17] [18] [19] (./testdoc.bbl
- [20]) [21] [22] [23]
+[18] [19] (./testdoc.out.pyg) [20] (./testdoc.out.pyg) [21] [22] (./testdoc.bbl
+ [23] [24]) [25] [26]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
-(./testdoc.ind [24]
+(./testdoc.ind [27]
 Overfull \hbox (9.21497pt too wide) 
 []\T1/lmr/m/n/10 (-20) test \T1/lmtt/m/n/10 two \T1/lmr/m/n/10 (-20) (sep-a-rat
 e) \T1/lmtt/m/n/10 verbatim expressions \T1/lmr/m/n/10 (-20) which
-[25]) (./testdoc.aux)
+[28]) (./testdoc.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -83492,7 +84013,7 @@ f/fonts/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt
 ts/type1/public/lm/lmtt8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
 </usr/share/texmf/fonts/type1/public/lm/lmtti10.pfb></usr/share/texlive/texmf-d
 ist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on testdoc.pdf (25 pages, ).
+Output written on testdoc.pdf (28 pages, ).
 Transcript written on testdoc.log.
 + cp testdoc.tex testdoc.tex_ptex2tex
 + system doconce ptex2tex testdoc -DBOOK -DPALATINO 'sys=begin{quote}begin{Verbatim}@end{Verbatim}end{quote}' pypro=ans:nt envir=minted
@@ -83871,7 +84392,7 @@ reading sources... [ 50%] ._testdoc001
 reading sources... [ 75%] ._testdoc002
 reading sources... [100%] index
 
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:555: WARNING: Inline interpreted text or phrase reference start-string without end-string.
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:559: WARNING: Inline interpreted text or phrase reference start-string without end-string.
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:None: WARNING: nonlocal image URI found: https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png
 looking for now-outdated files... none found
 pickling environment... done
@@ -85245,7 +85766,7 @@ output in math_test.md
 + doconce md2latex math_test
 command "md2latex" is not legal, must be among
 
-format, help, sphinx_dir, subst, replace, replace_from_file, clean, spellcheck, ptex2tex, guess_encoding, expand_commands, expand_mako, combine_images, change_encoding, capitalize, gwiki_figsubst, md2html, remove_inline_comments, grab, remove, remove_exercise_answers, split_rst, split_html, slides_html, slides_beamer, latin2html, grep, latex_header, latex_footer, latex_problems, bbl2rst, html_colorbullets, list_labels, teamod, sphinxfix_localURLs, make_figure_code_links, latex_exercise_toc, insertdocstr, old2new_format, linkchecker, latex2doconce, latex_dislikes, pygmentize, makefile, diff, gitdiff, fix_bibtex4publish, csv2table
+format, help, sphinx_dir, subst, replace, replace_from_file, clean, spellcheck, ptex2tex, guess_encoding, expand_commands, expand_mako, combine_images, change_encoding, capitalize, gwiki_figsubst, md2html, remove_inline_comments, grab, remove, remove_exercise_answers, split_rst, split_html, slides_html, slides_beamer, latin2html, grep, latex_header, latex_footer, latex_problems, ref_external, bbl2rst, html_colorbullets, list_labels, teamod, sphinxfix_localURLs, make_figure_code_links, latex_exercise_toc, insertdocstr, old2new_format, linkchecker, latex2doconce, latex_dislikes, pygmentize, makefile, diff, gitdiff, fix_bibtex4publish, csv2table
 + admon_tps='colors1 graybox1 paragraph graybox2 yellowbox graybox3 colors2'
 + for admon_tp in '$admon_tps'
 + '[' colors1 = graybox1 ']'
@@ -90206,21 +90727,10 @@ running preprocess -DFORMAT=html -DDEVICE=screen -DPREPROCESS encoding3.do.txt >
 translating doconce text in tmp_preprocess__encoding3.do.txt to html
 *** error: problem with character when writing to file:
 (text position  526-527)
-ight: 125%">a = 1  # Value suggested by  | Traceback (most recent call last):
-  File "/usr/local/bin/doconce", line 1023, in <module>
-    main()
-  File "/usr/local/bin/doconce", line 1013, in main
-    eval(command + '()')
-  File "<string>", line 1, in <module>
-  File "/usr/local/bin/doconce", line 85, in format
-    doconce.doconce.format_driver()
-  File "/usr/local/lib/python2.7/dist-packages/doconce/doconce.py", line 3037, in format_driver
-    out_filename = file2file(filename_preprocessed, format, basename)
-  File "/usr/local/lib/python2.7/dist-packages/doconce/doconce.py", line 2306, in file2file
-    error_message()
-  File "/usr/local/lib/python2.7/dist-packages/doconce/doconce.py", line 2295, in error_message
-    print filestr[pos-40:pos], '|', filestr[pos], '|', filestr[pos+1:pos+40]
-UnicodeEncodeError: 'ascii' codec can't encode character u'\xc3' in position 0: ordinal not in range(128)
+u'ight: 125%">a = 1  # Value suggested by \xc3\x85smund \xc3\x98deg\xc3\xa5rd.\n</pre></div>\n<p>\n\n<!-'
+                                          ^
+    remedies: fix character or try --encoding=utf-8
+Abort! (add --no_abort on the command line to avoid this abortion)
 + doconce format html encoding3 -DPREPROCESS --encoding=utf-8 --no_pygments_html --debug
 *** debug output in _doconce_debugging.log
 running preprocess -DFORMAT=html -DDEVICE=screen -DPREPROCESS encoding3.do.txt > tmp_preprocess__encoding3.do.txt
@@ -90290,6 +90800,33 @@ output in mako_test4.html
 + system doconce csv2table testtable.csv
 + doconce csv2table testtable.csv
 + '[' 0 -ne 0 ']'
++ sh -x genref.sh
++ doconce format pdflatex genref1
+running preprocess -DFORMAT=pdflatex -DDEVICE=screen  genref1.do.txt > tmp_preprocess__genref1.do.txt
+Could not run preprocessor:
+preprocess -DFORMAT=pdflatex -DDEVICE=screen  genref1.do.txt > tmp_preprocess__genref1.do.txt
+preprocess: error: could not find #include'd file "_genref1.do.txt" on include path: []
+Abort! (add --no_abort on the command line to avoid this abortion)
++ doconce format pdflatex genref2
+running preprocess -DFORMAT=pdflatex -DDEVICE=screen  genref2.do.txt > tmp_preprocess__genref2.do.txt
+Could not run preprocessor:
+preprocess -DFORMAT=pdflatex -DDEVICE=screen  genref2.do.txt > tmp_preprocess__genref2.do.txt
+preprocess: error: could not find #include'd file "_genref2.do.txt" on include path: []
+Abort! (add --no_abort on the command line to avoid this abortion)
++ doconce ref_external genref2
+    working with publish file genref.pub
+    ...processing tmp_preprocess__genref2.do.txt
+       title: Some mathematics
+       url: http://doconce.test.net
+       key: doconce_test_ref_extended
+    ...processing tmp_preprocess__genref1.do.txt
+substitution script: tmp_subst_references.sh
+grep script (for context of each substitution): tmp_grep_references.sh
++ cp _genref2.do.txt _tmp_genref2.do.txt
+cp: cannot stat ‘_genref2.do.txt’: No such file or directory
++ doconce replace files=*.do.txt files=_tmp_genref2.do.txt tmp_subst_references.sh
++ sh -x tmp_subst_references.sh
++ files=genref2.do.txt
 + cp failures.do.txt tmp2.do.txt
 + doconce format plain tmp2.do.txt
 translating doconce text in tmp2.do.txt to plain
@@ -91860,19 +92397,19 @@ Overfull \hbox (107.00006pt too wide)
 []\T1/pcr/m/n/10 "A Document for Testing Doconce": "testdoc.html" cite{testdoc:
 12}],  
 
-Overfull \hbox (3299.00006pt too wide) 
+Overfull \hbox (3377.00006pt too wide) 
 []\T1/pcr/m/n/10 commands: format help sphinx_dir subst replace replace_from_fi
 le clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine
 _images change_encoding capitalize gwiki_figsubst md2html remove_inline_comment
 s grab remove remove_exercise_answers split_rst split_html slides_html slides_b
-eamer latin2html grep latex_header latex_footer latex_problems bbl2rst html_col
-orbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_e
-xercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislike
-s pygmentize makefile diff gitdiff fix_bibtex4publish csv2table  
+eamer latin2html grep latex_header latex_footer latex_problems ref_external bbl
+2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_
+links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce 
+latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table  
 
-Overfull \hbox (299.00006pt too wide) 
+Overfull \hbox (269.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwik
-i|cwiki|pandoc|st|epytext file.do.txt  
+i|cwiki|pandoc|st|epytext dofile  
 
 Overfull \hbox (53.00006pt too wide) 
 []\T1/pcr/m/n/10 # substitute a phrase by another using regular expressions  
@@ -91911,9 +92448,6 @@ Overfull \hbox (47.00006pt too wide)
 Overfull \hbox (53.00006pt too wide) 
 []    \T1/pcr/m/n/10 dirname=sphinx-rootdir theme=default logo=mylogo.png \  
 
-Overfull \hbox (29.00006pt too wide) 
-[]\T1/pcr/m/n/10 # replace latex-1 (non-ascii) characters by html codes  
-
 Overfull \hbox (59.00006pt too wide) 
 []\T1/pcr/m/n/10 # walk through a directory tree and insert doconce files as  
 
@@ -91923,17 +92457,14 @@ Overfull \hbox (47.00006pt too wide)
 Overfull \hbox (113.00006pt too wide) 
 []\T1/pcr/m/n/10 # transform a .bbl file to a .rst file with reST bibliography 
 format  
-[12]
+
 Overfull \hbox (53.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce split_rst complete_file        # !split delimiters  
-
-Overfull \hbox (17.00006pt too wide) 
-[]\T1/pcr/m/n/10 # edit URLs to local files and place them in _static  
 
 Overfull \hbox (65.00006pt too wide) 
 []\T1/pcr/m/n/10 # split an html file into parts according to !split commands  
 
-
+[12]
 Overfull \hbox (95.00006pt too wide) 
 []\T1/pcr/m/n/10 # create LaTeX Beamer slides from a (doconce) latex/pdflatex f
 ile  
@@ -91967,9 +92498,6 @@ Overfull \hbox (23.00006pt too wide)
 
 Overfull \hbox (17.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce combine_images image1 image2 ... output_file  
-[13]
-Overfull \hbox (53.00006pt too wide) 
-[]\T1/pcr/m/n/10 # insert a table of exercises in a latex file myfile.p.tex  
 
 Overfull \hbox (29.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce latex_problems mydoc.log [overfull-hbox-limit]  
@@ -91978,10 +92506,13 @@ Overfull \hbox (101.00006pt too wide)
 []\T1/pcr/m/n/10 # list all labels in a document (for purposes of cleaning them
  up)  
 
+Overfull \hbox (47.00006pt too wide) 
+[]\T1/pcr/m/n/10 # generate script for substituting generalized references  
+
 Overfull \hbox (95.00006pt too wide) 
 []\T1/pcr/m/n/10 # change headings from "This is a Heading" to "This is a headi
 ng"  
-
+[13]
 Overfull \hbox (137.00006pt too wide) 
 []\T1/pcr/m/n/10 # translate a latex document to doconce (requires usually manu
 al fixing)  
@@ -92002,12 +92533,6 @@ Overfull \hbox (83.00006pt too wide)
 []\T1/pcr/m/n/10 doconce makefile docname doconcefile [html sphinx pdflatex ...
 ]  
 
-Overfull \hbox (41.00006pt too wide) 
-[]\T1/pcr/m/n/10 # fix common problems in bibtex files for publish import  
-
-Overfull \hbox (5.00006pt too wide) 
-[]\T1/pcr/m/n/10 doconce fix_bibtex4publish file1.bib file2.bib ...  
-
 Overfull \hbox (131.00006pt too wide) 
 []\T1/pcr/m/n/10 (diffprog can be difflib, diff, pdiff, latexdiff, kdiff3, diff
 use, ...)  
@@ -92015,6 +92540,21 @@ use, ...)
 Overfull \hbox (119.00006pt too wide) 
 []\T1/pcr/m/n/10 # find differences between the last two Git versions of severa
 l files  
+
+Overfull \hbox (17.00006pt too wide) 
+[]\T1/pcr/m/n/10 # edit URLs to local files and place them in _static  
+
+Overfull \hbox (29.00006pt too wide) 
+[]\T1/pcr/m/n/10 # replace latex-1 (non-ascii) characters by html codes  
+
+Overfull \hbox (41.00006pt too wide) 
+[]\T1/pcr/m/n/10 # fix common problems in bibtex files for publish import  
+
+Overfull \hbox (5.00006pt too wide) 
+[]\T1/pcr/m/n/10 doconce fix_bibtex4publish file1.bib file2.bib ...  
+
+Overfull \hbox (53.00006pt too wide) 
+[]\T1/pcr/m/n/10 # insert a table of exercises in a latex file myfile.p.tex  
 [14]
 Overfull \hbox (101.00006pt too wide) 
 \T1/pcr/m/n/10 ===== Problem: Derive the Formula for the Area of an Ellipse ===
@@ -92328,19 +92868,19 @@ Overfull \hbox (107.00006pt too wide)
 []\T1/pcr/m/n/10 "A Document for Testing Doconce": "testdoc.html" cite{testdoc:
 12}],  
 
-Overfull \hbox (3299.00006pt too wide) 
+Overfull \hbox (3377.00006pt too wide) 
 []\T1/pcr/m/n/10 commands: format help sphinx_dir subst replace replace_from_fi
 le clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine
 _images change_encoding capitalize gwiki_figsubst md2html remove_inline_comment
 s grab remove remove_exercise_answers split_rst split_html slides_html slides_b
-eamer latin2html grep latex_header latex_footer latex_problems bbl2rst html_col
-orbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_e
-xercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislike
-s pygmentize makefile diff gitdiff fix_bibtex4publish csv2table  
+eamer latin2html grep latex_header latex_footer latex_problems ref_external bbl
+2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_
+links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce 
+latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table  
 
-Overfull \hbox (299.00006pt too wide) 
+Overfull \hbox (269.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwik
-i|cwiki|pandoc|st|epytext file.do.txt  
+i|cwiki|pandoc|st|epytext dofile  
 
 Overfull \hbox (53.00006pt too wide) 
 []\T1/pcr/m/n/10 # substitute a phrase by another using regular expressions  
@@ -92379,9 +92919,6 @@ Overfull \hbox (47.00006pt too wide)
 Overfull \hbox (53.00006pt too wide) 
 []    \T1/pcr/m/n/10 dirname=sphinx-rootdir theme=default logo=mylogo.png \  
 
-Overfull \hbox (29.00006pt too wide) 
-[]\T1/pcr/m/n/10 # replace latex-1 (non-ascii) characters by html codes  
-
 Overfull \hbox (59.00006pt too wide) 
 []\T1/pcr/m/n/10 # walk through a directory tree and insert doconce files as  
 
@@ -92391,17 +92928,14 @@ Overfull \hbox (47.00006pt too wide)
 Overfull \hbox (113.00006pt too wide) 
 []\T1/pcr/m/n/10 # transform a .bbl file to a .rst file with reST bibliography 
 format  
-[13]
+
 Overfull \hbox (53.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce split_rst complete_file        # !split delimiters  
-
-Overfull \hbox (17.00006pt too wide) 
-[]\T1/pcr/m/n/10 # edit URLs to local files and place them in _static  
 
 Overfull \hbox (65.00006pt too wide) 
 []\T1/pcr/m/n/10 # split an html file into parts according to !split commands  
 
-
+[13]
 Overfull \hbox (95.00006pt too wide) 
 []\T1/pcr/m/n/10 # create LaTeX Beamer slides from a (doconce) latex/pdflatex f
 ile  
@@ -92435,9 +92969,6 @@ Overfull \hbox (23.00006pt too wide)
 
 Overfull \hbox (17.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce combine_images image1 image2 ... output_file  
-[14]
-Overfull \hbox (53.00006pt too wide) 
-[]\T1/pcr/m/n/10 # insert a table of exercises in a latex file myfile.p.tex  
 
 Overfull \hbox (29.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce latex_problems mydoc.log [overfull-hbox-limit]  
@@ -92446,10 +92977,13 @@ Overfull \hbox (101.00006pt too wide)
 []\T1/pcr/m/n/10 # list all labels in a document (for purposes of cleaning them
  up)  
 
+Overfull \hbox (47.00006pt too wide) 
+[]\T1/pcr/m/n/10 # generate script for substituting generalized references  
+
 Overfull \hbox (95.00006pt too wide) 
 []\T1/pcr/m/n/10 # change headings from "This is a Heading" to "This is a headi
 ng"  
-
+[14]
 Overfull \hbox (137.00006pt too wide) 
 []\T1/pcr/m/n/10 # translate a latex document to doconce (requires usually manu
 al fixing)  
@@ -92470,12 +93004,6 @@ Overfull \hbox (83.00006pt too wide)
 []\T1/pcr/m/n/10 doconce makefile docname doconcefile [html sphinx pdflatex ...
 ]  
 
-Overfull \hbox (41.00006pt too wide) 
-[]\T1/pcr/m/n/10 # fix common problems in bibtex files for publish import  
-
-Overfull \hbox (5.00006pt too wide) 
-[]\T1/pcr/m/n/10 doconce fix_bibtex4publish file1.bib file2.bib ...  
-
 Overfull \hbox (131.00006pt too wide) 
 []\T1/pcr/m/n/10 (diffprog can be difflib, diff, pdiff, latexdiff, kdiff3, diff
 use, ...)  
@@ -92483,6 +93011,21 @@ use, ...)
 Overfull \hbox (119.00006pt too wide) 
 []\T1/pcr/m/n/10 # find differences between the last two Git versions of severa
 l files  
+
+Overfull \hbox (17.00006pt too wide) 
+[]\T1/pcr/m/n/10 # edit URLs to local files and place them in _static  
+
+Overfull \hbox (29.00006pt too wide) 
+[]\T1/pcr/m/n/10 # replace latex-1 (non-ascii) characters by html codes  
+
+Overfull \hbox (41.00006pt too wide) 
+[]\T1/pcr/m/n/10 # fix common problems in bibtex files for publish import  
+
+Overfull \hbox (5.00006pt too wide) 
+[]\T1/pcr/m/n/10 doconce fix_bibtex4publish file1.bib file2.bib ...  
+
+Overfull \hbox (53.00006pt too wide) 
+[]\T1/pcr/m/n/10 # insert a table of exercises in a latex file myfile.p.tex  
 [15]
 Overfull \hbox (101.00006pt too wide) 
 \T1/pcr/m/n/10 ===== Problem: Derive the Formula for the Area of an Ellipse ===

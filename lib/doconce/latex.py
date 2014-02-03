@@ -191,6 +191,11 @@ def latex_code(filestr, code_blocks, code_block_types,
                 # cannot be doconce:exercise (previous name), but
                 # must be doconceexercise because of the \l@... command
                 style_listofexercises = r"""
+
+%% #ifndef LIST_OF_EXERCISES
+%% #define LIST_OF_EXERCISES "none"
+%% #endif
+
 %% --- begin definition of \listofexercises command ---
 \makeatletter
 \newcommand\listofexercises{
@@ -204,11 +209,6 @@ def latex_code(filestr, code_blocks, code_block_types,
 %% --- end definition of \listofexercises command ---
 """ % vars()
                 insert_listofexercises = r"""
-
-%% #ifndef LIST_OF_EXERCISES
-%% #define LIST_OF_EXERCISES "none"
-%% #endif
-
 %% #if LIST_OF_EXERCISES == "loe"
 \clearemptydoublepage
 \listofexercises
@@ -892,7 +892,9 @@ def latex_ref_and_label(section_label2title, format, filestr):
                                application='match'), 'LaTeX', filestr)
     #filestr = re.sub('''([^"'`*_A-Za-z0-9-])LaTeX([^"'`*_A-Za-z0-9-])''',
     #                 r'\g<1>{\LaTeX}\g<2>', filestr)
-    filestr = re.sub(r'''([^"'`*/-])\bLaTeX\b([^"'`*/-])''',
+    #filestr = re.sub(r'''([^"'`*/-])\bLaTeX\b([^"'`*/-])''',
+    #                 r'\g<1>{\LaTeX}\g<2>', filestr)
+    filestr = re.sub(r'''([^"'`*/])\bLaTeX\b([^"'`*/])''',
                      r'\g<1>{\LaTeX}\g<2>', filestr)
     filestr = re.sub(r'''([^"'`*-])\bpdfLaTeX\b([^"'`*-])''',
                      fix_latex_command_regex(
@@ -2233,16 +2235,15 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 """
             break
 
-    if chapters:
-        # Follow advice from fancyhdr: redefine \cleardoublepage
-        # see http://www.tex.ac.uk/cgi-bin/texfaq2html?label=reallyblank
-        # (Koma has its own solution to the problem)
-        INTRO['latex'] += r"""
+    # Follow advice from fancyhdr: redefine \cleardoublepage
+    # see http://www.tex.ac.uk/cgi-bin/texfaq2html?label=reallyblank
+    # (Koma has its own solution to the problem, svmono.cls has the command)
+    INTRO['latex'] += r"""
 % #if LATEX_STYLE not in ("Koma_Script", "Springer_T2")
 % Make sure blank even-numbered pages before new chapters are
 % totally blank with no header
 \newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
-%\let\cleardoublepage\clearemptydoublepage % caused error in \tableofcontents...
+%\let\cleardoublepage\clearemptydoublepage % caused error in the toc
 % #endif
 """
 
