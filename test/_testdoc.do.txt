@@ -469,7 +469,7 @@ newline/comma and hyphen (as in double-quote)'';
 written in the standard LaTeX-style that gives correct
 LaTeX formatting and ordinary double quotes for all non-LaTeX formats.
 Here is another sentence that ``caused'' a bug in the past
-because of double backtick quotes could be verbatim text up to
+because double backtick quotes could imply verbatim text up to
 a verbatim word starting with period, like `.txt`.
 
 
