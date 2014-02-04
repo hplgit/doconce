@@ -224,7 +224,7 @@ def latex_code(filestr, code_blocks, code_block_types,
 
 
     # Avoid Filename: as a new paragraph with indentation
-    filestr = filestr.replace('Filename: {', '\\noindent Filename: {')
+    filestr = filestr.replace(r'Filename: \code{', r'\noindent Filename: \code{')
 
     # Fix % and # in link texts (-> \%, \# - % is otherwise a comment...)
     pattern = r'\\href\{\{(.+?)\}\}\{(.+?)\}'
