@@ -251,6 +251,8 @@ def latex_code(filestr, code_blocks, code_block_types,
                 texttt_url = url.replace('_', '\\_').replace('#', '\\#').replace('%', '\\%').replace('&', '\\&')
                 # use \protect\footnote such that hyperlinks works within
                 # captions and other places (works well outside too with \protect)
+                # (doesn't seem necessary - footnotes in captions are a
+                # a bad thing since figures are floating)
                 return '\\href{{%s}}{%s}' % (url, text) + \
                        '\\footnote{\\texttt{%s}}' % texttt_url
             else: # no substitution, URL is in the link text
@@ -1581,7 +1583,7 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 % #elif LATEX_STYLE == "Springer_T2"
 % Style: T2 (Springer)
 \documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmono}
-\usepackage{t2}
+\usepackage{t2do}  % t2.sty with doconce modifications
 \special{papersize=193mm,260mm}
 % #elif LATEX_STYLE == "Springer_llcse"
 % Style: Lecture Notes in Computer Science (Springer)
