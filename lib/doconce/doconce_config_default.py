@@ -37,6 +37,7 @@ html_box_shadow = False
 #html_exercise_icon_width = 
 html_links_in_new_window = False
 #device = 
+#latex_bibstyle = 
 latex_double_hyphen = False
 #latex_preamble = 
 #html_admon = 

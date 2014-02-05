@@ -18,6 +18,23 @@ def underscore_in_code(m):
     text = text.replace('_', r'\_')
     return r'\code{%s}' % text
 
+def get_bib_index_pages():
+    bib_page = idx_page = '9999'
+    from doconce import dofile_basename
+    name = dofile_basename + '.aux'
+    if not os.path.isfile(name):
+        return bib_page, idx_page
+
+    aux = open(name, 'r')
+    lines = aux.readlines()
+    aux.close()
+    for line in lines:
+        if '{References}' in line or '{Bibliography}' in line:
+            bib_page = line.split('}{')[-2]
+        if '{Index}' in line:
+            idx_page = line.split('}{')[-2]
+    return bib_page, idx_page
+
 def latex_code(filestr, code_blocks, code_block_types,
                tex_blocks, format):
 
@@ -155,20 +172,20 @@ def latex_code(filestr, code_blocks, code_block_types,
 #\\addcontentsline{loe}{doconceexercise}{\g<1> \g<2>: \g<3>
 #% #endif
 #""", filestr)
-        filestr, n = re.subn(exercise_pattern,
-                         r"""subsection*{\g<1> \\thedoconceexercisecounter: \g<3>
+        exercise_headings = re.findall(exercise_pattern, filestr)
+        if exercise_headings:
+            filestr = re.sub(exercise_pattern,
+        r"""subsection*{\g<1> \\thedoconceexercisecounter: \g<3>
 % #if LIST_OF_EXERCISES == "toc"
 \\addcontentsline{toc}{subsection}{\\thedoconceexercisecounter: \g<3>
 % #elif LIST_OF_EXERCISES == "loe"
 \\addcontentsline{loe}{doconceexercise}{\g<1> \\thedoconceexercisecounter: \g<3>
 % #endif
 """, filestr)
-        if n > 0:
-            # We have exercises, make list of exercises
-            # Find suitable title
+            # Find suitable titles for list of exercises
             import sets
             types_of_exer = sets.Set()
-            for exer_tp, dummy, dummy in re.findall(exercise_pattern, filestr):
+            for exer_tp, dummy, dummy in exercise_headings:
                 types_of_exer.add(exer_tp)
             types_of_exer = list(types_of_exer)
             types_of_exer = ['%ss' % tp for tp in types_of_exer]  # plural
@@ -225,6 +242,14 @@ def latex_code(filestr, code_blocks, code_block_types,
 
     # Avoid Filename: as a new paragraph with indentation
     filestr = filestr.replace(r'Filename: \code{', r'\noindent Filename: \code{')
+    # Preface is normally an unnumbered section or chapter
+    # (add \markboth only if book style with chapters
+    if re.search(r'\\chapter\{', filestr):
+        markboth = r'\n\markboth{\g<2>}{\g<2>}'
+    else:
+        markboth = ''
+    filestr = re.sub(r'(section|chapter)\{(Preface.*)\}',
+                     r'\g<1>*{\g<2>}' + markboth, filestr)
 
     # Fix % and # in link texts (-> \%, \# - % is otherwise a comment...)
     pattern = r'\\href\{\{(.+?)\}\}\{(.+?)\}'
@@ -660,6 +685,18 @@ def latex_title(m):
 
     text = r"""
 
+%% #if LATEX_STYLE in ("Springer_T2", "Springer_lncse")
+\frontmatter
+\setcounter{page}{3}
+\pagestyle{headings}
+%% #endif
+
+%% #if LATEX_STYLE == "Springer_lncse"
+%% With hyperref loaded, \contentsline needs 3 args
+%%\contentsline{chapter}{Bibliography}{829}{chapter.Bib}
+%%\contentsline{chapter}{Index}{831}{chapter.Index}
+%% #endif
+
 %% ----------------- title -------------------------
 
 %% #if LATEX_HEADING == "traditional"
@@ -1002,11 +1039,12 @@ def latex_index_bib(filestr, index, citations, pubfile, pubdata):
         pattern = r'={5,9} .+? ={5,9}\s+^BIBFILE'
         filestr = re.sub(pattern, 'BIBFILE', filestr, flags=re.MULTILINE)
 
+        bibstyle = option('latex_bibstyle=', 'plain')
         bibtext = fix_latex_command_regex(r"""
 
-\bibliographystyle{plain}
+\bibliographystyle{%s}
 \bibliography{%s}
-""" % bibtexfile[:-4], application='replacement')
+""" % (bibstyle, bibtexfile[:-4]), application='replacement')
         if re.search(chapter_pattern, filestr, flags=re.MULTILINE):
             # Let a document with chapters have Bibliography on a new
             # page and in the toc
@@ -1471,27 +1509,37 @@ def define(FILENAME_EXTENSION,
     TABLE['latex'] = latex_table
     EXERCISE['latex'] = latex_exercise
     INDEX_BIB['latex'] = latex_index_bib
-    if option('skip_inline_comments') or not has_inline_comments:
-        TOC['latex'] = lambda s: r"""
-% #if LATEX_HEADING != "beamer"
+
+    bib_page, idx_page = get_bib_index_pages()
+    toc_part = r"""
+%% #if LATEX_HEADING != "beamer"
 \tableofcontents
 
-\vspace{1cm} % after toc'
-% #endif
+%% #if LATEX_STYLE == "Springer_lncse"
+\contentsline{chapter}{\refname}{%(bib_page)s}{chapter.Bib}
+\contentsline{chapter}{Index}{%(idx_page)s}{chapter.Index}
+%% #endif
 
-"""
-    else:
-        TOC['latex'] = lambda s: r"""
-% #if LATEX_HEADING != "beamer"
-\tableofcontents
+""" % vars()
+    if has_inline_comments and not option('skip_inline_comments'):
+        toc_part += r"""
 % #ifdef TODONOTES
 \listoftodos[List of inline comments]
 % #endif
+"""
+    toc_part += r"""
 
 \vspace{1cm} % after toc
 % #endif
 
+% #if LATEX_STYLE == "Springer_T2"
+\mymainmatter
+% #elif LATEX_STYLE == "Springer_lncse"
+\mainmatter
+% #endif
+
 """
+    TOC['latex'] = lambda s: toc_part
 
     preamble = ''
     preamble_complete = False
@@ -1582,9 +1630,13 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 \pagestyle{headings}
 % #elif LATEX_STYLE == "Springer_T2"
 % Style: T2 (Springer)
-\documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmono}
-\usepackage{t2do}  % t2.sty with doconce modifications
+% Use svmono.cls with doconce modifications for bibliography
+\documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmonodo}
+
+% Use t2.sty with doconce modifications
+\usepackage{t2do}
 \special{papersize=193mm,260mm}
+
 % #elif LATEX_STYLE == "Springer_llcse"
 % Style: Lecture Notes in Computer Science (Springer)
 \documentclass[oribib]{llncs}
