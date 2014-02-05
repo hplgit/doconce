@@ -5785,7 +5785,7 @@ def md2latex():
     generated from Markdown (via pandoc) compiles.
     """
     if len(sys.argv) < 2:
-        _usage_md2html()
+        _usage_md2latex()
         sys.exit(1)
 
     filename = sys.argv[1]

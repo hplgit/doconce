@@ -5,7 +5,7 @@ Testing admons
 ==============
 
 :Author: hpl
-:Date: Feb 3, 2014
+:Date: Feb 5, 2014
 
 Introduction
 ============
@@ -47,11 +47,11 @@ Here is a plain quote environment.
 
     Sayre's law states that
     "in any dispute the intensity of feeling is inversely
-    proportional to the value of the issues at stake."
-    By way of corollary, it adds:
-    "That is why academic politics are so bitter."
+    proportional to the value of the issues at stake." 
     
-    *Source*: `wikipedia <http://en.wikipedia.org/wiki/Sayre's_law>`_
+    | By way of corollary, it adds: 
+    | "That is why academic politics are so bitter." 
+    | *Source*: `wikipedia <http://en.wikipedia.org/wiki/Sayre's_law>`_
 
 
 
@@ -155,6 +155,21 @@ Test warning with title:
 .. admonition:: Title ending with math :math:`\sqrt{2}\approx 1.4`
 
    And here comes some text with bad news in larger font.
+   
+   Also some code:
+   
+   
+   .. code-block:: python
+   
+           def f(x):
+               return x
+   
+   And a complete program
+   
+   
+   .. code-block:: python
+   
+           print "Hello, World!"
 
 
 

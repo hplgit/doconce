@@ -1210,7 +1210,7 @@ def latex_%(_admon)s(text_block, format, title='%(_Admon)s', text_size='normal')
     latex_admon = option('latex_admon=', 'graybox1')
     if text_size == 'small':
         # When a font size changing command is used, incl a \par at the end
-        text_block = r'{\footnotesize ' + text_block + r' \par}'
+        text_block = r'{\footnotesize ' + text_block + '\n\\par}'
         # Add reduced initial vertical space?
         if latex_admon in ("yellowbox", "graybox3", "colors2"):
             text_block = r'\vspace{-2.5mm}\par\noindent' + '\n' + text_block
@@ -1220,7 +1220,7 @@ def latex_%(_admon)s(text_block, format, title='%(_Admon)s', text_size='normal')
         elif latex_admon in ("graybox1", "graybox2"):
             text_block = r'\vspace{0.5mm}\par\noindent' + '\n' + text_block
     elif text_size == 'large':
-        text_block = r'{\large ' + text_block + r' \par}'
+        text_block = r'{\large ' + text_block + '\n\\par}'
         title = r'{\large ' + title + '}'
 
     title_graybox1 = title.replace(',', '')  # title in graybox1 cannot handle ,
@@ -1646,6 +1646,8 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 10pt]{article}
 """ % vars()
 
+    from misc import copy_latex_packages
+    # if T2 style: copy_latex_packages(['svmonodo.cls', 't2do.sty'])
     INTRO['latex'] += r"""
 % #elif LATEX_STYLE == "Springer_lncse"
 % Style: Lecture Notes in Computational Science and Engineering (Springer)

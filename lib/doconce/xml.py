@@ -187,7 +187,6 @@ def html_author(authors_and_institutions, auth2index,
     text = '<authors>\n'
 
     def email(author):
-        address =
         return address if address else ''
 
     email = auth2email[author]
@@ -222,6 +221,8 @@ def html_author(authors_and_institutions, auth2index,
 
 
 def html_ref_and_label(section_label2title, format, filestr):
+    # NOTE: drop this html version, just replace ref{} by <ref ..
+    # can of course find the prefix and if it is start of line etc...
     # .... see section ref{my:sec} is replaced by
     # see the section "...section heading..."
     pattern = r'([Ss]ections?)\s+ref\{(.+?)\}'

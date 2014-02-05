@@ -802,6 +802,7 @@ change_encoding
 capitalize
 gwiki_figsubst
 md2html
+md2latex
 remove_inline_comments
 grab
 remove
