@@ -1,0 +1,124 @@
+# Note on the Springer T2 style: used the modifications in t2do.sty
+# and svmonodo.cls (come bundled with Doconce).
+
+TITLE:  A Test of Springer's T2 Book Style
+AUTHOR: Hans Petter Langtangen at Center for Biomedical Computing, Simula Research Laboratory & Department of Informatics, University of Oslo
+DATE: today
+
+<%
+src_path = 'http://some.where.net/doconce/test/software'
+%>
+
+
+========= Preface =========
+
+The aim of this book is to teach computer programming using examples
+from mathematics and the natural sciences.  We have chosen to use the
+Python programming language because it combines remarkable expressive
+power with very clean, simple, and compact syntax.  Python is easy to
+learn and very well suited for an introduction to computer
+programming. Python is also quite similar to MATLAB and a good
+language for doing mathematical computing.  It is easy to combine
+Python with compiled languages, like Fortran, C, and C++, which are
+widely used languages for scientific computations.  A seamless
+integration of Python with Java is offered by a special version of
+Python called Jython.
+
+The examples in this book integrate programming with applications to
+mathematics, physics, biology, and finance.  The reader is expected to
+have knowledge of basic one-variable calculus as taught in
+mathematics-intensive programs in high schools. It is certainly an
+advantage to take a university calculus course in parallel, preferably
+containing both classical and numerical aspects of calculus.  Although
+not strictly required, a background in high school physics makes many
+of the examples more meaningful.
+
+Many introductory programming books are quite compact and focus on
+listing functionality of a programming language. However, learning to
+program is learning how to *think* as a programmer.  This book
+has its main focus on the thinking process, or equivalently:
+programming as a problem solving technique. That is why most of the
+pages are devoted to case studies in programming, where we define a
+problem and explain how to create the corresponding program.  New
+constructions and programming styles (what we could call theory) is also usually
+introduced via examples.  Special attention is paid to verification of
+programs and to finding errors. These topics are very demanding for
+mathematical software, because the unavoidable numerical
+approximation errors are possibly mixed with programming mistakes.
+
+By studying the many examples in the
+book, I hope readers will learn how to think right and thereby
+write programs in a quicker and more reliable way. Remember, nobody can learn
+programming by just reading - one has to solve a large amount of
+exercises hands on.  The book is therefore full of exercises of
+various types: modifications of existing examples, completely new
+problems, or debugging of given programs.
+
+There is a web page
+associated with this book,
+"`http:/hplgit.github.com/scipro-primer`": "http:/hplgit.github.com/scipro-primer",
+which lists the software you need and explains briefly how to install it.
+This page also contains all
+the files associated with the program examples
+in this book.
+
+=== Python version 2 or 3? ===
+
+A common problem among Python programmers is to choose between version
+2 or 3, which at the time of this writing means choosing
+between version 2.7 and 3.3.
+The general recommendation is to go for version 3, but programs are
+then not compatible with version 2 and vice versa. There is still
+a problem that much useful mathematical software in Python
+has not yet been ported to version 3. Therefore, scientific computing
+with Python still goes mostly with version 2.
+A widely used strategy for software
+developers who want to write Python code that works with both versions,
+is to develop for v2.7, which is very close to what is accepted
+in version 3, and then
+use the ranslation tool *2to3* to automatically translate the code
+to version 3.
+
+When using v2.7, one should employ the newest syntax
+and modules that make the differences beween version 2 and 3 very small.
+This strategy is adopted in the present book. Only two
+differences between versions 2 and 3 are expected to be significant for
+the programs in the book:
+`a/b` implies float division in version 3 if `a` and `b`
+are integers,
+and `print 'Hello'` in version 2 must be turned into a function call
+`print('Hello')` in version 3. None of these differences should lead
+to any annoying problems when future readers study the book's v2.7
+examples, but program in version 3. Anyway, running 2to3 on the
+example files generates the corresponding version 3 code.
+
+=== Acknowledgments ===
+
+Several people have helped to make substantial improvements of the
+text. Here I list only the names with Norwgian characters to
+test the handling of those: Ståle Zerener Haugnæss,
+Tobias Vidarssønn Langhoff, and Håkon Møller.
+
+# #if FORMAT in ("latex", "pdflatex")
+\vspace{1cm}
+
+\noindent
+*Oslo, April 2012*  \hfill  *Hans Petter Langtangen*
+# #endif
+
+
+TOC: on
+
+
+========= Basic computing =========
+
+
+
+========= Computing with tull =========
+
+Bla.
+
+========= References =========
+
+BIBFILE: genref.bib
+
