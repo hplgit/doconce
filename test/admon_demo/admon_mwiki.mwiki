@@ -1,7 +1,7 @@
 #TITLE (actually governed by the filename): Testing admons
 
 By '''hpl'''
-==== Feb 3, 2014 ====
+==== Feb 5, 2014 ====
 
 == Introduction ==
 First some ordinary text to compare font sizes in admonitions
@@ -32,10 +32,9 @@ Here is a plain quote environment.
 {{quote box
 | quote = Sayre's law states that
 "in any dispute the intensity of feeling is inversely
-proportional to the value of the issues at stake."
-By way of corollary, it adds:
-"That is why academic politics are so bitter."
-
+proportional to the value of the issues at stake." <br />
+By way of corollary, it adds: <br />
+"That is why academic politics are so bitter." <br />
 ''Source'': [http://en.wikipedia.org/wiki/Sayre's_law wikipedia]
 | textstyle = font-size: 90%;
 }}
@@ -138,6 +137,18 @@ Test warning with title:
 | type = warning
 | textstyle = font-size: 130%;
 | text = '''Title ending with math <math>\sqrt{2}\approx 1.4</math>.''' And here comes some text with bad news in larger font.
+
+Also some code:
+
+<syntaxhighlight lang="python">
+def f(x):
+    return x
+</syntaxhighlight>
+And a complete program
+
+<syntaxhighlight lang="python">
+print "Hello, World!"
+</syntaxhighlight>
 }}
 
 

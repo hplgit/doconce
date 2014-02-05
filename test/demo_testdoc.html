@@ -85,7 +85,7 @@ Automatically generated HTML file from Doconce source
 <!-- tocinfo
 {'highest level': 1,
  'sections': [(' Section 1 ', 1, 'sec1', 'sec1'),
-              (' Subsection 1 ', 2, None, '___sec1'),
+              (' Subsection 1 ', 2, 'subsec1', 'subsec1'),
               (' Computer code ', 3, None, '___sec2'),
               (' Running OS commands ', 3, None, '___sec3'),
               (' Subsection 2: Testing figures ',
@@ -143,9 +143,9 @@ Automatically generated HTML file from Doconce source
                'exer:you',
                'exer:you'),
               (' References ', 1, None, '___sec28'),
-              (' Appendix: Just for testing; part I ', 1, None, '___sec29'),
+              (' Appendix: Just for testing; part I ', 1, 'app1', 'app1'),
               (' A subsection within an appendix ', 2, None, '___sec30'),
-              (' Appendix: Just for testing; part II ', 1, None, '___sec31'),
+              (' Appendix: Just for testing; part II ', 1, 'app2', 'app2'),
               (' Appendix: Testing identical titles ', 2, None, '___sec32'),
               (' Appendix: Testing identical titles ',
                2,
@@ -248,13 +248,13 @@ $$
 <center>[6] <b>Third Inst, Elsewhere</b></center>
 <center>[7] <b>Fourth Inst</b></center>
 <p>
-<center><h4>Feb 3, 2014</h4></center> <!-- date -->
+<center><h4>Feb 5, 2014</h4></center> <!-- date -->
 
 <h2>Table of contents</h2>
 
 <p>
 <a href="#sec1"> Section 1 </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec1"> Subsection 1 </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#subsec1"> Subsection 1 </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec2"> Computer code </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec3"> Running OS commands </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#subsec:ex"> Subsection 2: Testing figures </a><br>
@@ -282,9 +282,9 @@ $$
 &nbsp; &nbsp; &nbsp; <a href="#exer:some:formula"> Exercise 8: Make references to projects and problems </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#exer:you"> Project 9: References in a headings do not work well in html </a><br>
 <a href="#___sec28"> References </a><br>
-<a href="#___sec29"> Appendix: Just for testing; part I </a><br>
+<a href="#app1"> Appendix: Just for testing; part I </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec30"> A subsection within an appendix </a><br>
-<a href="#___sec31"> Appendix: Just for testing; part II </a><br>
+<a href="#app2"> Appendix: Just for testing; part II </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec32"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#test:title:id1"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#test:title:id2"> Appendix: Testing identical titles </a><br>
@@ -351,11 +351,19 @@ Here is a nested list:
 Here is a reference to Equation \eqref{my:eq1}.
 This equation appears in another part if this document is split.
 
-<h3>Subsection 1  <a name="___sec1"></a></h3>
+<h3>Subsection 1 <a name="subsec1"></a></h3>
 
 <p>
-More text, with a reference back to the section <a href="#sec1">Section 1</a> and further
-to the section <a href="#subsubsec:ex">URLs</a>. 
+<!-- Refer to section/appendix etc. at the beginning of the line -->
+<!-- and other special fix situations for HTML. -->
+
+<p>
+More text, with a reference back to
+The section <a href="#sec1">Section 1</a> and <a href="#subsec1">Subsection 1</a>, and further to the sections <a href="#subsec1">Subsection 1</a> and <a href="#subsubsec:ex">URLs</a>, which
+encourages you to do the tasks in <a href="#demo:ex:1">Problem 2: Flip a Coin</a> and <a href="#exer:some:formula">Exercise 8: Make references to projects and problems</a>.
+The appendices <a href="#app1">Appendix: Just for testing; part I</a> and <a href="#app2">Appendix: Just for testing; part II</a> are also nice elements.
+
+<p>
 <!-- sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console -->
 
 <h4>Computer code  <a name="___sec2"></a></h4>
@@ -876,6 +884,9 @@ quotes, with numbers like 3.14 and
 newline/comma and hyphen (as in double-quote)";
 written in the standard LaTeX-style that gives correct
 LaTeX formatting and ordinary double quotes for all non-LaTeX formats.
+Here is another sentence that "caused" a bug in the past
+because double backtick quotes could imply verbatim text up to
+a verbatim word starting with period, like <code>.txt</code>.
 
 <h3>Bibliography test  <a name="___sec9"></a></h3>
 
@@ -1504,6 +1515,10 @@ And a test that the code <code>lambda x: x+2</code> is correctly placed here:
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">lambda x: x+2
 </pre></div>
 </td></tr></table><p>
+<!-- Have some comments at the end of the exercise to see that -->
+<!-- the Filename: ... is written correctly. -->
+
+<p>
 <!-- --- end exercise --- -->
 
 <p>
@@ -1686,7 +1701,7 @@ Filename: <code>selc_composed.pdf</code>.
 
 <!-- end bibliography -->
 
-<h2>Appendix: Just for testing; part I  <a name="___sec29"></a></h2>
+<h2>Appendix: Just for testing; part I <a name="app1"></a></h2>
 
 <p>
 This is the first appendix.
@@ -1696,7 +1711,7 @@ This is the first appendix.
 <p>
 Some text.
 
-<h2>Appendix: Just for testing; part II  <a name="___sec31"></a></h2>
+<h2>Appendix: Just for testing; part II <a name="app2"></a></h2>
 
 <p>
 This is more stuff for an appendix.

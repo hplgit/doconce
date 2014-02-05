@@ -1,4 +1,5 @@
 #!/bin/bash -x
+set -x
 
 function system {
   "$@"
@@ -242,6 +243,11 @@ fi
 rm -rf latex_figs
 done
 
+# Test different code envirs inside admons
+doconce format pdflatex admon --latex_admon=graybox1 --latex_admon_color=1,1,1 --latex_admon_envir_map=2
+doconce ptex2tex admon pycod2=minted pypro2=minted pycod=Verbatim pypro=Verbatim
+cp admon.tex admon_double_envirs.tex
+
 system doconce format html admon --html_admon=lyx --html_style=blueish2
 cp admon.html admon_lyx.html
 
@@ -321,6 +327,9 @@ cp $name.pdf movie_demo
 
 system doconce format plain movies
 
+cd Springer_T2
+bash -x make.sh
+cd ..
 
 # Status movies: everything works in html and sphinx, only href works
 # in latex, media9 is unreliable

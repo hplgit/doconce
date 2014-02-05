@@ -82,7 +82,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Author:</th><td class="field-body">hpl</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Feb 3, 2014</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Feb 5, 2014</td>
 </tr>
 </tbody>
 </table>
@@ -112,10 +112,12 @@ x=1.1 y=0.3 z=0.1
 <blockquote>
 <div><p>Sayre&#8217;s law states that
 &#8220;in any dispute the intensity of feeling is inversely
-proportional to the value of the issues at stake.&#8221;
-By way of corollary, it adds:
-&#8220;That is why academic politics are so bitter.&#8221;</p>
-<p><em>Source</em>: <a class="reference external" href="http://en.wikipedia.org/wiki/Sayre's_law">wikipedia</a></p>
+proportional to the value of the issues at stake.&#8221;</p>
+<div class="line-block">
+<div class="line">By way of corollary, it adds:</div>
+<div class="line">&#8220;That is why academic politics are so bitter.&#8221;</div>
+<div class="line"><em>Source</em>: <a class="reference external" href="http://en.wikipedia.org/wiki/Sayre's_law">wikipedia</a></div>
+</div>
 </div></blockquote>
 <p>Does quotes with title also work? No...cannot work in LaTeX and HTML
 and then it does not make sense to support it.</p>
@@ -176,7 +178,16 @@ And more and more text.</p>
 <p>Test warning with title:</p>
 <div class="admonition-title-ending-with-math-math-sqrt-2-approx-1-4 admonition">
 <p class="first admonition-title">Title ending with math <span class="math">\(\sqrt{2}\approx 1.4\)</span></p>
-<p class="last">And here comes some text with bad news in larger font.</p>
+<p>And here comes some text with bad news in larger font.</p>
+<p>Also some code:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span>
+</pre></div>
+</div>
+<p>And a complete program</p>
+<div class="last highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="s">&quot;Hello, World!&quot;</span>
+</pre></div>
+</div>
 </div>
 <p>Test warning with large title with math:
 (we have no impact on the font size in the title in Sphinx)</p>
