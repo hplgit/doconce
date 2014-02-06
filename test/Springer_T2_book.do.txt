@@ -110,13 +110,560 @@ Tobias Vidarssønn Langhoff, and Håkon Møller.
 TOC: on
 
 
-========= Basic computing =========
+========= Basic array computing and plotting =========
+
+This ${CHAPTER} gives an introduction to arrays: how they are created
+and what they can be used for.  Array computing usually ends up with a
+lot of numbers. It may be very hard to understand what these numbers
+mean by just looking at them. Since the human is a visual animal, a
+good way to understand numbers is to visualize them. In this
+${CHAPTER} we concentrate on visualizing curves that reflect functions
+of one variable; i.e., curves of the form $y=f(x)$.  A synonym for
+curve is graph, and the image of curves on the screen is often called
+a plot.  We will use arrays to store the information about points
+along the curve. In a nutshell, array computing demands visualization
+and visualization demands arrays.
+
+All program examples in this ${CHAPTER} can be found as files in the
+folder "`src/plot`": "${src_path}/plot".
+
+======= Arrays in Python programs =======
+
+This section introduces array programming in Python, but first we
+create some lists and show how arrays differ from lists.
+
+===== Using lists for collecting function data =====
+label{sec:plot:listdata}
+
+Suppose we have a function $f(x)$ and want to evaluate this function
+at a number of $x$ points $x_0,x_1,\ldots,x_{n-1}$.  We could collect
+the $n$ pairs $(x_i,f(x_i))$ in a list, or we could collect all the
+$x_i$ values, for $i=0,\ldots,n-1$, in a list and all the associated
+$f(x_i)$ values in another list.  The following interactive session
+demonstrates how to create these three types of lists:
+
+!bc py
+>>> def f(x):
+...     return x**3       # sample function
+...
+>>> n = 5                 # no of points along the x axis
+>>> dx = 1.0/(n-1)        # spacing between x points in [0,1]
+>>> xlist = [i*dx for i in range(n)]
+>>> ylist = [f(x) for x in xlist]
+>>> pairs = [[x, y] for x, y in zip(xlist, ylist)]
+!ec
+Here we have used list comprehensions for achieving compact code. Make
+sure that you understand what is going on in these list comprehensions
+(if not, try to write the same code using standard `for` loops and
+appending new list elements in each pass of the loops).
+
+idx{heterogeneous lists}
+
+The list elements consist of objects of the same type: any element in
+`pairs` is a list of two `float` objects, while any element in `xlist`
+or `ylist` is a `float`. Lists are more flexible than that, because an
+element can be an object of any type, e.g.,
+
+!bc pycod
+mylist = [2, 6.0, 'tmp.ps', [0,1]]
+!ec
+Here `mylist` holds an `int`, a `float`, a string, and a list. This
+combination of diverse object types makes up what is known as
+*heterogeneous* lists.  We can also easily remove elements from a list
+or add new elements anywhere in the list.  This flexibility of lists
+is in general convenient to have as a programmer, but in cases where
+the elements are of the same type and the number of elements is fixed,
+arrays can be used instead. The benefits of arrays are faster
+computations, less memory demands, and extensive support for
+mathematical operations on the data.  Because of greater efficiency
+and mathematical convenience, arrays will be used to a large extent in
+this ${BOOK}.  The great use of arrays is also prominent in other
+programming environments such as MATLAB, Octave, and R, for instance.
+Lists will be our choice instead of arrays when we need the
+flexibility of adding or removing elements or when the elements may be
+of different object types.
+
+===== Basics of numerical Python arrays =====
+label{sec:plot:array:basics}
+
+idx{Numerical Python} idx{NumPy} idx{`numpy`}
+idx{array (datatype)} idx{array computing}
+idx{vectorization}
+
+An *array* object can be viewed as a variant of a list, but with the
+following assumptions and features:
+
+  * All elements must be of the same type, preferably integer, real, or complex numbers, for efficient numerical computing and storage.
+  * The number of elements must be known when the array is created.
+  * Arrays are not part of standard Python - one needs an additional package called *Numerical Python*, often abbreviated as NumPy. The Python name of the package, to be used in `import` statements, is `numpy`.
+  * With `numpy`, a wide range of mathematical operations can be done directly on complete arrays, thereby removing the need for loops over array elements. This is commonly called *vectorization* %or *array computing* and may cause a dramatic speed-up of Python programs. Vectorization makes use of the vector computing concepts from Section ref{sec:plot:arraycomp}.
+  * Arrays with one index are often called vectors. Arrays with two indices are used as an efficient data structure for tables, instead of lists of lists. Arrays can also have three or more indices.
+
+We have two remarks to the above list.  First, there is actually an
+object type called `array` in standard Python, but this data type is
+not so efficient for mathematical computations, and we will not use it
+in this ${BOOK}.  Second, the number of elements in an array *can* be
+changed, but at a substantial computational cost.
+
+The following text lists some important functionality of NumPy arrays.
+A more comprehensive treatment is found in the excellent *NumPy
+Tutorial*, *NumPy User Guide*, *NumPy Reference*, *Guide to NumPy*,
+and *NumPy for MATLAB Users*, all accessible at "scipy.org":
+"http://scipy.org".
+
+
+idx{`zeros` (from `numpy`)} idx{`np.zeros` function}
+idx{`array` (from `numpy`)} idx{`np.array` function}
+idx{`np` prefix (`numpy`)}
+idx{`zeros_like` (from `numpy`)}idx{`np.zeros_like` function}
+
+The standard import statement for Numerical Python reads
+
+!bc pycod
+import numpy as np
+!ec
+To convert a list `r` to an array,
+we use the `array` function
+from `numpy`:
+
+!bc pycod
+a = np.array(r)
+!ec
+To create a new array of length `n`, filled with zeros, we write
+
+!bc pycod
+a = np.zeros(n)
+!ec
+The array elements are of a type that corresponds to Python's
+`float` type. A second argument to `np.zeros` can be used to
+specify other element types, e.g., `int`.
+A similar function,
+
+!bc pycod
+a = np.zeros_like(c)
+!ec
+generates an array of zeros where the length is that of the array `c`
+and the element type is the same as those in `c`.  Arrays with more
+than one index are treated in Section ref{sec:plot:2Darrays}.
+
+idx{`linspace` (from `numpy`)}idx{`np.linspace` function}
+
+Often one wants an array to have $n$ elements with uniformly
+distributed values in an interval $[p,q]$. The `numpy` function
+`linspace` creates such arrays:
+
+!bc pycod
+a = np.linspace(p, q, n)
+!ec
+
+idx{array slicing} idx{subarrays}
+
+Array elements are accessed by square brackets as for lists:
+`a[i]`. Slices also work as for lists, for example, `a[1:-1]` picks
+out all elements except the first and the last, but contrary to lists,
+`a[1:-1]` is not a copy of the data in `a`. Hence,
+
+!bc pycod
+b = a[1:-1]
+b[2] = 0.1
+!ec
+will also change `a[3]` to `0.1`.  A slice `a[i:j:s]` picks out the
+elements starting with index `i` and stepping `s` indices at the time
+up to, but not including, `j`. Omitting `i` implies `i=0`, and
+omitting `j` implies `j=n` if `n` is the number of elements in the
+array.  For example, `a[0:-1:2]` picks out every two elements up to,
+but not including, the last element, while `a[::4]` picks out every
+four elements in the whole array.
+
+======= Curve plotting =======
+label{sec:plot:curveplots}
+
+idx{curve plotting} idx{plotting} idx{making graphs}
+
+Visualizing a function $f(x)$ is done by drawing the curve $y=f(x)$ in
+an $xy$ coordinate system. When we use a computer to do this task, we
+say that we *plot* the curve.  Technically, we plot a curve by drawing
+straight lines between $n$ points on the curve. The more points we
+use, the smoother the curve appears.
+
+Suppose we want to plot the function $f(x)$ for $a\leq x\leq b$.
+First we pick out $n$ $x$ coordinates in the interval $[a,b]$, say we
+name these $x_0,x_1,\ldots,x_{n-1}$. Then we evaluate $y_i=f(x_i)$ for
+$i=0,1,\ldots,{n-1}$. The points $(x_i,y_i)$, $i=0,1,\ldots,{n-1}$,
+now lie on the curve $y=f(x)$. Normally, we choose the $x_i$
+coordinates to be equally spaced, i.e.,
+
+!bt
+\begin{equation*} x_i = a + ih,\quad h = {b-a\over n-1}\tp\end{equation*}
+!et
+If we store the $x_i$ and $y_i$ values in two arrays `x` and `y`, we
+can plot the curve by the command like `plot(x,y)`.
+
+Sometimes the names of the independent variable and the function
+differ from $x$ and $f$, but the plotting procedure is the same. Our
+first example of curve plotting demonstrates this fact by involving a
+function of $t$.
+
+===== Matplotlib; pylab =====
+label{sec:plot:pylab}
+
+The standard package for curve plotting in Python is Matplotlib.
+First we exemplify Matplotlib using `matplotlib.pylab`, which enables
+a syntax very close to that of MATLAB. This is a great advantage since
+many readers may have experience with plotting in MATLAB, or they will
+certainly meet MATLAB sometime in their scientific work.
+
+=== A basic plot ===
+
+Let us plot the curve $y = t^2\exp(-t^2)$ for $t$ values between 0 and
+3.  First we generate equally spaced coordinates for $t$, say 51
+values (50 intervals). Then we compute the corresponding $y$ values at
+these points, before we call the `plot(t,y)` command to make the curve
+plot.  Here is the complete program:
+
+!bc pypro
+from matplotlib.pylab import *
+
+def f(t):
+    return t**2*exp(-t**2)
+
+t = linspace(0, 3, 31)    # 31 points between 0 and 3
+y = zeros(len(t))         # allocate y with float elements
+for i in xrange(len(t)):
+    y[i] = f(t[i])
+
+plot(t, y)
+show()
+!ec
+The `from matplotlib.pylab import *` performs a `from numpy import *`
+import as well as an import of all Matplotlib commands that resemble
+MATLAB-style syntax.  In this program we pre-allocate the `y` array
+and fill it with values, element by element, in a Python
+loop. Alternatively, we may operate on the whole `t` array at once,
+which yields faster and shorter code:
+
+!bc pycod
+y = f(t)
+!ec
+
+To include the plot in electronic documents, we need a hardcopy of the
+figure in PDF, PNG, or another image format.  The `savefig` function
+saves the plot to files in various image formats:
+
+!bc pycod
+savefig('tmp1.pdf') # produce PDF
+savefig('tmp1.png') # produce PNG
+!ec
+The filename extension determines the format: `.pdf` for PDF and
+`.png` for PNG.  Figure ref{fig:impact} displays the resulting
+plot.
+
+FIGURE:[../doc/src/manual/fig/wave1D, width=200] Visualization of a wave. label{fig:impact}
+
+=== Importing SciTools and Easyviz ===
+
+A standard import of SciTools is
+
+!bc pycod
+from scitools.std import *
+!ec
+The advantage of this statement is that it, with a minimum of typing,
+imports a lot of
+useful modules for
+numerical Python programming: Easyviz, all of `numpy`
+(`from numpy import *`), all of `scipy` (`from scipy import *`)
+if available, all of `scitools.numpyutils` (some convenience functions
+extending `numpy`),
+`numpy.lib.scimath`
+(see ref[Section ref{formulas:unified:complex:real}][ in cite{Langtangen_TCSE6_formulas}][the document "Computing with formulas": "http://tcse6.on.net/formulas" cite{Langtangen_TCSE6_formulas}]),
+the `StringFunction` tool
+(see ref[Section ref{sec:input:StringFunction}][ in cite{Langtangen_TCSE6_input}][the document "User input and error handling": "http://tcse6.on.net/input" cite{Langtangen_TCSE6_input}]),
+plus commonly applied modules such as `sys`, `os`, and `math`.
+The imported standard mathematical functions (`sqrt`, `sin`,
+`asin`, `exp`, etc.) work with arrays and deal transparently with
+real and complex input/output (as the corresponding MATLAB functions).
+
+
+========= Storing results in data files =========
+
+======= Writing data to file =======
+label{sec:files:writing}
+
+Writing data to file is easy.
+There is basically one function to pay attention to: `outfile.write(s)`,
+which writes a string `s` to
+a file handled by the file object `outfile`. Unlike `print`,
+`outfile.write(s)`
+does not append a newline character to the written string.
+It will therefore
+often be necessary to add a newline character,
+
+!bc pycod
+outfile.write(s + '\n')
+!ec
+if the string `s` is meant to appear on a single line in the file
+and `s` does not already contain a trailing newline character.
+File writing is then a matter of constructing strings containing the
+text we want to have in the file and for each such string call
+`outfile.write`.
+
+Writing to a file demands
+the file object `f`
+to be opened for writing:
+
+!bc pycod
+# write to new file, or overwrite file:
+outfile = open(filename, 'w')
+
+# append to the end of an existing file:
+outfile = open(filename, 'a')
+!ec
+
+===== Example: Writing a table to file =====
+
+=== Problem ===
+
+As a worked example of file writing,
+we shall write out a nested list with tabular data to file.
+A sample list may take look as
+
+!bc ccq
+[[ 0.75,        0.29619813, -0.29619813, -0.75      ],
+ [ 0.29619813,  0.11697778, -0.11697778, -0.29619813],
+ [-0.29619813, -0.11697778,  0.11697778,  0.29619813],
+ [-0.75,       -0.29619813,  0.29619813,  0.75      ]]
+!ec
+
+=== Solution ===
+
+We iterate through the rows (first index) in the list, and for each row,
+we iterate through the column values (second index)
+and write each value to the file.
+At the end of each row, we must insert a newline character in the file to get
+a linebreak. The code resides in the file "`write1.py`": "${src_path}/input/write1.py".
+
+The resulting data file becomes
+
+!bc dat
+    0.75000000    0.29619813   -0.29619813   -0.75000000
+    0.29619813    0.11697778   -0.11697778   -0.29619813
+   -0.29619813   -0.11697778    0.11697778    0.29619813
+   -0.75000000   -0.29619813    0.29619813    0.75000000
+!ec
+
+An extension of this program consists in adding column and row headings:
+
+!bc dat
+           column  1     column  2     column  3     column  4
+row  1    0.75000000    0.29619813   -0.29619813   -0.75000000
+row  2    0.29619813    0.11697778   -0.11697778   -0.29619813
+row  3   -0.29619813   -0.11697778    0.11697778    0.29619813
+row  4   -0.75000000   -0.29619813    0.29619813    0.75000000
+!ec
+To obtain this end result, we need to the add some statements to
+the program `write1.py`. For the column headings we need
+to know the number of columns, i.e., the length of the rows,
+and loop from 1 to this length:
+
+!bc pycod
+ncolumns = len(data[0])
+outfile.write('          ')
+for i in range(1, ncolumns+1):
+    outfile.write('%10s    ' % ('column %2d' % i))
+outfile.write('\n')
+!ec
+Note the use of a nested printf construction: The text we want to
+insert is itself a printf string. We could also have written the
+text as `'column  ' + str(i)`, but then the length of the
+resulting string would depend on the number of digits in `i`.
+It is recommended to always use printf constructions for
+a tabular output format, because this gives automatic padding of
+blanks so that the width of the output strings remain the same.
+As always, the tuning of the widths is done in a trial-and-error
+process.
+
+To add the row headings, we need a counter over the row numbers:
+
+!bc pycod
+row_counter = 1
+for row in data:
+    outfile.write('row %2d' % row_counter)
+    for column in row:
+        outfile.write('%14.8f' % column)
+    outfile.write('\n')
+    row_counter += 1
+!ec
+The complete code is found in the file "`write2.py`": "${src_path}/input/write2.py".
+We could, alternatively, iterate over the indices in the list:
+
+!bc pycod
+for i in range(len(data)):
+    outfile.write('row %2d' % (i+1))
+    for j in range(len(data[i])):
+        outfile.write('%14.8f' % data[i][j])
+    outfile.write('\n')
+!ec
 
 
 
-========= Computing with tull =========
 
-Bla.
+===== Standard input and output as file objects =====
+
+idx{standard input} idx{standard output}
+
+idx{`sys.stdin`}idx{`sys.stdout`}
+
+Reading user input from the keyboard applies the function
+# #ifdef PRIMER_BOOK
+`raw_input` as explained in Section ref{sec:input:rawinput}.
+# #else
+`raw_input`.
+# #endif
+The keyboard is a medium that the computer in fact
+treats as a file, referred to
+as *standard input*.
+
+The `print` command prints text in the terminal window. This medium
+is also viewed as a file from the computer's point of view and called
+*standard output*. All general-purpose programming languages
+allow reading from standard input and
+writing to standard output. This reading and writing can be done with
+two types of tools, either file-like objects or special tools like
+`raw_input`
+and `print` in Python.
+We will here describe the file-line objects:
+`sys.stdin` for standard input
+and `sys.stdout` for standard output. These objects
+behave as file objects, except that they do not need to be opened or
+closed. The statement
+
+!bc pycod
+s = raw_input('Give s:')
+!ec
+is equivalent to
+
+!bc pycod
+print 'Give s: ',
+s = sys.stdin.readline()
+!ec
+Recall that the trailing comma in the `print` statement avoids the
+newline that `print` by default adds to the output string.
+Similarly,
+
+!bc pycod
+s = eval(raw_input('Give s:'))
+!ec
+is equivalent to
+
+!bc pycod
+print 'Give s: ',
+s = eval(sys.stdin.readline())
+!ec
+For output to the terminal window, the statement
+
+!bc pycod
+print s
+!ec
+is equivalent to
+
+!bc pycod
+sys.stdout.write(s + '\n')
+!ec
+
+Why it is handy to have access to standard input and output
+as file objects can be illustrated by an example. Suppose you have a
+function that reads data from a file object `infile`
+and writes data to a file object `outfile`.
+A sample function may take the form
+
+!bc pycod
+def x2f(infile, outfile, f):
+    for line in infile:
+        x = float(line)
+        y = f(x)
+        outfile.write('%g\n' % y)
+!ec
+This function works with all types of files, including
+web pages as `infile` (see Section ref{sec:files:webtxt}).
+With `sys.stdin` as `infile` and/or `sys.stdout`
+as `outfile`, the `x2f` function also works with standard input
+and/or standard output. Without `sys.stdin` and `sys.stdout`,
+we would need different code, employing `raw_input`
+and `print`,
+to deal with standard input and output. Now we can write a single
+function that deals with all file media in a unified way.
+
+idx{standard error}
+idx{`sys.stderr`}
+
+There is also something called *standard error*.
+Usually this is the terminal window, just as standard output, but
+programs can distinguish between writing ordinary output to standard
+output and error messages to standard error, and these output media
+can be redirected to, e.g., files such that one can separate
+error messages from ordinary output.
+In Python, standard error is the file-like object `sys.stderr`.
+A typical application of `sys.stderr` is to report errors:
+
+!bc pycod
+if x < 0:
+    sys.stderr.write('Illegal value of x'); sys.exit(1)
+!ec
+This message to `sys.stderr` is an alternative to
+`print` or raising an exception.
+
+=== Redirecting standard input, output, and error ===
+
+Standard output from a program `prog`
+can be redirected to a file
+`output` instead of the screen, by
+using the greater than sign:
+
+!bc sys
+Terminal> prog > output
+!ec
+Here, `prog` can be any
+program, including a Python program run as `python myprog.py`.
+Similarly, output to the medium called *standard error*
+can be redirected by
+
+!bc sys
+Terminal> prog &> output
+!ec
+For example, error messages are normally written to standard error, which
+is exemplified in this little terminal session on a Unix machine:
+
+!bc sys
+Terminal> ls bla-bla1 bla-bla2
+ls: cannot access bla-bla1: No such file or directory
+ls: cannot access bla-bla2: No such file or directory
+Terminal> ls bla-bla1 bla-bla2 &> errors
+Terminal> cat errors  # print the file errors
+ls: cannot access bla-bla1: No such file or directory
+ls: cannot access bla-bla2: No such file or directory
+!ec
+When the program reads from standard input (the keyboard),
+we can equally well redirect
+standard input to a file, say with name `raw_input`, such that
+the program reads from this file rather than from the keyboard:
+
+!bc sys
+Terminal> prog < input
+!ec
+Combinations are also possible:
+
+!bc sys
+Terminal> prog < input > output
+!ec
+
+=== Note ===
+ The redirection of standard output, input, and error
+does not work for Python programs executed with the `run`
+command inside IPython, only when executed directly
+in the operating system in a terminal window, or with the same
+command prefixed with an exclamation mark in IPython.
+
+
 
 ========= References =========
 
