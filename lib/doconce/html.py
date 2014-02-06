@@ -950,16 +950,25 @@ def html_ref_and_label(section_label2title, format, filestr):
     pattern = r'[Cc]hapter(s?)\s+ref\{'
     replacement = r'the chapter\g<1> ref{'
     filestr = re.sub(pattern, replacement, filestr)
-    # Need special adjustment to handle start of sentence (capital) or not.
-    pattern = r'([.?!])\s+the (sections?|captions?)\s+ref'
-    replacement = r'\g<1> The \g<2> ref'
+    pattern = r'[Aa]ppendix\s+ref\{'
+    replacement = r'the appendix ref{'
     filestr = re.sub(pattern, replacement, filestr)
+    pattern = r'[Aa]ppendices\s+ref\{'
+    replacement = r'the appendices ref{'
+    filestr = re.sub(pattern, replacement, filestr)
+    # Need special adjustment to handle start of sentence (capital) or not.
+    pattern = r'([.?!]\s+|^)the (sections?|chapters?|appendix|appendices)\s+ref'
+    replacement = r'\g<1>The \g<2> ref'
+    filestr = re.sub(pattern, replacement, filestr, flags=re.MULTILINE)
 
-    # Remove Exercise, Project, Problem in references since those words
+    # Remove "the" Exercise, Project, Problem in references since those words
     # are used in the title of the section too
     pattern = r'(the\s*)?([Ee]xercises?|[Pp]rojects?|[Pp]roblems?)\s+ref\{'
     replacement = r'ref{'
     filestr = re.sub(pattern, replacement, filestr)
+
+    # Fix side effect from the above that one gets constructions 'the The'
+    filestr = re.sub(r'the\s+The', 'the', filestr)
 
     # extract the labels in the text (filestr is now without
     # mathematics and those labels)
