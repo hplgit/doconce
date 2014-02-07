@@ -242,6 +242,11 @@ fi
 rm -rf latex_figs
 done
 
+# Test different code envirs inside admons
+system doconce format pdflatex admon --latex_admon=graybox1 --latex_admon_color=1,1,1 --latex_admon_envir_map=2
+system doconce ptex2tex admon pycod2=minted pypro2=minted pycod=Verbatim pypro=Verbatim
+cp admon.tex admon_double_envirs.tex
+
 system doconce format html admon --html_admon=lyx --html_style=blueish2
 cp admon.html admon_lyx.html
 
