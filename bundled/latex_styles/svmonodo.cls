@@ -1,4 +1,7 @@
 % Modified by hpl to have bibliography with chapter heading
+% and normal latex \paragraph{}.
+% The quote environment has small font - might be desirable to
+% change to large font.
 
 % SVMONO DOCUMENT CLASS -- version 5.4 (25-Jun-07)
 % Springer Verlag global LaTeX2e support for monographs
@@ -576,11 +579,12 @@ passing it to article class \MessageBreak
                        {12\p@}% \p@lus 4\p@ \@minus 4\p@}%
                        {\normalfont\normalsize\subsubsecstyle
                         \rightskip=\z@ \@plus 8em\pretolerance=10000 }}
-\renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
-                       {-24\p@}% \p@lus -4\p@ \@minus -4\p@}%
-                       {12\p@}% \p@lus 4\p@ \@minus 4\p@}%
-                       {\normalfont\normalsize\upshape
-                        \rightskip=\z@ \@plus 8em\pretolerance=10000 }}
+% hpl modification: restore normal paragraph
+%\renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
+%                       {-24\p@}% \p@lus -4\p@ \@minus -4\p@}%
+%                       {12\p@}% \p@lus 4\p@ \@minus 4\p@}%
+%                       {\normalfont\normalsize\upshape
+%                        \rightskip=\z@ \@plus 8em\pretolerance=10000 }}
 
 \renewcommand\subparagraph{\@startsection{paragraph}{4}{\z@}%
                        {-18\p@}% \p@lus -4\p@ \@minus -4\p@}%
@@ -725,6 +729,7 @@ passing it to article class \MessageBreak
                 \item\relax\hskip-\listparindent}
                {\endlist}
 %
+% hpl: could potentially comment out to get normal font
 \renewenvironment{quote}
                {\par\addvspace{6pt}
                 \list{}{\leftmargin=12\p@%

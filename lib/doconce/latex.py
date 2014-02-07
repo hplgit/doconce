@@ -134,8 +134,13 @@ def latex_code(filestr, code_blocks, code_block_types,
     # Check for misspellings
     envirs = 'pro pypro cypro cpppro cpro fpro plpro shpro mpro cod pycod cycod cppcod ccod fcod plcod shcod mcod htmlcod htmlpro rstcod rstpro xmlcod xmlpro cppans pyans fans bashans swigans uflans sni dat dsni csv txt sys slin ipy rpy plin ver warn rule summ ccq cc ccl py pyoptpro pyscpro'.split()
     for envir in code_block_types:
-        if envir and envir not in envirs:
-            print 'Warning: found "!bc %s", but %s is not a standard predefined ptex2tex environment' % (envir, envir)
+        if envir:
+            if envir[-1].isdigit():
+                # strip off digit that can occur inside admons if the
+                # option --latex_admon_envir_map=X is used
+                envir = envir[:-1]
+            if envir not in envirs:
+                print 'Warning: found "!bc %s", but %s is not a standard predefined ptex2tex environment' % (envir, envir)
 
     # --- Final fixes for latex format ---
 
@@ -1184,6 +1189,24 @@ def latex_%(_admon)s(text_block, format, title='%(_Admon)s', text_size='normal')
     if title == 'Block':  # block admon has no default title
         title = ''
 
+    code_envir_transform = option('latex_admon_envir_map=', None)
+    if code_envir_transform:
+        envirs = re.findall(r'^\\b([A-Za-z0-9_]+)$', text_block, flags=re.MULTILINE)
+        import sets
+        envirs = list(sets.Set(envirs))  # remove multiple items
+        if code_envir_transform.isdigit():
+            _envir_mapping = {}
+            # Just append the digit(s)
+            for envir in envirs:
+                _envir_mapping[envir] = envir + code_envir_transform
+        else:
+            # Individual mapping for each possible envir
+            _envir_mapping = dict([pair.split('-') for pair in code_envir_transform.split(',')])
+        for envir in envirs:
+            text_block = re.sub(r'\\(b|e)%%s' %% envir,
+            r'\\\g<1>%%s' %% _envir_mapping.get(envir, envir), text_block)
+
+
     latex_admon = option('latex_admon=', 'graybox1')
     if text_size == 'small':
         # When a font size changing command is used, incl a \par at the end
@@ -1676,7 +1699,7 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
     if '!bbox' in filestr:
         INTRO['latex'] += r"""
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
-\setlength{\fboxsep}{8pt}
+%\setlength{\fboxsep}{8pt}
 """
     INTRO['latex'] += r"""
 \usepackage{ptex2tex}

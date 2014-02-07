@@ -89,6 +89,12 @@ inserted to the right in exercises - "default" and "none" are allowed
      "Type of admonition in LaTeX: colors1-2, graybox1-3, yellowbox, paragraph."),
     ('--latex_admon_color=',
      "Admonition color in LaTeX, rgb tuple or saturated color a la gray!5."),
+    ('--latex_admon_envir_map=',
+     """Mapping of code envirs to new envir names inside admons (e.g., to get
+different code typesetting inside admons. If a number, say 2, an envir
+like pycod gets the number appended: pycod2. Otherwise it must be a
+mapping for each envir: pycod-pycod_yellow,fpro-fpro2 (from-to,from-to,...
+syntax."""),
     ('--latex_exercise_numbering=',
      'absolute: exercises numbered as 1, 2, ... chapter: exercises numbered as 1.1, 1.2, ... , 3.1, 3.2, etc. with a chapter prefix.'),
     ('--css=',
@@ -1137,6 +1143,7 @@ def ptex2tex():
         if arg.startswith('-D') or arg.startswith('-U'):
             preprocess_options.append(arg)
         elif '=' in arg:
+            # envir
             items = arg.split('=')
             envir, value = items[0], '='.join(items[1:])
             if '@' in value:
@@ -1160,14 +1167,14 @@ def ptex2tex():
                                      xml='xml', rb='ruby')
                     if envir == 'envir':
                         for lang in languages:
-                            begin = '\\' + 'begin{minted}[fontsize=\\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{' \
-                                    + languages[lang] + '}'
+                            begin = '\\' + 'begin{minted}[fontsize=\\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{' + languages[lang] + '}'
                             end = '\\' + 'end{minted}'
                             envir_user_spec.append((lang+'cod', begin, end))
                             envir_user_spec.append((lang+'pro', begin, end))
                     else:
                         for lang in languages:
-                            if envir == lang + 'cod' or envir == lang + 'pro':
+                            if envir.startswith(lang + 'cod') or \
+                               envir.startswith(lang + 'pro'):
                                 begin = '\\' + 'begin{' + value + '}{' \
                                         + languages[lang] + '}'
                                 end = '\\' + 'end{' + value + '}'
@@ -1188,7 +1195,8 @@ def ptex2tex():
                             envir_user_spec.append((lang+'pro', begin, end))
                     else:
                         for lang in languages:
-                            if envir == lang + 'cod' or envir == lang + 'pro':
+                            if envir.startswith(lang + 'cod') or \
+                               envir.startswith(lang + 'pro'):
                                 lang = languages[lang]
                                 if value.endswith(':nt'):
                                     lang += ':nt'

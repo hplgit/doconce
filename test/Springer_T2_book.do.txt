@@ -199,11 +199,15 @@ following assumptions and features:
   * With `numpy`, a wide range of mathematical operations can be done directly on complete arrays, thereby removing the need for loops over array elements. This is commonly called *vectorization* %or *array computing* and may cause a dramatic speed-up of Python programs. Vectorization makes use of the vector computing concepts from Section ref{sec:plot:arraycomp}.
   * Arrays with one index are often called vectors. Arrays with two indices are used as an efficient data structure for tables, instead of lists of lists. Arrays can also have three or more indices.
 
-We have two remarks to the above list.  First, there is actually an
-object type called `array` in standard Python, but this data type is
-not so efficient for mathematical computations, and we will not use it
-in this ${BOOK}.  Second, the number of elements in an array *can* be
-changed, but at a substantial computational cost.
+!bnotice Remarks
+
+ o There is actually an
+   object type called `array` in standard Python, but this data type is
+   not so efficient for mathematical computations, and we will not use it
+   in this ${BOOK}.
+ o The number of elements in an array *can* be
+   changed, but at a substantial computational cost.
+!enotice
 
 The following text lists some important functionality of NumPy arrays.
 A more comprehensive treatment is found in the excellent *NumPy
@@ -217,11 +221,38 @@ idx{`array` (from `numpy`)} idx{`np.array` function}
 idx{`np` prefix (`numpy`)}
 idx{`zeros_like` (from `numpy`)}idx{`np.zeros_like` function}
 
-The standard import statement for Numerical Python reads
+
+!bnotice Remarks on importing NumPy
+The statement
 
 !bc pycod
 import numpy as np
 !ec
+with subsequent prefixing of all NumPy functions and variables by `np.`,
+has evolved as a standard syntax in the Python scientific computing
+community. However, to make Python programs look closer to MATLAB
+and ease the transition to and from that language, one can do
+
+!bc pycod
+from numpy import *
+!ec
+to get rid of the prefix (this is evolved as the standard in
+*interactive* Python shells). This author prefers mathematical
+functions from `numpy` to be written without the prefix to
+make the formulas as close as possible to the mathematics.
+So, $f(x)=\sinh(x-1)\sin(w t)$ would be coded as
+
+!bc pycod
+from numpy import sinh, sin
+
+def f(x):
+    return sinh(x-1)*sin(w*t)
+!ec
+or one may take the less recommended
+lazy approach `from numpy import *` and fill up
+the program with *a lot* of functions and variables from `numpy`.
+!enotice
+
 To convert a list `r` to an array,
 we use the `array` function
 from `numpy`:
@@ -255,133 +286,6 @@ distributed values in an interval $[p,q]$. The `numpy` function
 !bc pycod
 a = np.linspace(p, q, n)
 !ec
-
-idx{array slicing} idx{subarrays}
-
-Array elements are accessed by square brackets as for lists:
-`a[i]`. Slices also work as for lists, for example, `a[1:-1]` picks
-out all elements except the first and the last, but contrary to lists,
-`a[1:-1]` is not a copy of the data in `a`. Hence,
-
-!bc pycod
-b = a[1:-1]
-b[2] = 0.1
-!ec
-will also change `a[3]` to `0.1`.  A slice `a[i:j:s]` picks out the
-elements starting with index `i` and stepping `s` indices at the time
-up to, but not including, `j`. Omitting `i` implies `i=0`, and
-omitting `j` implies `j=n` if `n` is the number of elements in the
-array.  For example, `a[0:-1:2]` picks out every two elements up to,
-but not including, the last element, while `a[::4]` picks out every
-four elements in the whole array.
-
-======= Curve plotting =======
-label{sec:plot:curveplots}
-
-idx{curve plotting} idx{plotting} idx{making graphs}
-
-Visualizing a function $f(x)$ is done by drawing the curve $y=f(x)$ in
-an $xy$ coordinate system. When we use a computer to do this task, we
-say that we *plot* the curve.  Technically, we plot a curve by drawing
-straight lines between $n$ points on the curve. The more points we
-use, the smoother the curve appears.
-
-Suppose we want to plot the function $f(x)$ for $a\leq x\leq b$.
-First we pick out $n$ $x$ coordinates in the interval $[a,b]$, say we
-name these $x_0,x_1,\ldots,x_{n-1}$. Then we evaluate $y_i=f(x_i)$ for
-$i=0,1,\ldots,{n-1}$. The points $(x_i,y_i)$, $i=0,1,\ldots,{n-1}$,
-now lie on the curve $y=f(x)$. Normally, we choose the $x_i$
-coordinates to be equally spaced, i.e.,
-
-!bt
-\begin{equation*} x_i = a + ih,\quad h = {b-a\over n-1}\tp\end{equation*}
-!et
-If we store the $x_i$ and $y_i$ values in two arrays `x` and `y`, we
-can plot the curve by the command like `plot(x,y)`.
-
-Sometimes the names of the independent variable and the function
-differ from $x$ and $f$, but the plotting procedure is the same. Our
-first example of curve plotting demonstrates this fact by involving a
-function of $t$.
-
-===== Matplotlib; pylab =====
-label{sec:plot:pylab}
-
-The standard package for curve plotting in Python is Matplotlib.
-First we exemplify Matplotlib using `matplotlib.pylab`, which enables
-a syntax very close to that of MATLAB. This is a great advantage since
-many readers may have experience with plotting in MATLAB, or they will
-certainly meet MATLAB sometime in their scientific work.
-
-=== A basic plot ===
-
-Let us plot the curve $y = t^2\exp(-t^2)$ for $t$ values between 0 and
-3.  First we generate equally spaced coordinates for $t$, say 51
-values (50 intervals). Then we compute the corresponding $y$ values at
-these points, before we call the `plot(t,y)` command to make the curve
-plot.  Here is the complete program:
-
-!bc pypro
-from matplotlib.pylab import *
-
-def f(t):
-    return t**2*exp(-t**2)
-
-t = linspace(0, 3, 31)    # 31 points between 0 and 3
-y = zeros(len(t))         # allocate y with float elements
-for i in xrange(len(t)):
-    y[i] = f(t[i])
-
-plot(t, y)
-show()
-!ec
-The `from matplotlib.pylab import *` performs a `from numpy import *`
-import as well as an import of all Matplotlib commands that resemble
-MATLAB-style syntax.  In this program we pre-allocate the `y` array
-and fill it with values, element by element, in a Python
-loop. Alternatively, we may operate on the whole `t` array at once,
-which yields faster and shorter code:
-
-!bc pycod
-y = f(t)
-!ec
-
-To include the plot in electronic documents, we need a hardcopy of the
-figure in PDF, PNG, or another image format.  The `savefig` function
-saves the plot to files in various image formats:
-
-!bc pycod
-savefig('tmp1.pdf') # produce PDF
-savefig('tmp1.png') # produce PNG
-!ec
-The filename extension determines the format: `.pdf` for PDF and
-`.png` for PNG.  Figure ref{fig:impact} displays the resulting
-plot.
-
-FIGURE:[../doc/src/manual/fig/wave1D, width=200] Visualization of a wave. label{fig:impact}
-
-=== Importing SciTools and Easyviz ===
-
-A standard import of SciTools is
-
-!bc pycod
-from scitools.std import *
-!ec
-The advantage of this statement is that it, with a minimum of typing,
-imports a lot of
-useful modules for
-numerical Python programming: Easyviz, all of `numpy`
-(`from numpy import *`), all of `scipy` (`from scipy import *`)
-if available, all of `scitools.numpyutils` (some convenience functions
-extending `numpy`),
-`numpy.lib.scimath`
-(see ref[Section ref{formulas:unified:complex:real}][ in cite{Langtangen_TCSE6_formulas}][the document "Computing with formulas": "http://tcse6.on.net/formulas" cite{Langtangen_TCSE6_formulas}]),
-the `StringFunction` tool
-(see ref[Section ref{sec:input:StringFunction}][ in cite{Langtangen_TCSE6_input}][the document "User input and error handling": "http://tcse6.on.net/input" cite{Langtangen_TCSE6_input}]),
-plus commonly applied modules such as `sys`, `os`, and `math`.
-The imported standard mathematical functions (`sqrt`, `sin`,
-`asin`, `exp`, etc.) work with arrays and deal transparently with
-real and complex input/output (as the corresponding MATLAB functions).
 
 
 ========= Storing results in data files =========
