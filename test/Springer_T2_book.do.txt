@@ -657,12 +657,22 @@ Terminal> prog < input > output
 !ec
 
 === Note ===
- The redirection of standard output, input, and error
+
+The redirection of standard output, input, and error
 does not work for Python programs executed with the `run`
 command inside IPython, only when executed directly
 in the operating system in a terminal window, or with the same
 command prefixed with an exclamation mark in IPython.
 
+
+
+========= Appendix: Styles for Springer T2 =========
+
+The T2 style for Doconce-generated LaTeX should make use of
+slightly modified `svmono.cls` and `t2.sty` files:
+
+ * `svmonodo.cls`
+ * `t2do.sty`
 
 
 ========= References =========
