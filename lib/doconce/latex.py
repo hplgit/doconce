@@ -986,7 +986,7 @@ def latex_ref_and_label(section_label2title, format, filestr):
 
     # Allow C# and F# languages
     # (be careful as it can affect music notation!)
-    pattern = r'(^| )([A-Za-z]+)#([,.;:! ]|$)'
+    pattern = r'(^| )([A-Za-z]+)#([,.;:!) ]|$)'
     replacement = r'\g<1>\g<2>\#\g<3>'
     filestr = re.sub(pattern, replacement, filestr, flags=re.MULTILINE)
 

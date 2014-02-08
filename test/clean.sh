@@ -3,4 +3,9 @@ files="tmp_* *~ .*~ verify* .*html_file_collection testdoc.*wiki testdoc*.html t
 ls $files 2> /dev/null
 rm -rf $files
 rm -f test.v
+cd Springer_T2
+doconce clean
+rm -rf tmp* Trash
+cd ..
+
 
