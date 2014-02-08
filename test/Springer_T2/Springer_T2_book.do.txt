@@ -54,13 +54,10 @@ exercises hands on.  The book is therefore full of exercises of
 various types: modifications of existing examples, completely new
 problems, or debugging of given programs.
 
-There is a web page
-associated with this book,
-"`http:/hplgit.github.com/scipro-primer`": "http:/hplgit.github.com/scipro-primer",
-which lists the software you need and explains briefly how to install it.
-This page also contains all
-the files associated with the program examples
-in this book.
+There is a web page associated with this book, URL:
+"http://hplgit.github.com/scipro-primer", which lists the software you
+need and explains briefly how to install it.  This page also contains
+all the files associated with the program examples in this book.
 
 === Python version 2 or 3? ===
 
@@ -182,6 +179,14 @@ programming environments such as MATLAB, Octave, and R, for instance.
 Lists will be our choice instead of arrays when we need the
 flexibility of adding or removing elements or when the elements may be
 of different object types.
+
+!bquote
+*People only become computer programmers if they're
+obsessive about details, crave power over machines, and can bear
+to be told day after day exactly how
+stupid they are.* <linebreak>
+Gregory J. E. Rawlins cite{Rawlins_1998}, computer scientist.
+!equote
 
 ===== Basics of numerical Python arrays =====
 label{sec:plot:array:basics}
@@ -568,6 +573,12 @@ command inside IPython, only when executed directly
 in the operating system in a terminal window, or with the same
 command prefixed with an exclamation mark in IPython.
 
+=== References ===
+
+To check the bibliography, we need to make citations to a book{TCSE3},
+Matplotlib cite{Matplotlib:paper}, and more books cite{Mertz,PythonQt}
+as well as Python itself cite{Python}, and of course NumPy
+cite{NumPy}.
 
 
 ========= Appendix: Styles for Springer T2 =========
@@ -581,5 +592,5 @@ slightly modified `svmono.cls` and `t2.sty` files:
 
 ========= References =========
 
-BIBFILE: genref.bib
+BIBFILE: papers.pub
 

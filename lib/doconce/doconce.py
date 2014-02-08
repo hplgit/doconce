@@ -120,6 +120,13 @@ def fix(filestr, format, verbose=0):
 def syntax_check(filestr, format):
     """Check for common errors in the doconce syntax."""
 
+    # URLs with just one /
+    m = re.findall(r'https?:/[A-Za-z].+', filestr)
+    if m:
+        print '*** error: missing double // in URLs'
+        print '   ', '\n'.join(m)
+        _abort()
+
     # Check that are environments !bc, !ec, !bans, !eans, etc.
     # appear at the beginning of the line
     for envir in doconce_envirs():
@@ -1948,7 +1955,8 @@ def handle_index_and_bib(filestr, format, has_title):
                 pubfile = pubfile[1]
             if not pubfile.endswith('.pub'):
                 print line
-                print '*** error: illegal publish database', pubfile
+                print '*** error: illegal publish database', pubfile, \
+                      '(must have .pub extension)'
                 _abort()
             if not os.path.isfile(pubfile):
                 print '*** error: cannot find publish database', pubfile
