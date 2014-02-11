@@ -252,6 +252,9 @@ doconce format html mydoc2
 !ec
 !enotice
 
+# See here if MathJax stops working in HTML pages on blogger and elsewhere:
+# http://weiqigao.blogspot.no/2013/03/enabling-mathjax-in-blogger.html
+
 Blog posts at Google can also be published "automatically through email":
 "http://support.google.com/blogger/bin/answer.py?hl=en&answer=41452".
 A Python program can send the contents of the HTML file

@@ -986,25 +986,30 @@ def exercises(filestr, format, code_blocks, tex_blocks):
             # outside exercises. Just read the text into a data structure
             # and let formats have a new SURVEY[format] function to typeset
             # the questions. One can generate plain HTML or create full
-            # surveys on Google:
-            # https://developers.google.com/apps-script/reference/forms/
-            # or surveymonkey:
-            # http://www.surveygizmo.com/survey-software-support/tutorials/create-a-survey-through-an-import-from-word/
-            # The multiple choice block can then end in a link to the survey,
-            # but we should check that automatic feedback on correct answers
-            # is possible in the survey service we choose. Google can:
-            # http://www.techrepublic.com/blog/google-in-the-enterprise/use-google-forms-to-create-a-self-grading-quiz/
-            # https://docs.google.com/a/simula.no/document/d/1S_rJ8CAsnBwAH6bRW1tKkwmlv1CWWeHFalkovs_Z0ws/edit
-            # See cool example:
-            # https://sites.google.com/site/mrswilsonstechclasses/technology-class-homework
+            # surveys, see TODO/quiz.do.txt.
+
             # It should be possible to leave out questions from a doconce doc.
-            # Probably best to give to a summer student.
             #
             # How to do multiple choice in exer or subex (or inside admons
             # and elsewhere, e.g., survey questions):
             # !bmchoice, !emchoice (bchoices does not work since it starts with bc!)
             # inside_mchoice: store all that text in subex/exer['multiple_choice']
             # afterwards: interpret the text in multiple_choices
+            # syntax:
+            # Q: can be multiline whatever (up to C(f|r):)
+            # Cr: right answer
+            # E: corresponding explanation
+            # Cf: another but wrong answer, can be multiline
+            # regex (inside all the bmchoice text): (Cf|Cr):.+^(E|Cf|Cr|ENDMARKER), re.DOTALL, problem: if not E:, re.findall will not pick out all because the match goes up to and including the next Cf/Cr. Maybe look ahead at (E|Cf|Cr|$) can solve this? Try out first! (Must add ENDMARKER to the end of the text)
+            # Could add a remarks section for lessons learned, etc.?
+            # Add title or have it as part of !bmchoice
+
+            # Example code: intro-programming, more modern tools
+            # are jQuery.Survey: http://flesler.webs.com/jQuery.Survey/ (see source for use), see also https://github.com/jdarling/jQuery.Survey
+            # Really simple, read this first about HTML and jquery!!: http://www.hungrypiranha.org/make-a-website/html-quiz (seems more straightforward than any other solution)
+            # Some js theory for pop-up surveys: http://www.jensbits.com/2010/01/29/pop-up-survey-with-jquery-ui-dialog/
+            # Simple js: https://www.inkling.com/read/javascript-jquery-david-sawyer-mcfarland-2nd/chapter-3/tutorial-a-simple-quiz
+
             # syntax: Cf/Cr: ..., required E: ... for explanation (can be empty)
             # Cf is a false choice, Cr is a right choice (or False:/True:)
             # Easy to use a regex to pick out the structure of the multiple
