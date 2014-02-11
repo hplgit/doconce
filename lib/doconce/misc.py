@@ -71,16 +71,32 @@ inserted to the right in exercises - "default" and "none" are allowed
      """Open HTML links in a new window."""),
     ('--device=',
      """Set device to paper, screen, or other (paper impacts LaTeX output)."""),
+    ('--latex_bibstyle=',
+     'LaTeX bibliography style. Default: plain.'),
     ('--latex_double_hyphen',
-     'Replace single dash - by double dash -- in LaTeX output. Somewhat intelligent, but may give unwanted edits.'),
+     'Replace single dash - by double dash -- in LaTeX output. Somewhat intelligent, but may give unwanted edits. Use with great care!'),
     ('--latex_preamble=',
      """User-provided LaTeX preamble file, either complete or additions."""),
     ('--html_admon=',
      "Type of admonition and color: white, colors, gray, yellow."),
     ('--html_admon_shadow',
      'Add a shadow effect to HTML admon boxes (gray, yellow, apricot).'),
+    ('--html_admon_bg_color=',
+     'Background color of admon in HTML.'),
+    ('--html_admon_bd_color=',
+     'Boundary color of admon in HTML.'),
     ('--latex_admon=',
-     "Type of admonition and color: colors1-2, graybox1-3, yellowbox, paragraph."),
+     "Type of admonition in LaTeX: colors1-2, graybox1-3, yellowbox, paragraph."),
+    ('--latex_admon_color=',
+     "Admonition color in LaTeX, rgb tuple or saturated color a la gray!5."),
+    ('--latex_admon_envir_map=',
+     """Mapping of code envirs to new envir names inside admons (e.g., to get
+different code typesetting inside admons. If a number, say 2, an envir
+like pycod gets the number appended: pycod2. Otherwise it must be a
+mapping for each envir: pycod-pycod_yellow,fpro-fpro2 (from-to,from-to,...
+syntax."""),
+    ('--latex_exercise_numbering=',
+     'absolute: exercises numbered as 1, 2, ... chapter: exercises numbered as 1.1, 1.2, ... , 3.1, 3.2, etc. with a chapter prefix.'),
     ('--css=',
      """Specify a .css style file for HTML output. If the file does not exist, the default or specified style (--html_style=) is written to it."""),
     ('--verbose',
@@ -129,6 +145,7 @@ def get_legal_command_line_options():
     return _legal_command_line_options
 
 def help_format():
+    print 'doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwiki|cwiki|pandoc|st|epytext dofile'
     for opt, help in _registered_command_line_options:
         if opt.endswith('='):
             opt += '...'
@@ -882,8 +899,8 @@ def latex_exercise_toc():
         print 'table of exercises inserted in', ptexfile
         f.close()
     else:
-        print 'cannot insert table of exercises because there is no'
-        print 'table of contents requested in the', dofile, 'document'
+        print '*** error: cannot insert table of exercises because there is no'
+        print '    table of contents requested in the', dofile, 'document'
 
 
 def _usage_combine_images():
@@ -1125,6 +1142,7 @@ def ptex2tex():
         if arg.startswith('-D') or arg.startswith('-U'):
             preprocess_options.append(arg)
         elif '=' in arg:
+            # envir
             items = arg.split('=')
             envir, value = items[0], '='.join(items[1:])
             if '@' in value:
@@ -1148,14 +1166,14 @@ def ptex2tex():
                                      xml='xml', rb='ruby')
                     if envir == 'envir':
                         for lang in languages:
-                            begin = '\\' + 'begin{minted}[fontsize=\\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{' \
-                                    + languages[lang] + '}'
+                            begin = '\\' + 'begin{minted}[fontsize=\\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{' + languages[lang] + '}'
                             end = '\\' + 'end{minted}'
                             envir_user_spec.append((lang+'cod', begin, end))
                             envir_user_spec.append((lang+'pro', begin, end))
                     else:
                         for lang in languages:
-                            if envir == lang + 'cod' or envir == lang + 'pro':
+                            if envir.startswith(lang + 'cod') or \
+                               envir.startswith(lang + 'pro'):
                                 begin = '\\' + 'begin{' + value + '}{' \
                                         + languages[lang] + '}'
                                 end = '\\' + 'end{' + value + '}'
@@ -1176,7 +1194,8 @@ def ptex2tex():
                             envir_user_spec.append((lang+'pro', begin, end))
                     else:
                         for lang in languages:
-                            if envir == lang + 'cod' or envir == lang + 'pro':
+                            if envir.startswith(lang + 'cod') or \
+                               envir.startswith(lang + 'pro'):
                                 lang = languages[lang]
                                 if value.endswith(':nt'):
                                     lang += ':nt'
@@ -4686,6 +4705,8 @@ _replacements = [
     (r'"([^"]+?)":\s*"[^"]+?"', r'\g<1>'),  # links
     (r"^#.*$", "", re.MULTILINE),
     (r"(idx|label|ref|cite)\{.*?\}", ""),
+    (r"refch\[.*?\]\[.*?\]\[.*?\]", "", re.DOTALL),
+    ('<linebreak>', ''),
     (r"={3,}",  ""),
     (r'`[^ ][^`]*?`', ""),
     (r"`[A-Za-z0-9_.]+?`", ""),
@@ -4695,7 +4716,8 @@ _replacements = [
     (r"\b[A-Za-z_0-9/.:]+\.(com|org|net|edu|)\b", ""),  # net name
     (r'\[[A-Za-z]+:\s+[^\]]*?\]', ''),  # inline comment
     (r'^\s*file=[A-Za-z_0-9., ]+\s*$', '', re.MULTILINE),
-    (r"^@@@CODE.*$",    "", re.MULTILINE),
+    (r"^@@@CODE.*$", "", re.MULTILINE),
+    (r"^@@@OSCMD.*$", "", re.MULTILINE),
     (r"^\s*(FIGURE|MOVIE):\s*\[.+?\]",    "", re.MULTILINE),
     (r"^\s*BIBFILE:.+$",    "", re.MULTILINE),
     (r"^\s*TOC:\s+(on|off)", "", re.MULTILINE),
@@ -4712,6 +4734,8 @@ _replacements = [
     (r'![be]warning', ''),
     (r'![be]summary', ''),
     (r'![be]notice', ''),
+    (r'![be]quote', ''),
+    (r'![be]box', ''),
     (r'![be]remarks', ''),
     # Preprocess
     (r"^#.*ifn?def.*$", "", re.MULTILINE),
@@ -5137,6 +5161,375 @@ def spellcheck():
     _spellcheck_all(newdict='misspellings.txt~', remove_multiplicity=False,
                     dictionaries=dictionary,)
 
+def _usage_ref_external():
+    print 'doconce ref_external dofile [pubfile --skip_chapter]'
+    print 'Must give pubfile if no BIBFILE in dofile.do.txt'
+    print '--skip_chapter avoids substitution of Chapter ref{} -> refch[Chapter ...][][].'
+
+def ref_external():
+    """
+    Examine "# Externaldocuments: ..." in doconce file and publish
+    file to suggest a substitution script for transforming
+    references to external labels to the ref[][][] generalized
+    reference form.
+    """
+    if len(sys.argv) < 2:
+        _usage_ref_external()
+        sys.exit(1)
+
+    filename = sys.argv[1]
+    if filename.endswith('.do.txt'):
+        basename = filename[:-7]
+    else:
+        basename = filename
+    # Analyze the topfile for external documents and publish file
+    f = open(basename + '.do.txt', 'r')
+    topfilestr = f.read()
+    f.close()
+    m = re.search('^#\s*[Ee]xternaldocuments:\s*(.+)$', topfilestr,
+                  flags=re.MULTILINE)
+    if m:
+        external_docs = [s.strip() for s in m.group(1).split(',')]
+    else:
+        print '*** error: no # Externaldocuments: file1, file2, ... in', basename + '.do.txt'
+        print '    cannot get info about external documents and their labels!'
+        _abort()
+    m = re.search('^BIBFILE:\s*(.+)', topfilestr, re.MULTILINE)
+    if m:
+        pubfile = m.group(1).strip()
+    else:
+        if len(sys.argv) >= 3:
+            pubfile = sys.argv[2]
+        else:
+            print '*** error: no BIBFILE: file.pub, missing publish file on the command line!'
+            _abort()
+    print '    working with publish file', pubfile
+    import publish
+    # Note: we have to operate publish in the directory
+    # where pubfile resides
+    pubdir, pubname = os.path.split(pubfile)
+    if not pubdir:
+        pubdir = os.curdir
+    this_dir = os.getcwd()
+    os.chdir(pubdir)
+    pubdata = publish.database.read_database(pubname)
+    os.chdir(this_dir)
+
+    def process_external_doc(extdoc_basename):
+        topfile = extdoc_basename + '.do.txt'
+        if not os.path.isfile(topfile):
+            print '*** error: external document "%s" does not exist' % topfile
+            _abort()
+        f = open(topfile, 'r')
+        text = f.read()
+        m = re.search('^TITLE:\s*(.+)', text, flags=re.MULTILINE)
+        if m:
+            title = m.group(1).strip()
+        else:
+            print '*** error: no TITLE: ... in "%s"' % topfile
+            _abort()
+        found = False
+        key = None
+        url = None
+        for pub in pubdata:
+            if pub['title'].lower() == title.lower():
+                key = pub.get('key', None)
+                url = pub.get('url', None)
+                print '       title:', title
+                print '       url:', url
+                print '       key:', key
+                found = True
+                break
+        if not found and extdoc_basename != basename:
+            print '*** warning: could not find the document'
+            print '   ', title
+            print '    in the publish database %s' % pubfile
+
+        # Try to load the full doconce file as the result of mako,
+        # or as the result of preprocess, or just extdoc_basename.do.txt
+        dname, bname = os.path.split(extdoc_basename)
+        dofile = os.path.join(dname, 'tmp_mako__' + bname + '.do.txt')
+        if os.path.isfile(dofile):
+            fullfile = dofile
+        else:
+            dofile = os.path.join(dname, 'tmp_preprocess__' + bname + '.do.txt')
+            if os.path.isfile(dofile):
+                fullfile = dofile
+            else:
+                fullfile = topfile
+                # Check that there are no includes:
+                m = re.search(r'^#\s+#include', text, flags=re.MULTILINE)
+                if m:
+                    print '*** error: doconce format is not run on %s' % topfile
+                    print '    cannot proceed...'
+                    _abort()
+
+        print '    ...processing', fullfile
+        f = open(fullfile, 'r')
+        text = f.read()
+        f.close()
+        # Analyze the full text of the external doconce document
+        labels = re.findall(r'label\{(.+?)\}', text)
+        return title, key, url, labels, text
+
+    import sets
+    # Find labels and references in this doconce document
+    dummy, dummy, dummy, mylabels, mytext = process_external_doc(basename)
+    refs = [(prefix, ref) for dummy, prefix, ref in
+            re.findall(r'(^|\(|\s+)([A-Za-z]+?)\s+ref\{(.+?)\}', mytext,
+                       flags=re.MULTILINE)]
+    refs = [(prefix.strip(), ref.strip()) for prefix, ref in refs]
+    refs = list(sets.Set(refs))
+    pattern = r'\(ref\{(.+?)\}\)-\(ref\{(.+?)\}\)'
+    eqrefs2 = list(sets.Set(re.findall(pattern, mytext)))
+    mytext2 = re.sub(pattern, 'XXX', mytext)
+    # Now all pairs of equation references are removed, search for triplets
+    pattern = r'\(ref\{(.+?)\}\),\s+\(ref\{(.+?)\}\),?\s+and\s+\(ref\{(.+?)\}\)'
+    eqrefs3 = list(sets.Set(re.findall(pattern, mytext2)))
+    mytext3 = re.sub(pattern, 'XXX', mytext2)
+    # Now all pairs and triplets are removed and we can collect the remaining
+    # single equation references
+    eqrefs1 = re.findall(r'\(ref\{(.+?)\}\)', mytext3)
+
+    extdocs_info = {}
+    refs2extdoc = {}
+    for external_doc in external_docs:
+        title, key, url, labels, text = process_external_doc(external_doc)
+        extdocs_info[external_doc] = dict(title=title, key=key,
+                                          url=url, labels=labels)
+        for prefix, ref in refs:
+            if ref not in mylabels:
+                if ref in labels:
+                    refs2extdoc[ref] = (external_doc, prefix)
+        for ref in eqrefs1:
+            if ref not in mylabels:
+                if ref in labels:
+                    refs2extdoc[ref] = (external_doc, 1)
+        for ref1, ref2 in eqrefs2:
+            if ref1 not in mylabels:
+                if ref1 in labels:
+                    refs2extdoc[ref1] = (external_doc, 2)
+            if ref2 not in mylabels:
+                if ref2 in labels:
+                    refs2extdoc[ref2] = (external_doc, 2)
+        for ref1, ref2, ref3 in eqrefs3:
+            if ref1 not in mylabels:
+                if ref1 in labels:
+                    refs2extdoc[ref1] = (external_doc, 3)
+            if ref2 not in mylabels:
+                if ref2 in labels:
+                    refs2extdoc[ref2] = (external_doc, 3)
+            if ref3 not in mylabels:
+                if ref3 in labels:
+                    refs2extdoc[ref3] = (external_doc, 3)
+
+    # We now have all references in refs2extdoc and can via extdocs_info
+    # get additional info about all references
+    for label in mylabels:
+        if label in refs2extdoc:
+            print '*** error: ref{%s} in %s was found as' % (label, basename)
+            print '    label{%s} in %s and %s' % \
+                  (label, basename, refs2extdoc[label][0])
+            _abort()
+
+    # Substitute all external references by ref[][][]
+    scriptname = 'tmp_subst_references.sh'
+    scriptname2 = 'tmp_grep_references.sh'
+    f = open(scriptname, 'w')
+    f2 = open(scriptname2, 'w')
+    print 'substitution script:', scriptname
+    print 'grep script (for context of each substitution):', scriptname2
+    dofiles = basename[5:] + '.do.txt' if basename.startswith('main_') else basename + '.do.txt'
+    f.write('files="%s"  # files to which substitutions apply\n\n' % dofiles)
+    f2.write('files="%s"  # files to which substitutions apply\n\nnlines=6  # no of context lines for each matched line' % dofiles)
+    skip_chapter = '--skip_chapter' in sys.argv
+    skip_eqs = '--skip_eqs' in sys.argv
+    for prefix, ref in refs:
+        if skip_chapter and prefix.lower in ('chapter', 'appendix'):
+            continue
+        if ref not in mylabels:
+            f.write(r"doconce subst '%(prefix)s\s+ref\{%(ref)s\}'  " % vars())
+            f2.write(r"grep --context=$nlines --line-number -E '%(prefix)s\s+ref\{%(ref)s\}' $files" % vars() + '\n\n')
+            ch = 'ch' if prefix.lower() in ('chapter', 'appendix') else ''
+            f.write("'ref%(ch)s[%(prefix)s ref{%(ref)s}]" % vars())
+            if ref in refs2extdoc:
+                if ch:
+                    f.write('[ cite{%s}][' %
+                            extdocs_info[refs2extdoc[ref][0]]['key'])
+                else:
+                    f.write('[ in cite{%s}][' %
+                            extdocs_info[refs2extdoc[ref][0]]['key'])
+                f.write('the document "%s"' %
+                        extdocs_info[refs2extdoc[ref][0]]['title'])
+                if extdocs_info[refs2extdoc[ref][0]]['url'] is not None:
+                    f.write(': "%s"' %
+                            extdocs_info[refs2extdoc[ref][0]]['url'])
+                if extdocs_info[refs2extdoc[ref][0]]['key'] is not None:
+                    f.write(' cite{%s}' %
+                            extdocs_info[refs2extdoc[ref][0]]['key'])
+                f.write("]'")
+            else:
+                f.write("[no cite info][no doc info]'")
+            f.write(' $files\n\n')
+    if skip_eqs:
+        f.close()
+        return
+
+    if eqrefs1 or eqrefs2 or eqrefs3:
+        f.write('\n# Equations:\n')
+    for ref in eqrefs1:
+        if ref not in mylabels:
+            f.write(r"doconce replace '(ref{%(ref)s})'  " % vars())
+            f2.write(r"grep --context=$nlines --line-number '(ref{%(ref)s})' $files" % vars() + '\n\n')
+            f.write("'ref[(ref{%(ref)s})]" % vars())
+            if ref in refs2extdoc:
+                f.write('[ in cite{%s}]' %
+                        extdocs_info[refs2extdoc[ref][0]]['key'])
+                f.write('[reference to specific _equation_ (label %s) in external document "%s": "%s" cite{%s} is not recommended]' %
+                        (ref,
+                         extdocs_info[refs2extdoc[ref][0]]['title'],
+                         extdocs_info[refs2extdoc[ref][0]]['url'],
+                         extdocs_info[refs2extdoc[ref][0]]['key']))
+            else:
+                f.write('[no cite info][no doc info]')
+            f.write("' $files\n\n")
+    for ref1, ref2 in eqrefs2:
+        if ref1 not in mylabels and ref2 not in mylabels:
+            f.write(r"doconce replace '(ref{%(ref1)s})-(ref{%(ref2)s})'  " % vars())
+            f2.write(r"grep --context=$nlines --line-number '(ref{%(ref1)s})-(ref{%(ref2)s})' $files" % vars() + '\n\n')
+            f.write("'ref[(ref{%(ref1)s})-(ref{%(ref2)s})]" % vars())
+            if ref1 in refs2extdoc and ref2 in refs2extdoc:
+                f.write('[ in cite{%s}]' %
+                        extdocs_info[refs2extdoc[ref1][0]]['key'])
+                f.write('[reference to specific _equations_ (label %s and %s) in external document "%s": "%s" cite{%s} is not recommended]' %
+                        (ref1, ref2,
+                         extdocs_info[refs2extdoc[ref1][0]]['title'],
+                         extdocs_info[refs2extdoc[ref1][0]]['url'],
+                         extdocs_info[refs2extdoc[ref1][0]]['key']))
+            else:
+                f.write('[no cite info][no doc info]')
+            f.write("' $files\n\n")
+    for ref1, ref2, ref3 in eqrefs3:
+        if ref1 not in mylabels and ref2 not in mylabels \
+               and ref3 not in mylabels:
+            f.write(r"doconce subst '\(ref\{%(ref1)s\}\),\s+\(ref\{%(ref2)s\}\),?\s+and\s+\(ref{%(ref3)s\}\)'  " % vars())
+            f2.write(r"grep --context=$nlines --line-number -E '\(ref\{%(ref1)s\}\),\s+\(ref\{%(ref2)s\}\),?\s+and\s+\(ref{%(ref3)s\}\)' $files" % vars() + '\n\n')
+            f.write("'ref[(ref{%(ref1)s}), (ref{%(ref2)s}), and (ref{%(ref3)s})]" % vars())
+            if ref1 in refs2extdoc and ref2 in refs2extdoc \
+                   and ref3 in refs2extdoc:
+                if refs2extdoc[ref1][0] == refs2extdoc[ref2][0] and \
+                   refs2extdoc[ref2][0] == refs2extdoc[ref3][0]:
+                    f.write('[ in cite{%s}]' %
+                            extdocs_info[refs2extdoc[ref1][0]]['key'])
+                else:
+                    # the equations come from different external docs
+                    s = sets.Set([extdocs_info[refs2extdoc[ref1][0]]['key'],
+                                  extdocs_info[refs2extdoc[ref2][0]]['key'],
+                                  extdocs_info[refs2extdoc[ref3][0]]['key']])
+                    f.write('[ cite{%s}]' % ','.join(list(s)))
+
+                f.write('[reference to specific _equations_ (label %s, %s, and %s) in external document "%s": "%s" cite{%s} is not recommended]' %
+                        (ref1, ref2, ref3,
+                         extdocs_info[refs2extdoc[ref][0]]['title'],
+                         extdocs_info[refs2extdoc[ref][0]]['url'],
+                         extdocs_info[refs2extdoc[ref][0]]['key']))
+            else:
+                f.write('[no cite info][no doc info]')
+            f.write("' $files\n\n")
+    f.close()
+
+def _usage_latex_problems():
+    print 'doconce latex_problems mydoc.log [overfull-hbox-limit]'
+
+def latex_problems():
+    if len(sys.argv) < 2:
+        _usage_latex_problems()
+        sys.exit(1)
+
+    try:
+        overfull_hbox_limit = float(sys.argv[2])
+    except IndexError:
+        overfull_hbox_limit = 20
+
+    filename = sys.argv[1]
+    if not filename.endswith('.log'):
+        filename += '.log'
+    f = open(filename, 'r')
+    lines = f.readlines()
+    f.close()
+    multiply_defined_labels = []
+    multiply_defined_labels_pattern = r"LaTeX Warning: Label `(.+?)' multiply defined"
+    undefined_references = []
+    undefined_references_pattern = r"LaTeX Warning: Reference `(.+?)' on page (.+?) undefined"
+    overfull_hboxes = []
+    overfull_hboxes_pattern = r"Overfull \\hbox \((.+)pt too wide\) .+lines (.+)"
+    for line in lines:
+        m = re.search(multiply_defined_labels_pattern, line)
+        if m:
+            multiply_defined_labels.append(m.group(1))
+        m = re.search(undefined_references_pattern, line)
+        if m:
+            undefined_references.append((m.group(1), m.group(2)))
+        m = re.search(overfull_hboxes_pattern, line)
+        if m:
+            overfull_hboxes.append((float(m.group(1)), m.group(2).strip()))
+    problems = False
+    if multiply_defined_labels:
+        problems = True
+        print '\nMultiply defined labels:'
+        for label in multiply_defined_labels:
+            print '    ', label
+    if undefined_references:
+        problems = True
+        print '\nUndefined references:'
+        for ref, page in undefined_references:
+            print '    ', ref, 'on page', page
+    if overfull_hboxes:
+        problems = True
+        print "\nOverfull hbox'es:"
+        for npt, at_lines in overfull_hboxes:
+            if npt > overfull_hbox_limit:
+                print '    ', '%7.1f' % npt, 'lines', at_lines
+
+    if not problems:
+        print 'no serious LaTeX problems found in %s!' % filename
+
+
+def _usage_grep():
+    print 'doconce grep FIGURE|MOVIE|CODE doconce-file'
+
+def grep():
+    if len(sys.argv) < 3:
+        _usage_grep()
+        sys.exit(1)
+
+    file_tp = sys.argv[1]
+    filenames = []
+    for filename in sys.argv[2:]:
+        if not filename.endswith('.do.txt'):
+            filename += '.do.txt'
+        if not os.path.isfile(filename):
+            continue  # just drop non-existing files to avoid corrupt output
+        f = open(filename, 'r')
+        filestr = f.read()
+        f.close()
+
+        if file_tp == 'FIGURE':
+            pattern = r'^FIGURE:\s*\[(?P<filename>[^,\]]+),?(?P<options>[^\]]*)\]'
+            filenames += [filename for filename, dummy in
+                          re.findall(pattern, filestr, re.MULTILINE)]
+        elif file_tp == 'MOVIE':
+            pattern = r'^MOVIE:\s*\[(?P<filename>[^,\]]+),?(?P<options>[^\]]*)\]'
+            filenames += [filename for filename, dummy in
+                          re.findall(pattern, filestr, re.MULTILINE)]
+        elif file_tp == 'CODE':
+            pattern = '^@@@CODE +(.+?)\s+'
+            filenames += re.findall(pattern, filestr, re.MULTILINE)
+        else:
+            print '*** error: cannot grep', file_tp, '(not implemented)'
+    import sets
+    filenames = list(sets.Set(filenames))  # remove multiple filenames
+    print ' '.join(filenames)
 
 def _usage_capitalize():
     print 'doconce capitalize [-d file_with_cap_words] doconce-file'
@@ -5163,7 +5556,7 @@ def capitalize():
         'Celsius', 'Fahrenheit', 'Kelvin',
         'Fahrenheit-Celsius',
         'Newton', 'Gauss', "Gauss'",
-        'Legendre', 'Lagrange',
+        'Legendre', 'Lagrange', 'Markov',
         'Laguerre', 'Taylor', 'Einstein',
         'Maxwell', 'Euler', 'Gaussian', 'Eulerian', 'Lagrangian',
         'Poisson',
@@ -5172,10 +5565,11 @@ def capitalize():
         'ODE', 'PDE', 'Adams-Bashforth', 'Runge-Kutta', 'SIR', 'SIZR', 'SIRV',
         'Python', 'IPython', 'Cython', 'Idle', 'NumPy', 'SciPy', 'SymPy',
         'Matplotlib', 'None', '$N$',
-        'Fortran', 'MATLAB', 'SWIG', 'Perl', 'Ruby',
-        'DNA', 'British', 'American',
+        'Fortran', 'MATLAB', 'SWIG', 'Perl', 'Ruby', 'CPU',
+        'DNA', 'British', 'American', 'Internet', # 'Web',
         'HTML', 'MSWord', 'OpenOffice',
         'StringFunction', 'Vec2D', 'Vec3D', 'SciTools', 'Easyviz',
+        'Pysketcher',
         ]
     # This functionality is not well implemented so instead of finding
     # a perfect solution we fix well-known special cases
@@ -5194,12 +5588,22 @@ def capitalize():
         (' 1d ', ' 1D '),
         (' 2d ', ' 2D '),
         (' 3d ', ' 3D '),
+        ('vec2d', 'Vec2D'),
+        ('vec3d', 'Vec3D'),
         ('hello, world!', 'Hello, World!'),
         ('hello world', 'Hello World'),
+        ('mac os x', 'Mac OS X'),
         ('midpoint integration', 'Midpoint integration'),
         ('midpoint rule', 'Midpoint rule'),
+        ('world wide web', 'World Wide Web'),
+        ('cODE', 'code'),
+        ('runge-kutta', 'Runge-Kutta'),
+        ('on windows', 'on Windows'),
+        ('in windows', 'in Windows'),
+        ('under windows', 'under Windows'),
         ]
-    for name in 'Newton', 'Lagrange', 'Einstein', 'Poisson', 'Taylor', 'Gibb':
+    for name in 'Newton', 'Lagrange', 'Einstein', 'Poisson', 'Taylor', 'Gibb', \
+            'Heun', :
         genetive = "'s"
         cap_words_fix.append((name.lower()+genetive, name+genetive))
 
@@ -5217,7 +5621,6 @@ def capitalize():
     f = open(filename, 'w')
     f.write(filestr)
     f.close()
-    print 'Edits of titles:'
     for old, new in old2new:
         if old != new:
             print old
@@ -5226,7 +5629,7 @@ def capitalize():
 
 def _capitalize(filestr, cap_words, cap_words_fix):
     pattern1 = r'^\s*(={3,9})(.+?)(={3,9})'  # sections
-    pattern2 = r'__(.+?[.:?;!])__'       # paragraphs
+    pattern2 = r'^__(.+?[.:?;!])__'       # paragraphs
 
     sections   = re.findall(pattern1, filestr, flags=re.MULTILINE)
     paragraphs = re.findall(pattern2, filestr, flags=re.MULTILINE)
@@ -5264,7 +5667,8 @@ def _capitalize(filestr, cap_words, cap_words_fix):
                     words.remove(word)
                     words += word.split('-')
                 if word[0] == '`' and word[-1] == '`':
-                    words.remove(word)
+                    if word in words:
+                        words.remove(word)
 
             for word in words:
                 #print '    ', word
@@ -5381,7 +5785,7 @@ def md2latex():
     generated from Markdown (via pandoc) compiles.
     """
     if len(sys.argv) < 2:
-        _usage_md2html()
+        _usage_md2latex()
         sys.exit(1)
 
     filename = sys.argv[1]
@@ -5653,6 +6057,7 @@ def _latex2doconce(filestr):
         (r'\\idxc\{(?P<subst>.+?)\}', r'idx{`\g<subst>` class}'),
         (r'\\idxm\{(?P<subst>.+?)\}', r'idx{`\g<subst>` module}'),
         (r'\\idxnumpy\{(?P<subst>.+?)\}', r'idx{`\g<subst>` (from `numpy`)}'),
+        (r'\\idxnumpyr\{(?P<subst>.+?)\}', r'idx{`\g<subst>` (from `numpy.random`)}'),
         (r'\\idxst\{(?P<subst>.+?)\}', r'idx{`\g<subst>` (from `scitools`)}'),
         (r'\\idxfn\{(?P<subst>.+?)\}', r'idx{`\g<subst>` (FEniCS)}'),
         (r'\\idxe\{(?P<attr>.+?)\}\{(?P<obj>.+?)\}', r'idx{`\g<attr>` \g<obj>}'),
@@ -5725,11 +6130,12 @@ def _latex2doconce(filestr):
         (r'\eit', r'\end{itemize}'),
         (r'\para{', r'\paragraph{'),
         (r'\refeq', r'\eqref'),
-        ("''", '"'),
-        ("``", '"'),
+        # dangerous double derivative: ("''", '"'),
+        # should be corrected manually ("``", '"'),
         ("Chapter~", "Chapter "),
         ("Section~", "Section "),
         ("Appendix~", "Appendix "),
+        ("Appendices~", "Appendices "),
         ("Figure~", "Figure "),
         ("Table~", "Table "),
         ("Chapters~", "Chapters "),
@@ -5810,7 +6216,8 @@ def _latex2doconce(filestr):
     # ptex2tex code environments:
     code_envirs = ['ccq', 'cod', 'pro', 'ccl', 'cc', 'sys',
                    'dsni', 'sni', 'slin', 'ipy', 'rpy',
-                   'py', 'plin', 'ver', 'warn', 'rule', 'summ'] # sequence important for replace!
+                   'py', 'plin', 'ver', 'warn', 'rule', 'summ',
+                   'dat', ] # sequence important for replace!
     for language in 'py', 'f', 'c', 'cpp', 'sh', 'pl', 'm':
         for tp in 'cod', 'pro':
             code_envirs.append(language + tp)
@@ -5826,7 +6233,7 @@ def _latex2doconce(filestr):
     # eqnarray -> align
     filestr = filestr.replace(r'{eqnarray', '{align')
     filestr = re.sub(r'&(\s*)=(\s*)&', '&\g<1>=\g<2>', filestr)
-    filestr = re.sub(r'&(\s*)\\approx(\s*)&', '&\g<1>\\approx\g<2>', filestr)
+    filestr = re.sub(r'&(\s*)\\approx(\s*)&', '&\g<1>\\\\approx\g<2>', filestr)
 
     # \item alone on line: join with next line (indentation is fixed later)
     filestr = re.sub(r'\\item\s+(\w)', r'\item \g<1>', filestr)
@@ -6116,6 +6523,7 @@ def _latex2doconce(filestr):
     eqrefs = re.findall(r'\\eqref\{(.+?)\}', filestr)
     pagerefs = re.findall(r'\\pageref\{(.+?)\}', filestr)
     refs = refs + eqrefs + pagerefs
+    '''
     for ref in refs:
         if ref not in labels:
             print 'found reference but no label{%s}' % ref
@@ -6125,6 +6533,7 @@ def _latex2doconce(filestr):
             filestr = filestr.replace(r'\ref{%s}' % ref,
                       r'(_PROBLEM: external ref_) ref{%s}' % ref)
             #print r'FIX external ref: ref[%(ref)s]["section where %(ref)s is": "http URL with %(ref)s" cite{doc_with_%(ref)s}]["section where %(ref)s is": "http URL with %(ref)s" cite{doc_with_%(ref)s}]' % vars()
+    '''
     for ref in pagerefs:
         print 'pageref{%s} should be rewritten' % ref
         filestr = filestr.replace(r'\pageref{%s}' % ref,
@@ -6173,6 +6582,9 @@ def _latex2doconce(filestr):
     #filestr = re.sub(r'([A-Za-z0-9,:?!; ])\n^!bc', r'\g<1>\n\n!bc',
     #                 filestr, flags=re.MULTILINE)
     filestr = re.sub(r'\s+(?=^!bt|^!bc)', '\n\n', filestr, flags=re.MULTILINE)
+
+    # Inline equations cause trouble
+    filestr = re.sub(r'!et +([^\n])', '!et\n\g<1>', filestr)
 
     return filestr
 
@@ -6595,15 +7007,25 @@ Automatically generated file for compiling doconce documents.
 """
 import sys, glob, os, shutil
 
+logfile = 'tmp_output.log'  # store all output of all operating system commands
+f = open(logfile, 'w'); f.close()  # touch logfile so it can be appended
+
 unix_command_recorder = []
 
-def system(command):
-    failure = os.system(command)
-    if failure:
-        print 'Could not run\\n', command
+def system(cmd):
+    """Run system command cmd."""
+    print cmd
+    try:
+        output = subprocess.check_output(cmd, shell=True,
+                                         stderr=subprocess.STDOUT)
+    except subprocess.CalledProcessError as e:
+        print 'Command\n  %%s\nfailed.' %% cmd
+        print 'Return code:', e.returncode
+        print e.output
         sys.exit(1)
-    else:
-        unix_command_recorder.append(cmd)  # record command for bash script
+    print output
+    f = open(logfile, 'a'); f.write(output); f.close()
+    unix_command_recorder.append(cmd)  # record command for bash script
 
 def spellcheck():
     for filename in glob.glob('*.do.txt'):

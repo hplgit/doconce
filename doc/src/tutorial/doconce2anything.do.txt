@@ -252,6 +252,9 @@ doconce format html mydoc2
 !ec
 !enotice
 
+# See here if MathJax stops working in HTML pages on blogger and elsewhere:
+# http://weiqigao.blogspot.no/2013/03/enabling-mathjax-in-blogger.html
+
 Blog posts at Google can also be published "automatically through email":
 "http://support.google.com/blogger/bin/answer.py?hl=en&answer=41452".
 A Python program can send the contents of the HTML file
@@ -537,6 +540,14 @@ There are also preprocessor variables with specific values:
      * `gray-wide` for white text in a gray box that spans the whole
        page width.
 
+ * `LIST_OF_EXERCISES` for controlling how lists of exercises, problems,
+   and projects are typeset:
+
+     * `non`: no listing of exercises, problems, and projects (default)
+     * `toc`: include exercises, problems, and projects as part of
+       the ordinary table of contents
+     * `loe`: make a separate list of exercises, problems, and projects,
+       which appears after the table of contents
 
 If you are not satisfied with the generated Doconce preamble, you can provide
 your own preamble by adding the command-line option `--latex_preamble=myfile`.

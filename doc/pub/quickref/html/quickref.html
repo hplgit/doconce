@@ -82,7 +82,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Author:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jan 15, 2014</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Feb 5, 2014</td>
 </tr>
 </tbody>
 </table>
@@ -764,11 +764,11 @@ forthcoming text. The index is only produced for the <tt class="docutils literal
 transforming a <tt class="docutils literal"><span class="pre">.do.txt</span></tt> file to some format. Here is the
 list of capabilities:</p>
 <div class="highlight-bash"><div class="highlight"><pre>Usage: doconce <span class="nb">command</span> <span class="o">[</span>optional arguments<span class="o">]</span>
-commands: format <span class="nb">help </span>sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format <span class="nb">help </span>sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 <span class="c"># transform doconce file to another format</span>
-doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwiki|cwiki|pandoc|st|epytext file.do.txt
+doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwiki|cwiki|pandoc|st|epytext dofile
 
 <span class="c"># substitute a phrase by another using regular expressions</span>
 doconce subst <span class="o">[</span>-s -m -x --restore<span class="o">]</span> regex-pattern regex-replacement file1 file2 ...
@@ -787,7 +787,7 @@ doconce replace_from_file file-with-from-to file1 file2 ...
 doconce expand_mako mako_code_file funcname file1 file2 ...
 
 <span class="c"># remove all inline comments in a doconce file</span>
-doconce remove_inline_comments file.do.txt
+doconce remove_inline_comments dofile
 
 <span class="c"># create a directory for the sphinx format</span>
 doconce sphinx_dir <span class="nv">author</span><span class="o">=</span><span class="s1">&#39;John Doe&#39;</span> <span class="nv">title</span><span class="o">=</span><span class="s1">&#39;Long title&#39;</span> <span class="se">\</span>
@@ -796,9 +796,6 @@ doconce sphinx_dir <span class="nv">author</span><span class="o">=</span><span c
     do_file <span class="o">[</span>do_file2 do_file3 ...<span class="o">]</span>
 <span class="o">(</span>requires sphinx version &gt;<span class="o">=</span> 1.1<span class="o">)</span>
 
-<span class="c"># replace latex-1 (non-ascii) characters by html codes</span>
-doconce latin2html file.html
-
 <span class="c"># walk through a directory tree and insert doconce files as</span>
 <span class="c"># docstrings in *.p.py files</span>
 doconce insertdocstr rootdir
@@ -806,14 +803,8 @@ doconce insertdocstr rootdir
 <span class="c"># remove all files that the doconce format can regenerate</span>
 doconce clean
 
-<span class="c"># print the header (preamble) for latex file</span>
-doconce latex_header
-
-<span class="c"># print the footer for latex files</span>
-doconce latex_footer
-
 <span class="c"># change encoding</span>
-doconce change_encoding utf-8 latin1 filename
+doconce change_encoding utf-8 latin1 dofile
 
 <span class="c"># guess the encoding in a text</span>
 doconce guess_encoding filename
@@ -826,9 +817,6 @@ doconce format sphinx complete_file
 doconce split_rst complete_file        <span class="c"># !split delimiters</span>
 doconce sphinx_dir complete_file
 python automake_sphinx.py
-
-<span class="c"># edit URLs to local files and place them in _static</span>
-doconce sphinxfix_local_URLs file.rst
 
 <span class="c"># split an html file into parts according to !split commands</span>
 doconce split_html complete_file.html
@@ -848,6 +836,9 @@ doconce grab   --from<span class="o">[</span>-<span class="o">]</span> from-text
 <span class="c"># remove selected text from a file</span>
 doconce remove --from<span class="o">[</span>-<span class="o">]</span> from-text <span class="o">[</span>--to<span class="o">[</span>-<span class="o">]</span> to-text<span class="o">]</span> somefile &gt; result
 
+<span class="c"># list all figure, movie or included code files</span>
+doconce grep FIGURE|MOVIE|CODE dofile
+
 <span class="c"># run spellcheck on a set of files</span>
 doconce spellcheck <span class="o">[</span>-d .mydict.txt<span class="o">]</span> *.do.txt
 
@@ -857,22 +848,22 @@ doconce ptex2tex mydoc -DMINTED <span class="nv">pycod</span><span class="o">=</
         <span class="nv">dat</span><span class="o">=</span><span class="se">\b</span>egin<span class="o">{</span>quote<span class="o">}</span><span class="se">\b</span>egin<span class="o">{</span>verbatim<span class="o">}</span>;<span class="se">\e</span>nd<span class="o">{</span>verbatim<span class="o">}</span><span class="se">\e</span>nd<span class="o">{</span>quote<span class="o">}</span>
 
 <span class="c"># make HTML file via pandoc from Markdown (.md) file</span>
-doconce md2html file
+doconce md2html file.md
 
 <span class="c"># make LaTeX file via pandoc from Markdown (.md) file</span>
-doconce md2latex file
-
-<span class="c"># expand short cut commands to full form in files</span>
-doconce expand_commands file1 file2 ...
+doconce md2latex file.md
 
 <span class="c"># combine several images into one</span>
 doconce combine_images image1 image2 ... output_file
 
-<span class="c"># insert a table of exercises in a latex file myfile.p.tex</span>
-doconce latex_exercise_toc myfile
+<span class="c"># report problems from a LaTeX .log file</span>
+doconce latex_problems mydoc.log <span class="o">[</span>overfull-hbox-limit<span class="o">]</span>
 
 <span class="c"># list all labels in a document (for purposes of cleaning them up)</span>
 doconce list_labels myfile
+
+<span class="c"># generate script for substituting generalized references</span>
+doconce ref_external mydoc <span class="o">[</span>pubfile<span class="o">]</span>
 
 <span class="c"># check all links in HTML files</span>
 doconce linkchecker *.html
@@ -892,9 +883,6 @@ doconce pygmentize myfile <span class="o">[</span>pygments-style<span class="o">
 <span class="c"># generate a make.sh script for translating a doconce file to various formats</span>
 doconce makefile docname doconcefile <span class="o">[</span>html sphinx pdflatex ...<span class="o">]</span>
 
-<span class="c"># fix common problems in bibtex files for publish import</span>
-doconce fix_bibtex4publish file1.bib file2.bib ...
-
 <span class="c"># find differences between two files</span>
 doconce diff file1.do.txt file2.do.txt <span class="o">[</span>diffprog<span class="o">]</span>
 <span class="o">(</span>diffprog can be difflib, diff, pdiff, latexdiff, kdiff3, diffuse, ...<span class="o">)</span>
@@ -904,6 +892,27 @@ doconce gitdiff file1 file2 file3 ...
 
 <span class="c"># convert csv file to doconce table format</span>
 doconce csv2table somefile.csv
+
+<span class="c"># edit URLs to local files and place them in _static</span>
+doconce sphinxfix_local_URLs file.rst
+
+<span class="c"># replace latex-1 (non-ascii) characters by html codes</span>
+doconce latin2html file.html
+
+<span class="c"># fix common problems in bibtex files for publish import</span>
+doconce fix_bibtex4publish file1.bib file2.bib ...
+
+<span class="c"># print the header (preamble) for latex file</span>
+doconce latex_header
+
+<span class="c"># print the footer for latex files</span>
+doconce latex_footer
+
+<span class="c"># expand short cut commands to full form in files</span>
+doconce expand_commands file1 file2 ...
+
+<span class="c"># insert a table of exercises in a latex file myfile.p.tex</span>
+doconce latex_exercise_toc myfile
 </pre></div>
 </div>
 </div>

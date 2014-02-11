@@ -737,6 +737,32 @@ Inline comments are typeset in a simple way (boldface name and the
 comment in parenthesis), but in LaTeX very visible color boxes
 are used (via the `todonotes` package).
 
+=== Forced Line Breaks ===
+
+By ending a line with `<linebreak>` the output format has a forced
+linebreak at this point. This can be used to typeset poems,
+songs (if not in a verbatim block), or the origin of quotes.
+Here is an example:
+
+!bc
+|bquote
+*Program writing is substantially more demanding than book
+writing. Why is it so? I think the main reason is that a larger
+attention span is needed when working on a large computer program
+than when doing other intellectual tasks.* <linebreak>
+Donald Knuth cite[p. 18]{Knuth85}, computer scientist, 1938-.
+|equote
+!ec
+is rendered as
+
+!bquote
+*Program writing is substantially more demanding than book
+writing. Why is it so? I think the main reason is that a larger
+attention span is needed when working on a large computer program
+than when doing other intellectual tasks.* <linebreak>
+Donald Knuth cite[p. 18]{Knuth85}, computer scientist, 1938-.
+!equote
+
 
 === Inline Mathematics ===
 
@@ -837,44 +863,173 @@ in Section ref{inline:tagging}.
 label{manual:genrefs}
 
 Sometimes a series of individual documents may be assembled to one
-large document. The assembly impacts how references to sections
-are written: when referring to a section in the same document, a label
-can be used, while references to sections in other documents are
-written differently, sometimes involving a link (URL) and a citation.
-Especially if both the individual documents and the large assembly document
-are to exist side by side, a flexible way of referencing is needed.
-For this purpose, Doconce offers *generalized references* which allows
-a reference to have two different formulations, one for internal
-references and one for external references. Since LaTeX supports
-references to labels in external documents via the `xr` package,
-the generalized references in Doconce has a syntax that may utilize
-the `xr` feature in LaTeX.
+large document, typically a book.
+In the book one wants to make cross references between chapters
+and sections, while these become references to external documents
+when the chapters (or sections) are compiled as stand-alone
+documents. For example, one can in a Doconce file `file1.do.txt`
+have text like
 
+!bc
+...as shown in Section ref{sec:eqs}.
+!ec
+with `label{sec:eqs}` defined in another file `file2.do.txt`.
+If `file1.do.txt` and `file2.do.txt` are combined to a single
+document, the reference is treated correctly, but if `file1.do.txt`
+is compiled as a single document, the label `sec:eqs` becomes
+undefined. Then one would instead write
+
+!bc
+...as shown in the document "Mathematical Equations":
+"http://some.net/doc/matheqs.html" cite{math_eqs_2020}.
+!ec
+However, LaTeX has functionality for referring to labels
+in external documents: these work fine when the `xr` package
+is used and the external documents are listed as
+`externaldocument{name}`. In that case, we would write
+the above reference as
+
+!bc
+\externaldocument{file2}
+...
+...as shown in Section ref{sec:eqs} in cite{math_eqs_2020}.
+!ec
+
+To treat all these cases simultanesouly, Doconce
+features *generalized references* which allows
+a reference to have different formulations, depending on whether
+the label is present in the document or is present in an
+external document.
 The syntax of generalized references reads
+
 !bc
 ref[internal][cite][external]
 !ec
-If all `ref{label}` references in the text `internal` are references
-to labels in the present document, the above `ref` command is replaced
-by the text `internal`. Otherwise, if cite is non-empty and the format
-is `latex` or `pdflatex` one assumes that the references in `internal`
-are to external documents declared by a comment line `#
-Externaldocuments: testdoc, mydoc` (usually after the title, authors,
-and date). In this case the output text is `internal cite` and the
-LaTeX package `xr` is used to handle the labels in the external documents.
-When referring to a complete chapter (not a section in it), which
-corresponds to a complete external document, it does not make sense
-to write out `internal cite` since the `internal` reference is a
-chapter number. In such cases, the `refch[internal][cite][external]`
-syntax can be used,
-and if the label is in another LaTeX document, the output is just `cite`
-(rather than `internal cite`). An example below will illustrate the use.
-For all
-output formats other than `latex` and `pdflatex`, the `external`
-text will be the output.
+If all `ref{label}` references in the text `internal` are
+to labels defined in the Doconce document, the
+generalized reference becomes the text `internal`.
+If one or more labels are not present in the document and
+`latex` or `pdflatex` is output format, the generalized reference becomes the
+text `internal` plus `cite`, while for all other formats the
+text in `external` is used.
 
-Here is an example on a specific generalized reference to a section
-in a document:
+The example above can now be written as the generalized reference
+
+!bc
+...as shown in ref[Section ref{sec:eqs}][ in cite{math_eqs_2020}][
+the document "Mathematical Equations":
+"http://some.net/doc/matheqs.html" cite{math_eqs_2020}].
+!ec
+When `label{sec:eqs}` is found in the current Doconce document,
+the generalized reference becomes
+
+!bc
+Section ref{sec:eqs}
+!ec
+If not, and `latex` or `pdflatex` is output, the reference becomes
+
+!bc
+Section ref{sec:eqs}] in cite{math_eqs_2020}
+!ec
+while in all other cases the reference becomes
+
+!bc
+the document "Mathematical Equations":
+"http://some.net/doc/matheqs.html" cite{math_eqs_2020}
+!ec
+
+For the reference to a label in an external document
+to work in the LaTeX case it is required to list this
+document in the Doconce file as
+
+!bc
+# Externaldocuments: file2
+!ec
+Several external documents can be listed with comma as delimiter:
+
+!bc
+# Externaldocuments: file2, file3, myfile
+!ec
+on *a single line*. The `Externaldocuments` comment leads to use
+of the `xr` package and insertion of `\externaldocument{file2}`
+in the LaTeX output file. It is a good habit to place
+the `Externaldocument` comment after the title, author, and date.
+
+Very often a reference to a chapter in a book becomes just
+a reference to a complete document, not a specific section,
+if chapters are compiled individually. For `latex` and `pdflatex`
+output one would then do a reference `Chapter ref{ch:eqs}`
+as just `cite{eqs_doc_2008}`. That is, one would just use
+the `cite` text and not `internal` plus `cite`. This is enabled
+by writing the generalized reference with `refch` instead of
+`ref`:
+
+!bc
+...as shown in refch[Chapter ref{ch:eqs}][cite{eqs_doc_2008}][
+the document "Some Equations": "http://some.net/someeqs/"].
+!ec
+
+The `doconce ref_external` command will read all the labels in the
+external documents listed in the `Externaldocuments:` comment
+and use the publish file of the current document to automatically
+generate substitution commands that translates ordinary references
+to generalized references. For example, `doconce ref_external file1`
+will find the reference
+
+!bc
+......as shown in Section ref{sec:eqs}.
+!ec
+as a reference to an label `sec:eqs` defined in `file2`, grab
+the title of `file2.do.txt` and find the bibliographic data in
+the publish file and make a substitution command
+
+!bc
+doconce subst "Section\s+ref{sec:eqs}" "..." $files
+!ec
+where "..." is the generalized reference as shown in the
+examples above.
+In other words, with `doconce ref_external` one can automatically
+generate generalized references between, for example, chapters in
+a book that exist as stand-alone documents.
+
+!bwarning
+Generalized references to equations work well in LaTeX, but
+not in other formats as one cannot resolve the equation number
+in the external document. It is then better to write different
+text using the `FORMAT` variable in Mako:
+
+!bc
+% if FORMAT in ("pdflatex", "latex"):
+By combining ref[(ref{eqs:g1})-(ref{eqs:g4})][ in cite{some_doc}][
+dummy] we can derive the expression ...
+% else:
+One can from cite{some_doc} derive the expression
+% endif
+!ec
+The `doconce ref_external` tool generates an `external` text
+in case of references to equations that says
+"reference to specific _equations_ (label eqs:g1 and eqs:g4)
+in external document "name": "link" is not recommended".
+One can then search for this text and make a Mako if-else rewrite
+as shown above.
+!ewarning
+
+!bwarning Limited support
+The `doconce ref_external` tool cannot correctly handle references
+to a range of sections like
+
+!bc
+Sections ref{mydoc:sec1}-ref{mydoc:sec2}
+!ec
+The automatically generated generalized references should always
+be manually checked and edited.
+!ewarning
+
+=== A Worked Example ===
+
+Here is an example on a specific working generalized reference where
+the LaTeX output also has a hyperlink:
+
 !bc
 As explained in
 ref[Section ref{subsec:ex}][in "Langtangen, 2012":
@@ -929,9 +1084,7 @@ the document "A Document for Testing Doconce":
 cite{Doconce:test}], Doconce documents may include tables.
 !equote
 
-A reference to an entire external document, which is usually a chapter
-of a book if the reference is internal in the Doconce source,
-usually needs to apply the `refch` syntax:
+A complete "chapter" reference may look like
 
 !bc
 As explained in
@@ -942,7 +1095,7 @@ cite{Doconce:test}][the document
 "http://hplgit.github.io/doconce/test/demo_testdoc.html"
 cite{Doconce:test}], Doconce documents may include tables.
 !ec
-The output now if `ch:testdoc` is not a label in the document,
+The output now, if `ch:testdoc` is not a label in the document,
 becomes in the `latex` and `pdflatex` case
 
 !bc
@@ -968,6 +1121,15 @@ Note that LaTeX cannot
 have links to local files, so a complete URL on the form
 `http://...` must be used.
 
+!bnotice Tip
+Use `doconce ref_external` to get an overview of the external
+references in a file. Very often you want to rewrite the text
+to reduce the amount of external referencing. Remember then
+to compile your document before running `doconce ref_external`
+again since the command applies the compiled files to get information
+(`tmp_preprocess_*` or `tmp_mako_*`) if you use any of the Preprocess
+or Mako preprocessors.
+!enotice
 
 ===== Index =====
 idx{index} idx{citations} idx{bibliography}
@@ -1380,7 +1542,18 @@ one can use the `!bsubex` and `!bsol`
 commands to indicate a subproblem and a solution. In this way, the
 typesetting of the example looks like an exercise equipped with a solution.
 
+=== List of Exercises, Problems, and Projects ===
 
+Doconce also supports listing all exercises, problems, and projects
+with corresponding page numbers.
+By default, no such listing is enabled. When running `doconce ptex2tex` or
+`ptex2tex`, there is a preprocessor variable `LIST_OF_EXERCISES`
+that can be set to
+
+ * `toc`: include exercises, problems, and projects as part of
+   the table of contents
+ * `loe`: make a separate list of exercises, problems, and projects,
+   which appears after the table of contents
 
 ===== Blocks of Verbatim Computer Code =====
 label{sec:verbatim:blocks}
@@ -1812,13 +1985,24 @@ In `rst` and `sphinx` one applies the native admonitions, but
 in `sphinx` the `automake_sphinx.py` script manipulates the HTML
 file to set a gray background for all admonitions.
 In `html` one has a command-line argument `--html_admon` that
-can be set to different styles: `--html_admon=white` for
-white background and small icons, `--html_admon=gray` for
-larger icons with gray background and small font, `--html_admon=yellow`
-and `--html_admon=apricot`
-works as the `gray` style, but the color is different.
-With `--html_admon=colors` one gets quite bright colors
-as backgrounds for the different admonitions.
+can be set to different styles:
+
+ * `--html_admon=gray` for
+   icons with gray background and small font,
+ * `--html_admon=yellow`
+   and `--html_admon=apricot` are similar,
+   but the icons and colors are different,
+ * `--html_admon=colors` has quite bright colors
+   as backgrounds for the different admonitions,
+ * `--html_admon=lyx`
+   gives a white background and small icons,
+ * `--html_admon=paragraph` results in a simple paragraph with the
+   admon title as heading.
+
+The options `--html_admon_bg_color=...` and `--html_admon_bd_color=...`
+can be used to override the default background and boundary frame colors
+of the admon styles (respectively). These options have only effect
+for the `apricot`, `yellow`, and `gray` styles.
 
 Some recommended combinations for admonitions in HTML are
 
@@ -1835,8 +2019,8 @@ icon (defined in `vagrant.css`), while the others are yellow (defined
 in `twitter_bootstrap.css`). The `--html_admon` color has no effect
 for the `vagrant` style.
 
-In `latex` and `pdflatex`, the type of admonition is configured in the
-`.p.tex` file through the `ADMON` preprocessor variable.
+In `latex` and `pdflatex`, the type of admonition style is set by
+the command-line option `--latex_admon=`.
 Several values are available:
 
  * `paragraph` is the simplest type of admonition and typeset
@@ -1857,11 +2041,18 @@ Several values are available:
  * `graybox3` has icons and a light gray background.
  * `yellowbox` has icons and a light yellow background.
 
+There is also an option `--latex_admon_color=...` that can be used
+to override the default color. Values are either saturated colors
+like `gray!10` or an RGB tuple `0.95,0.91,0.97`. The chosen color
+replaces all default colors for all admon styles except `paragraph`.
+For example, an oval white box is produced by `--latex_admon=graybox1`
+and `--latex_admon_color=white`.
+
 === The Box Environment ===
 
-A plain box without any title, just a rectangular frame, is also
-available. One application is to frame an equation or a
-key result. The syntax goes like
+A plain box without any title or colored background,
+just a rectangular frame, is also
+available. The syntax goes like
 
 !bc
 |bbox
@@ -1878,6 +2069,43 @@ resulting in
 !et
 !ebox
 
+Admonitions are usually used to typeset something that should be distinct
+from the running text: a warning, a remark, a notification, a question,
+a summary, while a box is often used to highlight a key finding
+in the running text: an equation, a hypothesis, a theorem, a
+rule, or a conclusion.
+
+===== Typesetting of Algorithms =====
+
+Doconce has no support for typesetting of algorithms, while LaTeX
+has quite sophisticated support. LaTeX writes need some strategy with
+dealing with algorithms in Doconce: they should be sophisticated
+when the output is in LaTeX and they should be readable when the
+output is in other formats that have no native support for
+algorithms.
+
+The simplest solution is to use the preprocessor (Preprocess or Mako)
+to allow different solutions for different formats.
+There are basically three typesetting styles available: LaTeX
+algorithm environments, pseudo code in a verbatim block, and
+a nested list. A preprocessor variable, say `ALG` can be used
+to select the typesetting. With Mako we can write
+
+!bc
+% if ALG == 'latex':
+# Write native LaTeX code for the algorithm
+% elif ALG == 'code':
+# Write pseudo code in (e.g.) a python-like style
+|bc pycode
+if feature in element:
+...
+|ec
+% elif ALG == 'list':
+# Use lists to express the algorithm
+  o if this element has the feature:
+    * ...
+% endif
+!ec
 
 
 ===== Preprocessing Steps =====

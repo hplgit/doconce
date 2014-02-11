@@ -78,7 +78,7 @@ setup(
     description = __doc__,
     license = "BSD",
     name = "Doconce",
-    url = "http://doconce.googlecode.com",
+    url = "https://github.com/hplgit/doconce",
     package_dir = {'': 'lib'},
     packages = ['doconce'],
     # list individual modules if not all files are wanted as part

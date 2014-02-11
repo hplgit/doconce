@@ -252,13 +252,17 @@ def html_code(filestr, code_blocks, code_block_types,
               tex_blocks, format):
     """Replace code and LaTeX blocks by html environments."""
 
+    # Mapping from envir (+cod/pro if present) to pygment style
     types2languages = dict(py='python', cy='cython', f='fortran',
                            c='c', cpp='c++', sh='bash', rst='rst',
                            m ='matlab', pl='perl', rb='ruby',
                            swig='c++', latex='latex', tex='latex',
                            html='html', xml='xml',
-                           js='js', sys='bash',
-                           pyoptpro='python', pyscpro='python')
+                           js='js',
+                           sys='console', # sys='text', sys='bash'
+                           dat='text', txt='text', csv='text',
+                           cc='txt', ccq='text',
+                           pyopt='python', pysc='python')
     try:
         import pygments as pygm
         from pygments.lexers import guess_lexer, get_lexer_by_name
@@ -320,6 +324,9 @@ def html_code(filestr, code_blocks, code_block_types,
             formatter = HtmlFormatter(linenos=linenos, noclasses=True,
                                       style=pygm_style)
             result = highlight(code_blocks[i], lexer, formatter)
+
+            if code_block_types[i] == 'ccq':
+                result = '<blockquote>\n%s</blockquote>' % result
 
             result = '<!-- code=%s%s typeset with pygments style "%s" -->\n' % (language, '' if code_block_types[i] == '' else ' (from !bc %s)' % code_block_types[i], pygm_style) + result
             # Fix ugly error boxes
@@ -396,6 +403,10 @@ def html_code(filestr, code_blocks, code_block_types,
         filestr = re.sub(r'!ec\n',
                 r'</code></pre>\n<!-- end verbatim block -->\n',
                 filestr)
+        # Note: ccq envir is not put in blockquote tags, only if
+        # pygments is used (would need to first substitute !bc ccq, but
+        # !ec poses problems - drop this for plan pre/code tags since
+        # pygments is the dominating style)
 
     if option('wordpress'):
         MATH_TYPESETTING = 'WordPress'
@@ -939,16 +950,25 @@ def html_ref_and_label(section_label2title, format, filestr):
     pattern = r'[Cc]hapter(s?)\s+ref\{'
     replacement = r'the chapter\g<1> ref{'
     filestr = re.sub(pattern, replacement, filestr)
-    # Need special adjustment to handle start of sentence (capital) or not.
-    pattern = r'([.?!])\s+the (sections?|captions?)\s+ref'
-    replacement = r'\g<1> The \g<2> ref'
+    pattern = r'[Aa]ppendix\s+ref\{'
+    replacement = r'the appendix ref{'
     filestr = re.sub(pattern, replacement, filestr)
+    pattern = r'[Aa]ppendices\s+ref\{'
+    replacement = r'the appendices ref{'
+    filestr = re.sub(pattern, replacement, filestr)
+    # Need special adjustment to handle start of sentence (capital) or not.
+    pattern = r'([.?!]\s+|^)the (sections?|chapters?|appendix|appendices)\s+ref'
+    replacement = r'\g<1>The \g<2> ref'
+    filestr = re.sub(pattern, replacement, filestr, flags=re.MULTILINE)
 
-    # Remove Exercise, Project, Problem in references since those words
+    # Remove "the" Exercise, Project, Problem in references since those words
     # are used in the title of the section too
     pattern = r'(the\s*)?([Ee]xercises?|[Pp]rojects?|[Pp]roblems?)\s+ref\{'
     replacement = r'ref{'
     filestr = re.sub(pattern, replacement, filestr)
+
+    # Fix side effect from the above that one gets constructions 'the The'
+    filestr = re.sub(r'the\s+The', 'the', filestr)
 
     # extract the labels in the text (filestr is now without
     # mathematics and those labels)
@@ -1260,6 +1280,7 @@ def define(FILENAME_EXTENSION,
         'figure':        html_figure,
         'movie':         html_movie,
         'comment':       '<!-- %s -->',
+        'linebreak':     r'\g<text><br />',
         }
 
     if option('wordpress'):
@@ -1372,6 +1393,16 @@ def define(FILENAME_EXTENSION,
     admon_css_vars['apricot'] = dict(boundary='#FFBF00', background='#fbeed5')
     #admon_css_vars['gray']    = dict(boundary='#bababa', background='whiteSmoke')
     admon_css_vars['gray']    = dict(boundary='#bababa', background='#f8f8f8') # same color as in pygments light gray background
+    # Override with user's values
+    html_admon_bg_color = option('html_admon_bg_color=', None)
+    html_admon_bd_color = option('html_admon_bd_color=', None)
+    if html_admon_bg_color is not None:
+        for tp in ('yellow', 'apricot', 'gray'):
+            admon_css_vars[tp]['background'] = html_admon_bg_color
+    if html_admon_bd_color is not None:
+        for tp in ('yellow', 'apricot', 'gray'):
+            admon_css_vars[tp]['boundary'] = html_admon_bd_color
+
     for a in admons:
         if a != 'block':
             admon_css_vars['yellow']['icon_' + a]  = 'small_yellow_%s.png' % a

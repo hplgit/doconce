@@ -120,6 +120,13 @@ def fix(filestr, format, verbose=0):
 def syntax_check(filestr, format):
     """Check for common errors in the doconce syntax."""
 
+    # URLs with just one /
+    m = re.findall(r'https?:/[A-Za-z].+', filestr)
+    if m:
+        print '*** error: missing double // in URLs'
+        print '   ', '\n'.join(m)
+        _abort()
+
     # Check that are environments !bc, !ec, !bans, !eans, etc.
     # appear at the beginning of the line
     for envir in doconce_envirs():
@@ -181,15 +188,6 @@ def syntax_check(filestr, format):
             inside_code = False
         if line.startswith('!et'):
             inside_math = False
-
-        if not inside_code:
-            if "``" in line:
-                print '''\n*** warning: Double back-quotes `` found in file - should be "?'''
-                print 'Line:', line
-        if not inside_math:
-            if "''" in line:
-                #print '''\n*** warning: Double forward-quotes '' found in file - should be "\n(unless derivatives in math)'''
-                pass
 
     commands = [
         r'\[',
@@ -295,11 +293,11 @@ def syntax_check(filestr, format):
 
     # Check that references have parenthesis (equations) or
     # the right preceding keyword (Section, Chapter, Exercise, etc.)
-    pattern = re.compile(r'\s+([A-Za-z]+?)\s+(ref\{.+\})', re.MULTILINE)
+    pattern = re.compile(r'\s+([A-Za-z]+?)\s+(ref\{.+?\})', re.MULTILINE)
     refs = pattern.findall(filestr)
     prefixes = ['chapter', 'ch.',
                 'section', 'sec.',
-                'appendix', 'app.',
+                'appendix', 'app.', 'appendice',
                 'figure', 'fig.',
                 'movie',
                 'exercise',
@@ -308,10 +306,11 @@ def syntax_check(filestr, format):
                 'example', 'ex.',
                 'and', 'or']
     for prefix, ref in refs:
+        orig_prefix = prefix
         if prefix[-1] == 's':
             prefix = prefix[:-1]  # skip plural
         if not prefix.lower() in prefixes:
-            print '*** warning: found reference "%s %s" with unexpected word "%s" in front' % (prefix, ref, prefix),
+            print '*** warning: found reference "%s %s" with unexpected word "%s" in front' % (orig_prefix, ref, orig_prefix),
             print '    (reference to equation, but missing parenthesis in (%s)?)' % (ref)
 
     # Code/tex blocks cannot have a comment, table, figure, etc.
@@ -333,12 +332,13 @@ def syntax_check(filestr, format):
 
     matches = re.findall(r'\\cite\{.+?\}', filestr)
     if matches:
-        print '\n*** warning: found \\cite{...} (cite{...} has no backslash)'
+        print '\n*** warning: found \\cite{...} with backslash'
+        print '    (cite{...} has no backslash in Doconce syntax)'
         print '\n'.join(matches)
 
     matches = re.findall(r'\\idx\{.+?\}', filestr)
     if matches:
-        print '\n*** warning: found \\idx{...} (indx{...} has no backslash)'
+        print '\n*** warning: found \\idx{...} (idx{...} has no backslash)'
         print '\n'.join(matches)
         _abort()
 
@@ -350,12 +350,14 @@ def syntax_check(filestr, format):
     # There should only be ref and label *without* the latex-ish backslash
     matches = re.findall(r'\\label\{.+?\}', filestr)
     if matches:
-        print '\n*** warning: found \\label{...} (label{...} has no backslash)'
+        print '\n*** warning: found \\label{...} with backslash'
+        print '    (label{...} has no backslash in Doconce syntax)'
         print '\n'.join(matches)
 
     matches = re.findall(r'\\ref\{.+?\}', filestr)
     if matches:
-        print '\n*** warning: found \\ref{...} (ref{...} has no backslash)'
+        print '\n*** warning: found \\ref{...} with backslash'
+        print '    (ref{...} has no backslash in Doconce syntax)'
         print '\n'.join(matches)
 
     # consistency check between label{} and ref{}:
@@ -612,6 +614,7 @@ def insert_code_from_file(filestr, format):
 
             # Determine code environment from filename extension
             filetype = os.path.splitext(filename)[1][1:]  # drop dot
+
             if filetype == 'cxx' or filetype == 'C' or filetype == 'h' \
                    or filetype == 'i':
                 filetype = 'cpp'
@@ -623,18 +626,28 @@ def insert_code_from_file(filestr, format):
                 filetype = 'py'
             elif filetype == 'htm':
                 filetype = 'html'
+            elif filetype == 'text':
+                filetype = 'txt'
+            elif filetype == 'data':
+                filetype = 'dat'
             elif filetype in ('csh', 'ksh', 'zsh', 'tcsh'):
                 filetype = 'sh'
+
             if filetype in ('py', 'f', 'c', 'cpp', 'sh',
                             'm', 'pl', 'cy', 'rst',
                             'pyopt',  # Online Python Tutor
                             'pysc',   # Sage cell
-                            'rb', 'html', 'xml', 'js'):
+                            'rb', 'html', 'xml', 'js',
+                            'txt', 'csv', 'dat'):
                 code_envir = filetype
             elif filetype == 'tex':
                 code_envir = 'latex'
             else:
                 code_envir = ''
+            if code_envir in ('txt', 'csv', 'dat', ''):
+                code_envir_tp = 'filedata'
+            else:
+                code_envir_tp = 'program'
 
             m = re.search(r'from-?to:', line)
             if m:
@@ -738,7 +751,7 @@ def insert_code_from_file(filestr, format):
 
             #if format == 'latex' or format == 'pdflatex' or format == 'sphinx':
                 # Insert a cod or pro directive for ptex2tex and sphinx.
-            if True:
+            if code_envir_tp == 'program':
                 if complete_file:
                     code = "!bc %spro\n%s\n!ec" % (code_envir, code)
                     print ' (format: %spro)' % code_envir
@@ -746,8 +759,13 @@ def insert_code_from_file(filestr, format):
                     code = "!bc %scod\n%s\n!ec" % (code_envir, code)
                     print ' (format: %scod)' % code_envir
             else:
-                code = "!bc\n%s\n!ec" % code
-                print
+                # filedata (.txt, .csv, .dat, etc)
+                if code_envir:
+                    code = "!bc %s\n%s\n!ec" % (code_envir, code)
+                    print ' (format: %s)' % code_envir
+                else:
+                    code = "!bc\n%s\n!ec" % code
+                    print ' (format: plain !bc, not special type)'
             lines[i] = code
 
     filestr = '\n'.join(lines)
@@ -968,36 +986,49 @@ def exercises(filestr, format, code_blocks, tex_blocks):
             # outside exercises. Just read the text into a data structure
             # and let formats have a new SURVEY[format] function to typeset
             # the questions. One can generate plain HTML or create full
-            # surveys on Google:
-            # https://developers.google.com/apps-script/reference/forms/
-            # or surveymonkey:
-            # http://www.surveygizmo.com/survey-software-support/tutorials/create-a-survey-through-an-import-from-word/
-            # The multiple choice block can then end in a link to the survey,
-            # but we should check that automatic feedback on correct answers
-            # is possible in the survey service we choose. Google can:
-            # http://www.techrepublic.com/blog/google-in-the-enterprise/use-google-forms-to-create-a-self-grading-quiz/
-            # https://docs.google.com/a/simula.no/document/d/1S_rJ8CAsnBwAH6bRW1tKkwmlv1CWWeHFalkovs_Z0ws/edit
-            # See cool example:
-            # https://sites.google.com/site/mrswilsonstechclasses/technology-class-homework
-            # It should be possible to leave out questions from a doconce doc.
-            # Probably best to give to a summer student.
-            #
-            # How to do multiple choice in exer or subex (or inside admons
-            # and elsewhere, e.g., survey questions):
-            # !bmchoice, !emchoice (bchoices does not work since it starts with bc!)
-            # inside_mchoice: store all that text in subex/exer['multiple_choice'],
-            # perhaps not: mchoice should be an envir that can appear anywhere
-            # so it would be best for the exercise function to just
-            # gather all mchoice statements in one text and get it processed
-            # to some useful data structure for subex/exer.
+            # surveys, see TODO/quiz.do.txt.
+
+            # Start interpreting exercises with interpret_mchoice, which
+            # grabs all !bmchoice envirs, generates the corresponding
+            # doconce and format code, and js code. Best if we have one
+            # js code for all multiple-choce questions. What if we
+            # have !split? Then the js code should only display the
+            # relevant code. Best if forms are plain HTML and that
+            # the js code is only used for answer feedback (then it can be
+            # common to all pages and inserted in all pages).
+            # Make this for HTML first. Just replace renderQuiz with
+            # the plain HTML code in INF1100 quiz. Need a Check my answer
+            # button, Try again, and My score under each question
+            # such that the user can get feedback on the score so far
 
             # Regarding syntax: must allow the question to be arbitrarily
             # doconce-complex, i.e., have movies, lists, whatever.
             # Each choice and explanation can also be complex or quick.
             # Maybe have two types of syntax: one begin-end for complex
             # stuff, and one compact and simple as suggested below.
-            # syntax: Cf/Cr: ..., required E: ... for explanation (can be empty)
-            # Cf is a false choice, Cr is a right choice (or False:/True:)
+            # No, think Q:.+ up to next ^(E|Q|Cf|Cr): notation at the
+            # beginning of the line is sufficient, as explained below.
+
+            # syntax:
+            # T: title (or give it as part of header !bmchoice title)
+            # Q: can be multiline whatever (up to C(f|r):)
+            # A: answer-type: default (none) means choices; text, radio, check
+            # Cr: right choice
+            # C: just a choice (for survey), check or radio according to A:
+            # E: corresponding explanation to last C/Cr/Cw
+            # Cw: another but wrong answer, can be multiline
+            # regex (inside all the bmchoice text): (Cw|Cr):.+?^(E|Cw|Cr|ENDMARKER), re.DOTALL, problem: if not E:, re.findall will not pick out all because the match goes up to and including the next Cw/Cr. Maybe look ahead at ^(E|Cw|Cr|ENDMARKER) can solve this? Try out first! (Must add ENDMARKER to the end of the text)
+            # Could add a remarks section for lessons learned, etc.?
+            #
+
+            # Example code: intro-programming quiz, that is basic js
+            # Really simple, read this first about HTML and jquery!!: http://www.hungrypiranha.org/make-a-website/html-quiz (seems more straightforward than any other solution)
+            # Some js theory for pop-up surveys: http://www.jensbits.com/2010/01/29/pop-up-survey-with-jquery-ui-dialog/
+            # Simple js: https://www.inkling.com/read/javascript-jquery-david-sawyer-mcfarland-2nd/chapter-3/tutorial-a-simple-quiz
+            # are jQuery.Survey: http://flesler.webs.com/jQuery.Survey/ (see source for use), see also https://github.com/jdarling/jQuery.Survey
+
+            # syntax: Cw/Cr: ..., required E: ... for explanation (can be empty)
+            # Cw is a false choice, Cr is a right choice (or False:/True:)
             # Easy to use a regex to pick out the structure of the multiple
             # choice text (False|True):(.+?)(E|Explanation|$): (with $ explanations are optional - NO!!)
             # Better: do a split on True: and then a split on False,
@@ -1948,7 +1979,8 @@ def handle_index_and_bib(filestr, format, has_title):
                 pubfile = pubfile[1]
             if not pubfile.endswith('.pub'):
                 print line
-                print '*** error: illegal publish database', pubfile
+                print '*** error: illegal publish database', pubfile, \
+                      '(must have .pub extension)'
                 _abort()
             if not os.path.isfile(pubfile):
                 print '*** error: cannot find publish database', pubfile
@@ -2009,7 +2041,7 @@ def handle_index_and_bib(filestr, format, has_title):
 
     if len(citations) > 0 and OrderedDict is dict:
         # version < 2.7 warning
-        print '*** warning: citations may appear in random order unless you upgrade to Python version 2.7 or 3.1'
+        print '*** warning: citations may appear in random order unless you upgrade to Python version 2.7 or 3.1 or later'
     if len(citations) > 0 and 'BIBFILE:' not in filestr:
         print '*** warning: you have citations but no bibliography (BIBFILE: ...)'
         #_abort()
@@ -2029,6 +2061,15 @@ def handle_index_and_bib(filestr, format, has_title):
                 _abort()
 
     filestr = INDEX_BIB[format](filestr, index, citations, pubfile, pubdata)
+
+    if not citations and pubfile is not None:
+        # No need for references, remove the section before BIBFILE
+        filestr = re.sub(r'={5,9} .+? ={5,9}\s+^BIBFILE:.+', '',
+                         filestr, flags=re.MULTILINE)
+        # In case we have no heading and just BIBFILE
+        filestr = re.sub(r'^BIBFILE:.+', '', filestr, flags=re.MULTILINE)
+        return filestr
+
     return filestr
 
 def interpret_authors(filestr, format):
@@ -2125,6 +2166,15 @@ def inline_tag_subst(filestr, format):
 
     debugpr('\n*** Inline tags substitution phase ***')
 
+    # Do tags that require almost format-independent treatment such
+    # that everything is conveniently defined here
+    # 1. Quotes around normal text in LaTeX style:
+    pattern = "``([A-Za-z][A-Za-z0-9\s,.;?!/:'() -]*?)''"
+    if format not in ('pdflatex', 'latex'):
+        filestr = re.sub(pattern, '"\g<1>"', filestr)
+
+    # Treat tags that have format-dependent typesetting
+
     ordered_tags = (
         'title',
         'date',
@@ -2145,6 +2195,7 @@ def inline_tag_subst(filestr, format):
         'linkURL2',
         'linkURL3',
         'linkURL',
+        'linebreak',
         )
     for tag in ordered_tags:
         debugpr('\n*************** Working with tag "%s"' % tag)
@@ -2284,8 +2335,9 @@ def file2file(in_filename, format, basename):
                 if '-' in pos:
                     pos = pos.split('-')[0]
                     pos = int(pos)
-            print filestr[pos-40:pos], '|', filestr[pos], '|', filestr[pos+1:pos+40]
-            print '    fix character or try --encoding=utf-8'
+            print repr(filestr[pos-40:pos+40])
+            print ' '*42 + '^'
+            print '    remedies: fix character or try --encoding=utf-8'
             _abort()
 
     try:
@@ -2963,7 +3015,7 @@ def format_driver():
 
     # oneline is inactive (doesn't work well yet)
 
-    global _log, encoding, filename
+    global _log, encoding, filename, dofile_basename
 
     if '--options' in sys.argv:
         from misc import help_format
@@ -3020,6 +3072,8 @@ def format_driver():
             _abort()
     else:
         basename = filename[:-7]
+
+    dofile_basename = basename  # global variable
 
     #print '\n----- doconce format %s %s' % (format, filename)
     preprocessor_options = [arg for arg in sys.argv[1:]

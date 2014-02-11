@@ -1,4 +1,5 @@
 #!/bin/bash -x
+set -x
 
 function system {
   "$@"
@@ -81,7 +82,7 @@ doconce replace --examples_as__exercises $ex testdoc.p.tex
 
 # A4PAPER trigger summary environment to be smaller paragraph
 # within the text (fine for proposals or articles).
-system ptex2tex -DMINTED -DLATEX_HEADING=titlepage -DA4PAPER -DTODONOTES -DLINENUMBERS -DCOLORED_TABLE_ROWS=blue -DFANCY_HEADER -DSECTION_HEADINGS=blue -DLABELS_IN_MARGIN -DDOUBLE_SPACING testdoc
+system ptex2tex -DMINTED -DLATEX_HEADING=titlepage -DA4PAPER -DTODONOTES -DLINENUMBERS -DCOLORED_TABLE_ROWS=blue -DFANCY_HEADER -DSECTION_HEADINGS=blue -DLABELS_IN_MARGIN -DDOUBLE_SPACING -DLIST_OF_EXERCISES=loe testdoc
 
 # test that pdflatex works
 system pdflatex -shell-escape testdoc
@@ -221,7 +222,14 @@ doconce md2latex $name
 # Test admonitions
 admon_tps="colors1 graybox1 paragraph graybox2 yellowbox graybox3 colors2"
 for admon_tp in $admon_tps; do
-system doconce format pdflatex admon --latex_admon=$admon_tp
+if [ $admon_tp = 'graybox1' ]; then
+   color="--latex_admon_color=gray!6"
+elif [ $admon_tp = 'graybox3' ]; then
+   color="--latex_admon_color=gray!20"
+else
+   color=
+fi
+system doconce format pdflatex admon --latex_admon=$admon_tp $color
 doconce ptex2tex admon envir=minted
 cp admon.tex admon_${admon_tp}.tex
 system pdflatex -shell-escape admon_${admon_tp}
@@ -234,6 +242,11 @@ else
 fi
 rm -rf latex_figs
 done
+
+# Test different code envirs inside admons
+doconce format pdflatex admon --latex_admon=graybox1 --latex_admon_color=1,1,1 --latex_admon_envir_map=2
+doconce ptex2tex admon pycod2=minted pypro2=minted pycod=Verbatim pypro=Verbatim
+cp admon.tex admon_double_envirs.tex
 
 system doconce format html admon --html_admon=lyx --html_style=blueish2
 cp admon.html admon_lyx.html
@@ -267,7 +280,7 @@ cp admon.mwiki admon_mwiki.mwiki
 system doconce format plain admon
 cp admon.txt admon_paragraph.txt
 
-cp -f admon_*.html admon_*.pdf admon_*.*wiki admon_*.txt admon_sphinx admon_demo/
+cp -fr admon_*.html admon_*.pdf admon_*.*wiki admon_*.txt admon_sphinx admon_demo/
 
 #google-chrome admon_*.html
 #for pdf in admon_*.pdf; do evince $pdf; done
@@ -314,6 +327,9 @@ cp $name.pdf movie_demo
 
 system doconce format plain movies
 
+cd Springer_T2
+bash -x make.sh
+cd ..
 
 # Status movies: everything works in html and sphinx, only href works
 # in latex, media9 is unreliable
@@ -365,6 +381,9 @@ system doconce format html mako_test3 --no_pygments_html # no problem message
 system doconce format html mako_test4 --no_pygments_html  # works fine, lines start with %%
 
 system doconce csv2table testtable.csv > testtable.do.txt
+
+# Test doconce ref_external command
+sh -x genref.sh
 
 # Test error detection (note: the sequence of the error tests is
 # crucial: an error must occur, then corrected before the next

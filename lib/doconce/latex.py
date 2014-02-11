@@ -18,6 +18,23 @@ def underscore_in_code(m):
     text = text.replace('_', r'\_')
     return r'\code{%s}' % text
 
+def get_bib_index_pages():
+    bib_page = idx_page = '9999'
+    from doconce import dofile_basename
+    name = dofile_basename + '.aux'
+    if not os.path.isfile(name):
+        return bib_page, idx_page
+
+    aux = open(name, 'r')
+    lines = aux.readlines()
+    aux.close()
+    for line in lines:
+        if '{References}' in line or '{Bibliography}' in line:
+            bib_page = line.split('}{')[-2]
+        if '{Index}' in line:
+            idx_page = line.split('}{')[-2]
+    return bib_page, idx_page
+
 def latex_code(filestr, code_blocks, code_block_types,
                tex_blocks, format):
 
@@ -39,6 +56,16 @@ def latex_code(filestr, code_blocks, code_block_types,
         for pattern, replacement in from_to:
             filestr = re.sub(pattern, replacement, filestr, flags=re.MULTILINE)
 
+
+    # Note: cannot fix double quotes right here for it destroys
+    # preprocess/mako code too. Instead we had to introduce the LaTeX
+    # style for quotes: ``[A-Za-z][A-Za-z0-9 ]*?''
+    # The re.sub are really dangerous with a lot of side effects. They
+    # are still here as a warning of never adding such functionality!
+    #filestr = re.sub(r'([^\\])"([^"]+?)"', r"""\g<1>``\g<2>''""", filestr)
+    # Drop fixing of single quotes - it interferes with the double quotes fix,
+    # and it might lead to strange results for the apostrophe!
+    #NO: filestr = re.sub(r"""'([^']+?)'""", r"""`\g<1>'""", filestr)
 
     # References to external documents (done before !bc blocks in
     # case such blocks explain the syntax of the external doc. feature)
@@ -105,10 +132,15 @@ def latex_code(filestr, code_blocks, code_block_types,
     filestr = re.sub(r'!et\n', '', filestr)
 
     # Check for misspellings
-    envirs = 'pro pypro cypro cpppro cpro fpro plpro shpro mpro cod pycod cycod cppcod ccod fcod plcod shcod mcod htmlcod htmlpro rstcod rstpro xmlcod xmlpro cppans pyans fans bashans swigans uflans sni dat dsni sys slin ipy rpy plin ver warn rule summ ccq cc ccl py pyoptpro pyscpro'.split()
+    envirs = 'pro pypro cypro cpppro cpro fpro plpro shpro mpro cod pycod cycod cppcod ccod fcod plcod shcod mcod htmlcod htmlpro rstcod rstpro xmlcod xmlpro cppans pyans fans bashans swigans uflans sni dat dsni csv txt sys slin ipy rpy plin ver warn rule summ ccq cc ccl py pyoptpro pyscpro'.split()
     for envir in code_block_types:
-        if envir and envir not in envirs:
-            print 'Warning: found "!bc %s", but %s is not a standard predefined ptex2tex environment' % (envir, envir)
+        if envir:
+            if envir[-1].isdigit():
+                # strip off digit that can occur inside admons if the
+                # option --latex_admon_envir_map=X is used
+                envir = envir[:-1]
+            if envir not in envirs:
+                print 'Warning: found "!bc %s", but %s is not a standard predefined ptex2tex environment' % (envir, envir)
 
     # --- Final fixes for latex format ---
 
@@ -118,23 +150,111 @@ def latex_code(filestr, code_blocks, code_block_types,
                      count=1)
     filestr = re.sub(appendix_pattern, r'\\\g<1>{', filestr) # all others
 
-    # Make sure exercises are surrounded by \begin{doconce:exercise} and
-    # \end{doconce:exercise} with some exercise counter
+    # Make sure exercises are surrounded by \begin{doconceexercise} and
+    # \end{doconceexercise} with some exercise counter
     #comment_pattern = INLINE_TAGS_SUBST[format]['comment'] # only in doconce.py
     comment_pattern = '%% %s'
     pattern = comment_pattern % envir_delimiter_lines['exercise'][0] + '\n'
-    replacement = pattern + r"""\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+    replacement = pattern + r"""\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 """
     filestr = filestr.replace(pattern, replacement)
     pattern = comment_pattern % envir_delimiter_lines['exercise'][1] + '\n'
-    replacement = r'\end{doconce:exercise}' + '\n' + pattern
+    replacement = r'\end{doconceexercise}' + '\n' + pattern
     filestr = filestr.replace(pattern, replacement)
 
     if include_numbering_of_exercises:
         # Remove section numbers of exercise sections
-        filestr = re.sub(r'section\{(Exercise|Problem|Project)(\s+\d+):( +[^}])',
-                         r'section*{\g<1>\g<2>:\g<3>', filestr)
+        exercise_pattern = r'subsection\*?\{(Exercise|Problem|Project) +(\d+)\s*: +(.+\})'
+        # Make table of contents or list of exercises entry
+        # (might have to add \phantomsection right before because
+        # of the hyperref package?)
+#        filestr, n = re.subn(exercise_pattern,
+#                         r"""subsection*{\g<1> \g<2>: \g<3>
+#% #if LIST_OF_EXERCISES == "toc"
+#\\addcontentsline{toc}{subsection}{\g<2>: \g<3>
+#% #elif LIST_OF_EXERCISES == "loe"
+#\\addcontentsline{loe}{doconceexercise}{\g<1> \g<2>: \g<3>
+#% #endif
+#""", filestr)
+        exercise_headings = re.findall(exercise_pattern, filestr)
+        if exercise_headings:
+            filestr = re.sub(exercise_pattern,
+        r"""subsection*{\g<1> \\thedoconceexercisecounter: \g<3>
+% #if LIST_OF_EXERCISES == "toc"
+\\addcontentsline{toc}{subsection}{\\thedoconceexercisecounter: \g<3>
+% #elif LIST_OF_EXERCISES == "loe"
+\\addcontentsline{loe}{doconceexercise}{\g<1> \\thedoconceexercisecounter: \g<3>
+% #endif
+""", filestr)
+            # Find suitable titles for list of exercises
+            import sets
+            types_of_exer = sets.Set()
+            for exer_tp, dummy, dummy in exercise_headings:
+                types_of_exer.add(exer_tp)
+            types_of_exer = list(types_of_exer)
+            types_of_exer = ['%ss' % tp for tp in types_of_exer]  # plural
+            types_of_exer = [tp for tp in sorted(types_of_exer)]  # alphabetic order
+            if len(types_of_exer) == 1:
+                types_of_exer = types_of_exer[0]
+            elif len(types_of_exer) == 2:
+                types_of_exer = ' and '.join(types_of_exer)
+            elif len(types_of_exer) > 2:
+                types_of_exer[-1] = 'and ' + types_of_exer[-1]
+                types_of_exer = ', '.join(types_of_exer)
+            heading = "List of %s" % types_of_exer
+            # Insert definition of \listofexercises
+            if r'\tableofcontents' in filestr:
+                # Here we take fragments normally found in a stylefile
+                # and put them in the .text file, which requires
+                # \makeatletter, \makeatother, etc, see
+                # http://www.tex.ac.uk/cgi-bin/texfaq2html?label=atsigns
+                # Also, the name of the doconce exercise environment
+                # cannot be doconce:exercise (previous name), but
+                # must be doconceexercise because of the \l@... command
+                style_listofexercises = r"""
+
+%% #ifndef LIST_OF_EXERCISES
+%% #define LIST_OF_EXERCISES "none"
+%% #endif
+
+%% --- begin definition of \listofexercises command ---
+\makeatletter
+\newcommand\listofexercises{
+\chapter*{%(heading)s
+          \@mkboth{%(heading)s}{%(heading)s}}
+\markboth{%(heading)s}{%(heading)s}
+\@starttoc{loe}
+}
+\newcommand*{\l@doconceexercise}{\@dottedtocline{0}{0pt}{6.5em}}
+\makeatother
+%% --- end definition of \listofexercises command ---
+""" % vars()
+                insert_listofexercises = r"""
+%% #if LIST_OF_EXERCISES == "loe"
+\clearemptydoublepage
+\listofexercises
+\clearemptydoublepage
+%% #endif
+""" % vars()
+                target = r'\newcounter{doconceexercisecounter}'
+                filestr = filestr.replace(
+                    target, target + style_listofexercises)
+                target = r'\tableofcontents'
+                filestr = filestr.replace(
+                    target, target + insert_listofexercises)
+
+
+    # Avoid Filename: as a new paragraph with indentation
+    filestr = filestr.replace(r'Filename: \code{', r'\noindent Filename: \code{')
+    # Preface is normally an unnumbered section or chapter
+    # (add \markboth only if book style with chapters
+    if re.search(r'\\chapter\{', filestr):
+        markboth = r'\n\markboth{\g<2>}{\g<2>}'
+    else:
+        markboth = ''
+    filestr = re.sub(r'(section|chapter)\{(Preface.*)\}',
+                     r'\g<1>*{\g<2>}' + markboth, filestr)
 
     # Fix % and # in link texts (-> \%, \# - % is otherwise a comment...)
     pattern = r'\\href\{\{(.+?)\}\}\{(.+?)\}'
@@ -161,6 +281,8 @@ def latex_code(filestr, code_blocks, code_block_types,
                 texttt_url = url.replace('_', '\\_').replace('#', '\\#').replace('%', '\\%').replace('&', '\\&')
                 # use \protect\footnote such that hyperlinks works within
                 # captions and other places (works well outside too with \protect)
+                # (doesn't seem necessary - footnotes in captions are a
+                # a bad thing since figures are floating)
                 return '\\href{{%s}}{%s}' % (url, text) + \
                        '\\footnote{\\texttt{%s}}' % texttt_url
             else: # no substitution, URL is in the link text
@@ -182,6 +304,13 @@ def latex_code(filestr, code_blocks, code_block_types,
                                  new_heading)
             filestr = filestr.replace(r'%s{%s}' % (tp, heading),
                                       r'%s{%s}' % (tp, new_heading))
+    # addcontentsline also needs \protect\code
+    addcontentslines = re.findall(r'^(\\addcontentsline\{.+)$', filestr,
+                                  flags=re.MULTILINE)
+    for line in addcontentslines:
+        if '\\code{' in line:
+            new_line = line.replace(r'\code{', r'\protect\code{')
+            filestr = filestr.replace(line, new_line)
 
     return filestr
 
@@ -561,6 +690,18 @@ def latex_title(m):
 
     text = r"""
 
+%% #if LATEX_STYLE in ("Springer_T2", "Springer_lncse")
+\frontmatter
+\setcounter{page}{3}
+\pagestyle{headings}
+%% #endif
+
+%% #if LATEX_STYLE == "Springer_lncse"
+%% With hyperref loaded, \contentsline needs 3 args
+%%\contentsline{chapter}{Bibliography}{829}{chapter.Bib}
+%%\contentsline{chapter}{Index}{831}{chapter.Index}
+%% #endif
+
 %% ----------------- title -------------------------
 
 %% #if LATEX_HEADING == "traditional"
@@ -785,7 +926,7 @@ def latex_ref_and_label(section_label2title, format, filestr):
     # range ref:
     filestr = re.sub(r'-ref\{', r'-\\ref{', filestr)
     # the rest of the ' ref{}' (single refs should have ~ in front):
-    filestr = re.sub(r'\sref\{', r'~\\ref{', filestr)
+    filestr = re.sub(r'\s+ref\{', r'~\\ref{', filestr)
     filestr = re.sub(r'\(ref\{', r'(\\ref{', filestr)
 
     # equations are ok in the doconce markup
@@ -795,7 +936,9 @@ def latex_ref_and_label(section_label2title, format, filestr):
                                application='match'), 'LaTeX', filestr)
     #filestr = re.sub('''([^"'`*_A-Za-z0-9-])LaTeX([^"'`*_A-Za-z0-9-])''',
     #                 r'\g<1>{\LaTeX}\g<2>', filestr)
-    filestr = re.sub(r'''([^"'`*/-])\bLaTeX\b([^"'`*/-])''',
+    #filestr = re.sub(r'''([^"'`*/-])\bLaTeX\b([^"'`*/-])''',
+    #                 r'\g<1>{\LaTeX}\g<2>', filestr)
+    filestr = re.sub(r'''([^"'`*/])\bLaTeX\b([^"'`*/])''',
                      r'\g<1>{\LaTeX}\g<2>', filestr)
     filestr = re.sub(r'''([^"'`*-])\bpdfLaTeX\b([^"'`*-])''',
                      fix_latex_command_regex(
@@ -840,10 +983,14 @@ def latex_ref_and_label(section_label2title, format, filestr):
     for p in prefix:
         filestr = re.sub(r'(%s) +([\\A-Za-z0-9$])' % p, r'\g<1>~\g<2>',
                          filestr)
+
     # Allow C# and F# languages
-    # (No: affects music notation!)
-    #filestr = filestr.replace('C#', 'C\\#')
-    #filestr = filestr.replace('F#', 'F\\#')
+    # (be careful as it can affect music notation!)
+    pattern = r'(^| )([A-Za-z]+)#([,.;:!) ]|$)'
+    replacement = r'\g<1>\g<2>\#\g<3>'
+    filestr = re.sub(pattern, replacement, filestr, flags=re.MULTILINE)
+
+    # Treat quotes right just before we insert verbatim blocks
 
     return filestr
 
@@ -857,7 +1004,7 @@ def latex_index_bib(filestr, index, citations, pubfile, pubdata):
     filestr = filestr.replace('cite{', r'\cite{')
     filestr = filestr.replace('cite[', r'\cite[')
     # Fix spaces after . inside cite[] and insert ~
-    pattern = r'cite\[(.+)\.\s+'
+    pattern = r'cite\[(.+?)\. +'
     filestr = re.sub(pattern, r'cite[\g<1>.~', filestr)
 
     for word in index:
@@ -874,6 +1021,9 @@ def latex_index_bib(filestr, index, citations, pubfile, pubdata):
                                     application='replacement'), word)
             # fix underscores:
             word = word.replace('_', r'\_')
+
+            # fix %
+            word = word.replace('%', r'\%')
         replacement = r'\index{%s}' % word
         filestr = filestr.replace(pattern, replacement)
 
@@ -891,14 +1041,15 @@ def latex_index_bib(filestr, index, citations, pubfile, pubdata):
         os.system(publish_cmd)
         os.chdir(this_dir)
         # Remove heading right before BIBFILE because latex has its own heading
-        pattern = '={5,9} .+? ={5,9}\s+^BIBFILE'
+        pattern = r'={5,9} .+? ={5,9}\s+^BIBFILE'
         filestr = re.sub(pattern, 'BIBFILE', filestr, flags=re.MULTILINE)
 
+        bibstyle = option('latex_bibstyle=', 'plain')
         bibtext = fix_latex_command_regex(r"""
 
-\bibliographystyle{plain}
+\bibliographystyle{%s}
 \bibliography{%s}
-""" % bibtexfile[:-4], application='replacement')
+""" % (bibstyle, bibtexfile[:-4]), application='replacement')
         if re.search(chapter_pattern, filestr, flags=re.MULTILINE):
             # Let a document with chapters have Bibliography on a new
             # page and in the toc
@@ -907,6 +1058,7 @@ def latex_index_bib(filestr, index, citations, pubfile, pubdata):
 \clearemptydoublepage
 \markboth{Bibliography}{Bibliography}
 \thispagestyle{empty}""") + bibtext
+            # (the \cleardoublepage might not work well with Koma-script)
 
         filestr = re.sub(r'^BIBFILE:.+$', bibtext, filestr,
                          flags=re.MULTILINE)
@@ -1037,10 +1189,28 @@ def latex_%(_admon)s(text_block, format, title='%(_Admon)s', text_size='normal')
     if title == 'Block':  # block admon has no default title
         title = ''
 
+    code_envir_transform = option('latex_admon_envir_map=', None)
+    if code_envir_transform:
+        envirs = re.findall(r'^\\b([A-Za-z0-9_]+)$', text_block, flags=re.MULTILINE)
+        import sets
+        envirs = list(sets.Set(envirs))  # remove multiple items
+        if code_envir_transform.isdigit():
+            _envir_mapping = {}
+            # Just append the digit(s)
+            for envir in envirs:
+                _envir_mapping[envir] = envir + code_envir_transform
+        else:
+            # Individual mapping for each possible envir
+            _envir_mapping = dict([pair.split('-') for pair in code_envir_transform.split(',')])
+        for envir in envirs:
+            text_block = re.sub(r'\\(b|e)%%s' %% envir,
+            r'\\\g<1>%%s' %% _envir_mapping.get(envir, envir), text_block)
+
+
     latex_admon = option('latex_admon=', 'graybox1')
     if text_size == 'small':
         # When a font size changing command is used, incl a \par at the end
-        text_block = r'{\footnotesize ' + text_block + r' \par}'
+        text_block = r'{\footnotesize ' + text_block + '\n\\par}'
         # Add reduced initial vertical space?
         if latex_admon in ("yellowbox", "graybox3", "colors2"):
             text_block = r'\vspace{-2.5mm}\par\noindent' + '\n' + text_block
@@ -1050,8 +1220,8 @@ def latex_%(_admon)s(text_block, format, title='%(_Admon)s', text_size='normal')
         elif latex_admon in ("graybox1", "graybox2"):
             text_block = r'\vspace{0.5mm}\par\noindent' + '\n' + text_block
     elif text_size == 'large':
-        text_block = r'{\large ' + text_block + r' \par}'
-        title = r'{\large ' + title + ' }'
+        text_block = r'{\large ' + text_block + '\n\\par}'
+        title = r'{\large ' + title + '}'
 
     title_graybox1 = title.replace(',', '')  # title in graybox1 cannot handle ,
     if title_graybox1 and title_graybox1[-1] not in ('.', ':', '!', '?'):
@@ -1308,6 +1478,7 @@ def define(FILENAME_EXTENSION,
         'figure':        latex_figure,
         'movie':         latex_movie,
         'comment':       '%% %s',
+        'linebreak':     r'\g<text>\\\\',
         }
 
     ENVIRS['latex'] = {
@@ -1361,27 +1532,37 @@ def define(FILENAME_EXTENSION,
     TABLE['latex'] = latex_table
     EXERCISE['latex'] = latex_exercise
     INDEX_BIB['latex'] = latex_index_bib
-    if option('skip_inline_comments') or not has_inline_comments:
-        TOC['latex'] = lambda s: r"""
-% #if LATEX_HEADING != "beamer"
+
+    bib_page, idx_page = get_bib_index_pages()
+    toc_part = r"""
+%% #if LATEX_HEADING != "beamer"
 \tableofcontents
 
-\vspace{1cm} % after toc'
-% #endif
+%% #if LATEX_STYLE == "Springer_lncse"
+\contentsline{chapter}{\refname}{%(bib_page)s}{chapter.Bib}
+\contentsline{chapter}{Index}{%(idx_page)s}{chapter.Index}
+%% #endif
 
-"""
-    else:
-        TOC['latex'] = lambda s: r"""
-% #if LATEX_HEADING != "beamer"
-\tableofcontents
+""" % vars()
+    if has_inline_comments and not option('skip_inline_comments'):
+        toc_part += r"""
 % #ifdef TODONOTES
 \listoftodos[List of inline comments]
 % #endif
+"""
+    toc_part += r"""
 
 \vspace{1cm} % after toc
 % #endif
 
+% #if LATEX_STYLE == "Springer_T2"
+\mymainmatter
+% #elif LATEX_STYLE == "Springer_lncse"
+\mainmatter
+% #endif
+
 """
+    TOC['latex'] = lambda s: toc_part
 
     preamble = ''
     preamble_complete = False
@@ -1465,6 +1646,8 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 10pt]{article}
 """ % vars()
 
+    from misc import copy_latex_packages
+    # if T2 style: copy_latex_packages(['svmonodo.cls', 't2do.sty'])
     INTRO['latex'] += r"""
 % #elif LATEX_STYLE == "Springer_lncse"
 % Style: Lecture Notes in Computational Science and Engineering (Springer)
@@ -1472,9 +1655,13 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 \pagestyle{headings}
 % #elif LATEX_STYLE == "Springer_T2"
 % Style: T2 (Springer)
-\documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmono}
-\usepackage{t2}
+% Use svmono.cls with doconce modifications for bibliography
+\documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmonodo}
+
+% Use t2.sty with doconce modifications
+\usepackage{t2do}
 \special{papersize=193mm,260mm}
+
 % #elif LATEX_STYLE == "Springer_llcse"
 % Style: Lecture Notes in Computer Science (Springer)
 \documentclass[oribib]{llncs}
@@ -1514,7 +1701,7 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
     if '!bbox' in filestr:
         INTRO['latex'] += r"""
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
-\setlength{\fboxsep}{8pt}
+%\setlength{\fboxsep}{8pt}
 """
     INTRO['latex'] += r"""
 \usepackage{ptex2tex}
@@ -1725,6 +1912,51 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
     if re.search(r'^!b(%s)' % '|'.join(admons), filestr, flags=re.MULTILINE):
         # Found one !b... command for an admonition
         latex_admon = option('latex_admon=', 'graybox1')
+        latex_admon_color = option('latex_admon_color=', None)
+
+        if latex_admon_color is None:
+            # colors1, colors2 color
+            light_blue = (0.87843, 0.95686, 1.0)
+            pink = (1.0, 0.8235294, 0.8235294)
+            # colors1, colors2, yellowbox color
+            yellow1 = (0.988235, 0.964706, 0.862745)
+            yellow1b = (0.97, 0.88, 0.62)  # alt, not used
+            # graybox1 color
+            gray1 = "gray!5"
+            # graybox2 color
+            gray2 = (0.94, 0.94, 0.94)
+            # graybox3 color
+            gray3 = (0.91, 0.91, 0.91)   # lighter gray
+            gray3l = (0.97, 0.97, 0.97)  # even lighter gray, not used
+        else:
+            # use latex_admon_color for everything
+            try:
+                # RGB input?
+                latex_admon_color = tuple(eval(latex_admon_color))
+            except (NameError, SyntaxError) as e:
+                # Color name input
+                pass
+
+            light_blue = latex_admon_color
+            pink = latex_admon_color
+            # colors1, colors2, yellowbox color
+            yellow1 = latex_admon_color
+            # graybox1 color
+            gray1 = latex_admon_color
+            # graybox2 color
+            gray2 = latex_admon_color
+            # graybox3 color
+            gray3 = latex_admon_color
+
+        _colorsadmon2colors = dict(
+            warning=pink,
+            question=yellow1,
+            notice=yellow1,
+            summary=yellow1,
+            #block=_gray2,
+            block=yellow1,
+            )
+
         if latex_admon in ('colors1',):
             packages = r'\usepackage{framed}'
         elif latex_admon in ('colors2', 'graybox3', 'yellowbox'):
@@ -1735,41 +1967,51 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
         else: # graybox1
             packages = r'\usepackage[framemethod=TikZ]{mdframed}'
         INTRO['latex'] += '\n' + packages + '\n\n% --- begin definitions of admonition environments ---\n'
+
         if latex_admon == 'graybox2':
+            if isinstance(gray2, tuple):
+                gray2_rgb = ','.join([str(cl) for cl in gray2])
+                define_graybox2_color = r'\definecolor{%(latex_admon)s_background}{rgb}{%(gray2_rgb)s}' % vars()
+            else:
+                define_graybox2_color = r'\colorlet{%(latex_admon)s_background}{%(gray2)s}' % vars()
+
+            # First define environments independent of admon type
             INTRO['latex'] += r"""
-% gray box with horizontal rules (cannot handle verbatim text)
-\definecolor{lightgray}{rgb}{0.94,0.94,0.94}
-% #ifdef A4PAPER
+%% Admonition style "graybox2" is a gray or colored box with a square
+%% frame, except for the summary admon which has horizontal rules only
+%% Note: this admonition type cannot handle verbatim text!
+%(define_graybox2_color)s
+%% #ifdef A4PAPER
 \newdimen\barheight
 \def\barthickness{0.5pt}
 
-% small box to the right for A4 paper
+%% small box to the right for A4 paper
 \newcommand{\grayboxhrules}[1]{\begin{wrapfigure}{r}{0.5\textwidth}
-\vspace*{-\baselineskip}\colorbox{lightgray}{\rule{3pt}{0pt}
+\vspace*{-\baselineskip}\colorbox{%(latex_admon)s_background}{\rule{3pt}{0pt}
 \begin{minipage}{0.5\textwidth-6pt-\columnsep}
 \hspace*{3mm}
 \setbox2=\hbox{\parbox[t]{55mm}{
-#1 \rule[-8pt]{0pt}{10pt}}}%
+#1 \rule[-8pt]{0pt}{10pt}}}%%
 \barheight=\ht2 \advance\barheight by \dp2
-\parbox[t]{3mm}{\rule[0pt]{0mm}{22pt}%\hspace*{-2pt}%
-\hspace*{-1mm}\rule[-\barheight+16pt]{\barthickness}{\barheight-8pt}%}
+\parbox[t]{3mm}{\rule[0pt]{0mm}{22pt}%%\hspace*{-2pt}%%
+\hspace*{-1mm}\rule[-\barheight+16pt]{\barthickness}{\barheight-8pt}%%}
 }\box2\end{minipage}\rule{3pt}{0pt}}\vspace*{-\baselineskip}
 \end{wrapfigure}}
-% #else
-% gray box of 80% width
+%% #else
+%% colored box of 80%% width
 \newcommand{\grayboxhrules}[1]{\begin{center}
-\colorbox{lightgray}{\rule{6pt}{0pt}
+\colorbox{%(latex_admon)s_background}{\rule{6pt}{0pt}
 \begin{minipage}{0.8\linewidth}
 \parbox[t]{0mm}{\rule[0pt]{0mm}{0.5\baselineskip}}\hrule
 \vspace*{0.5\baselineskip}\noindent #1
-\parbox[t]{0mm}{\rule[-0.5\baselineskip]{0mm}%
+\parbox[t]{0mm}{\rule[-0.5\baselineskip]{0mm}%%
 {\baselineskip}}\hrule\vspace*{0.5\baselineskip}\end{minipage}
 \rule{6pt}{0pt}}\end{center}}
-% #endif
+%% #endif
 
-% Fallback for verbatim content in \grayboxhrules
+%% Fallback for verbatim content in \grayboxhrules
 \newmdenv[
-  backgroundcolor=lightgray,
+  backgroundcolor=%(latex_admon)s_background,
   skipabove=\topsep,
   skipbelow=\topsep,
   leftmargin=23,
@@ -1783,19 +2025,28 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 {
 \end{graybox2mdframed}
 }
-"""
+""" % vars()
+
         elif latex_admon == 'paragraph':
             INTRO['latex'] += r"""
-% Admonition is just a paragraph
+% Admonition style "paragraph" is just a plain paragraph
 \newenvironment{paragraphadmon}[1][]{\paragraph{#1}}{}
 """
         elif latex_admon in ('colors1', 'colors2', 'graybox3', 'yellowbox'):
             pass
         else:
+            # graybox1
+            if isinstance(gray1, tuple):
+                gray1_rgb = ','.join([str(cl) for cl in gray1])
+                define_graybox1_color = r'\definecolor{%(latex_admon)s_background}{rgb}{%(gray1_rgb)s}' % vars()
+            else:
+                define_graybox1_color = r'\colorlet{%(latex_admon)s_background}{%(gray1)s}' % vars()
+
             INTRO['latex'] += r"""
-% Admonition is an oval gray box
+%% Admonition style "graybox1" is an oval colored box
+%(define_graybox1_color)s
 \newmdenv[
-  backgroundcolor=gray!5,  %% white with 5%% gray
+  backgroundcolor=%(latex_admon)s_background,
   skipabove=\topsep,
   skipbelow=\topsep,
   outerlinewidth=0,
@@ -1811,29 +2062,20 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 {
 \end{graybox1mdframed}
 }
-"""
-        _light_blue = (0.87843, 0.95686, 1.0)
-        _light_yellow1 = (0.988235, 0.964706, 0.862745)
-        _pink = (1.0, 0.8235294, 0.8235294)
-        _gray1 = (0.86, 0.86, 0.86)
-        _gray2 = (0.91, 0.91, 0.91)  # lighter gray
-        _gray3 = (0.97, 0.97, 0.97)  # even lighter gray
-        _light_yellow2 = (0.97, 0.88, 0.62)
+""" % vars()
 
-        _admon2colors = dict(
-            warning=_pink,
-            question=_light_yellow1,
-            notice=_light_yellow1,
-            summary=_light_yellow1,
-            #block=_gray2,
-            block=_light_yellow1,
-            )
-
+        # Define environments depending on the admon type
         for admon in admons:
             Admon = admon.upper()[0] + admon[1:]
 
             # Figure files are copied when necessary
-            color_colors = str(_admon2colors[admon])[1:-1]
+            if isinstance(_colorsadmon2colors[admon], tuple):
+                colors12_color_rgb = ','.join([str(cl) for cl in _colorsadmon2colors[admon]])
+                define_colors12_color = r'\definecolor{%(latex_admon)s_%(admon)s_background}{rgb}{%(colors12_color_rgb)s}' % vars()
+            else:
+                colors12_color = _colorsadmon2colors[admon]
+                define_colors12_color = r'\colorlet{%(latex_admon)s_%(admon)s_background}{%(colors12_color)s}' % vars()
+
             graphics_colors1 = r'\includegraphics[height=0.3in]{latex_figs/%s}\ \ \ ' % get_admon_figname('colors1', admon)
             graphics_colors2 = r"""\begin{wrapfigure}{l}{0.07\textwidth}
 \vspace{-13pt}
@@ -1841,15 +2083,24 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 \end{wrapfigure}""" % get_admon_figname('colors2', admon)
             # Old typesetting of title (for latex_admon==colors1): {\large\sc #1}
 
-            #color_graybox3 = str(_gray3)[1:-1]
-            color_graybox3 = str(_gray2)[1:-1]
+            if isinstance(gray3, tuple):
+                gray3_rgb = ','.join([str(cl) for cl in gray3])
+                define_graybox3_color = r'\definecolor{%(latex_admon)s_%(admon)s_background}{rgb}{%(gray3_rgb)s}' % vars()
+            else:
+                define_graybox3_color = r'\colorlet{%(latex_admon)s_%(admon)s_background}{%(gray3)s}' % vars()
+
             graphics_graybox3 = r"""\begin{wrapfigure}{l}{0.07\textwidth}
 \vspace{-13pt}
 \includegraphics[width=0.07\textwidth]{latex_figs/%s}
 \end{wrapfigure}"""% get_admon_figname('graybox3', admon)
 
-            #color_yellowbox = str(_light_yellow2)[1:-1]
-            color_yellowbox = str(_light_yellow1)[1:-1]
+
+            if isinstance(yellow1, tuple):
+                yellow1_rgb = ','.join([str(cl) for cl in yellow1])
+                define_yellowbox_color = r'\definecolor{%(latex_admon)s_%(admon)s_background}{rgb}{%(yellow1_rgb)s}' % vars()
+            else:
+                define_yellowbox_color = r'\colorlet{%(latex_admon)s_%(admon)s_background}{%(yellow1)s}' % vars()
+
             graphics_yellowbox = r"""\begin{wrapfigure}{l}{0.07\textwidth}
 \vspace{-13pt}
 \includegraphics[width=0.07\textwidth]{latex_figs/%s}
@@ -1864,12 +2115,12 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 
             if latex_admon == 'colors1':
                 INTRO['latex'] += r"""
-%% Admonition environment for "%(admon)s"
-%% Style from NumPy User Guide
-\definecolor{%(admon)sbackground}{rgb}{%(color_colors)s}
+%% Admonition style "colors1" has its style taken from the NumPy User Guide
+%% "%(admon)s" admon
+%(define_colors12_color)s
 %% \fboxsep sets the space between the text and the box
 \newenvironment{%(admon)sshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{%(admon)sbackground}}
+{\def\FrameCommand{\fboxsep=3mm\colorbox{%(latex_admon)s_%(admon)s_background}}
  \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
 
 \newenvironment{%(admon)s_colors1admon}[1][%(Admon)s]{
@@ -1884,11 +2135,11 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 """ % vars()
             elif latex_admon == 'colors2':
                 INTRO['latex'] += r"""
-%% Admonition environment for "%(admon)s"
-\definecolor{%(admon)sbackground}{rgb}{%(color_colors)s}
+%% Admonition style "colors2", admon "%(admon)s"
+%(define_colors12_color)s
 %% \fboxsep sets the space between the text and the box
 \newenvironment{%(admon)sshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{%(admon)sbackground}}
+{\def\FrameCommand{\fboxsep=3mm\colorbox{%(latex_admon)s_%(admon)s_background}}
  \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
 
 \newenvironment{%(admon)s_colors2admon}[1][%(Admon)s]{
@@ -1903,11 +2154,12 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 """ % vars()
             elif latex_admon == 'graybox3':
                 INTRO['latex'] += r"""
-%% Admonition environment for "%(admon)s"
-\definecolor{%(admon)sbackground}{rgb}{%(color_graybox3)s}
+%% Admonition style "graybox3" has colored background, no frame, and an icon
+%% Admon "%(admon)s"
+%(define_graybox3_color)s
 %% \fboxsep sets the space between the text and the box
 \newenvironment{%(admon)sshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{%(admon)sbackground}}
+{\def\FrameCommand{\fboxsep=3mm\colorbox{%(latex_admon)s_%(admon)s_background}}
  \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
 
 \newenvironment{%(admon)s_graybox3admon}[1][%(Admon)s]{
@@ -1922,11 +2174,12 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 """ % vars()
             elif latex_admon == 'yellowbox':
                 INTRO['latex'] += r"""
-%% Admonition environment for "%(admon)s"
-\definecolor{%(admon)sbackground}{rgb}{%(color_yellowbox)s}
+%% Admonition style "yellowbox" has colored background, yellow icons, and no farme
+%% Admon "%(admon)s"
+%(define_yellowbox_color)s
 %% \fboxsep sets the space between the text and the box
 \newenvironment{%(admon)sshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{%(admon)sbackground}}
+{\def\FrameCommand{\fboxsep=3mm\colorbox{%(latex_admon)s_%(admon)s_background}}
  \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
 
 \newenvironment{%(admon)s_yellowboxadmon}[1][%(Admon)s]{
@@ -2049,10 +2302,29 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
     for exer_envir in exer_envirs:
         if exer_envir + ':' in filestr:
             INTRO['latex'] += r"""
-\newenvironment{doconce:exercise}{}{}
-\newcounter{doconce:exercise:counter}
+\newenvironment{doconceexercise}{}{}
+\newcounter{doconceexercisecounter}
+"""
+            exercise_numbering = option('latex_exercise_numbering=', 'absolute')
+            if chapters and exercise_numbering == 'chapter':
+                INTRO['latex'] += r"""
+% Let exercises, problems, and projects be numbered per chapter:
+\usepackage{chngcntr}
+\counterwithin{doconceexercisecounter}{chapter}
 """
             break
+
+    # Follow advice from fancyhdr: redefine \cleardoublepage
+    # see http://www.tex.ac.uk/cgi-bin/texfaq2html?label=reallyblank
+    # (Koma has its own solution to the problem, svmono.cls has the command)
+    INTRO['latex'] += r"""
+% #if LATEX_STYLE not in ("Koma_Script", "Springer_T2")
+% Make sure blank even-numbered pages before new chapters are
+% totally blank with no header
+\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
+%\let\cleardoublepage\clearemptydoublepage % caused error in the toc
+% #endif
+"""
 
     INTRO['latex'] += r"""
 % --- end of standard preamble for documents ---

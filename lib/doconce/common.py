@@ -721,7 +721,7 @@ INLINE_TAGS = {
 
     # `verbatim inline text is enclosed in back quotes`
     'verbatim':
-    r'%s`(?P<subst>[^ ][^`]*)`%s' % \
+    r'%s`(?P<subst>[^ `][^`]*)`%s' % \
     (inline_tag_begin, inline_tag_end),
     #(inline_tag_begin, r"(?P<end>($|[.,?!;:)}'\s|-]))"),
 
@@ -819,6 +819,7 @@ INLINE_TAGS = {
     # MOVIE:[filename, options] some caption text label{some:label}
     'movie':
     r'^MOVIE:\s*\[(?P<filename>[^,\]]+),?(?P<options>[^\]]*)\]\s*?(?P<caption>.*)$',
+    'linebreak': '^(?P<text>.*)<linebreak> *$',
     }
 INLINE_TAGS_SUBST = {}
 

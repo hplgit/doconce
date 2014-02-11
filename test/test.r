@@ -77,9 +77,20 @@ This equation appears in another part if this document is split.
 
 
 ===== Subsection 1 =====
+label{subsec1}
 
-More text, with a reference back to Section ref{sec1} and further
-to Section ref{subsubsec:ex}. idx{`somefunc` function}
+idx{`somefunc` function}
+
+# Refer to section/appendix etc. at the beginning of the line
+# and other special fix situations for HTML.
+
+More text, with a reference back to
+Section ref{sec1} and ref{subsec1}, and further to the
+sections    ref{subsec1} and ref{subsubsec:ex}, which
+encourages you to do the tasks in the
+Exercises ref{demo:ex:1} and ref{exer:some:formula}.
+Appendices     ref{app1} and ref{app2} are also nice elements.
+
 
 # sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console
 
@@ -223,9 +234,11 @@ Also test backslashes and braces like `\begin`, `\begin{enumerate}`,
 verbatim text.
 
 Here is some color{red}{red} color and an attempt to write color{green}{with
-green color containing a linebreak.
-And one more.} Some formats will only display this correctly when
-HTML is the output format.
+green color containing a linebreak. <linebreak>
+And one more.} Some formats will only display <linebreak>
+this correctly when HTML is the output format. <linebreak>
+But here some more running text is added which is not part of
+the previous blocks with line breaks.
 
 === Running OS commands ===
 
@@ -375,6 +388,7 @@ Testing table environment in LaTeX, enabled by testing on the "latex" format
 with the preprocessor.
 label{mytab}
 }
+
 % endif
 
   |--------------------------------|
@@ -475,6 +489,16 @@ def tfig(fileno):
 
 __Files `my_file_v1.py` and `my_file_v2.py` define some math $a_{i-1}$.__ Here is
 some text.
+
+Let us also add a test of quotes such as ``double
+quotes, with numbers like 3.14 and
+newline/comma and hyphen (as in double-quote)'';
+written in the standard LaTeX-style that gives correct
+LaTeX formatting and ordinary double quotes for all non-LaTeX formats.
+Here is another sentence that ``caused'' a bug in the past
+because double backtick quotes could imply verbatim text up to
+a verbatim word starting with period, like `.txt`.
+
 
 ===== Bibliography test =====
 
@@ -691,6 +715,7 @@ More mathematical typesetting is demonstrated in the coming exercises.
 Below, we have Problem ref{demo:ex:1} and Project ref{demo:ex:2},
 as well as Projects ref{proj:circle1} and ref{exer:you}, and in
 between there we have Exercise ref{exer:some:formula}.
+
 
 ======= Exercises =======
 
@@ -949,6 +974,9 @@ And a test that the code `lambda x: x+2` is correctly placed here:
 lambda x: x+2
 !ec
 
+# Have some comments at the end of the exercise to see that
+# the Filename: ... is written correctly.
+
 ===== Example: Just an example =====
 
 # This example needs the --examples_as_exercises option, otherwise
@@ -1001,6 +1029,7 @@ BIBFILE: papers.pub
 
 
 ======= Appendix: Just for testing; part I =======
+label{app1}
 
 This is the first appendix.
 
@@ -1009,6 +1038,7 @@ This is the first appendix.
 Some text.
 
 ======= Appendix: Just for testing; part II =======
+label{app2}
 
 This is more stuff for an appendix.
 
@@ -1236,7 +1266,7 @@ Automatically generated HTML file from Doconce source
 <!-- tocinfo
 {'highest level': 1,
  'sections': [(' Section 1 ', 1, 'sec1', 'sec1'),
-              (' Subsection 1 ', 2, None, '___sec1'),
+              (' Subsection 1 ', 2, 'subsec1', 'subsec1'),
               (' Computer code ', 3, None, '___sec2'),
               (' Running OS commands ', 3, None, '___sec3'),
               (' Subsection 2: Testing figures ',
@@ -1294,9 +1324,9 @@ Automatically generated HTML file from Doconce source
                'exer:you',
                'exer:you'),
               (' References ', 1, None, '___sec28'),
-              (' Appendix: Just for testing; part I ', 1, None, '___sec29'),
+              (' Appendix: Just for testing; part I ', 1, 'app1', 'app1'),
               (' A subsection within an appendix ', 2, None, '___sec30'),
-              (' Appendix: Just for testing; part II ', 1, None, '___sec31'),
+              (' Appendix: Just for testing; part II ', 1, 'app2', 'app2'),
               (' Appendix: Testing identical titles ', 2, None, '___sec32'),
               (' Appendix: Testing identical titles ',
                2,
@@ -1411,7 +1441,7 @@ $$
 
 <p>
 <a href="._testdoc001.html#sec1"> Section 1 </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec1"> Subsection 1 </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#subsec1"> Subsection 1 </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec2"> Computer code </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec3"> Running OS commands </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#subsec:ex"> Subsection 2: Testing figures </a><br>
@@ -1439,9 +1469,9 @@ $$
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#exer:some:formula"> Exercise 8: Make references to projects and problems </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#exer:you"> Project 9: References in a headings do not work well in html </a><br>
 <a href="._testdoc002.html#___sec28"> References </a><br>
-<a href="._testdoc002.html#___sec29"> Appendix: Just for testing; part I </a><br>
+<a href="._testdoc002.html#app1"> Appendix: Just for testing; part I </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec30"> A subsection within an appendix </a><br>
-<a href="._testdoc002.html#___sec31"> Appendix: Just for testing; part II </a><br>
+<a href="._testdoc002.html#app2"> Appendix: Just for testing; part II </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec32"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#test:title:id1"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#test:title:id2"> Appendix: Testing identical titles </a><br>
@@ -1522,9 +1552,13 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \pagestyle{headings}
 % #elif LATEX_STYLE == "Springer_T2"
 % Style: T2 (Springer)
-\documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmono}
-\usepackage{t2}
+% Use svmono.cls with doconce modifications for bibliography
+\documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmonodo}
+
+% Use t2.sty with doconce modifications
+\usepackage{t2do}
 \special{papersize=193mm,260mm}
+
 % #elif LATEX_STYLE == "Springer_llcse"
 % Style: Lecture Notes in Computer Science (Springer)
 \documentclass[oribib]{llncs}
@@ -1671,9 +1705,10 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % --- begin definitions of admonition environments ---
 
-% Admonition is an oval gray box
+% Admonition style "graybox1" is an oval colored box
+\colorlet{graybox1_background}{gray!5}
 \newmdenv[
-  backgroundcolor=gray!5,  %% white with 5%% gray
+  backgroundcolor=graybox1_background,
   skipabove=\topsep,
   skipbelow=\topsep,
   outerlinewidth=0,
@@ -1789,8 +1824,32 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 % #endif
 
 
-\newenvironment{doconce:exercise}{}{}
-\newcounter{doconce:exercise:counter}
+\newenvironment{doconceexercise}{}{}
+\newcounter{doconceexercisecounter}
+
+% #ifndef LIST_OF_EXERCISES
+% #define LIST_OF_EXERCISES "none"
+% #endif
+
+% --- begin definition of \listofexercises command ---
+\makeatletter
+\newcommand\listofexercises{
+\chapter*{List of Exercises, Problems, and Projects
+          \@mkboth{List of Exercises, Problems, and Projects}{List of Exercises, Problems, and Projects}}
+\markboth{List of Exercises, Problems, and Projects}{List of Exercises, Problems, and Projects}
+\@starttoc{loe}
+}
+\newcommand*{\l@doconceexercise}{\@dottedtocline{0}{0pt}{6.5em}}
+\makeatother
+% --- end definition of \listofexercises command ---
+
+
+% #if LATEX_STYLE not in ("Koma_Script", "Springer_T2")
+% Make sure blank even-numbered pages before new chapters are
+% totally blank with no header
+\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
+%\let\cleardoublepage\clearemptydoublepage % caused error in the toc
+% #endif
 
 % --- end of standard preamble for documents ---
 
@@ -1812,6 +1871,18 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 % ------------------- main content ----------------------
 
 
+
+% #if LATEX_STYLE in ("Springer_T2", "Springer_lncse")
+\frontmatter
+\setcounter{page}{3}
+\pagestyle{headings}
+% #endif
+
+% #if LATEX_STYLE == "Springer_lncse"
+% With hyperref loaded, \contentsline needs 3 args
+%\contentsline{chapter}{Bibliography}{829}{chapter.Bib}
+%\contentsline{chapter}{Index}{831}{chapter.Index}
+% #endif
 
 % ----------------- title -------------------------
 
@@ -1990,11 +2061,31 @@ Jan 32, 2100
 
 % #if LATEX_HEADING != "beamer"
 \tableofcontents
+% #if LIST_OF_EXERCISES == "loe"
+\clearemptydoublepage
+\listofexercises
+\clearemptydoublepage
+% #endif
+
+
+% #if LATEX_STYLE == "Springer_lncse"
+\contentsline{chapter}{\refname}{9999}{chapter.Bib}
+\contentsline{chapter}{Index}{9999}{chapter.Index}
+% #endif
+
+
 % #ifdef TODONOTES
 \listoftodos[List of inline comments]
 % #endif
 
+
 \vspace{1cm} % after toc
+% #endif
+
+% #if LATEX_STYLE == "Springer_T2"
+\mymainmatter
+% #elif LATEX_STYLE == "Springer_lncse"
+\mainmatter
 % #endif
 
 
@@ -2079,9 +2170,20 @@ Here is a reference to Equation (\ref{my:eq1}).
 
 
 \subsection{Subsection 1}
+\label{subsec1}
 
-More text, with a reference back to Section~\ref{sec1} and further
-to Section~\ref{subsubsec:ex}. \index{somefunc@{\rm\texttt{somefunc}} function}
+\index{somefunc@{\rm\texttt{somefunc}} function}
+
+% Refer to section/appendix etc. at the beginning of the line
+% and other special fix situations for HTML.
+
+More text, with a reference back to
+Section~\ref{sec1} and~\ref{subsec1}, and further to the
+sections~\ref{subsec1} and~\ref{subsubsec:ex}, which
+encourages you to do the tasks in the
+Exercises~\ref{demo:ex:1} and~\ref{exer:some:formula}.
+Appendices~\ref{app1} and~\ref{app2} are also nice elements.
+
 
 % sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console
 
@@ -2256,9 +2358,11 @@ Also test backslashes and braces like \code{\begin}, \code{\begin{enumerate}},
 verbatim text.
 
 Here is some \textcolor{red}{red} color and an attempt to write \textcolor{green}{with
-green color containing a linebreak.
-And one more.} Some formats will only display this correctly when
-HTML is the output format.
+green color containing a linebreak. \\
+And one more.} Some formats will only display \\
+this correctly when HTML is the output format. \\
+But here some more running text is added which is not part of
+the previous blocks with line breaks.
 
 \paragraph{Running OS commands.}
 \bsys
@@ -2414,6 +2518,7 @@ with the preprocessor.
 }
 
 
+
 \begin{quote}\begin{tabular}{lrr}
 \hline
 \multicolumn{1}{c}{ time } & \multicolumn{1}{c}{ velocity } & \multicolumn{1}{c}{ acceleration } \\
@@ -2516,6 +2621,16 @@ $\nabla\cdot\bm{u} =0 $                                                       & 
 Here is
 some text.
 
+Let us also add a test of quotes such as ``double
+quotes, with numbers like 3.14 and
+newline/comma and hyphen (as in double-quote)'';
+written in the standard {\LaTeX}-style that gives correct
+{\LaTeX} formatting and ordinary double quotes for all non-{\LaTeX} formats.
+Here is another sentence that ``caused'' a bug in the past
+because double backtick quotes could imply verbatim text up to
+a verbatim word starting with period, like \code{.txt}.
+
+
 \subsection{Bibliography test}
 
 Here is an example: \cite{Langtangen_Pedersen_2002} discussed propagation of
@@ -2547,8 +2662,8 @@ the old ME-IN323 book \cite{Langtangen:91} and the
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
 \subsection{Example 1: Examples can be typeset as exercises}
 \label{Example}
@@ -2578,7 +2693,7 @@ Maybe even another hint?
 The answer to this other subproblem goes here,
 maybe over multiple doconce input lines.
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 
 
@@ -2709,15 +2824,22 @@ Below, we have Problem~\ref{demo:ex:1} and Project~\ref{demo:ex:2},
 as well as Projects~\ref{proj:circle1} and~\ref{exer:you}, and in
 between there we have Exercise~\ref{exer:some:formula}.
 
+
 \section{Exercises}
 
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
-\subsection*{Problem 2: Flip a Coin}
+\subsection*{Problem \thedoconceexercisecounter: Flip a Coin}
+% #if LIST_OF_EXERCISES == "toc"
+\addcontentsline{toc}{subsection}{\thedoconceexercisecounter: Flip a Coin}
+% #elif LIST_OF_EXERCISES == "loe"
+\addcontentsline{loe}{doconceexercise}{Problem \thedoconceexercisecounter: Flip a Coin}
+% #endif
+
 \label{demo:ex:1}
 % keywords = random numbers; Monte Carlo simulation
 
@@ -2786,7 +2908,7 @@ print 'Flipping a coin %d times gave %d heads' % (N, heads)
 Filenames: \code{flip_coin.py}, \code{flip_coin.pdf}.
 % solution files: mysol.txt, mysol_flip_coin.py, yet_another.file
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 
 
@@ -2798,10 +2920,16 @@ exercises.
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
-\subsection*{Project 3: Compute a Probability}
+\subsection*{Project \thedoconceexercisecounter: Compute a Probability}
+% #if LIST_OF_EXERCISES == "toc"
+\addcontentsline{toc}{subsection}{\thedoconceexercisecounter: Compute a Probability}
+% #elif LIST_OF_EXERCISES == "loe"
+\addcontentsline{loe}{doconceexercise}{Project \thedoconceexercisecounter: Compute a Probability}
+% #endif
+
 \label{demo:ex:2}
 
 % Minimalistic exercise
@@ -2831,17 +2959,23 @@ compute the probability as $M/N$.
 
 % --- end hint in exercise ---
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 
 
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
-\subsection*{Project 4: Explore Distributions of Random Circles}
+\subsection*{Project \thedoconceexercisecounter: Explore Distributions of Random Circles}
+% #if LIST_OF_EXERCISES == "toc"
+\addcontentsline{toc}{subsection}{\thedoconceexercisecounter: Explore Distributions of Random Circles}
+% #elif LIST_OF_EXERCISES == "loe"
+\addcontentsline{loe}{doconceexercise}{Project \thedoconceexercisecounter: Explore Distributions of Random Circles}
+% #endif
+
 \label{proj:circle1}
 
 The formula for a circle is given by
@@ -2902,12 +3036,12 @@ Here goes a full solution to part a).
 
 \paragraph{b)}
 Let $R$ be uniformly distributed and $(x_0,y_0)$ normally distributed.
-Filename: \code{norm.py}.
+\noindent Filename: \code{norm.py}.
 
 \paragraph{c)}
 Let $R$ and $(x_0,y_0)$ be normally distributed.
 
-Filename: \code{circles.pdf}.
+\noindent Filename: \code{circles.pdf}.
 
 % Closing remarks for this Project
 
@@ -2916,17 +3050,23 @@ At the very end of the exercise it may be appropriate to summarize
 and give some perspectives.
 
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 
 
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
-\subsection*{Exercise 5: Determine some Distance}
+\subsection*{Exercise \thedoconceexercisecounter: Determine some Distance}
+% #if LIST_OF_EXERCISES == "toc"
+\addcontentsline{toc}{subsection}{\thedoconceexercisecounter: Determine some Distance}
+% #elif LIST_OF_EXERCISES == "loe"
+\addcontentsline{loe}{doconceexercise}{Exercise \thedoconceexercisecounter: Determine some Distance}
+% #endif
+
 \label{exer:dist}
 
 Intro to this exercise. Questions are in subexercises below.
@@ -2996,7 +3136,7 @@ Test list in hint:
 
 \noindent
 % --- end hint in exercise ---
-Filename: \code{subexer_a.pdf}.
+\noindent Filename: \code{subexer_a.pdf}.
 
 
 % --- begin answer of exercise ---
@@ -3020,7 +3160,7 @@ Some math $\cos^2 x + \sin^2 x = 1$ written one a single line:
 A hint for this subexercise.
 
 % --- end hint in exercise ---
-Filename: \code{subexer_b.pdf}.
+\noindent Filename: \code{subexer_b.pdf}.
 
 
 % --- begin solution of exercise ---
@@ -3037,15 +3177,15 @@ and their implications in other problems can be made. These
 remarks will appear at the end of the typeset exercise.
 
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 
 
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
 \subsection{Some exercise without the "Exercise:" prefix}
 
@@ -3062,15 +3202,18 @@ And a test that the code \code{lambda x: x+2} is correctly placed here:
 lambda x: x+2
 \eccq
 
-\end{doconce:exercise}
+% Have some comments at the end of the exercise to see that
+% the Filename: ... is written correctly.
+
+\end{doconceexercise}
 % --- end exercise ---
 
 
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
 \subsection{Example 7: Just an example}
 
@@ -3084,7 +3227,7 @@ What is the capital of Norway?
 \paragraph{Answer.}
 Oslo.
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 
 
@@ -3097,10 +3240,16 @@ With some text, before we continue with exercises.
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
-\subsection*{Exercise 8: Make references to projects and problems}
+\subsection*{Exercise \thedoconceexercisecounter: Make references to projects and problems}
+% #if LIST_OF_EXERCISES == "toc"
+\addcontentsline{toc}{subsection}{\thedoconceexercisecounter: Make references to projects and problems}
+% #elif LIST_OF_EXERCISES == "loe"
+\addcontentsline{loe}{doconceexercise}{Exercise \thedoconceexercisecounter: Make references to projects and problems}
+% #endif
+
 \label{exer:some:formula}
 
 Pick a statement from Project~\ref{proj:circle1} or Problem~\ref{demo:ex:1}
@@ -3116,27 +3265,33 @@ hint, etc.):
 \end{enumerate}
 
 \noindent
-Filename: \code{verify_formula.py}.
+\noindent Filename: \code{verify_formula.py}.
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 
 
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
-\subsection*{Project 9: References to Project~\ref{demo:ex:2} in a heading works for latex}
+\subsection*{Project \thedoconceexercisecounter: References to Project~\ref{demo:ex:2} in a heading works for latex}
+% #if LIST_OF_EXERCISES == "toc"
+\addcontentsline{toc}{subsection}{\thedoconceexercisecounter: References to Project~\ref{demo:ex:2} in a heading works for latex}
+% #elif LIST_OF_EXERCISES == "loe"
+\addcontentsline{loe}{doconceexercise}{Project \thedoconceexercisecounter: References to Project~\ref{demo:ex:2} in a heading works for latex}
+% #endif
+
 \label{exer:you}
 
 Refer to the previous exercise as Exercise~\ref{exer:some:formula},
 the two before that as Projects~\ref{demo:ex:2} and~\ref{proj:circle1},
 and this one as Project~\ref{exer:you}.
-Filename: \code{selc_composed.pdf}.
+\noindent Filename: \code{selc_composed.pdf}.
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 
 
@@ -3152,6 +3307,7 @@ Filename: \code{selc_composed.pdf}.
 \appendix
 
 \section{Just for testing; part I}
+\label{app1}
 
 This is the first appendix.
 
@@ -3160,6 +3316,7 @@ This is the first appendix.
 Some text.
 
 \section{Just for testing; part II}
+\label{app2}
 
 This is more stuff for an appendix.
 
@@ -3410,9 +3567,10 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % --- begin definitions of admonition environments ---
 
-% Admonition is an oval gray box
+% Admonition style "graybox1" is an oval colored box
+\colorlet{graybox1_background}{gray!5}
 \newmdenv[
-  backgroundcolor=gray!5,  %% white with 5%% gray
+  backgroundcolor=graybox1_background,
   skipabove=\topsep,
   skipbelow=\topsep,
   outerlinewidth=0,
@@ -3463,8 +3621,27 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \oldtabular}{\endoldtabular}
 
 
-\newenvironment{doconce:exercise}{}{}
-\newcounter{doconce:exercise:counter}
+\newenvironment{doconceexercise}{}{}
+\newcounter{doconceexercisecounter}
+
+
+% --- begin definition of \listofexercises command ---
+\makeatletter
+\newcommand\listofexercises{
+\chapter*{List of Exercises, Problems, and Projects
+          \@mkboth{List of Exercises, Problems, and Projects}{List of Exercises, Problems, and Projects}}
+\markboth{List of Exercises, Problems, and Projects}{List of Exercises, Problems, and Projects}
+\@starttoc{loe}
+}
+\newcommand*{\l@doconceexercise}{\@dottedtocline{0}{0pt}{6.5em}}
+\makeatother
+% --- end definition of \listofexercises command ---
+
+
+% Make sure blank even--numbered pages before new chapters are
+% totally blank with no header
+\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
+%\let\cleardoublepage\clearemptydoublepage % caused error in the toc
 
 % --- end of standard preamble for documents ---
 
@@ -3484,6 +3661,8 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \input{newcommands_replace}
 
 % ------------------- main content ----------------------
+
+
 
 
 
@@ -3555,9 +3734,18 @@ Project & 9 & References to Project ref{demo:ex:2} in a ... & p.~\pageref{exer:y
 \clearpage % pagebreak after list of exercises
 
 
+\clearemptydoublepage
+\listofexercises
+\clearemptydoublepage
+
+
+
+
 \listoftodos[List of inline comments]
 
+
 \clearpage % after toc
+
 
 
 
@@ -3633,9 +3821,20 @@ Here is a reference to Equation (\ref{my:eq1}).
 
 
 \subsection{Subsection 1}
+\label{subsec1}
 
-More text, with a reference back to Section~\ref{sec1} and further
-to Section~\ref{subsubsec:ex}. \index{somefunc@{\rm\texttt{somefunc}} function}
+\index{somefunc@{\rm\texttt{somefunc}} function}
+
+% Refer to section/appendix etc. at the beginning of the line
+% and other special fix situations for HTML.
+
+More text, with a reference back to
+Section~\ref{sec1} and~\ref{subsec1}, and further to the
+sections~\ref{subsec1} and~\ref{subsubsec:ex}, which
+encourages you to do the tasks in the
+Exercises~\ref{demo:ex:1} and~\ref{exer:some:formula}.
+Appendices~\ref{app1} and~\ref{app2} are also nice elements.
+
 
 % sphinx code--blocks: pycod=python cod=fortran cppcod=c++ sys=console
 
@@ -3838,9 +4037,11 @@ Also test backslashes and braces like {\fontsize{10pt}{10pt}\Verb!\begin!}, {\fo
 verbatim text.
 
 Here is some \textcolor{red}{red} color and an attempt to write \textcolor{green}{with
-green color containing a linebreak.
-And one more.} Some formats will only display this correctly when
-HTML is the output format.
+green color containing a linebreak. \\
+And one more.} Some formats will only display \\
+this correctly when HTML is the output format. \\
+But here some more running text is added which is not part of
+the previous blocks with line breaks.
 
 \paragraph{Running OS commands.}
 \vspace{4pt}
@@ -4000,6 +4201,7 @@ with the preprocessor.
 }
 
 
+
 \begin{quote}\begin{tabular}{lrr}
 \hline
 \multicolumn{1}{c}{ time } & \multicolumn{1}{c}{ velocity } & \multicolumn{1}{c}{ acceleration } \\
@@ -4104,6 +4306,16 @@ $\nabla\cdot\bm{u} =0 $                                                       & 
 Here is
 some text.
 
+Let us also add a test of quotes such as ``double
+quotes, with numbers like 3.14 and
+newline/comma and hyphen (as in double--quote)'';
+written in the standard {\LaTeX}-style that gives correct
+{\LaTeX} formatting and ordinary double quotes for all non-{\LaTeX} formats.
+Here is another sentence that ``caused'' a bug in the past
+because double backtick quotes could imply verbatim text up to
+a verbatim word starting with period, like {\fontsize{10pt}{10pt}\Verb!.txt!}.
+
+
 \subsection{Bibliography test}
 
 Here is an example: \cite{Langtangen_Pedersen_2002} discussed propagation of
@@ -4135,8 +4347,8 @@ the old ME-IN323 book \cite{Langtangen:91} and the
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
 \subsection{Example 1: Examples can be typeset as exercises}
 \label{Example}
@@ -4166,7 +4378,7 @@ Maybe even another hint?
 The answer to this other subproblem goes here,
 maybe over multiple doconce input lines.
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 
 
@@ -4297,15 +4509,18 @@ Below, we have Problem~\ref{demo:ex:1} and Project~\ref{demo:ex:2},
 as well as Projects~\ref{proj:circle1} and~\ref{exer:you}, and in
 between there we have Exercise~\ref{exer:some:formula}.
 
+
 \section{Exercises}
 
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
-\subsection*{Problem 2: Flip a Coin}
+\subsection*{Problem \thedoconceexercisecounter: Flip a Coin}
+\addcontentsline{loe}{doconceexercise}{Problem \thedoconceexercisecounter: Flip a Coin}
+
 \label{demo:ex:1}
 % keywords = random numbers; Monte Carlo simulation
 
@@ -4375,7 +4590,7 @@ print 'Flipping a coin %d times gave %d heads' % (N, heads)
 Filenames: {\fontsize{10pt}{10pt}\Verb!flip_coin.py!}, {\fontsize{10pt}{10pt}\Verb!flip_coin.pdf!}.
 % solution files: mysol.txt, mysol_flip_coin.py, yet_another.file
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 
 
@@ -4387,10 +4602,12 @@ exercises.
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
-\subsection*{Project 3: Compute a Probability}
+\subsection*{Project \thedoconceexercisecounter: Compute a Probability}
+\addcontentsline{loe}{doconceexercise}{Project \thedoconceexercisecounter: Compute a Probability}
+
 \label{demo:ex:2}
 
 % Minimalistic exercise
@@ -4420,17 +4637,19 @@ compute the probability as $M/N$.
 
 % --- end hint in exercise ---
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 
 
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
-\subsection*{Project 4: Explore Distributions of Random Circles}
+\subsection*{Project \thedoconceexercisecounter: Explore Distributions of Random Circles}
+\addcontentsline{loe}{doconceexercise}{Project \thedoconceexercisecounter: Explore Distributions of Random Circles}
+
 \label{proj:circle1}
 
 The formula for a circle is given by
@@ -4492,12 +4711,12 @@ Here goes a full solution to part a).
 
 \paragraph{b)}
 Let $R$ be uniformly distributed and $(x_0,y_0)$ normally distributed.
-Filename: {\fontsize{10pt}{10pt}\Verb!norm.py!}.
+\noindent Filename: {\fontsize{10pt}{10pt}\Verb!norm.py!}.
 
 \paragraph{c)}
 Let $R$ and $(x_0,y_0)$ be normally distributed.
 
-Filename: {\fontsize{10pt}{10pt}\Verb!circles.pdf!}.
+\noindent Filename: {\fontsize{10pt}{10pt}\Verb!circles.pdf!}.
 
 % Closing remarks for this Project
 
@@ -4506,17 +4725,19 @@ At the very end of the exercise it may be appropriate to summarize
 and give some perspectives.
 
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 
 
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
-\subsection*{Exercise 5: Determine some Distance}
+\subsection*{Exercise \thedoconceexercisecounter: Determine some Distance}
+\addcontentsline{loe}{doconceexercise}{Exercise \thedoconceexercisecounter: Determine some Distance}
+
 \label{exer:dist}
 
 Intro to this exercise. Questions are in subexercises below.
@@ -4590,7 +4811,7 @@ Test list in hint:
 
 \noindent
 % --- end hint in exercise ---
-Filename: {\fontsize{10pt}{10pt}\Verb!subexer_a.pdf!}.
+\noindent Filename: {\fontsize{10pt}{10pt}\Verb!subexer_a.pdf!}.
 
 
 % --- begin answer of exercise ---
@@ -4614,7 +4835,7 @@ Some math $\cos^2 x + \sin^2 x = 1$ written one a single line:
 A hint for this subexercise.
 
 % --- end hint in exercise ---
-Filename: {\fontsize{10pt}{10pt}\Verb!subexer_b.pdf!}.
+\noindent Filename: {\fontsize{10pt}{10pt}\Verb!subexer_b.pdf!}.
 
 
 % --- begin solution of exercise ---
@@ -4631,15 +4852,15 @@ and their implications in other problems can be made. These
 remarks will appear at the end of the typeset exercise.
 
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 
 
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
 \subsection{Some exercise without the "Exercise:" prefix}
 
@@ -4658,15 +4879,18 @@ lambda x: x+2
 \end{Verbatim}
 \noindent
 
-\end{doconce:exercise}
+% Have some comments at the end of the exercise to see that
+% the Filename: ... is written correctly.
+
+\end{doconceexercise}
 % --- end exercise ---
 
 
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
 \subsection{Example 7: Just an example}
 
@@ -4680,7 +4904,7 @@ What is the capital of Norway?
 \paragraph{Answer.}
 Oslo.
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 
 
@@ -4693,10 +4917,12 @@ With some text, before we continue with exercises.
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
-\subsection*{Exercise 8: Make references to projects and problems}
+\subsection*{Exercise \thedoconceexercisecounter: Make references to projects and problems}
+\addcontentsline{loe}{doconceexercise}{Exercise \thedoconceexercisecounter: Make references to projects and problems}
+
 \label{exer:some:formula}
 
 Pick a statement from Project~\ref{proj:circle1} or Problem~\ref{demo:ex:1}
@@ -4712,27 +4938,29 @@ hint, etc.):
 \end{enumerate}
 
 \noindent
-Filename: {\fontsize{10pt}{10pt}\Verb!verify_formula.py!}.
+\noindent Filename: {\fontsize{10pt}{10pt}\Verb!verify_formula.py!}.
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 
 
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
-\subsection*{Project 9: References to Project~\ref{demo:ex:2} in a heading works for pdflatex}
+\subsection*{Project \thedoconceexercisecounter: References to Project~\ref{demo:ex:2} in a heading works for pdflatex}
+\addcontentsline{loe}{doconceexercise}{Project \thedoconceexercisecounter: References to Project~\ref{demo:ex:2} in a heading works for pdflatex}
+
 \label{exer:you}
 
 Refer to the previous exercise as Exercise~\ref{exer:some:formula},
 the two before that as Projects~\ref{demo:ex:2} and~\ref{proj:circle1},
 and this one as Project~\ref{exer:you}.
-Filename: {\fontsize{10pt}{10pt}\Verb!selc_composed.pdf!}.
+\noindent Filename: {\fontsize{10pt}{10pt}\Verb!selc_composed.pdf!}.
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 
 
@@ -4748,6 +4976,7 @@ Filename: {\fontsize{10pt}{10pt}\Verb!selc_composed.pdf!}.
 \appendix
 
 \section{Just for testing; part I}
+\label{app1}
 
 This is the first appendix.
 
@@ -4756,6 +4985,7 @@ This is the first appendix.
 Some text.
 
 \section{Just for testing; part II}
+\label{app2}
 
 This is more stuff for an appendix.
 
@@ -4995,9 +5225,10 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % --- begin definitions of admonition environments ---
 
-% Admonition is an oval gray box
+% Admonition style "graybox1" is an oval colored box
+\colorlet{graybox1_background}{gray!5}
 \newmdenv[
-  backgroundcolor=gray!5,  %% white with 5%% gray
+  backgroundcolor=graybox1_background,
   skipabove=\topsep,
   skipbelow=\topsep,
   outerlinewidth=0,
@@ -5023,8 +5254,27 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 
 
-\newenvironment{doconce:exercise}{}{}
-\newcounter{doconce:exercise:counter}
+\newenvironment{doconceexercise}{}{}
+\newcounter{doconceexercisecounter}
+
+
+% --- begin definition of \listofexercises command ---
+\makeatletter
+\newcommand\listofexercises{
+\chapter*{List of Exercises, Problems, and Projects
+          \@mkboth{List of Exercises, Problems, and Projects}{List of Exercises, Problems, and Projects}}
+\markboth{List of Exercises, Problems, and Projects}{List of Exercises, Problems, and Projects}
+\@starttoc{loe}
+}
+\newcommand*{\l@doconceexercise}{\@dottedtocline{0}{0pt}{6.5em}}
+\makeatother
+% --- end definition of \listofexercises command ---
+
+
+% Make sure blank even--numbered pages before new chapters are
+% totally blank with no header
+\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
+%\let\cleardoublepage\clearemptydoublepage % caused error in the toc
 
 % --- end of standard preamble for documents ---
 
@@ -5044,6 +5294,8 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \input{newcommands_replace}
 
 % ------------------- main content ----------------------
+
+
 
 
 
@@ -5124,7 +5376,13 @@ Project & 9 & References to Project ref{demo:ex:2} in a ... & p.~\pageref{exer:y
 
 
 
+
+
+
+
+
 \clearpage % after toc
+
 
 
 
@@ -5200,9 +5458,20 @@ Here is a reference to Equation (\ref{my:eq1}).
 
 
 \subsection{Subsection 1}
+\label{subsec1}
 
-More text, with a reference back to Section~\ref{sec1} and further
-to Section~\ref{subsubsec:ex}. \index{somefunc@{\rm\texttt{somefunc}} function}
+\index{somefunc@{\rm\texttt{somefunc}} function}
+
+% Refer to section/appendix etc. at the beginning of the line
+% and other special fix situations for HTML.
+
+More text, with a reference back to
+Section~\ref{sec1} and~\ref{subsec1}, and further to the
+sections~\ref{subsec1} and~\ref{subsubsec:ex}, which
+encourages you to do the tasks in the
+Exercises~\ref{demo:ex:1} and~\ref{exer:some:formula}.
+Appendices~\ref{app1} and~\ref{app2} are also nice elements.
+
 
 % sphinx code--blocks: pycod=python cod=fortran cppcod=c++ sys=console
 
@@ -5373,9 +5642,11 @@ Also test backslashes and braces like \Verb!\begin!, \Verb!\begin{enumerate}!,
 verbatim text.
 
 Here is some \textcolor{red}{red} color and an attempt to write \textcolor{green}{with
-green color containing a linebreak.
-And one more.} Some formats will only display this correctly when
-HTML is the output format.
+green color containing a linebreak. \\
+And one more.} Some formats will only display \\
+this correctly when HTML is the output format. \\
+But here some more running text is added which is not part of
+the previous blocks with line breaks.
 
 \paragraph{Running OS commands.}
 begin{quote}begin{Verbatim}
@@ -5531,6 +5802,7 @@ with the preprocessor.
 }
 
 
+
 \begin{quote}\begin{tabular}{lrr}
 \hline
 \multicolumn{1}{c}{ time } & \multicolumn{1}{c}{ velocity } & \multicolumn{1}{c}{ acceleration } \\
@@ -5633,6 +5905,16 @@ $\nabla\cdot\bm{u} =0 $                                                       & 
 Here is
 some text.
 
+Let us also add a test of quotes such as ``double
+quotes, with numbers like 3.14 and
+newline/comma and hyphen (as in double--quote)'';
+written in the standard {\LaTeX}-style that gives correct
+{\LaTeX} formatting and ordinary double quotes for all non-{\LaTeX} formats.
+Here is another sentence that ``caused'' a bug in the past
+because double backtick quotes could imply verbatim text up to
+a verbatim word starting with period, like \Verb!.txt!.
+
+
 \subsection{Bibliography test}
 
 Here is an example: \cite{Langtangen_Pedersen_2002} discussed propagation of
@@ -5664,8 +5946,8 @@ the old ME-IN323 book \cite{Langtangen:91} and the
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
 \subsection{Example 1: Examples can be typeset as exercises}
 \label{Example}
@@ -5695,7 +5977,7 @@ Maybe even another hint?
 The answer to this other subproblem goes here,
 maybe over multiple doconce input lines.
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 
 
@@ -5826,15 +6108,17 @@ Below, we have Problem~\ref{demo:ex:1} and Project~\ref{demo:ex:2},
 as well as Projects~\ref{proj:circle1} and~\ref{exer:you}, and in
 between there we have Exercise~\ref{exer:some:formula}.
 
+
 \section{Exercises}
 
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
-\subsection*{Problem 2: Flip a Coin}
+\subsection*{Problem \thedoconceexercisecounter: Flip a Coin}
+
 \label{demo:ex:1}
 % keywords = random numbers; Monte Carlo simulation
 
@@ -5903,7 +6187,7 @@ print 'Flipping a coin %d times gave %d heads' % (N, heads)
 Filenames: \Verb!flip_coin.py!, \Verb!flip_coin.pdf!.
 % solution files: mysol.txt, mysol_flip_coin.py, yet_another.file
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 
 
@@ -5915,10 +6199,11 @@ exercises.
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
-\subsection*{Project 3: Compute a Probability}
+\subsection*{Project \thedoconceexercisecounter: Compute a Probability}
+
 \label{demo:ex:2}
 
 % Minimalistic exercise
@@ -5948,17 +6233,18 @@ compute the probability as $M/N$.
 
 % --- end hint in exercise ---
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 
 
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
-\subsection*{Project 4: Explore Distributions of Random Circles}
+\subsection*{Project \thedoconceexercisecounter: Explore Distributions of Random Circles}
+
 \label{proj:circle1}
 
 The formula for a circle is given by
@@ -6019,12 +6305,12 @@ Here goes a full solution to part a).
 
 \paragraph{b)}
 Let $R$ be uniformly distributed and $(x_0,y_0)$ normally distributed.
-Filename: \Verb!norm.py!.
+\noindent Filename: \Verb!norm.py!.
 
 \paragraph{c)}
 Let $R$ and $(x_0,y_0)$ be normally distributed.
 
-Filename: \Verb!circles.pdf!.
+\noindent Filename: \Verb!circles.pdf!.
 
 % Closing remarks for this Project
 
@@ -6033,17 +6319,18 @@ At the very end of the exercise it may be appropriate to summarize
 and give some perspectives.
 
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 
 
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
-\subsection*{Exercise 5: Determine some Distance}
+\subsection*{Exercise \thedoconceexercisecounter: Determine some Distance}
+
 \label{exer:dist}
 
 Intro to this exercise. Questions are in subexercises below.
@@ -6113,7 +6400,7 @@ Test list in hint:
 
 \noindent
 % --- end hint in exercise ---
-Filename: \Verb!subexer_a.pdf!.
+\noindent Filename: \Verb!subexer_a.pdf!.
 
 
 % --- begin answer of exercise ---
@@ -6137,7 +6424,7 @@ Some math $\cos^2 x + \sin^2 x = 1$ written one a single line:
 A hint for this subexercise.
 
 % --- end hint in exercise ---
-Filename: \Verb!subexer_b.pdf!.
+\noindent Filename: \Verb!subexer_b.pdf!.
 
 
 % --- begin solution of exercise ---
@@ -6154,15 +6441,15 @@ and their implications in other problems can be made. These
 remarks will appear at the end of the typeset exercise.
 
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 
 
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
 \subsection{Some exercise without the "Exercise:" prefix}
 
@@ -6179,15 +6466,18 @@ And a test that the code \Verb!lambda x: x+2! is correctly placed here:
 lambda x: x+2
 \end{Verbatim}
 
-\end{doconce:exercise}
+% Have some comments at the end of the exercise to see that
+% the Filename: ... is written correctly.
+
+\end{doconceexercise}
 % --- end exercise ---
 
 
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
 \subsection{Example 7: Just an example}
 
@@ -6201,7 +6491,7 @@ What is the capital of Norway?
 \paragraph{Answer.}
 Oslo.
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 
 
@@ -6214,10 +6504,11 @@ With some text, before we continue with exercises.
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
-\subsection*{Exercise 8: Make references to projects and problems}
+\subsection*{Exercise \thedoconceexercisecounter: Make references to projects and problems}
+
 \label{exer:some:formula}
 
 Pick a statement from Project~\ref{proj:circle1} or Problem~\ref{demo:ex:1}
@@ -6233,27 +6524,28 @@ hint, etc.):
 \end{enumerate}
 
 \noindent
-Filename: \Verb!verify_formula.py!.
+\noindent Filename: \Verb!verify_formula.py!.
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 
 
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
-\subsection*{Project 9: References to Project~\ref{demo:ex:2} in a heading works for pdflatex}
+\subsection*{Project \thedoconceexercisecounter: References to Project~\ref{demo:ex:2} in a heading works for pdflatex}
+
 \label{exer:you}
 
 Refer to the previous exercise as Exercise~\ref{exer:some:formula},
 the two before that as Projects~\ref{demo:ex:2} and~\ref{proj:circle1},
 and this one as Project~\ref{exer:you}.
-Filename: \Verb!selc_composed.pdf!.
+\noindent Filename: \Verb!selc_composed.pdf!.
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 
 
@@ -6269,6 +6561,7 @@ Filename: \Verb!selc_composed.pdf!.
 \appendix
 
 \section{Just for testing; part I}
+\label{app1}
 
 This is the first appendix.
 
@@ -6277,6 +6570,7 @@ This is the first appendix.
 Some text.
 
 \section{Just for testing; part II}
+\label{app2}
 
 This is more stuff for an appendix.
 
@@ -6501,11 +6795,24 @@ Here is a nested list:
 Here is a reference to Equation (my:eq1).
 
 
+.. _subsec1:
+
 Subsection 1
 ------------
 
-More text, with a reference back to the section `Section 1`_ and further
-to the section `URLs`_. 
+
+.. Refer to section/appendix etc. at the beginning of the line
+
+.. and other special fix situations for HTML.
+
+
+More text, with a reference back to
+the section `Section 1`_ and `Subsection 1`_, and further to the
+the sections `Subsection 1`_ and `URLs`_, which
+encourages you to do the tasks in `Problem 2: Flip a Coin`_ and `Exercise 8: Make references to projects and problems`_.
+Appendices     `Appendix: Just for testing; part I`_ and `Appendix: Just for testing; part II`_ are also nice elements.
+
+
 .. sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console
 
 
@@ -6689,9 +6996,13 @@ Also test backslashes and braces like ``\begin``, ``\begin{enumerate}``,
 verbatim text.
 
 Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
-green color containing a linebreak.
-And one more.</font> Some formats will only display this correctly when
-HTML is the output format.
+green color containing a linebreak. 
+
+| And one more.</font> Some formats will only display 
+| this correctly when HTML is the output format. 
+| But here some more running text is added which is not part of
+
+the previous blocks with line breaks.
 
 Running OS commands
 ~~~~~~~~~~~~~~~~~~~
@@ -6940,6 +7251,16 @@ A test of verbatim words in heading with subscript a_i: ``my_file_v1`` and ``my_
 Here is
 some text.
 
+Let us also add a test of quotes such as "double
+quotes, with numbers like 3.14 and
+newline/comma and hyphen (as in double-quote)";
+written in the standard LaTeX-style that gives correct
+LaTeX formatting and ordinary double quotes for all non-LaTeX formats.
+Here is another sentence that "caused" a bug in the past
+because double backtick quotes could imply verbatim text up to
+a verbatim word starting with period, like ``.txt``.
+
+
 Bibliography test
 -----------------
 
@@ -7089,6 +7410,7 @@ More mathematical typesetting is demonstrated in the coming exercises.
 Below, we have `Problem 2: Flip a Coin`_ and `Project 3: Compute a Probability`_,
 as well as `Project 4: Explore Distributions of Random Circles`_ and `Project 9: References in a headings do not work well in rst`_, and in
 between there we have `Exercise 8: Make references to projects and problems`_.
+
 
 Exercises
 =========
@@ -7464,6 +7786,11 @@ And a test that the code ``lambda x: x+2`` is correctly placed here::
         lambda x: x+2
 
 
+.. Have some comments at the end of the exercise to see that
+
+.. the Filename: ... is written correctly.
+
+
 .. --- end exercise ---
 
 
@@ -7670,6 +7997,8 @@ References
 
 
 
+.. _app1:
+
 Appendix: Just for testing; part I
 ==================================
 
@@ -7679,6 +8008,8 @@ A subsection within an appendix
 -------------------------------
 
 Some text.
+
+.. _app2:
 
 Appendix: Just for testing; part II
 ===================================
@@ -7903,12 +8234,25 @@ Here is a reference to Equation :eq:`my:eq1`.
 This equation appears in another part if this document is split.
 
 
+.. _subsec1:
+
 Subsection 1
 ------------
 
-More text, with a reference back to the section :ref:`sec1` and further
-to the section :ref:`subsubsec:ex`. 
+
 .. index:: somefunc function
+
+
+.. Refer to section/appendix etc. at the beginning of the line
+
+.. and other special fix situations for HTML.
+
+
+More text, with a reference back to
+the section :ref:`sec1` and :ref:`subsec1`, and further to the
+the sections :ref:`subsec1` and :ref:`subsubsec:ex`, which
+encourages you to do the tasks in :ref:`demo:ex:1` and :ref:`exer:some:formula`.
+Appendices     :ref:`app1` and :ref:`app2` are also nice elements.
 
 
 .. sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console
@@ -8104,9 +8448,13 @@ Also test backslashes and braces like ``\begin``, ``\begin{enumerate}``,
 verbatim text.
 
 Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
-green color containing a linebreak.
-And one more.</font> Some formats will only display this correctly when
-HTML is the output format.
+green color containing a linebreak. 
+
+| And one more.</font> Some formats will only display 
+| this correctly when HTML is the output format. 
+| But here some more running text is added which is not part of
+
+the previous blocks with line breaks.
 
 Running OS commands
 ~~~~~~~~~~~~~~~~~~~
@@ -8324,7 +8672,6 @@ The Doconce source code reads
 
 .. code-block:: text
 
-
           |--------------------------------|
           |time  | velocity | acceleration |
           |--l--------r-----------r--------|
@@ -8400,6 +8747,16 @@ A test of verbatim words in heading with subscript :math:`a_i`: ``my_file_v1`` a
 **Files ``my_file_v1.py`` and ``my_file_v2.py`` define some math :math:`a_{i-1}`.**
 Here is
 some text.
+
+Let us also add a test of quotes such as "double
+quotes, with numbers like 3.14 and
+newline/comma and hyphen (as in double-quote)";
+written in the standard LaTeX-style that gives correct
+LaTeX formatting and ordinary double quotes for all non-LaTeX formats.
+Here is another sentence that "caused" a bug in the past
+because double backtick quotes could imply verbatim text up to
+a verbatim word starting with period, like ``.txt``.
+
 
 Bibliography test
 -----------------
@@ -8627,6 +8984,7 @@ More mathematical typesetting is demonstrated in the coming exercises.
 Below, we have :ref:`demo:ex:1` and :ref:`demo:ex:2`,
 as well as :ref:`proj:circle1` and :ref:`exer:you`, and in
 between there we have :ref:`exer:some:formula`.
+
 
 Exercises
 =========
@@ -9028,6 +9386,11 @@ And a test that the code ``lambda x: x+2`` is correctly placed here:
         lambda x: x+2
 
 
+.. Have some comments at the end of the exercise to see that
+
+.. the Filename: ... is written correctly.
+
+
 .. --- end exercise ---
 
 
@@ -9234,6 +9597,8 @@ References
 
 
 
+.. _app1:
+
 Appendix: Just for testing; part I
 ==================================
 
@@ -9243,6 +9608,8 @@ A subsection within an appendix
 -------------------------------
 
 Some text.
+
+.. _app2:
 
 Appendix: Just for testing; part II
 ===================================
@@ -9453,8 +9820,16 @@ Here is a reference to Equation (my:eq1).
 
 ==== Subsection 1 ====
 
-More text, with a reference back to the section [#Section_1] and further
-to the section [#URLs]. 
+<wiki:comment> Refer to section/appendix etc. at the beginning of the line </wiki:comment>
+<wiki:comment> and other special fix situations for HTML. </wiki:comment>
+
+More text, with a reference back to
+the section [#Section_1] and [#Subsection_1], and further to the
+the sections [#Subsection_1] and [#URLs], which
+encourages you to do the tasks in [#Problem_2:_Flip_a_Coin] and [#Exercise_8:_Make_references_to_projects_and_problems].
+Appendices     [#Appendix:_Just_for_testing;_part_I] and [#Appendix:_Just_for_testing;_part_II] are also nice elements.
+
+
 <wiki:comment> sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console </wiki:comment>
 
 ==== Computer code ====
@@ -9628,9 +10003,14 @@ Also test backslashes and braces like `\begin`, `\begin{enumerate}`,
 verbatim text.
 
 Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
-green color containing a linebreak.
-And one more.</font> Some formats will only display this correctly when
-HTML is the output format.
+green color containing a linebreak. 
+
+And one more.</font> Some formats will only display 
+
+this correctly when HTML is the output format. 
+
+But here some more running text is added which is not part of
+the previous blocks with line breaks.
 
 ==== Running OS commands ====
 
@@ -9877,6 +10257,16 @@ and URLs.
 *Files `my_file_v1.py` and `my_file_v2.py` define some math `a_{i-1}`.* Here is
 some text.
 
+Let us also add a test of quotes such as "double
+quotes, with numbers like 3.14 and
+newline/comma and hyphen (as in double-quote)";
+written in the standard LaTeX-style that gives correct
+LaTeX formatting and ordinary double quotes for all non-LaTeX formats.
+Here is another sentence that "caused" a bug in the past
+because double backtick quotes could imply verbatim text up to
+a verbatim word starting with period, like `.txt`.
+
+
 ==== Bibliography test ====
 
 Here is an example: [1] discussed propagation of
@@ -10006,6 +10396,7 @@ More mathematical typesetting is demonstrated in the coming exercises.
 Below, we have [#Problem_2:_Flip_a_Coin] and [#Project_3:_Compute_a_Probability],
 as well as [#Project_4:_Explore_Distributions_of_Random_Circles] and [#Project_9:_References_to_Project_demo:ex:2_in_a_heading_works_for_gwiki], and in
 between there we have [#Exercise_8:_Make_references_to_projects_and_problems].
+
 
 == Exercises ==
 
@@ -10325,6 +10716,9 @@ And a test that the code `lambda x: x+2` is correctly placed here:
 lambda x: x+2
 }}}
 
+<wiki:comment> Have some comments at the end of the exercise to see that </wiki:comment>
+<wiki:comment> the Filename: ... is written correctly. </wiki:comment>
+
 <wiki:comment> --- end exercise --- </wiki:comment>
 
 
@@ -10412,6 +10806,7 @@ Filename: `selc_composed.pdf`.
 
 == Appendix: Just for testing; part I ==
 
+
 This is the first appendix.
 
 ==== A subsection within an appendix ====
@@ -10419,6 +10814,7 @@ This is the first appendix.
 Some text.
 
 == Appendix: Just for testing; part II ==
+
 
 This is more stuff for an appendix.
 
@@ -10619,8 +11015,16 @@ Here is a reference to Equation (my:eq1).
 
 ==== Subsection 1 ====
 
-More text, with a reference back to the section [#Section_1] and further
-to the section [#URLs]. 
+<!-- Refer to section/appendix etc. at the beginning of the line -->
+<!-- and other special fix situations for HTML. -->
+
+More text, with a reference back to
+the section [#Section_1] and [#Subsection_1], and further to the
+the sections [#Subsection_1] and [#URLs], which
+encourages you to do the tasks in [#Problem_2:_Flip_a_Coin] and [#Exercise_8:_Make_references_to_projects_and_problems].
+Appendices     [#Appendix:_Just_for_testing;_part_I] and [#Appendix:_Just_for_testing;_part_II] are also nice elements.
+
+
 <!-- sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console -->
 
 ==== Computer code ====
@@ -10793,9 +11197,11 @@ Also test backslashes and braces like <code>\begin</code>, <code>\begin{enumerat
 verbatim text.
 
 Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
-green color containing a linebreak.
-And one more.</font> Some formats will only display this correctly when
-HTML is the output format.
+green color containing a linebreak. <br />
+And one more.</font> Some formats will only display <br />
+this correctly when HTML is the output format. <br />
+But here some more running text is added which is not part of
+the previous blocks with line breaks.
 
 ==== Running OS commands ====
 
@@ -11004,6 +11410,16 @@ and URLs.
 Here is
 some text.
 
+Let us also add a test of quotes such as "double
+quotes, with numbers like 3.14 and
+newline/comma and hyphen (as in double-quote)";
+written in the standard LaTeX-style that gives correct
+LaTeX formatting and ordinary double quotes for all non-LaTeX formats.
+Here is another sentence that "caused" a bug in the past
+because double backtick quotes could imply verbatim text up to
+a verbatim word starting with period, like <code>.txt</code>.
+
+
 ==== Bibliography test ====
 
 Here is an example: [1] discussed propagation of
@@ -11136,6 +11552,7 @@ More mathematical typesetting is demonstrated in the coming exercises.
 Below, we have [#Problem_2:_Flip_a_Coin] and [#Project_3:_Compute_a_Probability],
 as well as [#Project_4:_Explore_Distributions_of_Random_Circles] and [#Project_9:_References_to_Project_demo:ex:2_in_a_heading_works_for_mwiki], and in
 between there we have [#Exercise_8:_Make_references_to_projects_and_problems].
+
 
 == Exercises ==
 
@@ -11482,6 +11899,9 @@ And a test that the code <code>lambda x: x+2</code> is correctly placed here:
 lambda x: x+2
 </syntaxhighlight>
 
+<!-- Have some comments at the end of the exercise to see that -->
+<!-- the Filename: ... is written correctly. -->
+
 <!-- --- end exercise --- -->
 
 
@@ -11659,6 +12079,7 @@ Filename: <code>selc_composed.pdf</code>.
 
 == Appendix: Just for testing; part I ==
 
+
 This is the first appendix.
 
 ==== A subsection within an appendix ====
@@ -11666,6 +12087,7 @@ This is the first appendix.
 Some text.
 
 == Appendix: Just for testing; part II ==
+
 
 This is more stuff for an appendix.
 
@@ -11866,8 +12288,18 @@ Here is a reference to Equation (my:eq1).
 
 == Subsection 1 ==
 
-More text, with a reference back to the section [#Section_1] and further
-to the section [#URLs]. 
+
+
+<wiki:comment> Refer to section/appendix etc. at the beginning of the line </wiki:comment>
+<wiki:comment> and other special fix situations for HTML. </wiki:comment>
+
+More text, with a reference back to
+the section [#Section_1] and [#Subsection_1], and further to the
+the sections [#Subsection_1] and [#URLs], which
+encourages you to do the tasks in [#Problem_2:_Flip_a_Coin] and [#Exercise_8:_Make_references_to_projects_and_problems].
+Appendices     [#Appendix:_Just_for_testing;_part_I] and [#Appendix:_Just_for_testing;_part_II] are also nice elements.
+
+
 <wiki:comment> sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console </wiki:comment>
 
 === Computer code ===
@@ -12041,9 +12473,11 @@ Also test backslashes and braces like {{{\begin}}}, {{{\begin{enumerate}}}},
 verbatim text.
 
 Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
-green color containing a linebreak.
-And one more.</font> Some formats will only display this correctly when
-HTML is the output format.
+green color containing a linebreak. <br />
+And one more.</font> Some formats will only display <br />
+this correctly when HTML is the output format. <br />
+But here some more running text is added which is not part of
+the previous blocks with line breaks.
 
 === Running OS commands ===
 
@@ -12239,6 +12673,16 @@ and URLs.
 //Files {{{my_file_v1.py}}} and {{{my_file_v2.py}}} define some math {{{a_{i-1}}}}.// Here is
 some text.
 
+Let us also add a test of quotes such as "double
+quotes, with numbers like 3.14 and
+newline/comma and hyphen (as in double-quote)";
+written in the standard LaTeX-style that gives correct
+LaTeX formatting and ordinary double quotes for all non-LaTeX formats.
+Here is another sentence that "caused" a bug in the past
+because double backtick quotes could imply verbatim text up to
+a verbatim word starting with period, like {{{.txt}}}.
+
+
 == Bibliography test ==
 
 Here is an example: [1] discussed propagation of
@@ -12370,6 +12814,7 @@ More mathematical typesetting is demonstrated in the coming exercises.
 Below, we have [#Problem_2:_Flip_a_Coin] and [#Project_3:_Compute_a_Probability],
 as well as [#Project_4:_Explore_Distributions_of_Random_Circles] and [#Project_9:_References_to_Project_demo:ex:2_in_a_heading_works_for_cwiki], and in
 between there we have [#Exercise_8:_Make_references_to_projects_and_problems].
+
 
 = Exercises =
 
@@ -12692,6 +13137,9 @@ And a test that the code {{{lambda x: x+2}}} is correctly placed here:
 lambda x: x+2
 }}}
 
+<wiki:comment> Have some comments at the end of the exercise to see that </wiki:comment>
+<wiki:comment> the Filename: ... is written correctly. </wiki:comment>
+
 <wiki:comment> --- end exercise --- </wiki:comment>
 
 
@@ -12781,6 +13229,7 @@ Filename: {{{selc_composed.pdf}}}.
 
 = Appendix: Just for testing; part I =
 
+
 This is the first appendix.
 
 == A subsection within an appendix ==
@@ -12788,6 +13237,7 @@ This is the first appendix.
 Some text.
 
 = Appendix: Just for testing; part II =
+
 
 This is more stuff for an appendix.
 
@@ -12970,8 +13420,15 @@ Here is a reference to Equation (my:eq1).
 
 Subsection 1
 
-More text, with a reference back to the section "Section 1" and further
-to the section "URLs". 
+
+
+More text, with a reference back to
+the section "Section 1" and "Subsection 1", and further to the
+the sections "Subsection 1" and "URLs", which
+encourages you to do the tasks in  "Problem 2: Flip a Coin" and "Exercise 8: Make references to projects and problems".
+Appendices     "Appendix: Just for testing; part I" and "Appendix: Just for testing; part II" are also nice elements.
+
+
 
 Computer code
 
@@ -13148,9 +13605,11 @@ Also test backslashes and braces like '\begin', '\begin{enumerate}',
 verbatim text.
 
 Here is some red color and an attempt to write with
-green color containing a linebreak.
-And one more. Some formats will only display this correctly when
-HTML is the output format.
+green color containing a linebreak. 
+And one more. Some formats will only display 
+this correctly when HTML is the output format. 
+But here some more running text is added which is not part of
+the previous blocks with line breaks.
 
 Running OS commands::
 
@@ -13336,6 +13795,16 @@ A test of verbatim words in heading with subscript a_i: 'my_file_v1' and 'my_fil
 *Files 'my_file_v1.py' and 'my_file_v2.py' define some math a_{i-1}.* Here is
 some text.
 
+Let us also add a test of quotes such as "double
+quotes, with numbers like 3.14 and
+newline/comma and hyphen (as in double-quote)";
+written in the standard LaTeX-style that gives correct
+LaTeX formatting and ordinary double quotes for all non-LaTeX formats.
+Here is another sentence that "caused" a bug in the past
+because double backtick quotes could imply verbatim text up to
+a verbatim word starting with period, like '.txt'.
+
+
 Bibliography test
 
 Here is an example: [1] discussed propagation of
@@ -13460,6 +13929,7 @@ More mathematical typesetting is demonstrated in the coming exercises.
 Below, we have  "Problem 2: Flip a Coin" and  "Project 3: Compute a Probability",
 as well as  "Project 4: Explore Distributions of Random Circles" and "Project 9: References to Project ref{demo:ex:2} in a heading works for st", and in
 between there we have  "Exercise 8: Make references to projects and problems".
+
 
 Exercises
 
@@ -13760,6 +14230,7 @@ And a test that the code 'lambda x: x+2' is correctly placed here::
 
 
         lambda x: x+2
+
 
 
 # --- end exercise ---
@@ -14118,8 +14589,15 @@ Here is a reference to Equation (my:eq1).
 Subsection 1
 ------------
 
-More text, with a reference back to the section "Section 1" and further
-to the section "URLs". 
+
+
+More text, with a reference back to
+the section "Section 1" and "Subsection 1", and further to the
+the sections "Subsection 1" and "URLs", which
+encourages you to do the tasks in  "Problem 2: Flip a Coin" and "Exercise 8: Make references to projects and problems".
+Appendices     "Appendix: Just for testing; part I" and "Appendix: Just for testing; part II" are also nice elements.
+
+
 
 Computer code
 ~~~~~~~~~~~~~
@@ -14297,9 +14775,11 @@ C{\end{this}\end{that}}, and C{{something \inside braces}} in inline
 verbatim text.
 
 Here is some red color and an attempt to write with
-green color containing a linebreak.
-And one more. Some formats will only display this correctly when
-HTML is the output format.
+green color containing a linebreak. 
+And one more. Some formats will only display 
+this correctly when HTML is the output format. 
+But here some more running text is added which is not part of
+the previous blocks with line breaks.
 
 Running OS commands
 ~~~~~~~~~~~~~~~~~~~
@@ -14490,6 +14970,16 @@ A test of verbatim words in heading with subscript M{a_i}: C{my_file_v1} and C{m
 I{Files C{my_file_v1.py} and C{my_file_v2.py} define some math M{a_{i-1}}.} Here is
 some text.
 
+Let us also add a test of quotes such as "double
+quotes, with numbers like 3.14 and
+newline/comma and hyphen (as in double-quote)";
+written in the standard LaTeX-style that gives correct
+LaTeX formatting and ordinary double quotes for all non-LaTeX formats.
+Here is another sentence that "caused" a bug in the past
+because double backtick quotes could imply verbatim text up to
+a verbatim word starting with period, like C{.txt}.
+
+
 Bibliography test
 -----------------
 
@@ -14619,6 +15109,7 @@ More mathematical typesetting is demonstrated in the coming exercises.
 Below, we have  "Problem 2: Flip a Coin" and  "Project 3: Compute a Probability",
 as well as  "Project 4: Explore Distributions of Random Circles" and "Project 9: References to Project ref{demo:ex:2} in a heading works for epytext", and in
 between there we have  "Exercise 8: Make references to projects and problems".
+
 
 Exercises
 =========
@@ -14929,6 +15420,7 @@ And a test that the code C{lambda x: x+2} is correctly placed here::
 
 
         lambda x: x+2
+
 
 
 # --- end exercise ---
@@ -15369,8 +15861,15 @@ Here is a reference to Equation (my:eq1).
 Subsection 1
 ------------
 
-More text, with a reference back to the section "Section 1" and further
-to the section "URLs". 
+
+
+More text, with a reference back to
+the section "Section 1" and "Subsection 1", and further to the
+the sections "Subsection 1" and "URLs", which
+encourages you to do the tasks in  "Problem 2: Flip a Coin" and "Exercise 8: Make references to projects and problems".
+Appendices     "Appendix: Just for testing; part I" and "Appendix: Just for testing; part II" are also nice elements.
+
+
 
 Computer code
 ~~~~~~~~~~~~~
@@ -15548,9 +16047,11 @@ Also test backslashes and braces like \begin, \begin{enumerate},
 verbatim text.
 
 Here is some red color and an attempt to write with
-green color containing a linebreak.
-And one more. Some formats will only display this correctly when
-HTML is the output format.
+green color containing a linebreak. 
+And one more. Some formats will only display 
+this correctly when HTML is the output format. 
+But here some more running text is added which is not part of
+the previous blocks with line breaks.
 
 Running OS commands
 ~~~~~~~~~~~~~~~~~~~
@@ -15742,6 +16243,16 @@ A test of verbatim words in heading with subscript a_i: my_file_v1 and my_file_v
 *Files my_file_v1.py and my_file_v2.py define some math a_{i-1}.* Here is
 some text.
 
+Let us also add a test of quotes such as "double
+quotes, with numbers like 3.14 and
+newline/comma and hyphen (as in double-quote)";
+written in the standard LaTeX-style that gives correct
+LaTeX formatting and ordinary double quotes for all non-LaTeX formats.
+Here is another sentence that "caused" a bug in the past
+because double backtick quotes could imply verbatim text up to
+a verbatim word starting with period, like .txt.
+
+
 Bibliography test
 -----------------
 
@@ -15870,6 +16381,7 @@ More mathematical typesetting is demonstrated in the coming exercises.
 Below, we have  "Problem 2: Flip a Coin" and  "Project 3: Compute a Probability",
 as well as  "Project 4: Explore Distributions of Random Circles" and "Project 9: References to Project ref{demo:ex:2} in a heading works for plain", and in
 between there we have  "Exercise 8: Make references to projects and problems".
+
 
 Exercises
 =========
@@ -16184,6 +16696,7 @@ And a test that the code lambda x: x+2 is correctly placed here::
 
 
         lambda x: x+2
+
 
 
 # --- end exercise ---
@@ -16595,8 +17108,17 @@ Here is a reference to Equation \eqref{my:eq1}.
 
 ### Subsection 1
 
-More text, with a reference back to the section [Section 1](#n-1) and further
-to the section [URLs](#s). 
+
+<!-- Refer to section/appendix etc. at the beginning of the line -->
+<!-- and other special fix situations for HTML. -->
+
+More text, with a reference back to
+the section [Section 1](#n-1) and [Subsection 1](#n-1), and further to the
+the sections [Subsection 1](#n-1) and [URLs](#s), which
+encourages you to do the tasks in  [Problem 2: Flip a Coin](#n) and [Exercise 8: Make references to projects and problems](#s).
+Appendices     [Appendix: Just for testing; part I](#i) and [Appendix: Just for testing; part II](#i) are also nice elements.
+
+
 <!-- sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console -->
 
 #### Computer code
@@ -16768,7 +17290,7 @@ HTML:
 
 System call:
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.Bash}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Terminal> mkdir test
 Terminal> cd test
 Terminal> myprog -f
@@ -16786,14 +17308,16 @@ Also test backslashes and braces like `\begin`, `\begin{enumerate}`,
 verbatim text.
 
 Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
-green color containing a linebreak.
-And one more.</font> Some formats will only display this correctly when
-HTML is the output format.
+green color containing a linebreak. \n
+And one more.</font> Some formats will only display \n
+this correctly when HTML is the output format. \n
+But here some more running text is added which is not part of
+the previous blocks with line breaks.
 
 #### Running OS commands
 
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.Bash}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Terminal> python -c 'print "Testing\noutput\nfrom\nPython."'
 Testing
 output
@@ -17009,6 +17533,16 @@ and URLs.
 *Files `my_file_v1.py` and `my_file_v2.py` define some math $a_{i-1}$.* Here is
 some text.
 
+Let us also add a test of quotes such as "double
+quotes, with numbers like 3.14 and
+newline/comma and hyphen (as in double-quote)";
+written in the standard LaTeX-style that gives correct
+LaTeX formatting and ordinary double quotes for all non-LaTeX formats.
+Here is another sentence that "caused" a bug in the past
+because double backtick quotes could imply verbatim text up to
+a verbatim word starting with period, like `.txt`.
+
+
 ### Bibliography test
 
 Here is an example: @Langtangen_Pedersen_2002 discussed propagation of
@@ -17205,6 +17739,7 @@ More mathematical typesetting is demonstrated in the coming exercises.
 Below, we have  [Problem 2: Flip a Coin](#n) and  [Project 3: Compute a Probability](#y),
 as well as  [Project 4: Explore Distributions of Random Circles](#s) and [Project 9: References to Project ref{demo:ex:2} in a heading works for pandoc](#c), and in
 between there we have  [Exercise 8: Make references to projects and problems](#s).
+
 
 ## Exercises
 
@@ -17534,6 +18069,9 @@ And a test that the code `lambda x: x+2` is correctly placed here:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 lambda x: x+2
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+<!-- Have some comments at the end of the exercise to see that -->
+<!-- the Filename: ... is written correctly. -->
 
 <!-- --- end exercise --- -->
 
@@ -17935,8 +18473,17 @@ in a separate document: `admon.do.txt`.
       "\n",
       "### Subsection 1\n",
       "\n",
-      "More text, with a reference back to the section [Section 1](#n-1) and further\n",
-      "to the section [URLs](#s). \n",
+      "\n",
+      "<!-- Refer to section/appendix etc. at the beginning of the line -->\n",
+      "<!-- and other special fix situations for HTML. -->\n",
+      "\n",
+      "More text, with a reference back to\n",
+      "the section [Section 1](#n-1) and [Subsection 1](#n-1), and further to the\n",
+      "the sections [Subsection 1](#n-1) and [URLs](#s), which\n",
+      "encourages you to do the tasks in  [Problem 2: Flip a Coin](#n) and [Exercise 8: Make references to projects and problems](#s).\n",
+      "Appendices     [Appendix: Just for testing; part I](#i) and [Appendix: Just for testing; part II](#i) are also nice elements.\n",
+      "\n",
+      "\n",
       "<!-- sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console -->\n",
       "\n",
       "#### Computer code\n",
@@ -18276,9 +18823,11 @@ in a separate document: `admon.do.txt`.
       "verbatim text.\n",
       "\n",
       "Here is some <font color=\"red\">red</font> color and an attempt to write <font color=\"green\">with\n",
-      "green color containing a linebreak.\n",
-      "And one more.</font> Some formats will only display this correctly when\n",
-      "HTML is the output format.\n",
+      "green color containing a linebreak. \n",
+      "And one more.</font> Some formats will only display \n",
+      "this correctly when HTML is the output format. \n",
+      "But here some more running text is added which is not part of\n",
+      "the previous blocks with line breaks.\n",
       "\n",
       "#### Running OS commands"
      ]
@@ -18564,6 +19113,16 @@ in a separate document: `admon.do.txt`.
       "*Files `my_file_v1.py` and `my_file_v2.py` define some math $a_{i-1}$.* Here is\n",
       "some text.\n",
       "\n",
+      "Let us also add a test of quotes such as \"double\n",
+      "quotes, with numbers like 3.14 and\n",
+      "newline/comma and hyphen (as in double-quote)\";\n",
+      "written in the standard LaTeX-style that gives correct\n",
+      "LaTeX formatting and ordinary double quotes for all non-LaTeX formats.\n",
+      "Here is another sentence that \"caused\" a bug in the past\n",
+      "because double backtick quotes could imply verbatim text up to\n",
+      "a verbatim word starting with period, like `.txt`.\n",
+      "\n",
+      "\n",
       "### Bibliography test\n",
       "\n",
       "Here is an example: [Langtangen_Pedersen_2002] discussed propagation of\n",
@@ -18732,6 +19291,7 @@ in a separate document: `admon.do.txt`.
       "Below, we have  [Problem 2: Flip a Coin](#n) and  [Project 3: Compute a Probability](#y),\n",
       "as well as  [Project 4: Explore Distributions of Random Circles](#s) and [Project 9: References to Project ref{demo:ex:2} in a heading works for ipynb](#b), and in\n",
       "between there we have  [Exercise 8: Make references to projects and problems](#s).\n",
+      "\n",
       "\n",
       "## Exercises\n",
       "\n",
@@ -19178,6 +19738,9 @@ in a separate document: `admon.do.txt`.
      "cell_type": "markdown",
      "metadata": {},
      "source": [
+      "<!-- Have some comments at the end of the exercise to see that -->\n",
+      "<!-- the Filename: ... is written correctly. -->\n",
+      "\n",
       "<!-- --- end exercise --- -->\n",
       "\n",
       "\n",
@@ -19512,9 +20075,20 @@ in a separate document: `admon.do.txt`.
 }
 
 ************** File: testdoc.tmp *****************
+label{subsec1}
 
-More text, with a reference back to Section ref{sec1} and further
-to Section ref{subsubsec:ex}. idx{`somefunc` function}
+idx{`somefunc` function}
+
+# Refer to section/appendix etc. at the beginning of the line
+# and other special fix situations for HTML.
+
+More text, with a reference back to
+Section ref{sec1} and ref{subsec1}, and further to the
+sections    ref{subsec1} and ref{subsubsec:ex}, which
+encourages you to do the tasks in the
+Exercises ref{demo:ex:1} and ref{exer:some:formula}.
+Appendices     ref{app1} and ref{app2} are also nice elements.
+
 
 # sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console
 
@@ -19660,7 +20234,7 @@ Could not find match for from regex "\*\s+\$.+normally"
   'solution': '',
   'solution_file': None,
   'subex': [],
-  'text': '# Another minimalistic exercise\n\nJust some text. And some math saying that $e^0=1$ on a single line,\nto test that math block insertion is correct:\n\n!bt\n\\[ \\exp{(0)} = 1 \\]\n\n!et\n\nAnd a test that the code `lambda x: x+2` is correctly placed here:\n\n!bc\nlambda x: x+2\n\n!ec',
+  'text': '# Another minimalistic exercise\n\nJust some text. And some math saying that $e^0=1$ on a single line,\nto test that math block insertion is correct:\n\n!bt\n\\[ \\exp{(0)} = 1 \\]\n\n!et\n\nAnd a test that the code `lambda x: x+2` is correctly placed here:\n\n!bc\nlambda x: x+2\n\n!ec \n\n# Have some comments at the end of the exercise to see that\n# the Filename: ... is written correctly.',
   'title': 'Some exercise without the "Exercise:" prefix',
   'type': 'Exercise',
   'type_visible': False},
@@ -19758,7 +20332,8 @@ iso-8859-1
 </blockquote>
 <p>Here is a reference to Equation ([my:eq1]).</p>
 <h2 id="subsection-1">Subsection 1</h2>
-<p>More text, with a reference back to Section [sec1] and further to Section [subsubsec:ex].</p>
+<p>[subsec1]</p>
+<p>More text, with a reference back to Section [sec1] and [subsec1], and further to the sections [subsec1] and [subsubsec:ex], which encourages you to do the tasks in the Exercises [demo:ex:1] and [exer:some:formula]. Appendices [app1] and [app2] are also nice elements.</p>
 <h4 id="computer-code.">Computer code.</h4>
 <p>Let’s do some copying from files too. First from subroutine up to the very end,</p>
 <pre><code>subroutine test()
@@ -19873,7 +20448,7 @@ Terminal&gt; myprog -f
 output1
 output2</code></pre>
 <p>It is time to test <code>verbatim inline font</code> especially with <code>a newline inside the text</code> and an exclamation mark at the end: <code>BEGIN</code>! The exclamation mark inside the verbatim text is potentially not smart since latex use ! in the <code>Verb</code> typesetting, but this should now be fixed: test  !bc  and  !ec  as well as  !bsummary . Also test backslashes and braces like <code>\begin</code>, <code>\begin{enumerate}</code>, <code>\end{this}\end{that}</code>, and <code>{something \inside braces}</code> in inline verbatim text.</p>
-<p>Here is some color and an attempt to write Some formats will only display this correctly when HTML is the output format.</p>
+<p>Here is some color and an attempt to write Some formats will only display<br />this correctly when HTML is the output format.<br />But here some more running text is added which is not part of the previous blocks with line breaks.</p>
 <h4 id="running-os-commands.">Running OS commands.</h4>
 <pre><code>Terminal&gt; python -c &#39;print &quot;Testing\noutput\nfrom\nPython.&quot;&#39;
 Testing
@@ -20071,6 +20646,7 @@ ccc<br /><span class="math">\(\mathcal{L}=0\)</span> &amp; <img src="../doc/src/
 <h2 id="a-test-of-verbatim-words-in-heading-with-subscript-a_i-my_file_v1-and-my_file_v2">A test of verbatim words in heading with subscript <span class="math">\(a_i\)</span>: <code>my\_file\_v1</code> and <code>my\_file\_v2</code></h2>
 <h4 id="files-my_file_v1.py-and-my_file_v2.py-define-some-math-a_i-1.">Files <code>my\_file\_v1.py</code> and <code>my\_file\_v2.py</code> define some math <span class="math">\(a_{i-1}\)</span>.</h4>
 <p>Here is some text.</p>
+<p>Let us also add a test of quotes such as “double quotes, with numbers like 3.14 and newline/comma and hyphen (as in double-quote)”; written in the standard LaTeX-style that gives correct LaTeX formatting and ordinary double quotes for all non-LaTeX formats. Here is another sentence that “caused” a bug in the past because double backtick quotes could imply verbatim text up to a verbatim word starting with period, like <code>.txt</code>.</p>
 <h2 id="bibliography-test">Bibliography test</h2>
 <p>Here is an example: @Langtangen_Pedersen_2002 discussed propagation of large destructive water waves, @Langtangen_et_al_2002 gave an overview of numerical methods for solving the Navier-Stokes equations, while the use of Backward Kolmogorov equations for analyzing random vibrations was investigated in @Langtangen_1994a. The book chapter @Mardal_et_al_2003a contains information on C++ software tools for programming multigrid methods. A real retro reference is @Langtangen_1988d about a big FORTRAN package. Multiple references are also possible, e.g., see @Langtangen_Pedersen_2002 [@Mardal_et_al_2003a].</p>
 <p>We need to cite more than 10 papers to reproduce an old formatting problem with blanks in the keys in reST format: @Langtangen_1992c [@Langtangen_1994a; @Mortensen_et_al_2011; @Langtangen_Pedersen_2002] and @Langtangen_et_al_2002 [@Glimsdal_et_al_20006; @Rahman_et_al_2006b; @Haga_et_al_2011a; @Langtangen_2003a; @Langtangen_2008a; @Langtangen:95] and all the work of @Langtangen_2012 [@Mardal_et_al_2003a; @Jeberg_et_al_2004] as well as old work @Langtangen_1988d and @Langtangen_1989e, and the talk @Langtangen_talk_2007a. Langtangen also had two thesis @Langtangen:85 [@Langtangen_1989e]. More retro citations are the old ME-IN323 book @Langtangen:91 and the @Langtangen:94b OONSKI ’94 paper.</p>
@@ -20140,7 +20716,7 @@ b &amp;= \nabla^2 u + \nabla^4 x &amp; x\in\Omega \label{eq2a}\end{aligned}\]</s
 <p>More mathematical typesetting is demonstrated in the coming exercises.</p>
 <p>Below, we have Problem [demo:ex:1] and Project [demo:ex:2], as well as Projects [proj:circle1] and [exer:you], and in between there we have Exercise [exer:some:formula].</p>
 <h1 id="exercises">Exercises</h1>
-<h2 id="problem-2-flip-a-coin" class="unnumbered">Problem 2: Flip a Coin</h2>
+<h2 id="problem-flip-a-coin" class="unnumbered">Problem : Flip a Coin</h2>
 <p>[demo:ex:1]</p>
 <p>Make a program that simulates flipping a coin <span class="math">\(N\)</span> times. Print out &quot;tail&quot; or &quot;head&quot; for each flip and let the program count the number of heads.</p>
 <h4 id="remarks.">Remarks.</h4>
@@ -20168,7 +20744,7 @@ print &#39;Flipping a coin %d times gave %d heads&#39; % (N, heads)</code></pre>
 <p>Filenames: <code>flip_coin.py</code>, <code>flip_coin.pdf</code>.</p>
 <h2 id="not-an-exercise">Not an exercise</h2>
 <p>Should be possible to stick a normal section in the middle of many exercises.</p>
-<h2 id="project-3-compute-a-probability" class="unnumbered">Project 3: Compute a Probability</h2>
+<h2 id="project-compute-a-probability" class="unnumbered">Project : Compute a Probability</h2>
 <p>[demo:ex:2]</p>
 <p>What is the probability of getting a number between 0.5 and 0.6 when drawing uniformly distributed random numbers from the interval <span class="math">\([0,1)\)</span>?</p>
 <p>At the end we have a list because that caused problems in LaTeX in previous Doconce versions:</p>
@@ -20178,7 +20754,7 @@ print &#39;Flipping a coin %d times gave %d heads&#39; % (N, heads)</code></pre>
 </ol>
 <h4 id="hint.">Hint.</h4>
 <p>To answer this question empirically, let a program draw <span class="math">\(N\)</span> such random numbers using Python’s standard <code>random</code> module, count how many of them, <span class="math">\(M\)</span>, that fall in the interval <span class="math">\((0.5,0.6)\)</span>, and compute the probability as <span class="math">\(M/N\)</span>.</p>
-<h2 id="project-4-explore-distributions-of-random-circles" class="unnumbered">Project 4: Explore Distributions of Random Circles</h2>
+<h2 id="project-explore-distributions-of-random-circles" class="unnumbered">Project : Explore Distributions of Random Circles</h2>
 <p>[proj:circle1]</p>
 <p>The formula for a circle is given by</p>
 <p><span class="math">\[\begin{aligned}
@@ -20210,7 +20786,7 @@ x, y = circle(2.0, 0, 0)</code></pre>
 <p>Filename: <code>circles.pdf</code>.</p>
 <h4 id="remarks.-1">Remarks.</h4>
 <p>At the very end of the exercise it may be appropriate to summarize and give some perspectives.</p>
-<h2 id="exercise-5-determine-some-distance" class="unnumbered">Exercise 5: Determine some Distance</h2>
+<h2 id="exercise-determine-some-distance" class="unnumbered">Exercise : Determine some Distance</h2>
 <p>[exer:dist]</p>
 <p>Intro to this exercise. Questions are in subexercises below.</p>
 <p>The text here belongs to the main (intro) part of the exercise. Need closing remarks to have text after subexercises.</p>
@@ -20264,7 +20840,7 @@ x, y = circle(2.0, 0, 0)</code></pre>
 <h1 id="here-goes-another-section">Here goes another section</h1>
 <p>With some text, before we continue with exercises.</p>
 <h1 id="more-exercises">More Exercises</h1>
-<h2 id="exercise-8-make-references-to-projects-and-problems" class="unnumbered">Exercise 8: Make references to projects and problems</h2>
+<h2 id="exercise-make-references-to-projects-and-problems" class="unnumbered">Exercise : Make references to projects and problems</h2>
 <p>[exer:some:formula]</p>
 <p>Pick a statement from Project [proj:circle1] or Problem [demo:ex:1] and verify it.</p>
 <p>Test list at the end of an exercise without other elements (like subexercise, hint, etc.):</p>
@@ -20273,14 +20849,16 @@ x, y = circle(2.0, 0, 0)</code></pre>
 <li><p>item2</p></li>
 </ol>
 <p>Filename: <code>verify_formula.py</code>.</p>
-<h2 id="project-9-references-to-projectdemoex2-in-a-heading-works-for-latex" class="unnumbered">Project 9: References to Project [demo:ex:2] in a heading works for latex</h2>
+<h2 id="project-references-to-projectdemoex2-in-a-heading-works-for-latex" class="unnumbered">Project : References to Project [demo:ex:2] in a heading works for latex</h2>
 <p>[exer:you]</p>
 <p>Refer to the previous exercise as Exercise [exer:some:formula], the two before that as Projects [demo:ex:2] and [proj:circle1], and this one as Project [exer:you]. Filename: <code>selc_composed.pdf</code>.</p>
 <h1 id="just-for-testing-part-i">Just for testing; part I</h1>
+<p>[app1]</p>
 <p>This is the first appendix.</p>
 <h2 id="a-subsection-within-an-appendix">A subsection within an appendix</h2>
 <p>Some text.</p>
 <h1 id="just-for-testing-part-ii">Just for testing; part II</h1>
+<p>[app2]</p>
 <p>This is more stuff for an appendix.</p>
 <h2 id="appendix-testing-identical-titles">Appendix: Testing identical titles</h2>
 <p>Without label.</p>
@@ -20411,7 +20989,12 @@ code > span.er { color: #ff0000; font-weight: bold; }
 </blockquote>
 <p>Here is a reference to Equation .</p>
 <h3 id="subsection-1">Subsection 1</h3>
-<p>More text, with a reference back to the section <a href="#n-1">Section 1</a> and further to the section <a href="#s">URLs</a>. <!-- sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console --></p>
+<!-- Refer to section/appendix etc. at the beginning of the line -->
+<!-- and other special fix situations for HTML. -->
+
+<p>More text, with a reference back to the section <a href="#n-1">Section 1</a> and <a href="#n-1">Subsection 1</a>, and further to the the sections <a href="#n-1">Subsection 1</a> and <a href="#s">URLs</a>, which encourages you to do the tasks in <a href="#n">Problem 2: Flip a Coin</a> and <a href="#s">Exercise 8: Make references to projects and problems</a>. Appendices <a href="#i">Appendix: Just for testing; part I</a> and <a href="#i">Appendix: Just for testing; part II</a> are also nice elements.</p>
+<!-- sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console -->
+
 <h4 id="computer-code">Computer code</h4>
 <p>Let's do some copying from files too. First from subroutine up to the very end,</p>
 <pre class="sourceCode Fortran"><code class="sourceCode fortran">      <span class="kw">subroutine</span> test()
@@ -20521,19 +21104,19 @@ show()</code></pre>
 &lt;!-- comment --&gt;
 &lt;/table&gt;</code></pre>
 <p>System call:</p>
-<pre class="sourceCode Bash"><code class="sourceCode bash"><span class="kw">Terminal&gt;</span> mkdir test
-<span class="kw">Terminal&gt;</span> cd test
-<span class="kw">Terminal&gt;</span> myprog -f
-<span class="kw">output1</span>
-<span class="kw">output2</span></code></pre>
+<pre><code>Terminal&gt; mkdir test
+Terminal&gt; cd test
+Terminal&gt; myprog -f
+output1
+output2</code></pre>
 <p>It is time to test <code>verbatim inline font</code> especially with <code>a newline inside the text</code> and an exclamation mark at the end: <code>BEGIN</code>! The exclamation mark inside the verbatim text is potentially not smart since latex use ! in the <code>Verb</code> typesetting, but this should now be fixed: test <code>!bc</code> and <code>!ec</code> as well as <code>!bsummary</code>. Also test backslashes and braces like <code>\begin</code>, <code>\begin{enumerate}</code>, <code>\end{this}\end{that}</code>, and <code>{something \inside braces}</code> in inline verbatim text.</p>
-<p>Here is some <font color="red">red</font> color and an attempt to write <font color="green">with green color containing a linebreak. And one more.</font> Some formats will only display this correctly when HTML is the output format.</p>
+<p>Here is some <font color="red">red</font> color and an attempt to write <font color="green">with green color containing a linebreak. And one more.</font> Some formats will only display this correctly when HTML is the output format. But here some more running text is added which is not part of the previous blocks with line breaks.</p>
 <h4 id="running-os-commands">Running OS commands</h4>
-<pre class="sourceCode Bash"><code class="sourceCode bash"><span class="kw">Terminal&gt;</span> python -c <span class="st">&#39;print &quot;Testing\noutput\nfrom\nPython.&quot;&#39;</span>
-<span class="kw">Testing</span>
-<span class="kw">output</span>
-<span class="kw">from</span>
-<span class="kw">Python.</span></code></pre>
+<pre><code>Terminal&gt; python -c &#39;print &quot;Testing\noutput\nfrom\nPython.&quot;&#39;
+Testing
+output
+from
+Python.</code></pre>
 <h3 id="subsection-2-testing-figures">Subsection 2: Testing figures</h3>
 <p>Test of figures. In particular we refer to Figure ref{fig:impact} in which there is a flow.</p>
 <div class="figure">
@@ -20772,6 +21355,7 @@ show()</code></pre>
          $\nabla\cdot\boldsymbol{u} =0 $               [`100`](../doc/src/manual/mov/wave_frames/frame_0100.png)  [`105`](../doc/src/manual/mov/wave_frames/frame_0105.png)  </code></pre>
 <h3 id="a-test-of-verbatim-words-in-heading-with-subscript-a_i-my_file_v1-and-my_file_v2">A test of verbatim words in heading with subscript <span class="math">\(a_i\)</span>: <code>my_file_v1</code> and <code>my_file_v2</code></h3>
 <p><em>Files <code>my_file_v1.py</code> and <code>my_file_v2.py</code> define some math <span class="math">\(a_{i-1}\)</span>.</em> Here is some text.</p>
+<p>Let us also add a test of quotes such as &quot;double quotes, with numbers like 3.14 and newline/comma and hyphen (as in double-quote)&quot;; written in the standard LaTeX-style that gives correct LaTeX formatting and ordinary double quotes for all non-LaTeX formats. Here is another sentence that &quot;caused&quot; a bug in the past because double backtick quotes could imply verbatim text up to a verbatim word starting with period, like <code>.txt</code>.</p>
 <h3 id="bibliography-test">Bibliography test</h3>
 <p>Here is an example: @Langtangen_Pedersen_2002 discussed propagation of large destructive water waves, @Langtangen_et_al_2002 gave an overview of numerical methods for solving the Navier-Stokes equations, while the use of Backward Kolmogorov equations for analyzing random vibrations was investigated in @Langtangen_1994a. The book chapter @Mardal_et_al_2003a contains information on C++ software tools for programming multigrid methods. A real retro reference is @Langtangen_1988d about a big FORTRAN package. Multiple references are also possible, e.g., see @Langtangen_Pedersen_2002;@Mardal_et_al_2003a.</p>
 <p>We need to cite more than 10 papers to reproduce an old formatting problem with blanks in the keys in reST format: @Langtangen_1992c;@Langtangen_1994a;@Mortensen_et_al_2011;@Langtangen_Pedersen_2002 and @Langtangen_et_al_2002;@Glimsdal_et_al_20006;@Rahman_et_al_2006b;@Haga_et_al_2011a;@Langtangen_2003a;@Langtangen_2008a;@Langtangen:95 and all the work of @Langtangen_2012;@Mardal_et_al_2003a;@Jeberg_et_al_2004 as well as old work @Langtangen_1988d and @Langtangen_1989e, and the talk @Langtangen_talk_2007a. Langtangen also had two thesis @Langtangen:85;@Langtangen_1989e. More retro citations are the old ME-IN323 book @Langtangen:91 and the @Langtangen:94b OONSKI '94 paper.</p>
@@ -21086,6 +21670,9 @@ x, y = circle(<span class="fl">2.0</span>, <span class="dv">0</span>, <span clas
 \]</span></p>
 <p>And a test that the code <code>lambda x: x+2</code> is correctly placed here:</p>
 <pre><code>lambda x: x+2</code></pre>
+<!-- Have some comments at the end of the exercise to see that -->
+<!-- the Filename: ... is written correctly. -->
+
 <!-- --- end exercise --- -->
 
 
@@ -22389,7 +22976,7 @@ The text is rendered to
 <p>
 <blockquote>
     Generalized references are described in
-    the section <a href="#genrefs">Generalized References</a>.
+    The section <a href="#genrefs">Generalized References</a>.
 </blockquote>
 
 
@@ -22489,9 +23076,13 @@ open=right               % start new chapters on odd-numbered pages
 \pagestyle{headings}
 % #elif LATEX_STYLE == "Springer_T2"
 % Style: T2 (Springer)
-\documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmono}
-\usepackage{t2}
+% Use svmono.cls with doconce modifications for bibliography
+\documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmonodo}
+
+% Use t2.sty with doconce modifications
+\usepackage{t2do}
 \special{papersize=193mm,260mm}
+
 % #elif LATEX_STYLE == "Springer_llcse"
 % Style: Lecture Notes in Computer Science (Springer)
 \documentclass[oribib]{llncs}
@@ -22675,6 +23266,13 @@ open=right               % start new chapters on odd-numbered pages
 % #endif
 
 
+% #if LATEX_STYLE not in ("Koma_Script", "Springer_T2")
+% Make sure blank even-numbered pages before new chapters are
+% totally blank with no header
+\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
+%\let\cleardoublepage\clearemptydoublepage % caused error in the toc
+% #endif
+
 % --- end of standard preamble for documents ---
 
 
@@ -22702,6 +23300,18 @@ open=right               % start new chapters on odd-numbered pages
 % ------------------- main content ----------------------
 
 
+
+% #if LATEX_STYLE in ("Springer_T2", "Springer_lncse")
+\frontmatter
+\setcounter{page}{3}
+\pagestyle{headings}
+% #endif
+
+% #if LATEX_STYLE == "Springer_lncse"
+% With hyperref loaded, \contentsline needs 3 args
+%\contentsline{chapter}{Bibliography}{829}{chapter.Bib}
+%\contentsline{chapter}{Index}{831}{chapter.Index}
+% #endif
 
 % ----------------- title -------------------------
 
@@ -22962,6 +23572,10 @@ Inline math, $a=b$, is the only math in this document.
 % Need BIBFILE because of \cite{} examples
 
 
+\clearemptydoublepage
+\markboth{Bibliography}{Bibliography}
+\thispagestyle{empty}
+
 \bibliographystyle{plain}
 \bibliography{papers}
 
@@ -22970,6 +23584,9 @@ Inline math, $a=b$, is the only math in this document.
 
 
 % #ifdef PREAMBLE
+\clearemptydoublepage
+\markboth{Index}{Index}
+\thispagestyle{empty}
 \printindex
 
 \end{document}
@@ -23176,7 +23793,6 @@ Inline math, :math:`a=b`, is the only math in this document.
 
 
 
-
 ************** File: author1.txt *****************
 Test of one author at one institution
 =====================================
@@ -23333,7 +23949,6 @@ Inline math, a=b, is the only math in this document.
     2013,
     http://doconce.googlecode.com/hg/test/demotestdoc.html.
 
-
 ************** File: ._testdoc000.html *****************
 <!DOCTYPE html>
 <!--
@@ -23422,7 +24037,7 @@ Automatically generated HTML file from Doconce source
 <!-- tocinfo
 {'highest level': 1,
  'sections': [(' Section 1 ', 1, 'sec1', 'sec1'),
-              (' Subsection 1 ', 2, None, '___sec1'),
+              (' Subsection 1 ', 2, 'subsec1', 'subsec1'),
               (' Computer code ', 3, None, '___sec2'),
               (' Running OS commands ', 3, None, '___sec3'),
               (' Subsection 2: Testing figures ',
@@ -23480,9 +24095,9 @@ Automatically generated HTML file from Doconce source
                'exer:you',
                'exer:you'),
               (' References ', 1, None, '___sec28'),
-              (' Appendix: Just for testing; part I ', 1, None, '___sec29'),
+              (' Appendix: Just for testing; part I ', 1, 'app1', 'app1'),
               (' A subsection within an appendix ', 2, None, '___sec30'),
-              (' Appendix: Just for testing; part II ', 1, None, '___sec31'),
+              (' Appendix: Just for testing; part II ', 1, 'app2', 'app2'),
               (' Appendix: Testing identical titles ', 2, None, '___sec32'),
               (' Appendix: Testing identical titles ',
                2,
@@ -23597,7 +24212,7 @@ $$
 
 <p>
 <a href="._testdoc001.html#sec1"> Section 1 </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec1"> Subsection 1 </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#subsec1"> Subsection 1 </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec2"> Computer code </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec3"> Running OS commands </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#subsec:ex"> Subsection 2: Testing figures </a><br>
@@ -23625,9 +24240,9 @@ $$
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#exer:some:formula"> Exercise 8: Make references to projects and problems </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#exer:you"> Project 9: References in a headings do not work well in html </a><br>
 <a href="._testdoc002.html#___sec28"> References </a><br>
-<a href="._testdoc002.html#___sec29"> Appendix: Just for testing; part I </a><br>
+<a href="._testdoc002.html#app1"> Appendix: Just for testing; part I </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec30"> A subsection within an appendix </a><br>
-<a href="._testdoc002.html#___sec31"> Appendix: Just for testing; part II </a><br>
+<a href="._testdoc002.html#app2"> Appendix: Just for testing; part II </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec32"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#test:title:id1"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#test:title:id2"> Appendix: Testing identical titles </a><br>
@@ -23735,7 +24350,7 @@ Automatically generated HTML file from Doconce source
 <!-- tocinfo
 {'highest level': 1,
  'sections': [(' Section 1 ', 1, 'sec1', 'sec1'),
-              (' Subsection 1 ', 2, None, '___sec1'),
+              (' Subsection 1 ', 2, 'subsec1', 'subsec1'),
               (' Computer code ', 3, None, '___sec2'),
               (' Running OS commands ', 3, None, '___sec3'),
               (' Subsection 2: Testing figures ',
@@ -23793,9 +24408,9 @@ Automatically generated HTML file from Doconce source
                'exer:you',
                'exer:you'),
               (' References ', 1, None, '___sec28'),
-              (' Appendix: Just for testing; part I ', 1, None, '___sec29'),
+              (' Appendix: Just for testing; part I ', 1, 'app1', 'app1'),
               (' A subsection within an appendix ', 2, None, '___sec30'),
-              (' Appendix: Just for testing; part II ', 1, None, '___sec31'),
+              (' Appendix: Just for testing; part II ', 1, 'app2', 'app2'),
               (' Appendix: Testing identical titles ', 2, None, '___sec32'),
               (' Appendix: Testing identical titles ',
                2,
@@ -23926,11 +24541,19 @@ Here is a nested list:
 Here is a reference to Equation <a href="._testdoc002.html#mjx-eqn-3">(3)</a>.
 This equation appears in another part if this document is split.
 
-<h3>Subsection 1  <a name="___sec1"></a></h3>
+<h3>Subsection 1 <a name="subsec1"></a></h3>
 
 <p>
-More text, with a reference back to the section <a href="#sec1">Section 1</a> and further
-to the section <a href="#subsubsec:ex">URLs</a>. 
+<!-- Refer to section/appendix etc. at the beginning of the line -->
+<!-- and other special fix situations for HTML. -->
+
+<p>
+More text, with a reference back to
+The section <a href="#sec1">Section 1</a> and <a href="#subsec1">Subsection 1</a>, and further to the sections <a href="#subsec1">Subsection 1</a> and <a href="#subsubsec:ex">URLs</a>, which
+encourages you to do the tasks in <a href="._testdoc002.html#demo:ex:1">Problem 2: Flip a Coin</a> and <a href="._testdoc002.html#exer:some:formula">Exercise 8: Make references to projects and problems</a>.
+The appendices <a href="._testdoc002.html#app1">Appendix: Just for testing; part I</a> and <a href="._testdoc002.html#app2">Appendix: Just for testing; part II</a> are also nice elements.
+
+<p>
 <!-- sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console -->
 
 <h4>Computer code  <a name="___sec2"></a></h4>
@@ -24060,7 +24683,7 @@ such cells are not supported by this format).
 
 <p>
 
-<!-- code=text (from !bc pyscpro) typeset with pygments style "emacs" -->
+<!-- code=python (from !bc pyscpro) typeset with pygments style "emacs" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%"> 1
  2
  3
@@ -24072,17 +24695,17 @@ such cells are not supported by this format).
  9
 10
 11
-12</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a = 2
-b = 3
-print &#39;a+b:&#39;, a + b
+12</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a <span style="color: #666666">=</span> <span style="color: #666666">2</span>
+b <span style="color: #666666">=</span> <span style="color: #666666">3</span>
+<span style="color: #AA22FF; font-weight: bold">print</span> <span style="color: #BB4444">&#39;a+b:&#39;</span>, a <span style="color: #666666">+</span> b
 
-# In a sage cell we can also plot
-from matplotlib.pyplot import *
-from numpy import *
-x = linspace(0, 4*pi, 101)
-y = exp(-0.1*x)*cos(x)
+<span style="color: #008800; font-style: italic"># In a sage cell we can also plot</span>
+<span style="color: #AA22FF; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #666666">*</span>
+<span style="color: #AA22FF; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #666666">*</span>
+x <span style="color: #666666">=</span> linspace(<span style="color: #666666">0</span>, <span style="color: #666666">4*</span>pi, <span style="color: #666666">101</span>)
+y <span style="color: #666666">=</span> exp(<span style="color: #666666">-0.1*</span>x)<span style="color: #666666">*</span>cos(x)
 plot(x, y)
-xlabel(&#39;x&#39;); ylabel(&#39;y&#39;)
+xlabel(<span style="color: #BB4444">&#39;x&#39;</span>); ylabel(<span style="color: #BB4444">&#39;y&#39;</span>)
 show()
 </pre></div>
 </td></tr></table><p>
@@ -24175,16 +24798,16 @@ HTML:
 System call:
 <p>
 
-<!-- code=bash (from !bc sys) typeset with pygments style "emacs" -->
+<!-- code=console (from !bc sys) typeset with pygments style "emacs" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
 3
 4
-5</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; mkdir <span style="color: #AA22FF">test</span>
-Terminal&gt; <span style="color: #AA22FF">cd test</span>
-Terminal&gt; myprog -f
-output1
-output2
+5</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #808080">Terminal&gt; mkdir test</span>
+<span style="color: #808080">Terminal&gt; cd test</span>
+<span style="color: #808080">Terminal&gt; myprog -f</span>
+<span style="color: #808080">output1</span>
+<span style="color: #808080">output2</span>
 </pre></div>
 </td></tr></table><p>
 It is time to test <code>verbatim inline font</code> especially with <code>a newline
@@ -24198,24 +24821,26 @@ verbatim text.
 
 <p>
 Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
-green color containing a linebreak.
-And one more.</font> Some formats will only display this correctly when
-HTML is the output format.
+green color containing a linebreak. <br />
+And one more.</font> Some formats will only display <br />
+this correctly when HTML is the output format. <br />
+But here some more running text is added which is not part of
+the previous blocks with line breaks.
 
 <h4>Running OS commands  <a name="___sec3"></a></h4>
 
 <p>
 
-<!-- code=bash (from !bc sys) typeset with pygments style "emacs" -->
+<!-- code=console (from !bc sys) typeset with pygments style "emacs" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
 3
 4
-5</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; python -c <span style="color: #BB4444">&#39;print &quot;Testing\noutput\nfrom\nPython.&quot;&#39;</span>
-Testing
-output
-from
-Python.
+5</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #808080">Terminal&gt; python -c &#39;print &quot;Testing\noutput\nfrom\nPython.&quot;&#39;</span>
+<span style="color: #808080">Testing</span>
+<span style="color: #808080">output</span>
+<span style="color: #808080">from</span>
+<span style="color: #808080">Python.</span>
 </pre></div>
 </td></tr></table><h3>Subsection 2: Testing figures <a name="subsec:ex"></a></h3>
 
@@ -24363,6 +24988,7 @@ The Doconce source code reads
 <p>
 
 <!-- code=text (from !bc ccq) typeset with pygments style "emacs" -->
+<blockquote>
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
 3
@@ -24377,7 +25003,7 @@ The Doconce source code reads
   | 4.0  | 1.1E+1   | 14.717624    |
   |--------------------------------|
 </pre></div>
-</td></tr></table><p>
+</td></tr></table></blockquote><p>
 Here is yet another table to test that we can handle more than
 one table:
 
@@ -24441,6 +25067,16 @@ and URLs.
 <b>Files <code>my_file_v1.py</code> and <code>my_file_v2.py</code> define some math \( a_{i-1} \).</b>
 Here is
 some text.
+
+<p>
+Let us also add a test of quotes such as "double
+quotes, with numbers like 3.14 and
+newline/comma and hyphen (as in double-quote)";
+written in the standard LaTeX-style that gives correct
+LaTeX formatting and ordinary double quotes for all non-LaTeX formats.
+Here is another sentence that "caused" a bug in the past
+because double backtick quotes could imply verbatim text up to
+a verbatim word starting with period, like <code>.txt</code>.
 
 <h3>Bibliography test  <a name="___sec9"></a></h3>
 
@@ -24659,7 +25295,7 @@ Automatically generated HTML file from Doconce source
 <!-- tocinfo
 {'highest level': 1,
  'sections': [(' Section 1 ', 1, 'sec1', 'sec1'),
-              (' Subsection 1 ', 2, None, '___sec1'),
+              (' Subsection 1 ', 2, 'subsec1', 'subsec1'),
               (' Computer code ', 3, None, '___sec2'),
               (' Running OS commands ', 3, None, '___sec3'),
               (' Subsection 2: Testing figures ',
@@ -24717,9 +25353,9 @@ Automatically generated HTML file from Doconce source
                'exer:you',
                'exer:you'),
               (' References ', 1, None, '___sec28'),
-              (' Appendix: Just for testing; part I ', 1, None, '___sec29'),
+              (' Appendix: Just for testing; part I ', 1, 'app1', 'app1'),
               (' A subsection within an appendix ', 2, None, '___sec30'),
-              (' Appendix: Just for testing; part II ', 1, None, '___sec31'),
+              (' Appendix: Just for testing; part II ', 1, 'app2', 'app2'),
               (' Appendix: Testing identical titles ', 2, None, '___sec32'),
               (' Appendix: Testing identical titles ',
                2,
@@ -25256,6 +25892,10 @@ And a test that the code <code>lambda x: x+2</code> is correctly placed here:
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">lambda x: x+2
 </pre></div>
 </td></tr></table><p>
+<!-- Have some comments at the end of the exercise to see that -->
+<!-- the Filename: ... is written correctly. -->
+
+<p>
 <!-- --- end exercise --- -->
 
 <p>
@@ -25444,7 +26084,7 @@ Filename: <code>selc_composed.pdf</code>.
 
 <!-- end bibliography -->
 
-<h2>Appendix: Just for testing; part I  <a name="___sec29"></a></h2>
+<h2>Appendix: Just for testing; part I <a name="app1"></a></h2>
 
 <p>
 This is the first appendix.
@@ -25454,7 +26094,7 @@ This is the first appendix.
 <p>
 Some text.
 
-<h2>Appendix: Just for testing; part II  <a name="___sec31"></a></h2>
+<h2>Appendix: Just for testing; part II <a name="app2"></a></h2>
 
 <p>
 This is more stuff for an appendix.
@@ -25744,7 +26384,7 @@ Automatically generated HTML file from Doconce source
 
 <p>
 <a href="#sec1"> Section 1 </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec1"> Subsection 1 </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#subsec1"> Subsection 1 </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec2"> Computer code </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec3"> Running OS commands </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#subsec:ex"> Subsection 2: Testing figures </a><br>
@@ -25772,9 +26412,9 @@ Automatically generated HTML file from Doconce source
 &nbsp; &nbsp; &nbsp; <a href="#exer:some:formula"> Exercise 8: Make references to projects and problems </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#exer:you"> Project 9: References in a headings do not work well in html </a><br>
 <a href="#___sec28"> References </a><br>
-<a href="#___sec29"> Appendix: Just for testing; part I </a><br>
+<a href="#app1"> Appendix: Just for testing; part I </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec30"> A subsection within an appendix </a><br>
-<a href="#___sec31"> Appendix: Just for testing; part II </a><br>
+<a href="#app2"> Appendix: Just for testing; part II </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec32"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#test:title:id1"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#test:title:id2"> Appendix: Testing identical titles </a><br>
@@ -25834,11 +26474,13 @@ Here is a nested list:
 Here is a reference to Equation <b>(REF to equation my:eq1 not supported)</b>.
 This equation appears in another part if this document is split.
 
-<h3>Subsection 1  <a name="___sec1"></a></h3>
+<h3>Subsection 1 <a name="subsec1"></a></h3>
 
 <p>
-More text, with a reference back to the section <a href="#sec1">Section 1</a> and further
-to the section <a href="#subsubsec:ex">URLs</a>.
+More text, with a reference back to
+The section <a href="#sec1">Section 1</a> and <a href="#subsec1">Subsection 1</a>, and further to the sections <a href="#subsec1">Subsection 1</a> and <a href="#subsubsec:ex">URLs</a>, which
+encourages you to do the tasks in <a href="#demo:ex:1">Problem 2: Flip a Coin</a> and <a href="#exer:some:formula">Exercise 8: Make references to projects and problems</a>.
+The appendices <a href="#app1">Appendix: Just for testing; part I</a> and <a href="#app2">Appendix: Just for testing; part II</a> are also nice elements.
 
 <h4>Computer code  <a name="___sec2"></a></h4>
 
@@ -25931,17 +26573,17 @@ such cells are not supported by this format).
 <p>
 
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a = 2
-b = 3
-print &#39;a+b:&#39;, a + b
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a <span style="color: #666666">=</span> <span style="color: #666666">2</span>
+b <span style="color: #666666">=</span> <span style="color: #666666">3</span>
+<span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;a+b:&#39;</span>, a <span style="color: #666666">+</span> b
 
-# In a sage cell we can also plot
-from matplotlib.pyplot import *
-from numpy import *
-x = linspace(0, 4*pi, 101)
-y = exp(-0.1*x)*cos(x)
+<span style="color: #408080; font-style: italic"># In a sage cell we can also plot</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
+x <span style="color: #666666">=</span> linspace(<span style="color: #666666">0</span>, <span style="color: #666666">4*</span>pi, <span style="color: #666666">101</span>)
+y <span style="color: #666666">=</span> exp(<span style="color: #666666">-0.1*</span>x)<span style="color: #666666">*</span>cos(x)
 plot(x, y)
-xlabel(&#39;x&#39;); ylabel(&#39;y&#39;)
+xlabel(<span style="color: #BA2121">&#39;x&#39;</span>); ylabel(<span style="color: #BA2121">&#39;y&#39;</span>)
 show()
 </pre></div>
 <p>
@@ -26012,11 +26654,11 @@ System call:
 <p>
 
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; mkdir <span style="color: #008000">test</span>
-Terminal&gt; <span style="color: #008000">cd test</span>
-Terminal&gt; myprog -f
-output1
-output2
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #808080">Terminal&gt; mkdir test</span>
+<span style="color: #808080">Terminal&gt; cd test</span>
+<span style="color: #808080">Terminal&gt; myprog -f</span>
+<span style="color: #808080">output1</span>
+<span style="color: #808080">output2</span>
 </pre></div>
 <p>
 It is time to test <code>verbatim inline font</code> especially with <code>a newline
@@ -26030,20 +26672,22 @@ verbatim text.
 
 <p>
 Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
-green color containing a linebreak.
-And one more.</font> Some formats will only display this correctly when
-HTML is the output format.
+green color containing a linebreak. <br />
+And one more.</font> Some formats will only display <br />
+this correctly when HTML is the output format. <br />
+But here some more running text is added which is not part of
+the previous blocks with line breaks.
 
 <h4>Running OS commands  <a name="___sec3"></a></h4>
 
 <p>
 
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; python -c <span style="color: #BA2121">&#39;print &quot;Testing\noutput\nfrom\nPython.&quot;&#39;</span>
-Testing
-output
-from
-Python.
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #808080">Terminal&gt; python -c &#39;print &quot;Testing\noutput\nfrom\nPython.&quot;&#39;</span>
+<span style="color: #808080">Testing</span>
+<span style="color: #808080">output</span>
+<span style="color: #808080">from</span>
+<span style="color: #808080">Python.</span>
 </pre></div>
 
 <h3>Subsection 2: Testing figures <a name="subsec:ex"></a></h3>
@@ -26183,6 +26827,7 @@ The Doconce source code reads
 <p>
 
 
+<blockquote>
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">  |--------------------------------|
   |time  | velocity | acceleration |
   |--l--------r-----------r--------|
@@ -26191,7 +26836,7 @@ The Doconce source code reads
   | 4.0  | 1.1E+1   | 14.717624    |
   |--------------------------------|
 </pre></div>
-<p>
+</blockquote><p>
 Here is yet another table to test that we can handle more than
 one table:
 
@@ -26251,6 +26896,16 @@ and URLs.
 <b>Files <code>my_file_v1.py</code> and <code>my_file_v2.py</code> define some math $latex a_{i-1}$.</b>
 Here is
 some text.
+
+<p>
+Let us also add a test of quotes such as "double
+quotes, with numbers like 3.14 and
+newline/comma and hyphen (as in double-quote)";
+written in the standard LaTeX-style that gives correct
+LaTeX formatting and ordinary double quotes for all non-LaTeX formats.
+Here is another sentence that "caused" a bug in the past
+because double backtick quotes could imply verbatim text up to
+a verbatim word starting with period, like <code>.txt</code>.
 
 <h3>Bibliography test  <a name="___sec9"></a></h3>
 
@@ -26935,7 +27590,7 @@ Filename: <code>selc_composed.pdf</code>.
     1994.</li>
 </ol>
 
-<h2>Appendix: Just for testing; part I  <a name="___sec29"></a></h2>
+<h2>Appendix: Just for testing; part I <a name="app1"></a></h2>
 
 <p>
 This is the first appendix.
@@ -26945,7 +27600,7 @@ This is the first appendix.
 <p>
 Some text.
 
-<h2>Appendix: Just for testing; part II  <a name="___sec31"></a></h2>
+<h2>Appendix: Just for testing; part II <a name="app2"></a></h2>
 
 <p>
 This is more stuff for an appendix.
@@ -27181,7 +27836,7 @@ Automatically generated HTML file from Doconce source
 <!-- tocinfo
 {'highest level': 1,
  'sections': [(' Section 1 ', 1, 'sec1', 'sec1'),
-              (' Subsection 1 ', 2, None, '___sec1'),
+              (' Subsection 1 ', 2, 'subsec1', 'subsec1'),
               (' Computer code ', 3, None, '___sec2'),
               (' Running OS commands ', 3, None, '___sec3'),
               (' Subsection 2: Testing figures ',
@@ -27239,9 +27894,9 @@ Automatically generated HTML file from Doconce source
                'exer:you',
                'exer:you'),
               (' References ', 1, None, '___sec28'),
-              (' Appendix: Just for testing; part I ', 1, None, '___sec29'),
+              (' Appendix: Just for testing; part I ', 1, 'app1', 'app1'),
               (' A subsection within an appendix ', 2, None, '___sec30'),
-              (' Appendix: Just for testing; part II ', 1, None, '___sec31'),
+              (' Appendix: Just for testing; part II ', 1, 'app2', 'app2'),
               (' Appendix: Testing identical titles ', 2, None, '___sec32'),
               (' Appendix: Testing identical titles ',
                2,
@@ -27350,7 +28005,7 @@ $$
 
 <p>
 <a href="#sec1"> Section 1 </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec1"> Subsection 1 </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#subsec1"> Subsection 1 </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec2"> Computer code </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec3"> Running OS commands </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#subsec:ex"> Subsection 2: Testing figures </a><br>
@@ -27378,9 +28033,9 @@ $$
 &nbsp; &nbsp; &nbsp; <a href="#exer:some:formula"> Exercise 8: Make references to projects and problems </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#exer:you"> Project 9: References in a headings do not work well in html </a><br>
 <a href="#___sec28"> References </a><br>
-<a href="#___sec29"> Appendix: Just for testing; part I </a><br>
+<a href="#app1"> Appendix: Just for testing; part I </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec30"> A subsection within an appendix </a><br>
-<a href="#___sec31"> Appendix: Just for testing; part II </a><br>
+<a href="#app2"> Appendix: Just for testing; part II </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec32"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#test:title:id1"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#test:title:id2"> Appendix: Testing identical titles </a><br>
@@ -27450,11 +28105,19 @@ Here is a nested list:
 Here is a reference to Equation \eqref{my:eq1}.
 This equation appears in another part if this document is split.
 
-<h3>Subsection 1  <a name="___sec1"></a></h3>
+<h3>Subsection 1 <a name="subsec1"></a></h3>
 
 <p>
-More text, with a reference back to the section <a href="#sec1">Section 1</a> and further
-to the section <a href="#subsubsec:ex">URLs</a>. 
+<!-- Refer to section/appendix etc. at the beginning of the line -->
+<!-- and other special fix situations for HTML. -->
+
+<p>
+More text, with a reference back to
+The section <a href="#sec1">Section 1</a> and <a href="#subsec1">Subsection 1</a>, and further to the sections <a href="#subsec1">Subsection 1</a> and <a href="#subsubsec:ex">URLs</a>, which
+encourages you to do the tasks in <a href="#demo:ex:1">Problem 2: Flip a Coin</a> and <a href="#exer:some:formula">Exercise 8: Make references to projects and problems</a>.
+The appendices <a href="#app1">Appendix: Just for testing; part I</a> and <a href="#app2">Appendix: Just for testing; part II</a> are also nice elements.
+
+<p>
 <!-- sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console -->
 
 <h4>Computer code  <a name="___sec2"></a></h4>
@@ -27547,18 +28210,18 @@ such cells are not supported by this format).
 
 <p>
 
-<!-- code=text (from !bc pyscpro) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a = 2
-b = 3
-print &#39;a+b:&#39;, a + b
+<!-- code=python (from !bc pyscpro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a <span style="color: #666666">=</span> <span style="color: #666666">2</span>
+b <span style="color: #666666">=</span> <span style="color: #666666">3</span>
+<span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;a+b:&#39;</span>, a <span style="color: #666666">+</span> b
 
-# In a sage cell we can also plot
-from matplotlib.pyplot import *
-from numpy import *
-x = linspace(0, 4*pi, 101)
-y = exp(-0.1*x)*cos(x)
+<span style="color: #408080; font-style: italic"># In a sage cell we can also plot</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
+x <span style="color: #666666">=</span> linspace(<span style="color: #666666">0</span>, <span style="color: #666666">4*</span>pi, <span style="color: #666666">101</span>)
+y <span style="color: #666666">=</span> exp(<span style="color: #666666">-0.1*</span>x)<span style="color: #666666">*</span>cos(x)
 plot(x, y)
-xlabel(&#39;x&#39;); ylabel(&#39;y&#39;)
+xlabel(<span style="color: #BA2121">&#39;x&#39;</span>); ylabel(<span style="color: #BA2121">&#39;y&#39;</span>)
 show()
 </pre></div>
 <p>
@@ -27628,12 +28291,12 @@ HTML:
 System call:
 <p>
 
-<!-- code=bash (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; mkdir <span style="color: #008000">test</span>
-Terminal&gt; <span style="color: #008000">cd test</span>
-Terminal&gt; myprog -f
-output1
-output2
+<!-- code=console (from !bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #808080">Terminal&gt; mkdir test</span>
+<span style="color: #808080">Terminal&gt; cd test</span>
+<span style="color: #808080">Terminal&gt; myprog -f</span>
+<span style="color: #808080">output1</span>
+<span style="color: #808080">output2</span>
 </pre></div>
 <p>
 It is time to test <code>verbatim inline font</code> especially with <code>a newline
@@ -27647,20 +28310,22 @@ verbatim text.
 
 <p>
 Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
-green color containing a linebreak.
-And one more.</font> Some formats will only display this correctly when
-HTML is the output format.
+green color containing a linebreak. <br />
+And one more.</font> Some formats will only display <br />
+this correctly when HTML is the output format. <br />
+But here some more running text is added which is not part of
+the previous blocks with line breaks.
 
 <h4>Running OS commands  <a name="___sec3"></a></h4>
 
 <p>
 
-<!-- code=bash (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; python -c <span style="color: #BA2121">&#39;print &quot;Testing\noutput\nfrom\nPython.&quot;&#39;</span>
-Testing
-output
-from
-Python.
+<!-- code=console (from !bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #808080">Terminal&gt; python -c &#39;print &quot;Testing\noutput\nfrom\nPython.&quot;&#39;</span>
+<span style="color: #808080">Testing</span>
+<span style="color: #808080">output</span>
+<span style="color: #808080">from</span>
+<span style="color: #808080">Python.</span>
 </pre></div>
 
 <h3>Subsection 2: Testing figures <a name="subsec:ex"></a></h3>
@@ -27808,6 +28473,7 @@ The Doconce source code reads
 <p>
 
 <!-- code=text (from !bc ccq) typeset with pygments style "default" -->
+<blockquote>
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">  |--------------------------------|
   |time  | velocity | acceleration |
   |--l--------r-----------r--------|
@@ -27816,7 +28482,7 @@ The Doconce source code reads
   | 4.0  | 1.1E+1   | 14.717624    |
   |--------------------------------|
 </pre></div>
-<p>
+</blockquote><p>
 Here is yet another table to test that we can handle more than
 one table:
 
@@ -27880,6 +28546,16 @@ and URLs.
 <b>Files <code>my_file_v1.py</code> and <code>my_file_v2.py</code> define some math \( a_{i-1} \).</b>
 Here is
 some text.
+
+<p>
+Let us also add a test of quotes such as "double
+quotes, with numbers like 3.14 and
+newline/comma and hyphen (as in double-quote)";
+written in the standard LaTeX-style that gives correct
+LaTeX formatting and ordinary double quotes for all non-LaTeX formats.
+Here is another sentence that "caused" a bug in the past
+because double backtick quotes could imply verbatim text up to
+a verbatim word starting with period, like <code>.txt</code>.
 
 <h3>Bibliography test  <a name="___sec9"></a></h3>
 
@@ -28452,6 +29128,10 @@ And a test that the code <code>lambda x: x+2</code> is correctly placed here:
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">lambda x: x+2
 </pre></div>
 <p>
+<!-- Have some comments at the end of the exercise to see that -->
+<!-- the Filename: ... is written correctly. -->
+
+<p>
 <!-- --- end exercise --- -->
 
 <p>
@@ -28640,7 +29320,7 @@ Filename: <code>selc_composed.pdf</code>.
 
 <!-- end bibliography -->
 
-<h2>Appendix: Just for testing; part I  <a name="___sec29"></a></h2>
+<h2>Appendix: Just for testing; part I <a name="app1"></a></h2>
 
 <p>
 This is the first appendix.
@@ -28650,7 +29330,7 @@ This is the first appendix.
 <p>
 Some text.
 
-<h2>Appendix: Just for testing; part II  <a name="___sec31"></a></h2>
+<h2>Appendix: Just for testing; part II <a name="app2"></a></h2>
 
 <p>
 This is more stuff for an appendix.
@@ -28877,9 +29557,13 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \pagestyle{headings}
 % #elif LATEX_STYLE == "Springer_T2"
 % Style: T2 (Springer)
-\documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmono}
-\usepackage{t2}
+% Use svmono.cls with doconce modifications for bibliography
+\documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmonodo}
+
+% Use t2.sty with doconce modifications
+\usepackage{t2do}
 \special{papersize=193mm,260mm}
+
 % #elif LATEX_STYLE == "Springer_llcse"
 % Style: Lecture Notes in Computer Science (Springer)
 \documentclass[oribib]{llncs}
@@ -29026,9 +29710,10 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % --- begin definitions of admonition environments ---
 
-% Admonition is an oval gray box
+% Admonition style "graybox1" is an oval colored box
+\colorlet{graybox1_background}{gray!5}
 \newmdenv[
-  backgroundcolor=gray!5,  %% white with 5%% gray
+  backgroundcolor=graybox1_background,
   skipabove=\topsep,
   skipbelow=\topsep,
   outerlinewidth=0,
@@ -29144,8 +29829,32 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 % #endif
 
 
-\newenvironment{doconce:exercise}{}{}
-\newcounter{doconce:exercise:counter}
+\newenvironment{doconceexercise}{}{}
+\newcounter{doconceexercisecounter}
+
+% #ifndef LIST_OF_EXERCISES
+% #define LIST_OF_EXERCISES "none"
+% #endif
+
+% --- begin definition of \listofexercises command ---
+\makeatletter
+\newcommand\listofexercises{
+\chapter*{List of Exercises, Problems, and Projects
+          \@mkboth{List of Exercises, Problems, and Projects}{List of Exercises, Problems, and Projects}}
+\markboth{List of Exercises, Problems, and Projects}{List of Exercises, Problems, and Projects}
+\@starttoc{loe}
+}
+\newcommand*{\l@doconceexercise}{\@dottedtocline{0}{0pt}{6.5em}}
+\makeatother
+% --- end definition of \listofexercises command ---
+
+
+% #if LATEX_STYLE not in ("Koma_Script", "Springer_T2")
+% Make sure blank even-numbered pages before new chapters are
+% totally blank with no header
+\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
+%\let\cleardoublepage\clearemptydoublepage % caused error in the toc
+% #endif
 
 % --- end of standard preamble for documents ---
 
@@ -29167,6 +29876,18 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 % ------------------- main content ----------------------
 
 
+
+% #if LATEX_STYLE in ("Springer_T2", "Springer_lncse")
+\frontmatter
+\setcounter{page}{3}
+\pagestyle{headings}
+% #endif
+
+% #if LATEX_STYLE == "Springer_lncse"
+% With hyperref loaded, \contentsline needs 3 args
+%\contentsline{chapter}{Bibliography}{829}{chapter.Bib}
+%\contentsline{chapter}{Index}{831}{chapter.Index}
+% #endif
 
 % ----------------- title -------------------------
 
@@ -29345,11 +30066,31 @@ Jan 32, 2100
 
 % #if LATEX_HEADING != "beamer"
 \tableofcontents
+% #if LIST_OF_EXERCISES == "loe"
+\clearemptydoublepage
+\listofexercises
+\clearemptydoublepage
+% #endif
+
+
+% #if LATEX_STYLE == "Springer_lncse"
+\contentsline{chapter}{\refname}{9999}{chapter.Bib}
+\contentsline{chapter}{Index}{9999}{chapter.Index}
+% #endif
+
+
 % #ifdef TODONOTES
 \listoftodos[List of inline comments]
 % #endif
 
+
 \vspace{1cm} % after toc
+% #endif
+
+% #if LATEX_STYLE == "Springer_T2"
+\mymainmatter
+% #elif LATEX_STYLE == "Springer_lncse"
+\mainmatter
 % #endif
 
 
@@ -29436,8 +30177,20 @@ Here is a reference to Equation (\ref{my:eq1}).
 
 
 \paragraph{Subsection 1.}
-More text, with a reference back to Section~\ref{sec1} and further
-to Section~\ref{subsubsec:ex}. \index{somefunc@{\rm\texttt{somefunc}} function}
+\label{subsec1}
+
+\index{somefunc@{\rm\texttt{somefunc}} function}
+
+% Refer to section/appendix etc. at the beginning of the line
+% and other special fix situations for HTML.
+
+More text, with a reference back to
+Section~\ref{sec1} and~\ref{subsec1}, and further to the
+sections~\ref{subsec1} and~\ref{subsubsec:ex}, which
+encourages you to do the tasks in the
+Exercises~\ref{demo:ex:1} and~\ref{exer:some:formula}.
+Appendices~\ref{app1} and~\ref{app2} are also nice elements.
+
 
 % sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console
 
@@ -29612,9 +30365,11 @@ Also test backslashes and braces like \code{\begin}, \code{\begin{enumerate}},
 verbatim text.
 
 Here is some \textcolor{red}{red} color and an attempt to write \textcolor{green}{with
-green color containing a linebreak.
-And one more.} Some formats will only display this correctly when
-HTML is the output format.
+green color containing a linebreak. \\
+And one more.} Some formats will only display \\
+this correctly when HTML is the output format. \\
+But here some more running text is added which is not part of
+the previous blocks with line breaks.
 
 \paragraph{Running OS commands.}
 \bsys
@@ -29769,6 +30524,7 @@ with the preprocessor.
 }
 
 
+
 \begin{quote}\begin{tabular}{lrr}
 \hline
 \multicolumn{1}{c}{ time } & \multicolumn{1}{c}{ velocity } & \multicolumn{1}{c}{ acceleration } \\
@@ -29870,6 +30626,16 @@ $\nabla\cdot\bm{u} =0 $                                                       & 
 Here is
 some text.
 
+Let us also add a test of quotes such as ``double
+quotes, with numbers like 3.14 and
+newline/comma and hyphen (as in double-quote)'';
+written in the standard {\LaTeX}-style that gives correct
+{\LaTeX} formatting and ordinary double quotes for all non-{\LaTeX} formats.
+Here is another sentence that ``caused'' a bug in the past
+because double backtick quotes could imply verbatim text up to
+a verbatim word starting with period, like \code{.txt}.
+
+
 \paragraph{Bibliography test.}
 Here is an example: \cite{Langtangen_Pedersen_2002} discussed propagation of
 large destructive water waves, \cite{Langtangen_et_al_2002} gave
@@ -29898,8 +30664,8 @@ the old ME-IN323 book \cite{Langtangen:91} and the
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
 \subsection{Example 1: Examples can be typeset as exercises}
 \label{Example}
@@ -29929,7 +30695,7 @@ Maybe even another hint?
 The answer to this other subproblem goes here,
 maybe over multiple doconce input lines.
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 
 
@@ -30059,14 +30825,21 @@ Below, we have Problem~\ref{demo:ex:1} and Project~\ref{demo:ex:2},
 as well as Projects~\ref{proj:circle1} and~\ref{exer:you}, and in
 between there we have Exercise~\ref{exer:some:formula}.
 
+
 \subsection{Exercises}
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
-\subsection*{Problem 2: Flip a Coin}
+\subsection*{Problem \thedoconceexercisecounter: Flip a Coin}
+% #if LIST_OF_EXERCISES == "toc"
+\addcontentsline{toc}{subsection}{\thedoconceexercisecounter: Flip a Coin}
+% #elif LIST_OF_EXERCISES == "loe"
+\addcontentsline{loe}{doconceexercise}{Problem \thedoconceexercisecounter: Flip a Coin}
+% #endif
+
 \label{demo:ex:1}
 % keywords = random numbers; Monte Carlo simulation
 
@@ -30104,7 +30877,7 @@ Draw an integer among $\{1,2\}$ with
 Filenames: \code{flip_coin.py}, \code{flip_coin.pdf}.
 % solution files: mysol.txt, mysol_flip_coin.py, yet_another.file
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 
 
@@ -30125,10 +30898,16 @@ exercises.
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
-\subsection*{Project 3: Compute a Probability}
+\subsection*{Project \thedoconceexercisecounter: Compute a Probability}
+% #if LIST_OF_EXERCISES == "toc"
+\addcontentsline{toc}{subsection}{\thedoconceexercisecounter: Compute a Probability}
+% #elif LIST_OF_EXERCISES == "loe"
+\addcontentsline{loe}{doconceexercise}{Project \thedoconceexercisecounter: Compute a Probability}
+% #endif
+
 \label{demo:ex:2}
 
 % Minimalistic exercise
@@ -30158,17 +30937,23 @@ compute the probability as $M/N$.
 
 % --- end hint in exercise ---
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 
 
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
-\subsection*{Project 4: Explore Distributions of Random Circles}
+\subsection*{Project \thedoconceexercisecounter: Explore Distributions of Random Circles}
+% #if LIST_OF_EXERCISES == "toc"
+\addcontentsline{toc}{subsection}{\thedoconceexercisecounter: Explore Distributions of Random Circles}
+% #elif LIST_OF_EXERCISES == "loe"
+\addcontentsline{loe}{doconceexercise}{Project \thedoconceexercisecounter: Explore Distributions of Random Circles}
+% #endif
+
 \label{proj:circle1}
 
 The formula for a circle is given by
@@ -30223,12 +31008,12 @@ $x_0$, $y_0$, and $R$ quantities.
 
 \paragraph{b)}
 Let $R$ be uniformly distributed and $(x_0,y_0)$ normally distributed.
-Filename: \code{norm.py}.
+\noindent Filename: \code{norm.py}.
 
 \paragraph{c)}
 Let $R$ and $(x_0,y_0)$ be normally distributed.
 
-Filename: \code{circles.pdf}.
+\noindent Filename: \code{circles.pdf}.
 
 % Closing remarks for this Project
 
@@ -30237,17 +31022,23 @@ At the very end of the exercise it may be appropriate to summarize
 and give some perspectives.
 
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 
 
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
-\subsection*{Exercise 5: Determine some Distance}
+\subsection*{Exercise \thedoconceexercisecounter: Determine some Distance}
+% #if LIST_OF_EXERCISES == "toc"
+\addcontentsline{toc}{subsection}{\thedoconceexercisecounter: Determine some Distance}
+% #elif LIST_OF_EXERCISES == "loe"
+\addcontentsline{loe}{doconceexercise}{Exercise \thedoconceexercisecounter: Determine some Distance}
+% #endif
+
 \label{exer:dist}
 
 Intro to this exercise. Questions are in subexercises below.
@@ -30307,7 +31098,7 @@ Test list in hint:
 
 \noindent
 % --- end hint in exercise ---
-Filename: \code{subexer_a.pdf}.
+\noindent Filename: \code{subexer_a.pdf}.
 
 
 % removed !bans ... !eans environment
@@ -30327,7 +31118,7 @@ Some math $\cos^2 x + \sin^2 x = 1$ written one a single line:
 A hint for this subexercise.
 
 % --- end hint in exercise ---
-Filename: \code{subexer_b.pdf}.
+\noindent Filename: \code{subexer_b.pdf}.
 
 
 % removed !bsol ... !esol environment
@@ -30341,15 +31132,15 @@ and their implications in other problems can be made. These
 remarks will appear at the end of the typeset exercise.
 
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 
 
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
 \subsection{Some exercise without the "Exercise:" prefix}
 
@@ -30366,15 +31157,18 @@ And a test that the code \code{lambda x: x+2} is correctly placed here:
 lambda x: x+2
 \eccq
 
-\end{doconce:exercise}
+% Have some comments at the end of the exercise to see that
+% the Filename: ... is written correctly.
+
+\end{doconceexercise}
 % --- end exercise ---
 
 
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
 \subsection{Example 7: Just an example}
 
@@ -30388,7 +31182,7 @@ What is the capital of Norway?
 \paragraph{Answer.}
 Oslo.
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 
 
@@ -30400,10 +31194,16 @@ With some text, before we continue with exercises.
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
-\subsection*{Exercise 8: Make references to projects and problems}
+\subsection*{Exercise \thedoconceexercisecounter: Make references to projects and problems}
+% #if LIST_OF_EXERCISES == "toc"
+\addcontentsline{toc}{subsection}{\thedoconceexercisecounter: Make references to projects and problems}
+% #elif LIST_OF_EXERCISES == "loe"
+\addcontentsline{loe}{doconceexercise}{Exercise \thedoconceexercisecounter: Make references to projects and problems}
+% #endif
+
 \label{exer:some:formula}
 
 Pick a statement from Project~\ref{proj:circle1} or Problem~\ref{demo:ex:1}
@@ -30419,27 +31219,33 @@ hint, etc.):
 \end{enumerate}
 
 \noindent
-Filename: \code{verify_formula.py}.
+\noindent Filename: \code{verify_formula.py}.
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 
 
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
-\subsection*{Project 9: References to Project~\ref{demo:ex:2} in a heading works for latex}
+\subsection*{Project \thedoconceexercisecounter: References to Project~\ref{demo:ex:2} in a heading works for latex}
+% #if LIST_OF_EXERCISES == "toc"
+\addcontentsline{toc}{subsection}{\thedoconceexercisecounter: References to Project~\ref{demo:ex:2} in a heading works for latex}
+% #elif LIST_OF_EXERCISES == "loe"
+\addcontentsline{loe}{doconceexercise}{Project \thedoconceexercisecounter: References to Project~\ref{demo:ex:2} in a heading works for latex}
+% #endif
+
 \label{exer:you}
 
 Refer to the previous exercise as Exercise~\ref{exer:some:formula},
 the two before that as Projects~\ref{demo:ex:2} and~\ref{proj:circle1},
 and this one as Project~\ref{exer:you}.
-Filename: \code{selc_composed.pdf}.
+\noindent Filename: \code{selc_composed.pdf}.
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 
 
@@ -30451,6 +31257,7 @@ Filename: \code{selc_composed.pdf}.
 
 
 \subsection{Appendix: Just for testing; part I}
+\label{app1}
 
 This is the first appendix.
 
@@ -30458,6 +31265,7 @@ This is the first appendix.
 Some text.
 
 \subsection{Appendix: Just for testing; part II}
+\label{app2}
 
 This is more stuff for an appendix.
 
@@ -31025,6 +31833,7 @@ testdoc.do.txt
 
 ************** File: make.sh *****************
 #!/bin/bash -x
+set -x
 
 function system {
   "$@"
@@ -31107,7 +31916,7 @@ doconce replace --examples_as__exercises $ex testdoc.p.tex
 
 # A4PAPER trigger summary environment to be smaller paragraph
 # within the text (fine for proposals or articles).
-system ptex2tex -DMINTED -DLATEX_HEADING=titlepage -DA4PAPER -DTODONOTES -DLINENUMBERS -DCOLORED_TABLE_ROWS=blue -DFANCY_HEADER -DSECTION_HEADINGS=blue -DLABELS_IN_MARGIN -DDOUBLE_SPACING testdoc
+system ptex2tex -DMINTED -DLATEX_HEADING=titlepage -DA4PAPER -DTODONOTES -DLINENUMBERS -DCOLORED_TABLE_ROWS=blue -DFANCY_HEADER -DSECTION_HEADINGS=blue -DLABELS_IN_MARGIN -DDOUBLE_SPACING -DLIST_OF_EXERCISES=loe testdoc
 
 # test that pdflatex works
 system pdflatex -shell-escape testdoc
@@ -31247,7 +32056,14 @@ doconce md2latex $name
 # Test admonitions
 admon_tps="colors1 graybox1 paragraph graybox2 yellowbox graybox3 colors2"
 for admon_tp in $admon_tps; do
-system doconce format pdflatex admon --latex_admon=$admon_tp
+if [ $admon_tp = 'graybox1' ]; then
+   color="--latex_admon_color=gray!6"
+elif [ $admon_tp = 'graybox3' ]; then
+   color="--latex_admon_color=gray!20"
+else
+   color=
+fi
+system doconce format pdflatex admon --latex_admon=$admon_tp $color
 doconce ptex2tex admon envir=minted
 cp admon.tex admon_${admon_tp}.tex
 system pdflatex -shell-escape admon_${admon_tp}
@@ -31260,6 +32076,11 @@ else
 fi
 rm -rf latex_figs
 done
+
+# Test different code envirs inside admons
+doconce format pdflatex admon --latex_admon=graybox1 --latex_admon_color=1,1,1 --latex_admon_envir_map=2
+doconce ptex2tex admon pycod2=minted pypro2=minted pycod=Verbatim pypro=Verbatim
+cp admon.tex admon_double_envirs.tex
 
 system doconce format html admon --html_admon=lyx --html_style=blueish2
 cp admon.html admon_lyx.html
@@ -31293,7 +32114,7 @@ cp admon.mwiki admon_mwiki.mwiki
 system doconce format plain admon
 cp admon.txt admon_paragraph.txt
 
-cp -f admon_*.html admon_*.pdf admon_*.*wiki admon_*.txt admon_sphinx admon_demo/
+cp -fr admon_*.html admon_*.pdf admon_*.*wiki admon_*.txt admon_sphinx admon_demo/
 
 #google-chrome admon_*.html
 #for pdf in admon_*.pdf; do evince $pdf; done
@@ -31340,6 +32161,9 @@ cp $name.pdf movie_demo
 
 system doconce format plain movies
 
+cd Springer_T2
+bash -x make.sh
+cd ..
 
 # Status movies: everything works in html and sphinx, only href works
 # in latex, media9 is unreliable
@@ -31391,6 +32215,9 @@ system doconce format html mako_test3 --no_pygments_html # no problem message
 system doconce format html mako_test4 --no_pygments_html  # works fine, lines start with %%
 
 system doconce csv2table testtable.csv > testtable.do.txt
+
+# Test doconce ref_external command
+sh -x genref.sh
 
 # Test error detection (note: the sequence of the error tests is
 # crucial: an error must occur, then corrected before the next
@@ -32347,9 +33174,13 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \pagestyle{headings}
 % #elif LATEX_STYLE == "Springer_T2"
 % Style: T2 (Springer)
-\documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmono}
-\usepackage{t2}
+% Use svmono.cls with doconce modifications for bibliography
+\documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmonodo}
+
+% Use t2.sty with doconce modifications
+\usepackage{t2do}
 \special{papersize=193mm,260mm}
+
 % #elif LATEX_STYLE == "Springer_llcse"
 % Style: Lecture Notes in Computer Science (Springer)
 \documentclass[oribib]{llncs}
@@ -32533,6 +33364,13 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 % #endif
 
 
+% #if LATEX_STYLE not in ("Koma_Script", "Springer_T2")
+% Make sure blank even-numbered pages before new chapters are
+% totally blank with no header
+\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
+%\let\cleardoublepage\clearemptydoublepage % caused error in the toc
+% #endif
+
 % --- end of standard preamble for documents ---
 
 
@@ -32553,6 +33391,18 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 % ------------------- main content ----------------------
 
 
+
+% #if LATEX_STYLE in ("Springer_T2", "Springer_lncse")
+\frontmatter
+\setcounter{page}{3}
+\pagestyle{headings}
+% #endif
+
+% #if LATEX_STYLE == "Springer_lncse"
+% With hyperref loaded, \contentsline needs 3 args
+%\contentsline{chapter}{Bibliography}{829}{chapter.Bib}
+%\contentsline{chapter}{Index}{831}{chapter.Index}
+% #endif
 
 % ----------------- title -------------------------
 
@@ -33140,7 +33990,7 @@ h1, h2, h3, h4, h5, h6 {
      -->
      <!-- Doconce automatically fills in the table of contents -->
           <!-- vagrant nav toc: " Section 1 " --> <li>  <a href="._testdoc_vagrant001.html#sec1"> Section 1 </a>
-     <!-- vagrant nav toc: " Subsection 1 " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec1"> Subsection 1 </a>
+     <!-- vagrant nav toc: " Subsection 1 " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec1"> Subsection 1 </a>
      <!-- vagrant nav toc: " Computer code " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec2"> Computer code </a>
      <!-- vagrant nav toc: " Running OS commands " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec3"> Running OS commands </a>
      <!-- vagrant nav toc: " Subsection 2: Testing figures " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec:ex"> Subsection 2: Testing figures </a>
@@ -33168,9 +34018,9 @@ h1, h2, h3, h4, h5, h6 {
      <!-- vagrant nav toc: " Exercise 8: Make references to projects and problems " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 8: Make references to projects and problems </a>
      <!-- vagrant nav toc: " Project 9: References in a headings do not work well in html " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:you"> Project 9: References in a headings do not work well in html </a>
      <!-- vagrant nav toc: " References " --> <li>  <a href="._testdoc_vagrant002.html#___sec28"> References </a>
-     <!-- vagrant nav toc: " Appendix: Just for testing; part I " --> <li>  <a href="._testdoc_vagrant002.html#___sec29"> Appendix: Just for testing; part I </a>
+     <!-- vagrant nav toc: " Appendix: Just for testing; part I " --> <li>  <a href="._testdoc_vagrant002.html#app1"> Appendix: Just for testing; part I </a>
      <!-- vagrant nav toc: " A subsection within an appendix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec30"> A subsection within an appendix </a>
-     <!-- vagrant nav toc: " Appendix: Just for testing; part II " --> <li>  <a href="._testdoc_vagrant002.html#___sec31"> Appendix: Just for testing; part II </a>
+     <!-- vagrant nav toc: " Appendix: Just for testing; part II " --> <li>  <a href="._testdoc_vagrant002.html#app2"> Appendix: Just for testing; part II </a>
      <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec32"> Appendix: Testing identical titles </a>
      <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id1"> Appendix: Testing identical titles </a>
      <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id2"> Appendix: Testing identical titles </a>
@@ -33188,7 +34038,7 @@ h1, h2, h3, h4, h5, h6 {
 <!-- tocinfo
 {'highest level': 1,
  'sections': [(' Section 1 ', 1, 'sec1', 'sec1'),
-              (' Subsection 1 ', 2, None, '___sec1'),
+              (' Subsection 1 ', 2, 'subsec1', 'subsec1'),
               (' Computer code ', 3, None, '___sec2'),
               (' Running OS commands ', 3, None, '___sec3'),
               (' Subsection 2: Testing figures ',
@@ -33246,9 +34096,9 @@ h1, h2, h3, h4, h5, h6 {
                'exer:you',
                'exer:you'),
               (' References ', 1, None, '___sec28'),
-              (' Appendix: Just for testing; part I ', 1, None, '___sec29'),
+              (' Appendix: Just for testing; part I ', 1, 'app1', 'app1'),
               (' A subsection within an appendix ', 2, None, '___sec30'),
-              (' Appendix: Just for testing; part II ', 1, None, '___sec31'),
+              (' Appendix: Just for testing; part II ', 1, 'app2', 'app2'),
               (' Appendix: Testing identical titles ', 2, None, '___sec32'),
               (' Appendix: Testing identical titles ',
                2,
@@ -33354,7 +34204,7 @@ $$
 
 <p>
 <a href="._testdoc_vagrant001.html#sec1"> Section 1 </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec1"> Subsection 1 </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#subsec1"> Subsection 1 </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec2"> Computer code </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec3"> Running OS commands </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#subsec:ex"> Subsection 2: Testing figures </a><br>
@@ -33382,9 +34232,9 @@ $$
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 8: Make references to projects and problems </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#exer:you"> Project 9: References in a headings do not work well in html </a><br>
 <a href="._testdoc_vagrant002.html#___sec28"> References </a><br>
-<a href="._testdoc_vagrant002.html#___sec29"> Appendix: Just for testing; part I </a><br>
+<a href="._testdoc_vagrant002.html#app1"> Appendix: Just for testing; part I </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec30"> A subsection within an appendix </a><br>
-<a href="._testdoc_vagrant002.html#___sec31"> Appendix: Just for testing; part II </a><br>
+<a href="._testdoc_vagrant002.html#app2"> Appendix: Just for testing; part II </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec32"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#test:title:id1"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#test:title:id2"> Appendix: Testing identical titles </a><br>
@@ -33510,7 +34360,7 @@ h1, h2, h3, h4, h5, h6 {
      -->
      <!-- Doconce automatically fills in the table of contents -->
           <!-- vagrant nav toc: " Section 1 " --> <li>  <a href="._testdoc_vagrant001.html#sec1"> Section 1 </a>
-     <!-- vagrant nav toc: " Subsection 1 " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec1"> Subsection 1 </a>
+     <!-- vagrant nav toc: " Subsection 1 " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec1"> Subsection 1 </a>
      <!-- vagrant nav toc: " Computer code " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec2"> Computer code </a>
      <!-- vagrant nav toc: " Running OS commands " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec3"> Running OS commands </a>
      <!-- vagrant nav toc: " Subsection 2: Testing figures " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec:ex"> Subsection 2: Testing figures </a>
@@ -33538,9 +34388,9 @@ h1, h2, h3, h4, h5, h6 {
      <!-- vagrant nav toc: " Exercise 8: Make references to projects and problems " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 8: Make references to projects and problems </a>
      <!-- vagrant nav toc: " Project 9: References in a headings do not work well in html " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:you"> Project 9: References in a headings do not work well in html </a>
      <!-- vagrant nav toc: " References " --> <li>  <a href="._testdoc_vagrant002.html#___sec28"> References </a>
-     <!-- vagrant nav toc: " Appendix: Just for testing; part I " --> <li>  <a href="._testdoc_vagrant002.html#___sec29"> Appendix: Just for testing; part I </a>
+     <!-- vagrant nav toc: " Appendix: Just for testing; part I " --> <li>  <a href="._testdoc_vagrant002.html#app1"> Appendix: Just for testing; part I </a>
      <!-- vagrant nav toc: " A subsection within an appendix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec30"> A subsection within an appendix </a>
-     <!-- vagrant nav toc: " Appendix: Just for testing; part II " --> <li>  <a href="._testdoc_vagrant002.html#___sec31"> Appendix: Just for testing; part II </a>
+     <!-- vagrant nav toc: " Appendix: Just for testing; part II " --> <li>  <a href="._testdoc_vagrant002.html#app2"> Appendix: Just for testing; part II </a>
      <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec32"> Appendix: Testing identical titles </a>
      <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id1"> Appendix: Testing identical titles </a>
      <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id2"> Appendix: Testing identical titles </a>
@@ -33558,7 +34408,7 @@ h1, h2, h3, h4, h5, h6 {
 <!-- tocinfo
 {'highest level': 1,
  'sections': [(' Section 1 ', 1, 'sec1', 'sec1'),
-              (' Subsection 1 ', 2, None, '___sec1'),
+              (' Subsection 1 ', 2, 'subsec1', 'subsec1'),
               (' Computer code ', 3, None, '___sec2'),
               (' Running OS commands ', 3, None, '___sec3'),
               (' Subsection 2: Testing figures ',
@@ -33616,9 +34466,9 @@ h1, h2, h3, h4, h5, h6 {
                'exer:you',
                'exer:you'),
               (' References ', 1, None, '___sec28'),
-              (' Appendix: Just for testing; part I ', 1, None, '___sec29'),
+              (' Appendix: Just for testing; part I ', 1, 'app1', 'app1'),
               (' A subsection within an appendix ', 2, None, '___sec30'),
-              (' Appendix: Just for testing; part II ', 1, None, '___sec31'),
+              (' Appendix: Just for testing; part II ', 1, 'app2', 'app2'),
               (' Appendix: Testing identical titles ', 2, None, '___sec32'),
               (' Appendix: Testing identical titles ',
                2,
@@ -33724,7 +34574,7 @@ $$
 
 <p>
 <a href="._testdoc_vagrant001.html#sec1"> Section 1 </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec1"> Subsection 1 </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#subsec1"> Subsection 1 </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec2"> Computer code </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec3"> Running OS commands </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#subsec:ex"> Subsection 2: Testing figures </a><br>
@@ -33752,9 +34602,9 @@ $$
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 8: Make references to projects and problems </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#exer:you"> Project 9: References in a headings do not work well in html </a><br>
 <a href="._testdoc_vagrant002.html#___sec28"> References </a><br>
-<a href="._testdoc_vagrant002.html#___sec29"> Appendix: Just for testing; part I </a><br>
+<a href="._testdoc_vagrant002.html#app1"> Appendix: Just for testing; part I </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec30"> A subsection within an appendix </a><br>
-<a href="._testdoc_vagrant002.html#___sec31"> Appendix: Just for testing; part II </a><br>
+<a href="._testdoc_vagrant002.html#app2"> Appendix: Just for testing; part II </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec32"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#test:title:id1"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#test:title:id2"> Appendix: Testing identical titles </a><br>
@@ -33880,7 +34730,7 @@ h1, h2, h3, h4, h5, h6 {
      -->
      <!-- Doconce automatically fills in the table of contents -->
           <!-- vagrant nav toc: " Section 1 " --> <li class="active">  <a href="._testdoc_vagrant001.html#sec1"> Section 1 </a>
-     <!-- vagrant nav toc: " Subsection 1 " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec1"> Subsection 1 </a>
+     <!-- vagrant nav toc: " Subsection 1 " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec1"> Subsection 1 </a>
      <!-- vagrant nav toc: " Computer code " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec2"> Computer code </a>
      <!-- vagrant nav toc: " Running OS commands " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec3"> Running OS commands </a>
      <!-- vagrant nav toc: " Subsection 2: Testing figures " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec:ex"> Subsection 2: Testing figures </a>
@@ -33908,9 +34758,9 @@ h1, h2, h3, h4, h5, h6 {
      <!-- vagrant nav toc: " Exercise 8: Make references to projects and problems " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 8: Make references to projects and problems </a>
      <!-- vagrant nav toc: " Project 9: References in a headings do not work well in html " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:you"> Project 9: References in a headings do not work well in html </a>
      <!-- vagrant nav toc: " References " --> <li>  <a href="._testdoc_vagrant002.html#___sec28"> References </a>
-     <!-- vagrant nav toc: " Appendix: Just for testing; part I " --> <li>  <a href="._testdoc_vagrant002.html#___sec29"> Appendix: Just for testing; part I </a>
+     <!-- vagrant nav toc: " Appendix: Just for testing; part I " --> <li>  <a href="._testdoc_vagrant002.html#app1"> Appendix: Just for testing; part I </a>
      <!-- vagrant nav toc: " A subsection within an appendix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec30"> A subsection within an appendix </a>
-     <!-- vagrant nav toc: " Appendix: Just for testing; part II " --> <li>  <a href="._testdoc_vagrant002.html#___sec31"> Appendix: Just for testing; part II </a>
+     <!-- vagrant nav toc: " Appendix: Just for testing; part II " --> <li>  <a href="._testdoc_vagrant002.html#app2"> Appendix: Just for testing; part II </a>
      <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec32"> Appendix: Testing identical titles </a>
      <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id1"> Appendix: Testing identical titles </a>
      <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id2"> Appendix: Testing identical titles </a>
@@ -33928,7 +34778,7 @@ h1, h2, h3, h4, h5, h6 {
 <!-- tocinfo
 {'highest level': 1,
  'sections': [(' Section 1 ', 1, 'sec1', 'sec1'),
-              (' Subsection 1 ', 2, None, '___sec1'),
+              (' Subsection 1 ', 2, 'subsec1', 'subsec1'),
               (' Computer code ', 3, None, '___sec2'),
               (' Running OS commands ', 3, None, '___sec3'),
               (' Subsection 2: Testing figures ',
@@ -33986,9 +34836,9 @@ h1, h2, h3, h4, h5, h6 {
                'exer:you',
                'exer:you'),
               (' References ', 1, None, '___sec28'),
-              (' Appendix: Just for testing; part I ', 1, None, '___sec29'),
+              (' Appendix: Just for testing; part I ', 1, 'app1', 'app1'),
               (' A subsection within an appendix ', 2, None, '___sec30'),
-              (' Appendix: Just for testing; part II ', 1, None, '___sec31'),
+              (' Appendix: Just for testing; part II ', 1, 'app2', 'app2'),
               (' Appendix: Testing identical titles ', 2, None, '___sec32'),
               (' Appendix: Testing identical titles ',
                2,
@@ -34107,11 +34957,19 @@ Here is a nested list:
 Here is a reference to Equation <a href="._testdoc_vagrant002.html#mjx-eqn-3">(3)</a>.
 This equation appears in another part if this document is split.
 
-<h3>Subsection 1  <a name="___sec1"></a></h3>
+<h3>Subsection 1 <a name="subsec1"></a></h3>
 
 <p>
-More text, with a reference back to the section <a href="#sec1">Section 1</a> and further
-to the section <a href="#subsubsec:ex">URLs</a>. 
+<!-- Refer to section/appendix etc. at the beginning of the line -->
+<!-- and other special fix situations for HTML. -->
+
+<p>
+More text, with a reference back to
+The section <a href="#sec1">Section 1</a> and <a href="#subsec1">Subsection 1</a>, and further to the sections <a href="#subsec1">Subsection 1</a> and <a href="#subsubsec:ex">URLs</a>, which
+encourages you to do the tasks in <a href="._testdoc_vagrant002.html#demo:ex:1">Problem 2: Flip a Coin</a> and <a href="._testdoc_vagrant002.html#exer:some:formula">Exercise 8: Make references to projects and problems</a>.
+The appendices <a href="._testdoc_vagrant002.html#app1">Appendix: Just for testing; part I</a> and <a href="._testdoc_vagrant002.html#app2">Appendix: Just for testing; part II</a> are also nice elements.
+
+<p>
 <!-- sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console -->
 
 <h4>Computer code  <a name="___sec2"></a></h4>
@@ -34204,18 +35062,18 @@ such cells are not supported by this format).
 
 <p>
 
-<!-- code=text (from !bc pyscpro) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a = 2
-b = 3
-print &#39;a+b:&#39;, a + b
+<!-- code=python (from !bc pyscpro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a <span style="color: #666666">=</span> <span style="color: #666666">2</span>
+b <span style="color: #666666">=</span> <span style="color: #666666">3</span>
+<span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;a+b:&#39;</span>, a <span style="color: #666666">+</span> b
 
-# In a sage cell we can also plot
-from matplotlib.pyplot import *
-from numpy import *
-x = linspace(0, 4*pi, 101)
-y = exp(-0.1*x)*cos(x)
+<span style="color: #408080; font-style: italic"># In a sage cell we can also plot</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
+x <span style="color: #666666">=</span> linspace(<span style="color: #666666">0</span>, <span style="color: #666666">4*</span>pi, <span style="color: #666666">101</span>)
+y <span style="color: #666666">=</span> exp(<span style="color: #666666">-0.1*</span>x)<span style="color: #666666">*</span>cos(x)
 plot(x, y)
-xlabel(&#39;x&#39;); ylabel(&#39;y&#39;)
+xlabel(<span style="color: #BA2121">&#39;x&#39;</span>); ylabel(<span style="color: #BA2121">&#39;y&#39;</span>)
 show()
 </pre></div>
 <p>
@@ -34285,12 +35143,12 @@ HTML:
 System call:
 <p>
 
-<!-- code=bash (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; mkdir <span style="color: #008000">test</span>
-Terminal&gt; <span style="color: #008000">cd test</span>
-Terminal&gt; myprog -f
-output1
-output2
+<!-- code=console (from !bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #808080">Terminal&gt; mkdir test</span>
+<span style="color: #808080">Terminal&gt; cd test</span>
+<span style="color: #808080">Terminal&gt; myprog -f</span>
+<span style="color: #808080">output1</span>
+<span style="color: #808080">output2</span>
 </pre></div>
 <p>
 It is time to test <code>verbatim inline font</code> especially with <code>a newline
@@ -34304,20 +35162,22 @@ verbatim text.
 
 <p>
 Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
-green color containing a linebreak.
-And one more.</font> Some formats will only display this correctly when
-HTML is the output format.
+green color containing a linebreak. <br />
+And one more.</font> Some formats will only display <br />
+this correctly when HTML is the output format. <br />
+But here some more running text is added which is not part of
+the previous blocks with line breaks.
 
 <h4>Running OS commands  <a name="___sec3"></a></h4>
 
 <p>
 
-<!-- code=bash (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; python -c <span style="color: #BA2121">&#39;print &quot;Testing\noutput\nfrom\nPython.&quot;&#39;</span>
-Testing
-output
-from
-Python.
+<!-- code=console (from !bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #808080">Terminal&gt; python -c &#39;print &quot;Testing\noutput\nfrom\nPython.&quot;&#39;</span>
+<span style="color: #808080">Testing</span>
+<span style="color: #808080">output</span>
+<span style="color: #808080">from</span>
+<span style="color: #808080">Python.</span>
 </pre></div>
 
 <h3>Subsection 2: Testing figures <a name="subsec:ex"></a></h3>
@@ -34465,6 +35325,7 @@ The Doconce source code reads
 <p>
 
 <!-- code=text (from !bc ccq) typeset with pygments style "default" -->
+<blockquote>
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">  |--------------------------------|
   |time  | velocity | acceleration |
   |--l--------r-----------r--------|
@@ -34473,7 +35334,7 @@ The Doconce source code reads
   | 4.0  | 1.1E+1   | 14.717624    |
   |--------------------------------|
 </pre></div>
-<p>
+</blockquote><p>
 Here is yet another table to test that we can handle more than
 one table:
 
@@ -34537,6 +35398,16 @@ and URLs.
 <b>Files <code>my_file_v1.py</code> and <code>my_file_v2.py</code> define some math \( a_{i-1} \).</b>
 Here is
 some text.
+
+<p>
+Let us also add a test of quotes such as "double
+quotes, with numbers like 3.14 and
+newline/comma and hyphen (as in double-quote)";
+written in the standard LaTeX-style that gives correct
+LaTeX formatting and ordinary double quotes for all non-LaTeX formats.
+Here is another sentence that "caused" a bug in the past
+because double backtick quotes could imply verbatim text up to
+a verbatim word starting with period, like <code>.txt</code>.
 
 <h3>Bibliography test  <a name="___sec9"></a></h3>
 
@@ -34774,7 +35645,7 @@ h1, h2, h3, h4, h5, h6 {
      -->
      <!-- Doconce automatically fills in the table of contents -->
           <!-- vagrant nav toc: " Section 1 " --> <li>  <a href="._testdoc_vagrant001.html#sec1"> Section 1 </a>
-     <!-- vagrant nav toc: " Subsection 1 " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec1"> Subsection 1 </a>
+     <!-- vagrant nav toc: " Subsection 1 " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec1"> Subsection 1 </a>
      <!-- vagrant nav toc: " Computer code " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec2"> Computer code </a>
      <!-- vagrant nav toc: " Running OS commands " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec3"> Running OS commands </a>
      <!-- vagrant nav toc: " Subsection 2: Testing figures " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec:ex"> Subsection 2: Testing figures </a>
@@ -34802,9 +35673,9 @@ h1, h2, h3, h4, h5, h6 {
      <!-- vagrant nav toc: " Exercise 8: Make references to projects and problems " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 8: Make references to projects and problems </a>
      <!-- vagrant nav toc: " Project 9: References in a headings do not work well in html " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:you"> Project 9: References in a headings do not work well in html </a>
      <!-- vagrant nav toc: " References " --> <li>  <a href="._testdoc_vagrant002.html#___sec28"> References </a>
-     <!-- vagrant nav toc: " Appendix: Just for testing; part I " --> <li>  <a href="._testdoc_vagrant002.html#___sec29"> Appendix: Just for testing; part I </a>
+     <!-- vagrant nav toc: " Appendix: Just for testing; part I " --> <li>  <a href="._testdoc_vagrant002.html#app1"> Appendix: Just for testing; part I </a>
      <!-- vagrant nav toc: " A subsection within an appendix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec30"> A subsection within an appendix </a>
-     <!-- vagrant nav toc: " Appendix: Just for testing; part II " --> <li>  <a href="._testdoc_vagrant002.html#___sec31"> Appendix: Just for testing; part II </a>
+     <!-- vagrant nav toc: " Appendix: Just for testing; part II " --> <li>  <a href="._testdoc_vagrant002.html#app2"> Appendix: Just for testing; part II </a>
      <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec32"> Appendix: Testing identical titles </a>
      <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id1"> Appendix: Testing identical titles </a>
      <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id2"> Appendix: Testing identical titles </a>
@@ -34822,7 +35693,7 @@ h1, h2, h3, h4, h5, h6 {
 <!-- tocinfo
 {'highest level': 1,
  'sections': [(' Section 1 ', 1, 'sec1', 'sec1'),
-              (' Subsection 1 ', 2, None, '___sec1'),
+              (' Subsection 1 ', 2, 'subsec1', 'subsec1'),
               (' Computer code ', 3, None, '___sec2'),
               (' Running OS commands ', 3, None, '___sec3'),
               (' Subsection 2: Testing figures ',
@@ -34880,9 +35751,9 @@ h1, h2, h3, h4, h5, h6 {
                'exer:you',
                'exer:you'),
               (' References ', 1, None, '___sec28'),
-              (' Appendix: Just for testing; part I ', 1, None, '___sec29'),
+              (' Appendix: Just for testing; part I ', 1, 'app1', 'app1'),
               (' A subsection within an appendix ', 2, None, '___sec30'),
-              (' Appendix: Just for testing; part II ', 1, None, '___sec31'),
+              (' Appendix: Just for testing; part II ', 1, 'app2', 'app2'),
               (' Appendix: Testing identical titles ', 2, None, '___sec32'),
               (' Appendix: Testing identical titles ',
                2,
@@ -35438,6 +36309,10 @@ And a test that the code <code>lambda x: x+2</code> is correctly placed here:
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">lambda x: x+2
 </pre></div>
 <p>
+<!-- Have some comments at the end of the exercise to see that -->
+<!-- the Filename: ... is written correctly. -->
+
+<p>
 <!-- --- end exercise --- -->
 
 <p>
@@ -35620,7 +36495,7 @@ Filename: <code>selc_composed.pdf</code>.
 
 <!-- end bibliography -->
 
-<h2>Appendix: Just for testing; part I  <a name="___sec29"></a></h2>
+<h2>Appendix: Just for testing; part I <a name="app1"></a></h2>
 
 <p>
 This is the first appendix.
@@ -35630,7 +36505,7 @@ This is the first appendix.
 <p>
 Some text.
 
-<h2>Appendix: Just for testing; part II  <a name="___sec31"></a></h2>
+<h2>Appendix: Just for testing; part II <a name="app2"></a></h2>
 
 <p>
 This is more stuff for an appendix.
@@ -35902,12 +36777,25 @@ Here is a reference to Equation :ref:`(3.1) <Eq:my:eq1>`.
 This equation appears in another part if this document is split.
 
 
+.. _subsec1:
+
 Subsection 1
 ------------
 
-More text, with a reference back to the section :ref:`sec1` and further
-to the section :ref:`subsubsec:ex`. 
+
 .. index:: somefunc function
+
+
+.. Refer to section/appendix etc. at the beginning of the line
+
+.. and other special fix situations for HTML.
+
+
+More text, with a reference back to
+the section :ref:`sec1` and :ref:`subsec1`, and further to the
+the sections :ref:`subsec1` and :ref:`subsubsec:ex`, which
+encourages you to do the tasks in :ref:`demo:ex:1` and :ref:`exer:some:formula`.
+Appendices     :ref:`app1` and :ref:`app2` are also nice elements.
 
 
 .. sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console
@@ -36103,9 +36991,13 @@ Also test backslashes and braces like ``\begin``, ``\begin{enumerate}``,
 verbatim text.
 
 Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
-green color containing a linebreak.
-And one more.</font> Some formats will only display this correctly when
-HTML is the output format.
+green color containing a linebreak. 
+
+| And one more.</font> Some formats will only display 
+| this correctly when HTML is the output format. 
+| But here some more running text is added which is not part of
+
+the previous blocks with line breaks.
 
 Running OS commands
 ~~~~~~~~~~~~~~~~~~~
@@ -36327,7 +37219,6 @@ The Doconce source code reads
 
 .. code-block:: text
 
-
           |--------------------------------|
           |time  | velocity | acceleration |
           |--l--------r-----------r--------|
@@ -36403,6 +37294,16 @@ A test of verbatim words in heading with subscript :math:`a_i`: ``my_file_v1`` a
 **Files ``my_file_v1.py`` and ``my_file_v2.py`` define some math :math:`a_{i-1}`.**
 Here is
 some text.
+
+Let us also add a test of quotes such as "double
+quotes, with numbers like 3.14 and
+newline/comma and hyphen (as in double-quote)";
+written in the standard LaTeX-style that gives correct
+LaTeX formatting and ordinary double quotes for all non-LaTeX formats.
+Here is another sentence that "caused" a bug in the past
+because double backtick quotes could imply verbatim text up to
+a verbatim word starting with period, like ``.txt``.
+
 
 Bibliography test
 -----------------
@@ -36642,6 +37543,7 @@ More mathematical typesetting is demonstrated in the coming exercises.
 Below, we have :ref:`demo:ex:1` and :ref:`demo:ex:2`,
 as well as :ref:`proj:circle1` and :ref:`exer:you`, and in
 between there we have :ref:`exer:some:formula`.
+
 
 Exercises
 =========
@@ -37043,6 +37945,11 @@ And a test that the code ``lambda x: x+2`` is correctly placed here:
         lambda x: x+2
 
 
+.. Have some comments at the end of the exercise to see that
+
+.. the Filename: ... is written correctly.
+
+
 .. --- end exercise ---
 
 
@@ -37249,6 +38156,8 @@ References
 
 
 
+.. _app1:
+
 Appendix: Just for testing; part I
 ==================================
 
@@ -37258,6 +38167,8 @@ A subsection within an appendix
 -------------------------------
 
 Some text.
+
+.. _app2:
 
 Appendix: Just for testing; part II
 ===================================
@@ -37470,9 +38381,13 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \pagestyle{headings}
 % #elif LATEX_STYLE == "Springer_T2"
 % Style: T2 (Springer)
-\documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmono}
-\usepackage{t2}
+% Use svmono.cls with doconce modifications for bibliography
+\documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmonodo}
+
+% Use t2.sty with doconce modifications
+\usepackage{t2do}
 \special{papersize=193mm,260mm}
+
 % #elif LATEX_STYLE == "Springer_llcse"
 % Style: Lecture Notes in Computer Science (Springer)
 \documentclass[oribib]{llncs}
@@ -37508,7 +38423,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage{bm,microtype}
 
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
-\setlength{\fboxsep}{8pt}
+%\setlength{\fboxsep}{8pt}
 
 \usepackage{ptex2tex}
 
@@ -37574,105 +38489,28 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 % 3. enable begin{figure}[H] (often leads to ugly pagebreaks)
 %\usepackage{float}\restylefloat{figure}
 
-\usepackage{framed,wrapfig}
+\usepackage[framemethod=TikZ]{mdframed}
 
 % --- begin definitions of admonition environments ---
 
-% Admonition environment for "notice"
-\definecolor{noticebackground}{rgb}{0.988235, 0.964706, 0.862745}
-% \fboxsep sets the space between the text and the box
-\newenvironment{noticeshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{noticebackground}}
- \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
+% Admonition style "graybox1" is an oval colored box
+\definecolor{graybox1_background}{rgb}{1,1,1}
+\newmdenv[
+  backgroundcolor=graybox1_background,
+  skipabove=\topsep,
+  skipbelow=\topsep,
+  outerlinewidth=0,
+  leftmargin=0,
+  rightmargin=0,
+  roundcorner=5,
+  needspace=0pt,
+]{graybox1mdframed}
 
-\newenvironment{notice_colors2admon}[1][Notice]{
-\begin{noticeshaded}
-\noindent
-\begin{wrapfigure}{l}{0.07\textwidth}
-\vspace{-13pt}
-\includegraphics[width=0.07\textwidth]{latex_figs/notice}
-\end{wrapfigure} \textbf{#1}\par
-\nobreak\noindent\ignorespaces
+\newenvironment{graybox1admon}[1][]{
+\begin{graybox1mdframed}[frametitle=#1]
 }
 {
-\end{noticeshaded}
-}
-
-% Admonition environment for "summary"
-\definecolor{summarybackground}{rgb}{0.988235, 0.964706, 0.862745}
-% \fboxsep sets the space between the text and the box
-\newenvironment{summaryshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{summarybackground}}
- \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
-
-\newenvironment{summary_colors2admon}[1][Summary]{
-\begin{summaryshaded}
-\noindent
-\begin{wrapfigure}{l}{0.07\textwidth}
-\vspace{-13pt}
-\includegraphics[width=0.07\textwidth]{latex_figs/summary}
-\end{wrapfigure} \textbf{#1}\par
-\nobreak\noindent\ignorespaces
-}
-{
-\end{summaryshaded}
-}
-
-% Admonition environment for "warning"
-\definecolor{warningbackground}{rgb}{1.0, 0.8235294, 0.8235294}
-% \fboxsep sets the space between the text and the box
-\newenvironment{warningshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{warningbackground}}
- \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
-
-\newenvironment{warning_colors2admon}[1][Warning]{
-\begin{warningshaded}
-\noindent
-\begin{wrapfigure}{l}{0.07\textwidth}
-\vspace{-13pt}
-\includegraphics[width=0.07\textwidth]{latex_figs/warning}
-\end{wrapfigure} \textbf{#1}\par
-\nobreak\noindent\ignorespaces
-}
-{
-\end{warningshaded}
-}
-
-% Admonition environment for "question"
-\definecolor{questionbackground}{rgb}{0.988235, 0.964706, 0.862745}
-% \fboxsep sets the space between the text and the box
-\newenvironment{questionshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{questionbackground}}
- \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
-
-\newenvironment{question_colors2admon}[1][Question]{
-\begin{questionshaded}
-\noindent
-\begin{wrapfigure}{l}{0.07\textwidth}
-\vspace{-13pt}
-\includegraphics[width=0.07\textwidth]{latex_figs/question}
-\end{wrapfigure} \textbf{#1}\par
-\nobreak\noindent\ignorespaces
-}
-{
-\end{questionshaded}
-}
-
-% Admonition environment for "block"
-\definecolor{blockbackground}{rgb}{0.988235, 0.964706, 0.862745}
-% \fboxsep sets the space between the text and the box
-\newenvironment{blockshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{blockbackground}}
- \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
-
-\newenvironment{block_colors2admon}[1][Block]{
-\begin{blockshaded}
-\noindent
- \textbf{#1}\par
-\nobreak\noindent\ignorespaces
-}
-{
-\end{blockshaded}
+\end{graybox1mdframed}
 }
 
 % --- end of definitions of admonition environments ---
@@ -37774,6 +38612,13 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 % #endif
 
 
+% #if LATEX_STYLE not in ("Koma_Script", "Springer_T2")
+% Make sure blank even-numbered pages before new chapters are
+% totally blank with no header
+\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
+%\let\cleardoublepage\clearemptydoublepage % caused error in the toc
+% #endif
+
 % --- end of standard preamble for documents ---
 
 
@@ -37794,6 +38639,18 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 % ------------------- main content ----------------------
 
 
+
+% #if LATEX_STYLE in ("Springer_T2", "Springer_lncse")
+\frontmatter
+\setcounter{page}{3}
+\pagestyle{headings}
+% #endif
+
+% #if LATEX_STYLE == "Springer_lncse"
+% With hyperref loaded, \contentsline needs 3 args
+%\contentsline{chapter}{Bibliography}{829}{chapter.Bib}
+%\contentsline{chapter}{Index}{831}{chapter.Index}
+% #endif
 
 % ----------------- title -------------------------
 
@@ -37933,10 +38790,9 @@ Here is a plain quote environment.
 \begin{quote}
 Sayre's law states that
 "in any dispute the intensity of feeling is inversely
-proportional to the value of the issues at stake."
-By way of corollary, it adds:
-"That is why academic politics are so bitter."
-
+proportional to the value of the issues at stake." \\
+By way of corollary, it adds: \\
+"That is why academic politics are so bitter." \\
 \emph{Source}: \href{{http://en.wikipedia.org/wiki/Sayre's_law}}{wikipedia}
 \end{quote}
 
@@ -38010,7 +38866,7 @@ def some_code(x):
 Let us start with a plain warning environment.
 
 
-\begin{warning_colors2admon}[Warning]
+\begin{graybox1admon}[Warning.]
 And here is a warning about something to pay attention to. We
 test how the heading behave and add quite some extra texts
 in comparison with the other admons.
@@ -38029,50 +38885,65 @@ And more and more text.
 And more and more text.
 And more and more text.
 And more and more text.
-\end{warning_colors2admon}
+\end{graybox1admon}
 
 
 
 Test warning with title:
 
 
-\begin{warning_colors2admon}[{\large Watch out }]
-{\large And here comes some text with bad news in larger font. \par}
-\end{warning_colors2admon}
+\begin{graybox1admon}[{\large Title ending with math $\sqrt{2}\approx 1.4$}.]
+{\large And here comes some text with bad news in larger font.
+
+Also some code:
+
+\bpycod2
+def f(x):
+    return x
+\epycod2
+And a complete program
+
+\bpypro2
+print "Hello, World!"
+\epypro2
+\par}
+\end{graybox1admon}
 
 
 
 Test warning with large title with math:
 
 
-\begin{warning_colors2admon}[{\large Watch out for $\nabla\cdot\bm{u}=0$ equations }]
+\begin{graybox1admon}[{\large Watch out for $\nabla\cdot\bm{u}=0$ equations}.]
 {\large Divergence freedom is often problematic from a numerical point
-of view. \par}
-\end{warning_colors2admon}
+of view.
+\par}
+\end{graybox1admon}
 
 
 
 Then we test a block, which is guaranteed to never have any admon icon.
 
 
-\begin{block_colors2admon}[Block with title]
-\vspace{-2.5mm}\par\noindent
+\begin{graybox1admon}[Block with title.]
+\vspace{0.5mm}\par\noindent
 {\footnotesize Here is a block of text with title. It is typeset
 \emph{without any icon} and is useful when you want some admons with icon
 and some without. With the small font size, as used here, one can have
 more comment-style text or text that really goes deeper or talks
 about fun facts that are not strictly necessary for the main flow
-of understanding. \par}
-\end{block_colors2admon}
+of understanding.
+\par}
+\end{graybox1admon}
 
 
 
 
 
-\begin{block_colors2admon}[]
+\begin{graybox1admon}[]
 Here is a block of text with no title. As above, it is typeset without any icon
 and is useful when you want some admons with icon and some without.
-\end{block_colors2admon}
+\end{graybox1admon}
 
 
 
@@ -38082,7 +38953,7 @@ The next admonition features a title "Note, eventually!".
 % those formats automatically add : to the admonition title.
 
 
-\begin{notice_colors2admon}[Note, eventually!]
+\begin{graybox1admon}[Note eventually!]
 Ah, we are soon close to the end (with illegal font size specification!).
 But first a bit of math where we define $\theta$ and $\bm{r}$:
 
@@ -38090,39 +38961,39 @@ But first a bit of math where we define $\theta$ and $\bm{r}$:
 \theta &= q^2,\\
 \bm{r} &= \varrho\bm{i}
 \end{align*}
-\end{notice_colors2admon}
+\end{graybox1admon}
 
 
 
 % Test one word with a number
 
 
-\begin{notice_colors2admon}[Point1]
+\begin{graybox1admon}[Point1.]
 Ah, we are soon close to the end.
-\end{notice_colors2admon}
+\end{graybox1admon}
 
 
 
 
-\begin{question_colors2admon}[Question]
+\begin{graybox1admon}[Question.]
 So, how many admonition environments does Doconce support?
-\end{question_colors2admon}
+\end{graybox1admon}
 
 
 
 
-\begin{question_colors2admon}[Question]
+\begin{graybox1admon}[Question.]
 \begin{enumerate}
  \item Once more, how many admonition environments does Doconce support?
 \end{enumerate}
 
 \noindent
-\end{question_colors2admon}
+\end{graybox1admon}
 
 
 
 
-\begin{warning_colors2admon}[Tip]
+\begin{graybox1admon}[Tip.]
 It is of outmost important to
 
 \begin{enumerate}
@@ -38134,22 +39005,22 @@ It is of outmost important to
 \noindent
 Because here the thing is to do
 
-\bpycod
+\bpycod2
 import urllib
 
 def grab(url, filename):
     urllib.urlretrieve(url, filename=filename)
-\epycod
-\end{warning_colors2admon}
+\epycod2
+\end{graybox1admon}
 
 
 
 Next is a warning without a title ("none" implies no title).
 
 
-\begin{warning_colors2admon}[]
+\begin{graybox1admon}[]
 And here comes some text with bad news.
-\end{warning_colors2admon}
+\end{graybox1admon}
 
 
 
@@ -38159,7 +39030,7 @@ Here is a long notice environment with a custom title and much
 text, math and code.
 
 
-\begin{notice_colors2admon}[Going deeper.]
+\begin{graybox1admon}[Going deeper.]
 We have some equations that should be preceded by much text, so the
 task is to write and write. The number of words, and not the
 meaning, is what counts here. We need desperately to fill up the
@@ -38178,18 +39049,18 @@ Let us start with some equations:
 The implementation of such complicated equations in computer
 code is task that this "Going deeper" environment targets.
 
-\bpycod
+\bpycod2
 def Dudt(u):
     r = diff(u, t) + u*grad(u)
     return r
 
 half = 0.5
 x = 2*n
-\epycod
+\epycod2
 And some more text that can help going into the next page.
 Longer computer code requires vertical space:
 
-\bpycod
+\bpycod2
 class Diff:
     def __init__(self, f, h=1E-5):
         self.f = f
@@ -38228,14 +39099,14 @@ class Forward3(Diff):
         f, h = self.f, self.h
         return (-(1./6)*f(x+2*h) + f(x+h) - 0.5*f(x) - \
                 (1./3)*f(x-h))/h
-\epycod
+\epycod2
 And then we add a figure too.
 
 
 \begin{center}  % inline figure
   \centerline{\includegraphics[width=0.7\linewidth]{../doc/src/manual/fig/wave1D.pdf}}
 \end{center}
-\end{notice_colors2admon}
+\end{graybox1admon}
 
 
 
@@ -38247,11 +39118,11 @@ for the novice",
 just because we can.
 
 
-\begin{summary_colors2admon}[Concluding remarks, for the novice]
+\begin{graybox1admon}[Concluding remarks for the novice.]
 We can summarize the most important things with admons: they have
 a different typesetting, and they may have a symbol.
 Titles should be optional.
-\end{summary_colors2admon}
+\end{graybox1admon}
 
 
 
@@ -38295,7 +39166,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage{bm,microtype}
 
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
-\setlength{\fboxsep}{8pt}
+%\setlength{\fboxsep}{8pt}
 
 \usepackage{fancyvrb} % packages needed for verbatim environments
 
@@ -38342,12 +39213,12 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % --- begin definitions of admonition environments ---
 
-% Admonition environment for "notice"
-% Style from NumPy User Guide
-\definecolor{noticebackground}{rgb}{0.988235, 0.964706, 0.862745}
+% Admonition style "colors1" has its style taken from the NumPy User Guide
+% "notice" admon
+\definecolor{colors1_notice_background}{rgb}{0.988235,0.964706,0.862745}
 % \fboxsep sets the space between the text and the box
 \newenvironment{noticeshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{noticebackground}}
+{\def\FrameCommand{\fboxsep=3mm\colorbox{colors1_notice_background}}
  \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
 
 \newenvironment{notice_colors1admon}[1][Notice]{
@@ -38360,12 +39231,12 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \end{noticeshaded}
 }
 
-% Admonition environment for "summary"
-% Style from NumPy User Guide
-\definecolor{summarybackground}{rgb}{0.988235, 0.964706, 0.862745}
+% Admonition style "colors1" has its style taken from the NumPy User Guide
+% "summary" admon
+\definecolor{colors1_summary_background}{rgb}{0.988235,0.964706,0.862745}
 % \fboxsep sets the space between the text and the box
 \newenvironment{summaryshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{summarybackground}}
+{\def\FrameCommand{\fboxsep=3mm\colorbox{colors1_summary_background}}
  \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
 
 \newenvironment{summary_colors1admon}[1][Summary]{
@@ -38378,12 +39249,12 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \end{summaryshaded}
 }
 
-% Admonition environment for "warning"
-% Style from NumPy User Guide
-\definecolor{warningbackground}{rgb}{1.0, 0.8235294, 0.8235294}
+% Admonition style "colors1" has its style taken from the NumPy User Guide
+% "warning" admon
+\definecolor{colors1_warning_background}{rgb}{1.0,0.8235294,0.8235294}
 % \fboxsep sets the space between the text and the box
 \newenvironment{warningshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{warningbackground}}
+{\def\FrameCommand{\fboxsep=3mm\colorbox{colors1_warning_background}}
  \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
 
 \newenvironment{warning_colors1admon}[1][Warning]{
@@ -38396,12 +39267,12 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \end{warningshaded}
 }
 
-% Admonition environment for "question"
-% Style from NumPy User Guide
-\definecolor{questionbackground}{rgb}{0.988235, 0.964706, 0.862745}
+% Admonition style "colors1" has its style taken from the NumPy User Guide
+% "question" admon
+\definecolor{colors1_question_background}{rgb}{0.988235,0.964706,0.862745}
 % \fboxsep sets the space between the text and the box
 \newenvironment{questionshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{questionbackground}}
+{\def\FrameCommand{\fboxsep=3mm\colorbox{colors1_question_background}}
  \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
 
 \newenvironment{question_colors1admon}[1][Question]{
@@ -38414,12 +39285,12 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \end{questionshaded}
 }
 
-% Admonition environment for "block"
-% Style from NumPy User Guide
-\definecolor{blockbackground}{rgb}{0.988235, 0.964706, 0.862745}
+% Admonition style "colors1" has its style taken from the NumPy User Guide
+% "block" admon
+\definecolor{colors1_block_background}{rgb}{0.988235,0.964706,0.862745}
 % \fboxsep sets the space between the text and the box
 \newenvironment{blockshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{blockbackground}}
+{\def\FrameCommand{\fboxsep=3mm\colorbox{colors1_block_background}}
  \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
 
 \newenvironment{block_colors1admon}[1][Block]{
@@ -38441,6 +39312,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 
 
+% Make sure blank even-numbered pages before new chapters are
+% totally blank with no header
+\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
+%\let\cleardoublepage\clearemptydoublepage % caused error in the toc
+
 % --- end of standard preamble for documents ---
 
 
@@ -38458,6 +39334,8 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \input{newcommands_replace}
 
 % ------------------- main content ----------------------
+
+
 
 
 
@@ -38522,10 +39400,9 @@ Here is a plain quote environment.
 \begin{quote}
 Sayre's law states that
 "in any dispute the intensity of feeling is inversely
-proportional to the value of the issues at stake."
-By way of corollary, it adds:
-"That is why academic politics are so bitter."
-
+proportional to the value of the issues at stake." \\
+By way of corollary, it adds: \\
+"That is why academic politics are so bitter." \\
 \emph{Source}: \href{{http://en.wikipedia.org/wiki/Sayre's_law}}{wikipedia}
 \end{quote}
 
@@ -38625,8 +39502,21 @@ And more and more text.
 Test warning with title:
 
 
-\begin{warning_colors1admon}[{\large Watch out }]
-{\large And here comes some text with bad news in larger font. \par}
+\begin{warning_colors1admon}[{\large Title ending with math $\sqrt{2}\approx 1.4$}]
+{\large And here comes some text with bad news in larger font.
+
+Also some code:
+
+\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+def f(x):
+    return x
+\end{minted}
+And a complete program
+
+\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+print "Hello, World!"
+\end{minted}
+\par}
 \end{warning_colors1admon}
 
 
@@ -38634,9 +39524,10 @@ Test warning with title:
 Test warning with large title with math:
 
 
-\begin{warning_colors1admon}[{\large Watch out for $\nabla\cdot\bm{u}=0$ equations }]
+\begin{warning_colors1admon}[{\large Watch out for $\nabla\cdot\bm{u}=0$ equations}]
 {\large Divergence freedom is often problematic from a numerical point
-of view. \par}
+of view.
+\par}
 \end{warning_colors1admon}
 
 
@@ -38651,7 +39542,8 @@ Then we test a block, which is guaranteed to never have any admon icon.
 and some without. With the small font size, as used here, one can have
 more comment-style text or text that really goes deeper or talks
 about fun facts that are not strictly necessary for the main flow
-of understanding. \par}
+of understanding.
+\par}
 \end{block_colors1admon}
 
 
@@ -38882,7 +39774,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage{bm,microtype}
 
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
-\setlength{\fboxsep}{8pt}
+%\setlength{\fboxsep}{8pt}
 
 \usepackage{fancyvrb} % packages needed for verbatim environments
 
@@ -38929,11 +39821,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % --- begin definitions of admonition environments ---
 
-% Admonition environment for "notice"
-\definecolor{noticebackground}{rgb}{0.988235, 0.964706, 0.862745}
+% Admonition style "colors2", admon "notice"
+\definecolor{colors2_notice_background}{rgb}{0.988235,0.964706,0.862745}
 % \fboxsep sets the space between the text and the box
 \newenvironment{noticeshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{noticebackground}}
+{\def\FrameCommand{\fboxsep=3mm\colorbox{colors2_notice_background}}
  \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
 
 \newenvironment{notice_colors2admon}[1][Notice]{
@@ -38949,11 +39841,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \end{noticeshaded}
 }
 
-% Admonition environment for "summary"
-\definecolor{summarybackground}{rgb}{0.988235, 0.964706, 0.862745}
+% Admonition style "colors2", admon "summary"
+\definecolor{colors2_summary_background}{rgb}{0.988235,0.964706,0.862745}
 % \fboxsep sets the space between the text and the box
 \newenvironment{summaryshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{summarybackground}}
+{\def\FrameCommand{\fboxsep=3mm\colorbox{colors2_summary_background}}
  \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
 
 \newenvironment{summary_colors2admon}[1][Summary]{
@@ -38969,11 +39861,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \end{summaryshaded}
 }
 
-% Admonition environment for "warning"
-\definecolor{warningbackground}{rgb}{1.0, 0.8235294, 0.8235294}
+% Admonition style "colors2", admon "warning"
+\definecolor{colors2_warning_background}{rgb}{1.0,0.8235294,0.8235294}
 % \fboxsep sets the space between the text and the box
 \newenvironment{warningshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{warningbackground}}
+{\def\FrameCommand{\fboxsep=3mm\colorbox{colors2_warning_background}}
  \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
 
 \newenvironment{warning_colors2admon}[1][Warning]{
@@ -38989,11 +39881,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \end{warningshaded}
 }
 
-% Admonition environment for "question"
-\definecolor{questionbackground}{rgb}{0.988235, 0.964706, 0.862745}
+% Admonition style "colors2", admon "question"
+\definecolor{colors2_question_background}{rgb}{0.988235,0.964706,0.862745}
 % \fboxsep sets the space between the text and the box
 \newenvironment{questionshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{questionbackground}}
+{\def\FrameCommand{\fboxsep=3mm\colorbox{colors2_question_background}}
  \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
 
 \newenvironment{question_colors2admon}[1][Question]{
@@ -39009,11 +39901,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \end{questionshaded}
 }
 
-% Admonition environment for "block"
-\definecolor{blockbackground}{rgb}{0.988235, 0.964706, 0.862745}
+% Admonition style "colors2", admon "block"
+\definecolor{colors2_block_background}{rgb}{0.988235,0.964706,0.862745}
 % \fboxsep sets the space between the text and the box
 \newenvironment{blockshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{blockbackground}}
+{\def\FrameCommand{\fboxsep=3mm\colorbox{colors2_block_background}}
  \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
 
 \newenvironment{block_colors2admon}[1][Block]{
@@ -39035,6 +39927,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 
 
+% Make sure blank even-numbered pages before new chapters are
+% totally blank with no header
+\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
+%\let\cleardoublepage\clearemptydoublepage % caused error in the toc
+
 % --- end of standard preamble for documents ---
 
 
@@ -39052,6 +39949,8 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \input{newcommands_replace}
 
 % ------------------- main content ----------------------
+
+
 
 
 
@@ -39116,10 +40015,9 @@ Here is a plain quote environment.
 \begin{quote}
 Sayre's law states that
 "in any dispute the intensity of feeling is inversely
-proportional to the value of the issues at stake."
-By way of corollary, it adds:
-"That is why academic politics are so bitter."
-
+proportional to the value of the issues at stake." \\
+By way of corollary, it adds: \\
+"That is why academic politics are so bitter." \\
 \emph{Source}: \href{{http://en.wikipedia.org/wiki/Sayre's_law}}{wikipedia}
 \end{quote}
 
@@ -39219,8 +40117,21 @@ And more and more text.
 Test warning with title:
 
 
-\begin{warning_colors2admon}[{\large Watch out }]
-{\large And here comes some text with bad news in larger font. \par}
+\begin{warning_colors2admon}[{\large Title ending with math $\sqrt{2}\approx 1.4$}]
+{\large And here comes some text with bad news in larger font.
+
+Also some code:
+
+\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+def f(x):
+    return x
+\end{minted}
+And a complete program
+
+\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+print "Hello, World!"
+\end{minted}
+\par}
 \end{warning_colors2admon}
 
 
@@ -39228,9 +40139,10 @@ Test warning with title:
 Test warning with large title with math:
 
 
-\begin{warning_colors2admon}[{\large Watch out for $\nabla\cdot\bm{u}=0$ equations }]
+\begin{warning_colors2admon}[{\large Watch out for $\nabla\cdot\bm{u}=0$ equations}]
 {\large Divergence freedom is often problematic from a numerical point
-of view. \par}
+of view.
+\par}
 \end{warning_colors2admon}
 
 
@@ -39245,7 +40157,8 @@ Then we test a block, which is guaranteed to never have any admon icon.
 and some without. With the small font size, as used here, one can have
 more comment-style text or text that really goes deeper or talks
 about fun facts that are not strictly necessary for the main flow
-of understanding. \par}
+of understanding.
+\par}
 \end{block_colors2admon}
 
 
@@ -39476,7 +40389,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage{bm,microtype}
 
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
-\setlength{\fboxsep}{8pt}
+%\setlength{\fboxsep}{8pt}
 
 \usepackage{fancyvrb} % packages needed for verbatim environments
 
@@ -39523,9 +40436,10 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % --- begin definitions of admonition environments ---
 
-% Admonition is an oval gray box
+% Admonition style "graybox1" is an oval colored box
+\colorlet{graybox1_background}{gray!6}
 \newmdenv[
-  backgroundcolor=gray!5,  %% white with 5%% gray
+  backgroundcolor=graybox1_background,
   skipabove=\topsep,
   skipbelow=\topsep,
   outerlinewidth=0,
@@ -39551,6 +40465,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 
 
+% Make sure blank even-numbered pages before new chapters are
+% totally blank with no header
+\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
+%\let\cleardoublepage\clearemptydoublepage % caused error in the toc
+
 % --- end of standard preamble for documents ---
 
 
@@ -39568,6 +40487,8 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \input{newcommands_replace}
 
 % ------------------- main content ----------------------
+
+
 
 
 
@@ -39632,10 +40553,9 @@ Here is a plain quote environment.
 \begin{quote}
 Sayre's law states that
 "in any dispute the intensity of feeling is inversely
-proportional to the value of the issues at stake."
-By way of corollary, it adds:
-"That is why academic politics are so bitter."
-
+proportional to the value of the issues at stake." \\
+By way of corollary, it adds: \\
+"That is why academic politics are so bitter." \\
 \emph{Source}: \href{{http://en.wikipedia.org/wiki/Sayre's_law}}{wikipedia}
 \end{quote}
 
@@ -39735,8 +40655,21 @@ And more and more text.
 Test warning with title:
 
 
-\begin{graybox1admon}[{\large Watch out }.]
-{\large And here comes some text with bad news in larger font. \par}
+\begin{graybox1admon}[{\large Title ending with math $\sqrt{2}\approx 1.4$}.]
+{\large And here comes some text with bad news in larger font.
+
+Also some code:
+
+\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+def f(x):
+    return x
+\end{minted}
+And a complete program
+
+\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+print "Hello, World!"
+\end{minted}
+\par}
 \end{graybox1admon}
 
 
@@ -39744,9 +40677,10 @@ Test warning with title:
 Test warning with large title with math:
 
 
-\begin{graybox1admon}[{\large Watch out for $\nabla\cdot\bm{u}=0$ equations }.]
+\begin{graybox1admon}[{\large Watch out for $\nabla\cdot\bm{u}=0$ equations}.]
 {\large Divergence freedom is often problematic from a numerical point
-of view. \par}
+of view.
+\par}
 \end{graybox1admon}
 
 
@@ -39761,7 +40695,8 @@ Then we test a block, which is guaranteed to never have any admon icon.
 and some without. With the small font size, as used here, one can have
 more comment-style text or text that really goes deeper or talks
 about fun facts that are not strictly necessary for the main flow
-of understanding. \par}
+of understanding.
+\par}
 \end{graybox1admon}
 
 
@@ -39992,7 +40927,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage{bm,microtype}
 
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
-\setlength{\fboxsep}{8pt}
+%\setlength{\fboxsep}{8pt}
 
 \usepackage{fancyvrb} % packages needed for verbatim environments
 
@@ -40040,11 +40975,13 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % --- begin definitions of admonition environments ---
 
-% gray box with horizontal rules (cannot handle verbatim text)
-\definecolor{lightgray}{rgb}{0.94,0.94,0.94}
-% gray box of 80% width
+% Admonition style "graybox2" is a gray or colored box with a square
+% frame, except for the summary admon which has horizontal rules only
+% Note: this admonition type cannot handle verbatim text!
+\definecolor{graybox2_background}{rgb}{0.94,0.94,0.94}
+% colored box of 80% width
 \newcommand{\grayboxhrules}[1]{\begin{center}
-\colorbox{lightgray}{\rule{6pt}{0pt}
+\colorbox{graybox2_background}{\rule{6pt}{0pt}
 \begin{minipage}{0.8\linewidth}
 \parbox[t]{0mm}{\rule[0pt]{0mm}{0.5\baselineskip}}\hrule
 \vspace*{0.5\baselineskip}\noindent #1
@@ -40054,7 +40991,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % Fallback for verbatim content in \grayboxhrules
 \newmdenv[
-  backgroundcolor=lightgray,
+  backgroundcolor=graybox2_background,
   skipabove=\topsep,
   skipbelow=\topsep,
   leftmargin=23,
@@ -40078,6 +41015,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 
 
+% Make sure blank even-numbered pages before new chapters are
+% totally blank with no header
+\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
+%\let\cleardoublepage\clearemptydoublepage % caused error in the toc
+
 % --- end of standard preamble for documents ---
 
 
@@ -40095,6 +41037,8 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \input{newcommands_replace}
 
 % ------------------- main content ----------------------
+
+
 
 
 
@@ -40159,10 +41103,9 @@ Here is a plain quote environment.
 \begin{quote}
 Sayre's law states that
 "in any dispute the intensity of feeling is inversely
-proportional to the value of the issues at stake."
-By way of corollary, it adds:
-"That is why academic politics are so bitter."
-
+proportional to the value of the issues at stake." \\
+By way of corollary, it adds: \\
+"That is why academic politics are so bitter." \\
 \emph{Source}: \href{{http://en.wikipedia.org/wiki/Sayre's_law}}{wikipedia}
 \end{quote}
 
@@ -40265,8 +41208,21 @@ Test warning with title:
 
 
 
-\begin{graybox2admon}[{\large Watch out }.]
-{\large And here comes some text with bad news in larger font. \par}
+\begin{graybox2admon}[{\large Title ending with math $\sqrt{2}\approx 1.4$}.]
+{\large And here comes some text with bad news in larger font.
+
+Also some code:
+
+\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+def f(x):
+    return x
+\end{minted}
+And a complete program
+
+\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+print "Hello, World!"
+\end{minted}
+\par}
 \end{graybox2admon}
 
 
@@ -40276,9 +41232,10 @@ Test warning with large title with math:
 
 
 
-\begin{graybox2admon}[{\large Watch out for $\nabla\cdot\bm{u}=0$ equations }.]
+\begin{graybox2admon}[{\large Watch out for $\nabla\cdot\bm{u}=0$ equations}.]
 {\large Divergence freedom is often problematic from a numerical point
-of view. \par}
+of view.
+\par}
 \end{graybox2admon}
 
 
@@ -40295,7 +41252,8 @@ Then we test a block, which is guaranteed to never have any admon icon.
 and some without. With the small font size, as used here, one can have
 more comment-style text or text that really goes deeper or talks
 about fun facts that are not strictly necessary for the main flow
-of understanding. \par}
+of understanding.
+\par}
 \end{graybox2admon}
 
 
@@ -40542,7 +41500,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage{bm,microtype}
 
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
-\setlength{\fboxsep}{8pt}
+%\setlength{\fboxsep}{8pt}
 
 \usepackage{fancyvrb} % packages needed for verbatim environments
 
@@ -40589,11 +41547,12 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % --- begin definitions of admonition environments ---
 
-% Admonition environment for "notice"
-\definecolor{noticebackground}{rgb}{0.91, 0.91, 0.91}
+% Admonition style "graybox3" has colored background, no frame, and an icon
+% Admon "notice"
+\colorlet{graybox3_notice_background}{gray!20}
 % \fboxsep sets the space between the text and the box
 \newenvironment{noticeshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{noticebackground}}
+{\def\FrameCommand{\fboxsep=3mm\colorbox{graybox3_notice_background}}
  \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
 
 \newenvironment{notice_graybox3admon}[1][Notice]{
@@ -40609,11 +41568,12 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \end{noticeshaded}
 }
 
-% Admonition environment for "summary"
-\definecolor{summarybackground}{rgb}{0.91, 0.91, 0.91}
+% Admonition style "graybox3" has colored background, no frame, and an icon
+% Admon "summary"
+\colorlet{graybox3_summary_background}{gray!20}
 % \fboxsep sets the space between the text and the box
 \newenvironment{summaryshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{summarybackground}}
+{\def\FrameCommand{\fboxsep=3mm\colorbox{graybox3_summary_background}}
  \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
 
 \newenvironment{summary_graybox3admon}[1][Summary]{
@@ -40629,11 +41589,12 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \end{summaryshaded}
 }
 
-% Admonition environment for "warning"
-\definecolor{warningbackground}{rgb}{0.91, 0.91, 0.91}
+% Admonition style "graybox3" has colored background, no frame, and an icon
+% Admon "warning"
+\colorlet{graybox3_warning_background}{gray!20}
 % \fboxsep sets the space between the text and the box
 \newenvironment{warningshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{warningbackground}}
+{\def\FrameCommand{\fboxsep=3mm\colorbox{graybox3_warning_background}}
  \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
 
 \newenvironment{warning_graybox3admon}[1][Warning]{
@@ -40649,11 +41610,12 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \end{warningshaded}
 }
 
-% Admonition environment for "question"
-\definecolor{questionbackground}{rgb}{0.91, 0.91, 0.91}
+% Admonition style "graybox3" has colored background, no frame, and an icon
+% Admon "question"
+\colorlet{graybox3_question_background}{gray!20}
 % \fboxsep sets the space between the text and the box
 \newenvironment{questionshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{questionbackground}}
+{\def\FrameCommand{\fboxsep=3mm\colorbox{graybox3_question_background}}
  \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
 
 \newenvironment{question_graybox3admon}[1][Question]{
@@ -40669,11 +41631,12 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \end{questionshaded}
 }
 
-% Admonition environment for "block"
-\definecolor{blockbackground}{rgb}{0.91, 0.91, 0.91}
+% Admonition style "graybox3" has colored background, no frame, and an icon
+% Admon "block"
+\colorlet{graybox3_block_background}{gray!20}
 % \fboxsep sets the space between the text and the box
 \newenvironment{blockshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{blockbackground}}
+{\def\FrameCommand{\fboxsep=3mm\colorbox{graybox3_block_background}}
  \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
 
 \newenvironment{block_graybox3admon}[1][Block]{
@@ -40695,6 +41658,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 
 
+% Make sure blank even-numbered pages before new chapters are
+% totally blank with no header
+\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
+%\let\cleardoublepage\clearemptydoublepage % caused error in the toc
+
 % --- end of standard preamble for documents ---
 
 
@@ -40712,6 +41680,8 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \input{newcommands_replace}
 
 % ------------------- main content ----------------------
+
+
 
 
 
@@ -40776,10 +41746,9 @@ Here is a plain quote environment.
 \begin{quote}
 Sayre's law states that
 "in any dispute the intensity of feeling is inversely
-proportional to the value of the issues at stake."
-By way of corollary, it adds:
-"That is why academic politics are so bitter."
-
+proportional to the value of the issues at stake." \\
+By way of corollary, it adds: \\
+"That is why academic politics are so bitter." \\
 \emph{Source}: \href{{http://en.wikipedia.org/wiki/Sayre's_law}}{wikipedia}
 \end{quote}
 
@@ -40879,8 +41848,21 @@ And more and more text.
 Test warning with title:
 
 
-\begin{warning_graybox3admon}[{\large Watch out }]
-{\large And here comes some text with bad news in larger font. \par}
+\begin{warning_graybox3admon}[{\large Title ending with math $\sqrt{2}\approx 1.4$}]
+{\large And here comes some text with bad news in larger font.
+
+Also some code:
+
+\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+def f(x):
+    return x
+\end{minted}
+And a complete program
+
+\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+print "Hello, World!"
+\end{minted}
+\par}
 \end{warning_graybox3admon}
 
 
@@ -40888,9 +41870,10 @@ Test warning with title:
 Test warning with large title with math:
 
 
-\begin{warning_graybox3admon}[{\large Watch out for $\nabla\cdot\bm{u}=0$ equations }]
+\begin{warning_graybox3admon}[{\large Watch out for $\nabla\cdot\bm{u}=0$ equations}]
 {\large Divergence freedom is often problematic from a numerical point
-of view. \par}
+of view.
+\par}
 \end{warning_graybox3admon}
 
 
@@ -40905,7 +41888,8 @@ Then we test a block, which is guaranteed to never have any admon icon.
 and some without. With the small font size, as used here, one can have
 more comment-style text or text that really goes deeper or talks
 about fun facts that are not strictly necessary for the main flow
-of understanding. \par}
+of understanding.
+\par}
 \end{block_graybox3admon}
 
 
@@ -41136,7 +42120,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage{bm,microtype}
 
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
-\setlength{\fboxsep}{8pt}
+%\setlength{\fboxsep}{8pt}
 
 \usepackage{fancyvrb} % packages needed for verbatim environments
 
@@ -41183,7 +42167,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % --- begin definitions of admonition environments ---
 
-% Admonition is just a paragraph
+% Admonition style "paragraph" is just a plain paragraph
 \newenvironment{paragraphadmon}[1][]{\paragraph{#1}}{}
 
 % --- end of definitions of admonition environments ---
@@ -41194,6 +42178,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 
 
+
+% Make sure blank even-numbered pages before new chapters are
+% totally blank with no header
+\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
+%\let\cleardoublepage\clearemptydoublepage % caused error in the toc
 
 % --- end of standard preamble for documents ---
 
@@ -41212,6 +42201,8 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \input{newcommands_replace}
 
 % ------------------- main content ----------------------
+
+
 
 
 
@@ -41276,10 +42267,9 @@ Here is a plain quote environment.
 \begin{quote}
 Sayre's law states that
 "in any dispute the intensity of feeling is inversely
-proportional to the value of the issues at stake."
-By way of corollary, it adds:
-"That is why academic politics are so bitter."
-
+proportional to the value of the issues at stake." \\
+By way of corollary, it adds: \\
+"That is why academic politics are so bitter." \\
 \emph{Source}: \href{{http://en.wikipedia.org/wiki/Sayre's_law}}{wikipedia}
 \end{quote}
 
@@ -41379,8 +42369,21 @@ And more and more text.
 Test warning with title:
 
 
-\begin{paragraphadmon}[{\large Watch out }.]
-{\large And here comes some text with bad news in larger font. \par}
+\begin{paragraphadmon}[{\large Title ending with math $\sqrt{2}\approx 1.4$}.]
+{\large And here comes some text with bad news in larger font.
+
+Also some code:
+
+\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+def f(x):
+    return x
+\end{minted}
+And a complete program
+
+\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+print "Hello, World!"
+\end{minted}
+\par}
 \end{paragraphadmon}
 
 
@@ -41388,9 +42391,10 @@ Test warning with title:
 Test warning with large title with math:
 
 
-\begin{paragraphadmon}[{\large Watch out for $\nabla\cdot\bm{u}=0$ equations }.]
+\begin{paragraphadmon}[{\large Watch out for $\nabla\cdot\bm{u}=0$ equations}.]
 {\large Divergence freedom is often problematic from a numerical point
-of view. \par}
+of view.
+\par}
 \end{paragraphadmon}
 
 
@@ -41404,7 +42408,8 @@ Then we test a block, which is guaranteed to never have any admon icon.
 and some without. With the small font size, as used here, one can have
 more comment-style text or text that really goes deeper or talks
 about fun facts that are not strictly necessary for the main flow
-of understanding. \par}
+of understanding.
+\par}
 \end{paragraphadmon}
 
 
@@ -41635,7 +42640,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage{bm,microtype}
 
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
-\setlength{\fboxsep}{8pt}
+%\setlength{\fboxsep}{8pt}
 
 \usepackage{fancyvrb} % packages needed for verbatim environments
 
@@ -41682,11 +42687,12 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % --- begin definitions of admonition environments ---
 
-% Admonition environment for "notice"
-\definecolor{noticebackground}{rgb}{0.988235, 0.964706, 0.862745}
+% Admonition style "yellowbox" has colored background, yellow icons, and no farme
+% Admon "notice"
+\definecolor{yellowbox_notice_background}{rgb}{0.988235,0.964706,0.862745}
 % \fboxsep sets the space between the text and the box
 \newenvironment{noticeshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{noticebackground}}
+{\def\FrameCommand{\fboxsep=3mm\colorbox{yellowbox_notice_background}}
  \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
 
 \newenvironment{notice_yellowboxadmon}[1][Notice]{
@@ -41702,11 +42708,12 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \end{noticeshaded}
 }
 
-% Admonition environment for "summary"
-\definecolor{summarybackground}{rgb}{0.988235, 0.964706, 0.862745}
+% Admonition style "yellowbox" has colored background, yellow icons, and no farme
+% Admon "summary"
+\definecolor{yellowbox_summary_background}{rgb}{0.988235,0.964706,0.862745}
 % \fboxsep sets the space between the text and the box
 \newenvironment{summaryshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{summarybackground}}
+{\def\FrameCommand{\fboxsep=3mm\colorbox{yellowbox_summary_background}}
  \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
 
 \newenvironment{summary_yellowboxadmon}[1][Summary]{
@@ -41722,11 +42729,12 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \end{summaryshaded}
 }
 
-% Admonition environment for "warning"
-\definecolor{warningbackground}{rgb}{0.988235, 0.964706, 0.862745}
+% Admonition style "yellowbox" has colored background, yellow icons, and no farme
+% Admon "warning"
+\definecolor{yellowbox_warning_background}{rgb}{0.988235,0.964706,0.862745}
 % \fboxsep sets the space between the text and the box
 \newenvironment{warningshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{warningbackground}}
+{\def\FrameCommand{\fboxsep=3mm\colorbox{yellowbox_warning_background}}
  \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
 
 \newenvironment{warning_yellowboxadmon}[1][Warning]{
@@ -41742,11 +42750,12 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \end{warningshaded}
 }
 
-% Admonition environment for "question"
-\definecolor{questionbackground}{rgb}{0.988235, 0.964706, 0.862745}
+% Admonition style "yellowbox" has colored background, yellow icons, and no farme
+% Admon "question"
+\definecolor{yellowbox_question_background}{rgb}{0.988235,0.964706,0.862745}
 % \fboxsep sets the space between the text and the box
 \newenvironment{questionshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{questionbackground}}
+{\def\FrameCommand{\fboxsep=3mm\colorbox{yellowbox_question_background}}
  \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
 
 \newenvironment{question_yellowboxadmon}[1][Question]{
@@ -41762,11 +42771,12 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \end{questionshaded}
 }
 
-% Admonition environment for "block"
-\definecolor{blockbackground}{rgb}{0.988235, 0.964706, 0.862745}
+% Admonition style "yellowbox" has colored background, yellow icons, and no farme
+% Admon "block"
+\definecolor{yellowbox_block_background}{rgb}{0.988235,0.964706,0.862745}
 % \fboxsep sets the space between the text and the box
 \newenvironment{blockshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{blockbackground}}
+{\def\FrameCommand{\fboxsep=3mm\colorbox{yellowbox_block_background}}
  \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
 
 \newenvironment{block_yellowboxadmon}[1][Block]{
@@ -41788,6 +42798,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 
 
+% Make sure blank even-numbered pages before new chapters are
+% totally blank with no header
+\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
+%\let\cleardoublepage\clearemptydoublepage % caused error in the toc
+
 % --- end of standard preamble for documents ---
 
 
@@ -41805,6 +42820,8 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \input{newcommands_replace}
 
 % ------------------- main content ----------------------
+
+
 
 
 
@@ -41869,10 +42886,9 @@ Here is a plain quote environment.
 \begin{quote}
 Sayre's law states that
 "in any dispute the intensity of feeling is inversely
-proportional to the value of the issues at stake."
-By way of corollary, it adds:
-"That is why academic politics are so bitter."
-
+proportional to the value of the issues at stake." \\
+By way of corollary, it adds: \\
+"That is why academic politics are so bitter." \\
 \emph{Source}: \href{{http://en.wikipedia.org/wiki/Sayre's_law}}{wikipedia}
 \end{quote}
 
@@ -41972,8 +42988,21 @@ And more and more text.
 Test warning with title:
 
 
-\begin{warning_yellowboxadmon}[{\large Watch out }]
-{\large And here comes some text with bad news in larger font. \par}
+\begin{warning_yellowboxadmon}[{\large Title ending with math $\sqrt{2}\approx 1.4$}]
+{\large And here comes some text with bad news in larger font.
+
+Also some code:
+
+\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+def f(x):
+    return x
+\end{minted}
+And a complete program
+
+\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+print "Hello, World!"
+\end{minted}
+\par}
 \end{warning_yellowboxadmon}
 
 
@@ -41981,9 +43010,10 @@ Test warning with title:
 Test warning with large title with math:
 
 
-\begin{warning_yellowboxadmon}[{\large Watch out for $\nabla\cdot\bm{u}=0$ equations }]
+\begin{warning_yellowboxadmon}[{\large Watch out for $\nabla\cdot\bm{u}=0$ equations}]
 {\large Divergence freedom is often problematic from a numerical point
-of view. \par}
+of view.
+\par}
 \end{warning_yellowboxadmon}
 
 
@@ -41998,7 +43028,8 @@ Then we test a block, which is guaranteed to never have any admon icon.
 and some without. With the small font size, as used here, one can have
 more comment-style text or text that really goes deeper or talks
 about fun facts that are not strictly necessary for the main flow
-of understanding. \par}
+of understanding.
+\par}
 \end{block_yellowboxadmon}
 
 
@@ -42203,6 +43234,544 @@ exercises (and problems and projects too).
 \end{document}
 
 
+************** File: admon_double_envirs.tex *****************
+%%
+%% Automatically generated file from Doconce source
+%% (https://github.com/hplgit/doconce/)
+%%
+
+
+
+
+
+%-------------------- begin preamble ----------------------
+
+\documentclass[%
+twoside,                 % oneside: electronic viewing, twoside: printing
+final,                   % or draft (marks overfull hboxes, figures with paths)
+10pt]{article}
+
+
+\listfiles               % print all files needed to compile this document
+
+
+\usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
+\usepackage[table]{xcolor}
+\usepackage{bm,microtype}
+
+\usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
+%\setlength{\fboxsep}{8pt}
+
+\usepackage{fancyvrb} % packages needed for verbatim environments
+
+\usepackage{minted}
+\usemintedstyle{default}
+
+\usepackage[T1]{fontenc}
+%\usepackage[latin1]{inputenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
+
+% Hyperlinks in PDF:
+\definecolor{linkcolor}{rgb}{0,0,0.4}
+\usepackage[%
+    colorlinks=true,
+    linkcolor=linkcolor,
+    urlcolor=linkcolor,
+    citecolor=black,
+    filecolor=black,
+    %filecolor=blue,
+    pdfmenubar=true,
+    pdftoolbar=true,
+    bookmarksdepth=3   % Uncomment (and tweak) for PDF bookmarks with more levels than the TOC
+            ]{hyperref}
+%\hyperbaseurl{}   % hyperlinks are relative to this root
+
+\setcounter{tocdepth}{2}  % number chapter, section, subsection
+
+% Tricks for having figures close to where they are defined:
+% 1. define less restrictive rules for where to put figures
+\setcounter{topnumber}{2}
+\setcounter{bottomnumber}{2}
+\setcounter{totalnumber}{4}
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\textfraction}{0.15}
+\renewcommand{\floatpagefraction}{0.7}
+% 2. ensure all figures are flushed before next section
+\usepackage[section]{placeins}
+% 3. enable begin{figure}[H] (often leads to ugly pagebreaks)
+%\usepackage{float}\restylefloat{figure}
+
+\usepackage[framemethod=TikZ]{mdframed}
+
+% --- begin definitions of admonition environments ---
+
+% Admonition style "graybox1" is an oval colored box
+\definecolor{graybox1_background}{rgb}{1,1,1}
+\newmdenv[
+  backgroundcolor=graybox1_background,
+  skipabove=\topsep,
+  skipbelow=\topsep,
+  outerlinewidth=0,
+  leftmargin=0,
+  rightmargin=0,
+  roundcorner=5,
+  needspace=0pt,
+]{graybox1mdframed}
+
+\newenvironment{graybox1admon}[1][]{
+\begin{graybox1mdframed}[frametitle=#1]
+}
+{
+\end{graybox1mdframed}
+}
+
+% --- end of definitions of admonition environments ---
+
+% prevent orhpans and widows
+\clubpenalty = 10000
+\widowpenalty = 10000
+
+
+
+
+% Make sure blank even-numbered pages before new chapters are
+% totally blank with no header
+\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
+%\let\cleardoublepage\clearemptydoublepage % caused error in the toc
+
+% --- end of standard preamble for documents ---
+
+
+% insert custom LaTeX commands...
+
+\raggedbottom
+\makeindex
+
+%-------------------- end preamble ----------------------
+
+\begin{document}
+
+
+\input{newcommands_bfmath}
+\input{newcommands_replace}
+
+% ------------------- main content ----------------------
+
+
+
+
+
+% ----------------- title -------------------------
+
+\thispagestyle{empty}
+
+\begin{center}
+{\LARGE\bf
+\begin{spacing}{1.25}
+Testing admons
+\end{spacing}
+}
+\end{center}
+
+% ----------------- author(s) -------------------------
+
+\begin{center}
+{\bf hpl${}^{}$} \\ [0mm]
+\end{center}
+
+\begin{center}
+% List of all institutions:
+\end{center}
+% ----------------- end author(s) -------------------------
+
+
+\begin{center}
+Jan 32, 2100
+\end{center}
+
+\vspace{1cm}
+
+
+
+\section{Introduction}
+First some ordinary text to compare font sizes in admonitions
+and the surrounding text.
+
+
+\subsection{Code}
+
+Need some code outside admons for color and font comparisons:
+
+\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=0mm]
+def some_code(x):
+    return sin(x)*exp(1-x)
+\end{Verbatim}
+
+And some plain text verbatim:
+
+\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
+x=1.0 y=0.9 z=0.4
+x=1.1 y=0.3 z=0.1
+\end{Verbatim}
+
+\subsection{Quotes and boxes}
+
+Here is a plain quote environment.
+
+
+\begin{quote}
+Sayre's law states that
+"in any dispute the intensity of feeling is inversely
+proportional to the value of the issues at stake." \\
+By way of corollary, it adds: \\
+"That is why academic politics are so bitter." \\
+\emph{Source}: \href{{http://en.wikipedia.org/wiki/Sayre's_law}}{wikipedia}
+\end{quote}
+
+
+Does quotes with title also work? No...cannot work in {\LaTeX} and HTML
+and then it does not make sense to support it.
+
+
+A plain \emph{box} is sometimes useful. Let's show it here for comparison
+with admons (especially the block admon has much in common with a box).
+The box is more aimed at framing a law or an equation.
+
+First a simple block with text, an equation, and a list:
+
+
+\begin{center}
+\begin{Sbox}
+\begin{minipage}{0.85\textwidth}
+A generic equation
+
+\[ f(x) = 0 \]
+must be solved by a numerical method, such as
+
+\begin{itemize}
+ \item Newton's method
+
+ \item The Bisection method
+
+ \item Fixed-point (Picard) iteration by rewriting $f(x)=x - g(x)$
+
+ \item The Secant method
+\end{itemize}
+
+\noindent
+\end{minipage}
+\end{Sbox}
+\fbox{\TheSbox}
+\end{center}
+Now test a box with equation only (note that this line continues the
+box, it is not a new paragraph):
+
+
+\begin{center}
+\begin{Sbox}
+\begin{minipage}{0.85\textwidth}
+\begin{equation} f(x) = \sin(x)e^{1-x} \end{equation}
+\end{minipage}
+\end{Sbox}
+\fbox{\TheSbox}
+\end{center}
+
+Let's begin a new paragraph and show a box with code only:
+
+
+\begin{center}
+\begin{Sbox}
+\begin{minipage}{0.85\textwidth}
+\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=0mm]
+def some_code(x):
+    return sin(x)*exp(1-x)
+\end{Verbatim}
+\end{minipage}
+\end{Sbox}
+\fbox{\TheSbox}
+\end{center}
+
+
+
+\subsection{Admonitions}
+
+Let us start with a plain warning environment.
+
+
+\begin{graybox1admon}[Warning.]
+And here is a warning about something to pay attention to. We
+test how the heading behave and add quite some extra texts
+in comparison with the other admons.
+
+\begin{itemize}
+  \item and a list
+
+  \item with items
+\end{itemize}
+
+\noindent
+We continue with more text to see how that affects the layout.
+And more and more text.
+And more and more text.
+And more and more text.
+And more and more text.
+And more and more text.
+And more and more text.
+\end{graybox1admon}
+
+
+
+Test warning with title:
+
+
+\begin{graybox1admon}[{\large Title ending with math $\sqrt{2}\approx 1.4$}.]
+{\large And here comes some text with bad news in larger font.
+
+Also some code:
+
+\begin{minted}{python}
+def f(x):
+    return x
+\end{minted}
+And a complete program
+
+\begin{minted}{python}
+print "Hello, World!"
+\end{minted}
+\par}
+\end{graybox1admon}
+
+
+
+Test warning with large title with math:
+
+
+\begin{graybox1admon}[{\large Watch out for $\nabla\cdot\bm{u}=0$ equations}.]
+{\large Divergence freedom is often problematic from a numerical point
+of view.
+\par}
+\end{graybox1admon}
+
+
+
+Then we test a block, which is guaranteed to never have any admon icon.
+
+
+\begin{graybox1admon}[Block with title.]
+\vspace{0.5mm}\par\noindent
+{\footnotesize Here is a block of text with title. It is typeset
+\emph{without any icon} and is useful when you want some admons with icon
+and some without. With the small font size, as used here, one can have
+more comment-style text or text that really goes deeper or talks
+about fun facts that are not strictly necessary for the main flow
+of understanding.
+\par}
+\end{graybox1admon}
+
+
+
+
+
+\begin{graybox1admon}[]
+Here is a block of text with no title. As above, it is typeset without any icon
+and is useful when you want some admons with icon and some without.
+\end{graybox1admon}
+
+
+
+The next admonition features a title "Note, eventually!".
+
+% Note that the final ! does not appear in Sphinx and reST since
+% those formats automatically add : to the admonition title.
+
+
+\begin{graybox1admon}[Note eventually!]
+Ah, we are soon close to the end (with illegal font size specification!).
+But first a bit of math where we define $\theta$ and $\bm{r}$:
+
+\begin{align*}
+\theta &= q^2,\\
+\bm{r} &= \varrho\bm{i}
+\end{align*}
+\end{graybox1admon}
+
+
+
+% Test one word with a number
+
+
+\begin{graybox1admon}[Point1.]
+Ah, we are soon close to the end.
+\end{graybox1admon}
+
+
+
+
+\begin{graybox1admon}[Question.]
+So, how many admonition environments does Doconce support?
+\end{graybox1admon}
+
+
+
+
+\begin{graybox1admon}[Question.]
+\begin{enumerate}
+ \item Once more, how many admonition environments does Doconce support?
+\end{enumerate}
+
+\noindent
+\end{graybox1admon}
+
+
+
+
+\begin{graybox1admon}[Tip.]
+It is of outmost important to
+
+\begin{enumerate}
+\item stay cool
+
+\item read hints and tips carefully
+\end{enumerate}
+
+\noindent
+Because here the thing is to do
+
+\begin{minted}{python}
+import urllib
+
+def grab(url, filename):
+    urllib.urlretrieve(url, filename=filename)
+\end{minted}
+\end{graybox1admon}
+
+
+
+Next is a warning without a title ("none" implies no title).
+
+
+\begin{graybox1admon}[]
+And here comes some text with bad news.
+\end{graybox1admon}
+
+
+
+\subsection{Going deeper environments}
+
+Here is a long notice environment with a custom title and much
+text, math and code.
+
+
+\begin{graybox1admon}[Going deeper.]
+We have some equations that should be preceded by much text, so the
+task is to write and write. The number of words, and not the
+meaning, is what counts here. We need desperately to fill up the
+page in the hope that some admonitions will experience a page break,
+which the {\LaTeX} environment should handle with ease.
+
+Let us start with some equations:
+
+\begin{align*}
+\Ddt{u} &= 0
+\\
+\half &= \halfi\\
+\half\x &= \normalvec
+\end{align*}
+
+The implementation of such complicated equations in computer
+code is task that this "Going deeper" environment targets.
+
+\begin{minted}{python}
+def Dudt(u):
+    r = diff(u, t) + u*grad(u)
+    return r
+
+half = 0.5
+x = 2*n
+\end{minted}
+And some more text that can help going into the next page.
+Longer computer code requires vertical space:
+
+\begin{minted}{python}
+class Diff:
+    def __init__(self, f, h=1E-5):
+        self.f = f
+        self.h = float(h)
+
+class Forward1(Diff):
+    def __call__(self, x):
+        f, h = self.f, self.h
+        return (f(x+h) - f(x))/h
+
+class Backward1(Diff):
+    def __call__(self, x):
+        f, h = self.f, self.h
+        return (f(x) - f(x-h))/h
+
+class Central2(Diff):
+    def __call__(self, x):
+        f, h = self.f, self.h
+        return (f(x+h) - f(x-h))/(2*h)
+
+class Central4(Diff):
+    def __call__(self, x):
+        f, h = self.f, self.h
+        return (4./3)*(f(x+h)   - f(x-h))  /(2*h) - \
+               (1./3)*(f(x+2*h) - f(x-2*h))/(4*h)
+
+class Central6(Diff):
+    def __call__(self, x):
+        f, h = self.f, self.h
+        return (3./2) *(f(x+h)   - f(x-h))  /(2*h) - \
+               (3./5) *(f(x+2*h) - f(x-2*h))/(4*h) + \
+               (1./10)*(f(x+3*h) - f(x-3*h))/(6*h)
+
+class Forward3(Diff):
+    def __call__(self, x):
+        f, h = self.f, self.h
+        return (-(1./6)*f(x+2*h) + f(x+h) - 0.5*f(x) - \
+                (1./3)*f(x-h))/h
+\end{minted}
+And then we add a figure too.
+
+
+\begin{center}  % inline figure
+  \centerline{\includegraphics[width=0.7\linewidth]{../doc/src/manual/fig/wave1D.pdf}}
+\end{center}
+\end{graybox1admon}
+
+
+
+
+\subsection{The end}
+
+A bit of text before the summary, which we now call "Concluding remarks,
+for the novice",
+just because we can.
+
+
+\begin{graybox1admon}[Concluding remarks for the novice.]
+We can summarize the most important things with admons: they have
+a different typesetting, and they may have a symbol.
+Titles should be optional.
+\end{graybox1admon}
+
+
+
+\paragraph{Remark.}
+The \Verb!remarks! and \Verb!hint! environments are not allowed outside
+exercises (and problems and projects too).
+
+% ------------------- end of main content ---------------
+
+
+\printindex
+
+\end{document}
+
+
 ************** File: admon_colors.html *****************
 <!DOCTYPE html>
 <!--
@@ -42367,11 +43936,9 @@ Here is a plain quote environment.
 <blockquote>
     Sayre's law states that
     "in any dispute the intensity of feeling is inversely
-    proportional to the value of the issues at stake."
-    By way of corollary, it adds:
-    "That is why academic politics are so bitter."
-    
-    <p>
+    proportional to the value of the issues at stake." <br />
+    By way of corollary, it adds: <br />
+    "That is why academic politics are so bitter." <br />
     <em>Source</em>: <a href="http://en.wikipedia.org/wiki/Sayre's_law" target="_self">wikipedia</a>
 </blockquote>
 
@@ -42474,8 +44041,27 @@ And more and more text.
 Test warning with title:
 
 <p>
-<div class="warning alert-text-large"><b>Watch out.</b>
+<div class="warning alert-text-large"><b>Title ending with math \( \sqrt{2}\approx 1.4 \).</b>
 And here comes some text with bad news in larger font.
+
+<p>
+Also some code:
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #FEEFB3"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
+    <span style="color: #008000; font-weight: bold">return</span> x
+</pre></div>
+<p>
+And a complete program
+
+<p>
+
+<!-- code=python (from !bc pypro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #FEEFB3"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&quot;Hello, World!&quot;</span>
+</pre></div>
+<p>
 </div>
 
 
@@ -42890,11 +44476,9 @@ Here is a plain quote environment.
 <blockquote>
     Sayre's law states that
     "in any dispute the intensity of feeling is inversely
-    proportional to the value of the issues at stake."
-    By way of corollary, it adds:
-    "That is why academic politics are so bitter."
-    
-    <p>
+    proportional to the value of the issues at stake." <br />
+    By way of corollary, it adds: <br />
+    "That is why academic politics are so bitter." <br />
     <em>Source</em>: <a href="http://en.wikipedia.org/wiki/Sayre's_law" target="_self">wikipedia</a>
 </blockquote>
 
@@ -42997,8 +44581,27 @@ And more and more text.
 Test warning with title:
 
 <p>
-<div class="alert alert-block alert-warning alert-text-large"><b>Watch out.</b>
+<div class="alert alert-block alert-warning alert-text-large"><b>Title ending with math \( \sqrt{2}\approx 1.4 \).</b>
 And here comes some text with bad news in larger font.
+
+<p>
+Also some code:
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
+    <span style="color: #008000; font-weight: bold">return</span> x
+</pre></div>
+<p>
+And a complete program
+
+<p>
+
+<!-- code=python (from !bc pypro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&quot;Hello, World!&quot;</span>
+</pre></div>
+<p>
 </div>
 
 
@@ -43411,11 +45014,9 @@ Here is a plain quote environment.
 <blockquote>
     Sayre's law states that
     "in any dispute the intensity of feeling is inversely
-    proportional to the value of the issues at stake."
-    By way of corollary, it adds:
-    "That is why academic politics are so bitter."
-    
-    <p>
+    proportional to the value of the issues at stake." <br />
+    By way of corollary, it adds: <br />
+    "That is why academic politics are so bitter." <br />
     <em>Source</em>: <a href="http://en.wikipedia.org/wiki/Sayre's_law" target="_self">wikipedia</a>
 </blockquote>
 
@@ -43518,8 +45119,27 @@ And more and more text.
 Test warning with title:
 
 <p>
-<div class="alert alert-block alert-warning alert-text-large"><b>Watch out.</b>
+<div class="alert alert-block alert-warning alert-text-large"><b>Title ending with math \( \sqrt{2}\approx 1.4 \).</b>
 And here comes some text with bad news in larger font.
+
+<p>
+Also some code:
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #fcf8e3"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
+    <span style="color: #008000; font-weight: bold">return</span> x
+</pre></div>
+<p>
+And a complete program
+
+<p>
+
+<!-- code=python (from !bc pypro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #fcf8e3"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&quot;Hello, World!&quot;</span>
+</pre></div>
+<p>
 </div>
 
 
@@ -43913,11 +45533,9 @@ Here is a plain quote environment.
 <blockquote>
     Sayre's law states that
     "in any dispute the intensity of feeling is inversely
-    proportional to the value of the issues at stake."
-    By way of corollary, it adds:
-    "That is why academic politics are so bitter."
-    
-    <p>
+    proportional to the value of the issues at stake." <br />
+    By way of corollary, it adds: <br />
+    "That is why academic politics are so bitter." <br />
     <em>Source</em>: <a href="http://en.wikipedia.org/wiki/Sayre's_law" target="_self">wikipedia</a>
 </blockquote>
 
@@ -44033,10 +45651,29 @@ Test warning with title:
 <tr>
 <td width="25" align="center" valign="top">
 <img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/lyx_warning.png" hspace="5" alt="warning"></td>
-<th align="left" valign="middle"><b>Watch out.</b></th>
+<th align="left" valign="middle"><b>Title ending with math \( \sqrt{2}\approx 1.4 \).</b></th>
 </tr>
 <tr><td>&nbsp;</td> <td align="left" valign="top"><p>
-<div class="alert-text-large">And here comes some text with bad news in larger font.</div>
+<div class="alert-text-large">And here comes some text with bad news in larger font.
+
+<p>
+Also some code:
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
+    <span style="color: #008000; font-weight: bold">return</span> x
+</pre></div>
+<p>
+And a complete program
+
+<p>
+
+<!-- code=python (from !bc pypro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&quot;Hello, World!&quot;</span>
+</pre></div>
+<p></div>
 </p></td></tr>
 </table>
 
@@ -44511,11 +46148,9 @@ Here is a plain quote environment.
 <blockquote>
     Sayre's law states that
     "in any dispute the intensity of feeling is inversely
-    proportional to the value of the issues at stake."
-    By way of corollary, it adds:
-    "That is why academic politics are so bitter."
-    
-    <p>
+    proportional to the value of the issues at stake." <br />
+    By way of corollary, it adds: <br />
+    "That is why academic politics are so bitter." <br />
     <em>Source</em>: <a href="http://en.wikipedia.org/wiki/Sayre's_law" target="_self">wikipedia</a>
 </blockquote>
 
@@ -44624,8 +46259,27 @@ Test warning with title:
 
 
 <!-- admonition: warning, typeset as paragraph -->
-<div class="alert-text-large"><b>Watch out.</b>
+<div class="alert-text-large"><b>Title ending with math \( \sqrt{2}\approx 1.4 \).</b>
 And here comes some text with bad news in larger font.
+
+<p>
+Also some code:
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
+    <span style="color: #008000; font-weight: bold">return</span> x
+</pre></div>
+<p>
+And a complete program
+
+<p>
+
+<!-- code=python (from !bc pypro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&quot;Hello, World!&quot;</span>
+</pre></div>
+<p>
 </div>
 
 
@@ -45088,11 +46742,9 @@ Here is a plain quote environment.
 <blockquote>
     Sayre's law states that
     "in any dispute the intensity of feeling is inversely
-    proportional to the value of the issues at stake."
-    By way of corollary, it adds:
-    "That is why academic politics are so bitter."
-    
-    <p>
+    proportional to the value of the issues at stake." <br />
+    By way of corollary, it adds: <br />
+    "That is why academic politics are so bitter." <br />
     <em>Source</em>: <a href="http://en.wikipedia.org/wiki/Sayre's_law" target="_self">wikipedia</a>
 </blockquote>
 
@@ -45195,8 +46847,27 @@ And more and more text.
 Test warning with title:
 
 <p>
-<div class="alert alert-block alert-warning alert-text-large"><b>Watch out.</b>
+<div class="alert alert-block alert-warning alert-text-large"><b>Title ending with math \( \sqrt{2}\approx 1.4 \).</b>
 And here comes some text with bad news in larger font.
+
+<p>
+Also some code:
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #fbeed5"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">f</span>(x):
+    <span style="color: #8B008B; font-weight: bold">return</span> x
+</pre></div>
+<p>
+And a complete program
+
+<p>
+
+<!-- code=python (from !bc pypro) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #fbeed5"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&quot;Hello, World!&quot;</span>
+</pre></div>
+<p>
 </div>
 
 
@@ -45629,11 +47300,9 @@ Here is a plain quote environment.
 <blockquote>
     Sayre's law states that
     "in any dispute the intensity of feeling is inversely
-    proportional to the value of the issues at stake."
-    By way of corollary, it adds:
-    "That is why academic politics are so bitter."
-    
-    <p>
+    proportional to the value of the issues at stake." <br />
+    By way of corollary, it adds: <br />
+    "That is why academic politics are so bitter." <br />
     <em>Source</em>: <a href="http://en.wikipedia.org/wiki/Sayre's_law" target="_self">wikipedia</a>
 </blockquote>
 
@@ -45736,8 +47405,27 @@ And more and more text.
 Test warning with title:
 
 <p>
-<div class="alert alert-block alert-warning alert-text-large"><b>Watch out.</b>
+<div class="alert alert-block alert-warning alert-text-large"><b>Title ending with math \( \sqrt{2}\approx 1.4 \).</b>
 And here comes some text with bad news in larger font.
+
+<p>
+Also some code:
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
+    <span style="color: #008000; font-weight: bold">return</span> x
+</pre></div>
+<p>
+And a complete program
+
+<p>
+
+<!-- code=python (from !bc pypro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&quot;Hello, World!&quot;</span>
+</pre></div>
+<p>
 </div>
 
 
@@ -46046,10 +47734,9 @@ Here is a plain quote environment.
 {{quote box
 | quote = Sayre's law states that
 "in any dispute the intensity of feeling is inversely
-proportional to the value of the issues at stake."
-By way of corollary, it adds:
-"That is why academic politics are so bitter."
-
+proportional to the value of the issues at stake." <br />
+By way of corollary, it adds: <br />
+"That is why academic politics are so bitter." <br />
 ''Source'': [http://en.wikipedia.org/wiki/Sayre's_law wikipedia]
 | textstyle = font-size: 90%;
 }}
@@ -46151,7 +47838,19 @@ Test warning with title:
 {{mbox
 | type = warning
 | textstyle = font-size: 130%;
-| text = '''Watch out.''' And here comes some text with bad news in larger font.
+| text = '''Title ending with math <math>\sqrt{2}\approx 1.4</math>.''' And here comes some text with bad news in larger font.
+
+Also some code:
+
+<syntaxhighlight lang="python">
+def f(x):
+    return x
+</syntaxhighlight>
+And a complete program
+
+<syntaxhighlight lang="python">
+print "Hello, World!"
+</syntaxhighlight>
 }}
 
 
@@ -46445,11 +48144,11 @@ Here is a plain quote environment.
 
     Sayre's law states that
     "in any dispute the intensity of feeling is inversely
-    proportional to the value of the issues at stake."
-    By way of corollary, it adds:
-    "That is why academic politics are so bitter."
+    proportional to the value of the issues at stake." 
     
-    *Source*: `wikipedia <http://en.wikipedia.org/wiki/Sayre's_law>`_
+    | By way of corollary, it adds: 
+    | "That is why academic politics are so bitter." 
+    | *Source*: `wikipedia <http://en.wikipedia.org/wiki/Sayre's_law>`_
 
 
 
@@ -46550,9 +48249,24 @@ Let us start with a plain warning environment.
 Test warning with title:
 
 
-.. admonition:: Watch out
+.. admonition:: Title ending with math :math:`\sqrt{2}\approx 1.4`
 
    And here comes some text with bad news in larger font.
+   
+   Also some code:
+   
+   
+   .. code-block:: python
+   
+           def f(x):
+               return x
+   
+   And a complete program
+   
+   
+   .. code-block:: python
+   
+           print "Hello, World!"
 
 
 
@@ -46836,10 +48550,9 @@ Here is a plain quote environment.
 
         Sayre's law states that
         "in any dispute the intensity of feeling is inversely
-        proportional to the value of the issues at stake."
-        By way of corollary, it adds:
-        "That is why academic politics are so bitter."
-        
+        proportional to the value of the issues at stake." 
+        By way of corollary, it adds: 
+        "That is why academic politics are so bitter." 
         *Source*: wikipedia (http://en.wikipedia.org/wiki/Sayre's_law)
 
 
@@ -46919,9 +48632,20 @@ Warning ---------------------------------------------------------|
 Test warning with title:
 
 
-Watch out -----------------------------------------------|
+Title ending with math \sqrt{2}\approx 1.4 --------------|
 |                                                        |
 | And here comes some text with bad news in larger font. |
+|                                                        |
+| Also some code::                                       |
+|                                                        |
+|                                                        |
+|         def f(x):                                      |
+|             return x                                   |
+|                                                        |
+| And a complete program::                               |
+|                                                        |
+|                                                        |
+|         print "Hello, World!"                          |
 |--------------------------------------------------------|
 
 
@@ -53864,9 +55588,13 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \pagestyle{headings}
 % #elif LATEX_STYLE == "Springer_T2"
 % Style: T2 (Springer)
-\documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmono}
-\usepackage{t2}
+% Use svmono.cls with doconce modifications for bibliography
+\documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmonodo}
+
+% Use t2.sty with doconce modifications
+\usepackage{t2do}
 \special{papersize=193mm,260mm}
+
 % #elif LATEX_STYLE == "Springer_llcse"
 % Style: Lecture Notes in Computer Science (Springer)
 \documentclass[oribib]{llncs}
@@ -54013,9 +55741,10 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % --- begin definitions of admonition environments ---
 
-% Admonition is an oval gray box
+% Admonition style "graybox1" is an oval colored box
+\colorlet{graybox1_background}{gray!5}
 \newmdenv[
-  backgroundcolor=gray!5,  %% white with 5%% gray
+  backgroundcolor=graybox1_background,
   skipabove=\topsep,
   skipbelow=\topsep,
   outerlinewidth=0,
@@ -54131,6 +55860,13 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 % #endif
 
 
+% #if LATEX_STYLE not in ("Koma_Script", "Springer_T2")
+% Make sure blank even-numbered pages before new chapters are
+% totally blank with no header
+\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
+%\let\cleardoublepage\clearemptydoublepage % caused error in the toc
+% #endif
+
 % --- end of standard preamble for documents ---
 
 
@@ -54151,6 +55887,18 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 % ------------------- main content ----------------------
 
 
+
+% #if LATEX_STYLE in ("Springer_T2", "Springer_lncse")
+\frontmatter
+\setcounter{page}{3}
+\pagestyle{headings}
+% #endif
+
+% #if LATEX_STYLE == "Springer_lncse"
+% With hyperref loaded, \contentsline needs 3 args
+%\contentsline{chapter}{Bibliography}{829}{chapter.Bib}
+%\contentsline{chapter}{Index}{831}{chapter.Index}
+% #endif
 
 % ----------------- title -------------------------
 
@@ -54388,7 +56136,8 @@ This one pops up after the rest of the slide.
 {\footnotesize Can use, e.g., a warning admon to have my own notes, preferably
 inside preprocess/mako if statements to turn notes on and off.
 This one is typeset in a small font and with the default
-title (Warning) since no title is specified. \par}
+title (Warning) since no title is specified.
+\par}
 \end{graybox1admon}
 
 
@@ -54540,6 +56289,8 @@ title (Warning) since no title is specified. \par}
 
 
 
+
+
 % ----------------- title -------------------------
 
 \title{On the Technicalities of Scientific Writing Anno 2012: The Doconce Way}
@@ -54688,7 +56439,8 @@ This one pops up after the rest of the slide.
 {\footnotesize Can use, e.g., a warning admon to have my own notes, preferably
 inside preprocess/mako if statements to turn notes on and off.
 This one is typeset in a small font and with the default
-title (Warning) since no title is specified. \par}
+title (Warning) since no title is specified.
+\par}
 \end{graybox1admon}
 \end{frame}
 
@@ -56666,9 +58418,13 @@ open=right               % start new chapters on odd-numbered pages
 \pagestyle{headings}
 % #elif LATEX_STYLE == "Springer_T2"
 % Style: T2 (Springer)
-\documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmono}
-\usepackage{t2}
+% Use svmono.cls with doconce modifications for bibliography
+\documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmonodo}
+
+% Use t2.sty with doconce modifications
+\usepackage{t2do}
 \special{papersize=193mm,260mm}
+
 % #elif LATEX_STYLE == "Springer_llcse"
 % Style: Lecture Notes in Computer Science (Springer)
 \documentclass[oribib]{llncs}
@@ -56796,9 +58552,10 @@ open=right               % start new chapters on odd-numbered pages
 
 % --- begin definitions of admonition environments ---
 
-% Admonition is an oval gray box
+% Admonition style "graybox1" is an oval colored box
+\colorlet{graybox1_background}{gray!5}
 \newmdenv[
-  backgroundcolor=gray!5,  %% white with 5%% gray
+  backgroundcolor=graybox1_background,
   skipabove=\topsep,
   skipbelow=\topsep,
   outerlinewidth=0,
@@ -56914,8 +58671,32 @@ open=right               % start new chapters on odd-numbered pages
 % #endif
 
 
-\newenvironment{doconce:exercise}{}{}
-\newcounter{doconce:exercise:counter}
+\newenvironment{doconceexercise}{}{}
+\newcounter{doconceexercisecounter}
+
+% #ifndef LIST_OF_EXERCISES
+% #define LIST_OF_EXERCISES "none"
+% #endif
+
+% --- begin definition of \listofexercises command ---
+\makeatletter
+\newcommand\listofexercises{
+\chapter*{List of Problems
+          \@mkboth{List of Problems}{List of Problems}}
+\markboth{List of Problems}{List of Problems}
+\@starttoc{loe}
+}
+\newcommand*{\l@doconceexercise}{\@dottedtocline{0}{0pt}{6.5em}}
+\makeatother
+% --- end definition of \listofexercises command ---
+
+
+% #if LATEX_STYLE not in ("Koma_Script", "Springer_T2")
+% Make sure blank even-numbered pages before new chapters are
+% totally blank with no header
+\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
+%\let\cleardoublepage\clearemptydoublepage % caused error in the toc
+% #endif
 
 % --- end of standard preamble for documents ---
 
@@ -56937,6 +58718,18 @@ open=right               % start new chapters on odd-numbered pages
 % ------------------- main content ----------------------
 
 
+
+% #if LATEX_STYLE in ("Springer_T2", "Springer_lncse")
+\frontmatter
+\setcounter{page}{3}
+\pagestyle{headings}
+% #endif
+
+% #if LATEX_STYLE == "Springer_lncse"
+% With hyperref loaded, \contentsline needs 3 args
+%\contentsline{chapter}{Bibliography}{829}{chapter.Bib}
+%\contentsline{chapter}{Index}{831}{chapter.Index}
+% #endif
 
 % ----------------- title -------------------------
 
@@ -57059,8 +58852,27 @@ Jan 32, 2100
 
 % #if LATEX_HEADING != "beamer"
 \tableofcontents
+% #if LIST_OF_EXERCISES == "loe"
+\clearemptydoublepage
+\listofexercises
+\clearemptydoublepage
+% #endif
 
-\vspace{1cm} % after toc'
+
+% #if LATEX_STYLE == "Springer_lncse"
+\contentsline{chapter}{\refname}{9999}{chapter.Bib}
+\contentsline{chapter}{Index}{9999}{chapter.Index}
+% #endif
+
+
+
+\vspace{1cm} % after toc
+% #endif
+
+% #if LATEX_STYLE == "Springer_T2"
+\mymainmatter
+% #elif LATEX_STYLE == "Springer_lncse"
+\mainmatter
 % #endif
 
 
@@ -57325,7 +59137,7 @@ based on HTML and vice versa.
 \href{{http://hplgit.github.com/teamods/writing_reports/}}{\nolinkurl{http://hplgit.github.com/teamods/writing_reports/}}
 
 \begin{itemize}
- \item LaTeX-based PDF \href{{http://hplgit.github.com/teamods/writing_reports/_static/report.pdf}}{for screen}, \href{{http://hplgit.github.com/teamods/writing_reports/_static/report_4printing.pdf}}{for printing}, \href{{http://hplgit.github.com/teamods/writing_reports/_static/report_4phone.pdf}}{for phone}
+ \item {\LaTeX}-based PDF \href{{http://hplgit.github.com/teamods/writing_reports/_static/report.pdf}}{for screen}, \href{{http://hplgit.github.com/teamods/writing_reports/_static/report_4printing.pdf}}{for printing}, \href{{http://hplgit.github.com/teamods/writing_reports/_static/report_4phone.pdf}}{for phone}
 
  \item \href{{http://hplgit.github.com/teamods/writing_reports/_static/report_do.html}}{Plain HTML} or with a \href{{http://hplgit.github.com/teamods/writing_reports/_static/report_vagrant.html}}{template} or \href{{http://hplgit.github.com/teamods/writing_reports/_static/report_github_minimal.html}}{another template} or \href{{http://hplgit.github.com/teamods/writing_reports/_static/report_solarized.html}}{solarized}
 
@@ -57679,10 +59491,16 @@ Last page gets rendered as follows:
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
-\subsection*{Problem 1: Flip a Coin}
+\subsection*{Problem \thedoconceexercisecounter: Flip a Coin}
+% #if LIST_OF_EXERCISES == "toc"
+\addcontentsline{toc}{subsection}{\thedoconceexercisecounter: Flip a Coin}
+% #elif LIST_OF_EXERCISES == "loe"
+\addcontentsline{loe}{doconceexercise}{Problem \thedoconceexercisecounter: Flip a Coin}
+% #endif
+
 \label{demo:ex:1}
 % keywords = random numbers; Monte Carlo simulation
 
@@ -57721,7 +59539,7 @@ of getting at least three heads out of 5 throws.
 Filenames: \code{flip_coin.py}, \code{flip_coin.pdf}.
 % solution files: mysol.txt, mysol_flip_coin.py
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 
 
@@ -57858,6 +59676,9 @@ Last page gets rendered to
 
 
 % #ifdef PREAMBLE
+\clearemptydoublepage
+\markboth{Index}{Index}
+\thispagestyle{empty}
 \printindex
 
 \end{document}
@@ -57995,6 +59816,8 @@ Last page gets rendered to
 
 
 % ------------------- main content ----------------------
+
+
 
 
 
@@ -58276,7 +60099,7 @@ based on HTML and vice versa.
 \href{{http://hplgit.github.com/teamods/writing_reports/}}{\nolinkurl{http://hplgit.github.com/teamods/writing_reports/}}
 
 \begin{itemize}
- \item LaTeX-based PDF \href{{http://hplgit.github.com/teamods/writing_reports/_static/report.pdf}}{for screen}, \href{{http://hplgit.github.com/teamods/writing_reports/_static/report_4printing.pdf}}{for printing}, \href{{http://hplgit.github.com/teamods/writing_reports/_static/report_4phone.pdf}}{for phone}
+ \item {\LaTeX}-based PDF \href{{http://hplgit.github.com/teamods/writing_reports/_static/report.pdf}}{for screen}, \href{{http://hplgit.github.com/teamods/writing_reports/_static/report_4printing.pdf}}{for printing}, \href{{http://hplgit.github.com/teamods/writing_reports/_static/report_4phone.pdf}}{for phone}
 
  \item \href{{http://hplgit.github.com/teamods/writing_reports/_static/report_do.html}}{Plain HTML} or with a \href{{http://hplgit.github.com/teamods/writing_reports/_static/report_vagrant.html}}{template} or \href{{http://hplgit.github.com/teamods/writing_reports/_static/report_github_minimal.html}}{another template} or \href{{http://hplgit.github.com/teamods/writing_reports/_static/report_solarized.html}}{solarized}
 
@@ -58614,10 +60437,11 @@ Last page gets rendered as follows:
 
 
 % --- begin exercise ---
-\begin{doconce:exercise}
-\refstepcounter{doconce:exercise:counter}
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
 
-\subsection*{Problem 1: Flip a Coin}
+\subsection*{Problem \thedoconceexercisecounter: Flip a Coin}
+
 \label{demo:ex:1}
 % keywords = random numbers; Monte Carlo simulation
 
@@ -58656,7 +60480,7 @@ of getting at least three heads out of 5 throws.
 Filenames: \Verb!flip_coin.py!, \Verb!flip_coin.pdf!.
 % solution files: mysol.txt, mysol_flip_coin.py
 
-\end{doconce:exercise}
+\end{doconceexercise}
 % --- end exercise ---
 \end{frame}
 
@@ -59584,9 +61408,13 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \pagestyle{headings}
 % #elif LATEX_STYLE == "Springer_T2"
 % Style: T2 (Springer)
-\documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmono}
-\usepackage{t2}
+% Use svmono.cls with doconce modifications for bibliography
+\documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmonodo}
+
+% Use t2.sty with doconce modifications
+\usepackage{t2do}
 \special{papersize=193mm,260mm}
+
 % #elif LATEX_STYLE == "Springer_llcse"
 % Style: Lecture Notes in Computer Science (Springer)
 \documentclass[oribib]{llncs}
@@ -59689,9 +61517,10 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % --- begin definitions of admonition environments ---
 
-% Admonition is an oval gray box
+% Admonition style "graybox1" is an oval colored box
+\colorlet{graybox1_background}{gray!5}
 \newmdenv[
-  backgroundcolor=gray!5,  %% white with 5%% gray
+  backgroundcolor=graybox1_background,
   skipabove=\topsep,
   skipbelow=\topsep,
   outerlinewidth=0,
@@ -59807,6 +61636,13 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 % #endif
 
 
+% #if LATEX_STYLE not in ("Koma_Script", "Springer_T2")
+% Make sure blank even-numbered pages before new chapters are
+% totally blank with no header
+\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
+%\let\cleardoublepage\clearemptydoublepage % caused error in the toc
+% #endif
+
 % --- end of standard preamble for documents ---
 
 
@@ -59827,6 +61663,18 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 % ------------------- main content ----------------------
 
 
+
+% #if LATEX_STYLE in ("Springer_T2", "Springer_lncse")
+\frontmatter
+\setcounter{page}{3}
+\pagestyle{headings}
+% #endif
+
+% #if LATEX_STYLE == "Springer_lncse"
+% With hyperref loaded, \contentsline needs 3 args
+%\contentsline{chapter}{Bibliography}{829}{chapter.Bib}
+%\contentsline{chapter}{Index}{831}{chapter.Index}
+% #endif
 
 % ----------------- title -------------------------
 
@@ -60241,6 +62089,8 @@ qualitatively correct results.
 
 
 % ------------------- main content ----------------------
+
+
 
 
 
@@ -62137,9 +63987,13 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \pagestyle{headings}
 % #elif LATEX_STYLE == "Springer_T2"
 % Style: T2 (Springer)
-\documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmono}
-\usepackage{t2}
+% Use svmono.cls with doconce modifications for bibliography
+\documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmonodo}
+
+% Use t2.sty with doconce modifications
+\usepackage{t2do}
 \special{papersize=193mm,260mm}
+
 % #elif LATEX_STYLE == "Springer_llcse"
 % Style: Lecture Notes in Computer Science (Springer)
 \documentclass[oribib]{llncs}
@@ -62175,7 +64029,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage{bm,microtype}
 
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
-\setlength{\fboxsep}{8pt}
+%\setlength{\fboxsep}{8pt}
 
 \usepackage{ptex2tex}
 
@@ -62358,6 +64212,13 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 % #endif
 
 
+% #if LATEX_STYLE not in ("Koma_Script", "Springer_T2")
+% Make sure blank even-numbered pages before new chapters are
+% totally blank with no header
+\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
+%\let\cleardoublepage\clearemptydoublepage % caused error in the toc
+% #endif
+
 % --- end of standard preamble for documents ---
 
 
@@ -62378,6 +64239,18 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 % ------------------- main content ----------------------
 
 
+
+% #if LATEX_STYLE in ("Springer_T2", "Springer_lncse")
+\frontmatter
+\setcounter{page}{3}
+\pagestyle{headings}
+% #endif
+
+% #if LATEX_STYLE == "Springer_lncse"
+% With hyperref loaded, \contentsline needs 3 args
+%\contentsline{chapter}{Bibliography}{829}{chapter.Bib}
+%\contentsline{chapter}{Index}{831}{chapter.Index}
+% #endif
 
 % ----------------- title -------------------------
 
@@ -62953,7 +64826,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage{bm,microtype}
 
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
-\setlength{\fboxsep}{8pt}
+%\setlength{\fboxsep}{8pt}
 
 \usepackage{fancyvrb} % packages needed for verbatim environments
 
@@ -62997,6 +64870,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 
 
+% Make sure blank even-numbered pages before new chapters are
+% totally blank with no header
+\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
+%\let\cleardoublepage\clearemptydoublepage % caused error in the toc
+
 % --- end of standard preamble for documents ---
 
 
@@ -63014,6 +64892,8 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \input{newcommands_replace}
 
 % ------------------- main content ----------------------
+
+
 
 
 
@@ -63357,7 +65237,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage{bm,microtype}
 
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
-\setlength{\fboxsep}{8pt}
+%\setlength{\fboxsep}{8pt}
 
 \usepackage{fancyvrb} % packages needed for verbatim environments
 
@@ -63403,6 +65283,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 
 
+% Make sure blank even-numbered pages before new chapters are
+% totally blank with no header
+\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
+%\let\cleardoublepage\clearemptydoublepage % caused error in the toc
+
 % --- end of standard preamble for documents ---
 
 
@@ -63420,6 +65305,8 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \input{newcommands_replace}
 
 % ------------------- main content ----------------------
+
+
 
 
 
@@ -64695,6 +66582,10 @@ Text with a name like &#197;smund &#216;deg&#229;rd works in general.
 
 
 
+*************** Working with tag "linebreak"
+
+
+
 ************************************************************
 unicode>>> The file after all inline substitutions:
 
@@ -65179,6 +67070,10 @@ for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
 
 
 *************** Working with tag "linkURL"
+
+
+
+*************** Working with tag "linebreak"
 
 
 
@@ -65933,6 +67828,10 @@ through the various stages of the text transformation process.
 
 
 
+*************** Working with tag "linebreak"
+
+
+
 ************************************************************
 unicode>>> The file after all inline substitutions:
 
@@ -66303,6 +68202,2584 @@ through the various stages of the text transformation process.
 <!-- ------------------- end of main content --------------- -->
 
 
+
+************** File: _genref1.do.txt *****************
+NOT FOUND!
+************** File: _genref2.do.txt *****************
+NOT FOUND!
+************** File: _tmp_genref2.do.txt *****************
+NOT FOUND!
+************** File: tmp_subst_references.sh *****************
+files="genref2.do.txt"  # files to which substitutions apply
+
+
+************** File: Springer_T2/Springer_T2_book.do.txt *****************
+# Note on the Springer T2 style: used the modifications in t2do.sty
+# and svmonodo.cls (come bundled with Doconce).
+
+TITLE:  A Test of Doconce a Book with Springer's T2 Style
+AUTHOR: Hans Petter Langtangen at Center for Biomedical Computing, Simula Research Laboratory & Department of Informatics, University of Oslo
+DATE: today
+
+<%
+src_path = 'http://some.where.net/doconce/test/software'
+%>
+
+
+========= Preface =========
+
+The aim of this book is to teach computer programming using examples
+from mathematics and the natural sciences.  We have chosen to use the
+Python programming language because it combines remarkable expressive
+power with very clean, simple, and compact syntax.  Python is easy to
+learn and very well suited for an introduction to computer
+programming. Python is also quite similar to MATLAB and a good
+language for doing mathematical computing.  It is easy to combine
+Python with compiled languages, like Fortran, C, and C++, which are
+widely used languages for scientific computations.  A seamless
+integration of Python with Java is offered by a special version of
+Python called Jython.
+
+The examples in this book integrate programming with applications to
+mathematics, physics, biology, and finance.  The reader is expected to
+have knowledge of basic one-variable calculus as taught in
+mathematics-intensive programs in high schools. It is certainly an
+advantage to take a university calculus course in parallel, preferably
+containing both classical and numerical aspects of calculus.  Although
+not strictly required, a background in high school physics makes many
+of the examples more meaningful.
+
+Many introductory programming books are quite compact and focus on
+listing functionality of a programming language. However, learning to
+program is learning how to *think* as a programmer.  This book
+has its main focus on the thinking process, or equivalently:
+programming as a problem solving technique. That is why most of the
+pages are devoted to case studies in programming, where we define a
+problem and explain how to create the corresponding program.  New
+constructions and programming styles (what we could call theory) is also usually
+introduced via examples.  Special attention is paid to verification of
+programs and to finding errors. These topics are very demanding for
+mathematical software, because the unavoidable numerical
+approximation errors are possibly mixed with programming mistakes.
+
+By studying the many examples in the
+book, I hope readers will learn how to think right and thereby
+write programs in a quicker and more reliable way. Remember, nobody can learn
+programming by just reading - one has to solve a large amount of
+exercises hands on.  The book is therefore full of exercises of
+various types: modifications of existing examples, completely new
+problems, or debugging of given programs.
+
+There is a web page associated with this book, URL:
+"http://hplgit.github.com/scipro-primer", which lists the software you
+need and explains briefly how to install it.  This page also contains
+all the files associated with the program examples in this book.
+
+=== Python version 2 or 3? ===
+
+A common problem among Python programmers is to choose between version
+2 or 3, which at the time of this writing means choosing
+between version 2.7 and 3.3.
+The general recommendation is to go for version 3, but programs are
+then not compatible with version 2 and vice versa. There is still
+a problem that much useful mathematical software in Python
+has not yet been ported to version 3. Therefore, scientific computing
+with Python still goes mostly with version 2.
+A widely used strategy for software
+developers who want to write Python code that works with both versions,
+is to develop for v2.7, which is very close to what is accepted
+in version 3, and then
+use the ranslation tool *2to3* to automatically translate the code
+to version 3.
+
+When using v2.7, one should employ the newest syntax
+and modules that make the differences beween version 2 and 3 very small.
+This strategy is adopted in the present book. Only two
+differences between versions 2 and 3 are expected to be significant for
+the programs in the book:
+`a/b` implies float division in version 3 if `a` and `b`
+are integers,
+and `print 'Hello'` in version 2 must be turned into a function call
+`print('Hello')` in version 3. None of these differences should lead
+to any annoying problems when future readers study the book's v2.7
+examples, but program in version 3. Anyway, running 2to3 on the
+example files generates the corresponding version 3 code.
+
+=== Acknowledgments ===
+
+Several people have helped to make substantial improvements of the
+text. Here I list only the names with Norwgian characters to
+test the handling of those: Ståle Zerener Haugnæss,
+Tobias Vidarssønn Langhoff, and Håkon Møller.
+
+# #if FORMAT in ("latex", "pdflatex")
+\vspace{1cm}
+
+\noindent
+*Oslo, April 2012*  \hfill  *Hans Petter Langtangen*
+# #endif
+
+
+TOC: on
+
+
+========= Basic array computing and plotting =========
+
+This ${CHAPTER} gives an introduction to arrays: how they are created
+and what they can be used for.  Array computing usually ends up with a
+lot of numbers. It may be very hard to understand what these numbers
+mean by just looking at them. Since the human is a visual animal, a
+good way to understand numbers is to visualize them. In this
+${CHAPTER} we concentrate on visualizing curves that reflect functions
+of one variable; i.e., curves of the form $y=f(x)$.  A synonym for
+curve is graph, and the image of curves on the screen is often called
+a plot.  We will use arrays to store the information about points
+along the curve. In a nutshell, array computing demands visualization
+and visualization demands arrays.
+
+All program examples in this ${CHAPTER} can be found as files in the
+folder "`src/plot`": "${src_path}/plot".
+
+======= Arrays in Python programs =======
+
+This section introduces array programming in Python, but first we
+create some lists and show how arrays differ from lists.
+
+===== Using lists for collecting function data =====
+label{sec:plot:listdata}
+
+Suppose we have a function $f(x)$ and want to evaluate this function
+at a number of $x$ points $x_0,x_1,\ldots,x_{n-1}$.  We could collect
+the $n$ pairs $(x_i,f(x_i))$ in a list, or we could collect all the
+$x_i$ values, for $i=0,\ldots,n-1$, in a list and all the associated
+$f(x_i)$ values in another list.  The following interactive session
+demonstrates how to create these three types of lists:
+
+!bc py
+>>> def f(x):
+...     return x**3       # sample function
+...
+>>> n = 5                 # no of points along the x axis
+>>> dx = 1.0/(n-1)        # spacing between x points in [0,1]
+>>> xlist = [i*dx for i in range(n)]
+>>> ylist = [f(x) for x in xlist]
+>>> pairs = [[x, y] for x, y in zip(xlist, ylist)]
+!ec
+Here we have used list comprehensions for achieving compact code. Make
+sure that you understand what is going on in these list comprehensions
+(if not, try to write the same code using standard `for` loops and
+appending new list elements in each pass of the loops).
+
+idx{heterogeneous lists}
+
+The list elements consist of objects of the same type: any element in
+`pairs` is a list of two `float` objects, while any element in `xlist`
+or `ylist` is a `float`. Lists are more flexible than that, because an
+element can be an object of any type, e.g.,
+
+!bc pycod
+mylist = [2, 6.0, 'tmp.ps', [0,1]]
+!ec
+Here `mylist` holds an `int`, a `float`, a string, and a list. This
+combination of diverse object types makes up what is known as
+*heterogeneous* lists.  We can also easily remove elements from a list
+or add new elements anywhere in the list.  This flexibility of lists
+is in general convenient to have as a programmer, but in cases where
+the elements are of the same type and the number of elements is fixed,
+arrays can be used instead. The benefits of arrays are faster
+computations, less memory demands, and extensive support for
+mathematical operations on the data.  Because of greater efficiency
+and mathematical convenience, arrays will be used to a large extent in
+this ${BOOK}.  The great use of arrays is also prominent in other
+programming environments such as MATLAB, Octave, and R, for instance.
+Lists will be our choice instead of arrays when we need the
+flexibility of adding or removing elements or when the elements may be
+of different object types.
+
+!bquote
+*People only become computer programmers if they're
+obsessive about details, crave power over machines, and can bear
+to be told day after day exactly how
+stupid they are.* <linebreak>
+Gregory J. E. Rawlins cite{Rawlins_1998}, computer scientist.
+!equote
+
+===== Basics of numerical Python arrays =====
+label{sec:plot:array:basics}
+
+idx{Numerical Python} idx{NumPy} idx{`numpy`}
+idx{array (datatype)} idx{array computing}
+idx{vectorization}
+
+An *array* object can be viewed as a variant of a list, but with the
+following assumptions and features:
+
+  * All elements must be of the same type, preferably integer, real, or complex numbers, for efficient numerical computing and storage.
+  * The number of elements must be known when the array is created.
+  * Arrays are not part of standard Python - one needs an additional package called *Numerical Python*, often abbreviated as NumPy. The Python name of the package, to be used in `import` statements, is `numpy`.
+  * With `numpy`, a wide range of mathematical operations can be done directly on complete arrays, thereby removing the need for loops over array elements. This is commonly called *vectorization* %or *array computing* and may cause a dramatic speed-up of Python programs. Vectorization makes use of the vector computing concepts from Section ref{sec:plot:arraycomp}.
+  * Arrays with one index are often called vectors. Arrays with two indices are used as an efficient data structure for tables, instead of lists of lists. Arrays can also have three or more indices.
+
+!bnotice Remarks
+
+ o There is actually an
+   object type called `array` in standard Python, but this data type is
+   not so efficient for mathematical computations, and we will not use it
+   in this ${BOOK}.
+ o The number of elements in an array *can* be
+   changed, but at a substantial computational cost.
+!enotice
+
+The following text lists some important functionality of NumPy arrays.
+A more comprehensive treatment is found in the excellent *NumPy
+Tutorial*, *NumPy User Guide*, *NumPy Reference*, *Guide to NumPy*,
+and *NumPy for MATLAB Users*, all accessible at "scipy.org":
+"http://scipy.org".
+
+
+idx{`zeros` (from `numpy`)} idx{`np.zeros` function}
+idx{`array` (from `numpy`)} idx{`np.array` function}
+idx{`np` prefix (`numpy`)}
+idx{`zeros_like` (from `numpy`)}idx{`np.zeros_like` function}
+
+
+!bnotice Remarks on importing NumPy
+The statement
+
+!bc pycod
+import numpy as np
+!ec
+with subsequent prefixing of all NumPy functions and variables by `np.`,
+has evolved as a standard syntax in the Python scientific computing
+community. However, to make Python programs look closer to MATLAB
+and ease the transition to and from that language, one can do
+
+!bc pycod
+from numpy import *
+!ec
+to get rid of the prefix (this is evolved as the standard in
+*interactive* Python shells). This author prefers mathematical
+functions from `numpy` to be written without the prefix to
+make the formulas as close as possible to the mathematics.
+So, $f(x)=\sinh(x-1)\sin(w t)$ would be coded as
+
+!bc pycod
+from numpy import sinh, sin
+
+def f(x):
+    return sinh(x-1)*sin(w*t)
+!ec
+or one may take the less recommended
+lazy approach `from numpy import *` and fill up
+the program with *a lot* of functions and variables from `numpy`.
+!enotice
+
+To convert a list `r` to an array,
+we use the `array` function
+from `numpy`:
+
+!bc pycod
+a = np.array(r)
+!ec
+To create a new array of length `n`, filled with zeros, we write
+
+!bc pycod
+a = np.zeros(n)
+!ec
+The array elements are of a type that corresponds to Python's
+`float` type. A second argument to `np.zeros` can be used to
+specify other element types, e.g., `int`.
+A similar function,
+
+!bc pycod
+a = np.zeros_like(c)
+!ec
+generates an array of zeros where the length is that of the array `c`
+and the element type is the same as those in `c`.  Arrays with more
+than one index are treated in Section ref{sec:plot:2Darrays}.
+
+idx{`linspace` (from `numpy`)}idx{`np.linspace` function}
+
+Often one wants an array to have $n$ elements with uniformly
+distributed values in an interval $[p,q]$. The `numpy` function
+`linspace` creates such arrays:
+
+!bc pycod
+a = np.linspace(p, q, n)
+!ec
+
+
+========= Storing results in data files =========
+
+======= Writing data to file =======
+label{sec:files:writing}
+
+Writing data to file is easy.
+There is basically one function to pay attention to: `outfile.write(s)`,
+which writes a string `s` to
+a file handled by the file object `outfile`. Unlike `print`,
+`outfile.write(s)`
+does not append a newline character to the written string.
+It will therefore
+often be necessary to add a newline character,
+
+!bc pycod
+outfile.write(s + '\n')
+!ec
+if the string `s` is meant to appear on a single line in the file
+and `s` does not already contain a trailing newline character.
+File writing is then a matter of constructing strings containing the
+text we want to have in the file and for each such string call
+`outfile.write`.
+
+Writing to a file demands
+the file object `f`
+to be opened for writing:
+
+!bc pycod
+# write to new file, or overwrite file:
+outfile = open(filename, 'w')
+
+# append to the end of an existing file:
+outfile = open(filename, 'a')
+!ec
+
+===== Example: Writing a table to file =====
+
+=== Problem ===
+
+As a worked example of file writing,
+we shall write out a nested list with tabular data to file.
+A sample list may take look as
+
+!bc ccq
+[[ 0.75,        0.29619813, -0.29619813, -0.75      ],
+ [ 0.29619813,  0.11697778, -0.11697778, -0.29619813],
+ [-0.29619813, -0.11697778,  0.11697778,  0.29619813],
+ [-0.75,       -0.29619813,  0.29619813,  0.75      ]]
+!ec
+
+=== Solution ===
+
+We iterate through the rows (first index) in the list, and for each row,
+we iterate through the column values (second index)
+and write each value to the file.
+At the end of each row, we must insert a newline character in the file to get
+a linebreak. The code resides in the file "`write1.py`": "${src_path}/input/write1.py".
+
+The resulting data file becomes
+
+!bc dat
+    0.75000000    0.29619813   -0.29619813   -0.75000000
+    0.29619813    0.11697778   -0.11697778   -0.29619813
+   -0.29619813   -0.11697778    0.11697778    0.29619813
+   -0.75000000   -0.29619813    0.29619813    0.75000000
+!ec
+
+An extension of this program consists in adding column and row headings:
+
+!bc dat
+           column  1     column  2     column  3     column  4
+row  1    0.75000000    0.29619813   -0.29619813   -0.75000000
+row  2    0.29619813    0.11697778   -0.11697778   -0.29619813
+row  3   -0.29619813   -0.11697778    0.11697778    0.29619813
+row  4   -0.75000000   -0.29619813    0.29619813    0.75000000
+!ec
+To obtain this end result, we need to the add some statements to
+the program `write1.py`. For the column headings we need
+to know the number of columns, i.e., the length of the rows,
+and loop from 1 to this length:
+
+!bc pycod
+ncolumns = len(data[0])
+outfile.write('          ')
+for i in range(1, ncolumns+1):
+    outfile.write('%10s    ' % ('column %2d' % i))
+outfile.write('\n')
+!ec
+Note the use of a nested printf construction: The text we want to
+insert is itself a printf string. We could also have written the
+text as `'column  ' + str(i)`, but then the length of the
+resulting string would depend on the number of digits in `i`.
+It is recommended to always use printf constructions for
+a tabular output format, because this gives automatic padding of
+blanks so that the width of the output strings remain the same.
+As always, the tuning of the widths is done in a trial-and-error
+process.
+
+To add the row headings, we need a counter over the row numbers:
+
+!bc pycod
+row_counter = 1
+for row in data:
+    outfile.write('row %2d' % row_counter)
+    for column in row:
+        outfile.write('%14.8f' % column)
+    outfile.write('\n')
+    row_counter += 1
+!ec
+The complete code is found in the file "`write2.py`": "${src_path}/input/write2.py".
+We could, alternatively, iterate over the indices in the list:
+
+!bc pycod
+for i in range(len(data)):
+    outfile.write('row %2d' % (i+1))
+    for j in range(len(data[i])):
+        outfile.write('%14.8f' % data[i][j])
+    outfile.write('\n')
+!ec
+
+
+
+
+===== Standard input and output as file objects =====
+
+idx{standard input} idx{standard output}
+
+idx{`sys.stdin`}idx{`sys.stdout`}
+
+Reading user input from the keyboard applies the function
+# #ifdef PRIMER_BOOK
+`raw_input` as explained in Section ref{sec:input:rawinput}.
+# #else
+`raw_input`.
+# #endif
+The keyboard is a medium that the computer in fact
+treats as a file, referred to
+as *standard input*.
+
+The `print` command prints text in the terminal window. This medium
+is also viewed as a file from the computer's point of view and called
+*standard output*. All general-purpose programming languages
+allow reading from standard input and
+writing to standard output. This reading and writing can be done with
+two types of tools, either file-like objects or special tools like
+`raw_input`
+and `print` in Python.
+We will here describe the file-line objects:
+`sys.stdin` for standard input
+and `sys.stdout` for standard output. These objects
+behave as file objects, except that they do not need to be opened or
+closed. The statement
+
+!bc pycod
+s = raw_input('Give s:')
+!ec
+is equivalent to
+
+!bc pycod
+print 'Give s: ',
+s = sys.stdin.readline()
+!ec
+Recall that the trailing comma in the `print` statement avoids the
+newline that `print` by default adds to the output string.
+Similarly,
+
+!bc pycod
+s = eval(raw_input('Give s:'))
+!ec
+is equivalent to
+
+!bc pycod
+print 'Give s: ',
+s = eval(sys.stdin.readline())
+!ec
+For output to the terminal window, the statement
+
+!bc pycod
+print s
+!ec
+is equivalent to
+
+!bc pycod
+sys.stdout.write(s + '\n')
+!ec
+
+Why it is handy to have access to standard input and output
+as file objects can be illustrated by an example. Suppose you have a
+function that reads data from a file object `infile`
+and writes data to a file object `outfile`.
+A sample function may take the form
+
+!bc pycod
+def x2f(infile, outfile, f):
+    for line in infile:
+        x = float(line)
+        y = f(x)
+        outfile.write('%g\n' % y)
+!ec
+This function works with all types of files, including
+web pages as `infile` (see Section ref{sec:files:webtxt}).
+With `sys.stdin` as `infile` and/or `sys.stdout`
+as `outfile`, the `x2f` function also works with standard input
+and/or standard output. Without `sys.stdin` and `sys.stdout`,
+we would need different code, employing `raw_input`
+and `print`,
+to deal with standard input and output. Now we can write a single
+function that deals with all file media in a unified way.
+
+idx{standard error}
+idx{`sys.stderr`}
+
+There is also something called *standard error*.
+Usually this is the terminal window, just as standard output, but
+programs can distinguish between writing ordinary output to standard
+output and error messages to standard error, and these output media
+can be redirected to, e.g., files such that one can separate
+error messages from ordinary output.
+In Python, standard error is the file-like object `sys.stderr`.
+A typical application of `sys.stderr` is to report errors:
+
+!bc pycod
+if x < 0:
+    sys.stderr.write('Illegal value of x'); sys.exit(1)
+!ec
+This message to `sys.stderr` is an alternative to
+`print` or raising an exception.
+
+=== Redirecting standard input, output, and error ===
+
+Standard output from a program `prog`
+can be redirected to a file
+`output` instead of the screen, by
+using the greater than sign:
+
+!bc sys
+Terminal> prog > output
+!ec
+Here, `prog` can be any
+program, including a Python program run as `python myprog.py`.
+Similarly, output to the medium called *standard error*
+can be redirected by
+
+!bc sys
+Terminal> prog &> output
+!ec
+For example, error messages are normally written to standard error, which
+is exemplified in this little terminal session on a Unix machine:
+
+!bc sys
+Terminal> ls bla-bla1 bla-bla2
+ls: cannot access bla-bla1: No such file or directory
+ls: cannot access bla-bla2: No such file or directory
+Terminal> ls bla-bla1 bla-bla2 &> errors
+Terminal> cat errors  # print the file errors
+ls: cannot access bla-bla1: No such file or directory
+ls: cannot access bla-bla2: No such file or directory
+!ec
+When the program reads from standard input (the keyboard),
+we can equally well redirect
+standard input to a file, say with name `raw_input`, such that
+the program reads from this file rather than from the keyboard:
+
+!bc sys
+Terminal> prog < input
+!ec
+Combinations are also possible:
+
+!bc sys
+Terminal> prog < input > output
+!ec
+
+=== Note ===
+
+The redirection of standard output, input, and error
+does not work for Python programs executed with the `run`
+command inside IPython, only when executed directly
+in the operating system in a terminal window, or with the same
+command prefixed with an exclamation mark in IPython.
+
+=== References ===
+
+To check the bibliography, we need to make citations to a book{TCSE3},
+Matplotlib cite{Matplotlib:paper}, and more books cite{Mertz,PythonQt}
+as well as Python itself cite{Python}, and of course NumPy
+cite{NumPy}.
+
+
+========= Appendix: Styles for Springer T2 =========
+
+The T2 style for Doconce-generated LaTeX should make use of
+slightly modified `svmono.cls` and `t2.sty` files:
+
+ * `svmonodo.cls`
+ * `t2do.sty`
+
+
+========= References =========
+
+BIBFILE: papers.pub
+
+
+************** File: Springer_T2/Springer_T2_book.p.tex *****************
+%%
+%% Automatically generated file from Doconce source
+%% (https://github.com/hplgit/doconce/)
+%%
+% #ifdef PTEX2TEX_EXPLANATION
+%%
+%% The file follows the ptex2tex extended LaTeX format, see
+%% ptex2tex: http://code.google.com/p/ptex2tex/
+%%
+%% Run
+%%      ptex2tex myfile
+%% or
+%%      doconce ptex2tex myfile
+%%
+%% to turn myfile.p.tex into an ordinary LaTeX file myfile.tex.
+%% (The ptex2tex program: http://code.google.com/p/ptex2tex)
+%% Many preprocess options can be added to ptex2tex or doconce ptex2tex
+%%
+%%      ptex2tex -DMINTED -DPALATINO -DA6PAPER -DLATEX_HEADING=traditional myfile
+%%      doconce ptex2tex myfile -DLATEX_HEADING=titlepage envir=minted
+%%
+%% ptex2tex will typeset code environments according to a global or local
+%% .ptex2tex.cfg configure file. doconce ptex2tex will typeset code
+%% according to options on the command line (just type doconce ptex2tex to
+%% see examples). If doconce ptex2tex has envir=minted, it enables the
+%% minted style without needing -DMINTED.
+% #endif
+
+% #ifndef LATEX_STYLE
+% #define LATEX_STYLE "std"
+% #endif
+
+% #ifndef LATEX_HEADING
+% #define LATEX_HEADING "doconce_heading"
+% #endif
+
+% #ifndef PREAMBLE
+% #if LATEX_HEADING == "Springer_collection"
+% #undef PREAMBLE
+% #else
+% #define PREAMBLE
+% #endif
+% #endif
+
+
+% #ifdef PREAMBLE
+%-------------------- begin preamble ----------------------
+% #if LATEX_STYLE == "std"
+
+\documentclass[%
+twoside,                 % oneside: electronic viewing, twoside: printing
+final,                   % or draft (marks overfull hboxes, figures with paths)
+chapterprefix=true,      % "Chapter" word at beginning of each chapter
+open=right               % start new chapters on odd-numbered pages
+10pt]{book}
+
+% #elif LATEX_STYLE == "Springer_lncse"
+% Style: Lecture Notes in Computational Science and Engineering (Springer)
+\documentclass[envcountsect,open=right]{lncse}
+\pagestyle{headings}
+% #elif LATEX_STYLE == "Springer_T2"
+% Style: T2 (Springer)
+% Use svmono.cls with doconce modifications for bibliography
+\documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmonodo}
+
+% Use t2.sty with doconce modifications
+\usepackage{t2do}
+\special{papersize=193mm,260mm}
+
+% #elif LATEX_STYLE == "Springer_llcse"
+% Style: Lecture Notes in Computer Science (Springer)
+\documentclass[oribib]{llncs}
+% #elif LATEX_STYLE == "Koma_Script"
+% Style: Koma-Script
+\documentclass[10pt]{scrartcl}
+% #elif LATEX_STYLE == "siamltex"
+% Style: SIAM LaTeX2e
+\documentclass[leqno]{siamltex}
+% #elif LATEX_STYLE == "siamltexmm"
+% Style: SIAM LaTeX2e multimedia
+\documentclass[leqno]{siamltexmm}
+% #endif
+
+\listfiles               % print all files needed to compile this document
+
+% #ifdef A4PAPER
+\usepackage[a4paper]{geometry}
+% #endif
+% #ifdef A6PAPER
+% a6paper is suitable for mobile devices
+\usepackage[%
+  a6paper,
+  text={90mm,130mm},
+  inner={5mm},           % inner margin (two sided documents)
+  top=5mm,
+  headsep=4mm
+  ]{geometry}
+% #endif
+
+\usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
+\usepackage[table]{xcolor}
+\usepackage{bm,microtype}
+
+\usepackage{ptex2tex}
+
+% #ifdef MINTED
+\usepackage{minted}
+\usemintedstyle{default}
+% #endif
+
+% #ifdef XELATEX
+% xelatex settings
+\usepackage{fontspec}
+\usepackage{xunicode}
+\defaultfontfeatures{Mapping=tex-text} % To support LaTeX quoting style
+\defaultfontfeatures{Ligatures=TeX}
+\setromanfont{Kinnari}
+% Examples of font types (Ubuntu): Gentium Book Basic (Palatino-like),
+% Liberation Sans (Helvetica-like), Norasi, Purisa (handwriting), UnDoum
+% #else
+\usepackage[T1]{fontenc}
+%\usepackage[latin1]{inputenc}
+\usepackage[utf8]{inputenc}
+% #ifdef HELVETICA
+% Set helvetica as the default font family:
+\RequirePackage{helvet}
+\renewcommand\familydefault{phv}
+% #endif
+% #ifdef PALATINO
+% Set palatino as the default font family:
+\usepackage[sc]{mathpazo}    % Palatino fonts
+\linespread{1.05}            % Palatino needs extra line spread to look nice
+% #endif
+% #endif
+\usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
+
+% Hyperlinks in PDF:
+\definecolor{linkcolor}{rgb}{0,0,0.4}
+\usepackage[%
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=black,
+    citecolor=black,
+    filecolor=black,
+    %filecolor=blue,
+    pdfmenubar=true,
+    pdftoolbar=true,
+    bookmarksdepth=3   % Uncomment (and tweak) for PDF bookmarks with more levels than the TOC
+            ]{hyperref}
+%\hyperbaseurl{}   % hyperlinks are relative to this root
+
+\setcounter{tocdepth}{2}  % number chapter, section, subsection
+
+\usepackage[framemethod=TikZ]{mdframed}
+
+% --- begin definitions of admonition environments ---
+
+% Admonition style "graybox1" is an oval colored box
+\definecolor{graybox1_background}{rgb}{1,1,1}
+\newmdenv[
+  backgroundcolor=graybox1_background,
+  skipabove=\topsep,
+  skipbelow=\topsep,
+  outerlinewidth=0,
+  leftmargin=0,
+  rightmargin=0,
+  roundcorner=5,
+  needspace=0pt,
+]{graybox1mdframed}
+
+\newenvironment{graybox1admon}[1][]{
+\begin{graybox1mdframed}[frametitle=#1]
+}
+{
+\end{graybox1mdframed}
+}
+
+% --- end of definitions of admonition environments ---
+
+% prevent orhpans and widows
+\clubpenalty = 10000
+\widowpenalty = 10000
+
+% #ifndef SECTION_HEADINGS
+% #define SECTION_HEADINGS "std"
+% #else
+% http://www.ctex.org/documents/packages/layout/titlesec.pdf
+\usepackage[compact]{titlesec}  % reduce the spacing above/below the heading
+% #endif
+% #if SECTION_HEADINGS == "blue"
+% --- section/subsection headings with blue color ---
+\definecolor{seccolor}{cmyk}{.9,.5,0,.35}  % siamltexmm.sty section color
+\titleformat{name=\section}
+{\color{seccolor}\normalfont\Large\bfseries}
+{\color{seccolor}\thesection}{1em}{}
+\titleformat{name=\subsection}
+{\color{seccolor}\normalfont\large\bfseries}
+{\color{seccolor}\thesubsection}{1em}{}
+\titleformat{name=\paragraph}[runin]
+{\color{seccolor}\normalfont\normalsize\bfseries}
+{}{}{\indent}
+% #ifdef FANCY_HEADER
+% let the header have a thick gray hrule with section and page in blue above
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{{\color{gray!50}%
+\hrule width\headwidth height\headrulewidth \vskip-\headrulewidth}}
+\fancyhead[LE,RO]{{\color{seccolor}\rightmark}} %section
+\fancyhead[RE,LO]{{\color{seccolor}\thepage}}
+% #endif
+% #elif SECTION_HEADINGS == "strongblue"
+% --- section/subsection headings with a strong blue color ---
+\definecolor{seccolor}{rgb}{0.2,0.2,0.8}
+\titleformat{name=\section}
+{\color{seccolor}\normalfont\Large\bfseries}
+{\color{seccolor}\thesection}{1em}{}
+\titleformat{name=\subsection}
+{\color{seccolor}\normalfont\large\bfseries}
+{\color{seccolor}\thesubsection}{1em}{}
+\titleformat{name=\paragraph}[runin]
+{\color{seccolor}\normalfont\normalsize\bfseries}
+{}{}{\indent}
+% #elif SECTION_HEADINGS == "gray"
+% --- section/subsection headings with white text on gray background ---
+\titleformat{name=\section}[block]
+  {\sffamily\Large}{}{0pt}{\colorsection}
+\titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip}
+
+\newcommand{\colorsection}[1]{%
+  \colorbox{gray!50}{{\color{white}\thesection\ #1}}}
+
+\titleformat{name=\subsection}[block]
+  {\sffamily\large}{}{0pt}{\colorsubsection}
+\titlespacing*{\subsection}{0pt}{\baselineskip}{\baselineskip}
+
+\newcommand{\colorsubsection}[1]{%
+  \colorbox{gray!50}{{\color{white}\thesubsection\ #1}}}
+% #elif SECTION_HEADINGS == "gray-wide"
+% --- section/subsection headings with white text on wide gray background ---
+\titleformat{name=\section}[block]
+  {\sffamily\Large}{}{0pt}{\colorsection}
+\titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip}
+
+\newcommand{\colorsection}[1]{%
+  \colorbox{gray!50}{\parbox{\dimexpr\textwidth-2\fboxsep}%
+           {\color{white}\thesection\ #1}}}
+
+\titleformat{name=\subsection}[block]
+  {\sffamily\large}{}{0pt}{\colorsubsection}
+\titlespacing*{\subsection}{0pt}{\baselineskip}{\baselineskip}
+
+\newcommand{\colorsubsection}[1]{%
+  \colorbox{gray!50}{\parbox{\dimexpr\textwidth-2\fboxsep}%
+           {\color{white}\thesubsection\ #1}}}
+% #endif
+
+% #ifdef COLORED_TABLE_ROWS
+% color every two table rows
+\let\oldtabular\tabular
+\let\endoldtabular\endtabular
+% #if COLORED_TABLE_ROWS not in ("gray", "blue")
+% #define COLORED_TABLE_ROWS gray
+% #endif
+% #else
+% #define COLORED_TABLE_ROWS no
+% #endif
+% #if COLORED_TABLE_ROWS == "gray"
+\definecolor{rowgray}{gray}{0.9}
+\renewenvironment{tabular}{\rowcolors{2}{white}{rowgray}%
+\oldtabular}{\endoldtabular}
+% #elif COLORED_TABLE_ROWS == "blue"
+\definecolor{appleblue}{rgb}{0.93,0.95,1.0}  % Apple blue
+\renewenvironment{tabular}{\rowcolors{2}{white}{appleblue}%
+\oldtabular}{\endoldtabular}
+% #endif
+
+
+% #if LATEX_STYLE not in ("Koma_Script", "Springer_T2")
+% Make sure blank even-numbered pages before new chapters are
+% totally blank with no header
+\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
+%\let\cleardoublepage\clearemptydoublepage % caused error in the toc
+% #endif
+
+% --- end of standard preamble for documents ---
+
+
+% insert custom LaTeX commands...
+
+\raggedbottom
+\makeindex
+
+%-------------------- end preamble ----------------------
+
+\begin{document}
+
+% #endif
+
+\input{newcommands_keep}
+
+% ------------------- main content ----------------------
+
+% Note on the Springer T2 style: used the modifications in t2do.sty
+% and svmonodo.cls (come bundled with Doconce).
+
+
+
+% #if LATEX_STYLE in ("Springer_T2", "Springer_lncse")
+\frontmatter
+\setcounter{page}{3}
+\pagestyle{headings}
+% #endif
+
+% #if LATEX_STYLE == "Springer_lncse"
+% With hyperref loaded, \contentsline needs 3 args
+%\contentsline{chapter}{Bibliography}{829}{chapter.Bib}
+%\contentsline{chapter}{Index}{831}{chapter.Index}
+% #endif
+
+% ----------------- title -------------------------
+
+% #if LATEX_HEADING == "traditional"
+
+% #if SECTION_HEADINGS in ("blue", "strongblue")
+\title{{\color{seccolor} A Test of Doconce a Book with Springer's T2 Style}}
+% #else
+\title{A Test of Doconce a Book with Springer's T2 Style}
+% #endif
+
+% #elif LATEX_HEADING == "titlepage"
+
+\thispagestyle{empty}
+\hbox{\ \ }
+\vfill
+\begin{center}
+{\huge{\bfseries{
+\begin{spacing}{1.25}
+% #if SECTION_HEADINGS in ("blue", "strongblue")
+{\color{seccolor}\rule{\linewidth}{0.5mm}} \\[0.4cm]
+{\color{seccolor}A Test of Doconce a Book with Springer's T2 Style}
+\\[0.4cm] {\color{seccolor}\rule{\linewidth}{0.5mm}} \\[1.5cm]
+% #else
+{\rule{\linewidth}{0.5mm}} \\[0.4cm]
+{A Test of Doconce a Book with Springer's T2 Style}
+\\[0.4cm] {\rule{\linewidth}{0.5mm}} \\[1.5cm]
+% #endif
+\end{spacing}
+}}}
+
+% #elif LATEX_HEADING == "Springer_collection"
+\title*{A Test of Doconce a Book with Springer's T2 Style}
+% Short version of title:
+\titlerunning{A Test of Doconce a Book with Springer's T2 Style}
+
+% #elif LATEX_HEADING == "beamer"
+\title{A Test of Doconce a Book with Springer's T2 Style}
+% #else
+\thispagestyle{empty}
+
+\begin{center}
+{\LARGE\bf
+\begin{spacing}{1.25}
+A Test of Doconce a Book with Springer's T2 Style
+\end{spacing}
+}
+\end{center}
+% #endif
+
+% ----------------- author(s) -------------------------
+% #if LATEX_HEADING == "traditional"
+\author{Hans Petter Langtangen\footnote{Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo.}}
+
+% #elif LATEX_HEADING == "titlepage"
+\vspace{1.3cm}
+
+    {\Large\textsf{Hans Petter Langtangen${}^{1, 2}$}}\\ [3mm]
+    
+\ \\ [2mm]
+
+{\large\textsf{${}^1$Center for Biomedical Computing, Simula Research Laboratory} \\ [1.5mm]}
+{\large\textsf{${}^2$Department of Informatics, University of Oslo} \\ [1.5mm]}
+% #elif LATEX_HEADING == "Springer_collection"
+
+\author{Hans Petter Langtangen}
+% Short version of authors:
+%\authorrunning{...}
+\institute{Hans Petter Langtangen\at Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo}
+
+% #elif LATEX_HEADING == "beamer"
+\author{Hans Petter Langtangen\inst{1,2}}
+\institute{Center for Biomedical Computing, Simula Research Laboratory\inst{1}
+\and
+Department of Informatics, University of Oslo\inst{2}}
+% #else
+
+\begin{center}
+{\bf Hans Petter Langtangen${}^{1, 2}$} \\ [0mm]
+\end{center}
+
+\begin{center}
+% List of all institutions:
+\centerline{{\small ${}^1$Center for Biomedical Computing, Simula Research Laboratory}}
+\centerline{{\small ${}^2$Department of Informatics, University of Oslo}}
+\end{center}
+% #endif
+% ----------------- end author(s) -------------------------
+
+
+% #if LATEX_HEADING == "traditional"
+\date{Jan 32, 2100}
+\maketitle
+% #elif LATEX_HEADING == "beamer"
+\date{Jan 32, 2100
+% <titlepage figure>
+}
+% #elif LATEX_HEADING == "titlepage"
+
+\ \\ [10mm]
+{\large\textsf{Jan 32, 2100}}
+
+\end{center}
+\vfill
+\clearpage
+
+% #else
+\begin{center}
+Jan 32, 2100
+\end{center}
+
+\vspace{1cm}
+
+% #endif
+
+
+\chapter*{Preface}
+\markboth{Preface}{Preface}
+
+The aim of this book is to teach computer programming using examples
+from mathematics and the natural sciences.  We have chosen to use the
+Python programming language because it combines remarkable expressive
+power with very clean, simple, and compact syntax.  Python is easy to
+learn and very well suited for an introduction to computer
+programming. Python is also quite similar to MATLAB and a good
+language for doing mathematical computing.  It is easy to combine
+Python with compiled languages, like Fortran, C, and C++, which are
+widely used languages for scientific computations.  A seamless
+integration of Python with Java is offered by a special version of
+Python called Jython.
+
+The examples in this book integrate programming with applications to
+mathematics, physics, biology, and finance.  The reader is expected to
+have knowledge of basic one-variable calculus as taught in
+mathematics-intensive programs in high schools. It is certainly an
+advantage to take a university calculus course in parallel, preferably
+containing both classical and numerical aspects of calculus.  Although
+not strictly required, a background in high school physics makes many
+of the examples more meaningful.
+
+Many introductory programming books are quite compact and focus on
+listing functionality of a programming language. However, learning to
+program is learning how to \emph{think} as a programmer.  This book
+has its main focus on the thinking process, or equivalently:
+programming as a problem solving technique. That is why most of the
+pages are devoted to case studies in programming, where we define a
+problem and explain how to create the corresponding program.  New
+constructions and programming styles (what we could call theory) is also usually
+introduced via examples.  Special attention is paid to verification of
+programs and to finding errors. These topics are very demanding for
+mathematical software, because the unavoidable numerical
+approximation errors are possibly mixed with programming mistakes.
+
+By studying the many examples in the
+book, I hope readers will learn how to think right and thereby
+write programs in a quicker and more reliable way. Remember, nobody can learn
+programming by just reading - one has to solve a large amount of
+exercises hands on.  The book is therefore full of exercises of
+various types: modifications of existing examples, completely new
+problems, or debugging of given programs.
+
+There is a web page associated with this book, \href{{http://hplgit.github.com/scipro-primer}}{\nolinkurl{http://hplgit.github.com/scipro-primer}}, which lists the software you
+need and explains briefly how to install it.  This page also contains
+all the files associated with the program examples in this book.
+
+\paragraph{Python version 2 or 3?}
+A common problem among Python programmers is to choose between version
+2 or 3, which at the time of this writing means choosing
+between version 2.7 and 3.3.
+The general recommendation is to go for version 3, but programs are
+then not compatible with version 2 and vice versa. There is still
+a problem that much useful mathematical software in Python
+has not yet been ported to version 3. Therefore, scientific computing
+with Python still goes mostly with version 2.
+A widely used strategy for software
+developers who want to write Python code that works with both versions,
+is to develop for v2.7, which is very close to what is accepted
+in version 3, and then
+use the ranslation tool \emph{2to3} to automatically translate the code
+to version 3.
+
+When using v2.7, one should employ the newest syntax
+and modules that make the differences beween version 2 and 3 very small.
+This strategy is adopted in the present book. Only two
+differences between versions 2 and 3 are expected to be significant for
+the programs in the book:
+\code{a/b} implies float division in version 3 if \code{a} and \code{b}
+are integers,
+and \code{print 'Hello'} in version 2 must be turned into a function call
+\code{print('Hello')} in version 3. None of these differences should lead
+to any annoying problems when future readers study the book's v2.7
+examples, but program in version 3. Anyway, running 2to3 on the
+example files generates the corresponding version 3 code.
+
+\paragraph{Acknowledgments.}
+Several people have helped to make substantial improvements of the
+text. Here I list only the names with Norwgian characters to
+test the handling of those: Ståle Zerener Haugnæss,
+Tobias Vidarssønn Langhoff, and Håkon Møller.
+
+\vspace{1cm}
+
+\noindent
+\emph{Oslo, April 2012}  \hfill  \emph{Hans Petter Langtangen}
+
+
+
+
+% #if LATEX_HEADING != "beamer"
+\tableofcontents
+
+% #if LATEX_STYLE == "Springer_lncse"
+\contentsline{chapter}{\refname}{9999}{chapter.Bib}
+\contentsline{chapter}{Index}{9999}{chapter.Index}
+% #endif
+
+
+
+\vspace{1cm} % after toc
+% #endif
+
+% #if LATEX_STYLE == "Springer_T2"
+\mymainmatter
+% #elif LATEX_STYLE == "Springer_lncse"
+\mainmatter
+% #endif
+
+
+
+
+
+
+\chapter{Basic array computing and plotting}
+
+This chapter gives an introduction to arrays: how they are created
+and what they can be used for.  Array computing usually ends up with a
+lot of numbers. It may be very hard to understand what these numbers
+mean by just looking at them. Since the human is a visual animal, a
+good way to understand numbers is to visualize them. In this
+chapter we concentrate on visualizing curves that reflect functions
+of one variable; i.e., curves of the form $y=f(x)$.  A synonym for
+curve is graph, and the image of curves on the screen is often called
+a plot.  We will use arrays to store the information about points
+along the curve. In a nutshell, array computing demands visualization
+and visualization demands arrays.
+
+All program examples in this chapter can be found as files in the
+folder \href{{http://some.where.net/doconce/test/software/plot}}{\nolinkurl{src/plot}\footnote{\texttt{http://some.where.net/doconce/test/software/plot}}}.
+
+\section{Arrays in Python programs}
+
+This section introduces array programming in Python, but first we
+create some lists and show how arrays differ from lists.
+
+\subsection{Using lists for collecting function data}
+\label{sec:plot:listdata}
+
+Suppose we have a function $f(x)$ and want to evaluate this function
+at a number of $x$ points $x_0,x_1,\ldots,x_{n-1}$.  We could collect
+the $n$ pairs $(x_i,f(x_i))$ in a list, or we could collect all the
+$x_i$ values, for $i=0,\ldots,n-1$, in a list and all the associated
+$f(x_i)$ values in another list.  The following interactive session
+demonstrates how to create these three types of lists:
+
+\bpy
+>>> def f(x):
+...     return x**3       # sample function
+...
+>>> n = 5                 # no of points along the x axis
+>>> dx = 1.0/(n-1)        # spacing between x points in [0,1]
+>>> xlist = [i*dx for i in range(n)]
+>>> ylist = [f(x) for x in xlist]
+>>> pairs = [[x, y] for x, y in zip(xlist, ylist)]
+\epy
+Here we have used list comprehensions for achieving compact code. Make
+sure that you understand what is going on in these list comprehensions
+(if not, try to write the same code using standard \code{for} loops and
+appending new list elements in each pass of the loops).
+
+\index{heterogeneous lists}
+
+The list elements consist of objects of the same type: any element in
+\code{pairs} is a list of two \code{float} objects, while any element in \code{xlist}
+or \code{ylist} is a \code{float}. Lists are more flexible than that, because an
+element can be an object of any type, e.g.,
+
+\bpycod
+mylist = [2, 6.0, 'tmp.ps', [0,1]]
+\epycod
+Here \code{mylist} holds an \code{int}, a \code{float}, a string, and a list. This
+combination of diverse object types makes up what is known as
+\emph{heterogeneous} lists.  We can also easily remove elements from a list
+or add new elements anywhere in the list.  This flexibility of lists
+is in general convenient to have as a programmer, but in cases where
+the elements are of the same type and the number of elements is fixed,
+arrays can be used instead. The benefits of arrays are faster
+computations, less memory demands, and extensive support for
+mathematical operations on the data.  Because of greater efficiency
+and mathematical convenience, arrays will be used to a large extent in
+this book.  The great use of arrays is also prominent in other
+programming environments such as MATLAB, Octave, and R, for instance.
+Lists will be our choice instead of arrays when we need the
+flexibility of adding or removing elements or when the elements may be
+of different object types.
+
+
+\begin{quote}
+\emph{People only become computer programmers if they're
+obsessive about details, crave power over machines, and can bear
+to be told day after day exactly how
+stupid they are.} \\
+Gregory J. E. Rawlins \cite{Rawlins_1998}, computer scientist.
+\end{quote}
+
+
+\subsection{Basics of numerical Python arrays}
+\label{sec:plot:array:basics}
+
+\index{Numerical Python} \index{NumPy} \index{numpy@{\rm\texttt{numpy}}}
+\index{array (datatype)} \index{array computing}
+\index{vectorization}
+
+An \emph{array} object can be viewed as a variant of a list, but with the
+following assumptions and features:
+
+\begin{itemize}
+  \item All elements must be of the same type, preferably integer, real, or complex numbers, for efficient numerical computing and storage.
+
+  \item The number of elements must be known when the array is created.
+
+  \item Arrays are not part of standard Python - one needs an additional package called \emph{Numerical Python}, often abbreviated as NumPy. The Python name of the package, to be used in \code{import} statements, is \code{numpy}.
+
+  \item With \code{numpy}, a wide range of mathematical operations can be done directly on complete arrays, thereby removing the need for loops over array elements. This is commonly called \emph{vectorization} %or \emph{array computing} and may cause a dramatic speed-up of Python programs. Vectorization makes use of the vector computing concepts from Section~\ref{sec:plot:arraycomp}.
+
+  \item Arrays with one index are often called vectors. Arrays with two indices are used as an efficient data structure for tables, instead of lists of lists. Arrays can also have three or more indices.
+\end{itemize}
+
+\noindent
+
+\begin{graybox1admon}[Remarks.]
+
+\begin{enumerate}
+\item There is actually an
+   object type called \code{array} in standard Python, but this data type is
+   not so efficient for mathematical computations, and we will not use it
+   in this book.
+
+\item The number of elements in an array \emph{can} be
+   changed, but at a substantial computational cost.
+\end{enumerate}
+
+\noindent
+\end{graybox1admon}
+
+
+
+The following text lists some important functionality of NumPy arrays.
+A more comprehensive treatment is found in the excellent \emph{NumPy
+Tutorial}, \emph{NumPy User Guide}, \emph{NumPy Reference}, \emph{Guide to NumPy},
+and \emph{NumPy for MATLAB Users}, all accessible at \href{{http://scipy.org}}{scipy.org}\footnote{\texttt{http://scipy.org}}.
+
+
+\index{zeros@{\rm\texttt{zeros}} (from {\rm\texttt{numpy}})} \index{np.zeros@{\rm\texttt{np.zeros}} function}
+\index{array@{\rm\texttt{array}} (from {\rm\texttt{numpy}})} \index{np.array@{\rm\texttt{np.array}} function}
+\index{np@{\rm\texttt{np}} prefix ({\rm\texttt{numpy}})}
+\index{zeros\_like@{\rm\texttt{zeros\_like}} (from {\rm\texttt{numpy}})}\index{np.zeros\_like@{\rm\texttt{np.zeros\_like}} function}
+
+
+
+\begin{graybox1admon}[Remarks on importing NumPy.]
+The statement
+
+\bpycod
+import numpy as np
+\epycod
+with subsequent prefixing of all NumPy functions and variables by \code{np.},
+has evolved as a standard syntax in the Python scientific computing
+community. However, to make Python programs look closer to MATLAB
+and ease the transition to and from that language, one can do
+
+\bpycod
+from numpy import *
+\epycod
+to get rid of the prefix (this is evolved as the standard in
+\emph{interactive} Python shells). This author prefers mathematical
+functions from \code{numpy} to be written without the prefix to
+make the formulas as close as possible to the mathematics.
+So, $f(x)=\sinh(x-1)\sin(w t)$ would be coded as
+
+\bpycod
+from numpy import sinh, sin
+
+def f(x):
+    return sinh(x-1)*sin(w*t)
+\epycod
+or one may take the less recommended
+lazy approach \code{from numpy import *} and fill up
+the program with \emph{a lot} of functions and variables from \code{numpy}.
+\end{graybox1admon}
+
+
+
+To convert a list \code{r} to an array,
+we use the \code{array} function
+from \code{numpy}:
+
+\bpycod
+a = np.array(r)
+\epycod
+To create a new array of length \code{n}, filled with zeros, we write
+
+\bpycod
+a = np.zeros(n)
+\epycod
+The array elements are of a type that corresponds to Python's
+\code{float} type. A second argument to \code{np.zeros} can be used to
+specify other element types, e.g., \code{int}.
+A similar function,
+
+\bpycod
+a = np.zeros_like(c)
+\epycod
+generates an array of zeros where the length is that of the array \code{c}
+and the element type is the same as those in \code{c}.  Arrays with more
+than one index are treated in Section~\ref{sec:plot:2Darrays}.
+
+\index{linspace@{\rm\texttt{linspace}} (from {\rm\texttt{numpy}})}\index{np.linspace@{\rm\texttt{np.linspace}} function}
+
+Often one wants an array to have $n$ elements with uniformly
+distributed values in an interval $[p,q]$. The \code{numpy} function
+\code{linspace} creates such arrays:
+
+\bpycod
+a = np.linspace(p, q, n)
+\epycod
+
+
+\chapter{Storing results in data files}
+
+\section{Writing data to file}
+\label{sec:files:writing}
+
+Writing data to file is easy.
+There is basically one function to pay attention to: \code{outfile.write(s)},
+which writes a string \code{s} to
+a file handled by the file object \code{outfile}. Unlike \code{print},
+\code{outfile.write(s)}
+does not append a newline character to the written string.
+It will therefore
+often be necessary to add a newline character,
+
+\bpycod
+outfile.write(s + '\n')
+\epycod
+if the string \code{s} is meant to appear on a single line in the file
+and \code{s} does not already contain a trailing newline character.
+File writing is then a matter of constructing strings containing the
+text we want to have in the file and for each such string call
+\code{outfile.write}.
+
+Writing to a file demands
+the file object \code{f}
+to be opened for writing:
+
+\bpycod
+# write to new file, or overwrite file:
+outfile = open(filename, 'w')
+
+# append to the end of an existing file:
+outfile = open(filename, 'a')
+\epycod
+
+\subsection{Example: Writing a table to file}
+
+\paragraph{Problem.}
+As a worked example of file writing,
+we shall write out a nested list with tabular data to file.
+A sample list may take look as
+
+\bccq
+[[ 0.75,        0.29619813, -0.29619813, -0.75      ],
+ [ 0.29619813,  0.11697778, -0.11697778, -0.29619813],
+ [-0.29619813, -0.11697778,  0.11697778,  0.29619813],
+ [-0.75,       -0.29619813,  0.29619813,  0.75      ]]
+\eccq
+
+\paragraph{Solution.}
+We iterate through the rows (first index) in the list, and for each row,
+we iterate through the column values (second index)
+and write each value to the file.
+At the end of each row, we must insert a newline character in the file to get
+a linebreak. The code resides in the file \href{{http://some.where.net/doconce/test/software/input/write1.py}}{\nolinkurl{write1.py}\footnote{\texttt{http://some.where.net/doconce/test/software/input/write1.py}}}.
+
+The resulting data file becomes
+
+\bdat
+    0.75000000    0.29619813   -0.29619813   -0.75000000
+    0.29619813    0.11697778   -0.11697778   -0.29619813
+   -0.29619813   -0.11697778    0.11697778    0.29619813
+   -0.75000000   -0.29619813    0.29619813    0.75000000
+\edat
+
+An extension of this program consists in adding column and row headings:
+
+\bdat
+           column  1     column  2     column  3     column  4
+row  1    0.75000000    0.29619813   -0.29619813   -0.75000000
+row  2    0.29619813    0.11697778   -0.11697778   -0.29619813
+row  3   -0.29619813   -0.11697778    0.11697778    0.29619813
+row  4   -0.75000000   -0.29619813    0.29619813    0.75000000
+\edat
+To obtain this end result, we need to the add some statements to
+the program \code{write1.py}. For the column headings we need
+to know the number of columns, i.e., the length of the rows,
+and loop from 1 to this length:
+
+\bpycod
+ncolumns = len(data[0])
+outfile.write('          ')
+for i in range(1, ncolumns+1):
+    outfile.write('%10s    ' % ('column %2d' % i))
+outfile.write('\n')
+\epycod
+Note the use of a nested printf construction: The text we want to
+insert is itself a printf string. We could also have written the
+text as \code{'column  ' + str(i)}, but then the length of the
+resulting string would depend on the number of digits in \code{i}.
+It is recommended to always use printf constructions for
+a tabular output format, because this gives automatic padding of
+blanks so that the width of the output strings remain the same.
+As always, the tuning of the widths is done in a trial-and-error
+process.
+
+To add the row headings, we need a counter over the row numbers:
+
+\bpycod
+row_counter = 1
+for row in data:
+    outfile.write('row %2d' % row_counter)
+    for column in row:
+        outfile.write('%14.8f' % column)
+    outfile.write('\n')
+    row_counter += 1
+\epycod
+The complete code is found in the file \href{{http://some.where.net/doconce/test/software/input/write2.py}}{\nolinkurl{write2.py}\footnote{\texttt{http://some.where.net/doconce/test/software/input/write2.py}}}.
+We could, alternatively, iterate over the indices in the list:
+
+\bpycod
+for i in range(len(data)):
+    outfile.write('row %2d' % (i+1))
+    for j in range(len(data[i])):
+        outfile.write('%14.8f' % data[i][j])
+    outfile.write('\n')
+\epycod
+
+
+
+
+\subsection{Standard input and output as file objects}
+
+\index{standard input} \index{standard output}
+
+\index{sys.stdin@{\rm\texttt{sys.stdin}}}\index{sys.stdout@{\rm\texttt{sys.stdout}}}
+
+Reading user input from the keyboard applies the function
+\code{raw_input} as explained in Section~\ref{sec:input:rawinput}.
+The keyboard is a medium that the computer in fact
+treats as a file, referred to
+as \emph{standard input}.
+
+The \code{print} command prints text in the terminal window. This medium
+is also viewed as a file from the computer's point of view and called
+\emph{standard output}. All general-purpose programming languages
+allow reading from standard input and
+writing to standard output. This reading and writing can be done with
+two types of tools, either file-like objects or special tools like
+\code{raw_input}
+and \code{print} in Python.
+We will here describe the file-line objects:
+\code{sys.stdin} for standard input
+and \code{sys.stdout} for standard output. These objects
+behave as file objects, except that they do not need to be opened or
+closed. The statement
+
+\bpycod
+s = raw_input('Give s:')
+\epycod
+is equivalent to
+
+\bpycod
+print 'Give s: ',
+s = sys.stdin.readline()
+\epycod
+Recall that the trailing comma in the \code{print} statement avoids the
+newline that \code{print} by default adds to the output string.
+Similarly,
+
+\bpycod
+s = eval(raw_input('Give s:'))
+\epycod
+is equivalent to
+
+\bpycod
+print 'Give s: ',
+s = eval(sys.stdin.readline())
+\epycod
+For output to the terminal window, the statement
+
+\bpycod
+print s
+\epycod
+is equivalent to
+
+\bpycod
+sys.stdout.write(s + '\n')
+\epycod
+
+Why it is handy to have access to standard input and output
+as file objects can be illustrated by an example. Suppose you have a
+function that reads data from a file object \code{infile}
+and writes data to a file object \code{outfile}.
+A sample function may take the form
+
+\bpycod
+def x2f(infile, outfile, f):
+    for line in infile:
+        x = float(line)
+        y = f(x)
+        outfile.write('%g\n' % y)
+\epycod
+This function works with all types of files, including
+web pages as \code{infile} (see Section~\ref{sec:files:webtxt}).
+With \code{sys.stdin} as \code{infile} and/or \code{sys.stdout}
+as \code{outfile}, the \code{x2f} function also works with standard input
+and/or standard output. Without \code{sys.stdin} and \code{sys.stdout},
+we would need different code, employing \code{raw_input}
+and \code{print},
+to deal with standard input and output. Now we can write a single
+function that deals with all file media in a unified way.
+
+\index{standard error}
+\index{sys.stderr@{\rm\texttt{sys.stderr}}}
+
+There is also something called \emph{standard error}.
+Usually this is the terminal window, just as standard output, but
+programs can distinguish between writing ordinary output to standard
+output and error messages to standard error, and these output media
+can be redirected to, e.g., files such that one can separate
+error messages from ordinary output.
+In Python, standard error is the file-like object \code{sys.stderr}.
+A typical application of \code{sys.stderr} is to report errors:
+
+\bpycod
+if x < 0:
+    sys.stderr.write('Illegal value of x'); sys.exit(1)
+\epycod
+This message to \code{sys.stderr} is an alternative to
+\code{print} or raising an exception.
+
+\paragraph{Redirecting standard input, output, and error.}
+Standard output from a program \code{prog}
+can be redirected to a file
+\code{output} instead of the screen, by
+using the greater than sign:
+
+\bsys
+Terminal> prog > output
+\esys
+Here, \code{prog} can be any
+program, including a Python program run as \code{python myprog.py}.
+Similarly, output to the medium called \emph{standard error}
+can be redirected by
+
+\bsys
+Terminal> prog &> output
+\esys
+For example, error messages are normally written to standard error, which
+is exemplified in this little terminal session on a Unix machine:
+
+\bsys
+Terminal> ls bla-bla1 bla-bla2
+ls: cannot access bla-bla1: No such file or directory
+ls: cannot access bla-bla2: No such file or directory
+Terminal> ls bla-bla1 bla-bla2 &> errors
+Terminal> cat errors  # print the file errors
+ls: cannot access bla-bla1: No such file or directory
+ls: cannot access bla-bla2: No such file or directory
+\esys
+When the program reads from standard input (the keyboard),
+we can equally well redirect
+standard input to a file, say with name \code{raw_input}, such that
+the program reads from this file rather than from the keyboard:
+
+\bsys
+Terminal> prog < input
+\esys
+Combinations are also possible:
+
+\bsys
+Terminal> prog < input > output
+\esys
+
+\paragraph{Note.}
+The redirection of standard output, input, and error
+does not work for Python programs executed with the \code{run}
+command inside IPython, only when executed directly
+in the operating system in a terminal window, or with the same
+command prefixed with an exclamation mark in IPython.
+
+\paragraph{References.}
+To check the bibliography, we need to make citations to a book{TCSE3},
+Matplotlib \cite{Matplotlib:paper}, and more books \cite{Mertz,PythonQt}
+as well as Python itself \cite{Python}, and of course NumPy
+\cite{NumPy}.
+
+
+
+
+\appendix
+
+\chapter{Styles for Springer T2}
+
+The T2 style for Doconce-generated {\LaTeX} should make use of
+slightly modified \code{svmono.cls} and \code{t2.sty} files:
+
+\begin{itemize}
+ \item \code{svmonodo.cls}
+
+ \item \code{t2do.sty}
+\end{itemize}
+
+\noindent
+\clearemptydoublepage
+\markboth{Bibliography}{Bibliography}
+\thispagestyle{empty}
+
+\bibliographystyle{plain}
+\bibliography{papers}
+
+
+
+% ------------------- end of main content ---------------
+
+
+% #ifdef PREAMBLE
+\clearemptydoublepage
+\markboth{Index}{Index}
+\thispagestyle{empty}
+\printindex
+
+\end{document}
+% #endif
+
+
+************** File: Springer_T2/Springer_T2_book.tex *****************
+%%
+%% Automatically generated file from Doconce source
+%% (https://github.com/hplgit/doconce/)
+%%
+
+
+
+
+
+%-------------------- begin preamble ----------------------
+% Style: T2 (Springer)
+% Use svmono.cls with doconce modifications for bibliography
+\documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmonodo}
+
+% Use t2.sty with doconce modifications
+\usepackage{t2do}
+\special{papersize=193mm,260mm}
+
+
+\listfiles               % print all files needed to compile this document
+
+
+\usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
+\usepackage[table]{xcolor}
+\usepackage{bm,microtype}
+
+\usepackage{ptex2tex}
+
+
+\usepackage[T1]{fontenc}
+%\usepackage[latin1]{inputenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
+
+% Hyperlinks in PDF:
+\definecolor{linkcolor}{rgb}{0,0,0.4}
+\usepackage[%
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=black,
+    citecolor=black,
+    filecolor=black,
+    %filecolor=blue,
+    pdfmenubar=true,
+    pdftoolbar=true,
+    bookmarksdepth=3   % Uncomment (and tweak) for PDF bookmarks with more levels than the TOC
+            ]{hyperref}
+%\hyperbaseurl{}   % hyperlinks are relative to this root
+
+\setcounter{tocdepth}{2}  % number chapter, section, subsection
+
+\usepackage[framemethod=TikZ]{mdframed}
+
+% --- begin definitions of admonition environments ---
+
+% Admonition style "graybox1" is an oval colored box
+\definecolor{graybox1_background}{rgb}{1,1,1}
+\newmdenv[
+  backgroundcolor=graybox1_background,
+  skipabove=\topsep,
+  skipbelow=\topsep,
+  outerlinewidth=0,
+  leftmargin=0,
+  rightmargin=0,
+  roundcorner=5,
+  needspace=0pt,
+]{graybox1mdframed}
+
+\newenvironment{graybox1admon}[1][]{
+\begin{graybox1mdframed}[frametitle=#1]
+}
+{
+\end{graybox1mdframed}
+}
+
+% --- end of definitions of admonition environments ---
+
+% prevent orhpans and widows
+\clubpenalty = 10000
+\widowpenalty = 10000
+
+
+
+
+
+% --- end of standard preamble for documents ---
+
+
+% insert custom LaTeX commands...
+
+\raggedbottom
+\makeindex
+
+%-------------------- end preamble ----------------------
+
+\begin{document}
+
+
+\input{newcommands_keep}
+
+% ------------------- main content ----------------------
+
+% Note on the Springer T2 style: used the modifications in t2do.sty
+% and svmonodo.cls (come bundled with Doconce).
+
+
+
+\frontmatter
+\setcounter{page}{3}
+\pagestyle{headings}
+
+
+% ----------------- title -------------------------
+
+
+\thispagestyle{empty}
+\hbox{\ \ }
+\vfill
+\begin{center}
+{\huge{\bfseries{
+\begin{spacing}{1.25}
+{\rule{\linewidth}{0.5mm}} \\[0.4cm]
+{A Test of Doconce a Book with Springer's T2 Style}
+\\[0.4cm] {\rule{\linewidth}{0.5mm}} \\[1.5cm]
+\end{spacing}
+}}}
+
+
+% ----------------- author(s) -------------------------
+\vspace{1.3cm}
+
+    {\Large\textsf{Hans Petter Langtangen${}^{1, 2}$}}\\ [3mm]
+    
+\ \\ [2mm]
+
+{\large\textsf{${}^1$Center for Biomedical Computing, Simula Research Laboratory} \\ [1.5mm]}
+{\large\textsf{${}^2$Department of Informatics, University of Oslo} \\ [1.5mm]}
+% ----------------- end author(s) -------------------------
+
+
+
+\ \\ [10mm]
+{\large\textsf{Jan 32, 2100}}
+
+\end{center}
+\vfill
+\clearpage
+
+
+
+\chapter*{Preface}
+\markboth{Preface}{Preface}
+
+The aim of this book is to teach computer programming using examples
+from mathematics and the natural sciences.  We have chosen to use the
+Python programming language because it combines remarkable expressive
+power with very clean, simple, and compact syntax.  Python is easy to
+learn and very well suited for an introduction to computer
+programming. Python is also quite similar to MATLAB and a good
+language for doing mathematical computing.  It is easy to combine
+Python with compiled languages, like Fortran, C, and C++, which are
+widely used languages for scientific computations.  A seamless
+integration of Python with Java is offered by a special version of
+Python called Jython.
+
+The examples in this book integrate programming with applications to
+mathematics, physics, biology, and finance.  The reader is expected to
+have knowledge of basic one-variable calculus as taught in
+mathematics-intensive programs in high schools. It is certainly an
+advantage to take a university calculus course in parallel, preferably
+containing both classical and numerical aspects of calculus.  Although
+not strictly required, a background in high school physics makes many
+of the examples more meaningful.
+
+Many introductory programming books are quite compact and focus on
+listing functionality of a programming language. However, learning to
+program is learning how to \emph{think} as a programmer.  This book
+has its main focus on the thinking process, or equivalently:
+programming as a problem solving technique. That is why most of the
+pages are devoted to case studies in programming, where we define a
+problem and explain how to create the corresponding program.  New
+constructions and programming styles (what we could call theory) is also usually
+introduced via examples.  Special attention is paid to verification of
+programs and to finding errors. These topics are very demanding for
+mathematical software, because the unavoidable numerical
+approximation errors are possibly mixed with programming mistakes.
+
+By studying the many examples in the
+book, I hope readers will learn how to think right and thereby
+write programs in a quicker and more reliable way. Remember, nobody can learn
+programming by just reading - one has to solve a large amount of
+exercises hands on.  The book is therefore full of exercises of
+various types: modifications of existing examples, completely new
+problems, or debugging of given programs.
+
+There is a web page associated with this book, \href{{http://hplgit.github.com/scipro-primer}}{\nolinkurl{http://hplgit.github.com/scipro-primer}}, which lists the software you
+need and explains briefly how to install it.  This page also contains
+all the files associated with the program examples in this book.
+
+\paragraph{Python version 2 or 3?}
+A common problem among Python programmers is to choose between version
+2 or 3, which at the time of this writing means choosing
+between version 2.7 and 3.3.
+The general recommendation is to go for version 3, but programs are
+then not compatible with version 2 and vice versa. There is still
+a problem that much useful mathematical software in Python
+has not yet been ported to version 3. Therefore, scientific computing
+with Python still goes mostly with version 2.
+A widely used strategy for software
+developers who want to write Python code that works with both versions,
+is to develop for v2.7, which is very close to what is accepted
+in version 3, and then
+use the ranslation tool \emph{2to3} to automatically translate the code
+to version 3.
+
+When using v2.7, one should employ the newest syntax
+and modules that make the differences beween version 2 and 3 very small.
+This strategy is adopted in the present book. Only two
+differences between versions 2 and 3 are expected to be significant for
+the programs in the book:
+{\fontsize{10pt}{10pt}\Verb!a/b!} implies float division in version 3 if {\fontsize{10pt}{10pt}\Verb!a!} and {\fontsize{10pt}{10pt}\Verb!b!}
+are integers,
+and {\fontsize{10pt}{10pt}\Verb!print 'Hello'!} in version 2 must be turned into a function call
+{\fontsize{10pt}{10pt}\Verb!print('Hello')!} in version 3. None of these differences should lead
+to any annoying problems when future readers study the book's v2.7
+examples, but program in version 3. Anyway, running 2to3 on the
+example files generates the corresponding version 3 code.
+
+\paragraph{Acknowledgments.}
+Several people have helped to make substantial improvements of the
+text. Here I list only the names with Norwgian characters to
+test the handling of those: Ståle Zerener Haugnæss,
+Tobias Vidarssønn Langhoff, and Håkon Møller.
+
+\vspace{1cm}
+
+\noindent
+\emph{Oslo, April 2012}  \hfill  \emph{Hans Petter Langtangen}
+
+
+
+
+\tableofcontents
+
+
+
+
+\vspace{1cm} % after toc
+
+\mymainmatter
+
+
+
+
+
+
+\chapter{Basic array computing and plotting}
+
+This chapter gives an introduction to arrays: how they are created
+and what they can be used for.  Array computing usually ends up with a
+lot of numbers. It may be very hard to understand what these numbers
+mean by just looking at them. Since the human is a visual animal, a
+good way to understand numbers is to visualize them. In this
+chapter we concentrate on visualizing curves that reflect functions
+of one variable; i.e., curves of the form $y=f(x)$.  A synonym for
+curve is graph, and the image of curves on the screen is often called
+a plot.  We will use arrays to store the information about points
+along the curve. In a nutshell, array computing demands visualization
+and visualization demands arrays.
+
+All program examples in this chapter can be found as files in the
+folder \href{{http://some.where.net/doconce/test/software/plot}}{\nolinkurl{src/plot}\footnote{\texttt{http://some.where.net/doconce/test/software/plot}}}.
+
+\section{Arrays in Python programs}
+
+This section introduces array programming in Python, but first we
+create some lists and show how arrays differ from lists.
+
+\subsection{Using lists for collecting function data}
+\label{sec:plot:listdata}
+
+Suppose we have a function $f(x)$ and want to evaluate this function
+at a number of $x$ points $x_0,x_1,\ldots,x_{n-1}$.  We could collect
+the $n$ pairs $(x_i,f(x_i))$ in a list, or we could collect all the
+$x_i$ values, for $i=0,\ldots,n-1$, in a list and all the associated
+$f(x_i)$ values in another list.  The following interactive session
+demonstrates how to create these three types of lists:
+
+\providecommand{\shadedskip}{}
+\definecolor{shadecolor}{rgb}{0.87843, 0.95686, 1.0}
+\renewenvironment{shadedskip}{
+\def\FrameCommand{\colorbox{shadecolor}}\FrameRule0.6pt
+\MakeFramed {\FrameRestore}\vskip3mm}{\vskip0mm\endMakeFramed}
+\providecommand{\shadedquoteBlue}{}
+\renewenvironment{shadedquoteBlue}[1][]{
+\bgroup\rmfamily
+\fboxsep=0mm\relax
+\begin{shadedskip}
+\list{}{\parsep=-2mm\parskip=0mm\topsep=0pt\leftmargin=2mm
+\rightmargin=2\leftmargin\leftmargin=4pt\relax}
+\item\relax}
+{\endlist\end{shadedskip}\egroup}\begin{shadedquoteBlue}
+\fontsize{9pt}{9pt}
+\begin{Verbatim}
+>>> def f(x):
+...     return x**3       # sample function
+...
+>>> n = 5                 # no of points along the x axis
+>>> dx = 1.0/(n-1)        # spacing between x points in [0,1]
+>>> xlist = [i*dx for i in range(n)]
+>>> ylist = [f(x) for x in xlist]
+>>> pairs = [[x, y] for x, y in zip(xlist, ylist)]
+\end{Verbatim}
+\end{shadedquoteBlue}
+\noindent
+Here we have used list comprehensions for achieving compact code. Make
+sure that you understand what is going on in these list comprehensions
+(if not, try to write the same code using standard {\fontsize{10pt}{10pt}\Verb!for!} loops and
+appending new list elements in each pass of the loops).
+
+\index{heterogeneous lists}
+
+The list elements consist of objects of the same type: any element in
+{\fontsize{10pt}{10pt}\Verb!pairs!} is a list of two {\fontsize{10pt}{10pt}\Verb!float!} objects, while any element in {\fontsize{10pt}{10pt}\Verb!xlist!}
+or {\fontsize{10pt}{10pt}\Verb!ylist!} is a {\fontsize{10pt}{10pt}\Verb!float!}. Lists are more flexible than that, because an
+element can be an object of any type, e.g.,
+
+\providecommand{\shadedskip}{}
+\definecolor{shadecolor}{rgb}{0.87843, 0.95686, 1.0}
+\renewenvironment{shadedskip}{
+\def\FrameCommand{\colorbox{shadecolor}}\FrameRule0.6pt
+\MakeFramed {\FrameRestore}\vskip3mm}{\vskip0mm\endMakeFramed}
+\providecommand{\shadedquoteBlue}{}
+\renewenvironment{shadedquoteBlue}[1][]{
+\bgroup\rmfamily
+\fboxsep=0mm\relax
+\begin{shadedskip}
+\list{}{\parsep=-2mm\parskip=0mm\topsep=0pt\leftmargin=2mm
+\rightmargin=2\leftmargin\leftmargin=4pt\relax}
+\item\relax}
+{\endlist\end{shadedskip}\egroup}\begin{shadedquoteBlue}
+\fontsize{9pt}{9pt}
+\begin{Verbatim}
+mylist = [2, 6.0, 'tmp.ps', [0,1]]
+\end{Verbatim}
+\end{shadedquoteBlue}
+\noindent
+Here {\fontsize{10pt}{10pt}\Verb!mylist!} holds an {\fontsize{10pt}{10pt}\Verb!int!}, a {\fontsize{10pt}{10pt}\Verb!float!}, a string, and a list. This
+combination of diverse object types makes up what is known as
+\emph{heterogeneous} lists.  We can also easily remove elements from a list
+or add new elements anywhere in the list.  This flexibility of lists
+is in general convenient to have as a programmer, but in cases where
+the elements are of the same type and the number of elements is fixed,
+arrays can be used instead. The benefits of arrays are faster
+computations, less memory demands, and extensive support for
+mathematical operations on the data.  Because of greater efficiency
+and mathematical convenience, arrays will be used to a large extent in
+this book.  The great use of arrays is also prominent in other
+programming environments such as MATLAB, Octave, and R, for instance.
+Lists will be our choice instead of arrays when we need the
+flexibility of adding or removing elements or when the elements may be
+of different object types.
+
+
+\begin{quote}
+\emph{People only become computer programmers if they're
+obsessive about details, crave power over machines, and can bear
+to be told day after day exactly how
+stupid they are.} \\
+Gregory J. E. Rawlins \cite{Rawlins_1998}, computer scientist.
+\end{quote}
+
+
+\subsection{Basics of numerical Python arrays}
+\label{sec:plot:array:basics}
+
+\index{Numerical Python} \index{NumPy} \index{numpy@{\rm\texttt{numpy}}}
+\index{array (datatype)} \index{array computing}
+\index{vectorization}
+
+An \emph{array} object can be viewed as a variant of a list, but with the
+following assumptions and features:
+
+\begin{itemize}
+  \item All elements must be of the same type, preferably integer, real, or complex numbers, for efficient numerical computing and storage.
+
+  \item The number of elements must be known when the array is created.
+
+  \item Arrays are not part of standard Python - one needs an additional package called \emph{Numerical Python}, often abbreviated as NumPy. The Python name of the package, to be used in {\fontsize{10pt}{10pt}\Verb!import!} statements, is {\fontsize{10pt}{10pt}\Verb!numpy!}.
+
+  \item With {\fontsize{10pt}{10pt}\Verb!numpy!}, a wide range of mathematical operations can be done directly on complete arrays, thereby removing the need for loops over array elements. This is commonly called \emph{vectorization} %or \emph{array computing} and may cause a dramatic speed-up of Python programs. Vectorization makes use of the vector computing concepts from Section~\ref{sec:plot:arraycomp}.
+
+  \item Arrays with one index are often called vectors. Arrays with two indices are used as an efficient data structure for tables, instead of lists of lists. Arrays can also have three or more indices.
+\end{itemize}
+
+\noindent
+
+\begin{graybox1admon}[Remarks.]
+
+\begin{enumerate}
+\item There is actually an
+   object type called {\fontsize{10pt}{10pt}\Verb!array!} in standard Python, but this data type is
+   not so efficient for mathematical computations, and we will not use it
+   in this book.
+
+\item The number of elements in an array \emph{can} be
+   changed, but at a substantial computational cost.
+\end{enumerate}
+
+\noindent
+\end{graybox1admon}
+
+
+
+The following text lists some important functionality of NumPy arrays.
+A more comprehensive treatment is found in the excellent \emph{NumPy
+Tutorial}, \emph{NumPy User Guide}, \emph{NumPy Reference}, \emph{Guide to NumPy},
+and \emph{NumPy for MATLAB Users}, all accessible at \href{{http://scipy.org}}{scipy.org}\footnote{\texttt{http://scipy.org}}.
+
+
+\index{zeros@{\rm\texttt{zeros}} (from {\rm\texttt{numpy}})} \index{np.zeros@{\rm\texttt{np.zeros}} function}
+\index{array@{\rm\texttt{array}} (from {\rm\texttt{numpy}})} \index{np.array@{\rm\texttt{np.array}} function}
+\index{np@{\rm\texttt{np}} prefix ({\rm\texttt{numpy}})}
+\index{zeros\_like@{\rm\texttt{zeros\_like}} (from {\rm\texttt{numpy}})}\index{np.zeros\_like@{\rm\texttt{np.zeros\_like}} function}
+
+
+
+\begin{graybox1admon}[Remarks on importing NumPy.]
+The statement
+
+\begin{shadedquoteBlue}
+\fontsize{9pt}{9pt}
+\begin{Verbatim}
+import numpy as np
+\end{Verbatim}
+\end{shadedquoteBlue}
+\noindent
+with subsequent prefixing of all NumPy functions and variables by {\fontsize{10pt}{10pt}\Verb!np.!},
+has evolved as a standard syntax in the Python scientific computing
+community. However, to make Python programs look closer to MATLAB
+and ease the transition to and from that language, one can do
+
+\begin{shadedquoteBlue}
+\fontsize{9pt}{9pt}
+\begin{Verbatim}
+from numpy import *
+\end{Verbatim}
+\end{shadedquoteBlue}
+\noindent
+to get rid of the prefix (this is evolved as the standard in
+\emph{interactive} Python shells). This author prefers mathematical
+functions from {\fontsize{10pt}{10pt}\Verb!numpy!} to be written without the prefix to
+make the formulas as close as possible to the mathematics.
+So, $f(x)=\sinh(x-1)\sin(w t)$ would be coded as
+
+\begin{shadedquoteBlue}
+\fontsize{9pt}{9pt}
+\begin{Verbatim}
+from numpy import sinh, sin
+
+def f(x):
+    return sinh(x-1)*sin(w*t)
+\end{Verbatim}
+\end{shadedquoteBlue}
+\noindent
+or one may take the less recommended
+lazy approach {\fontsize{10pt}{10pt}\Verb!from numpy import *!} and fill up
+the program with \emph{a lot} of functions and variables from {\fontsize{10pt}{10pt}\Verb!numpy!}.
+\end{graybox1admon}
+
+
+
+To convert a list {\fontsize{10pt}{10pt}\Verb!r!} to an array,
+we use the {\fontsize{10pt}{10pt}\Verb!array!} function
+from {\fontsize{10pt}{10pt}\Verb!numpy!}:
+
+\begin{shadedquoteBlue}
+\fontsize{9pt}{9pt}
+\begin{Verbatim}
+a = np.array(r)
+\end{Verbatim}
+\end{shadedquoteBlue}
+\noindent
+To create a new array of length {\fontsize{10pt}{10pt}\Verb!n!}, filled with zeros, we write
+
+\begin{shadedquoteBlue}
+\fontsize{9pt}{9pt}
+\begin{Verbatim}
+a = np.zeros(n)
+\end{Verbatim}
+\end{shadedquoteBlue}
+\noindent
+The array elements are of a type that corresponds to Python's
+{\fontsize{10pt}{10pt}\Verb!float!} type. A second argument to {\fontsize{10pt}{10pt}\Verb!np.zeros!} can be used to
+specify other element types, e.g., {\fontsize{10pt}{10pt}\Verb!int!}.
+A similar function,
+
+\begin{shadedquoteBlue}
+\fontsize{9pt}{9pt}
+\begin{Verbatim}
+a = np.zeros_like(c)
+\end{Verbatim}
+\end{shadedquoteBlue}
+\noindent
+generates an array of zeros where the length is that of the array {\fontsize{10pt}{10pt}\Verb!c!}
+and the element type is the same as those in {\fontsize{10pt}{10pt}\Verb!c!}.  Arrays with more
+than one index are treated in Section~\ref{sec:plot:2Darrays}.
+
+\index{linspace@{\rm\texttt{linspace}} (from {\rm\texttt{numpy}})}\index{np.linspace@{\rm\texttt{np.linspace}} function}
+
+Often one wants an array to have $n$ elements with uniformly
+distributed values in an interval $[p,q]$. The {\fontsize{10pt}{10pt}\Verb!numpy!} function
+{\fontsize{10pt}{10pt}\Verb!linspace!} creates such arrays:
+
+\begin{shadedquoteBlue}
+\fontsize{9pt}{9pt}
+\begin{Verbatim}
+a = np.linspace(p, q, n)
+\end{Verbatim}
+\end{shadedquoteBlue}
+\noindent
+
+
+\chapter{Storing results in data files}
+
+\section{Writing data to file}
+\label{sec:files:writing}
+
+Writing data to file is easy.
+There is basically one function to pay attention to: {\fontsize{10pt}{10pt}\Verb!outfile.write(s)!},
+which writes a string {\fontsize{10pt}{10pt}\Verb!s!} to
+a file handled by the file object {\fontsize{10pt}{10pt}\Verb!outfile!}. Unlike {\fontsize{10pt}{10pt}\Verb!print!},
+{\fontsize{10pt}{10pt}\Verb!outfile.write(s)!}
+does not append a newline character to the written string.
+It will therefore
+often be necessary to add a newline character,
+
+\begin{shadedquoteBlue}
+\fontsize{9pt}{9pt}
+\begin{Verbatim}
+outfile.write(s + '\n')
+\end{Verbatim}
+\end{shadedquoteBlue}
+\noindent
+if the string {\fontsize{10pt}{10pt}\Verb!s!} is meant to appear on a single line in the file
+and {\fontsize{10pt}{10pt}\Verb!s!} does not already contain a trailing newline character.
+File writing is then a matter of constructing strings containing the
+text we want to have in the file and for each such string call
+{\fontsize{10pt}{10pt}\Verb!outfile.write!}.
+
+Writing to a file demands
+the file object {\fontsize{10pt}{10pt}\Verb!f!}
+to be opened for writing:
+
+\begin{shadedquoteBlue}
+\fontsize{9pt}{9pt}
+\begin{Verbatim}
+# write to new file, or overwrite file:
+outfile = open(filename, 'w')
+
+# append to the end of an existing file:
+outfile = open(filename, 'a')
+\end{Verbatim}
+\end{shadedquoteBlue}
+\noindent
+
+\subsection{Example: Writing a table to file}
+
+\paragraph{Problem.}
+As a worked example of file writing,
+we shall write out a nested list with tabular data to file.
+A sample list may take look as
+
+\begin{Verbatim}[fontsize=\fontsize{9pt}{9pt},tabsize=8,baselinestretch=0.85,fontfamily=tt,xleftmargin=7mm]
+[[ 0.75,        0.29619813, -0.29619813, -0.75      ],
+ [ 0.29619813,  0.11697778, -0.11697778, -0.29619813],
+ [-0.29619813, -0.11697778,  0.11697778,  0.29619813],
+ [-0.75,       -0.29619813,  0.29619813,  0.75      ]]
+\end{Verbatim}
+\noindent
+
+\paragraph{Solution.}
+We iterate through the rows (first index) in the list, and for each row,
+we iterate through the column values (second index)
+and write each value to the file.
+At the end of each row, we must insert a newline character in the file to get
+a linebreak. The code resides in the file \href{{http://some.where.net/doconce/test/software/input/write1.py}}{\nolinkurl{write1.py}\footnote{\texttt{http://some.where.net/doconce/test/software/input/write1.py}}}.
+
+The resulting data file becomes
+
+\begin{Verbatim}[fontsize=\fontsize{9pt}{9pt},tabsize=8,baselinestretch=0.85,fontfamily=tt,xleftmargin=7mm]
+    0.75000000    0.29619813   -0.29619813   -0.75000000
+    0.29619813    0.11697778   -0.11697778   -0.29619813
+   -0.29619813   -0.11697778    0.11697778    0.29619813
+   -0.75000000   -0.29619813    0.29619813    0.75000000
+\end{Verbatim}
+\noindent
+
+An extension of this program consists in adding column and row headings:
+
+\begin{Verbatim}[fontsize=\fontsize{9pt}{9pt},tabsize=8,baselinestretch=0.85,fontfamily=tt,xleftmargin=7mm]
+           column  1     column  2     column  3     column  4
+row  1    0.75000000    0.29619813   -0.29619813   -0.75000000
+row  2    0.29619813    0.11697778   -0.11697778   -0.29619813
+row  3   -0.29619813   -0.11697778    0.11697778    0.29619813
+row  4   -0.75000000   -0.29619813    0.29619813    0.75000000
+\end{Verbatim}
+\noindent
+To obtain this end result, we need to the add some statements to
+the program {\fontsize{10pt}{10pt}\Verb!write1.py!}. For the column headings we need
+to know the number of columns, i.e., the length of the rows,
+and loop from 1 to this length:
+
+\begin{shadedquoteBlue}
+\fontsize{9pt}{9pt}
+\begin{Verbatim}
+ncolumns = len(data[0])
+outfile.write('          ')
+for i in range(1, ncolumns+1):
+    outfile.write('%10s    ' % ('column %2d' % i))
+outfile.write('\n')
+\end{Verbatim}
+\end{shadedquoteBlue}
+\noindent
+Note the use of a nested printf construction: The text we want to
+insert is itself a printf string. We could also have written the
+text as {\fontsize{10pt}{10pt}\Verb!'column  ' + str(i)!}, but then the length of the
+resulting string would depend on the number of digits in {\fontsize{10pt}{10pt}\Verb!i!}.
+It is recommended to always use printf constructions for
+a tabular output format, because this gives automatic padding of
+blanks so that the width of the output strings remain the same.
+As always, the tuning of the widths is done in a trial-and-error
+process.
+
+To add the row headings, we need a counter over the row numbers:
+
+\begin{shadedquoteBlue}
+\fontsize{9pt}{9pt}
+\begin{Verbatim}
+row_counter = 1
+for row in data:
+    outfile.write('row %2d' % row_counter)
+    for column in row:
+        outfile.write('%14.8f' % column)
+    outfile.write('\n')
+    row_counter += 1
+\end{Verbatim}
+\end{shadedquoteBlue}
+\noindent
+The complete code is found in the file \href{{http://some.where.net/doconce/test/software/input/write2.py}}{\nolinkurl{write2.py}\footnote{\texttt{http://some.where.net/doconce/test/software/input/write2.py}}}.
+We could, alternatively, iterate over the indices in the list:
+
+\begin{shadedquoteBlue}
+\fontsize{9pt}{9pt}
+\begin{Verbatim}
+for i in range(len(data)):
+    outfile.write('row %2d' % (i+1))
+    for j in range(len(data[i])):
+        outfile.write('%14.8f' % data[i][j])
+    outfile.write('\n')
+\end{Verbatim}
+\end{shadedquoteBlue}
+\noindent
+
+
+
+
+\subsection{Standard input and output as file objects}
+
+\index{standard input} \index{standard output}
+
+\index{sys.stdin@{\rm\texttt{sys.stdin}}}\index{sys.stdout@{\rm\texttt{sys.stdout}}}
+
+Reading user input from the keyboard applies the function
+{\fontsize{10pt}{10pt}\Verb!raw_input!} as explained in Section~\ref{sec:input:rawinput}.
+The keyboard is a medium that the computer in fact
+treats as a file, referred to
+as \emph{standard input}.
+
+The {\fontsize{10pt}{10pt}\Verb!print!} command prints text in the terminal window. This medium
+is also viewed as a file from the computer's point of view and called
+\emph{standard output}. All general-purpose programming languages
+allow reading from standard input and
+writing to standard output. This reading and writing can be done with
+two types of tools, either file-like objects or special tools like
+{\fontsize{10pt}{10pt}\Verb!raw_input!}
+and {\fontsize{10pt}{10pt}\Verb!print!} in Python.
+We will here describe the file-line objects:
+{\fontsize{10pt}{10pt}\Verb!sys.stdin!} for standard input
+and {\fontsize{10pt}{10pt}\Verb!sys.stdout!} for standard output. These objects
+behave as file objects, except that they do not need to be opened or
+closed. The statement
+
+\begin{shadedquoteBlue}
+\fontsize{9pt}{9pt}
+\begin{Verbatim}
+s = raw_input('Give s:')
+\end{Verbatim}
+\end{shadedquoteBlue}
+\noindent
+is equivalent to
+
+\begin{shadedquoteBlue}
+\fontsize{9pt}{9pt}
+\begin{Verbatim}
+print 'Give s: ',
+s = sys.stdin.readline()
+\end{Verbatim}
+\end{shadedquoteBlue}
+\noindent
+Recall that the trailing comma in the {\fontsize{10pt}{10pt}\Verb!print!} statement avoids the
+newline that {\fontsize{10pt}{10pt}\Verb!print!} by default adds to the output string.
+Similarly,
+
+\begin{shadedquoteBlue}
+\fontsize{9pt}{9pt}
+\begin{Verbatim}
+s = eval(raw_input('Give s:'))
+\end{Verbatim}
+\end{shadedquoteBlue}
+\noindent
+is equivalent to
+
+\begin{shadedquoteBlue}
+\fontsize{9pt}{9pt}
+\begin{Verbatim}
+print 'Give s: ',
+s = eval(sys.stdin.readline())
+\end{Verbatim}
+\end{shadedquoteBlue}
+\noindent
+For output to the terminal window, the statement
+
+\begin{shadedquoteBlue}
+\fontsize{9pt}{9pt}
+\begin{Verbatim}
+print s
+\end{Verbatim}
+\end{shadedquoteBlue}
+\noindent
+is equivalent to
+
+\begin{shadedquoteBlue}
+\fontsize{9pt}{9pt}
+\begin{Verbatim}
+sys.stdout.write(s + '\n')
+\end{Verbatim}
+\end{shadedquoteBlue}
+\noindent
+
+Why it is handy to have access to standard input and output
+as file objects can be illustrated by an example. Suppose you have a
+function that reads data from a file object {\fontsize{10pt}{10pt}\Verb!infile!}
+and writes data to a file object {\fontsize{10pt}{10pt}\Verb!outfile!}.
+A sample function may take the form
+
+\begin{shadedquoteBlue}
+\fontsize{9pt}{9pt}
+\begin{Verbatim}
+def x2f(infile, outfile, f):
+    for line in infile:
+        x = float(line)
+        y = f(x)
+        outfile.write('%g\n' % y)
+\end{Verbatim}
+\end{shadedquoteBlue}
+\noindent
+This function works with all types of files, including
+web pages as {\fontsize{10pt}{10pt}\Verb!infile!} (see Section~\ref{sec:files:webtxt}).
+With {\fontsize{10pt}{10pt}\Verb!sys.stdin!} as {\fontsize{10pt}{10pt}\Verb!infile!} and/or {\fontsize{10pt}{10pt}\Verb!sys.stdout!}
+as {\fontsize{10pt}{10pt}\Verb!outfile!}, the {\fontsize{10pt}{10pt}\Verb!x2f!} function also works with standard input
+and/or standard output. Without {\fontsize{10pt}{10pt}\Verb!sys.stdin!} and {\fontsize{10pt}{10pt}\Verb!sys.stdout!},
+we would need different code, employing {\fontsize{10pt}{10pt}\Verb!raw_input!}
+and {\fontsize{10pt}{10pt}\Verb!print!},
+to deal with standard input and output. Now we can write a single
+function that deals with all file media in a unified way.
+
+\index{standard error}
+\index{sys.stderr@{\rm\texttt{sys.stderr}}}
+
+There is also something called \emph{standard error}.
+Usually this is the terminal window, just as standard output, but
+programs can distinguish between writing ordinary output to standard
+output and error messages to standard error, and these output media
+can be redirected to, e.g., files such that one can separate
+error messages from ordinary output.
+In Python, standard error is the file-like object {\fontsize{10pt}{10pt}\Verb!sys.stderr!}.
+A typical application of {\fontsize{10pt}{10pt}\Verb!sys.stderr!} is to report errors:
+
+\begin{shadedquoteBlue}
+\fontsize{9pt}{9pt}
+\begin{Verbatim}
+if x < 0:
+    sys.stderr.write('Illegal value of x'); sys.exit(1)
+\end{Verbatim}
+\end{shadedquoteBlue}
+\noindent
+This message to {\fontsize{10pt}{10pt}\Verb!sys.stderr!} is an alternative to
+{\fontsize{10pt}{10pt}\Verb!print!} or raising an exception.
+
+\paragraph{Redirecting standard input, output, and error.}
+Standard output from a program {\fontsize{10pt}{10pt}\Verb!prog!}
+can be redirected to a file
+{\fontsize{10pt}{10pt}\Verb!output!} instead of the screen, by
+using the greater than sign:
+
+\vspace{4pt}
+\begin{Verbatim}[numbers=none,frame=lines,label=\fbox{{\tiny Terminal}},fontsize=\fontsize{9pt}{9pt},labelposition=topline,framesep=2.5mm,framerule=0.7pt]
+Terminal> prog > output
+\end{Verbatim}
+Here, {\fontsize{10pt}{10pt}\Verb!prog!} can be any
+program, including a Python program run as {\fontsize{10pt}{10pt}\Verb!python myprog.py!}.
+Similarly, output to the medium called \emph{standard error}
+can be redirected by
+
+\vspace{4pt}
+\begin{Verbatim}[numbers=none,frame=lines,label=\fbox{{\tiny Terminal}},fontsize=\fontsize{9pt}{9pt},labelposition=topline,framesep=2.5mm,framerule=0.7pt]
+Terminal> prog &> output
+\end{Verbatim}
+For example, error messages are normally written to standard error, which
+is exemplified in this little terminal session on a Unix machine:
+
+\vspace{4pt}
+\begin{Verbatim}[numbers=none,frame=lines,label=\fbox{{\tiny Terminal}},fontsize=\fontsize{9pt}{9pt},labelposition=topline,framesep=2.5mm,framerule=0.7pt]
+Terminal> ls bla-bla1 bla-bla2
+ls: cannot access bla-bla1: No such file or directory
+ls: cannot access bla-bla2: No such file or directory
+Terminal> ls bla-bla1 bla-bla2 &> errors
+Terminal> cat errors  # print the file errors
+ls: cannot access bla-bla1: No such file or directory
+ls: cannot access bla-bla2: No such file or directory
+\end{Verbatim}
+When the program reads from standard input (the keyboard),
+we can equally well redirect
+standard input to a file, say with name {\fontsize{10pt}{10pt}\Verb!raw_input!}, such that
+the program reads from this file rather than from the keyboard:
+
+\vspace{4pt}
+\begin{Verbatim}[numbers=none,frame=lines,label=\fbox{{\tiny Terminal}},fontsize=\fontsize{9pt}{9pt},labelposition=topline,framesep=2.5mm,framerule=0.7pt]
+Terminal> prog < input
+\end{Verbatim}
+Combinations are also possible:
+
+\vspace{4pt}
+\begin{Verbatim}[numbers=none,frame=lines,label=\fbox{{\tiny Terminal}},fontsize=\fontsize{9pt}{9pt},labelposition=topline,framesep=2.5mm,framerule=0.7pt]
+Terminal> prog < input > output
+\end{Verbatim}
+
+\paragraph{Note.}
+The redirection of standard output, input, and error
+does not work for Python programs executed with the {\fontsize{10pt}{10pt}\Verb!run!}
+command inside IPython, only when executed directly
+in the operating system in a terminal window, or with the same
+command prefixed with an exclamation mark in IPython.
+
+\paragraph{References.}
+To check the bibliography, we need to make citations to a book{TCSE3},
+Matplotlib \cite{Matplotlib:paper}, and more books \cite{Mertz,PythonQt}
+as well as Python itself \cite{Python}, and of course NumPy
+\cite{NumPy}.
+
+
+
+
+\appendix
+
+\chapter{Styles for Springer T2}
+
+The T2 style for Doconce-generated {\LaTeX} should make use of
+slightly modified {\fontsize{10pt}{10pt}\Verb!svmono.cls!} and {\fontsize{10pt}{10pt}\Verb!t2.sty!} files:
+
+\begin{itemize}
+ \item {\fontsize{10pt}{10pt}\Verb!svmonodo.cls!}
+
+ \item {\fontsize{10pt}{10pt}\Verb!t2do.sty!}
+\end{itemize}
+
+\noindent
+\clearemptydoublepage
+\markboth{Bibliography}{Bibliography}
+\thispagestyle{empty}
+
+\bibliographystyle{plain}
+\bibliography{papers}
+
+
+
+% ------------------- end of main content ---------------
+
+
+\clearemptydoublepage
+\markboth{Index}{Index}
+\thispagestyle{empty}
+\printindex
+
+\end{document}
 
 ************** File: tmp_Doconce.do.txt *****************
 
@@ -68643,11 +73120,11 @@ list of capabilities:
 <p>
 <!-- begin verbatim block  shpro-->
 <pre><code>Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 # transform doconce file to another format
-doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwiki|cwiki|pandoc|st|epytext file.do.txt
+doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwiki|cwiki|pandoc|st|epytext dofile
 
 # substitute a phrase by another using regular expressions
 doconce subst [-s -m -x --restore] regex-pattern regex-replacement file1 file2 ...
@@ -68666,7 +73143,7 @@ doconce replace_from_file file-with-from-to file1 file2 ...
 doconce expand_mako mako_code_file funcname file1 file2 ...
 
 # remove all inline comments in a doconce file
-doconce remove_inline_comments file.do.txt
+doconce remove_inline_comments dofile
 
 # create a directory for the sphinx format
 doconce sphinx_dir author='John Doe' title='Long title' \
@@ -68675,9 +73152,6 @@ doconce sphinx_dir author='John Doe' title='Long title' \
     do_file [do_file2 do_file3 ...]
 (requires sphinx version &gt;= 1.1)
 
-# replace latex-1 (non-ascii) characters by html codes
-doconce latin2html file.html
-
 # walk through a directory tree and insert doconce files as
 # docstrings in *.p.py files
 doconce insertdocstr rootdir
@@ -68685,14 +73159,8 @@ doconce insertdocstr rootdir
 # remove all files that the doconce format can regenerate
 doconce clean
 
-# print the header (preamble) for latex file
-doconce latex_header
-
-# print the footer for latex files
-doconce latex_footer
-
 # change encoding
-doconce change_encoding utf-8 latin1 filename
+doconce change_encoding utf-8 latin1 dofile
 
 # guess the encoding in a text
 doconce guess_encoding filename
@@ -68705,9 +73173,6 @@ doconce format sphinx complete_file
 doconce split_rst complete_file        # !split delimiters
 doconce sphinx_dir complete_file
 python automake_sphinx.py
-
-# edit URLs to local files and place them in _static
-doconce sphinxfix_local_URLs file.rst
 
 # split an html file into parts according to !split commands
 doconce split_html complete_file.html
@@ -68727,6 +73192,9 @@ doconce grab   --from[-] from-text [--to[-] to-text] somefile &gt; result
 # remove selected text from a file
 doconce remove --from[-] from-text [--to[-] to-text] somefile &gt; result
 
+# list all figure, movie or included code files
+doconce grep FIGURE|MOVIE|CODE dofile
+
 # run spellcheck on a set of files
 doconce spellcheck [-d .mydict.txt] *.do.txt
 
@@ -68736,22 +73204,22 @@ doconce ptex2tex mydoc -DMINTED pycod=minted sys=Verbatim \
         dat=\begin{quote}\begin{verbatim};\end{verbatim}\end{quote}
 
 # make HTML file via pandoc from Markdown (.md) file
-doconce md2html file
+doconce md2html file.md
 
 # make LaTeX file via pandoc from Markdown (.md) file
-doconce md2latex file
-
-# expand short cut commands to full form in files
-doconce expand_commands file1 file2 ...
+doconce md2latex file.md
 
 # combine several images into one
 doconce combine_images image1 image2 ... output_file
 
-# insert a table of exercises in a latex file myfile.p.tex
-doconce latex_exercise_toc myfile
+# report problems from a LaTeX .log file
+doconce latex_problems mydoc.log [overfull-hbox-limit]
 
 # list all labels in a document (for purposes of cleaning them up)
 doconce list_labels myfile
+
+# generate script for substituting generalized references
+doconce ref_external mydoc [pubfile]
 
 # check all links in HTML files
 doconce linkchecker *.html
@@ -68771,9 +73239,6 @@ doconce pygmentize myfile [pygments-style]
 # generate a make.sh script for translating a doconce file to various formats
 doconce makefile docname doconcefile [html sphinx pdflatex ...]
 
-# fix common problems in bibtex files for publish import
-doconce fix_bibtex4publish file1.bib file2.bib ...
-
 # find differences between two files
 doconce diff file1.do.txt file2.do.txt [diffprog]
 (diffprog can be difflib, diff, pdiff, latexdiff, kdiff3, diffuse, ...)
@@ -68783,6 +73248,27 @@ doconce gitdiff file1 file2 file3 ...
 
 # convert csv file to doconce table format
 doconce csv2table somefile.csv
+
+# edit URLs to local files and place them in _static
+doconce sphinxfix_local_URLs file.rst
+
+# replace latex-1 (non-ascii) characters by html codes
+doconce latin2html file.html
+
+# fix common problems in bibtex files for publish import
+doconce fix_bibtex4publish file1.bib file2.bib ...
+
+# print the header (preamble) for latex file
+doconce latex_header
+
+# print the footer for latex files
+doconce latex_footer
+
+# expand short cut commands to full form in files
+doconce expand_commands file1 file2 ...
+
+# insert a table of exercises in a latex file myfile.p.tex
+doconce latex_exercise_toc myfile
 </code></pre>
 <!-- end verbatim block -->
 
@@ -69059,9 +73545,13 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \pagestyle{headings}
 % #elif LATEX_STYLE == "Springer_T2"
 % Style: T2 (Springer)
-\documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmono}
-\usepackage{t2}
+% Use svmono.cls with doconce modifications for bibliography
+\documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmonodo}
+
+% Use t2.sty with doconce modifications
+\usepackage{t2do}
 \special{papersize=193mm,260mm}
+
 % #elif LATEX_STYLE == "Springer_llcse"
 % Style: Lecture Notes in Computer Science (Springer)
 \documentclass[oribib]{llncs}
@@ -69233,9 +73723,10 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % --- begin definitions of admonition environments ---
 
-% Admonition is an oval gray box
+% Admonition style "graybox1" is an oval colored box
+\colorlet{graybox1_background}{gray!5}
 \newmdenv[
-  backgroundcolor=gray!5,  %% white with 5%% gray
+  backgroundcolor=graybox1_background,
   skipabove=\topsep,
   skipbelow=\topsep,
   outerlinewidth=0,
@@ -69351,8 +73842,15 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 % #endif
 
 
-\newenvironment{doconce:exercise}{}{}
-\newcounter{doconce:exercise:counter}
+\newenvironment{doconceexercise}{}{}
+\newcounter{doconceexercisecounter}
+
+% #if LATEX_STYLE not in ("Koma_Script", "Springer_T2")
+% Make sure blank even-numbered pages before new chapters are
+% totally blank with no header
+\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
+%\let\cleardoublepage\clearemptydoublepage % caused error in the toc
+% #endif
 
 % --- end of standard preamble for documents ---
 
@@ -69372,6 +73870,18 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 % ------------------- main content ----------------------
 
 
+
+% #if LATEX_STYLE in ("Springer_T2", "Springer_lncse")
+\frontmatter
+\setcounter{page}{3}
+\pagestyle{headings}
+% #endif
+
+% #if LATEX_STYLE == "Springer_lncse"
+% With hyperref loaded, \contentsline needs 3 args
+%\contentsline{chapter}{Bibliography}{829}{chapter.Bib}
+%\contentsline{chapter}{Index}{831}{chapter.Index}
+% #endif
 
 % ----------------- title -------------------------
 
@@ -69490,11 +74000,25 @@ Jan 32, 2100
 
 % #if LATEX_HEADING != "beamer"
 \tableofcontents
+
+% #if LATEX_STYLE == "Springer_lncse"
+\contentsline{chapter}{\refname}{9999}{chapter.Bib}
+\contentsline{chapter}{Index}{9999}{chapter.Index}
+% #endif
+
+
 % #ifdef TODONOTES
 \listoftodos[List of inline comments]
 % #endif
 
+
 \vspace{1cm} % after toc
+% #endif
+
+% #if LATEX_STYLE == "Springer_T2"
+\mymainmatter
+% #elif LATEX_STYLE == "Springer_lncse"
+\mainmatter
 % #endif
 
 
@@ -70215,11 +74739,11 @@ list of capabilities:
 
 \bshpro
 Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 # transform doconce file to another format
-doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwiki|cwiki|pandoc|st|epytext file.do.txt
+doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwiki|cwiki|pandoc|st|epytext dofile
 
 # substitute a phrase by another using regular expressions
 doconce subst [-s -m -x --restore] regex-pattern regex-replacement file1 file2 ...
@@ -70238,7 +74762,7 @@ doconce replace_from_file file-with-from-to file1 file2 ...
 doconce expand_mako mako_code_file funcname file1 file2 ...
 
 # remove all inline comments in a doconce file
-doconce remove_inline_comments file.do.txt
+doconce remove_inline_comments dofile
 
 # create a directory for the sphinx format
 doconce sphinx_dir author='John Doe' title='Long title' \
@@ -70247,9 +74771,6 @@ doconce sphinx_dir author='John Doe' title='Long title' \
     do_file [do_file2 do_file3 ...]
 (requires sphinx version >= 1.1)
 
-# replace latex-1 (non-ascii) characters by html codes
-doconce latin2html file.html
-
 # walk through a directory tree and insert doconce files as
 # docstrings in *.p.py files
 doconce insertdocstr rootdir
@@ -70257,14 +74778,8 @@ doconce insertdocstr rootdir
 # remove all files that the doconce format can regenerate
 doconce clean
 
-# print the header (preamble) for latex file
-doconce latex_header
-
-# print the footer for latex files
-doconce latex_footer
-
 # change encoding
-doconce change_encoding utf-8 latin1 filename
+doconce change_encoding utf-8 latin1 dofile
 
 # guess the encoding in a text
 doconce guess_encoding filename
@@ -70277,9 +74792,6 @@ doconce format sphinx complete_file
 doconce split_rst complete_file        # !split delimiters
 doconce sphinx_dir complete_file
 python automake_sphinx.py
-
-# edit URLs to local files and place them in _static
-doconce sphinxfix_local_URLs file.rst
 
 # split an html file into parts according to !split commands
 doconce split_html complete_file.html
@@ -70299,6 +74811,9 @@ doconce grab   --from[-] from-text [--to[-] to-text] somefile > result
 # remove selected text from a file
 doconce remove --from[-] from-text [--to[-] to-text] somefile > result
 
+# list all figure, movie or included code files
+doconce grep FIGURE|MOVIE|CODE dofile
+
 # run spellcheck on a set of files
 doconce spellcheck [-d .mydict.txt] *.do.txt
 
@@ -70308,22 +74823,22 @@ doconce ptex2tex mydoc -DMINTED pycod=minted sys=Verbatim \
         dat=\begin{quote}\begin{verbatim};\end{verbatim}\end{quote}
 
 # make HTML file via pandoc from Markdown (.md) file
-doconce md2html file
+doconce md2html file.md
 
 # make LaTeX file via pandoc from Markdown (.md) file
-doconce md2latex file
-
-# expand short cut commands to full form in files
-doconce expand_commands file1 file2 ...
+doconce md2latex file.md
 
 # combine several images into one
 doconce combine_images image1 image2 ... output_file
 
-# insert a table of exercises in a latex file myfile.p.tex
-doconce latex_exercise_toc myfile
+# report problems from a LaTeX .log file
+doconce latex_problems mydoc.log [overfull-hbox-limit]
 
 # list all labels in a document (for purposes of cleaning them up)
 doconce list_labels myfile
+
+# generate script for substituting generalized references
+doconce ref_external mydoc [pubfile]
 
 # check all links in HTML files
 doconce linkchecker *.html
@@ -70343,9 +74858,6 @@ doconce pygmentize myfile [pygments-style]
 # generate a make.sh script for translating a doconce file to various formats
 doconce makefile docname doconcefile [html sphinx pdflatex ...]
 
-# fix common problems in bibtex files for publish import
-doconce fix_bibtex4publish file1.bib file2.bib ...
-
 # find differences between two files
 doconce diff file1.do.txt file2.do.txt [diffprog]
 (diffprog can be difflib, diff, pdiff, latexdiff, kdiff3, diffuse, ...)
@@ -70355,6 +74867,27 @@ doconce gitdiff file1 file2 file3 ...
 
 # convert csv file to doconce table format
 doconce csv2table somefile.csv
+
+# edit URLs to local files and place them in _static
+doconce sphinxfix_local_URLs file.rst
+
+# replace latex-1 (non-ascii) characters by html codes
+doconce latin2html file.html
+
+# fix common problems in bibtex files for publish import
+doconce fix_bibtex4publish file1.bib file2.bib ...
+
+# print the header (preamble) for latex file
+doconce latex_header
+
+# print the footer for latex files
+doconce latex_footer
+
+# expand short cut commands to full form in files
+doconce expand_commands file1 file2 ...
+
+# insert a table of exercises in a latex file myfile.p.tex
+doconce latex_exercise_toc myfile
 \eshpro
 
 \subsection{Exercises}
@@ -71304,11 +75837,11 @@ list of capabilities::
 
 
         Usage: doconce command [optional arguments]
-        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
         
         
         # transform doconce file to another format
-        doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwiki|cwiki|pandoc|st|epytext file.do.txt
+        doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwiki|cwiki|pandoc|st|epytext dofile
         
         # substitute a phrase by another using regular expressions
         doconce subst [-s -m -x --restore] regex-pattern regex-replacement file1 file2 ...
@@ -71327,7 +75860,7 @@ list of capabilities::
         doconce expand_mako mako_code_file funcname file1 file2 ...
         
         # remove all inline comments in a doconce file
-        doconce remove_inline_comments file.do.txt
+        doconce remove_inline_comments dofile
         
         # create a directory for the sphinx format
         doconce sphinx_dir author='John Doe' title='Long title' \
@@ -71336,9 +75869,6 @@ list of capabilities::
             do_file [do_file2 do_file3 ...]
         (requires sphinx version >= 1.1)
         
-        # replace latex-1 (non-ascii) characters by html codes
-        doconce latin2html file.html
-        
         # walk through a directory tree and insert doconce files as
         # docstrings in *.p.py files
         doconce insertdocstr rootdir
@@ -71346,14 +75876,8 @@ list of capabilities::
         # remove all files that the doconce format can regenerate
         doconce clean
         
-        # print the header (preamble) for latex file
-        doconce latex_header
-        
-        # print the footer for latex files
-        doconce latex_footer
-        
         # change encoding
-        doconce change_encoding utf-8 latin1 filename
+        doconce change_encoding utf-8 latin1 dofile
         
         # guess the encoding in a text
         doconce guess_encoding filename
@@ -71366,9 +75890,6 @@ list of capabilities::
         doconce split_rst complete_file        # !split delimiters
         doconce sphinx_dir complete_file
         python automake_sphinx.py
-        
-        # edit URLs to local files and place them in _static
-        doconce sphinxfix_local_URLs file.rst
         
         # split an html file into parts according to !split commands
         doconce split_html complete_file.html
@@ -71388,6 +75909,9 @@ list of capabilities::
         # remove selected text from a file
         doconce remove --from[-] from-text [--to[-] to-text] somefile > result
         
+        # list all figure, movie or included code files
+        doconce grep FIGURE|MOVIE|CODE dofile
+        
         # run spellcheck on a set of files
         doconce spellcheck [-d .mydict.txt] *.do.txt
         
@@ -71397,22 +75921,22 @@ list of capabilities::
                 dat=\begin{quote}\begin{verbatim};\end{verbatim}\end{quote}
         
         # make HTML file via pandoc from Markdown (.md) file
-        doconce md2html file
+        doconce md2html file.md
         
         # make LaTeX file via pandoc from Markdown (.md) file
-        doconce md2latex file
-        
-        # expand short cut commands to full form in files
-        doconce expand_commands file1 file2 ...
+        doconce md2latex file.md
         
         # combine several images into one
         doconce combine_images image1 image2 ... output_file
         
-        # insert a table of exercises in a latex file myfile.p.tex
-        doconce latex_exercise_toc myfile
+        # report problems from a LaTeX .log file
+        doconce latex_problems mydoc.log [overfull-hbox-limit]
         
         # list all labels in a document (for purposes of cleaning them up)
         doconce list_labels myfile
+        
+        # generate script for substituting generalized references
+        doconce ref_external mydoc [pubfile]
         
         # check all links in HTML files
         doconce linkchecker *.html
@@ -71432,9 +75956,6 @@ list of capabilities::
         # generate a make.sh script for translating a doconce file to various formats
         doconce makefile docname doconcefile [html sphinx pdflatex ...]
         
-        # fix common problems in bibtex files for publish import
-        doconce fix_bibtex4publish file1.bib file2.bib ...
-        
         # find differences between two files
         doconce diff file1.do.txt file2.do.txt [diffprog]
         (diffprog can be difflib, diff, pdiff, latexdiff, kdiff3, diffuse, ...)
@@ -71444,6 +75965,27 @@ list of capabilities::
         
         # convert csv file to doconce table format
         doconce csv2table somefile.csv
+        
+        # edit URLs to local files and place them in _static
+        doconce sphinxfix_local_URLs file.rst
+        
+        # replace latex-1 (non-ascii) characters by html codes
+        doconce latin2html file.html
+        
+        # fix common problems in bibtex files for publish import
+        doconce fix_bibtex4publish file1.bib file2.bib ...
+        
+        # print the header (preamble) for latex file
+        doconce latex_header
+        
+        # print the footer for latex files
+        doconce latex_footer
+        
+        # expand short cut commands to full form in files
+        doconce expand_commands file1 file2 ...
+        
+        # insert a table of exercises in a latex file myfile.p.tex
+        doconce latex_exercise_toc myfile
 
 
 Exercises
@@ -71645,7 +76187,6 @@ Resources
 ---------
 
  * Excellent "Sphinx Tutorial" by C. Reller: "http://people.ee.ethz.ch/~creller/web/tricks/reST.html"
-
 
 ************** File: quickref.sphinx.rst *****************
 .. Automatically generated reST file from Doconce source
@@ -72431,11 +76972,11 @@ list of capabilities:
 .. code-block:: bash
 
         Usage: doconce command [optional arguments]
-        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
         
         
         # transform doconce file to another format
-        doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwiki|cwiki|pandoc|st|epytext file.do.txt
+        doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwiki|cwiki|pandoc|st|epytext dofile
         
         # substitute a phrase by another using regular expressions
         doconce subst [-s -m -x --restore] regex-pattern regex-replacement file1 file2 ...
@@ -72454,7 +76995,7 @@ list of capabilities:
         doconce expand_mako mako_code_file funcname file1 file2 ...
         
         # remove all inline comments in a doconce file
-        doconce remove_inline_comments file.do.txt
+        doconce remove_inline_comments dofile
         
         # create a directory for the sphinx format
         doconce sphinx_dir author='John Doe' title='Long title' \
@@ -72463,9 +77004,6 @@ list of capabilities:
             do_file [do_file2 do_file3 ...]
         (requires sphinx version >= 1.1)
         
-        # replace latex-1 (non-ascii) characters by html codes
-        doconce latin2html file.html
-        
         # walk through a directory tree and insert doconce files as
         # docstrings in *.p.py files
         doconce insertdocstr rootdir
@@ -72473,14 +77011,8 @@ list of capabilities:
         # remove all files that the doconce format can regenerate
         doconce clean
         
-        # print the header (preamble) for latex file
-        doconce latex_header
-        
-        # print the footer for latex files
-        doconce latex_footer
-        
         # change encoding
-        doconce change_encoding utf-8 latin1 filename
+        doconce change_encoding utf-8 latin1 dofile
         
         # guess the encoding in a text
         doconce guess_encoding filename
@@ -72493,9 +77025,6 @@ list of capabilities:
         doconce split_rst complete_file        # !split delimiters
         doconce sphinx_dir complete_file
         python automake_sphinx.py
-        
-        # edit URLs to local files and place them in _static
-        doconce sphinxfix_local_URLs file.rst
         
         # split an html file into parts according to !split commands
         doconce split_html complete_file.html
@@ -72515,6 +77044,9 @@ list of capabilities:
         # remove selected text from a file
         doconce remove --from[-] from-text [--to[-] to-text] somefile > result
         
+        # list all figure, movie or included code files
+        doconce grep FIGURE|MOVIE|CODE dofile
+        
         # run spellcheck on a set of files
         doconce spellcheck [-d .mydict.txt] *.do.txt
         
@@ -72524,22 +77056,22 @@ list of capabilities:
                 dat=\begin{quote}\begin{verbatim};\end{verbatim}\end{quote}
         
         # make HTML file via pandoc from Markdown (.md) file
-        doconce md2html file
+        doconce md2html file.md
         
         # make LaTeX file via pandoc from Markdown (.md) file
-        doconce md2latex file
-        
-        # expand short cut commands to full form in files
-        doconce expand_commands file1 file2 ...
+        doconce md2latex file.md
         
         # combine several images into one
         doconce combine_images image1 image2 ... output_file
         
-        # insert a table of exercises in a latex file myfile.p.tex
-        doconce latex_exercise_toc myfile
+        # report problems from a LaTeX .log file
+        doconce latex_problems mydoc.log [overfull-hbox-limit]
         
         # list all labels in a document (for purposes of cleaning them up)
         doconce list_labels myfile
+        
+        # generate script for substituting generalized references
+        doconce ref_external mydoc [pubfile]
         
         # check all links in HTML files
         doconce linkchecker *.html
@@ -72559,9 +77091,6 @@ list of capabilities:
         # generate a make.sh script for translating a doconce file to various formats
         doconce makefile docname doconcefile [html sphinx pdflatex ...]
         
-        # fix common problems in bibtex files for publish import
-        doconce fix_bibtex4publish file1.bib file2.bib ...
-        
         # find differences between two files
         doconce diff file1.do.txt file2.do.txt [diffprog]
         (diffprog can be difflib, diff, pdiff, latexdiff, kdiff3, diffuse, ...)
@@ -72571,6 +77100,27 @@ list of capabilities:
         
         # convert csv file to doconce table format
         doconce csv2table somefile.csv
+        
+        # edit URLs to local files and place them in _static
+        doconce sphinxfix_local_URLs file.rst
+        
+        # replace latex-1 (non-ascii) characters by html codes
+        doconce latin2html file.html
+        
+        # fix common problems in bibtex files for publish import
+        doconce fix_bibtex4publish file1.bib file2.bib ...
+        
+        # print the header (preamble) for latex file
+        doconce latex_header
+        
+        # print the footer for latex files
+        doconce latex_footer
+        
+        # expand short cut commands to full form in files
+        doconce expand_commands file1 file2 ...
+        
+        # insert a table of exercises in a latex file myfile.p.tex
+        doconce latex_exercise_toc myfile
 
 
 Exercises
@@ -72783,7 +77333,6 @@ Resources
 ---------
 
  * Excellent "Sphinx Tutorial" by C. Reller: "http://people.ee.ethz.ch/~creller/web/tricks/reST.html"
-
 
 ************** File: quickref.gwiki *****************
 #summary Doconce Quick Reference
@@ -73420,11 +77969,11 @@ list of capabilities:
 
 {{{
 Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 # transform doconce file to another format
-doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwiki|cwiki|pandoc|st|epytext file.do.txt
+doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwiki|cwiki|pandoc|st|epytext dofile
 
 # substitute a phrase by another using regular expressions
 doconce subst [-s -m -x --restore] regex-pattern regex-replacement file1 file2 ...
@@ -73443,7 +77992,7 @@ doconce replace_from_file file-with-from-to file1 file2 ...
 doconce expand_mako mako_code_file funcname file1 file2 ...
 
 # remove all inline comments in a doconce file
-doconce remove_inline_comments file.do.txt
+doconce remove_inline_comments dofile
 
 # create a directory for the sphinx format
 doconce sphinx_dir author='John Doe' title='Long title' \
@@ -73452,9 +78001,6 @@ doconce sphinx_dir author='John Doe' title='Long title' \
     do_file [do_file2 do_file3 ...]
 (requires sphinx version >= 1.1)
 
-# replace latex-1 (non-ascii) characters by html codes
-doconce latin2html file.html
-
 # walk through a directory tree and insert doconce files as
 # docstrings in *.p.py files
 doconce insertdocstr rootdir
@@ -73462,14 +78008,8 @@ doconce insertdocstr rootdir
 # remove all files that the doconce format can regenerate
 doconce clean
 
-# print the header (preamble) for latex file
-doconce latex_header
-
-# print the footer for latex files
-doconce latex_footer
-
 # change encoding
-doconce change_encoding utf-8 latin1 filename
+doconce change_encoding utf-8 latin1 dofile
 
 # guess the encoding in a text
 doconce guess_encoding filename
@@ -73482,9 +78022,6 @@ doconce format sphinx complete_file
 doconce split_rst complete_file        # !split delimiters
 doconce sphinx_dir complete_file
 python automake_sphinx.py
-
-# edit URLs to local files and place them in _static
-doconce sphinxfix_local_URLs file.rst
 
 # split an html file into parts according to !split commands
 doconce split_html complete_file.html
@@ -73504,6 +78041,9 @@ doconce grab   --from[-] from-text [--to[-] to-text] somefile > result
 # remove selected text from a file
 doconce remove --from[-] from-text [--to[-] to-text] somefile > result
 
+# list all figure, movie or included code files
+doconce grep FIGURE|MOVIE|CODE dofile
+
 # run spellcheck on a set of files
 doconce spellcheck [-d .mydict.txt] *.do.txt
 
@@ -73513,22 +78053,22 @@ doconce ptex2tex mydoc -DMINTED pycod=minted sys=Verbatim \
         dat=\begin{quote}\begin{verbatim};\end{verbatim}\end{quote}
 
 # make HTML file via pandoc from Markdown (.md) file
-doconce md2html file
+doconce md2html file.md
 
 # make LaTeX file via pandoc from Markdown (.md) file
-doconce md2latex file
-
-# expand short cut commands to full form in files
-doconce expand_commands file1 file2 ...
+doconce md2latex file.md
 
 # combine several images into one
 doconce combine_images image1 image2 ... output_file
 
-# insert a table of exercises in a latex file myfile.p.tex
-doconce latex_exercise_toc myfile
+# report problems from a LaTeX .log file
+doconce latex_problems mydoc.log [overfull-hbox-limit]
 
 # list all labels in a document (for purposes of cleaning them up)
 doconce list_labels myfile
+
+# generate script for substituting generalized references
+doconce ref_external mydoc [pubfile]
 
 # check all links in HTML files
 doconce linkchecker *.html
@@ -73548,9 +78088,6 @@ doconce pygmentize myfile [pygments-style]
 # generate a make.sh script for translating a doconce file to various formats
 doconce makefile docname doconcefile [html sphinx pdflatex ...]
 
-# fix common problems in bibtex files for publish import
-doconce fix_bibtex4publish file1.bib file2.bib ...
-
 # find differences between two files
 doconce diff file1.do.txt file2.do.txt [diffprog]
 (diffprog can be difflib, diff, pdiff, latexdiff, kdiff3, diffuse, ...)
@@ -73560,6 +78097,27 @@ doconce gitdiff file1 file2 file3 ...
 
 # convert csv file to doconce table format
 doconce csv2table somefile.csv
+
+# edit URLs to local files and place them in _static
+doconce sphinxfix_local_URLs file.rst
+
+# replace latex-1 (non-ascii) characters by html codes
+doconce latin2html file.html
+
+# fix common problems in bibtex files for publish import
+doconce fix_bibtex4publish file1.bib file2.bib ...
+
+# print the header (preamble) for latex file
+doconce latex_header
+
+# print the footer for latex files
+doconce latex_footer
+
+# expand short cut commands to full form in files
+doconce expand_commands file1 file2 ...
+
+# insert a table of exercises in a latex file myfile.p.tex
+doconce latex_exercise_toc myfile
 }}}
 
 ==== Exercises ====
@@ -74417,11 +78975,11 @@ list of capabilities:
 
 <syntaxhighlight lang="bash">
 Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 # transform doconce file to another format
-doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwiki|cwiki|pandoc|st|epytext file.do.txt
+doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwiki|cwiki|pandoc|st|epytext dofile
 
 # substitute a phrase by another using regular expressions
 doconce subst [-s -m -x --restore] regex-pattern regex-replacement file1 file2 ...
@@ -74440,7 +78998,7 @@ doconce replace_from_file file-with-from-to file1 file2 ...
 doconce expand_mako mako_code_file funcname file1 file2 ...
 
 # remove all inline comments in a doconce file
-doconce remove_inline_comments file.do.txt
+doconce remove_inline_comments dofile
 
 # create a directory for the sphinx format
 doconce sphinx_dir author='John Doe' title='Long title' \
@@ -74449,9 +79007,6 @@ doconce sphinx_dir author='John Doe' title='Long title' \
     do_file [do_file2 do_file3 ...]
 (requires sphinx version >= 1.1)
 
-# replace latex-1 (non-ascii) characters by html codes
-doconce latin2html file.html
-
 # walk through a directory tree and insert doconce files as
 # docstrings in *.p.py files
 doconce insertdocstr rootdir
@@ -74459,14 +79014,8 @@ doconce insertdocstr rootdir
 # remove all files that the doconce format can regenerate
 doconce clean
 
-# print the header (preamble) for latex file
-doconce latex_header
-
-# print the footer for latex files
-doconce latex_footer
-
 # change encoding
-doconce change_encoding utf-8 latin1 filename
+doconce change_encoding utf-8 latin1 dofile
 
 # guess the encoding in a text
 doconce guess_encoding filename
@@ -74479,9 +79028,6 @@ doconce format sphinx complete_file
 doconce split_rst complete_file        # !split delimiters
 doconce sphinx_dir complete_file
 python automake_sphinx.py
-
-# edit URLs to local files and place them in _static
-doconce sphinxfix_local_URLs file.rst
 
 # split an html file into parts according to !split commands
 doconce split_html complete_file.html
@@ -74501,6 +79047,9 @@ doconce grab   --from[-] from-text [--to[-] to-text] somefile > result
 # remove selected text from a file
 doconce remove --from[-] from-text [--to[-] to-text] somefile > result
 
+# list all figure, movie or included code files
+doconce grep FIGURE|MOVIE|CODE dofile
+
 # run spellcheck on a set of files
 doconce spellcheck [-d .mydict.txt] *.do.txt
 
@@ -74510,22 +79059,22 @@ doconce ptex2tex mydoc -DMINTED pycod=minted sys=Verbatim \
         dat=\begin{quote}\begin{verbatim};\end{verbatim}\end{quote}
 
 # make HTML file via pandoc from Markdown (.md) file
-doconce md2html file
+doconce md2html file.md
 
 # make LaTeX file via pandoc from Markdown (.md) file
-doconce md2latex file
-
-# expand short cut commands to full form in files
-doconce expand_commands file1 file2 ...
+doconce md2latex file.md
 
 # combine several images into one
 doconce combine_images image1 image2 ... output_file
 
-# insert a table of exercises in a latex file myfile.p.tex
-doconce latex_exercise_toc myfile
+# report problems from a LaTeX .log file
+doconce latex_problems mydoc.log [overfull-hbox-limit]
 
 # list all labels in a document (for purposes of cleaning them up)
 doconce list_labels myfile
+
+# generate script for substituting generalized references
+doconce ref_external mydoc [pubfile]
 
 # check all links in HTML files
 doconce linkchecker *.html
@@ -74545,9 +79094,6 @@ doconce pygmentize myfile [pygments-style]
 # generate a make.sh script for translating a doconce file to various formats
 doconce makefile docname doconcefile [html sphinx pdflatex ...]
 
-# fix common problems in bibtex files for publish import
-doconce fix_bibtex4publish file1.bib file2.bib ...
-
 # find differences between two files
 doconce diff file1.do.txt file2.do.txt [diffprog]
 (diffprog can be difflib, diff, pdiff, latexdiff, kdiff3, diffuse, ...)
@@ -74557,6 +79103,27 @@ doconce gitdiff file1 file2 file3 ...
 
 # convert csv file to doconce table format
 doconce csv2table somefile.csv
+
+# edit URLs to local files and place them in _static
+doconce sphinxfix_local_URLs file.rst
+
+# replace latex-1 (non-ascii) characters by html codes
+doconce latin2html file.html
+
+# fix common problems in bibtex files for publish import
+doconce fix_bibtex4publish file1.bib file2.bib ...
+
+# print the header (preamble) for latex file
+doconce latex_header
+
+# print the footer for latex files
+doconce latex_footer
+
+# expand short cut commands to full form in files
+doconce expand_commands file1 file2 ...
+
+# insert a table of exercises in a latex file myfile.p.tex
+doconce latex_exercise_toc myfile
 </syntaxhighlight>
 
 ==== Exercises ====
@@ -75384,11 +79951,11 @@ list of capabilities:
 
 {{{
 Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 # transform doconce file to another format
-doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwiki|cwiki|pandoc|st|epytext file.do.txt
+doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwiki|cwiki|pandoc|st|epytext dofile
 
 # substitute a phrase by another using regular expressions
 doconce subst [-s -m -x --restore] regex-pattern regex-replacement file1 file2 ...
@@ -75407,7 +79974,7 @@ doconce replace_from_file file-with-from-to file1 file2 ...
 doconce expand_mako mako_code_file funcname file1 file2 ...
 
 # remove all inline comments in a doconce file
-doconce remove_inline_comments file.do.txt
+doconce remove_inline_comments dofile
 
 # create a directory for the sphinx format
 doconce sphinx_dir author='John Doe' title='Long title' \
@@ -75416,9 +79983,6 @@ doconce sphinx_dir author='John Doe' title='Long title' \
     do_file [do_file2 do_file3 ...]
 (requires sphinx version >= 1.1)
 
-# replace latex-1 (non-ascii) characters by html codes
-doconce latin2html file.html
-
 # walk through a directory tree and insert doconce files as
 # docstrings in *.p.py files
 doconce insertdocstr rootdir
@@ -75426,14 +79990,8 @@ doconce insertdocstr rootdir
 # remove all files that the doconce format can regenerate
 doconce clean
 
-# print the header (preamble) for latex file
-doconce latex_header
-
-# print the footer for latex files
-doconce latex_footer
-
 # change encoding
-doconce change_encoding utf-8 latin1 filename
+doconce change_encoding utf-8 latin1 dofile
 
 # guess the encoding in a text
 doconce guess_encoding filename
@@ -75446,9 +80004,6 @@ doconce format sphinx complete_file
 doconce split_rst complete_file        # !split delimiters
 doconce sphinx_dir complete_file
 python automake_sphinx.py
-
-# edit URLs to local files and place them in _static
-doconce sphinxfix_local_URLs file.rst
 
 # split an html file into parts according to !split commands
 doconce split_html complete_file.html
@@ -75468,6 +80023,9 @@ doconce grab   --from[-] from-text [--to[-] to-text] somefile > result
 # remove selected text from a file
 doconce remove --from[-] from-text [--to[-] to-text] somefile > result
 
+# list all figure, movie or included code files
+doconce grep FIGURE|MOVIE|CODE dofile
+
 # run spellcheck on a set of files
 doconce spellcheck [-d .mydict.txt] *.do.txt
 
@@ -75477,22 +80035,22 @@ doconce ptex2tex mydoc -DMINTED pycod=minted sys=Verbatim \
         dat=\begin{quote}\begin{verbatim};\end{verbatim}\end{quote}
 
 # make HTML file via pandoc from Markdown (.md) file
-doconce md2html file
+doconce md2html file.md
 
 # make LaTeX file via pandoc from Markdown (.md) file
-doconce md2latex file
-
-# expand short cut commands to full form in files
-doconce expand_commands file1 file2 ...
+doconce md2latex file.md
 
 # combine several images into one
 doconce combine_images image1 image2 ... output_file
 
-# insert a table of exercises in a latex file myfile.p.tex
-doconce latex_exercise_toc myfile
+# report problems from a LaTeX .log file
+doconce latex_problems mydoc.log [overfull-hbox-limit]
 
 # list all labels in a document (for purposes of cleaning them up)
 doconce list_labels myfile
+
+# generate script for substituting generalized references
+doconce ref_external mydoc [pubfile]
 
 # check all links in HTML files
 doconce linkchecker *.html
@@ -75512,9 +80070,6 @@ doconce pygmentize myfile [pygments-style]
 # generate a make.sh script for translating a doconce file to various formats
 doconce makefile docname doconcefile [html sphinx pdflatex ...]
 
-# fix common problems in bibtex files for publish import
-doconce fix_bibtex4publish file1.bib file2.bib ...
-
 # find differences between two files
 doconce diff file1.do.txt file2.do.txt [diffprog]
 (diffprog can be difflib, diff, pdiff, latexdiff, kdiff3, diffuse, ...)
@@ -75524,6 +80079,27 @@ doconce gitdiff file1 file2 file3 ...
 
 # convert csv file to doconce table format
 doconce csv2table somefile.csv
+
+# edit URLs to local files and place them in _static
+doconce sphinxfix_local_URLs file.rst
+
+# replace latex-1 (non-ascii) characters by html codes
+doconce latin2html file.html
+
+# fix common problems in bibtex files for publish import
+doconce fix_bibtex4publish file1.bib file2.bib ...
+
+# print the header (preamble) for latex file
+doconce latex_header
+
+# print the footer for latex files
+doconce latex_footer
+
+# expand short cut commands to full form in files
+doconce expand_commands file1 file2 ...
+
+# insert a table of exercises in a latex file myfile.p.tex
+doconce latex_exercise_toc myfile
 }}}
 
 == Exercises ==
@@ -76360,11 +80936,11 @@ list of capabilities::
 
 
         Usage: doconce command [optional arguments]
-        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
         
         
         # transform doconce file to another format
-        doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwiki|cwiki|pandoc|st|epytext file.do.txt
+        doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwiki|cwiki|pandoc|st|epytext dofile
         
         # substitute a phrase by another using regular expressions
         doconce subst [-s -m -x --restore] regex-pattern regex-replacement file1 file2 ...
@@ -76383,7 +80959,7 @@ list of capabilities::
         doconce expand_mako mako_code_file funcname file1 file2 ...
         
         # remove all inline comments in a doconce file
-        doconce remove_inline_comments file.do.txt
+        doconce remove_inline_comments dofile
         
         # create a directory for the sphinx format
         doconce sphinx_dir author='John Doe' title='Long title' \
@@ -76392,9 +80968,6 @@ list of capabilities::
             do_file [do_file2 do_file3 ...]
         (requires sphinx version >= 1.1)
         
-        # replace latex-1 (non-ascii) characters by html codes
-        doconce latin2html file.html
-        
         # walk through a directory tree and insert doconce files as
         # docstrings in *.p.py files
         doconce insertdocstr rootdir
@@ -76402,14 +80975,8 @@ list of capabilities::
         # remove all files that the doconce format can regenerate
         doconce clean
         
-        # print the header (preamble) for latex file
-        doconce latex_header
-        
-        # print the footer for latex files
-        doconce latex_footer
-        
         # change encoding
-        doconce change_encoding utf-8 latin1 filename
+        doconce change_encoding utf-8 latin1 dofile
         
         # guess the encoding in a text
         doconce guess_encoding filename
@@ -76422,9 +80989,6 @@ list of capabilities::
         doconce split_rst complete_file        # !split delimiters
         doconce sphinx_dir complete_file
         python automake_sphinx.py
-        
-        # edit URLs to local files and place them in _static
-        doconce sphinxfix_local_URLs file.rst
         
         # split an html file into parts according to !split commands
         doconce split_html complete_file.html
@@ -76444,6 +81008,9 @@ list of capabilities::
         # remove selected text from a file
         doconce remove --from[-] from-text [--to[-] to-text] somefile > result
         
+        # list all figure, movie or included code files
+        doconce grep FIGURE|MOVIE|CODE dofile
+        
         # run spellcheck on a set of files
         doconce spellcheck [-d .mydict.txt] *.do.txt
         
@@ -76453,22 +81020,22 @@ list of capabilities::
                 dat=\begin{quote}\begin{verbatim};\end{verbatim}\end{quote}
         
         # make HTML file via pandoc from Markdown (.md) file
-        doconce md2html file
+        doconce md2html file.md
         
         # make LaTeX file via pandoc from Markdown (.md) file
-        doconce md2latex file
-        
-        # expand short cut commands to full form in files
-        doconce expand_commands file1 file2 ...
+        doconce md2latex file.md
         
         # combine several images into one
         doconce combine_images image1 image2 ... output_file
         
-        # insert a table of exercises in a latex file myfile.p.tex
-        doconce latex_exercise_toc myfile
+        # report problems from a LaTeX .log file
+        doconce latex_problems mydoc.log [overfull-hbox-limit]
         
         # list all labels in a document (for purposes of cleaning them up)
         doconce list_labels myfile
+        
+        # generate script for substituting generalized references
+        doconce ref_external mydoc [pubfile]
         
         # check all links in HTML files
         doconce linkchecker *.html
@@ -76488,9 +81055,6 @@ list of capabilities::
         # generate a make.sh script for translating a doconce file to various formats
         doconce makefile docname doconcefile [html sphinx pdflatex ...]
         
-        # fix common problems in bibtex files for publish import
-        doconce fix_bibtex4publish file1.bib file2.bib ...
-        
         # find differences between two files
         doconce diff file1.do.txt file2.do.txt [diffprog]
         (diffprog can be difflib, diff, pdiff, latexdiff, kdiff3, diffuse, ...)
@@ -76500,6 +81064,27 @@ list of capabilities::
         
         # convert csv file to doconce table format
         doconce csv2table somefile.csv
+        
+        # edit URLs to local files and place them in _static
+        doconce sphinxfix_local_URLs file.rst
+        
+        # replace latex-1 (non-ascii) characters by html codes
+        doconce latin2html file.html
+        
+        # fix common problems in bibtex files for publish import
+        doconce fix_bibtex4publish file1.bib file2.bib ...
+        
+        # print the header (preamble) for latex file
+        doconce latex_header
+        
+        # print the footer for latex files
+        doconce latex_footer
+        
+        # expand short cut commands to full form in files
+        doconce expand_commands file1 file2 ...
+        
+        # insert a table of exercises in a latex file myfile.p.tex
+        doconce latex_exercise_toc myfile
 
 
 Exercises
@@ -76681,7 +81266,6 @@ examine the Doconce source and the 'doc/src/make.sh' script).
 Resources
 
  - Excellent "Sphinx Tutorial" by C. Reller: "http://people.ee.ethz.ch/~creller/web/tricks/reST.html"
-
 
 ************** File: quickref.epytext *****************
 TITLE: Doconce Quick Reference
@@ -77362,11 +81946,11 @@ list of capabilities::
 
 
         Usage: doconce command [optional arguments]
-        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
         
         
         # transform doconce file to another format
-        doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwiki|cwiki|pandoc|st|epytext file.do.txt
+        doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwiki|cwiki|pandoc|st|epytext dofile
         
         # substitute a phrase by another using regular expressions
         doconce subst [-s -m -x --restore] regex-pattern regex-replacement file1 file2 ...
@@ -77385,7 +81969,7 @@ list of capabilities::
         doconce expand_mako mako_code_file funcname file1 file2 ...
         
         # remove all inline comments in a doconce file
-        doconce remove_inline_comments file.do.txt
+        doconce remove_inline_comments dofile
         
         # create a directory for the sphinx format
         doconce sphinx_dir author='John Doe' title='Long title' \
@@ -77394,9 +81978,6 @@ list of capabilities::
             do_file [do_file2 do_file3 ...]
         (requires sphinx version >= 1.1)
         
-        # replace latex-1 (non-ascii) characters by html codes
-        doconce latin2html file.html
-        
         # walk through a directory tree and insert doconce files as
         # docstrings in *.p.py files
         doconce insertdocstr rootdir
@@ -77404,14 +81985,8 @@ list of capabilities::
         # remove all files that the doconce format can regenerate
         doconce clean
         
-        # print the header (preamble) for latex file
-        doconce latex_header
-        
-        # print the footer for latex files
-        doconce latex_footer
-        
         # change encoding
-        doconce change_encoding utf-8 latin1 filename
+        doconce change_encoding utf-8 latin1 dofile
         
         # guess the encoding in a text
         doconce guess_encoding filename
@@ -77424,9 +81999,6 @@ list of capabilities::
         doconce split_rst complete_file        # !split delimiters
         doconce sphinx_dir complete_file
         python automake_sphinx.py
-        
-        # edit URLs to local files and place them in _static
-        doconce sphinxfix_local_URLs file.rst
         
         # split an html file into parts according to !split commands
         doconce split_html complete_file.html
@@ -77446,6 +82018,9 @@ list of capabilities::
         # remove selected text from a file
         doconce remove --from[-] from-text [--to[-] to-text] somefile > result
         
+        # list all figure, movie or included code files
+        doconce grep FIGURE|MOVIE|CODE dofile
+        
         # run spellcheck on a set of files
         doconce spellcheck [-d .mydict.txt] *.do.txt
         
@@ -77455,22 +82030,22 @@ list of capabilities::
                 dat=\begin{quote}\begin{verbatim};\end{verbatim}\end{quote}
         
         # make HTML file via pandoc from Markdown (.md) file
-        doconce md2html file
+        doconce md2html file.md
         
         # make LaTeX file via pandoc from Markdown (.md) file
-        doconce md2latex file
-        
-        # expand short cut commands to full form in files
-        doconce expand_commands file1 file2 ...
+        doconce md2latex file.md
         
         # combine several images into one
         doconce combine_images image1 image2 ... output_file
         
-        # insert a table of exercises in a latex file myfile.p.tex
-        doconce latex_exercise_toc myfile
+        # report problems from a LaTeX .log file
+        doconce latex_problems mydoc.log [overfull-hbox-limit]
         
         # list all labels in a document (for purposes of cleaning them up)
         doconce list_labels myfile
+        
+        # generate script for substituting generalized references
+        doconce ref_external mydoc [pubfile]
         
         # check all links in HTML files
         doconce linkchecker *.html
@@ -77490,9 +82065,6 @@ list of capabilities::
         # generate a make.sh script for translating a doconce file to various formats
         doconce makefile docname doconcefile [html sphinx pdflatex ...]
         
-        # fix common problems in bibtex files for publish import
-        doconce fix_bibtex4publish file1.bib file2.bib ...
-        
         # find differences between two files
         doconce diff file1.do.txt file2.do.txt [diffprog]
         (diffprog can be difflib, diff, pdiff, latexdiff, kdiff3, diffuse, ...)
@@ -77502,6 +82074,27 @@ list of capabilities::
         
         # convert csv file to doconce table format
         doconce csv2table somefile.csv
+        
+        # edit URLs to local files and place them in _static
+        doconce sphinxfix_local_URLs file.rst
+        
+        # replace latex-1 (non-ascii) characters by html codes
+        doconce latin2html file.html
+        
+        # fix common problems in bibtex files for publish import
+        doconce fix_bibtex4publish file1.bib file2.bib ...
+        
+        # print the header (preamble) for latex file
+        doconce latex_header
+        
+        # print the footer for latex files
+        doconce latex_footer
+        
+        # expand short cut commands to full form in files
+        doconce expand_commands file1 file2 ...
+        
+        # insert a table of exercises in a latex file myfile.p.tex
+        doconce latex_exercise_toc myfile
 
 
 Exercises
@@ -77663,7 +82256,6 @@ Resources
 ---------
 
  - Excellent "Sphinx Tutorial" by C. Reller: "http://people.ee.ethz.ch/~creller/web/tricks/reST.html"
-
 
 ************** File: quickref.txt *****************
 Doconce Quick Reference
@@ -78406,11 +82998,11 @@ list of capabilities::
 
 
         Usage: doconce command [optional arguments]
-        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
         
         
         # transform doconce file to another format
-        doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwiki|cwiki|pandoc|st|epytext file.do.txt
+        doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwiki|cwiki|pandoc|st|epytext dofile
         
         # substitute a phrase by another using regular expressions
         doconce subst [-s -m -x --restore] regex-pattern regex-replacement file1 file2 ...
@@ -78429,7 +83021,7 @@ list of capabilities::
         doconce expand_mako mako_code_file funcname file1 file2 ...
         
         # remove all inline comments in a doconce file
-        doconce remove_inline_comments file.do.txt
+        doconce remove_inline_comments dofile
         
         # create a directory for the sphinx format
         doconce sphinx_dir author='John Doe' title='Long title' \
@@ -78438,9 +83030,6 @@ list of capabilities::
             do_file [do_file2 do_file3 ...]
         (requires sphinx version >= 1.1)
         
-        # replace latex-1 (non-ascii) characters by html codes
-        doconce latin2html file.html
-        
         # walk through a directory tree and insert doconce files as
         # docstrings in *.p.py files
         doconce insertdocstr rootdir
@@ -78448,14 +83037,8 @@ list of capabilities::
         # remove all files that the doconce format can regenerate
         doconce clean
         
-        # print the header (preamble) for latex file
-        doconce latex_header
-        
-        # print the footer for latex files
-        doconce latex_footer
-        
         # change encoding
-        doconce change_encoding utf-8 latin1 filename
+        doconce change_encoding utf-8 latin1 dofile
         
         # guess the encoding in a text
         doconce guess_encoding filename
@@ -78468,9 +83051,6 @@ list of capabilities::
         doconce split_rst complete_file        # !split delimiters
         doconce sphinx_dir complete_file
         python automake_sphinx.py
-        
-        # edit URLs to local files and place them in _static
-        doconce sphinxfix_local_URLs file.rst
         
         # split an html file into parts according to !split commands
         doconce split_html complete_file.html
@@ -78490,6 +83070,9 @@ list of capabilities::
         # remove selected text from a file
         doconce remove --from[-] from-text [--to[-] to-text] somefile > result
         
+        # list all figure, movie or included code files
+        doconce grep FIGURE|MOVIE|CODE dofile
+        
         # run spellcheck on a set of files
         doconce spellcheck [-d .mydict.txt] *.do.txt
         
@@ -78499,22 +83082,22 @@ list of capabilities::
                 dat=\begin{quote}\begin{verbatim};\end{verbatim}\end{quote}
         
         # make HTML file via pandoc from Markdown (.md) file
-        doconce md2html file
+        doconce md2html file.md
         
         # make LaTeX file via pandoc from Markdown (.md) file
-        doconce md2latex file
-        
-        # expand short cut commands to full form in files
-        doconce expand_commands file1 file2 ...
+        doconce md2latex file.md
         
         # combine several images into one
         doconce combine_images image1 image2 ... output_file
         
-        # insert a table of exercises in a latex file myfile.p.tex
-        doconce latex_exercise_toc myfile
+        # report problems from a LaTeX .log file
+        doconce latex_problems mydoc.log [overfull-hbox-limit]
         
         # list all labels in a document (for purposes of cleaning them up)
         doconce list_labels myfile
+        
+        # generate script for substituting generalized references
+        doconce ref_external mydoc [pubfile]
         
         # check all links in HTML files
         doconce linkchecker *.html
@@ -78534,9 +83117,6 @@ list of capabilities::
         # generate a make.sh script for translating a doconce file to various formats
         doconce makefile docname doconcefile [html sphinx pdflatex ...]
         
-        # fix common problems in bibtex files for publish import
-        doconce fix_bibtex4publish file1.bib file2.bib ...
-        
         # find differences between two files
         doconce diff file1.do.txt file2.do.txt [diffprog]
         (diffprog can be difflib, diff, pdiff, latexdiff, kdiff3, diffuse, ...)
@@ -78546,6 +83126,27 @@ list of capabilities::
         
         # convert csv file to doconce table format
         doconce csv2table somefile.csv
+        
+        # edit URLs to local files and place them in _static
+        doconce sphinxfix_local_URLs file.rst
+        
+        # replace latex-1 (non-ascii) characters by html codes
+        doconce latin2html file.html
+        
+        # fix common problems in bibtex files for publish import
+        doconce fix_bibtex4publish file1.bib file2.bib ...
+        
+        # print the header (preamble) for latex file
+        doconce latex_header
+        
+        # print the footer for latex files
+        doconce latex_footer
+        
+        # expand short cut commands to full form in files
+        doconce expand_commands file1 file2 ...
+        
+        # insert a table of exercises in a latex file myfile.p.tex
+        doconce latex_exercise_toc myfile
 
 
 Exercises
@@ -78747,7 +83348,6 @@ Resources
 ---------
 
  * Excellent "Sphinx Tutorial" by C. Reller: "http://people.ee.ethz.ch/~creller/web/tricks/reST.html"
-
 
 ************** File: quickref.md *****************
 % Doconce Quick Reference
@@ -79039,7 +83639,7 @@ make it very easy to spot the comments.
 
 Running
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.Bash}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 doconce format html mydoc.do.txt --skip_inline_comments
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -79049,7 +83649,7 @@ to turn on and off notes to authors during the development of the document.
 All inline comments to readers can also be physically
 removed from the Doconce source by
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.Bash}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 doconce remove_inline_comments mydoc.do.txt
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -79291,7 +83891,7 @@ will display the individual frame files as a movie.
 
 Combining several image files into one can be done by the
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.Bash}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 doconce combine_images image1 image2 ... output_image
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -79477,11 +84077,11 @@ list of capabilities:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 # transform doconce file to another format
-doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwiki|cwiki|pandoc|st|epytext file.do.txt
+doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwiki|cwiki|pandoc|st|epytext dofile
 
 # substitute a phrase by another using regular expressions
 doconce subst [-s -m -x --restore] regex-pattern regex-replacement file1 file2 ...
@@ -79500,7 +84100,7 @@ doconce replace_from_file file-with-from-to file1 file2 ...
 doconce expand_mako mako_code_file funcname file1 file2 ...
 
 # remove all inline comments in a doconce file
-doconce remove_inline_comments file.do.txt
+doconce remove_inline_comments dofile
 
 # create a directory for the sphinx format
 doconce sphinx_dir author='John Doe' title='Long title' \
@@ -79509,9 +84109,6 @@ doconce sphinx_dir author='John Doe' title='Long title' \
     do_file [do_file2 do_file3 ...]
 (requires sphinx version >= 1.1)
 
-# replace latex-1 (non-ascii) characters by html codes
-doconce latin2html file.html
-
 # walk through a directory tree and insert doconce files as
 # docstrings in *.p.py files
 doconce insertdocstr rootdir
@@ -79519,14 +84116,8 @@ doconce insertdocstr rootdir
 # remove all files that the doconce format can regenerate
 doconce clean
 
-# print the header (preamble) for latex file
-doconce latex_header
-
-# print the footer for latex files
-doconce latex_footer
-
 # change encoding
-doconce change_encoding utf-8 latin1 filename
+doconce change_encoding utf-8 latin1 dofile
 
 # guess the encoding in a text
 doconce guess_encoding filename
@@ -79539,9 +84130,6 @@ doconce format sphinx complete_file
 doconce split_rst complete_file        # !split delimiters
 doconce sphinx_dir complete_file
 python automake_sphinx.py
-
-# edit URLs to local files and place them in _static
-doconce sphinxfix_local_URLs file.rst
 
 # split an html file into parts according to !split commands
 doconce split_html complete_file.html
@@ -79561,6 +84149,9 @@ doconce grab   --from[-] from-text [--to[-] to-text] somefile > result
 # remove selected text from a file
 doconce remove --from[-] from-text [--to[-] to-text] somefile > result
 
+# list all figure, movie or included code files
+doconce grep FIGURE|MOVIE|CODE dofile
+
 # run spellcheck on a set of files
 doconce spellcheck [-d .mydict.txt] *.do.txt
 
@@ -79570,22 +84161,22 @@ doconce ptex2tex mydoc -DMINTED pycod=minted sys=Verbatim \
         dat=\begin{quote}\begin{verbatim};\end{verbatim}\end{quote}
 
 # make HTML file via pandoc from Markdown (.md) file
-doconce md2html file
+doconce md2html file.md
 
 # make LaTeX file via pandoc from Markdown (.md) file
-doconce md2latex file
-
-# expand short cut commands to full form in files
-doconce expand_commands file1 file2 ...
+doconce md2latex file.md
 
 # combine several images into one
 doconce combine_images image1 image2 ... output_file
 
-# insert a table of exercises in a latex file myfile.p.tex
-doconce latex_exercise_toc myfile
+# report problems from a LaTeX .log file
+doconce latex_problems mydoc.log [overfull-hbox-limit]
 
 # list all labels in a document (for purposes of cleaning them up)
 doconce list_labels myfile
+
+# generate script for substituting generalized references
+doconce ref_external mydoc [pubfile]
 
 # check all links in HTML files
 doconce linkchecker *.html
@@ -79605,9 +84196,6 @@ doconce pygmentize myfile [pygments-style]
 # generate a make.sh script for translating a doconce file to various formats
 doconce makefile docname doconcefile [html sphinx pdflatex ...]
 
-# fix common problems in bibtex files for publish import
-doconce fix_bibtex4publish file1.bib file2.bib ...
-
 # find differences between two files
 doconce diff file1.do.txt file2.do.txt [diffprog]
 (diffprog can be difflib, diff, pdiff, latexdiff, kdiff3, diffuse, ...)
@@ -79617,6 +84205,27 @@ doconce gitdiff file1 file2 file3 ...
 
 # convert csv file to doconce table format
 doconce csv2table somefile.csv
+
+# edit URLs to local files and place them in _static
+doconce sphinxfix_local_URLs file.rst
+
+# replace latex-1 (non-ascii) characters by html codes
+doconce latin2html file.html
+
+# fix common problems in bibtex files for publish import
+doconce fix_bibtex4publish file1.bib file2.bib ...
+
+# print the header (preamble) for latex file
+doconce latex_header
+
+# print the footer for latex files
+doconce latex_footer
+
+# expand short cut commands to full form in files
+doconce expand_commands file1 file2 ...
+
+# insert a table of exercises in a latex file myfile.p.tex
+doconce latex_exercise_toc myfile
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ### Exercises
@@ -79822,6 +84431,7 @@ examine the Doconce source and the `doc/src/make.sh` script).
  * Excellent "Sphinx Tutorial" by C. Reller: "http://people.ee.ethz.ch/~creller/web/tricks/reST.html"
 
 
++ set -x
 + rm -rf html_images reveal.js downloaded_figures latex_styles
 + rm -rf papers.pub venues.list
 + publish import refs1.bib
@@ -80672,10 +85282,10 @@ replacing % end theorem by \end{theorem} in testdoc.p.tex
 + doconce replace Newton--Cotes Newton-Cotes testdoc.p.tex
 replacing Newton--Cotes by Newton-Cotes in testdoc.p.tex
 + doconce replace --examples_as__exercises --examples_as_exercises testdoc.p.tex
-+ system ptex2tex -DMINTED -DLATEX_HEADING=titlepage -DA4PAPER -DTODONOTES -DLINENUMBERS -DCOLORED_TABLE_ROWS=blue -DFANCY_HEADER -DSECTION_HEADINGS=blue -DLABELS_IN_MARGIN -DDOUBLE_SPACING testdoc
-+ ptex2tex -DMINTED -DLATEX_HEADING=titlepage -DA4PAPER -DTODONOTES -DLINENUMBERS -DCOLORED_TABLE_ROWS=blue -DFANCY_HEADER -DSECTION_HEADINGS=blue -DLABELS_IN_MARGIN -DDOUBLE_SPACING testdoc
++ system ptex2tex -DMINTED -DLATEX_HEADING=titlepage -DA4PAPER -DTODONOTES -DLINENUMBERS -DCOLORED_TABLE_ROWS=blue -DFANCY_HEADER -DSECTION_HEADINGS=blue -DLABELS_IN_MARGIN -DDOUBLE_SPACING -DLIST_OF_EXERCISES=loe testdoc
++ ptex2tex -DMINTED -DLATEX_HEADING=titlepage -DA4PAPER -DTODONOTES -DLINENUMBERS -DCOLORED_TABLE_ROWS=blue -DFANCY_HEADER -DSECTION_HEADINGS=blue -DLABELS_IN_MARGIN -DDOUBLE_SPACING -DLIST_OF_EXERCISES=loe testdoc
 using local config file .ptex2tex.cfg
-running preprocessor on testdoc.p.tex...  defines: 'A4PAPER', 'MINTED', 'LATEX_HEADING', 'LINENUMBERS', 'LABELS_IN_MARGIN', 'SECTION_HEADINGS', 'DOUBLE_SPACING', 'COLORED_TABLE_ROWS', 'FANCY_HEADER', 'TODONOTES'  done
+running preprocessor on testdoc.p.tex...  defines: 'A4PAPER', 'MINTED', 'LATEX_HEADING', 'LIST_OF_EXERCISES', 'LINENUMBERS', 'LABELS_IN_MARGIN', 'SECTION_HEADINGS', 'DOUBLE_SPACING', 'COLORED_TABLE_ROWS', 'FANCY_HEADER', 'TODONOTES'  done
 
 *** warning: found inline verbatim "!bc" containing "!", which
     is used as delimiter in \Verb!!bc! - avoid "!" in inline verbatim
@@ -80934,7 +85544,11 @@ dmap/pdftex.map}] [2]
 
 
 
-[3] [4] 
+[3] [4]
+
+Package hyperref Warning: old loe file detected, not used; run LaTeX again.
+
+[5] [6] [7] 
 
 
 
@@ -80944,23 +85558,43 @@ dmap/pdftex.map}] [2]
 
 
 
-(./testdoc.out.pyg) (./testdoc.out.pyg [5]) (./testdoc.out.pyg)
-(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg [6])
-(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) [7]
 
 
 
-<../doc/src/manual/fig/wave1D.pdf, id=75, 586.83241pt x 442.29242pt>
+
+
+
+
+
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+
+
+
+
+(./testdoc.out.pyg) (./testdoc.out.pyg [8]) (./testdoc.out.pyg)
+(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg [9])
+(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) [10]
+
+
+
+<../doc/src/manual/fig/wave1D.pdf, id=86, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
-[8 <../doc/src/manual/fig/wave1D.pdf>]
+[11]
+
+[12 <../doc/src/manual/fig/wave1D.pdf>]
 
 
 
-<../doc/src/manual/fig/wave1D.png, id=89, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=105, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=91, 578.16pt x 433.62pt>
-<use downloaded_figures/f_plot.png> [9] [10 <../doc/src/manual/fig/wave1D.png> 
-<./downloaded_figures/f_plot.png>]
+<downloaded_figures/f_plot.png, id=107, 578.16pt x 433.62pt>
+<use downloaded_figures/f_plot.png> [13 <../doc/src/manual/fig/wave1D.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -80985,19 +85619,19 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
-[11]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=119, 586.8324pt x 442.292
+[14 <./downloaded_figures/f_plot.png>] [15]
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=137, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=120, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=138, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=121, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=139, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=122, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=140, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=123, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=141, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=124, 586.8324pt x 442.292
-4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png> [12]
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=142, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -81020,7 +85654,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 797.
+t line 852.
 
 
 
@@ -81040,8 +85674,16 @@ t line 797.
 
 
 
-t line 806.
+t line 861.
 
+
+
+...rest of part of LaTeX line number...
+
+[16 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
+ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
+../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/mov/wave_f
+rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 
 
 ...rest of part of LaTeX line number...
@@ -81056,11 +85698,7 @@ t line 806.
 
 
 
-...rest of part of LaTeX line number...
-
-
-
-t line 810.
+t line 865.
 
 
 
@@ -81130,10 +85768,7 @@ t line 810.
 
 .
 
-[13 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
-ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
-../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/mov/wave_f
-rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
+[17]
 Overfull \hbox (5.03835pt too wide) 
 [][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
 %26+engineering/book/978-3-642-23098-1| 
@@ -81152,7 +85787,6 @@ Overfull \hbox (5.03835pt too wide)
 
 
 
-[14]
 
 
 
@@ -81164,6 +85798,7 @@ Package amsmath Warning: Foreign command \over;
 
 
 
+[18]
 
 
 
@@ -81174,7 +85809,6 @@ Package amsmath Warning: Foreign command \over;
 
 ...rest of part of LaTeX line number...
 
-[15]
 
 
 
@@ -81198,7 +85832,7 @@ Package amsmath Warning: Foreign command \over;
 
 
 
-
+.
 
 
 
@@ -81207,7 +85841,7 @@ Package amsmath Warning: Foreign command \over;
 
 ...rest of part of LaTeX line number...
 
-(./testdoc.out.pyg) [16] (./testdoc.out.pyg) [17] [18]
+[19] (./testdoc.out.pyg) [20] (./testdoc.out.pyg) [21] [22]
 
 
 .
@@ -81232,24 +85866,24 @@ Package amsmath Warning: Foreign command \over;
 
 
 
-[19]
 No file testdoc.bbl.
+[23]
 
 
 ...rest of part of LaTeX line number...
 
-[20]
+[24]
 
 
 ...rest of part of LaTeX line number...
 
-[21]
+[25]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
 No file testdoc.ind.
-[22] (./testdoc.aux)
+[26] (./testdoc.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -81479,7 +86113,7 @@ t12.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt8.pfb></usr/share/texmf/fon
 ts/type1/public/lm/lmtt9.pfb></usr/share/texmf/fonts/type1/public/lm/lmtti10.pf
 b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb
 >
-Output written on testdoc.pdf (22 pages, ).
+Output written on testdoc.pdf (26 pages, ).
 Transcript written on testdoc.log.
 + '[' 0 -ne 0 ']'
 + pdflatex -shell-escape testdoc
@@ -81702,19 +86336,20 @@ Writing index file testdoc.idx
 
 
  [1{/var/lib/texmf/fonts/map/pdftex/up
-dmap/pdftex.map}] (./testdoc.toc) [2] [3] (./testdoc.tdo) [4]
-
-(./testdoc.out.pyg [5]) (./testdoc.out.pyg) (./testdoc.out.pyg)
-(./testdoc.out.pyg) (./testdoc.out.pyg [6]) (./testdoc.out.pyg)
-(./testdoc.out.pyg) (./testdoc.out.pyg) [7]
-<../doc/src/manual/fig/wave1D.pdf, id=236, 586.83241pt x 442.29242pt>
+dmap/pdftex.map}] (./testdoc.toc) [2] [3] [4] (./testdoc.loe) [5] [6]
+(./testdoc.tdo) [7] 
+(./testdoc.out.pyg) (./testdoc.out.pyg [8]) (./testdoc.out.pyg)
+(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg [9])
+(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) [10]
+<../doc/src/manual/fig/wave1D.pdf, id=260, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
-[8 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=249, 586.8324pt x 442.2924pt>
+[11]
+
+[12 <../doc/src/manual/fig/wave1D.pdf>]
+<../doc/src/manual/fig/wave1D.png, id=278, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=251, 578.16pt x 433.62pt>
-<use downloaded_figures/f_plot.png> [9] [10 <../doc/src/manual/fig/wave1D.png> 
-<./downloaded_figures/f_plot.png>]
+<downloaded_figures/f_plot.png, id=280, 578.16pt x 433.62pt>
+<use downloaded_figures/f_plot.png> [13 <../doc/src/manual/fig/wave1D.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -81739,19 +86374,19 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
-[11]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=275, 586.8324pt x 442.292
+[14 <./downloaded_figures/f_plot.png>] [15]
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=306, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=276, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=307, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=277, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=308, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=278, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=309, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=279, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=310, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=280, 586.8324pt x 442.292
-4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png> [12]
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=311, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -81774,7 +86409,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 797.
+t line 852.
 
 
 
@@ -81794,8 +86429,16 @@ t line 797.
 
 
 
-t line 806.
+t line 861.
 
+
+
+...rest of part of LaTeX line number...
+
+[16 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
+ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
+../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/mov/wave_f
+rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 
 
 ...rest of part of LaTeX line number...
@@ -81810,11 +86453,7 @@ t line 806.
 
 
 
-...rest of part of LaTeX line number...
-
-
-
-t line 810.
+t line 865.
 
 
 
@@ -81884,28 +86523,24 @@ t line 810.
 
 .
 
-[13 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
-ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
-../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/mov/wave_f
-rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
+[17]
 Overfull \hbox (5.03835pt too wide) 
 [][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
 %26+engineering/book/978-3-642-23098-1| 
-[14]
 
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on .
 
-[15] (./testdoc.out.pyg) [16] (./testdoc.out.pyg) [17] [18] [19]
+[18] [19] (./testdoc.out.pyg) [20] (./testdoc.out.pyg) [21] [22]
 No file testdoc.bbl.
-[20] [21]
+[23] [24] [25]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
 No file testdoc.ind.
-[22] (./testdoc.aux)
+[26] (./testdoc.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -82129,7 +86764,7 @@ f/fonts/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt
 ts/type1/public/lm/lmtt8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
 </usr/share/texmf/fonts/type1/public/lm/lmtti10.pfb></usr/share/texlive/texmf-d
 ist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on testdoc.pdf (22 pages, ).
+Output written on testdoc.pdf (26 pages, ).
 Transcript written on testdoc.log.
 + makeindex testdoc
 This is makeindex, version 2.15 [TeX Live 2013] (kpathsea + Thai support).
@@ -82369,19 +87004,20 @@ Writing index file testdoc.idx
 
 
  [1{/var/lib/texmf/fonts/map/pdftex/up
-dmap/pdftex.map}] (./testdoc.toc) [2] [3] (./testdoc.tdo) [4]
-
-(./testdoc.out.pyg [5]) (./testdoc.out.pyg) (./testdoc.out.pyg)
-(./testdoc.out.pyg) (./testdoc.out.pyg [6]) (./testdoc.out.pyg)
-(./testdoc.out.pyg) (./testdoc.out.pyg) [7]
-<../doc/src/manual/fig/wave1D.pdf, id=236, 586.83241pt x 442.29242pt>
+dmap/pdftex.map}] (./testdoc.toc) [2] [3] [4] (./testdoc.loe) [5] [6]
+(./testdoc.tdo) [7] 
+(./testdoc.out.pyg) (./testdoc.out.pyg [8]) (./testdoc.out.pyg)
+(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg [9])
+(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) [10]
+<../doc/src/manual/fig/wave1D.pdf, id=260, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
-[8 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=249, 586.8324pt x 442.2924pt>
+[11]
+
+[12 <../doc/src/manual/fig/wave1D.pdf>]
+<../doc/src/manual/fig/wave1D.png, id=278, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=251, 578.16pt x 433.62pt>
-<use downloaded_figures/f_plot.png> [9] [10 <../doc/src/manual/fig/wave1D.png> 
-<./downloaded_figures/f_plot.png>]
+<downloaded_figures/f_plot.png, id=280, 578.16pt x 433.62pt>
+<use downloaded_figures/f_plot.png> [13 <../doc/src/manual/fig/wave1D.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -82406,19 +87042,19 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
-[11]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=275, 586.8324pt x 442.292
+[14 <./downloaded_figures/f_plot.png>] [15]
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=306, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=276, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=307, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=277, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=308, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=278, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=309, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=279, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=310, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=280, 586.8324pt x 442.292
-4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png> [12]
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=311, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -82441,7 +87077,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 797.
+t line 852.
 
 
 
@@ -82461,8 +87097,16 @@ t line 797.
 
 
 
-t line 806.
+t line 861.
 
+
+
+...rest of part of LaTeX line number...
+
+[16 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
+ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
+../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/mov/wave_f
+rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 
 
 ...rest of part of LaTeX line number...
@@ -82477,11 +87121,7 @@ t line 806.
 
 
 
-...rest of part of LaTeX line number...
-
-
-
-t line 810.
+t line 865.
 
 
 
@@ -82551,30 +87191,26 @@ t line 810.
 
 .
 
-[13 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
-ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
-../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/mov/wave_f
-rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
+[17]
 Overfull \hbox (5.03835pt too wide) 
 [][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
 %26+engineering/book/978-3-642-23098-1| 
-[14]
 
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on .
 
-[15] (./testdoc.out.pyg) [16] (./testdoc.out.pyg) [17] [18] [19] (./testdoc.bbl
- [20]) [21] [22] [23]
+[18] [19] (./testdoc.out.pyg) [20] (./testdoc.out.pyg) [21] [22] (./testdoc.bbl
+ [23] [24]) [25] [26]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
-(./testdoc.ind [24]
+(./testdoc.ind [27]
 Overfull \hbox (9.21497pt too wide) 
 []\T1/lmr/m/n/10 (-20) test \T1/lmtt/m/n/10 two \T1/lmr/m/n/10 (-20) (sep-a-rat
 e) \T1/lmtt/m/n/10 verbatim expressions \T1/lmr/m/n/10 (-20) which
-[25]) (./testdoc.aux)
+[28]) (./testdoc.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -82803,7 +87439,7 @@ f/fonts/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt
 ts/type1/public/lm/lmtt8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
 </usr/share/texmf/fonts/type1/public/lm/lmtti10.pfb></usr/share/texlive/texmf-d
 ist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on testdoc.pdf (25 pages, ).
+Output written on testdoc.pdf (28 pages, ).
 Transcript written on testdoc.log.
 + pdflatex -shell-escape testdoc
 This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
@@ -83025,19 +87661,20 @@ Writing index file testdoc.idx
 
 
  [1{/var/lib/texmf/fonts/map/pdftex/up
-dmap/pdftex.map}] (./testdoc.toc) [2] [3] (./testdoc.tdo) [4]
-
-(./testdoc.out.pyg [5]) (./testdoc.out.pyg) (./testdoc.out.pyg)
-(./testdoc.out.pyg) (./testdoc.out.pyg [6]) (./testdoc.out.pyg)
-(./testdoc.out.pyg) (./testdoc.out.pyg) [7]
-<../doc/src/manual/fig/wave1D.pdf, id=236, 586.83241pt x 442.29242pt>
+dmap/pdftex.map}] (./testdoc.toc) [2] [3] [4] (./testdoc.loe) [5] [6]
+(./testdoc.tdo) [7] 
+(./testdoc.out.pyg) (./testdoc.out.pyg [8]) (./testdoc.out.pyg)
+(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg [9])
+(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) [10]
+<../doc/src/manual/fig/wave1D.pdf, id=260, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
-[8 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=249, 586.8324pt x 442.2924pt>
+[11]
+
+[12 <../doc/src/manual/fig/wave1D.pdf>]
+<../doc/src/manual/fig/wave1D.png, id=278, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=251, 578.16pt x 433.62pt>
-<use downloaded_figures/f_plot.png> [9] [10 <../doc/src/manual/fig/wave1D.png> 
-<./downloaded_figures/f_plot.png>]
+<downloaded_figures/f_plot.png, id=280, 578.16pt x 433.62pt>
+<use downloaded_figures/f_plot.png> [13 <../doc/src/manual/fig/wave1D.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -83062,19 +87699,19 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
-[11]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=275, 586.8324pt x 442.292
+[14 <./downloaded_figures/f_plot.png>] [15]
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=306, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=276, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=307, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=277, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=308, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=278, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=309, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=279, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=310, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=280, 586.8324pt x 442.292
-4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png> [12]
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=311, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -83095,30 +87732,30 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
-[13 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
+[16 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
 ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
 ../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/mov/wave_f
 rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
+[17]
 Overfull \hbox (5.03835pt too wide) 
 [][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
 %26+engineering/book/978-3-642-23098-1| 
-[14]
 
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on .
 
-[15] (./testdoc.out.pyg) [16] (./testdoc.out.pyg) [17] [18] [19] (./testdoc.bbl
- [20]) [21] [22] [23]
+[18] [19] (./testdoc.out.pyg) [20] (./testdoc.out.pyg) [21] [22] (./testdoc.bbl
+ [23] [24]) [25] [26]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
-(./testdoc.ind [24]
+(./testdoc.ind [27]
 Overfull \hbox (9.21497pt too wide) 
 []\T1/lmr/m/n/10 (-20) test \T1/lmtt/m/n/10 two \T1/lmr/m/n/10 (-20) (sep-a-rat
 e) \T1/lmtt/m/n/10 verbatim expressions \T1/lmr/m/n/10 (-20) which
-[25]) (./testdoc.aux)
+[28]) (./testdoc.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -83341,7 +87978,7 @@ f/fonts/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt
 ts/type1/public/lm/lmtt8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
 </usr/share/texmf/fonts/type1/public/lm/lmtti10.pfb></usr/share/texlive/texmf-d
 ist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on testdoc.pdf (25 pages, ).
+Output written on testdoc.pdf (28 pages, ).
 Transcript written on testdoc.log.
 + cp testdoc.tex testdoc.tex_ptex2tex
 + system doconce ptex2tex testdoc -DBOOK -DPALATINO 'sys=begin{quote}begin{Verbatim}@end{Verbatim}end{quote}' pypro=ans:nt envir=minted
@@ -83720,7 +88357,7 @@ reading sources... [ 50%] ._testdoc001
 reading sources... [ 75%] ._testdoc002
 reading sources... [100%] index
 
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:556: WARNING: Inline interpreted text or phrase reference start-string without end-string.
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:572: WARNING: Inline interpreted text or phrase reference start-string without end-string.
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:None: WARNING: nonlocal image URI found: https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png
 looking for now-outdated files... none found
 pickling environment... done
@@ -85092,11 +89729,13 @@ translating doconce text in tmp_mako__math_test.do.txt to pandoc
 
 output in math_test.md
 + doconce md2latex math_test
-command "md2latex" is not legal, must be among
-
-format, help, sphinx_dir, subst, replace, replace_from_file, clean, spellcheck, ptex2tex, guess_encoding, expand_commands, expand_mako, combine_images, change_encoding, capitalize, gwiki_figsubst, md2html, remove_inline_comments, grab, remove, remove_exercise_answers, split_rst, split_html, slides_html, slides_beamer, latin2html, latex_header, latex_footer, bbl2rst, html_colorbullets, list_labels, teamod, sphinxfix_localURLs, make_figure_code_links, latex_exercise_toc, insertdocstr, old2new_format, linkchecker, latex2doconce, latex_dislikes, pygmentize, makefile, diff, gitdiff, fix_bibtex4publish, csv2table
+pandoc -f markdown -t latex -s -o math_test.tex math_test.md
+output in math_test.tex
 + admon_tps='colors1 graybox1 paragraph graybox2 yellowbox graybox3 colors2'
 + for admon_tp in '$admon_tps'
++ '[' colors1 = graybox1 ']'
++ '[' colors1 = graybox3 ']'
++ color=
 + system doconce format pdflatex admon --latex_admon=colors1
 + doconce format pdflatex admon --latex_admon=colors1
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
@@ -85110,6 +89749,7 @@ output in admon.p.tex
 + '[' 0 -ne 0 ']'
 + doconce ptex2tex admon envir=minted
 \bpycod (!bc pycod) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+\bpypro (!bc pypro) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
 \bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
 output in admon.tex
 + cp admon.tex admon_colors1.tex
@@ -85223,7 +89863,8 @@ Underfull \hbox (badness 10000)
 <use latex_figs/warning.pdf>
 Underfull \hbox (badness 10000) 
 
-[2 <./latex_figs/warning.pdf>] <use latex_figs/warning.pdf>
+(./admon_colors1.out.pyg) (./admon_colors1.out.pyg) [2 <./latex_figs/warning.pd
+f>] <use latex_figs/warning.pdf>
 Underfull \hbox (badness 10000) 
 
 
@@ -85232,15 +89873,14 @@ Underfull \hbox (badness 10000)
 
 Underfull \hbox (badness 10000) 
 
-<latex_figs/notice.pdf, id=37, 89.33376pt x 89.33376pt>
+<latex_figs/notice.pdf, id=39, 89.33376pt x 89.33376pt>
 <use latex_figs/notice.pdf>
 Underfull \hbox (badness 10000) 
 
-<use latex_figs/notice.pdf>
+[3 <./latex_figs/notice.pdf>] <use latex_figs/notice.pdf>
 Underfull \hbox (badness 10000) 
 
-[3 <./latex_figs/notice.pdf>]
-<latex_figs/question.pdf, id=51, 89.33376pt x 89.33376pt>
+<latex_figs/question.pdf, id=52, 89.33376pt x 89.33376pt>
 <use latex_figs/question.pdf>
 Underfull \hbox (badness 10000) 
 
@@ -85253,18 +89893,18 @@ Underfull \hbox (badness 10000)
 (./admon_colors1.out.pyg) <use latex_figs/warning.pdf>
 Underfull \hbox (badness 10000) 
 
-<use latex_figs/notice.pdf>
+[4 <./latex_figs/question.pdf>] <use latex_figs/notice.pdf>
 Underfull \hbox (badness 10000) 
 
 (./admon_colors1.out.pyg) (./admon_colors1.out.pyg)
-<../doc/src/manual/fig/wave1D.pdf, id=52, 586.83241pt x 442.29242pt>
-<use ../doc/src/manual/fig/wave1D.pdf> [4 <./latex_figs/question.pdf>] [5]
-<latex_figs/summary.pdf, id=69, 89.33376pt x 89.33376pt>
+<../doc/src/manual/fig/wave1D.pdf, id=65, 586.83241pt x 442.29242pt>
+<use ../doc/src/manual/fig/wave1D.pdf> [5]
+<latex_figs/summary.pdf, id=70, 89.33376pt x 89.33376pt>
 <use latex_figs/summary.pdf>
 Underfull \hbox (badness 10000) 
 
 No file admon_colors1.ind.
-[6 <../doc/src/manual/fig/wave1D.pdf> <./latex_figs/summary.pdf>]
+[6 <../doc/src/manual/fig/wave1D.pdf> <./latex_figs/summary.pdf>] [7]
 (./admon_colors1.aux)
 
  *File List*
@@ -85374,6 +90014,8 @@ admon_colors1.out.pyg
 admon_colors1.out.pyg
 latex_figs/warning.pdf
 latex_figs/warning.pdf
+admon_colors1.out.pyg
+admon_colors1.out.pyg
 latex_figs/warning.pdf
 latex_figs/notice.pdf
 latex_figs/notice.pdf
@@ -85396,20 +90038,21 @@ Package rerunfilecheck Warning: File `admon_colors1.out' has changed.
 
  )
 (see the transcript file for additional information){/usr/share/texmf/fonts/enc
-/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/
-texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-
+/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/sh
+are/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-
 mathsy.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib1
 0.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/font
 s/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb
-></usr/share/texmf/fonts/type1/public/lm/lmmi7.pfb></usr/share/texmf/fonts/type
-1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/s
-hare/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/
-lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texm
-f/fonts/type1/public/lm/lmri8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy1
-0.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy7.pfb></usr/share/texmf/fonts
-/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb>
-</usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
-Output written on admon_colors1.pdf (6 pages, ).
+></usr/share/texmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/typ
+e1/public/lm/lmmi7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/
+share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/publi
+c/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texm
+f/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmri
+8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/font
+s/type1/public/lm/lmsy7.pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb>
+</usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type
+1/public/lm/lmtt9.pfb>
+Output written on admon_colors1.pdf (7 pages, ).
 Transcript written on admon_colors1.log.
 + '[' 0 -ne 0 ']'
 + echo admon=colors1
@@ -85424,8 +90067,10 @@ summary.pdf
 warning.pdf
 + rm -rf latex_figs
 + for admon_tp in '$admon_tps'
-+ system doconce format pdflatex admon --latex_admon=graybox1
-+ doconce format pdflatex admon --latex_admon=graybox1
++ '[' graybox1 = graybox1 ']'
++ color='--latex_admon_color=gray!6'
++ system doconce format pdflatex admon --latex_admon=graybox1 '--latex_admon_color=gray!6'
++ doconce format pdflatex admon --latex_admon=graybox1 '--latex_admon_color=gray!6'
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to pdflatex
 figure file ../doc/src/manual/fig/wave1D:
@@ -85436,6 +90081,7 @@ output in admon.p.tex
 + '[' 0 -ne 0 ']'
 + doconce ptex2tex admon envir=minted
 \bpycod (!bc pycod) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+\bpypro (!bc pypro) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
 \bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
 output in admon.tex
 + cp admon.tex admon_graybox1.tex
@@ -85636,6 +90282,7 @@ dmap/pdftex.map}] (./admon_graybox1.out.pyg)
 
 ...rest of part of LaTeX line number...
 
+(./admon_graybox1.out.pyg) (./admon_graybox1.out.pyg)
 
 
 ...rest of part of LaTeX line number...
@@ -85669,12 +90316,28 @@ dmap/pdftex.map}] (./admon_graybox1.out.pyg)
 
 ...rest of part of LaTeX line number...
 
-(./admon_graybox1.out.pyg)
+
+Package mdframed Warning: You got a bad break
+(mdframed)                because the last box will be empty
+(mdframed)                you have to change it manually
+(mdframed)                by changing the text, the space
+(mdframed)                or something else on .
+
 
 
 ...rest of part of LaTeX line number...
 
 [3]
+
+Package mdframed Warning: You got a bad break
+(mdframed)                because the last split box is empty
+(mdframed)                You have to change the settings on .
+
+
+
+...rest of part of LaTeX line number...
+
+(./admon_graybox1.out.pyg)
 
 
 ...rest of part of LaTeX line number...
@@ -85695,13 +90358,17 @@ dmap/pdftex.map}] (./admon_graybox1.out.pyg)
 
 ...rest of part of LaTeX line number...
 
-[5 <../doc/src/manual/fig/wave1D.pdf>]
+[5]
+
+
+...rest of part of LaTeX line number...
+
 
 
 ...rest of part of LaTeX line number...
 
 No file admon_graybox1.ind.
-[6] (./admon_graybox1.aux)
+[6 <../doc/src/manual/fig/wave1D.pdf>] (./admon_graybox1.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -85859,6 +90526,8 @@ admon_graybox1.out.pyg
 admon_graybox1.out.pyg
 admon_graybox1.out.pyg
 admon_graybox1.out.pyg
+admon_graybox1.out.pyg
+admon_graybox1.out.pyg
 ../doc/src/manual/fig/wave1D.pdf
  ***********
 
@@ -85874,18 +90543,19 @@ LaTeX Warning: There were undefined references.
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ){/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dv
-ips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share
+ips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share
 /texmf/fonts/enc/dvips/lm/lm-mathsy.enc}</usr/share/texlive/texmf-dist/fonts/ty
 pe1/public/amsfonts/cm/cmmib10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx
 10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fon
-ts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi7.pfb
-></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type
-1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/sh
-are/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/l
-m/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmri8.pfb></usr/share/texm
-f/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy
-7.pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb></usr/share/texmf/font
-s/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
+ts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi12.pf
+b></usr/share/texmf/fonts/type1/public/lm/lmmi7.pfb></usr/share/texmf/fonts/typ
+e1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/
+share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public
+/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/tex
+mf/fonts/type1/public/lm/lmri8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy
+10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy7.pfb></usr/share/texmf/font
+s/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb
+></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
 Output written on admon_graybox1.pdf (6 pages, ).
 Transcript written on admon_graybox1.log.
 + '[' 0 -ne 0 ']'
@@ -85896,6 +90566,9 @@ admon=graybox1
 no latex_figs directory for this admon type
 + rm -rf latex_figs
 + for admon_tp in '$admon_tps'
++ '[' paragraph = graybox1 ']'
++ '[' paragraph = graybox3 ']'
++ color=
 + system doconce format pdflatex admon --latex_admon=paragraph
 + doconce format pdflatex admon --latex_admon=paragraph
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
@@ -85908,6 +90581,7 @@ output in admon.p.tex
 + '[' 0 -ne 0 ']'
 + doconce ptex2tex admon envir=minted
 \bpycod (!bc pycod) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+\bpypro (!bc pypro) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
 \bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
 output in admon.tex
 + cp admon.tex admon_paragraph.tex
@@ -86103,9 +90777,10 @@ ABD: EveryShipout initializing macros (./newcommands_bfmath.tex)
 
 (./admon_paragraph.out.pyg 
  [1{/var/lib/texmf/fonts/map/pdftex/up
-dmap/pdftex.map}] (./admon_paragraph.out.pyg) [2] (./admon_paragraph.out.pyg)
-[3] (./admon_paragraph.out.pyg) (./admon_paragraph.out.pyg [4])
-<../doc/src/manual/fig/wave1D.pdf, id=64, 586.83241pt x 442.29242pt>
+dmap/pdftex.map}] (./admon_paragraph.out.pyg) (./admon_paragraph.out.pyg)
+(./admon_paragraph.out.pyg) [2] (./admon_paragraph.out.pyg) [3]
+(./admon_paragraph.out.pyg) (./admon_paragraph.out.pyg [4])
+<../doc/src/manual/fig/wave1D.pdf, id=65, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf>
 No file admon_paragraph.ind.
 [5 <../doc/src/manual/fig/wave1D.pdf>] (./admon_paragraph.aux)
@@ -86266,6 +90941,8 @@ admon_paragraph.out.pyg
 admon_paragraph.out.pyg
 admon_paragraph.out.pyg
 admon_paragraph.out.pyg
+admon_paragraph.out.pyg
+admon_paragraph.out.pyg
 ../doc/src/manual/fig/wave1D.pdf
  ***********
 
@@ -86275,18 +90952,19 @@ Package rerunfilecheck Warning: File `admon_paragraph.out' has changed.
 (rerunfilecheck)                or use package `bookmark'.
 
  ){/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dv
-ips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share
+ips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share
 /texmf/fonts/enc/dvips/lm/lm-mathsy.enc}</usr/share/texlive/texmf-dist/fonts/ty
 pe1/public/amsfonts/cm/cmmib10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx
 10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fon
-ts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi7.pfb
-></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type
-1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/sh
-are/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/l
-m/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmri8.pfb></usr/share/texm
-f/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy
-7.pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb></usr/share/texmf/font
-s/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
+ts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi12.pf
+b></usr/share/texmf/fonts/type1/public/lm/lmmi7.pfb></usr/share/texmf/fonts/typ
+e1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/
+share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public
+/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/tex
+mf/fonts/type1/public/lm/lmri8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy
+10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy7.pfb></usr/share/texmf/font
+s/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb
+></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
 Output written on admon_paragraph.pdf (5 pages, ).
 Transcript written on admon_paragraph.log.
 + '[' 0 -ne 0 ']'
@@ -86297,6 +90975,9 @@ admon=paragraph
 no latex_figs directory for this admon type
 + rm -rf latex_figs
 + for admon_tp in '$admon_tps'
++ '[' graybox2 = graybox1 ']'
++ '[' graybox2 = graybox3 ']'
++ color=
 + system doconce format pdflatex admon --latex_admon=graybox2
 + doconce format pdflatex admon --latex_admon=graybox2
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
@@ -86309,6 +90990,7 @@ output in admon.p.tex
 + '[' 0 -ne 0 ']'
 + doconce ptex2tex admon envir=minted
 \bpycod (!bc pycod) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+\bpypro (!bc pypro) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
 \bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
 output in admon.tex
 + cp admon.tex admon_graybox2.tex
@@ -86510,6 +91192,7 @@ dmap/pdftex.map}] (./admon_graybox2.out.pyg)
 
 ...rest of part of LaTeX line number...
 
+(./admon_graybox2.out.pyg) (./admon_graybox2.out.pyg)
 
 
 ...rest of part of LaTeX line number...
@@ -86543,12 +91226,28 @@ dmap/pdftex.map}] (./admon_graybox2.out.pyg)
 
 ...rest of part of LaTeX line number...
 
-(./admon_graybox2.out.pyg)
+
+Package mdframed Warning: You got a bad break
+(mdframed)                because the last box will be empty
+(mdframed)                you have to change it manually
+(mdframed)                by changing the text, the space
+(mdframed)                or something else on .
+
 
 
 ...rest of part of LaTeX line number...
 
 [3]
+
+Package mdframed Warning: You got a bad break
+(mdframed)                because the last split box is empty
+(mdframed)                You have to change the settings on .
+
+
+
+...rest of part of LaTeX line number...
+
+(./admon_graybox2.out.pyg)
 
 
 ...rest of part of LaTeX line number...
@@ -86569,9 +91268,13 @@ dmap/pdftex.map}] (./admon_graybox2.out.pyg)
 
 ...rest of part of LaTeX line number...
 
-[5 <../doc/src/manual/fig/wave1D.pdf>]
+[5]
+
+
+...rest of part of LaTeX line number...
+
 No file admon_graybox2.ind.
-[6] (./admon_graybox2.aux)
+[6 <../doc/src/manual/fig/wave1D.pdf>] (./admon_graybox2.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -86730,6 +91433,8 @@ admon_graybox2.out.pyg
 admon_graybox2.out.pyg
 admon_graybox2.out.pyg
 admon_graybox2.out.pyg
+admon_graybox2.out.pyg
+admon_graybox2.out.pyg
 ../doc/src/manual/fig/wave1D.pdf
  ***********
 
@@ -86745,18 +91450,19 @@ LaTeX Warning: There were undefined references.
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ){/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dv
-ips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share
+ips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share
 /texmf/fonts/enc/dvips/lm/lm-mathsy.enc}</usr/share/texlive/texmf-dist/fonts/ty
 pe1/public/amsfonts/cm/cmmib10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx
 10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fon
-ts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi7.pfb
-></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type
-1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/sh
-are/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/l
-m/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmri8.pfb></usr/share/texm
-f/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy
-7.pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb></usr/share/texmf/font
-s/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
+ts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi12.pf
+b></usr/share/texmf/fonts/type1/public/lm/lmmi7.pfb></usr/share/texmf/fonts/typ
+e1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/
+share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public
+/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/tex
+mf/fonts/type1/public/lm/lmri8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy
+10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy7.pfb></usr/share/texmf/font
+s/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb
+></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
 Output written on admon_graybox2.pdf (6 pages, ).
 Transcript written on admon_graybox2.log.
 + '[' 0 -ne 0 ']'
@@ -86767,6 +91473,9 @@ admon=graybox2
 no latex_figs directory for this admon type
 + rm -rf latex_figs
 + for admon_tp in '$admon_tps'
++ '[' yellowbox = graybox1 ']'
++ '[' yellowbox = graybox3 ']'
++ color=
 + system doconce format pdflatex admon --latex_admon=yellowbox
 + doconce format pdflatex admon --latex_admon=yellowbox
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
@@ -86780,6 +91489,7 @@ output in admon.p.tex
 + '[' 0 -ne 0 ']'
 + doconce ptex2tex admon envir=minted
 \bpycod (!bc pycod) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+\bpypro (!bc pypro) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
 \bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
 output in admon.tex
 + cp admon.tex admon_yellowbox.tex
@@ -86889,25 +91599,22 @@ No file admon_yellowbox.aux.
 dmap/pdftex.map}] (./admon_yellowbox.out.pyg)
 <latex_figs/small_yellow_warning.pdf, id=20, 32.12pt x 32.12pt>
 <use latex_figs/small_yellow_warning.pdf>
-<use latex_figs/small_yellow_warning.pdf> [2 <./latex_figs/small_yellow_warning
-.pdf>] <use latex_figs/small_yellow_warning.pdf>
-<latex_figs/small_yellow_notice.pdf, id=40, 32.12pt x 32.12pt>
+<use latex_figs/small_yellow_warning.pdf> (./admon_yellowbox.out.pyg)
+(./admon_yellowbox.out.pyg) [2 <./latex_figs/small_yellow_warning.pdf>]
+<use latex_figs/small_yellow_warning.pdf>
+<latex_figs/small_yellow_notice.pdf, id=42, 32.12pt x 32.12pt>
 <use latex_figs/small_yellow_notice.pdf>
 <use latex_figs/small_yellow_notice.pdf>
-<latex_figs/small_yellow_question.pdf, id=41, 32.12pt x 32.12pt>
-<use latex_figs/small_yellow_question.pdf>
+<latex_figs/small_yellow_question.pdf, id=43, 32.12pt x 32.12pt>
 <use latex_figs/small_yellow_question.pdf> [3 <./latex_figs/small_yellow_notice
-.pdf> <./latex_figs/small_yellow_question.pdf>]
+.pdf>] <use latex_figs/small_yellow_question.pdf>
 <use latex_figs/small_yellow_warning.pdf> (./admon_yellowbox.out.pyg)
 <use latex_figs/small_yellow_warning.pdf>
 <use latex_figs/small_yellow_notice.pdf> (./admon_yellowbox.out.pyg)
 (./admon_yellowbox.out.pyg)
-<../doc/src/manual/fig/wave1D.pdf, id=63, 586.83241pt x 442.29242pt>
-<use ../doc/src/manual/fig/wave1D.pdf> [4]
-
-
-
-[5] <latex_figs/small_yellow_summary.pdf, id=75, 32.12pt x 32.12pt>
+<../doc/src/manual/fig/wave1D.pdf, id=57, 586.83241pt x 442.29242pt>
+<use ../doc/src/manual/fig/wave1D.pdf> [4 <./latex_figs/small_yellow_question.p
+df>] [5] <latex_figs/small_yellow_summary.pdf, id=76, 32.12pt x 32.12pt>
 <use latex_figs/small_yellow_summary.pdf>
 No file admon_yellowbox.ind.
 [6 <../doc/src/manual/fig/wave1D.pdf> <./latex_figs/small_yellow_summary.pdf>]
@@ -87021,6 +91728,8 @@ admon_yellowbox.out.pyg
 admon_yellowbox.out.pyg
 latex_figs/small_yellow_warning.pdf
 latex_figs/small_yellow_warning.pdf
+admon_yellowbox.out.pyg
+admon_yellowbox.out.pyg
 latex_figs/small_yellow_warning.pdf
 latex_figs/small_yellow_notice.pdf
 latex_figs/small_yellow_notice.pdf
@@ -87041,21 +91750,20 @@ Package rerunfilecheck Warning: File `admon_yellowbox.out' has changed.
 (rerunfilecheck)                Rerun to get outlines right
 (rerunfilecheck)                or use package `bookmark'.
 
- )
-(see the transcript file for additional information){/usr/share/texmf/fonts/enc
-/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/
-texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-
-mathsy.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib1
-0.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/font
-s/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb
-></usr/share/texmf/fonts/type1/public/lm/lmmi7.pfb></usr/share/texmf/fonts/type
-1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/s
-hare/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/
-lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texm
-f/fonts/type1/public/lm/lmri8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy1
-0.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy7.pfb></usr/share/texmf/fonts
-/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb>
-</usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
+ ){/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dv
+ips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share
+/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}</usr/share/texlive/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmmib10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx
+10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fon
+ts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi12.pf
+b></usr/share/texmf/fonts/type1/public/lm/lmmi7.pfb></usr/share/texmf/fonts/typ
+e1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/
+share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public
+/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/tex
+mf/fonts/type1/public/lm/lmri8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy
+10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy7.pfb></usr/share/texmf/font
+s/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb
+></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
 Output written on admon_yellowbox.pdf (6 pages, ).
 Transcript written on admon_yellowbox.log.
 + '[' 0 -ne 0 ']'
@@ -87071,8 +91779,11 @@ small_yellow_summary.pdf
 small_yellow_warning.pdf
 + rm -rf latex_figs
 + for admon_tp in '$admon_tps'
-+ system doconce format pdflatex admon --latex_admon=graybox3
-+ doconce format pdflatex admon --latex_admon=graybox3
++ '[' graybox3 = graybox1 ']'
++ '[' graybox3 = graybox3 ']'
++ color='--latex_admon_color=gray!20'
++ system doconce format pdflatex admon --latex_admon=graybox3 '--latex_admon_color=gray!20'
++ doconce format pdflatex admon --latex_admon=graybox3 '--latex_admon_color=gray!20'
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to pdflatex
 figure file ../doc/src/manual/fig/wave1D:
@@ -87084,6 +91795,7 @@ output in admon.p.tex
 + '[' 0 -ne 0 ']'
 + doconce ptex2tex admon envir=minted
 \bpycod (!bc pycod) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+\bpypro (!bc pypro) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
 \bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
 output in admon.tex
 + cp admon.tex admon_graybox3.tex
@@ -87193,23 +91905,20 @@ No file admon_graybox3.aux.
 dmap/pdftex.map}] (./admon_graybox3.out.pyg)
 <latex_figs/small_gray_warning.pdf, id=20, 48.18pt x 48.18pt>
 <use latex_figs/small_gray_warning.pdf>
-<use latex_figs/small_gray_warning.pdf> [2 <./latex_figs/small_gray_warning.pdf
->] <use latex_figs/small_gray_warning.pdf>
-<latex_figs/small_gray_notice.pdf, id=40, 64.24pt x 64.24pt>
+<use latex_figs/small_gray_warning.pdf> (./admon_graybox3.out.pyg)
+(./admon_graybox3.out.pyg) [2 <./latex_figs/small_gray_warning.pdf>]
+<use latex_figs/small_gray_warning.pdf>
+<latex_figs/small_gray_notice.pdf, id=42, 64.24pt x 64.24pt>
 <use latex_figs/small_gray_notice.pdf> <use latex_figs/small_gray_notice.pdf>
-<latex_figs/small_gray_question2.pdf, id=41, 64.24pt x 64.24pt>
-<use latex_figs/small_gray_question2.pdf>
+<latex_figs/small_gray_question2.pdf, id=43, 64.24pt x 64.24pt>
 <use latex_figs/small_gray_question2.pdf> [3 <./latex_figs/small_gray_notice.pd
-f> <./latex_figs/small_gray_question2.pdf>]
+f>] <use latex_figs/small_gray_question2.pdf>
 <use latex_figs/small_gray_warning.pdf> (./admon_graybox3.out.pyg)
 <use latex_figs/small_gray_warning.pdf> <use latex_figs/small_gray_notice.pdf>
 (./admon_graybox3.out.pyg) (./admon_graybox3.out.pyg)
-<../doc/src/manual/fig/wave1D.pdf, id=63, 586.83241pt x 442.29242pt>
-<use ../doc/src/manual/fig/wave1D.pdf> [4]
-
-
-
-[5] <latex_figs/small_gray_summary.pdf, id=75, 48.18pt x 48.18pt>
+<../doc/src/manual/fig/wave1D.pdf, id=57, 586.83241pt x 442.29242pt>
+<use ../doc/src/manual/fig/wave1D.pdf> [4 <./latex_figs/small_gray_question2.pd
+f>] [5] <latex_figs/small_gray_summary.pdf, id=76, 48.18pt x 48.18pt>
 <use latex_figs/small_gray_summary.pdf>
 No file admon_graybox3.ind.
 [6 <../doc/src/manual/fig/wave1D.pdf> <./latex_figs/small_gray_summary.pdf>]
@@ -87323,6 +92032,8 @@ admon_graybox3.out.pyg
 admon_graybox3.out.pyg
 latex_figs/small_gray_warning.pdf
 latex_figs/small_gray_warning.pdf
+admon_graybox3.out.pyg
+admon_graybox3.out.pyg
 latex_figs/small_gray_warning.pdf
 latex_figs/small_gray_notice.pdf
 latex_figs/small_gray_notice.pdf
@@ -87343,21 +92054,20 @@ Package rerunfilecheck Warning: File `admon_graybox3.out' has changed.
 (rerunfilecheck)                Rerun to get outlines right
 (rerunfilecheck)                or use package `bookmark'.
 
- )
-(see the transcript file for additional information){/usr/share/texmf/fonts/enc
-/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/
-texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-
-mathsy.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib1
-0.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/font
-s/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb
-></usr/share/texmf/fonts/type1/public/lm/lmmi7.pfb></usr/share/texmf/fonts/type
-1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/s
-hare/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/
-lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texm
-f/fonts/type1/public/lm/lmri8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy1
-0.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy7.pfb></usr/share/texmf/fonts
-/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb>
-</usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
+ ){/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dv
+ips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share
+/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}</usr/share/texlive/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmmib10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx
+10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fon
+ts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi12.pf
+b></usr/share/texmf/fonts/type1/public/lm/lmmi7.pfb></usr/share/texmf/fonts/typ
+e1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/
+share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public
+/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/tex
+mf/fonts/type1/public/lm/lmri8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy
+10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy7.pfb></usr/share/texmf/font
+s/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb
+></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
 Output written on admon_graybox3.pdf (6 pages, ).
 Transcript written on admon_graybox3.log.
 + '[' 0 -ne 0 ']'
@@ -87373,6 +92083,9 @@ small_gray_summary.pdf
 small_gray_warning.pdf
 + rm -rf latex_figs
 + for admon_tp in '$admon_tps'
++ '[' colors2 = graybox1 ']'
++ '[' colors2 = graybox3 ']'
++ color=
 + system doconce format pdflatex admon --latex_admon=colors2
 + doconce format pdflatex admon --latex_admon=colors2
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
@@ -87386,6 +92099,7 @@ output in admon.p.tex
 + '[' 0 -ne 0 ']'
 + doconce ptex2tex admon envir=minted
 \bpycod (!bc pycod) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+\bpypro (!bc pypro) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
 \bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
 output in admon.tex
 + cp admon.tex admon_colors2.tex
@@ -87494,21 +92208,19 @@ No file admon_colors2.aux.
  [1{/var/lib/texmf/fonts/map/pdftex/up
 dmap/pdftex.map}] (./admon_colors2.out.pyg)
 <latex_figs/warning.pdf, id=20, 89.33376pt x 89.33376pt>
-<use latex_figs/warning.pdf> <use latex_figs/warning.pdf> [2 <./latex_figs/warn
-ing.pdf>] <use latex_figs/warning.pdf>
-<latex_figs/notice.pdf, id=38, 89.33376pt x 89.33376pt>
+<use latex_figs/warning.pdf> <use latex_figs/warning.pdf>
+(./admon_colors2.out.pyg) (./admon_colors2.out.pyg) [2 <./latex_figs/warning.pd
+f>] <use latex_figs/warning.pdf>
+<latex_figs/notice.pdf, id=40, 89.33376pt x 89.33376pt>
 <use latex_figs/notice.pdf> <use latex_figs/notice.pdf>
-<latex_figs/question.pdf, id=39, 89.33376pt x 89.33376pt>
-<use latex_figs/question.pdf> <use latex_figs/question.pdf> [3 <./latex_figs/no
-tice.pdf> <./latex_figs/question.pdf>] <use latex_figs/warning.pdf>
+<latex_figs/question.pdf, id=41, 89.33376pt x 89.33376pt>
+<use latex_figs/question.pdf> [3 <./latex_figs/notice.pdf>]
+<use latex_figs/question.pdf> <use latex_figs/warning.pdf>
 (./admon_colors2.out.pyg) <use latex_figs/warning.pdf>
 <use latex_figs/notice.pdf> (./admon_colors2.out.pyg) (./admon_colors2.out.pyg)
-<../doc/src/manual/fig/wave1D.pdf, id=57, 586.83241pt x 442.29242pt>
-<use ../doc/src/manual/fig/wave1D.pdf> [4]
-
-
-
-[5] <latex_figs/summary.pdf, id=69, 89.33376pt x 89.33376pt>
+<../doc/src/manual/fig/wave1D.pdf, id=53, 586.83241pt x 442.29242pt>
+<use ../doc/src/manual/fig/wave1D.pdf> [4 <./latex_figs/question.pdf>] [5]
+<latex_figs/summary.pdf, id=70, 89.33376pt x 89.33376pt>
 <use latex_figs/summary.pdf>
 No file admon_colors2.ind.
 [6 <../doc/src/manual/fig/wave1D.pdf> <./latex_figs/summary.pdf>]
@@ -87622,6 +92334,8 @@ admon_colors2.out.pyg
 admon_colors2.out.pyg
 latex_figs/warning.pdf
 latex_figs/warning.pdf
+admon_colors2.out.pyg
+admon_colors2.out.pyg
 latex_figs/warning.pdf
 latex_figs/notice.pdf
 latex_figs/notice.pdf
@@ -87642,21 +92356,20 @@ Package rerunfilecheck Warning: File `admon_colors2.out' has changed.
 (rerunfilecheck)                Rerun to get outlines right
 (rerunfilecheck)                or use package `bookmark'.
 
- )
-(see the transcript file for additional information){/usr/share/texmf/fonts/enc
-/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/
-texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-
-mathsy.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib1
-0.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/font
-s/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb
-></usr/share/texmf/fonts/type1/public/lm/lmmi7.pfb></usr/share/texmf/fonts/type
-1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/s
-hare/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/
-lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texm
-f/fonts/type1/public/lm/lmri8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy1
-0.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy7.pfb></usr/share/texmf/fonts
-/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb>
-</usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
+ ){/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dv
+ips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share
+/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}</usr/share/texlive/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmmib10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx
+10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fon
+ts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi12.pf
+b></usr/share/texmf/fonts/type1/public/lm/lmmi7.pfb></usr/share/texmf/fonts/typ
+e1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/
+share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public
+/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/tex
+mf/fonts/type1/public/lm/lmri8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy
+10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy7.pfb></usr/share/texmf/font
+s/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb
+></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
 Output written on admon_colors2.pdf (6 pages, ).
 Transcript written on admon_colors2.log.
 + '[' 0 -ne 0 ']'
@@ -87671,6 +92384,21 @@ question.pdf
 summary.pdf
 warning.pdf
 + rm -rf latex_figs
++ doconce format pdflatex admon --latex_admon=graybox1 --latex_admon_color=1,1,1 --latex_admon_envir_map=2
+running preprocess -DFORMAT=pdflatex -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
+translating doconce text in tmp_preprocess__admon.do.txt to pdflatex
+figure file ../doc/src/manual/fig/wave1D:
+    can use ../doc/src/manual/fig/wave1D.pdf for format pdflatex
+*** warning: wrong text size "illegal-size" specified in notice environment!
+    must be "large" or "small" - will be set to normal
+output in admon.p.tex
++ doconce ptex2tex admon pycod2=minted pypro2=minted pycod=Verbatim pypro=Verbatim
+\bpycod2 (!bc pycod2) -> \begin{minted}{python}
+\bpypro2 (!bc pypro2) -> \begin{minted}{python}
+\bpycod (!bc pycod) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=0mm]
+\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
+output in admon.tex
++ cp admon.tex admon_double_envirs.tex
 + system doconce format html admon --html_admon=lyx --html_style=blueish2
 + doconce format html admon --html_admon=lyx --html_style=blueish2
 running preprocess -DFORMAT=html -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
@@ -87953,8 +92681,7 @@ translating doconce text in tmp_preprocess__admon.do.txt to plain
 output in admon.txt
 + '[' 0 -ne 0 ']'
 + cp admon.txt admon_paragraph.txt
-+ cp -f admon_apricot.html admon_colors.html admon_gray.html admon_lyx.html admon_paragraph.html admon_vagrant.html admon_yellow.html admon_colors1.pdf admon_colors2.pdf admon_graybox1.pdf admon_graybox2.pdf admon_graybox3.pdf admon_paragraph.pdf admon_yellowbox.pdf admon_mwiki.mwiki admon_paragraph.txt admon_sphinx admon_demo/
-cp: omitting directory ‘admon_sphinx’
++ cp -fr admon_apricot.html admon_colors.html admon_gray.html admon_lyx.html admon_paragraph.html admon_vagrant.html admon_yellow.html admon_colors1.pdf admon_colors2.pdf admon_graybox1.pdf admon_graybox2.pdf admon_graybox3.pdf admon_paragraph.pdf admon_yellowbox.pdf admon_mwiki.mwiki admon_paragraph.txt admon_sphinx admon_demo/
 + '[' -d latex_figs ']'
 + system doconce format pandoc github_md.do.txt --github_md
 + doconce format pandoc github_md.do.txt --github_md
@@ -89982,6 +94709,1699 @@ translating doconce text in tmp_preprocess__movies.do.txt to plain
     http://vimeo.com/55562330
 output in movies.txt
 + '[' 0 -ne 0 ']'
++ cd Springer_T2
++ bash -x make.sh
++ name=Springer_T2_book
++ rm 'tmp_*'
+rm: cannot remove ‘tmp_*’: No such file or directory
++ system doconce format pdflatex Springer_T2_book CHAPTER=chapter BOOK=book APPENDIX=appendix -DPRIMER_BOOK -DDOCONCE ALG=code --encoding=utf-8 --device=paper --latex_exercise_numbering=chapter --latex_admon_color=1,1,1
++ doconce format pdflatex Springer_T2_book CHAPTER=chapter BOOK=book APPENDIX=appendix -DPRIMER_BOOK -DDOCONCE ALG=code --encoding=utf-8 --device=paper --latex_exercise_numbering=chapter --latex_admon_color=1,1,1
+
+Summary of papers
+-----------------
+
+Articles in International Journals: 1
+Books:                              4
+Edited Books:                       0
+Chapters in Books:                  0
+Refereed Proceedings:               0
+Conference Proceedings:             0
+Technical Reports:                  0
+Manuals:                            0
+Theses:                             0
+Courses:                            0
+Talks:                              0
+Posters:                            0
+Public Outreach:                    0
+Other Publications:                 3
+Total:                              8
+
+Exported 8 paper(s) to papers.bib.
+running preprocess -DFORMAT=pdflatex -DDEVICE=paper -DPRIMER_BOOK -DDOCONCE -DCHAPTER="chapter" -DBOOK="book" -DAPPENDIX="appendix" -DALG="code" Springer_T2_book.do.txt > tmp_preprocess__Springer_T2_book.do.txt
+running mako on tmp_preprocess__Springer_T2_book.do.txt to make tmp_mako__Springer_T2_book.do.txt
+mako variables: {'CHAPTER': 'chapter', 'PRIMER_BOOK': True, 'FORMAT': 'pdflatex', 'ALG': 'code', 'APPENDIX': 'appendix', 'DEVICE': 'paper', 'BOOK': 'book', 'DOCONCE': True}
+translating doconce text in tmp_mako__Springer_T2_book.do.txt to pdflatex
+open file with encoding utf-8
+
+exporting publish database papers.pub to papers.bib:
+output in Springer_T2_book.p.tex
++ '[' 0 -ne 0 ']'
++ system ptex2tex -DLATEX_STYLE=Springer_T2 -DLATEX_HEADING=titlepage -DLIST_OF_EXERCISES=loe Springer_T2_book
++ ptex2tex -DLATEX_STYLE=Springer_T2 -DLATEX_HEADING=titlepage -DLIST_OF_EXERCISES=loe Springer_T2_book
+using local config file .ptex2tex.cfg
+running preprocessor on Springer_T2_book.p.tex...  defines: 'LIST_OF_EXERCISES', 'LATEX_STYLE', 'LATEX_HEADING'  done
+done Springer_T2_book.p.tex -> Springer_T2_book.tex
++ '[' 0 -ne 0 ']'
++ rm -rf Springer_T2_book.aux Springer_T2_book.ind Springer_T2_book.idx Springer_T2_book.bbl Springer_T2_book.toc Springer_T2_book.loe
++ system pdflatex Springer_T2_book
++ pdflatex Springer_T2_book
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
+ restricted \write18 enabled.
+entering extended mode
+(./Springer_T2_book.tex
+LaTeX2e <2011/06/27>
+Babel <3.9f> and hyphenation patterns for 2 languages loaded.
+(/home/hpl/texmf/tex/latex/misc/svmonodo.cls
+
+LaTeX Warning: You have requested document class `svmonodo',
+               but the document class provides `svmono'.
+
+Document Class: svmono 2007/06/25 v5.4 
+Springer Verlag global LaTeX document class for monographs
+
+Class Springer-SVMono Warning: Specified option or subpackage "sectrefs" 
+(Springer-SVMono)              not found passing it to article class 
+(Springer-SVMono)              - on .
+
+
+Class Springer-SVMono Warning: Specified option or subpackage "open=right" 
+(Springer-SVMono)              not found passing it to article class 
+(Springer-SVMono)              - on .
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
+
+
+
+(/home/hpl/texmf/tex/latex/misc/t2do.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+
+
+
+
+Package amsmath Warning: Unable to redefine math accent \vec.
+
+) 
+
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
+
+
+Package caption Warning: Unsupported document class (or package) detected,
+(caption)                usage of the caption package is not recommended.
+See the caption package documentation for explanation.
+
+) (/usr/share/texlive/texmf-dist/tex/latex/tools/tabularx.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/ts1enc.def
+
+
+
+
+
+
+(/usr/share/texmf/tex/latex/xcolor/xcolor.sty
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
+
+
+(/home/hpl/texmf/tex/latex/misc/ptex2tex.sty
+(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
+<2008/02/07> (tvz))
+(/usr/share/texlive/texmf-dist/tex/latex/moreverb/moreverb.sty
+
+(/home/hpl/texmf/tex/latex/misc/anslistings.sty
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+
+
+
+
+
+
+
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
+
+(/home/hpl/texmf/tex/latex/misc/mdframed.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/l3names.sty
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-abspage.sty
+
+
+(/usr/share/texmf/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/share/texmf/tex/latex/pgf/basiclayer/pgf.sty
+(/usr/share/texmf/tex/latex/pgf/utilities/pgfrcs.sty
+
+(/usr/share/texmf/tex/generic/pgf/utilities/pgfutil-latex.def
+
+
+(/usr/share/texmf/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/share/texmf/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys.code.tex
+(/usr/share/texmf/tex/generic/pgf/utilities/pgfkeys.code.tex
+
+
+(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+
+
+
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcore.code.tex
+(/usr/share/texmf/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/share/texmf/tex/generic/pgf/math/pgfmathcalc.code.tex
+
+
+(/usr/share/texmf/tex/generic/pgf/math/pgfmathfunctions.code.tex
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
+
+
+
+
+
+
+
+
+(/usr/share/texmf/tex/latex/pgf/utilities/pgffor.sty
+(/usr/share/texmf/tex/latex/pgf/utilities/pgfkeys.sty
+
+
+(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+
+
+(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopat
+hs.code.tex))) (/usr/share/texlive/texmf-dist/tex/latex/mdframed/md-frame-1.mdf
+))
+Writing index file Springer_T2_book.idx
+
+LaTeX Warning: Unused global option(s):
+    [sectrefs,open=right].
+
+No file Springer_T2_book.aux.
+(/home/hpl/texmf/tex/latex/misc/ts1cmr.fd)
+
+(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+
+ABD: EveryShipout initializing macros (./newcommands_keep.tex)
+
+
+
+
+
+
+
+
+ [3
+Non-PDF special ignored!{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+[4]
+Overfull \hbox (120.12047pt too wide) 
+|[] 
+[5] 
+
+LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <5.5> not available
+(Font)              size <5> substituted on .
+
+
+LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <5.5> not available
+(Font)              size <5> substituted on .
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <5.5> not available
+(Font)              size <5> substituted on .
+
+[6]
+Overfull \hbox (120.12047pt too wide) 
+|[] 
+[7] [8]
+Chapter 1.
+
+Overfull \hbox (30.77882pt too wide) 
+[][][] 
+
+Overfull \hbox (120.12047pt too wide) 
+|[] 
+
+LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <8.5> not available
+(Font)              size <8> substituted on .
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <4.25> not available
+(Font)              size <5> substituted on .
+
+
+LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <8.5> not available
+(Font)              size <8> substituted on .
+
+
+LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <4.25> not available
+(Font)              size <5> substituted on .
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <8.5> not available
+(Font)              size <8> substituted on .
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <4.25> not available
+(Font)              size <5> substituted on .
+
+[1]
+
+
+
+ [2]
+
+
+...rest of part of LaTeX line number...
+
+
+Underfull \hbox (badness 6927) 
+\T1/lmr/m/n/11 (+20) or one may take the less rec-om-mended lazy ap-proach
+
+
+...rest of part of LaTeX line number...
+
+[3]
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+[4]
+Chapter 2.
+
+Overfull \hbox (30.77882pt too wide) 
+[][][] 
+
+Overfull \hbox (120.12047pt too wide) 
+|[] 
+[5] [6]
+
+
+...rest of part of LaTeX line number...
+
+[7]
+
+
+...rest of part of LaTeX line number...
+
+[8]
+
+
+...rest of part of LaTeX line number...
+
+
+
+
+
+
+
+
+
+
+
+
+
+[9] [10]
+Appendix A.
+
+Overfull \hbox (30.77882pt too wide) 
+[][][] 
+
+Overfull \hbox (120.12047pt too wide) 
+|[] 
+[11] [12]
+No file Springer_T2_book.bbl.
+No file Springer_T2_book.ind.
+(./Springer_T2_book.aux)
+
+ *File List*
+svmonodo.cls    2007/06/25 v5.4 
+Springer Verlag global LaTeX document class for monographs
+ article.cls    2007/10/19 v1.4h Standard LaTeX document class
+  size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
+   color.sty    1999/02/16
+   color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
+  pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
+infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
+ ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+  framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
+    t2do.sty    
+graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+  keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
+graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
+graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
+inputenc.sty    2008/03/30 v1.1d Input encoding file
+    utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
+   t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+  ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+  omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+ amsmath.sty    2013/01/14 v2.14 AMS math features
+ amstext.sty    2000/06/29 v2.01
+  amsgen.sty    1999/11/30 v2.0
+  amsbsy.sty    1999/11/29 v1.2d
+  amsopn.sty    1999/12/14 v2.01 operator names
+amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
+ amssymb.sty    2013/01/14 v3.01 AMS font symbols
+ caption.sty    2013/05/02 v3.3-89 Customizing captions (AR)
+caption3.sty    2013/05/02 v1.6-88 caption3 kernel (AR)
+tabularx.sty    1999/01/07 v2.07 `tabularx' package (DPC)
+   array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
+multicol.sty    2011/06/27 v1.7a multicolumn formatting (FMi)
+ fontenc.sty
+   t1enc.def    2005/09/27 v1.99g Standard LaTeX file
+marvosym.sty    2011/07/20 v2.2 Martin Vogel's Symbols font definitions
+textcomp.sty    2005/09/27 v1.99g Standard LaTeX package
+  ts1enc.def    2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
+  ts1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+footmisc.sty    2011/06/06 v5.5b a miscellany of footnote facilities
+ relsize.sty    2013/03/29 ver 4.1
+  epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
+ makeidx.sty    2000/03/29 v1.0m Standard LaTeX package
+setspace.sty    2011/12/19 v6.7a set line spacing
+  xcolor.sty    2007/01/21 v2.11 LaTeX color extensions (UK)
+   color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
+colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
+      bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
+microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
+microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
+microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
+ptex2tex.sty    
+fancyvrb.sty    2008/02/07
+moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
+verbatim.sty    2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
+anslistings.sty    2009/03/28 code highlighting; provided by Olivier Verdier <o
+livier@maths.lth.se>
+listings.sty    2013/07/10 1.5 (Carsten Heinz)
+ lstmisc.sty    2013/07/10 1.5 (Carsten Heinz)
+listings.cfg    2013/06/27 1.5pre1 listings configuration
+ fontenc.sty
+   t1enc.def    2005/09/27 v1.99g Standard LaTeX file
+ lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
+hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
+hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
+hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
+  hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
+ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
+  ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+ intcalc.sty    2007/09/27 v1.1 Expandable calculations with integers (HO)
+   ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
+etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
+kvdefinekeys.sty    2011/04/07 v1.3 Define keys (HO)
+pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
+pdfescape.sty    2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
+bigintcalc.sty    2012/04/08 v1.3 Expandable calculations on big integers (HO)
+  bitset.sty    2011/01/30 v1.1 Handle bit-vector datatype (HO)
+uniquecounter.sty    2011/01/30 v1.2 Provide unlimited unique counter (HO)
+letltxmacro.sty    2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
+ hopatch.sty    2012/05/28 v1.2 Wrapper for package hooks (HO)
+xcolor-patch.sty    2011/01/30 xcolor patch
+atveryend.sty    2011/06/30 v1.8 Hooks at the very end of document (HO)
+atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
+refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
+ hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
+ ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
+ auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
+kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
+  pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
+hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
+     url.sty    2006/04/12  ver 3.3  Verb mode for urls, etc.
+ hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
+rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
+mdframed.sty    2013/08/18 1.9d: mdframed
+  xparse.sty    2013/07/12 v4544 L3 Experimental document command parser
+   expl3.sty    2013/07/12 v4544 L3 Experimental code bundle wrapper
+ l3names.sty    2012/12/07 v4346 L3 Namespace for primitives
+l3bootstrap.sty    2013/01/08 v4420 L3 Experimental bootstrap code
+    etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
+l3basics.sty    2013/07/09 v4521 L3 Basic definitions
+ l3expan.sty    2013/07/09 v4521 L3 Argument expansion
+    l3tl.sty    2013/04/24 v4482 L3 Token lists
+   l3seq.sty    2013/05/26 v4500 L3 Sequences and stacks
+   l3int.sty    2013/04/24 v4482 L3 Integers
+ l3quark.sty    2013/07/09 v4521 L3 Quarks
+   l3prg.sty    2013/04/24 v4482 L3 Control structures
+ l3clist.sty    2013/05/26 v4500 L3 Comma separated lists
+ l3token.sty    2013/04/24 v4482 L3 Experimental token manipulation
+  l3prop.sty    2013/01/09 v4423 L3 Property lists
+   l3msg.sty    2013/01/08 v4412 L3 Messages
+  l3file.sty    2013/05/01 v4483 L3 File and I/O operations
+  l3skip.sty    2013/01/13 v4444 L3 Dimensions and skips
+  l3keys.sty    2013/07/12 v4544 L3 Experimental key-value interfaces
+    l3fp.sty    2013/07/09 v4521 L3 Floating points
+   l3box.sty    2013/04/24 v4482 L3 Experimental boxes
+l3coffins.sty    2012/09/09 v4212 L3 Coffin code layer
+ l3color.sty    2012/08/29 v4156 L3 Experimental color support
+l3luatex.sty    2012/08/03 v4049 L3 Experimental LuaTeX-specific functions
+l3candidates.sty    2013/07/09 v4521 L3 Experimental additions to l3kernel
+etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
+zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
+zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
+needspace.sty    2010/09/12 v1.3d reserve vertical space
+    tikz.sty    2010/10/13 v2.10 (rcs-revision 1.76)
+     pgf.sty    2008/01/15 v2.10 (rcs-revision 1.12)
+  pgfrcs.sty    2010/10/25 v2.10 (rcs-revision 1.24)
+everyshi.sty    2001/05/15 v3.00 EveryShipout Package (MS)
+  pgfrcs.code.tex
+ pgfcore.sty    2010/04/11 v2.10 (rcs-revision 1.7)
+  pgfsys.sty    2010/06/30 v2.10 (rcs-revision 1.37)
+  pgfsys.code.tex
+pgfsyssoftpath.code.tex    2008/07/18  (rcs-revision 1.7)
+pgfsysprotocol.code.tex    2006/10/16  (rcs-revision 1.4)
+ pgfcore.code.tex
+pgfcomp-version-0-65.sty    2007/07/03 v2.10 (rcs-revision 1.7)
+pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
+  pgffor.sty    2010/03/23 v2.10 (rcs-revision 1.18)
+ pgfkeys.sty    
+ pgfkeys.code.tex
+  pgffor.code.tex
+    tikz.code.tex
+md-frame-1.mdf    2013/08/18\ 1.9d: md-frame-1
+  ts1cmr.fd    1999/05/25 v2.5h Standard LaTeX font definitions
+   t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+supp-pdf.mkii
+epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
+  grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
+epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
+RS)
+ nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
+gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
+newcommands_keep.tex
+  t1lmss.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  ot1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omllmm.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omxlmex.fd    2009/10/30 v1.6 Font defs for Latin Modern
+    umsa.fd    2013/01/14 v3.01 AMS symbols A
+  mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
+    umsb.fd    2013/01/14 v3.01 AMS symbols B
+  mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+  t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  ts1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ ***********
+
+
+Package rerunfilecheck Warning: File `Springer_T2_book.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+
+LaTeX Font Warning: Size substitutions with differences
+(Font)              up to 0.75pt have occurred.
+
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ )
+(see the transcript file for additional information){/usr/share/texmf/fonts/enc
+/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/share
+/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm
+-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}</usr/share/texmf/fo
+nts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx9.pf
+b></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/ty
+pe1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></us
+r/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/pub
+lic/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/t
+exmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr
+9.pfb></usr/share/texmf/fonts/type1/public/lm/lmri12.pfb></usr/share/texmf/font
+s/type1/public/lm/lmri9.pfb></usr/share/texmf/fonts/type1/public/lm/lmss12.pfb>
+</usr/share/texmf/fonts/type1/public/lm/lmss9.pfb></usr/share/texmf/fonts/type1
+/public/lm/lmssbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></us
+r/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/pub
+lic/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb></usr/shar
+e/texmf/fonts/type1/public/lm/lmtt8.pfb></usr/share/texmf/fonts/type1/public/lm
+/lmtt9.pfb>
+Output written on Springer_T2_book.pdf (18 pages, ).
+Transcript written on Springer_T2_book.log.
++ '[' 0 -ne 0 ']'
++ system bibtex Springer_T2_book
++ bibtex Springer_T2_book
+This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
+The top-level auxiliary file: Springer_T2_book.aux
+The style file: plain.bst
+Database file #1: papers.bib
++ '[' 0 -ne 0 ']'
++ system makeindex Springer_T2_book
++ makeindex Springer_T2_book
+This is makeindex, version 2.15 [TeX Live 2013] (kpathsea + Thai support).
+Scanning input file Springer_T2_book.idx....done (22 entries accepted, 0 rejected).
+Sorting entries....done (100 comparisons).
+Generating output file Springer_T2_book.ind....done (46 lines written, 0 warnings).
+Output written in Springer_T2_book.ind.
+Transcript written in Springer_T2_book.ilg.
++ '[' 0 -ne 0 ']'
++ system pdflatex Springer_T2_book
++ pdflatex Springer_T2_book
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
+ restricted \write18 enabled.
+entering extended mode
+(./Springer_T2_book.tex
+LaTeX2e <2011/06/27>
+Babel <3.9f> and hyphenation patterns for 2 languages loaded.
+(/home/hpl/texmf/tex/latex/misc/svmonodo.cls
+
+LaTeX Warning: You have requested document class `svmonodo',
+               but the document class provides `svmono'.
+
+Document Class: svmono 2007/06/25 v5.4 
+Springer Verlag global LaTeX document class for monographs
+
+Class Springer-SVMono Warning: Specified option or subpackage "sectrefs" 
+(Springer-SVMono)              not found passing it to article class 
+(Springer-SVMono)              - on .
+
+
+Class Springer-SVMono Warning: Specified option or subpackage "open=right" 
+(Springer-SVMono)              not found passing it to article class 
+(Springer-SVMono)              - on .
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
+
+
+
+(/home/hpl/texmf/tex/latex/misc/t2do.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+
+
+
+
+Package amsmath Warning: Unable to redefine math accent \vec.
+
+) 
+
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
+
+
+Package caption Warning: Unsupported document class (or package) detected,
+(caption)                usage of the caption package is not recommended.
+See the caption package documentation for explanation.
+
+) (/usr/share/texlive/texmf-dist/tex/latex/tools/tabularx.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/ts1enc.def
+
+
+
+
+
+
+(/usr/share/texmf/tex/latex/xcolor/xcolor.sty
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
+
+
+(/home/hpl/texmf/tex/latex/misc/ptex2tex.sty
+(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
+<2008/02/07> (tvz))
+(/usr/share/texlive/texmf-dist/tex/latex/moreverb/moreverb.sty
+
+(/home/hpl/texmf/tex/latex/misc/anslistings.sty
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+
+
+
+
+
+
+
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
+
+(/home/hpl/texmf/tex/latex/misc/mdframed.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/l3names.sty
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-abspage.sty
+
+
+(/usr/share/texmf/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/share/texmf/tex/latex/pgf/basiclayer/pgf.sty
+(/usr/share/texmf/tex/latex/pgf/utilities/pgfrcs.sty
+
+(/usr/share/texmf/tex/generic/pgf/utilities/pgfutil-latex.def
+
+
+(/usr/share/texmf/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/share/texmf/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys.code.tex
+(/usr/share/texmf/tex/generic/pgf/utilities/pgfkeys.code.tex
+
+
+(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+
+
+
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcore.code.tex
+(/usr/share/texmf/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/share/texmf/tex/generic/pgf/math/pgfmathcalc.code.tex
+
+
+(/usr/share/texmf/tex/generic/pgf/math/pgfmathfunctions.code.tex
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
+
+
+
+
+
+
+
+
+(/usr/share/texmf/tex/latex/pgf/utilities/pgffor.sty
+(/usr/share/texmf/tex/latex/pgf/utilities/pgfkeys.sty
+
+
+(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+
+
+(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopat
+hs.code.tex))) (/usr/share/texlive/texmf-dist/tex/latex/mdframed/md-frame-1.mdf
+))
+Writing index file Springer_T2_book.idx
+
+LaTeX Warning: Unused global option(s):
+    [sectrefs,open=right].
+
+(./Springer_T2_book.aux) (/home/hpl/texmf/tex/latex/misc/ts1cmr.fd)
+
+(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+
+(./Springer_T2_book.out) (./Springer_T2_book.out)
+ABD: EveryShipout initializing macros (./newcommands_keep.tex)
+
+
+
+
+
+
+
+
+ [3
+Non-PDF special ignored!{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+[4]
+Overfull \hbox (120.12047pt too wide) 
+|[] 
+[5] 
+
+LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <5.5> not available
+(Font)              size <5> substituted on .
+
+
+LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <5.5> not available
+(Font)              size <5> substituted on .
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <5.5> not available
+(Font)              size <5> substituted on .
+
+[6]
+Overfull \hbox (120.12047pt too wide) 
+|[] 
+(./Springer_T2_book.toc) [7] [8]
+Chapter 1.
+
+Overfull \hbox (30.77882pt too wide) 
+[][][] 
+
+Overfull \hbox (120.12047pt too wide) 
+|[] 
+
+LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <8.5> not available
+(Font)              size <8> substituted on .
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <4.25> not available
+(Font)              size <5> substituted on .
+
+
+LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <8.5> not available
+(Font)              size <8> substituted on .
+
+
+LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <4.25> not available
+(Font)              size <5> substituted on .
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <8.5> not available
+(Font)              size <8> substituted on .
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <4.25> not available
+(Font)              size <5> substituted on .
+
+[1]
+
+
+
+ [2]
+Underfull \hbox (badness 6927) 
+\T1/lmr/m/n/11 (+20) or one may take the less rec-om-mended lazy ap-proach
+[3]
+
+
+...rest of part of LaTeX line number...
+
+[4]
+Chapter 2.
+
+Overfull \hbox (30.77882pt too wide) 
+[][][] 
+
+Overfull \hbox (120.12047pt too wide) 
+|[] 
+[5] [6]
+
+
+...rest of part of LaTeX line number...
+
+[7]
+
+
+...rest of part of LaTeX line number...
+
+[8]
+
+
+...rest of part of LaTeX line number...
+
+
+
+
+
+
+
+
+
+
+
+
+
+[9] [10]
+Appendix A.
+
+Overfull \hbox (30.77882pt too wide) 
+[][][] 
+
+Overfull \hbox (120.12047pt too wide) 
+|[] 
+[11] [12] (./Springer_T2_book.bbl
+Overfull \hbox (120.12047pt too wide) 
+|[] 
+) [13] [14] (./Springer_T2_book.ind
+Overfull \hbox (120.12047pt too wide) 
+|[] 
+[15]) (./Springer_T2_book.aux)
+
+ *File List*
+svmonodo.cls    2007/06/25 v5.4 
+Springer Verlag global LaTeX document class for monographs
+ article.cls    2007/10/19 v1.4h Standard LaTeX document class
+  size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
+   color.sty    1999/02/16
+   color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
+  pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
+infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
+ ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+  framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
+    t2do.sty    
+graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+  keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
+graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
+graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
+inputenc.sty    2008/03/30 v1.1d Input encoding file
+    utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
+   t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+  ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+  omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+ amsmath.sty    2013/01/14 v2.14 AMS math features
+ amstext.sty    2000/06/29 v2.01
+  amsgen.sty    1999/11/30 v2.0
+  amsbsy.sty    1999/11/29 v1.2d
+  amsopn.sty    1999/12/14 v2.01 operator names
+amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
+ amssymb.sty    2013/01/14 v3.01 AMS font symbols
+ caption.sty    2013/05/02 v3.3-89 Customizing captions (AR)
+caption3.sty    2013/05/02 v1.6-88 caption3 kernel (AR)
+tabularx.sty    1999/01/07 v2.07 `tabularx' package (DPC)
+   array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
+multicol.sty    2011/06/27 v1.7a multicolumn formatting (FMi)
+ fontenc.sty
+   t1enc.def    2005/09/27 v1.99g Standard LaTeX file
+marvosym.sty    2011/07/20 v2.2 Martin Vogel's Symbols font definitions
+textcomp.sty    2005/09/27 v1.99g Standard LaTeX package
+  ts1enc.def    2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
+  ts1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+footmisc.sty    2011/06/06 v5.5b a miscellany of footnote facilities
+ relsize.sty    2013/03/29 ver 4.1
+  epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
+ makeidx.sty    2000/03/29 v1.0m Standard LaTeX package
+setspace.sty    2011/12/19 v6.7a set line spacing
+  xcolor.sty    2007/01/21 v2.11 LaTeX color extensions (UK)
+   color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
+colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
+      bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
+microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
+microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
+microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
+ptex2tex.sty    
+fancyvrb.sty    2008/02/07
+moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
+verbatim.sty    2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
+anslistings.sty    2009/03/28 code highlighting; provided by Olivier Verdier <o
+livier@maths.lth.se>
+listings.sty    2013/07/10 1.5 (Carsten Heinz)
+ lstmisc.sty    2013/07/10 1.5 (Carsten Heinz)
+listings.cfg    2013/06/27 1.5pre1 listings configuration
+ fontenc.sty
+   t1enc.def    2005/09/27 v1.99g Standard LaTeX file
+ lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
+hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
+hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
+hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
+  hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
+ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
+  ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+ intcalc.sty    2007/09/27 v1.1 Expandable calculations with integers (HO)
+   ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
+etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
+kvdefinekeys.sty    2011/04/07 v1.3 Define keys (HO)
+pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
+pdfescape.sty    2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
+bigintcalc.sty    2012/04/08 v1.3 Expandable calculations on big integers (HO)
+  bitset.sty    2011/01/30 v1.1 Handle bit-vector datatype (HO)
+uniquecounter.sty    2011/01/30 v1.2 Provide unlimited unique counter (HO)
+letltxmacro.sty    2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
+ hopatch.sty    2012/05/28 v1.2 Wrapper for package hooks (HO)
+xcolor-patch.sty    2011/01/30 xcolor patch
+atveryend.sty    2011/06/30 v1.8 Hooks at the very end of document (HO)
+atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
+refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
+ hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
+ ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
+ auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
+kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
+  pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
+hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
+     url.sty    2006/04/12  ver 3.3  Verb mode for urls, etc.
+ hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
+rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
+mdframed.sty    2013/08/18 1.9d: mdframed
+  xparse.sty    2013/07/12 v4544 L3 Experimental document command parser
+   expl3.sty    2013/07/12 v4544 L3 Experimental code bundle wrapper
+ l3names.sty    2012/12/07 v4346 L3 Namespace for primitives
+l3bootstrap.sty    2013/01/08 v4420 L3 Experimental bootstrap code
+    etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
+l3basics.sty    2013/07/09 v4521 L3 Basic definitions
+ l3expan.sty    2013/07/09 v4521 L3 Argument expansion
+    l3tl.sty    2013/04/24 v4482 L3 Token lists
+   l3seq.sty    2013/05/26 v4500 L3 Sequences and stacks
+   l3int.sty    2013/04/24 v4482 L3 Integers
+ l3quark.sty    2013/07/09 v4521 L3 Quarks
+   l3prg.sty    2013/04/24 v4482 L3 Control structures
+ l3clist.sty    2013/05/26 v4500 L3 Comma separated lists
+ l3token.sty    2013/04/24 v4482 L3 Experimental token manipulation
+  l3prop.sty    2013/01/09 v4423 L3 Property lists
+   l3msg.sty    2013/01/08 v4412 L3 Messages
+  l3file.sty    2013/05/01 v4483 L3 File and I/O operations
+  l3skip.sty    2013/01/13 v4444 L3 Dimensions and skips
+  l3keys.sty    2013/07/12 v4544 L3 Experimental key-value interfaces
+    l3fp.sty    2013/07/09 v4521 L3 Floating points
+   l3box.sty    2013/04/24 v4482 L3 Experimental boxes
+l3coffins.sty    2012/09/09 v4212 L3 Coffin code layer
+ l3color.sty    2012/08/29 v4156 L3 Experimental color support
+l3luatex.sty    2012/08/03 v4049 L3 Experimental LuaTeX-specific functions
+l3candidates.sty    2013/07/09 v4521 L3 Experimental additions to l3kernel
+etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
+zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
+zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
+needspace.sty    2010/09/12 v1.3d reserve vertical space
+    tikz.sty    2010/10/13 v2.10 (rcs-revision 1.76)
+     pgf.sty    2008/01/15 v2.10 (rcs-revision 1.12)
+  pgfrcs.sty    2010/10/25 v2.10 (rcs-revision 1.24)
+everyshi.sty    2001/05/15 v3.00 EveryShipout Package (MS)
+  pgfrcs.code.tex
+ pgfcore.sty    2010/04/11 v2.10 (rcs-revision 1.7)
+  pgfsys.sty    2010/06/30 v2.10 (rcs-revision 1.37)
+  pgfsys.code.tex
+pgfsyssoftpath.code.tex    2008/07/18  (rcs-revision 1.7)
+pgfsysprotocol.code.tex    2006/10/16  (rcs-revision 1.4)
+ pgfcore.code.tex
+pgfcomp-version-0-65.sty    2007/07/03 v2.10 (rcs-revision 1.7)
+pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
+  pgffor.sty    2010/03/23 v2.10 (rcs-revision 1.18)
+ pgfkeys.sty    
+ pgfkeys.code.tex
+  pgffor.code.tex
+    tikz.code.tex
+md-frame-1.mdf    2013/08/18\ 1.9d: md-frame-1
+  ts1cmr.fd    1999/05/25 v2.5h Standard LaTeX font definitions
+   t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+supp-pdf.mkii
+epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
+  grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
+epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
+RS)
+ nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
+gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
+Springer_T2_book.out
+Springer_T2_book.out
+newcommands_keep.tex
+  t1lmss.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  ot1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omllmm.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omxlmex.fd    2009/10/30 v1.6 Font defs for Latin Modern
+    umsa.fd    2013/01/14 v3.01 AMS symbols A
+  mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
+    umsb.fd    2013/01/14 v3.01 AMS symbols B
+  mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+  t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  ts1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+Springer_T2_book.bbl
+Springer_T2_book.ind
+ ***********
+
+
+Package rerunfilecheck Warning: File `Springer_T2_book.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+
+LaTeX Font Warning: Size substitutions with differences
+(Font)              up to 0.75pt have occurred.
+
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ )
+(see the transcript file for additional information){/usr/share/texmf/fonts/enc
+/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/share
+/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm
+-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}</usr/share/texmf/fo
+nts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx9.pf
+b></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/ty
+pe1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></us
+r/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/pub
+lic/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/t
+exmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr
+9.pfb></usr/share/texmf/fonts/type1/public/lm/lmri12.pfb></usr/share/texmf/font
+s/type1/public/lm/lmri9.pfb></usr/share/texmf/fonts/type1/public/lm/lmss12.pfb>
+</usr/share/texmf/fonts/type1/public/lm/lmss9.pfb></usr/share/texmf/fonts/type1
+/public/lm/lmssbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></us
+r/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/pub
+lic/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb></usr/shar
+e/texmf/fonts/type1/public/lm/lmtt8.pfb></usr/share/texmf/fonts/type1/public/lm
+/lmtt9.pfb>
+Output written on Springer_T2_book.pdf (21 pages, ).
+Transcript written on Springer_T2_book.log.
++ '[' 0 -ne 0 ']'
++ system pdflatex Springer_T2_book
++ pdflatex Springer_T2_book
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
+ restricted \write18 enabled.
+entering extended mode
+(./Springer_T2_book.tex
+LaTeX2e <2011/06/27>
+Babel <3.9f> and hyphenation patterns for 2 languages loaded.
+(/home/hpl/texmf/tex/latex/misc/svmonodo.cls
+
+LaTeX Warning: You have requested document class `svmonodo',
+               but the document class provides `svmono'.
+
+Document Class: svmono 2007/06/25 v5.4 
+Springer Verlag global LaTeX document class for monographs
+
+Class Springer-SVMono Warning: Specified option or subpackage "sectrefs" 
+(Springer-SVMono)              not found passing it to article class 
+(Springer-SVMono)              - on .
+
+
+Class Springer-SVMono Warning: Specified option or subpackage "open=right" 
+(Springer-SVMono)              not found passing it to article class 
+(Springer-SVMono)              - on .
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
+
+
+
+(/home/hpl/texmf/tex/latex/misc/t2do.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+
+
+
+
+Package amsmath Warning: Unable to redefine math accent \vec.
+
+) 
+
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
+
+
+Package caption Warning: Unsupported document class (or package) detected,
+(caption)                usage of the caption package is not recommended.
+See the caption package documentation for explanation.
+
+) (/usr/share/texlive/texmf-dist/tex/latex/tools/tabularx.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/ts1enc.def
+
+
+
+
+
+
+(/usr/share/texmf/tex/latex/xcolor/xcolor.sty
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
+
+
+(/home/hpl/texmf/tex/latex/misc/ptex2tex.sty
+(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
+<2008/02/07> (tvz))
+(/usr/share/texlive/texmf-dist/tex/latex/moreverb/moreverb.sty
+
+(/home/hpl/texmf/tex/latex/misc/anslistings.sty
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+
+
+
+
+
+
+
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
+
+(/home/hpl/texmf/tex/latex/misc/mdframed.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/l3names.sty
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-abspage.sty
+
+
+(/usr/share/texmf/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/share/texmf/tex/latex/pgf/basiclayer/pgf.sty
+(/usr/share/texmf/tex/latex/pgf/utilities/pgfrcs.sty
+
+(/usr/share/texmf/tex/generic/pgf/utilities/pgfutil-latex.def
+
+
+(/usr/share/texmf/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/share/texmf/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys.code.tex
+(/usr/share/texmf/tex/generic/pgf/utilities/pgfkeys.code.tex
+
+
+(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+
+
+
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcore.code.tex
+(/usr/share/texmf/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/share/texmf/tex/generic/pgf/math/pgfmathcalc.code.tex
+
+
+(/usr/share/texmf/tex/generic/pgf/math/pgfmathfunctions.code.tex
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
+
+
+
+
+
+
+
+
+(/usr/share/texmf/tex/latex/pgf/utilities/pgffor.sty
+(/usr/share/texmf/tex/latex/pgf/utilities/pgfkeys.sty
+
+
+(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+
+
+(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopat
+hs.code.tex))) (/usr/share/texlive/texmf-dist/tex/latex/mdframed/md-frame-1.mdf
+))
+Writing index file Springer_T2_book.idx
+
+LaTeX Warning: Unused global option(s):
+    [sectrefs,open=right].
+
+(./Springer_T2_book.aux) (/home/hpl/texmf/tex/latex/misc/ts1cmr.fd)
+
+(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+
+(./Springer_T2_book.out) (./Springer_T2_book.out)
+ABD: EveryShipout initializing macros (./newcommands_keep.tex)
+
+
+
+
+
+
+
+
+ [3
+Non-PDF special ignored!{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+[4]
+Overfull \hbox (120.12047pt too wide) 
+|[] 
+[5] 
+
+LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <5.5> not available
+(Font)              size <5> substituted on .
+
+
+LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <5.5> not available
+(Font)              size <5> substituted on .
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <5.5> not available
+(Font)              size <5> substituted on .
+
+[6]
+Overfull \hbox (120.12047pt too wide) 
+|[] 
+(./Springer_T2_book.toc) [7] [8]
+Chapter 1.
+
+Overfull \hbox (30.77882pt too wide) 
+[][][] 
+
+Overfull \hbox (120.12047pt too wide) 
+|[] 
+
+LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <8.5> not available
+(Font)              size <8> substituted on .
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <4.25> not available
+(Font)              size <5> substituted on .
+
+
+LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <8.5> not available
+(Font)              size <8> substituted on .
+
+
+LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <4.25> not available
+(Font)              size <5> substituted on .
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <8.5> not available
+(Font)              size <8> substituted on .
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <4.25> not available
+(Font)              size <5> substituted on .
+
+[1]  [2]
+Underfull \hbox (badness 6927) 
+\T1/lmr/m/n/11 (+20) or one may take the less rec-om-mended lazy ap-proach
+[3]
+
+
+...rest of part of LaTeX line number...
+
+[4]
+Chapter 2.
+
+Overfull \hbox (30.77882pt too wide) 
+[][][] 
+
+Overfull \hbox (120.12047pt too wide) 
+|[] 
+[5] [6]
+
+
+...rest of part of LaTeX line number...
+
+[7]
+
+
+...rest of part of LaTeX line number...
+
+[8] [9] [10]
+Appendix A.
+
+Overfull \hbox (30.77882pt too wide) 
+[][][] 
+
+Overfull \hbox (120.12047pt too wide) 
+|[] 
+[11] [12] (./Springer_T2_book.bbl
+Overfull \hbox (120.12047pt too wide) 
+|[] 
+) [13] [14] (./Springer_T2_book.ind
+Overfull \hbox (120.12047pt too wide) 
+|[] 
+[15]) (./Springer_T2_book.aux)
+
+ *File List*
+svmonodo.cls    2007/06/25 v5.4 
+Springer Verlag global LaTeX document class for monographs
+ article.cls    2007/10/19 v1.4h Standard LaTeX document class
+  size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
+   color.sty    1999/02/16
+   color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
+  pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
+infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
+ ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+  framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
+    t2do.sty    
+graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+  keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
+graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
+graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
+inputenc.sty    2008/03/30 v1.1d Input encoding file
+    utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
+   t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+  ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+  omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+ amsmath.sty    2013/01/14 v2.14 AMS math features
+ amstext.sty    2000/06/29 v2.01
+  amsgen.sty    1999/11/30 v2.0
+  amsbsy.sty    1999/11/29 v1.2d
+  amsopn.sty    1999/12/14 v2.01 operator names
+amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
+ amssymb.sty    2013/01/14 v3.01 AMS font symbols
+ caption.sty    2013/05/02 v3.3-89 Customizing captions (AR)
+caption3.sty    2013/05/02 v1.6-88 caption3 kernel (AR)
+tabularx.sty    1999/01/07 v2.07 `tabularx' package (DPC)
+   array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
+multicol.sty    2011/06/27 v1.7a multicolumn formatting (FMi)
+ fontenc.sty
+   t1enc.def    2005/09/27 v1.99g Standard LaTeX file
+marvosym.sty    2011/07/20 v2.2 Martin Vogel's Symbols font definitions
+textcomp.sty    2005/09/27 v1.99g Standard LaTeX package
+  ts1enc.def    2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
+  ts1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+footmisc.sty    2011/06/06 v5.5b a miscellany of footnote facilities
+ relsize.sty    2013/03/29 ver 4.1
+  epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
+ makeidx.sty    2000/03/29 v1.0m Standard LaTeX package
+setspace.sty    2011/12/19 v6.7a set line spacing
+  xcolor.sty    2007/01/21 v2.11 LaTeX color extensions (UK)
+   color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
+colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
+      bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
+microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
+microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
+microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
+ptex2tex.sty    
+fancyvrb.sty    2008/02/07
+moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
+verbatim.sty    2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
+anslistings.sty    2009/03/28 code highlighting; provided by Olivier Verdier <o
+livier@maths.lth.se>
+listings.sty    2013/07/10 1.5 (Carsten Heinz)
+ lstmisc.sty    2013/07/10 1.5 (Carsten Heinz)
+listings.cfg    2013/06/27 1.5pre1 listings configuration
+ fontenc.sty
+   t1enc.def    2005/09/27 v1.99g Standard LaTeX file
+ lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
+hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
+hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
+hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
+  hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
+ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
+  ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+ intcalc.sty    2007/09/27 v1.1 Expandable calculations with integers (HO)
+   ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
+etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
+kvdefinekeys.sty    2011/04/07 v1.3 Define keys (HO)
+pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
+pdfescape.sty    2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
+bigintcalc.sty    2012/04/08 v1.3 Expandable calculations on big integers (HO)
+  bitset.sty    2011/01/30 v1.1 Handle bit-vector datatype (HO)
+uniquecounter.sty    2011/01/30 v1.2 Provide unlimited unique counter (HO)
+letltxmacro.sty    2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
+ hopatch.sty    2012/05/28 v1.2 Wrapper for package hooks (HO)
+xcolor-patch.sty    2011/01/30 xcolor patch
+atveryend.sty    2011/06/30 v1.8 Hooks at the very end of document (HO)
+atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
+refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
+ hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
+ ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
+ auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
+kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
+  pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
+hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
+     url.sty    2006/04/12  ver 3.3  Verb mode for urls, etc.
+ hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
+rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
+mdframed.sty    2013/08/18 1.9d: mdframed
+  xparse.sty    2013/07/12 v4544 L3 Experimental document command parser
+   expl3.sty    2013/07/12 v4544 L3 Experimental code bundle wrapper
+ l3names.sty    2012/12/07 v4346 L3 Namespace for primitives
+l3bootstrap.sty    2013/01/08 v4420 L3 Experimental bootstrap code
+    etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
+l3basics.sty    2013/07/09 v4521 L3 Basic definitions
+ l3expan.sty    2013/07/09 v4521 L3 Argument expansion
+    l3tl.sty    2013/04/24 v4482 L3 Token lists
+   l3seq.sty    2013/05/26 v4500 L3 Sequences and stacks
+   l3int.sty    2013/04/24 v4482 L3 Integers
+ l3quark.sty    2013/07/09 v4521 L3 Quarks
+   l3prg.sty    2013/04/24 v4482 L3 Control structures
+ l3clist.sty    2013/05/26 v4500 L3 Comma separated lists
+ l3token.sty    2013/04/24 v4482 L3 Experimental token manipulation
+  l3prop.sty    2013/01/09 v4423 L3 Property lists
+   l3msg.sty    2013/01/08 v4412 L3 Messages
+  l3file.sty    2013/05/01 v4483 L3 File and I/O operations
+  l3skip.sty    2013/01/13 v4444 L3 Dimensions and skips
+  l3keys.sty    2013/07/12 v4544 L3 Experimental key-value interfaces
+    l3fp.sty    2013/07/09 v4521 L3 Floating points
+   l3box.sty    2013/04/24 v4482 L3 Experimental boxes
+l3coffins.sty    2012/09/09 v4212 L3 Coffin code layer
+ l3color.sty    2012/08/29 v4156 L3 Experimental color support
+l3luatex.sty    2012/08/03 v4049 L3 Experimental LuaTeX-specific functions
+l3candidates.sty    2013/07/09 v4521 L3 Experimental additions to l3kernel
+etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
+zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
+zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
+needspace.sty    2010/09/12 v1.3d reserve vertical space
+    tikz.sty    2010/10/13 v2.10 (rcs-revision 1.76)
+     pgf.sty    2008/01/15 v2.10 (rcs-revision 1.12)
+  pgfrcs.sty    2010/10/25 v2.10 (rcs-revision 1.24)
+everyshi.sty    2001/05/15 v3.00 EveryShipout Package (MS)
+  pgfrcs.code.tex
+ pgfcore.sty    2010/04/11 v2.10 (rcs-revision 1.7)
+  pgfsys.sty    2010/06/30 v2.10 (rcs-revision 1.37)
+  pgfsys.code.tex
+pgfsyssoftpath.code.tex    2008/07/18  (rcs-revision 1.7)
+pgfsysprotocol.code.tex    2006/10/16  (rcs-revision 1.4)
+ pgfcore.code.tex
+pgfcomp-version-0-65.sty    2007/07/03 v2.10 (rcs-revision 1.7)
+pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
+  pgffor.sty    2010/03/23 v2.10 (rcs-revision 1.18)
+ pgfkeys.sty    
+ pgfkeys.code.tex
+  pgffor.code.tex
+    tikz.code.tex
+md-frame-1.mdf    2013/08/18\ 1.9d: md-frame-1
+  ts1cmr.fd    1999/05/25 v2.5h Standard LaTeX font definitions
+   t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+supp-pdf.mkii
+epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
+  grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
+epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
+RS)
+ nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
+gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
+Springer_T2_book.out
+Springer_T2_book.out
+newcommands_keep.tex
+  t1lmss.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  ot1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omllmm.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omxlmex.fd    2009/10/30 v1.6 Font defs for Latin Modern
+    umsa.fd    2013/01/14 v3.01 AMS symbols A
+  mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
+    umsb.fd    2013/01/14 v3.01 AMS symbols B
+  mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+  t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  ts1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+Springer_T2_book.bbl
+Springer_T2_book.ind
+ ***********
+
+
+LaTeX Font Warning: Size substitutions with differences
+(Font)              up to 0.75pt have occurred.
+
+
+LaTeX Warning: There were undefined references.
+
+ )
+(see the transcript file for additional information){/usr/share/texmf/fonts/enc
+/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/share
+/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm
+-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}</usr/share/texmf/fo
+nts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.p
+fb></usr/share/texmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/t
+ype1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></us
+r/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/pub
+lic/lm/lmr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/te
+xmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf/fonts/type1/public/lm/lmri
+12.pfb></usr/share/texmf/fonts/type1/public/lm/lmri9.pfb></usr/share/texmf/font
+s/type1/public/lm/lmss12.pfb></usr/share/texmf/fonts/type1/public/lm/lmss9.pfb>
+</usr/share/texmf/fonts/type1/public/lm/lmssbx10.pfb></usr/share/texmf/fonts/ty
+pe1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></us
+r/share/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/pu
+blic/lm/lmtt12.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt8.pfb></usr/shar
+e/texmf/fonts/type1/public/lm/lmtt9.pfb>
+Output written on Springer_T2_book.pdf (21 pages, ).
+Transcript written on Springer_T2_book.log.
++ '[' 0 -ne 0 ']'
++ cd ..
 + system doconce guess_encoding encoding1.do.txt
 + doconce guess_encoding encoding1.do.txt
 + '[' 0 -ne 0 ']'
@@ -90029,21 +96449,10 @@ running preprocess -DFORMAT=html -DDEVICE=screen -DPREPROCESS encoding3.do.txt >
 translating doconce text in tmp_preprocess__encoding3.do.txt to html
 *** error: problem with character when writing to file:
 (text position  526-527)
-ight: 125%">a = 1  # Value suggested by  | Traceback (most recent call last):
-  File "/usr/local/bin/doconce", line 1013, in <module>
-    main()
-  File "/usr/local/bin/doconce", line 1003, in main
-    eval(command + '()')
-  File "<string>", line 1, in <module>
-  File "/usr/local/bin/doconce", line 83, in format
-    doconce.doconce.format_driver()
-  File "/usr/local/lib/python2.7/dist-packages/doconce/doconce.py", line 3018, in format_driver
-    out_filename = file2file(filename_preprocessed, format, basename)
-  File "/usr/local/lib/python2.7/dist-packages/doconce/doconce.py", line 2287, in file2file
-    error_message()
-  File "/usr/local/lib/python2.7/dist-packages/doconce/doconce.py", line 2276, in error_message
-    print filestr[pos-40:pos], '|', filestr[pos], '|', filestr[pos+1:pos+40]
-UnicodeEncodeError: 'ascii' codec can't encode character u'\xc3' in position 0: ordinal not in range(128)
+u'ight: 125%">a = 1  # Value suggested by \xc3\x85smund \xc3\x98deg\xc3\xa5rd.\n</pre></div>\n<p>\n\n<!-'
+                                          ^
+    remedies: fix character or try --encoding=utf-8
+Abort! (add --no_abort on the command line to avoid this abortion)
 + doconce format html encoding3 -DPREPROCESS --encoding=utf-8 --no_pygments_html --debug
 *** debug output in _doconce_debugging.log
 running preprocess -DFORMAT=html -DDEVICE=screen -DPREPROCESS encoding3.do.txt > tmp_preprocess__encoding3.do.txt
@@ -90113,6 +96522,33 @@ output in mako_test4.html
 + system doconce csv2table testtable.csv
 + doconce csv2table testtable.csv
 + '[' 0 -ne 0 ']'
++ sh -x genref.sh
++ doconce format pdflatex genref1
+running preprocess -DFORMAT=pdflatex -DDEVICE=screen  genref1.do.txt > tmp_preprocess__genref1.do.txt
+Could not run preprocessor:
+preprocess -DFORMAT=pdflatex -DDEVICE=screen  genref1.do.txt > tmp_preprocess__genref1.do.txt
+preprocess: error: could not find #include'd file "_genref1.do.txt" on include path: []
+Abort! (add --no_abort on the command line to avoid this abortion)
++ doconce format pdflatex genref2
+running preprocess -DFORMAT=pdflatex -DDEVICE=screen  genref2.do.txt > tmp_preprocess__genref2.do.txt
+Could not run preprocessor:
+preprocess -DFORMAT=pdflatex -DDEVICE=screen  genref2.do.txt > tmp_preprocess__genref2.do.txt
+preprocess: error: could not find #include'd file "_genref2.do.txt" on include path: []
+Abort! (add --no_abort on the command line to avoid this abortion)
++ doconce ref_external genref2
+    working with publish file genref.pub
+    ...processing tmp_preprocess__genref2.do.txt
+       title: Some mathematics
+       url: http://doconce.test.net
+       key: doconce_test_ref_extended
+    ...processing tmp_preprocess__genref1.do.txt
+substitution script: tmp_subst_references.sh
+grep script (for context of each substitution): tmp_grep_references.sh
++ cp _genref2.do.txt _tmp_genref2.do.txt
+cp: cannot stat ‘_genref2.do.txt’: No such file or directory
++ doconce replace files=*.do.txt files=_tmp_genref2.do.txt tmp_subst_references.sh
++ sh -x tmp_subst_references.sh
++ files=genref2.do.txt
 + cp failures.do.txt tmp2.do.txt
 + doconce format plain tmp2.do.txt
 translating doconce text in tmp2.do.txt to plain
@@ -90170,10 +96606,11 @@ replacing # Comment before list by  in tmp2.do.txt
 + doconce format sphinx tmp2
 translating doconce text in tmp2.do.txt to sphinx
 
-*** warning: found \cite{...} (cite{...} has no backslash)
+*** warning: found \cite{...} with backslash
+    (cite{...} has no backslash in Doconce syntax)
 \cite{mybook}
 
-*** warning: found \idx{...} (indx{...} has no backslash)
+*** warning: found \idx{...} (idx{...} has no backslash)
 \idx{youridx}
 Abort! (add --no_abort on the command line to avoid this abortion)
 + doconce replace '\idx' idx tmp2.do.txt
@@ -90203,7 +96640,8 @@ __Paragraph before.+!bc replaced by !bc in tmp2.do.txt
 + doconce format rst tmp2
 translating doconce text in tmp2.do.txt to rst
 
-*** warning: found \label{...} (label{...} has no backslash)
+*** warning: found \label{...} with backslash
+    (label{...} has no backslash in Doconce syntax)
 \label{mylab}
 *** error: missing comma after filename, before options in FIGURE
 FIGURE: [../doc/manual/fig/wave1D width=800]
@@ -90412,7 +96850,8 @@ figure file http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media
     Recommendation: rewrite caption.
 
 -----------
-"Google": "http://google.com". -----------
+"Google": "http://google.com". 
+-----------
 
 Abort! (add --no_abort on the command line to avoid this abortion)
 + doconce format pdflatex tmp2
@@ -91680,19 +98119,20 @@ Overfull \hbox (107.00006pt too wide)
 []\T1/pcr/m/n/10 "A Document for Testing Doconce": "testdoc.html" cite{testdoc:
 12}],  
 
-Overfull \hbox (3179.00006pt too wide) 
+Overfull \hbox (3431.00006pt too wide) 
 []\T1/pcr/m/n/10 commands: format help sphinx_dir subst replace replace_from_fi
 le clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine
-_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comment
-s grab remove remove_exercise_answers split_rst split_html slides_html slides_b
-eamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_label
-s teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdo
-cstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefil
-e diff gitdiff fix_bibtex4publish csv2table  
+_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inlin
+e_comments grab remove remove_exercise_answers split_rst split_html slides_html
+ slides_beamer latin2html grep latex_header latex_footer latex_problems ref_ext
+ernal bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_fig
+ure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex
+2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv
+2table  
 
-Overfull \hbox (299.00006pt too wide) 
+Overfull \hbox (269.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwik
-i|cwiki|pandoc|st|epytext file.do.txt  
+i|cwiki|pandoc|st|epytext dofile  
 
 Overfull \hbox (53.00006pt too wide) 
 []\T1/pcr/m/n/10 # substitute a phrase by another using regular expressions  
@@ -91731,9 +98171,6 @@ Overfull \hbox (47.00006pt too wide)
 Overfull \hbox (53.00006pt too wide) 
 []    \T1/pcr/m/n/10 dirname=sphinx-rootdir theme=default logo=mylogo.png \  
 
-Overfull \hbox (29.00006pt too wide) 
-[]\T1/pcr/m/n/10 # replace latex-1 (non-ascii) characters by html codes  
-
 Overfull \hbox (59.00006pt too wide) 
 []\T1/pcr/m/n/10 # walk through a directory tree and insert doconce files as  
 
@@ -91743,17 +98180,14 @@ Overfull \hbox (47.00006pt too wide)
 Overfull \hbox (113.00006pt too wide) 
 []\T1/pcr/m/n/10 # transform a .bbl file to a .rst file with reST bibliography 
 format  
-[12]
+
 Overfull \hbox (53.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce split_rst complete_file        # !split delimiters  
-
-Overfull \hbox (17.00006pt too wide) 
-[]\T1/pcr/m/n/10 # edit URLs to local files and place them in _static  
 
 Overfull \hbox (65.00006pt too wide) 
 []\T1/pcr/m/n/10 # split an html file into parts according to !split commands  
 
-
+[12]
 Overfull \hbox (95.00006pt too wide) 
 []\T1/pcr/m/n/10 # create LaTeX Beamer slides from a (doconce) latex/pdflatex f
 ile  
@@ -91788,17 +98222,20 @@ Overfull \hbox (23.00006pt too wide)
 Overfull \hbox (17.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce combine_images image1 image2 ... output_file  
 
-Overfull \hbox (53.00006pt too wide) 
-[]\T1/pcr/m/n/10 # insert a table of exercises in a latex file myfile.p.tex  
-[13]
+Overfull \hbox (29.00006pt too wide) 
+[]\T1/pcr/m/n/10 doconce latex_problems mydoc.log [overfull-hbox-limit]  
+
 Overfull \hbox (101.00006pt too wide) 
 []\T1/pcr/m/n/10 # list all labels in a document (for purposes of cleaning them
  up)  
 
+Overfull \hbox (47.00006pt too wide) 
+[]\T1/pcr/m/n/10 # generate script for substituting generalized references  
+
 Overfull \hbox (95.00006pt too wide) 
 []\T1/pcr/m/n/10 # change headings from "This is a Heading" to "This is a headi
 ng"  
-
+[13]
 Overfull \hbox (137.00006pt too wide) 
 []\T1/pcr/m/n/10 # translate a latex document to doconce (requires usually manu
 al fixing)  
@@ -91819,12 +98256,6 @@ Overfull \hbox (83.00006pt too wide)
 []\T1/pcr/m/n/10 doconce makefile docname doconcefile [html sphinx pdflatex ...
 ]  
 
-Overfull \hbox (41.00006pt too wide) 
-[]\T1/pcr/m/n/10 # fix common problems in bibtex files for publish import  
-
-Overfull \hbox (5.00006pt too wide) 
-[]\T1/pcr/m/n/10 doconce fix_bibtex4publish file1.bib file2.bib ...  
-
 Overfull \hbox (131.00006pt too wide) 
 []\T1/pcr/m/n/10 (diffprog can be difflib, diff, pdiff, latexdiff, kdiff3, diff
 use, ...)  
@@ -91832,6 +98263,21 @@ use, ...)
 Overfull \hbox (119.00006pt too wide) 
 []\T1/pcr/m/n/10 # find differences between the last two Git versions of severa
 l files  
+
+Overfull \hbox (17.00006pt too wide) 
+[]\T1/pcr/m/n/10 # edit URLs to local files and place them in _static  
+
+Overfull \hbox (29.00006pt too wide) 
+[]\T1/pcr/m/n/10 # replace latex-1 (non-ascii) characters by html codes  
+
+Overfull \hbox (41.00006pt too wide) 
+[]\T1/pcr/m/n/10 # fix common problems in bibtex files for publish import  
+
+Overfull \hbox (5.00006pt too wide) 
+[]\T1/pcr/m/n/10 doconce fix_bibtex4publish file1.bib file2.bib ...  
+
+Overfull \hbox (53.00006pt too wide) 
+[]\T1/pcr/m/n/10 # insert a table of exercises in a latex file myfile.p.tex  
 [14]
 Overfull \hbox (101.00006pt too wide) 
 \T1/pcr/m/n/10 ===== Problem: Derive the Formula for the Area of an Ellipse ===
@@ -91879,7 +98325,7 @@ Overfull \hbox (47.10902pt too wide)
 Overfull \hbox (263.00006pt too wide) 
 []\T1/pcr/m/n/10 \multicolumn{1}{c}{time} & \multicolumn{1}{c}{velocity} & \mul
 ticolumn{1}{c}{acceleration} \\  
-
+[17]
 Overfull \hbox (4.19656pt too wide) 
 [][][][][][] \T1/ptm/m/n/10 con-tains some il-lus-tra-tions on how to uti-lize 
 \T1/pcr/m/n/10 mako \T1/ptm/m/n/10 (clone the GitHub
@@ -91887,7 +98333,7 @@ Overfull \hbox (4.19656pt too wide)
 Overfull \hbox (114.855pt too wide) 
 []\T1/ptm/m/n/10 Excellent ``Sphinx Tu-to-rial'' by C. Reller: ``[][][][][][]''
  
-[17] [18] (./quickref.rst.aux)
+[18] (./quickref.rst.aux)
 
 Package rerunfilecheck Warning: File `quickref.rst.out' has changed.
 (rerunfilecheck)                Rerun to get outlines right
@@ -92145,19 +98591,20 @@ Overfull \hbox (107.00006pt too wide)
 []\T1/pcr/m/n/10 "A Document for Testing Doconce": "testdoc.html" cite{testdoc:
 12}],  
 
-Overfull \hbox (3179.00006pt too wide) 
+Overfull \hbox (3431.00006pt too wide) 
 []\T1/pcr/m/n/10 commands: format help sphinx_dir subst replace replace_from_fi
 le clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine
-_images change_encoding capitalize gwiki_figsubst md2html remove_inline_comment
-s grab remove remove_exercise_answers split_rst split_html slides_html slides_b
-eamer latin2html latex_header latex_footer bbl2rst html_colorbullets list_label
-s teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdo
-cstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefil
-e diff gitdiff fix_bibtex4publish csv2table  
+_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inlin
+e_comments grab remove remove_exercise_answers split_rst split_html slides_html
+ slides_beamer latin2html grep latex_header latex_footer latex_problems ref_ext
+ernal bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_fig
+ure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex
+2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv
+2table  
 
-Overfull \hbox (299.00006pt too wide) 
+Overfull \hbox (269.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwik
-i|cwiki|pandoc|st|epytext file.do.txt  
+i|cwiki|pandoc|st|epytext dofile  
 
 Overfull \hbox (53.00006pt too wide) 
 []\T1/pcr/m/n/10 # substitute a phrase by another using regular expressions  
@@ -92196,9 +98643,6 @@ Overfull \hbox (47.00006pt too wide)
 Overfull \hbox (53.00006pt too wide) 
 []    \T1/pcr/m/n/10 dirname=sphinx-rootdir theme=default logo=mylogo.png \  
 
-Overfull \hbox (29.00006pt too wide) 
-[]\T1/pcr/m/n/10 # replace latex-1 (non-ascii) characters by html codes  
-
 Overfull \hbox (59.00006pt too wide) 
 []\T1/pcr/m/n/10 # walk through a directory tree and insert doconce files as  
 
@@ -92208,17 +98652,14 @@ Overfull \hbox (47.00006pt too wide)
 Overfull \hbox (113.00006pt too wide) 
 []\T1/pcr/m/n/10 # transform a .bbl file to a .rst file with reST bibliography 
 format  
-[13]
+
 Overfull \hbox (53.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce split_rst complete_file        # !split delimiters  
-
-Overfull \hbox (17.00006pt too wide) 
-[]\T1/pcr/m/n/10 # edit URLs to local files and place them in _static  
 
 Overfull \hbox (65.00006pt too wide) 
 []\T1/pcr/m/n/10 # split an html file into parts according to !split commands  
 
-
+[13]
 Overfull \hbox (95.00006pt too wide) 
 []\T1/pcr/m/n/10 # create LaTeX Beamer slides from a (doconce) latex/pdflatex f
 ile  
@@ -92253,17 +98694,20 @@ Overfull \hbox (23.00006pt too wide)
 Overfull \hbox (17.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce combine_images image1 image2 ... output_file  
 
-Overfull \hbox (53.00006pt too wide) 
-[]\T1/pcr/m/n/10 # insert a table of exercises in a latex file myfile.p.tex  
-[14]
+Overfull \hbox (29.00006pt too wide) 
+[]\T1/pcr/m/n/10 doconce latex_problems mydoc.log [overfull-hbox-limit]  
+
 Overfull \hbox (101.00006pt too wide) 
 []\T1/pcr/m/n/10 # list all labels in a document (for purposes of cleaning them
  up)  
 
+Overfull \hbox (47.00006pt too wide) 
+[]\T1/pcr/m/n/10 # generate script for substituting generalized references  
+
 Overfull \hbox (95.00006pt too wide) 
 []\T1/pcr/m/n/10 # change headings from "This is a Heading" to "This is a headi
 ng"  
-
+[14]
 Overfull \hbox (137.00006pt too wide) 
 []\T1/pcr/m/n/10 # translate a latex document to doconce (requires usually manu
 al fixing)  
@@ -92284,12 +98728,6 @@ Overfull \hbox (83.00006pt too wide)
 []\T1/pcr/m/n/10 doconce makefile docname doconcefile [html sphinx pdflatex ...
 ]  
 
-Overfull \hbox (41.00006pt too wide) 
-[]\T1/pcr/m/n/10 # fix common problems in bibtex files for publish import  
-
-Overfull \hbox (5.00006pt too wide) 
-[]\T1/pcr/m/n/10 doconce fix_bibtex4publish file1.bib file2.bib ...  
-
 Overfull \hbox (131.00006pt too wide) 
 []\T1/pcr/m/n/10 (diffprog can be difflib, diff, pdiff, latexdiff, kdiff3, diff
 use, ...)  
@@ -92297,6 +98735,21 @@ use, ...)
 Overfull \hbox (119.00006pt too wide) 
 []\T1/pcr/m/n/10 # find differences between the last two Git versions of severa
 l files  
+
+Overfull \hbox (17.00006pt too wide) 
+[]\T1/pcr/m/n/10 # edit URLs to local files and place them in _static  
+
+Overfull \hbox (29.00006pt too wide) 
+[]\T1/pcr/m/n/10 # replace latex-1 (non-ascii) characters by html codes  
+
+Overfull \hbox (41.00006pt too wide) 
+[]\T1/pcr/m/n/10 # fix common problems in bibtex files for publish import  
+
+Overfull \hbox (5.00006pt too wide) 
+[]\T1/pcr/m/n/10 doconce fix_bibtex4publish file1.bib file2.bib ...  
+
+Overfull \hbox (53.00006pt too wide) 
+[]\T1/pcr/m/n/10 # insert a table of exercises in a latex file myfile.p.tex  
 [15]
 Overfull \hbox (101.00006pt too wide) 
 \T1/pcr/m/n/10 ===== Problem: Derive the Formula for the Area of an Ellipse ===
@@ -92344,7 +98797,7 @@ Overfull \hbox (47.10902pt too wide)
 Overfull \hbox (263.00006pt too wide) 
 []\T1/pcr/m/n/10 \multicolumn{1}{c}{time} & \multicolumn{1}{c}{velocity} & \mul
 ticolumn{1}{c}{acceleration} \\  
-
+[18]
 Overfull \hbox (4.19656pt too wide) 
 [][][][][][] \T1/ptm/m/n/10 con-tains some il-lus-tra-tions on how to uti-lize 
 \T1/pcr/m/n/10 mako \T1/ptm/m/n/10 (clone the GitHub
@@ -92352,7 +98805,7 @@ Overfull \hbox (4.19656pt too wide)
 Overfull \hbox (114.855pt too wide) 
 []\T1/ptm/m/n/10 Excellent ``Sphinx Tu-to-rial'' by C. Reller: ``[][][][][][]''
  
-[18] [19] (./quickref.rst.aux)
+[19] (./quickref.rst.aux)
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 

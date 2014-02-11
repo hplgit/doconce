@@ -3,7 +3,7 @@ Testing admons
 
 hpl
 
-Date: Jan 15, 2014
+Date: Feb 5, 2014
 
 Introduction
 ============
@@ -35,10 +35,9 @@ Here is a plain quote environment.
 
         Sayre's law states that
         "in any dispute the intensity of feeling is inversely
-        proportional to the value of the issues at stake."
-        By way of corollary, it adds:
-        "That is why academic politics are so bitter."
-        
+        proportional to the value of the issues at stake." 
+        By way of corollary, it adds: 
+        "That is why academic politics are so bitter." 
         *Source*: wikipedia (http://en.wikipedia.org/wiki/Sayre's_law)
 
 
@@ -118,9 +117,20 @@ Warning ---------------------------------------------------------|
 Test warning with title:
 
 
-Watch out -----------------------------------------------|
+Title ending with math \sqrt{2}\approx 1.4 --------------|
 |                                                        |
 | And here comes some text with bad news in larger font. |
+|                                                        |
+| Also some code::                                       |
+|                                                        |
+|                                                        |
+|         def f(x):                                      |
+|             return x                                   |
+|                                                        |
+| And a complete program::                               |
+|                                                        |
+|                                                        |
+|         print "Hello, World!"                          |
 |--------------------------------------------------------|
 
 
