@@ -1,13 +1,13 @@
-TITLE: Ideas for automatically generating student tests
+TITLE: Ideas for automatically generating surveys and quizzes
 AUTHOR: Hans Petter Langtangen
 DATE: today
 
 === Problem ===
 
-Given data for quizzes, tests, and surveys in some very simple text
-format in files, how can we turn that information into live surveys
-and quizzes, preferably in online forms at Google, SurveyGizmo,
-ClassMarker, Kahoot, JotForm, etc.?
+Given data for surveys and quizzes are available in some format,
+typically as text in files (which can be loaded a Python data structure),
+how can we turn that information into live surveys and quizzes in
+online forms at Google, SurveyGizmo, ClassMarker, Kahoot, JotForm, etc.?
 
 === Constraints ===
 
@@ -23,9 +23,9 @@ Our questions will frequently contain
 
 It is key that the generated surveys/quizzes can represent mathematics
 and computer code in a satisfactory way. Ideally, all text can be in
-HTML with MathJax. A next best solution is to automatically generated
-LaTeX mathematics through a service like URL:
-"'http://latex.codecogs.com/png.latex?".
+HTML with MathJax. A next best solution is to automatically
+generated LaTeX mathematics through a service like
+URL: "'http://latex.codecogs.com/png.latex?".
 
 ===== Ranking of sites =====
 
@@ -110,11 +110,9 @@ There is a "technical explanation": "https://groups.google.com/forum/#!topic/mat
 ===== JotForm =====
 
  * Easy "communication via Dropbox": "http://www.jotform.com/dropbox/"
- * Offers "custom widgets": "http://developers.jotform.com/widgets" to tailor typesetting.
  * Has an  "API": "http://api.jotform.com/docs/".
+ * Can "ask questions": "http://api.jotform.com/docs#contact".
  * Has a "Python API": "https://github.com/jotform/jotform-api-python" too.
- * Can "ask questions": "http://api.jotform.com/docs#contact" and the
-   user support answers promptly.
 
 No MathJax support, but it is planned:
 
