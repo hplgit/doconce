@@ -1,0 +1,72 @@
+% This package modifies the internal command \boxframe (see xcolor).
+% It is used by framed_theorems.sty. 
+% The purpose is to draw only the upper or the lower line (or none of them).
+% Provides environment fshaded
+
+\usepackage{framed}
+\usepackage{xcolor}
+
+\let\oldboxframe\boxframe
+
+% No Upper Line:
+\providecommand*\boxframeU[3]%
+{\hbox
+	{\dimen@#2\advance\dimen@#3\relax
+		\lower#3\vbox
+		{%\hrule\@height\fboxrule
+			\@tempdima-0.5\fboxrule \ifodd\fboxrule\advance\@tempdima\m@ne sp\fi
+			\kern\@tempdima
+			\hbox
+			{\advance\dimen@-\fboxrule
+				\vrule\@width\fboxrule\@height\dimen@\@depth\z@
+				\@tempdima#1\advance\@tempdima-\tw@\fboxrule \kern\@tempdima
+			\vrule\@width\fboxrule\@height\dimen@\@depth\z@}%
+			\kern-0.5\fboxrule
+	\hrule\@height\fboxrule}}%
+\let\boxframe\oldboxframe}
+% No Lower Line:
+\providecommand*\boxframeL[3]%
+{\hbox
+	{\dimen@#2\advance\dimen@#3\relax
+		\lower#3\vbox
+		{\hrule\@height\fboxrule
+			\@tempdima-0.5\fboxrule \ifodd\fboxrule\advance\@tempdima\m@ne sp\fi
+			\kern\@tempdima
+			\hbox
+			{\advance\dimen@-\fboxrule
+				\vrule\@width\fboxrule\@height\dimen@\@depth\z@
+				\@tempdima#1\advance\@tempdima-\tw@\fboxrule \kern\@tempdima
+			\vrule\@width\fboxrule\@height\dimen@\@depth\z@}%
+			\kern-0.5\fboxrule
+			%\hrule\@height\fboxrule
+	}}%
+\let\boxframe\oldboxframe}
+% No Lower Line and no Upper Line:
+\providecommand*\boxframeUL[3]%
+{\hbox
+	{\dimen@#2\advance\dimen@#3\relax
+		\lower#3\vbox
+		{%\hrule\@height\fboxrule
+			\@tempdima-0.5\fboxrule \ifodd\fboxrule\advance\@tempdima\m@ne sp\fi
+			\kern\@tempdima
+			\hbox
+			{\advance\dimen@-\fboxrule
+				\vrule\@width\fboxrule\@height\dimen@\@depth\z@
+				\@tempdima#1\advance\@tempdima-\tw@\fboxrule \kern\@tempdima
+			\vrule\@width\fboxrule\@height\dimen@\@depth\z@}%
+			\kern-0.5\fboxrule
+			%\hrule\@height\fboxrule
+	}}%
+\let\boxframe\oldboxframe}
+
+
+\newenvironment{fshaded}[2]{%
+% \def\FrameCommand{\fcolorbox{#1}{#2}}%
+	\def\FrameCommand{\let\boxframe\oldboxframe\fcolorbox{#1}{#2}}%
+	\def\FirstFrameCommand{\let\boxframe\boxframeL\fcolorbox{#1}{#2}}%
+	\def\MidFrameCommand{\let\boxframe\boxframeUL\fcolorbox{#1}{#2}}%
+	\def\LastFrameCommand{\let\boxframe\boxframeU\fcolorbox{#1}{#2}}%
+\MakeFramed {\FrameRestore}}%
+% Check this: Evtl. das nutzen:?
+% \MakeFramed {\advance\hsize-\width \FrameRestore}}%
+{\endMakeFramed}
