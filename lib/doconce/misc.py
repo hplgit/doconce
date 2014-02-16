@@ -73,10 +73,14 @@ inserted to the right in exercises - "default" and "none" are allowed
      """Set device to paper, screen, or other (paper impacts LaTeX output)."""),
     ('--latex_bibstyle=',
      'LaTeX bibliography style. Default: plain.'),
+    ('--latex_index_in_margin',
+     'Place entries in the index also in the margin.'),
     ('--latex_double_hyphen',
      'Replace single dash - by double dash -- in LaTeX output. Somewhat intelligent, but may give unwanted edits. Use with great care!'),
     ('--latex_preamble=',
      """User-provided LaTeX preamble file, either complete or additions."""),
+    ('--latex_no_program_footnotelink',
+     'If --device=paper, this option removes footnotes with links to computer programs.'),
     ('--html_admon=',
      "Type of admonition and color: white, colors, gray, yellow."),
     ('--html_admon_shadow',
@@ -653,33 +657,33 @@ def expand_mako():
             f.close()
 
 def _usage_linkchecker():
-    print 'Usage: doconce linkchecker file1.html file2.html ...'
-    print 'Check if URLs or links to local files in HTML files are valid.'
+    print 'Usage: doconce linkchecker file1.html|file1.do.txt|tmp_mako__file1.do.txt ...'
+    print 'Check if URLs or links to local files in Doconce or HTML files are valid.'
 
 def linkchecker():
     if len(sys.argv) <= 1:
         _usage_linkchecker()
         sys.exit(1)
     from common import is_file_or_url
-    pattern = r'href="(.+?)"'
+    prefix = '(file:///|https?://|ftp://)'
+    pattern_html = r'href="(%s.+?)"' % prefix
+    pattern_do = r'''"[^"]+?" ?:\s*"(%s.+?)"''' % prefix
     missing = []
     for filename in sys.argv[1:]:
         ext = os.path.splitext(filename)[1]
-        if not ext in ('.html', '.htm'):
-            print '*** error: %s is not an HTML file' % filename
+        if not ext in ('.html', '.htm', '.txt'):
+            print '*** error: %s is not a Doconce or HTML file' % filename
             continue
         f = open(filename, 'r')
         text = f.read()
         f.close()
+        if filename.endswith('.do.txt'):
+            pattern = pattern_do
+        else:
+            patterh = pattern_html
         links = re.findall(pattern, text, flags=re.IGNORECASE)
         missing.append([filename, []])
         for link in links:
-            if link.startswith('mailto'):
-                continue
-            if link.startswith('javascript:void'):
-                continue
-            if link.startswith('#'):
-                continue
             check = is_file_or_url(link, msg=None)
             if check in ('file', 'url'):
                 print '%s:' % filename, link, 'exists as', check
@@ -4891,6 +4895,9 @@ def _spellcheck(filename, dictionaries=['.dict4spell.txt'], newdict=None,
     text = f.read()
     f.close()
 
+    # Remove inline quotes before inline verbatim
+    pattern = "``([A-Za-z][A-Za-z0-9\s,.;?!/:'() -]*?)''"
+    text = re.sub(pattern, r'\g<1>', text)
     # Remove inline verbatim and !bc and !bt blocks
     text2 = re.sub(r'`.+?`', '`....`', text)  # remove inline verbatim
     code = re.compile(r'^!bc(.*?)\n(.*?)^!ec *\n', re.DOTALL|re.MULTILINE)

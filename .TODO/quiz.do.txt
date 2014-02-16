@@ -160,11 +160,14 @@ The first impression is that questions must be defined interactively.
 
  * "ClassMarker": "http://www.classmarker.com" is aimed student tests and exams.
  * Questions can be "imported from file": "http://www.classmarker.com/online-testing/manual/#importquestions". See also "these FAQ instructions": "http://www.classmarker.com/online-testing/faq/?query=multiplechoice#results".
+ * The import file can use "BBCode": "https://raw.github.com/hplgit/doconce/master/.TODO/BBCode4ClassMarker_import.png" to format the plain text. Indentation of the text in the import file will be preserved so Python code can be shown, but without monospace font.
  * Classmarker has an "API": "http://www.classmarker.com/online-testing/api/developers/". Communication reaveals that *ClassMarker allows you to import questions at present, but you cannot use our API to remotely add questions.* They also said, *We do not at present all external css formatting sorry. This is something we will be looking at in the future, but I cannot give you an idea on when this may be at this stage sorry.* The API seems to be for analyzing results.
  * There is a "manual": "http://www.classmarker.com/online-testing/manual/".
  * No support for MathJax.
- * Seemingly no support for HTML tags (at least interactive definition of
-   equations did not render HTML tags).
+ * No support for HTML of security reasons.
+
+This seems to be a good site for tests without code and math.
+
 
 ===== Testmoz =====
 

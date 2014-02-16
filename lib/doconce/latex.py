@@ -270,6 +270,11 @@ def latex_code(filestr, code_blocks, code_block_types,
     if option('device=', '') == 'paper':
         # Make adjustments for printed versions of the PDF document.
         # Fix links so that the complete URL is in a footnote
+
+        no_footnote = option('latex_no_program_footnotelink')
+        suffices = ['.py', '.f', '.f90', '.f95', '.c', '.cpp', '.cxx',
+                    '.m', '.r', '.js', '.tex', '.h']
+
         def subst(m):  # m is match object
             url = m.group(1).strip()
             text = m.group(2).strip()
@@ -283,8 +288,16 @@ def latex_code(filestr, code_blocks, code_block_types,
                 # captions and other places (works well outside too with \protect)
                 # (doesn't seem necessary - footnotes in captions are a
                 # a bad thing since figures are floating)
-                return '\\href{{%s}}{%s}' % (url, text) + \
-                       '\\footnote{\\texttt{%s}}' % texttt_url
+
+                return_str = '\\href{{%s}}{%s}' % (url, text) + \
+                             '\\footnote{\\texttt{%s}}' % texttt_url
+                # See if we shall drop the footnote for programs
+                if text.startswith(r'\nolinkurl{') and no_footnote:
+                    for suffix in suffices:
+                        if url.endswith(suffix):
+                            return_str = '\\href{{%s}}{%s}' % (url, text)
+                            break
+                return return_str
             else: # no substitution, URL is in the link text
                 return '\\href{{%s}}{%s}' % (url, text)
         filestr = re.sub(pattern, subst, filestr)
@@ -1007,6 +1020,8 @@ def latex_index_bib(filestr, index, citations, pubfile, pubdata):
     pattern = r'cite\[(.+?)\. +'
     filestr = re.sub(pattern, r'cite[\g<1>.~', filestr)
 
+    margin_index = option('latex_index_in_margin')
+
     for word in index:
         pattern = 'idx{%s}' % word
         if '`' in word:
@@ -1024,8 +1039,17 @@ def latex_index_bib(filestr, index, citations, pubfile, pubdata):
 
             # fix %
             word = word.replace('%', r'\%')
+
         replacement = r'\index{%s}' % word
+
+        if margin_index:
+            if '!' in word:
+                word = word.replace('!', ': ')
+            margin = word.split('@')[-1] if '@' in word else word
+            replacement += r'\marginpar{\footnotesize %s}' % margin
+
         filestr = filestr.replace(pattern, replacement)
+
 
     if pubfile is not None:
         # Always produce a new bibtex file

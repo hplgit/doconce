@@ -65,7 +65,7 @@ system doconce split_html testdoc.html
 system doconce format html testdoc.do.txt --pygments_html_linenos --html_style=solarized --pygments_html_style=emacs $ex --html_output=demo_testdoc
 
 system doconce format latex testdoc.do.txt $ex SOMEVAR=True --skip_inline_comments
-system doconce format pdflatex testdoc.do.txt --device=paper $ex --latex_double_hyphen
+system doconce format pdflatex testdoc.do.txt --device=paper $ex --latex_double_hyphen --latex_index_in_margin --latex_no_program_footnotelink
 system doconce latex_exercise_toc testdoc
 
 # doconce replace does not work well with system bash func above without quotes
