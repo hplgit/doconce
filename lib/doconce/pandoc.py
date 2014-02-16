@@ -244,7 +244,8 @@ def pandoc_index_bib(filestr, index, citations, pubfile, pubdata):
         filestr = re.sub(r'^BIBFILE:.+$', bibtext, filestr, flags=re.MULTILINE)
 
     # pandoc does not support index entries,
-    # remove all index entries
+    # remove all index entries (could also place them
+    # in special comments to keep the information)
 
     filestr = re.sub(r'idx\{.+?\}' + '\n?', '', filestr)
     return filestr
