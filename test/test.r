@@ -591,9 +591,12 @@ URL: "http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas"
 and URL: "http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae" which has a shebang.
 
 For the `--device=paper` option it is important to test that URLs with
-monofont link text get a footnote, as in this reference to
+monofont link text get a footnote (unless the `--latex_no_program_footnotelink`
+is used), as in this reference to
 "`decay_mod`":
-"https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py".
+"https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py", "`ball1.py`": "http://tinyurl.com/pwyasaa/formulas.ball1.py",
+and "`ball2.py`": "http://tinyurl.com/pwyasaa/formulas.ball2.py".
+
 
 # Comments should be inserted outside paragraphs (because in the rst
 # format extra blanks make a paragraph break).
@@ -2722,8 +2725,11 @@ Newton-Cotes with percentage in URL too:
 and \href{{http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae}}{\nolinkurl{http://en.wikipedia.org/wiki/Newton-Cotes\#Open_Newton.E2.80.93Cotes_formulae}} which has a shebang.
 
 For the \code{--device=paper} option it is important to test that URLs with
-monofont link text get a footnote, as in this reference to
-\href{{https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py}}{\nolinkurl{decay_mod}}.
+monofont link text get a footnote (unless the \code{--latex_no_program_footnotelink}
+is used), as in this reference to
+\href{{https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py}}{\nolinkurl{decay_mod}}, \href{{http://tinyurl.com/pwyasaa/formulas.ball1.py}}{\nolinkurl{ball1.py}},
+and \href{{http://tinyurl.com/pwyasaa/formulas.ball2.py}}{\nolinkurl{ball2.py}}.
+
 
 % Comments should be inserted outside paragraphs (because in the rst
 % format extra blanks make a paragraph break).
@@ -3823,7 +3829,7 @@ Here is a reference to Equation (\ref{my:eq1}).
 \subsection{Subsection 1}
 \label{subsec1}
 
-\index{somefunc@{\rm\texttt{somefunc}} function}
+\index{somefunc@{\rm\texttt{somefunc}} function}\marginpar{\footnotesize {\rm\texttt{somefunc}} function}
 
 % Refer to section/appendix etc. at the beginning of the line
 % and other special fix situations for HTML.
@@ -4057,7 +4063,7 @@ Python.
 
 \subsection{Subsection 2: Testing figures}
 \label{subsec:ex}
-\index{figures}
+\index{figures}\marginpar{\footnotesize figures}
 
 Test of figures. In particular we refer to Figure~\ref{fig:impact} in which
 there is a flow.
@@ -4080,7 +4086,7 @@ Figures without captions are allowed and will be inlined.
 \end{center}
 
 
-\index{movies}
+\index{movies}\marginpar{\footnotesize movies}
 
 
 % Test multi--line caption in figure
@@ -4184,12 +4190,12 @@ achievement.
 \subsection{Tables}
 \label{subsec:table}
 
-\index{test index with verbatim text@test index with {\rm\texttt{verbatim text}} which is possible}
-\index{test two@test {\rm\texttt{two}} (separate) {\rm\texttt{verbatim expressions}} which is also possible}
-\index{index with!subindex}
+\index{test index with verbatim text@test index with {\rm\texttt{verbatim text}} which is possible}\marginpar{\footnotesize test index with {\rm\texttt{verbatim text}} which is possible}
+\index{test two@test {\rm\texttt{two}} (separate) {\rm\texttt{verbatim expressions}} which is also possible}\marginpar{\footnotesize test {\rm\texttt{two}} (separate) {\rm\texttt{verbatim expressions}} which is also possible}
+\index{index with!subindex}\marginpar{\footnotesize index with: subindex}
 
 % index with comma could fool sphinx
-\index{index, with comma, and one more}
+\index{index, with comma, and one more}\marginpar{\footnotesize index, with comma, and one more}
 
 Let us take this table from the manual:
 
@@ -4407,8 +4413,11 @@ Newton-Cotes with percentage in URL too:
 and \href{{http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae}}{\nolinkurl{http://en.wikipedia.org/wiki/Newton-Cotes\#Open_Newton.E2.80.93Cotes_formulae}} which has a shebang.
 
 For the {\fontsize{10pt}{10pt}\Verb!--device=paper!} option it is important to test that URLs with
-monofont link text get a footnote, as in this reference to
-\href{{https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py}}{\nolinkurl{decay_mod}\footnote{\texttt{https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay\_mod.py}}}.
+monofont link text get a footnote (unless the {\fontsize{10pt}{10pt}\Verb!--latex_no_program_footnotelink!}
+is used), as in this reference to
+\href{{https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py}}{\nolinkurl{decay_mod}}, \href{{http://tinyurl.com/pwyasaa/formulas.ball1.py}}{\nolinkurl{ball1.py}},
+and \href{{http://tinyurl.com/pwyasaa/formulas.ball2.py}}{\nolinkurl{ball2.py}}.
+
 
 % Comments should be inserted outside paragraphs (because in the rst
 % format extra blanks make a paragraph break).
@@ -5460,7 +5469,7 @@ Here is a reference to Equation (\ref{my:eq1}).
 \subsection{Subsection 1}
 \label{subsec1}
 
-\index{somefunc@{\rm\texttt{somefunc}} function}
+\index{somefunc@{\rm\texttt{somefunc}} function}\marginpar{\footnotesize {\rm\texttt{somefunc}} function}
 
 % Refer to section/appendix etc. at the beginning of the line
 % and other special fix situations for HTML.
@@ -5660,7 +5669,7 @@ end{Verbatim}end{quote}
 
 \subsection{Subsection 2: Testing figures}
 \label{subsec:ex}
-\index{figures}
+\index{figures}\marginpar{\footnotesize figures}
 
 Test of figures. In particular we refer to Figure~\ref{fig:impact} in which
 there is a flow.
@@ -5683,7 +5692,7 @@ Figures without captions are allowed and will be inlined.
 \end{center}
 
 
-\index{movies}
+\index{movies}\marginpar{\footnotesize movies}
 
 
 % Test multi--line caption in figure
@@ -5785,12 +5794,12 @@ achievement.
 \subsection{Tables}
 \label{subsec:table}
 
-\index{test index with verbatim text@test index with {\rm\texttt{verbatim text}} which is possible}
-\index{test two@test {\rm\texttt{two}} (separate) {\rm\texttt{verbatim expressions}} which is also possible}
-\index{index with!subindex}
+\index{test index with verbatim text@test index with {\rm\texttt{verbatim text}} which is possible}\marginpar{\footnotesize test index with {\rm\texttt{verbatim text}} which is possible}
+\index{test two@test {\rm\texttt{two}} (separate) {\rm\texttt{verbatim expressions}} which is also possible}\marginpar{\footnotesize test {\rm\texttt{two}} (separate) {\rm\texttt{verbatim expressions}} which is also possible}
+\index{index with!subindex}\marginpar{\footnotesize index with: subindex}
 
 % index with comma could fool sphinx
-\index{index, with comma, and one more}
+\index{index, with comma, and one more}\marginpar{\footnotesize index, with comma, and one more}
 
 Let us take this table from the manual:
 
@@ -6006,8 +6015,11 @@ Newton-Cotes with percentage in URL too:
 and \href{{http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae}}{\nolinkurl{http://en.wikipedia.org/wiki/Newton-Cotes\#Open_Newton.E2.80.93Cotes_formulae}} which has a shebang.
 
 For the \Verb!--device=paper! option it is important to test that URLs with
-monofont link text get a footnote, as in this reference to
-\href{{https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py}}{\nolinkurl{decay_mod}\footnote{\texttt{https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay\_mod.py}}}.
+monofont link text get a footnote (unless the \Verb!--latex_no_program_footnotelink!
+is used), as in this reference to
+\href{{https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py}}{\nolinkurl{decay_mod}}, \href{{http://tinyurl.com/pwyasaa/formulas.ball1.py}}{\nolinkurl{ball1.py}},
+and \href{{http://tinyurl.com/pwyasaa/formulas.ball2.py}}{\nolinkurl{ball2.py}}.
+
 
 % Comments should be inserted outside paragraphs (because in the rst
 % format extra blanks make a paragraph break).
@@ -7354,8 +7366,11 @@ Newton-Cotes with percentage in URL too:
 and `<http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae>`_ which has a shebang.
 
 For the ``--device=paper`` option it is important to test that URLs with
-monofont link text get a footnote, as in this reference to
-`decay_mod <https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py>`_.
+monofont link text get a footnote (unless the ``--latex_no_program_footnotelink``
+is used), as in this reference to
+`decay_mod <https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py>`_, `ball1.py <http://tinyurl.com/pwyasaa/formulas.ball1.py>`_,
+and `ball2.py <http://tinyurl.com/pwyasaa/formulas.ball2.py>`_.
+
 
 .. Comments should be inserted outside paragraphs (because in the rst
 
@@ -8851,8 +8866,11 @@ Newton-Cotes with percentage in URL too:
 and `<http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae>`_ which has a shebang.
 
 For the ``--device=paper`` option it is important to test that URLs with
-monofont link text get a footnote, as in this reference to
-`decay_mod <https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py>`_.
+monofont link text get a footnote (unless the ``--latex_no_program_footnotelink``
+is used), as in this reference to
+`decay_mod <https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py>`_, `ball1.py <http://tinyurl.com/pwyasaa/formulas.ball1.py>`_,
+and `ball2.py <http://tinyurl.com/pwyasaa/formulas.ball2.py>`_.
+
 
 .. Comments should be inserted outside paragraphs (because in the rst
 
@@ -10347,8 +10365,11 @@ http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas
 and http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae which has a shebang.
 
 For the `--device=paper` option it is important to test that URLs with
-monofont link text get a footnote, as in this reference to
-[https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py `decay_mod`].
+monofont link text get a footnote (unless the `--latex_no_program_footnotelink`
+is used), as in this reference to
+[https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py `decay_mod`], [http://tinyurl.com/pwyasaa/formulas.ball1.py `ball1.py`],
+and [http://tinyurl.com/pwyasaa/formulas.ball2.py `ball2.py`].
+
 
 <wiki:comment> Comments should be inserted outside paragraphs (because in the rst </wiki:comment>
 <wiki:comment> format extra blanks make a paragraph break). </wiki:comment>
@@ -11506,8 +11527,11 @@ http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas
 and http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae which has a shebang.
 
 For the <code>--device=paper</code> option it is important to test that URLs with
-monofont link text get a footnote, as in this reference to
-[https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py <code>decay_mod</code>].
+monofont link text get a footnote (unless the <code>--latex_no_program_footnotelink</code>
+is used), as in this reference to
+[https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py <code>decay_mod</code>], [http://tinyurl.com/pwyasaa/formulas.ball1.py <code>ball1.py</code>],
+and [http://tinyurl.com/pwyasaa/formulas.ball2.py <code>ball2.py</code>].
+
 
 <!-- Comments should be inserted outside paragraphs (because in the rst -->
 <!-- format extra blanks make a paragraph break). -->
@@ -12765,8 +12789,11 @@ Newton-Cotes with percentage in URL too:
 and [[http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae]] which has a shebang.
 
 For the {{{--device=paper}}} option it is important to test that URLs with
-monofont link text get a footnote, as in this reference to
-[[https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py|{{{decay_mod}}}]].
+monofont link text get a footnote (unless the {{{--latex_no_program_footnotelink}}}
+is used), as in this reference to
+[[https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py|{{{decay_mod}}}]], [[http://tinyurl.com/pwyasaa/formulas.ball1.py|{{{ball1.py}}}]],
+and [[http://tinyurl.com/pwyasaa/formulas.ball2.py|{{{ball2.py}}}]].
+
 
 <wiki:comment> Comments should be inserted outside paragraphs (because in the rst </wiki:comment>
 <wiki:comment> format extra blanks make a paragraph break). </wiki:comment>
@@ -13885,8 +13912,11 @@ Newton-Cotes with percentage in URL too:
 and "http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae":http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae which has a shebang.
 
 For the '--device=paper' option it is important to test that URLs with
-monofont link text get a footnote, as in this reference to
-https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py:'decay_mod'.
+monofont link text get a footnote (unless the '--latex_no_program_footnotelink'
+is used), as in this reference to
+https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py:'decay_mod', http://tinyurl.com/pwyasaa/formulas.ball1.py:'ball1.py',
+and http://tinyurl.com/pwyasaa/formulas.ball2.py:'ball2.py'.
+
 
 
 
@@ -15063,8 +15093,11 @@ U{http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas<http://en.wikipedia
 and U{http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae<http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae>} which has a shebang.
 
 For the C{--device=paper} option it is important to test that URLs with
-monofont link text get a footnote, as in this reference to
-U{C{decay_mod}<https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py>}.
+monofont link text get a footnote (unless the C{--latex_no_program_footnotelink}
+is used), as in this reference to
+U{C{decay_mod}<https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py>}, U{C{ball1.py}<http://tinyurl.com/pwyasaa/formulas.ball1.py>},
+and U{C{ball2.py}<http://tinyurl.com/pwyasaa/formulas.ball2.py>}.
+
 
 
 
@@ -16336,8 +16369,11 @@ http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas
 and http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae which has a shebang.
 
 For the --device=paper option it is important to test that URLs with
-monofont link text get a footnote, as in this reference to
-decay_mod (https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py).
+monofont link text get a footnote (unless the --latex_no_program_footnotelink
+is used), as in this reference to
+decay_mod (https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py), ball1.py (http://tinyurl.com/pwyasaa/formulas.ball1.py),
+and ball2.py (http://tinyurl.com/pwyasaa/formulas.ball2.py).
+
 
 
 
@@ -17623,8 +17659,11 @@ Newton-Cotes with percentage in URL too:
 and <http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae> which has a shebang.
 
 For the `--device=paper` option it is important to test that URLs with
-monofont link text get a footnote, as in this reference to
-[`decay_mod`](https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py).
+monofont link text get a footnote (unless the `--latex_no_program_footnotelink`
+is used), as in this reference to
+[`decay_mod`](https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py), [`ball1.py`](http://tinyurl.com/pwyasaa/formulas.ball1.py),
+and [`ball2.py`](http://tinyurl.com/pwyasaa/formulas.ball2.py).
+
 
 <!-- Comments should be inserted outside paragraphs (because in the rst -->
 <!-- format extra blanks make a paragraph break). -->
@@ -19203,8 +19242,11 @@ in a separate document: `admon.do.txt`.
       "and <http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae> which has a shebang.\n",
       "\n",
       "For the `--device=paper` option it is important to test that URLs with\n",
-      "monofont link text get a footnote, as in this reference to\n",
-      "[`decay_mod`](https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py).\n",
+      "monofont link text get a footnote (unless the `--latex_no_program_footnotelink`\n",
+      "is used), as in this reference to\n",
+      "[`decay_mod`](https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py), [`ball1.py`](http://tinyurl.com/pwyasaa/formulas.ball1.py),\n",
+      "and [`ball2.py`](http://tinyurl.com/pwyasaa/formulas.ball2.py).\n",
+      "\n",
       "\n",
       "<!-- Comments should be inserted outside paragraphs (because in the rst -->\n",
       "<!-- format extra blanks make a paragraph break). -->\n",
@@ -20670,7 +20712,7 @@ ccc<br /><span class="math">\(\mathcal{L}=0\)</span> &amp; <img src="../doc/src/
 <p>Testing of URLs: hpl’s home page <a href="{http://folk.uio.no/hpl}">hpl</a>, or the entire URL if desired, <a href="{http://folk.uio.no/hpl}"></a>. Here is a plain file link <a href="{testdoc.do.txt}"></a>, or <a href="{testdoc.do.txt}"></a>, or <a href="{testdoc.do.txt}"></a> or <a href="{testdoc.do.txt}"></a> or <a href="{testdoc.do.txt}">a link with newline</a>. Can test spaces with the link with word too: <a href="{http://folk.uio.no/hpl}">hpl</a> or <a href="{http://folk.uio.no/hpl}">hpl</a>. Also <code>file:///</code> works: <a href="{file:///home/hpl/vc/doconce/doc/demos/manual/manual.html}">link to a file</a> is fine to have. Moreover, &quot;loose&quot; URLs work, i.e., no quotes, just the plain URL as in <a href="{http://folk.uio.no/hpl}"></a>, if followed by space, comma, colon, semi-colon, question mark, exclamation mark, but not a period (which gets confused with the periods inside the URL).</p>
 <p>Mail addresses can also be used: <a href="{mailto:hpl@simula.no}"></a>, or just a <a href="{mailto:hpl@simula.no}">mail link</a>, or a raw <a href="{mailto:hpl@simula.no}"></a>.</p>
 <p>Here are some tough tests of URLs, especially for the <code>latex</code> format: <a href="{http://en.wikipedia.org/wiki/NewtonCotes_formulas}">Newton-Cotes</a> formulas and a <a href="{http://www.springer.com/mathematics/computational+scienceengineering/book/978-3-642-23098-1}">good book</a>. Need to test Newton-Cotes with percentage in URL too: <a href="{http://en.wikipedia.org/wiki/NewtonCotes_formulas}"></a> and <a href="{http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae}"></a> which has a shebang.</p>
-<p>For the <code>--device=paper</code> option it is important to test that URLs with monofont link text get a footnote, as in this reference to <a href="{https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py}"></a>.</p>
+<p>For the <code>--device=paper</code> option it is important to test that URLs with monofont link text get a footnote (unless the <code>--latex_no_program_footnotelink</code> is used), as in this reference to <a href="{https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py}"></a>, <a href="{http://tinyurl.com/pwyasaa/formulas.ball1.py}"></a>, and <a href="{http://tinyurl.com/pwyasaa/formulas.ball2.py}"></a>.</p>
 <p>More tough tests: repeated URLs whose footnotes when using the <code>--device=paper</code> option must be correct. We have <a href="{http://google.com}">google</a>, <a href="{http://google.com}">google</a>, and <a href="{http://google.com}">google</a>, which should result in exactly three footnotes.</p>
 <h2 id="test-of-some-latex-fixes">Test of Some LaTeX Fixes</h2>
 <p>Let’s check abbr. of some common kind, e.g. the well-known i.e. expression as an example. Moreover, Dr. Tang and Prof. Monsen, or maybe also prof. Ting, will go to the Dept. of Science to test how Mr. Hansen is doing together with Ms. Larsen. A reference like Sec. [subsubsec:ex] or Ch. [subsubsec:ex], or even App. [subsubsec:ex], must also be handled. Likewise, this is test no. <span class="math">\(i\)</span> of Doconce features. A sentence containing &quot;refines lines&quot; could easily fool a regex substitution with only i.e. since the dot matches anything. Also, look at Fig. 4 to see how the data compares with Tab. [mytab].</p>
@@ -21391,7 +21433,7 @@ document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'">'+'mailto:hpl@simula.no'+'<\/
 // -->
 </script><noscript>&#x6d;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#104;&#112;&#108;&#64;&#x73;&#x69;&#x6d;&#x75;&#108;&#x61;&#46;&#110;&#x6f;&#32;&#40;&#104;&#112;&#108;&#32;&#x61;&#116;&#32;&#x73;&#x69;&#x6d;&#x75;&#108;&#x61;&#32;&#100;&#x6f;&#116;&#32;&#110;&#x6f;&#x29;</noscript>.</p>
 <p>Here are some tough tests of URLs, especially for the <code>latex</code> format: <a href="http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas">Newton-Cotes</a> formulas and a <a href="http://www.springer.com/mathematics/computational+science+%26+engineering/book/978-3-642-23098-1">good book</a>. Need to test Newton-Cotes with percentage in URL too: <a href="http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas">http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas</a> and <a href="http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae">http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae</a> which has a shebang.</p>
-<p>For the <code>--device=paper</code> option it is important to test that URLs with monofont link text get a footnote, as in this reference to <a href="https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py"><code>decay_mod</code></a>.</p>
+<p>For the <code>--device=paper</code> option it is important to test that URLs with monofont link text get a footnote (unless the <code>--latex_no_program_footnotelink</code> is used), as in this reference to <a href="https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py"><code>decay_mod</code></a>, <a href="http://tinyurl.com/pwyasaa/formulas.ball1.py"><code>ball1.py</code></a>, and <a href="http://tinyurl.com/pwyasaa/formulas.ball2.py"><code>ball2.py</code></a>.</p>
 <!-- Comments should be inserted outside paragraphs (because in the rst -->
 <!-- format extra blanks make a paragraph break). -->
 
@@ -25174,8 +25216,10 @@ and <a href="http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes
 
 <p>
 For the <code>--device=paper</code> option it is important to test that URLs with
-monofont link text get a footnote, as in this reference to
-<a href="https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py" target="_self"><tt>decay_mod</tt></a>.
+monofont link text get a footnote (unless the <code>--latex_no_program_footnotelink</code>
+is used), as in this reference to
+<a href="https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py" target="_self"><tt>decay_mod</tt></a>, <a href="http://tinyurl.com/pwyasaa/formulas.ball1.py" target="_self"><tt>ball1.py</tt></a>,
+and <a href="http://tinyurl.com/pwyasaa/formulas.ball2.py" target="_self"><tt>ball2.py</tt></a>.
 
 <p>
 <!-- Comments should be inserted outside paragraphs (because in the rst -->
@@ -26997,8 +27041,10 @@ and <a href="http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes
 
 <p>
 For the <code>--device=paper</code> option it is important to test that URLs with
-monofont link text get a footnote, as in this reference to
-<a href="https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py" target="_blank"><tt>decay_mod</tt></a>.
+monofont link text get a footnote (unless the <code>--latex_no_program_footnotelink</code>
+is used), as in this reference to
+<a href="https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py" target="_blank"><tt>decay_mod</tt></a>, <a href="http://tinyurl.com/pwyasaa/formulas.ball1.py" target="_blank"><tt>ball1.py</tt></a>,
+and <a href="http://tinyurl.com/pwyasaa/formulas.ball2.py" target="_blank"><tt>ball2.py</tt></a>.
 
 <p>
 More tough tests: repeated URLs whose footnotes when using the
@@ -28653,8 +28699,10 @@ and <a href="http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes
 
 <p>
 For the <code>--device=paper</code> option it is important to test that URLs with
-monofont link text get a footnote, as in this reference to
-<a href="https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py" target="_self"><tt>decay_mod</tt></a>.
+monofont link text get a footnote (unless the <code>--latex_no_program_footnotelink</code>
+is used), as in this reference to
+<a href="https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py" target="_self"><tt>decay_mod</tt></a>, <a href="http://tinyurl.com/pwyasaa/formulas.ball1.py" target="_self"><tt>ball1.py</tt></a>,
+and <a href="http://tinyurl.com/pwyasaa/formulas.ball2.py" target="_self"><tt>ball2.py</tt></a>.
 
 <p>
 <!-- Comments should be inserted outside paragraphs (because in the rst -->
@@ -30724,8 +30772,11 @@ Newton-Cotes with percentage in URL too:
 and \href{{http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae}}{\nolinkurl{http://en.wikipedia.org/wiki/Newton-Cotes\#Open_Newton.E2.80.93Cotes_formulae}} which has a shebang.
 
 For the \code{--device=paper} option it is important to test that URLs with
-monofont link text get a footnote, as in this reference to
-\href{{https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py}}{\nolinkurl{decay_mod}}.
+monofont link text get a footnote (unless the \code{--latex_no_program_footnotelink}
+is used), as in this reference to
+\href{{https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py}}{\nolinkurl{decay_mod}}, \href{{http://tinyurl.com/pwyasaa/formulas.ball1.py}}{\nolinkurl{ball1.py}},
+and \href{{http://tinyurl.com/pwyasaa/formulas.ball2.py}}{\nolinkurl{ball2.py}}.
+
 
 % Comments should be inserted outside paragraphs (because in the rst
 % format extra blanks make a paragraph break).
@@ -31899,7 +31950,7 @@ system doconce split_html testdoc.html
 system doconce format html testdoc.do.txt --pygments_html_linenos --html_style=solarized --pygments_html_style=emacs $ex --html_output=demo_testdoc
 
 system doconce format latex testdoc.do.txt $ex SOMEVAR=True --skip_inline_comments
-system doconce format pdflatex testdoc.do.txt --device=paper $ex --latex_double_hyphen
+system doconce format pdflatex testdoc.do.txt --device=paper $ex --latex_double_hyphen --latex_index_in_margin --latex_no_program_footnotelink
 system doconce latex_exercise_toc testdoc
 
 # doconce replace does not work well with system bash func above without quotes
@@ -35505,8 +35556,10 @@ and <a href="http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes
 
 <p>
 For the <code>--device=paper</code> option it is important to test that URLs with
-monofont link text get a footnote, as in this reference to
-<a href="https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py" target="_self"><tt>decay_mod</tt></a>.
+monofont link text get a footnote (unless the <code>--latex_no_program_footnotelink</code>
+is used), as in this reference to
+<a href="https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py" target="_self"><tt>decay_mod</tt></a>, <a href="http://tinyurl.com/pwyasaa/formulas.ball1.py" target="_self"><tt>ball1.py</tt></a>,
+and <a href="http://tinyurl.com/pwyasaa/formulas.ball2.py" target="_self"><tt>ball2.py</tt></a>.
 
 <p>
 <!-- Comments should be inserted outside paragraphs (because in the rst -->
@@ -37398,8 +37451,11 @@ Newton-Cotes with percentage in URL too:
 and `<http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae>`_ which has a shebang.
 
 For the ``--device=paper`` option it is important to test that URLs with
-monofont link text get a footnote, as in this reference to
-`decay_mod <https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py>`_.
+monofont link text get a footnote (unless the ``--latex_no_program_footnotelink``
+is used), as in this reference to
+`decay_mod <https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py>`_, `ball1.py <http://tinyurl.com/pwyasaa/formulas.ball1.py>`_,
+and `ball2.py <http://tinyurl.com/pwyasaa/formulas.ball2.py>`_.
+
 
 .. Comments should be inserted outside paragraphs (because in the rst
 
@@ -85184,8 +85240,8 @@ figure file ../doc/src/manual/fig/wave1D:
 exporting publish database papers.pub to papers.bib:
 output in testdoc.p.tex
 + '[' 0 -ne 0 ']'
-+ system doconce format pdflatex testdoc.do.txt --device=paper --examples_as_exercises --latex_double_hyphen
-+ doconce format pdflatex testdoc.do.txt --device=paper --examples_as_exercises --latex_double_hyphen
++ system doconce format pdflatex testdoc.do.txt --device=paper --examples_as_exercises --latex_double_hyphen --latex_index_in_margin --latex_no_program_footnotelink
++ doconce format pdflatex testdoc.do.txt --device=paper --examples_as_exercises --latex_double_hyphen --latex_index_in_margin --latex_no_program_footnotelink
 
 Summary of papers
 -----------------
@@ -85583,7 +85639,7 @@ Package hyperref Warning: old loe file detected, not used; run LaTeX again.
 
 
 
-<../doc/src/manual/fig/wave1D.pdf, id=86, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=88, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
 [11]
 
@@ -85591,9 +85647,9 @@ Package hyperref Warning: old loe file detected, not used; run LaTeX again.
 
 
 
-<../doc/src/manual/fig/wave1D.png, id=105, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=106, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=107, 578.16pt x 433.62pt>
+<downloaded_figures/f_plot.png, id=108, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png> [13 <../doc/src/manual/fig/wave1D.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -85619,18 +85675,31 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
-[14 <./downloaded_figures/f_plot.png>] [15]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=137, 586.8324pt x 442.292
+[14 <./downloaded_figures/f_plot.png>]
+Underfull \hbox (badness 3291) 
+[]\T1/lmr/m/n/8 (+20) test \T1/lmtt/m/n/8 two \T1/lmr/m/n/8 (+20) (sep-a-rate) 
+\T1/lmtt/m/n/8 verbatim
+
+
+
+
+
+
+
+
+
+[15]
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=138, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=138, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=139, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=139, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=140, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=140, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=141, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=141, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=142, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=142, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=143, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -86341,14 +86410,14 @@ dmap/pdftex.map}] (./testdoc.toc) [2] [3] [4] (./testdoc.loe) [5] [6]
 (./testdoc.out.pyg) (./testdoc.out.pyg [8]) (./testdoc.out.pyg)
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg [9])
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) [10]
-<../doc/src/manual/fig/wave1D.pdf, id=260, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=262, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
 [11]
 
 [12 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=278, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=279, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=280, 578.16pt x 433.62pt>
+<downloaded_figures/f_plot.png, id=281, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png> [13 <../doc/src/manual/fig/wave1D.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -86374,18 +86443,31 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
-[14 <./downloaded_figures/f_plot.png>] [15]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=306, 586.8324pt x 442.292
+[14 <./downloaded_figures/f_plot.png>]
+Underfull \hbox (badness 3291) 
+[]\T1/lmr/m/n/8 (+20) test \T1/lmtt/m/n/8 two \T1/lmr/m/n/8 (+20) (sep-a-rate) 
+\T1/lmtt/m/n/8 verbatim
+
+
+
+
+
+
+
+
+
+[15]
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=307, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=307, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=308, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=308, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=309, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=309, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=310, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=310, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=311, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=311, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=312, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -87009,14 +87091,14 @@ dmap/pdftex.map}] (./testdoc.toc) [2] [3] [4] (./testdoc.loe) [5] [6]
 (./testdoc.out.pyg) (./testdoc.out.pyg [8]) (./testdoc.out.pyg)
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg [9])
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) [10]
-<../doc/src/manual/fig/wave1D.pdf, id=260, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=262, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
 [11]
 
 [12 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=278, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=279, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=280, 578.16pt x 433.62pt>
+<downloaded_figures/f_plot.png, id=281, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png> [13 <../doc/src/manual/fig/wave1D.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -87042,18 +87124,31 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
-[14 <./downloaded_figures/f_plot.png>] [15]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=306, 586.8324pt x 442.292
+[14 <./downloaded_figures/f_plot.png>]
+Underfull \hbox (badness 3291) 
+[]\T1/lmr/m/n/8 (+20) test \T1/lmtt/m/n/8 two \T1/lmr/m/n/8 (+20) (sep-a-rate) 
+\T1/lmtt/m/n/8 verbatim
+
+
+
+
+
+
+
+
+
+[15]
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=307, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=307, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=308, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=308, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=309, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=309, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=310, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=310, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=311, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=311, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=312, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -87666,14 +87761,14 @@ dmap/pdftex.map}] (./testdoc.toc) [2] [3] [4] (./testdoc.loe) [5] [6]
 (./testdoc.out.pyg) (./testdoc.out.pyg [8]) (./testdoc.out.pyg)
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg [9])
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) [10]
-<../doc/src/manual/fig/wave1D.pdf, id=260, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=262, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
 [11]
 
 [12 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=278, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=279, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=280, 578.16pt x 433.62pt>
+<downloaded_figures/f_plot.png, id=281, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png> [13 <../doc/src/manual/fig/wave1D.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -87699,18 +87794,31 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
-[14 <./downloaded_figures/f_plot.png>] [15]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=306, 586.8324pt x 442.292
+[14 <./downloaded_figures/f_plot.png>]
+Underfull \hbox (badness 3291) 
+[]\T1/lmr/m/n/8 (+20) test \T1/lmtt/m/n/8 two \T1/lmr/m/n/8 (+20) (sep-a-rate) 
+\T1/lmtt/m/n/8 verbatim
+
+
+
+
+
+
+
+
+
+[15]
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=307, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=307, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=308, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=308, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=309, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=309, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=310, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=310, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=311, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=311, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=312, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -88127,16 +88235,16 @@ Not recommended for sphinx output: math environment {gather}
     recommended to be _static/mailto:hpl@simula.no for sphinx
 *** warning: hyperlink to URL ../doc/src/manual/mov/wave_frames/frame_0105.png is to a local file,
     recommended to be _static/frame_0105.png for sphinx
-*** warning: hyperlink to URL ../doc/src/manual/mov/wave_frames/frame_0090.png is to a local file,
-    recommended to be _static/frame_0090.png for sphinx
 *** warning: hyperlink to URL ../doc/src/manual/mov/wave_frames/frame_0100.png is to a local file,
     recommended to be _static/frame_0100.png for sphinx
 *** warning: hyperlink to URL ../doc/src/manual/mov/wave_frames/frame_0085.png is to a local file,
     recommended to be _static/frame_0085.png for sphinx
-*** warning: hyperlink to URL ../doc/src/manual/mov/wave_frames/frame_0080.png is to a local file,
-    recommended to be _static/frame_0080.png for sphinx
+*** warning: hyperlink to URL ../doc/src/manual/mov/wave_frames/frame_0090.png is to a local file,
+    recommended to be _static/frame_0090.png for sphinx
 *** warning: hyperlink to URL testdoc.do.txt is to a local file,
     recommended to be _static/testdoc.do.txt for sphinx
+*** warning: hyperlink to URL ../doc/src/manual/mov/wave_frames/frame_0080.png is to a local file,
+    recommended to be _static/frame_0080.png for sphinx
     move linked file to _static and change URLs unless
     you really know that the links will be correct when the
     sphinx build directory is moved to its final destination
@@ -88221,16 +88329,16 @@ Not recommended for sphinx output: math environment {gather}
     recommended to be _static/mailto:hpl@simula.no for sphinx
 *** warning: hyperlink to URL ../doc/src/manual/mov/wave_frames/frame_0105.png is to a local file,
     recommended to be _static/frame_0105.png for sphinx
-*** warning: hyperlink to URL ../doc/src/manual/mov/wave_frames/frame_0090.png is to a local file,
-    recommended to be _static/frame_0090.png for sphinx
 *** warning: hyperlink to URL ../doc/src/manual/mov/wave_frames/frame_0100.png is to a local file,
     recommended to be _static/frame_0100.png for sphinx
 *** warning: hyperlink to URL ../doc/src/manual/mov/wave_frames/frame_0085.png is to a local file,
     recommended to be _static/frame_0085.png for sphinx
-*** warning: hyperlink to URL ../doc/src/manual/mov/wave_frames/frame_0080.png is to a local file,
-    recommended to be _static/frame_0080.png for sphinx
+*** warning: hyperlink to URL ../doc/src/manual/mov/wave_frames/frame_0090.png is to a local file,
+    recommended to be _static/frame_0090.png for sphinx
 *** warning: hyperlink to URL testdoc.do.txt is to a local file,
     recommended to be _static/testdoc.do.txt for sphinx
+*** warning: hyperlink to URL ../doc/src/manual/mov/wave_frames/frame_0080.png is to a local file,
+    recommended to be _static/frame_0080.png for sphinx
     move linked file to _static and change URLs unless
     you really know that the links will be correct when the
     sphinx build directory is moved to its final destination
