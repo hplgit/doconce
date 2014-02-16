@@ -38,6 +38,7 @@ html_box_shadow = False
 html_links_in_new_window = False
 #device = 
 #latex_bibstyle = 
+latex_index_in_margin = False
 latex_double_hyphen = False
 #latex_preamble = 
 #html_admon = 
