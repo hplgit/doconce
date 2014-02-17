@@ -179,7 +179,11 @@ def latex_code(filestr, code_blocks, code_block_types,
 #""", filestr)
         exercise_headings = re.findall(exercise_pattern, filestr)
         if exercise_headings:
-            if option('latex_list_of_exercises=', 'none') == 'toc':
+            if option('latex_list_of_exercises=', 'none') == 'none':
+                filestr = re.sub(exercise_pattern,
+        r"""subsection*{\g<1> \\thedoconceexercisecounter: \g<3>
+""", filestr)
+            elif option('latex_list_of_exercises=', 'none') == 'toc':
                 filestr = re.sub(exercise_pattern,
         r"""subsection*{\g<1> \\thedoconceexercisecounter: \g<3>
 \\addcontentsline{toc}{subsection}{\\thedoconceexercisecounter: \g<3>
@@ -1593,6 +1597,7 @@ def define(FILENAME_EXTENSION,
 
     bib_page, idx_page = get_bib_index_pages()
     latex_style = option('latex_style=', 'std')
+    title_layout = option('latex_title_layout=', 'doconce_heading')
 
     toc_part = ''
     if title_layout != 'beamer':

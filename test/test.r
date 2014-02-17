@@ -1513,8 +1513,8 @@ $$
 %% (The ptex2tex program: http://code.google.com/p/ptex2tex)
 %% Many preprocess options can be added to ptex2tex or doconce ptex2tex
 %%
-%%      ptex2tex -DMINTED -DPALATINO -DA6PAPER -DLATEX_HEADING=traditional myfile
-%%      doconce ptex2tex myfile -DLATEX_HEADING=titlepage envir=minted
+%%      ptex2tex -DMINTED myfile
+%%      doconce ptex2tex myfile envir=minted
 %%
 %% ptex2tex will typeset code environments according to a global or local
 %% .ptex2tex.cfg configure file. doconce ptex2tex will typeset code
@@ -1523,74 +1523,17 @@ $$
 %% minted style without needing -DMINTED.
 % #endif
 
-% #ifndef LATEX_STYLE
-% #define LATEX_STYLE "std"
-% #endif
-
-% #ifndef LATEX_HEADING
-% #define LATEX_HEADING "doconce_heading"
-% #endif
-
-% #ifndef PREAMBLE
-% #if LATEX_HEADING == "Springer_collection"
-% #undef PREAMBLE
-% #else
 % #define PREAMBLE
-% #endif
-% #endif
-
 
 % #ifdef PREAMBLE
 %-------------------- begin preamble ----------------------
-% #if LATEX_STYLE == "std"
 
 \documentclass[%
 twoside,                 % oneside: electronic viewing, twoside: printing
 final,                   % or draft (marks overfull hboxes, figures with paths)
 10pt]{article}
 
-% #elif LATEX_STYLE == "Springer_lncse"
-% Style: Lecture Notes in Computational Science and Engineering (Springer)
-\documentclass[envcountsect,open=right]{lncse}
-\pagestyle{headings}
-% #elif LATEX_STYLE == "Springer_T2"
-% Style: T2 (Springer)
-% Use svmono.cls with doconce modifications for bibliography
-\documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmonodo}
-
-% Use t2.sty with doconce modifications
-\usepackage{t2do}
-\special{papersize=193mm,260mm}
-
-% #elif LATEX_STYLE == "Springer_llcse"
-% Style: Lecture Notes in Computer Science (Springer)
-\documentclass[oribib]{llncs}
-% #elif LATEX_STYLE == "Koma_Script"
-% Style: Koma-Script
-\documentclass[10pt]{scrartcl}
-% #elif LATEX_STYLE == "siamltex"
-% Style: SIAM LaTeX2e
-\documentclass[leqno]{siamltex}
-% #elif LATEX_STYLE == "siamltexmm"
-% Style: SIAM LaTeX2e multimedia
-\documentclass[leqno]{siamltexmm}
-% #endif
-
 \listfiles               % print all files needed to compile this document
-
-% #ifdef A4PAPER
-\usepackage[a4paper]{geometry}
-% #endif
-% #ifdef A6PAPER
-% a6paper is suitable for mobile devices
-\usepackage[%
-  a6paper,
-  text={90mm,130mm},
-  inner={5mm},           % inner margin (two sided documents)
-  top=5mm,
-  headsep=4mm
-  ]{geometry}
-% #endif
 
 \usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
@@ -1616,16 +1559,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
-% #ifdef HELVETICA
-% Set helvetica as the default font family:
-\RequirePackage{helvet}
-\renewcommand\familydefault{phv}
-% #endif
-% #ifdef PALATINO
-% Set palatino as the default font family:
-\usepackage[sc]{mathpazo}    % Palatino fonts
-\linespread{1.05}            % Palatino needs extra line spread to look nice
-% #endif
+
 % #endif
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
@@ -1660,49 +1594,9 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 % 3. enable begin{figure}[H] (often leads to ugly pagebreaks)
 %\usepackage{float}\restylefloat{figure}
 
-
-% #ifdef TODONOTES
-% enable inline (doconce) comments to be typeset with the todonotes package
-\usepackage{ifthen,xkeyval,tikz,calc,graphicx}
-\usepackage[shadow]{todonotes}
-\newcommand{\shortinlinecomment}[3]{%
-\todo[size=\normalsize,fancyline,color=orange!40,caption={#3}]{%
- \begin{spacing}{0.75}{\bf #1}: #2\end{spacing}}}
-\newcommand{\longinlinecomment}[3]{%
-\todo[inline,color=orange!40,caption={#3}]{{\bf #1}: #2}}
-% #else
 % newcommands for typesetting inline (doconce) comments
 \newcommand{\shortinlinecomment}[3]{{\bf #1}: \emph{#2}}
 \newcommand{\longinlinecomment}[3]{{\bf #1}: \emph{#2}}
-% #endif
-
-% #ifdef LINENUMBERS
-\usepackage[mathlines]{lineno}  % show line numbers
-\linenumbers
-% #endif
-
-% #ifdef LABELS_IN_MARGIN
-% Display labels for sections, equations, and citations in the margin
-\usepackage{showlabels}
-\showlabels{cite}
-% #endif
-
-% #ifdef DOUBLE_SPACING
-\onehalfspacing    % from setspace package
-%\doublespacing
-% #endif
-
-% #ifdef FANCY_HEADER
-% --- fancyhdr package for fancy headers ---
-\usepackage{fancyhdr}
-\fancyhf{}
-% section name to the left (L) and page number to the right (R)
-% on even (E) pages, the other way around on odd pages
-\fancyhead[LE,RO]{\rightmark} %section
-\fancyhead[RE,LO]{\thepage}
-\pagestyle{fancy}
-% #endif
-
 
 \usepackage[framemethod=TikZ]{mdframed}
 
@@ -1734,106 +1628,8 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \clubpenalty = 10000
 \widowpenalty = 10000
 
-% #ifndef SECTION_HEADINGS
-% #define SECTION_HEADINGS "std"
-% #else
-% http://www.ctex.org/documents/packages/layout/titlesec.pdf
-\usepackage[compact]{titlesec}  % reduce the spacing above/below the heading
-% #endif
-% #if SECTION_HEADINGS == "blue"
-% --- section/subsection headings with blue color ---
-\definecolor{seccolor}{cmyk}{.9,.5,0,.35}  % siamltexmm.sty section color
-\titleformat{name=\section}
-{\color{seccolor}\normalfont\Large\bfseries}
-{\color{seccolor}\thesection}{1em}{}
-\titleformat{name=\subsection}
-{\color{seccolor}\normalfont\large\bfseries}
-{\color{seccolor}\thesubsection}{1em}{}
-\titleformat{name=\paragraph}[runin]
-{\color{seccolor}\normalfont\normalsize\bfseries}
-{}{}{\indent}
-% #ifdef FANCY_HEADER
-% let the header have a thick gray hrule with section and page in blue above
-\renewcommand{\headrulewidth}{0.4pt}
-\renewcommand{\headrule}{{\color{gray!50}%
-\hrule width\headwidth height\headrulewidth \vskip-\headrulewidth}}
-\fancyhead[LE,RO]{{\color{seccolor}\rightmark}} %section
-\fancyhead[RE,LO]{{\color{seccolor}\thepage}}
-% #endif
-% #elif SECTION_HEADINGS == "strongblue"
-% --- section/subsection headings with a strong blue color ---
-\definecolor{seccolor}{rgb}{0.2,0.2,0.8}
-\titleformat{name=\section}
-{\color{seccolor}\normalfont\Large\bfseries}
-{\color{seccolor}\thesection}{1em}{}
-\titleformat{name=\subsection}
-{\color{seccolor}\normalfont\large\bfseries}
-{\color{seccolor}\thesubsection}{1em}{}
-\titleformat{name=\paragraph}[runin]
-{\color{seccolor}\normalfont\normalsize\bfseries}
-{}{}{\indent}
-% #elif SECTION_HEADINGS == "gray"
-% --- section/subsection headings with white text on gray background ---
-\titleformat{name=\section}[block]
-  {\sffamily\Large}{}{0pt}{\colorsection}
-\titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip}
-
-\newcommand{\colorsection}[1]{%
-  \colorbox{gray!50}{{\color{white}\thesection\ #1}}}
-
-\titleformat{name=\subsection}[block]
-  {\sffamily\large}{}{0pt}{\colorsubsection}
-\titlespacing*{\subsection}{0pt}{\baselineskip}{\baselineskip}
-
-\newcommand{\colorsubsection}[1]{%
-  \colorbox{gray!50}{{\color{white}\thesubsection\ #1}}}
-% #elif SECTION_HEADINGS == "gray-wide"
-% --- section/subsection headings with white text on wide gray background ---
-\titleformat{name=\section}[block]
-  {\sffamily\Large}{}{0pt}{\colorsection}
-\titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip}
-
-\newcommand{\colorsection}[1]{%
-  \colorbox{gray!50}{\parbox{\dimexpr\textwidth-2\fboxsep}%
-           {\color{white}\thesection\ #1}}}
-
-\titleformat{name=\subsection}[block]
-  {\sffamily\large}{}{0pt}{\colorsubsection}
-\titlespacing*{\subsection}{0pt}{\baselineskip}{\baselineskip}
-
-\newcommand{\colorsubsection}[1]{%
-  \colorbox{gray!50}{\parbox{\dimexpr\textwidth-2\fboxsep}%
-           {\color{white}\thesubsection\ #1}}}
-% #endif
-
-% #ifdef COLORED_TABLE_ROWS
-% color every two table rows
-\let\oldtabular\tabular
-\let\endoldtabular\endtabular
-% #if COLORED_TABLE_ROWS not in ("gray", "blue")
-% #define COLORED_TABLE_ROWS gray
-% #endif
-% #else
-% #define COLORED_TABLE_ROWS no
-% #endif
-% #if COLORED_TABLE_ROWS == "gray"
-\definecolor{rowgray}{gray}{0.9}
-\renewenvironment{tabular}{\rowcolors{2}{white}{rowgray}%
-\oldtabular}{\endoldtabular}
-% #elif COLORED_TABLE_ROWS == "blue"
-\definecolor{appleblue}{rgb}{0.93,0.95,1.0}  % Apple blue
-\renewenvironment{tabular}{\rowcolors{2}{white}{appleblue}%
-\oldtabular}{\endoldtabular}
-% #endif
-
-
 \newenvironment{doconceexercise}{}{}
 \newcounter{doconceexercisecounter}
-
-% #ifndef LIST_OF_EXERCISES
-% #define LIST_OF_EXERCISES "none"
-% #endif
-
 % --- begin definition of \listofexercises command ---
 \makeatletter
 \newcommand\listofexercises{
@@ -1847,12 +1643,10 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 % --- end definition of \listofexercises command ---
 
 
-% #if LATEX_STYLE not in ("Koma_Script", "Springer_T2")
 % Make sure blank even-numbered pages before new chapters are
 % totally blank with no header
 \newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
 %\let\cleardoublepage\clearemptydoublepage % caused error in the toc
-% #endif
 
 % --- end of standard preamble for documents ---
 
@@ -1875,222 +1669,27 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 
 
-% #if LATEX_STYLE in ("Springer_T2", "Springer_lncse")
-\frontmatter
-\setcounter{page}{3}
-\pagestyle{headings}
-% #endif
-
-% #if LATEX_STYLE == "Springer_lncse"
-% With hyperref loaded, \contentsline needs 3 args
-%\contentsline{chapter}{Bibliography}{829}{chapter.Bib}
-%\contentsline{chapter}{Index}{831}{chapter.Index}
-% #endif
-
 % ----------------- title -------------------------
 
-% #if LATEX_HEADING == "traditional"
-
-% #if SECTION_HEADINGS in ("blue", "strongblue")
-\title{{\color{seccolor} A Document for Testing Doconce}}
-% #else
 \title{A Document for Testing Doconce}
-% #endif
-
-% #elif LATEX_HEADING == "titlepage"
-
-\thispagestyle{empty}
-\hbox{\ \ }
-\vfill
-\begin{center}
-{\huge{\bfseries{
-\begin{spacing}{1.25}
-% #if SECTION_HEADINGS in ("blue", "strongblue")
-{\color{seccolor}\rule{\linewidth}{0.5mm}} \\[0.4cm]
-{\color{seccolor}A Document for Testing Doconce}
-\\[0.4cm] {\color{seccolor}\rule{\linewidth}{0.5mm}} \\[1.5cm]
-% #else
-{\rule{\linewidth}{0.5mm}} \\[0.4cm]
-{A Document for Testing Doconce}
-\\[0.4cm] {\rule{\linewidth}{0.5mm}} \\[1.5cm]
-% #endif
-\end{spacing}
-}}}
-
-% #elif LATEX_HEADING == "Springer_collection"
-\title*{A Document for Testing Doconce}
-% Short version of title:
-\titlerunning{A Document for Testing Doconce}
-
-% #elif LATEX_HEADING == "beamer"
-\title{A Document for Testing Doconce}
-% #else
-\thispagestyle{empty}
-
-\begin{center}
-{\LARGE\bf
-\begin{spacing}{1.25}
-A Document for Testing Doconce
-\end{spacing}
-}
-\end{center}
-% #endif
 
 % ----------------- author(s) -------------------------
-% #if LATEX_HEADING == "traditional"
+
 \author{Hans Petter Langtangen\footnote{Email: \texttt{hpl@simula.no}. Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo.}
 \and Kaare Dump\footnote{Segfault, Cyberspace.}
 \and A. Dummy Author
 \and I. S. Overworked and Outburned\footnote{Inst1; Inst2, Somewhere; Third Inst, Elsewhere; and Fourth Inst.}
 \and J. Doe\footnote{Email: \texttt{j\_doe@cyberspace.com}.}}
 
-% #elif LATEX_HEADING == "titlepage"
-\vspace{1.3cm}
-
-    {\Large\textsf{Hans Petter Langtangen${}^{1, 2}$ (\texttt{hpl@simula.no})}}\\ [3mm]
-    
-    {\Large\textsf{Kaare Dump${}^{3}$}}\\ [3mm]
-    
-    {\Large\textsf{A. Dummy Author${}^{}$}}\\ [3mm]
-    
-    {\Large\textsf{I. S. Overworked and Outburned${}^{4, 5, 6, 7}$}}\\ [3mm]
-    
-    {\Large\textsf{J. Doe${}^{}$ (\texttt{j\_doe@cyberspace.com})}}\\ [3mm]
-    
-\ \\ [2mm]
-
-{\large\textsf{${}^1$Center for Biomedical Computing, Simula Research Laboratory} \\ [1.5mm]}
-{\large\textsf{${}^2$Department of Informatics, University of Oslo} \\ [1.5mm]}
-{\large\textsf{${}^3$Segfault, Cyberspace} \\ [1.5mm]}
-{\large\textsf{${}^4$Inst1} \\ [1.5mm]}
-{\large\textsf{${}^5$Inst2, Somewhere} \\ [1.5mm]}
-{\large\textsf{${}^6$Third Inst, Elsewhere} \\ [1.5mm]}
-{\large\textsf{${}^7$Fourth Inst} \\ [1.5mm]}
-% #elif LATEX_HEADING == "Springer_collection"
-
-\author{Hans Petter Langtangen and Kaare Dump and A. Dummy Author and I. S. Overworked and Outburned and J. Doe}
-% Short version of authors:
-%\authorrunning{...}
-\institute{Hans Petter Langtangen\at Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo\email{hpl@simula.no} \and Kaare Dump\at Segfault, Cyberspace \and A. Dummy Author \and I. S. Overworked and Outburned\at Inst1 and Inst2, Somewhere and Third Inst, Elsewhere and and Fourth Inst \and J. Doe\email{j_doe@cyberspace.com}}
-
-% #elif LATEX_HEADING == "beamer"
-\author{Hans Petter Langtangen\inst{1,2}
-\and
-Kaare Dump\inst{3}
-\and
-A. Dummy Author\inst{}
-\and
-I. S. Overworked and Outburned\inst{4,5,6,7}
-\and
-J. Doe\inst{}}
-\institute{Center for Biomedical Computing, Simula Research Laboratory\inst{1}
-\and
-Department of Informatics, University of Oslo\inst{2}
-\and
-Segfault, Cyberspace\inst{3}
-\and
-Inst1\inst{4}
-\and
-Inst2, Somewhere\inst{5}
-\and
-Third Inst, Elsewhere\inst{6}
-\and
-Fourth Inst\inst{7}}
-% #else
-
-\begin{center}
-{\bf Hans Petter Langtangen${}^{1, 2}$ (\texttt{hpl@simula.no})} \\ [0mm]
-\end{center}
-
-
-\begin{center}
-{\bf Kaare Dump${}^{3}$} \\ [0mm]
-\end{center}
-
-
-\begin{center}
-{\bf A. Dummy Author${}^{}$} \\ [0mm]
-\end{center}
-
-
-\begin{center}
-{\bf I. S. Overworked and Outburned${}^{4, 5, 6, 7}$} \\ [0mm]
-\end{center}
-
-
-\begin{center}
-{\bf J. Doe${}^{}$ (\texttt{j\_doe@cyberspace.com})} \\ [0mm]
-\end{center}
-
-\begin{center}
-% List of all institutions:
-\centerline{{\small ${}^1$Center for Biomedical Computing, Simula Research Laboratory}}
-\centerline{{\small ${}^2$Department of Informatics, University of Oslo}}
-\centerline{{\small ${}^3$Segfault, Cyberspace}}
-\centerline{{\small ${}^4$Inst1}}
-\centerline{{\small ${}^5$Inst2, Somewhere}}
-\centerline{{\small ${}^6$Third Inst, Elsewhere}}
-\centerline{{\small ${}^7$Fourth Inst}}
-\end{center}
-% #endif
 % ----------------- end author(s) -------------------------
 
-
-% #if LATEX_HEADING == "traditional"
 \date{Jan 32, 2100}
 \maketitle
-% #elif LATEX_HEADING == "beamer"
-\date{Jan 32, 2100
-% <titlepage figure>
-}
-% #elif LATEX_HEADING == "titlepage"
 
-\ \\ [10mm]
-{\large\textsf{Jan 32, 2100}}
-
-\end{center}
-\vfill
-\clearpage
-
-% #else
-\begin{center}
-Jan 32, 2100
-\end{center}
-
-\vspace{1cm}
-
-% #endif
-
-
-% #if LATEX_HEADING != "beamer"
 \tableofcontents
-% #if LIST_OF_EXERCISES == "loe"
-\clearemptydoublepage
-\listofexercises
-\clearemptydoublepage
-% #endif
-
-
-% #if LATEX_STYLE == "Springer_lncse"
-\contentsline{chapter}{\refname}{9999}{chapter.Bib}
-\contentsline{chapter}{Index}{9999}{chapter.Index}
-% #endif
-
-
-% #ifdef TODONOTES
-\listoftodos[List of inline comments]
-% #endif
 
 
 \vspace{1cm} % after toc
-% #endif
-
-% #if LATEX_STYLE == "Springer_T2"
-\mymainmatter
-% #elif LATEX_STYLE == "Springer_lncse"
-\mainmatter
-% #endif
-
 
 
 
@@ -2103,12 +1702,7 @@ Jan 32, 2100
 The format of this document is
 plain, homemade {\LaTeX} (from Doconce).
 
-
-% #if LATEX_HEADING == "Springer_collection"
-\abstract{
-% #else
 \begin{abstract}
-% #endif
 This is a document with many test constructions for doconce syntax.
 It was used heavily for the development and kept for testing
 numerous constructions, also special and less common cases.
@@ -2118,11 +1712,7 @@ is part of the abstract.
 
 % Cannot demonstrate chapter headings since abstract and chapter
 % is mutually exclusive in {\LaTeX}
-% #if LATEX_HEADING == "Springer_collection"
-}
-% #else
 \end{abstract}
-% #endif
 
 
 
@@ -2840,11 +2430,6 @@ between there we have Exercise~\ref{exer:some:formula}.
 \refstepcounter{doconceexercisecounter}
 
 \subsection*{Problem \thedoconceexercisecounter: Flip a Coin}
-% #if LIST_OF_EXERCISES == "toc"
-\addcontentsline{toc}{subsection}{\thedoconceexercisecounter: Flip a Coin}
-% #elif LIST_OF_EXERCISES == "loe"
-\addcontentsline{loe}{doconceexercise}{Problem \thedoconceexercisecounter: Flip a Coin}
-% #endif
 
 \label{demo:ex:1}
 % keywords = random numbers; Monte Carlo simulation
@@ -2930,11 +2515,6 @@ exercises.
 \refstepcounter{doconceexercisecounter}
 
 \subsection*{Project \thedoconceexercisecounter: Compute a Probability}
-% #if LIST_OF_EXERCISES == "toc"
-\addcontentsline{toc}{subsection}{\thedoconceexercisecounter: Compute a Probability}
-% #elif LIST_OF_EXERCISES == "loe"
-\addcontentsline{loe}{doconceexercise}{Project \thedoconceexercisecounter: Compute a Probability}
-% #endif
 
 \label{demo:ex:2}
 
@@ -2976,11 +2556,6 @@ compute the probability as $M/N$.
 \refstepcounter{doconceexercisecounter}
 
 \subsection*{Project \thedoconceexercisecounter: Explore Distributions of Random Circles}
-% #if LIST_OF_EXERCISES == "toc"
-\addcontentsline{toc}{subsection}{\thedoconceexercisecounter: Explore Distributions of Random Circles}
-% #elif LIST_OF_EXERCISES == "loe"
-\addcontentsline{loe}{doconceexercise}{Project \thedoconceexercisecounter: Explore Distributions of Random Circles}
-% #endif
 
 \label{proj:circle1}
 
@@ -3067,11 +2642,6 @@ and give some perspectives.
 \refstepcounter{doconceexercisecounter}
 
 \subsection*{Exercise \thedoconceexercisecounter: Determine some Distance}
-% #if LIST_OF_EXERCISES == "toc"
-\addcontentsline{toc}{subsection}{\thedoconceexercisecounter: Determine some Distance}
-% #elif LIST_OF_EXERCISES == "loe"
-\addcontentsline{loe}{doconceexercise}{Exercise \thedoconceexercisecounter: Determine some Distance}
-% #endif
 
 \label{exer:dist}
 
@@ -3250,11 +2820,6 @@ With some text, before we continue with exercises.
 \refstepcounter{doconceexercisecounter}
 
 \subsection*{Exercise \thedoconceexercisecounter: Make references to projects and problems}
-% #if LIST_OF_EXERCISES == "toc"
-\addcontentsline{toc}{subsection}{\thedoconceexercisecounter: Make references to projects and problems}
-% #elif LIST_OF_EXERCISES == "loe"
-\addcontentsline{loe}{doconceexercise}{Exercise \thedoconceexercisecounter: Make references to projects and problems}
-% #endif
 
 \label{exer:some:formula}
 
@@ -3284,11 +2849,6 @@ hint, etc.):
 \refstepcounter{doconceexercisecounter}
 
 \subsection*{Project \thedoconceexercisecounter: References to Project~\ref{demo:ex:2} in a heading works for latex}
-% #if LIST_OF_EXERCISES == "toc"
-\addcontentsline{toc}{subsection}{\thedoconceexercisecounter: References to Project~\ref{demo:ex:2} in a heading works for latex}
-% #elif LIST_OF_EXERCISES == "loe"
-\addcontentsline{loe}{doconceexercise}{Project \thedoconceexercisecounter: References to Project~\ref{demo:ex:2} in a heading works for latex}
-% #endif
 
 \label{exer:you}
 
@@ -3479,16 +3039,12 @@ in a separate document: \code{admon.do.txt}.
 %%
 
 
-
-
-
 %-------------------- begin preamble ----------------------
 
 \documentclass[%
 twoside,                 % oneside: electronic viewing, twoside: printing
 final,                   % or draft (marks overfull hboxes, figures with paths)
 10pt]{article}
-
 
 \listfiles               % print all files needed to compile this document
 
@@ -3506,6 +3062,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
+
+% Set palatino as the default font family:
+\usepackage[sc]{mathpazo}    % Palatino fonts
+\linespread{1.05}            % Palatino needs extra line spread to look nice
+
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
@@ -3538,7 +3099,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage[section]{placeins}
 % 3. enable begin{figure}[H] (often leads to ugly pagebreaks)
 %\usepackage{float}\restylefloat{figure}
-
 
 % enable inline (doconce) comments to be typeset with the todonotes package
 \usepackage{ifthen,xkeyval,tikz,calc,graphicx}
@@ -3601,6 +3161,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % http://www.ctex.org/documents/packages/layout/titlesec.pdf
 \usepackage[compact]{titlesec}  % reduce the spacing above/below the heading
+
 % --- section/subsection headings with blue color ---
 \definecolor{seccolor}{cmyk}{.9,.5,0,.35}  % siamltexmm.sty section color
 \titleformat{name=\section}
@@ -3612,6 +3173,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \titleformat{name=\paragraph}[runin]
 {\color{seccolor}\normalfont\normalsize\bfseries}
 {}{}{\indent}
+
 % let the header have a thick gray hrule with section and page in blue above
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\headrule}{{\color{gray!50}%
@@ -3619,7 +3181,8 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \fancyhead[LE,RO]{{\color{seccolor}\rightmark}} %section
 \fancyhead[RE,LO]{{\color{seccolor}\thepage}}
 
-% color every two table rows
+
+% --- color every two table rows ---
 \let\oldtabular\tabular
 \let\endoldtabular\endtabular
 \definecolor{appleblue}{rgb}{0.93,0.95,1.0}  % Apple blue
@@ -3629,8 +3192,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \newenvironment{doconceexercise}{}{}
 \newcounter{doconceexercisecounter}
-
-
 % --- begin definition of \listofexercises command ---
 \makeatletter
 \newcommand\listofexercises{
@@ -3670,10 +3231,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 
 
-
-
 % ----------------- title -------------------------
-
 
 \thispagestyle{empty}
 \hbox{\ \ }
@@ -3687,20 +3245,20 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \end{spacing}
 }}}
 
-
 % ----------------- author(s) -------------------------
+
 \vspace{1.3cm}
 
-    {\Large\textsf{Hans Petter Langtangen${}^{1, 2}$ (\texttt{hpl@simula.no})}}\\ [3mm]
-    
-    {\Large\textsf{Kaare Dump${}^{3}$}}\\ [3mm]
-    
-    {\Large\textsf{A. Dummy Author${}^{}$}}\\ [3mm]
-    
-    {\Large\textsf{I. S. Overworked and Outburned${}^{4, 5, 6, 7}$}}\\ [3mm]
-    
-    {\Large\textsf{J. Doe${}^{}$ (\texttt{j\_doe@cyberspace.com})}}\\ [3mm]
-    
+{\Large\textsf{Hans Petter Langtangen${}^{1, 2}$ (\texttt{hpl@simula.no})}}\\ [3mm]
+
+{\Large\textsf{Kaare Dump${}^{3}$}}\\ [3mm]
+
+{\Large\textsf{A. Dummy Author${}^{}$}}\\ [3mm]
+
+{\Large\textsf{I. S. Overworked and Outburned${}^{4, 5, 6, 7}$}}\\ [3mm]
+
+{\Large\textsf{J. Doe${}^{}$ (\texttt{j\_doe@cyberspace.com})}}\\ [3mm]
+
 \ \\ [2mm]
 
 {\large\textsf{${}^1$Center for Biomedical Computing, Simula Research Laboratory} \\ [1.5mm]}
@@ -3712,16 +3270,12 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 {\large\textsf{${}^7$Fourth Inst} \\ [1.5mm]}
 % ----------------- end author(s) -------------------------
 
-
-
 \ \\ [10mm]
 {\large\textsf{Jan 32, 2100}}
 
 \end{center}
 \vfill
 \clearpage
-
-
 
 \tableofcontents
 
@@ -3745,14 +3299,10 @@ Project & 9 & References to Project ref{demo:ex:2} in a ... & p.~\pageref{exer:y
 \clearemptydoublepage
 
 
-
-
 \listoftodos[List of inline comments]
 
 
 \clearpage % after toc
-
-
 
 
 
@@ -3764,7 +3314,6 @@ Project & 9 & References to Project ref{demo:ex:2} in a ... & p.~\pageref{exer:y
 
 The format of this document is
 plain, homemade \textsc{pdf}{\LaTeX} (from Doconce).
-
 
 \begin{abstract}
 This is a document with many test constructions for doconce syntax.
@@ -5160,9 +4709,6 @@ output in testdoc.tex
 %%
 
 
-
-
-
 %-------------------- begin preamble ----------------------
 
 \documentclass[%
@@ -5170,23 +4716,27 @@ twoside,                 % oneside: electronic viewing, twoside: printing
 final,                   % or draft (marks overfull hboxes, figures with paths)
 10pt]{article}
 
-
 \listfiles               % print all files needed to compile this document
 
+\usepackage[a4paper]{geometry}
 
 \usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
 
-\usepackage{anslistings,minted,fancyvrb} % packages needed for verbatim environments
+\usepackage{anslistings,fancyvrb} % packages needed for verbatim environments
 
+\usepackage{minted}
+\usemintedstyle{default}
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
+
 % Set palatino as the default font family:
 \usepackage[sc]{mathpazo}    % Palatino fonts
 \linespread{1.05}            % Palatino needs extra line spread to look nice
+
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
@@ -5220,14 +4770,33 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 % 3. enable begin{figure}[H] (often leads to ugly pagebreaks)
 %\usepackage{float}\restylefloat{figure}
 
+% enable inline (doconce) comments to be typeset with the todonotes package
+\usepackage{ifthen,xkeyval,tikz,calc,graphicx}
+\usepackage[shadow]{todonotes}
+\newcommand{\shortinlinecomment}[3]{%
+\todo[size=\normalsize,fancyline,color=orange!40,caption={#3}]{%
+ \begin{spacing}{0.75}{\bf #1}: #2\end{spacing}}}
+\newcommand{\longinlinecomment}[3]{%
+\todo[inline,color=orange!40,caption={#3}]{{\bf #1}: #2}}
 
-% newcommands for typesetting inline (doconce) comments
-\newcommand{\shortinlinecomment}[3]{{\bf #1}: \emph{#2}}
-\newcommand{\longinlinecomment}[3]{{\bf #1}: \emph{#2}}
+\usepackage[mathlines]{lineno}  % show line numbers
+\linenumbers
 
+% Display labels for sections, equations, and citations in the margin
+\usepackage{showlabels}
+\showlabels{cite}
 
+\onehalfspacing    % from setspace package
+%\doublespacing
 
-
+% --- fancyhdr package for fancy headers ---
+\usepackage{fancyhdr}
+\fancyhf{}
+% section name to the left (L) and page number to the right (R)
+% on even (E) pages, the other way around on odd pages
+\fancyhead[LE,RO]{\rightmark} %section
+\fancyhead[RE,LO]{\thepage}
+\pagestyle{fancy}
 
 
 \usepackage[framemethod=TikZ]{mdframed}
@@ -5260,13 +4829,39 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \clubpenalty = 10000
 \widowpenalty = 10000
 
+% http://www.ctex.org/documents/packages/layout/titlesec.pdf
+\usepackage[compact]{titlesec}  % reduce the spacing above/below the heading
 
+% --- section/subsection headings with blue color ---
+\definecolor{seccolor}{cmyk}{.9,.5,0,.35}  % siamltexmm.sty section color
+\titleformat{name=\section}
+{\color{seccolor}\normalfont\Large\bfseries}
+{\color{seccolor}\thesection}{1em}{}
+\titleformat{name=\subsection}
+{\color{seccolor}\normalfont\large\bfseries}
+{\color{seccolor}\thesubsection}{1em}{}
+\titleformat{name=\paragraph}[runin]
+{\color{seccolor}\normalfont\normalsize\bfseries}
+{}{}{\indent}
+
+% let the header have a thick gray hrule with section and page in blue above
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{{\color{gray!50}%
+\hrule width\headwidth height\headrulewidth \vskip-\headrulewidth}}
+\fancyhead[LE,RO]{{\color{seccolor}\rightmark}} %section
+\fancyhead[RE,LO]{{\color{seccolor}\thepage}}
+
+
+% --- color every two table rows ---
+\let\oldtabular\tabular
+\let\endoldtabular\endtabular
+\definecolor{appleblue}{rgb}{0.93,0.95,1.0}  % Apple blue
+\renewenvironment{tabular}{\rowcolors{2}{white}{appleblue}%
+\oldtabular}{\endoldtabular}
 
 
 \newenvironment{doconceexercise}{}{}
 \newcounter{doconceexercisecounter}
-
-
 % --- begin definition of \listofexercises command ---
 \makeatletter
 \newcommand\listofexercises{
@@ -5306,66 +4901,51 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 
 
-
-
 % ----------------- title -------------------------
 
 \thispagestyle{empty}
-
+\hbox{\ \ }
+\vfill
 \begin{center}
-{\LARGE\bf
+{\huge{\bfseries{
 \begin{spacing}{1.25}
-A Document for Testing Doconce
+{\color{seccolor}\rule{\linewidth}{0.5mm}} \\[0.4cm]
+{\color{seccolor}A Document for Testing Doconce}
+\\[0.4cm] {\color{seccolor}\rule{\linewidth}{0.5mm}} \\[1.5cm]
 \end{spacing}
-}
-\end{center}
+}}}
 
 % ----------------- author(s) -------------------------
 
-\begin{center}
-{\bf Hans Petter Langtangen${}^{1, 2}$ (\texttt{hpl@simula.no})} \\ [0mm]
-\end{center}
+\vspace{1.3cm}
 
+{\Large\textsf{Hans Petter Langtangen${}^{1, 2}$ (\texttt{hpl@simula.no})}}\\ [3mm]
 
-\begin{center}
-{\bf Kaare Dump${}^{3}$} \\ [0mm]
-\end{center}
+{\Large\textsf{Kaare Dump${}^{3}$}}\\ [3mm]
 
+{\Large\textsf{A. Dummy Author${}^{}$}}\\ [3mm]
 
-\begin{center}
-{\bf A. Dummy Author${}^{}$} \\ [0mm]
-\end{center}
+{\Large\textsf{I. S. Overworked and Outburned${}^{4, 5, 6, 7}$}}\\ [3mm]
 
+{\Large\textsf{J. Doe${}^{}$ (\texttt{j\_doe@cyberspace.com})}}\\ [3mm]
 
-\begin{center}
-{\bf I. S. Overworked and Outburned${}^{4, 5, 6, 7}$} \\ [0mm]
-\end{center}
+\ \\ [2mm]
 
-
-\begin{center}
-{\bf J. Doe${}^{}$ (\texttt{j\_doe@cyberspace.com})} \\ [0mm]
-\end{center}
-
-\begin{center}
-% List of all institutions:
-\centerline{{\small ${}^1$Center for Biomedical Computing, Simula Research Laboratory}}
-\centerline{{\small ${}^2$Department of Informatics, University of Oslo}}
-\centerline{{\small ${}^3$Segfault, Cyberspace}}
-\centerline{{\small ${}^4$Inst1}}
-\centerline{{\small ${}^5$Inst2, Somewhere}}
-\centerline{{\small ${}^6$Third Inst, Elsewhere}}
-\centerline{{\small ${}^7$Fourth Inst}}
-\end{center}
+{\large\textsf{${}^1$Center for Biomedical Computing, Simula Research Laboratory} \\ [1.5mm]}
+{\large\textsf{${}^2$Department of Informatics, University of Oslo} \\ [1.5mm]}
+{\large\textsf{${}^3$Segfault, Cyberspace} \\ [1.5mm]}
+{\large\textsf{${}^4$Inst1} \\ [1.5mm]}
+{\large\textsf{${}^5$Inst2, Somewhere} \\ [1.5mm]}
+{\large\textsf{${}^6$Third Inst, Elsewhere} \\ [1.5mm]}
+{\large\textsf{${}^7$Fourth Inst} \\ [1.5mm]}
 % ----------------- end author(s) -------------------------
 
+\ \\ [10mm]
+{\large\textsf{Jan 32, 2100}}
 
-\begin{center}
-Jan 32, 2100
 \end{center}
-
-\vspace{1cm}
-
-
+\vfill
+\clearpage
 
 \tableofcontents
 
@@ -5384,15 +4964,15 @@ Project & 9 & References to Project ref{demo:ex:2} in a ... & p.~\pageref{exer:y
 \clearpage % pagebreak after list of exercises
 
 
+\clearemptydoublepage
+\listofexercises
+\clearemptydoublepage
 
 
-
-
+\listoftodos[List of inline comments]
 
 
 \clearpage % after toc
-
-
 
 
 
@@ -5404,7 +4984,6 @@ Project & 9 & References to Project ref{demo:ex:2} in a ... & p.~\pageref{exer:y
 
 The format of this document is
 plain, homemade \textsc{pdf}{\LaTeX} (from Doconce).
-
 
 \begin{abstract}
 This is a document with many test constructions for doconce syntax.
@@ -6130,6 +5709,7 @@ between there we have Exercise~\ref{exer:some:formula}.
 \refstepcounter{doconceexercisecounter}
 
 \subsection*{Problem \thedoconceexercisecounter: Flip a Coin}
+\addcontentsline{loe}{doconceexercise}{Problem \thedoconceexercisecounter: Flip a Coin}
 
 \label{demo:ex:1}
 % keywords = random numbers; Monte Carlo simulation
@@ -6215,6 +5795,7 @@ exercises.
 \refstepcounter{doconceexercisecounter}
 
 \subsection*{Project \thedoconceexercisecounter: Compute a Probability}
+\addcontentsline{loe}{doconceexercise}{Project \thedoconceexercisecounter: Compute a Probability}
 
 \label{demo:ex:2}
 
@@ -6256,6 +5837,7 @@ compute the probability as $M/N$.
 \refstepcounter{doconceexercisecounter}
 
 \subsection*{Project \thedoconceexercisecounter: Explore Distributions of Random Circles}
+\addcontentsline{loe}{doconceexercise}{Project \thedoconceexercisecounter: Explore Distributions of Random Circles}
 
 \label{proj:circle1}
 
@@ -6342,6 +5924,7 @@ and give some perspectives.
 \refstepcounter{doconceexercisecounter}
 
 \subsection*{Exercise \thedoconceexercisecounter: Determine some Distance}
+\addcontentsline{loe}{doconceexercise}{Exercise \thedoconceexercisecounter: Determine some Distance}
 
 \label{exer:dist}
 
@@ -6520,6 +6103,7 @@ With some text, before we continue with exercises.
 \refstepcounter{doconceexercisecounter}
 
 \subsection*{Exercise \thedoconceexercisecounter: Make references to projects and problems}
+\addcontentsline{loe}{doconceexercise}{Exercise \thedoconceexercisecounter: Make references to projects and problems}
 
 \label{exer:some:formula}
 
@@ -6549,6 +6133,7 @@ hint, etc.):
 \refstepcounter{doconceexercisecounter}
 
 \subsection*{Project \thedoconceexercisecounter: References to Project~\ref{demo:ex:2} in a heading works for pdflatex}
+\addcontentsline{loe}{doconceexercise}{Project \thedoconceexercisecounter: References to Project~\ref{demo:ex:2} in a heading works for pdflatex}
 
 \label{exer:you}
 
@@ -20526,19 +20111,18 @@ Python.</code></pre>
     return theta**2</code></pre>
 <h4 id="more-on-theta.">More on <span class="math">\(\theta\)</span>.</h4>
 <p>Here is more text following headline with math.</p>
-<p>Newcommands must also be tested in this : <span class="math">\(\half\)</span>, <span class="math">\(\halfi\)</span>, <span class="math">\(\x\)</span>, <span class="math">\(\Ddt{u}\)</span>, both inline and in block:</p>
+<p>Newcommands must also be tested in this test report: <span class="math">\(\frac{1}{2}\)</span>, <span class="math">\(1/2\)</span>, <span class="math">\(\pmb{x}\)</span>, <span class="math">\(\frac{Du}{dt}\)</span>, both inline and in block:</p>
 <p><span class="math">\[\begin{aligned}
-\Ddt{u} &amp;= 0
+\frac{Du}{dt} &amp;= 0
 \\ 
-\half &amp;= \halfi\\ 
-\half\x &amp;= \normalvec\end{aligned}\]</span></p>
+\frac{1}{2}&amp;= 1/2\\ 
+\frac{1}{2}\pmb{x}&amp;= \pmb{n}\end{aligned}\]</span></p>
 <p>Or with align with label and numbers:</p>
 <p><span class="math">\[\begin{aligned}
-\Ddt{u} &amp;= 0
+\frac{Du}{dt} &amp;= 0
 \label{aligneq1}\\ 
-\half &amp;= \halfi\\ 
-\half\x &amp;= \normalvec
-\label{aligneq2}\end{aligned}\]</span></p>
+\frac{1}{2}&amp;= 1/2\\ 
+\frac{1}{2}\pmb{x}&amp;= \pmb{n}\label{aligneq2}\end{aligned}\]</span></p>
 <h2 id="custom-environments">Custom Environments</h2>
 <p>Here is an attempt to create a theorem environment via Mako (for counting theorems) and comment lines to help replacing lines in the <code>.tex</code> by proper begin-end LaTeX environments for theorems. Should look nice in most formats!</p>
 <p>[theorem:fundamental1]</p>
@@ -23074,8 +22658,8 @@ Inline math, \( a=b \), is the only math in this document.
 %% (The ptex2tex program: http://code.google.com/p/ptex2tex)
 %% Many preprocess options can be added to ptex2tex or doconce ptex2tex
 %%
-%%      ptex2tex -DMINTED -DPALATINO -DA6PAPER -DLATEX_HEADING=traditional myfile
-%%      doconce ptex2tex myfile -DLATEX_HEADING=titlepage envir=minted
+%%      ptex2tex -DMINTED myfile
+%%      doconce ptex2tex myfile envir=minted
 %%
 %% ptex2tex will typeset code environments according to a global or local
 %% .ptex2tex.cfg configure file. doconce ptex2tex will typeset code
@@ -23084,26 +22668,10 @@ Inline math, \( a=b \), is the only math in this document.
 %% minted style without needing -DMINTED.
 % #endif
 
-% #ifndef LATEX_STYLE
-% #define LATEX_STYLE "std"
-% #endif
-
-% #ifndef LATEX_HEADING
-% #define LATEX_HEADING "doconce_heading"
-% #endif
-
-% #ifndef PREAMBLE
-% #if LATEX_HEADING == "Springer_collection"
-% #undef PREAMBLE
-% #else
 % #define PREAMBLE
-% #endif
-% #endif
-
 
 % #ifdef PREAMBLE
 %-------------------- begin preamble ----------------------
-% #if LATEX_STYLE == "std"
 
 \documentclass[%
 twoside,                 % oneside: electronic viewing, twoside: printing
@@ -23112,48 +22680,7 @@ chapterprefix=true,      % "Chapter" word at beginning of each chapter
 open=right               % start new chapters on odd-numbered pages
 10pt]{book}
 
-% #elif LATEX_STYLE == "Springer_lncse"
-% Style: Lecture Notes in Computational Science and Engineering (Springer)
-\documentclass[envcountsect,open=right]{lncse}
-\pagestyle{headings}
-% #elif LATEX_STYLE == "Springer_T2"
-% Style: T2 (Springer)
-% Use svmono.cls with doconce modifications for bibliography
-\documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmonodo}
-
-% Use t2.sty with doconce modifications
-\usepackage{t2do}
-\special{papersize=193mm,260mm}
-
-% #elif LATEX_STYLE == "Springer_llcse"
-% Style: Lecture Notes in Computer Science (Springer)
-\documentclass[oribib]{llncs}
-% #elif LATEX_STYLE == "Koma_Script"
-% Style: Koma-Script
-\documentclass[10pt]{scrartcl}
-% #elif LATEX_STYLE == "siamltex"
-% Style: SIAM LaTeX2e
-\documentclass[leqno]{siamltex}
-% #elif LATEX_STYLE == "siamltexmm"
-% Style: SIAM LaTeX2e multimedia
-\documentclass[leqno]{siamltexmm}
-% #endif
-
 \listfiles               % print all files needed to compile this document
-
-% #ifdef A4PAPER
-\usepackage[a4paper]{geometry}
-% #endif
-% #ifdef A6PAPER
-% a6paper is suitable for mobile devices
-\usepackage[%
-  a6paper,
-  text={90mm,130mm},
-  inner={5mm},           % inner margin (two sided documents)
-  top=5mm,
-  headsep=4mm
-  ]{geometry}
-% #endif
 
 \usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
@@ -23179,16 +22706,7 @@ open=right               % start new chapters on odd-numbered pages
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
-% #ifdef HELVETICA
-% Set helvetica as the default font family:
-\RequirePackage{helvet}
-\renewcommand\familydefault{phv}
-% #endif
-% #ifdef PALATINO
-% Set palatino as the default font family:
-\usepackage[sc]{mathpazo}    % Palatino fonts
-\linespread{1.05}            % Palatino needs extra line spread to look nice
-% #endif
+
 % #endif
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
@@ -23215,105 +22733,10 @@ open=right               % start new chapters on odd-numbered pages
 \clubpenalty = 10000
 \widowpenalty = 10000
 
-% #ifndef SECTION_HEADINGS
-% #define SECTION_HEADINGS "std"
-% #else
-% http://www.ctex.org/documents/packages/layout/titlesec.pdf
-\usepackage[compact]{titlesec}  % reduce the spacing above/below the heading
-% #endif
-% #if SECTION_HEADINGS == "blue"
-% --- section/subsection headings with blue color ---
-\definecolor{seccolor}{cmyk}{.9,.5,0,.35}  % siamltexmm.sty section color
-\titleformat{name=\section}
-{\color{seccolor}\normalfont\Large\bfseries}
-{\color{seccolor}\thesection}{1em}{}
-\titleformat{name=\subsection}
-{\color{seccolor}\normalfont\large\bfseries}
-{\color{seccolor}\thesubsection}{1em}{}
-\titleformat{name=\paragraph}[runin]
-{\color{seccolor}\normalfont\normalsize\bfseries}
-{}{}{\indent}
-% #ifdef FANCY_HEADER
-% let the header have a thick gray hrule with section and page in blue above
-\renewcommand{\headrulewidth}{0.4pt}
-\renewcommand{\headrule}{{\color{gray!50}%
-\hrule width\headwidth height\headrulewidth \vskip-\headrulewidth}}
-\fancyhead[LE,RO]{{\color{seccolor}\rightmark}} %section
-\fancyhead[RE,LO]{{\color{seccolor}\thepage}}
-% #endif
-% #elif SECTION_HEADINGS == "strongblue"
-% --- section/subsection headings with a strong blue color ---
-\definecolor{seccolor}{rgb}{0.2,0.2,0.8}
-\titleformat{name=\section}
-{\color{seccolor}\normalfont\Large\bfseries}
-{\color{seccolor}\thesection}{1em}{}
-\titleformat{name=\subsection}
-{\color{seccolor}\normalfont\large\bfseries}
-{\color{seccolor}\thesubsection}{1em}{}
-\titleformat{name=\paragraph}[runin]
-{\color{seccolor}\normalfont\normalsize\bfseries}
-{}{}{\indent}
-% #elif SECTION_HEADINGS == "gray"
-% --- section/subsection headings with white text on gray background ---
-\titleformat{name=\section}[block]
-  {\sffamily\Large}{}{0pt}{\colorsection}
-\titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip}
-
-\newcommand{\colorsection}[1]{%
-  \colorbox{gray!50}{{\color{white}\thesection\ #1}}}
-
-\titleformat{name=\subsection}[block]
-  {\sffamily\large}{}{0pt}{\colorsubsection}
-\titlespacing*{\subsection}{0pt}{\baselineskip}{\baselineskip}
-
-\newcommand{\colorsubsection}[1]{%
-  \colorbox{gray!50}{{\color{white}\thesubsection\ #1}}}
-% #elif SECTION_HEADINGS == "gray-wide"
-% --- section/subsection headings with white text on wide gray background ---
-\titleformat{name=\section}[block]
-  {\sffamily\Large}{}{0pt}{\colorsection}
-\titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip}
-
-\newcommand{\colorsection}[1]{%
-  \colorbox{gray!50}{\parbox{\dimexpr\textwidth-2\fboxsep}%
-           {\color{white}\thesection\ #1}}}
-
-\titleformat{name=\subsection}[block]
-  {\sffamily\large}{}{0pt}{\colorsubsection}
-\titlespacing*{\subsection}{0pt}{\baselineskip}{\baselineskip}
-
-\newcommand{\colorsubsection}[1]{%
-  \colorbox{gray!50}{\parbox{\dimexpr\textwidth-2\fboxsep}%
-           {\color{white}\thesubsection\ #1}}}
-% #endif
-
-% #ifdef COLORED_TABLE_ROWS
-% color every two table rows
-\let\oldtabular\tabular
-\let\endoldtabular\endtabular
-% #if COLORED_TABLE_ROWS not in ("gray", "blue")
-% #define COLORED_TABLE_ROWS gray
-% #endif
-% #else
-% #define COLORED_TABLE_ROWS no
-% #endif
-% #if COLORED_TABLE_ROWS == "gray"
-\definecolor{rowgray}{gray}{0.9}
-\renewenvironment{tabular}{\rowcolors{2}{white}{rowgray}%
-\oldtabular}{\endoldtabular}
-% #elif COLORED_TABLE_ROWS == "blue"
-\definecolor{appleblue}{rgb}{0.93,0.95,1.0}  % Apple blue
-\renewenvironment{tabular}{\rowcolors{2}{white}{appleblue}%
-\oldtabular}{\endoldtabular}
-% #endif
-
-
-% #if LATEX_STYLE not in ("Koma_Script", "Springer_T2")
 % Make sure blank even-numbered pages before new chapters are
 % totally blank with no header
 \newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
 %\let\cleardoublepage\clearemptydoublepage % caused error in the toc
-% #endif
 
 % --- end of standard preamble for documents ---
 
@@ -23343,56 +22766,8 @@ open=right               % start new chapters on odd-numbered pages
 
 
 
-% #if LATEX_STYLE in ("Springer_T2", "Springer_lncse")
-\frontmatter
-\setcounter{page}{3}
-\pagestyle{headings}
-% #endif
-
-% #if LATEX_STYLE == "Springer_lncse"
-% With hyperref loaded, \contentsline needs 3 args
-%\contentsline{chapter}{Bibliography}{829}{chapter.Bib}
-%\contentsline{chapter}{Index}{831}{chapter.Index}
-% #endif
-
 % ----------------- title -------------------------
 
-% #if LATEX_HEADING == "traditional"
-
-% #if SECTION_HEADINGS in ("blue", "strongblue")
-\title{{\color{seccolor} Test of one author at one institution}}
-% #else
-\title{Test of one author at one institution}
-% #endif
-
-% #elif LATEX_HEADING == "titlepage"
-
-\thispagestyle{empty}
-\hbox{\ \ }
-\vfill
-\begin{center}
-{\huge{\bfseries{
-\begin{spacing}{1.25}
-% #if SECTION_HEADINGS in ("blue", "strongblue")
-{\color{seccolor}\rule{\linewidth}{0.5mm}} \\[0.4cm]
-{\color{seccolor}Test of one author at one institution}
-\\[0.4cm] {\color{seccolor}\rule{\linewidth}{0.5mm}} \\[1.5cm]
-% #else
-{\rule{\linewidth}{0.5mm}} \\[0.4cm]
-{Test of one author at one institution}
-\\[0.4cm] {\rule{\linewidth}{0.5mm}} \\[1.5cm]
-% #endif
-\end{spacing}
-}}}
-
-% #elif LATEX_HEADING == "Springer_collection"
-\title*{Test of one author at one institution}
-% Short version of title:
-\titlerunning{Test of one author at one institution}
-
-% #elif LATEX_HEADING == "beamer"
-\title{Test of one author at one institution}
-% #else
 \thispagestyle{empty}
 
 \begin{center}
@@ -23402,68 +22777,25 @@ Test of one author at one institution
 \end{spacing}
 }
 \end{center}
-% #endif
 
 % ----------------- author(s) -------------------------
-% #if LATEX_HEADING == "traditional"
-\author{John Doe\footnote{Email: \texttt{doe@cyberspace.net}. Cyberspace Inc.}}
-
-% #elif LATEX_HEADING == "titlepage"
-\vspace{1.3cm}
-
-{\Large\textsf{John Doe (\texttt{doe@cyberspace.net})}}\\ [3mm]
-
-\ \\ [2mm]
-
-{\large\textsf{Cyberspace Inc.} \\ [1.5mm]}
-% #elif LATEX_HEADING == "Springer_collection"
-
-\author{John Doe}
-% Short version of authors:
-%\authorrunning{...}
-\institute{John Doe\at Cyberspace Inc.\email{doe@cyberspace.net}}
-
-% #elif LATEX_HEADING == "beamer"
-\author{John Doe\inst{1}}
-\institute{Cyberspace Inc.\inst{1}}
-% #else
 
 \begin{center}
 {\bf John Doe (\texttt{doe@cyberspace.net})}
 \end{center}
 
-\begin{center}
+    \begin{center}
 % List of all institutions:
 \centerline{{\small Cyberspace Inc.}}
 \end{center}
-% #endif
+
 % ----------------- end author(s) -------------------------
 
-
-% #if LATEX_HEADING == "traditional"
-\date{Jan 32, 2100}
-\maketitle
-% #elif LATEX_HEADING == "beamer"
-\date{Jan 32, 2100
-% <titlepage figure>
-}
-% #elif LATEX_HEADING == "titlepage"
-
-\ \\ [10mm]
-{\large\textsf{Jan 32, 2100}}
-
-\end{center}
-\vfill
-\clearpage
-
-% #else
 \begin{center}
 Jan 32, 2100
 \end{center}
 
 \vspace{1cm}
-
-% #endif
 
 
 % Externaldocument: testdoc
@@ -24773,7 +24105,7 @@ C++:
 6
 7</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008800">#include &lt;iostream&gt;</span>
 
-<span style="color: #00BB00; font-weight: bold">int</span> main()
+<span style="color: #00BB00; font-weight: bold">int</span> <span style="color: #00A000">main</span>()
 {
    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> <span style="color: #BB4444">&quot;Sample output&quot;</span> <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
    <span style="color: #AA22FF; font-weight: bold">return</span> <span style="color: #666666">0</span>
@@ -24845,11 +24177,11 @@ System call:
 2
 3
 4
-5</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #808080">Terminal&gt; mkdir test</span>
-<span style="color: #808080">Terminal&gt; cd test</span>
-<span style="color: #808080">Terminal&gt; myprog -f</span>
-<span style="color: #808080">output1</span>
-<span style="color: #808080">output2</span>
+5</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; mkdir test</span>
+<span style="color: #888888">Terminal&gt; cd test</span>
+<span style="color: #888888">Terminal&gt; myprog -f</span>
+<span style="color: #888888">output1</span>
+<span style="color: #888888">output2</span>
 </pre></div>
 </td></tr></table><p>
 It is time to test <code>verbatim inline font</code> especially with <code>a newline
@@ -24878,11 +24210,11 @@ the previous blocks with line breaks.
 2
 3
 4
-5</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #808080">Terminal&gt; python -c &#39;print &quot;Testing\noutput\nfrom\nPython.&quot;&#39;</span>
-<span style="color: #808080">Testing</span>
-<span style="color: #808080">output</span>
-<span style="color: #808080">from</span>
-<span style="color: #808080">Python.</span>
+5</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; python -c &#39;print &quot;Testing\noutput\nfrom\nPython.&quot;&#39;</span>
+<span style="color: #888888">Testing</span>
+<span style="color: #888888">output</span>
+<span style="color: #888888">from</span>
+<span style="color: #888888">Python.</span>
 </pre></div>
 </td></tr></table><h3>Subsection 2: Testing figures <a name="subsec:ex"></a></h3>
 
@@ -26646,7 +25978,7 @@ C++:
 
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
 
-<span style="color: #B00040">int</span> main()
+<span style="color: #B00040">int</span> <span style="color: #0000FF">main</span>()
 {
    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">&quot;Sample output&quot;</span> <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
    <span style="color: #008000; font-weight: bold">return</span> <span style="color: #666666">0</span>
@@ -26698,11 +26030,11 @@ System call:
 <p>
 
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #808080">Terminal&gt; mkdir test</span>
-<span style="color: #808080">Terminal&gt; cd test</span>
-<span style="color: #808080">Terminal&gt; myprog -f</span>
-<span style="color: #808080">output1</span>
-<span style="color: #808080">output2</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; mkdir test</span>
+<span style="color: #888888">Terminal&gt; cd test</span>
+<span style="color: #888888">Terminal&gt; myprog -f</span>
+<span style="color: #888888">output1</span>
+<span style="color: #888888">output2</span>
 </pre></div>
 <p>
 It is time to test <code>verbatim inline font</code> especially with <code>a newline
@@ -26727,11 +26059,11 @@ the previous blocks with line breaks.
 <p>
 
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #808080">Terminal&gt; python -c &#39;print &quot;Testing\noutput\nfrom\nPython.&quot;&#39;</span>
-<span style="color: #808080">Testing</span>
-<span style="color: #808080">output</span>
-<span style="color: #808080">from</span>
-<span style="color: #808080">Python.</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; python -c &#39;print &quot;Testing\noutput\nfrom\nPython.&quot;&#39;</span>
+<span style="color: #888888">Testing</span>
+<span style="color: #888888">output</span>
+<span style="color: #888888">from</span>
+<span style="color: #888888">Python.</span>
 </pre></div>
 
 <h3>Subsection 2: Testing figures <a name="subsec:ex"></a></h3>
@@ -28286,7 +27618,7 @@ C++:
 <!-- code=c++ (from !bc cpppro) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
 
-<span style="color: #B00040">int</span> main()
+<span style="color: #B00040">int</span> <span style="color: #0000FF">main</span>()
 {
    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">&quot;Sample output&quot;</span> <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
    <span style="color: #008000; font-weight: bold">return</span> <span style="color: #666666">0</span>
@@ -28338,11 +27670,11 @@ System call:
 <p>
 
 <!-- code=console (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #808080">Terminal&gt; mkdir test</span>
-<span style="color: #808080">Terminal&gt; cd test</span>
-<span style="color: #808080">Terminal&gt; myprog -f</span>
-<span style="color: #808080">output1</span>
-<span style="color: #808080">output2</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; mkdir test</span>
+<span style="color: #888888">Terminal&gt; cd test</span>
+<span style="color: #888888">Terminal&gt; myprog -f</span>
+<span style="color: #888888">output1</span>
+<span style="color: #888888">output2</span>
 </pre></div>
 <p>
 It is time to test <code>verbatim inline font</code> especially with <code>a newline
@@ -28367,11 +27699,11 @@ the previous blocks with line breaks.
 <p>
 
 <!-- code=console (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #808080">Terminal&gt; python -c &#39;print &quot;Testing\noutput\nfrom\nPython.&quot;&#39;</span>
-<span style="color: #808080">Testing</span>
-<span style="color: #808080">output</span>
-<span style="color: #808080">from</span>
-<span style="color: #808080">Python.</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; python -c &#39;print &quot;Testing\noutput\nfrom\nPython.&quot;&#39;</span>
+<span style="color: #888888">Testing</span>
+<span style="color: #888888">output</span>
+<span style="color: #888888">from</span>
+<span style="color: #888888">Python.</span>
 </pre></div>
 
 <h3>Subsection 2: Testing figures <a name="subsec:ex"></a></h3>
@@ -29563,8 +28895,8 @@ in a separate document: <code>admon.do.txt</code>.
 %% (The ptex2tex program: http://code.google.com/p/ptex2tex)
 %% Many preprocess options can be added to ptex2tex or doconce ptex2tex
 %%
-%%      ptex2tex -DMINTED -DPALATINO -DA6PAPER -DLATEX_HEADING=traditional myfile
-%%      doconce ptex2tex myfile -DLATEX_HEADING=titlepage envir=minted
+%%      ptex2tex -DMINTED myfile
+%%      doconce ptex2tex myfile envir=minted
 %%
 %% ptex2tex will typeset code environments according to a global or local
 %% .ptex2tex.cfg configure file. doconce ptex2tex will typeset code
@@ -29573,74 +28905,17 @@ in a separate document: <code>admon.do.txt</code>.
 %% minted style without needing -DMINTED.
 % #endif
 
-% #ifndef LATEX_STYLE
-% #define LATEX_STYLE "std"
-% #endif
-
-% #ifndef LATEX_HEADING
-% #define LATEX_HEADING "doconce_heading"
-% #endif
-
-% #ifndef PREAMBLE
-% #if LATEX_HEADING == "Springer_collection"
-% #undef PREAMBLE
-% #else
 % #define PREAMBLE
-% #endif
-% #endif
-
 
 % #ifdef PREAMBLE
 %-------------------- begin preamble ----------------------
-% #if LATEX_STYLE == "std"
 
 \documentclass[%
 twoside,                 % oneside: electronic viewing, twoside: printing
 final,                   % or draft (marks overfull hboxes, figures with paths)
 10pt]{article}
 
-% #elif LATEX_STYLE == "Springer_lncse"
-% Style: Lecture Notes in Computational Science and Engineering (Springer)
-\documentclass[envcountsect,open=right]{lncse}
-\pagestyle{headings}
-% #elif LATEX_STYLE == "Springer_T2"
-% Style: T2 (Springer)
-% Use svmono.cls with doconce modifications for bibliography
-\documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmonodo}
-
-% Use t2.sty with doconce modifications
-\usepackage{t2do}
-\special{papersize=193mm,260mm}
-
-% #elif LATEX_STYLE == "Springer_llcse"
-% Style: Lecture Notes in Computer Science (Springer)
-\documentclass[oribib]{llncs}
-% #elif LATEX_STYLE == "Koma_Script"
-% Style: Koma-Script
-\documentclass[10pt]{scrartcl}
-% #elif LATEX_STYLE == "siamltex"
-% Style: SIAM LaTeX2e
-\documentclass[leqno]{siamltex}
-% #elif LATEX_STYLE == "siamltexmm"
-% Style: SIAM LaTeX2e multimedia
-\documentclass[leqno]{siamltexmm}
-% #endif
-
 \listfiles               % print all files needed to compile this document
-
-% #ifdef A4PAPER
-\usepackage[a4paper]{geometry}
-% #endif
-% #ifdef A6PAPER
-% a6paper is suitable for mobile devices
-\usepackage[%
-  a6paper,
-  text={90mm,130mm},
-  inner={5mm},           % inner margin (two sided documents)
-  top=5mm,
-  headsep=4mm
-  ]{geometry}
-% #endif
 
 \usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
@@ -29666,16 +28941,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
-% #ifdef HELVETICA
-% Set helvetica as the default font family:
-\RequirePackage{helvet}
-\renewcommand\familydefault{phv}
-% #endif
-% #ifdef PALATINO
-% Set palatino as the default font family:
-\usepackage[sc]{mathpazo}    % Palatino fonts
-\linespread{1.05}            % Palatino needs extra line spread to look nice
-% #endif
+
 % #endif
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
@@ -29710,49 +28976,9 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 % 3. enable begin{figure}[H] (often leads to ugly pagebreaks)
 %\usepackage{float}\restylefloat{figure}
 
-
-% #ifdef TODONOTES
-% enable inline (doconce) comments to be typeset with the todonotes package
-\usepackage{ifthen,xkeyval,tikz,calc,graphicx}
-\usepackage[shadow]{todonotes}
-\newcommand{\shortinlinecomment}[3]{%
-\todo[size=\normalsize,fancyline,color=orange!40,caption={#3}]{%
- \begin{spacing}{0.75}{\bf #1}: #2\end{spacing}}}
-\newcommand{\longinlinecomment}[3]{%
-\todo[inline,color=orange!40,caption={#3}]{{\bf #1}: #2}}
-% #else
 % newcommands for typesetting inline (doconce) comments
 \newcommand{\shortinlinecomment}[3]{{\bf #1}: \emph{#2}}
 \newcommand{\longinlinecomment}[3]{{\bf #1}: \emph{#2}}
-% #endif
-
-% #ifdef LINENUMBERS
-\usepackage[mathlines]{lineno}  % show line numbers
-\linenumbers
-% #endif
-
-% #ifdef LABELS_IN_MARGIN
-% Display labels for sections, equations, and citations in the margin
-\usepackage{showlabels}
-\showlabels{cite}
-% #endif
-
-% #ifdef DOUBLE_SPACING
-\onehalfspacing    % from setspace package
-%\doublespacing
-% #endif
-
-% #ifdef FANCY_HEADER
-% --- fancyhdr package for fancy headers ---
-\usepackage{fancyhdr}
-\fancyhf{}
-% section name to the left (L) and page number to the right (R)
-% on even (E) pages, the other way around on odd pages
-\fancyhead[LE,RO]{\rightmark} %section
-\fancyhead[RE,LO]{\thepage}
-\pagestyle{fancy}
-% #endif
-
 
 \usepackage[framemethod=TikZ]{mdframed}
 
@@ -29784,106 +29010,8 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \clubpenalty = 10000
 \widowpenalty = 10000
 
-% #ifndef SECTION_HEADINGS
-% #define SECTION_HEADINGS "std"
-% #else
-% http://www.ctex.org/documents/packages/layout/titlesec.pdf
-\usepackage[compact]{titlesec}  % reduce the spacing above/below the heading
-% #endif
-% #if SECTION_HEADINGS == "blue"
-% --- section/subsection headings with blue color ---
-\definecolor{seccolor}{cmyk}{.9,.5,0,.35}  % siamltexmm.sty section color
-\titleformat{name=\section}
-{\color{seccolor}\normalfont\Large\bfseries}
-{\color{seccolor}\thesection}{1em}{}
-\titleformat{name=\subsection}
-{\color{seccolor}\normalfont\large\bfseries}
-{\color{seccolor}\thesubsection}{1em}{}
-\titleformat{name=\paragraph}[runin]
-{\color{seccolor}\normalfont\normalsize\bfseries}
-{}{}{\indent}
-% #ifdef FANCY_HEADER
-% let the header have a thick gray hrule with section and page in blue above
-\renewcommand{\headrulewidth}{0.4pt}
-\renewcommand{\headrule}{{\color{gray!50}%
-\hrule width\headwidth height\headrulewidth \vskip-\headrulewidth}}
-\fancyhead[LE,RO]{{\color{seccolor}\rightmark}} %section
-\fancyhead[RE,LO]{{\color{seccolor}\thepage}}
-% #endif
-% #elif SECTION_HEADINGS == "strongblue"
-% --- section/subsection headings with a strong blue color ---
-\definecolor{seccolor}{rgb}{0.2,0.2,0.8}
-\titleformat{name=\section}
-{\color{seccolor}\normalfont\Large\bfseries}
-{\color{seccolor}\thesection}{1em}{}
-\titleformat{name=\subsection}
-{\color{seccolor}\normalfont\large\bfseries}
-{\color{seccolor}\thesubsection}{1em}{}
-\titleformat{name=\paragraph}[runin]
-{\color{seccolor}\normalfont\normalsize\bfseries}
-{}{}{\indent}
-% #elif SECTION_HEADINGS == "gray"
-% --- section/subsection headings with white text on gray background ---
-\titleformat{name=\section}[block]
-  {\sffamily\Large}{}{0pt}{\colorsection}
-\titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip}
-
-\newcommand{\colorsection}[1]{%
-  \colorbox{gray!50}{{\color{white}\thesection\ #1}}}
-
-\titleformat{name=\subsection}[block]
-  {\sffamily\large}{}{0pt}{\colorsubsection}
-\titlespacing*{\subsection}{0pt}{\baselineskip}{\baselineskip}
-
-\newcommand{\colorsubsection}[1]{%
-  \colorbox{gray!50}{{\color{white}\thesubsection\ #1}}}
-% #elif SECTION_HEADINGS == "gray-wide"
-% --- section/subsection headings with white text on wide gray background ---
-\titleformat{name=\section}[block]
-  {\sffamily\Large}{}{0pt}{\colorsection}
-\titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip}
-
-\newcommand{\colorsection}[1]{%
-  \colorbox{gray!50}{\parbox{\dimexpr\textwidth-2\fboxsep}%
-           {\color{white}\thesection\ #1}}}
-
-\titleformat{name=\subsection}[block]
-  {\sffamily\large}{}{0pt}{\colorsubsection}
-\titlespacing*{\subsection}{0pt}{\baselineskip}{\baselineskip}
-
-\newcommand{\colorsubsection}[1]{%
-  \colorbox{gray!50}{\parbox{\dimexpr\textwidth-2\fboxsep}%
-           {\color{white}\thesubsection\ #1}}}
-% #endif
-
-% #ifdef COLORED_TABLE_ROWS
-% color every two table rows
-\let\oldtabular\tabular
-\let\endoldtabular\endtabular
-% #if COLORED_TABLE_ROWS not in ("gray", "blue")
-% #define COLORED_TABLE_ROWS gray
-% #endif
-% #else
-% #define COLORED_TABLE_ROWS no
-% #endif
-% #if COLORED_TABLE_ROWS == "gray"
-\definecolor{rowgray}{gray}{0.9}
-\renewenvironment{tabular}{\rowcolors{2}{white}{rowgray}%
-\oldtabular}{\endoldtabular}
-% #elif COLORED_TABLE_ROWS == "blue"
-\definecolor{appleblue}{rgb}{0.93,0.95,1.0}  % Apple blue
-\renewenvironment{tabular}{\rowcolors{2}{white}{appleblue}%
-\oldtabular}{\endoldtabular}
-% #endif
-
-
 \newenvironment{doconceexercise}{}{}
 \newcounter{doconceexercisecounter}
-
-% #ifndef LIST_OF_EXERCISES
-% #define LIST_OF_EXERCISES "none"
-% #endif
-
 % --- begin definition of \listofexercises command ---
 \makeatletter
 \newcommand\listofexercises{
@@ -29897,12 +29025,10 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 % --- end definition of \listofexercises command ---
 
 
-% #if LATEX_STYLE not in ("Koma_Script", "Springer_T2")
 % Make sure blank even-numbered pages before new chapters are
 % totally blank with no header
 \newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
 %\let\cleardoublepage\clearemptydoublepage % caused error in the toc
-% #endif
 
 % --- end of standard preamble for documents ---
 
@@ -29925,56 +29051,8 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 
 
-% #if LATEX_STYLE in ("Springer_T2", "Springer_lncse")
-\frontmatter
-\setcounter{page}{3}
-\pagestyle{headings}
-% #endif
-
-% #if LATEX_STYLE == "Springer_lncse"
-% With hyperref loaded, \contentsline needs 3 args
-%\contentsline{chapter}{Bibliography}{829}{chapter.Bib}
-%\contentsline{chapter}{Index}{831}{chapter.Index}
-% #endif
-
 % ----------------- title -------------------------
 
-% #if LATEX_HEADING == "traditional"
-
-% #if SECTION_HEADINGS in ("blue", "strongblue")
-\title{{\color{seccolor} A Document for Testing Doconce}}
-% #else
-\title{A Document for Testing Doconce}
-% #endif
-
-% #elif LATEX_HEADING == "titlepage"
-
-\thispagestyle{empty}
-\hbox{\ \ }
-\vfill
-\begin{center}
-{\huge{\bfseries{
-\begin{spacing}{1.25}
-% #if SECTION_HEADINGS in ("blue", "strongblue")
-{\color{seccolor}\rule{\linewidth}{0.5mm}} \\[0.4cm]
-{\color{seccolor}A Document for Testing Doconce}
-\\[0.4cm] {\color{seccolor}\rule{\linewidth}{0.5mm}} \\[1.5cm]
-% #else
-{\rule{\linewidth}{0.5mm}} \\[0.4cm]
-{A Document for Testing Doconce}
-\\[0.4cm] {\rule{\linewidth}{0.5mm}} \\[1.5cm]
-% #endif
-\end{spacing}
-}}}
-
-% #elif LATEX_HEADING == "Springer_collection"
-\title*{A Document for Testing Doconce}
-% Short version of title:
-\titlerunning{A Document for Testing Doconce}
-
-% #elif LATEX_HEADING == "beamer"
-\title{A Document for Testing Doconce}
-% #else
 \thispagestyle{empty}
 
 \begin{center}
@@ -29984,95 +29062,34 @@ A Document for Testing Doconce
 \end{spacing}
 }
 \end{center}
-% #endif
 
 % ----------------- author(s) -------------------------
-% #if LATEX_HEADING == "traditional"
-\author{Hans Petter Langtangen\footnote{Email: \texttt{hpl@simula.no}. Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo.}
-\and Kaare Dump\footnote{Segfault, Cyberspace.}
-\and A. Dummy Author
-\and I. S. Overworked and Outburned\footnote{Inst1; Inst2, Somewhere; Third Inst, Elsewhere; and Fourth Inst.}
-\and J. Doe\footnote{Email: \texttt{j\_doe@cyberspace.com}.}}
-
-% #elif LATEX_HEADING == "titlepage"
-\vspace{1.3cm}
-
-    {\Large\textsf{Hans Petter Langtangen${}^{1, 2}$ (\texttt{hpl@simula.no})}}\\ [3mm]
-    
-    {\Large\textsf{Kaare Dump${}^{3}$}}\\ [3mm]
-    
-    {\Large\textsf{A. Dummy Author${}^{}$}}\\ [3mm]
-    
-    {\Large\textsf{I. S. Overworked and Outburned${}^{4, 5, 6, 7}$}}\\ [3mm]
-    
-    {\Large\textsf{J. Doe${}^{}$ (\texttt{j\_doe@cyberspace.com})}}\\ [3mm]
-    
-\ \\ [2mm]
-
-{\large\textsf{${}^1$Center for Biomedical Computing, Simula Research Laboratory} \\ [1.5mm]}
-{\large\textsf{${}^2$Department of Informatics, University of Oslo} \\ [1.5mm]}
-{\large\textsf{${}^3$Segfault, Cyberspace} \\ [1.5mm]}
-{\large\textsf{${}^4$Inst1} \\ [1.5mm]}
-{\large\textsf{${}^5$Inst2, Somewhere} \\ [1.5mm]}
-{\large\textsf{${}^6$Third Inst, Elsewhere} \\ [1.5mm]}
-{\large\textsf{${}^7$Fourth Inst} \\ [1.5mm]}
-% #elif LATEX_HEADING == "Springer_collection"
-
-\author{Hans Petter Langtangen and Kaare Dump and A. Dummy Author and I. S. Overworked and Outburned and J. Doe}
-% Short version of authors:
-%\authorrunning{...}
-\institute{Hans Petter Langtangen\at Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo\email{hpl@simula.no} \and Kaare Dump\at Segfault, Cyberspace \and A. Dummy Author \and I. S. Overworked and Outburned\at Inst1 and Inst2, Somewhere and Third Inst, Elsewhere and and Fourth Inst \and J. Doe\email{j_doe@cyberspace.com}}
-
-% #elif LATEX_HEADING == "beamer"
-\author{Hans Petter Langtangen\inst{1,2}
-\and
-Kaare Dump\inst{3}
-\and
-A. Dummy Author\inst{}
-\and
-I. S. Overworked and Outburned\inst{4,5,6,7}
-\and
-J. Doe\inst{}}
-\institute{Center for Biomedical Computing, Simula Research Laboratory\inst{1}
-\and
-Department of Informatics, University of Oslo\inst{2}
-\and
-Segfault, Cyberspace\inst{3}
-\and
-Inst1\inst{4}
-\and
-Inst2, Somewhere\inst{5}
-\and
-Third Inst, Elsewhere\inst{6}
-\and
-Fourth Inst\inst{7}}
-% #else
 
 \begin{center}
 {\bf Hans Petter Langtangen${}^{1, 2}$ (\texttt{hpl@simula.no})} \\ [0mm]
 \end{center}
 
-
+    
 \begin{center}
 {\bf Kaare Dump${}^{3}$} \\ [0mm]
 \end{center}
 
-
+    
 \begin{center}
 {\bf A. Dummy Author${}^{}$} \\ [0mm]
 \end{center}
 
-
+    
 \begin{center}
 {\bf I. S. Overworked and Outburned${}^{4, 5, 6, 7}$} \\ [0mm]
 \end{center}
 
-
+    
 \begin{center}
 {\bf J. Doe${}^{}$ (\texttt{j\_doe@cyberspace.com})} \\ [0mm]
 \end{center}
 
-\begin{center}
+    \begin{center}
 % List of all institutions:
 \centerline{{\small ${}^1$Center for Biomedical Computing, Simula Research Laboratory}}
 \centerline{{\small ${}^2$Department of Informatics, University of Oslo}}
@@ -30082,65 +29099,20 @@ Fourth Inst\inst{7}}
 \centerline{{\small ${}^6$Third Inst, Elsewhere}}
 \centerline{{\small ${}^7$Fourth Inst}}
 \end{center}
-% #endif
+
 % ----------------- end author(s) -------------------------
 
-
-% #if LATEX_HEADING == "traditional"
-\date{Jan 32, 2100}
-\maketitle
-% #elif LATEX_HEADING == "beamer"
-\date{Jan 32, 2100
-% <titlepage figure>
-}
-% #elif LATEX_HEADING == "titlepage"
-
-\ \\ [10mm]
-{\large\textsf{Jan 32, 2100}}
-
-\end{center}
-\vfill
-\clearpage
-
-% #else
 \begin{center}
 Jan 32, 2100
 \end{center}
 
 \vspace{1cm}
 
-% #endif
 
-
-% #if LATEX_HEADING != "beamer"
 \tableofcontents
-% #if LIST_OF_EXERCISES == "loe"
-\clearemptydoublepage
-\listofexercises
-\clearemptydoublepage
-% #endif
-
-
-% #if LATEX_STYLE == "Springer_lncse"
-\contentsline{chapter}{\refname}{9999}{chapter.Bib}
-\contentsline{chapter}{Index}{9999}{chapter.Index}
-% #endif
-
-
-% #ifdef TODONOTES
-\listoftodos[List of inline comments]
-% #endif
 
 
 \vspace{1cm} % after toc
-% #endif
-
-% #if LATEX_STYLE == "Springer_T2"
-\mymainmatter
-% #elif LATEX_STYLE == "Springer_lncse"
-\mainmatter
-% #endif
-
 
 
 
@@ -30155,12 +29127,7 @@ plain, homemade {\LaTeX} (from Doconce).
 
 % Just a comment
 
-
-% #if LATEX_HEADING == "Springer_collection"
-\abstract{
-% #else
 \begin{abstract}
-% #endif
 This is a document with many test constructions for doconce syntax.
 It was used heavily for the development and kept for testing
 numerous constructions, also special and less common cases.
@@ -30170,11 +29137,7 @@ is part of the abstract.
 
 % Cannot demonstrate chapter headings since abstract and chapter
 % is mutually exclusive in {\LaTeX}
-% #if LATEX_HEADING == "Springer_collection"
-}
-% #else
 \end{abstract}
-% #endif
 
 
 
@@ -30885,11 +29848,6 @@ between there we have Exercise~\ref{exer:some:formula}.
 \refstepcounter{doconceexercisecounter}
 
 \subsection*{Problem \thedoconceexercisecounter: Flip a Coin}
-% #if LIST_OF_EXERCISES == "toc"
-\addcontentsline{toc}{subsection}{\thedoconceexercisecounter: Flip a Coin}
-% #elif LIST_OF_EXERCISES == "loe"
-\addcontentsline{loe}{doconceexercise}{Problem \thedoconceexercisecounter: Flip a Coin}
-% #endif
 
 \label{demo:ex:1}
 % keywords = random numbers; Monte Carlo simulation
@@ -30953,11 +29911,6 @@ exercises.
 \refstepcounter{doconceexercisecounter}
 
 \subsection*{Project \thedoconceexercisecounter: Compute a Probability}
-% #if LIST_OF_EXERCISES == "toc"
-\addcontentsline{toc}{subsection}{\thedoconceexercisecounter: Compute a Probability}
-% #elif LIST_OF_EXERCISES == "loe"
-\addcontentsline{loe}{doconceexercise}{Project \thedoconceexercisecounter: Compute a Probability}
-% #endif
 
 \label{demo:ex:2}
 
@@ -30999,11 +29952,6 @@ compute the probability as $M/N$.
 \refstepcounter{doconceexercisecounter}
 
 \subsection*{Project \thedoconceexercisecounter: Explore Distributions of Random Circles}
-% #if LIST_OF_EXERCISES == "toc"
-\addcontentsline{toc}{subsection}{\thedoconceexercisecounter: Explore Distributions of Random Circles}
-% #elif LIST_OF_EXERCISES == "loe"
-\addcontentsline{loe}{doconceexercise}{Project \thedoconceexercisecounter: Explore Distributions of Random Circles}
-% #endif
 
 \label{proj:circle1}
 
@@ -31084,11 +30032,6 @@ and give some perspectives.
 \refstepcounter{doconceexercisecounter}
 
 \subsection*{Exercise \thedoconceexercisecounter: Determine some Distance}
-% #if LIST_OF_EXERCISES == "toc"
-\addcontentsline{toc}{subsection}{\thedoconceexercisecounter: Determine some Distance}
-% #elif LIST_OF_EXERCISES == "loe"
-\addcontentsline{loe}{doconceexercise}{Exercise \thedoconceexercisecounter: Determine some Distance}
-% #endif
 
 \label{exer:dist}
 
@@ -31249,11 +30192,6 @@ With some text, before we continue with exercises.
 \refstepcounter{doconceexercisecounter}
 
 \subsection*{Exercise \thedoconceexercisecounter: Make references to projects and problems}
-% #if LIST_OF_EXERCISES == "toc"
-\addcontentsline{toc}{subsection}{\thedoconceexercisecounter: Make references to projects and problems}
-% #elif LIST_OF_EXERCISES == "loe"
-\addcontentsline{loe}{doconceexercise}{Exercise \thedoconceexercisecounter: Make references to projects and problems}
-% #endif
 
 \label{exer:some:formula}
 
@@ -31283,11 +30221,6 @@ hint, etc.):
 \refstepcounter{doconceexercisecounter}
 
 \subsection*{Project \thedoconceexercisecounter: References to Project~\ref{demo:ex:2} in a heading works for latex}
-% #if LIST_OF_EXERCISES == "toc"
-\addcontentsline{toc}{subsection}{\thedoconceexercisecounter: References to Project~\ref{demo:ex:2} in a heading works for latex}
-% #elif LIST_OF_EXERCISES == "loe"
-\addcontentsline{loe}{doconceexercise}{Project \thedoconceexercisecounter: References to Project~\ref{demo:ex:2} in a heading works for latex}
-% #endif
 
 \label{exer:you}
 
@@ -31950,7 +30883,10 @@ system doconce split_html testdoc.html
 system doconce format html testdoc.do.txt --pygments_html_linenos --html_style=solarized --pygments_html_style=emacs $ex --html_output=demo_testdoc
 
 system doconce format latex testdoc.do.txt $ex SOMEVAR=True --skip_inline_comments
-system doconce format pdflatex testdoc.do.txt --device=paper $ex --latex_double_hyphen --latex_index_in_margin --latex_no_program_footnotelink
+system doconce format pdflatex testdoc.do.txt --device=paper $ex --latex_double_hyphen --latex_index_in_margin --latex_no_program_footnotelink --latex_title_layout=titlepage --latex_papersize=a4 --latex_line_numbers --latex_colored_table_rows=blue --latex_fancy_header --latex_section_headings=blue --latex_labels_in_margin --latex_double_spacing --latex_todonotes --latex_list_of_exercises=loe --latex_font=palatino
+# --latex_paper=a4 triggers summary environment to be smaller paragraph
+# within the text (fine for proposals or articles).
+
 system doconce latex_exercise_toc testdoc
 
 # doconce replace does not work well with system bash func above without quotes
@@ -31965,9 +30901,7 @@ doconce replace '% end theorem' '\end{theorem}' testdoc.p.tex
 doconce replace Newton--Cotes Newton-Cotes testdoc.p.tex
 doconce replace --examples_as__exercises $ex testdoc.p.tex
 
-# A4PAPER trigger summary environment to be smaller paragraph
-# within the text (fine for proposals or articles).
-system ptex2tex -DMINTED -DLATEX_HEADING=titlepage -DA4PAPER -DTODONOTES -DLINENUMBERS -DCOLORED_TABLE_ROWS=blue -DFANCY_HEADER -DSECTION_HEADINGS=blue -DLABELS_IN_MARGIN -DDOUBLE_SPACING -DLIST_OF_EXERCISES=loe testdoc
+system ptex2tex -DMINTED testdoc
 
 # test that pdflatex works
 system pdflatex -shell-escape testdoc
@@ -31980,9 +30914,7 @@ pdflatex -shell-escape testdoc
 cp testdoc.tex testdoc.tex_ptex2tex
 # testdoc.tex_ptex2tex corresponds to testdoc.pdf
 
-# -DBOOK will not work for latex/pdflatex since we have an abstract,
-# but here we just use the translated text for testing, not latex compiling
-system doconce ptex2tex testdoc -DBOOK -DPALATINO sys=\begin{quote}\begin{Verbatim}@\end{Verbatim}\end{quote} pypro=ans:nt envir=minted > testdoc.tex_doconce_ptex2tex
+system doconce ptex2tex testdoc sys=\begin{quote}\begin{Verbatim}@\end{Verbatim}\end{quote} pypro=ans:nt envir=minted > testdoc.tex_doconce_ptex2tex
 echo "----------- end of doconce ptex2tex output ----------------" >> testdoc.tex_doconce_ptex2tex
 cat testdoc.tex >> testdoc.tex_doconce_ptex2tex
 
@@ -32009,8 +30941,8 @@ system doconce format ipynb testdoc.do.txt $ex
 system doconce format gwiki testdoc.do.txt --skip_inline_comments MYVAR1=3 MYVAR2='a string' $ex
 
 # Test pandoc: from latex to markdown, from markdown to html
-system doconce format latex testdoc.do.txt $ex
-system doconce ptex2tex testdoc -DBOOK -DLATEX_HEADING=traditional
+system doconce format latex testdoc.do.txt $ex --latex_title_layout=std
+system doconce ptex2tex testdoc
 
 #doconce subst -s 'And here is a system of equations with labels.+?\\section' '\\section' testdoc.tex
 # pandoc cannot work well with \Verb, needs \verb
@@ -32045,16 +30977,16 @@ system doconce slides_html slides1 deck --html_slide_type=sandstone.firefox
 cp slides1.html slides1_deck.html
 /bin/ls -R deck.js >> slides1_deck.html
 
-system doconce format pdflatex slides1
-system doconce ptex2tex slides1 -DLATEX_HEADING=beamer
+system doconce format pdflatex slides1 --latex_title_layout=beamer
+system doconce ptex2tex slides1
 system doconce slides_beamer slides1
 
 system doconce format html slides2 --pygments_html_style=emacs
 system doconce slides_html slides2 reveal --html_slide_type=beigesmall
 cp slides2.html slides2_reveal.html
 
-system doconce format pdflatex slides2
-system doconce ptex2tex slides2 -DLATEX_HEADING=beamer envir=minted
+system doconce format pdflatex slides2 --latex_title_layout=beamer
+system doconce ptex2tex slides2 envir=minted
 system doconce slides_beamer slides2
 
 system doconce format html slides3 --pygments_html_style=emacs SLIDE_TYPE=reveal SLIDE_THEME=beigesmall
@@ -32062,8 +30994,8 @@ system doconce slides_html slides3 reveal --html_slide_type=beigesmall
 cp slides3.html slides3_reveal.html
 
 theme=red3
-system doconce format pdflatex slides3 SLIDE_TYPE=beamer SLIDE_THEME=$theme
-system doconce ptex2tex slides3 -DLATEX_HEADING=beamer envir=minted
+system doconce format pdflatex slides3 SLIDE_TYPE=beamer SLIDE_THEME=$theme --latex_title_layout=beamer
+system doconce ptex2tex slides3 envir=minted
 system doconce slides_beamer slides3 --beamer_slide_theme=$theme
 
 system doconce format html slides1 --pygments_html_style=emacs
@@ -33183,8 +32115,8 @@ v(t) - 1 &amp;=&amp; \frac{du}{dt} \label{eq3c}
 %% (The ptex2tex program: http://code.google.com/p/ptex2tex)
 %% Many preprocess options can be added to ptex2tex or doconce ptex2tex
 %%
-%%      ptex2tex -DMINTED -DPALATINO -DA6PAPER -DLATEX_HEADING=traditional myfile
-%%      doconce ptex2tex myfile -DLATEX_HEADING=titlepage envir=minted
+%%      ptex2tex -DMINTED myfile
+%%      doconce ptex2tex myfile envir=minted
 %%
 %% ptex2tex will typeset code environments according to a global or local
 %% .ptex2tex.cfg configure file. doconce ptex2tex will typeset code
@@ -33193,74 +32125,17 @@ v(t) - 1 &amp;=&amp; \frac{du}{dt} \label{eq3c}
 %% minted style without needing -DMINTED.
 % #endif
 
-% #ifndef LATEX_STYLE
-% #define LATEX_STYLE "std"
-% #endif
-
-% #ifndef LATEX_HEADING
-% #define LATEX_HEADING "doconce_heading"
-% #endif
-
-% #ifndef PREAMBLE
-% #if LATEX_HEADING == "Springer_collection"
-% #undef PREAMBLE
-% #else
 % #define PREAMBLE
-% #endif
-% #endif
-
 
 % #ifdef PREAMBLE
 %-------------------- begin preamble ----------------------
-% #if LATEX_STYLE == "std"
 
 \documentclass[%
 twoside,                 % oneside: electronic viewing, twoside: printing
 final,                   % or draft (marks overfull hboxes, figures with paths)
 10pt]{article}
 
-% #elif LATEX_STYLE == "Springer_lncse"
-% Style: Lecture Notes in Computational Science and Engineering (Springer)
-\documentclass[envcountsect,open=right]{lncse}
-\pagestyle{headings}
-% #elif LATEX_STYLE == "Springer_T2"
-% Style: T2 (Springer)
-% Use svmono.cls with doconce modifications for bibliography
-\documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmonodo}
-
-% Use t2.sty with doconce modifications
-\usepackage{t2do}
-\special{papersize=193mm,260mm}
-
-% #elif LATEX_STYLE == "Springer_llcse"
-% Style: Lecture Notes in Computer Science (Springer)
-\documentclass[oribib]{llncs}
-% #elif LATEX_STYLE == "Koma_Script"
-% Style: Koma-Script
-\documentclass[10pt]{scrartcl}
-% #elif LATEX_STYLE == "siamltex"
-% Style: SIAM LaTeX2e
-\documentclass[leqno]{siamltex}
-% #elif LATEX_STYLE == "siamltexmm"
-% Style: SIAM LaTeX2e multimedia
-\documentclass[leqno]{siamltexmm}
-% #endif
-
 \listfiles               % print all files needed to compile this document
-
-% #ifdef A4PAPER
-\usepackage[a4paper]{geometry}
-% #endif
-% #ifdef A6PAPER
-% a6paper is suitable for mobile devices
-\usepackage[%
-  a6paper,
-  text={90mm,130mm},
-  inner={5mm},           % inner margin (two sided documents)
-  top=5mm,
-  headsep=4mm
-  ]{geometry}
-% #endif
 
 \usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
@@ -33286,16 +32161,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
-% #ifdef HELVETICA
-% Set helvetica as the default font family:
-\RequirePackage{helvet}
-\renewcommand\familydefault{phv}
-% #endif
-% #ifdef PALATINO
-% Set palatino as the default font family:
-\usepackage[sc]{mathpazo}    % Palatino fonts
-\linespread{1.05}            % Palatino needs extra line spread to look nice
-% #endif
+
 % #endif
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
@@ -33322,105 +32188,10 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \clubpenalty = 10000
 \widowpenalty = 10000
 
-% #ifndef SECTION_HEADINGS
-% #define SECTION_HEADINGS "std"
-% #else
-% http://www.ctex.org/documents/packages/layout/titlesec.pdf
-\usepackage[compact]{titlesec}  % reduce the spacing above/below the heading
-% #endif
-% #if SECTION_HEADINGS == "blue"
-% --- section/subsection headings with blue color ---
-\definecolor{seccolor}{cmyk}{.9,.5,0,.35}  % siamltexmm.sty section color
-\titleformat{name=\section}
-{\color{seccolor}\normalfont\Large\bfseries}
-{\color{seccolor}\thesection}{1em}{}
-\titleformat{name=\subsection}
-{\color{seccolor}\normalfont\large\bfseries}
-{\color{seccolor}\thesubsection}{1em}{}
-\titleformat{name=\paragraph}[runin]
-{\color{seccolor}\normalfont\normalsize\bfseries}
-{}{}{\indent}
-% #ifdef FANCY_HEADER
-% let the header have a thick gray hrule with section and page in blue above
-\renewcommand{\headrulewidth}{0.4pt}
-\renewcommand{\headrule}{{\color{gray!50}%
-\hrule width\headwidth height\headrulewidth \vskip-\headrulewidth}}
-\fancyhead[LE,RO]{{\color{seccolor}\rightmark}} %section
-\fancyhead[RE,LO]{{\color{seccolor}\thepage}}
-% #endif
-% #elif SECTION_HEADINGS == "strongblue"
-% --- section/subsection headings with a strong blue color ---
-\definecolor{seccolor}{rgb}{0.2,0.2,0.8}
-\titleformat{name=\section}
-{\color{seccolor}\normalfont\Large\bfseries}
-{\color{seccolor}\thesection}{1em}{}
-\titleformat{name=\subsection}
-{\color{seccolor}\normalfont\large\bfseries}
-{\color{seccolor}\thesubsection}{1em}{}
-\titleformat{name=\paragraph}[runin]
-{\color{seccolor}\normalfont\normalsize\bfseries}
-{}{}{\indent}
-% #elif SECTION_HEADINGS == "gray"
-% --- section/subsection headings with white text on gray background ---
-\titleformat{name=\section}[block]
-  {\sffamily\Large}{}{0pt}{\colorsection}
-\titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip}
-
-\newcommand{\colorsection}[1]{%
-  \colorbox{gray!50}{{\color{white}\thesection\ #1}}}
-
-\titleformat{name=\subsection}[block]
-  {\sffamily\large}{}{0pt}{\colorsubsection}
-\titlespacing*{\subsection}{0pt}{\baselineskip}{\baselineskip}
-
-\newcommand{\colorsubsection}[1]{%
-  \colorbox{gray!50}{{\color{white}\thesubsection\ #1}}}
-% #elif SECTION_HEADINGS == "gray-wide"
-% --- section/subsection headings with white text on wide gray background ---
-\titleformat{name=\section}[block]
-  {\sffamily\Large}{}{0pt}{\colorsection}
-\titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip}
-
-\newcommand{\colorsection}[1]{%
-  \colorbox{gray!50}{\parbox{\dimexpr\textwidth-2\fboxsep}%
-           {\color{white}\thesection\ #1}}}
-
-\titleformat{name=\subsection}[block]
-  {\sffamily\large}{}{0pt}{\colorsubsection}
-\titlespacing*{\subsection}{0pt}{\baselineskip}{\baselineskip}
-
-\newcommand{\colorsubsection}[1]{%
-  \colorbox{gray!50}{\parbox{\dimexpr\textwidth-2\fboxsep}%
-           {\color{white}\thesubsection\ #1}}}
-% #endif
-
-% #ifdef COLORED_TABLE_ROWS
-% color every two table rows
-\let\oldtabular\tabular
-\let\endoldtabular\endtabular
-% #if COLORED_TABLE_ROWS not in ("gray", "blue")
-% #define COLORED_TABLE_ROWS gray
-% #endif
-% #else
-% #define COLORED_TABLE_ROWS no
-% #endif
-% #if COLORED_TABLE_ROWS == "gray"
-\definecolor{rowgray}{gray}{0.9}
-\renewenvironment{tabular}{\rowcolors{2}{white}{rowgray}%
-\oldtabular}{\endoldtabular}
-% #elif COLORED_TABLE_ROWS == "blue"
-\definecolor{appleblue}{rgb}{0.93,0.95,1.0}  % Apple blue
-\renewenvironment{tabular}{\rowcolors{2}{white}{appleblue}%
-\oldtabular}{\endoldtabular}
-% #endif
-
-
-% #if LATEX_STYLE not in ("Koma_Script", "Springer_T2")
 % Make sure blank even-numbered pages before new chapters are
 % totally blank with no header
 \newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
 %\let\cleardoublepage\clearemptydoublepage % caused error in the toc
-% #endif
 
 % --- end of standard preamble for documents ---
 
@@ -33443,56 +32214,8 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 
 
-% #if LATEX_STYLE in ("Springer_T2", "Springer_lncse")
-\frontmatter
-\setcounter{page}{3}
-\pagestyle{headings}
-% #endif
-
-% #if LATEX_STYLE == "Springer_lncse"
-% With hyperref loaded, \contentsline needs 3 args
-%\contentsline{chapter}{Bibliography}{829}{chapter.Bib}
-%\contentsline{chapter}{Index}{831}{chapter.Index}
-% #endif
-
 % ----------------- title -------------------------
 
-% #if LATEX_HEADING == "traditional"
-
-% #if SECTION_HEADINGS in ("blue", "strongblue")
-\title{{\color{seccolor} How various formats can deal with {\LaTeX} math}}
-% #else
-\title{How various formats can deal with {\LaTeX} math}
-% #endif
-
-% #elif LATEX_HEADING == "titlepage"
-
-\thispagestyle{empty}
-\hbox{\ \ }
-\vfill
-\begin{center}
-{\huge{\bfseries{
-\begin{spacing}{1.25}
-% #if SECTION_HEADINGS in ("blue", "strongblue")
-{\color{seccolor}\rule{\linewidth}{0.5mm}} \\[0.4cm]
-{\color{seccolor}How various formats can deal with {\LaTeX} math}
-\\[0.4cm] {\color{seccolor}\rule{\linewidth}{0.5mm}} \\[1.5cm]
-% #else
-{\rule{\linewidth}{0.5mm}} \\[0.4cm]
-{How various formats can deal with {\LaTeX} math}
-\\[0.4cm] {\rule{\linewidth}{0.5mm}} \\[1.5cm]
-% #endif
-\end{spacing}
-}}}
-
-% #elif LATEX_HEADING == "Springer_collection"
-\title*{How various formats can deal with {\LaTeX} math}
-% Short version of title:
-\titlerunning{How various formats can deal with {\LaTeX} math}
-
-% #elif LATEX_HEADING == "beamer"
-\title{How various formats can deal with {\LaTeX} math}
-% #else
 \thispagestyle{empty}
 
 \begin{center}
@@ -33502,66 +32225,24 @@ How various formats can deal with {\LaTeX} math
 \end{spacing}
 }
 \end{center}
-% #endif
 
 % ----------------- author(s) -------------------------
-% #if LATEX_HEADING == "traditional"
-\author{HPL}
-
-% #elif LATEX_HEADING == "titlepage"
-\vspace{1.3cm}
-
-    {\Large\textsf{HPL${}^{}$}}\\ [3mm]
-    
-\ \\ [2mm]
-
-% #elif LATEX_HEADING == "Springer_collection"
-
-\author{HPL}
-% Short version of authors:
-%\authorrunning{...}
-\institute{HPL}
-
-% #elif LATEX_HEADING == "beamer"
-\author{HPL\inst{}}
-\institute{}
-% #else
 
 \begin{center}
 {\bf HPL${}^{}$} \\ [0mm]
 \end{center}
 
-\begin{center}
+    \begin{center}
 % List of all institutions:
 \end{center}
-% #endif
+
 % ----------------- end author(s) -------------------------
 
-
-% #if LATEX_HEADING == "traditional"
-\date{Jan 32, 2100}
-\maketitle
-% #elif LATEX_HEADING == "beamer"
-\date{Jan 32, 2100
-% <titlepage figure>
-}
-% #elif LATEX_HEADING == "titlepage"
-
-\ \\ [10mm]
-{\large\textsf{Jan 32, 2100}}
-
-\end{center}
-\vfill
-\clearpage
-
-% #else
 \begin{center}
 Jan 32, 2100
 \end{center}
 
 \vspace{1cm}
-
-% #endif
 
 
 This document is translated to the format \textbf{pdflatex}. The purpose is to
@@ -35143,7 +33824,7 @@ C++:
 <!-- code=c++ (from !bc cpppro) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
 
-<span style="color: #B00040">int</span> main()
+<span style="color: #B00040">int</span> <span style="color: #0000FF">main</span>()
 {
    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">&quot;Sample output&quot;</span> <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
    <span style="color: #008000; font-weight: bold">return</span> <span style="color: #666666">0</span>
@@ -35195,11 +33876,11 @@ System call:
 <p>
 
 <!-- code=console (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #808080">Terminal&gt; mkdir test</span>
-<span style="color: #808080">Terminal&gt; cd test</span>
-<span style="color: #808080">Terminal&gt; myprog -f</span>
-<span style="color: #808080">output1</span>
-<span style="color: #808080">output2</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; mkdir test</span>
+<span style="color: #888888">Terminal&gt; cd test</span>
+<span style="color: #888888">Terminal&gt; myprog -f</span>
+<span style="color: #888888">output1</span>
+<span style="color: #888888">output2</span>
 </pre></div>
 <p>
 It is time to test <code>verbatim inline font</code> especially with <code>a newline
@@ -35224,11 +33905,11 @@ the previous blocks with line breaks.
 <p>
 
 <!-- code=console (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #808080">Terminal&gt; python -c &#39;print &quot;Testing\noutput\nfrom\nPython.&quot;&#39;</span>
-<span style="color: #808080">Testing</span>
-<span style="color: #808080">output</span>
-<span style="color: #808080">from</span>
-<span style="color: #808080">Python.</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; python -c &#39;print &quot;Testing\noutput\nfrom\nPython.&quot;&#39;</span>
+<span style="color: #888888">Testing</span>
+<span style="color: #888888">output</span>
+<span style="color: #888888">from</span>
+<span style="color: #888888">Python.</span>
 </pre></div>
 
 <h3>Subsection 2: Testing figures <a name="subsec:ex"></a></h3>
@@ -38395,8 +37076,8 @@ in a separate document: ``admon.do.txt``.
 %% (The ptex2tex program: http://code.google.com/p/ptex2tex)
 %% Many preprocess options can be added to ptex2tex or doconce ptex2tex
 %%
-%%      ptex2tex -DMINTED -DPALATINO -DA6PAPER -DLATEX_HEADING=traditional myfile
-%%      doconce ptex2tex myfile -DLATEX_HEADING=titlepage envir=minted
+%%      ptex2tex -DMINTED myfile
+%%      doconce ptex2tex myfile envir=minted
 %%
 %% ptex2tex will typeset code environments according to a global or local
 %% .ptex2tex.cfg configure file. doconce ptex2tex will typeset code
@@ -38405,74 +37086,17 @@ in a separate document: ``admon.do.txt``.
 %% minted style without needing -DMINTED.
 % #endif
 
-% #ifndef LATEX_STYLE
-% #define LATEX_STYLE "std"
-% #endif
-
-% #ifndef LATEX_HEADING
-% #define LATEX_HEADING "doconce_heading"
-% #endif
-
-% #ifndef PREAMBLE
-% #if LATEX_HEADING == "Springer_collection"
-% #undef PREAMBLE
-% #else
 % #define PREAMBLE
-% #endif
-% #endif
-
 
 % #ifdef PREAMBLE
 %-------------------- begin preamble ----------------------
-% #if LATEX_STYLE == "std"
 
 \documentclass[%
 twoside,                 % oneside: electronic viewing, twoside: printing
 final,                   % or draft (marks overfull hboxes, figures with paths)
 10pt]{article}
 
-% #elif LATEX_STYLE == "Springer_lncse"
-% Style: Lecture Notes in Computational Science and Engineering (Springer)
-\documentclass[envcountsect,open=right]{lncse}
-\pagestyle{headings}
-% #elif LATEX_STYLE == "Springer_T2"
-% Style: T2 (Springer)
-% Use svmono.cls with doconce modifications for bibliography
-\documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmonodo}
-
-% Use t2.sty with doconce modifications
-\usepackage{t2do}
-\special{papersize=193mm,260mm}
-
-% #elif LATEX_STYLE == "Springer_llcse"
-% Style: Lecture Notes in Computer Science (Springer)
-\documentclass[oribib]{llncs}
-% #elif LATEX_STYLE == "Koma_Script"
-% Style: Koma-Script
-\documentclass[10pt]{scrartcl}
-% #elif LATEX_STYLE == "siamltex"
-% Style: SIAM LaTeX2e
-\documentclass[leqno]{siamltex}
-% #elif LATEX_STYLE == "siamltexmm"
-% Style: SIAM LaTeX2e multimedia
-\documentclass[leqno]{siamltexmm}
-% #endif
-
 \listfiles               % print all files needed to compile this document
-
-% #ifdef A4PAPER
-\usepackage[a4paper]{geometry}
-% #endif
-% #ifdef A6PAPER
-% a6paper is suitable for mobile devices
-\usepackage[%
-  a6paper,
-  text={90mm,130mm},
-  inner={5mm},           % inner margin (two sided documents)
-  top=5mm,
-  headsep=4mm
-  ]{geometry}
-% #endif
 
 \usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
@@ -38501,16 +37125,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
-% #ifdef HELVETICA
-% Set helvetica as the default font family:
-\RequirePackage{helvet}
-\renewcommand\familydefault{phv}
-% #endif
-% #ifdef PALATINO
-% Set palatino as the default font family:
-\usepackage[sc]{mathpazo}    % Palatino fonts
-\linespread{1.05}            % Palatino needs extra line spread to look nice
-% #endif
+
 % #endif
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
@@ -38575,105 +37190,10 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \clubpenalty = 10000
 \widowpenalty = 10000
 
-% #ifndef SECTION_HEADINGS
-% #define SECTION_HEADINGS "std"
-% #else
-% http://www.ctex.org/documents/packages/layout/titlesec.pdf
-\usepackage[compact]{titlesec}  % reduce the spacing above/below the heading
-% #endif
-% #if SECTION_HEADINGS == "blue"
-% --- section/subsection headings with blue color ---
-\definecolor{seccolor}{cmyk}{.9,.5,0,.35}  % siamltexmm.sty section color
-\titleformat{name=\section}
-{\color{seccolor}\normalfont\Large\bfseries}
-{\color{seccolor}\thesection}{1em}{}
-\titleformat{name=\subsection}
-{\color{seccolor}\normalfont\large\bfseries}
-{\color{seccolor}\thesubsection}{1em}{}
-\titleformat{name=\paragraph}[runin]
-{\color{seccolor}\normalfont\normalsize\bfseries}
-{}{}{\indent}
-% #ifdef FANCY_HEADER
-% let the header have a thick gray hrule with section and page in blue above
-\renewcommand{\headrulewidth}{0.4pt}
-\renewcommand{\headrule}{{\color{gray!50}%
-\hrule width\headwidth height\headrulewidth \vskip-\headrulewidth}}
-\fancyhead[LE,RO]{{\color{seccolor}\rightmark}} %section
-\fancyhead[RE,LO]{{\color{seccolor}\thepage}}
-% #endif
-% #elif SECTION_HEADINGS == "strongblue"
-% --- section/subsection headings with a strong blue color ---
-\definecolor{seccolor}{rgb}{0.2,0.2,0.8}
-\titleformat{name=\section}
-{\color{seccolor}\normalfont\Large\bfseries}
-{\color{seccolor}\thesection}{1em}{}
-\titleformat{name=\subsection}
-{\color{seccolor}\normalfont\large\bfseries}
-{\color{seccolor}\thesubsection}{1em}{}
-\titleformat{name=\paragraph}[runin]
-{\color{seccolor}\normalfont\normalsize\bfseries}
-{}{}{\indent}
-% #elif SECTION_HEADINGS == "gray"
-% --- section/subsection headings with white text on gray background ---
-\titleformat{name=\section}[block]
-  {\sffamily\Large}{}{0pt}{\colorsection}
-\titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip}
-
-\newcommand{\colorsection}[1]{%
-  \colorbox{gray!50}{{\color{white}\thesection\ #1}}}
-
-\titleformat{name=\subsection}[block]
-  {\sffamily\large}{}{0pt}{\colorsubsection}
-\titlespacing*{\subsection}{0pt}{\baselineskip}{\baselineskip}
-
-\newcommand{\colorsubsection}[1]{%
-  \colorbox{gray!50}{{\color{white}\thesubsection\ #1}}}
-% #elif SECTION_HEADINGS == "gray-wide"
-% --- section/subsection headings with white text on wide gray background ---
-\titleformat{name=\section}[block]
-  {\sffamily\Large}{}{0pt}{\colorsection}
-\titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip}
-
-\newcommand{\colorsection}[1]{%
-  \colorbox{gray!50}{\parbox{\dimexpr\textwidth-2\fboxsep}%
-           {\color{white}\thesection\ #1}}}
-
-\titleformat{name=\subsection}[block]
-  {\sffamily\large}{}{0pt}{\colorsubsection}
-\titlespacing*{\subsection}{0pt}{\baselineskip}{\baselineskip}
-
-\newcommand{\colorsubsection}[1]{%
-  \colorbox{gray!50}{\parbox{\dimexpr\textwidth-2\fboxsep}%
-           {\color{white}\thesubsection\ #1}}}
-% #endif
-
-% #ifdef COLORED_TABLE_ROWS
-% color every two table rows
-\let\oldtabular\tabular
-\let\endoldtabular\endtabular
-% #if COLORED_TABLE_ROWS not in ("gray", "blue")
-% #define COLORED_TABLE_ROWS gray
-% #endif
-% #else
-% #define COLORED_TABLE_ROWS no
-% #endif
-% #if COLORED_TABLE_ROWS == "gray"
-\definecolor{rowgray}{gray}{0.9}
-\renewenvironment{tabular}{\rowcolors{2}{white}{rowgray}%
-\oldtabular}{\endoldtabular}
-% #elif COLORED_TABLE_ROWS == "blue"
-\definecolor{appleblue}{rgb}{0.93,0.95,1.0}  % Apple blue
-\renewenvironment{tabular}{\rowcolors{2}{white}{appleblue}%
-\oldtabular}{\endoldtabular}
-% #endif
-
-
-% #if LATEX_STYLE not in ("Koma_Script", "Springer_T2")
 % Make sure blank even-numbered pages before new chapters are
 % totally blank with no header
 \newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
 %\let\cleardoublepage\clearemptydoublepage % caused error in the toc
-% #endif
 
 % --- end of standard preamble for documents ---
 
@@ -38696,56 +37216,8 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 
 
-% #if LATEX_STYLE in ("Springer_T2", "Springer_lncse")
-\frontmatter
-\setcounter{page}{3}
-\pagestyle{headings}
-% #endif
-
-% #if LATEX_STYLE == "Springer_lncse"
-% With hyperref loaded, \contentsline needs 3 args
-%\contentsline{chapter}{Bibliography}{829}{chapter.Bib}
-%\contentsline{chapter}{Index}{831}{chapter.Index}
-% #endif
-
 % ----------------- title -------------------------
 
-% #if LATEX_HEADING == "traditional"
-
-% #if SECTION_HEADINGS in ("blue", "strongblue")
-\title{{\color{seccolor} Testing admons}}
-% #else
-\title{Testing admons}
-% #endif
-
-% #elif LATEX_HEADING == "titlepage"
-
-\thispagestyle{empty}
-\hbox{\ \ }
-\vfill
-\begin{center}
-{\huge{\bfseries{
-\begin{spacing}{1.25}
-% #if SECTION_HEADINGS in ("blue", "strongblue")
-{\color{seccolor}\rule{\linewidth}{0.5mm}} \\[0.4cm]
-{\color{seccolor}Testing admons}
-\\[0.4cm] {\color{seccolor}\rule{\linewidth}{0.5mm}} \\[1.5cm]
-% #else
-{\rule{\linewidth}{0.5mm}} \\[0.4cm]
-{Testing admons}
-\\[0.4cm] {\rule{\linewidth}{0.5mm}} \\[1.5cm]
-% #endif
-\end{spacing}
-}}}
-
-% #elif LATEX_HEADING == "Springer_collection"
-\title*{Testing admons}
-% Short version of title:
-\titlerunning{Testing admons}
-
-% #elif LATEX_HEADING == "beamer"
-\title{Testing admons}
-% #else
 \thispagestyle{empty}
 
 \begin{center}
@@ -38755,66 +37227,24 @@ Testing admons
 \end{spacing}
 }
 \end{center}
-% #endif
 
 % ----------------- author(s) -------------------------
-% #if LATEX_HEADING == "traditional"
-\author{hpl}
-
-% #elif LATEX_HEADING == "titlepage"
-\vspace{1.3cm}
-
-    {\Large\textsf{hpl${}^{}$}}\\ [3mm]
-    
-\ \\ [2mm]
-
-% #elif LATEX_HEADING == "Springer_collection"
-
-\author{hpl}
-% Short version of authors:
-%\authorrunning{...}
-\institute{hpl}
-
-% #elif LATEX_HEADING == "beamer"
-\author{hpl\inst{}}
-\institute{}
-% #else
 
 \begin{center}
 {\bf hpl${}^{}$} \\ [0mm]
 \end{center}
 
-\begin{center}
+    \begin{center}
 % List of all institutions:
 \end{center}
-% #endif
+
 % ----------------- end author(s) -------------------------
 
-
-% #if LATEX_HEADING == "traditional"
-\date{Jan 32, 2100}
-\maketitle
-% #elif LATEX_HEADING == "beamer"
-\date{Jan 32, 2100
-% <titlepage figure>
-}
-% #elif LATEX_HEADING == "titlepage"
-
-\ \\ [10mm]
-{\large\textsf{Jan 32, 2100}}
-
-\end{center}
-\vfill
-\clearpage
-
-% #else
 \begin{center}
 Jan 32, 2100
 \end{center}
 
 \vspace{1cm}
-
-% #endif
 
 
 \section{Introduction}
@@ -39203,9 +37633,6 @@ exercises (and problems and projects too).
 %%
 
 
-
-
-
 %-------------------- begin preamble ----------------------
 
 \documentclass[%
@@ -39213,9 +37640,7 @@ twoside,                 % oneside: electronic viewing, twoside: printing
 final,                   % or draft (marks overfull hboxes, figures with paths)
 10pt]{article}
 
-
 \listfiles               % print all files needed to compile this document
-
 
 \usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
@@ -39232,6 +37657,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
+
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
@@ -39365,9 +37791,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \clubpenalty = 10000
 \widowpenalty = 10000
 
-
-
-
 % Make sure blank even-numbered pages before new chapters are
 % totally blank with no header
 \newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
@@ -39393,8 +37816,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 
 
-
-
 % ----------------- title -------------------------
 
 \thispagestyle{empty}
@@ -39413,18 +37834,17 @@ Testing admons
 {\bf hpl${}^{}$} \\ [0mm]
 \end{center}
 
-\begin{center}
+    \begin{center}
 % List of all institutions:
 \end{center}
-% ----------------- end author(s) -------------------------
 
+% ----------------- end author(s) -------------------------
 
 \begin{center}
 Jan 32, 2100
 \end{center}
 
 \vspace{1cm}
-
 
 
 \section{Introduction}
@@ -39811,9 +38231,6 @@ exercises (and problems and projects too).
 %%
 
 
-
-
-
 %-------------------- begin preamble ----------------------
 
 \documentclass[%
@@ -39821,9 +38238,7 @@ twoside,                 % oneside: electronic viewing, twoside: printing
 final,                   % or draft (marks overfull hboxes, figures with paths)
 10pt]{article}
 
-
 \listfiles               % print all files needed to compile this document
-
 
 \usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
@@ -39840,6 +38255,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
+
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
@@ -39980,9 +38396,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \clubpenalty = 10000
 \widowpenalty = 10000
 
-
-
-
 % Make sure blank even-numbered pages before new chapters are
 % totally blank with no header
 \newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
@@ -40008,8 +38421,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 
 
-
-
 % ----------------- title -------------------------
 
 \thispagestyle{empty}
@@ -40028,18 +38439,17 @@ Testing admons
 {\bf hpl${}^{}$} \\ [0mm]
 \end{center}
 
-\begin{center}
+    \begin{center}
 % List of all institutions:
 \end{center}
-% ----------------- end author(s) -------------------------
 
+% ----------------- end author(s) -------------------------
 
 \begin{center}
 Jan 32, 2100
 \end{center}
 
 \vspace{1cm}
-
 
 
 \section{Introduction}
@@ -40426,9 +38836,6 @@ exercises (and problems and projects too).
 %%
 
 
-
-
-
 %-------------------- begin preamble ----------------------
 
 \documentclass[%
@@ -40436,9 +38843,7 @@ twoside,                 % oneside: electronic viewing, twoside: printing
 final,                   % or draft (marks overfull hboxes, figures with paths)
 10pt]{article}
 
-
 \listfiles               % print all files needed to compile this document
-
 
 \usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
@@ -40455,6 +38860,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
+
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
@@ -40518,9 +38924,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \clubpenalty = 10000
 \widowpenalty = 10000
 
-
-
-
 % Make sure blank even-numbered pages before new chapters are
 % totally blank with no header
 \newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
@@ -40546,8 +38949,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 
 
-
-
 % ----------------- title -------------------------
 
 \thispagestyle{empty}
@@ -40566,18 +38967,17 @@ Testing admons
 {\bf hpl${}^{}$} \\ [0mm]
 \end{center}
 
-\begin{center}
+    \begin{center}
 % List of all institutions:
 \end{center}
-% ----------------- end author(s) -------------------------
 
+% ----------------- end author(s) -------------------------
 
 \begin{center}
 Jan 32, 2100
 \end{center}
 
 \vspace{1cm}
-
 
 
 \section{Introduction}
@@ -40964,9 +39364,6 @@ exercises (and problems and projects too).
 %%
 
 
-
-
-
 %-------------------- begin preamble ----------------------
 
 \documentclass[%
@@ -40974,9 +39371,7 @@ twoside,                 % oneside: electronic viewing, twoside: printing
 final,                   % or draft (marks overfull hboxes, figures with paths)
 10pt]{article}
 
-
 \listfiles               % print all files needed to compile this document
-
 
 \usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
@@ -40993,6 +39388,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
+
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
@@ -41068,9 +39464,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \clubpenalty = 10000
 \widowpenalty = 10000
 
-
-
-
 % Make sure blank even-numbered pages before new chapters are
 % totally blank with no header
 \newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
@@ -41096,8 +39489,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 
 
-
-
 % ----------------- title -------------------------
 
 \thispagestyle{empty}
@@ -41116,18 +39507,17 @@ Testing admons
 {\bf hpl${}^{}$} \\ [0mm]
 \end{center}
 
-\begin{center}
+    \begin{center}
 % List of all institutions:
 \end{center}
-% ----------------- end author(s) -------------------------
 
+% ----------------- end author(s) -------------------------
 
 \begin{center}
 Jan 32, 2100
 \end{center}
 
 \vspace{1cm}
-
 
 
 \section{Introduction}
@@ -41537,9 +39927,6 @@ exercises (and problems and projects too).
 %%
 
 
-
-
-
 %-------------------- begin preamble ----------------------
 
 \documentclass[%
@@ -41547,9 +39934,7 @@ twoside,                 % oneside: electronic viewing, twoside: printing
 final,                   % or draft (marks overfull hboxes, figures with paths)
 10pt]{article}
 
-
 \listfiles               % print all files needed to compile this document
-
 
 \usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
@@ -41566,6 +39951,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
+
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
@@ -41711,9 +40097,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \clubpenalty = 10000
 \widowpenalty = 10000
 
-
-
-
 % Make sure blank even-numbered pages before new chapters are
 % totally blank with no header
 \newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
@@ -41739,8 +40122,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 
 
-
-
 % ----------------- title -------------------------
 
 \thispagestyle{empty}
@@ -41759,18 +40140,17 @@ Testing admons
 {\bf hpl${}^{}$} \\ [0mm]
 \end{center}
 
-\begin{center}
+    \begin{center}
 % List of all institutions:
 \end{center}
-% ----------------- end author(s) -------------------------
 
+% ----------------- end author(s) -------------------------
 
 \begin{center}
 Jan 32, 2100
 \end{center}
 
 \vspace{1cm}
-
 
 
 \section{Introduction}
@@ -42157,9 +40537,6 @@ exercises (and problems and projects too).
 %%
 
 
-
-
-
 %-------------------- begin preamble ----------------------
 
 \documentclass[%
@@ -42167,9 +40544,7 @@ twoside,                 % oneside: electronic viewing, twoside: printing
 final,                   % or draft (marks overfull hboxes, figures with paths)
 10pt]{article}
 
-
 \listfiles               % print all files needed to compile this document
-
 
 \usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
@@ -42186,6 +40561,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
+
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
@@ -42232,9 +40608,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \clubpenalty = 10000
 \widowpenalty = 10000
 
-
-
-
 % Make sure blank even-numbered pages before new chapters are
 % totally blank with no header
 \newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
@@ -42260,8 +40633,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 
 
-
-
 % ----------------- title -------------------------
 
 \thispagestyle{empty}
@@ -42280,18 +40651,17 @@ Testing admons
 {\bf hpl${}^{}$} \\ [0mm]
 \end{center}
 
-\begin{center}
+    \begin{center}
 % List of all institutions:
 \end{center}
-% ----------------- end author(s) -------------------------
 
+% ----------------- end author(s) -------------------------
 
 \begin{center}
 Jan 32, 2100
 \end{center}
 
 \vspace{1cm}
-
 
 
 \section{Introduction}
@@ -42677,9 +41047,6 @@ exercises (and problems and projects too).
 %%
 
 
-
-
-
 %-------------------- begin preamble ----------------------
 
 \documentclass[%
@@ -42687,9 +41054,7 @@ twoside,                 % oneside: electronic viewing, twoside: printing
 final,                   % or draft (marks overfull hboxes, figures with paths)
 10pt]{article}
 
-
 \listfiles               % print all files needed to compile this document
-
 
 \usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
@@ -42706,6 +41071,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
+
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
@@ -42851,9 +41217,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \clubpenalty = 10000
 \widowpenalty = 10000
 
-
-
-
 % Make sure blank even-numbered pages before new chapters are
 % totally blank with no header
 \newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
@@ -42879,8 +41242,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 
 
-
-
 % ----------------- title -------------------------
 
 \thispagestyle{empty}
@@ -42899,18 +41260,17 @@ Testing admons
 {\bf hpl${}^{}$} \\ [0mm]
 \end{center}
 
-\begin{center}
+    \begin{center}
 % List of all institutions:
 \end{center}
-% ----------------- end author(s) -------------------------
 
+% ----------------- end author(s) -------------------------
 
 \begin{center}
 Jan 32, 2100
 \end{center}
 
 \vspace{1cm}
-
 
 
 \section{Introduction}
@@ -43297,9 +41657,6 @@ exercises (and problems and projects too).
 %%
 
 
-
-
-
 %-------------------- begin preamble ----------------------
 
 \documentclass[%
@@ -43307,9 +41664,7 @@ twoside,                 % oneside: electronic viewing, twoside: printing
 final,                   % or draft (marks overfull hboxes, figures with paths)
 10pt]{article}
 
-
 \listfiles               % print all files needed to compile this document
-
 
 \usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
@@ -43326,6 +41681,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
+
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
@@ -43389,9 +41745,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \clubpenalty = 10000
 \widowpenalty = 10000
 
-
-
-
 % Make sure blank even-numbered pages before new chapters are
 % totally blank with no header
 \newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
@@ -43417,8 +41770,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 
 
-
-
 % ----------------- title -------------------------
 
 \thispagestyle{empty}
@@ -43437,18 +41788,17 @@ Testing admons
 {\bf hpl${}^{}$} \\ [0mm]
 \end{center}
 
-\begin{center}
+    \begin{center}
 % List of all institutions:
 \end{center}
-% ----------------- end author(s) -------------------------
 
+% ----------------- end author(s) -------------------------
 
 \begin{center}
 Jan 32, 2100
 \end{center}
 
 \vspace{1cm}
-
 
 
 \section{Introduction}
@@ -55602,8 +53952,8 @@ vertical-slide.scss
 %% (The ptex2tex program: http://code.google.com/p/ptex2tex)
 %% Many preprocess options can be added to ptex2tex or doconce ptex2tex
 %%
-%%      ptex2tex -DMINTED -DPALATINO -DA6PAPER -DLATEX_HEADING=traditional myfile
-%%      doconce ptex2tex myfile -DLATEX_HEADING=titlepage envir=minted
+%%      ptex2tex -DMINTED myfile
+%%      doconce ptex2tex myfile envir=minted
 %%
 %% ptex2tex will typeset code environments according to a global or local
 %% .ptex2tex.cfg configure file. doconce ptex2tex will typeset code
@@ -55612,74 +53962,17 @@ vertical-slide.scss
 %% minted style without needing -DMINTED.
 % #endif
 
-% #ifndef LATEX_STYLE
-% #define LATEX_STYLE "std"
-% #endif
-
-% #ifndef LATEX_HEADING
-% #define LATEX_HEADING "doconce_heading"
-% #endif
-
-% #ifndef PREAMBLE
-% #if LATEX_HEADING == "Springer_collection"
-% #undef PREAMBLE
-% #else
 % #define PREAMBLE
-% #endif
-% #endif
-
 
 % #ifdef PREAMBLE
 %-------------------- begin preamble ----------------------
-% #if LATEX_STYLE == "std"
 
 \documentclass[%
 twoside,                 % oneside: electronic viewing, twoside: printing
 final,                   % or draft (marks overfull hboxes, figures with paths)
 10pt]{article}
 
-% #elif LATEX_STYLE == "Springer_lncse"
-% Style: Lecture Notes in Computational Science and Engineering (Springer)
-\documentclass[envcountsect,open=right]{lncse}
-\pagestyle{headings}
-% #elif LATEX_STYLE == "Springer_T2"
-% Style: T2 (Springer)
-% Use svmono.cls with doconce modifications for bibliography
-\documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmonodo}
-
-% Use t2.sty with doconce modifications
-\usepackage{t2do}
-\special{papersize=193mm,260mm}
-
-% #elif LATEX_STYLE == "Springer_llcse"
-% Style: Lecture Notes in Computer Science (Springer)
-\documentclass[oribib]{llncs}
-% #elif LATEX_STYLE == "Koma_Script"
-% Style: Koma-Script
-\documentclass[10pt]{scrartcl}
-% #elif LATEX_STYLE == "siamltex"
-% Style: SIAM LaTeX2e
-\documentclass[leqno]{siamltex}
-% #elif LATEX_STYLE == "siamltexmm"
-% Style: SIAM LaTeX2e multimedia
-\documentclass[leqno]{siamltexmm}
-% #endif
-
 \listfiles               % print all files needed to compile this document
-
-% #ifdef A4PAPER
-\usepackage[a4paper]{geometry}
-% #endif
-% #ifdef A6PAPER
-% a6paper is suitable for mobile devices
-\usepackage[%
-  a6paper,
-  text={90mm,130mm},
-  inner={5mm},           % inner margin (two sided documents)
-  top=5mm,
-  headsep=4mm
-  ]{geometry}
-% #endif
 
 \usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
@@ -55705,16 +53998,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
-% #ifdef HELVETICA
-% Set helvetica as the default font family:
-\RequirePackage{helvet}
-\renewcommand\familydefault{phv}
-% #endif
-% #ifdef PALATINO
-% Set palatino as the default font family:
-\usepackage[sc]{mathpazo}    % Palatino fonts
-\linespread{1.05}            % Palatino needs extra line spread to look nice
-% #endif
+
 % #endif
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
@@ -55749,49 +54033,9 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 % 3. enable begin{figure}[H] (often leads to ugly pagebreaks)
 %\usepackage{float}\restylefloat{figure}
 
-
-% #ifdef TODONOTES
-% enable inline (doconce) comments to be typeset with the todonotes package
-\usepackage{ifthen,xkeyval,tikz,calc,graphicx}
-\usepackage[shadow]{todonotes}
-\newcommand{\shortinlinecomment}[3]{%
-\todo[size=\normalsize,fancyline,color=orange!40,caption={#3}]{%
- \begin{spacing}{0.75}{\bf #1}: #2\end{spacing}}}
-\newcommand{\longinlinecomment}[3]{%
-\todo[inline,color=orange!40,caption={#3}]{{\bf #1}: #2}}
-% #else
 % newcommands for typesetting inline (doconce) comments
 \newcommand{\shortinlinecomment}[3]{{\bf #1}: \emph{#2}}
 \newcommand{\longinlinecomment}[3]{{\bf #1}: \emph{#2}}
-% #endif
-
-% #ifdef LINENUMBERS
-\usepackage[mathlines]{lineno}  % show line numbers
-\linenumbers
-% #endif
-
-% #ifdef LABELS_IN_MARGIN
-% Display labels for sections, equations, and citations in the margin
-\usepackage{showlabels}
-\showlabels{cite}
-% #endif
-
-% #ifdef DOUBLE_SPACING
-\onehalfspacing    % from setspace package
-%\doublespacing
-% #endif
-
-% #ifdef FANCY_HEADER
-% --- fancyhdr package for fancy headers ---
-\usepackage{fancyhdr}
-\fancyhf{}
-% section name to the left (L) and page number to the right (R)
-% on even (E) pages, the other way around on odd pages
-\fancyhead[LE,RO]{\rightmark} %section
-\fancyhead[RE,LO]{\thepage}
-\pagestyle{fancy}
-% #endif
-
 
 \usepackage[framemethod=TikZ]{mdframed}
 
@@ -55823,105 +54067,10 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \clubpenalty = 10000
 \widowpenalty = 10000
 
-% #ifndef SECTION_HEADINGS
-% #define SECTION_HEADINGS "std"
-% #else
-% http://www.ctex.org/documents/packages/layout/titlesec.pdf
-\usepackage[compact]{titlesec}  % reduce the spacing above/below the heading
-% #endif
-% #if SECTION_HEADINGS == "blue"
-% --- section/subsection headings with blue color ---
-\definecolor{seccolor}{cmyk}{.9,.5,0,.35}  % siamltexmm.sty section color
-\titleformat{name=\section}
-{\color{seccolor}\normalfont\Large\bfseries}
-{\color{seccolor}\thesection}{1em}{}
-\titleformat{name=\subsection}
-{\color{seccolor}\normalfont\large\bfseries}
-{\color{seccolor}\thesubsection}{1em}{}
-\titleformat{name=\paragraph}[runin]
-{\color{seccolor}\normalfont\normalsize\bfseries}
-{}{}{\indent}
-% #ifdef FANCY_HEADER
-% let the header have a thick gray hrule with section and page in blue above
-\renewcommand{\headrulewidth}{0.4pt}
-\renewcommand{\headrule}{{\color{gray!50}%
-\hrule width\headwidth height\headrulewidth \vskip-\headrulewidth}}
-\fancyhead[LE,RO]{{\color{seccolor}\rightmark}} %section
-\fancyhead[RE,LO]{{\color{seccolor}\thepage}}
-% #endif
-% #elif SECTION_HEADINGS == "strongblue"
-% --- section/subsection headings with a strong blue color ---
-\definecolor{seccolor}{rgb}{0.2,0.2,0.8}
-\titleformat{name=\section}
-{\color{seccolor}\normalfont\Large\bfseries}
-{\color{seccolor}\thesection}{1em}{}
-\titleformat{name=\subsection}
-{\color{seccolor}\normalfont\large\bfseries}
-{\color{seccolor}\thesubsection}{1em}{}
-\titleformat{name=\paragraph}[runin]
-{\color{seccolor}\normalfont\normalsize\bfseries}
-{}{}{\indent}
-% #elif SECTION_HEADINGS == "gray"
-% --- section/subsection headings with white text on gray background ---
-\titleformat{name=\section}[block]
-  {\sffamily\Large}{}{0pt}{\colorsection}
-\titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip}
-
-\newcommand{\colorsection}[1]{%
-  \colorbox{gray!50}{{\color{white}\thesection\ #1}}}
-
-\titleformat{name=\subsection}[block]
-  {\sffamily\large}{}{0pt}{\colorsubsection}
-\titlespacing*{\subsection}{0pt}{\baselineskip}{\baselineskip}
-
-\newcommand{\colorsubsection}[1]{%
-  \colorbox{gray!50}{{\color{white}\thesubsection\ #1}}}
-% #elif SECTION_HEADINGS == "gray-wide"
-% --- section/subsection headings with white text on wide gray background ---
-\titleformat{name=\section}[block]
-  {\sffamily\Large}{}{0pt}{\colorsection}
-\titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip}
-
-\newcommand{\colorsection}[1]{%
-  \colorbox{gray!50}{\parbox{\dimexpr\textwidth-2\fboxsep}%
-           {\color{white}\thesection\ #1}}}
-
-\titleformat{name=\subsection}[block]
-  {\sffamily\large}{}{0pt}{\colorsubsection}
-\titlespacing*{\subsection}{0pt}{\baselineskip}{\baselineskip}
-
-\newcommand{\colorsubsection}[1]{%
-  \colorbox{gray!50}{\parbox{\dimexpr\textwidth-2\fboxsep}%
-           {\color{white}\thesubsection\ #1}}}
-% #endif
-
-% #ifdef COLORED_TABLE_ROWS
-% color every two table rows
-\let\oldtabular\tabular
-\let\endoldtabular\endtabular
-% #if COLORED_TABLE_ROWS not in ("gray", "blue")
-% #define COLORED_TABLE_ROWS gray
-% #endif
-% #else
-% #define COLORED_TABLE_ROWS no
-% #endif
-% #if COLORED_TABLE_ROWS == "gray"
-\definecolor{rowgray}{gray}{0.9}
-\renewenvironment{tabular}{\rowcolors{2}{white}{rowgray}%
-\oldtabular}{\endoldtabular}
-% #elif COLORED_TABLE_ROWS == "blue"
-\definecolor{appleblue}{rgb}{0.93,0.95,1.0}  % Apple blue
-\renewenvironment{tabular}{\rowcolors{2}{white}{appleblue}%
-\oldtabular}{\endoldtabular}
-% #endif
-
-
-% #if LATEX_STYLE not in ("Koma_Script", "Springer_T2")
 % Make sure blank even-numbered pages before new chapters are
 % totally blank with no header
 \newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
 %\let\cleardoublepage\clearemptydoublepage % caused error in the toc
-% #endif
 
 % --- end of standard preamble for documents ---
 
@@ -55944,132 +54093,21 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 
 
-% #if LATEX_STYLE in ("Springer_T2", "Springer_lncse")
-\frontmatter
-\setcounter{page}{3}
-\pagestyle{headings}
-% #endif
-
-% #if LATEX_STYLE == "Springer_lncse"
-% With hyperref loaded, \contentsline needs 3 args
-%\contentsline{chapter}{Bibliography}{829}{chapter.Bib}
-%\contentsline{chapter}{Index}{831}{chapter.Index}
-% #endif
-
 % ----------------- title -------------------------
 
-% #if LATEX_HEADING == "traditional"
-
-% #if SECTION_HEADINGS in ("blue", "strongblue")
-\title{{\color{seccolor} On the Technicalities of Scientific Writing Anno 2012: The Doconce Way}}
-% #else
 \title{On the Technicalities of Scientific Writing Anno 2012: The Doconce Way}
-% #endif
-
-% #elif LATEX_HEADING == "titlepage"
-
-\thispagestyle{empty}
-\hbox{\ \ }
-\vfill
-\begin{center}
-{\huge{\bfseries{
-\begin{spacing}{1.25}
-% #if SECTION_HEADINGS in ("blue", "strongblue")
-{\color{seccolor}\rule{\linewidth}{0.5mm}} \\[0.4cm]
-{\color{seccolor}On the Technicalities of Scientific Writing Anno 2012: The Doconce Way}
-\\[0.4cm] {\color{seccolor}\rule{\linewidth}{0.5mm}} \\[1.5cm]
-% #else
-{\rule{\linewidth}{0.5mm}} \\[0.4cm]
-{On the Technicalities of Scientific Writing Anno 2012: The Doconce Way}
-\\[0.4cm] {\rule{\linewidth}{0.5mm}} \\[1.5cm]
-% #endif
-\end{spacing}
-}}}
-
-% #elif LATEX_HEADING == "Springer_collection"
-\title*{On the Technicalities of Scientific Writing Anno 2012: The Doconce Way}
-% Short version of title:
-\titlerunning{On the Technicalities of Scientific Writing Anno 2012: The Doconce Way}
-
-% #elif LATEX_HEADING == "beamer"
-\title{On the Technicalities of Scientific Writing Anno 2012: The Doconce Way}
-% #else
-\thispagestyle{empty}
-
-\begin{center}
-{\LARGE\bf
-\begin{spacing}{1.25}
-On the Technicalities of Scientific Writing Anno 2012: The Doconce Way
-\end{spacing}
-}
-\end{center}
-% #endif
 
 % ----------------- author(s) -------------------------
-% #if LATEX_HEADING == "traditional"
-\author{Hans Petter Langtangen\footnote{Simula Research Laboratory and Univiversity of Oslo.}}
 
-% #elif LATEX_HEADING == "titlepage"
-\vspace{1.3cm}
-
-    {\Large\textsf{Hans Petter Langtangen${}^{1, 2}$}}\\ [3mm]
-    
-\ \\ [2mm]
-
-{\large\textsf{${}^1$Simula Research Laboratory} \\ [1.5mm]}
-{\large\textsf{${}^2$Univiversity of Oslo} \\ [1.5mm]}
-% #elif LATEX_HEADING == "Springer_collection"
-
-\author{Hans Petter Langtangen}
-% Short version of authors:
-%\authorrunning{...}
-\institute{Hans Petter Langtangen\at Simula Research Laboratory and Univiversity of Oslo}
-
-% #elif LATEX_HEADING == "beamer"
 \author{Hans Petter Langtangen\inst{1,2}}
 \institute{Simula Research Laboratory\inst{1}
 \and
 Univiversity of Oslo\inst{2}}
-% #else
-
-\begin{center}
-{\bf Hans Petter Langtangen${}^{1, 2}$} \\ [0mm]
-\end{center}
-
-\begin{center}
-% List of all institutions:
-\centerline{{\small ${}^1$Simula Research Laboratory}}
-\centerline{{\small ${}^2$Univiversity of Oslo}}
-\end{center}
-% #endif
 % ----------------- end author(s) -------------------------
 
-
-% #if LATEX_HEADING == "traditional"
 \date{Jan 32, 2100}
-\maketitle
-% #elif LATEX_HEADING == "beamer"
-\date{Jan 32, 2100
 % <titlepage figure>
 }
-% #elif LATEX_HEADING == "titlepage"
-
-\ \\ [10mm]
-{\large\textsf{Jan 32, 2100}}
-
-\end{center}
-\vfill
-\clearpage
-
-% #else
-\begin{center}
-Jan 32, 2100
-\end{center}
-
-\vspace{1cm}
-
-% #endif
-
 
 % !split
 \subsection{Figure and bullet list}
@@ -56345,21 +54383,19 @@ title (Warning) since no title is specified.
 
 
 
-
-
 % ----------------- title -------------------------
 
 \title{On the Technicalities of Scientific Writing Anno 2012: The Doconce Way}
 
 % ----------------- author(s) -------------------------
+
 \author{Hans Petter Langtangen\inst{1,2}}
 \institute{Simula Research Laboratory\inst{1}
 \and
 Univiversity of Oslo\inst{2}}
 % ----------------- end author(s) -------------------------
 
-
-\date{Jan 32, 2100
+\date{Jan 32, 2100}
 % <titlepage figure>
 }
 
@@ -58430,8 +56466,8 @@ Reveal.initialize({
 %% (The ptex2tex program: http://code.google.com/p/ptex2tex)
 %% Many preprocess options can be added to ptex2tex or doconce ptex2tex
 %%
-%%      ptex2tex -DMINTED -DPALATINO -DA6PAPER -DLATEX_HEADING=traditional myfile
-%%      doconce ptex2tex myfile -DLATEX_HEADING=titlepage envir=minted
+%%      ptex2tex -DMINTED myfile
+%%      doconce ptex2tex myfile envir=minted
 %%
 %% ptex2tex will typeset code environments according to a global or local
 %% .ptex2tex.cfg configure file. doconce ptex2tex will typeset code
@@ -58440,26 +56476,10 @@ Reveal.initialize({
 %% minted style without needing -DMINTED.
 % #endif
 
-% #ifndef LATEX_STYLE
-% #define LATEX_STYLE "std"
-% #endif
-
-% #ifndef LATEX_HEADING
-% #define LATEX_HEADING "doconce_heading"
-% #endif
-
-% #ifndef PREAMBLE
-% #if LATEX_HEADING == "Springer_collection"
-% #undef PREAMBLE
-% #else
 % #define PREAMBLE
-% #endif
-% #endif
-
 
 % #ifdef PREAMBLE
 %-------------------- begin preamble ----------------------
-% #if LATEX_STYLE == "std"
 
 \documentclass[%
 twoside,                 % oneside: electronic viewing, twoside: printing
@@ -58468,48 +56488,7 @@ chapterprefix=true,      % "Chapter" word at beginning of each chapter
 open=right               % start new chapters on odd-numbered pages
 10pt]{book}
 
-% #elif LATEX_STYLE == "Springer_lncse"
-% Style: Lecture Notes in Computational Science and Engineering (Springer)
-\documentclass[envcountsect,open=right]{lncse}
-\pagestyle{headings}
-% #elif LATEX_STYLE == "Springer_T2"
-% Style: T2 (Springer)
-% Use svmono.cls with doconce modifications for bibliography
-\documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmonodo}
-
-% Use t2.sty with doconce modifications
-\usepackage{t2do}
-\special{papersize=193mm,260mm}
-
-% #elif LATEX_STYLE == "Springer_llcse"
-% Style: Lecture Notes in Computer Science (Springer)
-\documentclass[oribib]{llncs}
-% #elif LATEX_STYLE == "Koma_Script"
-% Style: Koma-Script
-\documentclass[10pt]{scrartcl}
-% #elif LATEX_STYLE == "siamltex"
-% Style: SIAM LaTeX2e
-\documentclass[leqno]{siamltex}
-% #elif LATEX_STYLE == "siamltexmm"
-% Style: SIAM LaTeX2e multimedia
-\documentclass[leqno]{siamltexmm}
-% #endif
-
 \listfiles               % print all files needed to compile this document
-
-% #ifdef A4PAPER
-\usepackage[a4paper]{geometry}
-% #endif
-% #ifdef A6PAPER
-% a6paper is suitable for mobile devices
-\usepackage[%
-  a6paper,
-  text={90mm,130mm},
-  inner={5mm},           % inner margin (two sided documents)
-  top=5mm,
-  headsep=4mm
-  ]{geometry}
-% #endif
 
 \usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
@@ -58560,16 +56539,7 @@ open=right               % start new chapters on odd-numbered pages
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
-% #ifdef HELVETICA
-% Set helvetica as the default font family:
-\RequirePackage{helvet}
-\renewcommand\familydefault{phv}
-% #endif
-% #ifdef PALATINO
-% Set palatino as the default font family:
-\usepackage[sc]{mathpazo}    % Palatino fonts
-\linespread{1.05}            % Palatino needs extra line spread to look nice
-% #endif
+
 % #endif
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
@@ -58634,125 +56604,13 @@ open=right               % start new chapters on odd-numbered pages
 \clubpenalty = 10000
 \widowpenalty = 10000
 
-% #ifndef SECTION_HEADINGS
-% #define SECTION_HEADINGS "std"
-% #else
-% http://www.ctex.org/documents/packages/layout/titlesec.pdf
-\usepackage[compact]{titlesec}  % reduce the spacing above/below the heading
-% #endif
-% #if SECTION_HEADINGS == "blue"
-% --- section/subsection headings with blue color ---
-\definecolor{seccolor}{cmyk}{.9,.5,0,.35}  % siamltexmm.sty section color
-\titleformat{name=\section}
-{\color{seccolor}\normalfont\Large\bfseries}
-{\color{seccolor}\thesection}{1em}{}
-\titleformat{name=\subsection}
-{\color{seccolor}\normalfont\large\bfseries}
-{\color{seccolor}\thesubsection}{1em}{}
-\titleformat{name=\paragraph}[runin]
-{\color{seccolor}\normalfont\normalsize\bfseries}
-{}{}{\indent}
-% #ifdef FANCY_HEADER
-% let the header have a thick gray hrule with section and page in blue above
-\renewcommand{\headrulewidth}{0.4pt}
-\renewcommand{\headrule}{{\color{gray!50}%
-\hrule width\headwidth height\headrulewidth \vskip-\headrulewidth}}
-\fancyhead[LE,RO]{{\color{seccolor}\rightmark}} %section
-\fancyhead[RE,LO]{{\color{seccolor}\thepage}}
-% #endif
-% #elif SECTION_HEADINGS == "strongblue"
-% --- section/subsection headings with a strong blue color ---
-\definecolor{seccolor}{rgb}{0.2,0.2,0.8}
-\titleformat{name=\section}
-{\color{seccolor}\normalfont\Large\bfseries}
-{\color{seccolor}\thesection}{1em}{}
-\titleformat{name=\subsection}
-{\color{seccolor}\normalfont\large\bfseries}
-{\color{seccolor}\thesubsection}{1em}{}
-\titleformat{name=\paragraph}[runin]
-{\color{seccolor}\normalfont\normalsize\bfseries}
-{}{}{\indent}
-% #elif SECTION_HEADINGS == "gray"
-% --- section/subsection headings with white text on gray background ---
-\titleformat{name=\section}[block]
-  {\sffamily\Large}{}{0pt}{\colorsection}
-\titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip}
-
-\newcommand{\colorsection}[1]{%
-  \colorbox{gray!50}{{\color{white}\thesection\ #1}}}
-
-\titleformat{name=\subsection}[block]
-  {\sffamily\large}{}{0pt}{\colorsubsection}
-\titlespacing*{\subsection}{0pt}{\baselineskip}{\baselineskip}
-
-\newcommand{\colorsubsection}[1]{%
-  \colorbox{gray!50}{{\color{white}\thesubsection\ #1}}}
-% #elif SECTION_HEADINGS == "gray-wide"
-% --- section/subsection headings with white text on wide gray background ---
-\titleformat{name=\section}[block]
-  {\sffamily\Large}{}{0pt}{\colorsection}
-\titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip}
-
-\newcommand{\colorsection}[1]{%
-  \colorbox{gray!50}{\parbox{\dimexpr\textwidth-2\fboxsep}%
-           {\color{white}\thesection\ #1}}}
-
-\titleformat{name=\subsection}[block]
-  {\sffamily\large}{}{0pt}{\colorsubsection}
-\titlespacing*{\subsection}{0pt}{\baselineskip}{\baselineskip}
-
-\newcommand{\colorsubsection}[1]{%
-  \colorbox{gray!50}{\parbox{\dimexpr\textwidth-2\fboxsep}%
-           {\color{white}\thesubsection\ #1}}}
-% #endif
-
-% #ifdef COLORED_TABLE_ROWS
-% color every two table rows
-\let\oldtabular\tabular
-\let\endoldtabular\endtabular
-% #if COLORED_TABLE_ROWS not in ("gray", "blue")
-% #define COLORED_TABLE_ROWS gray
-% #endif
-% #else
-% #define COLORED_TABLE_ROWS no
-% #endif
-% #if COLORED_TABLE_ROWS == "gray"
-\definecolor{rowgray}{gray}{0.9}
-\renewenvironment{tabular}{\rowcolors{2}{white}{rowgray}%
-\oldtabular}{\endoldtabular}
-% #elif COLORED_TABLE_ROWS == "blue"
-\definecolor{appleblue}{rgb}{0.93,0.95,1.0}  % Apple blue
-\renewenvironment{tabular}{\rowcolors{2}{white}{appleblue}%
-\oldtabular}{\endoldtabular}
-% #endif
-
-
 \newenvironment{doconceexercise}{}{}
 \newcounter{doconceexercisecounter}
 
-% #ifndef LIST_OF_EXERCISES
-% #define LIST_OF_EXERCISES "none"
-% #endif
-
-% --- begin definition of \listofexercises command ---
-\makeatletter
-\newcommand\listofexercises{
-\chapter*{List of Problems
-          \@mkboth{List of Problems}{List of Problems}}
-\markboth{List of Problems}{List of Problems}
-\@starttoc{loe}
-}
-\newcommand*{\l@doconceexercise}{\@dottedtocline{0}{0pt}{6.5em}}
-\makeatother
-% --- end definition of \listofexercises command ---
-
-
-% #if LATEX_STYLE not in ("Koma_Script", "Springer_T2")
 % Make sure blank even-numbered pages before new chapters are
 % totally blank with no header
 \newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
 %\let\cleardoublepage\clearemptydoublepage % caused error in the toc
-% #endif
 
 % --- end of standard preamble for documents ---
 
@@ -58775,128 +56633,19 @@ open=right               % start new chapters on odd-numbered pages
 
 
 
-% #if LATEX_STYLE in ("Springer_T2", "Springer_lncse")
-\frontmatter
-\setcounter{page}{3}
-\pagestyle{headings}
-% #endif
-
-% #if LATEX_STYLE == "Springer_lncse"
-% With hyperref loaded, \contentsline needs 3 args
-%\contentsline{chapter}{Bibliography}{829}{chapter.Bib}
-%\contentsline{chapter}{Index}{831}{chapter.Index}
-% #endif
-
 % ----------------- title -------------------------
 
-% #if LATEX_HEADING == "traditional"
-
-% #if SECTION_HEADINGS in ("blue", "strongblue")
-\title{{\color{seccolor} Test slide features}}
-% #else
 \title{Test slide features}
-% #endif
-
-% #elif LATEX_HEADING == "titlepage"
-
-\thispagestyle{empty}
-\hbox{\ \ }
-\vfill
-\begin{center}
-{\huge{\bfseries{
-\begin{spacing}{1.25}
-% #if SECTION_HEADINGS in ("blue", "strongblue")
-{\color{seccolor}\rule{\linewidth}{0.5mm}} \\[0.4cm]
-{\color{seccolor}Test slide features}
-\\[0.4cm] {\color{seccolor}\rule{\linewidth}{0.5mm}} \\[1.5cm]
-% #else
-{\rule{\linewidth}{0.5mm}} \\[0.4cm]
-{Test slide features}
-\\[0.4cm] {\rule{\linewidth}{0.5mm}} \\[1.5cm]
-% #endif
-\end{spacing}
-}}}
-
-% #elif LATEX_HEADING == "Springer_collection"
-\title*{Test slide features}
-% Short version of title:
-\titlerunning{Test slide features}
-
-% #elif LATEX_HEADING == "beamer"
-\title{Test slide features}
-% #else
-\thispagestyle{empty}
-
-\begin{center}
-{\LARGE\bf
-\begin{spacing}{1.25}
-Test slide features
-\end{spacing}
-}
-\end{center}
-% #endif
 
 % ----------------- author(s) -------------------------
-% #if LATEX_HEADING == "traditional"
-\author{Core Dump\footnote{Cyber Space Ltd.}}
 
-% #elif LATEX_HEADING == "titlepage"
-\vspace{1.3cm}
-
-{\Large\textsf{Core Dump}}\\ [3mm]
-
-\ \\ [2mm]
-
-{\large\textsf{Cyber Space Ltd} \\ [1.5mm]}
-% #elif LATEX_HEADING == "Springer_collection"
-
-\author{Core Dump}
-% Short version of authors:
-%\authorrunning{...}
-\institute{Core Dump\at Cyber Space Ltd}
-
-% #elif LATEX_HEADING == "beamer"
 \author{Core Dump\inst{1}}
 \institute{Cyber Space Ltd\inst{1}}
-% #else
-
-\begin{center}
-{\bf Core Dump}
-\end{center}
-
-\begin{center}
-% List of all institutions:
-\centerline{{\small Cyber Space Ltd}}
-\end{center}
-% #endif
 % ----------------- end author(s) -------------------------
 
-
-% #if LATEX_HEADING == "traditional"
 \date{Jan 32, 2100}
-\maketitle
-% #elif LATEX_HEADING == "beamer"
-\date{Jan 32, 2100
 % <titlepage figure>
 }
-% #elif LATEX_HEADING == "titlepage"
-
-\ \\ [10mm]
-{\large\textsf{Jan 32, 2100}}
-
-\end{center}
-\vfill
-\clearpage
-
-% #else
-\begin{center}
-Jan 32, 2100
-\end{center}
-
-\vspace{1cm}
-
-% #endif
-
 
 \begin{center}  % inline figure
   \centerline{\includegraphics[width=0.5\linewidth]{../doc/src/slides/fig/doconce1b.png}}
@@ -58904,32 +56653,6 @@ Jan 32, 2100
 
 
 % !split
-
-
-% #if LATEX_HEADING != "beamer"
-\tableofcontents
-% #if LIST_OF_EXERCISES == "loe"
-\clearemptydoublepage
-\listofexercises
-\clearemptydoublepage
-% #endif
-
-
-% #if LATEX_STYLE == "Springer_lncse"
-\contentsline{chapter}{\refname}{9999}{chapter.Bib}
-\contentsline{chapter}{Index}{9999}{chapter.Index}
-% #endif
-
-
-
-\vspace{1cm} % after toc
-% #endif
-
-% #if LATEX_STYLE == "Springer_T2"
-\mymainmatter
-% #elif LATEX_STYLE == "Springer_lncse"
-\mainmatter
-% #endif
 
 
 
@@ -59551,11 +57274,6 @@ Last page gets rendered as follows:
 \refstepcounter{doconceexercisecounter}
 
 \subsection*{Problem \thedoconceexercisecounter: Flip a Coin}
-% #if LIST_OF_EXERCISES == "toc"
-\addcontentsline{toc}{subsection}{\thedoconceexercisecounter: Flip a Coin}
-% #elif LIST_OF_EXERCISES == "loe"
-\addcontentsline{loe}{doconceexercise}{Problem \thedoconceexercisecounter: Flip a Coin}
-% #endif
 
 \label{demo:ex:1}
 % keywords = random numbers; Monte Carlo simulation
@@ -59875,23 +57593,20 @@ Last page gets rendered to
 
 
 
-
-
 % ----------------- title -------------------------
 
 \title{Test slide features}
 
 % ----------------- author(s) -------------------------
+
 \author{Core Dump\inst{1}}
 \institute{Cyber Space Ltd\inst{1}}
 % ----------------- end author(s) -------------------------
 
-
-\date{Jan 32, 2100
+\date{Jan 32, 2100}
 \\ \ \\ 
 \centerline{\includegraphics[width=0.5\linewidth]{../doc/src/slides/fig/doconce1b.png}}
 }
-
 
 
 
@@ -61422,8 +59137,8 @@ Reveal.initialize({
 %% (The ptex2tex program: http://code.google.com/p/ptex2tex)
 %% Many preprocess options can be added to ptex2tex or doconce ptex2tex
 %%
-%%      ptex2tex -DMINTED -DPALATINO -DA6PAPER -DLATEX_HEADING=traditional myfile
-%%      doconce ptex2tex myfile -DLATEX_HEADING=titlepage envir=minted
+%%      ptex2tex -DMINTED myfile
+%%      doconce ptex2tex myfile envir=minted
 %%
 %% ptex2tex will typeset code environments according to a global or local
 %% .ptex2tex.cfg configure file. doconce ptex2tex will typeset code
@@ -61432,74 +59147,17 @@ Reveal.initialize({
 %% minted style without needing -DMINTED.
 % #endif
 
-% #ifndef LATEX_STYLE
-% #define LATEX_STYLE "std"
-% #endif
-
-% #ifndef LATEX_HEADING
-% #define LATEX_HEADING "doconce_heading"
-% #endif
-
-% #ifndef PREAMBLE
-% #if LATEX_HEADING == "Springer_collection"
-% #undef PREAMBLE
-% #else
 % #define PREAMBLE
-% #endif
-% #endif
-
 
 % #ifdef PREAMBLE
 %-------------------- begin preamble ----------------------
-% #if LATEX_STYLE == "std"
 
 \documentclass[%
 twoside,                 % oneside: electronic viewing, twoside: printing
 final,                   % or draft (marks overfull hboxes, figures with paths)
 10pt]{article}
 
-% #elif LATEX_STYLE == "Springer_lncse"
-% Style: Lecture Notes in Computational Science and Engineering (Springer)
-\documentclass[envcountsect,open=right]{lncse}
-\pagestyle{headings}
-% #elif LATEX_STYLE == "Springer_T2"
-% Style: T2 (Springer)
-% Use svmono.cls with doconce modifications for bibliography
-\documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmonodo}
-
-% Use t2.sty with doconce modifications
-\usepackage{t2do}
-\special{papersize=193mm,260mm}
-
-% #elif LATEX_STYLE == "Springer_llcse"
-% Style: Lecture Notes in Computer Science (Springer)
-\documentclass[oribib]{llncs}
-% #elif LATEX_STYLE == "Koma_Script"
-% Style: Koma-Script
-\documentclass[10pt]{scrartcl}
-% #elif LATEX_STYLE == "siamltex"
-% Style: SIAM LaTeX2e
-\documentclass[leqno]{siamltex}
-% #elif LATEX_STYLE == "siamltexmm"
-% Style: SIAM LaTeX2e multimedia
-\documentclass[leqno]{siamltexmm}
-% #endif
-
 \listfiles               % print all files needed to compile this document
-
-% #ifdef A4PAPER
-\usepackage[a4paper]{geometry}
-% #endif
-% #ifdef A6PAPER
-% a6paper is suitable for mobile devices
-\usepackage[%
-  a6paper,
-  text={90mm,130mm},
-  inner={5mm},           % inner margin (two sided documents)
-  top=5mm,
-  headsep=4mm
-  ]{geometry}
-% #endif
 
 \usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
@@ -61525,16 +59183,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
-% #ifdef HELVETICA
-% Set helvetica as the default font family:
-\RequirePackage{helvet}
-\renewcommand\familydefault{phv}
-% #endif
-% #ifdef PALATINO
-% Set palatino as the default font family:
-\usepackage[sc]{mathpazo}    % Palatino fonts
-\linespread{1.05}            % Palatino needs extra line spread to look nice
-% #endif
+
 % #endif
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
@@ -61599,105 +59248,10 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \clubpenalty = 10000
 \widowpenalty = 10000
 
-% #ifndef SECTION_HEADINGS
-% #define SECTION_HEADINGS "std"
-% #else
-% http://www.ctex.org/documents/packages/layout/titlesec.pdf
-\usepackage[compact]{titlesec}  % reduce the spacing above/below the heading
-% #endif
-% #if SECTION_HEADINGS == "blue"
-% --- section/subsection headings with blue color ---
-\definecolor{seccolor}{cmyk}{.9,.5,0,.35}  % siamltexmm.sty section color
-\titleformat{name=\section}
-{\color{seccolor}\normalfont\Large\bfseries}
-{\color{seccolor}\thesection}{1em}{}
-\titleformat{name=\subsection}
-{\color{seccolor}\normalfont\large\bfseries}
-{\color{seccolor}\thesubsection}{1em}{}
-\titleformat{name=\paragraph}[runin]
-{\color{seccolor}\normalfont\normalsize\bfseries}
-{}{}{\indent}
-% #ifdef FANCY_HEADER
-% let the header have a thick gray hrule with section and page in blue above
-\renewcommand{\headrulewidth}{0.4pt}
-\renewcommand{\headrule}{{\color{gray!50}%
-\hrule width\headwidth height\headrulewidth \vskip-\headrulewidth}}
-\fancyhead[LE,RO]{{\color{seccolor}\rightmark}} %section
-\fancyhead[RE,LO]{{\color{seccolor}\thepage}}
-% #endif
-% #elif SECTION_HEADINGS == "strongblue"
-% --- section/subsection headings with a strong blue color ---
-\definecolor{seccolor}{rgb}{0.2,0.2,0.8}
-\titleformat{name=\section}
-{\color{seccolor}\normalfont\Large\bfseries}
-{\color{seccolor}\thesection}{1em}{}
-\titleformat{name=\subsection}
-{\color{seccolor}\normalfont\large\bfseries}
-{\color{seccolor}\thesubsection}{1em}{}
-\titleformat{name=\paragraph}[runin]
-{\color{seccolor}\normalfont\normalsize\bfseries}
-{}{}{\indent}
-% #elif SECTION_HEADINGS == "gray"
-% --- section/subsection headings with white text on gray background ---
-\titleformat{name=\section}[block]
-  {\sffamily\Large}{}{0pt}{\colorsection}
-\titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip}
-
-\newcommand{\colorsection}[1]{%
-  \colorbox{gray!50}{{\color{white}\thesection\ #1}}}
-
-\titleformat{name=\subsection}[block]
-  {\sffamily\large}{}{0pt}{\colorsubsection}
-\titlespacing*{\subsection}{0pt}{\baselineskip}{\baselineskip}
-
-\newcommand{\colorsubsection}[1]{%
-  \colorbox{gray!50}{{\color{white}\thesubsection\ #1}}}
-% #elif SECTION_HEADINGS == "gray-wide"
-% --- section/subsection headings with white text on wide gray background ---
-\titleformat{name=\section}[block]
-  {\sffamily\Large}{}{0pt}{\colorsection}
-\titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip}
-
-\newcommand{\colorsection}[1]{%
-  \colorbox{gray!50}{\parbox{\dimexpr\textwidth-2\fboxsep}%
-           {\color{white}\thesection\ #1}}}
-
-\titleformat{name=\subsection}[block]
-  {\sffamily\large}{}{0pt}{\colorsubsection}
-\titlespacing*{\subsection}{0pt}{\baselineskip}{\baselineskip}
-
-\newcommand{\colorsubsection}[1]{%
-  \colorbox{gray!50}{\parbox{\dimexpr\textwidth-2\fboxsep}%
-           {\color{white}\thesubsection\ #1}}}
-% #endif
-
-% #ifdef COLORED_TABLE_ROWS
-% color every two table rows
-\let\oldtabular\tabular
-\let\endoldtabular\endtabular
-% #if COLORED_TABLE_ROWS not in ("gray", "blue")
-% #define COLORED_TABLE_ROWS gray
-% #endif
-% #else
-% #define COLORED_TABLE_ROWS no
-% #endif
-% #if COLORED_TABLE_ROWS == "gray"
-\definecolor{rowgray}{gray}{0.9}
-\renewenvironment{tabular}{\rowcolors{2}{white}{rowgray}%
-\oldtabular}{\endoldtabular}
-% #elif COLORED_TABLE_ROWS == "blue"
-\definecolor{appleblue}{rgb}{0.93,0.95,1.0}  % Apple blue
-\renewenvironment{tabular}{\rowcolors{2}{white}{appleblue}%
-\oldtabular}{\endoldtabular}
-% #endif
-
-
-% #if LATEX_STYLE not in ("Koma_Script", "Springer_T2")
 % Make sure blank even-numbered pages before new chapters are
 % totally blank with no header
 \newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
 %\let\cleardoublepage\clearemptydoublepage % caused error in the toc
-% #endif
 
 % --- end of standard preamble for documents ---
 
@@ -61720,132 +59274,21 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 
 
-% #if LATEX_STYLE in ("Springer_T2", "Springer_lncse")
-\frontmatter
-\setcounter{page}{3}
-\pagestyle{headings}
-% #endif
-
-% #if LATEX_STYLE == "Springer_lncse"
-% With hyperref loaded, \contentsline needs 3 args
-%\contentsline{chapter}{Bibliography}{829}{chapter.Bib}
-%\contentsline{chapter}{Index}{831}{chapter.Index}
-% #endif
-
 % ----------------- title -------------------------
 
-% #if LATEX_HEADING == "traditional"
-
-% #if SECTION_HEADINGS in ("blue", "strongblue")
-\title{{\color{seccolor} On Schemes for Exponential Decay}}
-% #else
 \title{On Schemes for Exponential Decay}
-% #endif
-
-% #elif LATEX_HEADING == "titlepage"
-
-\thispagestyle{empty}
-\hbox{\ \ }
-\vfill
-\begin{center}
-{\huge{\bfseries{
-\begin{spacing}{1.25}
-% #if SECTION_HEADINGS in ("blue", "strongblue")
-{\color{seccolor}\rule{\linewidth}{0.5mm}} \\[0.4cm]
-{\color{seccolor}On Schemes for Exponential Decay}
-\\[0.4cm] {\color{seccolor}\rule{\linewidth}{0.5mm}} \\[1.5cm]
-% #else
-{\rule{\linewidth}{0.5mm}} \\[0.4cm]
-{On Schemes for Exponential Decay}
-\\[0.4cm] {\rule{\linewidth}{0.5mm}} \\[1.5cm]
-% #endif
-\end{spacing}
-}}}
-
-% #elif LATEX_HEADING == "Springer_collection"
-\title*{On Schemes for Exponential Decay}
-% Short version of title:
-\titlerunning{On Schemes for Exponential Decay}
-
-% #elif LATEX_HEADING == "beamer"
-\title{On Schemes for Exponential Decay}
-% #else
-\thispagestyle{empty}
-
-\begin{center}
-{\LARGE\bf
-\begin{spacing}{1.25}
-On Schemes for Exponential Decay
-\end{spacing}
-}
-\end{center}
-% #endif
 
 % ----------------- author(s) -------------------------
-% #if LATEX_HEADING == "traditional"
-\author{Hans Petter Langtangen\footnote{Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo.}}
 
-% #elif LATEX_HEADING == "titlepage"
-\vspace{1.3cm}
-
-    {\Large\textsf{Hans Petter Langtangen${}^{1, 2}$}}\\ [3mm]
-    
-\ \\ [2mm]
-
-{\large\textsf{${}^1$Center for Biomedical Computing, Simula Research Laboratory} \\ [1.5mm]}
-{\large\textsf{${}^2$Department of Informatics, University of Oslo} \\ [1.5mm]}
-% #elif LATEX_HEADING == "Springer_collection"
-
-\author{Hans Petter Langtangen}
-% Short version of authors:
-%\authorrunning{...}
-\institute{Hans Petter Langtangen\at Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo}
-
-% #elif LATEX_HEADING == "beamer"
 \author{Hans Petter Langtangen\inst{1,2}}
 \institute{Center for Biomedical Computing, Simula Research Laboratory\inst{1}
 \and
 Department of Informatics, University of Oslo\inst{2}}
-% #else
-
-\begin{center}
-{\bf Hans Petter Langtangen${}^{1, 2}$} \\ [0mm]
-\end{center}
-
-\begin{center}
-% List of all institutions:
-\centerline{{\small ${}^1$Center for Biomedical Computing, Simula Research Laboratory}}
-\centerline{{\small ${}^2$Department of Informatics, University of Oslo}}
-\end{center}
-% #endif
 % ----------------- end author(s) -------------------------
 
-
-% #if LATEX_HEADING == "traditional"
 \date{Jan 32, 2100}
-\maketitle
-% #elif LATEX_HEADING == "beamer"
-\date{Jan 32, 2100
 % <titlepage figure>
 }
-% #elif LATEX_HEADING == "titlepage"
-
-\ \\ [10mm]
-{\large\textsf{Jan 32, 2100}}
-
-\end{center}
-\vfill
-\clearpage
-
-% #else
-\begin{center}
-Jan 32, 2100
-\end{center}
-
-\vspace{1cm}
-
-% #endif
-
 
 \begin{center}  % inline figure
   \centerline{\includegraphics[width=0.4\linewidth]{../doc/src/slides/fig/CN_logo.pdf}}
@@ -62148,25 +59591,22 @@ qualitatively correct results.
 
 
 
-
-
 % ----------------- title -------------------------
 
 \title{On Schemes for Exponential Decay}
 
 % ----------------- author(s) -------------------------
+
 \author{Hans Petter Langtangen\inst{1,2}}
 \institute{Center for Biomedical Computing, Simula Research Laboratory\inst{1}
 \and
 Department of Informatics, University of Oslo\inst{2}}
 % ----------------- end author(s) -------------------------
 
-
-\date{Jan 32, 2100
+\date{Jan 32, 2100}
 \\ \ \\ 
 \centerline{\includegraphics[width=0.4\linewidth]{../doc/src/slides/fig/CN_logo.pdf}}
 }
-
 
 
 
@@ -64001,8 +61441,8 @@ Finally, let us demonstrate referencing the movie <a href="#mov:wave">mov:wave</
 %% (The ptex2tex program: http://code.google.com/p/ptex2tex)
 %% Many preprocess options can be added to ptex2tex or doconce ptex2tex
 %%
-%%      ptex2tex -DMINTED -DPALATINO -DA6PAPER -DLATEX_HEADING=traditional myfile
-%%      doconce ptex2tex myfile -DLATEX_HEADING=titlepage envir=minted
+%%      ptex2tex -DMINTED myfile
+%%      doconce ptex2tex myfile envir=minted
 %%
 %% ptex2tex will typeset code environments according to a global or local
 %% .ptex2tex.cfg configure file. doconce ptex2tex will typeset code
@@ -64011,74 +61451,17 @@ Finally, let us demonstrate referencing the movie <a href="#mov:wave">mov:wave</
 %% minted style without needing -DMINTED.
 % #endif
 
-% #ifndef LATEX_STYLE
-% #define LATEX_STYLE "std"
-% #endif
-
-% #ifndef LATEX_HEADING
-% #define LATEX_HEADING "doconce_heading"
-% #endif
-
-% #ifndef PREAMBLE
-% #if LATEX_HEADING == "Springer_collection"
-% #undef PREAMBLE
-% #else
 % #define PREAMBLE
-% #endif
-% #endif
-
 
 % #ifdef PREAMBLE
 %-------------------- begin preamble ----------------------
-% #if LATEX_STYLE == "std"
 
 \documentclass[%
 twoside,                 % oneside: electronic viewing, twoside: printing
 final,                   % or draft (marks overfull hboxes, figures with paths)
 10pt]{article}
 
-% #elif LATEX_STYLE == "Springer_lncse"
-% Style: Lecture Notes in Computational Science and Engineering (Springer)
-\documentclass[envcountsect,open=right]{lncse}
-\pagestyle{headings}
-% #elif LATEX_STYLE == "Springer_T2"
-% Style: T2 (Springer)
-% Use svmono.cls with doconce modifications for bibliography
-\documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmonodo}
-
-% Use t2.sty with doconce modifications
-\usepackage{t2do}
-\special{papersize=193mm,260mm}
-
-% #elif LATEX_STYLE == "Springer_llcse"
-% Style: Lecture Notes in Computer Science (Springer)
-\documentclass[oribib]{llncs}
-% #elif LATEX_STYLE == "Koma_Script"
-% Style: Koma-Script
-\documentclass[10pt]{scrartcl}
-% #elif LATEX_STYLE == "siamltex"
-% Style: SIAM LaTeX2e
-\documentclass[leqno]{siamltex}
-% #elif LATEX_STYLE == "siamltexmm"
-% Style: SIAM LaTeX2e multimedia
-\documentclass[leqno]{siamltexmm}
-% #endif
-
 \listfiles               % print all files needed to compile this document
-
-% #ifdef A4PAPER
-\usepackage[a4paper]{geometry}
-% #endif
-% #ifdef A6PAPER
-% a6paper is suitable for mobile devices
-\usepackage[%
-  a6paper,
-  text={90mm,130mm},
-  inner={5mm},           % inner margin (two sided documents)
-  top=5mm,
-  headsep=4mm
-  ]{geometry}
-% #endif
 
 \usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
@@ -64139,16 +61522,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
-% #ifdef HELVETICA
-% Set helvetica as the default font family:
-\RequirePackage{helvet}
-\renewcommand\familydefault{phv}
-% #endif
-% #ifdef PALATINO
-% Set palatino as the default font family:
-\usepackage[sc]{mathpazo}    % Palatino fonts
-\linespread{1.05}            % Palatino needs extra line spread to look nice
-% #endif
+
 % #endif
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
@@ -64175,105 +61549,10 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \clubpenalty = 10000
 \widowpenalty = 10000
 
-% #ifndef SECTION_HEADINGS
-% #define SECTION_HEADINGS "std"
-% #else
-% http://www.ctex.org/documents/packages/layout/titlesec.pdf
-\usepackage[compact]{titlesec}  % reduce the spacing above/below the heading
-% #endif
-% #if SECTION_HEADINGS == "blue"
-% --- section/subsection headings with blue color ---
-\definecolor{seccolor}{cmyk}{.9,.5,0,.35}  % siamltexmm.sty section color
-\titleformat{name=\section}
-{\color{seccolor}\normalfont\Large\bfseries}
-{\color{seccolor}\thesection}{1em}{}
-\titleformat{name=\subsection}
-{\color{seccolor}\normalfont\large\bfseries}
-{\color{seccolor}\thesubsection}{1em}{}
-\titleformat{name=\paragraph}[runin]
-{\color{seccolor}\normalfont\normalsize\bfseries}
-{}{}{\indent}
-% #ifdef FANCY_HEADER
-% let the header have a thick gray hrule with section and page in blue above
-\renewcommand{\headrulewidth}{0.4pt}
-\renewcommand{\headrule}{{\color{gray!50}%
-\hrule width\headwidth height\headrulewidth \vskip-\headrulewidth}}
-\fancyhead[LE,RO]{{\color{seccolor}\rightmark}} %section
-\fancyhead[RE,LO]{{\color{seccolor}\thepage}}
-% #endif
-% #elif SECTION_HEADINGS == "strongblue"
-% --- section/subsection headings with a strong blue color ---
-\definecolor{seccolor}{rgb}{0.2,0.2,0.8}
-\titleformat{name=\section}
-{\color{seccolor}\normalfont\Large\bfseries}
-{\color{seccolor}\thesection}{1em}{}
-\titleformat{name=\subsection}
-{\color{seccolor}\normalfont\large\bfseries}
-{\color{seccolor}\thesubsection}{1em}{}
-\titleformat{name=\paragraph}[runin]
-{\color{seccolor}\normalfont\normalsize\bfseries}
-{}{}{\indent}
-% #elif SECTION_HEADINGS == "gray"
-% --- section/subsection headings with white text on gray background ---
-\titleformat{name=\section}[block]
-  {\sffamily\Large}{}{0pt}{\colorsection}
-\titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip}
-
-\newcommand{\colorsection}[1]{%
-  \colorbox{gray!50}{{\color{white}\thesection\ #1}}}
-
-\titleformat{name=\subsection}[block]
-  {\sffamily\large}{}{0pt}{\colorsubsection}
-\titlespacing*{\subsection}{0pt}{\baselineskip}{\baselineskip}
-
-\newcommand{\colorsubsection}[1]{%
-  \colorbox{gray!50}{{\color{white}\thesubsection\ #1}}}
-% #elif SECTION_HEADINGS == "gray-wide"
-% --- section/subsection headings with white text on wide gray background ---
-\titleformat{name=\section}[block]
-  {\sffamily\Large}{}{0pt}{\colorsection}
-\titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip}
-
-\newcommand{\colorsection}[1]{%
-  \colorbox{gray!50}{\parbox{\dimexpr\textwidth-2\fboxsep}%
-           {\color{white}\thesection\ #1}}}
-
-\titleformat{name=\subsection}[block]
-  {\sffamily\large}{}{0pt}{\colorsubsection}
-\titlespacing*{\subsection}{0pt}{\baselineskip}{\baselineskip}
-
-\newcommand{\colorsubsection}[1]{%
-  \colorbox{gray!50}{\parbox{\dimexpr\textwidth-2\fboxsep}%
-           {\color{white}\thesubsection\ #1}}}
-% #endif
-
-% #ifdef COLORED_TABLE_ROWS
-% color every two table rows
-\let\oldtabular\tabular
-\let\endoldtabular\endtabular
-% #if COLORED_TABLE_ROWS not in ("gray", "blue")
-% #define COLORED_TABLE_ROWS gray
-% #endif
-% #else
-% #define COLORED_TABLE_ROWS no
-% #endif
-% #if COLORED_TABLE_ROWS == "gray"
-\definecolor{rowgray}{gray}{0.9}
-\renewenvironment{tabular}{\rowcolors{2}{white}{rowgray}%
-\oldtabular}{\endoldtabular}
-% #elif COLORED_TABLE_ROWS == "blue"
-\definecolor{appleblue}{rgb}{0.93,0.95,1.0}  % Apple blue
-\renewenvironment{tabular}{\rowcolors{2}{white}{appleblue}%
-\oldtabular}{\endoldtabular}
-% #endif
-
-
-% #if LATEX_STYLE not in ("Koma_Script", "Springer_T2")
 % Make sure blank even-numbered pages before new chapters are
 % totally blank with no header
 \newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
 %\let\cleardoublepage\clearemptydoublepage % caused error in the toc
-% #endif
 
 % --- end of standard preamble for documents ---
 
@@ -64296,56 +61575,8 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 
 
-% #if LATEX_STYLE in ("Springer_T2", "Springer_lncse")
-\frontmatter
-\setcounter{page}{3}
-\pagestyle{headings}
-% #endif
-
-% #if LATEX_STYLE == "Springer_lncse"
-% With hyperref loaded, \contentsline needs 3 args
-%\contentsline{chapter}{Bibliography}{829}{chapter.Bib}
-%\contentsline{chapter}{Index}{831}{chapter.Index}
-% #endif
-
 % ----------------- title -------------------------
 
-% #if LATEX_HEADING == "traditional"
-
-% #if SECTION_HEADINGS in ("blue", "strongblue")
-\title{{\color{seccolor} This is a demo of movies in Doconce}}
-% #else
-\title{This is a demo of movies in Doconce}
-% #endif
-
-% #elif LATEX_HEADING == "titlepage"
-
-\thispagestyle{empty}
-\hbox{\ \ }
-\vfill
-\begin{center}
-{\huge{\bfseries{
-\begin{spacing}{1.25}
-% #if SECTION_HEADINGS in ("blue", "strongblue")
-{\color{seccolor}\rule{\linewidth}{0.5mm}} \\[0.4cm]
-{\color{seccolor}This is a demo of movies in Doconce}
-\\[0.4cm] {\color{seccolor}\rule{\linewidth}{0.5mm}} \\[1.5cm]
-% #else
-{\rule{\linewidth}{0.5mm}} \\[0.4cm]
-{This is a demo of movies in Doconce}
-\\[0.4cm] {\rule{\linewidth}{0.5mm}} \\[1.5cm]
-% #endif
-\end{spacing}
-}}}
-
-% #elif LATEX_HEADING == "Springer_collection"
-\title*{This is a demo of movies in Doconce}
-% Short version of title:
-\titlerunning{This is a demo of movies in Doconce}
-
-% #elif LATEX_HEADING == "beamer"
-\title{This is a demo of movies in Doconce}
-% #else
 \thispagestyle{empty}
 
 \begin{center}
@@ -64355,66 +61586,24 @@ This is a demo of movies in Doconce
 \end{spacing}
 }
 \end{center}
-% #endif
 
 % ----------------- author(s) -------------------------
-% #if LATEX_HEADING == "traditional"
-\author{HPL}
-
-% #elif LATEX_HEADING == "titlepage"
-\vspace{1.3cm}
-
-    {\Large\textsf{HPL${}^{}$}}\\ [3mm]
-    
-\ \\ [2mm]
-
-% #elif LATEX_HEADING == "Springer_collection"
-
-\author{HPL}
-% Short version of authors:
-%\authorrunning{...}
-\institute{HPL}
-
-% #elif LATEX_HEADING == "beamer"
-\author{HPL\inst{}}
-\institute{}
-% #else
 
 \begin{center}
 {\bf HPL${}^{}$} \\ [0mm]
 \end{center}
 
-\begin{center}
+    \begin{center}
 % List of all institutions:
 \end{center}
-% #endif
+
 % ----------------- end author(s) -------------------------
 
-
-% #if LATEX_HEADING == "traditional"
-\date{Jan 32, 2100}
-\maketitle
-% #elif LATEX_HEADING == "beamer"
-\date{Jan 32, 2100
-% <titlepage figure>
-}
-% #elif LATEX_HEADING == "titlepage"
-
-\ \\ [10mm]
-{\large\textsf{Jan 32, 2100}}
-
-\end{center}
-\vfill
-\clearpage
-
-% #else
 \begin{center}
 Jan 32, 2100
 \end{center}
 
 \vspace{1cm}
-
-% #endif
 
 
 Here is a movie in WebM format.
@@ -64863,9 +62052,6 @@ Finally, let us demonstrate referencing the movie~\ref{mov:wave}.
 %%
 
 
-
-
-
 %-------------------- begin preamble ----------------------
 
 \documentclass[%
@@ -64873,9 +62059,7 @@ twoside,                 % oneside: electronic viewing, twoside: printing
 final,                   % or draft (marks overfull hboxes, figures with paths)
 10pt]{article}
 
-
 \listfiles               % print all files needed to compile this document
-
 
 \usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
@@ -64898,6 +62082,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
+
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
@@ -64922,9 +62107,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 % prevent orhpans and widows
 \clubpenalty = 10000
 \widowpenalty = 10000
-
-
-
 
 % Make sure blank even-numbered pages before new chapters are
 % totally blank with no header
@@ -64951,8 +62133,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 
 
-
-
 % ----------------- title -------------------------
 
 \thispagestyle{empty}
@@ -64971,18 +62151,17 @@ This is a demo of movies in Doconce
 {\bf HPL${}^{}$} \\ [0mm]
 \end{center}
 
-\begin{center}
+    \begin{center}
 % List of all institutions:
 \end{center}
-% ----------------- end author(s) -------------------------
 
+% ----------------- end author(s) -------------------------
 
 \begin{center}
 Jan 32, 2100
 \end{center}
 
 \vspace{1cm}
-
 
 
 Here is a movie in WebM format.
@@ -65274,9 +62453,6 @@ Finally, let us demonstrate referencing the movie~\ref{mov:wave}.
 %%
 
 
-
-
-
 %-------------------- begin preamble ----------------------
 
 \documentclass[%
@@ -65284,9 +62460,7 @@ twoside,                 % oneside: electronic viewing, twoside: printing
 final,                   % or draft (marks overfull hboxes, figures with paths)
 10pt]{article}
 
-
 \listfiles               % print all files needed to compile this document
-
 
 \usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
@@ -65311,6 +62485,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
+
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
@@ -65335,9 +62510,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 % prevent orhpans and widows
 \clubpenalty = 10000
 \widowpenalty = 10000
-
-
-
 
 % Make sure blank even-numbered pages before new chapters are
 % totally blank with no header
@@ -65364,8 +62536,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 
 
-
-
 % ----------------- title -------------------------
 
 \thispagestyle{empty}
@@ -65384,18 +62554,17 @@ This is a demo of movies in Doconce
 {\bf HPL${}^{}$} \\ [0mm]
 \end{center}
 
-\begin{center}
+    \begin{center}
 % List of all institutions:
 \end{center}
-% ----------------- end author(s) -------------------------
 
+% ----------------- end author(s) -------------------------
 
 \begin{center}
 Jan 32, 2100
 \end{center}
 
 \vspace{1cm}
-
 
 
 Here is a movie in WebM format.
@@ -68868,1975 +66037,9 @@ BIBFILE: papers.pub
 
 
 ************** File: Springer_T2/Springer_T2_book.p.tex *****************
-%%
-%% Automatically generated file from Doconce source
-%% (https://github.com/hplgit/doconce/)
-%%
-% #ifdef PTEX2TEX_EXPLANATION
-%%
-%% The file follows the ptex2tex extended LaTeX format, see
-%% ptex2tex: http://code.google.com/p/ptex2tex/
-%%
-%% Run
-%%      ptex2tex myfile
-%% or
-%%      doconce ptex2tex myfile
-%%
-%% to turn myfile.p.tex into an ordinary LaTeX file myfile.tex.
-%% (The ptex2tex program: http://code.google.com/p/ptex2tex)
-%% Many preprocess options can be added to ptex2tex or doconce ptex2tex
-%%
-%%      ptex2tex -DMINTED -DPALATINO -DA6PAPER -DLATEX_HEADING=traditional myfile
-%%      doconce ptex2tex myfile -DLATEX_HEADING=titlepage envir=minted
-%%
-%% ptex2tex will typeset code environments according to a global or local
-%% .ptex2tex.cfg configure file. doconce ptex2tex will typeset code
-%% according to options on the command line (just type doconce ptex2tex to
-%% see examples). If doconce ptex2tex has envir=minted, it enables the
-%% minted style without needing -DMINTED.
-% #endif
-
-% #ifndef LATEX_STYLE
-% #define LATEX_STYLE "std"
-% #endif
-
-% #ifndef LATEX_HEADING
-% #define LATEX_HEADING "doconce_heading"
-% #endif
-
-% #ifndef PREAMBLE
-% #if LATEX_HEADING == "Springer_collection"
-% #undef PREAMBLE
-% #else
-% #define PREAMBLE
-% #endif
-% #endif
-
-
-% #ifdef PREAMBLE
-%-------------------- begin preamble ----------------------
-% #if LATEX_STYLE == "std"
-
-\documentclass[%
-twoside,                 % oneside: electronic viewing, twoside: printing
-final,                   % or draft (marks overfull hboxes, figures with paths)
-chapterprefix=true,      % "Chapter" word at beginning of each chapter
-open=right               % start new chapters on odd-numbered pages
-10pt]{book}
-
-% #elif LATEX_STYLE == "Springer_lncse"
-% Style: Lecture Notes in Computational Science and Engineering (Springer)
-\documentclass[envcountsect,open=right]{lncse}
-\pagestyle{headings}
-% #elif LATEX_STYLE == "Springer_T2"
-% Style: T2 (Springer)
-% Use svmono.cls with doconce modifications for bibliography
-\documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmonodo}
-
-% Use t2.sty with doconce modifications
-\usepackage{t2do}
-\special{papersize=193mm,260mm}
-
-% #elif LATEX_STYLE == "Springer_llcse"
-% Style: Lecture Notes in Computer Science (Springer)
-\documentclass[oribib]{llncs}
-% #elif LATEX_STYLE == "Koma_Script"
-% Style: Koma-Script
-\documentclass[10pt]{scrartcl}
-% #elif LATEX_STYLE == "siamltex"
-% Style: SIAM LaTeX2e
-\documentclass[leqno]{siamltex}
-% #elif LATEX_STYLE == "siamltexmm"
-% Style: SIAM LaTeX2e multimedia
-\documentclass[leqno]{siamltexmm}
-% #endif
-
-\listfiles               % print all files needed to compile this document
-
-% #ifdef A4PAPER
-\usepackage[a4paper]{geometry}
-% #endif
-% #ifdef A6PAPER
-% a6paper is suitable for mobile devices
-\usepackage[%
-  a6paper,
-  text={90mm,130mm},
-  inner={5mm},           % inner margin (two sided documents)
-  top=5mm,
-  headsep=4mm
-  ]{geometry}
-% #endif
-
-\usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
-\usepackage[table]{xcolor}
-\usepackage{bm,microtype}
-
-\usepackage{ptex2tex}
-
-% #ifdef MINTED
-\usepackage{minted}
-\usemintedstyle{default}
-% #endif
-
-% #ifdef XELATEX
-% xelatex settings
-\usepackage{fontspec}
-\usepackage{xunicode}
-\defaultfontfeatures{Mapping=tex-text} % To support LaTeX quoting style
-\defaultfontfeatures{Ligatures=TeX}
-\setromanfont{Kinnari}
-% Examples of font types (Ubuntu): Gentium Book Basic (Palatino-like),
-% Liberation Sans (Helvetica-like), Norasi, Purisa (handwriting), UnDoum
-% #else
-\usepackage[T1]{fontenc}
-%\usepackage[latin1]{inputenc}
-\usepackage[utf8]{inputenc}
-% #ifdef HELVETICA
-% Set helvetica as the default font family:
-\RequirePackage{helvet}
-\renewcommand\familydefault{phv}
-% #endif
-% #ifdef PALATINO
-% Set palatino as the default font family:
-\usepackage[sc]{mathpazo}    % Palatino fonts
-\linespread{1.05}            % Palatino needs extra line spread to look nice
-% #endif
-% #endif
-\usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
-
-% Hyperlinks in PDF:
-\definecolor{linkcolor}{rgb}{0,0,0.4}
-\usepackage[%
-    colorlinks=true,
-    linkcolor=black,
-    urlcolor=black,
-    citecolor=black,
-    filecolor=black,
-    %filecolor=blue,
-    pdfmenubar=true,
-    pdftoolbar=true,
-    bookmarksdepth=3   % Uncomment (and tweak) for PDF bookmarks with more levels than the TOC
-            ]{hyperref}
-%\hyperbaseurl{}   % hyperlinks are relative to this root
-
-\setcounter{tocdepth}{2}  % number chapter, section, subsection
-
-\usepackage[framemethod=TikZ]{mdframed}
-
-% --- begin definitions of admonition environments ---
-
-% Admonition style "graybox1" is an oval colored box
-\definecolor{graybox1_background}{rgb}{1,1,1}
-\newmdenv[
-  backgroundcolor=graybox1_background,
-  skipabove=\topsep,
-  skipbelow=\topsep,
-  outerlinewidth=0,
-  leftmargin=0,
-  rightmargin=0,
-  roundcorner=5,
-  needspace=0pt,
-]{graybox1mdframed}
-
-\newenvironment{graybox1admon}[1][]{
-\begin{graybox1mdframed}[frametitle=#1]
-}
-{
-\end{graybox1mdframed}
-}
-
-% --- end of definitions of admonition environments ---
-
-% prevent orhpans and widows
-\clubpenalty = 10000
-\widowpenalty = 10000
-
-% #ifndef SECTION_HEADINGS
-% #define SECTION_HEADINGS "std"
-% #else
-% http://www.ctex.org/documents/packages/layout/titlesec.pdf
-\usepackage[compact]{titlesec}  % reduce the spacing above/below the heading
-% #endif
-% #if SECTION_HEADINGS == "blue"
-% --- section/subsection headings with blue color ---
-\definecolor{seccolor}{cmyk}{.9,.5,0,.35}  % siamltexmm.sty section color
-\titleformat{name=\section}
-{\color{seccolor}\normalfont\Large\bfseries}
-{\color{seccolor}\thesection}{1em}{}
-\titleformat{name=\subsection}
-{\color{seccolor}\normalfont\large\bfseries}
-{\color{seccolor}\thesubsection}{1em}{}
-\titleformat{name=\paragraph}[runin]
-{\color{seccolor}\normalfont\normalsize\bfseries}
-{}{}{\indent}
-% #ifdef FANCY_HEADER
-% let the header have a thick gray hrule with section and page in blue above
-\renewcommand{\headrulewidth}{0.4pt}
-\renewcommand{\headrule}{{\color{gray!50}%
-\hrule width\headwidth height\headrulewidth \vskip-\headrulewidth}}
-\fancyhead[LE,RO]{{\color{seccolor}\rightmark}} %section
-\fancyhead[RE,LO]{{\color{seccolor}\thepage}}
-% #endif
-% #elif SECTION_HEADINGS == "strongblue"
-% --- section/subsection headings with a strong blue color ---
-\definecolor{seccolor}{rgb}{0.2,0.2,0.8}
-\titleformat{name=\section}
-{\color{seccolor}\normalfont\Large\bfseries}
-{\color{seccolor}\thesection}{1em}{}
-\titleformat{name=\subsection}
-{\color{seccolor}\normalfont\large\bfseries}
-{\color{seccolor}\thesubsection}{1em}{}
-\titleformat{name=\paragraph}[runin]
-{\color{seccolor}\normalfont\normalsize\bfseries}
-{}{}{\indent}
-% #elif SECTION_HEADINGS == "gray"
-% --- section/subsection headings with white text on gray background ---
-\titleformat{name=\section}[block]
-  {\sffamily\Large}{}{0pt}{\colorsection}
-\titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip}
-
-\newcommand{\colorsection}[1]{%
-  \colorbox{gray!50}{{\color{white}\thesection\ #1}}}
-
-\titleformat{name=\subsection}[block]
-  {\sffamily\large}{}{0pt}{\colorsubsection}
-\titlespacing*{\subsection}{0pt}{\baselineskip}{\baselineskip}
-
-\newcommand{\colorsubsection}[1]{%
-  \colorbox{gray!50}{{\color{white}\thesubsection\ #1}}}
-% #elif SECTION_HEADINGS == "gray-wide"
-% --- section/subsection headings with white text on wide gray background ---
-\titleformat{name=\section}[block]
-  {\sffamily\Large}{}{0pt}{\colorsection}
-\titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip}
-
-\newcommand{\colorsection}[1]{%
-  \colorbox{gray!50}{\parbox{\dimexpr\textwidth-2\fboxsep}%
-           {\color{white}\thesection\ #1}}}
-
-\titleformat{name=\subsection}[block]
-  {\sffamily\large}{}{0pt}{\colorsubsection}
-\titlespacing*{\subsection}{0pt}{\baselineskip}{\baselineskip}
-
-\newcommand{\colorsubsection}[1]{%
-  \colorbox{gray!50}{\parbox{\dimexpr\textwidth-2\fboxsep}%
-           {\color{white}\thesubsection\ #1}}}
-% #endif
-
-% #ifdef COLORED_TABLE_ROWS
-% color every two table rows
-\let\oldtabular\tabular
-\let\endoldtabular\endtabular
-% #if COLORED_TABLE_ROWS not in ("gray", "blue")
-% #define COLORED_TABLE_ROWS gray
-% #endif
-% #else
-% #define COLORED_TABLE_ROWS no
-% #endif
-% #if COLORED_TABLE_ROWS == "gray"
-\definecolor{rowgray}{gray}{0.9}
-\renewenvironment{tabular}{\rowcolors{2}{white}{rowgray}%
-\oldtabular}{\endoldtabular}
-% #elif COLORED_TABLE_ROWS == "blue"
-\definecolor{appleblue}{rgb}{0.93,0.95,1.0}  % Apple blue
-\renewenvironment{tabular}{\rowcolors{2}{white}{appleblue}%
-\oldtabular}{\endoldtabular}
-% #endif
-
-
-% #if LATEX_STYLE not in ("Koma_Script", "Springer_T2")
-% Make sure blank even-numbered pages before new chapters are
-% totally blank with no header
-\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
-%\let\cleardoublepage\clearemptydoublepage % caused error in the toc
-% #endif
-
-% --- end of standard preamble for documents ---
-
-
-% insert custom LaTeX commands...
-
-\raggedbottom
-\makeindex
-
-%-------------------- end preamble ----------------------
-
-\begin{document}
-
-% #endif
-
-\input{newcommands_keep}
-
-% ------------------- main content ----------------------
-
-% Note on the Springer T2 style: used the modifications in t2do.sty
-% and svmonodo.cls (come bundled with Doconce).
-
-
-
-% #if LATEX_STYLE in ("Springer_T2", "Springer_lncse")
-\frontmatter
-\setcounter{page}{3}
-\pagestyle{headings}
-% #endif
-
-% #if LATEX_STYLE == "Springer_lncse"
-% With hyperref loaded, \contentsline needs 3 args
-%\contentsline{chapter}{Bibliography}{829}{chapter.Bib}
-%\contentsline{chapter}{Index}{831}{chapter.Index}
-% #endif
-
-% ----------------- title -------------------------
-
-% #if LATEX_HEADING == "traditional"
-
-% #if SECTION_HEADINGS in ("blue", "strongblue")
-\title{{\color{seccolor} A Test of Doconce a Book with Springer's T2 Style}}
-% #else
-\title{A Test of Doconce a Book with Springer's T2 Style}
-% #endif
-
-% #elif LATEX_HEADING == "titlepage"
-
-\thispagestyle{empty}
-\hbox{\ \ }
-\vfill
-\begin{center}
-{\huge{\bfseries{
-\begin{spacing}{1.25}
-% #if SECTION_HEADINGS in ("blue", "strongblue")
-{\color{seccolor}\rule{\linewidth}{0.5mm}} \\[0.4cm]
-{\color{seccolor}A Test of Doconce a Book with Springer's T2 Style}
-\\[0.4cm] {\color{seccolor}\rule{\linewidth}{0.5mm}} \\[1.5cm]
-% #else
-{\rule{\linewidth}{0.5mm}} \\[0.4cm]
-{A Test of Doconce a Book with Springer's T2 Style}
-\\[0.4cm] {\rule{\linewidth}{0.5mm}} \\[1.5cm]
-% #endif
-\end{spacing}
-}}}
-
-% #elif LATEX_HEADING == "Springer_collection"
-\title*{A Test of Doconce a Book with Springer's T2 Style}
-% Short version of title:
-\titlerunning{A Test of Doconce a Book with Springer's T2 Style}
-
-% #elif LATEX_HEADING == "beamer"
-\title{A Test of Doconce a Book with Springer's T2 Style}
-% #else
-\thispagestyle{empty}
-
-\begin{center}
-{\LARGE\bf
-\begin{spacing}{1.25}
-A Test of Doconce a Book with Springer's T2 Style
-\end{spacing}
-}
-\end{center}
-% #endif
-
-% ----------------- author(s) -------------------------
-% #if LATEX_HEADING == "traditional"
-\author{Hans Petter Langtangen\footnote{Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo.}}
-
-% #elif LATEX_HEADING == "titlepage"
-\vspace{1.3cm}
-
-    {\Large\textsf{Hans Petter Langtangen${}^{1, 2}$}}\\ [3mm]
-    
-\ \\ [2mm]
-
-{\large\textsf{${}^1$Center for Biomedical Computing, Simula Research Laboratory} \\ [1.5mm]}
-{\large\textsf{${}^2$Department of Informatics, University of Oslo} \\ [1.5mm]}
-% #elif LATEX_HEADING == "Springer_collection"
-
-\author{Hans Petter Langtangen}
-% Short version of authors:
-%\authorrunning{...}
-\institute{Hans Petter Langtangen\at Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo}
-
-% #elif LATEX_HEADING == "beamer"
-\author{Hans Petter Langtangen\inst{1,2}}
-\institute{Center for Biomedical Computing, Simula Research Laboratory\inst{1}
-\and
-Department of Informatics, University of Oslo\inst{2}}
-% #else
-
-\begin{center}
-{\bf Hans Petter Langtangen${}^{1, 2}$} \\ [0mm]
-\end{center}
-
-\begin{center}
-% List of all institutions:
-\centerline{{\small ${}^1$Center for Biomedical Computing, Simula Research Laboratory}}
-\centerline{{\small ${}^2$Department of Informatics, University of Oslo}}
-\end{center}
-% #endif
-% ----------------- end author(s) -------------------------
-
-
-% #if LATEX_HEADING == "traditional"
-\date{Jan 32, 2100}
-\maketitle
-% #elif LATEX_HEADING == "beamer"
-\date{Jan 32, 2100
-% <titlepage figure>
-}
-% #elif LATEX_HEADING == "titlepage"
-
-\ \\ [10mm]
-{\large\textsf{Jan 32, 2100}}
-
-\end{center}
-\vfill
-\clearpage
-
-% #else
-\begin{center}
-Jan 32, 2100
-\end{center}
-
-\vspace{1cm}
-
-% #endif
-
-
-\chapter*{Preface}
-\markboth{Preface}{Preface}
-
-The aim of this book is to teach computer programming using examples
-from mathematics and the natural sciences.  We have chosen to use the
-Python programming language because it combines remarkable expressive
-power with very clean, simple, and compact syntax.  Python is easy to
-learn and very well suited for an introduction to computer
-programming. Python is also quite similar to MATLAB and a good
-language for doing mathematical computing.  It is easy to combine
-Python with compiled languages, like Fortran, C, and C++, which are
-widely used languages for scientific computations.  A seamless
-integration of Python with Java is offered by a special version of
-Python called Jython.
-
-The examples in this book integrate programming with applications to
-mathematics, physics, biology, and finance.  The reader is expected to
-have knowledge of basic one-variable calculus as taught in
-mathematics-intensive programs in high schools. It is certainly an
-advantage to take a university calculus course in parallel, preferably
-containing both classical and numerical aspects of calculus.  Although
-not strictly required, a background in high school physics makes many
-of the examples more meaningful.
-
-Many introductory programming books are quite compact and focus on
-listing functionality of a programming language. However, learning to
-program is learning how to \emph{think} as a programmer.  This book
-has its main focus on the thinking process, or equivalently:
-programming as a problem solving technique. That is why most of the
-pages are devoted to case studies in programming, where we define a
-problem and explain how to create the corresponding program.  New
-constructions and programming styles (what we could call theory) is also usually
-introduced via examples.  Special attention is paid to verification of
-programs and to finding errors. These topics are very demanding for
-mathematical software, because the unavoidable numerical
-approximation errors are possibly mixed with programming mistakes.
-
-By studying the many examples in the
-book, I hope readers will learn how to think right and thereby
-write programs in a quicker and more reliable way. Remember, nobody can learn
-programming by just reading - one has to solve a large amount of
-exercises hands on.  The book is therefore full of exercises of
-various types: modifications of existing examples, completely new
-problems, or debugging of given programs.
-
-There is a web page associated with this book, \href{{http://hplgit.github.com/scipro-primer}}{\nolinkurl{http://hplgit.github.com/scipro-primer}}, which lists the software you
-need and explains briefly how to install it.  This page also contains
-all the files associated with the program examples in this book.
-
-\paragraph{Python version 2 or 3?}
-A common problem among Python programmers is to choose between version
-2 or 3, which at the time of this writing means choosing
-between version 2.7 and 3.3.
-The general recommendation is to go for version 3, but programs are
-then not compatible with version 2 and vice versa. There is still
-a problem that much useful mathematical software in Python
-has not yet been ported to version 3. Therefore, scientific computing
-with Python still goes mostly with version 2.
-A widely used strategy for software
-developers who want to write Python code that works with both versions,
-is to develop for v2.7, which is very close to what is accepted
-in version 3, and then
-use the ranslation tool \emph{2to3} to automatically translate the code
-to version 3.
-
-When using v2.7, one should employ the newest syntax
-and modules that make the differences beween version 2 and 3 very small.
-This strategy is adopted in the present book. Only two
-differences between versions 2 and 3 are expected to be significant for
-the programs in the book:
-\code{a/b} implies float division in version 3 if \code{a} and \code{b}
-are integers,
-and \code{print 'Hello'} in version 2 must be turned into a function call
-\code{print('Hello')} in version 3. None of these differences should lead
-to any annoying problems when future readers study the book's v2.7
-examples, but program in version 3. Anyway, running 2to3 on the
-example files generates the corresponding version 3 code.
-
-\paragraph{Acknowledgments.}
-Several people have helped to make substantial improvements of the
-text. Here I list only the names with Norwgian characters to
-test the handling of those: Ståle Zerener Haugnæss,
-Tobias Vidarssønn Langhoff, and Håkon Møller.
-
-\vspace{1cm}
-
-\noindent
-\emph{Oslo, April 2012}  \hfill  \emph{Hans Petter Langtangen}
-
-
-
-
-% #if LATEX_HEADING != "beamer"
-\tableofcontents
-
-% #if LATEX_STYLE == "Springer_lncse"
-\contentsline{chapter}{\refname}{9999}{chapter.Bib}
-\contentsline{chapter}{Index}{9999}{chapter.Index}
-% #endif
-
-
-
-\vspace{1cm} % after toc
-% #endif
-
-% #if LATEX_STYLE == "Springer_T2"
-\mymainmatter
-% #elif LATEX_STYLE == "Springer_lncse"
-\mainmatter
-% #endif
-
-
-
-
-
-
-\chapter{Basic array computing and plotting}
-
-This chapter gives an introduction to arrays: how they are created
-and what they can be used for.  Array computing usually ends up with a
-lot of numbers. It may be very hard to understand what these numbers
-mean by just looking at them. Since the human is a visual animal, a
-good way to understand numbers is to visualize them. In this
-chapter we concentrate on visualizing curves that reflect functions
-of one variable; i.e., curves of the form $y=f(x)$.  A synonym for
-curve is graph, and the image of curves on the screen is often called
-a plot.  We will use arrays to store the information about points
-along the curve. In a nutshell, array computing demands visualization
-and visualization demands arrays.
-
-All program examples in this chapter can be found as files in the
-folder \href{{http://some.where.net/doconce/test/software/plot}}{\nolinkurl{src/plot}\footnote{\texttt{http://some.where.net/doconce/test/software/plot}}}.
-
-\section{Arrays in Python programs}
-
-This section introduces array programming in Python, but first we
-create some lists and show how arrays differ from lists.
-
-\subsection{Using lists for collecting function data}
-\label{sec:plot:listdata}
-
-Suppose we have a function $f(x)$ and want to evaluate this function
-at a number of $x$ points $x_0,x_1,\ldots,x_{n-1}$.  We could collect
-the $n$ pairs $(x_i,f(x_i))$ in a list, or we could collect all the
-$x_i$ values, for $i=0,\ldots,n-1$, in a list and all the associated
-$f(x_i)$ values in another list.  The following interactive session
-demonstrates how to create these three types of lists:
-
-\bpy
->>> def f(x):
-...     return x**3       # sample function
-...
->>> n = 5                 # no of points along the x axis
->>> dx = 1.0/(n-1)        # spacing between x points in [0,1]
->>> xlist = [i*dx for i in range(n)]
->>> ylist = [f(x) for x in xlist]
->>> pairs = [[x, y] for x, y in zip(xlist, ylist)]
-\epy
-Here we have used list comprehensions for achieving compact code. Make
-sure that you understand what is going on in these list comprehensions
-(if not, try to write the same code using standard \code{for} loops and
-appending new list elements in each pass of the loops).
-
-\index{heterogeneous lists}
-
-The list elements consist of objects of the same type: any element in
-\code{pairs} is a list of two \code{float} objects, while any element in \code{xlist}
-or \code{ylist} is a \code{float}. Lists are more flexible than that, because an
-element can be an object of any type, e.g.,
-
-\bpycod
-mylist = [2, 6.0, 'tmp.ps', [0,1]]
-\epycod
-Here \code{mylist} holds an \code{int}, a \code{float}, a string, and a list. This
-combination of diverse object types makes up what is known as
-\emph{heterogeneous} lists.  We can also easily remove elements from a list
-or add new elements anywhere in the list.  This flexibility of lists
-is in general convenient to have as a programmer, but in cases where
-the elements are of the same type and the number of elements is fixed,
-arrays can be used instead. The benefits of arrays are faster
-computations, less memory demands, and extensive support for
-mathematical operations on the data.  Because of greater efficiency
-and mathematical convenience, arrays will be used to a large extent in
-this book.  The great use of arrays is also prominent in other
-programming environments such as MATLAB, Octave, and R, for instance.
-Lists will be our choice instead of arrays when we need the
-flexibility of adding or removing elements or when the elements may be
-of different object types.
-
-
-\begin{quote}
-\emph{People only become computer programmers if they're
-obsessive about details, crave power over machines, and can bear
-to be told day after day exactly how
-stupid they are.} \\
-Gregory J. E. Rawlins \cite{Rawlins_1998}, computer scientist.
-\end{quote}
-
-
-\subsection{Basics of numerical Python arrays}
-\label{sec:plot:array:basics}
-
-\index{Numerical Python} \index{NumPy} \index{numpy@{\rm\texttt{numpy}}}
-\index{array (datatype)} \index{array computing}
-\index{vectorization}
-
-An \emph{array} object can be viewed as a variant of a list, but with the
-following assumptions and features:
-
-\begin{itemize}
-  \item All elements must be of the same type, preferably integer, real, or complex numbers, for efficient numerical computing and storage.
-
-  \item The number of elements must be known when the array is created.
-
-  \item Arrays are not part of standard Python - one needs an additional package called \emph{Numerical Python}, often abbreviated as NumPy. The Python name of the package, to be used in \code{import} statements, is \code{numpy}.
-
-  \item With \code{numpy}, a wide range of mathematical operations can be done directly on complete arrays, thereby removing the need for loops over array elements. This is commonly called \emph{vectorization} %or \emph{array computing} and may cause a dramatic speed-up of Python programs. Vectorization makes use of the vector computing concepts from Section~\ref{sec:plot:arraycomp}.
-
-  \item Arrays with one index are often called vectors. Arrays with two indices are used as an efficient data structure for tables, instead of lists of lists. Arrays can also have three or more indices.
-\end{itemize}
-
-\noindent
-
-\begin{graybox1admon}[Remarks.]
-
-\begin{enumerate}
-\item There is actually an
-   object type called \code{array} in standard Python, but this data type is
-   not so efficient for mathematical computations, and we will not use it
-   in this book.
-
-\item The number of elements in an array \emph{can} be
-   changed, but at a substantial computational cost.
-\end{enumerate}
-
-\noindent
-\end{graybox1admon}
-
-
-
-The following text lists some important functionality of NumPy arrays.
-A more comprehensive treatment is found in the excellent \emph{NumPy
-Tutorial}, \emph{NumPy User Guide}, \emph{NumPy Reference}, \emph{Guide to NumPy},
-and \emph{NumPy for MATLAB Users}, all accessible at \href{{http://scipy.org}}{scipy.org}\footnote{\texttt{http://scipy.org}}.
-
-
-\index{zeros@{\rm\texttt{zeros}} (from {\rm\texttt{numpy}})} \index{np.zeros@{\rm\texttt{np.zeros}} function}
-\index{array@{\rm\texttt{array}} (from {\rm\texttt{numpy}})} \index{np.array@{\rm\texttt{np.array}} function}
-\index{np@{\rm\texttt{np}} prefix ({\rm\texttt{numpy}})}
-\index{zeros\_like@{\rm\texttt{zeros\_like}} (from {\rm\texttt{numpy}})}\index{np.zeros\_like@{\rm\texttt{np.zeros\_like}} function}
-
-
-
-\begin{graybox1admon}[Remarks on importing NumPy.]
-The statement
-
-\bpycod
-import numpy as np
-\epycod
-with subsequent prefixing of all NumPy functions and variables by \code{np.},
-has evolved as a standard syntax in the Python scientific computing
-community. However, to make Python programs look closer to MATLAB
-and ease the transition to and from that language, one can do
-
-\bpycod
-from numpy import *
-\epycod
-to get rid of the prefix (this is evolved as the standard in
-\emph{interactive} Python shells). This author prefers mathematical
-functions from \code{numpy} to be written without the prefix to
-make the formulas as close as possible to the mathematics.
-So, $f(x)=\sinh(x-1)\sin(w t)$ would be coded as
-
-\bpycod
-from numpy import sinh, sin
-
-def f(x):
-    return sinh(x-1)*sin(w*t)
-\epycod
-or one may take the less recommended
-lazy approach \code{from numpy import *} and fill up
-the program with \emph{a lot} of functions and variables from \code{numpy}.
-\end{graybox1admon}
-
-
-
-To convert a list \code{r} to an array,
-we use the \code{array} function
-from \code{numpy}:
-
-\bpycod
-a = np.array(r)
-\epycod
-To create a new array of length \code{n}, filled with zeros, we write
-
-\bpycod
-a = np.zeros(n)
-\epycod
-The array elements are of a type that corresponds to Python's
-\code{float} type. A second argument to \code{np.zeros} can be used to
-specify other element types, e.g., \code{int}.
-A similar function,
-
-\bpycod
-a = np.zeros_like(c)
-\epycod
-generates an array of zeros where the length is that of the array \code{c}
-and the element type is the same as those in \code{c}.  Arrays with more
-than one index are treated in Section~\ref{sec:plot:2Darrays}.
-
-\index{linspace@{\rm\texttt{linspace}} (from {\rm\texttt{numpy}})}\index{np.linspace@{\rm\texttt{np.linspace}} function}
-
-Often one wants an array to have $n$ elements with uniformly
-distributed values in an interval $[p,q]$. The \code{numpy} function
-\code{linspace} creates such arrays:
-
-\bpycod
-a = np.linspace(p, q, n)
-\epycod
-
-
-\chapter{Storing results in data files}
-
-\section{Writing data to file}
-\label{sec:files:writing}
-
-Writing data to file is easy.
-There is basically one function to pay attention to: \code{outfile.write(s)},
-which writes a string \code{s} to
-a file handled by the file object \code{outfile}. Unlike \code{print},
-\code{outfile.write(s)}
-does not append a newline character to the written string.
-It will therefore
-often be necessary to add a newline character,
-
-\bpycod
-outfile.write(s + '\n')
-\epycod
-if the string \code{s} is meant to appear on a single line in the file
-and \code{s} does not already contain a trailing newline character.
-File writing is then a matter of constructing strings containing the
-text we want to have in the file and for each such string call
-\code{outfile.write}.
-
-Writing to a file demands
-the file object \code{f}
-to be opened for writing:
-
-\bpycod
-# write to new file, or overwrite file:
-outfile = open(filename, 'w')
-
-# append to the end of an existing file:
-outfile = open(filename, 'a')
-\epycod
-
-\subsection{Example: Writing a table to file}
-
-\paragraph{Problem.}
-As a worked example of file writing,
-we shall write out a nested list with tabular data to file.
-A sample list may take look as
-
-\bccq
-[[ 0.75,        0.29619813, -0.29619813, -0.75      ],
- [ 0.29619813,  0.11697778, -0.11697778, -0.29619813],
- [-0.29619813, -0.11697778,  0.11697778,  0.29619813],
- [-0.75,       -0.29619813,  0.29619813,  0.75      ]]
-\eccq
-
-\paragraph{Solution.}
-We iterate through the rows (first index) in the list, and for each row,
-we iterate through the column values (second index)
-and write each value to the file.
-At the end of each row, we must insert a newline character in the file to get
-a linebreak. The code resides in the file \href{{http://some.where.net/doconce/test/software/input/write1.py}}{\nolinkurl{write1.py}\footnote{\texttt{http://some.where.net/doconce/test/software/input/write1.py}}}.
-
-The resulting data file becomes
-
-\bdat
-    0.75000000    0.29619813   -0.29619813   -0.75000000
-    0.29619813    0.11697778   -0.11697778   -0.29619813
-   -0.29619813   -0.11697778    0.11697778    0.29619813
-   -0.75000000   -0.29619813    0.29619813    0.75000000
-\edat
-
-An extension of this program consists in adding column and row headings:
-
-\bdat
-           column  1     column  2     column  3     column  4
-row  1    0.75000000    0.29619813   -0.29619813   -0.75000000
-row  2    0.29619813    0.11697778   -0.11697778   -0.29619813
-row  3   -0.29619813   -0.11697778    0.11697778    0.29619813
-row  4   -0.75000000   -0.29619813    0.29619813    0.75000000
-\edat
-To obtain this end result, we need to the add some statements to
-the program \code{write1.py}. For the column headings we need
-to know the number of columns, i.e., the length of the rows,
-and loop from 1 to this length:
-
-\bpycod
-ncolumns = len(data[0])
-outfile.write('          ')
-for i in range(1, ncolumns+1):
-    outfile.write('%10s    ' % ('column %2d' % i))
-outfile.write('\n')
-\epycod
-Note the use of a nested printf construction: The text we want to
-insert is itself a printf string. We could also have written the
-text as \code{'column  ' + str(i)}, but then the length of the
-resulting string would depend on the number of digits in \code{i}.
-It is recommended to always use printf constructions for
-a tabular output format, because this gives automatic padding of
-blanks so that the width of the output strings remain the same.
-As always, the tuning of the widths is done in a trial-and-error
-process.
-
-To add the row headings, we need a counter over the row numbers:
-
-\bpycod
-row_counter = 1
-for row in data:
-    outfile.write('row %2d' % row_counter)
-    for column in row:
-        outfile.write('%14.8f' % column)
-    outfile.write('\n')
-    row_counter += 1
-\epycod
-The complete code is found in the file \href{{http://some.where.net/doconce/test/software/input/write2.py}}{\nolinkurl{write2.py}\footnote{\texttt{http://some.where.net/doconce/test/software/input/write2.py}}}.
-We could, alternatively, iterate over the indices in the list:
-
-\bpycod
-for i in range(len(data)):
-    outfile.write('row %2d' % (i+1))
-    for j in range(len(data[i])):
-        outfile.write('%14.8f' % data[i][j])
-    outfile.write('\n')
-\epycod
-
-
-
-
-\subsection{Standard input and output as file objects}
-
-\index{standard input} \index{standard output}
-
-\index{sys.stdin@{\rm\texttt{sys.stdin}}}\index{sys.stdout@{\rm\texttt{sys.stdout}}}
-
-Reading user input from the keyboard applies the function
-\code{raw_input} as explained in Section~\ref{sec:input:rawinput}.
-The keyboard is a medium that the computer in fact
-treats as a file, referred to
-as \emph{standard input}.
-
-The \code{print} command prints text in the terminal window. This medium
-is also viewed as a file from the computer's point of view and called
-\emph{standard output}. All general-purpose programming languages
-allow reading from standard input and
-writing to standard output. This reading and writing can be done with
-two types of tools, either file-like objects or special tools like
-\code{raw_input}
-and \code{print} in Python.
-We will here describe the file-line objects:
-\code{sys.stdin} for standard input
-and \code{sys.stdout} for standard output. These objects
-behave as file objects, except that they do not need to be opened or
-closed. The statement
-
-\bpycod
-s = raw_input('Give s:')
-\epycod
-is equivalent to
-
-\bpycod
-print 'Give s: ',
-s = sys.stdin.readline()
-\epycod
-Recall that the trailing comma in the \code{print} statement avoids the
-newline that \code{print} by default adds to the output string.
-Similarly,
-
-\bpycod
-s = eval(raw_input('Give s:'))
-\epycod
-is equivalent to
-
-\bpycod
-print 'Give s: ',
-s = eval(sys.stdin.readline())
-\epycod
-For output to the terminal window, the statement
-
-\bpycod
-print s
-\epycod
-is equivalent to
-
-\bpycod
-sys.stdout.write(s + '\n')
-\epycod
-
-Why it is handy to have access to standard input and output
-as file objects can be illustrated by an example. Suppose you have a
-function that reads data from a file object \code{infile}
-and writes data to a file object \code{outfile}.
-A sample function may take the form
-
-\bpycod
-def x2f(infile, outfile, f):
-    for line in infile:
-        x = float(line)
-        y = f(x)
-        outfile.write('%g\n' % y)
-\epycod
-This function works with all types of files, including
-web pages as \code{infile} (see Section~\ref{sec:files:webtxt}).
-With \code{sys.stdin} as \code{infile} and/or \code{sys.stdout}
-as \code{outfile}, the \code{x2f} function also works with standard input
-and/or standard output. Without \code{sys.stdin} and \code{sys.stdout},
-we would need different code, employing \code{raw_input}
-and \code{print},
-to deal with standard input and output. Now we can write a single
-function that deals with all file media in a unified way.
-
-\index{standard error}
-\index{sys.stderr@{\rm\texttt{sys.stderr}}}
-
-There is also something called \emph{standard error}.
-Usually this is the terminal window, just as standard output, but
-programs can distinguish between writing ordinary output to standard
-output and error messages to standard error, and these output media
-can be redirected to, e.g., files such that one can separate
-error messages from ordinary output.
-In Python, standard error is the file-like object \code{sys.stderr}.
-A typical application of \code{sys.stderr} is to report errors:
-
-\bpycod
-if x < 0:
-    sys.stderr.write('Illegal value of x'); sys.exit(1)
-\epycod
-This message to \code{sys.stderr} is an alternative to
-\code{print} or raising an exception.
-
-\paragraph{Redirecting standard input, output, and error.}
-Standard output from a program \code{prog}
-can be redirected to a file
-\code{output} instead of the screen, by
-using the greater than sign:
-
-\bsys
-Terminal> prog > output
-\esys
-Here, \code{prog} can be any
-program, including a Python program run as \code{python myprog.py}.
-Similarly, output to the medium called \emph{standard error}
-can be redirected by
-
-\bsys
-Terminal> prog &> output
-\esys
-For example, error messages are normally written to standard error, which
-is exemplified in this little terminal session on a Unix machine:
-
-\bsys
-Terminal> ls bla-bla1 bla-bla2
-ls: cannot access bla-bla1: No such file or directory
-ls: cannot access bla-bla2: No such file or directory
-Terminal> ls bla-bla1 bla-bla2 &> errors
-Terminal> cat errors  # print the file errors
-ls: cannot access bla-bla1: No such file or directory
-ls: cannot access bla-bla2: No such file or directory
-\esys
-When the program reads from standard input (the keyboard),
-we can equally well redirect
-standard input to a file, say with name \code{raw_input}, such that
-the program reads from this file rather than from the keyboard:
-
-\bsys
-Terminal> prog < input
-\esys
-Combinations are also possible:
-
-\bsys
-Terminal> prog < input > output
-\esys
-
-\paragraph{Note.}
-The redirection of standard output, input, and error
-does not work for Python programs executed with the \code{run}
-command inside IPython, only when executed directly
-in the operating system in a terminal window, or with the same
-command prefixed with an exclamation mark in IPython.
-
-\paragraph{References.}
-To check the bibliography, we need to make citations to a book{TCSE3},
-Matplotlib \cite{Matplotlib:paper}, and more books \cite{Mertz,PythonQt}
-as well as Python itself \cite{Python}, and of course NumPy
-\cite{NumPy}.
-
-
-
-
-\appendix
-
-\chapter{Styles for Springer T2}
-
-The T2 style for Doconce-generated {\LaTeX} should make use of
-slightly modified \code{svmono.cls} and \code{t2.sty} files:
-
-\begin{itemize}
- \item \code{svmonodo.cls}
-
- \item \code{t2do.sty}
-\end{itemize}
-
-\noindent
-\clearemptydoublepage
-\markboth{Bibliography}{Bibliography}
-\thispagestyle{empty}
-
-\bibliographystyle{plain}
-\bibliography{papers}
-
-
-
-% ------------------- end of main content ---------------
-
-
-% #ifdef PREAMBLE
-\clearemptydoublepage
-\markboth{Index}{Index}
-\thispagestyle{empty}
-\printindex
-
-\end{document}
-% #endif
-
-
+NOT FOUND!
 ************** File: Springer_T2/Springer_T2_book.tex *****************
-%%
-%% Automatically generated file from Doconce source
-%% (https://github.com/hplgit/doconce/)
-%%
-
-
-
-
-
-%-------------------- begin preamble ----------------------
-% Style: T2 (Springer)
-% Use svmono.cls with doconce modifications for bibliography
-\documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmonodo}
-
-% Use t2.sty with doconce modifications
-\usepackage{t2do}
-\special{papersize=193mm,260mm}
-
-
-\listfiles               % print all files needed to compile this document
-
-
-\usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
-\usepackage[table]{xcolor}
-\usepackage{bm,microtype}
-
-\usepackage{ptex2tex}
-
-
-\usepackage[T1]{fontenc}
-%\usepackage[latin1]{inputenc}
-\usepackage[utf8]{inputenc}
-\usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
-
-% Hyperlinks in PDF:
-\definecolor{linkcolor}{rgb}{0,0,0.4}
-\usepackage[%
-    colorlinks=true,
-    linkcolor=black,
-    urlcolor=black,
-    citecolor=black,
-    filecolor=black,
-    %filecolor=blue,
-    pdfmenubar=true,
-    pdftoolbar=true,
-    bookmarksdepth=3   % Uncomment (and tweak) for PDF bookmarks with more levels than the TOC
-            ]{hyperref}
-%\hyperbaseurl{}   % hyperlinks are relative to this root
-
-\setcounter{tocdepth}{2}  % number chapter, section, subsection
-
-\usepackage[framemethod=TikZ]{mdframed}
-
-% --- begin definitions of admonition environments ---
-
-% Admonition style "graybox1" is an oval colored box
-\definecolor{graybox1_background}{rgb}{1,1,1}
-\newmdenv[
-  backgroundcolor=graybox1_background,
-  skipabove=\topsep,
-  skipbelow=\topsep,
-  outerlinewidth=0,
-  leftmargin=0,
-  rightmargin=0,
-  roundcorner=5,
-  needspace=0pt,
-]{graybox1mdframed}
-
-\newenvironment{graybox1admon}[1][]{
-\begin{graybox1mdframed}[frametitle=#1]
-}
-{
-\end{graybox1mdframed}
-}
-
-% --- end of definitions of admonition environments ---
-
-% prevent orhpans and widows
-\clubpenalty = 10000
-\widowpenalty = 10000
-
-
-
-
-
-% --- end of standard preamble for documents ---
-
-
-% insert custom LaTeX commands...
-
-\raggedbottom
-\makeindex
-
-%-------------------- end preamble ----------------------
-
-\begin{document}
-
-
-\input{newcommands_keep}
-
-% ------------------- main content ----------------------
-
-% Note on the Springer T2 style: used the modifications in t2do.sty
-% and svmonodo.cls (come bundled with Doconce).
-
-
-
-\frontmatter
-\setcounter{page}{3}
-\pagestyle{headings}
-
-
-% ----------------- title -------------------------
-
-
-\thispagestyle{empty}
-\hbox{\ \ }
-\vfill
-\begin{center}
-{\huge{\bfseries{
-\begin{spacing}{1.25}
-{\rule{\linewidth}{0.5mm}} \\[0.4cm]
-{A Test of Doconce a Book with Springer's T2 Style}
-\\[0.4cm] {\rule{\linewidth}{0.5mm}} \\[1.5cm]
-\end{spacing}
-}}}
-
-
-% ----------------- author(s) -------------------------
-\vspace{1.3cm}
-
-    {\Large\textsf{Hans Petter Langtangen${}^{1, 2}$}}\\ [3mm]
-    
-\ \\ [2mm]
-
-{\large\textsf{${}^1$Center for Biomedical Computing, Simula Research Laboratory} \\ [1.5mm]}
-{\large\textsf{${}^2$Department of Informatics, University of Oslo} \\ [1.5mm]}
-% ----------------- end author(s) -------------------------
-
-
-
-\ \\ [10mm]
-{\large\textsf{Jan 32, 2100}}
-
-\end{center}
-\vfill
-\clearpage
-
-
-
-\chapter*{Preface}
-\markboth{Preface}{Preface}
-
-The aim of this book is to teach computer programming using examples
-from mathematics and the natural sciences.  We have chosen to use the
-Python programming language because it combines remarkable expressive
-power with very clean, simple, and compact syntax.  Python is easy to
-learn and very well suited for an introduction to computer
-programming. Python is also quite similar to MATLAB and a good
-language for doing mathematical computing.  It is easy to combine
-Python with compiled languages, like Fortran, C, and C++, which are
-widely used languages for scientific computations.  A seamless
-integration of Python with Java is offered by a special version of
-Python called Jython.
-
-The examples in this book integrate programming with applications to
-mathematics, physics, biology, and finance.  The reader is expected to
-have knowledge of basic one-variable calculus as taught in
-mathematics-intensive programs in high schools. It is certainly an
-advantage to take a university calculus course in parallel, preferably
-containing both classical and numerical aspects of calculus.  Although
-not strictly required, a background in high school physics makes many
-of the examples more meaningful.
-
-Many introductory programming books are quite compact and focus on
-listing functionality of a programming language. However, learning to
-program is learning how to \emph{think} as a programmer.  This book
-has its main focus on the thinking process, or equivalently:
-programming as a problem solving technique. That is why most of the
-pages are devoted to case studies in programming, where we define a
-problem and explain how to create the corresponding program.  New
-constructions and programming styles (what we could call theory) is also usually
-introduced via examples.  Special attention is paid to verification of
-programs and to finding errors. These topics are very demanding for
-mathematical software, because the unavoidable numerical
-approximation errors are possibly mixed with programming mistakes.
-
-By studying the many examples in the
-book, I hope readers will learn how to think right and thereby
-write programs in a quicker and more reliable way. Remember, nobody can learn
-programming by just reading - one has to solve a large amount of
-exercises hands on.  The book is therefore full of exercises of
-various types: modifications of existing examples, completely new
-problems, or debugging of given programs.
-
-There is a web page associated with this book, \href{{http://hplgit.github.com/scipro-primer}}{\nolinkurl{http://hplgit.github.com/scipro-primer}}, which lists the software you
-need and explains briefly how to install it.  This page also contains
-all the files associated with the program examples in this book.
-
-\paragraph{Python version 2 or 3?}
-A common problem among Python programmers is to choose between version
-2 or 3, which at the time of this writing means choosing
-between version 2.7 and 3.3.
-The general recommendation is to go for version 3, but programs are
-then not compatible with version 2 and vice versa. There is still
-a problem that much useful mathematical software in Python
-has not yet been ported to version 3. Therefore, scientific computing
-with Python still goes mostly with version 2.
-A widely used strategy for software
-developers who want to write Python code that works with both versions,
-is to develop for v2.7, which is very close to what is accepted
-in version 3, and then
-use the ranslation tool \emph{2to3} to automatically translate the code
-to version 3.
-
-When using v2.7, one should employ the newest syntax
-and modules that make the differences beween version 2 and 3 very small.
-This strategy is adopted in the present book. Only two
-differences between versions 2 and 3 are expected to be significant for
-the programs in the book:
-{\fontsize{10pt}{10pt}\Verb!a/b!} implies float division in version 3 if {\fontsize{10pt}{10pt}\Verb!a!} and {\fontsize{10pt}{10pt}\Verb!b!}
-are integers,
-and {\fontsize{10pt}{10pt}\Verb!print 'Hello'!} in version 2 must be turned into a function call
-{\fontsize{10pt}{10pt}\Verb!print('Hello')!} in version 3. None of these differences should lead
-to any annoying problems when future readers study the book's v2.7
-examples, but program in version 3. Anyway, running 2to3 on the
-example files generates the corresponding version 3 code.
-
-\paragraph{Acknowledgments.}
-Several people have helped to make substantial improvements of the
-text. Here I list only the names with Norwgian characters to
-test the handling of those: Ståle Zerener Haugnæss,
-Tobias Vidarssønn Langhoff, and Håkon Møller.
-
-\vspace{1cm}
-
-\noindent
-\emph{Oslo, April 2012}  \hfill  \emph{Hans Petter Langtangen}
-
-
-
-
-\tableofcontents
-
-
-
-
-\vspace{1cm} % after toc
-
-\mymainmatter
-
-
-
-
-
-
-\chapter{Basic array computing and plotting}
-
-This chapter gives an introduction to arrays: how they are created
-and what they can be used for.  Array computing usually ends up with a
-lot of numbers. It may be very hard to understand what these numbers
-mean by just looking at them. Since the human is a visual animal, a
-good way to understand numbers is to visualize them. In this
-chapter we concentrate on visualizing curves that reflect functions
-of one variable; i.e., curves of the form $y=f(x)$.  A synonym for
-curve is graph, and the image of curves on the screen is often called
-a plot.  We will use arrays to store the information about points
-along the curve. In a nutshell, array computing demands visualization
-and visualization demands arrays.
-
-All program examples in this chapter can be found as files in the
-folder \href{{http://some.where.net/doconce/test/software/plot}}{\nolinkurl{src/plot}\footnote{\texttt{http://some.where.net/doconce/test/software/plot}}}.
-
-\section{Arrays in Python programs}
-
-This section introduces array programming in Python, but first we
-create some lists and show how arrays differ from lists.
-
-\subsection{Using lists for collecting function data}
-\label{sec:plot:listdata}
-
-Suppose we have a function $f(x)$ and want to evaluate this function
-at a number of $x$ points $x_0,x_1,\ldots,x_{n-1}$.  We could collect
-the $n$ pairs $(x_i,f(x_i))$ in a list, or we could collect all the
-$x_i$ values, for $i=0,\ldots,n-1$, in a list and all the associated
-$f(x_i)$ values in another list.  The following interactive session
-demonstrates how to create these three types of lists:
-
-\providecommand{\shadedskip}{}
-\definecolor{shadecolor}{rgb}{0.87843, 0.95686, 1.0}
-\renewenvironment{shadedskip}{
-\def\FrameCommand{\colorbox{shadecolor}}\FrameRule0.6pt
-\MakeFramed {\FrameRestore}\vskip3mm}{\vskip0mm\endMakeFramed}
-\providecommand{\shadedquoteBlue}{}
-\renewenvironment{shadedquoteBlue}[1][]{
-\bgroup\rmfamily
-\fboxsep=0mm\relax
-\begin{shadedskip}
-\list{}{\parsep=-2mm\parskip=0mm\topsep=0pt\leftmargin=2mm
-\rightmargin=2\leftmargin\leftmargin=4pt\relax}
-\item\relax}
-{\endlist\end{shadedskip}\egroup}\begin{shadedquoteBlue}
-\fontsize{9pt}{9pt}
-\begin{Verbatim}
->>> def f(x):
-...     return x**3       # sample function
-...
->>> n = 5                 # no of points along the x axis
->>> dx = 1.0/(n-1)        # spacing between x points in [0,1]
->>> xlist = [i*dx for i in range(n)]
->>> ylist = [f(x) for x in xlist]
->>> pairs = [[x, y] for x, y in zip(xlist, ylist)]
-\end{Verbatim}
-\end{shadedquoteBlue}
-\noindent
-Here we have used list comprehensions for achieving compact code. Make
-sure that you understand what is going on in these list comprehensions
-(if not, try to write the same code using standard {\fontsize{10pt}{10pt}\Verb!for!} loops and
-appending new list elements in each pass of the loops).
-
-\index{heterogeneous lists}
-
-The list elements consist of objects of the same type: any element in
-{\fontsize{10pt}{10pt}\Verb!pairs!} is a list of two {\fontsize{10pt}{10pt}\Verb!float!} objects, while any element in {\fontsize{10pt}{10pt}\Verb!xlist!}
-or {\fontsize{10pt}{10pt}\Verb!ylist!} is a {\fontsize{10pt}{10pt}\Verb!float!}. Lists are more flexible than that, because an
-element can be an object of any type, e.g.,
-
-\providecommand{\shadedskip}{}
-\definecolor{shadecolor}{rgb}{0.87843, 0.95686, 1.0}
-\renewenvironment{shadedskip}{
-\def\FrameCommand{\colorbox{shadecolor}}\FrameRule0.6pt
-\MakeFramed {\FrameRestore}\vskip3mm}{\vskip0mm\endMakeFramed}
-\providecommand{\shadedquoteBlue}{}
-\renewenvironment{shadedquoteBlue}[1][]{
-\bgroup\rmfamily
-\fboxsep=0mm\relax
-\begin{shadedskip}
-\list{}{\parsep=-2mm\parskip=0mm\topsep=0pt\leftmargin=2mm
-\rightmargin=2\leftmargin\leftmargin=4pt\relax}
-\item\relax}
-{\endlist\end{shadedskip}\egroup}\begin{shadedquoteBlue}
-\fontsize{9pt}{9pt}
-\begin{Verbatim}
-mylist = [2, 6.0, 'tmp.ps', [0,1]]
-\end{Verbatim}
-\end{shadedquoteBlue}
-\noindent
-Here {\fontsize{10pt}{10pt}\Verb!mylist!} holds an {\fontsize{10pt}{10pt}\Verb!int!}, a {\fontsize{10pt}{10pt}\Verb!float!}, a string, and a list. This
-combination of diverse object types makes up what is known as
-\emph{heterogeneous} lists.  We can also easily remove elements from a list
-or add new elements anywhere in the list.  This flexibility of lists
-is in general convenient to have as a programmer, but in cases where
-the elements are of the same type and the number of elements is fixed,
-arrays can be used instead. The benefits of arrays are faster
-computations, less memory demands, and extensive support for
-mathematical operations on the data.  Because of greater efficiency
-and mathematical convenience, arrays will be used to a large extent in
-this book.  The great use of arrays is also prominent in other
-programming environments such as MATLAB, Octave, and R, for instance.
-Lists will be our choice instead of arrays when we need the
-flexibility of adding or removing elements or when the elements may be
-of different object types.
-
-
-\begin{quote}
-\emph{People only become computer programmers if they're
-obsessive about details, crave power over machines, and can bear
-to be told day after day exactly how
-stupid they are.} \\
-Gregory J. E. Rawlins \cite{Rawlins_1998}, computer scientist.
-\end{quote}
-
-
-\subsection{Basics of numerical Python arrays}
-\label{sec:plot:array:basics}
-
-\index{Numerical Python} \index{NumPy} \index{numpy@{\rm\texttt{numpy}}}
-\index{array (datatype)} \index{array computing}
-\index{vectorization}
-
-An \emph{array} object can be viewed as a variant of a list, but with the
-following assumptions and features:
-
-\begin{itemize}
-  \item All elements must be of the same type, preferably integer, real, or complex numbers, for efficient numerical computing and storage.
-
-  \item The number of elements must be known when the array is created.
-
-  \item Arrays are not part of standard Python - one needs an additional package called \emph{Numerical Python}, often abbreviated as NumPy. The Python name of the package, to be used in {\fontsize{10pt}{10pt}\Verb!import!} statements, is {\fontsize{10pt}{10pt}\Verb!numpy!}.
-
-  \item With {\fontsize{10pt}{10pt}\Verb!numpy!}, a wide range of mathematical operations can be done directly on complete arrays, thereby removing the need for loops over array elements. This is commonly called \emph{vectorization} %or \emph{array computing} and may cause a dramatic speed-up of Python programs. Vectorization makes use of the vector computing concepts from Section~\ref{sec:plot:arraycomp}.
-
-  \item Arrays with one index are often called vectors. Arrays with two indices are used as an efficient data structure for tables, instead of lists of lists. Arrays can also have three or more indices.
-\end{itemize}
-
-\noindent
-
-\begin{graybox1admon}[Remarks.]
-
-\begin{enumerate}
-\item There is actually an
-   object type called {\fontsize{10pt}{10pt}\Verb!array!} in standard Python, but this data type is
-   not so efficient for mathematical computations, and we will not use it
-   in this book.
-
-\item The number of elements in an array \emph{can} be
-   changed, but at a substantial computational cost.
-\end{enumerate}
-
-\noindent
-\end{graybox1admon}
-
-
-
-The following text lists some important functionality of NumPy arrays.
-A more comprehensive treatment is found in the excellent \emph{NumPy
-Tutorial}, \emph{NumPy User Guide}, \emph{NumPy Reference}, \emph{Guide to NumPy},
-and \emph{NumPy for MATLAB Users}, all accessible at \href{{http://scipy.org}}{scipy.org}\footnote{\texttt{http://scipy.org}}.
-
-
-\index{zeros@{\rm\texttt{zeros}} (from {\rm\texttt{numpy}})} \index{np.zeros@{\rm\texttt{np.zeros}} function}
-\index{array@{\rm\texttt{array}} (from {\rm\texttt{numpy}})} \index{np.array@{\rm\texttt{np.array}} function}
-\index{np@{\rm\texttt{np}} prefix ({\rm\texttt{numpy}})}
-\index{zeros\_like@{\rm\texttt{zeros\_like}} (from {\rm\texttt{numpy}})}\index{np.zeros\_like@{\rm\texttt{np.zeros\_like}} function}
-
-
-
-\begin{graybox1admon}[Remarks on importing NumPy.]
-The statement
-
-\begin{shadedquoteBlue}
-\fontsize{9pt}{9pt}
-\begin{Verbatim}
-import numpy as np
-\end{Verbatim}
-\end{shadedquoteBlue}
-\noindent
-with subsequent prefixing of all NumPy functions and variables by {\fontsize{10pt}{10pt}\Verb!np.!},
-has evolved as a standard syntax in the Python scientific computing
-community. However, to make Python programs look closer to MATLAB
-and ease the transition to and from that language, one can do
-
-\begin{shadedquoteBlue}
-\fontsize{9pt}{9pt}
-\begin{Verbatim}
-from numpy import *
-\end{Verbatim}
-\end{shadedquoteBlue}
-\noindent
-to get rid of the prefix (this is evolved as the standard in
-\emph{interactive} Python shells). This author prefers mathematical
-functions from {\fontsize{10pt}{10pt}\Verb!numpy!} to be written without the prefix to
-make the formulas as close as possible to the mathematics.
-So, $f(x)=\sinh(x-1)\sin(w t)$ would be coded as
-
-\begin{shadedquoteBlue}
-\fontsize{9pt}{9pt}
-\begin{Verbatim}
-from numpy import sinh, sin
-
-def f(x):
-    return sinh(x-1)*sin(w*t)
-\end{Verbatim}
-\end{shadedquoteBlue}
-\noindent
-or one may take the less recommended
-lazy approach {\fontsize{10pt}{10pt}\Verb!from numpy import *!} and fill up
-the program with \emph{a lot} of functions and variables from {\fontsize{10pt}{10pt}\Verb!numpy!}.
-\end{graybox1admon}
-
-
-
-To convert a list {\fontsize{10pt}{10pt}\Verb!r!} to an array,
-we use the {\fontsize{10pt}{10pt}\Verb!array!} function
-from {\fontsize{10pt}{10pt}\Verb!numpy!}:
-
-\begin{shadedquoteBlue}
-\fontsize{9pt}{9pt}
-\begin{Verbatim}
-a = np.array(r)
-\end{Verbatim}
-\end{shadedquoteBlue}
-\noindent
-To create a new array of length {\fontsize{10pt}{10pt}\Verb!n!}, filled with zeros, we write
-
-\begin{shadedquoteBlue}
-\fontsize{9pt}{9pt}
-\begin{Verbatim}
-a = np.zeros(n)
-\end{Verbatim}
-\end{shadedquoteBlue}
-\noindent
-The array elements are of a type that corresponds to Python's
-{\fontsize{10pt}{10pt}\Verb!float!} type. A second argument to {\fontsize{10pt}{10pt}\Verb!np.zeros!} can be used to
-specify other element types, e.g., {\fontsize{10pt}{10pt}\Verb!int!}.
-A similar function,
-
-\begin{shadedquoteBlue}
-\fontsize{9pt}{9pt}
-\begin{Verbatim}
-a = np.zeros_like(c)
-\end{Verbatim}
-\end{shadedquoteBlue}
-\noindent
-generates an array of zeros where the length is that of the array {\fontsize{10pt}{10pt}\Verb!c!}
-and the element type is the same as those in {\fontsize{10pt}{10pt}\Verb!c!}.  Arrays with more
-than one index are treated in Section~\ref{sec:plot:2Darrays}.
-
-\index{linspace@{\rm\texttt{linspace}} (from {\rm\texttt{numpy}})}\index{np.linspace@{\rm\texttt{np.linspace}} function}
-
-Often one wants an array to have $n$ elements with uniformly
-distributed values in an interval $[p,q]$. The {\fontsize{10pt}{10pt}\Verb!numpy!} function
-{\fontsize{10pt}{10pt}\Verb!linspace!} creates such arrays:
-
-\begin{shadedquoteBlue}
-\fontsize{9pt}{9pt}
-\begin{Verbatim}
-a = np.linspace(p, q, n)
-\end{Verbatim}
-\end{shadedquoteBlue}
-\noindent
-
-
-\chapter{Storing results in data files}
-
-\section{Writing data to file}
-\label{sec:files:writing}
-
-Writing data to file is easy.
-There is basically one function to pay attention to: {\fontsize{10pt}{10pt}\Verb!outfile.write(s)!},
-which writes a string {\fontsize{10pt}{10pt}\Verb!s!} to
-a file handled by the file object {\fontsize{10pt}{10pt}\Verb!outfile!}. Unlike {\fontsize{10pt}{10pt}\Verb!print!},
-{\fontsize{10pt}{10pt}\Verb!outfile.write(s)!}
-does not append a newline character to the written string.
-It will therefore
-often be necessary to add a newline character,
-
-\begin{shadedquoteBlue}
-\fontsize{9pt}{9pt}
-\begin{Verbatim}
-outfile.write(s + '\n')
-\end{Verbatim}
-\end{shadedquoteBlue}
-\noindent
-if the string {\fontsize{10pt}{10pt}\Verb!s!} is meant to appear on a single line in the file
-and {\fontsize{10pt}{10pt}\Verb!s!} does not already contain a trailing newline character.
-File writing is then a matter of constructing strings containing the
-text we want to have in the file and for each such string call
-{\fontsize{10pt}{10pt}\Verb!outfile.write!}.
-
-Writing to a file demands
-the file object {\fontsize{10pt}{10pt}\Verb!f!}
-to be opened for writing:
-
-\begin{shadedquoteBlue}
-\fontsize{9pt}{9pt}
-\begin{Verbatim}
-# write to new file, or overwrite file:
-outfile = open(filename, 'w')
-
-# append to the end of an existing file:
-outfile = open(filename, 'a')
-\end{Verbatim}
-\end{shadedquoteBlue}
-\noindent
-
-\subsection{Example: Writing a table to file}
-
-\paragraph{Problem.}
-As a worked example of file writing,
-we shall write out a nested list with tabular data to file.
-A sample list may take look as
-
-\begin{Verbatim}[fontsize=\fontsize{9pt}{9pt},tabsize=8,baselinestretch=0.85,fontfamily=tt,xleftmargin=7mm]
-[[ 0.75,        0.29619813, -0.29619813, -0.75      ],
- [ 0.29619813,  0.11697778, -0.11697778, -0.29619813],
- [-0.29619813, -0.11697778,  0.11697778,  0.29619813],
- [-0.75,       -0.29619813,  0.29619813,  0.75      ]]
-\end{Verbatim}
-\noindent
-
-\paragraph{Solution.}
-We iterate through the rows (first index) in the list, and for each row,
-we iterate through the column values (second index)
-and write each value to the file.
-At the end of each row, we must insert a newline character in the file to get
-a linebreak. The code resides in the file \href{{http://some.where.net/doconce/test/software/input/write1.py}}{\nolinkurl{write1.py}\footnote{\texttt{http://some.where.net/doconce/test/software/input/write1.py}}}.
-
-The resulting data file becomes
-
-\begin{Verbatim}[fontsize=\fontsize{9pt}{9pt},tabsize=8,baselinestretch=0.85,fontfamily=tt,xleftmargin=7mm]
-    0.75000000    0.29619813   -0.29619813   -0.75000000
-    0.29619813    0.11697778   -0.11697778   -0.29619813
-   -0.29619813   -0.11697778    0.11697778    0.29619813
-   -0.75000000   -0.29619813    0.29619813    0.75000000
-\end{Verbatim}
-\noindent
-
-An extension of this program consists in adding column and row headings:
-
-\begin{Verbatim}[fontsize=\fontsize{9pt}{9pt},tabsize=8,baselinestretch=0.85,fontfamily=tt,xleftmargin=7mm]
-           column  1     column  2     column  3     column  4
-row  1    0.75000000    0.29619813   -0.29619813   -0.75000000
-row  2    0.29619813    0.11697778   -0.11697778   -0.29619813
-row  3   -0.29619813   -0.11697778    0.11697778    0.29619813
-row  4   -0.75000000   -0.29619813    0.29619813    0.75000000
-\end{Verbatim}
-\noindent
-To obtain this end result, we need to the add some statements to
-the program {\fontsize{10pt}{10pt}\Verb!write1.py!}. For the column headings we need
-to know the number of columns, i.e., the length of the rows,
-and loop from 1 to this length:
-
-\begin{shadedquoteBlue}
-\fontsize{9pt}{9pt}
-\begin{Verbatim}
-ncolumns = len(data[0])
-outfile.write('          ')
-for i in range(1, ncolumns+1):
-    outfile.write('%10s    ' % ('column %2d' % i))
-outfile.write('\n')
-\end{Verbatim}
-\end{shadedquoteBlue}
-\noindent
-Note the use of a nested printf construction: The text we want to
-insert is itself a printf string. We could also have written the
-text as {\fontsize{10pt}{10pt}\Verb!'column  ' + str(i)!}, but then the length of the
-resulting string would depend on the number of digits in {\fontsize{10pt}{10pt}\Verb!i!}.
-It is recommended to always use printf constructions for
-a tabular output format, because this gives automatic padding of
-blanks so that the width of the output strings remain the same.
-As always, the tuning of the widths is done in a trial-and-error
-process.
-
-To add the row headings, we need a counter over the row numbers:
-
-\begin{shadedquoteBlue}
-\fontsize{9pt}{9pt}
-\begin{Verbatim}
-row_counter = 1
-for row in data:
-    outfile.write('row %2d' % row_counter)
-    for column in row:
-        outfile.write('%14.8f' % column)
-    outfile.write('\n')
-    row_counter += 1
-\end{Verbatim}
-\end{shadedquoteBlue}
-\noindent
-The complete code is found in the file \href{{http://some.where.net/doconce/test/software/input/write2.py}}{\nolinkurl{write2.py}\footnote{\texttt{http://some.where.net/doconce/test/software/input/write2.py}}}.
-We could, alternatively, iterate over the indices in the list:
-
-\begin{shadedquoteBlue}
-\fontsize{9pt}{9pt}
-\begin{Verbatim}
-for i in range(len(data)):
-    outfile.write('row %2d' % (i+1))
-    for j in range(len(data[i])):
-        outfile.write('%14.8f' % data[i][j])
-    outfile.write('\n')
-\end{Verbatim}
-\end{shadedquoteBlue}
-\noindent
-
-
-
-
-\subsection{Standard input and output as file objects}
-
-\index{standard input} \index{standard output}
-
-\index{sys.stdin@{\rm\texttt{sys.stdin}}}\index{sys.stdout@{\rm\texttt{sys.stdout}}}
-
-Reading user input from the keyboard applies the function
-{\fontsize{10pt}{10pt}\Verb!raw_input!} as explained in Section~\ref{sec:input:rawinput}.
-The keyboard is a medium that the computer in fact
-treats as a file, referred to
-as \emph{standard input}.
-
-The {\fontsize{10pt}{10pt}\Verb!print!} command prints text in the terminal window. This medium
-is also viewed as a file from the computer's point of view and called
-\emph{standard output}. All general-purpose programming languages
-allow reading from standard input and
-writing to standard output. This reading and writing can be done with
-two types of tools, either file-like objects or special tools like
-{\fontsize{10pt}{10pt}\Verb!raw_input!}
-and {\fontsize{10pt}{10pt}\Verb!print!} in Python.
-We will here describe the file-line objects:
-{\fontsize{10pt}{10pt}\Verb!sys.stdin!} for standard input
-and {\fontsize{10pt}{10pt}\Verb!sys.stdout!} for standard output. These objects
-behave as file objects, except that they do not need to be opened or
-closed. The statement
-
-\begin{shadedquoteBlue}
-\fontsize{9pt}{9pt}
-\begin{Verbatim}
-s = raw_input('Give s:')
-\end{Verbatim}
-\end{shadedquoteBlue}
-\noindent
-is equivalent to
-
-\begin{shadedquoteBlue}
-\fontsize{9pt}{9pt}
-\begin{Verbatim}
-print 'Give s: ',
-s = sys.stdin.readline()
-\end{Verbatim}
-\end{shadedquoteBlue}
-\noindent
-Recall that the trailing comma in the {\fontsize{10pt}{10pt}\Verb!print!} statement avoids the
-newline that {\fontsize{10pt}{10pt}\Verb!print!} by default adds to the output string.
-Similarly,
-
-\begin{shadedquoteBlue}
-\fontsize{9pt}{9pt}
-\begin{Verbatim}
-s = eval(raw_input('Give s:'))
-\end{Verbatim}
-\end{shadedquoteBlue}
-\noindent
-is equivalent to
-
-\begin{shadedquoteBlue}
-\fontsize{9pt}{9pt}
-\begin{Verbatim}
-print 'Give s: ',
-s = eval(sys.stdin.readline())
-\end{Verbatim}
-\end{shadedquoteBlue}
-\noindent
-For output to the terminal window, the statement
-
-\begin{shadedquoteBlue}
-\fontsize{9pt}{9pt}
-\begin{Verbatim}
-print s
-\end{Verbatim}
-\end{shadedquoteBlue}
-\noindent
-is equivalent to
-
-\begin{shadedquoteBlue}
-\fontsize{9pt}{9pt}
-\begin{Verbatim}
-sys.stdout.write(s + '\n')
-\end{Verbatim}
-\end{shadedquoteBlue}
-\noindent
-
-Why it is handy to have access to standard input and output
-as file objects can be illustrated by an example. Suppose you have a
-function that reads data from a file object {\fontsize{10pt}{10pt}\Verb!infile!}
-and writes data to a file object {\fontsize{10pt}{10pt}\Verb!outfile!}.
-A sample function may take the form
-
-\begin{shadedquoteBlue}
-\fontsize{9pt}{9pt}
-\begin{Verbatim}
-def x2f(infile, outfile, f):
-    for line in infile:
-        x = float(line)
-        y = f(x)
-        outfile.write('%g\n' % y)
-\end{Verbatim}
-\end{shadedquoteBlue}
-\noindent
-This function works with all types of files, including
-web pages as {\fontsize{10pt}{10pt}\Verb!infile!} (see Section~\ref{sec:files:webtxt}).
-With {\fontsize{10pt}{10pt}\Verb!sys.stdin!} as {\fontsize{10pt}{10pt}\Verb!infile!} and/or {\fontsize{10pt}{10pt}\Verb!sys.stdout!}
-as {\fontsize{10pt}{10pt}\Verb!outfile!}, the {\fontsize{10pt}{10pt}\Verb!x2f!} function also works with standard input
-and/or standard output. Without {\fontsize{10pt}{10pt}\Verb!sys.stdin!} and {\fontsize{10pt}{10pt}\Verb!sys.stdout!},
-we would need different code, employing {\fontsize{10pt}{10pt}\Verb!raw_input!}
-and {\fontsize{10pt}{10pt}\Verb!print!},
-to deal with standard input and output. Now we can write a single
-function that deals with all file media in a unified way.
-
-\index{standard error}
-\index{sys.stderr@{\rm\texttt{sys.stderr}}}
-
-There is also something called \emph{standard error}.
-Usually this is the terminal window, just as standard output, but
-programs can distinguish between writing ordinary output to standard
-output and error messages to standard error, and these output media
-can be redirected to, e.g., files such that one can separate
-error messages from ordinary output.
-In Python, standard error is the file-like object {\fontsize{10pt}{10pt}\Verb!sys.stderr!}.
-A typical application of {\fontsize{10pt}{10pt}\Verb!sys.stderr!} is to report errors:
-
-\begin{shadedquoteBlue}
-\fontsize{9pt}{9pt}
-\begin{Verbatim}
-if x < 0:
-    sys.stderr.write('Illegal value of x'); sys.exit(1)
-\end{Verbatim}
-\end{shadedquoteBlue}
-\noindent
-This message to {\fontsize{10pt}{10pt}\Verb!sys.stderr!} is an alternative to
-{\fontsize{10pt}{10pt}\Verb!print!} or raising an exception.
-
-\paragraph{Redirecting standard input, output, and error.}
-Standard output from a program {\fontsize{10pt}{10pt}\Verb!prog!}
-can be redirected to a file
-{\fontsize{10pt}{10pt}\Verb!output!} instead of the screen, by
-using the greater than sign:
-
-\vspace{4pt}
-\begin{Verbatim}[numbers=none,frame=lines,label=\fbox{{\tiny Terminal}},fontsize=\fontsize{9pt}{9pt},labelposition=topline,framesep=2.5mm,framerule=0.7pt]
-Terminal> prog > output
-\end{Verbatim}
-Here, {\fontsize{10pt}{10pt}\Verb!prog!} can be any
-program, including a Python program run as {\fontsize{10pt}{10pt}\Verb!python myprog.py!}.
-Similarly, output to the medium called \emph{standard error}
-can be redirected by
-
-\vspace{4pt}
-\begin{Verbatim}[numbers=none,frame=lines,label=\fbox{{\tiny Terminal}},fontsize=\fontsize{9pt}{9pt},labelposition=topline,framesep=2.5mm,framerule=0.7pt]
-Terminal> prog &> output
-\end{Verbatim}
-For example, error messages are normally written to standard error, which
-is exemplified in this little terminal session on a Unix machine:
-
-\vspace{4pt}
-\begin{Verbatim}[numbers=none,frame=lines,label=\fbox{{\tiny Terminal}},fontsize=\fontsize{9pt}{9pt},labelposition=topline,framesep=2.5mm,framerule=0.7pt]
-Terminal> ls bla-bla1 bla-bla2
-ls: cannot access bla-bla1: No such file or directory
-ls: cannot access bla-bla2: No such file or directory
-Terminal> ls bla-bla1 bla-bla2 &> errors
-Terminal> cat errors  # print the file errors
-ls: cannot access bla-bla1: No such file or directory
-ls: cannot access bla-bla2: No such file or directory
-\end{Verbatim}
-When the program reads from standard input (the keyboard),
-we can equally well redirect
-standard input to a file, say with name {\fontsize{10pt}{10pt}\Verb!raw_input!}, such that
-the program reads from this file rather than from the keyboard:
-
-\vspace{4pt}
-\begin{Verbatim}[numbers=none,frame=lines,label=\fbox{{\tiny Terminal}},fontsize=\fontsize{9pt}{9pt},labelposition=topline,framesep=2.5mm,framerule=0.7pt]
-Terminal> prog < input
-\end{Verbatim}
-Combinations are also possible:
-
-\vspace{4pt}
-\begin{Verbatim}[numbers=none,frame=lines,label=\fbox{{\tiny Terminal}},fontsize=\fontsize{9pt}{9pt},labelposition=topline,framesep=2.5mm,framerule=0.7pt]
-Terminal> prog < input > output
-\end{Verbatim}
-
-\paragraph{Note.}
-The redirection of standard output, input, and error
-does not work for Python programs executed with the {\fontsize{10pt}{10pt}\Verb!run!}
-command inside IPython, only when executed directly
-in the operating system in a terminal window, or with the same
-command prefixed with an exclamation mark in IPython.
-
-\paragraph{References.}
-To check the bibliography, we need to make citations to a book{TCSE3},
-Matplotlib \cite{Matplotlib:paper}, and more books \cite{Mertz,PythonQt}
-as well as Python itself \cite{Python}, and of course NumPy
-\cite{NumPy}.
-
-
-
-
-\appendix
-
-\chapter{Styles for Springer T2}
-
-The T2 style for Doconce-generated {\LaTeX} should make use of
-slightly modified {\fontsize{10pt}{10pt}\Verb!svmono.cls!} and {\fontsize{10pt}{10pt}\Verb!t2.sty!} files:
-
-\begin{itemize}
- \item {\fontsize{10pt}{10pt}\Verb!svmonodo.cls!}
-
- \item {\fontsize{10pt}{10pt}\Verb!t2do.sty!}
-\end{itemize}
-
-\noindent
-\clearemptydoublepage
-\markboth{Bibliography}{Bibliography}
-\thispagestyle{empty}
-
-\bibliographystyle{plain}
-\bibliography{papers}
-
-
-
-% ------------------- end of main content ---------------
-
-
-\clearemptydoublepage
-\markboth{Index}{Index}
-\thispagestyle{empty}
-\printindex
-
-\end{document}
-
+NOT FOUND!
 ************** File: tmp_Doconce.do.txt *****************
 
 TITLE: My Test of Class Doconce
@@ -71328,8 +66531,8 @@ doconce > doconce_program.sh
 system doconce format html quickref --no_pygments_html --no_preprocess
 
 # latex (shpro because of @@@CODE copy, need minted style)
-system doconce format latex quickref --no_preprocess
-system doconce ptex2tex quickref -DMINTED -DHELVETICA envir=Verbatim
+system doconce format latex quickref --no_preprocess --latex_font=helvetica
+system doconce ptex2tex quickref envir=Verbatim
 # cannot run ptex2tex since it always runs preprocess
 system latex -shell-escape quickref.tex
 latex -shell-escape quickref.tex
@@ -71736,6 +66939,7 @@ Computer code can also be copied from a file:
  @@@CODE doconce_program.sh
  @@@CODE doconce_program.sh  fromto: doconce clean@^doconce split_rst
  @@@CODE doconce_program.sh  from-to: doconce clean@^doconce split_rst
+ @@@CODE doconce_program.sh  envir=shpro fromto: name=@
 !ec
 The `@@@CODE` identifier must appear at the very beginning of the line.
 The first specification copies the complete file `doconce_program.sh`.
@@ -71746,13 +66950,16 @@ The third specification behaves as the second, but the line matching
 the first regular expression is not copied (aimed at copying
 text between begin-end comment pair in the file).
 
-The copied line from file are in this example put inside `!bc shpro`
+The copied lines from file are in this example put inside `!bc shpro`
 and `!ec` directives, if a complete file is copied, while the
 directives become `!bc shcod` and `!ec` when a code snippet is copied
 from file. In general, for a filename extension `.X`, the environment
 becomes `!bc Xpro` or `!bc Xcod` for a complete program or snippet,
 respectively. The enivorments (`Xcod` and `Xpro`) are only active
-for `latex` and `sphinx` outout.
+for `latex`, `pdflatex`, html`, and `sphinx` outout.
+The fourth specification above specifies the code environment
+explicitly such that the becomes `shpro` even if we copy a part
+of the file (here from `name=` until the end of the file).
 
 Important warnings:
 
@@ -72782,6 +67989,7 @@ Computer code can also be copied from a file:
 <pre><code> @@@CODE doconce_program.sh
  @@@CODE doconce_program.sh  fromto: doconce clean@^doconce split_rst
  @@@CODE doconce_program.sh  from-to: doconce clean@^doconce split_rst
+ @@@CODE doconce_program.sh  envir=shpro fromto: name=@
 </code></pre>
 <!-- end verbatim block -->
 The <code>@@@CODE</code> identifier must appear at the very beginning of the line.
@@ -72794,13 +68002,16 @@ the first regular expression is not copied (aimed at copying
 text between begin-end comment pair in the file).
 
 <p>
-The copied line from file are in this example put inside <code>!bc shpro</code>
+The copied lines from file are in this example put inside <code>!bc shpro</code>
 and <code>!ec</code> directives, if a complete file is copied, while the
 directives become <code>!bc shcod</code> and <code>!ec</code> when a code snippet is copied
 from file. In general, for a filename extension <code>.X</code>, the environment
 becomes <code>!bc Xpro</code> or <code>!bc Xcod</code> for a complete program or snippet,
 respectively. The enivorments (<code>Xcod</code> and <code>Xpro</code>) are only active
-for <code>latex</code> and <code>sphinx</code> outout.
+for <code>latex</code>, <code>pdflatex</code>, html`, and <code>sphinx</code> outout.
+The fourth specification above specifies the code environment
+explicitly such that the becomes <code>shpro</code> even if we copy a part
+of the file (here from <code>name=</code> until the end of the file).
 
 <p>
 Important warnings:
@@ -73559,8 +68770,8 @@ examine the Doconce source and the <code>doc/src/make.sh</code> script).
 %% (The ptex2tex program: http://code.google.com/p/ptex2tex)
 %% Many preprocess options can be added to ptex2tex or doconce ptex2tex
 %%
-%%      ptex2tex -DMINTED -DPALATINO -DA6PAPER -DLATEX_HEADING=traditional myfile
-%%      doconce ptex2tex myfile -DLATEX_HEADING=titlepage envir=minted
+%%      ptex2tex -DMINTED myfile
+%%      doconce ptex2tex myfile envir=minted
 %%
 %% ptex2tex will typeset code environments according to a global or local
 %% .ptex2tex.cfg configure file. doconce ptex2tex will typeset code
@@ -73569,74 +68780,17 @@ examine the Doconce source and the <code>doc/src/make.sh</code> script).
 %% minted style without needing -DMINTED.
 % #endif
 
-% #ifndef LATEX_STYLE
-% #define LATEX_STYLE "std"
-% #endif
-
-% #ifndef LATEX_HEADING
-% #define LATEX_HEADING "doconce_heading"
-% #endif
-
-% #ifndef PREAMBLE
-% #if LATEX_HEADING == "Springer_collection"
-% #undef PREAMBLE
-% #else
 % #define PREAMBLE
-% #endif
-% #endif
-
 
 % #ifdef PREAMBLE
 %-------------------- begin preamble ----------------------
-% #if LATEX_STYLE == "std"
 
 \documentclass[%
 twoside,                 % oneside: electronic viewing, twoside: printing
 final,                   % or draft (marks overfull hboxes, figures with paths)
 10pt]{article}
 
-% #elif LATEX_STYLE == "Springer_lncse"
-% Style: Lecture Notes in Computational Science and Engineering (Springer)
-\documentclass[envcountsect,open=right]{lncse}
-\pagestyle{headings}
-% #elif LATEX_STYLE == "Springer_T2"
-% Style: T2 (Springer)
-% Use svmono.cls with doconce modifications for bibliography
-\documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmonodo}
-
-% Use t2.sty with doconce modifications
-\usepackage{t2do}
-\special{papersize=193mm,260mm}
-
-% #elif LATEX_STYLE == "Springer_llcse"
-% Style: Lecture Notes in Computer Science (Springer)
-\documentclass[oribib]{llncs}
-% #elif LATEX_STYLE == "Koma_Script"
-% Style: Koma-Script
-\documentclass[10pt]{scrartcl}
-% #elif LATEX_STYLE == "siamltex"
-% Style: SIAM LaTeX2e
-\documentclass[leqno]{siamltex}
-% #elif LATEX_STYLE == "siamltexmm"
-% Style: SIAM LaTeX2e multimedia
-\documentclass[leqno]{siamltexmm}
-% #endif
-
 \listfiles               % print all files needed to compile this document
-
-% #ifdef A4PAPER
-\usepackage[a4paper]{geometry}
-% #endif
-% #ifdef A6PAPER
-% a6paper is suitable for mobile devices
-\usepackage[%
-  a6paper,
-  text={90mm,130mm},
-  inner={5mm},           % inner margin (two sided documents)
-  top=5mm,
-  headsep=4mm
-  ]{geometry}
-% #endif
 
 \usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
@@ -73687,16 +68841,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
-% #ifdef HELVETICA
+
 % Set helvetica as the default font family:
 \RequirePackage{helvet}
 \renewcommand\familydefault{phv}
-% #endif
-% #ifdef PALATINO
-% Set palatino as the default font family:
-\usepackage[sc]{mathpazo}    % Palatino fonts
-\linespread{1.05}            % Palatino needs extra line spread to look nice
-% #endif
+
 % #endif
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
@@ -73731,49 +68880,9 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 % 3. enable begin{figure}[H] (often leads to ugly pagebreaks)
 %\usepackage{float}\restylefloat{figure}
 
-
-% #ifdef TODONOTES
-% enable inline (doconce) comments to be typeset with the todonotes package
-\usepackage{ifthen,xkeyval,tikz,calc,graphicx}
-\usepackage[shadow]{todonotes}
-\newcommand{\shortinlinecomment}[3]{%
-\todo[size=\normalsize,fancyline,color=orange!40,caption={#3}]{%
- \begin{spacing}{0.75}{\bf #1}: #2\end{spacing}}}
-\newcommand{\longinlinecomment}[3]{%
-\todo[inline,color=orange!40,caption={#3}]{{\bf #1}: #2}}
-% #else
 % newcommands for typesetting inline (doconce) comments
 \newcommand{\shortinlinecomment}[3]{{\bf #1}: \emph{#2}}
 \newcommand{\longinlinecomment}[3]{{\bf #1}: \emph{#2}}
-% #endif
-
-% #ifdef LINENUMBERS
-\usepackage[mathlines]{lineno}  % show line numbers
-\linenumbers
-% #endif
-
-% #ifdef LABELS_IN_MARGIN
-% Display labels for sections, equations, and citations in the margin
-\usepackage{showlabels}
-\showlabels{cite}
-% #endif
-
-% #ifdef DOUBLE_SPACING
-\onehalfspacing    % from setspace package
-%\doublespacing
-% #endif
-
-% #ifdef FANCY_HEADER
-% --- fancyhdr package for fancy headers ---
-\usepackage{fancyhdr}
-\fancyhf{}
-% section name to the left (L) and page number to the right (R)
-% on even (E) pages, the other way around on odd pages
-\fancyhead[LE,RO]{\rightmark} %section
-\fancyhead[RE,LO]{\thepage}
-\pagestyle{fancy}
-% #endif
-
 
 \usepackage[framemethod=TikZ]{mdframed}
 
@@ -73805,108 +68914,13 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \clubpenalty = 10000
 \widowpenalty = 10000
 
-% #ifndef SECTION_HEADINGS
-% #define SECTION_HEADINGS "std"
-% #else
-% http://www.ctex.org/documents/packages/layout/titlesec.pdf
-\usepackage[compact]{titlesec}  % reduce the spacing above/below the heading
-% #endif
-% #if SECTION_HEADINGS == "blue"
-% --- section/subsection headings with blue color ---
-\definecolor{seccolor}{cmyk}{.9,.5,0,.35}  % siamltexmm.sty section color
-\titleformat{name=\section}
-{\color{seccolor}\normalfont\Large\bfseries}
-{\color{seccolor}\thesection}{1em}{}
-\titleformat{name=\subsection}
-{\color{seccolor}\normalfont\large\bfseries}
-{\color{seccolor}\thesubsection}{1em}{}
-\titleformat{name=\paragraph}[runin]
-{\color{seccolor}\normalfont\normalsize\bfseries}
-{}{}{\indent}
-% #ifdef FANCY_HEADER
-% let the header have a thick gray hrule with section and page in blue above
-\renewcommand{\headrulewidth}{0.4pt}
-\renewcommand{\headrule}{{\color{gray!50}%
-\hrule width\headwidth height\headrulewidth \vskip-\headrulewidth}}
-\fancyhead[LE,RO]{{\color{seccolor}\rightmark}} %section
-\fancyhead[RE,LO]{{\color{seccolor}\thepage}}
-% #endif
-% #elif SECTION_HEADINGS == "strongblue"
-% --- section/subsection headings with a strong blue color ---
-\definecolor{seccolor}{rgb}{0.2,0.2,0.8}
-\titleformat{name=\section}
-{\color{seccolor}\normalfont\Large\bfseries}
-{\color{seccolor}\thesection}{1em}{}
-\titleformat{name=\subsection}
-{\color{seccolor}\normalfont\large\bfseries}
-{\color{seccolor}\thesubsection}{1em}{}
-\titleformat{name=\paragraph}[runin]
-{\color{seccolor}\normalfont\normalsize\bfseries}
-{}{}{\indent}
-% #elif SECTION_HEADINGS == "gray"
-% --- section/subsection headings with white text on gray background ---
-\titleformat{name=\section}[block]
-  {\sffamily\Large}{}{0pt}{\colorsection}
-\titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip}
-
-\newcommand{\colorsection}[1]{%
-  \colorbox{gray!50}{{\color{white}\thesection\ #1}}}
-
-\titleformat{name=\subsection}[block]
-  {\sffamily\large}{}{0pt}{\colorsubsection}
-\titlespacing*{\subsection}{0pt}{\baselineskip}{\baselineskip}
-
-\newcommand{\colorsubsection}[1]{%
-  \colorbox{gray!50}{{\color{white}\thesubsection\ #1}}}
-% #elif SECTION_HEADINGS == "gray-wide"
-% --- section/subsection headings with white text on wide gray background ---
-\titleformat{name=\section}[block]
-  {\sffamily\Large}{}{0pt}{\colorsection}
-\titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip}
-
-\newcommand{\colorsection}[1]{%
-  \colorbox{gray!50}{\parbox{\dimexpr\textwidth-2\fboxsep}%
-           {\color{white}\thesection\ #1}}}
-
-\titleformat{name=\subsection}[block]
-  {\sffamily\large}{}{0pt}{\colorsubsection}
-\titlespacing*{\subsection}{0pt}{\baselineskip}{\baselineskip}
-
-\newcommand{\colorsubsection}[1]{%
-  \colorbox{gray!50}{\parbox{\dimexpr\textwidth-2\fboxsep}%
-           {\color{white}\thesubsection\ #1}}}
-% #endif
-
-% #ifdef COLORED_TABLE_ROWS
-% color every two table rows
-\let\oldtabular\tabular
-\let\endoldtabular\endtabular
-% #if COLORED_TABLE_ROWS not in ("gray", "blue")
-% #define COLORED_TABLE_ROWS gray
-% #endif
-% #else
-% #define COLORED_TABLE_ROWS no
-% #endif
-% #if COLORED_TABLE_ROWS == "gray"
-\definecolor{rowgray}{gray}{0.9}
-\renewenvironment{tabular}{\rowcolors{2}{white}{rowgray}%
-\oldtabular}{\endoldtabular}
-% #elif COLORED_TABLE_ROWS == "blue"
-\definecolor{appleblue}{rgb}{0.93,0.95,1.0}  % Apple blue
-\renewenvironment{tabular}{\rowcolors{2}{white}{appleblue}%
-\oldtabular}{\endoldtabular}
-% #endif
-
-
 \newenvironment{doconceexercise}{}{}
 \newcounter{doconceexercisecounter}
 
-% #if LATEX_STYLE not in ("Koma_Script", "Springer_T2")
 % Make sure blank even-numbered pages before new chapters are
 % totally blank with no header
 \newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
 %\let\cleardoublepage\clearemptydoublepage % caused error in the toc
-% #endif
 
 % --- end of standard preamble for documents ---
 
@@ -73927,56 +68941,8 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 
 
-% #if LATEX_STYLE in ("Springer_T2", "Springer_lncse")
-\frontmatter
-\setcounter{page}{3}
-\pagestyle{headings}
-% #endif
-
-% #if LATEX_STYLE == "Springer_lncse"
-% With hyperref loaded, \contentsline needs 3 args
-%\contentsline{chapter}{Bibliography}{829}{chapter.Bib}
-%\contentsline{chapter}{Index}{831}{chapter.Index}
-% #endif
-
 % ----------------- title -------------------------
 
-% #if LATEX_HEADING == "traditional"
-
-% #if SECTION_HEADINGS in ("blue", "strongblue")
-\title{{\color{seccolor} Doconce Quick Reference}}
-% #else
-\title{Doconce Quick Reference}
-% #endif
-
-% #elif LATEX_HEADING == "titlepage"
-
-\thispagestyle{empty}
-\hbox{\ \ }
-\vfill
-\begin{center}
-{\huge{\bfseries{
-\begin{spacing}{1.25}
-% #if SECTION_HEADINGS in ("blue", "strongblue")
-{\color{seccolor}\rule{\linewidth}{0.5mm}} \\[0.4cm]
-{\color{seccolor}Doconce Quick Reference}
-\\[0.4cm] {\color{seccolor}\rule{\linewidth}{0.5mm}} \\[1.5cm]
-% #else
-{\rule{\linewidth}{0.5mm}} \\[0.4cm]
-{Doconce Quick Reference}
-\\[0.4cm] {\rule{\linewidth}{0.5mm}} \\[1.5cm]
-% #endif
-\end{spacing}
-}}}
-
-% #elif LATEX_HEADING == "Springer_collection"
-\title*{Doconce Quick Reference}
-% Short version of title:
-\titlerunning{Doconce Quick Reference}
-
-% #elif LATEX_HEADING == "beamer"
-\title{Doconce Quick Reference}
-% #else
 \thispagestyle{empty}
 
 \begin{center}
@@ -73986,97 +68952,32 @@ Doconce Quick Reference
 \end{spacing}
 }
 \end{center}
-% #endif
 
 % ----------------- author(s) -------------------------
-% #if LATEX_HEADING == "traditional"
-\author{Hans Petter Langtangen\footnote{Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo.}}
-
-% #elif LATEX_HEADING == "titlepage"
-\vspace{1.3cm}
-
-    {\Large\textsf{Hans Petter Langtangen${}^{1, 2}$}}\\ [3mm]
-    
-\ \\ [2mm]
-
-{\large\textsf{${}^1$Center for Biomedical Computing, Simula Research Laboratory} \\ [1.5mm]}
-{\large\textsf{${}^2$Department of Informatics, University of Oslo} \\ [1.5mm]}
-% #elif LATEX_HEADING == "Springer_collection"
-
-\author{Hans Petter Langtangen}
-% Short version of authors:
-%\authorrunning{...}
-\institute{Hans Petter Langtangen\at Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo}
-
-% #elif LATEX_HEADING == "beamer"
-\author{Hans Petter Langtangen\inst{1,2}}
-\institute{Center for Biomedical Computing, Simula Research Laboratory\inst{1}
-\and
-Department of Informatics, University of Oslo\inst{2}}
-% #else
 
 \begin{center}
 {\bf Hans Petter Langtangen${}^{1, 2}$} \\ [0mm]
 \end{center}
 
-\begin{center}
+    \begin{center}
 % List of all institutions:
 \centerline{{\small ${}^1$Center for Biomedical Computing, Simula Research Laboratory}}
 \centerline{{\small ${}^2$Department of Informatics, University of Oslo}}
 \end{center}
-% #endif
+
 % ----------------- end author(s) -------------------------
 
-
-% #if LATEX_HEADING == "traditional"
-\date{Jan 32, 2100}
-\maketitle
-% #elif LATEX_HEADING == "beamer"
-\date{Jan 32, 2100
-% <titlepage figure>
-}
-% #elif LATEX_HEADING == "titlepage"
-
-\ \\ [10mm]
-{\large\textsf{Jan 32, 2100}}
-
-\end{center}
-\vfill
-\clearpage
-
-% #else
 \begin{center}
 Jan 32, 2100
 \end{center}
 
 \vspace{1cm}
 
-% #endif
 
-
-% #if LATEX_HEADING != "beamer"
 \tableofcontents
-
-% #if LATEX_STYLE == "Springer_lncse"
-\contentsline{chapter}{\refname}{9999}{chapter.Bib}
-\contentsline{chapter}{Index}{9999}{chapter.Index}
-% #endif
-
-
-% #ifdef TODONOTES
-\listoftodos[List of inline comments]
-% #endif
 
 
 \vspace{1cm} % after toc
-% #endif
-
-% #if LATEX_STYLE == "Springer_T2"
-\mymainmatter
-% #elif LATEX_STYLE == "Springer_lncse"
-\mainmatter
-% #endif
-
 
 
 
@@ -74437,6 +69338,7 @@ Computer code can also be copied from a file:
  @@@CODE doconce_program.sh
  @@@CODE doconce_program.sh  fromto: doconce clean@^doconce split_rst
  @@@CODE doconce_program.sh  from-to: doconce clean@^doconce split_rst
+ @@@CODE doconce_program.sh  envir=shpro fromto: name=@
 \eccq
 The \code{@@@CODE} identifier must appear at the very beginning of the line.
 The first specification copies the complete file \code{doconce_program.sh}.
@@ -74447,13 +69349,16 @@ The third specification behaves as the second, but the line matching
 the first regular expression is not copied (aimed at copying
 text between begin-end comment pair in the file).
 
-The copied line from file are in this example put inside \code{!bc shpro}
+The copied lines from file are in this example put inside \code{!bc shpro}
 and \code{!ec} directives, if a complete file is copied, while the
 directives become \code{!bc shcod} and \code{!ec} when a code snippet is copied
 from file. In general, for a filename extension \code{.X}, the environment
 becomes \code{!bc Xpro} or \code{!bc Xcod} for a complete program or snippet,
 respectively. The enivorments (\code{Xcod} and \code{Xpro}) are only active
-for \code{latex} and \code{sphinx} outout.
+for \code{latex}, \code{pdflatex}, html`, and \code{sphinx} outout.
+The fourth specification above specifies the code environment
+explicitly such that the becomes \code{shpro} even if we copy a part
+of the file (here from \code{name=} until the end of the file).
 
 Important warnings:
 
@@ -75528,6 +70433,7 @@ Computer code can also be copied from a file::
          @@@CODE doconce_program.sh
          @@@CODE doconce_program.sh  fromto: doconce clean@^doconce split_rst
          @@@CODE doconce_program.sh  from-to: doconce clean@^doconce split_rst
+         @@@CODE doconce_program.sh  envir=shpro fromto: name=@
 
 The ``@@@CODE`` identifier must appear at the very beginning of the line.
 The first specification copies the complete file ``doconce_program.sh``.
@@ -75538,13 +70444,16 @@ The third specification behaves as the second, but the line matching
 the first regular expression is not copied (aimed at copying
 text between begin-end comment pair in the file).
 
-The copied line from file are in this example put inside ``!bc shpro``
+The copied lines from file are in this example put inside ``!bc shpro``
 and ``!ec`` directives, if a complete file is copied, while the
 directives become ``!bc shcod`` and ``!ec`` when a code snippet is copied
 from file. In general, for a filename extension ``.X``, the environment
 becomes ``!bc Xpro`` or ``!bc Xcod`` for a complete program or snippet,
 respectively. The enivorments (``Xcod`` and ``Xpro``) are only active
-for ``latex`` and ``sphinx`` outout.
+for ``latex``, ``pdflatex``, html`, and ``sphinx`` outout.
+The fourth specification above specifies the code environment
+explicitly such that the becomes ``shpro`` even if we copy a part
+of the file (here from ``name=`` until the end of the file).
 
 Important warnings:
 
@@ -76626,6 +71535,7 @@ Computer code can also be copied from a file:
          @@@CODE doconce_program.sh
          @@@CODE doconce_program.sh  fromto: doconce clean@^doconce split_rst
          @@@CODE doconce_program.sh  from-to: doconce clean@^doconce split_rst
+         @@@CODE doconce_program.sh  envir=shpro fromto: name=@
 
 The ``@@@CODE`` identifier must appear at the very beginning of the line.
 The first specification copies the complete file ``doconce_program.sh``.
@@ -76636,13 +71546,16 @@ The third specification behaves as the second, but the line matching
 the first regular expression is not copied (aimed at copying
 text between begin-end comment pair in the file).
 
-The copied line from file are in this example put inside ``!bc shpro``
+The copied lines from file are in this example put inside ``!bc shpro``
 and ``!ec`` directives, if a complete file is copied, while the
 directives become ``!bc shcod`` and ``!ec`` when a code snippet is copied
 from file. In general, for a filename extension ``.X``, the environment
 becomes ``!bc Xpro`` or ``!bc Xcod`` for a complete program or snippet,
 respectively. The enivorments (``Xcod`` and ``Xpro``) are only active
-for ``latex`` and ``sphinx`` outout.
+for ``latex``, ``pdflatex``, html`, and ``sphinx`` outout.
+The fourth specification above specifies the code environment
+explicitly such that the becomes ``shpro`` even if we copy a part
+of the file (here from ``name=`` until the end of the file).
 
 Important warnings:
 
@@ -77707,6 +72620,7 @@ Computer code can also be copied from a file:
  @@@CODE doconce_program.sh
  @@@CODE doconce_program.sh  fromto: doconce clean@^doconce split_rst
  @@@CODE doconce_program.sh  from-to: doconce clean@^doconce split_rst
+ @@@CODE doconce_program.sh  envir=shpro fromto: name=@
 }}}
 The `@@@CODE` identifier must appear at the very beginning of the line.
 The first specification copies the complete file `doconce_program.sh`.
@@ -77717,13 +72631,16 @@ The third specification behaves as the second, but the line matching
 the first regular expression is not copied (aimed at copying
 text between begin-end comment pair in the file).
 
-The copied line from file are in this example put inside `!bc shpro`
+The copied lines from file are in this example put inside `!bc shpro`
 and `!ec` directives, if a complete file is copied, while the
 directives become `!bc shcod` and `!ec` when a code snippet is copied
 from file. In general, for a filename extension `.X`, the environment
 becomes `!bc Xpro` or `!bc Xcod` for a complete program or snippet,
 respectively. The enivorments (`Xcod` and `Xpro`) are only active
-for `latex` and `sphinx` outout.
+for `latex`, `pdflatex`, html`, and `sphinx` outout.
+The fourth specification above specifies the code environment
+explicitly such that the becomes `shpro` even if we copy a part
+of the file (here from `name=` until the end of the file).
 
 Important warnings:
 
@@ -78685,6 +73602,7 @@ Computer code can also be copied from a file:
  @@@CODE doconce_program.sh
  @@@CODE doconce_program.sh  fromto: doconce clean@^doconce split_rst
  @@@CODE doconce_program.sh  from-to: doconce clean@^doconce split_rst
+ @@@CODE doconce_program.sh  envir=shpro fromto: name=@
 </syntaxhighlight>
 The <code>@@@CODE</code> identifier must appear at the very beginning of the line.
 The first specification copies the complete file <code>doconce_program.sh</code>.
@@ -78695,13 +73613,16 @@ The third specification behaves as the second, but the line matching
 the first regular expression is not copied (aimed at copying
 text between begin-end comment pair in the file).
 
-The copied line from file are in this example put inside <code>!bc shpro</code>
+The copied lines from file are in this example put inside <code>!bc shpro</code>
 and <code>!ec</code> directives, if a complete file is copied, while the
 directives become <code>!bc shcod</code> and <code>!ec</code> when a code snippet is copied
 from file. In general, for a filename extension <code>.X</code>, the environment
 becomes <code>!bc Xpro</code> or <code>!bc Xcod</code> for a complete program or snippet,
 respectively. The enivorments (<code>Xcod</code> and <code>Xpro</code>) are only active
-for <code>latex</code> and <code>sphinx</code> outout.
+for <code>latex</code>, <code>pdflatex</code>, html`, and <code>sphinx</code> outout.
+The fourth specification above specifies the code environment
+explicitly such that the becomes <code>shpro</code> even if we copy a part
+of the file (here from <code>name=</code> until the end of the file).
 
 Important warnings:
 
@@ -79689,6 +74610,7 @@ Computer code can also be copied from a file:
  @@@CODE doconce_program.sh
  @@@CODE doconce_program.sh  fromto: doconce clean@^doconce split_rst
  @@@CODE doconce_program.sh  from-to: doconce clean@^doconce split_rst
+ @@@CODE doconce_program.sh  envir=shpro fromto: name=@
 }}}
 The {{{@@@CODE}}} identifier must appear at the very beginning of the line.
 The first specification copies the complete file {{{doconce_program.sh}}}.
@@ -79699,13 +74621,16 @@ The third specification behaves as the second, but the line matching
 the first regular expression is not copied (aimed at copying
 text between begin-end comment pair in the file).
 
-The copied line from file are in this example put inside {{{!bc shpro}}}
+The copied lines from file are in this example put inside {{{!bc shpro}}}
 and {{{!ec}}} directives, if a complete file is copied, while the
 directives become {{{!bc shcod}}} and {{{!ec}}} when a code snippet is copied
 from file. In general, for a filename extension {{{.X}}}, the environment
 becomes {{{!bc Xpro}}} or {{{!bc Xcod}}} for a complete program or snippet,
 respectively. The enivorments ({{{Xcod}}} and {{{Xpro}}}) are only active
-for {{{latex}}} and {{{sphinx}}} outout.
+for {{{latex}}}, {{{pdflatex}}}, html`, and {{{sphinx}}} outout.
+The fourth specification above specifies the code environment
+explicitly such that the becomes {{{shpro}}} even if we copy a part
+of the file (here from {{{name=}}} until the end of the file).
 
 Important warnings:
 
@@ -80655,6 +75580,7 @@ Computer code can also be copied from a file::
          @@@CODE doconce_program.sh
          @@@CODE doconce_program.sh  fromto: doconce clean@^doconce split_rst
          @@@CODE doconce_program.sh  from-to: doconce clean@^doconce split_rst
+         @@@CODE doconce_program.sh  envir=shpro fromto: name=@
 
 The '@@@CODE' identifier must appear at the very beginning of the line.
 The first specification copies the complete file 'doconce_program.sh'.
@@ -80665,13 +75591,16 @@ The third specification behaves as the second, but the line matching
 the first regular expression is not copied (aimed at copying
 text between begin-end comment pair in the file).
 
-The copied line from file are in this example put inside '!bc shpro'
+The copied lines from file are in this example put inside '!bc shpro'
 and '!ec' directives, if a complete file is copied, while the
 directives become '!bc shcod' and '!ec' when a code snippet is copied
 from file. In general, for a filename extension '.X', the environment
 becomes '!bc Xpro' or '!bc Xcod' for a complete program or snippet,
 respectively. The enivorments ('Xcod' and 'Xpro') are only active
-for 'latex' and 'sphinx' outout.
+for 'latex', 'pdflatex', html`, and 'sphinx' outout.
+The fourth specification above specifies the code environment
+explicitly such that the becomes 'shpro' even if we copy a part
+of the file (here from 'name=' until the end of the file).
 
 Important warnings:
 
@@ -81651,6 +76580,7 @@ Computer code can also be copied from a file::
          @@@CODE doconce_program.sh
          @@@CODE doconce_program.sh  fromto: doconce clean@^doconce split_rst
          @@@CODE doconce_program.sh  from-to: doconce clean@^doconce split_rst
+         @@@CODE doconce_program.sh  envir=shpro fromto: name=@
 
 The C{@@@CODE} identifier must appear at the very beginning of the line.
 The first specification copies the complete file C{doconce_program.sh}.
@@ -81661,13 +76591,16 @@ The third specification behaves as the second, but the line matching
 the first regular expression is not copied (aimed at copying
 text between begin-end comment pair in the file).
 
-The copied line from file are in this example put inside C{!bc shpro}
+The copied lines from file are in this example put inside C{!bc shpro}
 and C{!ec} directives, if a complete file is copied, while the
 directives become C{!bc shcod} and C{!ec} when a code snippet is copied
 from file. In general, for a filename extension C{.X}, the environment
 becomes C{!bc Xpro} or C{!bc Xcod} for a complete program or snippet,
 respectively. The enivorments (C{Xcod} and C{Xpro}) are only active
-for C{latex} and C{sphinx} outout.
+for C{latex}, C{pdflatex}, html`, and C{sphinx} outout.
+The fourth specification above specifies the code environment
+explicitly such that the becomes C{shpro} even if we copy a part
+of the file (here from C{name=} until the end of the file).
 
 Important warnings:
 
@@ -82697,6 +77630,7 @@ Computer code can also be copied from a file::
          @@@CODE doconce_program.sh
          @@@CODE doconce_program.sh  fromto: doconce clean@^doconce split_rst
          @@@CODE doconce_program.sh  from-to: doconce clean@^doconce split_rst
+         @@@CODE doconce_program.sh  envir=shpro fromto: name=@
 
 The @@@CODE identifier must appear at the very beginning of the line.
 The first specification copies the complete file doconce_program.sh.
@@ -82707,13 +77641,16 @@ The third specification behaves as the second, but the line matching
 the first regular expression is not copied (aimed at copying
 text between begin-end comment pair in the file).
 
-The copied line from file are in this example put inside !bc shpro
+The copied lines from file are in this example put inside !bc shpro
 and !ec directives, if a complete file is copied, while the
 directives become !bc shcod and !ec when a code snippet is copied
 from file. In general, for a filename extension .X, the environment
 becomes !bc Xpro or !bc Xcod for a complete program or snippet,
 respectively. The enivorments (Xcod and Xpro) are only active
-for latex and sphinx outout.
+for latex, pdflatex, html`, and sphinx outout.
+The fourth specification above specifies the code environment
+explicitly such that the becomes shpro even if we copy a part
+of the file (here from name= until the end of the file).
 
 Important warnings:
 
@@ -83764,6 +78701,7 @@ Computer code can also be copied from a file:
  @@@CODE doconce_program.sh
  @@@CODE doconce_program.sh  fromto: doconce clean@^doconce split_rst
  @@@CODE doconce_program.sh  from-to: doconce clean@^doconce split_rst
+ @@@CODE doconce_program.sh  envir=shpro fromto: name=@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The `@@@CODE` identifier must appear at the very beginning of the line.
@@ -83775,13 +78713,16 @@ The third specification behaves as the second, but the line matching
 the first regular expression is not copied (aimed at copying
 text between begin-end comment pair in the file).
 
-The copied line from file are in this example put inside `!bc shpro`
+The copied lines from file are in this example put inside `!bc shpro`
 and `!ec` directives, if a complete file is copied, while the
 directives become `!bc shcod` and `!ec` when a code snippet is copied
 from file. In general, for a filename extension `.X`, the environment
 becomes `!bc Xpro` or `!bc Xcod` for a complete program or snippet,
 respectively. The enivorments (`Xcod` and `Xpro`) are only active
-for `latex` and `sphinx` outout.
+for `latex`, `pdflatex`, html`, and `sphinx` outout.
+The fourth specification above specifies the code environment
+explicitly such that the becomes `shpro` even if we copy a part
+of the file (here from `name=` until the end of the file).
 
 Important warnings:
 
@@ -85240,8 +80181,8 @@ figure file ../doc/src/manual/fig/wave1D:
 exporting publish database papers.pub to papers.bib:
 output in testdoc.p.tex
 + '[' 0 -ne 0 ']'
-+ system doconce format pdflatex testdoc.do.txt --device=paper --examples_as_exercises --latex_double_hyphen --latex_index_in_margin --latex_no_program_footnotelink
-+ doconce format pdflatex testdoc.do.txt --device=paper --examples_as_exercises --latex_double_hyphen --latex_index_in_margin --latex_no_program_footnotelink
++ system doconce format pdflatex testdoc.do.txt --device=paper --examples_as_exercises --latex_double_hyphen --latex_index_in_margin --latex_no_program_footnotelink --latex_title_layout=titlepage --latex_papersize=a4 --latex_line_numbers --latex_colored_table_rows=blue --latex_fancy_header --latex_section_headings=blue --latex_labels_in_margin --latex_double_spacing --latex_todonotes --latex_list_of_exercises=loe --latex_font=palatino
++ doconce format pdflatex testdoc.do.txt --device=paper --examples_as_exercises --latex_double_hyphen --latex_index_in_margin --latex_no_program_footnotelink --latex_title_layout=titlepage --latex_papersize=a4 --latex_line_numbers --latex_colored_table_rows=blue --latex_fancy_header --latex_section_headings=blue --latex_labels_in_margin --latex_double_spacing --latex_todonotes --latex_list_of_exercises=loe --latex_font=palatino
 
 Summary of papers
 -----------------
@@ -85338,25 +80279,10 @@ replacing % end theorem by \end{theorem} in testdoc.p.tex
 + doconce replace Newton--Cotes Newton-Cotes testdoc.p.tex
 replacing Newton--Cotes by Newton-Cotes in testdoc.p.tex
 + doconce replace --examples_as__exercises --examples_as_exercises testdoc.p.tex
-+ system ptex2tex -DMINTED -DLATEX_HEADING=titlepage -DA4PAPER -DTODONOTES -DLINENUMBERS -DCOLORED_TABLE_ROWS=blue -DFANCY_HEADER -DSECTION_HEADINGS=blue -DLABELS_IN_MARGIN -DDOUBLE_SPACING -DLIST_OF_EXERCISES=loe testdoc
-+ ptex2tex -DMINTED -DLATEX_HEADING=titlepage -DA4PAPER -DTODONOTES -DLINENUMBERS -DCOLORED_TABLE_ROWS=blue -DFANCY_HEADER -DSECTION_HEADINGS=blue -DLABELS_IN_MARGIN -DDOUBLE_SPACING -DLIST_OF_EXERCISES=loe testdoc
++ system ptex2tex -DMINTED testdoc
++ ptex2tex -DMINTED testdoc
 using local config file .ptex2tex.cfg
-running preprocessor on testdoc.p.tex...  defines: 'A4PAPER', 'MINTED', 'LATEX_HEADING', 'LIST_OF_EXERCISES', 'LINENUMBERS', 'LABELS_IN_MARGIN', 'SECTION_HEADINGS', 'DOUBLE_SPACING', 'COLORED_TABLE_ROWS', 'FANCY_HEADER', 'TODONOTES'  done
-
-*** warning: found inline verbatim "!bc" containing "!", which
-    is used as delimiter in \Verb!!bc! - avoid "!" in inline verbatim
-    (or use \emp{!bc} instead or use doconce ptex2tex which handles "!")
-
-
-*** warning: found inline verbatim "!ec" containing "!", which
-    is used as delimiter in \Verb!!ec! - avoid "!" in inline verbatim
-    (or use \emp{!ec} instead or use doconce ptex2tex which handles "!")
-
-
-*** warning: found inline verbatim "!bsummary" containing "!", which
-    is used as delimiter in \Verb!!bsummary! - avoid "!" in inline verbatim
-    (or use \emp{!bsummary} instead or use doconce ptex2tex which handles "!")
-
+running preprocessor on testdoc.p.tex...  defines: 'MINTED'  done
 done testdoc.p.tex -> testdoc.tex
 + '[' 0 -ne 0 ']'
 + system pdflatex -shell-escape testdoc
@@ -85429,6 +80355,7 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+
 
 
 
@@ -85578,7 +80505,6 @@ ABD: EveryShipout initializing macros (./newcommands_bfmath.tex)
 
 
 
-
  [1{/var/lib/texmf/fonts/map/pdftex/up
 dmap/pdftex.map}] [2]
 
@@ -85639,7 +80565,7 @@ Package hyperref Warning: old loe file detected, not used; run LaTeX again.
 
 
 
-<../doc/src/manual/fig/wave1D.pdf, id=88, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=86, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
 [11]
 
@@ -85647,9 +80573,9 @@ Package hyperref Warning: old loe file detected, not used; run LaTeX again.
 
 
 
-<../doc/src/manual/fig/wave1D.png, id=106, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=104, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=108, 578.16pt x 433.62pt>
+<downloaded_figures/f_plot.png, id=106, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png> [13 <../doc/src/manual/fig/wave1D.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -85689,17 +80615,17 @@ Underfull \hbox (badness 3291)
 
 
 [15]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=138, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=139, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=139, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=140, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=140, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=141, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=141, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=142, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=142, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=143, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=143, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=144, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -85723,7 +80649,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 852.
+t line 841.
 
 
 
@@ -85743,7 +80669,7 @@ t line 852.
 
 
 
-t line 861.
+t line 850.
 
 
 
@@ -85767,7 +80693,7 @@ rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 
 
 
-t line 865.
+t line 854.
 
 
 
@@ -86017,6 +80943,7 @@ inputenc.sty    2008/03/30 v1.1d Input encoding file
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+mathpazo.sty    2005/04/12 PSNFSS-v9.2a Palatino w/ Pazo Math (D.Puga, WaS) 
  lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
 hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
@@ -86119,10 +81046,9 @@ newcommands_replace.tex
   omllmm.fd    2009/10/30 v1.6 Font defs for Latin Modern
  omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
  omxlmex.fd    2009/10/30 v1.6 Font defs for Latin Modern
-    umsa.fd    2013/01/14 v3.01 AMS symbols A
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
-    umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+ ot1zplm.fd    2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
   t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
   omslmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
  testdoc.out.pyg
@@ -86162,26 +81088,28 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
  )
 (see the transcript file for additional information){/usr/share/texmf/fonts/enc
 /dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/sh
-are/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm
-/lm-rm.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib1
-0.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/font
-s/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx8.pfb>
-</usr/share/texmf/fonts/type1/public/lm/lmbx9.pfb></usr/share/texmf/fonts/type1
-/public/lm/lmcsc10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr
-/share/texmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/type1/pub
-lic/lm/lmmi7.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/
-texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/l
-mr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/font
-s/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></u
-sr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/p
-ublic/lm/lmss12.pfb></usr/share/texmf/fonts/type1/public/lm/lmss8.pfb></usr/sha
-re/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/
-lm/lmsy7.pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb></usr/share/tex
-mf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmt
-t12.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt8.pfb></usr/share/texmf/fon
-ts/type1/public/lm/lmtt9.pfb></usr/share/texmf/fonts/type1/public/lm/lmtti10.pf
-b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb
->
+are/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texlive/texmf-dist/fonts
+/enc/dvips/base/8r.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}</usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/te
+xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></usr/share/texmf/fonts/type1/p
+ublic/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/sh
+are/texmf/fonts/type1/public/lm/lmbx9.pfb></usr/share/texmf/fonts/type1/public/
+lm/lmcsc10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/t
+exmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/type1/public/lm/l
+mmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi9.pfb></usr/share/texmf/fo
+nts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb>
+</usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/
+public/lm/lmr9.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/sha
+re/texmf/fonts/type1/public/lm/lmss12.pfb></usr/share/texmf/fonts/type1/public/
+lm/lmss8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/tex
+mf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtk
+10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf/fon
+ts/type1/public/lm/lmtt12.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt8.pfb
+></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb></usr/share/texmf/fonts/type
+1/public/lm/lmtti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
+nts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/
+uplr8a.pfb>
 Output written on testdoc.pdf (26 pages, ).
 Transcript written on testdoc.log.
 + '[' 0 -ne 0 ']'
@@ -86254,6 +81182,7 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+
 
 
 
@@ -86403,21 +81332,20 @@ Writing index file testdoc.idx
 
 
 
-
  [1{/var/lib/texmf/fonts/map/pdftex/up
 dmap/pdftex.map}] (./testdoc.toc) [2] [3] [4] (./testdoc.loe) [5] [6]
 (./testdoc.tdo) [7] 
 (./testdoc.out.pyg) (./testdoc.out.pyg [8]) (./testdoc.out.pyg)
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg [9])
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) [10]
-<../doc/src/manual/fig/wave1D.pdf, id=262, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=261, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
 [11]
 
 [12 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=279, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=278, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=281, 578.16pt x 433.62pt>
+<downloaded_figures/f_plot.png, id=280, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png> [13 <../doc/src/manual/fig/wave1D.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -86457,17 +81385,17 @@ Underfull \hbox (badness 3291)
 
 
 [15]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=307, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=308, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=308, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=309, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=309, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=310, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=310, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=311, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=311, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=312, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=312, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=313, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -86491,7 +81419,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 852.
+t line 841.
 
 
 
@@ -86511,7 +81439,7 @@ t line 852.
 
 
 
-t line 861.
+t line 850.
 
 
 
@@ -86535,7 +81463,7 @@ rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 
 
 
-t line 865.
+t line 854.
 
 
 
@@ -86687,6 +81615,7 @@ inputenc.sty    2008/03/30 v1.1d Input encoding file
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+mathpazo.sty    2005/04/12 PSNFSS-v9.2a Palatino w/ Pazo Math (D.Puga, WaS) 
  lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
 hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
@@ -86791,10 +81720,9 @@ newcommands_replace.tex
   omllmm.fd    2009/10/30 v1.6 Font defs for Latin Modern
  omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
  omxlmex.fd    2009/10/30 v1.6 Font defs for Latin Modern
-    umsa.fd    2013/01/14 v3.01 AMS symbols A
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
-    umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+ ot1zplm.fd    2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
   t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
   omslmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
  testdoc.out.pyg
@@ -86826,26 +81754,28 @@ LaTeX Warning: There were undefined references.
  )
 (see the transcript file for additional information){/usr/share/texmf/fonts/enc
 /dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/sh
-are/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm
-/lm-rm.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib1
-0.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/font
-s/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx7.pfb>
-</usr/share/texmf/fonts/type1/public/lm/lmbx8.pfb></usr/share/texmf/fonts/type1
-/public/lm/lmbx9.pfb></usr/share/texmf/fonts/type1/public/lm/lmcsc10.pfb></usr/
-share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/publ
-ic/lm/lmmi12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi7.pfb></usr/share/
-texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/l
-mr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fon
-ts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></
-usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf/fonts/type1/pu
-blic/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmss12.pfb></usr/sha
-re/texmf/fonts/type1/public/lm/lmss8.pfb></usr/share/texmf/fonts/type1/public/l
-m/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy7.pfb></usr/share/texm
-f/fonts/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt
-10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb></usr/share/texmf/fon
-ts/type1/public/lm/lmtt8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
-</usr/share/texmf/fonts/type1/public/lm/lmtti10.pfb></usr/share/texlive/texmf-d
-ist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
+are/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texlive/texmf-dist/fonts
+/enc/dvips/base/8r.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}</usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/te
+xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></usr/share/texmf/fonts/type1/p
+ublic/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/sh
+are/texmf/fonts/type1/public/lm/lmbx8.pfb></usr/share/texmf/fonts/type1/public/
+lm/lmbx9.pfb></usr/share/texmf/fonts/type1/public/lm/lmcsc10.pfb></usr/share/te
+xmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lm
+mi12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fo
+nts/type1/public/lm/lmmi9.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb
+></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/type1
+/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/shar
+e/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/l
+m/lmss12.pfb></usr/share/texmf/fonts/type1/public/lm/lmss8.pfb></usr/share/texm
+f/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy
+8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb></usr/share/texmf/font
+s/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb
+></usr/share/texmf/fonts/type1/public/lm/lmtt8.pfb></usr/share/texmf/fonts/type
+1/public/lm/lmtt9.pfb></usr/share/texmf/fonts/type1/public/lm/lmtti10.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/
+share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb>
 Output written on testdoc.pdf (26 pages, ).
 Transcript written on testdoc.log.
 + makeindex testdoc
@@ -86935,6 +81865,7 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+
 
 
 
@@ -87084,21 +82015,20 @@ Writing index file testdoc.idx
 
 
 
-
  [1{/var/lib/texmf/fonts/map/pdftex/up
 dmap/pdftex.map}] (./testdoc.toc) [2] [3] [4] (./testdoc.loe) [5] [6]
 (./testdoc.tdo) [7] 
 (./testdoc.out.pyg) (./testdoc.out.pyg [8]) (./testdoc.out.pyg)
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg [9])
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) [10]
-<../doc/src/manual/fig/wave1D.pdf, id=262, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=261, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
 [11]
 
 [12 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=279, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=278, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=281, 578.16pt x 433.62pt>
+<downloaded_figures/f_plot.png, id=280, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png> [13 <../doc/src/manual/fig/wave1D.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -87138,17 +82068,17 @@ Underfull \hbox (badness 3291)
 
 
 [15]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=307, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=308, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=308, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=309, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=309, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=310, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=310, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=311, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=311, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=312, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=312, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=313, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -87172,7 +82102,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 852.
+t line 841.
 
 
 
@@ -87192,7 +82122,7 @@ t line 852.
 
 
 
-t line 861.
+t line 850.
 
 
 
@@ -87216,7 +82146,7 @@ rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 
 
 
-t line 865.
+t line 854.
 
 
 
@@ -87370,6 +82300,7 @@ inputenc.sty    2008/03/30 v1.1d Input encoding file
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+mathpazo.sty    2005/04/12 PSNFSS-v9.2a Palatino w/ Pazo Math (D.Puga, WaS) 
  lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
 hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
@@ -87474,10 +82405,9 @@ newcommands_replace.tex
   omllmm.fd    2009/10/30 v1.6 Font defs for Latin Modern
  omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
  omxlmex.fd    2009/10/30 v1.6 Font defs for Latin Modern
-    umsa.fd    2013/01/14 v3.01 AMS symbols A
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
-    umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+ ot1zplm.fd    2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
   t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
   omslmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
  testdoc.out.pyg
@@ -87514,26 +82444,28 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
  )
 (see the transcript file for additional information){/usr/share/texmf/fonts/enc
 /dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/sh
-are/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm
-/lm-rm.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib1
-0.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/font
-s/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx7.pfb>
-</usr/share/texmf/fonts/type1/public/lm/lmbx8.pfb></usr/share/texmf/fonts/type1
-/public/lm/lmbx9.pfb></usr/share/texmf/fonts/type1/public/lm/lmcsc10.pfb></usr/
-share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/publ
-ic/lm/lmmi12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi7.pfb></usr/share/
-texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/l
-mr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fon
-ts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></
-usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf/fonts/type1/pu
-blic/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmss12.pfb></usr/sha
-re/texmf/fonts/type1/public/lm/lmss8.pfb></usr/share/texmf/fonts/type1/public/l
-m/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy7.pfb></usr/share/texm
-f/fonts/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt
-10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb></usr/share/texmf/fon
-ts/type1/public/lm/lmtt8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
-</usr/share/texmf/fonts/type1/public/lm/lmtti10.pfb></usr/share/texlive/texmf-d
-ist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
+are/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texlive/texmf-dist/fonts
+/enc/dvips/base/8r.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}</usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/te
+xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></usr/share/texmf/fonts/type1/p
+ublic/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/sh
+are/texmf/fonts/type1/public/lm/lmbx8.pfb></usr/share/texmf/fonts/type1/public/
+lm/lmbx9.pfb></usr/share/texmf/fonts/type1/public/lm/lmcsc10.pfb></usr/share/te
+xmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lm
+mi12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fo
+nts/type1/public/lm/lmmi9.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb
+></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/type1
+/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/shar
+e/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/l
+m/lmss12.pfb></usr/share/texmf/fonts/type1/public/lm/lmss8.pfb></usr/share/texm
+f/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy
+8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb></usr/share/texmf/font
+s/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb
+></usr/share/texmf/fonts/type1/public/lm/lmtt8.pfb></usr/share/texmf/fonts/type
+1/public/lm/lmtt9.pfb></usr/share/texmf/fonts/type1/public/lm/lmtti10.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/
+share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb>
 Output written on testdoc.pdf (28 pages, ).
 Transcript written on testdoc.log.
 + pdflatex -shell-escape testdoc
@@ -87605,6 +82537,7 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+
 
 
 
@@ -87754,21 +82687,20 @@ Writing index file testdoc.idx
 
 
 
-
  [1{/var/lib/texmf/fonts/map/pdftex/up
 dmap/pdftex.map}] (./testdoc.toc) [2] [3] [4] (./testdoc.loe) [5] [6]
 (./testdoc.tdo) [7] 
 (./testdoc.out.pyg) (./testdoc.out.pyg [8]) (./testdoc.out.pyg)
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg [9])
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) [10]
-<../doc/src/manual/fig/wave1D.pdf, id=262, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=261, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
 [11]
 
 [12 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=279, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=278, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=281, 578.16pt x 433.62pt>
+<downloaded_figures/f_plot.png, id=280, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png> [13 <../doc/src/manual/fig/wave1D.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -87808,17 +82740,17 @@ Underfull \hbox (badness 3291)
 
 
 [15]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=307, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=308, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=308, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=309, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=309, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=310, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=310, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=311, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=311, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=312, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=312, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=313, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -87928,6 +82860,7 @@ inputenc.sty    2008/03/30 v1.1d Input encoding file
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+mathpazo.sty    2005/04/12 PSNFSS-v9.2a Palatino w/ Pazo Math (D.Puga, WaS) 
  lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
 hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
@@ -88032,10 +82965,9 @@ newcommands_replace.tex
   omllmm.fd    2009/10/30 v1.6 Font defs for Latin Modern
  omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
  omxlmex.fd    2009/10/30 v1.6 Font defs for Latin Modern
-    umsa.fd    2013/01/14 v3.01 AMS symbols A
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
-    umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+ ot1zplm.fd    2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
   t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
   omslmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
  testdoc.out.pyg
@@ -88066,31 +82998,33 @@ downloaded_figures/f_plot.png
  )
 (see the transcript file for additional information){/usr/share/texmf/fonts/enc
 /dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/sh
-are/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm
-/lm-rm.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib1
-0.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/font
-s/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx7.pfb>
-</usr/share/texmf/fonts/type1/public/lm/lmbx8.pfb></usr/share/texmf/fonts/type1
-/public/lm/lmbx9.pfb></usr/share/texmf/fonts/type1/public/lm/lmcsc10.pfb></usr/
-share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/publ
-ic/lm/lmmi12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi7.pfb></usr/share/
-texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/l
-mr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fon
-ts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></
-usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf/fonts/type1/pu
-blic/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmss12.pfb></usr/sha
-re/texmf/fonts/type1/public/lm/lmss8.pfb></usr/share/texmf/fonts/type1/public/l
-m/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy7.pfb></usr/share/texm
-f/fonts/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt
-10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb></usr/share/texmf/fon
-ts/type1/public/lm/lmtt8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
-</usr/share/texmf/fonts/type1/public/lm/lmtti10.pfb></usr/share/texlive/texmf-d
-ist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
+are/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texlive/texmf-dist/fonts
+/enc/dvips/base/8r.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}</usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/te
+xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></usr/share/texmf/fonts/type1/p
+ublic/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/sh
+are/texmf/fonts/type1/public/lm/lmbx8.pfb></usr/share/texmf/fonts/type1/public/
+lm/lmbx9.pfb></usr/share/texmf/fonts/type1/public/lm/lmcsc10.pfb></usr/share/te
+xmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lm
+mi12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fo
+nts/type1/public/lm/lmmi9.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb
+></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/type1
+/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/shar
+e/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/l
+m/lmss12.pfb></usr/share/texmf/fonts/type1/public/lm/lmss8.pfb></usr/share/texm
+f/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy
+8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb></usr/share/texmf/font
+s/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb
+></usr/share/texmf/fonts/type1/public/lm/lmtt8.pfb></usr/share/texmf/fonts/type
+1/public/lm/lmtt9.pfb></usr/share/texmf/fonts/type1/public/lm/lmtti10.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/
+share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb>
 Output written on testdoc.pdf (28 pages, ).
 Transcript written on testdoc.log.
 + cp testdoc.tex testdoc.tex_ptex2tex
-+ system doconce ptex2tex testdoc -DBOOK -DPALATINO 'sys=begin{quote}begin{Verbatim}@end{Verbatim}end{quote}' pypro=ans:nt envir=minted
-+ doconce ptex2tex testdoc -DBOOK -DPALATINO 'sys=begin{quote}begin{Verbatim}@end{Verbatim}end{quote}' pypro=ans:nt envir=minted
++ system doconce ptex2tex testdoc 'sys=begin{quote}begin{Verbatim}@end{Verbatim}end{quote}' pypro=ans:nt envir=minted
++ doconce ptex2tex testdoc 'sys=begin{quote}begin{Verbatim}@end{Verbatim}end{quote}' pypro=ans:nt envir=minted
 + '[' 0 -ne 0 ']'
 + echo '----------- end of doconce ptex2tex output ----------------'
 + cat testdoc.tex
@@ -88386,7 +83320,7 @@ testdoc split into
 + system doconce sphinx_dir author=HPL 'title=Just a test' dirname=sphinx-testdoc version=0.1 theme=agni testdoc
 + doconce sphinx_dir author=HPL 'title=Just a test' dirname=sphinx-testdoc version=0.1 theme=agni testdoc
 Making sphinx-testdoc
-Welcome to the Sphinx 1.2pre quickstart utility.
+Welcome to the Sphinx 1.2 quickstart utility.
 
 Please enter values for the following settings (just press Enter to
 accept a default value, if one is given in brackets).
@@ -88456,7 +83390,7 @@ or just run it by
 rm -rf _build/*
 sphinx-build -b html -d _build/doctrees   . _build/html
 Making output directory...
-Running Sphinx v1.2pre
+Running Sphinx v1.2
 loading pickled environment... not yet created
 building [html]: targets for 4 source files that are out of date
 updating environment: 4 added, 0 changed, 0 removed
@@ -88465,6 +83399,22 @@ reading sources... [ 50%] ._testdoc001
 reading sources... [ 75%] ._testdoc002
 reading sources... [100%] index
 
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:176: ERROR: Unknown directive type "sagecellserver".
+
+.. sagecellserver::
+
+        a = 2
+        b = 3
+        print 'a+b:', a + b
+
+        # In a sage cell we can also plot
+        from matplotlib.pyplot import *
+        from numpy import *
+        x = linspace(0, 4*pi, 101)
+        y = exp(-0.1*x)*cos(x)
+        plot(x, y)
+        xlabel('x'); ylabel('y')
+        show()
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:572: WARNING: Inline interpreted text or phrase reference start-string without end-string.
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:None: WARNING: nonlocal image URI found: https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png
 looking for now-outdated files... none found
@@ -88473,6 +83423,7 @@ checking consistency... done
 preparing documents... done
 writing output... [ 25%] ._testdoc000
 writing output... [ 50%] ._testdoc001
+WARNING: dvipng command 'dvipng' cannot be run (needed for math display), check the pngmath_dvipng setting
 writing output... [ 75%] ._testdoc002
 writing output... [100%] index
 
@@ -88482,9 +83433,9 @@ writing additional files... (0 module code pages) genindex search
 copying images... [100%] wave1D.png
 
 copying static files... done
-dumping search index... done
+copying extra files... dumping search index... done
 dumping object inventory... done
-build succeeded, 4 warnings.
+build succeeded, 6 warnings.
 
 Build finished. The HTML pages are in _build/html.
 <title>(.+?) &mdash;.+?</title> replaced by <title>\g<1></title> in search.html
@@ -88497,16 +83448,6 @@ replacing </head> by
    </style>
   </head>
  in search.html
-<title>(.+?) &mdash;.+?</title> replaced by <title>\g<1></title> in genindex.html
-replacing </head> by 
-   <style type=text/css>
-     div.admonition {
-       background-color: whiteSmoke;
-       border: 1px solid #bababa;
-     }
-   </style>
-  </head>
- in genindex.html
 <title>(.+?) &mdash;.+?</title> replaced by <title>\g<1></title> in index.html
 replacing </head> by 
    <style type=text/css>
@@ -88517,6 +83458,16 @@ replacing </head> by
    </style>
   </head>
  in index.html
+<title>(.+?) &mdash;.+?</title> replaced by <title>\g<1></title> in genindex.html
+replacing </head> by 
+   <style type=text/css>
+     div.admonition {
+       background-color: whiteSmoke;
+       border: 1px solid #bababa;
+     }
+   </style>
+  </head>
+ in genindex.html
 <title>(.+?) &mdash;.+?</title> replaced by <title>\g<1></title> in ._testdoc002.html
 replacing </head> by 
    <style type=text/css>
@@ -88981,8 +83932,8 @@ NOTE: Place https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png
 
 output in testdoc.gwiki
 + '[' 0 -ne 0 ']'
-+ system doconce format latex testdoc.do.txt --examples_as_exercises
-+ doconce format latex testdoc.do.txt --examples_as_exercises
++ system doconce format latex testdoc.do.txt --examples_as_exercises --latex_title_layout=std
++ doconce format latex testdoc.do.txt --examples_as_exercises --latex_title_layout=std
 
 Summary of papers
 -----------------
@@ -89059,8 +84010,8 @@ figure file ../doc/src/manual/fig/wave1D:
 exporting publish database papers.pub to papers.bib:
 output in testdoc.p.tex
 + '[' 0 -ne 0 ']'
-+ system doconce ptex2tex testdoc -DBOOK -DLATEX_HEADING=traditional
-+ doconce ptex2tex testdoc -DBOOK -DLATEX_HEADING=traditional
++ system doconce ptex2tex testdoc
++ doconce ptex2tex testdoc
 \bpypro (!bc pypro) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
 \bcpppro (!bc cpppro) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
 \bfpro (!bc fpro) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
@@ -89183,13 +84134,13 @@ slides written to slides1.html
 + '[' 0 -ne 0 ']'
 + cp slides1.html slides1_deck.html
 + /bin/ls -R deck.js
-+ system doconce format pdflatex slides1
-+ doconce format pdflatex slides1
++ system doconce format pdflatex slides1 --latex_title_layout=beamer
++ doconce format pdflatex slides1 --latex_title_layout=beamer
 translating doconce text in slides1.do.txt to pdflatex
 output in slides1.p.tex
 + '[' 0 -ne 0 ']'
-+ system doconce ptex2tex slides1 -DLATEX_HEADING=beamer
-+ doconce ptex2tex slides1 -DLATEX_HEADING=beamer
++ system doconce ptex2tex slides1
++ doconce ptex2tex slides1
 \bpycod (!bc pycod) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
 output in slides1.tex
 + '[' 0 -ne 0 ']'
@@ -89251,8 +84202,8 @@ recommended styles are "perldoc"
 slides written to slides2.html
 + '[' 0 -ne 0 ']'
 + cp slides2.html slides2_reveal.html
-+ system doconce format pdflatex slides2
-+ doconce format pdflatex slides2
++ system doconce format pdflatex slides2 --latex_title_layout=beamer
++ doconce format pdflatex slides2 --latex_title_layout=beamer
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  slides2.do.txt > tmp_preprocess__slides2.do.txt
 translating doconce text in tmp_preprocess__slides2.do.txt to pdflatex
 copy complete file ../doc/src/slides/src/dc_mod.pyopt  (format: pyoptpro)
@@ -89277,8 +84228,8 @@ figure file ../doc/src/slides/fig/doconce1b:
     can use ../doc/src/slides/fig/doconce1b.png for format pdflatex
 output in slides2.p.tex
 + '[' 0 -ne 0 ']'
-+ system doconce ptex2tex slides2 -DLATEX_HEADING=beamer envir=minted
-+ doconce ptex2tex slides2 -DLATEX_HEADING=beamer envir=minted
++ system doconce ptex2tex slides2 envir=minted
++ doconce ptex2tex slides2 envir=minted
 \bpycod (!bc pycod) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
 \bpypro (!bc pypro) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
 \bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
@@ -89313,8 +84264,8 @@ slides written to slides3.html
 + '[' 0 -ne 0 ']'
 + cp slides3.html slides3_reveal.html
 + theme=red3
-+ system doconce format pdflatex slides3 SLIDE_TYPE=beamer SLIDE_THEME=red3
-+ doconce format pdflatex slides3 SLIDE_TYPE=beamer SLIDE_THEME=red3
++ system doconce format pdflatex slides3 SLIDE_TYPE=beamer SLIDE_THEME=red3 --latex_title_layout=beamer
++ doconce format pdflatex slides3 SLIDE_TYPE=beamer SLIDE_THEME=red3 --latex_title_layout=beamer
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen -DSLIDE_TYPE="beamer" -DSLIDE_THEME="red3" slides3.do.txt > tmp_preprocess__slides3.do.txt
 running mako on tmp_preprocess__slides3.do.txt to make tmp_mako__slides3.do.txt
 mako variables: {'DEVICE': 'screen', 'SLIDE_TYPE': 'beamer', 'SLIDE_THEME': 'red3', 'FORMAT': 'pdflatex'}
@@ -89329,8 +84280,8 @@ figure file ../doc/src/slides/fig/teacher2:
     can use ../doc/src/slides/fig/teacher2.jpg for format pdflatex
 output in slides3.p.tex
 + '[' 0 -ne 0 ']'
-+ system doconce ptex2tex slides3 -DLATEX_HEADING=beamer envir=minted
-+ doconce ptex2tex slides3 -DLATEX_HEADING=beamer envir=minted
++ system doconce ptex2tex slides3 envir=minted
++ doconce ptex2tex slides3 envir=minted
 \bpycod (!bc pycod) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
 output in slides3.tex
 + '[' 0 -ne 0 ']'
@@ -89673,7 +84624,7 @@ Not recommended for sphinx output: math environment {eqnarray*}
 output in math_test.rst
 + doconce sphinx_dir dirname=sphinx-rootdir-math math_test
 Making sphinx-rootdir-math
-Welcome to the Sphinx 1.2pre quickstart utility.
+Welcome to the Sphinx 1.2 quickstart utility.
 
 Please enter values for the following settings (just press Enter to
 accept a default value, if one is given in brackets).
@@ -89745,7 +84696,7 @@ or just run it by
 rm -rf _build/*
 sphinx-build -b html -d _build/doctrees   . _build/html
 Making output directory...
-Running Sphinx v1.2pre
+Running Sphinx v1.2
 loading pickled environment... not yet created
 building [html]: targets for 2 source files that are out of date
 updating environment: 2 added, 0 changed, 0 removed
@@ -89758,12 +84709,13 @@ checking consistency... done
 preparing documents... done
 writing output... [ 50%] index
 writing output... [100%] math_test
+WARNING: dvipng command 'dvipng' cannot be run (needed for math display), check the pngmath_dvipng setting
 
 writing additional files... (0 module code pages) genindex search
 copying static files... done
-dumping search index... done
+copying extra files... dumping search index... done
 dumping object inventory... done
-build succeeded.
+build succeeded, 1 warning.
 
 Build finished. The HTML pages are in _build/html.
 <title>(.+?) &mdash;.+?</title> replaced by <title>\g<1></title> in search.html
@@ -89776,6 +84728,16 @@ replacing </head> by
    </style>
   </head>
  in search.html
+<title>(.+?) &mdash;.+?</title> replaced by <title>\g<1></title> in index.html
+replacing </head> by 
+   <style type=text/css>
+     div.admonition {
+       background-color: whiteSmoke;
+       border: 1px solid #bababa;
+     }
+   </style>
+  </head>
+ in index.html
 <title>(.+?) &mdash;.+?</title> replaced by <title>\g<1></title> in math_test.html
 replacing </head> by 
    <style type=text/css>
@@ -89796,16 +84758,6 @@ replacing </head> by
    </style>
   </head>
  in genindex.html
-<title>(.+?) &mdash;.+?</title> replaced by <title>\g<1></title> in index.html
-replacing </head> by 
-   <style type=text/css>
-     div.admonition {
-       background-color: whiteSmoke;
-       border: 1px solid #bababa;
-     }
-   </style>
-  </head>
- in index.html
 copying movie_demo to sphinx-rootdir-math
 /home/hpl/vc/doconce/test/sphinx-rootdir-math
 running make clean
@@ -92606,7 +87558,7 @@ output in admon.html
 + system doconce sphinx_dir dirname=tmp_admon admon
 + doconce sphinx_dir dirname=tmp_admon admon
 Making tmp_admon
-Welcome to the Sphinx 1.2pre quickstart utility.
+Welcome to the Sphinx 1.2 quickstart utility.
 
 Please enter values for the following settings (just press Enter to
 accept a default value, if one is given in brackets).
@@ -92687,7 +87639,7 @@ output in admon.rst
 rm -rf _build/*
 sphinx-build -b html -d _build/doctrees   . _build/html
 Making output directory...
-Running Sphinx v1.2pre
+Running Sphinx v1.2
 loading pickled environment... not yet created
 building [html]: targets for 2 source files that are out of date
 updating environment: 2 added, 0 changed, 0 removed
@@ -92699,15 +87651,16 @@ pickling environment... done
 checking consistency... done
 preparing documents... done
 writing output... [ 50%] admon
+WARNING: dvipng command 'dvipng' cannot be run (needed for math display), check the pngmath_dvipng setting
 writing output... [100%] index
 
 writing additional files... (0 module code pages) genindex search
 copying images... [100%] wave1D.png
 
 copying static files... done
-dumping search index... done
+copying extra files... dumping search index... done
 dumping object inventory... done
-build succeeded.
+build succeeded, 1 warning.
 
 Build finished. The HTML pages are in _build/html.
 <title>(.+?) &mdash;.+?</title> replaced by <title>\g<1></title> in search.html
@@ -92720,26 +87673,6 @@ replacing </head> by
    </style>
   </head>
  in search.html
-<title>(.+?) &mdash;.+?</title> replaced by <title>\g<1></title> in admon.html
-replacing </head> by 
-   <style type=text/css>
-     div.admonition {
-       background-color: whiteSmoke;
-       border: 1px solid #bababa;
-     }
-   </style>
-  </head>
- in admon.html
-<title>(.+?) &mdash;.+?</title> replaced by <title>\g<1></title> in genindex.html
-replacing </head> by 
-   <style type=text/css>
-     div.admonition {
-       background-color: whiteSmoke;
-       border: 1px solid #bababa;
-     }
-   </style>
-  </head>
- in genindex.html
 <title>(.+?) &mdash;.+?</title> replaced by <title>\g<1></title> in index.html
 replacing </head> by 
    <style type=text/css>
@@ -92750,6 +87683,26 @@ replacing </head> by
    </style>
   </head>
  in index.html
+<title>(.+?) &mdash;.+?</title> replaced by <title>\g<1></title> in genindex.html
+replacing </head> by 
+   <style type=text/css>
+     div.admonition {
+       background-color: whiteSmoke;
+       border: 1px solid #bababa;
+     }
+   </style>
+  </head>
+ in genindex.html
+<title>(.+?) &mdash;.+?</title> replaced by <title>\g<1></title> in admon.html
+replacing </head> by 
+   <style type=text/css>
+     div.admonition {
+       background-color: whiteSmoke;
+       border: 1px solid #bababa;
+     }
+   </style>
+  </head>
+ in admon.html
 doconce format sphinx admon 
 running doconce format sphinx admon 
 running doconce guess_encoding admon.rst
@@ -94822,1693 +89775,38 @@ output in movies.txt
 + name=Springer_T2_book
 + rm 'tmp_*'
 rm: cannot remove ‘tmp_*’: No such file or directory
-+ system doconce format pdflatex Springer_T2_book CHAPTER=chapter BOOK=book APPENDIX=appendix -DPRIMER_BOOK -DDOCONCE ALG=code --encoding=utf-8 --device=paper --latex_exercise_numbering=chapter --latex_admon_color=1,1,1
-+ doconce format pdflatex Springer_T2_book CHAPTER=chapter BOOK=book APPENDIX=appendix -DPRIMER_BOOK -DDOCONCE ALG=code --encoding=utf-8 --device=paper --latex_exercise_numbering=chapter --latex_admon_color=1,1,1
-
-Summary of papers
------------------
-
-Articles in International Journals: 1
-Books:                              4
-Edited Books:                       0
-Chapters in Books:                  0
-Refereed Proceedings:               0
-Conference Proceedings:             0
-Technical Reports:                  0
-Manuals:                            0
-Theses:                             0
-Courses:                            0
-Talks:                              0
-Posters:                            0
-Public Outreach:                    0
-Other Publications:                 3
-Total:                              8
-
-Exported 8 paper(s) to papers.bib.
-running preprocess -DFORMAT=pdflatex -DDEVICE=paper -DPRIMER_BOOK -DDOCONCE -DCHAPTER="chapter" -DBOOK="book" -DAPPENDIX="appendix" -DALG="code" Springer_T2_book.do.txt > tmp_preprocess__Springer_T2_book.do.txt
++ system doconce format pdflatex Springer_T2_book CHAPTER=chapter BOOK=book APPENDIX=appendix -DPRIMER_BOOK ALG=code --encoding=utf-8 --device=paper --latex_exercise_numbering=chapter --latex_admon_color=1,1,1 --latex_style=Springer_T2 --latex_title_layout=titlepage --latex_list_of_exercises=loe
++ doconce format pdflatex Springer_T2_book CHAPTER=chapter BOOK=book APPENDIX=appendix -DPRIMER_BOOK ALG=code --encoding=utf-8 --device=paper --latex_exercise_numbering=chapter --latex_admon_color=1,1,1 --latex_style=Springer_T2 --latex_title_layout=titlepage --latex_list_of_exercises=loe
+running preprocess -DFORMAT=pdflatex -DDEVICE=paper -DPRIMER_BOOK -DCHAPTER="chapter" -DBOOK="book" -DAPPENDIX="appendix" -DALG="code" Springer_T2_book.do.txt > tmp_preprocess__Springer_T2_book.do.txt
 running mako on tmp_preprocess__Springer_T2_book.do.txt to make tmp_mako__Springer_T2_book.do.txt
-mako variables: {'CHAPTER': 'chapter', 'PRIMER_BOOK': True, 'FORMAT': 'pdflatex', 'ALG': 'code', 'APPENDIX': 'appendix', 'DEVICE': 'paper', 'BOOK': 'book', 'DOCONCE': True}
+mako variables: {'CHAPTER': 'chapter', 'PRIMER_BOOK': True, 'FORMAT': 'pdflatex', 'ALG': 'code', 'APPENDIX': 'appendix', 'DEVICE': 'paper', 'BOOK': 'book'}
 translating doconce text in tmp_mako__Springer_T2_book.do.txt to pdflatex
 open file with encoding utf-8
-
-exporting publish database papers.pub to papers.bib:
-output in Springer_T2_book.p.tex
-+ '[' 0 -ne 0 ']'
-+ system ptex2tex -DLATEX_STYLE=Springer_T2 -DLATEX_HEADING=titlepage -DLIST_OF_EXERCISES=loe Springer_T2_book
-+ ptex2tex -DLATEX_STYLE=Springer_T2 -DLATEX_HEADING=titlepage -DLIST_OF_EXERCISES=loe Springer_T2_book
-using local config file .ptex2tex.cfg
-running preprocessor on Springer_T2_book.p.tex...  defines: 'LIST_OF_EXERCISES', 'LATEX_STYLE', 'LATEX_HEADING'  done
-done Springer_T2_book.p.tex -> Springer_T2_book.tex
-+ '[' 0 -ne 0 ']'
-+ rm -rf Springer_T2_book.aux Springer_T2_book.ind Springer_T2_book.idx Springer_T2_book.bbl Springer_T2_book.toc Springer_T2_book.loe
-+ system pdflatex Springer_T2_book
-+ pdflatex Springer_T2_book
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
- restricted \write18 enabled.
-entering extended mode
-(./Springer_T2_book.tex
-LaTeX2e <2011/06/27>
-Babel <3.9f> and hyphenation patterns for 2 languages loaded.
-(/home/hpl/texmf/tex/latex/misc/svmonodo.cls
-
-LaTeX Warning: You have requested document class `svmonodo',
-               but the document class provides `svmono'.
-
-Document Class: svmono 2007/06/25 v5.4 
-Springer Verlag global LaTeX document class for monographs
-
-Class Springer-SVMono Warning: Specified option or subpackage "sectrefs" 
-(Springer-SVMono)              not found passing it to article class 
-(Springer-SVMono)              - on .
-
-
-Class Springer-SVMono Warning: Specified option or subpackage "open=right" 
-(Springer-SVMono)              not found passing it to article class 
-(Springer-SVMono)              - on .
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
-
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
-
-(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
-
-
-
-(/home/hpl/texmf/tex/latex/misc/t2do.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
-
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
-For additional information on amsmath, use the `?' option.
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
-
-
-
-
-Package amsmath Warning: Unable to redefine math accent \vec.
-
-) 
-
-(/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
-
-
-Package caption Warning: Unsupported document class (or package) detected,
-(caption)                usage of the caption package is not recommended.
-See the caption package documentation for explanation.
-
-) (/usr/share/texlive/texmf-dist/tex/latex/tools/tabularx.sty
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty
-(/usr/share/texlive/texmf-dist/tex/latex/base/ts1enc.def
-
-
-
-
-
-
-(/usr/share/texmf/tex/latex/xcolor/xcolor.sty
-
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
-
-
-(/home/hpl/texmf/tex/latex/misc/ptex2tex.sty
-(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
-Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
-<2008/02/07> (tvz))
-(/usr/share/texlive/texmf-dist/tex/latex/moreverb/moreverb.sty
-
-(/home/hpl/texmf/tex/latex/misc/anslistings.sty
-(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
-
-
-
-
-
-
-
-
-Package hyperref Message: Driver (autodetected): hpdftex.
-
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
-
-(/home/hpl/texmf/tex/latex/misc/mdframed.sty
-(/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
-(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
-(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/l3names.sty
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-abspage.sty
-
-
-(/usr/share/texmf/tex/latex/pgf/frontendlayer/tikz.sty
-(/usr/share/texmf/tex/latex/pgf/basiclayer/pgf.sty
-(/usr/share/texmf/tex/latex/pgf/utilities/pgfrcs.sty
-
-(/usr/share/texmf/tex/generic/pgf/utilities/pgfutil-latex.def
-
-
-(/usr/share/texmf/tex/latex/pgf/basiclayer/pgfcore.sty
-(/usr/share/texmf/tex/latex/pgf/systemlayer/pgfsys.sty
-(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys.code.tex
-(/usr/share/texmf/tex/generic/pgf/utilities/pgfkeys.code.tex
-
-
-(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
-
-
-
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcore.code.tex
-(/usr/share/texmf/tex/generic/pgf/math/pgfmath.code.tex
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathcalc.code.tex
-
-
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathfunctions.code.tex
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
-
-
-
-
-
-
-
-
-(/usr/share/texmf/tex/latex/pgf/utilities/pgffor.sty
-(/usr/share/texmf/tex/latex/pgf/utilities/pgfkeys.sty
-
-
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
-
-
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopat
-hs.code.tex))) (/usr/share/texlive/texmf-dist/tex/latex/mdframed/md-frame-1.mdf
-))
-Writing index file Springer_T2_book.idx
-
-LaTeX Warning: Unused global option(s):
-    [sectrefs,open=right].
-
-No file Springer_T2_book.aux.
-(/home/hpl/texmf/tex/latex/misc/ts1cmr.fd)
-
-(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
-[Loading MPS to PDF converter (version 2006.09.02).]
-) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
-
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
-
-ABD: EveryShipout initializing macros (./newcommands_keep.tex)
-
-
-
-
-
-
-
-
- [3
-Non-PDF special ignored!{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-[4]
-Overfull \hbox (120.12047pt too wide) 
-|[] 
-[5] 
-
-LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <5.5> not available
-(Font)              size <5> substituted on .
-
-
-LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <5.5> not available
-(Font)              size <5> substituted on .
-
-
-LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <5.5> not available
-(Font)              size <5> substituted on .
-
-[6]
-Overfull \hbox (120.12047pt too wide) 
-|[] 
-[7] [8]
-Chapter 1.
-
-Overfull \hbox (30.77882pt too wide) 
-[][][] 
-
-Overfull \hbox (120.12047pt too wide) 
-|[] 
-
-LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <8.5> not available
-(Font)              size <8> substituted on .
-
-
-LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <4.25> not available
-(Font)              size <5> substituted on .
-
-
-LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <8.5> not available
-(Font)              size <8> substituted on .
-
-
-LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <4.25> not available
-(Font)              size <5> substituted on .
-
-
-LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <8.5> not available
-(Font)              size <8> substituted on .
-
-
-LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <4.25> not available
-(Font)              size <5> substituted on .
-
-[1]
-
-
-
- [2]
-
-
-...rest of part of LaTeX line number...
-
-
-Underfull \hbox (badness 6927) 
-\T1/lmr/m/n/11 (+20) or one may take the less rec-om-mended lazy ap-proach
-
-
-...rest of part of LaTeX line number...
-
-[3]
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-[4]
-Chapter 2.
-
-Overfull \hbox (30.77882pt too wide) 
-[][][] 
-
-Overfull \hbox (120.12047pt too wide) 
-|[] 
-[5] [6]
-
-
-...rest of part of LaTeX line number...
-
-[7]
-
-
-...rest of part of LaTeX line number...
-
-[8]
-
-
-...rest of part of LaTeX line number...
-
-
-
-
-
-
-
-
-
-
-
-
-
-[9] [10]
-Appendix A.
-
-Overfull \hbox (30.77882pt too wide) 
-[][][] 
-
-Overfull \hbox (120.12047pt too wide) 
-|[] 
-[11] [12]
-No file Springer_T2_book.bbl.
-No file Springer_T2_book.ind.
-(./Springer_T2_book.aux)
-
- *File List*
-svmonodo.cls    2007/06/25 v5.4 
-Springer Verlag global LaTeX document class for monographs
- article.cls    2007/10/19 v1.4h Standard LaTeX document class
-  size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
-   color.sty    1999/02/16
-   color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
-  pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
-infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
- ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
-  framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
-    t2do.sty    
-graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
-  keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
-graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
-    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
-graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
-inputenc.sty    2008/03/30 v1.1d Input encoding file
-    utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
-   t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
-  ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
-  omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
- amsmath.sty    2013/01/14 v2.14 AMS math features
- amstext.sty    2000/06/29 v2.01
-  amsgen.sty    1999/11/30 v2.0
-  amsbsy.sty    1999/11/29 v1.2d
-  amsopn.sty    1999/12/14 v2.01 operator names
-amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
- amssymb.sty    2013/01/14 v3.01 AMS font symbols
- caption.sty    2013/05/02 v3.3-89 Customizing captions (AR)
-caption3.sty    2013/05/02 v1.6-88 caption3 kernel (AR)
-tabularx.sty    1999/01/07 v2.07 `tabularx' package (DPC)
-   array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
-multicol.sty    2011/06/27 v1.7a multicolumn formatting (FMi)
- fontenc.sty
-   t1enc.def    2005/09/27 v1.99g Standard LaTeX file
-marvosym.sty    2011/07/20 v2.2 Martin Vogel's Symbols font definitions
-textcomp.sty    2005/09/27 v1.99g Standard LaTeX package
-  ts1enc.def    2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
-  ts1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
-footmisc.sty    2011/06/06 v5.5b a miscellany of footnote facilities
- relsize.sty    2013/03/29 ver 4.1
-  epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
- makeidx.sty    2000/03/29 v1.0m Standard LaTeX package
-setspace.sty    2011/12/19 v6.7a set line spacing
-  xcolor.sty    2007/01/21 v2.11 LaTeX color extensions (UK)
-   color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
-colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
-      bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
-microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
-microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
-microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
-ptex2tex.sty    
-fancyvrb.sty    2008/02/07
-moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
-verbatim.sty    2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
-anslistings.sty    2009/03/28 code highlighting; provided by Olivier Verdier <o
-livier@maths.lth.se>
-listings.sty    2013/07/10 1.5 (Carsten Heinz)
- lstmisc.sty    2013/07/10 1.5 (Carsten Heinz)
-listings.cfg    2013/06/27 1.5pre1 listings configuration
- fontenc.sty
-   t1enc.def    2005/09/27 v1.99g Standard LaTeX file
- lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
-hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
-hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
-hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
-  hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
-ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
-  ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
- intcalc.sty    2007/09/27 v1.1 Expandable calculations with integers (HO)
-   ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
-etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
-kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
-kvdefinekeys.sty    2011/04/07 v1.3 Define keys (HO)
-pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
-pdfescape.sty    2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
-bigintcalc.sty    2012/04/08 v1.3 Expandable calculations on big integers (HO)
-  bitset.sty    2011/01/30 v1.1 Handle bit-vector datatype (HO)
-uniquecounter.sty    2011/01/30 v1.2 Provide unlimited unique counter (HO)
-letltxmacro.sty    2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
- hopatch.sty    2012/05/28 v1.2 Wrapper for package hooks (HO)
-xcolor-patch.sty    2011/01/30 xcolor patch
-atveryend.sty    2011/06/30 v1.8 Hooks at the very end of document (HO)
-atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
-refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
- hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
- ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
- auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
-kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
-  pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
-hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
-     url.sty    2006/04/12  ver 3.3  Verb mode for urls, etc.
- hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
-rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
-mdframed.sty    2013/08/18 1.9d: mdframed
-  xparse.sty    2013/07/12 v4544 L3 Experimental document command parser
-   expl3.sty    2013/07/12 v4544 L3 Experimental code bundle wrapper
- l3names.sty    2012/12/07 v4346 L3 Namespace for primitives
-l3bootstrap.sty    2013/01/08 v4420 L3 Experimental bootstrap code
-    etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
-l3basics.sty    2013/07/09 v4521 L3 Basic definitions
- l3expan.sty    2013/07/09 v4521 L3 Argument expansion
-    l3tl.sty    2013/04/24 v4482 L3 Token lists
-   l3seq.sty    2013/05/26 v4500 L3 Sequences and stacks
-   l3int.sty    2013/04/24 v4482 L3 Integers
- l3quark.sty    2013/07/09 v4521 L3 Quarks
-   l3prg.sty    2013/04/24 v4482 L3 Control structures
- l3clist.sty    2013/05/26 v4500 L3 Comma separated lists
- l3token.sty    2013/04/24 v4482 L3 Experimental token manipulation
-  l3prop.sty    2013/01/09 v4423 L3 Property lists
-   l3msg.sty    2013/01/08 v4412 L3 Messages
-  l3file.sty    2013/05/01 v4483 L3 File and I/O operations
-  l3skip.sty    2013/01/13 v4444 L3 Dimensions and skips
-  l3keys.sty    2013/07/12 v4544 L3 Experimental key-value interfaces
-    l3fp.sty    2013/07/09 v4521 L3 Floating points
-   l3box.sty    2013/04/24 v4482 L3 Experimental boxes
-l3coffins.sty    2012/09/09 v4212 L3 Coffin code layer
- l3color.sty    2012/08/29 v4156 L3 Experimental color support
-l3luatex.sty    2012/08/03 v4049 L3 Experimental LuaTeX-specific functions
-l3candidates.sty    2013/07/09 v4521 L3 Experimental additions to l3kernel
-etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
-zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
-zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
-needspace.sty    2010/09/12 v1.3d reserve vertical space
-    tikz.sty    2010/10/13 v2.10 (rcs-revision 1.76)
-     pgf.sty    2008/01/15 v2.10 (rcs-revision 1.12)
-  pgfrcs.sty    2010/10/25 v2.10 (rcs-revision 1.24)
-everyshi.sty    2001/05/15 v3.00 EveryShipout Package (MS)
-  pgfrcs.code.tex
- pgfcore.sty    2010/04/11 v2.10 (rcs-revision 1.7)
-  pgfsys.sty    2010/06/30 v2.10 (rcs-revision 1.37)
-  pgfsys.code.tex
-pgfsyssoftpath.code.tex    2008/07/18  (rcs-revision 1.7)
-pgfsysprotocol.code.tex    2006/10/16  (rcs-revision 1.4)
- pgfcore.code.tex
-pgfcomp-version-0-65.sty    2007/07/03 v2.10 (rcs-revision 1.7)
-pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
-  pgffor.sty    2010/03/23 v2.10 (rcs-revision 1.18)
- pgfkeys.sty    
- pgfkeys.code.tex
-  pgffor.code.tex
-    tikz.code.tex
-md-frame-1.mdf    2013/08/18\ 1.9d: md-frame-1
-  ts1cmr.fd    1999/05/25 v2.5h Standard LaTeX font definitions
-   t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
-supp-pdf.mkii
-epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
-  grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
-epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
-  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
-RS)
- nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
-gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
-newcommands_keep.tex
-  t1lmss.fd    2009/10/30 v1.6 Font defs for Latin Modern
-  ot1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
-  omllmm.fd    2009/10/30 v1.6 Font defs for Latin Modern
- omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
- omxlmex.fd    2009/10/30 v1.6 Font defs for Latin Modern
-    umsa.fd    2013/01/14 v3.01 AMS symbols A
-  mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
-    umsb.fd    2013/01/14 v3.01 AMS symbols B
-  mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
-  t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
-  ts1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
- ***********
-
-
-Package rerunfilecheck Warning: File `Springer_T2_book.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-
-LaTeX Font Warning: Size substitutions with differences
-(Font)              up to 0.75pt have occurred.
-
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
- )
-(see the transcript file for additional information){/usr/share/texmf/fonts/enc
-/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/share
-/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm
--mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}</usr/share/texmf/fo
-nts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx9.pf
-b></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/ty
-pe1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></us
-r/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/pub
-lic/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/t
-exmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr
-9.pfb></usr/share/texmf/fonts/type1/public/lm/lmri12.pfb></usr/share/texmf/font
-s/type1/public/lm/lmri9.pfb></usr/share/texmf/fonts/type1/public/lm/lmss12.pfb>
-</usr/share/texmf/fonts/type1/public/lm/lmss9.pfb></usr/share/texmf/fonts/type1
-/public/lm/lmssbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></us
-r/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/pub
-lic/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb></usr/shar
-e/texmf/fonts/type1/public/lm/lmtt8.pfb></usr/share/texmf/fonts/type1/public/lm
-/lmtt9.pfb>
-Output written on Springer_T2_book.pdf (18 pages, ).
-Transcript written on Springer_T2_book.log.
-+ '[' 0 -ne 0 ']'
-+ system bibtex Springer_T2_book
-+ bibtex Springer_T2_book
-This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
-The top-level auxiliary file: Springer_T2_book.aux
-The style file: plain.bst
-Database file #1: papers.bib
-+ '[' 0 -ne 0 ']'
-+ system makeindex Springer_T2_book
-+ makeindex Springer_T2_book
-This is makeindex, version 2.15 [TeX Live 2013] (kpathsea + Thai support).
-Scanning input file Springer_T2_book.idx....done (22 entries accepted, 0 rejected).
-Sorting entries....done (100 comparisons).
-Generating output file Springer_T2_book.ind....done (46 lines written, 0 warnings).
-Output written in Springer_T2_book.ind.
-Transcript written in Springer_T2_book.ilg.
-+ '[' 0 -ne 0 ']'
-+ system pdflatex Springer_T2_book
-+ pdflatex Springer_T2_book
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
- restricted \write18 enabled.
-entering extended mode
-(./Springer_T2_book.tex
-LaTeX2e <2011/06/27>
-Babel <3.9f> and hyphenation patterns for 2 languages loaded.
-(/home/hpl/texmf/tex/latex/misc/svmonodo.cls
-
-LaTeX Warning: You have requested document class `svmonodo',
-               but the document class provides `svmono'.
-
-Document Class: svmono 2007/06/25 v5.4 
-Springer Verlag global LaTeX document class for monographs
-
-Class Springer-SVMono Warning: Specified option or subpackage "sectrefs" 
-(Springer-SVMono)              not found passing it to article class 
-(Springer-SVMono)              - on .
-
-
-Class Springer-SVMono Warning: Specified option or subpackage "open=right" 
-(Springer-SVMono)              not found passing it to article class 
-(Springer-SVMono)              - on .
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
-
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
-
-(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
-
-
-
-(/home/hpl/texmf/tex/latex/misc/t2do.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
-
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
-For additional information on amsmath, use the `?' option.
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
-
-
-
-
-Package amsmath Warning: Unable to redefine math accent \vec.
-
-) 
-
-(/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
-
-
-Package caption Warning: Unsupported document class (or package) detected,
-(caption)                usage of the caption package is not recommended.
-See the caption package documentation for explanation.
-
-) (/usr/share/texlive/texmf-dist/tex/latex/tools/tabularx.sty
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty
-(/usr/share/texlive/texmf-dist/tex/latex/base/ts1enc.def
-
-
-
-
-
-
-(/usr/share/texmf/tex/latex/xcolor/xcolor.sty
-
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
-
-
-(/home/hpl/texmf/tex/latex/misc/ptex2tex.sty
-(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
-Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
-<2008/02/07> (tvz))
-(/usr/share/texlive/texmf-dist/tex/latex/moreverb/moreverb.sty
-
-(/home/hpl/texmf/tex/latex/misc/anslistings.sty
-(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
-
-
-
-
-
-
-
-
-Package hyperref Message: Driver (autodetected): hpdftex.
-
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
-
-(/home/hpl/texmf/tex/latex/misc/mdframed.sty
-(/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
-(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
-(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/l3names.sty
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-abspage.sty
-
-
-(/usr/share/texmf/tex/latex/pgf/frontendlayer/tikz.sty
-(/usr/share/texmf/tex/latex/pgf/basiclayer/pgf.sty
-(/usr/share/texmf/tex/latex/pgf/utilities/pgfrcs.sty
-
-(/usr/share/texmf/tex/generic/pgf/utilities/pgfutil-latex.def
-
-
-(/usr/share/texmf/tex/latex/pgf/basiclayer/pgfcore.sty
-(/usr/share/texmf/tex/latex/pgf/systemlayer/pgfsys.sty
-(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys.code.tex
-(/usr/share/texmf/tex/generic/pgf/utilities/pgfkeys.code.tex
-
-
-(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
-
-
-
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcore.code.tex
-(/usr/share/texmf/tex/generic/pgf/math/pgfmath.code.tex
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathcalc.code.tex
-
-
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathfunctions.code.tex
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
-
-
-
-
-
-
-
-
-(/usr/share/texmf/tex/latex/pgf/utilities/pgffor.sty
-(/usr/share/texmf/tex/latex/pgf/utilities/pgfkeys.sty
-
-
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
-
-
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopat
-hs.code.tex))) (/usr/share/texlive/texmf-dist/tex/latex/mdframed/md-frame-1.mdf
-))
-Writing index file Springer_T2_book.idx
-
-LaTeX Warning: Unused global option(s):
-    [sectrefs,open=right].
-
-(./Springer_T2_book.aux) (/home/hpl/texmf/tex/latex/misc/ts1cmr.fd)
-
-(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
-[Loading MPS to PDF converter (version 2006.09.02).]
-) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
-
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
-
-(./Springer_T2_book.out) (./Springer_T2_book.out)
-ABD: EveryShipout initializing macros (./newcommands_keep.tex)
-
-
-
-
-
-
-
-
- [3
-Non-PDF special ignored!{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-[4]
-Overfull \hbox (120.12047pt too wide) 
-|[] 
-[5] 
-
-LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <5.5> not available
-(Font)              size <5> substituted on .
-
-
-LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <5.5> not available
-(Font)              size <5> substituted on .
-
-
-LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <5.5> not available
-(Font)              size <5> substituted on .
-
-[6]
-Overfull \hbox (120.12047pt too wide) 
-|[] 
-(./Springer_T2_book.toc) [7] [8]
-Chapter 1.
-
-Overfull \hbox (30.77882pt too wide) 
-[][][] 
-
-Overfull \hbox (120.12047pt too wide) 
-|[] 
-
-LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <8.5> not available
-(Font)              size <8> substituted on .
-
-
-LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <4.25> not available
-(Font)              size <5> substituted on .
-
-
-LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <8.5> not available
-(Font)              size <8> substituted on .
-
-
-LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <4.25> not available
-(Font)              size <5> substituted on .
-
-
-LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <8.5> not available
-(Font)              size <8> substituted on .
-
-
-LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <4.25> not available
-(Font)              size <5> substituted on .
-
-[1]
-
-
-
- [2]
-Underfull \hbox (badness 6927) 
-\T1/lmr/m/n/11 (+20) or one may take the less rec-om-mended lazy ap-proach
-[3]
-
-
-...rest of part of LaTeX line number...
-
-[4]
-Chapter 2.
-
-Overfull \hbox (30.77882pt too wide) 
-[][][] 
-
-Overfull \hbox (120.12047pt too wide) 
-|[] 
-[5] [6]
-
-
-...rest of part of LaTeX line number...
-
-[7]
-
-
-...rest of part of LaTeX line number...
-
-[8]
-
-
-...rest of part of LaTeX line number...
-
-
-
-
-
-
-
-
-
-
-
-
-
-[9] [10]
-Appendix A.
-
-Overfull \hbox (30.77882pt too wide) 
-[][][] 
-
-Overfull \hbox (120.12047pt too wide) 
-|[] 
-[11] [12] (./Springer_T2_book.bbl
-Overfull \hbox (120.12047pt too wide) 
-|[] 
-) [13] [14] (./Springer_T2_book.ind
-Overfull \hbox (120.12047pt too wide) 
-|[] 
-[15]) (./Springer_T2_book.aux)
-
- *File List*
-svmonodo.cls    2007/06/25 v5.4 
-Springer Verlag global LaTeX document class for monographs
- article.cls    2007/10/19 v1.4h Standard LaTeX document class
-  size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
-   color.sty    1999/02/16
-   color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
-  pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
-infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
- ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
-  framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
-    t2do.sty    
-graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
-  keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
-graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
-    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
-graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
-inputenc.sty    2008/03/30 v1.1d Input encoding file
-    utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
-   t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
-  ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
-  omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
- amsmath.sty    2013/01/14 v2.14 AMS math features
- amstext.sty    2000/06/29 v2.01
-  amsgen.sty    1999/11/30 v2.0
-  amsbsy.sty    1999/11/29 v1.2d
-  amsopn.sty    1999/12/14 v2.01 operator names
-amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
- amssymb.sty    2013/01/14 v3.01 AMS font symbols
- caption.sty    2013/05/02 v3.3-89 Customizing captions (AR)
-caption3.sty    2013/05/02 v1.6-88 caption3 kernel (AR)
-tabularx.sty    1999/01/07 v2.07 `tabularx' package (DPC)
-   array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
-multicol.sty    2011/06/27 v1.7a multicolumn formatting (FMi)
- fontenc.sty
-   t1enc.def    2005/09/27 v1.99g Standard LaTeX file
-marvosym.sty    2011/07/20 v2.2 Martin Vogel's Symbols font definitions
-textcomp.sty    2005/09/27 v1.99g Standard LaTeX package
-  ts1enc.def    2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
-  ts1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
-footmisc.sty    2011/06/06 v5.5b a miscellany of footnote facilities
- relsize.sty    2013/03/29 ver 4.1
-  epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
- makeidx.sty    2000/03/29 v1.0m Standard LaTeX package
-setspace.sty    2011/12/19 v6.7a set line spacing
-  xcolor.sty    2007/01/21 v2.11 LaTeX color extensions (UK)
-   color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
-colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
-      bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
-microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
-microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
-microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
-ptex2tex.sty    
-fancyvrb.sty    2008/02/07
-moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
-verbatim.sty    2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
-anslistings.sty    2009/03/28 code highlighting; provided by Olivier Verdier <o
-livier@maths.lth.se>
-listings.sty    2013/07/10 1.5 (Carsten Heinz)
- lstmisc.sty    2013/07/10 1.5 (Carsten Heinz)
-listings.cfg    2013/06/27 1.5pre1 listings configuration
- fontenc.sty
-   t1enc.def    2005/09/27 v1.99g Standard LaTeX file
- lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
-hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
-hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
-hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
-  hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
-ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
-  ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
- intcalc.sty    2007/09/27 v1.1 Expandable calculations with integers (HO)
-   ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
-etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
-kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
-kvdefinekeys.sty    2011/04/07 v1.3 Define keys (HO)
-pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
-pdfescape.sty    2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
-bigintcalc.sty    2012/04/08 v1.3 Expandable calculations on big integers (HO)
-  bitset.sty    2011/01/30 v1.1 Handle bit-vector datatype (HO)
-uniquecounter.sty    2011/01/30 v1.2 Provide unlimited unique counter (HO)
-letltxmacro.sty    2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
- hopatch.sty    2012/05/28 v1.2 Wrapper for package hooks (HO)
-xcolor-patch.sty    2011/01/30 xcolor patch
-atveryend.sty    2011/06/30 v1.8 Hooks at the very end of document (HO)
-atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
-refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
- hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
- ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
- auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
-kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
-  pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
-hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
-     url.sty    2006/04/12  ver 3.3  Verb mode for urls, etc.
- hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
-rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
-mdframed.sty    2013/08/18 1.9d: mdframed
-  xparse.sty    2013/07/12 v4544 L3 Experimental document command parser
-   expl3.sty    2013/07/12 v4544 L3 Experimental code bundle wrapper
- l3names.sty    2012/12/07 v4346 L3 Namespace for primitives
-l3bootstrap.sty    2013/01/08 v4420 L3 Experimental bootstrap code
-    etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
-l3basics.sty    2013/07/09 v4521 L3 Basic definitions
- l3expan.sty    2013/07/09 v4521 L3 Argument expansion
-    l3tl.sty    2013/04/24 v4482 L3 Token lists
-   l3seq.sty    2013/05/26 v4500 L3 Sequences and stacks
-   l3int.sty    2013/04/24 v4482 L3 Integers
- l3quark.sty    2013/07/09 v4521 L3 Quarks
-   l3prg.sty    2013/04/24 v4482 L3 Control structures
- l3clist.sty    2013/05/26 v4500 L3 Comma separated lists
- l3token.sty    2013/04/24 v4482 L3 Experimental token manipulation
-  l3prop.sty    2013/01/09 v4423 L3 Property lists
-   l3msg.sty    2013/01/08 v4412 L3 Messages
-  l3file.sty    2013/05/01 v4483 L3 File and I/O operations
-  l3skip.sty    2013/01/13 v4444 L3 Dimensions and skips
-  l3keys.sty    2013/07/12 v4544 L3 Experimental key-value interfaces
-    l3fp.sty    2013/07/09 v4521 L3 Floating points
-   l3box.sty    2013/04/24 v4482 L3 Experimental boxes
-l3coffins.sty    2012/09/09 v4212 L3 Coffin code layer
- l3color.sty    2012/08/29 v4156 L3 Experimental color support
-l3luatex.sty    2012/08/03 v4049 L3 Experimental LuaTeX-specific functions
-l3candidates.sty    2013/07/09 v4521 L3 Experimental additions to l3kernel
-etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
-zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
-zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
-needspace.sty    2010/09/12 v1.3d reserve vertical space
-    tikz.sty    2010/10/13 v2.10 (rcs-revision 1.76)
-     pgf.sty    2008/01/15 v2.10 (rcs-revision 1.12)
-  pgfrcs.sty    2010/10/25 v2.10 (rcs-revision 1.24)
-everyshi.sty    2001/05/15 v3.00 EveryShipout Package (MS)
-  pgfrcs.code.tex
- pgfcore.sty    2010/04/11 v2.10 (rcs-revision 1.7)
-  pgfsys.sty    2010/06/30 v2.10 (rcs-revision 1.37)
-  pgfsys.code.tex
-pgfsyssoftpath.code.tex    2008/07/18  (rcs-revision 1.7)
-pgfsysprotocol.code.tex    2006/10/16  (rcs-revision 1.4)
- pgfcore.code.tex
-pgfcomp-version-0-65.sty    2007/07/03 v2.10 (rcs-revision 1.7)
-pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
-  pgffor.sty    2010/03/23 v2.10 (rcs-revision 1.18)
- pgfkeys.sty    
- pgfkeys.code.tex
-  pgffor.code.tex
-    tikz.code.tex
-md-frame-1.mdf    2013/08/18\ 1.9d: md-frame-1
-  ts1cmr.fd    1999/05/25 v2.5h Standard LaTeX font definitions
-   t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
-supp-pdf.mkii
-epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
-  grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
-epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
-  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
-RS)
- nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
-gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
-Springer_T2_book.out
-Springer_T2_book.out
-newcommands_keep.tex
-  t1lmss.fd    2009/10/30 v1.6 Font defs for Latin Modern
-  ot1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
-  omllmm.fd    2009/10/30 v1.6 Font defs for Latin Modern
- omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
- omxlmex.fd    2009/10/30 v1.6 Font defs for Latin Modern
-    umsa.fd    2013/01/14 v3.01 AMS symbols A
-  mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
-    umsb.fd    2013/01/14 v3.01 AMS symbols B
-  mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
-  t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
-  ts1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
-Springer_T2_book.bbl
-Springer_T2_book.ind
- ***********
-
-
-Package rerunfilecheck Warning: File `Springer_T2_book.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-
-LaTeX Font Warning: Size substitutions with differences
-(Font)              up to 0.75pt have occurred.
-
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
- )
-(see the transcript file for additional information){/usr/share/texmf/fonts/enc
-/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/share
-/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm
--mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}</usr/share/texmf/fo
-nts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx9.pf
-b></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/ty
-pe1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></us
-r/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/pub
-lic/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/t
-exmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr
-9.pfb></usr/share/texmf/fonts/type1/public/lm/lmri12.pfb></usr/share/texmf/font
-s/type1/public/lm/lmri9.pfb></usr/share/texmf/fonts/type1/public/lm/lmss12.pfb>
-</usr/share/texmf/fonts/type1/public/lm/lmss9.pfb></usr/share/texmf/fonts/type1
-/public/lm/lmssbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></us
-r/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/pub
-lic/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb></usr/shar
-e/texmf/fonts/type1/public/lm/lmtt8.pfb></usr/share/texmf/fonts/type1/public/lm
-/lmtt9.pfb>
-Output written on Springer_T2_book.pdf (21 pages, ).
-Transcript written on Springer_T2_book.log.
-+ '[' 0 -ne 0 ']'
-+ system pdflatex Springer_T2_book
-+ pdflatex Springer_T2_book
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
- restricted \write18 enabled.
-entering extended mode
-(./Springer_T2_book.tex
-LaTeX2e <2011/06/27>
-Babel <3.9f> and hyphenation patterns for 2 languages loaded.
-(/home/hpl/texmf/tex/latex/misc/svmonodo.cls
-
-LaTeX Warning: You have requested document class `svmonodo',
-               but the document class provides `svmono'.
-
-Document Class: svmono 2007/06/25 v5.4 
-Springer Verlag global LaTeX document class for monographs
-
-Class Springer-SVMono Warning: Specified option or subpackage "sectrefs" 
-(Springer-SVMono)              not found passing it to article class 
-(Springer-SVMono)              - on .
-
-
-Class Springer-SVMono Warning: Specified option or subpackage "open=right" 
-(Springer-SVMono)              not found passing it to article class 
-(Springer-SVMono)              - on .
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
-
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
-
-(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
-
-
-
-(/home/hpl/texmf/tex/latex/misc/t2do.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
-
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
-For additional information on amsmath, use the `?' option.
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
-
-
-
-
-Package amsmath Warning: Unable to redefine math accent \vec.
-
-) 
-
-(/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
-
-
-Package caption Warning: Unsupported document class (or package) detected,
-(caption)                usage of the caption package is not recommended.
-See the caption package documentation for explanation.
-
-) (/usr/share/texlive/texmf-dist/tex/latex/tools/tabularx.sty
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty
-(/usr/share/texlive/texmf-dist/tex/latex/base/ts1enc.def
-
-
-
-
-
-
-(/usr/share/texmf/tex/latex/xcolor/xcolor.sty
-
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
-
-
-(/home/hpl/texmf/tex/latex/misc/ptex2tex.sty
-(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
-Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
-<2008/02/07> (tvz))
-(/usr/share/texlive/texmf-dist/tex/latex/moreverb/moreverb.sty
-
-(/home/hpl/texmf/tex/latex/misc/anslistings.sty
-(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
-
-
-
-
-
-
-
-
-Package hyperref Message: Driver (autodetected): hpdftex.
-
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
-
-(/home/hpl/texmf/tex/latex/misc/mdframed.sty
-(/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
-(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
-(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/l3names.sty
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-abspage.sty
-
-
-(/usr/share/texmf/tex/latex/pgf/frontendlayer/tikz.sty
-(/usr/share/texmf/tex/latex/pgf/basiclayer/pgf.sty
-(/usr/share/texmf/tex/latex/pgf/utilities/pgfrcs.sty
-
-(/usr/share/texmf/tex/generic/pgf/utilities/pgfutil-latex.def
-
-
-(/usr/share/texmf/tex/latex/pgf/basiclayer/pgfcore.sty
-(/usr/share/texmf/tex/latex/pgf/systemlayer/pgfsys.sty
-(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys.code.tex
-(/usr/share/texmf/tex/generic/pgf/utilities/pgfkeys.code.tex
-
-
-(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
-
-
-
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcore.code.tex
-(/usr/share/texmf/tex/generic/pgf/math/pgfmath.code.tex
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathcalc.code.tex
-
-
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathfunctions.code.tex
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
-
-
-
-
-
-
-
-
-(/usr/share/texmf/tex/latex/pgf/utilities/pgffor.sty
-(/usr/share/texmf/tex/latex/pgf/utilities/pgfkeys.sty
-
-
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
-
-
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopat
-hs.code.tex))) (/usr/share/texlive/texmf-dist/tex/latex/mdframed/md-frame-1.mdf
-))
-Writing index file Springer_T2_book.idx
-
-LaTeX Warning: Unused global option(s):
-    [sectrefs,open=right].
-
-(./Springer_T2_book.aux) (/home/hpl/texmf/tex/latex/misc/ts1cmr.fd)
-
-(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
-[Loading MPS to PDF converter (version 2006.09.02).]
-) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
-
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
-
-(./Springer_T2_book.out) (./Springer_T2_book.out)
-ABD: EveryShipout initializing macros (./newcommands_keep.tex)
-
-
-
-
-
-
-
-
- [3
-Non-PDF special ignored!{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-[4]
-Overfull \hbox (120.12047pt too wide) 
-|[] 
-[5] 
-
-LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <5.5> not available
-(Font)              size <5> substituted on .
-
-
-LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <5.5> not available
-(Font)              size <5> substituted on .
-
-
-LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <5.5> not available
-(Font)              size <5> substituted on .
-
-[6]
-Overfull \hbox (120.12047pt too wide) 
-|[] 
-(./Springer_T2_book.toc) [7] [8]
-Chapter 1.
-
-Overfull \hbox (30.77882pt too wide) 
-[][][] 
-
-Overfull \hbox (120.12047pt too wide) 
-|[] 
-
-LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <8.5> not available
-(Font)              size <8> substituted on .
-
-
-LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <4.25> not available
-(Font)              size <5> substituted on .
-
-
-LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <8.5> not available
-(Font)              size <8> substituted on .
-
-
-LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <4.25> not available
-(Font)              size <5> substituted on .
-
-
-LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <8.5> not available
-(Font)              size <8> substituted on .
-
-
-LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <4.25> not available
-(Font)              size <5> substituted on .
-
-[1]  [2]
-Underfull \hbox (badness 6927) 
-\T1/lmr/m/n/11 (+20) or one may take the less rec-om-mended lazy ap-proach
-[3]
-
-
-...rest of part of LaTeX line number...
-
-[4]
-Chapter 2.
-
-Overfull \hbox (30.77882pt too wide) 
-[][][] 
-
-Overfull \hbox (120.12047pt too wide) 
-|[] 
-[5] [6]
-
-
-...rest of part of LaTeX line number...
-
-[7]
-
-
-...rest of part of LaTeX line number...
-
-[8] [9] [10]
-Appendix A.
-
-Overfull \hbox (30.77882pt too wide) 
-[][][] 
-
-Overfull \hbox (120.12047pt too wide) 
-|[] 
-[11] [12] (./Springer_T2_book.bbl
-Overfull \hbox (120.12047pt too wide) 
-|[] 
-) [13] [14] (./Springer_T2_book.ind
-Overfull \hbox (120.12047pt too wide) 
-|[] 
-[15]) (./Springer_T2_book.aux)
-
- *File List*
-svmonodo.cls    2007/06/25 v5.4 
-Springer Verlag global LaTeX document class for monographs
- article.cls    2007/10/19 v1.4h Standard LaTeX document class
-  size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
-   color.sty    1999/02/16
-   color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
-  pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
-infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
- ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
-  framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
-    t2do.sty    
-graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
-  keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
-graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
-    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
-graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
-inputenc.sty    2008/03/30 v1.1d Input encoding file
-    utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
-   t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
-  ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
-  omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
- amsmath.sty    2013/01/14 v2.14 AMS math features
- amstext.sty    2000/06/29 v2.01
-  amsgen.sty    1999/11/30 v2.0
-  amsbsy.sty    1999/11/29 v1.2d
-  amsopn.sty    1999/12/14 v2.01 operator names
-amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
- amssymb.sty    2013/01/14 v3.01 AMS font symbols
- caption.sty    2013/05/02 v3.3-89 Customizing captions (AR)
-caption3.sty    2013/05/02 v1.6-88 caption3 kernel (AR)
-tabularx.sty    1999/01/07 v2.07 `tabularx' package (DPC)
-   array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
-multicol.sty    2011/06/27 v1.7a multicolumn formatting (FMi)
- fontenc.sty
-   t1enc.def    2005/09/27 v1.99g Standard LaTeX file
-marvosym.sty    2011/07/20 v2.2 Martin Vogel's Symbols font definitions
-textcomp.sty    2005/09/27 v1.99g Standard LaTeX package
-  ts1enc.def    2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
-  ts1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
-footmisc.sty    2011/06/06 v5.5b a miscellany of footnote facilities
- relsize.sty    2013/03/29 ver 4.1
-  epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
- makeidx.sty    2000/03/29 v1.0m Standard LaTeX package
-setspace.sty    2011/12/19 v6.7a set line spacing
-  xcolor.sty    2007/01/21 v2.11 LaTeX color extensions (UK)
-   color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
-colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
-      bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
-microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
-microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
-microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
-ptex2tex.sty    
-fancyvrb.sty    2008/02/07
-moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
-verbatim.sty    2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
-anslistings.sty    2009/03/28 code highlighting; provided by Olivier Verdier <o
-livier@maths.lth.se>
-listings.sty    2013/07/10 1.5 (Carsten Heinz)
- lstmisc.sty    2013/07/10 1.5 (Carsten Heinz)
-listings.cfg    2013/06/27 1.5pre1 listings configuration
- fontenc.sty
-   t1enc.def    2005/09/27 v1.99g Standard LaTeX file
- lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
-hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
-hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
-hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
-  hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
-ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
-  ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
- intcalc.sty    2007/09/27 v1.1 Expandable calculations with integers (HO)
-   ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
-etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
-kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
-kvdefinekeys.sty    2011/04/07 v1.3 Define keys (HO)
-pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
-pdfescape.sty    2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
-bigintcalc.sty    2012/04/08 v1.3 Expandable calculations on big integers (HO)
-  bitset.sty    2011/01/30 v1.1 Handle bit-vector datatype (HO)
-uniquecounter.sty    2011/01/30 v1.2 Provide unlimited unique counter (HO)
-letltxmacro.sty    2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
- hopatch.sty    2012/05/28 v1.2 Wrapper for package hooks (HO)
-xcolor-patch.sty    2011/01/30 xcolor patch
-atveryend.sty    2011/06/30 v1.8 Hooks at the very end of document (HO)
-atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
-refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
- hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
- ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
- auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
-kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
-  pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
-hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
-     url.sty    2006/04/12  ver 3.3  Verb mode for urls, etc.
- hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
-rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
-mdframed.sty    2013/08/18 1.9d: mdframed
-  xparse.sty    2013/07/12 v4544 L3 Experimental document command parser
-   expl3.sty    2013/07/12 v4544 L3 Experimental code bundle wrapper
- l3names.sty    2012/12/07 v4346 L3 Namespace for primitives
-l3bootstrap.sty    2013/01/08 v4420 L3 Experimental bootstrap code
-    etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
-l3basics.sty    2013/07/09 v4521 L3 Basic definitions
- l3expan.sty    2013/07/09 v4521 L3 Argument expansion
-    l3tl.sty    2013/04/24 v4482 L3 Token lists
-   l3seq.sty    2013/05/26 v4500 L3 Sequences and stacks
-   l3int.sty    2013/04/24 v4482 L3 Integers
- l3quark.sty    2013/07/09 v4521 L3 Quarks
-   l3prg.sty    2013/04/24 v4482 L3 Control structures
- l3clist.sty    2013/05/26 v4500 L3 Comma separated lists
- l3token.sty    2013/04/24 v4482 L3 Experimental token manipulation
-  l3prop.sty    2013/01/09 v4423 L3 Property lists
-   l3msg.sty    2013/01/08 v4412 L3 Messages
-  l3file.sty    2013/05/01 v4483 L3 File and I/O operations
-  l3skip.sty    2013/01/13 v4444 L3 Dimensions and skips
-  l3keys.sty    2013/07/12 v4544 L3 Experimental key-value interfaces
-    l3fp.sty    2013/07/09 v4521 L3 Floating points
-   l3box.sty    2013/04/24 v4482 L3 Experimental boxes
-l3coffins.sty    2012/09/09 v4212 L3 Coffin code layer
- l3color.sty    2012/08/29 v4156 L3 Experimental color support
-l3luatex.sty    2012/08/03 v4049 L3 Experimental LuaTeX-specific functions
-l3candidates.sty    2013/07/09 v4521 L3 Experimental additions to l3kernel
-etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
-zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
-zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
-needspace.sty    2010/09/12 v1.3d reserve vertical space
-    tikz.sty    2010/10/13 v2.10 (rcs-revision 1.76)
-     pgf.sty    2008/01/15 v2.10 (rcs-revision 1.12)
-  pgfrcs.sty    2010/10/25 v2.10 (rcs-revision 1.24)
-everyshi.sty    2001/05/15 v3.00 EveryShipout Package (MS)
-  pgfrcs.code.tex
- pgfcore.sty    2010/04/11 v2.10 (rcs-revision 1.7)
-  pgfsys.sty    2010/06/30 v2.10 (rcs-revision 1.37)
-  pgfsys.code.tex
-pgfsyssoftpath.code.tex    2008/07/18  (rcs-revision 1.7)
-pgfsysprotocol.code.tex    2006/10/16  (rcs-revision 1.4)
- pgfcore.code.tex
-pgfcomp-version-0-65.sty    2007/07/03 v2.10 (rcs-revision 1.7)
-pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
-  pgffor.sty    2010/03/23 v2.10 (rcs-revision 1.18)
- pgfkeys.sty    
- pgfkeys.code.tex
-  pgffor.code.tex
-    tikz.code.tex
-md-frame-1.mdf    2013/08/18\ 1.9d: md-frame-1
-  ts1cmr.fd    1999/05/25 v2.5h Standard LaTeX font definitions
-   t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
-supp-pdf.mkii
-epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
-  grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
-epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
-  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
-RS)
- nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
-gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
-Springer_T2_book.out
-Springer_T2_book.out
-newcommands_keep.tex
-  t1lmss.fd    2009/10/30 v1.6 Font defs for Latin Modern
-  ot1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
-  omllmm.fd    2009/10/30 v1.6 Font defs for Latin Modern
- omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
- omxlmex.fd    2009/10/30 v1.6 Font defs for Latin Modern
-    umsa.fd    2013/01/14 v3.01 AMS symbols A
-  mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
-    umsb.fd    2013/01/14 v3.01 AMS symbols B
-  mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
-  t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
-  ts1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
-Springer_T2_book.bbl
-Springer_T2_book.ind
- ***********
-
-
-LaTeX Font Warning: Size substitutions with differences
-(Font)              up to 0.75pt have occurred.
-
-
-LaTeX Warning: There were undefined references.
-
- )
-(see the transcript file for additional information){/usr/share/texmf/fonts/enc
-/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/share
-/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm
--mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}</usr/share/texmf/fo
-nts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.p
-fb></usr/share/texmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/t
-ype1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></us
-r/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/pub
-lic/lm/lmr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/te
-xmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf/fonts/type1/public/lm/lmri
-12.pfb></usr/share/texmf/fonts/type1/public/lm/lmri9.pfb></usr/share/texmf/font
-s/type1/public/lm/lmss12.pfb></usr/share/texmf/fonts/type1/public/lm/lmss9.pfb>
-</usr/share/texmf/fonts/type1/public/lm/lmssbx10.pfb></usr/share/texmf/fonts/ty
-pe1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></us
-r/share/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/pu
-blic/lm/lmtt12.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt8.pfb></usr/shar
-e/texmf/fonts/type1/public/lm/lmtt9.pfb>
-Output written on Springer_T2_book.pdf (21 pages, ).
-Transcript written on Springer_T2_book.log.
-+ '[' 0 -ne 0 ']'
+could not extract svmonodo.cls.sty (from latex_styles.zip in the doconce installation)
+could not extract t2do.sty.sty (from latex_styles.zip in the doconce installation)
+Traceback (most recent call last):
+  File "/usr/local/bin/doconce", line 1033, in <module>
+    main()
+  File "/usr/local/bin/doconce", line 1023, in main
+    eval(command + '()')
+  File "<string>", line 1, in <module>
+  File "/usr/local/bin/doconce", line 87, in format
+    doconce.doconce.format_driver()
+  File "/usr/local/lib/python2.7/dist-packages/doconce/doconce.py", line 3094, in format_driver
+    out_filename = file2file(filename_preprocessed, format, basename)
+  File "/usr/local/lib/python2.7/dist-packages/doconce/doconce.py", line 2328, in file2file
+    filestr = doconce2format(filestr, format)
+  File "/usr/local/lib/python2.7/dist-packages/doconce/doconce.py", line 2455, in doconce2format
+    filestr)
+  File "/usr/local/lib/python2.7/dist-packages/doconce/latex.py", line 2478, in define
+    if chapters:
+UnboundLocalError: local variable 'chapters' referenced before assignment
++ '[' 1 -ne 0 ']'
++ echo 'make.sh: unsuccessful command doconce' format pdflatex Springer_T2_book CHAPTER=chapter BOOK=book APPENDIX=appendix -DPRIMER_BOOK ALG=code --encoding=utf-8 --device=paper --latex_exercise_numbering=chapter --latex_admon_color=1,1,1 --latex_style=Springer_T2 --latex_title_layout=titlepage --latex_list_of_exercises=loe
+make.sh: unsuccessful command doconce format pdflatex Springer_T2_book CHAPTER=chapter BOOK=book APPENDIX=appendix -DPRIMER_BOOK ALG=code --encoding=utf-8 --device=paper --latex_exercise_numbering=chapter --latex_admon_color=1,1,1 --latex_style=Springer_T2 --latex_title_layout=titlepage --latex_list_of_exercises=loe
++ echo 'abort!'
+abort!
++ exit 1
 + cd ..
 + system doconce guess_encoding encoding1.do.txt
 + doconce guess_encoding encoding1.do.txt
@@ -96994,15 +90292,15 @@ translating doconce text in tmp_mako__quickref.do.txt to html
 copy complete file doconce_program.sh  (format: shpro)
 output in quickref.html
 + '[' 0 -ne 0 ']'
-+ system doconce format latex quickref --no_preprocess
-+ doconce format latex quickref --no_preprocess
++ system doconce format latex quickref --no_preprocess --latex_font=helvetica
++ doconce format latex quickref --no_preprocess --latex_font=helvetica
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to latex
 copy complete file doconce_program.sh  (format: shpro)
 output in quickref.p.tex
 + '[' 0 -ne 0 ']'
-+ system doconce ptex2tex quickref -DMINTED -DHELVETICA envir=Verbatim
-+ doconce ptex2tex quickref -DMINTED -DHELVETICA envir=Verbatim
++ system doconce ptex2tex quickref envir=Verbatim
++ doconce ptex2tex quickref envir=Verbatim
 \bshpro (!bc shpro) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=0mm]
 \bcod (!bc cod) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=0mm]
 \bsys (!bc sys) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=0mm]
@@ -97050,21 +90348,7 @@ For additional information on amsmath, use the `?' option.
 
 (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
-<2008/02/07> (tvz)) (/home/hpl/texmf/tex/latex/misc/minted.sty
-
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/ifplatform/ifplatform.sty
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
-
-
-
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/catchfile.sty
-
-(./quickref.w18))/usr/local/bin/pygmentize
-) (./quickref.pyg)
-(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+<2008/02/07> (tvz)) (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
@@ -97286,20 +90570,6 @@ microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
 fancyvrb.sty    2008/02/07
-  minted.sty    2010/01/27 v1.6 Yet another Pygments shim for LaTeX
-   float.sty    2001/11/08 v1.3d Float enhancements (AL)
-  ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
-    calc.sty    2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
-ifplatform.sty    2010/10/22 v0.4 Testing for the operating system
-pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
-infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
-ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
- ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
-   ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
-catchfile.sty    2011/03/01 v1.6 Catch the contents of a file (HO)
-etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
-quickref.w18
-quickref.pyg
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
 inputenc.sty    2008/03/30 v1.1d Input encoding file
@@ -97313,10 +90583,16 @@ hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
   hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
+infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
+ ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
   ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
  intcalc.sty    2007/09/27 v1.1 Expandable calculations with integers (HO)
+   ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
+etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
 kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
 kvdefinekeys.sty    2011/04/07 v1.3 Define keys (HO)
+pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
 pdfescape.sty    2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
 bigintcalc.sty    2012/04/08 v1.3 Expandable calculations on big integers (HO)
   bitset.sty    2011/01/30 v1.1 Handle bit-vector datatype (HO)
@@ -97460,21 +90736,7 @@ For additional information on amsmath, use the `?' option.
 
 (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
-<2008/02/07> (tvz)) (/home/hpl/texmf/tex/latex/misc/minted.sty
-
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/ifplatform/ifplatform.sty
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
-
-
-
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/catchfile.sty
-
-(./quickref.w18))/usr/local/bin/pygmentize
-) (./quickref.pyg)
-(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+<2008/02/07> (tvz)) (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
@@ -97621,14 +90883,14 @@ Overfull \hbox (4.40176pt too wide)
 Overfull \hbox (25.94336pt too wide) 
 \T1/phv/m/n/10 up to, but not in-clud-ing the line match-ing the \T1/phv/m/sl/1
 0 reg-u-lar ex-pres-sion []\T1/phv/m/n/10 .
-[7]
+[7] [8]
 Overfull \hbox (49.67722pt too wide) 
 \T1/phv/m/n/10 pre-pro-ces-sor if-tests on the for-mat (typ-i-cally [])
-[8] [9] [10]
+[9] [10] [11]
 Overfull \hbox (59.24634pt too wide) 
 \T1/phv/m/n/10 sert a back-slash). Bib-li-og-ra-phy ci-ta-tions of-ten have [] 
 on the form [],
-[11]
+
 Overfull \hbox (20.06982pt too wide) 
 []\T1/phv/m/n/10 The bib-li-og-ra-phy is spec-i-fied by a line [], where []
 [12]
@@ -97681,20 +90943,6 @@ microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
 fancyvrb.sty    2008/02/07
-  minted.sty    2010/01/27 v1.6 Yet another Pygments shim for LaTeX
-   float.sty    2001/11/08 v1.3d Float enhancements (AL)
-  ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
-    calc.sty    2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
-ifplatform.sty    2010/10/22 v0.4 Testing for the operating system
-pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
-infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
-ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
- ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
-   ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
-catchfile.sty    2011/03/01 v1.6 Catch the contents of a file (HO)
-etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
-quickref.w18
-quickref.pyg
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
 inputenc.sty    2008/03/30 v1.1d Input encoding file
@@ -97708,10 +90956,16 @@ hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
   hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
+infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
+ ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
   ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
  intcalc.sty    2007/09/27 v1.1 Expandable calculations with integers (HO)
+   ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
+etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
 kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
 kvdefinekeys.sty    2011/04/07 v1.3 Define keys (HO)
+pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
 pdfescape.sty    2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
 bigintcalc.sty    2012/04/08 v1.3 Expandable calculations on big integers (HO)
   bitset.sty    2011/01/30 v1.1 Handle bit-vector datatype (HO)
@@ -97820,7 +91074,7 @@ output in quickref.rst
 + system doconce sphinx_dir author=HPL version=0.7 quickref
 + doconce sphinx_dir author=HPL version=0.7 quickref
 Making sphinx-rootdir
-Welcome to the Sphinx 1.2pre quickstart utility.
+Welcome to the Sphinx 1.2 quickstart utility.
 
 Please enter values for the following settings (just press Enter to
 accept a default value, if one is given in brackets).
@@ -97894,7 +91148,7 @@ replacing doconce format sphinx %s by doconce format sphinx %s --no-preprocess i
 rm -rf _build/*
 sphinx-build -b html -d _build/doctrees   . _build/html
 Making output directory...
-Running Sphinx v1.2pre
+Running Sphinx v1.2
 loading pickled environment... not yet created
 building [html]: targets for 2 source files that are out of date
 updating environment: 2 added, 0 changed, 0 removed
@@ -97907,12 +91161,13 @@ checking consistency... done
 preparing documents... done
 writing output... [ 50%] index
 writing output... [100%] quickref
+WARNING: dvipng command 'dvipng' cannot be run (needed for math display), check the pngmath_dvipng setting
 
 writing additional files... (0 module code pages) genindex search
 copying static files... done
-dumping search index... done
+copying extra files... dumping search index... done
 dumping object inventory... done
-build succeeded.
+build succeeded, 1 warning.
 
 Build finished. The HTML pages are in _build/html.
 <title>(.+?) &mdash;.+?</title> replaced by <title>\g<1></title> in search.html
@@ -97925,6 +91180,16 @@ replacing </head> by
    </style>
   </head>
  in search.html
+<title>(.+?) &mdash;.+?</title> replaced by <title>\g<1></title> in index.html
+replacing </head> by 
+   <style type=text/css>
+     div.admonition {
+       background-color: whiteSmoke;
+       border: 1px solid #bababa;
+     }
+   </style>
+  </head>
+ in index.html
 <title>(.+?) &mdash;.+?</title> replaced by <title>\g<1></title> in quickref.html
 replacing </head> by 
    <style type=text/css>
@@ -97945,16 +91210,6 @@ replacing </head> by
    </style>
   </head>
  in genindex.html
-<title>(.+?) &mdash;.+?</title> replaced by <title>\g<1></title> in index.html
-replacing </head> by 
-   <style type=text/css>
-     div.admonition {
-       background-color: whiteSmoke;
-       border: 1px solid #bababa;
-     }
-   </style>
-  </head>
- in index.html
 /home/hpl/vc/doconce/doc/src/quickref/sphinx-rootdir
 running make clean
 running make html
@@ -98051,16 +91306,16 @@ rspace Inc.
 Overfull \hbox (59.00006pt too wide) 
 []\T1/pcr/m/n/10 name Email: somename@adr.net at institution1 & institution2 
 
-Overfull \hbox (4.50082pt too wide) in alignment at lines 340--348
+Overfull \hbox (4.50082pt too wide) in alignment at lines 321--329
  [] [] 
 
-Overfull \hbox (4.50082pt too wide) in alignment at lines 348--356
+Overfull \hbox (4.50082pt too wide) in alignment at lines 329--337
  [] [] 
 
-Overfull \hbox (4.50082pt too wide) in alignment at lines 356--358
+Overfull \hbox (4.50082pt too wide) in alignment at lines 337--339
  [] [] 
 
-Overfull \hbox (4.50082pt too wide) in alignment at lines 358--359
+Overfull \hbox (4.50082pt too wide) in alignment at lines 339--340
  [] [] 
 
 Underfull \hbox (badness 10000) 
@@ -98078,7 +91333,7 @@ Underfull \hbox (badness 10000)
 Underfull \hbox (badness 10000) 
 []|\T1/pcr/m/n/10 ===== Exercise: heading
 
-Overfull \hbox (4.50082pt too wide) in alignment at lines 359--420
+Overfull \hbox (4.50082pt too wide) in alignment at lines 340--401
  [] [] 
 [2]
 Overfull \hbox (15.61775pt too wide) 
@@ -98112,7 +91367,10 @@ it_rst
 
 Overfull \hbox (119.00006pt too wide) 
 []\T1/pcr/m/n/10 @@@CODE doconce_program.sh  from-to: doconce clean@^doconce sp
-lit_rst 
+lit_rst  
+
+Overfull \hbox (29.00006pt too wide) 
+[]\T1/pcr/m/n/10 @@@CODE doconce_program.sh  envir=shpro fromto: name=@ 
 
 Overfull \hbox (6.12766pt too wide) 
 \T1/ptm/m/n/10 to, but not in-clud-ing the line match-ing the \T1/ptm/m/it/10 r
@@ -98171,7 +91429,7 @@ Overfull \hbox (119.00006pt too wide)
  movie. 
 
 
-e 1000.
+e 949.
 
 
 Overfull \hbox (107.00006pt too wide) 
@@ -98438,9 +91696,8 @@ Overfull \hbox (4.19656pt too wide)
 [][][][][][] \T1/ptm/m/n/10 con-tains some il-lus-tra-tions on how to uti-lize 
 \T1/pcr/m/n/10 mako \T1/ptm/m/n/10 (clone the GitHub
 
-Overfull \hbox (114.855pt too wide) 
-[]\T1/ptm/m/n/10 Excellent ``Sphinx Tu-to-rial'' by C. Reller: ``[][][][][][]''
- 
+Overfull \hbox (113.41505pt too wide) 
+[]\T1/ptm/m/n/10 Excellent "Sphinx Tu-to-rial" by C. Reller: "[][][][][][]" 
 [18] (./quickref.rst.aux)
 
 Package rerunfilecheck Warning: File `quickref.rst.out' has changed.
@@ -98510,7 +91767,7 @@ Package hyperref Message: Driver (default): hdvips.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 
-(./quickref.rst.out) (./quickref.rst.out) (./quickref.rst.toc)
+(./quickref.rst.out) (./quickref.rst.out) (./quickref.rst.toc
 
 Overfull \hbox (4.55762pt too wide) 
 \T1/ptm/m/n/10 HTML. Other out-lets in-clude Google's \T1/pcr/m/n/10 blogger.co
@@ -98527,16 +91784,16 @@ rspace Inc.
 Overfull \hbox (59.00006pt too wide) 
 []\T1/pcr/m/n/10 name Email: somename@adr.net at institution1 & institution2 
 
-Overfull \hbox (4.50082pt too wide) in alignment at lines 340--348
+Overfull \hbox (4.50082pt too wide) in alignment at lines 321--329
  [] [] 
 
-Overfull \hbox (4.50082pt too wide) in alignment at lines 348--356
+Overfull \hbox (4.50082pt too wide) in alignment at lines 329--337
  [] [] 
 
-Overfull \hbox (4.50082pt too wide) in alignment at lines 356--358
+Overfull \hbox (4.50082pt too wide) in alignment at lines 337--339
  [] [] 
 
-Overfull \hbox (4.50082pt too wide) in alignment at lines 358--359
+Overfull \hbox (4.50082pt too wide) in alignment at lines 339--340
  [] [] 
 
 Underfull \hbox (badness 10000) 
@@ -98554,7 +91811,7 @@ Underfull \hbox (badness 10000)
 Underfull \hbox (badness 10000) 
 []|\T1/pcr/m/n/10 ===== Exercise: heading
 
-Overfull \hbox (4.50082pt too wide) in alignment at lines 359--420
+Overfull \hbox (4.50082pt too wide) in alignment at lines 340--401
  [] [] 
 [3]
 Overfull \hbox (15.61775pt too wide) 
@@ -98588,7 +91845,10 @@ it_rst
 
 Overfull \hbox (119.00006pt too wide) 
 []\T1/pcr/m/n/10 @@@CODE doconce_program.sh  from-to: doconce clean@^doconce sp
-lit_rst 
+lit_rst  
+
+Overfull \hbox (29.00006pt too wide) 
+[]\T1/pcr/m/n/10 @@@CODE doconce_program.sh  envir=shpro fromto: name=@ 
 
 Overfull \hbox (6.12766pt too wide) 
 \T1/ptm/m/n/10 to, but not in-clud-ing the line match-ing the \T1/ptm/m/it/10 r
@@ -98910,9 +92170,8 @@ Overfull \hbox (4.19656pt too wide)
 [][][][][][] \T1/ptm/m/n/10 con-tains some il-lus-tra-tions on how to uti-lize 
 \T1/pcr/m/n/10 mako \T1/ptm/m/n/10 (clone the GitHub
 
-Overfull \hbox (114.855pt too wide) 
-[]\T1/ptm/m/n/10 Excellent ``Sphinx Tu-to-rial'' by C. Reller: ``[][][][][][]''
- 
+Overfull \hbox (113.41505pt too wide) 
+[]\T1/ptm/m/n/10 Excellent "Sphinx Tu-to-rial" by C. Reller: "[][][][][][]" 
 [19] (./quickref.rst.aux)
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
