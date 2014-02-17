@@ -87,10 +87,10 @@ $d2f pandoc manual.do.txt --no_mako
 if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
 
 # doconce pdflatex:
-$d2f pdflatex manual.do.txt --no_mako
+$d2f pdflatex manual.do.txt --no_mako --latex_font=helvetica
 if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
 
-doconce ptex2tex manual -DHELVETICA envir=Verbatim
+doconce ptex2tex manual envir=Verbatim
 pdflatex -shell-escape manual
 bibtex manual
 makeindex manual
@@ -99,9 +99,9 @@ pdflatex -shell-escape manual
 cp manual.pdf manual_pdflatex.pdf
 
 # doconce latex:
-$d2f latex manual.do.txt --no_mako   # produces ptex2tex: manual.p.tex
+$d2f latex manual.do.txt --no_mako --latex_font=helvetica  # produces ptex2tex: manual.p.tex
 if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
-doconce ptex2tex manual -DMINTED -DHELVETICA envir=Verbatim
+doconce ptex2tex manual envir=Verbatim
 latex -shell-escape manual
 latex -shell-escape manual
 bibtex manual

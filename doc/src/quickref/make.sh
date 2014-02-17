@@ -18,8 +18,8 @@ doconce > doconce_program.sh
 system doconce format html quickref --no_pygments_html --no_preprocess
 
 # latex (shpro because of @@@CODE copy, need minted style)
-system doconce format latex quickref --no_preprocess
-system doconce ptex2tex quickref -DMINTED -DHELVETICA envir=Verbatim
+system doconce format latex quickref --no_preprocess --latex_font=helvetica
+system doconce ptex2tex quickref envir=Verbatim
 # cannot run ptex2tex since it always runs preprocess
 system latex -shell-escape quickref.tex
 latex -shell-escape quickref.tex

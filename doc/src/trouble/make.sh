@@ -5,9 +5,9 @@ rm -f automake_*
 
 name=trouble
 
-doconce format html ${name} --no_pygments_html --no_preprocess
+doconce format html ${name} --no_pygments_html --no_preprocess --latex_font=helvetica
 doconce format pdflatex ${name}
-doconce ptex2tex ${name} -DMINTED -DHELVETICA envir=minted
+doconce ptex2tex ${name} envir=minted
 pdflatex -shell-escape ${name}.tex
 # index??
 pdflatex -shell-escape ${name}.tex

@@ -76,9 +76,9 @@ doconce replace '<!-- !split -->' '<!-- !split --><br><br><br><br><br><br><br><b
 
 # LaTeX Beamer slides
 beamertheme=red_shadow
-system doconce format pdflatex $name
+system doconce format pdflatex $name --latex_title_layout=beamer
 editfix ${name}.p.tex
-system doconce ptex2tex $name -DLATEX_HEADING=beamer envir=minted
+system doconce ptex2tex $name envir=minted
 system doconce slides_beamer $name --beamer_slide_theme=$beamertheme
 cp $name.tex ${name}-beamer-${beamertheme}.tex
 system pdflatex -shell-escape ${name}-beamer-$beamertheme
@@ -86,7 +86,7 @@ system pdflatex -shell-escape ${name}-beamer-$beamertheme
 # LaTeX documents
 system doconce format pdflatex $name --minted_latex_style=trac
 editfix ${name}.p.tex
-system doconce ptex2tex $name envir=minted -DBOOK
+system doconce ptex2tex $name envir=minted
 doconce replace 'section{' 'section*{' $name.tex
 system pdflatex -shell-escape $name
 mv -f $name.pdf ${name}-minted.pdf
@@ -96,7 +96,7 @@ system doconce format pdflatex $name
 if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
 editfix ${name}.p.tex
 doconce replace 'section{' 'section*{' ${name}.p.tex
-system doconce ptex2tex $name envir=ans:nt -DBOOK
+system doconce ptex2tex $name envir=ans:nt
 if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
 system pdflatex $name
 mv -f $name.pdf ${name}-anslistings.pdf
@@ -183,8 +183,8 @@ cp demo.html demo_reveal_solarized_plainpre.html
 themes="blue_plain blue_shadow red_plain red_shadow cbc simula"
 beamer_pdfs=""
 for theme in $themes; do
-doconce format pdflatex demo SLIDE_TYPE="beamer" SLIDE_THEME="$theme"
-doconce ptex2tex demo -DLATEX_HEADING=beamer envir=minted
+doconce format pdflatex demo SLIDE_TYPE="beamer" SLIDE_THEME="$theme" --latex_title_layout=beamer
+doconce ptex2tex demo envir=minted
 doconce slides_beamer demo --beamer_slide_theme=$theme
 cp demo.tex demo_${theme}.tex
 pdflatex -shell-escape demo_${theme}
@@ -192,9 +192,9 @@ beamer_pdfs="$beamer_pdfs <a href=\"demo_$theme.pdf\">$theme</a>"
 done
 
 # LaTeX document
-doconce format pdflatex demo SLIDE_TYPE="latex document" SLIDE_THEME="no theme"
+doconce format pdflatex demo SLIDE_TYPE="latex document" SLIDE_THEME="no theme" --latex_font=palatino
 if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
-doconce ptex2tex demo -DPALATINO envir=minted
+doconce ptex2tex demo envir=minted
 if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
 pdflatex -shell-escape demo
 
@@ -375,8 +375,8 @@ doconce slides_html demo csss --html_slide_theme=csss_default
 </pre>
 <li>LaTeX Beamer PDF: $beamer_pdfs
 <pre>
-doconce format pdflatex demo SLIDE_TYPE="beamer" SLIDE_THEME="red_shadow"
-doconce ptex2tex demo -DLATEX_HEADING=beamer envir=minted
+doconce format pdflatex demo SLIDE_TYPE="beamer" SLIDE_THEME="red_shadow" --latex_title_layout=beamer
+doconce ptex2tex demo envir=minted
 doconce slides_beamer demo --beamer_slide_theme=red_shadow
 pdflatex -shell-escape demo
 cp demo.pdf demo_red_shadow.pdf
