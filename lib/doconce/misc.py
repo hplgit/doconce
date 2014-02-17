@@ -4219,6 +4219,7 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
         part = part.replace(r'\section{', r'\noindent\textbf{\Large ')
         part = part.replace(r'\subsection{', r'\noindent\textbf{\large ')
         part = part.replace(r'\paragraph{', r'\noindent\textbf{')
+        # But unnumbered \section*{ works fine?
 
         part = part.rstrip()
 

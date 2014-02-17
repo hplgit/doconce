@@ -136,7 +136,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>Feb 16, 2014</h4></center> <!-- date -->
+<center><h4>Feb 17, 2014</h4></center> <!-- date -->
 
 <h2>Table of contents</h2>
 
@@ -530,6 +530,7 @@ Computer code can also be copied from a file:
 <pre><code> @@@CODE doconce_program.sh
  @@@CODE doconce_program.sh  fromto: doconce clean@^doconce split_rst
  @@@CODE doconce_program.sh  from-to: doconce clean@^doconce split_rst
+ @@@CODE doconce_program.sh  envir=shpro fromto: name=@
 </code></pre>
 <!-- end verbatim block -->
 The <code>@@@CODE</code> identifier must appear at the very beginning of the line.
@@ -542,13 +543,16 @@ the first regular expression is not copied (aimed at copying
 text between begin-end comment pair in the file).
 
 <p>
-The copied line from file are in this example put inside <code>!bc shpro</code>
+The copied lines from file are in this example put inside <code>!bc shpro</code>
 and <code>!ec</code> directives, if a complete file is copied, while the
 directives become <code>!bc shcod</code> and <code>!ec</code> when a code snippet is copied
 from file. In general, for a filename extension <code>.X</code>, the environment
 becomes <code>!bc Xpro</code> or <code>!bc Xcod</code> for a complete program or snippet,
 respectively. The enivorments (<code>Xcod</code> and <code>Xpro</code>) are only active
-for <code>latex</code> and <code>sphinx</code> outout.
+for <code>latex</code>, <code>pdflatex</code>, html`, and <code>sphinx</code> outout.
+The fourth specification above specifies the code environment
+explicitly such that the becomes <code>shpro</code> even if we copy a part
+of the file (here from <code>name=</code> until the end of the file).
 
 <p>
 Important warnings:
