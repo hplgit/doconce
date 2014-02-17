@@ -65,7 +65,10 @@ system doconce split_html testdoc.html
 system doconce format html testdoc.do.txt --pygments_html_linenos --html_style=solarized --pygments_html_style=emacs $ex --html_output=demo_testdoc
 
 system doconce format latex testdoc.do.txt $ex SOMEVAR=True --skip_inline_comments
-system doconce format pdflatex testdoc.do.txt --device=paper $ex --latex_double_hyphen --latex_index_in_margin --latex_no_program_footnotelink
+system doconce format pdflatex testdoc.do.txt --device=paper $ex --latex_double_hyphen --latex_index_in_margin --latex_no_program_footnotelink --latex_titlepage=titlepage --latex_paper=a4 --latex_line_numbers --latex_colored_table_rows=blue --latex_fancy_header --latex_section_headings=blue --latex_labels_in_margin --latex_double_spacing --latex_todonotes --latex_list_of_exercises=loe
+# --latex_paper=a4 triggers summary environment to be smaller paragraph
+# within the text (fine for proposals or articles).
+
 system doconce latex_exercise_toc testdoc
 
 # doconce replace does not work well with system bash func above without quotes
@@ -80,9 +83,7 @@ doconce replace '% end theorem' '\end{theorem}' testdoc.p.tex
 doconce replace Newton--Cotes Newton-Cotes testdoc.p.tex
 doconce replace --examples_as__exercises $ex testdoc.p.tex
 
-# A4PAPER trigger summary environment to be smaller paragraph
-# within the text (fine for proposals or articles).
-system ptex2tex -DMINTED -DLATEX_HEADING=titlepage -DA4PAPER -DTODONOTES -DLINENUMBERS -DCOLORED_TABLE_ROWS=blue -DFANCY_HEADER -DSECTION_HEADINGS=blue -DLABELS_IN_MARGIN -DDOUBLE_SPACING -DLIST_OF_EXERCISES=loe testdoc
+system ptex2tex -DMINTED testdoc
 
 # test that pdflatex works
 system pdflatex -shell-escape testdoc

@@ -612,38 +612,46 @@ def insert_code_from_file(filestr, format):
                     print e
                     _abort()
 
-            # Determine code environment from filename extension
-            filetype = os.path.splitext(filename)[1][1:]  # drop dot
-
-            if filetype == 'cxx' or filetype == 'C' or filetype == 'h' \
-                   or filetype == 'i':
-                filetype = 'cpp'
-            elif filetype in ('f90', 'f95'):
-                filetype = 'f'
-            elif filetype == 'pyx':  # Cython code is called cy
-                filetype = 'cy'
-            elif filetype == 'ufl':  # UFL applies Python
-                filetype = 'py'
-            elif filetype == 'htm':
-                filetype = 'html'
-            elif filetype == 'text':
-                filetype = 'txt'
-            elif filetype == 'data':
-                filetype = 'dat'
-            elif filetype in ('csh', 'ksh', 'zsh', 'tcsh'):
-                filetype = 'sh'
-
-            if filetype in ('py', 'f', 'c', 'cpp', 'sh',
-                            'm', 'pl', 'cy', 'rst',
-                            'pyopt',  # Online Python Tutor
-                            'pysc',   # Sage cell
-                            'rb', 'html', 'xml', 'js',
-                            'txt', 'csv', 'dat'):
-                code_envir = filetype
-            elif filetype == 'tex':
-                code_envir = 'latex'
+            # Check if the code environment is explicitly specified
+            if 'envir=' in line:
+                m = re.search(r'envir=([^ ]+) ', line)
+                if m:
+                    code_envir = m.group(1).strip()
+                    line = re.sub(r'envir=([^ ]+) ', '', line)
             else:
-                code_envir = ''
+                # Determine code environment from filename extension
+                filetype = os.path.splitext(filename)[1][1:]  # drop dot
+
+                if filetype == 'cxx' or filetype == 'C' or filetype == 'h' \
+                       or filetype == 'i':
+                    filetype = 'cpp'
+                elif filetype in ('f90', 'f95'):
+                    filetype = 'f'
+                elif filetype == 'pyx':  # Cython code is called cy
+                    filetype = 'cy'
+                elif filetype == 'ufl':  # UFL applies Python
+                    filetype = 'py'
+                elif filetype == 'htm':
+                    filetype = 'html'
+                elif filetype == 'text':
+                    filetype = 'txt'
+                elif filetype == 'data':
+                    filetype = 'dat'
+                elif filetype in ('csh', 'ksh', 'zsh', 'tcsh'):
+                    filetype = 'sh'
+
+                if filetype in ('py', 'f', 'c', 'cpp', 'sh',
+                                'm', 'pl', 'cy', 'rst',
+                                'pyopt',  # Online Python Tutor
+                                'pysc',   # Sage cell
+                                'rb', 'html', 'xml', 'js',
+                                'txt', 'csv', 'dat'):
+                    code_envir = filetype
+                elif filetype == 'tex':
+                    code_envir = 'latex'
+                else:
+                    code_envir = ''
+
             if code_envir in ('txt', 'csv', 'dat', ''):
                 code_envir_tp = 'filedata'
             else:
@@ -752,7 +760,10 @@ def insert_code_from_file(filestr, format):
             #if format == 'latex' or format == 'pdflatex' or format == 'sphinx':
                 # Insert a cod or pro directive for ptex2tex and sphinx.
             if code_envir_tp == 'program':
-                if complete_file:
+                if code_envir.endswith('pro') or code_envir.endswith('cod'):
+                    code = "!bc %s\n%s\n!ec" % (code_envir, code)
+                    print ' (format: %s)' % code_envir
+                elif complete_file:
                     code = "!bc %spro\n%s\n!ec" % (code_envir, code)
                     print ' (format: %spro)' % code_envir
                 else:
