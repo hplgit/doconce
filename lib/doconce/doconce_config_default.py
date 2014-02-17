@@ -41,6 +41,7 @@ html_links_in_new_window = False
 latex_index_in_margin = False
 latex_double_hyphen = False
 #latex_preamble = 
+latex_no_program_footnotelink = False
 #html_admon = 
 html_admon_shadow = False
 #html_admon_bg_color = 
