@@ -36,17 +36,12 @@ $ cd ../../..
 
 # LaTeX
 texinfo
-# These lines are only necessary for Ubuntu 12.04 to install texlive 2012
-$ ubuntu_version=`lsb_release -r | awl '{print $2}'`
-$ if [ $ubuntu_version = "12.04" ]; then
-$   sudo add-apt-repository ppa:texlive-backports/ppa
-$   sudo apt-get update
-$ fi
 texlive
 texlive-extra-utils
 texlive-latex-extra
 texlive-math-extra
 texlive-font-utils
+texlive-humanities
 latexdiff
 auctex
 

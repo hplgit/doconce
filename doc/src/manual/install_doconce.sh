@@ -1,5 +1,10 @@
 #!/bin/bash
-# Automatically generated script. Based on debpkg_doconce.txt.
+# Automatically generated script by
+# vagrantbox/doc/src/vagrant/src-vagrant/deb2sh.py
+# where vagrantbox is the directory arising from
+# git clone git@github.com:hplgit/vagrantbox.git
+
+# The script is based on packages listed in debpkg_doconce.txt.
 
 set -x  # make sure each command is printed in the terminal
 
@@ -19,14 +24,6 @@ function pip_install {
   fi
 }
 
-function unix_command {
-  "$@"
-  if [ $? -ne 0 ]; then
-    echo "could not run $@ - abort"
-    exit 1
-  fi
-}
-
 sudo apt-get update --fix-missing
 
 # Translate this text file to .sh and .py scripts with
@@ -38,11 +35,11 @@ apt_install mercurial
 apt_install git
 apt_install subversion
 
-unix_command cd srclib
-unix_command hg clone https://code.google.com/p/doconce/
-unix_command cd doconce
-unix_command sudo python setup.py install
-unix_command cd ../..
+cd srclib
+hg clone https://code.google.com/p/doconce/
+cd doconce
+sudo python setup.py install
+cd ../..
 
 # Python
 apt_install idle
@@ -60,27 +57,22 @@ pip_install -e hg+https://bitbucket.org/miiton/sphinxjp.themes.solarized#egg=sph
 pip_install -e git+https://github.com/shkumagai/sphinxjp.themes.impressjs#egg=sphinxjp.themes.impressjs
 pip_install -e git+https://github.com/kriskda/sphinx-sagecell#egg=sphinx-sagecell
 
-unix_command cd srclib
-unix_command svn checkout http://ptex2tex.googlecode.com/svn/trunk/ ptex2tex
-unix_command cd ptex2tex
-unix_command sudo python setup.py install
-unix_command cd latex
-unix_command sh cp2texmf.sh
-unix_command cd ../../..
+cd srclib
+svn checkout http://ptex2tex.googlecode.com/svn/trunk/ ptex2tex
+cd ptex2tex
+sudo python setup.py install
+cd latex
+sh cp2texmf.sh
+cd ../../..
 
 # LaTeX
 apt_install texinfo
-# These lines are only necessary for Ubuntu 12.04 to install texlive 2012
-unix_command ubuntu_version=`lsb_release -r | awl '{print $2}'`
-unix_command if [ $ubuntu_version = "12.04" ]; then
-unix_command sudo add-apt-repository ppa:texlive-backports/ppa
-unix_command sudo apt-get update
-unix_command fi
 apt_install texlive
 apt_install texlive-extra-utils
 apt_install texlive-latex-extra
 apt_install texlive-math-extra
 apt_install texlive-font-utils
+apt_install texlive-humanities
 apt_install latexdiff
 apt_install auctex
 

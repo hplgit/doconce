@@ -1,16 +1,29 @@
-\
 #!/usr/bin/env python
-# Automatically generated script. Based on debpkg_doconce.txt.
+# Automatically generated script by
+# vagrantbox/doc/src/vagrant/src-vagrant/deb2sh.py
+# where vagrantbox is the directory arising from
+# git clone git@github.com:hplgit/vagrantbox.git
 
-import commands, sys
+# The script is based on packages listed in debpkg_doconce.txt.
+
+logfile = 'tmp_output.log'  # store all output of all operating system commands
+f = open(logfile, 'w'); f.close()  # touch logfile so it can be appended
+
+import subprocess, sys
 
 def system(cmd):
     """Run system command cmd."""
-    failure, output = commands.getstatusoutput(cmd)
-    if failure:
-       print 'Command\n  %s\nfailed.' % cmd
-       print output
-       sys.exit(1)
+    print cmd
+    try:
+        output = subprocess.check_output(cmd, shell=True,
+                                         stderr=subprocess.STDOUT)
+    except subprocess.CalledProcessError as e:
+        print 'Command\n  %s\nfailed.' % cmd
+        print 'Return code:', e.returncode
+        print e.output
+        sys.exit(1)
+    print output
+    f = open(logfile, 'a'); f.write(output); f.close()
 
 system('sudo apt-get update --fix-missing')
 # Translate this text file to .sh and .py scripts with
@@ -22,57 +35,52 @@ system('sudo apt-get -y install mercurial')
 system('sudo apt-get -y install git')
 system('sudo apt-get -y install subversion')
 
-system('cd srclib')
-system('hg clone https://code.google.com/p/doconce/')
-system('cd doconce')
-system('sudo python setup.py install')
-system('cd ../..')
 
+cmd = """
+cd srclib
+hg clone https://code.google.com/p/doconce/
+cd doconce
+sudo python setup.py install
+cd ../..
 # Python
+
+"""
+system(cmd)
 system('sudo apt-get -y install idle')
 system('sudo apt-get -y install ipython')
 system('sudo apt-get -y install python-pip')
 system('sudo apt-get -y install python-pdftools')
-sudo pip install sphinx 
-sudo pip install mako
+system('sudo pip install sphinx')
+system('sudo pip install mako')
+system('sudo pip install -e svn+http://preprocess.googlecode.com/svn/trunk#egg=preprocess')
+system('sudo pip install -e hg+https://bitbucket.org/logg/publish#egg=publish')
 
-sudo pip install -e svn+http://preprocess.googlecode.com/svn/trunk#egg=preprocess
-
-sudo pip install -e hg+https://bitbucket.org/logg/publish#egg=publish
-
-
-sudo pip install -e hg+https://bitbucket.org/ecollins/cloud_sptheme#egg=cloud_sptheme
-
-sudo pip install -e git+https://github.com/ryan-roemer/sphinx-bootstrap-theme#egg=sphinx-bootstrap-theme
-
-sudo pip install -e hg+https://bitbucket.org/miiton/sphinxjp.themes.solarized#egg=sphinxjp.themes.solarized
-
-sudo pip install -e git+https://github.com/shkumagai/sphinxjp.themes.impressjs#egg=sphinxjp.themes.impressjs
-
-sudo pip install -e git+https://github.com/kriskda/sphinx-sagecell#egg=sphinx-sagecell
+system('sudo pip install -e hg+https://bitbucket.org/ecollins/cloud_sptheme#egg=cloud_sptheme')
+system('sudo pip install -e git+https://github.com/ryan-roemer/sphinx-bootstrap-theme#egg=sphinx-bootstrap-theme')
+system('sudo pip install -e hg+https://bitbucket.org/miiton/sphinxjp.themes.solarized#egg=sphinxjp.themes.solarized')
+system('sudo pip install -e git+https://github.com/shkumagai/sphinxjp.themes.impressjs#egg=sphinxjp.themes.impressjs')
+system('sudo pip install -e git+https://github.com/kriskda/sphinx-sagecell#egg=sphinx-sagecell')
 
 
-system('cd srclib')
-system('svn checkout http://ptex2tex.googlecode.com/svn/trunk/ ptex2tex')
-system('cd ptex2tex')
-system('sudo python setup.py install')
-system('cd latex')
-system('sh cp2texmf.sh')
-system('cd ../../..')
-
+cmd = """
+cd srclib
+svn checkout http://ptex2tex.googlecode.com/svn/trunk/ ptex2tex
+cd ptex2tex
+sudo python setup.py install
+cd latex
+sh cp2texmf.sh
+cd ../../..
 # LaTeX
+
+"""
+system(cmd)
 system('sudo apt-get -y install texinfo')
-# These lines are only necessary for Ubuntu 12.04 to install texlive 2012
-system('ubuntu_version=`lsb_release -r | awl '{print $2}'`')
-system('if [ $ubuntu_version = "12.04" ]; then')
-system('sudo add-apt-repository ppa:texlive-backports/ppa')
-system('sudo apt-get update')
-system('fi')
 system('sudo apt-get -y install texlive')
 system('sudo apt-get -y install texlive-extra-utils')
 system('sudo apt-get -y install texlive-latex-extra')
 system('sudo apt-get -y install texlive-math-extra')
 system('sudo apt-get -y install texlive-font-utils')
+system('sudo apt-get -y install texlive-humanities')
 system('sudo apt-get -y install latexdiff')
 system('sudo apt-get -y install auctex')
 
@@ -96,8 +104,7 @@ system('sudo apt-get -y install pandoc')
 system('sudo apt-get -y install libreoffice')
 system('sudo apt-get -y install unoconv')
 system('sudo apt-get -y install libreoffice-dmaths')
-sudo pip install -e svn+https://epydoc.svn.sourceforge.net/svnroot/epydoc/trunk/epydoc#egg=epydoc
-
+system('sudo pip install -e svn+https://epydoc.svn.sourceforge.net/svnroot/epydoc/trunk/epydoc#egg=epydoc')
 
 system('sudo apt-get -y install curl')
 system('sudo apt-get -y install a2ps')
