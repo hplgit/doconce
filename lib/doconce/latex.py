@@ -956,9 +956,9 @@ def latex_date(m):
 \maketitle
 """ % vars()
     elif title_layout == 'beamer':
-        text ++ r"""
+        text += r"""
 \date{%(date)s}
-% <titlepage figure>
+%% <titlepage figure>
 }
 """ % vars()
     elif title_layout == 'titlepage':
