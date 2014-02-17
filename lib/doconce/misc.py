@@ -166,7 +166,12 @@ yellowbox: box icons and a light yellow background,
 paragraph: plain paragraph with boldface heading.
 """),
     ('--latex_admon_color=',
-     "Admonition color in LaTeX, rgb tuple or saturated color a la gray!5."),
+     """The color to be used as background in admonitions.
+Either rgb tuple or saturated color a la yellow!5:
+  --latex_admon_color=0.1,0.1,0.4
+ '--latex_admon_color=yellow!5'
+(note the quotes, needed for bash, in the latter example)
+"""),
     ('--latex_admon_envir_map=',
      """Mapping of code envirs to new envir names inside admons (e.g., to get
 a different code typesetting inside admons. If a number, say 2, as in
