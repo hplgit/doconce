@@ -498,10 +498,6 @@ Terminal> doconce ptex2tex mydoc -DHELVETICA  # alternative
 Preprocessor variables to be defined or undefined are
 
  * `XELATEX` for processing by `xelatex`
- * `PALATINO` for the Palatino font
- * `HELVETICA` for the Helvetica font
- * `A4PAPER` for A4 paper size
- * `A6PAPER` for A6 paper size (suitable for reading PDFs on phones)
  * `MOVIE` for specifying how movies are handled: the value `media9`
    implies the `media9` package and the `\includemedia` command
    for `.flv` and `.mp4` movies,
@@ -519,55 +515,6 @@ Preprocessor variables to be defined or undefined are
  * `MINTED` for inclusion of the minted package for typesetting of
    code with the Pygments tool (which requires `latex`
    or `pdflatex` to be run with the `-shell-escape` option)
- * `TODONOTES` for using the fancy `todonotes` package for typesetting
-   inline comments (looks much like track changes in MS Word). This
-   macro has only effect if inline comments are used (name, colon,
-   and comment inside brackets).
- * `LINENUMBERS` for inclusion of line numbers in the text.
- * `COLORED_TABLE_ROWS` for coloring every other table rows (set this
-   variable to `gray` or `blue`).
- * `FANCY_HEADER` for turning on headers with section title and page
-   (and also chapter title on odd numbered pages if chapters exist).
- * `DOUBLE_SPACING` for 50 percent larger line spacing (useful for
-   pen corrections) and LaTeX "draft" mode.
-
-There are also preprocessor variables with specific values:
-
- * `LATEX_HEADING` for the typesetting of the title, author, parts of
-   preamble:
-     * `traditional` for traditional LaTeX heading,
-     * `titlepage` for a separate titlepage,
-     * `Springer_collection` for edited volumes on Springer,
-     *  `beamer` for Beamer slides,
-     * `doconce_heading` (default) for listing institutions after names.
-
- * `LATEX_STYLE` for speficying the style (affects parameters in
-   `documentclass` and inclusion of special packages and commands):
-     * `std` for standard LaTeX,
-     * `Springer_lncse` for Springer's LNCSE book series,
-     * `Springer_T2` for large Springer book format,
-     * `Springer_llncse` for Springer's LNCS book series,
-     * `Koma_Script` for Koma-Script `scrartcl` style,
-     * `siamltex` for standard SIAM journal paper style,
-     * `siamltexmm` for newer SIAM journal paper (multi media)
-       style with blue headings.
-
- * `SECTION_HEADINGS` for specifying the style of the section,
-   subsection, and paragraph headings:
-     * `blue` for a blue-gray color of the text,
-     * `strongblue` for a stronger blue color of the text,
-     * `gray` for white text on gray background,
-     * `gray-wide` for white text in a gray box that spans the whole
-       page width.
-
- * `LIST_OF_EXERCISES` for controlling how lists of exercises, problems,
-   and projects are typeset:
-
-     * `non`: no listing of exercises, problems, and projects (default)
-     * `toc`: include exercises, problems, and projects as part of
-       the ordinary table of contents
-     * `loe`: make a separate list of exercises, problems, and projects,
-       which appears after the table of contents
 
 If you are not satisfied with the generated Doconce preamble, you can provide
 your own preamble by adding the command-line option `--latex_preamble=myfile`.
@@ -578,13 +525,12 @@ present in `myfile`). Otherwise, `myfile` is assumed to contain
 *additional* LaTeX code to be added to the Doconce default preamble.
 
 The `ptex2tex` tool makes it possible to easily switch between many
-different fancy formattings of computer code in LaTeX
-documents. After any `!bc` command in the Doconce source you can
-insert verbatim block styles as defined in your `.ptex2tex.cfg`
-file, e.g., `!bc sys` for a terminal session, where `sys` is set to
-a certain environment in `.ptex2tex.cfg` (e.g., `CodeTerminal`).
-There are about 40 styles to choose from, and you can easily add
-new ones.
+different fancy formattings of computer code in LaTeX documents. After
+any `!bc` command in the Doconce source you can insert verbatim block
+styles as defined in your `.ptex2tex.cfg` file, e.g., `!bc sys` for a
+terminal session, where `sys` is set to a certain environment in
+`.ptex2tex.cfg` (e.g., `CodeTerminal`).  There are about 40 styles to
+choose from, and you can easily add new ones.
 
 Also the `doconce ptex2tex` command supports preprocessor directives
 for processing the `.p.tex` file. The command allows specifications
