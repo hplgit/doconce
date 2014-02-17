@@ -985,21 +985,21 @@ def latex_abstract(m):
     text = m.group('text')
     rest = m.group('rest')
     title_layout = option('latex_title_layout=', 'doconce_heading')
-    text = ''
+    abstract = ''
     if title_layout == 'Springer_collection':
-        text += r"""
+        abstract += r"""
 \abstract{
 %(text)s
 }
 """ % vars()
     else:
-        text += r"""
+        abstract += r"""
 \begin{abstract}
 %(text)s
 \end{abstract}
 """ % vars()
-    text += '\n%(rest)s' % vars()
-    return text
+    abstract += '\n%(rest)s' % vars()
+    return abstract
 
 def latex_ref_and_label(section_label2title, format, filestr):
     filestr = filestr.replace('label{', r'\label{')
@@ -1595,7 +1595,7 @@ def define(FILENAME_EXTENSION,
     latex_style = option('latex_style=', 'std')
 
     toc_part = ''
-    if latex_style != 'beamer':
+    if title_layout != 'beamer':
         toc_part += r"""
 \tableofcontents
 """
@@ -1609,7 +1609,8 @@ def define(FILENAME_EXTENSION,
         toc_part += r"""
 \listoftodos[List of inline comments]
 """
-    toc_part += r"""
+    if title_layout != 'beamer':
+        toc_part += r"""
 
 \vspace{1cm} % after toc
 """

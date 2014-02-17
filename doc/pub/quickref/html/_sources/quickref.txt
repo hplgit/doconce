@@ -5,7 +5,7 @@ Doconce Quick Reference
 -----------------------
 
 :Author: Hans Petter Langtangen
-:Date: Feb 16, 2014
+:Date: Feb 17, 2014
 
 **WARNING: This quick reference is very incomplete!**
 
@@ -379,6 +379,7 @@ Computer code can also be copied from a file:
          @@@CODE doconce_program.sh
          @@@CODE doconce_program.sh  fromto: doconce clean@^doconce split_rst
          @@@CODE doconce_program.sh  from-to: doconce clean@^doconce split_rst
+         @@@CODE doconce_program.sh  envir=shpro fromto: name=@
 
 The ``@@@CODE`` identifier must appear at the very beginning of the line.
 The first specification copies the complete file ``doconce_program.sh``.
@@ -389,13 +390,16 @@ The third specification behaves as the second, but the line matching
 the first regular expression is not copied (aimed at copying
 text between begin-end comment pair in the file).
 
-The copied line from file are in this example put inside ``!bc shpro``
+The copied lines from file are in this example put inside ``!bc shpro``
 and ``!ec`` directives, if a complete file is copied, while the
 directives become ``!bc shcod`` and ``!ec`` when a code snippet is copied
 from file. In general, for a filename extension ``.X``, the environment
 becomes ``!bc Xpro`` or ``!bc Xcod`` for a complete program or snippet,
 respectively. The enivorments (``Xcod`` and ``Xpro``) are only active
-for ``latex`` and ``sphinx`` outout.
+for ``latex``, ``pdflatex``, html`, and ``sphinx`` outout.
+The fourth specification above specifies the code environment
+explicitly such that the becomes ``shpro`` even if we copy a part
+of the file (here from ``name=`` until the end of the file).
 
 Important warnings:
 
