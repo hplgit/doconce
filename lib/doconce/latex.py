@@ -179,13 +179,15 @@ def latex_code(filestr, code_blocks, code_block_types,
 #""", filestr)
         exercise_headings = re.findall(exercise_pattern, filestr)
         if exercise_headings:
-            filestr = re.sub(exercise_pattern,
+            if option('latex_list_of_exericses=', 'none') == 'toc':
+                filestr = re.sub(exercise_pattern,
         r"""subsection*{\g<1> \\thedoconceexercisecounter: \g<3>
-% #if LIST_OF_EXERCISES == "toc"
 \\addcontentsline{toc}{subsection}{\\thedoconceexercisecounter: \g<3>
-% #elif LIST_OF_EXERCISES == "loe"
+""", filestr)
+           elif option('latex_list_of_exericses=', 'none') == 'loe':
+                filestr = re.sub(exercise_pattern,
+        r"""subsection*{\g<1> \\thedoconceexercisecounter: \g<3>
 \\addcontentsline{loe}{doconceexercise}{\g<1> \\thedoconceexercisecounter: \g<3>
-% #endif
 """, filestr)
             # Find suitable titles for list of exercises
             import sets
@@ -213,11 +215,6 @@ def latex_code(filestr, code_blocks, code_block_types,
                 # cannot be doconce:exercise (previous name), but
                 # must be doconceexercise because of the \l@... command
                 style_listofexercises = r"""
-
-%% #ifndef LIST_OF_EXERCISES
-%% #define LIST_OF_EXERCISES "none"
-%% #endif
-
 %% --- begin definition of \listofexercises command ---
 \makeatletter
 \newcommand\listofexercises{
@@ -231,18 +228,17 @@ def latex_code(filestr, code_blocks, code_block_types,
 %% --- end definition of \listofexercises command ---
 """ % vars()
                 insert_listofexercises = r"""
-%% #if LIST_OF_EXERCISES == "loe"
 \clearemptydoublepage
 \listofexercises
 \clearemptydoublepage
-%% #endif
 """ % vars()
                 target = r'\newcounter{doconceexercisecounter}'
                 filestr = filestr.replace(
                     target, target + style_listofexercises)
-                target = r'\tableofcontents'
-                filestr = filestr.replace(
-                    target, target + insert_listofexercises)
+                if option('latex_list_of_exericses=', 'none') == 'loe':
+                    target = r'\tableofcontents'
+                    filestr = filestr.replace(
+                        target, target + insert_listofexercises)
 
 
     # Avoid Filename: as a new paragraph with indentation
@@ -701,58 +697,70 @@ def latex_title(m):
     else:
         short_title_cmd = ''
 
-    text = r"""
+    text = ''
+    latex_style = option('latex_style=', 'std')
+    titlepage = option('latex_titlepage=', 'doconce_heading')
+    section_headings = option('latex_section_headings=', 'std')
 
-%% #if LATEX_STYLE in ("Springer_T2", "Springer_lncse")
+    if latex_style in ("Springer_T2", "Springer_lncse"):
+        text += r"""
 \frontmatter
 \setcounter{page}{3}
 \pagestyle{headings}
-%% #endif
+"""
+    elif latex_style == "Springer_lncse":
+        text += r"""
+% With hyperref loaded, \contentsline needs 3 args
+%\contentsline{chapter}{Bibliography}{829}{chapter.Bib}
+%\contentsline{chapter}{Index}{831}{chapter.Index}
+"""
+    text += """
 
-%% #if LATEX_STYLE == "Springer_lncse"
-%% With hyperref loaded, \contentsline needs 3 args
-%%\contentsline{chapter}{Bibliography}{829}{chapter.Bib}
-%%\contentsline{chapter}{Index}{831}{chapter.Index}
-%% #endif
-
-%% ----------------- title -------------------------
-
-%% #if LATEX_HEADING == "traditional"
-
-%% #if SECTION_HEADINGS in ("blue", "strongblue")
+% ----------------- title -------------------------
+"""
+    if titlepage == "traditional":
+        if section_headings in ("blue", "strongblue"):
+            text += r"""
 \title%(short_title_cmd)s{{\color{seccolor} %(title)s}}
-%% #else
+""" % vars()
+        else:
+            text += r"""
 \title%(short_title_cmd)s{%(title)s}
-%% #endif
-
-%% #elif LATEX_HEADING == "titlepage"
-
+""" % vars()
+    elif titlepage == "titlepage":
+        text += r"""
 \thispagestyle{empty}
 \hbox{\ \ }
 \vfill
 \begin{center}
 {\huge{\bfseries{
-\begin{spacing}{1.25}
-%% #if SECTION_HEADINGS in ("blue", "strongblue")
+\begin{spacing}{1.25}"""
+        if section_headings in ("blue", "strongblue"):
+            text += r"""
 {\color{seccolor}\rule{\linewidth}{0.5mm}} \\[0.4cm]
 {\color{seccolor}%(title)s}
-\\[0.4cm] {\color{seccolor}\rule{\linewidth}{0.5mm}} \\[1.5cm]
-%% #else
+\\[0.4cm] {\color{seccolor}\rule{\linewidth}{0.5mm}} \\[1.5cm]""" % vars()
+        else:
+            text += r"""
 {\rule{\linewidth}{0.5mm}} \\[0.4cm]
 {%(title)s}
-\\[0.4cm] {\rule{\linewidth}{0.5mm}} \\[1.5cm]
-%% #endif
+\\[0.4cm] {\rule{\linewidth}{0.5mm}} \\[1.5cm]""" % vars()
+        text += r"""
 \end{spacing}
 }}}
-
-%% #elif LATEX_HEADING == "Springer_collection"
+"""
+    elif titlepage == "Springer_collection":
+        text += r"""
 \title*{%(title)s}
 %% Short version of title:
 \titlerunning{%(short_title)s}
-
-%% #elif LATEX_HEADING == "beamer"
+""" % vars()
+    elif titlepage == "beamer":
+        text += r"""
 \title%(short_title_cmd)s{%(title)s}
-%% #else
+""" % vars()
+    else:
+        text += r"""
 \thispagestyle{empty}
 
 \begin{center}
@@ -1558,33 +1566,34 @@ def define(FILENAME_EXTENSION,
     INDEX_BIB['latex'] = latex_index_bib
 
     bib_page, idx_page = get_bib_index_pages()
-    toc_part = r"""
-%% #if LATEX_HEADING != "beamer"
-\tableofcontents
+    latex_style = option('latex_style=', 'std')
 
-%% #if LATEX_STYLE == "Springer_lncse"
+    toc_part = ''
+    if latex_style != 'beamer':
+        toc_part += r"""
+\tableofcontents
+"""
+    if latex_style == 'Springer_lncse':
+        toc_part += r"""
 \contentsline{chapter}{\refname}{%(bib_page)s}{chapter.Bib}
 \contentsline{chapter}{Index}{%(idx_page)s}{chapter.Index}
-%% #endif
-
 """ % vars()
-    if has_inline_comments and not option('skip_inline_comments'):
+    if has_inline_comments and not option('skip_inline_comments') \
+        and option('latex_todonotes'):
         toc_part += r"""
-% #ifdef TODONOTES
 \listoftodos[List of inline comments]
-% #endif
 """
     toc_part += r"""
 
 \vspace{1cm} % after toc
-% #endif
-
-% #if LATEX_STYLE == "Springer_T2"
+"""
+    if latex_style == 'Springer_T2':
+        toc_part += r"""
 \mymainmatter
-% #elif LATEX_STYLE == "Springer_lncse"
+"""
+    elif latex_style == 'Springer_T2':
+        toc_part += r"""
 \mainmatter
-% #endif
-
 """
     TOC['latex'] = lambda s: toc_part
 
@@ -1616,8 +1625,8 @@ def define(FILENAME_EXTENSION,
 %% (The ptex2tex program: http://code.google.com/p/ptex2tex)
 %% Many preprocess options can be added to ptex2tex or doconce ptex2tex
 %%
-%%      ptex2tex -DMINTED -DPALATINO -DA6PAPER -DLATEX_HEADING=traditional myfile
-%%      doconce ptex2tex myfile -DLATEX_HEADING=titlepage envir=minted
+%%      ptex2tex -DMINTED myfile
+%%      doconce ptex2tex myfile envir=minted
 %%
 %% ptex2tex will typeset code environments according to a global or local
 %% .ptex2tex.cfg configure file. doconce ptex2tex will typeset code
@@ -1625,35 +1634,30 @@ def define(FILENAME_EXTENSION,
 %% see examples). If doconce ptex2tex has envir=minted, it enables the
 %% minted style without needing -DMINTED.
 % #endif
-
-% #ifndef LATEX_STYLE
-% #define LATEX_STYLE "std"
-% #endif
-
-% #ifndef LATEX_HEADING
-% #define LATEX_HEADING "doconce_heading"
-% #endif
-
-% #ifndef PREAMBLE
-% #if LATEX_HEADING == "Springer_collection"
+"""
+    if latex_heading == 'Springer_collection':
+        INTRO['latex'] += r"""
 % #undef PREAMBLE
-% #else
+"""
+    else:
+        INTRO['latex'] += r"""
 % #define PREAMBLE
-% #endif
-% #endif
-
-
-% #ifdef PREAMBLE
-%-------------------- begin preamble ----------------------
-% #if LATEX_STYLE == "std"
 """
 
-    side_tp = 'oneside' if option('device=') == 'paper' else 'twoside'
-    m = re.search(chapter_pattern, filestr, flags=re.MULTILINE)
-    # (use A-Z etc to avoid sphinx table headings to indicate chapters...
-    if m:  # We have chapters, use book style
-        chapters = True
-        INTRO['latex'] += r"""
+    INTRO['latex'] += r"""
+% #ifdef PREAMBLE
+%-------------------- begin preamble ----------------------
+"""
+
+    from misc import copy_latex_packages
+
+    if latex_style == 'std':
+        side_tp = 'oneside' if option('device=') == 'paper' else 'twoside'
+        m = re.search(chapter_pattern, filestr, flags=re.MULTILINE)
+        # (use A-Z etc to avoid sphinx table headings to indicate chapters...
+        if m:  # We have chapters, use book style
+            chapters = True
+            INTRO['latex'] += r"""
 \documentclass[%%
 %(side_tp)s,                 %% oneside: electronic viewing, twoside: printing
 final,                   %% or draft (marks overfull hboxes, figures with paths)
@@ -1661,23 +1665,24 @@ chapterprefix=true,      %% "Chapter" word at beginning of each chapter
 open=right               %% start new chapters on odd-numbered pages
 10pt]{book}
 """ % vars()
-    else:  # Only sections, use article style
-        chapters = False
-        INTRO['latex'] += r"""
+        else:  # Only sections, use article style
+            chapters = False
+            INTRO['latex'] += r"""
 \documentclass[%%
 %(side_tp)s,                 %% oneside: electronic viewing, twoside: printing
 final,                   %% or draft (marks overfull hboxes, figures with paths)
 10pt]{article}
 """ % vars()
 
-    from misc import copy_latex_packages
-    # if T2 style: copy_latex_packages(['svmonodo.cls', 't2do.sty'])
-    INTRO['latex'] += r"""
-% #elif LATEX_STYLE == "Springer_lncse"
+    elif latex_style == 'Springer_lncse':
+        INTRO['latex'] += r"""
 % Style: Lecture Notes in Computational Science and Engineering (Springer)
 \documentclass[envcountsect,open=right]{lncse}
 \pagestyle{headings}
-% #elif LATEX_STYLE == "Springer_T2"
+"""
+    elif latex_style == 'Springer_T2':
+        copy_latex_packages(['svmonodo.cls', 't2do.sty'])
+        INTRO['latex'] += r"""
 % Style: T2 (Springer)
 % Use svmono.cls with doconce modifications for bibliography
 \documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmonodo}
@@ -1685,27 +1690,37 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 % Use t2.sty with doconce modifications
 \usepackage{t2do}
 \special{papersize=193mm,260mm}
-
-% #elif LATEX_STYLE == "Springer_llcse"
+"""
+    elif latex_style == 'Springer_llcse':
+        INTRO['latex'] += r"""
 % Style: Lecture Notes in Computer Science (Springer)
 \documentclass[oribib]{llncs}
-% #elif LATEX_STYLE == "Koma_Script"
+"""
+    elif latex_style == 'Koma_Script':
+        INTRO['latex'] += r"""
 % Style: Koma-Script
 \documentclass[10pt]{scrartcl}
-% #elif LATEX_STYLE == "siamltex"
+"""
+    elif latex_style == 'siamltex':
+        INTRO['latex'] += r"""
 % Style: SIAM LaTeX2e
 \documentclass[leqno]{siamltex}
-% #elif LATEX_STYLE == "siamltexmm"
+"""
+    elif latex_style == 'siamltexmm':
+        INTRO['latex'] += r"""
 % Style: SIAM LaTeX2e multimedia
 \documentclass[leqno]{siamltexmm}
-% #endif
-
+"""
+    INTRO['latex'] += r"""
 \listfiles               % print all files needed to compile this document
-
-% #ifdef A4PAPER
+"""
+    latex_paper = option('latex_paper=', 'std')
+    if latex_paper == 'a4'
+        INTRO['latex'] += r"""
 \usepackage[a4paper]{geometry}
-% #endif
-% #ifdef A6PAPER
+"""
+    elif latex_paper == 'a6'
+        INTRO['latex'] += r"""
 % a6paper is suitable for mobile devices
 \usepackage[%
   a6paper,
@@ -1714,8 +1729,9 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
   top=5mm,
   headsep=4mm
   ]{geometry}
-% #endif
+"""
 
+    INTRO['latex'] += r"""
 \usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
@@ -1802,17 +1818,21 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
-% #ifdef HELVETICA
+"""
+    latex_font = option('latex_font=', 'std')
+    if latex_font == 'helvetica':
+        INTRO['latex'] += r"""
 % Set helvetica as the default font family:
 \RequirePackage{helvet}
 \renewcommand\familydefault{phv}
-% #endif
-% #ifdef PALATINO
+"""
+    elif latex_font == 'palatino':
+        INTRO['latex'] += r"""
 % Set palatino as the default font family:
 \usepackage[sc]{mathpazo}    % Palatino fonts
 \linespread{1.05}            % Palatino needs extra line spread to look nice
-% #endif
-% #endif
+"""
+    INTRO['latex'] += r"""
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 """
     # Make sure hyperlinks are black (as the text) for printout
@@ -1854,54 +1874,55 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 %\usepackage{float}\restylefloat{figure}
 """
     if has_inline_comments:
-        INTRO['latex'] += r"""
-
-% #ifdef TODONOTES
+        if option('latex_todonotes'):
+            INTRO['latex'] += r"""
 % enable inline (doconce) comments to be typeset with the todonotes package
 \usepackage{ifthen,xkeyval,tikz,calc,graphicx}"""
-        if option('skip_inline_comments'):
-            INTRO['latex'] += r"""
+            if option('skip_inline_comments'):
+                INTRO['latex'] += r"""
 \usepackage[shadow,disable]{todonotes}"""
-        else:
-            INTRO['latex'] += r"""
+            else:
+                INTRO['latex'] += r"""
 \usepackage[shadow]{todonotes}"""
-        INTRO['latex'] += r"""
+            INTRO['latex'] += r"""
 \newcommand{\shortinlinecomment}[3]{%
 \todo[size=\normalsize,fancyline,color=orange!40,caption={#3}]{%
  \begin{spacing}{0.75}{\bf #1}: #2\end{spacing}}}
 \newcommand{\longinlinecomment}[3]{%
 \todo[inline,color=orange!40,caption={#3}]{{\bf #1}: #2}}
-% #else
-% newcommands for typesetting inline (doconce) comments"""
-        if option('skip_inline_comments'):
-            INTRO['latex'] += r"""
-\newcommand{\shortinlinecomment}[3]{}
-\newcommand{\longinlinecomment}[3]{}"""
+"""
         else:
             INTRO['latex'] += r"""
+% newcommands for typesetting inline (doconce) comments"""
+            if option('skip_inline_comments'):
+                INTRO['latex'] += r"""
+\newcommand{\shortinlinecomment}[3]{}
+\newcommand{\longinlinecomment}[3]{}"""
+            else:
+                INTRO['latex'] += r"""
 \newcommand{\shortinlinecomment}[3]{{\bf #1}: \emph{#2}}
 \newcommand{\longinlinecomment}[3]{{\bf #1}: \emph{#2}}"""
-        INTRO['latex'] += r"""
-% #endif
+            INTRO['latex'] += r"""
 """
-        INTRO['latex'] += r"""
-% #ifdef LINENUMBERS
+        if option('latex_line_numbers'):
+            INTRO['latex'] += r"""
 \usepackage[mathlines]{lineno}  % show line numbers
 \linenumbers
-% #endif
-
-% #ifdef LABELS_IN_MARGIN
+"""
+        if option('latex_labels_in_margin'):
+            INTRO['latex'] += r"""
 % Display labels for sections, equations, and citations in the margin
 \usepackage{showlabels}
 \showlabels{cite}
-% #endif
-
-% #ifdef DOUBLE_SPACING
+"""
+        if option('latex_double_spacing'):
+            INTRO['latex'] += r"""
 \onehalfspacing    % from setspace package
 %\doublespacing
-% #endif
+"""
 
-% #ifdef FANCY_HEADER
+    if fancy_header:
+        INTRO['latex'] += r"""
 % --- fancyhdr package for fancy headers ---
 \usepackage{fancyhdr}
 \fancyhf{}"""
@@ -1923,12 +1944,11 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 \fancyhead[RE,LO]{\thepage}"""
         INTRO['latex'] += r"""
 \pagestyle{fancy}
-% #endif
 
 """
         # Not necessary:
         #filestr = re.sub('^(=====.+?=====\s+)', '% #ifdef FANCY_HEADER\n\\pagestyle{fancy}\n% #endif\n\n\g<1>', filestr, count=1, flags=re.MULTILINE)
-        # Can insert above if SECTION_HEADINGS == "blue" and have a
+        # Can insert above if section_headings == "blue" and have a
         # blue typesetting of the section if that is not done automatically...
 
 
@@ -2004,8 +2024,9 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 %% Admonition style "graybox2" is a gray or colored box with a square
 %% frame, except for the summary admon which has horizontal rules only
 %% Note: this admonition type cannot handle verbatim text!
-%(define_graybox2_color)s
-%% #ifdef A4PAPER
+%(define_graybox2_color)s""" % vars()
+            if latex_paper == 'a4':
+                INTRO['latex'] += r"""
 \newdimen\barheight
 \def\barthickness{0.5pt}
 
@@ -2021,7 +2042,9 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 \hspace*{-1mm}\rule[-\barheight+16pt]{\barthickness}{\barheight-8pt}%%}
 }\box2\end{minipage}\rule{3pt}{0pt}}\vspace*{-\baselineskip}
 \end{wrapfigure}}
-%% #else
+""" % vars()
+            else:
+                INTRO['latex'] += r"""
 %% colored box of 80%% width
 \newcommand{\grayboxhrules}[1]{\begin{center}
 \colorbox{%(latex_admon)s_background}{\rule{6pt}{0pt}
@@ -2031,8 +2054,8 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 \parbox[t]{0mm}{\rule[-0.5\baselineskip]{0mm}%%
 {\baselineskip}}\hrule\vspace*{0.5\baselineskip}\end{minipage}
 \rule{6pt}{0pt}}\end{center}}
-%% #endif
-
+""" % vars()
+            INTRO['latex'] += r"""
 %% Fallback for verbatim content in \grayboxhrules
 \newmdenv[
   backgroundcolor=%(latex_admon)s_background,
@@ -2217,20 +2240,24 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 }
 """ % vars()
 
+    section_headings = option('latex_section_headings=', 'std')
+    fancy_header = option('latex_fancy_header')
+    colored_table_rows = option('latex_colored_table_rows=', 'no')
+
     INTRO['latex'] += r"""
 % --- end of definitions of admonition environments ---
 
 % prevent orhpans and widows
 \clubpenalty = 10000
 \widowpenalty = 10000
-
-% #ifndef SECTION_HEADINGS
-% #define SECTION_HEADINGS "std"
-% #else
+"""
+    if section_headings != 'std':
+        INTRO['latex'] += r"""
 % http://www.ctex.org/documents/packages/layout/titlesec.pdf
 \usepackage[compact]{titlesec}  % reduce the spacing above/below the heading
-% #endif
-% #if SECTION_HEADINGS == "blue"
+"""
+    if section_headings == 'blue':
+        INTRO['latex'] += r"""
 % --- section/subsection headings with blue color ---
 \definecolor{seccolor}{cmyk}{.9,.5,0,.35}  % siamltexmm.sty section color
 \titleformat{name=\section}
@@ -2242,15 +2269,18 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 \titleformat{name=\paragraph}[runin]
 {\color{seccolor}\normalfont\normalsize\bfseries}
 {}{}{\indent}
-% #ifdef FANCY_HEADER
+"""
+        if fancy_header:
+            INTRO['latex'] += r"""
 % let the header have a thick gray hrule with section and page in blue above
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\headrule}{{\color{gray!50}%
 \hrule width\headwidth height\headrulewidth \vskip-\headrulewidth}}
 \fancyhead[LE,RO]{{\color{seccolor}\rightmark}} %section
 \fancyhead[RE,LO]{{\color{seccolor}\thepage}}
-% #endif
-% #elif SECTION_HEADINGS == "strongblue"
+"""
+    elif section_headings == 'strongblue':
+        INTRO['latex'] += r"""
 % --- section/subsection headings with a strong blue color ---
 \definecolor{seccolor}{rgb}{0.2,0.2,0.8}
 \titleformat{name=\section}
@@ -2262,7 +2292,9 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 \titleformat{name=\paragraph}[runin]
 {\color{seccolor}\normalfont\normalsize\bfseries}
 {}{}{\indent}
-% #elif SECTION_HEADINGS == "gray"
+"""
+    elif section_headings == 'gray':
+        INTRO['latex'] += r"""
 % --- section/subsection headings with white text on gray background ---
 \titleformat{name=\section}[block]
   {\sffamily\Large}{}{0pt}{\colorsection}
@@ -2277,7 +2309,9 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 
 \newcommand{\colorsubsection}[1]{%
   \colorbox{gray!50}{{\color{white}\thesubsection\ #1}}}
-% #elif SECTION_HEADINGS == "gray-wide"
+"""
+    elif section_headings == 'gray-wide':
+        INTRO['latex'] += r"""
 % --- section/subsection headings with white text on wide gray background ---
 \titleformat{name=\section}[block]
   {\sffamily\Large}{}{0pt}{\colorsection}
@@ -2294,27 +2328,28 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 \newcommand{\colorsubsection}[1]{%
   \colorbox{gray!50}{\parbox{\dimexpr\textwidth-2\fboxsep}%
            {\color{white}\thesubsection\ #1}}}
-% #endif
+""" % vars()
 
-% #ifdef COLORED_TABLE_ROWS
+    if colored_table_rows != 'no':
+        INTRO['latex'] += r"""
+
 % color every two table rows
 \let\oldtabular\tabular
 \let\endoldtabular\endtabular
-% #if COLORED_TABLE_ROWS not in ("gray", "blue")
-% #define COLORED_TABLE_ROWS gray
-% #endif
-% #else
-% #define COLORED_TABLE_ROWS no
-% #endif
-% #if COLORED_TABLE_ROWS == "gray"
+"""
+    if colored_table_rows not in ('gray', 'blue'):
+        colored_table_rows = 'gray'
+    if colored_table_rows == 'gray':
+        INTRO['latex'] += r"""
 \definecolor{rowgray}{gray}{0.9}
 \renewenvironment{tabular}{\rowcolors{2}{white}{rowgray}%
 \oldtabular}{\endoldtabular}
-% #elif COLORED_TABLE_ROWS == "blue"
+"""
+    elif colored_table_rows == 'blue':
+        INTRO['latex'] += r"""
 \definecolor{appleblue}{rgb}{0.93,0.95,1.0}  % Apple blue
 \renewenvironment{tabular}{\rowcolors{2}{white}{appleblue}%
 \oldtabular}{\endoldtabular}
-% #endif
 
 """
     # Note: the line above is key for extracting the correct part

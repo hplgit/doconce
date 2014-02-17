@@ -1701,7 +1701,7 @@ The first line implies that all lines in the file `myfile.f` are
 copied into a verbatim block, typset in a `!bc Xpro` environment, where
 `X` is the extension of the filename, here `f` (i.e., the environment
 becomes `!bc fpro` and will typically lead to some Fortran-style
-formatting in Linux and Sphinx).  The
+formatting).  The
 second line has a `fromto:` directive, which implies copying code
 between two lines in the code, typset within a !`bc Xcod`
 environment (again, `X` is the filename extension, implying the
@@ -1714,6 +1714,13 @@ example above, we copy code from the line matching `subroutine test`
 (with as many blanks as desired between the two words) and the line
 matching `C END1` (C followed by 5 blanks and then the text END1). The
 final line with the "to" text is not included in the verbatim block.
+
+One can also specify the code environment explictly rather than relying
+on the file extension:
+
+!bc
+@@@CODE somefile.py envir=X fromto: def myfunc@def yourfunc
+!ec
 
 Let us copy a whole file (the first line above):
 
