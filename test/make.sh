@@ -65,7 +65,7 @@ system doconce split_html testdoc.html
 system doconce format html testdoc.do.txt --pygments_html_linenos --html_style=solarized --pygments_html_style=emacs $ex --html_output=demo_testdoc
 
 system doconce format latex testdoc.do.txt $ex SOMEVAR=True --skip_inline_comments
-system doconce format pdflatex testdoc.do.txt --device=paper $ex --latex_double_hyphen --latex_index_in_margin --latex_no_program_footnotelink --latex_titlepage=titlepage --latex_paper=a4 --latex_line_numbers --latex_colored_table_rows=blue --latex_fancy_header --latex_section_headings=blue --latex_labels_in_margin --latex_double_spacing --latex_todonotes --latex_list_of_exercises=loe
+system doconce format pdflatex testdoc.do.txt --device=paper $ex --latex_double_hyphen --latex_index_in_margin --latex_no_program_footnotelink --latex_title_layout=titlepage --latex_paper=a4 --latex_line_numbers --latex_colored_table_rows=blue --latex_fancy_header --latex_section_headings=blue --latex_labels_in_margin --latex_double_spacing --latex_todonotes --latex_list_of_exercises=loe --latex_font=palatino
 # --latex_paper=a4 triggers summary environment to be smaller paragraph
 # within the text (fine for proposals or articles).
 
@@ -96,9 +96,7 @@ pdflatex -shell-escape testdoc
 cp testdoc.tex testdoc.tex_ptex2tex
 # testdoc.tex_ptex2tex corresponds to testdoc.pdf
 
-# -DBOOK will not work for latex/pdflatex since we have an abstract,
-# but here we just use the translated text for testing, not latex compiling
-system doconce ptex2tex testdoc -DBOOK -DPALATINO sys=\begin{quote}\begin{Verbatim}@\end{Verbatim}\end{quote} pypro=ans:nt envir=minted > testdoc.tex_doconce_ptex2tex
+system doconce ptex2tex testdoc sys=\begin{quote}\begin{Verbatim}@\end{Verbatim}\end{quote} pypro=ans:nt envir=minted > testdoc.tex_doconce_ptex2tex
 echo "----------- end of doconce ptex2tex output ----------------" >> testdoc.tex_doconce_ptex2tex
 cat testdoc.tex >> testdoc.tex_doconce_ptex2tex
 
@@ -125,8 +123,8 @@ system doconce format ipynb testdoc.do.txt $ex
 system doconce format gwiki testdoc.do.txt --skip_inline_comments MYVAR1=3 MYVAR2='a string' $ex
 
 # Test pandoc: from latex to markdown, from markdown to html
-system doconce format latex testdoc.do.txt $ex
-system doconce ptex2tex testdoc -DBOOK -DLATEX_HEADING=traditional
+system doconce format latex testdoc.do.txt $ex --latex_title_layout=std
+system doconce ptex2tex testdoc
 
 #doconce subst -s 'And here is a system of equations with labels.+?\\section' '\\section' testdoc.tex
 # pandoc cannot work well with \Verb, needs \verb
@@ -161,16 +159,16 @@ system doconce slides_html slides1 deck --html_slide_type=sandstone.firefox
 cp slides1.html slides1_deck.html
 /bin/ls -R deck.js >> slides1_deck.html
 
-system doconce format pdflatex slides1
-system doconce ptex2tex slides1 -DLATEX_HEADING=beamer
+system doconce format pdflatex slides1 --latex_title_layout=beamer
+system doconce ptex2tex slides1
 system doconce slides_beamer slides1
 
 system doconce format html slides2 --pygments_html_style=emacs
 system doconce slides_html slides2 reveal --html_slide_type=beigesmall
 cp slides2.html slides2_reveal.html
 
-system doconce format pdflatex slides2
-system doconce ptex2tex slides2 -DLATEX_HEADING=beamer envir=minted
+system doconce format pdflatex slides2 --latex_title_layout=beamer
+system doconce ptex2tex slides2 envir=minted
 system doconce slides_beamer slides2
 
 system doconce format html slides3 --pygments_html_style=emacs SLIDE_TYPE=reveal SLIDE_THEME=beigesmall
@@ -178,8 +176,8 @@ system doconce slides_html slides3 reveal --html_slide_type=beigesmall
 cp slides3.html slides3_reveal.html
 
 theme=red3
-system doconce format pdflatex slides3 SLIDE_TYPE=beamer SLIDE_THEME=$theme
-system doconce ptex2tex slides3 -DLATEX_HEADING=beamer envir=minted
+system doconce format pdflatex slides3 SLIDE_TYPE=beamer SLIDE_THEME=$theme --latex_title_layout=beamer
+system doconce ptex2tex slides3 envir=minted
 system doconce slides_beamer slides3 --beamer_slide_theme=$theme
 
 system doconce format html slides1 --pygments_html_style=emacs

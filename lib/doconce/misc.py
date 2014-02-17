@@ -52,6 +52,16 @@ document is embedded."""),
      """Specify HTML font for headings. =? lists available Google fonts."""),
     ('--html_video_autoplay=',
      """True for autoplay when HTML is loaded, otherwise False (default)."""),
+    ('--html_admon=',
+     "Type of admonition and color: white, colors, gray, yellow."),
+    ('--html_admon_shadow',
+     'Add a shadow effect to HTML admon boxes (gray, yellow, apricot).'),
+    ('--html_admon_bg_color=',
+     'Background color of admon in HTML.'),
+    ('--html_admon_bd_color=',
+     'Boundary color of admon in HTML.'),
+    ('--css=',
+     """Specify a .css style file for HTML output. If the file does not exist, the default or specified style (--html_style=) is written to it."""),
     ('--html_box_shadow',
      'Add a shadow effect in HTML box environments.'),
     ('--html_slide_theme=',
@@ -71,38 +81,106 @@ inserted to the right in exercises - "default" and "none" are allowed
      """Open HTML links in a new window."""),
     ('--device=',
      """Set device to paper, screen, or other (paper impacts LaTeX output)."""),
+    ('--latex_font=',
+     """LaTeX font choice: helvetica, palatino, std (Computer Modern, default)."""),
     ('--latex_bibstyle=',
      'LaTeX bibliography style. Default: plain.'),
+    ('--latex_title_layout=',
+     """Layout of the title, authors, and date:
+std: traditional LaTeX layout,
+titlepage: separate page,
+doconce_heading (default): authors with "footnotes" for institutions,
+beamer: layout for beamer slides."""),
+    ('--latex_papersize=',
+     """Geometry of page size: a6, a4, std (default)."""),
+    ('--latex_style=',
+     """LaTeX style package used for the document.
+std: standard LaTeX article or book style,
+Springer_lncse: Springer's Lecture Notes in Computational Science and
+   Engineering (LNCSE) style,
+Springer_llncs: Springer's Lecture Notes in Computer Science style,
+Springer_T2: Springer's T2 book style,
+Springer_collection: Springer's style for chapters in LNCSE proceedings,
+Korma_Script: Korma Script style,
+siamltex: SIAM's standard LaTeX style for papers,
+siamltexmm: SIAM's extended (blue) multimedia style for papers.
+"""),
+    ('--latex_list_of_exercises=',
+    """LaTeX typesetting of list of exercises:
+loe: special, separate list of exercises,
+toc: exercises included as part of the table of contents,
+none (default): no list of exercises."""),
+    ('--latex_fancy_header',
+     """Typesetting of headers on each page:
+If article: section name to the left and page number to the right
+on even page numbers, the other way around on odd page numners.
+If book: section name to the left and page numner to the right
+on even page numbers, chapter name to the right and page number to
+the left on odd page numbers."""),
+    ('--latex_section_headings=',
+"""Typesetting of title/section/subsection headings:
+std (default): standard LaTeX,
+blue: gray blye color,
+strongblue: stronger blue color,
+gray: white text on gray background, fit to heading width,
+gray-wide: white text on gray background, wide as the textwidth
+"""),
+    ('--latex_colored_table_rows=',
+     """Colors on every two line in tables: no (default), gray, blue."""),
+    ('--latex_line_numbers',
+     """Include line numbers for the running text (only active if there
+are inline comments."""),
+    ('--latex_todonotes',
+     """Use the todonotes package to typeset inline comments.
+Gives colored bubbles in the margin for small inline comments and
+in the text for larger comments."""),
+    ('--latex_double_spacing',
+     """Sets the LaTeX linespacing to 1.5 (only active if there are
+inline comments)."""),
+    ('--latex_labels_in_margin',
+     """Print equation, section and other LaTeX labels in the margin."""),
     ('--latex_index_in_margin',
      'Place entries in the index also in the margin.'),
-    ('--latex_double_hyphen',
-     'Replace single dash - by double dash -- in LaTeX output. Somewhat intelligent, but may give unwanted edits. Use with great care!'),
     ('--latex_preamble=',
-     """User-provided LaTeX preamble file, either complete or additions."""),
+     """User-provided LaTeX preamble file, either complete or additions
+to the doconce-generated preamble."""),
     ('--latex_no_program_footnotelink',
-     'If --device=paper, this option removes footnotes with links to computer programs.'),
-    ('--html_admon=',
-     "Type of admonition and color: white, colors, gray, yellow."),
-    ('--html_admon_shadow',
-     'Add a shadow effect to HTML admon boxes (gray, yellow, apricot).'),
-    ('--html_admon_bg_color=',
-     'Background color of admon in HTML.'),
-    ('--html_admon_bd_color=',
-     'Boundary color of admon in HTML.'),
+     """If --device=paper, this option removes footnotes with links to
+computer programs."""),
     ('--latex_admon=',
-     "Type of admonition in LaTeX: colors1-2, graybox1-3, yellowbox, paragraph."),
+     """Type of admonition in LaTeX:
+colors1:  (inspired by the NumPy User Guide) applies different colors for
+          the different admons with an embedded icon,
+colors2:  like `colors1` but the text is wrapped around the icon,
+graybox1 (default): rounded gray boxes with a potential title and no icon,
+graybox2:  box with square corners, gray background, and is narrower
+           than graybox1 (one special feature of graybox2 is the summary
+           admon, which has a different look with horizontal rules only,
+           and for A4 format, the summary box is half of the text width and
+           wrapped with running text around (if it does not contain verbatim
+           text, in that case the standard graybox2 style is used). This small
+           summary box is effective in proposals to disperse small paragraphs
+           of key points around),
+graybox3:  box with icons and a light gray background,
+yellowbox: box icons and a light yellow background,
+paragraph: plain paragraph with boldface heading.
+"""),
     ('--latex_admon_color=',
      "Admonition color in LaTeX, rgb tuple or saturated color a la gray!5."),
     ('--latex_admon_envir_map=',
      """Mapping of code envirs to new envir names inside admons (e.g., to get
-different code typesetting inside admons. If a number, say 2, an envir
-like pycod gets the number appended: pycod2. Otherwise it must be a
-mapping for each envir: pycod-pycod_yellow,fpro-fpro2 (from-to,from-to,...
-syntax."""),
+a different code typesetting inside admons. If a number, say 2, as in
+--latex_admon_envir_map=2, an envir like pycod gets the number appended:
+pycod2. Otherwise it must be a mapping for each envir:
+--latex_admon_envir_map=pycod-pycod_yellow,fpro-fpro2
+(from-to,from-to,... syntax)."""),
     ('--latex_exercise_numbering=',
-     'absolute: exercises numbered as 1, 2, ... chapter: exercises numbered as 1.1, 1.2, ... , 3.1, 3.2, etc. with a chapter prefix.'),
-    ('--css=',
-     """Specify a .css style file for HTML output. If the file does not exist, the default or specified style (--html_style=) is written to it."""),
+     """absolute: exercises numbered as 1, 2, ...
+chapter: exercises numbered as 1.1, 1.2, ... , 3.1, 3.2, etc.
+         with a chapter prefix."""),
+    ('--latex_double_hyphen',
+     """Replace single dash - by double dash -- in LaTeX output.
+Somewhat intelligent, but may give unwanted edits. Use with great care!"""),
     ('--verbose',
      'Write out all OS commands run by doconce.'),
     ('--examples_as_exercises',
@@ -1277,7 +1355,6 @@ def ptex2tex():
 
     # Run preprocess
     if not preprocess_options:
-        #preprocess_options += ['-DLATEX_HEADING=traditional']
         if 'minted' in packages:
             preprocess_options += ['-DMINTED']
     if '-DMINTED' in preprocess_options and 'minted' in packages:
@@ -7194,7 +7271,7 @@ def beamer_slides(name, options='', postfix='beamer', theme='red_shadow',
     cmd = 'doconce format pdflatex %(name)s %(options)s ' % vars()
     system(cmd)
     # Run latex
-    cmd = 'doconce ptex2tex %(name)s -DLATEX_HEADING=beamer envir=%(ptex2tex_envir)s' % vars()
+    cmd = 'doconce ptex2tex %(name)s envir=%(ptex2tex_envir)s' % vars()
     system(cmd)
     cmd = 'doconce slides_beamer %(name)s --beamer_slide_theme=%(theme)s' % vars()
     system(cmd)

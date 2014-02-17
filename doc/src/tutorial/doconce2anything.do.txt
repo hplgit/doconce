@@ -455,6 +455,26 @@ URL: "https://bitly.com/".)
 The default, `--device=screen`, creates a PDF file for reading
 on a screen where links are just clickable.
 
+There are many additional options (run `doconce format --help` and
+look for options starting with `--latex` to get a more verbose description):
+
+ * `--latex_font=helvetica,palatino`
+ * `--latex_papersize=a4,a6`
+ * `--latex_bibstyle=plain`
+ * `--latex_title_layout=titlepage,std,beamer,doconce_heading`
+ * `--latex_style=std,Springer_lncse,Springer_llncs,Springer_T2,...`
+ * `--latex_list_of_exercises=loe,toc,none`
+ * `--latex_fancy_header`
+ * `--latex_section_headings=std,blue,strongblue,gray,gray-wide`
+ * `--latex_colored_table_rows=blue,gray,no`
+ * `--latex_todonotes`
+ * `--latex_double_spacing`
+ * `--latex_preamble=filename`
+ * `--latex_admon=graybox1,graybox2,graybox3,yellowbox,paragraph,colors1,colors2`
+ * `--latex_admon_color=0.34,0.02,0.8`
+ * `--latex_admon_envir_map=2`
+ * `--latex_exercise_numbering=absolute,chapter`
+
 __Step 2.__ Run `ptex2tex` (if you have installed the
 Python ptex2tex package) to make a standard LaTeX file,
 !bc sys

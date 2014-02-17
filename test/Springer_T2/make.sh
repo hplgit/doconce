@@ -12,9 +12,9 @@ function system {
 
 rm tmp_*
 
-system doconce format pdflatex $name CHAPTER=chapter BOOK=book APPENDIX=appendix -DPRIMER_BOOK -DDOCONCE ALG=code --encoding=utf-8 --device=paper --latex_exercise_numbering=chapter --latex_admon_color=1,1,1
+system doconce format pdflatex $name CHAPTER=chapter BOOK=book APPENDIX=appendix -DPRIMER_BOOK ALG=code --encoding=utf-8 --device=paper --latex_exercise_numbering=chapter --latex_admon_color=1,1,1 --latex_style=Springer_T2 --latex_title_layout=titlepage --latex_list_of_exercises=loe
 
-system ptex2tex -DLATEX_STYLE=Springer_T2 -DLATEX_HEADING=titlepage -DLIST_OF_EXERCISES=loe $name
+system ptex2tex $name
 rm -rf $name.aux $name.ind $name.idx $name.bbl $name.toc $name.loe
 
 system pdflatex $name

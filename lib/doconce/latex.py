@@ -179,13 +179,13 @@ def latex_code(filestr, code_blocks, code_block_types,
 #""", filestr)
         exercise_headings = re.findall(exercise_pattern, filestr)
         if exercise_headings:
-            if option('latex_list_of_exericses=', 'none') == 'toc':
+            if option('latex_list_of_exercises=', 'none') == 'toc':
                 filestr = re.sub(exercise_pattern,
         r"""subsection*{\g<1> \\thedoconceexercisecounter: \g<3>
 \\addcontentsline{toc}{subsection}{\\thedoconceexercisecounter: \g<3>
 """, filestr)
-           elif option('latex_list_of_exericses=', 'none') == 'loe':
-                filestr = re.sub(exercise_pattern,
+            elif option('latex_list_of_exercises=', 'none') == 'loe':
+                 filestr = re.sub(exercise_pattern,
         r"""subsection*{\g<1> \\thedoconceexercisecounter: \g<3>
 \\addcontentsline{loe}{doconceexercise}{\g<1> \\thedoconceexercisecounter: \g<3>
 """, filestr)
@@ -235,7 +235,7 @@ def latex_code(filestr, code_blocks, code_block_types,
                 target = r'\newcounter{doconceexercisecounter}'
                 filestr = filestr.replace(
                     target, target + style_listofexercises)
-                if option('latex_list_of_exericses=', 'none') == 'loe':
+                if option('latex_list_of_exercises=', 'none') == 'loe':
                     target = r'\tableofcontents'
                     filestr = filestr.replace(
                         target, target + insert_listofexercises)
@@ -699,7 +699,7 @@ def latex_title(m):
 
     text = ''
     latex_style = option('latex_style=', 'std')
-    titlepage = option('latex_titlepage=', 'doconce_heading')
+    title_layout = option('latex_title_layout=', 'doconce_heading')
     section_headings = option('latex_section_headings=', 'std')
 
     if latex_style in ("Springer_T2", "Springer_lncse"):
@@ -718,7 +718,7 @@ def latex_title(m):
 
 % ----------------- title -------------------------
 """
-    if titlepage == "traditional":
+    if title_layout == "std":
         if section_headings in ("blue", "strongblue"):
             text += r"""
 \title%(short_title_cmd)s{{\color{seccolor} %(title)s}}
@@ -727,7 +727,7 @@ def latex_title(m):
             text += r"""
 \title%(short_title_cmd)s{%(title)s}
 """ % vars()
-    elif titlepage == "titlepage":
+    elif title_layout == "titlepage":
         text += r"""
 \thispagestyle{empty}
 \hbox{\ \ }
@@ -749,18 +749,32 @@ def latex_title(m):
 \end{spacing}
 }}}
 """
-    elif titlepage == "Springer_collection":
+    elif title_layout == "Springer_collection":
+        # No blue section here since style here is governed by Springer
         text += r"""
 \title*{%(title)s}
 %% Short version of title:
 \titlerunning{%(short_title)s}
 """ % vars()
-    elif titlepage == "beamer":
+    elif title_layout == "beamer":
         text += r"""
 \title%(short_title_cmd)s{%(title)s}
 """ % vars()
     else:
-        text += r"""
+        if section_headings in ("blue", "strongblue"):
+            text += r"""
+\thispagestyle{empty}
+
+\begin{center}
+{\LARGE\bf
+\begin{spacing}{1.25}
+{\color{seccolor} %(title)s}
+\end{spacing}
+}
+\end{center}
+""" % vars()
+        else:
+            text += r"""
 \thispagestyle{empty}
 
 \begin{center}
@@ -770,12 +784,12 @@ def latex_title(m):
 \end{spacing}
 }
 \end{center}
-%% #endif
 """ % vars()
     return text
 
 def latex_author(authors_and_institutions, auth2index,
                  inst2index, index2inst, auth2email):
+
     def email(author, prefix='', parenthesis=True):
         address = auth2email[author]
         if address is None:
@@ -798,140 +812,193 @@ def latex_author(authors_and_institutions, auth2index,
         if len(auth2index[author]) == 1:
             one_author_at_one_institution = True
 
-    text = r"""
+    text = """
 
 % ----------------- author(s) -------------------------
-% #if LATEX_HEADING == "traditional"
+"""
+    title_layout = option('latex_title_layout=', 'doconce_heading')
+    if title_layout == 'std':
+        # Traditional latex heading
+        text += r"""
 \author{"""
+        author_command = []
+        for a, i, e in authors_and_institutions:
+            a_text = a
+            e_text = email(a, prefix='Email:', parenthesis=False)
+            if i is not None:
+                a_text += r'\footnote{'
+                if len(i) == 1:
+                    i_text = i[0]
+                elif len(i) == 2:
+                    i_text = ' and '.join(i)
+                else:
+                    i[-1] = 'and ' + i[-1]
+                    i_text = '; '.join(i)
+                if e_text:
+                    a_text += e_text + '. ' + i_text
+                else:
+                    a_text += i_text
+                if not a_text.endswith('.'):
+                    a_text += '.'
+                a_text += '}'
+            else: # Just email
+                if e_text:
+                    a_text += r'\footnote{%s.}' % e_text
+            author_command.append(a_text)
+        author_command = '\n\\and '.join(author_command)
 
-    # Traditional latex heading
-    author_command = []
-    for a, i, e in authors_and_institutions:
-        a_text = a
-        e_text = email(a, prefix='Email:', parenthesis=False)
-        if i is not None:
-            a_text += r'\footnote{'
-            if len(i) == 1:
-                i_text = i[0]
-            elif len(i) == 2:
-                i_text = ' and '.join(i)
-            else:
-                i[-1] = 'and ' + i[-1]
-                i_text = '; '.join(i)
-            if e_text:
-                a_text += e_text + '. ' + i_text
-            else:
-                a_text += i_text
-            if not a_text.endswith('.'):
-                a_text += '.'
-            a_text += '}'
-        else: # Just email
-            if e_text:
-                a_text += r'\footnote{%s.}' % e_text
-        author_command.append(a_text)
-    author_command = '\n\\and '.join(author_command)
+        text += author_command + '}\n'
 
-    text += author_command + '}\n'
-
-    text += r"""
-% #elif LATEX_HEADING == "titlepage"
+    elif title_layout == 'titlepage':
+        text += r"""
 \vspace{1.3cm}
 """
-    if one_author_at_one_institution:
-        author = list(auth2index.keys())[0]
-        email_text = email(author)
-        text += r"""
-{\Large\textsf{%s%s}}\\ [3mm]
-""" % (author, email_text)
-    else:
-        for author in auth2index: # correct order of authors
+        if one_author_at_one_institution:
+            author = list(auth2index.keys())[0]
             email_text = email(author)
             text += r"""
-    {\Large\textsf{%s${}^{%s}$%s}}\\ [3mm]
-    """ % (author, str(auth2index[author])[1:-1], email_text)
-    text += r"""
+{\Large\textsf{%s%s}}\\ [3mm]
+""" % (author, email_text)
+        else:
+            for author in auth2index: # correct order of authors
+                email_text = email(author)
+                text += r"""
+{\Large\textsf{%s${}^{%s}$%s}}\\ [3mm]
+""" % (author, str(auth2index[author])[1:-1], email_text)
+        text += r"""
 \ \\ [2mm]
 """
-    if one_author_at_one_institution:
-        text += r"""
-{\large\textsf{%s} \\ [1.5mm]}""" % (index2inst[1])
-    else:
-        for index in index2inst:
+        if one_author_at_one_institution:
             text += r"""
+{\large\textsf{%s} \\ [1.5mm]}""" % (index2inst[1])
+        else:
+            for index in index2inst:
+                text += r"""
 {\large\textsf{${}^%d$%s} \\ [1.5mm]}""" % (index, index2inst[index])
 
-    text += r"""
-% #elif LATEX_HEADING == "Springer_collection"
-"""
-    text += r"""
+    elif title_layout == 'Springer_collection':
+        text += r"""
 \author{%s}
 %% Short version of authors:
 %%\authorrunning{...}
 """ % (' and ' .join([author for author in auth2index]))
 
-    text += r"\institute{"
-    a_list = []
-    for a, i, e in authors_and_institutions:
-        s = a
-        if i is not None:
-            s += r'\at ' + ' and '.join(i)
-        if e is not None:
-            s += r'\email{%s}' % e
-        a_list.append(s)
-    text += r' \and '.join(a_list) + '}\n'
+        text += r"\institute{"
+        a_list = []
+        for a, i, e in authors_and_institutions:
+            s = a
+            if i is not None:
+                s += r'\at ' + ' and '.join(i)
+            if e is not None:
+                s += r'\email{%s}' % e
+            a_list.append(s)
+        text += r' \and '.join(a_list) + '}\n'
 
-    text += r"""
-% #elif LATEX_HEADING == "beamer"
-\author{"""
-    author_command = []
-    for a, i, e in authors_and_institutions:
-        a_text = a
-        inst = r'\inst{' + ','.join([str(i) for i in auth2index[a]]) + '}'
-        a_text += inst
-        author_command.append(a_text)
-    text += '\n\\and\n'.join(author_command) + '}\n'
-    inst_command = []
-    institutions = [index2inst[i] for i in index2inst]
-    text += r'\institute{' + '\n\\and\n'.join(
-        [inst + r'\inst{%d}' % (i+1)
-         for i, inst in enumerate(institutions)]) + '}'
-
-    text += r"""
-% #else
-"""
-    if one_author_at_one_institution:
-        author = list(auth2index.keys())[0]
-        email_text = email(author)
+    elif title_layout == 'beamer':
         text += r"""
+\author{"""
+        author_command = []
+        for a, i, e in authors_and_institutions:
+            a_text = a
+            inst = r'\inst{' + ','.join([str(i) for i in auth2index[a]]) + '}'
+            a_text += inst
+            author_command.append(a_text)
+        text += '\n\\and\n'.join(author_command) + '}\n'
+        inst_command = []
+        institutions = [index2inst[i] for i in index2inst]
+        text += r'\institute{' + '\n\\and\n'.join(
+            [inst + r'\inst{%d}' % (i+1)
+             for i, inst in enumerate(institutions)]) + '}'
+    else: # doconce special heading
+        if one_author_at_one_institution:
+            author = list(auth2index.keys())[0]
+            email_text = email(author)
+            text += r"""
 \begin{center}
 {\bf %s%s}
 \end{center}
 
-""" % (author, email_text)
-    else:
-        for author in auth2index: # correct order of authors
-            email_text = email(author)
-            text += r"""
+    """ % (author, email_text)
+        else:
+            for author in auth2index: # correct order of authors
+                email_text = email(author)
+                text += r"""
 \begin{center}
 {\bf %s${}^{%s}$%s} \\ [0mm]
 \end{center}
 
-""" % (author, str(auth2index[author])[1:-1], email_text)
+    """ % (author, str(auth2index[author])[1:-1], email_text)
 
-    text += r'\begin{center}' + '\n' + '% List of all institutions:\n'
-    if one_author_at_one_institution:
-        text += r"""\centerline{{\small %s}}""" % \
-                (index2inst[1]) + '\n'
-    else:
-        for index in index2inst:
-            text += r"""\centerline{{\small ${}^%d$%s}}""" % \
-                    (index, index2inst[index]) + '\n'
+        text += r'\begin{center}' + '\n' + '% List of all institutions:\n'
+        if one_author_at_one_institution:
+            text += r"""\centerline{{\small %s}}""" % \
+                    (index2inst[1]) + '\n'
+        else:
+            for index in index2inst:
+                text += r"""\centerline{{\small ${}^%d$%s}}""" % \
+                        (index, index2inst[index]) + '\n'
 
-    text += r"""\end{center}
-% #endif
+        text += r"""\end{center}
+"""
+    text += """
 % ----------------- end author(s) -------------------------
 
 """
+    return text
+
+def latex_date(m):
+    title_layout = option('latex_title_layout=', 'doconce_heading')
+    date = m.group('subst')
+    text = ''
+    if title_layout == 'std':
+        text += r"""
+\date{%(date)s}
+\maketitle
+""" % vars()
+    elif title_layout == 'beamer':
+        text ++ r"""
+\date{%(date)s}
+% <titlepage figure>
+}
+""" % vars()
+    elif title_layout == 'titlepage':
+        text += r"""
+\ \\ [10mm]
+{\large\textsf{%(date)s}}
+
+\end{center}
+\vfill
+\clearpage
+""" % vars()
+    else:  # doconce special heading
+        text += r"""
+\begin{center}
+%(date)s
+\end{center}
+
+\vspace{1cm}
+
+""" % vars()
+    return text
+
+def latex_abstract(m):
+    text = m.group('text')
+    rest = m.group('rest')
+    title_layout = option('latex_title_layout=', 'doconce_heading')
+    text = ''
+    if title_layout == 'Springer_collection':
+        text += r"""
+\abstract{
+%(text)s
+}
+""" % vars()
+    else:
+        text += r"""
+\begin{abstract}
+%(text)s
+\end{abstract}
+""" % vars()
+    text += '\n%(rest)s' % vars()
     return text
 
 def latex_ref_and_label(section_label2title, format, filestr):
@@ -1459,54 +1526,13 @@ def define(FILENAME_EXTENSION,
         'paragraph':     r'\paragraph{\g<subst>}\n',
         #'abstract':      '\n\n' + r'\\begin{abstract}' + '\n' + r'\g<text>' + '\n' + r'\end{abstract}' + '\n\n' + r'\g<rest>', # not necessary with separate \n
         #'abstract':      r'\n\n\\begin{abstract}\n\g<text>\n\end{abstract}\n\n\g<rest>',
-        'abstract':      r"""
-
-% #if LATEX_HEADING == "Springer_collection"
-\\abstract{
-% #else
-\\begin{abstract}
-% #endif
-\g<text>
-% #if LATEX_HEADING == "Springer_collection"
-}
-% #else
-\end{abstract}
-% #endif
-
-\g<rest>""",
+        'abstract':      latex_abstract,
         # recall that this is regex so latex commands must be treated carefully:
         #'title':         r'\\title{\g<subst>}' + '\n', # we don'e use maketitle
         'title':         latex_title,
         'author':        latex_author,
         #'date':          r'\\date{\g<subst>}' ' \n\\maketitle\n\n',
-        'date':          fix_latex_command_regex(pattern=r"""
-
-% #if LATEX_HEADING == "traditional"
-\date{\g<subst>}
-\maketitle
-% #elif LATEX_HEADING == "beamer"
-\date{\g<subst>
-% <titlepage figure>
-}
-% #elif LATEX_HEADING == "titlepage"
-
-\ \\\\ [10mm]
-{\large\textsf{\g<subst>}}
-
-\end{center}
-\vfill
-\clearpage
-
-% #else
-\begin{center}
-\g<subst>
-\end{center}
-
-\vspace{1cm}
-
-% #endif
-
-""", application='replacement'),
+        'date':          latex_date,
         'figure':        latex_figure,
         'movie':         latex_movie,
         'comment':       '%% %s',
@@ -1607,6 +1633,10 @@ def define(FILENAME_EXTENSION,
         if r'\documentclass' in preamble:
             preamble_complete = True
 
+    latex_papersize = option('latex_papersize=', 'std')
+    latex_font = option('latex_font=', 'std')
+    section_headings = option('latex_section_headings=', 'std')
+
     INTRO['latex'] = r"""%%
 %% Automatically generated file from Doconce source
 %% (https://github.com/hplgit/doconce/)
@@ -1635,7 +1665,7 @@ def define(FILENAME_EXTENSION,
 %% minted style without needing -DMINTED.
 % #endif
 """
-    if latex_heading == 'Springer_collection':
+    if latex_style == 'Springer_collection':
         INTRO['latex'] += r"""
 % #undef PREAMBLE
 """
@@ -1691,7 +1721,7 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 \usepackage{t2do}
 \special{papersize=193mm,260mm}
 """
-    elif latex_style == 'Springer_llcse':
+    elif latex_style == 'Springer_llncs':
         INTRO['latex'] += r"""
 % Style: Lecture Notes in Computer Science (Springer)
 \documentclass[oribib]{llncs}
@@ -1714,12 +1744,11 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
     INTRO['latex'] += r"""
 \listfiles               % print all files needed to compile this document
 """
-    latex_paper = option('latex_paper=', 'std')
-    if latex_paper == 'a4'
+    if latex_papersize == 'a4':
         INTRO['latex'] += r"""
 \usepackage[a4paper]{geometry}
 """
-    elif latex_paper == 'a6'
+    elif latex_papersize == 'a6':
         INTRO['latex'] += r"""
 % a6paper is suitable for mobile devices
 \usepackage[%
@@ -1819,7 +1848,6 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
 """
-    latex_font = option('latex_font=', 'std')
     if latex_font == 'helvetica':
         INTRO['latex'] += r"""
 % Set helvetica as the default font family:
@@ -1833,11 +1861,16 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 \linespread{1.05}            % Palatino needs extra line spread to look nice
 """
     INTRO['latex'] += r"""
+% #endif
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 """
     # Make sure hyperlinks are black (as the text) for printout
     # and otherwise set to the dark blue linkcolor
-    linkcolor = 'black' if option('device=') == 'paper' else 'linkcolor'
+    linkcolor = 'linkcolor'
+    if option('device=') == 'paper':
+        linkcolor = 'black'
+    elif section_headings in ('blue', 'strongblue'):
+        linkcolor = 'seccolor'
     INTRO['latex'] += r"""
 %% Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
@@ -1921,7 +1954,7 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 %\doublespacing
 """
 
-    if fancy_header:
+    if option('latex_fancy_header'):
         INTRO['latex'] += r"""
 % --- fancyhdr package for fancy headers ---
 \usepackage{fancyhdr}
@@ -2025,7 +2058,7 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 %% frame, except for the summary admon which has horizontal rules only
 %% Note: this admonition type cannot handle verbatim text!
 %(define_graybox2_color)s""" % vars()
-            if latex_paper == 'a4':
+            if latex_papersize == 'a4':
                 INTRO['latex'] += r"""
 \newdimen\barheight
 \def\barthickness{0.5pt}
@@ -2240,8 +2273,6 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 }
 """ % vars()
 
-    section_headings = option('latex_section_headings=', 'std')
-    fancy_header = option('latex_fancy_header')
     colored_table_rows = option('latex_colored_table_rows=', 'no')
 
     INTRO['latex'] += r"""
@@ -2270,7 +2301,7 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 {\color{seccolor}\normalfont\normalsize\bfseries}
 {}{}{\indent}
 """
-        if fancy_header:
+        if option('latex_fancy_header'):
             INTRO['latex'] += r"""
 % let the header have a thick gray hrule with section and page in blue above
 \renewcommand{\headrulewidth}{0.4pt}
@@ -2295,7 +2326,7 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 """
     elif section_headings == 'gray':
         INTRO['latex'] += r"""
-% --- section/subsection headings with white text on gray background ---
+% --- section headings with white text on gray background, wide as heading ---
 \titleformat{name=\section}[block]
   {\sffamily\Large}{}{0pt}{\colorsection}
 \titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip}
@@ -2312,7 +2343,7 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 """
     elif section_headings == 'gray-wide':
         INTRO['latex'] += r"""
-% --- section/subsection headings with white text on wide gray background ---
+% --- section headings with white text on gray background, wide as textwidth ---
 \titleformat{name=\section}[block]
   {\sffamily\Large}{}{0pt}{\colorsection}
 \titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip}
@@ -2330,20 +2361,20 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
            {\color{white}\thesubsection\ #1}}}
 """ % vars()
 
+    if colored_table_rows not in ('gray', 'blue', 'no'):
+        colored_table_rows = 'gray'
     if colored_table_rows != 'no':
         INTRO['latex'] += r"""
 
-% color every two table rows
+% --- color every two table rows ---
 \let\oldtabular\tabular
-\let\endoldtabular\endtabular
-"""
-    if colored_table_rows not in ('gray', 'blue'):
-        colored_table_rows = 'gray'
+\let\endoldtabular\endtabular"""
     if colored_table_rows == 'gray':
         INTRO['latex'] += r"""
 \definecolor{rowgray}{gray}{0.9}
 \renewenvironment{tabular}{\rowcolors{2}{white}{rowgray}%
 \oldtabular}{\endoldtabular}
+
 """
     elif colored_table_rows == 'blue':
         INTRO['latex'] += r"""
@@ -2373,16 +2404,15 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 """
             break
 
-    # Follow advice from fancyhdr: redefine \cleardoublepage
-    # see http://www.tex.ac.uk/cgi-bin/texfaq2html?label=reallyblank
-    # (Koma has its own solution to the problem, svmono.cls has the command)
-    INTRO['latex'] += r"""
-% #if LATEX_STYLE not in ("Koma_Script", "Springer_T2")
+    if latex_style not in ("Koma_Script", "Springer_T2"):
+        # Follow advice from fancyhdr: redefine \cleardoublepage
+        # see http://www.tex.ac.uk/cgi-bin/texfaq2html?label=reallyblank
+        # (Koma has its own solution to the problem, svmono.cls has the command)
+        INTRO['latex'] += r"""
 % Make sure blank even-numbered pages before new chapters are
 % totally blank with no header
 \newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
 %\let\cleardoublepage\clearemptydoublepage % caused error in the toc
-% #endif
 """
 
     INTRO['latex'] += r"""

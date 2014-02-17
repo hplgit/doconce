@@ -7,9 +7,9 @@ doconce format html tutorial  --no_pygments_html
 if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
 
 # latex
-doconce format latex tutorial
+doconce format latex tutorial --latex_font=helvetica
 if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
-ptex2tex -DMINTED -DHELVETICA tutorial
+ptex2tex -DMINTED tutorial
 latex -shell-escape tutorial.tex
 latex -shell-escape tutorial.tex
 dvipdf tutorial.dvi
