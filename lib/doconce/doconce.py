@@ -95,6 +95,8 @@ def fix(filestr, format, verbose=0):
                 if verbose > 0:
                     print '\n*** warning: found multi-line caption for %s\n\n%s\n    fix: collected this text to one single line (right?)' % (fig[1], caption)
 
+    """
+    Drop this and report error instead:
     # Space before commands that should begin in 1st column at a line?
     commands = 'FIGURE MOVIE TITLE AUTHOR DATE TOC BIBFILE'.split()
     commands += ['!b' + envir for envir in doconce_envirs()]
@@ -110,6 +112,7 @@ def fix(filestr, format, verbose=0):
             if verbose > 0:
                 print '\nFIX: %s not at the beginning of the line - %d fixes' % (command, n)
                 print lines
+    """
 
     if verbose and num_fixes:
         print '\n*** warning: the total of %d fixes above should be manually edited in the file!!\n    (also note: some fixes may not be what you want)\n' % num_fixes
@@ -127,15 +130,38 @@ def syntax_check(filestr, format):
         print '   ', '\n'.join(m)
         _abort()
 
-    # Check that are environments !bc, !ec, !bans, !eans, etc.
-    # appear at the beginning of the line
     for envir in doconce_envirs():
-        pattern = re.compile(r'^ +![eb]%s' % envir, re.MULTILINE)
+        # Check that are environments !bc, !ec, !bans, !eans, etc.
+        # appear at the very beginning of the line
+        # (allow e.g. `!benvir argument` and comment lines)
+        pattern = re.compile(r'^([^#\n].+?[^`\n]| +)(![eb]%s)' % envir, re.MULTILINE)
         m = pattern.search(filestr)
         if m:
-            print '\n*** error: !b%s and/or !e%s not at the beginning of the line' % (envir, envir)
-            print repr(filestr[m.start():m.start()+120])
+            print '\n*** error: %s is not at the beginning of a line' % \
+                  (m.group(2))
+            print '    surrounding text:'
+            print filestr[m.start()-100:m.start()+100]
             _abort()
+
+        # Check that envirs have b and e before their name
+        # (!subex is a frequent error...)
+        pattern = '^!' + envir + r'\s'
+        m = re.search(pattern, filestr, flags=re.MULTILINE)
+        if m:
+            print '\n*** error: found !%s at the beginning of a line' % envir
+            print '    must be !b%s or !e%s' % (envir, envir)
+            print '    surrounding text:'
+            print filestr[m.start()-100:m.start()+len(m.group())+100]
+            _abort()
+
+    pattern = r'^[A-Za-z0_9`"].+\n *- +.+\n^[A-Za-z0_9`"]'
+    m = re.search(pattern, filestr, flags=re.MULTILINE)
+    if m:
+        print '*** error: hyphen in front of text at a line'
+        print '    indicates description list, but this is not'
+        print '    indended here: (move the hypen to previous line)'
+        print filestr[m.start()-50:m.start()+150]
+        _abort()
 
     # Verbatim words must be the whole link, otherwise issue
     # warnings for the formats where this may look strange
@@ -1513,11 +1539,10 @@ def typeset_lists(filestr, format, debug_info=[]):
             if bug:
                 m = re.search(bug[0], line)
                 if m:
-                    print '*** syntax error: "%s"\n    %s' % \
-                          (m.group(0), bug[1])
-                    print '    in line\n[%s]' % line
+                    print '*** syntax error: "%s" (arising from bug check "%s"\n    %s' % (m.group(0), tag, bug[1])
+                    print '    in line no. %d\n[%s]' % (i, line)
                     print '    surrounding text is\n'
-                    for l in lines[i-4:i+5]:
+                    for l in lines[i-8:i+9]:
                         print l
                     _abort()
 
@@ -2428,6 +2453,14 @@ def doconce2format4docstrings(filestr, format):
     return filestr
 
 def doconce2format(filestr, format):
+    t0 = time.time()
+
+    def report_progress(msg):
+        """Write a message about the progress if CPU time > 15 s"""
+        if time.time() - t0 > 15:
+            print msg
+
+
     filestr = fix(filestr, format, verbose=1)
     syntax_check(filestr, format)
 
@@ -2505,6 +2538,8 @@ def doconce2format(filestr, format):
     debugpr('The code block types:', pprint.pformat(code_block_types))
     debugpr('The tex blocks:', pprint.pformat(tex_blocks))
 
+    report_progress('....removed all verbatim and latex blocks')
+
     # Check URLs to see if they are valid
     if option('urlcheck'):
         urlcheck(filestr)
@@ -2571,6 +2606,8 @@ def doconce2format(filestr, format):
     # Next step: deal with figures
     filestr = handle_figures(filestr, format)
 
+    report_progress('\n....handled figures')
+
     # Next step: deal with cross referencing (must occur before other format subst)
     filestr = handle_cross_referencing(filestr, format)
 
@@ -2586,6 +2623,8 @@ def doconce2format(filestr, format):
                             debug_info=[code_blocks, tex_blocks])
     debugpr('The file after typesetting of lists:', filestr)
 
+    report_progress('....handled lists')
+
     # Next step: add space around | in tables for substitutions to get right
     filestr = space_in_tables(filestr)
     debugpr('The file after adding space around | in tables:', filestr)
@@ -2593,6 +2632,8 @@ def doconce2format(filestr, format):
     # Next step: do substitutions
     filestr = inline_tag_subst(filestr, format)
     debugpr('The file after all inline substitutions:', filestr)
+
+    report_progress('....handled inline substitutions')
 
     # Next step: deal with tables
     filestr = typeset_tables(filestr, format)
@@ -2660,12 +2701,16 @@ def doconce2format(filestr, format):
                            tex_blocks, format)
     filestr += '\n'
 
+    report_progress('....handled insertion of verbatim and latex blocks')
+
     debugpr('The file after inserting intro/outro and tex/code blocks, and fixing last format-specific issues:', filestr)
 
     # Next step: deal with !b... !e... environments
     # (done after code and text to ensure correct indentation
     # in the formats that applies indentation)
     filestr = typeset_envirs(filestr, format)
+
+    report_progress('....handled !benvir/!eenvir constructions')
 
     debugpr('The file after typesetting of admons and the rest of the !b/!e environments:', filestr)
 
@@ -2719,6 +2764,11 @@ def doconce2format(filestr, format):
         filestr = filestr.replace('|e' + envir, '!e' + envir)
 
     debugpr('The file after replacing |bc and |bt environments by true !bt and !et (in code blocks):', filestr)
+
+    cpu = time.time() - t0
+    if cpu > 15:
+        print 'doconce format used %.1 s' % cpu
+        time.sleep(1)
 
     return filestr
 

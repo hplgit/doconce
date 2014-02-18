@@ -824,8 +824,8 @@ INLINE_TAGS = {
 INLINE_TAGS_SUBST = {}
 
 # frequent syntax errors that we can test for: (not yet used)
-heading_error = (r'(^ [_=]+[^_=]*|^[_=]+[^ _=]*$)',
-                 'Initial spaces or missing underscore(s) or = at the end')
+heading_error = (r'(^ [=]+[^=]*|^[=]+[^ =]*$)',
+                 'Initial spaces before heading or missing = at the end')
 INLINE_TAGS_BUGS = {
     # look for space after first special character ($ ` _ etc)
     'math': (r'%s(?P<subst>\$ [^$]*\$)%s' % (inline_tag_begin, inline_tag_end),
