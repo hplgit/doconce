@@ -1687,12 +1687,16 @@ def define(FILENAME_EXTENSION,
 
     from misc import copy_latex_packages
 
+    side_tp = 'oneside' if option('device=') == 'paper' else 'twoside'
+    m = re.search(chapter_pattern, filestr, flags=re.MULTILINE)
+    # (use A-Z etc to avoid sphinx table headings to indicate chapters...
+    if m:  # We have chapters, use book style
+        chapters = True
+    else:
+        chapters = False
+
     if latex_style == 'std':
-        side_tp = 'oneside' if option('device=') == 'paper' else 'twoside'
-        m = re.search(chapter_pattern, filestr, flags=re.MULTILINE)
-        # (use A-Z etc to avoid sphinx table headings to indicate chapters...
-        if m:  # We have chapters, use book style
-            chapters = True
+        if chapters:
             INTRO['latex'] += r"""
 \documentclass[%%
 %(side_tp)s,                 %% oneside: electronic viewing, twoside: printing
@@ -1702,7 +1706,6 @@ open=right               %% start new chapters on odd-numbered pages
 10pt]{book}
 """ % vars()
         else:  # Only sections, use article style
-            chapters = False
             INTRO['latex'] += r"""
 \documentclass[%%
 %(side_tp)s,                 %% oneside: electronic viewing, twoside: printing

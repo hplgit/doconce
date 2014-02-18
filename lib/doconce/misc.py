@@ -1455,8 +1455,8 @@ download preprocess from http://code.google.com/p/preprocess""")
                 print """
 *** warning: inline verbatim "%s"
     contains both delimiters %s and %s that the \\%s LaTeX
-    command will use - be prepared for strange output that
-    requires manual editing (or with doconce replace/subst)
+    command \\Verb will use - be prepared for strange output that
+    requires manual editing (or use doconce replace/subst)
 """ % (verbatim, verb_delimiter, alt_verb_delimiter)
             filestr = re.sub(r"""\\code\{%s\}([ \n,.;:?!)"'-])""" % verbatim,
                              r'\\%s%s%s%s\g<1>' %
