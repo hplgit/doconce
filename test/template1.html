@@ -1,0 +1,66 @@
+<! -- test template -->
+
+<?xml version="1.0" encoding="utf-8" ?>
+<html>
+<head>
+
+<style type="text/css">
+    body {
+      margin-top: 1.0em;
+      <!-- background-color: #e1c931; -->
+      background-color: #000000;
+      font-family: Helvetica, Arial, FreeSans, san-serif;
+      color: #000000;
+    }
+    #container {
+      margin: 0 auto;
+      width: 700px;
+    }
+    h1 { font-size: 1.8em; color: #1e36ce; margin-bottom: 3px; }
+    h1 .small { font-size: 0.4em; }
+    h1 a { text-decoration: none }
+    h2 { font-size: 1.5em; color: #1e36ce; }
+    h3 { text-align: left; color: #1e36ce; }
+    h4 { text-align: left; color: #1e36ce; }
+    a { color: #1e36ce; }
+    .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
+    .download { float: right; }
+    <!-- white on black: pre { background: #000; color: #fff; padding: 15px;} -->
+    <!-- black on white: pre { background: #fff; color: #000; padding: 15px;} -->
+    pre { background: #EDEDED; color: #000; padding: 15px;}
+    <!-- http://www.december.com/html/spec/color0.html -->
+    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    .footer { text-align:center; padding-top:30px; font-style: italic; }
+</style>
+
+<!-- Use MathJax to render mathematics -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "AMS"  },
+     extensions: ["AMSmath.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+</head>
+
+<body bgcolor="white">
+
+<title>%(title)s</title>
+
+
+<h1>Date: %(date)s</h1>
+
+<!-- main body -->
+
+%(main)s
+
+
+<!-- end of main body -->
+</body>
+</html>
+

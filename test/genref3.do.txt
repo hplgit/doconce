@@ -1,0 +1,7 @@
+TITLE: A combined document
+AUTHOR: hpl
+DATE: Jan 31, 3065
+
+# #include "_genref1.do.txt"
+
+# #include "_genref2.do.txt"

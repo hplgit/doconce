@@ -1,0 +1,1166 @@
+!split
+
+<%doc>
+This is Mako comment block
+to test the use of Mako as preprocessor.
+</%doc>
+
+
+The format of this document is
+% if FORMAT == 'html':
+plain, homemade HTML (from Doconce).
+  % elif FORMAT == 'latex':
+plain, homemade LaTeX (from Doconce).
+  % elif FORMAT == 'pdflatex':
+plain, homemade pdfLaTeX (from Doconce).
+  %else:
+${FORMAT}
+% endif
+
+% if SOMEVAR is not UNDEFINED:
+# Just a comment
+% endif
+
+__Abstract.__
+This is a document with many test constructions for doconce syntax.
+It was used heavily for the development and kept for testing
+numerous constructions, also special and less common cases.
+
+And exactly for test purposes we have an extra line here, which
+is part of the abstract.
+
+# Cannot demonstrate chapter headings since abstract and chapter
+# is mutually exclusive in LaTeX
+
+======= Section 1 =======
+label{sec1}
+
+Here is a nested list:
+
+  * item1
+  * item2
+  * item3 which continues
+    on the next line to test that feature
+  * and a sublist
+    * with indented subitem1
+    * and a subitem2
+  * and perhaps an ordered sublist
+    o first item
+    o second item,
+      continuing on a new line
+
+!bquote
+Here are two lines that make up
+a block quote.
+!equote
+
+Here is a reference to Equation (ref{my:eq1}).
+# #if FORMAT in ("sphinx", "html")
+This equation appears in another part if this document is split.
+# #endif
+
+
+===== Subsection 1 =====
+label{subsec1}
+
+idx{`somefunc` function}
+
+# Refer to section/appendix etc. at the beginning of the line
+# and other special fix situations for HTML.
+
+More text, with a reference back to
+Section ref{sec1} and ref{subsec1}, and further to the
+sections    ref{subsec1} and ref{subsubsec:ex}, which
+encourages you to do the tasks in the
+Exercises ref{demo:ex:1} and ref{exer:some:formula}.
+Appendices     ref{app1} and ref{app2} are also nice elements.
+
+
+# sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console
+
+=== Computer code ===
+
+Let's do some copying from files too. First from subroutine up to the very end,
+
+@@@CODE ../doc/src/manual/__testcode.f fromto: subroutine@
+and then just the subroutine,
+@@@CODE ../doc/src/manual/__testcode.f from-to:a comment@^C\s+END1
+and finally the complete file:
+@@@CODE ../doc/src/manual/__testcode.f
+
+Testing other code environments. First Python:
+!bc
+|bc pycod
+def f(x):
+    return x+1
+|ec
+!ec
+which gets rendered as
+
+!bc pycod
+def f(x):
+    return x+1
+!ec
+
+# #if FORMAT in ("sphinx", "html", "latex", "pdflatex")
+Now a complete program to be shown via Python Online Tutorial:
+# #else
+Here is a program that is supposed to be interactive via
+Python Online Tutorial, but that service is not accessible
+for the present format.
+# #endif
+
+!bc pyoptpro
+class Line:
+    def __init__(self, a, b):
+        self.a, self.b = a, b
+
+    def __call__(self, x):
+        a, b = self.a, self.b
+        return a*x + b
+
+line = Line(2, 1)
+y = line(x=3)
+print y
+!ec
+
+# #if FORMAT == "sphinx"
+Another complete program to be typeset as a sage cell:
+# #else
+Some more Python code (actually specified as a sage cell, but
+such cells are not supported by this format).
+# #endif
+
+!bc pyscpro
+a = 2
+b = 3
+print 'a+b:', a + b
+
+# In a sage cell we can also plot
+from matplotlib.pyplot import *
+from numpy import *
+x = linspace(0, 4*pi, 101)
+y = exp(-0.1*x)*cos(x)
+plot(x, y)
+xlabel('x'); ylabel('y')
+show()
+!ec
+
+## Should also test that one can read .pyopt and .pysc programs
+
+Then Cython:
+!bc cycod
+cpdef f(double x):
+    return x + 1
+!ec
+
+# This one tests a + sign before a code environment
+C++:
+!bc cpppro
+#include <iostream>
+
+int main()
+{
+   std::cout << "Sample output" << std::endl;
+   return 0
+}
+!ec
+# The next should get correctly typset in sphinx (cod is fcod)
+And a little bit of Fortran:
+
+!bc
+|bc cod
+      subroutine midpt(x, length, a, b)
+      real*8 a, b, x
+      x = (a + b)/2
+      length = b - a
+      return
+      end
+|ec
+!ec
+which then is typeset as
+
+!bc cod
+      subroutine midpt(x, length, a, b)
+      real*8 a, b, x
+      x = (a + b)/2
+      length = b - a
+      return
+      end
+!ec
+
+HTML:
+
+!bc htmlcod
+<table>
+<tr><td>Column 1</td><td>Column 2</td></tr>
+<tr><td>0.67526 </td><td>0.92871 </td></tr>
+<!-- comment -->
+</table>
+!ec
+
+System call:
+!bc sys
+Terminal> mkdir test
+Terminal> cd test
+Terminal> myprog -f
+output1
+output2
+!ec
+
+It is time to test `verbatim inline font` especially with `a newline
+inside the text` and an exclamation mark at the end: `BEGIN`! The
+exclamation mark inside the verbatim text is potentially not smart
+since latex use ! in the `Verb` typesetting, but this should now
+be fixed: test `!bc` and `!ec` as well as `!bsummary`.
+Also test backslashes and braces like `\begin`, `\begin{enumerate}`,
+`\end{this}\end{that}`, and `{something \inside braces}` in inline
+verbatim text.
+
+Here is some color{red}{red} color and an attempt to write color{green}{with
+green color containing a linebreak. <linebreak>
+And one more.} Some formats will only display <linebreak>
+this correctly when HTML is the output format. <linebreak>
+But here some more running text is added which is not part of
+the previous blocks with line breaks.
+
+=== Running OS commands ===
+
+@@@OSCMD python -c 'print "Testing\noutput\nfrom\nPython."'
+
+===== Subsection 2: Testing figures =====
+label{subsec:ex}
+idx{figures}
+
+Test of figures. In particular we refer to Figure ref{fig:impact} in which
+there is a flow.
+
+FIGURE:[../doc/src/manual/fig/wave1D, width=200] Visualization of a wave. label{fig:impact}
+
+Figures without captions are allowed and will be inlined.
+
+FIGURE:[../doc/src/manual/fig/wave1D, width=200]
+
+idx{movies}
+
+
+# Test multi-line caption in figure
+
+Here is figure ref{myfig} with a long multi-line caption
+and an extra space before the FIGURE keyword.
+
+ FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long
+caption spanning
+several lines and containing verbatim words like `my_file_v1` and `my_file_v2`
+as well as math with subscript as in $t_{i+1}$. label{myfig}
+
+# Must be a blank line after MOVIE or FIGURE to detect this problem
+
+Test URL as figure name:
+
+FIGURE: [https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png, width=500, frac=0.8]
+
+# Test wikimedia type of files that otherwise reside in subdirs
+# #if FORMAT == "mwiki"
+FIGURE: [testfigs/df_plot.png, width=800] This is a wikimedia figure file.
+
+# Non-uploaded file with no caption
+FIGURE: [testfigs/df2s8765s_plot.png, width=200, frac=0.4]
+# #endif
+
+
+__Remark.__
+Movies are tested in separate file `movies.do.txt`.
+
+
+# Somewhat challenging heading with latex math, \t, \n, ? and parenthesis
+
+===== The $\theta$ parameter (not $\nabla$?) =====
+label{decay:sec:theta}
+
+Functions do not always need to be advanced, here is one
+involving $\theta$:
+!bc
+def f(theta):
+    return theta**2
+!ec
+
+__More on $\theta$.__ Here is more text following headline with math.
+
+Newcommands must also be tested in this \report:
+$\half$, $\halfi$, $\x$, $\Ddt{u}$,
+both inline and in block:
+
+!bt
+\begin{align*}
+\Ddt{u} &= 0
+\\
+\half &= \halfi\\
+\half\x &= \normalvec
+\end{align*}
+!et
+
+Or with align with label and numbers:
+
+!bt
+\begin{align}
+\Ddt{u} &= 0
+label{aligneq1}\\
+\half &= \halfi\\
+\half\x &= \normalvec
+label{aligneq2}
+\end{align}
+!et
+
+% if FORMAT == "sphinx":
+Sphinx makes a fix here and splits align into multiple equation
+environments.
+% endif
+% if FORMAT == "mwiki":
+The labels above are removed in mwiki since mwiki cannot refer to
+labels in equations.
+% endif
+
+===== Custom Environments =====
+
+Here is an attempt to create a theorem environment via Mako
+(for counting theorems) and comment lines to help replacing lines in
+the `.tex` by proper begin-end LaTeX environments for theorems.
+Should look nice in most formats!
+
+<%
+theorem_counter = 4
+%>
+
+# begin theorem
+label{theorem:fundamental1}
+<%
+theorem_counter += 1
+theorem_fundamental1 = theorem_counter
+%>
+
+__Theorem ${theorem_counter}.__
+Let $a=1$ and $b=2$. Then $c=3$.
+# end theorem
+
+# begin proof
+__Proof.__
+Since $c=a+b$, the result follows from straightforward addition.
+$\Diamond$|$END$
+# end proof
+
+As we see, the proof of Theorem ${theorem_counter} is a modest
+achievement.
+
+
+===== Tables =====
+label{subsec:table}
+
+idx{test index with `verbatim text` which is possible}
+idx{test `two` (separate) `verbatim expressions` which is also possible}
+idx{index with!subindex}
+
+# index with comma could fool sphinx
+idx{index, with comma, and one more}
+
+Let us take this table from the manual:
+
+% if FORMAT in ("latex", "pdflatex"):
+\begin{table}
+\caption{
+Testing table environment in LaTeX, enabled by testing on the "latex" format
+with the preprocessor.
+label{mytab}
+}
+
+% endif
+
+  |--------------------------------|
+  |time  | velocity | acceleration |
+  |--l--------r-----------r--------|
+  | 0.0  | 1.4186   | -5.01        |
+  | 2.0  | 1.376512 | 11.919       |
+  | 4.0  | 1.1E+1   | 14.717624    |
+  |--------------------------------|
+
+% if FORMAT in ("latex", "pdflatex"):
+\end{table}
+% endif
+
+The Doconce source code reads
+!bc ccq
+  |--------------------------------|
+  |time  | velocity | acceleration |
+  |--l--------r-----------r--------|
+  | 0.0  | 1.4186   | -5.01        |
+  | 2.0  | 1.376512 | 11.919       |
+  | 4.0  | 1.1E+1   | 14.717624    |
+  |--------------------------------|
+!ec
+
+Here is yet another table to test that we can handle more than
+one table:
+
+  |--l-------l----------l----------|
+  |time  | velocity | acceleration |
+  |--l-------l----------l----------|
+  | 0.0  | 1.4186   | -5.01        |
+  | 1.0  | 1.376512 | 11.919       |
+  | 3.0  | 1.1E+1   | 14.717624    |
+  |--------------------------------|
+
+And one with math headings (that are expanded and must be treated
+accordingly), verbatim heading and entry, and no space around the pipe
+symbol:
+
+|--------------------------|
+|$i$|$h_i$|$\bar T_i$|`L_i`|
+|-l-----r-------r----r-----|
+|0   |0     |288   |-0.0065|
+|1   |11,000|216   |0.0	   |
+|2   |20,000|216   |0.001  |
+|3   |32,000|228   |0.0028 |
+|4   |47,000|270   |0.0	   |
+|5   |51,000|270   |-0.0028|
+|6   |71,000|214   |`NaN`  |
+|--------------------------|
+
+And add one with verbatim headings (with underscores),
+and rows starting with `|-` because of a negative number,
+and `|` right before and after verbatim word (with no space):
+## +`v_2` does not work, need space + `v_2`
+
+|-----------------------------------------|
+| exact | `v_1`   |$a_i$ + `v_2`|`verb_3_`|
+|---r--------r---------r-----------r------|
+|9      | 9.62    | 5.57      |  8.98     |
+|-20    | -23.39  | -7.65     | -19.93    |
+|10     | 17.74   | -4.50     |  9.96     |
+|0      | -9.19   | 4.13      | -0.26     |
+|-----------------------------------------|
+
+Finally, a table with math
+# #if FORMAT in ("rst", "html", "sphinx", "pandoc")
+(`bm` that expands to `boldsymbol`, was tricky, but
+cleanly handled now)
+# #endif
+and URLs.
+
+# Mako code to expand URLs in the table
+# (These types of tables did not work before Jan 2014)
+<%
+def tfig(fileno):
+    p = '../doc/src/manual/mov/wave_frames/frame_0' + fileno + '.png'  # path
+    if FORMAT in ("latex", "pdflatex"):
+        text = r'\includegraphics[width=2cm]{%s}' % p
+    elif FORMAT == "html":
+        text = '<a href="%s"><img src="%s" width="300"></a>' % (p, p)
+    else:
+        text = '"`%s`": "%s"' % (fileno, p)  # plain link
+    return text
+%>
+
+|-----------------------------------------------------------|
+|                         |                |                |
+|--------------c------------------c----------------c--------|
+| $\mathcal{L}=0$         | ${tfig('080')} | ${tfig('085')} |
+| $a=b$                   | ${tfig('090')} | ${tfig('095')} |
+| $\nabla\cdot\bm{u} =0 $ | ${tfig('100')} | ${tfig('105')} |
+|-----------------------------------------------------------|
+
+
+===== A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2` =====
+
+__Files `my_file_v1.py` and `my_file_v2.py` define some math $a_{i-1}$.__ Here is
+some text.
+
+Let us also add a test of quotes such as ``double
+quotes, with numbers like 3.14 and
+newline/comma and hyphen (as in double-quote)'';
+written in the standard LaTeX-style that gives correct
+LaTeX formatting and ordinary double quotes for all non-LaTeX formats.
+Here is another sentence that ``caused'' a bug in the past
+because double backtick quotes could imply verbatim text up to
+a verbatim word starting with period, like `.txt`.
+
+
+===== Bibliography test =====
+
+Here is an example: cite{Langtangen_Pedersen_2002} discussed propagation of
+large destructive water waves, cite{Langtangen_et_al_2002} gave
+an overview of numerical methods for solving the Navier-Stokes equations,
+while the use of Backward Kolmogorov equations for analyzing
+random vibrations was investigated in cite{Langtangen_1994a}.
+The book chapter cite{Mardal_et_al_2003a} contains information on
+C++ software tools for programming multigrid methods. A real retro
+reference is cite{Langtangen_1988d} about a big FORTRAN package.
+Multiple references are also possible, e.g., see
+cite{Langtangen_Pedersen_2002,Mardal_et_al_2003a}.
+
+We need to cite more than 10 papers to reproduce an old formatting
+problem with blanks in the keys in reST format:
+cite{Langtangen_1992c,Langtangen_1994a,Mortensen_et_al_2011,Langtangen_Pedersen_2002}
+and
+cite{Langtangen_et_al_2002,Glimsdal_et_al_20006,Rahman_et_al_2006b,Haga_et_al_2011a,Langtangen_2003a,Langtangen_2008a,Langtangen:95}
+and all the work of
+cite{Langtangen_2012,Mardal_et_al_2003a,Jeberg_et_al_2004} as well as
+old work cite{Langtangen_1988d} and cite{Langtangen_1989e}, and the
+talk cite{Langtangen_talk_2007a}.
+Langtangen also had two thesis cite{Langtangen:85,Langtangen_1989e}.
+More retro citations are
+the old ME-IN323 book cite{Langtangen:91} and the
+cite{Langtangen:94b} OONSKI '94 paper.
+
+
+===== Example: Examples can be typeset as exercises =====
+label{Example}
+
+Examples can start with a subsection heading starting with `Example:`
+and then, with the command-line option `--examples_as_exercises` be
+typeset as exercises. This is useful if one has solution
+environments as part of the example.
+
+
+!bsubex
+State some problem.
+
+!bsol
+The answer to this subproblem can be written here.
+!esol
+!esubex
+
+!bsubex
+State some other problem.
+
+!bhint
+A hint can be given.
+!ehint
+
+!bhint
+Maybe even another hint?
+!ehint
+
+!bsol
+The answer to this other subproblem goes here,
+maybe over multiple doconce input lines.
+!esol
+!esubex
+
+
+===== URLs =====
+label{subsubsec:ex}
+
+Testing of URLs: hpl's home page "hpl":"http://folk.uio.no/hpl", or
+the entire URL if desired, "URL": "http://folk.uio.no/hpl".  Here is a
+plain file link "URL": "testdoc.do.txt", or "url":"testdoc.do.txt", or
+URL: "testdoc.do.txt" or url : "testdoc.do.txt" or "a link with
+newline": "testdoc.do.txt". Can test spaces with the link with word
+too: "hpl": "http://folk.uio.no/hpl" or "hpl" :
+"http://folk.uio.no/hpl". Also `file:///` works: "link to a
+file":"file:///home/hpl/vc/doconce/doc/demos/manual/manual.html" is
+fine to have. Moreover, "loose" URLs work, i.e., no quotes, just
+the plain URL as in http://folk.uio.no/hpl, if followed by space, comma,
+colon, semi-colon, question mark, exclamation mark, but not a period
+(which gets confused with the periods inside the URL).
+
+Mail addresses can also be used: "`hpl@simula.no`": "mailto:hpl@simula.no", or just a "mail link": "mailto:hpl@simula.no", or a raw URL: "mailto:hpl@simula.no".
+
+Here are some tough tests of URLs, especially for the `latex` format:
+"Newton-Cotes":
+"http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas" formulas
+and a "good book":
+"http://www.springer.com/mathematics/computational+science+%26+engineering/book/978-3-642-23098-1". Need to test
+Newton-Cotes with percentage in URL too:
+URL: "http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas"
+and URL: "http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae" which has a shebang.
+
+For the `--device=paper` option it is important to test that URLs with
+monofont link text get a footnote (unless the `--latex_no_program_footnotelink`
+is used), as in this reference to
+"`decay_mod`":
+"https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py", "`ball1.py`": "http://tinyurl.com/pwyasaa/formulas.ball1.py",
+and "`ball2.py`": "http://tinyurl.com/pwyasaa/formulas.ball2.py".
+
+
+# Comments should be inserted outside paragraphs (because in the rst
+# format extra blanks make a paragraph break).
+
+# Note that when there is no http: or file:, it can be a file link
+# if the link name is URL, url, "URL", or "url". Such files should,
+# if rst output is desired, but placed in a `_static*` folder.
+
+More tough tests: repeated URLs whose footnotes when using the
+`--device=paper` option must be correct. We have
+"google": "http://google.com", "google": "http://google.com", and
+"google": "http://google.com", which should result in exactly three
+footnotes.
+
+
+% if FORMAT in ("latex", "pdflatex"):
+
+===== Test of Some LaTeX Fixes =====
+
+Let's check abbr. of some common kind, e.g. the well-known i.e.
+expression as an example. Moreover, Dr. Tang and Prof. Monsen,
+or maybe also prof. Ting,
+will go to the Dept. of Science to test how Mr. Hansen is doing together
+with Ms. Larsen. A reference like Sec. ref{subsubsec:ex} or
+Ch. ref{subsubsec:ex}, or even App. ref{subsubsec:ex}, must also be
+handled. Likewise, this is test no. $i$ of Doconce features.
+A sentence containing "refines lines" could easily
+fool a regex substitution with only i.e. since the dot matches anything.
+Also, look at Fig. 4 to see how the data compares with Tab. ref{mytab}.
+% endif
+
+!split and check if these extra words are included properly in the comment
+
+======= LaTeX Mathematics =======
+
+Here is an equation without label using backslash-bracket environment:
+!bt
+\[ a = b + c \]
+!et
+or with number and label, as in (ref{my:eq1}), using the equation environment:
+!bt
+\begin{equation}
+{\partial u\over\partial t} = \nabla^2 u label{my:eq1}
+\end{equation}
+!et
+We can refer to this equation by (ref{my:eq1}).
+
+Here is a system without equation numbers, using the align-astrisk environment:
+!bt
+\begin{align*}
+\pmb{a} &= \pmb{q}\times\pmb{n} \\
+b &= \nabla^2 u + \nabla^4 v
+\end{align*}
+!et
+
+
+% if FORMAT in ('latex', 'pdflatex', 'sphinx', 'html', 'pandoc'):
+And here is a system of equations with labels in an align environment:
+!bt
+\begin{align}
+a &= q + 4 + 5+ 6 label{eq1} \\
+b &= \nabla^2 u + \nabla^4 x label{eq2}
+\end{align}
+!et
+We can refer to (ref{eq1})-(ref{eq2}). They are a bit simpler than
+the Navier-Stokes equations. And test LaTeX hyphen in `CG-2`.
+Also test $a_{i-j}$ as well as $kx-wt$.
+
+Many of the next environments will fail in non-latex formats.
+Testing multiline:
+!bt
+\begin{multline}
+a = b = q + \\
+  f + \nabla\cdot\nabla u
+label{multiline:eq1}
+\end{multline}
+!et
+Testing split:
+!bt
+\begin{equation}
+label{split:envir:eq}
+\begin{split}
+a = b = q &+ \\
+  & f + \nabla\cdot\nabla u
+\end{split}
+\end{equation}
+!et
+We can refer to the last equation by (ref{split:envir:eq}).
+
+Testing gather:
+!bt
+\begin{gather}
+a = b \\
+c = d + 7 + 9
+\end{gather}
+!et
+
+Testing alignat:
+!bt
+\begin{alignat}{2}
+a &= q + 4 + 5+ 6\qquad & \mbox{for } q\geq 0 label{eq1a} \\
+b &= \nabla^2 u + \nabla^4 x & x\in\Omega label{eq2a}
+\end{alignat}
+!et
+Let us refer to (ref{eq1})-(ref{eq2}) again, and to the
+alignat variant (ref{eq1a})-(ref{eq2a}), and to (ref{my:eq1}).
+
+Testing eqnarray:
+!bt
+\begin{eqnarray}
+{\partial u\over\partial t} &=& \nabla^2 u + f, label{myeq1}\\
+{\partial v\over\partial t} &=& \nabla\cdot(q(u)\nabla v) + g label{myeq2}
+\end{eqnarray}
+!et
+% endif
+
+More mathematical typesetting is demonstrated in the coming exercises.
+
+Below, we have Problem ref{demo:ex:1} and Project ref{demo:ex:2},
+as well as Projects ref{proj:circle1} and ref{exer:you}, and in
+between there we have Exercise ref{exer:some:formula}.
+
+
+======= Exercises =======
+
+===== Problem: Flip a Coin =====
+label{demo:ex:1}
+files = flip_coin.py, flip_coin.pdf
+solutions = mysol.txt, mysol_flip_coin.py
+keywords = random numbers; Monte Carlo simulation
+
+# Torture tests
+file=myfile_should_be_a_part_of_the_text
+solutions = mysol.txt, mysol_flip_coin.py, yet_another.file
+
+Make a program that simulates flipping a coin $N$ times.
+Print out "tail" or "head" for each flip and
+let the program count the number of heads.
+
+!bhint
+Use `r = random.random()` and define head as `r <= 0.5`.
+!ehint
+
+# Test syntax error
+
+  !bhint
+Draw an integer among $\{1,2\}$ with
+`r = random.randint(1,2)` and define head when `r` is 1.
+  !ehint
+
+!bans
+If the `random.random()` function returns a number $<1/2$, let it be
+head, otherwise tail. Repeat this $N$ number of times.
+!eans
+
+!bsol
+!bc pycod
+import sys, random
+N = int(sys.argv[1])
+heads = 0
+for i in range(N):
+    r = random.random()
+    if r <= 0.5:
+        heads += 1
+print 'Flipping a coin %d times gave %d heads' % (N, heads)
+!ec
+!esol
+
+=== Remarks ===
+
+Remarks with such a subsubsection heading would previously mark
+the beginning of a new exercise and cause trouble. Maybe a list
+
+ o Mark 1.
+ o Mark 2.
+
+===== Not an exercise =====
+
+Should be possible to stick a normal section in the middle of many
+exercises.
+
+===== Project: Compute a Probability =====
+
+# Minimalistic exercise
+
+label{demo:ex:2}
+
+What is the probability of getting a number between 0.5 and 0.6 when
+drawing uniformly distributed random numbers from the interval $[0,1)$?
+
+!bhint
+To answer this question empirically, let a program
+draw $N$ such random numbers using Python's standard `random` module,
+count how many of them, $M$, that fall in the interval $(0.5,0.6)$, and
+compute the probability as $M/N$.
+!ehint
+
+At the end we have a list because that caused problems in LaTeX
+in previous Doconce versions:
+
+ o item1
+ o item2
+
+===== Project: Explore Distributions of Random Circles =====
+
+label{proj:circle1}
+file=circles.pdf
+
+The formula for a circle is given by
+
+!bt
+\begin{align}
+x &= x_0 + R\cos 2\pi t,\\
+y &= y_0 + R\sin 2\pi t,
+\end{align}
+!et
+where $R$ is the radius of the circle, $(x_0,y_0)$ is the
+center point, and $t$ is a parameter in the unit interval $[0,1]$.
+For any $t$, $(x,y)$ is a point on the circle.
+The formula can be used to generate `n` points on a circle:
+
+!bc pypro
+import numpy as np
+
+def circle(R, x0, y0, n=501):
+    t = np.linspace(0, 1, n)
+    x = x0 + R*np.cos(2*np.pi*t)
+    y = y0 + R*np.sin(2*np.pi*t)
+    return x, y
+
+x, y = circle(2.0, 0, 0)
+!ec
+
+# Often in an exercise we have some comments about the solution
+# which we normally want to keep where they are.
+
+The goal of this project is to draw $N$ circles with random
+center and radius. Plot each circle using the `circle` function
+above.
+
+!bsubex
+Let $R$ be normally distributed and $(x_0,y_0)$ uniformly distributed.
+
+!bans
+Here goes the short answer to part a).
+!eans
+
+!bsol
+Here goes a full solution to part a).
+!esol
+
+!bhint
+Use the `numpy.random` module to draw the
+$x_0$, $y_0$, and $R$ quantities.
+!ehint
+
+!esubex
+
+!bsubex
+Let $R$ be uniformly distributed and $(x_0,y_0)$ normally distributed.
+
+file=norm.py  # test local filename for subexercise
+!esubex
+
+!bsubex
+Let $R$ and $(x_0,y_0)$ be normally distributed.
+!esubex
+
+!bremarks
+At the very end of the exercise it may be appropriate to summarize
+and give some perspectives.
+!eremarks
+
+===== Exercise: Determine some Distance =====
+label{exer:dist}
+
+Intro to this exercise. Questions are in subexercises below.
+
+!bsubex
+Subexercises are numbered a), b), etc.
+
+file=subexer_a.pdf
+
+!bans
+Short answer to subexercise a).
+With math in answer: $a=b$.
+!eans
+
+!bhint
+First hint to subexercise a).
+With math $a=b$ in hint:
+
+!bt
+\[ a=b. \]
+!et
+And with code (in plain verbatim) returning $x+1$ in hint:
+
+!bc
+def func(x):
+    return x + 1  # with code in hint
+!ec
+!ehint
+
+!bhint
+Second hint to subexercise a).
+
+Test list in hint:
+
+ o item1
+ o item2
+
+!ehint
+!esubex
+
+!bsubex
+Here goes the text for subexercise b).
+
+file=subexer_b.pdf
+
+Some math $\cos^2 x + \sin^2 x = 1$ written one a single line:
+
+!bt
+\[ \cos^2 x + \sin^2 x = 1 \thinspace .\]
+!et
+
+!bhint
+A hint for this subexercise.
+!ehint
+
+!bsol
+Here goes the solution of this subexercise.
+!esol
+!esubex
+
+!bremarks
+Some final closing remarks, e.g., summarizing the main findings
+and their implications in other problems can be made. These
+remarks will appear at the end of the typeset exercise.
+!eremarks
+
+!bsol
+Here goes a full solution of the whole exercise.
+With some math $a=b$ in this solution:
+!bt
+\[ \hbox{math in solution: } a = b \]
+!et
+And code `a=b` in this solution:
+!bc
+a = b  # code in solution
+!ec
+End of solution is here.
+!esol
+
+#  No meaning in this weired test example:
+The text here belongs to the main (intro) part of the exercise. Need
+closing remarks to have text after subexercises.
+
+Test list in exercise:
+
+ o item1
+ o item2
+
+
+===== {Exercise}: Some exercise without the "Exercise:" prefix =====
+
+# Another minimalistic exercise
+
+Just some text. And some math saying that $e^0=1$ on a single line,
+to test that math block insertion is correct:
+
+!bt
+\[ \exp{(0)} = 1 \]
+!et
+
+And a test that the code `lambda x: x+2` is correctly placed here:
+
+!bc
+lambda x: x+2
+!ec
+
+# Have some comments at the end of the exercise to see that
+# the Filename: ... is written correctly.
+
+===== Example: Just an example =====
+
+# This example needs the --examples_as_exercises option, otherwise
+# it is just typeset as it is written.
+
+!bsubex
+What is the capital of Norway?
+
+!bans
+Oslo.
+!eans
+!esubex
+
+======= Here goes another section =======
+
+With some text, before we continue with exercises.
+
+======= More Exercises =======
+
+===== Exercise: Make references to projects and problems =====
+
+label{exer:some:formula}
+file=verify_formula.py
+
+Pick a statement from Project ref{proj:circle1} or Problem ref{demo:ex:1}
+and verify it.
+
+Test list at the end of an exercise without other elements (like subexercise,
+hint, etc.):
+
+ o item1
+ o item2
+
+% if FORMAT in ('rst', 'sphinx', 'html'):
+===== Project: References in a headings do not work well in ${FORMAT} =====
+% else:
+===== Project: References to Project ref{demo:ex:2} in a heading works for ${FORMAT} =====
+% endif
+
+label{exer:you}
+file=selc_composed.pdf
+
+Refer to the previous exercise as Exercise ref{exer:some:formula},
+the two before that as Projects ref{demo:ex:2} and ref{proj:circle1},
+and this one as Project ref{exer:you}.
+
+======= References =======
+
+BIBFILE: papers.pub
+
+
+======= Appendix: Just for testing; part I =======
+label{app1}
+
+This is the first appendix.
+
+===== A subsection within an appendix =====
+
+Some text.
+
+======= Appendix: Just for testing; part II =======
+label{app2}
+
+This is more stuff for an appendix.
+
+===== Appendix: Testing identical titles =====
+
+Without label.
+
+
+===== Appendix: Testing identical titles =====
+label{test:title:id1}
+
+With label.
+
+===== Appendix: Testing identical titles =====
+label{test:title:id2}
+
+With label.
+
+===== Appendix: Testing identical titles =====
+
+Without label.
+
+!bnotice Tip
+Here is a tip or hint box, typeset as a notice box.
+!enotice
+
+
+# #if FORMAT in ("latex", "pdflatex")
+\clearpage
+# #endif
+
+Need a lot of text to surround the summary box.
+Version control systems allow you to record the history of files
+and share files among several computers and collaborators in a
+professional way. File changes on one computer are updated or
+merged with changes on another computer. Especially when working
+with programs or technical reports it is essential
+to have changes documented and to
+ensure that every computer and person involved in the project
+have the latest updates of the files.
+Greg Wilson' excellent "Script for Introduction to Version Control":
+"http://software-carpentry.org/2010/07/script-for-introduction-to-version-control/" provides a more detailed motivation why you will benefit greatly
+from using version control systems.
+
+!bsummary
+_Bold remark:_ Make some text with this summary.
+Much testing in this document, otherwise stupid content.
+Much testing in this document, otherwise stupid content.
+Much testing in this document, otherwise stupid content.
+Much testing in this document, otherwise stupid content.
+Much testing in this document, otherwise stupid content.
+Much testing in this document, otherwise stupid content.
+Much testing in this document, otherwise stupid content.
+Much testing in this document, otherwise stupid content.
+Much testing in this document, otherwise stupid content.
+!esummary
+
+Projects that you want to share among several computers or project
+workers are today most conveniently stored at some web site "in the
+cloud" and updated through communication with that site. I strongly
+recommend you to use such sites for all serious programming and
+scientific writing work - and all other important files.
+
+The simplest services for hosting project files are "Dropbox":
+"http://dropbox.com" and "Google Drive": "http://drive.google.com".
+It is very easy to get started with these systems, and they allow you
+to share files among laptops and mobile units with as many users as
+you want. The systems offer a kind of version control in that the
+files are stored frequently (several times per minute), and you can go
+back to previous versions for the last 30 days. However, it is
+challenging  to find the right version from the past when there are
+so many of them.
+
+More seriously, when several people may edit files simultaneously, it
+can be difficult detect who did what when, roll back to previous
+versions, and to manually merge the edits when these are
+incompatible. Then one needs more sophisticated tools than Dropbox or
+Google Drive: project hosting services with true version control
+systems.  The following text aims at providing you with the minimum
+information to started with such systems. Numerous other tutorials
+contain more comprehensive material and in-depth explanations of the
+concepts and tools.
+
+The idea with project hosting services is that you have the files
+associated with a project in the cloud. Many people may share these
+files.  Every time you want to work on the project you explicitly
+update your version of the files, edit the files as you like, and
+synchronize the files with the "master version" at the site where the
+project is hosted.  If you at some point need to go back to a
+version of the files at some particular point in the past,
+this is an easy operation. You can also use tools to see
+what various people have done with the files in the various versions.
+
+All these services are very similar. Below we describe how you get
+started with Bitbucket, GitHub, and Googlecode. Launchpad works very
+similarly to the latter three. All the project hosting services have
+excellent introductions available at their web sites, but the recipes
+below are much shorter and aim at getting you started as quickly as
+possible by concentrating on the most important need-to-know steps.
+The Git tutorials we refer to later in this document contain more
+detailed information and constitute of course very valuable readings
+when you use version control systems every day. The point now is
+to get started.
+
+
+===== Appendix: Testing inline comments =====
+
+Projects that you want to share among several computers or project
+workers are today most conveniently stored at some web site "in the
+cloud" and updated through communication with that site. [hpl:
+not sure if in the cloud is understood by all.] I strongly
+recommend you to use such sites for all serious programming and
+scientific writing work - and all other important files.
+
+The simplest services for hosting project files is Dropbox. [mp:
+Simply go to URL:"http://dropbox.com" and watch the video. It explains
+how files, like `myfile.py`, perhaps containing much math, like
+$\partial u/\partial t$, are easily communicated between machines.] It
+is very easy to get started with Dropbox, and it allows you to share
+files among laptops and mobile units.
+
+When several people may edit files simultaneously, it can be difficult
+detect who did what when, roll back to previous versions, and to
+manually merge the edits when these are incompatible. Then one needs
+more sophisticated tools than Dropbox: project hosting services with
+true version control systems.  [hpl: The following text aims at providing
+you with the minimum information to started with such
+systems. Numerous other tutorials contain more comprehensive material
+and in-depth explanations of the concepts and tools.]
+
+===== Appendix: Testing headings ending with `verbatim inline` =====
+
+The point here is to test 1) `verbatim` code in headings, and 2)
+ending a heading with verbatim code as this triggers a special
+case in LaTeX.
+
+And finally, what about admons, quotes, and boxes? They are tested
+in a separate document: `admon.do.txt`.
