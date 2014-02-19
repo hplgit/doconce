@@ -215,7 +215,9 @@ since latex use ! in the `Verb` typesetting, but this should now
 be fixed: test `!bc` and `!ec` as well as `!bsummary`.
 Also test backslashes and braces like `\begin`, `\begin{enumerate}`,
 `\end{this}\end{that}`, and `{something \inside braces}` in inline
-verbatim text.
+verbatim text. Since the exclamation mark is used as delimiter
+in LaTeX inline verbatim, we need to test it, as in `a != b`,
+and a Doconce directive a la `!bc`.
 
 Here is some color{red}{red} color and an attempt to write color{green}{with
 green color containing a linebreak. <linebreak>
