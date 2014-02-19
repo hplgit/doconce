@@ -56,10 +56,10 @@ provides a lot of shortcuts for setting up many elements in a document:
 |  Ctrl+c h2     | heading level 2 (subsection/h2)       |
 |  Ctrl+c h3     | heading level 2 (subsection/h3)       |
 |  Ctrl+c hp     | heading for paragraph                 |
-|  Ctrl+c me     | math environment: !bt equation !et    |
-|  Ctrl+c ma     | math environment: !bt align !et       |
-|  Ctrl+c ce     | code environment: !bc !ec             |
-|  Ctrl+c cf     | code from file: @@@CODE               |
+|  Ctrl+c me     | math environment: `!bt` equation `!et`|
+|  Ctrl+c ma     | math environment: `!bt` align `!et`   |
+|  Ctrl+c ce     | code environment: `!bc` code `!ec`    |
+|  Ctrl+c cf     | code from file: `@@@CODE`             |
 |  Ctrl+c table2 | table with 2 columns                  |
 |  Ctrl+c table3 | table with 3 columns                  |
 |  Ctrl+c table4 | table with 4 columns                  |
@@ -738,7 +738,7 @@ Here goes the solution of this subexercise.
 
 |bremarks
 At the very end of the exercise it may be appropriate to summarize
-and give some perspectives. The text inside the !bremarks-!eremarks
+and give some perspectives. The text inside the `!bremarks` and `!eremarks`
 directives is always typeset at the end of the exercise.
 |eremarks
 

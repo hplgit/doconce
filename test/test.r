@@ -265,7 +265,7 @@ idx{movies}
 Here is figure ref{myfig} with a long multi-line caption
 and an extra space before the FIGURE keyword.
 
- FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long
+FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long
 caption spanning
 several lines and containing verbatim words like `my_file_v1` and `my_file_v2`
 as well as math with subscript as in $t_{i+1}$. label{myfig}
@@ -740,12 +740,10 @@ let the program count the number of heads.
 Use `r = random.random()` and define head as `r <= 0.5`.
 !ehint
 
-# Test syntax error
-
-  !bhint
+!bhint
 Draw an integer among $\{1,2\}$ with
 `r = random.randint(1,2)` and define head when `r` is 1.
-  !ehint
+!ehint
 
 !bans
 If the `random.random()` function returns a number $<1/2$, let it be
@@ -2441,8 +2439,6 @@ Print out "tail" or "head" for each flip and
 let the program count the number of heads.
 
 
-% Test syntax error
-
 
 
 
@@ -3583,12 +3579,12 @@ output1
 output2
 \end{Verbatim}
 
-It is time to test {\fontsize{10pt}{10pt}\Verb!verbatim inline font!} especially with {\fontsize{10pt}{10pt}\Verb!a newline inside the text!} and an exclamation mark at the end: {\fontsize{10pt}{10pt}\Verb!BEGIN!}! The
+It is time to test {\Verb!verbatim inline font!} especially with {\Verb!a newline inside the text!} and an exclamation mark at the end: {\Verb!BEGIN!}! The
 exclamation mark inside the verbatim text is potentially not smart
-since latex use ! in the {\fontsize{10pt}{10pt}\Verb!Verb!} typesetting, but this should now
-be fixed: test {\fontsize{10pt}{10pt}\Verb!!bc!} and {\fontsize{10pt}{10pt}\Verb!!ec!} as well as {\fontsize{10pt}{10pt}\Verb!!bsummary!}.
-Also test backslashes and braces like {\fontsize{10pt}{10pt}\Verb!\begin!}, {\fontsize{10pt}{10pt}\Verb!\begin{enumerate}!},
-{\fontsize{10pt}{10pt}\Verb!\end{this}\end{that}!}, and {\fontsize{10pt}{10pt}\Verb!{something \inside braces}!} in inline
+since latex use ! in the {\Verb!Verb!} typesetting, but this should now
+be fixed: test {\Verb~!bc~} and {\Verb~!ec~} as well as {\Verb~!bsummary~}.
+Also test backslashes and braces like {\Verb!\begin!}, {\Verb!\begin{enumerate}!},
+{\Verb!\end{this}\end{that}!}, and {\Verb!{something \inside braces}!} in inline
 verbatim text.
 
 Here is some \textcolor{red}{red} color and an attempt to write \textcolor{green}{with
@@ -3647,7 +3643,7 @@ and an extra space before the FIGURE keyword.
 \begin{figure}[ht]
   \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/fig/wave1D.png}}
   \caption{
-  A long caption spanning several lines and containing verbatim words like {\fontsize{10pt}{10pt}\protect\Verb!my\_file\_v1!} and {\fontsize{10pt}{10pt}\protect\Verb!my\_file\_v2!} as well as math with subscript as in $t_{i+1}$. \label{myfig}
+  A long caption spanning several lines and containing verbatim words like {\protect\Verb!my\_file\_v1!} and {\protect\Verb!my\_file\_v2!} as well as math with subscript as in $t_{i+1}$. \label{myfig}
   }
 \end{figure}
 %\clearpage % flush figures myfig
@@ -3667,7 +3663,7 @@ Test URL as figure name:
 
 
 \paragraph{Remark.}
-Movies are tested in separate file {\fontsize{10pt}{10pt}\Verb!movies.do.txt!}.
+Movies are tested in separate file {\Verb!movies.do.txt!}.
 
 
 % Somewhat challenging heading with latex math, \t, \n, ? and parenthesis
@@ -3713,7 +3709,7 @@ Or with align with label and numbers:
 
 Here is an attempt to create a theorem environment via Mako
 (for counting theorems) and comment lines to help replacing lines in
-the {\fontsize{10pt}{10pt}\Verb!.tex!} by proper begin--end {\LaTeX} environments for theorems.
+the {\Verb!.tex!} by proper begin--end {\LaTeX} environments for theorems.
 Should look nice in most formats!
 
 
@@ -3805,7 +3801,7 @@ symbol:
 
 \begin{quote}\begin{tabular}{lrrr}
 \hline
-\multicolumn{1}{c}{ $i$ } & \multicolumn{1}{c}{ $h_i$ } & \multicolumn{1}{c}{ $\bar T_i$ } & \multicolumn{1}{c}{ {\fontsize{10pt}{10pt}\Verb!L\_i!} } \\
+\multicolumn{1}{c}{ $i$ } & \multicolumn{1}{c}{ $h_i$ } & \multicolumn{1}{c}{ $\bar T_i$ } & \multicolumn{1}{c}{ {\Verb!L\_i!} } \\
 \hline
 0          & 0          & 288        & -0.0065    \\
 1          & 11,000     & 216        & 0.0        \\
@@ -3813,19 +3809,19 @@ symbol:
 3          & 32,000     & 228        & 0.0028     \\
 4          & 47,000     & 270        & 0.0        \\
 5          & 51,000     & 270        & -0.0028    \\
-6          & 71,000     & 214        & {\fontsize{10pt}{10pt}\Verb!NaN!} \\
+6          & 71,000     & 214        & {\Verb!NaN!} \\
 \hline
 \end{tabular}\end{quote}
 
 \noindent
 And add one with verbatim headings (with underscores),
-and rows starting with {\fontsize{10pt}{10pt}\Verb!|-!} because of a negative number,
-and {\fontsize{10pt}{10pt}\Verb!|!} right before and after verbatim word (with no space):
+and rows starting with {\Verb!|-!} because of a negative number,
+and {\Verb!|!} right before and after verbatim word (with no space):
 
 
 \begin{quote}\begin{tabular}{rrrr}
 \hline
-\multicolumn{1}{c}{ exact } & \multicolumn{1}{c}{ {\fontsize{10pt}{10pt}\Verb!v\_1!} } & \multicolumn{1}{c}{ $a_i$ + {\fontsize{10pt}{10pt}\Verb!v\_2!} } & \multicolumn{1}{c}{ {\fontsize{10pt}{10pt}\Verb!verb\_3\_!} } \\
+\multicolumn{1}{c}{ exact } & \multicolumn{1}{c}{ {\Verb!v\_1!} } & \multicolumn{1}{c}{ $a_i$ + {\Verb!v\_2!} } & \multicolumn{1}{c}{ {\Verb!verb\_3\_!} } \\
 \hline
 9                  & 9.62               & 5.57               & 8.98               \\
 -20                & -23.39             & -7.65              & -19.93             \\
@@ -3855,9 +3851,9 @@ $\nabla\cdot\bm{u} =0 $                                                       & 
 
 \noindent
 
-\subsection{A test of verbatim words in heading with subscript $a_i$: {\fontsize{10pt}{10pt}\protect\Verb!my\_file\_v1!} and {\fontsize{10pt}{10pt}\protect\Verb!my\_file\_v2!} }
+\subsection{A test of verbatim words in heading with subscript $a_i$: {\protect\Verb!my\_file\_v1!} and {\protect\Verb!my\_file\_v2!} }
 
-\paragraph{Files {\fontsize{10pt}{10pt}\protect\Verb!my\_file\_v1.py!} and {\fontsize{10pt}{10pt}\protect\Verb!my\_file\_v2.py!} define some math $a_{i-1}$.}
+\paragraph{Files {\protect\Verb!my\_file\_v1.py!} and {\protect\Verb!my\_file\_v2.py!} define some math $a_{i-1}$.}
 Here is
 some text.
 
@@ -3868,7 +3864,7 @@ written in the standard {\LaTeX}-style that gives correct
 {\LaTeX} formatting and ordinary double quotes for all non-{\LaTeX} formats.
 Here is another sentence that ``caused'' a bug in the past
 because double backtick quotes could imply verbatim text up to
-a verbatim word starting with period, like {\fontsize{10pt}{10pt}\Verb!.txt!}.
+a verbatim word starting with period, like {\Verb!.txt!}.
 
 
 \subsection{Bibliography test}
@@ -3908,8 +3904,8 @@ the old ME-IN323 book \cite{Langtangen:91} and the
 \subsection{Example 1: Examples can be typeset as exercises}
 \label{Example}
 
-Examples can start with a subsection heading starting with {\fontsize{10pt}{10pt}\Verb!Example:!}
-and then, with the command--line option {\fontsize{10pt}{10pt}\Verb!--examples_as_exercises!} be
+Examples can start with a subsection heading starting with {\Verb!Example:!}
+and then, with the command--line option {\Verb!--examples_as_exercises!} be
 typeset as exercises. This is useful if one has solution
 environments as part of the example.
 
@@ -3945,7 +3941,7 @@ the entire URL if desired, \href{{http://folk.uio.no/hpl}}{\nolinkurl{http://fol
 plain file link \href{{testdoc.do.txt}}{\nolinkurl{testdoc.do.txt}\footnote{\texttt{testdoc.do.txt}}}, or \href{{testdoc.do.txt}}{\nolinkurl{testdoc.do.txt}\footnote{\texttt{testdoc.do.txt}}}, or
 \href{{testdoc.do.txt}}{\nolinkurl{testdoc.do.txt}\footnote{\texttt{testdoc.do.txt}}} or \href{{testdoc.do.txt}}{\nolinkurl{testdoc.do.txt}\footnote{\texttt{testdoc.do.txt}}} or \href{{testdoc.do.txt}}{a link with
 newline}. Can test spaces with the link with word
-too: \href{{http://folk.uio.no/hpl}}{hpl}\footnote{\texttt{http://folk.uio.no/hpl}} or \href{{http://folk.uio.no/hpl}}{hpl}\footnote{\texttt{http://folk.uio.no/hpl}}. Also {\fontsize{10pt}{10pt}\Verb!file:///!} works: \href{{file:///home/hpl/vc/doconce/doc/demos/manual/manual.html}}{link to a
+too: \href{{http://folk.uio.no/hpl}}{hpl}\footnote{\texttt{http://folk.uio.no/hpl}} or \href{{http://folk.uio.no/hpl}}{hpl}\footnote{\texttt{http://folk.uio.no/hpl}}. Also {\Verb!file:///!} works: \href{{file:///home/hpl/vc/doconce/doc/demos/manual/manual.html}}{link to a
 file} is
 fine to have. Moreover, "loose" URLs work, i.e., no quotes, just
 the plain URL as in \href{{http://folk.uio.no/hpl}}{\nolinkurl{http://folk.uio.no/hpl}}, if followed by space, comma,
@@ -3954,15 +3950,15 @@ colon, semi--colon, question mark, exclamation mark, but not a period
 
 Mail addresses can also be used: \href{{mailto:hpl@simula.no}}{\nolinkurl{hpl@simula.no}\footnote{\texttt{mailto:hpl@simula.no}}}, or just a \href{{mailto:hpl@simula.no}}{mail link}\footnote{\texttt{mailto:hpl@simula.no}}, or a raw \href{{mailto:hpl@simula.no}}{\nolinkurl{mailto:hpl@simula.no}\footnote{\texttt{mailto:hpl@simula.no}}}.
 
-Here are some tough tests of URLs, especially for the {\fontsize{10pt}{10pt}\Verb!latex!} format:
+Here are some tough tests of URLs, especially for the {\Verb!latex!} format:
 \href{{http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas}}{Newton-Cotes}\footnote{\texttt{http://en.wikipedia.org/wiki/Newton\%E2\%80\%93Cotes\_formulas}} formulas
 and a \href{{http://www.springer.com/mathematics/computational+science+%26+engineering/book/978-3-642-23098-1}}{good book}\footnote{\texttt{http://www.springer.com/mathematics/computational+science+\%26+engineering/book/978-3-642-23098-1}}. Need to test
 Newton-Cotes with percentage in URL too:
 \href{{http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas}}{\nolinkurl{http://en.wikipedia.org/wiki/Newton\%E2\%80\%93Cotes_formulas}}
 and \href{{http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae}}{\nolinkurl{http://en.wikipedia.org/wiki/Newton-Cotes\#Open_Newton.E2.80.93Cotes_formulae}} which has a shebang.
 
-For the {\fontsize{10pt}{10pt}\Verb!--device=paper!} option it is important to test that URLs with
-monofont link text get a footnote (unless the {\fontsize{10pt}{10pt}\Verb!--latex_no_program_footnotelink!}
+For the {\Verb!--device=paper!} option it is important to test that URLs with
+monofont link text get a footnote (unless the {\Verb!--latex_no_program_footnotelink!}
 is used), as in this reference to
 \href{{https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py}}{\nolinkurl{decay_mod}}, \href{{http://tinyurl.com/pwyasaa/formulas.ball1.py}}{\nolinkurl{ball1.py}},
 and \href{{http://tinyurl.com/pwyasaa/formulas.ball2.py}}{\nolinkurl{ball2.py}}.
@@ -3973,10 +3969,10 @@ and \href{{http://tinyurl.com/pwyasaa/formulas.ball2.py}}{\nolinkurl{ball2.py}}.
 
 % Note that when there is no http: or file:, it can be a file link
 % if the link name is URL, url, "URL", or "url". Such files should,
-% if rst output is desired, but placed in a {\fontsize{10pt}{10pt}\Verb!_static*!} folder.
+% if rst output is desired, but placed in a {\Verb!_static*!} folder.
 
 More tough tests: repeated URLs whose footnotes when using the
-{\fontsize{10pt}{10pt}\Verb!--device=paper!} option must be correct. We have
+{\Verb!--device=paper!} option must be correct. We have
 \href{{http://google.com}}{google}\footnote{\texttt{http://google.com}}, \href{{http://google.com}}{google}\footnote{\texttt{http://google.com}}, and
 \href{{http://google.com}}{google}\footnote{\texttt{http://google.com}}, which should result in exactly three
 footnotes.
@@ -4021,7 +4017,7 @@ a &= q + 4 + 5+ 6 \label{eq1} \\
 b &= \nabla^2 u + \nabla^4 x \label{eq2}
 \end{align}
 We can refer to (\ref{eq1})-(\ref{eq2}). They are a bit simpler than
-the Navier--Stokes equations. And test {\LaTeX} hyphen in {\fontsize{10pt}{10pt}\Verb!CG-2!}.
+the Navier--Stokes equations. And test {\LaTeX} hyphen in {\Verb!CG-2!}.
 Also test $a_{i-j}$ as well as $kx-wt$.
 
 Many of the next environments will fail in non--latex formats.
@@ -4089,8 +4085,6 @@ Print out "tail" or "head" for each flip and
 let the program count the number of heads.
 
 
-% Test syntax error
-
 
 
 
@@ -4108,7 +4102,7 @@ the beginning of a new exercise and cause trouble. Maybe a list
 % --- begin hint in exercise ---
 
 \paragraph{Hint 1.}
-Use {\fontsize{10pt}{10pt}\Verb!r = random.random()!} and define head as {\fontsize{10pt}{10pt}\Verb!r <= 0.5!}.
+Use {\Verb!r = random.random()!} and define head as {\Verb!r <= 0.5!}.
 
 % --- end hint in exercise ---
 
@@ -4116,14 +4110,14 @@ Use {\fontsize{10pt}{10pt}\Verb!r = random.random()!} and define head as {\fonts
 
 \paragraph{Hint 2.}
 Draw an integer among $\{1,2\}$ with
-{\fontsize{10pt}{10pt}\Verb!r = random.randint(1,2)!} and define head when {\fontsize{10pt}{10pt}\Verb!r!} is 1.
+{\Verb!r = random.randint(1,2)!} and define head when {\Verb!r!} is 1.
 
 % --- end hint in exercise ---
 
 
 % --- begin answer of exercise ---
 \paragraph{Answer.}
-If the {\fontsize{10pt}{10pt}\Verb!random.random()!} function returns a number $<1/2$, let it be
+If the {\Verb!random.random()!} function returns a number $<1/2$, let it be
 head, otherwise tail. Repeat this $N$ number of times.
 
 % --- end answer of exercise ---
@@ -4145,7 +4139,7 @@ print 'Flipping a coin %d times gave %d heads' % (N, heads)
 \noindent
 
 % --- end solution of exercise ---
-Filenames: {\fontsize{10pt}{10pt}\Verb!flip_coin.py!}, {\fontsize{10pt}{10pt}\Verb!flip_coin.pdf!}.
+Filenames: {\Verb!flip_coin.py!}, {\Verb!flip_coin.pdf!}.
 % solution files: mysol.txt, mysol_flip_coin.py, yet_another.file
 
 \end{doconceexercise}
@@ -4189,7 +4183,7 @@ in previous Doconce versions:
 
 \paragraph{Hint.}
 To answer this question empirically, let a program
-draw $N$ such random numbers using Python's standard {\fontsize{10pt}{10pt}\Verb!random!} module,
+draw $N$ such random numbers using Python's standard {\Verb!random!} module,
 count how many of them, $M$, that fall in the interval $(0.5,0.6)$, and
 compute the probability as $M/N$.
 
@@ -4219,7 +4213,7 @@ y &= y_0 + R\sin 2\pi t,
 where $R$ is the radius of the circle, $(x_0,y_0)$ is the
 center point, and $t$ is a parameter in the unit interval $[0,1]$.
 For any $t$, $(x,y)$ is a point on the circle.
-The formula can be used to generate {\fontsize{10pt}{10pt}\Verb!n!} points on a circle:
+The formula can be used to generate {\Verb!n!} points on a circle:
 
 \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
 import numpy as np
@@ -4238,7 +4232,7 @@ x, y = circle(2.0, 0, 0)
 % which we normally want to keep where they are.
 
 The goal of this project is to draw $N$ circles with random
-center and radius. Plot each circle using the {\fontsize{10pt}{10pt}\Verb!circle!} function
+center and radius. Plot each circle using the {\Verb!circle!} function
 above.
 
 
@@ -4248,7 +4242,7 @@ Let $R$ be normally distributed and $(x_0,y_0)$ uniformly distributed.
 % --- begin hint in exercise ---
 
 \paragraph{Hint.}
-Use the {\fontsize{10pt}{10pt}\Verb!numpy.random!} module to draw the
+Use the {\Verb!numpy.random!} module to draw the
 $x_0$, $y_0$, and $R$ quantities.
 
 % --- end hint in exercise ---
@@ -4269,12 +4263,12 @@ Here goes a full solution to part a).
 
 \paragraph{b)}
 Let $R$ be uniformly distributed and $(x_0,y_0)$ normally distributed.
-\noindent Filename: {\fontsize{10pt}{10pt}\Verb!norm.py!}.
+\noindent Filename: {\Verb!norm.py!}.
 
 \paragraph{c)}
 Let $R$ and $(x_0,y_0)$ be normally distributed.
 
-\noindent Filename: {\fontsize{10pt}{10pt}\Verb!circles.pdf!}.
+\noindent Filename: {\Verb!circles.pdf!}.
 
 % Closing remarks for this Project
 
@@ -4322,7 +4316,7 @@ Test list in exercise:
 Here goes a full solution of the whole exercise.
 With some math $a=b$ in this solution:
 \[ \hbox{math in solution: } a = b \]
-And code {\fontsize{10pt}{10pt}\Verb!a=b!} in this solution:
+And code {\Verb!a=b!} in this solution:
 \begin{Verbatim}[fontsize=\fontsize{9pt}{9pt},tabsize=8,baselinestretch=0.85,
 fontfamily=tt,xleftmargin=7mm]
 a = b  # code in solution
@@ -4369,7 +4363,7 @@ Test list in hint:
 
 \noindent
 % --- end hint in exercise ---
-\noindent Filename: {\fontsize{10pt}{10pt}\Verb!subexer_a.pdf!}.
+\noindent Filename: {\Verb!subexer_a.pdf!}.
 
 
 % --- begin answer of exercise ---
@@ -4393,7 +4387,7 @@ Some math $\cos^2 x + \sin^2 x = 1$ written one a single line:
 A hint for this subexercise.
 
 % --- end hint in exercise ---
-\noindent Filename: {\fontsize{10pt}{10pt}\Verb!subexer_b.pdf!}.
+\noindent Filename: {\Verb!subexer_b.pdf!}.
 
 
 % --- begin solution of exercise ---
@@ -4429,7 +4423,7 @@ to test that math block insertion is correct:
 
 \[ \exp{(0)} = 1 \]
 
-And a test that the code {\fontsize{10pt}{10pt}\Verb!lambda x: x+2!} is correctly placed here:
+And a test that the code {\Verb!lambda x: x+2!} is correctly placed here:
 
 \begin{Verbatim}[fontsize=\fontsize{9pt}{9pt},tabsize=8,baselinestretch=0.85,
 fontfamily=tt,xleftmargin=7mm]
@@ -4496,7 +4490,7 @@ hint, etc.):
 \end{enumerate}
 
 \noindent
-\noindent Filename: {\fontsize{10pt}{10pt}\Verb!verify_formula.py!}.
+\noindent Filename: {\Verb!verify_formula.py!}.
 
 \end{doconceexercise}
 % --- end exercise ---
@@ -4516,7 +4510,7 @@ hint, etc.):
 Refer to the previous exercise as Exercise~\ref{exer:some:formula},
 the two before that as Projects~\ref{demo:ex:2} and~\ref{proj:circle1},
 and this one as Project~\ref{exer:you}.
-\noindent Filename: {\fontsize{10pt}{10pt}\Verb!selc_composed.pdf!}.
+\noindent Filename: {\Verb!selc_composed.pdf!}.
 
 \end{doconceexercise}
 % --- end exercise ---
@@ -4660,7 +4654,7 @@ recommend you to use such sites for all serious programming and
 scientific writing work - and all other important files.
 
 The simplest services for hosting project files is Dropbox. \longinlinecomment{mp 2}{ Simply go to \href{{http://dropbox.com}}{\nolinkurl{http://dropbox.com}} and watch the video. It explains
-how files, like {\fontsize{10pt}{10pt}\Verb!myfile.py!}, perhaps containing much math, like
+how files, like {\Verb!myfile.py!}, perhaps containing much math, like
 $\partial u/\partial t$, are easily communicated between machines. }{ Simply go to \href{{http://dropbox.com}}{\nolinkurl{http://dropbox.com}} } It
 is very easy to get started with Dropbox, and it allows you to share
 files among laptops and mobile units.
@@ -4674,14 +4668,14 @@ you with the minimum information to started with such
 systems. Numerous other tutorials contain more comprehensive material
 and in--depth explanations of the concepts and tools. }{ The following text aims }
 
-\subsection{Appendix: Testing headings ending with {\fontsize{10pt}{10pt}\protect\Verb!verbatim inline!} }
+\subsection{Appendix: Testing headings ending with {\protect\Verb!verbatim inline!} }
 
-The point here is to test 1) {\fontsize{10pt}{10pt}\Verb!verbatim!} code in headings, and 2)
+The point here is to test 1) {\Verb!verbatim!} code in headings, and 2)
 ending a heading with verbatim code as this triggers a special
 case in {\LaTeX}.
 
 And finally, what about admons, quotes, and boxes? They are tested
-in a separate document: {\fontsize{10pt}{10pt}\Verb!admon.do.txt!}.
+in a separate document: {\Verb!admon.do.txt!}.
 
 % ------------------- end of main content ---------------
 
@@ -5720,8 +5714,6 @@ Make a program that simulates flipping a coin $N$ times.
 Print out "tail" or "head" for each flip and
 let the program count the number of heads.
 
-
-% Test syntax error
 
 
 
@@ -7032,9 +7024,6 @@ Problem 2: Flip a Coin
 Make a program that simulates flipping a coin N times.
 Print out "tail" or "head" for each flip and
 let the program count the number of heads.
-
-
-.. Test syntax error
 
 
 
@@ -8611,9 +8600,6 @@ Print out "tail" or "head" for each flip and
 let the program count the number of heads.
 
 
-.. Test syntax error
-
-
 
 
 
@@ -10021,8 +10007,6 @@ Print out "tail" or "head" for each flip and
 let the program count the number of heads.
 
 
-<wiki:comment> Test syntax error </wiki:comment>
-
 
 
 
@@ -11179,8 +11163,6 @@ Make a program that simulates flipping a coin <math>N</math> times.
 Print out "tail" or "head" for each flip and
 let the program count the number of heads.
 
-
-<!-- Test syntax error -->
 
 
 
@@ -12445,8 +12427,6 @@ Print out "tail" or "head" for each flip and
 let the program count the number of heads.
 
 
-<wiki:comment> Test syntax error </wiki:comment>
-
 
 
 
@@ -13559,7 +13539,6 @@ Problem 2: Flip a Coin
 Make a program that simulates flipping a coin N times.
 Print out "tail" or "head" for each flip and
 let the program count the number of heads.
-
 
 
 
@@ -14744,7 +14723,6 @@ Problem 2: Flip a Coin
 Make a program that simulates flipping a coin M{N} times.
 Print out "tail" or "head" for each flip and
 let the program count the number of heads.
-
 
 
 
@@ -16019,7 +15997,6 @@ Problem 2: Flip a Coin
 Make a program that simulates flipping a coin N times.
 Print out "tail" or "head" for each flip and
 let the program count the number of heads.
-
 
 
 
@@ -17381,8 +17358,6 @@ Make a program that simulates flipping a coin $N$ times.
 Print out "tail" or "head" for each flip and
 let the program count the number of heads.
 
-
-<!-- Test syntax error -->
 
 
 
@@ -18937,8 +18912,6 @@ in a separate document: `admon.do.txt`.
       "let the program count the number of heads.\n",
       "\n",
       "\n",
-      "<!-- Test syntax error -->\n",
-      "\n",
       "\n",
       "\n",
       "\n",
@@ -19777,7 +19750,7 @@ Could not find match for from regex "\*\s+\$.+normally"
   'solution': "!bc pycod\nimport sys, random\nN = int(sys.argv[1])\nheads = 0\nfor i in range(N):\n    r = random.random()\n    if r <= 0.5:\n        heads += 1\nprint 'Flipping a coin %d times gave %d heads' % (N, heads)\n\n!ec",
   'solution_file': ['mysol.txt', 'mysol_flip_coin.py', 'yet_another.file'],
   'subex': [],
-  'text': '# Torture tests\n\nMake a program that simulates flipping a coin $N$ times.\nPrint out "tail" or "head" for each flip and\nlet the program count the number of heads.\n\n\n# Test syntax error\n\n\n\n\n=== Remarks ===\n\nRemarks with such a subsubsection heading would previously mark\nthe beginning of a new exercise and cause trouble. Maybe a list\n\n o Mark 1.\n o Mark 2.',
+  'text': '# Torture tests\n\nMake a program that simulates flipping a coin $N$ times.\nPrint out "tail" or "head" for each flip and\nlet the program count the number of heads.\n\n\n\n\n\n=== Remarks ===\n\nRemarks with such a subsubsection heading would previously mark\nthe beginning of a new exercise and cause trouble. Maybe a list\n\n o Mark 1.\n o Mark 2.',
   'title': 'Flip a Coin',
   'type': 'Problem',
   'type_visible': True},
@@ -21096,11 +21069,6 @@ b &amp;= \nabla^2 u + \nabla^4 x &amp; x\in\Omega \label{eq2a}
 <!-- Torture tests -->
 
 <p>Make a program that simulates flipping a coin <span class="math">\(N\)</span> times. Print out &quot;tail&quot; or &quot;head&quot; for each flip and let the program count the number of heads.</p>
-<!-- Test syntax error -->
-
-
-
-
 <h4 id="remarks">Remarks</h4>
 <p>Remarks with such a subsubsection heading would previously mark the beginning of a new exercise and cause trouble. Maybe a list</p>
 <ol style="list-style-type: decimal">
@@ -24921,9 +24889,6 @@ Make a program that simulates flipping a coin \( N \) times.
 Print out "tail" or "head" for each flip and
 let the program count the number of heads.
 
-<p>
-<!-- Test syntax error -->
-
 <h4>Remarks  <a name="___sec15"></a></h4>
 
 <p>
@@ -28176,9 +28141,6 @@ Make a program that simulates flipping a coin \( N \) times.
 Print out "tail" or "head" for each flip and
 let the program count the number of heads.
 
-<p>
-<!-- Test syntax error -->
-
 <h4>Remarks  <a name="___sec15"></a></h4>
 
 <p>
@@ -29857,9 +29819,6 @@ between there we have Exercise~\ref{exer:some:formula}.
 Make a program that simulates flipping a coin $N$ times.
 Print out "tail" or "head" for each flip and
 let the program count the number of heads.
-
-
-% Test syntax error
 
 % --- begin hint in exercise ---
 
@@ -34668,9 +34627,6 @@ Make a program that simulates flipping a coin \( N \) times.
 Print out "tail" or "head" for each flip and
 let the program count the number of heads.
 
-<p>
-<!-- Test syntax error -->
-
 <h4>Remarks  <a name="___sec15"></a></h4>
 
 <p>
@@ -36302,9 +36258,6 @@ Problem 2: Flip a Coin
 Make a program that simulates flipping a coin :math:`N` times.
 Print out "tail" or "head" for each flip and
 let the program count the number of heads.
-
-
-.. Test syntax error
 
 
 
@@ -66037,9 +65990,1691 @@ BIBFILE: papers.pub
 
 
 ************** File: Springer_T2/Springer_T2_book.p.tex *****************
-NOT FOUND!
+%%
+%% Automatically generated file from Doconce source
+%% (https://github.com/hplgit/doconce/)
+%%
+% #ifdef PTEX2TEX_EXPLANATION
+%%
+%% The file follows the ptex2tex extended LaTeX format, see
+%% ptex2tex: http://code.google.com/p/ptex2tex/
+%%
+%% Run
+%%      ptex2tex myfile
+%% or
+%%      doconce ptex2tex myfile
+%%
+%% to turn myfile.p.tex into an ordinary LaTeX file myfile.tex.
+%% (The ptex2tex program: http://code.google.com/p/ptex2tex)
+%% Many preprocess options can be added to ptex2tex or doconce ptex2tex
+%%
+%%      ptex2tex -DMINTED myfile
+%%      doconce ptex2tex myfile envir=minted
+%%
+%% ptex2tex will typeset code environments according to a global or local
+%% .ptex2tex.cfg configure file. doconce ptex2tex will typeset code
+%% according to options on the command line (just type doconce ptex2tex to
+%% see examples). If doconce ptex2tex has envir=minted, it enables the
+%% minted style without needing -DMINTED.
+% #endif
+
+% #define PREAMBLE
+
+% #ifdef PREAMBLE
+%-------------------- begin preamble ----------------------
+
+% Style: T2 (Springer)
+% Use svmono.cls with doconce modifications for bibliography
+\documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmonodo}
+
+% Use t2.sty with doconce modifications
+\usepackage{t2do}
+\special{papersize=193mm,260mm}
+
+\listfiles               % print all files needed to compile this document
+
+\usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
+\usepackage[table]{xcolor}
+\usepackage{bm,microtype}
+
+\usepackage{ptex2tex}
+
+% #ifdef MINTED
+\usepackage{minted}
+\usemintedstyle{default}
+% #endif
+
+% #ifdef XELATEX
+% xelatex settings
+\usepackage{fontspec}
+\usepackage{xunicode}
+\defaultfontfeatures{Mapping=tex-text} % To support LaTeX quoting style
+\defaultfontfeatures{Ligatures=TeX}
+\setromanfont{Kinnari}
+% Examples of font types (Ubuntu): Gentium Book Basic (Palatino-like),
+% Liberation Sans (Helvetica-like), Norasi, Purisa (handwriting), UnDoum
+% #else
+\usepackage[T1]{fontenc}
+%\usepackage[latin1]{inputenc}
+\usepackage[utf8]{inputenc}
+
+% #endif
+\usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
+
+% Hyperlinks in PDF:
+\definecolor{linkcolor}{rgb}{0,0,0.4}
+\usepackage[%
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=black,
+    citecolor=black,
+    filecolor=black,
+    %filecolor=blue,
+    pdfmenubar=true,
+    pdftoolbar=true,
+    bookmarksdepth=3   % Uncomment (and tweak) for PDF bookmarks with more levels than the TOC
+            ]{hyperref}
+%\hyperbaseurl{}   % hyperlinks are relative to this root
+
+\setcounter{tocdepth}{2}  % number chapter, section, subsection
+
+\usepackage[framemethod=TikZ]{mdframed}
+
+% --- begin definitions of admonition environments ---
+
+% Admonition style "graybox1" is an oval colored box
+\definecolor{graybox1_background}{rgb}{1,1,1}
+\newmdenv[
+  backgroundcolor=graybox1_background,
+  skipabove=\topsep,
+  skipbelow=\topsep,
+  outerlinewidth=0,
+  leftmargin=0,
+  rightmargin=0,
+  roundcorner=5,
+  needspace=0pt,
+]{graybox1mdframed}
+
+\newenvironment{graybox1admon}[1][]{
+\begin{graybox1mdframed}[frametitle=#1]
+}
+{
+\end{graybox1mdframed}
+}
+
+% --- end of definitions of admonition environments ---
+
+% prevent orhpans and widows
+\clubpenalty = 10000
+\widowpenalty = 10000
+
+% --- end of standard preamble for documents ---
+
+
+% insert custom LaTeX commands...
+
+\raggedbottom
+\makeindex
+
+%-------------------- end preamble ----------------------
+
+\begin{document}
+
+% #endif
+
+\input{newcommands_keep}
+
+% ------------------- main content ----------------------
+
+% Note on the Springer T2 style: used the modifications in t2do.sty
+% and svmonodo.cls (come bundled with Doconce).
+
+
+\frontmatter
+\setcounter{page}{3}
+\pagestyle{headings}
+
+
+% ----------------- title -------------------------
+
+\thispagestyle{empty}
+\hbox{\ \ }
+\vfill
+\begin{center}
+{\huge{\bfseries{
+\begin{spacing}{1.25}
+{\rule{\linewidth}{0.5mm}} \\[0.4cm]
+{A Test of Doconce a Book with Springer's T2 Style}
+\\[0.4cm] {\rule{\linewidth}{0.5mm}} \\[1.5cm]
+\end{spacing}
+}}}
+
+% ----------------- author(s) -------------------------
+
+\vspace{1.3cm}
+
+{\Large\textsf{Hans Petter Langtangen${}^{1, 2}$}}\\ [3mm]
+
+\ \\ [2mm]
+
+{\large\textsf{${}^1$Center for Biomedical Computing, Simula Research Laboratory} \\ [1.5mm]}
+{\large\textsf{${}^2$Department of Informatics, University of Oslo} \\ [1.5mm]}
+% ----------------- end author(s) -------------------------
+
+\ \\ [10mm]
+{\large\textsf{Jan 32, 2100}}
+
+\end{center}
+\vfill
+\clearpage
+
+\chapter*{Preface}
+\markboth{Preface}{Preface}
+
+The aim of this book is to teach computer programming using examples
+from mathematics and the natural sciences.  We have chosen to use the
+Python programming language because it combines remarkable expressive
+power with very clean, simple, and compact syntax.  Python is easy to
+learn and very well suited for an introduction to computer
+programming. Python is also quite similar to MATLAB and a good
+language for doing mathematical computing.  It is easy to combine
+Python with compiled languages, like Fortran, C, and C++, which are
+widely used languages for scientific computations.  A seamless
+integration of Python with Java is offered by a special version of
+Python called Jython.
+
+The examples in this book integrate programming with applications to
+mathematics, physics, biology, and finance.  The reader is expected to
+have knowledge of basic one-variable calculus as taught in
+mathematics-intensive programs in high schools. It is certainly an
+advantage to take a university calculus course in parallel, preferably
+containing both classical and numerical aspects of calculus.  Although
+not strictly required, a background in high school physics makes many
+of the examples more meaningful.
+
+Many introductory programming books are quite compact and focus on
+listing functionality of a programming language. However, learning to
+program is learning how to \emph{think} as a programmer.  This book
+has its main focus on the thinking process, or equivalently:
+programming as a problem solving technique. That is why most of the
+pages are devoted to case studies in programming, where we define a
+problem and explain how to create the corresponding program.  New
+constructions and programming styles (what we could call theory) is also usually
+introduced via examples.  Special attention is paid to verification of
+programs and to finding errors. These topics are very demanding for
+mathematical software, because the unavoidable numerical
+approximation errors are possibly mixed with programming mistakes.
+
+By studying the many examples in the
+book, I hope readers will learn how to think right and thereby
+write programs in a quicker and more reliable way. Remember, nobody can learn
+programming by just reading - one has to solve a large amount of
+exercises hands on.  The book is therefore full of exercises of
+various types: modifications of existing examples, completely new
+problems, or debugging of given programs.
+
+There is a web page associated with this book, \href{{http://hplgit.github.com/scipro-primer}}{\nolinkurl{http://hplgit.github.com/scipro-primer}}, which lists the software you
+need and explains briefly how to install it.  This page also contains
+all the files associated with the program examples in this book.
+
+\paragraph{Python version 2 or 3?}
+A common problem among Python programmers is to choose between version
+2 or 3, which at the time of this writing means choosing
+between version 2.7 and 3.3.
+The general recommendation is to go for version 3, but programs are
+then not compatible with version 2 and vice versa. There is still
+a problem that much useful mathematical software in Python
+has not yet been ported to version 3. Therefore, scientific computing
+with Python still goes mostly with version 2.
+A widely used strategy for software
+developers who want to write Python code that works with both versions,
+is to develop for v2.7, which is very close to what is accepted
+in version 3, and then
+use the ranslation tool \emph{2to3} to automatically translate the code
+to version 3.
+
+When using v2.7, one should employ the newest syntax
+and modules that make the differences beween version 2 and 3 very small.
+This strategy is adopted in the present book. Only two
+differences between versions 2 and 3 are expected to be significant for
+the programs in the book:
+\code{a/b} implies float division in version 3 if \code{a} and \code{b}
+are integers,
+and \code{print 'Hello'} in version 2 must be turned into a function call
+\code{print('Hello')} in version 3. None of these differences should lead
+to any annoying problems when future readers study the book's v2.7
+examples, but program in version 3. Anyway, running 2to3 on the
+example files generates the corresponding version 3 code.
+
+\paragraph{Acknowledgments.}
+Several people have helped to make substantial improvements of the
+text. Here I list only the names with Norwgian characters to
+test the handling of those: Ståle Zerener Haugnæss,
+Tobias Vidarssønn Langhoff, and Håkon Møller.
+
+\vspace{1cm}
+
+\noindent
+\emph{Oslo, April 2012}  \hfill  \emph{Hans Petter Langtangen}
+
+
+
+
+\tableofcontents
+
+
+\vspace{1cm} % after toc
+
+\mymainmatter
+
+
+
+
+
+\chapter{Basic array computing and plotting}
+
+This chapter gives an introduction to arrays: how they are created
+and what they can be used for.  Array computing usually ends up with a
+lot of numbers. It may be very hard to understand what these numbers
+mean by just looking at them. Since the human is a visual animal, a
+good way to understand numbers is to visualize them. In this
+chapter we concentrate on visualizing curves that reflect functions
+of one variable; i.e., curves of the form $y=f(x)$.  A synonym for
+curve is graph, and the image of curves on the screen is often called
+a plot.  We will use arrays to store the information about points
+along the curve. In a nutshell, array computing demands visualization
+and visualization demands arrays.
+
+All program examples in this chapter can be found as files in the
+folder \href{{http://some.where.net/doconce/test/software/plot}}{\nolinkurl{src/plot}\footnote{\texttt{http://some.where.net/doconce/test/software/plot}}}.
+
+\section{Arrays in Python programs}
+
+This section introduces array programming in Python, but first we
+create some lists and show how arrays differ from lists.
+
+\subsection{Using lists for collecting function data}
+\label{sec:plot:listdata}
+
+Suppose we have a function $f(x)$ and want to evaluate this function
+at a number of $x$ points $x_0,x_1,\ldots,x_{n-1}$.  We could collect
+the $n$ pairs $(x_i,f(x_i))$ in a list, or we could collect all the
+$x_i$ values, for $i=0,\ldots,n-1$, in a list and all the associated
+$f(x_i)$ values in another list.  The following interactive session
+demonstrates how to create these three types of lists:
+
+\bpy
+>>> def f(x):
+...     return x**3       # sample function
+...
+>>> n = 5                 # no of points along the x axis
+>>> dx = 1.0/(n-1)        # spacing between x points in [0,1]
+>>> xlist = [i*dx for i in range(n)]
+>>> ylist = [f(x) for x in xlist]
+>>> pairs = [[x, y] for x, y in zip(xlist, ylist)]
+\epy
+Here we have used list comprehensions for achieving compact code. Make
+sure that you understand what is going on in these list comprehensions
+(if not, try to write the same code using standard \code{for} loops and
+appending new list elements in each pass of the loops).
+
+\index{heterogeneous lists}
+
+The list elements consist of objects of the same type: any element in
+\code{pairs} is a list of two \code{float} objects, while any element in \code{xlist}
+or \code{ylist} is a \code{float}. Lists are more flexible than that, because an
+element can be an object of any type, e.g.,
+
+\bpycod
+mylist = [2, 6.0, 'tmp.ps', [0,1]]
+\epycod
+Here \code{mylist} holds an \code{int}, a \code{float}, a string, and a list. This
+combination of diverse object types makes up what is known as
+\emph{heterogeneous} lists.  We can also easily remove elements from a list
+or add new elements anywhere in the list.  This flexibility of lists
+is in general convenient to have as a programmer, but in cases where
+the elements are of the same type and the number of elements is fixed,
+arrays can be used instead. The benefits of arrays are faster
+computations, less memory demands, and extensive support for
+mathematical operations on the data.  Because of greater efficiency
+and mathematical convenience, arrays will be used to a large extent in
+this book.  The great use of arrays is also prominent in other
+programming environments such as MATLAB, Octave, and R, for instance.
+Lists will be our choice instead of arrays when we need the
+flexibility of adding or removing elements or when the elements may be
+of different object types.
+
+
+\begin{quote}
+\emph{People only become computer programmers if they're
+obsessive about details, crave power over machines, and can bear
+to be told day after day exactly how
+stupid they are.} \\
+Gregory J. E. Rawlins \cite{Rawlins_1998}, computer scientist.
+\end{quote}
+
+
+\subsection{Basics of numerical Python arrays}
+\label{sec:plot:array:basics}
+
+\index{Numerical Python} \index{NumPy} \index{numpy@{\rm\texttt{numpy}}}
+\index{array (datatype)} \index{array computing}
+\index{vectorization}
+
+An \emph{array} object can be viewed as a variant of a list, but with the
+following assumptions and features:
+
+\begin{itemize}
+  \item All elements must be of the same type, preferably integer, real, or complex numbers, for efficient numerical computing and storage.
+
+  \item The number of elements must be known when the array is created.
+
+  \item Arrays are not part of standard Python - one needs an additional package called \emph{Numerical Python}, often abbreviated as NumPy. The Python name of the package, to be used in \code{import} statements, is \code{numpy}.
+
+  \item With \code{numpy}, a wide range of mathematical operations can be done directly on complete arrays, thereby removing the need for loops over array elements. This is commonly called \emph{vectorization} %or \emph{array computing} and may cause a dramatic speed-up of Python programs. Vectorization makes use of the vector computing concepts from Section~\ref{sec:plot:arraycomp}.
+
+  \item Arrays with one index are often called vectors. Arrays with two indices are used as an efficient data structure for tables, instead of lists of lists. Arrays can also have three or more indices.
+\end{itemize}
+
+\noindent
+
+\begin{graybox1admon}[Remarks.]
+
+\begin{enumerate}
+\item There is actually an
+   object type called \code{array} in standard Python, but this data type is
+   not so efficient for mathematical computations, and we will not use it
+   in this book.
+
+\item The number of elements in an array \emph{can} be
+   changed, but at a substantial computational cost.
+\end{enumerate}
+
+\noindent
+\end{graybox1admon}
+
+
+
+The following text lists some important functionality of NumPy arrays.
+A more comprehensive treatment is found in the excellent \emph{NumPy
+Tutorial}, \emph{NumPy User Guide}, \emph{NumPy Reference}, \emph{Guide to NumPy},
+and \emph{NumPy for MATLAB Users}, all accessible at \href{{http://scipy.org}}{scipy.org}\footnote{\texttt{http://scipy.org}}.
+
+
+\index{zeros@{\rm\texttt{zeros}} (from {\rm\texttt{numpy}})} \index{np.zeros@{\rm\texttt{np.zeros}} function}
+\index{array@{\rm\texttt{array}} (from {\rm\texttt{numpy}})} \index{np.array@{\rm\texttt{np.array}} function}
+\index{np@{\rm\texttt{np}} prefix ({\rm\texttt{numpy}})}
+\index{zeros\_like@{\rm\texttt{zeros\_like}} (from {\rm\texttt{numpy}})}\index{np.zeros\_like@{\rm\texttt{np.zeros\_like}} function}
+
+
+
+\begin{graybox1admon}[Remarks on importing NumPy.]
+The statement
+
+\bpycod
+import numpy as np
+\epycod
+with subsequent prefixing of all NumPy functions and variables by \code{np.},
+has evolved as a standard syntax in the Python scientific computing
+community. However, to make Python programs look closer to MATLAB
+and ease the transition to and from that language, one can do
+
+\bpycod
+from numpy import *
+\epycod
+to get rid of the prefix (this is evolved as the standard in
+\emph{interactive} Python shells). This author prefers mathematical
+functions from \code{numpy} to be written without the prefix to
+make the formulas as close as possible to the mathematics.
+So, $f(x)=\sinh(x-1)\sin(w t)$ would be coded as
+
+\bpycod
+from numpy import sinh, sin
+
+def f(x):
+    return sinh(x-1)*sin(w*t)
+\epycod
+or one may take the less recommended
+lazy approach \code{from numpy import *} and fill up
+the program with \emph{a lot} of functions and variables from \code{numpy}.
+\end{graybox1admon}
+
+
+
+To convert a list \code{r} to an array,
+we use the \code{array} function
+from \code{numpy}:
+
+\bpycod
+a = np.array(r)
+\epycod
+To create a new array of length \code{n}, filled with zeros, we write
+
+\bpycod
+a = np.zeros(n)
+\epycod
+The array elements are of a type that corresponds to Python's
+\code{float} type. A second argument to \code{np.zeros} can be used to
+specify other element types, e.g., \code{int}.
+A similar function,
+
+\bpycod
+a = np.zeros_like(c)
+\epycod
+generates an array of zeros where the length is that of the array \code{c}
+and the element type is the same as those in \code{c}.  Arrays with more
+than one index are treated in Section~\ref{sec:plot:2Darrays}.
+
+\index{linspace@{\rm\texttt{linspace}} (from {\rm\texttt{numpy}})}\index{np.linspace@{\rm\texttt{np.linspace}} function}
+
+Often one wants an array to have $n$ elements with uniformly
+distributed values in an interval $[p,q]$. The \code{numpy} function
+\code{linspace} creates such arrays:
+
+\bpycod
+a = np.linspace(p, q, n)
+\epycod
+
+
+\chapter{Storing results in data files}
+
+\section{Writing data to file}
+\label{sec:files:writing}
+
+Writing data to file is easy.
+There is basically one function to pay attention to: \code{outfile.write(s)},
+which writes a string \code{s} to
+a file handled by the file object \code{outfile}. Unlike \code{print},
+\code{outfile.write(s)}
+does not append a newline character to the written string.
+It will therefore
+often be necessary to add a newline character,
+
+\bpycod
+outfile.write(s + '\n')
+\epycod
+if the string \code{s} is meant to appear on a single line in the file
+and \code{s} does not already contain a trailing newline character.
+File writing is then a matter of constructing strings containing the
+text we want to have in the file and for each such string call
+\code{outfile.write}.
+
+Writing to a file demands
+the file object \code{f}
+to be opened for writing:
+
+\bpycod
+# write to new file, or overwrite file:
+outfile = open(filename, 'w')
+
+# append to the end of an existing file:
+outfile = open(filename, 'a')
+\epycod
+
+\subsection{Example: Writing a table to file}
+
+\paragraph{Problem.}
+As a worked example of file writing,
+we shall write out a nested list with tabular data to file.
+A sample list may take look as
+
+\bccq
+[[ 0.75,        0.29619813, -0.29619813, -0.75      ],
+ [ 0.29619813,  0.11697778, -0.11697778, -0.29619813],
+ [-0.29619813, -0.11697778,  0.11697778,  0.29619813],
+ [-0.75,       -0.29619813,  0.29619813,  0.75      ]]
+\eccq
+
+\paragraph{Solution.}
+We iterate through the rows (first index) in the list, and for each row,
+we iterate through the column values (second index)
+and write each value to the file.
+At the end of each row, we must insert a newline character in the file to get
+a linebreak. The code resides in the file \href{{http://some.where.net/doconce/test/software/input/write1.py}}{\nolinkurl{write1.py}\footnote{\texttt{http://some.where.net/doconce/test/software/input/write1.py}}}.
+
+The resulting data file becomes
+
+\bdat
+    0.75000000    0.29619813   -0.29619813   -0.75000000
+    0.29619813    0.11697778   -0.11697778   -0.29619813
+   -0.29619813   -0.11697778    0.11697778    0.29619813
+   -0.75000000   -0.29619813    0.29619813    0.75000000
+\edat
+
+An extension of this program consists in adding column and row headings:
+
+\bdat
+           column  1     column  2     column  3     column  4
+row  1    0.75000000    0.29619813   -0.29619813   -0.75000000
+row  2    0.29619813    0.11697778   -0.11697778   -0.29619813
+row  3   -0.29619813   -0.11697778    0.11697778    0.29619813
+row  4   -0.75000000   -0.29619813    0.29619813    0.75000000
+\edat
+To obtain this end result, we need to the add some statements to
+the program \code{write1.py}. For the column headings we need
+to know the number of columns, i.e., the length of the rows,
+and loop from 1 to this length:
+
+\bpycod
+ncolumns = len(data[0])
+outfile.write('          ')
+for i in range(1, ncolumns+1):
+    outfile.write('%10s    ' % ('column %2d' % i))
+outfile.write('\n')
+\epycod
+Note the use of a nested printf construction: The text we want to
+insert is itself a printf string. We could also have written the
+text as \code{'column  ' + str(i)}, but then the length of the
+resulting string would depend on the number of digits in \code{i}.
+It is recommended to always use printf constructions for
+a tabular output format, because this gives automatic padding of
+blanks so that the width of the output strings remain the same.
+As always, the tuning of the widths is done in a trial-and-error
+process.
+
+To add the row headings, we need a counter over the row numbers:
+
+\bpycod
+row_counter = 1
+for row in data:
+    outfile.write('row %2d' % row_counter)
+    for column in row:
+        outfile.write('%14.8f' % column)
+    outfile.write('\n')
+    row_counter += 1
+\epycod
+The complete code is found in the file \href{{http://some.where.net/doconce/test/software/input/write2.py}}{\nolinkurl{write2.py}\footnote{\texttt{http://some.where.net/doconce/test/software/input/write2.py}}}.
+We could, alternatively, iterate over the indices in the list:
+
+\bpycod
+for i in range(len(data)):
+    outfile.write('row %2d' % (i+1))
+    for j in range(len(data[i])):
+        outfile.write('%14.8f' % data[i][j])
+    outfile.write('\n')
+\epycod
+
+
+
+
+\subsection{Standard input and output as file objects}
+
+\index{standard input} \index{standard output}
+
+\index{sys.stdin@{\rm\texttt{sys.stdin}}}\index{sys.stdout@{\rm\texttt{sys.stdout}}}
+
+Reading user input from the keyboard applies the function
+\code{raw_input} as explained in Section~\ref{sec:input:rawinput}.
+The keyboard is a medium that the computer in fact
+treats as a file, referred to
+as \emph{standard input}.
+
+The \code{print} command prints text in the terminal window. This medium
+is also viewed as a file from the computer's point of view and called
+\emph{standard output}. All general-purpose programming languages
+allow reading from standard input and
+writing to standard output. This reading and writing can be done with
+two types of tools, either file-like objects or special tools like
+\code{raw_input}
+and \code{print} in Python.
+We will here describe the file-line objects:
+\code{sys.stdin} for standard input
+and \code{sys.stdout} for standard output. These objects
+behave as file objects, except that they do not need to be opened or
+closed. The statement
+
+\bpycod
+s = raw_input('Give s:')
+\epycod
+is equivalent to
+
+\bpycod
+print 'Give s: ',
+s = sys.stdin.readline()
+\epycod
+Recall that the trailing comma in the \code{print} statement avoids the
+newline that \code{print} by default adds to the output string.
+Similarly,
+
+\bpycod
+s = eval(raw_input('Give s:'))
+\epycod
+is equivalent to
+
+\bpycod
+print 'Give s: ',
+s = eval(sys.stdin.readline())
+\epycod
+For output to the terminal window, the statement
+
+\bpycod
+print s
+\epycod
+is equivalent to
+
+\bpycod
+sys.stdout.write(s + '\n')
+\epycod
+
+Why it is handy to have access to standard input and output
+as file objects can be illustrated by an example. Suppose you have a
+function that reads data from a file object \code{infile}
+and writes data to a file object \code{outfile}.
+A sample function may take the form
+
+\bpycod
+def x2f(infile, outfile, f):
+    for line in infile:
+        x = float(line)
+        y = f(x)
+        outfile.write('%g\n' % y)
+\epycod
+This function works with all types of files, including
+web pages as \code{infile} (see Section~\ref{sec:files:webtxt}).
+With \code{sys.stdin} as \code{infile} and/or \code{sys.stdout}
+as \code{outfile}, the \code{x2f} function also works with standard input
+and/or standard output. Without \code{sys.stdin} and \code{sys.stdout},
+we would need different code, employing \code{raw_input}
+and \code{print},
+to deal with standard input and output. Now we can write a single
+function that deals with all file media in a unified way.
+
+\index{standard error}
+\index{sys.stderr@{\rm\texttt{sys.stderr}}}
+
+There is also something called \emph{standard error}.
+Usually this is the terminal window, just as standard output, but
+programs can distinguish between writing ordinary output to standard
+output and error messages to standard error, and these output media
+can be redirected to, e.g., files such that one can separate
+error messages from ordinary output.
+In Python, standard error is the file-like object \code{sys.stderr}.
+A typical application of \code{sys.stderr} is to report errors:
+
+\bpycod
+if x < 0:
+    sys.stderr.write('Illegal value of x'); sys.exit(1)
+\epycod
+This message to \code{sys.stderr} is an alternative to
+\code{print} or raising an exception.
+
+\paragraph{Redirecting standard input, output, and error.}
+Standard output from a program \code{prog}
+can be redirected to a file
+\code{output} instead of the screen, by
+using the greater than sign:
+
+\bsys
+Terminal> prog > output
+\esys
+Here, \code{prog} can be any
+program, including a Python program run as \code{python myprog.py}.
+Similarly, output to the medium called \emph{standard error}
+can be redirected by
+
+\bsys
+Terminal> prog &> output
+\esys
+For example, error messages are normally written to standard error, which
+is exemplified in this little terminal session on a Unix machine:
+
+\bsys
+Terminal> ls bla-bla1 bla-bla2
+ls: cannot access bla-bla1: No such file or directory
+ls: cannot access bla-bla2: No such file or directory
+Terminal> ls bla-bla1 bla-bla2 &> errors
+Terminal> cat errors  # print the file errors
+ls: cannot access bla-bla1: No such file or directory
+ls: cannot access bla-bla2: No such file or directory
+\esys
+When the program reads from standard input (the keyboard),
+we can equally well redirect
+standard input to a file, say with name \code{raw_input}, such that
+the program reads from this file rather than from the keyboard:
+
+\bsys
+Terminal> prog < input
+\esys
+Combinations are also possible:
+
+\bsys
+Terminal> prog < input > output
+\esys
+
+\paragraph{Note.}
+The redirection of standard output, input, and error
+does not work for Python programs executed with the \code{run}
+command inside IPython, only when executed directly
+in the operating system in a terminal window, or with the same
+command prefixed with an exclamation mark in IPython.
+
+\paragraph{References.}
+To check the bibliography, we need to make citations to a book{TCSE3},
+Matplotlib \cite{Matplotlib:paper}, and more books \cite{Mertz,PythonQt}
+as well as Python itself \cite{Python}, and of course NumPy
+\cite{NumPy}.
+
+
+
+
+\appendix
+
+\chapter{Styles for Springer T2}
+
+The T2 style for Doconce-generated {\LaTeX} should make use of
+slightly modified \code{svmono.cls} and \code{t2.sty} files:
+
+\begin{itemize}
+ \item \code{svmonodo.cls}
+
+ \item \code{t2do.sty}
+\end{itemize}
+
+\noindent
+\clearemptydoublepage
+\markboth{Bibliography}{Bibliography}
+\thispagestyle{empty}
+
+\bibliographystyle{plain}
+\bibliography{papers}
+
+
+
+% ------------------- end of main content ---------------
+
+
+% #ifdef PREAMBLE
+\clearemptydoublepage
+\markboth{Index}{Index}
+\thispagestyle{empty}
+\printindex
+
+\end{document}
+% #endif
+
+
 ************** File: Springer_T2/Springer_T2_book.tex *****************
-NOT FOUND!
+%%
+%% Automatically generated file from Doconce source
+%% (https://github.com/hplgit/doconce/)
+%%
+
+
+%-------------------- begin preamble ----------------------
+
+% Style: T2 (Springer)
+% Use svmono.cls with doconce modifications for bibliography
+\documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmonodo}
+
+% Use t2.sty with doconce modifications
+\usepackage{t2do}
+\special{papersize=193mm,260mm}
+
+\listfiles               % print all files needed to compile this document
+
+\usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
+\usepackage[table]{xcolor}
+\usepackage{bm,microtype}
+
+\usepackage{ptex2tex}
+
+
+\usepackage[T1]{fontenc}
+%\usepackage[latin1]{inputenc}
+\usepackage[utf8]{inputenc}
+
+\usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
+
+% Hyperlinks in PDF:
+\definecolor{linkcolor}{rgb}{0,0,0.4}
+\usepackage[%
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=black,
+    citecolor=black,
+    filecolor=black,
+    %filecolor=blue,
+    pdfmenubar=true,
+    pdftoolbar=true,
+    bookmarksdepth=3   % Uncomment (and tweak) for PDF bookmarks with more levels than the TOC
+            ]{hyperref}
+%\hyperbaseurl{}   % hyperlinks are relative to this root
+
+\setcounter{tocdepth}{2}  % number chapter, section, subsection
+
+\usepackage[framemethod=TikZ]{mdframed}
+
+% --- begin definitions of admonition environments ---
+
+% Admonition style "graybox1" is an oval colored box
+\definecolor{graybox1_background}{rgb}{1,1,1}
+\newmdenv[
+  backgroundcolor=graybox1_background,
+  skipabove=\topsep,
+  skipbelow=\topsep,
+  outerlinewidth=0,
+  leftmargin=0,
+  rightmargin=0,
+  roundcorner=5,
+  needspace=0pt,
+]{graybox1mdframed}
+
+\newenvironment{graybox1admon}[1][]{
+\begin{graybox1mdframed}[frametitle=#1]
+}
+{
+\end{graybox1mdframed}
+}
+
+% --- end of definitions of admonition environments ---
+
+% prevent orhpans and widows
+\clubpenalty = 10000
+\widowpenalty = 10000
+
+% --- end of standard preamble for documents ---
+
+
+% insert custom LaTeX commands...
+
+\raggedbottom
+\makeindex
+
+%-------------------- end preamble ----------------------
+
+\begin{document}
+
+
+\input{newcommands_keep}
+
+% ------------------- main content ----------------------
+
+% Note on the Springer T2 style: used the modifications in t2do.sty
+% and svmonodo.cls (come bundled with Doconce).
+
+
+\frontmatter
+\setcounter{page}{3}
+\pagestyle{headings}
+
+
+% ----------------- title -------------------------
+
+\thispagestyle{empty}
+\hbox{\ \ }
+\vfill
+\begin{center}
+{\huge{\bfseries{
+\begin{spacing}{1.25}
+{\rule{\linewidth}{0.5mm}} \\[0.4cm]
+{A Test of Doconce a Book with Springer's T2 Style}
+\\[0.4cm] {\rule{\linewidth}{0.5mm}} \\[1.5cm]
+\end{spacing}
+}}}
+
+% ----------------- author(s) -------------------------
+
+\vspace{1.3cm}
+
+{\Large\textsf{Hans Petter Langtangen${}^{1, 2}$}}\\ [3mm]
+
+\ \\ [2mm]
+
+{\large\textsf{${}^1$Center for Biomedical Computing, Simula Research Laboratory} \\ [1.5mm]}
+{\large\textsf{${}^2$Department of Informatics, University of Oslo} \\ [1.5mm]}
+% ----------------- end author(s) -------------------------
+
+\ \\ [10mm]
+{\large\textsf{Jan 32, 2100}}
+
+\end{center}
+\vfill
+\clearpage
+
+\chapter*{Preface}
+\markboth{Preface}{Preface}
+
+The aim of this book is to teach computer programming using examples
+from mathematics and the natural sciences.  We have chosen to use the
+Python programming language because it combines remarkable expressive
+power with very clean, simple, and compact syntax.  Python is easy to
+learn and very well suited for an introduction to computer
+programming. Python is also quite similar to MATLAB and a good
+language for doing mathematical computing.  It is easy to combine
+Python with compiled languages, like Fortran, C, and C++, which are
+widely used languages for scientific computations.  A seamless
+integration of Python with Java is offered by a special version of
+Python called Jython.
+
+The examples in this book integrate programming with applications to
+mathematics, physics, biology, and finance.  The reader is expected to
+have knowledge of basic one-variable calculus as taught in
+mathematics-intensive programs in high schools. It is certainly an
+advantage to take a university calculus course in parallel, preferably
+containing both classical and numerical aspects of calculus.  Although
+not strictly required, a background in high school physics makes many
+of the examples more meaningful.
+
+Many introductory programming books are quite compact and focus on
+listing functionality of a programming language. However, learning to
+program is learning how to \emph{think} as a programmer.  This book
+has its main focus on the thinking process, or equivalently:
+programming as a problem solving technique. That is why most of the
+pages are devoted to case studies in programming, where we define a
+problem and explain how to create the corresponding program.  New
+constructions and programming styles (what we could call theory) is also usually
+introduced via examples.  Special attention is paid to verification of
+programs and to finding errors. These topics are very demanding for
+mathematical software, because the unavoidable numerical
+approximation errors are possibly mixed with programming mistakes.
+
+By studying the many examples in the
+book, I hope readers will learn how to think right and thereby
+write programs in a quicker and more reliable way. Remember, nobody can learn
+programming by just reading - one has to solve a large amount of
+exercises hands on.  The book is therefore full of exercises of
+various types: modifications of existing examples, completely new
+problems, or debugging of given programs.
+
+There is a web page associated with this book, \href{{http://hplgit.github.com/scipro-primer}}{\nolinkurl{http://hplgit.github.com/scipro-primer}}, which lists the software you
+need and explains briefly how to install it.  This page also contains
+all the files associated with the program examples in this book.
+
+\paragraph{Python version 2 or 3?}
+A common problem among Python programmers is to choose between version
+2 or 3, which at the time of this writing means choosing
+between version 2.7 and 3.3.
+The general recommendation is to go for version 3, but programs are
+then not compatible with version 2 and vice versa. There is still
+a problem that much useful mathematical software in Python
+has not yet been ported to version 3. Therefore, scientific computing
+with Python still goes mostly with version 2.
+A widely used strategy for software
+developers who want to write Python code that works with both versions,
+is to develop for v2.7, which is very close to what is accepted
+in version 3, and then
+use the ranslation tool \emph{2to3} to automatically translate the code
+to version 3.
+
+When using v2.7, one should employ the newest syntax
+and modules that make the differences beween version 2 and 3 very small.
+This strategy is adopted in the present book. Only two
+differences between versions 2 and 3 are expected to be significant for
+the programs in the book:
+{\Verb!a/b!} implies float division in version 3 if {\Verb!a!} and {\Verb!b!}
+are integers,
+and {\Verb!print 'Hello'!} in version 2 must be turned into a function call
+{\Verb!print('Hello')!} in version 3. None of these differences should lead
+to any annoying problems when future readers study the book's v2.7
+examples, but program in version 3. Anyway, running 2to3 on the
+example files generates the corresponding version 3 code.
+
+\paragraph{Acknowledgments.}
+Several people have helped to make substantial improvements of the
+text. Here I list only the names with Norwgian characters to
+test the handling of those: Ståle Zerener Haugnæss,
+Tobias Vidarssønn Langhoff, and Håkon Møller.
+
+\vspace{1cm}
+
+\noindent
+\emph{Oslo, April 2012}  \hfill  \emph{Hans Petter Langtangen}
+
+
+
+
+\tableofcontents
+
+
+\vspace{1cm} % after toc
+
+\mymainmatter
+
+
+
+
+
+\chapter{Basic array computing and plotting}
+
+This chapter gives an introduction to arrays: how they are created
+and what they can be used for.  Array computing usually ends up with a
+lot of numbers. It may be very hard to understand what these numbers
+mean by just looking at them. Since the human is a visual animal, a
+good way to understand numbers is to visualize them. In this
+chapter we concentrate on visualizing curves that reflect functions
+of one variable; i.e., curves of the form $y=f(x)$.  A synonym for
+curve is graph, and the image of curves on the screen is often called
+a plot.  We will use arrays to store the information about points
+along the curve. In a nutshell, array computing demands visualization
+and visualization demands arrays.
+
+All program examples in this chapter can be found as files in the
+folder \href{{http://some.where.net/doconce/test/software/plot}}{\nolinkurl{src/plot}\footnote{\texttt{http://some.where.net/doconce/test/software/plot}}}.
+
+\section{Arrays in Python programs}
+
+This section introduces array programming in Python, but first we
+create some lists and show how arrays differ from lists.
+
+\subsection{Using lists for collecting function data}
+\label{sec:plot:listdata}
+
+Suppose we have a function $f(x)$ and want to evaluate this function
+at a number of $x$ points $x_0,x_1,\ldots,x_{n-1}$.  We could collect
+the $n$ pairs $(x_i,f(x_i))$ in a list, or we could collect all the
+$x_i$ values, for $i=0,\ldots,n-1$, in a list and all the associated
+$f(x_i)$ values in another list.  The following interactive session
+demonstrates how to create these three types of lists:
+
+\providecommand{\shadedskip}{}
+\definecolor{shadecolor}{rgb}{0.87843, 0.95686, 1.0}
+\renewenvironment{shadedskip}{
+\def\FrameCommand{\colorbox{shadecolor}}\FrameRule0.6pt
+\MakeFramed {\FrameRestore}\vskip3mm}{\vskip0mm\endMakeFramed}
+\providecommand{\shadedquoteBlue}{}
+\renewenvironment{shadedquoteBlue}[1][]{
+\bgroup\rmfamily
+\fboxsep=0mm\relax
+\begin{shadedskip}
+\list{}{\parsep=-2mm\parskip=0mm\topsep=0pt\leftmargin=2mm
+\rightmargin=2\leftmargin\leftmargin=4pt\relax}
+\item\relax}
+{\endlist\end{shadedskip}\egroup}\begin{shadedquoteBlue}
+\fontsize{9pt}{9pt}
+\begin{Verbatim}
+>>> def f(x):
+...     return x**3       # sample function
+...
+>>> n = 5                 # no of points along the x axis
+>>> dx = 1.0/(n-1)        # spacing between x points in [0,1]
+>>> xlist = [i*dx for i in range(n)]
+>>> ylist = [f(x) for x in xlist]
+>>> pairs = [[x, y] for x, y in zip(xlist, ylist)]
+\end{Verbatim}
+\end{shadedquoteBlue}
+\noindent
+Here we have used list comprehensions for achieving compact code. Make
+sure that you understand what is going on in these list comprehensions
+(if not, try to write the same code using standard {\Verb!for!} loops and
+appending new list elements in each pass of the loops).
+
+\index{heterogeneous lists}
+
+The list elements consist of objects of the same type: any element in
+{\Verb!pairs!} is a list of two {\Verb!float!} objects, while any element in {\Verb!xlist!}
+or {\Verb!ylist!} is a {\Verb!float!}. Lists are more flexible than that, because an
+element can be an object of any type, e.g.,
+
+\providecommand{\shadedskip}{}
+\definecolor{shadecolor}{rgb}{0.87843, 0.95686, 1.0}
+\renewenvironment{shadedskip}{
+\def\FrameCommand{\colorbox{shadecolor}}\FrameRule0.6pt
+\MakeFramed {\FrameRestore}\vskip3mm}{\vskip0mm\endMakeFramed}
+\providecommand{\shadedquoteBlue}{}
+\renewenvironment{shadedquoteBlue}[1][]{
+\bgroup\rmfamily
+\fboxsep=0mm\relax
+\begin{shadedskip}
+\list{}{\parsep=-2mm\parskip=0mm\topsep=0pt\leftmargin=2mm
+\rightmargin=2\leftmargin\leftmargin=4pt\relax}
+\item\relax}
+{\endlist\end{shadedskip}\egroup}\begin{shadedquoteBlue}
+\fontsize{9pt}{9pt}
+\begin{Verbatim}
+mylist = [2, 6.0, 'tmp.ps', [0,1]]
+\end{Verbatim}
+\end{shadedquoteBlue}
+\noindent
+Here {\Verb!mylist!} holds an {\Verb!int!}, a {\Verb!float!}, a string, and a list. This
+combination of diverse object types makes up what is known as
+\emph{heterogeneous} lists.  We can also easily remove elements from a list
+or add new elements anywhere in the list.  This flexibility of lists
+is in general convenient to have as a programmer, but in cases where
+the elements are of the same type and the number of elements is fixed,
+arrays can be used instead. The benefits of arrays are faster
+computations, less memory demands, and extensive support for
+mathematical operations on the data.  Because of greater efficiency
+and mathematical convenience, arrays will be used to a large extent in
+this book.  The great use of arrays is also prominent in other
+programming environments such as MATLAB, Octave, and R, for instance.
+Lists will be our choice instead of arrays when we need the
+flexibility of adding or removing elements or when the elements may be
+of different object types.
+
+
+\begin{quote}
+\emph{People only become computer programmers if they're
+obsessive about details, crave power over machines, and can bear
+to be told day after day exactly how
+stupid they are.} \\
+Gregory J. E. Rawlins \cite{Rawlins_1998}, computer scientist.
+\end{quote}
+
+
+\subsection{Basics of numerical Python arrays}
+\label{sec:plot:array:basics}
+
+\index{Numerical Python} \index{NumPy} \index{numpy@{\rm\texttt{numpy}}}
+\index{array (datatype)} \index{array computing}
+\index{vectorization}
+
+An \emph{array} object can be viewed as a variant of a list, but with the
+following assumptions and features:
+
+\begin{itemize}
+  \item All elements must be of the same type, preferably integer, real, or complex numbers, for efficient numerical computing and storage.
+
+  \item The number of elements must be known when the array is created.
+
+  \item Arrays are not part of standard Python - one needs an additional package called \emph{Numerical Python}, often abbreviated as NumPy. The Python name of the package, to be used in {\Verb!import!} statements, is {\Verb!numpy!}.
+
+  \item With {\Verb!numpy!}, a wide range of mathematical operations can be done directly on complete arrays, thereby removing the need for loops over array elements. This is commonly called \emph{vectorization} %or \emph{array computing} and may cause a dramatic speed-up of Python programs. Vectorization makes use of the vector computing concepts from Section~\ref{sec:plot:arraycomp}.
+
+  \item Arrays with one index are often called vectors. Arrays with two indices are used as an efficient data structure for tables, instead of lists of lists. Arrays can also have three or more indices.
+\end{itemize}
+
+\noindent
+
+\begin{graybox1admon}[Remarks.]
+
+\begin{enumerate}
+\item There is actually an
+   object type called {\Verb!array!} in standard Python, but this data type is
+   not so efficient for mathematical computations, and we will not use it
+   in this book.
+
+\item The number of elements in an array \emph{can} be
+   changed, but at a substantial computational cost.
+\end{enumerate}
+
+\noindent
+\end{graybox1admon}
+
+
+
+The following text lists some important functionality of NumPy arrays.
+A more comprehensive treatment is found in the excellent \emph{NumPy
+Tutorial}, \emph{NumPy User Guide}, \emph{NumPy Reference}, \emph{Guide to NumPy},
+and \emph{NumPy for MATLAB Users}, all accessible at \href{{http://scipy.org}}{scipy.org}\footnote{\texttt{http://scipy.org}}.
+
+
+\index{zeros@{\rm\texttt{zeros}} (from {\rm\texttt{numpy}})} \index{np.zeros@{\rm\texttt{np.zeros}} function}
+\index{array@{\rm\texttt{array}} (from {\rm\texttt{numpy}})} \index{np.array@{\rm\texttt{np.array}} function}
+\index{np@{\rm\texttt{np}} prefix ({\rm\texttt{numpy}})}
+\index{zeros\_like@{\rm\texttt{zeros\_like}} (from {\rm\texttt{numpy}})}\index{np.zeros\_like@{\rm\texttt{np.zeros\_like}} function}
+
+
+
+\begin{graybox1admon}[Remarks on importing NumPy.]
+The statement
+
+\begin{shadedquoteBlue}
+\fontsize{9pt}{9pt}
+\begin{Verbatim}
+import numpy as np
+\end{Verbatim}
+\end{shadedquoteBlue}
+\noindent
+with subsequent prefixing of all NumPy functions and variables by {\Verb!np.!},
+has evolved as a standard syntax in the Python scientific computing
+community. However, to make Python programs look closer to MATLAB
+and ease the transition to and from that language, one can do
+
+\begin{shadedquoteBlue}
+\fontsize{9pt}{9pt}
+\begin{Verbatim}
+from numpy import *
+\end{Verbatim}
+\end{shadedquoteBlue}
+\noindent
+to get rid of the prefix (this is evolved as the standard in
+\emph{interactive} Python shells). This author prefers mathematical
+functions from {\Verb!numpy!} to be written without the prefix to
+make the formulas as close as possible to the mathematics.
+So, $f(x)=\sinh(x-1)\sin(w t)$ would be coded as
+
+\begin{shadedquoteBlue}
+\fontsize{9pt}{9pt}
+\begin{Verbatim}
+from numpy import sinh, sin
+
+def f(x):
+    return sinh(x-1)*sin(w*t)
+\end{Verbatim}
+\end{shadedquoteBlue}
+\noindent
+or one may take the less recommended
+lazy approach {\Verb!from numpy import *!} and fill up
+the program with \emph{a lot} of functions and variables from {\Verb!numpy!}.
+\end{graybox1admon}
+
+
+
+To convert a list {\Verb!r!} to an array,
+we use the {\Verb!array!} function
+from {\Verb!numpy!}:
+
+\begin{shadedquoteBlue}
+\fontsize{9pt}{9pt}
+\begin{Verbatim}
+a = np.array(r)
+\end{Verbatim}
+\end{shadedquoteBlue}
+\noindent
+To create a new array of length {\Verb!n!}, filled with zeros, we write
+
+\begin{shadedquoteBlue}
+\fontsize{9pt}{9pt}
+\begin{Verbatim}
+a = np.zeros(n)
+\end{Verbatim}
+\end{shadedquoteBlue}
+\noindent
+The array elements are of a type that corresponds to Python's
+{\Verb!float!} type. A second argument to {\Verb!np.zeros!} can be used to
+specify other element types, e.g., {\Verb!int!}.
+A similar function,
+
+\begin{shadedquoteBlue}
+\fontsize{9pt}{9pt}
+\begin{Verbatim}
+a = np.zeros_like(c)
+\end{Verbatim}
+\end{shadedquoteBlue}
+\noindent
+generates an array of zeros where the length is that of the array {\Verb!c!}
+and the element type is the same as those in {\Verb!c!}.  Arrays with more
+than one index are treated in Section~\ref{sec:plot:2Darrays}.
+
+\index{linspace@{\rm\texttt{linspace}} (from {\rm\texttt{numpy}})}\index{np.linspace@{\rm\texttt{np.linspace}} function}
+
+Often one wants an array to have $n$ elements with uniformly
+distributed values in an interval $[p,q]$. The {\Verb!numpy!} function
+{\Verb!linspace!} creates such arrays:
+
+\begin{shadedquoteBlue}
+\fontsize{9pt}{9pt}
+\begin{Verbatim}
+a = np.linspace(p, q, n)
+\end{Verbatim}
+\end{shadedquoteBlue}
+\noindent
+
+
+\chapter{Storing results in data files}
+
+\section{Writing data to file}
+\label{sec:files:writing}
+
+Writing data to file is easy.
+There is basically one function to pay attention to: {\Verb!outfile.write(s)!},
+which writes a string {\Verb!s!} to
+a file handled by the file object {\Verb!outfile!}. Unlike {\Verb!print!},
+{\Verb!outfile.write(s)!}
+does not append a newline character to the written string.
+It will therefore
+often be necessary to add a newline character,
+
+\begin{shadedquoteBlue}
+\fontsize{9pt}{9pt}
+\begin{Verbatim}
+outfile.write(s + '\n')
+\end{Verbatim}
+\end{shadedquoteBlue}
+\noindent
+if the string {\Verb!s!} is meant to appear on a single line in the file
+and {\Verb!s!} does not already contain a trailing newline character.
+File writing is then a matter of constructing strings containing the
+text we want to have in the file and for each such string call
+{\Verb!outfile.write!}.
+
+Writing to a file demands
+the file object {\Verb!f!}
+to be opened for writing:
+
+\begin{shadedquoteBlue}
+\fontsize{9pt}{9pt}
+\begin{Verbatim}
+# write to new file, or overwrite file:
+outfile = open(filename, 'w')
+
+# append to the end of an existing file:
+outfile = open(filename, 'a')
+\end{Verbatim}
+\end{shadedquoteBlue}
+\noindent
+
+\subsection{Example: Writing a table to file}
+
+\paragraph{Problem.}
+As a worked example of file writing,
+we shall write out a nested list with tabular data to file.
+A sample list may take look as
+
+\begin{Verbatim}[fontsize=\fontsize{9pt}{9pt},tabsize=8,baselinestretch=0.85,fontfamily=tt,xleftmargin=7mm]
+[[ 0.75,        0.29619813, -0.29619813, -0.75      ],
+ [ 0.29619813,  0.11697778, -0.11697778, -0.29619813],
+ [-0.29619813, -0.11697778,  0.11697778,  0.29619813],
+ [-0.75,       -0.29619813,  0.29619813,  0.75      ]]
+\end{Verbatim}
+\noindent
+
+\paragraph{Solution.}
+We iterate through the rows (first index) in the list, and for each row,
+we iterate through the column values (second index)
+and write each value to the file.
+At the end of each row, we must insert a newline character in the file to get
+a linebreak. The code resides in the file \href{{http://some.where.net/doconce/test/software/input/write1.py}}{\nolinkurl{write1.py}\footnote{\texttt{http://some.where.net/doconce/test/software/input/write1.py}}}.
+
+The resulting data file becomes
+
+\begin{Verbatim}[fontsize=\fontsize{9pt}{9pt},tabsize=8,baselinestretch=0.85,fontfamily=tt,xleftmargin=7mm]
+    0.75000000    0.29619813   -0.29619813   -0.75000000
+    0.29619813    0.11697778   -0.11697778   -0.29619813
+   -0.29619813   -0.11697778    0.11697778    0.29619813
+   -0.75000000   -0.29619813    0.29619813    0.75000000
+\end{Verbatim}
+\noindent
+
+An extension of this program consists in adding column and row headings:
+
+\begin{Verbatim}[fontsize=\fontsize{9pt}{9pt},tabsize=8,baselinestretch=0.85,fontfamily=tt,xleftmargin=7mm]
+           column  1     column  2     column  3     column  4
+row  1    0.75000000    0.29619813   -0.29619813   -0.75000000
+row  2    0.29619813    0.11697778   -0.11697778   -0.29619813
+row  3   -0.29619813   -0.11697778    0.11697778    0.29619813
+row  4   -0.75000000   -0.29619813    0.29619813    0.75000000
+\end{Verbatim}
+\noindent
+To obtain this end result, we need to the add some statements to
+the program {\Verb!write1.py!}. For the column headings we need
+to know the number of columns, i.e., the length of the rows,
+and loop from 1 to this length:
+
+\begin{shadedquoteBlue}
+\fontsize{9pt}{9pt}
+\begin{Verbatim}
+ncolumns = len(data[0])
+outfile.write('          ')
+for i in range(1, ncolumns+1):
+    outfile.write('%10s    ' % ('column %2d' % i))
+outfile.write('\n')
+\end{Verbatim}
+\end{shadedquoteBlue}
+\noindent
+Note the use of a nested printf construction: The text we want to
+insert is itself a printf string. We could also have written the
+text as {\Verb!'column  ' + str(i)!}, but then the length of the
+resulting string would depend on the number of digits in {\Verb!i!}.
+It is recommended to always use printf constructions for
+a tabular output format, because this gives automatic padding of
+blanks so that the width of the output strings remain the same.
+As always, the tuning of the widths is done in a trial-and-error
+process.
+
+To add the row headings, we need a counter over the row numbers:
+
+\begin{shadedquoteBlue}
+\fontsize{9pt}{9pt}
+\begin{Verbatim}
+row_counter = 1
+for row in data:
+    outfile.write('row %2d' % row_counter)
+    for column in row:
+        outfile.write('%14.8f' % column)
+    outfile.write('\n')
+    row_counter += 1
+\end{Verbatim}
+\end{shadedquoteBlue}
+\noindent
+The complete code is found in the file \href{{http://some.where.net/doconce/test/software/input/write2.py}}{\nolinkurl{write2.py}\footnote{\texttt{http://some.where.net/doconce/test/software/input/write2.py}}}.
+We could, alternatively, iterate over the indices in the list:
+
+\begin{shadedquoteBlue}
+\fontsize{9pt}{9pt}
+\begin{Verbatim}
+for i in range(len(data)):
+    outfile.write('row %2d' % (i+1))
+    for j in range(len(data[i])):
+        outfile.write('%14.8f' % data[i][j])
+    outfile.write('\n')
+\end{Verbatim}
+\end{shadedquoteBlue}
+\noindent
+
+
+
+
+\subsection{Standard input and output as file objects}
+
+\index{standard input} \index{standard output}
+
+\index{sys.stdin@{\rm\texttt{sys.stdin}}}\index{sys.stdout@{\rm\texttt{sys.stdout}}}
+
+Reading user input from the keyboard applies the function
+{\Verb!raw_input!} as explained in Section~\ref{sec:input:rawinput}.
+The keyboard is a medium that the computer in fact
+treats as a file, referred to
+as \emph{standard input}.
+
+The {\Verb!print!} command prints text in the terminal window. This medium
+is also viewed as a file from the computer's point of view and called
+\emph{standard output}. All general-purpose programming languages
+allow reading from standard input and
+writing to standard output. This reading and writing can be done with
+two types of tools, either file-like objects or special tools like
+{\Verb!raw_input!}
+and {\Verb!print!} in Python.
+We will here describe the file-line objects:
+{\Verb!sys.stdin!} for standard input
+and {\Verb!sys.stdout!} for standard output. These objects
+behave as file objects, except that they do not need to be opened or
+closed. The statement
+
+\begin{shadedquoteBlue}
+\fontsize{9pt}{9pt}
+\begin{Verbatim}
+s = raw_input('Give s:')
+\end{Verbatim}
+\end{shadedquoteBlue}
+\noindent
+is equivalent to
+
+\begin{shadedquoteBlue}
+\fontsize{9pt}{9pt}
+\begin{Verbatim}
+print 'Give s: ',
+s = sys.stdin.readline()
+\end{Verbatim}
+\end{shadedquoteBlue}
+\noindent
+Recall that the trailing comma in the {\Verb!print!} statement avoids the
+newline that {\Verb!print!} by default adds to the output string.
+Similarly,
+
+\begin{shadedquoteBlue}
+\fontsize{9pt}{9pt}
+\begin{Verbatim}
+s = eval(raw_input('Give s:'))
+\end{Verbatim}
+\end{shadedquoteBlue}
+\noindent
+is equivalent to
+
+\begin{shadedquoteBlue}
+\fontsize{9pt}{9pt}
+\begin{Verbatim}
+print 'Give s: ',
+s = eval(sys.stdin.readline())
+\end{Verbatim}
+\end{shadedquoteBlue}
+\noindent
+For output to the terminal window, the statement
+
+\begin{shadedquoteBlue}
+\fontsize{9pt}{9pt}
+\begin{Verbatim}
+print s
+\end{Verbatim}
+\end{shadedquoteBlue}
+\noindent
+is equivalent to
+
+\begin{shadedquoteBlue}
+\fontsize{9pt}{9pt}
+\begin{Verbatim}
+sys.stdout.write(s + '\n')
+\end{Verbatim}
+\end{shadedquoteBlue}
+\noindent
+
+Why it is handy to have access to standard input and output
+as file objects can be illustrated by an example. Suppose you have a
+function that reads data from a file object {\Verb!infile!}
+and writes data to a file object {\Verb!outfile!}.
+A sample function may take the form
+
+\begin{shadedquoteBlue}
+\fontsize{9pt}{9pt}
+\begin{Verbatim}
+def x2f(infile, outfile, f):
+    for line in infile:
+        x = float(line)
+        y = f(x)
+        outfile.write('%g\n' % y)
+\end{Verbatim}
+\end{shadedquoteBlue}
+\noindent
+This function works with all types of files, including
+web pages as {\Verb!infile!} (see Section~\ref{sec:files:webtxt}).
+With {\Verb!sys.stdin!} as {\Verb!infile!} and/or {\Verb!sys.stdout!}
+as {\Verb!outfile!}, the {\Verb!x2f!} function also works with standard input
+and/or standard output. Without {\Verb!sys.stdin!} and {\Verb!sys.stdout!},
+we would need different code, employing {\Verb!raw_input!}
+and {\Verb!print!},
+to deal with standard input and output. Now we can write a single
+function that deals with all file media in a unified way.
+
+\index{standard error}
+\index{sys.stderr@{\rm\texttt{sys.stderr}}}
+
+There is also something called \emph{standard error}.
+Usually this is the terminal window, just as standard output, but
+programs can distinguish between writing ordinary output to standard
+output and error messages to standard error, and these output media
+can be redirected to, e.g., files such that one can separate
+error messages from ordinary output.
+In Python, standard error is the file-like object {\Verb!sys.stderr!}.
+A typical application of {\Verb!sys.stderr!} is to report errors:
+
+\begin{shadedquoteBlue}
+\fontsize{9pt}{9pt}
+\begin{Verbatim}
+if x < 0:
+    sys.stderr.write('Illegal value of x'); sys.exit(1)
+\end{Verbatim}
+\end{shadedquoteBlue}
+\noindent
+This message to {\Verb!sys.stderr!} is an alternative to
+{\Verb!print!} or raising an exception.
+
+\paragraph{Redirecting standard input, output, and error.}
+Standard output from a program {\Verb!prog!}
+can be redirected to a file
+{\Verb!output!} instead of the screen, by
+using the greater than sign:
+
+\vspace{4pt}
+\begin{Verbatim}[numbers=none,frame=lines,label=\fbox{{\tiny Terminal}},fontsize=\fontsize{9pt}{9pt},labelposition=topline,framesep=2.5mm,framerule=0.7pt]
+Terminal> prog > output
+\end{Verbatim}
+Here, {\Verb!prog!} can be any
+program, including a Python program run as {\Verb!python myprog.py!}.
+Similarly, output to the medium called \emph{standard error}
+can be redirected by
+
+\vspace{4pt}
+\begin{Verbatim}[numbers=none,frame=lines,label=\fbox{{\tiny Terminal}},fontsize=\fontsize{9pt}{9pt},labelposition=topline,framesep=2.5mm,framerule=0.7pt]
+Terminal> prog &> output
+\end{Verbatim}
+For example, error messages are normally written to standard error, which
+is exemplified in this little terminal session on a Unix machine:
+
+\vspace{4pt}
+\begin{Verbatim}[numbers=none,frame=lines,label=\fbox{{\tiny Terminal}},fontsize=\fontsize{9pt}{9pt},labelposition=topline,framesep=2.5mm,framerule=0.7pt]
+Terminal> ls bla-bla1 bla-bla2
+ls: cannot access bla-bla1: No such file or directory
+ls: cannot access bla-bla2: No such file or directory
+Terminal> ls bla-bla1 bla-bla2 &> errors
+Terminal> cat errors  # print the file errors
+ls: cannot access bla-bla1: No such file or directory
+ls: cannot access bla-bla2: No such file or directory
+\end{Verbatim}
+When the program reads from standard input (the keyboard),
+we can equally well redirect
+standard input to a file, say with name {\Verb!raw_input!}, such that
+the program reads from this file rather than from the keyboard:
+
+\vspace{4pt}
+\begin{Verbatim}[numbers=none,frame=lines,label=\fbox{{\tiny Terminal}},fontsize=\fontsize{9pt}{9pt},labelposition=topline,framesep=2.5mm,framerule=0.7pt]
+Terminal> prog < input
+\end{Verbatim}
+Combinations are also possible:
+
+\vspace{4pt}
+\begin{Verbatim}[numbers=none,frame=lines,label=\fbox{{\tiny Terminal}},fontsize=\fontsize{9pt}{9pt},labelposition=topline,framesep=2.5mm,framerule=0.7pt]
+Terminal> prog < input > output
+\end{Verbatim}
+
+\paragraph{Note.}
+The redirection of standard output, input, and error
+does not work for Python programs executed with the {\Verb!run!}
+command inside IPython, only when executed directly
+in the operating system in a terminal window, or with the same
+command prefixed with an exclamation mark in IPython.
+
+\paragraph{References.}
+To check the bibliography, we need to make citations to a book{TCSE3},
+Matplotlib \cite{Matplotlib:paper}, and more books \cite{Mertz,PythonQt}
+as well as Python itself \cite{Python}, and of course NumPy
+\cite{NumPy}.
+
+
+
+
+\appendix
+
+\chapter{Styles for Springer T2}
+
+The T2 style for Doconce-generated {\LaTeX} should make use of
+slightly modified {\Verb!svmono.cls!} and {\Verb!t2.sty!} files:
+
+\begin{itemize}
+ \item {\Verb!svmonodo.cls!}
+
+ \item {\Verb!t2do.sty!}
+\end{itemize}
+
+\noindent
+\clearemptydoublepage
+\markboth{Bibliography}{Bibliography}
+\thispagestyle{empty}
+
+\bibliographystyle{plain}
+\bibliography{papers}
+
+
+
+% ------------------- end of main content ---------------
+
+
+\clearemptydoublepage
+\markboth{Index}{Index}
+\thispagestyle{empty}
+\printindex
+
+\end{document}
+
 ************** File: tmp_Doconce.do.txt *****************
 
 TITLE: My Test of Class Doconce
@@ -66686,10 +68321,10 @@ provides a lot of shortcuts for setting up many elements in a document:
 |  Ctrl+c h2     | heading level 2 (subsection/h2)       |
 |  Ctrl+c h3     | heading level 2 (subsection/h3)       |
 |  Ctrl+c hp     | heading for paragraph                 |
-|  Ctrl+c me     | math environment: !bt equation !et    |
-|  Ctrl+c ma     | math environment: !bt align !et       |
-|  Ctrl+c ce     | code environment: !bc !ec             |
-|  Ctrl+c cf     | code from file: @@@CODE               |
+|  Ctrl+c me     | math environment: `!bt` equation `!et`|
+|  Ctrl+c ma     | math environment: `!bt` align `!et`   |
+|  Ctrl+c ce     | code environment: `!bc` code `!ec`    |
+|  Ctrl+c cf     | code from file: `@@@CODE`             |
 |  Ctrl+c table2 | table with 2 columns                  |
 |  Ctrl+c table3 | table with 3 columns                  |
 |  Ctrl+c table4 | table with 4 columns                  |
@@ -67368,7 +69003,7 @@ Here goes the solution of this subexercise.
 
 |bremarks
 At the very end of the exercise it may be appropriate to summarize
-and give some perspectives. The text inside the !bremarks-!eremarks
+and give some perspectives. The text inside the `!bremarks` and `!eremarks`
 directives is always typeset at the end of the exercise.
 |eremarks
 
@@ -67677,23 +69312,23 @@ provides a lot of shortcuts for setting up many elements in a document:
 
 <p>
 <table border="1">
-<tr><td align="center"><b>             Emacs key              </b></td> <td align="center"><b>               Action               </b></td> </tr>
-<tr><td align="left">   Ctrl+c f                              </td> <td align="left">   figure                                </td> </tr>
-<tr><td align="left">   Ctrl+c v                              </td> <td align="left">   movie/video                           </td> </tr>
-<tr><td align="left">   Ctrl+c h1                             </td> <td align="left">   heading level 1 (section/h1)          </td> </tr>
-<tr><td align="left">   Ctrl+c h2                             </td> <td align="left">   heading level 2 (subsection/h2)       </td> </tr>
-<tr><td align="left">   Ctrl+c h3                             </td> <td align="left">   heading level 2 (subsection/h3)       </td> </tr>
-<tr><td align="left">   Ctrl+c hp                             </td> <td align="left">   heading for paragraph                 </td> </tr>
-<tr><td align="left">   Ctrl+c me                             </td> <td align="left">   math environment: !bt equation !et    </td> </tr>
-<tr><td align="left">   Ctrl+c ma                             </td> <td align="left">   math environment: !bt align !et       </td> </tr>
-<tr><td align="left">   Ctrl+c ce                             </td> <td align="left">   code environment: !bc !ec             </td> </tr>
-<tr><td align="left">   Ctrl+c cf                             </td> <td align="left">   code from file: @@@CODE               </td> </tr>
-<tr><td align="left">   Ctrl+c table2                         </td> <td align="left">   table with 2 columns                  </td> </tr>
-<tr><td align="left">   Ctrl+c table3                         </td> <td align="left">   table with 3 columns                  </td> </tr>
-<tr><td align="left">   Ctrl+c table4                         </td> <td align="left">   table with 4 columns                  </td> </tr>
-<tr><td align="left">   Ctrl+c exer                           </td> <td align="left">   exercise outline                      </td> </tr>
-<tr><td align="left">   Ctrl+c slide                          </td> <td align="left">   slide outline                         </td> </tr>
-<tr><td align="left">   Ctrl+c help                           </td> <td align="left">   print this table                      </td> </tr>
+<tr><td align="center"><b>                          Emacs key                           </b></td> <td align="center"><b>                            Action                            </b></td> </tr>
+<tr><td align="left">   Ctrl+c f                                                        </td> <td align="left">   figure                                                          </td> </tr>
+<tr><td align="left">   Ctrl+c v                                                        </td> <td align="left">   movie/video                                                     </td> </tr>
+<tr><td align="left">   Ctrl+c h1                                                       </td> <td align="left">   heading level 1 (section/h1)                                    </td> </tr>
+<tr><td align="left">   Ctrl+c h2                                                       </td> <td align="left">   heading level 2 (subsection/h2)                                 </td> </tr>
+<tr><td align="left">   Ctrl+c h3                                                       </td> <td align="left">   heading level 2 (subsection/h3)                                 </td> </tr>
+<tr><td align="left">   Ctrl+c hp                                                       </td> <td align="left">   heading for paragraph                                           </td> </tr>
+<tr><td align="left">   Ctrl+c me                                                       </td> <td align="left">   math environment: <code>!bt</code> equation <code>!et</code>    </td> </tr>
+<tr><td align="left">   Ctrl+c ma                                                       </td> <td align="left">   math environment: <code>!bt</code> align <code>!et</code>       </td> </tr>
+<tr><td align="left">   Ctrl+c ce                                                       </td> <td align="left">   code environment: <code>!bc</code> code <code>!ec</code>        </td> </tr>
+<tr><td align="left">   Ctrl+c cf                                                       </td> <td align="left">   code from file: <code>@@@CODE</code>                            </td> </tr>
+<tr><td align="left">   Ctrl+c table2                                                   </td> <td align="left">   table with 2 columns                                            </td> </tr>
+<tr><td align="left">   Ctrl+c table3                                                   </td> <td align="left">   table with 3 columns                                            </td> </tr>
+<tr><td align="left">   Ctrl+c table4                                                   </td> <td align="left">   table with 4 columns                                            </td> </tr>
+<tr><td align="left">   Ctrl+c exer                                                     </td> <td align="left">   exercise outline                                                </td> </tr>
+<tr><td align="left">   Ctrl+c slide                                                    </td> <td align="left">   slide outline                                                   </td> </tr>
+<tr><td align="left">   Ctrl+c help                                                     </td> <td align="left">   print this table                                                </td> </tr>
 </table>
 
 <h3>Title, Authors, and Date  <a name="___sec2"></a></h3>
@@ -68642,7 +70277,7 @@ Here goes the solution of this subexercise.
 
 !bremarks
 At the very end of the exercise it may be appropriate to summarize
-and give some perspectives. The text inside the !bremarks-!eremarks
+and give some perspectives. The text inside the `!bremarks` and `!eremarks`
 directives is always typeset at the end of the exercise.
 !eremarks
 
@@ -69045,22 +70680,22 @@ provides a lot of shortcuts for setting up many elements in a document:
 \hline
 \multicolumn{1}{c}{ Emacs key } & \multicolumn{1}{c}{ Action } \\
 \hline
-Ctrl+c f                           & figure                             \\
-Ctrl+c v                           & movie/video                        \\
-Ctrl+c h1                          & heading level 1 (section/h1)       \\
-Ctrl+c h2                          & heading level 2 (subsection/h2)    \\
-Ctrl+c h3                          & heading level 2 (subsection/h3)    \\
-Ctrl+c hp                          & heading for paragraph              \\
-Ctrl+c me                          & math environment: !bt equation !et \\
-Ctrl+c ma                          & math environment: !bt align !et    \\
-Ctrl+c ce                          & code environment: !bc !ec          \\
-Ctrl+c cf                          & code from file: @@@CODE            \\
-Ctrl+c table2                      & table with 2 columns               \\
-Ctrl+c table3                      & table with 3 columns               \\
-Ctrl+c table4                      & table with 4 columns               \\
-Ctrl+c exer                        & exercise outline                   \\
-Ctrl+c slide                       & slide outline                      \\
-Ctrl+c help                        & print this table                   \\
+Ctrl+c f                                         & figure                                           \\
+Ctrl+c v                                         & movie/video                                      \\
+Ctrl+c h1                                        & heading level 1 (section/h1)                     \\
+Ctrl+c h2                                        & heading level 2 (subsection/h2)                  \\
+Ctrl+c h3                                        & heading level 2 (subsection/h3)                  \\
+Ctrl+c hp                                        & heading for paragraph                            \\
+Ctrl+c me                                        & math environment: \code{!bt} equation \code{!et} \\
+Ctrl+c ma                                        & math environment: \code{!bt} align \code{!et}    \\
+Ctrl+c ce                                        & code environment: \code{!bc} code \code{!ec}     \\
+Ctrl+c cf                                        & code from file: \code{@@@CODE}                   \\
+Ctrl+c table2                                    & table with 2 columns                             \\
+Ctrl+c table3                                    & table with 3 columns                             \\
+Ctrl+c table4                                    & table with 4 columns                             \\
+Ctrl+c exer                                      & exercise outline                                 \\
+Ctrl+c slide                                     & slide outline                                    \\
+Ctrl+c help                                      & print this table                                 \\
 \hline
 \end{tabular}\end{quote}
 
@@ -69955,7 +71590,7 @@ Here goes the solution of this subexercise.
 
 !bremarks
 At the very end of the exercise it may be appropriate to summarize
-and give some perspectives. The text inside the !bremarks-!eremarks
+and give some perspectives. The text inside the `!bremarks` and `!eremarks`
 directives is always typeset at the end of the exercise.
 !eremarks
 
@@ -70138,26 +71773,26 @@ Emacs. Store the raw version of the file in the home directory and add
 Besides syntax highlighting of Doconce documents, this Emacs mode
 provides a lot of shortcuts for setting up many elements in a document:
 
-==================================  ==================================  
-            Emacs key                             Action                
-==================================  ==================================  
-Ctrl+c f                            figure                              
-Ctrl+c v                            movie/video                         
-Ctrl+c h1                           heading level 1 (section/h1)        
-Ctrl+c h2                           heading level 2 (subsection/h2)     
-Ctrl+c h3                           heading level 2 (subsection/h3)     
-Ctrl+c hp                           heading for paragraph               
-Ctrl+c me                           math environment: !bt equation !et  
-Ctrl+c ma                           math environment: !bt align !et     
-Ctrl+c ce                           code environment: !bc !ec           
-Ctrl+c cf                           code from file: @@@CODE             
-Ctrl+c table2                       table with 2 columns                
-Ctrl+c table3                       table with 3 columns                
-Ctrl+c table4                       table with 4 columns                
-Ctrl+c exer                         exercise outline                    
-Ctrl+c slide                        slide outline                       
-Ctrl+c help                         print this table                    
-==================================  ==================================  
+==========================================  ==========================================  
+                Emacs key                                     Action                    
+==========================================  ==========================================  
+Ctrl+c f                                    figure                                      
+Ctrl+c v                                    movie/video                                 
+Ctrl+c h1                                   heading level 1 (section/h1)                
+Ctrl+c h2                                   heading level 2 (subsection/h2)             
+Ctrl+c h3                                   heading level 2 (subsection/h3)             
+Ctrl+c hp                                   heading for paragraph                       
+Ctrl+c me                                   math environment: ``!bt`` equation ``!et``  
+Ctrl+c ma                                   math environment: ``!bt`` align ``!et``     
+Ctrl+c ce                                   code environment: ``!bc`` code ``!ec``      
+Ctrl+c cf                                   code from file: ``@@@CODE``                 
+Ctrl+c table2                               table with 2 columns                        
+Ctrl+c table3                               table with 3 columns                        
+Ctrl+c table4                               table with 4 columns                        
+Ctrl+c exer                                 exercise outline                            
+Ctrl+c slide                                slide outline                               
+Ctrl+c help                                 print this table                            
+==========================================  ==========================================  
 
 Title, Authors, and Date
 ------------------------
@@ -71056,7 +72691,7 @@ setup-up::
         
         !bremarks
         At the very end of the exercise it may be appropriate to summarize
-        and give some perspectives. The text inside the !bremarks-!eremarks
+        and give some perspectives. The text inside the `!bremarks` and `!eremarks`
         directives is always typeset at the end of the exercise.
         !eremarks
         
@@ -71220,26 +72855,26 @@ Emacs. Store the raw version of the file in the home directory and add
 Besides syntax highlighting of Doconce documents, this Emacs mode
 provides a lot of shortcuts for setting up many elements in a document:
 
-==================================  ==================================  
-            Emacs key                             Action                
-==================================  ==================================  
-Ctrl+c f                            figure                              
-Ctrl+c v                            movie/video                         
-Ctrl+c h1                           heading level 1 (section/h1)        
-Ctrl+c h2                           heading level 2 (subsection/h2)     
-Ctrl+c h3                           heading level 2 (subsection/h3)     
-Ctrl+c hp                           heading for paragraph               
-Ctrl+c me                           math environment: !bt equation !et  
-Ctrl+c ma                           math environment: !bt align !et     
-Ctrl+c ce                           code environment: !bc !ec           
-Ctrl+c cf                           code from file: @@@CODE             
-Ctrl+c table2                       table with 2 columns                
-Ctrl+c table3                       table with 3 columns                
-Ctrl+c table4                       table with 4 columns                
-Ctrl+c exer                         exercise outline                    
-Ctrl+c slide                        slide outline                       
-Ctrl+c help                         print this table                    
-==================================  ==================================  
+==========================================  ==========================================  
+                Emacs key                                     Action                    
+==========================================  ==========================================  
+Ctrl+c f                                    figure                                      
+Ctrl+c v                                    movie/video                                 
+Ctrl+c h1                                   heading level 1 (section/h1)                
+Ctrl+c h2                                   heading level 2 (subsection/h2)             
+Ctrl+c h3                                   heading level 2 (subsection/h3)             
+Ctrl+c hp                                   heading for paragraph                       
+Ctrl+c me                                   math environment: ``!bt`` equation ``!et``  
+Ctrl+c ma                                   math environment: ``!bt`` align ``!et``     
+Ctrl+c ce                                   code environment: ``!bc`` code ``!ec``      
+Ctrl+c cf                                   code from file: ``@@@CODE``                 
+Ctrl+c table2                               table with 2 columns                        
+Ctrl+c table3                               table with 3 columns                        
+Ctrl+c table4                               table with 4 columns                        
+Ctrl+c exer                                 exercise outline                            
+Ctrl+c slide                                slide outline                               
+Ctrl+c help                                 print this table                            
+==========================================  ==========================================  
 
 Title, Authors, and Date
 ------------------------
@@ -72203,7 +73838,7 @@ setup-up:
         
         !bremarks
         At the very end of the exercise it may be appropriate to summarize
-        and give some perspectives. The text inside the !bremarks-!eremarks
+        and give some perspectives. The text inside the `!bremarks` and `!eremarks`
         directives is always typeset at the end of the exercise.
         !eremarks
         
@@ -72358,23 +73993,23 @@ Besides syntax highlighting of Doconce documents, this Emacs mode
 provides a lot of shortcuts for setting up many elements in a document:
 
 
- ||              _Emacs key_                ||                _Action_                 ||
- ||  Ctrl+c f                               ||  figure                                 ||
- ||  Ctrl+c v                               ||  movie/video                            ||
- ||  Ctrl+c h1                              ||  heading level 1 (section/h1)           ||
- ||  Ctrl+c h2                              ||  heading level 2 (subsection/h2)        ||
- ||  Ctrl+c h3                              ||  heading level 2 (subsection/h3)        ||
- ||  Ctrl+c hp                              ||  heading for paragraph                  ||
- ||  Ctrl+c me                              ||  math environment: !bt equation !et     ||
- ||  Ctrl+c ma                              ||  math environment: !bt align !et        ||
- ||  Ctrl+c ce                              ||  code environment: !bc !ec              ||
- ||  Ctrl+c cf                              ||  code from file: @@@CODE                ||
- ||  Ctrl+c table2                          ||  table with 2 columns                   ||
- ||  Ctrl+c table3                          ||  table with 3 columns                   ||
- ||  Ctrl+c table4                          ||  table with 4 columns                   ||
- ||  Ctrl+c exer                            ||  exercise outline                       ||
- ||  Ctrl+c slide                           ||  slide outline                          ||
- ||  Ctrl+c help                            ||  print this table                       ||
+ ||                _Emacs key_                  ||                  _Action_                   ||
+ ||  Ctrl+c f                                   ||  figure                                     ||
+ ||  Ctrl+c v                                   ||  movie/video                                ||
+ ||  Ctrl+c h1                                  ||  heading level 1 (section/h1)               ||
+ ||  Ctrl+c h2                                  ||  heading level 2 (subsection/h2)            ||
+ ||  Ctrl+c h3                                  ||  heading level 2 (subsection/h3)            ||
+ ||  Ctrl+c hp                                  ||  heading for paragraph                      ||
+ ||  Ctrl+c me                                  ||  math environment: `!bt` equation `!et`     ||
+ ||  Ctrl+c ma                                  ||  math environment: `!bt` align `!et`        ||
+ ||  Ctrl+c ce                                  ||  code environment: `!bc` code `!ec`         ||
+ ||  Ctrl+c cf                                  ||  code from file: `@@@CODE`                  ||
+ ||  Ctrl+c table2                              ||  table with 2 columns                       ||
+ ||  Ctrl+c table3                              ||  table with 3 columns                       ||
+ ||  Ctrl+c table4                              ||  table with 4 columns                       ||
+ ||  Ctrl+c exer                                ||  exercise outline                           ||
+ ||  Ctrl+c slide                               ||  slide outline                              ||
+ ||  Ctrl+c help                                ||  print this table                           ||
 
 
 ==== Title, Authors, and Date ====
@@ -73183,7 +74818,7 @@ Here goes the solution of this subexercise.
 
 !bremarks
 At the very end of the exercise it may be appropriate to summarize
-and give some perspectives. The text inside the !bremarks-!eremarks
+and give some perspectives. The text inside the `!bremarks` and `!eremarks`
 directives is always typeset at the end of the exercise.
 !eremarks
 
@@ -73328,23 +74963,23 @@ Besides syntax highlighting of Doconce documents, this Emacs mode
 provides a lot of shortcuts for setting up many elements in a document:
 
 <table border="1">
-<tr><td align="center"><b>             Emacs key              </b></td> <td align="center"><b>               Action               </b></td> </tr>
-<tr><td align="left">   Ctrl+c f                              </td> <td align="left">   figure                                </td> </tr>
-<tr><td align="left">   Ctrl+c v                              </td> <td align="left">   movie/video                           </td> </tr>
-<tr><td align="left">   Ctrl+c h1                             </td> <td align="left">   heading level 1 (section/h1)          </td> </tr>
-<tr><td align="left">   Ctrl+c h2                             </td> <td align="left">   heading level 2 (subsection/h2)       </td> </tr>
-<tr><td align="left">   Ctrl+c h3                             </td> <td align="left">   heading level 2 (subsection/h3)       </td> </tr>
-<tr><td align="left">   Ctrl+c hp                             </td> <td align="left">   heading for paragraph                 </td> </tr>
-<tr><td align="left">   Ctrl+c me                             </td> <td align="left">   math environment: !bt equation !et    </td> </tr>
-<tr><td align="left">   Ctrl+c ma                             </td> <td align="left">   math environment: !bt align !et       </td> </tr>
-<tr><td align="left">   Ctrl+c ce                             </td> <td align="left">   code environment: !bc !ec             </td> </tr>
-<tr><td align="left">   Ctrl+c cf                             </td> <td align="left">   code from file: @@@CODE               </td> </tr>
-<tr><td align="left">   Ctrl+c table2                         </td> <td align="left">   table with 2 columns                  </td> </tr>
-<tr><td align="left">   Ctrl+c table3                         </td> <td align="left">   table with 3 columns                  </td> </tr>
-<tr><td align="left">   Ctrl+c table4                         </td> <td align="left">   table with 4 columns                  </td> </tr>
-<tr><td align="left">   Ctrl+c exer                           </td> <td align="left">   exercise outline                      </td> </tr>
-<tr><td align="left">   Ctrl+c slide                          </td> <td align="left">   slide outline                         </td> </tr>
-<tr><td align="left">   Ctrl+c help                           </td> <td align="left">   print this table                      </td> </tr>
+<tr><td align="center"><b>                          Emacs key                           </b></td> <td align="center"><b>                            Action                            </b></td> </tr>
+<tr><td align="left">   Ctrl+c f                                                        </td> <td align="left">   figure                                                          </td> </tr>
+<tr><td align="left">   Ctrl+c v                                                        </td> <td align="left">   movie/video                                                     </td> </tr>
+<tr><td align="left">   Ctrl+c h1                                                       </td> <td align="left">   heading level 1 (section/h1)                                    </td> </tr>
+<tr><td align="left">   Ctrl+c h2                                                       </td> <td align="left">   heading level 2 (subsection/h2)                                 </td> </tr>
+<tr><td align="left">   Ctrl+c h3                                                       </td> <td align="left">   heading level 2 (subsection/h3)                                 </td> </tr>
+<tr><td align="left">   Ctrl+c hp                                                       </td> <td align="left">   heading for paragraph                                           </td> </tr>
+<tr><td align="left">   Ctrl+c me                                                       </td> <td align="left">   math environment: <code>!bt</code> equation <code>!et</code>    </td> </tr>
+<tr><td align="left">   Ctrl+c ma                                                       </td> <td align="left">   math environment: <code>!bt</code> align <code>!et</code>       </td> </tr>
+<tr><td align="left">   Ctrl+c ce                                                       </td> <td align="left">   code environment: <code>!bc</code> code <code>!ec</code>        </td> </tr>
+<tr><td align="left">   Ctrl+c cf                                                       </td> <td align="left">   code from file: <code>@@@CODE</code>                            </td> </tr>
+<tr><td align="left">   Ctrl+c table2                                                   </td> <td align="left">   table with 2 columns                                            </td> </tr>
+<tr><td align="left">   Ctrl+c table3                                                   </td> <td align="left">   table with 3 columns                                            </td> </tr>
+<tr><td align="left">   Ctrl+c table4                                                   </td> <td align="left">   table with 4 columns                                            </td> </tr>
+<tr><td align="left">   Ctrl+c exer                                                     </td> <td align="left">   exercise outline                                                </td> </tr>
+<tr><td align="left">   Ctrl+c slide                                                    </td> <td align="left">   slide outline                                                   </td> </tr>
+<tr><td align="left">   Ctrl+c help                                                     </td> <td align="left">   print this table                                                </td> </tr>
 </table>
 ==== Title, Authors, and Date ====
 
@@ -74199,7 +75834,7 @@ Here goes the solution of this subexercise.
 
 !bremarks
 At the very end of the exercise it may be appropriate to summarize
-and give some perspectives. The text inside the !bremarks-!eremarks
+and give some perspectives. The text inside the `!bremarks` and `!eremarks`
 directives is always typeset at the end of the exercise.
 !eremarks
 
@@ -74347,23 +75982,23 @@ Besides syntax highlighting of Doconce documents, this Emacs mode
 provides a lot of shortcuts for setting up many elements in a document:
 
 
- | =Emacs key                              | =Action                                 |
- |  Ctrl+c f                               |  figure                                 |
- |  Ctrl+c v                               |  movie/video                            |
- |  Ctrl+c h1                              |  heading level 1 (section/h1)           |
- |  Ctrl+c h2                              |  heading level 2 (subsection/h2)        |
- |  Ctrl+c h3                              |  heading level 2 (subsection/h3)        |
- |  Ctrl+c hp                              |  heading for paragraph                  |
- |  Ctrl+c me                              |  math environment: !bt equation !et     |
- |  Ctrl+c ma                              |  math environment: !bt align !et        |
- |  Ctrl+c ce                              |  code environment: !bc !ec              |
- |  Ctrl+c cf                              |  code from file: @@@CODE                |
- |  Ctrl+c table2                          |  table with 2 columns                   |
- |  Ctrl+c table3                          |  table with 3 columns                   |
- |  Ctrl+c table4                          |  table with 4 columns                   |
- |  Ctrl+c exer                            |  exercise outline                       |
- |  Ctrl+c slide                           |  slide outline                          |
- |  Ctrl+c help                            |  print this table                       |
+ | =Emacs key                                          | =Action                                             |
+ |  Ctrl+c f                                           |  figure                                             |
+ |  Ctrl+c v                                           |  movie/video                                        |
+ |  Ctrl+c h1                                          |  heading level 1 (section/h1)                       |
+ |  Ctrl+c h2                                          |  heading level 2 (subsection/h2)                    |
+ |  Ctrl+c h3                                          |  heading level 2 (subsection/h3)                    |
+ |  Ctrl+c hp                                          |  heading for paragraph                              |
+ |  Ctrl+c me                                          |  math environment: {{{!bt}}} equation {{{!et}}}     |
+ |  Ctrl+c ma                                          |  math environment: {{{!bt}}} align {{{!et}}}        |
+ |  Ctrl+c ce                                          |  code environment: {{{!bc}}} code {{{!ec}}}         |
+ |  Ctrl+c cf                                          |  code from file: {{{@@@CODE}}}                      |
+ |  Ctrl+c table2                                      |  table with 2 columns                               |
+ |  Ctrl+c table3                                      |  table with 3 columns                               |
+ |  Ctrl+c table4                                      |  table with 4 columns                               |
+ |  Ctrl+c exer                                        |  exercise outline                                   |
+ |  Ctrl+c slide                                       |  slide outline                                      |
+ |  Ctrl+c help                                        |  print this table                                   |
 
 
 == Title, Authors, and Date ==
@@ -75173,7 +76808,7 @@ Here goes the solution of this subexercise.
 
 !bremarks
 At the very end of the exercise it may be appropriate to summarize
-and give some perspectives. The text inside the !bremarks-!eremarks
+and give some perspectives. The text inside the `!bremarks` and `!eremarks`
 directives is always typeset at the end of the exercise.
 !eremarks
 
@@ -75308,26 +76943,26 @@ Emacs. Store the raw version of the file in the home directory and add
 Besides syntax highlighting of Doconce documents, this Emacs mode
 provides a lot of shortcuts for setting up many elements in a document:
 
-==================================  ==================================  
-            Emacs key                             Action                
-==================================  ==================================  
-Ctrl+c f                            figure                              
-Ctrl+c v                            movie/video                         
-Ctrl+c h1                           heading level 1 (section/h1)        
-Ctrl+c h2                           heading level 2 (subsection/h2)     
-Ctrl+c h3                           heading level 2 (subsection/h3)     
-Ctrl+c hp                           heading for paragraph               
-Ctrl+c me                           math environment: !bt equation !et  
-Ctrl+c ma                           math environment: !bt align !et     
-Ctrl+c ce                           code environment: !bc !ec           
-Ctrl+c cf                           code from file: @@@CODE             
-Ctrl+c table2                       table with 2 columns                
-Ctrl+c table3                       table with 3 columns                
-Ctrl+c table4                       table with 4 columns                
-Ctrl+c exer                         exercise outline                    
-Ctrl+c slide                        slide outline                       
-Ctrl+c help                         print this table                    
-==================================  ==================================  
+======================================  ======================================  
+              Emacs key                                 Action                  
+======================================  ======================================  
+Ctrl+c f                                figure                                  
+Ctrl+c v                                movie/video                             
+Ctrl+c h1                               heading level 1 (section/h1)            
+Ctrl+c h2                               heading level 2 (subsection/h2)         
+Ctrl+c h3                               heading level 2 (subsection/h3)         
+Ctrl+c hp                               heading for paragraph                   
+Ctrl+c me                               math environment: '!bt' equation '!et'  
+Ctrl+c ma                               math environment: '!bt' align '!et'     
+Ctrl+c ce                               code environment: '!bc' code '!ec'      
+Ctrl+c cf                               code from file: '@@@CODE'               
+Ctrl+c table2                           table with 2 columns                    
+Ctrl+c table3                           table with 3 columns                    
+Ctrl+c table4                           table with 4 columns                    
+Ctrl+c exer                             exercise outline                        
+Ctrl+c slide                            slide outline                           
+Ctrl+c help                             print this table                        
+======================================  ======================================  
 
 Title, Authors, and Date
 
@@ -76166,7 +77801,7 @@ setup-up::
         
         !bremarks
         At the very end of the exercise it may be appropriate to summarize
-        and give some perspectives. The text inside the !bremarks-!eremarks
+        and give some perspectives. The text inside the `!bremarks` and `!eremarks`
         directives is always typeset at the end of the exercise.
         !eremarks
         
@@ -76301,26 +77936,26 @@ C{(load-file "~/.doconce-mode.el")} to the C{.emacs} file.
 Besides syntax highlighting of Doconce documents, this Emacs mode
 provides a lot of shortcuts for setting up many elements in a document:
 
-==================================  ==================================  
-            Emacs key                             Action                
-==================================  ==================================  
-Ctrl+c f                            figure                              
-Ctrl+c v                            movie/video                         
-Ctrl+c h1                           heading level 1 (section/h1)        
-Ctrl+c h2                           heading level 2 (subsection/h2)     
-Ctrl+c h3                           heading level 2 (subsection/h3)     
-Ctrl+c hp                           heading for paragraph               
-Ctrl+c me                           math environment: !bt equation !et  
-Ctrl+c ma                           math environment: !bt align !et     
-Ctrl+c ce                           code environment: !bc !ec           
-Ctrl+c cf                           code from file: @@@CODE             
-Ctrl+c table2                       table with 2 columns                
-Ctrl+c table3                       table with 3 columns                
-Ctrl+c table4                       table with 4 columns                
-Ctrl+c exer                         exercise outline                    
-Ctrl+c slide                        slide outline                       
-Ctrl+c help                         print this table                    
-==================================  ==================================  
+========================================  ========================================  
+               Emacs key                                   Action                   
+========================================  ========================================  
+Ctrl+c f                                  figure                                    
+Ctrl+c v                                  movie/video                               
+Ctrl+c h1                                 heading level 1 (section/h1)              
+Ctrl+c h2                                 heading level 2 (subsection/h2)           
+Ctrl+c h3                                 heading level 2 (subsection/h3)           
+Ctrl+c hp                                 heading for paragraph                     
+Ctrl+c me                                 math environment: C{!bt} equation C{!et}  
+Ctrl+c ma                                 math environment: C{!bt} align C{!et}     
+Ctrl+c ce                                 code environment: C{!bc} code C{!ec}      
+Ctrl+c cf                                 code from file: C{@@@CODE}                
+Ctrl+c table2                             table with 2 columns                      
+Ctrl+c table3                             table with 3 columns                      
+Ctrl+c table4                             table with 4 columns                      
+Ctrl+c exer                               exercise outline                          
+Ctrl+c slide                              slide outline                             
+Ctrl+c help                               print this table                          
+========================================  ========================================  
 
 Title, Authors, and Date
 ------------------------
@@ -77181,7 +78816,7 @@ setup-up::
         
         !bremarks
         At the very end of the exercise it may be appropriate to summarize
-        and give some perspectives. The text inside the !bremarks-!eremarks
+        and give some perspectives. The text inside the `!bremarks` and `!eremarks`
         directives is always typeset at the end of the exercise.
         !eremarks
         
@@ -77352,7 +78987,7 @@ Ctrl+c h3                           heading level 2 (subsection/h3)
 Ctrl+c hp                           heading for paragraph               
 Ctrl+c me                           math environment: !bt equation !et  
 Ctrl+c ma                           math environment: !bt align !et     
-Ctrl+c ce                           code environment: !bc !ec           
+Ctrl+c ce                           code environment: !bc code !ec      
 Ctrl+c cf                           code from file: @@@CODE             
 Ctrl+c table2                       table with 2 columns                
 Ctrl+c table3                       table with 3 columns                
@@ -78245,7 +79880,7 @@ setup-up::
         
         !bremarks
         At the very end of the exercise it may be appropriate to summarize
-        and give some perspectives. The text inside the !bremarks-!eremarks
+        and give some perspectives. The text inside the `!bremarks` and `!eremarks`
         directives is always typeset at the end of the exercise.
         !eremarks
         
@@ -78406,24 +80041,24 @@ Besides syntax highlighting of Doconce documents, this Emacs mode
 provides a lot of shortcuts for setting up many elements in a document:
 
 
-            Emacs key                             Action                
-----------------------------------  ----------------------------------  
-Ctrl+c f                            figure                              
-Ctrl+c v                            movie/video                         
-Ctrl+c h1                           heading level 1 (section/h1)        
-Ctrl+c h2                           heading level 2 (subsection/h2)     
-Ctrl+c h3                           heading level 2 (subsection/h3)     
-Ctrl+c hp                           heading for paragraph               
-Ctrl+c me                           math environment: !bt equation !et  
-Ctrl+c ma                           math environment: !bt align !et     
-Ctrl+c ce                           code environment: !bc !ec           
-Ctrl+c cf                           code from file: @@@CODE             
-Ctrl+c table2                       table with 2 columns                
-Ctrl+c table3                       table with 3 columns                
-Ctrl+c table4                       table with 4 columns                
-Ctrl+c exer                         exercise outline                    
-Ctrl+c slide                        slide outline                       
-Ctrl+c help                         print this table                    
+              Emacs key                                 Action                  
+--------------------------------------  --------------------------------------  
+Ctrl+c f                                figure                                  
+Ctrl+c v                                movie/video                             
+Ctrl+c h1                               heading level 1 (section/h1)            
+Ctrl+c h2                               heading level 2 (subsection/h2)         
+Ctrl+c h3                               heading level 2 (subsection/h3)         
+Ctrl+c hp                               heading for paragraph                   
+Ctrl+c me                               math environment: `!bt` equation `!et`  
+Ctrl+c ma                               math environment: `!bt` align `!et`     
+Ctrl+c ce                               code environment: `!bc` code `!ec`      
+Ctrl+c cf                               code from file: `@@@CODE`               
+Ctrl+c table2                           table with 2 columns                    
+Ctrl+c table3                           table with 3 columns                    
+Ctrl+c table4                           table with 4 columns                    
+Ctrl+c exer                             exercise outline                        
+Ctrl+c slide                            slide outline                           
+Ctrl+c help                             print this table                        
 
 
 ### Title, Authors, and Date
@@ -79331,7 +80966,7 @@ Here goes the solution of this subexercise.
 
 !bremarks
 At the very end of the exercise it may be appropriate to summarize
-and give some perspectives. The text inside the !bremarks-!eremarks
+and give some perspectives. The text inside the `!bremarks` and `!eremarks`
 directives is always typeset at the end of the exercise.
 !eremarks
 
@@ -79729,19 +81364,7 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 
     fix: collected this text to one single line (right?)
 
-FIX: FIGURE not at the beginning of the line - 1 fixes
- FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
-
-
-FIX: !bhint not at the beginning of the line - 1 fixes
-  !bhint
-
-
-FIX: !ehint not at the beginning of the line - 1 fixes
-  !ehint
-
-
-*** warning: the total of 4 fixes above should be manually edited in the file!!
+*** warning: the total of 1 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
@@ -79789,19 +81412,7 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 
     fix: collected this text to one single line (right?)
 
-FIX: FIGURE not at the beginning of the line - 1 fixes
- FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
-
-
-FIX: !bhint not at the beginning of the line - 1 fixes
-  !bhint
-
-
-FIX: !ehint not at the beginning of the line - 1 fixes
-  !ehint
-
-
-*** warning: the total of 4 fixes above should be manually edited in the file!!
+*** warning: the total of 1 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
@@ -79867,19 +81478,7 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 
     fix: collected this text to one single line (right?)
 
-FIX: FIGURE not at the beginning of the line - 1 fixes
- FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
-
-
-FIX: !bhint not at the beginning of the line - 1 fixes
-  !bhint
-
-
-FIX: !ehint not at the beginning of the line - 1 fixes
-  !ehint
-
-
-*** warning: the total of 4 fixes above should be manually edited in the file!!
+*** warning: the total of 1 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
@@ -79931,19 +81530,7 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 
     fix: collected this text to one single line (right?)
 
-FIX: FIGURE not at the beginning of the line - 1 fixes
- FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
-
-
-FIX: !bhint not at the beginning of the line - 1 fixes
-  !bhint
-
-
-FIX: !ehint not at the beginning of the line - 1 fixes
-  !ehint
-
-
-*** warning: the total of 4 fixes above should be manually edited in the file!!
+*** warning: the total of 1 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
@@ -79995,19 +81582,7 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 
     fix: collected this text to one single line (right?)
 
-FIX: FIGURE not at the beginning of the line - 1 fixes
- FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
-
-
-FIX: !bhint not at the beginning of the line - 1 fixes
-  !bhint
-
-
-FIX: !ehint not at the beginning of the line - 1 fixes
-  !ehint
-
-
-*** warning: the total of 4 fixes above should be manually edited in the file!!
+*** warning: the total of 1 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
@@ -80062,19 +81637,7 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 
     fix: collected this text to one single line (right?)
 
-FIX: FIGURE not at the beginning of the line - 1 fixes
- FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
-
-
-FIX: !bhint not at the beginning of the line - 1 fixes
-  !bhint
-
-
-FIX: !ehint not at the beginning of the line - 1 fixes
-  !ehint
-
-
-*** warning: the total of 4 fixes above should be manually edited in the file!!
+*** warning: the total of 1 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
@@ -80139,19 +81702,7 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 
     fix: collected this text to one single line (right?)
 
-FIX: FIGURE not at the beginning of the line - 1 fixes
- FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
-
-
-FIX: !bhint not at the beginning of the line - 1 fixes
-  !bhint
-
-
-FIX: !ehint not at the beginning of the line - 1 fixes
-  !ehint
-
-
-*** warning: the total of 4 fixes above should be manually edited in the file!!
+*** warning: the total of 1 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
@@ -80217,19 +81768,7 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 
     fix: collected this text to one single line (right?)
 
-FIX: FIGURE not at the beginning of the line - 1 fixes
- FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
-
-
-FIX: !bhint not at the beginning of the line - 1 fixes
-  !bhint
-
-
-FIX: !ehint not at the beginning of the line - 1 fixes
-  !ehint
-
-
-*** warning: the total of 4 fixes above should be manually edited in the file!!
+*** warning: the total of 1 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
@@ -83044,19 +84583,7 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 
     fix: collected this text to one single line (right?)
 
-FIX: FIGURE not at the beginning of the line - 1 fixes
- FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
-
-
-FIX: !bhint not at the beginning of the line - 1 fixes
-  !bhint
-
-
-FIX: !ehint not at the beginning of the line - 1 fixes
-  !ehint
-
-
-*** warning: the total of 4 fixes above should be manually edited in the file!!
+*** warning: the total of 1 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
@@ -83093,19 +84620,7 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 
     fix: collected this text to one single line (right?)
 
-FIX: FIGURE not at the beginning of the line - 1 fixes
- FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
-
-
-FIX: !bhint not at the beginning of the line - 1 fixes
-  !bhint
-
-
-FIX: !ehint not at the beginning of the line - 1 fixes
-  !ehint
-
-
-*** warning: the total of 4 fixes above should be manually edited in the file!!
+*** warning: the total of 1 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
@@ -83142,19 +84657,7 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 
     fix: collected this text to one single line (right?)
 
-FIX: FIGURE not at the beginning of the line - 1 fixes
- FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
-
-
-FIX: !bhint not at the beginning of the line - 1 fixes
-  !bhint
-
-
-FIX: !ehint not at the beginning of the line - 1 fixes
-  !ehint
-
-
-*** warning: the total of 4 fixes above should be manually edited in the file!!
+*** warning: the total of 1 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
 
@@ -83236,19 +84739,7 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 
     fix: collected this text to one single line (right?)
 
-FIX: FIGURE not at the beginning of the line - 1 fixes
- FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
-
-
-FIX: !bhint not at the beginning of the line - 1 fixes
-  !bhint
-
-
-FIX: !ehint not at the beginning of the line - 1 fixes
-  !ehint
-
-
-*** warning: the total of 4 fixes above should be manually edited in the file!!
+*** warning: the total of 1 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
 
@@ -83523,19 +85014,7 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 
     fix: collected this text to one single line (right?)
 
-FIX: FIGURE not at the beginning of the line - 1 fixes
- FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
-
-
-FIX: !bhint not at the beginning of the line - 1 fixes
-  !bhint
-
-
-FIX: !ehint not at the beginning of the line - 1 fixes
-  !ehint
-
-
-*** warning: the total of 4 fixes above should be manually edited in the file!!
+*** warning: the total of 1 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
@@ -83576,19 +85055,7 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 
     fix: collected this text to one single line (right?)
 
-FIX: FIGURE not at the beginning of the line - 1 fixes
- FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
-
-
-FIX: !bhint not at the beginning of the line - 1 fixes
-  !bhint
-
-
-FIX: !ehint not at the beginning of the line - 1 fixes
-  !ehint
-
-
-*** warning: the total of 4 fixes above should be manually edited in the file!!
+*** warning: the total of 1 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
@@ -83625,19 +85092,7 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 
     fix: collected this text to one single line (right?)
 
-FIX: FIGURE not at the beginning of the line - 1 fixes
- FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
-
-
-FIX: !bhint not at the beginning of the line - 1 fixes
-  !bhint
-
-
-FIX: !ehint not at the beginning of the line - 1 fixes
-  !ehint
-
-
-*** warning: the total of 4 fixes above should be manually edited in the file!!
+*** warning: the total of 1 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
@@ -83687,19 +85142,7 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 
     fix: collected this text to one single line (right?)
 
-FIX: FIGURE not at the beginning of the line - 1 fixes
- FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
-
-
-FIX: !bhint not at the beginning of the line - 1 fixes
-  !bhint
-
-
-FIX: !ehint not at the beginning of the line - 1 fixes
-  !ehint
-
-
-*** warning: the total of 4 fixes above should be manually edited in the file!!
+*** warning: the total of 1 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
@@ -83759,19 +85202,7 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 
     fix: collected this text to one single line (right?)
 
-FIX: FIGURE not at the beginning of the line - 1 fixes
- FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
-
-
-FIX: !bhint not at the beginning of the line - 1 fixes
-  !bhint
-
-
-FIX: !ehint not at the beginning of the line - 1 fixes
-  !ehint
-
-
-*** warning: the total of 4 fixes above should be manually edited in the file!!
+*** warning: the total of 1 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
@@ -83815,19 +85246,7 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 
     fix: collected this text to one single line (right?)
 
-FIX: FIGURE not at the beginning of the line - 1 fixes
- FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
-
-
-FIX: !bhint not at the beginning of the line - 1 fixes
-  !bhint
-
-
-FIX: !ehint not at the beginning of the line - 1 fixes
-  !ehint
-
-
-*** warning: the total of 4 fixes above should be manually edited in the file!!
+*** warning: the total of 1 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
@@ -83870,19 +85289,7 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 
     fix: collected this text to one single line (right?)
 
-FIX: FIGURE not at the beginning of the line - 1 fixes
- FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
-
-
-FIX: !bhint not at the beginning of the line - 1 fixes
-  !bhint
-
-
-FIX: !ehint not at the beginning of the line - 1 fixes
-  !ehint
-
-
-*** warning: the total of 4 fixes above should be manually edited in the file!!
+*** warning: the total of 1 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
@@ -83968,19 +85375,7 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 
     fix: collected this text to one single line (right?)
 
-FIX: FIGURE not at the beginning of the line - 1 fixes
- FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
-
-
-FIX: !bhint not at the beginning of the line - 1 fixes
-  !bhint
-
-
-FIX: !ehint not at the beginning of the line - 1 fixes
-  !ehint
-
-
-*** warning: the total of 4 fixes above should be manually edited in the file!!
+*** warning: the total of 1 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
@@ -84054,19 +85449,7 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 
     fix: collected this text to one single line (right?)
 
-FIX: FIGURE not at the beginning of the line - 1 fixes
- FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. label{myfig} 
-
-
-FIX: !bhint not at the beginning of the line - 1 fixes
-  !bhint
-
-
-FIX: !ehint not at the beginning of the line - 1 fixes
-  !ehint
-
-
-*** warning: the total of 4 fixes above should be manually edited in the file!!
+*** warning: the total of 1 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
@@ -89777,6 +91160,27 @@ output in movies.txt
 rm: cannot remove ‘tmp_*’: No such file or directory
 + system doconce format pdflatex Springer_T2_book CHAPTER=chapter BOOK=book APPENDIX=appendix -DPRIMER_BOOK ALG=code --encoding=utf-8 --device=paper --latex_exercise_numbering=chapter --latex_admon_color=1,1,1 --latex_style=Springer_T2 --latex_title_layout=titlepage --latex_list_of_exercises=loe
 + doconce format pdflatex Springer_T2_book CHAPTER=chapter BOOK=book APPENDIX=appendix -DPRIMER_BOOK ALG=code --encoding=utf-8 --device=paper --latex_exercise_numbering=chapter --latex_admon_color=1,1,1 --latex_style=Springer_T2 --latex_title_layout=titlepage --latex_list_of_exercises=loe
+
+Summary of papers
+-----------------
+
+Articles in International Journals: 1
+Books:                              4
+Edited Books:                       0
+Chapters in Books:                  0
+Refereed Proceedings:               0
+Conference Proceedings:             0
+Technical Reports:                  0
+Manuals:                            0
+Theses:                             0
+Courses:                            0
+Talks:                              0
+Posters:                            0
+Public Outreach:                    0
+Other Publications:                 3
+Total:                              8
+
+Exported 8 paper(s) to papers.bib.
 running preprocess -DFORMAT=pdflatex -DDEVICE=paper -DPRIMER_BOOK -DCHAPTER="chapter" -DBOOK="book" -DAPPENDIX="appendix" -DALG="code" Springer_T2_book.do.txt > tmp_preprocess__Springer_T2_book.do.txt
 running mako on tmp_preprocess__Springer_T2_book.do.txt to make tmp_mako__Springer_T2_book.do.txt
 mako variables: {'CHAPTER': 'chapter', 'PRIMER_BOOK': True, 'FORMAT': 'pdflatex', 'ALG': 'code', 'APPENDIX': 'appendix', 'DEVICE': 'paper', 'BOOK': 'book'}
@@ -89784,29 +91188,1662 @@ translating doconce text in tmp_mako__Springer_T2_book.do.txt to pdflatex
 open file with encoding utf-8
 could not extract svmonodo.cls.sty (from latex_styles.zip in the doconce installation)
 could not extract t2do.sty.sty (from latex_styles.zip in the doconce installation)
-Traceback (most recent call last):
-  File "/usr/local/bin/doconce", line 1033, in <module>
-    main()
-  File "/usr/local/bin/doconce", line 1023, in main
-    eval(command + '()')
-  File "<string>", line 1, in <module>
-  File "/usr/local/bin/doconce", line 87, in format
-    doconce.doconce.format_driver()
-  File "/usr/local/lib/python2.7/dist-packages/doconce/doconce.py", line 3094, in format_driver
-    out_filename = file2file(filename_preprocessed, format, basename)
-  File "/usr/local/lib/python2.7/dist-packages/doconce/doconce.py", line 2328, in file2file
-    filestr = doconce2format(filestr, format)
-  File "/usr/local/lib/python2.7/dist-packages/doconce/doconce.py", line 2455, in doconce2format
-    filestr)
-  File "/usr/local/lib/python2.7/dist-packages/doconce/latex.py", line 2478, in define
-    if chapters:
-UnboundLocalError: local variable 'chapters' referenced before assignment
-+ '[' 1 -ne 0 ']'
-+ echo 'make.sh: unsuccessful command doconce' format pdflatex Springer_T2_book CHAPTER=chapter BOOK=book APPENDIX=appendix -DPRIMER_BOOK ALG=code --encoding=utf-8 --device=paper --latex_exercise_numbering=chapter --latex_admon_color=1,1,1 --latex_style=Springer_T2 --latex_title_layout=titlepage --latex_list_of_exercises=loe
-make.sh: unsuccessful command doconce format pdflatex Springer_T2_book CHAPTER=chapter BOOK=book APPENDIX=appendix -DPRIMER_BOOK ALG=code --encoding=utf-8 --device=paper --latex_exercise_numbering=chapter --latex_admon_color=1,1,1 --latex_style=Springer_T2 --latex_title_layout=titlepage --latex_list_of_exercises=loe
-+ echo 'abort!'
-abort!
-+ exit 1
+
+exporting publish database papers.pub to papers.bib:
+output in Springer_T2_book.p.tex
++ '[' 0 -ne 0 ']'
++ system ptex2tex Springer_T2_book
++ ptex2tex Springer_T2_book
+using local config file .ptex2tex.cfg
+running preprocessor on Springer_T2_book.p.tex...  done
+done Springer_T2_book.p.tex -> Springer_T2_book.tex
++ '[' 0 -ne 0 ']'
++ rm -rf Springer_T2_book.aux Springer_T2_book.ind Springer_T2_book.idx Springer_T2_book.bbl Springer_T2_book.toc Springer_T2_book.loe
++ system pdflatex Springer_T2_book
++ pdflatex Springer_T2_book
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
+ restricted \write18 enabled.
+entering extended mode
+(./Springer_T2_book.tex
+LaTeX2e <2011/06/27>
+Babel <3.9f> and hyphenation patterns for 2 languages loaded.
+(/home/hpl/texmf/tex/latex/misc/svmonodo.cls
+
+LaTeX Warning: You have requested document class `svmonodo',
+               but the document class provides `svmono'.
+
+Document Class: svmono 2007/06/25 v5.4 
+Springer Verlag global LaTeX document class for monographs
+
+Class Springer-SVMono Warning: Specified option or subpackage "sectrefs" 
+(Springer-SVMono)              not found passing it to article class 
+(Springer-SVMono)              - on .
+
+
+Class Springer-SVMono Warning: Specified option or subpackage "open=right" 
+(Springer-SVMono)              not found passing it to article class 
+(Springer-SVMono)              - on .
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
+
+
+
+(/home/hpl/texmf/tex/latex/misc/t2do.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+
+
+
+
+Package amsmath Warning: Unable to redefine math accent \vec.
+
+) 
+
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
+
+
+Package caption Warning: Unsupported document class (or package) detected,
+(caption)                usage of the caption package is not recommended.
+See the caption package documentation for explanation.
+
+) (/usr/share/texlive/texmf-dist/tex/latex/tools/tabularx.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/ts1enc.def
+
+
+
+
+
+
+(/usr/share/texmf/tex/latex/xcolor/xcolor.sty
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
+
+
+(/home/hpl/texmf/tex/latex/misc/ptex2tex.sty
+(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
+<2008/02/07> (tvz))
+(/usr/share/texlive/texmf-dist/tex/latex/moreverb/moreverb.sty
+
+(/home/hpl/texmf/tex/latex/misc/anslistings.sty
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+
+
+
+
+
+
+
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
+
+(/home/hpl/texmf/tex/latex/misc/mdframed.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/l3names.sty
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-abspage.sty
+
+
+(/usr/share/texmf/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/share/texmf/tex/latex/pgf/basiclayer/pgf.sty
+(/usr/share/texmf/tex/latex/pgf/utilities/pgfrcs.sty
+
+(/usr/share/texmf/tex/generic/pgf/utilities/pgfutil-latex.def
+
+
+(/usr/share/texmf/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/share/texmf/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys.code.tex
+(/usr/share/texmf/tex/generic/pgf/utilities/pgfkeys.code.tex
+
+
+(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+
+
+
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcore.code.tex
+(/usr/share/texmf/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/share/texmf/tex/generic/pgf/math/pgfmathcalc.code.tex
+
+
+(/usr/share/texmf/tex/generic/pgf/math/pgfmathfunctions.code.tex
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
+
+
+
+
+
+
+
+
+(/usr/share/texmf/tex/latex/pgf/utilities/pgffor.sty
+(/usr/share/texmf/tex/latex/pgf/utilities/pgfkeys.sty
+
+
+(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+
+
+(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopat
+hs.code.tex))) (/usr/share/texlive/texmf-dist/tex/latex/mdframed/md-frame-1.mdf
+))
+Writing index file Springer_T2_book.idx
+
+LaTeX Warning: Unused global option(s):
+    [sectrefs,open=right].
+
+No file Springer_T2_book.aux.
+(/home/hpl/texmf/tex/latex/misc/ts1cmr.fd)
+
+(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+
+ABD: EveryShipout initializing macros (./newcommands_keep.tex)
+
+
+
+
+
+
+
+
+ [3
+Non-PDF special ignored!{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+[4]
+Overfull \hbox (120.12047pt too wide) 
+|[] 
+[5] 
+
+LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <5.5> not available
+(Font)              size <5> substituted on .
+
+
+LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <5.5> not available
+(Font)              size <5> substituted on .
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <5.5> not available
+(Font)              size <5> substituted on .
+
+[6]
+Overfull \hbox (120.12047pt too wide) 
+|[] 
+[7] [8]
+Chapter 1.
+
+Overfull \hbox (30.77882pt too wide) 
+[][][] 
+
+Overfull \hbox (120.12047pt too wide) 
+|[] 
+
+LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <8.5> not available
+(Font)              size <8> substituted on .
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <4.25> not available
+(Font)              size <5> substituted on .
+
+
+LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <8.5> not available
+(Font)              size <8> substituted on .
+
+
+LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <4.25> not available
+(Font)              size <5> substituted on .
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <8.5> not available
+(Font)              size <8> substituted on .
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <4.25> not available
+(Font)              size <5> substituted on .
+
+[1]
+
+
+
+ [2]
+
+
+...rest of part of LaTeX line number...
+
+
+Underfull \hbox (badness 6927) 
+\T1/lmr/m/n/11 (+20) or one may take the less rec-om-mended lazy ap-proach
+
+
+...rest of part of LaTeX line number...
+
+[3]
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+[4]
+Chapter 2.
+
+Overfull \hbox (30.77882pt too wide) 
+[][][] 
+
+Overfull \hbox (120.12047pt too wide) 
+|[] 
+[5] [6]
+
+
+...rest of part of LaTeX line number...
+
+[7]
+
+
+...rest of part of LaTeX line number...
+
+[8]
+
+
+...rest of part of LaTeX line number...
+
+
+
+
+
+
+
+
+
+
+
+
+
+[9] [10]
+Appendix A.
+
+Overfull \hbox (30.77882pt too wide) 
+[][][] 
+
+Overfull \hbox (120.12047pt too wide) 
+|[] 
+[11] [12]
+No file Springer_T2_book.bbl.
+No file Springer_T2_book.ind.
+(./Springer_T2_book.aux)
+
+ *File List*
+svmonodo.cls    2007/06/25 v5.4 
+Springer Verlag global LaTeX document class for monographs
+ article.cls    2007/10/19 v1.4h Standard LaTeX document class
+  size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
+   color.sty    1999/02/16
+   color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
+  pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
+infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
+ ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+  framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
+    t2do.sty    
+graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+  keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
+graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
+graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
+inputenc.sty    2008/03/30 v1.1d Input encoding file
+    utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
+   t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+  ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+  omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+ amsmath.sty    2013/01/14 v2.14 AMS math features
+ amstext.sty    2000/06/29 v2.01
+  amsgen.sty    1999/11/30 v2.0
+  amsbsy.sty    1999/11/29 v1.2d
+  amsopn.sty    1999/12/14 v2.01 operator names
+amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
+ amssymb.sty    2013/01/14 v3.01 AMS font symbols
+ caption.sty    2013/05/02 v3.3-89 Customizing captions (AR)
+caption3.sty    2013/05/02 v1.6-88 caption3 kernel (AR)
+tabularx.sty    1999/01/07 v2.07 `tabularx' package (DPC)
+   array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
+multicol.sty    2011/06/27 v1.7a multicolumn formatting (FMi)
+ fontenc.sty
+   t1enc.def    2005/09/27 v1.99g Standard LaTeX file
+marvosym.sty    2011/07/20 v2.2 Martin Vogel's Symbols font definitions
+textcomp.sty    2005/09/27 v1.99g Standard LaTeX package
+  ts1enc.def    2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
+  ts1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+footmisc.sty    2011/06/06 v5.5b a miscellany of footnote facilities
+ relsize.sty    2013/03/29 ver 4.1
+  epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
+ makeidx.sty    2000/03/29 v1.0m Standard LaTeX package
+setspace.sty    2011/12/19 v6.7a set line spacing
+  xcolor.sty    2007/01/21 v2.11 LaTeX color extensions (UK)
+   color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
+colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
+      bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
+microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
+microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
+microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
+ptex2tex.sty    
+fancyvrb.sty    2008/02/07
+moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
+verbatim.sty    2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
+anslistings.sty    2009/03/28 code highlighting; provided by Olivier Verdier <o
+livier@maths.lth.se>
+listings.sty    2013/07/10 1.5 (Carsten Heinz)
+ lstmisc.sty    2013/07/10 1.5 (Carsten Heinz)
+listings.cfg    2013/06/27 1.5pre1 listings configuration
+ fontenc.sty
+   t1enc.def    2005/09/27 v1.99g Standard LaTeX file
+ lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
+hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
+hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
+hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
+  hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
+ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
+  ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+ intcalc.sty    2007/09/27 v1.1 Expandable calculations with integers (HO)
+   ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
+etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
+kvdefinekeys.sty    2011/04/07 v1.3 Define keys (HO)
+pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
+pdfescape.sty    2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
+bigintcalc.sty    2012/04/08 v1.3 Expandable calculations on big integers (HO)
+  bitset.sty    2011/01/30 v1.1 Handle bit-vector datatype (HO)
+uniquecounter.sty    2011/01/30 v1.2 Provide unlimited unique counter (HO)
+letltxmacro.sty    2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
+ hopatch.sty    2012/05/28 v1.2 Wrapper for package hooks (HO)
+xcolor-patch.sty    2011/01/30 xcolor patch
+atveryend.sty    2011/06/30 v1.8 Hooks at the very end of document (HO)
+atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
+refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
+ hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
+ ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
+ auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
+kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
+  pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
+hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
+     url.sty    2006/04/12  ver 3.3  Verb mode for urls, etc.
+ hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
+rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
+mdframed.sty    2013/08/18 1.9d: mdframed
+  xparse.sty    2013/07/12 v4544 L3 Experimental document command parser
+   expl3.sty    2013/07/12 v4544 L3 Experimental code bundle wrapper
+ l3names.sty    2012/12/07 v4346 L3 Namespace for primitives
+l3bootstrap.sty    2013/01/08 v4420 L3 Experimental bootstrap code
+    etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
+l3basics.sty    2013/07/09 v4521 L3 Basic definitions
+ l3expan.sty    2013/07/09 v4521 L3 Argument expansion
+    l3tl.sty    2013/04/24 v4482 L3 Token lists
+   l3seq.sty    2013/05/26 v4500 L3 Sequences and stacks
+   l3int.sty    2013/04/24 v4482 L3 Integers
+ l3quark.sty    2013/07/09 v4521 L3 Quarks
+   l3prg.sty    2013/04/24 v4482 L3 Control structures
+ l3clist.sty    2013/05/26 v4500 L3 Comma separated lists
+ l3token.sty    2013/04/24 v4482 L3 Experimental token manipulation
+  l3prop.sty    2013/01/09 v4423 L3 Property lists
+   l3msg.sty    2013/01/08 v4412 L3 Messages
+  l3file.sty    2013/05/01 v4483 L3 File and I/O operations
+  l3skip.sty    2013/01/13 v4444 L3 Dimensions and skips
+  l3keys.sty    2013/07/12 v4544 L3 Experimental key-value interfaces
+    l3fp.sty    2013/07/09 v4521 L3 Floating points
+   l3box.sty    2013/04/24 v4482 L3 Experimental boxes
+l3coffins.sty    2012/09/09 v4212 L3 Coffin code layer
+ l3color.sty    2012/08/29 v4156 L3 Experimental color support
+l3luatex.sty    2012/08/03 v4049 L3 Experimental LuaTeX-specific functions
+l3candidates.sty    2013/07/09 v4521 L3 Experimental additions to l3kernel
+etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
+zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
+zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
+needspace.sty    2010/09/12 v1.3d reserve vertical space
+    tikz.sty    2010/10/13 v2.10 (rcs-revision 1.76)
+     pgf.sty    2008/01/15 v2.10 (rcs-revision 1.12)
+  pgfrcs.sty    2010/10/25 v2.10 (rcs-revision 1.24)
+everyshi.sty    2001/05/15 v3.00 EveryShipout Package (MS)
+  pgfrcs.code.tex
+ pgfcore.sty    2010/04/11 v2.10 (rcs-revision 1.7)
+  pgfsys.sty    2010/06/30 v2.10 (rcs-revision 1.37)
+  pgfsys.code.tex
+pgfsyssoftpath.code.tex    2008/07/18  (rcs-revision 1.7)
+pgfsysprotocol.code.tex    2006/10/16  (rcs-revision 1.4)
+ pgfcore.code.tex
+pgfcomp-version-0-65.sty    2007/07/03 v2.10 (rcs-revision 1.7)
+pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
+  pgffor.sty    2010/03/23 v2.10 (rcs-revision 1.18)
+ pgfkeys.sty    
+ pgfkeys.code.tex
+  pgffor.code.tex
+    tikz.code.tex
+md-frame-1.mdf    2013/08/18\ 1.9d: md-frame-1
+  ts1cmr.fd    1999/05/25 v2.5h Standard LaTeX font definitions
+   t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+supp-pdf.mkii
+epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
+  grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
+epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
+RS)
+ nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
+gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
+newcommands_keep.tex
+  t1lmss.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  ot1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omllmm.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omxlmex.fd    2009/10/30 v1.6 Font defs for Latin Modern
+    umsa.fd    2013/01/14 v3.01 AMS symbols A
+  mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
+    umsb.fd    2013/01/14 v3.01 AMS symbols B
+  mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+  t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  ts1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ ***********
+
+
+Package rerunfilecheck Warning: File `Springer_T2_book.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+
+LaTeX Font Warning: Size substitutions with differences
+(Font)              up to 0.75pt have occurred.
+
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ )
+(see the transcript file for additional information){/usr/share/texmf/fonts/enc
+/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/share
+/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm
+-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}</usr/share/texmf/fo
+nts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx9.pf
+b></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/ty
+pe1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></us
+r/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/pub
+lic/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/t
+exmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr
+9.pfb></usr/share/texmf/fonts/type1/public/lm/lmri12.pfb></usr/share/texmf/font
+s/type1/public/lm/lmri9.pfb></usr/share/texmf/fonts/type1/public/lm/lmss12.pfb>
+</usr/share/texmf/fonts/type1/public/lm/lmss9.pfb></usr/share/texmf/fonts/type1
+/public/lm/lmssbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></us
+r/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/pub
+lic/lm/lmtt12.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt8.pfb></usr/share
+/texmf/fonts/type1/public/lm/lmtt9.pfb>
+Output written on Springer_T2_book.pdf (18 pages, ).
+Transcript written on Springer_T2_book.log.
++ '[' 0 -ne 0 ']'
++ system bibtex Springer_T2_book
++ bibtex Springer_T2_book
+This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
+The top-level auxiliary file: Springer_T2_book.aux
+The style file: plain.bst
+Database file #1: papers.bib
++ '[' 0 -ne 0 ']'
++ system makeindex Springer_T2_book
++ makeindex Springer_T2_book
+This is makeindex, version 2.15 [TeX Live 2013] (kpathsea + Thai support).
+Scanning input file Springer_T2_book.idx....done (22 entries accepted, 0 rejected).
+Sorting entries....done (100 comparisons).
+Generating output file Springer_T2_book.ind....done (46 lines written, 0 warnings).
+Output written in Springer_T2_book.ind.
+Transcript written in Springer_T2_book.ilg.
++ '[' 0 -ne 0 ']'
++ system pdflatex Springer_T2_book
++ pdflatex Springer_T2_book
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
+ restricted \write18 enabled.
+entering extended mode
+(./Springer_T2_book.tex
+LaTeX2e <2011/06/27>
+Babel <3.9f> and hyphenation patterns for 2 languages loaded.
+(/home/hpl/texmf/tex/latex/misc/svmonodo.cls
+
+LaTeX Warning: You have requested document class `svmonodo',
+               but the document class provides `svmono'.
+
+Document Class: svmono 2007/06/25 v5.4 
+Springer Verlag global LaTeX document class for monographs
+
+Class Springer-SVMono Warning: Specified option or subpackage "sectrefs" 
+(Springer-SVMono)              not found passing it to article class 
+(Springer-SVMono)              - on .
+
+
+Class Springer-SVMono Warning: Specified option or subpackage "open=right" 
+(Springer-SVMono)              not found passing it to article class 
+(Springer-SVMono)              - on .
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
+
+
+
+(/home/hpl/texmf/tex/latex/misc/t2do.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+
+
+
+
+Package amsmath Warning: Unable to redefine math accent \vec.
+
+) 
+
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
+
+
+Package caption Warning: Unsupported document class (or package) detected,
+(caption)                usage of the caption package is not recommended.
+See the caption package documentation for explanation.
+
+) (/usr/share/texlive/texmf-dist/tex/latex/tools/tabularx.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/ts1enc.def
+
+
+
+
+
+
+(/usr/share/texmf/tex/latex/xcolor/xcolor.sty
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
+
+
+(/home/hpl/texmf/tex/latex/misc/ptex2tex.sty
+(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
+<2008/02/07> (tvz))
+(/usr/share/texlive/texmf-dist/tex/latex/moreverb/moreverb.sty
+
+(/home/hpl/texmf/tex/latex/misc/anslistings.sty
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+
+
+
+
+
+
+
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
+
+(/home/hpl/texmf/tex/latex/misc/mdframed.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/l3names.sty
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-abspage.sty
+
+
+(/usr/share/texmf/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/share/texmf/tex/latex/pgf/basiclayer/pgf.sty
+(/usr/share/texmf/tex/latex/pgf/utilities/pgfrcs.sty
+
+(/usr/share/texmf/tex/generic/pgf/utilities/pgfutil-latex.def
+
+
+(/usr/share/texmf/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/share/texmf/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys.code.tex
+(/usr/share/texmf/tex/generic/pgf/utilities/pgfkeys.code.tex
+
+
+(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+
+
+
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcore.code.tex
+(/usr/share/texmf/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/share/texmf/tex/generic/pgf/math/pgfmathcalc.code.tex
+
+
+(/usr/share/texmf/tex/generic/pgf/math/pgfmathfunctions.code.tex
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
+
+
+
+
+
+
+
+
+(/usr/share/texmf/tex/latex/pgf/utilities/pgffor.sty
+(/usr/share/texmf/tex/latex/pgf/utilities/pgfkeys.sty
+
+
+(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+
+
+(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopat
+hs.code.tex))) (/usr/share/texlive/texmf-dist/tex/latex/mdframed/md-frame-1.mdf
+))
+Writing index file Springer_T2_book.idx
+
+LaTeX Warning: Unused global option(s):
+    [sectrefs,open=right].
+
+(./Springer_T2_book.aux) (/home/hpl/texmf/tex/latex/misc/ts1cmr.fd)
+
+(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+
+(./Springer_T2_book.out) (./Springer_T2_book.out)
+ABD: EveryShipout initializing macros (./newcommands_keep.tex)
+
+
+
+
+
+
+
+
+ [3
+Non-PDF special ignored!{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+[4]
+Overfull \hbox (120.12047pt too wide) 
+|[] 
+[5] 
+
+LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <5.5> not available
+(Font)              size <5> substituted on .
+
+
+LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <5.5> not available
+(Font)              size <5> substituted on .
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <5.5> not available
+(Font)              size <5> substituted on .
+
+[6]
+Overfull \hbox (120.12047pt too wide) 
+|[] 
+(./Springer_T2_book.toc) [7] [8]
+Chapter 1.
+
+Overfull \hbox (30.77882pt too wide) 
+[][][] 
+
+Overfull \hbox (120.12047pt too wide) 
+|[] 
+
+LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <8.5> not available
+(Font)              size <8> substituted on .
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <4.25> not available
+(Font)              size <5> substituted on .
+
+
+LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <8.5> not available
+(Font)              size <8> substituted on .
+
+
+LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <4.25> not available
+(Font)              size <5> substituted on .
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <8.5> not available
+(Font)              size <8> substituted on .
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <4.25> not available
+(Font)              size <5> substituted on .
+
+[1]
+
+
+
+ [2]
+Underfull \hbox (badness 6927) 
+\T1/lmr/m/n/11 (+20) or one may take the less rec-om-mended lazy ap-proach
+[3]
+
+
+...rest of part of LaTeX line number...
+
+[4]
+Chapter 2.
+
+Overfull \hbox (30.77882pt too wide) 
+[][][] 
+
+Overfull \hbox (120.12047pt too wide) 
+|[] 
+[5] [6]
+
+
+...rest of part of LaTeX line number...
+
+[7]
+
+
+...rest of part of LaTeX line number...
+
+[8]
+
+
+...rest of part of LaTeX line number...
+
+
+
+
+
+
+
+
+
+
+
+
+
+[9] [10]
+Appendix A.
+
+Overfull \hbox (30.77882pt too wide) 
+[][][] 
+
+Overfull \hbox (120.12047pt too wide) 
+|[] 
+[11] [12] (./Springer_T2_book.bbl
+Overfull \hbox (120.12047pt too wide) 
+|[] 
+) [13] [14] (./Springer_T2_book.ind
+Overfull \hbox (120.12047pt too wide) 
+|[] 
+[15]) (./Springer_T2_book.aux)
+
+ *File List*
+svmonodo.cls    2007/06/25 v5.4 
+Springer Verlag global LaTeX document class for monographs
+ article.cls    2007/10/19 v1.4h Standard LaTeX document class
+  size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
+   color.sty    1999/02/16
+   color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
+  pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
+infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
+ ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+  framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
+    t2do.sty    
+graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+  keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
+graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
+graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
+inputenc.sty    2008/03/30 v1.1d Input encoding file
+    utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
+   t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+  ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+  omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+ amsmath.sty    2013/01/14 v2.14 AMS math features
+ amstext.sty    2000/06/29 v2.01
+  amsgen.sty    1999/11/30 v2.0
+  amsbsy.sty    1999/11/29 v1.2d
+  amsopn.sty    1999/12/14 v2.01 operator names
+amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
+ amssymb.sty    2013/01/14 v3.01 AMS font symbols
+ caption.sty    2013/05/02 v3.3-89 Customizing captions (AR)
+caption3.sty    2013/05/02 v1.6-88 caption3 kernel (AR)
+tabularx.sty    1999/01/07 v2.07 `tabularx' package (DPC)
+   array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
+multicol.sty    2011/06/27 v1.7a multicolumn formatting (FMi)
+ fontenc.sty
+   t1enc.def    2005/09/27 v1.99g Standard LaTeX file
+marvosym.sty    2011/07/20 v2.2 Martin Vogel's Symbols font definitions
+textcomp.sty    2005/09/27 v1.99g Standard LaTeX package
+  ts1enc.def    2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
+  ts1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+footmisc.sty    2011/06/06 v5.5b a miscellany of footnote facilities
+ relsize.sty    2013/03/29 ver 4.1
+  epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
+ makeidx.sty    2000/03/29 v1.0m Standard LaTeX package
+setspace.sty    2011/12/19 v6.7a set line spacing
+  xcolor.sty    2007/01/21 v2.11 LaTeX color extensions (UK)
+   color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
+colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
+      bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
+microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
+microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
+microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
+ptex2tex.sty    
+fancyvrb.sty    2008/02/07
+moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
+verbatim.sty    2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
+anslistings.sty    2009/03/28 code highlighting; provided by Olivier Verdier <o
+livier@maths.lth.se>
+listings.sty    2013/07/10 1.5 (Carsten Heinz)
+ lstmisc.sty    2013/07/10 1.5 (Carsten Heinz)
+listings.cfg    2013/06/27 1.5pre1 listings configuration
+ fontenc.sty
+   t1enc.def    2005/09/27 v1.99g Standard LaTeX file
+ lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
+hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
+hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
+hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
+  hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
+ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
+  ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+ intcalc.sty    2007/09/27 v1.1 Expandable calculations with integers (HO)
+   ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
+etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
+kvdefinekeys.sty    2011/04/07 v1.3 Define keys (HO)
+pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
+pdfescape.sty    2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
+bigintcalc.sty    2012/04/08 v1.3 Expandable calculations on big integers (HO)
+  bitset.sty    2011/01/30 v1.1 Handle bit-vector datatype (HO)
+uniquecounter.sty    2011/01/30 v1.2 Provide unlimited unique counter (HO)
+letltxmacro.sty    2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
+ hopatch.sty    2012/05/28 v1.2 Wrapper for package hooks (HO)
+xcolor-patch.sty    2011/01/30 xcolor patch
+atveryend.sty    2011/06/30 v1.8 Hooks at the very end of document (HO)
+atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
+refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
+ hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
+ ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
+ auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
+kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
+  pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
+hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
+     url.sty    2006/04/12  ver 3.3  Verb mode for urls, etc.
+ hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
+rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
+mdframed.sty    2013/08/18 1.9d: mdframed
+  xparse.sty    2013/07/12 v4544 L3 Experimental document command parser
+   expl3.sty    2013/07/12 v4544 L3 Experimental code bundle wrapper
+ l3names.sty    2012/12/07 v4346 L3 Namespace for primitives
+l3bootstrap.sty    2013/01/08 v4420 L3 Experimental bootstrap code
+    etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
+l3basics.sty    2013/07/09 v4521 L3 Basic definitions
+ l3expan.sty    2013/07/09 v4521 L3 Argument expansion
+    l3tl.sty    2013/04/24 v4482 L3 Token lists
+   l3seq.sty    2013/05/26 v4500 L3 Sequences and stacks
+   l3int.sty    2013/04/24 v4482 L3 Integers
+ l3quark.sty    2013/07/09 v4521 L3 Quarks
+   l3prg.sty    2013/04/24 v4482 L3 Control structures
+ l3clist.sty    2013/05/26 v4500 L3 Comma separated lists
+ l3token.sty    2013/04/24 v4482 L3 Experimental token manipulation
+  l3prop.sty    2013/01/09 v4423 L3 Property lists
+   l3msg.sty    2013/01/08 v4412 L3 Messages
+  l3file.sty    2013/05/01 v4483 L3 File and I/O operations
+  l3skip.sty    2013/01/13 v4444 L3 Dimensions and skips
+  l3keys.sty    2013/07/12 v4544 L3 Experimental key-value interfaces
+    l3fp.sty    2013/07/09 v4521 L3 Floating points
+   l3box.sty    2013/04/24 v4482 L3 Experimental boxes
+l3coffins.sty    2012/09/09 v4212 L3 Coffin code layer
+ l3color.sty    2012/08/29 v4156 L3 Experimental color support
+l3luatex.sty    2012/08/03 v4049 L3 Experimental LuaTeX-specific functions
+l3candidates.sty    2013/07/09 v4521 L3 Experimental additions to l3kernel
+etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
+zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
+zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
+needspace.sty    2010/09/12 v1.3d reserve vertical space
+    tikz.sty    2010/10/13 v2.10 (rcs-revision 1.76)
+     pgf.sty    2008/01/15 v2.10 (rcs-revision 1.12)
+  pgfrcs.sty    2010/10/25 v2.10 (rcs-revision 1.24)
+everyshi.sty    2001/05/15 v3.00 EveryShipout Package (MS)
+  pgfrcs.code.tex
+ pgfcore.sty    2010/04/11 v2.10 (rcs-revision 1.7)
+  pgfsys.sty    2010/06/30 v2.10 (rcs-revision 1.37)
+  pgfsys.code.tex
+pgfsyssoftpath.code.tex    2008/07/18  (rcs-revision 1.7)
+pgfsysprotocol.code.tex    2006/10/16  (rcs-revision 1.4)
+ pgfcore.code.tex
+pgfcomp-version-0-65.sty    2007/07/03 v2.10 (rcs-revision 1.7)
+pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
+  pgffor.sty    2010/03/23 v2.10 (rcs-revision 1.18)
+ pgfkeys.sty    
+ pgfkeys.code.tex
+  pgffor.code.tex
+    tikz.code.tex
+md-frame-1.mdf    2013/08/18\ 1.9d: md-frame-1
+  ts1cmr.fd    1999/05/25 v2.5h Standard LaTeX font definitions
+   t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+supp-pdf.mkii
+epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
+  grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
+epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
+RS)
+ nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
+gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
+Springer_T2_book.out
+Springer_T2_book.out
+newcommands_keep.tex
+  t1lmss.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  ot1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omllmm.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omxlmex.fd    2009/10/30 v1.6 Font defs for Latin Modern
+    umsa.fd    2013/01/14 v3.01 AMS symbols A
+  mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
+    umsb.fd    2013/01/14 v3.01 AMS symbols B
+  mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+  t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  ts1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+Springer_T2_book.bbl
+Springer_T2_book.ind
+ ***********
+
+
+Package rerunfilecheck Warning: File `Springer_T2_book.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+
+LaTeX Font Warning: Size substitutions with differences
+(Font)              up to 0.75pt have occurred.
+
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ )
+(see the transcript file for additional information){/usr/share/texmf/fonts/enc
+/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/share
+/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm
+-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}</usr/share/texmf/fo
+nts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx9.pf
+b></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/ty
+pe1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></us
+r/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/pub
+lic/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/t
+exmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr
+9.pfb></usr/share/texmf/fonts/type1/public/lm/lmri12.pfb></usr/share/texmf/font
+s/type1/public/lm/lmri9.pfb></usr/share/texmf/fonts/type1/public/lm/lmss12.pfb>
+</usr/share/texmf/fonts/type1/public/lm/lmss9.pfb></usr/share/texmf/fonts/type1
+/public/lm/lmssbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></us
+r/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/pub
+lic/lm/lmtt12.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt8.pfb></usr/share
+/texmf/fonts/type1/public/lm/lmtt9.pfb>
+Output written on Springer_T2_book.pdf (21 pages, ).
+Transcript written on Springer_T2_book.log.
++ '[' 0 -ne 0 ']'
++ system pdflatex Springer_T2_book
++ pdflatex Springer_T2_book
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
+ restricted \write18 enabled.
+entering extended mode
+(./Springer_T2_book.tex
+LaTeX2e <2011/06/27>
+Babel <3.9f> and hyphenation patterns for 2 languages loaded.
+(/home/hpl/texmf/tex/latex/misc/svmonodo.cls
+
+LaTeX Warning: You have requested document class `svmonodo',
+               but the document class provides `svmono'.
+
+Document Class: svmono 2007/06/25 v5.4 
+Springer Verlag global LaTeX document class for monographs
+
+Class Springer-SVMono Warning: Specified option or subpackage "sectrefs" 
+(Springer-SVMono)              not found passing it to article class 
+(Springer-SVMono)              - on .
+
+
+Class Springer-SVMono Warning: Specified option or subpackage "open=right" 
+(Springer-SVMono)              not found passing it to article class 
+(Springer-SVMono)              - on .
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
+
+
+
+(/home/hpl/texmf/tex/latex/misc/t2do.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+
+
+
+
+Package amsmath Warning: Unable to redefine math accent \vec.
+
+) 
+
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
+
+
+Package caption Warning: Unsupported document class (or package) detected,
+(caption)                usage of the caption package is not recommended.
+See the caption package documentation for explanation.
+
+) (/usr/share/texlive/texmf-dist/tex/latex/tools/tabularx.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/ts1enc.def
+
+
+
+
+
+
+(/usr/share/texmf/tex/latex/xcolor/xcolor.sty
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
+
+
+(/home/hpl/texmf/tex/latex/misc/ptex2tex.sty
+(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
+<2008/02/07> (tvz))
+(/usr/share/texlive/texmf-dist/tex/latex/moreverb/moreverb.sty
+
+(/home/hpl/texmf/tex/latex/misc/anslistings.sty
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+
+
+
+
+
+
+
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
+
+(/home/hpl/texmf/tex/latex/misc/mdframed.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/l3names.sty
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-abspage.sty
+
+
+(/usr/share/texmf/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/share/texmf/tex/latex/pgf/basiclayer/pgf.sty
+(/usr/share/texmf/tex/latex/pgf/utilities/pgfrcs.sty
+
+(/usr/share/texmf/tex/generic/pgf/utilities/pgfutil-latex.def
+
+
+(/usr/share/texmf/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/share/texmf/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys.code.tex
+(/usr/share/texmf/tex/generic/pgf/utilities/pgfkeys.code.tex
+
+
+(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+
+
+
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcore.code.tex
+(/usr/share/texmf/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/share/texmf/tex/generic/pgf/math/pgfmathcalc.code.tex
+
+
+(/usr/share/texmf/tex/generic/pgf/math/pgfmathfunctions.code.tex
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
+
+
+
+
+
+
+
+
+(/usr/share/texmf/tex/latex/pgf/utilities/pgffor.sty
+(/usr/share/texmf/tex/latex/pgf/utilities/pgfkeys.sty
+
+
+(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+
+
+(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopat
+hs.code.tex))) (/usr/share/texlive/texmf-dist/tex/latex/mdframed/md-frame-1.mdf
+))
+Writing index file Springer_T2_book.idx
+
+LaTeX Warning: Unused global option(s):
+    [sectrefs,open=right].
+
+(./Springer_T2_book.aux) (/home/hpl/texmf/tex/latex/misc/ts1cmr.fd)
+
+(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+
+(./Springer_T2_book.out) (./Springer_T2_book.out)
+ABD: EveryShipout initializing macros (./newcommands_keep.tex)
+
+
+
+
+
+
+
+
+ [3
+Non-PDF special ignored!{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+[4]
+Overfull \hbox (120.12047pt too wide) 
+|[] 
+[5] 
+
+LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <5.5> not available
+(Font)              size <5> substituted on .
+
+
+LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <5.5> not available
+(Font)              size <5> substituted on .
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <5.5> not available
+(Font)              size <5> substituted on .
+
+[6]
+Overfull \hbox (120.12047pt too wide) 
+|[] 
+(./Springer_T2_book.toc) [7] [8]
+Chapter 1.
+
+Overfull \hbox (30.77882pt too wide) 
+[][][] 
+
+Overfull \hbox (120.12047pt too wide) 
+|[] 
+
+LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <8.5> not available
+(Font)              size <8> substituted on .
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <4.25> not available
+(Font)              size <5> substituted on .
+
+
+LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <8.5> not available
+(Font)              size <8> substituted on .
+
+
+LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <4.25> not available
+(Font)              size <5> substituted on .
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <8.5> not available
+(Font)              size <8> substituted on .
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <4.25> not available
+(Font)              size <5> substituted on .
+
+[1]  [2]
+Underfull \hbox (badness 6927) 
+\T1/lmr/m/n/11 (+20) or one may take the less rec-om-mended lazy ap-proach
+[3]
+
+
+...rest of part of LaTeX line number...
+
+[4]
+Chapter 2.
+
+Overfull \hbox (30.77882pt too wide) 
+[][][] 
+
+Overfull \hbox (120.12047pt too wide) 
+|[] 
+[5] [6]
+
+
+...rest of part of LaTeX line number...
+
+[7]
+
+
+...rest of part of LaTeX line number...
+
+[8] [9] [10]
+Appendix A.
+
+Overfull \hbox (30.77882pt too wide) 
+[][][] 
+
+Overfull \hbox (120.12047pt too wide) 
+|[] 
+[11] [12] (./Springer_T2_book.bbl
+Overfull \hbox (120.12047pt too wide) 
+|[] 
+) [13] [14] (./Springer_T2_book.ind
+Overfull \hbox (120.12047pt too wide) 
+|[] 
+[15]) (./Springer_T2_book.aux)
+
+ *File List*
+svmonodo.cls    2007/06/25 v5.4 
+Springer Verlag global LaTeX document class for monographs
+ article.cls    2007/10/19 v1.4h Standard LaTeX document class
+  size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
+   color.sty    1999/02/16
+   color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
+  pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
+infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
+ ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+  framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
+    t2do.sty    
+graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+  keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
+graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
+graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
+inputenc.sty    2008/03/30 v1.1d Input encoding file
+    utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
+   t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+  ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+  omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+ amsmath.sty    2013/01/14 v2.14 AMS math features
+ amstext.sty    2000/06/29 v2.01
+  amsgen.sty    1999/11/30 v2.0
+  amsbsy.sty    1999/11/29 v1.2d
+  amsopn.sty    1999/12/14 v2.01 operator names
+amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
+ amssymb.sty    2013/01/14 v3.01 AMS font symbols
+ caption.sty    2013/05/02 v3.3-89 Customizing captions (AR)
+caption3.sty    2013/05/02 v1.6-88 caption3 kernel (AR)
+tabularx.sty    1999/01/07 v2.07 `tabularx' package (DPC)
+   array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
+multicol.sty    2011/06/27 v1.7a multicolumn formatting (FMi)
+ fontenc.sty
+   t1enc.def    2005/09/27 v1.99g Standard LaTeX file
+marvosym.sty    2011/07/20 v2.2 Martin Vogel's Symbols font definitions
+textcomp.sty    2005/09/27 v1.99g Standard LaTeX package
+  ts1enc.def    2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
+  ts1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+footmisc.sty    2011/06/06 v5.5b a miscellany of footnote facilities
+ relsize.sty    2013/03/29 ver 4.1
+  epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
+ makeidx.sty    2000/03/29 v1.0m Standard LaTeX package
+setspace.sty    2011/12/19 v6.7a set line spacing
+  xcolor.sty    2007/01/21 v2.11 LaTeX color extensions (UK)
+   color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
+colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
+      bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
+microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
+microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
+microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
+ptex2tex.sty    
+fancyvrb.sty    2008/02/07
+moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
+verbatim.sty    2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
+anslistings.sty    2009/03/28 code highlighting; provided by Olivier Verdier <o
+livier@maths.lth.se>
+listings.sty    2013/07/10 1.5 (Carsten Heinz)
+ lstmisc.sty    2013/07/10 1.5 (Carsten Heinz)
+listings.cfg    2013/06/27 1.5pre1 listings configuration
+ fontenc.sty
+   t1enc.def    2005/09/27 v1.99g Standard LaTeX file
+ lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
+hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
+hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
+hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
+  hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
+ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
+  ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+ intcalc.sty    2007/09/27 v1.1 Expandable calculations with integers (HO)
+   ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
+etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
+kvdefinekeys.sty    2011/04/07 v1.3 Define keys (HO)
+pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
+pdfescape.sty    2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
+bigintcalc.sty    2012/04/08 v1.3 Expandable calculations on big integers (HO)
+  bitset.sty    2011/01/30 v1.1 Handle bit-vector datatype (HO)
+uniquecounter.sty    2011/01/30 v1.2 Provide unlimited unique counter (HO)
+letltxmacro.sty    2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
+ hopatch.sty    2012/05/28 v1.2 Wrapper for package hooks (HO)
+xcolor-patch.sty    2011/01/30 xcolor patch
+atveryend.sty    2011/06/30 v1.8 Hooks at the very end of document (HO)
+atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
+refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
+ hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
+ ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
+ auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
+kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
+  pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
+hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
+     url.sty    2006/04/12  ver 3.3  Verb mode for urls, etc.
+ hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
+rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
+mdframed.sty    2013/08/18 1.9d: mdframed
+  xparse.sty    2013/07/12 v4544 L3 Experimental document command parser
+   expl3.sty    2013/07/12 v4544 L3 Experimental code bundle wrapper
+ l3names.sty    2012/12/07 v4346 L3 Namespace for primitives
+l3bootstrap.sty    2013/01/08 v4420 L3 Experimental bootstrap code
+    etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
+l3basics.sty    2013/07/09 v4521 L3 Basic definitions
+ l3expan.sty    2013/07/09 v4521 L3 Argument expansion
+    l3tl.sty    2013/04/24 v4482 L3 Token lists
+   l3seq.sty    2013/05/26 v4500 L3 Sequences and stacks
+   l3int.sty    2013/04/24 v4482 L3 Integers
+ l3quark.sty    2013/07/09 v4521 L3 Quarks
+   l3prg.sty    2013/04/24 v4482 L3 Control structures
+ l3clist.sty    2013/05/26 v4500 L3 Comma separated lists
+ l3token.sty    2013/04/24 v4482 L3 Experimental token manipulation
+  l3prop.sty    2013/01/09 v4423 L3 Property lists
+   l3msg.sty    2013/01/08 v4412 L3 Messages
+  l3file.sty    2013/05/01 v4483 L3 File and I/O operations
+  l3skip.sty    2013/01/13 v4444 L3 Dimensions and skips
+  l3keys.sty    2013/07/12 v4544 L3 Experimental key-value interfaces
+    l3fp.sty    2013/07/09 v4521 L3 Floating points
+   l3box.sty    2013/04/24 v4482 L3 Experimental boxes
+l3coffins.sty    2012/09/09 v4212 L3 Coffin code layer
+ l3color.sty    2012/08/29 v4156 L3 Experimental color support
+l3luatex.sty    2012/08/03 v4049 L3 Experimental LuaTeX-specific functions
+l3candidates.sty    2013/07/09 v4521 L3 Experimental additions to l3kernel
+etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
+zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
+zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
+needspace.sty    2010/09/12 v1.3d reserve vertical space
+    tikz.sty    2010/10/13 v2.10 (rcs-revision 1.76)
+     pgf.sty    2008/01/15 v2.10 (rcs-revision 1.12)
+  pgfrcs.sty    2010/10/25 v2.10 (rcs-revision 1.24)
+everyshi.sty    2001/05/15 v3.00 EveryShipout Package (MS)
+  pgfrcs.code.tex
+ pgfcore.sty    2010/04/11 v2.10 (rcs-revision 1.7)
+  pgfsys.sty    2010/06/30 v2.10 (rcs-revision 1.37)
+  pgfsys.code.tex
+pgfsyssoftpath.code.tex    2008/07/18  (rcs-revision 1.7)
+pgfsysprotocol.code.tex    2006/10/16  (rcs-revision 1.4)
+ pgfcore.code.tex
+pgfcomp-version-0-65.sty    2007/07/03 v2.10 (rcs-revision 1.7)
+pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
+  pgffor.sty    2010/03/23 v2.10 (rcs-revision 1.18)
+ pgfkeys.sty    
+ pgfkeys.code.tex
+  pgffor.code.tex
+    tikz.code.tex
+md-frame-1.mdf    2013/08/18\ 1.9d: md-frame-1
+  ts1cmr.fd    1999/05/25 v2.5h Standard LaTeX font definitions
+   t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+supp-pdf.mkii
+epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
+  grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
+epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
+RS)
+ nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
+gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
+Springer_T2_book.out
+Springer_T2_book.out
+newcommands_keep.tex
+  t1lmss.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  ot1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omllmm.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omxlmex.fd    2009/10/30 v1.6 Font defs for Latin Modern
+    umsa.fd    2013/01/14 v3.01 AMS symbols A
+  mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
+    umsb.fd    2013/01/14 v3.01 AMS symbols B
+  mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+  t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  ts1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+Springer_T2_book.bbl
+Springer_T2_book.ind
+ ***********
+
+
+LaTeX Font Warning: Size substitutions with differences
+(Font)              up to 0.75pt have occurred.
+
+
+LaTeX Warning: There were undefined references.
+
+ )
+(see the transcript file for additional information){/usr/share/texmf/fonts/enc
+/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/share
+/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm
+-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}</usr/share/texmf/fo
+nts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.p
+fb></usr/share/texmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/t
+ype1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></us
+r/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/pub
+lic/lm/lmr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/te
+xmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf/fonts/type1/public/lm/lmri
+12.pfb></usr/share/texmf/fonts/type1/public/lm/lmri9.pfb></usr/share/texmf/font
+s/type1/public/lm/lmss12.pfb></usr/share/texmf/fonts/type1/public/lm/lmss9.pfb>
+</usr/share/texmf/fonts/type1/public/lm/lmssbx10.pfb></usr/share/texmf/fonts/ty
+pe1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></us
+r/share/texmf/fonts/type1/public/lm/lmtt12.pfb></usr/share/texmf/fonts/type1/pu
+blic/lm/lmtt8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
+Output written on Springer_T2_book.pdf (21 pages, ).
+Transcript written on Springer_T2_book.log.
++ '[' 0 -ne 0 ']'
 + cd ..
 + system doconce guess_encoding encoding1.do.txt
 + doconce guess_encoding encoding1.do.txt
@@ -91294,7 +94331,22 @@ Package hyperref Warning: old toc file detected, not used; run LaTeX again.
 Overfull \hbox (4.55762pt too wide) 
 \T1/ptm/m/n/10 HTML. Other out-lets in-clude Google's \T1/pcr/m/n/10 blogger.co
 m\T1/ptm/m/n/10 , Wikipedia/Wikibooks, IPython
- [1]
+
+Overfull \hbox (4.50082pt too wide) in alignment at lines 155--163
+ [] [] 
+
+Overfull \hbox (4.50082pt too wide) in alignment at lines 163--171
+ [] [] 
+
+Overfull \hbox (4.50082pt too wide) in alignment at lines 171--173
+ [] [] 
+
+Overfull \hbox (4.50082pt too wide) in alignment at lines 173--174
+ [] [] 
+
+Overfull \hbox (4.50082pt too wide) in alignment at lines 174--271
+ [] [] 
+[1]
 Overfull \hbox (455.00006pt too wide) 
 []\T1/pcr/m/n/10 AUTHOR: H. P. Langtangen at Center for Biomedical Computing, S
 imula Research Laboratory & Dept. of Informatics, Univ. of Oslo  
@@ -91674,9 +94726,9 @@ Overfull \hbox (101.00006pt too wide)
 []\T1/pcr/m/n/10 At the very end of the exercise it may be appropriate to summa
 rize  
 
-Overfull \hbox (107.00006pt too wide) 
-[]\T1/pcr/m/n/10 and give some perspectives. The text inside the !bremarks-!ere
-marks  
+Overfull \hbox (155.00006pt too wide) 
+[]\T1/pcr/m/n/10 and give some perspectives. The text inside the `!bremarks` an
+d `!eremarks`  
 
 Overfull \hbox (41.00006pt too wide) 
 []\T1/pcr/m/n/10 directives is always typeset at the end of the exercise.  
@@ -91772,7 +94824,22 @@ Package hyperref Message: Driver (default): hdvips.
 Overfull \hbox (4.55762pt too wide) 
 \T1/ptm/m/n/10 HTML. Other out-lets in-clude Google's \T1/pcr/m/n/10 blogger.co
 m\T1/ptm/m/n/10 , Wikipedia/Wikibooks, IPython
-[1]  [2]
+[1] 
+Overfull \hbox (4.50082pt too wide) in alignment at lines 155--163
+ [] [] 
+
+Overfull \hbox (4.50082pt too wide) in alignment at lines 163--171
+ [] [] 
+
+Overfull \hbox (4.50082pt too wide) in alignment at lines 171--173
+ [] [] 
+
+Overfull \hbox (4.50082pt too wide) in alignment at lines 173--174
+ [] [] 
+
+Overfull \hbox (4.50082pt too wide) in alignment at lines 174--271
+ [] [] 
+[2]
 Overfull \hbox (455.00006pt too wide) 
 []\T1/pcr/m/n/10 AUTHOR: H. P. Langtangen at Center for Biomedical Computing, S
 imula Research Laboratory & Dept. of Informatics, Univ. of Oslo  
@@ -92148,9 +95215,9 @@ Overfull \hbox (101.00006pt too wide)
 []\T1/pcr/m/n/10 At the very end of the exercise it may be appropriate to summa
 rize  
 
-Overfull \hbox (107.00006pt too wide) 
-[]\T1/pcr/m/n/10 and give some perspectives. The text inside the !bremarks-!ere
-marks  
+Overfull \hbox (155.00006pt too wide) 
+[]\T1/pcr/m/n/10 and give some perspectives. The text inside the `!bremarks` an
+d `!eremarks`  
 
 Overfull \hbox (41.00006pt too wide) 
 []\T1/pcr/m/n/10 directives is always typeset at the end of the exercise.  
