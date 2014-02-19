@@ -249,7 +249,7 @@ idx{movies}
 Here is figure ref{myfig} with a long multi-line caption
 and an extra space before the FIGURE keyword.
 
- FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long
+FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long
 caption spanning
 several lines and containing verbatim words like `my_file_v1` and `my_file_v2`
 as well as math with subscript as in $t_{i+1}$. label{myfig}
@@ -724,12 +724,10 @@ let the program count the number of heads.
 Use `r = random.random()` and define head as `r <= 0.5`.
 !ehint
 
-# Test syntax error
-
-  !bhint
+!bhint
 Draw an integer among $\{1,2\}$ with
 `r = random.randint(1,2)` and define head when `r` is 1.
-  !ehint
+!ehint
 
 !bans
 If the `random.random()` function returns a number $<1/2$, let it be

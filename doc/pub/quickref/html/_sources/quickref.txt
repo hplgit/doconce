@@ -5,7 +5,7 @@ Doconce Quick Reference
 -----------------------
 
 :Author: Hans Petter Langtangen
-:Date: Feb 17, 2014
+:Date: Feb 19, 2014
 
 **WARNING: This quick reference is very incomplete!**
 
@@ -64,26 +64,26 @@ Emacs. Store the raw version of the file in the home directory and add
 Besides syntax highlighting of Doconce documents, this Emacs mode
 provides a lot of shortcuts for setting up many elements in a document:
 
-==================================  ==================================  
-            Emacs key                             Action                
-==================================  ==================================  
-Ctrl+c f                            figure                              
-Ctrl+c v                            movie/video                         
-Ctrl+c h1                           heading level 1 (section/h1)        
-Ctrl+c h2                           heading level 2 (subsection/h2)     
-Ctrl+c h3                           heading level 2 (subsection/h3)     
-Ctrl+c hp                           heading for paragraph               
-Ctrl+c me                           math environment: !bt equation !et  
-Ctrl+c ma                           math environment: !bt align !et     
-Ctrl+c ce                           code environment: !bc !ec           
-Ctrl+c cf                           code from file: @@@CODE             
-Ctrl+c table2                       table with 2 columns                
-Ctrl+c table3                       table with 3 columns                
-Ctrl+c table4                       table with 4 columns                
-Ctrl+c exer                         exercise outline                    
-Ctrl+c slide                        slide outline                       
-Ctrl+c help                         print this table                    
-==================================  ==================================  
+==========================================  ==========================================  
+                Emacs key                                     Action                    
+==========================================  ==========================================  
+Ctrl+c f                                    figure                                      
+Ctrl+c v                                    movie/video                                 
+Ctrl+c h1                                   heading level 1 (section/h1)                
+Ctrl+c h2                                   heading level 2 (subsection/h2)             
+Ctrl+c h3                                   heading level 2 (subsection/h3)             
+Ctrl+c hp                                   heading for paragraph                       
+Ctrl+c me                                   math environment: ``!bt`` equation ``!et``  
+Ctrl+c ma                                   math environment: ``!bt`` align ``!et``     
+Ctrl+c ce                                   code environment: ``!bc`` code ``!ec``      
+Ctrl+c cf                                   code from file: ``@@@CODE``                 
+Ctrl+c table2                               table with 2 columns                        
+Ctrl+c table3                               table with 3 columns                        
+Ctrl+c table4                               table with 4 columns                        
+Ctrl+c exer                                 exercise outline                            
+Ctrl+c slide                                slide outline                               
+Ctrl+c help                                 print this table                            
+==========================================  ==========================================  
 
 Title, Authors, and Date
 ------------------------
@@ -1047,7 +1047,7 @@ setup-up:
         
         !bremarks
         At the very end of the exercise it may be appropriate to summarize
-        and give some perspectives. The text inside the !bremarks-!eremarks
+        and give some perspectives. The text inside the `!bremarks` and `!eremarks`
         directives is always typeset at the end of the exercise.
         !eremarks
         
