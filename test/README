@@ -1,0 +1,17 @@
+This directory contains the primary doconce tests.
+All tests are classical regression tests where text is
+generated in many files, these are concatenated, and then
+compared with the big reference file test.r.
+The tests are run by
+
+  python test.verify
+
+A diff test.v test.r show differences of generated text
+(test.v) and reference data (test.r).
+
+Dependencies for the test problems run by test.verify are
+basically all software that doconce depends on, see
+installation instructions in ../doc/pub/manual/manual.html.
+
+
+

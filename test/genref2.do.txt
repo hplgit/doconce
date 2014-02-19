@@ -1,0 +1,11 @@
+TITLE: Some references
+AUTHOR: hpl
+DATE: Jan 31, 3065
+
+# #include "_genref2.do.txt"
+
+# Externaldocuments: genref1
+
+======= References =======
+
+BIBFILE: genref.pub

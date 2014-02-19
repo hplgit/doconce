@@ -1,0 +1,108 @@
+# Text with wrong doconce format
+
+A list followed by a code block works okay:
+
+  * Third point
+  * Fourth point
+!bc cod
+some verbatime stuff
+!ec
+
+=== Section heading before code is caught by the syntax check ===
+label{my} idx{failure}
+
+!bc
+more verbatime stuff
+!ec
+
+Next we see if backslashes are detected: \label{mylab}\idx{youridx}
+And a reference to \cite{mybook}.
+
+__Paragraph before code is bad.__
+
+# But here it could be fooled by a comment
+
+!bc
+More verbatim stuff.
+!ec
+
+Can we successfully say `__call__` and `__add__` and avoid having them as
+bad paragraphs?
+
+Figure with just an image and no caption must be handled.
+
+FIGURE: [../doc/src/manual/fig/wave1D]
+
+Figure with label, but no caption.
+
+FIGURE: [../doc/src/manual/fig/wave1D] label{myl1}
+
+Figure with no comma between filename and options, and wrong path must
+give error.
+
+FIGURE: [../doc/manual/fig/wave1D width=800]
+
+Figure with math only in the caption, which causes sphinx to use an
+empty figure name, is problematic.
+
+FIGURE: [../doc/manual/fig/wave1D, width=800] $a=50$
+
+Figure with hyperlink in caption creates problems with latex and --device=paper
+because the link becomes a footnote inside the caption.
+
+FIGURE: [../doc/manual/fig/wave1D, width=800] "Google": "http://google.com".
+
+
+# http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.webm
+Movie/figure with nonexistent URL must give error messages.
+
+MOVIE: [http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.ogg, width=800] $a=50$
+
+FIGURE: [http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media99, width=800] $a=50$
+
+Links with mix of verbatim and plain text is not good: "`myfile.py` file": "http://some.where.net/myfile.py".
+
+More text...
+# Comment before math is ok
+!bt
+\begin{align}
+a &= b,  label{eq1}\\
+a &= b,  label{eq2}
+\end{align}
+!et
+
+# Comment before list
+
+ * A1
+ * A2
+
+Normal text.
+
+===== Normal section with exercise envirs are detected by syntax checks =====
+
+!bhint
+Here is a hint.
+!ehint
+
+Normal text.
+
+!bsubex
+Just a loner subexercise begin.
+!bsol
+Here is a solution.
+!esol
+Normal text.
+
+===== Links to local files shall give warning =====
+
+Try this "link": "../lib/doconce/doconce.py".
+
+===== Failure of tables =====
+
+|--------------------------------------|
+|  heading1  |  heading2 |
+|--l---|---l---|
+|`%s`|`%e`|
+|$a=b$|$\mbox{math}$|
+|--------------------------------------|
+

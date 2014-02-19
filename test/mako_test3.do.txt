@@ -1,0 +1,24 @@
+# Purpose: see if doconce detects dangerous lines for mako,
+# starting with a %, and here it is crucial since the
+# running text does need mako
+
+% if FORMAT in ("html", "latex", "pdflatex", "sphinx", "pandoc"):
+
+!bc
+/* Here is some SWIG code code */
+%%module MyMod
+%%{
+...
+%%}
+
+%%init %{
+import_array();
+%%}
+!ec
+% endif
+
+And more code:
+!bc
+%% Matlab comment only
+...
+!ec

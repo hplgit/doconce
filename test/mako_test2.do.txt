@@ -1,0 +1,21 @@
+# Purpose: see if doconce detects dangerous lines for mako,
+# starting with a %, but here it is not crucial since the
+# running text does not need mako :-)
+
+!bc
+/* Here is some SWIG code code */
+%module MyMod
+%{
+...
+%}
+
+%init %{
+import_array();
+%}
+!ec
+
+And more code:
+!bc
+% Matlab comment only
+...
+!ec
