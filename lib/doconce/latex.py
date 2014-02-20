@@ -2245,7 +2245,7 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
                 # mdfbox, the most flexible/custom admon construction
                 INTRO['latex'] += r"""
 %% Admonition style "mdfbox" is an oval colored box based on mdframed
-%% "%(_Admon)s" admon
+%% "%(admon)s" admon
 %(define_bgcolor)s
 \newmdenv[
   skipabove=15pt,

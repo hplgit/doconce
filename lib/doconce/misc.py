@@ -5690,6 +5690,7 @@ def capitalize():
         ('on windows', 'on Windows'),
         ('in windows', 'in Windows'),
         ('under windows', 'under Windows'),
+        ("python's", "Python's"),
         ]
     for name in 'Newton', 'Lagrange', 'Einstein', 'Poisson', 'Taylor', 'Gibb', \
             'Heun', :
