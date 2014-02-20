@@ -393,7 +393,7 @@ methods for showing movies, set by the option `-DMOVIE=...` to
  o `media9`:
    the `media9` package is used for Flash and MP4 movies, `movie15`
    for MPEG and AVI files, and a simple `\href{run:file}{link}` command
-   for other formats. Only Acrobat Reader support displaying these
+   for other formats. Only Acrobat Reader supports displaying these
    type of movies.
  o `multimedia`: the `\movie` command (known from LaTeX Beamer) is used
    for movies.
@@ -2035,24 +2035,24 @@ Several values are available:
  * `colors1` (inspired by the NumPy User Guide) applies different colors for
    the different admons with an embedded icon.
  * `colors2` is like `colors1` but the text is wrapped around the icon.
- * `graybox1` is the default and gives rounded gray boxes with a potential
-   title and no icon.
+ * `mdfbox` is the default and gives rounded (gray) boxes with a potential
+   title and no icon (using the very flexible `mdframed` packaged in LaTeX)
  * `graybox2` has square corners, gray background, and is narrower
-   than `graybox1`. One special feature of `graybox2` is the summary
+   than `mdfbox`. One special feature of `graybox2` is the summary
    admon, which has a different look with horizontal rules only,
    and for A4 format, the summary box is half of the text width and
    wrapped with running text around (if it does not contain verbatim text,
    in that case the standard `graybox2` style is used). This small
    summary box is effective in proposals to disperse small paragraphs
    of key points around.
- * `graybox3` has icons and a light gray background.
- * `yellowbox` has icons and a light yellow background.
+ * `grayicon` has icons and a light gray background.
+ * `yellowicon` has icons and a light yellow background.
 
 There is also an option `--latex_admon_color=...` that can be used
 to override the default color. Values are either saturated colors
 like `gray!10` or an RGB tuple `0.95,0.91,0.97`. The chosen color
 replaces all default colors for all admon styles except `paragraph`.
-For example, an oval white box is produced by `--latex_admon=graybox1`
+For example, an oval white box is produced by `--latex_admon=mdfbox`
 and `--latex_admon_color=white`.
 
 === The Box Environment ===

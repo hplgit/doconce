@@ -470,7 +470,7 @@ look for options starting with `--latex` to get a more verbose description):
  * `--latex_todonotes`
  * `--latex_double_spacing`
  * `--latex_preamble=filename`
- * `--latex_admon=graybox1,graybox2,graybox3,yellowbox,paragraph,colors1,colors2`
+ * `--latex_admon=mdfbox,graybox2,grayicon,yellowicon,paragraph,colors1,colors2`
  * `--latex_admon_color=0.34,0.02,0.8`
  * `--latex_admon_envir_map=2`
  * `--latex_exercise_numbering=absolute,chapter`

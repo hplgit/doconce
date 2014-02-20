@@ -299,10 +299,6 @@ def html_code(filestr, code_blocks, code_block_types,
     for i in range(len(code_blocks)):
         if code_block_types[i].startswith('pyoptpro'):
             needs_online_python_tutor = True
-            if pygm is None:
-                print '*** error: cannot use Python Online Tutorial (!bc pyoptpro or .pyoptpro file)'
-                print '    without pygmentized code'
-                _abort()
             code_blocks[i] = online_python_tutor(code_blocks[i],
                                                  return_tp='iframe')
 
