@@ -149,21 +149,18 @@ to the doconce-generated preamble."""),
 computer programs."""),
     ('--latex_admon=',
      """Type of admonition in LaTeX:
-colors1:  (inspired by the NumPy User Guide) applies different colors for
-          the different admons with an embedded icon,
-colors2:  like `colors1` but the text is wrapped around the icon,
-graybox1 (default): rounded gray boxes with a potential title and no icon,
-graybox2:  box with square corners, gray background, and is narrower
-           than graybox1 (one special feature of graybox2 is the summary
-           admon, which has a different look with horizontal rules only,
-           and for A4 format, the summary box is half of the text width and
-           wrapped with running text around (if it does not contain verbatim
-           text, in that case the standard graybox2 style is used). This small
-           summary box is effective in proposals to disperse small paragraphs
-           of key points around),
-graybox3:  box with icons and a light gray background,
-yellowbox: box icons and a light yellow background,
-paragraph: plain paragraph with boldface heading.
+colors1:   (inspired by the NumPy User Guide) applies different colors for
+            the different admons with an embedded icon,
+colors2:    like `colors1` but the text is wrapped around the icon,
+mdfbox:     rounded gray boxes with a potential title and no icon (default),
+graybox2:   box with square corners, gray background, and narrower
+            than mdfbox, if code it reduces to something like mdfbox
+            (mdframed based); the summary admon is in case of A4 format
+            only half of the text width with text wrapped around
+            (effective for proposals and articles),
+grayicon:   box with gray icons and a default light gray background,
+yellowicon: box yellow icons and a default light yellow background,
+paragraph:  plain paragraph with boldface heading.
 """),
     ('--latex_admon_color=',
      """The color to be used as background in admonitions.
@@ -172,6 +169,8 @@ Either rgb tuple or saturated color a la yellow!5:
  '--latex_admon_color=yellow!5'
 (note the quotes, needed for bash, in the latter example)
 """),
+    ('--latex_admon_title_no_period',
+     'Do not add a period at the end of admon titles in LaTeX.'),
     ('--latex_admon_envir_map=',
      """Mapping of code envirs to new envir names inside admons (e.g., to get
 a different code typesetting inside admons. If a number, say 2, as in
@@ -4124,10 +4123,10 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
     admons = 'notice', 'summary', 'warning', 'question', 'block'
     for admon in admons:
         Admon = admon[0].upper() + admon[1:]
-        for envir in 'colors1', 'colors2', 'graybox3', 'yellowbox':
+        for envir in 'colors1', 'colors2', 'grayicon', 'yellowicon':
             slides += r"""\newenvironment{%(admon)s_%(envir)sadmon}[1][]{\begin{block}{#1}}{\end{block}}
 """ % vars()
-    for envir in 'paragraph', 'graybox1', 'graybox2':
+    for envir in 'paragraph', 'mdfbox', 'graybox2':
         slides += r"""\newenvironment{%(envir)sadmon}[1][]{\begin{block}{#1}}{\end{block}}
 """ % vars()
     slides += r"""\newcommand{\grayboxhrules}[1]{\begin{block}{}#1\end{block}}
@@ -5692,6 +5691,7 @@ def capitalize():
         ('on windows', 'on Windows'),
         ('in windows', 'in Windows'),
         ('under windows', 'under Windows'),
+        ("python's", "Python's"),
         ]
     for name in 'Newton', 'Lagrange', 'Einstein', 'Poisson', 'Taylor', 'Gibb', \
             'Heun', :

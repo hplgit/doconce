@@ -219,11 +219,11 @@ doconce format pandoc $name
 doconce md2latex $name
 
 # Test admonitions
-admon_tps="colors1 graybox1 paragraph graybox2 yellowbox graybox3 colors2"
+admon_tps="colors1 mdfbox paragraph graybox2 yellowicon grayicon colors2"
 for admon_tp in $admon_tps; do
-if [ $admon_tp = 'graybox1' ]; then
+if [ $admon_tp = 'mdfbox' ]; then
    color="--latex_admon_color=gray!6"
-elif [ $admon_tp = 'graybox3' ]; then
+elif [ $admon_tp = 'grayicon' ]; then
    color="--latex_admon_color=gray!20"
 else
    color=
@@ -243,7 +243,7 @@ rm -rf latex_figs
 done
 
 # Test different code envirs inside admons
-doconce format pdflatex admon --latex_admon=graybox1 --latex_admon_color=1,1,1 --latex_admon_envir_map=2
+doconce format pdflatex admon --latex_admon=mdfbox --latex_admon_color=1,1,1 --latex_admon_envir_map=2
 doconce ptex2tex admon pycod2=minted pypro2=minted pycod=Verbatim pypro=Verbatim
 cp admon.tex admon_double_envirs.tex
 

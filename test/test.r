@@ -1600,10 +1600,10 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % --- begin definitions of admonition environments ---
 
-% Admonition style "graybox1" is an oval colored box
-\colorlet{graybox1_background}{gray!5}
+% Admonition style "mdfbox" is an oval colored box
+\colorlet{mdfbox_background}{gray!5}
 \newmdenv[
-  backgroundcolor=graybox1_background,
+  backgroundcolor=mdfbox_background,
   skipabove=\topsep,
   skipbelow=\topsep,
   outerlinewidth=0,
@@ -1611,13 +1611,13 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
   rightmargin=0,
   roundcorner=5,
   needspace=0pt,
-]{graybox1mdframed}
+]{mdfboxmdframed}
 
-\newenvironment{graybox1admon}[1][]{
-\begin{graybox1mdframed}[frametitle=#1]
+\newenvironment{mdfboxadmon}[1][]{
+\begin{mdfboxmdframed}[frametitle=#1]
 }
 {
-\end{graybox1mdframed}
+\end{mdfboxmdframed}
 }
 
 % --- end of definitions of admonition environments ---
@@ -2902,9 +2902,9 @@ With label.
 Without label.
 
 
-\begin{graybox1admon}[Tip.]
+\begin{mdfboxadmon}[Tip.]
 Here is a tip or hint box, typeset as a notice box.
-\end{graybox1admon}
+\end{mdfboxadmon}
 
 
 
@@ -2924,7 +2924,7 @@ Greg Wilson' excellent \href{{http://software-carpentry.org/2010/07/script-for-i
 from using version control systems.
 
 
-\begin{graybox1admon}[Summary.]
+\begin{mdfboxadmon}[Summary.]
 \textbf{Bold remark:} Make some text with this summary.
 Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
@@ -2935,7 +2935,7 @@ Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
-\end{graybox1admon}
+\end{mdfboxadmon}
 
 
 
@@ -3129,10 +3129,10 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % --- begin definitions of admonition environments ---
 
-% Admonition style "graybox1" is an oval colored box
-\colorlet{graybox1_background}{gray!5}
+% Admonition style "mdfbox" is an oval colored box
+\colorlet{mdfbox_background}{gray!5}
 \newmdenv[
-  backgroundcolor=graybox1_background,
+  backgroundcolor=mdfbox_background,
   skipabove=\topsep,
   skipbelow=\topsep,
   outerlinewidth=0,
@@ -3140,13 +3140,13 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
   rightmargin=0,
   roundcorner=5,
   needspace=0pt,
-]{graybox1mdframed}
+]{mdfboxmdframed}
 
-\newenvironment{graybox1admon}[1][]{
-\begin{graybox1mdframed}[frametitle=#1]
+\newenvironment{mdfboxadmon}[1][]{
+\begin{mdfboxmdframed}[frametitle=#1]
 }
 {
-\end{graybox1mdframed}
+\end{mdfboxmdframed}
 }
 
 % --- end of definitions of admonition environments ---
@@ -4561,9 +4561,9 @@ With label.
 Without label.
 
 
-\begin{graybox1admon}[Tip.]
+\begin{mdfboxadmon}[Tip.]
 Here is a tip or hint box, typeset as a notice box.
-\end{graybox1admon}
+\end{mdfboxadmon}
 
 
 
@@ -4583,7 +4583,7 @@ Greg Wilson' excellent \href{{http://software--carpentry.org/2010/07/script--for
 from using version control systems.
 
 
-\begin{graybox1admon}[Summary.]
+\begin{mdfboxadmon}[Summary.]
 \textbf{Bold remark:} Make some text with this summary.
 Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
@@ -4594,7 +4594,7 @@ Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
-\end{graybox1admon}
+\end{mdfboxadmon}
 
 
 
@@ -4797,10 +4797,10 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % --- begin definitions of admonition environments ---
 
-% Admonition style "graybox1" is an oval colored box
-\colorlet{graybox1_background}{gray!5}
+% Admonition style "mdfbox" is an oval colored box
+\colorlet{mdfbox_background}{gray!5}
 \newmdenv[
-  backgroundcolor=graybox1_background,
+  backgroundcolor=mdfbox_background,
   skipabove=\topsep,
   skipbelow=\topsep,
   outerlinewidth=0,
@@ -4808,13 +4808,13 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
   rightmargin=0,
   roundcorner=5,
   needspace=0pt,
-]{graybox1mdframed}
+]{mdfboxmdframed}
 
-\newenvironment{graybox1admon}[1][]{
-\begin{graybox1mdframed}[frametitle=#1]
+\newenvironment{mdfboxadmon}[1][]{
+\begin{mdfboxmdframed}[frametitle=#1]
 }
 {
-\end{graybox1mdframed}
+\end{mdfboxmdframed}
 }
 
 % --- end of definitions of admonition environments ---
@@ -6183,9 +6183,9 @@ With label.
 Without label.
 
 
-\begin{graybox1admon}[Tip.]
+\begin{mdfboxadmon}[Tip.]
 Here is a tip or hint box, typeset as a notice box.
-\end{graybox1admon}
+\end{mdfboxadmon}
 
 
 
@@ -6205,7 +6205,7 @@ Greg Wilson' excellent \href{{http://software--carpentry.org/2010/07/script--for
 from using version control systems.
 
 
-\begin{graybox1admon}[Summary.]
+\begin{mdfboxadmon}[Summary.]
 \textbf{Bold remark:} Make some text with this summary.
 Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
@@ -6216,7 +6216,7 @@ Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
-\end{graybox1admon}
+\end{mdfboxadmon}
 
 
 
@@ -28946,10 +28946,10 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % --- begin definitions of admonition environments ---
 
-% Admonition style "graybox1" is an oval colored box
-\colorlet{graybox1_background}{gray!5}
+% Admonition style "mdfbox" is an oval colored box
+\colorlet{mdfbox_background}{gray!5}
 \newmdenv[
-  backgroundcolor=graybox1_background,
+  backgroundcolor=mdfbox_background,
   skipabove=\topsep,
   skipbelow=\topsep,
   outerlinewidth=0,
@@ -28957,13 +28957,13 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
   rightmargin=0,
   roundcorner=5,
   needspace=0pt,
-]{graybox1mdframed}
+]{mdfboxmdframed}
 
-\newenvironment{graybox1admon}[1][]{
-\begin{graybox1mdframed}[frametitle=#1]
+\newenvironment{mdfboxadmon}[1][]{
+\begin{mdfboxmdframed}[frametitle=#1]
 }
 {
-\end{graybox1mdframed}
+\end{mdfboxmdframed}
 }
 
 % --- end of definitions of admonition environments ---
@@ -30230,9 +30230,9 @@ With label.
 Without label.
 
 
-\begin{graybox1admon}[Tip.]
+\begin{mdfboxadmon}[Tip.]
 Here is a tip or hint box, typeset as a notice box.
-\end{graybox1admon}
+\end{mdfboxadmon}
 
 
 
@@ -30252,7 +30252,7 @@ Greg Wilson' excellent \href{{http://software-carpentry.org/2010/07/script-for-i
 from using version control systems.
 
 
-\begin{graybox1admon}[Summary.]
+\begin{mdfboxadmon}[Summary.]
 \textbf{Bold remark:} Make some text with this summary.
 Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
@@ -30263,7 +30263,7 @@ Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
-\end{graybox1admon}
+\end{mdfboxadmon}
 
 
 
@@ -30996,11 +30996,11 @@ doconce format pandoc $name
 doconce md2latex $name
 
 # Test admonitions
-admon_tps="colors1 graybox1 paragraph graybox2 yellowbox graybox3 colors2"
+admon_tps="colors1 mdfbox paragraph graybox2 yellowicon grayicon colors2"
 for admon_tp in $admon_tps; do
-if [ $admon_tp = 'graybox1' ]; then
+if [ $admon_tp = 'mdfbox' ]; then
    color="--latex_admon_color=gray!6"
-elif [ $admon_tp = 'graybox3' ]; then
+elif [ $admon_tp = 'grayicon' ]; then
    color="--latex_admon_color=gray!20"
 else
    color=
@@ -31020,7 +31020,7 @@ rm -rf latex_figs
 done
 
 # Test different code envirs inside admons
-doconce format pdflatex admon --latex_admon=graybox1 --latex_admon_color=1,1,1 --latex_admon_envir_map=2
+doconce format pdflatex admon --latex_admon=mdfbox --latex_admon_color=1,1,1 --latex_admon_envir_map=2
 doconce ptex2tex admon pycod2=minted pypro2=minted pycod=Verbatim pypro=Verbatim
 cp admon.tex admon_double_envirs.tex
 
@@ -37117,10 +37117,10 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % --- begin definitions of admonition environments ---
 
-% Admonition style "graybox1" is an oval colored box
-\definecolor{graybox1_background}{rgb}{1,1,1}
+% Admonition style "mdfbox" is an oval colored box
+\definecolor{mdfbox_background}{rgb}{1,1,1}
 \newmdenv[
-  backgroundcolor=graybox1_background,
+  backgroundcolor=mdfbox_background,
   skipabove=\topsep,
   skipbelow=\topsep,
   outerlinewidth=0,
@@ -37128,13 +37128,13 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
   rightmargin=0,
   roundcorner=5,
   needspace=0pt,
-]{graybox1mdframed}
+]{mdfboxmdframed}
 
-\newenvironment{graybox1admon}[1][]{
-\begin{graybox1mdframed}[frametitle=#1]
+\newenvironment{mdfboxadmon}[1][]{
+\begin{mdfboxmdframed}[frametitle=#1]
 }
 {
-\end{graybox1mdframed}
+\end{mdfboxmdframed}
 }
 
 % --- end of definitions of admonition environments ---
@@ -37305,7 +37305,7 @@ def some_code(x):
 Let us start with a plain warning environment.
 
 
-\begin{graybox1admon}[Warning.]
+\begin{mdfboxadmon}[Warning.]
 And here is a warning about something to pay attention to. We
 test how the heading behave and add quite some extra texts
 in comparison with the other admons.
@@ -37324,14 +37324,14 @@ And more and more text.
 And more and more text.
 And more and more text.
 And more and more text.
-\end{graybox1admon}
+\end{mdfboxadmon}
 
 
 
 Test warning with title:
 
 
-\begin{graybox1admon}[{\large Title ending with math $\sqrt{2}\approx 1.4$}.]
+\begin{mdfboxadmon}[{\large Title ending with math $\sqrt{2}\approx 1.4$}.]
 {\large And here comes some text with bad news in larger font.
 
 Also some code:
@@ -37346,25 +37346,25 @@ And a complete program
 print "Hello, World!"
 \epypro2
 \par}
-\end{graybox1admon}
+\end{mdfboxadmon}
 
 
 
 Test warning with large title with math:
 
 
-\begin{graybox1admon}[{\large Watch out for $\nabla\cdot\bm{u}=0$ equations}.]
+\begin{mdfboxadmon}[{\large Watch out for $\nabla\cdot\bm{u}=0$ equations}.]
 {\large Divergence freedom is often problematic from a numerical point
 of view.
 \par}
-\end{graybox1admon}
+\end{mdfboxadmon}
 
 
 
 Then we test a block, which is guaranteed to never have any admon icon.
 
 
-\begin{graybox1admon}[Block with title.]
+\begin{mdfboxadmon}[Block with title.]
 \vspace{0.5mm}\par\noindent
 {\footnotesize Here is a block of text with title. It is typeset
 \emph{without any icon} and is useful when you want some admons with icon
@@ -37373,16 +37373,16 @@ more comment-style text or text that really goes deeper or talks
 about fun facts that are not strictly necessary for the main flow
 of understanding.
 \par}
-\end{graybox1admon}
+\end{mdfboxadmon}
 
 
 
 
 
-\begin{graybox1admon}[]
+\begin{mdfboxadmon}[]
 Here is a block of text with no title. As above, it is typeset without any icon
 and is useful when you want some admons with icon and some without.
-\end{graybox1admon}
+\end{mdfboxadmon}
 
 
 
@@ -37392,7 +37392,7 @@ The next admonition features a title "Note, eventually!".
 % those formats automatically add : to the admonition title.
 
 
-\begin{graybox1admon}[Note eventually!]
+\begin{mdfboxadmon}[Note eventually!]
 Ah, we are soon close to the end (with illegal font size specification!).
 But first a bit of math where we define $\theta$ and $\bm{r}$:
 
@@ -37400,39 +37400,39 @@ But first a bit of math where we define $\theta$ and $\bm{r}$:
 \theta &= q^2,\\
 \bm{r} &= \varrho\bm{i}
 \end{align*}
-\end{graybox1admon}
+\end{mdfboxadmon}
 
 
 
 % Test one word with a number
 
 
-\begin{graybox1admon}[Point1.]
+\begin{mdfboxadmon}[Point1.]
 Ah, we are soon close to the end.
-\end{graybox1admon}
+\end{mdfboxadmon}
 
 
 
 
-\begin{graybox1admon}[Question.]
+\begin{mdfboxadmon}[Question.]
 So, how many admonition environments does Doconce support?
-\end{graybox1admon}
+\end{mdfboxadmon}
 
 
 
 
-\begin{graybox1admon}[Question.]
+\begin{mdfboxadmon}[Question.]
 \begin{enumerate}
  \item Once more, how many admonition environments does Doconce support?
 \end{enumerate}
 
 \noindent
-\end{graybox1admon}
+\end{mdfboxadmon}
 
 
 
 
-\begin{graybox1admon}[Tip.]
+\begin{mdfboxadmon}[Tip.]
 It is of outmost important to
 
 \begin{enumerate}
@@ -37450,16 +37450,16 @@ import urllib
 def grab(url, filename):
     urllib.urlretrieve(url, filename=filename)
 \epycod2
-\end{graybox1admon}
+\end{mdfboxadmon}
 
 
 
 Next is a warning without a title ("none" implies no title).
 
 
-\begin{graybox1admon}[]
+\begin{mdfboxadmon}[]
 And here comes some text with bad news.
-\end{graybox1admon}
+\end{mdfboxadmon}
 
 
 
@@ -37469,7 +37469,7 @@ Here is a long notice environment with a custom title and much
 text, math and code.
 
 
-\begin{graybox1admon}[Going deeper.]
+\begin{mdfboxadmon}[Going deeper.]
 We have some equations that should be preceded by much text, so the
 task is to write and write. The number of words, and not the
 meaning, is what counts here. We need desperately to fill up the
@@ -37545,7 +37545,7 @@ And then we add a figure too.
 \begin{center}  % inline figure
   \centerline{\includegraphics[width=0.7\linewidth]{../doc/src/manual/fig/wave1D.pdf}}
 \end{center}
-\end{graybox1admon}
+\end{mdfboxadmon}
 
 
 
@@ -37557,11 +37557,11 @@ for the novice",
 just because we can.
 
 
-\begin{graybox1admon}[Concluding remarks for the novice.]
+\begin{mdfboxadmon}[Concluding remarks for the novice.]
 We can summarize the most important things with admons: they have
 a different typesetting, and they may have a symbol.
 Titles should be optional.
-\end{graybox1admon}
+\end{mdfboxadmon}
 
 
 
@@ -38782,7 +38782,7 @@ exercises (and problems and projects too).
 \end{document}
 
 
-************** File: admon_graybox1.tex *****************
+************** File: admon_mdfbox.tex *****************
 %%
 %% Automatically generated file from Doconce source
 %% (https://github.com/hplgit/doconce/)
@@ -38851,10 +38851,10 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % --- begin definitions of admonition environments ---
 
-% Admonition style "graybox1" is an oval colored box
-\colorlet{graybox1_background}{gray!6}
+% Admonition style "mdfbox" is an oval colored box
+\colorlet{mdfbox_background}{gray!6}
 \newmdenv[
-  backgroundcolor=graybox1_background,
+  backgroundcolor=mdfbox_background,
   skipabove=\topsep,
   skipbelow=\topsep,
   outerlinewidth=0,
@@ -38862,13 +38862,13 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
   rightmargin=0,
   roundcorner=5,
   needspace=0pt,
-]{graybox1mdframed}
+]{mdfboxmdframed}
 
-\newenvironment{graybox1admon}[1][]{
-\begin{graybox1mdframed}[frametitle=#1]
+\newenvironment{mdfboxadmon}[1][]{
+\begin{mdfboxmdframed}[frametitle=#1]
 }
 {
-\end{graybox1mdframed}
+\end{mdfboxmdframed}
 }
 
 % --- end of definitions of admonition environments ---
@@ -39038,7 +39038,7 @@ def some_code(x):
 Let us start with a plain warning environment.
 
 
-\begin{graybox1admon}[Warning.]
+\begin{mdfboxadmon}[Warning.]
 And here is a warning about something to pay attention to. We
 test how the heading behave and add quite some extra texts
 in comparison with the other admons.
@@ -39057,14 +39057,14 @@ And more and more text.
 And more and more text.
 And more and more text.
 And more and more text.
-\end{graybox1admon}
+\end{mdfboxadmon}
 
 
 
 Test warning with title:
 
 
-\begin{graybox1admon}[{\large Title ending with math $\sqrt{2}\approx 1.4$}.]
+\begin{mdfboxadmon}[{\large Title ending with math $\sqrt{2}\approx 1.4$}.]
 {\large And here comes some text with bad news in larger font.
 
 Also some code:
@@ -39079,25 +39079,25 @@ And a complete program
 print "Hello, World!"
 \end{minted}
 \par}
-\end{graybox1admon}
+\end{mdfboxadmon}
 
 
 
 Test warning with large title with math:
 
 
-\begin{graybox1admon}[{\large Watch out for $\nabla\cdot\bm{u}=0$ equations}.]
+\begin{mdfboxadmon}[{\large Watch out for $\nabla\cdot\bm{u}=0$ equations}.]
 {\large Divergence freedom is often problematic from a numerical point
 of view.
 \par}
-\end{graybox1admon}
+\end{mdfboxadmon}
 
 
 
 Then we test a block, which is guaranteed to never have any admon icon.
 
 
-\begin{graybox1admon}[Block with title.]
+\begin{mdfboxadmon}[Block with title.]
 \vspace{0.5mm}\par\noindent
 {\footnotesize Here is a block of text with title. It is typeset
 \emph{without any icon} and is useful when you want some admons with icon
@@ -39106,16 +39106,16 @@ more comment-style text or text that really goes deeper or talks
 about fun facts that are not strictly necessary for the main flow
 of understanding.
 \par}
-\end{graybox1admon}
+\end{mdfboxadmon}
 
 
 
 
 
-\begin{graybox1admon}[]
+\begin{mdfboxadmon}[]
 Here is a block of text with no title. As above, it is typeset without any icon
 and is useful when you want some admons with icon and some without.
-\end{graybox1admon}
+\end{mdfboxadmon}
 
 
 
@@ -39125,7 +39125,7 @@ The next admonition features a title "Note, eventually!".
 % those formats automatically add : to the admonition title.
 
 
-\begin{graybox1admon}[Note eventually!]
+\begin{mdfboxadmon}[Note eventually!]
 Ah, we are soon close to the end (with illegal font size specification!).
 But first a bit of math where we define $\theta$ and $\bm{r}$:
 
@@ -39133,39 +39133,39 @@ But first a bit of math where we define $\theta$ and $\bm{r}$:
 \theta &= q^2,\\
 \bm{r} &= \varrho\bm{i}
 \end{align*}
-\end{graybox1admon}
+\end{mdfboxadmon}
 
 
 
 % Test one word with a number
 
 
-\begin{graybox1admon}[Point1.]
+\begin{mdfboxadmon}[Point1.]
 Ah, we are soon close to the end.
-\end{graybox1admon}
+\end{mdfboxadmon}
 
 
 
 
-\begin{graybox1admon}[Question.]
+\begin{mdfboxadmon}[Question.]
 So, how many admonition environments does Doconce support?
-\end{graybox1admon}
+\end{mdfboxadmon}
 
 
 
 
-\begin{graybox1admon}[Question.]
+\begin{mdfboxadmon}[Question.]
 \begin{enumerate}
  \item Once more, how many admonition environments does Doconce support?
 \end{enumerate}
 
 \noindent
-\end{graybox1admon}
+\end{mdfboxadmon}
 
 
 
 
-\begin{graybox1admon}[Tip.]
+\begin{mdfboxadmon}[Tip.]
 It is of outmost important to
 
 \begin{enumerate}
@@ -39183,16 +39183,16 @@ import urllib
 def grab(url, filename):
     urllib.urlretrieve(url, filename=filename)
 \end{minted}
-\end{graybox1admon}
+\end{mdfboxadmon}
 
 
 
 Next is a warning without a title ("none" implies no title).
 
 
-\begin{graybox1admon}[]
+\begin{mdfboxadmon}[]
 And here comes some text with bad news.
-\end{graybox1admon}
+\end{mdfboxadmon}
 
 
 
@@ -39202,7 +39202,7 @@ Here is a long notice environment with a custom title and much
 text, math and code.
 
 
-\begin{graybox1admon}[Going deeper.]
+\begin{mdfboxadmon}[Going deeper.]
 We have some equations that should be preceded by much text, so the
 task is to write and write. The number of words, and not the
 meaning, is what counts here. We need desperately to fill up the
@@ -39278,7 +39278,7 @@ And then we add a figure too.
 \begin{center}  % inline figure
   \centerline{\includegraphics[width=0.7\linewidth]{../doc/src/manual/fig/wave1D.pdf}}
 \end{center}
-\end{graybox1admon}
+\end{mdfboxadmon}
 
 
 
@@ -39290,11 +39290,11 @@ for the novice",
 just because we can.
 
 
-\begin{graybox1admon}[Concluding remarks for the novice.]
+\begin{mdfboxadmon}[Concluding remarks for the novice.]
 We can summarize the most important things with admons: they have
 a different typesetting, and they may have a symbol.
 Titles should be optional.
-\end{graybox1admon}
+\end{mdfboxadmon}
 
 
 
@@ -39873,7 +39873,7 @@ exercises (and problems and projects too).
 \end{document}
 
 
-************** File: admon_graybox3.tex *****************
+************** File: admon_grayicon.tex *****************
 %%
 %% Automatically generated file from Doconce source
 %% (https://github.com/hplgit/doconce/)
@@ -39942,15 +39942,15 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % --- begin definitions of admonition environments ---
 
-% Admonition style "graybox3" has colored background, no frame, and an icon
+% Admonition style "grayicon" has colored background, no frame, and an icon
 % Admon "notice"
-\colorlet{graybox3_notice_background}{gray!20}
+\colorlet{grayicon_notice_background}{gray!20}
 % \fboxsep sets the space between the text and the box
 \newenvironment{noticeshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{graybox3_notice_background}}
+{\def\FrameCommand{\fboxsep=3mm\colorbox{grayicon_notice_background}}
  \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
 
-\newenvironment{notice_graybox3admon}[1][Notice]{
+\newenvironment{notice_grayiconadmon}[1][Notice]{
 \begin{noticeshaded}
 \noindent
 \begin{wrapfigure}{l}{0.07\textwidth}
@@ -39963,15 +39963,15 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \end{noticeshaded}
 }
 
-% Admonition style "graybox3" has colored background, no frame, and an icon
+% Admonition style "grayicon" has colored background, no frame, and an icon
 % Admon "summary"
-\colorlet{graybox3_summary_background}{gray!20}
+\colorlet{grayicon_summary_background}{gray!20}
 % \fboxsep sets the space between the text and the box
 \newenvironment{summaryshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{graybox3_summary_background}}
+{\def\FrameCommand{\fboxsep=3mm\colorbox{grayicon_summary_background}}
  \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
 
-\newenvironment{summary_graybox3admon}[1][Summary]{
+\newenvironment{summary_grayiconadmon}[1][Summary]{
 \begin{summaryshaded}
 \noindent
 \begin{wrapfigure}{l}{0.07\textwidth}
@@ -39984,15 +39984,15 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \end{summaryshaded}
 }
 
-% Admonition style "graybox3" has colored background, no frame, and an icon
+% Admonition style "grayicon" has colored background, no frame, and an icon
 % Admon "warning"
-\colorlet{graybox3_warning_background}{gray!20}
+\colorlet{grayicon_warning_background}{gray!20}
 % \fboxsep sets the space between the text and the box
 \newenvironment{warningshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{graybox3_warning_background}}
+{\def\FrameCommand{\fboxsep=3mm\colorbox{grayicon_warning_background}}
  \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
 
-\newenvironment{warning_graybox3admon}[1][Warning]{
+\newenvironment{warning_grayiconadmon}[1][Warning]{
 \begin{warningshaded}
 \noindent
 \begin{wrapfigure}{l}{0.07\textwidth}
@@ -40005,15 +40005,15 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \end{warningshaded}
 }
 
-% Admonition style "graybox3" has colored background, no frame, and an icon
+% Admonition style "grayicon" has colored background, no frame, and an icon
 % Admon "question"
-\colorlet{graybox3_question_background}{gray!20}
+\colorlet{grayicon_question_background}{gray!20}
 % \fboxsep sets the space between the text and the box
 \newenvironment{questionshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{graybox3_question_background}}
+{\def\FrameCommand{\fboxsep=3mm\colorbox{grayicon_question_background}}
  \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
 
-\newenvironment{question_graybox3admon}[1][Question]{
+\newenvironment{question_grayiconadmon}[1][Question]{
 \begin{questionshaded}
 \noindent
 \begin{wrapfigure}{l}{0.07\textwidth}
@@ -40026,15 +40026,15 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \end{questionshaded}
 }
 
-% Admonition style "graybox3" has colored background, no frame, and an icon
+% Admonition style "grayicon" has colored background, no frame, and an icon
 % Admon "block"
-\colorlet{graybox3_block_background}{gray!20}
+\colorlet{grayicon_block_background}{gray!20}
 % \fboxsep sets the space between the text and the box
 \newenvironment{blockshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{graybox3_block_background}}
+{\def\FrameCommand{\fboxsep=3mm\colorbox{grayicon_block_background}}
  \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
 
-\newenvironment{block_graybox3admon}[1][Block]{
+\newenvironment{block_grayiconadmon}[1][Block]{
 \begin{blockshaded}
 \noindent
  \textbf{#1}\par
@@ -40211,7 +40211,7 @@ def some_code(x):
 Let us start with a plain warning environment.
 
 
-\begin{warning_graybox3admon}[Warning]
+\begin{warning_grayiconadmon}[Warning]
 And here is a warning about something to pay attention to. We
 test how the heading behave and add quite some extra texts
 in comparison with the other admons.
@@ -40230,14 +40230,14 @@ And more and more text.
 And more and more text.
 And more and more text.
 And more and more text.
-\end{warning_graybox3admon}
+\end{warning_grayiconadmon}
 
 
 
 Test warning with title:
 
 
-\begin{warning_graybox3admon}[{\large Title ending with math $\sqrt{2}\approx 1.4$}]
+\begin{warning_grayiconadmon}[{\large Title ending with math $\sqrt{2}\approx 1.4$}]
 {\large And here comes some text with bad news in larger font.
 
 Also some code:
@@ -40252,25 +40252,25 @@ And a complete program
 print "Hello, World!"
 \end{minted}
 \par}
-\end{warning_graybox3admon}
+\end{warning_grayiconadmon}
 
 
 
 Test warning with large title with math:
 
 
-\begin{warning_graybox3admon}[{\large Watch out for $\nabla\cdot\bm{u}=0$ equations}]
+\begin{warning_grayiconadmon}[{\large Watch out for $\nabla\cdot\bm{u}=0$ equations}]
 {\large Divergence freedom is often problematic from a numerical point
 of view.
 \par}
-\end{warning_graybox3admon}
+\end{warning_grayiconadmon}
 
 
 
 Then we test a block, which is guaranteed to never have any admon icon.
 
 
-\begin{block_graybox3admon}[Block with title]
+\begin{block_grayiconadmon}[Block with title]
 \vspace{-2.5mm}\par\noindent
 {\footnotesize Here is a block of text with title. It is typeset
 \emph{without any icon} and is useful when you want some admons with icon
@@ -40279,16 +40279,16 @@ more comment-style text or text that really goes deeper or talks
 about fun facts that are not strictly necessary for the main flow
 of understanding.
 \par}
-\end{block_graybox3admon}
+\end{block_grayiconadmon}
 
 
 
 
 
-\begin{block_graybox3admon}[]
+\begin{block_grayiconadmon}[]
 Here is a block of text with no title. As above, it is typeset without any icon
 and is useful when you want some admons with icon and some without.
-\end{block_graybox3admon}
+\end{block_grayiconadmon}
 
 
 
@@ -40298,7 +40298,7 @@ The next admonition features a title "Note, eventually!".
 % those formats automatically add : to the admonition title.
 
 
-\begin{notice_graybox3admon}[Note, eventually!]
+\begin{notice_grayiconadmon}[Note, eventually!]
 Ah, we are soon close to the end (with illegal font size specification!).
 But first a bit of math where we define $\theta$ and $\bm{r}$:
 
@@ -40306,39 +40306,39 @@ But first a bit of math where we define $\theta$ and $\bm{r}$:
 \theta &= q^2,\\
 \bm{r} &= \varrho\bm{i}
 \end{align*}
-\end{notice_graybox3admon}
+\end{notice_grayiconadmon}
 
 
 
 % Test one word with a number
 
 
-\begin{notice_graybox3admon}[Point1]
+\begin{notice_grayiconadmon}[Point1]
 Ah, we are soon close to the end.
-\end{notice_graybox3admon}
+\end{notice_grayiconadmon}
 
 
 
 
-\begin{question_graybox3admon}[Question]
+\begin{question_grayiconadmon}[Question]
 So, how many admonition environments does Doconce support?
-\end{question_graybox3admon}
+\end{question_grayiconadmon}
 
 
 
 
-\begin{question_graybox3admon}[Question]
+\begin{question_grayiconadmon}[Question]
 \begin{enumerate}
  \item Once more, how many admonition environments does Doconce support?
 \end{enumerate}
 
 \noindent
-\end{question_graybox3admon}
+\end{question_grayiconadmon}
 
 
 
 
-\begin{warning_graybox3admon}[Tip]
+\begin{warning_grayiconadmon}[Tip]
 It is of outmost important to
 
 \begin{enumerate}
@@ -40356,16 +40356,16 @@ import urllib
 def grab(url, filename):
     urllib.urlretrieve(url, filename=filename)
 \end{minted}
-\end{warning_graybox3admon}
+\end{warning_grayiconadmon}
 
 
 
 Next is a warning without a title ("none" implies no title).
 
 
-\begin{warning_graybox3admon}[]
+\begin{warning_grayiconadmon}[]
 And here comes some text with bad news.
-\end{warning_graybox3admon}
+\end{warning_grayiconadmon}
 
 
 
@@ -40375,7 +40375,7 @@ Here is a long notice environment with a custom title and much
 text, math and code.
 
 
-\begin{notice_graybox3admon}[Going deeper.]
+\begin{notice_grayiconadmon}[Going deeper.]
 We have some equations that should be preceded by much text, so the
 task is to write and write. The number of words, and not the
 meaning, is what counts here. We need desperately to fill up the
@@ -40451,7 +40451,7 @@ And then we add a figure too.
 \begin{center}  % inline figure
   \centerline{\includegraphics[width=0.7\linewidth]{../doc/src/manual/fig/wave1D.pdf}}
 \end{center}
-\end{notice_graybox3admon}
+\end{notice_grayiconadmon}
 
 
 
@@ -40463,11 +40463,11 @@ for the novice",
 just because we can.
 
 
-\begin{summary_graybox3admon}[Concluding remarks, for the novice]
+\begin{summary_grayiconadmon}[Concluding remarks, for the novice]
 We can summarize the most important things with admons: they have
 a different typesetting, and they may have a symbol.
 Titles should be optional.
-\end{summary_graybox3admon}
+\end{summary_grayiconadmon}
 
 
 
@@ -40993,7 +40993,7 @@ exercises (and problems and projects too).
 \end{document}
 
 
-************** File: admon_yellowbox.tex *****************
+************** File: admon_yellowicon.tex *****************
 %%
 %% Automatically generated file from Doconce source
 %% (https://github.com/hplgit/doconce/)
@@ -41062,15 +41062,15 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % --- begin definitions of admonition environments ---
 
-% Admonition style "yellowbox" has colored background, yellow icons, and no farme
+% Admonition style "yellowicon" has colored background, yellow icons, and no farme
 % Admon "notice"
-\definecolor{yellowbox_notice_background}{rgb}{0.988235,0.964706,0.862745}
+\definecolor{yellowicon_notice_background}{rgb}{0.988235,0.964706,0.862745}
 % \fboxsep sets the space between the text and the box
 \newenvironment{noticeshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{yellowbox_notice_background}}
+{\def\FrameCommand{\fboxsep=3mm\colorbox{yellowicon_notice_background}}
  \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
 
-\newenvironment{notice_yellowboxadmon}[1][Notice]{
+\newenvironment{notice_yellowiconadmon}[1][Notice]{
 \begin{noticeshaded}
 \noindent
 \begin{wrapfigure}{l}{0.07\textwidth}
@@ -41083,15 +41083,15 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \end{noticeshaded}
 }
 
-% Admonition style "yellowbox" has colored background, yellow icons, and no farme
+% Admonition style "yellowicon" has colored background, yellow icons, and no farme
 % Admon "summary"
-\definecolor{yellowbox_summary_background}{rgb}{0.988235,0.964706,0.862745}
+\definecolor{yellowicon_summary_background}{rgb}{0.988235,0.964706,0.862745}
 % \fboxsep sets the space between the text and the box
 \newenvironment{summaryshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{yellowbox_summary_background}}
+{\def\FrameCommand{\fboxsep=3mm\colorbox{yellowicon_summary_background}}
  \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
 
-\newenvironment{summary_yellowboxadmon}[1][Summary]{
+\newenvironment{summary_yellowiconadmon}[1][Summary]{
 \begin{summaryshaded}
 \noindent
 \begin{wrapfigure}{l}{0.07\textwidth}
@@ -41104,15 +41104,15 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \end{summaryshaded}
 }
 
-% Admonition style "yellowbox" has colored background, yellow icons, and no farme
+% Admonition style "yellowicon" has colored background, yellow icons, and no farme
 % Admon "warning"
-\definecolor{yellowbox_warning_background}{rgb}{0.988235,0.964706,0.862745}
+\definecolor{yellowicon_warning_background}{rgb}{0.988235,0.964706,0.862745}
 % \fboxsep sets the space between the text and the box
 \newenvironment{warningshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{yellowbox_warning_background}}
+{\def\FrameCommand{\fboxsep=3mm\colorbox{yellowicon_warning_background}}
  \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
 
-\newenvironment{warning_yellowboxadmon}[1][Warning]{
+\newenvironment{warning_yellowiconadmon}[1][Warning]{
 \begin{warningshaded}
 \noindent
 \begin{wrapfigure}{l}{0.07\textwidth}
@@ -41125,15 +41125,15 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \end{warningshaded}
 }
 
-% Admonition style "yellowbox" has colored background, yellow icons, and no farme
+% Admonition style "yellowicon" has colored background, yellow icons, and no farme
 % Admon "question"
-\definecolor{yellowbox_question_background}{rgb}{0.988235,0.964706,0.862745}
+\definecolor{yellowicon_question_background}{rgb}{0.988235,0.964706,0.862745}
 % \fboxsep sets the space between the text and the box
 \newenvironment{questionshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{yellowbox_question_background}}
+{\def\FrameCommand{\fboxsep=3mm\colorbox{yellowicon_question_background}}
  \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
 
-\newenvironment{question_yellowboxadmon}[1][Question]{
+\newenvironment{question_yellowiconadmon}[1][Question]{
 \begin{questionshaded}
 \noindent
 \begin{wrapfigure}{l}{0.07\textwidth}
@@ -41146,15 +41146,15 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \end{questionshaded}
 }
 
-% Admonition style "yellowbox" has colored background, yellow icons, and no farme
+% Admonition style "yellowicon" has colored background, yellow icons, and no farme
 % Admon "block"
-\definecolor{yellowbox_block_background}{rgb}{0.988235,0.964706,0.862745}
+\definecolor{yellowicon_block_background}{rgb}{0.988235,0.964706,0.862745}
 % \fboxsep sets the space between the text and the box
 \newenvironment{blockshaded}
-{\def\FrameCommand{\fboxsep=3mm\colorbox{yellowbox_block_background}}
+{\def\FrameCommand{\fboxsep=3mm\colorbox{yellowicon_block_background}}
  \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
 
-\newenvironment{block_yellowboxadmon}[1][Block]{
+\newenvironment{block_yellowiconadmon}[1][Block]{
 \begin{blockshaded}
 \noindent
  \textbf{#1}\par
@@ -41331,7 +41331,7 @@ def some_code(x):
 Let us start with a plain warning environment.
 
 
-\begin{warning_yellowboxadmon}[Warning]
+\begin{warning_yellowiconadmon}[Warning]
 And here is a warning about something to pay attention to. We
 test how the heading behave and add quite some extra texts
 in comparison with the other admons.
@@ -41350,14 +41350,14 @@ And more and more text.
 And more and more text.
 And more and more text.
 And more and more text.
-\end{warning_yellowboxadmon}
+\end{warning_yellowiconadmon}
 
 
 
 Test warning with title:
 
 
-\begin{warning_yellowboxadmon}[{\large Title ending with math $\sqrt{2}\approx 1.4$}]
+\begin{warning_yellowiconadmon}[{\large Title ending with math $\sqrt{2}\approx 1.4$}]
 {\large And here comes some text with bad news in larger font.
 
 Also some code:
@@ -41372,25 +41372,25 @@ And a complete program
 print "Hello, World!"
 \end{minted}
 \par}
-\end{warning_yellowboxadmon}
+\end{warning_yellowiconadmon}
 
 
 
 Test warning with large title with math:
 
 
-\begin{warning_yellowboxadmon}[{\large Watch out for $\nabla\cdot\bm{u}=0$ equations}]
+\begin{warning_yellowiconadmon}[{\large Watch out for $\nabla\cdot\bm{u}=0$ equations}]
 {\large Divergence freedom is often problematic from a numerical point
 of view.
 \par}
-\end{warning_yellowboxadmon}
+\end{warning_yellowiconadmon}
 
 
 
 Then we test a block, which is guaranteed to never have any admon icon.
 
 
-\begin{block_yellowboxadmon}[Block with title]
+\begin{block_yellowiconadmon}[Block with title]
 \vspace{-2.5mm}\par\noindent
 {\footnotesize Here is a block of text with title. It is typeset
 \emph{without any icon} and is useful when you want some admons with icon
@@ -41399,16 +41399,16 @@ more comment-style text or text that really goes deeper or talks
 about fun facts that are not strictly necessary for the main flow
 of understanding.
 \par}
-\end{block_yellowboxadmon}
+\end{block_yellowiconadmon}
 
 
 
 
 
-\begin{block_yellowboxadmon}[]
+\begin{block_yellowiconadmon}[]
 Here is a block of text with no title. As above, it is typeset without any icon
 and is useful when you want some admons with icon and some without.
-\end{block_yellowboxadmon}
+\end{block_yellowiconadmon}
 
 
 
@@ -41418,7 +41418,7 @@ The next admonition features a title "Note, eventually!".
 % those formats automatically add : to the admonition title.
 
 
-\begin{notice_yellowboxadmon}[Note, eventually!]
+\begin{notice_yellowiconadmon}[Note, eventually!]
 Ah, we are soon close to the end (with illegal font size specification!).
 But first a bit of math where we define $\theta$ and $\bm{r}$:
 
@@ -41426,39 +41426,39 @@ But first a bit of math where we define $\theta$ and $\bm{r}$:
 \theta &= q^2,\\
 \bm{r} &= \varrho\bm{i}
 \end{align*}
-\end{notice_yellowboxadmon}
+\end{notice_yellowiconadmon}
 
 
 
 % Test one word with a number
 
 
-\begin{notice_yellowboxadmon}[Point1]
+\begin{notice_yellowiconadmon}[Point1]
 Ah, we are soon close to the end.
-\end{notice_yellowboxadmon}
+\end{notice_yellowiconadmon}
 
 
 
 
-\begin{question_yellowboxadmon}[Question]
+\begin{question_yellowiconadmon}[Question]
 So, how many admonition environments does Doconce support?
-\end{question_yellowboxadmon}
+\end{question_yellowiconadmon}
 
 
 
 
-\begin{question_yellowboxadmon}[Question]
+\begin{question_yellowiconadmon}[Question]
 \begin{enumerate}
  \item Once more, how many admonition environments does Doconce support?
 \end{enumerate}
 
 \noindent
-\end{question_yellowboxadmon}
+\end{question_yellowiconadmon}
 
 
 
 
-\begin{warning_yellowboxadmon}[Tip]
+\begin{warning_yellowiconadmon}[Tip]
 It is of outmost important to
 
 \begin{enumerate}
@@ -41476,16 +41476,16 @@ import urllib
 def grab(url, filename):
     urllib.urlretrieve(url, filename=filename)
 \end{minted}
-\end{warning_yellowboxadmon}
+\end{warning_yellowiconadmon}
 
 
 
 Next is a warning without a title ("none" implies no title).
 
 
-\begin{warning_yellowboxadmon}[]
+\begin{warning_yellowiconadmon}[]
 And here comes some text with bad news.
-\end{warning_yellowboxadmon}
+\end{warning_yellowiconadmon}
 
 
 
@@ -41495,7 +41495,7 @@ Here is a long notice environment with a custom title and much
 text, math and code.
 
 
-\begin{notice_yellowboxadmon}[Going deeper.]
+\begin{notice_yellowiconadmon}[Going deeper.]
 We have some equations that should be preceded by much text, so the
 task is to write and write. The number of words, and not the
 meaning, is what counts here. We need desperately to fill up the
@@ -41571,7 +41571,7 @@ And then we add a figure too.
 \begin{center}  % inline figure
   \centerline{\includegraphics[width=0.7\linewidth]{../doc/src/manual/fig/wave1D.pdf}}
 \end{center}
-\end{notice_yellowboxadmon}
+\end{notice_yellowiconadmon}
 
 
 
@@ -41583,11 +41583,11 @@ for the novice",
 just because we can.
 
 
-\begin{summary_yellowboxadmon}[Concluding remarks, for the novice]
+\begin{summary_yellowiconadmon}[Concluding remarks, for the novice]
 We can summarize the most important things with admons: they have
 a different typesetting, and they may have a symbol.
 Titles should be optional.
-\end{summary_yellowboxadmon}
+\end{summary_yellowiconadmon}
 
 
 
@@ -41672,10 +41672,10 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % --- begin definitions of admonition environments ---
 
-% Admonition style "graybox1" is an oval colored box
-\definecolor{graybox1_background}{rgb}{1,1,1}
+% Admonition style "mdfbox" is an oval colored box
+\definecolor{mdfbox_background}{rgb}{1,1,1}
 \newmdenv[
-  backgroundcolor=graybox1_background,
+  backgroundcolor=mdfbox_background,
   skipabove=\topsep,
   skipbelow=\topsep,
   outerlinewidth=0,
@@ -41683,13 +41683,13 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
   rightmargin=0,
   roundcorner=5,
   needspace=0pt,
-]{graybox1mdframed}
+]{mdfboxmdframed}
 
-\newenvironment{graybox1admon}[1][]{
-\begin{graybox1mdframed}[frametitle=#1]
+\newenvironment{mdfboxadmon}[1][]{
+\begin{mdfboxmdframed}[frametitle=#1]
 }
 {
-\end{graybox1mdframed}
+\end{mdfboxmdframed}
 }
 
 % --- end of definitions of admonition environments ---
@@ -41859,7 +41859,7 @@ def some_code(x):
 Let us start with a plain warning environment.
 
 
-\begin{graybox1admon}[Warning.]
+\begin{mdfboxadmon}[Warning.]
 And here is a warning about something to pay attention to. We
 test how the heading behave and add quite some extra texts
 in comparison with the other admons.
@@ -41878,14 +41878,14 @@ And more and more text.
 And more and more text.
 And more and more text.
 And more and more text.
-\end{graybox1admon}
+\end{mdfboxadmon}
 
 
 
 Test warning with title:
 
 
-\begin{graybox1admon}[{\large Title ending with math $\sqrt{2}\approx 1.4$}.]
+\begin{mdfboxadmon}[{\large Title ending with math $\sqrt{2}\approx 1.4$}.]
 {\large And here comes some text with bad news in larger font.
 
 Also some code:
@@ -41900,25 +41900,25 @@ And a complete program
 print "Hello, World!"
 \end{minted}
 \par}
-\end{graybox1admon}
+\end{mdfboxadmon}
 
 
 
 Test warning with large title with math:
 
 
-\begin{graybox1admon}[{\large Watch out for $\nabla\cdot\bm{u}=0$ equations}.]
+\begin{mdfboxadmon}[{\large Watch out for $\nabla\cdot\bm{u}=0$ equations}.]
 {\large Divergence freedom is often problematic from a numerical point
 of view.
 \par}
-\end{graybox1admon}
+\end{mdfboxadmon}
 
 
 
 Then we test a block, which is guaranteed to never have any admon icon.
 
 
-\begin{graybox1admon}[Block with title.]
+\begin{mdfboxadmon}[Block with title.]
 \vspace{0.5mm}\par\noindent
 {\footnotesize Here is a block of text with title. It is typeset
 \emph{without any icon} and is useful when you want some admons with icon
@@ -41927,16 +41927,16 @@ more comment-style text or text that really goes deeper or talks
 about fun facts that are not strictly necessary for the main flow
 of understanding.
 \par}
-\end{graybox1admon}
+\end{mdfboxadmon}
 
 
 
 
 
-\begin{graybox1admon}[]
+\begin{mdfboxadmon}[]
 Here is a block of text with no title. As above, it is typeset without any icon
 and is useful when you want some admons with icon and some without.
-\end{graybox1admon}
+\end{mdfboxadmon}
 
 
 
@@ -41946,7 +41946,7 @@ The next admonition features a title "Note, eventually!".
 % those formats automatically add : to the admonition title.
 
 
-\begin{graybox1admon}[Note eventually!]
+\begin{mdfboxadmon}[Note eventually!]
 Ah, we are soon close to the end (with illegal font size specification!).
 But first a bit of math where we define $\theta$ and $\bm{r}$:
 
@@ -41954,39 +41954,39 @@ But first a bit of math where we define $\theta$ and $\bm{r}$:
 \theta &= q^2,\\
 \bm{r} &= \varrho\bm{i}
 \end{align*}
-\end{graybox1admon}
+\end{mdfboxadmon}
 
 
 
 % Test one word with a number
 
 
-\begin{graybox1admon}[Point1.]
+\begin{mdfboxadmon}[Point1.]
 Ah, we are soon close to the end.
-\end{graybox1admon}
+\end{mdfboxadmon}
 
 
 
 
-\begin{graybox1admon}[Question.]
+\begin{mdfboxadmon}[Question.]
 So, how many admonition environments does Doconce support?
-\end{graybox1admon}
+\end{mdfboxadmon}
 
 
 
 
-\begin{graybox1admon}[Question.]
+\begin{mdfboxadmon}[Question.]
 \begin{enumerate}
  \item Once more, how many admonition environments does Doconce support?
 \end{enumerate}
 
 \noindent
-\end{graybox1admon}
+\end{mdfboxadmon}
 
 
 
 
-\begin{graybox1admon}[Tip.]
+\begin{mdfboxadmon}[Tip.]
 It is of outmost important to
 
 \begin{enumerate}
@@ -42004,16 +42004,16 @@ import urllib
 def grab(url, filename):
     urllib.urlretrieve(url, filename=filename)
 \end{minted}
-\end{graybox1admon}
+\end{mdfboxadmon}
 
 
 
 Next is a warning without a title ("none" implies no title).
 
 
-\begin{graybox1admon}[]
+\begin{mdfboxadmon}[]
 And here comes some text with bad news.
-\end{graybox1admon}
+\end{mdfboxadmon}
 
 
 
@@ -42023,7 +42023,7 @@ Here is a long notice environment with a custom title and much
 text, math and code.
 
 
-\begin{graybox1admon}[Going deeper.]
+\begin{mdfboxadmon}[Going deeper.]
 We have some equations that should be preceded by much text, so the
 task is to write and write. The number of words, and not the
 meaning, is what counts here. We need desperately to fill up the
@@ -42099,7 +42099,7 @@ And then we add a figure too.
 \begin{center}  % inline figure
   \centerline{\includegraphics[width=0.7\linewidth]{../doc/src/manual/fig/wave1D.pdf}}
 \end{center}
-\end{graybox1admon}
+\end{mdfboxadmon}
 
 
 
@@ -42111,11 +42111,11 @@ for the novice",
 just because we can.
 
 
-\begin{graybox1admon}[Concluding remarks for the novice.]
+\begin{mdfboxadmon}[Concluding remarks for the novice.]
 We can summarize the most important things with admons: they have
 a different typesetting, and they may have a symbol.
 Titles should be optional.
-\end{graybox1admon}
+\end{mdfboxadmon}
 
 
 
@@ -53994,10 +53994,10 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % --- begin definitions of admonition environments ---
 
-% Admonition style "graybox1" is an oval colored box
-\colorlet{graybox1_background}{gray!5}
+% Admonition style "mdfbox" is an oval colored box
+\colorlet{mdfbox_background}{gray!5}
 \newmdenv[
-  backgroundcolor=graybox1_background,
+  backgroundcolor=mdfbox_background,
   skipabove=\topsep,
   skipbelow=\topsep,
   outerlinewidth=0,
@@ -54005,13 +54005,13 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
   rightmargin=0,
   roundcorner=5,
   needspace=0pt,
-]{graybox1mdframed}
+]{mdfboxmdframed}
 
-\newenvironment{graybox1admon}[1][]{
-\begin{graybox1mdframed}[frametitle=#1]
+\newenvironment{mdfboxadmon}[1][]{
+\begin{mdfboxmdframed}[frametitle=#1]
 }
 {
-\end{graybox1mdframed}
+\end{mdfboxmdframed}
 }
 
 % --- end of definitions of admonition environments ---
@@ -54160,32 +54160,32 @@ f2 = Fancy()
 Can use admons to simulate blocks:
 
 
-\begin{graybox1admon}[Key PDE:]
+\begin{mdfboxadmon}[Key PDE:]
 This box has title and math in normal 90 percent font:
 \[ \frac{\partial u}{\partial t} = \nabla^2 u \]
-\end{graybox1admon}
+\end{mdfboxadmon}
 
 
 
 % !bpop
 
-\begin{graybox1admon}[]
+\begin{mdfboxadmon}[]
 Just some block with text and a conclusion that something is important.
 This one pops up after the rest of the slide.
-\end{graybox1admon}
+\end{mdfboxadmon}
 
 
 % !epop
 
 
-\begin{graybox1admon}[Warning.]
+\begin{mdfboxadmon}[Warning.]
 \vspace{0.5mm}\par\noindent
 {\footnotesize Can use, e.g., a warning admon to have my own notes, preferably
 inside preprocess/mako if statements to turn notes on and off.
 This one is typeset in a small font and with the default
 title (Warning) since no title is specified.
 \par}
-\end{graybox1admon}
+\end{mdfboxadmon}
 
 
 
@@ -54283,26 +54283,26 @@ title (Warning) since no title is specified.
 
 \newenvironment{notice_colors1admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{notice_colors2admon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{notice_graybox3admon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{notice_yellowboxadmon}[1][]{\begin{block}{#1}}{\end{block}}
+\newenvironment{notice_grayiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
+\newenvironment{notice_yellowiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{summary_colors1admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{summary_colors2admon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{summary_graybox3admon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{summary_yellowboxadmon}[1][]{\begin{block}{#1}}{\end{block}}
+\newenvironment{summary_grayiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
+\newenvironment{summary_yellowiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{warning_colors1admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{warning_colors2admon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{warning_graybox3admon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{warning_yellowboxadmon}[1][]{\begin{block}{#1}}{\end{block}}
+\newenvironment{warning_grayiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
+\newenvironment{warning_yellowiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{question_colors1admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{question_colors2admon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{question_graybox3admon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{question_yellowboxadmon}[1][]{\begin{block}{#1}}{\end{block}}
+\newenvironment{question_grayiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
+\newenvironment{question_yellowiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{block_colors1admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{block_colors2admon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{block_graybox3admon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{block_yellowboxadmon}[1][]{\begin{block}{#1}}{\end{block}}
+\newenvironment{block_grayiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
+\newenvironment{block_yellowiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{paragraphadmon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{graybox1admon}[1][]{\begin{block}{#1}}{\end{block}}
+\newenvironment{mdfboxadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{graybox2admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newcommand{\grayboxhrules}[1]{\begin{block}{}#1\end{block}}
 
@@ -54463,30 +54463,30 @@ f2 = Fancy()
 Can use admons to simulate blocks:
 
 
-\begin{graybox1admon}[Key PDE:]
+\begin{mdfboxadmon}[Key PDE:]
 This box has title and math in normal 90 percent font:
 \[ \frac{\partial u}{\partial t} = \nabla^2 u \]
-\end{graybox1admon}
+\end{mdfboxadmon}
 
 
 
 
 \pause
-\begin{graybox1admon}[]
+\begin{mdfboxadmon}[]
 Just some block with text and a conclusion that something is important.
 This one pops up after the rest of the slide.
-\end{graybox1admon}
+\end{mdfboxadmon}
 
 
 
-\begin{graybox1admon}[Warning.]
+\begin{mdfboxadmon}[Warning.]
 \vspace{0.5mm}\par\noindent
 {\footnotesize Can use, e.g., a warning admon to have my own notes, preferably
 inside preprocess/mako if statements to turn notes on and off.
 This one is typeset in a small font and with the default
 title (Warning) since no title is specified.
 \par}
-\end{graybox1admon}
+\end{mdfboxadmon}
 \end{frame}
 
 \end{document}
@@ -56531,10 +56531,10 @@ open=right               % start new chapters on odd-numbered pages
 
 % --- begin definitions of admonition environments ---
 
-% Admonition style "graybox1" is an oval colored box
-\colorlet{graybox1_background}{gray!5}
+% Admonition style "mdfbox" is an oval colored box
+\colorlet{mdfbox_background}{gray!5}
 \newmdenv[
-  backgroundcolor=graybox1_background,
+  backgroundcolor=mdfbox_background,
   skipabove=\topsep,
   skipbelow=\topsep,
   outerlinewidth=0,
@@ -56542,13 +56542,13 @@ open=right               % start new chapters on odd-numbered pages
   rightmargin=0,
   roundcorner=5,
   needspace=0pt,
-]{graybox1mdframed}
+]{mdfboxmdframed}
 
-\newenvironment{graybox1admon}[1][]{
-\begin{graybox1mdframed}[frametitle=#1]
+\newenvironment{mdfboxadmon}[1][]{
+\begin{mdfboxmdframed}[frametitle=#1]
 }
 {
-\end{graybox1mdframed}
+\end{mdfboxmdframed}
 }
 
 % --- end of definitions of admonition environments ---
@@ -56902,9 +56902,9 @@ TOC: on
 \eccq
 
 
-\begin{graybox1admon}[Notice.]
+\begin{mdfboxadmon}[Notice.]
 Title and authors must have all information \emph{on a single line}!
-\end{graybox1admon}
+\end{mdfboxadmon}
 
 
 
@@ -57017,9 +57017,9 @@ URL: "https://github.com/hplgit/doconce"
 \section{Doconce: figures and movies}
 
 
-\begin{graybox1admon}[Notice.]
+\begin{mdfboxadmon}[Notice.]
 Figure with HTML and {\LaTeX} info, and caption, \emph{all on one line}:
-\end{graybox1admon}
+\end{mdfboxadmon}
 
 
 
@@ -57132,12 +57132,12 @@ def solver(I, a, T, dt, theta):
 \epycod
 
 
-\begin{graybox1admon}[Language-dependent typesetting of code:]
+\begin{mdfboxadmon}[Language-dependent typesetting of code:]
 The \code{!bc} command can be followed by a specification of the computer
 language: \code{pycod} for Python code snippet, \code{pypro} for complete Python
 program, \code{fcod} for Fortran snippet, \code{fpro} for Fortran program, and so
 forth (\code{c} for C, \code{cpp} for C++, \code{sh} for Unix shells, \code{m} for Matlab).
-\end{graybox1admon}
+\end{mdfboxadmon}
 
 
 
@@ -57493,26 +57493,26 @@ Last page gets rendered to
 
 \newenvironment{notice_colors1admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{notice_colors2admon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{notice_graybox3admon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{notice_yellowboxadmon}[1][]{\begin{block}{#1}}{\end{block}}
+\newenvironment{notice_grayiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
+\newenvironment{notice_yellowiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{summary_colors1admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{summary_colors2admon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{summary_graybox3admon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{summary_yellowboxadmon}[1][]{\begin{block}{#1}}{\end{block}}
+\newenvironment{summary_grayiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
+\newenvironment{summary_yellowiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{warning_colors1admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{warning_colors2admon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{warning_graybox3admon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{warning_yellowboxadmon}[1][]{\begin{block}{#1}}{\end{block}}
+\newenvironment{warning_grayiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
+\newenvironment{warning_yellowiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{question_colors1admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{question_colors2admon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{question_graybox3admon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{question_yellowboxadmon}[1][]{\begin{block}{#1}}{\end{block}}
+\newenvironment{question_grayiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
+\newenvironment{question_yellowiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{block_colors1admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{block_colors2admon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{block_graybox3admon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{block_yellowboxadmon}[1][]{\begin{block}{#1}}{\end{block}}
+\newenvironment{block_grayiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
+\newenvironment{block_yellowiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{paragraphadmon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{graybox1admon}[1][]{\begin{block}{#1}}{\end{block}}
+\newenvironment{mdfboxadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{graybox2admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newcommand{\grayboxhrules}[1]{\begin{block}{}#1\end{block}}
 
@@ -57853,9 +57853,9 @@ TOC: on
 \end{Verbatim}
 
 
-\begin{graybox1admon}[Notice.]
+\begin{mdfboxadmon}[Notice.]
 Title and authors must have all information \emph{on a single line}!
-\end{graybox1admon}
+\end{mdfboxadmon}
 \end{frame}
 
 \begin{frame}[plain,fragile]
@@ -57971,9 +57971,9 @@ URL: "https://github.com/hplgit/doconce"
 \begin{frame}[plain,fragile]
 \frametitle{Doconce: figures and movies}
 
-\begin{graybox1admon}[Notice.]
+\begin{mdfboxadmon}[Notice.]
 Figure with HTML and {\LaTeX} info, and caption, \emph{all on one line}:
-\end{graybox1admon}
+\end{mdfboxadmon}
 
 
 
@@ -58073,12 +58073,12 @@ def solver(I, a, T, dt, theta):
 \end{minted}
 
 
-\begin{graybox1admon}[Language-dependent typesetting of code:]
+\begin{mdfboxadmon}[Language-dependent typesetting of code:]
 The \Verb~!bc~ command can be followed by a specification of the computer
 language: \Verb!pycod! for Python code snippet, \Verb!pypro! for complete Python
 program, \Verb!fcod! for Fortran snippet, \Verb!fpro! for Fortran program, and so
 forth (\Verb!c! for C, \Verb!cpp! for C++, \Verb!sh! for Unix shells, \Verb!m! for Matlab).
-\end{graybox1admon}
+\end{mdfboxadmon}
 \end{frame}
 
 \begin{frame}[plain,fragile]
@@ -59175,10 +59175,10 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % --- begin definitions of admonition environments ---
 
-% Admonition style "graybox1" is an oval colored box
-\colorlet{graybox1_background}{gray!5}
+% Admonition style "mdfbox" is an oval colored box
+\colorlet{mdfbox_background}{gray!5}
 \newmdenv[
-  backgroundcolor=graybox1_background,
+  backgroundcolor=mdfbox_background,
   skipabove=\topsep,
   skipbelow=\topsep,
   outerlinewidth=0,
@@ -59186,13 +59186,13 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
   rightmargin=0,
   roundcorner=5,
   needspace=0pt,
-]{graybox1mdframed}
+]{mdfboxmdframed}
 
-\newenvironment{graybox1admon}[1][]{
-\begin{graybox1mdframed}[frametitle=#1]
+\newenvironment{mdfboxadmon}[1][]{
+\begin{mdfboxmdframed}[frametitle=#1]
 }
 {
-\end{graybox1mdframed}
+\end{mdfboxmdframed}
 }
 
 % --- end of definitions of admonition environments ---
@@ -59257,10 +59257,10 @@ The primary goal of this demo talk is to demonstrate how to write
 talks with \href{{https://github.com/hplgit/doconce}}{Doconce}
 and get them rendered in numerous HTML formats.
 
-\begin{graybox1admon}[Layout.]
+\begin{mdfboxadmon}[Layout.]
 This version
 utilizes beamer slides with the theme red3.
-\end{graybox1admon}
+\end{mdfboxadmon}
 
 
 
@@ -59392,10 +59392,10 @@ Exact solution of the scheme:
 
 % !bpop
 
-\begin{graybox1admon}[Concluding remarks:]
+\begin{mdfboxadmon}[Concluding remarks:]
 Only the Backward Euler scheme is guaranteed to always give
 qualitatively correct results.
-\end{graybox1admon}
+\end{mdfboxadmon}
 
 
 % !epop
@@ -59491,26 +59491,26 @@ qualitatively correct results.
 
 \newenvironment{notice_colors1admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{notice_colors2admon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{notice_graybox3admon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{notice_yellowboxadmon}[1][]{\begin{block}{#1}}{\end{block}}
+\newenvironment{notice_grayiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
+\newenvironment{notice_yellowiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{summary_colors1admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{summary_colors2admon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{summary_graybox3admon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{summary_yellowboxadmon}[1][]{\begin{block}{#1}}{\end{block}}
+\newenvironment{summary_grayiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
+\newenvironment{summary_yellowiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{warning_colors1admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{warning_colors2admon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{warning_graybox3admon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{warning_yellowboxadmon}[1][]{\begin{block}{#1}}{\end{block}}
+\newenvironment{warning_grayiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
+\newenvironment{warning_yellowiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{question_colors1admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{question_colors2admon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{question_graybox3admon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{question_yellowboxadmon}[1][]{\begin{block}{#1}}{\end{block}}
+\newenvironment{question_grayiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
+\newenvironment{question_yellowiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{block_colors1admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{block_colors2admon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{block_graybox3admon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{block_yellowboxadmon}[1][]{\begin{block}{#1}}{\end{block}}
+\newenvironment{block_grayiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
+\newenvironment{block_yellowiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{paragraphadmon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{graybox1admon}[1][]{\begin{block}{#1}}{\end{block}}
+\newenvironment{mdfboxadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{graybox2admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newcommand{\grayboxhrules}[1]{\begin{block}{}#1\end{block}}
 
@@ -59574,10 +59574,10 @@ The primary goal of this demo talk is to demonstrate how to write
 talks with \href{{https://github.com/hplgit/doconce}}{Doconce}
 and get them rendered in numerous HTML formats.
 
-\begin{graybox1admon}[Layout.]
+\begin{mdfboxadmon}[Layout.]
 This version
 utilizes beamer slides with the theme red3.
-\end{graybox1admon}
+\end{mdfboxadmon}
 
 
 
@@ -59712,10 +59712,10 @@ Exact solution of the scheme:
 
 
 \pause
-\begin{graybox1admon}[Concluding remarks:]
+\begin{mdfboxadmon}[Concluding remarks:]
 Only the Backward Euler scheme is guaranteed to always give
 qualitatively correct results.
-\end{graybox1admon}
+\end{mdfboxadmon}
 \end{frame}
 
 \end{document}
@@ -66082,10 +66082,10 @@ BIBFILE: papers.pub
 
 % --- begin definitions of admonition environments ---
 
-% Admonition style "graybox1" is an oval colored box
-\definecolor{graybox1_background}{rgb}{1,1,1}
+% Admonition style "mdfbox" is an oval colored box
+\definecolor{mdfbox_background}{rgb}{1,1,1}
 \newmdenv[
-  backgroundcolor=graybox1_background,
+  backgroundcolor=mdfbox_background,
   skipabove=\topsep,
   skipbelow=\topsep,
   outerlinewidth=0,
@@ -66093,13 +66093,13 @@ BIBFILE: papers.pub
   rightmargin=0,
   roundcorner=5,
   needspace=0pt,
-]{graybox1mdframed}
+]{mdfboxmdframed}
 
-\newenvironment{graybox1admon}[1][]{
-\begin{graybox1mdframed}[frametitle=#1]
+\newenvironment{mdfboxadmon}[1][]{
+\begin{mdfboxmdframed}[frametitle=#1]
 }
 {
-\end{graybox1mdframed}
+\end{mdfboxmdframed}
 }
 
 % --- end of definitions of admonition environments ---
@@ -66378,7 +66378,7 @@ following assumptions and features:
 
 \noindent
 
-\begin{graybox1admon}[Remarks.]
+\begin{mdfboxadmon}[Remarks.]
 
 \begin{enumerate}
 \item There is actually an
@@ -66391,7 +66391,7 @@ following assumptions and features:
 \end{enumerate}
 
 \noindent
-\end{graybox1admon}
+\end{mdfboxadmon}
 
 
 
@@ -66408,7 +66408,7 @@ and \emph{NumPy for MATLAB Users}, all accessible at \href{{http://scipy.org}}{s
 
 
 
-\begin{graybox1admon}[Remarks on importing NumPy.]
+\begin{mdfboxadmon}[Remarks on importing NumPy.]
 The statement
 
 \bpycod
@@ -66437,7 +66437,7 @@ def f(x):
 or one may take the less recommended
 lazy approach \code{from numpy import *} and fill up
 the program with \emph{a lot} of functions and variables from \code{numpy}.
-\end{graybox1admon}
+\end{mdfboxadmon}
 
 
 
@@ -66846,10 +66846,10 @@ slightly modified \code{svmono.cls} and \code{t2.sty} files:
 
 % --- begin definitions of admonition environments ---
 
-% Admonition style "graybox1" is an oval colored box
-\definecolor{graybox1_background}{rgb}{1,1,1}
+% Admonition style "mdfbox" is an oval colored box
+\definecolor{mdfbox_background}{rgb}{1,1,1}
 \newmdenv[
-  backgroundcolor=graybox1_background,
+  backgroundcolor=mdfbox_background,
   skipabove=\topsep,
   skipbelow=\topsep,
   outerlinewidth=0,
@@ -66857,13 +66857,13 @@ slightly modified \code{svmono.cls} and \code{t2.sty} files:
   rightmargin=0,
   roundcorner=5,
   needspace=0pt,
-]{graybox1mdframed}
+]{mdfboxmdframed}
 
-\newenvironment{graybox1admon}[1][]{
-\begin{graybox1mdframed}[frametitle=#1]
+\newenvironment{mdfboxadmon}[1][]{
+\begin{mdfboxmdframed}[frametitle=#1]
 }
 {
-\end{graybox1mdframed}
+\end{mdfboxmdframed}
 }
 
 % --- end of definitions of admonition environments ---
@@ -67175,7 +67175,7 @@ following assumptions and features:
 
 \noindent
 
-\begin{graybox1admon}[Remarks.]
+\begin{mdfboxadmon}[Remarks.]
 
 \begin{enumerate}
 \item There is actually an
@@ -67188,7 +67188,7 @@ following assumptions and features:
 \end{enumerate}
 
 \noindent
-\end{graybox1admon}
+\end{mdfboxadmon}
 
 
 
@@ -67205,7 +67205,7 @@ and \emph{NumPy for MATLAB Users}, all accessible at \href{{http://scipy.org}}{s
 
 
 
-\begin{graybox1admon}[Remarks on importing NumPy.]
+\begin{mdfboxadmon}[Remarks on importing NumPy.]
 The statement
 
 \begin{shadedquoteBlue}
@@ -67246,7 +67246,7 @@ def f(x):
 or one may take the less recommended
 lazy approach {\Verb!from numpy import *!} and fill up
 the program with \emph{a lot} of functions and variables from {\Verb!numpy!}.
-\end{graybox1admon}
+\end{mdfboxadmon}
 
 
 
@@ -70523,10 +70523,10 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % --- begin definitions of admonition environments ---
 
-% Admonition style "graybox1" is an oval colored box
-\colorlet{graybox1_background}{gray!5}
+% Admonition style "mdfbox" is an oval colored box
+\colorlet{mdfbox_background}{gray!5}
 \newmdenv[
-  backgroundcolor=graybox1_background,
+  backgroundcolor=mdfbox_background,
   skipabove=\topsep,
   skipbelow=\topsep,
   outerlinewidth=0,
@@ -70534,13 +70534,13 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
   rightmargin=0,
   roundcorner=5,
   needspace=0pt,
-]{graybox1mdframed}
+]{mdfboxmdframed}
 
-\newenvironment{graybox1admon}[1][]{
-\begin{graybox1mdframed}[frametitle=#1]
+\newenvironment{mdfboxadmon}[1][]{
+\begin{mdfboxmdframed}[frametitle=#1]
 }
 {
-\end{graybox1mdframed}
+\end{mdfboxmdframed}
 }
 
 % --- end of definitions of admonition environments ---
@@ -71074,7 +71074,7 @@ is also important, one should follow these rules:
 labels in \code{align} environments work well.)
 
 
-\begin{graybox1admon}[Notice.]
+\begin{mdfboxadmon}[Notice.]
 {\LaTeX} supports lots of fancy formatting, for example, multiple
 plots in the same figure, footnotes, margin notes, etc.
 Allowing other output formats, such as \code{sphinx}, makes it necessary
@@ -71085,7 +71085,7 @@ include special code for \code{latex} and \code{pdflatex} output and more
 straightforward typesetting for other formats. In this way, one can
 also allow advanced {\LaTeX} features and fine tuning of resulting
 PDF document.
-\end{graybox1admon}
+\end{mdfboxadmon}
 
 
 
@@ -86174,10 +86174,10 @@ output in math_test.md
 + doconce md2latex math_test
 pandoc -f markdown -t latex -s -o math_test.tex math_test.md
 output in math_test.tex
-+ admon_tps='colors1 graybox1 paragraph graybox2 yellowbox graybox3 colors2'
++ admon_tps='colors1 mdfbox paragraph graybox2 yellowicon grayicon colors2'
 + for admon_tp in '$admon_tps'
-+ '[' colors1 = graybox1 ']'
-+ '[' colors1 = graybox3 ']'
++ '[' colors1 = mdfbox ']'
++ '[' colors1 = grayicon ']'
 + color=
 + system doconce format pdflatex admon --latex_admon=colors1
 + doconce format pdflatex admon --latex_admon=colors1
@@ -86510,10 +86510,10 @@ summary.pdf
 warning.pdf
 + rm -rf latex_figs
 + for admon_tp in '$admon_tps'
-+ '[' graybox1 = graybox1 ']'
++ '[' mdfbox = mdfbox ']'
 + color='--latex_admon_color=gray!6'
-+ system doconce format pdflatex admon --latex_admon=graybox1 '--latex_admon_color=gray!6'
-+ doconce format pdflatex admon --latex_admon=graybox1 '--latex_admon_color=gray!6'
++ system doconce format pdflatex admon --latex_admon=mdfbox '--latex_admon_color=gray!6'
++ doconce format pdflatex admon --latex_admon=mdfbox '--latex_admon_color=gray!6'
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to pdflatex
 figure file ../doc/src/manual/fig/wave1D:
@@ -86527,13 +86527,13 @@ output in admon.p.tex
 \bpypro (!bc pypro) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
 \bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
 output in admon.tex
-+ cp admon.tex admon_graybox1.tex
-+ system pdflatex -shell-escape admon_graybox1
-+ pdflatex -shell-escape admon_graybox1
++ cp admon.tex admon_mdfbox.tex
++ system pdflatex -shell-escape admon_mdfbox
++ pdflatex -shell-escape admon_mdfbox
 This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
  \write18 enabled.
 entering extended mode
-(./admon_graybox1.tex
+(./admon_mdfbox.tex
 LaTeX2e <2011/06/27>
 Babel <3.9f> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
@@ -86582,8 +86582,8 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/catchfile.sty
 
-(./admon_graybox1.w18))/usr/local/bin/pygmentize
-) (./admon_graybox1.pyg)
+(./admon_mdfbox.w18))/usr/local/bin/pygmentize
+) (./admon_mdfbox.pyg)
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
@@ -86698,8 +86698,8 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 (/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopat
 hs.code.tex))) (/usr/share/texlive/texmf-dist/tex/latex/mdframed/md-frame-1.mdf
 ))
-Writing index file admon_graybox1.idx
-No file admon_graybox1.aux.
+Writing index file admon_mdfbox.idx
+No file admon_mdfbox.aux.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -86718,14 +86718,14 @@ ABD: EveryShipout initializing macros (./newcommands_bfmath.tex)
 
 
 
-(./admon_graybox1.out.pyg 
+(./admon_mdfbox.out.pyg 
  [1{/var/lib/texmf/fonts/map/pdftex/up
-dmap/pdftex.map}] (./admon_graybox1.out.pyg)
+dmap/pdftex.map}] (./admon_mdfbox.out.pyg)
 
 
 ...rest of part of LaTeX line number...
 
-(./admon_graybox1.out.pyg) (./admon_graybox1.out.pyg)
+(./admon_mdfbox.out.pyg) (./admon_mdfbox.out.pyg)
 
 
 ...rest of part of LaTeX line number...
@@ -86780,7 +86780,7 @@ Package mdframed Warning: You got a bad break
 
 ...rest of part of LaTeX line number...
 
-(./admon_graybox1.out.pyg)
+(./admon_mdfbox.out.pyg)
 
 
 ...rest of part of LaTeX line number...
@@ -86789,7 +86789,7 @@ Package mdframed Warning: You got a bad break
 
 ...rest of part of LaTeX line number...
 
-(./admon_graybox1.out.pyg) (./admon_graybox1.out.pyg)
+(./admon_mdfbox.out.pyg) (./admon_mdfbox.out.pyg)
 <../doc/src/manual/fig/wave1D.pdf, id=46, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf>
 
@@ -86810,8 +86810,8 @@ Package mdframed Warning: You got a bad break
 
 ...rest of part of LaTeX line number...
 
-No file admon_graybox1.ind.
-[6 <../doc/src/manual/fig/wave1D.pdf>] (./admon_graybox1.aux)
+No file admon_mdfbox.ind.
+[6 <../doc/src/manual/fig/wave1D.pdf>] (./admon_mdfbox.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -86856,8 +86856,8 @@ ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
    ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
 catchfile.sty    2011/03/01 v1.6 Catch the contents of a file (HO)
 etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
-admon_graybox1.w18
-admon_graybox1.pyg
+admon_mdfbox.w18
+admon_mdfbox.pyg
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
 inputenc.sty    2008/03/30 v1.1d Input encoding file
@@ -86962,20 +86962,20 @@ newcommands_replace.tex
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
     umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
-admon_graybox1.out.pyg
+admon_mdfbox.out.pyg
   t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
   omslmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
-admon_graybox1.out.pyg
-admon_graybox1.out.pyg
-admon_graybox1.out.pyg
-admon_graybox1.out.pyg
-admon_graybox1.out.pyg
-admon_graybox1.out.pyg
+admon_mdfbox.out.pyg
+admon_mdfbox.out.pyg
+admon_mdfbox.out.pyg
+admon_mdfbox.out.pyg
+admon_mdfbox.out.pyg
+admon_mdfbox.out.pyg
 ../doc/src/manual/fig/wave1D.pdf
  ***********
 
 
-Package rerunfilecheck Warning: File `admon_graybox1.out' has changed.
+Package rerunfilecheck Warning: File `admon_mdfbox.out' has changed.
 (rerunfilecheck)                Rerun to get outlines right
 (rerunfilecheck)                or use package `bookmark'.
 
@@ -86999,18 +86999,18 @@ mf/fonts/type1/public/lm/lmri8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy
 10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy7.pfb></usr/share/texmf/font
 s/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb
 ></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
-Output written on admon_graybox1.pdf (6 pages, ).
-Transcript written on admon_graybox1.log.
+Output written on admon_mdfbox.pdf (6 pages, ).
+Transcript written on admon_mdfbox.log.
 + '[' 0 -ne 0 ']'
-+ echo admon=graybox1
-admon=graybox1
++ echo admon=mdfbox
+admon=mdfbox
 + '[' -d latex_figs ']'
 + echo 'no latex_figs directory for this admon type'
 no latex_figs directory for this admon type
 + rm -rf latex_figs
 + for admon_tp in '$admon_tps'
-+ '[' paragraph = graybox1 ']'
-+ '[' paragraph = graybox3 ']'
++ '[' paragraph = mdfbox ']'
++ '[' paragraph = grayicon ']'
 + color=
 + system doconce format pdflatex admon --latex_admon=paragraph
 + doconce format pdflatex admon --latex_admon=paragraph
@@ -87418,8 +87418,8 @@ admon=paragraph
 no latex_figs directory for this admon type
 + rm -rf latex_figs
 + for admon_tp in '$admon_tps'
-+ '[' graybox2 = graybox1 ']'
-+ '[' graybox2 = graybox3 ']'
++ '[' graybox2 = mdfbox ']'
++ '[' graybox2 = grayicon ']'
 + color=
 + system doconce format pdflatex admon --latex_admon=graybox2
 + doconce format pdflatex admon --latex_admon=graybox2
@@ -87916,11 +87916,11 @@ admon=graybox2
 no latex_figs directory for this admon type
 + rm -rf latex_figs
 + for admon_tp in '$admon_tps'
-+ '[' yellowbox = graybox1 ']'
-+ '[' yellowbox = graybox3 ']'
++ '[' yellowicon = mdfbox ']'
++ '[' yellowicon = grayicon ']'
 + color=
-+ system doconce format pdflatex admon --latex_admon=yellowbox
-+ doconce format pdflatex admon --latex_admon=yellowbox
++ system doconce format pdflatex admon --latex_admon=yellowicon
++ doconce format pdflatex admon --latex_admon=yellowicon
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to pdflatex
 figure file ../doc/src/manual/fig/wave1D:
@@ -87935,13 +87935,13 @@ output in admon.p.tex
 \bpypro (!bc pypro) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
 \bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
 output in admon.tex
-+ cp admon.tex admon_yellowbox.tex
-+ system pdflatex -shell-escape admon_yellowbox
-+ pdflatex -shell-escape admon_yellowbox
++ cp admon.tex admon_yellowicon.tex
++ system pdflatex -shell-escape admon_yellowicon
++ pdflatex -shell-escape admon_yellowicon
 This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
  \write18 enabled.
 entering extended mode
-(./admon_yellowbox.tex
+(./admon_yellowicon.tex
 LaTeX2e <2011/06/27>
 Babel <3.9f> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
@@ -87990,8 +87990,8 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/catchfile.sty
 
-(./admon_yellowbox.w18))/usr/local/bin/pygmentize
-) (./admon_yellowbox.pyg)
+(./admon_yellowicon.w18))/usr/local/bin/pygmentize
+) (./admon_yellowicon.pyg)
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
@@ -88017,8 +88017,8 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 
 
 
-Writing index file admon_yellowbox.idx
-No file admon_yellowbox.aux.
+Writing index file admon_yellowicon.idx
+No file admon_yellowicon.aux.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -88037,13 +88037,13 @@ No file admon_yellowbox.aux.
 
 
 
-(./admon_yellowbox.out.pyg 
+(./admon_yellowicon.out.pyg 
  [1{/var/lib/texmf/fonts/map/pdftex/up
-dmap/pdftex.map}] (./admon_yellowbox.out.pyg)
+dmap/pdftex.map}] (./admon_yellowicon.out.pyg)
 <latex_figs/small_yellow_warning.pdf, id=20, 32.12pt x 32.12pt>
 <use latex_figs/small_yellow_warning.pdf>
-<use latex_figs/small_yellow_warning.pdf> (./admon_yellowbox.out.pyg)
-(./admon_yellowbox.out.pyg) [2 <./latex_figs/small_yellow_warning.pdf>]
+<use latex_figs/small_yellow_warning.pdf> (./admon_yellowicon.out.pyg)
+(./admon_yellowicon.out.pyg) [2 <./latex_figs/small_yellow_warning.pdf>]
 <use latex_figs/small_yellow_warning.pdf>
 <latex_figs/small_yellow_notice.pdf, id=42, 32.12pt x 32.12pt>
 <use latex_figs/small_yellow_notice.pdf>
@@ -88051,17 +88051,17 @@ dmap/pdftex.map}] (./admon_yellowbox.out.pyg)
 <latex_figs/small_yellow_question.pdf, id=43, 32.12pt x 32.12pt>
 <use latex_figs/small_yellow_question.pdf> [3 <./latex_figs/small_yellow_notice
 .pdf>] <use latex_figs/small_yellow_question.pdf>
-<use latex_figs/small_yellow_warning.pdf> (./admon_yellowbox.out.pyg)
+<use latex_figs/small_yellow_warning.pdf> (./admon_yellowicon.out.pyg)
 <use latex_figs/small_yellow_warning.pdf>
-<use latex_figs/small_yellow_notice.pdf> (./admon_yellowbox.out.pyg)
-(./admon_yellowbox.out.pyg)
+<use latex_figs/small_yellow_notice.pdf> (./admon_yellowicon.out.pyg)
+(./admon_yellowicon.out.pyg)
 <../doc/src/manual/fig/wave1D.pdf, id=57, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> [4 <./latex_figs/small_yellow_question.p
 df>] [5] <latex_figs/small_yellow_summary.pdf, id=76, 32.12pt x 32.12pt>
 <use latex_figs/small_yellow_summary.pdf>
-No file admon_yellowbox.ind.
+No file admon_yellowicon.ind.
 [6 <../doc/src/manual/fig/wave1D.pdf> <./latex_figs/small_yellow_summary.pdf>]
-(./admon_yellowbox.aux)
+(./admon_yellowicon.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -88106,8 +88106,8 @@ ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
    ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
 catchfile.sty    2011/03/01 v1.6 Catch the contents of a file (HO)
 etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
-admon_yellowbox.w18
-admon_yellowbox.pyg
+admon_yellowicon.w18
+admon_yellowicon.pyg
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
 inputenc.sty    2008/03/30 v1.1d Input encoding file
@@ -88165,31 +88165,31 @@ newcommands_replace.tex
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
     umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
-admon_yellowbox.out.pyg
+admon_yellowicon.out.pyg
   t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
   omslmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
-admon_yellowbox.out.pyg
+admon_yellowicon.out.pyg
 latex_figs/small_yellow_warning.pdf
 latex_figs/small_yellow_warning.pdf
-admon_yellowbox.out.pyg
-admon_yellowbox.out.pyg
+admon_yellowicon.out.pyg
+admon_yellowicon.out.pyg
 latex_figs/small_yellow_warning.pdf
 latex_figs/small_yellow_notice.pdf
 latex_figs/small_yellow_notice.pdf
 latex_figs/small_yellow_question.pdf
 latex_figs/small_yellow_question.pdf
 latex_figs/small_yellow_warning.pdf
-admon_yellowbox.out.pyg
+admon_yellowicon.out.pyg
 latex_figs/small_yellow_warning.pdf
 latex_figs/small_yellow_notice.pdf
-admon_yellowbox.out.pyg
-admon_yellowbox.out.pyg
+admon_yellowicon.out.pyg
+admon_yellowicon.out.pyg
 ../doc/src/manual/fig/wave1D.pdf
 latex_figs/small_yellow_summary.pdf
  ***********
 
 
-Package rerunfilecheck Warning: File `admon_yellowbox.out' has changed.
+Package rerunfilecheck Warning: File `admon_yellowicon.out' has changed.
 (rerunfilecheck)                Rerun to get outlines right
 (rerunfilecheck)                or use package `bookmark'.
 
@@ -88207,11 +88207,11 @@ mf/fonts/type1/public/lm/lmri8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy
 10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy7.pfb></usr/share/texmf/font
 s/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb
 ></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
-Output written on admon_yellowbox.pdf (6 pages, ).
-Transcript written on admon_yellowbox.log.
+Output written on admon_yellowicon.pdf (6 pages, ).
+Transcript written on admon_yellowicon.log.
 + '[' 0 -ne 0 ']'
-+ echo admon=yellowbox
-admon=yellowbox
++ echo admon=yellowicon
+admon=yellowicon
 + '[' -d latex_figs ']'
 + echo latex_figs:
 latex_figs:
@@ -88222,11 +88222,11 @@ small_yellow_summary.pdf
 small_yellow_warning.pdf
 + rm -rf latex_figs
 + for admon_tp in '$admon_tps'
-+ '[' graybox3 = graybox1 ']'
-+ '[' graybox3 = graybox3 ']'
++ '[' grayicon = mdfbox ']'
++ '[' grayicon = grayicon ']'
 + color='--latex_admon_color=gray!20'
-+ system doconce format pdflatex admon --latex_admon=graybox3 '--latex_admon_color=gray!20'
-+ doconce format pdflatex admon --latex_admon=graybox3 '--latex_admon_color=gray!20'
++ system doconce format pdflatex admon --latex_admon=grayicon '--latex_admon_color=gray!20'
++ doconce format pdflatex admon --latex_admon=grayicon '--latex_admon_color=gray!20'
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to pdflatex
 figure file ../doc/src/manual/fig/wave1D:
@@ -88241,13 +88241,13 @@ output in admon.p.tex
 \bpypro (!bc pypro) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
 \bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
 output in admon.tex
-+ cp admon.tex admon_graybox3.tex
-+ system pdflatex -shell-escape admon_graybox3
-+ pdflatex -shell-escape admon_graybox3
++ cp admon.tex admon_grayicon.tex
++ system pdflatex -shell-escape admon_grayicon
++ pdflatex -shell-escape admon_grayicon
 This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
  \write18 enabled.
 entering extended mode
-(./admon_graybox3.tex
+(./admon_grayicon.tex
 LaTeX2e <2011/06/27>
 Babel <3.9f> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
@@ -88296,8 +88296,8 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/catchfile.sty
 
-(./admon_graybox3.w18))/usr/local/bin/pygmentize
-) (./admon_graybox3.pyg)
+(./admon_grayicon.w18))/usr/local/bin/pygmentize
+) (./admon_grayicon.pyg)
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
@@ -88323,8 +88323,8 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 
 
 
-Writing index file admon_graybox3.idx
-No file admon_graybox3.aux.
+Writing index file admon_grayicon.idx
+No file admon_grayicon.aux.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -88343,29 +88343,29 @@ No file admon_graybox3.aux.
 
 
 
-(./admon_graybox3.out.pyg 
+(./admon_grayicon.out.pyg 
  [1{/var/lib/texmf/fonts/map/pdftex/up
-dmap/pdftex.map}] (./admon_graybox3.out.pyg)
+dmap/pdftex.map}] (./admon_grayicon.out.pyg)
 <latex_figs/small_gray_warning.pdf, id=20, 48.18pt x 48.18pt>
 <use latex_figs/small_gray_warning.pdf>
-<use latex_figs/small_gray_warning.pdf> (./admon_graybox3.out.pyg)
-(./admon_graybox3.out.pyg) [2 <./latex_figs/small_gray_warning.pdf>]
+<use latex_figs/small_gray_warning.pdf> (./admon_grayicon.out.pyg)
+(./admon_grayicon.out.pyg) [2 <./latex_figs/small_gray_warning.pdf>]
 <use latex_figs/small_gray_warning.pdf>
 <latex_figs/small_gray_notice.pdf, id=42, 64.24pt x 64.24pt>
 <use latex_figs/small_gray_notice.pdf> <use latex_figs/small_gray_notice.pdf>
 <latex_figs/small_gray_question2.pdf, id=43, 64.24pt x 64.24pt>
 <use latex_figs/small_gray_question2.pdf> [3 <./latex_figs/small_gray_notice.pd
 f>] <use latex_figs/small_gray_question2.pdf>
-<use latex_figs/small_gray_warning.pdf> (./admon_graybox3.out.pyg)
+<use latex_figs/small_gray_warning.pdf> (./admon_grayicon.out.pyg)
 <use latex_figs/small_gray_warning.pdf> <use latex_figs/small_gray_notice.pdf>
-(./admon_graybox3.out.pyg) (./admon_graybox3.out.pyg)
+(./admon_grayicon.out.pyg) (./admon_grayicon.out.pyg)
 <../doc/src/manual/fig/wave1D.pdf, id=57, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> [4 <./latex_figs/small_gray_question2.pd
 f>] [5] <latex_figs/small_gray_summary.pdf, id=76, 48.18pt x 48.18pt>
 <use latex_figs/small_gray_summary.pdf>
-No file admon_graybox3.ind.
+No file admon_grayicon.ind.
 [6 <../doc/src/manual/fig/wave1D.pdf> <./latex_figs/small_gray_summary.pdf>]
-(./admon_graybox3.aux)
+(./admon_grayicon.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -88410,8 +88410,8 @@ ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
    ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
 catchfile.sty    2011/03/01 v1.6 Catch the contents of a file (HO)
 etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
-admon_graybox3.w18
-admon_graybox3.pyg
+admon_grayicon.w18
+admon_grayicon.pyg
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
 inputenc.sty    2008/03/30 v1.1d Input encoding file
@@ -88469,31 +88469,31 @@ newcommands_replace.tex
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
     umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
-admon_graybox3.out.pyg
+admon_grayicon.out.pyg
   t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
   omslmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
-admon_graybox3.out.pyg
+admon_grayicon.out.pyg
 latex_figs/small_gray_warning.pdf
 latex_figs/small_gray_warning.pdf
-admon_graybox3.out.pyg
-admon_graybox3.out.pyg
+admon_grayicon.out.pyg
+admon_grayicon.out.pyg
 latex_figs/small_gray_warning.pdf
 latex_figs/small_gray_notice.pdf
 latex_figs/small_gray_notice.pdf
 latex_figs/small_gray_question2.pdf
 latex_figs/small_gray_question2.pdf
 latex_figs/small_gray_warning.pdf
-admon_graybox3.out.pyg
+admon_grayicon.out.pyg
 latex_figs/small_gray_warning.pdf
 latex_figs/small_gray_notice.pdf
-admon_graybox3.out.pyg
-admon_graybox3.out.pyg
+admon_grayicon.out.pyg
+admon_grayicon.out.pyg
 ../doc/src/manual/fig/wave1D.pdf
 latex_figs/small_gray_summary.pdf
  ***********
 
 
-Package rerunfilecheck Warning: File `admon_graybox3.out' has changed.
+Package rerunfilecheck Warning: File `admon_grayicon.out' has changed.
 (rerunfilecheck)                Rerun to get outlines right
 (rerunfilecheck)                or use package `bookmark'.
 
@@ -88511,11 +88511,11 @@ mf/fonts/type1/public/lm/lmri8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy
 10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy7.pfb></usr/share/texmf/font
 s/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb
 ></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
-Output written on admon_graybox3.pdf (6 pages, ).
-Transcript written on admon_graybox3.log.
+Output written on admon_grayicon.pdf (6 pages, ).
+Transcript written on admon_grayicon.log.
 + '[' 0 -ne 0 ']'
-+ echo admon=graybox3
-admon=graybox3
++ echo admon=grayicon
+admon=grayicon
 + '[' -d latex_figs ']'
 + echo latex_figs:
 latex_figs:
@@ -88526,8 +88526,8 @@ small_gray_summary.pdf
 small_gray_warning.pdf
 + rm -rf latex_figs
 + for admon_tp in '$admon_tps'
-+ '[' colors2 = graybox1 ']'
-+ '[' colors2 = graybox3 ']'
++ '[' colors2 = mdfbox ']'
++ '[' colors2 = grayicon ']'
 + color=
 + system doconce format pdflatex admon --latex_admon=colors2
 + doconce format pdflatex admon --latex_admon=colors2
@@ -88827,7 +88827,7 @@ question.pdf
 summary.pdf
 warning.pdf
 + rm -rf latex_figs
-+ doconce format pdflatex admon --latex_admon=graybox1 --latex_admon_color=1,1,1 --latex_admon_envir_map=2
++ doconce format pdflatex admon --latex_admon=mdfbox --latex_admon_color=1,1,1 --latex_admon_envir_map=2
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to pdflatex
 figure file ../doc/src/manual/fig/wave1D:
@@ -89125,7 +89125,7 @@ translating doconce text in tmp_preprocess__admon.do.txt to plain
 output in admon.txt
 + '[' 0 -ne 0 ']'
 + cp admon.txt admon_paragraph.txt
-+ cp -fr admon_apricot.html admon_colors.html admon_gray.html admon_lyx.html admon_paragraph.html admon_vagrant.html admon_yellow.html admon_colors1.pdf admon_colors2.pdf admon_graybox1.pdf admon_graybox2.pdf admon_graybox3.pdf admon_paragraph.pdf admon_yellowbox.pdf admon_mwiki.mwiki admon_paragraph.txt admon_sphinx admon_demo/
++ cp -fr admon_apricot.html admon_colors.html admon_gray.html admon_lyx.html admon_paragraph.html admon_vagrant.html admon_yellow.html admon_colors1.pdf admon_colors2.pdf admon_mdfbox.pdf admon_graybox2.pdf admon_grayicon.pdf admon_paragraph.pdf admon_yellowicon.pdf admon_mwiki.mwiki admon_paragraph.txt admon_sphinx admon_demo/
 + '[' -d latex_figs ']'
 + system doconce format pandoc github_md.do.txt --github_md
 + doconce format pandoc github_md.do.txt --github_md

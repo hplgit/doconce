@@ -60,6 +60,7 @@ latex_index_in_margin = False
 latex_no_program_footnotelink = False
 #latex_admon = 
 #latex_admon_color = 
+latex_admon_title_no_period = False
 #latex_admon_envir_map = 
 #latex_exercise_numbering = 
 latex_double_hyphen = False

@@ -511,6 +511,25 @@ def doconce_exercise_output(exer,
         s += '# keywords = %s' % '; '.join(exer['keywords']) + '\n'
 
     if exer['text']:
+        # Let comments at the end of the text come very last, if there
+        # are no subexercises. Just outputting comments at the end
+        # makes Filename: ... on a separate line, which does not look good.
+        # We extract the final comments and print them after anything else.
+        # Final comments often contain fruitful comments about the solution.
+        if not exer['subex'] and '\n#' in exer['text']:
+            lines = exer['text'].splitlines()
+            newlines = []
+            comments = []
+            for i, line in enumerate(reversed(lines)):
+                if line.startswith('#') or line.isspace() or line == '':
+                    comments.append(line)
+                else:
+                    break
+            comments = '\n'.join(comments)
+            exer['text'] = '\n'.join(lines[:-i])
+        else:
+            comments = ''
+
         s += '\n' + exer['text'] + '\n'
 
     if exer['hints']:
@@ -624,6 +643,9 @@ def doconce_exercise_output(exer,
             s += '# solution file: %s\n' % exer['solution_file'][0]
         else:
             s += '# solution files: %s\n' % ', '.join(exer['solution_file'])
+
+    if comments:
+        s += '\n' + comments
 
     s += '\n# ' + envir_delimiter_lines['exercise'][1] + '\n\n'
     return s

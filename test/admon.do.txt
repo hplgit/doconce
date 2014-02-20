@@ -163,7 +163,9 @@ Here is a block of text with no title. As above, it is typeset without any icon
 and is useful when you want some admons with icon and some without.
 !eblock
 
-The next admonition features a title "Note, eventually!".
+The next admonition features a title "Note, eventually!" (the comma
+must be removed in the `mdfbox` admon also in `graybox2` if
+code is present).
 
 # Note that the final ! does not appear in Sphinx and reST since
 # those formats automatically add : to the admonition title.
