@@ -1215,7 +1215,7 @@ def ptex2tex():
     # All envirs in the .ptex2tex.cfg file as of June 2012.
     # (Recall that the longest names must come first so that they
     # are substituted first, e.g., \bcc after \bccod)
-    envirs = 'pro pypro cypro cpppro cpro fpro plpro shpro mpro cod pycod cycod cppcod ccod fcod plcod shcod mcod rst cppans pyans fans bashans swigans uflans sni dat dsni sys slin ipy rpy plin ver warn rule summ ccq cc ccl py'.split()
+    envirs = 'pro pypro cypro cpppro cpro fpro plpro shpro mpro cod pycod cycod cppcod ccod fcod plcod shcod mcod rst cppans pyans fans bashans swigans uflans sni dat dsni sys slin ipy pyshell rpy plin ver warn rule summ ccq cc ccl'.split()
     envirs += ['htmlcod', 'htmlpro', 'html',
                'rbpro', 'rbcod', 'rb',
                'xmlpro', 'xmlcod', 'xml',
@@ -4774,14 +4774,33 @@ _latex_environments = [
     ("\\bccq",              "\\eccq"),
     ("\\bcc",               "\\ecc"),
     ("\\bcod",              "\\ecod"),
+    ("\\bpycod",            "\\epycod"),
     ("\\bpro",              "\\epro"),
-    ("\\bpy",               "\\epy"),
+    ("\\bpypro",            "\\epypro"),
     ("\\brpy",              "\\erpy"),
     ("\\bipy",              "\\eipy"),
+    ("\\bfcod",             "\\efcod"),
+    ("\\bfpro",             "\\efpro"),
+    ("\\bccod",             "\\epcod"),
+    ("\\bcpro",             "\\epcro"),
+    ("\\bcppcod",           "\\ecppcod"),
+    ("\\bcpppro",           "\\ecpppro"),
+    ("\\bhtmlcod",          "\\ehtmlcod"),
+    ("\\bhtmlpro",          "\\ehtmlpro"),
+    ("\\brcod",             "\\ercod"),
+    ("\\brpro",             "\\eprro"),
+    ("\\bjscod",            "\\ejscod"),
+    ("\\bjspro",            "\\ejspro"),
+    ("\\blatexcod",         "\\elatexcod"),
+    ("\\blatexpro",         "\\elatexpro"),
+    ("\\bshcod",            "\\eshcod"),
+    ("\\bshpro",            "\\eshpro"),
     ("\\bsys",              "\\esys"),
     ("\\bdat",              "\\edat"),
     ("\\bsni",              "\\esni"),
     ("\\bdsni",             "\\edsni"),
+    ("\\bpyshell",          "\\epyshell"),
+    ("\\bpy",               "\\epy"),
     ]
 
 _replacements = [
@@ -6307,7 +6326,7 @@ def _latex2doconce(filestr):
     # ptex2tex code environments:
     code_envirs = ['ccq', 'cod', 'pro', 'ccl', 'cc', 'sys',
                    'dsni', 'sni', 'slin', 'ipy', 'rpy',
-                   'py', 'plin', 'ver', 'warn', 'rule', 'summ',
+                   'pyshell', 'plin', 'ver', 'warn', 'rule', 'summ',
                    'dat', ] # sequence important for replace!
     for language in 'py', 'f', 'c', 'cpp', 'sh', 'pl', 'm':
         for tp in 'cod', 'pro':

@@ -604,7 +604,7 @@ def bm2boldsymbol(filestr, format):
 
 def insert_code_from_file(filestr, format):
     if not '@@@CODE ' in filestr:
-        return filestr
+        return filestr, 0
 
     # Create dummy file if specified file not found?
     CREATE_DUMMY_FILE = False
@@ -616,6 +616,7 @@ def insert_code_from_file(filestr, format):
 
     lines = filestr.splitlines()
     inside_verbatim = False
+    num_files = 0
     for i in range(len(lines)):
         line = lines[i]
         line = line.lstrip()
@@ -629,6 +630,7 @@ def insert_code_from_file(filestr, format):
             continue
 
         if line.startswith('@@@CODE '):
+            num_files += 1
             debugpr('found verbatim copy (line %d):\n%s\n' % (i+1, line))
             words = line.split()
             try:
@@ -825,12 +827,12 @@ def insert_code_from_file(filestr, format):
             lines[i] = code
 
     filestr = '\n'.join(lines)
-    return filestr
+    return filestr, num_files
 
 
 def insert_os_commands(filestr, format):
     if not '@@@OSCMD ' in filestr:
-        return filestr
+        return filestr, 0
 
     # Filename prefix
     path_prefix = option('code_prefix=', '')
@@ -857,6 +859,7 @@ def insert_os_commands(filestr, format):
 
     lines = filestr.splitlines()
     inside_verbatim = False
+    num_commands = 0
     for i in range(len(lines)):
         line = lines[i]
         line = line.lstrip()
@@ -870,6 +873,7 @@ def insert_os_commands(filestr, format):
             continue
 
         if line.startswith('@@@OSCMD '):
+            num_commands += 1
             cmd = line[9:].strip()
             output = system(cmd)
             text = '!bc sys\n'
@@ -885,7 +889,7 @@ def insert_os_commands(filestr, format):
             text += '!ec\n'
             lines[i] = text
     filestr = '\n'.join(lines)
-    return filestr
+    return filestr, num_commands
 
 def exercises(filestr, format, code_blocks, tex_blocks):
     # Exercise:
@@ -2476,12 +2480,16 @@ def doconce2format(filestr, format):
 
     def report_progress(msg):
         """Write a message about the progress if CPU time > 15 s"""
-        if time.time() - t0 > 15:
-            print msg
+        cpu = time.time() - t0
+        if cpu > 15:
+            print '\n...doconce translation: handled', msg, '%.1f s' % cpu
 
+    report_progress('finished preprocessors')
 
     filestr = fix(filestr, format, verbose=1)
     syntax_check(filestr, format)
+
+    report_progress('handled syntax checks')
 
     global FILENAME_EXTENSION, BLANKLINE, INLINE_TAGS_SUBST, CODE, \
            LIST, ARGLIST,TABLE, EXERCISE, FIGURE_EXT, CROSS_REFS, INDEX_BIB, \
@@ -2516,16 +2524,21 @@ def doconce2format(filestr, format):
         has_title = False
 
     # Next step: run operating system commands and insert output
-    filestr = insert_os_commands(filestr, format)
+    filestr, num_commands = insert_os_commands(filestr, format)
     debugpr('The file after running @@@OSCMD (from file):', filestr)
+    if num_commands:
+        report_progress('handled @@@OSCMD executions')
 
     # Next step: insert verbatim code from other (source code) files:
     # (if the format is latex, we could let ptex2tex do this, but
     # the CODE start@stop specifications may contain uderscores and
     # asterix, which will be replaced later and hence destroyed)
     #if format != 'latex':
-    filestr = insert_code_from_file(filestr, format)
+    filestr, num_files = insert_code_from_file(filestr, format)
     debugpr('The file after inserting @@@CODE (from file):', filestr)
+
+    if num_files:
+        report_progress('handled @@@CODE copying')
 
     # Hack to fix a bug with !ec/!et at the end of files, which is not
     # correctly substituted by '' in rst, sphinx, st, epytext, plain, wikis
@@ -2557,7 +2570,7 @@ def doconce2format(filestr, format):
     debugpr('The code block types:', pprint.pformat(code_block_types))
     debugpr('The tex blocks:', pprint.pformat(tex_blocks))
 
-    report_progress('....removed all verbatim and latex blocks')
+    report_progress('removed all verbatim and latex blocks')
 
     # Check URLs to see if they are valid
     if option('urlcheck'):
@@ -2625,7 +2638,7 @@ def doconce2format(filestr, format):
     # Next step: deal with figures
     filestr = handle_figures(filestr, format)
 
-    report_progress('\n....handled figures')
+    report_progress('figures')
 
     # Next step: deal with cross referencing (must occur before other format subst)
     filestr = handle_cross_referencing(filestr, format)
@@ -2642,7 +2655,7 @@ def doconce2format(filestr, format):
                             debug_info=[code_blocks, tex_blocks])
     debugpr('The file after typesetting of lists:', filestr)
 
-    report_progress('....handled lists')
+    report_progress('handled lists')
 
     # Next step: add space around | in tables for substitutions to get right
     filestr = space_in_tables(filestr)
@@ -2652,7 +2665,7 @@ def doconce2format(filestr, format):
     filestr = inline_tag_subst(filestr, format)
     debugpr('The file after all inline substitutions:', filestr)
 
-    report_progress('....handled inline substitutions')
+    report_progress('inline substitutions')
 
     # Next step: deal with tables
     filestr = typeset_tables(filestr, format)
@@ -2720,7 +2733,7 @@ def doconce2format(filestr, format):
                            tex_blocks, format)
     filestr += '\n'
 
-    report_progress('....handled insertion of verbatim and latex blocks')
+    report_progress('insertion of verbatim and latex blocks')
 
     debugpr('The file after inserting intro/outro and tex/code blocks, and fixing last format-specific issues:', filestr)
 
@@ -2729,7 +2742,7 @@ def doconce2format(filestr, format):
     # in the formats that applies indentation)
     filestr = typeset_envirs(filestr, format)
 
-    report_progress('....handled !benvir/!eenvir constructions')
+    report_progress('!benvir/!eenvir constructions')
 
     debugpr('The file after typesetting of admons and the rest of the !b/!e environments:', filestr)
 
@@ -2786,7 +2799,7 @@ def doconce2format(filestr, format):
 
     cpu = time.time() - t0
     if cpu > 15:
-        print 'doconce format used %.1 s' % cpu
+        print '\n\n...doconce format used %.1f s to translate the document (%d lines)\n' % (cpu, filestr.count('\n'))
         time.sleep(1)
 
     return filestr
