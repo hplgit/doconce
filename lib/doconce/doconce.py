@@ -202,6 +202,25 @@ def syntax_check(filestr, format):
             print filestr2[m.start()-40:m.start()+80]
             _abort()
 
+    # Syntax error `try`-`except`, should be `try-except`
+    pattern = r'(([`A-Za-z0-9._]+)`-`([`A-Za-z0-9._]+))'
+    m = re.search(pattern, filestr)
+    if m:
+        print '*** error: %s`-` is syntax error' % m.group(1)
+        print '    rewrite to %s-%s' % (m.group(2), m.group(3))
+        print '    surrounding text:'
+        print filestr[m.start()-100:m.start()+100]
+        _abort()
+    # Backticks for inline verbatim without space (in the middle of text)
+    pattern = r'[A-Za-z-]`[A-Za-z]'
+    m = re.search(pattern, filestr)
+    if m:
+        print '*** error: backtick ` in the middle of text is probably syntax error'
+        print '    surrounding text:'
+        print filestr[m.start()-50:m.start()+50]
+        _abort()
+
+
     # Double quotes and not double single quotes in *plain text*:
     inside_code = False
     inside_math = False
@@ -892,7 +911,7 @@ def exercises(filestr, format, code_blocks, tex_blocks):
     label_pattern = re.compile(r'^\s*label\{(.+?)\}')
     # We accept file and solution to be comment lines
     #file_pattern = re.compile(r'^#?\s*file\s*=\s*([^\s]+)')
-    file_pattern = re.compile(r'^#?\s*files?\s*=\s*([A-Za-z0-9\-._, ]+)')
+    file_pattern = re.compile(r'^#?\s*files?\s*=\s*([A-Za-z0-9\-._, *]+)')
     solution_pattern = re.compile(r'^#?\s*solutions?\s*=\s*([A-Za-z0-9\-._, ]+)')
     keywords_pattern = re.compile(r'^#?\s*(keywords|kw)\s*=\s*([A-Za-z0-9\-._;, ]+)')
 

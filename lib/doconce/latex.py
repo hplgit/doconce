@@ -246,7 +246,9 @@ def latex_code(filestr, code_blocks, code_block_types,
 
 
     # Avoid Filename: as a new paragraph with indentation
-    filestr = filestr.replace(r'Filename: \code{', r'\noindent Filename: \code{')
+    filestr = re.sub(r'^(Filenames?): +?\\code\{',
+                     r'\\noindent \g<1>: \code{', filestr,
+                     flags=re.MULTILINE)
     # Preface is normally an unnumbered section or chapter
     # (add \markboth only if book style with chapters
     if re.search(r'\\chapter\{', filestr):
