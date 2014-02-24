@@ -988,6 +988,7 @@ With some text, before we continue with exercises.
 label{exer:some:formula}
 file=verify_formula.py
 
+# Test comments not at the end only
 Pick a statement from Project ref{proj:circle1} or Problem ref{demo:ex:1}
 and verify it.
 

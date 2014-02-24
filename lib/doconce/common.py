@@ -493,6 +493,8 @@ def doconce_exercise_output(exer,
 
     s = '\n\n# ' + envir_delimiter_lines['exercise'][0] + '\n\n'
     s += exer['heading']  # result string
+    comments = ''  # collect comments at the end of the exercises
+
     if include_numbering and not include_type:
         include_type = True
     if not exer['type_visible']:
@@ -516,7 +518,7 @@ def doconce_exercise_output(exer,
         # makes Filename: ... on a separate line, which does not look good.
         # We extract the final comments and print them after anything else.
         # Final comments often contain fruitful comments about the solution.
-        if not exer['subex'] and '\n#' in exer['text']:
+        if (not exer['subex']) and '\n#' in exer['text']:
             lines = exer['text'].splitlines()
             newlines = []
             comments = []
@@ -526,9 +528,10 @@ def doconce_exercise_output(exer,
                 else:
                     break
             comments = '\n'.join(comments)
-            exer['text'] = '\n'.join(lines[:-i])
-        else:
-            comments = ''
+            if i == 0:
+                exer['text'] = '\n'.join(lines)
+            elif i > 0:
+                exer['text'] = '\n'.join(lines[:-i])
 
         s += '\n' + exer['text'] + '\n'
 

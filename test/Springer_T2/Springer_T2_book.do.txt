@@ -295,6 +295,21 @@ a = np.linspace(p, q, n)
 
 ========= Storing results in data files =========
 
+We need to test spaces around footnotes for 2-digit footnotes, which
+means we need a lot of URLs, e.g., to files:
+"`ball2_cml.py`": "${src_path}/input/ball2_cml.py",
+"`bisection_ex.py`": "${src_path}/input/bisection_ex.py",
+"`bisection_movie.py`": "${src_path}/input/bisection_movie.py",
+"`bisection_plot.py`": "${src_path}/input/bisection_plot.py",
+"`bisection.py`": "${src_path}/input/bisection.py",
+"`bisection_v1.py`": "${src_path}/input/bisection_v1.py",
+"`bisection_v2.py`": "${src_path}/input/bisection_v2.py",
+"`c2f_cml.py`": "${src_path}/input/c2f_cml.py",
+"`data.txt`": "${src_path}/input/data.txt",
+"`Fdeg.dat`": "${src_path}/input/Fdeg.dat",
+"`integrate.py`": "${src_path}/input/integrate.py", and
+"`interest.py`": "${src_path}/input/interest.py".
+
 ======= Writing data to file =======
 label{sec:files:writing}
 
@@ -412,7 +427,13 @@ for i in range(len(data)):
         outfile.write('%14.8f' % data[i][j])
     outfile.write('\n')
 !ec
+Some other files and URLs we can mention, just to test a 2-digit footnote,
+are
 
+ * "`addall.py`": "${src_path}/input/addall.py"
+ * "`addall_v1.py`": "${src_path}/input/addall_v1.py"
+ * "`add_cml.py`": "${src_path}/input/add_cml.py"
+ * "`add_input.py`": "${src_path}/input/add_input.py"
 
 
 
