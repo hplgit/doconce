@@ -3170,7 +3170,11 @@ def format_driver():
 
     debugpr('\n\n******* output format: %s *******\n\n' % format)
 
-    basename, ext = os.path.splitext(filename)
+    dirname, basename = os.path.split(filename)
+    if dirname:
+        os.chdir(dirname)
+        print '*** doconce format now works in directory %s' % dirname
+    basename, ext = os.path.splitext(basename)
     # Can allow no extension, .do, or .do.txt
     legal_extensions = ['.do', '.do.txt']
     if ext == '':
@@ -3201,8 +3205,6 @@ def format_driver():
             print '    must be %s' % ' or '.join(legal_extensions)
             _abort()
 
-    print 'XXX', basename, filename
-
     dofile_basename = basename  # global variable
 
     #print '\n----- doconce format %s %s' % (format, filename)
@@ -3215,7 +3217,7 @@ def format_driver():
     if filename_preprocessed.startswith('__') and not option('debug'):
         os.remove(filename_preprocessed)  # clean up
     #print '----- successful run: %s filtered to %s\n' % (filename, out_filename)
-    print 'output in', out_filename
+    print 'output in', os.path.join(dirname, out_filename)
 
 
 class DoconceSyntaxError(Exception):
