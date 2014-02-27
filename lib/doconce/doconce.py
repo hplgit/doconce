@@ -336,6 +336,16 @@ def syntax_check(filestr, format):
                       (len(w[0]), len(w[-1]))
                 _abort()
 
+    # Check that ref{} and label{} have closing }
+    pattern = r'(ref|label)\{([^}]+?)\}'
+    refs_labels = re.findall(pattern, filestr)
+    for tp, label in refs_labels:
+        if ' ' in label:
+            print '*** error: space in label - missing }'
+            print '    %s{%s}\n' % (tp, label)
+            _abort()
+
+
     # Check that references have parenthesis (equations) or
     # the right preceding keyword (Section, Chapter, Exercise, etc.)
     pattern = re.compile(r'\s+([A-Za-z]+?)\s+(ref\{.+?\})', re.MULTILINE)
@@ -2349,8 +2359,11 @@ def file2file(in_filename, format, basename):
     if format == 'html':
         html_output = option('html_output=', '')
         if html_output:
+            if '/' in html_output:
+                print '*** error: --html_output=%s cannot specify another directory\n    %s' % (html_output, os.path.dirname(html_output))
+                _abort()
             basename = html_output
-        # Initial the doc's file collection
+        # Initialize the doc's file collection
         html.add_to_file_collection(basename + '.html',
                                     basename, mode='w')
 
@@ -3157,14 +3170,38 @@ def format_driver():
 
     debugpr('\n\n******* output format: %s *******\n\n' % format)
 
-    if not os.path.isfile(filename):
-        basename = filename
-        filename = filename + '.do.txt'
-        if not os.path.isfile(filename):
-            print 'no such doconce file: %s' % (filename[:-7])
+    basename, ext = os.path.splitext(filename)
+    # Can allow no extension, .do, or .do.txt
+    legal_extensions = ['.do', '.do.txt']
+    if ext == '':
+        found = False
+        for ext in legal_extensions:
+            filename = basename + ext
+            if os.path.isfile(filename):
+                found = True
+                break
+        if not found:
+            print '*** error: given doconce file "%s", but no' % basename
+            print '    files with extensions %s exist' % ' or '.join(legal_extensions)
             _abort()
     else:
-        basename = filename[:-7]
+        # Given extension
+        if not os.path.isfile(filename):
+            print '*** error: file %s does not exist' % filename
+            _abort()
+        if ext == '.txt':
+            if filename.endswith('.do.txt'):
+                basename = filename[:-7]
+            else: # just .txt
+                basename = filename[:-4]
+        elif ext == '.do':
+            basename = filename[:-3]
+        else:
+            print '*** error: illegal file extension %s' % ext
+            print '    must be %s' % ' or '.join(legal_extensions)
+            _abort()
+
+    print 'XXX', basename, filename
 
     dofile_basename = basename  # global variable
 
