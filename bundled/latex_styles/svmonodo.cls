@@ -1,5 +1,5 @@
 % Modified by hpl to have bibliography with chapter heading
-% and normal latex \paragraph{}.
+% and a modified \paragraph{}.
 % The quote environment has small font - might be desirable to
 % change to large font.
 
@@ -579,13 +579,16 @@ passing it to article class \MessageBreak
                        {12\p@}% \p@lus 4\p@ \@minus 4\p@}%
                        {\normalfont\normalsize\subsubsecstyle
                         \rightskip=\z@ \@plus 8em\pretolerance=10000 }}
-% hpl modification: restore normal paragraph
-%\renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
-%                       {-24\p@}% \p@lus -4\p@ \@minus -4\p@}%
-%                       {12\p@}% \p@lus 4\p@ \@minus 4\p@}%
-%                       {\normalfont\normalsize\upshape
-%                        \rightskip=\z@ \@plus 8em\pretolerance=10000 }}
-
+% hpl redefinition, with italic (for TCSE6, 1st-3rd ed.):
+\renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
+                       {-12\p@ \@plus -4\p@ \@minus -4\p@}%
+                       {-0.5em \@plus -0.22em \@minus -0.1em}%
+                       {\normalfont\normalsize\itshape}}
+% hpl redefinition, with boldface (for TCSE6, 4th ed.):
+\renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
+                       {-12\p@ \@plus -4\p@ \@minus -4\p@}%
+                       {-0.5em \@plus -0.22em \@minus -0.1em}%
+                       {\normalfont\normalsize\bfseries}}
 \renewcommand\subparagraph{\@startsection{paragraph}{4}{\z@}%
                        {-18\p@}% \p@lus -4\p@ \@minus -4\p@}%
                        {6\p@}% \p@lus 4\p@ \@minus 4\p@}%
