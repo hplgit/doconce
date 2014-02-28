@@ -1,7 +1,7 @@
 #TITLE (actually governed by the filename): Testing admons
 
 By '''hpl'''
-==== Feb 19, 2014 ====
+==== Feb 28, 2014 ====
 
 == Introduction ==
 First some ordinary text to compare font sizes in admonitions
@@ -192,7 +192,9 @@ and is useful when you want some admons with icon and some without.
 
 
 
-The next admonition features a title "Note, eventually!".
+The next admonition features a title "Note, eventually!" (the comma
+must be removed in the <code>mdfbox</code> admon also in <code>graybox2</code> if
+code is present).
 
 <!-- Note that the final ! does not appear in Sphinx and reST since -->
 <!-- those formats automatically add : to the admonition title. -->

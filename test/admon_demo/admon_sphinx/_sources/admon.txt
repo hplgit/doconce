@@ -5,7 +5,7 @@ Testing admons
 ==============
 
 :Author: hpl
-:Date: Feb 19, 2014
+:Date: Feb 28, 2014
 
 Introduction
 ============
@@ -215,7 +215,9 @@ applies the generic title "Notice:" for the Sphinx format:
 
 
 
-The next admonition features a title "Note, eventually!".
+The next admonition features a title "Note, eventually!" (the comma
+must be removed in the ``mdfbox`` admon also in ``graybox2`` if
+code is present).
 
 .. Note that the final ! does not appear in Sphinx and reST since
 

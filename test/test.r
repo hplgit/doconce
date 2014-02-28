@@ -231,7 +231,9 @@ since latex use ! in the `Verb` typesetting, but this should now
 be fixed: test `!bc` and `!ec` as well as `!bsummary`.
 Also test backslashes and braces like `\begin`, `\begin{enumerate}`,
 `\end{this}\end{that}`, and `{something \inside braces}` in inline
-verbatim text.
+verbatim text. Since the exclamation mark is used as delimiter
+in LaTeX inline verbatim, we need to test it, as in `a != b`,
+and a Doconce directive a la `!bc`.
 
 Here is some color{red}{red} color and an attempt to write color{green}{with
 green color containing a linebreak. <linebreak>
@@ -1002,6 +1004,7 @@ With some text, before we continue with exercises.
 label{exer:some:formula}
 file=verify_formula.py
 
+# Test comments not at the end only
 Pick a statement from Project ref{proj:circle1} or Problem ref{demo:ex:1}
 and verify it.
 
@@ -1600,24 +1603,144 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % --- begin definitions of admonition environments ---
 
-% Admonition style "mdfbox" is an oval colored box
-\colorlet{mdfbox_background}{gray!5}
+% Admonition style "mdfbox" is an oval colored box based on mdframed
+% "notice" admon
+\colorlet{mdfbox_notice_background}{gray!5}
 \newmdenv[
-  backgroundcolor=mdfbox_background,
-  skipabove=\topsep,
-  skipbelow=\topsep,
+  skipabove=15pt,
+  skipbelow=15pt,
   outerlinewidth=0,
+  backgroundcolor=mdfbox_notice_background,
+  linecolor=black,
+  linewidth=2pt,       % frame thickness
+  frametitlebackgroundcolor=mdfbox_notice_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
   leftmargin=0,
   rightmargin=0,
   roundcorner=5,
   needspace=0pt,
-]{mdfboxmdframed}
+]{notice_mdfboxmdframed}
 
-\newenvironment{mdfboxadmon}[1][]{
-\begin{mdfboxmdframed}[frametitle=#1]
+\newenvironment{notice_mdfboxadmon}[1][]{
+\begin{notice_mdfboxmdframed}[frametitle=#1]
 }
 {
-\end{mdfboxmdframed}
+\end{notice_mdfboxmdframed}
+}
+
+% Admonition style "mdfbox" is an oval colored box based on mdframed
+% "summary" admon
+\colorlet{mdfbox_summary_background}{gray!5}
+\newmdenv[
+  skipabove=15pt,
+  skipbelow=15pt,
+  outerlinewidth=0,
+  backgroundcolor=mdfbox_summary_background,
+  linecolor=black,
+  linewidth=2pt,       % frame thickness
+  frametitlebackgroundcolor=mdfbox_summary_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
+  leftmargin=0,
+  rightmargin=0,
+  roundcorner=5,
+  needspace=0pt,
+]{summary_mdfboxmdframed}
+
+\newenvironment{summary_mdfboxadmon}[1][]{
+\begin{summary_mdfboxmdframed}[frametitle=#1]
+}
+{
+\end{summary_mdfboxmdframed}
+}
+
+% Admonition style "mdfbox" is an oval colored box based on mdframed
+% "warning" admon
+\colorlet{mdfbox_warning_background}{gray!5}
+\newmdenv[
+  skipabove=15pt,
+  skipbelow=15pt,
+  outerlinewidth=0,
+  backgroundcolor=mdfbox_warning_background,
+  linecolor=black,
+  linewidth=2pt,       % frame thickness
+  frametitlebackgroundcolor=mdfbox_warning_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
+  leftmargin=0,
+  rightmargin=0,
+  roundcorner=5,
+  needspace=0pt,
+]{warning_mdfboxmdframed}
+
+\newenvironment{warning_mdfboxadmon}[1][]{
+\begin{warning_mdfboxmdframed}[frametitle=#1]
+}
+{
+\end{warning_mdfboxmdframed}
+}
+
+% Admonition style "mdfbox" is an oval colored box based on mdframed
+% "question" admon
+\colorlet{mdfbox_question_background}{gray!5}
+\newmdenv[
+  skipabove=15pt,
+  skipbelow=15pt,
+  outerlinewidth=0,
+  backgroundcolor=mdfbox_question_background,
+  linecolor=black,
+  linewidth=2pt,       % frame thickness
+  frametitlebackgroundcolor=mdfbox_question_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
+  leftmargin=0,
+  rightmargin=0,
+  roundcorner=5,
+  needspace=0pt,
+]{question_mdfboxmdframed}
+
+\newenvironment{question_mdfboxadmon}[1][]{
+\begin{question_mdfboxmdframed}[frametitle=#1]
+}
+{
+\end{question_mdfboxmdframed}
+}
+
+% Admonition style "mdfbox" is an oval colored box based on mdframed
+% "block" admon
+\colorlet{mdfbox_block_background}{gray!5}
+\newmdenv[
+  skipabove=15pt,
+  skipbelow=15pt,
+  outerlinewidth=0,
+  backgroundcolor=mdfbox_block_background,
+  linecolor=black,
+  linewidth=2pt,       % frame thickness
+  frametitlebackgroundcolor=mdfbox_block_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
+  leftmargin=0,
+  rightmargin=0,
+  roundcorner=5,
+  needspace=0pt,
+]{block_mdfboxmdframed}
+
+\newenvironment{block_mdfboxadmon}[1][]{
+\begin{block_mdfboxmdframed}[frametitle=#1]
+}
+{
+\end{block_mdfboxmdframed}
 }
 
 % --- end of definitions of admonition environments ---
@@ -1946,7 +2069,9 @@ since latex use ! in the \code{Verb} typesetting, but this should now
 be fixed: test \code{!bc} and \code{!ec} as well as \code{!bsummary}.
 Also test backslashes and braces like \code{\begin}, \code{\begin{enumerate}},
 \code{\end{this}\end{that}}, and \code{{something \inside braces}} in inline
-verbatim text.
+verbatim text. Since the exclamation mark is used as delimiter
+in {\LaTeX} inline verbatim, we need to test it, as in \code{a != b},
+and a Doconce directive a la \code{!bc}.
 
 Here is some \textcolor{red}{red} color and an attempt to write \textcolor{green}{with
 green color containing a linebreak. \\
@@ -2492,7 +2617,7 @@ print 'Flipping a coin %d times gave %d heads' % (N, heads)
 \epycod
 
 % --- end solution of exercise ---
-Filenames: \code{flip_coin.py}, \code{flip_coin.pdf}.
+\noindent Filenames: \code{flip_coin.py}, \code{flip_coin.pdf}.
 % solution files: mysol.txt, mysol_flip_coin.py, yet_another.file
 
 \end{doconceexercise}
@@ -2774,8 +2899,8 @@ And a test that the code \code{lambda x: x+2} is correctly placed here:
 lambda x: x+2
 \eccq
 
-% Have some comments at the end of the exercise to see that
 % the Filename: ... is written correctly.
+% Have some comments at the end of the exercise to see that
 
 \end{doconceexercise}
 % --- end exercise ---
@@ -2819,6 +2944,7 @@ With some text, before we continue with exercises.
 
 \label{exer:some:formula}
 
+% Test comments not at the end only
 Pick a statement from Project~\ref{proj:circle1} or Problem~\ref{demo:ex:1}
 and verify it.
 
@@ -2902,9 +3028,9 @@ With label.
 Without label.
 
 
-\begin{mdfboxadmon}[Tip.]
+\begin{notice_mdfboxadmon}[Tip.]
 Here is a tip or hint box, typeset as a notice box.
-\end{mdfboxadmon}
+\end{notice_mdfboxadmon}
 
 
 
@@ -2924,7 +3050,7 @@ Greg Wilson' excellent \href{{http://software-carpentry.org/2010/07/script-for-i
 from using version control systems.
 
 
-\begin{mdfboxadmon}[Summary.]
+\begin{summary_mdfboxadmon}[Summary.]
 \textbf{Bold remark:} Make some text with this summary.
 Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
@@ -2935,7 +3061,7 @@ Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
-\end{mdfboxadmon}
+\end{summary_mdfboxadmon}
 
 
 
@@ -3129,24 +3255,144 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % --- begin definitions of admonition environments ---
 
-% Admonition style "mdfbox" is an oval colored box
-\colorlet{mdfbox_background}{gray!5}
+% Admonition style "mdfbox" is an oval colored box based on mdframed
+% "notice" admon
+\colorlet{mdfbox_notice_background}{gray!5}
 \newmdenv[
-  backgroundcolor=mdfbox_background,
-  skipabove=\topsep,
-  skipbelow=\topsep,
+  skipabove=15pt,
+  skipbelow=15pt,
   outerlinewidth=0,
+  backgroundcolor=mdfbox_notice_background,
+  linecolor=black,
+  linewidth=2pt,       % frame thickness
+  frametitlebackgroundcolor=mdfbox_notice_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
   leftmargin=0,
   rightmargin=0,
   roundcorner=5,
   needspace=0pt,
-]{mdfboxmdframed}
+]{notice_mdfboxmdframed}
 
-\newenvironment{mdfboxadmon}[1][]{
-\begin{mdfboxmdframed}[frametitle=#1]
+\newenvironment{notice_mdfboxadmon}[1][]{
+\begin{notice_mdfboxmdframed}[frametitle=#1]
 }
 {
-\end{mdfboxmdframed}
+\end{notice_mdfboxmdframed}
+}
+
+% Admonition style "mdfbox" is an oval colored box based on mdframed
+% "summary" admon
+\colorlet{mdfbox_summary_background}{gray!5}
+\newmdenv[
+  skipabove=15pt,
+  skipbelow=15pt,
+  outerlinewidth=0,
+  backgroundcolor=mdfbox_summary_background,
+  linecolor=black,
+  linewidth=2pt,       % frame thickness
+  frametitlebackgroundcolor=mdfbox_summary_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
+  leftmargin=0,
+  rightmargin=0,
+  roundcorner=5,
+  needspace=0pt,
+]{summary_mdfboxmdframed}
+
+\newenvironment{summary_mdfboxadmon}[1][]{
+\begin{summary_mdfboxmdframed}[frametitle=#1]
+}
+{
+\end{summary_mdfboxmdframed}
+}
+
+% Admonition style "mdfbox" is an oval colored box based on mdframed
+% "warning" admon
+\colorlet{mdfbox_warning_background}{gray!5}
+\newmdenv[
+  skipabove=15pt,
+  skipbelow=15pt,
+  outerlinewidth=0,
+  backgroundcolor=mdfbox_warning_background,
+  linecolor=black,
+  linewidth=2pt,       % frame thickness
+  frametitlebackgroundcolor=mdfbox_warning_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
+  leftmargin=0,
+  rightmargin=0,
+  roundcorner=5,
+  needspace=0pt,
+]{warning_mdfboxmdframed}
+
+\newenvironment{warning_mdfboxadmon}[1][]{
+\begin{warning_mdfboxmdframed}[frametitle=#1]
+}
+{
+\end{warning_mdfboxmdframed}
+}
+
+% Admonition style "mdfbox" is an oval colored box based on mdframed
+% "question" admon
+\colorlet{mdfbox_question_background}{gray!5}
+\newmdenv[
+  skipabove=15pt,
+  skipbelow=15pt,
+  outerlinewidth=0,
+  backgroundcolor=mdfbox_question_background,
+  linecolor=black,
+  linewidth=2pt,       % frame thickness
+  frametitlebackgroundcolor=mdfbox_question_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
+  leftmargin=0,
+  rightmargin=0,
+  roundcorner=5,
+  needspace=0pt,
+]{question_mdfboxmdframed}
+
+\newenvironment{question_mdfboxadmon}[1][]{
+\begin{question_mdfboxmdframed}[frametitle=#1]
+}
+{
+\end{question_mdfboxmdframed}
+}
+
+% Admonition style "mdfbox" is an oval colored box based on mdframed
+% "block" admon
+\colorlet{mdfbox_block_background}{gray!5}
+\newmdenv[
+  skipabove=15pt,
+  skipbelow=15pt,
+  outerlinewidth=0,
+  backgroundcolor=mdfbox_block_background,
+  linecolor=black,
+  linewidth=2pt,       % frame thickness
+  frametitlebackgroundcolor=mdfbox_block_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
+  leftmargin=0,
+  rightmargin=0,
+  roundcorner=5,
+  needspace=0pt,
+]{block_mdfboxmdframed}
+
+\newenvironment{block_mdfboxadmon}[1][]{
+\begin{block_mdfboxmdframed}[frametitle=#1]
+}
+{
+\end{block_mdfboxmdframed}
 }
 
 % --- end of definitions of admonition environments ---
@@ -3585,7 +3831,9 @@ since latex use ! in the {\Verb!Verb!} typesetting, but this should now
 be fixed: test {\Verb~!bc~} and {\Verb~!ec~} as well as {\Verb~!bsummary~}.
 Also test backslashes and braces like {\Verb!\begin!}, {\Verb!\begin{enumerate}!},
 {\Verb!\end{this}\end{that}!}, and {\Verb!{something \inside braces}!} in inline
-verbatim text.
+verbatim text. Since the exclamation mark is used as delimiter
+in {\LaTeX} inline verbatim, we need to test it, as in {\Verb~a != b~},
+and a Doconce directive a la {\Verb~!bc~}.
 
 Here is some \textcolor{red}{red} color and an attempt to write \textcolor{green}{with
 green color containing a linebreak. \\
@@ -4139,7 +4387,7 @@ print 'Flipping a coin %d times gave %d heads' % (N, heads)
 \noindent
 
 % --- end solution of exercise ---
-Filenames: {\Verb!flip_coin.py!}, {\Verb!flip_coin.pdf!}.
+\noindent Filenames: {\Verb!flip_coin.py!}, {\Verb!flip_coin.pdf!}.
 % solution files: mysol.txt, mysol_flip_coin.py, yet_another.file
 
 \end{doconceexercise}
@@ -4431,8 +4679,8 @@ lambda x: x+2
 \end{Verbatim}
 \noindent
 
-% Have some comments at the end of the exercise to see that
 % the Filename: ... is written correctly.
+% Have some comments at the end of the exercise to see that
 
 \end{doconceexercise}
 % --- end exercise ---
@@ -4477,6 +4725,7 @@ With some text, before we continue with exercises.
 
 \label{exer:some:formula}
 
+% Test comments not at the end only
 Pick a statement from Project~\ref{proj:circle1} or Problem~\ref{demo:ex:1}
 and verify it.
 
@@ -4561,9 +4810,9 @@ With label.
 Without label.
 
 
-\begin{mdfboxadmon}[Tip.]
+\begin{notice_mdfboxadmon}[Tip.]
 Here is a tip or hint box, typeset as a notice box.
-\end{mdfboxadmon}
+\end{notice_mdfboxadmon}
 
 
 
@@ -4583,7 +4832,7 @@ Greg Wilson' excellent \href{{http://software--carpentry.org/2010/07/script--for
 from using version control systems.
 
 
-\begin{mdfboxadmon}[Summary.]
+\begin{summary_mdfboxadmon}[Summary.]
 \textbf{Bold remark:} Make some text with this summary.
 Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
@@ -4594,7 +4843,7 @@ Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
-\end{mdfboxadmon}
+\end{summary_mdfboxadmon}
 
 
 
@@ -4797,24 +5046,144 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % --- begin definitions of admonition environments ---
 
-% Admonition style "mdfbox" is an oval colored box
-\colorlet{mdfbox_background}{gray!5}
+% Admonition style "mdfbox" is an oval colored box based on mdframed
+% "notice" admon
+\colorlet{mdfbox_notice_background}{gray!5}
 \newmdenv[
-  backgroundcolor=mdfbox_background,
-  skipabove=\topsep,
-  skipbelow=\topsep,
+  skipabove=15pt,
+  skipbelow=15pt,
   outerlinewidth=0,
+  backgroundcolor=mdfbox_notice_background,
+  linecolor=black,
+  linewidth=2pt,       % frame thickness
+  frametitlebackgroundcolor=mdfbox_notice_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
   leftmargin=0,
   rightmargin=0,
   roundcorner=5,
   needspace=0pt,
-]{mdfboxmdframed}
+]{notice_mdfboxmdframed}
 
-\newenvironment{mdfboxadmon}[1][]{
-\begin{mdfboxmdframed}[frametitle=#1]
+\newenvironment{notice_mdfboxadmon}[1][]{
+\begin{notice_mdfboxmdframed}[frametitle=#1]
 }
 {
-\end{mdfboxmdframed}
+\end{notice_mdfboxmdframed}
+}
+
+% Admonition style "mdfbox" is an oval colored box based on mdframed
+% "summary" admon
+\colorlet{mdfbox_summary_background}{gray!5}
+\newmdenv[
+  skipabove=15pt,
+  skipbelow=15pt,
+  outerlinewidth=0,
+  backgroundcolor=mdfbox_summary_background,
+  linecolor=black,
+  linewidth=2pt,       % frame thickness
+  frametitlebackgroundcolor=mdfbox_summary_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
+  leftmargin=0,
+  rightmargin=0,
+  roundcorner=5,
+  needspace=0pt,
+]{summary_mdfboxmdframed}
+
+\newenvironment{summary_mdfboxadmon}[1][]{
+\begin{summary_mdfboxmdframed}[frametitle=#1]
+}
+{
+\end{summary_mdfboxmdframed}
+}
+
+% Admonition style "mdfbox" is an oval colored box based on mdframed
+% "warning" admon
+\colorlet{mdfbox_warning_background}{gray!5}
+\newmdenv[
+  skipabove=15pt,
+  skipbelow=15pt,
+  outerlinewidth=0,
+  backgroundcolor=mdfbox_warning_background,
+  linecolor=black,
+  linewidth=2pt,       % frame thickness
+  frametitlebackgroundcolor=mdfbox_warning_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
+  leftmargin=0,
+  rightmargin=0,
+  roundcorner=5,
+  needspace=0pt,
+]{warning_mdfboxmdframed}
+
+\newenvironment{warning_mdfboxadmon}[1][]{
+\begin{warning_mdfboxmdframed}[frametitle=#1]
+}
+{
+\end{warning_mdfboxmdframed}
+}
+
+% Admonition style "mdfbox" is an oval colored box based on mdframed
+% "question" admon
+\colorlet{mdfbox_question_background}{gray!5}
+\newmdenv[
+  skipabove=15pt,
+  skipbelow=15pt,
+  outerlinewidth=0,
+  backgroundcolor=mdfbox_question_background,
+  linecolor=black,
+  linewidth=2pt,       % frame thickness
+  frametitlebackgroundcolor=mdfbox_question_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
+  leftmargin=0,
+  rightmargin=0,
+  roundcorner=5,
+  needspace=0pt,
+]{question_mdfboxmdframed}
+
+\newenvironment{question_mdfboxadmon}[1][]{
+\begin{question_mdfboxmdframed}[frametitle=#1]
+}
+{
+\end{question_mdfboxmdframed}
+}
+
+% Admonition style "mdfbox" is an oval colored box based on mdframed
+% "block" admon
+\colorlet{mdfbox_block_background}{gray!5}
+\newmdenv[
+  skipabove=15pt,
+  skipbelow=15pt,
+  outerlinewidth=0,
+  backgroundcolor=mdfbox_block_background,
+  linecolor=black,
+  linewidth=2pt,       % frame thickness
+  frametitlebackgroundcolor=mdfbox_block_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
+  leftmargin=0,
+  rightmargin=0,
+  roundcorner=5,
+  needspace=0pt,
+]{block_mdfboxmdframed}
+
+\newenvironment{block_mdfboxadmon}[1][]{
+\begin{block_mdfboxmdframed}[frametitle=#1]
+}
+{
+\end{block_mdfboxmdframed}
 }
 
 % --- end of definitions of admonition environments ---
@@ -5221,7 +5590,9 @@ since latex use ! in the \Verb!Verb! typesetting, but this should now
 be fixed: test \Verb~!bc~ and \Verb~!ec~ as well as \Verb~!bsummary~.
 Also test backslashes and braces like \Verb!\begin!, \Verb!\begin{enumerate}!,
 \Verb!\end{this}\end{that}!, and \Verb!{something \inside braces}! in inline
-verbatim text.
+verbatim text. Since the exclamation mark is used as delimiter
+in {\LaTeX} inline verbatim, we need to test it, as in \Verb~a != b~,
+and a Doconce directive a la \Verb~!bc~.
 
 Here is some \textcolor{red}{red} color and an attempt to write \textcolor{green}{with
 green color containing a linebreak. \\
@@ -5768,7 +6139,7 @@ print 'Flipping a coin %d times gave %d heads' % (N, heads)
 \end{minted}
 
 % --- end solution of exercise ---
-Filenames: \Verb!flip_coin.py!, \Verb!flip_coin.pdf!.
+\noindent Filenames: \Verb!flip_coin.py!, \Verb!flip_coin.pdf!.
 % solution files: mysol.txt, mysol_flip_coin.py, yet_another.file
 
 \end{doconceexercise}
@@ -6053,8 +6424,8 @@ And a test that the code \Verb!lambda x: x+2! is correctly placed here:
 lambda x: x+2
 \end{Verbatim}
 
-% Have some comments at the end of the exercise to see that
 % the Filename: ... is written correctly.
+% Have some comments at the end of the exercise to see that
 
 \end{doconceexercise}
 % --- end exercise ---
@@ -6099,6 +6470,7 @@ With some text, before we continue with exercises.
 
 \label{exer:some:formula}
 
+% Test comments not at the end only
 Pick a statement from Project~\ref{proj:circle1} or Problem~\ref{demo:ex:1}
 and verify it.
 
@@ -6183,9 +6555,9 @@ With label.
 Without label.
 
 
-\begin{mdfboxadmon}[Tip.]
+\begin{notice_mdfboxadmon}[Tip.]
 Here is a tip or hint box, typeset as a notice box.
-\end{mdfboxadmon}
+\end{notice_mdfboxadmon}
 
 
 
@@ -6205,7 +6577,7 @@ Greg Wilson' excellent \href{{http://software--carpentry.org/2010/07/script--for
 from using version control systems.
 
 
-\begin{mdfboxadmon}[Summary.]
+\begin{summary_mdfboxadmon}[Summary.]
 \textbf{Bold remark:} Make some text with this summary.
 Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
@@ -6216,7 +6588,7 @@ Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
-\end{mdfboxadmon}
+\end{summary_mdfboxadmon}
 
 
 
@@ -6582,7 +6954,9 @@ since latex use ! in the ``Verb`` typesetting, but this should now
 be fixed: test ``!bc`` and ``!ec`` as well as ``!bsummary``.
 Also test backslashes and braces like ``\begin``, ``\begin{enumerate}``,
 ``\end{this}\end{that}``, and ``{something \inside braces}`` in inline
-verbatim text.
+verbatim text. Since the exclamation mark is used as delimiter
+in LaTeX inline verbatim, we need to test it, as in ``a != b``,
+and a Doconce directive a la ``!bc``.
 
 Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
 green color containing a linebreak. 
@@ -7375,9 +7749,9 @@ And a test that the code ``lambda x: x+2`` is correctly placed here::
         lambda x: x+2
 
 
-.. Have some comments at the end of the exercise to see that
-
 .. the Filename: ... is written correctly.
+
+.. Have some comments at the end of the exercise to see that
 
 
 .. --- end exercise ---
@@ -7421,6 +7795,8 @@ More Exercises
 
 Exercise 8: Make references to projects and problems
 ----------------------------------------------------
+
+.. Test comments not at the end only
 
 Pick a statement from `Project 4: Explore Distributions of Random Circles`_ or `Problem 2: Flip a Coin`_
 and verify it.
@@ -8034,7 +8410,9 @@ since latex use ! in the ``Verb`` typesetting, but this should now
 be fixed: test ``!bc`` and ``!ec`` as well as ``!bsummary``.
 Also test backslashes and braces like ``\begin``, ``\begin{enumerate}``,
 ``\end{this}\end{that}``, and ``{something \inside braces}`` in inline
-verbatim text.
+verbatim text. Since the exclamation mark is used as delimiter
+in LaTeX inline verbatim, we need to test it, as in ``a != b``,
+and a Doconce directive a la ``!bc``.
 
 Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
 green color containing a linebreak. 
@@ -8975,9 +9353,9 @@ And a test that the code ``lambda x: x+2`` is correctly placed here:
         lambda x: x+2
 
 
-.. Have some comments at the end of the exercise to see that
-
 .. the Filename: ... is written correctly.
+
+.. Have some comments at the end of the exercise to see that
 
 
 .. --- end exercise ---
@@ -9021,6 +9399,8 @@ More Exercises
 
 Exercise 8: Make references to projects and problems
 ----------------------------------------------------
+
+.. Test comments not at the end only
 
 Pick a statement from :ref:`proj:circle1` or :ref:`demo:ex:1`
 and verify it.
@@ -9589,7 +9969,9 @@ since latex use ! in the `Verb` typesetting, but this should now
 be fixed: test `!bc` and `!ec` as well as `!bsummary`.
 Also test backslashes and braces like `\begin`, `\begin{enumerate}`,
 `\end{this}\end{that}`, and `{something \inside braces}` in inline
-verbatim text.
+verbatim text. Since the exclamation mark is used as delimiter
+in LaTeX inline verbatim, we need to test it, as in `a != b`,
+and a Doconce directive a la `!bc`.
 
 Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
 green color containing a linebreak. 
@@ -10306,8 +10688,8 @@ And a test that the code `lambda x: x+2` is correctly placed here:
 lambda x: x+2
 }}}
 
-<wiki:comment> Have some comments at the end of the exercise to see that </wiki:comment>
 <wiki:comment> the Filename: ... is written correctly. </wiki:comment>
+<wiki:comment> Have some comments at the end of the exercise to see that </wiki:comment>
 
 <wiki:comment> --- end exercise --- </wiki:comment>
 
@@ -10341,6 +10723,7 @@ With some text, before we continue with exercises.
 
 ==== Exercise 8: Make references to projects and problems ====
 
+<wiki:comment> Test comments not at the end only </wiki:comment>
 Pick a statement from [#Project_4:_Explore_Distributions_of_Random_Circles] or [#Problem_2:_Flip_a_Coin]
 and verify it.
 
@@ -10784,7 +11167,9 @@ since latex use ! in the <code>Verb</code> typesetting, but this should now
 be fixed: test <code>!bc</code> and <code>!ec</code> as well as <code>!bsummary</code>.
 Also test backslashes and braces like <code>\begin</code>, <code>\begin{enumerate}</code>,
 <code>\end{this}\end{that}</code>, and <code>{something \inside braces}</code> in inline
-verbatim text.
+verbatim text. Since the exclamation mark is used as delimiter
+in LaTeX inline verbatim, we need to test it, as in <code>a != b</code>,
+and a Doconce directive a la <code>!bc</code>.
 
 Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
 green color containing a linebreak. <br />
@@ -11490,8 +11875,8 @@ And a test that the code <code>lambda x: x+2</code> is correctly placed here:
 lambda x: x+2
 </syntaxhighlight>
 
-<!-- Have some comments at the end of the exercise to see that -->
 <!-- the Filename: ... is written correctly. -->
+<!-- Have some comments at the end of the exercise to see that -->
 
 <!-- --- end exercise --- -->
 
@@ -11527,6 +11912,7 @@ With some text, before we continue with exercises.
 
 ==== Exercise 8: Make references to projects and problems ====
 
+<!-- Test comments not at the end only -->
 Pick a statement from [#Project_4:_Explore_Distributions_of_Random_Circles] or [#Problem_2:_Flip_a_Coin]
 and verify it.
 
@@ -12061,7 +12447,9 @@ since latex use ! in the {{{Verb}}} typesetting, but this should now
 be fixed: test {{{!bc}}} and {{{!ec}}} as well as {{{!bsummary}}}.
 Also test backslashes and braces like {{{\begin}}}, {{{\begin{enumerate}}}},
 {{{\end{this}\end{that}}}}, and {{{{something \inside braces}}}} in inline
-verbatim text.
+verbatim text. Since the exclamation mark is used as delimiter
+in LaTeX inline verbatim, we need to test it, as in {{{a != b}}},
+and a Doconce directive a la {{{!bc}}}.
 
 Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
 green color containing a linebreak. <br />
@@ -12729,8 +13117,8 @@ And a test that the code {{{lambda x: x+2}}} is correctly placed here:
 lambda x: x+2
 }}}
 
-<wiki:comment> Have some comments at the end of the exercise to see that </wiki:comment>
 <wiki:comment> the Filename: ... is written correctly. </wiki:comment>
+<wiki:comment> Have some comments at the end of the exercise to see that </wiki:comment>
 
 <wiki:comment> --- end exercise --- </wiki:comment>
 
@@ -12765,6 +13153,7 @@ With some text, before we continue with exercises.
 == Exercise 8: Make references to projects and problems ==
 
 
+<wiki:comment> Test comments not at the end only </wiki:comment>
 Pick a statement from [#Project_4:_Explore_Distributions_of_Random_Circles] or [#Problem_2:_Flip_a_Coin]
 and verify it.
 
@@ -13194,7 +13583,9 @@ since latex use ! in the 'Verb' typesetting, but this should now
 be fixed: test '!bc' and '!ec' as well as '!bsummary'.
 Also test backslashes and braces like '\begin', '\begin{enumerate}',
 '\end{this}\end{that}', and '{something \inside braces}' in inline
-verbatim text.
+verbatim text. Since the exclamation mark is used as delimiter
+in LaTeX inline verbatim, we need to test it, as in 'a != b',
+and a Doconce directive a la '!bc'.
 
 Here is some red color and an attempt to write with
 green color containing a linebreak. 
@@ -14366,7 +14757,9 @@ since latex use ! in the C{Verb} typesetting, but this should now
 be fixed: test C{!bc} and C{!ec} as well as C{!bsummary}.
 Also test backslashes and braces like C{\begin}, C{\begin{enumerate}},
 C{\end{this}\end{that}}, and C{{something \inside braces}} in inline
-verbatim text.
+verbatim text. Since the exclamation mark is used as delimiter
+in LaTeX inline verbatim, we need to test it, as in C{a != b},
+and a Doconce directive a la C{!bc}.
 
 Here is some red color and an attempt to write with
 green color containing a linebreak. 
@@ -15640,7 +16033,9 @@ since latex use ! in the Verb typesetting, but this should now
 be fixed: test !bc and !ec as well as !bsummary.
 Also test backslashes and braces like \begin, \begin{enumerate},
 \end{this}\end{that}, and {something \inside braces} in inline
-verbatim text.
+verbatim text. Since the exclamation mark is used as delimiter
+in LaTeX inline verbatim, we need to test it, as in a != b,
+and a Doconce directive a la !bc.
 
 Here is some red color and an attempt to write with
 green color containing a linebreak. 
@@ -16903,7 +17298,9 @@ since latex use ! in the `Verb` typesetting, but this should now
 be fixed: test `!bc` and `!ec` as well as `!bsummary`.
 Also test backslashes and braces like `\begin`, `\begin{enumerate}`,
 `\end{this}\end{that}`, and `{something \inside braces}` in inline
-verbatim text.
+verbatim text. Since the exclamation mark is used as delimiter
+in LaTeX inline verbatim, we need to test it, as in `a != b`,
+and a Doconce directive a la `!bc`.
 
 Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
 green color containing a linebreak. \n
@@ -17669,8 +18066,8 @@ And a test that the code `lambda x: x+2` is correctly placed here:
 lambda x: x+2
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-<!-- Have some comments at the end of the exercise to see that -->
 <!-- the Filename: ... is written correctly. -->
+<!-- Have some comments at the end of the exercise to see that -->
 
 <!-- --- end exercise --- -->
 
@@ -17704,6 +18101,7 @@ With some text, before we continue with exercises.
 
 ### Exercise 8: Make references to projects and problems
 
+<!-- Test comments not at the end only -->
 Pick a statement from  [Project 4: Explore Distributions of Random Circles](#s) or  [Problem 2: Flip a Coin](#n)
 and verify it.
 
@@ -18419,7 +18817,9 @@ in a separate document: `admon.do.txt`.
       "be fixed: test `!bc` and `!ec` as well as `!bsummary`.\n",
       "Also test backslashes and braces like `\\begin`, `\\begin{enumerate}`,\n",
       "`\\end{this}\\end{that}`, and `{something \\inside braces}` in inline\n",
-      "verbatim text.\n",
+      "verbatim text. Since the exclamation mark is used as delimiter\n",
+      "in LaTeX inline verbatim, we need to test it, as in `a != b`,\n",
+      "and a Doconce directive a la `!bc`.\n",
       "\n",
       "Here is some <font color=\"red\">red</font> color and an attempt to write <font color=\"green\">with\n",
       "green color containing a linebreak. \n",
@@ -19338,8 +19738,8 @@ in a separate document: `admon.do.txt`.
      "cell_type": "markdown",
      "metadata": {},
      "source": [
-      "<!-- Have some comments at the end of the exercise to see that -->\n",
       "<!-- the Filename: ... is written correctly. -->\n",
+      "<!-- Have some comments at the end of the exercise to see that -->\n",
       "\n",
       "<!-- --- end exercise --- -->\n",
       "\n",
@@ -19373,6 +19773,7 @@ in a separate document: `admon.do.txt`.
       "\n",
       "### Exercise 8: Make references to projects and problems\n",
       "\n",
+      "<!-- Test comments not at the end only -->\n",
       "Pick a statement from  [Project 4: Explore Distributions of Random Circles](#s) or  [Problem 2: Flip a Coin](#n)\n",
       "and verify it.\n",
       "\n",
@@ -19834,7 +20235,7 @@ Could not find match for from regex "\*\s+\$.+normally"
   'solution': '',
   'solution_file': None,
   'subex': [],
-  'text': '# Another minimalistic exercise\n\nJust some text. And some math saying that $e^0=1$ on a single line,\nto test that math block insertion is correct:\n\n!bt\n\\[ \\exp{(0)} = 1 \\]\n\n!et\n\nAnd a test that the code `lambda x: x+2` is correctly placed here:\n\n!bc\nlambda x: x+2\n\n!ec \n\n# Have some comments at the end of the exercise to see that\n# the Filename: ... is written correctly.',
+  'text': '# Another minimalistic exercise\n\nJust some text. And some math saying that $e^0=1$ on a single line,\nto test that math block insertion is correct:\n\n!bt\n\\[ \\exp{(0)} = 1 \\]\n\n!et\n\nAnd a test that the code `lambda x: x+2` is correctly placed here:\n\n!bc\nlambda x: x+2\n\n!ec ',
   'title': 'Some exercise without the "Exercise:" prefix',
   'type': 'Exercise',
   'type_visible': False},
@@ -19868,7 +20269,7 @@ Could not find match for from regex "\*\s+\$.+normally"
   'solution': '',
   'solution_file': None,
   'subex': [],
-  'text': 'Pick a statement from Project ref{proj:circle1} or Problem ref{demo:ex:1}\nand verify it.\n\nTest list at the end of an exercise without other elements (like subexercise,\nhint, etc.):\n\n o item1\n o item2',
+  'text': '# Test comments not at the end only\nPick a statement from Project ref{proj:circle1} or Problem ref{demo:ex:1}\nand verify it.\n\nTest list at the end of an exercise without other elements (like subexercise,\nhint, etc.):\n\n o item1\n o item2',
   'title': 'Make references to projects and problems',
   'type': 'Exercise',
   'type_visible': True},
@@ -20047,7 +20448,7 @@ Terminal&gt; cd test
 Terminal&gt; myprog -f
 output1
 output2</code></pre>
-<p>It is time to test <code>verbatim inline font</code> especially with <code>a newline inside the text</code> and an exclamation mark at the end: <code>BEGIN</code>! The exclamation mark inside the verbatim text is potentially not smart since latex use ! in the <code>Verb</code> typesetting, but this should now be fixed: test  !bc  and  !ec  as well as  !bsummary . Also test backslashes and braces like <code>\begin</code>, <code>\begin{enumerate}</code>, <code>\end{this}\end{that}</code>, and <code>{something \inside braces}</code> in inline verbatim text.</p>
+<p>It is time to test <code>verbatim inline font</code> especially with <code>a newline inside the text</code> and an exclamation mark at the end: <code>BEGIN</code>! The exclamation mark inside the verbatim text is potentially not smart since latex use ! in the <code>Verb</code> typesetting, but this should now be fixed: test  !bc  and  !ec  as well as  !bsummary . Also test backslashes and braces like <code>\begin</code>, <code>\begin{enumerate}</code>, <code>\end{this}\end{that}</code>, and <code>{something \inside braces}</code> in inline verbatim text. Since the exclamation mark is used as delimiter in LaTeX inline verbatim, we need to test it, as in  a != b , and a Doconce directive a la  !bc .</p>
 <p>Here is some color and an attempt to write Some formats will only display<br />this correctly when HTML is the output format.<br />But here some more running text is added which is not part of the previous blocks with line breaks.</p>
 <h4 id="running-os-commands.">Running OS commands.</h4>
 <pre><code>Terminal&gt; python -c &#39;print &quot;Testing\noutput\nfrom\nPython.&quot;&#39;
@@ -20708,7 +21109,7 @@ Terminal&gt; cd test
 Terminal&gt; myprog -f
 output1
 output2</code></pre>
-<p>It is time to test <code>verbatim inline font</code> especially with <code>a newline inside the text</code> and an exclamation mark at the end: <code>BEGIN</code>! The exclamation mark inside the verbatim text is potentially not smart since latex use ! in the <code>Verb</code> typesetting, but this should now be fixed: test <code>!bc</code> and <code>!ec</code> as well as <code>!bsummary</code>. Also test backslashes and braces like <code>\begin</code>, <code>\begin{enumerate}</code>, <code>\end{this}\end{that}</code>, and <code>{something \inside braces}</code> in inline verbatim text.</p>
+<p>It is time to test <code>verbatim inline font</code> especially with <code>a newline inside the text</code> and an exclamation mark at the end: <code>BEGIN</code>! The exclamation mark inside the verbatim text is potentially not smart since latex use ! in the <code>Verb</code> typesetting, but this should now be fixed: test <code>!bc</code> and <code>!ec</code> as well as <code>!bsummary</code>. Also test backslashes and braces like <code>\begin</code>, <code>\begin{enumerate}</code>, <code>\end{this}\end{that}</code>, and <code>{something \inside braces}</code> in inline verbatim text. Since the exclamation mark is used as delimiter in LaTeX inline verbatim, we need to test it, as in <code>a != b</code>, and a Doconce directive a la <code>!bc</code>.</p>
 <p>Here is some <font color="red">red</font> color and an attempt to write <font color="green">with green color containing a linebreak. And one more.</font> Some formats will only display this correctly when HTML is the output format. But here some more running text is added which is not part of the previous blocks with line breaks.</p>
 <h4 id="running-os-commands">Running OS commands</h4>
 <pre><code>Terminal&gt; python -c &#39;print &quot;Testing\noutput\nfrom\nPython.&quot;&#39;
@@ -21264,8 +21665,8 @@ x, y = circle(<span class="fl">2.0</span>, <span class="dv">0</span>, <span clas
 \]</span></p>
 <p>And a test that the code <code>lambda x: x+2</code> is correctly placed here:</p>
 <pre><code>lambda x: x+2</code></pre>
-<!-- Have some comments at the end of the exercise to see that -->
 <!-- the Filename: ... is written correctly. -->
+<!-- Have some comments at the end of the exercise to see that -->
 
 <!-- --- end exercise --- -->
 
@@ -21290,6 +21691,7 @@ x, y = circle(<span class="fl">2.0</span>, <span class="dv">0</span>, <span clas
 <!-- --- begin exercise --- -->
 
 <h3 id="exercise-8-make-references-to-projects-and-problems">Exercise 8: Make references to projects and problems</h3>
+<!-- Test comments not at the end only -->
 <p>Pick a statement from <a href="#s">Project 4: Explore Distributions of Random Circles</a> or <a href="#n">Problem 2: Flip a Coin</a> and verify it.</p>
 <p>Test list at the end of an exercise without other elements (like subexercise, hint, etc.):</p>
 <ol style="list-style-type: decimal">
@@ -24159,7 +24561,9 @@ since latex use ! in the <code>Verb</code> typesetting, but this should now
 be fixed: test <code>!bc</code> and <code>!ec</code> as well as <code>!bsummary</code>.
 Also test backslashes and braces like <code>\begin</code>, <code>\begin{enumerate}</code>,
 <code>\end{this}\end{that}</code>, and <code>{something \inside braces}</code> in inline
-verbatim text.
+verbatim text. Since the exclamation mark is used as delimiter
+in LaTeX inline verbatim, we need to test it, as in <code>a != b</code>,
+and a Doconce directive a la <code>!bc</code>.
 
 <p>
 Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
@@ -25233,8 +25637,8 @@ And a test that the code <code>lambda x: x+2</code> is correctly placed here:
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">lambda x: x+2
 </pre></div>
 </td></tr></table><p>
-<!-- Have some comments at the end of the exercise to see that -->
 <!-- the Filename: ... is written correctly. -->
+<!-- Have some comments at the end of the exercise to see that -->
 
 <p>
 <!-- --- end exercise --- -->
@@ -25275,6 +25679,7 @@ With some text, before we continue with exercises.
 
 
 <p>
+<!-- Test comments not at the end only -->
 Pick a statement from <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a> or <a href="#demo:ex:1">Problem 2: Flip a Coin</a>
 and verify it.
 
@@ -26009,7 +26414,9 @@ since latex use ! in the <code>Verb</code> typesetting, but this should now
 be fixed: test <code>!bc</code> and <code>!ec</code> as well as <code>!bsummary</code>.
 Also test backslashes and braces like <code>\begin</code>, <code>\begin{enumerate}</code>,
 <code>\end{this}\end{that}</code>, and <code>{something \inside braces}</code> in inline
-verbatim text.
+verbatim text. Since the exclamation mark is used as delimiter
+in LaTeX inline verbatim, we need to test it, as in <code>a != b</code>,
+and a Doconce directive a la <code>!bc</code>.
 
 <p>
 Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
@@ -26794,6 +27201,7 @@ With some text, before we continue with exercises.
 
 
 <p>
+
 Pick a statement from <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a> or <a href="#demo:ex:1">Problem 2: Flip a Coin</a>
 and verify it.
 
@@ -27649,7 +28057,9 @@ since latex use ! in the <code>Verb</code> typesetting, but this should now
 be fixed: test <code>!bc</code> and <code>!ec</code> as well as <code>!bsummary</code>.
 Also test backslashes and braces like <code>\begin</code>, <code>\begin{enumerate}</code>,
 <code>\end{this}\end{that}</code>, and <code>{something \inside braces}</code> in inline
-verbatim text.
+verbatim text. Since the exclamation mark is used as delimiter
+in LaTeX inline verbatim, we need to test it, as in <code>a != b</code>,
+and a Doconce directive a la <code>!bc</code>.
 
 <p>
 Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
@@ -28470,8 +28880,8 @@ And a test that the code <code>lambda x: x+2</code> is correctly placed here:
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">lambda x: x+2
 </pre></div>
 <p>
-<!-- Have some comments at the end of the exercise to see that -->
 <!-- the Filename: ... is written correctly. -->
+<!-- Have some comments at the end of the exercise to see that -->
 
 <p>
 <!-- --- end exercise --- -->
@@ -28512,6 +28922,7 @@ With some text, before we continue with exercises.
 
 
 <p>
+<!-- Test comments not at the end only -->
 Pick a statement from <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a> or <a href="#demo:ex:1">Problem 2: Flip a Coin</a>
 and verify it.
 
@@ -28946,24 +29357,144 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % --- begin definitions of admonition environments ---
 
-% Admonition style "mdfbox" is an oval colored box
-\colorlet{mdfbox_background}{gray!5}
+% Admonition style "mdfbox" is an oval colored box based on mdframed
+% "notice" admon
+\colorlet{mdfbox_notice_background}{gray!5}
 \newmdenv[
-  backgroundcolor=mdfbox_background,
-  skipabove=\topsep,
-  skipbelow=\topsep,
+  skipabove=15pt,
+  skipbelow=15pt,
   outerlinewidth=0,
+  backgroundcolor=mdfbox_notice_background,
+  linecolor=black,
+  linewidth=2pt,       % frame thickness
+  frametitlebackgroundcolor=mdfbox_notice_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
   leftmargin=0,
   rightmargin=0,
   roundcorner=5,
   needspace=0pt,
-]{mdfboxmdframed}
+]{notice_mdfboxmdframed}
 
-\newenvironment{mdfboxadmon}[1][]{
-\begin{mdfboxmdframed}[frametitle=#1]
+\newenvironment{notice_mdfboxadmon}[1][]{
+\begin{notice_mdfboxmdframed}[frametitle=#1]
 }
 {
-\end{mdfboxmdframed}
+\end{notice_mdfboxmdframed}
+}
+
+% Admonition style "mdfbox" is an oval colored box based on mdframed
+% "summary" admon
+\colorlet{mdfbox_summary_background}{gray!5}
+\newmdenv[
+  skipabove=15pt,
+  skipbelow=15pt,
+  outerlinewidth=0,
+  backgroundcolor=mdfbox_summary_background,
+  linecolor=black,
+  linewidth=2pt,       % frame thickness
+  frametitlebackgroundcolor=mdfbox_summary_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
+  leftmargin=0,
+  rightmargin=0,
+  roundcorner=5,
+  needspace=0pt,
+]{summary_mdfboxmdframed}
+
+\newenvironment{summary_mdfboxadmon}[1][]{
+\begin{summary_mdfboxmdframed}[frametitle=#1]
+}
+{
+\end{summary_mdfboxmdframed}
+}
+
+% Admonition style "mdfbox" is an oval colored box based on mdframed
+% "warning" admon
+\colorlet{mdfbox_warning_background}{gray!5}
+\newmdenv[
+  skipabove=15pt,
+  skipbelow=15pt,
+  outerlinewidth=0,
+  backgroundcolor=mdfbox_warning_background,
+  linecolor=black,
+  linewidth=2pt,       % frame thickness
+  frametitlebackgroundcolor=mdfbox_warning_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
+  leftmargin=0,
+  rightmargin=0,
+  roundcorner=5,
+  needspace=0pt,
+]{warning_mdfboxmdframed}
+
+\newenvironment{warning_mdfboxadmon}[1][]{
+\begin{warning_mdfboxmdframed}[frametitle=#1]
+}
+{
+\end{warning_mdfboxmdframed}
+}
+
+% Admonition style "mdfbox" is an oval colored box based on mdframed
+% "question" admon
+\colorlet{mdfbox_question_background}{gray!5}
+\newmdenv[
+  skipabove=15pt,
+  skipbelow=15pt,
+  outerlinewidth=0,
+  backgroundcolor=mdfbox_question_background,
+  linecolor=black,
+  linewidth=2pt,       % frame thickness
+  frametitlebackgroundcolor=mdfbox_question_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
+  leftmargin=0,
+  rightmargin=0,
+  roundcorner=5,
+  needspace=0pt,
+]{question_mdfboxmdframed}
+
+\newenvironment{question_mdfboxadmon}[1][]{
+\begin{question_mdfboxmdframed}[frametitle=#1]
+}
+{
+\end{question_mdfboxmdframed}
+}
+
+% Admonition style "mdfbox" is an oval colored box based on mdframed
+% "block" admon
+\colorlet{mdfbox_block_background}{gray!5}
+\newmdenv[
+  skipabove=15pt,
+  skipbelow=15pt,
+  outerlinewidth=0,
+  backgroundcolor=mdfbox_block_background,
+  linecolor=black,
+  linewidth=2pt,       % frame thickness
+  frametitlebackgroundcolor=mdfbox_block_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
+  leftmargin=0,
+  rightmargin=0,
+  roundcorner=5,
+  needspace=0pt,
+]{block_mdfboxmdframed}
+
+\newenvironment{block_mdfboxadmon}[1][]{
+\begin{block_mdfboxmdframed}[frametitle=#1]
+}
+{
+\end{block_mdfboxmdframed}
 }
 
 % --- end of definitions of admonition environments ---
@@ -29335,7 +29866,9 @@ since latex use ! in the \code{Verb} typesetting, but this should now
 be fixed: test \code{!bc} and \code{!ec} as well as \code{!bsummary}.
 Also test backslashes and braces like \code{\begin}, \code{\begin{enumerate}},
 \code{\end{this}\end{that}}, and \code{{something \inside braces}} in inline
-verbatim text.
+verbatim text. Since the exclamation mark is used as delimiter
+in {\LaTeX} inline verbatim, we need to test it, as in \code{a != b},
+and a Doconce directive a la \code{!bc}.
 
 Here is some \textcolor{red}{red} color and an attempt to write \textcolor{green}{with
 green color containing a linebreak. \\
@@ -29842,7 +30375,7 @@ Draw an integer among $\{1,2\}$ with
 
 % removed !bsol ... !esol environment
 % (because of the command-line option --without_solutions)
-Filenames: \code{flip_coin.py}, \code{flip_coin.pdf}.
+\noindent Filenames: \code{flip_coin.py}, \code{flip_coin.pdf}.
 % solution files: mysol.txt, mysol_flip_coin.py, yet_another.file
 
 \end{doconceexercise}
@@ -30110,8 +30643,8 @@ And a test that the code \code{lambda x: x+2} is correctly placed here:
 lambda x: x+2
 \eccq
 
-% Have some comments at the end of the exercise to see that
 % the Filename: ... is written correctly.
+% Have some comments at the end of the exercise to see that
 
 \end{doconceexercise}
 % --- end exercise ---
@@ -30154,6 +30687,7 @@ With some text, before we continue with exercises.
 
 \label{exer:some:formula}
 
+% Test comments not at the end only
 Pick a statement from Project~\ref{proj:circle1} or Problem~\ref{demo:ex:1}
 and verify it.
 
@@ -30230,9 +30764,9 @@ With label.
 Without label.
 
 
-\begin{mdfboxadmon}[Tip.]
+\begin{notice_mdfboxadmon}[Tip.]
 Here is a tip or hint box, typeset as a notice box.
-\end{mdfboxadmon}
+\end{notice_mdfboxadmon}
 
 
 
@@ -30252,7 +30786,7 @@ Greg Wilson' excellent \href{{http://software-carpentry.org/2010/07/script-for-i
 from using version control systems.
 
 
-\begin{mdfboxadmon}[Summary.]
+\begin{summary_mdfboxadmon}[Summary.]
 \textbf{Bold remark:} Make some text with this summary.
 Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
@@ -30263,7 +30797,7 @@ Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
-\end{mdfboxadmon}
+\end{summary_mdfboxadmon}
 
 
 
@@ -33849,7 +34383,9 @@ since latex use ! in the <code>Verb</code> typesetting, but this should now
 be fixed: test <code>!bc</code> and <code>!ec</code> as well as <code>!bsummary</code>.
 Also test backslashes and braces like <code>\begin</code>, <code>\begin{enumerate}</code>,
 <code>\end{this}\end{that}</code>, and <code>{something \inside braces}</code> in inline
-verbatim text.
+verbatim text. Since the exclamation mark is used as delimiter
+in LaTeX inline verbatim, we need to test it, as in <code>a != b</code>,
+and a Doconce directive a la <code>!bc</code>.
 
 <p>
 Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
@@ -34999,8 +35535,8 @@ And a test that the code <code>lambda x: x+2</code> is correctly placed here:
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">lambda x: x+2
 </pre></div>
 <p>
-<!-- Have some comments at the end of the exercise to see that -->
 <!-- the Filename: ... is written correctly. -->
+<!-- Have some comments at the end of the exercise to see that -->
 
 <p>
 <!-- --- end exercise --- -->
@@ -35038,6 +35574,7 @@ With some text, before we continue with exercises.
 <h3>Exercise 8: Make references to projects and problems <a name="exer:some:formula"></a></h3>
 
 <p>
+<!-- Test comments not at the end only -->
 Pick a statement from <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a> or <a href="#demo:ex:1">Problem 2: Flip a Coin</a>
 and verify it.
 
@@ -35678,7 +36215,9 @@ since latex use ! in the ``Verb`` typesetting, but this should now
 be fixed: test ``!bc`` and ``!ec`` as well as ``!bsummary``.
 Also test backslashes and braces like ``\begin``, ``\begin{enumerate}``,
 ``\end{this}\end{that}``, and ``{something \inside braces}`` in inline
-verbatim text.
+verbatim text. Since the exclamation mark is used as delimiter
+in LaTeX inline verbatim, we need to test it, as in ``a != b``,
+and a Doconce directive a la ``!bc``.
 
 Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
 green color containing a linebreak. 
@@ -36635,9 +37174,9 @@ And a test that the code ``lambda x: x+2`` is correctly placed here:
         lambda x: x+2
 
 
-.. Have some comments at the end of the exercise to see that
-
 .. the Filename: ... is written correctly.
+
+.. Have some comments at the end of the exercise to see that
 
 
 .. --- end exercise ---
@@ -36681,6 +37220,8 @@ More Exercises
 
 Exercise 8: Make references to projects and problems
 ----------------------------------------------------
+
+.. Test comments not at the end only
 
 Pick a statement from :ref:`proj:circle1` or :ref:`demo:ex:1`
 and verify it.
@@ -37117,24 +37658,144 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % --- begin definitions of admonition environments ---
 
-% Admonition style "mdfbox" is an oval colored box
-\definecolor{mdfbox_background}{rgb}{1,1,1}
+% Admonition style "mdfbox" is an oval colored box based on mdframed
+% "notice" admon
+\definecolor{mdfbox_notice_background}{rgb}{1,1,1}
 \newmdenv[
-  backgroundcolor=mdfbox_background,
-  skipabove=\topsep,
-  skipbelow=\topsep,
+  skipabove=15pt,
+  skipbelow=15pt,
   outerlinewidth=0,
+  backgroundcolor=mdfbox_notice_background,
+  linecolor=black,
+  linewidth=2pt,       % frame thickness
+  frametitlebackgroundcolor=mdfbox_notice_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
   leftmargin=0,
   rightmargin=0,
   roundcorner=5,
   needspace=0pt,
-]{mdfboxmdframed}
+]{notice_mdfboxmdframed}
 
-\newenvironment{mdfboxadmon}[1][]{
-\begin{mdfboxmdframed}[frametitle=#1]
+\newenvironment{notice_mdfboxadmon}[1][]{
+\begin{notice_mdfboxmdframed}[frametitle=#1]
 }
 {
-\end{mdfboxmdframed}
+\end{notice_mdfboxmdframed}
+}
+
+% Admonition style "mdfbox" is an oval colored box based on mdframed
+% "summary" admon
+\definecolor{mdfbox_summary_background}{rgb}{1,1,1}
+\newmdenv[
+  skipabove=15pt,
+  skipbelow=15pt,
+  outerlinewidth=0,
+  backgroundcolor=mdfbox_summary_background,
+  linecolor=black,
+  linewidth=2pt,       % frame thickness
+  frametitlebackgroundcolor=mdfbox_summary_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
+  leftmargin=0,
+  rightmargin=0,
+  roundcorner=5,
+  needspace=0pt,
+]{summary_mdfboxmdframed}
+
+\newenvironment{summary_mdfboxadmon}[1][]{
+\begin{summary_mdfboxmdframed}[frametitle=#1]
+}
+{
+\end{summary_mdfboxmdframed}
+}
+
+% Admonition style "mdfbox" is an oval colored box based on mdframed
+% "warning" admon
+\definecolor{mdfbox_warning_background}{rgb}{1,1,1}
+\newmdenv[
+  skipabove=15pt,
+  skipbelow=15pt,
+  outerlinewidth=0,
+  backgroundcolor=mdfbox_warning_background,
+  linecolor=black,
+  linewidth=2pt,       % frame thickness
+  frametitlebackgroundcolor=mdfbox_warning_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
+  leftmargin=0,
+  rightmargin=0,
+  roundcorner=5,
+  needspace=0pt,
+]{warning_mdfboxmdframed}
+
+\newenvironment{warning_mdfboxadmon}[1][]{
+\begin{warning_mdfboxmdframed}[frametitle=#1]
+}
+{
+\end{warning_mdfboxmdframed}
+}
+
+% Admonition style "mdfbox" is an oval colored box based on mdframed
+% "question" admon
+\definecolor{mdfbox_question_background}{rgb}{1,1,1}
+\newmdenv[
+  skipabove=15pt,
+  skipbelow=15pt,
+  outerlinewidth=0,
+  backgroundcolor=mdfbox_question_background,
+  linecolor=black,
+  linewidth=2pt,       % frame thickness
+  frametitlebackgroundcolor=mdfbox_question_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
+  leftmargin=0,
+  rightmargin=0,
+  roundcorner=5,
+  needspace=0pt,
+]{question_mdfboxmdframed}
+
+\newenvironment{question_mdfboxadmon}[1][]{
+\begin{question_mdfboxmdframed}[frametitle=#1]
+}
+{
+\end{question_mdfboxmdframed}
+}
+
+% Admonition style "mdfbox" is an oval colored box based on mdframed
+% "block" admon
+\definecolor{mdfbox_block_background}{rgb}{1,1,1}
+\newmdenv[
+  skipabove=15pt,
+  skipbelow=15pt,
+  outerlinewidth=0,
+  backgroundcolor=mdfbox_block_background,
+  linecolor=black,
+  linewidth=2pt,       % frame thickness
+  frametitlebackgroundcolor=mdfbox_block_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
+  leftmargin=0,
+  rightmargin=0,
+  roundcorner=5,
+  needspace=0pt,
+]{block_mdfboxmdframed}
+
+\newenvironment{block_mdfboxadmon}[1][]{
+\begin{block_mdfboxmdframed}[frametitle=#1]
+}
+{
+\end{block_mdfboxmdframed}
 }
 
 % --- end of definitions of admonition environments ---
@@ -37305,7 +37966,7 @@ def some_code(x):
 Let us start with a plain warning environment.
 
 
-\begin{mdfboxadmon}[Warning.]
+\begin{warning_mdfboxadmon}[Warning.]
 And here is a warning about something to pay attention to. We
 test how the heading behave and add quite some extra texts
 in comparison with the other admons.
@@ -37324,14 +37985,14 @@ And more and more text.
 And more and more text.
 And more and more text.
 And more and more text.
-\end{mdfboxadmon}
+\end{warning_mdfboxadmon}
 
 
 
 Test warning with title:
 
 
-\begin{mdfboxadmon}[{\large Title ending with math $\sqrt{2}\approx 1.4$}.]
+\begin{warning_mdfboxadmon}[{\large Title ending with math $\sqrt{2}\approx 1.4$}.]
 {\large And here comes some text with bad news in larger font.
 
 Also some code:
@@ -37346,25 +38007,25 @@ And a complete program
 print "Hello, World!"
 \epypro2
 \par}
-\end{mdfboxadmon}
+\end{warning_mdfboxadmon}
 
 
 
 Test warning with large title with math:
 
 
-\begin{mdfboxadmon}[{\large Watch out for $\nabla\cdot\bm{u}=0$ equations}.]
+\begin{warning_mdfboxadmon}[{\large Watch out for $\nabla\cdot\bm{u}=0$ equations}.]
 {\large Divergence freedom is often problematic from a numerical point
 of view.
 \par}
-\end{mdfboxadmon}
+\end{warning_mdfboxadmon}
 
 
 
 Then we test a block, which is guaranteed to never have any admon icon.
 
 
-\begin{mdfboxadmon}[Block with title.]
+\begin{block_mdfboxadmon}[Block with title.]
 \vspace{0.5mm}\par\noindent
 {\footnotesize Here is a block of text with title. It is typeset
 \emph{without any icon} and is useful when you want some admons with icon
@@ -37373,26 +38034,28 @@ more comment-style text or text that really goes deeper or talks
 about fun facts that are not strictly necessary for the main flow
 of understanding.
 \par}
-\end{mdfboxadmon}
+\end{block_mdfboxadmon}
 
 
 
 
 
-\begin{mdfboxadmon}[]
+\begin{block_mdfboxadmon}[]
 Here is a block of text with no title. As above, it is typeset without any icon
 and is useful when you want some admons with icon and some without.
-\end{mdfboxadmon}
+\end{block_mdfboxadmon}
 
 
 
-The next admonition features a title "Note, eventually!".
+The next admonition features a title "Note, eventually!" (the comma
+must be removed in the \code{mdfbox} admon also in \code{graybox2} if
+code is present).
 
 % Note that the final ! does not appear in Sphinx and reST since
 % those formats automatically add : to the admonition title.
 
 
-\begin{mdfboxadmon}[Note eventually!]
+\begin{notice_mdfboxadmon}[Note eventually!]
 Ah, we are soon close to the end (with illegal font size specification!).
 But first a bit of math where we define $\theta$ and $\bm{r}$:
 
@@ -37400,39 +38063,39 @@ But first a bit of math where we define $\theta$ and $\bm{r}$:
 \theta &= q^2,\\
 \bm{r} &= \varrho\bm{i}
 \end{align*}
-\end{mdfboxadmon}
+\end{notice_mdfboxadmon}
 
 
 
 % Test one word with a number
 
 
-\begin{mdfboxadmon}[Point1.]
+\begin{notice_mdfboxadmon}[Point1.]
 Ah, we are soon close to the end.
-\end{mdfboxadmon}
+\end{notice_mdfboxadmon}
 
 
 
 
-\begin{mdfboxadmon}[Question.]
+\begin{question_mdfboxadmon}[Question.]
 So, how many admonition environments does Doconce support?
-\end{mdfboxadmon}
+\end{question_mdfboxadmon}
 
 
 
 
-\begin{mdfboxadmon}[Question.]
+\begin{question_mdfboxadmon}[Question.]
 \begin{enumerate}
  \item Once more, how many admonition environments does Doconce support?
 \end{enumerate}
 
 \noindent
-\end{mdfboxadmon}
+\end{question_mdfboxadmon}
 
 
 
 
-\begin{mdfboxadmon}[Tip.]
+\begin{warning_mdfboxadmon}[Tip.]
 It is of outmost important to
 
 \begin{enumerate}
@@ -37450,16 +38113,16 @@ import urllib
 def grab(url, filename):
     urllib.urlretrieve(url, filename=filename)
 \epycod2
-\end{mdfboxadmon}
+\end{warning_mdfboxadmon}
 
 
 
 Next is a warning without a title ("none" implies no title).
 
 
-\begin{mdfboxadmon}[]
+\begin{warning_mdfboxadmon}[]
 And here comes some text with bad news.
-\end{mdfboxadmon}
+\end{warning_mdfboxadmon}
 
 
 
@@ -37469,7 +38132,7 @@ Here is a long notice environment with a custom title and much
 text, math and code.
 
 
-\begin{mdfboxadmon}[Going deeper.]
+\begin{notice_mdfboxadmon}[Going deeper.]
 We have some equations that should be preceded by much text, so the
 task is to write and write. The number of words, and not the
 meaning, is what counts here. We need desperately to fill up the
@@ -37545,7 +38208,7 @@ And then we add a figure too.
 \begin{center}  % inline figure
   \centerline{\includegraphics[width=0.7\linewidth]{../doc/src/manual/fig/wave1D.pdf}}
 \end{center}
-\end{mdfboxadmon}
+\end{notice_mdfboxadmon}
 
 
 
@@ -37557,11 +38220,11 @@ for the novice",
 just because we can.
 
 
-\begin{mdfboxadmon}[Concluding remarks for the novice.]
+\begin{summary_mdfboxadmon}[Concluding remarks for the novice.]
 We can summarize the most important things with admons: they have
 a different typesetting, and they may have a symbol.
 Titles should be optional.
-\end{mdfboxadmon}
+\end{summary_mdfboxadmon}
 
 
 
@@ -37986,7 +38649,9 @@ and is useful when you want some admons with icon and some without.
 
 
 
-The next admonition features a title "Note, eventually!".
+The next admonition features a title "Note, eventually!" (the comma
+must be removed in the \Verb!mdfbox! admon also in \Verb!graybox2! if
+code is present).
 
 % Note that the final ! does not appear in Sphinx and reST since
 % those formats automatically add : to the admonition title.
@@ -38591,7 +39256,9 @@ and is useful when you want some admons with icon and some without.
 
 
 
-The next admonition features a title "Note, eventually!".
+The next admonition features a title "Note, eventually!" (the comma
+must be removed in the \Verb!mdfbox! admon also in \Verb!graybox2! if
+code is present).
 
 % Note that the final ! does not appear in Sphinx and reST since
 % those formats automatically add : to the admonition title.
@@ -38851,24 +39518,144 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % --- begin definitions of admonition environments ---
 
-% Admonition style "mdfbox" is an oval colored box
-\colorlet{mdfbox_background}{gray!6}
+% Admonition style "mdfbox" is an oval colored box based on mdframed
+% "notice" admon
+\colorlet{mdfbox_notice_background}{gray!6}
 \newmdenv[
-  backgroundcolor=mdfbox_background,
-  skipabove=\topsep,
-  skipbelow=\topsep,
+  skipabove=15pt,
+  skipbelow=15pt,
   outerlinewidth=0,
+  backgroundcolor=mdfbox_notice_background,
+  linecolor=black,
+  linewidth=2pt,       % frame thickness
+  frametitlebackgroundcolor=mdfbox_notice_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
   leftmargin=0,
   rightmargin=0,
   roundcorner=5,
   needspace=0pt,
-]{mdfboxmdframed}
+]{notice_mdfboxmdframed}
 
-\newenvironment{mdfboxadmon}[1][]{
-\begin{mdfboxmdframed}[frametitle=#1]
+\newenvironment{notice_mdfboxadmon}[1][]{
+\begin{notice_mdfboxmdframed}[frametitle=#1]
 }
 {
-\end{mdfboxmdframed}
+\end{notice_mdfboxmdframed}
+}
+
+% Admonition style "mdfbox" is an oval colored box based on mdframed
+% "summary" admon
+\colorlet{mdfbox_summary_background}{gray!6}
+\newmdenv[
+  skipabove=15pt,
+  skipbelow=15pt,
+  outerlinewidth=0,
+  backgroundcolor=mdfbox_summary_background,
+  linecolor=black,
+  linewidth=2pt,       % frame thickness
+  frametitlebackgroundcolor=mdfbox_summary_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
+  leftmargin=0,
+  rightmargin=0,
+  roundcorner=5,
+  needspace=0pt,
+]{summary_mdfboxmdframed}
+
+\newenvironment{summary_mdfboxadmon}[1][]{
+\begin{summary_mdfboxmdframed}[frametitle=#1]
+}
+{
+\end{summary_mdfboxmdframed}
+}
+
+% Admonition style "mdfbox" is an oval colored box based on mdframed
+% "warning" admon
+\colorlet{mdfbox_warning_background}{gray!6}
+\newmdenv[
+  skipabove=15pt,
+  skipbelow=15pt,
+  outerlinewidth=0,
+  backgroundcolor=mdfbox_warning_background,
+  linecolor=black,
+  linewidth=2pt,       % frame thickness
+  frametitlebackgroundcolor=mdfbox_warning_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
+  leftmargin=0,
+  rightmargin=0,
+  roundcorner=5,
+  needspace=0pt,
+]{warning_mdfboxmdframed}
+
+\newenvironment{warning_mdfboxadmon}[1][]{
+\begin{warning_mdfboxmdframed}[frametitle=#1]
+}
+{
+\end{warning_mdfboxmdframed}
+}
+
+% Admonition style "mdfbox" is an oval colored box based on mdframed
+% "question" admon
+\colorlet{mdfbox_question_background}{gray!6}
+\newmdenv[
+  skipabove=15pt,
+  skipbelow=15pt,
+  outerlinewidth=0,
+  backgroundcolor=mdfbox_question_background,
+  linecolor=black,
+  linewidth=2pt,       % frame thickness
+  frametitlebackgroundcolor=mdfbox_question_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
+  leftmargin=0,
+  rightmargin=0,
+  roundcorner=5,
+  needspace=0pt,
+]{question_mdfboxmdframed}
+
+\newenvironment{question_mdfboxadmon}[1][]{
+\begin{question_mdfboxmdframed}[frametitle=#1]
+}
+{
+\end{question_mdfboxmdframed}
+}
+
+% Admonition style "mdfbox" is an oval colored box based on mdframed
+% "block" admon
+\colorlet{mdfbox_block_background}{gray!6}
+\newmdenv[
+  skipabove=15pt,
+  skipbelow=15pt,
+  outerlinewidth=0,
+  backgroundcolor=mdfbox_block_background,
+  linecolor=black,
+  linewidth=2pt,       % frame thickness
+  frametitlebackgroundcolor=mdfbox_block_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
+  leftmargin=0,
+  rightmargin=0,
+  roundcorner=5,
+  needspace=0pt,
+]{block_mdfboxmdframed}
+
+\newenvironment{block_mdfboxadmon}[1][]{
+\begin{block_mdfboxmdframed}[frametitle=#1]
+}
+{
+\end{block_mdfboxmdframed}
 }
 
 % --- end of definitions of admonition environments ---
@@ -39038,7 +39825,7 @@ def some_code(x):
 Let us start with a plain warning environment.
 
 
-\begin{mdfboxadmon}[Warning.]
+\begin{warning_mdfboxadmon}[Warning.]
 And here is a warning about something to pay attention to. We
 test how the heading behave and add quite some extra texts
 in comparison with the other admons.
@@ -39057,14 +39844,14 @@ And more and more text.
 And more and more text.
 And more and more text.
 And more and more text.
-\end{mdfboxadmon}
+\end{warning_mdfboxadmon}
 
 
 
 Test warning with title:
 
 
-\begin{mdfboxadmon}[{\large Title ending with math $\sqrt{2}\approx 1.4$}.]
+\begin{warning_mdfboxadmon}[{\large Title ending with math $\sqrt{2}\approx 1.4$}.]
 {\large And here comes some text with bad news in larger font.
 
 Also some code:
@@ -39079,25 +39866,25 @@ And a complete program
 print "Hello, World!"
 \end{minted}
 \par}
-\end{mdfboxadmon}
+\end{warning_mdfboxadmon}
 
 
 
 Test warning with large title with math:
 
 
-\begin{mdfboxadmon}[{\large Watch out for $\nabla\cdot\bm{u}=0$ equations}.]
+\begin{warning_mdfboxadmon}[{\large Watch out for $\nabla\cdot\bm{u}=0$ equations}.]
 {\large Divergence freedom is often problematic from a numerical point
 of view.
 \par}
-\end{mdfboxadmon}
+\end{warning_mdfboxadmon}
 
 
 
 Then we test a block, which is guaranteed to never have any admon icon.
 
 
-\begin{mdfboxadmon}[Block with title.]
+\begin{block_mdfboxadmon}[Block with title.]
 \vspace{0.5mm}\par\noindent
 {\footnotesize Here is a block of text with title. It is typeset
 \emph{without any icon} and is useful when you want some admons with icon
@@ -39106,26 +39893,28 @@ more comment-style text or text that really goes deeper or talks
 about fun facts that are not strictly necessary for the main flow
 of understanding.
 \par}
-\end{mdfboxadmon}
+\end{block_mdfboxadmon}
 
 
 
 
 
-\begin{mdfboxadmon}[]
+\begin{block_mdfboxadmon}[]
 Here is a block of text with no title. As above, it is typeset without any icon
 and is useful when you want some admons with icon and some without.
-\end{mdfboxadmon}
+\end{block_mdfboxadmon}
 
 
 
-The next admonition features a title "Note, eventually!".
+The next admonition features a title "Note, eventually!" (the comma
+must be removed in the \Verb!mdfbox! admon also in \Verb!graybox2! if
+code is present).
 
 % Note that the final ! does not appear in Sphinx and reST since
 % those formats automatically add : to the admonition title.
 
 
-\begin{mdfboxadmon}[Note eventually!]
+\begin{notice_mdfboxadmon}[Note eventually!]
 Ah, we are soon close to the end (with illegal font size specification!).
 But first a bit of math where we define $\theta$ and $\bm{r}$:
 
@@ -39133,39 +39922,39 @@ But first a bit of math where we define $\theta$ and $\bm{r}$:
 \theta &= q^2,\\
 \bm{r} &= \varrho\bm{i}
 \end{align*}
-\end{mdfboxadmon}
+\end{notice_mdfboxadmon}
 
 
 
 % Test one word with a number
 
 
-\begin{mdfboxadmon}[Point1.]
+\begin{notice_mdfboxadmon}[Point1.]
 Ah, we are soon close to the end.
-\end{mdfboxadmon}
+\end{notice_mdfboxadmon}
 
 
 
 
-\begin{mdfboxadmon}[Question.]
+\begin{question_mdfboxadmon}[Question.]
 So, how many admonition environments does Doconce support?
-\end{mdfboxadmon}
+\end{question_mdfboxadmon}
 
 
 
 
-\begin{mdfboxadmon}[Question.]
+\begin{question_mdfboxadmon}[Question.]
 \begin{enumerate}
  \item Once more, how many admonition environments does Doconce support?
 \end{enumerate}
 
 \noindent
-\end{mdfboxadmon}
+\end{question_mdfboxadmon}
 
 
 
 
-\begin{mdfboxadmon}[Tip.]
+\begin{warning_mdfboxadmon}[Tip.]
 It is of outmost important to
 
 \begin{enumerate}
@@ -39183,16 +39972,16 @@ import urllib
 def grab(url, filename):
     urllib.urlretrieve(url, filename=filename)
 \end{minted}
-\end{mdfboxadmon}
+\end{warning_mdfboxadmon}
 
 
 
 Next is a warning without a title ("none" implies no title).
 
 
-\begin{mdfboxadmon}[]
+\begin{warning_mdfboxadmon}[]
 And here comes some text with bad news.
-\end{mdfboxadmon}
+\end{warning_mdfboxadmon}
 
 
 
@@ -39202,7 +39991,7 @@ Here is a long notice environment with a custom title and much
 text, math and code.
 
 
-\begin{mdfboxadmon}[Going deeper.]
+\begin{notice_mdfboxadmon}[Going deeper.]
 We have some equations that should be preceded by much text, so the
 task is to write and write. The number of words, and not the
 meaning, is what counts here. We need desperately to fill up the
@@ -39278,7 +40067,7 @@ And then we add a figure too.
 \begin{center}  % inline figure
   \centerline{\includegraphics[width=0.7\linewidth]{../doc/src/manual/fig/wave1D.pdf}}
 \end{center}
-\end{mdfboxadmon}
+\end{notice_mdfboxadmon}
 
 
 
@@ -39290,11 +40079,11 @@ for the novice",
 just because we can.
 
 
-\begin{mdfboxadmon}[Concluding remarks for the novice.]
+\begin{summary_mdfboxadmon}[Concluding remarks for the novice.]
 We can summarize the most important things with admons: they have
 a different typesetting, and they may have a symbol.
 Titles should be optional.
-\end{mdfboxadmon}
+\end{summary_mdfboxadmon}
 
 
 
@@ -39383,10 +40172,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 % Admonition style "graybox2" is a gray or colored box with a square
 % frame, except for the summary admon which has horizontal rules only
 % Note: this admonition type cannot handle verbatim text!
-\definecolor{graybox2_background}{rgb}{0.94,0.94,0.94}
+\definecolor{graybox2_warning_background}{rgb}{0.94,0.94,0.94}
+
 % colored box of 80% width
 \newcommand{\grayboxhrules}[1]{\begin{center}
-\colorbox{graybox2_background}{\rule{6pt}{0pt}
+\colorbox{graybox2_warning_background}{\rule{6pt}{0pt}
 \begin{minipage}{0.8\linewidth}
 \parbox[t]{0mm}{\rule[0pt]{0mm}{0.5\baselineskip}}\hrule
 \vspace*{0.5\baselineskip}\noindent #1
@@ -39396,9 +40186,9 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % Fallback for verbatim content in \grayboxhrules
 \newmdenv[
-  backgroundcolor=graybox2_background,
-  skipabove=\topsep,
-  skipbelow=\topsep,
+  backgroundcolor=graybox2_warning_background,
+  skipabove=15pt,
+  skipbelow=15pt,
   leftmargin=23,
   rightmargin=23,
   needspace=0pt,
@@ -39669,7 +40459,9 @@ and is useful when you want some admons with icon and some without.
 
 
 
-The next admonition features a title "Note, eventually!".
+The next admonition features a title "Note, eventually!" (the comma
+must be removed in the \Verb!mdfbox! admon also in \Verb!graybox2! if
+code is present).
 
 % Note that the final ! does not appear in Sphinx and reST since
 % those formats automatically add : to the admonition title.
@@ -40292,7 +41084,9 @@ and is useful when you want some admons with icon and some without.
 
 
 
-The next admonition features a title "Note, eventually!".
+The next admonition features a title "Note, eventually!" (the comma
+must be removed in the \Verb!mdfbox! admon also in \Verb!graybox2! if
+code is present).
 
 % Note that the final ! does not appear in Sphinx and reST since
 % those formats automatically add : to the admonition title.
@@ -40802,7 +41596,9 @@ and is useful when you want some admons with icon and some without.
 
 
 
-The next admonition features a title "Note, eventually!".
+The next admonition features a title "Note, eventually!" (the comma
+must be removed in the \Verb!mdfbox! admon also in \Verb!graybox2! if
+code is present).
 
 % Note that the final ! does not appear in Sphinx and reST since
 % those formats automatically add : to the admonition title.
@@ -41412,7 +42208,9 @@ and is useful when you want some admons with icon and some without.
 
 
 
-The next admonition features a title "Note, eventually!".
+The next admonition features a title "Note, eventually!" (the comma
+must be removed in the \Verb!mdfbox! admon also in \Verb!graybox2! if
+code is present).
 
 % Note that the final ! does not appear in Sphinx and reST since
 % those formats automatically add : to the admonition title.
@@ -41672,24 +42470,144 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % --- begin definitions of admonition environments ---
 
-% Admonition style "mdfbox" is an oval colored box
-\definecolor{mdfbox_background}{rgb}{1,1,1}
+% Admonition style "mdfbox" is an oval colored box based on mdframed
+% "notice" admon
+\definecolor{mdfbox_notice_background}{rgb}{1,1,1}
 \newmdenv[
-  backgroundcolor=mdfbox_background,
-  skipabove=\topsep,
-  skipbelow=\topsep,
+  skipabove=15pt,
+  skipbelow=15pt,
   outerlinewidth=0,
+  backgroundcolor=mdfbox_notice_background,
+  linecolor=black,
+  linewidth=2pt,       % frame thickness
+  frametitlebackgroundcolor=mdfbox_notice_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
   leftmargin=0,
   rightmargin=0,
   roundcorner=5,
   needspace=0pt,
-]{mdfboxmdframed}
+]{notice_mdfboxmdframed}
 
-\newenvironment{mdfboxadmon}[1][]{
-\begin{mdfboxmdframed}[frametitle=#1]
+\newenvironment{notice_mdfboxadmon}[1][]{
+\begin{notice_mdfboxmdframed}[frametitle=#1]
 }
 {
-\end{mdfboxmdframed}
+\end{notice_mdfboxmdframed}
+}
+
+% Admonition style "mdfbox" is an oval colored box based on mdframed
+% "summary" admon
+\definecolor{mdfbox_summary_background}{rgb}{1,1,1}
+\newmdenv[
+  skipabove=15pt,
+  skipbelow=15pt,
+  outerlinewidth=0,
+  backgroundcolor=mdfbox_summary_background,
+  linecolor=black,
+  linewidth=2pt,       % frame thickness
+  frametitlebackgroundcolor=mdfbox_summary_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
+  leftmargin=0,
+  rightmargin=0,
+  roundcorner=5,
+  needspace=0pt,
+]{summary_mdfboxmdframed}
+
+\newenvironment{summary_mdfboxadmon}[1][]{
+\begin{summary_mdfboxmdframed}[frametitle=#1]
+}
+{
+\end{summary_mdfboxmdframed}
+}
+
+% Admonition style "mdfbox" is an oval colored box based on mdframed
+% "warning" admon
+\definecolor{mdfbox_warning_background}{rgb}{1,1,1}
+\newmdenv[
+  skipabove=15pt,
+  skipbelow=15pt,
+  outerlinewidth=0,
+  backgroundcolor=mdfbox_warning_background,
+  linecolor=black,
+  linewidth=2pt,       % frame thickness
+  frametitlebackgroundcolor=mdfbox_warning_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
+  leftmargin=0,
+  rightmargin=0,
+  roundcorner=5,
+  needspace=0pt,
+]{warning_mdfboxmdframed}
+
+\newenvironment{warning_mdfboxadmon}[1][]{
+\begin{warning_mdfboxmdframed}[frametitle=#1]
+}
+{
+\end{warning_mdfboxmdframed}
+}
+
+% Admonition style "mdfbox" is an oval colored box based on mdframed
+% "question" admon
+\definecolor{mdfbox_question_background}{rgb}{1,1,1}
+\newmdenv[
+  skipabove=15pt,
+  skipbelow=15pt,
+  outerlinewidth=0,
+  backgroundcolor=mdfbox_question_background,
+  linecolor=black,
+  linewidth=2pt,       % frame thickness
+  frametitlebackgroundcolor=mdfbox_question_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
+  leftmargin=0,
+  rightmargin=0,
+  roundcorner=5,
+  needspace=0pt,
+]{question_mdfboxmdframed}
+
+\newenvironment{question_mdfboxadmon}[1][]{
+\begin{question_mdfboxmdframed}[frametitle=#1]
+}
+{
+\end{question_mdfboxmdframed}
+}
+
+% Admonition style "mdfbox" is an oval colored box based on mdframed
+% "block" admon
+\definecolor{mdfbox_block_background}{rgb}{1,1,1}
+\newmdenv[
+  skipabove=15pt,
+  skipbelow=15pt,
+  outerlinewidth=0,
+  backgroundcolor=mdfbox_block_background,
+  linecolor=black,
+  linewidth=2pt,       % frame thickness
+  frametitlebackgroundcolor=mdfbox_block_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
+  leftmargin=0,
+  rightmargin=0,
+  roundcorner=5,
+  needspace=0pt,
+]{block_mdfboxmdframed}
+
+\newenvironment{block_mdfboxadmon}[1][]{
+\begin{block_mdfboxmdframed}[frametitle=#1]
+}
+{
+\end{block_mdfboxmdframed}
 }
 
 % --- end of definitions of admonition environments ---
@@ -41859,7 +42777,7 @@ def some_code(x):
 Let us start with a plain warning environment.
 
 
-\begin{mdfboxadmon}[Warning.]
+\begin{warning_mdfboxadmon}[Warning.]
 And here is a warning about something to pay attention to. We
 test how the heading behave and add quite some extra texts
 in comparison with the other admons.
@@ -41878,14 +42796,14 @@ And more and more text.
 And more and more text.
 And more and more text.
 And more and more text.
-\end{mdfboxadmon}
+\end{warning_mdfboxadmon}
 
 
 
 Test warning with title:
 
 
-\begin{mdfboxadmon}[{\large Title ending with math $\sqrt{2}\approx 1.4$}.]
+\begin{warning_mdfboxadmon}[{\large Title ending with math $\sqrt{2}\approx 1.4$}.]
 {\large And here comes some text with bad news in larger font.
 
 Also some code:
@@ -41900,25 +42818,25 @@ And a complete program
 print "Hello, World!"
 \end{minted}
 \par}
-\end{mdfboxadmon}
+\end{warning_mdfboxadmon}
 
 
 
 Test warning with large title with math:
 
 
-\begin{mdfboxadmon}[{\large Watch out for $\nabla\cdot\bm{u}=0$ equations}.]
+\begin{warning_mdfboxadmon}[{\large Watch out for $\nabla\cdot\bm{u}=0$ equations}.]
 {\large Divergence freedom is often problematic from a numerical point
 of view.
 \par}
-\end{mdfboxadmon}
+\end{warning_mdfboxadmon}
 
 
 
 Then we test a block, which is guaranteed to never have any admon icon.
 
 
-\begin{mdfboxadmon}[Block with title.]
+\begin{block_mdfboxadmon}[Block with title.]
 \vspace{0.5mm}\par\noindent
 {\footnotesize Here is a block of text with title. It is typeset
 \emph{without any icon} and is useful when you want some admons with icon
@@ -41927,26 +42845,28 @@ more comment-style text or text that really goes deeper or talks
 about fun facts that are not strictly necessary for the main flow
 of understanding.
 \par}
-\end{mdfboxadmon}
+\end{block_mdfboxadmon}
 
 
 
 
 
-\begin{mdfboxadmon}[]
+\begin{block_mdfboxadmon}[]
 Here is a block of text with no title. As above, it is typeset without any icon
 and is useful when you want some admons with icon and some without.
-\end{mdfboxadmon}
+\end{block_mdfboxadmon}
 
 
 
-The next admonition features a title "Note, eventually!".
+The next admonition features a title "Note, eventually!" (the comma
+must be removed in the \Verb!mdfbox! admon also in \Verb!graybox2! if
+code is present).
 
 % Note that the final ! does not appear in Sphinx and reST since
 % those formats automatically add : to the admonition title.
 
 
-\begin{mdfboxadmon}[Note eventually!]
+\begin{notice_mdfboxadmon}[Note eventually!]
 Ah, we are soon close to the end (with illegal font size specification!).
 But first a bit of math where we define $\theta$ and $\bm{r}$:
 
@@ -41954,39 +42874,39 @@ But first a bit of math where we define $\theta$ and $\bm{r}$:
 \theta &= q^2,\\
 \bm{r} &= \varrho\bm{i}
 \end{align*}
-\end{mdfboxadmon}
+\end{notice_mdfboxadmon}
 
 
 
 % Test one word with a number
 
 
-\begin{mdfboxadmon}[Point1.]
+\begin{notice_mdfboxadmon}[Point1.]
 Ah, we are soon close to the end.
-\end{mdfboxadmon}
+\end{notice_mdfboxadmon}
 
 
 
 
-\begin{mdfboxadmon}[Question.]
+\begin{question_mdfboxadmon}[Question.]
 So, how many admonition environments does Doconce support?
-\end{mdfboxadmon}
+\end{question_mdfboxadmon}
 
 
 
 
-\begin{mdfboxadmon}[Question.]
+\begin{question_mdfboxadmon}[Question.]
 \begin{enumerate}
  \item Once more, how many admonition environments does Doconce support?
 \end{enumerate}
 
 \noindent
-\end{mdfboxadmon}
+\end{question_mdfboxadmon}
 
 
 
 
-\begin{mdfboxadmon}[Tip.]
+\begin{warning_mdfboxadmon}[Tip.]
 It is of outmost important to
 
 \begin{enumerate}
@@ -42004,16 +42924,16 @@ import urllib
 def grab(url, filename):
     urllib.urlretrieve(url, filename=filename)
 \end{minted}
-\end{mdfboxadmon}
+\end{warning_mdfboxadmon}
 
 
 
 Next is a warning without a title ("none" implies no title).
 
 
-\begin{mdfboxadmon}[]
+\begin{warning_mdfboxadmon}[]
 And here comes some text with bad news.
-\end{mdfboxadmon}
+\end{warning_mdfboxadmon}
 
 
 
@@ -42023,7 +42943,7 @@ Here is a long notice environment with a custom title and much
 text, math and code.
 
 
-\begin{mdfboxadmon}[Going deeper.]
+\begin{notice_mdfboxadmon}[Going deeper.]
 We have some equations that should be preceded by much text, so the
 task is to write and write. The number of words, and not the
 meaning, is what counts here. We need desperately to fill up the
@@ -42099,7 +43019,7 @@ And then we add a figure too.
 \begin{center}  % inline figure
   \centerline{\includegraphics[width=0.7\linewidth]{../doc/src/manual/fig/wave1D.pdf}}
 \end{center}
-\end{mdfboxadmon}
+\end{notice_mdfboxadmon}
 
 
 
@@ -42111,11 +43031,11 @@ for the novice",
 just because we can.
 
 
-\begin{mdfboxadmon}[Concluding remarks for the novice.]
+\begin{summary_mdfboxadmon}[Concluding remarks for the novice.]
 We can summarize the most important things with admons: they have
 a different typesetting, and they may have a symbol.
 Titles should be optional.
-\end{mdfboxadmon}
+\end{summary_mdfboxadmon}
 
 
 
@@ -42456,7 +43376,9 @@ and is useful when you want some admons with icon and some without.
 
 
 <p>
-The next admonition features a title "Note, eventually!".
+The next admonition features a title "Note, eventually!" (the comma
+must be removed in the <code>mdfbox</code> admon also in <code>graybox2</code> if
+code is present).
 
 <p>
 <!-- Note that the final ! does not appear in Sphinx and reST since -->
@@ -42996,7 +43918,9 @@ and is useful when you want some admons with icon and some without.
 
 
 <p>
-The next admonition features a title "Note, eventually!".
+The next admonition features a title "Note, eventually!" (the comma
+must be removed in the <code>mdfbox</code> admon also in <code>graybox2</code> if
+code is present).
 
 <p>
 <!-- Note that the final ! does not appear in Sphinx and reST since -->
@@ -43534,7 +44458,9 @@ and is useful when you want some admons with icon and some without.
 
 
 <p>
-The next admonition features a title "Note, eventually!".
+The next admonition features a title "Note, eventually!" (the comma
+must be removed in the <code>mdfbox</code> admon also in <code>graybox2</code> if
+code is present).
 
 <p>
 <!-- Note that the final ! does not appear in Sphinx and reST since -->
@@ -44087,7 +45013,9 @@ and is useful when you want some admons with icon and some without.</div>
 
 
 <p>
-The next admonition features a title "Note, eventually!".
+The next admonition features a title "Note, eventually!" (the comma
+must be removed in the <code>mdfbox</code> admon also in <code>graybox2</code> if
+code is present).
 
 <p>
 <!-- Note that the final ! does not appear in Sphinx and reST since -->
@@ -44683,7 +45611,9 @@ and is useful when you want some admons with icon and some without.
 
 
 <p>
-The next admonition features a title "Note, eventually!".
+The next admonition features a title "Note, eventually!" (the comma
+must be removed in the <code>mdfbox</code> admon also in <code>graybox2</code> if
+code is present).
 
 <p>
 <!-- Note that the final ! does not appear in Sphinx and reST since -->
@@ -45262,7 +46192,9 @@ and is useful when you want some admons with icon and some without.
 
 
 <p>
-The next admonition features a title "Note, eventually!".
+The next admonition features a title "Note, eventually!" (the comma
+must be removed in the <code>mdfbox</code> admon also in <code>graybox2</code> if
+code is present).
 
 <p>
 <!-- Note that the final ! does not appear in Sphinx and reST since -->
@@ -45820,7 +46752,9 @@ and is useful when you want some admons with icon and some without.
 
 
 <p>
-The next admonition features a title "Note, eventually!".
+The next admonition features a title "Note, eventually!" (the comma
+must be removed in the <code>mdfbox</code> admon also in <code>graybox2</code> if
+code is present).
 
 <p>
 <!-- Note that the final ! does not appear in Sphinx and reST since -->
@@ -46253,7 +47187,9 @@ and is useful when you want some admons with icon and some without.
 
 
 
-The next admonition features a title "Note, eventually!".
+The next admonition features a title "Note, eventually!" (the comma
+must be removed in the <code>mdfbox</code> admon also in <code>graybox2</code> if
+code is present).
 
 <!-- Note that the final ! does not appear in Sphinx and reST since -->
 <!-- those formats automatically add : to the admonition title. -->
@@ -46671,7 +47607,9 @@ applies the generic title "Notice:" for the Sphinx format:
 
 
 
-The next admonition features a title "Note, eventually!".
+The next admonition features a title "Note, eventually!" (the comma
+must be removed in the ``mdfbox`` admon also in ``graybox2`` if
+code is present).
 
 .. Note that the final ! does not appear in Sphinx and reST since
 
@@ -47041,7 +47979,9 @@ Block --------------------------------------------------------------------------
 |---------------------------------------------------------------------------------|
 
 
-The next admonition features a title "Note, eventually!".
+The next admonition features a title "Note, eventually!" (the comma
+must be removed in the mdfbox admon also in graybox2 if
+code is present).
 
 
 
@@ -53994,24 +54934,144 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % --- begin definitions of admonition environments ---
 
-% Admonition style "mdfbox" is an oval colored box
-\colorlet{mdfbox_background}{gray!5}
+% Admonition style "mdfbox" is an oval colored box based on mdframed
+% "notice" admon
+\colorlet{mdfbox_notice_background}{gray!5}
 \newmdenv[
-  backgroundcolor=mdfbox_background,
-  skipabove=\topsep,
-  skipbelow=\topsep,
+  skipabove=15pt,
+  skipbelow=15pt,
   outerlinewidth=0,
+  backgroundcolor=mdfbox_notice_background,
+  linecolor=black,
+  linewidth=2pt,       % frame thickness
+  frametitlebackgroundcolor=mdfbox_notice_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
   leftmargin=0,
   rightmargin=0,
   roundcorner=5,
   needspace=0pt,
-]{mdfboxmdframed}
+]{notice_mdfboxmdframed}
 
-\newenvironment{mdfboxadmon}[1][]{
-\begin{mdfboxmdframed}[frametitle=#1]
+\newenvironment{notice_mdfboxadmon}[1][]{
+\begin{notice_mdfboxmdframed}[frametitle=#1]
 }
 {
-\end{mdfboxmdframed}
+\end{notice_mdfboxmdframed}
+}
+
+% Admonition style "mdfbox" is an oval colored box based on mdframed
+% "summary" admon
+\colorlet{mdfbox_summary_background}{gray!5}
+\newmdenv[
+  skipabove=15pt,
+  skipbelow=15pt,
+  outerlinewidth=0,
+  backgroundcolor=mdfbox_summary_background,
+  linecolor=black,
+  linewidth=2pt,       % frame thickness
+  frametitlebackgroundcolor=mdfbox_summary_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
+  leftmargin=0,
+  rightmargin=0,
+  roundcorner=5,
+  needspace=0pt,
+]{summary_mdfboxmdframed}
+
+\newenvironment{summary_mdfboxadmon}[1][]{
+\begin{summary_mdfboxmdframed}[frametitle=#1]
+}
+{
+\end{summary_mdfboxmdframed}
+}
+
+% Admonition style "mdfbox" is an oval colored box based on mdframed
+% "warning" admon
+\colorlet{mdfbox_warning_background}{gray!5}
+\newmdenv[
+  skipabove=15pt,
+  skipbelow=15pt,
+  outerlinewidth=0,
+  backgroundcolor=mdfbox_warning_background,
+  linecolor=black,
+  linewidth=2pt,       % frame thickness
+  frametitlebackgroundcolor=mdfbox_warning_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
+  leftmargin=0,
+  rightmargin=0,
+  roundcorner=5,
+  needspace=0pt,
+]{warning_mdfboxmdframed}
+
+\newenvironment{warning_mdfboxadmon}[1][]{
+\begin{warning_mdfboxmdframed}[frametitle=#1]
+}
+{
+\end{warning_mdfboxmdframed}
+}
+
+% Admonition style "mdfbox" is an oval colored box based on mdframed
+% "question" admon
+\colorlet{mdfbox_question_background}{gray!5}
+\newmdenv[
+  skipabove=15pt,
+  skipbelow=15pt,
+  outerlinewidth=0,
+  backgroundcolor=mdfbox_question_background,
+  linecolor=black,
+  linewidth=2pt,       % frame thickness
+  frametitlebackgroundcolor=mdfbox_question_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
+  leftmargin=0,
+  rightmargin=0,
+  roundcorner=5,
+  needspace=0pt,
+]{question_mdfboxmdframed}
+
+\newenvironment{question_mdfboxadmon}[1][]{
+\begin{question_mdfboxmdframed}[frametitle=#1]
+}
+{
+\end{question_mdfboxmdframed}
+}
+
+% Admonition style "mdfbox" is an oval colored box based on mdframed
+% "block" admon
+\colorlet{mdfbox_block_background}{gray!5}
+\newmdenv[
+  skipabove=15pt,
+  skipbelow=15pt,
+  outerlinewidth=0,
+  backgroundcolor=mdfbox_block_background,
+  linecolor=black,
+  linewidth=2pt,       % frame thickness
+  frametitlebackgroundcolor=mdfbox_block_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
+  leftmargin=0,
+  rightmargin=0,
+  roundcorner=5,
+  needspace=0pt,
+]{block_mdfboxmdframed}
+
+\newenvironment{block_mdfboxadmon}[1][]{
+\begin{block_mdfboxmdframed}[frametitle=#1]
+}
+{
+\end{block_mdfboxmdframed}
 }
 
 % --- end of definitions of admonition environments ---
@@ -54160,32 +55220,32 @@ f2 = Fancy()
 Can use admons to simulate blocks:
 
 
-\begin{mdfboxadmon}[Key PDE:]
+\begin{notice_mdfboxadmon}[Key PDE:]
 This box has title and math in normal 90 percent font:
 \[ \frac{\partial u}{\partial t} = \nabla^2 u \]
-\end{mdfboxadmon}
+\end{notice_mdfboxadmon}
 
 
 
 % !bpop
 
-\begin{mdfboxadmon}[]
+\begin{notice_mdfboxadmon}[]
 Just some block with text and a conclusion that something is important.
 This one pops up after the rest of the slide.
-\end{mdfboxadmon}
+\end{notice_mdfboxadmon}
 
 
 % !epop
 
 
-\begin{mdfboxadmon}[Warning.]
+\begin{warning_mdfboxadmon}[Warning.]
 \vspace{0.5mm}\par\noindent
 {\footnotesize Can use, e.g., a warning admon to have my own notes, preferably
 inside preprocess/mako if statements to turn notes on and off.
 This one is typeset in a small font and with the default
 title (Warning) since no title is specified.
 \par}
-\end{mdfboxadmon}
+\end{warning_mdfboxadmon}
 
 
 
@@ -54463,30 +55523,30 @@ f2 = Fancy()
 Can use admons to simulate blocks:
 
 
-\begin{mdfboxadmon}[Key PDE:]
+\begin{notice_mdfboxadmon}[Key PDE:]
 This box has title and math in normal 90 percent font:
 \[ \frac{\partial u}{\partial t} = \nabla^2 u \]
-\end{mdfboxadmon}
+\end{notice_mdfboxadmon}
 
 
 
 
 \pause
-\begin{mdfboxadmon}[]
+\begin{notice_mdfboxadmon}[]
 Just some block with text and a conclusion that something is important.
 This one pops up after the rest of the slide.
-\end{mdfboxadmon}
+\end{notice_mdfboxadmon}
 
 
 
-\begin{mdfboxadmon}[Warning.]
+\begin{warning_mdfboxadmon}[Warning.]
 \vspace{0.5mm}\par\noindent
 {\footnotesize Can use, e.g., a warning admon to have my own notes, preferably
 inside preprocess/mako if statements to turn notes on and off.
 This one is typeset in a small font and with the default
 title (Warning) since no title is specified.
 \par}
-\end{mdfboxadmon}
+\end{warning_mdfboxadmon}
 \end{frame}
 
 \end{document}
@@ -56531,24 +57591,144 @@ open=right               % start new chapters on odd-numbered pages
 
 % --- begin definitions of admonition environments ---
 
-% Admonition style "mdfbox" is an oval colored box
-\colorlet{mdfbox_background}{gray!5}
+% Admonition style "mdfbox" is an oval colored box based on mdframed
+% "notice" admon
+\colorlet{mdfbox_notice_background}{gray!5}
 \newmdenv[
-  backgroundcolor=mdfbox_background,
-  skipabove=\topsep,
-  skipbelow=\topsep,
+  skipabove=15pt,
+  skipbelow=15pt,
   outerlinewidth=0,
+  backgroundcolor=mdfbox_notice_background,
+  linecolor=black,
+  linewidth=2pt,       % frame thickness
+  frametitlebackgroundcolor=mdfbox_notice_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
   leftmargin=0,
   rightmargin=0,
   roundcorner=5,
   needspace=0pt,
-]{mdfboxmdframed}
+]{notice_mdfboxmdframed}
 
-\newenvironment{mdfboxadmon}[1][]{
-\begin{mdfboxmdframed}[frametitle=#1]
+\newenvironment{notice_mdfboxadmon}[1][]{
+\begin{notice_mdfboxmdframed}[frametitle=#1]
 }
 {
-\end{mdfboxmdframed}
+\end{notice_mdfboxmdframed}
+}
+
+% Admonition style "mdfbox" is an oval colored box based on mdframed
+% "summary" admon
+\colorlet{mdfbox_summary_background}{gray!5}
+\newmdenv[
+  skipabove=15pt,
+  skipbelow=15pt,
+  outerlinewidth=0,
+  backgroundcolor=mdfbox_summary_background,
+  linecolor=black,
+  linewidth=2pt,       % frame thickness
+  frametitlebackgroundcolor=mdfbox_summary_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
+  leftmargin=0,
+  rightmargin=0,
+  roundcorner=5,
+  needspace=0pt,
+]{summary_mdfboxmdframed}
+
+\newenvironment{summary_mdfboxadmon}[1][]{
+\begin{summary_mdfboxmdframed}[frametitle=#1]
+}
+{
+\end{summary_mdfboxmdframed}
+}
+
+% Admonition style "mdfbox" is an oval colored box based on mdframed
+% "warning" admon
+\colorlet{mdfbox_warning_background}{gray!5}
+\newmdenv[
+  skipabove=15pt,
+  skipbelow=15pt,
+  outerlinewidth=0,
+  backgroundcolor=mdfbox_warning_background,
+  linecolor=black,
+  linewidth=2pt,       % frame thickness
+  frametitlebackgroundcolor=mdfbox_warning_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
+  leftmargin=0,
+  rightmargin=0,
+  roundcorner=5,
+  needspace=0pt,
+]{warning_mdfboxmdframed}
+
+\newenvironment{warning_mdfboxadmon}[1][]{
+\begin{warning_mdfboxmdframed}[frametitle=#1]
+}
+{
+\end{warning_mdfboxmdframed}
+}
+
+% Admonition style "mdfbox" is an oval colored box based on mdframed
+% "question" admon
+\colorlet{mdfbox_question_background}{gray!5}
+\newmdenv[
+  skipabove=15pt,
+  skipbelow=15pt,
+  outerlinewidth=0,
+  backgroundcolor=mdfbox_question_background,
+  linecolor=black,
+  linewidth=2pt,       % frame thickness
+  frametitlebackgroundcolor=mdfbox_question_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
+  leftmargin=0,
+  rightmargin=0,
+  roundcorner=5,
+  needspace=0pt,
+]{question_mdfboxmdframed}
+
+\newenvironment{question_mdfboxadmon}[1][]{
+\begin{question_mdfboxmdframed}[frametitle=#1]
+}
+{
+\end{question_mdfboxmdframed}
+}
+
+% Admonition style "mdfbox" is an oval colored box based on mdframed
+% "block" admon
+\colorlet{mdfbox_block_background}{gray!5}
+\newmdenv[
+  skipabove=15pt,
+  skipbelow=15pt,
+  outerlinewidth=0,
+  backgroundcolor=mdfbox_block_background,
+  linecolor=black,
+  linewidth=2pt,       % frame thickness
+  frametitlebackgroundcolor=mdfbox_block_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
+  leftmargin=0,
+  rightmargin=0,
+  roundcorner=5,
+  needspace=0pt,
+]{block_mdfboxmdframed}
+
+\newenvironment{block_mdfboxadmon}[1][]{
+\begin{block_mdfboxmdframed}[frametitle=#1]
+}
+{
+\end{block_mdfboxmdframed}
 }
 
 % --- end of definitions of admonition environments ---
@@ -56902,9 +58082,9 @@ TOC: on
 \eccq
 
 
-\begin{mdfboxadmon}[Notice.]
+\begin{notice_mdfboxadmon}[Notice.]
 Title and authors must have all information \emph{on a single line}!
-\end{mdfboxadmon}
+\end{notice_mdfboxadmon}
 
 
 
@@ -57017,9 +58197,9 @@ URL: "https://github.com/hplgit/doconce"
 \section{Doconce: figures and movies}
 
 
-\begin{mdfboxadmon}[Notice.]
+\begin{notice_mdfboxadmon}[Notice.]
 Figure with HTML and {\LaTeX} info, and caption, \emph{all on one line}:
-\end{mdfboxadmon}
+\end{notice_mdfboxadmon}
 
 
 
@@ -57132,12 +58312,12 @@ def solver(I, a, T, dt, theta):
 \epycod
 
 
-\begin{mdfboxadmon}[Language-dependent typesetting of code:]
+\begin{notice_mdfboxadmon}[Language-dependent typesetting of code:]
 The \code{!bc} command can be followed by a specification of the computer
 language: \code{pycod} for Python code snippet, \code{pypro} for complete Python
 program, \code{fcod} for Fortran snippet, \code{fpro} for Fortran program, and so
 forth (\code{c} for C, \code{cpp} for C++, \code{sh} for Unix shells, \code{m} for Matlab).
-\end{mdfboxadmon}
+\end{notice_mdfboxadmon}
 
 
 
@@ -57263,7 +58443,7 @@ A full solution to this subexercise can go here.
 Make another program that computes the probability
 of getting at least three heads out of 5 throws.
 
-Filenames: \code{flip_coin.py}, \code{flip_coin.pdf}.
+\noindent Filenames: \code{flip_coin.py}, \code{flip_coin.pdf}.
 % solution files: mysol.txt, mysol_flip_coin.py
 
 \end{doconceexercise}
@@ -57853,9 +59033,9 @@ TOC: on
 \end{Verbatim}
 
 
-\begin{mdfboxadmon}[Notice.]
+\begin{notice_mdfboxadmon}[Notice.]
 Title and authors must have all information \emph{on a single line}!
-\end{mdfboxadmon}
+\end{notice_mdfboxadmon}
 \end{frame}
 
 \begin{frame}[plain,fragile]
@@ -57971,9 +59151,9 @@ URL: "https://github.com/hplgit/doconce"
 \begin{frame}[plain,fragile]
 \frametitle{Doconce: figures and movies}
 
-\begin{mdfboxadmon}[Notice.]
+\begin{notice_mdfboxadmon}[Notice.]
 Figure with HTML and {\LaTeX} info, and caption, \emph{all on one line}:
-\end{mdfboxadmon}
+\end{notice_mdfboxadmon}
 
 
 
@@ -58073,12 +59253,12 @@ def solver(I, a, T, dt, theta):
 \end{minted}
 
 
-\begin{mdfboxadmon}[Language-dependent typesetting of code:]
+\begin{notice_mdfboxadmon}[Language-dependent typesetting of code:]
 The \Verb~!bc~ command can be followed by a specification of the computer
 language: \Verb!pycod! for Python code snippet, \Verb!pypro! for complete Python
 program, \Verb!fcod! for Fortran snippet, \Verb!fpro! for Fortran program, and so
 forth (\Verb!c! for C, \Verb!cpp! for C++, \Verb!sh! for Unix shells, \Verb!m! for Matlab).
-\end{mdfboxadmon}
+\end{notice_mdfboxadmon}
 \end{frame}
 
 \begin{frame}[plain,fragile]
@@ -58201,7 +59381,7 @@ A full solution to this subexercise can go here.
 Make another program that computes the probability
 of getting at least three heads out of 5 throws.
 
-Filenames: \Verb!flip_coin.py!, \Verb!flip_coin.pdf!.
+\noindent Filenames: \Verb!flip_coin.py!, \Verb!flip_coin.pdf!.
 % solution files: mysol.txt, mysol_flip_coin.py
 
 \end{doconceexercise}
@@ -59175,24 +60355,144 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % --- begin definitions of admonition environments ---
 
-% Admonition style "mdfbox" is an oval colored box
-\colorlet{mdfbox_background}{gray!5}
+% Admonition style "mdfbox" is an oval colored box based on mdframed
+% "notice" admon
+\colorlet{mdfbox_notice_background}{gray!5}
 \newmdenv[
-  backgroundcolor=mdfbox_background,
-  skipabove=\topsep,
-  skipbelow=\topsep,
+  skipabove=15pt,
+  skipbelow=15pt,
   outerlinewidth=0,
+  backgroundcolor=mdfbox_notice_background,
+  linecolor=black,
+  linewidth=2pt,       % frame thickness
+  frametitlebackgroundcolor=mdfbox_notice_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
   leftmargin=0,
   rightmargin=0,
   roundcorner=5,
   needspace=0pt,
-]{mdfboxmdframed}
+]{notice_mdfboxmdframed}
 
-\newenvironment{mdfboxadmon}[1][]{
-\begin{mdfboxmdframed}[frametitle=#1]
+\newenvironment{notice_mdfboxadmon}[1][]{
+\begin{notice_mdfboxmdframed}[frametitle=#1]
 }
 {
-\end{mdfboxmdframed}
+\end{notice_mdfboxmdframed}
+}
+
+% Admonition style "mdfbox" is an oval colored box based on mdframed
+% "summary" admon
+\colorlet{mdfbox_summary_background}{gray!5}
+\newmdenv[
+  skipabove=15pt,
+  skipbelow=15pt,
+  outerlinewidth=0,
+  backgroundcolor=mdfbox_summary_background,
+  linecolor=black,
+  linewidth=2pt,       % frame thickness
+  frametitlebackgroundcolor=mdfbox_summary_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
+  leftmargin=0,
+  rightmargin=0,
+  roundcorner=5,
+  needspace=0pt,
+]{summary_mdfboxmdframed}
+
+\newenvironment{summary_mdfboxadmon}[1][]{
+\begin{summary_mdfboxmdframed}[frametitle=#1]
+}
+{
+\end{summary_mdfboxmdframed}
+}
+
+% Admonition style "mdfbox" is an oval colored box based on mdframed
+% "warning" admon
+\colorlet{mdfbox_warning_background}{gray!5}
+\newmdenv[
+  skipabove=15pt,
+  skipbelow=15pt,
+  outerlinewidth=0,
+  backgroundcolor=mdfbox_warning_background,
+  linecolor=black,
+  linewidth=2pt,       % frame thickness
+  frametitlebackgroundcolor=mdfbox_warning_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
+  leftmargin=0,
+  rightmargin=0,
+  roundcorner=5,
+  needspace=0pt,
+]{warning_mdfboxmdframed}
+
+\newenvironment{warning_mdfboxadmon}[1][]{
+\begin{warning_mdfboxmdframed}[frametitle=#1]
+}
+{
+\end{warning_mdfboxmdframed}
+}
+
+% Admonition style "mdfbox" is an oval colored box based on mdframed
+% "question" admon
+\colorlet{mdfbox_question_background}{gray!5}
+\newmdenv[
+  skipabove=15pt,
+  skipbelow=15pt,
+  outerlinewidth=0,
+  backgroundcolor=mdfbox_question_background,
+  linecolor=black,
+  linewidth=2pt,       % frame thickness
+  frametitlebackgroundcolor=mdfbox_question_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
+  leftmargin=0,
+  rightmargin=0,
+  roundcorner=5,
+  needspace=0pt,
+]{question_mdfboxmdframed}
+
+\newenvironment{question_mdfboxadmon}[1][]{
+\begin{question_mdfboxmdframed}[frametitle=#1]
+}
+{
+\end{question_mdfboxmdframed}
+}
+
+% Admonition style "mdfbox" is an oval colored box based on mdframed
+% "block" admon
+\colorlet{mdfbox_block_background}{gray!5}
+\newmdenv[
+  skipabove=15pt,
+  skipbelow=15pt,
+  outerlinewidth=0,
+  backgroundcolor=mdfbox_block_background,
+  linecolor=black,
+  linewidth=2pt,       % frame thickness
+  frametitlebackgroundcolor=mdfbox_block_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
+  leftmargin=0,
+  rightmargin=0,
+  roundcorner=5,
+  needspace=0pt,
+]{block_mdfboxmdframed}
+
+\newenvironment{block_mdfboxadmon}[1][]{
+\begin{block_mdfboxmdframed}[frametitle=#1]
+}
+{
+\end{block_mdfboxmdframed}
 }
 
 % --- end of definitions of admonition environments ---
@@ -59257,10 +60557,10 @@ The primary goal of this demo talk is to demonstrate how to write
 talks with \href{{https://github.com/hplgit/doconce}}{Doconce}
 and get them rendered in numerous HTML formats.
 
-\begin{mdfboxadmon}[Layout.]
+\begin{notice_mdfboxadmon}[Layout.]
 This version
 utilizes beamer slides with the theme red3.
-\end{mdfboxadmon}
+\end{notice_mdfboxadmon}
 
 
 
@@ -59392,10 +60692,10 @@ Exact solution of the scheme:
 
 % !bpop
 
-\begin{mdfboxadmon}[Concluding remarks:]
+\begin{summary_mdfboxadmon}[Concluding remarks:]
 Only the Backward Euler scheme is guaranteed to always give
 qualitatively correct results.
-\end{mdfboxadmon}
+\end{summary_mdfboxadmon}
 
 
 % !epop
@@ -59574,10 +60874,10 @@ The primary goal of this demo talk is to demonstrate how to write
 talks with \href{{https://github.com/hplgit/doconce}}{Doconce}
 and get them rendered in numerous HTML formats.
 
-\begin{mdfboxadmon}[Layout.]
+\begin{notice_mdfboxadmon}[Layout.]
 This version
 utilizes beamer slides with the theme red3.
-\end{mdfboxadmon}
+\end{notice_mdfboxadmon}
 
 
 
@@ -59712,10 +61012,10 @@ Exact solution of the scheme:
 
 
 \pause
-\begin{mdfboxadmon}[Concluding remarks:]
+\begin{summary_mdfboxadmon}[Concluding remarks:]
 Only the Backward Euler scheme is guaranteed to always give
 qualitatively correct results.
-\end{mdfboxadmon}
+\end{summary_mdfboxadmon}
 \end{frame}
 
 \end{document}
@@ -65689,6 +66989,21 @@ a = np.linspace(p, q, n)
 
 ========= Storing results in data files =========
 
+We need to test spaces around footnotes for 2-digit footnotes, which
+means we need a lot of URLs, e.g., to files:
+"`ball2_cml.py`": "${src_path}/input/ball2_cml.py",
+"`bisection_ex.py`": "${src_path}/input/bisection_ex.py",
+"`bisection_movie.py`": "${src_path}/input/bisection_movie.py",
+"`bisection_plot.py`": "${src_path}/input/bisection_plot.py",
+"`bisection.py`": "${src_path}/input/bisection.py",
+"`bisection_v1.py`": "${src_path}/input/bisection_v1.py",
+"`bisection_v2.py`": "${src_path}/input/bisection_v2.py",
+"`c2f_cml.py`": "${src_path}/input/c2f_cml.py",
+"`data.txt`": "${src_path}/input/data.txt",
+"`Fdeg.dat`": "${src_path}/input/Fdeg.dat",
+"`integrate.py`": "${src_path}/input/integrate.py", and
+"`interest.py`": "${src_path}/input/interest.py".
+
 ======= Writing data to file =======
 label{sec:files:writing}
 
@@ -65806,7 +67121,13 @@ for i in range(len(data)):
         outfile.write('%14.8f' % data[i][j])
     outfile.write('\n')
 !ec
+Some other files and URLs we can mention, just to test a 2-digit footnote,
+are
 
+ * "`addall.py`": "${src_path}/input/addall.py"
+ * "`addall_v1.py`": "${src_path}/input/addall_v1.py"
+ * "`add_cml.py`": "${src_path}/input/add_cml.py"
+ * "`add_input.py`": "${src_path}/input/add_input.py"
 
 
 
@@ -66082,24 +67403,144 @@ BIBFILE: papers.pub
 
 % --- begin definitions of admonition environments ---
 
-% Admonition style "mdfbox" is an oval colored box
-\definecolor{mdfbox_background}{rgb}{1,1,1}
+% Admonition style "mdfbox" is an oval colored box based on mdframed
+% "notice" admon
+\definecolor{mdfbox_notice_background}{rgb}{1,1,1}
 \newmdenv[
-  backgroundcolor=mdfbox_background,
-  skipabove=\topsep,
-  skipbelow=\topsep,
+  skipabove=15pt,
+  skipbelow=15pt,
   outerlinewidth=0,
+  backgroundcolor=mdfbox_notice_background,
+  linecolor=black,
+  linewidth=2pt,       % frame thickness
+  frametitlebackgroundcolor=mdfbox_notice_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
   leftmargin=0,
   rightmargin=0,
   roundcorner=5,
   needspace=0pt,
-]{mdfboxmdframed}
+]{notice_mdfboxmdframed}
 
-\newenvironment{mdfboxadmon}[1][]{
-\begin{mdfboxmdframed}[frametitle=#1]
+\newenvironment{notice_mdfboxadmon}[1][]{
+\begin{notice_mdfboxmdframed}[frametitle=#1]
 }
 {
-\end{mdfboxmdframed}
+\end{notice_mdfboxmdframed}
+}
+
+% Admonition style "mdfbox" is an oval colored box based on mdframed
+% "summary" admon
+\definecolor{mdfbox_summary_background}{rgb}{1,1,1}
+\newmdenv[
+  skipabove=15pt,
+  skipbelow=15pt,
+  outerlinewidth=0,
+  backgroundcolor=mdfbox_summary_background,
+  linecolor=black,
+  linewidth=2pt,       % frame thickness
+  frametitlebackgroundcolor=mdfbox_summary_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
+  leftmargin=0,
+  rightmargin=0,
+  roundcorner=5,
+  needspace=0pt,
+]{summary_mdfboxmdframed}
+
+\newenvironment{summary_mdfboxadmon}[1][]{
+\begin{summary_mdfboxmdframed}[frametitle=#1]
+}
+{
+\end{summary_mdfboxmdframed}
+}
+
+% Admonition style "mdfbox" is an oval colored box based on mdframed
+% "warning" admon
+\definecolor{mdfbox_warning_background}{rgb}{1,1,1}
+\newmdenv[
+  skipabove=15pt,
+  skipbelow=15pt,
+  outerlinewidth=0,
+  backgroundcolor=mdfbox_warning_background,
+  linecolor=black,
+  linewidth=2pt,       % frame thickness
+  frametitlebackgroundcolor=mdfbox_warning_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
+  leftmargin=0,
+  rightmargin=0,
+  roundcorner=5,
+  needspace=0pt,
+]{warning_mdfboxmdframed}
+
+\newenvironment{warning_mdfboxadmon}[1][]{
+\begin{warning_mdfboxmdframed}[frametitle=#1]
+}
+{
+\end{warning_mdfboxmdframed}
+}
+
+% Admonition style "mdfbox" is an oval colored box based on mdframed
+% "question" admon
+\definecolor{mdfbox_question_background}{rgb}{1,1,1}
+\newmdenv[
+  skipabove=15pt,
+  skipbelow=15pt,
+  outerlinewidth=0,
+  backgroundcolor=mdfbox_question_background,
+  linecolor=black,
+  linewidth=2pt,       % frame thickness
+  frametitlebackgroundcolor=mdfbox_question_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
+  leftmargin=0,
+  rightmargin=0,
+  roundcorner=5,
+  needspace=0pt,
+]{question_mdfboxmdframed}
+
+\newenvironment{question_mdfboxadmon}[1][]{
+\begin{question_mdfboxmdframed}[frametitle=#1]
+}
+{
+\end{question_mdfboxmdframed}
+}
+
+% Admonition style "mdfbox" is an oval colored box based on mdframed
+% "block" admon
+\definecolor{mdfbox_block_background}{rgb}{1,1,1}
+\newmdenv[
+  skipabove=15pt,
+  skipbelow=15pt,
+  outerlinewidth=0,
+  backgroundcolor=mdfbox_block_background,
+  linecolor=black,
+  linewidth=2pt,       % frame thickness
+  frametitlebackgroundcolor=mdfbox_block_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
+  leftmargin=0,
+  rightmargin=0,
+  roundcorner=5,
+  needspace=0pt,
+]{block_mdfboxmdframed}
+
+\newenvironment{block_mdfboxadmon}[1][]{
+\begin{block_mdfboxmdframed}[frametitle=#1]
+}
+{
+\end{block_mdfboxmdframed}
 }
 
 % --- end of definitions of admonition environments ---
@@ -66378,7 +67819,7 @@ following assumptions and features:
 
 \noindent
 
-\begin{mdfboxadmon}[Remarks.]
+\begin{notice_mdfboxadmon}[Remarks.]
 
 \begin{enumerate}
 \item There is actually an
@@ -66391,7 +67832,7 @@ following assumptions and features:
 \end{enumerate}
 
 \noindent
-\end{mdfboxadmon}
+\end{notice_mdfboxadmon}
 
 
 
@@ -66408,7 +67849,7 @@ and \emph{NumPy for MATLAB Users}, all accessible at \href{{http://scipy.org}}{s
 
 
 
-\begin{mdfboxadmon}[Remarks on importing NumPy.]
+\begin{notice_mdfboxadmon}[Remarks on importing NumPy.]
 The statement
 
 \bpycod
@@ -66437,7 +67878,7 @@ def f(x):
 or one may take the less recommended
 lazy approach \code{from numpy import *} and fill up
 the program with \emph{a lot} of functions and variables from \code{numpy}.
-\end{mdfboxadmon}
+\end{notice_mdfboxadmon}
 
 
 
@@ -66477,6 +67918,21 @@ a = np.linspace(p, q, n)
 
 
 \chapter{Storing results in data files}
+
+We need to test spaces around footnotes for 2-digit footnotes, which
+means we need a lot of URLs, e.g., to files:
+\href{{http://some.where.net/doconce/test/software/input/ball2_cml.py}}{\nolinkurl{ball2_cml.py}\footnote{\texttt{http://some.where.net/doconce/test/software/input/ball2\_cml.py}}},
+\href{{http://some.where.net/doconce/test/software/input/bisection_ex.py}}{\nolinkurl{bisection_ex.py}\footnote{\texttt{http://some.where.net/doconce/test/software/input/bisection\_ex.py}}},
+\href{{http://some.where.net/doconce/test/software/input/bisection_movie.py}}{\nolinkurl{bisection_movie.py}\footnote{\texttt{http://some.where.net/doconce/test/software/input/bisection\_movie.py}}},
+\href{{http://some.where.net/doconce/test/software/input/bisection_plot.py}}{\nolinkurl{bisection_plot.py}\footnote{\texttt{http://some.where.net/doconce/test/software/input/bisection\_plot.py}}},
+\href{{http://some.where.net/doconce/test/software/input/bisection.py}}{\nolinkurl{bisection.py}\footnote{\texttt{http://some.where.net/doconce/test/software/input/bisection.py}}},
+\href{{http://some.where.net/doconce/test/software/input/bisection_v1.py}}{\nolinkurl{bisection_v1.py}\footnote{\texttt{http://some.where.net/doconce/test/software/input/bisection\_v1.py}}},
+\href{{http://some.where.net/doconce/test/software/input/bisection_v2.py}}{\nolinkurl{bisection_v2.py}\footnote{\texttt{http://some.where.net/doconce/test/software/input/bisection\_v2.py}}},
+\href{{http://some.where.net/doconce/test/software/input/c2f_cml.py}}{\nolinkurl{c2f_cml.py}\footnote{\texttt{http://some.where.net/doconce/test/software/input/c2f\_cml.py}}},
+\href{{http://some.where.net/doconce/test/software/input/data.txt}}{\nolinkurl{data.txt}\footnote{\texttt{http://some.where.net/doconce/test/software/input/data.txt}}},
+\href{{http://some.where.net/doconce/test/software/input/Fdeg.dat}}{\nolinkurl{Fdeg.dat}\footnote{\texttt{http://some.where.net/doconce/test/software/input/Fdeg.dat}}},
+\href{{http://some.where.net/doconce/test/software/input/integrate.py}}{\nolinkurl{integrate.py}\footnote{\texttt{http://some.where.net/doconce/test/software/input/integrate.py}}}, and
+\href{{http://some.where.net/doconce/test/software/input/interest.py}}{\nolinkurl{interest.py}\footnote{\texttt{http://some.where.net/doconce/test/software/input/interest.py}}}.
 
 \section{Writing data to file}
 \label{sec:files:writing}
@@ -66593,10 +68049,20 @@ for i in range(len(data)):
         outfile.write('%14.8f' % data[i][j])
     outfile.write('\n')
 \epycod
+Some other files and URLs we can mention, just to test a 2-digit footnote,
+are
 
+\begin{itemize}
+ \item \href{{http://some.where.net/doconce/test/software/input/addall.py}}{\nolinkurl{addall.py}\footnote{\texttt{http://some.where.net/doconce/test/software/input/addall.py}}}
 
+ \item \href{{http://some.where.net/doconce/test/software/input/addall_v1.py}}{\nolinkurl{addall_v1.py}\footnote{\texttt{http://some.where.net/doconce/test/software/input/addall\_v1.py}}}
 
+ \item \href{{http://some.where.net/doconce/test/software/input/add_cml.py}}{\nolinkurl{add_cml.py}\footnote{\texttt{http://some.where.net/doconce/test/software/input/add\_cml.py}}}
 
+ \item \href{{http://some.where.net/doconce/test/software/input/add_input.py}}{\nolinkurl{add_input.py}\footnote{\texttt{http://some.where.net/doconce/test/software/input/add\_input.py}}}
+\end{itemize}
+
+\noindent
 \subsection{Standard input and output as file objects}
 
 \index{standard input} \index{standard output}
@@ -66846,24 +68312,144 @@ slightly modified \code{svmono.cls} and \code{t2.sty} files:
 
 % --- begin definitions of admonition environments ---
 
-% Admonition style "mdfbox" is an oval colored box
-\definecolor{mdfbox_background}{rgb}{1,1,1}
+% Admonition style "mdfbox" is an oval colored box based on mdframed
+% "notice" admon
+\definecolor{mdfbox_notice_background}{rgb}{1,1,1}
 \newmdenv[
-  backgroundcolor=mdfbox_background,
-  skipabove=\topsep,
-  skipbelow=\topsep,
+  skipabove=15pt,
+  skipbelow=15pt,
   outerlinewidth=0,
+  backgroundcolor=mdfbox_notice_background,
+  linecolor=black,
+  linewidth=2pt,       % frame thickness
+  frametitlebackgroundcolor=mdfbox_notice_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
   leftmargin=0,
   rightmargin=0,
   roundcorner=5,
   needspace=0pt,
-]{mdfboxmdframed}
+]{notice_mdfboxmdframed}
 
-\newenvironment{mdfboxadmon}[1][]{
-\begin{mdfboxmdframed}[frametitle=#1]
+\newenvironment{notice_mdfboxadmon}[1][]{
+\begin{notice_mdfboxmdframed}[frametitle=#1]
 }
 {
-\end{mdfboxmdframed}
+\end{notice_mdfboxmdframed}
+}
+
+% Admonition style "mdfbox" is an oval colored box based on mdframed
+% "summary" admon
+\definecolor{mdfbox_summary_background}{rgb}{1,1,1}
+\newmdenv[
+  skipabove=15pt,
+  skipbelow=15pt,
+  outerlinewidth=0,
+  backgroundcolor=mdfbox_summary_background,
+  linecolor=black,
+  linewidth=2pt,       % frame thickness
+  frametitlebackgroundcolor=mdfbox_summary_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
+  leftmargin=0,
+  rightmargin=0,
+  roundcorner=5,
+  needspace=0pt,
+]{summary_mdfboxmdframed}
+
+\newenvironment{summary_mdfboxadmon}[1][]{
+\begin{summary_mdfboxmdframed}[frametitle=#1]
+}
+{
+\end{summary_mdfboxmdframed}
+}
+
+% Admonition style "mdfbox" is an oval colored box based on mdframed
+% "warning" admon
+\definecolor{mdfbox_warning_background}{rgb}{1,1,1}
+\newmdenv[
+  skipabove=15pt,
+  skipbelow=15pt,
+  outerlinewidth=0,
+  backgroundcolor=mdfbox_warning_background,
+  linecolor=black,
+  linewidth=2pt,       % frame thickness
+  frametitlebackgroundcolor=mdfbox_warning_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
+  leftmargin=0,
+  rightmargin=0,
+  roundcorner=5,
+  needspace=0pt,
+]{warning_mdfboxmdframed}
+
+\newenvironment{warning_mdfboxadmon}[1][]{
+\begin{warning_mdfboxmdframed}[frametitle=#1]
+}
+{
+\end{warning_mdfboxmdframed}
+}
+
+% Admonition style "mdfbox" is an oval colored box based on mdframed
+% "question" admon
+\definecolor{mdfbox_question_background}{rgb}{1,1,1}
+\newmdenv[
+  skipabove=15pt,
+  skipbelow=15pt,
+  outerlinewidth=0,
+  backgroundcolor=mdfbox_question_background,
+  linecolor=black,
+  linewidth=2pt,       % frame thickness
+  frametitlebackgroundcolor=mdfbox_question_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
+  leftmargin=0,
+  rightmargin=0,
+  roundcorner=5,
+  needspace=0pt,
+]{question_mdfboxmdframed}
+
+\newenvironment{question_mdfboxadmon}[1][]{
+\begin{question_mdfboxmdframed}[frametitle=#1]
+}
+{
+\end{question_mdfboxmdframed}
+}
+
+% Admonition style "mdfbox" is an oval colored box based on mdframed
+% "block" admon
+\definecolor{mdfbox_block_background}{rgb}{1,1,1}
+\newmdenv[
+  skipabove=15pt,
+  skipbelow=15pt,
+  outerlinewidth=0,
+  backgroundcolor=mdfbox_block_background,
+  linecolor=black,
+  linewidth=2pt,       % frame thickness
+  frametitlebackgroundcolor=mdfbox_block_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
+  leftmargin=0,
+  rightmargin=0,
+  roundcorner=5,
+  needspace=0pt,
+]{block_mdfboxmdframed}
+
+\newenvironment{block_mdfboxadmon}[1][]{
+\begin{block_mdfboxmdframed}[frametitle=#1]
+}
+{
+\end{block_mdfboxmdframed}
 }
 
 % --- end of definitions of admonition environments ---
@@ -67175,7 +68761,7 @@ following assumptions and features:
 
 \noindent
 
-\begin{mdfboxadmon}[Remarks.]
+\begin{notice_mdfboxadmon}[Remarks.]
 
 \begin{enumerate}
 \item There is actually an
@@ -67188,7 +68774,7 @@ following assumptions and features:
 \end{enumerate}
 
 \noindent
-\end{mdfboxadmon}
+\end{notice_mdfboxadmon}
 
 
 
@@ -67205,7 +68791,7 @@ and \emph{NumPy for MATLAB Users}, all accessible at \href{{http://scipy.org}}{s
 
 
 
-\begin{mdfboxadmon}[Remarks on importing NumPy.]
+\begin{notice_mdfboxadmon}[Remarks on importing NumPy.]
 The statement
 
 \begin{shadedquoteBlue}
@@ -67246,7 +68832,7 @@ def f(x):
 or one may take the less recommended
 lazy approach {\Verb!from numpy import *!} and fill up
 the program with \emph{a lot} of functions and variables from {\Verb!numpy!}.
-\end{mdfboxadmon}
+\end{notice_mdfboxadmon}
 
 
 
@@ -67302,6 +68888,21 @@ a = np.linspace(p, q, n)
 
 
 \chapter{Storing results in data files}
+
+We need to test spaces around footnotes for 2-digit footnotes, which
+means we need a lot of URLs, e.g., to files:
+\href{{http://some.where.net/doconce/test/software/input/ball2_cml.py}}{\nolinkurl{ball2_cml.py}\footnote{\texttt{http://some.where.net/doconce/test/software/input/ball2\_cml.py}}},
+\href{{http://some.where.net/doconce/test/software/input/bisection_ex.py}}{\nolinkurl{bisection_ex.py}\footnote{\texttt{http://some.where.net/doconce/test/software/input/bisection\_ex.py}}},
+\href{{http://some.where.net/doconce/test/software/input/bisection_movie.py}}{\nolinkurl{bisection_movie.py}\footnote{\texttt{http://some.where.net/doconce/test/software/input/bisection\_movie.py}}},
+\href{{http://some.where.net/doconce/test/software/input/bisection_plot.py}}{\nolinkurl{bisection_plot.py}\footnote{\texttt{http://some.where.net/doconce/test/software/input/bisection\_plot.py}}},
+\href{{http://some.where.net/doconce/test/software/input/bisection.py}}{\nolinkurl{bisection.py}\footnote{\texttt{http://some.where.net/doconce/test/software/input/bisection.py}}},
+\href{{http://some.where.net/doconce/test/software/input/bisection_v1.py}}{\nolinkurl{bisection_v1.py}\footnote{\texttt{http://some.where.net/doconce/test/software/input/bisection\_v1.py}}},
+\href{{http://some.where.net/doconce/test/software/input/bisection_v2.py}}{\nolinkurl{bisection_v2.py}\footnote{\texttt{http://some.where.net/doconce/test/software/input/bisection\_v2.py}}},
+\href{{http://some.where.net/doconce/test/software/input/c2f_cml.py}}{\nolinkurl{c2f_cml.py}\footnote{\texttt{http://some.where.net/doconce/test/software/input/c2f\_cml.py}}},
+\href{{http://some.where.net/doconce/test/software/input/data.txt}}{\nolinkurl{data.txt}\footnote{\texttt{http://some.where.net/doconce/test/software/input/data.txt}}},
+\href{{http://some.where.net/doconce/test/software/input/Fdeg.dat}}{\nolinkurl{Fdeg.dat}\footnote{\texttt{http://some.where.net/doconce/test/software/input/Fdeg.dat}}},
+\href{{http://some.where.net/doconce/test/software/input/integrate.py}}{\nolinkurl{integrate.py}\footnote{\texttt{http://some.where.net/doconce/test/software/input/integrate.py}}}, and
+\href{{http://some.where.net/doconce/test/software/input/interest.py}}{\nolinkurl{interest.py}\footnote{\texttt{http://some.where.net/doconce/test/software/input/interest.py}}}.
 
 \section{Writing data to file}
 \label{sec:files:writing}
@@ -67441,10 +69042,20 @@ for i in range(len(data)):
 \end{Verbatim}
 \end{shadedquoteBlue}
 \noindent
+Some other files and URLs we can mention, just to test a 2-digit footnote,
+are
 
+\begin{itemize}
+ \item \href{{http://some.where.net/doconce/test/software/input/addall.py}}{\nolinkurl{addall.py}\footnote{\texttt{http://some.where.net/doconce/test/software/input/addall.py}}}
 
+ \item \href{{http://some.where.net/doconce/test/software/input/addall_v1.py}}{\nolinkurl{addall_v1.py}\footnote{\texttt{http://some.where.net/doconce/test/software/input/addall\_v1.py}}}
 
+ \item \href{{http://some.where.net/doconce/test/software/input/add_cml.py}}{\nolinkurl{add_cml.py}\footnote{\texttt{http://some.where.net/doconce/test/software/input/add\_cml.py}}}
 
+ \item \href{{http://some.where.net/doconce/test/software/input/add_input.py}}{\nolinkurl{add_input.py}\footnote{\texttt{http://some.where.net/doconce/test/software/input/add\_input.py}}}
+\end{itemize}
+
+\noindent
 \subsection{Standard input and output as file objects}
 
 \index{standard input} \index{standard output}
@@ -70523,24 +72134,144 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % --- begin definitions of admonition environments ---
 
-% Admonition style "mdfbox" is an oval colored box
-\colorlet{mdfbox_background}{gray!5}
+% Admonition style "mdfbox" is an oval colored box based on mdframed
+% "notice" admon
+\colorlet{mdfbox_notice_background}{gray!5}
 \newmdenv[
-  backgroundcolor=mdfbox_background,
-  skipabove=\topsep,
-  skipbelow=\topsep,
+  skipabove=15pt,
+  skipbelow=15pt,
   outerlinewidth=0,
+  backgroundcolor=mdfbox_notice_background,
+  linecolor=black,
+  linewidth=2pt,       % frame thickness
+  frametitlebackgroundcolor=mdfbox_notice_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
   leftmargin=0,
   rightmargin=0,
   roundcorner=5,
   needspace=0pt,
-]{mdfboxmdframed}
+]{notice_mdfboxmdframed}
 
-\newenvironment{mdfboxadmon}[1][]{
-\begin{mdfboxmdframed}[frametitle=#1]
+\newenvironment{notice_mdfboxadmon}[1][]{
+\begin{notice_mdfboxmdframed}[frametitle=#1]
 }
 {
-\end{mdfboxmdframed}
+\end{notice_mdfboxmdframed}
+}
+
+% Admonition style "mdfbox" is an oval colored box based on mdframed
+% "summary" admon
+\colorlet{mdfbox_summary_background}{gray!5}
+\newmdenv[
+  skipabove=15pt,
+  skipbelow=15pt,
+  outerlinewidth=0,
+  backgroundcolor=mdfbox_summary_background,
+  linecolor=black,
+  linewidth=2pt,       % frame thickness
+  frametitlebackgroundcolor=mdfbox_summary_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
+  leftmargin=0,
+  rightmargin=0,
+  roundcorner=5,
+  needspace=0pt,
+]{summary_mdfboxmdframed}
+
+\newenvironment{summary_mdfboxadmon}[1][]{
+\begin{summary_mdfboxmdframed}[frametitle=#1]
+}
+{
+\end{summary_mdfboxmdframed}
+}
+
+% Admonition style "mdfbox" is an oval colored box based on mdframed
+% "warning" admon
+\colorlet{mdfbox_warning_background}{gray!5}
+\newmdenv[
+  skipabove=15pt,
+  skipbelow=15pt,
+  outerlinewidth=0,
+  backgroundcolor=mdfbox_warning_background,
+  linecolor=black,
+  linewidth=2pt,       % frame thickness
+  frametitlebackgroundcolor=mdfbox_warning_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
+  leftmargin=0,
+  rightmargin=0,
+  roundcorner=5,
+  needspace=0pt,
+]{warning_mdfboxmdframed}
+
+\newenvironment{warning_mdfboxadmon}[1][]{
+\begin{warning_mdfboxmdframed}[frametitle=#1]
+}
+{
+\end{warning_mdfboxmdframed}
+}
+
+% Admonition style "mdfbox" is an oval colored box based on mdframed
+% "question" admon
+\colorlet{mdfbox_question_background}{gray!5}
+\newmdenv[
+  skipabove=15pt,
+  skipbelow=15pt,
+  outerlinewidth=0,
+  backgroundcolor=mdfbox_question_background,
+  linecolor=black,
+  linewidth=2pt,       % frame thickness
+  frametitlebackgroundcolor=mdfbox_question_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
+  leftmargin=0,
+  rightmargin=0,
+  roundcorner=5,
+  needspace=0pt,
+]{question_mdfboxmdframed}
+
+\newenvironment{question_mdfboxadmon}[1][]{
+\begin{question_mdfboxmdframed}[frametitle=#1]
+}
+{
+\end{question_mdfboxmdframed}
+}
+
+% Admonition style "mdfbox" is an oval colored box based on mdframed
+% "block" admon
+\colorlet{mdfbox_block_background}{gray!5}
+\newmdenv[
+  skipabove=15pt,
+  skipbelow=15pt,
+  outerlinewidth=0,
+  backgroundcolor=mdfbox_block_background,
+  linecolor=black,
+  linewidth=2pt,       % frame thickness
+  frametitlebackgroundcolor=mdfbox_block_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
+  leftmargin=0,
+  rightmargin=0,
+  roundcorner=5,
+  needspace=0pt,
+]{block_mdfboxmdframed}
+
+\newenvironment{block_mdfboxadmon}[1][]{
+\begin{block_mdfboxmdframed}[frametitle=#1]
+}
+{
+\end{block_mdfboxmdframed}
 }
 
 % --- end of definitions of admonition environments ---
@@ -71074,7 +72805,7 @@ is also important, one should follow these rules:
 labels in \code{align} environments work well.)
 
 
-\begin{mdfboxadmon}[Notice.]
+\begin{notice_mdfboxadmon}[Notice.]
 {\LaTeX} supports lots of fancy formatting, for example, multiple
 plots in the same figure, footnotes, margin notes, etc.
 Allowing other output formats, such as \code{sphinx}, makes it necessary
@@ -71085,7 +72816,7 @@ include special code for \code{latex} and \code{pdflatex} output and more
 straightforward typesetting for other formats. In this way, one can
 also allow advanced {\LaTeX} features and fine tuning of resulting
 PDF document.
-\end{mdfboxadmon}
+\end{notice_mdfboxadmon}
 
 
 
@@ -81509,6 +83240,7 @@ figure file ../doc/src/manual/fig/wave1D:
     found!
 
 exporting publish database papers.pub to papers.bib:
+*** made directory latex_figs for admon figures
 output in testdoc.p.tex
 + '[' 0 -ne 0 ']'
 + cp testdoc.p.tex testdoc_no_solutions.p.tex
@@ -82188,7 +83920,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 841.
+t line 963.
 
 
 
@@ -82208,7 +83940,7 @@ t line 841.
 
 
 
-t line 850.
+t line 972.
 
 
 
@@ -82232,7 +83964,7 @@ rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 
 
 
-t line 854.
+t line 976.
 
 
 
@@ -82308,15 +84040,15 @@ Overfull \hbox (5.03835pt too wide)
 %26+engineering/book/978-3-642-23098-1| 
 
 
+.
 
 
 
+.
 
 
 
-
-
-
+.
 
 
 
@@ -82958,7 +84690,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 841.
+t line 963.
 
 
 
@@ -82978,7 +84710,7 @@ t line 841.
 
 
 
-t line 850.
+t line 972.
 
 
 
@@ -83002,7 +84734,7 @@ rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 
 
 
-t line 854.
+t line 976.
 
 
 
@@ -83641,7 +85373,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 841.
+t line 963.
 
 
 
@@ -83661,7 +85393,7 @@ t line 841.
 
 
 
-t line 850.
+t line 972.
 
 
 
@@ -83685,7 +85417,7 @@ rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 
 
 
-t line 854.
+t line 976.
 
 
 
@@ -84906,7 +86638,7 @@ reading sources... [100%] index
         plot(x, y)
         xlabel('x'); ylabel('y')
         show()
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:572: WARNING: Inline interpreted text or phrase reference start-string without end-string.
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:574: WARNING: Inline interpreted text or phrase reference start-string without end-string.
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:None: WARNING: nonlocal image URI found: https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png
 looking for now-outdated files... none found
 pickling environment... done
@@ -86187,7 +87919,6 @@ figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.pdf for format pdflatex
 *** warning: wrong text size "illegal-size" specified in notice environment!
     must be "large" or "small" - will be set to normal
-*** made directory latex_figs for admon figures
 output in admon.p.tex
 + '[' 0 -ne 0 ']'
 + doconce ptex2tex admon envir=minted
@@ -86323,7 +88054,7 @@ Underfull \hbox (badness 10000)
 [3 <./latex_figs/notice.pdf>] <use latex_figs/notice.pdf>
 Underfull \hbox (badness 10000) 
 
-<latex_figs/question.pdf, id=52, 89.33376pt x 89.33376pt>
+<latex_figs/question.pdf, id=53, 89.33376pt x 89.33376pt>
 <use latex_figs/question.pdf>
 Underfull \hbox (badness 10000) 
 
@@ -86340,9 +88071,9 @@ Underfull \hbox (badness 10000)
 Underfull \hbox (badness 10000) 
 
 (./admon_colors1.out.pyg) (./admon_colors1.out.pyg)
-<../doc/src/manual/fig/wave1D.pdf, id=65, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=66, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> [5]
-<latex_figs/summary.pdf, id=70, 89.33376pt x 89.33376pt>
+<latex_figs/summary.pdf, id=71, 89.33376pt x 89.33376pt>
 <use latex_figs/summary.pdf>
 Underfull \hbox (badness 10000) 
 
@@ -86504,8 +88235,10 @@ admon=colors1
 + echo latex_figs:
 latex_figs:
 + /bin/ls latex_figs
+notice.eps
 notice.pdf
 question.pdf
+summary.eps
 summary.pdf
 warning.pdf
 + rm -rf latex_figs
@@ -86520,6 +88253,7 @@ figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.pdf for format pdflatex
 *** warning: wrong text size "illegal-size" specified in notice environment!
     must be "large" or "small" - will be set to normal
+*** made directory latex_figs for admon figures
 output in admon.p.tex
 + '[' 0 -ne 0 ']'
 + doconce ptex2tex admon envir=minted
@@ -86751,30 +88485,14 @@ dmap/pdftex.map}] (./admon_mdfbox.out.pyg)
 
 ...rest of part of LaTeX line number...
 
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-Package mdframed Warning: You got a bad break
-(mdframed)                because the last box will be empty
-(mdframed)                you have to change it manually
-(mdframed)                by changing the text, the space
-(mdframed)                or something else on .
-
-
-
-...rest of part of LaTeX line number...
-
 [3]
 
-Package mdframed Warning: You got a bad break
-(mdframed)                because the last split box is empty
-(mdframed)                You have to change the settings on .
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
 
 
 
@@ -86791,12 +88509,7 @@ Package mdframed Warning: You got a bad break
 
 (./admon_mdfbox.out.pyg) (./admon_mdfbox.out.pyg)
 <../doc/src/manual/fig/wave1D.pdf, id=46, 586.83241pt x 442.29242pt>
-<use ../doc/src/manual/fig/wave1D.pdf>
-
-
-...rest of part of LaTeX line number...
-
-[4]
+<use ../doc/src/manual/fig/wave1D.pdf> [4]
 
 
 ...rest of part of LaTeX line number...
@@ -87005,8 +88718,13 @@ Transcript written on admon_mdfbox.log.
 + echo admon=mdfbox
 admon=mdfbox
 + '[' -d latex_figs ']'
-+ echo 'no latex_figs directory for this admon type'
-no latex_figs directory for this admon type
++ echo latex_figs:
+latex_figs:
++ /bin/ls latex_figs
+notice.pdf
+question.pdf
+summary.pdf
+warning.pdf
 + rm -rf latex_figs
 + for admon_tp in '$admon_tps'
 + '[' paragraph = mdfbox ']'
@@ -87223,7 +88941,7 @@ ABD: EveryShipout initializing macros (./newcommands_bfmath.tex)
 dmap/pdftex.map}] (./admon_paragraph.out.pyg) (./admon_paragraph.out.pyg)
 (./admon_paragraph.out.pyg) [2] (./admon_paragraph.out.pyg) [3]
 (./admon_paragraph.out.pyg) (./admon_paragraph.out.pyg [4])
-<../doc/src/manual/fig/wave1D.pdf, id=65, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=66, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf>
 No file admon_paragraph.ind.
 [5 <../doc/src/manual/fig/wave1D.pdf>] (./admon_paragraph.aux)
@@ -87665,26 +89383,10 @@ dmap/pdftex.map}] (./admon_graybox2.out.pyg)
 
 ...rest of part of LaTeX line number...
 
-
-
-...rest of part of LaTeX line number...
-
-
-Package mdframed Warning: You got a bad break
-(mdframed)                because the last box will be empty
-(mdframed)                you have to change it manually
-(mdframed)                by changing the text, the space
-(mdframed)                or something else on .
-
-
-
-...rest of part of LaTeX line number...
-
 [3]
 
-Package mdframed Warning: You got a bad break
-(mdframed)                because the last split box is empty
-(mdframed)                You have to change the settings on .
+
+...rest of part of LaTeX line number...
 
 
 
@@ -88047,17 +89749,17 @@ dmap/pdftex.map}] (./admon_yellowicon.out.pyg)
 <use latex_figs/small_yellow_warning.pdf>
 <latex_figs/small_yellow_notice.pdf, id=42, 32.12pt x 32.12pt>
 <use latex_figs/small_yellow_notice.pdf>
-<use latex_figs/small_yellow_notice.pdf>
-<latex_figs/small_yellow_question.pdf, id=43, 32.12pt x 32.12pt>
-<use latex_figs/small_yellow_question.pdf> [3 <./latex_figs/small_yellow_notice
-.pdf>] <use latex_figs/small_yellow_question.pdf>
+<use latex_figs/small_yellow_notice.pdf> [3 <./latex_figs/small_yellow_notice.p
+df>] <latex_figs/small_yellow_question.pdf, id=57, 32.12pt x 32.12pt>
+<use latex_figs/small_yellow_question.pdf>
+<use latex_figs/small_yellow_question.pdf>
 <use latex_figs/small_yellow_warning.pdf> (./admon_yellowicon.out.pyg)
 <use latex_figs/small_yellow_warning.pdf>
 <use latex_figs/small_yellow_notice.pdf> (./admon_yellowicon.out.pyg)
 (./admon_yellowicon.out.pyg)
-<../doc/src/manual/fig/wave1D.pdf, id=57, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=58, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> [4 <./latex_figs/small_yellow_question.p
-df>] [5] <latex_figs/small_yellow_summary.pdf, id=76, 32.12pt x 32.12pt>
+df>] [5] <latex_figs/small_yellow_summary.pdf, id=77, 32.12pt x 32.12pt>
 <use latex_figs/small_yellow_summary.pdf>
 No file admon_yellowicon.ind.
 [6 <../doc/src/manual/fig/wave1D.pdf> <./latex_figs/small_yellow_summary.pdf>]
@@ -88353,15 +90055,16 @@ dmap/pdftex.map}] (./admon_grayicon.out.pyg)
 <use latex_figs/small_gray_warning.pdf>
 <latex_figs/small_gray_notice.pdf, id=42, 64.24pt x 64.24pt>
 <use latex_figs/small_gray_notice.pdf> <use latex_figs/small_gray_notice.pdf>
-<latex_figs/small_gray_question2.pdf, id=43, 64.24pt x 64.24pt>
-<use latex_figs/small_gray_question2.pdf> [3 <./latex_figs/small_gray_notice.pd
-f>] <use latex_figs/small_gray_question2.pdf>
+[3 <./latex_figs/small_gray_notice.pdf>]
+<latex_figs/small_gray_question2.pdf, id=57, 64.24pt x 64.24pt>
+<use latex_figs/small_gray_question2.pdf>
+<use latex_figs/small_gray_question2.pdf>
 <use latex_figs/small_gray_warning.pdf> (./admon_grayicon.out.pyg)
 <use latex_figs/small_gray_warning.pdf> <use latex_figs/small_gray_notice.pdf>
 (./admon_grayicon.out.pyg) (./admon_grayicon.out.pyg)
-<../doc/src/manual/fig/wave1D.pdf, id=57, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=58, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> [4 <./latex_figs/small_gray_question2.pd
-f>] [5] <latex_figs/small_gray_summary.pdf, id=76, 48.18pt x 48.18pt>
+f>] [5] <latex_figs/small_gray_summary.pdf, id=77, 48.18pt x 48.18pt>
 <use latex_figs/small_gray_summary.pdf>
 No file admon_grayicon.ind.
 [6 <../doc/src/manual/fig/wave1D.pdf> <./latex_figs/small_gray_summary.pdf>]
@@ -88655,15 +90358,15 @@ dmap/pdftex.map}] (./admon_colors2.out.pyg)
 (./admon_colors2.out.pyg) (./admon_colors2.out.pyg) [2 <./latex_figs/warning.pd
 f>] <use latex_figs/warning.pdf>
 <latex_figs/notice.pdf, id=40, 89.33376pt x 89.33376pt>
-<use latex_figs/notice.pdf> <use latex_figs/notice.pdf>
-<latex_figs/question.pdf, id=41, 89.33376pt x 89.33376pt>
-<use latex_figs/question.pdf> [3 <./latex_figs/notice.pdf>]
-<use latex_figs/question.pdf> <use latex_figs/warning.pdf>
-(./admon_colors2.out.pyg) <use latex_figs/warning.pdf>
-<use latex_figs/notice.pdf> (./admon_colors2.out.pyg) (./admon_colors2.out.pyg)
-<../doc/src/manual/fig/wave1D.pdf, id=53, 586.83241pt x 442.29242pt>
+<use latex_figs/notice.pdf> <use latex_figs/notice.pdf> [3 <./latex_figs/notice
+.pdf>] <latex_figs/question.pdf, id=53, 89.33376pt x 89.33376pt>
+<use latex_figs/question.pdf> <use latex_figs/question.pdf>
+<use latex_figs/warning.pdf> (./admon_colors2.out.pyg)
+<use latex_figs/warning.pdf> <use latex_figs/notice.pdf>
+(./admon_colors2.out.pyg) (./admon_colors2.out.pyg)
+<../doc/src/manual/fig/wave1D.pdf, id=54, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> [4 <./latex_figs/question.pdf>] [5]
-<latex_figs/summary.pdf, id=70, 89.33376pt x 89.33376pt>
+<latex_figs/summary.pdf, id=71, 89.33376pt x 89.33376pt>
 <use latex_figs/summary.pdf>
 No file admon_colors2.ind.
 [6 <../doc/src/manual/fig/wave1D.pdf> <./latex_figs/summary.pdf>]
@@ -88834,6 +90537,7 @@ figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.pdf for format pdflatex
 *** warning: wrong text size "illegal-size" specified in notice environment!
     must be "large" or "small" - will be set to normal
+*** made directory latex_figs for admon figures
 output in admon.p.tex
 + doconce ptex2tex admon pycod2=minted pypro2=minted pycod=Verbatim pypro=Verbatim
 \bpycod2 (!bc pycod2) -> \begin{minted}{python}
@@ -89125,8 +90829,10 @@ translating doconce text in tmp_preprocess__admon.do.txt to plain
 output in admon.txt
 + '[' 0 -ne 0 ']'
 + cp admon.txt admon_paragraph.txt
-+ cp -fr admon_apricot.html admon_colors.html admon_gray.html admon_lyx.html admon_paragraph.html admon_vagrant.html admon_yellow.html admon_colors1.pdf admon_colors2.pdf admon_mdfbox.pdf admon_graybox2.pdf admon_grayicon.pdf admon_paragraph.pdf admon_yellowicon.pdf admon_mwiki.mwiki admon_paragraph.txt admon_sphinx admon_demo/
++ cp -fr admon_apricot.html admon_colors.html admon_gray.html admon_lyx.html admon_paragraph.html admon_vagrant.html admon_yellow.html admon_colors1.pdf admon_colors2.pdf admon_graybox2.pdf admon_grayicon.pdf admon_mdfbox.pdf admon_paragraph.pdf admon_yellowicon.pdf admon_mwiki.mwiki admon_paragraph.txt admon_sphinx admon_demo/
 + '[' -d latex_figs ']'
++ echo 'BUG: latex_figs was made by some non-latex format...'
+BUG: latex_figs was made by some non-latex format...
 + system doconce format pandoc github_md.do.txt --github_md
 + doconce format pandoc github_md.do.txt --github_md
 translating doconce text in github_md.do.txt to pandoc
@@ -91156,8 +92862,7 @@ output in movies.txt
 + cd Springer_T2
 + bash -x make.sh
 + name=Springer_T2_book
-+ rm 'tmp_*'
-rm: cannot remove ‘tmp_*’: No such file or directory
++ rm -f 'tmp_*'
 + system doconce format pdflatex Springer_T2_book CHAPTER=chapter BOOK=book APPENDIX=appendix -DPRIMER_BOOK ALG=code --encoding=utf-8 --device=paper --latex_exercise_numbering=chapter --latex_admon_color=1,1,1 --latex_style=Springer_T2 --latex_title_layout=titlepage --latex_list_of_exercises=loe
 + doconce format pdflatex Springer_T2_book CHAPTER=chapter BOOK=book APPENDIX=appendix -DPRIMER_BOOK ALG=code --encoding=utf-8 --device=paper --latex_exercise_numbering=chapter --latex_admon_color=1,1,1 --latex_style=Springer_T2 --latex_title_layout=titlepage --latex_list_of_exercises=loe
 
@@ -91190,6 +92895,8 @@ could not extract svmonodo.cls.sty (from latex_styles.zip in the doconce install
 could not extract t2do.sty.sty (from latex_styles.zip in the doconce installation)
 
 exporting publish database papers.pub to papers.bib:
+Warning: found "!bc py", but py is not a standard predefined ptex2tex environment
+*** made directory latex_figs for admon figures
 output in Springer_T2_book.p.tex
 + '[' 0 -ne 0 ']'
 + system ptex2tex Springer_T2_book
@@ -91489,7 +93196,7 @@ LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <4.25> not available
 ...rest of part of LaTeX line number...
 
 
-Underfull \hbox (badness 6927) 
+Underfull \hbox (badness 5862) 
 \T1/lmr/m/n/11 (+20) or one may take the less rec-om-mended lazy ap-proach
 
 
@@ -92057,7 +93764,7 @@ LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <4.25> not available
 
 
  [2]
-Underfull \hbox (badness 6927) 
+Underfull \hbox (badness 5862) 
 \T1/lmr/m/n/11 (+20) or one may take the less rec-om-mended lazy ap-proach
 [3]
 
@@ -92604,7 +94311,7 @@ LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <4.25> not available
 (Font)              size <5> substituted on .
 
 [1]  [2]
-Underfull \hbox (badness 6927) 
+Underfull \hbox (badness 5862) 
 \T1/lmr/m/n/11 (+20) or one may take the less rec-om-mended lazy ap-proach
 [3]
 
@@ -93334,6 +95041,7 @@ output in quickref.html
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to latex
 copy complete file doconce_program.sh  (format: shpro)
+*** made directory latex_figs for admon figures
 output in quickref.p.tex
 + '[' 0 -ne 0 ']'
 + system doconce ptex2tex quickref envir=Verbatim
@@ -93539,7 +95247,7 @@ Overfull \hbox (25.94336pt too wide)
 \T1/phv/m/n/10 up to, but not in-clud-ing the line match-ing the \T1/phv/m/sl/1
 0 reg-u-lar ex-pres-sion []\T1/phv/m/n/10 .
 [6] [7]
-Overfull \hbox (49.67722pt too wide) 
+Overfull \hbox (52.87723pt too wide) 
 \T1/phv/m/n/10 pre-pro-ces-sor if-tests on the for-mat (typ-i-cally [])
 
 
@@ -93921,7 +95629,7 @@ Overfull \hbox (25.94336pt too wide)
 \T1/phv/m/n/10 up to, but not in-clud-ing the line match-ing the \T1/phv/m/sl/1
 0 reg-u-lar ex-pres-sion []\T1/phv/m/n/10 .
 [7] [8]
-Overfull \hbox (49.67722pt too wide) 
+Overfull \hbox (52.87723pt too wide) 
 \T1/phv/m/n/10 pre-pro-ces-sor if-tests on the for-mat (typ-i-cally [])
 [9] [10] [11]
 Overfull \hbox (59.24634pt too wide) 

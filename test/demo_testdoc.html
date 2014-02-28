@@ -248,7 +248,7 @@ $$
 <center>[6] <b>Third Inst, Elsewhere</b></center>
 <center>[7] <b>Fourth Inst</b></center>
 <p>
-<center><h4>Feb 19, 2014</h4></center> <!-- date -->
+<center><h4>Feb 28, 2014</h4></center> <!-- date -->
 
 <h2>Table of contents</h2>
 
@@ -627,7 +627,9 @@ since latex use ! in the <code>Verb</code> typesetting, but this should now
 be fixed: test <code>!bc</code> and <code>!ec</code> as well as <code>!bsummary</code>.
 Also test backslashes and braces like <code>\begin</code>, <code>\begin{enumerate}</code>,
 <code>\end{this}\end{that}</code>, and <code>{something \inside braces}</code> in inline
-verbatim text.
+verbatim text. Since the exclamation mark is used as delimiter
+in LaTeX inline verbatim, we need to test it, as in <code>a != b</code>,
+and a Doconce directive a la <code>!bc</code>.
 
 <p>
 Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
@@ -1514,8 +1516,8 @@ And a test that the code <code>lambda x: x+2</code> is correctly placed here:
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">lambda x: x+2
 </pre></div>
 </td></tr></table><p>
-<!-- Have some comments at the end of the exercise to see that -->
 <!-- the Filename: ... is written correctly. -->
+<!-- Have some comments at the end of the exercise to see that -->
 
 <p>
 <!-- --- end exercise --- -->
@@ -1553,6 +1555,7 @@ With some text, before we continue with exercises.
 <h3>Exercise 8: Make references to projects and problems <a name="exer:some:formula"></a></h3>
 
 <p>
+<!-- Test comments not at the end only -->
 Pick a statement from <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a> or <a href="#demo:ex:1">Problem 2: Flip a Coin</a>
 and verify it.
 
