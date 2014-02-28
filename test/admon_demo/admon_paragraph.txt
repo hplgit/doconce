@@ -3,7 +3,7 @@ Testing admons
 
 hpl
 
-Date: Feb 19, 2014
+Date: Feb 28, 2014
 
 Introduction
 ============
@@ -167,7 +167,9 @@ Block --------------------------------------------------------------------------
 |---------------------------------------------------------------------------------|
 
 
-The next admonition features a title "Note, eventually!".
+The next admonition features a title "Note, eventually!" (the comma
+must be removed in the mdfbox admon also in graybox2 if
+code is present).
 
 
 

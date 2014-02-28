@@ -594,11 +594,6 @@ passing it to article class \MessageBreak
                        {\normalfont\normalsize\itshape}}
 % hpl redefinition, with boldface and smaller spacing (for TCSE6, 4th ed.):
 \renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
-                       {-12\p@ \@plus -4\p@ \@minus -4\p@}%
-                       {-0.5em \@plus -0.22em \@minus -0.1em}%
-                       {\normalfont\normalsize\bfseries}}
-% hpl redefinition, with boldface (for TCSE6, 4th ed.):
-\renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
                        {-6\p@ \@plus -4\p@ \@minus -4\p@}%
                        {-0.5em \@plus -0.22em \@minus -0.1em}%
                        {\normalfont\normalsize\bfseries}}
