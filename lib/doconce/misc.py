@@ -182,6 +182,8 @@ pycod2. Otherwise it must be a mapping for each envir:
      """absolute: exercises numbered as 1, 2, ...
 chapter: exercises numbered as 1.1, 1.2, ... , 3.1, 3.2, etc.
          with a chapter prefix."""),
+    ('--latex_subex_header_postfix=',
+     'Default: ). Gives headers a), b), etc. Can be set to period, colon, etc.'),
     ('--latex_double_hyphen',
      """Replace single dash - by double dash -- in LaTeX output.
 Somewhat intelligent, but may give unwanted edits. Use with great care!"""),
@@ -1141,11 +1143,16 @@ def copy_latex_packages(packages):
     missing_files = []
     import commands
     for style in packages:
-        failure, output = commands.getstatusoutput('kpsewhich %s.sty' % style)
+        stem, ext = os.path.splitext(style)
+        if ext == '':
+            style += '.sty'
+        failure, output = commands.getstatusoutput('kpsewhich %s' % style)
         if output == '':
-            missing_files.append(style + '.sty')
+            missing_files.append(style)
     if missing_files:
         # Copy zipfile with styles to current dir
+        print '*** missing style files:'
+        print '   ', ', '.join(missing_files)
         import doconce
         doconce_dir = os.path.dirname(doconce.__file__)
         doconce_datafile = os.path.join(doconce_dir, datafile)
@@ -1479,6 +1486,13 @@ download preprocess from http://code.google.com/p/preprocess""")
     filestr = cpattern.sub(r'{\\fontsize{%spt}{%spt}\\%s!\g<1>!}\g<2>' %
                            (fontsize, fontsize, verb_command), filestr)
     '''
+    # \Verb!...! does not cause linebreak in latex, shift to \texttt{}
+    # where possible since this will reduce overfull hboxes
+    filestr = re.sub(r'\{\\Verb!([^{}_$\^#%\\]+?)!\}',
+                     r'\\texttt{\g<1>}', filestr)
+    filestr = re.sub(r'\{\\protect\s*\\Verb!([^{}_$\^#%\\]+?)!\}',
+                     r'\\texttt{\g<1>}', filestr)
+
     f = open(output_filename, 'w')
     f.write(filestr)
     f.close()
@@ -4811,7 +4825,10 @@ _replacements = [
     (r'"([^"]+?)":\s*"[^"]+?"', r'\g<1>'),  # links
     (r"^#.*$", "", re.MULTILINE),
     (r"(idx|label|ref|cite)\{.*?\}", ""),
+    (r"cite\[.+?\]\{.+?\}", ""),
     (r"refch\[.*?\]\[.*?\]\[.*?\]", "", re.DOTALL),
+    (r'^ *\|[\-rlc]+?\|', '', re.MULTILINE),
+    (r' +\| +', ' '),
     ('<linebreak>', ''),
     (r"={3,}",  ""),
     (r'`[^ ][^`]*?`', ""),
@@ -4969,6 +4986,49 @@ def _do_regex_replacements(text, replacements, verbose=0):
             print text
     return text
 
+def _do_fixes_4MSWord(text):
+    t = text  # short cut
+    # e.g., can go to g.,
+    t = t.replace(', g.,', '')
+    t = t.replace('ref[', '')
+    t = t.replace('][', '')
+    t = t.replace(']', '')
+    t = t.replace('[', '')
+    t = t.replace(']', '')
+    t = t.replace('*', '')
+    t = t.replace('|', '')
+    t = t.replace('()', '')
+    t = t.replace('(-)', '')
+    t = t.replace(r'\noindent', '')
+    t = re.sub(r',\s+,', ' ', t)
+    t = re.sub(r'^\. +', '', t, flags=re.MULTILINE)
+    t = re.sub(r'^\, +', '', t, flags=re.MULTILINE)
+    t = re.sub(r' +,\.', '.', t)
+    t = re.sub(r' +-\.', '.', t)
+    t = re.sub(r'\([, ]*\)', ' ', t)
+    t = re.sub(r'([A-Za-z])\s+, +', r'\1, ', t)
+    #return t
+    t = re.sub(r'([A-Za-z]) +\. +', r'\1. ', t)
+    t = re.sub(r'([A-Za-z]) +\.', r'\1.', t)
+    t = re.sub(r'([A-Za-z]) +:', r'\1:', t)
+    t = re.sub(r'^ +([A-Z])', r'\1', t, flags=re.MULTILINE)
+    # too complicated to remove emphasize: t = re.sub(r'(^| +)\*(.+?)\*[, \n.]', r' \2 ', t, flags=re.DOTALL|re.MULTILINE)
+    t = re.sub(r'^\s+\*\s+', '', t)
+    t = re.sub(r'^ +', '', t, flags=re.MULTILINE)
+    t = re.sub(r'^\.\n', '\n', t, flags=re.MULTILINE)
+    t = re.sub(r'  +', ' ', t)
+    t = re.sub(r'\\begin\{.+?\}', '', t)
+    t = re.sub(r'\\end\{.+?\}', '', t)
+    # Remove space above paragraphs starting with lower case
+    t = re.sub(r'\n\n+([a-z])', r' \1', t)
+    # Remove newlines at the end of text (to help word)
+    # (this might not be desired for grepping in the stripped file)
+    if not '--dont_remove_newlines' in sys.argv:
+        t = re.sub(r'([A-Za-z0-9,.:!?)])\n(?=[^\n])', '\g<1> ', t)
+
+    return t
+
+
 def _spellcheck(filename, dictionaries=['.dict4spell.txt'], newdict=None,
                 remove_multiplicity=False, strip_file='.strip'):
     """
@@ -5070,10 +5130,11 @@ def _spellcheck(filename, dictionaries=['.dict4spell.txt'], newdict=None,
     text = _do_regex_replacements(text, replacements, verbose)
     #print 'Text after regex replacements:\n', text
 
+    text = _do_fixes_4MSWord(text)
+
     # Write modified text to scratch file and run ispell
     scratchfile = 'tmp_stripped_%s' % filename
     f = open(scratchfile, 'w')
-    text = text.replace('  ', ' ').replace('\n\n', '\n')
     f.write(text)
     f.close()
     personal_dictionaries = []
@@ -5548,7 +5609,13 @@ def ref_external():
     f.close()
 
 def _usage_latex_problems():
-    print 'doconce latex_problems mydoc.log [overfull-hbox-limit]'
+    print 'doconce latex_problems mydoc.log [overfull-hbox-limit --texcode]'
+    print """
+Interpret the .log file and write out latex problems related to
+undefined references, multiply defined labels, and overfull hboxes.
+The lower limit for overfull hboxes can be specified as an integer.
+--texcode causes the problematic lines in overfull hboxes to be printed.
+"""
 
 def latex_problems():
     if len(sys.argv) < 2:
@@ -5566,6 +5633,14 @@ def latex_problems():
     f = open(filename, 'r')
     lines = f.readlines()
     f.close()
+
+    ok_overfull_hboxes = []
+    # Springer T2 will have some overfull hboxes for chapter headings,
+    # remove these from the report 120.1 and 30.8
+    t2 = 't2do.sty' in ''.join(lines)
+    if t2:
+        ok_overfull_hboxes += ['120.1', '30.8']
+
     multiply_defined_labels = []
     multiply_defined_labels_pattern = r"LaTeX Warning: Label `(.+?)' multiply defined"
     undefined_references = []
@@ -5581,7 +5656,8 @@ def latex_problems():
             undefined_references.append((m.group(1), m.group(2)))
         m = re.search(overfull_hboxes_pattern, line)
         if m:
-            overfull_hboxes.append((float(m.group(1)), m.group(2).strip()))
+            overfull_hboxes.append(
+                ('%.1f' % float(m.group(1)), m.group(2).strip()))
     problems = False
     if multiply_defined_labels:
         problems = True
@@ -5594,11 +5670,24 @@ def latex_problems():
         for ref, page in undefined_references:
             print '    ', ref, 'on page', page
     if overfull_hboxes:
+        # Load .tex file
+        f = open(filename[:-4] + '.tex', 'r')
+        texfile = f.readlines()
+        f.close()
+        texcode = '--texcode' in sys.argv
         problems = True
         print "\nOverfull hbox'es:"
         for npt, at_lines in overfull_hboxes:
-            if npt > overfull_hbox_limit:
-                print '    ', '%7.1f' % npt, 'lines', at_lines
+            if float(npt) > overfull_hbox_limit and npt not in ok_overfull_hboxes:
+                print '    ', npt, 'lines', at_lines
+                if texcode:
+                    line_range = [int(line)-1 for line in at_lines.split('--')]
+                    if line_range[1] - line_range[0] < 4 and r'\end' in texfile[line_range[1]]:
+                        # Print more surroundings above
+                        print '\n*** printing 6 lines above problem line:'
+                        print ''.join(texfile[line_range[0]-6:line_range[1]+1])
+                    else:
+                        print '\n', ''.join(texfile[line_range[0]:line_range[1]+1])
 
     if not problems:
         print 'no serious LaTeX problems found in %s!' % filename

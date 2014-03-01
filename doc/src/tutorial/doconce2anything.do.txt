@@ -430,6 +430,18 @@ Going from `ptex2tex` format to standard LaTeX format is enabled by
 either the `ptex2tex` program or Doconce's (simplified) version of it:
 `doconce ptex2tex`. Details are given below.
 
+!bnotice Information on typesetting of inline verbatim
+The `ptex2tex` and the `doconce ptex2tex` programs take inline verbatim
+code, typeset with backticks in Doconce, and translate this to
+
+!bc
+\Verb!text!
+!ec
+Thereafter, if `text` does not contain illegal characters for the `\texttt`
+command, the latter is used instead since then LaTeX can insert
+linebreaks in the inline verbatim text and hence avoid overfull hboxes.
+!enotice
+
 # Note: putting code blocks inside a list is not successful in many
 # formats - the text may be messed up. A better choice is a paragraph
 # environment, as used here.
