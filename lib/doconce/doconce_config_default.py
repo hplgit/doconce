@@ -63,6 +63,7 @@ latex_no_program_footnotelink = False
 latex_admon_title_no_period = False
 #latex_admon_envir_map = 
 #latex_exercise_numbering = 
+#latex_subex_header_postfix = 
 latex_double_hyphen = False
 verbose = False
 examples_as_exercises = False

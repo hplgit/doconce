@@ -5,6 +5,9 @@
 % * redefinition of section, figure, table counters
 % * utf8 is loaded instead of latin1
 % * no itshape, but larger font in subsection
+% * paragraph has sf bold font (originally, t2 relies on svmono paragrah,
+%      but a significantly modified svmono paragraph is used here in this t2)
+% * definition of \subex for headings in Doconce subexercises
 % * no makefntext as that construction interferes with
 %   mdframed frames, but using the footmisc package instead
 % (search for hpl to see the modifications compared to standard t2.sty)
@@ -199,6 +202,17 @@
                        {11.5\p@ \@plus 3\p@ \@minus 3\p@}%
                        {\sffamily\fontsize{10pt}{12.5pt}\selectfont\bfseries
                         \rightskip=\z@ \@plus 8em\pretolerance=10000 }}
+% hpl redefinition, with boldface and smaller spacing (for TCSE6, 4th ed.):
+% (taken from svmondo.cls, but sffamily font replaces bfseries for t2)
+\renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
+                       {-6\p@ \@plus -4\p@ \@minus -4\p@}%
+                       {-0.5em \@plus -0.22em \@minus -0.1em}%
+                       {\sffamily\normalsize\bfseries}}
+% hpl: special definition of Doconce subexercise heading
+\newcommand\subex{\@startsection{paragraph}{4}{\z@}%
+                 {-6\p@ \@plus -4\p@ \@minus -4\p@}%
+                 {-0.5em \@plus -0.22em \@minus -0.1em}%
+                 {\sffamily\normalsize\bfseries}}
 
 % original lines, leading to arabic numbering also in appendices:
 %\def\thesection{\arabic{chapter}.\arabic{section}}
@@ -495,8 +509,8 @@ to\hsize{\sffamily\fontsize{8.5pt}{8.5pt}\selectfont\rlap{\thepage}\hfil
 % instead since it works with the mdframed package.
 % The result is approx the same spacing as that produced by makefntext above.
 \usepackage[hang]{footmisc}
-\renewcommand{\footnotemargin}{0pt}
-\renewcommand{\footnotelayout}{\hspace{2pt}}  % 1pt gives smaller space between footnote and text
+\renewcommand{\footnotemargin}{5pt}
+\renewcommand{\footnotelayout}{\hspace{1pt}}
 
 
 

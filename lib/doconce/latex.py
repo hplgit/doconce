@@ -245,6 +245,12 @@ def latex_code(filestr, code_blocks, code_block_types,
                         target, target + insert_listofexercises)
 
 
+    # Subexercise headings should utilize \subex{} and not \paragraph{}
+    subex_header_postfix = option('latex_subex_header_postfix=', ')')
+    filestr = re.sub(r'\\paragraph\{([a-z])\)\}',
+                     r'\subex{\g<1>%s}' % subex_header_postfix,
+                     filestr)
+
     # Avoid Filename: as a new paragraph with indentation
     filestr = re.sub(r'^(Filenames?): +?\\code\{',
                      r'\\noindent \g<1>: \code{', filestr,
@@ -1211,7 +1217,7 @@ def latex_box(block, format, text_size='normal'):
     return r"""
 \begin{center}
 \begin{Sbox}
-\begin{minipage}{0.85\textwidth}
+\begin{minipage}{0.85\linewidth}
 %s
 \end{minipage}
 \end{Sbox}
@@ -2404,6 +2410,25 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 \usepackage{chngcntr}
 \counterwithin{doconceexercisecounter}{chapter}
 """
+            if latex_style != 'Springer_T2':
+                INTRO['latex'] += r"""
+
+% ------ header in subexercises ------
+%\newcommand{\subex}[1]{\paragraph{#1}}
+\makeatletter
+% 1.5ex is the spacing above the header, 0.5em the spacing after subex title
+\renewcommand\subex{\@startsection{paragraph}{4}{\z@}%
+                    {1.5ex\@plus1ex \@minus.2ex}%
+                    {-0.5em}%
+                    {\normalfont\normalsize\bfseries}}
+\makeatother
+
+"""
+            else:
+                INTRO['latex'] += r"""
+% \subex{} is defined in t2do.sty
+"""
+
             break
 
     if latex_style not in ("Koma_Script", "Springer_T2"):
