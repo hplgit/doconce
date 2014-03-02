@@ -4990,32 +4990,25 @@ def _do_regex_replacements(text, replacements, verbose=0):
 
 def _do_fixes_4MSWord(text):
     t = text  # short cut
-    # e.g., can go to g.,
-    t = t.replace(', g.,', '')
-    t = t.replace('ref[', '')
-    t = t.replace('][', '')
-    t = t.replace(']', '')
-    t = t.replace('[', '')
-    t = t.replace(']', '')
-    t = t.replace('*', '')
-    t = t.replace('|', '')
-    t = t.replace('()', '')
-    t = t.replace('(-)', '')
-    t = t.replace(r'\noindent', '')
+    # Deal with special strange left-overs from removing ref, cite, etc.
+    # , , ,
     t = re.sub(r',\s+,', ' ', t)
+    # .  period at the beginning of a line
     t = re.sub(r'^\. +', '', t, flags=re.MULTILINE)
+    #,   comma at the beginning of a line
     t = re.sub(r'^\, +', '', t, flags=re.MULTILINE)
+    # text like   .,
     t = re.sub(r' +,\.', '.', t)
+    # or   -.
     t = re.sub(r' +-\.', '.', t)
+    # and ( ,  ,   , , )
     t = re.sub(r'\([, ]*\)', ' ', t)
-    t = re.sub(r'([A-Za-z])\s+, +', r'\1, ', t)
-    #return t
-    t = re.sub(r'([A-Za-z]) +\. +', r'\1. ', t)
-    t = re.sub(r'([A-Za-z]) +\.', r'\1.', t)
-    t = re.sub(r'([A-Za-z]) +:', r'\1:', t)
+    # initial spaces on a line
     t = re.sub(r'^ +([A-Z])', r'\1', t, flags=re.MULTILINE)
     # too complicated to remove emphasize: t = re.sub(r'(^| +)\*(.+?)\*[, \n.]', r' \2 ', t, flags=re.DOTALL|re.MULTILINE)
-    t = re.sub(r'^\s+\*\s+', '', t)
+    t = re.sub(r'^\s+\*\s+', '', t, flags=re.MULTILINE)
+    t = re.sub(r' +\)', ')', t)
+    t = t.replace(':)', ')')
     t = re.sub(r'^ +', '', t, flags=re.MULTILINE)
     t = re.sub(r'^\.\n', '\n', t, flags=re.MULTILINE)
     t = re.sub(r'  +', ' ', t)
@@ -5027,6 +5020,27 @@ def _do_fixes_4MSWord(text):
     # (this might not be desired for grepping in the stripped file)
     if not '--dont_remove_newlines' in sys.argv:
         t = re.sub(r'([A-Za-z0-9,.:!?)])\n(?=[^\n])', '\g<1> ', t)
+    # Do these after we have joined lines
+    # spaces before comma
+    t = re.sub(r'([A-Za-z])[:;?.]?\s+, +', r'\1, ', t)
+    # spaces before period
+    t = re.sub(r'([A-Za-z])[:;?.]? +\. +', r'\1. ', t)
+    # spaces before period
+    t = re.sub(r'([A-Za-z])[:;?.]? +\.', r'\1.', t)
+    # spaces before colon
+    t = re.sub(r'([A-Za-z])[:;?.]? +:', r'\1:', t)
+
+    t = t.replace(', g.,', '')
+    t = t.replace('ref[', '')
+    t = t.replace('][', '')
+    t = t.replace(']', '')
+    t = t.replace('[', '')
+    t = t.replace(']', '')
+    t = t.replace('*', '')
+    t = t.replace('|', '')
+    t = t.replace('()', '')
+    t = t.replace('(-)', '')
+    t = t.replace(r'\noindent', '')
 
     return t
 
@@ -5672,11 +5686,12 @@ def latex_problems():
         for ref, page in undefined_references:
             print '    ', ref, 'on page', page
     if overfull_hboxes:
-        # Load .tex file
-        f = open(filename[:-4] + '.tex', 'r')
-        texfile = f.readlines()
-        f.close()
         texcode = '--texcode' in sys.argv
+        if texcode:
+            # Load .tex file
+            f = open(filename[:-4] + '.tex', 'r')
+            texfile = f.readlines()
+            f.close()
         problems = True
         print "\nOverfull hbox'es:"
         for npt, at_lines in overfull_hboxes:
@@ -5772,7 +5787,9 @@ def capitalize():
         'Pysketcher',
         ]
     # This functionality is not well implemented so instead of finding
-    # a perfect solution we fix well-known special cases
+    # a perfect solution we fix well-known special cases.
+    # A better software solution would be to read a user-made file
+    # with fixes. The fixes below are special for a book project...
     cap_words_fix = [
         ('exer. ref{', 'Exer. ref{'),
         ('exer. (_', 'Exer. (_'),  # latex2doconce external reference
@@ -5795,13 +5812,23 @@ def capitalize():
         ('mac os x', 'Mac OS X'),
         ('midpoint integration', 'Midpoint integration'),
         ('midpoint rule', 'Midpoint rule'),
+        ('trapozoidal integration', 'Trapozoidal integration'),
+        ('trapozoidal rule', 'Trapozoidal rule'),
         ('world wide web', 'World Wide Web'),
         ('cODE', 'code'),
-        ('runge-kutta', 'Runge-Kutta'),
         ('on windows', 'on Windows'),
         ('in windows', 'in Windows'),
         ('under windows', 'under Windows'),
+        ('on mac', 'on Mac'),
+        ('in mac', 'in Mac'),
+        ('under mac', 'under Mac'),
+        ('a mac', 'a Mac'),
         ("python's", "Python's"),
+        ("forward Euler", "Forward Euler"),
+        ("backward Euler", "Backward Euler"),
+        ("crank-nicolson", "Crank-Nicolson"),
+        ("adams-bashforth", "Adams-Bashforth"),
+        ('runge-kutta', 'Runge-Kutta'),
         ]
     for name in 'Newton', 'Lagrange', 'Einstein', 'Poisson', 'Taylor', 'Gibb', \
             'Heun', :
