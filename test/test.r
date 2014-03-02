@@ -67083,6 +67083,27 @@ distributed values in an interval $[p,q]$. The `numpy` function
 a = np.linspace(p, q, n)
 !ec
 
+|-------------c-----------------------------------------c-------------------------------|
+| Construction              | Meaning                                                   |
+|-------------l-----------------------------------------l-------------------------------|
+| `array(ld)`               | copy list data `ld` to a `numpy` array                    |
+| `asarray(d)`              | make array of data `d` (no data copy if already array)    |
+| `zeros(n)`                | make a `float` vector/array of length `n`, with zeros     |
+| `zeros(n, int)`           | make an `int` vector/array of length `n` with zeros       |
+| `zeros((m,n))`            | make a two-dimensional `float` array with shape (`m`,`n`) |
+| `zeros_like(x)`           | make array of same shape and element type as `x`          |
+| `linspace(a,b,m)`         | uniform sequence of `m` numbers in $[a,b]$                |
+| `a.shape`                 | tuple containing `a`'s shape                              |
+| `a.size`                  | total no of elements in `a`                               |
+| `len(a)`                  | length of a one-dim. array `a` (same as `a.shape[0]`)     |
+| `a.dtype`                 | the type of elements in `a`                               |
+| `a.reshape(3,2)`          | return `a` reshaped as $3\times 2$ array                  |
+| `a[i]`                    | vector indexing                                           |
+| `a[i,j]`                  | two-dim. array indexing                                   |
+| `a[1:k]`                  | slice: reference data with indices `1`,\ldots,`k-1`       |
+| `a[1:8:3]`                | slice: reference data with indices `1`, `4`,\ldots,`7`    |
+| `b = a.copy()`            | copy an array                                             |
+|---------------------------------------------------------------------------------------|
 
 ========= Storing results in data files =========
 
@@ -67916,7 +67937,7 @@ following assumptions and features:
 
 \noindent
 
-\begin{notice_mdfboxadmon}[Remarks.]
+\begin{notice_mdfboxadmon}[Remarks]
 
 \begin{enumerate}
 \item There is actually an
@@ -67946,7 +67967,7 @@ and \emph{NumPy for MATLAB Users}, all accessible at \href{{http://scipy.org}}{s
 
 
 
-\begin{notice_mdfboxadmon}[Remarks on importing NumPy.]
+\begin{notice_mdfboxadmon}[Remarks on importing NumPy]
 The statement
 
 \bpycod
@@ -68014,6 +68035,41 @@ a = np.linspace(p, q, n)
 \epycod
 
 
+\begin{center}
+{\small   % Springer T2 style: small table font and more vspace
+
+\vspace{4mm}
+
+\begin{tabular}{ll}
+\hline
+\multicolumn{1}{c}{ Construction } & \multicolumn{1}{c}{ Meaning } \\
+\hline
+\code{array(ld)}                                                    & copy list data \code{ld} to a \code{numpy} array                    \\
+\code{asarray(d)}                                                   & make array of data \code{d} (no data copy if already array)         \\
+\code{zeros(n)}                                                     & make a \code{float} vector/array of length \code{n}, with zeros     \\
+\code{zeros(n, int)}                                                & make an \code{int} vector/array of length \code{n} with zeros       \\
+\code{zeros((m,n))}                                                 & make a two-dimensional \code{float} array with shape (\code{m},`n`) \\
+\code{zeros_like(x)}                                                & make array of same shape and element type as \code{x}               \\
+\code{linspace(a,b,m)}                                              & uniform sequence of \code{m} numbers in $[a,b]$                     \\
+\code{a.shape}                                                      & tuple containing \code{a}'s shape                                   \\
+\code{a.size}                                                       & total no of elements in \code{a}                                    \\
+\code{len(a)}                                                       & length of a one-dim. array \code{a} (same as \code{a.shape[0]})     \\
+\code{a.dtype}                                                      & the type of elements in \code{a}                                    \\
+\code{a.reshape(3,2)}                                               & return \code{a} reshaped as $3\times 2$ array                       \\
+\code{a[i]}                                                         & vector indexing                                                     \\
+\code{a[i,j]}                                                       & two-dim. array indexing                                             \\
+\code{a[1:k]}                                                       & slice: reference data with indices \code{1},\ldots,`k-1`            \\
+\code{a[1:8:3]}                                                     & slice: reference data with indices \code{1}, \code{4},\ldots,`7`    \\
+\code{b = a.copy()}                                                 & copy an array                                                       \\
+\hline
+\end{tabular}
+
+\vspace{4mm}
+
+}
+\end{center}
+
+\noindent
 \chapter{Storing results in data files}
 
 We need to test spaces around footnotes for 2-digit footnotes, which
@@ -68858,7 +68914,7 @@ following assumptions and features:
 
 \noindent
 
-\begin{notice_mdfboxadmon}[Remarks.]
+\begin{notice_mdfboxadmon}[Remarks]
 
 \begin{enumerate}
 \item There is actually an
@@ -68888,7 +68944,7 @@ and \emph{NumPy for MATLAB Users}, all accessible at \href{{http://scipy.org}}{s
 
 
 
-\begin{notice_mdfboxadmon}[Remarks on importing NumPy.]
+\begin{notice_mdfboxadmon}[Remarks on importing NumPy]
 The statement
 
 \begin{shadedquoteBlue}
@@ -68984,6 +69040,41 @@ a = np.linspace(p, q, n)
 \noindent
 
 
+\begin{center}
+{\small   % Springer T2 style: small table font and more vspace
+
+\vspace{4mm}
+
+\begin{tabular}{ll}
+\hline
+\multicolumn{1}{c}{ Construction } & \multicolumn{1}{c}{ Meaning } \\
+\hline
+\texttt{array(ld)}                                                    & copy list data \texttt{ld} to a \texttt{numpy} array                    \\
+\texttt{asarray(d)}                                                   & make array of data \texttt{d} (no data copy if already array)         \\
+\texttt{zeros(n)}                                                     & make a \texttt{float} vector/array of length \texttt{n}, with zeros     \\
+\texttt{zeros(n, int)}                                                & make an \texttt{int} vector/array of length \texttt{n} with zeros       \\
+\texttt{zeros((m,n))}                                                 & make a two-dimensional \texttt{float} array with shape (\texttt{m},`n`) \\
+{\Verb!zeros_like(x)!}                                                & make array of same shape and element type as \texttt{x}               \\
+\texttt{linspace(a,b,m)}                                              & uniform sequence of \texttt{m} numbers in $[a,b]$                     \\
+\texttt{a.shape}                                                      & tuple containing \texttt{a}'s shape                                   \\
+\texttt{a.size}                                                       & total no of elements in \texttt{a}                                    \\
+\texttt{len(a)}                                                       & length of a one-dim. array \texttt{a} (same as \texttt{a.shape[0]})     \\
+\texttt{a.dtype}                                                      & the type of elements in \texttt{a}                                    \\
+\texttt{a.reshape(3,2)}                                               & return \texttt{a} reshaped as $3\times 2$ array                       \\
+\texttt{a[i]}                                                         & vector indexing                                                     \\
+\texttt{a[i,j]}                                                       & two-dim. array indexing                                             \\
+\texttt{a[1:k]}                                                       & slice: reference data with indices \texttt{1},\ldots,`k-1`            \\
+\texttt{a[1:8:3]}                                                     & slice: reference data with indices \texttt{1}, \texttt{4},\ldots,`7`    \\
+\texttt{b = a.copy()}                                                 & copy an array                                                       \\
+\hline
+\end{tabular}
+
+\vspace{4mm}
+
+}
+\end{center}
+
+\noindent
 \chapter{Storing results in data files}
 
 We need to test spaces around footnotes for 2-digit footnotes, which
@@ -92961,8 +93052,8 @@ output in movies.txt
 + bash -x make.sh
 + name=Springer_T2_book
 + rm -f 'tmp_*'
-+ system doconce format pdflatex Springer_T2_book CHAPTER=chapter BOOK=book APPENDIX=appendix -DPRIMER_BOOK ALG=code --encoding=utf-8 --device=paper --latex_exercise_numbering=chapter --latex_admon_color=1,1,1 --latex_style=Springer_T2 --latex_title_layout=titlepage --latex_list_of_exercises=loe
-+ doconce format pdflatex Springer_T2_book CHAPTER=chapter BOOK=book APPENDIX=appendix -DPRIMER_BOOK ALG=code --encoding=utf-8 --device=paper --latex_exercise_numbering=chapter --latex_admon_color=1,1,1 --latex_style=Springer_T2 --latex_title_layout=titlepage --latex_list_of_exercises=loe
++ system doconce format pdflatex Springer_T2_book CHAPTER=chapter BOOK=book APPENDIX=appendix -DPRIMER_BOOK ALG=code --encoding=utf-8 --device=paper --latex_exercise_numbering=chapter --latex_admon_color=1,1,1 --latex_admon=mdfbox --latex_style=Springer_T2 --latex_title_layout=titlepage --latex_list_of_exercises=loe --latex_table_align=center --latex_admon_title_no_period
++ doconce format pdflatex Springer_T2_book CHAPTER=chapter BOOK=book APPENDIX=appendix -DPRIMER_BOOK ALG=code --encoding=utf-8 --device=paper --latex_exercise_numbering=chapter --latex_admon_color=1,1,1 --latex_admon=mdfbox --latex_style=Springer_T2 --latex_title_layout=titlepage --latex_list_of_exercises=loe --latex_table_align=center --latex_admon_title_no_period
 
 Summary of papers
 -----------------
@@ -93536,22 +93627,23 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  )
 (see the transcript file for additional information){/usr/share/texmf/fonts/enc
-/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/share
-/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm
--mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}</usr/share/texmf/fo
+/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/sh
+are/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm
+/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc}</usr/share/texmf/fo
 nts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx9.pf
 b></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/ty
 pe1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></us
-r/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/pub
-lic/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/t
-exmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr
-9.pfb></usr/share/texmf/fonts/type1/public/lm/lmri12.pfb></usr/share/texmf/font
-s/type1/public/lm/lmri9.pfb></usr/share/texmf/fonts/type1/public/lm/lmss12.pfb>
-</usr/share/texmf/fonts/type1/public/lm/lmss9.pfb></usr/share/texmf/fonts/type1
-/public/lm/lmssbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></us
-r/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/pub
-lic/lm/lmtt12.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt8.pfb></usr/share
-/texmf/fonts/type1/public/lm/lmtt9.pfb>
+r/share/texmf/fonts/type1/public/lm/lmmi9.pfb></usr/share/texmf/fonts/type1/pub
+lic/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/
+texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/type1/public/lm/lm
+r8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf/fonts
+/type1/public/lm/lmri12.pfb></usr/share/texmf/fonts/type1/public/lm/lmri9.pfb><
+/usr/share/texmf/fonts/type1/public/lm/lmss12.pfb></usr/share/texmf/fonts/type1
+/public/lm/lmss9.pfb></usr/share/texmf/fonts/type1/public/lm/lmssbx10.pfb></usr
+/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/pub
+lic/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy9.pfb></usr/share/
+texmf/fonts/type1/public/lm/lmtt12.pfb></usr/share/texmf/fonts/type1/public/lm/
+lmtt8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
 Output written on Springer_T2_book.pdf (18 pages, ).
 Transcript written on Springer_T2_book.log.
 + '[' 0 -ne 0 ']'
@@ -94100,22 +94192,23 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  )
 (see the transcript file for additional information){/usr/share/texmf/fonts/enc
-/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/share
-/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm
--mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}</usr/share/texmf/fo
+/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/sh
+are/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm
+/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc}</usr/share/texmf/fo
 nts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx9.pf
 b></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/ty
 pe1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></us
-r/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/pub
-lic/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/t
-exmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr
-9.pfb></usr/share/texmf/fonts/type1/public/lm/lmri12.pfb></usr/share/texmf/font
-s/type1/public/lm/lmri9.pfb></usr/share/texmf/fonts/type1/public/lm/lmss12.pfb>
-</usr/share/texmf/fonts/type1/public/lm/lmss9.pfb></usr/share/texmf/fonts/type1
-/public/lm/lmssbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></us
-r/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/pub
-lic/lm/lmtt12.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt8.pfb></usr/share
-/texmf/fonts/type1/public/lm/lmtt9.pfb>
+r/share/texmf/fonts/type1/public/lm/lmmi9.pfb></usr/share/texmf/fonts/type1/pub
+lic/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/
+texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/type1/public/lm/lm
+r8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf/fonts
+/type1/public/lm/lmri12.pfb></usr/share/texmf/fonts/type1/public/lm/lmri9.pfb><
+/usr/share/texmf/fonts/type1/public/lm/lmss12.pfb></usr/share/texmf/fonts/type1
+/public/lm/lmss9.pfb></usr/share/texmf/fonts/type1/public/lm/lmssbx10.pfb></usr
+/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/pub
+lic/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy9.pfb></usr/share/
+texmf/fonts/type1/public/lm/lmtt12.pfb></usr/share/texmf/fonts/type1/public/lm/
+lmtt8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
 Output written on Springer_T2_book.pdf (21 pages, ).
 Transcript written on Springer_T2_book.log.
 + '[' 0 -ne 0 ']'
@@ -94619,21 +94712,23 @@ LaTeX Warning: There were undefined references.
 
  )
 (see the transcript file for additional information){/usr/share/texmf/fonts/enc
-/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/share
-/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm
--mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}</usr/share/texmf/fo
+/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/sh
+are/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm
+/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc}</usr/share/texmf/fo
 nts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.p
 fb></usr/share/texmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/t
-ype1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></us
-r/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/pub
-lic/lm/lmr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/te
-xmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf/fonts/type1/public/lm/lmri
-12.pfb></usr/share/texmf/fonts/type1/public/lm/lmri9.pfb></usr/share/texmf/font
-s/type1/public/lm/lmss12.pfb></usr/share/texmf/fonts/type1/public/lm/lmss9.pfb>
-</usr/share/texmf/fonts/type1/public/lm/lmssbx10.pfb></usr/share/texmf/fonts/ty
-pe1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></us
-r/share/texmf/fonts/type1/public/lm/lmtt12.pfb></usr/share/texmf/fonts/type1/pu
-blic/lm/lmtt8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
+ype1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi9.pfb></us
+r/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/pub
+lic/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/t
+exmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr
+9.pfb></usr/share/texmf/fonts/type1/public/lm/lmri12.pfb></usr/share/texmf/font
+s/type1/public/lm/lmri9.pfb></usr/share/texmf/fonts/type1/public/lm/lmss12.pfb>
+</usr/share/texmf/fonts/type1/public/lm/lmss9.pfb></usr/share/texmf/fonts/type1
+/public/lm/lmssbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></us
+r/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/pub
+lic/lm/lmsy9.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb></usr/share
+/texmf/fonts/type1/public/lm/lmtt8.pfb></usr/share/texmf/fonts/type1/public/lm/
+lmtt9.pfb>
 Output written on Springer_T2_book.pdf (21 pages, ).
 Transcript written on Springer_T2_book.log.
 + '[' 0 -ne 0 ']'
