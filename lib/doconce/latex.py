@@ -640,6 +640,7 @@ def latex_table(table):
         table_align = (r'\begin{quote}', r'\end{quote}')
     elif latex_table_align == 'center':
         table_align = (r'\begin{center}', r'\end{center}')
+    latex_style = option('latex_style=', 'std')
 
     column_width = table_analysis(table['rows'])
 
@@ -664,8 +665,10 @@ def latex_table(table):
         print 'Table with rows', table['rows']
         _abort()
 
-    s = '\n' + table_align[0] + '\n' + \
-        r'\begin{tabular}{%s}' % column_spec + '\n'
+    s = '\n' + table_align[0] + '\n'
+    if latex_style == "Springer_T2":
+        s += '{\\small   % Springer T2 style: small table font and more vspace\n\n\\vspace{4mm}\n\n'
+    s += r'\begin{tabular}{%s}' % column_spec + '\n'
     for i, row in enumerate(table['rows']):
         if row == ['horizontal rule']:
             s += r'\hline' + '\n'
@@ -707,7 +710,10 @@ def latex_table(table):
 
             s += ' & '.join(row) + ' \\\\\n'
 
-    s += r'\end{tabular}' + '\n' + table_align[1] + '\n\n' + r'\noindent' + '\n'
+    s += r'\end{tabular}' + '\n'
+    if latex_style == "Springer_T2":
+        s += '\n\\vspace{4mm}\n\n}\n'
+    s += table_align[1] + '\n\n' + r'\noindent' + '\n'
     return s
 
 def latex_title(m):
