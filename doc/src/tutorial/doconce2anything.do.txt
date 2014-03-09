@@ -17,7 +17,7 @@ Terminal> doconce format format mydoc
 Producing HTML, Sphinx, and in particular LaTeX documents from
 Doconce sources requires a few commands. Often you want to
 produce several different formats. The relevant commands should
-then be placed in a script that acts as a "makefile".
+then be placed in a script that acts as a ``makefile''.
 
 The `doconce makefile` can be used to automatically generate
 such a makefile, more precisely a Python script `make.py`, which
@@ -39,17 +39,28 @@ and if something goes wrong, the script aborts.
 ===== Preprocessing =====
 
 The `preprocess` and `mako` programs are used to preprocess the
-file, and options to `preprocess` and/or `mako` can be added after the
-filename. For example,
+file. The Doconce program detects whether `preprocess` and/or `mako`
+statements are present and runs the corresponding programs, first
+`preprocess` and then `mako`.
+
+Options to `preprocess` and/or `mako` can be added after the
+filename with the syntax `-DMYVAR` or `MYVAR=True` for defining
+a variable `MYVAR`, or `-DMYVAR=val` or `MYVAR=val` for giving
+`MYVAR` the value `val`. For example,
 !bc sys
-Terminal> doconce format latex mydoc -Dextra_sections -DVAR1=5     # preprocess
-Terminal> doconce format latex yourdoc extra_sections=True VAR1=5  # mako
+Terminal> doconce format sphinx mydoc -Dextra_sections -DVAR1=5
+Terminal> doconce format sphinx mydoc extra_sections=True VAR1=5
 !ec
 The variable `FORMAT` is always defined as the current format when
-running `preprocess` or `mako`. That is, in the last example, `FORMAT` is
-defined as `latex`. Inside the Doconce document one can then perform
-format specific actions through tests like `#if FORMAT == "latex"`
-(for `preprocess`) or `% if FORMAT == "latex":` (for `mako`).
+running `preprocess` or `mako`. That is, in the above examples, `FORMAT` is
+defined as `sphinx`. Inside the Doconce document one can then perform
+format specific actions through tests like `#if FORMAT == "sphinx"`
+(for `preprocess`) or `% if FORMAT == "sphinx":` (for `mako`).
+
+The result of a Doconce file `mydoc.do.txt` after running `preprocess`
+is available in a file `tmp_preprocess__mydoc.do.txt`. Similarly,
+the result of running `mako` is available in
+`tmp_mako__mydoc.do.txt`.
 
 ===== Removal of inline comments =====
 
