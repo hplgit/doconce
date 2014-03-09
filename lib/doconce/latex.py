@@ -633,6 +633,15 @@ Movie \arabic{doconce:movie:counter}: %s
     return text
 
 def latex_table(table):
+    latex_table_align = option('latex_table_align=', 'quote')
+    if latex_table_align == 'left':
+        table_align = ('', '')
+    elif latex_table_align == 'quote':
+        table_align = (r'\begin{quote}', r'\end{quote}')
+    elif latex_table_align == 'center':
+        table_align = (r'\begin{center}', r'\end{center}')
+    latex_style = option('latex_style=', 'std')
+
     column_width = table_analysis(table['rows'])
 
     #ncolumns = max(len(row) for row in table['rows'])
@@ -656,7 +665,10 @@ def latex_table(table):
         print 'Table with rows', table['rows']
         _abort()
 
-    s = '\n' + r'\begin{quote}\begin{tabular}{%s}' % column_spec + '\n'
+    s = '\n' + table_align[0] + '\n'
+    if latex_style == "Springer_T2":
+        s += '{\\small   % Springer T2 style: small table font and more vspace\n\n\\vspace{4mm}\n\n'
+    s += r'\begin{tabular}{%s}' % column_spec + '\n'
     for i, row in enumerate(table['rows']):
         if row == ['horizontal rule']:
             s += r'\hline' + '\n'
@@ -698,7 +710,10 @@ def latex_table(table):
 
             s += ' & '.join(row) + ' \\\\\n'
 
-    s += r'\end{tabular}\end{quote}' + '\n\n' + r'\noindent' + '\n'
+    s += r'\end{tabular}' + '\n'
+    if latex_style == "Springer_T2":
+        s += '\n\\vspace{4mm}\n\n}\n'
+    s += table_align[1] + '\n\n' + r'\noindent' + '\n'
     return s
 
 def latex_title(m):
@@ -2415,12 +2430,13 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 
 % ------ header in subexercises ------
 %\newcommand{\subex}[1]{\paragraph{#1}}
+%\newcommand{\subex}[1]{\par\vspace{1.7mm}\noindent{\bf #1}\ \ }
 \makeatletter
 % 1.5ex is the spacing above the header, 0.5em the spacing after subex title
-\renewcommand\subex{\@startsection{paragraph}{4}{\z@}%
-                    {1.5ex\@plus1ex \@minus.2ex}%
-                    {-0.5em}%
-                    {\normalfont\normalsize\bfseries}}
+\newcommand\subex{\@startsection{paragraph}{4}{\z@}%
+                  {1.5ex\@plus1ex \@minus.2ex}%
+                  {-0.5em}%
+                  {\normalfont\normalsize\bfseries}}
 \makeatother
 
 """

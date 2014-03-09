@@ -1764,6 +1764,19 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 % --- end definition of \listofexercises command ---
 
 
+
+% ------ header in subexercises ------
+%\newcommand{\subex}[1]{\paragraph{#1}}
+%\newcommand{\subex}[1]{\par\vspace{1.7mm}\noindent{\bf #1}\ \ }
+\makeatletter
+% 1.5ex is the spacing above the header, 0.5em the spacing after subex title
+\newcommand\subex{\@startsection{paragraph}{4}{\z@}%
+                  {1.5ex\@plus1ex \@minus.2ex}%
+                  {-0.5em}%
+                  {\normalfont\normalsize\bfseries}}
+\makeatother
+
+
 % Make sure blank even-numbered pages before new chapters are
 % totally blank with no header
 \newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
@@ -2235,7 +2248,8 @@ with the preprocessor.
 
 
 
-\begin{quote}\begin{tabular}{lrr}
+\begin{quote}
+\begin{tabular}{lrr}
 \hline
 \multicolumn{1}{c}{ time } & \multicolumn{1}{c}{ velocity } & \multicolumn{1}{c}{ acceleration } \\
 \hline
@@ -2243,7 +2257,8 @@ with the preprocessor.
 2.0          & 1.376512     & 11.919       \\
 4.0          & 1.1E+1       & 14.717624    \\
 \hline
-\end{tabular}\end{quote}
+\end{tabular}
+\end{quote}
 
 \noindent
 \end{table}
@@ -2263,7 +2278,8 @@ Here is yet another table to test that we can handle more than
 one table:
 
 
-\begin{quote}\begin{tabular}{lll}
+\begin{quote}
+\begin{tabular}{lll}
 \hline
 \multicolumn{1}{c}{ time } & \multicolumn{1}{c}{ velocity } & \multicolumn{1}{c}{ acceleration } \\
 \hline
@@ -2271,7 +2287,8 @@ one table:
 1.0          & 1.376512     & 11.919       \\
 3.0          & 1.1E+1       & 14.717624    \\
 \hline
-\end{tabular}\end{quote}
+\end{tabular}
+\end{quote}
 
 \noindent
 And one with math headings (that are expanded and must be treated
@@ -2279,7 +2296,8 @@ accordingly), verbatim heading and entry, and no space around the pipe
 symbol:
 
 
-\begin{quote}\begin{tabular}{lrrr}
+\begin{quote}
+\begin{tabular}{lrrr}
 \hline
 \multicolumn{1}{c}{ $i$ } & \multicolumn{1}{c}{ $h_i$ } & \multicolumn{1}{c}{ $\bar T_i$ } & \multicolumn{1}{c}{ \code{L\_i} } \\
 \hline
@@ -2291,7 +2309,8 @@ symbol:
 5          & 51,000     & 270        & -0.0028    \\
 6          & 71,000     & 214        & \code{NaN} \\
 \hline
-\end{tabular}\end{quote}
+\end{tabular}
+\end{quote}
 
 \noindent
 And add one with verbatim headings (with underscores),
@@ -2299,7 +2318,8 @@ and rows starting with \code{|-} because of a negative number,
 and \code{|} right before and after verbatim word (with no space):
 
 
-\begin{quote}\begin{tabular}{rrrr}
+\begin{quote}
+\begin{tabular}{rrrr}
 \hline
 \multicolumn{1}{c}{ exact } & \multicolumn{1}{c}{ \code{v\_1} } & \multicolumn{1}{c}{ $a_i$ + \code{v\_2} } & \multicolumn{1}{c}{ \code{verb\_3\_} } \\
 \hline
@@ -2308,7 +2328,8 @@ and \code{|} right before and after verbatim word (with no space):
 10                 & 17.74              & -4.50              & 9.96               \\
 0                  & -9.19              & 4.13               & -0.26              \\
 \hline
-\end{tabular}\end{quote}
+\end{tabular}
+\end{quote}
 
 \noindent
 Finally, a table with math
@@ -2319,7 +2340,8 @@ and URLs.
 
 
 
-\begin{quote}\begin{tabular}{ccc}
+\begin{quote}
+\begin{tabular}{ccc}
 \hline
  \\
 \hline
@@ -2327,7 +2349,8 @@ $\mathcal{L}=0$                                                               & 
 $a=b$                                                                         & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0090.png} & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0095.png} \\
 $\nabla\cdot\bm{u} =0 $                                                       & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0100.png} & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0105.png} \\
 \hline
-\end{tabular}\end{quote}
+\end{tabular}
+\end{quote}
 
 \noindent
 
@@ -2390,13 +2413,13 @@ typeset as exercises. This is useful if one has solution
 environments as part of the example.
 
 
-\paragraph{a)}
+\subex{a)}
 State some problem.
 
 \paragraph{Solution.}
 The answer to this subproblem can be written here.
 
-\paragraph{b)}
+\subex{b)}
 State some other problem.
 
 \paragraph{Hint 1.}
@@ -2711,7 +2734,7 @@ center and radius. Plot each circle using the \code{circle} function
 above.
 
 
-\paragraph{a)}
+\subex{a)}
 Let $R$ be normally distributed and $(x_0,y_0)$ uniformly distributed.
 
 % --- begin hint in exercise ---
@@ -2736,11 +2759,11 @@ Here goes a full solution to part a).
 
 % --- end solution of exercise ---
 
-\paragraph{b)}
+\subex{b)}
 Let $R$ be uniformly distributed and $(x_0,y_0)$ normally distributed.
 \noindent Filename: \code{norm.py}.
 
-\paragraph{c)}
+\subex{c)}
 Let $R$ and $(x_0,y_0)$ be normally distributed.
 
 \noindent Filename: \code{circles.pdf}.
@@ -2799,7 +2822,7 @@ End of solution is here.
 % --- end solution of exercise ---
 
 
-\paragraph{a)}
+\subex{a)}
 Subexercises are numbered a), b), etc.
 
 % --- begin hint in exercise ---
@@ -2843,7 +2866,7 @@ With math in answer: $a=b$.
 
 % --- end answer of exercise ---
 
-\paragraph{b)}
+\subex{b)}
 Here goes the text for subexercise b).
 
 
@@ -2918,7 +2941,7 @@ lambda x: x+2
 % it is just typeset as it is written.
 
 
-\paragraph{a)}
+\subex{a)}
 What is the capital of Norway?
 
 \paragraph{Answer.}
@@ -3447,6 +3470,19 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 % --- end definition of \listofexercises command ---
 
 
+
+% ------ header in subexercises ------
+%\newcommand{\subex}[1]{\paragraph{#1}}
+%\newcommand{\subex}[1]{\par\vspace{1.7mm}\noindent{\bf #1}\ \ }
+\makeatletter
+% 1.5ex is the spacing above the header, 0.5em the spacing after subex title
+\newcommand\subex{\@startsection{paragraph}{4}{\z@}%
+                  {1.5ex\@plus1ex \@minus.2ex}%
+                  {-0.5em}%
+                  {\normalfont\normalsize\bfseries}}
+\makeatother
+
+
 % Make sure blank even--numbered pages before new chapters are
 % totally blank with no header
 \newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
@@ -3825,9 +3861,9 @@ output1
 output2
 \end{Verbatim}
 
-It is time to test {\Verb!verbatim inline font!} especially with {\Verb!a newline inside the text!} and an exclamation mark at the end: {\Verb!BEGIN!}! The
+It is time to test \texttt{verbatim inline font} especially with \texttt{a newline inside the text} and an exclamation mark at the end: \texttt{BEGIN}! The
 exclamation mark inside the verbatim text is potentially not smart
-since latex use ! in the {\Verb!Verb!} typesetting, but this should now
+since latex use ! in the \texttt{Verb} typesetting, but this should now
 be fixed: test {\Verb~!bc~} and {\Verb~!ec~} as well as {\Verb~!bsummary~}.
 Also test backslashes and braces like {\Verb!\begin!}, {\Verb!\begin{enumerate}!},
 {\Verb!\end{this}\end{that}!}, and {\Verb!{something \inside braces}!} in inline
@@ -3911,7 +3947,7 @@ Test URL as figure name:
 
 
 \paragraph{Remark.}
-Movies are tested in separate file {\Verb!movies.do.txt!}.
+Movies are tested in separate file \texttt{movies.do.txt}.
 
 
 % Somewhat challenging heading with latex math, \t, \n, ? and parenthesis
@@ -3957,7 +3993,7 @@ Or with align with label and numbers:
 
 Here is an attempt to create a theorem environment via Mako
 (for counting theorems) and comment lines to help replacing lines in
-the {\Verb!.tex!} by proper begin--end {\LaTeX} environments for theorems.
+the \texttt{.tex} by proper begin--end {\LaTeX} environments for theorems.
 Should look nice in most formats!
 
 
@@ -4001,7 +4037,8 @@ with the preprocessor.
 
 
 
-\begin{quote}\begin{tabular}{lrr}
+\begin{quote}
+\begin{tabular}{lrr}
 \hline
 \multicolumn{1}{c}{ time } & \multicolumn{1}{c}{ velocity } & \multicolumn{1}{c}{ acceleration } \\
 \hline
@@ -4009,7 +4046,8 @@ with the preprocessor.
 2.0          & 1.376512     & 11.919       \\
 4.0          & 1.1E+1       & 14.717624    \\
 \hline
-\end{tabular}\end{quote}
+\end{tabular}
+\end{quote}
 
 \noindent
 \end{table}
@@ -4031,7 +4069,8 @@ Here is yet another table to test that we can handle more than
 one table:
 
 
-\begin{quote}\begin{tabular}{lll}
+\begin{quote}
+\begin{tabular}{lll}
 \hline
 \multicolumn{1}{c}{ time } & \multicolumn{1}{c}{ velocity } & \multicolumn{1}{c}{ acceleration } \\
 \hline
@@ -4039,7 +4078,8 @@ one table:
 1.0          & 1.376512     & 11.919       \\
 3.0          & 1.1E+1       & 14.717624    \\
 \hline
-\end{tabular}\end{quote}
+\end{tabular}
+\end{quote}
 
 \noindent
 And one with math headings (that are expanded and must be treated
@@ -4047,7 +4087,8 @@ accordingly), verbatim heading and entry, and no space around the pipe
 symbol:
 
 
-\begin{quote}\begin{tabular}{lrrr}
+\begin{quote}
+\begin{tabular}{lrrr}
 \hline
 \multicolumn{1}{c}{ $i$ } & \multicolumn{1}{c}{ $h_i$ } & \multicolumn{1}{c}{ $\bar T_i$ } & \multicolumn{1}{c}{ {\Verb!L\_i!} } \\
 \hline
@@ -4057,17 +4098,19 @@ symbol:
 3          & 32,000     & 228        & 0.0028     \\
 4          & 47,000     & 270        & 0.0        \\
 5          & 51,000     & 270        & -0.0028    \\
-6          & 71,000     & 214        & {\Verb!NaN!} \\
+6          & 71,000     & 214        & \texttt{NaN} \\
 \hline
-\end{tabular}\end{quote}
+\end{tabular}
+\end{quote}
 
 \noindent
 And add one with verbatim headings (with underscores),
-and rows starting with {\Verb!|-!} because of a negative number,
-and {\Verb!|!} right before and after verbatim word (with no space):
+and rows starting with \texttt{|-} because of a negative number,
+and \texttt{|} right before and after verbatim word (with no space):
 
 
-\begin{quote}\begin{tabular}{rrrr}
+\begin{quote}
+\begin{tabular}{rrrr}
 \hline
 \multicolumn{1}{c}{ exact } & \multicolumn{1}{c}{ {\Verb!v\_1!} } & \multicolumn{1}{c}{ $a_i$ + {\Verb!v\_2!} } & \multicolumn{1}{c}{ {\Verb!verb\_3\_!} } \\
 \hline
@@ -4076,7 +4119,8 @@ and {\Verb!|!} right before and after verbatim word (with no space):
 10                 & 17.74              & -4.50              & 9.96               \\
 0                  & -9.19              & 4.13               & -0.26              \\
 \hline
-\end{tabular}\end{quote}
+\end{tabular}
+\end{quote}
 
 \noindent
 Finally, a table with math
@@ -4087,7 +4131,8 @@ and URLs.
 
 
 
-\begin{quote}\begin{tabular}{ccc}
+\begin{quote}
+\begin{tabular}{ccc}
 \hline
  \\
 \hline
@@ -4095,7 +4140,8 @@ $\mathcal{L}=0$                                                               & 
 $a=b$                                                                         & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0090.png} & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0095.png} \\
 $\nabla\cdot\bm{u} =0 $                                                       & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0100.png} & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0105.png} \\
 \hline
-\end{tabular}\end{quote}
+\end{tabular}
+\end{quote}
 
 \noindent
 
@@ -4112,7 +4158,7 @@ written in the standard {\LaTeX}-style that gives correct
 {\LaTeX} formatting and ordinary double quotes for all non-{\LaTeX} formats.
 Here is another sentence that ``caused'' a bug in the past
 because double backtick quotes could imply verbatim text up to
-a verbatim word starting with period, like {\Verb!.txt!}.
+a verbatim word starting with period, like \texttt{.txt}.
 
 
 \subsection{Bibliography test}
@@ -4152,19 +4198,19 @@ the old ME-IN323 book \cite{Langtangen:91} and the
 \subsection{Example 1: Examples can be typeset as exercises}
 \label{Example}
 
-Examples can start with a subsection heading starting with {\Verb!Example:!}
+Examples can start with a subsection heading starting with \texttt{Example:}
 and then, with the command--line option {\Verb!--examples_as_exercises!} be
 typeset as exercises. This is useful if one has solution
 environments as part of the example.
 
 
-\paragraph{a)}
+\subex{a)}
 State some problem.
 
 \paragraph{Solution.}
 The answer to this subproblem can be written here.
 
-\paragraph{b)}
+\subex{b)}
 State some other problem.
 
 \paragraph{Hint 1.}
@@ -4189,7 +4235,7 @@ the entire URL if desired, \href{{http://folk.uio.no/hpl}}{\nolinkurl{http://fol
 plain file link \href{{testdoc.do.txt}}{\nolinkurl{testdoc.do.txt}\footnote{\texttt{testdoc.do.txt}}}, or \href{{testdoc.do.txt}}{\nolinkurl{testdoc.do.txt}\footnote{\texttt{testdoc.do.txt}}}, or
 \href{{testdoc.do.txt}}{\nolinkurl{testdoc.do.txt}\footnote{\texttt{testdoc.do.txt}}} or \href{{testdoc.do.txt}}{\nolinkurl{testdoc.do.txt}\footnote{\texttt{testdoc.do.txt}}} or \href{{testdoc.do.txt}}{a link with
 newline}. Can test spaces with the link with word
-too: \href{{http://folk.uio.no/hpl}}{hpl}\footnote{\texttt{http://folk.uio.no/hpl}} or \href{{http://folk.uio.no/hpl}}{hpl}\footnote{\texttt{http://folk.uio.no/hpl}}. Also {\Verb!file:///!} works: \href{{file:///home/hpl/vc/doconce/doc/demos/manual/manual.html}}{link to a
+too: \href{{http://folk.uio.no/hpl}}{hpl}\footnote{\texttt{http://folk.uio.no/hpl}} or \href{{http://folk.uio.no/hpl}}{hpl}\footnote{\texttt{http://folk.uio.no/hpl}}. Also \texttt{file:///} works: \href{{file:///home/hpl/vc/doconce/doc/demos/manual/manual.html}}{link to a
 file} is
 fine to have. Moreover, "loose" URLs work, i.e., no quotes, just
 the plain URL as in \href{{http://folk.uio.no/hpl}}{\nolinkurl{http://folk.uio.no/hpl}}, if followed by space, comma,
@@ -4198,14 +4244,14 @@ colon, semi--colon, question mark, exclamation mark, but not a period
 
 Mail addresses can also be used: \href{{mailto:hpl@simula.no}}{\nolinkurl{hpl@simula.no}\footnote{\texttt{mailto:hpl@simula.no}}}, or just a \href{{mailto:hpl@simula.no}}{mail link}\footnote{\texttt{mailto:hpl@simula.no}}, or a raw \href{{mailto:hpl@simula.no}}{\nolinkurl{mailto:hpl@simula.no}\footnote{\texttt{mailto:hpl@simula.no}}}.
 
-Here are some tough tests of URLs, especially for the {\Verb!latex!} format:
+Here are some tough tests of URLs, especially for the \texttt{latex} format:
 \href{{http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas}}{Newton-Cotes}\footnote{\texttt{http://en.wikipedia.org/wiki/Newton\%E2\%80\%93Cotes\_formulas}} formulas
 and a \href{{http://www.springer.com/mathematics/computational+science+%26+engineering/book/978-3-642-23098-1}}{good book}\footnote{\texttt{http://www.springer.com/mathematics/computational+science+\%26+engineering/book/978-3-642-23098-1}}. Need to test
 Newton-Cotes with percentage in URL too:
 \href{{http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas}}{\nolinkurl{http://en.wikipedia.org/wiki/Newton\%E2\%80\%93Cotes_formulas}}
 and \href{{http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae}}{\nolinkurl{http://en.wikipedia.org/wiki/Newton-Cotes\#Open_Newton.E2.80.93Cotes_formulae}} which has a shebang.
 
-For the {\Verb!--device=paper!} option it is important to test that URLs with
+For the \texttt{--device=paper} option it is important to test that URLs with
 monofont link text get a footnote (unless the {\Verb!--latex_no_program_footnotelink!}
 is used), as in this reference to
 \href{{https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py}}{\nolinkurl{decay_mod}}, \href{{http://tinyurl.com/pwyasaa/formulas.ball1.py}}{\nolinkurl{ball1.py}},
@@ -4220,7 +4266,7 @@ and \href{{http://tinyurl.com/pwyasaa/formulas.ball2.py}}{\nolinkurl{ball2.py}}.
 % if rst output is desired, but placed in a {\Verb!_static*!} folder.
 
 More tough tests: repeated URLs whose footnotes when using the
-{\Verb!--device=paper!} option must be correct. We have
+\texttt{--device=paper} option must be correct. We have
 \href{{http://google.com}}{google}\footnote{\texttt{http://google.com}}, \href{{http://google.com}}{google}\footnote{\texttt{http://google.com}}, and
 \href{{http://google.com}}{google}\footnote{\texttt{http://google.com}}, which should result in exactly three
 footnotes.
@@ -4265,7 +4311,7 @@ a &= q + 4 + 5+ 6 \label{eq1} \\
 b &= \nabla^2 u + \nabla^4 x \label{eq2}
 \end{align}
 We can refer to (\ref{eq1})-(\ref{eq2}). They are a bit simpler than
-the Navier--Stokes equations. And test {\LaTeX} hyphen in {\Verb!CG-2!}.
+the Navier--Stokes equations. And test {\LaTeX} hyphen in \texttt{CG-2}.
 Also test $a_{i-j}$ as well as $kx-wt$.
 
 Many of the next environments will fail in non--latex formats.
@@ -4350,7 +4396,7 @@ the beginning of a new exercise and cause trouble. Maybe a list
 % --- begin hint in exercise ---
 
 \paragraph{Hint 1.}
-Use {\Verb!r = random.random()!} and define head as {\Verb!r <= 0.5!}.
+Use \texttt{r = random.random()} and define head as \texttt{r <= 0.5}.
 
 % --- end hint in exercise ---
 
@@ -4358,14 +4404,14 @@ Use {\Verb!r = random.random()!} and define head as {\Verb!r <= 0.5!}.
 
 \paragraph{Hint 2.}
 Draw an integer among $\{1,2\}$ with
-{\Verb!r = random.randint(1,2)!} and define head when {\Verb!r!} is 1.
+\texttt{r = random.randint(1,2)} and define head when \texttt{r} is 1.
 
 % --- end hint in exercise ---
 
 
 % --- begin answer of exercise ---
 \paragraph{Answer.}
-If the {\Verb!random.random()!} function returns a number $<1/2$, let it be
+If the \texttt{random.random()} function returns a number $<1/2$, let it be
 head, otherwise tail. Repeat this $N$ number of times.
 
 % --- end answer of exercise ---
@@ -4431,7 +4477,7 @@ in previous Doconce versions:
 
 \paragraph{Hint.}
 To answer this question empirically, let a program
-draw $N$ such random numbers using Python's standard {\Verb!random!} module,
+draw $N$ such random numbers using Python's standard \texttt{random} module,
 count how many of them, $M$, that fall in the interval $(0.5,0.6)$, and
 compute the probability as $M/N$.
 
@@ -4461,7 +4507,7 @@ y &= y_0 + R\sin 2\pi t,
 where $R$ is the radius of the circle, $(x_0,y_0)$ is the
 center point, and $t$ is a parameter in the unit interval $[0,1]$.
 For any $t$, $(x,y)$ is a point on the circle.
-The formula can be used to generate {\Verb!n!} points on a circle:
+The formula can be used to generate \texttt{n} points on a circle:
 
 \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
 import numpy as np
@@ -4480,17 +4526,17 @@ x, y = circle(2.0, 0, 0)
 % which we normally want to keep where they are.
 
 The goal of this project is to draw $N$ circles with random
-center and radius. Plot each circle using the {\Verb!circle!} function
+center and radius. Plot each circle using the \texttt{circle} function
 above.
 
 
-\paragraph{a)}
+\subex{a)}
 Let $R$ be normally distributed and $(x_0,y_0)$ uniformly distributed.
 
 % --- begin hint in exercise ---
 
 \paragraph{Hint.}
-Use the {\Verb!numpy.random!} module to draw the
+Use the \texttt{numpy.random} module to draw the
 $x_0$, $y_0$, and $R$ quantities.
 
 % --- end hint in exercise ---
@@ -4509,14 +4555,14 @@ Here goes a full solution to part a).
 
 % --- end solution of exercise ---
 
-\paragraph{b)}
+\subex{b)}
 Let $R$ be uniformly distributed and $(x_0,y_0)$ normally distributed.
-\noindent Filename: {\Verb!norm.py!}.
+\noindent Filename: \texttt{norm.py}.
 
-\paragraph{c)}
+\subex{c)}
 Let $R$ and $(x_0,y_0)$ be normally distributed.
 
-\noindent Filename: {\Verb!circles.pdf!}.
+\noindent Filename: \texttt{circles.pdf}.
 
 % Closing remarks for this Project
 
@@ -4564,7 +4610,7 @@ Test list in exercise:
 Here goes a full solution of the whole exercise.
 With some math $a=b$ in this solution:
 \[ \hbox{math in solution: } a = b \]
-And code {\Verb!a=b!} in this solution:
+And code \texttt{a=b} in this solution:
 \begin{Verbatim}[fontsize=\fontsize{9pt}{9pt},tabsize=8,baselinestretch=0.85,
 fontfamily=tt,xleftmargin=7mm]
 a = b  # code in solution
@@ -4575,7 +4621,7 @@ End of solution is here.
 % --- end solution of exercise ---
 
 
-\paragraph{a)}
+\subex{a)}
 Subexercises are numbered a), b), etc.
 
 % --- begin hint in exercise ---
@@ -4621,7 +4667,7 @@ With math in answer: $a=b$.
 
 % --- end answer of exercise ---
 
-\paragraph{b)}
+\subex{b)}
 Here goes the text for subexercise b).
 
 
@@ -4671,7 +4717,7 @@ to test that math block insertion is correct:
 
 \[ \exp{(0)} = 1 \]
 
-And a test that the code {\Verb!lambda x: x+2!} is correctly placed here:
+And a test that the code \texttt{lambda x: x+2} is correctly placed here:
 
 \begin{Verbatim}[fontsize=\fontsize{9pt}{9pt},tabsize=8,baselinestretch=0.85,
 fontfamily=tt,xleftmargin=7mm]
@@ -4698,7 +4744,7 @@ lambda x: x+2
 % it is just typeset as it is written.
 
 
-\paragraph{a)}
+\subex{a)}
 What is the capital of Norway?
 
 \paragraph{Answer.}
@@ -4903,7 +4949,7 @@ recommend you to use such sites for all serious programming and
 scientific writing work - and all other important files.
 
 The simplest services for hosting project files is Dropbox. \longinlinecomment{mp 2}{ Simply go to \href{{http://dropbox.com}}{\nolinkurl{http://dropbox.com}} and watch the video. It explains
-how files, like {\Verb!myfile.py!}, perhaps containing much math, like
+how files, like \texttt{myfile.py}, perhaps containing much math, like
 $\partial u/\partial t$, are easily communicated between machines. }{ Simply go to \href{{http://dropbox.com}}{\nolinkurl{http://dropbox.com}} } It
 is very easy to get started with Dropbox, and it allows you to share
 files among laptops and mobile units.
@@ -4917,14 +4963,14 @@ you with the minimum information to started with such
 systems. Numerous other tutorials contain more comprehensive material
 and in--depth explanations of the concepts and tools. }{ The following text aims }
 
-\subsection{Appendix: Testing headings ending with {\protect\Verb!verbatim inline!} }
+\subsection{Appendix: Testing headings ending with \texttt{verbatim inline} }
 
-The point here is to test 1) {\Verb!verbatim!} code in headings, and 2)
+The point here is to test 1) \texttt{verbatim} code in headings, and 2)
 ending a heading with verbatim code as this triggers a special
 case in {\LaTeX}.
 
 And finally, what about admons, quotes, and boxes? They are tested
-in a separate document: {\Verb!admon.do.txt!}.
+in a separate document: \texttt{admon.do.txt}.
 
 % ------------------- end of main content ---------------
 
@@ -5236,6 +5282,19 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \newcommand*{\l@doconceexercise}{\@dottedtocline{0}{0pt}{6.5em}}
 \makeatother
 % --- end definition of \listofexercises command ---
+
+
+
+% ------ header in subexercises ------
+%\newcommand{\subex}[1]{\paragraph{#1}}
+%\newcommand{\subex}[1]{\par\vspace{1.7mm}\noindent{\bf #1}\ \ }
+\makeatletter
+% 1.5ex is the spacing above the header, 0.5em the spacing after subex title
+\newcommand\subex{\@startsection{paragraph}{4}{\z@}%
+                  {1.5ex\@plus1ex \@minus.2ex}%
+                  {-0.5em}%
+                  {\normalfont\normalsize\bfseries}}
+\makeatother
 
 
 % Make sure blank even--numbered pages before new chapters are
@@ -5756,7 +5815,8 @@ with the preprocessor.
 
 
 
-\begin{quote}\begin{tabular}{lrr}
+\begin{quote}
+\begin{tabular}{lrr}
 \hline
 \multicolumn{1}{c}{ time } & \multicolumn{1}{c}{ velocity } & \multicolumn{1}{c}{ acceleration } \\
 \hline
@@ -5764,7 +5824,8 @@ with the preprocessor.
 2.0          & 1.376512     & 11.919       \\
 4.0          & 1.1E+1       & 14.717624    \\
 \hline
-\end{tabular}\end{quote}
+\end{tabular}
+\end{quote}
 
 \noindent
 \end{table}
@@ -5784,7 +5845,8 @@ Here is yet another table to test that we can handle more than
 one table:
 
 
-\begin{quote}\begin{tabular}{lll}
+\begin{quote}
+\begin{tabular}{lll}
 \hline
 \multicolumn{1}{c}{ time } & \multicolumn{1}{c}{ velocity } & \multicolumn{1}{c}{ acceleration } \\
 \hline
@@ -5792,7 +5854,8 @@ one table:
 1.0          & 1.376512     & 11.919       \\
 3.0          & 1.1E+1       & 14.717624    \\
 \hline
-\end{tabular}\end{quote}
+\end{tabular}
+\end{quote}
 
 \noindent
 And one with math headings (that are expanded and must be treated
@@ -5800,7 +5863,8 @@ accordingly), verbatim heading and entry, and no space around the pipe
 symbol:
 
 
-\begin{quote}\begin{tabular}{lrrr}
+\begin{quote}
+\begin{tabular}{lrrr}
 \hline
 \multicolumn{1}{c}{ $i$ } & \multicolumn{1}{c}{ $h_i$ } & \multicolumn{1}{c}{ $\bar T_i$ } & \multicolumn{1}{c}{ \Verb!L\_i! } \\
 \hline
@@ -5812,7 +5876,8 @@ symbol:
 5          & 51,000     & 270        & -0.0028    \\
 6          & 71,000     & 214        & \Verb!NaN! \\
 \hline
-\end{tabular}\end{quote}
+\end{tabular}
+\end{quote}
 
 \noindent
 And add one with verbatim headings (with underscores),
@@ -5820,7 +5885,8 @@ and rows starting with \Verb!|-! because of a negative number,
 and \Verb!|! right before and after verbatim word (with no space):
 
 
-\begin{quote}\begin{tabular}{rrrr}
+\begin{quote}
+\begin{tabular}{rrrr}
 \hline
 \multicolumn{1}{c}{ exact } & \multicolumn{1}{c}{ \Verb!v\_1! } & \multicolumn{1}{c}{ $a_i$ + \Verb!v\_2! } & \multicolumn{1}{c}{ \Verb!verb\_3\_! } \\
 \hline
@@ -5829,7 +5895,8 @@ and \Verb!|! right before and after verbatim word (with no space):
 10                 & 17.74              & -4.50              & 9.96               \\
 0                  & -9.19              & 4.13               & -0.26              \\
 \hline
-\end{tabular}\end{quote}
+\end{tabular}
+\end{quote}
 
 \noindent
 Finally, a table with math
@@ -5840,7 +5907,8 @@ and URLs.
 
 
 
-\begin{quote}\begin{tabular}{ccc}
+\begin{quote}
+\begin{tabular}{ccc}
 \hline
  \\
 \hline
@@ -5848,7 +5916,8 @@ $\mathcal{L}=0$                                                               & 
 $a=b$                                                                         & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0090.png} & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0095.png} \\
 $\nabla\cdot\bm{u} =0 $                                                       & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0100.png} & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0105.png} \\
 \hline
-\end{tabular}\end{quote}
+\end{tabular}
+\end{quote}
 
 \noindent
 
@@ -5911,13 +5980,13 @@ typeset as exercises. This is useful if one has solution
 environments as part of the example.
 
 
-\paragraph{a)}
+\subex{a)}
 State some problem.
 
 \paragraph{Solution.}
 The answer to this subproblem can be written here.
 
-\paragraph{b)}
+\subex{b)}
 State some other problem.
 
 \paragraph{Hint 1.}
@@ -6235,7 +6304,7 @@ center and radius. Plot each circle using the \Verb!circle! function
 above.
 
 
-\paragraph{a)}
+\subex{a)}
 Let $R$ be normally distributed and $(x_0,y_0)$ uniformly distributed.
 
 % --- begin hint in exercise ---
@@ -6260,11 +6329,11 @@ Here goes a full solution to part a).
 
 % --- end solution of exercise ---
 
-\paragraph{b)}
+\subex{b)}
 Let $R$ be uniformly distributed and $(x_0,y_0)$ normally distributed.
 \noindent Filename: \Verb!norm.py!.
 
-\paragraph{c)}
+\subex{c)}
 Let $R$ and $(x_0,y_0)$ be normally distributed.
 
 \noindent Filename: \Verb!circles.pdf!.
@@ -6324,7 +6393,7 @@ End of solution is here.
 % --- end solution of exercise ---
 
 
-\paragraph{a)}
+\subex{a)}
 Subexercises are numbered a), b), etc.
 
 % --- begin hint in exercise ---
@@ -6368,7 +6437,7 @@ With math in answer: $a=b$.
 
 % --- end answer of exercise ---
 
-\paragraph{b)}
+\subex{b)}
 Here goes the text for subexercise b).
 
 
@@ -6443,7 +6512,7 @@ lambda x: x+2
 % it is just typeset as it is written.
 
 
-\paragraph{a)}
+\subex{a)}
 What is the capital of Norway?
 
 \paragraph{Answer.}
@@ -20653,12 +20722,10 @@ ccc<br /><span class="math">\(\mathcal{L}=0\)</span> &amp; <img src="../doc/src/
 <h2 id="example-1-examples-can-be-typeset-as-exercises">Example 1: Examples can be typeset as exercises</h2>
 <p>[Example]</p>
 <p>Examples can start with a subsection heading starting with <code>Example:</code> and then, with the command-line option <code>--examples_as_exercises</code> be typeset as exercises. This is useful if one has solution environments as part of the example.</p>
-<h4 id="a">a)</h4>
-<p>State some problem.</p>
+<p>startsectionparagraph4@ 1.5explus1ex minus.2ex -0.5em ****a) State some problem.</p>
 <h4 id="solution.">Solution.</h4>
 <p>The answer to this subproblem can be written here.</p>
-<h4 id="b">b)</h4>
-<p>State some other problem.</p>
+<p>startsectionparagraph4@ 1.5explus1ex minus.2ex -0.5em ****b) State some other problem.</p>
 <h4 id="hint-1.">Hint 1.</h4>
 <p>A hint can be given.</p>
 <h4 id="hint-2.">Hint 2.</h4>
@@ -20771,18 +20838,15 @@ def circle(R, x0, y0, n=501):
 
 x, y = circle(2.0, 0, 0)</code></pre>
 <p>The goal of this project is to draw <span class="math">\(N\)</span> circles with random center and radius. Plot each circle using the <code>circle</code> function above.</p>
-<h4 id="a-1">a)</h4>
-<p>Let <span class="math">\(R\)</span> be normally distributed and <span class="math">\((x_0,y_0)\)</span> uniformly distributed.</p>
+<p>startsectionparagraph4@ 1.5explus1ex minus.2ex -0.5em ****a) Let <span class="math">\(R\)</span> be normally distributed and <span class="math">\((x_0,y_0)\)</span> uniformly distributed.</p>
 <h4 id="hint.-1">Hint.</h4>
 <p>Use the <code>numpy.random</code> module to draw the <span class="math">\(x_0\)</span>, <span class="math">\(y_0\)</span>, and <span class="math">\(R\)</span> quantities.</p>
 <h4 id="answer.-1">Answer.</h4>
 <p>Here goes the short answer to part a).</p>
 <h4 id="solution.-3">Solution.</h4>
 <p>Here goes a full solution to part a).</p>
-<h4 id="b-1">b)</h4>
-<p>Let <span class="math">\(R\)</span> be uniformly distributed and <span class="math">\((x_0,y_0)\)</span> normally distributed. Filename: <code>norm.py</code>.</p>
-<h4 id="c">c)</h4>
-<p>Let <span class="math">\(R\)</span> and <span class="math">\((x_0,y_0)\)</span> be normally distributed.</p>
+<p>startsectionparagraph4@ 1.5explus1ex minus.2ex -0.5em ****b) Let <span class="math">\(R\)</span> be uniformly distributed and <span class="math">\((x_0,y_0)\)</span> normally distributed. Filename: <code>norm.py</code>.</p>
+<p>startsectionparagraph4@ 1.5explus1ex minus.2ex -0.5em ****c) Let <span class="math">\(R\)</span> and <span class="math">\((x_0,y_0)\)</span> be normally distributed.</p>
 <p>Filename: <code>circles.pdf</code>.</p>
 <h4 id="remarks.-1">Remarks.</h4>
 <p>At the very end of the exercise it may be appropriate to summarize and give some perspectives.</p>
@@ -20799,8 +20863,7 @@ x, y = circle(2.0, 0, 0)</code></pre>
 <p>Here goes a full solution of the whole exercise. With some math <span class="math">\(a=b\)</span> in this solution: <span class="math">\[\hbox{math in solution: } a = b\]</span> And code <code>a=b</code> in this solution:</p>
 <pre><code>a = b  # code in solution</code></pre>
 <p>End of solution is here.</p>
-<h4 id="a-2">a)</h4>
-<p>Subexercises are numbered a), b), etc.</p>
+<p>startsectionparagraph4@ 1.5explus1ex minus.2ex -0.5em ****a) Subexercises are numbered a), b), etc.</p>
 <h4 id="hint-1.-2">Hint 1.</h4>
 <p>First hint to subexercise a). With math <span class="math">\(a=b\)</span> in hint:</p>
 <p><span class="math">\[a=b.\]</span> And with code (in plain verbatim) returning <span class="math">\(x+1\)</span> in hint:</p>
@@ -20816,8 +20879,7 @@ x, y = circle(2.0, 0, 0)</code></pre>
 <p>Filename: <code>subexer_a.pdf</code>.</p>
 <h4 id="answer.-2">Answer.</h4>
 <p>Short answer to subexercise a). With math in answer: <span class="math">\(a=b\)</span>.</p>
-<h4 id="b-2">b)</h4>
-<p>Here goes the text for subexercise b).</p>
+<p>startsectionparagraph4@ 1.5explus1ex minus.2ex -0.5em ****b) Here goes the text for subexercise b).</p>
 <p>Some math <span class="math">\(\cos^2 x + \sin^2 x = 1\)</span> written one a single line:</p>
 <p><span class="math">\[\cos^2 x + \sin^2 x = 1 \thinspace .\]</span></p>
 <h4 id="hint.-2">Hint.</h4>
@@ -20833,8 +20895,7 @@ x, y = circle(2.0, 0, 0)</code></pre>
 <p>And a test that the code <code>lambda x: x+2</code> is correctly placed here:</p>
 <pre><code>lambda x: x+2</code></pre>
 <h2 id="example-7-just-an-example">Example 7: Just an example</h2>
-<h4 id="a-3">a)</h4>
-<p>What is the capital of Norway?</p>
+<p>startsectionparagraph4@ 1.5explus1ex minus.2ex -0.5em ****a) What is the capital of Norway?</p>
 <h4 id="answer.-3">Answer.</h4>
 <p>Oslo.</p>
 <h1 id="here-goes-another-section">Here goes another section</h1>
@@ -29518,6 +29579,19 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 % --- end definition of \listofexercises command ---
 
 
+
+% ------ header in subexercises ------
+%\newcommand{\subex}[1]{\paragraph{#1}}
+%\newcommand{\subex}[1]{\par\vspace{1.7mm}\noindent{\bf #1}\ \ }
+\makeatletter
+% 1.5ex is the spacing above the header, 0.5em the spacing after subex title
+\newcommand\subex{\@startsection{paragraph}{4}{\z@}%
+                  {1.5ex\@plus1ex \@minus.2ex}%
+                  {-0.5em}%
+                  {\normalfont\normalsize\bfseries}}
+\makeatother
+
+
 % Make sure blank even-numbered pages before new chapters are
 % totally blank with no header
 \newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
@@ -30031,7 +30105,8 @@ with the preprocessor.
 
 
 
-\begin{quote}\begin{tabular}{lrr}
+\begin{quote}
+\begin{tabular}{lrr}
 \hline
 \multicolumn{1}{c}{ time } & \multicolumn{1}{c}{ velocity } & \multicolumn{1}{c}{ acceleration } \\
 \hline
@@ -30039,7 +30114,8 @@ with the preprocessor.
 2.0          & 1.376512     & 11.919       \\
 4.0          & 1.1E+1       & 14.717624    \\
 \hline
-\end{tabular}\end{quote}
+\end{tabular}
+\end{quote}
 
 \noindent
 \end{table}
@@ -30059,7 +30135,8 @@ Here is yet another table to test that we can handle more than
 one table:
 
 
-\begin{quote}\begin{tabular}{lll}
+\begin{quote}
+\begin{tabular}{lll}
 \hline
 \multicolumn{1}{c}{ time } & \multicolumn{1}{c}{ velocity } & \multicolumn{1}{c}{ acceleration } \\
 \hline
@@ -30067,7 +30144,8 @@ one table:
 1.0          & 1.376512     & 11.919       \\
 3.0          & 1.1E+1       & 14.717624    \\
 \hline
-\end{tabular}\end{quote}
+\end{tabular}
+\end{quote}
 
 \noindent
 And one with math headings (that are expanded and must be treated
@@ -30075,7 +30153,8 @@ accordingly), verbatim heading and entry, and no space around the pipe
 symbol:
 
 
-\begin{quote}\begin{tabular}{lrrr}
+\begin{quote}
+\begin{tabular}{lrrr}
 \hline
 \multicolumn{1}{c}{ $i$ } & \multicolumn{1}{c}{ $h_i$ } & \multicolumn{1}{c}{ $\bar T_i$ } & \multicolumn{1}{c}{ \code{L\_i} } \\
 \hline
@@ -30087,7 +30166,8 @@ symbol:
 5          & 51,000     & 270        & -0.0028    \\
 6          & 71,000     & 214        & \code{NaN} \\
 \hline
-\end{tabular}\end{quote}
+\end{tabular}
+\end{quote}
 
 \noindent
 And add one with verbatim headings (with underscores),
@@ -30095,7 +30175,8 @@ and rows starting with \code{|-} because of a negative number,
 and \code{|} right before and after verbatim word (with no space):
 
 
-\begin{quote}\begin{tabular}{rrrr}
+\begin{quote}
+\begin{tabular}{rrrr}
 \hline
 \multicolumn{1}{c}{ exact } & \multicolumn{1}{c}{ \code{v\_1} } & \multicolumn{1}{c}{ $a_i$ + \code{v\_2} } & \multicolumn{1}{c}{ \code{verb\_3\_} } \\
 \hline
@@ -30104,7 +30185,8 @@ and \code{|} right before and after verbatim word (with no space):
 10                 & 17.74              & -4.50              & 9.96               \\
 0                  & -9.19              & 4.13               & -0.26              \\
 \hline
-\end{tabular}\end{quote}
+\end{tabular}
+\end{quote}
 
 \noindent
 Finally, a table with math
@@ -30115,7 +30197,8 @@ and URLs.
 
 
 
-\begin{quote}\begin{tabular}{ccc}
+\begin{quote}
+\begin{tabular}{ccc}
 \hline
  \\
 \hline
@@ -30123,7 +30206,8 @@ $\mathcal{L}=0$                                                               & 
 $a=b$                                                                         & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0090.png} & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0095.png} \\
 $\nabla\cdot\bm{u} =0 $                                                       & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0100.png} & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0105.png} \\
 \hline
-\end{tabular}\end{quote}
+\end{tabular}
+\end{quote}
 
 \noindent
 
@@ -30182,13 +30266,13 @@ typeset as exercises. This is useful if one has solution
 environments as part of the example.
 
 
-\paragraph{a)}
+\subex{a)}
 State some problem.
 
 \paragraph{Solution.}
 The answer to this subproblem can be written here.
 
-\paragraph{b)}
+\subex{b)}
 State some other problem.
 
 \paragraph{Hint 1.}
@@ -30478,7 +30562,7 @@ center and radius. Plot each circle using the \code{circle} function
 above.
 
 
-\paragraph{a)}
+\subex{a)}
 Let $R$ be normally distributed and $(x_0,y_0)$ uniformly distributed.
 
 % --- begin hint in exercise ---
@@ -30497,11 +30581,11 @@ $x_0$, $y_0$, and $R$ quantities.
 % removed !bsol ... !esol environment
 % (because of the command-line option --without_solutions)
 
-\paragraph{b)}
+\subex{b)}
 Let $R$ be uniformly distributed and $(x_0,y_0)$ normally distributed.
 \noindent Filename: \code{norm.py}.
 
-\paragraph{c)}
+\subex{c)}
 Let $R$ and $(x_0,y_0)$ be normally distributed.
 
 \noindent Filename: \code{circles.pdf}.
@@ -30550,7 +30634,7 @@ Test list in exercise:
 % (because of the command-line option --without_solutions)
 
 
-\paragraph{a)}
+\subex{a)}
 Subexercises are numbered a), b), etc.
 
 % --- begin hint in exercise ---
@@ -30590,7 +30674,7 @@ Test list in hint:
 % removed !bans ... !eans environment
 % (because of the command-line option --without_answers)
 
-\paragraph{b)}
+\subex{b)}
 Here goes the text for subexercise b).
 
 
@@ -30662,7 +30746,7 @@ lambda x: x+2
 % it is just typeset as it is written.
 
 
-\paragraph{a)}
+\subex{a)}
 What is the capital of Norway?
 
 \paragraph{Answer.}
@@ -37910,7 +37994,7 @@ First a simple block with text, an equation, and a list:
 
 \begin{center}
 \begin{Sbox}
-\begin{minipage}{0.85\textwidth}
+\begin{minipage}{0.85\linewidth}
 A generic equation
 
 \[ f(x) = 0 \]
@@ -37937,7 +38021,7 @@ box, it is not a new paragraph):
 
 \begin{center}
 \begin{Sbox}
-\begin{minipage}{0.85\textwidth}
+\begin{minipage}{0.85\linewidth}
 \begin{equation} f(x) = \sin(x)e^{1-x} \end{equation}
 \end{minipage}
 \end{Sbox}
@@ -37949,7 +38033,7 @@ Let's begin a new paragraph and show a box with code only:
 
 \begin{center}
 \begin{Sbox}
-\begin{minipage}{0.85\textwidth}
+\begin{minipage}{0.85\linewidth}
 \bpycod
 def some_code(x):
     return sin(x)*exp(1-x)
@@ -38512,7 +38596,7 @@ First a simple block with text, an equation, and a list:
 
 \begin{center}
 \begin{Sbox}
-\begin{minipage}{0.85\textwidth}
+\begin{minipage}{0.85\linewidth}
 A generic equation
 
 \[ f(x) = 0 \]
@@ -38539,7 +38623,7 @@ box, it is not a new paragraph):
 
 \begin{center}
 \begin{Sbox}
-\begin{minipage}{0.85\textwidth}
+\begin{minipage}{0.85\linewidth}
 \begin{equation} f(x) = \sin(x)e^{1-x} \end{equation}
 \end{minipage}
 \end{Sbox}
@@ -38551,7 +38635,7 @@ Let's begin a new paragraph and show a box with code only:
 
 \begin{center}
 \begin{Sbox}
-\begin{minipage}{0.85\textwidth}
+\begin{minipage}{0.85\linewidth}
 \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
 def some_code(x):
     return sin(x)*exp(1-x)
@@ -39119,7 +39203,7 @@ First a simple block with text, an equation, and a list:
 
 \begin{center}
 \begin{Sbox}
-\begin{minipage}{0.85\textwidth}
+\begin{minipage}{0.85\linewidth}
 A generic equation
 
 \[ f(x) = 0 \]
@@ -39146,7 +39230,7 @@ box, it is not a new paragraph):
 
 \begin{center}
 \begin{Sbox}
-\begin{minipage}{0.85\textwidth}
+\begin{minipage}{0.85\linewidth}
 \begin{equation} f(x) = \sin(x)e^{1-x} \end{equation}
 \end{minipage}
 \end{Sbox}
@@ -39158,7 +39242,7 @@ Let's begin a new paragraph and show a box with code only:
 
 \begin{center}
 \begin{Sbox}
-\begin{minipage}{0.85\textwidth}
+\begin{minipage}{0.85\linewidth}
 \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
 def some_code(x):
     return sin(x)*exp(1-x)
@@ -39769,7 +39853,7 @@ First a simple block with text, an equation, and a list:
 
 \begin{center}
 \begin{Sbox}
-\begin{minipage}{0.85\textwidth}
+\begin{minipage}{0.85\linewidth}
 A generic equation
 
 \[ f(x) = 0 \]
@@ -39796,7 +39880,7 @@ box, it is not a new paragraph):
 
 \begin{center}
 \begin{Sbox}
-\begin{minipage}{0.85\textwidth}
+\begin{minipage}{0.85\linewidth}
 \begin{equation} f(x) = \sin(x)e^{1-x} \end{equation}
 \end{minipage}
 \end{Sbox}
@@ -39808,7 +39892,7 @@ Let's begin a new paragraph and show a box with code only:
 
 \begin{center}
 \begin{Sbox}
-\begin{minipage}{0.85\textwidth}
+\begin{minipage}{0.85\linewidth}
 \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
 def some_code(x):
     return sin(x)*exp(1-x)
@@ -40312,7 +40396,7 @@ First a simple block with text, an equation, and a list:
 
 \begin{center}
 \begin{Sbox}
-\begin{minipage}{0.85\textwidth}
+\begin{minipage}{0.85\linewidth}
 A generic equation
 
 \[ f(x) = 0 \]
@@ -40339,7 +40423,7 @@ box, it is not a new paragraph):
 
 \begin{center}
 \begin{Sbox}
-\begin{minipage}{0.85\textwidth}
+\begin{minipage}{0.85\linewidth}
 \begin{equation} f(x) = \sin(x)e^{1-x} \end{equation}
 \end{minipage}
 \end{Sbox}
@@ -40351,7 +40435,7 @@ Let's begin a new paragraph and show a box with code only:
 
 \begin{center}
 \begin{Sbox}
-\begin{minipage}{0.85\textwidth}
+\begin{minipage}{0.85\linewidth}
 \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
 def some_code(x):
     return sin(x)*exp(1-x)
@@ -40947,7 +41031,7 @@ First a simple block with text, an equation, and a list:
 
 \begin{center}
 \begin{Sbox}
-\begin{minipage}{0.85\textwidth}
+\begin{minipage}{0.85\linewidth}
 A generic equation
 
 \[ f(x) = 0 \]
@@ -40974,7 +41058,7 @@ box, it is not a new paragraph):
 
 \begin{center}
 \begin{Sbox}
-\begin{minipage}{0.85\textwidth}
+\begin{minipage}{0.85\linewidth}
 \begin{equation} f(x) = \sin(x)e^{1-x} \end{equation}
 \end{minipage}
 \end{Sbox}
@@ -40986,7 +41070,7 @@ Let's begin a new paragraph and show a box with code only:
 
 \begin{center}
 \begin{Sbox}
-\begin{minipage}{0.85\textwidth}
+\begin{minipage}{0.85\linewidth}
 \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
 def some_code(x):
     return sin(x)*exp(1-x)
@@ -41460,7 +41544,7 @@ First a simple block with text, an equation, and a list:
 
 \begin{center}
 \begin{Sbox}
-\begin{minipage}{0.85\textwidth}
+\begin{minipage}{0.85\linewidth}
 A generic equation
 
 \[ f(x) = 0 \]
@@ -41487,7 +41571,7 @@ box, it is not a new paragraph):
 
 \begin{center}
 \begin{Sbox}
-\begin{minipage}{0.85\textwidth}
+\begin{minipage}{0.85\linewidth}
 \begin{equation} f(x) = \sin(x)e^{1-x} \end{equation}
 \end{minipage}
 \end{Sbox}
@@ -41499,7 +41583,7 @@ Let's begin a new paragraph and show a box with code only:
 
 \begin{center}
 \begin{Sbox}
-\begin{minipage}{0.85\textwidth}
+\begin{minipage}{0.85\linewidth}
 \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
 def some_code(x):
     return sin(x)*exp(1-x)
@@ -42071,7 +42155,7 @@ First a simple block with text, an equation, and a list:
 
 \begin{center}
 \begin{Sbox}
-\begin{minipage}{0.85\textwidth}
+\begin{minipage}{0.85\linewidth}
 A generic equation
 
 \[ f(x) = 0 \]
@@ -42098,7 +42182,7 @@ box, it is not a new paragraph):
 
 \begin{center}
 \begin{Sbox}
-\begin{minipage}{0.85\textwidth}
+\begin{minipage}{0.85\linewidth}
 \begin{equation} f(x) = \sin(x)e^{1-x} \end{equation}
 \end{minipage}
 \end{Sbox}
@@ -42110,7 +42194,7 @@ Let's begin a new paragraph and show a box with code only:
 
 \begin{center}
 \begin{Sbox}
-\begin{minipage}{0.85\textwidth}
+\begin{minipage}{0.85\linewidth}
 \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
 def some_code(x):
     return sin(x)*exp(1-x)
@@ -42721,7 +42805,7 @@ First a simple block with text, an equation, and a list:
 
 \begin{center}
 \begin{Sbox}
-\begin{minipage}{0.85\textwidth}
+\begin{minipage}{0.85\linewidth}
 A generic equation
 
 \[ f(x) = 0 \]
@@ -42748,7 +42832,7 @@ box, it is not a new paragraph):
 
 \begin{center}
 \begin{Sbox}
-\begin{minipage}{0.85\textwidth}
+\begin{minipage}{0.85\linewidth}
 \begin{equation} f(x) = \sin(x)e^{1-x} \end{equation}
 \end{minipage}
 \end{Sbox}
@@ -42760,7 +42844,7 @@ Let's begin a new paragraph and show a box with code only:
 
 \begin{center}
 \begin{Sbox}
-\begin{minipage}{0.85\textwidth}
+\begin{minipage}{0.85\linewidth}
 \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=0mm]
 def some_code(x):
     return sin(x)*exp(1-x)
@@ -57740,6 +57824,19 @@ open=right               % start new chapters on odd-numbered pages
 \newenvironment{doconceexercise}{}{}
 \newcounter{doconceexercisecounter}
 
+
+% ------ header in subexercises ------
+%\newcommand{\subex}[1]{\paragraph{#1}}
+%\newcommand{\subex}[1]{\par\vspace{1.7mm}\noindent{\bf #1}\ \ }
+\makeatletter
+% 1.5ex is the spacing above the header, 0.5em the spacing after subex title
+\newcommand\subex{\@startsection{paragraph}{4}{\z@}%
+                  {1.5ex\@plus1ex \@minus.2ex}%
+                  {-0.5em}%
+                  {\normalfont\normalsize\bfseries}}
+\makeatother
+
+
 % Make sure blank even-numbered pages before new chapters are
 % totally blank with no header
 \newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
@@ -58412,7 +58509,7 @@ Last page gets rendered as follows:
 % keywords = random numbers; Monte Carlo simulation
 
 
-\paragraph{a)}
+\subex{a)}
 Make a program that simulates flipping a coin $N$ times.
 
 % --- begin hint in exercise ---
@@ -58422,7 +58519,7 @@ Use \code{r = random.random()} and define head as \code{r <= 0.5}.
 
 % --- end hint in exercise ---
 
-\paragraph{b)}
+\subex{b)}
 Compute the probability of getting heads.
 
 
@@ -58439,7 +58536,7 @@ A full solution to this subexercise can go here.
 
 % --- end solution of exercise ---
 
-\paragraph{c)}
+\subex{c)}
 Make another program that computes the probability
 of getting at least three heads out of 5 throws.
 
@@ -59350,7 +59447,7 @@ Last page gets rendered as follows:
 % keywords = random numbers; Monte Carlo simulation
 
 
-\noindent\textbf{a)}
+\subex{a)}
 Make a program that simulates flipping a coin $N$ times.
 
 % --- begin hint in exercise ---
@@ -59360,7 +59457,7 @@ Use \Verb!r = random.random()! and define head as \Verb!r <= 0.5!.
 
 % --- end hint in exercise ---
 
-\noindent\textbf{b)}
+\subex{b)}
 Compute the probability of getting heads.
 
 
@@ -59377,7 +59474,7 @@ A full solution to this subexercise can go here.
 
 % --- end solution of exercise ---
 
-\noindent\textbf{c)}
+\subex{c)}
 Make another program that computes the probability
 of getting at least three heads out of 5 throws.
 
@@ -63133,7 +63230,7 @@ The movie above in MPEG format, typeset in a box:
 
 \begin{center}
 \begin{Sbox}
-\begin{minipage}{0.85\textwidth}
+\begin{minipage}{0.85\linewidth}
 
 \begin{doconce:movie}
 \refstepcounter{doconce:movie:counter}
@@ -63617,7 +63714,7 @@ The movie above in MPEG format, typeset in a box:
 
 \begin{center}
 \begin{Sbox}
-\begin{minipage}{0.85\textwidth}
+\begin{minipage}{0.85\linewidth}
 
 \begin{doconce:movie}
 \refstepcounter{doconce:movie:counter}
@@ -64044,7 +64141,7 @@ The movie above in MPEG format, typeset in a box:
 
 \begin{center}
 \begin{Sbox}
-\begin{minipage}{0.85\textwidth}
+\begin{minipage}{0.85\linewidth}
 
 \begin{doconce:movie}
 \refstepcounter{doconce:movie:counter}
@@ -66986,6 +67083,27 @@ distributed values in an interval $[p,q]$. The `numpy` function
 a = np.linspace(p, q, n)
 !ec
 
+|-------------c-----------------------------------------c-------------------------------|
+| Construction              | Meaning                                                   |
+|-------------l-----------------------------------------l-------------------------------|
+| `array(ld)`               | copy list data `ld` to a `numpy` array                    |
+| `asarray(d)`              | make array of data `d` (no data copy if already array)    |
+| `zeros(n)`                | make a `float` vector/array of length `n`, with zeros     |
+| `zeros(n, int)`           | make an `int` vector/array of length `n` with zeros       |
+| `zeros((m,n))`            | make a two-dimensional `float` array with shape (`m`,`n`) |
+| `zeros_like(x)`           | make array of same shape and element type as `x`          |
+| `linspace(a,b,m)`         | uniform sequence of `m` numbers in $[a,b]$                |
+| `a.shape`                 | tuple containing `a`'s shape                              |
+| `a.size`                  | total no of elements in `a`                               |
+| `len(a)`                  | length of a one-dim. array `a` (same as `a.shape[0]`)     |
+| `a.dtype`                 | the type of elements in `a`                               |
+| `a.reshape(3,2)`          | return `a` reshaped as $3\times 2$ array                  |
+| `a[i]`                    | vector indexing                                           |
+| `a[i,j]`                  | two-dim. array indexing                                   |
+| `a[1:k]`                  | slice: reference data with indices `1`,\ldots,`k-1`       |
+| `a[1:8:3]`                | slice: reference data with indices `1`, `4`,\ldots,`7`    |
+| `b = a.copy()`            | copy an array                                             |
+|---------------------------------------------------------------------------------------|
 
 ========= Storing results in data files =========
 
@@ -67819,7 +67937,7 @@ following assumptions and features:
 
 \noindent
 
-\begin{notice_mdfboxadmon}[Remarks.]
+\begin{notice_mdfboxadmon}[Remarks]
 
 \begin{enumerate}
 \item There is actually an
@@ -67849,7 +67967,7 @@ and \emph{NumPy for MATLAB Users}, all accessible at \href{{http://scipy.org}}{s
 
 
 
-\begin{notice_mdfboxadmon}[Remarks on importing NumPy.]
+\begin{notice_mdfboxadmon}[Remarks on importing NumPy]
 The statement
 
 \bpycod
@@ -67917,6 +68035,41 @@ a = np.linspace(p, q, n)
 \epycod
 
 
+\begin{center}
+{\small   % Springer T2 style: small table font and more vspace
+
+\vspace{4mm}
+
+\begin{tabular}{ll}
+\hline
+\multicolumn{1}{c}{ Construction } & \multicolumn{1}{c}{ Meaning } \\
+\hline
+\code{array(ld)}                                                    & copy list data \code{ld} to a \code{numpy} array                    \\
+\code{asarray(d)}                                                   & make array of data \code{d} (no data copy if already array)         \\
+\code{zeros(n)}                                                     & make a \code{float} vector/array of length \code{n}, with zeros     \\
+\code{zeros(n, int)}                                                & make an \code{int} vector/array of length \code{n} with zeros       \\
+\code{zeros((m,n))}                                                 & make a two-dimensional \code{float} array with shape (\code{m},`n`) \\
+\code{zeros_like(x)}                                                & make array of same shape and element type as \code{x}               \\
+\code{linspace(a,b,m)}                                              & uniform sequence of \code{m} numbers in $[a,b]$                     \\
+\code{a.shape}                                                      & tuple containing \code{a}'s shape                                   \\
+\code{a.size}                                                       & total no of elements in \code{a}                                    \\
+\code{len(a)}                                                       & length of a one-dim. array \code{a} (same as \code{a.shape[0]})     \\
+\code{a.dtype}                                                      & the type of elements in \code{a}                                    \\
+\code{a.reshape(3,2)}                                               & return \code{a} reshaped as $3\times 2$ array                       \\
+\code{a[i]}                                                         & vector indexing                                                     \\
+\code{a[i,j]}                                                       & two-dim. array indexing                                             \\
+\code{a[1:k]}                                                       & slice: reference data with indices \code{1},\ldots,`k-1`            \\
+\code{a[1:8:3]}                                                     & slice: reference data with indices \code{1}, \code{4},\ldots,`7`    \\
+\code{b = a.copy()}                                                 & copy an array                                                       \\
+\hline
+\end{tabular}
+
+\vspace{4mm}
+
+}
+\end{center}
+
+\noindent
 \chapter{Storing results in data files}
 
 We need to test spaces around footnotes for 2-digit footnotes, which
@@ -68587,10 +68740,10 @@ and modules that make the differences beween version 2 and 3 very small.
 This strategy is adopted in the present book. Only two
 differences between versions 2 and 3 are expected to be significant for
 the programs in the book:
-{\Verb!a/b!} implies float division in version 3 if {\Verb!a!} and {\Verb!b!}
+\texttt{a/b} implies float division in version 3 if \texttt{a} and \texttt{b}
 are integers,
-and {\Verb!print 'Hello'!} in version 2 must be turned into a function call
-{\Verb!print('Hello')!} in version 3. None of these differences should lead
+and \texttt{print 'Hello'} in version 2 must be turned into a function call
+\texttt{print('Hello')} in version 3. None of these differences should lead
 to any annoying problems when future readers study the book's v2.7
 examples, but program in version 3. Anyway, running 2to3 on the
 example files generates the corresponding version 3 code.
@@ -68681,14 +68834,14 @@ demonstrates how to create these three types of lists:
 \noindent
 Here we have used list comprehensions for achieving compact code. Make
 sure that you understand what is going on in these list comprehensions
-(if not, try to write the same code using standard {\Verb!for!} loops and
+(if not, try to write the same code using standard \texttt{for} loops and
 appending new list elements in each pass of the loops).
 
 \index{heterogeneous lists}
 
 The list elements consist of objects of the same type: any element in
-{\Verb!pairs!} is a list of two {\Verb!float!} objects, while any element in {\Verb!xlist!}
-or {\Verb!ylist!} is a {\Verb!float!}. Lists are more flexible than that, because an
+\texttt{pairs} is a list of two \texttt{float} objects, while any element in \texttt{xlist}
+or \texttt{ylist} is a \texttt{float}. Lists are more flexible than that, because an
 element can be an object of any type, e.g.,
 
 \providecommand{\shadedskip}{}
@@ -68711,7 +68864,7 @@ mylist = [2, 6.0, 'tmp.ps', [0,1]]
 \end{Verbatim}
 \end{shadedquoteBlue}
 \noindent
-Here {\Verb!mylist!} holds an {\Verb!int!}, a {\Verb!float!}, a string, and a list. This
+Here \texttt{mylist} holds an \texttt{int}, a \texttt{float}, a string, and a list. This
 combination of diverse object types makes up what is known as
 \emph{heterogeneous} lists.  We can also easily remove elements from a list
 or add new elements anywhere in the list.  This flexibility of lists
@@ -68752,20 +68905,20 @@ following assumptions and features:
 
   \item The number of elements must be known when the array is created.
 
-  \item Arrays are not part of standard Python - one needs an additional package called \emph{Numerical Python}, often abbreviated as NumPy. The Python name of the package, to be used in {\Verb!import!} statements, is {\Verb!numpy!}.
+  \item Arrays are not part of standard Python - one needs an additional package called \emph{Numerical Python}, often abbreviated as NumPy. The Python name of the package, to be used in \texttt{import} statements, is \texttt{numpy}.
 
-  \item With {\Verb!numpy!}, a wide range of mathematical operations can be done directly on complete arrays, thereby removing the need for loops over array elements. This is commonly called \emph{vectorization} %or \emph{array computing} and may cause a dramatic speed-up of Python programs. Vectorization makes use of the vector computing concepts from Section~\ref{sec:plot:arraycomp}.
+  \item With \texttt{numpy}, a wide range of mathematical operations can be done directly on complete arrays, thereby removing the need for loops over array elements. This is commonly called \emph{vectorization} %or \emph{array computing} and may cause a dramatic speed-up of Python programs. Vectorization makes use of the vector computing concepts from Section~\ref{sec:plot:arraycomp}.
 
   \item Arrays with one index are often called vectors. Arrays with two indices are used as an efficient data structure for tables, instead of lists of lists. Arrays can also have three or more indices.
 \end{itemize}
 
 \noindent
 
-\begin{notice_mdfboxadmon}[Remarks.]
+\begin{notice_mdfboxadmon}[Remarks]
 
 \begin{enumerate}
 \item There is actually an
-   object type called {\Verb!array!} in standard Python, but this data type is
+   object type called \texttt{array} in standard Python, but this data type is
    not so efficient for mathematical computations, and we will not use it
    in this book.
 
@@ -68791,7 +68944,7 @@ and \emph{NumPy for MATLAB Users}, all accessible at \href{{http://scipy.org}}{s
 
 
 
-\begin{notice_mdfboxadmon}[Remarks on importing NumPy.]
+\begin{notice_mdfboxadmon}[Remarks on importing NumPy]
 The statement
 
 \begin{shadedquoteBlue}
@@ -68801,7 +68954,7 @@ import numpy as np
 \end{Verbatim}
 \end{shadedquoteBlue}
 \noindent
-with subsequent prefixing of all NumPy functions and variables by {\Verb!np.!},
+with subsequent prefixing of all NumPy functions and variables by \texttt{np.},
 has evolved as a standard syntax in the Python scientific computing
 community. However, to make Python programs look closer to MATLAB
 and ease the transition to and from that language, one can do
@@ -68815,7 +68968,7 @@ from numpy import *
 \noindent
 to get rid of the prefix (this is evolved as the standard in
 \emph{interactive} Python shells). This author prefers mathematical
-functions from {\Verb!numpy!} to be written without the prefix to
+functions from \texttt{numpy} to be written without the prefix to
 make the formulas as close as possible to the mathematics.
 So, $f(x)=\sinh(x-1)\sin(w t)$ would be coded as
 
@@ -68830,15 +68983,15 @@ def f(x):
 \end{shadedquoteBlue}
 \noindent
 or one may take the less recommended
-lazy approach {\Verb!from numpy import *!} and fill up
-the program with \emph{a lot} of functions and variables from {\Verb!numpy!}.
+lazy approach \texttt{from numpy import *} and fill up
+the program with \emph{a lot} of functions and variables from \texttt{numpy}.
 \end{notice_mdfboxadmon}
 
 
 
-To convert a list {\Verb!r!} to an array,
-we use the {\Verb!array!} function
-from {\Verb!numpy!}:
+To convert a list \texttt{r} to an array,
+we use the \texttt{array} function
+from \texttt{numpy}:
 
 \begin{shadedquoteBlue}
 \fontsize{9pt}{9pt}
@@ -68847,7 +69000,7 @@ a = np.array(r)
 \end{Verbatim}
 \end{shadedquoteBlue}
 \noindent
-To create a new array of length {\Verb!n!}, filled with zeros, we write
+To create a new array of length \texttt{n}, filled with zeros, we write
 
 \begin{shadedquoteBlue}
 \fontsize{9pt}{9pt}
@@ -68857,8 +69010,8 @@ a = np.zeros(n)
 \end{shadedquoteBlue}
 \noindent
 The array elements are of a type that corresponds to Python's
-{\Verb!float!} type. A second argument to {\Verb!np.zeros!} can be used to
-specify other element types, e.g., {\Verb!int!}.
+\texttt{float} type. A second argument to \texttt{np.zeros} can be used to
+specify other element types, e.g., \texttt{int}.
 A similar function,
 
 \begin{shadedquoteBlue}
@@ -68868,15 +69021,15 @@ a = np.zeros_like(c)
 \end{Verbatim}
 \end{shadedquoteBlue}
 \noindent
-generates an array of zeros where the length is that of the array {\Verb!c!}
-and the element type is the same as those in {\Verb!c!}.  Arrays with more
+generates an array of zeros where the length is that of the array \texttt{c}
+and the element type is the same as those in \texttt{c}.  Arrays with more
 than one index are treated in Section~\ref{sec:plot:2Darrays}.
 
 \index{linspace@{\rm\texttt{linspace}} (from {\rm\texttt{numpy}})}\index{np.linspace@{\rm\texttt{np.linspace}} function}
 
 Often one wants an array to have $n$ elements with uniformly
-distributed values in an interval $[p,q]$. The {\Verb!numpy!} function
-{\Verb!linspace!} creates such arrays:
+distributed values in an interval $[p,q]$. The \texttt{numpy} function
+\texttt{linspace} creates such arrays:
 
 \begin{shadedquoteBlue}
 \fontsize{9pt}{9pt}
@@ -68887,6 +69040,41 @@ a = np.linspace(p, q, n)
 \noindent
 
 
+\begin{center}
+{\small   % Springer T2 style: small table font and more vspace
+
+\vspace{4mm}
+
+\begin{tabular}{ll}
+\hline
+\multicolumn{1}{c}{ Construction } & \multicolumn{1}{c}{ Meaning } \\
+\hline
+\texttt{array(ld)}                                                    & copy list data \texttt{ld} to a \texttt{numpy} array                    \\
+\texttt{asarray(d)}                                                   & make array of data \texttt{d} (no data copy if already array)         \\
+\texttt{zeros(n)}                                                     & make a \texttt{float} vector/array of length \texttt{n}, with zeros     \\
+\texttt{zeros(n, int)}                                                & make an \texttt{int} vector/array of length \texttt{n} with zeros       \\
+\texttt{zeros((m,n))}                                                 & make a two-dimensional \texttt{float} array with shape (\texttt{m},`n`) \\
+{\Verb!zeros_like(x)!}                                                & make array of same shape and element type as \texttt{x}               \\
+\texttt{linspace(a,b,m)}                                              & uniform sequence of \texttt{m} numbers in $[a,b]$                     \\
+\texttt{a.shape}                                                      & tuple containing \texttt{a}'s shape                                   \\
+\texttt{a.size}                                                       & total no of elements in \texttt{a}                                    \\
+\texttt{len(a)}                                                       & length of a one-dim. array \texttt{a} (same as \texttt{a.shape[0]})     \\
+\texttt{a.dtype}                                                      & the type of elements in \texttt{a}                                    \\
+\texttt{a.reshape(3,2)}                                               & return \texttt{a} reshaped as $3\times 2$ array                       \\
+\texttt{a[i]}                                                         & vector indexing                                                     \\
+\texttt{a[i,j]}                                                       & two-dim. array indexing                                             \\
+\texttt{a[1:k]}                                                       & slice: reference data with indices \texttt{1},\ldots,`k-1`            \\
+\texttt{a[1:8:3]}                                                     & slice: reference data with indices \texttt{1}, \texttt{4},\ldots,`7`    \\
+\texttt{b = a.copy()}                                                 & copy an array                                                       \\
+\hline
+\end{tabular}
+
+\vspace{4mm}
+
+}
+\end{center}
+
+\noindent
 \chapter{Storing results in data files}
 
 We need to test spaces around footnotes for 2-digit footnotes, which
@@ -68908,10 +69096,10 @@ means we need a lot of URLs, e.g., to files:
 \label{sec:files:writing}
 
 Writing data to file is easy.
-There is basically one function to pay attention to: {\Verb!outfile.write(s)!},
-which writes a string {\Verb!s!} to
-a file handled by the file object {\Verb!outfile!}. Unlike {\Verb!print!},
-{\Verb!outfile.write(s)!}
+There is basically one function to pay attention to: \texttt{outfile.write(s)},
+which writes a string \texttt{s} to
+a file handled by the file object \texttt{outfile}. Unlike \texttt{print},
+\texttt{outfile.write(s)}
 does not append a newline character to the written string.
 It will therefore
 often be necessary to add a newline character,
@@ -68923,14 +69111,14 @@ outfile.write(s + '\n')
 \end{Verbatim}
 \end{shadedquoteBlue}
 \noindent
-if the string {\Verb!s!} is meant to appear on a single line in the file
-and {\Verb!s!} does not already contain a trailing newline character.
+if the string \texttt{s} is meant to appear on a single line in the file
+and \texttt{s} does not already contain a trailing newline character.
 File writing is then a matter of constructing strings containing the
 text we want to have in the file and for each such string call
-{\Verb!outfile.write!}.
+\texttt{outfile.write}.
 
 Writing to a file demands
-the file object {\Verb!f!}
+the file object \texttt{f}
 to be opened for writing:
 
 \begin{shadedquoteBlue}
@@ -68988,7 +69176,7 @@ row  4   -0.75000000   -0.29619813    0.29619813    0.75000000
 \end{Verbatim}
 \noindent
 To obtain this end result, we need to the add some statements to
-the program {\Verb!write1.py!}. For the column headings we need
+the program \texttt{write1.py}. For the column headings we need
 to know the number of columns, i.e., the length of the rows,
 and loop from 1 to this length:
 
@@ -69005,8 +69193,8 @@ outfile.write('\n')
 \noindent
 Note the use of a nested printf construction: The text we want to
 insert is itself a printf string. We could also have written the
-text as {\Verb!'column  ' + str(i)!}, but then the length of the
-resulting string would depend on the number of digits in {\Verb!i!}.
+text as \texttt{'column  ' + str(i)}, but then the length of the
+resulting string would depend on the number of digits in \texttt{i}.
 It is recommended to always use printf constructions for
 a tabular output format, because this gives automatic padding of
 blanks so that the width of the output strings remain the same.
@@ -69068,17 +69256,17 @@ The keyboard is a medium that the computer in fact
 treats as a file, referred to
 as \emph{standard input}.
 
-The {\Verb!print!} command prints text in the terminal window. This medium
+The \texttt{print} command prints text in the terminal window. This medium
 is also viewed as a file from the computer's point of view and called
 \emph{standard output}. All general-purpose programming languages
 allow reading from standard input and
 writing to standard output. This reading and writing can be done with
 two types of tools, either file-like objects or special tools like
 {\Verb!raw_input!}
-and {\Verb!print!} in Python.
+and \texttt{print} in Python.
 We will here describe the file-line objects:
-{\Verb!sys.stdin!} for standard input
-and {\Verb!sys.stdout!} for standard output. These objects
+\texttt{sys.stdin} for standard input
+and \texttt{sys.stdout} for standard output. These objects
 behave as file objects, except that they do not need to be opened or
 closed. The statement
 
@@ -69099,8 +69287,8 @@ s = sys.stdin.readline()
 \end{Verbatim}
 \end{shadedquoteBlue}
 \noindent
-Recall that the trailing comma in the {\Verb!print!} statement avoids the
-newline that {\Verb!print!} by default adds to the output string.
+Recall that the trailing comma in the \texttt{print} statement avoids the
+newline that \texttt{print} by default adds to the output string.
 Similarly,
 
 \begin{shadedquoteBlue}
@@ -69141,8 +69329,8 @@ sys.stdout.write(s + '\n')
 
 Why it is handy to have access to standard input and output
 as file objects can be illustrated by an example. Suppose you have a
-function that reads data from a file object {\Verb!infile!}
-and writes data to a file object {\Verb!outfile!}.
+function that reads data from a file object \texttt{infile}
+and writes data to a file object \texttt{outfile}.
 A sample function may take the form
 
 \begin{shadedquoteBlue}
@@ -69157,12 +69345,12 @@ def x2f(infile, outfile, f):
 \end{shadedquoteBlue}
 \noindent
 This function works with all types of files, including
-web pages as {\Verb!infile!} (see Section~\ref{sec:files:webtxt}).
-With {\Verb!sys.stdin!} as {\Verb!infile!} and/or {\Verb!sys.stdout!}
-as {\Verb!outfile!}, the {\Verb!x2f!} function also works with standard input
-and/or standard output. Without {\Verb!sys.stdin!} and {\Verb!sys.stdout!},
+web pages as \texttt{infile} (see Section~\ref{sec:files:webtxt}).
+With \texttt{sys.stdin} as \texttt{infile} and/or \texttt{sys.stdout}
+as \texttt{outfile}, the \texttt{x2f} function also works with standard input
+and/or standard output. Without \texttt{sys.stdin} and \texttt{sys.stdout},
 we would need different code, employing {\Verb!raw_input!}
-and {\Verb!print!},
+and \texttt{print},
 to deal with standard input and output. Now we can write a single
 function that deals with all file media in a unified way.
 
@@ -69175,8 +69363,8 @@ programs can distinguish between writing ordinary output to standard
 output and error messages to standard error, and these output media
 can be redirected to, e.g., files such that one can separate
 error messages from ordinary output.
-In Python, standard error is the file-like object {\Verb!sys.stderr!}.
-A typical application of {\Verb!sys.stderr!} is to report errors:
+In Python, standard error is the file-like object \texttt{sys.stderr}.
+A typical application of \texttt{sys.stderr} is to report errors:
 
 \begin{shadedquoteBlue}
 \fontsize{9pt}{9pt}
@@ -69186,21 +69374,21 @@ if x < 0:
 \end{Verbatim}
 \end{shadedquoteBlue}
 \noindent
-This message to {\Verb!sys.stderr!} is an alternative to
-{\Verb!print!} or raising an exception.
+This message to \texttt{sys.stderr} is an alternative to
+\texttt{print} or raising an exception.
 
 \paragraph{Redirecting standard input, output, and error.}
-Standard output from a program {\Verb!prog!}
+Standard output from a program \texttt{prog}
 can be redirected to a file
-{\Verb!output!} instead of the screen, by
+\texttt{output} instead of the screen, by
 using the greater than sign:
 
 \vspace{4pt}
 \begin{Verbatim}[numbers=none,frame=lines,label=\fbox{{\tiny Terminal}},fontsize=\fontsize{9pt}{9pt},labelposition=topline,framesep=2.5mm,framerule=0.7pt]
 Terminal> prog > output
 \end{Verbatim}
-Here, {\Verb!prog!} can be any
-program, including a Python program run as {\Verb!python myprog.py!}.
+Here, \texttt{prog} can be any
+program, including a Python program run as \texttt{python myprog.py}.
 Similarly, output to the medium called \emph{standard error}
 can be redirected by
 
@@ -69239,7 +69427,7 @@ Terminal> prog < input > output
 
 \paragraph{Note.}
 The redirection of standard output, input, and error
-does not work for Python programs executed with the {\Verb!run!}
+does not work for Python programs executed with the \texttt{run}
 command inside IPython, only when executed directly
 in the operating system in a terminal window, or with the same
 command prefixed with an exclamation mark in IPython.
@@ -69258,12 +69446,12 @@ as well as Python itself \cite{Python}, and of course NumPy
 \chapter{Styles for Springer T2}
 
 The T2 style for Doconce-generated {\LaTeX} should make use of
-slightly modified {\Verb!svmono.cls!} and {\Verb!t2.sty!} files:
+slightly modified \texttt{svmono.cls} and \texttt{t2.sty} files:
 
 \begin{itemize}
- \item {\Verb!svmonodo.cls!}
+ \item \texttt{svmonodo.cls}
 
- \item {\Verb!t2do.sty!}
+ \item \texttt{t2do.sty}
 \end{itemize}
 
 \noindent
@@ -72283,6 +72471,19 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \newenvironment{doconceexercise}{}{}
 \newcounter{doconceexercisecounter}
 
+
+% ------ header in subexercises ------
+%\newcommand{\subex}[1]{\paragraph{#1}}
+%\newcommand{\subex}[1]{\par\vspace{1.7mm}\noindent{\bf #1}\ \ }
+\makeatletter
+% 1.5ex is the spacing above the header, 0.5em the spacing after subex title
+\newcommand\subex{\@startsection{paragraph}{4}{\z@}%
+                  {1.5ex\@plus1ex \@minus.2ex}%
+                  {-0.5em}%
+                  {\normalfont\normalsize\bfseries}}
+\makeatother
+
+
 % Make sure blank even-numbered pages before new chapters are
 % totally blank with no header
 \newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
@@ -72407,7 +72608,8 @@ Besides syntax highlighting of Doconce documents, this Emacs mode
 provides a lot of shortcuts for setting up many elements in a document:
 
 
-\begin{quote}\begin{tabular}{ll}
+\begin{quote}
+\begin{tabular}{ll}
 \hline
 \multicolumn{1}{c}{ Emacs key } & \multicolumn{1}{c}{ Action } \\
 \hline
@@ -72428,7 +72630,8 @@ Ctrl+c exer                                      & exercise outline             
 Ctrl+c slide                                     & slide outline                                    \\
 Ctrl+c help                                      & print this table                                 \\
 \hline
-\end{tabular}\end{quote}
+\end{tabular}
+\end{quote}
 
 \noindent
 \subsection{Title, Authors, and Date}
@@ -72468,7 +72671,8 @@ The table of contents is removed by writing \code{TOC: off}.
 \label{quick:sections}
 
 
-\begin{quote}\begin{tabular}{ll}
+\begin{quote}
+\begin{tabular}{ll}
 \hline
 \multicolumn{1}{c}{ Section type } & \multicolumn{1}{c}{ Syntax } \\
 \hline
@@ -72483,7 +72687,8 @@ appendix                                              & \code{===== Appendix: he
 exercise                                              & \code{======= Exercise: heading =======} (7 \code{=}) \\
 exercise                                              & \code{===== Exercise: heading =====} (5 \code{=})     \\
 \hline
-\end{tabular}\end{quote}
+\end{tabular}
+\end{quote}
 
 \noindent
 Note that abstracts are recognized by starting with \code{__Abstract.__} or
@@ -83920,7 +84125,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 963.
+t line 986.
 
 
 
@@ -83940,7 +84145,7 @@ t line 963.
 
 
 
-t line 972.
+t line 995.
 
 
 
@@ -83964,7 +84169,7 @@ rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 
 
 
-t line 976.
+t line 999.
 
 
 
@@ -83989,50 +84194,50 @@ t line 976.
 
 
 ...rest of part of LaTeX line number...
-
-
-
-
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-
 
 
 
 .
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+.
+
+
+
+...rest of part of LaTeX line number...
 
 [17]
 Overfull \hbox (5.03835pt too wide) 
@@ -84144,10 +84349,6 @@ No file testdoc.bbl.
 ...rest of part of LaTeX line number...
 
 [25]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on .
-
 No file testdoc.ind.
 [26] (./testdoc.aux)
 
@@ -84690,7 +84891,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 963.
+t line 986.
 
 
 
@@ -84710,7 +84911,7 @@ t line 963.
 
 
 
-t line 972.
+t line 995.
 
 
 
@@ -84734,7 +84935,7 @@ rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 
 
 
-t line 976.
+t line 999.
 
 
 
@@ -84759,50 +84960,50 @@ t line 976.
 
 
 ...rest of part of LaTeX line number...
-
-
-
-
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-
 
 
 
 .
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+.
+
+
+
+...rest of part of LaTeX line number...
 
 [17]
 Overfull \hbox (5.03835pt too wide) 
@@ -84816,10 +85017,6 @@ Package amsmath Warning: Foreign command \over;
 [18] [19] (./testdoc.out.pyg) [20] (./testdoc.out.pyg) [21] [22]
 No file testdoc.bbl.
 [23] [24] [25]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on .
-
 No file testdoc.ind.
 [26] (./testdoc.aux)
 
@@ -85373,7 +85570,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 963.
+t line 986.
 
 
 
@@ -85393,7 +85590,7 @@ t line 963.
 
 
 
-t line 972.
+t line 995.
 
 
 
@@ -85417,7 +85614,7 @@ rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 
 
 
-t line 976.
+t line 999.
 
 
 
@@ -85442,50 +85639,50 @@ t line 976.
 
 
 ...rest of part of LaTeX line number...
-
-
-
-
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-
 
 
 
 .
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+.
+
+
+
+...rest of part of LaTeX line number...
 
 [17]
 Overfull \hbox (5.03835pt too wide) 
@@ -85497,12 +85694,7 @@ Package amsmath Warning: Foreign command \over;
 (amsmath)                 on .
 
 [18] [19] (./testdoc.out.pyg) [20] (./testdoc.out.pyg) [21] [22] (./testdoc.bbl
- [23] [24]) [25] [26]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on .
-
-(./testdoc.ind [27]
+ [23] [24]) [25] [26] (./testdoc.ind [27]
 Overfull \hbox (9.21497pt too wide) 
 []\T1/lmr/m/n/10 (-20) test \T1/lmtt/m/n/10 two \T1/lmr/m/n/10 (-20) (sep-a-rat
 e) \T1/lmtt/m/n/10 verbatim expressions \T1/lmr/m/n/10 (-20) which
@@ -86057,12 +86249,7 @@ Package amsmath Warning: Foreign command \over;
 (amsmath)                 on .
 
 [18] [19] (./testdoc.out.pyg) [20] (./testdoc.out.pyg) [21] [22] (./testdoc.bbl
- [23] [24]) [25] [26]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on .
-
-(./testdoc.ind [27]
+ [23] [24]) [25] [26] (./testdoc.ind [27]
 Overfull \hbox (9.21497pt too wide) 
 []\T1/lmr/m/n/10 (-20) test \T1/lmtt/m/n/10 two \T1/lmr/m/n/10 (-20) (sep-a-rat
 e) \T1/lmtt/m/n/10 verbatim expressions \T1/lmr/m/n/10 (-20) which
@@ -87402,6 +87589,8 @@ output in slides3.tex
 + '[' 0 -ne 0 ']'
 + system doconce slides_beamer slides3 --beamer_slide_theme=red3
 + doconce slides_beamer slides3 --beamer_slide_theme=red3
+*** missing style files:
+    beamerthemered3.sty
 could not extract beamerthemered3.sty (from latex_styles.zip in the doconce installation)
 slides written to slides3.tex
 + '[' 0 -ne 0 ']'
@@ -92863,8 +93052,8 @@ output in movies.txt
 + bash -x make.sh
 + name=Springer_T2_book
 + rm -f 'tmp_*'
-+ system doconce format pdflatex Springer_T2_book CHAPTER=chapter BOOK=book APPENDIX=appendix -DPRIMER_BOOK ALG=code --encoding=utf-8 --device=paper --latex_exercise_numbering=chapter --latex_admon_color=1,1,1 --latex_style=Springer_T2 --latex_title_layout=titlepage --latex_list_of_exercises=loe
-+ doconce format pdflatex Springer_T2_book CHAPTER=chapter BOOK=book APPENDIX=appendix -DPRIMER_BOOK ALG=code --encoding=utf-8 --device=paper --latex_exercise_numbering=chapter --latex_admon_color=1,1,1 --latex_style=Springer_T2 --latex_title_layout=titlepage --latex_list_of_exercises=loe
++ system doconce format pdflatex Springer_T2_book CHAPTER=chapter BOOK=book APPENDIX=appendix -DPRIMER_BOOK ALG=code --encoding=utf-8 --device=paper --latex_exercise_numbering=chapter --latex_admon_color=1,1,1 --latex_admon=mdfbox --latex_style=Springer_T2 --latex_title_layout=titlepage --latex_list_of_exercises=loe --latex_table_align=center --latex_admon_title_no_period
++ doconce format pdflatex Springer_T2_book CHAPTER=chapter BOOK=book APPENDIX=appendix -DPRIMER_BOOK ALG=code --encoding=utf-8 --device=paper --latex_exercise_numbering=chapter --latex_admon_color=1,1,1 --latex_admon=mdfbox --latex_style=Springer_T2 --latex_title_layout=titlepage --latex_list_of_exercises=loe --latex_table_align=center --latex_admon_title_no_period
 
 Summary of papers
 -----------------
@@ -92891,12 +93080,9 @@ running mako on tmp_preprocess__Springer_T2_book.do.txt to make tmp_mako__Spring
 mako variables: {'CHAPTER': 'chapter', 'PRIMER_BOOK': True, 'FORMAT': 'pdflatex', 'ALG': 'code', 'APPENDIX': 'appendix', 'DEVICE': 'paper', 'BOOK': 'book'}
 translating doconce text in tmp_mako__Springer_T2_book.do.txt to pdflatex
 open file with encoding utf-8
-could not extract svmonodo.cls.sty (from latex_styles.zip in the doconce installation)
-could not extract t2do.sty.sty (from latex_styles.zip in the doconce installation)
 
 exporting publish database papers.pub to papers.bib:
 Warning: found "!bc py", but py is not a standard predefined ptex2tex environment
-*** made directory latex_figs for admon figures
 output in Springer_T2_book.p.tex
 + '[' 0 -ne 0 ']'
 + system ptex2tex Springer_T2_book
@@ -93196,9 +93382,6 @@ LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <4.25> not available
 ...rest of part of LaTeX line number...
 
 
-Underfull \hbox (badness 5862) 
-\T1/lmr/m/n/11 (+20) or one may take the less rec-om-mended lazy ap-proach
-
 
 ...rest of part of LaTeX line number...
 
@@ -93444,22 +93627,23 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  )
 (see the transcript file for additional information){/usr/share/texmf/fonts/enc
-/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/share
-/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm
--mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}</usr/share/texmf/fo
+/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/sh
+are/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm
+/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc}</usr/share/texmf/fo
 nts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx9.pf
 b></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/ty
 pe1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></us
-r/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/pub
-lic/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/t
-exmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr
-9.pfb></usr/share/texmf/fonts/type1/public/lm/lmri12.pfb></usr/share/texmf/font
-s/type1/public/lm/lmri9.pfb></usr/share/texmf/fonts/type1/public/lm/lmss12.pfb>
-</usr/share/texmf/fonts/type1/public/lm/lmss9.pfb></usr/share/texmf/fonts/type1
-/public/lm/lmssbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></us
-r/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/pub
-lic/lm/lmtt12.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt8.pfb></usr/share
-/texmf/fonts/type1/public/lm/lmtt9.pfb>
+r/share/texmf/fonts/type1/public/lm/lmmi9.pfb></usr/share/texmf/fonts/type1/pub
+lic/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/
+texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/type1/public/lm/lm
+r8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf/fonts
+/type1/public/lm/lmri12.pfb></usr/share/texmf/fonts/type1/public/lm/lmri9.pfb><
+/usr/share/texmf/fonts/type1/public/lm/lmss12.pfb></usr/share/texmf/fonts/type1
+/public/lm/lmss9.pfb></usr/share/texmf/fonts/type1/public/lm/lmssbx10.pfb></usr
+/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/pub
+lic/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy9.pfb></usr/share/
+texmf/fonts/type1/public/lm/lmtt12.pfb></usr/share/texmf/fonts/type1/public/lm/
+lmtt8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
 Output written on Springer_T2_book.pdf (18 pages, ).
 Transcript written on Springer_T2_book.log.
 + '[' 0 -ne 0 ']'
@@ -93763,10 +93947,7 @@ LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <4.25> not available
 
 
 
- [2]
-Underfull \hbox (badness 5862) 
-\T1/lmr/m/n/11 (+20) or one may take the less rec-om-mended lazy ap-proach
-[3]
+ [2] [3]
 
 
 ...rest of part of LaTeX line number...
@@ -94011,22 +94192,23 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  )
 (see the transcript file for additional information){/usr/share/texmf/fonts/enc
-/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/share
-/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm
--mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}</usr/share/texmf/fo
+/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/sh
+are/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm
+/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc}</usr/share/texmf/fo
 nts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx9.pf
 b></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/ty
 pe1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></us
-r/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/pub
-lic/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/t
-exmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr
-9.pfb></usr/share/texmf/fonts/type1/public/lm/lmri12.pfb></usr/share/texmf/font
-s/type1/public/lm/lmri9.pfb></usr/share/texmf/fonts/type1/public/lm/lmss12.pfb>
-</usr/share/texmf/fonts/type1/public/lm/lmss9.pfb></usr/share/texmf/fonts/type1
-/public/lm/lmssbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></us
-r/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/pub
-lic/lm/lmtt12.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt8.pfb></usr/share
-/texmf/fonts/type1/public/lm/lmtt9.pfb>
+r/share/texmf/fonts/type1/public/lm/lmmi9.pfb></usr/share/texmf/fonts/type1/pub
+lic/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/
+texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/type1/public/lm/lm
+r8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf/fonts
+/type1/public/lm/lmri12.pfb></usr/share/texmf/fonts/type1/public/lm/lmri9.pfb><
+/usr/share/texmf/fonts/type1/public/lm/lmss12.pfb></usr/share/texmf/fonts/type1
+/public/lm/lmss9.pfb></usr/share/texmf/fonts/type1/public/lm/lmssbx10.pfb></usr
+/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/pub
+lic/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy9.pfb></usr/share/
+texmf/fonts/type1/public/lm/lmtt12.pfb></usr/share/texmf/fonts/type1/public/lm/
+lmtt8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
 Output written on Springer_T2_book.pdf (21 pages, ).
 Transcript written on Springer_T2_book.log.
 + '[' 0 -ne 0 ']'
@@ -94310,10 +94492,7 @@ LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <8.5> not available
 LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <4.25> not available
 (Font)              size <5> substituted on .
 
-[1]  [2]
-Underfull \hbox (badness 5862) 
-\T1/lmr/m/n/11 (+20) or one may take the less rec-om-mended lazy ap-proach
-[3]
+[1]  [2] [3]
 
 
 ...rest of part of LaTeX line number...
@@ -94533,21 +94712,23 @@ LaTeX Warning: There were undefined references.
 
  )
 (see the transcript file for additional information){/usr/share/texmf/fonts/enc
-/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/share
-/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm
--mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}</usr/share/texmf/fo
+/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/sh
+are/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm
+/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc}</usr/share/texmf/fo
 nts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.p
 fb></usr/share/texmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/t
-ype1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></us
-r/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/pub
-lic/lm/lmr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/te
-xmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf/fonts/type1/public/lm/lmri
-12.pfb></usr/share/texmf/fonts/type1/public/lm/lmri9.pfb></usr/share/texmf/font
-s/type1/public/lm/lmss12.pfb></usr/share/texmf/fonts/type1/public/lm/lmss9.pfb>
-</usr/share/texmf/fonts/type1/public/lm/lmssbx10.pfb></usr/share/texmf/fonts/ty
-pe1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></us
-r/share/texmf/fonts/type1/public/lm/lmtt12.pfb></usr/share/texmf/fonts/type1/pu
-blic/lm/lmtt8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
+ype1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi9.pfb></us
+r/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/pub
+lic/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/t
+exmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr
+9.pfb></usr/share/texmf/fonts/type1/public/lm/lmri12.pfb></usr/share/texmf/font
+s/type1/public/lm/lmri9.pfb></usr/share/texmf/fonts/type1/public/lm/lmss12.pfb>
+</usr/share/texmf/fonts/type1/public/lm/lmss9.pfb></usr/share/texmf/fonts/type1
+/public/lm/lmssbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></us
+r/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/pub
+lic/lm/lmsy9.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb></usr/share
+/texmf/fonts/type1/public/lm/lmtt8.pfb></usr/share/texmf/fonts/type1/public/lm/
+lmtt9.pfb>
 Output written on Springer_T2_book.pdf (21 pages, ).
 Transcript written on Springer_T2_book.log.
 + '[' 0 -ne 0 ']'
@@ -95041,7 +95222,6 @@ output in quickref.html
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to latex
 copy complete file doconce_program.sh  (format: shpro)
-*** made directory latex_figs for admon figures
 output in quickref.p.tex
 + '[' 0 -ne 0 ']'
 + system doconce ptex2tex quickref envir=Verbatim
