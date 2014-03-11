@@ -1,0 +1,1241 @@
+%% This template can be used to write a paper for
+%% Computer Physics Communications using LaTeX.
+%% For authors who want to write a computer program description,
+%% an example Program Summary is included that only has to be
+%% completed and which will give the correct layout in the
+%% preprint and the journal.
+%% The `elsarticle' style is used and more information on this style
+%% can be found at 
+%% http://www.elsevier.com/wps/find/authorsview.authors/elsarticle.
+%%
+%%
+%\documentclass[preprint,12pt]{elsarticle}
+
+%% Use the option review to obtain double line spacing
+%% \documentclass[preprint,review,12pt]{elsarticle}
+
+%% Use the options 1p,twocolumn; 3p; 3p,twocolumn; 5p; or 5p,twocolumn
+%% for a journal layout:
+%% \documentclass[final,1p,times]{elsarticle}
+%%\documentclass[final,1p,times,twocolumn]{elsarticle}
+%% \documentclass[final,3p,times]{elsarticle}
+\documentclass[final,3p,times,twocolumn]{elsarticle}
+%% \documentclass[final,5p,times]{elsarticle}
+%%\documentclass[final,5p,times,twocolumn]{elsarticle}
+
+%% if you use PostScript figures in your article
+%% use the graphics package for simple commands
+%% \usepackage{graphics}
+%% or use the graphicx package for more complicated commands
+\usepackage{graphicx}
+\usepackage{array}
+%% or use the epsfig package if you prefer to use the old commands
+%% \usepackage{epsfig}
+\usepackage{algorithm2e}
+
+%% The amssymb package provides various useful mathematical symbols
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{bm}
+%% The amsthm package provides extended theorem environments
+\usepackage{amsthm}
+\usepackage{dirtree}
+\usepackage{lmodern}
+
+%% The lineno packages adds line numbers. Start line numbering with
+%% \begin{linenumbers}, end it with \end{linenumbers}. Or switch it on
+%% for the whole article with \linenumbers after \end{frontmatter}.
+%% \usepackage{lineno}
+
+%% natbib.sty is loaded by default. However, natbib options can be
+%% provided with \biboptions{...} command. Following options are
+%% valid:
+
+%%   round  -  round parentheses are used (default)
+%%   square -  square brackets are used   [option]
+%%   curly  -  curly braces are used      {option}
+%%   angle  -  angle brackets are used    <option>
+%%   semicolon  -  multiple citations separated by semi-colon
+%%   colon  - same as semicolon, an earlier confusion
+%%   comma  -  separated by comma
+%%   numbers-  selects numerical citations
+%%   super  -  numerical citations as superscripts
+%%   sort   -  sorts multiple citations according to order in ref. list
+%%   sort&compress   -  like sort, but also compresses numerical citations
+%%   compress - compresses without sorting
+%%
+%% \biboptions{comma,round}
+
+% \biboptions{}
+
+\usepackage{listings}
+\lstset{basicstyle=\ttfamily\footnotesize,
+numbers=none,
+aboveskip=1ex,
+belowskip=1ex
+}
+
+\newcommand{\belowtitleskip}{2pt}%\smallskipamount}
+
+\usepackage{xcolor}
+\definecolor{gray}{gray}{0.97}
+\colorlet{commentcolour}{green!50!black}
+\colorlet{stringcolour}{red!60!black}
+\colorlet{keywordcolour}{magenta!90!black}
+\colorlet{exceptioncolour}{yellow!50!red}
+\colorlet{commandcolour}{blue!60!black}
+\colorlet{promptcolour}{green!50!black}
+
+\lstdefinestyle{pythonstyle}{
+keepspaces=true,
+language=python,
+showtabs=true,
+tab=,
+tabsize=2,
+basicstyle=\ttfamily\footnotesize,%\setstretch{.5},
+stringstyle=\color{stringcolour},
+showstringspaces=false,
+alsoletter={1234567890},
+otherkeywords={\ , \}, \{, \%, \&, \|},
+keywordstyle=\color{keywordcolour}\bfseries,%
+emph={[2]True, False, None},
+emphstyle=[2]\color{keywordcolour},
+emph={[3]object,type,isinstance,copy,deepcopy,zip,enumerate,
+reversed,list,len,dict,tuple,xrange,append,execfile,real,imag,
+reduce,str,repr, vars},
+emphstyle=[3]\color{commandcolour},
+emph={Exception,NameError,IndexError,SyntaxError,TypeError,ValueError,OverflowError,ZeroDivisionError},
+emphstyle=\color{exceptioncolour}\bfseries,
+morestring=[s]{"""}{"""},
+morestring=[s]{'''}{'''},
+commentstyle=\color{commentcolour}\slshape,
+emph={[4]1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 001, ode, fsolve, sqrt, exp, sin, cos, arccos, pi, array, norm, dot, arange, , isscalar, max, sum, flatten, shape, reshape, find, any, all, abs, plot, linspace, legend, quad, polyval,polyfit, hstack, concatenate,vstack,column_stack,empty,zeros,ones,rand,vander,
+grid,pcolor,eig,eigs,eigvals,svd,qr,tan,det,logspace,roll,min,
+mean,cumsum,cumprod,diff,vectorize,lstsq,cla,eye,xlabel,ylabel,
+},
+emphstyle=[4]\color{commandcolour},
+emph={[5]and,break,class,continue,def,yield,del,elif ,else,
+except,exec,finally,for,global,if,in,
+lambda,not,or,pass,print,raise,return,try,while,assert},
+emphstyle=[5]\color{black}\bf,
+literate=*%
+%{+}{{\textcolor{black}{+}}}{1}%
+%{*}{{\textcolor{black}{*}}}{1}%
+{>>>}{{\textcolor{promptcolour}{>>>}}}{1}%
+,%
+breaklines=true,
+breakatwhitespace= true,
+xleftmargin=0ex,
+xrightmargin=0ex,
+aboveskip=1ex,
+belowskip=1ex,
+frame=trbl, %trbl
+numbers=none,
+rulecolor=\color{black!40},
+backgroundcolor=\color{gray}
+}
+
+\lstdefinestyle{inlinestyle}{
+language=python,
+basicstyle=\ttfamily\footnotesize,%\setstretch{.5},
+breaklines=true,
+breakatwhitespace= true,
+xleftmargin=0ex,
+xrightmargin=0ex,
+aboveskip=1ex,
+belowskip=1ex,
+frame=trbl, %trbl
+numbers=none,
+float=htpb,
+}
+
+\lstnewenvironment{python}[1][]{
+\lstset{style=pythonstyle, frame=trbl, belowcaptionskip=\belowtitleskip}
+}{}
+
+\newcommand{\inpyth}{\lstinline[style=inlinestyle]} %[]%
+
+%% This list environment is used for the references in the
+%% Program Summary
+%%
+\newcounter{bla}
+\newenvironment{refnummer}{%
+\list{[\arabic{bla}]}%
+{\usecounter{bla}%
+ \setlength{\itemindent}{0pt}%
+ \setlength{\topsep}{0pt}%
+ \setlength{\itemsep}{0pt}%
+ \setlength{\labelsep}{2pt}%
+ \setlength{\listparindent}{0pt}%
+ \settowidth{\labelwidth}{[9]}%
+ \setlength{\leftmargin}{\labelwidth}%
+ \addtolength{\leftmargin}{\labelsep}%
+ \setlength{\rightmargin}{0pt}}}
+ {\endlist}
+
+\journal{Computer Physics Communications}
+
+\begin{document}
+
+\begin{frontmatter}
+
+%% Title, authors and addresses
+
+%% use the tnoteref command within \title for footnotes;
+%% use the tnotetext command for the associated footnote;
+%% use the fnref command within \author or \address for footnotes;
+%% use the fntext command for the associated footnote;
+%% use the corref command within \author for corresponding author footnotes;
+%% use the cortext command for the associated footnote;
+%% use the ead command for the email address,
+%% and the form \ead[url] for the home page:
+%%
+%% \title{Title\tnoteref{label1}}
+%% \tnotetext[label1]{}
+%% \author{Name\corref{cor1}\fnref{label2}}
+%% \ead{email address}
+%% \ead[url]{home page}
+%% \fntext[label2]{}
+%% \cortext[cor1]{}
+%% \address{Address\fnref{label3}}
+%% \fntext[label3]{}
+
+\title{Oasis: a high-level/high-performance open source Navier-Stokes solver}
+
+%% use optional labels to link authors explicitly to addresses:
+%% \author[label1,label2]{<author name>}
+%% \address[label1]{<address>}
+%% \address[label2]{<address>}
+
+\author[a,b]{Mikael Mortensen\corref{author}}
+\address[a]{University of Oslo, Moltke Moes vei 35, 0851 Oslo, Norway}
+\address[b]{Center for Biomedical Computing at Simula Research Laboratory, P.O.Box 134, N-1325 Lysaker, Norway}
+\author[b,c]{Kristian Valen-Sendstad}
+
+\address[c]{University of Toronto, 5 Kings College Road, Toronto, ON, Canada}
+
+\cortext[author] {Corresponding author.\\\textit{E-mail address:} mikaem@math.uio.no}
+
+\begin{abstract}
+%% Text of abstract
+\emph{Oasis} is a high-level/high-performance finite element Navier-Stokes solver written from scratch in Python using building blocks from the FEniCS project (fenicsproject.org). The solver is unstructured, runs with MPI and interfaces, through FEniCS, to state-of-the-art linear algebra backends like PETSc and Trilinos. \emph{Oasis} advocates a high-level, programmable user interface through the creation of highly flexible Python modules for new problems. Through the high-level Python interface the user is placed in complete control of every aspect of the solver. A version of the solver, which is using piecewise linear elements for both velocity and pressure, is shown to more or less reproduce the classical, spectral, turbulent channel simulations of Moser, Kim and Mansour at $Re_{\tau}=180$ [Phys. Fluids, vol 11(4), p. 964].  The computational speed is dominated by the iterative solvers provided by the linear algebra backend (here PETSc). That is, there is very little overhead in the high-level finite element assembly of the variational forms. Higher order accuracy is also demonstrated and new solvers may be easily added within the same framework.
+
+%A submitted program is expected to be of benefit to other physicists or physical chemists, or be an exemplar of good programming practice, or illustrate new or novel programming techniques which are of importance to some branch of computational physics or physical chemistry.
+%
+%Acceptable program descriptions can take different forms. The following Long Write-Up structure is a suggested structure but it is not obligatory. Actual structure will depend on the length of the program, the extent to which the algorithms or software have already been described in literature, and the detail provided in the user manual.
+%
+%Your manuscript and figure sources should be submitted through the Elsevier Editorial System (EES) by using the online submission tool at \\
+%http://www.ees.elsevier.com/cpc.
+%
+%In addition to the manuscript you must supply: the program source code; job control scripts, where applicable; a README file giving the names and a brief description of all the files that make up the package and clear instructions on the installation and execution of the program; sample input and output data for at least one comprehensive test run; and, where appropriate, a user manual. These should be sent, via email as a compressed archive file, to the CPC Program Librarian at cpc@qub.ac.uk.
+
+\end{abstract}
+
+\begin{keyword}
+%% keywords here, in the form: keyword \sep keyword
+CFD; FEniCS; Python; Navier-Stokes
+
+\end{keyword}
+
+\end{frontmatter}
+
+%%
+%% Start line numbering here if you want
+%%
+% \linenumbers
+
+% Computer program descriptions should contain the following
+% PROGRAM SUMMARY.
+
+{\bf PROGRAM SUMMARY}
+  %Delete as appropriate.
+
+\begin{small}
+\noindent
+{\em Manuscript Title:}  Oasis: a high-level/high-performance open source Navier Stokes solver                                       \\
+{\em Authors: } Mikael Mortensen, Kristian Valen-Sendstad   \\
+{\em Program Title:} Oasis                    \\
+{\em Journal Reference:}                                      \\
+  %Leave blank, supplied by Elsevier.
+{\em Catalogue identifier:}                                   \\
+  %Leave blank, supplied by Elsevier.
+{\em Licensing provisions:} GNU Lesser GPL version 3 or any later version  \\
+  %enter "none" if CPC non-profit use license is sufficient.
+{\em Programming language:}  Python/C++                      \\
+{\em Computer:Any single laptop computer or cluster.}    \\
+  %Computer(s) for which program has been designed.
+{\em Operating system: Any(Linux, OSX, Windows)}                                       \\
+  %Operating system(s) for which program has been designed.
+{\em RAM:} a few Megabytes to several hundred Gigabytes.    \\
+  %RAM in bytes required to execute program with typical data.
+{\em Number of processors used:} 1 - 1000          \\
+  %If more than one processor.
+%{\em Supplementary material:}                                 \\
+  % Fill in if necessary, otherwise leave out.
+{\em Keywords:} FEniCS, Python, MPI, C++, finite element, fractional step  \\
+  % Please give some freely chosen keywords that we can use in a
+  % cumulative keyword index.
+{\em Classification:} 12                              \\
+  %Classify using CPC Program Library Subject Index, see (
+  % http://cpc.cs.qub.ac.uk/subjectIndex/SUBJECT_index.html)
+  %e.g. 4.4 Feynman diagrams, 5 Computer Algebra.
+{\em External routines/libraries:} FEniCS \\
+(www.fenicsproject.org, that in turn depends on a number of external libraries like MPI, PETSc, Epetra, Boost and ParMetis)  \\
+{\em Nature of problem:}\\
+  %Describe the nature of the problem here.
+  Incompressible, Newtonian fluid flow.
+   \\
+{\em Solution method:}\\
+  %Describe the method solution here.
+  The finite element method.
+   \\
+{\em Unusual features:}\\
+  %Describe any unusual features of the program/problem here.
+  FEniCS automatically generates and compiles low-level C++ code based on high-level Python code.
+   \\
+%{\em Additional comments:}\\
+%  %Provide any additional comments here.
+%   \\
+%{\em Running time:}\\
+%  %Give an indication of the typical running time here.
+%   \\
+
+\end{small}
+
+
+%% main text
+\section{Introduction}
+\label{sec:introduction}
+%Computational Fluid Dynamics (CFD) is becoming a household tool in the development and design of new industrial equipment and processes. The understanding of fluid flow is particularly important for processes involving, e.g., the mixing of fluids (combustion, chemical engineering), or vehicles where drag is proportional to cost. CFD is also used by scientists to understand, e.g., blood flow in the human body or how a drug injected in the cerebrospinal fluid is distributed and absorbed by the host. 
+
+%New applications where CFD is used to get detailed information about the fluid flow and its effects on important physics is showing up everywhere. The widespread use is much due to the simple and easy to use graphical user interfaces to commercial CFD-solvers. The downside is often stated to be that these solvers are too easy to use and default models and settings are not always appropriate. There is no denying that commercial CFD-solvers certainly have their place in science. However, different applications requires very different numerical and modelling approaches and simulations should always be performed by someone with a good understanding of underlying physics.
+
+%Kristen Nyg\aa{}rd has a famous statement saying "programming is understanding". We believe this to be a highly appropriate statement. You cannot fully understand the nature of CFD-solvers if you have only used them through a GUI. At the heart of all CFD softwares there is an implementation of the governing partial differential equations, usually a model derived starting from the Navier-Stokes equations, discretized on a computational mesh with an appropriate numerical method. To fully understand how and why CFD-solvers work and sometimes fail, it is necessary to at least be aware of what goes on here, underneath the hood.
+
+The Navier-Stokes equations describe the flow of incompressible, Newtonian fluids. The equations are transient, nonlinear and velocity is non-trivially coupled with pressure. A lot of research has been devoted to finding efficient ways of linearizing, coupling and solving these equations. Many commercial solvers for Computational Fluid Dynamics (CFD) are available, and, due to the complexity of the high-level implementations (usually Fortran or C), users are often operating these solvers through a Graphical User Interface (GUI). To implement a generic, unstructured Navier-Stokes solver from scratch in a low-level language like C or Fortran is a considerable and time-consuming task involving tens of thousands of lines of error prone code that require much maintenance. Nowadays, as will be shown in this paper, the use of new and modern high-level software tools enables developers to cut the size of programs down to a few hundred lines and development times to hours. 
+
+The implementation of any unstructured (Eulerian) CFD-solver requires a computational mesh. For most CFD software packages today the mesh is generated by a third-party software like, e.g., the open source projects VMTK \cite{vmtk}, Gmsh \cite{gmsh} or Cubit \cite{cubit}. To solve the governing equations on this computational mesh, the equations must be linearized and discretized such that a solution can be found for a certain (large) set of degrees of freedom. Large systems of linear equations need to be assembled and subsequently solved by appropriate direct or iterative methods. Like for mesh generation, basic linear algebra, with matrix/vector storage and operations, is nowadays most commonly outsourced to third-party software packages like PETSc \cite{petsc-web-page} and Trilinos \cite{trilinos} (see, e.g., \cite{openfvm, fluidity, oofem}). 
+%Furthermore, both PETSc and Trilinos provide high-level Python interfaces (petsc4py and pytrilinos) to their low-level linear algebra solvers. This means that highly efficient C/C++ routines for computationally demanding linear algebra can be called from a scripting language without the need of firing up a compiler and at practically no additional cost.  
+
+With both mesh generation and linear algebra outsourced, the main job of CFD solvers boils down to the linearization and discretization of the governing equations. This is by no means a trivial task as it, apart from the actual discretization, requires, e.g., maps from computational cells to global degrees of freedom, connectivity of cells, facets and vertices, as well as the assembling of discrete operators. For parallel performance it is also necessary to distribute the mesh between processors and set up for inter-communication between compute nodes. Fortunately, much of the Message Passing Interface (MPI) is already handled by the providers of basic linear algebra. When it comes down to the actual discretization, the most common approaches are probably the finite volume method, which is very popular for fluid flow, finite differences or the finite element method.
+
+%The finite volume method, which is very popular for fluid flows, is a low-order method that uses a weak form based on integrating the governing equations over cells (or control volumes), making extensive use of the divergence theorem to ensure local (and global) conservation of transported properties like mass. The finite element method is another method that is also based on a weak variational form of the governing equations, but here the solution may be picked from a rich family of basis functions, possibly of higher order. 
+
+FEniCS \cite{fenics} is a generic open source software framework that aims at automating the discretization of differential equations through the finite element method. FEniCS takes full advantage of specialized, reliable and robust third-party providers of computational software and interfaces to both PETSc and Trilinos for linear algebra and several third-party mesh generators. FEniCS utilizes the Unified Form Language (UFL, \cite{ufl}) and the Free Form Compiler (FFC, \cite{Kirby:2006}) to automatically generate low-level C++ code that efficiently evaluates any equation formulated as a finite element variational form. The FEniCS user has to provide the high-level variational form that is to be solved, but does not need to actually perform any coding on the level of the computational cell, or element. A choice is made of finite element basis functions, and code is then generated for the form accordingly. There is a large library of possible finite elements to choose from and they may be combined both implicitly in a coupled manner or explicitly in a segregated manner - all at the same level of complexity to the user. The user never has to see the generated low-level code, but, this being an open source project, the code is wide open for inspection and even manual fine-tuning and optimization is possible. 
+
+In this paper we will describe a Navier-Stokes solver written from scratch in Python, using building blocks from FEniCS. In its simplest form a complete Navier-Stokes solver for unstructured three-dimensional\footnote{There is practically no difference between the code for 2D or 3D problems; only the mesh is different.} meshes can be written using less than 50 lines of Python-code. As will be shown, though, a more efficient implementation requires a bit more effort.
+
+\section{An introductory Poisson problem}
+Let's consider first a boundary value problem as an introductory example to FEniCS. The Poisson equation with boundary conditions reads
+\begin{align}
+   - \nabla^2 u(\pmb{x}) &= f(\pmb{x}),\quad \pmb{x}\mbox{ in } \Omega, \label{eq:PoissonPDE}
+        \\
+    u(\pmb{x}) &= u_0(\pmb{x}),\quad \pmb{x}\mbox{ on } \partial \Omega\thinspace . \notag
+\end{align}
+Here, $u(\pmb{x})$ is the unknown function, $f(\pmb{x})$ a
+prescribed function, $\pmb{x}=(x, y)$ the spatial coordinates in 2 dimensions, $\nabla^2$ the Laplace operator (also
+often written as $\Delta$), $\Omega$ the spatial domain, and
+$\partial\Omega$ is the closed boundary of $\Omega$. 
+
+The Poisson equation is commonly encountered in physics, and for the Navier-Stokes equations it plays an important role in coupling pressure with velocity. We will now solve the Poisson equation using the high-level Python interface to FEniCS. The first issue at hand is then to transform the boundary-value problem (\ref{eq:PoissonPDE}) into a variational form. This is achieved by multiplying Eq.~(\ref{eq:PoissonPDE}) by a test function $v$, integrate over the domain and use integration by parts on the Laplacian
+\begin{align}
+ -\int_\Omega (\nabla^2 u)v \, \mathrm{d}x &= \int_\Omega fv \, \mathrm{d}x\thinspace, \\
+ \int_\Omega\nabla u\cdot\nabla v \, \mathrm{d}x - \int_{\partial\Omega} \nabla_n u\, v \, \mathrm{d}s   &=  \int_\Omega fv \, \mathrm{d}x\thinspace, \label{eq:Poisson_Variational}
+\end{align}
+where $\nabla_n u = \nabla u \cdot \bm{n}$ represents the derivative of $u$ in the outward normal direction $\bm{n}$ at the boundary, and $\mathrm{d}s$ is a segment of the boundary. Equation (\ref{eq:Poisson_Variational}), with appropriate boundary conditions, represents a variational formulation of the Poisson boundary value problem. To complete the formulation we also need to choose appropriate function spaces for both the trial and test functions $u$ and $v$. For the Poisson problem the trial and test spaces $V$ and $\hat{V}$ are defined as
+\begin{align}
+ V &= \{ v\in H^1(\Omega): v=u_0 \,\mathrm{ on }\, \partial \Omega \}, \notag \\
+ \hat{V} &= \{ v\in H^1(\Omega): v=0\, \mathrm{ on }\, \partial \Omega \},
+ \label{eq:H1-spaces}
+\end{align}
+where $u_0$ is a prescribed velocity on part $\partial \Omega$ of the boundary and $H^1(\Omega)$ is the Sobolov space containing functions $v$ such that $v^2$ and $|\nabla v|^2$ have finite integrals over $\Omega$. To be able to solve the Poisson equation, $f(x,y)$ must take a functional form and we must define our boundary function $u_0$. If $f = -6$, then the exact solution to this problem is $u(x,y) = u_0(x,y) = 1+x^2+2y^2$ and the complete code shown in Fig.~\ref{lst:poisson} will, when executed, solve the variational formulation on the unit square $\Omega=[0, 1]\times [0,1]$. The finite element solution, which is the product of the solver, is chosen to take the form of piecewise linear Lagrange elements and the solution can on discretized form be written as
+\begin{equation}
+ u = \sum_j^N \mathcal{U}_j \phi_j,
+ \label{eq:u_function}
+\end{equation}
+where $\phi_j$ are the linear basis functions and the degrees of freedom $\mathcal{U}_j$ are the values of $u$ at all the $N$ nodes in the computational mesh (this is only true for piecewise linear elements). 
+
+\begin{figure}[ht!]
+\begin{python}
+from dolfin import *
+
+# Create mesh and define function space
+mesh = UnitSquareMesh(4, 4)
+V = FunctionSpace(mesh, "Lagrange", 1)
+
+# Define homogeneous boundary conditions
+u0 = Expression("1+x[0]*x[0]+2*x[1]*x[1]")
+bc = DirichletBC(V, u0, DomainBoundary())
+
+# Define variational problem
+u = TrialFunction(V)
+v = TestFunction(V)
+f = Constant(-6.0)
+F = inner(grad(u), grad(v))*dx - f*v*dx
+a, L = system(F)
+
+# Redefine u and compute solution
+u = Function(V)
+solve(a == L, u, bc)
+
+# Save solution as vtk-file
+file = File("u.pvd")
+file << u
+\end{python}
+\caption{Poisson.py - Complete FEniCS solver for Poisson's equation on the unit square with Dirichlet boundary conditions.}
+\label{lst:poisson}
+\end{figure}
+
+The first line of Fig.~\ref{lst:poisson} imports all of dolfin's functionality (dolfin is the C++/Python problem solving environment of FEniCS) into the python module's namespace and is typically the first line in most FEniCS based solvers. The remaining code is pretty much self-explanatory due to the close agreement between code and mathematical formulation. Note that the boundary integral is not part of the variational form here since the test function $v$ is zero on the part of the boundary where $u$ is known. For the current problem $u$ is known on the entire boundary and thus the boundary term disappears completely. The code in Fig.~\ref{lst:poisson} runs in parallel without any exposure of MPI to the user. It is merely required that FEniCS has been installed with MPI enabled. The code can be executed and run using 4 CPUs with command 
+
+\vskip 1ex
+\noindent
+\begin{minipage}{\columnwidth}
+\begin{python}
+>>> mpirun -np 4 python Poisson.py
+\end{python}
+\end{minipage}
+\vskip 1ex
+
+The final \inpyth{solve}{} in Fig.~\ref{lst:poisson} deserves some further explanation, since this is a convenience function that wraps up all the necessary steps required to solve the variational problem defined by \inpyth{F}. Evidently, \inpyth{F} contains both bilinear form $a(u, v)$ and linear form $L(v)$, where the former contains both trial and test function, and the latter contains only the test function. The convenience function \inpyth{system}{} is used to extract these bilinear and linear forms respectively from \inpyth{F}{}. A linear algebra formulation of the same problem helps to shed some light on what is actually going on. Given the variational problem we attempt to solve, i.e., $a(u, v) = L(v)$, we know that the discrete finite element solution can be represented as shown in Eq.~(\ref{eq:u_function}) and the basis function as $v= \phi_i$ for $i=1,2,\ldots, N$. These can now be inserted into the variational form giving
+\begin{equation}
+  \sum_{j=1}^N a(\phi_j, \phi_i)\, \mathcal{U}_j = L(\phi_i), \quad i=1,\ldots, N,
+\end{equation}
+which is simply a linear system of equations
+\begin{equation}
+  A_{ij}\, \mathcal{U}_j = b_i,
+  \label{eq:Aij=bi}
+\end{equation}
+where the matrix $A_{ij} = a(\phi_j, \phi_i)$ and vector $b_i = L(\phi_i)$. To wrap up, the \inpyth{solve}{} function in Fig.~\ref{lst:poisson} both assembles and solves the system of linear algebra equations and the function can be replaced by the more elaborate, but otherwise identical, code presented in Fig.~\ref{lst:solve-explained}. Note that the final \inpyth{solve}{} function in Fig.~\ref{lst:solve-explained} is different from \inpyth{solve}{} in Fig.~\ref{lst:poisson}, even though both live in the same Python namespace. The \inpyth{solve}{} in Fig.~\ref{lst:solve-explained} is actually just a regular linear algebra solver that solves the problem $A_{ij} \mathcal{U}_j = b_i$ through a direct LU decomposition. The correct \inpyth{solve}{} function is chosen at runtime from the list of arguments to the function, and there are actually even more than just these two possibilities.
+\begin{figure}[ht!]
+\begin{python}
+# Assemble coefficient matrix
+A = assemble(a)
+
+#Assemble right hand side vector
+b = assemble(L)
+
+# Apply boundary conditions
+bc.apply(A, b)
+
+# Solve linear algebra Au=b
+solve(A, u.vector(), b)
+\end{python}
+\caption{Illustration of what \inpyth{solve(a == L, u, bc)} in Figure \ref{lst:poisson} actually does. Note that the final \inpyth{solve} is another, different,  convenience function in Python that solves the linear algebra problem \inpyth{A * u.vector() = b} for \inpyth{u}. Here \inpyth{u.vector()} returns a vector view of the degrees of freedom of the \inpyth{Function u}.}
+\label{lst:solve-explained}
+\end{figure}
+
+\section{Fractional step algorithm}
+\label{sec:frac_step}
+We now turn our attention to the incompressible Navier-Stokes equations for fluid flow. We will first give a detailed algorithm for advancing these equations in time, before starting with the high-level/high-performance Python implementation. A scalar advection equation for any number of passive or reactive scalars is also described and the governing equations are thus
+\begin{align}
+  \frac{\partial \bm{u}}{\partial t} + (\bm{u} \cdot \nabla) \bm{u} &= \nu \nabla^2 \bm{u} - \nabla p + \bm{f}, \label{eq:NS} \\
+  \nabla \cdot \bm{u} &= 0, \label{eq:div} \\
+  \frac{\partial c_{\alpha}}{\partial t} + \bm{u} \cdot \nabla c_{\alpha} &= D_{\alpha} \nabla^2 c_{\alpha} + f_{\alpha}, \label{eq:scalar} 
+\end{align}
+where $\bm{u}(\bm{x}, t)$ is the velocity vector, $\nu$ the kinematic viscosity, $p(\bm{x}, t)$ the fluid pressure, $c_{\alpha}(\bm{x}, t)$ is the concentration of species $\alpha$ and $D_{\alpha}$ its diffusivity. Any volumetric forces (like buoyancy) are denoted by $\bm{f}(\bm{x}, t)$ and chemical reaction rates (or other scalar sources) by $f_{\alpha}(\bm{c})$, where $\bm{c}(\bm{x}, t)$ is the vector of all species concentrations. The constant fluid density is incorporated into the pressure. Note that through the volumetric forces there is a possible feedback to the Navier-Stokes equations from the species, and, as such, a Boussinesq formulation for natural convection (see, e.g., \cite{christon02}) is possible within the current framework.
+
+We will now outline a generic fractional step method, where the velocity and pressure are solved for in a segregated manner. The velocity vector $\bm{u}$ will be split up into its individual components $u_k$, due to lower computational memory use than required for working with vectors,\footnote{FEniCS can actually solve vector equations using VectorFunctionSpaces.} and because much computational work then can be shared between the components. Time is split up into uniform intervals\footnote{It is trivial to use nonuniform intervals, but uniform is used here for convenience} using a constant time step $\triangle t = t^n-t^{n-1}$, where superscript $n$ is an integer and $t^n \in \mathcal{R}^+$. The governing equations are discretized in both space and time. Discretization in space is performed using finite elements, whereas discretization in time is performed with finite differences.  Following Simo and Armero \cite{simo94} the generic fractional step algorithm can be written as
+\begin{align}
+\frac{u_k^I - {u}_k^{n-1}}{\triangle \text{t}} + B_k^{n-1/2} &= \nu \nabla^2 \tilde{{u}}_k - \nabla_k p^{*} + {f}_k^{n-1/2} \notag \\
+&\text{for} \,\, k=1, \ldots, d,
+  \label{eq:NStentative} \\
+ \nabla^2 \varphi &= - \frac{1}{\triangle \text{t}} \nabla \cdot \bm{u}^I, \label{eq:pressure} \\
+\frac{{u}_k^n - {u}_k^{I}}{\triangle \text{t}} =  - \nabla_k \varphi \quad &\text{for} \,\, k=1, \ldots, d \label{eq:correction}, \\
+\frac{c_{\alpha}^n - c_{\alpha}^{n-1}}{\triangle \text{t}} + B_{\alpha}^{n-1/2} &= D_{\alpha} \nabla^2 \tilde{c}_{\alpha} + f_{\alpha}^{n-1/2}, \label{eq:scalar_disc}
+\end{align}
+where $u_k^n$ is component $k$ of the velocity vector at time $t^n$, $d$ is the dimension of the problem and $ \varphi = p^{n-1/2}-p^{*}$ is a pressure correction. We are solving for the velocity and pressure on the next time step, i.e., $u_k^n$ for $k=1,\ldots, d$ and $p^{n-1/2}$. However, the tentative velocity equation (\ref{eq:NStentative}) is solved with the tentative velocity component $u_k^I$ as unknown. To avoid strict time step restrictions, the viscous term is discretized using a semi-implicit Crank-Nicolson interpolated velocity component $\tilde{u}_k = 0.5\,({u}_k^I+{u}_k^{n-1})$. The nonlinear convection term is denoted by $B_k^{n-1/2}$, indicating that it should be evaluated at the midpoint between time steps $n$ and $n-1$. Two different discretizations of convection is currently used in \emph{Oasis}
+\begin{align}
+  B_{k}^{n-1/2} &= \frac{3}{2} \bm{u}^{n-1} \cdot \nabla u_k^{n-1} - \frac{1}{2} \bm{u}^{n-2} \cdot \nabla u_k^{n-2}, \label{eq:convection_ABE}\\
+  B_{k}^{n-1/2} &= \overline{\bm{u}} \cdot \nabla \tilde{u}_k, \label{eq:convection_ABCN}
+\end{align}
+where the first is a fully explicit Adams-Bashforth discretization and the second is implicit, with an Adams-Bashforth projected convecting velocity vector $\overline{\bm{u}} = 1.5\, \bm{u}^{n-1} - 0.5\, \bm{u}^{n-2}$ and Crank-Nicolson for the convected velocity. Both discretizations are second order accurate in time and, since the convecting velocity is known,  there is no implicit coupling between the (possibly) three velocity components solved for. Note that there is no implicit coupling between the velocity components through the tentative velocity equations, and coupling is only effected through the pressure. 
+
+Convection of the scalar is denoted by $B_{\alpha}^{n-1/2}$. The term must be at most linear in $c_{\alpha}^n$ and otherwise any known velocity and scalar may be used in the discretization. Note that solving for $c_{\alpha}^n$ the velocity $\bm{u}^n$ will be known and may be used to discretize $B_{\alpha}^{n-1/2}$. The discretization used in \emph{Oasis} is
+\begin{align*}
+  B_{\alpha}^{n-1/2} = \overline{\bm{u}} \cdot \nabla \tilde{c}_{\alpha}
+\end{align*}
+where $\tilde{c}_{\alpha} = 0.5\,(c_{\alpha}^n+c_{\alpha}^{n-1})$.
+
+An iterative fractional step method involves solving Eq.~(\ref{eq:NStentative}) for all tentative velocity components and (\ref{eq:pressure}) for a pressure correction. The procedure is repeated a desired number of times before finally a velocity correction (\ref{eq:correction}) is solved to ensure conservation of mass before moving on to the next time step. The fractional step method can thus be outlined as shown in Algorithm \ref{fig:fractionalstep}. Note that if the momentum equation depends on the scalar (e.g., when using a Boussinesq model), then there may also be a second iterative loop over Navier-Stokes and temperature. The iterative scheme shown in Algorithm~\ref{fig:fractionalstep} is based on the observation that the tentative velocity computed in Eq.~(\ref{eq:NStentative}) only depends on previous known solutions $\bm{u}^{n-1}, \bm{u}^{n-2} $ and not $\bm{u}^n$. As such, the velocity update can be placed outside the inner iteration. In case of an iterative scheme where the convection depends on $\bm{u}^n$ (e.g., $\bm{u}^n\cdot \nabla \tilde{u}_k$) the update would have to be moved inside the inner loop.
+
+\begin{algorithm}
+Set time and initial conditions\\
+t = 0\\
+\For {\emph{time steps n = 0, 1, 2, ...}} {
+  t = t + dt \\
+  \For {\emph{inner iterations i = 0, 1, ...}}{
+    $\varphi = p^* = p^{n-1/2}$ \\ 
+    solve (\ref{eq:NStentative}) for ${u}_k^I,\, k=1,\ldots, d $\\
+    solve (\ref{eq:pressure}) for $p^{n-1/2}$  \\
+    $\varphi = p^{n-1/2} - \varphi$ \\
+  }  
+  solve (\ref{eq:correction}) for ${u}_k^n, \,k=1,\ldots, d $\\
+  solve (\ref{eq:scalar_disc}) for $c_{\alpha}^{n}$\\
+  update to next timestep
+}
+\caption{Generic fractional step algorithm for the Navier-Stokes equations. }
+\label{fig:fractionalstep}
+\end{algorithm}
+
+We now have an algorithm that can be used to integrate the solution forward in time, and it is clear that the fractional step algorithm allows us to solve for the coupled velocity and pressure fields in a segregated manner. We should mention here that there are plenty of similar, alternative algorithms for time stepping of segregated solvers. The most common algorithm is perhaps Pressure Implicit with Splitting of Operators (PISO) \cite{piso}, which is used by both Ansys-Fluent \cite{fluent}, Star-CD \cite{starcd} and OpenFOAM \cite{openfoam}. A completely different strategy would be to solve for velocity and pressure simultaneously (coupled solvers). Using FEniCS such a coupled approach is straightforward to implement, and, in fact, it requires less coding than the segregated one. However, since the coupled approach requires more memory than a segregated, and since there are more issues with the efficiency of linear algebra solvers, the segregated approach is favoured here. 
+
+We are still left with the spatial discretization and the actual implementation. To this end we will first show how the implementation can be performed naively, using very few lines of Python code. We will then, finally, describe the implementation of the high-performance solver.
+
+\section{Variational formulations for the fractional step solver}
+\label{sec:variational}
+
+
+The governing PDEs (\ref{eq:NStentative}), (\ref{eq:pressure}), (\ref{eq:correction}) and (\ref{eq:scalar_disc}) are discretized with the finite element method in space on a bounded domain $\Omega \subset R^d$, with $1 \leq d \leq 3$, and the boundary $\partial \Omega$. Trial and test spaces for both the velocity components, pressure and scalars are again defined by the Sobolov spaces in (\ref{eq:H1-spaces}). The test functions $v$ and $q$ are used for velocity components and pressure respectively, whereas the scalar uses the same test function as the velocity component. 
+
+To obtain a variational form for component $k$ of the tentative velocity vector, we multiply equation (\ref{eq:NStentative}) by $v$ and then integrate over the entire domain using integration by parts on the Laplacian
+\begin{multline}
+\int_{\Omega} \Big ( \frac{u_k^{I} - u_k^{n-1}}{\triangle \text{t}} + B_k^{n-1/2} \Big) v + \nu \nabla \tilde{u}_k \cdot \nabla v \, \mathrm{d}x = \\
+\int_{\Omega} \Big (- \nabla_k p^{*} + f_k^{n-1/2} \Big) \, v \, \mathrm{d}x + \int_{\partial \Omega} \nu \nabla_n \tilde{u}_k \, v\, \mathrm{d}s .  \label{eq:NStentativeFEM} 
+\end{multline}
+Note that the trial function $u_k^{I}$ enters also through the Crank-Nicolson velocity component $\tilde{u}_k = 0.5(u_k^{I}+u_k^{n-1})$. The boundary term is only important for some boundaries and is neglected for the rest of this paper.
+
+The variational form for the pressure correction is obtained by multiplying Eq.~(\ref{eq:pressure})  by $q$ and then integrating over the domain, using again integration by parts
+\begin{equation}
+\int_{\Omega} \nabla \varphi \cdot \nabla q \, \mathrm{d}x - \int_{\partial \Omega} \nabla_n \varphi \, q \mathrm{d}s = \int_{\Omega} \frac{\nabla \cdot \bm{u}^I}{\triangle \text{t}} q \, \mathrm{d}x.  \label{eq:pressureVF} 
+\end{equation}
+The boundary integral can be neglected for all parts of the domain where the velocity is prescribed.
+
+A variational form for the velocity update of component $k$ is obtained by multiplying (\ref{eq:correction}) by $v$ and integrating over the domain
+\begin{equation}
+ \int_{\Omega} \frac{u_k^n - {u}_k^{I}}{\triangle \text{t}} v \, \mathrm{d}x =  - \int_{\Omega} \nabla_k \varphi \, v \,\mathrm{d}x. \label{eq:correction_i_VF}
+\end{equation}
+
+Finally, a variational form for the scalar component $\alpha$ is obtained by multiplying Eq.~(\ref{eq:scalar_disc}) by $v$, and then integrating over the domain using integration by parts on the diffusion term
+\begin{multline}
+\int_{\Omega} \Big ( \frac{c_{\alpha}^n - c_{\alpha}^{n-1}}{\triangle \text{t}} + B_{\alpha}^{n-1/2} \Big) \, v \, + D_{\alpha} \nabla \tilde{c}_{\alpha} \cdot \nabla v\, \mathrm{d}x = \\
+\int_{\Omega} f_{\alpha}^{n-1/2} \, v \, \mathrm{d}x + \int_{\partial \Omega} D_{\alpha} \nabla_n \tilde{c}_{\alpha} \, v\, \mathrm{d}s .  \label{eq:scalar_var} 
+\end{multline}
+
+\section{Oasis}
+\label{sec:oasis}
+We now have all the variational forms that together constitute a fractional step solver for the Navier-Stokes equations, complemented with any number of scalar fields. We will now describe how the fractional step algorithm has been implemented in \emph{Oasis} and discuss the design of the solver package.
+
+\subsection{Python package}
+\label{sec:pythonpackage}
+The \emph{Oasis} solver is designed as a Python package with tree structure shown in Fig.~\ref{fig:directorytree}. 
+\begin{figure}
+\dirtree{%
+ .1 Oasis. 
+ .2 {\_\_init\_\_.py}.
+ .2 {NSfracStep.py}. 
+ .2 common/.
+ .3 {\_\_init\_\_.py}.
+ .3 {io.py}.
+ .2 solvers/.
+ .3 {\_\_init\_\_.py}.
+ .3 {Chorin.py}.
+ .3 {IPCS.py}.
+ .3 {IPCS\_ABCN.py}.
+ .4 {IPCS\_ABE.py}.
+ .2 problems/.
+ .3 {\_\_init\_\_.py}. 
+ .3 {DrivenCavity.py}. 
+ .3 {TaylorGreen2D.py}.
+ .3 {Channel.py}. 
+ .3 {...}.
+}
+\caption{Directory tree structure of \emph{Oasis}. }
+\label{fig:directorytree}
+\end{figure}
+The generic fractional step algorithm is implemented in the top level Python module \inpyth{NSfracStep.py}{} and the solver is run by executing this module within a Python shell using appropriate keyword arguments, e.g.,
+\vskip 1ex
+\begin{python}
+>>> python NSfracStep.py problem=Channel solver=IPCS
+\end{python}
+\vskip 1ex
+
+\noindent The fractional step solver pulls in a required mesh, parameters and functions from two submodules located in folders \inpyth{solvers}{} and \inpyth{problems}{}. The user communicates with the solver through the implementation of new problem modules in the \inpyth{problems}{} folder. With the design choice of placing the solver at the root level of a Python module, there is a conscious decision of avoiding object oriented classes. However, remembering that everything in Python is an object, we still, as will be shown, make heavy use of overloading Python objects (functions, variables). 
+
+The fractional step module \inpyth{NSfracStep.py}{} is merely approximately one hundred lines of code (excluding comments and spaces) dedicated to allocation of necessary storage and variables, plus the implementation of the generic fractional step Algorithm \ref{fig:fractionalstep}. The first half of \inpyth{NSfracStep.py}{} is shown in Fig.~\ref{lst:allocation}. Note how the approach is similar to the Poisson module described in Fig.~\ref{lst:poisson}, in that you first need to make a choice of function spaces and then allocate test and trial functions plus functions to hold the solution. Since almost all demos to the FEniCS package are designed the same way, \emph{Oasis} will feel familiar and thus be easily accessible to new users with some FEniCS experience. 
+
+The two lines in Fig.~\ref{lst:allocation} starting with the python built-in function \inpyth{exec}{} imports functionality from the \inpyth{problems} and \inpyth{solvers} submodules. The \inpyth{exec}{} function executes the given string in the current namespace, i.e., 
+
+\vskip 1ex
+\noindent
+\begin{minipage}{\columnwidth}
+\begin{python}[b!]
+problem = "DrivenCavity"
+solver = "IPCS"
+exec("from problems.{} import *". format(problem))
+exec("from solvers .{} import *". format(solver))                
+\end{python}
+\end{minipage}
+\vskip 1ex
+\noindent would evaluate as
+
+\vskip 1ex
+\noindent
+\begin{minipage}{\columnwidth}
+\begin{python}
+from problems.DrivenCavity import *
+from solvers .IPCS import *
+\end{python}
+\end{minipage}
+\vskip 1ex
+
+\noindent This way the name of the problem can be fed through the command line and, likewise, the chosen solver through the user defined problem module or the command line.
+
+An important feature of the current design is the use of Python dictionaries. Dictionaries are created with the names of the variables we are solving for as keys and, e.g., solution \inpyth{Function}s as values (see \inpyth{q_, q_1, q_2} in Fig.~\ref{lst:allocation}). The velocity components solved for are either \inpyth{u_components = ["u0", "u1", "u2"]} in 3D or \inpyth{["u0", "u1"]} in 2D. If the user decides to solve for two scalars named "scalar1" and "alpha", then the list \inpyth{scalar_components = ["scalar1", "alpha"]} must be created in the problem module's namespace and thus subsequently imported into \inpyth{NSfracStep}'s namespace. If \inpyth{scalar_components} contains items, then solution \inpyth{Function}s are automatically created. The \inpyth{sys_comp} list contains all the variables solved for. It could be \inpyth{sys_comp = ["u0", "u1", "p", "scalar1", "alpha"]} if we are solving a 2D problem with two scalars. The use of dictionaries makes the code exactly the same for 2D and 3D problems and it is trivial to extend the solver with any number of scalars given meaningful names. Boundary conditions are also created as dictionaries with the same components as keys. 
+
+\begin{figure*}
+\begin{python}
+from common import *
+
+commandline_kwargs = parse_command_line()
+
+# Get the problem from commandline
+problem = commandline_kwargs.get("problem", "DrivenCavity")
+
+# import mesh, NS_parameters, body_force, create_bcs, velocity_degree, etc...
+exec("from problems.{} import *".format(problem))
+
+# Update NS_parameters with parameters modified through the command line 
+NS_parameters.update(commandline_kwargs)
+vars().update(NS_parameters)  
+
+# Import functionality from chosen solver
+exec("from solvers.{} import *".format(solver))
+
+# Declare function spaces and trial and test functions
+V = FunctionSpace(mesh, "Lagrange", velocity_degree)
+Q = FunctionSpace(mesh, "Lagrange", pressure_degree)
+u, v = TrialFunction(V), TestFunction(V)
+p, q = TrialFunction(Q), TestFunction(Q)
+
+# Get dimension of problem
+dim = mesh.geometry().dim()
+
+# Create list of components we are solving for
+u_components = map(lambda x: "u"+str(x), range(dim))  # velocity components
+uc_comp  =  u_components + scalar_components          # velocity + scalars
+sys_comp = u_components + ["p"] + scalar_components   # velocity + pressure + scalars
+
+# Create dictionaries for the solutions at three timesteps
+q_  = {ui: Function(V) for ui in uc_comp}
+q_1 = {ui: Function(V) for ui in uc_comp}
+q_2 = {ui: Function(V) for ui in u_components} # Note only velocity
+
+# Allocate solution for pressure field and correction
+p_ = q_["p"] = Function(Q)
+phi_ = Function(Q)
+
+# Create vector views of the segregated velocity components    
+u_  = as_vector([q_ [ui] for ui in u_components]) # Velocity vector at t
+u_1 = as_vector([q_1[ui] for ui in u_components]) # Velocity vector at t - dt
+u_2 = as_vector([q_2[ui] for ui in u_components]) # Velocity vector at t - 2*dt
+
+# Set kinematic viscosity constant
+nu = Constant(NS_parameters["nu"])
+
+# Set body force
+f = body_force(**vars())
+
+# Initialize solution
+initialize(**vars())
+
+# Get boundary conditions
+bcs = create_bcs(**vars())
+
+\end{python}
+\caption{The opening section of \inpyth{NSfracStep.py}. Allocation of necessary storage and parameters for solving the momentum equation through its segregated components. Note that a mesh, some parameters (for e.g., viscosity, time step, end time etc), and some functions (for e.g., body force, boundary conditions or initializing the solution)  must be imported from the problem module. }
+\label{lst:allocation}
+\end{figure*}
+
+Consider the three functions towards the end of Fig.~\ref{lst:allocation} that take \inpyth{**vars()} as argument. The \inpyth{body_force} function returns $\bm{f}$ in (\ref{eq:NS}) and should thus by default return a \inpyth{Constant} vector of zero values (length 2 or 3 depending on whether the problem is 2D or 3D). The \inpyth{initialize} function initializes the solution in \inpyth{q_, q_1, q_2} and \inpyth{create_bcs} must return a dictionary of boundary conditions. These functions are clearly problem specific and thus default implementations are found in the \inpyth{problems/__init__.py} module that all new problems are required to import from. The default functions may then be overloaded as required by the user in the new problem module (see, e.g., Fig.~\ref{fig:drivencavity}). An interesting feature is the argument \inpyth{**vars()}, which is used for all three functions. The Python built-in function \inpyth{vars()} returns a dictionary of the current module's namespace, i.e., it is here \inpyth{NSfracStep}'s namespace containing \inpyth{V, Q, u, v, } and all the other variables seen in Fig.~\ref{lst:allocation}. When \inpyth{**vars()} is used in a function's signature, any variable declared within \inpyth{NSfracStep}'s namespace may be unpacked in that function's list of arguments and accessed by reference also inside that function. Figure~\ref{lst:defaulthooks} illustrates this nicely through the default implementations (found in \inpyth{problems/__init__.py}) of the three previously mentioned functions. Note how any variable required by the function is simply unpacked in the list of arguments, like for instance \inpyth{mesh}{} in \inpyth{body_force}. All other variables from the \inpyth{NSfracStep}'s namespace are soaked up by the trailing \inpyth{NS_namespace} dictionary. Since the calling uses a reference to the namespace, there is very little overhead, yet unlimited flexibility, in calling functions this way. Also, since the variables you need simply are unpacked and not belonging to a class, there is no disturbing \inpyth{self} prefix, which often contaminates Python solvers that are using an object oriented approach based on classes instead of modules. 
+\begin{figure}
+\begin{python}
+def body_force(mesh, **NS_namespace):
+  """Specify body force"""
+  dim = mesh.geometry().dim()
+  return Constant((0,)*dim)
+    
+def initialize(**NS_namespace):
+  """Initialize solution. """
+  pass
+
+def create_bcs(sys_comp, **NS_namespace):
+  """Return dictionary of Dirichlet 
+  boundary conditions."""
+  return {ui: [] for ui in sys_comp}
+\end{python}
+\caption{Default implementations of three of the functions found in \inpyth{problems/__init__.py}{}. }
+\label{lst:defaulthooks}
+\end{figure}
+
+After initialization the solution needs to be advanced in time. The entire implementation of the time integration performed in \inpyth{NSfracStep.py} is shown in Fig.~\ref{fig:timeloop}. Note the close resemblance with Algorithm~\ref{fig:fractionalstep}. In Fig.~\ref{fig:timeloop} the functions ending in \inpyth{hook}{} are imported through the \inpyth{problems} submodule, \inpyth{save_solution} from \inpyth{common} and the rest of the functions are imported from the \inpyth{solvers} submodule. 
+\begin{figure}[ht!]
+\begin{python}
+# Preassemble and prepare solver
+vars().update(setup(**vars()))
+
+# Enter loop for time advancement
+while t < T and not stop:
+  t += dt
+  inner_iter = 0
+  # Do something at start of timestep    
+  start_timestep_hook(**vars())
+    
+  # Enter velocity/pressure inner loop
+  for inner_iter < max_iters:
+    inner_iter += 1        
+    if inner_iter == 1:
+      assemble_first_inner_iter(**vars())
+         
+    # Solve Eq. (17)
+    for i, ui in enumerate(u_components):
+      velocity_tentative_assemble(**vars())
+      velocity_tentative_hook    (**vars())
+      velocity_tentative_solve   (**vars())
+            
+    # Solve Eq. (18)
+    pressure_assemble(**vars())
+    pressure_hook    (**vars())
+    pressure_solve   (**vars())
+         
+  # Solve Eq. (19)
+  velocity_update(**vars())
+        
+  # Solve for all scalar components (20)
+  if len(scalar_components) > 0:
+    scalar_assemble(**vars())
+    for ci in scalar_components:    
+      scalar_hook (**vars())
+      scalar_solve(**vars())
+        
+  # Do something at end of timestep
+  temporal_hook(**vars())
+    
+  # Save and update to next timestep
+  stop = save_solution(**vars())
+
+# Finalize solver
+theend_hook(**vars())
+
+\end{python}
+\caption{Time loop in \inpyth{NSfracStep.py}{}}
+\label{fig:timeloop}
+\end{figure}
+
+The \inpyth{common} submodule basically contains routines for parsing the command line and for storing and retrieving the solution (\inpyth{common/io.py}{}). There is, for example, a routine here that can be used if the solver needs to be restarted from a previous simulation. The \inpyth{problems} and \inpyth{solvers} submodules are more elaborate and will be described next.
+
+\subsubsection*{The problems submodule}
+
+\emph{Oasis} is a programmable solver and the user is required to implement the problem that is to be solved. The implemented problem module's namespace must include at least a computational mesh and functions for specifying boundary conditions and initialization of the solution. Other than that, the user may interact with \inpyth{NSfracStep} through certain \inpyth{hook} files strategically placed within the time advancement loop, as seen in Fig.~\ref{fig:timeloop}. Consider a lid driven cavity with $\Omega = [0, 1]\times[0, 1]$. The velocity boundary conditions are $\bm{u} = (1, 0)$ for the top lid ($y=1$) and zero for the remaining walls. We start the simulations from a fluid at rest and advance the solution in time steps of $\triangle t=0.001$ from $t=0$ to $t=1$. The viscosity is set to $\nu=0.001$. This problem can be implemented as shown in Fig.~\ref{fig:drivencavity}. Here we have made use of the standard python package \inpyth{numpy} and two \inpyth{dolfin} classes \inpyth{UnitSquareMesh} and \inpyth{DirichletBC}. \inpyth{UnitSquareMesh} creates a computational mesh on the unit square, whereas   \inpyth{DirichletBC} creates Dirichlet boundary conditions for certain segments of the boundary identified through two strings \inpyth{noslip} and \inpyth{top} (\inpyth{x[0]} and \inpyth{x[1]} represent coordinates $x$ and $y$ respectively). The strings defining the location of the boundary are automatically compiled as C++ code and make use of the standard library function \inpyth{std::abs} for the absolute value. Other than that the code is pretty straightforward. A default set of problem parameters can be found in the dictionary \inpyth{NS_parameters} declared in \inpyth{problems/__init__.py}, and all these parameters may be overloaded, either as shown in Fig.\ref{fig:drivencavity} or through the command line. We use iterative Krylov solvers (\inpyth{NS_parameters["use_krylov_solvers"]=True}), and not the default direct solvers based on LU decomposition, since the former here are faster and require less memory. Note that FEniCS interfaces to a wide range of different linear algebra solvers and preconditioners. The iterative solvers used by \emph{Oasis} are defined in function \inpyth{get_solvers} imported from the \inpyth{solvers} submodule.
+\begin{figure}[ht!]
+\begin{python}
+from problems import *
+from numpy import cos, pi
+
+# Create a mesh skewed towards walls
+def mesh(Nx, Ny, **params):
+  m = UnitSquareMesh(Nx, Ny)
+  x = m.coordinates()
+  x[:] = (x-0.5)*2.
+  x[:] = 0.5*(cos(pi*(x-1.)/2.)+1.)
+  return m
+
+# Override some problem specific parameters
+NS_parameters.update(
+  nu = 0.001,
+  T  = 1.0,
+  dt = 0.001,
+  Nx = 50,
+  Ny = 50,
+  use_krylov_solvers = True)
+
+# Specify boundary conditions
+noslip="std::abs(x[0]*x[1]*(1-x[0]))<1e-8"
+top   ="std::abs(x[1]-1) < 1e-8"
+def create_bcs(V, **NS_namespace):
+  bc0  = DirichletBC(V, 0, noslip)
+  bc00 = DirichletBC(V, 1, top)
+  bc01 = DirichletBC(V, 0, top)
+  return dict(u0 = [bc00, bc0],
+              u1 = [bc01, bc0],
+              p  = [])
+                
+# Initialize by enforcing boundary cond.
+def initialize(q_1, q_2, bcs, **NS_namesp):
+  for ui in q_2:
+    for bc in bcs[ui]:
+      bc.apply(q_1[ui].vector())
+      bc.apply(q_2[ui].vector())
+
+\end{python}
+\caption{Drivencavity.py - Implementation of the driven cavity problem.}
+\label{fig:drivencavity}
+\end{figure}
+  
+To run the solver for the driven cavity problem we need to specify this through the command line - along with any other parameter we wish to modify at runtime. For example, the default size of the computational mesh has been implemented in Fig.~\ref{fig:drivencavity} as \inpyth{Nx=Ny=50}. This may be overloaded through the command line while running the solver, like
+\begin{python}
+>>> python NSfracStep.py problem=DrivenCavity Nx=20 Ny=20
+\end{python}
+The ability to overload parameters through the command line is useful for, e.g., fast convergence testing. 
+
+The computational mesh has to be part of the problem module's namespace. However, it does not need to be defined as a callable function, like that used in Fig.~\ref{fig:drivencavity}. Three equally valid examples are
+
+\vskip 1ex
+\noindent
+\begin{minipage}{\columnwidth}
+\begin{python}
+mesh = UnitSquareMesh(10, 10)
+mesh = Mesh("SomeMesh.xml.gz")
+def mesh(N, **params):
+    return UnitSquareMesh(N, N)
+\end{python}
+\end{minipage}
+\vskip 1ex
+\noindent The first mesh is hardcoded in the module and cannot be modified through the commandline. The second approach, \inpyth{mesh = Mesh("some_mesh.xml.gz")}{}, is usually used whenever the mesh has been created by an external software. The third option uses a callable function, making it possible to modify the mesh size through the command line.
+
+A complete list of all default functions and parameters that may be overloaded by the user in their implemented problem module is found in \inpyth{problems/__init__.py}. 
+
+%A flow chart illustrating the structure of the solver is shown in Fig.~(\ref{fig:flowchart}). Here each arrow indicates a \inpyth{from module import *}{} command. That is, all dolfin's functionality is imported by the \inpyth{problems/__init__.py}{} module, where a number of other default functions are defined as well. These are then possibly overloaded by the user. The entire purpose of the hierarchical structure of modules is for the solver to be able to pull in functions as requested by the user - and to allow the user to have the last saying, by enabling the user to overload any default behaviour in the problem module.
+%
+%\begin{figure}
+%  \includegraphics[scale=0.6]{Drawing11.png}
+%  \caption{Flow chart for solver. Each arrow indicates a \inpyth{from module import *}{} command. That is, all dolfin's functionality is imported by the default\_hooks module, where a number of other defalt functions are defined as well. These are then possibly overloaded by the user in the problem module. }
+%  \label{fig:flowchart}
+%\end{figure}
+
+\subsubsection*{The solvers submodule}
+
+The finer details of the fractional step solver are implemented in the \inpyth{solvers} submodule. A list of all functions that are imported by \inpyth{NSfracStep} is found in the \inpyth{solvers/__init__.py} module. The most important can be seen in Fig.~\ref{fig:timeloop}. Note the special calling routine for the function \inpyth{setup}
+\begin{python}
+vars().update(setup(**vars()))
+\end{python}
+The purpose of this \inpyth{setup} function is to prepare the solver for time advancement. This could mean either defining UFL forms of the variational problems (see Fig.~\ref{lst:momentumNaive}) or to preassemble matrices that do not change in time, e.g., diffusion and mass matrices (see Sec.~\ref{sec:hpc}). The \inpyth{setup} function returns a dictionary and this dictionary is updated and made part of the \inpyth{NSfracStep} namespace through the use of \inpyth{vars().update}.
+
+We may now take the naive approach and implement all variational forms exactly as described in Sec.~\ref{sec:variational}. A smart approach, on the other hand, will take advantage of certain special features of the Navier-Stokes equations. The starting point for implementing a new solver, though, will usually be the naive approach. A naive implementation requires very few lines of code, it is easy to debug and as such it can be very useful for verification of the slightly more complex and optimized solvers to be discussed in the next section.
+\begin{figure}[ht!]
+\begin{python}
+def setup(u_, u_1, q_, q_1, u, v, p, q, 
+          nu, dt, p_, f, u_components, 
+          phi_, **NS_namespace):
+  F, Fu = {}, {}
+  U_AB = 1.5*u_1 - 0.5*u_2
+  for i, ui in enumerate(u_components):
+    # Crank-Nicolson velocity  
+    U_CN = 0.5*(u+q_1[ui])
+    
+    # Tentative velocity variational form
+    F[ui] = (1./dt*inner(u-q_1[ui], v)*dx
+      + inner(dot(U_AB, grad(U_CN)), v)*dx
+      + nu*inner(grad(U_CN), grad(v))*dx
+      + inner(p_.dx(i), v)*dx 
+      - inner(f[i], v)*dx)
+            
+    # Velocity update variational form
+    Fu[ui]= (inner(u, v)*dx 
+            - inner(q_[ui], v)*dx 
+            + dt*inner(phi_.dx(i), v)*dx)
+
+  # Variational form for pressure
+  phi = p - p_
+  Fp = (inner(grad(q), grad(phi))*dx 
+     - (1./dt)*div(u_)*q*dx) 
+  
+  return dict(F=F, Fu=Fu, Fp=Fp)
+\end{python}
+\caption{Naive implementation in \inpyth{solvers/IPCS.py} of variational forms used for solving the momentum equation (\ref{eq:NStentativeFEM}), pressure correction (\ref{eq:pressureVF}) and momentum update (\ref{eq:correction_i_VF}).}
+\label{lst:momentumNaive}
+\end{figure}
+
+The \inpyth{solvers/IPCS.py} module contains a naive implementation of the variational forms (\ref{eq:NStentativeFEM}), (\ref{eq:pressureVF}) and (\ref{eq:correction_i_VF}). The forms are implemented using the \inpyth{setup} function shown in Fig.~\ref{lst:momentumNaive}. Once again, dictionaries are used to hold the forms for the velocity components, whereas there is only one form required for the pressure. Note the very close correspondence between the high-level Python code and the mathematical description of the variational forms. The variational forms are assembled and solved through the very compact routines \inpyth{velocity_tentative_solve, pressure_solve} and \inpyth{velocity_update} that are implemented as shown in Fig.~\ref{fig:ipcs_solve}. The remaining default functions are left to do nothing, as implemented already in \inpyth{solvers/__init__.py}, and as such these 4 functions shown in Figs.~\ref{lst:momentumNaive} and \ref{fig:ipcs_solve} are all it takes to complete the implementation of the naive incremental pressure correction solver. Note that this implementation works for any order of the velocity/pressure function spaces. There is simply no additional implementation cost for using higher order elements.
+\begin{figure}[ht!]
+\begin{python}
+def velocity_tentative_solve(ui, F, q_,bcs, 
+                           **NS_namespace):
+  A, L = system(F[ui])
+  solve(A == L, q_[ui], bcs[ui])
+
+def pressure_solve(Fp, p_, bcs, phi_, 
+                   **NS_namespace):
+  # Compute pressure 
+  phi_.vector()[:] = p_.vector()
+  A, L = system(F[ui])
+  solve(A == L, p_, bcs['p'])   
+
+  # Normalize pressure if no bcs['p']  
+  if bcs['p'] == []:
+    normalize(p_.vector())
+    
+  # Compute correction
+  phi_.vector()[:] = p_.vector() - phi_.vector()
+
+def velocity_update(u_components, q_, bcs, 
+                    Fu, **NS_namespace):
+  for ui in u_components:
+    A, L = system(F[ui])
+    solve(A == L, q_[ui], bcs[ui])
+
+\end{python}
+\caption{Implementation in \inpyth{solvers/IPCS.py} of routines called in Fig.~\ref{fig:timeloop}.}
+\label{fig:ipcs_solve}
+\end{figure}
+
+\section{High-performance implementation}
+\label{sec:hpc}
+The naive solver described in the previous section is very easy to implement and understand, but for obvious reasons not very fast. For example, the entire coefficient matrix is reassembled each timestep (see Fig.~\ref{fig:timeloop}), even though it is only the convection term that changes in time. We will now explain how the same incremental pressure correction solver can be implemented efficiently, at the cost of loosing some of the intuitiveness of \inpyth{solvers/IPCS.py}. The implementation of the high-performance solver described in this section can be found in \inpyth{solvers/IPCS_ABCN.py}. 
+
+To implement an efficient solver we need to split up the variational forms (\ref{eq:NStentativeFEM}), (\ref{eq:pressureVF}) and (\ref{eq:correction_i_VF}) term by term and view the equations on an algebraic level, as discussed leading up to Eq.~(\ref{eq:Aij=bi}). We start by inserting for the tentative velocity, the trial function $u_k^I=\sum_{j=1}^{N_u} \mathcal{U}_j^{k,I}\, \phi_j$, where $N_u$ is the number of degrees of freedom, and test function $v=\phi_i$ in the bilinear terms of the variational form (\ref{eq:NStentativeFEM})
+\begin{align}
+ \int_{\Omega} u_k^I v \,dx &= \sum_{j=1}^{N_u}\left(\int_{\Omega} \phi_j\, \phi_i \, dx \right) \mathcal{U}_j^{k,I}, \\
+  \int_{\Omega} \nabla u_k^I \cdot \nabla v \,dx &= \sum_{j=1}^{N_u}\left(\int_{\Omega} \nabla \phi_j \cdot \nabla \phi_i \, dx \right) \mathcal{U}_j^{k,I}.
+\end{align}
+Each term inside the parenthesis on the right hand side represents a matrix
+\begin{align}
+ M_{ij} &= \int_{\Omega} \phi_j\, \phi_i \, dx, \\
+ K_{ij} &= \int_{\Omega} \nabla \phi_j \cdot \nabla \phi_i \, dx. \end{align}
+The two matrices are independent of time and can be preassembled once through (\inpyth{u, v} are trial and test functions respectively)
+
+\vskip 1ex
+\noindent
+\begin{minipage}{\columnwidth}
+\begin{python}[b!]
+M = assemble(inner(u, v)*dx)
+K = assemble(inner(grad(u), grad(v))*dx)
+\end{python}
+\end{minipage}
+\vskip 1ex
+
+The nonlinear convection form contains the evolving solution and requires special attention. We use the implicit convection form given in Eq.~(\ref{eq:convection_ABCN}) and write out the implicit Crank-Nicolson convected velocity for component $k$
+\begin{equation}
+\overline{\bm{u}} \cdot \nabla \tilde{u}_k = 
+\frac{1}{2}\, \overline{\bm{u}} \cdot \nabla \left(u_k^I + u_k^{n-1} \right).
+\end{equation}
+Inserting for the algebraic form of the finite element trial  and test functions, the variational form for the bilinear convection term becomes
+\begin{equation}
+  \int_{\Omega} \overline{\bm{u}} \cdot \nabla u_k^I \, v\, dx = \sum_{j=1}^{N_u}\left( \int_{\Omega} \overline{\bm{u}} \cdot \nabla \phi_j  \, \phi_i \, dx \right) \mathcal{U}_j^{k,I},
+\end{equation}
+and here the convection matrix can be recognized as the term inside the parenthesis
+\begin{equation}
+C_{ij}^{n-1/2} = \int_{\Omega} \overline{\bm{u}} \cdot \nabla \phi_j  \, \phi_i \, dx.
+\end{equation}
+The convecting velocity is time-dependent and interpolated at $t^{n-1/2}$. As such, the convection matrix is also evaluated at $n-1/2$ and needs to be reassembled each timestep. To simplify notations, though, we have for the rest of this paper omitted the time notation on $C_{ij}$. The $C_{ij}$ matrix may be defined in the \inpyth{setup} function as (variables are defined in Fig.~\ref{lst:allocation}) 
+\vskip 1ex
+\noindent
+\begin{minipage}{\columnwidth}
+\begin{python}
+U_AB = 1.5*u_1 - 0.5*u_2
+aconv = inner(grad(u)*U_AB), v)*dx
+\end{python}
+\end{minipage}
+\vskip 1ex
+\noindent and it is assembled directly into the coefficient matrix as shown in Fig.~\ref{fig:assemble_first_inner_iter}.
+
+Note that the solution vectors and matrices represent the major cost in terms of memory use for the solver. The matrices are sparse and allocated by the linear algebra backend, using appropriate wrappers that are hidden to the user. The allocation takes place just once, when the matrices/vectors are created.
+
+Consider now the linear terms, where the known solution function is written as $u_k^{n-1} = \sum_{j=1}^{N_u} \mathcal{U}_j^{k, n-1} \phi_j$, where $\mathcal{U}_j^{k, n-1}$ are the known coefficients of velocity component $k$ at the previous time step $t^{n-1}$. We have the following linear terms in Eq.~(\ref{eq:NStentativeFEM}) 
+\begin{align}
+ \int_{\Omega} u_k^{n-1}v \,dx &= M_{ij} \, \mathcal{U}_j^{k,n-1},\\
+  \int_{\Omega} \nabla u_k^{n-1} \cdot \nabla v \,dx &= K_{ij}\,\mathcal{U}_j^{k, n-1}, \\
+  \int_{\Omega} \overline{\bm{u}} \cdot \nabla u_k^{n-1} \, v\, dx &= C_{ij}\, \mathcal{U}_j^{k, n-1},
+\end{align}
+that are all very quickly computed using simple matrix vector products.
+
+We may now reformulate our variational problem on the algebraic level using the three assembled matrices. It is required that for each test function $v=\phi_i, i=1, \ldots, N_u$, the following equations must hold 
+\begin{multline}
+ \frac{M_{ij}\left(\mathcal{U}_j^{k,I} - \mathcal{U}_j^{k, n-1}\right)}{\triangle t} + \frac{C_{ij}\left(\mathcal{U}_j^{k,I}+\mathcal{U}_j^{k, n-1}\right)}{2} \\ + \nu \frac{K_{ij}\left(\mathcal{U}_j^{k,I} +\mathcal{U}_j^{k, n-1}\right)}{2} = \Phi_i^{k, n-1/2},
+\end{multline}
+where
+\begin{equation}
+\Phi_i^{k, n-1/2} = \int_{\Omega} \Big (- \nabla_k p^{*} + f_k^{n-1/2} \Big) \, \phi_i \, \mathrm{d}x.
+\end{equation}
+If separated into bilinear and linear terms, the following system of algebraic equations is obtained
+\begin{multline}
+ \left(\frac{M_{ij}}{\triangle t} + \frac{C_{ij}}{2} + \nu\frac{K_{ij}}{2}\right) \mathcal{U}_j^{k,I} = \\
+ \left(\frac{M_{ij}}{\triangle t} - \frac{C_{ij}}{2} - \nu\frac{K_{ij}}{2}\right) \mathcal{U}_j^{k, n-1}+\Phi_i^{k, n-1/2}. \label{eq:tent_algebraic}
+\end{multline}
+If now $A_{ij}= M_{ij}/\triangle t + C_{ij}/2 + \nu K_{ij}/2$ is used as the final coefficient matrix, then the equation may be written as
+\begin{equation}
+  A_{ij} \, \mathcal{U}_j^{k,I} = \left(\frac{2M_{ij}}{\triangle t} -A_{ij}\right)\, \mathcal{U}_j^{k,n-1} + \Phi_i^{k, n-1/2}, \label{eq:tent_intermediate1}
+\end{equation}
+or 
+\begin{equation}
+  A_{ij} \, \mathcal{U}_j^{k,I} = b_i^{k, n-1/2}, \quad \text{for}\, k= 1, \ldots, d, \label{eq:Au=b}
+\end{equation}
+where $b_i^{k, n-1/2}$ is the right hand side of (\ref{eq:tent_intermediate1}). Note that the same coefficient matrix is used by all velocity components, even when there are Dirichlet boundary conditions applied. 
+
+An efficient algorithm can now be used to assemble both the right hand side and the left hand side of Eq.~(\ref{eq:Au=b}) at the same time
+\begin{align*}
+        \text{Assemble}\,\,\, C_{ij} &\longrightarrow A_{ij} \\
+        A_{ij} &= M_{ij}/dt - A_{ij}/2-\nu K_{ij}/2 \\      
+        b_i^{k, n-1/2} &= f_i^{k, n-1/2} + A_{ij}\,\mathcal{U}_j^{k, n-1}, \\
+        & \quad\quad\quad\quad \text{for}\quad k=1,\ldots, d \\
+        A_{ij} &= -A_{ij} + 2M_{ij}/dt
+\end{align*}
+The algorithm is implemented as shown in Fig.~\ref{fig:assemble_first_inner_iter}. At the end of this algorithm, most of $b^{k, n-1/2}$ (except from pressure gradient) has been assembled and the coefficient matrix $A_{ij}$ is ready to be used in Eq.~(\ref{eq:Au=b}). The convection matrix needs to be reassembled each new time step, but only on the first inner velocity pressure iteration since $\overline{\bm{u}}$ only contains old and known velocities, not the new $u_k^{n}$. For this reason the code in Fig.~\ref{fig:assemble_first_inner_iter} is placed inside  \inpyth{assemble_first_inner_iter}, called in Fig.~\ref{fig:timeloop}. Notice that there is no separate matrix used for $2M_{ij}/\triangle t - A_{ij}$ or $C_{ij}$ and the total memory cost of the algorithm is exactly three individual sparse matrices ($A_{ij}, M_{ij}$ and $K_{ij}$). The sparsity pattern of the matrices is computed on the first assemble and the matrix axpy operations take advantage of the fact that all these matrices share the same pattern. The linear algebra backend is made aware of this by using the \inpyth{True} argument to the matrix axpy operations, see Fig.~\ref{fig:assemble_first_inner_iter}.
+\begin{figure}
+\begin{python}
+# assemble convection into A
+A = assemble(a_conv, tensor=A, 
+             reset_sparsity=False) 
+  
+# Negative convection on the rhs 
+A._scale(-0.5)            
+  
+# Add mass and diffusion matrix
+A.axpy(1./dt, M, True)
+A.axpy(-0.5*nu, K, True) 
+  
+# Compute parts of rhs vector
+for ui in u_components:
+  b_tmp[ui].zero()
+  # Add body force stored in b0
+  b_tmp[ui].axpy(1., b0[ui])
+  # Add transient, convection and diffusion
+  b_tmp[ui].axpy(1., A*x_1[ui])
+        
+# Reset matrix for lhs
+A._scale(-1.)
+A.axpy(2./dt, M, True)
+  
+# Apply boundary conditions
+[bc.apply(A) for bc in bcs['u0']]
+  
+\end{python}
+\caption{Fast assemble of coefficient matrix and parts of right hand side vector. A temporary rhs vector \inpyth{b_tmp} is used for each velocity component since this routine is called only on the first inner iteration. \inpyth{x_1} is the vector of degrees of freedom at $t^{n-1}$.}
+\label{fig:assemble_first_inner_iter}
+\end{figure}
+
+The linear term $\Phi_i^{k, n-1/2}$ needs some further comments. It contains the forcing $\bm{f}$, that is a constant or alternatively a finite element function $f_k = \sum_{j=1}^N \mathcal{F}_j^k \phi_j$, where $\mathcal{F}_j^k$ are the finite element coefficients of forcing component $k$. It may be computed very efficiently through
+\begin{equation}
+  b_i^k = \int_{\Omega} f_k v \, dx = M_{ij} \, \mathcal{F}_j^k,
+\end{equation}
+and is added to the right hand side vector in Fig.~\ref{fig:assemble_first_inner_iter}. The second part of $\Phi_i^{k, n-1/2}$ is
+\begin{equation}
+\int_{\Omega} - \nabla_k p^{*} \, \phi_i \, \mathrm{d}x,
+\end{equation}
+where $p^{*}=\sum_{j=1}^{N_p} \mathcal{P}_j^{*} \hat{\phi}_j $, $\hat{\phi}_j$ is the basis function for the pressure and $\mathcal{P}_j^{*}$ are the known degrees of freedom. On algebraic form we get
+\begin{align}
+\int_{\Omega} \nabla_k p^{*} \, \phi_i \, \mathrm{d}x &=\sum_{j=1}^{N_p} \left(\int_{\Omega} \nabla_k \hat{\phi}_j\, \phi_i\, \mathrm{d}x \right) \mathcal{P}_j^{*}, \notag\\
+&= dP_{ij}^k \,\mathcal{P}_j^{*}, \label{eq:dp_matrix}
+\end{align}
+where $dP_{ij}^k$ for $k=1,\ldots, d$ are $d$ matrices that are constant in time. Since the matrices can be preassembled, the method is very fast. Unfortunately, though, three additional matrices require storage (in 3D), which may be too expensive. In that case there is a parameter in \emph{Oasis} that can be used. Setting
+\vskip 1ex
+\noindent
+\begin{minipage}{\columnwidth}
+\begin{python}
+NS_parameters["low_memory_version"] = False
+\end{python}
+\end{minipage}
+\vskip 1ex
+\noindent enables the creation of the matrices $dP_{ij}^k$ and as such computation through Eq.~(\ref{eq:dp_matrix}). If not enabled the term is computed simply as
+\vskip 1ex
+\noindent
+\begin{minipage}{\columnwidth}
+\begin{python}
+assemble(inner(p_.dx(k), v)*dx),
+\end{python}
+\end{minipage}
+\vskip 1ex
+\noindent for $k=0, \ldots, d-1$. The pressure gradient is added to $b^k$ in \inpyth{velocity_tentative_assemble} and not in Fig.~\ref{fig:assemble_first_inner_iter}, since the pressure is modified on inner iterations.
+
+The pressure correction equation can also be optimized on the algebraic level. Using trial function $p^{n-1/2}=\sum_{j=1}^{N_p} \mathcal{P}_j^{n-1/2} \hat{\phi}_j $ and test function $q=\hat{\phi}_i$ we can write (\ref{eq:pressureVF}) for each test function
+\begin{multline}
+\sum_{j=1}^{N_p} \left(\int_{\Omega} \nabla \hat{\phi}_j \nabla \hat{\phi}_i \mathrm{d}x \right) \mathcal{P}_j^{n-1/2} = \\ \sum_{j=1}^{N_p} \left(\int_{\Omega} \nabla \hat{\phi}_j \nabla \hat{\phi}_i \mathrm{d}x \right) \mathcal{P}_j^{*} \\- \int_{\Omega} \frac{\nabla \cdot \bm{u}^{I}}{\triangle \text{t}} \hat{\phi}_i\, \mathrm{d}x ,
+\end{multline}
+or
+\begin{equation}
+ Q_{ij}\mathcal{P}_j^{n-1/2} = Q_{ij}\mathcal{P}_j^{*}- \int_{\Omega} \frac{\nabla \cdot \bm{u}^{I}}{\triangle \text{t}} \hat{\phi}_i\, \mathrm{d}x.
+\end{equation}
+The Laplacian matrix $Q_{ij}$ can be preassembled. If the pressure function space is the same as the velocity function space, then $Q_{ij} = K_{ij}$ and no additional work is required. The divergence term may be computed as
+\begin{align}
+\int_{\Omega} \frac{\nabla \cdot \bm{u}^{I}}{\triangle \text{t}} \hat{\phi}_i\, \mathrm{d}x &= \frac{1}{\triangle \text{t}}\sum_{k=1}^{d} \left( \sum_{j=1}^{N_u} \int_{\Omega} \nabla_k \phi_j \hat{\phi}_i\, \mathrm{d}x\, \mathcal{U}_j^{k, I} \right), \notag \\
+&= \frac{1}{\triangle \text{t}}\sum_{k=1}^{d}  d\mathcal{U}_{ij}^{k}\, \mathcal{U}_j^{k, I} ,
+\end{align} 
+where the matrices $d\mathcal{U}_{ij}^k$ for $k=1, \ldots, d$ can be preassembled. Again, the cost is three additional sparse  matrices, unless the function spaces of pressure and velocity are the same. In that case $d\mathcal{U}_{ij}^k = d\mathcal{P}_{ij}^k$ and memory can be saved. If the \inpyth{low_memory_version} is chosen, then we simply use
+\vskip 1ex
+\noindent
+\begin{minipage}{\columnwidth}
+\begin{python}
+assemble((1/dt)*div(u_)*q*dx)
+\end{python}
+\end{minipage}
+\vskip 1ex
+
+The final step for the fractional step solver is the velocity update that can be written for component $k$ as
+\begin{equation}
+ M_{ij}\,\mathcal{U}_j^{k,n} =  M_{ij}\,\mathcal{U}_j^{k, I} - \triangle \text{t} \,d\mathcal{P}_{ij}^{k} \mathcal{P}_j^{n-1/2}, 
+ \label{eq:velocity_update}
+\end{equation}
+where $\mathcal{U}_j^{k, I}$ and $\mathcal{P}_j^{n-1/2}$ now are the known degrees of freedom of tentative velocity and pressure respectively, whereas $\mathcal{U}_j^{k, n}$ represent the unknowns. The velocity update requires a linear algebra Krylov or direct solve and as such it is quite expensive even though the equation is cheap to assemble. For this reason the velocity update has an additional option to use either a weighted gradient matrix $\mathcal{G}_{ij}^k$\footnote{Requires the \emph{fenicstools} \cite{fenicstools} package.} or lumping of the mass matrix, that allows the update to be performed directly
+\begin{equation}
+\mathcal{U}_i^{k, n} =  \mathcal{U}_i^{k, I} - \triangle \text{t} \, \mathcal{G}_{ij}^k \, \mathcal{P}_j^{n-1/2}, \,\text{for}\, i = 1, \ldots, N_u.
+\end{equation}
+This option is only possible for piecewise linear pressure. The parameter used to enable the direct approach is \inpyth{NS_parameters["velocity_update_type"]} that can be set to \inpyth{"gradient_matrix"} or \inpyth{"lumping"}.
+
+\section{Verification of implementation}
+\label{sec:benchmark}
+
+\subsection{2D Taylor Green flow}
+\label{sec:2DTG}
+Two dimensional Taylor-Green flow is one of very few non-trivial analytical and transient solutions to the Navier-Stokes equations. For this reason it is often used for verification of computer codes. The Taylor Green solution reads
+\begin{align}
+  \bm{u}_e &= \Big(- \sin (\pi y) \, \cos (\pi x)\, \exp(-2 \pi^2 \nu t), \\
+    &\quad\quad\quad \sin (\pi x) \, \cos (\pi y)\, \exp(-2 \pi^2 \nu t) \Big), \\
+    p_e &= - \frac{1}{4}\left(\cos (2\pi x)+\cos(2 \pi y) \right) \exp(-4 \pi^2 \nu t),
+\end{align}
+on the doubly periodic domain $(x, y) = [0, 2]\times [0, 2]$. The analytical solution is used to initialize the solver and to compute the norms of the error, i.e., $||\bm{u}-\bm{u}_e||_h$ and $\| p - p_e\|_h$. The kinematic viscosity is set to $\nu=0.01$ and time is integrated for $t=[0, 1]$ with a short timestep ($\triangle \text{t} = 0.001$) to practically eliminate temporal integration errors. The solver is run for a range of mesh sizes and the order of convergence is shown in Table~\ref{tab:orderP2P21}. The velocity is either piecewise quadratic (P2) or piecewise linear (P1), whereas the pressure is always piecewise linear. The P2P1 solver achieves fourth order accuracy in velocity and second order in pressure, whereas the P1P1 solver is second order accurate in both. Note that the fourth order in velocity will drop to three for a mesh that is not regularly sized and aligned with the coordinate axis.
+\begin{table}[t!]
+\caption{Taylor-Green flow convergence errors $O(h^k)$, where $h$ and $k$ are mesh size and order of convergence respectively. The velocity is either quadratic (P2) or linear (P1), whereas the pressure is always linear (P1).}
+\label{tab:orderP2P21}
+\begin{tabular}{p{4em} p{4em} p{2em} p{4em} p{2em}}
+    \\
+   P2P1 \\
+\rule{0pt}{3ex}    
+   h & $\| \bm{u} -\bm{u}_e\|_h $ & k & $\| p-p_e \|_h $  & k  \\
+   \hline \\   
+   2.83E-01 &   2.14E-02 & -  &   1.81E-02 & - \\ 
+   1.41E-01 &   1.44E-03 & 3.89  &   5.49E-03 & 1.72 \\ 
+   9.43E-02 &   2.84E-04 & 4.01  &   2.46E-03 & 1.97 \\ 
+   7.07E-02 &   8.94E-05 & 4.01  &   1.39E-03 & 2.00 \\ 
+   5.66E-02 &   3.65E-05 & 4.01  &   8.88E-04 & 2.00 \\ 
+  \hline \\
+  P1P1 \\
+\rule{0pt}{3ex}    
+   h & $\| \bm{u} -\bm{u}_e\|_h $ & k & $\| p-p_e \|_h $  & k  \\
+   \hline \\
+     2.83E-01 &   9.31E-03 & -  &   4.97E-03 & - \\ 
+   1.41E-01 &   2.36E-03 & 1.98  &   1.55E-03 & 1.68 \\ 
+   9.43E-02 &   1.06E-03 & 1.98  &   7.12E-04 & 1.92 \\ 
+   7.07E-02 &   5.98E-04 & 1.99  &   4.05E-04 & 1.97 \\ 
+   5.66E-02 &   3.83E-04 & 1.99  &   2.60E-04 & 1.98 \\ 
+   \hline
+\end{tabular}
+\end{table}
+
+To verify the convergence of the transient fractional step scheme we employ high order P4 and P3 elements for velocity and pressure respectively, to eliminate spatial discretization errors. The solver is then run for a range of time step sizes for $t=[0, 6]$. The error norms at the end of the runs are shown in Table~\ref{tab:orderP4P3} indicating that both pressure and velocity achieve second order accuracy in time.
+\begin{table}[t!]
+\caption{Taylor-Green flow convergence errors $O(dt^k)$, where $dt$ and $k$ are time step and order of convergence respectively. The velocity uses Lagrange elements of degree four (P4), whereas the pressure uses third degree (P3).}
+\label{tab:orderP4P3}
+\begin{tabular}{p{4em} p{4em} p{2em} p{4em} p{2em}}
+    \\
+   P4P3 \\
+\rule{0pt}{3ex}    
+   dt & ${\| \bm{u} -\bm{u}_e\|_h} $ & k & ${\| p-p_e \|_h} $  & k  \\
+   \hline \\   
+   5.00E-01 &   5.08E-01 & -  &   1.29E+00 & - \\ 
+   2.50E-01 &   1.36E-01 & 1.91  &   2.97E-01 & 2.11 \\ 
+   1.25E-01 &   3.42E-02 & 1.99  &   7.12E-02 & 2.06 \\ 
+   6.25E-02 &   8.62E-03 & 1.99  &   1.77E-02 & 2.01 \\ 
+   3.12E-02 &   2.17E-03 & 1.99  &   4.41E-03 & 2.00 \\ 
+  \hline \\
+\end{tabular}
+\end{table}
+
+
+\subsection{Turbulent channel flow}
+\label{sec:channel}
+The second test case is a direct numerical simulation\footnote{A direct numerical simulation indicates a simulation where all scales of turbulence have been resolved.} of turbulent, fully developed, plane channel flow. The flow is bounded between two parallel planes located at $y = \pm 1$ and is periodic in the $x$ and $z$ directions. The flow is driven by an applied constant pressure gradient (forcing) in the $x$-direction. This flow has been studied extensively with numerous CFD-codes, often using spectral accuracy since it is of primary importance to capture the rate of dissipation of turbulent kinetic energy, allowing no (or very little) numerical diffusion. To verify our implementation we will here attempt to reproduce the classical simulations of Moser, Kim and Mansour (MKM, \cite{mkm99}) for $Re_{\tau} = 180$, based on the wall friction velocity $u_{\tau}=\sqrt{\nu \partial u / \partial y}_{wall}$. The computational box is of size $L_x=4 \pi, L_y = 2$ and $ L_z=4 \pi / 3$. The resolution of MKM was a box of size $128^3$, uniform in $x$ and $z$-directions and skewed towards the walls using Chebyshev points in the $y$-direction. In this test we use one under-resolved box of size $64^3$ and one of the same size as MKM to show convergence towards the correct solution. Since each hexahedron is further divided into 6 tetrahedrons, this corresponds to $6\cdot64^3$ and $6\cdot128^3$ finite elements\footnote{Due to two periodic directions the number of degrees of freedom for the fine mesh are $128\cdot 129 \cdot 128$ for each velocity component and pressure, which is the same as used by MKM.}. MKM performed their simulations using spectral accuracy with Fourier representation in the periodic directions and a Chebyshev-tau formulation in the $y$-direction. Here we use piecewise linear Lagrange elements (P1P1) of second order accuracy. The creation of the mesh and boundary conditions in module \inpyth{problems/Channel.py} is shown in Fig.~\ref{fig:channel}.
+\begin{figure}[t!]
+\begin{python}[t!]
+from numpy import arctan, pi
+N = 128
+Lx, Ly, Lz = 2.0*pi, 1.0, 2.0*pi/3.0
+def mesh(Nx, Ny, Nz, **params):
+    m = BoxMesh(0, -Ly, -Lz, Lx, Ly, Lz, 
+                N, N, N)
+    x = m.coordinates()
+    x[:, 1] = arctan(pi*(x[:, 1])) / arctan(pi) 
+
+nu = 2.e-5
+Re_tau = 395.
+NS_parameters.update(
+  nu = nu,
+  Re_tau = Re_tau,
+  dt = 0.05,
+  velocity_degree = 1,
+  folder = "channel_results",
+  use_krylov_solvers = True)
+
+def walls(x, on_boundary):
+    return (on_boundary and 
+            near((x[1]+Ly)*(x[1]-Ly), 0.0))
+
+def create_bcs(V, u_components, **NS_name):
+    bc = {ui: [DirichletBC(V, 0, walls)] 
+               for ui in u_components]}
+    bcs['p'] = []    
+    return bcs
+
+utau = nu * Re_tau
+def body_force(**NS_namespace):
+    return Constant((utau**2, 0., 0.))
+\end{python}
+\caption{Implementation of the Channel problem.}
+\label{fig:channel}
+\end{figure}
+The sampling of statistics is performed using routines from the  \emph{fenicstools} \cite{fenicstools} package and are not described in detail here. Reference is given to the complete source code in \inpyth{problems/Channel.py} in the \emph{Oasis} repository. Figure \ref{fig:Umean} shows the statistically converged mean velocity in the $x$-direction across the channel normalized by $u_{\tau}$. The black curve shows the spectral solution of MKM. The dashed and dotted curves show, respectively, the \emph{Oasis} solution using $6\cdot 64^3$ and $6\cdot 128^3$ computational cells. The coarse solution represents an underresolved simulation where the sharpest velocity gradients cannot be captured. The total amount of dissipation within the flow is thus underpredicted and the mean predicted velocity is consequently higher than it should be. This result is in agreement with the understanding of underresolved Large Eddy Simulations (LES) of turbulent flows, that in effect adds viscosity to the large resolved scales to counteract the lack of dissipation from the unresolved small scales. Hence, simply by increasing the kinematic viscosity, the predicted mean flow could be forced closer to the spectral DNS solution seen in Fig.~\ref{fig:Umean}. Another option is, of course, to refine the mesh and thereby resolve the smallest scales. As expected, we see in Fig.~\ref{fig:Umean} that the $6\cdot 128^3$ simulations are in much closer agreement with the spectral DNS. There is still a slight mismatch, though, that should be attributed to the lower order of the \emph{Oasis} solver, incapable of capturing all the finest scales of turbulence. It is worth mentioning that the Galerkin finite element method used by \emph{Oasis} contains no, or very little, numerical diffusion. A dissipative solver, like, e.g., a finite volume using an upwind scheme or a monotonically integrated implicit LES \cite{fureby99}, would have the same effect as a LES model that adds viscosity and as such could lead to coarse simulations with mean velocity profiles closer to MKM.
+
+Figure \ref{fig:Reynoldsstress} shows the normal, non-dimensionalized, Reynolds stresses. The results confirm that the underresolved stresses are underpredicted close to the wall, whereas the fine simulations converge towards the spectral MKM results.
+
+\section{Concluding notes on efficiency} 
+The channel simulations presented in the previous section do not require more computational power than can be provided by a relatively new laptop computer. However, since these simulations are run for more than 30000 timesteps to sample statistics, we have performed parallel computations on the Abel supercomputer at the University of Oslo. The simulations scale weakly when approximately 200,000 elements are used per CPU, and thus we have run our simulations using 8 CPUs for the coarse mesh and 64 for the fine, which contains 12.5 million tetrahedrons. Simulations take approximately 1.5 sec real time per computational timestep (20-25 \% higher for the finest simulations depending on traffic and distribution on Abel) and thus close to 12 hours for the entire test (30000 timesteps). Approximately 75 \% of the computing time is spent in the linear algebra backend's iterative Krylov solvers and assembling of the coefficient matrix, as detailed in Sec.~\ref{sec:hpc}, is responsible for most of the remaining time. The backend (here PETSc) and the iterative linear algebra solvers are thus key to performance. For the tentative velocity computations we have used a stabilized version of a biconjugate gradient squared solver \cite{bicgstab} with a very cheap (fast, low memory) Jacobi preconditioner imported from method \inpyth{get_solvers}, where it is specified as \inpyth{KrylovSolver('bicgstab', 'jacobi')}. This choice is justified since the tentative velocity coefficient matrix is diagonally dominant due to the short timesteps, and each solve requires approximately 10 iterations to converge (the same number for coarse and fine). The pressure coefficient matrix represents a symmetric and elliptic system and thus we choose a solver based on minimal residuals \cite{minres} and the Hypre algebraic multigrid preconditioner (\inpyth{KrylovSolver('minres', 'hypre_amg')}). The pressure solver uses an average of 6 iterations (same for coarse and fine) to converge to a given tolerance. The velocity update is computed using a lumped mass matrix and no linear algebra solver is thus required for this final step.
+
+To further put the solver's performance into perspective, we compared \emph{Oasis} to the similarly unstructured and implicit low-level C++ solver \emph{channelFoam}, distributed with OpenFOAM version 2.2.1 \cite{channelfoam}. Like FEniCS, OpenFOAM is an open source toolbox for solving partial differential equations. Unlike FEniCS, which is completely general, OpenFOAM is targeted specifically at CFD. In our performance test we modified the channelFoam LES solver slightly to run with constant viscosity, and parameters were set to match the finest channel simulations using $128^3$ hexahedral cells. A head-to-head comparison then revealed that both \emph{channelFoam} and \emph{Oasis} (after the initial set up) required approximately 1.5 seconds per timestep.
+
+Since 75 \% of the computational time is found spent in the backend's iterative linear algebra solvers, it is safe to say that there is very little overhead in the high-level finite element assembly performed by \emph{Oasis}. In other words, for this implicit fractional step solver, the efficiency of the Python based \emph{Oasis} is already close to optimal, as predetermined by the excellent KSP (Krylov Subspace iterative methods and Preconditioners) package provided by PETSc. 
+
+\begin{figure}
+\includegraphics[scale=0.5]{Umean180.png}
+\caption{Mean velocity in $x$-direction normalized by $u_{\tau}$ as a function of scaled distance to the wall $y^+$. Dotted and dashed curves are computed with \emph{Oasis} using respectively $6\cdot 64^3$ and $6\cdot 128^3$ computational cells. The black curve is the reference solution from MKM.}
+\label{fig:Umean}
+\end{figure}
+\begin{figure}
+\includegraphics[scale=0.5]{ReynoldsStress180.png}
+\caption{Normal Reynolds stresses scaled by $u_{\tau}^2$ shown as functions of scaled distance to the wall $y^+$. Dotted and dashed curves are computed with \emph{Oasis} using respectively $6\cdot 64^3$ and $6\cdot 128^3$ computational cells. The black curves are from the reference solution of MKM. The three profiles represent the normal stresses $\overline{uu}^+, \overline{ww}^+$ and $\overline{vv}^+$, where $u, v$ and $w$ are velocity fluctuations in $x, y$ and $z$ directions respectively.}  
+\label{fig:Reynoldsstress}
+\end{figure}
+
+\section*{Acknowledgements}
+This work has been supported by a Center of Excellence grant from the Research Council of Norway to the Center for Biomedical Computing at Simula Research Laboratory.
+
+%% The Appendices part is started with the command \appendix;
+%% appendix sections are then done as normal sections
+%% \appendix
+
+%% \section{}
+%% \label{}
+
+%% References
+%%
+%% Following citation commands can be used in the body text:
+%% Usage of \cite is as follows:
+%%   \cite{key}         ==>>  [#]
+%%   \cite[chap. 2]{key} ==>> [#, chap. 2]
+%%
+
+%% References with bibTeX database:
+
+\bibliographystyle{elsarticle-num}
+\bibliography{bib}
+
+
+%% Authors are advised to submit their bibtex database files. They are
+%% requested to list a bibtex style file in the manuscript if they do
+%% not want to use elsarticle-num.bst.
+
+%% References without bibTeX database:
+
+% \begin{thebibliography}{00}
+
+%% \bibitem must have the following form:
+%%   \bibitem{key}...
+%%
+
+% \bibitem{}
+
+% \end{thebibliography}
+
+
+\end{document}
+
+%%
+%% End of file 

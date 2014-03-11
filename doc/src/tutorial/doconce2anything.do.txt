@@ -4,12 +4,14 @@ label{doconce2formats}
 
 Transformation of a Doconce document `mydoc.do.txt` to various other
 formats apply the script `doconce format`:
+
 !bc sys
-Terminal> doconce format format mydoc.do.txt
+Terminal> doconce format formatname mydoc.do.txt
 !ec
-or just
+or drop the extension:
+
 !bc sys
-Terminal> doconce format format mydoc
+Terminal> doconce format formatname mydoc
 !ec
 
 ===== Generating a makefile =====
