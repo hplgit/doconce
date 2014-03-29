@@ -64,6 +64,11 @@ def markdown2doconce(filestr, format):
     """
     #md2doconce "preprocessor" --markdown --write_doconce_from_markdown=myfile.do.txt (for debugging the translation from markdown-inspired doconce)
     #check https://stackedit.io/
+    quote_title = ''
+    quote_envir = 'block'
+    quote_envir = 'quote'
+    quote_envir = 'notice'
+    quote_title = ' None'
     from common import inline_tag_begin, inline_tag_end
     regex = [
         # Computer code with language specification
@@ -73,40 +78,64 @@ def markdown2doconce(filestr, format):
         # Paragraph heading written in boldface
         (r"\n\n\*\*(?P<subst>[^*]+?)([.?!:])\*\* ", r"\n\n__\g<subst>\g<2>__ "),
         # Boldface **word** to _word_
-        (r"%(inline_tag_begin)s\*\*(?P<subst>[^*]+?)\*\*%(inline_tag_end)s",
+        (r"%(inline_tag_begin)s\*\*(?P<subst>[^*]+?)\*\*%(inline_tag_end)s" % vars(),
          r"\g<begin>_\g<subst>_\g<end>"),
         # Link with link text
         (r"\[(?P<text>[^\]]+?)\]\((?P<url>.+?)\)", r'"\g<text>": "(\g<url>)"'),
         # H1
-        (r'^ *# +([^#]+)$', r"======= \g<1> =======", re.MULTILINE),
+        (r'^ *# +([^#]+?)$', r"======= \g<1> =======", re.MULTILINE),
         # H2
-        (r'^ *## +([^#]+)$', r"===== \g<1> =====", re.MULTILINE),
+        (r'^ *## +([^#]+?)$', r"===== \g<1> =====", re.MULTILINE),
         # H3
-        (r'^ *### +([^#]+)$', r"=== \g<1> ===", re.MULTILINE),
+        (r'^ *### +([^#]+?)$', r"=== \g<1> ===", re.MULTILINE),
         # Equation
         (r"\n\$\$\n(.+?)\n\$\$", r"\n!bt\n\\[ \g<1> \]\n!et", re.DOTALL),
         # TOC
-        (r"^[TOC]", r"TOC: on", re.MULTILINE),
+        (r"^\[TOC\]", r"TOC: on", re.MULTILINE),
         # Smart StackEdit comments (must appear before normal comments)
         # First treat Doconce-inspired syntax with [name: comment]
         (r"<!--- ([A-Za-z]+?): (.+)-->", r'[\g<1>: \g<2>]', re.DOTALL),
         # Second treat any such comment as inline Doconce comment
         (r"<!---(.+)-->", r'[comment: \g<1>]', re.DOTALL),
-        # Plain comments
-        (r"<!--(.+)-->", lambda m: '# ' + '\n# '.join(m.group(1).splitlines()), re.DOTALL)
+        # Plain comments starting on the beginning of a line
+        (r"^<!--(.+)-->", lambda m: '# ' + '\n# '.join(m.group(1).splitlines()), re.DOTALL|re.MULTILINE),
+        # Plain comments inside the text must be inline comments in Doconce
+        # or dropped...
+        (r"<!--(.+)-->", r'[comment: \g<1>]', re.DOTALL),
+        #(r"<!--(.+)-->", r'', re.DOTALL)
         # Quoted paragraph
-        (r"\n\n>(.+?)\n\n", r"\n\n!bquote\n\g<1>\n!equote\n\n", re.DOTALL),
-        # lists with - bullets
+        #(r"\n\n> +(.+?)\n\n", r"\n\n!bquote\n\g<1>\n!equote\n\n", re.DOTALL),
+        (r"\n\n> +(.+?)\n\n", r"\n\n!b%(quote_envir)s%(quote_title)s\n\g<1>\n!e%(quote_envir)s\n\n" % vars(), re.DOTALL),
+        # lists with - should be bullets
         (r"^( +)-( +)", r"\g<1>*\g<2>", re.MULTILINE),
-        (r"<br>", r" <linebreak>"),
+        # enumerated lists should be o
+        (r"^( +)\d+\.( +)", r"\g<1>o\g<2>", re.MULTILINE),
+        (r"<br>", r" <linebreak>"), # before next line which inserts <br>
+        # horizontal rules go to comment
+        (r"^--+\n", r"# HORIZONTAL RULE <br>\n", re.MULTILINE),
     ]
+    for r in regex:
+        if len(r) == 2:
+            filestr = re.sub(r[0], r[1], filestr)
+        elif len(r) == 3:
+            filestr = re.sub(r[0], r[1], filestr, flags=r[2])
+
+    # Not treated:
+    """
+    * Title, author, date - as of now no css and no fancy block/quote styles...
+    * Tables without opening and closing | (simplest tables)
+    * Definition lists
+    * SmartyPants
+    * Headlines with underline instead of #
+    * labels (?) a la {#label}
+    """
     # tables:
     inside_table = False
     lines = filestr.splitlines()
     # line starting and ending with pipe symbol is the start of a table
-    pattern = r'^ *| .+ | *$'
+    pattern = r'^ *\| .+ \| *$'
     for i in range(len(lines)):
-        if re.search(pattern, lines[i]):
+        if (not inside_table) and re.search(pattern, lines[i]):
             inside_table = True
             # Add table header
             header = '|%s|' % ('-'*(len(lines[i])-2))
@@ -123,10 +152,10 @@ def markdown2doconce(filestr, format):
                     specs.append('c')
                 if a.startswith('-') and a.endswith(':'):
                     specs.append('r')
-            lines[i] = '|' + '|'.join(['---%s---' % spec for spec in specs]) + '|\n'
+            lines[i] = '|' + '-'.join(['---%s---' % spec for spec in specs]) + '|'
         if inside_table and not lines[i].lstrip().startswith('|'):
             inside_table = False
-            lines[i] += '\n' + header
+            lines[i] += header
     filestr = '\n'.join(lines)
 
     # links that are written in Markdown as footnotes:
@@ -140,10 +169,37 @@ def markdown2doconce(filestr, format):
             links[m.group(1).strip()] = m.group(2).strip()
         else:
             # Skip all lines that contain link definitions and save the rest
-            newlines.append(lines[i])
+            newlines.append(line)
     filestr = '\n'.join(newlines)
     for link in links:
         filestr = re.sub(r'\[(.+?)\][%s]' % link, '"\g<1>": "%s"' % links[link], filestr)
+    # Fix quote blocks with opening > in lines
+    pattern = '^!b%(quote_envir)s%(quote_title)s\n(.+?)^!e%(quote_envir)s' % vars()
+    quotes = re.findall(pattern, filestr, flags=re.DOTALL|re.MULTILINE)
+    for quote in quotes:
+        if '>' not in quote:
+            continue
+        lines = quote.splitlines()
+        for i in range(len(lines)):
+            if lines[i].startswith('>'):
+                lines[i] = lines[i][1:].lstrip()
+                try:
+                    # list?
+                    if lines[i].startswith('- '):
+                        lines[i] = '  *' + lines[i][1:]
+                    elif lines[i].startswith('* '):
+                        lines[i] = '  *' + lines[i][1:]
+                    elif re.search(r'^\d+\. ', lines[i]):
+                        lines[i] = re.sub(r'^\d+\. ', '  o ', lines[i])
+                except Exception, e:
+                    raise e
+        new_quote = '\n'.join(lines)
+        # Cannot use re.sub since there are many strange chars (for regex)
+        # in quote; only exact subst works
+        from_ = '!b%(quote_envir)s%(quote_title)s%%s!e%(quote_envir)s' % vars() % ('\n'+ quote)
+        to_ = '!b%(quote_envir)s%(quote_title)s%%s!e%(quote_envir)s' % vars() % ('\n' + new_quote + '\n')
+        filestr = filestr.replace(from_, to_)
+
     return filestr
 
 def fix(filestr, format, verbose=0):
