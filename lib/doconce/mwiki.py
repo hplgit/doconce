@@ -375,6 +375,7 @@ def define(FILENAME_EXTENSION,
         'comment':       '<!-- %s -->',
         'abstract':      r'\n*\g<type>.* \g<text>\g<rest>',
         'linebreak':     r'\g<text><br />',
+        'non-breaking-space': '&nbsp;',
         }
 
     CODE['mwiki'] = mwiki_code
@@ -429,4 +430,5 @@ def define(FILENAME_EXTENSION,
 
     # document start:
     INTRO['mwiki'] = ''
+
 

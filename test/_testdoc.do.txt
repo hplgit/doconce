@@ -230,6 +230,35 @@ the previous blocks with line breaks.
 
 @@@OSCMD python -c 'print "Testing\noutput\nfrom\nPython."'
 
+=== Footnotes ===
+
+Here is a test of footnotes[^footnote], which are handy in text.
+They are used in different flavors [^flavor], which gives flexibility
+in writing. This is the third[^example-of-the-third-footnote] example.
+
+  [^footnote]: Typesetting of the footnote depends on the format.
+Plain text does nothing, LaTeX removes the
+definition and inserts the footnote as part of the LaTeX text.
+reStructuredText and Sphinx employ a similar type of typesetting
+as Extended Markdown and Doconce, and in HTML we keep the same
+syntax, just displayed properly in HTML.
+[^flavor]: Could say contexts too...
+
+Here is some more text before a new definition of a footnote that was used
+used above.
+
+
+!bnotice Non-breaking space character
+This paragraph aims to test "non-breaking space character":
+"http://en.wikipedia.org/wiki/Non-breaking_space", and a typical
+example where this is needed is int units: 7.4~km is traveled
+in~$7.4/5.5\approx 1.345$~s.  Also check that a~"link": "http://google.com"~is
+not broken across lines (drag the browser window to test this).
+On the other hand, the tilde is used in
+computer code, e.g., as in `[~x for x in y]` or in `y=~x`, and should
+of course remain a tilde.
+!enotice
+
 ===== Subsection 2: Testing figures =====
 label{subsec:ex}
 idx{figures}
@@ -1165,3 +1194,6 @@ case in LaTeX.
 
 And finally, what about admons, quotes, and boxes? They are tested
 in a separate document: `admon.do.txt`.
+
+[^example-of-the-third-footnote]: Not much to add here, but the footnote
+is at the end with only one newline.

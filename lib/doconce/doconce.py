@@ -57,6 +57,12 @@ main_content_end = main_content_char*19 + ' end of main content ' + \
 # include "latex.py"
 #----------------------------------------------------------------------------
 
+def markdown2doconce(filestr, format):
+    """
+    Look for Markdown (and Extended Markdown) syntax in the file (filestr)
+    and transform the text to valid Doconce format.
+    """
+
 def fix(filestr, format, verbose=0):
     """Fix issues with the text (correct wrong syntax)."""
     # Fix a special case:
@@ -2015,7 +2021,27 @@ def handle_cross_referencing(filestr, format):
 
 
 def handle_index_and_bib(filestr, format, has_title):
-    """Process idx{...} and cite{...} instructions."""
+    """Process idx{...} and cite{...} and footnote instructions."""
+    # Footnotes: start of line, spaces, [^name]: explanation
+    # goes up to next footnote [^name] or a double newline or the end of the str
+    pattern_def = '^ *\[\^(?P<name>.+?)\]:(?P<text>.+?)(?=(\n\n|\[\^|\Z))'
+    #footnotes = {name: footnote for name, footnote, lookahead in
+    #             re.findall(pattern_def, filestr, flags=re.MULTILINE|re.DOTALL)}
+    pattern_footnote = r'(?P<footnote> *\[\^(?P<name>.+?)\](?=[^:]))'
+    # Keep footnotes for pandoc, plain text
+    # Make a simple transformation for rst, sphinx
+    # Transform for latex: remove definition, insert \footnote{...}
+    if format in INLINE_TAGS_SUBST:
+        if callable(INLINE_TAGS_SUBST[format]['footnote']):
+            filestr = INLINE_TAGS_SUBST[format]['footnote'](
+                filestr, format, pattern_def, pattern_footnote)
+        elif INLINE_TAGS_SUBST[format]['footnote'] is not None:
+            filestr = re.sub(pattern_def, INLINE_TAGS_SUBST[format]['footnote'], filestr)
+    else:
+        if re.search(pattern_footnote, filestr):
+            print '*** warning: footnotes are not supported for format %s' % format
+            print '    footnotes will be left in the doconce syntax'
+
     if not format in ('latex', 'pdflatex'):
         # Make cite[]{} to cite{} (...)
         def cite_subst(m):
@@ -2265,6 +2291,7 @@ def inline_tag_subst(filestr, format):
         'linkURL3',
         'linkURL',
         'linebreak',
+        'non-breaking-space',  # must become after math, colortext, links, etc
         )
     for tag in ordered_tags:
         debugpr('\n*************** Working with tag "%s"' % tag)
@@ -2510,22 +2537,23 @@ def doconce2format(filestr, format):
 
     for module in html, latex, pdflatex, rst, sphinx, st, epytext, plaintext, gwiki, mwiki, cwiki, pandoc, ipynb:
         #print 'calling define function in', module.__name__
-        module.define(FILENAME_EXTENSION,
-                      BLANKLINE,
-                      INLINE_TAGS_SUBST,
-                      CODE,
-                      LIST,
-                      ARGLIST,
-                      TABLE,
-                      EXERCISE,
-                      FIGURE_EXT,
-                      CROSS_REFS,
-                      INDEX_BIB,
-                      TOC,
-                      ENVIRS,
-                      INTRO,
-                      OUTRO,
-                      filestr)
+        module.define(
+            FILENAME_EXTENSION,
+            BLANKLINE,
+            INLINE_TAGS_SUBST,
+            CODE,
+            LIST,
+            ARGLIST,
+            TABLE,
+            EXERCISE,
+            FIGURE_EXT,
+            CROSS_REFS,
+            INDEX_BIB,
+            TOC,
+            ENVIRS,
+            INTRO,
+            OUTRO,
+            filestr)
 
     # -----------------------------------------------------------------
 

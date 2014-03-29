@@ -564,12 +564,15 @@ set the (terminal) prompt that prefixes the command:
 ===== Inline Tagging =====
 label{inline:tagging}
 idx{inline tagging} idx{emphasized words} idx{boldface words} idx{verbatim text}
-idx{inline comments}
+idx{inline comments}idx{non-breaking space}idx{nbsp}
 
 Doconce supports tags for *emphasized phrases*, _boldface phrases_,
 and `verbatim text` (also called type writer text, for inline code),
 color{blue}{colored words},
 plus LaTeX/TeX inline mathematics, such as $\nu = \sin(x)$|$v = sin(x)$.
+Links are easy to define, either with a "text": "http://google.com" or
+just a plain URL: "http://google.com".
+Also non-breaking space (to avoid linebreak) can be specified.
 
 === Emphasized Words ===
 
@@ -711,6 +714,79 @@ resulting in the link URL: "manual.html".
 #`_static`, which must be manually copied to the Sphinx directory's
 #`_static` directory - links in the `.rst` files are automatically
 #adjusted.)
+
+=== Non-Breaking Space ===
+
+The non-breaking space character is tilde:
+
+!bc
+Here comes a long line with a specification of a number with unit at the end,
+which is an example that requires a "non-breaking space character":
+"http://en.wikipedia.org/wiki/Non-breaking_space": 7.4~km is traveled
+in~$7.4/5.5\approx 1.345$~s. (Computer code, where the tilde has a
+meaning, as in `y = ~x`, is not affected. The non-breaking character only
+works between characters, numbers, and the math dollar sign.)
+!ec
+This is rendered as
+
+!bquote
+Here comes a long line with a specification of a number with unit at the end,
+which is an example that requires a "non-breaking space character":
+"http://en.wikipedia.org/wiki/Non-breaking_space": 7.4~km is traveled
+in~$7.4/5.5\approx 1.345$~s. (Computer code, where the tilde has a
+meaning, as in `y = ~x`, is not affected. The non-breaking character only
+works between characters, numbers, and the math dollar sign.)
+!equote
+
+=== Footnotes ===
+
+Typesetting of footnotes employs a common email or Extended Markdown syntax:
+
+!bc
+Footnotes are typeset according to the output format[^typesetting].
+The syntax is optional spaces, opening bracket, hat,
+a name without spaces [^remedy-for-name-with-spaces], and closing
+bracket. The logical name of the footnote is not used in LaTeX,
+HTML, reStructuredText, or Sphinx, because these languages employ
+numbered footnotes. Other formats employ the logical name.
+
+  [^typesetting]: Typesetting of the footnote depends on the format.
+Plain text does nothing, LaTeX removes the
+definition and inserts the footnote as part of the LaTeX text.
+reStructuredText and Sphinx employ a similar type of typesetting
+as Extended Markdown and Doconce, and in HTML we keep the same
+syntax, just displayed properly in HTML.
+
+Footnotes are preferably defined after the paragraph they are used.
+The definition is the footnote syntax (some optional space, bracket,
+hat, name, bracket) followed by colon and a text.
+
+[^remedy-for-name-with-spaces]: Just put in dashes or underscores in
+case of spaces.
+!ec
+The text above looks as follows.
+
+Footnotes are typeset according to the output format[^typesetting].
+The syntax is optional spaces, opening bracket, hat,
+a name without spaces [^remedy-for-name-with-spaces], and closing
+bracket. The logical name of the footnote is not used in LaTeX,
+HTML, reStructuredText, or Sphinx, because these languages employ
+numbered footnotes. Other formats employ the logical name.
+
+  [^typesetting]: Typesetting of the footnote depends on the format.
+Plain text does nothing, LaTeX removes the
+definition and inserts the footnote as part of the LaTeX text.
+reStructuredText and Sphinx employ a similar type of typesetting
+as Extended Markdown and Doconce, and in HTML we keep the same
+syntax, just displayed properly in HTML.
+
+Footnotes are preferably defined after the paragraph they are used.
+The definition is the footnote syntax (some optional space, bracket,
+hat, name, bracket) followed by colon and a text.
+
+[^remedy-for-name-with-spaces]: Just put in dashes or underscores in
+case of spaces.
+
 
 === Inline Comments ===
 

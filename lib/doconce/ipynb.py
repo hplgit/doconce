@@ -227,6 +227,7 @@ def define(FILENAME_EXTENSION,
         'abstract':      r'\n*\g<type>.* \g<text>\n\n\g<rest>',
         'comment':       '<!-- %s -->',
         'linebreak':     r'\g<text>',  # Not sure how this is supported; Markdown applies <br> but that cannot be used for latex output with ipynb...
+        'non-breaking-space': ' ',
         }
 
     CODE['ipynb'] = ipynb_code
@@ -256,4 +257,3 @@ def define(FILENAME_EXTENSION,
     TOC['ipynb'] = lambda s: ''
     FIGURE_EXT['ipynb'] = ('.png', '.gif', '.jpg', '.jpeg', '.tif', '.tiff', '.pdf')
 
-    # no return, rely on in-place modification of dictionaries
