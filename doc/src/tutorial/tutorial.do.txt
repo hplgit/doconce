@@ -78,7 +78,7 @@ the formating. Here are some examples.
   * *Emphasized words* are surrounded by `*`. _Words in boldface_
     are surrounded by underscores.
 
-  * Words from computer code are enclosed in back quotes and
+  * Words from computer code are enclosed in backticks and
     then typeset `verbatim (in a monospace font)`.
 
   * Section and paragraph headings are recognied special
@@ -139,6 +139,7 @@ mathematics, not found in any of the mentioned formats.
 ===== Basic Syntax =====
 
 Here is an example of some simple text written in the Doconce format:
+
 !bc
 ======= First a Section Heading =======
 
@@ -151,7 +152,10 @@ label{my:first:sec}
 
 Ordinary text looks like ordinary text, and the tags used for
 _boldface_ words, *emphasized* words, and `computer` words look
-natural in plain text.  Lists are typeset as you would do in email,
+natural in plain text.  Quotations appear inside double backticks
+and double single quotes, as in ``this example''.
+
+Lists are typeset as you would do in email,
 
   * item 1
   * item 2
@@ -172,7 +176,6 @@ generated from Doconce, the URLs of links appear as footnotes.
 With screen output, all links are clickable hyperlinks, except in
 the plain text format which does not support hyperlinks.
 
-__Cross-references.__
 References to sections may use logical names as labels (e.g., a
 "label" command right after the section title), as in the reference to
 Section ref{my:first:sec}. References to equations such as
@@ -185,8 +188,7 @@ remarks to the text]. Inline comments can be removed from the output
 by a command-line argument (see Section ref{doconce2formats} for an
 example).
 
-__Footnotes.__
-Adding a footnote[^footnote] is also possible.
+__Footnotes.__ Adding a footnote[^footnote] is also possible.
 
 [^footnote]: The syntax for footnotes is borrowed from Extended Markdown.
 
@@ -217,7 +219,10 @@ label{my:first:sec}
 
 Ordinary text looks like ordinary text, and the tags used for
 _boldface_ words, *emphasized* words, and `computer` words look
-natural in plain text.  Lists are typeset as you would do in an email,
+natural in plain text.  Quotations appear inside double backticks
+and double single quotes, as in ``this example''.
+
+Lists are typeset as you would do in an email,
 
   * item 1
   * item 2

@@ -64,11 +64,11 @@ def markdown2doconce(filestr, format):
     """
     #md2doconce "preprocessor" --markdown --write_doconce_from_markdown=myfile.do.txt (for debugging the translation from markdown-inspired doconce)
     #check https://stackedit.io/
-    quote_title = ''
-    quote_envir = 'block'
-    quote_envir = 'quote'
     quote_envir = 'notice'
     quote_title = ' None'
+    quote_title = ''
+    quote_envir = 'quote'
+    quote_envir = 'block'
     from common import inline_tag_begin, inline_tag_end
     regex = [
         # Computer code with language specification
@@ -347,12 +347,13 @@ def syntax_check(filestr, format):
             print filestr2[m.start()-40:m.start()+80]
             _abort()
 
-    # Syntax error `try`-`except`, should be `try-except`
-    pattern = r'(([`A-Za-z0-9._]+)`-`([`A-Za-z0-9._]+))'
+    # Syntax error `try`-`except`, should be `try-except`,
+    # similarly `tuple`/`list` or `int` `N` must be rewritten
+    pattern = r'(([`A-Za-z0-9._]+)`(-|/| +)`([`A-Za-z0-9._]+))'
     m = re.search(pattern, filestr)
     if m:
-        print '*** error: %s`-` is syntax error' % m.group(1)
-        print '    rewrite to %s-%s' % (m.group(2), m.group(3))
+        print '*** error: %s is syntax error' % (m.group(1))
+        print '    rewrite to e.g. %s%s%s' % (m.group(2), m.group(3), m.group(4))
         print '    surrounding text:'
         print filestr[m.start()-100:m.start()+100]
         _abort()
@@ -816,10 +817,12 @@ def insert_code_from_file(filestr, format):
 
             # Check if the code environment is explicitly specified
             if 'envir=' in line:
-                m = re.search(r'envir=([^ ]+) ', line)
+                m = re.search(r'envir=([a-z0-9_]+)', line)
                 if m:
                     code_envir = m.group(1).strip()
-                    line = re.sub(r'envir=([^ ]+) ', '', line)
+                    line = line.replace('envir=%s' % code_envir, '').strip()
+                    # Need a new split since we removed words from line
+                    words = line.split()
             else:
                 # Determine code environment from filename extension
                 filetype = os.path.splitext(filename)[1][1:]  # drop dot
@@ -854,7 +857,7 @@ def insert_code_from_file(filestr, format):
                 else:
                     code_envir = ''
 
-            if code_envir in ('txt', 'csv', 'dat', ''):
+            if code_envir in ('cc', 'ccq', 'txt', 'csv', 'dat', ''):
                 code_envir_tp = 'filedata'
             else:
                 code_envir_tp = 'program'
@@ -960,7 +963,7 @@ def insert_code_from_file(filestr, format):
             codefile.close()
 
             #if format == 'latex' or format == 'pdflatex' or format == 'sphinx':
-                # Insert a cod or pro directive for ptex2tex and sphinx.
+            # Insert a cod or pro directive for ptex2tex and sphinx.
             if code_envir_tp == 'program':
                 if code_envir.endswith('pro') or code_envir.endswith('cod'):
                     code = "!bc %s\n%s\n!ec" % (code_envir, code)
@@ -972,7 +975,7 @@ def insert_code_from_file(filestr, format):
                     code = "!bc %scod\n%s\n!ec" % (code_envir, code)
                     print ' (format: %scod)' % code_envir
             else:
-                # filedata (.txt, .csv, .dat, etc)
+                # filedata (.txt, .csv, .dat, etc, or cc, ccq code_envir)
                 if code_envir:
                     code = "!bc %s\n%s\n!ec" % (code_envir, code)
                     print ' (format: %s)' % code_envir
@@ -2170,7 +2173,7 @@ def handle_index_and_bib(filestr, format, has_title):
     # Keep footnotes for pandoc, plain text
     # Make a simple transformation for rst, sphinx
     # Transform for latex: remove definition, insert \footnote{...}
-    if format in INLINE_TAGS_SUBST:
+    if format in INLINE_TAGS_SUBST and 'footnote' in INLINE_TAGS_SUBST[format]:
         if callable(INLINE_TAGS_SUBST[format]['footnote']):
             filestr = INLINE_TAGS_SUBST[format]['footnote'](
                 filestr, format, pattern_def, pattern_footnote)
