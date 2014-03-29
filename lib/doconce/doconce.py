@@ -62,6 +62,89 @@ def markdown2doconce(filestr, format):
     Look for Markdown (and Extended Markdown) syntax in the file (filestr)
     and transform the text to valid Doconce format.
     """
+    #md2doconce "preprocessor" --markdown --write_doconce_from_markdown=myfile.do.txt (for debugging the translation from markdown-inspired doconce)
+    #check https://stackedit.io/
+    from common import inline_tag_begin, inline_tag_end
+    regex = [
+        # Computer code with language specification
+        (r"\n+```([a-z]+)(.+?)\n```\n", lambda m: "\n\n!bc %scod\n%s\n!ec\n" % (extended_markdown_language2dolang[m.group(1)], m.group(2)), re.DOTALL), # language given
+        # Computer code without (or the same) language specification
+        (r"\n+```\n(.+?)\n```\n", "\n\n!bc\n\g<1>\n!ec\n", re.DOTALL),
+        # Paragraph heading written in boldface
+        (r"\n\n\*\*(?P<subst>[^*]+?)([.?!:])\*\* ", r"\n\n__\g<subst>\g<2>__ "),
+        # Boldface **word** to _word_
+        (r"%(inline_tag_begin)s\*\*(?P<subst>[^*]+?)\*\*%(inline_tag_end)s",
+         r"\g<begin>_\g<subst>_\g<end>"),
+        # Link with link text
+        (r"\[(?P<text>[^\]]+?)\]\((?P<url>.+?)\)", r'"\g<text>": "(\g<url>)"'),
+        # H1
+        (r'^ *# +([^#]+)$', r"======= \g<1> =======", re.MULTILINE),
+        # H2
+        (r'^ *## +([^#]+)$', r"===== \g<1> =====", re.MULTILINE),
+        # H3
+        (r'^ *### +([^#]+)$', r"=== \g<1> ===", re.MULTILINE),
+        # Equation
+        (r"\n\$\$\n(.+?)\n\$\$", r"\n!bt\n\\[ \g<1> \]\n!et", re.DOTALL),
+        # TOC
+        (r"^[TOC]", r"TOC: on", re.MULTILINE),
+        # Smart StackEdit comments (must appear before normal comments)
+        # First treat Doconce-inspired syntax with [name: comment]
+        (r"<!--- ([A-Za-z]+?): (.+)-->", r'[\g<1>: \g<2>]', re.DOTALL),
+        # Second treat any such comment as inline Doconce comment
+        (r"<!---(.+)-->", r'[comment: \g<1>]', re.DOTALL),
+        # Plain comments
+        (r"<!--(.+)-->", lambda m: '# ' + '\n# '.join(m.group(1).splitlines()), re.DOTALL)
+        # Quoted paragraph
+        (r"\n\n>(.+?)\n\n", r"\n\n!bquote\n\g<1>\n!equote\n\n", re.DOTALL),
+        # lists with - bullets
+        (r"^( +)-( +)", r"\g<1>*\g<2>", re.MULTILINE),
+        (r"<br>", r" <linebreak>"),
+    ]
+    # tables:
+    inside_table = False
+    lines = filestr.splitlines()
+    # line starting and ending with pipe symbol is the start of a table
+    pattern = r'^ *| .+ | *$'
+    for i in range(len(lines)):
+        if re.search(pattern, lines[i]):
+            inside_table = True
+            # Add table header
+            header = '|%s|' % ('-'*(len(lines[i])-2))
+            lines[i] = header + '\n' + lines[i]
+        if inside_table and (':-' in lines[i] or '-:' in lines[i]):
+            # Align specifications
+            aligns = lines[i].split('|')[1:-1]
+            specs = []
+            for align in aligns:
+                a = align.strip()
+                if a.startswith(':') and a.endswith('-'):
+                    specs.append('l')
+                elif a.startswith(':') and a.endswith(':'):
+                    specs.append('c')
+                if a.startswith('-') and a.endswith(':'):
+                    specs.append('r')
+            lines[i] = '|' + '|'.join(['---%s---' % spec for spec in specs]) + '|\n'
+        if inside_table and not lines[i].lstrip().startswith('|'):
+            inside_table = False
+            lines[i] += '\n' + header
+    filestr = '\n'.join(lines)
+
+    # links that are written in Markdown as footnotes:
+    links = {}
+    lines = filestr.splitlines()
+    newlines = []
+    for line in lines:
+        pattern = r'^ *\[([^\^]+)\]:(.+)$'
+        m = re.search(pattern, line, flags=re.MULTILINE)
+        if m:
+            links[m.group(1).strip()] = m.group(2).strip()
+        else:
+            # Skip all lines that contain link definitions and save the rest
+            newlines.append(lines[i])
+    filestr = '\n'.join(newlines)
+    for link in links:
+        filestr = re.sub(r'\[(.+?)\][%s]' % link, '"\g<1>": "%s"' % links[link], filestr)
+    return filestr
 
 def fix(filestr, format, verbose=0):
     """Fix issues with the text (correct wrong syntax)."""
@@ -2563,6 +2646,14 @@ def doconce2format(filestr, format):
         has_title = True
     else:
         has_title = False
+
+    # Translate from Markdown syntax if that is requested
+    if option('markdown'):
+        filestr = markdown2doconce(filestr, format)
+        fname = option('md2do_output=', None)
+        if fname is not None:
+            f = open(fname, 'w')
+            f.write(filestr)
 
     # Next step: run operating system commands and insert output
     filestr, num_commands = insert_os_commands(filestr, format)

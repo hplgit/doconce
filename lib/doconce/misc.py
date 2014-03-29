@@ -225,6 +225,10 @@ Somewhat intelligent, but may give unwanted edits. Use with great care!"""),
      'Check that all URLs referred to in the document are valid.'),
     ('--short_title=',
      "Short version of the document's title."),
+    ('--markdown',
+     'Allow Markdown (and some Extended Markdown) syntax as input.'),
+    ('--md2do_output=',
+     'Dump to file the Doconce code arising from converting from Markdown. Default value is None (no dump). Any filename can be specified: --md2do_output=myfile.do.txt'),
     ]
 
 _legal_command_line_options = \
