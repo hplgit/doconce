@@ -57,6 +57,151 @@ main_content_end = main_content_char*19 + ' end of main content ' + \
 # include "latex.py"
 #----------------------------------------------------------------------------
 
+def markdown2doconce(filestr, format):
+    """
+    Look for Markdown (and Extended Markdown) syntax in the file (filestr)
+    and transform the text to valid Doconce format.
+    """
+    #md2doconce "preprocessor" --markdown --write_doconce_from_markdown=myfile.do.txt (for debugging the translation from markdown-inspired doconce)
+    #check https://stackedit.io/
+    quote_envir = 'notice'
+    quote_title = ' None'
+    quote_title = ''
+    quote_envir = 'quote'
+    quote_envir = 'block'
+    from common import inline_tag_begin, inline_tag_end
+    regex = [
+        # Computer code with language specification
+        (r"\n+```([a-z]+)(.+?)\n```\n", lambda m: "\n\n!bc %scod\n%s\n!ec\n" % (extended_markdown_language2dolang[m.group(1)], m.group(2)), re.DOTALL), # language given
+        # Computer code without (or the same) language specification
+        (r"\n+```\n(.+?)\n```\n", "\n\n!bc\n\g<1>\n!ec\n", re.DOTALL),
+        # Paragraph heading written in boldface
+        (r"\n\n\*\*(?P<subst>[^*]+?)([.?!:])\*\* ", r"\n\n__\g<subst>\g<2>__ "),
+        # Boldface **word** to _word_
+        (r"%(inline_tag_begin)s\*\*(?P<subst>[^*]+?)\*\*%(inline_tag_end)s" % vars(),
+         r"\g<begin>_\g<subst>_\g<end>"),
+        # Link with link text
+        (r"\[(?P<text>[^\]]+?)\]\((?P<url>.+?)\)", r'"\g<text>": "(\g<url>)"'),
+        # H1
+        (r'^ *# +([^#]+?)$', r"======= \g<1> =======", re.MULTILINE),
+        # H2
+        (r'^ *## +([^#]+?)$', r"===== \g<1> =====", re.MULTILINE),
+        # H3
+        (r'^ *### +([^#]+?)$', r"=== \g<1> ===", re.MULTILINE),
+        # Equation
+        (r"\n\$\$\n(.+?)\n\$\$", r"\n!bt\n\\[ \g<1> \]\n!et", re.DOTALL),
+        # TOC
+        (r"^\[TOC\]", r"TOC: on", re.MULTILINE),
+        # Smart StackEdit comments (must appear before normal comments)
+        # First treat Doconce-inspired syntax with [name: comment]
+        (r"<!--- ([A-Za-z]+?): (.+)-->", r'[\g<1>: \g<2>]', re.DOTALL),
+        # Second treat any such comment as inline Doconce comment
+        (r"<!---(.+)-->", r'[comment: \g<1>]', re.DOTALL),
+        # Plain comments starting on the beginning of a line
+        (r"^<!--(.+)-->", lambda m: '# ' + '\n# '.join(m.group(1).splitlines()), re.DOTALL|re.MULTILINE),
+        # Plain comments inside the text must be inline comments in Doconce
+        # or dropped...
+        (r"<!--(.+)-->", r'[comment: \g<1>]', re.DOTALL),
+        #(r"<!--(.+)-->", r'', re.DOTALL)
+        # Quoted paragraph
+        #(r"\n\n> +(.+?)\n\n", r"\n\n!bquote\n\g<1>\n!equote\n\n", re.DOTALL),
+        (r"\n\n> +(.+?)\n\n", r"\n\n!b%(quote_envir)s%(quote_title)s\n\g<1>\n!e%(quote_envir)s\n\n" % vars(), re.DOTALL),
+        # lists with - should be bullets
+        (r"^( +)-( +)", r"\g<1>*\g<2>", re.MULTILINE),
+        # enumerated lists should be o
+        (r"^( +)\d+\.( +)", r"\g<1>o\g<2>", re.MULTILINE),
+        (r"<br>", r" <linebreak>"), # before next line which inserts <br>
+        # horizontal rules go to comment
+        (r"^--+\n", r"# HORIZONTAL RULE <br>\n", re.MULTILINE),
+    ]
+    for r in regex:
+        if len(r) == 2:
+            filestr = re.sub(r[0], r[1], filestr)
+        elif len(r) == 3:
+            filestr = re.sub(r[0], r[1], filestr, flags=r[2])
+
+    # Not treated:
+    """
+    * Title, author, date - as of now no css and no fancy block/quote styles...
+    * Tables without opening and closing | (simplest tables)
+    * Definition lists
+    * SmartyPants
+    * Headlines with underline instead of #
+    * labels (?) a la {#label}
+    """
+    # tables:
+    inside_table = False
+    lines = filestr.splitlines()
+    # line starting and ending with pipe symbol is the start of a table
+    pattern = r'^ *\| .+ \| *$'
+    for i in range(len(lines)):
+        if (not inside_table) and re.search(pattern, lines[i]):
+            inside_table = True
+            # Add table header
+            header = '|%s|' % ('-'*(len(lines[i])-2))
+            lines[i] = header + '\n' + lines[i]
+        if inside_table and (':-' in lines[i] or '-:' in lines[i]):
+            # Align specifications
+            aligns = lines[i].split('|')[1:-1]
+            specs = []
+            for align in aligns:
+                a = align.strip()
+                if a.startswith(':') and a.endswith('-'):
+                    specs.append('l')
+                elif a.startswith(':') and a.endswith(':'):
+                    specs.append('c')
+                if a.startswith('-') and a.endswith(':'):
+                    specs.append('r')
+            lines[i] = '|' + '-'.join(['---%s---' % spec for spec in specs]) + '|'
+        if inside_table and not lines[i].lstrip().startswith('|'):
+            inside_table = False
+            lines[i] += header
+    filestr = '\n'.join(lines)
+
+    # links that are written in Markdown as footnotes:
+    links = {}
+    lines = filestr.splitlines()
+    newlines = []
+    for line in lines:
+        pattern = r'^ *\[([^\^]+)\]:(.+)$'
+        m = re.search(pattern, line, flags=re.MULTILINE)
+        if m:
+            links[m.group(1).strip()] = m.group(2).strip()
+        else:
+            # Skip all lines that contain link definitions and save the rest
+            newlines.append(line)
+    filestr = '\n'.join(newlines)
+    for link in links:
+        filestr = re.sub(r'\[(.+?)\][%s]' % link, '"\g<1>": "%s"' % links[link], filestr)
+    # Fix quote blocks with opening > in lines
+    pattern = '^!b%(quote_envir)s%(quote_title)s\n(.+?)^!e%(quote_envir)s' % vars()
+    quotes = re.findall(pattern, filestr, flags=re.DOTALL|re.MULTILINE)
+    for quote in quotes:
+        if '>' not in quote:
+            continue
+        lines = quote.splitlines()
+        for i in range(len(lines)):
+            if lines[i].startswith('>'):
+                lines[i] = lines[i][1:].lstrip()
+                try:
+                    # list?
+                    if lines[i].startswith('- '):
+                        lines[i] = '  *' + lines[i][1:]
+                    elif lines[i].startswith('* '):
+                        lines[i] = '  *' + lines[i][1:]
+                    elif re.search(r'^\d+\. ', lines[i]):
+                        lines[i] = re.sub(r'^\d+\. ', '  o ', lines[i])
+                except Exception, e:
+                    raise e
+        new_quote = '\n'.join(lines)
+        # Cannot use re.sub since there are many strange chars (for regex)
+        # in quote; only exact subst works
+        from_ = '!b%(quote_envir)s%(quote_title)s%%s!e%(quote_envir)s' % vars() % ('\n'+ quote)
+        to_ = '!b%(quote_envir)s%(quote_title)s%%s!e%(quote_envir)s' % vars() % ('\n' + new_quote + '\n')
+        filestr = filestr.replace(from_, to_)
+
+    return filestr
+
 def fix(filestr, format, verbose=0):
     """Fix issues with the text (correct wrong syntax)."""
     # Fix a special case:
@@ -2018,7 +2163,27 @@ def handle_cross_referencing(filestr, format):
 
 
 def handle_index_and_bib(filestr, format, has_title):
-    """Process idx{...} and cite{...} instructions."""
+    """Process idx{...} and cite{...} and footnote instructions."""
+    # Footnotes: start of line, spaces, [^name]: explanation
+    # goes up to next footnote [^name] or a double newline or the end of the str
+    pattern_def = '^ *\[\^(?P<name>.+?)\]:(?P<text>.+?)(?=(\n\n|\[\^|\Z))'
+    #footnotes = {name: footnote for name, footnote, lookahead in
+    #             re.findall(pattern_def, filestr, flags=re.MULTILINE|re.DOTALL)}
+    pattern_footnote = r'(?P<footnote> *\[\^(?P<name>.+?)\](?=[^:]))'
+    # Keep footnotes for pandoc, plain text
+    # Make a simple transformation for rst, sphinx
+    # Transform for latex: remove definition, insert \footnote{...}
+    if format in INLINE_TAGS_SUBST and 'footnote' in INLINE_TAGS_SUBST[format]:
+        if callable(INLINE_TAGS_SUBST[format]['footnote']):
+            filestr = INLINE_TAGS_SUBST[format]['footnote'](
+                filestr, format, pattern_def, pattern_footnote)
+        elif INLINE_TAGS_SUBST[format]['footnote'] is not None:
+            filestr = re.sub(pattern_def, INLINE_TAGS_SUBST[format]['footnote'], filestr)
+    else:
+        if re.search(pattern_footnote, filestr):
+            print '*** warning: footnotes are not supported for format %s' % format
+            print '    footnotes will be left in the doconce syntax'
+
     if not format in ('latex', 'pdflatex'):
         # Make cite[]{} to cite{} (...)
         def cite_subst(m):
@@ -2268,6 +2433,7 @@ def inline_tag_subst(filestr, format):
         'linkURL3',
         'linkURL',
         'linebreak',
+        'non-breaking-space',  # must become after math, colortext, links, etc
         )
     for tag in ordered_tags:
         debugpr('\n*************** Working with tag "%s"' % tag)
@@ -2513,22 +2679,23 @@ def doconce2format(filestr, format):
 
     for module in html, latex, pdflatex, rst, sphinx, st, epytext, plaintext, gwiki, mwiki, cwiki, pandoc, ipynb:
         #print 'calling define function in', module.__name__
-        module.define(FILENAME_EXTENSION,
-                      BLANKLINE,
-                      INLINE_TAGS_SUBST,
-                      CODE,
-                      LIST,
-                      ARGLIST,
-                      TABLE,
-                      EXERCISE,
-                      FIGURE_EXT,
-                      CROSS_REFS,
-                      INDEX_BIB,
-                      TOC,
-                      ENVIRS,
-                      INTRO,
-                      OUTRO,
-                      filestr)
+        module.define(
+            FILENAME_EXTENSION,
+            BLANKLINE,
+            INLINE_TAGS_SUBST,
+            CODE,
+            LIST,
+            ARGLIST,
+            TABLE,
+            EXERCISE,
+            FIGURE_EXT,
+            CROSS_REFS,
+            INDEX_BIB,
+            TOC,
+            ENVIRS,
+            INTRO,
+            OUTRO,
+            filestr)
 
     # -----------------------------------------------------------------
 
@@ -2538,6 +2705,14 @@ def doconce2format(filestr, format):
         has_title = True
     else:
         has_title = False
+
+    # Translate from Markdown syntax if that is requested
+    if option('markdown'):
+        filestr = markdown2doconce(filestr, format)
+        fname = option('md2do_output=', None)
+        if fname is not None:
+            f = open(fname, 'w')
+            f.write(filestr)
 
     # Next step: run operating system commands and insert output
     filestr, num_commands = insert_os_commands(filestr, format)

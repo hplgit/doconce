@@ -290,7 +290,7 @@ def sphinx_code(filestr, code_blocks, code_block_types,
         #                 '\n.. code-block:: %s\n\n' % envir2lang[key], filestr,
         #                 flags=re.MULTILINE)
         # Check that we have code installed to handle pyscpro
-        if key == 'pyscpro':
+        if 'pyscpro' in filestr and key == 'pyscpro':
             try:
                 import icsecontrib.sagecellserver
             except ImportError:
@@ -467,6 +467,7 @@ def define(FILENAME_EXTENSION,
         }
 
     TOC['sphinx'] = lambda s: ''  # Sphinx automatically generates a toc
+
 
 
 #---------------------------------------------------------------------------

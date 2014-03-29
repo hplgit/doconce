@@ -148,6 +148,25 @@ This is a sentence with ``words to be quoted''.
 A forced linebreak is specified by `<linebreak>` at the point where the
 linebreak in the output is wanted.
 
+Footnotes use a label in the text with the footnote text separate,
+preferably after the paragraph where the footnote appears:
+
+!bc
+Differentiating[^diff2] (ref{eq1}) leads
+to a new and simpler equation.
+
+[^diff2]: More precisely, we apply the divergence
+$\nabla\cdot$ on both sides.
+
+Here comes a new paragraph...
+!ec
+
+Non-breaking space is inserted using the tilde character as in LaTeX:
+
+!bc
+This distance corresponds to 7.5~km, which is traveled in $7.5/5$~s.
+!ec
+
 ===== Lists =====
 
 There are three types of lists: *bullet lists*, where each item starts

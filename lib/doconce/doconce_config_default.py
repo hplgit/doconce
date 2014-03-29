@@ -84,3 +84,5 @@ no_mp4_webm_ogg_alternatives = False
 handout = False
 urlcheck = False
 #short_title = 
+markdown = False
+#md2do_output = 

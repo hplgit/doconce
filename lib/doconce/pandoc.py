@@ -306,6 +306,7 @@ def define(FILENAME_EXTENSION,
         'abstract':      r'*\g<type>.* \g<text>\n\n\g<rest>',
         'comment':       '<!-- %s -->',
         'linebreak':     r'\g<text>\\n',
+        'non-breaking-space': '\\ ',
         }
 
     CODE['pandoc'] = pandoc_code
@@ -335,4 +336,4 @@ def define(FILENAME_EXTENSION,
     TOC['pandoc'] = lambda s: '# Table of contents: Run pandoc with --toc option'
     FIGURE_EXT['pandoc'] = ('.png', '.gif', '.jpg', '.jpeg', '.tif', '.tiff', '.pdf')
 
-    # no return, rely on in-place modification of dictionaries
+

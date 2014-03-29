@@ -81,7 +81,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Author:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Mar 10, 2014</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Mar 29, 2014</td>
 </tr>
 </tbody>
 </table>
@@ -142,11 +142,12 @@ cleaner LaTeX and HTML output.</li>
 <p><strong>History.</strong>
 Doconce was developed in 2006 at a time when most popular
 markup languages used quite some tagging.  Later, almost untagged
-markup languages like Markdown and the Pandoc translator became
+markup languages like <a class="reference external" href="http://daringfireball.net/projects/markdown/">Markdown</a>, <a class="reference external" href="http://fletcherpenney.net/multimarkdown/">MultiMarkdown</a>, and the <a class="reference external" href="http://johnmacfarlane.net/pandoc/">Pandoc</a>  translator became
 popular. Doconce is not a replacement of Pandoc, which is a
-considerably more sophisticated project. Moreover, Doconce was
-developed mainly to fulfill the needs for a flexible source code base
-for books with much mathematics and computer code.</p>
+considerably more sophisticated project. However, Doconce can output
+Sphinx (not supported by Pandoc) and has more support for writing
+small and large documents (books in particular) with much mathematics
+and computer code.</p>
 <p><strong>Disclaimer.</strong>
 Doconce is a simple tool, largely based on interpreting
 and handling text through regular expressions. The possibility for
@@ -585,11 +586,11 @@ lot of formats in the subdirectory <tt class="docutils literal"><span class="pre
 <span id="doconce2formats"></span><h1>From Doconce to Other Formats<a class="headerlink" href="#from-doconce-to-other-formats" title="Permalink to this headline">¶</a></h1>
 <p>Transformation of a Doconce document <tt class="docutils literal"><span class="pre">mydoc.do.txt</span></tt> to various other
 formats apply the script <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></tt>:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; doconce format format mydoc.do.txt</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; doconce format formatname mydoc.do.txt</span>
 </pre></div>
 </div>
-<p>or just</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; doconce format format mydoc</span>
+<p>or drop the extension:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; doconce format formatname mydoc</span>
 </pre></div>
 </div>
 <div class="section" id="generating-a-makefile">
@@ -3389,11 +3390,14 @@ set the (terminal) prompt that prefixes the command:</p>
 </div></blockquote>
 </div>
 <div class="section" id="inline-tagging">
-<span id="id5"></span><h2>Inline Tagging<a class="headerlink" href="#inline-tagging" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="index-8"></span><span class="target" id="index-9"></span><span class="target" id="index-10"></span><span class="target" id="index-11"></span><p id="index-12">Doconce supports tags for <em>emphasized phrases</em>, <strong>boldface phrases</strong>,
+<span id="id6"></span><h2>Inline Tagging<a class="headerlink" href="#inline-tagging" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="index-8"></span><span class="target" id="index-9"></span><span class="target" id="index-10"></span><span class="target" id="index-11"></span><span class="target" id="index-12"></span><span class="target" id="index-13"></span><p id="index-14">Doconce supports tags for <em>emphasized phrases</em>, <strong>boldface phrases</strong>,
 and <tt class="docutils literal"><span class="pre">verbatim</span> <span class="pre">text</span></tt> (also called type writer text, for inline code),
 &lt;font color=&#8221;blue&#8221;&gt;colored words&lt;/font&gt;,
-plus LaTeX/TeX inline mathematics, such as <span class="math">\nu = \sin(x)</span>.</p>
+plus LaTeX/TeX inline mathematics, such as <span class="math">\nu = \sin(x)</span>.
+Links are easy to define, either with a <a class="reference external" href="http://google.com">text</a> or
+just a plain <a class="reference external" href="http://google.com">http://google.com</a>.
+Also non-breaking space (to avoid linebreak) can be specified.</p>
 <div class="section" id="emphasized-words">
 <h3>Emphasized Words<a class="headerlink" href="#emphasized-words" title="Permalink to this headline">¶</a></h3>
 <p>Emphasized text is typeset inside a pair of asterisk, and there should
@@ -3526,6 +3530,89 @@ quotes:</p>
 <div class="highlight-text"><div class="highlight"><pre>This is a sentence with ``words to be quoted&#39;&#39;.
 </pre></div>
 </div>
+<p>To candidates for find double quotes that should be transferred to the above
+type of quotation (which is a common mistake),
+one can run a regular expression search like</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; find . -name &#39;*.do.txt&#39; -exec grep -E \</span>
+<span class="go">          &#39;[^(&quot;]&quot;[A-Za-z0-9 ,]+&quot; *[^:`)&quot;]&#39; {} \; -print</span>
+</pre></div>
+</div>
+<p>This search may give many false hits as double quotes are frequently
+used in computer code and preprocessor instructions (URLs and hyperlinks
+should not give hits in the above regular expressions).</p>
+</div>
+<div class="section" id="non-breaking-space">
+<h3>Non-Breaking Space<a class="headerlink" href="#non-breaking-space" title="Permalink to this headline">¶</a></h3>
+<p>The non-breaking space character is tilde:</p>
+<div class="highlight-text"><div class="highlight"><pre>Here comes a long line with a specification of a number with unit at the end,
+which is an example that requires a &quot;non-breaking space character&quot;:
+&quot;http://en.wikipedia.org/wiki/Non-breaking_space&quot;: 7.4~km is traveled
+in~$7.4/5.5\approx 1.345$~s. (Computer code, where the tilde has a
+meaning, as in `y = ~x`, is not affected. The non-breaking character only
+works between characters, numbers, and the math dollar sign.)
+</pre></div>
+</div>
+<p>This is rendered as</p>
+<blockquote>
+<div>Here comes a long line with a specification of a number with unit at the end,
+which is an example that requires a <a class="reference external" href="http://en.wikipedia.org/wiki/Non-breaking_space">non-breaking space character</a>: 7.4&nbsp;km is traveled
+in~:math:<cite>7.4/5.5approx 1.345`~s. (Computer code, where the tilde has a
+meaning, as in ``y = ~x`</cite>, is not affected. The non-breaking character only
+works between characters, numbers, and the math dollar sign.)</div></blockquote>
+</div>
+<div class="section" id="footnotes">
+<h3>Footnotes<a class="headerlink" href="#footnotes" title="Permalink to this headline">¶</a></h3>
+<p>Typesetting of footnotes employs a common email or Extended Markdown syntax:</p>
+<div class="highlight-text"><div class="highlight"><pre>Footnotes are typeset according to the output format[^typesetting].
+The syntax is optional spaces, opening bracket, hat,
+a name without spaces [^remedy-for-name-with-spaces], and closing
+bracket. The logical name of the footnote is not used in LaTeX,
+HTML, reStructuredText, or Sphinx, because these languages employ
+numbered footnotes. Other formats employ the logical name.
+
+  [^typesetting]: Typesetting of the footnote depends on the format.
+Plain text does nothing, LaTeX removes the
+definition and inserts the footnote as part of the LaTeX text.
+reStructuredText and Sphinx employ a similar type of typesetting
+as Extended Markdown and Doconce, and in HTML we keep the same
+syntax, just displayed properly in HTML.
+
+Footnotes are preferably defined after the paragraph they are used.
+The definition is the footnote syntax (some optional space, bracket,
+hat, name, bracket) followed by colon and a text.
+
+[^remedy-for-name-with-spaces]: Just put in dashes or underscores in
+case of spaces.
+</pre></div>
+</div>
+<p>The text above looks as follows.</p>
+<p>Footnotes are typeset according to the output format <a class="footnote-reference" href="#typesetting" id="id8">[1]</a>.
+The syntax is optional spaces, opening bracket, hat,
+a name without spaces <a class="footnote-reference" href="#remedy-for-name-with-spaces" id="id9">[2]</a>, and closing
+bracket. The logical name of the footnote is not used in LaTeX,
+HTML, reStructuredText, or Sphinx, because these languages employ
+numbered footnotes. Other formats employ the logical name.</p>
+<table class="docutils footnote" frame="void" id="typesetting" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id8">[1]</a></td><td>Typesetting of the footnote depends on the format.
+Plain text does nothing, LaTeX removes the
+definition and inserts the footnote as part of the LaTeX text.
+reStructuredText and Sphinx employ a similar type of typesetting
+as Extended Markdown and Doconce, and in HTML we keep the same
+syntax, just displayed properly in HTML.</td></tr>
+</tbody>
+</table>
+<p>Footnotes are preferably defined after the paragraph they are used.
+The definition is the footnote syntax (some optional space, bracket,
+hat, name, bracket) followed by colon and a text.</p>
+<table class="docutils footnote" frame="void" id="remedy-for-name-with-spaces" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id9">[2]</a></td><td>Just put in dashes or underscores in
+case of spaces.</td></tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="inline-comments">
 <h3>Inline Comments<a class="headerlink" href="#inline-comments" title="Permalink to this headline">¶</a></h3>
@@ -3572,7 +3659,7 @@ writing. Why is it so? I think the main reason is that a larger
 attention span is needed when working on a large computer program
 than when doing other intellectual tasks.</em></p>
 <div class="line-block">
-<div class="line">Donald Knuth <a class="reference internal" href="#ref1" id="id7">[Ref1]</a> (p. 18), computer scientist, 1938-.</div>
+<div class="line">Donald Knuth <a class="reference internal" href="#ref1" id="id10">[Ref1]</a> (p. 18), computer scientist, 1938-.</div>
 </div>
 </div></blockquote>
 </div>
@@ -3635,7 +3722,7 @@ preprocessor and an if-else block with a variable that is undefined
 </div>
 <div class="section" id="cross-referencing">
 <h2>Cross-Referencing<a class="headerlink" href="#cross-referencing" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="index-13"></span><span class="target" id="index-14"></span><p id="index-15">References and labels are supported. The syntax is simple:</p>
+<span class="target" id="index-15"></span><span class="target" id="index-16"></span><p id="index-17">References and labels are supported. The syntax is simple:</p>
 <div class="highlight-text"><div class="highlight"><pre>label{section:verbatim}   # defines a label
 For more information we refer to Section ref{section:verbatim}.
 </pre></div>
@@ -3857,7 +3944,7 @@ cite{Doconce:test}, Doconce documents may include tables.
 <div>As explained in
 a <a class="reference external" href="http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex">section</a> in
 the document <a class="reference external" href="http://hplgit.github.io/doconce/test/demo_testdoc.html">A Document for Testing Doconce</a>
-<a class="reference internal" href="#ref3" id="id8">[Ref3]</a>, Doconce documents may include tables.</div></blockquote>
+<a class="reference internal" href="#ref3" id="id11">[Ref3]</a>, Doconce documents may include tables.</div></blockquote>
 <p>A complete &#8220;chapter&#8221; reference may look like</p>
 <div class="highlight-text"><div class="highlight"><pre>As explained in
 refch[Chapter ref{ch:testdoc}][&quot;Langtangen, 2012&quot;:
@@ -3883,7 +3970,7 @@ The resulting rendered text in the current format becomes</p>
 <div>As explained in
 the document
 <a class="reference external" href="http://hplgit.github.io/doconce/test/demo_testdoc.html">A Document for Testing Doconce</a>
-<a class="reference internal" href="#ref3" id="id10">[Ref3]</a>, Doconce documents may include tables.</div></blockquote>
+<a class="reference internal" href="#ref3" id="id13">[Ref3]</a>, Doconce documents may include tables.</div></blockquote>
 <p>Note that LaTeX cannot
 have links to local files, so a complete URL on the form
 <tt class="docutils literal"><span class="pre">http://...</span></tt> must be used.</p>
@@ -3901,7 +3988,7 @@ or Mako preprocessors.</p>
 </div>
 <div class="section" id="index">
 <h2>Index<a class="headerlink" href="#index" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="index-16"></span><span class="target" id="index-17"></span><p id="index-18">An index can be created for the <tt class="docutils literal"><span class="pre">latex</span></tt>, <tt class="docutils literal"><span class="pre">rst</span></tt>, and <tt class="docutils literal"><span class="pre">sphinx</span></tt> formats
+<span class="target" id="index-18"></span><span class="target" id="index-19"></span><p id="index-20">An index can be created for the <tt class="docutils literal"><span class="pre">latex</span></tt>, <tt class="docutils literal"><span class="pre">rst</span></tt>, and <tt class="docutils literal"><span class="pre">sphinx</span></tt> formats
 by the <tt class="docutils literal"><span class="pre">idx</span></tt> keyword, following a LaTeX-inspired syntax:</p>
 <div class="highlight-text"><div class="highlight"><pre>idx{some index entry}
 idx{main entry!subentry}
@@ -4007,22 +4094,22 @@ the output format is <tt class="docutils literal"><span class="pre">latex</span>
 </pre></div>
 </div>
 <p>to refer to a publication with bibliographic key <tt class="docutils literal"><span class="pre">key</span></tt>.
-Here is an example: <a class="reference internal" href="#ref4" id="id12">[Ref4]</a> discussed propagation of
-large destructive water waves, <a class="reference internal" href="#ref5" id="id13">[Ref5]</a> gave
+Here is an example: <a class="reference internal" href="#ref4" id="id15">[Ref4]</a> discussed propagation of
+large destructive water waves, <a class="reference internal" href="#ref5" id="id16">[Ref5]</a> gave
 an overview of numerical methods for solving the Navier-Stokes equations,
 while the use of Backward Kolmogorov equations for analyzing
-random vibrations was investigated in <a class="reference internal" href="#ref6" id="id14">[Ref6]</a>.
-The book chapter <a class="reference internal" href="#ref7" id="id15">[Ref7]</a> contains information on
+random vibrations was investigated in <a class="reference internal" href="#ref6" id="id17">[Ref6]</a>.
+The book chapter <a class="reference internal" href="#ref7" id="id18">[Ref7]</a> contains information on
 C++ software tools for programming multigrid methods. A real retro
-reference is <a class="reference internal" href="#ref8" id="id16">[Ref8]</a> about a big FORTRAN package.
+reference is <a class="reference internal" href="#ref8" id="id19">[Ref8]</a> about a big FORTRAN package.
 Multiple references are also possible, e.g., see
-<a class="reference internal" href="#ref4" id="id17">[Ref4]</a> <a class="reference internal" href="#ref7" id="id18">[Ref7]</a>.</p>
+<a class="reference internal" href="#ref4" id="id20">[Ref4]</a> <a class="reference internal" href="#ref7" id="id21">[Ref7]</a>.</p>
 <p>A LaTeX-style cite command with additional detailed reference is also possible,</p>
 <div class="highlight-text"><div class="highlight"><pre>cite[details]{key}
 </pre></div>
 </div>
-<p>for example as in <a class="reference internal" href="#ref5" id="id19">[Ref5]</a> (Section 2)
-or <a class="reference internal" href="#ref5" id="id20">[Ref5]</a> (Equation (4.2)).</p>
+<p>for example as in <a class="reference internal" href="#ref5" id="id22">[Ref5]</a> (Section 2)
+or <a class="reference internal" href="#ref5" id="id23">[Ref5]</a> (Equation (4.2)).</p>
 <p>In LaTeX, the <tt class="docutils literal"><span class="pre">cite</span></tt> command is directly translated to the
 corresponding LaTeX version of the command with a backslash; in reST
 and Sphinx the citations becomes links, with the citation keys as
@@ -5700,7 +5787,7 @@ syntax and not references for explaining parts of the text.</p>
 <table class="docutils citation" frame="void" id="ref1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id7">[Ref1]</a></td><td><strong>D. E. Knuth</strong>. Theory and Practice,
+<tr><td class="label"><a class="fn-backref" href="#id10">[Ref1]</a></td><td><strong>D. E. Knuth</strong>. Theory and Practice,
 <em>EATCS Bulletin</em>,
 27,
 pp. 14-21,
@@ -5718,7 +5805,7 @@ Some Equations,
 <table class="docutils citation" frame="void" id="ref3" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[Ref3]</td><td><em>(<a class="fn-backref" href="#id8">1</a>, <a class="fn-backref" href="#id10">2</a>)</em> [Ref3]. <strong>H. P. Langtangen</strong>,
+<tr><td class="label">[Ref3]</td><td><em>(<a class="fn-backref" href="#id11">1</a>, <a class="fn-backref" href="#id13">2</a>)</em> [Ref3]. <strong>H. P. Langtangen</strong>,
 A Document for Testing Doconce,
 <a class="reference external" href="http://hplgit.github.io/doconce/test/demo_testdoc.html">http://hplgit.github.io/doconce/test/demo_testdoc.html</a>.</td></tr>
 </tbody>
@@ -5726,7 +5813,7 @@ A Document for Testing Doconce,
 <table class="docutils citation" frame="void" id="ref4" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[Ref4]</td><td><em>(<a class="fn-backref" href="#id12">1</a>, <a class="fn-backref" href="#id17">2</a>)</em> <strong>H. P. Langtangen and G. Pedersen</strong>. Propagation of Large Destructive Waves,
+<tr><td class="label">[Ref4]</td><td><em>(<a class="fn-backref" href="#id15">1</a>, <a class="fn-backref" href="#id20">2</a>)</em> <strong>H. P. Langtangen and G. Pedersen</strong>. Propagation of Large Destructive Waves,
 <em>International Journal of Applied Mechanics and Engineering</em>,
 7(1),
 pp. 187-204,
@@ -5736,7 +5823,7 @@ pp. 187-204,
 <table class="docutils citation" frame="void" id="ref5" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[Ref5]</td><td><em>(<a class="fn-backref" href="#id13">1</a>, <a class="fn-backref" href="#id19">2</a>, <a class="fn-backref" href="#id20">3</a>)</em> <strong>H. P. Langtangen, K.-A. Mardal and R. Winther</strong>. Numerical Methods for Incompressible Viscous Flow,
+<tr><td class="label">[Ref5]</td><td><em>(<a class="fn-backref" href="#id16">1</a>, <a class="fn-backref" href="#id22">2</a>, <a class="fn-backref" href="#id23">3</a>)</em> <strong>H. P. Langtangen, K.-A. Mardal and R. Winther</strong>. Numerical Methods for Incompressible Viscous Flow,
 <em>Advances in Water Resources</em>,
 25,
 pp. 1125-1146,
@@ -5746,7 +5833,7 @@ pp. 1125-1146,
 <table class="docutils citation" frame="void" id="ref6" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id14">[Ref6]</a></td><td><strong>H. P. Langtangen</strong>. Numerical Solution of First Passage Problems in Random Vibrations,
+<tr><td class="label"><a class="fn-backref" href="#id17">[Ref6]</a></td><td><strong>H. P. Langtangen</strong>. Numerical Solution of First Passage Problems in Random Vibrations,
 <em>SIAM Journal of Scientific and Statistical Computing</em>,
 15,
 pp. 997-996,
@@ -5756,7 +5843,7 @@ pp. 997-996,
 <table class="docutils citation" frame="void" id="ref7" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[Ref7]</td><td><em>(<a class="fn-backref" href="#id15">1</a>, <a class="fn-backref" href="#id18">2</a>)</em> <strong>K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen</strong>. Software Tools for Multigrid Methods,
+<tr><td class="label">[Ref7]</td><td><em>(<a class="fn-backref" href="#id18">1</a>, <a class="fn-backref" href="#id21">2</a>)</em> <strong>K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen</strong>. Software Tools for Multigrid Methods,
 Advanced Topics in Computational Partial Differential Equations &#8211; Numerical Methods and Diffpack Programming,
 edited by <strong>H. P. Langtangen and A. Tveito</strong>,
 Springer,
@@ -5766,7 +5853,7 @@ Springer,
 <table class="docutils citation" frame="void" id="ref8" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id16">[Ref8]</a></td><td><strong>H. P. Langtangen</strong>. The FEMDEQS Program System,
+<tr><td class="label"><a class="fn-backref" href="#id19">[Ref8]</a></td><td><strong>H. P. Langtangen</strong>. The FEMDEQS Program System,
 <em>Department of Mathematics, University of Oslo</em>,
 1989.</td></tr>
 </tbody>
@@ -5865,6 +5952,8 @@ Springer,
 <li><a class="reference internal" href="#mail-addresses">Mail Addresses</a></li>
 <li><a class="reference internal" href="#links-to-local-files">Links to Local Files</a></li>
 <li><a class="reference internal" href="#quotes">Quotes</a></li>
+<li><a class="reference internal" href="#non-breaking-space">Non-Breaking Space</a></li>
+<li><a class="reference internal" href="#footnotes">Footnotes</a></li>
 <li><a class="reference internal" href="#inline-comments">Inline Comments</a></li>
 <li><a class="reference internal" href="#forced-line-breaks">Forced Line Breaks</a></li>
 <li><a class="reference internal" href="#inline-mathematics">Inline Mathematics</a></li>

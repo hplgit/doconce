@@ -48,6 +48,7 @@ def define(FILENAME_EXTENSION,
         'author':        epytext_author,
         'movie':         default_movie,
         'linebreak':     r'\g<text>',
+        'non-breaking-space': ' ',
         }
 
     from rst import rst_code, rst_table

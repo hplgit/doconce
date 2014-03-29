@@ -1,11 +1,15 @@
 .. Automatically generated reST file from Doconce source
    (https://github.com/hplgit/doconce/)
 
+
+.. |nbsp| unicode:: 0xA0
+   :trim:
+
 Doconce Description
 ===================
 
 :Author: Hans Petter Langtangen
-:Date: Mar 10, 2014
+:Date: Mar 29, 2014
 
 .. lines beginning with # are doconce comment lines
 
@@ -83,11 +87,18 @@ Here are some Doconce features:
 **History.**
 Doconce was developed in 2006 at a time when most popular
 markup languages used quite some tagging.  Later, almost untagged
-markup languages like Markdown and the Pandoc translator became
+markup languages like `Markdown <http://daringfireball.net/projects/markdown/>`_, `MultiMarkdown <http://fletcherpenney.net/multimarkdown/>`_, and the `Pandoc <http://johnmacfarlane.net/pandoc/>`_  translator became
 popular. Doconce is not a replacement of Pandoc, which is a
-considerably more sophisticated project. Moreover, Doconce was
-developed mainly to fulfill the needs for a flexible source code base
-for books with much mathematics and computer code.
+considerably more sophisticated project. However, Doconce can output
+Sphinx (not supported by Pandoc) and has more support for writing
+small and large documents (books in particular) with much mathematics
+and computer code.
+
+.. Doconce plays with Markdown in the sense that (almost all) Markdown
+
+.. input is allowed.
+
+
 
 **Disclaimer.**
 Doconce is a simple tool, largely based on interpreting
@@ -662,15 +673,17 @@ From Doconce to Other Formats
 Transformation of a Doconce document ``mydoc.do.txt`` to various other
 formats apply the script ``doconce format``:
 
-.. code-block:: console
-
-        Terminal> doconce format format mydoc.do.txt
-
-or just
 
 .. code-block:: console
 
-        Terminal> doconce format format mydoc
+        Terminal> doconce format formatname mydoc.do.txt
+
+or drop the extension:
+
+
+.. code-block:: console
+
+        Terminal> doconce format formatname mydoc
 
 
 Generating a makefile
@@ -3934,11 +3947,18 @@ Inline Tagging
 
 .. index:: inline comments
 
+.. index:: non-breaking space
+
+.. index:: nbsp
+
 
 Doconce supports tags for *emphasized phrases*, **boldface phrases**,
 and ``verbatim text`` (also called type writer text, for inline code),
 <font color="blue">colored words</font>,
 plus LaTeX/TeX inline mathematics, such as :math:`\nu = \sin(x)`.
+Links are easy to define, either with a `text <http://google.com>`_ or
+just a plain `<http://google.com>`_.
+Also non-breaking space (to avoid linebreak) can be specified.
 
 Emphasized Words
 ~~~~~~~~~~~~~~~~
@@ -4145,6 +4165,104 @@ quotes:
 
 
         This is a sentence with ``words to be quoted''.
+
+To candidates for find double quotes that should be transferred to the above
+type of quotation (which is a common mistake),
+one can run a regular expression search like
+
+
+.. code-block:: console
+
+        Terminal> find . -name '*.do.txt' -exec grep -E \
+                  '[^("]"[A-Za-z0-9 ,]+" *[^:`)"]' {} \; -print
+
+This search may give many false hits as double quotes are frequently
+used in computer code and preprocessor instructions (URLs and hyperlinks
+should not give hits in the above regular expressions).
+
+
+Non-Breaking Space
+~~~~~~~~~~~~~~~~~~
+
+The non-breaking space character is tilde:
+
+
+.. code-block:: text
+
+
+        Here comes a long line with a specification of a number with unit at the end,
+        which is an example that requires a "non-breaking space character":
+        "http://en.wikipedia.org/wiki/Non-breaking_space": 7.4~km is traveled
+        in~$7.4/5.5\approx 1.345$~s. (Computer code, where the tilde has a
+        meaning, as in `y = ~x`, is not affected. The non-breaking character only
+        works between characters, numbers, and the math dollar sign.)
+
+This is rendered as
+
+
+..
+
+    Here comes a long line with a specification of a number with unit at the end,
+    which is an example that requires a `non-breaking space character <http://en.wikipedia.org/wiki/Non-breaking_space>`_: 7.4 |nbsp| km is traveled
+    in~:math:`7.4/5.5\approx 1.345`~s. (Computer code, where the tilde has a
+    meaning, as in ``y = ~x``, is not affected. The non-breaking character only
+    works between characters, numbers, and the math dollar sign.)
+
+
+
+Footnotes
+~~~~~~~~~
+
+Typesetting of footnotes employs a common email or Extended Markdown syntax:
+
+
+.. code-block:: text
+
+
+        Footnotes are typeset according to the output format[^typesetting].
+        The syntax is optional spaces, opening bracket, hat,
+        a name without spaces [^remedy-for-name-with-spaces], and closing
+        bracket. The logical name of the footnote is not used in LaTeX,
+        HTML, reStructuredText, or Sphinx, because these languages employ
+        numbered footnotes. Other formats employ the logical name.
+        
+          [^typesetting]: Typesetting of the footnote depends on the format.
+        Plain text does nothing, LaTeX removes the
+        definition and inserts the footnote as part of the LaTeX text.
+        reStructuredText and Sphinx employ a similar type of typesetting
+        as Extended Markdown and Doconce, and in HTML we keep the same
+        syntax, just displayed properly in HTML.
+        
+        Footnotes are preferably defined after the paragraph they are used.
+        The definition is the footnote syntax (some optional space, bracket,
+        hat, name, bracket) followed by colon and a text.
+        
+        [^remedy-for-name-with-spaces]: Just put in dashes or underscores in
+        case of spaces.
+
+The text above looks as follows.
+
+Footnotes are typeset according to the output format [#typesetting]_.
+The syntax is optional spaces, opening bracket, hat,
+a name without spaces [#remedy-for-name-with-spaces]_, and closing
+bracket. The logical name of the footnote is not used in LaTeX,
+HTML, reStructuredText, or Sphinx, because these languages employ
+numbered footnotes. Other formats employ the logical name.
+
+.. [#typesetting] Typesetting of the footnote depends on the format.
+   Plain text does nothing, LaTeX removes the
+   definition and inserts the footnote as part of the LaTeX text.
+   reStructuredText and Sphinx employ a similar type of typesetting
+   as Extended Markdown and Doconce, and in HTML we keep the same
+   syntax, just displayed properly in HTML.
+
+
+Footnotes are preferably defined after the paragraph they are used.
+The definition is the footnote syntax (some optional space, bracket,
+hat, name, bracket) followed by colon and a text.
+
+.. [#remedy-for-name-with-spaces] Just put in dashes or underscores in
+   case of spaces.
 
 
 

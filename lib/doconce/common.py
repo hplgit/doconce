@@ -712,9 +712,9 @@ ENVIRS = {}
 
 
 # regular expressions for inline tags:
-inline_tag_begin = r"""(?P<begin>(^|[(\s]))"""
+inline_tag_begin = r"""(?P<begin>(^|[(\s~]))"""
 # ' is included as apostrophe in end tag
-inline_tag_end = r"""(?P<end>($|[.,?!;:)}'\s-]))"""
+inline_tag_end = r"""(?P<end>($|[.,?!;:)}'\s~\[-]))"""
 # alternatives using positive lookbehind and lookahead (not tested!):
 inline_tag_before = r"""(?<=(^|[(\s]))"""
 inline_tag_after = r"""(?=$|[.,?!;:)\s])"""
@@ -845,7 +845,17 @@ INLINE_TAGS = {
     'movie':
     r'^MOVIE:\s*\[(?P<filename>[^,\]]+),?(?P<options>[^\]]*)\]\s*?(?P<caption>.*)$',
     'linebreak': '^(?P<text>.*)<linebreak> *$',
+    #'footnote':  # definition is in doconce.py since no regular re.sub in loop is to be performed
+    # The tilde is used in URLs and computer code
+    # Must be substituted before inline math, color, etc., if the next
+    # regex is to work (but then &nbsp;$math$ breaks later...)
+    #'non-breaking-space': r'(?<=[$A-Za-z0-9])~(?=[$A-Za-z0-9])',
+    # This one allows HTML MathJax formulas and HTML tags to surround the ~
+    # (i.e., after substitutions of $...$, color, etc.)
+    'non-breaking-space': r'(?<=[})>$A-Za-z0-9])~(?=[{\\<$A-Za-z0-9])'
+
     }
+
 INLINE_TAGS_SUBST = {}
 
 # frequent syntax errors that we can test for: (not yet used)

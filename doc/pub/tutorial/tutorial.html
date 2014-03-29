@@ -180,7 +180,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>Jan 10, 2014</h4></center> <!-- date -->
+<center><h4>Mar 29, 2014</h4></center> <!-- date -->
 <p>
 
 <ul>
@@ -255,7 +255,7 @@ the formating. Here are some examples.
     or <code>o</code> if the list is to be enumerated.</li>
   <li> <em>Emphasized words</em> are surrounded by <code>*</code>. <b>Words in boldface</b>
     are surrounded by underscores.</li>
-  <li> Words from computer code are enclosed in back quotes and
+  <li> Words from computer code are enclosed in backticks and
     then typeset <code>verbatim (in a monospace font)</code>.</li>
   <li> Section and paragraph headings are recognied special
     decorating characters (<code>=</code> or <code>_</code>) before and after the heading.
@@ -309,6 +309,8 @@ mathematics, not found in any of the mentioned formats.
 
 <p>
 Here is an example of some simple text written in the Doconce format:
+
+<p>
 <!-- begin verbatim block -->
 <pre><code>======= First a Section Heading =======
 
@@ -321,7 +323,10 @@ label{my:first:sec}
 
 Ordinary text looks like ordinary text, and the tags used for
 _boldface_ words, *emphasized* words, and `computer` words look
-natural in plain text.  Lists are typeset as you would do in email,
+natural in plain text.  Quotations appear inside double backticks
+and double single quotes, as in ``this example''.
+
+Lists are typeset as you would do in email,
 
   * item 1
   * item 2
@@ -344,15 +349,22 @@ the plain text format which does not support hyperlinks.
 
 References to sections may use logical names as labels (e.g., a
 &quot;label&quot; command right after the section title), as in the reference to
-Section ref{my:first:sec}.
+Section ref{my:first:sec}. References to equations such as
+\eqref{myeq1} work in the same way.
 
+__Inline comments.__
 Doconce also allows inline comments of the form [name: comment] (with
 a space after `name:`), e.g., such as [hpl: here I will make some
 remarks to the text]. Inline comments can be removed from the output
 by a command-line argument (see Section ref{doconce2formats} for an
 example).
 
-Tables are also supperted, e.g.,
+__Footnotes.__ Adding a footnote[^footnote] is also possible.
+
+[^footnote]: The syntax for footnotes is borrowed from Extended Markdown.
+
+__Tables.__
+Tables are also written in the plain text way, e.g.,
 
   |--------------------------------|
   |time  | velocity | acceleration |
@@ -379,7 +391,11 @@ heading, and 3 a subsubsection heading.
 <p>
 Ordinary text looks like ordinary text, and the tags used for
 <b>boldface</b> words, <em>emphasized</em> words, and <code>computer</code> words look
-natural in plain text.  Lists are typeset as you would do in an email,
+natural in plain text.  Quotations appear inside double backticks
+and double single quotes, as in "this example".
+
+<p>
+Lists are typeset as you would do in an email,
 
 <p>
 
@@ -411,11 +427,14 @@ With screen output, all links are clickable hyperlinks, except in
 the plain text format which does not support hyperlinks.
 
 <p>
+<b>Cross-references.</b>
 References to sections may use logical names as labels (e.g., a
 "label" command right after the section title), as in the reference to
-the section <a href="#my:first:sec">A Subsection with Sample Text</a>.
+The section <a href="#my:first:sec">A Subsection with Sample Text</a>. References to equations such as
+\eqref{myeq1} work in the same way.
 
 <p>
+<b>Inline comments.</b>
 Doconce also allows inline comments such as 
 <!-- begin inline comment -->
 <font color="red">[<b>hpl 1</b>: <em>here I will make
@@ -428,7 +447,14 @@ lines start with <code>#</code> and are copied to comment lines in the
 output format.
 
 <p>
-Tables are also supperted, e.g.,
+<b>Footnotes.</b>
+Adding a footnote [<a name="link_footnote_1"><a><a href="#def_footnote_1">1</a>] is also possible.
+
+<p><a name="def_footnote_1"></a><a href="#link_footnote_1"><b>1:</b></a> The syntax for footnotes is borrowed from Extended Markdown.
+
+<p>
+<b>Tables.</b>
+Tables are also written in the plain text way, e.g.,
 
 <p>
 <table border="1">
@@ -607,13 +633,17 @@ in the Doconce source and a <a href="http://hplgit.github.io/doconce/doc/pub/man
 <p>
 Transformation of a Doconce document <code>mydoc.do.txt</code> to various other
 formats apply the script <code>doconce format</code>:
+
+<p>
 <!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; doconce format format mydoc.do.txt
+<pre><code>Terminal&gt; doconce format formatname mydoc.do.txt
 </code></pre>
 <!-- end verbatim block -->
-or just
+or drop the extension:
+
+<p>
 <!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; doconce format format mydoc
+<pre><code>Terminal&gt; doconce format formatname mydoc
 </code></pre>
 <!-- end verbatim block -->
 
@@ -648,18 +678,31 @@ and if something goes wrong, the script aborts.
 
 <p>
 The <code>preprocess</code> and <code>mako</code> programs are used to preprocess the
-file, and options to <code>preprocess</code> and/or <code>mako</code> can be added after the
-filename. For example,
+file. The Doconce program detects whether <code>preprocess</code> and/or <code>mako</code>
+statements are present and runs the corresponding programs, first
+<code>preprocess</code> and then <code>mako</code>.
+
+<p>
+Options to <code>preprocess</code> and/or <code>mako</code> can be added after the
+filename with the syntax <code>-DMYVAR</code> or <code>MYVAR=True</code> for defining
+a variable <code>MYVAR</code>, or <code>-DMYVAR=val</code> or <code>MYVAR=val</code> for giving
+<code>MYVAR</code> the value <code>val</code>. For example,
 <!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; doconce format latex mydoc -Dextra_sections -DVAR1=5     # preprocess
-Terminal&gt; doconce format latex yourdoc extra_sections=True VAR1=5  # mako
+<pre><code>Terminal&gt; doconce format sphinx mydoc -Dextra_sections -DVAR1=5
+Terminal&gt; doconce format sphinx mydoc extra_sections=True VAR1=5
 </code></pre>
 <!-- end verbatim block -->
 The variable <code>FORMAT</code> is always defined as the current format when
-running <code>preprocess</code> or <code>mako</code>. That is, in the last example, <code>FORMAT</code> is
-defined as <code>latex</code>. Inside the Doconce document one can then perform
-format specific actions through tests like <code>#if FORMAT == "latex"</code>
-(for <code>preprocess</code>) or <code>% if FORMAT == "latex":</code> (for <code>mako</code>).
+running <code>preprocess</code> or <code>mako</code>. That is, in the above examples, <code>FORMAT</code> is
+defined as <code>sphinx</code>. Inside the Doconce document one can then perform
+format specific actions through tests like <code>#if FORMAT == "sphinx"</code>
+(for <code>preprocess</code>) or <code>% if FORMAT == "sphinx":</code> (for <code>mako</code>).
+
+<p>
+The result of a Doconce file <code>mydoc.do.txt</code> after running <code>preprocess</code>
+is available in a file <code>tmp_preprocess__mydoc.do.txt</code>. Similarly,
+the result of running <code>mako</code> is available in
+<code>tmp_mako__mydoc.do.txt</code>.
 
 <h3>Removal of inline comments  <a name="___sec11"></a></h3>
 
@@ -897,6 +940,10 @@ doconce format html mydoc2
 
 
 <p>
+<!-- See here if MathJax stops working in HTML pages on blogger and elsewhere: -->
+<!-- <a href="http://weiqigao.blogspot.no/2013/03/enabling-mathjax-in-blogger.html" target="_self"><tt>http://weiqigao.blogspot.no/2013/03/enabling-mathjax-in-blogger.html</tt></a> -->
+
+<p>
 Blog posts at Google can also be published <a href="http://support.google.com/blogger/bin/answer.py?hl=en&answer=41452" target="_self">automatically through email</a>.
 A Python program can send the contents of the HTML file
 to the blog site's email address using the packages  <code>smtplib</code> and <code>email</code>.
@@ -1096,6 +1143,22 @@ either the <code>ptex2tex</code> program or Doconce's (simplified) version of it
 <code>doconce ptex2tex</code>. Details are given below.
 
 <p>
+<div class="alert alert-block alert-notice alert-text-normal"><b>Information on typesetting of inline verbatim.</b>
+The <code>ptex2tex</code> and the <code>doconce ptex2tex</code> programs take inline verbatim
+code, typeset with backticks in Doconce, and translate this to
+
+<p>
+<!-- begin verbatim block -->
+<pre><code>\Verb!text!
+</code></pre>
+<!-- end verbatim block -->
+Thereafter, if <code>text</code> does not contain illegal characters for the <code>\texttt</code>
+command, the latter is used instead since then LaTeX can insert
+linebreaks in the inline verbatim text and hence avoid overfull hboxes.
+</div>
+
+
+<p>
 <!-- Note: putting code blocks inside a list is not successful in many -->
 <!-- formats - the text may be messed up. A better choice is a paragraph -->
 <!-- environment, as used here. -->
@@ -1127,6 +1190,30 @@ The default, <code>--device=screen</code>, creates a PDF file for reading
 on a screen where links are just clickable.
 
 <p>
+There are many additional options (run <code>doconce format --help</code> and
+look for options starting with <code>--latex</code> to get a more verbose description):
+
+<p>
+
+<ul>
+ <li> <code>--latex_font=helvetica,palatino</code></li>
+ <li> <code>--latex_papersize=a4,a6</code></li>
+ <li> <code>--latex_bibstyle=plain</code></li>
+ <li> <code>--latex_title_layout=titlepage,std,beamer,doconce_heading</code></li>
+ <li> <code>--latex_style=std,Springer_lncse,Springer_llncs,Springer_T2,...</code></li>
+ <li> <code>--latex_list_of_exercises=loe,toc,none</code></li>
+ <li> <code>--latex_fancy_header</code></li>
+ <li> <code>--latex_section_headings=std,blue,strongblue,gray,gray-wide</code></li>
+ <li> <code>--latex_colored_table_rows=blue,gray,no</code></li>
+ <li> <code>--latex_todonotes</code></li>
+ <li> <code>--latex_double_spacing</code></li>
+ <li> <code>--latex_preamble=filename</code></li>
+ <li> <code>--latex_admon=mdfbox,graybox2,grayicon,yellowicon,paragraph,colors1,colors2</code></li>
+ <li> <code>--latex_admon_color=0.34,0.02,0.8</code></li>
+ <li> <code>--latex_admon_envir_map=2</code></li>
+ <li> <code>--latex_exercise_numbering=absolute,chapter</code></li>
+</ul>
+
 <b>Step 2.</b>
 Run <code>ptex2tex</code> (if you have installed the
 Python ptex2tex package) to make a standard LaTeX file,
@@ -1159,10 +1246,6 @@ Preprocessor variables to be defined or undefined are
 
 <ul>
  <li> <code>XELATEX</code> for processing by <code>xelatex</code></li>
- <li> <code>PALATINO</code> for the Palatino font</li>
- <li> <code>HELVETICA</code> for the Helvetica font</li>
- <li> <code>A4PAPER</code> for A4 paper size</li>
- <li> <code>A6PAPER</code> for A6 paper size (suitable for reading PDFs on phones)</li>
  <li> <code>MOVIE</code> for specifying how movies are handled: the value <code>media9</code>
    implies the <code>media9</code> package and the <code>\includemedia</code> command
    for <code>.flv</code> and <code>.mp4</code> movies,
@@ -1180,64 +1263,6 @@ Preprocessor variables to be defined or undefined are
  <li> <code>MINTED</code> for inclusion of the minted package for typesetting of
    code with the Pygments tool (which requires <code>latex</code>
    or <code>pdflatex</code> to be run with the <code>-shell-escape</code> option)</li>
- <li> <code>TODONOTES</code> for using the fancy <code>todonotes</code> package for typesetting
-   inline comments (looks much like track changes in MS Word). This
-   macro has only effect if inline comments are used (name, colon,
-   and comment inside brackets).</li>
- <li> <code>LINENUMBERS</code> for inclusion of line numbers in the text.</li>
- <li> <code>COLORED_TABLE_ROWS</code> for coloring every other table rows (set this
-   variable to <code>gray</code> or <code>blue</code>).</li>
- <li> <code>FANCY_HEADER</code> for turning on headers with section title and page
-   (and also chapter title on odd numbered pages if chapters exist).</li>
- <li> <code>DOUBLE_SPACING</code> for 50 percent larger line spacing (useful for
-   pen corrections) and LaTeX "draft" mode.</li>
-</ul>
-
-There are also preprocessor variables with specific values:
-
-<p>
-
-<ul>
- <li> <code>LATEX_HEADING</code> for the typesetting of the title, author, parts of
-   preamble:</li>
-
-<ul>
-     <li> <code>traditional</code> for traditional LaTeX heading,</li>
-     <li> <code>titlepage</code> for a separate titlepage,</li>
-     <li> <code>Springer_collection</code> for edited volumes on Springer,</li>
-
-<ul>
-      <li> <code>beamer</code> for Beamer slides,</li>
-</ul>
-
-     <li> <code>doconce_heading</code> (default) for listing institutions after names.</li>
-</ul>
-
- <li> <code>LATEX_STYLE</code> for speficying the style (affects parameters in
-   <code>documentclass</code> and inclusion of special packages and commands):</li>
-
-<ul>
-     <li> <code>std</code> for standard LaTeX,</li>
-     <li> <code>Springer_lncse</code> for Springer's LNCSE book series,</li>
-     <li> <code>Springer_T2</code> for large Springer book format,</li>
-     <li> <code>Springer_llncse</code> for Springer's LNCS book series,</li>
-     <li> <code>Koma_Script</code> for Koma-Script <code>scrartcl</code> style,</li>
-     <li> <code>siamltex</code> for standard SIAM journal paper style,</li>
-     <li> <code>siamltexmm</code> for newer SIAM journal paper (multi media)
-       style with blue headings.</li>
-</ul>
-
- <li> <code>SECTION_HEADINGS</code> for specifying the style of the section,
-   subsection, and paragraph headings:</li>
-
-<ul>
-     <li> <code>blue</code> for a blue-gray color of the text,</li>
-     <li> <code>strongblue</code> for a stronger blue color of the text,</li>
-     <li> <code>gray</code> for white text on gray background,</li>
-     <li> <code>gray-wide</code> for white text in a gray box that spans the whole
-       page width.</li>
-</ul>
-
 </ul>
 
 If you are not satisfied with the generated Doconce preamble, you can provide
@@ -1250,13 +1275,12 @@ present in <code>myfile</code>). Otherwise, <code>myfile</code> is assumed to co
 
 <p>
 The <code>ptex2tex</code> tool makes it possible to easily switch between many
-different fancy formattings of computer code in LaTeX
-documents. After any <code>!bc</code> command in the Doconce source you can
-insert verbatim block styles as defined in your <code>.ptex2tex.cfg</code>
-file, e.g., <code>!bc sys</code> for a terminal session, where <code>sys</code> is set to
-a certain environment in <code>.ptex2tex.cfg</code> (e.g., <code>CodeTerminal</code>).
-There are about 40 styles to choose from, and you can easily add
-new ones.
+different fancy formattings of computer code in LaTeX documents. After
+any <code>!bc</code> command in the Doconce source you can insert verbatim block
+styles as defined in your <code>.ptex2tex.cfg</code> file, e.g., <code>!bc sys</code> for a
+terminal session, where <code>sys</code> is set to a certain environment in
+<code>.ptex2tex.cfg</code> (e.g., <code>CodeTerminal</code>).  There are about 40 styles to
+choose from, and you can easily add new ones.
 
 <p>
 Also the <code>doconce ptex2tex</code> command supports preprocessor directives

@@ -161,6 +161,21 @@ def fix_underlines_in_headings(filestr):
     filestr = '\n'.join(lines)
     return filestr
 
+def rst_footnotes(filestr, format, pattern_def, pattern_footnote):
+    # We use autonumbered named labels such that the footnotes have numbers
+    # like [2], [3] etc. (just use hash before name in the syntax)
+
+    def subst_def(m):
+        text = indent_lines(m.group('text'), format, ' '*3)
+        name = m.group('name')
+        start = '.. [#%s] ' % name
+        return start + text.lstrip()
+
+    filestr = re.sub(pattern_def, subst_def, filestr,
+                     flags=re.MULTILINE|re.DOTALL)
+    filestr = re.sub(pattern_footnote, ' [#\g<name>]_', filestr)
+    return filestr
+
 def rst_table(table):
     # Note: rst and sphinx do not offer alignment of cell
     # entries, everything is always left-adjusted (Nov. 2011)
@@ -484,6 +499,8 @@ def define(FILENAME_EXTENSION,
         'comment':       lambda c: '' if c.isspace() or c == '' else '.. %s\n' % c,
         #'linebreak':     r'| \g<text>',  # does not work: interfers with tables and requires a final blank line after block
         'linebreak':     r'<linebreakpipe> \g<text>',  # fixed in rst_code/sphinx_code as a hack
+        'footnote':      rst_footnotes,
+        'non-breaking-space': ' |nbsp| ',
         }
 
     ENVIRS['rst'] = {
@@ -525,3 +542,18 @@ def define(FILENAME_EXTENSION,
    (https://github.com/hplgit/doconce/)
 
 """
+    # http://stackoverflow.com/questions/11830242/non-breaking-space
+    if '~' in filestr:
+        nbsp = """
+.. |nbsp| unicode:: 0xA0
+   :trim:
+
+"""
+        if 'TITLE:' not in filestr:
+            print '*** error: non-breaking space character ~ is used,'
+            print '    but this will give an error when the document does'
+            print '    not have a title.'
+            _abort()
+        else:
+            INTRO['rst'] += nbsp
+
