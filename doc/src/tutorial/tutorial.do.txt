@@ -139,6 +139,7 @@ mathematics, not found in any of the mentioned formats.
 ===== Basic Syntax =====
 
 Here is an example of some simple text written in the Doconce format:
+
 !bc
 ======= First a Section Heading =======
 
@@ -151,7 +152,10 @@ label{my:first:sec}
 
 Ordinary text looks like ordinary text, and the tags used for
 _boldface_ words, *emphasized* words, and `computer` words look
-natural in plain text.  Lists are typeset as you would do in email,
+natural in plain text.  Quotations appear inside double backticks
+and double single quotes, as in ``this example''.
+
+Lists are typeset as you would do in email,
 
   * item 1
   * item 2
@@ -208,7 +212,10 @@ label{my:first:sec}
 
 Ordinary text looks like ordinary text, and the tags used for
 _boldface_ words, *emphasized* words, and `computer` words look
-natural in plain text.  Lists are typeset as you would do in an email,
+natural in plain text.  Quotations appear inside double backticks
+and double single quotes, as in ``this example''.
+
+Lists are typeset as you would do in an email,
 
   * item 1
   * item 2

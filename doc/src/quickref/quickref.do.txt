@@ -134,10 +134,19 @@ Words surrounded by `*` are emphasized: `*emphasized words*` becomes
 *emphasized words*. Similarly, an underscore surrounds words that
 appear in boldface: `_boldface_` becomes _boldface_. Colored words
 are also possible: the text
+
 !bc
 `color{red}{two red words}`
 !ec
 becomes color{red}{two red words}.
+Quotations appear inside double backticks and double single quotes:
+
+!bc
+This is a sentence with ``words to be quoted''.
+!ec
+
+A forced linebreak is specified by `<linebreak>` at the point where the
+linebreak in the output is wanted.
 
 ===== Lists =====
 
@@ -217,7 +226,7 @@ blocks, verbatim code blocks, or lists if the formats `rst` and
 `sphinx` are desired.
 
 Comment lines starting with `##` are not propagated to the output
-document and can be used for comments that are only interest in
+document and can be used for comments that are only of interest in
 the Doconce file.
 
 Large portions of text can be left out using Preprocess. Just place

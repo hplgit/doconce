@@ -101,20 +101,13 @@ def rst_code(filestr, code_blocks, code_block_types,
     #filestr = re.sub(r'^!et *\n', '\n\n', filestr, flags=re.MULTILINE)
     filestr = re.sub(r'^!et *\n', '\n', filestr, flags=re.MULTILINE)
 
-    # sphinx math:
-    #filestr = re.sub(r'!bt\n', '\n.. math::\n\n', filestr)
-    #filestr = re.sub(r'!et\n', '\n\n', filestr)
-
-    #filestr = re.sub(r'!et\n', '\n', filestr)
-    #filestr = re.sub(r'!et\n', '', filestr)
-
-    # Fix: if there are !bc-!ec or !bt-!et environments after each
+    # Fix: if there are !bc-!ec or other environments after each
     # other without text in between, there is a difficulty with the
     # :: symbol before the code block. In these cases, we get
-    # !ec:: and !et:: from the above substitutions. We just replace
-    # these by empty text.
-    filestr = filestr.replace('!ec::', '')
-    filestr = filestr.replace('!et::', '')
+    # !ec::, !et::, !bbox:: etc. from the above substitutions.
+    # We just replace these by empty text.
+    filestr = re.sub(r'^(!(b|e)[a-z]+)::', r'\g<1>', filestr,
+                     flags=re.MULTILINE)
 
     # Check
     for pattern in '^!bt', '^!et':
