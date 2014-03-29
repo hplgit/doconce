@@ -68,11 +68,15 @@ Doconce was particularly written for the following sample applications:
 
 __History.__ Doconce was developed in 2006 at a time when most popular
 markup languages used quite some tagging.  Later, almost untagged
-markup languages like Markdown and the Pandoc translator became
+markup languages like "Markdown": "http://daringfireball.net/projects/markdown/", "MultiMarkdown": "http://fletcherpenney.net/multimarkdown/", and the "Pandoc":"http://johnmacfarlane.net/pandoc/"  translator became
 popular. Doconce is not a replacement of Pandoc, which is a
-considerably more sophisticated project. Moreover, Doconce was
-developed mainly to fulfill the needs for a flexible source code base
-for books with much mathematics and computer code.
+considerably more sophisticated project. However, Doconce can output
+Sphinx (not supported by Pandoc) and has more support for writing
+small and large documents (books in particular) with much mathematics
+and computer code.
+# Doconce plays with Markdown in the sense that (almost all) Markdown
+# input is allowed.
+
 
 __Disclaimer.__ Doconce is a simple tool, largely based on interpreting
 and handling text through regular expressions. The possibility for

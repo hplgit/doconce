@@ -632,6 +632,20 @@ Movie \arabic{doconce:movie:counter}: %s
     text += '\\end{doconce:movie}\n'
     return text
 
+def latex_footnotes(filestr, format, pattern_def, pattern_footnote):
+    footnotes = {name: text for name, text, dummy in
+                 re.findall(pattern_def, filestr, flags=re.MULTILINE|re.DOTALL)}
+    # Remove definitions
+    filestr = re.sub(pattern_def, '', filestr, flags=re.MULTILINE|re.DOTALL)
+
+    def subst_footnote(m):
+        name = m.group('name')
+        text = footnotes[name].strip()
+        return '\\footnote{%s}' % text
+
+    filestr = re.sub(pattern_footnote, subst_footnote, filestr)
+    return filestr
+
 def latex_table(table):
     latex_table_align = option('latex_table_align=', 'quote')
     if latex_table_align == 'left':
@@ -1561,6 +1575,8 @@ def define(FILENAME_EXTENSION,
         'movie':         latex_movie,
         'comment':       '%% %s',
         'linebreak':     r'\g<text>\\\\',
+        'footnote':      latex_footnotes,
+        'non-breaking-space': None,
         }
 
     ENVIRS['latex'] = {

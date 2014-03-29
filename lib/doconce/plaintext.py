@@ -177,6 +177,8 @@ def define(FILENAME_EXTENSION,
         'paragraph':     r'*\g<subst>* ',  # extra blank
         'abstract':      r'\n*\g<type>.* \g<text>\g<rest>',
         'linebreak':     r'\g<text>',
+        'footnote':      None,
+        'non-breaking-space': ' ',
         }
 
     from rst import rst_code
@@ -223,4 +225,3 @@ def define(FILENAME_EXTENSION,
            indent_lines(block, 'plain'),
         }
 
-    # no return, rely on in-place modification of dictionaries

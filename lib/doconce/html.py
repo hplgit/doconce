@@ -728,6 +728,33 @@ def html_figure(m):
        return '<center><p><img src="%s" align="bottom" %s></p></center>' % \
               (filename, opts)
 
+def html_footnotes(filestr, format, pattern_def, pattern_footnote):
+    # Keep definitions where they are
+    # (a bit better: place definitions before next !split)
+    # Number the footnotes
+
+    footnotes = re.findall(pattern_def, filestr, flags=re.MULTILINE|re.DOTALL)
+    names = [name for name, footnote, dummy in footnotes]
+    name2index = {names[i]: i+1 for i in range(len(names))}
+
+    def subst_def(m):
+        # Make a table for the definition
+        name = m.group('name').strip()
+        text = m.group('text').strip()
+        html = '\n<p><a name="def_footnote_%s"></a><a href="#link_footnote_%s"><b>%s:</b></a> %s\n' % (name2index[name], name2index[name], name2index[name], text)
+        return html
+
+    filestr = re.sub(pattern_def, subst_def, filestr,
+                     flags=re.MULTILINE|re.DOTALL)
+
+    def subst_footnote(m):
+        i = name2index[m.group('name')]
+        name = m.group('name').strip()
+        return r' [<a name="link_footnote_%s"><a><a href="#def_footnote_%s">%s</a>]' % (name2index[name], name2index[name], i)
+
+    filestr = re.sub(pattern_footnote, subst_footnote, filestr)
+    return filestr
+
 def html_table(table):
     column_width = table_analysis(table['rows'])
     ncolumns = len(column_width)
@@ -1277,6 +1304,8 @@ def define(FILENAME_EXTENSION,
         'movie':         html_movie,
         'comment':       '<!-- %s -->',
         'linebreak':     r'\g<text><br />',
+        'footnote':      html_footnotes,
+        'non-breaking-space': '&nbsp;',
         }
 
     if option('wordpress'):
@@ -1502,6 +1531,7 @@ Automatically generated HTML file from Doconce source
 </body>
 </html>
     """
+
 
 def latin2html(text):
     """

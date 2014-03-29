@@ -232,6 +232,7 @@ def define(FILENAME_EXTENSION,
         'comment':       '<wiki:comment> %s </wiki:comment>',
         'abstract':      r'\n*\g<type>.* \g<text>\g<rest>',
         'linebreak':     r'\g<text>' + '\n',
+        'non-breaking-space': ' ',
         }
 
     CODE['gwiki'] = gwiki_code
@@ -271,3 +272,4 @@ def define(FILENAME_EXTENSION,
     # document start:
     INTRO['gwiki'] = ''
     #INTRO['gwiki'] = '#summary YourOneLineSummary\n<wiki:toc max_depth="1" />\n'
+
