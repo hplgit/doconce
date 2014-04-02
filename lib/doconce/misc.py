@@ -4044,11 +4044,15 @@ def slides_beamer():
 
 
 def generate_beamer_slides(header, parts, footer, basename, filename):
+    # Styles: red/blue_plain/shadow, kenynote_gradient/vintage
     header = ''.join(header)
     theme = option('beamer_slide_theme=', default='default')
     if theme != 'default':
         beamerstyle = 'beamertheme' + theme
-        copy_latex_packages([beamerstyle])
+        packages = [beamerstyle]
+        if theme == 'keynote_vintage':
+            packages.append('keynote_vintage.png')
+        copy_latex_packages(packages)
     handout = '[handout]' if option('handout') else ''
 
     slides = r"""
