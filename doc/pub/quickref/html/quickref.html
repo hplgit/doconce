@@ -81,7 +81,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Author:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Mar 2, 2014</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Mar 29, 2014</td>
 </tr>
 </tbody>
 </table>
@@ -281,7 +281,28 @@ are also possible: the text</p>
 <div class="highlight-text"><div class="highlight"><pre>`color{red}{two red words}`
 </pre></div>
 </div>
-<p>becomes &lt;font color=&#8221;red&#8221;&gt;two red words&lt;/font&gt;.</p>
+<p>becomes &lt;font color=&#8221;red&#8221;&gt;two red words&lt;/font&gt;.
+Quotations appear inside double backticks and double single quotes:</p>
+<div class="highlight-text"><div class="highlight"><pre>This is a sentence with ``words to be quoted&#39;&#39;.
+</pre></div>
+</div>
+<p>A forced linebreak is specified by <tt class="docutils literal"><span class="pre">&lt;linebreak&gt;</span></tt> at the point where the
+linebreak in the output is wanted.</p>
+<p>Footnotes use a label in the text with the footnote text separate,
+preferably after the paragraph where the footnote appears:</p>
+<div class="highlight-text"><div class="highlight"><pre>Differentiating[^diff2] (ref{eq1}) leads
+to a new and simpler equation.
+
+[^diff2]: More precisely, we apply the divergence
+$\nabla\cdot$ on both sides.
+
+Here comes a new paragraph...
+</pre></div>
+</div>
+<p>Non-breaking space is inserted using the tilde character as in LaTeX:</p>
+<div class="highlight-text"><div class="highlight"><pre>This distance corresponds to 7.5~km, which is traveled in $7.5/5$~s.
+</pre></div>
+</div>
 </div>
 <div class="section" id="lists">
 <h1>Lists<a class="headerlink" href="#lists" title="Permalink to this headline">¶</a></h1>
@@ -377,7 +398,7 @@ document. Such comment lines should not appear before LaTeX math
 blocks, verbatim code blocks, or lists if the formats <tt class="docutils literal"><span class="pre">rst</span></tt> and
 <tt class="docutils literal"><span class="pre">sphinx</span></tt> are desired.</p>
 <p>Comment lines starting with <tt class="docutils literal"><span class="pre">##</span></tt> are not propagated to the output
-document and can be used for comments that are only interest in
+document and can be used for comments that are only of interest in
 the Doconce file.</p>
 <p>Large portions of text can be left out using Preprocess. Just place
 <tt class="docutils literal"><span class="pre">#</span> <span class="pre">#ifdef</span> <span class="pre">EXTRA</span></tt> and <tt class="docutils literal"><span class="pre">#</span> <span class="pre">#endif</span></tt> around the text. The command line

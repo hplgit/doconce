@@ -715,6 +715,32 @@ resulting in the link URL: "manual.html".
 #`_static` directory - links in the `.rst` files are automatically
 #adjusted.)
 
+idx{quotation syntax}
+
+=== Quotes ===
+
+Quotations employ either the emphasized font or double quotation marks.
+In the latter case, one should not use the character `"` but rather
+the (LaTeX-inspired) construction with double backticks and two single
+quotes:
+
+!bc
+This is a sentence with ``words to be quoted''.
+!ec
+To candidates for find double quotes that should be transferred to the above
+type of quotation (which is a common mistake),
+one can run a regular expression search like
+
+!bc sys
+Terminal> find . -name '*.do.txt' -exec grep -E \
+          '[^("]"[A-Za-z0-9 ,]+" *[^:`)"]' {} \; -print
+!ec
+This search may give many false hits as double quotes are frequently
+used in computer code and preprocessor instructions (URLs and hyperlinks
+should not give hits in the above regular expressions).
+
+idx{non-breaking space}
+
 === Non-Breaking Space ===
 
 The non-breaking space character is tilde:
@@ -737,6 +763,8 @@ in~$7.4/5.5\approx 1.345$~s. (Computer code, where the tilde has a
 meaning, as in `y = ~x`, is not affected. The non-breaking character only
 works between characters, numbers, and the math dollar sign.)
 !equote
+
+idx{footnotes}
 
 === Footnotes ===
 
@@ -2216,7 +2244,7 @@ defined as the desired output format of Doconce (`html`, `latex`,
 the value of `FORMAT` and take different actions for different
 formats. Below is an example:
 
-@@@CODE _format_specific1.do.txt
+@@@CODE _format_specific1.do.txt envir=cc
 
 A variable `DEVICE` is also defined. It equals `screen` by default,
 but the command-line argument `--device=paper` can set `DEVICE` to
@@ -2379,7 +2407,7 @@ by Doconce, it is recommended to hardcode that feature for a particular
 format and use the if-else construction of the preprocessor. For example,
 if a sophisticated table is desired in LaTeX output, do something like
 
-@@@CODE _format_specific2.do.txt
+@@@CODE _format_specific2.do.txt envir=cc
 
 Similarly, if certain adjustments are needed, like
 pagebreaks in LaTeX, hardcode that in the Doconce format (and recall
@@ -2434,10 +2462,10 @@ many keyboard shortcuts are defined:
 |  Ctrl+c h2     | heading level 2 (subsection/h2)       |
 |  Ctrl+c h3     | heading level 2 (subsection/h3)       |
 |  Ctrl+c hp     | heading for paragraph                 |
-|  Ctrl+c me     | math environment: !bt equation !et    |
-|  Ctrl+c ma     | math environment: !bt align !et       |
-|  Ctrl+c ce     | code environment: !bc !ec             |
-|  Ctrl+c cf     | code from file: @@@CODE               |
+|  Ctrl+c me     | math environment: `!bt` equation `!et`|
+|  Ctrl+c ma     | math environment: `!bt` align `!et`   |
+|  Ctrl+c ce     | code environment: `!bc` code `!ec`    |
+|  Ctrl+c cf     | code from file: `@@@CODE`             |
 |  Ctrl+c table2 | table with 2 columns                  |
 |  Ctrl+c table3 | table with 3 columns                  |
 |  Ctrl+c table4 | table with 4 columns                  |

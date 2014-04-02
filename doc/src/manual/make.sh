@@ -14,8 +14,8 @@ echo; echo # Make space in output after deleting many files...
 rm -rf papers.pub  venues.list # clean
 
 publish import refs1.bib <<EOF
-1
 2
+y
 EOF
 publish import refs2.bib <<EOF
 2

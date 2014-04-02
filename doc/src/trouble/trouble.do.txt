@@ -168,6 +168,35 @@ because it thinks these lines are Mako statements. Doconce detects
 this problem and avoids running Mako.  Examine the output from
 Doconce: warnings are issued if Mako is not run.
 
+===== The Mako preprocessor gives strange error messages =====
+
+If you to a little syntax error in Mako, the consequences can be
+quite unpredictable. Especially, if you forget curly braces around
+variables or function calls, the forthcoming text is processed as
+part of the Mako command. Pay attention to the line number reported
+by Mako: this is the line number after Preprocess has processed
+the Doconce document, so you need to load `tmp_preprocess__mydoc.do.txt`
+and go to the right line in that file to see the Mako problem
+(here the Doconce document is named `mydoc.do.txt`).
+
+Look through the specific Mako problems
+reported below, and if they do not bring you to a solution of
+the problem, search for all occurences of dollar, left curly brace
+and check the syntax carefully. Likewise, check the syntax of
+Mako if-tests.
+
+Another widely used technique is to copy out small parts of
+the complete document to a separate file and run `doconce format`.
+In this way you can easier see which parts of the document that
+work and where the error suddenly appears.
+
+!bnotice Tip: Compile your Doconce document frequently
+The best means against Mako problems is to run `doconce format`
+often. Combined Git, you can take
+a `git diff` to see what you have recently changed and get an idea
+what can be wrong.
+!enotice
+
 
 ===== The Mako preprocessor is fooled by Doconce text =====
 

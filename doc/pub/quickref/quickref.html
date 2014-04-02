@@ -136,7 +136,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>Mar 2, 2014</h4></center> <!-- date -->
+<center><h4>Mar 29, 2014</h4></center> <!-- date -->
 
 <h2>Table of contents</h2>
 
@@ -308,11 +308,49 @@ Words surrounded by <code>*</code> are emphasized: <code>*emphasized words*</cod
 <em>emphasized words</em>. Similarly, an underscore surrounds words that
 appear in boldface: <code>_boldface_</code> becomes <b>boldface</b>. Colored words
 are also possible: the text
+
+<p>
 <!-- begin verbatim block -->
 <pre><code>`color{red}{two red words}`
 </code></pre>
 <!-- end verbatim block -->
 becomes <font color="red">two red words</font>.
+Quotations appear inside double backticks and double single quotes:
+
+<p>
+<!-- begin verbatim block -->
+<pre><code>This is a sentence with ``words to be quoted''.
+</code></pre>
+<!-- end verbatim block -->
+
+<p>
+A forced linebreak is specified by <code><linebreak></code> at the point where the
+linebreak in the output is wanted.
+
+<p>
+Footnotes use a label in the text with the footnote text separate,
+preferably after the paragraph where the footnote appears:
+
+<p>
+<!-- begin verbatim block -->
+<pre><code>Differentiating[^diff2] \eqref{eq1} leads
+to a new and simpler equation.
+
+[^diff2]: More precisely, we apply the divergence
+$\nabla\cdot$ on both sides.
+
+Here comes a new paragraph...
+</code></pre>
+<!-- end verbatim block -->
+
+<p>
+Non-breaking space is inserted using the tilde character as in LaTeX:
+
+<p>
+<!-- begin verbatim block -->
+<pre><code>This distance corresponds to 7.5~km, which is traveled in $7.5/5$~s.
+</code></pre>
+<!-- end verbatim block -->
 
 <h3>Lists  <a name="___sec5"></a></h3>
 
@@ -418,7 +456,7 @@ blocks, verbatim code blocks, or lists if the formats <code>rst</code> and
 
 <p>
 Comment lines starting with <code>##</code> are not propagated to the output
-document and can be used for comments that are only interest in
+document and can be used for comments that are only of interest in
 the Doconce file.
 
 <p>
