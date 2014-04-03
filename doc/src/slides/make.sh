@@ -180,7 +180,7 @@ doconce slides_html demo reveal --html_slide_theme=solarized
 cp demo.html demo_reveal_solarized_plainpre.html
 
 # LaTeX Beamer slides
-themes="blue_plain blue_shadow red_plain red_shadow cbc simula"
+themes="blue_plain blue_shadow red_plain red_shadow dark dark_gradient vintage cbc simula"
 beamer_pdfs=""
 for theme in $themes; do
 doconce format pdflatex demo SLIDE_TYPE="beamer" SLIDE_THEME="$theme" --latex_title_layout=beamer
