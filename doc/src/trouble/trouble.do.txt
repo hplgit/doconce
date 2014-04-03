@@ -157,6 +157,53 @@ the pieces using the `preprocess` directive `#include "piece.do.txt"`.
 The error message comes with the Doconce file contains too much text
 for Emacs to handle.
 
+===== How can I use quotes in a link? =====
+
+Links are typeset inside double quotes, but Doconce applies double backticks
+and double single quotes to typeset quotes, so the right form is
+
+!bc
+"This is a ``link text'' to google": "http://google.com".
+!ec
+It appears as
+
+!bquote
+"This is a ``link text'' to google": "http://google.com".
+!equote
+
+===== Conversion from Doconce to Google Docs =====
+
+ * Transform the Doconce document to HTML, upload to Google Drive,
+   right-click the file and open as Google Docs.
+ * It might be necessary to adjust formatting, e.g., insert an extra
+   line between paragraphs.
+ * MathJax code is not converted to the Google Docs LaTeX counterpart
+   and appears verbatim.
+ * Pygmentized computer code and admons look fine.
+
+===== Convesion from Google Docs to Doconce =====
+
+ * Save as HTML file and use Pandoc to convert to Markdown.
+   Use the `--markdown` and `--md2do_output=` options to
+   `doconce format to convert to Doconce.
+ * Lists in Markdown must be intended.
+ * Notes in Google Docs become (potentially many) footnotes.
+   Some tailored editing is necessary.
+
+This solution is not much explored and more text transformations from
+Pandoc-generated Markdown is certainly needed.
+
+===== Are there any tools for shared online writing of Doconce documents? =====
+
+In theory, URL: "http://draftin.com" and URL: "https://stackedit.io"
+can be used to share Markdown documents and these can be transform
+to and from Doconce documents. Tested to a little degree, but may
+work for very simple documents (sections, lists, code - no labels, refs,
+math, admons, code copied from file).
+Not all of Extended Markdown is interpreted by Doconce, and Doconce
+transforms to Panddoc-extended Markdown, not the Extended Markdown
+used by these sites.
+
 
 ======= Preprocess/Mako problems =======
 
