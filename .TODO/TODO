@@ -1,3 +1,32 @@
 * Nikola for publication of multi-format doconce documents
   (say for a course), with optional blog comments.
   URL: "http://getnikola.com/handbook.html".
+  Possible to allow for MathJax and pretty code in blog parts?
+
+* Collapsing regions in HTML (e.g., solutions in exercises):
+  Use Bootstrap theme and see "example": "http://jsfiddle.net/Sherbrow/68RXP/".
+  Could also be !bexpand-!eexpand.
+
+* `--html_style=Bootstrap`: also allow for !bsidebar-!esidebar, which
+  works in HTML only, otherwise typeset as paragraph with optional heading,
+  and creates something on the side.
+  Could have toc in as a pulldown navigation item in the top bar.
+
+===== From Google Doc to Doconce =====
+
+Export in html, interpret the html (fairly complicated) or use
+pandoc to go to latex. Then one needs adjustments:
+
+ * All notes in the Google Doc: `\textsuperscript{\hyperref[.+?]{{[}.{]}}}` must be removed.
+ * Remove tildes.
+ * One-liners are probably h3 headlines.
+
+Maybe pandoc for going from html to markdown is a better option - yes!
+Will also need to remove all the footnotes arising from internal notes.
+
+Going from docx, rtf, odt via pandoc did not work.
+
+===== From Doconce to Google Doc =====
+
+Go to html, upload the html file to Google Drive, and open with Google Doc.
+LaTeX math and figures do not work.

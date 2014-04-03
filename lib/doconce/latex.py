@@ -144,6 +144,8 @@ def latex_code(filestr, code_blocks, code_block_types,
 
     # --- Final fixes for latex format ---
 
+    chapters = True if re.search(r'\\chapter\{', filestr) is not None else False
+
     appendix_pattern = r'\\(chapter|section\*?)\{Appendix:\s+'
     filestr = re.sub(appendix_pattern,
                      '\n\n\\\\appendix\n\n' + r'\\\g<1>{', filestr,  # the first
@@ -165,7 +167,10 @@ def latex_code(filestr, code_blocks, code_block_types,
 
     if include_numbering_of_exercises:
         # Remove section numbers of exercise sections
-        exercise_pattern = r'subsection\*?\{(Exercise|Problem|Project) +(\d+)\s*: +(.+\})'
+        if option('examples_as_exercises'):
+            exercise_pattern = r'subsection\*?\{(Exercise|Problem|Project|Example) +(\d+)\s*: +(.+\})'
+        else:
+            exercise_pattern = r'subsection\*?\{(Exercise|Problem|Project) +(\d+)\s*: +(.+\})'
         # Make table of contents or list of exercises entry
         # (might have to add \phantomsection right before because
         # of the hyperref package?)
@@ -193,6 +198,22 @@ def latex_code(filestr, code_blocks, code_block_types,
         r"""subsection*{\g<1> \\thedoconceexercisecounter: \g<3>
 \\addcontentsline{loe}{doconceexercise}{\g<1> \\thedoconceexercisecounter: \g<3>
 """, filestr)
+            # Treat {Exercise}/{Project}/{Problem}
+            # Pattern starts with --- begin exercise ... \subsection{
+            # but not \addcontentsline
+            exercise_pattern = r'^% --- begin exercise ---\n\\begin\{doconceexercise\}\n\\refstepcounter\{doconceexercisecounter\}\n\n\\subsection\{(.+?)$(?!\\addcont)'
+            # No increment of exercise counter, but add to contents
+            replacement = r"""% --- begin exercise ---
+\begin{doconceexercise}
+
+\subsection{\g<1>"""
+            if option('latex_list_of_exercises=', 'none') != 'none':
+                replacement += r"""
+\addcontentsline{loe}{doconceexercise}{\g<1>
+"""
+            replacement = fix_latex_command_regex(replacement, 'replacement')
+            filestr = re.sub(exercise_pattern, replacement, filestr,
+                             flags=re.MULTILINE)
             # Find suitable titles for list of exercises
             import sets
             types_of_exer = sets.Set()
@@ -218,7 +239,8 @@ def latex_code(filestr, code_blocks, code_block_types,
                 # Also, the name of the doconce exercise environment
                 # cannot be doconce:exercise (previous name), but
                 # must be doconceexercise because of the \l@... command
-                style_listofexercises = r"""
+                if chapters:
+                    style_listofexercises = r"""
 %% --- begin definition of \listofexercises command ---
 \makeatletter
 \newcommand\listofexercises{
@@ -231,10 +253,24 @@ def latex_code(filestr, code_blocks, code_block_types,
 \makeatother
 %% --- end definition of \listofexercises command ---
 """ % vars()
-                insert_listofexercises = r"""
+                    insert_listofexercises = r"""
 \clearemptydoublepage
 \listofexercises
 \clearemptydoublepage
+""" % vars()
+                else:
+                    style_listofexercises = r"""
+%% --- begin definition of \listofexercises command ---
+\makeatletter
+\newcommand\listofexercises{\section*{%(heading)s}
+\@starttoc{loe}
+}
+\newcommand*{\l@doconceexercise}{\@dottedtocline{0}{0pt}{6.5em}}
+\makeatother
+%% --- end definition of \listofexercises command ---
+""" % vars()
+                    insert_listofexercises = r"""
+\listofexercises
 """ % vars()
                 target = r'\newcounter{doconceexercisecounter}'
                 filestr = filestr.replace(
@@ -257,7 +293,7 @@ def latex_code(filestr, code_blocks, code_block_types,
                      flags=re.MULTILINE)
     # Preface is normally an unnumbered section or chapter
     # (add \markboth only if book style with chapters
-    if re.search(r'\\chapter\{', filestr):
+    if chapters:
         markboth = r'\n\markboth{\g<2>}{\g<2>}'
     else:
         markboth = ''
@@ -2311,12 +2347,14 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 \end{%(admon)s_%(latex_admon)smdframed}
 }
 """ % vars()
+        INTRO['latex'] += r"""
+% --- end of definitions of admonition environments ---
+"""
 
     colored_table_rows = option('latex_colored_table_rows=', 'no')
 
-    INTRO['latex'] += r"""
-% --- end of definitions of admonition environments ---
 
+    INTRO['latex'] += r"""
 % prevent orhpans and widows
 \clubpenalty = 10000
 \widowpenalty = 10000
@@ -2324,7 +2362,8 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
     if section_headings != 'std':
         INTRO['latex'] += r"""
 % http://www.ctex.org/documents/packages/layout/titlesec.pdf
-\usepackage[compact]{titlesec}  % reduce the spacing above/below the heading
+\usepackage{titlesec}  % needed for colored section headings
+%\usepackage[compact]{titlesec}  % reduce the spacing around section headings
 """
     if section_headings == 'blue':
         INTRO['latex'] += r"""
@@ -2463,7 +2502,7 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 
             break
 
-    if latex_style not in ("Koma_Script", "Springer_T2"):
+    if chapters and latex_style not in ("Koma_Script", "Springer_T2"):
         # Follow advice from fancyhdr: redefine \cleardoublepage
         # see http://www.tex.ac.uk/cgi-bin/texfaq2html?label=reallyblank
         # (Koma has its own solution to the problem, svmono.cls has the command)
@@ -2604,6 +2643,7 @@ def fix_latex_command_regex(pattern, application='match'):
     '\\\\mbox\\{(\\\\d+)\\}'
     >>> re.sub(pattern, replacement, r'\mbox{987}')
     '\\mbox{987}'  # no substitution, no match
+    >>> # \g<1> and similar works fine
 
     """
     import string

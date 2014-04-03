@@ -122,7 +122,7 @@ the left on odd page numbers."""),
     ('--latex_section_headings=',
 """Typesetting of title/section/subsection headings:
 std (default): standard LaTeX,
-blue: gray blye color,
+blue: gray blue color,
 strongblue: stronger blue color,
 gray: white text on gray background, fit to heading width,
 gray-wide: white text on gray background, wide as the textwidth

@@ -2050,7 +2050,7 @@ This is a hint.
 
 |bblock This is a block.
 A block has never any icon. It is mostly used in slides
-and give the text block effect in LaTeX beamer.
+and gives the text block effect in LaTeX beamer.
 |eblock
 
 |bnotice Going deeper
@@ -2488,7 +2488,7 @@ The slides can either be ordinary, separate slides - or just
 a document with much briefer text and emphasis on bullet lists,
 figures, mathematical formulas, admonitions, and little text.
 
-Points:
+Points to consider (just sketches...):
 
  * Only some pygments style are suited for a particular reveal.js/deck.js
    theme
@@ -2496,6 +2496,15 @@ Points:
  * Admon styles are erased in reveal
  * Use `--keep_pygments_html_bg` to avoid big changes in background
    color for code
+ * Can use PowerPoint or Google Presenter to design a slide and then
+   save as image (GP directly, PP via Save as Picture or
+   Save As + choosing image type,
+   and then all or present slide only), then import image in doconce.
+   LaTeX formulas in image are easiest created as PNGs using
+   URL: "http://www.codecogs.com/latex/eqneditor.php".
+ * From doconce to PP or GP: use the latexslides script to convert
+   to PDFs and odp format, convert odp to ppt interactively or with
+   `unoconv`.
 
 ===== Overview =====
 
