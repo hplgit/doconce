@@ -1787,10 +1787,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \newcounter{doconceexercisecounter}
 % --- begin definition of \listofexercises command ---
 \makeatletter
-\newcommand\listofexercises{
-\chapter*{List of Exercises, Problems, and Projects
-          \@mkboth{List of Exercises, Problems, and Projects}{List of Exercises, Problems, and Projects}}
-\markboth{List of Exercises, Problems, and Projects}{List of Exercises, Problems, and Projects}
+\newcommand\listofexercises{\section*{List of Examples, Exercises, Problems, and Projects}
 \@starttoc{loe}
 }
 \newcommand*{\l@doconceexercise}{\@dottedtocline{0}{0pt}{6.5em}}
@@ -1810,11 +1807,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
                   {\normalfont\normalsize\bfseries}}
 \makeatother
 
-
-% Make sure blank even-numbered pages before new chapters are
-% totally blank with no header
-\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
-%\let\cleardoublepage\clearemptydoublepage % caused error in the toc
 
 % --- end of standard preamble for documents ---
 
@@ -2468,7 +2460,8 @@ the old ME-IN323 book \cite{Langtangen:91} and the
 \begin{doconceexercise}
 \refstepcounter{doconceexercisecounter}
 
-\subsection{Example 1: Examples can be typeset as exercises}
+\subsection*{Example \thedoconceexercisecounter: Examples can be typeset as exercises}
+
 \label{Example}
 
 Examples can start with a subsection heading starting with \code{Example:}
@@ -2969,7 +2962,6 @@ remarks will appear at the end of the typeset exercise.
 
 % --- begin exercise ---
 \begin{doconceexercise}
-\refstepcounter{doconceexercisecounter}
 
 \subsection{Some exercise without the "Exercise:" prefix}
 
@@ -2999,7 +2991,8 @@ lambda x: x+2
 \begin{doconceexercise}
 \refstepcounter{doconceexercisecounter}
 
-\subsection{Example 7: Just an example}
+\subsection*{Example \thedoconceexercisecounter: Just an example}
+
 
 % This example needs the --examples_as_exercises option, otherwise
 % it is just typeset as it is written.
@@ -3490,7 +3483,8 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \widowpenalty = 10000
 
 % http://www.ctex.org/documents/packages/layout/titlesec.pdf
-\usepackage[compact]{titlesec}  % reduce the spacing above/below the heading
+\usepackage{titlesec}  % needed for colored section headings
+%\usepackage[compact]{titlesec}  % reduce the spacing around section headings
 
 % --- section/subsection headings with blue color ---
 \definecolor{seccolor}{cmyk}{.9,.5,0,.35}  % siamltexmm.sty section color
@@ -3524,10 +3518,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \newcounter{doconceexercisecounter}
 % --- begin definition of \listofexercises command ---
 \makeatletter
-\newcommand\listofexercises{
-\chapter*{List of Exercises, Problems, and Projects
-          \@mkboth{List of Exercises, Problems, and Projects}{List of Exercises, Problems, and Projects}}
-\markboth{List of Exercises, Problems, and Projects}{List of Exercises, Problems, and Projects}
+\newcommand\listofexercises{\section*{List of Examples, Exercises, Problems, and Projects}
 \@starttoc{loe}
 }
 \newcommand*{\l@doconceexercise}{\@dottedtocline{0}{0pt}{6.5em}}
@@ -3547,11 +3538,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
                   {\normalfont\normalsize\bfseries}}
 \makeatother
 
-
-% Make sure blank even--numbered pages before new chapters are
-% totally blank with no header
-\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
-%\let\cleardoublepage\clearemptydoublepage % caused error in the toc
 
 % --- end of standard preamble for documents ---
 
@@ -3621,25 +3607,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \clearpage
 
 \tableofcontents
-
-\clearpage % pagebreak before list of exercises
-\subsection*{List of Exercises, Problems, and Projects}
-\begin{tabular}{lrll}
-Problem & 2 & Flip a Coin & p.~\pageref{demo:ex:1} \\
-Project & 3 & Compute a Probability & p.~\pageref{demo:ex:2} \\
-Project & 4 & Explore Distributions of Random Circles & p.~\pageref{proj:circle1} \\
-Exercise & 5 & Determine some Distance & p.~\pageref{exer:dist} \\
-Exercise & 6 & Some exercise without the "Exercise:" prefix & \\
-Exercise & 8 & Make references to projects and problems & p.~\pageref{exer:some:formula} \\
-Project & 9 & References to Project ref{demo:ex:2} in a ... & p.~\pageref{exer:you} \\
-\end{tabular}
-% --- end of table of exercises
-\clearpage % pagebreak after list of exercises
-
-
-\clearemptydoublepage
 \listofexercises
-\clearemptydoublepage
 
 
 \listoftodos[List of inline comments]
@@ -4290,7 +4258,9 @@ the old ME-IN323 book \cite{Langtangen:91} and the
 \begin{doconceexercise}
 \refstepcounter{doconceexercisecounter}
 
-\subsection{Example 1: Examples can be typeset as exercises}
+\subsection*{Example \thedoconceexercisecounter: Examples can be typeset as exercises}
+\addcontentsline{loe}{doconceexercise}{Example \thedoconceexercisecounter: Examples can be typeset as exercises}
+
 \label{Example}
 
 Examples can start with a subsection heading starting with \texttt{Example:}
@@ -4801,9 +4771,10 @@ remarks will appear at the end of the typeset exercise.
 
 % --- begin exercise ---
 \begin{doconceexercise}
-\refstepcounter{doconceexercisecounter}
 
 \subsection{Some exercise without the "Exercise:" prefix}
+\addcontentsline{loe}{doconceexercise}{Some exercise without the "Exercise:" prefix}
+
 
 % Another minimalistic exercise
 
@@ -4833,7 +4804,9 @@ lambda x: x+2
 \begin{doconceexercise}
 \refstepcounter{doconceexercisecounter}
 
-\subsection{Example 7: Just an example}
+\subsection*{Example \thedoconceexercisecounter: Just an example}
+\addcontentsline{loe}{doconceexercise}{Example \thedoconceexercisecounter: Just an example}
+
 
 % This example needs the --examples_as_exercises option, otherwise
 % it is just typeset as it is written.
@@ -5335,7 +5308,8 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \widowpenalty = 10000
 
 % http://www.ctex.org/documents/packages/layout/titlesec.pdf
-\usepackage[compact]{titlesec}  % reduce the spacing above/below the heading
+\usepackage{titlesec}  % needed for colored section headings
+%\usepackage[compact]{titlesec}  % reduce the spacing around section headings
 
 % --- section/subsection headings with blue color ---
 \definecolor{seccolor}{cmyk}{.9,.5,0,.35}  % siamltexmm.sty section color
@@ -5369,10 +5343,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \newcounter{doconceexercisecounter}
 % --- begin definition of \listofexercises command ---
 \makeatletter
-\newcommand\listofexercises{
-\chapter*{List of Exercises, Problems, and Projects
-          \@mkboth{List of Exercises, Problems, and Projects}{List of Exercises, Problems, and Projects}}
-\markboth{List of Exercises, Problems, and Projects}{List of Exercises, Problems, and Projects}
+\newcommand\listofexercises{\section*{List of Examples, Exercises, Problems, and Projects}
 \@starttoc{loe}
 }
 \newcommand*{\l@doconceexercise}{\@dottedtocline{0}{0pt}{6.5em}}
@@ -5392,11 +5363,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
                   {\normalfont\normalsize\bfseries}}
 \makeatother
 
-
-% Make sure blank even--numbered pages before new chapters are
-% totally blank with no header
-\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
-%\let\cleardoublepage\clearemptydoublepage % caused error in the toc
 
 % --- end of standard preamble for documents ---
 
@@ -5466,25 +5432,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \clearpage
 
 \tableofcontents
-
-\clearpage % pagebreak before list of exercises
-\subsection*{List of Exercises, Problems, and Projects}
-\begin{tabular}{lrll}
-Problem & 2 & Flip a Coin & p.~\pageref{demo:ex:1} \\
-Project & 3 & Compute a Probability & p.~\pageref{demo:ex:2} \\
-Project & 4 & Explore Distributions of Random Circles & p.~\pageref{proj:circle1} \\
-Exercise & 5 & Determine some Distance & p.~\pageref{exer:dist} \\
-Exercise & 6 & Some exercise without the "Exercise:" prefix & \\
-Exercise & 8 & Make references to projects and problems & p.~\pageref{exer:some:formula} \\
-Project & 9 & References to Project ref{demo:ex:2} in a ... & p.~\pageref{exer:you} \\
-\end{tabular}
-% --- end of table of exercises
-\clearpage % pagebreak after list of exercises
-
-
-\clearemptydoublepage
 \listofexercises
-\clearemptydoublepage
 
 
 \listoftodos[List of inline comments]
@@ -6097,7 +6045,9 @@ the old ME-IN323 book \cite{Langtangen:91} and the
 \begin{doconceexercise}
 \refstepcounter{doconceexercisecounter}
 
-\subsection{Example 1: Examples can be typeset as exercises}
+\subsection*{Example \thedoconceexercisecounter: Examples can be typeset as exercises}
+\addcontentsline{loe}{doconceexercise}{Example \thedoconceexercisecounter: Examples can be typeset as exercises}
+
 \label{Example}
 
 Examples can start with a subsection heading starting with \Verb!Example:!
@@ -6602,9 +6552,10 @@ remarks will appear at the end of the typeset exercise.
 
 % --- begin exercise ---
 \begin{doconceexercise}
-\refstepcounter{doconceexercisecounter}
 
 \subsection{Some exercise without the "Exercise:" prefix}
+\addcontentsline{loe}{doconceexercise}{Some exercise without the "Exercise:" prefix}
+
 
 % Another minimalistic exercise
 
@@ -6632,7 +6583,9 @@ lambda x: x+2
 \begin{doconceexercise}
 \refstepcounter{doconceexercisecounter}
 
-\subsection{Example 7: Just an example}
+\subsection*{Example \thedoconceexercisecounter: Just an example}
+\addcontentsline{loe}{doconceexercise}{Example \thedoconceexercisecounter: Just an example}
+
 
 % This example needs the --examples_as_exercises option, otherwise
 % it is just typeset as it is written.
@@ -21198,7 +21151,7 @@ ccc<br /><span class="math">\(\mathcal{L}=0\)</span> &amp; <img src="../doc/src/
 <h2 id="bibliography-test">Bibliography test</h2>
 <p>Here is an example: @Langtangen_Pedersen_2002 discussed propagation of large destructive water waves, @Langtangen_et_al_2002 gave an overview of numerical methods for solving the Navier-Stokes equations, while the use of Backward Kolmogorov equations for analyzing random vibrations was investigated in @Langtangen_1994a. The book chapter @Mardal_et_al_2003a contains information on C++ software tools for programming multigrid methods. A real retro reference is @Langtangen_1988d about a big FORTRAN package. Multiple references are also possible, e.g., see @Langtangen_Pedersen_2002 [@Mardal_et_al_2003a].</p>
 <p>We need to cite more than 10 papers to reproduce an old formatting problem with blanks in the keys in reST format: @Langtangen_1992c [@Langtangen_1994a; @Mortensen_et_al_2011; @Langtangen_Pedersen_2002] and @Langtangen_et_al_2002 [@Glimsdal_et_al_20006; @Rahman_et_al_2006b; @Haga_et_al_2011a; @Langtangen_2003a; @Langtangen_2008a; @Langtangen:95] and all the work of @Langtangen_2012 [@Mardal_et_al_2003a; @Jeberg_et_al_2004] as well as old work @Langtangen_1988d and @Langtangen_1989e, and the talk @Langtangen_talk_2007a. Langtangen also had two thesis @Langtangen:85 [@Langtangen_1989e]. More retro citations are the old ME-IN323 book @Langtangen:91 and the @Langtangen:94b OONSKI ’94 paper.</p>
-<h2 id="example-1-examples-can-be-typeset-as-exercises">Example 1: Examples can be typeset as exercises</h2>
+<h2 id="example-examples-can-be-typeset-as-exercises" class="unnumbered">Example : Examples can be typeset as exercises</h2>
 <p>[Example]</p>
 <p>Examples can start with a subsection heading starting with <code>Example:</code> and then, with the command-line option <code>--examples_as_exercises</code> be typeset as exercises. This is useful if one has solution environments as part of the example.</p>
 <p>startsectionparagraph4@ 1.5explus1ex minus.2ex -0.5em ****a) State some problem.</p>
@@ -21373,7 +21326,7 @@ x, y = circle(2.0, 0, 0)</code></pre>
 <p><span class="math">\[\exp{(0)} = 1\]</span></p>
 <p>And a test that the code <code>lambda x: x+2</code> is correctly placed here:</p>
 <pre><code>lambda x: x+2</code></pre>
-<h2 id="example-7-just-an-example">Example 7: Just an example</h2>
+<h2 id="example-just-an-example" class="unnumbered">Example : Just an example</h2>
 <p>startsectionparagraph4@ 1.5explus1ex minus.2ex -0.5em ****a) What is the capital of Norway?</p>
 <h4 id="answer.-3">Answer.</h4>
 <p>Oslo.</p>
@@ -23656,8 +23609,6 @@ open=right               % start new chapters on odd-numbered pages
 %\hyperbaseurl{}   % hyperlinks are relative to this root
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
-
-% --- end of definitions of admonition environments ---
 
 % prevent orhpans and widows
 \clubpenalty = 10000
@@ -30179,10 +30130,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \newcounter{doconceexercisecounter}
 % --- begin definition of \listofexercises command ---
 \makeatletter
-\newcommand\listofexercises{
-\chapter*{List of Exercises, Problems, and Projects
-          \@mkboth{List of Exercises, Problems, and Projects}{List of Exercises, Problems, and Projects}}
-\markboth{List of Exercises, Problems, and Projects}{List of Exercises, Problems, and Projects}
+\newcommand\listofexercises{\section*{List of Examples, Exercises, Problems, and Projects}
 \@starttoc{loe}
 }
 \newcommand*{\l@doconceexercise}{\@dottedtocline{0}{0pt}{6.5em}}
@@ -30202,11 +30150,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
                   {\normalfont\normalsize\bfseries}}
 \makeatother
 
-
-% Make sure blank even-numbered pages before new chapters are
-% totally blank with no header
-\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
-%\let\cleardoublepage\clearemptydoublepage % caused error in the toc
 
 % --- end of standard preamble for documents ---
 
@@ -30898,7 +30841,8 @@ the old ME-IN323 book \cite{Langtangen:91} and the
 \begin{doconceexercise}
 \refstepcounter{doconceexercisecounter}
 
-\subsection{Example 1: Examples can be typeset as exercises}
+\subsection*{Example \thedoconceexercisecounter: Examples can be typeset as exercises}
+
 \label{Example}
 
 Examples can start with a subsection heading starting with \code{Example:}
@@ -31351,7 +31295,6 @@ remarks will appear at the end of the typeset exercise.
 
 % --- begin exercise ---
 \begin{doconceexercise}
-\refstepcounter{doconceexercisecounter}
 
 \subsection{Some exercise without the "Exercise:" prefix}
 
@@ -31381,7 +31324,8 @@ lambda x: x+2
 \begin{doconceexercise}
 \refstepcounter{doconceexercisecounter}
 
-\subsection{Example 7: Just an example}
+\subsection*{Example \thedoconceexercisecounter: Just an example}
+
 
 % This example needs the --examples_as_exercises option, otherwise
 % it is just typeset as it is written.
@@ -32106,7 +32050,8 @@ system doconce format pdflatex testdoc.do.txt --device=paper $ex --latex_double_
 # --latex_paper=a4 triggers summary environment to be smaller paragraph
 # within the text (fine for proposals or articles).
 
-system doconce latex_exercise_toc testdoc
+# Drop the table exercise toc since we want to test loe above
+#system doconce latex_exercise_toc testdoc
 
 # doconce replace does not work well with system bash func above without quotes
 doconce replace 'vspace{1cm} % after toc' 'clearpage % after toc' testdoc.p.tex
@@ -32123,6 +32068,7 @@ doconce replace --examples_as__exercises $ex testdoc.p.tex
 system ptex2tex -DMINTED testdoc
 
 # test that pdflatex works
+rm -f *.aux
 system pdflatex -shell-escape testdoc
 pdflatex -shell-escape testdoc
 makeindex testdoc
@@ -32196,6 +32142,7 @@ system doconce slides_html slides1 deck --html_slide_type=sandstone.firefox
 cp slides1.html slides1_deck.html
 /bin/ls -R deck.js >> slides1_deck.html
 
+rm -f *.aux
 system doconce format pdflatex slides1 --latex_title_layout=beamer
 system doconce ptex2tex slides1
 system doconce slides_beamer slides1
@@ -32204,6 +32151,7 @@ system doconce format html slides2 --pygments_html_style=emacs
 system doconce slides_html slides2 reveal --html_slide_type=beigesmall
 cp slides2.html slides2_reveal.html
 
+rm -f *.aux
 system doconce format pdflatex slides2 --latex_title_layout=beamer
 system doconce ptex2tex slides2 envir=minted
 system doconce slides_beamer slides2
@@ -32212,6 +32160,7 @@ system doconce format html slides3 --pygments_html_style=emacs SLIDE_TYPE=reveal
 system doconce slides_html slides3 reveal --html_slide_type=beigesmall
 cp slides3.html slides3_reveal.html
 
+rm -f *.aux
 theme=red3
 system doconce format pdflatex slides3 SLIDE_TYPE=beamer SLIDE_THEME=$theme --latex_title_layout=beamer
 system doconce ptex2tex slides3 envir=minted
@@ -32238,6 +32187,7 @@ system doconce format sphinx author1
 system doconce format plain author1
 
 # Test math
+rm -f *.aux
 name=math_test
 doconce format pdflatex $name
 doconce ptex2tex $name
@@ -33401,16 +33351,9 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
 
-% --- end of definitions of admonition environments ---
-
 % prevent orhpans and widows
 \clubpenalty = 10000
 \widowpenalty = 10000
-
-% Make sure blank even-numbered pages before new chapters are
-% totally blank with no header
-\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
-%\let\cleardoublepage\clearemptydoublepage % caused error in the toc
 
 % --- end of standard preamble for documents ---
 
@@ -38617,11 +38560,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \clubpenalty = 10000
 \widowpenalty = 10000
 
-% Make sure blank even-numbered pages before new chapters are
-% totally blank with no header
-\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
-%\let\cleardoublepage\clearemptydoublepage % caused error in the toc
-
 % --- end of standard preamble for documents ---
 
 
@@ -39219,11 +39157,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 % prevent orhpans and widows
 \clubpenalty = 10000
 \widowpenalty = 10000
-
-% Make sure blank even-numbered pages before new chapters are
-% totally blank with no header
-\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
-%\let\cleardoublepage\clearemptydoublepage % caused error in the toc
 
 % --- end of standard preamble for documents ---
 
@@ -39826,11 +39759,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 % prevent orhpans and widows
 \clubpenalty = 10000
 \widowpenalty = 10000
-
-% Make sure blank even-numbered pages before new chapters are
-% totally blank with no header
-\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
-%\let\cleardoublepage\clearemptydoublepage % caused error in the toc
 
 % --- end of standard preamble for documents ---
 
@@ -40477,11 +40405,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \clubpenalty = 10000
 \widowpenalty = 10000
 
-% Make sure blank even-numbered pages before new chapters are
-% totally blank with no header
-\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
-%\let\cleardoublepage\clearemptydoublepage % caused error in the toc
-
 % --- end of standard preamble for documents ---
 
 
@@ -41019,11 +40942,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 % prevent orhpans and widows
 \clubpenalty = 10000
 \widowpenalty = 10000
-
-% Make sure blank even-numbered pages before new chapters are
-% totally blank with no header
-\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
-%\let\cleardoublepage\clearemptydoublepage % caused error in the toc
 
 % --- end of standard preamble for documents ---
 
@@ -41655,11 +41573,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \clubpenalty = 10000
 \widowpenalty = 10000
 
-% Make sure blank even-numbered pages before new chapters are
-% totally blank with no header
-\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
-%\let\cleardoublepage\clearemptydoublepage % caused error in the toc
-
 % --- end of standard preamble for documents ---
 
 
@@ -42167,11 +42080,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 % prevent orhpans and widows
 \clubpenalty = 10000
 \widowpenalty = 10000
-
-% Make sure blank even-numbered pages before new chapters are
-% totally blank with no header
-\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
-%\let\cleardoublepage\clearemptydoublepage % caused error in the toc
 
 % --- end of standard preamble for documents ---
 
@@ -42778,11 +42686,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 % prevent orhpans and widows
 \clubpenalty = 10000
 \widowpenalty = 10000
-
-% Make sure blank even-numbered pages before new chapters are
-% totally blank with no header
-\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
-%\let\cleardoublepage\clearemptydoublepage % caused error in the toc
 
 % --- end of standard preamble for documents ---
 
@@ -43428,11 +43331,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 % prevent orhpans and widows
 \clubpenalty = 10000
 \widowpenalty = 10000
-
-% Make sure blank even-numbered pages before new chapters are
-% totally blank with no header
-\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
-%\let\cleardoublepage\clearemptydoublepage % caused error in the toc
 
 % --- end of standard preamble for documents ---
 
@@ -55893,11 +55791,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \clubpenalty = 10000
 \widowpenalty = 10000
 
-% Make sure blank even-numbered pages before new chapters are
-% totally blank with no header
-\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
-%\let\cleardoublepage\clearemptydoublepage % caused error in the toc
-
 % --- end of standard preamble for documents ---
 
 
@@ -61327,11 +61220,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \clubpenalty = 10000
 \widowpenalty = 10000
 
-% Make sure blank even-numbered pages before new chapters are
-% totally blank with no header
-\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
-%\let\cleardoublepage\clearemptydoublepage % caused error in the toc
-
 % --- end of standard preamble for documents ---
 
 
@@ -63622,16 +63510,9 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
 
-% --- end of definitions of admonition environments ---
-
 % prevent orhpans and widows
 \clubpenalty = 10000
 \widowpenalty = 10000
-
-% Make sure blank even-numbered pages before new chapters are
-% totally blank with no header
-\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
-%\let\cleardoublepage\clearemptydoublepage % caused error in the toc
 
 % --- end of standard preamble for documents ---
 
@@ -64181,16 +64062,9 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
 
-% --- end of definitions of admonition environments ---
-
 % prevent orhpans and widows
 \clubpenalty = 10000
 \widowpenalty = 10000
-
-% Make sure blank even-numbered pages before new chapters are
-% totally blank with no header
-\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
-%\let\cleardoublepage\clearemptydoublepage % caused error in the toc
 
 % --- end of standard preamble for documents ---
 
@@ -64584,16 +64458,9 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
 
-% --- end of definitions of admonition environments ---
-
 % prevent orhpans and widows
 \clubpenalty = 10000
 \widowpenalty = 10000
-
-% Make sure blank even-numbered pages before new chapters are
-% totally blank with no header
-\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
-%\let\cleardoublepage\clearemptydoublepage % caused error in the toc
 
 % --- end of standard preamble for documents ---
 
@@ -73290,11 +73157,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
                   {\normalfont\normalsize\bfseries}}
 \makeatother
 
-
-% Make sure blank even-numbered pages before new chapters are
-% totally blank with no header
-\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
-%\let\cleardoublepage\clearemptydoublepage % caused error in the toc
 
 % --- end of standard preamble for documents ---
 
@@ -84171,6 +84033,7 @@ Courses:                            0
 Talks:                              0
 Posters:                            0
 Public Outreach:                    0
+Preprints:                          0
 Other Publications:                 0
 Total:                              5
 
@@ -84261,6 +84124,7 @@ Courses:                            0
 Talks:                              0
 Posters:                            0
 Public Outreach:                    0
+Preprints:                          0
 Other Publications:                 1
 Total:                              11
 
@@ -84379,6 +84243,7 @@ Courses:                            0
 Talks:                              0
 Posters:                            0
 Public Outreach:                    0
+Preprints:                          0
 Other Publications:                 1
 Total:                              21
 
@@ -84496,6 +84361,7 @@ Courses:                            0
 Talks:                              0
 Posters:                            0
 Public Outreach:                    0
+Preprints:                          0
 Other Publications:                 1
 Total:                              21
 
@@ -84721,6 +84587,7 @@ Courses:                            0
 Talks:                              0
 Posters:                            0
 Public Outreach:                    0
+Preprints:                          0
 Other Publications:                 1
 Total:                              21
 
@@ -84788,6 +84655,7 @@ Courses:                            0
 Talks:                              0
 Posters:                            0
 Public Outreach:                    0
+Preprints:                          0
 Other Publications:                 1
 Total:                              21
 
@@ -84837,10 +84705,6 @@ exporting publish database papers.pub to papers.bib:
              search for all -- in the .p.tex file and check.
 output in testdoc.p.tex
 + '[' 0 -ne 0 ']'
-+ system doconce latex_exercise_toc testdoc
-+ doconce latex_exercise_toc testdoc
-table of exercises inserted in testdoc.p.tex
-+ '[' 0 -ne 0 ']'
 + doconce replace 'vspace{1cm} % after toc' 'clearpage % after toc' testdoc.p.tex
 replacing vspace{1cm} % after toc by clearpage % after toc in testdoc.p.tex
 + thpack='\\usepackage{theorem}\n\\newtheorem{theorem}{Theorem}[section]'
@@ -84861,6 +84725,7 @@ using local config file .ptex2tex.cfg
 running preprocessor on testdoc.p.tex...  defines: 'MINTED'  done
 done testdoc.p.tex -> testdoc.tex
 + '[' 0 -ne 0 ']'
++ rm -f '*.aux'
 + system pdflatex -shell-escape testdoc
 + pdflatex -shell-escape testdoc
 This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
@@ -85082,31 +84947,11 @@ ABD: EveryShipout initializing macros (./newcommands_bfmath.tex)
 
 
  [1{/var/lib/texmf/fonts/map/pdftex/up
-dmap/pdftex.map}] [2]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-
-[3] [4]
+dmap/pdftex.map}]
 
 Package hyperref Warning: old loe file detected, not used; run LaTeX again.
 
-[5] [6] [7] 
+[2] 
 
 
 
@@ -85135,14 +84980,9 @@ Package hyperref Warning: old loe file detected, not used; run LaTeX again.
 
 
 
-(./testdoc.out.pyg) (./testdoc.out.pyg [8]) (./testdoc.out.pyg)
-(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg [9])
-(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) [10]
-
-
-...rest of part of LaTeX line number...
-
-[11]
+(./testdoc.out.pyg [3]) (./testdoc.out.pyg) (./testdoc.out.pyg)
+(./testdoc.out.pyg) (./testdoc.out.pyg [4]) (./testdoc.out.pyg)
+(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg [5]) [6]
 
 
 ...rest of part of LaTeX line number...
@@ -85150,17 +84990,17 @@ Package hyperref Warning: old loe file detected, not used; run LaTeX again.
 
 
 
-<../doc/src/manual/fig/wave1D.pdf, id=102, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=81, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
-[12 <../doc/src/manual/fig/wave1D.pdf>]
+[7 <../doc/src/manual/fig/wave1D.pdf>]
 
 
 
-<../doc/src/manual/fig/wave1D.png, id=120, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=100, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=122, 578.16pt x 433.62pt>
-<use downloaded_figures/f_plot.png> [13] [14 <../doc/src/manual/fig/wave1D.png>
- <./downloaded_figures/f_plot.png>]
+<downloaded_figures/f_plot.png, id=102, 578.16pt x 433.62pt>
+<use downloaded_figures/f_plot.png> [8] [9 <../doc/src/manual/fig/wave1D.png> <
+./downloaded_figures/f_plot.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -85198,19 +85038,19 @@ Underfull \hbox (badness 3291)
 
 
 
-[15]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=153, 586.8324pt x 442.292
+[10] [11]
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=137, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=154, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=138, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=155, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=139, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=156, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=140, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=157, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=141, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=158, 586.8324pt x 442.292
-4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png> [16]
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=142, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -85233,7 +85073,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1016.
+t line 991.
 
 
 
@@ -85253,7 +85093,7 @@ t line 1016.
 
 
 
-t line 1025.
+t line 1000.
 
 
 
@@ -85273,35 +85113,7 @@ t line 1025.
 
 
 
-t line 1029.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-.
+t line 1004.
 
 
 
@@ -85337,19 +85149,48 @@ t line 1029.
 
 
 
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
 .
 
 
 
 ...rest of part of LaTeX line number...
 
-[17 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
+
+
+.
+
+
+
+...rest of part of LaTeX line number...
+
+[12 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
 ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
 ../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/mov/wave_f
 rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 Overfull \hbox (5.03835pt too wide) 
 [][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
 %26+engineering/book/978-3-642-23098-1| 
+[13]
 
 
 .
@@ -85365,7 +85206,6 @@ Overfull \hbox (5.03835pt too wide)
 
 
 
-[18]
 
 
 
@@ -85383,11 +85223,11 @@ Package amsmath Warning: Foreign command \over;
 
 
 
+[14]
 
 
 ...rest of part of LaTeX line number...
 
-[19]
 
 
 
@@ -85420,7 +85260,7 @@ Package amsmath Warning: Foreign command \over;
 
 ...rest of part of LaTeX line number...
 
-(./testdoc.out.pyg [20]) (./testdoc.out.pyg) [21] [22]
+[15] (./testdoc.out.pyg) [16] (./testdoc.out.pyg) [17] [18]
 
 
 .
@@ -85428,7 +85268,6 @@ Package amsmath Warning: Foreign command \over;
 
 
 
-[23]
 
 
 
@@ -85447,18 +85286,19 @@ Package amsmath Warning: Foreign command \over;
 
 
 No file testdoc.bbl.
+[19]
 
 
 ...rest of part of LaTeX line number...
 
-[24]
+[20]
 
 
 ...rest of part of LaTeX line number...
 
-[25]
+[21]
 No file testdoc.ind.
-[26] (./testdoc.aux)
+[22] (./testdoc.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -85691,7 +85531,7 @@ f/fonts/type1/public/lm/lmss8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy1
 hare/texmf/fonts/type1/public/lm/lmtti10.pfb></usr/share/texlive/texmf-dist/fon
 ts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/font
 s/type1/urw/palatino/uplr8a.pfb>
-Output written on testdoc.pdf (26 pages, ).
+Output written on testdoc.pdf (22 pages, ).
 Transcript written on testdoc.log.
 + '[' 0 -ne 0 ']'
 + pdflatex -shell-escape testdoc
@@ -85914,19 +85754,19 @@ Writing index file testdoc.idx
 
 
  [1{/var/lib/texmf/fonts/map/pdftex/up
-dmap/pdftex.map}] (./testdoc.toc) [2] [3] [4] (./testdoc.loe) [5] [6]
-(./testdoc.tdo) [7] 
-(./testdoc.out.pyg) (./testdoc.out.pyg [8]) (./testdoc.out.pyg)
-(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg [9])
-(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) [10] [11]
-<../doc/src/manual/fig/wave1D.pdf, id=276, 586.83241pt x 442.29242pt>
+dmap/pdftex.map}] (./testdoc.toc) (./testdoc.loe [2]) (./testdoc.tdo) [3]
+
+(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg
+[5]) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg)
+(./testdoc.out.pyg [6]) [7]
+<../doc/src/manual/fig/wave1D.pdf, id=249, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
-[12 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=294, 586.8324pt x 442.2924pt>
+[8 <../doc/src/manual/fig/wave1D.pdf>]
+<../doc/src/manual/fig/wave1D.png, id=267, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=296, 578.16pt x 433.62pt>
-<use downloaded_figures/f_plot.png> [13] [14 <../doc/src/manual/fig/wave1D.png>
- <./downloaded_figures/f_plot.png>]
+<downloaded_figures/f_plot.png, id=269, 578.16pt x 433.62pt>
+<use downloaded_figures/f_plot.png> [9] [10 <../doc/src/manual/fig/wave1D.png> 
+<./downloaded_figures/f_plot.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -85964,19 +85804,19 @@ Underfull \hbox (badness 3291)
 
 
 
-[15]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=322, 586.8324pt x 442.292
+[11] [12]
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=299, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=323, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=300, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=324, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=301, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=325, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=302, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=326, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=303, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=327, 586.8324pt x 442.292
-4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png> [16]
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=304, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -85999,7 +85839,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1016.
+t line 991.
 
 
 
@@ -86019,7 +85859,7 @@ t line 1016.
 
 
 
-t line 1025.
+t line 1000.
 
 
 
@@ -86039,35 +85879,7 @@ t line 1025.
 
 
 
-t line 1029.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-.
+t line 1004.
 
 
 
@@ -86103,30 +85915,58 @@ t line 1029.
 
 
 
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
 .
 
 
 
 ...rest of part of LaTeX line number...
 
-[17 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
+
+
+.
+
+
+
+...rest of part of LaTeX line number...
+
+[13 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
 ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
 ../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/mov/wave_f
 rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 Overfull \hbox (5.03835pt too wide) 
 [][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
 %26+engineering/book/978-3-642-23098-1| 
-[18]
+[14]
 
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on .
 
-[19] (./testdoc.out.pyg [20]) (./testdoc.out.pyg) [21] [22] [23]
+[15] [16] (./testdoc.out.pyg) [17] (./testdoc.out.pyg) [18] [19]
 No file testdoc.bbl.
-[24] [25]
+[20] [21] [22]
 No file testdoc.ind.
-[26] (./testdoc.aux)
+[23] (./testdoc.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -86327,6 +86167,9 @@ downloaded_figures/f_plot.png
 
 LaTeX Warning: There were undefined references.
 
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
  )
 (see the transcript file for additional information){/usr/share/texmf/fonts/enc
 /dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/us
@@ -86354,7 +86197,7 @@ hare/texmf/fonts/type1/public/lm/lmtt9.pfb></usr/share/texmf/fonts/type1/public
 /lm/lmtti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symb
 ols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.p
 fb>
-Output written on testdoc.pdf (26 pages, ).
+Output written on testdoc.pdf (23 pages, ).
 Transcript written on testdoc.log.
 + makeindex testdoc
 This is makeindex, version 2.15 [TeX Live 2013] (kpathsea + Thai support).
@@ -86594,19 +86437,19 @@ Writing index file testdoc.idx
 
 
  [1{/var/lib/texmf/fonts/map/pdftex/up
-dmap/pdftex.map}] (./testdoc.toc) [2] [3] [4] (./testdoc.loe) [5] [6]
-(./testdoc.tdo) [7] 
-(./testdoc.out.pyg) (./testdoc.out.pyg [8]) (./testdoc.out.pyg)
-(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg [9])
-(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) [10] [11]
-<../doc/src/manual/fig/wave1D.pdf, id=276, 586.83241pt x 442.29242pt>
+dmap/pdftex.map}] (./testdoc.toc) (./testdoc.loe [2]) (./testdoc.tdo) [3]
+
+(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg
+[5]) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg)
+(./testdoc.out.pyg [6]) [7]
+<../doc/src/manual/fig/wave1D.pdf, id=249, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
-[12 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=294, 586.8324pt x 442.2924pt>
+[8 <../doc/src/manual/fig/wave1D.pdf>]
+<../doc/src/manual/fig/wave1D.png, id=267, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=296, 578.16pt x 433.62pt>
-<use downloaded_figures/f_plot.png> [13] [14 <../doc/src/manual/fig/wave1D.png>
- <./downloaded_figures/f_plot.png>]
+<downloaded_figures/f_plot.png, id=269, 578.16pt x 433.62pt>
+<use downloaded_figures/f_plot.png> [9] [10 <../doc/src/manual/fig/wave1D.png> 
+<./downloaded_figures/f_plot.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -86644,19 +86487,19 @@ Underfull \hbox (badness 3291)
 
 
 
-[15]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=322, 586.8324pt x 442.292
+[11] [12]
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=299, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=323, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=300, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=324, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=301, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=325, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=302, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=326, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=303, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=327, 586.8324pt x 442.292
-4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png> [16]
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=304, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -86679,7 +86522,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1016.
+t line 991.
 
 
 
@@ -86699,7 +86542,7 @@ t line 1016.
 
 
 
-t line 1025.
+t line 1000.
 
 
 
@@ -86719,35 +86562,7 @@ t line 1025.
 
 
 
-t line 1029.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-.
+t line 1004.
 
 
 
@@ -86783,31 +86598,59 @@ t line 1029.
 
 
 
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
 .
 
 
 
 ...rest of part of LaTeX line number...
 
-[17 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
+
+
+.
+
+
+
+...rest of part of LaTeX line number...
+
+[13 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
 ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
 ../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/mov/wave_f
 rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 Overfull \hbox (5.03835pt too wide) 
 [][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
 %26+engineering/book/978-3-642-23098-1| 
-[18]
+[14]
 
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on .
 
-[19] (./testdoc.out.pyg [20]) (./testdoc.out.pyg) [21] [22] [23] (./testdoc.bbl
- [24]) [25] [26] [27] (./testdoc.ind [28]
+[15] [16] (./testdoc.out.pyg) [17] (./testdoc.out.pyg) [18] [19] (./testdoc.bbl
+ [20] [21]) [22] [23] [24] (./testdoc.ind [25]
 Overfull \hbox (9.21497pt too wide) 
 []\T1/lmr/m/n/10 (-20) test \T1/lmtt/m/n/10 two \T1/lmr/m/n/10 (-20) (sep-a-rat
 e) \T1/lmtt/m/n/10 verbatim expressions \T1/lmr/m/n/10 (-20) which
-[29]) (./testdoc.aux)
+[26]) (./testdoc.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -87040,7 +86883,7 @@ hare/texmf/fonts/type1/public/lm/lmtt9.pfb></usr/share/texmf/fonts/type1/public
 /lm/lmtti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symb
 ols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.p
 fb>
-Output written on testdoc.pdf (29 pages, ).
+Output written on testdoc.pdf (26 pages, ).
 Transcript written on testdoc.log.
 + pdflatex -shell-escape testdoc
 This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
@@ -87262,19 +87105,19 @@ Writing index file testdoc.idx
 
 
  [1{/var/lib/texmf/fonts/map/pdftex/up
-dmap/pdftex.map}] (./testdoc.toc) [2] [3] [4] (./testdoc.loe) [5] [6]
-(./testdoc.tdo) [7] 
-(./testdoc.out.pyg) (./testdoc.out.pyg [8]) (./testdoc.out.pyg)
-(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg [9])
-(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) [10] [11]
-<../doc/src/manual/fig/wave1D.pdf, id=276, 586.83241pt x 442.29242pt>
+dmap/pdftex.map}] (./testdoc.toc) (./testdoc.loe [2]) (./testdoc.tdo) [3]
+
+(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg
+[5]) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg)
+(./testdoc.out.pyg [6]) [7]
+<../doc/src/manual/fig/wave1D.pdf, id=249, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
-[12 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=294, 586.8324pt x 442.2924pt>
+[8 <../doc/src/manual/fig/wave1D.pdf>]
+<../doc/src/manual/fig/wave1D.png, id=267, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=296, 578.16pt x 433.62pt>
-<use downloaded_figures/f_plot.png> [13] [14 <../doc/src/manual/fig/wave1D.png>
- <./downloaded_figures/f_plot.png>]
+<downloaded_figures/f_plot.png, id=269, 578.16pt x 433.62pt>
+<use downloaded_figures/f_plot.png> [9] [10 <../doc/src/manual/fig/wave1D.png> 
+<./downloaded_figures/f_plot.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -87312,19 +87155,19 @@ Underfull \hbox (badness 3291)
 
 
 
-[15]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=322, 586.8324pt x 442.292
+[11] [12]
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=299, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=323, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=300, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=324, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=301, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=325, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=302, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=326, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=303, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=327, 586.8324pt x 442.292
-4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png> [16]
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=304, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -87345,25 +87188,25 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
-[17 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
+[13 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
 ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
 ../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/mov/wave_f
 rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 Overfull \hbox (5.03835pt too wide) 
 [][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
 %26+engineering/book/978-3-642-23098-1| 
-[18]
+[14]
 
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on .
 
-[19] (./testdoc.out.pyg [20]) (./testdoc.out.pyg) [21] [22] [23] (./testdoc.bbl
- [24]) [25] [26] [27] (./testdoc.ind [28]
+[15] [16] (./testdoc.out.pyg) [17] (./testdoc.out.pyg) [18] [19] (./testdoc.bbl
+ [20] [21]) [22] [23] [24] (./testdoc.ind [25]
 Overfull \hbox (9.21497pt too wide) 
 []\T1/lmr/m/n/10 (-20) test \T1/lmtt/m/n/10 two \T1/lmr/m/n/10 (-20) (sep-a-rat
 e) \T1/lmtt/m/n/10 verbatim expressions \T1/lmr/m/n/10 (-20) which
-[29]) (./testdoc.aux)
+[26]) (./testdoc.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -87590,7 +87433,7 @@ hare/texmf/fonts/type1/public/lm/lmtt9.pfb></usr/share/texmf/fonts/type1/public
 /lm/lmtti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symb
 ols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.p
 fb>
-Output written on testdoc.pdf (29 pages, ).
+Output written on testdoc.pdf (26 pages, ).
 Transcript written on testdoc.log.
 + cp testdoc.tex testdoc.tex_ptex2tex
 + system doconce ptex2tex testdoc 'sys=begin{quote}begin{Verbatim}@end{Verbatim}end{quote}' pypro=ans:nt envir=minted
@@ -88406,6 +88249,7 @@ Courses:                            0
 Talks:                              0
 Posters:                            0
 Public Outreach:                    0
+Preprints:                          0
 Other Publications:                 1
 Total:                              21
 
@@ -88567,6 +88411,7 @@ slides written to slides1.html
 + '[' 0 -ne 0 ']'
 + cp slides1.html slides1_deck.html
 + /bin/ls -R deck.js
++ rm -f testdoc.aux
 + system doconce format pdflatex slides1 --latex_title_layout=beamer
 + doconce format pdflatex slides1 --latex_title_layout=beamer
 translating doconce text in slides1.do.txt to pdflatex
@@ -88635,6 +88480,7 @@ recommended styles are "perldoc"
 slides written to slides2.html
 + '[' 0 -ne 0 ']'
 + cp slides2.html slides2_reveal.html
++ rm -f '*.aux'
 + system doconce format pdflatex slides2 --latex_title_layout=beamer
 + doconce format pdflatex slides2 --latex_title_layout=beamer
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  slides2.do.txt > tmp_preprocess__slides2.do.txt
@@ -88696,6 +88542,7 @@ recommended styles are "perldoc"
 slides written to slides3.html
 + '[' 0 -ne 0 ']'
 + cp slides3.html slides3_reveal.html
++ rm -f '*.aux'
 + theme=red3
 + system doconce format pdflatex slides3 SLIDE_TYPE=beamer SLIDE_THEME=red3 --latex_title_layout=beamer
 + doconce format pdflatex slides3 SLIDE_TYPE=beamer SLIDE_THEME=red3 --latex_title_layout=beamer
@@ -88779,6 +88626,7 @@ Courses:                            0
 Talks:                              0
 Posters:                            0
 Public Outreach:                    0
+Preprints:                          0
 Other Publications:                 1
 Total:                              21
 
@@ -88801,6 +88649,7 @@ running mako on author1.do.txt to make tmp_mako__author1.do.txt
 translating doconce text in tmp_mako__author1.do.txt to plain
 output in author1.txt
 + '[' 0 -ne 0 ']'
++ rm -f '*.aux'
 + name=math_test
 + doconce format pdflatex math_test
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  math_test.do.txt > tmp_preprocess__math_test.do.txt
@@ -94202,6 +94051,7 @@ Courses:                            0
 Talks:                              0
 Posters:                            0
 Public Outreach:                    0
+Preprints:                          0
 Other Publications:                 3
 Total:                              8
 
