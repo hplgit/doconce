@@ -1,3 +1,5 @@
+* Find all docs with vagrant layout, fix template and html to make use of URLs
+  rather than local css dir, rm css dir
 * Nikola for publication of multi-format doconce documents
   (say for a course), with optional blog comments.
   URL: "http://getnikola.com/handbook.html".
@@ -11,6 +13,8 @@
   works in HTML only, otherwise typeset as paragraph with optional heading,
   and creates something on the side.
   Could have toc in as a pulldown navigation item in the top bar.
+  Use bootstrap as template, can have many, and if they don't need edit,
+  they can be bundled as admon figs.
 
 ===== From Google Doc to Doconce =====
 
