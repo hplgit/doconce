@@ -2776,24 +2776,25 @@ def doconce2format(filestr, format):
             header_old = '='*s
             header_new = '='*(s+2)
             print 'transforming sections: %s to %s...' % (s2name[s], s2name[s+2])
-            pattern = r'%s(.+?)%s' % (header_old, header_old)
-            replacement = r'%s\g<1>%s' % (header_new, header_new)
-            filestr = re.sub(pattern, replacement, filestr)
+            pattern = r'^ *%s +(.+?) +%s' % (header_old, header_old)
+            replacement = r'%s \g<1> %s' % (header_new, header_new)
+            filestr = re.sub(pattern, replacement, filestr, flags=re.MULTILINE)
         section_level_changed = True
     if option('sections_down'):
         for s in 5, 7, 9:
             header_old = '='*s
             header_new = '='*(s-2)
             print 'transforming sections: %s to %s...' % (s2name[s], s2name[s-2])
-            pattern = r'%s(.+?)%s' % (header_old, header_old)
-            replacement = r'%s\g<1>%s' % (header_new, header_new)
-            filestr = re.sub(pattern, replacement, filestr)
+            pattern = r'^ *%s +(.+?) +%s' % (header_old, header_old)
+            replacement = r'%s \g<1> %s' % (header_new, header_new)
+            filestr = re.sub(pattern, replacement, filestr, flags=re.MULTILINE)
         section_level_changed = True
 
     if section_level_changed:
         # Fix Exercise, Problem, Project, Example - they must be 5=
-        filestr = re.sub(r'^\s*=======\s*(\{?(Exercise|Problem|Project|Example)\}?):\s*([^ =-].+?)\s*=======', '===== \g<1>: \g<3> =====', filestr, flags=re.MULTILINE)
-        filestr = re.sub(r'^\s*===\s*(\{?(Exercise|Problem|Project|Example)\}?):\s*([^ =-].+?)\s*===', '===== \g<1>: \g<3> =====', filestr, flags=re.MULTILINE)
+        for s in 7, 3:
+            filestr = re.sub(r'^ *%s +(\{?(Exercise|Problem|Project|Example)\}?):\s*(.+?) +%s' % ('='*s, '='*s), '===== \g<1>: \g<3> =====', filestr, flags=re.MULTILINE)
+        debugpr('The file after changing the level of section headings:', filestr)
 
     # Remove linebreaks within paragraphs
     if option('oneline_paragraphs'):  # (does not yet work well)
