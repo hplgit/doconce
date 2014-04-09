@@ -9,17 +9,42 @@ from common import default_movie, plain_exercise, table_analysis, \
 from html import html_movie, html_table
 from misc import option
 
+def pandoc_title(m):
+    title = m.group('subst')
+    if option('strapdown'):
+        # title is in <title> tag in INTRO for the header of the HTML output
+        return ''
+    elif option('strict_markdown_output'):
+        return '# ' + title
+    elif option('multimarkdown_output'):
+        return 'Title: ' + title
+    else:
+        return '% ' + title
+
 def pandoc_author(authors_and_institutions, auth2index,
                  inst2index, index2inst, auth2email):
     # List authors on multiple lines
     authors = []
     for author, i, e in authors_and_institutions:
+        author = '**%s**' % author  # set in boldface
         if i is None:
             authors.append(author)
         else:
             authors.append(author + ' at ' + ' and '.join(i))
-    authors = '% ' + ';  '.join(authors) + '\n'
-    return authors
+
+    plain_text = '### Author'
+    if len(authors) > 1:
+        plain_text += 's'
+    plain_text += '\n\n' + '\n\n'.join(authors) + '\n\n'
+
+    if option('strapdown'):
+        return plain_text
+    elif option('strict_markdown_output'):
+        return plain_text
+    elif option('multimarkdown_output'):
+        return 'Author: ' + ', '.join(authors) + '\n'
+    else:
+        return '% ' + ';  '.join(authors) + '\n'
 
 
 def pandoc_code(filestr, code_blocks, code_block_types,
@@ -50,49 +75,55 @@ def pandoc_code(filestr, code_blocks, code_block_types,
     # Note: HTML output from pandoc requires $$ while latex cannot have
     # them if begin-end inside ($$\begin{...} \end{...}$$)
 
+    if option('strict_markdown_output'):
+        # Code blocks are just indented
+        for i in range(len(code_blocks)):
+            code_blocks[i] = indent_lines(code_blocks[i], format)
+
     filestr = insert_code_and_tex(filestr, code_blocks, tex_blocks, format)
 
-    # Mapping of envirs to correct Pandoc verbatim environment
-    defs = dict(cod='Python', pycod='Python', cppcod='Cpp',
-                fcod='Fortran', ccod='C',
-                pro='Python', pypro='Python', cpppro='Cpp',
-                fpro='Fortran', cpro='C',
-                rbcod='Ruby', rbpro='Ruby',
-                plcod='Perl', plpro='Perl',
-                # sys, dat, csv, txt: no support for pure text,
-                # just use a plain text block
-                #sys='Bash',
-                pyoptpro='Python', pyscpro='Python')
-        # (the "python" typesetting is neutral if the text
-        # does not parse as python)
+    if not option('strict_markdown_output'):
+        # Mapping of envirs to correct Pandoc verbatim environment
+        defs = dict(cod='Python', pycod='Python', cppcod='Cpp',
+                    fcod='Fortran', ccod='C',
+                    pro='Python', pypro='Python', cpppro='Cpp',
+                    fpro='Fortran', cpro='C',
+                    rbcod='Ruby', rbpro='Ruby',
+                    plcod='Perl', plpro='Perl',
+                    # sys, dat, csv, txt: no support for pure text,
+                    # just use a plain text block
+                    #sys='Bash',
+                    pyoptpro='Python', pyscpro='Python')
+            # (the "python" typesetting is neutral if the text
+            # does not parse as python)
 
-    github_md = option('github_md')
+        github_md = option('github_md')
 
-    # Code blocks apply the ~~~~~ delimiter, with blank lines before
-    # and after (alternative: indent code 4 spaces - not preferred)
-    for key in defs:
-        language = defs[key]
+        # Code blocks apply the ~~~~~ delimiter, with blank lines before
+        # and after
+        for key in defs:
+            language = defs[key]
+            if github_md:
+                replacement = '\n```%s\n' % defs[key]
+            else:
+                # pandoc-extended Markdown
+                replacement = '\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.%s}\n' % defs[key]
+                #replacement = '\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.%s ,numberLines}\n' % defs[key]  # enable line numbering
+            filestr = re.sub(r'^!bc\s+%s\s*\n' % key,
+                             replacement, filestr, flags=re.MULTILINE)
+
+        # any !bc with/without argument becomes an unspecified block
         if github_md:
-            replacement = '\n```%s\n' % defs[key]
+            replacement = '\n```'
         else:
-            # pandoc-extended Markdown
-            replacement = '\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.%s}\n' % defs[key]
-            #replacement = '\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.%s ,numberLines}\n' % defs[key]  # enable line numbering
-        filestr = re.sub(r'^!bc\s+%s\s*\n' % key,
-                         replacement, filestr, flags=re.MULTILINE)
+            replacement = '\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
+        filestr = re.sub(r'^!bc.*$', replacement, filestr, flags=re.MULTILINE)
 
-    # any !bc with/without argument becomes an unspecified block
-    if github_md:
-        replacement = '\n```'
-    else:
-        replacement = '\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
-    filestr = re.sub(r'^!bc.*$', replacement, filestr, flags=re.MULTILINE)
-
-    if github_md:
-        replacement = '\n```\n'
-    else:
-        replacement = '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n'
-    filestr = re.sub(r'^!ec\s*$', replacement, filestr, flags=re.MULTILINE)
+        if github_md:
+            replacement = '\n```\n'
+        else:
+            replacement = '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n'
+        filestr = re.sub(r'^!ec\s*$', replacement, filestr, flags=re.MULTILINE)
 
     filestr = re.sub(r'^!bt *\n', '', filestr, flags=re.MULTILINE)
     filestr = re.sub(r'^!et *\n', '', filestr, flags=re.MULTILINE)
@@ -295,7 +326,7 @@ def define(FILENAME_EXTENSION,
         'plainURL':  r'<\g<url>>',
         'colortext':     r'<font color="\g<color>">\g<text></font>',  # HTML
         # "Reference links" in pandoc are not yet supported
-        'title':     r'% \g<subst>',
+        'title':     pandoc_title,
         'author':    pandoc_author,
         'date':      '% \g<subst>\n',
         'chapter':       lambda m: '# '    + m.group('subst'),
@@ -336,4 +367,29 @@ def define(FILENAME_EXTENSION,
     TOC['pandoc'] = lambda s: '# Table of contents: Run pandoc with --toc option'
     FIGURE_EXT['pandoc'] = ('.png', '.gif', '.jpg', '.jpeg', '.tif', '.tiff', '.pdf')
 
+    # Wrap markdown output in strapdown HTML code for quick auto rendering
+    # with Bootstrap themes?
+    if option('strapdown'):
+        # Themes
+        boostrap_bootwatch_theme = option('bootwatch_theme=', 'spacelab')
+        # Grab title
+        title = ''
+        if 'TITLE:' in filestr:
+            for line in filestr.splitlines():
+                if line.startswith('TITLE:'):
+                    title = line.split('TITLE:')[-1].strip()
+                    break
+        INTRO['pandoc'] = """<!DOCTYPE html>
+<html>
+<title>%(title)s</title>
+
+<xmp theme="%(boostrap_bootwatch_theme)s" style="display:none;">
+# Markdown text goes in here
+""" % vars()
+        OUTRO['pandoc'] = """
+</xmp>
+
+<script src="http://strapdownjs.com/v/0.2/strapdown.js"></script>
+</html>
+"""
 
