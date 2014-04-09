@@ -249,7 +249,7 @@ be replaced by the relevant URL. This is usually done by using the
 as prefix to all figure names (a similar `--movie_prefix=` option exists as
 well).
 
-Changing figure names in a blog post can also be done "manually" by
+Changing figure names in a blog post can also be done ``manually'' by
 some editing code in the script that compiles the Doconce document
 to HTML format:
 
@@ -291,20 +291,26 @@ for mathematics in the text, though.
 ===== Pandoc and Markdown =====
 
 Output in Pandoc's extended Markdown format results from
+
 !bc sys
 Terminal> doconce format pandoc mydoc
 !ec
-The name of the output file is `mydoc.mkd`.
+The name of the output file is `mydoc.md`.
 From this format one can go to numerous other formats:
+
 !bc sys
-Terminal> pandoc -R -t mediawiki -o mydoc.mwk --toc mydoc.mkd
+Terminal> pandoc -R -t mediawiki -o mydoc.mwk --toc mydoc.md
 !ec
 Pandoc supports `latex`, `html`, `odt` (OpenOffice), `docx` (Microsoft
 Word), `rtf`, `texinfo`, to mention some. The `-R` option makes
 Pandoc pass raw HTML or LaTeX to the output format instead of ignoring it,
 while the `--toc` option generates a table of contents.
 See the "Pandoc documentation": "http://johnmacfarlane.net/pandoc/README.html"
-for the many features of the `pandoc` program. The HTML output from
+for the many features of the `pandoc` program.
+
+=== Markdown to HTML conversion ===
+
+The HTML output from
 `pandoc` needs adjustments to provide full support for MathJax LaTeX
 mathematics, and for this purpose one should use `doconce md2html`:
 
@@ -313,6 +319,8 @@ Terminal> doconce format pandoc mydoc
 Terminal> doconce m2html mydoc
 !ec
 The result `mydoc.html` can be viewed in a browser.
+
+=== Using Pandoc to go from LaTeX to MS Word or HTML ===
 
 Pandoc is useful to go from LaTeX mathematics to, e.g., HTML or MS
 Word.  There are two ways (experiment to find the best one for your
@@ -337,15 +345,11 @@ replace` and `doconce subst` edits might be needed on the `.mkd` or
 to MS Word.  Also when going to reStructuredText using Pandoc, it can
 be advantageous to go via LaTeX.
 
-Here is an example where we take a Doconce snippet (without title, author,
-and date), maybe with some unnumbered equations, and quickly generate
-HTML with mathematics displayed my MathJax:
-!bc sys
-Terminal> doconce format pandoc mydoc
-Terminal> pandoc -t html -o mydoc.html -s --mathjax mydoc.mkd
-!ec
-The `-s` option adds a proper header and footer to the `mydoc.html` file.
-This recipe is a quick way of makeing HTML notes with (some) mathematics.
+=== Strict Markdown ===
+
+The option `--strict_markdown_output` generates plain or strict
+Markdown without the many extension that Pandoc accepts in Markdown
+syntax.
 
 === GitHub-flavored Markdown ===
 
@@ -404,6 +408,29 @@ the GitHub issue tracker. Turning on Preview shows the typesetting of
 the quote, compute code, inline verbatim, headings, the task list, and
 the table.
 
+=== MultiMarkdown ===
+
+The option `--multimarkdown_output` generates the MultiMarkdown
+version of Markdown (as opposed to Pandoc-extended Markdown (default),
+strict Markdown, or GitHub-flavored Markdown).
+
+
+=== Strapdown rendering of Markdown text ===
+
+"Strapdown": "http://strapdownjs.com" is a tool that can render Markdown
+text nicely in a web browser by just inserting an HTML header and
+footer in the Markdown file and load the file into a browser.
+The option `--strapdown` outputs the relevant header and footer.
+The output file must be renamed such that it gets the extension `.html`:
+
+!bc sys
+Terminal> doconce format pandoc mydoc --strict_markdown_output \
+          --strapdown --bootstrap_bootwatch_theme=slate
+Terminal> mv mydoc.md mydoc.html
+!ec
+The `--bootstrap_bootwatch_theme=theme` option is used to choose
+a "Bootswatch": "http://bootswatch.com/" theme whose names are
+found on the "Strapdown page": "http://strapdownjs.com".
 
 ===== LaTeX =====
 
