@@ -236,9 +236,10 @@ a "scientific report": "http://doconce-report-demo.blogspot.no/"
 for demonstrations of blog posts at `blogspot.no`.
 
 !bwarning
-In the readers' comments after the blog post one cannot paste raw HTML
-code with MathJax
-scripts so there is no support for mathematics in the discussion forum.
+The comment field after the blog post does not recognize MathJax (LaTeX)
+mathematics or code with indentation. However, using a MathJax
+bookmarklet, e.g., at URL: "http://checkmyworking.com/misc/mathjax-bookmarklet/", one can get the mathematics properly rendered. The comment fields are
+not suitable for computer code, though, as HTML tags are not allowed.
 !ewarning
 
 !bnotice
