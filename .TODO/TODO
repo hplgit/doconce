@@ -4,17 +4,25 @@
   (say for a course), with optional blog comments.
   URL: "http://getnikola.com/handbook.html".
   Possible to allow for MathJax and pretty code in blog parts?
-
+* "MultiMarkdown": "http://fletcher.github.io/MultiMarkdown-4/MMD_Users_Guide.pdf" can relatively easily be supported as part of pandoc
+* Change pandoc to markdown and make strict markdown output unless --pandoc or --multimarkdown flags are given, provide an error message for doconce format pandoc
 * Collapsing regions in HTML (e.g., solutions in exercises):
   Use Bootstrap theme and see "example": "http://jsfiddle.net/Sherbrow/68RXP/".
-  Could also be !bexpand-!eexpand.
+  Could also be !bexpand-!eexpand (not !bcollapse since it interferes with !bc)
+* Consistency check in doconce.py: no environment name can be part of another environment name
+for envir1 in envirs:
+    for envir2 in envirs:
+        if envir1 != envir2 and envir1.startswith(envir2):
+            print '*** BUG in doconce: envir "%s" cannot start with the text of envir "%s"' % (envir1, envir2)
 
-* `--html_style=Bootstrap`: also allow for !bsidebar-!esidebar, which
+* `--html_style=Bootstrap`: use inline/default template.
+  also allow for !bsidebar-!esidebar, which
   works in HTML only, otherwise typeset as paragraph with optional heading,
   and creates something on the side.
   Could have toc in as a pulldown navigation item in the top bar.
   Use bootstrap as template, can have many, and if they don't need edit,
   they can be bundled as admon figs.
+* Finish translation to XML
 
 ===== From Google Doc to Doconce =====
 
