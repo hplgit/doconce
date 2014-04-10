@@ -1,117 +1,15 @@
-%%% style file by Andreas Klockner, Brown University, originally
-%%% this file is named kloecknislides.sty
-
-\setcounter{secnumdepth}{3}
-\setcounter{tocdepth}{3}
-\usepackage{amsmath}
-\usepackage{color}
-\usepackage{amssymb}
-\usepackage{esint}
-\usepackage{comment}
-\usepackage{listings}
-\usepackage{stmaryrd}
-\usepackage{wasysym}
-
-\definecolor{green}{RGB}{0, 180, 0}
-\definecolor{red}{RGB}{180, 0, 0}
-\colorlet{grellow}{green!50!yellow}
-\colorlet{codeback}{gray!20}
-
-\usepackage{multimedia}
+\mode<presentation>
+\definecolor{Blue}{rgb}{0.17188,0.28906,0.56250}      % Logg blue
+\usefonttheme[onlysmall]{structurebold}
+\usecolortheme[rgb={0.17188,0.28906,0.56250}]{structure}
+\usecolortheme{dolphin}
+\setbeamertemplate{headline}[default]
+\setbeamertemplate{items}[]
+\setbeamerfont{title}{series=\bfseries}
+\setbeamerfont{frametitle}{series=\bfseries}
 
 \usepackage{tikz}
-\usetikzlibrary{calc}
-\usetikzlibrary{positioning}
-\usetikzlibrary{fadings}
-\usetikzlibrary{chains}
-\usetikzlibrary{scopes}
-\usetikzlibrary{shadows}
-\usetikzlibrary{snakes}
-\usetikzlibrary{shapes.misc}
-\usetikzlibrary{shapes.symbols}
-\usetikzlibrary{fit}
-\usetikzlibrary{shapes.arrows}
-\usetikzlibrary{shapes.geometric}
-\usetikzlibrary{shapes.callouts}
+\usetikzlibrary{arrows,shapes,backgrounds,decorations,mindmap}
 
-\pgfdeclarelayer{background}
-\pgfdeclarelayer{foreground}
-\pgfsetlayers{background,main,foreground}
-
-\tikzstyle{every picture}+=[remember picture]
-
-\def\allimgcredits{}
-\makeatletter
-\def\addimgcredit#1{\g@addto@macro\allimgcredits{\item #1}}
-\makeatother
-\def\imagecreditslide{
-  \begin{frame}[shrink,label=image-credits]{Image Credits}
-    \begin{itemize}
-      \allimgcredits
-    \end{itemize}
-  \end{frame}
-}
-
-\def\gatheredappendix{}
-\makeatletter
-\long\def\addtoappendix#1{
-  \g@addto@macro\gatheredappendix{#1}
-}
-\makeatother
-
-\newcommand{\cc}{\raisebox{-0.75ex}{\includegraphics[height=3ex]{cc.pdf}}}
-
-\newcommand{\D}{\mathsf{D}}
-\newcommand{\mathd}{\,\mathsf{d}}
-
-\newcommand{\avg}[1]{\{#1\}}
-\newcommand{\jump}[1]{\left\llbracket#1\right\rrbracket}
-
-\newcommand{\questionframe}[1]{
-  \begin{frame}{Questions?}
-    \begin{center}
-    \textbf{\Huge ?}
-    \par#1
-    \end{center}
-  \end{frame}
-}
-
-\lstset{
-  %language=Python,
-  %alsolanguage=C,
-  showstringspaces=false,
-  basicstyle=\small,
-  stringstyle=\color{blue},
-  columns=flexible,
-  emph={[2]pycuda,numpy,cuda,cl},
-  emphstyle={[2]\color{red}},
-  backgroundcolor=\color{codeback},
-  frame=single,
-  framerule=0pt,
-  framesep=1.5pt,
-  rangebeginprefix=//\ ,
-  rangeendprefix=//\ ,
-  includerangemarker=false,
-  }
-
-\pgfdeclareimage[height=0.8cm]{brown-logo}{brown-logo.pdf}
-\def\mylogotext{\pgfuseimage{brown-logo}\hspace*{0.3cm}}
-\newcommand{\logoenable}{\logo{\mylogotext}}
-\newcommand{\logodisable}{ \logo{} }
-\newenvironment{nologo}{\logodisable}{\logoenable}
-
-\newcommand{\symball}[2]{
-  \begin{tikzpicture}[baseline=-0.7ex]
-    \shadedraw [shading=ball,ball color=#1,use as bounding box] 
-      circle (1ex) node at (0.7ex,0) [minimum width=0.7ex] {};
-
-    \node [text=white,font=\bfseries] {#2};
-  \end{tikzpicture}}
-\newcommand{\plusball}{\symball{green}{{\small +}}}
-\newcommand{\okball}{\symball{orange}{o}}
-\newcommand{\minusball}{\symball{red}{-}}
-
-\let\epsilon=\varepsilon
-\let\phi=\varphi
-
-\newcommand{\subitem}[1]{\begin{itemize}\item #1 \end{itemize}}
+\mode
+<all>

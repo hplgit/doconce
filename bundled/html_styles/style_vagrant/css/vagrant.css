@@ -89,7 +89,7 @@ ul.nav.list > li {
 .alert-notice {
   color: #555;
   background-color: whiteSmoke;
-  background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_notice.png);
+  background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png);
   background-position: 10px 10px;
   background-repeat: no-repeat;
   background-size: 38px;

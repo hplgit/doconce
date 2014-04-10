@@ -203,8 +203,6 @@ Somewhat intelligent, but may give unwanted edits. Use with great care!"""),
      'Make HTML output for wordpress.com pages.'),
     ('--tables2csv',
      'Write each table to a CSV file table_X.csv, where X is the table number.'),
-    ('--github_md',
-     'Turn on github-flavored-markdown dialect of the pandoc translator'),
     ('--sections_up',
      'Upgrade all sections: sections to chapters, subsections to sections, etc.'),
     ('--sections_down',
@@ -229,6 +227,13 @@ Somewhat intelligent, but may give unwanted edits. Use with great care!"""),
      'Allow Markdown (and some Extended Markdown) syntax as input.'),
     ('--md2do_output=',
      'Dump to file the Doconce code arising from converting from Markdown. Default value is None (no dump). Any filename can be specified: --md2do_output=myfile.do.txt'),
+    ('--github_md',
+     'Turn on github-flavored-markdown dialect of the pandoc translator'),
+    ('--strapdown',
+     'Wrap Markdown output in HTML header/footer such that the output file (renamed as .html) can automatically be rendered as an HTML via strapdownjs.com technology. Combine with --github_md for richer output. Styles are set with --bootwatch_theme=cyborg (for instance).'),
+    ('--bootwatch_theme=', 'Boostrap themes from bootwatch.com. See http://strapdownjs.com/ for names. Default: spacelab.'),
+    ('--strict_markdown_output', 'Ensure strict/basic Markdown as output.'),
+    ('--multimarkdown_output', 'Allow MultiMarkdown as output.'),
     ]
 
 _legal_command_line_options = \
@@ -4043,14 +4048,14 @@ def slides_beamer():
 
 
 def generate_beamer_slides(header, parts, footer, basename, filename):
-    # Styles: red/blue_plain/shadow, kenynote_gradient/vintage
+    # Styles: red/blue_plain/shadow, dark, dark_gradient, vintage
     header = ''.join(header)
     theme = option('beamer_slide_theme=', default='default')
     if theme != 'default':
         beamerstyle = 'beamertheme' + theme
         packages = [beamerstyle]
-        if theme == 'keynote_vintage':
-            packages.append('keynote_vintage.png')
+        if theme == 'vintage':
+            packages.append('vintage_background.png')
         copy_latex_packages(packages)
     handout = '[handout]' if option('handout') else ''
 
