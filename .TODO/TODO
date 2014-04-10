@@ -3,14 +3,19 @@
   URL: "http://getnikola.com/handbook.html".
   Possible to allow for MathJax and pretty code in blog parts?
 
+* `--html_style=Bootstrap`:
+  * Do something very plain first to get started
+  * Replace navigation buttons in split_html with those of Bootstrap
+  * Add !bslidecell possibility for mapping to grid?
+  * allow for !bsidebar-!esidebar, which
+    works in HTML only, otherwise typeset as paragraph with optional heading,
+    and creates something on the side.
+  * Could have toc in as a pulldown navigation item in the top bar.
+
 * Collapsing regions in HTML (e.g., solutions in exercises):
   Use Bootstrap theme and see "example": "http://jsfiddle.net/Sherbrow/68RXP/".
   Could also be !bexpand-!eexpand.
 
-* `--html_style=Bootstrap`: also allow for !bsidebar-!esidebar, which
-  works in HTML only, otherwise typeset as paragraph with optional heading,
-  and creates something on the side.
-  Could have toc in as a pulldown navigation item in the top bar.
 
 ===== From Google Doc to Doconce =====
 
