@@ -556,9 +556,9 @@ MathJax.Hub.Config({
         # Set template_vagrant.html as template
         if not template:
             print """
-*** error: --html_style=vagrant requires
-    cp -r path/to/doconce-source-root/bundled/html_styles/style_vagrant/* .
-    # edit template_vargrant.html to template_mystyle.html
+*** error: --html_style=vagrant requires a template; copy a template
+    cp path/to/doconce-source-root/bundled/html_styles/style_vagrant/template_vagrant.html .
+    and edit as you like, then rerun with
     --html_template=template_mystyle.html
 """
             _abort()
@@ -583,14 +583,13 @@ MathJax.Hub.Config({
             m = re.search(pattern, filestr)
             if m:
                 title = m.group(1).strip()
-                filestr = re.sub(pattern, r'<h1>\g<1></h1>', filestr)
-        authors = '<!-- author(s):' in filestr
 
+        authors = '<!-- author(s):' in filestr
         if authors:
             print """\
 *** warning: AUTHOR may look strange with a template -
              it is recommended to comment out all authors: #AUTHOR.
-             Better to hardcode authors in a footer in the template."""
+             Usually better to hardcode authors in a footer in the template."""
 
         # Extract title
         if title == '':
@@ -683,6 +682,13 @@ MathJax.Hub.Config({
 """, filestr)
         # Fix tables
         filestr = re.sub(r'<table.+?>', '<table class="table table-striped table-hover ">', filestr)
+        # Insert toc
+        if '%(table_of_contents)s' in filestr:
+            filestr = filestr % {'table_of_contents': toc2html()}
+        # Block admon goes to jumbotron
+        filestr = filestr.replace(
+            '<div class="alert alert-block alert-block alert-text-normal"><b></b>',
+            '<div class="jumbotron">')
 
 
     if MATH_TYPESETTING == 'WordPress':
@@ -754,6 +760,8 @@ def html_footnotes(filestr, format, pattern_def, pattern_footnote):
 
     footnotes = re.findall(pattern_def, filestr, flags=re.MULTILINE|re.DOTALL)
     names = [name for name, footnote, dummy in footnotes]
+    footnotes = {name: text for name, text, dummy in footnotes}
+
     name2index = {names[i]: i+1 for i in range(len(names))}
 
     def subst_def(m):
@@ -767,9 +775,19 @@ def html_footnotes(filestr, format, pattern_def, pattern_footnote):
                      flags=re.MULTILINE|re.DOTALL)
 
     def subst_footnote(m):
-        i = name2index[m.group('name')]
         name = m.group('name').strip()
-        return r' [<a name="link_footnote_%s"><a><a href="#def_footnote_%s">%s</a>]' % (name2index[name], name2index[name], i)
+        if name in name2index:
+            i = name2index[m.group('name')]
+        else:
+            print '*** error: found footnote with name "%s", but this one is not defined' % name
+            _abort()
+        if option('html_style=', '')[:5] in ('boots', 'vagra'):
+            # Use a tooltip construction so the footnote appears when hovering over
+            text = footnotes[name].strip()
+            html = ' <button type="button" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="%s"><a name="link_footnote_%s"><a><a href="#def_footnote_%s">%s</a></button>' % (text, i, i, i)
+        else:
+            html = r' [<a name="link_footnote_%s"><a><a href="#def_footnote_%s">%s</a>]' % (i, i, i)
+        return html
 
     filestr = re.sub(pattern_footnote, subst_footnote, filestr)
     return filestr
@@ -1228,7 +1246,7 @@ def html_%(_admon)s(block, format, title='%(_Admon)s', text_size='normal'):
 """ %% (text_size, title, block)
         return janko
 
-    elif html_admon_style in ('gray', 'yellow', 'apricot') or option('html_style=', '')[:8] in ('vagrant', 'botswat'):
+    elif html_admon_style in ('gray', 'yellow', 'apricot') or option('html_style=', '')[:5] in ('vagra', 'boots'):
         if not keep_pygm_bg:
             block = re.sub(pygments_pattern, r'"background: %%s">' %%
                            admon_css_vars[html_admon_style]['background'], block)
@@ -1393,6 +1411,8 @@ def define(FILENAME_EXTENSION,
         css = css_blueish2
     elif html_style == 'bloodish':
         css = css_bloodish
+    elif html_style == 'plain':
+        css = ''
     else:
         css = css_blueish # default
 
@@ -1515,15 +1535,20 @@ def define(FILENAME_EXTENSION,
                 style += '<link rel="stylesheet" href="%s">\n' % css_filename
                 add_to_file_collection(filename)
     if html_style.startswith('boots'):
-        if html_style == 'bootswatch' or html_style == 'bootstrap'::
+        if html_style == 'bootswatch' or html_style == 'bootstrap':
             bootswatch_style = 'cosmo'  # default
         else:
             bootswatch_style = html_style.split('_')[1]
 
         style = """
 <!-- Style: Bootstrap Bootswatch theme %s -->
+<!-- Note that if you load this file as a local file (file:///...)
+you must have http://netdna... On a web site you can have just //netdna... -->
+<!--
 <link href="//netdna.bootstrapcdn.com/bootswatch/3.1.1/%s/bootstrap.min.css" rel="stylesheet">
-"""% (bootswatch_style.capitalize(), bootswatch_style)
+-->
+<link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/%s/bootstrap.min.css" rel="stylesheet">
+"""% (bootswatch_style.capitalize(), bootswatch_style, bootswatch_style)
         bootstrap_title_bar = ''
 
     meta_tags = """\

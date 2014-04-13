@@ -39,14 +39,14 @@ def _abort():
 
 def internet_access():
     """Return True if internet is on, else False."""
-    import urllib2
+    import urllib2, socket
     try:
         # Check google.com with numerical IP-address (which avoids
         # DNS loopup) and set timeout to 1 sec so this does not
         # take much time (google.com should respond quickly)
-       response=urllib2.urlopen('http://74.125.228.100', timeout=1)
+       response = urllib2.urlopen('http://74.125.228.100', timeout=1)
        return True
-    except urllib2.URLError as err:
+    except (urllib2.URLError, socket.timeout) as err:
         pass
     return False
 
