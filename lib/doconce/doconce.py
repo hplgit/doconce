@@ -2169,7 +2169,9 @@ def handle_index_and_bib(filestr, format, has_title):
     pattern_def = '^ *\[\^(?P<name>.+?)\]:(?P<text>.+?)(?=(\n\n|\[\^|\Z))'
     #footnotes = {name: footnote for name, footnote, lookahead in
     #             re.findall(pattern_def, filestr, flags=re.MULTILINE|re.DOTALL)}
-    pattern_footnote = r'(?P<footnote> *\[\^(?P<name>.+?)\](?=[^:]))'
+    #pattern_footnote = r'(?P<footnote> *\[\^(?P<name>.+?)\](?=([^:]))'
+    # Footnote pattern has a word prior to the footnote [^name]
+    pattern_footnote = r'(?<=\w)(?P<footnote> *\[\^(?P<name>.+?)\])'
     # Keep footnotes for pandoc, plain text
     # Make a simple transformation for rst, sphinx
     # Transform for latex: remove definition, insert \footnote{...}
