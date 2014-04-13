@@ -2255,11 +2255,13 @@ def doconce_html_split(header, parts, footer, basename, filename):
     import html
     # Check if we use a vagrant template, because that leads to
     # different navigation etc.
-    vagrant = 'builds on the Twitter Bootstrap style' in '\n'.join(header)
+    header_str = '\n'.join(header)
+    vagrant = 'builds on the Twitter Bootstrap style' in header_str
+    bootstrap = '<!-- Boostrap Bootswatch' in header_str
 
-    if vagrant:
+    if vagrant or bootstrap:
         local_navigation_pics = False    # navigation is in the template
-        vagrant_navigation_passive = """\
+        bootstrap_navigation_passive = """\
 <!-- Navigation buttons at the bottom:
      Doconce will automatically fill in the right URL in these
      buttons when doconce html_split is run. Otherwise they are empty.
@@ -2273,18 +2275,18 @@ def doconce_html_split(header, parts, footer, basename, filename):
 </ul>
 -->
 """
-        vagrant_navigation_active = """\
+        bootstrap_navigation_active = """\
 <ul class="pager">
 %s
 %s
 </ul>
 """
-        vagrant_navigation_prev = """\
+        bootstrap_navigation_prev = """\
   <li class="previous">
     <a href="%s">&larr; %s</a>
   </li>
 """
-        vagrant_navigation_next = """\
+        bootstrap_navigation_next = """\
   <li class="next">
     <a href="%s">%s &rarr;</a>
   </li>
@@ -2442,7 +2444,7 @@ def doconce_html_split(header, parts, footer, basename, filename):
         lines.append('<a name="part%04d"></a>\n' % pn)
 
         # Decoration line?
-        if header_part_line and not vagrant:
+        if header_part_line and not (vagrant or bootstrap):
             if local_navigation_pics:
                 header_part_line_filename = html_imagefile(header_part_line)
             else:
@@ -2456,14 +2458,14 @@ def doconce_html_split(header, parts, footer, basename, filename):
         next_part_filename = _part_filename % (basename, pn+1) + '.html'
         generated_files.append(part_filename)
 
-        if vagrant:
+        if vagrant or bootstrap:
             # Make navigation arrows
             prev_ = next_ = ''
             if pn > 0:
-               prev_ = vagrant_navigation_prev % (prev_part_filename, "Prev")
+               prev_ = bootstrap_navigation_prev % (prev_part_filename, "Prev")
             if pn < len(parts)-1:
-               next_ = vagrant_navigation_next % (next_part_filename, "Next")
-            buttons = vagrant_navigation_active % (prev_, next_)
+               next_ = bootstrap_navigation_next % (next_part_filename, "Next")
+            buttons = bootstrap_navigation_active % (prev_, next_)
         else:
             # Simple navigation buttons at the top and bottom of the page
             lines.append('<!-- begin top navigation -->') # for easy removal
@@ -2484,9 +2486,9 @@ def doconce_html_split(header, parts, footer, basename, filename):
 
         # Navigation in the bottom of the page
         lines.append('<p>\n')
-        if vagrant:
+        if vagrant or bootstrap:
             footer_text = ''.join(footer).replace(
-                vagrant_navigation_passive, buttons)
+                bootstrap_navigation_passive, buttons)
             lines += footer_text.splitlines(True)
         else:
             lines.append('<!-- begin bottom navigation -->')

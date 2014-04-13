@@ -248,6 +248,17 @@ css_bloodish = """\
 # too small margin bottom: h1 { font-size: 1.8em; color: #1e36ce; margin-bottom: 3px; }
 
 
+def toc2html():
+    global tocinfo  # computed elsewhere
+    level_min = tocinfo['highest level']
+    toc_html = ''
+    for title, level, label, href in tocinfo['sections']:
+        nspaces = 1
+        indent = '&nbsp; '*(nspaces*(level - level_min))
+        toc_html += '     <!-- navigation toc: "%s" --> <li> %s <a href="#%s">%s</a>\n' % (title, indent, href, title)
+    return toc_html
+
+
 def html_code(filestr, code_blocks, code_block_types,
               tex_blocks, format):
     """Replace code and LaTeX blocks by html environments."""
@@ -536,7 +547,7 @@ MathJax.Hub.Config({
             # toc before the <body> tag
             filestr = filestr.replace('<body>\n', toc + '<body>\n')
         else:
-            # tocinfo to the beginning
+            # Insert tocinfo at the beginning
             filestr = toc + filestr
 
     # Add header from external template
@@ -606,13 +617,8 @@ MathJax.Hub.Config({
 
         # Make toc for navigation
         toc_html = ''
-        if option('html_style=') == 'vagrant':
-            level_min = tocinfo['highest level']
-            toc_html = ''
-            for title, level, label, href in tocinfo['sections']:
-                nspaces = 1
-                indent = '&nbsp; '*(nspaces*(level - level_min))
-                toc_html += '     <!-- vagrant nav toc: "%s" --> <li> %s <a href="#%s">%s</a>\n' % (title, indent, href, title)
+        if option('html_style=') in ('vagrant', 'bootstrap'):
+            toc_html = toc2html()
         # toc_html lacks formatting, run some basic formatting here
         tags = 'emphasize', 'bold', 'math', 'verbatim', 'colortext'
         # drop URLs in headings?
@@ -665,6 +671,19 @@ MathJax.Hub.Config({
             print '*** warning: template contains date (%(date)s)'
             print '    but no date is specified in the document'
         filestr = template % variables
+
+    html_style = option('html_style=', '')
+    if html_style.startswith('boots'):
+        # Change chapter headings to page
+        filestr = re.sub(r'<h1>(.+?)</h1> <!-- chapter heading -->',
+                         """
+<div class="page-header">
+  <h1>\g<1></h1>
+</div>
+""", filestr)
+        # Fix tables
+        filestr = re.sub(r'<table.+?>', '<table class="table table-striped table-hover ">', filestr)
+
 
     if MATH_TYPESETTING == 'WordPress':
         # Remove all comments for wordpress.com html
@@ -776,18 +795,24 @@ def html_table(table):
         else:
             headline = False
 
+        if headline and not skip_headline:
+            s += '<thead>\n'
         s += '<tr>'
         for column, w, ha, ca in \
                 zip(row, column_width, heading_spec, column_spec):
             if headline:
                 if not skip_headline:
-                    s += '<td align="%s"><b> %s </b></td> ' % \
+                    s += '<th align="%s">%s</th> ' % \
                          (a2html[ha], column.center(w))
             else:
                 s += '<td align="%s">   %s    </td> ' % \
                      (a2html[ca], column.ljust(w))
         s += '</tr>\n'
-    s += '</table>\n'
+        if headline:
+            if not skip_headline:
+                s += '</thead>\n'
+            s += '<tbody>\n'
+    s += '</tbody>\n</table>\n'
     return s
 
 def html_movie(m):
@@ -1203,15 +1228,15 @@ def html_%(_admon)s(block, format, title='%(_Admon)s', text_size='normal'):
 """ %% (text_size, title, block)
         return janko
 
-    elif html_admon_style in ('gray', 'yellow', 'apricot') or option('html_style=') == 'vagrant':
+    elif html_admon_style in ('gray', 'yellow', 'apricot') or option('html_style=', '')[:8] in ('vagrant', 'botswat'):
         if not keep_pygm_bg:
             block = re.sub(pygments_pattern, r'"background: %%s">' %%
                            admon_css_vars[html_admon_style]['background'], block)
-        vagrant = """<div class="alert alert-block alert-%(_admon)s alert-text-%%s"><b>%%s</b>
+        bootstrap_alert = """<div class="alert alert-block alert-%(_admon)s alert-text-%%s"><b>%%s</b>
 %%s
 </div>
 """ %% (text_size, title, block)
-        return vagrant
+        return bootstrap_alert
 
     elif html_admon_style == 'lyx':
         block = '<div class="alert-text-%%s">%%s</div>' %% (text_size, block)
@@ -1291,7 +1316,7 @@ def define(FILENAME_EXTENSION,
         'linkURL3v':     r'<a href="\g<url>" target="_self"><tt>\g<link></tt></a>',
         'plainURL':      r'<a href="\g<url>" target="_self"><tt>\g<url></tt></a>',
         'inlinecomment': r'\n<!-- begin inline comment -->\n<font color="red">[<b>\g<name></b>: <em>\g<comment></em>]</font>\n<!-- end inline comment -->\n',
-        'chapter':       r'\n<h1>\g<subst></h1>',
+        'chapter':       r'\n<h1>\g<subst></h1> <!-- chapter heading -->',
         'section':       r'\n<h2>\g<subst></h2>',
         'subsection':    r'\n<h3>\g<subst></h3>',
         'subsubsection': r'\n<h4>\g<subst></h4>\n',
@@ -1359,14 +1384,14 @@ def define(FILENAME_EXTENSION,
     TOC['html'] = html_toc
 
     # Embedded style sheets
-    style = option('html_style=')
-    if  style == 'solarized':
+    html_style = option('html_style=', '')
+    if  html_style == 'solarized':
         css = css_solarized
-    elif style == 'blueish':
+    elif html_style == 'blueish':
         css = css_blueish
-    elif style == 'blueish2':
+    elif html_style == 'blueish2':
         css = css_blueish2
-    elif style == 'bloodish':
+    elif html_style == 'bloodish':
         css = css_bloodish
     else:
         css = css_blueish # default
@@ -1489,6 +1514,17 @@ def define(FILENAME_EXTENSION,
                     f.close()
                 style += '<link rel="stylesheet" href="%s">\n' % css_filename
                 add_to_file_collection(filename)
+    if html_style.startswith('boots'):
+        if html_style == 'bootswatch' or html_style == 'bootstrap'::
+            bootswatch_style = 'cosmo'  # default
+        else:
+            bootswatch_style = html_style.split('_')[1]
+
+        style = """
+<!-- Style: Bootstrap Bootswatch theme %s -->
+<link href="//netdna.bootstrapcdn.com/bootswatch/3.1.1/%s/bootstrap.min.css" rel="stylesheet">
+"""% (bootswatch_style.capitalize(), bootswatch_style)
+        bootstrap_title_bar = ''
 
     meta_tags = """\
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -1496,8 +1532,39 @@ def define(FILENAME_EXTENSION,
 """
     m = re.search(r'^TITLE: *(.+)$', filestr, flags=re.MULTILINE)
     if m:
-        meta_tags += '<meta name="description" content="%s">\n' % \
-                     m.group(1).strip()
+        title = m.group(1).strip()
+        meta_tags += '<meta name="description" content="%s">\n' % title
+
+        if html_style.startswith('boots'):
+            bootstrap_title_bar += """
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      %s
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+""" % title
+            if re.search('^TOC: +on', filestr, flags=re.MULTILINE):
+                bootstrap_title_bar += """"\
+    <div class="navbar-collapse collapse" id="navbar-main">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="toc">Table of Contents<span class="caret"></span></a>
+          <ul class="dropdown-menu" aria-labelledby="themes">
+%(table_of_contents)s
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+"""
+
+
     keywords = re.findall(r'idx\{(.+?)\}', filestr)
     # idx with verbatim is usually too specialized - remove them
     keywords = [keyword for keyword in keywords
@@ -1525,8 +1592,16 @@ Automatically generated HTML file from Doconce source
 
     """ % (meta_tags, style)
 
-    # document ending:
-    OUTRO['html'] = """
+    OUTRO['html'] = ''
+    if html_style.startswith('boots'):
+        INTRO['html'] += bootstrap_title_bar
+        INTRO['html'] += """
+<div class="container">
+"""
+        OUTRO['html'] += """
+</div>  <!-- end container -->
+"""
+    OUTRO['html'] += """
 
 </body>
 </html>
