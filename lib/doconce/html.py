@@ -255,7 +255,7 @@ def toc2html():
     for title, level, label, href in tocinfo['sections']:
         nspaces = 1
         indent = '&nbsp; '*(nspaces*(level - level_min))
-        toc_html += '     <!-- navigation toc: "%s" --> <li> %s <a href="#%s">%s</a>\n' % (title, indent, href, title)
+        toc_html += '     <!-- navigation toc: "%s" --> <li> %s <a href="#%s">%s</a></li>\n' % (title, indent, href, title)
     return toc_html
 
 
@@ -683,12 +683,26 @@ MathJax.Hub.Config({
         # Fix tables
         filestr = re.sub(r'<table.+?>', '<table class="table table-striped table-hover ">', filestr)
         # Insert toc
-        if '%(table_of_contents)s' in filestr:
-            filestr = filestr % {'table_of_contents': toc2html()}
-        # Block admon goes to jumbotron
-        filestr = filestr.replace(
-            '<div class="alert alert-block alert-block alert-text-normal"><b></b>',
-            '<div class="jumbotron">')
+        if '***TABLE_OF_CONTENTS***' in filestr:
+            filestr = filestr.replace('***TABLE_OF_CONTENTS***', toc2html())
+        # Fix jumbotron for title, author, date, toc, abstract, intro
+        pattern = r'(<center><h1>[^\n]+</h1></center>[^\n]+document title.+?)(<h\d>[^\n]+?<a name=[^\n]+?</h\d>)'
+        m = re.search(pattern, filestr, flags=re.DOTALL)
+        if m:
+            # If the user has a !split in the beginning, insert a button
+            # to click (typically bootstrap design)
+            button = '\n\n<p><a class="btn btn-primary btn-lg">Read &rquot;</a></p>\n\n' if '!split' in m.group(1) else ''
+            text = '<div class="jumbotron">\n' + m.group(1) + \
+                   button + '\n</div>\n\n' + m.group(2)
+            filestr = re.sub(pattern, text, filestr, flags=re.DOTALL)
+        # Fix slidecells?
+        cells = [(int(s[0]), int(s[1])) for s in
+                 re.findall('!bslidecell +(\d\d)', filestr)]
+        #<div class="row">
+        #<div class="col-sm-4">
+        # when to stop the row? when the row counter is decreasing
+        # stop grid when next line after !eslidecell is not !bslidecell
+
 
 
     if MATH_TYPESETTING == 'WordPress':
@@ -784,7 +798,7 @@ def html_footnotes(filestr, format, pattern_def, pattern_footnote):
         if option('html_style=', '')[:5] in ('boots', 'vagra'):
             # Use a tooltip construction so the footnote appears when hovering over
             text = footnotes[name].strip()
-            html = ' <button type="button" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="%s"><a name="link_footnote_%s"><a><a href="#def_footnote_%s">%s</a></button>' % (text, i, i, i)
+            html = ' <button type="button" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="%s"><a name="link_footnote_%s"><a><a href="#def_footnote_%s" style="color: white">%s</a></button>' % (text, i, i, i)
         else:
             html = r' [<a name="link_footnote_%s"><a><a href="#def_footnote_%s">%s</a>]' % (i, i, i)
         return html
@@ -1236,7 +1250,41 @@ def html_%(_admon)s(block, format, title='%(_Admon)s', text_size='normal'):
     pygments_pattern = r'"background: .+?">'
 
     # html_admon_style is global variable
-    if html_admon_style == 'colors':
+    if option('html_style=', '')[:5] in ('vagra', 'boots'):
+        # Bootstrap/Bootswatch html style
+
+        if html_admon_style == 'bootstrap_panel':
+            alert_map = {'warning': 'warning', 'notice': 'primary',
+                         'summary': 'danger', 'question': 'success',
+                         'block': 'default'}
+            text = '<div class="panel panel-%%s">' %% alert_map['%(_admon)s']
+            if '%(_admon)s' != 'block':  # heading?
+                text += """
+<div class="panel-heading">
+<h3 class="panel-title">%%s</h3>
+</div>""" %% title
+            text += """
+<div class="panel-body">
+%%s
+</div>
+</div>
+""" %% block
+        else: # bootstrap_alert
+            alert_map = {'warning': 'danger', 'notice': 'success',
+                         'summary': 'warning', 'question': 'info',
+                         'block': 'success'}
+
+            if not keep_pygm_bg:
+                # 2DO: fix background color!
+                block = re.sub(pygments_pattern, r'"background: %%s">' %%
+                               admon_css_vars[html_admon_style]['background'], block)
+            text = """<div class="alert alert-block alert-%%s alert-text-%%s"><b>%%s</b>
+%%s
+</div>
+""" %% (alert_map['%(_admon)s'], text_size, title, block)
+        return text
+
+    elif html_admon_style == 'colors':
         if not keep_pygm_bg:
             block = re.sub(pygments_pattern, r'"background: %%s">' %%
                            admon_css_vars['colors']['background_%(_admon)s'], block)
@@ -1246,15 +1294,14 @@ def html_%(_admon)s(block, format, title='%(_Admon)s', text_size='normal'):
 """ %% (text_size, title, block)
         return janko
 
-    elif html_admon_style in ('gray', 'yellow', 'apricot') or option('html_style=', '')[:5] in ('vagra', 'boots'):
+    elif html_admon_style in ('gray', 'yellow', 'apricot'):
         if not keep_pygm_bg:
             block = re.sub(pygments_pattern, r'"background: %%s">' %%
                            admon_css_vars[html_admon_style]['background'], block)
-        bootstrap_alert = """<div class="alert alert-block alert-%(_admon)s alert-text-%%s"><b>%%s</b>
+        return """<div class="alert alert-block alert-%(_admon)s alert-text-%%s"><b>%%s</b>
 %%s
 </div>
 """ %% (text_size, title, block)
-        return bootstrap_alert
 
     elif html_admon_style == 'lyx':
         block = '<div class="alert-text-%%s">%%s</div>' %% (text_size, block)
@@ -1457,12 +1504,15 @@ def define(FILENAME_EXTENSION,
         css += "\n    h1, h2, h3 { font-family: '%s'; }\n" % heading_font_family.replace('+', ' ')
 
     global admon_css_vars
-    admon_styles = 'gray', 'yellow', 'apricot', 'colors', 'lyx', 'paragraph'
+    admon_styles = ['gray', 'yellow', 'apricot', 'colors', 'lyx', 'paragraph',
+                    'bootstrap_alert', 'bootstrap_panel']
     admon_css_vars = {style: {} for style in admon_styles}
     admon_css_vars['yellow']  = dict(boundary='#fbeed5', background='#fcf8e3')
     admon_css_vars['apricot'] = dict(boundary='#FFBF00', background='#fbeed5')
     #admon_css_vars['gray']    = dict(boundary='#bababa', background='whiteSmoke')
     admon_css_vars['gray']    = dict(boundary='#bababa', background='#f8f8f8') # same color as in pygments light gray background
+    admon_css_vars['bootstrap_alert']  = dict(background='#ffffff')
+    admon_css_vars['bootstrap_panel']  = dict(background='#ffffff')
     # Override with user's values
     html_admon_bg_color = option('html_admon_bg_color=', None)
     html_admon_bd_color = option('html_admon_bd_color=', None)
@@ -1534,21 +1584,24 @@ def define(FILENAME_EXTENSION,
                     f.close()
                 style += '<link rel="stylesheet" href="%s">\n' % css_filename
                 add_to_file_collection(filename)
+
+
     if html_style.startswith('boots'):
-        if html_style == 'bootswatch' or html_style == 'bootstrap':
-            bootswatch_style = 'cosmo'  # default
+        boots_version = '3.1.1'
+        if html_style == 'bootstrap':
+            boots_style = 'boostrap'
+            url = '//netdna.bootstrapcdn.com/bootstrap/%s/css/bootstrap.min.css' % boots_version
+        elif html_style == 'bootswatch':
+            boots_style = 'cosmo'  # default
+            url = '//netdna.bootstrapcdn.com/bootswatch/%s/%s/bootstrap.min.css' % (boots_version, boots_style)
         else:
-            bootswatch_style = html_style.split('_')[1]
+            boots_style = html_style.split('_')[1]
+            url = '//netdna.bootstrapcdn.com/bootswatch/%s/%s/bootstrap.min.css' % (boots_version, boots_style)
 
         style = """
-<!-- Style: Bootstrap Bootswatch theme %s -->
-<!-- Note that if you load this file as a local file (file:///...)
-you must have http://netdna... On a web site you can have just //netdna... -->
-<!--
-<link href="//netdna.bootstrapcdn.com/bootswatch/3.1.1/%s/bootstrap.min.css" rel="stylesheet">
--->
-<link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/%s/bootstrap.min.css" rel="stylesheet">
-"""% (bootswatch_style.capitalize(), bootswatch_style, bootswatch_style)
+<!-- Bootstrap style: %s -->
+<link href="http:%s" rel="stylesheet">
+"""% (html_style, url)
         bootstrap_title_bar = ''
 
     meta_tags = """\
@@ -1562,32 +1615,28 @@ you must have http://netdna... On a web site you can have just //netdna... -->
 
         if html_style.startswith('boots'):
             bootstrap_title_bar += """
-<div class="navbar navbar-default navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      %s
-      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-    </div>
-""" % title
-            if re.search('^TOC: +on', filestr, flags=re.MULTILINE):
-                bootstrap_title_bar += """"\
-    <div class="navbar-collapse collapse" id="navbar-main">
-      <ul class="nav navbar-nav">
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="toc">Table of Contents<span class="caret"></span></a>
-          <ul class="dropdown-menu" aria-labelledby="themes">
-%(table_of_contents)s
+<div class="navbar navbar-default">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="#">%s</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+***TABLE_OF_CONTENTS***
           </ul>
-        </li>
-      </ul>
-    </div>
+      </li>
+    </ul>
   </div>
 </div>
-"""
+</div>
+""" % title
 
 
     keywords = re.findall(r'idx\{(.+?)\}', filestr)
@@ -1625,6 +1674,9 @@ Automatically generated HTML file from Doconce source
 """
         OUTRO['html'] += """
 </div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 """
     OUTRO['html'] += """
 
