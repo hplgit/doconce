@@ -32282,6 +32282,8 @@ doconce format pandoc $name
 doconce md2latex $name
 
 # Test admonitions
+
+# LaTeX admon styles
 admon_tps="colors1 mdfbox paragraph graybox2 yellowicon grayicon colors2"
 for admon_tp in $admon_tps; do
 if [ $admon_tp = 'mdfbox' ]; then
@@ -32310,6 +32312,7 @@ doconce format pdflatex admon --latex_admon=mdfbox --latex_admon_color=1,1,1 --l
 doconce ptex2tex admon pycod2=minted pypro2=minted pycod=Verbatim pypro=Verbatim
 cp admon.tex admon_double_envirs.tex
 
+# Test HTML admon styles
 system doconce format html admon --html_admon=lyx --html_style=blueish2
 cp admon.html admon_lyx.html
 
@@ -32330,6 +32333,12 @@ cp admon.html admon_apricot.html
 
 system doconce format html admon --html_style=vagrant --pygments_html_style=default --html_template=template_vagrant.html
 cp admon.html admon_vagrant.html
+
+system doconce format html admon --html_style=bootstrap --pygments_html_style=default --admon_style=bootstrap_alert
+cp admon.html admon_bootstrap_alert.html
+
+system doconce format html admon --html_style=bootswatch --pygments_html_style=default --admon_style=bootstrap_panel
+cp admon.html admon_bootswatch_panel.html
 
 system doconce sphinx_dir dirname=tmp_admon admon
 system python automake_sphinx.py
@@ -33912,7 +33921,7 @@ Footer at the end:
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: http://code.google.com/p/doconce/" />
 
-<!-- If you copy the css subdirectory and make optional edits:
+<!-- If you copy the css subdirectory (and, e.g., make optional edits):
 <link rel="stylesheet" href="css/twitter_bootstrap.css">
 <link rel="stylesheet" href="css/vagrant.css">
 Otherwise, rely on the URLs below (vagrant.css adapted to Doconce layout)
@@ -33966,45 +33975,45 @@ h1, h2, h3, h4, h5, h6 {
      <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2b</a></li>
      -->
      <!-- Doconce automatically fills in the table of contents -->
-          <!-- navigation toc: " Section 1 " --> <li>  <a href="._testdoc_vagrant001.html#sec1"> Section 1 </a>
-     <!-- navigation toc: " Subsection 1 " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec1"> Subsection 1 </a>
-     <!-- navigation toc: " Computer code " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec2"> Computer code </a>
-     <!-- navigation toc: " Running OS commands " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec3"> Running OS commands </a>
-     <!-- navigation toc: " Footnotes " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec4"> Footnotes </a>
-     <!-- navigation toc: " Subsection 2: Testing figures " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec:ex"> Subsection 2: Testing figures </a>
-     <!-- navigation toc: " The \( \theta \) parameter (not \( \nabla \)?) " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a>
-     <!-- navigation toc: " Custom Environments " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec7"> Custom Environments </a>
-     <!-- navigation toc: " Tables " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec:table"> Tables </a>
-     <!-- navigation toc: " A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec9"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a>
-     <!-- navigation toc: " Bibliography test " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec10"> Bibliography test </a>
-     <!-- navigation toc: " Example 1: Examples can be typeset as exercises " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#Example"> Example 1: Examples can be typeset as exercises </a>
-     <!-- navigation toc: " URLs " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsubsec:ex"> URLs </a>
-     <!-- navigation toc: " LaTeX Mathematics " --> <li>  <a href="._testdoc_vagrant002.html#___sec13"> LaTeX Mathematics </a>
-     <!-- navigation toc: " Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec14"> Exercises </a>
-     <!-- navigation toc: " Problem 2: Flip a Coin " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:1"> Problem 2: Flip a Coin </a>
-     <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec16"> Remarks </a>
-     <!-- navigation toc: " Not an exercise " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec17"> Not an exercise </a>
-     <!-- navigation toc: " Project 3: Compute a Probability " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:2"> Project 3: Compute a Probability </a>
-     <!-- navigation toc: " Project 4: Explore Distributions of Random Circles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a>
-     <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec20"> Remarks </a>
-     <!-- navigation toc: " Exercise 5: Determine some Distance " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 5: Determine some Distance </a>
-     <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec22"> Remarks </a>
-     <!-- navigation toc: " Some exercise without the "Exercise:" prefix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec23"> Some exercise without the "Exercise:" prefix </a>
-     <!-- navigation toc: " Example 7: Just an example " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec24"> Example 7: Just an example </a>
-     <!-- navigation toc: " Here goes another section " --> <li>  <a href="._testdoc_vagrant002.html#___sec25"> Here goes another section </a>
-     <!-- navigation toc: " More Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec26"> More Exercises </a>
-     <!-- navigation toc: " Exercise 8: Make references to projects and problems " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 8: Make references to projects and problems </a>
-     <!-- navigation toc: " Project 9: References in a headings do not work well in html " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:you"> Project 9: References in a headings do not work well in html </a>
-     <!-- navigation toc: " References " --> <li>  <a href="._testdoc_vagrant002.html#___sec29"> References </a>
-     <!-- navigation toc: " Appendix: Just for testing; part I " --> <li>  <a href="._testdoc_vagrant002.html#app1"> Appendix: Just for testing; part I </a>
-     <!-- navigation toc: " A subsection within an appendix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec31"> A subsection within an appendix </a>
-     <!-- navigation toc: " Appendix: Just for testing; part II " --> <li>  <a href="._testdoc_vagrant002.html#app2"> Appendix: Just for testing; part II </a>
-     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec33"> Appendix: Testing identical titles </a>
-     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id1"> Appendix: Testing identical titles </a>
-     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id2"> Appendix: Testing identical titles </a>
-     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec36"> Appendix: Testing identical titles </a>
-     <!-- navigation toc: " Appendix: Testing inline comments " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec37"> Appendix: Testing inline comments </a>
-     <!-- navigation toc: " Appendix: Testing headings ending with <code>verbatim inline</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec38"> Appendix: Testing headings ending with <code>verbatim inline</code> </a>
+          <!-- navigation toc: " Section 1 " --> <li>  <a href="._testdoc_vagrant001.html#sec1"> Section 1 </a></li>
+     <!-- navigation toc: " Subsection 1 " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec1"> Subsection 1 </a></li>
+     <!-- navigation toc: " Computer code " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec2"> Computer code </a></li>
+     <!-- navigation toc: " Running OS commands " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec3"> Running OS commands </a></li>
+     <!-- navigation toc: " Footnotes " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec4"> Footnotes </a></li>
+     <!-- navigation toc: " Subsection 2: Testing figures " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec:ex"> Subsection 2: Testing figures </a></li>
+     <!-- navigation toc: " The \( \theta \) parameter (not \( \nabla \)?) " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a></li>
+     <!-- navigation toc: " Custom Environments " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec7"> Custom Environments </a></li>
+     <!-- navigation toc: " Tables " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec:table"> Tables </a></li>
+     <!-- navigation toc: " A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec9"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a></li>
+     <!-- navigation toc: " Bibliography test " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec10"> Bibliography test </a></li>
+     <!-- navigation toc: " Example 1: Examples can be typeset as exercises " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#Example"> Example 1: Examples can be typeset as exercises </a></li>
+     <!-- navigation toc: " URLs " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsubsec:ex"> URLs </a></li>
+     <!-- navigation toc: " LaTeX Mathematics " --> <li>  <a href="._testdoc_vagrant002.html#___sec13"> LaTeX Mathematics </a></li>
+     <!-- navigation toc: " Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec14"> Exercises </a></li>
+     <!-- navigation toc: " Problem 2: Flip a Coin " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:1"> Problem 2: Flip a Coin </a></li>
+     <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec16"> Remarks </a></li>
+     <!-- navigation toc: " Not an exercise " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec17"> Not an exercise </a></li>
+     <!-- navigation toc: " Project 3: Compute a Probability " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:2"> Project 3: Compute a Probability </a></li>
+     <!-- navigation toc: " Project 4: Explore Distributions of Random Circles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a></li>
+     <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec20"> Remarks </a></li>
+     <!-- navigation toc: " Exercise 5: Determine some Distance " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 5: Determine some Distance </a></li>
+     <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec22"> Remarks </a></li>
+     <!-- navigation toc: " Some exercise without the "Exercise:" prefix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec23"> Some exercise without the "Exercise:" prefix </a></li>
+     <!-- navigation toc: " Example 7: Just an example " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec24"> Example 7: Just an example </a></li>
+     <!-- navigation toc: " Here goes another section " --> <li>  <a href="._testdoc_vagrant002.html#___sec25"> Here goes another section </a></li>
+     <!-- navigation toc: " More Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec26"> More Exercises </a></li>
+     <!-- navigation toc: " Exercise 8: Make references to projects and problems " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 8: Make references to projects and problems </a></li>
+     <!-- navigation toc: " Project 9: References in a headings do not work well in html " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:you"> Project 9: References in a headings do not work well in html </a></li>
+     <!-- navigation toc: " References " --> <li>  <a href="._testdoc_vagrant002.html#___sec29"> References </a></li>
+     <!-- navigation toc: " Appendix: Just for testing; part I " --> <li>  <a href="._testdoc_vagrant002.html#app1"> Appendix: Just for testing; part I </a></li>
+     <!-- navigation toc: " A subsection within an appendix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec31"> A subsection within an appendix </a></li>
+     <!-- navigation toc: " Appendix: Just for testing; part II " --> <li>  <a href="._testdoc_vagrant002.html#app2"> Appendix: Just for testing; part II </a></li>
+     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec33"> Appendix: Testing identical titles </a></li>
+     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id1"> Appendix: Testing identical titles </a></li>
+     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id2"> Appendix: Testing identical titles </a></li>
+     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec36"> Appendix: Testing identical titles </a></li>
+     <!-- navigation toc: " Appendix: Testing inline comments " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec37"> Appendix: Testing inline comments </a></li>
+     <!-- navigation toc: " Appendix: Testing headings ending with <code>verbatim inline</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec38"> Appendix: Testing headings ending with <code>verbatim inline</code> </a></li>
 
     </ul>
    </div>
@@ -34140,7 +34149,8 @@ $$
 <a name="part0000"></a>
 <!-- ------------------- main content ---------------------- -->
 
-<h1>A Document for Testing Doconce</h1>
+
+<title>A Document for Testing Doconce</title>
 
 <center><h1>A Document for Testing Doconce</h1></center>  <!-- document title -->
 
@@ -34292,7 +34302,7 @@ Footer at the end:
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: http://code.google.com/p/doconce/" />
 
-<!-- If you copy the css subdirectory and make optional edits:
+<!-- If you copy the css subdirectory (and, e.g., make optional edits):
 <link rel="stylesheet" href="css/twitter_bootstrap.css">
 <link rel="stylesheet" href="css/vagrant.css">
 Otherwise, rely on the URLs below (vagrant.css adapted to Doconce layout)
@@ -34346,45 +34356,45 @@ h1, h2, h3, h4, h5, h6 {
      <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2b</a></li>
      -->
      <!-- Doconce automatically fills in the table of contents -->
-          <!-- navigation toc: " Section 1 " --> <li>  <a href="._testdoc_vagrant001.html#sec1"> Section 1 </a>
-     <!-- navigation toc: " Subsection 1 " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec1"> Subsection 1 </a>
-     <!-- navigation toc: " Computer code " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec2"> Computer code </a>
-     <!-- navigation toc: " Running OS commands " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec3"> Running OS commands </a>
-     <!-- navigation toc: " Footnotes " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec4"> Footnotes </a>
-     <!-- navigation toc: " Subsection 2: Testing figures " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec:ex"> Subsection 2: Testing figures </a>
-     <!-- navigation toc: " The \( \theta \) parameter (not \( \nabla \)?) " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a>
-     <!-- navigation toc: " Custom Environments " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec7"> Custom Environments </a>
-     <!-- navigation toc: " Tables " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec:table"> Tables </a>
-     <!-- navigation toc: " A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec9"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a>
-     <!-- navigation toc: " Bibliography test " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec10"> Bibliography test </a>
-     <!-- navigation toc: " Example 1: Examples can be typeset as exercises " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#Example"> Example 1: Examples can be typeset as exercises </a>
-     <!-- navigation toc: " URLs " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsubsec:ex"> URLs </a>
-     <!-- navigation toc: " LaTeX Mathematics " --> <li>  <a href="._testdoc_vagrant002.html#___sec13"> LaTeX Mathematics </a>
-     <!-- navigation toc: " Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec14"> Exercises </a>
-     <!-- navigation toc: " Problem 2: Flip a Coin " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:1"> Problem 2: Flip a Coin </a>
-     <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec16"> Remarks </a>
-     <!-- navigation toc: " Not an exercise " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec17"> Not an exercise </a>
-     <!-- navigation toc: " Project 3: Compute a Probability " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:2"> Project 3: Compute a Probability </a>
-     <!-- navigation toc: " Project 4: Explore Distributions of Random Circles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a>
-     <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec20"> Remarks </a>
-     <!-- navigation toc: " Exercise 5: Determine some Distance " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 5: Determine some Distance </a>
-     <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec22"> Remarks </a>
-     <!-- navigation toc: " Some exercise without the "Exercise:" prefix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec23"> Some exercise without the "Exercise:" prefix </a>
-     <!-- navigation toc: " Example 7: Just an example " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec24"> Example 7: Just an example </a>
-     <!-- navigation toc: " Here goes another section " --> <li>  <a href="._testdoc_vagrant002.html#___sec25"> Here goes another section </a>
-     <!-- navigation toc: " More Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec26"> More Exercises </a>
-     <!-- navigation toc: " Exercise 8: Make references to projects and problems " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 8: Make references to projects and problems </a>
-     <!-- navigation toc: " Project 9: References in a headings do not work well in html " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:you"> Project 9: References in a headings do not work well in html </a>
-     <!-- navigation toc: " References " --> <li>  <a href="._testdoc_vagrant002.html#___sec29"> References </a>
-     <!-- navigation toc: " Appendix: Just for testing; part I " --> <li>  <a href="._testdoc_vagrant002.html#app1"> Appendix: Just for testing; part I </a>
-     <!-- navigation toc: " A subsection within an appendix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec31"> A subsection within an appendix </a>
-     <!-- navigation toc: " Appendix: Just for testing; part II " --> <li>  <a href="._testdoc_vagrant002.html#app2"> Appendix: Just for testing; part II </a>
-     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec33"> Appendix: Testing identical titles </a>
-     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id1"> Appendix: Testing identical titles </a>
-     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id2"> Appendix: Testing identical titles </a>
-     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec36"> Appendix: Testing identical titles </a>
-     <!-- navigation toc: " Appendix: Testing inline comments " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec37"> Appendix: Testing inline comments </a>
-     <!-- navigation toc: " Appendix: Testing headings ending with <code>verbatim inline</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec38"> Appendix: Testing headings ending with <code>verbatim inline</code> </a>
+          <!-- navigation toc: " Section 1 " --> <li>  <a href="._testdoc_vagrant001.html#sec1"> Section 1 </a></li>
+     <!-- navigation toc: " Subsection 1 " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec1"> Subsection 1 </a></li>
+     <!-- navigation toc: " Computer code " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec2"> Computer code </a></li>
+     <!-- navigation toc: " Running OS commands " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec3"> Running OS commands </a></li>
+     <!-- navigation toc: " Footnotes " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec4"> Footnotes </a></li>
+     <!-- navigation toc: " Subsection 2: Testing figures " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec:ex"> Subsection 2: Testing figures </a></li>
+     <!-- navigation toc: " The \( \theta \) parameter (not \( \nabla \)?) " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a></li>
+     <!-- navigation toc: " Custom Environments " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec7"> Custom Environments </a></li>
+     <!-- navigation toc: " Tables " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec:table"> Tables </a></li>
+     <!-- navigation toc: " A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec9"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a></li>
+     <!-- navigation toc: " Bibliography test " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec10"> Bibliography test </a></li>
+     <!-- navigation toc: " Example 1: Examples can be typeset as exercises " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#Example"> Example 1: Examples can be typeset as exercises </a></li>
+     <!-- navigation toc: " URLs " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsubsec:ex"> URLs </a></li>
+     <!-- navigation toc: " LaTeX Mathematics " --> <li>  <a href="._testdoc_vagrant002.html#___sec13"> LaTeX Mathematics </a></li>
+     <!-- navigation toc: " Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec14"> Exercises </a></li>
+     <!-- navigation toc: " Problem 2: Flip a Coin " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:1"> Problem 2: Flip a Coin </a></li>
+     <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec16"> Remarks </a></li>
+     <!-- navigation toc: " Not an exercise " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec17"> Not an exercise </a></li>
+     <!-- navigation toc: " Project 3: Compute a Probability " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:2"> Project 3: Compute a Probability </a></li>
+     <!-- navigation toc: " Project 4: Explore Distributions of Random Circles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a></li>
+     <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec20"> Remarks </a></li>
+     <!-- navigation toc: " Exercise 5: Determine some Distance " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 5: Determine some Distance </a></li>
+     <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec22"> Remarks </a></li>
+     <!-- navigation toc: " Some exercise without the "Exercise:" prefix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec23"> Some exercise without the "Exercise:" prefix </a></li>
+     <!-- navigation toc: " Example 7: Just an example " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec24"> Example 7: Just an example </a></li>
+     <!-- navigation toc: " Here goes another section " --> <li>  <a href="._testdoc_vagrant002.html#___sec25"> Here goes another section </a></li>
+     <!-- navigation toc: " More Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec26"> More Exercises </a></li>
+     <!-- navigation toc: " Exercise 8: Make references to projects and problems " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 8: Make references to projects and problems </a></li>
+     <!-- navigation toc: " Project 9: References in a headings do not work well in html " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:you"> Project 9: References in a headings do not work well in html </a></li>
+     <!-- navigation toc: " References " --> <li>  <a href="._testdoc_vagrant002.html#___sec29"> References </a></li>
+     <!-- navigation toc: " Appendix: Just for testing; part I " --> <li>  <a href="._testdoc_vagrant002.html#app1"> Appendix: Just for testing; part I </a></li>
+     <!-- navigation toc: " A subsection within an appendix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec31"> A subsection within an appendix </a></li>
+     <!-- navigation toc: " Appendix: Just for testing; part II " --> <li>  <a href="._testdoc_vagrant002.html#app2"> Appendix: Just for testing; part II </a></li>
+     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec33"> Appendix: Testing identical titles </a></li>
+     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id1"> Appendix: Testing identical titles </a></li>
+     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id2"> Appendix: Testing identical titles </a></li>
+     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec36"> Appendix: Testing identical titles </a></li>
+     <!-- navigation toc: " Appendix: Testing inline comments " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec37"> Appendix: Testing inline comments </a></li>
+     <!-- navigation toc: " Appendix: Testing headings ending with <code>verbatim inline</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec38"> Appendix: Testing headings ending with <code>verbatim inline</code> </a></li>
 
     </ul>
    </div>
@@ -34520,7 +34530,8 @@ $$
 <a name="part0000"></a>
 <!-- ------------------- main content ---------------------- -->
 
-<h1>A Document for Testing Doconce</h1>
+
+<title>A Document for Testing Doconce</title>
 
 <center><h1>A Document for Testing Doconce</h1></center>  <!-- document title -->
 
@@ -34672,7 +34683,7 @@ Footer at the end:
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: http://code.google.com/p/doconce/" />
 
-<!-- If you copy the css subdirectory and make optional edits:
+<!-- If you copy the css subdirectory (and, e.g., make optional edits):
 <link rel="stylesheet" href="css/twitter_bootstrap.css">
 <link rel="stylesheet" href="css/vagrant.css">
 Otherwise, rely on the URLs below (vagrant.css adapted to Doconce layout)
@@ -34726,45 +34737,45 @@ h1, h2, h3, h4, h5, h6 {
      <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2b</a></li>
      -->
      <!-- Doconce automatically fills in the table of contents -->
-          <!-- navigation toc: " Section 1 " --> <li>  <a href="._testdoc_vagrant001.html#sec1"> Section 1 </a>
-     <!-- navigation toc: " Subsection 1 " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec1"> Subsection 1 </a>
-     <!-- navigation toc: " Computer code " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec2"> Computer code </a>
-     <!-- navigation toc: " Running OS commands " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec3"> Running OS commands </a>
-     <!-- navigation toc: " Footnotes " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec4"> Footnotes </a>
-     <!-- navigation toc: " Subsection 2: Testing figures " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec:ex"> Subsection 2: Testing figures </a>
-     <!-- navigation toc: " The \( \theta \) parameter (not \( \nabla \)?) " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a>
-     <!-- navigation toc: " Custom Environments " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec7"> Custom Environments </a>
-     <!-- navigation toc: " Tables " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec:table"> Tables </a>
-     <!-- navigation toc: " A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec9"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a>
-     <!-- navigation toc: " Bibliography test " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec10"> Bibliography test </a>
-     <!-- navigation toc: " Example 1: Examples can be typeset as exercises " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#Example"> Example 1: Examples can be typeset as exercises </a>
-     <!-- navigation toc: " URLs " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsubsec:ex"> URLs </a>
-     <!-- navigation toc: " LaTeX Mathematics " --> <li>  <a href="._testdoc_vagrant002.html#___sec13"> LaTeX Mathematics </a>
-     <!-- navigation toc: " Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec14"> Exercises </a>
-     <!-- navigation toc: " Problem 2: Flip a Coin " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:1"> Problem 2: Flip a Coin </a>
-     <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec16"> Remarks </a>
-     <!-- navigation toc: " Not an exercise " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec17"> Not an exercise </a>
-     <!-- navigation toc: " Project 3: Compute a Probability " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:2"> Project 3: Compute a Probability </a>
-     <!-- navigation toc: " Project 4: Explore Distributions of Random Circles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a>
-     <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec20"> Remarks </a>
-     <!-- navigation toc: " Exercise 5: Determine some Distance " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 5: Determine some Distance </a>
-     <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec22"> Remarks </a>
-     <!-- navigation toc: " Some exercise without the "Exercise:" prefix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec23"> Some exercise without the "Exercise:" prefix </a>
-     <!-- navigation toc: " Example 7: Just an example " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec24"> Example 7: Just an example </a>
-     <!-- navigation toc: " Here goes another section " --> <li>  <a href="._testdoc_vagrant002.html#___sec25"> Here goes another section </a>
-     <!-- navigation toc: " More Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec26"> More Exercises </a>
-     <!-- navigation toc: " Exercise 8: Make references to projects and problems " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 8: Make references to projects and problems </a>
-     <!-- navigation toc: " Project 9: References in a headings do not work well in html " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:you"> Project 9: References in a headings do not work well in html </a>
-     <!-- navigation toc: " References " --> <li>  <a href="._testdoc_vagrant002.html#___sec29"> References </a>
-     <!-- navigation toc: " Appendix: Just for testing; part I " --> <li>  <a href="._testdoc_vagrant002.html#app1"> Appendix: Just for testing; part I </a>
-     <!-- navigation toc: " A subsection within an appendix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec31"> A subsection within an appendix </a>
-     <!-- navigation toc: " Appendix: Just for testing; part II " --> <li>  <a href="._testdoc_vagrant002.html#app2"> Appendix: Just for testing; part II </a>
-     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec33"> Appendix: Testing identical titles </a>
-     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id1"> Appendix: Testing identical titles </a>
-     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id2"> Appendix: Testing identical titles </a>
-     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec36"> Appendix: Testing identical titles </a>
-     <!-- navigation toc: " Appendix: Testing inline comments " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec37"> Appendix: Testing inline comments </a>
-     <!-- navigation toc: " Appendix: Testing headings ending with <code>verbatim inline</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec38"> Appendix: Testing headings ending with <code>verbatim inline</code> </a>
+          <!-- navigation toc: " Section 1 " --> <li>  <a href="._testdoc_vagrant001.html#sec1"> Section 1 </a></li>
+     <!-- navigation toc: " Subsection 1 " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec1"> Subsection 1 </a></li>
+     <!-- navigation toc: " Computer code " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec2"> Computer code </a></li>
+     <!-- navigation toc: " Running OS commands " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec3"> Running OS commands </a></li>
+     <!-- navigation toc: " Footnotes " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec4"> Footnotes </a></li>
+     <!-- navigation toc: " Subsection 2: Testing figures " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec:ex"> Subsection 2: Testing figures </a></li>
+     <!-- navigation toc: " The \( \theta \) parameter (not \( \nabla \)?) " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a></li>
+     <!-- navigation toc: " Custom Environments " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec7"> Custom Environments </a></li>
+     <!-- navigation toc: " Tables " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec:table"> Tables </a></li>
+     <!-- navigation toc: " A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec9"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a></li>
+     <!-- navigation toc: " Bibliography test " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec10"> Bibliography test </a></li>
+     <!-- navigation toc: " Example 1: Examples can be typeset as exercises " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#Example"> Example 1: Examples can be typeset as exercises </a></li>
+     <!-- navigation toc: " URLs " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsubsec:ex"> URLs </a></li>
+     <!-- navigation toc: " LaTeX Mathematics " --> <li>  <a href="._testdoc_vagrant002.html#___sec13"> LaTeX Mathematics </a></li>
+     <!-- navigation toc: " Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec14"> Exercises </a></li>
+     <!-- navigation toc: " Problem 2: Flip a Coin " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:1"> Problem 2: Flip a Coin </a></li>
+     <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec16"> Remarks </a></li>
+     <!-- navigation toc: " Not an exercise " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec17"> Not an exercise </a></li>
+     <!-- navigation toc: " Project 3: Compute a Probability " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:2"> Project 3: Compute a Probability </a></li>
+     <!-- navigation toc: " Project 4: Explore Distributions of Random Circles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a></li>
+     <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec20"> Remarks </a></li>
+     <!-- navigation toc: " Exercise 5: Determine some Distance " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 5: Determine some Distance </a></li>
+     <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec22"> Remarks </a></li>
+     <!-- navigation toc: " Some exercise without the "Exercise:" prefix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec23"> Some exercise without the "Exercise:" prefix </a></li>
+     <!-- navigation toc: " Example 7: Just an example " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec24"> Example 7: Just an example </a></li>
+     <!-- navigation toc: " Here goes another section " --> <li>  <a href="._testdoc_vagrant002.html#___sec25"> Here goes another section </a></li>
+     <!-- navigation toc: " More Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec26"> More Exercises </a></li>
+     <!-- navigation toc: " Exercise 8: Make references to projects and problems " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 8: Make references to projects and problems </a></li>
+     <!-- navigation toc: " Project 9: References in a headings do not work well in html " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:you"> Project 9: References in a headings do not work well in html </a></li>
+     <!-- navigation toc: " References " --> <li>  <a href="._testdoc_vagrant002.html#___sec29"> References </a></li>
+     <!-- navigation toc: " Appendix: Just for testing; part I " --> <li>  <a href="._testdoc_vagrant002.html#app1"> Appendix: Just for testing; part I </a></li>
+     <!-- navigation toc: " A subsection within an appendix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec31"> A subsection within an appendix </a></li>
+     <!-- navigation toc: " Appendix: Just for testing; part II " --> <li>  <a href="._testdoc_vagrant002.html#app2"> Appendix: Just for testing; part II </a></li>
+     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec33"> Appendix: Testing identical titles </a></li>
+     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id1"> Appendix: Testing identical titles </a></li>
+     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id2"> Appendix: Testing identical titles </a></li>
+     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec36"> Appendix: Testing identical titles </a></li>
+     <!-- navigation toc: " Appendix: Testing inline comments " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec37"> Appendix: Testing inline comments </a></li>
+     <!-- navigation toc: " Appendix: Testing headings ending with <code>verbatim inline</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec38"> Appendix: Testing headings ending with <code>verbatim inline</code> </a></li>
 
     </ul>
    </div>
@@ -35184,9 +35195,15 @@ the previous blocks with line breaks.
 <h4>Footnotes  <a name="___sec4"></a></h4>
 
 <p>
-Here is a test of footnotes [<a name="link_footnote_1"><a><a href="#def_footnote_1">1</a>], which are handy in text.
-They are used in different flavors [<a name="link_footnote_2"><a><a href="#def_footnote_2">2</a>], which gives flexibility
-in writing. This is the third [<a name="link_footnote_3"><a><a href="._testdoc_vagrant002.html#def_footnote_3">3</a>] example.
+Here is a test of footnotes <button type="button" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Typesetting of the footnote depends on the format.
+Plain text does nothing, LaTeX removes the
+definition and inserts the footnote as part of the LaTeX text.
+reStructuredText and Sphinx employ a similar type of typesetting
+as Extended Markdown and Doconce, and in HTML we keep the same
+syntax, just displayed properly in HTML."><a name="link_footnote_1"><a><a href="#def_footnote_1" style="color: white">1</a></button>, which are handy in text.
+They are used in different flavors <button type="button" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Could say contexts too..."><a name="link_footnote_2"><a><a href="#def_footnote_2" style="color: white">2</a></button>, which gives flexibility
+in writing. This is the third <button type="button" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Not much to add here, but the footnote
+is at the end with only one newline."><a name="link_footnote_3"><a><a href="#def_footnote_3" style="color: white">3</a></button> example.
 
 <p><a name="def_footnote_1"></a><a href="#link_footnote_1"><b>1:</b></a> Typesetting of the footnote depends on the format.
 Plain text does nothing, LaTeX removes the
@@ -35202,7 +35219,7 @@ Here is some more text before a new definition of a footnote that was used
 used above.
 
 <p>
-<div class="alert alert-block alert-notice alert-text-normal"><b>Non-breaking space character.</b>
+<div class="alert alert-block alert-success alert-text-normal"><b>Non-breaking space character.</b>
 This paragraph aims to test <a href="http://en.wikipedia.org/wiki/Non-breaking_space" target="_self">non-breaking space character</a>, and a typical
 example where this is needed is int units: 7.4&nbsp;km is traveled
 in&nbsp;\( 7.4/5.5\approx 1.345 \)&nbsp;s.  Also check that a&nbsp;<a href="http://google.com" target="_self">link</a>&nbsp;is
@@ -35650,7 +35667,7 @@ Footer at the end:
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: http://code.google.com/p/doconce/" />
 
-<!-- If you copy the css subdirectory and make optional edits:
+<!-- If you copy the css subdirectory (and, e.g., make optional edits):
 <link rel="stylesheet" href="css/twitter_bootstrap.css">
 <link rel="stylesheet" href="css/vagrant.css">
 Otherwise, rely on the URLs below (vagrant.css adapted to Doconce layout)
@@ -35704,45 +35721,45 @@ h1, h2, h3, h4, h5, h6 {
      <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2b</a></li>
      -->
      <!-- Doconce automatically fills in the table of contents -->
-          <!-- navigation toc: " Section 1 " --> <li>  <a href="._testdoc_vagrant001.html#sec1"> Section 1 </a>
-     <!-- navigation toc: " Subsection 1 " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec1"> Subsection 1 </a>
-     <!-- navigation toc: " Computer code " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec2"> Computer code </a>
-     <!-- navigation toc: " Running OS commands " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec3"> Running OS commands </a>
-     <!-- navigation toc: " Footnotes " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec4"> Footnotes </a>
-     <!-- navigation toc: " Subsection 2: Testing figures " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec:ex"> Subsection 2: Testing figures </a>
-     <!-- navigation toc: " The \( \theta \) parameter (not \( \nabla \)?) " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a>
-     <!-- navigation toc: " Custom Environments " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec7"> Custom Environments </a>
-     <!-- navigation toc: " Tables " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec:table"> Tables </a>
-     <!-- navigation toc: " A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec9"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a>
-     <!-- navigation toc: " Bibliography test " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec10"> Bibliography test </a>
-     <!-- navigation toc: " Example 1: Examples can be typeset as exercises " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#Example"> Example 1: Examples can be typeset as exercises </a>
-     <!-- navigation toc: " URLs " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsubsec:ex"> URLs </a>
-     <!-- navigation toc: " LaTeX Mathematics " --> <li>  <a href="._testdoc_vagrant002.html#___sec13"> LaTeX Mathematics </a>
-     <!-- navigation toc: " Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec14"> Exercises </a>
-     <!-- navigation toc: " Problem 2: Flip a Coin " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:1"> Problem 2: Flip a Coin </a>
-     <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec16"> Remarks </a>
-     <!-- navigation toc: " Not an exercise " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec17"> Not an exercise </a>
-     <!-- navigation toc: " Project 3: Compute a Probability " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:2"> Project 3: Compute a Probability </a>
-     <!-- navigation toc: " Project 4: Explore Distributions of Random Circles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a>
-     <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec20"> Remarks </a>
-     <!-- navigation toc: " Exercise 5: Determine some Distance " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 5: Determine some Distance </a>
-     <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec22"> Remarks </a>
-     <!-- navigation toc: " Some exercise without the "Exercise:" prefix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec23"> Some exercise without the "Exercise:" prefix </a>
-     <!-- navigation toc: " Example 7: Just an example " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec24"> Example 7: Just an example </a>
-     <!-- navigation toc: " Here goes another section " --> <li>  <a href="._testdoc_vagrant002.html#___sec25"> Here goes another section </a>
-     <!-- navigation toc: " More Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec26"> More Exercises </a>
-     <!-- navigation toc: " Exercise 8: Make references to projects and problems " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 8: Make references to projects and problems </a>
-     <!-- navigation toc: " Project 9: References in a headings do not work well in html " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:you"> Project 9: References in a headings do not work well in html </a>
-     <!-- navigation toc: " References " --> <li>  <a href="._testdoc_vagrant002.html#___sec29"> References </a>
-     <!-- navigation toc: " Appendix: Just for testing; part I " --> <li>  <a href="._testdoc_vagrant002.html#app1"> Appendix: Just for testing; part I </a>
-     <!-- navigation toc: " A subsection within an appendix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec31"> A subsection within an appendix </a>
-     <!-- navigation toc: " Appendix: Just for testing; part II " --> <li>  <a href="._testdoc_vagrant002.html#app2"> Appendix: Just for testing; part II </a>
-     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec33"> Appendix: Testing identical titles </a>
-     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id1"> Appendix: Testing identical titles </a>
-     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id2"> Appendix: Testing identical titles </a>
-     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec36"> Appendix: Testing identical titles </a>
-     <!-- navigation toc: " Appendix: Testing inline comments " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec37"> Appendix: Testing inline comments </a>
-     <!-- navigation toc: " Appendix: Testing headings ending with <code>verbatim inline</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec38"> Appendix: Testing headings ending with <code>verbatim inline</code> </a>
+          <!-- navigation toc: " Section 1 " --> <li>  <a href="._testdoc_vagrant001.html#sec1"> Section 1 </a></li>
+     <!-- navigation toc: " Subsection 1 " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec1"> Subsection 1 </a></li>
+     <!-- navigation toc: " Computer code " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec2"> Computer code </a></li>
+     <!-- navigation toc: " Running OS commands " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec3"> Running OS commands </a></li>
+     <!-- navigation toc: " Footnotes " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec4"> Footnotes </a></li>
+     <!-- navigation toc: " Subsection 2: Testing figures " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec:ex"> Subsection 2: Testing figures </a></li>
+     <!-- navigation toc: " The \( \theta \) parameter (not \( \nabla \)?) " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a></li>
+     <!-- navigation toc: " Custom Environments " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec7"> Custom Environments </a></li>
+     <!-- navigation toc: " Tables " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec:table"> Tables </a></li>
+     <!-- navigation toc: " A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec9"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a></li>
+     <!-- navigation toc: " Bibliography test " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec10"> Bibliography test </a></li>
+     <!-- navigation toc: " Example 1: Examples can be typeset as exercises " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#Example"> Example 1: Examples can be typeset as exercises </a></li>
+     <!-- navigation toc: " URLs " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsubsec:ex"> URLs </a></li>
+     <!-- navigation toc: " LaTeX Mathematics " --> <li>  <a href="._testdoc_vagrant002.html#___sec13"> LaTeX Mathematics </a></li>
+     <!-- navigation toc: " Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec14"> Exercises </a></li>
+     <!-- navigation toc: " Problem 2: Flip a Coin " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:1"> Problem 2: Flip a Coin </a></li>
+     <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec16"> Remarks </a></li>
+     <!-- navigation toc: " Not an exercise " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec17"> Not an exercise </a></li>
+     <!-- navigation toc: " Project 3: Compute a Probability " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:2"> Project 3: Compute a Probability </a></li>
+     <!-- navigation toc: " Project 4: Explore Distributions of Random Circles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a></li>
+     <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec20"> Remarks </a></li>
+     <!-- navigation toc: " Exercise 5: Determine some Distance " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 5: Determine some Distance </a></li>
+     <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec22"> Remarks </a></li>
+     <!-- navigation toc: " Some exercise without the "Exercise:" prefix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec23"> Some exercise without the "Exercise:" prefix </a></li>
+     <!-- navigation toc: " Example 7: Just an example " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec24"> Example 7: Just an example </a></li>
+     <!-- navigation toc: " Here goes another section " --> <li>  <a href="._testdoc_vagrant002.html#___sec25"> Here goes another section </a></li>
+     <!-- navigation toc: " More Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec26"> More Exercises </a></li>
+     <!-- navigation toc: " Exercise 8: Make references to projects and problems " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 8: Make references to projects and problems </a></li>
+     <!-- navigation toc: " Project 9: References in a headings do not work well in html " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:you"> Project 9: References in a headings do not work well in html </a></li>
+     <!-- navigation toc: " References " --> <li>  <a href="._testdoc_vagrant002.html#___sec29"> References </a></li>
+     <!-- navigation toc: " Appendix: Just for testing; part I " --> <li>  <a href="._testdoc_vagrant002.html#app1"> Appendix: Just for testing; part I </a></li>
+     <!-- navigation toc: " A subsection within an appendix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec31"> A subsection within an appendix </a></li>
+     <!-- navigation toc: " Appendix: Just for testing; part II " --> <li>  <a href="._testdoc_vagrant002.html#app2"> Appendix: Just for testing; part II </a></li>
+     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec33"> Appendix: Testing identical titles </a></li>
+     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id1"> Appendix: Testing identical titles </a></li>
+     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id2"> Appendix: Testing identical titles </a></li>
+     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec36"> Appendix: Testing identical titles </a></li>
+     <!-- navigation toc: " Appendix: Testing inline comments " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec37"> Appendix: Testing inline comments </a></li>
+     <!-- navigation toc: " Appendix: Testing headings ending with <code>verbatim inline</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec38"> Appendix: Testing headings ending with <code>verbatim inline</code> </a></li>
 
     </ul>
    </div>
@@ -36591,7 +36608,7 @@ With label.
 Without label.
 
 <p>
-<div class="alert alert-block alert-notice alert-text-normal"><b>Tip.</b>
+<div class="alert alert-block alert-success alert-text-normal"><b>Tip.</b>
 Here is a tip or hint box, typeset as a notice box.
 </div>
 
@@ -36610,7 +36627,7 @@ Greg Wilson' excellent <a href="http://software-carpentry.org/2010/07/script-for
 from using version control systems.
 
 <p>
-<div class="alert alert-block alert-summary alert-text-normal"><b>Summary.</b>
+<div class="alert alert-block alert-warning alert-text-normal"><b>Summary.</b>
 <b>Bold remark:</b> Make some text with this summary.
 Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
@@ -47260,7 +47277,7 @@ Footer at the end:
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: http://code.google.com/p/doconce/" />
 
-<!-- If you copy the css subdirectory and make optional edits:
+<!-- If you copy the css subdirectory (and, e.g., make optional edits):
 <link rel="stylesheet" href="css/twitter_bootstrap.css">
 <link rel="stylesheet" href="css/vagrant.css">
 Otherwise, rely on the URLs below (vagrant.css adapted to Doconce layout)
@@ -47314,12 +47331,12 @@ h1, h2, h3, h4, h5, h6 {
      <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2b</a></li>
      -->
      <!-- Doconce automatically fills in the table of contents -->
-          <!-- navigation toc: " Introduction " --> <li>  <a href="#___sec0"> Introduction </a>
-     <!-- navigation toc: " Code " --> <li> &nbsp;  <a href="#___sec1"> Code </a>
-     <!-- navigation toc: " Quotes and boxes " --> <li> &nbsp;  <a href="#___sec2"> Quotes and boxes </a>
-     <!-- navigation toc: " Admonitions " --> <li> &nbsp;  <a href="#___sec3"> Admonitions </a>
-     <!-- navigation toc: " Going deeper environments " --> <li> &nbsp;  <a href="#___sec4"> Going deeper environments </a>
-     <!-- navigation toc: " The end " --> <li> &nbsp;  <a href="#___sec5"> The end </a>
+          <!-- navigation toc: " Introduction " --> <li>  <a href="#___sec0"> Introduction </a></li>
+     <!-- navigation toc: " Code " --> <li> &nbsp;  <a href="#___sec1"> Code </a></li>
+     <!-- navigation toc: " Quotes and boxes " --> <li> &nbsp;  <a href="#___sec2"> Quotes and boxes </a></li>
+     <!-- navigation toc: " Admonitions " --> <li> &nbsp;  <a href="#___sec3"> Admonitions </a></li>
+     <!-- navigation toc: " Going deeper environments " --> <li> &nbsp;  <a href="#___sec4"> Going deeper environments </a></li>
+     <!-- navigation toc: " The end " --> <li> &nbsp;  <a href="#___sec5"> The end </a></li>
 
     </ul>
    </div>
@@ -47382,7 +47399,8 @@ $$
 
 <!-- ------------------- main content ---------------------- -->
 
-<h1>Testing admons</h1>
+
+<title>Testing admons</title>
 
 <center><h1>Testing admons</h1></center>  <!-- document title -->
 
@@ -47510,7 +47528,7 @@ Let's begin a new paragraph and show a box with code only:
 Let us start with a plain warning environment.
 
 <p>
-<div class="alert alert-block alert-warning alert-text-normal"><b>Warning.</b>
+<div class="alert alert-block alert-danger alert-text-normal"><b>Warning.</b>
 And here is a warning about something to pay attention to. We
 test how the heading behave and add quite some extra texts
 in comparison with the other admons.
@@ -47536,7 +47554,7 @@ And more and more text.
 Test warning with title:
 
 <p>
-<div class="alert alert-block alert-warning alert-text-large"><b>Title ending with math \( \sqrt{2}\approx 1.4 \).</b>
+<div class="alert alert-block alert-danger alert-text-large"><b>Title ending with math \( \sqrt{2}\approx 1.4 \).</b>
 And here comes some text with bad news in larger font.
 
 <p>
@@ -47564,7 +47582,7 @@ And a complete program
 Test warning with large title with math:
 
 <p>
-<div class="alert alert-block alert-warning alert-text-large"><b>Watch out for \( \nabla\cdot\boldsymbol{u}=0 \) equations.</b>
+<div class="alert alert-block alert-danger alert-text-large"><b>Watch out for \( \nabla\cdot\boldsymbol{u}=0 \) equations.</b>
 Divergence freedom is often problematic from a numerical point
 of view.
 </div>
@@ -47574,7 +47592,7 @@ of view.
 Then we test a block, which is guaranteed to never have any admon icon.
 
 <p>
-<div class="alert alert-block alert-block alert-text-small"><b>Block with title.</b>
+<div class="alert alert-block alert-success alert-text-small"><b>Block with title.</b>
 Here is a block of text with title. It is typeset
 <em>without any icon</em> and is useful when you want some admons with icon
 and some without. With the small font size, as used here, one can have
@@ -47585,7 +47603,7 @@ of understanding.
 
 
 <p>
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-success alert-text-normal"><b></b>
 Here is a block of text with no title. As above, it is typeset without any icon
 and is useful when you want some admons with icon and some without.
 </div>
@@ -47601,7 +47619,7 @@ code is present).
 <!-- those formats automatically add : to the admonition title. -->
 
 <p>
-<div class="alert alert-block alert-notice alert-text-illegal-size"><b>Note, eventually!</b>
+<div class="alert alert-block alert-success alert-text-illegal-size"><b>Note, eventually!</b>
 Ah, we are soon close to the end (with illegal font size specification!).
 But first a bit of math where we define \( \theta \) and \( \boldsymbol{r} \):
 
@@ -47619,19 +47637,19 @@ $$
 <!-- Test one word with a number -->
 
 <p>
-<div class="alert alert-block alert-notice alert-text-normal"><b>Point1.</b>
+<div class="alert alert-block alert-success alert-text-normal"><b>Point1.</b>
 Ah, we are soon close to the end.
 </div>
 
 
 <p>
-<div class="alert alert-block alert-question alert-text-normal"><b>Question.</b>
+<div class="alert alert-block alert-info alert-text-normal"><b>Question.</b>
 So, how many admonition environments does Doconce support?
 </div>
 
 
 <p>
-<div class="alert alert-block alert-question alert-text-normal"><b>Question.</b>
+<div class="alert alert-block alert-info alert-text-normal"><b>Question.</b>
 
 <ol>
  <li> Once more, how many admonition environments does Doconce support?</li>
@@ -47640,7 +47658,7 @@ So, how many admonition environments does Doconce support?
 
 
 <p>
-<div class="alert alert-block alert-warning alert-text-normal"><b>Tip.</b>
+<div class="alert alert-block alert-danger alert-text-normal"><b>Tip.</b>
 It is of outmost important to
 
 <p>
@@ -47668,7 +47686,7 @@ Because here the thing is to do
 Next is a warning without a title ("none" implies no title).
 
 <p>
-<div class="alert alert-block alert-warning alert-text-normal"><b></b>
+<div class="alert alert-block alert-danger alert-text-normal"><b></b>
 And here comes some text with bad news.
 </div>
 
@@ -47680,7 +47698,7 @@ Here is a long notice environment with a custom title and much
 text, math and code.
 
 <p>
-<div class="alert alert-block alert-notice alert-text-normal"><b>Going deeper.</b>
+<div class="alert alert-block alert-success alert-text-normal"><b>Going deeper.</b>
 We have some equations that should be preceded by much text, so the
 task is to write and write. The number of words, and not the
 meaning, is what counts here. We need desperately to fill up the
@@ -47777,7 +47795,7 @@ for the novice",
 just because we can.
 
 <p>
-<div class="alert alert-block alert-summary alert-text-normal"><b>Concluding remarks, for the novice.</b>
+<div class="alert alert-block alert-warning alert-text-normal"><b>Concluding remarks, for the novice.</b>
 We can summarize the most important things with admons: they have
 a different typesetting, and they may have a symbol.
 Titles should be optional.
@@ -47830,6 +47848,1070 @@ While the <div class="deep-blue">rest of the</div> getting started
 </html>
 
 
+
+
+************** File: admon_bootstrap_alert.html *****************
+<!DOCTYPE html>
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Testing admons">
+
+
+
+<!-- Bootstrap style: bootstrap -->
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' Introduction ', 1, None, '___sec0'),
+              (' Code ', 2, None, '___sec1'),
+              (' Quotes and boxes ', 2, None, '___sec2'),
+              (' Admonitions ', 2, None, '___sec3'),
+              (' Going deeper environments ', 2, None, '___sec4'),
+              (' The end ', 2, None, '___sec5')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "AMS"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+
+<!-- newcommands_bfmath.tex -->
+$$
+\renewcommand{\u}{\pmb{u}}
+
+\newcommand{\xbm}{\boldsymbol{x}}
+\newcommand{\normalvecbm}{\boldsymbol{n}}
+\newcommand{\ubm}{\boldsymbol{u}}
+$$
+
+
+<!-- newcommands_replace.tex -->
+$$
+\newcommand{\x}{\pmb{x}}
+\newcommand{\normalvec}{\pmb{n}}
+\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
+\newcommand{\halfi}{1/2}
+\newcommand{\half}{\frac{1}{2}}
+\newcommand{\report}{test report}
+$$
+
+
+
+
+    
+<div class="navbar navbar-default">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="#">Testing admons</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+     <!-- navigation toc: " Introduction " --> <li>  <a href="#___sec0"> Introduction </a></li>
+     <!-- navigation toc: " Code " --> <li> &nbsp;  <a href="#___sec1"> Code </a></li>
+     <!-- navigation toc: " Quotes and boxes " --> <li> &nbsp;  <a href="#___sec2"> Quotes and boxes </a></li>
+     <!-- navigation toc: " Admonitions " --> <li> &nbsp;  <a href="#___sec3"> Admonitions </a></li>
+     <!-- navigation toc: " Going deeper environments " --> <li> &nbsp;  <a href="#___sec4"> Going deeper environments </a></li>
+     <!-- navigation toc: " The end " --> <li> &nbsp;  <a href="#___sec5"> The end </a></li>
+
+          </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<div class="container">
+
+<!-- ------------------- main content ---------------------- -->
+
+
+<title>Testing admons</title>
+
+<div class="jumbotron">
+<center><h1>Testing admons</h1></center>  <!-- document title -->
+
+<p>
+<!-- author(s): hpl -->
+
+<center>
+<b>hpl</b> 
+</center>
+
+
+<p>
+<!-- institution(s) -->
+<p>
+<center><h4>Jan 32, 2100</h4></center> <!-- date -->
+<p>
+
+
+</div>
+
+<h2>Introduction  <a name="___sec0"></a></h2>
+First some ordinary text to compare font sizes in admonitions
+and the surrounding text.
+
+<h3>Code  <a name="___sec1"></a></h3>
+
+<p>
+Need some code outside admons for color and font comparisons:
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">some_code</span>(x):
+    <span style="color: #008000; font-weight: bold">return</span> sin(x)<span style="color: #666666">*</span>exp(<span style="color: #666666">1-</span>x)
+</pre></div>
+<p>
+And some plain text verbatim:
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">x=1.0 y=0.9 z=0.4
+x=1.1 y=0.3 z=0.1
+</pre></div>
+
+<h3>Quotes and boxes  <a name="___sec2"></a></h3>
+
+<p>
+Here is a plain quote environment.
+
+<p>
+<blockquote>
+    Sayre's law states that
+    "in any dispute the intensity of feeling is inversely
+    proportional to the value of the issues at stake." <br />
+    By way of corollary, it adds: <br />
+    "That is why academic politics are so bitter." <br />
+    <em>Source</em>: <a href="http://en.wikipedia.org/wiki/Sayre's_law" target="_self">wikipedia</a>
+</blockquote>
+
+
+<p>
+Does quotes with title also work? No...cannot work in LaTeX and HTML
+and then it does not make sense to support it.
+
+<p>
+A plain <em>box</em> is sometimes useful. Let's show it here for comparison
+with admons (especially the block admon has much in common with a box).
+The box is more aimed at framing a law or an equation.
+
+<p>
+First a simple block with text, an equation, and a list:
+
+<p>
+
+<!-- begin box -->
+<div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px;">
+A generic equation
+
+<p>
+$$ f(x) = 0 $$
+
+must be solved by a numerical method, such as
+
+<p>
+
+<ul>
+ <li> Newton's method</li>
+ <li> The Bisection method</li>
+ <li> Fixed-point (Picard) iteration by rewriting \( f(x)=x - g(x) \)</li>
+ <li> The Secant method</li>
+</ul>
+</div>
+<!-- end box -->
+
+Now test a box with equation only (note that this line continues the
+box, it is not a new paragraph):
+
+<p>
+
+<!-- begin box -->
+<div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px;">
+$$
+\begin{equation} f(x) = \sin(x)e^{1-x} \end{equation}
+$$
+</div>
+<!-- end box -->
+
+
+<p>
+Let's begin a new paragraph and show a box with code only:
+
+<p>
+
+<!-- begin box -->
+<div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px;">
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">some_code</span>(x):
+    <span style="color: #008000; font-weight: bold">return</span> sin(x)<span style="color: #666666">*</span>exp(<span style="color: #666666">1-</span>x)
+</pre></div>
+<p>
+</div>
+<!-- end box -->
+
+
+<h3>Admonitions  <a name="___sec3"></a></h3>
+
+<p>
+Let us start with a plain warning environment.
+
+<p>
+<div class="alert alert-block alert-danger alert-text-normal"><b>Warning.</b>
+And here is a warning about something to pay attention to. We
+test how the heading behave and add quite some extra texts
+in comparison with the other admons.
+
+<p>
+
+<ul>
+  <li> and a list</li>
+  <li> with items</li>
+</ul>
+
+We continue with more text to see how that affects the layout.
+And more and more text.
+And more and more text.
+And more and more text.
+And more and more text.
+And more and more text.
+And more and more text.
+</div>
+
+
+<p>
+Test warning with title:
+
+<p>
+<div class="alert alert-block alert-danger alert-text-large"><b>Title ending with math \( \sqrt{2}\approx 1.4 \).</b>
+And here comes some text with bad news in larger font.
+
+<p>
+Also some code:
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
+    <span style="color: #008000; font-weight: bold">return</span> x
+</pre></div>
+<p>
+And a complete program
+
+<p>
+
+<!-- code=python (from !bc pypro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&quot;Hello, World!&quot;</span>
+</pre></div>
+<p>
+</div>
+
+
+<p>
+Test warning with large title with math:
+
+<p>
+<div class="alert alert-block alert-danger alert-text-large"><b>Watch out for \( \nabla\cdot\boldsymbol{u}=0 \) equations.</b>
+Divergence freedom is often problematic from a numerical point
+of view.
+</div>
+
+
+<p>
+Then we test a block, which is guaranteed to never have any admon icon.
+
+<p>
+<div class="alert alert-block alert-success alert-text-small"><b>Block with title.</b>
+Here is a block of text with title. It is typeset
+<em>without any icon</em> and is useful when you want some admons with icon
+and some without. With the small font size, as used here, one can have
+more comment-style text or text that really goes deeper or talks
+about fun facts that are not strictly necessary for the main flow
+of understanding.
+</div>
+
+
+<p>
+<div class="alert alert-block alert-success alert-text-normal"><b></b>
+Here is a block of text with no title. As above, it is typeset without any icon
+and is useful when you want some admons with icon and some without.
+</div>
+
+
+<p>
+The next admonition features a title "Note, eventually!" (the comma
+must be removed in the <code>mdfbox</code> admon also in <code>graybox2</code> if
+code is present).
+
+<p>
+<!-- Note that the final ! does not appear in Sphinx and reST since -->
+<!-- those formats automatically add : to the admonition title. -->
+
+<p>
+<div class="alert alert-block alert-success alert-text-illegal-size"><b>Note, eventually!</b>
+Ah, we are soon close to the end (with illegal font size specification!).
+But first a bit of math where we define \( \theta \) and \( \boldsymbol{r} \):
+
+<p>
+$$
+\begin{align*}
+\theta &= q^2,\\
+\boldsymbol{r} &= \varrho\boldsymbol{i}
+\end{align*}
+$$
+</div>
+
+
+<p>
+<!-- Test one word with a number -->
+
+<p>
+<div class="alert alert-block alert-success alert-text-normal"><b>Point1.</b>
+Ah, we are soon close to the end.
+</div>
+
+
+<p>
+<div class="alert alert-block alert-info alert-text-normal"><b>Question.</b>
+So, how many admonition environments does Doconce support?
+</div>
+
+
+<p>
+<div class="alert alert-block alert-info alert-text-normal"><b>Question.</b>
+
+<ol>
+ <li> Once more, how many admonition environments does Doconce support?</li>
+</ol>
+</div>
+
+
+<p>
+<div class="alert alert-block alert-danger alert-text-normal"><b>Tip.</b>
+It is of outmost important to
+
+<p>
+
+<ol>
+<li> stay cool</li>
+<li> read hints and tips carefully</li>
+</ol>
+
+Because here the thing is to do
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">urllib</span>
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">grab</span>(url, filename):
+    urllib<span style="color: #666666">.</span>urlretrieve(url, filename<span style="color: #666666">=</span>filename)
+</pre></div>
+<p>
+</div>
+
+
+<p>
+Next is a warning without a title ("none" implies no title).
+
+<p>
+<div class="alert alert-block alert-danger alert-text-normal"><b></b>
+And here comes some text with bad news.
+</div>
+
+
+<h3>Going deeper environments  <a name="___sec4"></a></h3>
+
+<p>
+Here is a long notice environment with a custom title and much
+text, math and code.
+
+<p>
+<div class="alert alert-block alert-success alert-text-normal"><b>Going deeper.</b>
+We have some equations that should be preceded by much text, so the
+task is to write and write. The number of words, and not the
+meaning, is what counts here. We need desperately to fill up the
+page in the hope that some admonitions will experience a page break,
+which the LaTeX environment should handle with ease.
+
+<p>
+Let us start with some equations:
+
+<p>
+$$
+\begin{align*}
+\frac{Du}{dt} &= 0
+\\
+\frac{1}{2} &= {1/2}\\
+\frac{1}{2}\pmb{x} &= \pmb{n}
+\end{align*}
+$$
+
+
+<p>
+The implementation of such complicated equations in computer
+code is task that this "Going deeper" environment targets.
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">Dudt</span>(u):
+    r <span style="color: #666666">=</span> diff(u, t) <span style="color: #666666">+</span> u<span style="color: #666666">*</span>grad(u)
+    <span style="color: #008000; font-weight: bold">return</span> r
+
+half <span style="color: #666666">=</span> <span style="color: #666666">0.5</span>
+x <span style="color: #666666">=</span> <span style="color: #666666">2*</span>n
+</pre></div>
+<p>
+And some more text that can help going into the next page.
+Longer computer code requires vertical space:
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Diff</span>:
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__init__</span>(<span style="color: #008000">self</span>, f, h<span style="color: #666666">=1E-5</span>):
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>f <span style="color: #666666">=</span> f
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>h <span style="color: #666666">=</span> <span style="color: #008000">float</span>(h)
+
+<span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Forward1</span>(Diff):
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__call__</span>(<span style="color: #008000">self</span>, x):
+        f, h <span style="color: #666666">=</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>f, <span style="color: #008000">self</span><span style="color: #666666">.</span>h
+        <span style="color: #008000; font-weight: bold">return</span> (f(x<span style="color: #666666">+</span>h) <span style="color: #666666">-</span> f(x))<span style="color: #666666">/</span>h
+
+<span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Backward1</span>(Diff):
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__call__</span>(<span style="color: #008000">self</span>, x):
+        f, h <span style="color: #666666">=</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>f, <span style="color: #008000">self</span><span style="color: #666666">.</span>h
+        <span style="color: #008000; font-weight: bold">return</span> (f(x) <span style="color: #666666">-</span> f(x<span style="color: #666666">-</span>h))<span style="color: #666666">/</span>h
+
+<span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Central2</span>(Diff):
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__call__</span>(<span style="color: #008000">self</span>, x):
+        f, h <span style="color: #666666">=</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>f, <span style="color: #008000">self</span><span style="color: #666666">.</span>h
+        <span style="color: #008000; font-weight: bold">return</span> (f(x<span style="color: #666666">+</span>h) <span style="color: #666666">-</span> f(x<span style="color: #666666">-</span>h))<span style="color: #666666">/</span>(<span style="color: #666666">2*</span>h)
+
+<span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Central4</span>(Diff):
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__call__</span>(<span style="color: #008000">self</span>, x):
+        f, h <span style="color: #666666">=</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>f, <span style="color: #008000">self</span><span style="color: #666666">.</span>h
+        <span style="color: #008000; font-weight: bold">return</span> (<span style="color: #666666">4./3</span>)<span style="color: #666666">*</span>(f(x<span style="color: #666666">+</span>h)   <span style="color: #666666">-</span> f(x<span style="color: #666666">-</span>h))  <span style="color: #666666">/</span>(<span style="color: #666666">2*</span>h) <span style="color: #666666">-</span> \
+               (<span style="color: #666666">1./3</span>)<span style="color: #666666">*</span>(f(x<span style="color: #666666">+2*</span>h) <span style="color: #666666">-</span> f(x<span style="color: #666666">-2*</span>h))<span style="color: #666666">/</span>(<span style="color: #666666">4*</span>h)
+
+<span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Central6</span>(Diff):
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__call__</span>(<span style="color: #008000">self</span>, x):
+        f, h <span style="color: #666666">=</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>f, <span style="color: #008000">self</span><span style="color: #666666">.</span>h
+        <span style="color: #008000; font-weight: bold">return</span> (<span style="color: #666666">3./2</span>) <span style="color: #666666">*</span>(f(x<span style="color: #666666">+</span>h)   <span style="color: #666666">-</span> f(x<span style="color: #666666">-</span>h))  <span style="color: #666666">/</span>(<span style="color: #666666">2*</span>h) <span style="color: #666666">-</span> \
+               (<span style="color: #666666">3./5</span>) <span style="color: #666666">*</span>(f(x<span style="color: #666666">+2*</span>h) <span style="color: #666666">-</span> f(x<span style="color: #666666">-2*</span>h))<span style="color: #666666">/</span>(<span style="color: #666666">4*</span>h) <span style="color: #666666">+</span> \
+               (<span style="color: #666666">1./10</span>)<span style="color: #666666">*</span>(f(x<span style="color: #666666">+3*</span>h) <span style="color: #666666">-</span> f(x<span style="color: #666666">-3*</span>h))<span style="color: #666666">/</span>(<span style="color: #666666">6*</span>h)
+
+<span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Forward3</span>(Diff):
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__call__</span>(<span style="color: #008000">self</span>, x):
+        f, h <span style="color: #666666">=</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>f, <span style="color: #008000">self</span><span style="color: #666666">.</span>h
+        <span style="color: #008000; font-weight: bold">return</span> (<span style="color: #666666">-</span>(<span style="color: #666666">1./6</span>)<span style="color: #666666">*</span>f(x<span style="color: #666666">+2*</span>h) <span style="color: #666666">+</span> f(x<span style="color: #666666">+</span>h) <span style="color: #666666">-</span> <span style="color: #666666">0.5*</span>f(x) <span style="color: #666666">-</span> \
+                (<span style="color: #666666">1./3</span>)<span style="color: #666666">*</span>f(x<span style="color: #666666">-</span>h))<span style="color: #666666">/</span>h
+</pre></div>
+<p>
+And then we add a figure too.
+
+<p>
+<center><p><img src="../doc/src/manual/fig/wave1D.png" align="bottom" width=400></p></center>
+</div>
+
+
+<h3>The end  <a name="___sec5"></a></h3>
+
+<p>
+A bit of text before the summary, which we now call "Concluding remarks,
+for the novice",
+just because we can.
+
+<p>
+<div class="alert alert-block alert-warning alert-text-normal"><b>Concluding remarks, for the novice.</b>
+We can summarize the most important things with admons: they have
+a different typesetting, and they may have a symbol.
+Titles should be optional.
+</div>
+
+
+<p>
+<b>Remark.</b>
+The <code>remarks</code> and <code>hint</code> environments are not allowed outside
+exercises (and problems and projects too).
+
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+
+</body>
+</html>
+    
+
+
+************** File: admon_bootswatch_panel.html *****************
+<!DOCTYPE html>
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Testing admons">
+
+
+
+<!-- Bootstrap style: bootswatch -->
+<link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/cosmo/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' Introduction ', 1, None, '___sec0'),
+              (' Code ', 2, None, '___sec1'),
+              (' Quotes and boxes ', 2, None, '___sec2'),
+              (' Admonitions ', 2, None, '___sec3'),
+              (' Going deeper environments ', 2, None, '___sec4'),
+              (' The end ', 2, None, '___sec5')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "AMS"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+
+<!-- newcommands_bfmath.tex -->
+$$
+\renewcommand{\u}{\pmb{u}}
+
+\newcommand{\xbm}{\boldsymbol{x}}
+\newcommand{\normalvecbm}{\boldsymbol{n}}
+\newcommand{\ubm}{\boldsymbol{u}}
+$$
+
+
+<!-- newcommands_replace.tex -->
+$$
+\newcommand{\x}{\pmb{x}}
+\newcommand{\normalvec}{\pmb{n}}
+\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
+\newcommand{\halfi}{1/2}
+\newcommand{\half}{\frac{1}{2}}
+\newcommand{\report}{test report}
+$$
+
+
+
+
+    
+<div class="navbar navbar-default">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="#">Testing admons</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+     <!-- navigation toc: " Introduction " --> <li>  <a href="#___sec0"> Introduction </a></li>
+     <!-- navigation toc: " Code " --> <li> &nbsp;  <a href="#___sec1"> Code </a></li>
+     <!-- navigation toc: " Quotes and boxes " --> <li> &nbsp;  <a href="#___sec2"> Quotes and boxes </a></li>
+     <!-- navigation toc: " Admonitions " --> <li> &nbsp;  <a href="#___sec3"> Admonitions </a></li>
+     <!-- navigation toc: " Going deeper environments " --> <li> &nbsp;  <a href="#___sec4"> Going deeper environments </a></li>
+     <!-- navigation toc: " The end " --> <li> &nbsp;  <a href="#___sec5"> The end </a></li>
+
+          </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<div class="container">
+
+<!-- ------------------- main content ---------------------- -->
+
+
+<title>Testing admons</title>
+
+<div class="jumbotron">
+<center><h1>Testing admons</h1></center>  <!-- document title -->
+
+<p>
+<!-- author(s): hpl -->
+
+<center>
+<b>hpl</b> 
+</center>
+
+
+<p>
+<!-- institution(s) -->
+<p>
+<center><h4>Jan 32, 2100</h4></center> <!-- date -->
+<p>
+
+
+</div>
+
+<h2>Introduction  <a name="___sec0"></a></h2>
+First some ordinary text to compare font sizes in admonitions
+and the surrounding text.
+
+<h3>Code  <a name="___sec1"></a></h3>
+
+<p>
+Need some code outside admons for color and font comparisons:
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">some_code</span>(x):
+    <span style="color: #008000; font-weight: bold">return</span> sin(x)<span style="color: #666666">*</span>exp(<span style="color: #666666">1-</span>x)
+</pre></div>
+<p>
+And some plain text verbatim:
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">x=1.0 y=0.9 z=0.4
+x=1.1 y=0.3 z=0.1
+</pre></div>
+
+<h3>Quotes and boxes  <a name="___sec2"></a></h3>
+
+<p>
+Here is a plain quote environment.
+
+<p>
+<blockquote>
+    Sayre's law states that
+    "in any dispute the intensity of feeling is inversely
+    proportional to the value of the issues at stake." <br />
+    By way of corollary, it adds: <br />
+    "That is why academic politics are so bitter." <br />
+    <em>Source</em>: <a href="http://en.wikipedia.org/wiki/Sayre's_law" target="_self">wikipedia</a>
+</blockquote>
+
+
+<p>
+Does quotes with title also work? No...cannot work in LaTeX and HTML
+and then it does not make sense to support it.
+
+<p>
+A plain <em>box</em> is sometimes useful. Let's show it here for comparison
+with admons (especially the block admon has much in common with a box).
+The box is more aimed at framing a law or an equation.
+
+<p>
+First a simple block with text, an equation, and a list:
+
+<p>
+
+<!-- begin box -->
+<div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px;">
+A generic equation
+
+<p>
+$$ f(x) = 0 $$
+
+must be solved by a numerical method, such as
+
+<p>
+
+<ul>
+ <li> Newton's method</li>
+ <li> The Bisection method</li>
+ <li> Fixed-point (Picard) iteration by rewriting \( f(x)=x - g(x) \)</li>
+ <li> The Secant method</li>
+</ul>
+</div>
+<!-- end box -->
+
+Now test a box with equation only (note that this line continues the
+box, it is not a new paragraph):
+
+<p>
+
+<!-- begin box -->
+<div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px;">
+$$
+\begin{equation} f(x) = \sin(x)e^{1-x} \end{equation}
+$$
+</div>
+<!-- end box -->
+
+
+<p>
+Let's begin a new paragraph and show a box with code only:
+
+<p>
+
+<!-- begin box -->
+<div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px;">
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">some_code</span>(x):
+    <span style="color: #008000; font-weight: bold">return</span> sin(x)<span style="color: #666666">*</span>exp(<span style="color: #666666">1-</span>x)
+</pre></div>
+<p>
+</div>
+<!-- end box -->
+
+
+<h3>Admonitions  <a name="___sec3"></a></h3>
+
+<p>
+Let us start with a plain warning environment.
+
+<p>
+<div class="alert alert-block alert-danger alert-text-normal"><b>Warning.</b>
+And here is a warning about something to pay attention to. We
+test how the heading behave and add quite some extra texts
+in comparison with the other admons.
+
+<p>
+
+<ul>
+  <li> and a list</li>
+  <li> with items</li>
+</ul>
+
+We continue with more text to see how that affects the layout.
+And more and more text.
+And more and more text.
+And more and more text.
+And more and more text.
+And more and more text.
+And more and more text.
+</div>
+
+
+<p>
+Test warning with title:
+
+<p>
+<div class="alert alert-block alert-danger alert-text-large"><b>Title ending with math \( \sqrt{2}\approx 1.4 \).</b>
+And here comes some text with bad news in larger font.
+
+<p>
+Also some code:
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
+    <span style="color: #008000; font-weight: bold">return</span> x
+</pre></div>
+<p>
+And a complete program
+
+<p>
+
+<!-- code=python (from !bc pypro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&quot;Hello, World!&quot;</span>
+</pre></div>
+<p>
+</div>
+
+
+<p>
+Test warning with large title with math:
+
+<p>
+<div class="alert alert-block alert-danger alert-text-large"><b>Watch out for \( \nabla\cdot\boldsymbol{u}=0 \) equations.</b>
+Divergence freedom is often problematic from a numerical point
+of view.
+</div>
+
+
+<p>
+Then we test a block, which is guaranteed to never have any admon icon.
+
+<p>
+<div class="alert alert-block alert-success alert-text-small"><b>Block with title.</b>
+Here is a block of text with title. It is typeset
+<em>without any icon</em> and is useful when you want some admons with icon
+and some without. With the small font size, as used here, one can have
+more comment-style text or text that really goes deeper or talks
+about fun facts that are not strictly necessary for the main flow
+of understanding.
+</div>
+
+
+<p>
+<div class="alert alert-block alert-success alert-text-normal"><b></b>
+Here is a block of text with no title. As above, it is typeset without any icon
+and is useful when you want some admons with icon and some without.
+</div>
+
+
+<p>
+The next admonition features a title "Note, eventually!" (the comma
+must be removed in the <code>mdfbox</code> admon also in <code>graybox2</code> if
+code is present).
+
+<p>
+<!-- Note that the final ! does not appear in Sphinx and reST since -->
+<!-- those formats automatically add : to the admonition title. -->
+
+<p>
+<div class="alert alert-block alert-success alert-text-illegal-size"><b>Note, eventually!</b>
+Ah, we are soon close to the end (with illegal font size specification!).
+But first a bit of math where we define \( \theta \) and \( \boldsymbol{r} \):
+
+<p>
+$$
+\begin{align*}
+\theta &= q^2,\\
+\boldsymbol{r} &= \varrho\boldsymbol{i}
+\end{align*}
+$$
+</div>
+
+
+<p>
+<!-- Test one word with a number -->
+
+<p>
+<div class="alert alert-block alert-success alert-text-normal"><b>Point1.</b>
+Ah, we are soon close to the end.
+</div>
+
+
+<p>
+<div class="alert alert-block alert-info alert-text-normal"><b>Question.</b>
+So, how many admonition environments does Doconce support?
+</div>
+
+
+<p>
+<div class="alert alert-block alert-info alert-text-normal"><b>Question.</b>
+
+<ol>
+ <li> Once more, how many admonition environments does Doconce support?</li>
+</ol>
+</div>
+
+
+<p>
+<div class="alert alert-block alert-danger alert-text-normal"><b>Tip.</b>
+It is of outmost important to
+
+<p>
+
+<ol>
+<li> stay cool</li>
+<li> read hints and tips carefully</li>
+</ol>
+
+Because here the thing is to do
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">urllib</span>
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">grab</span>(url, filename):
+    urllib<span style="color: #666666">.</span>urlretrieve(url, filename<span style="color: #666666">=</span>filename)
+</pre></div>
+<p>
+</div>
+
+
+<p>
+Next is a warning without a title ("none" implies no title).
+
+<p>
+<div class="alert alert-block alert-danger alert-text-normal"><b></b>
+And here comes some text with bad news.
+</div>
+
+
+<h3>Going deeper environments  <a name="___sec4"></a></h3>
+
+<p>
+Here is a long notice environment with a custom title and much
+text, math and code.
+
+<p>
+<div class="alert alert-block alert-success alert-text-normal"><b>Going deeper.</b>
+We have some equations that should be preceded by much text, so the
+task is to write and write. The number of words, and not the
+meaning, is what counts here. We need desperately to fill up the
+page in the hope that some admonitions will experience a page break,
+which the LaTeX environment should handle with ease.
+
+<p>
+Let us start with some equations:
+
+<p>
+$$
+\begin{align*}
+\frac{Du}{dt} &= 0
+\\
+\frac{1}{2} &= {1/2}\\
+\frac{1}{2}\pmb{x} &= \pmb{n}
+\end{align*}
+$$
+
+
+<p>
+The implementation of such complicated equations in computer
+code is task that this "Going deeper" environment targets.
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">Dudt</span>(u):
+    r <span style="color: #666666">=</span> diff(u, t) <span style="color: #666666">+</span> u<span style="color: #666666">*</span>grad(u)
+    <span style="color: #008000; font-weight: bold">return</span> r
+
+half <span style="color: #666666">=</span> <span style="color: #666666">0.5</span>
+x <span style="color: #666666">=</span> <span style="color: #666666">2*</span>n
+</pre></div>
+<p>
+And some more text that can help going into the next page.
+Longer computer code requires vertical space:
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Diff</span>:
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__init__</span>(<span style="color: #008000">self</span>, f, h<span style="color: #666666">=1E-5</span>):
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>f <span style="color: #666666">=</span> f
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>h <span style="color: #666666">=</span> <span style="color: #008000">float</span>(h)
+
+<span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Forward1</span>(Diff):
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__call__</span>(<span style="color: #008000">self</span>, x):
+        f, h <span style="color: #666666">=</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>f, <span style="color: #008000">self</span><span style="color: #666666">.</span>h
+        <span style="color: #008000; font-weight: bold">return</span> (f(x<span style="color: #666666">+</span>h) <span style="color: #666666">-</span> f(x))<span style="color: #666666">/</span>h
+
+<span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Backward1</span>(Diff):
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__call__</span>(<span style="color: #008000">self</span>, x):
+        f, h <span style="color: #666666">=</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>f, <span style="color: #008000">self</span><span style="color: #666666">.</span>h
+        <span style="color: #008000; font-weight: bold">return</span> (f(x) <span style="color: #666666">-</span> f(x<span style="color: #666666">-</span>h))<span style="color: #666666">/</span>h
+
+<span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Central2</span>(Diff):
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__call__</span>(<span style="color: #008000">self</span>, x):
+        f, h <span style="color: #666666">=</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>f, <span style="color: #008000">self</span><span style="color: #666666">.</span>h
+        <span style="color: #008000; font-weight: bold">return</span> (f(x<span style="color: #666666">+</span>h) <span style="color: #666666">-</span> f(x<span style="color: #666666">-</span>h))<span style="color: #666666">/</span>(<span style="color: #666666">2*</span>h)
+
+<span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Central4</span>(Diff):
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__call__</span>(<span style="color: #008000">self</span>, x):
+        f, h <span style="color: #666666">=</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>f, <span style="color: #008000">self</span><span style="color: #666666">.</span>h
+        <span style="color: #008000; font-weight: bold">return</span> (<span style="color: #666666">4./3</span>)<span style="color: #666666">*</span>(f(x<span style="color: #666666">+</span>h)   <span style="color: #666666">-</span> f(x<span style="color: #666666">-</span>h))  <span style="color: #666666">/</span>(<span style="color: #666666">2*</span>h) <span style="color: #666666">-</span> \
+               (<span style="color: #666666">1./3</span>)<span style="color: #666666">*</span>(f(x<span style="color: #666666">+2*</span>h) <span style="color: #666666">-</span> f(x<span style="color: #666666">-2*</span>h))<span style="color: #666666">/</span>(<span style="color: #666666">4*</span>h)
+
+<span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Central6</span>(Diff):
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__call__</span>(<span style="color: #008000">self</span>, x):
+        f, h <span style="color: #666666">=</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>f, <span style="color: #008000">self</span><span style="color: #666666">.</span>h
+        <span style="color: #008000; font-weight: bold">return</span> (<span style="color: #666666">3./2</span>) <span style="color: #666666">*</span>(f(x<span style="color: #666666">+</span>h)   <span style="color: #666666">-</span> f(x<span style="color: #666666">-</span>h))  <span style="color: #666666">/</span>(<span style="color: #666666">2*</span>h) <span style="color: #666666">-</span> \
+               (<span style="color: #666666">3./5</span>) <span style="color: #666666">*</span>(f(x<span style="color: #666666">+2*</span>h) <span style="color: #666666">-</span> f(x<span style="color: #666666">-2*</span>h))<span style="color: #666666">/</span>(<span style="color: #666666">4*</span>h) <span style="color: #666666">+</span> \
+               (<span style="color: #666666">1./10</span>)<span style="color: #666666">*</span>(f(x<span style="color: #666666">+3*</span>h) <span style="color: #666666">-</span> f(x<span style="color: #666666">-3*</span>h))<span style="color: #666666">/</span>(<span style="color: #666666">6*</span>h)
+
+<span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Forward3</span>(Diff):
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__call__</span>(<span style="color: #008000">self</span>, x):
+        f, h <span style="color: #666666">=</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>f, <span style="color: #008000">self</span><span style="color: #666666">.</span>h
+        <span style="color: #008000; font-weight: bold">return</span> (<span style="color: #666666">-</span>(<span style="color: #666666">1./6</span>)<span style="color: #666666">*</span>f(x<span style="color: #666666">+2*</span>h) <span style="color: #666666">+</span> f(x<span style="color: #666666">+</span>h) <span style="color: #666666">-</span> <span style="color: #666666">0.5*</span>f(x) <span style="color: #666666">-</span> \
+                (<span style="color: #666666">1./3</span>)<span style="color: #666666">*</span>f(x<span style="color: #666666">-</span>h))<span style="color: #666666">/</span>h
+</pre></div>
+<p>
+And then we add a figure too.
+
+<p>
+<center><p><img src="../doc/src/manual/fig/wave1D.png" align="bottom" width=400></p></center>
+</div>
+
+
+<h3>The end  <a name="___sec5"></a></h3>
+
+<p>
+A bit of text before the summary, which we now call "Concluding remarks,
+for the novice",
+just because we can.
+
+<p>
+<div class="alert alert-block alert-warning alert-text-normal"><b>Concluding remarks, for the novice.</b>
+We can summarize the most important things with admons: they have
+a different typesetting, and they may have a symbol.
+Titles should be optional.
+</div>
+
+
+<p>
+<b>Remark.</b>
+The <code>remarks</code> and <code>hint</code> environments are not allowed outside
+exercises (and problems and projects too).
+
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+
+</body>
+</html>
+    
 
 
 ************** File: admon_mwiki.mwiki *****************
@@ -84609,7 +85691,7 @@ figure file ../doc/src/manual/fig/wave1D:
              it is recommended to comment out the title: #TITLE:
 *** warning: AUTHOR may look strange with a template -
              it is recommended to comment out all authors: #AUTHOR.
-             Better to hardcode authors in a footer in the template.
+             Usually better to hardcode authors in a footer in the template.
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in testdoc.html
 + '[' 0 -ne 0 ']'
@@ -91951,13 +93033,43 @@ figure file ../doc/src/manual/fig/wave1D:
              it is recommended to comment out the title: #TITLE:
 *** warning: AUTHOR may look strange with a template -
              it is recommended to comment out all authors: #AUTHOR.
-             Better to hardcode authors in a footer in the template.
+             Usually better to hardcode authors in a footer in the template.
 *** warning: wrong text size "illegal-size" specified in notice environment!
     must be "large" or "small" - will be set to normal
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in admon.html
 + '[' 0 -ne 0 ']'
 + cp admon.html admon_vagrant.html
++ system doconce format html admon --html_style=bootstrap --pygments_html_style=default --admon_style=bootstrap_alert
++ doconce format html admon --html_style=bootstrap --pygments_html_style=default --admon_style=bootstrap_alert
+*** warning: unrecognized command-line option
+    --admon_style=bootstrap_alert
+running preprocess -DFORMAT=html -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
+translating doconce text in tmp_preprocess__admon.do.txt to html
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
+figure file ../doc/src/manual/fig/wave1D:
+    can use ../doc/src/manual/fig/wave1D.png for format html
+*** warning: wrong text size "illegal-size" specified in notice environment!
+    must be "large" or "small" - will be set to normal
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
+output in admon.html
++ '[' 0 -ne 0 ']'
++ cp admon.html admon_bootstrap_alert.html
++ system doconce format html admon --html_style=bootswatch --pygments_html_style=default --admon_style=bootstrap_panel
++ doconce format html admon --html_style=bootswatch --pygments_html_style=default --admon_style=bootstrap_panel
+*** warning: unrecognized command-line option
+    --admon_style=bootstrap_panel
+running preprocess -DFORMAT=html -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
+translating doconce text in tmp_preprocess__admon.do.txt to html
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
+figure file ../doc/src/manual/fig/wave1D:
+    can use ../doc/src/manual/fig/wave1D.png for format html
+*** warning: wrong text size "illegal-size" specified in notice environment!
+    must be "large" or "small" - will be set to normal
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
+output in admon.html
++ '[' 0 -ne 0 ']'
++ cp admon.html admon_bootswatch_panel.html
 + system doconce sphinx_dir dirname=tmp_admon admon
 + doconce sphinx_dir dirname=tmp_admon admon
 Making tmp_admon
@@ -92131,8 +93243,22 @@ figure file ../doc/src/manual/fig/wave1D:
  ...for wikipedia/wikibooks you must upload image file wave1D.png to
     common.wikimedia.org
  ...for now we use local file Wave1D.png
+
+...doconce translation: handled figures 68.6 s
+
+...doconce translation: handled handled lists 68.6 s
+
+...doconce translation: handled inline substitutions 68.6 s
+
+...doconce translation: handled insertion of verbatim and latex blocks 68.6 s
 *** warning: wrong text size "illegal-size" specified in notice environment!
     must be "large" or "small" - will be set to normal
+
+...doconce translation: handled !benvir/!eenvir constructions 68.6 s
+
+
+...doconce format used 68.6 s to translate the document (395 lines)
+
 output in admon.mwiki
 + '[' 0 -ne 0 ']'
 + cp admon.mwiki admon_mwiki.mwiki
@@ -92145,7 +93271,7 @@ translating doconce text in tmp_preprocess__admon.do.txt to plain
 output in admon.txt
 + '[' 0 -ne 0 ']'
 + cp admon.txt admon_paragraph.txt
-+ cp -fr admon_apricot.html admon_colors.html admon_gray.html admon_lyx.html admon_paragraph.html admon_vagrant.html admon_yellow.html admon_colors1.pdf admon_colors2.pdf admon_graybox2.pdf admon_grayicon.pdf admon_mdfbox.pdf admon_paragraph.pdf admon_yellowicon.pdf admon_mwiki.mwiki admon_paragraph.txt admon_sphinx admon_demo/
++ cp -fr admon_apricot.html admon_bootstrap_alert.html admon_bootswatch_panel.html admon_colors.html admon_gray.html admon_lyx.html admon_paragraph.html admon_vagrant.html admon_yellow.html admon_colors1.pdf admon_colors2.pdf admon_graybox2.pdf admon_grayicon.pdf admon_mdfbox.pdf admon_paragraph.pdf admon_yellowicon.pdf admon_mwiki.mwiki admon_paragraph.txt admon_sphinx admon_demo/
 + '[' -d latex_figs ']'
 + echo 'BUG: latex_figs was made by some non-latex format...'
 BUG: latex_figs was made by some non-latex format...
@@ -96290,16 +97416,6 @@ figure file http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media
     found!
 ... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.ogg ...
     found!
-
-...doconce translation: handled inline substitutions 15.5 s
-
-...doconce translation: handled insertion of verbatim and latex blocks 15.5 s
-
-...doconce translation: handled !benvir/!eenvir constructions 15.5 s
-
-
-...doconce format used 15.5 s to translate the document (173 lines)
-
 output in tmp2.rst
 + doconce format pdflatex tmp2 --device=paper
 translating doconce text in tmp2.do.txt to pdflatex

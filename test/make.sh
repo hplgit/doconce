@@ -224,6 +224,8 @@ doconce format pandoc $name
 doconce md2latex $name
 
 # Test admonitions
+
+# LaTeX admon styles
 admon_tps="colors1 mdfbox paragraph graybox2 yellowicon grayicon colors2"
 for admon_tp in $admon_tps; do
 if [ $admon_tp = 'mdfbox' ]; then
@@ -252,6 +254,7 @@ doconce format pdflatex admon --latex_admon=mdfbox --latex_admon_color=1,1,1 --l
 doconce ptex2tex admon pycod2=minted pypro2=minted pycod=Verbatim pypro=Verbatim
 cp admon.tex admon_double_envirs.tex
 
+# Test HTML admon styles
 system doconce format html admon --html_admon=lyx --html_style=blueish2
 cp admon.html admon_lyx.html
 
@@ -272,6 +275,12 @@ cp admon.html admon_apricot.html
 
 system doconce format html admon --html_style=vagrant --pygments_html_style=default --html_template=template_vagrant.html
 cp admon.html admon_vagrant.html
+
+system doconce format html admon --html_style=bootstrap --pygments_html_style=default --admon_style=bootstrap_alert
+cp admon.html admon_bootstrap_alert.html
+
+system doconce format html admon --html_style=bootswatch --pygments_html_style=default --admon_style=bootstrap_panel
+cp admon.html admon_bootswatch_panel.html
 
 system doconce sphinx_dir dirname=tmp_admon admon
 system python automake_sphinx.py
