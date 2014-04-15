@@ -42,7 +42,7 @@ such that the verbatim environments become like
     ('--html_output=',
      'Alternative basename of files associated with the HTML format.'),
     ('--html_style=',
-     'Name of theme for HTML style (solarized, vagrant, bloodish, ...).'),
+     'Name of theme for HTML style (solarized, vagrant, bloodish, bootstrap, bootswatch, bootswatch_*, ...).'),
     ('--html_template=',
      """Specify an HTML template with header/footer in which the doconce
 document is embedded."""),
@@ -53,7 +53,10 @@ document is embedded."""),
     ('--html_video_autoplay=',
      """True for autoplay when HTML is loaded, otherwise False (default)."""),
     ('--html_admon=',
-     "Type of admonition and color: white, colors, gray, yellow."),
+     """\
+Type of admonition and color: white, colors, gray, yellow.
+For html_style=vagrant,bootstrap,bootswatch,bootswatch_*:
+boostrap_panel, bootstrap_alert."""),
     ('--html_admon_shadow',
      'Add a shadow effect to HTML admon boxes (gray, yellow, apricot).'),
     ('--html_admon_bg_color=',
@@ -2257,7 +2260,7 @@ def doconce_html_split(header, parts, footer, basename, filename):
     # different navigation etc.
     header_str = '\n'.join(header)
     vagrant = 'builds on the Twitter Bootstrap style' in header_str
-    bootstrap = '<!-- Boostrap Bootswatch' in header_str
+    bootstrap = '<!-- Bootstrap style: boots' in header_str
 
     if vagrant or bootstrap:
         local_navigation_pics = False    # navigation is in the template
@@ -2309,8 +2312,8 @@ def doconce_html_split(header, parts, footer, basename, filename):
 
 
     # Fix internal links to point to the right splitted file
-    name_pattern = r'<a name="(.+?)">'
-    href_pattern = r'<a href="#(.+?)">'
+    name_pattern = r'<a name="(.+?)"'
+    href_pattern = r'<a href="#(.+?)"'
     parts_name = [re.findall(name_pattern, ''.join(part)) for part in parts]
     parts_name.append(re.findall(name_pattern, ''.join(header)))
     parts_name.append(re.findall(name_pattern, ''.join(footer)))
