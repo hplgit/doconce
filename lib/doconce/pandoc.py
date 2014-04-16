@@ -84,17 +84,18 @@ def pandoc_code(filestr, code_blocks, code_block_types,
 
     if not option('strict_markdown_output'):
         # Mapping of envirs to correct Pandoc verbatim environment
-        defs = dict(cod='Python', pycod='Python', cppcod='Cpp',
-                    fcod='Fortran', ccod='C',
-                    pro='Python', pypro='Python', cpppro='Cpp',
-                    fpro='Fortran', cpro='C',
+        defs = dict(cod='Python', pycod='Python',
+                    cppcod='Cpp', fcod='Fortran', ccod='C',
+                    pro='Python', pypro='Python',
+                    cpppro='Cpp', fpro='Fortran', cpro='C',
                     rbcod='Ruby', rbpro='Ruby',
                     plcod='Perl', plpro='Perl',
                     # sys, dat, csv, txt: no support for pure text,
                     # just use a plain text block
                     #sys='Bash',
-                    pyoptpro='Python', pyscpro='Python')
-            # (the "python" typesetting is neutral if the text
+                    pyoptpro='Python', pyscpro='Python',
+                    ipy='Python', pyshell='python')
+            # (the "Python" typesetting is neutral if the text
             # does not parse as python)
 
         github_md = option('github_md')

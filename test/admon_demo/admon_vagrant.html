@@ -27,8 +27,15 @@ Footer at the end:
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: http://code.google.com/p/doconce/" />
 
-<link rel="stylesheet" href="style_vagrant/css/twitter_bootstrap.css">
-<link rel="stylesheet" href="style_vagrant/css/vagrant.css">
+<!-- If you copy the css subdirectory (and, e.g., make optional edits):
+<link rel="stylesheet" href="css/twitter_bootstrap.css">
+<link rel="stylesheet" href="css/vagrant.css">
+Otherwise, rely on the URLs below (vagrant.css adapted to Doconce layout)
+-->
+
+<link rel="stylesheet" href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_vagrant/css/twitter_bootstrap.css">
+<link rel="stylesheet" href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_vagrant/css/vagrant.css">
+
 <!-- Define color of headings here (last definition counts) -->
 <style type="text/css">
 h1, h2, h3, h4, h5, h6 {
@@ -40,7 +47,7 @@ h1, h2, h3, h4, h5, h6 {
 </head>
 <body>
 
-<title> The end </title>
+<title>Testing admons</title>
 
 <div class="container">
  <div class="row Header with-border">
@@ -74,12 +81,12 @@ h1, h2, h3, h4, h5, h6 {
      <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2b</a></li>
      -->
      <!-- Doconce automatically fills in the table of contents -->
-          <!-- vagrant nav toc: " Introduction " --> <li>  <a href="#___sec0"> Introduction </a>
-     <!-- vagrant nav toc: " Code " --> <li> &nbsp;  <a href="#___sec1"> Code </a>
-     <!-- vagrant nav toc: " Quotes and boxes " --> <li> &nbsp;  <a href="#___sec2"> Quotes and boxes </a>
-     <!-- vagrant nav toc: " Admonitions " --> <li> &nbsp;  <a href="#___sec3"> Admonitions </a>
-     <!-- vagrant nav toc: " Going deeper environments " --> <li> &nbsp;  <a href="#___sec4"> Going deeper environments </a>
-     <!-- vagrant nav toc: " The end " --> <li> &nbsp;  <a href="#___sec5"> The end </a>
+          <!-- navigation toc: " Introduction " --> <li>  <a href="#___sec0"> Introduction </a></li>
+     <!-- navigation toc: " Code " --> <li> &nbsp;  <a href="#___sec1"> Code </a></li>
+     <!-- navigation toc: " Quotes and boxes " --> <li> &nbsp;  <a href="#___sec2"> Quotes and boxes </a></li>
+     <!-- navigation toc: " Admonitions " --> <li> &nbsp;  <a href="#___sec3"> Admonitions </a></li>
+     <!-- navigation toc: " Going deeper environments " --> <li> &nbsp;  <a href="#___sec4"> Going deeper environments </a></li>
+     <!-- navigation toc: " The end " --> <li> &nbsp;  <a href="#___sec5"> The end </a></li>
 
     </ul>
    </div>
@@ -142,7 +149,8 @@ $$
 
 <!-- ------------------- main content ---------------------- -->
 
-<h1>Testing admons</h1>
+
+<title>Testing admons</title>
 
 <center><h1>Testing admons</h1></center>  <!-- document title -->
 
@@ -156,6 +164,8 @@ $$
 
 <p>
 <!-- institution(s) -->
+<p>
+<!-- !split -->
 
 <h2>Introduction  <a name="___sec0"></a></h2>
 First some ordinary text to compare font sizes in admonitions
@@ -270,7 +280,7 @@ Let's begin a new paragraph and show a box with code only:
 Let us start with a plain warning environment.
 
 <p>
-<div class="alert alert-block alert-warning alert-text-normal"><b>Warning.</b>
+<div class="alert alert-block alert-danger alert-text-normal"><b>Warning.</b>
 And here is a warning about something to pay attention to. We
 test how the heading behave and add quite some extra texts
 in comparison with the other admons.
@@ -296,7 +306,7 @@ And more and more text.
 Test warning with title:
 
 <p>
-<div class="alert alert-block alert-warning alert-text-large"><b>Title ending with math \( \sqrt{2}\approx 1.4 \).</b>
+<div class="alert alert-block alert-danger alert-text-large"><b>Title ending with math \( \sqrt{2}\approx 1.4 \).</b>
 And here comes some text with bad news in larger font.
 
 <p>
@@ -324,7 +334,7 @@ And a complete program
 Test warning with large title with math:
 
 <p>
-<div class="alert alert-block alert-warning alert-text-large"><b>Watch out for \( \nabla\cdot\boldsymbol{u}=0 \) equations.</b>
+<div class="alert alert-block alert-danger alert-text-large"><b>Watch out for \( \nabla\cdot\boldsymbol{u}=0 \) equations.</b>
 Divergence freedom is often problematic from a numerical point
 of view.
 </div>
@@ -334,7 +344,7 @@ of view.
 Then we test a block, which is guaranteed to never have any admon icon.
 
 <p>
-<div class="alert alert-block alert-block alert-text-small"><b>Block with title.</b>
+<div class="alert alert-block alert-success alert-text-small"><b>Block with title.</b>
 Here is a block of text with title. It is typeset
 <em>without any icon</em> and is useful when you want some admons with icon
 and some without. With the small font size, as used here, one can have
@@ -345,7 +355,7 @@ of understanding.
 
 
 <p>
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-success alert-text-normal"><b></b>
 Here is a block of text with no title. As above, it is typeset without any icon
 and is useful when you want some admons with icon and some without.
 </div>
@@ -361,7 +371,7 @@ code is present).
 <!-- those formats automatically add : to the admonition title. -->
 
 <p>
-<div class="alert alert-block alert-notice alert-text-illegal-size"><b>Note, eventually!</b>
+<div class="alert alert-block alert-success alert-text-illegal-size"><b>Note, eventually!</b>
 Ah, we are soon close to the end (with illegal font size specification!).
 But first a bit of math where we define \( \theta \) and \( \boldsymbol{r} \):
 
@@ -379,19 +389,19 @@ $$
 <!-- Test one word with a number -->
 
 <p>
-<div class="alert alert-block alert-notice alert-text-normal"><b>Point1.</b>
+<div class="alert alert-block alert-success alert-text-normal"><b>Point1.</b>
 Ah, we are soon close to the end.
 </div>
 
 
 <p>
-<div class="alert alert-block alert-question alert-text-normal"><b>Question.</b>
+<div class="alert alert-block alert-info alert-text-normal"><b>Question.</b>
 So, how many admonition environments does Doconce support?
 </div>
 
 
 <p>
-<div class="alert alert-block alert-question alert-text-normal"><b>Question.</b>
+<div class="alert alert-block alert-info alert-text-normal"><b>Question.</b>
 
 <ol>
  <li> Once more, how many admonition environments does Doconce support?</li>
@@ -400,7 +410,7 @@ So, how many admonition environments does Doconce support?
 
 
 <p>
-<div class="alert alert-block alert-warning alert-text-normal"><b>Tip.</b>
+<div class="alert alert-block alert-danger alert-text-normal"><b>Tip.</b>
 It is of outmost important to
 
 <p>
@@ -428,7 +438,7 @@ Because here the thing is to do
 Next is a warning without a title ("none" implies no title).
 
 <p>
-<div class="alert alert-block alert-warning alert-text-normal"><b></b>
+<div class="alert alert-block alert-danger alert-text-normal"><b></b>
 And here comes some text with bad news.
 </div>
 
@@ -440,7 +450,7 @@ Here is a long notice environment with a custom title and much
 text, math and code.
 
 <p>
-<div class="alert alert-block alert-notice alert-text-normal"><b>Going deeper.</b>
+<div class="alert alert-block alert-success alert-text-normal"><b>Going deeper.</b>
 We have some equations that should be preceded by much text, so the
 task is to write and write. The number of words, and not the
 meaning, is what counts here. We need desperately to fill up the
@@ -525,7 +535,7 @@ Longer computer code requires vertical space:
 And then we add a figure too.
 
 <p>
-<center><p><img src="../doc/src/manual/fig/wave1D.png" align="bottom" width=400></p></center>
+<center><p><img src="../../doc/src/manual/fig/wave1D.png" align="bottom" width=400></p></center>
 </div>
 
 
@@ -537,7 +547,7 @@ for the novice",
 just because we can.
 
 <p>
-<div class="alert alert-block alert-summary alert-text-normal"><b>Concluding remarks, for the novice.</b>
+<div class="alert alert-block alert-warning alert-text-normal"><b>Concluding remarks, for the novice.</b>
 We can summarize the most important things with admons: they have
 a different typesetting, and they may have a symbol.
 Titles should be optional.

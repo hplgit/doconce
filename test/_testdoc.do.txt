@@ -154,6 +154,26 @@ cpdef f(double x):
     return x + 1
 !ec
 
+Standard Python shell sessions:
+
+!bc ipy
+>>> from numpy import sin
+>>> # Some comment
+>>> x = sin(1.2); print 'Value:', x
+Value: 0.932039085967
+!ec
+
+IPython sessions:
+
+!bc ipy
+In [1]: from numpy import sin
+
+In [2]: # Some comment
+
+In [3]: x = sin(1.2); print 'Value:', x
+Value: 0.932039085967
+!ec
+
 # This one tests a + sign before a code environment
 C++:
 !bc cpppro

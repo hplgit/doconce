@@ -25,6 +25,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
         <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
         <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
@@ -81,7 +82,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Author:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Apr 3, 2014</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Apr 16, 2014</td>
 </tr>
 </tbody>
 </table>
@@ -518,7 +519,7 @@ pdflatex`, <tt class="docutils literal"><span class="pre">pandoc</span></tt>, an
 formats will just display the raw LaTeX code.</p>
 <p>Inline expressions are written in the standard
 LaTeX way with the mathematics surrounded by dollar signs, as in
-<span class="math">Ax=b</span>. To help increase readability in other formats than <tt class="docutils literal"><span class="pre">sphinx</span></tt>,
+<span class="math">\(Ax=b\)</span>. To help increase readability in other formats than <tt class="docutils literal"><span class="pre">sphinx</span></tt>,
 <tt class="docutils literal"><span class="pre">latex</span></tt>, and <tt class="docutils literal"><span class="pre">pdflatex</span></tt>, inline mathematics may have a more human
 readable companion expression. The syntax is like</p>
 <div class="highlight-text"><div class="highlight"><pre>$\sin(\norm{\bf u})$|$sin(||u||)$
@@ -541,9 +542,9 @@ and
 </div>
 <p>This LaTeX code gets rendered as</p>
 <div class="math">
-<p><span class="math">\nabla\cdot \pmb{u} &amp;= 0,\\
-\nabla\times \pmb{u} &amp;= 0.</span></p>
-</div><p>Here is a single equation:</p>
+\[\begin{split}\nabla\cdot \pmb{u} &amp;= 0,\\
+\nabla\times \pmb{u} &amp;= 0.\end{split}\]</div>
+<p>Here is a single equation:</p>
 <div class="highlight-text"><div class="highlight"><pre>!bt
 \[ \frac{\partial\pmb{u}}{\partial t} + \pmb{u}\cdot\nabla\pmb{u} = 0.\]
 !et
@@ -551,8 +552,8 @@ and
 </div>
 <p>which results in</p>
 <div class="math">
-<p><span class="math">\frac{\partial\pmb{u}}{\partial t} + \pmb{u}\cdot\nabla\pmb{u} = 0.</span></p>
-</div><p>Any LaTeX syntax is accepted, but if output in the <tt class="docutils literal"><span class="pre">sphinx</span></tt>, <tt class="docutils literal"><span class="pre">pandoc</span></tt>,
+\[\frac{\partial\pmb{u}}{\partial t} + \pmb{u}\cdot\nabla\pmb{u} = 0.\]</div>
+<p>Any LaTeX syntax is accepted, but if output in the <tt class="docutils literal"><span class="pre">sphinx</span></tt>, <tt class="docutils literal"><span class="pre">pandoc</span></tt>,
 <tt class="docutils literal"><span class="pre">mwiki</span></tt>, <tt class="docutils literal"><span class="pre">html</span></tt>, or <tt class="docutils literal"><span class="pre">ipynb</span></tt> formats
 is also important, one should follow these rules:</p>
 <blockquote>

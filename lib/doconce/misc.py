@@ -42,7 +42,13 @@ such that the verbatim environments become like
     ('--html_output=',
      'Alternative basename of files associated with the HTML format.'),
     ('--html_style=',
-     'Name of theme for HTML style (solarized, vagrant, bloodish, ...).'),
+     'Name of theme for HTML style (solarized, vagrant, bloodish, bootstrap, bootswatch, bootswatch_*, ...).'),
+    ('--bootstrap_FlatUI',
+     'Add the Flat UI modification of standard Bootstrap layout themes.'),
+    ('--html_code_style=',
+     'off, inherit, transparent: enable normal inline verbatim font where foreground and background color is inherited from the surroundnings (e.g., to avoid the red Boostrap color). on: default.'),
+    ('--html_pre_style=',
+     'off, inherit: let code blocks inside <pre> tags have foreground and background color inherited from the surroundnings. on: default.'),
     ('--html_template=',
      """Specify an HTML template with header/footer in which the doconce
 document is embedded."""),
@@ -53,7 +59,10 @@ document is embedded."""),
     ('--html_video_autoplay=',
      """True for autoplay when HTML is loaded, otherwise False (default)."""),
     ('--html_admon=',
-     "Type of admonition and color: white, colors, gray, yellow."),
+     """\
+Type of admonition and color: white, colors, gray, yellow.
+For html_style=vagrant,bootstrap,bootswatch,bootswatch_*:
+boostrap_panel, bootstrap_alert."""),
     ('--html_admon_shadow',
      'Add a shadow effect to HTML admon boxes (gray, yellow, apricot).'),
     ('--html_admon_bg_color=',
@@ -1263,11 +1272,23 @@ def ptex2tex():
                 # Fix value=minted and value=ans*:
                 # they need the language explicitly
                 if value == 'minted':
-                    languages = dict(py='python', cy='cython', f='fortran',
-                                     c='c', cpp='c++', sh='bash', rst='rst',
-                                     m ='matlab', pl='perl', swig='c++',
-                                     latex='latex', html='html', js='js',
-                                     xml='xml', rb='ruby')
+                    languages = dict(
+                        py='python', cy='cython', f='fortran',
+                        c='c', cpp='c++', sh='bash', rst='rst',
+                        m ='matlab', pl='perl', swig='c++',
+                        latex='latex', html='html', js='js',
+                        xml='xml', rb='ruby', sys='console',
+                        dat='text', txt='text', csv='text',
+                        pyshell='python', ipy='ipython',
+                        # pyopt and pysc are treated in latex.py
+                        )
+                    from pygments.lexers import get_lexer_by_name
+                    try:
+                        get_lexer_by_name('ipython')
+                    except:
+                        # need sudo pip install -e git+https://bitbucket.org/sanguineturtle/pygments-ipython-console#egg=pygments-ipython-console'
+                        types2languages['ipy'] = 'python'
+
                     if envir == 'envir':
                         for lang in languages:
                             begin = '\\' + 'begin{minted}[fontsize=\\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{' + languages[lang] + '}'
@@ -1283,10 +1304,12 @@ def ptex2tex():
                                 end = '\\' + 'end{' + value + '}'
                                 envir_user_spec.append((envir, begin, end))
                 elif value.startswith('ans'):
-                    languages = dict(py='python', cy='python', f='fortran',
-                                     cpp='c++', sh='bash', swig='swigcode',
-                                     ufl='uflcode', m='matlab', c='c++',
-                                     latex='latexcode', xml='xml')
+                    languages = dict(
+                        py='python', cy='python', f='fortran',
+                        cpp='c++', sh='bash', swig='swigcode',
+                        ufl='uflcode', m='matlab', c='c++',
+                        latex='latexcode', xml='xml',
+                        pyopt='python', pyshell='python', ipy='python')
                     if envir == 'envir':
                         for lang in languages:
                             language = languages[lang]
@@ -1989,7 +2012,7 @@ def split_html():
         basename = filename[:-5]
 
     header, parts, footer = get_header_parts_footer(filename, "html")
-    files = doconce_html_split(header, parts, footer, basename, filename)
+    files = doconce_split_html(header, parts, footer, basename, filename)
     print '%s now links to the generated files' % filename
     print ', '.join(files)
 
@@ -2069,7 +2092,7 @@ def slides_html():
 
     filestr = None
     if slide_type == 'doconce':
-        doconce_html_split(header, parts, footer, basename, filename)
+        doconce_split_html(header, parts, footer, basename, filename)
     elif slide_type in ('reveal', 'csss', 'dzslides', 'deck', 'html5slides'):
         filestr = generate_html5_slides(header, parts, footer,
                                         basename, filename, slide_type)
@@ -2250,16 +2273,18 @@ def get_header_parts_footer(filename, format='html'):
     return header, parts, footer
 
 
-def doconce_html_split(header, parts, footer, basename, filename):
+def doconce_split_html(header, parts, footer, basename, filename):
     """Native doconce style splitting of HTML file into parts."""
     import html
     # Check if we use a vagrant template, because that leads to
     # different navigation etc.
-    vagrant = 'builds on the Twitter Bootstrap style' in '\n'.join(header)
+    header_str = '\n'.join(header)
+    vagrant = 'builds on the Twitter Bootstrap style' in header_str
+    bootstrap = '<!-- Bootstrap style: boots' in header_str
 
-    if vagrant:
+    if vagrant or bootstrap:
         local_navigation_pics = False    # navigation is in the template
-        vagrant_navigation_passive = """\
+        bootstrap_navigation_passive = """\
 <!-- Navigation buttons at the bottom:
      Doconce will automatically fill in the right URL in these
      buttons when doconce html_split is run. Otherwise they are empty.
@@ -2273,18 +2298,18 @@ def doconce_html_split(header, parts, footer, basename, filename):
 </ul>
 -->
 """
-        vagrant_navigation_active = """\
+        bootstrap_navigation_active = """\
 <ul class="pager">
 %s
 %s
 </ul>
 """
-        vagrant_navigation_prev = """\
+        bootstrap_navigation_prev = """\
   <li class="previous">
     <a href="%s">&larr; %s</a>
   </li>
 """
-        vagrant_navigation_next = """\
+        bootstrap_navigation_next = """\
   <li class="next">
     <a href="%s">%s &rarr;</a>
   </li>
@@ -2307,8 +2332,8 @@ def doconce_html_split(header, parts, footer, basename, filename):
 
 
     # Fix internal links to point to the right splitted file
-    name_pattern = r'<a name="(.+?)">'
-    href_pattern = r'<a href="#(.+?)">'
+    name_pattern = r'<a name="([^"]+?)"'
+    href_pattern = r'<a href="#([^"]+?)"'
     parts_name = [re.findall(name_pattern, ''.join(part)) for part in parts]
     parts_name.append(re.findall(name_pattern, ''.join(header)))
     parts_name.append(re.findall(name_pattern, ''.join(footer)))
@@ -2442,7 +2467,7 @@ def doconce_html_split(header, parts, footer, basename, filename):
         lines.append('<a name="part%04d"></a>\n' % pn)
 
         # Decoration line?
-        if header_part_line and not vagrant:
+        if header_part_line and not (vagrant or bootstrap):
             if local_navigation_pics:
                 header_part_line_filename = html_imagefile(header_part_line)
             else:
@@ -2456,14 +2481,23 @@ def doconce_html_split(header, parts, footer, basename, filename):
         next_part_filename = _part_filename % (basename, pn+1) + '.html'
         generated_files.append(part_filename)
 
-        if vagrant:
+        if vagrant or bootstrap:
             # Make navigation arrows
             prev_ = next_ = ''
+            # Add jumbotron button reference on first page
+            if pn == 0:
+                for i in range(len(part)):
+                    if part[i].startswith('<!-- potential-jumbotron-button -->'):
+                        part[i] = part[i].replace(
+                              '<!-- potential-jumbotron-button -->',
+                              '\n\n<p><a href="%s" class="btn btn-primary btn-lg">Read &raquo;</a></p>\n\n' % next_part_filename)
+                        break
+
             if pn > 0:
-               prev_ = vagrant_navigation_prev % (prev_part_filename, "Prev")
+               prev_ = bootstrap_navigation_prev % (prev_part_filename, "Prev")
             if pn < len(parts)-1:
-               next_ = vagrant_navigation_next % (next_part_filename, "Next")
-            buttons = vagrant_navigation_active % (prev_, next_)
+               next_ = bootstrap_navigation_next % (next_part_filename, "Next")
+            buttons = bootstrap_navigation_active % (prev_, next_)
         else:
             # Simple navigation buttons at the top and bottom of the page
             lines.append('<!-- begin top navigation -->') # for easy removal
@@ -2486,8 +2520,10 @@ def doconce_html_split(header, parts, footer, basename, filename):
         lines.append('<p>\n')
         if vagrant:
             footer_text = ''.join(footer).replace(
-                vagrant_navigation_passive, buttons)
+                bootstrap_navigation_passive, buttons)
             lines += footer_text.splitlines(True)
+        elif bootstrap:
+            lines += buttons.splitlines(True) + footer
         else:
             lines.append('<!-- begin bottom navigation -->')
             if pn > 0:

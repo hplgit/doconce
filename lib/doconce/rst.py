@@ -3,6 +3,7 @@ from common import remove_code_and_tex, insert_code_and_tex, indent_lines, \
     table_analysis, plain_exercise, bibliography, \
     cite_with_multiple_args2multiple_cites, _abort
 from html import html_movie
+from doconce import _abort
 
 # replacement patterns for substitutions of inline tags
 def rst_figure(m):

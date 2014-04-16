@@ -224,6 +224,8 @@ doconce format pandoc $name
 doconce md2latex $name
 
 # Test admonitions
+
+# LaTeX admon styles
 admon_tps="colors1 mdfbox paragraph graybox2 yellowicon grayicon colors2"
 for admon_tp in $admon_tps; do
 if [ $admon_tp = 'mdfbox' ]; then
@@ -251,7 +253,9 @@ done
 doconce format pdflatex admon --latex_admon=mdfbox --latex_admon_color=1,1,1 --latex_admon_envir_map=2
 doconce ptex2tex admon pycod2=minted pypro2=minted pycod=Verbatim pypro=Verbatim
 cp admon.tex admon_double_envirs.tex
+rm -rf latex_figs
 
+# Test HTML admon styles
 system doconce format html admon --html_admon=lyx --html_style=blueish2
 cp admon.html admon_lyx.html
 
@@ -270,8 +274,15 @@ cp admon.html admon_yellow.html
 system doconce format html admon --html_admon=apricot --html_style=solarized
 cp admon.html admon_apricot.html
 
-system doconce format html admon --html_style=vagrant --pygments_html_style=default --html_template=style_vagrant/template_vagrant.html
+system doconce format html admon --html_style=vagrant --pygments_html_style=default --html_template=template_vagrant.html
 cp admon.html admon_vagrant.html
+
+system doconce format html admon --html_style=bootstrap --pygments_html_style=default --html_admon=bootstrap_alert
+cp admon.html admon_bootstrap_alert.html
+doconce split_html admon_bootstrap_alert.html
+
+system doconce format html admon --html_style=bootswatch --pygments_html_style=default --html_admon=bootstrap_panel
+cp admon.html admon_bootswatch_panel.html
 
 system doconce sphinx_dir dirname=tmp_admon admon
 system python automake_sphinx.py
@@ -284,7 +295,12 @@ cp admon.mwiki admon_mwiki.mwiki
 system doconce format plain admon
 cp admon.txt admon_paragraph.txt
 
-cp -fr admon_*.html admon_*.pdf admon_*.*wiki admon_*.txt admon_sphinx admon_demo/
+cp -fr admon_*.html admon_*.pdf admon_*.*wiki admon_*.txt ._admon_*.html admon_sphinx admon_demo/
+cd admon_demo
+doconce replace '../doc/src/manual/fig/wave1D' '../../doc/src/manual/fig/wave1D' *.html .*.html
+rm -rf *~
+cd ..
+
 
 #google-chrome admon_*.html
 #for pdf in admon_*.pdf; do evince $pdf; done
@@ -293,6 +309,11 @@ if [ -d latex_figs ]; then
     echo "BUG: latex_figs was made by some non-latex format..."
 fi
 
+# Test Bootstrap HTML styles
+system doconce format html test_boots --html_style=bootswatch_journal --pygments_html_style=default --html_admon=bootstrap_panel
+doconce split_html test_boots.html
+
+# Test GitHub-extended Markdown
 system doconce format pandoc github_md.do.txt --github_md
 
 # Test movie handling

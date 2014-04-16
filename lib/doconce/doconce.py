@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+global dofile_basename
+
 import re, os, sys, shutil, commands, pprint, time, glob, codecs
 try:
     from collections import OrderedDict   # v2.7 and v3.1
@@ -2169,7 +2171,9 @@ def handle_index_and_bib(filestr, format, has_title):
     pattern_def = '^ *\[\^(?P<name>.+?)\]:(?P<text>.+?)(?=(\n\n|\[\^|\Z))'
     #footnotes = {name: footnote for name, footnote, lookahead in
     #             re.findall(pattern_def, filestr, flags=re.MULTILINE|re.DOTALL)}
-    pattern_footnote = r'(?P<footnote> *\[\^(?P<name>.+?)\](?=[^:]))'
+    #pattern_footnote = r'(?P<footnote> *\[\^(?P<name>.+?)\](?=([^:]))'
+    # Footnote pattern has a word prior to the footnote [^name]
+    pattern_footnote = r'(?<=\w)(?P<footnote> *\[\^(?P<name>.+?)\])'
     # Keep footnotes for pandoc, plain text
     # Make a simple transformation for rst, sphinx
     # Transform for latex: remove definition, insert \footnote{...}
@@ -2407,7 +2411,9 @@ def inline_tag_subst(filestr, format):
     # that everything is conveniently defined here
     # 1. Quotes around normal text in LaTeX style:
     pattern = "``([A-Za-z][A-Za-z0-9\s,.;?!/:'() -]*?)''"
-    if format not in ('pdflatex', 'latex'):
+    if format in ('html',):
+        filestr = re.sub(pattern, '&quot;\g<1>&quot;', filestr)
+    elif format not in ('pdflatex', 'latex'):
         filestr = re.sub(pattern, '"\g<1>"', filestr)
 
     # Treat tags that have format-dependent typesetting

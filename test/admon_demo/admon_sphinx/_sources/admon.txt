@@ -5,7 +5,9 @@ Testing admons
 ==============
 
 :Author: hpl
-:Date: Apr 3, 2014
+:Date: Apr 16, 2014
+
+.. !split
 
 Introduction
 ============

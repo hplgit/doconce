@@ -248,20 +248,33 @@ css_bloodish = """\
 # too small margin bottom: h1 { font-size: 1.8em; color: #1e36ce; margin-bottom: 3px; }
 
 
+def toc2html():
+    global tocinfo  # computed elsewhere
+    level_min = tocinfo['highest level']
+    toc_html = ''
+    for title, level, label, href in tocinfo['sections']:
+        nspaces = 1
+        indent = '&nbsp; '*(nspaces*(level - level_min))
+        toc_html += '     <!-- navigation toc: "%s" --> <li> %s <a href="#%s">%s</a></li>\n' % (title, indent, href, title)
+    return toc_html
+
+
 def html_code(filestr, code_blocks, code_block_types,
               tex_blocks, format):
     """Replace code and LaTeX blocks by html environments."""
+    html_style = option('html_style=', '')
 
     # Mapping from envir (+cod/pro if present) to pygment style
     types2languages = dict(py='python', cy='cython', f='fortran',
                            c='c', cpp='c++', sh='bash', rst='rst',
-                           m ='matlab', pl='perl', rb='ruby',
+                           m='matlab', pl='perl', rb='ruby',
                            swig='c++', latex='latex', tex='latex',
                            html='html', xml='xml',
                            js='js',
                            sys='console', # sys='text', sys='bash'
                            dat='text', txt='text', csv='text',
                            cc='txt', ccq='text',
+                           pyshell='python', ipy='ipython',
                            pyopt='python', pysc='python')
     try:
         import pygments as pygm
@@ -275,6 +288,18 @@ def html_code(filestr, code_blocks, code_block_types,
     if option('no_pygments_html'):
         pygm = None
     if pygm is not None:
+        # Note: ipython pygments requires
+        # https://bitbucket.org/sanguineturtle/pygments-ipython-console
+        if 'ipy' in code_block_types:
+            try:
+                get_lexer_by_name('ipython')
+            except:
+                print '*** warning: !bc ipy used for IPython sessions, but'
+                print '    ipython is not supported for syntax highlighting!'
+                print '    install'
+                print '    sudo pip install -e git+https://bitbucket.org/sanguineturtle/pygments-ipython-console#egg=pygments-ipython-console'
+                types2languages['ipy'] = 'python'
+
         pygm_style = option('pygments_html_style=', default=None)
         if pygm_style is None:
             # Set sensible default values
@@ -378,7 +403,6 @@ def html_code(filestr, code_blocks, code_block_types,
             pattern = r'^label\{'
             cpattern = re.compile(pattern, re.MULTILINE)
             tex_blocks[i] = cpattern.sub('\\label{', tex_blocks[i])
-
 
     from doconce import debugpr
     debugpr('File before call to insert_code_and_tex (format html):', filestr)
@@ -536,23 +560,23 @@ MathJax.Hub.Config({
             # toc before the <body> tag
             filestr = filestr.replace('<body>\n', toc + '<body>\n')
         else:
-            # tocinfo to the beginning
+            # Insert tocinfo at the beginning
             filestr = toc + filestr
 
     # Add header from external template
     template = option('html_template=', default='')
-    if option('html_style=') == 'vagrant':
+    if html_style == 'vagrant':
         # Set template_vagrant.html as template
         if not template:
             print """
-*** error: --html_style=vagrant requires
-    cp -r path/to/doconce-source-root/bundled/html_styles/style_vagrant/* .
-    # edit template_vargrant.html to template_mystyle.html
+*** error: --html_style=vagrant requires a template; copy a template
+    cp path/to/doconce-source-root/bundled/html_styles/style_vagrant/template_vagrant.html .
+    and edit as you like, then rerun with
     --html_template=template_mystyle.html
 """
             _abort()
     if 'template_vagrant.html' in template \
-       and not option('html_style=') == 'vagrant':
+       and not html_style == 'vagrant':
         print """
 *** error: --html_template= with a template based on
     template_vagrant.html requires --html_style=vagrant
@@ -572,14 +596,13 @@ MathJax.Hub.Config({
             m = re.search(pattern, filestr)
             if m:
                 title = m.group(1).strip()
-                filestr = re.sub(pattern, r'<h1>\g<1></h1>', filestr)
-        authors = '<!-- author(s):' in filestr
 
+        authors = '<!-- author(s):' in filestr
         if authors:
             print """\
 *** warning: AUTHOR may look strange with a template -
              it is recommended to comment out all authors: #AUTHOR.
-             Better to hardcode authors in a footer in the template."""
+             Usually better to hardcode authors in a footer in the template."""
 
         # Extract title
         if title == '':
@@ -606,13 +629,8 @@ MathJax.Hub.Config({
 
         # Make toc for navigation
         toc_html = ''
-        if option('html_style=') == 'vagrant':
-            level_min = tocinfo['highest level']
-            toc_html = ''
-            for title, level, label, href in tocinfo['sections']:
-                nspaces = 1
-                indent = '&nbsp; '*(nspaces*(level - level_min))
-                toc_html += '     <!-- vagrant nav toc: "%s" --> <li> %s <a href="#%s">%s</a>\n' % (title, indent, href, title)
+        if html_style in ('vagrant', 'bootstrap'):
+            toc_html = toc2html()
         # toc_html lacks formatting, run some basic formatting here
         tags = 'emphasize', 'bold', 'math', 'verbatim', 'colortext'
         # drop URLs in headings?
@@ -666,6 +684,35 @@ MathJax.Hub.Config({
             print '    but no date is specified in the document'
         filestr = template % variables
 
+    if html_style.startswith('boots'):
+        # Change chapter headings to page
+        filestr = re.sub(r'<h1>(.+?)</h1> <!-- chapter heading -->',
+                         """
+<div class="page-header">
+  <h1>\g<1></h1>
+</div>
+""", filestr)
+        # Fix tables
+        filestr = re.sub(r'<table.+?>', '<table class="table table-striped table-hover ">', filestr)
+        # Insert toc
+        if '***TABLE_OF_CONTENTS***' in filestr:
+            filestr = filestr.replace('***TABLE_OF_CONTENTS***', toc2html())
+        # Fix jumbotron for title, author, date, toc, abstract, intro
+        pattern = r'(^<center><h1>[^\n]+</h1></center>[^\n]+document title.+?)(^<!-- !split -->|^<h[123]>[^\n]+?<a name=[^\n]+?</h[123]>|^<div class="page-header">)'
+        m = re.search(pattern, filestr, flags=re.DOTALL|re.MULTILINE)
+        if m:
+            # If the user has a !split in the beginning, insert a button
+            # to click (typically bootstrap design)
+            button = '<!-- potential-jumbotron-button -->' \
+                     if '!split' in m.group(2) else ''
+            text = '<div class="jumbotron">\n' + m.group(1) + \
+                   button + '\n</div> <!-- end jumbotron -->\n\n' + m.group(2)
+            filestr = re.sub(pattern, text, filestr, flags=re.DOTALL|re.MULTILINE)
+        # Fix slidecells? Just a start...this is hard...
+        if '<!-- !bslidecell' in filestr:
+            filestr = process_grid_areas(filestr)
+
+
     if MATH_TYPESETTING == 'WordPress':
         # Remove all comments for wordpress.com html
         pattern = re.compile('<!-- .+? -->', re.DOTALL)
@@ -699,6 +746,39 @@ MathJax.Hub.Config({
     pattern = r'\s+(?=^<[hH]\d>)'
     filestr = re.sub(pattern, '\n\n', filestr, flags=re.MULTILINE)
 
+    return filestr
+
+def process_grid_areas(filestr):
+    # Extract all cell areas
+    pattern = r'(^<!-- +begin-grid-area +-->(.+?)^<!-- +end-grid-area +-->)'
+    cell_areas = re.findall(pattern, filestr, flags=re.DOTALL|re.MULTILINE)
+    # Work with each cell area
+    for full_text, internal in cell_areas:
+        cell_pos = [(int(p[0]), int(p[1])) for p in
+                    re.findall(r'<!-- !bslidecell +(\d\d)', internal)]
+        if cell_pos:
+            # Find the table size
+            num_rows    = max([p[0] for p in cell_pos]) + 1
+            num_columns = max([p[1] for p in cell_pos]) + 1
+            table = [[None]*(num_columns) for j in range(num_rows+1)]
+            # Grab the content of each cell
+            cell_pattern = r'(<!-- !bslidecell +(\d\d) *[.0-9 ]*?-->(.+?)<!-- !eslidecell -->)'
+            cells = re.findall(cell_pattern, internal,
+                               flags=re.DOTALL|re.MULTILINE)
+            # Insert individual cells in table
+            for cell_envir, pos, cell_text in cells:
+                table[int(pos[0])][int(pos[1])] = cell_text
+            # Construct new HTML text by looping over the table
+            # (note that the input might have the cells in arbitrary
+            # order while the output is traversed in correct cell order)
+            new_text = '<div class="row"> <!-- begin cell row -->\n'
+            for c in range(num_columns):
+                new_text += '  <div class="col-sm-4">'
+                for r in range(num_rows):
+                    new_text += table[r][c]
+                new_text += '  </div> <!-- column col-sm-4 -->\n'
+            new_text += '</div> <!-- end cell row -->\n'
+            filestr = filestr.replace(full_text, new_text)
     return filestr
 
 def html_figure(m):
@@ -735,6 +815,8 @@ def html_footnotes(filestr, format, pattern_def, pattern_footnote):
 
     footnotes = re.findall(pattern_def, filestr, flags=re.MULTILINE|re.DOTALL)
     names = [name for name, footnote, dummy in footnotes]
+    footnotes = {name: text for name, text, dummy in footnotes}
+
     name2index = {names[i]: i+1 for i in range(len(names))}
 
     def subst_def(m):
@@ -748,9 +830,21 @@ def html_footnotes(filestr, format, pattern_def, pattern_footnote):
                      flags=re.MULTILINE|re.DOTALL)
 
     def subst_footnote(m):
-        i = name2index[m.group('name')]
         name = m.group('name').strip()
-        return r' [<a name="link_footnote_%s"><a><a href="#def_footnote_%s">%s</a>]' % (name2index[name], name2index[name], i)
+        if name in name2index:
+            i = name2index[m.group('name')]
+        else:
+            print '*** error: found footnote with name "%s", but this one is not defined' % name
+            _abort()
+        if option('html_style=', '')[:5] in ('boots', 'vagra'):
+            # Use a tooltip construction so the footnote appears when hovering over
+            text = ' '.join(footnotes[name].strip().splitlines())
+            # Note: formatting does not work well with a tooltip
+            # could issue a warning of we find * (emphasis) or "..": ".." link
+            html = ' <button type="button" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="%s"><a name="link_footnote_%s"><a><a href="#def_footnote_%s" style="color: white">%s</a></button>' % (text, i, i, i)
+        else:
+            html = r' [<a name="link_footnote_%s"><a><a href="#def_footnote_%s">%s</a>]' % (i, i, i)
+        return html
 
     filestr = re.sub(pattern_footnote, subst_footnote, filestr)
     return filestr
@@ -776,18 +870,24 @@ def html_table(table):
         else:
             headline = False
 
+        if headline and not skip_headline:
+            s += '<thead>\n'
         s += '<tr>'
         for column, w, ha, ca in \
                 zip(row, column_width, heading_spec, column_spec):
             if headline:
                 if not skip_headline:
-                    s += '<td align="%s"><b> %s </b></td> ' % \
+                    s += '<th align="%s">%s</th> ' % \
                          (a2html[ha], column.center(w))
             else:
                 s += '<td align="%s">   %s    </td> ' % \
                      (a2html[ca], column.ljust(w))
         s += '</tr>\n'
-    s += '</table>\n'
+        if headline:
+            if not skip_headline:
+                s += '</thead>\n'
+            s += '<tbody>\n'
+    s += '</tbody>\n</table>\n'
     return s
 
 def html_movie(m):
@@ -1184,7 +1284,8 @@ def html_%(_admon)s(block, format, title='%(_Admon)s', text_size='normal'):
     if title == 'Block':  # block admon has no default title
         title = ''
 
-    if title and title[-1] not in ('.', ':', '!', '?'):
+    if title and (title[-1] not in ('.', ':', '!', '?')) and \
+       html_admon_style != 'bootstrap_panel':
         # Make sure the title ends with puncuation
         title += '.'
 
@@ -1193,7 +1294,41 @@ def html_%(_admon)s(block, format, title='%(_Admon)s', text_size='normal'):
     pygments_pattern = r'"background: .+?">'
 
     # html_admon_style is global variable
-    if html_admon_style == 'colors':
+    if option('html_style=', '')[:5] in ('vagra', 'boots'):
+        # Bootstrap/Bootswatch html style
+
+        if html_admon_style == 'bootstrap_panel':
+            alert_map = {'warning': 'warning', 'notice': 'primary',
+                         'summary': 'danger', 'question': 'success',
+                         'block': 'default'}
+            text = '<div class="panel panel-%%s">' %% alert_map['%(_admon)s']
+            if '%(_admon)s' != 'block':  # heading?
+                text += """
+  <div class="panel-heading">
+  <h3 class="panel-title">%%s</h3>
+  </div>""" %% title
+            text += """
+<div class="panel-body">
+%%s
+</div>
+</div>
+""" %% block
+        else: # bootstrap_alert
+            alert_map = {'warning': 'danger', 'notice': 'success',
+                         'summary': 'warning', 'question': 'info',
+                         'block': 'success'}
+
+            if not keep_pygm_bg:
+                # 2DO: fix background color!
+                block = re.sub(pygments_pattern, r'"background: %%s">' %%
+                               admon_css_vars[html_admon_style]['background'], block)
+            text = """<div class="alert alert-block alert-%%s alert-text-%%s"><b>%%s</b>
+%%s
+</div>
+""" %% (alert_map['%(_admon)s'], text_size, title, block)
+        return text
+
+    elif html_admon_style == 'colors':
         if not keep_pygm_bg:
             block = re.sub(pygments_pattern, r'"background: %%s">' %%
                            admon_css_vars['colors']['background_%(_admon)s'], block)
@@ -1203,15 +1338,14 @@ def html_%(_admon)s(block, format, title='%(_Admon)s', text_size='normal'):
 """ %% (text_size, title, block)
         return janko
 
-    elif html_admon_style in ('gray', 'yellow', 'apricot') or option('html_style=') == 'vagrant':
+    elif html_admon_style in ('gray', 'yellow', 'apricot'):
         if not keep_pygm_bg:
             block = re.sub(pygments_pattern, r'"background: %%s">' %%
                            admon_css_vars[html_admon_style]['background'], block)
-        vagrant = """<div class="alert alert-block alert-%(_admon)s alert-text-%%s"><b>%%s</b>
+        return """<div class="alert alert-block alert-%(_admon)s alert-text-%%s"><b>%%s</b>
 %%s
 </div>
 """ %% (text_size, title, block)
-        return vagrant
 
     elif html_admon_style == 'lyx':
         block = '<div class="alert-text-%%s">%%s</div>' %% (text_size, block)
@@ -1291,7 +1425,7 @@ def define(FILENAME_EXTENSION,
         'linkURL3v':     r'<a href="\g<url>" target="_self"><tt>\g<link></tt></a>',
         'plainURL':      r'<a href="\g<url>" target="_self"><tt>\g<url></tt></a>',
         'inlinecomment': r'\n<!-- begin inline comment -->\n<font color="red">[<b>\g<name></b>: <em>\g<comment></em>]</font>\n<!-- end inline comment -->\n',
-        'chapter':       r'\n<h1>\g<subst></h1>',
+        'chapter':       r'\n<h1>\g<subst></h1> <!-- chapter heading -->',
         'section':       r'\n<h2>\g<subst></h2>',
         'subsection':    r'\n<h3>\g<subst></h3>',
         'subsubsection': r'\n<h4>\g<subst></h4>\n',
@@ -1359,15 +1493,17 @@ def define(FILENAME_EXTENSION,
     TOC['html'] = html_toc
 
     # Embedded style sheets
-    style = option('html_style=')
-    if  style == 'solarized':
+    html_style = option('html_style=', '')
+    if  html_style == 'solarized':
         css = css_solarized
-    elif style == 'blueish':
+    elif html_style == 'blueish':
         css = css_blueish
-    elif style == 'blueish2':
+    elif html_style == 'blueish2':
         css = css_blueish2
-    elif style == 'bloodish':
+    elif html_style == 'bloodish':
         css = css_bloodish
+    elif html_style == 'plain':
+        css = ''
     else:
         css = css_blueish # default
 
@@ -1412,12 +1548,15 @@ def define(FILENAME_EXTENSION,
         css += "\n    h1, h2, h3 { font-family: '%s'; }\n" % heading_font_family.replace('+', ' ')
 
     global admon_css_vars
-    admon_styles = 'gray', 'yellow', 'apricot', 'colors', 'lyx', 'paragraph'
+    admon_styles = ['gray', 'yellow', 'apricot', 'colors', 'lyx', 'paragraph',
+                    'bootstrap_alert', 'bootstrap_panel']
     admon_css_vars = {style: {} for style in admon_styles}
     admon_css_vars['yellow']  = dict(boundary='#fbeed5', background='#fcf8e3')
     admon_css_vars['apricot'] = dict(boundary='#FFBF00', background='#fbeed5')
     #admon_css_vars['gray']    = dict(boundary='#bababa', background='whiteSmoke')
     admon_css_vars['gray']    = dict(boundary='#bababa', background='#f8f8f8') # same color as in pygments light gray background
+    admon_css_vars['bootstrap_alert']  = dict(background='#ffffff')
+    admon_css_vars['bootstrap_panel']  = dict(background='#ffffff')
     # Override with user's values
     html_admon_bg_color = option('html_admon_bg_color=', None)
     html_admon_bd_color = option('html_admon_bd_color=', None)
@@ -1490,14 +1629,82 @@ def define(FILENAME_EXTENSION,
                 style += '<link rel="stylesheet" href="%s">\n' % css_filename
                 add_to_file_collection(filename)
 
+
+    if html_style.startswith('boots'):
+        boots_version = '3.1.1'
+        if html_style == 'bootstrap':
+            boots_style = 'boostrap'
+            url = '//netdna.bootstrapcdn.com/bootstrap/%s/css/bootstrap.min.css' % boots_version
+        elif html_style == 'bootswatch':
+            boots_style = 'cosmo'  # default
+            url = '//netdna.bootstrapcdn.com/bootswatch/%s/%s/bootstrap.min.css' % (boots_version, boots_style)
+        else:
+            boots_style = html_style.split('_')[1]
+            url = '//netdna.bootstrapcdn.com/bootswatch/%s/%s/bootstrap.min.css' % (boots_version, boots_style)
+
+        style = """
+<!-- Bootstrap style: %s -->
+<link href="http:%s" rel="stylesheet">
+"""% (html_style, url)
+        if option('bootstrap_FlatUI'):
+            style += """
+<link href="https://raw.github.com/hplgit/doconce/master/bundled/html_styles/style_FlatUI/css/flat-ui.css" rel="stylesheet">
+"""
+        bootstrap_title_bar = ''
+
+    style_changes = ''
+    if option('html_code_style=', 'on') in ('off', 'transparent', 'inherit'):
+        style_changes += """\
+/* Let inline verbatim have the same color as the surroundings */
+code { color: inherit; background-color: transparent; }
+"""
+    if option('html_pre_style=', 'on') in ('off', 'transparent', 'inherit'):
+        style_changes += """\
+/* Let pre tags for code blocks have the same color as the surroundings */
+pre { color: inherit; background-color: transparent; }
+"""
+    if style_changes:
+        style += """
+<style type="text/css">
+%s</style>
+""" % style_changes
+
     meta_tags = """\
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
 """
     m = re.search(r'^TITLE: *(.+)$', filestr, flags=re.MULTILINE)
     if m:
-        meta_tags += '<meta name="description" content="%s">\n' % \
-                     m.group(1).strip()
+        title = m.group(1).strip()
+        meta_tags += '<meta name="description" content="%s">\n' % title
+
+        if html_style.startswith('boots'):
+            from doconce import dofile_basename
+            bootstrap_title_bar += """
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="%s">%s</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+***TABLE_OF_CONTENTS***
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div>
+""" % (dofile_basename + '.html', title)
+
+
     keywords = re.findall(r'idx\{(.+?)\}', filestr)
     # idx with verbatim is usually too specialized - remove them
     keywords = [keyword for keyword in keywords
@@ -1525,8 +1732,19 @@ Automatically generated HTML file from Doconce source
 
     """ % (meta_tags, style)
 
-    # document ending:
-    OUTRO['html'] = """
+    OUTRO['html'] = ''
+    if html_style.startswith('boots'):
+        INTRO['html'] += bootstrap_title_bar
+        INTRO['html'] += """
+<div class="container">
+"""
+        OUTRO['html'] += """
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+"""
+    OUTRO['html'] += """
 
 </body>
 </html>

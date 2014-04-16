@@ -170,6 +170,26 @@ cpdef f(double x):
     return x + 1
 !ec
 
+Standard Python shell sessions:
+
+!bc ipy
+>>> from numpy import sin
+>>> # Some comment
+>>> x = sin(1.2); print 'Value:', x
+Value: 0.932039085967
+!ec
+
+IPython sessions:
+
+!bc ipy
+In [1]: from numpy import sin
+
+In [2]: # Some comment
+
+In [3]: x = sin(1.2); print 'Value:', x
+Value: 0.932039085967
+!ec
+
 # This one tests a + sign before a code environment
 C++:
 !bc cpppro
@@ -2047,6 +2067,26 @@ cpdef f(double x):
     return x + 1
 \ecycod
 
+Standard Python shell sessions:
+
+\bipy
+>>> from numpy import sin
+>>> # Some comment
+>>> x = sin(1.2); print 'Value:', x
+Value: 0.932039085967
+\eipy
+
+IPython sessions:
+
+\bipy
+In [1]: from numpy import sin
+
+In [2]: # Some comment
+
+In [3]: x = sin(1.2); print 'Value:', x
+Value: 0.932039085967
+\eipy
+
 % This one tests a + sign before a code environment
 C++:
 \bcpppro
@@ -3817,6 +3857,28 @@ cpdef f(double x):
 \end{minted}
 \noindent
 
+Standard Python shell sessions:
+
+\begin{Verbatim}[fontsize=\fontsize{9pt}{9pt},tabsize=8,baselinestretch=0.85]
+>>> from numpy import sin
+>>> # Some comment
+>>> x = sin(1.2); print 'Value:', x
+Value: 0.932039085967
+\end{Verbatim}
+\noindent
+
+IPython sessions:
+
+\begin{Verbatim}[fontsize=\fontsize{9pt}{9pt},tabsize=8,baselinestretch=0.85]
+In [1]: from numpy import sin
+
+In [2]: # Some comment
+
+In [3]: x = sin(1.2); print 'Value:', x
+Value: 0.932039085967
+\end{Verbatim}
+\noindent
+
 % This one tests a + sign before a code environment
 C++:
 \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{c++}
@@ -5051,13 +5113,14 @@ in a separate document: \texttt{admon.do.txt}.
 ************** File: testdoc.tex_doconce_ptex2tex *****************
 \bsys (!bc sys) -> begin{quote}begin{Verbatim}
 \bpypro (!bc pypro) -> \begin{python:nt}
+\bcpppro (!bc cpppro) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{c++}
+\bcycod (!bc cycod) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{cython}
 \bfcod (!bc fcod) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{fortran}
 \bfpro (!bc fpro) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{fortran}
 \bpycod (!bc pycod) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
 \bhtmlcod (!bc htmlcod) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{html}
-\bcycod (!bc cycod) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{cython}
-\bcpppro (!bc cpppro) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{c++}
 \bcod (!bc cod) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
+\bipy (!bc ipy) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
 \bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
 output in testdoc.tex
 ----------- end of doconce ptex2tex output ----------------
@@ -5632,6 +5695,26 @@ Then Cython:
 cpdef f(double x):
     return x + 1
 \end{minted}
+
+Standard Python shell sessions:
+
+\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
+>>> from numpy import sin
+>>> # Some comment
+>>> x = sin(1.2); print 'Value:', x
+Value: 0.932039085967
+\end{Verbatim}
+
+IPython sessions:
+
+\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
+In [1]: from numpy import sin
+
+In [2]: # Some comment
+
+In [3]: x = sin(1.2); print 'Value:', x
+Value: 0.932039085967
+\end{Verbatim}
 
 % This one tests a + sign before a code environment
 C++:
@@ -7040,6 +7123,26 @@ Then Cython::
 
         cpdef f(double x):
             return x + 1
+
+
+Standard Python shell sessions::
+
+
+        >>> from numpy import sin
+        >>> # Some comment
+        >>> x = sin(1.2); print 'Value:', x
+        Value: 0.932039085967
+
+
+IPython sessions::
+
+
+        In [1]: from numpy import sin
+        
+        In [2]: # Some comment
+        
+        In [3]: x = sin(1.2); print 'Value:', x
+        Value: 0.932039085967
 
 
 .. This one tests a + sign before a code environment
@@ -8529,6 +8632,30 @@ Then Cython:
 
         cpdef f(double x):
             return x + 1
+
+
+Standard Python shell sessions:
+
+
+.. code-block:: python
+
+        >>> from numpy import sin
+        >>> # Some comment
+        >>> x = sin(1.2); print 'Value:', x
+        Value: 0.932039085967
+
+
+IPython sessions:
+
+
+.. code-block:: python
+
+        In [1]: from numpy import sin
+        
+        In [2]: # Some comment
+        
+        In [3]: x = sin(1.2); print 'Value:', x
+        Value: 0.932039085967
 
 
 .. This one tests a + sign before a code environment
@@ -10141,6 +10268,26 @@ cpdef f(double x):
     return x + 1
 }}}
 
+Standard Python shell sessions:
+
+{{{
+>>> from numpy import sin
+>>> # Some comment
+>>> x = sin(1.2); print 'Value:', x
+Value: 0.932039085967
+}}}
+
+IPython sessions:
+
+{{{
+In [1]: from numpy import sin
+
+In [2]: # Some comment
+
+In [3]: x = sin(1.2); print 'Value:', x
+Value: 0.932039085967
+}}}
+
 <wiki:comment> This one tests a + sign before a code environment </wiki:comment>
 C++:
 {{{
@@ -11371,6 +11518,26 @@ cpdef f(double x):
     return x + 1
 </syntaxhighlight>
 
+Standard Python shell sessions:
+
+<syntaxhighlight lang="python">
+>>> from numpy import sin
+>>> # Some comment
+>>> x = sin(1.2); print 'Value:', x
+Value: 0.932039085967
+</syntaxhighlight>
+
+IPython sessions:
+
+<syntaxhighlight lang="python">
+In [1]: from numpy import sin
+
+In [2]: # Some comment
+
+In [3]: x = sin(1.2); print 'Value:', x
+Value: 0.932039085967
+</syntaxhighlight>
+
 <!-- This one tests a + sign before a code environment -->
 C++:
 <syntaxhighlight lang="cpp">
@@ -11612,10 +11779,14 @@ Let us take this table from the manual:
 
 
 <table border="1">
-<tr><td align="center"><b>     time     </b></td> <td align="center"><b>   velocity   </b></td> <td align="center"><b> acceleration </b></td> </tr>
+<thead>
+<tr><th align="center">    time    </th> <th align="center">  velocity  </th> <th align="center">acceleration</th> </tr>
+</thead>
+<tbody>
 <tr><td align="left">   0.0             </td> <td align="right">   1.4186          </td> <td align="right">   -5.01           </td> </tr>
 <tr><td align="left">   2.0             </td> <td align="right">   1.376512        </td> <td align="right">   11.919          </td> </tr>
 <tr><td align="left">   4.0             </td> <td align="right">   1.1E+1          </td> <td align="right">   14.717624       </td> </tr>
+</tbody>
 </table>
 
 The Doconce source code reads
@@ -11633,17 +11804,24 @@ Here is yet another table to test that we can handle more than
 one table:
 
 <table border="1">
-<tr><td align="center"><b>     time     </b></td> <td align="center"><b>   velocity   </b></td> <td align="center"><b> acceleration </b></td> </tr>
+<thead>
+<tr><th align="center">    time    </th> <th align="center">  velocity  </th> <th align="center">acceleration</th> </tr>
+</thead>
+<tbody>
 <tr><td align="left">   0.0             </td> <td align="left">   1.4186          </td> <td align="left">   -5.01           </td> </tr>
 <tr><td align="left">   1.0             </td> <td align="left">   1.376512        </td> <td align="left">   11.919          </td> </tr>
 <tr><td align="left">   3.0             </td> <td align="left">   1.1E+1          </td> <td align="left">   14.717624       </td> </tr>
+</tbody>
 </table>
 And one with math headings (that are expanded and must be treated
 accordingly), verbatim heading and entry, and no space around the pipe
 symbol:
 
 <table border="1">
-<tr><td align="center"><b>     <math>i</math>    </b></td> <td align="center"><b>    <math>h_i</math>   </b></td> <td align="center"><b> <math>\bar T_i</math> </b></td> <td align="center"><b>    <code>L_i</code>   </b></td> </tr>
+<thead>
+<tr><th align="center">    <math>i</math>   </th> <th align="center">   <math>h_i</math>  </th> <th align="center"><math>\bar T_i</math></th> <th align="center">   <code>L_i</code>  </th> </tr>
+</thead>
+<tbody>
 <tr><td align="left">   0                        </td> <td align="right">   0                        </td> <td align="right">   288                      </td> <td align="right">   -0.0065                  </td> </tr>
 <tr><td align="left">   1                        </td> <td align="right">   11,000                   </td> <td align="right">   216                      </td> <td align="right">   0.0                      </td> </tr>
 <tr><td align="left">   2                        </td> <td align="right">   20,000                   </td> <td align="right">   216                      </td> <td align="right">   0.001                    </td> </tr>
@@ -11651,17 +11829,22 @@ symbol:
 <tr><td align="left">   4                        </td> <td align="right">   47,000                   </td> <td align="right">   270                      </td> <td align="right">   0.0                      </td> </tr>
 <tr><td align="left">   5                        </td> <td align="right">   51,000                   </td> <td align="right">   270                      </td> <td align="right">   -0.0028                  </td> </tr>
 <tr><td align="left">   6                        </td> <td align="right">   71,000                   </td> <td align="right">   214                      </td> <td align="right">   <code>NaN</code>         </td> </tr>
+</tbody>
 </table>
 And add one with verbatim headings (with underscores),
 and rows starting with <code>|-</code> because of a negative number,
 and <code>|</code> right before and after verbatim word (with no space):
 
 <table border="1">
-<tr><td align="center"><b>                exact                </b></td> <td align="center"><b>           <code>v_1</code>          </b></td> <td align="center"><b> <math>a_i</math> + <code>v_2</code> </b></td> <td align="center"><b>         <code>verb_3_</code>        </b></td> </tr>
+<thead>
+<tr><th align="center">               exact               </th> <th align="center">          <code>v_1</code>         </th> <th align="center"><math>a_i</math> + <code>v_2</code></th> <th align="center">        <code>verb_3_</code>       </th> </tr>
+</thead>
+<tbody>
 <tr><td align="right">   9                                      </td> <td align="right">   9.62                                   </td> <td align="right">   5.57                                   </td> <td align="right">   8.98                                   </td> </tr>
 <tr><td align="right">   -20                                    </td> <td align="right">   -23.39                                 </td> <td align="right">   -7.65                                  </td> <td align="right">   -19.93                                 </td> </tr>
 <tr><td align="right">   10                                     </td> <td align="right">   17.74                                  </td> <td align="right">   -4.50                                  </td> <td align="right">   9.96                                   </td> </tr>
 <tr><td align="right">   0                                      </td> <td align="right">   -9.19                                  </td> <td align="right">   4.13                                   </td> <td align="right">   -0.26                                  </td> </tr>
+</tbody>
 </table>
 Finally, a table with math
 and URLs.
@@ -11672,9 +11855,11 @@ and URLs.
 
 <table border="1">
 <tr></tr>
+<tbody>
 <tr><td align="center">   <math>\mathcal{L}=0</math>                                             </td> <td align="center">   [../doc/src/manual/mov/wave_frames/frame_0080.png <code>080</code>]    </td> <td align="center">   [../doc/src/manual/mov/wave_frames/frame_0085.png <code>085</code>]    </td> </tr>
 <tr><td align="center">   <math>a=b</math>                                                       </td> <td align="center">   [../doc/src/manual/mov/wave_frames/frame_0090.png <code>090</code>]    </td> <td align="center">   [../doc/src/manual/mov/wave_frames/frame_0095.png <code>095</code>]    </td> </tr>
 <tr><td align="center">   <math>\nabla\cdot\bm{u} =0 </math>                                     </td> <td align="center">   [../doc/src/manual/mov/wave_frames/frame_0100.png <code>100</code>]    </td> <td align="center">   [../doc/src/manual/mov/wave_frames/frame_0105.png <code>105</code>]    </td> </tr>
+</tbody>
 </table>
 
 ==== A test of verbatim words in heading with subscript <math>a_i</math>: <code>my_file_v1</code> and <code>my_file_v2</code> ====
@@ -12685,6 +12870,26 @@ Then Cython:
 {{{
 cpdef f(double x):
     return x + 1
+}}}
+
+Standard Python shell sessions:
+
+{{{
+>>> from numpy import sin
+>>> # Some comment
+>>> x = sin(1.2); print 'Value:', x
+Value: 0.932039085967
+}}}
+
+IPython sessions:
+
+{{{
+In [1]: from numpy import sin
+
+In [2]: # Some comment
+
+In [3]: x = sin(1.2); print 'Value:', x
+Value: 0.932039085967
 }}}
 
 <wiki:comment> This one tests a + sign before a code environment </wiki:comment>
@@ -13853,6 +14058,26 @@ Then Cython::
 
         cpdef f(double x):
             return x + 1
+
+
+Standard Python shell sessions::
+
+
+        >>> from numpy import sin
+        >>> # Some comment
+        >>> x = sin(1.2); print 'Value:', x
+        Value: 0.932039085967
+
+
+IPython sessions::
+
+
+        In [1]: from numpy import sin
+        
+        In [2]: # Some comment
+        
+        In [3]: x = sin(1.2); print 'Value:', x
+        Value: 0.932039085967
 
 
 C++::
@@ -15059,6 +15284,26 @@ Then Cython::
 
         cpdef f(double x):
             return x + 1
+
+
+Standard Python shell sessions::
+
+
+        >>> from numpy import sin
+        >>> # Some comment
+        >>> x = sin(1.2); print 'Value:', x
+        Value: 0.932039085967
+
+
+IPython sessions::
+
+
+        In [1]: from numpy import sin
+        
+        In [2]: # Some comment
+        
+        In [3]: x = sin(1.2); print 'Value:', x
+        Value: 0.932039085967
 
 
 C++::
@@ -16371,6 +16616,26 @@ Then Cython::
             return x + 1
 
 
+Standard Python shell sessions::
+
+
+        >>> from numpy import sin
+        >>> # Some comment
+        >>> x = sin(1.2); print 'Value:', x
+        Value: 0.932039085967
+
+
+IPython sessions::
+
+
+        In [1]: from numpy import sin
+        
+        In [2]: # Some comment
+        
+        In [3]: x = sin(1.2); print 'Value:', x
+        Value: 0.932039085967
+
+
 C++::
 
 
@@ -17473,7 +17738,7 @@ is at the end with only one newline.
 
 ************** File: testdoc.md *****************
 % A Document for Testing Doconce
-% Hans Petter Langtangen at Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo;  Kaare Dump at Segfault, Cyberspace;  A. Dummy Author;  I. S. Overworked and Outburned at Inst1 and Inst2, Somewhere and Third Inst, Elsewhere and Fourth Inst;  J. Doe
+% **Hans Petter Langtangen** at Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo;  **Kaare Dump** at Segfault, Cyberspace;  **A. Dummy Author**;  **I. S. Overworked and Outburned** at Inst1 and Inst2, Somewhere and Third Inst, Elsewhere and Fourth Inst;  **J. Doe**
 % Jan 32, 2100
 
 <!-- Table of contents: Run pandoc with --toc option -->
@@ -17662,6 +17927,28 @@ Then Cython:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 cpdef f(double x):
     return x + 1
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Standard Python shell sessions:
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.Python}
+>>> from numpy import sin
+>>> # Some comment
+>>> x = sin(1.2); print 'Value:', x
+Value: 0.932039085967
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+IPython sessions:
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.Python}
+In [1]: from numpy import sin
+
+In [2]: # Some comment
+
+In [3]: x = sin(1.2); print 'Value:', x
+Value: 0.932039085967
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 <!-- This one tests a + sign before a code environment -->
@@ -19148,6 +19435,50 @@ is at the end with only one newline.
      "input": [
       "cpdef f(double x):\n",
       "    return x + 1\n"
+     ],
+     "language": "python",
+     "metadata": {},
+     "outputs": [],
+     "prompt_number": 1
+    },
+    {
+     "cell_type": "markdown",
+     "metadata": {},
+     "source": [
+      "Standard Python shell sessions:"
+     ]
+    },
+    {
+     "cell_type": "code",
+     "collapsed": false,
+     "input": [
+      ">>> from numpy import sin\n",
+      ">>> # Some comment\n",
+      ">>> x = sin(1.2); print 'Value:', x\n",
+      "Value: 0.932039085967\n"
+     ],
+     "language": "python",
+     "metadata": {},
+     "outputs": [],
+     "prompt_number": 1
+    },
+    {
+     "cell_type": "markdown",
+     "metadata": {},
+     "source": [
+      "IPython sessions:"
+     ]
+    },
+    {
+     "cell_type": "code",
+     "collapsed": false,
+     "input": [
+      "In [1]: from numpy import sin\n",
+      "\n",
+      "In [2]: # Some comment\n",
+      "\n",
+      "In [3]: x = sin(1.2); print 'Value:', x\n",
+      "Value: 0.932039085967\n"
      ],
      "language": "python",
      "metadata": {},
@@ -20708,7 +21039,7 @@ Could not find match for from regex "\*\s+\$.+normally"
   'solution_file': None,
   'subex': [{'answer': 'Short answer to subexercise a).\nWith math in answer: $a=b$.',
              'file': ['subexer_a.pdf'],
-             'hints': ['First hint to subexercise a).\nWith math $a=b$ in hint:\n\n19 <<<!!MATH_BLOCK\nAnd with code (in plain verbatim) returning $x+1$ in hint:\n\n18 <<<!!CODE_BLOCK',
+             'hints': ['First hint to subexercise a).\nWith math $a=b$ in hint:\n\n19 <<<!!MATH_BLOCK\nAnd with code (in plain verbatim) returning $x+1$ in hint:\n\n20 <<<!!CODE_BLOCK',
                        'Second hint to subexercise a).\n\nTest list in hint:\n\n o item1\n o item2'],
              'solution': '',
              'text': 'Subexercises are numbered a), b), etc.'},
@@ -20909,6 +21240,18 @@ show()</code></pre>
 <p>Then Cython:</p>
 <pre><code>cpdef f(double x):
     return x + 1</code></pre>
+<p>Standard Python shell sessions:</p>
+<pre><code>&gt;&gt;&gt; from numpy import sin
+&gt;&gt;&gt; # Some comment
+&gt;&gt;&gt; x = sin(1.2); print &#39;Value:&#39;, x
+Value: 0.932039085967</code></pre>
+<p>IPython sessions:</p>
+<pre><code>In [1]: from numpy import sin
+
+In [2]: # Some comment
+
+In [3]: x = sin(1.2); print &#39;Value:&#39;, x
+Value: 0.932039085967</code></pre>
 <p>C++:</p>
 <pre><code>#include &lt;iostream&gt;
 
@@ -21445,11 +21788,11 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <body>
 <div id="header">
 <h1 class="title">A Document for Testing Doconce</h1>
-<h2 class="author">Hans Petter Langtangen at Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo</h2>
-<h2 class="author">Kaare Dump at Segfault, Cyberspace</h2>
-<h2 class="author">A. Dummy Author</h2>
-<h2 class="author">I. S. Overworked and Outburned at Inst1 and Inst2, Somewhere and Third Inst, Elsewhere and Fourth Inst</h2>
-<h2 class="author">J. Doe</h2>
+<h2 class="author"><strong>Hans Petter Langtangen</strong> at Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo</h2>
+<h2 class="author"><strong>Kaare Dump</strong> at Segfault, Cyberspace</h2>
+<h2 class="author"><strong>A. Dummy Author</strong></h2>
+<h2 class="author"><strong>I. S. Overworked and Outburned</strong> at Inst1 and Inst2, Somewhere and Third Inst, Elsewhere and Fourth Inst</h2>
+<h2 class="author"><strong>J. Doe</strong></h2>
 <h3 class="date">Jan 32, 2100</h3>
 </div>
 <!-- Table of contents: Run pandoc with --toc option -->
@@ -21572,6 +21915,18 @@ show()</code></pre>
 <p>Then Cython:</p>
 <pre><code>cpdef f(double x):
     return x + 1</code></pre>
+<p>Standard Python shell sessions:</p>
+<pre class="sourceCode Python"><code class="sourceCode python">&gt;&gt;&gt; <span class="ch">from</span> numpy <span class="ch">import</span> sin
+&gt;&gt;&gt; <span class="co"># Some comment</span>
+&gt;&gt;&gt; x = sin(<span class="fl">1.2</span>); <span class="kw">print</span> <span class="st">&#39;Value:&#39;</span>, x
+Value: <span class="fl">0.932039085967</span></code></pre>
+<p>IPython sessions:</p>
+<pre class="sourceCode Python"><code class="sourceCode python">In [<span class="dv">1</span>]: <span class="ch">from</span> numpy <span class="ch">import</span> sin
+
+In [<span class="dv">2</span>]: <span class="co"># Some comment</span>
+
+In [<span class="dv">3</span>]: x = sin(<span class="fl">1.2</span>); <span class="kw">print</span> <span class="st">&#39;Value:&#39;</span>, x
+Value: <span class="fl">0.932039085967</span></code></pre>
 <!-- This one tests a + sign before a code environment -->
 <p>C++:</p>
 <pre class="sourceCode Cpp"><code class="sourceCode cpp"><span class="ot">#include &lt;iostream&gt;</span>
@@ -23322,7 +23677,7 @@ $$
 <p>
 <!-- Externaldocument: testdoc -->
 
-<h1>Generalized References <a name="genrefs"></a></h1>
+<h1>Generalized References <a name="genrefs"></a></h1> <!-- chapter heading -->
 
 <p>
 Sometimes a series of individual documents may be assembled to one
@@ -23489,7 +23844,7 @@ The text is rendered to
 </blockquote>
 
 
-<h1>Test of math  <a name="___sec1"></a></h1>
+<h1>Test of math  <a name="___sec1"></a></h1> <!-- chapter heading -->
 
 <p>
 <!-- Here we test the chapter heading to see if latex output then has -->
@@ -24976,6 +25331,38 @@ Then Cython:
     <span style="color: #AA22FF; font-weight: bold">return</span> x <span style="color: #666666">+</span> <span style="color: #666666">1</span>
 </pre></div>
 </td></tr></table><p>
+Standard Python shell sessions:
+
+<p>
+
+<!-- code=ipython (from !bc ipy) typeset with pygments style "emacs" -->
+<table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">&gt;&gt;&gt; from numpy import sin</span>
+<span style="color: #888888">&gt;&gt;&gt; # Some comment</span>
+<span style="color: #888888">&gt;&gt;&gt; x = sin(1.2); print &#39;Value:&#39;, x</span>
+<span style="color: #888888">Value: 0.932039085967</span>
+</pre></div>
+</td></tr></table><p>
+IPython sessions:
+
+<p>
+
+<!-- code=ipython (from !bc ipy) typeset with pygments style "emacs" -->
+<table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">In [1]: </span><span style="color: #AA22FF; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #AA22FF; font-weight: bold">import</span> sin
+
+<span style="color: #000080; font-weight: bold">In [2]: </span><span style="color: #008800; font-style: italic"># Some comment</span>
+
+<span style="color: #000080; font-weight: bold">In [3]: </span>x <span style="color: #666666">=</span> sin(<span style="color: #666666">1.2</span>); <span style="color: #AA22FF; font-weight: bold">print</span> <span style="color: #BB4444">&#39;Value:&#39;</span>, x
+<span style="color: #888888">Value: 0.932039085967</span>
+</pre></div>
+</td></tr></table><p>
 <!-- This one tests a + sign before a code environment -->
 C++:
 <p>
@@ -25270,10 +25657,14 @@ Let us take this table from the manual:
 
 <p>
 <table border="1">
-<tr><td align="center"><b>     time     </b></td> <td align="center"><b>   velocity   </b></td> <td align="center"><b> acceleration </b></td> </tr>
+<thead>
+<tr><th align="center">    time    </th> <th align="center">  velocity  </th> <th align="center">acceleration</th> </tr>
+</thead>
+<tbody>
 <tr><td align="left">   0.0             </td> <td align="right">   1.4186          </td> <td align="right">   -5.01           </td> </tr>
 <tr><td align="left">   2.0             </td> <td align="right">   1.376512        </td> <td align="right">   11.919          </td> </tr>
 <tr><td align="left">   4.0             </td> <td align="right">   1.1E+1          </td> <td align="right">   14.717624       </td> </tr>
+</tbody>
 </table>
 <p>
 The Doconce source code reads
@@ -25301,10 +25692,14 @@ one table:
 
 <p>
 <table border="1">
-<tr><td align="center"><b>     time     </b></td> <td align="center"><b>   velocity   </b></td> <td align="center"><b> acceleration </b></td> </tr>
+<thead>
+<tr><th align="center">    time    </th> <th align="center">  velocity  </th> <th align="center">acceleration</th> </tr>
+</thead>
+<tbody>
 <tr><td align="left">   0.0             </td> <td align="left">   1.4186          </td> <td align="left">   -5.01           </td> </tr>
 <tr><td align="left">   1.0             </td> <td align="left">   1.376512        </td> <td align="left">   11.919          </td> </tr>
 <tr><td align="left">   3.0             </td> <td align="left">   1.1E+1          </td> <td align="left">   14.717624       </td> </tr>
+</tbody>
 </table>
 <p>
 And one with math headings (that are expanded and must be treated
@@ -25313,7 +25708,10 @@ symbol:
 
 <p>
 <table border="1">
-<tr><td align="center"><b>     \( i \)      </b></td> <td align="center"><b>    \( h_i \)     </b></td> <td align="center"><b>  \( \bar T_i \)  </b></td> <td align="center"><b> <code>L_i</code> </b></td> </tr>
+<thead>
+<tr><th align="center">    \( i \)     </th> <th align="center">   \( h_i \)    </th> <th align="center"> \( \bar T_i \) </th> <th align="center"><code>L_i</code></th> </tr>
+</thead>
+<tbody>
 <tr><td align="left">   0                   </td> <td align="right">   0                   </td> <td align="right">   288                 </td> <td align="right">   -0.0065             </td> </tr>
 <tr><td align="left">   1                   </td> <td align="right">   11,000              </td> <td align="right">   216                 </td> <td align="right">   0.0                 </td> </tr>
 <tr><td align="left">   2                   </td> <td align="right">   20,000              </td> <td align="right">   216                 </td> <td align="right">   0.001               </td> </tr>
@@ -25321,6 +25719,7 @@ symbol:
 <tr><td align="left">   4                   </td> <td align="right">   47,000              </td> <td align="right">   270                 </td> <td align="right">   0.0                 </td> </tr>
 <tr><td align="left">   5                   </td> <td align="right">   51,000              </td> <td align="right">   270                 </td> <td align="right">   -0.0028             </td> </tr>
 <tr><td align="left">   6                   </td> <td align="right">   71,000              </td> <td align="right">   214                 </td> <td align="right">   <code>NaN</code>    </td> </tr>
+</tbody>
 </table>
 <p>
 And add one with verbatim headings (with underscores),
@@ -25329,11 +25728,15 @@ and <code>|</code> right before and after verbatim word (with no space):
 
 <p>
 <table border="1">
-<tr><td align="center"><b>            exact             </b></td> <td align="center"><b>       <code>v_1</code>       </b></td> <td align="center"><b> \( a_i \) + <code>v_2</code> </b></td> <td align="center"><b>     <code>verb_3_</code>     </b></td> </tr>
+<thead>
+<tr><th align="center">           exact            </th> <th align="center">      <code>v_1</code>      </th> <th align="center">\( a_i \) + <code>v_2</code></th> <th align="center">    <code>verb_3_</code>    </th> </tr>
+</thead>
+<tbody>
 <tr><td align="right">   9                               </td> <td align="right">   9.62                            </td> <td align="right">   5.57                            </td> <td align="right">   8.98                            </td> </tr>
 <tr><td align="right">   -20                             </td> <td align="right">   -23.39                          </td> <td align="right">   -7.65                           </td> <td align="right">   -19.93                          </td> </tr>
 <tr><td align="right">   10                              </td> <td align="right">   17.74                           </td> <td align="right">   -4.50                           </td> <td align="right">   9.96                            </td> </tr>
 <tr><td align="right">   0                               </td> <td align="right">   -9.19                           </td> <td align="right">   4.13                            </td> <td align="right">   -0.26                           </td> </tr>
+</tbody>
 </table>
 <p>
 Finally, a table with math
@@ -25348,9 +25751,11 @@ and URLs.
 <p>
 <table border="1">
 <tr></tr>
+<tbody>
 <tr><td align="center">   \( \mathcal{L}=0 \)                                                                                                                        </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0080.png"><img src="../doc/src/manual/mov/wave_frames/frame_0080.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0085.png"><img src="../doc/src/manual/mov/wave_frames/frame_0085.png" width="300"></a>    </td> </tr>
 <tr><td align="center">   \( a=b \)                                                                                                                                  </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0090.png"><img src="../doc/src/manual/mov/wave_frames/frame_0090.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0095.png"><img src="../doc/src/manual/mov/wave_frames/frame_0095.png" width="300"></a>    </td> </tr>
 <tr><td align="center">   \( \nabla\cdot\boldsymbol{u} =0  \)                                                                                                        </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0100.png"><img src="../doc/src/manual/mov/wave_frames/frame_0100.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0105.png"><img src="../doc/src/manual/mov/wave_frames/frame_0105.png" width="300"></a>    </td> </tr>
+</tbody>
 </table>
 
 <h3>A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code>  <a name="___sec9"></a></h3>
@@ -25361,12 +25766,12 @@ Here is
 some text.
 
 <p>
-Let us also add a test of quotes such as "double
+Let us also add a test of quotes such as &quot;double
 quotes, with numbers like 3.14 and
-newline/comma and hyphen (as in double-quote)";
+newline/comma and hyphen (as in double-quote)&quot;;
 written in the standard LaTeX-style that gives correct
 LaTeX formatting and ordinary double quotes for all non-LaTeX formats.
-Here is another sentence that "caused" a bug in the past
+Here is another sentence that &quot;caused&quot; a bug in the past
 because double backtick quotes could imply verbatim text up to
 a verbatim word starting with period, like <code>.txt</code>.
 
@@ -26892,6 +27297,30 @@ Then Cython:
     <span style="color: #008000; font-weight: bold">return</span> x <span style="color: #666666">+</span> <span style="color: #666666">1</span>
 </pre></div>
 <p>
+Standard Python shell sessions:
+
+<p>
+
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">&gt;&gt;&gt; from numpy import sin</span>
+<span style="color: #888888">&gt;&gt;&gt; # Some comment</span>
+<span style="color: #888888">&gt;&gt;&gt; x = sin(1.2); print &#39;Value:&#39;, x</span>
+<span style="color: #888888">Value: 0.932039085967</span>
+</pre></div>
+<p>
+IPython sessions:
+
+<p>
+
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">In [1]: </span><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> sin
+
+<span style="color: #000080; font-weight: bold">In [2]: </span><span style="color: #408080; font-style: italic"># Some comment</span>
+
+<span style="color: #000080; font-weight: bold">In [3]: </span>x <span style="color: #666666">=</span> sin(<span style="color: #666666">1.2</span>); <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;Value:&#39;</span>, x
+<span style="color: #888888">Value: 0.932039085967</span>
+</pre></div>
+<p>
 
 C++:
 <p>
@@ -27148,10 +27577,14 @@ Let us take this table from the manual:
 
 <p>
 <table border="1">
-<tr><td align="center"><b>     time     </b></td> <td align="center"><b>   velocity   </b></td> <td align="center"><b> acceleration </b></td> </tr>
+<thead>
+<tr><th align="center">    time    </th> <th align="center">  velocity  </th> <th align="center">acceleration</th> </tr>
+</thead>
+<tbody>
 <tr><td align="left">   0.0             </td> <td align="right">   1.4186          </td> <td align="right">   -5.01           </td> </tr>
 <tr><td align="left">   2.0             </td> <td align="right">   1.376512        </td> <td align="right">   11.919          </td> </tr>
 <tr><td align="left">   4.0             </td> <td align="right">   1.1E+1          </td> <td align="right">   14.717624       </td> </tr>
+</tbody>
 </table>
 <p>
 The Doconce source code reads
@@ -27173,10 +27606,14 @@ one table:
 
 <p>
 <table border="1">
-<tr><td align="center"><b>     time     </b></td> <td align="center"><b>   velocity   </b></td> <td align="center"><b> acceleration </b></td> </tr>
+<thead>
+<tr><th align="center">    time    </th> <th align="center">  velocity  </th> <th align="center">acceleration</th> </tr>
+</thead>
+<tbody>
 <tr><td align="left">   0.0             </td> <td align="left">   1.4186          </td> <td align="left">   -5.01           </td> </tr>
 <tr><td align="left">   1.0             </td> <td align="left">   1.376512        </td> <td align="left">   11.919          </td> </tr>
 <tr><td align="left">   3.0             </td> <td align="left">   1.1E+1          </td> <td align="left">   14.717624       </td> </tr>
+</tbody>
 </table>
 <p>
 And one with math headings (that are expanded and must be treated
@@ -27185,7 +27622,10 @@ symbol:
 
 <p>
 <table border="1">
-<tr><td align="center"><b>    $latex i$     </b></td> <td align="center"><b>   $latex h_i$    </b></td> <td align="center"><b> $latex \bar T_i$ </b></td> <td align="center"><b> <code>L_i</code> </b></td> </tr>
+<thead>
+<tr><th align="center">   $latex i$    </th> <th align="center">  $latex h_i$   </th> <th align="center">$latex \bar T_i$</th> <th align="center"><code>L_i</code></th> </tr>
+</thead>
+<tbody>
 <tr><td align="left">   0                   </td> <td align="right">   0                   </td> <td align="right">   288                 </td> <td align="right">   -0.0065             </td> </tr>
 <tr><td align="left">   1                   </td> <td align="right">   11,000              </td> <td align="right">   216                 </td> <td align="right">   0.0                 </td> </tr>
 <tr><td align="left">   2                   </td> <td align="right">   20,000              </td> <td align="right">   216                 </td> <td align="right">   0.001               </td> </tr>
@@ -27193,6 +27633,7 @@ symbol:
 <tr><td align="left">   4                   </td> <td align="right">   47,000              </td> <td align="right">   270                 </td> <td align="right">   0.0                 </td> </tr>
 <tr><td align="left">   5                   </td> <td align="right">   51,000              </td> <td align="right">   270                 </td> <td align="right">   -0.0028             </td> </tr>
 <tr><td align="left">   6                   </td> <td align="right">   71,000              </td> <td align="right">   214                 </td> <td align="right">   <code>NaN</code>    </td> </tr>
+</tbody>
 </table>
 <p>
 And add one with verbatim headings (with underscores),
@@ -27201,11 +27642,15 @@ and <code>|</code> right before and after verbatim word (with no space):
 
 <p>
 <table border="1">
-<tr><td align="center"><b>             exact              </b></td> <td align="center"><b>        <code>v_1</code>        </b></td> <td align="center"><b> $latex a_i$ + <code>v_2</code> </b></td> <td align="center"><b>      <code>verb_3_</code>      </b></td> </tr>
+<thead>
+<tr><th align="center">            exact             </th> <th align="center">       <code>v_1</code>       </th> <th align="center">$latex a_i$ + <code>v_2</code></th> <th align="center">     <code>verb_3_</code>     </th> </tr>
+</thead>
+<tbody>
 <tr><td align="right">   9                                 </td> <td align="right">   9.62                              </td> <td align="right">   5.57                              </td> <td align="right">   8.98                              </td> </tr>
 <tr><td align="right">   -20                               </td> <td align="right">   -23.39                            </td> <td align="right">   -7.65                             </td> <td align="right">   -19.93                            </td> </tr>
 <tr><td align="right">   10                                </td> <td align="right">   17.74                             </td> <td align="right">   -4.50                             </td> <td align="right">   9.96                              </td> </tr>
 <tr><td align="right">   0                                 </td> <td align="right">   -9.19                             </td> <td align="right">   4.13                              </td> <td align="right">   -0.26                             </td> </tr>
+</tbody>
 </table>
 <p>
 Finally, a table with math
@@ -27216,9 +27661,11 @@ and URLs.
 <p>
 <table border="1">
 <tr></tr>
+<tbody>
 <tr><td align="center">   $latex \mathcal{L}=0$                                                                                                                      </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0080.png"><img src="../doc/src/manual/mov/wave_frames/frame_0080.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0085.png"><img src="../doc/src/manual/mov/wave_frames/frame_0085.png" width="300"></a>    </td> </tr>
 <tr><td align="center">   $latex a=b$                                                                                                                                </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0090.png"><img src="../doc/src/manual/mov/wave_frames/frame_0090.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0095.png"><img src="../doc/src/manual/mov/wave_frames/frame_0095.png" width="300"></a>    </td> </tr>
 <tr><td align="center">   $latex \nabla\cdot\boldsymbol{u} =0 $                                                                                                      </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0100.png"><img src="../doc/src/manual/mov/wave_frames/frame_0100.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0105.png"><img src="../doc/src/manual/mov/wave_frames/frame_0105.png" width="300"></a>    </td> </tr>
+</tbody>
 </table>
 
 <h3>A test of verbatim words in heading with subscript $latex a_i$: <code>my_file_v1</code> and <code>my_file_v2</code>  <a name="___sec9"></a></h3>
@@ -27229,12 +27676,12 @@ Here is
 some text.
 
 <p>
-Let us also add a test of quotes such as "double
+Let us also add a test of quotes such as &quot;double
 quotes, with numbers like 3.14 and
-newline/comma and hyphen (as in double-quote)";
+newline/comma and hyphen (as in double-quote)&quot;;
 written in the standard LaTeX-style that gives correct
 LaTeX formatting and ordinary double quotes for all non-LaTeX formats.
-Here is another sentence that "caused" a bug in the past
+Here is another sentence that &quot;caused&quot; a bug in the past
 because double backtick quotes could imply verbatim text up to
 a verbatim word starting with period, like <code>.txt</code>.
 
@@ -28572,6 +29019,30 @@ Then Cython:
     <span style="color: #008000; font-weight: bold">return</span> x <span style="color: #666666">+</span> <span style="color: #666666">1</span>
 </pre></div>
 <p>
+Standard Python shell sessions:
+
+<p>
+
+<!-- code=ipython (from !bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">&gt;&gt;&gt; from numpy import sin</span>
+<span style="color: #888888">&gt;&gt;&gt; # Some comment</span>
+<span style="color: #888888">&gt;&gt;&gt; x = sin(1.2); print &#39;Value:&#39;, x</span>
+<span style="color: #888888">Value: 0.932039085967</span>
+</pre></div>
+<p>
+IPython sessions:
+
+<p>
+
+<!-- code=ipython (from !bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">In [1]: </span><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> sin
+
+<span style="color: #000080; font-weight: bold">In [2]: </span><span style="color: #408080; font-style: italic"># Some comment</span>
+
+<span style="color: #000080; font-weight: bold">In [3]: </span>x <span style="color: #666666">=</span> sin(<span style="color: #666666">1.2</span>); <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;Value:&#39;</span>, x
+<span style="color: #888888">Value: 0.932039085967</span>
+</pre></div>
+<p>
 <!-- This one tests a + sign before a code environment -->
 C++:
 <p>
@@ -28836,10 +29307,14 @@ Let us take this table from the manual:
 
 <p>
 <table border="1">
-<tr><td align="center"><b>     time     </b></td> <td align="center"><b>   velocity   </b></td> <td align="center"><b> acceleration </b></td> </tr>
+<thead>
+<tr><th align="center">    time    </th> <th align="center">  velocity  </th> <th align="center">acceleration</th> </tr>
+</thead>
+<tbody>
 <tr><td align="left">   0.0             </td> <td align="right">   1.4186          </td> <td align="right">   -5.01           </td> </tr>
 <tr><td align="left">   2.0             </td> <td align="right">   1.376512        </td> <td align="right">   11.919          </td> </tr>
 <tr><td align="left">   4.0             </td> <td align="right">   1.1E+1          </td> <td align="right">   14.717624       </td> </tr>
+</tbody>
 </table>
 <p>
 The Doconce source code reads
@@ -28861,10 +29336,14 @@ one table:
 
 <p>
 <table border="1">
-<tr><td align="center"><b>     time     </b></td> <td align="center"><b>   velocity   </b></td> <td align="center"><b> acceleration </b></td> </tr>
+<thead>
+<tr><th align="center">    time    </th> <th align="center">  velocity  </th> <th align="center">acceleration</th> </tr>
+</thead>
+<tbody>
 <tr><td align="left">   0.0             </td> <td align="left">   1.4186          </td> <td align="left">   -5.01           </td> </tr>
 <tr><td align="left">   1.0             </td> <td align="left">   1.376512        </td> <td align="left">   11.919          </td> </tr>
 <tr><td align="left">   3.0             </td> <td align="left">   1.1E+1          </td> <td align="left">   14.717624       </td> </tr>
+</tbody>
 </table>
 <p>
 And one with math headings (that are expanded and must be treated
@@ -28873,7 +29352,10 @@ symbol:
 
 <p>
 <table border="1">
-<tr><td align="center"><b>     \( i \)      </b></td> <td align="center"><b>    \( h_i \)     </b></td> <td align="center"><b>  \( \bar T_i \)  </b></td> <td align="center"><b> <code>L_i</code> </b></td> </tr>
+<thead>
+<tr><th align="center">    \( i \)     </th> <th align="center">   \( h_i \)    </th> <th align="center"> \( \bar T_i \) </th> <th align="center"><code>L_i</code></th> </tr>
+</thead>
+<tbody>
 <tr><td align="left">   0                   </td> <td align="right">   0                   </td> <td align="right">   288                 </td> <td align="right">   -0.0065             </td> </tr>
 <tr><td align="left">   1                   </td> <td align="right">   11,000              </td> <td align="right">   216                 </td> <td align="right">   0.0                 </td> </tr>
 <tr><td align="left">   2                   </td> <td align="right">   20,000              </td> <td align="right">   216                 </td> <td align="right">   0.001               </td> </tr>
@@ -28881,6 +29363,7 @@ symbol:
 <tr><td align="left">   4                   </td> <td align="right">   47,000              </td> <td align="right">   270                 </td> <td align="right">   0.0                 </td> </tr>
 <tr><td align="left">   5                   </td> <td align="right">   51,000              </td> <td align="right">   270                 </td> <td align="right">   -0.0028             </td> </tr>
 <tr><td align="left">   6                   </td> <td align="right">   71,000              </td> <td align="right">   214                 </td> <td align="right">   <code>NaN</code>    </td> </tr>
+</tbody>
 </table>
 <p>
 And add one with verbatim headings (with underscores),
@@ -28889,11 +29372,15 @@ and <code>|</code> right before and after verbatim word (with no space):
 
 <p>
 <table border="1">
-<tr><td align="center"><b>            exact             </b></td> <td align="center"><b>       <code>v_1</code>       </b></td> <td align="center"><b> \( a_i \) + <code>v_2</code> </b></td> <td align="center"><b>     <code>verb_3_</code>     </b></td> </tr>
+<thead>
+<tr><th align="center">           exact            </th> <th align="center">      <code>v_1</code>      </th> <th align="center">\( a_i \) + <code>v_2</code></th> <th align="center">    <code>verb_3_</code>    </th> </tr>
+</thead>
+<tbody>
 <tr><td align="right">   9                               </td> <td align="right">   9.62                            </td> <td align="right">   5.57                            </td> <td align="right">   8.98                            </td> </tr>
 <tr><td align="right">   -20                             </td> <td align="right">   -23.39                          </td> <td align="right">   -7.65                           </td> <td align="right">   -19.93                          </td> </tr>
 <tr><td align="right">   10                              </td> <td align="right">   17.74                           </td> <td align="right">   -4.50                           </td> <td align="right">   9.96                            </td> </tr>
 <tr><td align="right">   0                               </td> <td align="right">   -9.19                           </td> <td align="right">   4.13                            </td> <td align="right">   -0.26                           </td> </tr>
+</tbody>
 </table>
 <p>
 Finally, a table with math
@@ -28908,9 +29395,11 @@ and URLs.
 <p>
 <table border="1">
 <tr></tr>
+<tbody>
 <tr><td align="center">   \( \mathcal{L}=0 \)                                                                                                                        </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0080.png"><img src="../doc/src/manual/mov/wave_frames/frame_0080.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0085.png"><img src="../doc/src/manual/mov/wave_frames/frame_0085.png" width="300"></a>    </td> </tr>
 <tr><td align="center">   \( a=b \)                                                                                                                                  </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0090.png"><img src="../doc/src/manual/mov/wave_frames/frame_0090.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0095.png"><img src="../doc/src/manual/mov/wave_frames/frame_0095.png" width="300"></a>    </td> </tr>
 <tr><td align="center">   \( \nabla\cdot\boldsymbol{u} =0  \)                                                                                                        </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0100.png"><img src="../doc/src/manual/mov/wave_frames/frame_0100.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0105.png"><img src="../doc/src/manual/mov/wave_frames/frame_0105.png" width="300"></a>    </td> </tr>
+</tbody>
 </table>
 
 <h3>A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code>  <a name="___sec9"></a></h3>
@@ -28921,12 +29410,12 @@ Here is
 some text.
 
 <p>
-Let us also add a test of quotes such as "double
+Let us also add a test of quotes such as &quot;double
 quotes, with numbers like 3.14 and
-newline/comma and hyphen (as in double-quote)";
+newline/comma and hyphen (as in double-quote)&quot;;
 written in the standard LaTeX-style that gives correct
 LaTeX formatting and ordinary double quotes for all non-LaTeX formats.
-Here is another sentence that "caused" a bug in the past
+Here is another sentence that &quot;caused&quot; a bug in the past
 because double backtick quotes could imply verbatim text up to
 a verbatim word starting with period, like <code>.txt</code>.
 
@@ -30433,6 +30922,26 @@ cpdef f(double x):
     return x + 1
 \ecycod
 
+Standard Python shell sessions:
+
+\bipy
+>>> from numpy import sin
+>>> # Some comment
+>>> x = sin(1.2); print 'Value:', x
+Value: 0.932039085967
+\eipy
+
+IPython sessions:
+
+\bipy
+In [1]: from numpy import sin
+
+In [2]: # Some comment
+
+In [3]: x = sin(1.2); print 'Value:', x
+Value: 0.932039085967
+\eipy
+
 % This one tests a + sign before a code environment
 C++:
 \bcpppro
@@ -30837,6 +31346,8 @@ the old ME-IN323 book \cite{Langtangen:91} and the
 \cite{Langtangen:94b} OONSKI '94 paper.
 
 
+
+
 % --- begin exercise ---
 \begin{doconceexercise}
 \refstepcounter{doconceexercisecounter}
@@ -31007,6 +31518,7 @@ between there we have Exercise~\ref{exer:some:formula}.
 \subsection{Exercises}
 
 
+
 % --- begin exercise ---
 \begin{doconceexercise}
 \refstepcounter{doconceexercisecounter}
@@ -31065,6 +31577,7 @@ the beginning of a new exercise and cause trouble. Maybe a list
 \paragraph{Not an exercise.}
 Should be possible to stick a normal section in the middle of many
 exercises.
+
 
 
 % --- begin exercise ---
@@ -31346,6 +31859,7 @@ Oslo.
 With some text, before we continue with exercises.
 
 \subsection{More Exercises}
+
 
 
 % --- begin exercise ---
@@ -32030,9 +32544,8 @@ cp testdoc.html testdoc_no_solutions.html
 system doconce format latex testdoc --without_answers --without_solutions $ex -DSOMEVAR --sections_down
 cp testdoc.p.tex testdoc_no_solutions.p.tex
 
-cp -r ../bundled/html_styles/style_vagrant .
-doconce replace 'css/' 'style_vagrant/css/' style_vagrant/template_vagrant.html
-system doconce format html testdoc.do.txt $ex --html_style=vagrant --html_template=style_vagrant/template_vagrant.html
+cp ../bundled/html_styles/style_vagrant/template_vagrant.html .
+system doconce format html testdoc.do.txt $ex --html_style=vagrant --html_template=template_vagrant.html
 cp testdoc.html testdoc_vagrant.html
 # Test that a split of testdoc_vagrant.html becomes correct
 doconce split_html testdoc_vagrant.html
@@ -32206,6 +32719,8 @@ doconce format pandoc $name
 doconce md2latex $name
 
 # Test admonitions
+
+# LaTeX admon styles
 admon_tps="colors1 mdfbox paragraph graybox2 yellowicon grayicon colors2"
 for admon_tp in $admon_tps; do
 if [ $admon_tp = 'mdfbox' ]; then
@@ -32233,7 +32748,9 @@ done
 doconce format pdflatex admon --latex_admon=mdfbox --latex_admon_color=1,1,1 --latex_admon_envir_map=2
 doconce ptex2tex admon pycod2=minted pypro2=minted pycod=Verbatim pypro=Verbatim
 cp admon.tex admon_double_envirs.tex
+rm -rf latex_figs
 
+# Test HTML admon styles
 system doconce format html admon --html_admon=lyx --html_style=blueish2
 cp admon.html admon_lyx.html
 
@@ -32252,8 +32769,15 @@ cp admon.html admon_yellow.html
 system doconce format html admon --html_admon=apricot --html_style=solarized
 cp admon.html admon_apricot.html
 
-system doconce format html admon --html_style=vagrant --pygments_html_style=default --html_template=style_vagrant/template_vagrant.html
+system doconce format html admon --html_style=vagrant --pygments_html_style=default --html_template=template_vagrant.html
 cp admon.html admon_vagrant.html
+
+system doconce format html admon --html_style=bootstrap --pygments_html_style=default --html_admon=bootstrap_alert
+cp admon.html admon_bootstrap_alert.html
+doconce split_html admon_bootstrap_alert.html
+
+system doconce format html admon --html_style=bootswatch --pygments_html_style=default --html_admon=bootstrap_panel
+cp admon.html admon_bootswatch_panel.html
 
 system doconce sphinx_dir dirname=tmp_admon admon
 system python automake_sphinx.py
@@ -32266,7 +32790,12 @@ cp admon.mwiki admon_mwiki.mwiki
 system doconce format plain admon
 cp admon.txt admon_paragraph.txt
 
-cp -fr admon_*.html admon_*.pdf admon_*.*wiki admon_*.txt admon_sphinx admon_demo/
+cp -fr admon_*.html admon_*.pdf admon_*.*wiki admon_*.txt ._admon_*.html admon_sphinx admon_demo/
+cd admon_demo
+doconce replace '../doc/src/manual/fig/wave1D' '../../doc/src/manual/fig/wave1D' *.html .*.html
+rm -rf *~
+cd ..
+
 
 #google-chrome admon_*.html
 #for pdf in admon_*.pdf; do evince $pdf; done
@@ -32275,6 +32804,11 @@ if [ -d latex_figs ]; then
     echo "BUG: latex_figs was made by some non-latex format..."
 fi
 
+# Test Bootstrap HTML styles
+system doconce format html test_boots --html_style=bootswatch_journal --pygments_html_style=default --html_admon=bootstrap_panel
+doconce split_html test_boots.html
+
+# Test GitHub-extended Markdown
 system doconce format pandoc github_md.do.txt --github_md
 
 # Test movie handling
@@ -32629,7 +33163,7 @@ to `\boldsymbol`.
 
 ************** File: math_test.md *****************
 % How various formats can deal with LaTeX math
-% HPL
+% **HPL**
 % Jan 32, 2100
 
 This document is translated to the format _pandoc_. The purpose is to
@@ -33156,7 +33690,7 @@ MathJax.Hub.Config({
 <body>
 <div id="header">
 <h1 class="title">How various formats can deal with LaTeX math</h1>
-<h2 class="author">HPL</h2>
+<h2 class="author"><strong>HPL</strong></h2>
 <h3 class="date">Jan 32, 2100</h3>
 </div>
 <p>This document is translated to the format <em>pandoc</em>. The purpose is to test math and doconce and various output formats.</p>
@@ -33836,8 +34370,15 @@ Footer at the end:
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: http://code.google.com/p/doconce/" />
 
-<link rel="stylesheet" href="style_vagrant/css/twitter_bootstrap.css">
-<link rel="stylesheet" href="style_vagrant/css/vagrant.css">
+<!-- If you copy the css subdirectory (and, e.g., make optional edits):
+<link rel="stylesheet" href="css/twitter_bootstrap.css">
+<link rel="stylesheet" href="css/vagrant.css">
+Otherwise, rely on the URLs below (vagrant.css adapted to Doconce layout)
+-->
+
+<link rel="stylesheet" href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_vagrant/css/twitter_bootstrap.css">
+<link rel="stylesheet" href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_vagrant/css/vagrant.css">
+
 <!-- Define color of headings here (last definition counts) -->
 <style type="text/css">
 h1, h2, h3, h4, h5, h6 {
@@ -33849,7 +34390,7 @@ h1, h2, h3, h4, h5, h6 {
 </head>
 <body>
 
-<title> Appendix: Testing headings ending with `verbatim inline` </title>
+<title>A Document for Testing Doconce</title>
 
 <div class="container">
  <div class="row Header with-border">
@@ -33883,45 +34424,45 @@ h1, h2, h3, h4, h5, h6 {
      <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2b</a></li>
      -->
      <!-- Doconce automatically fills in the table of contents -->
-          <!-- vagrant nav toc: " Section 1 " --> <li>  <a href="._testdoc_vagrant001.html#sec1"> Section 1 </a>
-     <!-- vagrant nav toc: " Subsection 1 " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec1"> Subsection 1 </a>
-     <!-- vagrant nav toc: " Computer code " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec2"> Computer code </a>
-     <!-- vagrant nav toc: " Running OS commands " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec3"> Running OS commands </a>
-     <!-- vagrant nav toc: " Footnotes " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec4"> Footnotes </a>
-     <!-- vagrant nav toc: " Subsection 2: Testing figures " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec:ex"> Subsection 2: Testing figures </a>
-     <!-- vagrant nav toc: " The \( \theta \) parameter (not \( \nabla \)?) " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a>
-     <!-- vagrant nav toc: " Custom Environments " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec7"> Custom Environments </a>
-     <!-- vagrant nav toc: " Tables " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec:table"> Tables </a>
-     <!-- vagrant nav toc: " A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec9"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a>
-     <!-- vagrant nav toc: " Bibliography test " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec10"> Bibliography test </a>
-     <!-- vagrant nav toc: " Example 1: Examples can be typeset as exercises " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#Example"> Example 1: Examples can be typeset as exercises </a>
-     <!-- vagrant nav toc: " URLs " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsubsec:ex"> URLs </a>
-     <!-- vagrant nav toc: " LaTeX Mathematics " --> <li>  <a href="._testdoc_vagrant002.html#___sec13"> LaTeX Mathematics </a>
-     <!-- vagrant nav toc: " Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec14"> Exercises </a>
-     <!-- vagrant nav toc: " Problem 2: Flip a Coin " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:1"> Problem 2: Flip a Coin </a>
-     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec16"> Remarks </a>
-     <!-- vagrant nav toc: " Not an exercise " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec17"> Not an exercise </a>
-     <!-- vagrant nav toc: " Project 3: Compute a Probability " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:2"> Project 3: Compute a Probability </a>
-     <!-- vagrant nav toc: " Project 4: Explore Distributions of Random Circles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a>
-     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec20"> Remarks </a>
-     <!-- vagrant nav toc: " Exercise 5: Determine some Distance " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 5: Determine some Distance </a>
-     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec22"> Remarks </a>
-     <!-- vagrant nav toc: " Some exercise without the "Exercise:" prefix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec23"> Some exercise without the "Exercise:" prefix </a>
-     <!-- vagrant nav toc: " Example 7: Just an example " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec24"> Example 7: Just an example </a>
-     <!-- vagrant nav toc: " Here goes another section " --> <li>  <a href="._testdoc_vagrant002.html#___sec25"> Here goes another section </a>
-     <!-- vagrant nav toc: " More Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec26"> More Exercises </a>
-     <!-- vagrant nav toc: " Exercise 8: Make references to projects and problems " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 8: Make references to projects and problems </a>
-     <!-- vagrant nav toc: " Project 9: References in a headings do not work well in html " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:you"> Project 9: References in a headings do not work well in html </a>
-     <!-- vagrant nav toc: " References " --> <li>  <a href="._testdoc_vagrant002.html#___sec29"> References </a>
-     <!-- vagrant nav toc: " Appendix: Just for testing; part I " --> <li>  <a href="._testdoc_vagrant002.html#app1"> Appendix: Just for testing; part I </a>
-     <!-- vagrant nav toc: " A subsection within an appendix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec31"> A subsection within an appendix </a>
-     <!-- vagrant nav toc: " Appendix: Just for testing; part II " --> <li>  <a href="._testdoc_vagrant002.html#app2"> Appendix: Just for testing; part II </a>
-     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec33"> Appendix: Testing identical titles </a>
-     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id1"> Appendix: Testing identical titles </a>
-     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id2"> Appendix: Testing identical titles </a>
-     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec36"> Appendix: Testing identical titles </a>
-     <!-- vagrant nav toc: " Appendix: Testing inline comments " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec37"> Appendix: Testing inline comments </a>
-     <!-- vagrant nav toc: " Appendix: Testing headings ending with <code>verbatim inline</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec38"> Appendix: Testing headings ending with <code>verbatim inline</code> </a>
+          <!-- navigation toc: " Section 1 " --> <li>  <a href="._testdoc_vagrant001.html#sec1"> Section 1 </a></li>
+     <!-- navigation toc: " Subsection 1 " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec1"> Subsection 1 </a></li>
+     <!-- navigation toc: " Computer code " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec2"> Computer code </a></li>
+     <!-- navigation toc: " Running OS commands " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec3"> Running OS commands </a></li>
+     <!-- navigation toc: " Footnotes " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec4"> Footnotes </a></li>
+     <!-- navigation toc: " Subsection 2: Testing figures " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec:ex"> Subsection 2: Testing figures </a></li>
+     <!-- navigation toc: " The \( \theta \) parameter (not \( \nabla \)?) " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a></li>
+     <!-- navigation toc: " Custom Environments " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec7"> Custom Environments </a></li>
+     <!-- navigation toc: " Tables " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec:table"> Tables </a></li>
+     <!-- navigation toc: " A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec9"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a></li>
+     <!-- navigation toc: " Bibliography test " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec10"> Bibliography test </a></li>
+     <!-- navigation toc: " Example 1: Examples can be typeset as exercises " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#Example"> Example 1: Examples can be typeset as exercises </a></li>
+     <!-- navigation toc: " URLs " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsubsec:ex"> URLs </a></li>
+     <!-- navigation toc: " LaTeX Mathematics " --> <li>  <a href="._testdoc_vagrant002.html#___sec13"> LaTeX Mathematics </a></li>
+     <!-- navigation toc: " Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec14"> Exercises </a></li>
+     <!-- navigation toc: " Problem 2: Flip a Coin " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:1"> Problem 2: Flip a Coin </a></li>
+     <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec16"> Remarks </a></li>
+     <!-- navigation toc: " Not an exercise " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec17"> Not an exercise </a></li>
+     <!-- navigation toc: " Project 3: Compute a Probability " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:2"> Project 3: Compute a Probability </a></li>
+     <!-- navigation toc: " Project 4: Explore Distributions of Random Circles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a></li>
+     <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec20"> Remarks </a></li>
+     <!-- navigation toc: " Exercise 5: Determine some Distance " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 5: Determine some Distance </a></li>
+     <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec22"> Remarks </a></li>
+     <!-- navigation toc: " Some exercise without the "Exercise:" prefix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec23"> Some exercise without the "Exercise:" prefix </a></li>
+     <!-- navigation toc: " Example 7: Just an example " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec24"> Example 7: Just an example </a></li>
+     <!-- navigation toc: " Here goes another section " --> <li>  <a href="._testdoc_vagrant002.html#___sec25"> Here goes another section </a></li>
+     <!-- navigation toc: " More Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec26"> More Exercises </a></li>
+     <!-- navigation toc: " Exercise 8: Make references to projects and problems " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 8: Make references to projects and problems </a></li>
+     <!-- navigation toc: " Project 9: References in a headings do not work well in html " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:you"> Project 9: References in a headings do not work well in html </a></li>
+     <!-- navigation toc: " References " --> <li>  <a href="._testdoc_vagrant002.html#___sec29"> References </a></li>
+     <!-- navigation toc: " Appendix: Just for testing; part I " --> <li>  <a href="._testdoc_vagrant002.html#app1"> Appendix: Just for testing; part I </a></li>
+     <!-- navigation toc: " A subsection within an appendix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec31"> A subsection within an appendix </a></li>
+     <!-- navigation toc: " Appendix: Just for testing; part II " --> <li>  <a href="._testdoc_vagrant002.html#app2"> Appendix: Just for testing; part II </a></li>
+     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec33"> Appendix: Testing identical titles </a></li>
+     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id1"> Appendix: Testing identical titles </a></li>
+     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id2"> Appendix: Testing identical titles </a></li>
+     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec36"> Appendix: Testing identical titles </a></li>
+     <!-- navigation toc: " Appendix: Testing inline comments " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec37"> Appendix: Testing inline comments </a></li>
+     <!-- navigation toc: " Appendix: Testing headings ending with <code>verbatim inline</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec38"> Appendix: Testing headings ending with <code>verbatim inline</code> </a></li>
 
     </ul>
    </div>
@@ -34057,7 +34598,8 @@ $$
 <a name="part0000"></a>
 <!-- ------------------- main content ---------------------- -->
 
-<h1>A Document for Testing Doconce</h1>
+
+<title>A Document for Testing Doconce</title>
 
 <center><h1>A Document for Testing Doconce</h1></center>  <!-- document title -->
 
@@ -34209,8 +34751,15 @@ Footer at the end:
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: http://code.google.com/p/doconce/" />
 
-<link rel="stylesheet" href="style_vagrant/css/twitter_bootstrap.css">
-<link rel="stylesheet" href="style_vagrant/css/vagrant.css">
+<!-- If you copy the css subdirectory (and, e.g., make optional edits):
+<link rel="stylesheet" href="css/twitter_bootstrap.css">
+<link rel="stylesheet" href="css/vagrant.css">
+Otherwise, rely on the URLs below (vagrant.css adapted to Doconce layout)
+-->
+
+<link rel="stylesheet" href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_vagrant/css/twitter_bootstrap.css">
+<link rel="stylesheet" href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_vagrant/css/vagrant.css">
+
 <!-- Define color of headings here (last definition counts) -->
 <style type="text/css">
 h1, h2, h3, h4, h5, h6 {
@@ -34222,7 +34771,7 @@ h1, h2, h3, h4, h5, h6 {
 </head>
 <body>
 
-<title> Appendix: Testing headings ending with `verbatim inline` </title>
+<title>A Document for Testing Doconce</title>
 
 <div class="container">
  <div class="row Header with-border">
@@ -34256,45 +34805,45 @@ h1, h2, h3, h4, h5, h6 {
      <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2b</a></li>
      -->
      <!-- Doconce automatically fills in the table of contents -->
-          <!-- vagrant nav toc: " Section 1 " --> <li>  <a href="._testdoc_vagrant001.html#sec1"> Section 1 </a>
-     <!-- vagrant nav toc: " Subsection 1 " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec1"> Subsection 1 </a>
-     <!-- vagrant nav toc: " Computer code " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec2"> Computer code </a>
-     <!-- vagrant nav toc: " Running OS commands " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec3"> Running OS commands </a>
-     <!-- vagrant nav toc: " Footnotes " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec4"> Footnotes </a>
-     <!-- vagrant nav toc: " Subsection 2: Testing figures " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec:ex"> Subsection 2: Testing figures </a>
-     <!-- vagrant nav toc: " The \( \theta \) parameter (not \( \nabla \)?) " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a>
-     <!-- vagrant nav toc: " Custom Environments " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec7"> Custom Environments </a>
-     <!-- vagrant nav toc: " Tables " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec:table"> Tables </a>
-     <!-- vagrant nav toc: " A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec9"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a>
-     <!-- vagrant nav toc: " Bibliography test " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec10"> Bibliography test </a>
-     <!-- vagrant nav toc: " Example 1: Examples can be typeset as exercises " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#Example"> Example 1: Examples can be typeset as exercises </a>
-     <!-- vagrant nav toc: " URLs " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsubsec:ex"> URLs </a>
-     <!-- vagrant nav toc: " LaTeX Mathematics " --> <li>  <a href="._testdoc_vagrant002.html#___sec13"> LaTeX Mathematics </a>
-     <!-- vagrant nav toc: " Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec14"> Exercises </a>
-     <!-- vagrant nav toc: " Problem 2: Flip a Coin " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:1"> Problem 2: Flip a Coin </a>
-     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec16"> Remarks </a>
-     <!-- vagrant nav toc: " Not an exercise " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec17"> Not an exercise </a>
-     <!-- vagrant nav toc: " Project 3: Compute a Probability " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:2"> Project 3: Compute a Probability </a>
-     <!-- vagrant nav toc: " Project 4: Explore Distributions of Random Circles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a>
-     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec20"> Remarks </a>
-     <!-- vagrant nav toc: " Exercise 5: Determine some Distance " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 5: Determine some Distance </a>
-     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec22"> Remarks </a>
-     <!-- vagrant nav toc: " Some exercise without the "Exercise:" prefix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec23"> Some exercise without the "Exercise:" prefix </a>
-     <!-- vagrant nav toc: " Example 7: Just an example " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec24"> Example 7: Just an example </a>
-     <!-- vagrant nav toc: " Here goes another section " --> <li>  <a href="._testdoc_vagrant002.html#___sec25"> Here goes another section </a>
-     <!-- vagrant nav toc: " More Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec26"> More Exercises </a>
-     <!-- vagrant nav toc: " Exercise 8: Make references to projects and problems " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 8: Make references to projects and problems </a>
-     <!-- vagrant nav toc: " Project 9: References in a headings do not work well in html " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:you"> Project 9: References in a headings do not work well in html </a>
-     <!-- vagrant nav toc: " References " --> <li>  <a href="._testdoc_vagrant002.html#___sec29"> References </a>
-     <!-- vagrant nav toc: " Appendix: Just for testing; part I " --> <li>  <a href="._testdoc_vagrant002.html#app1"> Appendix: Just for testing; part I </a>
-     <!-- vagrant nav toc: " A subsection within an appendix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec31"> A subsection within an appendix </a>
-     <!-- vagrant nav toc: " Appendix: Just for testing; part II " --> <li>  <a href="._testdoc_vagrant002.html#app2"> Appendix: Just for testing; part II </a>
-     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec33"> Appendix: Testing identical titles </a>
-     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id1"> Appendix: Testing identical titles </a>
-     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id2"> Appendix: Testing identical titles </a>
-     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec36"> Appendix: Testing identical titles </a>
-     <!-- vagrant nav toc: " Appendix: Testing inline comments " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec37"> Appendix: Testing inline comments </a>
-     <!-- vagrant nav toc: " Appendix: Testing headings ending with <code>verbatim inline</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec38"> Appendix: Testing headings ending with <code>verbatim inline</code> </a>
+          <!-- navigation toc: " Section 1 " --> <li>  <a href="._testdoc_vagrant001.html#sec1"> Section 1 </a></li>
+     <!-- navigation toc: " Subsection 1 " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec1"> Subsection 1 </a></li>
+     <!-- navigation toc: " Computer code " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec2"> Computer code </a></li>
+     <!-- navigation toc: " Running OS commands " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec3"> Running OS commands </a></li>
+     <!-- navigation toc: " Footnotes " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec4"> Footnotes </a></li>
+     <!-- navigation toc: " Subsection 2: Testing figures " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec:ex"> Subsection 2: Testing figures </a></li>
+     <!-- navigation toc: " The \( \theta \) parameter (not \( \nabla \)?) " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a></li>
+     <!-- navigation toc: " Custom Environments " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec7"> Custom Environments </a></li>
+     <!-- navigation toc: " Tables " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec:table"> Tables </a></li>
+     <!-- navigation toc: " A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec9"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a></li>
+     <!-- navigation toc: " Bibliography test " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec10"> Bibliography test </a></li>
+     <!-- navigation toc: " Example 1: Examples can be typeset as exercises " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#Example"> Example 1: Examples can be typeset as exercises </a></li>
+     <!-- navigation toc: " URLs " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsubsec:ex"> URLs </a></li>
+     <!-- navigation toc: " LaTeX Mathematics " --> <li>  <a href="._testdoc_vagrant002.html#___sec13"> LaTeX Mathematics </a></li>
+     <!-- navigation toc: " Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec14"> Exercises </a></li>
+     <!-- navigation toc: " Problem 2: Flip a Coin " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:1"> Problem 2: Flip a Coin </a></li>
+     <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec16"> Remarks </a></li>
+     <!-- navigation toc: " Not an exercise " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec17"> Not an exercise </a></li>
+     <!-- navigation toc: " Project 3: Compute a Probability " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:2"> Project 3: Compute a Probability </a></li>
+     <!-- navigation toc: " Project 4: Explore Distributions of Random Circles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a></li>
+     <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec20"> Remarks </a></li>
+     <!-- navigation toc: " Exercise 5: Determine some Distance " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 5: Determine some Distance </a></li>
+     <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec22"> Remarks </a></li>
+     <!-- navigation toc: " Some exercise without the "Exercise:" prefix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec23"> Some exercise without the "Exercise:" prefix </a></li>
+     <!-- navigation toc: " Example 7: Just an example " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec24"> Example 7: Just an example </a></li>
+     <!-- navigation toc: " Here goes another section " --> <li>  <a href="._testdoc_vagrant002.html#___sec25"> Here goes another section </a></li>
+     <!-- navigation toc: " More Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec26"> More Exercises </a></li>
+     <!-- navigation toc: " Exercise 8: Make references to projects and problems " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 8: Make references to projects and problems </a></li>
+     <!-- navigation toc: " Project 9: References in a headings do not work well in html " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:you"> Project 9: References in a headings do not work well in html </a></li>
+     <!-- navigation toc: " References " --> <li>  <a href="._testdoc_vagrant002.html#___sec29"> References </a></li>
+     <!-- navigation toc: " Appendix: Just for testing; part I " --> <li>  <a href="._testdoc_vagrant002.html#app1"> Appendix: Just for testing; part I </a></li>
+     <!-- navigation toc: " A subsection within an appendix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec31"> A subsection within an appendix </a></li>
+     <!-- navigation toc: " Appendix: Just for testing; part II " --> <li>  <a href="._testdoc_vagrant002.html#app2"> Appendix: Just for testing; part II </a></li>
+     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec33"> Appendix: Testing identical titles </a></li>
+     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id1"> Appendix: Testing identical titles </a></li>
+     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id2"> Appendix: Testing identical titles </a></li>
+     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec36"> Appendix: Testing identical titles </a></li>
+     <!-- navigation toc: " Appendix: Testing inline comments " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec37"> Appendix: Testing inline comments </a></li>
+     <!-- navigation toc: " Appendix: Testing headings ending with <code>verbatim inline</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec38"> Appendix: Testing headings ending with <code>verbatim inline</code> </a></li>
 
     </ul>
    </div>
@@ -34430,7 +34979,8 @@ $$
 <a name="part0000"></a>
 <!-- ------------------- main content ---------------------- -->
 
-<h1>A Document for Testing Doconce</h1>
+
+<title>A Document for Testing Doconce</title>
 
 <center><h1>A Document for Testing Doconce</h1></center>  <!-- document title -->
 
@@ -34582,8 +35132,15 @@ Footer at the end:
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: http://code.google.com/p/doconce/" />
 
-<link rel="stylesheet" href="style_vagrant/css/twitter_bootstrap.css">
-<link rel="stylesheet" href="style_vagrant/css/vagrant.css">
+<!-- If you copy the css subdirectory (and, e.g., make optional edits):
+<link rel="stylesheet" href="css/twitter_bootstrap.css">
+<link rel="stylesheet" href="css/vagrant.css">
+Otherwise, rely on the URLs below (vagrant.css adapted to Doconce layout)
+-->
+
+<link rel="stylesheet" href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_vagrant/css/twitter_bootstrap.css">
+<link rel="stylesheet" href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_vagrant/css/vagrant.css">
+
 <!-- Define color of headings here (last definition counts) -->
 <style type="text/css">
 h1, h2, h3, h4, h5, h6 {
@@ -34595,7 +35152,7 @@ h1, h2, h3, h4, h5, h6 {
 </head>
 <body>
 
-<title> Appendix: Testing headings ending with `verbatim inline` </title>
+<title>A Document for Testing Doconce</title>
 
 <div class="container">
  <div class="row Header with-border">
@@ -34629,45 +35186,45 @@ h1, h2, h3, h4, h5, h6 {
      <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2b</a></li>
      -->
      <!-- Doconce automatically fills in the table of contents -->
-          <!-- vagrant nav toc: " Section 1 " --> <li class="active">  <a href="._testdoc_vagrant001.html#sec1"> Section 1 </a>
-     <!-- vagrant nav toc: " Subsection 1 " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec1"> Subsection 1 </a>
-     <!-- vagrant nav toc: " Computer code " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec2"> Computer code </a>
-     <!-- vagrant nav toc: " Running OS commands " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec3"> Running OS commands </a>
-     <!-- vagrant nav toc: " Footnotes " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec4"> Footnotes </a>
-     <!-- vagrant nav toc: " Subsection 2: Testing figures " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec:ex"> Subsection 2: Testing figures </a>
-     <!-- vagrant nav toc: " The \( \theta \) parameter (not \( \nabla \)?) " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a>
-     <!-- vagrant nav toc: " Custom Environments " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec7"> Custom Environments </a>
-     <!-- vagrant nav toc: " Tables " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec:table"> Tables </a>
-     <!-- vagrant nav toc: " A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec9"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a>
-     <!-- vagrant nav toc: " Bibliography test " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec10"> Bibliography test </a>
-     <!-- vagrant nav toc: " Example 1: Examples can be typeset as exercises " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#Example"> Example 1: Examples can be typeset as exercises </a>
-     <!-- vagrant nav toc: " URLs " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsubsec:ex"> URLs </a>
-     <!-- vagrant nav toc: " LaTeX Mathematics " --> <li>  <a href="._testdoc_vagrant002.html#___sec13"> LaTeX Mathematics </a>
-     <!-- vagrant nav toc: " Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec14"> Exercises </a>
-     <!-- vagrant nav toc: " Problem 2: Flip a Coin " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:1"> Problem 2: Flip a Coin </a>
-     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec16"> Remarks </a>
-     <!-- vagrant nav toc: " Not an exercise " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec17"> Not an exercise </a>
-     <!-- vagrant nav toc: " Project 3: Compute a Probability " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:2"> Project 3: Compute a Probability </a>
-     <!-- vagrant nav toc: " Project 4: Explore Distributions of Random Circles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a>
-     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec20"> Remarks </a>
-     <!-- vagrant nav toc: " Exercise 5: Determine some Distance " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 5: Determine some Distance </a>
-     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec22"> Remarks </a>
-     <!-- vagrant nav toc: " Some exercise without the "Exercise:" prefix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec23"> Some exercise without the "Exercise:" prefix </a>
-     <!-- vagrant nav toc: " Example 7: Just an example " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec24"> Example 7: Just an example </a>
-     <!-- vagrant nav toc: " Here goes another section " --> <li>  <a href="._testdoc_vagrant002.html#___sec25"> Here goes another section </a>
-     <!-- vagrant nav toc: " More Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec26"> More Exercises </a>
-     <!-- vagrant nav toc: " Exercise 8: Make references to projects and problems " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 8: Make references to projects and problems </a>
-     <!-- vagrant nav toc: " Project 9: References in a headings do not work well in html " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:you"> Project 9: References in a headings do not work well in html </a>
-     <!-- vagrant nav toc: " References " --> <li>  <a href="._testdoc_vagrant002.html#___sec29"> References </a>
-     <!-- vagrant nav toc: " Appendix: Just for testing; part I " --> <li>  <a href="._testdoc_vagrant002.html#app1"> Appendix: Just for testing; part I </a>
-     <!-- vagrant nav toc: " A subsection within an appendix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec31"> A subsection within an appendix </a>
-     <!-- vagrant nav toc: " Appendix: Just for testing; part II " --> <li>  <a href="._testdoc_vagrant002.html#app2"> Appendix: Just for testing; part II </a>
-     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec33"> Appendix: Testing identical titles </a>
-     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id1"> Appendix: Testing identical titles </a>
-     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id2"> Appendix: Testing identical titles </a>
-     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec36"> Appendix: Testing identical titles </a>
-     <!-- vagrant nav toc: " Appendix: Testing inline comments " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec37"> Appendix: Testing inline comments </a>
-     <!-- vagrant nav toc: " Appendix: Testing headings ending with <code>verbatim inline</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec38"> Appendix: Testing headings ending with <code>verbatim inline</code> </a>
+          <!-- navigation toc: " Section 1 " --> <li>  <a href="._testdoc_vagrant001.html#sec1"> Section 1 </a></li>
+     <!-- navigation toc: " Subsection 1 " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec1"> Subsection 1 </a></li>
+     <!-- navigation toc: " Computer code " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec2"> Computer code </a></li>
+     <!-- navigation toc: " Running OS commands " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec3"> Running OS commands </a></li>
+     <!-- navigation toc: " Footnotes " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec4"> Footnotes </a></li>
+     <!-- navigation toc: " Subsection 2: Testing figures " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec:ex"> Subsection 2: Testing figures </a></li>
+     <!-- navigation toc: " The \( \theta \) parameter (not \( \nabla \)?) " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a></li>
+     <!-- navigation toc: " Custom Environments " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec7"> Custom Environments </a></li>
+     <!-- navigation toc: " Tables " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec:table"> Tables </a></li>
+     <!-- navigation toc: " A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec9"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a></li>
+     <!-- navigation toc: " Bibliography test " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec10"> Bibliography test </a></li>
+     <!-- navigation toc: " Example 1: Examples can be typeset as exercises " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#Example"> Example 1: Examples can be typeset as exercises </a></li>
+     <!-- navigation toc: " URLs " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsubsec:ex"> URLs </a></li>
+     <!-- navigation toc: " LaTeX Mathematics " --> <li>  <a href="._testdoc_vagrant002.html#___sec13"> LaTeX Mathematics </a></li>
+     <!-- navigation toc: " Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec14"> Exercises </a></li>
+     <!-- navigation toc: " Problem 2: Flip a Coin " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:1"> Problem 2: Flip a Coin </a></li>
+     <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec16"> Remarks </a></li>
+     <!-- navigation toc: " Not an exercise " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec17"> Not an exercise </a></li>
+     <!-- navigation toc: " Project 3: Compute a Probability " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:2"> Project 3: Compute a Probability </a></li>
+     <!-- navigation toc: " Project 4: Explore Distributions of Random Circles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a></li>
+     <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec20"> Remarks </a></li>
+     <!-- navigation toc: " Exercise 5: Determine some Distance " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 5: Determine some Distance </a></li>
+     <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec22"> Remarks </a></li>
+     <!-- navigation toc: " Some exercise without the "Exercise:" prefix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec23"> Some exercise without the "Exercise:" prefix </a></li>
+     <!-- navigation toc: " Example 7: Just an example " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec24"> Example 7: Just an example </a></li>
+     <!-- navigation toc: " Here goes another section " --> <li>  <a href="._testdoc_vagrant002.html#___sec25"> Here goes another section </a></li>
+     <!-- navigation toc: " More Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec26"> More Exercises </a></li>
+     <!-- navigation toc: " Exercise 8: Make references to projects and problems " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 8: Make references to projects and problems </a></li>
+     <!-- navigation toc: " Project 9: References in a headings do not work well in html " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:you"> Project 9: References in a headings do not work well in html </a></li>
+     <!-- navigation toc: " References " --> <li>  <a href="._testdoc_vagrant002.html#___sec29"> References </a></li>
+     <!-- navigation toc: " Appendix: Just for testing; part I " --> <li>  <a href="._testdoc_vagrant002.html#app1"> Appendix: Just for testing; part I </a></li>
+     <!-- navigation toc: " A subsection within an appendix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec31"> A subsection within an appendix </a></li>
+     <!-- navigation toc: " Appendix: Just for testing; part II " --> <li>  <a href="._testdoc_vagrant002.html#app2"> Appendix: Just for testing; part II </a></li>
+     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec33"> Appendix: Testing identical titles </a></li>
+     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id1"> Appendix: Testing identical titles </a></li>
+     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id2"> Appendix: Testing identical titles </a></li>
+     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec36"> Appendix: Testing identical titles </a></li>
+     <!-- navigation toc: " Appendix: Testing inline comments " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec37"> Appendix: Testing inline comments </a></li>
+     <!-- navigation toc: " Appendix: Testing headings ending with <code>verbatim inline</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec38"> Appendix: Testing headings ending with <code>verbatim inline</code> </a></li>
 
     </ul>
    </div>
@@ -34987,6 +35544,30 @@ Then Cython:
     <span style="color: #008000; font-weight: bold">return</span> x <span style="color: #666666">+</span> <span style="color: #666666">1</span>
 </pre></div>
 <p>
+Standard Python shell sessions:
+
+<p>
+
+<!-- code=ipython (from !bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">&gt;&gt;&gt; from numpy import sin</span>
+<span style="color: #888888">&gt;&gt;&gt; # Some comment</span>
+<span style="color: #888888">&gt;&gt;&gt; x = sin(1.2); print &#39;Value:&#39;, x</span>
+<span style="color: #888888">Value: 0.932039085967</span>
+</pre></div>
+<p>
+IPython sessions:
+
+<p>
+
+<!-- code=ipython (from !bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">In [1]: </span><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> sin
+
+<span style="color: #000080; font-weight: bold">In [2]: </span><span style="color: #408080; font-style: italic"># Some comment</span>
+
+<span style="color: #000080; font-weight: bold">In [3]: </span>x <span style="color: #666666">=</span> sin(<span style="color: #666666">1.2</span>); <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;Value:&#39;</span>, x
+<span style="color: #888888">Value: 0.932039085967</span>
+</pre></div>
+<p>
 <!-- This one tests a + sign before a code environment -->
 C++:
 <p>
@@ -35087,9 +35668,9 @@ the previous blocks with line breaks.
 <h4>Footnotes  <a name="___sec4"></a></h4>
 
 <p>
-Here is a test of footnotes [<a name="link_footnote_1"><a><a href="#def_footnote_1">1</a>], which are handy in text.
-They are used in different flavors [<a name="link_footnote_2"><a><a href="#def_footnote_2">2</a>], which gives flexibility
-in writing. This is the third [<a name="link_footnote_3"><a><a href="._testdoc_vagrant002.html#def_footnote_3">3</a>] example.
+Here is a test of footnotes <button type="button" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Typesetting of the footnote depends on the format. Plain text does nothing, LaTeX removes the definition and inserts the footnote as part of the LaTeX text. reStructuredText and Sphinx employ a similar type of typesetting as Extended Markdown and Doconce, and in HTML we keep the same syntax, just displayed properly in HTML."><a name="link_footnote_1"><a><a href="#def_footnote_1" style="color: white">1</a></button>, which are handy in text.
+They are used in different flavors <button type="button" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Could say contexts too..."><a name="link_footnote_2"><a><a href="#def_footnote_2" style="color: white">2</a></button>, which gives flexibility
+in writing. This is the third <button type="button" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Not much to add here, but the footnote is at the end with only one newline."><a name="link_footnote_3"><a><a href="#def_footnote_3" style="color: white">3</a></button> example.
 
 <p><a name="def_footnote_1"></a><a href="#link_footnote_1"><b>1:</b></a> Typesetting of the footnote depends on the format.
 Plain text does nothing, LaTeX removes the
@@ -35105,7 +35686,7 @@ Here is some more text before a new definition of a footnote that was used
 used above.
 
 <p>
-<div class="alert alert-block alert-notice alert-text-normal"><b>Non-breaking space character.</b>
+<div class="alert alert-block alert-success alert-text-normal"><b>Non-breaking space character.</b>
 This paragraph aims to test <a href="http://en.wikipedia.org/wiki/Non-breaking_space" target="_self">non-breaking space character</a>, and a typical
 example where this is needed is int units: 7.4&nbsp;km is traveled
 in&nbsp;\( 7.4/5.5\approx 1.345 \)&nbsp;s.  Also check that a&nbsp;<a href="http://google.com" target="_self">link</a>&nbsp;is
@@ -35251,10 +35832,14 @@ Let us take this table from the manual:
 
 <p>
 <table border="1">
-<tr><td align="center"><b>     time     </b></td> <td align="center"><b>   velocity   </b></td> <td align="center"><b> acceleration </b></td> </tr>
+<thead>
+<tr><th align="center">    time    </th> <th align="center">  velocity  </th> <th align="center">acceleration</th> </tr>
+</thead>
+<tbody>
 <tr><td align="left">   0.0             </td> <td align="right">   1.4186          </td> <td align="right">   -5.01           </td> </tr>
 <tr><td align="left">   2.0             </td> <td align="right">   1.376512        </td> <td align="right">   11.919          </td> </tr>
 <tr><td align="left">   4.0             </td> <td align="right">   1.1E+1          </td> <td align="right">   14.717624       </td> </tr>
+</tbody>
 </table>
 <p>
 The Doconce source code reads
@@ -35276,10 +35861,14 @@ one table:
 
 <p>
 <table border="1">
-<tr><td align="center"><b>     time     </b></td> <td align="center"><b>   velocity   </b></td> <td align="center"><b> acceleration </b></td> </tr>
+<thead>
+<tr><th align="center">    time    </th> <th align="center">  velocity  </th> <th align="center">acceleration</th> </tr>
+</thead>
+<tbody>
 <tr><td align="left">   0.0             </td> <td align="left">   1.4186          </td> <td align="left">   -5.01           </td> </tr>
 <tr><td align="left">   1.0             </td> <td align="left">   1.376512        </td> <td align="left">   11.919          </td> </tr>
 <tr><td align="left">   3.0             </td> <td align="left">   1.1E+1          </td> <td align="left">   14.717624       </td> </tr>
+</tbody>
 </table>
 <p>
 And one with math headings (that are expanded and must be treated
@@ -35288,7 +35877,10 @@ symbol:
 
 <p>
 <table border="1">
-<tr><td align="center"><b>     \( i \)      </b></td> <td align="center"><b>    \( h_i \)     </b></td> <td align="center"><b>  \( \bar T_i \)  </b></td> <td align="center"><b> <code>L_i</code> </b></td> </tr>
+<thead>
+<tr><th align="center">    \( i \)     </th> <th align="center">   \( h_i \)    </th> <th align="center"> \( \bar T_i \) </th> <th align="center"><code>L_i</code></th> </tr>
+</thead>
+<tbody>
 <tr><td align="left">   0                   </td> <td align="right">   0                   </td> <td align="right">   288                 </td> <td align="right">   -0.0065             </td> </tr>
 <tr><td align="left">   1                   </td> <td align="right">   11,000              </td> <td align="right">   216                 </td> <td align="right">   0.0                 </td> </tr>
 <tr><td align="left">   2                   </td> <td align="right">   20,000              </td> <td align="right">   216                 </td> <td align="right">   0.001               </td> </tr>
@@ -35296,6 +35888,7 @@ symbol:
 <tr><td align="left">   4                   </td> <td align="right">   47,000              </td> <td align="right">   270                 </td> <td align="right">   0.0                 </td> </tr>
 <tr><td align="left">   5                   </td> <td align="right">   51,000              </td> <td align="right">   270                 </td> <td align="right">   -0.0028             </td> </tr>
 <tr><td align="left">   6                   </td> <td align="right">   71,000              </td> <td align="right">   214                 </td> <td align="right">   <code>NaN</code>    </td> </tr>
+</tbody>
 </table>
 <p>
 And add one with verbatim headings (with underscores),
@@ -35304,11 +35897,15 @@ and <code>|</code> right before and after verbatim word (with no space):
 
 <p>
 <table border="1">
-<tr><td align="center"><b>            exact             </b></td> <td align="center"><b>       <code>v_1</code>       </b></td> <td align="center"><b> \( a_i \) + <code>v_2</code> </b></td> <td align="center"><b>     <code>verb_3_</code>     </b></td> </tr>
+<thead>
+<tr><th align="center">           exact            </th> <th align="center">      <code>v_1</code>      </th> <th align="center">\( a_i \) + <code>v_2</code></th> <th align="center">    <code>verb_3_</code>    </th> </tr>
+</thead>
+<tbody>
 <tr><td align="right">   9                               </td> <td align="right">   9.62                            </td> <td align="right">   5.57                            </td> <td align="right">   8.98                            </td> </tr>
 <tr><td align="right">   -20                             </td> <td align="right">   -23.39                          </td> <td align="right">   -7.65                           </td> <td align="right">   -19.93                          </td> </tr>
 <tr><td align="right">   10                              </td> <td align="right">   17.74                           </td> <td align="right">   -4.50                           </td> <td align="right">   9.96                            </td> </tr>
 <tr><td align="right">   0                               </td> <td align="right">   -9.19                           </td> <td align="right">   4.13                            </td> <td align="right">   -0.26                           </td> </tr>
+</tbody>
 </table>
 <p>
 Finally, a table with math
@@ -35323,9 +35920,11 @@ and URLs.
 <p>
 <table border="1">
 <tr></tr>
+<tbody>
 <tr><td align="center">   \( \mathcal{L}=0 \)                                                                                                                        </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0080.png"><img src="../doc/src/manual/mov/wave_frames/frame_0080.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0085.png"><img src="../doc/src/manual/mov/wave_frames/frame_0085.png" width="300"></a>    </td> </tr>
 <tr><td align="center">   \( a=b \)                                                                                                                                  </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0090.png"><img src="../doc/src/manual/mov/wave_frames/frame_0090.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0095.png"><img src="../doc/src/manual/mov/wave_frames/frame_0095.png" width="300"></a>    </td> </tr>
 <tr><td align="center">   \( \nabla\cdot\boldsymbol{u} =0  \)                                                                                                        </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0100.png"><img src="../doc/src/manual/mov/wave_frames/frame_0100.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0105.png"><img src="../doc/src/manual/mov/wave_frames/frame_0105.png" width="300"></a>    </td> </tr>
+</tbody>
 </table>
 
 <h3>A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code>  <a name="___sec9"></a></h3>
@@ -35336,12 +35935,12 @@ Here is
 some text.
 
 <p>
-Let us also add a test of quotes such as "double
+Let us also add a test of quotes such as &quot;double
 quotes, with numbers like 3.14 and
-newline/comma and hyphen (as in double-quote)";
+newline/comma and hyphen (as in double-quote)&quot;;
 written in the standard LaTeX-style that gives correct
 LaTeX formatting and ordinary double quotes for all non-LaTeX formats.
-Here is another sentence that "caused" a bug in the past
+Here is another sentence that &quot;caused&quot; a bug in the past
 because double backtick quotes could imply verbatim text up to
 a verbatim word starting with period, like <code>.txt</code>.
 
@@ -35535,8 +36134,15 @@ Footer at the end:
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: http://code.google.com/p/doconce/" />
 
-<link rel="stylesheet" href="style_vagrant/css/twitter_bootstrap.css">
-<link rel="stylesheet" href="style_vagrant/css/vagrant.css">
+<!-- If you copy the css subdirectory (and, e.g., make optional edits):
+<link rel="stylesheet" href="css/twitter_bootstrap.css">
+<link rel="stylesheet" href="css/vagrant.css">
+Otherwise, rely on the URLs below (vagrant.css adapted to Doconce layout)
+-->
+
+<link rel="stylesheet" href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_vagrant/css/twitter_bootstrap.css">
+<link rel="stylesheet" href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_vagrant/css/vagrant.css">
+
 <!-- Define color of headings here (last definition counts) -->
 <style type="text/css">
 h1, h2, h3, h4, h5, h6 {
@@ -35548,7 +36154,7 @@ h1, h2, h3, h4, h5, h6 {
 </head>
 <body>
 
-<title> Appendix: Testing headings ending with `verbatim inline` </title>
+<title>A Document for Testing Doconce</title>
 
 <div class="container">
  <div class="row Header with-border">
@@ -35582,45 +36188,45 @@ h1, h2, h3, h4, h5, h6 {
      <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2b</a></li>
      -->
      <!-- Doconce automatically fills in the table of contents -->
-          <!-- vagrant nav toc: " Section 1 " --> <li>  <a href="._testdoc_vagrant001.html#sec1"> Section 1 </a>
-     <!-- vagrant nav toc: " Subsection 1 " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec1"> Subsection 1 </a>
-     <!-- vagrant nav toc: " Computer code " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec2"> Computer code </a>
-     <!-- vagrant nav toc: " Running OS commands " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec3"> Running OS commands </a>
-     <!-- vagrant nav toc: " Footnotes " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec4"> Footnotes </a>
-     <!-- vagrant nav toc: " Subsection 2: Testing figures " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec:ex"> Subsection 2: Testing figures </a>
-     <!-- vagrant nav toc: " The \( \theta \) parameter (not \( \nabla \)?) " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a>
-     <!-- vagrant nav toc: " Custom Environments " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec7"> Custom Environments </a>
-     <!-- vagrant nav toc: " Tables " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec:table"> Tables </a>
-     <!-- vagrant nav toc: " A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec9"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a>
-     <!-- vagrant nav toc: " Bibliography test " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec10"> Bibliography test </a>
-     <!-- vagrant nav toc: " Example 1: Examples can be typeset as exercises " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#Example"> Example 1: Examples can be typeset as exercises </a>
-     <!-- vagrant nav toc: " URLs " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsubsec:ex"> URLs </a>
-     <!-- vagrant nav toc: " LaTeX Mathematics " --> <li class="active">  <a href="._testdoc_vagrant002.html#___sec13"> LaTeX Mathematics </a>
-     <!-- vagrant nav toc: " Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec14"> Exercises </a>
-     <!-- vagrant nav toc: " Problem 2: Flip a Coin " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:1"> Problem 2: Flip a Coin </a>
-     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec16"> Remarks </a>
-     <!-- vagrant nav toc: " Not an exercise " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec17"> Not an exercise </a>
-     <!-- vagrant nav toc: " Project 3: Compute a Probability " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:2"> Project 3: Compute a Probability </a>
-     <!-- vagrant nav toc: " Project 4: Explore Distributions of Random Circles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a>
-     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec20"> Remarks </a>
-     <!-- vagrant nav toc: " Exercise 5: Determine some Distance " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 5: Determine some Distance </a>
-     <!-- vagrant nav toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec22"> Remarks </a>
-     <!-- vagrant nav toc: " Some exercise without the "Exercise:" prefix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec23"> Some exercise without the "Exercise:" prefix </a>
-     <!-- vagrant nav toc: " Example 7: Just an example " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec24"> Example 7: Just an example </a>
-     <!-- vagrant nav toc: " Here goes another section " --> <li>  <a href="._testdoc_vagrant002.html#___sec25"> Here goes another section </a>
-     <!-- vagrant nav toc: " More Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec26"> More Exercises </a>
-     <!-- vagrant nav toc: " Exercise 8: Make references to projects and problems " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 8: Make references to projects and problems </a>
-     <!-- vagrant nav toc: " Project 9: References in a headings do not work well in html " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:you"> Project 9: References in a headings do not work well in html </a>
-     <!-- vagrant nav toc: " References " --> <li>  <a href="._testdoc_vagrant002.html#___sec29"> References </a>
-     <!-- vagrant nav toc: " Appendix: Just for testing; part I " --> <li>  <a href="._testdoc_vagrant002.html#app1"> Appendix: Just for testing; part I </a>
-     <!-- vagrant nav toc: " A subsection within an appendix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec31"> A subsection within an appendix </a>
-     <!-- vagrant nav toc: " Appendix: Just for testing; part II " --> <li>  <a href="._testdoc_vagrant002.html#app2"> Appendix: Just for testing; part II </a>
-     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec33"> Appendix: Testing identical titles </a>
-     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id1"> Appendix: Testing identical titles </a>
-     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id2"> Appendix: Testing identical titles </a>
-     <!-- vagrant nav toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec36"> Appendix: Testing identical titles </a>
-     <!-- vagrant nav toc: " Appendix: Testing inline comments " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec37"> Appendix: Testing inline comments </a>
-     <!-- vagrant nav toc: " Appendix: Testing headings ending with <code>verbatim inline</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec38"> Appendix: Testing headings ending with <code>verbatim inline</code> </a>
+          <!-- navigation toc: " Section 1 " --> <li>  <a href="._testdoc_vagrant001.html#sec1"> Section 1 </a></li>
+     <!-- navigation toc: " Subsection 1 " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec1"> Subsection 1 </a></li>
+     <!-- navigation toc: " Computer code " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec2"> Computer code </a></li>
+     <!-- navigation toc: " Running OS commands " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec3"> Running OS commands </a></li>
+     <!-- navigation toc: " Footnotes " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec4"> Footnotes </a></li>
+     <!-- navigation toc: " Subsection 2: Testing figures " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec:ex"> Subsection 2: Testing figures </a></li>
+     <!-- navigation toc: " The \( \theta \) parameter (not \( \nabla \)?) " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a></li>
+     <!-- navigation toc: " Custom Environments " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec7"> Custom Environments </a></li>
+     <!-- navigation toc: " Tables " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec:table"> Tables </a></li>
+     <!-- navigation toc: " A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec9"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a></li>
+     <!-- navigation toc: " Bibliography test " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec10"> Bibliography test </a></li>
+     <!-- navigation toc: " Example 1: Examples can be typeset as exercises " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#Example"> Example 1: Examples can be typeset as exercises </a></li>
+     <!-- navigation toc: " URLs " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsubsec:ex"> URLs </a></li>
+     <!-- navigation toc: " LaTeX Mathematics " --> <li>  <a href="._testdoc_vagrant002.html#___sec13"> LaTeX Mathematics </a></li>
+     <!-- navigation toc: " Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec14"> Exercises </a></li>
+     <!-- navigation toc: " Problem 2: Flip a Coin " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:1"> Problem 2: Flip a Coin </a></li>
+     <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec16"> Remarks </a></li>
+     <!-- navigation toc: " Not an exercise " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec17"> Not an exercise </a></li>
+     <!-- navigation toc: " Project 3: Compute a Probability " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:2"> Project 3: Compute a Probability </a></li>
+     <!-- navigation toc: " Project 4: Explore Distributions of Random Circles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a></li>
+     <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec20"> Remarks </a></li>
+     <!-- navigation toc: " Exercise 5: Determine some Distance " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 5: Determine some Distance </a></li>
+     <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec22"> Remarks </a></li>
+     <!-- navigation toc: " Some exercise without the "Exercise:" prefix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec23"> Some exercise without the "Exercise:" prefix </a></li>
+     <!-- navigation toc: " Example 7: Just an example " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec24"> Example 7: Just an example </a></li>
+     <!-- navigation toc: " Here goes another section " --> <li>  <a href="._testdoc_vagrant002.html#___sec25"> Here goes another section </a></li>
+     <!-- navigation toc: " More Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec26"> More Exercises </a></li>
+     <!-- navigation toc: " Exercise 8: Make references to projects and problems " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 8: Make references to projects and problems </a></li>
+     <!-- navigation toc: " Project 9: References in a headings do not work well in html " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:you"> Project 9: References in a headings do not work well in html </a></li>
+     <!-- navigation toc: " References " --> <li>  <a href="._testdoc_vagrant002.html#___sec29"> References </a></li>
+     <!-- navigation toc: " Appendix: Just for testing; part I " --> <li>  <a href="._testdoc_vagrant002.html#app1"> Appendix: Just for testing; part I </a></li>
+     <!-- navigation toc: " A subsection within an appendix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec31"> A subsection within an appendix </a></li>
+     <!-- navigation toc: " Appendix: Just for testing; part II " --> <li>  <a href="._testdoc_vagrant002.html#app2"> Appendix: Just for testing; part II </a></li>
+     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec33"> Appendix: Testing identical titles </a></li>
+     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id1"> Appendix: Testing identical titles </a></li>
+     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id2"> Appendix: Testing identical titles </a></li>
+     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec36"> Appendix: Testing identical titles </a></li>
+     <!-- navigation toc: " Appendix: Testing inline comments " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec37"> Appendix: Testing inline comments </a></li>
+     <!-- navigation toc: " Appendix: Testing headings ending with <code>verbatim inline</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec38"> Appendix: Testing headings ending with <code>verbatim inline</code> </a></li>
 
     </ul>
    </div>
@@ -36469,7 +37075,7 @@ With label.
 Without label.
 
 <p>
-<div class="alert alert-block alert-notice alert-text-normal"><b>Tip.</b>
+<div class="alert alert-block alert-success alert-text-normal"><b>Tip.</b>
 Here is a tip or hint box, typeset as a notice box.
 </div>
 
@@ -36488,7 +37094,7 @@ Greg Wilson' excellent <a href="http://software-carpentry.org/2010/07/script-for
 from using version control systems.
 
 <p>
-<div class="alert alert-block alert-summary alert-text-normal"><b>Summary.</b>
+<div class="alert alert-block alert-warning alert-text-normal"><b>Summary.</b>
 <b>Bold remark:</b> Make some text with this summary.
 Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
@@ -36857,6 +37463,30 @@ Then Cython:
 
         cpdef f(double x):
             return x + 1
+
+
+Standard Python shell sessions:
+
+
+.. code-block:: python
+
+        >>> from numpy import sin
+        >>> # Some comment
+        >>> x = sin(1.2); print 'Value:', x
+        Value: 0.932039085967
+
+
+IPython sessions:
+
+
+.. code-block:: python
+
+        In [1]: from numpy import sin
+        
+        In [2]: # Some comment
+        
+        In [3]: x = sin(1.2); print 'Value:', x
+        Value: 0.932039085967
 
 
 .. This one tests a + sign before a code environment
@@ -38612,6 +39242,7 @@ Jan 32, 2100
 \vspace{1cm}
 
 
+% !split
 \section{Introduction}
 First some ordinary text to compare font sizes in admonitions
 and the surrounding text.
@@ -39209,6 +39840,7 @@ Jan 32, 2100
 \vspace{1cm}
 
 
+% !split
 \section{Introduction}
 First some ordinary text to compare font sizes in admonitions
 and the surrounding text.
@@ -39811,6 +40443,7 @@ Jan 32, 2100
 \vspace{1cm}
 
 
+% !split
 \section{Introduction}
 First some ordinary text to compare font sizes in admonitions
 and the surrounding text.
@@ -40456,6 +41089,7 @@ Jan 32, 2100
 \vspace{1cm}
 
 
+% !split
 \section{Introduction}
 First some ordinary text to compare font sizes in admonitions
 and the surrounding text.
@@ -40994,6 +41628,7 @@ Jan 32, 2100
 \vspace{1cm}
 
 
+% !split
 \section{Introduction}
 First some ordinary text to compare font sizes in admonitions
 and the surrounding text.
@@ -41624,6 +42259,7 @@ Jan 32, 2100
 \vspace{1cm}
 
 
+% !split
 \section{Introduction}
 First some ordinary text to compare font sizes in admonitions
 and the surrounding text.
@@ -42132,6 +42768,7 @@ Jan 32, 2100
 \vspace{1cm}
 
 
+% !split
 \section{Introduction}
 First some ordinary text to compare font sizes in admonitions
 and the surrounding text.
@@ -42738,6 +43375,7 @@ Jan 32, 2100
 \vspace{1cm}
 
 
+% !split
 \section{Introduction}
 First some ordinary text to compare font sizes in admonitions
 and the surrounding text.
@@ -43383,6 +44021,7 @@ Jan 32, 2100
 \vspace{1cm}
 
 
+% !split
 \section{Introduction}
 First some ordinary text to compare font sizes in admonitions
 and the surrounding text.
@@ -43891,6 +44530,8 @@ $$
 <!-- institution(s) -->
 <p>
 <center><h4>Jan 32, 2100</h4></center> <!-- date -->
+<p>
+<!-- !split -->
 
 <h2>Introduction  <a name="___sec0"></a></h2>
 First some ordinary text to compare font sizes in admonitions
@@ -44433,6 +45074,8 @@ $$
 <!-- institution(s) -->
 <p>
 <center><h4>Jan 32, 2100</h4></center> <!-- date -->
+<p>
+<!-- !split -->
 
 <h2>Introduction  <a name="___sec0"></a></h2>
 First some ordinary text to compare font sizes in admonitions
@@ -44973,6 +45616,8 @@ $$
 <!-- institution(s) -->
 <p>
 <center><h4>Jan 32, 2100</h4></center> <!-- date -->
+<p>
+<!-- !split -->
 
 <h2>Introduction  <a name="___sec0"></a></h2>
 First some ordinary text to compare font sizes in admonitions
@@ -45494,6 +46139,8 @@ $$
 <!-- institution(s) -->
 <p>
 <center><h4>Jan 32, 2100</h4></center> <!-- date -->
+<p>
+<!-- !split -->
 
 <h2>Introduction  <a name="___sec0"></a></h2>
 First some ordinary text to compare font sizes in admonitions
@@ -46111,6 +46758,8 @@ $$
 <!-- institution(s) -->
 <p>
 <center><h4>Jan 32, 2100</h4></center> <!-- date -->
+<p>
+<!-- !split -->
 
 <h2>Introduction  <a name="___sec0"></a></h2>
 First some ordinary text to compare font sizes in admonitions
@@ -46707,6 +47356,8 @@ $$
 <!-- institution(s) -->
 <p>
 <center><h4>Jan 32, 2100</h4></center> <!-- date -->
+<p>
+<!-- !split -->
 
 <h2>Introduction  <a name="___sec0"></a></h2>
 First some ordinary text to compare font sizes in admonitions
@@ -47138,8 +47789,15 @@ Footer at the end:
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: http://code.google.com/p/doconce/" />
 
-<link rel="stylesheet" href="style_vagrant/css/twitter_bootstrap.css">
-<link rel="stylesheet" href="style_vagrant/css/vagrant.css">
+<!-- If you copy the css subdirectory (and, e.g., make optional edits):
+<link rel="stylesheet" href="css/twitter_bootstrap.css">
+<link rel="stylesheet" href="css/vagrant.css">
+Otherwise, rely on the URLs below (vagrant.css adapted to Doconce layout)
+-->
+
+<link rel="stylesheet" href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_vagrant/css/twitter_bootstrap.css">
+<link rel="stylesheet" href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_vagrant/css/vagrant.css">
+
 <!-- Define color of headings here (last definition counts) -->
 <style type="text/css">
 h1, h2, h3, h4, h5, h6 {
@@ -47151,7 +47809,7 @@ h1, h2, h3, h4, h5, h6 {
 </head>
 <body>
 
-<title> The end </title>
+<title>Testing admons</title>
 
 <div class="container">
  <div class="row Header with-border">
@@ -47185,12 +47843,12 @@ h1, h2, h3, h4, h5, h6 {
      <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2b</a></li>
      -->
      <!-- Doconce automatically fills in the table of contents -->
-          <!-- vagrant nav toc: " Introduction " --> <li>  <a href="#___sec0"> Introduction </a>
-     <!-- vagrant nav toc: " Code " --> <li> &nbsp;  <a href="#___sec1"> Code </a>
-     <!-- vagrant nav toc: " Quotes and boxes " --> <li> &nbsp;  <a href="#___sec2"> Quotes and boxes </a>
-     <!-- vagrant nav toc: " Admonitions " --> <li> &nbsp;  <a href="#___sec3"> Admonitions </a>
-     <!-- vagrant nav toc: " Going deeper environments " --> <li> &nbsp;  <a href="#___sec4"> Going deeper environments </a>
-     <!-- vagrant nav toc: " The end " --> <li> &nbsp;  <a href="#___sec5"> The end </a>
+          <!-- navigation toc: " Introduction " --> <li>  <a href="#___sec0"> Introduction </a></li>
+     <!-- navigation toc: " Code " --> <li> &nbsp;  <a href="#___sec1"> Code </a></li>
+     <!-- navigation toc: " Quotes and boxes " --> <li> &nbsp;  <a href="#___sec2"> Quotes and boxes </a></li>
+     <!-- navigation toc: " Admonitions " --> <li> &nbsp;  <a href="#___sec3"> Admonitions </a></li>
+     <!-- navigation toc: " Going deeper environments " --> <li> &nbsp;  <a href="#___sec4"> Going deeper environments </a></li>
+     <!-- navigation toc: " The end " --> <li> &nbsp;  <a href="#___sec5"> The end </a></li>
 
     </ul>
    </div>
@@ -47253,7 +47911,8 @@ $$
 
 <!-- ------------------- main content ---------------------- -->
 
-<h1>Testing admons</h1>
+
+<title>Testing admons</title>
 
 <center><h1>Testing admons</h1></center>  <!-- document title -->
 
@@ -47267,6 +47926,8 @@ $$
 
 <p>
 <!-- institution(s) -->
+<p>
+<!-- !split -->
 
 <h2>Introduction  <a name="___sec0"></a></h2>
 First some ordinary text to compare font sizes in admonitions
@@ -47381,7 +48042,7 @@ Let's begin a new paragraph and show a box with code only:
 Let us start with a plain warning environment.
 
 <p>
-<div class="alert alert-block alert-warning alert-text-normal"><b>Warning.</b>
+<div class="alert alert-block alert-danger alert-text-normal"><b>Warning.</b>
 And here is a warning about something to pay attention to. We
 test how the heading behave and add quite some extra texts
 in comparison with the other admons.
@@ -47407,7 +48068,7 @@ And more and more text.
 Test warning with title:
 
 <p>
-<div class="alert alert-block alert-warning alert-text-large"><b>Title ending with math \( \sqrt{2}\approx 1.4 \).</b>
+<div class="alert alert-block alert-danger alert-text-large"><b>Title ending with math \( \sqrt{2}\approx 1.4 \).</b>
 And here comes some text with bad news in larger font.
 
 <p>
@@ -47435,7 +48096,7 @@ And a complete program
 Test warning with large title with math:
 
 <p>
-<div class="alert alert-block alert-warning alert-text-large"><b>Watch out for \( \nabla\cdot\boldsymbol{u}=0 \) equations.</b>
+<div class="alert alert-block alert-danger alert-text-large"><b>Watch out for \( \nabla\cdot\boldsymbol{u}=0 \) equations.</b>
 Divergence freedom is often problematic from a numerical point
 of view.
 </div>
@@ -47445,7 +48106,7 @@ of view.
 Then we test a block, which is guaranteed to never have any admon icon.
 
 <p>
-<div class="alert alert-block alert-block alert-text-small"><b>Block with title.</b>
+<div class="alert alert-block alert-success alert-text-small"><b>Block with title.</b>
 Here is a block of text with title. It is typeset
 <em>without any icon</em> and is useful when you want some admons with icon
 and some without. With the small font size, as used here, one can have
@@ -47456,7 +48117,7 @@ of understanding.
 
 
 <p>
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-success alert-text-normal"><b></b>
 Here is a block of text with no title. As above, it is typeset without any icon
 and is useful when you want some admons with icon and some without.
 </div>
@@ -47472,7 +48133,7 @@ code is present).
 <!-- those formats automatically add : to the admonition title. -->
 
 <p>
-<div class="alert alert-block alert-notice alert-text-illegal-size"><b>Note, eventually!</b>
+<div class="alert alert-block alert-success alert-text-illegal-size"><b>Note, eventually!</b>
 Ah, we are soon close to the end (with illegal font size specification!).
 But first a bit of math where we define \( \theta \) and \( \boldsymbol{r} \):
 
@@ -47490,19 +48151,19 @@ $$
 <!-- Test one word with a number -->
 
 <p>
-<div class="alert alert-block alert-notice alert-text-normal"><b>Point1.</b>
+<div class="alert alert-block alert-success alert-text-normal"><b>Point1.</b>
 Ah, we are soon close to the end.
 </div>
 
 
 <p>
-<div class="alert alert-block alert-question alert-text-normal"><b>Question.</b>
+<div class="alert alert-block alert-info alert-text-normal"><b>Question.</b>
 So, how many admonition environments does Doconce support?
 </div>
 
 
 <p>
-<div class="alert alert-block alert-question alert-text-normal"><b>Question.</b>
+<div class="alert alert-block alert-info alert-text-normal"><b>Question.</b>
 
 <ol>
  <li> Once more, how many admonition environments does Doconce support?</li>
@@ -47511,7 +48172,7 @@ So, how many admonition environments does Doconce support?
 
 
 <p>
-<div class="alert alert-block alert-warning alert-text-normal"><b>Tip.</b>
+<div class="alert alert-block alert-danger alert-text-normal"><b>Tip.</b>
 It is of outmost important to
 
 <p>
@@ -47539,7 +48200,7 @@ Because here the thing is to do
 Next is a warning without a title ("none" implies no title).
 
 <p>
-<div class="alert alert-block alert-warning alert-text-normal"><b></b>
+<div class="alert alert-block alert-danger alert-text-normal"><b></b>
 And here comes some text with bad news.
 </div>
 
@@ -47551,7 +48212,7 @@ Here is a long notice environment with a custom title and much
 text, math and code.
 
 <p>
-<div class="alert alert-block alert-notice alert-text-normal"><b>Going deeper.</b>
+<div class="alert alert-block alert-success alert-text-normal"><b>Going deeper.</b>
 We have some equations that should be preceded by much text, so the
 task is to write and write. The number of words, and not the
 meaning, is what counts here. We need desperately to fill up the
@@ -47648,7 +48309,7 @@ for the novice",
 just because we can.
 
 <p>
-<div class="alert alert-block alert-summary alert-text-normal"><b>Concluding remarks, for the novice.</b>
+<div class="alert alert-block alert-warning alert-text-normal"><b>Concluding remarks, for the novice.</b>
 We can summarize the most important things with admons: they have
 a different typesetting, and they may have a symbol.
 Titles should be optional.
@@ -47703,12 +48364,1277 @@ While the <div class="deep-blue">rest of the</div> getting started
 
 
 
+************** File: admon_bootstrap_alert.html *****************
+<!DOCTYPE html>
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Testing admons">
+
+
+
+<!-- Bootstrap style: bootstrap -->
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' Introduction ', 1, None, '___sec0'),
+              (' Code ', 2, None, '___sec1'),
+              (' Quotes and boxes ', 2, None, '___sec2'),
+              (' Admonitions ', 2, None, '___sec3'),
+              (' Going deeper environments ', 2, None, '___sec4'),
+              (' The end ', 2, None, '___sec5')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+
+<!-- newcommands_bfmath.tex -->
+$$
+\renewcommand{\u}{\pmb{u}}
+
+\newcommand{\xbm}{\boldsymbol{x}}
+\newcommand{\normalvecbm}{\boldsymbol{n}}
+\newcommand{\ubm}{\boldsymbol{u}}
+$$
+
+
+<!-- newcommands_replace.tex -->
+$$
+\newcommand{\x}{\pmb{x}}
+\newcommand{\normalvec}{\pmb{n}}
+\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
+\newcommand{\halfi}{1/2}
+\newcommand{\half}{\frac{1}{2}}
+\newcommand{\report}{test report}
+$$
+
+
+
+
+    
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="admon.html">Testing admons</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: " Introduction " --> <li>  <a href="._admon_bootstrap_alert001.html#___sec0"> Introduction </a></li>
+     <!-- navigation toc: " Code " --> <li> &nbsp;  <a href="._admon_bootstrap_alert001.html#___sec1"> Code </a></li>
+     <!-- navigation toc: " Quotes and boxes " --> <li> &nbsp;  <a href="._admon_bootstrap_alert001.html#___sec2"> Quotes and boxes </a></li>
+     <!-- navigation toc: " Admonitions " --> <li> &nbsp;  <a href="._admon_bootstrap_alert001.html#___sec3"> Admonitions </a></li>
+     <!-- navigation toc: " Going deeper environments " --> <li> &nbsp;  <a href="._admon_bootstrap_alert001.html#___sec4"> Going deeper environments </a></li>
+     <!-- navigation toc: " The end " --> <li> &nbsp;  <a href="._admon_bootstrap_alert001.html#___sec5"> The end </a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<div class="container">
+
+<a name="part0000"></a>
+<!-- ------------------- main content ---------------------- -->
+
+
+<title>Testing admons</title>
+
+<div class="jumbotron">
+<center><h1>Testing admons</h1></center>  <!-- document title -->
+
+<p>
+<!-- author(s): hpl -->
+
+<center>
+<b>hpl</b> 
+</center>
+
+
+<p>
+<!-- institution(s) -->
+<p>
+<center><h4>Jan 32, 2100</h4></center> <!-- date -->
+<p>
+
+
+<p><a href="._admon_bootstrap_alert001.html" class="btn btn-primary btn-lg">Read &raquo;</a></p>
+
+
+</div> <!-- end jumbotron -->
+
+<p>
+<ul class="pager">
+
+  <li class="next">
+    <a href="._admon_bootstrap_alert001.html">Next &rarr;</a>
+  </li>
+
+</ul>
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+
+</body>
+</html>
+    
+
+
+************** File: admon_bootswatch_panel.html *****************
+<!DOCTYPE html>
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Testing admons">
+
+
+
+<!-- Bootstrap style: bootswatch -->
+<link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/cosmo/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' Introduction ', 1, None, '___sec0'),
+              (' Code ', 2, None, '___sec1'),
+              (' Quotes and boxes ', 2, None, '___sec2'),
+              (' Admonitions ', 2, None, '___sec3'),
+              (' Going deeper environments ', 2, None, '___sec4'),
+              (' The end ', 2, None, '___sec5')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "AMS"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+
+<!-- newcommands_bfmath.tex -->
+$$
+\renewcommand{\u}{\pmb{u}}
+
+\newcommand{\xbm}{\boldsymbol{x}}
+\newcommand{\normalvecbm}{\boldsymbol{n}}
+\newcommand{\ubm}{\boldsymbol{u}}
+$$
+
+
+<!-- newcommands_replace.tex -->
+$$
+\newcommand{\x}{\pmb{x}}
+\newcommand{\normalvec}{\pmb{n}}
+\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
+\newcommand{\halfi}{1/2}
+\newcommand{\half}{\frac{1}{2}}
+\newcommand{\report}{test report}
+$$
+
+
+
+
+    
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="admon.html">Testing admons</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: " Introduction " --> <li>  <a href="#___sec0"> Introduction </a></li>
+     <!-- navigation toc: " Code " --> <li> &nbsp;  <a href="#___sec1"> Code </a></li>
+     <!-- navigation toc: " Quotes and boxes " --> <li> &nbsp;  <a href="#___sec2"> Quotes and boxes </a></li>
+     <!-- navigation toc: " Admonitions " --> <li> &nbsp;  <a href="#___sec3"> Admonitions </a></li>
+     <!-- navigation toc: " Going deeper environments " --> <li> &nbsp;  <a href="#___sec4"> Going deeper environments </a></li>
+     <!-- navigation toc: " The end " --> <li> &nbsp;  <a href="#___sec5"> The end </a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<div class="container">
+
+<!-- ------------------- main content ---------------------- -->
+
+
+<title>Testing admons</title>
+
+<div class="jumbotron">
+<center><h1>Testing admons</h1></center>  <!-- document title -->
+
+<p>
+<!-- author(s): hpl -->
+
+<center>
+<b>hpl</b> 
+</center>
+
+
+<p>
+<!-- institution(s) -->
+<p>
+<center><h4>Jan 32, 2100</h4></center> <!-- date -->
+<p>
+<!-- potential-jumbotron-button -->
+</div> <!-- end jumbotron -->
+
+<!-- !split -->
+
+<h2>Introduction  <a name="___sec0"></a></h2>
+First some ordinary text to compare font sizes in admonitions
+and the surrounding text.
+
+<h3>Code  <a name="___sec1"></a></h3>
+
+<p>
+Need some code outside admons for color and font comparisons:
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">some_code</span>(x):
+    <span style="color: #008000; font-weight: bold">return</span> sin(x)<span style="color: #666666">*</span>exp(<span style="color: #666666">1-</span>x)
+</pre></div>
+<p>
+And some plain text verbatim:
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">x=1.0 y=0.9 z=0.4
+x=1.1 y=0.3 z=0.1
+</pre></div>
+
+<h3>Quotes and boxes  <a name="___sec2"></a></h3>
+
+<p>
+Here is a plain quote environment.
+
+<p>
+<blockquote>
+    Sayre's law states that
+    "in any dispute the intensity of feeling is inversely
+    proportional to the value of the issues at stake." <br />
+    By way of corollary, it adds: <br />
+    "That is why academic politics are so bitter." <br />
+    <em>Source</em>: <a href="http://en.wikipedia.org/wiki/Sayre's_law" target="_self">wikipedia</a>
+</blockquote>
+
+
+<p>
+Does quotes with title also work? No...cannot work in LaTeX and HTML
+and then it does not make sense to support it.
+
+<p>
+A plain <em>box</em> is sometimes useful. Let's show it here for comparison
+with admons (especially the block admon has much in common with a box).
+The box is more aimed at framing a law or an equation.
+
+<p>
+First a simple block with text, an equation, and a list:
+
+<p>
+
+<!-- begin box -->
+<div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px;">
+A generic equation
+
+<p>
+$$ f(x) = 0 $$
+
+must be solved by a numerical method, such as
+
+<p>
+
+<ul>
+ <li> Newton's method</li>
+ <li> The Bisection method</li>
+ <li> Fixed-point (Picard) iteration by rewriting \( f(x)=x - g(x) \)</li>
+ <li> The Secant method</li>
+</ul>
+</div>
+<!-- end box -->
+
+Now test a box with equation only (note that this line continues the
+box, it is not a new paragraph):
+
+<p>
+
+<!-- begin box -->
+<div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px;">
+$$
+\begin{equation} f(x) = \sin(x)e^{1-x} \end{equation}
+$$
+</div>
+<!-- end box -->
+
+
+<p>
+Let's begin a new paragraph and show a box with code only:
+
+<p>
+
+<!-- begin box -->
+<div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px;">
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">some_code</span>(x):
+    <span style="color: #008000; font-weight: bold">return</span> sin(x)<span style="color: #666666">*</span>exp(<span style="color: #666666">1-</span>x)
+</pre></div>
+<p>
+</div>
+<!-- end box -->
+
+
+<h3>Admonitions  <a name="___sec3"></a></h3>
+
+<p>
+Let us start with a plain warning environment.
+
+<p>
+<div class="panel panel-warning">
+  <div class="panel-heading">
+  <h3 class="panel-title">Warning</h3>
+  </div>
+<div class="panel-body">
+And here is a warning about something to pay attention to. We
+test how the heading behave and add quite some extra texts
+in comparison with the other admons.
+
+<p>
+
+<ul>
+  <li> and a list</li>
+  <li> with items</li>
+</ul>
+
+We continue with more text to see how that affects the layout.
+And more and more text.
+And more and more text.
+And more and more text.
+And more and more text.
+And more and more text.
+And more and more text.
+</div>
+</div>
+
+
+<p>
+Test warning with title:
+
+<p>
+<div class="panel panel-warning">
+  <div class="panel-heading">
+  <h3 class="panel-title">Title ending with math \( \sqrt{2}\approx 1.4 \)</h3>
+  </div>
+<div class="panel-body">
+And here comes some text with bad news in larger font.
+
+<p>
+Also some code:
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
+    <span style="color: #008000; font-weight: bold">return</span> x
+</pre></div>
+<p>
+And a complete program
+
+<p>
+
+<!-- code=python (from !bc pypro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&quot;Hello, World!&quot;</span>
+</pre></div>
+<p>
+</div>
+</div>
+
+
+<p>
+Test warning with large title with math:
+
+<p>
+<div class="panel panel-warning">
+  <div class="panel-heading">
+  <h3 class="panel-title">Watch out for \( \nabla\cdot\boldsymbol{u}=0 \) equations</h3>
+  </div>
+<div class="panel-body">
+Divergence freedom is often problematic from a numerical point
+of view.
+</div>
+</div>
+
+
+<p>
+Then we test a block, which is guaranteed to never have any admon icon.
+
+<p>
+<div class="panel panel-default">
+<div class="panel-body">
+Here is a block of text with title. It is typeset
+<em>without any icon</em> and is useful when you want some admons with icon
+and some without. With the small font size, as used here, one can have
+more comment-style text or text that really goes deeper or talks
+about fun facts that are not strictly necessary for the main flow
+of understanding.
+</div>
+</div>
+
+
+<p>
+<div class="panel panel-default">
+<div class="panel-body">
+Here is a block of text with no title. As above, it is typeset without any icon
+and is useful when you want some admons with icon and some without.
+</div>
+</div>
+
+
+<p>
+The next admonition features a title "Note, eventually!" (the comma
+must be removed in the <code>mdfbox</code> admon also in <code>graybox2</code> if
+code is present).
+
+<p>
+<!-- Note that the final ! does not appear in Sphinx and reST since -->
+<!-- those formats automatically add : to the admonition title. -->
+
+<p>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+  <h3 class="panel-title">Note, eventually!</h3>
+  </div>
+<div class="panel-body">
+Ah, we are soon close to the end (with illegal font size specification!).
+But first a bit of math where we define \( \theta \) and \( \boldsymbol{r} \):
+
+<p>
+$$
+\begin{align*}
+\theta &= q^2,\\
+\boldsymbol{r} &= \varrho\boldsymbol{i}
+\end{align*}
+$$
+</div>
+</div>
+
+
+<p>
+<!-- Test one word with a number -->
+
+<p>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+  <h3 class="panel-title">Point1</h3>
+  </div>
+<div class="panel-body">
+Ah, we are soon close to the end.
+</div>
+</div>
+
+
+<p>
+<div class="panel panel-success">
+  <div class="panel-heading">
+  <h3 class="panel-title">Question</h3>
+  </div>
+<div class="panel-body">
+So, how many admonition environments does Doconce support?
+</div>
+</div>
+
+
+<p>
+<div class="panel panel-success">
+  <div class="panel-heading">
+  <h3 class="panel-title">Question</h3>
+  </div>
+<div class="panel-body">
+
+<ol>
+ <li> Once more, how many admonition environments does Doconce support?</li>
+</ol>
+</div>
+</div>
+
+
+<p>
+<div class="panel panel-warning">
+  <div class="panel-heading">
+  <h3 class="panel-title">Tip</h3>
+  </div>
+<div class="panel-body">
+It is of outmost important to
+
+<p>
+
+<ol>
+<li> stay cool</li>
+<li> read hints and tips carefully</li>
+</ol>
+
+Because here the thing is to do
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">urllib</span>
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">grab</span>(url, filename):
+    urllib<span style="color: #666666">.</span>urlretrieve(url, filename<span style="color: #666666">=</span>filename)
+</pre></div>
+<p>
+</div>
+</div>
+
+
+<p>
+Next is a warning without a title ("none" implies no title).
+
+<p>
+<div class="panel panel-warning">
+  <div class="panel-heading">
+  <h3 class="panel-title"></h3>
+  </div>
+<div class="panel-body">
+And here comes some text with bad news.
+</div>
+</div>
+
+
+<h3>Going deeper environments  <a name="___sec4"></a></h3>
+
+<p>
+Here is a long notice environment with a custom title and much
+text, math and code.
+
+<p>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+  <h3 class="panel-title">Going deeper.</h3>
+  </div>
+<div class="panel-body">
+We have some equations that should be preceded by much text, so the
+task is to write and write. The number of words, and not the
+meaning, is what counts here. We need desperately to fill up the
+page in the hope that some admonitions will experience a page break,
+which the LaTeX environment should handle with ease.
+
+<p>
+Let us start with some equations:
+
+<p>
+$$
+\begin{align*}
+\frac{Du}{dt} &= 0
+\\
+\frac{1}{2} &= {1/2}\\
+\frac{1}{2}\pmb{x} &= \pmb{n}
+\end{align*}
+$$
+
+
+<p>
+The implementation of such complicated equations in computer
+code is task that this "Going deeper" environment targets.
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">Dudt</span>(u):
+    r <span style="color: #666666">=</span> diff(u, t) <span style="color: #666666">+</span> u<span style="color: #666666">*</span>grad(u)
+    <span style="color: #008000; font-weight: bold">return</span> r
+
+half <span style="color: #666666">=</span> <span style="color: #666666">0.5</span>
+x <span style="color: #666666">=</span> <span style="color: #666666">2*</span>n
+</pre></div>
+<p>
+And some more text that can help going into the next page.
+Longer computer code requires vertical space:
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Diff</span>:
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__init__</span>(<span style="color: #008000">self</span>, f, h<span style="color: #666666">=1E-5</span>):
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>f <span style="color: #666666">=</span> f
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>h <span style="color: #666666">=</span> <span style="color: #008000">float</span>(h)
+
+<span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Forward1</span>(Diff):
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__call__</span>(<span style="color: #008000">self</span>, x):
+        f, h <span style="color: #666666">=</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>f, <span style="color: #008000">self</span><span style="color: #666666">.</span>h
+        <span style="color: #008000; font-weight: bold">return</span> (f(x<span style="color: #666666">+</span>h) <span style="color: #666666">-</span> f(x))<span style="color: #666666">/</span>h
+
+<span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Backward1</span>(Diff):
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__call__</span>(<span style="color: #008000">self</span>, x):
+        f, h <span style="color: #666666">=</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>f, <span style="color: #008000">self</span><span style="color: #666666">.</span>h
+        <span style="color: #008000; font-weight: bold">return</span> (f(x) <span style="color: #666666">-</span> f(x<span style="color: #666666">-</span>h))<span style="color: #666666">/</span>h
+
+<span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Central2</span>(Diff):
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__call__</span>(<span style="color: #008000">self</span>, x):
+        f, h <span style="color: #666666">=</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>f, <span style="color: #008000">self</span><span style="color: #666666">.</span>h
+        <span style="color: #008000; font-weight: bold">return</span> (f(x<span style="color: #666666">+</span>h) <span style="color: #666666">-</span> f(x<span style="color: #666666">-</span>h))<span style="color: #666666">/</span>(<span style="color: #666666">2*</span>h)
+
+<span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Central4</span>(Diff):
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__call__</span>(<span style="color: #008000">self</span>, x):
+        f, h <span style="color: #666666">=</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>f, <span style="color: #008000">self</span><span style="color: #666666">.</span>h
+        <span style="color: #008000; font-weight: bold">return</span> (<span style="color: #666666">4./3</span>)<span style="color: #666666">*</span>(f(x<span style="color: #666666">+</span>h)   <span style="color: #666666">-</span> f(x<span style="color: #666666">-</span>h))  <span style="color: #666666">/</span>(<span style="color: #666666">2*</span>h) <span style="color: #666666">-</span> \
+               (<span style="color: #666666">1./3</span>)<span style="color: #666666">*</span>(f(x<span style="color: #666666">+2*</span>h) <span style="color: #666666">-</span> f(x<span style="color: #666666">-2*</span>h))<span style="color: #666666">/</span>(<span style="color: #666666">4*</span>h)
+
+<span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Central6</span>(Diff):
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__call__</span>(<span style="color: #008000">self</span>, x):
+        f, h <span style="color: #666666">=</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>f, <span style="color: #008000">self</span><span style="color: #666666">.</span>h
+        <span style="color: #008000; font-weight: bold">return</span> (<span style="color: #666666">3./2</span>) <span style="color: #666666">*</span>(f(x<span style="color: #666666">+</span>h)   <span style="color: #666666">-</span> f(x<span style="color: #666666">-</span>h))  <span style="color: #666666">/</span>(<span style="color: #666666">2*</span>h) <span style="color: #666666">-</span> \
+               (<span style="color: #666666">3./5</span>) <span style="color: #666666">*</span>(f(x<span style="color: #666666">+2*</span>h) <span style="color: #666666">-</span> f(x<span style="color: #666666">-2*</span>h))<span style="color: #666666">/</span>(<span style="color: #666666">4*</span>h) <span style="color: #666666">+</span> \
+               (<span style="color: #666666">1./10</span>)<span style="color: #666666">*</span>(f(x<span style="color: #666666">+3*</span>h) <span style="color: #666666">-</span> f(x<span style="color: #666666">-3*</span>h))<span style="color: #666666">/</span>(<span style="color: #666666">6*</span>h)
+
+<span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Forward3</span>(Diff):
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__call__</span>(<span style="color: #008000">self</span>, x):
+        f, h <span style="color: #666666">=</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>f, <span style="color: #008000">self</span><span style="color: #666666">.</span>h
+        <span style="color: #008000; font-weight: bold">return</span> (<span style="color: #666666">-</span>(<span style="color: #666666">1./6</span>)<span style="color: #666666">*</span>f(x<span style="color: #666666">+2*</span>h) <span style="color: #666666">+</span> f(x<span style="color: #666666">+</span>h) <span style="color: #666666">-</span> <span style="color: #666666">0.5*</span>f(x) <span style="color: #666666">-</span> \
+                (<span style="color: #666666">1./3</span>)<span style="color: #666666">*</span>f(x<span style="color: #666666">-</span>h))<span style="color: #666666">/</span>h
+</pre></div>
+<p>
+And then we add a figure too.
+
+<p>
+<center><p><img src="../doc/src/manual/fig/wave1D.png" align="bottom" width=400></p></center>
+</div>
+</div>
+
+
+<h3>The end  <a name="___sec5"></a></h3>
+
+<p>
+A bit of text before the summary, which we now call "Concluding remarks,
+for the novice",
+just because we can.
+
+<p>
+<div class="panel panel-danger">
+  <div class="panel-heading">
+  <h3 class="panel-title">Concluding remarks, for the novice</h3>
+  </div>
+<div class="panel-body">
+We can summarize the most important things with admons: they have
+a different typesetting, and they may have a symbol.
+Titles should be optional.
+</div>
+</div>
+
+
+<p>
+<b>Remark.</b>
+The <code>remarks</code> and <code>hint</code> environments are not allowed outside
+exercises (and problems and projects too).
+
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+
+</body>
+</html>
+    
+
+
+************** File: ._admon_bootstrap_alert001.html *****************
+<!DOCTYPE html>
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Testing admons">
+
+
+
+<!-- Bootstrap style: bootstrap -->
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' Introduction ', 1, None, '___sec0'),
+              (' Code ', 2, None, '___sec1'),
+              (' Quotes and boxes ', 2, None, '___sec2'),
+              (' Admonitions ', 2, None, '___sec3'),
+              (' Going deeper environments ', 2, None, '___sec4'),
+              (' The end ', 2, None, '___sec5')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+
+<!-- newcommands_bfmath.tex -->
+$$
+\renewcommand{\u}{\pmb{u}}
+
+\newcommand{\xbm}{\boldsymbol{x}}
+\newcommand{\normalvecbm}{\boldsymbol{n}}
+\newcommand{\ubm}{\boldsymbol{u}}
+$$
+
+
+<!-- newcommands_replace.tex -->
+$$
+\newcommand{\x}{\pmb{x}}
+\newcommand{\normalvec}{\pmb{n}}
+\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
+\newcommand{\halfi}{1/2}
+\newcommand{\half}{\frac{1}{2}}
+\newcommand{\report}{test report}
+$$
+
+
+
+
+    
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="admon.html">Testing admons</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: " Introduction " --> <li>  <a href="._admon_bootstrap_alert001.html#___sec0"> Introduction </a></li>
+     <!-- navigation toc: " Code " --> <li> &nbsp;  <a href="._admon_bootstrap_alert001.html#___sec1"> Code </a></li>
+     <!-- navigation toc: " Quotes and boxes " --> <li> &nbsp;  <a href="._admon_bootstrap_alert001.html#___sec2"> Quotes and boxes </a></li>
+     <!-- navigation toc: " Admonitions " --> <li> &nbsp;  <a href="._admon_bootstrap_alert001.html#___sec3"> Admonitions </a></li>
+     <!-- navigation toc: " Going deeper environments " --> <li> &nbsp;  <a href="._admon_bootstrap_alert001.html#___sec4"> Going deeper environments </a></li>
+     <!-- navigation toc: " The end " --> <li> &nbsp;  <a href="._admon_bootstrap_alert001.html#___sec5"> The end </a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<div class="container">
+
+<a name="part0001"></a>
+<!-- !split -->
+
+<h2>Introduction  <a name="___sec0"></a></h2>
+First some ordinary text to compare font sizes in admonitions
+and the surrounding text.
+
+<h3>Code  <a name="___sec1"></a></h3>
+
+<p>
+Need some code outside admons for color and font comparisons:
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">some_code</span>(x):
+    <span style="color: #008000; font-weight: bold">return</span> sin(x)<span style="color: #666666">*</span>exp(<span style="color: #666666">1-</span>x)
+</pre></div>
+<p>
+And some plain text verbatim:
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">x=1.0 y=0.9 z=0.4
+x=1.1 y=0.3 z=0.1
+</pre></div>
+
+<h3>Quotes and boxes  <a name="___sec2"></a></h3>
+
+<p>
+Here is a plain quote environment.
+
+<p>
+<blockquote>
+    Sayre's law states that
+    "in any dispute the intensity of feeling is inversely
+    proportional to the value of the issues at stake." <br />
+    By way of corollary, it adds: <br />
+    "That is why academic politics are so bitter." <br />
+    <em>Source</em>: <a href="http://en.wikipedia.org/wiki/Sayre's_law" target="_self">wikipedia</a>
+</blockquote>
+
+
+<p>
+Does quotes with title also work? No...cannot work in LaTeX and HTML
+and then it does not make sense to support it.
+
+<p>
+A plain <em>box</em> is sometimes useful. Let's show it here for comparison
+with admons (especially the block admon has much in common with a box).
+The box is more aimed at framing a law or an equation.
+
+<p>
+First a simple block with text, an equation, and a list:
+
+<p>
+
+<!-- begin box -->
+<div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px;">
+A generic equation
+
+<p>
+$$ f(x) = 0 $$
+
+must be solved by a numerical method, such as
+
+<p>
+
+<ul>
+ <li> Newton's method</li>
+ <li> The Bisection method</li>
+ <li> Fixed-point (Picard) iteration by rewriting \( f(x)=x - g(x) \)</li>
+ <li> The Secant method</li>
+</ul>
+</div>
+<!-- end box -->
+
+Now test a box with equation only (note that this line continues the
+box, it is not a new paragraph):
+
+<p>
+
+<!-- begin box -->
+<div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px;">
+$$
+\begin{equation} f(x) = \sin(x)e^{1-x} \end{equation}
+$$
+</div>
+<!-- end box -->
+
+
+<p>
+Let's begin a new paragraph and show a box with code only:
+
+<p>
+
+<!-- begin box -->
+<div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px;">
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">some_code</span>(x):
+    <span style="color: #008000; font-weight: bold">return</span> sin(x)<span style="color: #666666">*</span>exp(<span style="color: #666666">1-</span>x)
+</pre></div>
+<p>
+</div>
+<!-- end box -->
+
+
+<h3>Admonitions  <a name="___sec3"></a></h3>
+
+<p>
+Let us start with a plain warning environment.
+
+<p>
+<div class="alert alert-block alert-danger alert-text-normal"><b>Warning.</b>
+And here is a warning about something to pay attention to. We
+test how the heading behave and add quite some extra texts
+in comparison with the other admons.
+
+<p>
+
+<ul>
+  <li> and a list</li>
+  <li> with items</li>
+</ul>
+
+We continue with more text to see how that affects the layout.
+And more and more text.
+And more and more text.
+And more and more text.
+And more and more text.
+And more and more text.
+And more and more text.
+</div>
+
+
+<p>
+Test warning with title:
+
+<p>
+<div class="alert alert-block alert-danger alert-text-large"><b>Title ending with math \( \sqrt{2}\approx 1.4 \).</b>
+And here comes some text with bad news in larger font.
+
+<p>
+Also some code:
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
+    <span style="color: #008000; font-weight: bold">return</span> x
+</pre></div>
+<p>
+And a complete program
+
+<p>
+
+<!-- code=python (from !bc pypro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&quot;Hello, World!&quot;</span>
+</pre></div>
+<p>
+</div>
+
+
+<p>
+Test warning with large title with math:
+
+<p>
+<div class="alert alert-block alert-danger alert-text-large"><b>Watch out for \( \nabla\cdot\boldsymbol{u}=0 \) equations.</b>
+Divergence freedom is often problematic from a numerical point
+of view.
+</div>
+
+
+<p>
+Then we test a block, which is guaranteed to never have any admon icon.
+
+<p>
+<div class="alert alert-block alert-success alert-text-small"><b>Block with title.</b>
+Here is a block of text with title. It is typeset
+<em>without any icon</em> and is useful when you want some admons with icon
+and some without. With the small font size, as used here, one can have
+more comment-style text or text that really goes deeper or talks
+about fun facts that are not strictly necessary for the main flow
+of understanding.
+</div>
+
+
+<p>
+<div class="alert alert-block alert-success alert-text-normal"><b></b>
+Here is a block of text with no title. As above, it is typeset without any icon
+and is useful when you want some admons with icon and some without.
+</div>
+
+
+<p>
+The next admonition features a title "Note, eventually!" (the comma
+must be removed in the <code>mdfbox</code> admon also in <code>graybox2</code> if
+code is present).
+
+<p>
+<!-- Note that the final ! does not appear in Sphinx and reST since -->
+<!-- those formats automatically add : to the admonition title. -->
+
+<p>
+<div class="alert alert-block alert-success alert-text-illegal-size"><b>Note, eventually!</b>
+Ah, we are soon close to the end (with illegal font size specification!).
+But first a bit of math where we define \( \theta \) and \( \boldsymbol{r} \):
+
+<p>
+$$
+\begin{align*}
+\theta &= q^2,\\
+\boldsymbol{r} &= \varrho\boldsymbol{i}
+\end{align*}
+$$
+</div>
+
+
+<p>
+<!-- Test one word with a number -->
+
+<p>
+<div class="alert alert-block alert-success alert-text-normal"><b>Point1.</b>
+Ah, we are soon close to the end.
+</div>
+
+
+<p>
+<div class="alert alert-block alert-info alert-text-normal"><b>Question.</b>
+So, how many admonition environments does Doconce support?
+</div>
+
+
+<p>
+<div class="alert alert-block alert-info alert-text-normal"><b>Question.</b>
+
+<ol>
+ <li> Once more, how many admonition environments does Doconce support?</li>
+</ol>
+</div>
+
+
+<p>
+<div class="alert alert-block alert-danger alert-text-normal"><b>Tip.</b>
+It is of outmost important to
+
+<p>
+
+<ol>
+<li> stay cool</li>
+<li> read hints and tips carefully</li>
+</ol>
+
+Because here the thing is to do
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">urllib</span>
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">grab</span>(url, filename):
+    urllib<span style="color: #666666">.</span>urlretrieve(url, filename<span style="color: #666666">=</span>filename)
+</pre></div>
+<p>
+</div>
+
+
+<p>
+Next is a warning without a title ("none" implies no title).
+
+<p>
+<div class="alert alert-block alert-danger alert-text-normal"><b></b>
+And here comes some text with bad news.
+</div>
+
+
+<h3>Going deeper environments  <a name="___sec4"></a></h3>
+
+<p>
+Here is a long notice environment with a custom title and much
+text, math and code.
+
+<p>
+<div class="alert alert-block alert-success alert-text-normal"><b>Going deeper.</b>
+We have some equations that should be preceded by much text, so the
+task is to write and write. The number of words, and not the
+meaning, is what counts here. We need desperately to fill up the
+page in the hope that some admonitions will experience a page break,
+which the LaTeX environment should handle with ease.
+
+<p>
+Let us start with some equations:
+
+<p>
+$$
+\begin{align*}
+\frac{Du}{dt} &= 0
+\\
+\frac{1}{2} &= {1/2}\\
+\frac{1}{2}\pmb{x} &= \pmb{n}
+\end{align*}
+$$
+
+
+<p>
+The implementation of such complicated equations in computer
+code is task that this "Going deeper" environment targets.
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">Dudt</span>(u):
+    r <span style="color: #666666">=</span> diff(u, t) <span style="color: #666666">+</span> u<span style="color: #666666">*</span>grad(u)
+    <span style="color: #008000; font-weight: bold">return</span> r
+
+half <span style="color: #666666">=</span> <span style="color: #666666">0.5</span>
+x <span style="color: #666666">=</span> <span style="color: #666666">2*</span>n
+</pre></div>
+<p>
+And some more text that can help going into the next page.
+Longer computer code requires vertical space:
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Diff</span>:
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__init__</span>(<span style="color: #008000">self</span>, f, h<span style="color: #666666">=1E-5</span>):
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>f <span style="color: #666666">=</span> f
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>h <span style="color: #666666">=</span> <span style="color: #008000">float</span>(h)
+
+<span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Forward1</span>(Diff):
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__call__</span>(<span style="color: #008000">self</span>, x):
+        f, h <span style="color: #666666">=</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>f, <span style="color: #008000">self</span><span style="color: #666666">.</span>h
+        <span style="color: #008000; font-weight: bold">return</span> (f(x<span style="color: #666666">+</span>h) <span style="color: #666666">-</span> f(x))<span style="color: #666666">/</span>h
+
+<span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Backward1</span>(Diff):
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__call__</span>(<span style="color: #008000">self</span>, x):
+        f, h <span style="color: #666666">=</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>f, <span style="color: #008000">self</span><span style="color: #666666">.</span>h
+        <span style="color: #008000; font-weight: bold">return</span> (f(x) <span style="color: #666666">-</span> f(x<span style="color: #666666">-</span>h))<span style="color: #666666">/</span>h
+
+<span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Central2</span>(Diff):
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__call__</span>(<span style="color: #008000">self</span>, x):
+        f, h <span style="color: #666666">=</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>f, <span style="color: #008000">self</span><span style="color: #666666">.</span>h
+        <span style="color: #008000; font-weight: bold">return</span> (f(x<span style="color: #666666">+</span>h) <span style="color: #666666">-</span> f(x<span style="color: #666666">-</span>h))<span style="color: #666666">/</span>(<span style="color: #666666">2*</span>h)
+
+<span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Central4</span>(Diff):
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__call__</span>(<span style="color: #008000">self</span>, x):
+        f, h <span style="color: #666666">=</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>f, <span style="color: #008000">self</span><span style="color: #666666">.</span>h
+        <span style="color: #008000; font-weight: bold">return</span> (<span style="color: #666666">4./3</span>)<span style="color: #666666">*</span>(f(x<span style="color: #666666">+</span>h)   <span style="color: #666666">-</span> f(x<span style="color: #666666">-</span>h))  <span style="color: #666666">/</span>(<span style="color: #666666">2*</span>h) <span style="color: #666666">-</span> \
+               (<span style="color: #666666">1./3</span>)<span style="color: #666666">*</span>(f(x<span style="color: #666666">+2*</span>h) <span style="color: #666666">-</span> f(x<span style="color: #666666">-2*</span>h))<span style="color: #666666">/</span>(<span style="color: #666666">4*</span>h)
+
+<span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Central6</span>(Diff):
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__call__</span>(<span style="color: #008000">self</span>, x):
+        f, h <span style="color: #666666">=</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>f, <span style="color: #008000">self</span><span style="color: #666666">.</span>h
+        <span style="color: #008000; font-weight: bold">return</span> (<span style="color: #666666">3./2</span>) <span style="color: #666666">*</span>(f(x<span style="color: #666666">+</span>h)   <span style="color: #666666">-</span> f(x<span style="color: #666666">-</span>h))  <span style="color: #666666">/</span>(<span style="color: #666666">2*</span>h) <span style="color: #666666">-</span> \
+               (<span style="color: #666666">3./5</span>) <span style="color: #666666">*</span>(f(x<span style="color: #666666">+2*</span>h) <span style="color: #666666">-</span> f(x<span style="color: #666666">-2*</span>h))<span style="color: #666666">/</span>(<span style="color: #666666">4*</span>h) <span style="color: #666666">+</span> \
+               (<span style="color: #666666">1./10</span>)<span style="color: #666666">*</span>(f(x<span style="color: #666666">+3*</span>h) <span style="color: #666666">-</span> f(x<span style="color: #666666">-3*</span>h))<span style="color: #666666">/</span>(<span style="color: #666666">6*</span>h)
+
+<span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Forward3</span>(Diff):
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__call__</span>(<span style="color: #008000">self</span>, x):
+        f, h <span style="color: #666666">=</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>f, <span style="color: #008000">self</span><span style="color: #666666">.</span>h
+        <span style="color: #008000; font-weight: bold">return</span> (<span style="color: #666666">-</span>(<span style="color: #666666">1./6</span>)<span style="color: #666666">*</span>f(x<span style="color: #666666">+2*</span>h) <span style="color: #666666">+</span> f(x<span style="color: #666666">+</span>h) <span style="color: #666666">-</span> <span style="color: #666666">0.5*</span>f(x) <span style="color: #666666">-</span> \
+                (<span style="color: #666666">1./3</span>)<span style="color: #666666">*</span>f(x<span style="color: #666666">-</span>h))<span style="color: #666666">/</span>h
+</pre></div>
+<p>
+And then we add a figure too.
+
+<p>
+<center><p><img src="../doc/src/manual/fig/wave1D.png" align="bottom" width=400></p></center>
+</div>
+
+
+<h3>The end  <a name="___sec5"></a></h3>
+
+<p>
+A bit of text before the summary, which we now call "Concluding remarks,
+for the novice",
+just because we can.
+
+<p>
+<div class="alert alert-block alert-warning alert-text-normal"><b>Concluding remarks, for the novice.</b>
+We can summarize the most important things with admons: they have
+a different typesetting, and they may have a symbol.
+Titles should be optional.
+</div>
+
+
+<p>
+<b>Remark.</b>
+The <code>remarks</code> and <code>hint</code> environments are not allowed outside
+exercises (and problems and projects too).
+
+<p>
+<ul class="pager">
+  <li class="previous">
+    <a href="._admon_bootstrap_alert000.html">&larr; Prev</a>
+  </li>
+
+
+</ul>
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+
+</body>
+</html>
+    
+
+
+************** File: ._admon_bootstrap_alert002.html *****************
+NOT FOUND!
 ************** File: admon_mwiki.mwiki *****************
 #TITLE (actually governed by the filename): Testing admons
 
 By '''hpl'''
 ==== Jan 32, 2100 ====
 
+<!-- !split -->
 == Introduction ==
 First some ordinary text to compare font sizes in admonitions
 and the surrounding text.
@@ -48109,6 +50035,8 @@ Testing admons
 
 :Author: hpl
 :Date: Jan 32, 2100
+
+.. !split
 
 Introduction
 ============
@@ -48528,6 +50456,7 @@ hpl
 
 Date: Jan 32, 2100
 
+# !split
 Introduction
 ============
 First some ordinary text to compare font sizes in admonitions
@@ -57396,7 +59325,7 @@ based on HTML and vice versa.
 
 <section>
 
-<h1>A tour of Doconce  <a name="___sec9"></a></h1>
+<h1>A tour of Doconce  <a name="___sec9"></a></h1> <!-- chapter heading -->
 
 <p>
 
@@ -57474,7 +59403,7 @@ __This is a paragraph heading.__
 <p>
 Result:
 
-<h1>This is an H1/chapter heading  <a name="___sec13"></a></h1>
+<h1>This is an H1/chapter heading  <a name="___sec13"></a></h1> <!-- chapter heading -->
 
 <h2>This is an H2/section heading  <a name="___sec14"></a></h2>
 
@@ -61831,10 +63760,14 @@ def f(x, a=1, b=1, c=1):
 #### Remaining functionality
 
 <table border="1">
-<tr><td align="center"><b>            function            </b></td> <td align="center"><b>            purpose             </b></td> <td align="center"><b>             state              </b></td> </tr>
+<thead>
+<tr><th align="center">           function           </th> <th align="center">           purpose            </th> <th align="center">            state             </th> </tr>
+</thead>
+<tbody>
 <tr><td align="left">   <code>g(x)</code>                            </td> <td align="left">   Compute the Gaussian function.    </td> <td align="left">   Formula ready.                    </td> </tr>
 <tr><td align="left">   <code>h(x)</code>                            </td> <td align="left">   Heaviside function.               </td> <td align="left">   Formula ready.                    </td> </tr>
 <tr><td align="left">   <code>I(x)</code>                            </td> <td align="left">   Indicator function.               </td> <td align="left">   Nothing done yet.                 </td> </tr>
+</tbody>
 </table>
 
 
@@ -70082,6 +72015,1427 @@ slightly modified \texttt{svmono.cls} and \texttt{t2.sty} files:
 
 \end{document}
 
+************** File: test_boots.do.txt *****************
+TITLE: Test of the Bootstrap style
+
+Doconce can work with Bootstrap HTML styles:
+way:
+
+!bc sys
+Terminal> doconce format html mydoc --html_style=bootswatch --html_admon=bootstrap_panel
+!ec
+
+Here goes optional text.
+
+# A split before the first section will enable a button in the jumbotron
+# for going to the first real page
+
+!split
+========= More details on writing Doconce documents with Bootstrap layout =========
+
+
+======= Demonstrations of admons =======
+
+The Bootstrap/Bootswatch styles support two kinds of admons:
+
+ * alert admons (`bootstrap_alert`) with colored background (default)
+ * panel admon (`bootstrap_panel`) where only the title has colored background
+
+
+Below are some examples on admons.
+
+!bwarning Warning: recall to prefix module functions
+
+!bc ipy
+
+In [1]: import numpy as np
+
+In [2]: x = np.linspace(0, 4*np.pi, 11)
+
+In [3]: y = exp(-0.1*x)*sin(x)
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+<ipython-input-3-c1040545fa6c> in <module>()
+----> 1 y = exp(-0.1*x)*sin(x)
+
+NameError: name 'exp' is not defined
+
+In [4]: y = np.exp(-0.1*x)*np.sin(x)
+
+In [5]: y
+Out[5]:
+array([  0.00000000e+00,   8.38747563e-01,   4.57160372e-01,
+        -4.03174933e-01,  -5.75315545e-01,  -1.30666897e-16,
+         4.47461836e-01,   2.43889614e-01,  -2.15089026e-01,
+        -3.06923992e-01,  -1.39418467e-16])
+!ec
+
+
+This is the admon for warnings or paying attention.
+!ewarning
+
+!bnotice Information
+This is the notice admon with nice-to-have information.
+!enotice
+
+!bquestion Testing the understanding
+How many admon styles are supported by the Doconce Boostrap and Bootswatch
+styles?
+!equestion
+
+!bsummary
+Doconce supports the following elements of Bootstrap elements:
+
+ * Admons
+ * Panels (via admons)
+ * Jumbotron for title and intro
+ * Columns of content (grid structure via the `slidecell` environment)
+ * Tooltips via footnotes
+!esummary
+
+!split
+======= Horizontal alignment of document elements =======
+label{sec:examples}
+
+===== Principles of grid structures =====
+
+The HTML page can feature a grid structure of cells, defined by
+the following syntax in case of a 1x3 grid:
+
+!bc
+# begin-grid-area
+
+|bslidecell 00
+...
+|eslidecell
+
+|bslidecell 01
+...
+|eslidecell
+
+|bslidecell 02
+...
+|eslidecell
+
+# end-grid-area
+!ec
+
+===== Example on a 1x3 grid structure =====
+
+# begin-grid-area
+
+Some text like this is lost.
+
+!bslidecell 00
+__Mathematics.__
+Given a function
+
+!bt
+\[ f(x) = e^{-ax}\sin wx\thinspace .\]
+!et
+Write a program for evaluating $f(x)$, and test the program
+for the value of $f(0)$.
+!eslidecell
+
+!bslidecell 01
+__Implementation.__
+The Python implementation reads
+
+!bc pycod
+from math import exp, sin
+
+def f(x):
+    return exp(-a*x)*sin(w*x)
+!ec
+where `a` and `w` must be *global variables*, initialized in the
+main program.
+!eslidecell
+
+!bslidecell 02
+
+__Computational experiment.__
+With a main program
+
+!bc pycod
+a = 1
+from math import pi
+w = pi
+print f(0)
+!ec
+we can run the program:
+
+!bc sys
+Terminal> python prog.py
+0
+!ec
+!eslidecell
+# end-grid-area
+
+===== Variation of the previous grid structure using panels =====
+
+# Note: panels are realized as admons, using --admon_style=bootstrap_panel
+
+# begin-grid-area
+
+!bslidecell 00
+!bnotice Mathematics
+Given a function
+
+!bt
+\[ f(x) = e^{-ax}\sin wx\thinspace .\]
+!et
+Write a program for evaluating $f(x)$, and test the program
+for the value of $f(0)$.
+!enotice
+!eslidecell
+
+!bslidecell 01
+!bnotice Implementation
+The Python implementation reads
+
+!bc pycod
+from math import exp, sin
+
+def f(x):
+    return exp(-a*x)*sin(w*x)
+!ec
+where `a` and `w` must be *global variables*, initialized in the
+main program.
+!enotice
+!eslidecell
+
+!bslidecell 02
+!bnotice Computational experiment
+With a main program
+
+!bc pycod
+a = 1
+from math import pi
+w = pi
+print f(0)
+!ec
+we can run the program:
+
+!bc sys
+Terminal> python prog.py
+0
+!ec
+!enotice
+!eslidecell
+# end-grid-area
+
+************** File: test_boots.html *****************
+<!DOCTYPE html>
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Test of the Bootstrap style">
+
+
+
+<!-- Bootstrap style: bootswatch_journal -->
+<link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/journal/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<!-- tocinfo
+{'highest level': 0,
+ 'sections': [(' More details on writing Doconce documents with Bootstrap layout ',
+               0,
+               None,
+               '___sec0'),
+              (' Demonstrations of admons ', 1, None, '___sec1'),
+              (' Horizontal alignment of document elements ',
+               1,
+               'sec:examples',
+               'sec:examples'),
+              (' Principles of grid structures ', 2, None, '___sec3'),
+              (' Example on a 1x3 grid structure ', 2, None, '___sec4'),
+              (' Variation of the previous grid structure using panels ',
+               2,
+               None,
+               '___sec5')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+
+<!-- newcommands_bfmath.tex -->
+$$
+\renewcommand{\u}{\pmb{u}}
+
+\newcommand{\xbm}{\boldsymbol{x}}
+\newcommand{\normalvecbm}{\boldsymbol{n}}
+\newcommand{\ubm}{\boldsymbol{u}}
+$$
+
+
+<!-- newcommands_replace.tex -->
+$$
+\newcommand{\x}{\pmb{x}}
+\newcommand{\normalvec}{\pmb{n}}
+\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
+\newcommand{\halfi}{1/2}
+\newcommand{\half}{\frac{1}{2}}
+\newcommand{\report}{test report}
+$$
+
+
+
+
+    
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="test_boots.html">Test of the Bootstrap style</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: " More details on writing Doconce documents with Bootstrap layout " --> <li>  <a href="._test_boots001.html#___sec0"> More details on writing Doconce documents with Bootstrap layout </a></li>
+     <!-- navigation toc: " Demonstrations of admons " --> <li> &nbsp;  <a href="._test_boots001.html#___sec1"> Demonstrations of admons </a></li>
+     <!-- navigation toc: " Horizontal alignment of document elements " --> <li> &nbsp;  <a href="._test_boots002.html#sec:examples"> Horizontal alignment of document elements </a></li>
+     <!-- navigation toc: " Principles of grid structures " --> <li> &nbsp; &nbsp;  <a href="._test_boots002.html#___sec3"> Principles of grid structures </a></li>
+     <!-- navigation toc: " Example on a 1x3 grid structure " --> <li> &nbsp; &nbsp;  <a href="._test_boots002.html#___sec4"> Example on a 1x3 grid structure </a></li>
+     <!-- navigation toc: " Variation of the previous grid structure using panels " --> <li> &nbsp; &nbsp;  <a href="._test_boots002.html#___sec5"> Variation of the previous grid structure using panels </a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<div class="container">
+
+<a name="part0000"></a>
+<!-- ------------------- main content ---------------------- -->
+
+
+<title>Test of the Bootstrap style</title>
+
+<div class="jumbotron">
+<center><h1>Test of the Bootstrap style</h1></center>  <!-- document title -->
+
+<p>
+Doconce can work with Bootstrap HTML styles:
+way:
+
+<p>
+
+<!-- code=console (from !bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; doconce format html mydoc --html_style=bootswatch --html_admon=bootstrap_panel</span>
+</pre></div>
+<p>
+Here goes optional text.
+
+<p>
+<!-- A split before the first section will enable a button in the jumbotron -->
+<!-- for going to the first real page -->
+
+<p>
+
+
+<p><a href="._test_boots001.html" class="btn btn-primary btn-lg">Read &raquo;</a></p>
+
+
+</div> <!-- end jumbotron -->
+
+<p>
+<ul class="pager">
+
+  <li class="next">
+    <a href="._test_boots001.html">Next &rarr;</a>
+  </li>
+
+</ul>
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+
+</body>
+</html>
+    
+
+
+************** File: ._test_boots001.html *****************
+<!DOCTYPE html>
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Test of the Bootstrap style">
+
+
+
+<!-- Bootstrap style: bootswatch_journal -->
+<link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/journal/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<!-- tocinfo
+{'highest level': 0,
+ 'sections': [(' More details on writing Doconce documents with Bootstrap layout ',
+               0,
+               None,
+               '___sec0'),
+              (' Demonstrations of admons ', 1, None, '___sec1'),
+              (' Horizontal alignment of document elements ',
+               1,
+               'sec:examples',
+               'sec:examples'),
+              (' Principles of grid structures ', 2, None, '___sec3'),
+              (' Example on a 1x3 grid structure ', 2, None, '___sec4'),
+              (' Variation of the previous grid structure using panels ',
+               2,
+               None,
+               '___sec5')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+
+<!-- newcommands_bfmath.tex -->
+$$
+\renewcommand{\u}{\pmb{u}}
+
+\newcommand{\xbm}{\boldsymbol{x}}
+\newcommand{\normalvecbm}{\boldsymbol{n}}
+\newcommand{\ubm}{\boldsymbol{u}}
+$$
+
+
+<!-- newcommands_replace.tex -->
+$$
+\newcommand{\x}{\pmb{x}}
+\newcommand{\normalvec}{\pmb{n}}
+\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
+\newcommand{\halfi}{1/2}
+\newcommand{\half}{\frac{1}{2}}
+\newcommand{\report}{test report}
+$$
+
+
+
+
+    
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="test_boots.html">Test of the Bootstrap style</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: " More details on writing Doconce documents with Bootstrap layout " --> <li>  <a href="._test_boots001.html#___sec0"> More details on writing Doconce documents with Bootstrap layout </a></li>
+     <!-- navigation toc: " Demonstrations of admons " --> <li> &nbsp;  <a href="._test_boots001.html#___sec1"> Demonstrations of admons </a></li>
+     <!-- navigation toc: " Horizontal alignment of document elements " --> <li> &nbsp;  <a href="._test_boots002.html#sec:examples"> Horizontal alignment of document elements </a></li>
+     <!-- navigation toc: " Principles of grid structures " --> <li> &nbsp; &nbsp;  <a href="._test_boots002.html#___sec3"> Principles of grid structures </a></li>
+     <!-- navigation toc: " Example on a 1x3 grid structure " --> <li> &nbsp; &nbsp;  <a href="._test_boots002.html#___sec4"> Example on a 1x3 grid structure </a></li>
+     <!-- navigation toc: " Variation of the previous grid structure using panels " --> <li> &nbsp; &nbsp;  <a href="._test_boots002.html#___sec5"> Variation of the previous grid structure using panels </a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<div class="container">
+
+<a name="part0001"></a>
+<!-- !split -->
+
+
+<div class="page-header">
+  <h1>More details on writing Doconce documents with Bootstrap layout  <a name="___sec0"></a></h1>
+</div>
+
+<h2>Demonstrations of admons  <a name="___sec1"></a></h2>
+
+<p>
+The Bootstrap/Bootswatch styles support two kinds of admons:
+
+<p>
+
+<ul>
+ <li> alert admons (<code>bootstrap_alert</code>) with colored background (default)</li>
+ <li> panel admon (<code>bootstrap_panel</code>) where only the title has colored background</li>
+</ul>
+
+Below are some examples on admons.
+
+<p>
+<div class="panel panel-warning">
+  <div class="panel-heading">
+  <h3 class="panel-title">Warning: recall to prefix module functions</h3>
+  </div>
+<div class="panel-body">
+
+<p>
+
+<!-- code=ipython (from !bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">In [1]: </span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+
+<span style="color: #000080; font-weight: bold">In [2]: </span>x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0</span>, <span style="color: #666666">4*</span>np<span style="color: #666666">.</span>pi, <span style="color: #666666">11</span>)
+
+<span style="color: #000080; font-weight: bold">In [3]: </span>y <span style="color: #666666">=</span> exp(<span style="color: #666666">-0.1*</span>x)<span style="color: #666666">*</span>sin(x)
+<span style="color: #888888">---------------------------------------------------------------------------</span>
+<span style="color: #888888">NameError                                 Traceback (most recent call last)</span>
+<span style="color: #888888">&lt;ipython-input-3-c1040545fa6c&gt; in &lt;module&gt;()</span>
+<span style="color: #888888">----&gt; 1 y = exp(-0.1*x)*sin(x)</span>
+
+<span style="color: #888888">NameError: name &#39;exp&#39; is not defined</span>
+
+<span style="color: #000080; font-weight: bold">In [4]: </span>y <span style="color: #666666">=</span> np<span style="color: #666666">.</span>exp(<span style="color: #666666">-0.1*</span>x)<span style="color: #666666">*</span>np<span style="color: #666666">.</span>sin(x)
+
+<span style="color: #000080; font-weight: bold">In [5]: </span>y
+<span style="color: #888888">Out[5]:</span>
+<span style="color: #888888">array([  0.00000000e+00,   8.38747563e-01,   4.57160372e-01,</span>
+<span style="color: #888888">        -4.03174933e-01,  -5.75315545e-01,  -1.30666897e-16,</span>
+<span style="color: #888888">         4.47461836e-01,   2.43889614e-01,  -2.15089026e-01,</span>
+<span style="color: #888888">        -3.06923992e-01,  -1.39418467e-16])</span>
+</pre></div>
+<p>
+This is the admon for warnings or paying attention.
+</div>
+</div>
+
+
+<p>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+  <h3 class="panel-title">Information</h3>
+  </div>
+<div class="panel-body">
+This is the notice admon with nice-to-have information.
+</div>
+</div>
+
+
+<p>
+<div class="panel panel-success">
+  <div class="panel-heading">
+  <h3 class="panel-title">Testing the understanding</h3>
+  </div>
+<div class="panel-body">
+How many admon styles are supported by the Doconce Boostrap and Bootswatch
+styles?
+</div>
+</div>
+
+
+<p>
+<div class="panel panel-danger">
+  <div class="panel-heading">
+  <h3 class="panel-title">Summary</h3>
+  </div>
+<div class="panel-body">
+Doconce supports the following elements of Bootstrap elements:
+
+<p>
+
+<ul>
+ <li> Admons</li>
+ <li> Panels (via admons)</li>
+ <li> Jumbotron for title and intro</li>
+ <li> Columns of content (grid structure via the <code>slidecell</code> environment)</li>
+ <li> Tooltips via footnotes</li>
+</ul>
+</div>
+</div>
+
+
+<p>
+<p>
+<ul class="pager">
+  <li class="previous">
+    <a href="._test_boots000.html">&larr; Prev</a>
+  </li>
+
+  <li class="next">
+    <a href="._test_boots002.html">Next &rarr;</a>
+  </li>
+
+</ul>
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+
+</body>
+</html>
+    
+
+
+************** File: ._test_boots002.html *****************
+<!DOCTYPE html>
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Test of the Bootstrap style">
+
+
+
+<!-- Bootstrap style: bootswatch_journal -->
+<link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/journal/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<!-- tocinfo
+{'highest level': 0,
+ 'sections': [(' More details on writing Doconce documents with Bootstrap layout ',
+               0,
+               None,
+               '___sec0'),
+              (' Demonstrations of admons ', 1, None, '___sec1'),
+              (' Horizontal alignment of document elements ',
+               1,
+               'sec:examples',
+               'sec:examples'),
+              (' Principles of grid structures ', 2, None, '___sec3'),
+              (' Example on a 1x3 grid structure ', 2, None, '___sec4'),
+              (' Variation of the previous grid structure using panels ',
+               2,
+               None,
+               '___sec5')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+
+<!-- newcommands_bfmath.tex -->
+$$
+\renewcommand{\u}{\pmb{u}}
+
+\newcommand{\xbm}{\boldsymbol{x}}
+\newcommand{\normalvecbm}{\boldsymbol{n}}
+\newcommand{\ubm}{\boldsymbol{u}}
+$$
+
+
+<!-- newcommands_replace.tex -->
+$$
+\newcommand{\x}{\pmb{x}}
+\newcommand{\normalvec}{\pmb{n}}
+\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
+\newcommand{\halfi}{1/2}
+\newcommand{\half}{\frac{1}{2}}
+\newcommand{\report}{test report}
+$$
+
+
+
+
+    
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="test_boots.html">Test of the Bootstrap style</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: " More details on writing Doconce documents with Bootstrap layout " --> <li>  <a href="._test_boots001.html#___sec0"> More details on writing Doconce documents with Bootstrap layout </a></li>
+     <!-- navigation toc: " Demonstrations of admons " --> <li> &nbsp;  <a href="._test_boots001.html#___sec1"> Demonstrations of admons </a></li>
+     <!-- navigation toc: " Horizontal alignment of document elements " --> <li> &nbsp;  <a href="._test_boots002.html#sec:examples"> Horizontal alignment of document elements </a></li>
+     <!-- navigation toc: " Principles of grid structures " --> <li> &nbsp; &nbsp;  <a href="._test_boots002.html#___sec3"> Principles of grid structures </a></li>
+     <!-- navigation toc: " Example on a 1x3 grid structure " --> <li> &nbsp; &nbsp;  <a href="._test_boots002.html#___sec4"> Example on a 1x3 grid structure </a></li>
+     <!-- navigation toc: " Variation of the previous grid structure using panels " --> <li> &nbsp; &nbsp;  <a href="._test_boots002.html#___sec5"> Variation of the previous grid structure using panels </a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<div class="container">
+
+<a name="part0002"></a>
+<!-- !split -->
+
+<h2>Horizontal alignment of document elements <a name="sec:examples"></a></h2>
+
+<h3>Principles of grid structures  <a name="___sec3"></a></h3>
+
+<p>
+The HTML page can feature a grid structure of cells, defined by
+the following syntax in case of a 1x3 grid:
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"># begin-grid-area
+
+!bslidecell 00
+...
+!eslidecell
+
+!bslidecell 01
+...
+!eslidecell
+
+!bslidecell 02
+...
+!eslidecell
+
+# end-grid-area
+</pre></div>
+
+<h3>Example on a 1x3 grid structure  <a name="___sec4"></a></h3>
+
+<p>
+<div class="row"> <!-- begin cell row -->
+  <div class="col-sm-4">
+<b>Mathematics.</b>
+Given a function
+
+<p>
+$$ f(x) = e^{-ax}\sin wx\thinspace .$$
+
+Write a program for evaluating \( f(x) \), and test the program
+for the value of \( f(0) \).
+  </div> <!-- column col-sm-4 -->
+  <div class="col-sm-4">
+<b>Implementation.</b>
+The Python implementation reads
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> exp, sin
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
+    <span style="color: #008000; font-weight: bold">return</span> exp(<span style="color: #666666">-</span>a<span style="color: #666666">*</span>x)<span style="color: #666666">*</span>sin(w<span style="color: #666666">*</span>x)
+</pre></div>
+<p>
+where <code>a</code> and <code>w</code> must be <em>global variables</em>, initialized in the
+main program.
+  </div> <!-- column col-sm-4 -->
+  <div class="col-sm-4">
+
+<p>
+<b>Computational experiment.</b>
+With a main program
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a <span style="color: #666666">=</span> <span style="color: #666666">1</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> pi
+w <span style="color: #666666">=</span> pi
+<span style="color: #008000; font-weight: bold">print</span> f(<span style="color: #666666">0</span>)
+</pre></div>
+<p>
+we can run the program:
+
+<p>
+
+<!-- code=console (from !bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; python prog.py</span>
+<span style="color: #888888">0</span>
+</pre></div>
+<p>
+  </div> <!-- column col-sm-4 -->
+</div> <!-- end cell row -->
+
+<h3>Variation of the previous grid structure using panels  <a name="___sec5"></a></h3>
+
+<p>
+<!-- Note: panels are realized as admons, using --admon_style=bootstrap_panel -->
+
+<p>
+<div class="row"> <!-- begin cell row -->
+  <div class="col-sm-4">
+<div class="panel panel-primary">
+  <div class="panel-heading">
+  <h3 class="panel-title">Mathematics</h3>
+  </div>
+<div class="panel-body">
+Given a function
+
+<p>
+$$ f(x) = e^{-ax}\sin wx\thinspace .$$
+
+Write a program for evaluating \( f(x) \), and test the program
+for the value of \( f(0) \).
+</div>
+</div>
+
+  </div> <!-- column col-sm-4 -->
+  <div class="col-sm-4">
+<div class="panel panel-primary">
+  <div class="panel-heading">
+  <h3 class="panel-title">Implementation</h3>
+  </div>
+<div class="panel-body">
+The Python implementation reads
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> exp, sin
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
+    <span style="color: #008000; font-weight: bold">return</span> exp(<span style="color: #666666">-</span>a<span style="color: #666666">*</span>x)<span style="color: #666666">*</span>sin(w<span style="color: #666666">*</span>x)
+</pre></div>
+<p>
+where <code>a</code> and <code>w</code> must be <em>global variables</em>, initialized in the
+main program.
+</div>
+</div>
+
+  </div> <!-- column col-sm-4 -->
+  <div class="col-sm-4">
+<div class="panel panel-primary">
+  <div class="panel-heading">
+  <h3 class="panel-title">Computational experiment</h3>
+  </div>
+<div class="panel-body">
+With a main program
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a <span style="color: #666666">=</span> <span style="color: #666666">1</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> pi
+w <span style="color: #666666">=</span> pi
+<span style="color: #008000; font-weight: bold">print</span> f(<span style="color: #666666">0</span>)
+</pre></div>
+<p>
+we can run the program:
+
+<p>
+
+<!-- code=console (from !bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; python prog.py</span>
+<span style="color: #888888">0</span>
+</pre></div>
+<p>
+</div>
+</div>
+
+  </div> <!-- column col-sm-4 -->
+</div> <!-- end cell row -->
+
+
+<p>
+<ul class="pager">
+  <li class="previous">
+    <a href="._test_boots001.html">&larr; Prev</a>
+  </li>
+
+
+</ul>
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+
+</body>
+</html>
+    
+
+
+************** File: sphinx-testdoc/conf.py *****************
+# -*- coding: utf-8 -*-
+#
+# Just a test documentation build configuration file, created by
+# sphinx-quickstart on Wed Apr 16 19:05:37 2014.
+#
+# This file is execfile()d with the current directory set to its
+# containing dir.
+#
+# Note that not all possible configuration values are present in this
+# autogenerated file.
+#
+# All configuration values have a default; values that are commented out
+# serve to show the default.
+
+import sys
+import os
+
+# If extensions (or modules to document with autodoc) are in another directory,
+# add these directories to sys.path here. If the directory is relative to the
+# documentation root, use os.path.abspath to make it absolute, like shown here.
+#sys.path.insert(0, os.path.abspath('.'))
+
+# -- General configuration ------------------------------------------------
+
+# If your documentation needs a minimal Sphinx version, state it here.
+#needs_sphinx = '1.0'
+
+# Add any Sphinx extension module names here, as strings. They can be
+# extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
+# ones.
+extensions = [
+          #'sphinx.ext.pngmath',
+          #'sphinx.ext.jsmath',
+          'sphinx.ext.mathjax',
+          #'matplotlib.sphinxext.mathmpl',
+          'matplotlib.sphinxext.only_directives',
+          'matplotlib.sphinxext.plot_directive',
+          'sphinx.ext.autodoc',
+          'sphinx.ext.doctest',
+          'sphinx.ext.viewcode',
+          'sphinx.ext.intersphinx',
+          'sphinx.ext.inheritance_diagram']
+
+#pngmath_dvipng_args = ['-D 200', '-bg Transparent', '-gamma 1.5']  # large math fonts (200)
+
+#intersphinx_mapping = {}
+# Example configuration for intersphinx for references to the
+# Python standard library.
+# (Domos in http://scipy-lectures.github.com, typically :mod:`scipy.io`
+# or :class:`numpy.ndarray` or :func:`math.asin`)
+intersphinx_mapping = {
+    'python': ('http://docs.python.org/2.7', None),
+    'numpy': ('http://docs.scipy.org/doc/numpy', None),
+    'scipy': ('http://docs.scipy.org/doc/scipy/reference', None),
+    'mpl': ('http://matplotlib.org/', None),
+}
+
+# Check which additional themes that are installed
+additional_themes_installed = []
+additional_themes_url = {}
+
+try:
+    import sphinxjp.themes.solarized
+    extensions += ['sphinxjp.themecore', 'sphinxjp.themes.solarized']
+    additional_themes_installed.append('solarized')
+except ImportError:
+    additional_themes_url['solarized'] = 'https://bitbucket.org/miiton/sphinxjp.themes.solarized'
+
+try:
+    import cloud_sptheme as csp
+    additional_themes_installed.append('cloud')
+    additional_themes_installed.append('redcloud')
+except ImportError:
+    url = 'https://bitbucket.org/ecollins/cloud_sptheme'
+    additional_themes_url['cloud'] = url
+    additional_themes_url['redcloud'] = url
+
+'''
+# FIXME: think we do not need to test on basicstrap, but some themes
+# need themecore and we must test for that
+try:
+    import sphinxjp.themecore
+    if not 'sphinxjp.themecore' in extensions:
+        extensions += ['sphinxjp.themecore']
+    additional_themes_installed.append('basicstrap')
+except ImportError:
+    # Use basicstrap as an example on a theme with sphinxjp.themecore (??)
+    additional_themes_url['basicstrap'] = 'https://github.com/tell-k/sphinxjp.themes.basicstrap'
+'''
+
+try:
+    import sphinxjp.themes.impressjs
+    additional_themes_installed.append('impressjs')
+    if not 'sphinxjp.themecore' in extensions:
+        extensions += ['sphinxjp.themecore']
+except ImportError:
+    additional_themes_url['impressjs'] = 'https://github.com/shkumagai/sphinxjp.themes.impressjs'
+
+try:
+    import sphinx_bootstrap_theme
+    additional_themes_installed.append('bootstrap')
+except ImportError:
+    additional_themes_url['bootstrap'] = 'https://github.com/ryan-roemer/sphinx-bootstrap-theme'
+
+try:
+    import icsecontrib.sagecellserver
+    extensions += ['icsecontrib.sagecellserver']
+except ImportError:
+    pass
+
+
+
+# Add any paths that contain templates here, relative to this directory.
+templates_path = ['_templates']
+
+# The suffix of source filenames.
+source_suffix = '.rst'
+
+# The encoding of source files.
+#source_encoding = 'utf-8-sig'
+
+# The master toctree document.
+master_doc = 'index'
+
+# General information about the project.
+project = u'Just a test'
+copyright = u'2014, HPL'
+
+# The version info for the project you're documenting, acts as replacement for
+# |version| and |release|, also used in various other places throughout the
+# built documents.
+#
+# The short X.Y version.
+version = '0.1'
+# The full version, including alpha/beta/rc tags.
+release = '0.1'
+
+# The language for content autogenerated by Sphinx. Refer to documentation
+# for a list of supported languages.
+#language = None
+
+# There are two options for replacing |today|: either, you set today to some
+# non-false value, then it is used:
+#today = ''
+# Else, today_fmt is used as the format for a strftime call.
+#today_fmt = '%B %d, %Y'
+
+# List of patterns, relative to source directory, that match files and
+# directories to ignore when looking for source files.
+exclude_patterns = ['_build']
+
+# The reST default role (used for this markup: `text`) to use for all
+# documents.
+#default_role = None
+
+# If true, '()' will be appended to :func: etc. cross-reference text.
+#add_function_parentheses = True
+
+# If true, the current module name will be prepended to all description
+# unit titles (such as .. function::).
+#add_module_names = True
+
+# If true, sectionauthor and moduleauthor directives will be shown in the
+# output. They are ignored by default.
+#show_authors = False
+
+# The name of the Pygments (syntax highlighting) style to use.
+pygments_style = 'sphinx'
+
+# A list of ignored prefixes for module index sorting.
+#modindex_common_prefix = []
+
+# If true, keep warnings as "system message" paragraphs in the built documents.
+#keep_warnings = False
+
+
+# -- Options for HTML output ----------------------------------------------
+
+# The theme to use for HTML and HTML Help pages.  See the documentation for
+# a list of builtin themes.
+html_theme = 'agni'
+#html_theme = 'ADCtheme'
+#html_theme = 'agni'
+#html_theme = 'agogo'
+#html_theme = 'basic'
+#html_theme = 'basicstrap'
+#html_theme = 'bootstrap'
+#html_theme = 'cbc'
+#html_theme = 'classy'
+#html_theme = 'cloud'
+#html_theme = 'default'
+#html_theme = 'epub'
+#html_theme = 'fenics'
+#html_theme = 'fenics_minimal'
+#html_theme = 'flask'
+#html_theme = 'haiku'
+#html_theme = 'impressjs'
+#html_theme = 'jal'
+#html_theme = 'nature'
+#html_theme = 'pylons'
+#html_theme = 'pyramid'
+#html_theme = 'redcloud'
+#html_theme = 'scipy_lectures'
+#html_theme = 'scrolls'
+#html_theme = 'slim-agogo'
+#html_theme = 'solarized'
+#html_theme = 'sphinxdoc'
+#html_theme = 'traditional'
+#html_theme = 'vlinux-theme'
+#html_theme = 'default'
+
+check_additional_themes = [
+   'solarized', 'cloud', 'redcloud',
+   'bootstrap', 'impressjs']
+
+for theme in check_additional_themes:
+    if html_theme == theme:
+        if not theme in additional_themes_installed:
+            raise ImportError(
+                'html_theme = "%s", but this theme is not '\
+                'installed.\n%s' % (theme, additional_themes_url[theme]))
+
+if html_theme == 'solarized':
+    pygments_style = 'solarized'
+
+
+
+# Theme options are theme-specific and customize the look and feel of a theme
+# further.  For a list of options available for each theme, see the
+# documentation.
+
+# See http://sphinx.pocoo.org/theming.html for options
+if html_theme == 'default':
+    # pygments_style =
+    html_theme_options = {
+       'rightsidebar': 'false',  # 'true'
+       'stickysidebar': 'false', # Make the sidebar "fixed" so that it doesn't scroll out of view for long body content.  This may not work well with all browsers.  Defaults to false.
+       'collapsiblesidebar': 'false', # Add an *experimental* JavaScript snippet that makes the sidebar collapsible via a button on its side. *Doesn't work together with "rightsidebar" or "stickysidebar".* Defaults to false.
+       'externalrefs': 'false', # Display external links differently from internal links.  Defaults to false.
+       # For colors and fonts, see default/theme.conf for default values
+       #'footerbgcolor':    # Background color for the footer line.
+       #'footertextcolor:'  # Text color for the footer line.
+       #'sidebarbgcolor':   # Background color for the sidebar.
+       #'sidebarbtncolor':  # Background color for the sidebar collapse button (used when *collapsiblesidebar* is true).
+       #'sidebartextcolor': # Text color for the sidebar.
+       #'sidebarlinkcolor': # Link color for the sidebar.
+       #'relbarbgcolor':    # Background color for the relation bar.
+       #'relbartextcolor':  # Text color for the relation bar.
+       #'relbarlinkcolor':  # Link color for the relation bar.
+       #'bgcolor':          # Body background color.
+       #'textcolor':        # Body text color.
+       #'linkcolor':        # Body link color.
+       #'visitedlinkcolor': # Body color for visited links.
+       #'headbgcolor':      # Background color for headings.
+       #'headtextcolor':    # Text color for headings.
+       #'headlinkcolor':    # Link color for headings.
+       #'codebgcolor':      # Background color for code blocks.
+       #'codetextcolor':    # Default text color for code blocks, if not set differently by the highlighting style.
+       #'bodyfont':         # Font for normal text.
+       #'headfont':         # Font for headings.
+    }
+
+elif html_theme == 'sphinxdoc':
+    html_theme_options = {
+       'nosidebar': 'false',  # 'true'
+    }
+
+elif html_theme == 'scrolls':
+    pass
+    #html_theme_options = {
+       #'headerbordercolor':,
+       #'subheadlinecolor:',
+       #'linkcolor':,
+       #'visitedlinkcolor':
+       #'admonitioncolor':
+    #}
+
+elif html_theme == 'agogo':
+    pass
+    # See http://sphinx.pocoo.org/theming.html for options
+
+elif html_theme == 'nature':
+    html_theme_options = {
+       'nosidebar': 'false',  # 'true'
+    }
+
+elif html_theme == 'traditional':
+    html_theme_options = {
+       'nosidebar': 'false',  # 'true'
+    }
+
+elif html_theme == 'haiku':
+    pass
+    # See http://sphinx.pocoo.org/theming.html for options
+
+    html_theme_options = {
+       'nosidebar': 'false',  # 'true'
+    }
+
+elif html_theme == 'basicstrap':
+    html_theme_options = {
+       'rightsidebar': 'false',  # 'true'
+    }
+
+elif html_theme == 'bootstrap':
+    html_theme_options = {
+        # Global TOC depth for "site" navbar tab. (Default: 1)
+        # Switching to -1 shows all levels.
+        'globaltoc_depth': 2,
+
+        # HTML navbar class (Default: "navbar") to attach to <div> element.
+        # For black navbar, do "navbar navbar-inverse"
+        'navbar_class': "navbar navbar-inverse",
+
+        # Fix navigation bar to top of page?
+        # Values: "true" (default) or "false"
+        'navbar_fixed_top': "true",
+
+        # Location of link to source.
+        # Options are "nav" (default), "footer" or anything else to exclude.
+        'source_link_position': "nav",
+
+        # TODO: Future.
+        # Add page navigation to it's own navigation bar.
+        #'navbar_page_separate': True,
+    }
+
+elif html_theme == 'scipy_lectures':
+    # inherits the default theme and has all those options
+    # set rightsidebar to true and nodesidebar to true to get
+    # sidebar with the matching colors
+    html_theme_options = {
+        'nosidebar': 'true',
+        'rightsidebar': 'false',
+        'sidebarbgcolor': '#f2f2f2',
+        'sidebartextcolor': '#20435c',
+        'sidebarlinkcolor': '#20435c',
+        'footerbgcolor': '#000000',
+        'relbarbgcolor': '#000000',
+    }
+
+elif html_theme == 'cbc':
+    pygments_style = "friendly"
+    html_logo = "cbc_logo.png"
+
+
+
+
+
+
+
+
+# Add any paths that contain custom themes here, relative to this directory.
+html_theme_path = ['_themes']
+
+# The name for this set of Sphinx documents.  If None, it defaults to
+# "<project> v<release> documentation".
+html_title = "Just a test"
+
+# A shorter title for the navigation bar.  Default is the same as html_title.
+#html_short_title = None
+
+# The name of an image file (relative to this directory) to place at the top
+# of the sidebar.
+#html_logo = None
+
+# The name of an image file (within the static path) to use as favicon of the
+# docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32
+# pixels large.
+#html_favicon = None
+
+# Add any paths that contain custom static files (such as style sheets) here,
+# relative to this directory. They are copied after the builtin static files,
+# so a file named "default.css" will overwrite the builtin "default.css".
+html_static_path = ['_static']
+
+# Add any extra paths that contain custom files (such as robots.txt or
+# .htaccess) here, relative to this directory. These files are copied
+# directly to the root of the documentation.
+#html_extra_path = []
+
+# If not '', a 'Last updated on:' timestamp is inserted at every page bottom,
+# using the given strftime format.
+#html_last_updated_fmt = '%b %d, %Y'
+
+# If true, SmartyPants will be used to convert quotes and dashes to
+# typographically correct entities.
+#html_use_smartypants = True
+
+# Custom sidebar templates, maps document names to template names.
+#html_sidebars = {}
+
+# Additional templates that should be rendered to pages, maps page names to
+# template names.
+#html_additional_pages = {}
+
+# If false, no module index is generated.
+#html_domain_indices = True
+
+# If false, no index is generated.
+
+if html_theme == 'impressjs':
+    html_use_index = False
+
+
+# If true, the index is split into individual pages for each letter.
+#html_split_index = False
+
+# If true, links to the reST sources are added to the pages.
+#html_show_sourcelink = True
+
+# If true, "Created using Sphinx" is shown in the HTML footer. Default is True.
+#html_show_sphinx = True
+
+# If true, "(C) Copyright ..." is shown in the HTML footer. Default is True.
+#html_show_copyright = True
+
+# If true, an OpenSearch description file will be output, and all pages will
+# contain a <link> tag referring to it.  The value of this option must be the
+# base URL from which the finished HTML is served.
+#html_use_opensearch = ''
+
+# This is the file name suffix for HTML files (e.g. ".xhtml").
+#html_file_suffix = None
+
+# Output file base name for HTML help builder.
+htmlhelp_basename = 'Justatestdoc'
+
+
+# -- Options for LaTeX output ---------------------------------------------
+
+latex_elements = {
+# The paper size ('letterpaper' or 'a4paper').
+#'papersize': 'letterpaper',
+
+# The font size ('10pt', '11pt' or '12pt').
+#'pointsize': '10pt',
+
+# Additional stuff for the LaTeX preamble.
+#'preamble': '',
+}
+
+# Grouping the document tree into LaTeX files. List of tuples
+# (source start file, target name, title,
+#  author, documentclass [howto, manual, or own class]).
+latex_documents = [
+  ('index', 'Justatest.tex', u'Just a test Documentation',
+   u'HPL', 'manual'),
+]
+
+# The name of an image file (relative to this directory) to place at the top of
+# the title page.
+#latex_logo = None
+
+# For "manual" documents, if this is true, then toplevel headings are parts,
+# not chapters.
+#latex_use_parts = False
+
+# If true, show page references after internal links.
+#latex_show_pagerefs = False
+
+# If true, show URL addresses after external links.
+#latex_show_urls = False
+
+# Documents to append as an appendix to all manuals.
+#latex_appendices = []
+
+# If false, no module index is generated.
+#latex_domain_indices = True
+
+
+# -- Options for manual page output ---------------------------------------
+
+# One entry per manual page. List of tuples
+# (source start file, name, description, authors, manual section).
+man_pages = [
+    ('index', 'justatest', u'Just a test Documentation',
+     [u'HPL'], 1)
+]
+
+# If true, show URL addresses after external links.
+#man_show_urls = False
+
+
+# -- Options for Texinfo output -------------------------------------------
+
+# Grouping the document tree into Texinfo files. List of tuples
+# (source start file, target name, title, author,
+#  dir menu entry, description, category)
+texinfo_documents = [
+  ('index', 'Justatest', u'Just a test Documentation',
+   u'HPL', 'Justatest', 'One line description of project.',
+   'Miscellaneous'),
+]
+
+# Documents to append as an appendix to all manuals.
+#texinfo_appendices = []
+
+# If false, no module index is generated.
+#texinfo_domain_indices = True
+
+# How to display URL addresses: 'footnote', 'no', or 'inline'.
+#texinfo_show_urls = 'footnote'
+
+# If true, do not generate a @detailmenu in the "Top" node's menu.
+#texinfo_no_detailmenu = False
+
 ************** File: tmp_Doconce.do.txt *****************
 
 TITLE: My Test of Class Doconce
@@ -71747,7 +75101,10 @@ provides a lot of shortcuts for setting up many elements in a document:
 
 <p>
 <table border="1">
-<tr><td align="center"><b>                          Emacs key                           </b></td> <td align="center"><b>                            Action                            </b></td> </tr>
+<thead>
+<tr><th align="center">                         Emacs key                          </th> <th align="center">                           Action                           </th> </tr>
+</thead>
+<tbody>
 <tr><td align="left">   Ctrl+c f                                                        </td> <td align="left">   figure                                                          </td> </tr>
 <tr><td align="left">   Ctrl+c v                                                        </td> <td align="left">   movie/video                                                     </td> </tr>
 <tr><td align="left">   Ctrl+c h1                                                       </td> <td align="left">   heading level 1 (section/h1)                                    </td> </tr>
@@ -71764,6 +75121,7 @@ provides a lot of shortcuts for setting up many elements in a document:
 <tr><td align="left">   Ctrl+c exer                                                     </td> <td align="left">   exercise outline                                                </td> </tr>
 <tr><td align="left">   Ctrl+c slide                                                    </td> <td align="left">   slide outline                                                   </td> </tr>
 <tr><td align="left">   Ctrl+c help                                                     </td> <td align="left">   print this table                                                </td> </tr>
+</tbody>
 </table>
 
 <h3>Title, Authors, and Date  <a name="___sec2"></a></h3>
@@ -71807,7 +75165,10 @@ The table of contents is removed by writing <code>TOC: off</code>.
 
 <p>
 <table border="1">
-<tr><td align="center"><b>                            Section type                           </b></td> <td align="center"><b>                               Syntax                              </b></td> </tr>
+<thead>
+<tr><th align="center">                           Section type                          </th> <th align="center">                              Syntax                             </th> </tr>
+</thead>
+<tbody>
 <tr><td align="left">   chapter                                                              </td> <td align="left">   <code>========= Heading ========</code> (9 <code>=</code>)           </td> </tr>
 <tr><td align="left">   section                                                              </td> <td align="left">   <code>======= Heading =======</code>    (7 <code>=</code>)           </td> </tr>
 <tr><td align="left">   subsection                                                           </td> <td align="left">   <code>===== Heading =====</code>        (5 <code>=</code>)           </td> </tr>
@@ -71818,6 +75179,7 @@ The table of contents is removed by writing <code>TOC: off</code>.
 <tr><td align="left">   appendix                                                             </td> <td align="left">   <code>===== Appendix: heading =====</code> (5 <code>=</code>)        </td> </tr>
 <tr><td align="left">   exercise                                                             </td> <td align="left">   <code>======= Exercise: heading =======</code> (7 <code>=</code>)    </td> </tr>
 <tr><td align="left">   exercise                                                             </td> <td align="left">   <code>===== Exercise: heading =====</code> (5 <code>=</code>)        </td> </tr>
+</tbody>
 </table>
 <p>
 Note that abstracts are recognized by starting with <code>__Abstract.__</code> or
@@ -77696,7 +81058,10 @@ Besides syntax highlighting of Doconce documents, this Emacs mode
 provides a lot of shortcuts for setting up many elements in a document:
 
 <table border="1">
-<tr><td align="center"><b>                          Emacs key                           </b></td> <td align="center"><b>                            Action                            </b></td> </tr>
+<thead>
+<tr><th align="center">                         Emacs key                          </th> <th align="center">                           Action                           </th> </tr>
+</thead>
+<tbody>
 <tr><td align="left">   Ctrl+c f                                                        </td> <td align="left">   figure                                                          </td> </tr>
 <tr><td align="left">   Ctrl+c v                                                        </td> <td align="left">   movie/video                                                     </td> </tr>
 <tr><td align="left">   Ctrl+c h1                                                       </td> <td align="left">   heading level 1 (section/h1)                                    </td> </tr>
@@ -77713,6 +81078,7 @@ provides a lot of shortcuts for setting up many elements in a document:
 <tr><td align="left">   Ctrl+c exer                                                     </td> <td align="left">   exercise outline                                                </td> </tr>
 <tr><td align="left">   Ctrl+c slide                                                    </td> <td align="left">   slide outline                                                   </td> </tr>
 <tr><td align="left">   Ctrl+c help                                                     </td> <td align="left">   print this table                                                </td> </tr>
+</tbody>
 </table>
 ==== Title, Authors, and Date ====
 
@@ -77750,7 +81116,10 @@ The table of contents is removed by writing <code>TOC: off</code>.
 ==== Section Types ====
 
 <table border="1">
-<tr><td align="center"><b>                            Section type                           </b></td> <td align="center"><b>                               Syntax                              </b></td> </tr>
+<thead>
+<tr><th align="center">                           Section type                          </th> <th align="center">                              Syntax                             </th> </tr>
+</thead>
+<tbody>
 <tr><td align="left">   chapter                                                              </td> <td align="left">   <code>========= Heading ========</code> (9 <code>=</code>)           </td> </tr>
 <tr><td align="left">   section                                                              </td> <td align="left">   <code>======= Heading =======</code>    (7 <code>=</code>)           </td> </tr>
 <tr><td align="left">   subsection                                                           </td> <td align="left">   <code>===== Heading =====</code>        (5 <code>=</code>)           </td> </tr>
@@ -77761,6 +81130,7 @@ The table of contents is removed by writing <code>TOC: off</code>.
 <tr><td align="left">   appendix                                                             </td> <td align="left">   <code>===== Appendix: heading =====</code> (5 <code>=</code>)        </td> </tr>
 <tr><td align="left">   exercise                                                             </td> <td align="left">   <code>======= Exercise: heading =======</code> (7 <code>=</code>)    </td> </tr>
 <tr><td align="left">   exercise                                                             </td> <td align="left">   <code>===== Exercise: heading =====</code> (5 <code>=</code>)        </td> </tr>
+</tbody>
 </table>
 Note that abstracts are recognized by starting with <code>__Abstract.__</code> or
 <code>__Summary.__</code> at the beginning of a line and ending with three or
@@ -82846,7 +86216,7 @@ Resources
 
 ************** File: quickref.md *****************
 % Doconce Quick Reference
-% Hans Petter Langtangen at Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo
+% **Hans Petter Langtangen** at Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo
 % Jan 32, 2100
 
 <!-- Table of contents: Run pandoc with --toc option -->
@@ -84415,11 +87785,9 @@ exporting publish database papers.pub to papers.bib:
 output in testdoc.p.tex
 + '[' 0 -ne 0 ']'
 + cp testdoc.p.tex testdoc_no_solutions.p.tex
-+ cp -r ../bundled/html_styles/style_vagrant .
-+ doconce replace css/ style_vagrant/css/ style_vagrant/template_vagrant.html
-replacing css/ by style_vagrant/css/ in style_vagrant/template_vagrant.html
-+ system doconce format html testdoc.do.txt --examples_as_exercises --html_style=vagrant --html_template=style_vagrant/template_vagrant.html
-+ doconce format html testdoc.do.txt --examples_as_exercises --html_style=vagrant --html_template=style_vagrant/template_vagrant.html
++ cp ../bundled/html_styles/style_vagrant/template_vagrant.html .
++ system doconce format html testdoc.do.txt --examples_as_exercises --html_style=vagrant --html_template=template_vagrant.html
++ doconce format html testdoc.do.txt --examples_as_exercises --html_style=vagrant --html_template=template_vagrant.html
 running preprocess -DFORMAT=html -DDEVICE=screen  testdoc.do.txt > tmp_preprocess__testdoc.do.txt
 running mako on tmp_preprocess__testdoc.do.txt to make tmp_mako__testdoc.do.txt
 translating doconce text in tmp_mako__testdoc.do.txt to html
@@ -84462,7 +87830,7 @@ figure file ../doc/src/manual/fig/wave1D:
              it is recommended to comment out the title: #TITLE:
 *** warning: AUTHOR may look strange with a template -
              it is recommended to comment out all authors: #AUTHOR.
-             Better to hardcode authors in a footer in the template.
+             Usually better to hardcode authors in a footer in the template.
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in testdoc.html
 + '[' 0 -ne 0 ']'
@@ -84982,7 +88350,7 @@ Package hyperref Warning: old loe file detected, not used; run LaTeX again.
 
 (./testdoc.out.pyg [3]) (./testdoc.out.pyg) (./testdoc.out.pyg)
 (./testdoc.out.pyg) (./testdoc.out.pyg [4]) (./testdoc.out.pyg)
-(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg [5]) [6]
+(./testdoc.out.pyg) (./testdoc.out.pyg) [5] (./testdoc.out.pyg) [6]
 
 
 ...rest of part of LaTeX line number...
@@ -84990,17 +88358,18 @@ Package hyperref Warning: old loe file detected, not used; run LaTeX again.
 
 
 
-<../doc/src/manual/fig/wave1D.pdf, id=81, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=77, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
-[7 <../doc/src/manual/fig/wave1D.pdf>]
+[7]
+
+[8 <../doc/src/manual/fig/wave1D.pdf>]
 
 
 
-<../doc/src/manual/fig/wave1D.png, id=100, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=104, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=102, 578.16pt x 433.62pt>
-<use downloaded_figures/f_plot.png> [8] [9 <../doc/src/manual/fig/wave1D.png> <
-./downloaded_figures/f_plot.png>]
+<downloaded_figures/f_plot.png, id=106, 578.16pt x 433.62pt>
+<use downloaded_figures/f_plot.png> [9 <../doc/src/manual/fig/wave1D.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -85025,7 +88394,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
-
+[10 <./downloaded_figures/f_plot.png>]
 Underfull \hbox (badness 3291) 
 []\T1/lmr/m/n/8 (+20) test \T1/lmtt/m/n/8 two \T1/lmr/m/n/8 (+20) (sep-a-rate) 
 \T1/lmtt/m/n/8 verbatim
@@ -85038,7 +88407,7 @@ Underfull \hbox (badness 3291)
 
 
 
-[10] [11]
+[11]
 <../doc/src/manual/mov/wave_frames/frame_0080.png, id=137, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
 <../doc/src/manual/mov/wave_frames/frame_0085.png, id=138, 586.8324pt x 442.292
@@ -85071,126 +88440,126 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
-
-
-t line 991.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-t line 1000.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-t line 1004.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-.
-
-
-
-...rest of part of LaTeX line number...
-
 [12 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
 ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
 ../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/mov/wave_f
 rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
+
+
+t line 1013.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+t line 1022.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+t line 1026.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+.
+
+
+
+...rest of part of LaTeX line number...
+
+[13]
 Overfull \hbox (5.03835pt too wide) 
 [][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
 %26+engineering/book/978-3-642-23098-1| 
-[13]
 
 
 .
@@ -85214,16 +88583,16 @@ Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on .
 
-
-
-
-
-
-
-
-
-
 [14]
+
+
+
+
+
+
+
+
+
 
 
 ...rest of part of LaTeX line number...
@@ -85243,6 +88612,7 @@ Package amsmath Warning: Foreign command \over;
 
 
 
+[15]
 
 
 
@@ -85260,7 +88630,7 @@ Package amsmath Warning: Foreign command \over;
 
 ...rest of part of LaTeX line number...
 
-[15] (./testdoc.out.pyg) [16] (./testdoc.out.pyg) [17] [18]
+(./testdoc.out.pyg) [16] (./testdoc.out.pyg) [17] [18] [19]
 
 
 .
@@ -85286,19 +88656,19 @@ Package amsmath Warning: Foreign command \over;
 
 
 No file testdoc.bbl.
-[19]
-
-
-...rest of part of LaTeX line number...
-
 [20]
 
 
 ...rest of part of LaTeX line number...
 
 [21]
+
+
+...rest of part of LaTeX line number...
+
+[22]
 No file testdoc.ind.
-[22] (./testdoc.aux)
+[23] (./testdoc.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -85531,7 +88901,7 @@ f/fonts/type1/public/lm/lmss8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy1
 hare/texmf/fonts/type1/public/lm/lmtti10.pfb></usr/share/texlive/texmf-dist/fon
 ts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/font
 s/type1/urw/palatino/uplr8a.pfb>
-Output written on testdoc.pdf (22 pages, ).
+Output written on testdoc.pdf (23 pages, ).
 Transcript written on testdoc.log.
 + '[' 0 -ne 0 ']'
 + pdflatex -shell-escape testdoc
@@ -85757,16 +89127,17 @@ Writing index file testdoc.idx
 dmap/pdftex.map}] (./testdoc.toc) (./testdoc.loe [2]) (./testdoc.tdo) [3]
 
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg
-[5]) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg)
-(./testdoc.out.pyg [6]) [7]
-<../doc/src/manual/fig/wave1D.pdf, id=249, 586.83241pt x 442.29242pt>
+[5]) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) [6]
+(./testdoc.out.pyg) [7]
+<../doc/src/manual/fig/wave1D.pdf, id=245, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
-[8 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=267, 586.8324pt x 442.2924pt>
+[8]
+
+[9 <../doc/src/manual/fig/wave1D.pdf>]
+<../doc/src/manual/fig/wave1D.png, id=271, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=269, 578.16pt x 433.62pt>
-<use downloaded_figures/f_plot.png> [9] [10 <../doc/src/manual/fig/wave1D.png> 
-<./downloaded_figures/f_plot.png>]
+<downloaded_figures/f_plot.png, id=273, 578.16pt x 433.62pt>
+<use downloaded_figures/f_plot.png> [10 <../doc/src/manual/fig/wave1D.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -85791,7 +89162,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
-
+[11 <./downloaded_figures/f_plot.png>]
 Underfull \hbox (badness 3291) 
 []\T1/lmr/m/n/8 (+20) test \T1/lmtt/m/n/8 two \T1/lmr/m/n/8 (+20) (sep-a-rate) 
 \T1/lmtt/m/n/8 verbatim
@@ -85804,7 +89175,7 @@ Underfull \hbox (badness 3291)
 
 
 
-[11] [12]
+[12]
 <../doc/src/manual/mov/wave_frames/frame_0080.png, id=299, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
 <../doc/src/manual/mov/wave_frames/frame_0085.png, id=300, 586.8324pt x 442.292
@@ -85837,136 +89208,136 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
-
-
-t line 991.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-t line 1000.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-t line 1004.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-.
-
-
-
-...rest of part of LaTeX line number...
-
 [13 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
 ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
 ../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/mov/wave_f
 rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
+
+
+t line 1013.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+t line 1022.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+t line 1026.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+.
+
+
+
+...rest of part of LaTeX line number...
+
+[14]
 Overfull \hbox (5.03835pt too wide) 
 [][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
 %26+engineering/book/978-3-642-23098-1| 
-[14]
 
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on .
 
-[15] [16] (./testdoc.out.pyg) [17] (./testdoc.out.pyg) [18] [19]
+[15] [16] (./testdoc.out.pyg) [17] (./testdoc.out.pyg) [18] [19] [20]
 No file testdoc.bbl.
-[20] [21] [22]
+[21] [22] [23]
 No file testdoc.ind.
-[23] (./testdoc.aux)
+[24] (./testdoc.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -86197,7 +89568,7 @@ hare/texmf/fonts/type1/public/lm/lmtt9.pfb></usr/share/texmf/fonts/type1/public
 /lm/lmtti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symb
 ols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.p
 fb>
-Output written on testdoc.pdf (23 pages, ).
+Output written on testdoc.pdf (24 pages, ).
 Transcript written on testdoc.log.
 + makeindex testdoc
 This is makeindex, version 2.15 [TeX Live 2013] (kpathsea + Thai support).
@@ -86440,16 +89811,17 @@ Writing index file testdoc.idx
 dmap/pdftex.map}] (./testdoc.toc) (./testdoc.loe [2]) (./testdoc.tdo) [3]
 
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg
-[5]) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg)
-(./testdoc.out.pyg [6]) [7]
-<../doc/src/manual/fig/wave1D.pdf, id=249, 586.83241pt x 442.29242pt>
+[5]) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) [6]
+(./testdoc.out.pyg) [7]
+<../doc/src/manual/fig/wave1D.pdf, id=245, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
-[8 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=267, 586.8324pt x 442.2924pt>
+[8]
+
+[9 <../doc/src/manual/fig/wave1D.pdf>]
+<../doc/src/manual/fig/wave1D.png, id=271, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=269, 578.16pt x 433.62pt>
-<use downloaded_figures/f_plot.png> [9] [10 <../doc/src/manual/fig/wave1D.png> 
-<./downloaded_figures/f_plot.png>]
+<downloaded_figures/f_plot.png, id=273, 578.16pt x 433.62pt>
+<use downloaded_figures/f_plot.png> [10 <../doc/src/manual/fig/wave1D.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -86474,7 +89846,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
-
+[11 <./downloaded_figures/f_plot.png>]
 Underfull \hbox (badness 3291) 
 []\T1/lmr/m/n/8 (+20) test \T1/lmtt/m/n/8 two \T1/lmr/m/n/8 (+20) (sep-a-rate) 
 \T1/lmtt/m/n/8 verbatim
@@ -86487,7 +89859,7 @@ Underfull \hbox (badness 3291)
 
 
 
-[11] [12]
+[12]
 <../doc/src/manual/mov/wave_frames/frame_0080.png, id=299, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
 <../doc/src/manual/mov/wave_frames/frame_0085.png, id=300, 586.8324pt x 442.292
@@ -86520,133 +89892,133 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
-
-
-t line 991.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-t line 1000.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-t line 1004.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-.
-
-
-
-...rest of part of LaTeX line number...
-
 [13 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
 ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
 ../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/mov/wave_f
 rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
+
+
+t line 1013.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+t line 1022.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+t line 1026.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+.
+
+
+
+...rest of part of LaTeX line number...
+
+[14]
 Overfull \hbox (5.03835pt too wide) 
 [][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
 %26+engineering/book/978-3-642-23098-1| 
-[14]
 
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on .
 
-[15] [16] (./testdoc.out.pyg) [17] (./testdoc.out.pyg) [18] [19] (./testdoc.bbl
- [20] [21]) [22] [23] [24] (./testdoc.ind [25]
+[15] [16] (./testdoc.out.pyg) [17] (./testdoc.out.pyg) [18] [19] [20]
+(./testdoc.bbl [21] [22]) [23] [24] (./testdoc.ind [25]
 Overfull \hbox (9.21497pt too wide) 
 []\T1/lmr/m/n/10 (-20) test \T1/lmtt/m/n/10 two \T1/lmr/m/n/10 (-20) (sep-a-rat
 e) \T1/lmtt/m/n/10 verbatim expressions \T1/lmr/m/n/10 (-20) which
@@ -87108,16 +90480,17 @@ Writing index file testdoc.idx
 dmap/pdftex.map}] (./testdoc.toc) (./testdoc.loe [2]) (./testdoc.tdo) [3]
 
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg
-[5]) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg)
-(./testdoc.out.pyg [6]) [7]
-<../doc/src/manual/fig/wave1D.pdf, id=249, 586.83241pt x 442.29242pt>
+[5]) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) [6]
+(./testdoc.out.pyg) [7]
+<../doc/src/manual/fig/wave1D.pdf, id=245, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
-[8 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=267, 586.8324pt x 442.2924pt>
+[8]
+
+[9 <../doc/src/manual/fig/wave1D.pdf>]
+<../doc/src/manual/fig/wave1D.png, id=271, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=269, 578.16pt x 433.62pt>
-<use downloaded_figures/f_plot.png> [9] [10 <../doc/src/manual/fig/wave1D.png> 
-<./downloaded_figures/f_plot.png>]
+<downloaded_figures/f_plot.png, id=273, 578.16pt x 433.62pt>
+<use downloaded_figures/f_plot.png> [10 <../doc/src/manual/fig/wave1D.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -87142,7 +90515,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
-
+[11 <./downloaded_figures/f_plot.png>]
 Underfull \hbox (badness 3291) 
 []\T1/lmr/m/n/8 (+20) test \T1/lmtt/m/n/8 two \T1/lmr/m/n/8 (+20) (sep-a-rate) 
 \T1/lmtt/m/n/8 verbatim
@@ -87155,7 +90528,7 @@ Underfull \hbox (badness 3291)
 
 
 
-[11] [12]
+[12]
 <../doc/src/manual/mov/wave_frames/frame_0080.png, id=299, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
 <../doc/src/manual/mov/wave_frames/frame_0085.png, id=300, 586.8324pt x 442.292
@@ -87192,17 +90565,17 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
 ../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/mov/wave_f
 rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
+[14]
 Overfull \hbox (5.03835pt too wide) 
 [][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
 %26+engineering/book/978-3-642-23098-1| 
-[14]
 
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on .
 
-[15] [16] (./testdoc.out.pyg) [17] (./testdoc.out.pyg) [18] [19] (./testdoc.bbl
- [20] [21]) [22] [23] [24] (./testdoc.ind [25]
+[15] [16] (./testdoc.out.pyg) [17] (./testdoc.out.pyg) [18] [19] [20]
+(./testdoc.bbl [21] [22]) [23] [24] (./testdoc.ind [25]
 Overfull \hbox (9.21497pt too wide) 
 []\T1/lmr/m/n/10 (-20) test \T1/lmtt/m/n/10 two \T1/lmr/m/n/10 (-20) (sep-a-rat
 e) \T1/lmtt/m/n/10 verbatim expressions \T1/lmr/m/n/10 (-20) which
@@ -87759,6 +91132,10 @@ sphinx-build -b html -d _build/doctrees   . _build/html
 Making output directory...
 Running Sphinx v1.2
 loading pickled environment... not yet created
+loading intersphinx inventory from http://docs.python.org/2.7/objects.inv...
+loading intersphinx inventory from http://matplotlib.org/objects.inv...
+loading intersphinx inventory from http://docs.scipy.org/doc/scipy/reference/objects.inv...
+loading intersphinx inventory from http://docs.scipy.org/doc/numpy/objects.inv...
 building [html]: targets for 4 source files that are out of date
 updating environment: 4 added, 0 changed, 0 removed
 reading sources... [ 25%] ._testdoc000
@@ -87766,26 +91143,10 @@ reading sources... [ 50%] ._testdoc001
 reading sources... [ 75%] ._testdoc002
 reading sources... [100%] index
 
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:176: ERROR: Unknown directive type "sagecellserver".
-
-.. sagecellserver::
-
-        a = 2
-        b = 3
-        print 'a+b:', a + b
-
-        # In a sage cell we can also plot
-        from matplotlib.pyplot import *
-        from numpy import *
-        x = linspace(0, 4*pi, 101)
-        y = exp(-0.1*x)*cos(x)
-        plot(x, y)
-        xlabel('x'); ylabel('y')
-        show()
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:609: WARNING: Inline interpreted text or phrase reference start-string without end-string.
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:326: ERROR: Undefined substitution referenced: "nbsp".
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:305: ERROR: Too many autonumbered footnote references: only 0 corresponding footnotes available.
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:305: ERROR: Unknown target name: "example-of-the-third-footnote".
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:633: WARNING: Inline interpreted text or phrase reference start-string without end-string.
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:350: ERROR: Undefined substitution referenced: "nbsp".
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:329: ERROR: Too many autonumbered footnote references: only 0 corresponding footnotes available.
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:329: ERROR: Unknown target name: "example-of-the-third-footnote".
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:None: WARNING: nonlocal image URI found: https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png
 looking for now-outdated files... none found
 pickling environment... done
@@ -87793,7 +91154,6 @@ checking consistency... done
 preparing documents... done
 writing output... [ 25%] ._testdoc000
 writing output... [ 50%] ._testdoc001
-WARNING: dvipng command 'dvipng' cannot be run (needed for math display), check the pngmath_dvipng setting
 writing output... [ 75%] ._testdoc002
 writing output... [100%] index
 
@@ -87805,7 +91165,7 @@ copying images... [100%] wave1D.png
 copying static files... done
 copying extra files... dumping search index... done
 dumping object inventory... done
-build succeeded, 9 warnings.
+build succeeded, 7 warnings.
 
 Build finished. The HTML pages are in _build/html.
 <title>(.+?) &mdash;.+?</title> replaced by <title>\g<1></title> in search.html
@@ -88307,6 +91667,7 @@ output in testdoc.p.tex
 \bcycod (!bc cycod) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
 \bfcod (!bc fcod) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
 \bsys (!bc sys) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
+\bipy (!bc ipy) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
 \bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
 \bhtmlcod (!bc htmlcod) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
 output in testdoc.tex
@@ -88982,6 +92343,10 @@ sphinx-build -b html -d _build/doctrees   . _build/html
 Making output directory...
 Running Sphinx v1.2
 loading pickled environment... not yet created
+loading intersphinx inventory from http://docs.python.org/2.7/objects.inv...
+loading intersphinx inventory from http://matplotlib.org/objects.inv...
+loading intersphinx inventory from http://docs.scipy.org/doc/scipy/reference/objects.inv...
+loading intersphinx inventory from http://docs.scipy.org/doc/numpy/objects.inv...
 building [html]: targets for 2 source files that are out of date
 updating environment: 2 added, 0 changed, 0 removed
 reading sources... [ 50%] index
@@ -88993,13 +92358,12 @@ checking consistency... done
 preparing documents... done
 writing output... [ 50%] index
 writing output... [100%] math_test
-WARNING: dvipng command 'dvipng' cannot be run (needed for math display), check the pngmath_dvipng setting
 
 writing additional files... (0 module code pages) genindex search
 copying static files... done
 copying extra files... dumping search index... done
 dumping object inventory... done
-build succeeded, 1 warning.
+build succeeded.
 
 Build finished. The HTML pages are in _build/html.
 <title>(.+?) &mdash;.+?</title> replaced by <title>\g<1></title> in search.html
@@ -91715,6 +95079,7 @@ output in admon.p.tex
 \bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
 output in admon.tex
 + cp admon.tex admon_double_envirs.tex
++ rm -rf latex_figs
 + system doconce format html admon --html_admon=lyx --html_style=blueish2
 + doconce format html admon --html_admon=lyx --html_style=blueish2
 running preprocess -DFORMAT=html -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
@@ -91793,8 +95158,8 @@ figure file ../doc/src/manual/fig/wave1D:
 output in admon.html
 + '[' 0 -ne 0 ']'
 + cp admon.html admon_apricot.html
-+ system doconce format html admon --html_style=vagrant --pygments_html_style=default --html_template=style_vagrant/template_vagrant.html
-+ doconce format html admon --html_style=vagrant --pygments_html_style=default --html_template=style_vagrant/template_vagrant.html
++ system doconce format html admon --html_style=vagrant --pygments_html_style=default --html_template=template_vagrant.html
++ doconce format html admon --html_style=vagrant --pygments_html_style=default --html_template=template_vagrant.html
 running preprocess -DFORMAT=html -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to html
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
@@ -91804,13 +95169,42 @@ figure file ../doc/src/manual/fig/wave1D:
              it is recommended to comment out the title: #TITLE:
 *** warning: AUTHOR may look strange with a template -
              it is recommended to comment out all authors: #AUTHOR.
-             Better to hardcode authors in a footer in the template.
+             Usually better to hardcode authors in a footer in the template.
 *** warning: wrong text size "illegal-size" specified in notice environment!
     must be "large" or "small" - will be set to normal
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in admon.html
 + '[' 0 -ne 0 ']'
 + cp admon.html admon_vagrant.html
++ system doconce format html admon --html_style=bootstrap --pygments_html_style=default --html_admon=bootstrap_alert
++ doconce format html admon --html_style=bootstrap --pygments_html_style=default --html_admon=bootstrap_alert
+running preprocess -DFORMAT=html -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
+translating doconce text in tmp_preprocess__admon.do.txt to html
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
+figure file ../doc/src/manual/fig/wave1D:
+    can use ../doc/src/manual/fig/wave1D.png for format html
+*** warning: wrong text size "illegal-size" specified in notice environment!
+    must be "large" or "small" - will be set to normal
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
+output in admon.html
++ '[' 0 -ne 0 ']'
++ cp admon.html admon_bootstrap_alert.html
++ doconce split_html admon_bootstrap_alert.html
+admon_bootstrap_alert.html now links to the generated files
+._admon_bootstrap_alert000.html, ._admon_bootstrap_alert001.html
++ system doconce format html admon --html_style=bootswatch --pygments_html_style=default --html_admon=bootstrap_panel
++ doconce format html admon --html_style=bootswatch --pygments_html_style=default --html_admon=bootstrap_panel
+running preprocess -DFORMAT=html -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
+translating doconce text in tmp_preprocess__admon.do.txt to html
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
+figure file ../doc/src/manual/fig/wave1D:
+    can use ../doc/src/manual/fig/wave1D.png for format html
+*** warning: wrong text size "illegal-size" specified in notice environment!
+    must be "large" or "small" - will be set to normal
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
+output in admon.html
++ '[' 0 -ne 0 ']'
++ cp admon.html admon_bootswatch_panel.html
 + system doconce sphinx_dir dirname=tmp_admon admon
 + doconce sphinx_dir dirname=tmp_admon admon
 Making tmp_admon
@@ -91897,6 +95291,10 @@ sphinx-build -b html -d _build/doctrees   . _build/html
 Making output directory...
 Running Sphinx v1.2
 loading pickled environment... not yet created
+loading intersphinx inventory from http://docs.python.org/2.7/objects.inv...
+loading intersphinx inventory from http://matplotlib.org/objects.inv...
+loading intersphinx inventory from http://docs.scipy.org/doc/scipy/reference/objects.inv...
+loading intersphinx inventory from http://docs.scipy.org/doc/numpy/objects.inv...
 building [html]: targets for 2 source files that are out of date
 updating environment: 2 added, 0 changed, 0 removed
 reading sources... [ 50%] admon
@@ -91907,7 +95305,6 @@ pickling environment... done
 checking consistency... done
 preparing documents... done
 writing output... [ 50%] admon
-WARNING: dvipng command 'dvipng' cannot be run (needed for math display), check the pngmath_dvipng setting
 writing output... [100%] index
 
 writing additional files... (0 module code pages) genindex search
@@ -91916,7 +95313,7 @@ copying images... [100%] wave1D.png
 copying static files... done
 copying extra files... dumping search index... done
 dumping object inventory... done
-build succeeded, 1 warning.
+build succeeded.
 
 Build finished. The HTML pages are in _build/html.
 <title>(.+?) &mdash;.+?</title> replaced by <title>\g<1></title> in search.html
@@ -91998,10 +95395,30 @@ translating doconce text in tmp_preprocess__admon.do.txt to plain
 output in admon.txt
 + '[' 0 -ne 0 ']'
 + cp admon.txt admon_paragraph.txt
-+ cp -fr admon_apricot.html admon_colors.html admon_gray.html admon_lyx.html admon_paragraph.html admon_vagrant.html admon_yellow.html admon_colors1.pdf admon_colors2.pdf admon_graybox2.pdf admon_grayicon.pdf admon_mdfbox.pdf admon_paragraph.pdf admon_yellowicon.pdf admon_mwiki.mwiki admon_paragraph.txt admon_sphinx admon_demo/
++ cp -fr admon_apricot.html admon_bootstrap_alert.html admon_bootswatch_panel.html admon_colors.html admon_gray.html admon_lyx.html admon_paragraph.html admon_vagrant.html admon_yellow.html admon_colors1.pdf admon_colors2.pdf admon_graybox2.pdf admon_grayicon.pdf admon_mdfbox.pdf admon_paragraph.pdf admon_yellowicon.pdf admon_mwiki.mwiki admon_paragraph.txt ._admon_bootstrap_alert000.html ._admon_bootstrap_alert001.html admon_sphinx admon_demo/
++ cd admon_demo
++ doconce replace ../doc/src/manual/fig/wave1D ../../doc/src/manual/fig/wave1D admon_apricot.html admon_bootstrap_alert.html admon_bootswatch_panel.html admon_colors.html admon_gray.html admon_lyx.html admon_paragraph.html admon_vagrant.html admon_yellow.html ._admon_bootstrap_alert000.html ._admon_bootstrap_alert001.html
+replacing ../doc/src/manual/fig/wave1D by ../../doc/src/manual/fig/wave1D in admon_apricot.html
+replacing ../doc/src/manual/fig/wave1D by ../../doc/src/manual/fig/wave1D in admon_bootswatch_panel.html
+replacing ../doc/src/manual/fig/wave1D by ../../doc/src/manual/fig/wave1D in admon_colors.html
+replacing ../doc/src/manual/fig/wave1D by ../../doc/src/manual/fig/wave1D in admon_gray.html
+replacing ../doc/src/manual/fig/wave1D by ../../doc/src/manual/fig/wave1D in admon_lyx.html
+replacing ../doc/src/manual/fig/wave1D by ../../doc/src/manual/fig/wave1D in admon_paragraph.html
+replacing ../doc/src/manual/fig/wave1D by ../../doc/src/manual/fig/wave1D in admon_vagrant.html
+replacing ../doc/src/manual/fig/wave1D by ../../doc/src/manual/fig/wave1D in admon_yellow.html
+replacing ../doc/src/manual/fig/wave1D by ../../doc/src/manual/fig/wave1D in ._admon_bootstrap_alert001.html
++ rm -rf admon_apricot.html.old~~ admon_bootswatch_panel.html.old~~ admon_colors.html.old~~ admon_gray.html.old~~ admon_lyx.html.old~~ admon_paragraph.html.old~~ admon_vagrant.html.old~~ admon_yellow.html.old~~
++ cd ..
 + '[' -d latex_figs ']'
-+ echo 'BUG: latex_figs was made by some non-latex format...'
-BUG: latex_figs was made by some non-latex format...
++ system doconce format html test_boots --html_style=bootswatch_journal --pygments_html_style=default --html_admon=bootstrap_panel
++ doconce format html test_boots --html_style=bootswatch_journal --pygments_html_style=default --html_admon=bootstrap_panel
+translating doconce text in test_boots.do.txt to html
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
+output in test_boots.html
++ '[' 0 -ne 0 ']'
++ doconce split_html test_boots.html
+test_boots.html now links to the generated files
+._test_boots000.html, ._test_boots001.html, ._test_boots002.html
 + system doconce format pandoc github_md.do.txt --github_md
 + doconce format pandoc github_md.do.txt --github_md
 translating doconce text in github_md.do.txt to pandoc
@@ -97073,6 +100490,10 @@ sphinx-build -b html -d _build/doctrees   . _build/html
 Making output directory...
 Running Sphinx v1.2
 loading pickled environment... not yet created
+loading intersphinx inventory from http://docs.python.org/2.7/objects.inv...
+loading intersphinx inventory from http://matplotlib.org/objects.inv...
+loading intersphinx inventory from http://docs.scipy.org/doc/scipy/reference/objects.inv...
+loading intersphinx inventory from http://docs.scipy.org/doc/numpy/objects.inv...
 building [html]: targets for 2 source files that are out of date
 updating environment: 2 added, 0 changed, 0 removed
 reading sources... [ 50%] index
@@ -97084,13 +100505,12 @@ checking consistency... done
 preparing documents... done
 writing output... [ 50%] index
 writing output... [100%] quickref
-WARNING: dvipng command 'dvipng' cannot be run (needed for math display), check the pngmath_dvipng setting
 
 writing additional files... (0 module code pages) genindex search
 copying static files... done
 copying extra files... dumping search index... done
 dumping object inventory... done
-build succeeded, 1 warning.
+build succeeded.
 
 Build finished. The HTML pages are in _build/html.
 <title>(.+?) &mdash;.+?</title> replaced by <title>\g<1></title> in search.html

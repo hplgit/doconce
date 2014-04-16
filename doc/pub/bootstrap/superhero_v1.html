@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Doconce Demo of the Bootstrap style">
+
+
+
+<!-- Bootstrap style: bootswatch_superhero -->
+<link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/superhero/bootstrap.min.css" rel="stylesheet">
+
+<style type="text/css">
+/* Let inline verbatim have the same color as the surroundings */
+code { color: inherit; background-color: transparent; }
+/* Let pre tags for code blocks have the same color as the surroundings */
+pre { color: inherit; background-color: transparent; }
+</style>
+
+</head>
+
+<!-- tocinfo
+{'highest level': 0,
+ 'sections': [(' More details on writing Doconce documents with Bootstrap layout ',
+               0,
+               None,
+               '___sec0'),
+              (' Themes ', 1, None, '___sec1'),
+              (' Demonstrations of admons ', 1, None, '___sec2'),
+              (' Horizontal alignment of document elements ',
+               1,
+               'sec:examples',
+               'sec:examples'),
+              (' Principles of grid structures ', 2, None, '___sec4'),
+              (' Example on a 1x3 grid structure ', 2, None, '___sec5'),
+              (' Variation of the previous grid structure using admons ',
+               2,
+               None,
+               '___sec6')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "AMS"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+
+
+
+    
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="bootstrap_demo.html">Doconce Demo of the Bootstrap style</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: " More details on writing Doconce documents with Bootstrap layout " --> <li>  <a href="#___sec0"> More details on writing Doconce documents with Bootstrap layout </a></li>
+     <!-- navigation toc: " Themes " --> <li> &nbsp;  <a href="#___sec1"> Themes </a></li>
+     <!-- navigation toc: " Demonstrations of admons " --> <li> &nbsp;  <a href="#___sec2"> Demonstrations of admons </a></li>
+     <!-- navigation toc: " Horizontal alignment of document elements " --> <li> &nbsp;  <a href="#sec:examples"> Horizontal alignment of document elements </a></li>
+     <!-- navigation toc: " Principles of grid structures " --> <li> &nbsp; &nbsp;  <a href="#___sec4"> Principles of grid structures </a></li>
+     <!-- navigation toc: " Example on a 1x3 grid structure " --> <li> &nbsp; &nbsp;  <a href="#___sec5"> Example on a 1x3 grid structure </a></li>
+     <!-- navigation toc: " Variation of the previous grid structure using admons " --> <li> &nbsp; &nbsp;  <a href="#___sec6"> Variation of the previous grid structure using admons </a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<div class="container">
+
+<!-- ------------------- main content ---------------------- -->
+
+
+<title>Doconce Demo of the Bootstrap style</title>
+
+<div class="jumbotron">
+<center><h1>Doconce Demo of the Bootstrap style</h1></center>  <!-- document title -->
+
+<p>
+Doconce supports a variety of Bootstrap styles in a simple
+way:
+
+<p>
+
+<!-- code=console (from !bc sys) typeset with pygments style "monokai" -->
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%">Terminal&gt; doconce format html mydoc --html_style=bootswatch --html_admon=bootstrap_panel
+</pre></div>
+<p>
+The title, optionally with authors, date, table of contents, abstract
+and/or a short introduction is typeset using the Jumbotron environment
+from Bootstrap.  If a <code>!split</code> command is used before the first
+section heading, a button with <code>Read...</code> and a link to the next page
+is inserted if the document is split using <code>doconce split_html</code>.  This
+construction results in a short, standard Bootstrap main page.
+
+<p>
+<!-- A split before the first section will enable a button in the jumbotron -->
+<!-- for going to the first real page -->
+
+<p>
+<!-- potential-jumbotron-button -->
+</div> <!-- end jumbotron -->
+
+<!-- !split -->
+
+
+<div class="page-header">
+  <h1>More details on writing Doconce documents with Bootstrap layout  <a name="___sec0"></a></h1>
+</div>
+
+<h2>Themes  <a name="___sec1"></a></h2>
+
+<p>
+Doconce supports the following themes from the Bootstrap family:
+
+<p>
+
+<ul>
+ <li> <code>bootstrap</code> (the original <a href="http://getbootstrap.com/examples/theme/" target="_self">Bootstrap theme</a>)</li>
+ <li> <code>bootswatch</code>, defaults to Cosmo theme</li>
+ <li> <code>bootswatch_THEME</code>, where <code>THEME</code> can be among
+   (see <a href="http://www.bootstrapcdn.com/?theme=5#bootswatch_tab" target="_self">demos</a>)</li>
+
+<ul>
+   <li> Bootswatch themes with white background:</li>
+
+<ul>
+     <li> <code>cerulean</code></li>
+     <li> <code>cosmo</code></li>
+     <li> <code>flatly</code></li>
+     <li> <code>journal</code></li>
+     <li> <code>lumen</code></li>
+     <li> <code>readable</code></li>
+     <li> <code>simplex</code></li>
+     <li> <code>spacelab</code></li>
+     <li> <code>united</code></li>
+     <li> <code>yeti</code></li>
+</ul>
+
+   <li> Bootswatch themes with dark background:</li>
+
+<ul>
+     <li> <code>amelia</code></li>
+     <li> <code>cyborg</code></li>
+     <li> <code>darkly</code></li>
+     <li> <code>slate</code></li>
+     <li> <code>superhero</code></li>
+</ul>
+
+</ul>
+
+</ul>
+
+You write Boostrap HTML files as normal Doconce documents, but there
+are some additional features:
+
+<p>
+
+<ul>
+ <li> Highlighted intro with big title, optionally author(s), date,
+   intro/abstract, and an optional button for reading more (on the
+   next page.</li>
+ <li> Possibility to define a local grid of elements in the document to
+   align admons, figures, code, or other elements horisontally.</li>
+ <li> Other layouts of admons <button type="button" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="&quot;Admon&quot; is a short form of admonition: a box that highlights some text, either as extra material or as particularly important material. Doconce supports different types of admonitions: notice, question, summary, and warning. These can have an optional title, and some admonition styles will also include an icon image. In addition, there is a block admonition without a title and icon."><a name="link_footnote_1"><a><a href="#def_footnote_1" style="color: white">1</a></button>.</li>
+ <li> Footnotes feature a tooltip functionality such that hovering the mouse
+   over the footnote brings up a little window with the footnote
+   (try it on the footnote after <em>admon</em> right above!).</li>
+</ul>
+
+<div class="alert alert-block alert-success alert-text-normal"><b>Quick generation of websites.</b>
+To make a typical website with Bootstrap layout and different type of
+pages for different things, just
+
+<p>
+
+<ul>
+ <li> write a main document in Doconce, insert a <code>!split</code> before the first section</li>
+ <li> write other documents and store their HTML versions in subdirectory <code>static_*</code></li>
+ <li> link the documents (locally) to each other (link directly to the HTML
+   version in <code>static_*</code>)</li>
+</ul>
+</div>
+
+
+<p><a name="def_footnote_1"></a><a href="#link_footnote_1"><b>1:</b></a> &quot;Admon&quot; is a short form of admonition: a
+box that highlights some text, either as extra material or as
+particularly important material. Doconce supports different types
+of admonitions: notice, question, summary, and warning. These
+can have an optional title, and some admonition styles will also
+include an icon image. In addition, there is a block admonition
+without a title and icon.
+
+<h2>Demonstrations of admons  <a name="___sec2"></a></h2>
+
+<p>
+The Bootstrap/Bootswatch styles support two kinds of admons:
+
+<p>
+
+<ul>
+ <li> alert admons (<code>bootstrap_alert</code>) with colored background (default)</li>
+ <li> panel admon (<code>bootstrap_panel</code>) where only the title has colored background</li>
+</ul>
+
+Typical commands for producing Boostrap or Bootswatch layouts are
+
+<p>
+
+<!-- code=console (from !bc sys) typeset with pygments style "monokai" -->
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%">Terminal&gt; doconce format html mydoc --html_style=boostrap
+Terminal&gt; doconce format html mydoc --html_style=booswatch
+Terminal&gt; doconce format html mydoc --html_style=boostrap --admon_style=bootstrap_panel
+Terminal&gt; doconce format html mydoc --html_style=booswatch_superhero --admon_style=bootstrap_panel
+</pre></div>
+<p>
+Below are some examples on admons.
+
+<p>
+<div class="alert alert-block alert-danger alert-text-normal"><b>Warning: recall to prefix module functions.</b>
+
+<p>
+
+<!-- code=ipython (from !bc ipy) typeset with pygments style "monokai" -->
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%">In [1]: <span style="color: #f92672">import</span> <span style="color: #f8f8f2">numpy</span> <span style="color: #f92672">as</span> <span style="color: #f8f8f2">np</span>
+
+In [2]: <span style="color: #f8f8f2">x</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">np</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">linspace(</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">4</span><span style="color: #f92672">*</span><span style="color: #f8f8f2">np</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">pi,</span> <span style="color: #ae81ff">11</span><span style="color: #f8f8f2">)</span>
+
+In [3]: <span style="color: #f8f8f2">y</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">exp(</span><span style="color: #f92672">-</span><span style="color: #ae81ff">0.1</span><span style="color: #f92672">*</span><span style="color: #f8f8f2">x)</span><span style="color: #f92672">*</span><span style="color: #f8f8f2">sin(x)</span>
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+&lt;ipython-input-3-c1040545fa6c&gt; in &lt;module&gt;()
+----&gt; 1 y = exp(-0.1*x)*sin(x)
+
+NameError: name &#39;exp&#39; is not defined
+
+In [4]: <span style="color: #f8f8f2">y</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">np</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">exp(</span><span style="color: #f92672">-</span><span style="color: #ae81ff">0.1</span><span style="color: #f92672">*</span><span style="color: #f8f8f2">x)</span><span style="color: #f92672">*</span><span style="color: #f8f8f2">np</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">sin(x)</span>
+
+In [5]: <span style="color: #f8f8f2">y</span>
+Out[5]:
+array([  0.00000000e+00,   8.38747563e-01,   4.57160372e-01,
+        -4.03174933e-01,  -5.75315545e-01,  -1.30666897e-16,
+         4.47461836e-01,   2.43889614e-01,  -2.15089026e-01,
+        -3.06923992e-01,  -1.39418467e-16])
+</pre></div>
+<p>
+This is the admon for warnings or paying attention.
+</div>
+
+
+<p>
+<div class="alert alert-block alert-info alert-text-normal"><b>Question.</b>
+How many admon styles are supported by the Doconce Boostrap and Bootswatch
+styles?
+</div>
+
+
+<p>
+<div class="alert alert-block alert-warning alert-text-normal"><b>Summary.</b>
+Doconce supports the following elements of Bootstrap elements:
+
+<p>
+
+<ul>
+ <li> Admons</li>
+ <li> Panels (via admons)</li>
+ <li> Jumbotron for title and intro</li>
+ <li> Columns of content (grid structure via the <code>slidecell</code> environment)</li>
+ <li> Tooltips via footnotes</li>
+</ul>
+</div>
+
+
+<p>
+<!-- !split -->
+
+<h2>Horizontal alignment of document elements <a name="sec:examples"></a></h2>
+
+<h3>Principles of grid structures  <a name="___sec4"></a></h3>
+
+<p>
+The HTML page can feature a grid structure of cells, defined by
+the following syntax in case of a 1x3 grid:
+
+<p>
+
+<!-- code=text typeset with pygments style "monokai" -->
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"># begin-grid-area
+
+!bslidecell 00
+...
+!eslidecell
+
+!bslidecell 01
+...
+!eslidecell
+
+!bslidecell 02
+...
+!eslidecell
+
+# end-grid-area
+</pre></div>
+<p>
+<div class="alert alert-block alert-danger alert-text-normal"><b>Important rule.</b>
+
+<ul>
+ <li> The <code># begin/end-grid-area</code> directives mark the beginning and end of
+   a region where we can have horizontal elements stacked in a grid.</li>
+ <li> Only text <em>inside</em> the slidecell environments is typeset in the output HTML
+   document.</li>
+</ul>
+</div>
+
+
+<p>
+For example, the mathematics in the following 2x2 grid structure will
+be lost because it appears outside the slidecell environments:
+
+<p>
+
+<!-- code=text typeset with pygments style "monokai" -->
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"># begin-grid-area
+
+!bslidecell 00
+...
+!eslidecell
+
+!bslidecell 01
+...
+!eslidecell
+
+We consider
+
+!bt
+\[ f(x, y) = \sin (x + y) \]
+!et
+
+!bslidecell 10
+...
+!eslidecell
+
+!bslidecell 11
+...
+!eslidecell
+
+# end-grid-area
+</pre></div>
+<p>
+<div class="alert alert-block alert-success alert-text-normal"><b>It is easy to shuffle cells around in the grid structure.</b>
+A nice feature is that the coordinates of the cells, here <code>00</code>, <code>01</code>,
+and <code>02</code> can be given in any desired order. For example, if we want
+to reverse the sequence of the three elements in the three columns
+of this grid, we simply change <code>00</code> by <code>02</code> and <code>02</code> by <code>00</code>.
+</div>
+
+
+<h3>Example on a 1x3 grid structure  <a name="___sec5"></a></h3>
+
+<p>
+<div class="row"> <!-- begin cell row -->
+  <div class="col-sm-4">
+<b>Mathematics.</b>
+Given a function
+
+<p>
+$$ f(x) = e^{-ax}\sin wx\thinspace .$$
+
+Write a program for evaluating \( f(x) \), and test the program
+for the value of \( f(0) \).
+  </div> <!-- column col-sm-4 -->
+  <div class="col-sm-4">
+<b>Implementation.</b>
+The Python implementation reads
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "monokai" -->
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #f92672">from</span> <span style="color: #f8f8f2">math</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">exp,</span> <span style="color: #f8f8f2">sin</span>
+
+<span style="color: #66d9ef">def</span> <span style="color: #a6e22e">f</span><span style="color: #f8f8f2">(x):</span>
+    <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">exp(</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">a</span><span style="color: #f92672">*</span><span style="color: #f8f8f2">x)</span><span style="color: #f92672">*</span><span style="color: #f8f8f2">sin(w</span><span style="color: #f92672">*</span><span style="color: #f8f8f2">x)</span>
+</pre></div>
+<p>
+where <code>a</code> and <code>w</code> must be <em>global variables</em>, initialized in the
+main program.
+  </div> <!-- column col-sm-4 -->
+  <div class="col-sm-4">
+
+<p>
+<b>Computational experiment.</b>
+With a main program
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "monokai" -->
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #f8f8f2">a</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">1</span>
+<span style="color: #f92672">from</span> <span style="color: #f8f8f2">math</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">pi</span>
+<span style="color: #f8f8f2">w</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">pi</span>
+<span style="color: #66d9ef">print</span> <span style="color: #f8f8f2">f(</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">)</span>
+</pre></div>
+<p>
+we can run the program:
+
+<p>
+
+<!-- code=console (from !bc sys) typeset with pygments style "monokai" -->
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%">Terminal&gt; python prog.py
+0
+</pre></div>
+<p>
+  </div> <!-- column col-sm-4 -->
+</div> <!-- end cell row -->
+
+<h3>Variation of the previous grid structure using admons  <a name="___sec6"></a></h3>
+
+<p>
+<!-- Note: panels are realized as admons, using --admon_style=bootstrap_panel -->
+
+<p>
+<div class="row"> <!-- begin cell row -->
+  <div class="col-sm-4">
+<div class="alert alert-block alert-success alert-text-normal"><b>Mathematics.</b>
+Given a function
+
+<p>
+$$ f(x) = e^{-ax}\sin wx\thinspace .$$
+
+Write a program for evaluating \( f(x) \), and test the program
+for the value of \( f(0) \).
+</div>
+
+  </div> <!-- column col-sm-4 -->
+  <div class="col-sm-4">
+<div class="alert alert-block alert-success alert-text-normal"><b>Implementation.</b>
+The Python implementation reads
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "monokai" -->
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #f92672">from</span> <span style="color: #f8f8f2">math</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">exp,</span> <span style="color: #f8f8f2">sin</span>
+
+<span style="color: #66d9ef">def</span> <span style="color: #a6e22e">f</span><span style="color: #f8f8f2">(x):</span>
+    <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">exp(</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">a</span><span style="color: #f92672">*</span><span style="color: #f8f8f2">x)</span><span style="color: #f92672">*</span><span style="color: #f8f8f2">sin(w</span><span style="color: #f92672">*</span><span style="color: #f8f8f2">x)</span>
+</pre></div>
+<p>
+where <code>a</code> and <code>w</code> must be <em>global variables</em>, initialized in the
+main program.
+</div>
+
+  </div> <!-- column col-sm-4 -->
+  <div class="col-sm-4">
+<div class="alert alert-block alert-success alert-text-normal"><b>Computational experiment.</b>
+With a main program
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "monokai" -->
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #f8f8f2">a</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">1</span>
+<span style="color: #f92672">from</span> <span style="color: #f8f8f2">math</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">pi</span>
+<span style="color: #f8f8f2">w</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">pi</span>
+<span style="color: #66d9ef">print</span> <span style="color: #f8f8f2">f(</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">)</span>
+</pre></div>
+<p>
+we can run the program:
+
+<p>
+
+<!-- code=console (from !bc sys) typeset with pygments style "monokai" -->
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%">Terminal&gt; python prog.py
+0
+</pre></div>
+<p>
+</div>
+
+  </div> <!-- column col-sm-4 -->
+</div> <!-- end cell row -->
+
+
+<p>
+
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+
+</body>
+</html>
+    
+
