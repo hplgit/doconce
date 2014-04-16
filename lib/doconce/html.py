@@ -704,7 +704,7 @@ MathJax.Hub.Config({
             # If the user has a !split in the beginning, insert a button
             # to click (typically bootstrap design)
             button = '<!-- potential-jumbotron-button -->' \
-                     if '!split' in m.group(1) else ''
+                     if '!split' in m.group(2) else ''
             text = '<div class="jumbotron">\n' + m.group(1) + \
                    button + '\n</div> <!-- end jumbotron -->\n\n' + m.group(2)
             filestr = re.sub(pattern, text, filestr, flags=re.DOTALL|re.MULTILINE)

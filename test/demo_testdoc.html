@@ -530,6 +530,38 @@ Then Cython:
     <span style="color: #AA22FF; font-weight: bold">return</span> x <span style="color: #666666">+</span> <span style="color: #666666">1</span>
 </pre></div>
 </td></tr></table><p>
+Standard Python shell sessions:
+
+<p>
+
+<!-- code=ipython (from !bc ipy) typeset with pygments style "emacs" -->
+<table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">&gt;&gt;&gt; from numpy import sin</span>
+<span style="color: #888888">&gt;&gt;&gt; # Some comment</span>
+<span style="color: #888888">&gt;&gt;&gt; x = sin(1.2); print &#39;Value:&#39;, x</span>
+<span style="color: #888888">Value: 0.932039085967</span>
+</pre></div>
+</td></tr></table><p>
+IPython sessions:
+
+<p>
+
+<!-- code=ipython (from !bc ipy) typeset with pygments style "emacs" -->
+<table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">In [1]: </span><span style="color: #AA22FF; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #AA22FF; font-weight: bold">import</span> sin
+
+<span style="color: #000080; font-weight: bold">In [2]: </span><span style="color: #008800; font-style: italic"># Some comment</span>
+
+<span style="color: #000080; font-weight: bold">In [3]: </span>x <span style="color: #666666">=</span> sin(<span style="color: #666666">1.2</span>); <span style="color: #AA22FF; font-weight: bold">print</span> <span style="color: #BB4444">&#39;Value:&#39;</span>, x
+<span style="color: #888888">Value: 0.932039085967</span>
+</pre></div>
+</td></tr></table><p>
 <!-- This one tests a + sign before a code environment -->
 C++:
 <p>
