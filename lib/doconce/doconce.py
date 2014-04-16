@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+global dofile_basename
+
 import re, os, sys, shutil, commands, pprint, time, glob, codecs
 try:
     from collections import OrderedDict   # v2.7 and v3.1

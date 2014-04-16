@@ -267,13 +267,14 @@ def html_code(filestr, code_blocks, code_block_types,
     # Mapping from envir (+cod/pro if present) to pygment style
     types2languages = dict(py='python', cy='cython', f='fortran',
                            c='c', cpp='c++', sh='bash', rst='rst',
-                           m ='matlab', pl='perl', rb='ruby',
+                           m='matlab', pl='perl', rb='ruby',
                            swig='c++', latex='latex', tex='latex',
                            html='html', xml='xml',
                            js='js',
                            sys='console', # sys='text', sys='bash'
                            dat='text', txt='text', csv='text',
                            cc='txt', ccq='text',
+                           pyshell='python', ipy='ipython',
                            pyopt='python', pysc='python')
     try:
         import pygments as pygm
@@ -287,6 +288,18 @@ def html_code(filestr, code_blocks, code_block_types,
     if option('no_pygments_html'):
         pygm = None
     if pygm is not None:
+        # Note: ipython pygments requires
+        # https://bitbucket.org/sanguineturtle/pygments-ipython-console
+        if 'ipy' in code_block_types:
+            try:
+                get_lexer_by_name('ipython')
+            except:
+                print '*** warning: !bc ipy used for IPython sessions, but'
+                print '    ipython is not supported for syntax highlighting!'
+                print '    install'
+                print '    sudo pip install -e git+https://bitbucket.org/sanguineturtle/pygments-ipython-console#egg=pygments-ipython-console'
+                types2languages['ipy'] = 'python'
+
         pygm_style = option('pygments_html_style=', default=None)
         if pygm_style is None:
             # Set sensible default values
@@ -743,7 +756,6 @@ def process_grid_areas(filestr):
     for full_text, internal in cell_areas:
         cell_pos = [(int(p[0]), int(p[1])) for p in
                     re.findall(r'<!-- !bslidecell +(\d\d)', internal)]
-        print 'XXX internal', internal
         if cell_pos:
             # Find the table size
             num_rows    = max([p[0] for p in cell_pos]) + 1
@@ -767,7 +779,6 @@ def process_grid_areas(filestr):
                 new_text += '  </div> <!-- column col-sm-4 -->\n'
             new_text += '</div> <!-- end cell row -->\n'
             filestr = filestr.replace(full_text, new_text)
-            print 'XXX filestr', filestr
     return filestr
 
 def html_figure(m):
@@ -1647,15 +1658,16 @@ def define(FILENAME_EXTENSION,
         meta_tags += '<meta name="description" content="%s">\n' % title
 
         if html_style.startswith('boots'):
+            from doconce import dofile_basename
             bootstrap_title_bar += """
-<div class="navbar navbar-default">
+<div class="navbar navbar-default navbar-fixed-top">
   <div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="#">%s</a>
+    <a class="navbar-brand" href="%s">%s</a>
   </div>
   <div class="navbar-collapse collapse navbar-responsive-collapse">
     <ul class="nav navbar-nav navbar-right">
@@ -1669,7 +1681,7 @@ def define(FILENAME_EXTENSION,
   </div>
 </div>
 </div>
-""" % title
+""" % (dofile_basename + '.html', title)
 
 
     keywords = re.findall(r'idx\{(.+?)\}', filestr)

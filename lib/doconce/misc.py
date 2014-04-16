@@ -1266,11 +1266,23 @@ def ptex2tex():
                 # Fix value=minted and value=ans*:
                 # they need the language explicitly
                 if value == 'minted':
-                    languages = dict(py='python', cy='cython', f='fortran',
-                                     c='c', cpp='c++', sh='bash', rst='rst',
-                                     m ='matlab', pl='perl', swig='c++',
-                                     latex='latex', html='html', js='js',
-                                     xml='xml', rb='ruby')
+                    languages = dict(
+                        py='python', cy='cython', f='fortran',
+                        c='c', cpp='c++', sh='bash', rst='rst',
+                        m ='matlab', pl='perl', swig='c++',
+                        latex='latex', html='html', js='js',
+                        xml='xml', rb='ruby', sys='console',
+                        dat='text', txt='text', csv='text',
+                        pyshell='python', ipy='ipython',
+                        # pyopt and pysc are treated in latex.py
+                        )
+                    from pygments.lexers import get_lexer_by_name
+                    try:
+                        get_lexer_by_name('ipython')
+                    except:
+                        # need sudo pip install -e git+https://bitbucket.org/sanguineturtle/pygments-ipython-console#egg=pygments-ipython-console'
+                        types2languages['ipy'] = 'python'
+
                     if envir == 'envir':
                         for lang in languages:
                             begin = '\\' + 'begin{minted}[fontsize=\\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{' + languages[lang] + '}'
@@ -1286,10 +1298,12 @@ def ptex2tex():
                                 end = '\\' + 'end{' + value + '}'
                                 envir_user_spec.append((envir, begin, end))
                 elif value.startswith('ans'):
-                    languages = dict(py='python', cy='python', f='fortran',
-                                     cpp='c++', sh='bash', swig='swigcode',
-                                     ufl='uflcode', m='matlab', c='c++',
-                                     latex='latexcode', xml='xml')
+                    languages = dict(
+                        py='python', cy='python', f='fortran',
+                        cpp='c++', sh='bash', swig='swigcode',
+                        ufl='uflcode', m='matlab', c='c++',
+                        latex='latexcode', xml='xml',
+                        pyopt='python', pyshell='python', ipy='python')
                     if envir == 'envir':
                         for lang in languages:
                             language = languages[lang]
@@ -1992,7 +2006,7 @@ def split_html():
         basename = filename[:-5]
 
     header, parts, footer = get_header_parts_footer(filename, "html")
-    files = doconce_html_split(header, parts, footer, basename, filename)
+    files = doconce_split_html(header, parts, footer, basename, filename)
     print '%s now links to the generated files' % filename
     print ', '.join(files)
 
@@ -2072,7 +2086,7 @@ def slides_html():
 
     filestr = None
     if slide_type == 'doconce':
-        doconce_html_split(header, parts, footer, basename, filename)
+        doconce_split_html(header, parts, footer, basename, filename)
     elif slide_type in ('reveal', 'csss', 'dzslides', 'deck', 'html5slides'):
         filestr = generate_html5_slides(header, parts, footer,
                                         basename, filename, slide_type)
@@ -2253,7 +2267,7 @@ def get_header_parts_footer(filename, format='html'):
     return header, parts, footer
 
 
-def doconce_html_split(header, parts, footer, basename, filename):
+def doconce_split_html(header, parts, footer, basename, filename):
     """Native doconce style splitting of HTML file into parts."""
     import html
     # Check if we use a vagrant template, because that leads to
@@ -2470,7 +2484,7 @@ def doconce_html_split(header, parts, footer, basename, filename):
                     if part[i].startswith('<!-- potential-jumbotron-button -->'):
                         part[i] = part[i].replace(
                               '<!-- potential-jumbotron-button -->',
-                              '\n\n<p><a href="%s" class="btn btn-primary btn-lg">Read &rquot;</a></p>\n\n' % next_part_filename)
+                              '\n\n<p><a href="%s" class="btn btn-primary btn-lg">Read &raquo;</a></p>\n\n' % next_part_filename)
                         break
 
             if pn > 0:
@@ -2498,10 +2512,12 @@ def doconce_html_split(header, parts, footer, basename, filename):
 
         # Navigation in the bottom of the page
         lines.append('<p>\n')
-        if vagrant or bootstrap:
+        if vagrant:
             footer_text = ''.join(footer).replace(
                 bootstrap_navigation_passive, buttons)
             lines += footer_text.splitlines(True)
+        elif bootstrap:
+            lines += buttons.splitlines(True) + footer
         else:
             lines.append('<!-- begin bottom navigation -->')
             if pn > 0:

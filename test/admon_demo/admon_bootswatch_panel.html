@@ -69,20 +69,20 @@ $$
 
 
     
-<div class="navbar navbar-default">
+<div class="navbar navbar-default navbar-fixed-top">
   <div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="#">Testing admons</a>
+    <a class="navbar-brand" href="admon.html">Testing admons</a>
   </div>
   <div class="navbar-collapse collapse navbar-responsive-collapse">
     <ul class="nav navbar-nav navbar-right">
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
-          <ul class="dropdown-menu">
+        <ul class="dropdown-menu">
      <!-- navigation toc: " Introduction " --> <li>  <a href="#___sec0"> Introduction </a></li>
      <!-- navigation toc: " Code " --> <li> &nbsp;  <a href="#___sec1"> Code </a></li>
      <!-- navigation toc: " Quotes and boxes " --> <li> &nbsp;  <a href="#___sec2"> Quotes and boxes </a></li>
@@ -90,7 +90,7 @@ $$
      <!-- navigation toc: " Going deeper environments " --> <li> &nbsp;  <a href="#___sec4"> Going deeper environments </a></li>
      <!-- navigation toc: " The end " --> <li> &nbsp;  <a href="#___sec5"> The end </a></li>
 
-          </ul>
+        </ul>
       </li>
     </ul>
   </div>
@@ -118,11 +118,11 @@ $$
 <p>
 <!-- institution(s) -->
 <p>
-<center><h4>Apr 15, 2014</h4></center> <!-- date -->
+<center><h4>Apr 16, 2014</h4></center> <!-- date -->
 <p>
 
 
-</div>
+</div> <!-- end jumbotron -->
 
 <h2>Introduction  <a name="___sec0"></a></h2>
 First some ordinary text to compare font sizes in admonitions
@@ -237,7 +237,11 @@ Let's begin a new paragraph and show a box with code only:
 Let us start with a plain warning environment.
 
 <p>
-<div class="alert alert-block alert-danger alert-text-normal"><b>Warning.</b>
+<div class="panel panel-warning">
+  <div class="panel-heading">
+  <h3 class="panel-title">Warning</h3>
+  </div>
+<div class="panel-body">
 And here is a warning about something to pay attention to. We
 test how the heading behave and add quite some extra texts
 in comparison with the other admons.
@@ -257,13 +261,18 @@ And more and more text.
 And more and more text.
 And more and more text.
 </div>
+</div>
 
 
 <p>
 Test warning with title:
 
 <p>
-<div class="alert alert-block alert-danger alert-text-large"><b>Title ending with math \( \sqrt{2}\approx 1.4 \).</b>
+<div class="panel panel-warning">
+  <div class="panel-heading">
+  <h3 class="panel-title">Title ending with math \( \sqrt{2}\approx 1.4 \)</h3>
+  </div>
+<div class="panel-body">
 And here comes some text with bad news in larger font.
 
 <p>
@@ -285,15 +294,21 @@ And a complete program
 </pre></div>
 <p>
 </div>
+</div>
 
 
 <p>
 Test warning with large title with math:
 
 <p>
-<div class="alert alert-block alert-danger alert-text-large"><b>Watch out for \( \nabla\cdot\boldsymbol{u}=0 \) equations.</b>
+<div class="panel panel-warning">
+  <div class="panel-heading">
+  <h3 class="panel-title">Watch out for \( \nabla\cdot\boldsymbol{u}=0 \) equations</h3>
+  </div>
+<div class="panel-body">
 Divergence freedom is often problematic from a numerical point
 of view.
+</div>
 </div>
 
 
@@ -301,7 +316,8 @@ of view.
 Then we test a block, which is guaranteed to never have any admon icon.
 
 <p>
-<div class="alert alert-block alert-success alert-text-small"><b>Block with title.</b>
+<div class="panel panel-default">
+<div class="panel-body">
 Here is a block of text with title. It is typeset
 <em>without any icon</em> and is useful when you want some admons with icon
 and some without. With the small font size, as used here, one can have
@@ -309,12 +325,15 @@ more comment-style text or text that really goes deeper or talks
 about fun facts that are not strictly necessary for the main flow
 of understanding.
 </div>
+</div>
 
 
 <p>
-<div class="alert alert-block alert-success alert-text-normal"><b></b>
+<div class="panel panel-default">
+<div class="panel-body">
 Here is a block of text with no title. As above, it is typeset without any icon
 and is useful when you want some admons with icon and some without.
+</div>
 </div>
 
 
@@ -328,7 +347,11 @@ code is present).
 <!-- those formats automatically add : to the admonition title. -->
 
 <p>
-<div class="alert alert-block alert-success alert-text-illegal-size"><b>Note, eventually!</b>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+  <h3 class="panel-title">Note, eventually!</h3>
+  </div>
+<div class="panel-body">
 Ah, we are soon close to the end (with illegal font size specification!).
 But first a bit of math where we define \( \theta \) and \( \boldsymbol{r} \):
 
@@ -340,34 +363,54 @@ $$
 \end{align*}
 $$
 </div>
+</div>
 
 
 <p>
 <!-- Test one word with a number -->
 
 <p>
-<div class="alert alert-block alert-success alert-text-normal"><b>Point1.</b>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+  <h3 class="panel-title">Point1</h3>
+  </div>
+<div class="panel-body">
 Ah, we are soon close to the end.
 </div>
-
-
-<p>
-<div class="alert alert-block alert-info alert-text-normal"><b>Question.</b>
-So, how many admonition environments does Doconce support?
 </div>
 
 
 <p>
-<div class="alert alert-block alert-info alert-text-normal"><b>Question.</b>
+<div class="panel panel-success">
+  <div class="panel-heading">
+  <h3 class="panel-title">Question</h3>
+  </div>
+<div class="panel-body">
+So, how many admonition environments does Doconce support?
+</div>
+</div>
+
+
+<p>
+<div class="panel panel-success">
+  <div class="panel-heading">
+  <h3 class="panel-title">Question</h3>
+  </div>
+<div class="panel-body">
 
 <ol>
  <li> Once more, how many admonition environments does Doconce support?</li>
 </ol>
 </div>
+</div>
 
 
 <p>
-<div class="alert alert-block alert-danger alert-text-normal"><b>Tip.</b>
+<div class="panel panel-warning">
+  <div class="panel-heading">
+  <h3 class="panel-title">Tip</h3>
+  </div>
+<div class="panel-body">
 It is of outmost important to
 
 <p>
@@ -389,14 +432,20 @@ Because here the thing is to do
 </pre></div>
 <p>
 </div>
+</div>
 
 
 <p>
 Next is a warning without a title ("none" implies no title).
 
 <p>
-<div class="alert alert-block alert-danger alert-text-normal"><b></b>
+<div class="panel panel-warning">
+  <div class="panel-heading">
+  <h3 class="panel-title"></h3>
+  </div>
+<div class="panel-body">
 And here comes some text with bad news.
+</div>
 </div>
 
 
@@ -407,7 +456,11 @@ Here is a long notice environment with a custom title and much
 text, math and code.
 
 <p>
-<div class="alert alert-block alert-success alert-text-normal"><b>Going deeper.</b>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+  <h3 class="panel-title">Going deeper.</h3>
+  </div>
+<div class="panel-body">
 We have some equations that should be preceded by much text, so the
 task is to write and write. The number of words, and not the
 meaning, is what counts here. We need desperately to fill up the
@@ -492,7 +545,8 @@ Longer computer code requires vertical space:
 And then we add a figure too.
 
 <p>
-<center><p><img src="../doc/src/manual/fig/wave1D.png" align="bottom" width=400></p></center>
+<center><p><img src="../../doc/src/manual/fig/wave1D.png" align="bottom" width=400></p></center>
+</div>
 </div>
 
 
@@ -504,10 +558,15 @@ for the novice",
 just because we can.
 
 <p>
-<div class="alert alert-block alert-warning alert-text-normal"><b>Concluding remarks, for the novice.</b>
+<div class="panel panel-danger">
+  <div class="panel-heading">
+  <h3 class="panel-title">Concluding remarks, for the novice</h3>
+  </div>
+<div class="panel-body">
 We can summarize the most important things with admons: they have
 a different typesetting, and they may have a symbol.
 Titles should be optional.
+</div>
 </div>
 
 
