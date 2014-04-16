@@ -539,17 +539,16 @@ extensions = [
 #pngmath_dvipng_args = ['-D 200', '-bg Transparent', '-gamma 1.5']  # large math fonts (200)
 
 #intersphinx_mapping = {}
-# Example configuration for intersphinx: refer to the Python standard library.
-# (Domos in http://scipy-lectures.github.com/)
-'''
+# Example configuration for intersphinx for references to the
+# Python standard library.
+# (Domos in http://scipy-lectures.github.com, typically :mod:`scipy.io`
+# or :class:`numpy.ndarray` or :func:`math.asin`)
 intersphinx_mapping = {
-    _python_doc_base: None,
-    'http://docs.scipy.org/doc/numpy': None,
-    'http://docs.scipy.org/doc/scipy/reference': None,
-    'http://matplotlib.org/': None,
+    'python': ('http://docs.python.org/2.7', None),
+    'numpy': ('http://docs.scipy.org/doc/numpy', None),
+    'scipy': ('http://docs.scipy.org/doc/scipy/reference', None),
+    'mpl': ('http://matplotlib.org/', None),
 }
-'''
-
 
 # Check which additional themes that are installed
 additional_themes_installed = []
@@ -610,7 +609,8 @@ except ImportError:
     #'matplotlib.sphinxext.ipython_console_highlighting',
     # are now in IPython, but not installed as Python modules
 
-    text = re.sub(r'extensions = .*\]', extensions, text)
+    print 'XXX', extensions
+    text = re.sub(r'extensions = .*?\]', extensions, text, flags=re.DOTALL)
     text = text.replace('#html_theme_options = {}', """\
 
 # See http://sphinx.pocoo.org/theming.html for options

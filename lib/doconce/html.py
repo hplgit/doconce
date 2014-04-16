@@ -1652,13 +1652,23 @@ def define(FILENAME_EXTENSION,
 """
         bootstrap_title_bar = ''
 
-    if option('bootstrap_code=', 'on') in ('off', 'transparent'):
+    style_changes = ''
+    if option('html_code_style=', 'on') in ('off', 'transparent', 'inherit'):
+        style_changes += """\
+/* Let inline verbatim have the same color as the surroundings */
+code { color: inherit; background-color: transparent; }
+"""
+    if option('html_pre_style=', 'on') in ('off', 'transparent', 'inherit'):
+        style_changes += """\
+/* Let pre tags for code blocks have the same color as the surroundings */
+pre { color: inherit; background-color: transparent; }
+"""
+    if style_changes:
         style += """
 <style type="text/css">
-/* Make inline verbatim
-code { color: inherit; background-color: transparent; }
-</style>
-"""
+%s</style>
+""" % style_changes
+
     meta_tags = """\
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
