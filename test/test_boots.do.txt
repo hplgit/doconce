@@ -9,7 +9,7 @@ Terminal> doconce format html mydoc --html_style=bootswatch --html_admon=bootstr
 
 Here goes optional text.
 
-# A !split before the first section will enable a button in the jumbotron
+# A split before the first section will enable a button in the jumbotron
 # for going to the first real page
 
 !split
@@ -101,14 +101,12 @@ the following syntax in case of a 1x3 grid:
 
 # end-grid-area
 !ec
-A nice feature is that the coordinates of the cells, here `00`, `01`,
-and `02` can be given in any desired order. For example, if we want
-to reverse the sequence of the three elements in the three columns
-of this grid, we simply change `00` by `02` and `02` by `00`.
 
 ===== Example on a 1x3 grid structure =====
 
 # begin-grid-area
+
+Some text like this is lost.
 
 !bslidecell 00
 __Mathematics.__
@@ -207,6 +205,3 @@ Terminal> python prog.py
 !enotice
 !eslidecell
 # end-grid-area
-
-
-

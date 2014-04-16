@@ -170,6 +170,26 @@ cpdef f(double x):
     return x + 1
 !ec
 
+Standard Python shell sessions:
+
+!bc ipy
+>>> from numpy import sin
+>>> # Some comment
+>>> x = sin(1.2); print 'Value:', x
+Value: 0.932039085967
+!ec
+
+IPython sessions:
+
+!bc ipy
+In [1]: from numpy import sin
+
+In [2]: # Some comment
+
+In [3]: x = sin(1.2); print 'Value:', x
+Value: 0.932039085967
+!ec
+
 # This one tests a + sign before a code environment
 C++:
 !bc cpppro
@@ -2047,6 +2067,26 @@ cpdef f(double x):
     return x + 1
 \ecycod
 
+Standard Python shell sessions:
+
+\bipy
+>>> from numpy import sin
+>>> # Some comment
+>>> x = sin(1.2); print 'Value:', x
+Value: 0.932039085967
+\eipy
+
+IPython sessions:
+
+\bipy
+In [1]: from numpy import sin
+
+In [2]: # Some comment
+
+In [3]: x = sin(1.2); print 'Value:', x
+Value: 0.932039085967
+\eipy
+
 % This one tests a + sign before a code environment
 C++:
 \bcpppro
@@ -3817,6 +3857,28 @@ cpdef f(double x):
 \end{minted}
 \noindent
 
+Standard Python shell sessions:
+
+\begin{Verbatim}[fontsize=\fontsize{9pt}{9pt},tabsize=8,baselinestretch=0.85]
+>>> from numpy import sin
+>>> # Some comment
+>>> x = sin(1.2); print 'Value:', x
+Value: 0.932039085967
+\end{Verbatim}
+\noindent
+
+IPython sessions:
+
+\begin{Verbatim}[fontsize=\fontsize{9pt}{9pt},tabsize=8,baselinestretch=0.85]
+In [1]: from numpy import sin
+
+In [2]: # Some comment
+
+In [3]: x = sin(1.2); print 'Value:', x
+Value: 0.932039085967
+\end{Verbatim}
+\noindent
+
 % This one tests a + sign before a code environment
 C++:
 \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{c++}
@@ -5058,6 +5120,7 @@ in a separate document: \texttt{admon.do.txt}.
 \bpycod (!bc pycod) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
 \bhtmlcod (!bc htmlcod) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{html}
 \bcod (!bc cod) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
+\bipy (!bc ipy) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
 \bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
 output in testdoc.tex
 ----------- end of doconce ptex2tex output ----------------
@@ -5632,6 +5695,26 @@ Then Cython:
 cpdef f(double x):
     return x + 1
 \end{minted}
+
+Standard Python shell sessions:
+
+\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
+>>> from numpy import sin
+>>> # Some comment
+>>> x = sin(1.2); print 'Value:', x
+Value: 0.932039085967
+\end{Verbatim}
+
+IPython sessions:
+
+\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
+In [1]: from numpy import sin
+
+In [2]: # Some comment
+
+In [3]: x = sin(1.2); print 'Value:', x
+Value: 0.932039085967
+\end{Verbatim}
 
 % This one tests a + sign before a code environment
 C++:
@@ -7040,6 +7123,26 @@ Then Cython::
 
         cpdef f(double x):
             return x + 1
+
+
+Standard Python shell sessions::
+
+
+        >>> from numpy import sin
+        >>> # Some comment
+        >>> x = sin(1.2); print 'Value:', x
+        Value: 0.932039085967
+
+
+IPython sessions::
+
+
+        In [1]: from numpy import sin
+        
+        In [2]: # Some comment
+        
+        In [3]: x = sin(1.2); print 'Value:', x
+        Value: 0.932039085967
 
 
 .. This one tests a + sign before a code environment
@@ -8529,6 +8632,30 @@ Then Cython:
 
         cpdef f(double x):
             return x + 1
+
+
+Standard Python shell sessions:
+
+
+.. code-block:: python
+
+        >>> from numpy import sin
+        >>> # Some comment
+        >>> x = sin(1.2); print 'Value:', x
+        Value: 0.932039085967
+
+
+IPython sessions:
+
+
+.. code-block:: python
+
+        In [1]: from numpy import sin
+        
+        In [2]: # Some comment
+        
+        In [3]: x = sin(1.2); print 'Value:', x
+        Value: 0.932039085967
 
 
 .. This one tests a + sign before a code environment
@@ -10141,6 +10268,26 @@ cpdef f(double x):
     return x + 1
 }}}
 
+Standard Python shell sessions:
+
+{{{
+>>> from numpy import sin
+>>> # Some comment
+>>> x = sin(1.2); print 'Value:', x
+Value: 0.932039085967
+}}}
+
+IPython sessions:
+
+{{{
+In [1]: from numpy import sin
+
+In [2]: # Some comment
+
+In [3]: x = sin(1.2); print 'Value:', x
+Value: 0.932039085967
+}}}
+
 <wiki:comment> This one tests a + sign before a code environment </wiki:comment>
 C++:
 {{{
@@ -11369,6 +11516,26 @@ Then Cython:
 <syntaxhighlight lang="python">
 cpdef f(double x):
     return x + 1
+</syntaxhighlight>
+
+Standard Python shell sessions:
+
+<syntaxhighlight lang="python">
+>>> from numpy import sin
+>>> # Some comment
+>>> x = sin(1.2); print 'Value:', x
+Value: 0.932039085967
+</syntaxhighlight>
+
+IPython sessions:
+
+<syntaxhighlight lang="python">
+In [1]: from numpy import sin
+
+In [2]: # Some comment
+
+In [3]: x = sin(1.2); print 'Value:', x
+Value: 0.932039085967
 </syntaxhighlight>
 
 <!-- This one tests a + sign before a code environment -->
@@ -12705,6 +12872,26 @@ cpdef f(double x):
     return x + 1
 }}}
 
+Standard Python shell sessions:
+
+{{{
+>>> from numpy import sin
+>>> # Some comment
+>>> x = sin(1.2); print 'Value:', x
+Value: 0.932039085967
+}}}
+
+IPython sessions:
+
+{{{
+In [1]: from numpy import sin
+
+In [2]: # Some comment
+
+In [3]: x = sin(1.2); print 'Value:', x
+Value: 0.932039085967
+}}}
+
 <wiki:comment> This one tests a + sign before a code environment </wiki:comment>
 C++:
 {{{
@@ -13871,6 +14058,26 @@ Then Cython::
 
         cpdef f(double x):
             return x + 1
+
+
+Standard Python shell sessions::
+
+
+        >>> from numpy import sin
+        >>> # Some comment
+        >>> x = sin(1.2); print 'Value:', x
+        Value: 0.932039085967
+
+
+IPython sessions::
+
+
+        In [1]: from numpy import sin
+        
+        In [2]: # Some comment
+        
+        In [3]: x = sin(1.2); print 'Value:', x
+        Value: 0.932039085967
 
 
 C++::
@@ -15077,6 +15284,26 @@ Then Cython::
 
         cpdef f(double x):
             return x + 1
+
+
+Standard Python shell sessions::
+
+
+        >>> from numpy import sin
+        >>> # Some comment
+        >>> x = sin(1.2); print 'Value:', x
+        Value: 0.932039085967
+
+
+IPython sessions::
+
+
+        In [1]: from numpy import sin
+        
+        In [2]: # Some comment
+        
+        In [3]: x = sin(1.2); print 'Value:', x
+        Value: 0.932039085967
 
 
 C++::
@@ -16389,6 +16616,26 @@ Then Cython::
             return x + 1
 
 
+Standard Python shell sessions::
+
+
+        >>> from numpy import sin
+        >>> # Some comment
+        >>> x = sin(1.2); print 'Value:', x
+        Value: 0.932039085967
+
+
+IPython sessions::
+
+
+        In [1]: from numpy import sin
+        
+        In [2]: # Some comment
+        
+        In [3]: x = sin(1.2); print 'Value:', x
+        Value: 0.932039085967
+
+
 C++::
 
 
@@ -17680,6 +17927,28 @@ Then Cython:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 cpdef f(double x):
     return x + 1
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Standard Python shell sessions:
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.Python}
+>>> from numpy import sin
+>>> # Some comment
+>>> x = sin(1.2); print 'Value:', x
+Value: 0.932039085967
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+IPython sessions:
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.Python}
+In [1]: from numpy import sin
+
+In [2]: # Some comment
+
+In [3]: x = sin(1.2); print 'Value:', x
+Value: 0.932039085967
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 <!-- This one tests a + sign before a code environment -->
@@ -19166,6 +19435,50 @@ is at the end with only one newline.
      "input": [
       "cpdef f(double x):\n",
       "    return x + 1\n"
+     ],
+     "language": "python",
+     "metadata": {},
+     "outputs": [],
+     "prompt_number": 1
+    },
+    {
+     "cell_type": "markdown",
+     "metadata": {},
+     "source": [
+      "Standard Python shell sessions:"
+     ]
+    },
+    {
+     "cell_type": "code",
+     "collapsed": false,
+     "input": [
+      ">>> from numpy import sin\n",
+      ">>> # Some comment\n",
+      ">>> x = sin(1.2); print 'Value:', x\n",
+      "Value: 0.932039085967\n"
+     ],
+     "language": "python",
+     "metadata": {},
+     "outputs": [],
+     "prompt_number": 1
+    },
+    {
+     "cell_type": "markdown",
+     "metadata": {},
+     "source": [
+      "IPython sessions:"
+     ]
+    },
+    {
+     "cell_type": "code",
+     "collapsed": false,
+     "input": [
+      "In [1]: from numpy import sin\n",
+      "\n",
+      "In [2]: # Some comment\n",
+      "\n",
+      "In [3]: x = sin(1.2); print 'Value:', x\n",
+      "Value: 0.932039085967\n"
      ],
      "language": "python",
      "metadata": {},
@@ -20726,7 +21039,7 @@ Could not find match for from regex "\*\s+\$.+normally"
   'solution_file': None,
   'subex': [{'answer': 'Short answer to subexercise a).\nWith math in answer: $a=b$.',
              'file': ['subexer_a.pdf'],
-             'hints': ['First hint to subexercise a).\nWith math $a=b$ in hint:\n\n19 <<<!!MATH_BLOCK\nAnd with code (in plain verbatim) returning $x+1$ in hint:\n\n18 <<<!!CODE_BLOCK',
+             'hints': ['First hint to subexercise a).\nWith math $a=b$ in hint:\n\n19 <<<!!MATH_BLOCK\nAnd with code (in plain verbatim) returning $x+1$ in hint:\n\n20 <<<!!CODE_BLOCK',
                        'Second hint to subexercise a).\n\nTest list in hint:\n\n o item1\n o item2'],
              'solution': '',
              'text': 'Subexercises are numbered a), b), etc.'},
@@ -20927,6 +21240,18 @@ show()</code></pre>
 <p>Then Cython:</p>
 <pre><code>cpdef f(double x):
     return x + 1</code></pre>
+<p>Standard Python shell sessions:</p>
+<pre><code>&gt;&gt;&gt; from numpy import sin
+&gt;&gt;&gt; # Some comment
+&gt;&gt;&gt; x = sin(1.2); print &#39;Value:&#39;, x
+Value: 0.932039085967</code></pre>
+<p>IPython sessions:</p>
+<pre><code>In [1]: from numpy import sin
+
+In [2]: # Some comment
+
+In [3]: x = sin(1.2); print &#39;Value:&#39;, x
+Value: 0.932039085967</code></pre>
 <p>C++:</p>
 <pre><code>#include &lt;iostream&gt;
 
@@ -21590,6 +21915,18 @@ show()</code></pre>
 <p>Then Cython:</p>
 <pre><code>cpdef f(double x):
     return x + 1</code></pre>
+<p>Standard Python shell sessions:</p>
+<pre class="sourceCode Python"><code class="sourceCode python">&gt;&gt;&gt; <span class="ch">from</span> numpy <span class="ch">import</span> sin
+&gt;&gt;&gt; <span class="co"># Some comment</span>
+&gt;&gt;&gt; x = sin(<span class="fl">1.2</span>); <span class="kw">print</span> <span class="st">&#39;Value:&#39;</span>, x
+Value: <span class="fl">0.932039085967</span></code></pre>
+<p>IPython sessions:</p>
+<pre class="sourceCode Python"><code class="sourceCode python">In [<span class="dv">1</span>]: <span class="ch">from</span> numpy <span class="ch">import</span> sin
+
+In [<span class="dv">2</span>]: <span class="co"># Some comment</span>
+
+In [<span class="dv">3</span>]: x = sin(<span class="fl">1.2</span>); <span class="kw">print</span> <span class="st">&#39;Value:&#39;</span>, x
+Value: <span class="fl">0.932039085967</span></code></pre>
 <!-- This one tests a + sign before a code environment -->
 <p>C++:</p>
 <pre class="sourceCode Cpp"><code class="sourceCode cpp"><span class="ot">#include &lt;iostream&gt;</span>
@@ -24994,6 +25331,38 @@ Then Cython:
     <span style="color: #AA22FF; font-weight: bold">return</span> x <span style="color: #666666">+</span> <span style="color: #666666">1</span>
 </pre></div>
 </td></tr></table><p>
+Standard Python shell sessions:
+
+<p>
+
+<!-- code=ipython (from !bc ipy) typeset with pygments style "emacs" -->
+<table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">&gt;&gt;&gt; from numpy import sin</span>
+<span style="color: #888888">&gt;&gt;&gt; # Some comment</span>
+<span style="color: #888888">&gt;&gt;&gt; x = sin(1.2); print &#39;Value:&#39;, x</span>
+<span style="color: #888888">Value: 0.932039085967</span>
+</pre></div>
+</td></tr></table><p>
+IPython sessions:
+
+<p>
+
+<!-- code=ipython (from !bc ipy) typeset with pygments style "emacs" -->
+<table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">In [1]: </span><span style="color: #AA22FF; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #AA22FF; font-weight: bold">import</span> sin
+
+<span style="color: #000080; font-weight: bold">In [2]: </span><span style="color: #008800; font-style: italic"># Some comment</span>
+
+<span style="color: #000080; font-weight: bold">In [3]: </span>x <span style="color: #666666">=</span> sin(<span style="color: #666666">1.2</span>); <span style="color: #AA22FF; font-weight: bold">print</span> <span style="color: #BB4444">&#39;Value:&#39;</span>, x
+<span style="color: #888888">Value: 0.932039085967</span>
+</pre></div>
+</td></tr></table><p>
 <!-- This one tests a + sign before a code environment -->
 C++:
 <p>
@@ -26928,6 +27297,30 @@ Then Cython:
     <span style="color: #008000; font-weight: bold">return</span> x <span style="color: #666666">+</span> <span style="color: #666666">1</span>
 </pre></div>
 <p>
+Standard Python shell sessions:
+
+<p>
+
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">&gt;&gt;&gt; from numpy import sin</span>
+<span style="color: #888888">&gt;&gt;&gt; # Some comment</span>
+<span style="color: #888888">&gt;&gt;&gt; x = sin(1.2); print &#39;Value:&#39;, x</span>
+<span style="color: #888888">Value: 0.932039085967</span>
+</pre></div>
+<p>
+IPython sessions:
+
+<p>
+
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">In [1]: </span><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> sin
+
+<span style="color: #000080; font-weight: bold">In [2]: </span><span style="color: #408080; font-style: italic"># Some comment</span>
+
+<span style="color: #000080; font-weight: bold">In [3]: </span>x <span style="color: #666666">=</span> sin(<span style="color: #666666">1.2</span>); <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;Value:&#39;</span>, x
+<span style="color: #888888">Value: 0.932039085967</span>
+</pre></div>
+<p>
 
 C++:
 <p>
@@ -28624,6 +29017,30 @@ Then Cython:
 <!-- code=cython (from !bc cycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">cpdef</span> <span style="color: #0000FF">f</span>(double x):
     <span style="color: #008000; font-weight: bold">return</span> x <span style="color: #666666">+</span> <span style="color: #666666">1</span>
+</pre></div>
+<p>
+Standard Python shell sessions:
+
+<p>
+
+<!-- code=ipython (from !bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">&gt;&gt;&gt; from numpy import sin</span>
+<span style="color: #888888">&gt;&gt;&gt; # Some comment</span>
+<span style="color: #888888">&gt;&gt;&gt; x = sin(1.2); print &#39;Value:&#39;, x</span>
+<span style="color: #888888">Value: 0.932039085967</span>
+</pre></div>
+<p>
+IPython sessions:
+
+<p>
+
+<!-- code=ipython (from !bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">In [1]: </span><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> sin
+
+<span style="color: #000080; font-weight: bold">In [2]: </span><span style="color: #408080; font-style: italic"># Some comment</span>
+
+<span style="color: #000080; font-weight: bold">In [3]: </span>x <span style="color: #666666">=</span> sin(<span style="color: #666666">1.2</span>); <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;Value:&#39;</span>, x
+<span style="color: #888888">Value: 0.932039085967</span>
 </pre></div>
 <p>
 <!-- This one tests a + sign before a code environment -->
@@ -30505,6 +30922,26 @@ cpdef f(double x):
     return x + 1
 \ecycod
 
+Standard Python shell sessions:
+
+\bipy
+>>> from numpy import sin
+>>> # Some comment
+>>> x = sin(1.2); print 'Value:', x
+Value: 0.932039085967
+\eipy
+
+IPython sessions:
+
+\bipy
+In [1]: from numpy import sin
+
+In [2]: # Some comment
+
+In [3]: x = sin(1.2); print 'Value:', x
+Value: 0.932039085967
+\eipy
+
 % This one tests a + sign before a code environment
 C++:
 \bcpppro
@@ -32337,6 +32774,7 @@ cp admon.html admon_vagrant.html
 
 system doconce format html admon --html_style=bootstrap --pygments_html_style=default --html_admon=bootstrap_alert
 cp admon.html admon_bootstrap_alert.html
+doconce split_html admon_bootstrap_alert.html
 
 system doconce format html admon --html_style=bootswatch --pygments_html_style=default --html_admon=bootstrap_panel
 cp admon.html admon_bootswatch_panel.html
@@ -32352,9 +32790,9 @@ cp admon.mwiki admon_mwiki.mwiki
 system doconce format plain admon
 cp admon.txt admon_paragraph.txt
 
-cp -fr admon_*.html admon_*.pdf admon_*.*wiki admon_*.txt admon_sphinx admon_demo/
+cp -fr admon_*.html admon_*.pdf admon_*.*wiki admon_*.txt ._admon_*.html admon_sphinx admon_demo/
 cd admon_demo
-doconce replace '../doc/src/manual/fig/wave1D' '../../doc/src/manual/fig/wave1D' *.html
+doconce replace '../doc/src/manual/fig/wave1D' '../../doc/src/manual/fig/wave1D' *.html .*.html
 rm -rf *~
 cd ..
 
@@ -32367,7 +32805,7 @@ if [ -d latex_figs ]; then
 fi
 
 # Test Bootstrap HTML styles
-doconce format html test_boots --html_style=bootswatch_journal --pygments_html_style=default --html_admon=bootstrap_panel
+system doconce format html test_boots --html_style=bootswatch_journal --pygments_html_style=default --html_admon=bootstrap_panel
 doconce split_html test_boots.html
 
 # Test GitHub-extended Markdown
@@ -35106,6 +35544,30 @@ Then Cython:
     <span style="color: #008000; font-weight: bold">return</span> x <span style="color: #666666">+</span> <span style="color: #666666">1</span>
 </pre></div>
 <p>
+Standard Python shell sessions:
+
+<p>
+
+<!-- code=ipython (from !bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">&gt;&gt;&gt; from numpy import sin</span>
+<span style="color: #888888">&gt;&gt;&gt; # Some comment</span>
+<span style="color: #888888">&gt;&gt;&gt; x = sin(1.2); print &#39;Value:&#39;, x</span>
+<span style="color: #888888">Value: 0.932039085967</span>
+</pre></div>
+<p>
+IPython sessions:
+
+<p>
+
+<!-- code=ipython (from !bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">In [1]: </span><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> sin
+
+<span style="color: #000080; font-weight: bold">In [2]: </span><span style="color: #408080; font-style: italic"># Some comment</span>
+
+<span style="color: #000080; font-weight: bold">In [3]: </span>x <span style="color: #666666">=</span> sin(<span style="color: #666666">1.2</span>); <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;Value:&#39;</span>, x
+<span style="color: #888888">Value: 0.932039085967</span>
+</pre></div>
+<p>
 <!-- This one tests a + sign before a code environment -->
 C++:
 <p>
@@ -37003,6 +37465,30 @@ Then Cython:
             return x + 1
 
 
+Standard Python shell sessions:
+
+
+.. code-block:: python
+
+        >>> from numpy import sin
+        >>> # Some comment
+        >>> x = sin(1.2); print 'Value:', x
+        Value: 0.932039085967
+
+
+IPython sessions:
+
+
+.. code-block:: python
+
+        In [1]: from numpy import sin
+        
+        In [2]: # Some comment
+        
+        In [3]: x = sin(1.2); print 'Value:', x
+        Value: 0.932039085967
+
+
 .. This one tests a + sign before a code environment
 
 C++:
@@ -38756,6 +39242,7 @@ Jan 32, 2100
 \vspace{1cm}
 
 
+% !split
 \section{Introduction}
 First some ordinary text to compare font sizes in admonitions
 and the surrounding text.
@@ -39353,6 +39840,7 @@ Jan 32, 2100
 \vspace{1cm}
 
 
+% !split
 \section{Introduction}
 First some ordinary text to compare font sizes in admonitions
 and the surrounding text.
@@ -39955,6 +40443,7 @@ Jan 32, 2100
 \vspace{1cm}
 
 
+% !split
 \section{Introduction}
 First some ordinary text to compare font sizes in admonitions
 and the surrounding text.
@@ -40600,6 +41089,7 @@ Jan 32, 2100
 \vspace{1cm}
 
 
+% !split
 \section{Introduction}
 First some ordinary text to compare font sizes in admonitions
 and the surrounding text.
@@ -41138,6 +41628,7 @@ Jan 32, 2100
 \vspace{1cm}
 
 
+% !split
 \section{Introduction}
 First some ordinary text to compare font sizes in admonitions
 and the surrounding text.
@@ -41768,6 +42259,7 @@ Jan 32, 2100
 \vspace{1cm}
 
 
+% !split
 \section{Introduction}
 First some ordinary text to compare font sizes in admonitions
 and the surrounding text.
@@ -42276,6 +42768,7 @@ Jan 32, 2100
 \vspace{1cm}
 
 
+% !split
 \section{Introduction}
 First some ordinary text to compare font sizes in admonitions
 and the surrounding text.
@@ -42882,6 +43375,7 @@ Jan 32, 2100
 \vspace{1cm}
 
 
+% !split
 \section{Introduction}
 First some ordinary text to compare font sizes in admonitions
 and the surrounding text.
@@ -43527,6 +44021,7 @@ Jan 32, 2100
 \vspace{1cm}
 
 
+% !split
 \section{Introduction}
 First some ordinary text to compare font sizes in admonitions
 and the surrounding text.
@@ -44035,6 +44530,8 @@ $$
 <!-- institution(s) -->
 <p>
 <center><h4>Jan 32, 2100</h4></center> <!-- date -->
+<p>
+<!-- !split -->
 
 <h2>Introduction  <a name="___sec0"></a></h2>
 First some ordinary text to compare font sizes in admonitions
@@ -44577,6 +45074,8 @@ $$
 <!-- institution(s) -->
 <p>
 <center><h4>Jan 32, 2100</h4></center> <!-- date -->
+<p>
+<!-- !split -->
 
 <h2>Introduction  <a name="___sec0"></a></h2>
 First some ordinary text to compare font sizes in admonitions
@@ -45117,6 +45616,8 @@ $$
 <!-- institution(s) -->
 <p>
 <center><h4>Jan 32, 2100</h4></center> <!-- date -->
+<p>
+<!-- !split -->
 
 <h2>Introduction  <a name="___sec0"></a></h2>
 First some ordinary text to compare font sizes in admonitions
@@ -45638,6 +46139,8 @@ $$
 <!-- institution(s) -->
 <p>
 <center><h4>Jan 32, 2100</h4></center> <!-- date -->
+<p>
+<!-- !split -->
 
 <h2>Introduction  <a name="___sec0"></a></h2>
 First some ordinary text to compare font sizes in admonitions
@@ -46255,6 +46758,8 @@ $$
 <!-- institution(s) -->
 <p>
 <center><h4>Jan 32, 2100</h4></center> <!-- date -->
+<p>
+<!-- !split -->
 
 <h2>Introduction  <a name="___sec0"></a></h2>
 First some ordinary text to compare font sizes in admonitions
@@ -46851,6 +47356,8 @@ $$
 <!-- institution(s) -->
 <p>
 <center><h4>Jan 32, 2100</h4></center> <!-- date -->
+<p>
+<!-- !split -->
 
 <h2>Introduction  <a name="___sec0"></a></h2>
 First some ordinary text to compare font sizes in admonitions
@@ -47419,6 +47926,8 @@ $$
 
 <p>
 <!-- institution(s) -->
+<p>
+<!-- !split -->
 
 <h2>Introduction  <a name="___sec0"></a></h2>
 First some ordinary text to compare font sizes in admonitions
@@ -47891,7 +48400,7 @@ end of tocinfo -->
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
   TeX: {
-     equationNumbers: {  autoNumber: "AMS"  },
+     equationNumbers: {  autoNumber: "none"  },
      extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
   }
 });
@@ -47941,12 +48450,12 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: " Introduction " --> <li>  <a href="#___sec0"> Introduction </a></li>
-     <!-- navigation toc: " Code " --> <li> &nbsp;  <a href="#___sec1"> Code </a></li>
-     <!-- navigation toc: " Quotes and boxes " --> <li> &nbsp;  <a href="#___sec2"> Quotes and boxes </a></li>
-     <!-- navigation toc: " Admonitions " --> <li> &nbsp;  <a href="#___sec3"> Admonitions </a></li>
-     <!-- navigation toc: " Going deeper environments " --> <li> &nbsp;  <a href="#___sec4"> Going deeper environments </a></li>
-     <!-- navigation toc: " The end " --> <li> &nbsp;  <a href="#___sec5"> The end </a></li>
+     <!-- navigation toc: " Introduction " --> <li>  <a href="._admon_bootstrap_alert001.html#___sec0"> Introduction </a></li>
+     <!-- navigation toc: " Code " --> <li> &nbsp;  <a href="._admon_bootstrap_alert001.html#___sec1"> Code </a></li>
+     <!-- navigation toc: " Quotes and boxes " --> <li> &nbsp;  <a href="._admon_bootstrap_alert001.html#___sec2"> Quotes and boxes </a></li>
+     <!-- navigation toc: " Admonitions " --> <li> &nbsp;  <a href="._admon_bootstrap_alert001.html#___sec3"> Admonitions </a></li>
+     <!-- navigation toc: " Going deeper environments " --> <li> &nbsp;  <a href="._admon_bootstrap_alert001.html#___sec4"> Going deeper environments </a></li>
+     <!-- navigation toc: " The end " --> <li> &nbsp;  <a href="._admon_bootstrap_alert001.html#___sec5"> The end </a></li>
 
         </ul>
       </li>
@@ -47957,6 +48466,7 @@ $$
 
 <div class="container">
 
+<a name="part0000"></a>
 <!-- ------------------- main content ---------------------- -->
 
 
@@ -47980,400 +48490,19 @@ $$
 <p>
 
 
+<p><a href="._admon_bootstrap_alert001.html" class="btn btn-primary btn-lg">Read &raquo;</a></p>
+
+
 </div> <!-- end jumbotron -->
 
-<h2>Introduction  <a name="___sec0"></a></h2>
-First some ordinary text to compare font sizes in admonitions
-and the surrounding text.
-
-<h3>Code  <a name="___sec1"></a></h3>
-
 <p>
-Need some code outside admons for color and font comparisons:
+<ul class="pager">
 
-<p>
+  <li class="next">
+    <a href="._admon_bootstrap_alert001.html">Next &rarr;</a>
+  </li>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">some_code</span>(x):
-    <span style="color: #008000; font-weight: bold">return</span> sin(x)<span style="color: #666666">*</span>exp(<span style="color: #666666">1-</span>x)
-</pre></div>
-<p>
-And some plain text verbatim:
-
-<p>
-
-<!-- code=text typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">x=1.0 y=0.9 z=0.4
-x=1.1 y=0.3 z=0.1
-</pre></div>
-
-<h3>Quotes and boxes  <a name="___sec2"></a></h3>
-
-<p>
-Here is a plain quote environment.
-
-<p>
-<blockquote>
-    Sayre's law states that
-    "in any dispute the intensity of feeling is inversely
-    proportional to the value of the issues at stake." <br />
-    By way of corollary, it adds: <br />
-    "That is why academic politics are so bitter." <br />
-    <em>Source</em>: <a href="http://en.wikipedia.org/wiki/Sayre's_law" target="_self">wikipedia</a>
-</blockquote>
-
-
-<p>
-Does quotes with title also work? No...cannot work in LaTeX and HTML
-and then it does not make sense to support it.
-
-<p>
-A plain <em>box</em> is sometimes useful. Let's show it here for comparison
-with admons (especially the block admon has much in common with a box).
-The box is more aimed at framing a law or an equation.
-
-<p>
-First a simple block with text, an equation, and a list:
-
-<p>
-
-<!-- begin box -->
-<div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px;">
-A generic equation
-
-<p>
-$$ f(x) = 0 $$
-
-must be solved by a numerical method, such as
-
-<p>
-
-<ul>
- <li> Newton's method</li>
- <li> The Bisection method</li>
- <li> Fixed-point (Picard) iteration by rewriting \( f(x)=x - g(x) \)</li>
- <li> The Secant method</li>
 </ul>
-</div>
-<!-- end box -->
-
-Now test a box with equation only (note that this line continues the
-box, it is not a new paragraph):
-
-<p>
-
-<!-- begin box -->
-<div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px;">
-$$
-\begin{equation} f(x) = \sin(x)e^{1-x} \end{equation}
-$$
-</div>
-<!-- end box -->
-
-
-<p>
-Let's begin a new paragraph and show a box with code only:
-
-<p>
-
-<!-- begin box -->
-<div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px;">
-<p>
-
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">some_code</span>(x):
-    <span style="color: #008000; font-weight: bold">return</span> sin(x)<span style="color: #666666">*</span>exp(<span style="color: #666666">1-</span>x)
-</pre></div>
-<p>
-</div>
-<!-- end box -->
-
-
-<h3>Admonitions  <a name="___sec3"></a></h3>
-
-<p>
-Let us start with a plain warning environment.
-
-<p>
-<div class="alert alert-block alert-danger alert-text-normal"><b>Warning.</b>
-And here is a warning about something to pay attention to. We
-test how the heading behave and add quite some extra texts
-in comparison with the other admons.
-
-<p>
-
-<ul>
-  <li> and a list</li>
-  <li> with items</li>
-</ul>
-
-We continue with more text to see how that affects the layout.
-And more and more text.
-And more and more text.
-And more and more text.
-And more and more text.
-And more and more text.
-And more and more text.
-</div>
-
-
-<p>
-Test warning with title:
-
-<p>
-<div class="alert alert-block alert-danger alert-text-large"><b>Title ending with math \( \sqrt{2}\approx 1.4 \).</b>
-And here comes some text with bad news in larger font.
-
-<p>
-Also some code:
-
-<p>
-
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
-    <span style="color: #008000; font-weight: bold">return</span> x
-</pre></div>
-<p>
-And a complete program
-
-<p>
-
-<!-- code=python (from !bc pypro) typeset with pygments style "default" -->
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&quot;Hello, World!&quot;</span>
-</pre></div>
-<p>
-</div>
-
-
-<p>
-Test warning with large title with math:
-
-<p>
-<div class="alert alert-block alert-danger alert-text-large"><b>Watch out for \( \nabla\cdot\boldsymbol{u}=0 \) equations.</b>
-Divergence freedom is often problematic from a numerical point
-of view.
-</div>
-
-
-<p>
-Then we test a block, which is guaranteed to never have any admon icon.
-
-<p>
-<div class="alert alert-block alert-success alert-text-small"><b>Block with title.</b>
-Here is a block of text with title. It is typeset
-<em>without any icon</em> and is useful when you want some admons with icon
-and some without. With the small font size, as used here, one can have
-more comment-style text or text that really goes deeper or talks
-about fun facts that are not strictly necessary for the main flow
-of understanding.
-</div>
-
-
-<p>
-<div class="alert alert-block alert-success alert-text-normal"><b></b>
-Here is a block of text with no title. As above, it is typeset without any icon
-and is useful when you want some admons with icon and some without.
-</div>
-
-
-<p>
-The next admonition features a title "Note, eventually!" (the comma
-must be removed in the <code>mdfbox</code> admon also in <code>graybox2</code> if
-code is present).
-
-<p>
-<!-- Note that the final ! does not appear in Sphinx and reST since -->
-<!-- those formats automatically add : to the admonition title. -->
-
-<p>
-<div class="alert alert-block alert-success alert-text-illegal-size"><b>Note, eventually!</b>
-Ah, we are soon close to the end (with illegal font size specification!).
-But first a bit of math where we define \( \theta \) and \( \boldsymbol{r} \):
-
-<p>
-$$
-\begin{align*}
-\theta &= q^2,\\
-\boldsymbol{r} &= \varrho\boldsymbol{i}
-\end{align*}
-$$
-</div>
-
-
-<p>
-<!-- Test one word with a number -->
-
-<p>
-<div class="alert alert-block alert-success alert-text-normal"><b>Point1.</b>
-Ah, we are soon close to the end.
-</div>
-
-
-<p>
-<div class="alert alert-block alert-info alert-text-normal"><b>Question.</b>
-So, how many admonition environments does Doconce support?
-</div>
-
-
-<p>
-<div class="alert alert-block alert-info alert-text-normal"><b>Question.</b>
-
-<ol>
- <li> Once more, how many admonition environments does Doconce support?</li>
-</ol>
-</div>
-
-
-<p>
-<div class="alert alert-block alert-danger alert-text-normal"><b>Tip.</b>
-It is of outmost important to
-
-<p>
-
-<ol>
-<li> stay cool</li>
-<li> read hints and tips carefully</li>
-</ol>
-
-Because here the thing is to do
-
-<p>
-
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">urllib</span>
-
-<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">grab</span>(url, filename):
-    urllib<span style="color: #666666">.</span>urlretrieve(url, filename<span style="color: #666666">=</span>filename)
-</pre></div>
-<p>
-</div>
-
-
-<p>
-Next is a warning without a title ("none" implies no title).
-
-<p>
-<div class="alert alert-block alert-danger alert-text-normal"><b></b>
-And here comes some text with bad news.
-</div>
-
-
-<h3>Going deeper environments  <a name="___sec4"></a></h3>
-
-<p>
-Here is a long notice environment with a custom title and much
-text, math and code.
-
-<p>
-<div class="alert alert-block alert-success alert-text-normal"><b>Going deeper.</b>
-We have some equations that should be preceded by much text, so the
-task is to write and write. The number of words, and not the
-meaning, is what counts here. We need desperately to fill up the
-page in the hope that some admonitions will experience a page break,
-which the LaTeX environment should handle with ease.
-
-<p>
-Let us start with some equations:
-
-<p>
-$$
-\begin{align*}
-\frac{Du}{dt} &= 0
-\\
-\frac{1}{2} &= {1/2}\\
-\frac{1}{2}\pmb{x} &= \pmb{n}
-\end{align*}
-$$
-
-
-<p>
-The implementation of such complicated equations in computer
-code is task that this "Going deeper" environment targets.
-
-<p>
-
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">Dudt</span>(u):
-    r <span style="color: #666666">=</span> diff(u, t) <span style="color: #666666">+</span> u<span style="color: #666666">*</span>grad(u)
-    <span style="color: #008000; font-weight: bold">return</span> r
-
-half <span style="color: #666666">=</span> <span style="color: #666666">0.5</span>
-x <span style="color: #666666">=</span> <span style="color: #666666">2*</span>n
-</pre></div>
-<p>
-And some more text that can help going into the next page.
-Longer computer code requires vertical space:
-
-<p>
-
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Diff</span>:
-    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__init__</span>(<span style="color: #008000">self</span>, f, h<span style="color: #666666">=1E-5</span>):
-        <span style="color: #008000">self</span><span style="color: #666666">.</span>f <span style="color: #666666">=</span> f
-        <span style="color: #008000">self</span><span style="color: #666666">.</span>h <span style="color: #666666">=</span> <span style="color: #008000">float</span>(h)
-
-<span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Forward1</span>(Diff):
-    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__call__</span>(<span style="color: #008000">self</span>, x):
-        f, h <span style="color: #666666">=</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>f, <span style="color: #008000">self</span><span style="color: #666666">.</span>h
-        <span style="color: #008000; font-weight: bold">return</span> (f(x<span style="color: #666666">+</span>h) <span style="color: #666666">-</span> f(x))<span style="color: #666666">/</span>h
-
-<span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Backward1</span>(Diff):
-    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__call__</span>(<span style="color: #008000">self</span>, x):
-        f, h <span style="color: #666666">=</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>f, <span style="color: #008000">self</span><span style="color: #666666">.</span>h
-        <span style="color: #008000; font-weight: bold">return</span> (f(x) <span style="color: #666666">-</span> f(x<span style="color: #666666">-</span>h))<span style="color: #666666">/</span>h
-
-<span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Central2</span>(Diff):
-    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__call__</span>(<span style="color: #008000">self</span>, x):
-        f, h <span style="color: #666666">=</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>f, <span style="color: #008000">self</span><span style="color: #666666">.</span>h
-        <span style="color: #008000; font-weight: bold">return</span> (f(x<span style="color: #666666">+</span>h) <span style="color: #666666">-</span> f(x<span style="color: #666666">-</span>h))<span style="color: #666666">/</span>(<span style="color: #666666">2*</span>h)
-
-<span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Central4</span>(Diff):
-    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__call__</span>(<span style="color: #008000">self</span>, x):
-        f, h <span style="color: #666666">=</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>f, <span style="color: #008000">self</span><span style="color: #666666">.</span>h
-        <span style="color: #008000; font-weight: bold">return</span> (<span style="color: #666666">4./3</span>)<span style="color: #666666">*</span>(f(x<span style="color: #666666">+</span>h)   <span style="color: #666666">-</span> f(x<span style="color: #666666">-</span>h))  <span style="color: #666666">/</span>(<span style="color: #666666">2*</span>h) <span style="color: #666666">-</span> \
-               (<span style="color: #666666">1./3</span>)<span style="color: #666666">*</span>(f(x<span style="color: #666666">+2*</span>h) <span style="color: #666666">-</span> f(x<span style="color: #666666">-2*</span>h))<span style="color: #666666">/</span>(<span style="color: #666666">4*</span>h)
-
-<span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Central6</span>(Diff):
-    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__call__</span>(<span style="color: #008000">self</span>, x):
-        f, h <span style="color: #666666">=</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>f, <span style="color: #008000">self</span><span style="color: #666666">.</span>h
-        <span style="color: #008000; font-weight: bold">return</span> (<span style="color: #666666">3./2</span>) <span style="color: #666666">*</span>(f(x<span style="color: #666666">+</span>h)   <span style="color: #666666">-</span> f(x<span style="color: #666666">-</span>h))  <span style="color: #666666">/</span>(<span style="color: #666666">2*</span>h) <span style="color: #666666">-</span> \
-               (<span style="color: #666666">3./5</span>) <span style="color: #666666">*</span>(f(x<span style="color: #666666">+2*</span>h) <span style="color: #666666">-</span> f(x<span style="color: #666666">-2*</span>h))<span style="color: #666666">/</span>(<span style="color: #666666">4*</span>h) <span style="color: #666666">+</span> \
-               (<span style="color: #666666">1./10</span>)<span style="color: #666666">*</span>(f(x<span style="color: #666666">+3*</span>h) <span style="color: #666666">-</span> f(x<span style="color: #666666">-3*</span>h))<span style="color: #666666">/</span>(<span style="color: #666666">6*</span>h)
-
-<span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Forward3</span>(Diff):
-    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__call__</span>(<span style="color: #008000">self</span>, x):
-        f, h <span style="color: #666666">=</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>f, <span style="color: #008000">self</span><span style="color: #666666">.</span>h
-        <span style="color: #008000; font-weight: bold">return</span> (<span style="color: #666666">-</span>(<span style="color: #666666">1./6</span>)<span style="color: #666666">*</span>f(x<span style="color: #666666">+2*</span>h) <span style="color: #666666">+</span> f(x<span style="color: #666666">+</span>h) <span style="color: #666666">-</span> <span style="color: #666666">0.5*</span>f(x) <span style="color: #666666">-</span> \
-                (<span style="color: #666666">1./3</span>)<span style="color: #666666">*</span>f(x<span style="color: #666666">-</span>h))<span style="color: #666666">/</span>h
-</pre></div>
-<p>
-And then we add a figure too.
-
-<p>
-<center><p><img src="../doc/src/manual/fig/wave1D.png" align="bottom" width=400></p></center>
-</div>
-
-
-<h3>The end  <a name="___sec5"></a></h3>
-
-<p>
-A bit of text before the summary, which we now call "Concluding remarks,
-for the novice",
-just because we can.
-
-<p>
-<div class="alert alert-block alert-warning alert-text-normal"><b>Concluding remarks, for the novice.</b>
-We can summarize the most important things with admons: they have
-a different typesetting, and they may have a symbol.
-Titles should be optional.
-</div>
-
-
-<p>
-<b>Remark.</b>
-The <code>remarks</code> and <code>hint</code> environments are not allowed outside
-exercises (and problems and projects too).
-
 <!-- ------------------- end of main content --------------- -->
 
 </div>  <!-- end container -->
@@ -48510,9 +48639,10 @@ $$
 <p>
 <center><h4>Jan 32, 2100</h4></center> <!-- date -->
 <p>
-
-
+<!-- potential-jumbotron-button -->
 </div> <!-- end jumbotron -->
+
+<!-- !split -->
 
 <h2>Introduction  <a name="___sec0"></a></h2>
 First some ordinary text to compare font sizes in admonitions
@@ -48978,12 +49108,533 @@ exercises (and problems and projects too).
     
 
 
+************** File: ._admon_bootstrap_alert001.html *****************
+<!DOCTYPE html>
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Testing admons">
+
+
+
+<!-- Bootstrap style: bootstrap -->
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' Introduction ', 1, None, '___sec0'),
+              (' Code ', 2, None, '___sec1'),
+              (' Quotes and boxes ', 2, None, '___sec2'),
+              (' Admonitions ', 2, None, '___sec3'),
+              (' Going deeper environments ', 2, None, '___sec4'),
+              (' The end ', 2, None, '___sec5')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+
+<!-- newcommands_bfmath.tex -->
+$$
+\renewcommand{\u}{\pmb{u}}
+
+\newcommand{\xbm}{\boldsymbol{x}}
+\newcommand{\normalvecbm}{\boldsymbol{n}}
+\newcommand{\ubm}{\boldsymbol{u}}
+$$
+
+
+<!-- newcommands_replace.tex -->
+$$
+\newcommand{\x}{\pmb{x}}
+\newcommand{\normalvec}{\pmb{n}}
+\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
+\newcommand{\halfi}{1/2}
+\newcommand{\half}{\frac{1}{2}}
+\newcommand{\report}{test report}
+$$
+
+
+
+
+    
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="admon.html">Testing admons</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: " Introduction " --> <li>  <a href="._admon_bootstrap_alert001.html#___sec0"> Introduction </a></li>
+     <!-- navigation toc: " Code " --> <li> &nbsp;  <a href="._admon_bootstrap_alert001.html#___sec1"> Code </a></li>
+     <!-- navigation toc: " Quotes and boxes " --> <li> &nbsp;  <a href="._admon_bootstrap_alert001.html#___sec2"> Quotes and boxes </a></li>
+     <!-- navigation toc: " Admonitions " --> <li> &nbsp;  <a href="._admon_bootstrap_alert001.html#___sec3"> Admonitions </a></li>
+     <!-- navigation toc: " Going deeper environments " --> <li> &nbsp;  <a href="._admon_bootstrap_alert001.html#___sec4"> Going deeper environments </a></li>
+     <!-- navigation toc: " The end " --> <li> &nbsp;  <a href="._admon_bootstrap_alert001.html#___sec5"> The end </a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<div class="container">
+
+<a name="part0001"></a>
+<!-- !split -->
+
+<h2>Introduction  <a name="___sec0"></a></h2>
+First some ordinary text to compare font sizes in admonitions
+and the surrounding text.
+
+<h3>Code  <a name="___sec1"></a></h3>
+
+<p>
+Need some code outside admons for color and font comparisons:
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">some_code</span>(x):
+    <span style="color: #008000; font-weight: bold">return</span> sin(x)<span style="color: #666666">*</span>exp(<span style="color: #666666">1-</span>x)
+</pre></div>
+<p>
+And some plain text verbatim:
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">x=1.0 y=0.9 z=0.4
+x=1.1 y=0.3 z=0.1
+</pre></div>
+
+<h3>Quotes and boxes  <a name="___sec2"></a></h3>
+
+<p>
+Here is a plain quote environment.
+
+<p>
+<blockquote>
+    Sayre's law states that
+    "in any dispute the intensity of feeling is inversely
+    proportional to the value of the issues at stake." <br />
+    By way of corollary, it adds: <br />
+    "That is why academic politics are so bitter." <br />
+    <em>Source</em>: <a href="http://en.wikipedia.org/wiki/Sayre's_law" target="_self">wikipedia</a>
+</blockquote>
+
+
+<p>
+Does quotes with title also work? No...cannot work in LaTeX and HTML
+and then it does not make sense to support it.
+
+<p>
+A plain <em>box</em> is sometimes useful. Let's show it here for comparison
+with admons (especially the block admon has much in common with a box).
+The box is more aimed at framing a law or an equation.
+
+<p>
+First a simple block with text, an equation, and a list:
+
+<p>
+
+<!-- begin box -->
+<div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px;">
+A generic equation
+
+<p>
+$$ f(x) = 0 $$
+
+must be solved by a numerical method, such as
+
+<p>
+
+<ul>
+ <li> Newton's method</li>
+ <li> The Bisection method</li>
+ <li> Fixed-point (Picard) iteration by rewriting \( f(x)=x - g(x) \)</li>
+ <li> The Secant method</li>
+</ul>
+</div>
+<!-- end box -->
+
+Now test a box with equation only (note that this line continues the
+box, it is not a new paragraph):
+
+<p>
+
+<!-- begin box -->
+<div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px;">
+$$
+\begin{equation} f(x) = \sin(x)e^{1-x} \end{equation}
+$$
+</div>
+<!-- end box -->
+
+
+<p>
+Let's begin a new paragraph and show a box with code only:
+
+<p>
+
+<!-- begin box -->
+<div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px;">
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">some_code</span>(x):
+    <span style="color: #008000; font-weight: bold">return</span> sin(x)<span style="color: #666666">*</span>exp(<span style="color: #666666">1-</span>x)
+</pre></div>
+<p>
+</div>
+<!-- end box -->
+
+
+<h3>Admonitions  <a name="___sec3"></a></h3>
+
+<p>
+Let us start with a plain warning environment.
+
+<p>
+<div class="alert alert-block alert-danger alert-text-normal"><b>Warning.</b>
+And here is a warning about something to pay attention to. We
+test how the heading behave and add quite some extra texts
+in comparison with the other admons.
+
+<p>
+
+<ul>
+  <li> and a list</li>
+  <li> with items</li>
+</ul>
+
+We continue with more text to see how that affects the layout.
+And more and more text.
+And more and more text.
+And more and more text.
+And more and more text.
+And more and more text.
+And more and more text.
+</div>
+
+
+<p>
+Test warning with title:
+
+<p>
+<div class="alert alert-block alert-danger alert-text-large"><b>Title ending with math \( \sqrt{2}\approx 1.4 \).</b>
+And here comes some text with bad news in larger font.
+
+<p>
+Also some code:
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
+    <span style="color: #008000; font-weight: bold">return</span> x
+</pre></div>
+<p>
+And a complete program
+
+<p>
+
+<!-- code=python (from !bc pypro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&quot;Hello, World!&quot;</span>
+</pre></div>
+<p>
+</div>
+
+
+<p>
+Test warning with large title with math:
+
+<p>
+<div class="alert alert-block alert-danger alert-text-large"><b>Watch out for \( \nabla\cdot\boldsymbol{u}=0 \) equations.</b>
+Divergence freedom is often problematic from a numerical point
+of view.
+</div>
+
+
+<p>
+Then we test a block, which is guaranteed to never have any admon icon.
+
+<p>
+<div class="alert alert-block alert-success alert-text-small"><b>Block with title.</b>
+Here is a block of text with title. It is typeset
+<em>without any icon</em> and is useful when you want some admons with icon
+and some without. With the small font size, as used here, one can have
+more comment-style text or text that really goes deeper or talks
+about fun facts that are not strictly necessary for the main flow
+of understanding.
+</div>
+
+
+<p>
+<div class="alert alert-block alert-success alert-text-normal"><b></b>
+Here is a block of text with no title. As above, it is typeset without any icon
+and is useful when you want some admons with icon and some without.
+</div>
+
+
+<p>
+The next admonition features a title "Note, eventually!" (the comma
+must be removed in the <code>mdfbox</code> admon also in <code>graybox2</code> if
+code is present).
+
+<p>
+<!-- Note that the final ! does not appear in Sphinx and reST since -->
+<!-- those formats automatically add : to the admonition title. -->
+
+<p>
+<div class="alert alert-block alert-success alert-text-illegal-size"><b>Note, eventually!</b>
+Ah, we are soon close to the end (with illegal font size specification!).
+But first a bit of math where we define \( \theta \) and \( \boldsymbol{r} \):
+
+<p>
+$$
+\begin{align*}
+\theta &= q^2,\\
+\boldsymbol{r} &= \varrho\boldsymbol{i}
+\end{align*}
+$$
+</div>
+
+
+<p>
+<!-- Test one word with a number -->
+
+<p>
+<div class="alert alert-block alert-success alert-text-normal"><b>Point1.</b>
+Ah, we are soon close to the end.
+</div>
+
+
+<p>
+<div class="alert alert-block alert-info alert-text-normal"><b>Question.</b>
+So, how many admonition environments does Doconce support?
+</div>
+
+
+<p>
+<div class="alert alert-block alert-info alert-text-normal"><b>Question.</b>
+
+<ol>
+ <li> Once more, how many admonition environments does Doconce support?</li>
+</ol>
+</div>
+
+
+<p>
+<div class="alert alert-block alert-danger alert-text-normal"><b>Tip.</b>
+It is of outmost important to
+
+<p>
+
+<ol>
+<li> stay cool</li>
+<li> read hints and tips carefully</li>
+</ol>
+
+Because here the thing is to do
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">urllib</span>
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">grab</span>(url, filename):
+    urllib<span style="color: #666666">.</span>urlretrieve(url, filename<span style="color: #666666">=</span>filename)
+</pre></div>
+<p>
+</div>
+
+
+<p>
+Next is a warning without a title ("none" implies no title).
+
+<p>
+<div class="alert alert-block alert-danger alert-text-normal"><b></b>
+And here comes some text with bad news.
+</div>
+
+
+<h3>Going deeper environments  <a name="___sec4"></a></h3>
+
+<p>
+Here is a long notice environment with a custom title and much
+text, math and code.
+
+<p>
+<div class="alert alert-block alert-success alert-text-normal"><b>Going deeper.</b>
+We have some equations that should be preceded by much text, so the
+task is to write and write. The number of words, and not the
+meaning, is what counts here. We need desperately to fill up the
+page in the hope that some admonitions will experience a page break,
+which the LaTeX environment should handle with ease.
+
+<p>
+Let us start with some equations:
+
+<p>
+$$
+\begin{align*}
+\frac{Du}{dt} &= 0
+\\
+\frac{1}{2} &= {1/2}\\
+\frac{1}{2}\pmb{x} &= \pmb{n}
+\end{align*}
+$$
+
+
+<p>
+The implementation of such complicated equations in computer
+code is task that this "Going deeper" environment targets.
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">Dudt</span>(u):
+    r <span style="color: #666666">=</span> diff(u, t) <span style="color: #666666">+</span> u<span style="color: #666666">*</span>grad(u)
+    <span style="color: #008000; font-weight: bold">return</span> r
+
+half <span style="color: #666666">=</span> <span style="color: #666666">0.5</span>
+x <span style="color: #666666">=</span> <span style="color: #666666">2*</span>n
+</pre></div>
+<p>
+And some more text that can help going into the next page.
+Longer computer code requires vertical space:
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Diff</span>:
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__init__</span>(<span style="color: #008000">self</span>, f, h<span style="color: #666666">=1E-5</span>):
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>f <span style="color: #666666">=</span> f
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>h <span style="color: #666666">=</span> <span style="color: #008000">float</span>(h)
+
+<span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Forward1</span>(Diff):
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__call__</span>(<span style="color: #008000">self</span>, x):
+        f, h <span style="color: #666666">=</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>f, <span style="color: #008000">self</span><span style="color: #666666">.</span>h
+        <span style="color: #008000; font-weight: bold">return</span> (f(x<span style="color: #666666">+</span>h) <span style="color: #666666">-</span> f(x))<span style="color: #666666">/</span>h
+
+<span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Backward1</span>(Diff):
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__call__</span>(<span style="color: #008000">self</span>, x):
+        f, h <span style="color: #666666">=</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>f, <span style="color: #008000">self</span><span style="color: #666666">.</span>h
+        <span style="color: #008000; font-weight: bold">return</span> (f(x) <span style="color: #666666">-</span> f(x<span style="color: #666666">-</span>h))<span style="color: #666666">/</span>h
+
+<span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Central2</span>(Diff):
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__call__</span>(<span style="color: #008000">self</span>, x):
+        f, h <span style="color: #666666">=</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>f, <span style="color: #008000">self</span><span style="color: #666666">.</span>h
+        <span style="color: #008000; font-weight: bold">return</span> (f(x<span style="color: #666666">+</span>h) <span style="color: #666666">-</span> f(x<span style="color: #666666">-</span>h))<span style="color: #666666">/</span>(<span style="color: #666666">2*</span>h)
+
+<span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Central4</span>(Diff):
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__call__</span>(<span style="color: #008000">self</span>, x):
+        f, h <span style="color: #666666">=</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>f, <span style="color: #008000">self</span><span style="color: #666666">.</span>h
+        <span style="color: #008000; font-weight: bold">return</span> (<span style="color: #666666">4./3</span>)<span style="color: #666666">*</span>(f(x<span style="color: #666666">+</span>h)   <span style="color: #666666">-</span> f(x<span style="color: #666666">-</span>h))  <span style="color: #666666">/</span>(<span style="color: #666666">2*</span>h) <span style="color: #666666">-</span> \
+               (<span style="color: #666666">1./3</span>)<span style="color: #666666">*</span>(f(x<span style="color: #666666">+2*</span>h) <span style="color: #666666">-</span> f(x<span style="color: #666666">-2*</span>h))<span style="color: #666666">/</span>(<span style="color: #666666">4*</span>h)
+
+<span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Central6</span>(Diff):
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__call__</span>(<span style="color: #008000">self</span>, x):
+        f, h <span style="color: #666666">=</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>f, <span style="color: #008000">self</span><span style="color: #666666">.</span>h
+        <span style="color: #008000; font-weight: bold">return</span> (<span style="color: #666666">3./2</span>) <span style="color: #666666">*</span>(f(x<span style="color: #666666">+</span>h)   <span style="color: #666666">-</span> f(x<span style="color: #666666">-</span>h))  <span style="color: #666666">/</span>(<span style="color: #666666">2*</span>h) <span style="color: #666666">-</span> \
+               (<span style="color: #666666">3./5</span>) <span style="color: #666666">*</span>(f(x<span style="color: #666666">+2*</span>h) <span style="color: #666666">-</span> f(x<span style="color: #666666">-2*</span>h))<span style="color: #666666">/</span>(<span style="color: #666666">4*</span>h) <span style="color: #666666">+</span> \
+               (<span style="color: #666666">1./10</span>)<span style="color: #666666">*</span>(f(x<span style="color: #666666">+3*</span>h) <span style="color: #666666">-</span> f(x<span style="color: #666666">-3*</span>h))<span style="color: #666666">/</span>(<span style="color: #666666">6*</span>h)
+
+<span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Forward3</span>(Diff):
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__call__</span>(<span style="color: #008000">self</span>, x):
+        f, h <span style="color: #666666">=</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>f, <span style="color: #008000">self</span><span style="color: #666666">.</span>h
+        <span style="color: #008000; font-weight: bold">return</span> (<span style="color: #666666">-</span>(<span style="color: #666666">1./6</span>)<span style="color: #666666">*</span>f(x<span style="color: #666666">+2*</span>h) <span style="color: #666666">+</span> f(x<span style="color: #666666">+</span>h) <span style="color: #666666">-</span> <span style="color: #666666">0.5*</span>f(x) <span style="color: #666666">-</span> \
+                (<span style="color: #666666">1./3</span>)<span style="color: #666666">*</span>f(x<span style="color: #666666">-</span>h))<span style="color: #666666">/</span>h
+</pre></div>
+<p>
+And then we add a figure too.
+
+<p>
+<center><p><img src="../doc/src/manual/fig/wave1D.png" align="bottom" width=400></p></center>
+</div>
+
+
+<h3>The end  <a name="___sec5"></a></h3>
+
+<p>
+A bit of text before the summary, which we now call "Concluding remarks,
+for the novice",
+just because we can.
+
+<p>
+<div class="alert alert-block alert-warning alert-text-normal"><b>Concluding remarks, for the novice.</b>
+We can summarize the most important things with admons: they have
+a different typesetting, and they may have a symbol.
+Titles should be optional.
+</div>
+
+
+<p>
+<b>Remark.</b>
+The <code>remarks</code> and <code>hint</code> environments are not allowed outside
+exercises (and problems and projects too).
+
+<p>
+<ul class="pager">
+  <li class="previous">
+    <a href="._admon_bootstrap_alert000.html">&larr; Prev</a>
+  </li>
+
+
+</ul>
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+
+</body>
+</html>
+    
+
+
+************** File: ._admon_bootstrap_alert002.html *****************
+NOT FOUND!
 ************** File: admon_mwiki.mwiki *****************
 #TITLE (actually governed by the filename): Testing admons
 
 By '''hpl'''
 ==== Jan 32, 2100 ====
 
+<!-- !split -->
 == Introduction ==
 First some ordinary text to compare font sizes in admonitions
 and the surrounding text.
@@ -49384,6 +50035,8 @@ Testing admons
 
 :Author: hpl
 :Date: Jan 32, 2100
+
+.. !split
 
 Introduction
 ============
@@ -49803,6 +50456,7 @@ hpl
 
 Date: Jan 32, 2100
 
+# !split
 Introduction
 ============
 First some ordinary text to compare font sizes in admonitions
@@ -71361,6 +72015,919 @@ slightly modified \texttt{svmono.cls} and \texttt{t2.sty} files:
 
 \end{document}
 
+************** File: test_boots.do.txt *****************
+TITLE: Test of the Bootstrap style
+
+Doconce can work with Bootstrap HTML styles:
+way:
+
+!bc sys
+Terminal> doconce format html mydoc --html_style=bootswatch --html_admon=bootstrap_panel
+!ec
+
+Here goes optional text.
+
+# A split before the first section will enable a button in the jumbotron
+# for going to the first real page
+
+!split
+========= More details on writing Doconce documents with Bootstrap layout =========
+
+
+======= Demonstrations of admons =======
+
+The Bootstrap/Bootswatch styles support two kinds of admons:
+
+ * alert admons (`bootstrap_alert`) with colored background (default)
+ * panel admon (`bootstrap_panel`) where only the title has colored background
+
+
+Below are some examples on admons.
+
+!bwarning Warning: recall to prefix module functions
+
+!bc ipy
+
+In [1]: import numpy as np
+
+In [2]: x = np.linspace(0, 4*np.pi, 11)
+
+In [3]: y = exp(-0.1*x)*sin(x)
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+<ipython-input-3-c1040545fa6c> in <module>()
+----> 1 y = exp(-0.1*x)*sin(x)
+
+NameError: name 'exp' is not defined
+
+In [4]: y = np.exp(-0.1*x)*np.sin(x)
+
+In [5]: y
+Out[5]:
+array([  0.00000000e+00,   8.38747563e-01,   4.57160372e-01,
+        -4.03174933e-01,  -5.75315545e-01,  -1.30666897e-16,
+         4.47461836e-01,   2.43889614e-01,  -2.15089026e-01,
+        -3.06923992e-01,  -1.39418467e-16])
+!ec
+
+
+This is the admon for warnings or paying attention.
+!ewarning
+
+!bnotice Information
+This is the notice admon with nice-to-have information.
+!enotice
+
+!bquestion Testing the understanding
+How many admon styles are supported by the Doconce Boostrap and Bootswatch
+styles?
+!equestion
+
+!bsummary
+Doconce supports the following elements of Bootstrap elements:
+
+ * Admons
+ * Panels (via admons)
+ * Jumbotron for title and intro
+ * Columns of content (grid structure via the `slidecell` environment)
+ * Tooltips via footnotes
+!esummary
+
+!split
+======= Horizontal alignment of document elements =======
+label{sec:examples}
+
+===== Principles of grid structures =====
+
+The HTML page can feature a grid structure of cells, defined by
+the following syntax in case of a 1x3 grid:
+
+!bc
+# begin-grid-area
+
+|bslidecell 00
+...
+|eslidecell
+
+|bslidecell 01
+...
+|eslidecell
+
+|bslidecell 02
+...
+|eslidecell
+
+# end-grid-area
+!ec
+
+===== Example on a 1x3 grid structure =====
+
+# begin-grid-area
+
+Some text like this is lost.
+
+!bslidecell 00
+__Mathematics.__
+Given a function
+
+!bt
+\[ f(x) = e^{-ax}\sin wx\thinspace .\]
+!et
+Write a program for evaluating $f(x)$, and test the program
+for the value of $f(0)$.
+!eslidecell
+
+!bslidecell 01
+__Implementation.__
+The Python implementation reads
+
+!bc pycod
+from math import exp, sin
+
+def f(x):
+    return exp(-a*x)*sin(w*x)
+!ec
+where `a` and `w` must be *global variables*, initialized in the
+main program.
+!eslidecell
+
+!bslidecell 02
+
+__Computational experiment.__
+With a main program
+
+!bc pycod
+a = 1
+from math import pi
+w = pi
+print f(0)
+!ec
+we can run the program:
+
+!bc sys
+Terminal> python prog.py
+0
+!ec
+!eslidecell
+# end-grid-area
+
+===== Variation of the previous grid structure using panels =====
+
+# Note: panels are realized as admons, using --admon_style=bootstrap_panel
+
+# begin-grid-area
+
+!bslidecell 00
+!bnotice Mathematics
+Given a function
+
+!bt
+\[ f(x) = e^{-ax}\sin wx\thinspace .\]
+!et
+Write a program for evaluating $f(x)$, and test the program
+for the value of $f(0)$.
+!enotice
+!eslidecell
+
+!bslidecell 01
+!bnotice Implementation
+The Python implementation reads
+
+!bc pycod
+from math import exp, sin
+
+def f(x):
+    return exp(-a*x)*sin(w*x)
+!ec
+where `a` and `w` must be *global variables*, initialized in the
+main program.
+!enotice
+!eslidecell
+
+!bslidecell 02
+!bnotice Computational experiment
+With a main program
+
+!bc pycod
+a = 1
+from math import pi
+w = pi
+print f(0)
+!ec
+we can run the program:
+
+!bc sys
+Terminal> python prog.py
+0
+!ec
+!enotice
+!eslidecell
+# end-grid-area
+
+************** File: test_boots.html *****************
+<!DOCTYPE html>
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Test of the Bootstrap style">
+
+
+
+<!-- Bootstrap style: bootswatch_journal -->
+<link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/journal/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<!-- tocinfo
+{'highest level': 0,
+ 'sections': [(' More details on writing Doconce documents with Bootstrap layout ',
+               0,
+               None,
+               '___sec0'),
+              (' Demonstrations of admons ', 1, None, '___sec1'),
+              (' Horizontal alignment of document elements ',
+               1,
+               'sec:examples',
+               'sec:examples'),
+              (' Principles of grid structures ', 2, None, '___sec3'),
+              (' Example on a 1x3 grid structure ', 2, None, '___sec4'),
+              (' Variation of the previous grid structure using panels ',
+               2,
+               None,
+               '___sec5')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+
+<!-- newcommands_bfmath.tex -->
+$$
+\renewcommand{\u}{\pmb{u}}
+
+\newcommand{\xbm}{\boldsymbol{x}}
+\newcommand{\normalvecbm}{\boldsymbol{n}}
+\newcommand{\ubm}{\boldsymbol{u}}
+$$
+
+
+<!-- newcommands_replace.tex -->
+$$
+\newcommand{\x}{\pmb{x}}
+\newcommand{\normalvec}{\pmb{n}}
+\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
+\newcommand{\halfi}{1/2}
+\newcommand{\half}{\frac{1}{2}}
+\newcommand{\report}{test report}
+$$
+
+
+
+
+    
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="test_boots.html">Test of the Bootstrap style</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: " More details on writing Doconce documents with Bootstrap layout " --> <li>  <a href="._test_boots001.html#___sec0"> More details on writing Doconce documents with Bootstrap layout </a></li>
+     <!-- navigation toc: " Demonstrations of admons " --> <li> &nbsp;  <a href="._test_boots001.html#___sec1"> Demonstrations of admons </a></li>
+     <!-- navigation toc: " Horizontal alignment of document elements " --> <li> &nbsp;  <a href="._test_boots002.html#sec:examples"> Horizontal alignment of document elements </a></li>
+     <!-- navigation toc: " Principles of grid structures " --> <li> &nbsp; &nbsp;  <a href="._test_boots002.html#___sec3"> Principles of grid structures </a></li>
+     <!-- navigation toc: " Example on a 1x3 grid structure " --> <li> &nbsp; &nbsp;  <a href="._test_boots002.html#___sec4"> Example on a 1x3 grid structure </a></li>
+     <!-- navigation toc: " Variation of the previous grid structure using panels " --> <li> &nbsp; &nbsp;  <a href="._test_boots002.html#___sec5"> Variation of the previous grid structure using panels </a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<div class="container">
+
+<a name="part0000"></a>
+<!-- ------------------- main content ---------------------- -->
+
+
+<title>Test of the Bootstrap style</title>
+
+<div class="jumbotron">
+<center><h1>Test of the Bootstrap style</h1></center>  <!-- document title -->
+
+<p>
+Doconce can work with Bootstrap HTML styles:
+way:
+
+<p>
+
+<!-- code=console (from !bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; doconce format html mydoc --html_style=bootswatch --html_admon=bootstrap_panel</span>
+</pre></div>
+<p>
+Here goes optional text.
+
+<p>
+<!-- A split before the first section will enable a button in the jumbotron -->
+<!-- for going to the first real page -->
+
+<p>
+
+
+<p><a href="._test_boots001.html" class="btn btn-primary btn-lg">Read &raquo;</a></p>
+
+
+</div> <!-- end jumbotron -->
+
+<p>
+<ul class="pager">
+
+  <li class="next">
+    <a href="._test_boots001.html">Next &rarr;</a>
+  </li>
+
+</ul>
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+
+</body>
+</html>
+    
+
+
+************** File: ._test_boots001.html *****************
+<!DOCTYPE html>
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Test of the Bootstrap style">
+
+
+
+<!-- Bootstrap style: bootswatch_journal -->
+<link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/journal/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<!-- tocinfo
+{'highest level': 0,
+ 'sections': [(' More details on writing Doconce documents with Bootstrap layout ',
+               0,
+               None,
+               '___sec0'),
+              (' Demonstrations of admons ', 1, None, '___sec1'),
+              (' Horizontal alignment of document elements ',
+               1,
+               'sec:examples',
+               'sec:examples'),
+              (' Principles of grid structures ', 2, None, '___sec3'),
+              (' Example on a 1x3 grid structure ', 2, None, '___sec4'),
+              (' Variation of the previous grid structure using panels ',
+               2,
+               None,
+               '___sec5')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+
+<!-- newcommands_bfmath.tex -->
+$$
+\renewcommand{\u}{\pmb{u}}
+
+\newcommand{\xbm}{\boldsymbol{x}}
+\newcommand{\normalvecbm}{\boldsymbol{n}}
+\newcommand{\ubm}{\boldsymbol{u}}
+$$
+
+
+<!-- newcommands_replace.tex -->
+$$
+\newcommand{\x}{\pmb{x}}
+\newcommand{\normalvec}{\pmb{n}}
+\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
+\newcommand{\halfi}{1/2}
+\newcommand{\half}{\frac{1}{2}}
+\newcommand{\report}{test report}
+$$
+
+
+
+
+    
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="test_boots.html">Test of the Bootstrap style</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: " More details on writing Doconce documents with Bootstrap layout " --> <li>  <a href="._test_boots001.html#___sec0"> More details on writing Doconce documents with Bootstrap layout </a></li>
+     <!-- navigation toc: " Demonstrations of admons " --> <li> &nbsp;  <a href="._test_boots001.html#___sec1"> Demonstrations of admons </a></li>
+     <!-- navigation toc: " Horizontal alignment of document elements " --> <li> &nbsp;  <a href="._test_boots002.html#sec:examples"> Horizontal alignment of document elements </a></li>
+     <!-- navigation toc: " Principles of grid structures " --> <li> &nbsp; &nbsp;  <a href="._test_boots002.html#___sec3"> Principles of grid structures </a></li>
+     <!-- navigation toc: " Example on a 1x3 grid structure " --> <li> &nbsp; &nbsp;  <a href="._test_boots002.html#___sec4"> Example on a 1x3 grid structure </a></li>
+     <!-- navigation toc: " Variation of the previous grid structure using panels " --> <li> &nbsp; &nbsp;  <a href="._test_boots002.html#___sec5"> Variation of the previous grid structure using panels </a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<div class="container">
+
+<a name="part0001"></a>
+<!-- !split -->
+
+
+<div class="page-header">
+  <h1>More details on writing Doconce documents with Bootstrap layout  <a name="___sec0"></a></h1>
+</div>
+
+<h2>Demonstrations of admons  <a name="___sec1"></a></h2>
+
+<p>
+The Bootstrap/Bootswatch styles support two kinds of admons:
+
+<p>
+
+<ul>
+ <li> alert admons (<code>bootstrap_alert</code>) with colored background (default)</li>
+ <li> panel admon (<code>bootstrap_panel</code>) where only the title has colored background</li>
+</ul>
+
+Below are some examples on admons.
+
+<p>
+<div class="panel panel-warning">
+  <div class="panel-heading">
+  <h3 class="panel-title">Warning: recall to prefix module functions</h3>
+  </div>
+<div class="panel-body">
+
+<p>
+
+<!-- code=ipython (from !bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">In [1]: </span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+
+<span style="color: #000080; font-weight: bold">In [2]: </span>x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0</span>, <span style="color: #666666">4*</span>np<span style="color: #666666">.</span>pi, <span style="color: #666666">11</span>)
+
+<span style="color: #000080; font-weight: bold">In [3]: </span>y <span style="color: #666666">=</span> exp(<span style="color: #666666">-0.1*</span>x)<span style="color: #666666">*</span>sin(x)
+<span style="color: #888888">---------------------------------------------------------------------------</span>
+<span style="color: #888888">NameError                                 Traceback (most recent call last)</span>
+<span style="color: #888888">&lt;ipython-input-3-c1040545fa6c&gt; in &lt;module&gt;()</span>
+<span style="color: #888888">----&gt; 1 y = exp(-0.1*x)*sin(x)</span>
+
+<span style="color: #888888">NameError: name &#39;exp&#39; is not defined</span>
+
+<span style="color: #000080; font-weight: bold">In [4]: </span>y <span style="color: #666666">=</span> np<span style="color: #666666">.</span>exp(<span style="color: #666666">-0.1*</span>x)<span style="color: #666666">*</span>np<span style="color: #666666">.</span>sin(x)
+
+<span style="color: #000080; font-weight: bold">In [5]: </span>y
+<span style="color: #888888">Out[5]:</span>
+<span style="color: #888888">array([  0.00000000e+00,   8.38747563e-01,   4.57160372e-01,</span>
+<span style="color: #888888">        -4.03174933e-01,  -5.75315545e-01,  -1.30666897e-16,</span>
+<span style="color: #888888">         4.47461836e-01,   2.43889614e-01,  -2.15089026e-01,</span>
+<span style="color: #888888">        -3.06923992e-01,  -1.39418467e-16])</span>
+</pre></div>
+<p>
+This is the admon for warnings or paying attention.
+</div>
+</div>
+
+
+<p>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+  <h3 class="panel-title">Information</h3>
+  </div>
+<div class="panel-body">
+This is the notice admon with nice-to-have information.
+</div>
+</div>
+
+
+<p>
+<div class="panel panel-success">
+  <div class="panel-heading">
+  <h3 class="panel-title">Testing the understanding</h3>
+  </div>
+<div class="panel-body">
+How many admon styles are supported by the Doconce Boostrap and Bootswatch
+styles?
+</div>
+</div>
+
+
+<p>
+<div class="panel panel-danger">
+  <div class="panel-heading">
+  <h3 class="panel-title">Summary</h3>
+  </div>
+<div class="panel-body">
+Doconce supports the following elements of Bootstrap elements:
+
+<p>
+
+<ul>
+ <li> Admons</li>
+ <li> Panels (via admons)</li>
+ <li> Jumbotron for title and intro</li>
+ <li> Columns of content (grid structure via the <code>slidecell</code> environment)</li>
+ <li> Tooltips via footnotes</li>
+</ul>
+</div>
+</div>
+
+
+<p>
+<p>
+<ul class="pager">
+  <li class="previous">
+    <a href="._test_boots000.html">&larr; Prev</a>
+  </li>
+
+  <li class="next">
+    <a href="._test_boots002.html">Next &rarr;</a>
+  </li>
+
+</ul>
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+
+</body>
+</html>
+    
+
+
+************** File: ._test_boots002.html *****************
+<!DOCTYPE html>
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Test of the Bootstrap style">
+
+
+
+<!-- Bootstrap style: bootswatch_journal -->
+<link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/journal/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<!-- tocinfo
+{'highest level': 0,
+ 'sections': [(' More details on writing Doconce documents with Bootstrap layout ',
+               0,
+               None,
+               '___sec0'),
+              (' Demonstrations of admons ', 1, None, '___sec1'),
+              (' Horizontal alignment of document elements ',
+               1,
+               'sec:examples',
+               'sec:examples'),
+              (' Principles of grid structures ', 2, None, '___sec3'),
+              (' Example on a 1x3 grid structure ', 2, None, '___sec4'),
+              (' Variation of the previous grid structure using panels ',
+               2,
+               None,
+               '___sec5')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+
+<!-- newcommands_bfmath.tex -->
+$$
+\renewcommand{\u}{\pmb{u}}
+
+\newcommand{\xbm}{\boldsymbol{x}}
+\newcommand{\normalvecbm}{\boldsymbol{n}}
+\newcommand{\ubm}{\boldsymbol{u}}
+$$
+
+
+<!-- newcommands_replace.tex -->
+$$
+\newcommand{\x}{\pmb{x}}
+\newcommand{\normalvec}{\pmb{n}}
+\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
+\newcommand{\halfi}{1/2}
+\newcommand{\half}{\frac{1}{2}}
+\newcommand{\report}{test report}
+$$
+
+
+
+
+    
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="test_boots.html">Test of the Bootstrap style</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: " More details on writing Doconce documents with Bootstrap layout " --> <li>  <a href="._test_boots001.html#___sec0"> More details on writing Doconce documents with Bootstrap layout </a></li>
+     <!-- navigation toc: " Demonstrations of admons " --> <li> &nbsp;  <a href="._test_boots001.html#___sec1"> Demonstrations of admons </a></li>
+     <!-- navigation toc: " Horizontal alignment of document elements " --> <li> &nbsp;  <a href="._test_boots002.html#sec:examples"> Horizontal alignment of document elements </a></li>
+     <!-- navigation toc: " Principles of grid structures " --> <li> &nbsp; &nbsp;  <a href="._test_boots002.html#___sec3"> Principles of grid structures </a></li>
+     <!-- navigation toc: " Example on a 1x3 grid structure " --> <li> &nbsp; &nbsp;  <a href="._test_boots002.html#___sec4"> Example on a 1x3 grid structure </a></li>
+     <!-- navigation toc: " Variation of the previous grid structure using panels " --> <li> &nbsp; &nbsp;  <a href="._test_boots002.html#___sec5"> Variation of the previous grid structure using panels </a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<div class="container">
+
+<a name="part0002"></a>
+<!-- !split -->
+
+<h2>Horizontal alignment of document elements <a name="sec:examples"></a></h2>
+
+<h3>Principles of grid structures  <a name="___sec3"></a></h3>
+
+<p>
+The HTML page can feature a grid structure of cells, defined by
+the following syntax in case of a 1x3 grid:
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"># begin-grid-area
+
+!bslidecell 00
+...
+!eslidecell
+
+!bslidecell 01
+...
+!eslidecell
+
+!bslidecell 02
+...
+!eslidecell
+
+# end-grid-area
+</pre></div>
+
+<h3>Example on a 1x3 grid structure  <a name="___sec4"></a></h3>
+
+<p>
+<div class="row"> <!-- begin cell row -->
+  <div class="col-sm-4">
+<b>Mathematics.</b>
+Given a function
+
+<p>
+$$ f(x) = e^{-ax}\sin wx\thinspace .$$
+
+Write a program for evaluating \( f(x) \), and test the program
+for the value of \( f(0) \).
+  </div> <!-- column col-sm-4 -->
+  <div class="col-sm-4">
+<b>Implementation.</b>
+The Python implementation reads
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> exp, sin
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
+    <span style="color: #008000; font-weight: bold">return</span> exp(<span style="color: #666666">-</span>a<span style="color: #666666">*</span>x)<span style="color: #666666">*</span>sin(w<span style="color: #666666">*</span>x)
+</pre></div>
+<p>
+where <code>a</code> and <code>w</code> must be <em>global variables</em>, initialized in the
+main program.
+  </div> <!-- column col-sm-4 -->
+  <div class="col-sm-4">
+
+<p>
+<b>Computational experiment.</b>
+With a main program
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a <span style="color: #666666">=</span> <span style="color: #666666">1</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> pi
+w <span style="color: #666666">=</span> pi
+<span style="color: #008000; font-weight: bold">print</span> f(<span style="color: #666666">0</span>)
+</pre></div>
+<p>
+we can run the program:
+
+<p>
+
+<!-- code=console (from !bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; python prog.py</span>
+<span style="color: #888888">0</span>
+</pre></div>
+<p>
+  </div> <!-- column col-sm-4 -->
+</div> <!-- end cell row -->
+
+<h3>Variation of the previous grid structure using panels  <a name="___sec5"></a></h3>
+
+<p>
+<!-- Note: panels are realized as admons, using --admon_style=bootstrap_panel -->
+
+<p>
+<div class="row"> <!-- begin cell row -->
+  <div class="col-sm-4">
+<div class="panel panel-primary">
+  <div class="panel-heading">
+  <h3 class="panel-title">Mathematics</h3>
+  </div>
+<div class="panel-body">
+Given a function
+
+<p>
+$$ f(x) = e^{-ax}\sin wx\thinspace .$$
+
+Write a program for evaluating \( f(x) \), and test the program
+for the value of \( f(0) \).
+</div>
+</div>
+
+  </div> <!-- column col-sm-4 -->
+  <div class="col-sm-4">
+<div class="panel panel-primary">
+  <div class="panel-heading">
+  <h3 class="panel-title">Implementation</h3>
+  </div>
+<div class="panel-body">
+The Python implementation reads
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> exp, sin
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
+    <span style="color: #008000; font-weight: bold">return</span> exp(<span style="color: #666666">-</span>a<span style="color: #666666">*</span>x)<span style="color: #666666">*</span>sin(w<span style="color: #666666">*</span>x)
+</pre></div>
+<p>
+where <code>a</code> and <code>w</code> must be <em>global variables</em>, initialized in the
+main program.
+</div>
+</div>
+
+  </div> <!-- column col-sm-4 -->
+  <div class="col-sm-4">
+<div class="panel panel-primary">
+  <div class="panel-heading">
+  <h3 class="panel-title">Computational experiment</h3>
+  </div>
+<div class="panel-body">
+With a main program
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a <span style="color: #666666">=</span> <span style="color: #666666">1</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> pi
+w <span style="color: #666666">=</span> pi
+<span style="color: #008000; font-weight: bold">print</span> f(<span style="color: #666666">0</span>)
+</pre></div>
+<p>
+we can run the program:
+
+<p>
+
+<!-- code=console (from !bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; python prog.py</span>
+<span style="color: #888888">0</span>
+</pre></div>
+<p>
+</div>
+</div>
+
+  </div> <!-- column col-sm-4 -->
+</div> <!-- end cell row -->
+
+
+<p>
+<ul class="pager">
+  <li class="previous">
+    <a href="._test_boots001.html">&larr; Prev</a>
+  </li>
+
+
+</ul>
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+
+</body>
+</html>
+    
+
+
 ************** File: tmp_Doconce.do.txt *****************
 
 TITLE: My Test of Class Doconce
@@ -86275,7 +87842,7 @@ Package hyperref Warning: old loe file detected, not used; run LaTeX again.
 
 (./testdoc.out.pyg [3]) (./testdoc.out.pyg) (./testdoc.out.pyg)
 (./testdoc.out.pyg) (./testdoc.out.pyg [4]) (./testdoc.out.pyg)
-(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg [5]) [6]
+(./testdoc.out.pyg) (./testdoc.out.pyg) [5] (./testdoc.out.pyg) [6]
 
 
 ...rest of part of LaTeX line number...
@@ -86283,17 +87850,18 @@ Package hyperref Warning: old loe file detected, not used; run LaTeX again.
 
 
 
-<../doc/src/manual/fig/wave1D.pdf, id=81, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=77, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
-[7 <../doc/src/manual/fig/wave1D.pdf>]
+[7]
+
+[8 <../doc/src/manual/fig/wave1D.pdf>]
 
 
 
-<../doc/src/manual/fig/wave1D.png, id=100, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=104, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=102, 578.16pt x 433.62pt>
-<use downloaded_figures/f_plot.png> [8] [9 <../doc/src/manual/fig/wave1D.png> <
-./downloaded_figures/f_plot.png>]
+<downloaded_figures/f_plot.png, id=106, 578.16pt x 433.62pt>
+<use downloaded_figures/f_plot.png> [9 <../doc/src/manual/fig/wave1D.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -86318,7 +87886,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
-
+[10 <./downloaded_figures/f_plot.png>]
 Underfull \hbox (badness 3291) 
 []\T1/lmr/m/n/8 (+20) test \T1/lmtt/m/n/8 two \T1/lmr/m/n/8 (+20) (sep-a-rate) 
 \T1/lmtt/m/n/8 verbatim
@@ -86331,7 +87899,7 @@ Underfull \hbox (badness 3291)
 
 
 
-[10] [11]
+[11]
 <../doc/src/manual/mov/wave_frames/frame_0080.png, id=137, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
 <../doc/src/manual/mov/wave_frames/frame_0085.png, id=138, 586.8324pt x 442.292
@@ -86364,126 +87932,126 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
-
-
-t line 991.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-t line 1000.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-t line 1004.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-.
-
-
-
-...rest of part of LaTeX line number...
-
 [12 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
 ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
 ../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/mov/wave_f
 rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
+
+
+t line 1013.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+t line 1022.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+t line 1026.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+.
+
+
+
+...rest of part of LaTeX line number...
+
+[13]
 Overfull \hbox (5.03835pt too wide) 
 [][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
 %26+engineering/book/978-3-642-23098-1| 
-[13]
 
 
 .
@@ -86507,16 +88075,16 @@ Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on .
 
-
-
-
-
-
-
-
-
-
 [14]
+
+
+
+
+
+
+
+
+
 
 
 ...rest of part of LaTeX line number...
@@ -86536,6 +88104,7 @@ Package amsmath Warning: Foreign command \over;
 
 
 
+[15]
 
 
 
@@ -86553,7 +88122,7 @@ Package amsmath Warning: Foreign command \over;
 
 ...rest of part of LaTeX line number...
 
-[15] (./testdoc.out.pyg) [16] (./testdoc.out.pyg) [17] [18]
+(./testdoc.out.pyg) [16] (./testdoc.out.pyg) [17] [18] [19]
 
 
 .
@@ -86579,19 +88148,19 @@ Package amsmath Warning: Foreign command \over;
 
 
 No file testdoc.bbl.
-[19]
-
-
-...rest of part of LaTeX line number...
-
 [20]
 
 
 ...rest of part of LaTeX line number...
 
 [21]
+
+
+...rest of part of LaTeX line number...
+
+[22]
 No file testdoc.ind.
-[22] (./testdoc.aux)
+[23] (./testdoc.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -86824,7 +88393,7 @@ f/fonts/type1/public/lm/lmss8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy1
 hare/texmf/fonts/type1/public/lm/lmtti10.pfb></usr/share/texlive/texmf-dist/fon
 ts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/font
 s/type1/urw/palatino/uplr8a.pfb>
-Output written on testdoc.pdf (22 pages, ).
+Output written on testdoc.pdf (23 pages, ).
 Transcript written on testdoc.log.
 + '[' 0 -ne 0 ']'
 + pdflatex -shell-escape testdoc
@@ -87050,16 +88619,17 @@ Writing index file testdoc.idx
 dmap/pdftex.map}] (./testdoc.toc) (./testdoc.loe [2]) (./testdoc.tdo) [3]
 
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg
-[5]) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg)
-(./testdoc.out.pyg [6]) [7]
-<../doc/src/manual/fig/wave1D.pdf, id=249, 586.83241pt x 442.29242pt>
+[5]) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) [6]
+(./testdoc.out.pyg) [7]
+<../doc/src/manual/fig/wave1D.pdf, id=245, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
-[8 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=267, 586.8324pt x 442.2924pt>
+[8]
+
+[9 <../doc/src/manual/fig/wave1D.pdf>]
+<../doc/src/manual/fig/wave1D.png, id=271, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=269, 578.16pt x 433.62pt>
-<use downloaded_figures/f_plot.png> [9] [10 <../doc/src/manual/fig/wave1D.png> 
-<./downloaded_figures/f_plot.png>]
+<downloaded_figures/f_plot.png, id=273, 578.16pt x 433.62pt>
+<use downloaded_figures/f_plot.png> [10 <../doc/src/manual/fig/wave1D.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -87084,7 +88654,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
-
+[11 <./downloaded_figures/f_plot.png>]
 Underfull \hbox (badness 3291) 
 []\T1/lmr/m/n/8 (+20) test \T1/lmtt/m/n/8 two \T1/lmr/m/n/8 (+20) (sep-a-rate) 
 \T1/lmtt/m/n/8 verbatim
@@ -87097,7 +88667,7 @@ Underfull \hbox (badness 3291)
 
 
 
-[11] [12]
+[12]
 <../doc/src/manual/mov/wave_frames/frame_0080.png, id=299, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
 <../doc/src/manual/mov/wave_frames/frame_0085.png, id=300, 586.8324pt x 442.292
@@ -87130,136 +88700,136 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
-
-
-t line 991.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-t line 1000.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-t line 1004.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-.
-
-
-
-...rest of part of LaTeX line number...
-
 [13 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
 ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
 ../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/mov/wave_f
 rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
+
+
+t line 1013.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+t line 1022.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+t line 1026.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+.
+
+
+
+...rest of part of LaTeX line number...
+
+[14]
 Overfull \hbox (5.03835pt too wide) 
 [][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
 %26+engineering/book/978-3-642-23098-1| 
-[14]
 
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on .
 
-[15] [16] (./testdoc.out.pyg) [17] (./testdoc.out.pyg) [18] [19]
+[15] [16] (./testdoc.out.pyg) [17] (./testdoc.out.pyg) [18] [19] [20]
 No file testdoc.bbl.
-[20] [21] [22]
+[21] [22] [23]
 No file testdoc.ind.
-[23] (./testdoc.aux)
+[24] (./testdoc.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -87490,7 +89060,7 @@ hare/texmf/fonts/type1/public/lm/lmtt9.pfb></usr/share/texmf/fonts/type1/public
 /lm/lmtti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symb
 ols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.p
 fb>
-Output written on testdoc.pdf (23 pages, ).
+Output written on testdoc.pdf (24 pages, ).
 Transcript written on testdoc.log.
 + makeindex testdoc
 This is makeindex, version 2.15 [TeX Live 2013] (kpathsea + Thai support).
@@ -87733,16 +89303,17 @@ Writing index file testdoc.idx
 dmap/pdftex.map}] (./testdoc.toc) (./testdoc.loe [2]) (./testdoc.tdo) [3]
 
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg
-[5]) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg)
-(./testdoc.out.pyg [6]) [7]
-<../doc/src/manual/fig/wave1D.pdf, id=249, 586.83241pt x 442.29242pt>
+[5]) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) [6]
+(./testdoc.out.pyg) [7]
+<../doc/src/manual/fig/wave1D.pdf, id=245, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
-[8 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=267, 586.8324pt x 442.2924pt>
+[8]
+
+[9 <../doc/src/manual/fig/wave1D.pdf>]
+<../doc/src/manual/fig/wave1D.png, id=271, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=269, 578.16pt x 433.62pt>
-<use downloaded_figures/f_plot.png> [9] [10 <../doc/src/manual/fig/wave1D.png> 
-<./downloaded_figures/f_plot.png>]
+<downloaded_figures/f_plot.png, id=273, 578.16pt x 433.62pt>
+<use downloaded_figures/f_plot.png> [10 <../doc/src/manual/fig/wave1D.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -87767,7 +89338,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
-
+[11 <./downloaded_figures/f_plot.png>]
 Underfull \hbox (badness 3291) 
 []\T1/lmr/m/n/8 (+20) test \T1/lmtt/m/n/8 two \T1/lmr/m/n/8 (+20) (sep-a-rate) 
 \T1/lmtt/m/n/8 verbatim
@@ -87780,7 +89351,7 @@ Underfull \hbox (badness 3291)
 
 
 
-[11] [12]
+[12]
 <../doc/src/manual/mov/wave_frames/frame_0080.png, id=299, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
 <../doc/src/manual/mov/wave_frames/frame_0085.png, id=300, 586.8324pt x 442.292
@@ -87813,133 +89384,133 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
-
-
-t line 991.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-t line 1000.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-t line 1004.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-.
-
-
-
-...rest of part of LaTeX line number...
-
 [13 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
 ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
 ../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/mov/wave_f
 rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
+
+
+t line 1013.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+t line 1022.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+t line 1026.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+.
+
+
+
+...rest of part of LaTeX line number...
+
+[14]
 Overfull \hbox (5.03835pt too wide) 
 [][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
 %26+engineering/book/978-3-642-23098-1| 
-[14]
 
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on .
 
-[15] [16] (./testdoc.out.pyg) [17] (./testdoc.out.pyg) [18] [19] (./testdoc.bbl
- [20] [21]) [22] [23] [24] (./testdoc.ind [25]
+[15] [16] (./testdoc.out.pyg) [17] (./testdoc.out.pyg) [18] [19] [20]
+(./testdoc.bbl [21] [22]) [23] [24] (./testdoc.ind [25]
 Overfull \hbox (9.21497pt too wide) 
 []\T1/lmr/m/n/10 (-20) test \T1/lmtt/m/n/10 two \T1/lmr/m/n/10 (-20) (sep-a-rat
 e) \T1/lmtt/m/n/10 verbatim expressions \T1/lmr/m/n/10 (-20) which
@@ -88401,16 +89972,17 @@ Writing index file testdoc.idx
 dmap/pdftex.map}] (./testdoc.toc) (./testdoc.loe [2]) (./testdoc.tdo) [3]
 
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg
-[5]) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg)
-(./testdoc.out.pyg [6]) [7]
-<../doc/src/manual/fig/wave1D.pdf, id=249, 586.83241pt x 442.29242pt>
+[5]) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) [6]
+(./testdoc.out.pyg) [7]
+<../doc/src/manual/fig/wave1D.pdf, id=245, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
-[8 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=267, 586.8324pt x 442.2924pt>
+[8]
+
+[9 <../doc/src/manual/fig/wave1D.pdf>]
+<../doc/src/manual/fig/wave1D.png, id=271, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=269, 578.16pt x 433.62pt>
-<use downloaded_figures/f_plot.png> [9] [10 <../doc/src/manual/fig/wave1D.png> 
-<./downloaded_figures/f_plot.png>]
+<downloaded_figures/f_plot.png, id=273, 578.16pt x 433.62pt>
+<use downloaded_figures/f_plot.png> [10 <../doc/src/manual/fig/wave1D.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -88435,7 +90007,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
-
+[11 <./downloaded_figures/f_plot.png>]
 Underfull \hbox (badness 3291) 
 []\T1/lmr/m/n/8 (+20) test \T1/lmtt/m/n/8 two \T1/lmr/m/n/8 (+20) (sep-a-rate) 
 \T1/lmtt/m/n/8 verbatim
@@ -88448,7 +90020,7 @@ Underfull \hbox (badness 3291)
 
 
 
-[11] [12]
+[12]
 <../doc/src/manual/mov/wave_frames/frame_0080.png, id=299, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
 <../doc/src/manual/mov/wave_frames/frame_0085.png, id=300, 586.8324pt x 442.292
@@ -88485,17 +90057,17 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
 ../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/mov/wave_f
 rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
+[14]
 Overfull \hbox (5.03835pt too wide) 
 [][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
 %26+engineering/book/978-3-642-23098-1| 
-[14]
 
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on .
 
-[15] [16] (./testdoc.out.pyg) [17] (./testdoc.out.pyg) [18] [19] (./testdoc.bbl
- [20] [21]) [22] [23] [24] (./testdoc.ind [25]
+[15] [16] (./testdoc.out.pyg) [17] (./testdoc.out.pyg) [18] [19] [20]
+(./testdoc.bbl [21] [22]) [23] [24] (./testdoc.ind [25]
 Overfull \hbox (9.21497pt too wide) 
 []\T1/lmr/m/n/10 (-20) test \T1/lmtt/m/n/10 two \T1/lmr/m/n/10 (-20) (sep-a-rat
 e) \T1/lmtt/m/n/10 verbatim expressions \T1/lmr/m/n/10 (-20) which
@@ -89075,10 +90647,10 @@ reading sources... [100%] index
         plot(x, y)
         xlabel('x'); ylabel('y')
         show()
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:609: WARNING: Inline interpreted text or phrase reference start-string without end-string.
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:326: ERROR: Undefined substitution referenced: "nbsp".
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:305: ERROR: Too many autonumbered footnote references: only 0 corresponding footnotes available.
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:305: ERROR: Unknown target name: "example-of-the-third-footnote".
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:633: WARNING: Inline interpreted text or phrase reference start-string without end-string.
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:350: ERROR: Undefined substitution referenced: "nbsp".
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:329: ERROR: Too many autonumbered footnote references: only 0 corresponding footnotes available.
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:329: ERROR: Unknown target name: "example-of-the-third-footnote".
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:None: WARNING: nonlocal image URI found: https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png
 looking for now-outdated files... none found
 pickling environment... done
@@ -89600,6 +91172,7 @@ output in testdoc.p.tex
 \bcycod (!bc cycod) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
 \bfcod (!bc fcod) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
 \bsys (!bc sys) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
+\bipy (!bc ipy) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
 \bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
 \bhtmlcod (!bc htmlcod) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
 output in testdoc.tex
@@ -93118,6 +94691,9 @@ figure file ../doc/src/manual/fig/wave1D:
 output in admon.html
 + '[' 0 -ne 0 ']'
 + cp admon.html admon_bootstrap_alert.html
++ doconce split_html admon_bootstrap_alert.html
+admon_bootstrap_alert.html now links to the generated files
+._admon_bootstrap_alert000.html, ._admon_bootstrap_alert001.html
 + system doconce format html admon --html_style=bootswatch --pygments_html_style=default --html_admon=bootstrap_panel
 + doconce format html admon --html_style=bootswatch --pygments_html_style=default --html_admon=bootstrap_panel
 running preprocess -DFORMAT=html -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
@@ -93318,11 +94894,10 @@ translating doconce text in tmp_preprocess__admon.do.txt to plain
 output in admon.txt
 + '[' 0 -ne 0 ']'
 + cp admon.txt admon_paragraph.txt
-+ cp -fr admon_apricot.html admon_bootstrap_alert.html admon_bootswatch_panel.html admon_colors.html admon_gray.html admon_lyx.html admon_paragraph.html admon_vagrant.html admon_yellow.html admon_colors1.pdf admon_colors2.pdf admon_graybox2.pdf admon_grayicon.pdf admon_mdfbox.pdf admon_paragraph.pdf admon_yellowicon.pdf admon_mwiki.mwiki admon_paragraph.txt admon_sphinx admon_demo/
++ cp -fr admon_apricot.html admon_bootstrap_alert.html admon_bootswatch_panel.html admon_colors.html admon_gray.html admon_lyx.html admon_paragraph.html admon_vagrant.html admon_yellow.html admon_colors1.pdf admon_colors2.pdf admon_graybox2.pdf admon_grayicon.pdf admon_mdfbox.pdf admon_paragraph.pdf admon_yellowicon.pdf admon_mwiki.mwiki admon_paragraph.txt ._admon_bootstrap_alert000.html ._admon_bootstrap_alert001.html admon_sphinx admon_demo/
 + cd admon_demo
-+ doconce replace ../doc/src/manual/fig/wave1D ../../doc/src/manual/fig/wave1D admon_apricot.html admon_bootstrap_alert.html admon_bootswatch_panel.html admon_colors.html admon_gray.html admon_lyx.html admon_paragraph.html admon_vagrant.html admon_yellow.html
++ doconce replace ../doc/src/manual/fig/wave1D ../../doc/src/manual/fig/wave1D admon_apricot.html admon_bootstrap_alert.html admon_bootswatch_panel.html admon_colors.html admon_gray.html admon_lyx.html admon_paragraph.html admon_vagrant.html admon_yellow.html ._admon_bootstrap_alert000.html ._admon_bootstrap_alert001.html
 replacing ../doc/src/manual/fig/wave1D by ../../doc/src/manual/fig/wave1D in admon_apricot.html
-replacing ../doc/src/manual/fig/wave1D by ../../doc/src/manual/fig/wave1D in admon_bootstrap_alert.html
 replacing ../doc/src/manual/fig/wave1D by ../../doc/src/manual/fig/wave1D in admon_bootswatch_panel.html
 replacing ../doc/src/manual/fig/wave1D by ../../doc/src/manual/fig/wave1D in admon_colors.html
 replacing ../doc/src/manual/fig/wave1D by ../../doc/src/manual/fig/wave1D in admon_gray.html
@@ -93330,13 +94905,16 @@ replacing ../doc/src/manual/fig/wave1D by ../../doc/src/manual/fig/wave1D in adm
 replacing ../doc/src/manual/fig/wave1D by ../../doc/src/manual/fig/wave1D in admon_paragraph.html
 replacing ../doc/src/manual/fig/wave1D by ../../doc/src/manual/fig/wave1D in admon_vagrant.html
 replacing ../doc/src/manual/fig/wave1D by ../../doc/src/manual/fig/wave1D in admon_yellow.html
-+ rm -rf admon_apricot.html.old~~ admon_bootstrap_alert.html.old~~ admon_bootswatch_panel.html.old~~ admon_colors.html.old~~ admon_gray.html.old~~ admon_lyx.html.old~~ admon_paragraph.html.old~~ admon_vagrant.html.old~~ admon_yellow.html.old~~
+replacing ../doc/src/manual/fig/wave1D by ../../doc/src/manual/fig/wave1D in ._admon_bootstrap_alert001.html
++ rm -rf admon_apricot.html.old~~ admon_bootswatch_panel.html.old~~ admon_colors.html.old~~ admon_gray.html.old~~ admon_lyx.html.old~~ admon_paragraph.html.old~~ admon_vagrant.html.old~~ admon_yellow.html.old~~
 + cd ..
 + '[' -d latex_figs ']'
++ system doconce format html test_boots --html_style=bootswatch_journal --pygments_html_style=default --html_admon=bootstrap_panel
 + doconce format html test_boots --html_style=bootswatch_journal --pygments_html_style=default --html_admon=bootstrap_panel
 translating doconce text in test_boots.do.txt to html
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in test_boots.html
++ '[' 0 -ne 0 ']'
 + doconce split_html test_boots.html
 test_boots.html now links to the generated files
 ._test_boots000.html, ._test_boots001.html, ._test_boots002.html

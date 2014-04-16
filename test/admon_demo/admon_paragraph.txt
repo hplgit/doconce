@@ -5,6 +5,7 @@ hpl
 
 Date: Apr 16, 2014
 
+# !split
 Introduction
 ============
 First some ordinary text to compare font sizes in admonitions
