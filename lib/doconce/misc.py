@@ -2313,8 +2313,8 @@ def doconce_html_split(header, parts, footer, basename, filename):
 
 
     # Fix internal links to point to the right splitted file
-    name_pattern = r'<a name="(.+?)"'
-    href_pattern = r'<a href="#(.+?)"'
+    name_pattern = r'<a name="([^"]+?)"'
+    href_pattern = r'<a href="#([^"]+?)"'
     parts_name = [re.findall(name_pattern, ''.join(part)) for part in parts]
     parts_name.append(re.findall(name_pattern, ''.join(header)))
     parts_name.append(re.findall(name_pattern, ''.join(footer)))
@@ -2465,6 +2465,15 @@ def doconce_html_split(header, parts, footer, basename, filename):
         if vagrant or bootstrap:
             # Make navigation arrows
             prev_ = next_ = ''
+            # Add jumbotron button reference on first page
+            if pn == 0:
+                for i in range(len(part)):
+                    if part[i].startswith('<!-- potential-jumbotron-button -->'):
+                        part[i] = part[i].replace(
+                              '<!-- potential-jumbotron-button -->',
+                              '\n\n<p><a href="%s" class="btn btn-primary btn-lg">Read &rquot;</a></p>\n\n' % next_part_filename)
+                        break
+
             if pn > 0:
                prev_ = bootstrap_navigation_prev % (prev_part_filename, "Prev")
             if pn < len(parts)-1:

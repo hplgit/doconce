@@ -262,6 +262,7 @@ def toc2html():
 def html_code(filestr, code_blocks, code_block_types,
               tex_blocks, format):
     """Replace code and LaTeX blocks by html environments."""
+    html_style = option('html_style=', '')
 
     # Mapping from envir (+cod/pro if present) to pygment style
     types2languages = dict(py='python', cy='cython', f='fortran',
@@ -389,7 +390,6 @@ def html_code(filestr, code_blocks, code_block_types,
             pattern = r'^label\{'
             cpattern = re.compile(pattern, re.MULTILINE)
             tex_blocks[i] = cpattern.sub('\\label{', tex_blocks[i])
-
 
     from doconce import debugpr
     debugpr('File before call to insert_code_and_tex (format html):', filestr)
@@ -552,7 +552,7 @@ MathJax.Hub.Config({
 
     # Add header from external template
     template = option('html_template=', default='')
-    if option('html_style=') == 'vagrant':
+    if html_style == 'vagrant':
         # Set template_vagrant.html as template
         if not template:
             print """
@@ -563,7 +563,7 @@ MathJax.Hub.Config({
 """
             _abort()
     if 'template_vagrant.html' in template \
-       and not option('html_style=') == 'vagrant':
+       and not html_style == 'vagrant':
         print """
 *** error: --html_template= with a template based on
     template_vagrant.html requires --html_style=vagrant
@@ -616,7 +616,7 @@ MathJax.Hub.Config({
 
         # Make toc for navigation
         toc_html = ''
-        if option('html_style=') in ('vagrant', 'bootstrap'):
+        if html_style in ('vagrant', 'bootstrap'):
             toc_html = toc2html()
         # toc_html lacks formatting, run some basic formatting here
         tags = 'emphasize', 'bold', 'math', 'verbatim', 'colortext'
@@ -671,7 +671,6 @@ MathJax.Hub.Config({
             print '    but no date is specified in the document'
         filestr = template % variables
 
-    html_style = option('html_style=', '')
     if html_style.startswith('boots'):
         # Change chapter headings to page
         filestr = re.sub(r'<h1>(.+?)</h1> <!-- chapter heading -->',
@@ -686,23 +685,19 @@ MathJax.Hub.Config({
         if '***TABLE_OF_CONTENTS***' in filestr:
             filestr = filestr.replace('***TABLE_OF_CONTENTS***', toc2html())
         # Fix jumbotron for title, author, date, toc, abstract, intro
-        pattern = r'(<center><h1>[^\n]+</h1></center>[^\n]+document title.+?)(<h\d>[^\n]+?<a name=[^\n]+?</h\d>)'
-        m = re.search(pattern, filestr, flags=re.DOTALL)
+        pattern = r'(^<center><h1>[^\n]+</h1></center>[^\n]+document title.+?)(^<!-- !split -->|^<h[123]>[^\n]+?<a name=[^\n]+?</h[123]>|^<div class="page-header">)'
+        m = re.search(pattern, filestr, flags=re.DOTALL|re.MULTILINE)
         if m:
             # If the user has a !split in the beginning, insert a button
             # to click (typically bootstrap design)
-            button = '\n\n<p><a class="btn btn-primary btn-lg">Read &rquot;</a></p>\n\n' if '!split' in m.group(1) else ''
+            button = '<!-- potential-jumbotron-button -->' \
+                     if '!split' in m.group(1) else ''
             text = '<div class="jumbotron">\n' + m.group(1) + \
-                   button + '\n</div>\n\n' + m.group(2)
-            filestr = re.sub(pattern, text, filestr, flags=re.DOTALL)
-        # Fix slidecells?
-        cells = [(int(s[0]), int(s[1])) for s in
-                 re.findall('!bslidecell +(\d\d)', filestr)]
-        #<div class="row">
-        #<div class="col-sm-4">
-        # when to stop the row? when the row counter is decreasing
-        # stop grid when next line after !eslidecell is not !bslidecell
-
+                   button + '\n</div> <!-- end jumbotron -->\n\n' + m.group(2)
+            filestr = re.sub(pattern, text, filestr, flags=re.DOTALL|re.MULTILINE)
+        # Fix slidecells? Just a start...this is hard...
+        if '<!-- !bslidecell' in filestr:
+            filestr = process_grid_areas(filestr)
 
 
     if MATH_TYPESETTING == 'WordPress':
@@ -738,6 +733,41 @@ MathJax.Hub.Config({
     pattern = r'\s+(?=^<[hH]\d>)'
     filestr = re.sub(pattern, '\n\n', filestr, flags=re.MULTILINE)
 
+    return filestr
+
+def process_grid_areas(filestr):
+    # Extract all cell areas
+    pattern = r'(^<!-- +begin-grid-area +-->(.+?)^<!-- +end-grid-area +-->)'
+    cell_areas = re.findall(pattern, filestr, flags=re.DOTALL|re.MULTILINE)
+    # Work with each cell area
+    for full_text, internal in cell_areas:
+        cell_pos = [(int(p[0]), int(p[1])) for p in
+                    re.findall(r'<!-- !bslidecell +(\d\d)', internal)]
+        print 'XXX internal', internal
+        if cell_pos:
+            # Find the table size
+            num_rows    = max([p[0] for p in cell_pos]) + 1
+            num_columns = max([p[1] for p in cell_pos]) + 1
+            table = [[None]*(num_columns) for j in range(num_rows+1)]
+            # Grab the content of each cell
+            cell_pattern = r'(<!-- !bslidecell +(\d\d) *[.0-9 ]*?-->(.+?)<!-- !eslidecell -->)'
+            cells = re.findall(cell_pattern, internal,
+                               flags=re.DOTALL|re.MULTILINE)
+            # Insert individual cells in table
+            for cell_envir, pos, cell_text in cells:
+                table[int(pos[0])][int(pos[1])] = cell_text
+            # Construct new HTML text by looping over the table
+            # (note that the input might have the cells in arbitrary
+            # order while the output is traversed in correct cell order)
+            new_text = '<div class="row"> <!-- begin cell row -->\n'
+            for c in range(num_columns):
+                new_text += '  <div class="col-sm-4">'
+                for r in range(num_rows):
+                    new_text += table[r][c]
+                new_text += '  </div> <!-- column col-sm-4 -->\n'
+            new_text += '</div> <!-- end cell row -->\n'
+            filestr = filestr.replace(full_text, new_text)
+            print 'XXX filestr', filestr
     return filestr
 
 def html_figure(m):
@@ -797,7 +827,9 @@ def html_footnotes(filestr, format, pattern_def, pattern_footnote):
             _abort()
         if option('html_style=', '')[:5] in ('boots', 'vagra'):
             # Use a tooltip construction so the footnote appears when hovering over
-            text = footnotes[name].strip()
+            text = ' '.join(footnotes[name].strip().splitlines())
+            # Note: formatting does not work well with a tooltip
+            # could issue a warning of we find * (emphasis) or "..": ".." link
             html = ' <button type="button" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="%s"><a name="link_footnote_%s"><a><a href="#def_footnote_%s" style="color: white">%s</a></button>' % (text, i, i, i)
         else:
             html = r' [<a name="link_footnote_%s"><a><a href="#def_footnote_%s">%s</a>]' % (i, i, i)
@@ -1241,7 +1273,8 @@ def html_%(_admon)s(block, format, title='%(_Admon)s', text_size='normal'):
     if title == 'Block':  # block admon has no default title
         title = ''
 
-    if title and title[-1] not in ('.', ':', '!', '?'):
+    if title and (title[-1] not in ('.', ':', '!', '?')) and \
+       html_admon_style != 'bootstrap_panel':
         # Make sure the title ends with puncuation
         title += '.'
 
@@ -1260,9 +1293,9 @@ def html_%(_admon)s(block, format, title='%(_Admon)s', text_size='normal'):
             text = '<div class="panel panel-%%s">' %% alert_map['%(_admon)s']
             if '%(_admon)s' != 'block':  # heading?
                 text += """
-<div class="panel-heading">
-<h3 class="panel-title">%%s</h3>
-</div>""" %% title
+  <div class="panel-heading">
+  <h3 class="panel-title">%%s</h3>
+  </div>""" %% title
             text += """
 <div class="panel-body">
 %%s
@@ -1628,9 +1661,9 @@ def define(FILENAME_EXTENSION,
     <ul class="nav navbar-nav navbar-right">
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
-          <ul class="dropdown-menu">
+        <ul class="dropdown-menu">
 ***TABLE_OF_CONTENTS***
-          </ul>
+        </ul>
       </li>
     </ul>
   </div>

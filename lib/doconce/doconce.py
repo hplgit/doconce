@@ -2409,7 +2409,9 @@ def inline_tag_subst(filestr, format):
     # that everything is conveniently defined here
     # 1. Quotes around normal text in LaTeX style:
     pattern = "``([A-Za-z][A-Za-z0-9\s,.;?!/:'() -]*?)''"
-    if format not in ('pdflatex', 'latex'):
+    if format in ('html',):
+        filestr = re.sub(pattern, '&quot;\g<1>&quot;', filestr)
+    elif format not in ('pdflatex', 'latex'):
         filestr = re.sub(pattern, '"\g<1>"', filestr)
 
     # Treat tags that have format-dependent typesetting

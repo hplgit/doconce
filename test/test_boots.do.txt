@@ -1,0 +1,219 @@
+TITLE: Test of the Boostrap style
+
+Doconce supports a variety of Bootstrap styles in a simple
+way:
+
+!bc
+doconce format html mydoc --html_style=bootswatch_... --html_admon=bootstrap_panel
+!ec
+
+The title, optionally with authors, date, table of contents, abstract
+and/or a short introduction is typeset using the Jumbotron environment
+from Bootstrap.  If a `!split` command is used before the first
+section heading, a button with `Read...` and a link to the next page
+is inserted if the document is split using `doconce split_html`.  This
+construction results in a common Bootstrap main page.
+
+# A !split before the first section will enable a button in the jumbotron
+# for going to the first real page
+
+!split
+========= Doconce and Bootstrap/Bootswatch themes =========
+
+Doconce supports the following themes from the Bootstrap family:
+
+ * `bootstrap` (the original "Bootstrap theme": "http://getbootstrap.com/examples/theme/")
+ * `bootswatch`, defaults to Cosmo theme
+ * `bootswatch_THEME`, where `THEME` can be among
+   (see "demos": "http://www.bootstrapcdn.com/?theme=5#bootswatch_tab")
+   * Bootswatch themes with white background:
+     * `cerulean`
+     * `cosmo`
+     * `flatly`
+     * `journal`
+     * `lumen`
+     * `readable`
+     * `simplex`
+     * `spacelab`
+     * `united`
+     * `yeti`
+   * Bootswatch themes with dark background:
+     * `amelia`
+     * `cyborg`
+     * `darkly`
+     * `slate`
+     * `superhero`
+
+======= Demonstrations of admons =======
+
+The Bootstrap/Bootswatch styles support two kinds of admons [^admons]:
+
+ * alert admons (`bootstrap_alert`) with colored background
+ * panel admon (`bootstrap_panel`) where only the title has colored background
+
+!bwarning Some warning
+This is the admon for warnings or paying attention.
+
+!bc pycod
+# This is illegal
+s = []
+s[10] = 'some value'
+!ec
+!ewarning
+
+[^admons]: ``Admon'' is a short form of admonition: a
+box that highlights some text. Doconce supports different types
+of admonitions: notice, question, summary, and warning. These
+can have an optional title, and some admonition styles will also
+include an icon image. In addition, there is a block admonition
+without a title and icon.
+
+!bnotice Information
+This is the notice admon with nice-to-have information.
+!enotice
+
+!bquestion Testing the understanding
+How many admon styles are supported by the Doconce Boostrap and Bootswatch
+styles?
+!equestion
+
+!bsummary
+Doconce supports the following elements of Bootstrap elements:
+
+ * Admons
+ * Panels (via admons)
+ * Jumbotron for title and intro
+ * Columns of elements (via the `slidecell` environment)
+ * Tooltips via footnotes
+!esummary
+
+======= More examples on Bootstrap elements =======
+label{sec:examples}
+
+===== Principles of grid structure =====
+
+The HTML page can feature a grid structure of cells, defined by
+the following syntax in case of a 1x3 grid:
+
+!bc
+# begin-grid-area
+
+|bslidecell 00
+...
+|eslidecell
+
+|bslidecell 01
+...
+|eslidecell
+
+|bslidecell 02
+...
+|eslidecell
+
+# end-grid-area
+!ec
+A nice feature is that the coordinates of the cells, here `00`, `01`,
+and `02` can be given in any desired order. For example, if we want
+to reverse the sequence of the three elements in the three columns
+of this grid, we simply change `00` by `02` and `02` by `00`.
+
+===== Example on a 1x3 grid structure =====
+
+# begin-grid-area
+
+!bslidecell 00
+__Mathematics.__
+Given a function
+
+!bt
+\[ f(x) = e^{-ax}\sin wx\thinspace .\]
+!et
+!eslidecell
+
+!bslidecell 01
+__Implementation.__
+The Python implementation reads
+
+!bc pycod
+from math import exp, sin
+
+def f(x):
+    return exp(-a*x)*sin(w*x)
+!ec
+where `a` and `w` must be *global variables*, initialized in the
+main program.
+!eslidecell
+
+!bslidecell 02
+
+__Computational experiment.__
+With a main program
+
+!bc pycod
+a = 1
+from math import pi
+w = pi
+print f(0)
+!ec
+we can run the program:
+
+!bc sys
+Terminal> python prog.py
+0
+!ec
+!eslidecell
+# end-grid-area
+
+===== Variation of the previous grid structure using panels =====
+
+# Note: panels are realized as admons
+
+# begin-grid-area
+
+!bslidecell 00
+!bnotice Mathematics
+Given a function
+
+!bt
+\[ f(x) = e^{-ax}\sin wx\thinspace .\]
+!et
+!enotice
+!eslidecell
+
+!bslidecell 01
+!bnotice Implementation
+The Python implementation reads
+
+!bc pycod
+from math import exp, sin
+
+def f(x):
+    return exp(-a*x)*sin(w*x)
+!ec
+where `a` and `w` must be *global variables*, initialized in the
+main program.
+!enotice
+!eslidecell
+
+!bslidecell 02
+!bnotice Computational experiment
+With a main program
+
+!bc pycod
+a = 1
+from math import pi
+w = pi
+print f(0)
+!ec
+we can run the program:
+
+!bc sys
+Terminal> python prog.py
+0
+!ec
+!enotice
+!eslidecell
+# end-grid-area
+
+
+
