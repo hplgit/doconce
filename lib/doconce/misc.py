@@ -43,6 +43,10 @@ such that the verbatim environments become like
      'Alternative basename of files associated with the HTML format.'),
     ('--html_style=',
      'Name of theme for HTML style (solarized, vagrant, bloodish, bootstrap, bootswatch, bootswatch_*, ...).'),
+    ('--bootstrap_FlatUI',
+     'Add the Flat UI modification of standard Bootstrap layout themes.'),
+    ('--bootstrap_code=',
+     'off: enable normal inline verbatim font (not the red Boostrap color). on: default.'),
     ('--html_template=',
      """Specify an HTML template with header/footer in which the doconce
 document is embedded."""),

@@ -1646,8 +1646,19 @@ def define(FILENAME_EXTENSION,
 <!-- Bootstrap style: %s -->
 <link href="http:%s" rel="stylesheet">
 """% (html_style, url)
+        if option('bootstrap_FlatUI'):
+            style += """
+<link href="https://raw.github.com/hplgit/doconce/master/bundled/html_styles/style_FlatUI/css/flat-ui.css" rel="stylesheet">
+"""
         bootstrap_title_bar = ''
 
+    if option('bootstrap_code=', 'on') in ('off', 'transparent'):
+        style += """
+<style type="text/css">
+/* Make inline verbatim
+code { color: inherit; background-color: transparent; }
+</style>
+"""
     meta_tags = """\
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
