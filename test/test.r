@@ -5051,12 +5051,12 @@ in a separate document: \texttt{admon.do.txt}.
 ************** File: testdoc.tex_doconce_ptex2tex *****************
 \bsys (!bc sys) -> begin{quote}begin{Verbatim}
 \bpypro (!bc pypro) -> \begin{python:nt}
+\bcpppro (!bc cpppro) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{c++}
+\bcycod (!bc cycod) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{cython}
 \bfcod (!bc fcod) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{fortran}
 \bfpro (!bc fpro) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{fortran}
 \bpycod (!bc pycod) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
 \bhtmlcod (!bc htmlcod) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{html}
-\bcycod (!bc cycod) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{cython}
-\bcpppro (!bc cpppro) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{c++}
 \bcod (!bc cod) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
 \bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
 output in testdoc.tex
@@ -25397,12 +25397,12 @@ Here is
 some text.
 
 <p>
-Let us also add a test of quotes such as "double
+Let us also add a test of quotes such as &quot;double
 quotes, with numbers like 3.14 and
-newline/comma and hyphen (as in double-quote)";
+newline/comma and hyphen (as in double-quote)&quot;;
 written in the standard LaTeX-style that gives correct
 LaTeX formatting and ordinary double quotes for all non-LaTeX formats.
-Here is another sentence that "caused" a bug in the past
+Here is another sentence that &quot;caused&quot; a bug in the past
 because double backtick quotes could imply verbatim text up to
 a verbatim word starting with period, like <code>.txt</code>.
 
@@ -27283,12 +27283,12 @@ Here is
 some text.
 
 <p>
-Let us also add a test of quotes such as "double
+Let us also add a test of quotes such as &quot;double
 quotes, with numbers like 3.14 and
-newline/comma and hyphen (as in double-quote)";
+newline/comma and hyphen (as in double-quote)&quot;;
 written in the standard LaTeX-style that gives correct
 LaTeX formatting and ordinary double quotes for all non-LaTeX formats.
-Here is another sentence that "caused" a bug in the past
+Here is another sentence that &quot;caused&quot; a bug in the past
 because double backtick quotes could imply verbatim text up to
 a verbatim word starting with period, like <code>.txt</code>.
 
@@ -28993,12 +28993,12 @@ Here is
 some text.
 
 <p>
-Let us also add a test of quotes such as "double
+Let us also add a test of quotes such as &quot;double
 quotes, with numbers like 3.14 and
-newline/comma and hyphen (as in double-quote)";
+newline/comma and hyphen (as in double-quote)&quot;;
 written in the standard LaTeX-style that gives correct
 LaTeX formatting and ordinary double quotes for all non-LaTeX formats.
-Here is another sentence that "caused" a bug in the past
+Here is another sentence that &quot;caused&quot; a bug in the past
 because double backtick quotes could imply verbatim text up to
 a verbatim word starting with period, like <code>.txt</code>.
 
@@ -32311,6 +32311,7 @@ done
 doconce format pdflatex admon --latex_admon=mdfbox --latex_admon_color=1,1,1 --latex_admon_envir_map=2
 doconce ptex2tex admon pycod2=minted pypro2=minted pycod=Verbatim pypro=Verbatim
 cp admon.tex admon_double_envirs.tex
+rm -rf latex_figs
 
 # Test HTML admon styles
 system doconce format html admon --html_admon=lyx --html_style=blueish2
@@ -32334,10 +32335,10 @@ cp admon.html admon_apricot.html
 system doconce format html admon --html_style=vagrant --pygments_html_style=default --html_template=template_vagrant.html
 cp admon.html admon_vagrant.html
 
-system doconce format html admon --html_style=bootstrap --pygments_html_style=default --admon_style=bootstrap_alert
+system doconce format html admon --html_style=bootstrap --pygments_html_style=default --html_admon=bootstrap_alert
 cp admon.html admon_bootstrap_alert.html
 
-system doconce format html admon --html_style=bootswatch --pygments_html_style=default --admon_style=bootstrap_panel
+system doconce format html admon --html_style=bootswatch --pygments_html_style=default --html_admon=bootstrap_panel
 cp admon.html admon_bootswatch_panel.html
 
 system doconce sphinx_dir dirname=tmp_admon admon
@@ -32352,6 +32353,11 @@ system doconce format plain admon
 cp admon.txt admon_paragraph.txt
 
 cp -fr admon_*.html admon_*.pdf admon_*.*wiki admon_*.txt admon_sphinx admon_demo/
+cd admon_demo
+doconce replace '../doc/src/manual/fig/wave1D' '../../doc/src/manual/fig/wave1D' *.html
+rm -rf *~
+cd ..
+
 
 #google-chrome admon_*.html
 #for pdf in admon_*.pdf; do evince $pdf; done
@@ -32360,6 +32366,11 @@ if [ -d latex_figs ]; then
     echo "BUG: latex_figs was made by some non-latex format..."
 fi
 
+# Test Bootstrap HTML styles
+doconce format html test_boots --html_style=bootswatch_journal --pygments_html_style=default --html_admon=bootstrap_panel
+doconce split_html test_boots.html
+
+# Test GitHub-extended Markdown
 system doconce format pandoc github_md.do.txt --github_md
 
 # Test movie handling
@@ -35195,15 +35206,9 @@ the previous blocks with line breaks.
 <h4>Footnotes  <a name="___sec4"></a></h4>
 
 <p>
-Here is a test of footnotes <button type="button" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Typesetting of the footnote depends on the format.
-Plain text does nothing, LaTeX removes the
-definition and inserts the footnote as part of the LaTeX text.
-reStructuredText and Sphinx employ a similar type of typesetting
-as Extended Markdown and Doconce, and in HTML we keep the same
-syntax, just displayed properly in HTML."><a name="link_footnote_1"><a><a href="#def_footnote_1" style="color: white">1</a></button>, which are handy in text.
+Here is a test of footnotes <button type="button" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Typesetting of the footnote depends on the format. Plain text does nothing, LaTeX removes the definition and inserts the footnote as part of the LaTeX text. reStructuredText and Sphinx employ a similar type of typesetting as Extended Markdown and Doconce, and in HTML we keep the same syntax, just displayed properly in HTML."><a name="link_footnote_1"><a><a href="#def_footnote_1" style="color: white">1</a></button>, which are handy in text.
 They are used in different flavors <button type="button" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Could say contexts too..."><a name="link_footnote_2"><a><a href="#def_footnote_2" style="color: white">2</a></button>, which gives flexibility
-in writing. This is the third <button type="button" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Not much to add here, but the footnote
-is at the end with only one newline."><a name="link_footnote_3"><a><a href="#def_footnote_3" style="color: white">3</a></button> example.
+in writing. This is the third <button type="button" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Not much to add here, but the footnote is at the end with only one newline."><a name="link_footnote_3"><a><a href="#def_footnote_3" style="color: white">3</a></button> example.
 
 <p><a name="def_footnote_1"></a><a href="#link_footnote_1"><b>1:</b></a> Typesetting of the footnote depends on the format.
 Plain text does nothing, LaTeX removes the
@@ -35468,12 +35473,12 @@ Here is
 some text.
 
 <p>
-Let us also add a test of quotes such as "double
+Let us also add a test of quotes such as &quot;double
 quotes, with numbers like 3.14 and
-newline/comma and hyphen (as in double-quote)";
+newline/comma and hyphen (as in double-quote)&quot;;
 written in the standard LaTeX-style that gives correct
 LaTeX formatting and ordinary double quotes for all non-LaTeX formats.
-Here is another sentence that "caused" a bug in the past
+Here is another sentence that &quot;caused&quot; a bug in the past
 because double backtick quotes could imply verbatim text up to
 a verbatim word starting with period, like <code>.txt</code>.
 
@@ -47922,20 +47927,20 @@ $$
 
 
     
-<div class="navbar navbar-default">
+<div class="navbar navbar-default navbar-fixed-top">
   <div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="#">Testing admons</a>
+    <a class="navbar-brand" href="admon.html">Testing admons</a>
   </div>
   <div class="navbar-collapse collapse navbar-responsive-collapse">
     <ul class="nav navbar-nav navbar-right">
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
-          <ul class="dropdown-menu">
+        <ul class="dropdown-menu">
      <!-- navigation toc: " Introduction " --> <li>  <a href="#___sec0"> Introduction </a></li>
      <!-- navigation toc: " Code " --> <li> &nbsp;  <a href="#___sec1"> Code </a></li>
      <!-- navigation toc: " Quotes and boxes " --> <li> &nbsp;  <a href="#___sec2"> Quotes and boxes </a></li>
@@ -47943,7 +47948,7 @@ $$
      <!-- navigation toc: " Going deeper environments " --> <li> &nbsp;  <a href="#___sec4"> Going deeper environments </a></li>
      <!-- navigation toc: " The end " --> <li> &nbsp;  <a href="#___sec5"> The end </a></li>
 
-          </ul>
+        </ul>
       </li>
     </ul>
   </div>
@@ -47975,7 +47980,7 @@ $$
 <p>
 
 
-</div>
+</div> <!-- end jumbotron -->
 
 <h2>Introduction  <a name="___sec0"></a></h2>
 First some ordinary text to compare font sizes in admonitions
@@ -48125,7 +48130,7 @@ Also some code:
 <p>
 
 <!-- code=python (from !bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
     <span style="color: #008000; font-weight: bold">return</span> x
 </pre></div>
 <p>
@@ -48134,7 +48139,7 @@ And a complete program
 <p>
 
 <!-- code=python (from !bc pypro) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&quot;Hello, World!&quot;</span>
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&quot;Hello, World!&quot;</span>
 </pre></div>
 <p>
 </div>
@@ -48235,7 +48240,7 @@ Because here the thing is to do
 <p>
 
 <!-- code=python (from !bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">urllib</span>
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">urllib</span>
 
 <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">grab</span>(url, filename):
     urllib<span style="color: #666666">.</span>urlretrieve(url, filename<span style="color: #666666">=</span>filename)
@@ -48288,7 +48293,7 @@ code is task that this "Going deeper" environment targets.
 <p>
 
 <!-- code=python (from !bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">Dudt</span>(u):
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">Dudt</span>(u):
     r <span style="color: #666666">=</span> diff(u, t) <span style="color: #666666">+</span> u<span style="color: #666666">*</span>grad(u)
     <span style="color: #008000; font-weight: bold">return</span> r
 
@@ -48302,7 +48307,7 @@ Longer computer code requires vertical space:
 <p>
 
 <!-- code=python (from !bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Diff</span>:
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Diff</span>:
     <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__init__</span>(<span style="color: #008000">self</span>, f, h<span style="color: #666666">=1E-5</span>):
         <span style="color: #008000">self</span><span style="color: #666666">.</span>f <span style="color: #666666">=</span> f
         <span style="color: #008000">self</span><span style="color: #666666">.</span>h <span style="color: #666666">=</span> <span style="color: #008000">float</span>(h)
@@ -48454,20 +48459,20 @@ $$
 
 
     
-<div class="navbar navbar-default">
+<div class="navbar navbar-default navbar-fixed-top">
   <div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="#">Testing admons</a>
+    <a class="navbar-brand" href="admon.html">Testing admons</a>
   </div>
   <div class="navbar-collapse collapse navbar-responsive-collapse">
     <ul class="nav navbar-nav navbar-right">
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
-          <ul class="dropdown-menu">
+        <ul class="dropdown-menu">
      <!-- navigation toc: " Introduction " --> <li>  <a href="#___sec0"> Introduction </a></li>
      <!-- navigation toc: " Code " --> <li> &nbsp;  <a href="#___sec1"> Code </a></li>
      <!-- navigation toc: " Quotes and boxes " --> <li> &nbsp;  <a href="#___sec2"> Quotes and boxes </a></li>
@@ -48475,7 +48480,7 @@ $$
      <!-- navigation toc: " Going deeper environments " --> <li> &nbsp;  <a href="#___sec4"> Going deeper environments </a></li>
      <!-- navigation toc: " The end " --> <li> &nbsp;  <a href="#___sec5"> The end </a></li>
 
-          </ul>
+        </ul>
       </li>
     </ul>
   </div>
@@ -48507,7 +48512,7 @@ $$
 <p>
 
 
-</div>
+</div> <!-- end jumbotron -->
 
 <h2>Introduction  <a name="___sec0"></a></h2>
 First some ordinary text to compare font sizes in admonitions
@@ -48622,7 +48627,11 @@ Let's begin a new paragraph and show a box with code only:
 Let us start with a plain warning environment.
 
 <p>
-<div class="alert alert-block alert-danger alert-text-normal"><b>Warning.</b>
+<div class="panel panel-warning">
+  <div class="panel-heading">
+  <h3 class="panel-title">Warning</h3>
+  </div>
+<div class="panel-body">
 And here is a warning about something to pay attention to. We
 test how the heading behave and add quite some extra texts
 in comparison with the other admons.
@@ -48642,13 +48651,18 @@ And more and more text.
 And more and more text.
 And more and more text.
 </div>
+</div>
 
 
 <p>
 Test warning with title:
 
 <p>
-<div class="alert alert-block alert-danger alert-text-large"><b>Title ending with math \( \sqrt{2}\approx 1.4 \).</b>
+<div class="panel panel-warning">
+  <div class="panel-heading">
+  <h3 class="panel-title">Title ending with math \( \sqrt{2}\approx 1.4 \)</h3>
+  </div>
+<div class="panel-body">
 And here comes some text with bad news in larger font.
 
 <p>
@@ -48670,15 +48684,21 @@ And a complete program
 </pre></div>
 <p>
 </div>
+</div>
 
 
 <p>
 Test warning with large title with math:
 
 <p>
-<div class="alert alert-block alert-danger alert-text-large"><b>Watch out for \( \nabla\cdot\boldsymbol{u}=0 \) equations.</b>
+<div class="panel panel-warning">
+  <div class="panel-heading">
+  <h3 class="panel-title">Watch out for \( \nabla\cdot\boldsymbol{u}=0 \) equations</h3>
+  </div>
+<div class="panel-body">
 Divergence freedom is often problematic from a numerical point
 of view.
+</div>
 </div>
 
 
@@ -48686,7 +48706,8 @@ of view.
 Then we test a block, which is guaranteed to never have any admon icon.
 
 <p>
-<div class="alert alert-block alert-success alert-text-small"><b>Block with title.</b>
+<div class="panel panel-default">
+<div class="panel-body">
 Here is a block of text with title. It is typeset
 <em>without any icon</em> and is useful when you want some admons with icon
 and some without. With the small font size, as used here, one can have
@@ -48694,12 +48715,15 @@ more comment-style text or text that really goes deeper or talks
 about fun facts that are not strictly necessary for the main flow
 of understanding.
 </div>
+</div>
 
 
 <p>
-<div class="alert alert-block alert-success alert-text-normal"><b></b>
+<div class="panel panel-default">
+<div class="panel-body">
 Here is a block of text with no title. As above, it is typeset without any icon
 and is useful when you want some admons with icon and some without.
+</div>
 </div>
 
 
@@ -48713,7 +48737,11 @@ code is present).
 <!-- those formats automatically add : to the admonition title. -->
 
 <p>
-<div class="alert alert-block alert-success alert-text-illegal-size"><b>Note, eventually!</b>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+  <h3 class="panel-title">Note, eventually!</h3>
+  </div>
+<div class="panel-body">
 Ah, we are soon close to the end (with illegal font size specification!).
 But first a bit of math where we define \( \theta \) and \( \boldsymbol{r} \):
 
@@ -48725,34 +48753,54 @@ $$
 \end{align*}
 $$
 </div>
+</div>
 
 
 <p>
 <!-- Test one word with a number -->
 
 <p>
-<div class="alert alert-block alert-success alert-text-normal"><b>Point1.</b>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+  <h3 class="panel-title">Point1</h3>
+  </div>
+<div class="panel-body">
 Ah, we are soon close to the end.
 </div>
-
-
-<p>
-<div class="alert alert-block alert-info alert-text-normal"><b>Question.</b>
-So, how many admonition environments does Doconce support?
 </div>
 
 
 <p>
-<div class="alert alert-block alert-info alert-text-normal"><b>Question.</b>
+<div class="panel panel-success">
+  <div class="panel-heading">
+  <h3 class="panel-title">Question</h3>
+  </div>
+<div class="panel-body">
+So, how many admonition environments does Doconce support?
+</div>
+</div>
+
+
+<p>
+<div class="panel panel-success">
+  <div class="panel-heading">
+  <h3 class="panel-title">Question</h3>
+  </div>
+<div class="panel-body">
 
 <ol>
  <li> Once more, how many admonition environments does Doconce support?</li>
 </ol>
 </div>
+</div>
 
 
 <p>
-<div class="alert alert-block alert-danger alert-text-normal"><b>Tip.</b>
+<div class="panel panel-warning">
+  <div class="panel-heading">
+  <h3 class="panel-title">Tip</h3>
+  </div>
+<div class="panel-body">
 It is of outmost important to
 
 <p>
@@ -48774,14 +48822,20 @@ Because here the thing is to do
 </pre></div>
 <p>
 </div>
+</div>
 
 
 <p>
 Next is a warning without a title ("none" implies no title).
 
 <p>
-<div class="alert alert-block alert-danger alert-text-normal"><b></b>
+<div class="panel panel-warning">
+  <div class="panel-heading">
+  <h3 class="panel-title"></h3>
+  </div>
+<div class="panel-body">
 And here comes some text with bad news.
+</div>
 </div>
 
 
@@ -48792,7 +48846,11 @@ Here is a long notice environment with a custom title and much
 text, math and code.
 
 <p>
-<div class="alert alert-block alert-success alert-text-normal"><b>Going deeper.</b>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+  <h3 class="panel-title">Going deeper.</h3>
+  </div>
+<div class="panel-body">
 We have some equations that should be preceded by much text, so the
 task is to write and write. The number of words, and not the
 meaning, is what counts here. We need desperately to fill up the
@@ -48879,6 +48937,7 @@ And then we add a figure too.
 <p>
 <center><p><img src="../doc/src/manual/fig/wave1D.png" align="bottom" width=400></p></center>
 </div>
+</div>
 
 
 <h3>The end  <a name="___sec5"></a></h3>
@@ -48889,10 +48948,15 @@ for the novice",
 just because we can.
 
 <p>
-<div class="alert alert-block alert-warning alert-text-normal"><b>Concluding remarks, for the novice.</b>
+<div class="panel panel-danger">
+  <div class="panel-heading">
+  <h3 class="panel-title">Concluding remarks, for the novice</h3>
+  </div>
+<div class="panel-body">
 We can summarize the most important things with admons: they have
 a different typesetting, and they may have a symbol.
 Titles should be optional.
+</div>
 </div>
 
 
@@ -92944,6 +93008,7 @@ output in admon.p.tex
 \bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
 output in admon.tex
 + cp admon.tex admon_double_envirs.tex
++ rm -rf latex_figs
 + system doconce format html admon --html_admon=lyx --html_style=blueish2
 + doconce format html admon --html_admon=lyx --html_style=blueish2
 running preprocess -DFORMAT=html -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
@@ -93040,10 +93105,8 @@ figure file ../doc/src/manual/fig/wave1D:
 output in admon.html
 + '[' 0 -ne 0 ']'
 + cp admon.html admon_vagrant.html
-+ system doconce format html admon --html_style=bootstrap --pygments_html_style=default --admon_style=bootstrap_alert
-+ doconce format html admon --html_style=bootstrap --pygments_html_style=default --admon_style=bootstrap_alert
-*** warning: unrecognized command-line option
-    --admon_style=bootstrap_alert
++ system doconce format html admon --html_style=bootstrap --pygments_html_style=default --html_admon=bootstrap_alert
++ doconce format html admon --html_style=bootstrap --pygments_html_style=default --html_admon=bootstrap_alert
 running preprocess -DFORMAT=html -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to html
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
@@ -93055,10 +93118,8 @@ figure file ../doc/src/manual/fig/wave1D:
 output in admon.html
 + '[' 0 -ne 0 ']'
 + cp admon.html admon_bootstrap_alert.html
-+ system doconce format html admon --html_style=bootswatch --pygments_html_style=default --admon_style=bootstrap_panel
-+ doconce format html admon --html_style=bootswatch --pygments_html_style=default --admon_style=bootstrap_panel
-*** warning: unrecognized command-line option
-    --admon_style=bootstrap_panel
++ system doconce format html admon --html_style=bootswatch --pygments_html_style=default --html_admon=bootstrap_panel
++ doconce format html admon --html_style=bootswatch --pygments_html_style=default --html_admon=bootstrap_panel
 running preprocess -DFORMAT=html -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to html
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
@@ -93243,22 +93304,8 @@ figure file ../doc/src/manual/fig/wave1D:
  ...for wikipedia/wikibooks you must upload image file wave1D.png to
     common.wikimedia.org
  ...for now we use local file Wave1D.png
-
-...doconce translation: handled figures 68.6 s
-
-...doconce translation: handled handled lists 68.6 s
-
-...doconce translation: handled inline substitutions 68.6 s
-
-...doconce translation: handled insertion of verbatim and latex blocks 68.6 s
 *** warning: wrong text size "illegal-size" specified in notice environment!
     must be "large" or "small" - will be set to normal
-
-...doconce translation: handled !benvir/!eenvir constructions 68.6 s
-
-
-...doconce format used 68.6 s to translate the document (395 lines)
-
 output in admon.mwiki
 + '[' 0 -ne 0 ']'
 + cp admon.mwiki admon_mwiki.mwiki
@@ -93272,9 +93319,27 @@ output in admon.txt
 + '[' 0 -ne 0 ']'
 + cp admon.txt admon_paragraph.txt
 + cp -fr admon_apricot.html admon_bootstrap_alert.html admon_bootswatch_panel.html admon_colors.html admon_gray.html admon_lyx.html admon_paragraph.html admon_vagrant.html admon_yellow.html admon_colors1.pdf admon_colors2.pdf admon_graybox2.pdf admon_grayicon.pdf admon_mdfbox.pdf admon_paragraph.pdf admon_yellowicon.pdf admon_mwiki.mwiki admon_paragraph.txt admon_sphinx admon_demo/
++ cd admon_demo
++ doconce replace ../doc/src/manual/fig/wave1D ../../doc/src/manual/fig/wave1D admon_apricot.html admon_bootstrap_alert.html admon_bootswatch_panel.html admon_colors.html admon_gray.html admon_lyx.html admon_paragraph.html admon_vagrant.html admon_yellow.html
+replacing ../doc/src/manual/fig/wave1D by ../../doc/src/manual/fig/wave1D in admon_apricot.html
+replacing ../doc/src/manual/fig/wave1D by ../../doc/src/manual/fig/wave1D in admon_bootstrap_alert.html
+replacing ../doc/src/manual/fig/wave1D by ../../doc/src/manual/fig/wave1D in admon_bootswatch_panel.html
+replacing ../doc/src/manual/fig/wave1D by ../../doc/src/manual/fig/wave1D in admon_colors.html
+replacing ../doc/src/manual/fig/wave1D by ../../doc/src/manual/fig/wave1D in admon_gray.html
+replacing ../doc/src/manual/fig/wave1D by ../../doc/src/manual/fig/wave1D in admon_lyx.html
+replacing ../doc/src/manual/fig/wave1D by ../../doc/src/manual/fig/wave1D in admon_paragraph.html
+replacing ../doc/src/manual/fig/wave1D by ../../doc/src/manual/fig/wave1D in admon_vagrant.html
+replacing ../doc/src/manual/fig/wave1D by ../../doc/src/manual/fig/wave1D in admon_yellow.html
++ rm -rf admon_apricot.html.old~~ admon_bootstrap_alert.html.old~~ admon_bootswatch_panel.html.old~~ admon_colors.html.old~~ admon_gray.html.old~~ admon_lyx.html.old~~ admon_paragraph.html.old~~ admon_vagrant.html.old~~ admon_yellow.html.old~~
++ cd ..
 + '[' -d latex_figs ']'
-+ echo 'BUG: latex_figs was made by some non-latex format...'
-BUG: latex_figs was made by some non-latex format...
++ doconce format html test_boots --html_style=bootswatch_journal --pygments_html_style=default --html_admon=bootstrap_panel
+translating doconce text in test_boots.do.txt to html
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
+output in test_boots.html
++ doconce split_html test_boots.html
+test_boots.html now links to the generated files
+._test_boots000.html, ._test_boots001.html, ._test_boots002.html
 + system doconce format pandoc github_md.do.txt --github_md
 + doconce format pandoc github_md.do.txt --github_md
 translating doconce text in github_md.do.txt to pandoc

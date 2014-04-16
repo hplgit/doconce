@@ -69,20 +69,20 @@ $$
 
 
     
-<div class="navbar navbar-default">
+<div class="navbar navbar-default navbar-fixed-top">
   <div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="#">Testing admons</a>
+    <a class="navbar-brand" href="admon.html">Testing admons</a>
   </div>
   <div class="navbar-collapse collapse navbar-responsive-collapse">
     <ul class="nav navbar-nav navbar-right">
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
-          <ul class="dropdown-menu">
+        <ul class="dropdown-menu">
      <!-- navigation toc: " Introduction " --> <li>  <a href="#___sec0"> Introduction </a></li>
      <!-- navigation toc: " Code " --> <li> &nbsp;  <a href="#___sec1"> Code </a></li>
      <!-- navigation toc: " Quotes and boxes " --> <li> &nbsp;  <a href="#___sec2"> Quotes and boxes </a></li>
@@ -90,7 +90,7 @@ $$
      <!-- navigation toc: " Going deeper environments " --> <li> &nbsp;  <a href="#___sec4"> Going deeper environments </a></li>
      <!-- navigation toc: " The end " --> <li> &nbsp;  <a href="#___sec5"> The end </a></li>
 
-          </ul>
+        </ul>
       </li>
     </ul>
   </div>
@@ -118,11 +118,11 @@ $$
 <p>
 <!-- institution(s) -->
 <p>
-<center><h4>Apr 15, 2014</h4></center> <!-- date -->
+<center><h4>Apr 16, 2014</h4></center> <!-- date -->
 <p>
 
 
-</div>
+</div> <!-- end jumbotron -->
 
 <h2>Introduction  <a name="___sec0"></a></h2>
 First some ordinary text to compare font sizes in admonitions
@@ -272,7 +272,7 @@ Also some code:
 <p>
 
 <!-- code=python (from !bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
     <span style="color: #008000; font-weight: bold">return</span> x
 </pre></div>
 <p>
@@ -281,7 +281,7 @@ And a complete program
 <p>
 
 <!-- code=python (from !bc pypro) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&quot;Hello, World!&quot;</span>
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&quot;Hello, World!&quot;</span>
 </pre></div>
 <p>
 </div>
@@ -382,7 +382,7 @@ Because here the thing is to do
 <p>
 
 <!-- code=python (from !bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">urllib</span>
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">urllib</span>
 
 <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">grab</span>(url, filename):
     urllib<span style="color: #666666">.</span>urlretrieve(url, filename<span style="color: #666666">=</span>filename)
@@ -435,7 +435,7 @@ code is task that this "Going deeper" environment targets.
 <p>
 
 <!-- code=python (from !bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">Dudt</span>(u):
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">Dudt</span>(u):
     r <span style="color: #666666">=</span> diff(u, t) <span style="color: #666666">+</span> u<span style="color: #666666">*</span>grad(u)
     <span style="color: #008000; font-weight: bold">return</span> r
 
@@ -449,7 +449,7 @@ Longer computer code requires vertical space:
 <p>
 
 <!-- code=python (from !bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Diff</span>:
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Diff</span>:
     <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__init__</span>(<span style="color: #008000">self</span>, f, h<span style="color: #666666">=1E-5</span>):
         <span style="color: #008000">self</span><span style="color: #666666">.</span>f <span style="color: #666666">=</span> f
         <span style="color: #008000">self</span><span style="color: #666666">.</span>h <span style="color: #666666">=</span> <span style="color: #008000">float</span>(h)
@@ -492,7 +492,7 @@ Longer computer code requires vertical space:
 And then we add a figure too.
 
 <p>
-<center><p><img src="../doc/src/manual/fig/wave1D.png" align="bottom" width=400></p></center>
+<center><p><img src="../../doc/src/manual/fig/wave1D.png" align="bottom" width=400></p></center>
 </div>
 
 

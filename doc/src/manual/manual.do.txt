@@ -1702,6 +1702,23 @@ plain verbatim typesetting (for `ptex2tex` this means the `ccq`
 environment, which is defined in the config file `.ptex2tex.cfg`,
 while for Sphinx it defaults to the `python` environment).
 
+By default, `pro` is used for complete programs in Python, `cod` is
+for a code snippet in Python, while `xcod` and `xpro` implies computer
+language specific typesetting where `x` can be `f` for Fortran, `c`
+for C, `cpp` for C++, `sh` for Unix shells, `pl` for Perl, `m` for
+Matlab, `cy` for Cython, `r` for Ruby, and `py` for Python.  The
+argument `sys` means by default `console` for Sphinx and
+`CodeTerminal` (ptex2tex environent) for LaTeX. Other specifications
+are `dat` for a data file or print out, `latex` for LaTeX`, `js` for
+JavaScript, `html` for HTML, `pyshell` for plain interactive Python
+shell sessions, and `ipy` for interactive IPython sessions (the latter
+does not introduce any environment in `sphinx` output, as interactive
+sessions are automatically recognized and handled in that format).
+(All these definitions of the arguments after `!bc` can be redefined
+in the `.ptex2tex.cfg` configuration file for ptex2tex/LaTeX and in
+the `sphinx code-blocks` comments for Sphinx, see below.)
+
+
 Since the config file for `ptex2tex` and command-line arguments for
 the alternative `doconce ptex2tex` program can define what some environments
 map onto with respect to typesetting, a similar possibility is
@@ -1712,78 +1729,67 @@ optional comment to be inserted in the Doconce source file, e.g.,
 !bc
 # sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console
 !ec
-Here, three arguments are defined: `pycod` for Python code,
-`cod` also for Python code, `cppcod` for C++ code, and `sys`
-for terminal sessions. The same arguments would be defined
-in `.ptex2tex.cfg` for how to typeset the blocks in LaTeX using
+Here, three arguments are defined: `!bc pycod` maps on to the
+Pygments style `python` for Python code,
+`!bc cod` maps on to the Pygments style `fortran` for Fortran
+code, `!bc cppcod`  maps on to the Pygments style `c++` for C++ code,
+and `!bc sys` maps on to the Pygments `console` style for
+terminal sessions. The same arguments would be defined
+in `.ptex2tex.cfg` or on the command line for `doconce ptex2tex`
+for how to typeset the blocks in LaTeX using
 various verbatim styles (Pygments can also be used in a LaTeX
 context).
-
-By default, `pro` is used for complete programs in Python, `cod` is
-for a code snippet in Python, while `xcod` and `xpro` implies computer
-language specific typesetting where `x` can be `f` for Fortran, `c`
-for C, `cpp` for C++, `sh` for Unix shells, `pl` for Perl, `m` for
-Matlab, `cy` for Cython, and `py` for Python.  The argument `sys`
-means by default `console` for Sphinx and `CodeTerminal` (ptex2tex
-environent) for LaTeX. Other specifications are `dat` for a data file
-or print out, and `ipy` for interactive Python sessions (the latter
-does not introduce any environment  in `sphinx` output, as interactive
-sessions are automatically recognized and handled).  All these
-definitions of the arguments after `!bc` can be redefined in the
-`.ptex2tex.cfg` configuration file for ptex2tex/LaTeX and in the
-`sphinx code-blocks` comments for Sphinx. Support for other languages
-is easily added.
 
 # (Any sphinx code-block comment, whether inside verbatim code
 # blocks or outside, yields a mapping between bc arguments
 # and computer languages. In case of muliple definitions, the
 # first one is used.)
 
+!bwarning Tip
 The enclosing `!ec` tag of verbatim computer code blocks must
 be followed by a newline.  A common error in list environments is to
 forget to indent the plain text surrounding the code blocks. In
 general, we recommend to use paragraph headings instead of list items
 in combination with code blocks (it usually looks better, and some
 common errors are naturally avoided).
+!ewarning
 
 Here is a verbatim code block with Python code (`pycod` style):
+
 !bc
 |bc pycod
-# regular expressions for inline tags:
-inline_tag_begin = r'(?P<begin>(^|\s+))'
-inline_tag_end = r'(?P<end>[.,?!;:)\s])'
-INLINE_TAGS = {
-    'emphasize':
-    r'%s\*(?P<subst>[^ `][^*`]*)\*%s' % \
-    (inline_tag_begin, inline_tag_end),
-    'verbatim':
-    r'%s`(?P<subst>[^ ][^`]*)`%s' % \
-    (inline_tag_begin, inline_tag_end),
-    'bold':
-    r'%s_(?P<subst>[^ `][^_`]*)_%s' % \
-    (inline_tag_begin, inline_tag_end),
-}
+def f(x, y):
+    return x + y
+
+# Main program
+from math import pi
+print 'Testing f:', f(pi, 0)
 |ec
 !ec
 The typeset result of this block becomes
 
 !bc pycod
-# regular expressions for inline tags:
-inline_tag_begin = r'(?P<begin>(^|\s+))'
-inline_tag_end = r'(?P<end>[.,?!;:)\s])'
-INLINE_TAGS = {
-    'emphasize':
-    r'%s\*(?P<subst>[^ `][^*`]*)\*%s' % \
-    (inline_tag_begin, inline_tag_end),
-    'verbatim':
-    r'%s`(?P<subst>[^ ][^`]*)`%s' % \
-    (inline_tag_begin, inline_tag_end),
-    'bold':
-    r'%s_(?P<subst>[^ `][^_`]*)_%s' % \
-    (inline_tag_begin, inline_tag_end),
-}
+def f(x, y):
+    return x + y
+
+# Main program
+from math import pi
+print 'Testing f:', f(pi, 0)
 !ec
+
 And here is a C++ code snippet (`cppcod` style):
+
+!bc
+|bc cppcod
+void myfunc(double* x, const double& myarr) {
+    for (int i = 1; i < myarr.size(); i++) {
+        myarr[i] = myarr[i] - x[i]*myarr[i-1]
+    }
+}
+|ec
+!ec
+with the rendered result
+
 !bc cppcod
 void myfunc(double* x, const double& myarr) {
     for (int i = 1; i < myarr.size(); i++) {

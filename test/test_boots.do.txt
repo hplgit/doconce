@@ -1,72 +1,60 @@
-TITLE: Test of the Boostrap style
+TITLE: Test of the Bootstrap style
 
-Doconce supports a variety of Bootstrap styles in a simple
+Doconce can work with Bootstrap HTML styles:
 way:
 
-!bc
-doconce format html mydoc --html_style=bootswatch_... --html_admon=bootstrap_panel
+!bc sys
+Terminal> doconce format html mydoc --html_style=bootswatch --html_admon=bootstrap_panel
 !ec
 
-The title, optionally with authors, date, table of contents, abstract
-and/or a short introduction is typeset using the Jumbotron environment
-from Bootstrap.  If a `!split` command is used before the first
-section heading, a button with `Read...` and a link to the next page
-is inserted if the document is split using `doconce split_html`.  This
-construction results in a common Bootstrap main page.
+Here goes optional text.
 
 # A !split before the first section will enable a button in the jumbotron
 # for going to the first real page
 
 !split
-========= Doconce and Bootstrap/Bootswatch themes =========
+========= More details on writing Doconce documents with Bootstrap layout =========
 
-Doconce supports the following themes from the Bootstrap family:
-
- * `bootstrap` (the original "Bootstrap theme": "http://getbootstrap.com/examples/theme/")
- * `bootswatch`, defaults to Cosmo theme
- * `bootswatch_THEME`, where `THEME` can be among
-   (see "demos": "http://www.bootstrapcdn.com/?theme=5#bootswatch_tab")
-   * Bootswatch themes with white background:
-     * `cerulean`
-     * `cosmo`
-     * `flatly`
-     * `journal`
-     * `lumen`
-     * `readable`
-     * `simplex`
-     * `spacelab`
-     * `united`
-     * `yeti`
-   * Bootswatch themes with dark background:
-     * `amelia`
-     * `cyborg`
-     * `darkly`
-     * `slate`
-     * `superhero`
 
 ======= Demonstrations of admons =======
 
-The Bootstrap/Bootswatch styles support two kinds of admons [^admons]:
+The Bootstrap/Bootswatch styles support two kinds of admons:
 
- * alert admons (`bootstrap_alert`) with colored background
+ * alert admons (`bootstrap_alert`) with colored background (default)
  * panel admon (`bootstrap_panel`) where only the title has colored background
 
-!bwarning Some warning
-This is the admon for warnings or paying attention.
 
-!bc pycod
-# This is illegal
-s = []
-s[10] = 'some value'
+Below are some examples on admons.
+
+!bwarning Warning: recall to prefix module functions
+
+!bc ipy
+
+In [1]: import numpy as np
+
+In [2]: x = np.linspace(0, 4*np.pi, 11)
+
+In [3]: y = exp(-0.1*x)*sin(x)
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+<ipython-input-3-c1040545fa6c> in <module>()
+----> 1 y = exp(-0.1*x)*sin(x)
+
+NameError: name 'exp' is not defined
+
+In [4]: y = np.exp(-0.1*x)*np.sin(x)
+
+In [5]: y
+Out[5]:
+array([  0.00000000e+00,   8.38747563e-01,   4.57160372e-01,
+        -4.03174933e-01,  -5.75315545e-01,  -1.30666897e-16,
+         4.47461836e-01,   2.43889614e-01,  -2.15089026e-01,
+        -3.06923992e-01,  -1.39418467e-16])
 !ec
-!ewarning
 
-[^admons]: ``Admon'' is a short form of admonition: a
-box that highlights some text. Doconce supports different types
-of admonitions: notice, question, summary, and warning. These
-can have an optional title, and some admonition styles will also
-include an icon image. In addition, there is a block admonition
-without a title and icon.
+
+This is the admon for warnings or paying attention.
+!ewarning
 
 !bnotice Information
 This is the notice admon with nice-to-have information.
@@ -83,14 +71,15 @@ Doconce supports the following elements of Bootstrap elements:
  * Admons
  * Panels (via admons)
  * Jumbotron for title and intro
- * Columns of elements (via the `slidecell` environment)
+ * Columns of content (grid structure via the `slidecell` environment)
  * Tooltips via footnotes
 !esummary
 
-======= More examples on Bootstrap elements =======
+!split
+======= Horizontal alignment of document elements =======
 label{sec:examples}
 
-===== Principles of grid structure =====
+===== Principles of grid structures =====
 
 The HTML page can feature a grid structure of cells, defined by
 the following syntax in case of a 1x3 grid:
@@ -128,6 +117,8 @@ Given a function
 !bt
 \[ f(x) = e^{-ax}\sin wx\thinspace .\]
 !et
+Write a program for evaluating $f(x)$, and test the program
+for the value of $f(0)$.
 !eslidecell
 
 !bslidecell 01
@@ -166,7 +157,7 @@ Terminal> python prog.py
 
 ===== Variation of the previous grid structure using panels =====
 
-# Note: panels are realized as admons
+# Note: panels are realized as admons, using --admon_style=bootstrap_panel
 
 # begin-grid-area
 
@@ -177,6 +168,8 @@ Given a function
 !bt
 \[ f(x) = e^{-ax}\sin wx\thinspace .\]
 !et
+Write a program for evaluating $f(x)$, and test the program
+for the value of $f(0)$.
 !enotice
 !eslidecell
 
