@@ -25,6 +25,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
         <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
         <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
@@ -81,7 +82,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Author:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Mar 29, 2014</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Apr 16, 2014</td>
 </tr>
 </tbody>
 </table>
@@ -140,22 +141,30 @@ cleaner LaTeX and HTML output.</li>
 </ul>
 </div></blockquote>
 <p><strong>History.</strong>
-Doconce was developed in 2006 at a time when most popular
-markup languages used quite some tagging.  Later, almost untagged
-markup languages like <a class="reference external" href="http://daringfireball.net/projects/markdown/">Markdown</a>, <a class="reference external" href="http://fletcherpenney.net/multimarkdown/">MultiMarkdown</a>, and the <a class="reference external" href="http://johnmacfarlane.net/pandoc/">Pandoc</a>  translator became
-popular. Doconce is not a replacement of Pandoc, which is a
-considerably more sophisticated project. However, Doconce can output
-Sphinx (not supported by Pandoc) and has more support for writing
-small and large documents (books in particular) with much mathematics
-and computer code.</p>
+The Doconce development started in 2006 at a time when
+most popular markup languages used quite some tagging (LaTeX,
+reStructuredText, HTML).  Later, almost untagged markup languages,
+especially <a class="reference external" href="http://daringfireball.net/projects/markdown/">Markdown</a>
+and its sisters <a class="reference external" href="http://fletcherpenney.net/multimarkdown/">MultiMarkdown</a> and <a class="reference external" href="http://johnmacfarlane.net/pandoc/">Pandoc-extended
+Markdown</a>, became popular. Doconce
+looks much like Markdown and is in particular close to the
+functionality and nature of MultiMarkdown. The advantage of Doconce,
+however, is a series of features for supporting both small and large
+documents (books in particular) with much mathematics and computer
+code. Doconce can also output Sphinx (not supported by Pandoc or
+MultiMarkdown), a format that is very attractive for presenting
+scientific material on the web.  A recent dialect of Doconce allows
+Markdown syntax, extended with Doconce syntax as you like, as valid
+input to the Doconce translator.</p>
 <p><strong>Disclaimer.</strong>
-Doconce is a simple tool, largely based on interpreting
-and handling text through regular expressions. The possibility for
-tweaking the layout is obviously limited since the text can go to
-all sorts of sophisticated markup languages. Moreover, because of
-limitations of regular expressions, some formatting of Doconce syntax
-may face problems when transformed to HTML, LaTeX, Sphinx, and similar
-formats.</p>
+Doconce applies <em>text transformations</em>, mostly via
+regular expressions. This is not a fool-proof method of translation
+compared to real parsing. The possibility for tweaking the layout in
+the Doconce document is obviously limited (compared to LaTeX and HTML
+in particular) since the text can go to all sorts of sophisticated
+markup languages. This can be compensated, however, by clever use of
+the programmable preprocessors and by automatic editing of the output
+(via regular expressions).</p>
 </div>
 <div class="section" id="installation-of-doconce-and-its-dependencies">
 <h1>Installation of Doconce and its Dependencies<a class="headerlink" href="#installation-of-doconce-and-its-dependencies" title="Permalink to this headline">¶</a></h1>
@@ -808,9 +817,10 @@ a <a class="reference external" href="http://doconce-report-demo.blogspot.no/">s
 for demonstrations of blog posts at <tt class="docutils literal"><span class="pre">blogspot.no</span></tt>.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p class="last">In the readers&#8217; comments after the blog post one cannot paste raw HTML
-code with MathJax
-scripts so there is no support for mathematics in the discussion forum.</p>
+<p class="last">The comment field after the blog post does not recognize MathJax (LaTeX)
+mathematics or code with indentation. However, using a MathJax
+bookmarklet, e.g., at <a class="reference external" href="http://checkmyworking.com/misc/mathjax-bookmarklet/">http://checkmyworking.com/misc/mathjax-bookmarklet/</a>, one can get the mathematics properly rendered. The comment fields are
+not suitable for computer code, though, as HTML tags are not allowed.</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -855,9 +865,9 @@ for mathematics in the text, though.</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; doconce format pandoc mydoc</span>
 </pre></div>
 </div>
-<p>The name of the output file is <tt class="docutils literal"><span class="pre">mydoc.mkd</span></tt>.
+<p>The name of the output file is <tt class="docutils literal"><span class="pre">mydoc.md</span></tt>.
 From this format one can go to numerous other formats:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; pandoc -R -t mediawiki -o mydoc.mwk --toc mydoc.mkd</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; pandoc -R -t mediawiki -o mydoc.mwk --toc mydoc.md</span>
 </pre></div>
 </div>
 <p>Pandoc supports <tt class="docutils literal"><span class="pre">latex</span></tt>, <tt class="docutils literal"><span class="pre">html</span></tt>, <tt class="docutils literal"><span class="pre">odt</span></tt> (OpenOffice), <tt class="docutils literal"><span class="pre">docx</span></tt> (Microsoft
@@ -865,7 +875,10 @@ Word), <tt class="docutils literal"><span class="pre">rtf</span></tt>, <tt class
 Pandoc pass raw HTML or LaTeX to the output format instead of ignoring it,
 while the <tt class="docutils literal"><span class="pre">--toc</span></tt> option generates a table of contents.
 See the <a class="reference external" href="http://johnmacfarlane.net/pandoc/README.html">Pandoc documentation</a>
-for the many features of the <tt class="docutils literal"><span class="pre">pandoc</span></tt> program. The HTML output from
+for the many features of the <tt class="docutils literal"><span class="pre">pandoc</span></tt> program.</p>
+<div class="section" id="markdown-to-html-conversion">
+<h3>Markdown to HTML conversion<a class="headerlink" href="#markdown-to-html-conversion" title="Permalink to this headline">¶</a></h3>
+<p>The HTML output from
 <tt class="docutils literal"><span class="pre">pandoc</span></tt> needs adjustments to provide full support for MathJax LaTeX
 mathematics, and for this purpose one should use <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">md2html</span></tt>:</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; doconce format pandoc mydoc</span>
@@ -873,6 +886,9 @@ mathematics, and for this purpose one should use <tt class="docutils literal"><s
 </pre></div>
 </div>
 <p>The result <tt class="docutils literal"><span class="pre">mydoc.html</span></tt> can be viewed in a browser.</p>
+</div>
+<div class="section" id="using-pandoc-to-go-from-latex-to-ms-word-or-html">
+<h3>Using Pandoc to go from LaTeX to MS Word or HTML<a class="headerlink" href="#using-pandoc-to-go-from-latex-to-ms-word-or-html" title="Permalink to this headline">¶</a></h3>
 <p>Pandoc is useful to go from LaTeX mathematics to, e.g., HTML or MS
 Word.  There are two ways (experiment to find the best one for your
 document): <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span> <span class="pre">pandoc</span></tt> and then translating using <tt class="docutils literal"><span class="pre">doconce</span>
@@ -894,15 +910,13 @@ inline verbatim text.  Moreover, quite some additional <tt class="docutils liter
 <tt class="docutils literal"><span class="pre">.tex</span></tt> files to successfully have mathematics that is well translated
 to MS Word.  Also when going to reStructuredText using Pandoc, it can
 be advantageous to go via LaTeX.</p>
-<p>Here is an example where we take a Doconce snippet (without title, author,
-and date), maybe with some unnumbered equations, and quickly generate
-HTML with mathematics displayed my MathJax:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; doconce format pandoc mydoc</span>
-<span class="go">Terminal&gt; pandoc -t html -o mydoc.html -s --mathjax mydoc.mkd</span>
-</pre></div>
 </div>
-<p>The <tt class="docutils literal"><span class="pre">-s</span></tt> option adds a proper header and footer to the <tt class="docutils literal"><span class="pre">mydoc.html</span></tt> file.
-This recipe is a quick way of makeing HTML notes with (some) mathematics.</p>
+<div class="section" id="strict-markdown">
+<h3>Strict Markdown<a class="headerlink" href="#strict-markdown" title="Permalink to this headline">¶</a></h3>
+<p>The option <tt class="docutils literal"><span class="pre">--strict_markdown_output</span></tt> generates plain or strict
+Markdown without the many extension that Pandoc accepts in Markdown
+syntax.</p>
+</div>
 <div class="section" id="github-flavored-markdown">
 <h3>GitHub-flavored Markdown<a class="headerlink" href="#github-flavored-markdown" title="Permalink to this headline">¶</a></h3>
 <p>Adding the command-line option <tt class="docutils literal"><span class="pre">github-md</span></tt> turns on the GutHub-flavored
@@ -957,6 +971,28 @@ the Write field of
 the GitHub issue tracker. Turning on Preview shows the typesetting of
 the quote, compute code, inline verbatim, headings, the task list, and
 the table.</p>
+</div>
+<div class="section" id="id4">
+<h3>MultiMarkdown<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>The option <tt class="docutils literal"><span class="pre">--multimarkdown_output</span></tt> generates the MultiMarkdown
+version of Markdown (as opposed to Pandoc-extended Markdown (default),
+strict Markdown, or GitHub-flavored Markdown).</p>
+</div>
+<div class="section" id="strapdown-rendering-of-markdown-text">
+<h3>Strapdown rendering of Markdown text<a class="headerlink" href="#strapdown-rendering-of-markdown-text" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="http://strapdownjs.com">Strapdown</a> is a tool that can render Markdown
+text nicely in a web browser by just inserting an HTML header and
+footer in the Markdown file and load the file into a browser.
+The option <tt class="docutils literal"><span class="pre">--strapdown</span></tt> outputs the relevant header and footer.
+The output file must be renamed such that it gets the extension <tt class="docutils literal"><span class="pre">.html</span></tt>:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; doconce format pandoc mydoc --strict_markdown_output \</span>
+<span class="go">          --strapdown --bootstrap_bootwatch_theme=slate</span>
+<span class="go">Terminal&gt; mv mydoc.md mydoc.html</span>
+</pre></div>
+</div>
+<p>The <tt class="docutils literal"><span class="pre">--bootstrap_bootwatch_theme=theme</span></tt> option is used to choose
+a <a class="reference external" href="http://bootswatch.com/">Bootswatch</a> theme whose names are
+found on the <a class="reference external" href="http://strapdownjs.com">Strapdown page</a>.</p>
 </div>
 </div>
 <div class="section" id="latex">
@@ -3394,7 +3430,7 @@ set the (terminal) prompt that prefixes the command:</p>
 <span class="target" id="index-8"></span><span class="target" id="index-9"></span><span class="target" id="index-10"></span><span class="target" id="index-11"></span><span class="target" id="index-12"></span><span class="target" id="index-13"></span><p id="index-14">Doconce supports tags for <em>emphasized phrases</em>, <strong>boldface phrases</strong>,
 and <tt class="docutils literal"><span class="pre">verbatim</span> <span class="pre">text</span></tt> (also called type writer text, for inline code),
 &lt;font color=&#8221;blue&#8221;&gt;colored words&lt;/font&gt;,
-plus LaTeX/TeX inline mathematics, such as <span class="math">\nu = \sin(x)</span>.
+plus LaTeX/TeX inline mathematics, such as <span class="math">\(\nu = \sin(x)\)</span>.
 Links are easy to define, either with a <a class="reference external" href="http://google.com">text</a> or
 just a plain <a class="reference external" href="http://google.com">http://google.com</a>.
 Also non-breaking space (to avoid linebreak) can be specified.</p>
@@ -3522,7 +3558,7 @@ in double quotes:</p>
 <p>resulting in the link <a class="reference external" href="manual.html">manual.html</a>.</p>
 </div>
 <div class="section" id="quotes">
-<h3>Quotes<a class="headerlink" href="#quotes" title="Permalink to this headline">¶</a></h3>
+<span id="index-15"></span><h3>Quotes<a class="headerlink" href="#quotes" title="Permalink to this headline">¶</a></h3>
 <p>Quotations employ either the emphasized font or double quotation marks.
 In the latter case, one should not use the character <tt class="docutils literal"><span class="pre">&quot;</span></tt> but rather
 the (LaTeX-inspired) construction with double backticks and two single
@@ -3542,7 +3578,7 @@ used in computer code and preprocessor instructions (URLs and hyperlinks
 should not give hits in the above regular expressions).</p>
 </div>
 <div class="section" id="non-breaking-space">
-<h3>Non-Breaking Space<a class="headerlink" href="#non-breaking-space" title="Permalink to this headline">¶</a></h3>
+<span id="index-16"></span><h3>Non-Breaking Space<a class="headerlink" href="#non-breaking-space" title="Permalink to this headline">¶</a></h3>
 <p>The non-breaking space character is tilde:</p>
 <div class="highlight-text"><div class="highlight"><pre>Here comes a long line with a specification of a number with unit at the end,
 which is an example that requires a &quot;non-breaking space character&quot;:
@@ -3561,7 +3597,7 @@ meaning, as in ``y = ~x`</cite>, is not affected. The non-breaking character onl
 works between characters, numbers, and the math dollar sign.)</div></blockquote>
 </div>
 <div class="section" id="footnotes">
-<h3>Footnotes<a class="headerlink" href="#footnotes" title="Permalink to this headline">¶</a></h3>
+<span id="index-17"></span><h3>Footnotes<a class="headerlink" href="#footnotes" title="Permalink to this headline">¶</a></h3>
 <p>Typesetting of footnotes employs a common email or Extended Markdown syntax:</p>
 <div class="highlight-text"><div class="highlight"><pre>Footnotes are typeset according to the output format[^typesetting].
 The syntax is optional spaces, opening bracket, hat,
@@ -3685,9 +3721,9 @@ dollar signs and separated by a pipe symbol, the expression to the
 left is used in formats with LaTeX support (<tt class="docutils literal"><span class="pre">latex</span></tt>, <tt class="docutils literal"><span class="pre">pdflatex</span></tt>, <tt class="docutils literal"><span class="pre">html</span></tt>,
 <tt class="docutils literal"><span class="pre">sphinx</span></tt>, <tt class="docutils literal"><span class="pre">mwiki</span></tt>), while the expression to the right is used for
 all other formats.  The above text is typeset as &#8220;Here is an example
-on a linear system <span class="math">{\bf A}{\bf x} = {\bf b}</span>, where <span class="math">\bf A</span>
-is an <span class="math">n\times n</span> matrix, and <span class="math">\bf x</span> and <span class="math">\bf b</span>
-are vectors of length <span class="math">n</span>.&#8221;</p>
+on a linear system <span class="math">\({\bf A}{\bf x} = {\bf b}\)</span>, where <span class="math">\(\bf A\)</span>
+is an <span class="math">\(n\times n\)</span> matrix, and <span class="math">\(\bf x\)</span> and <span class="math">\(\bf b\)</span>
+are vectors of length <span class="math">\(n\)</span>.&#8221;</p>
 </div>
 </div>
 <div class="section" id="comments">
@@ -3722,7 +3758,7 @@ preprocessor and an if-else block with a variable that is undefined
 </div>
 <div class="section" id="cross-referencing">
 <h2>Cross-Referencing<a class="headerlink" href="#cross-referencing" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="index-15"></span><span class="target" id="index-16"></span><p id="index-17">References and labels are supported. The syntax is simple:</p>
+<span class="target" id="index-18"></span><span class="target" id="index-19"></span><p id="index-20">References and labels are supported. The syntax is simple:</p>
 <div class="highlight-text"><div class="highlight"><pre>label{section:verbatim}   # defines a label
 For more information we refer to Section ref{section:verbatim}.
 </pre></div>
@@ -3988,7 +4024,7 @@ or Mako preprocessors.</p>
 </div>
 <div class="section" id="index">
 <h2>Index<a class="headerlink" href="#index" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="index-18"></span><span class="target" id="index-19"></span><p id="index-20">An index can be created for the <tt class="docutils literal"><span class="pre">latex</span></tt>, <tt class="docutils literal"><span class="pre">rst</span></tt>, and <tt class="docutils literal"><span class="pre">sphinx</span></tt> formats
+<span class="target" id="index-21"></span><span class="target" id="index-22"></span><p id="index-23">An index can be created for the <tt class="docutils literal"><span class="pre">latex</span></tt>, <tt class="docutils literal"><span class="pre">rst</span></tt>, and <tt class="docutils literal"><span class="pre">sphinx</span></tt> formats
 by the <tt class="docutils literal"><span class="pre">idx</span></tt> keyword, following a LaTeX-inspired syntax:</p>
 <div class="highlight-text"><div class="highlight"><pre>idx{some index entry}
 idx{main entry!subentry}
@@ -4436,6 +4472,21 @@ there is no argument specifying the environment, one assumes some
 plain verbatim typesetting (for <tt class="docutils literal"><span class="pre">ptex2tex</span></tt> this means the <tt class="docutils literal"><span class="pre">ccq</span></tt>
 environment, which is defined in the config file <tt class="docutils literal"><span class="pre">.ptex2tex.cfg</span></tt>,
 while for Sphinx it defaults to the <tt class="docutils literal"><span class="pre">python</span></tt> environment).</p>
+<p>By default, <tt class="docutils literal"><span class="pre">pro</span></tt> is used for complete programs in Python, <tt class="docutils literal"><span class="pre">cod</span></tt> is
+for a code snippet in Python, while <tt class="docutils literal"><span class="pre">xcod</span></tt> and <tt class="docutils literal"><span class="pre">xpro</span></tt> implies computer
+language specific typesetting where <tt class="docutils literal"><span class="pre">x</span></tt> can be <tt class="docutils literal"><span class="pre">f</span></tt> for Fortran, <tt class="docutils literal"><span class="pre">c</span></tt>
+for C, <tt class="docutils literal"><span class="pre">cpp</span></tt> for C++, <tt class="docutils literal"><span class="pre">sh</span></tt> for Unix shells, <tt class="docutils literal"><span class="pre">pl</span></tt> for Perl, <tt class="docutils literal"><span class="pre">m</span></tt> for
+Matlab, <tt class="docutils literal"><span class="pre">cy</span></tt> for Cython, <tt class="docutils literal"><span class="pre">r</span></tt> for Ruby, and <tt class="docutils literal"><span class="pre">py</span></tt> for Python.  The
+argument <tt class="docutils literal"><span class="pre">sys</span></tt> means by default <tt class="docutils literal"><span class="pre">console</span></tt> for Sphinx and
+<tt class="docutils literal"><span class="pre">CodeTerminal</span></tt> (ptex2tex environent) for LaTeX. Other specifications
+are <tt class="docutils literal"><span class="pre">dat</span></tt> for a data file or print out, <tt class="docutils literal"><span class="pre">latex</span></tt> for LaTeX`, <tt class="docutils literal"><span class="pre">js</span></tt> for
+JavaScript, <tt class="docutils literal"><span class="pre">html</span></tt> for HTML, <tt class="docutils literal"><span class="pre">pyshell</span></tt> for plain interactive Python
+shell sessions, and <tt class="docutils literal"><span class="pre">ipy</span></tt> for interactive IPython sessions (the latter
+does not introduce any environment in <tt class="docutils literal"><span class="pre">sphinx</span></tt> output, as interactive
+sessions are automatically recognized and handled in that format).
+(All these definitions of the arguments after <tt class="docutils literal"><span class="pre">!bc</span></tt> can be redefined
+in the <tt class="docutils literal"><span class="pre">.ptex2tex.cfg</span></tt> configuration file for ptex2tex/LaTeX and in
+the <tt class="docutils literal"><span class="pre">sphinx</span> <span class="pre">code-blocks</span></tt> comments for Sphinx, see below.)</p>
 <p>Since the config file for <tt class="docutils literal"><span class="pre">ptex2tex</span></tt> and command-line arguments for
 the alternative <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">ptex2tex</span></tt> program can define what some environments
 map onto with respect to typesetting, a similar possibility is
@@ -4446,69 +4497,56 @@ optional comment to be inserted in the Doconce source file, e.g.,</p>
 <div class="highlight-text"><div class="highlight"><pre># sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console
 </pre></div>
 </div>
-<p>Here, three arguments are defined: <tt class="docutils literal"><span class="pre">pycod</span></tt> for Python code,
-<tt class="docutils literal"><span class="pre">cod</span></tt> also for Python code, <tt class="docutils literal"><span class="pre">cppcod</span></tt> for C++ code, and <tt class="docutils literal"><span class="pre">sys</span></tt>
-for terminal sessions. The same arguments would be defined
-in <tt class="docutils literal"><span class="pre">.ptex2tex.cfg</span></tt> for how to typeset the blocks in LaTeX using
+<p>Here, three arguments are defined: <tt class="docutils literal"><span class="pre">!bc</span> <span class="pre">pycod</span></tt> maps on to the
+Pygments style <tt class="docutils literal"><span class="pre">python</span></tt> for Python code,
+<tt class="docutils literal"><span class="pre">!bc</span> <span class="pre">cod</span></tt> maps on to the Pygments style <tt class="docutils literal"><span class="pre">fortran</span></tt> for Fortran
+code, <tt class="docutils literal"><span class="pre">!bc</span> <span class="pre">cppcod</span></tt>  maps on to the Pygments style <tt class="docutils literal"><span class="pre">c++</span></tt> for C++ code,
+and <tt class="docutils literal"><span class="pre">!bc</span> <span class="pre">sys</span></tt> maps on to the Pygments <tt class="docutils literal"><span class="pre">console</span></tt> style for
+terminal sessions. The same arguments would be defined
+in <tt class="docutils literal"><span class="pre">.ptex2tex.cfg</span></tt> or on the command line for <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">ptex2tex</span></tt>
+for how to typeset the blocks in LaTeX using
 various verbatim styles (Pygments can also be used in a LaTeX
 context).</p>
-<p>By default, <tt class="docutils literal"><span class="pre">pro</span></tt> is used for complete programs in Python, <tt class="docutils literal"><span class="pre">cod</span></tt> is
-for a code snippet in Python, while <tt class="docutils literal"><span class="pre">xcod</span></tt> and <tt class="docutils literal"><span class="pre">xpro</span></tt> implies computer
-language specific typesetting where <tt class="docutils literal"><span class="pre">x</span></tt> can be <tt class="docutils literal"><span class="pre">f</span></tt> for Fortran, <tt class="docutils literal"><span class="pre">c</span></tt>
-for C, <tt class="docutils literal"><span class="pre">cpp</span></tt> for C++, <tt class="docutils literal"><span class="pre">sh</span></tt> for Unix shells, <tt class="docutils literal"><span class="pre">pl</span></tt> for Perl, <tt class="docutils literal"><span class="pre">m</span></tt> for
-Matlab, <tt class="docutils literal"><span class="pre">cy</span></tt> for Cython, and <tt class="docutils literal"><span class="pre">py</span></tt> for Python.  The argument <tt class="docutils literal"><span class="pre">sys</span></tt>
-means by default <tt class="docutils literal"><span class="pre">console</span></tt> for Sphinx and <tt class="docutils literal"><span class="pre">CodeTerminal</span></tt> (ptex2tex
-environent) for LaTeX. Other specifications are <tt class="docutils literal"><span class="pre">dat</span></tt> for a data file
-or print out, and <tt class="docutils literal"><span class="pre">ipy</span></tt> for interactive Python sessions (the latter
-does not introduce any environment  in <tt class="docutils literal"><span class="pre">sphinx</span></tt> output, as interactive
-sessions are automatically recognized and handled).  All these
-definitions of the arguments after <tt class="docutils literal"><span class="pre">!bc</span></tt> can be redefined in the
-<tt class="docutils literal"><span class="pre">.ptex2tex.cfg</span></tt> configuration file for ptex2tex/LaTeX and in the
-<tt class="docutils literal"><span class="pre">sphinx</span> <span class="pre">code-blocks</span></tt> comments for Sphinx. Support for other languages
-is easily added.</p>
-<p>The enclosing <tt class="docutils literal"><span class="pre">!ec</span></tt> tag of verbatim computer code blocks must
+<div class="admonition-tip admonition">
+<p class="first admonition-title">Tip</p>
+<p class="last">The enclosing <tt class="docutils literal"><span class="pre">!ec</span></tt> tag of verbatim computer code blocks must
 be followed by a newline.  A common error in list environments is to
 forget to indent the plain text surrounding the code blocks. In
 general, we recommend to use paragraph headings instead of list items
 in combination with code blocks (it usually looks better, and some
 common errors are naturally avoided).</p>
+</div>
 <p>Here is a verbatim code block with Python code (<tt class="docutils literal"><span class="pre">pycod</span></tt> style):</p>
 <div class="highlight-text"><div class="highlight"><pre>!bc pycod
-# regular expressions for inline tags:
-inline_tag_begin = r&#39;(?P&lt;begin&gt;(^|\s+))&#39;
-inline_tag_end = r&#39;(?P&lt;end&gt;[.,?!;:)\s])&#39;
-INLINE_TAGS = {
-    &#39;emphasize&#39;:
-    r&#39;%s\*(?P&lt;subst&gt;[^ `][^*`]*)\*%s&#39; % \
-    (inline_tag_begin, inline_tag_end),
-    &#39;verbatim&#39;:
-    r&#39;%s`(?P&lt;subst&gt;[^ ][^`]*)`%s&#39; % \
-    (inline_tag_begin, inline_tag_end),
-    &#39;bold&#39;:
-    r&#39;%s_(?P&lt;subst&gt;[^ `][^_`]*)_%s&#39; % \
-    (inline_tag_begin, inline_tag_end),
-}
+def f(x, y):
+    return x + y
+
+# Main program
+from math import pi
+print &#39;Testing f:&#39;, f(pi, 0)
 !ec
 </pre></div>
 </div>
 <p>The typeset result of this block becomes</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># regular expressions for inline tags:</span>
-<span class="n">inline_tag_begin</span> <span class="o">=</span> <span class="s">r&#39;(?P&lt;begin&gt;(^|\s+))&#39;</span>
-<span class="n">inline_tag_end</span> <span class="o">=</span> <span class="s">r&#39;(?P&lt;end&gt;[.,?!;:)\s])&#39;</span>
-<span class="n">INLINE_TAGS</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s">&#39;emphasize&#39;</span><span class="p">:</span>
-    <span class="s">r&#39;</span><span class="si">%s</span><span class="s">\*(?P&lt;subst&gt;[^ `][^*`]*)\*</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> \
-    <span class="p">(</span><span class="n">inline_tag_begin</span><span class="p">,</span> <span class="n">inline_tag_end</span><span class="p">),</span>
-    <span class="s">&#39;verbatim&#39;</span><span class="p">:</span>
-    <span class="s">r&#39;</span><span class="si">%s</span><span class="s">`(?P&lt;subst&gt;[^ ][^`]*)`</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> \
-    <span class="p">(</span><span class="n">inline_tag_begin</span><span class="p">,</span> <span class="n">inline_tag_end</span><span class="p">),</span>
-    <span class="s">&#39;bold&#39;</span><span class="p">:</span>
-    <span class="s">r&#39;</span><span class="si">%s</span><span class="s">_(?P&lt;subst&gt;[^ `][^_`]*)_</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> \
-    <span class="p">(</span><span class="n">inline_tag_begin</span><span class="p">,</span> <span class="n">inline_tag_end</span><span class="p">),</span>
-<span class="p">}</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+
+<span class="c"># Main program</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">pi</span>
+<span class="k">print</span> <span class="s">&#39;Testing f:&#39;</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">pi</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>And here is a C++ code snippet (<tt class="docutils literal"><span class="pre">cppcod</span></tt> style):</p>
+<div class="highlight-text"><div class="highlight"><pre>!bc cppcod
+void myfunc(double* x, const double&amp; myarr) {
+    for (int i = 1; i &lt; myarr.size(); i++) {
+        myarr[i] = myarr[i] - x[i]*myarr[i-1]
+    }
+}
+!ec
+</pre></div>
+</div>
+<p>with the rendered result</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="kt">void</span> <span class="nf">myfunc</span><span class="p">(</span><span class="kt">double</span><span class="o">*</span> <span class="n">x</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span><span class="o">&amp;</span> <span class="n">myarr</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">myarr</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">myarr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">myarr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">myarr</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
@@ -4742,7 +4780,7 @@ This is a hint.
 
 !bblock This is a block.
 A block has never any icon. It is mostly used in slides
-and give the text block effect in LaTeX beamer.
+and gives the text block effect in LaTeX beamer.
 !eblock
 
 !bnotice Going deeper
@@ -4867,8 +4905,8 @@ available. The syntax goes like</p>
 </div>
 <p>resulting in</p>
 <div class="math">
-<p><span class="math">\nabla\cdot\boldsymbol{u} = 0\quad\hbox{(mass balance)}</span></p>
-</div><p>Admonitions are usually used to typeset something that should be distinct
+\[\nabla\cdot\boldsymbol{u} = 0\quad\hbox{(mass balance)}\]</div>
+<p>Admonitions are usually used to typeset something that should be distinct
 from the running text: a warning, a remark, a notification, a question,
 a summary, while a box is often used to highlight a key finding
 in the running text: an equation, a hypothesis, a theorem, a
@@ -5172,7 +5210,7 @@ just providing the slide set as an overview or study guide.
 The slides can either be ordinary, separate slides - or just
 a document with much briefer text and emphasis on bullet lists,
 figures, mathematical formulas, admonitions, and little text.</p>
-<p>Points:</p>
+<p>Points to consider (just sketches...):</p>
 <blockquote>
 <div><ul class="simple">
 <li>Only some pygments style are suited for a particular reveal.js/deck.js
@@ -5181,6 +5219,15 @@ theme</li>
 <li>Admon styles are erased in reveal</li>
 <li>Use <tt class="docutils literal"><span class="pre">--keep_pygments_html_bg</span></tt> to avoid big changes in background
 color for code</li>
+<li>Can use PowerPoint or Google Presenter to design a slide and then
+save as image (GP directly, PP via Save as Picture or
+Save As + choosing image type,
+and then all or present slide only), then import image in doconce.
+LaTeX formulas in image are easiest created as PNGs using
+<a class="reference external" href="http://www.codecogs.com/latex/eqneditor.php">http://www.codecogs.com/latex/eqneditor.php</a>.</li>
+<li>From doconce to PP or GP: use the latexslides script to convert
+to PDFs and odp format, convert odp to ppt interactively or with
+<tt class="docutils literal"><span class="pre">unoconv</span></tt>.</li>
 </ul>
 </div></blockquote>
 <div class="section" id="overview">
@@ -5710,9 +5757,9 @@ the document are first copied into verbatim blocks.</p>
 <p>All verbatim and TeX blocks are removed and stored elsewhere
 to ensure that no formatting rules are not applied to these blocks.</p>
 <p>The text is examined line by line for typesetting of lists, as well as
-handling of blank lines and comment lines.
-List parsing needs some awareness of the context.
-Each line is interpreted by a regular expression</p>
+handling of blank lines and comment lines.  List parsing needs some
+awareness of the context.  Each line is interpreted by a regular
+expression</p>
 <div class="highlight-text"><div class="highlight"><pre>(?P&lt;indent&gt; *(?P&lt;listtype&gt;[*o-] )? *)(?P&lt;keyword&gt;[^:]+?:)?(?P&lt;text&gt;.*)\s?
 </pre></div>
 </div>
@@ -5738,7 +5785,27 @@ the document to another, more complex format, say reST or
 LaTeX, and work further on the document in this format.</p>
 <div class="section" id="typesetting-of-function-arguments-return-values-and-variables">
 <h2>Typesetting of Function Arguments, Return Values, and Variables<a class="headerlink" href="#typesetting-of-function-arguments-return-values-and-variables" title="Permalink to this headline">¶</a></h2>
-<p>As part of comments (or doc strings) in computer code one often wishes
+<div class="admonition-note admonition">
+<p class="first admonition-title">Note</p>
+<p>This text is somewhat outdated.
+Now Doconce supports NumPy-style docstrings. Doconce can also do
+automatic references to Python documentation, say the <a class="reference external" href="http://docs.python.org/2.7/library/math.html#module-math" title="(in Python v2.7)"><tt class="xref py py-mod docutils literal"><span class="pre">math</span></tt></a>
+module, but the link only works in case of Sphinx output.
+Typical syntax is</p>
+<div class="highlight-text"><div class="highlight"><pre>With :mod:`numpy:numpy` and the :func:`scipy:scipy.io.loadmat` function in
+the :mod:`scipy:scipy.io` module, we can ...
+</pre></div>
+</div>
+<p>The prefix <tt class="docutils literal"><span class="pre">numpy</span></tt>, <tt class="docutils literal"><span class="pre">scipy</span></tt>, and <tt class="docutils literal"><span class="pre">python</span></tt> (for the standard library)
+are predefined in <tt class="docutils literal"><span class="pre">conf.py</span></tt> as generated by the <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">sphinx_dir</span></tt>
+command.</p>
+<p>(More info in the Sphinx API doc by the author - under development.)</p>
+<p class="last">A Mako function can provide greater flexibility such that
+other formats than Sphinx can take advantage of such references
+(full URL can be built into the function, depending on the format).</p>
+</div>
+<blockquote>
+<div><p>As part of comments (or doc strings) in computer code one often wishes
 to explain what a function takes of arguments and what the return
 values are. Similarly, it is desired to document class, instance, and
 module variables.  Such arguments/variables can be typeset as
@@ -5774,6 +5841,7 @@ the iterations.</td>
 </tr>
 </tbody>
 </table>
+</div></blockquote>
 </div></blockquote>
 </div>
 </div>
@@ -5911,7 +5979,12 @@ Springer,
 </li>
 <li><a class="reference internal" href="#blog-posts">Blog Posts</a></li>
 <li><a class="reference internal" href="#pandoc-and-markdown">Pandoc and Markdown</a><ul>
+<li><a class="reference internal" href="#markdown-to-html-conversion">Markdown to HTML conversion</a></li>
+<li><a class="reference internal" href="#using-pandoc-to-go-from-latex-to-ms-word-or-html">Using Pandoc to go from LaTeX to MS Word or HTML</a></li>
+<li><a class="reference internal" href="#strict-markdown">Strict Markdown</a></li>
 <li><a class="reference internal" href="#github-flavored-markdown">GitHub-flavored Markdown</a></li>
+<li><a class="reference internal" href="#id4">MultiMarkdown</a></li>
+<li><a class="reference internal" href="#strapdown-rendering-of-markdown-text">Strapdown rendering of Markdown text</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#latex">LaTeX</a></li>

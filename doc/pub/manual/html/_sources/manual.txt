@@ -9,7 +9,7 @@ Doconce Description
 ===================
 
 :Author: Hans Petter Langtangen
-:Date: Mar 29, 2014
+:Date: Apr 16, 2014
 
 .. lines beginning with # are doconce comment lines
 
@@ -85,29 +85,31 @@ Here are some Doconce features:
     cleaner LaTeX and HTML output.
 
 **History.**
-Doconce was developed in 2006 at a time when most popular
-markup languages used quite some tagging.  Later, almost untagged
-markup languages like `Markdown <http://daringfireball.net/projects/markdown/>`_, `MultiMarkdown <http://fletcherpenney.net/multimarkdown/>`_, and the `Pandoc <http://johnmacfarlane.net/pandoc/>`_  translator became
-popular. Doconce is not a replacement of Pandoc, which is a
-considerably more sophisticated project. However, Doconce can output
-Sphinx (not supported by Pandoc) and has more support for writing
-small and large documents (books in particular) with much mathematics
-and computer code.
-
-.. Doconce plays with Markdown in the sense that (almost all) Markdown
-
-.. input is allowed.
-
-
+The Doconce development started in 2006 at a time when
+most popular markup languages used quite some tagging (LaTeX,
+reStructuredText, HTML).  Later, almost untagged markup languages,
+especially `Markdown <http://daringfireball.net/projects/markdown/>`_
+and its sisters `MultiMarkdown <http://fletcherpenney.net/multimarkdown/>`_ and `Pandoc-extended
+Markdown <http://johnmacfarlane.net/pandoc/>`_, became popular. Doconce
+looks much like Markdown and is in particular close to the
+functionality and nature of MultiMarkdown. The advantage of Doconce,
+however, is a series of features for supporting both small and large
+documents (books in particular) with much mathematics and computer
+code. Doconce can also output Sphinx (not supported by Pandoc or
+MultiMarkdown), a format that is very attractive for presenting
+scientific material on the web.  A recent dialect of Doconce allows
+Markdown syntax, extended with Doconce syntax as you like, as valid
+input to the Doconce translator.
 
 **Disclaimer.**
-Doconce is a simple tool, largely based on interpreting
-and handling text through regular expressions. The possibility for
-tweaking the layout is obviously limited since the text can go to
-all sorts of sophisticated markup languages. Moreover, because of
-limitations of regular expressions, some formatting of Doconce syntax
-may face problems when transformed to HTML, LaTeX, Sphinx, and similar
-formats.
+Doconce applies *text transformations*, mostly via
+regular expressions. This is not a fool-proof method of translation
+compared to real parsing. The possibility for tweaking the layout in
+the Doconce document is obviously limited (compared to LaTeX and HTML
+in particular) since the text can go to all sorts of sophisticated
+markup languages. This can be compensated, however, by clever use of
+the programmable preprocessors and by automatic editing of the output
+(via regular expressions).
 
 
 
@@ -942,9 +944,10 @@ for demonstrations of blog posts at ``blogspot.no``.
 
 
 .. warning::
-    In the readers' comments after the blog post one cannot paste raw HTML
-    code with MathJax
-    scripts so there is no support for mathematics in the discussion forum.
+    The comment field after the blog post does not recognize MathJax (LaTeX)
+    mathematics or code with indentation. However, using a MathJax
+    bookmarklet, e.g., at `<http://checkmyworking.com/misc/mathjax-bookmarklet/>`_, one can get the mathematics properly rendered. The comment fields are
+    not suitable for computer code, though, as HTML tags are not allowed.
 
 
 
@@ -1004,23 +1007,30 @@ Pandoc and Markdown
 
 Output in Pandoc's extended Markdown format results from
 
+
 .. code-block:: console
 
         Terminal> doconce format pandoc mydoc
 
-The name of the output file is ``mydoc.mkd``.
+The name of the output file is ``mydoc.md``.
 From this format one can go to numerous other formats:
+
 
 .. code-block:: console
 
-        Terminal> pandoc -R -t mediawiki -o mydoc.mwk --toc mydoc.mkd
+        Terminal> pandoc -R -t mediawiki -o mydoc.mwk --toc mydoc.md
 
 Pandoc supports ``latex``, ``html``, ``odt`` (OpenOffice), ``docx`` (Microsoft
 Word), ``rtf``, ``texinfo``, to mention some. The ``-R`` option makes
 Pandoc pass raw HTML or LaTeX to the output format instead of ignoring it,
 while the ``--toc`` option generates a table of contents.
 See the `Pandoc documentation <http://johnmacfarlane.net/pandoc/README.html>`_
-for the many features of the ``pandoc`` program. The HTML output from
+for the many features of the ``pandoc`` program.
+
+Markdown to HTML conversion
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The HTML output from
 ``pandoc`` needs adjustments to provide full support for MathJax LaTeX
 mathematics, and for this purpose one should use ``doconce md2html``:
 
@@ -1031,6 +1041,9 @@ mathematics, and for this purpose one should use ``doconce md2html``:
         Terminal> doconce m2html mydoc
 
 The result ``mydoc.html`` can be viewed in a browser.
+
+Using Pandoc to go from LaTeX to MS Word or HTML
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Pandoc is useful to go from LaTeX mathematics to, e.g., HTML or MS
 Word.  There are two ways (experiment to find the best one for your
@@ -1057,17 +1070,12 @@ replace`` and ``doconce subst`` edits might be needed on the ``.mkd`` or
 to MS Word.  Also when going to reStructuredText using Pandoc, it can
 be advantageous to go via LaTeX.
 
-Here is an example where we take a Doconce snippet (without title, author,
-and date), maybe with some unnumbered equations, and quickly generate
-HTML with mathematics displayed my MathJax:
+Strict Markdown
+~~~~~~~~~~~~~~~
 
-.. code-block:: console
-
-        Terminal> doconce format pandoc mydoc
-        Terminal> pandoc -t html -o mydoc.html -s --mathjax mydoc.mkd
-
-The ``-s`` option adds a proper header and footer to the ``mydoc.html`` file.
-This recipe is a quick way of makeing HTML notes with (some) mathematics.
+The option ``--strict_markdown_output`` generates plain or strict
+Markdown without the many extension that Pandoc accepts in Markdown
+syntax.
 
 GitHub-flavored Markdown
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1132,6 +1140,33 @@ the GitHub issue tracker. Turning on Preview shows the typesetting of
 the quote, compute code, inline verbatim, headings, the task list, and
 the table.
 
+MultiMarkdown
+~~~~~~~~~~~~~
+
+The option ``--multimarkdown_output`` generates the MultiMarkdown
+version of Markdown (as opposed to Pandoc-extended Markdown (default),
+strict Markdown, or GitHub-flavored Markdown).
+
+
+Strapdown rendering of Markdown text
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+`Strapdown <http://strapdownjs.com>`_ is a tool that can render Markdown
+text nicely in a web browser by just inserting an HTML header and
+footer in the Markdown file and load the file into a browser.
+The option ``--strapdown`` outputs the relevant header and footer.
+The output file must be renamed such that it gets the extension ``.html``:
+
+
+.. code-block:: console
+
+        Terminal> doconce format pandoc mydoc --strict_markdown_output \
+                  --strapdown --bootstrap_bootwatch_theme=slate
+        Terminal> mv mydoc.md mydoc.html
+
+The ``--bootstrap_bootwatch_theme=theme`` option is used to choose
+a `Bootswatch <http://bootswatch.com/>`_ theme whose names are
+found on the `Strapdown page <http://strapdownjs.com>`_.
 
 LaTeX
 -----
@@ -4152,6 +4187,10 @@ resulting in the link `<manual.html>`_.
 .. adjusted.)
 
 
+
+.. index:: quotation syntax
+
+
 Quotes
 ~~~~~~
 
@@ -4181,6 +4220,9 @@ used in computer code and preprocessor instructions (URLs and hyperlinks
 should not give hits in the above regular expressions).
 
 
+.. index:: non-breaking space
+
+
 Non-Breaking Space
 ~~~~~~~~~~~~~~~~~~
 
@@ -4208,6 +4250,10 @@ This is rendered as
     meaning, as in ``y = ~x``, is not affected. The non-breaking character only
     works between characters, numbers, and the math dollar sign.)
 
+
+
+
+.. index:: footnotes
 
 
 Footnotes
@@ -5336,6 +5382,23 @@ plain verbatim typesetting (for ``ptex2tex`` this means the ``ccq``
 environment, which is defined in the config file ``.ptex2tex.cfg``,
 while for Sphinx it defaults to the ``python`` environment).
 
+By default, ``pro`` is used for complete programs in Python, ``cod`` is
+for a code snippet in Python, while ``xcod`` and ``xpro`` implies computer
+language specific typesetting where ``x`` can be ``f`` for Fortran, ``c``
+for C, ``cpp`` for C++, ``sh`` for Unix shells, ``pl`` for Perl, ``m`` for
+Matlab, ``cy`` for Cython, ``r`` for Ruby, and ``py`` for Python.  The
+argument ``sys`` means by default ``console`` for Sphinx and
+``CodeTerminal`` (ptex2tex environent) for LaTeX. Other specifications
+are ``dat`` for a data file or print out, ``latex`` for LaTeX`, ``js`` for
+JavaScript, ``html`` for HTML, ``pyshell`` for plain interactive Python
+shell sessions, and ``ipy`` for interactive IPython sessions (the latter
+does not introduce any environment in ``sphinx`` output, as interactive
+sessions are automatically recognized and handled in that format).
+(All these definitions of the arguments after ``!bc`` can be redefined
+in the ``.ptex2tex.cfg`` configuration file for ptex2tex/LaTeX and in
+the ``sphinx code-blocks`` comments for Sphinx, see below.)
+
+
 Since the config file for ``ptex2tex`` and command-line arguments for
 the alternative ``doconce ptex2tex`` program can define what some environments
 map onto with respect to typesetting, a similar possibility is
@@ -5349,27 +5412,16 @@ optional comment to be inserted in the Doconce source file, e.g.,
 
         # sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console
 
-Here, three arguments are defined: ``pycod`` for Python code,
-``cod`` also for Python code, ``cppcod`` for C++ code, and ``sys``
-for terminal sessions. The same arguments would be defined
-in ``.ptex2tex.cfg`` for how to typeset the blocks in LaTeX using
+Here, three arguments are defined: ``!bc pycod`` maps on to the
+Pygments style ``python`` for Python code,
+``!bc cod`` maps on to the Pygments style ``fortran`` for Fortran
+code, ``!bc cppcod``  maps on to the Pygments style ``c++`` for C++ code,
+and ``!bc sys`` maps on to the Pygments ``console`` style for
+terminal sessions. The same arguments would be defined
+in ``.ptex2tex.cfg`` or on the command line for ``doconce ptex2tex``
+for how to typeset the blocks in LaTeX using
 various verbatim styles (Pygments can also be used in a LaTeX
 context).
-
-By default, ``pro`` is used for complete programs in Python, ``cod`` is
-for a code snippet in Python, while ``xcod`` and ``xpro`` implies computer
-language specific typesetting where ``x`` can be ``f`` for Fortran, ``c``
-for C, ``cpp`` for C++, ``sh`` for Unix shells, ``pl`` for Perl, ``m`` for
-Matlab, ``cy`` for Cython, and ``py`` for Python.  The argument ``sys``
-means by default ``console`` for Sphinx and ``CodeTerminal`` (ptex2tex
-environent) for LaTeX. Other specifications are ``dat`` for a data file
-or print out, and ``ipy`` for interactive Python sessions (the latter
-does not introduce any environment  in ``sphinx`` output, as interactive
-sessions are automatically recognized and handled).  All these
-definitions of the arguments after ``!bc`` can be redefined in the
-``.ptex2tex.cfg`` configuration file for ptex2tex/LaTeX and in the
-``sphinx code-blocks`` comments for Sphinx. Support for other languages
-is easily added.
 
 .. (Any sphinx code-block comment, whether inside verbatim code
 
@@ -5380,33 +5432,32 @@ is easily added.
 .. first one is used.)
 
 
-The enclosing ``!ec`` tag of verbatim computer code blocks must
-be followed by a newline.  A common error in list environments is to
-forget to indent the plain text surrounding the code blocks. In
-general, we recommend to use paragraph headings instead of list items
-in combination with code blocks (it usually looks better, and some
-common errors are naturally avoided).
+
+.. admonition:: Tip
+
+   The enclosing ``!ec`` tag of verbatim computer code blocks must
+   be followed by a newline.  A common error in list environments is to
+   forget to indent the plain text surrounding the code blocks. In
+   general, we recommend to use paragraph headings instead of list items
+   in combination with code blocks (it usually looks better, and some
+   common errors are naturally avoided).
+
+
+
 
 Here is a verbatim code block with Python code (``pycod`` style):
+
 
 .. code-block:: text
 
 
         !bc pycod
-        # regular expressions for inline tags:
-        inline_tag_begin = r'(?P<begin>(^|\s+))'
-        inline_tag_end = r'(?P<end>[.,?!;:)\s])'
-        INLINE_TAGS = {
-            'emphasize':
-            r'%s\*(?P<subst>[^ `][^*`]*)\*%s' % \
-            (inline_tag_begin, inline_tag_end),
-            'verbatim':
-            r'%s`(?P<subst>[^ ][^`]*)`%s' % \
-            (inline_tag_begin, inline_tag_end),
-            'bold':
-            r'%s_(?P<subst>[^ `][^_`]*)_%s' % \
-            (inline_tag_begin, inline_tag_end),
-        }
+        def f(x, y):
+            return x + y
+        
+        # Main program
+        from math import pi
+        print 'Testing f:', f(pi, 0)
         !ec
 
 The typeset result of this block becomes
@@ -5414,22 +5465,30 @@ The typeset result of this block becomes
 
 .. code-block:: python
 
-        # regular expressions for inline tags:
-        inline_tag_begin = r'(?P<begin>(^|\s+))'
-        inline_tag_end = r'(?P<end>[.,?!;:)\s])'
-        INLINE_TAGS = {
-            'emphasize':
-            r'%s\*(?P<subst>[^ `][^*`]*)\*%s' % \
-            (inline_tag_begin, inline_tag_end),
-            'verbatim':
-            r'%s`(?P<subst>[^ ][^`]*)`%s' % \
-            (inline_tag_begin, inline_tag_end),
-            'bold':
-            r'%s_(?P<subst>[^ `][^_`]*)_%s' % \
-            (inline_tag_begin, inline_tag_end),
-        }
+        def f(x, y):
+            return x + y
+        
+        # Main program
+        from math import pi
+        print 'Testing f:', f(pi, 0)
+
 
 And here is a C++ code snippet (``cppcod`` style):
+
+
+.. code-block:: text
+
+
+        !bc cppcod
+        void myfunc(double* x, const double& myarr) {
+            for (int i = 1; i < myarr.size(); i++) {
+                myarr[i] = myarr[i] - x[i]*myarr[i-1]
+            }
+        }
+        !ec
+
+with the rendered result
+
 
 .. code-block:: c++
 
@@ -5727,7 +5786,7 @@ Here are a few examples:
         
         !bblock This is a block.
         A block has never any icon. It is mostly used in slides
-        and give the text block effect in LaTeX beamer.
+        and gives the text block effect in LaTeX beamer.
         !eblock
         
         !bnotice Going deeper
@@ -6221,7 +6280,7 @@ The slides can either be ordinary, separate slides - or just
 a document with much briefer text and emphasis on bullet lists,
 figures, mathematical formulas, admonitions, and little text.
 
-Points:
+Points to consider (just sketches...):
 
  * Only some pygments style are suited for a particular reveal.js/deck.js
    theme
@@ -6232,6 +6291,17 @@ Points:
 
  * Use ``--keep_pygments_html_bg`` to avoid big changes in background
    color for code
+
+ * Can use PowerPoint or Google Presenter to design a slide and then
+   save as image (GP directly, PP via Save as Picture or
+   Save As + choosing image type,
+   and then all or present slide only), then import image in doconce.
+   LaTeX formulas in image are easiest created as PNGs using
+   `<http://www.codecogs.com/latex/eqneditor.php>`_.
+
+ * From doconce to PP or GP: use the latexslides script to convert
+   to PDFs and odp format, convert odp to ppt interactively or with
+   ``unoconv``.
 
 Overview
 --------
@@ -6873,9 +6943,9 @@ All verbatim and TeX blocks are removed and stored elsewhere
 to ensure that no formatting rules are not applied to these blocks.
 
 The text is examined line by line for typesetting of lists, as well as
-handling of blank lines and comment lines.
-List parsing needs some awareness of the context.
-Each line is interpreted by a regular expression
+handling of blank lines and comment lines.  List parsing needs some
+awareness of the context.  Each line is interpreted by a regular
+expression
 
 
 .. code-block:: text
@@ -6912,42 +6982,77 @@ LaTeX, and work further on the document in this format.
 Typesetting of Function Arguments, Return Values, and Variables
 ---------------------------------------------------------------
 
-As part of comments (or doc strings) in computer code one often wishes
-to explain what a function takes of arguments and what the return
-values are. Similarly, it is desired to document class, instance, and
-module variables.  Such arguments/variables can be typeset as
-description lists of the form listed below and *placed at the end of
-the doc string*. Note that ``argument``, ``keyword argument``, ``return``,
-``instance variable``, ``class variable``, and ``module variable`` are the
-only legal keywords (descriptions) for the description list in this
-context.  If the output format is Epytext (Epydoc) or Sphinx, such lists of
-arguments and variables are nicely formatted.
+
+.. admonition:: Note
+
+   This text is somewhat outdated.
+   Now Doconce supports NumPy-style docstrings. Doconce can also do
+   automatic references to Python documentation, say the :mod:`math`
+   module, but the link only works in case of Sphinx output.
+   Typical syntax is
+   
+   
+   .. code-block:: text
+   
+   
+           With :mod:`numpy:numpy` and the :func:`scipy:scipy.io.loadmat` function in
+           the :mod:`scipy:scipy.io` module, we can ...
+   
+   The prefix ``numpy``, ``scipy``, and ``python`` (for the standard library)
+   are predefined in ``conf.py`` as generated by the ``doconce sphinx_dir``
+   command.
+   
+   (More info in the Sphinx API doc by the author - under development.)
+   
+   A Mako function can provide greater flexibility such that
+   other formats than Sphinx can take advantage of such references
+   (full URL can be built into the function, depending on the format).
 
 
-.. code-block:: text
 
 
-            - argument x: x value (float),
-              which must be a positive number.
-            - keyword argument tolerance: tolerance (float) for stopping
-              the iterations.
-            - return: the root of the equation (float), if found, otherwise None.
-            - instance variable eta: surface elevation (array).
-            - class variable items: the total number of MyClass objects (int).
-            - module variable debug: True: debug mode is on; False: no debugging
-              (bool variable).
 
 
-The result depends on the output format: all formats except Epytext
-and Sphinx just typeset the list as a list with keywords.
+..
 
-    :var x: 
-      x value (float),
-      which must be a positive number.
+    As part of comments (or doc strings) in computer code one often wishes
+    to explain what a function takes of arguments and what the return
+    values are. Similarly, it is desired to document class, instance, and
+    module variables.  Such arguments/variables can be typeset as
+    description lists of the form listed below and *placed at the end of
+    the doc string*. Note that ``argument``, ``keyword argument``, ``return``,
+    ``instance variable``, ``class variable``, and ``module variable`` are the
+    only legal keywords (descriptions) for the description list in this
+    context.  If the output format is Epytext (Epydoc) or Sphinx, such lists of
+    arguments and variables are nicely formatted.
+    
+    
+    .. code-block:: text
+    
+    
+                - argument x: x value (float),
+                  which must be a positive number.
+                - keyword argument tolerance: tolerance (float) for stopping
+                  the iterations.
+                - return: the root of the equation (float), if found, otherwise None.
+                - instance variable eta: surface elevation (array).
+                - class variable items: the total number of MyClass objects (int).
+                - module variable debug: True: debug mode is on; False: no debugging
+                  (bool variable).
+    
+    
+    The result depends on the output format: all formats except Epytext
+    and Sphinx just typeset the list as a list with keywords.
+    
+        :var x: 
+          x value (float),
+          which must be a positive number.
+    
+        :var tolerance: 
+          tolerance (float) for stopping
+          the iterations.
 
-    :var tolerance: 
-      tolerance (float) for stopping
-      the iterations.
+
 
 References
 ==========

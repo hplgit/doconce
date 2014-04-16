@@ -45,8 +45,10 @@ such that the verbatim environments become like
      'Name of theme for HTML style (solarized, vagrant, bloodish, bootstrap, bootswatch, bootswatch_*, ...).'),
     ('--bootstrap_FlatUI',
      'Add the Flat UI modification of standard Bootstrap layout themes.'),
-    ('--bootstrap_code=',
-     'off: enable normal inline verbatim font (not the red Boostrap color). on: default.'),
+    ('--html_code_style=',
+     'off, inherit, transparent: enable normal inline verbatim font where foreground and background color is inherited from the surroundnings (e.g., to avoid the red Boostrap color). on: default.'),
+    ('--html_pre_style=',
+     'off, inherit: let code blocks inside <pre> tags have foreground and background color inherited from the surroundnings. on: default.'),
     ('--html_template=',
      """Specify an HTML template with header/footer in which the doconce
 document is embedded."""),

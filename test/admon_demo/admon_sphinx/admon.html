@@ -25,6 +25,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
         <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
         <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
@@ -132,21 +133,21 @@ The box is more aimed at framing a law or an equation.</p>
 <p>First a simple block with text, an equation, and a list:</p>
 <p>A generic equation</p>
 <div class="math">
-<p><span class="math">f(x) = 0</span></p>
-</div><p>must be solved by a numerical method, such as</p>
+\[f(x) = 0\]</div>
+<p>must be solved by a numerical method, such as</p>
 <blockquote>
 <div><ul class="simple">
 <li>Newton&#8217;s method</li>
 <li>The Bisection method</li>
-<li>Fixed-point (Picard) iteration by rewriting <span class="math">f(x)=x - g(x)</span></li>
+<li>Fixed-point (Picard) iteration by rewriting <span class="math">\(f(x)=x - g(x)\)</span></li>
 <li>The Secant method</li>
 </ul>
 </div></blockquote>
 <p>Now test a box with equation only (note that this line continues the
 box, it is not a new paragraph):</p>
 <div class="math">
-<p><span class="math">f(x) = \sin(x)e^{1-x}</span></p>
-</div><p>Let&#8217;s begin a new paragraph and show a box with code only:</p>
+\[f(x) = \sin(x)e^{1-x}\]</div>
+<p>Let&#8217;s begin a new paragraph and show a box with code only:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">some_code</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="n">exp</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
@@ -176,7 +177,7 @@ And more and more text.</p>
 </div>
 <p>Test warning with title:</p>
 <div class="admonition-title-ending-with-math-math-sqrt-2-approx-1-4 admonition">
-<p class="first admonition-title">Title ending with math <span class="math">\sqrt{2}\approx 1.4</span></p>
+<p class="first admonition-title">Title ending with math <span class="math">\(\sqrt{2}\approx 1.4\)</span></p>
 <p>And here comes some text with bad news in larger font.</p>
 <p>Also some code:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
@@ -191,7 +192,7 @@ And more and more text.</p>
 <p>Test warning with large title with math:
 (we have no impact on the font size in the title in Sphinx)</p>
 <div class="admonition-watch-out-for-math-nabla-cdot-boldsymbol-u-0-equations admonition">
-<p class="first admonition-title">Watch out for <span class="math">\nabla\cdot\boldsymbol{u}=0</span> equations</p>
+<p class="first admonition-title">Watch out for <span class="math">\(\nabla\cdot\boldsymbol{u}=0\)</span> equations</p>
 <p class="last">Divergence freedom is often problematic from a numerical point
 of view.</p>
 </div>
@@ -220,11 +221,11 @@ code is present).</p>
 <div class="admonition-note-eventually admonition">
 <p class="first admonition-title">Note, eventually</p>
 <p>Ah, we are soon close to the end (with illegal font size specification!).
-But first a bit of math where we define <span class="math">\theta</span> and <span class="math">\boldsymbol{r}</span>:</p>
+But first a bit of math where we define <span class="math">\(\theta\)</span> and <span class="math">\(\boldsymbol{r}\)</span>:</p>
 <div class="last math">
-<p><span class="math">\theta &amp;= q^2,\\
-\boldsymbol{r} &amp;= \varrho\boldsymbol{i}</span></p>
-</div></div>
+\[\begin{split}\theta &amp;= q^2,\\
+\boldsymbol{r} &amp;= \varrho\boldsymbol{i}\end{split}\]</div>
+</div>
 <div class="admonition-point1 admonition">
 <p class="first admonition-title">Point1</p>
 <p class="last">Ah, we are soon close to the end.</p>
@@ -276,11 +277,11 @@ page in the hope that some admonitions will experience a page break,
 which the LaTeX environment should handle with ease.</p>
 <p>Let us start with some equations:</p>
 <div class="math">
-<p><span class="math">\frac{Du}{dt} &amp;= 0
+\[\begin{split}\frac{Du}{dt} &amp;= 0
 \\
 \frac{1}{2} &amp;= {1/2}\\
-\frac{1}{2}\pmb{x} &amp;= \pmb{n}</span></p>
-</div><p>The implementation of such complicated equations in computer
+\frac{1}{2}\pmb{x} &amp;= \pmb{n}\end{split}\]</div>
+<p>The implementation of such complicated equations in computer
 code is task that this &#8220;Going deeper&#8221; environment targets.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">Dudt</span><span class="p">(</span><span class="n">u</span><span class="p">):</span>
     <span class="n">r</span> <span class="o">=</span> <span class="n">diff</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span> <span class="o">+</span> <span class="n">u</span><span class="o">*</span><span class="n">grad</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
