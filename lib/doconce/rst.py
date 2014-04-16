@@ -1,7 +1,7 @@
 import re, os, sys
 from common import remove_code_and_tex, insert_code_and_tex, indent_lines, \
     table_analysis, plain_exercise, bibliography, \
-    cite_with_multiple_args2multiple_cites
+    cite_with_multiple_args2multiple_cites, _abort
 from html import html_movie
 
 # replacement patterns for substitutions of inline tags
@@ -543,7 +543,8 @@ def define(FILENAME_EXTENSION,
 
 """
     # http://stackoverflow.com/questions/11830242/non-breaking-space
-    if '~' in filestr:
+    from common import INLINE_TAGS
+    if re.search(INLINE_TAGS['non-breaking-space'], filestr):
         nbsp = """
 .. |nbsp| unicode:: 0xA0
    :trim:
