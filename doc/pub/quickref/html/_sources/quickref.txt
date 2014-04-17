@@ -9,7 +9,7 @@ Doconce Quick Reference
 -----------------------
 
 :Author: Hans Petter Langtangen
-:Date: Apr 16, 2014
+:Date: Apr 17, 2014
 
 **WARNING: This quick reference is very incomplete!**
 

@@ -10,8 +10,8 @@ Automatically generated HTML file from Doconce source
 
 
 
-<!-- Bootstrap style: bootstrap -->
-<link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap style: bootswatch -->
+<link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/cosmo/bootstrap.min.css" rel="stylesheet">
 <!-- not necessary
 <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 -->
@@ -35,7 +35,7 @@ end of tocinfo -->
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
   TeX: {
-     equationNumbers: {  autoNumber: "none"  },
+     equationNumbers: {  autoNumber: "AMS"  },
      extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
   }
 });
@@ -85,12 +85,12 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: " Introduction " --> <li>  <a href="._admon_bootstrap_alert001.html#___sec0"> Introduction </a></li>
-     <!-- navigation toc: " Code " --> <li> &nbsp;  <a href="._admon_bootstrap_alert001.html#___sec1"> Code </a></li>
-     <!-- navigation toc: " Quotes and boxes " --> <li> &nbsp;  <a href="._admon_bootstrap_alert001.html#___sec2"> Quotes and boxes </a></li>
-     <!-- navigation toc: " Admonitions " --> <li> &nbsp;  <a href="._admon_bootstrap_alert001.html#___sec3"> Admonitions </a></li>
-     <!-- navigation toc: " Going deeper environments " --> <li> &nbsp;  <a href="._admon_bootstrap_alert001.html#___sec4"> Going deeper environments </a></li>
-     <!-- navigation toc: " The end " --> <li> &nbsp;  <a href="._admon_bootstrap_alert001.html#___sec5"> The end </a></li>
+     <!-- navigation toc: " Introduction " --> <li>  <a href="#___sec0"> Introduction </a></li>
+     <!-- navigation toc: " Code " --> <li> &nbsp;  <a href="#___sec1"> Code </a></li>
+     <!-- navigation toc: " Quotes and boxes " --> <li> &nbsp;  <a href="#___sec2"> Quotes and boxes </a></li>
+     <!-- navigation toc: " Admonitions " --> <li> &nbsp;  <a href="#___sec3"> Admonitions </a></li>
+     <!-- navigation toc: " Going deeper environments " --> <li> &nbsp;  <a href="#___sec4"> Going deeper environments </a></li>
+     <!-- navigation toc: " The end " --> <li> &nbsp;  <a href="#___sec5"> The end </a></li>
 
         </ul>
       </li>
@@ -101,7 +101,30 @@ $$
 
 <div class="container">
 
-<a name="part0001"></a>
+<!-- ------------------- main content ---------------------- -->
+
+
+<title>Testing admons</title>
+
+<div class="jumbotron">
+<center><h1>Testing admons</h1></center>  <!-- document title -->
+
+<p>
+<!-- author(s): hpl -->
+
+<center>
+<b>hpl</b> 
+</center>
+
+
+<p>
+<!-- institution(s) -->
+<p>
+<center><h4>Apr 17, 2014</h4></center> <!-- date -->
+<p>
+<!-- potential-jumbotron-button -->
+</div> <!-- end jumbotron -->
+
 <!-- !split -->
 
 <h2>Introduction  <a name="___sec0"></a></h2>
@@ -217,7 +240,11 @@ Let's begin a new paragraph and show a box with code only:
 Let us start with a plain warning environment.
 
 <p>
-<div class="alert alert-block alert-danger alert-text-normal"><b>Warning.</b>
+<div class="panel panel-warning">
+  <div class="panel-heading">
+  <h3 class="panel-title">Warning</h3>
+  </div>
+<div class="panel-body">
 And here is a warning about something to pay attention to. We
 test how the heading behave and add quite some extra texts
 in comparison with the other admons.
@@ -237,13 +264,18 @@ And more and more text.
 And more and more text.
 And more and more text.
 </div>
+</div>
 
 
 <p>
 Test warning with title:
 
 <p>
-<div class="alert alert-block alert-danger alert-text-large"><b>Title ending with math \( \sqrt{2}\approx 1.4 \).</b>
+<div class="panel panel-warning">
+  <div class="panel-heading">
+  <h3 class="panel-title">Title ending with math \( \sqrt{2}\approx 1.4 \)</h3>
+  </div>
+<div class="panel-body">
 And here comes some text with bad news in larger font.
 
 <p>
@@ -252,7 +284,7 @@ Also some code:
 <p>
 
 <!-- code=python (from !bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
     <span style="color: #008000; font-weight: bold">return</span> x
 </pre></div>
 <p>
@@ -261,9 +293,10 @@ And a complete program
 <p>
 
 <!-- code=python (from !bc pypro) typeset with pygments style "default" -->
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&quot;Hello, World!&quot;</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&quot;Hello, World!&quot;</span>
 </pre></div>
 <p>
+</div>
 </div>
 
 
@@ -271,9 +304,14 @@ And a complete program
 Test warning with large title with math:
 
 <p>
-<div class="alert alert-block alert-danger alert-text-large"><b>Watch out for \( \nabla\cdot\boldsymbol{u}=0 \) equations.</b>
+<div class="panel panel-warning">
+  <div class="panel-heading">
+  <h3 class="panel-title">Watch out for \( \nabla\cdot\boldsymbol{u}=0 \) equations</h3>
+  </div>
+<div class="panel-body">
 Divergence freedom is often problematic from a numerical point
 of view.
+</div>
 </div>
 
 
@@ -281,7 +319,8 @@ of view.
 Then we test a block, which is guaranteed to never have any admon icon.
 
 <p>
-<div class="alert alert-block alert-success alert-text-small"><b>Block with title.</b>
+<div class="panel panel-default">
+<div class="panel-body">
 Here is a block of text with title. It is typeset
 <em>without any icon</em> and is useful when you want some admons with icon
 and some without. With the small font size, as used here, one can have
@@ -289,12 +328,15 @@ more comment-style text or text that really goes deeper or talks
 about fun facts that are not strictly necessary for the main flow
 of understanding.
 </div>
+</div>
 
 
 <p>
-<div class="alert alert-block alert-success alert-text-normal"><b></b>
+<div class="panel panel-default">
+<div class="panel-body">
 Here is a block of text with no title. As above, it is typeset without any icon
 and is useful when you want some admons with icon and some without.
+</div>
 </div>
 
 
@@ -308,7 +350,11 @@ code is present).
 <!-- those formats automatically add : to the admonition title. -->
 
 <p>
-<div class="alert alert-block alert-success alert-text-illegal-size"><b>Note, eventually!</b>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+  <h3 class="panel-title">Note, eventually!</h3>
+  </div>
+<div class="panel-body">
 Ah, we are soon close to the end (with illegal font size specification!).
 But first a bit of math where we define \( \theta \) and \( \boldsymbol{r} \):
 
@@ -320,34 +366,54 @@ $$
 \end{align*}
 $$
 </div>
+</div>
 
 
 <p>
 <!-- Test one word with a number -->
 
 <p>
-<div class="alert alert-block alert-success alert-text-normal"><b>Point1.</b>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+  <h3 class="panel-title">Point1</h3>
+  </div>
+<div class="panel-body">
 Ah, we are soon close to the end.
 </div>
-
-
-<p>
-<div class="alert alert-block alert-info alert-text-normal"><b>Question.</b>
-So, how many admonition environments does Doconce support?
 </div>
 
 
 <p>
-<div class="alert alert-block alert-info alert-text-normal"><b>Question.</b>
+<div class="panel panel-success">
+  <div class="panel-heading">
+  <h3 class="panel-title">Question</h3>
+  </div>
+<div class="panel-body">
+So, how many admonition environments does Doconce support?
+</div>
+</div>
+
+
+<p>
+<div class="panel panel-success">
+  <div class="panel-heading">
+  <h3 class="panel-title">Question</h3>
+  </div>
+<div class="panel-body">
 
 <ol>
  <li> Once more, how many admonition environments does Doconce support?</li>
 </ol>
 </div>
+</div>
 
 
 <p>
-<div class="alert alert-block alert-danger alert-text-normal"><b>Tip.</b>
+<div class="panel panel-warning">
+  <div class="panel-heading">
+  <h3 class="panel-title">Tip</h3>
+  </div>
+<div class="panel-body">
 It is of outmost important to
 
 <p>
@@ -362,12 +428,13 @@ Because here the thing is to do
 <p>
 
 <!-- code=python (from !bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">urllib</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">urllib</span>
 
 <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">grab</span>(url, filename):
     urllib<span style="color: #666666">.</span>urlretrieve(url, filename<span style="color: #666666">=</span>filename)
 </pre></div>
 <p>
+</div>
 </div>
 
 
@@ -375,8 +442,13 @@ Because here the thing is to do
 Next is a warning without a title ("none" implies no title).
 
 <p>
-<div class="alert alert-block alert-danger alert-text-normal"><b></b>
+<div class="panel panel-warning">
+  <div class="panel-heading">
+  <h3 class="panel-title"></h3>
+  </div>
+<div class="panel-body">
 And here comes some text with bad news.
+</div>
 </div>
 
 
@@ -387,7 +459,11 @@ Here is a long notice environment with a custom title and much
 text, math and code.
 
 <p>
-<div class="alert alert-block alert-success alert-text-normal"><b>Going deeper.</b>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+  <h3 class="panel-title">Going deeper.</h3>
+  </div>
+<div class="panel-body">
 We have some equations that should be preceded by much text, so the
 task is to write and write. The number of words, and not the
 meaning, is what counts here. We need desperately to fill up the
@@ -415,7 +491,7 @@ code is task that this "Going deeper" environment targets.
 <p>
 
 <!-- code=python (from !bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">Dudt</span>(u):
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">Dudt</span>(u):
     r <span style="color: #666666">=</span> diff(u, t) <span style="color: #666666">+</span> u<span style="color: #666666">*</span>grad(u)
     <span style="color: #008000; font-weight: bold">return</span> r
 
@@ -429,7 +505,7 @@ Longer computer code requires vertical space:
 <p>
 
 <!-- code=python (from !bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Diff</span>:
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Diff</span>:
     <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__init__</span>(<span style="color: #008000">self</span>, f, h<span style="color: #666666">=1E-5</span>):
         <span style="color: #008000">self</span><span style="color: #666666">.</span>f <span style="color: #666666">=</span> f
         <span style="color: #008000">self</span><span style="color: #666666">.</span>h <span style="color: #666666">=</span> <span style="color: #008000">float</span>(h)
@@ -474,6 +550,7 @@ And then we add a figure too.
 <p>
 <center><p><img src="../../doc/src/manual/fig/wave1D.png" align="bottom" width=400></p></center>
 </div>
+</div>
 
 
 <h3>The end  <a name="___sec5"></a></h3>
@@ -484,10 +561,15 @@ for the novice",
 just because we can.
 
 <p>
-<div class="alert alert-block alert-warning alert-text-normal"><b>Concluding remarks, for the novice.</b>
+<div class="panel panel-danger">
+  <div class="panel-heading">
+  <h3 class="panel-title">Concluding remarks, for the novice</h3>
+  </div>
+<div class="panel-body">
 We can summarize the most important things with admons: they have
 a different typesetting, and they may have a symbol.
 Titles should be optional.
+</div>
 </div>
 
 
@@ -496,14 +578,6 @@ Titles should be optional.
 The <code>remarks</code> and <code>hint</code> environments are not allowed outside
 exercises (and problems and projects too).
 
-<p>
-<ul class="pager">
-  <li class="previous">
-    <a href="._admon_bootstrap_alert000.html">&larr; Prev</a>
-  </li>
-
-
-</ul>
 <!-- ------------------- end of main content --------------- -->
 
 </div>  <!-- end container -->

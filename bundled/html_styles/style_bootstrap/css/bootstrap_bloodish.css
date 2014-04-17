@@ -268,7 +268,7 @@ input[type="color"],
 }
 
 .panel {
-  border: 2px solid #404040;
+  border: 1px solid #404040;
 }
 .panel-default > .panel-heading {
   background-color: #8a0808;

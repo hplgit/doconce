@@ -10,11 +10,35 @@ Automatically generated HTML file from Doconce source
 
 
 
-<!-- Bootstrap style: bootstrap -->
-<link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
-<!-- not necessary
-<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
--->
+<style type="text/css">
+    /* blueish2 style */
+
+    /* Color definitions:  http://www.december.com/html/spec/color0.html
+       CSS examples:       http://www.w3schools.com/css/css_examples.asp */
+
+    body {
+      margin-top: 1.0em;
+      background-color: #ffffff;
+      font-family: Helvetica, Arial, FreeSans, san-serif;
+      color: #000000;
+    }
+    h1 { font-size: 1.8em; color: #1e36ce; }
+    h2 { font-size: 1.6em; color: #1e36ce; }
+    h3 { font-size: 1.4em; color: #1e36ce; }
+    a { color: #1e36ce; text-decoration:none; }
+    tt { font-family: "Courier New", Courier; }
+    
+    pre, code { font-size: 90%; line-height: 1.6em; }
+    
+    p { text-indent: 0px; }
+    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    p.caption { width: 80%; font-style: normal; text-align: left; }
+    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    .alert-text-small   { font-size: 80%%;  }
+    .alert-text-large   { font-size: 130%%; }
+    .alert-text-normal  { font-size: 90%%;  }
+
+</style>
 
 </head>
 
@@ -35,7 +59,7 @@ end of tocinfo -->
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
   TeX: {
-     equationNumbers: {  autoNumber: "none"  },
+     equationNumbers: {  autoNumber: "AMS"  },
      extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
   }
 });
@@ -71,37 +95,26 @@ $$
 
 
     
-<div class="navbar navbar-default navbar-fixed-top">
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-    <a class="navbar-brand" href="admon.html">Testing admons</a>
-  </div>
-  <div class="navbar-collapse collapse navbar-responsive-collapse">
-    <ul class="nav navbar-nav navbar-right">
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
-        <ul class="dropdown-menu">
-     <!-- navigation toc: " Introduction " --> <li>  <a href="._admon_bootstrap_alert001.html#___sec0"> Introduction </a></li>
-     <!-- navigation toc: " Code " --> <li> &nbsp;  <a href="._admon_bootstrap_alert001.html#___sec1"> Code </a></li>
-     <!-- navigation toc: " Quotes and boxes " --> <li> &nbsp;  <a href="._admon_bootstrap_alert001.html#___sec2"> Quotes and boxes </a></li>
-     <!-- navigation toc: " Admonitions " --> <li> &nbsp;  <a href="._admon_bootstrap_alert001.html#___sec3"> Admonitions </a></li>
-     <!-- navigation toc: " Going deeper environments " --> <li> &nbsp;  <a href="._admon_bootstrap_alert001.html#___sec4"> Going deeper environments </a></li>
-     <!-- navigation toc: " The end " --> <li> &nbsp;  <a href="._admon_bootstrap_alert001.html#___sec5"> The end </a></li>
+<!-- ------------------- main content ---------------------- -->
 
-        </ul>
-      </li>
-    </ul>
-  </div>
-</div>
-</div>
 
-<div class="container">
+<title>Testing admons</title>
 
-<a name="part0001"></a>
+<center><h1>Testing admons</h1></center>  <!-- document title -->
+
+<p>
+<!-- author(s): hpl -->
+
+<center>
+<b>hpl</b> 
+</center>
+
+
+<p>
+<!-- institution(s) -->
+<p>
+<center><h4>Apr 17, 2014</h4></center> <!-- date -->
+<p>
 <!-- !split -->
 
 <h2>Introduction  <a name="___sec0"></a></h2>
@@ -217,8 +230,15 @@ Let's begin a new paragraph and show a box with code only:
 Let us start with a plain warning environment.
 
 <p>
-<div class="alert alert-block alert-danger alert-text-normal"><b>Warning.</b>
-And here is a warning about something to pay attention to. We
+
+<table width="95%" border="0">
+<tr>
+<td width="25" align="center" valign="top">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/lyx_warning.png" hspace="5" alt="warning"></td>
+<th align="left" valign="middle"><b>Warning.</b></th>
+</tr>
+<tr><td>&nbsp;</td> <td align="left" valign="top"><p>
+<div class="alert-text-normal">And here is a warning about something to pay attention to. We
 test how the heading behave and add quite some extra texts
 in comparison with the other admons.
 
@@ -235,16 +255,24 @@ And more and more text.
 And more and more text.
 And more and more text.
 And more and more text.
-And more and more text.
-</div>
+And more and more text.</div>
+</p></td></tr>
+</table>
 
 
 <p>
 Test warning with title:
 
 <p>
-<div class="alert alert-block alert-danger alert-text-large"><b>Title ending with math \( \sqrt{2}\approx 1.4 \).</b>
-And here comes some text with bad news in larger font.
+
+<table width="95%" border="0">
+<tr>
+<td width="25" align="center" valign="top">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/lyx_warning.png" hspace="5" alt="warning"></td>
+<th align="left" valign="middle"><b>Title ending with math \( \sqrt{2}\approx 1.4 \).</b></th>
+</tr>
+<tr><td>&nbsp;</td> <td align="left" valign="top"><p>
+<div class="alert-text-large">And here comes some text with bad news in larger font.
 
 <p>
 Also some code:
@@ -252,7 +280,7 @@ Also some code:
 <p>
 
 <!-- code=python (from !bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
     <span style="color: #008000; font-weight: bold">return</span> x
 </pre></div>
 <p>
@@ -261,41 +289,60 @@ And a complete program
 <p>
 
 <!-- code=python (from !bc pypro) typeset with pygments style "default" -->
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&quot;Hello, World!&quot;</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&quot;Hello, World!&quot;</span>
 </pre></div>
-<p>
-</div>
+<p></div>
+</p></td></tr>
+</table>
 
 
 <p>
 Test warning with large title with math:
 
 <p>
-<div class="alert alert-block alert-danger alert-text-large"><b>Watch out for \( \nabla\cdot\boldsymbol{u}=0 \) equations.</b>
-Divergence freedom is often problematic from a numerical point
-of view.
-</div>
+
+<table width="95%" border="0">
+<tr>
+<td width="25" align="center" valign="top">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/lyx_warning.png" hspace="5" alt="warning"></td>
+<th align="left" valign="middle"><b>Watch out for \( \nabla\cdot\boldsymbol{u}=0 \) equations.</b></th>
+</tr>
+<tr><td>&nbsp;</td> <td align="left" valign="top"><p>
+<div class="alert-text-large">Divergence freedom is often problematic from a numerical point
+of view.</div>
+</p></td></tr>
+</table>
 
 
 <p>
 Then we test a block, which is guaranteed to never have any admon icon.
 
 <p>
-<div class="alert alert-block alert-success alert-text-small"><b>Block with title.</b>
-Here is a block of text with title. It is typeset
+
+<table width="95%" border="0">
+<tr><th align="left" valign="middle"><b>Block with title.</b></th>
+</tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;</td> <td align="left" valign="top"><p>
+<div class="alert-text-small">Here is a block of text with title. It is typeset
 <em>without any icon</em> and is useful when you want some admons with icon
 and some without. With the small font size, as used here, one can have
 more comment-style text or text that really goes deeper or talks
 about fun facts that are not strictly necessary for the main flow
-of understanding.
-</div>
+of understanding.</div>
+</p></td></tr>
+</table>
 
 
 <p>
-<div class="alert alert-block alert-success alert-text-normal"><b></b>
-Here is a block of text with no title. As above, it is typeset without any icon
-and is useful when you want some admons with icon and some without.
-</div>
+
+<table width="95%" border="0">
+<tr><th align="left" valign="middle"><b></b></th>
+</tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;</td> <td align="left" valign="top"><p>
+<div class="alert-text-normal">Here is a block of text with no title. As above, it is typeset without any icon
+and is useful when you want some admons with icon and some without.</div>
+</p></td></tr>
+</table>
 
 
 <p>
@@ -308,8 +355,15 @@ code is present).
 <!-- those formats automatically add : to the admonition title. -->
 
 <p>
-<div class="alert alert-block alert-success alert-text-illegal-size"><b>Note, eventually!</b>
-Ah, we are soon close to the end (with illegal font size specification!).
+
+<table width="95%" border="0">
+<tr>
+<td width="25" align="center" valign="top">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/lyx_notice.png" hspace="5" alt="notice"></td>
+<th align="left" valign="middle"><b>Note, eventually!</b></th>
+</tr>
+<tr><td>&nbsp;</td> <td align="left" valign="top"><p>
+<div class="alert-text-illegal-size">Ah, we are soon close to the end (with illegal font size specification!).
 But first a bit of math where we define \( \theta \) and \( \boldsymbol{r} \):
 
 <p>
@@ -318,37 +372,69 @@ $$
 \theta &= q^2,\\
 \boldsymbol{r} &= \varrho\boldsymbol{i}
 \end{align*}
-$$
-</div>
+$$</div>
+</p></td></tr>
+</table>
 
 
 <p>
 <!-- Test one word with a number -->
 
 <p>
-<div class="alert alert-block alert-success alert-text-normal"><b>Point1.</b>
-Ah, we are soon close to the end.
-</div>
+
+<table width="95%" border="0">
+<tr>
+<td width="25" align="center" valign="top">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/lyx_notice.png" hspace="5" alt="notice"></td>
+<th align="left" valign="middle"><b>Point1.</b></th>
+</tr>
+<tr><td>&nbsp;</td> <td align="left" valign="top"><p>
+<div class="alert-text-normal">Ah, we are soon close to the end.</div>
+</p></td></tr>
+</table>
 
 
 <p>
-<div class="alert alert-block alert-info alert-text-normal"><b>Question.</b>
-So, how many admonition environments does Doconce support?
-</div>
+
+<table width="95%" border="0">
+<tr>
+<td width="25" align="center" valign="top">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/lyx_question.png" hspace="5" alt="question"></td>
+<th align="left" valign="middle"><b>Question.</b></th>
+</tr>
+<tr><td>&nbsp;</td> <td align="left" valign="top"><p>
+<div class="alert-text-normal">So, how many admonition environments does Doconce support?</div>
+</p></td></tr>
+</table>
 
 
 <p>
-<div class="alert alert-block alert-info alert-text-normal"><b>Question.</b>
 
+<table width="95%" border="0">
+<tr>
+<td width="25" align="center" valign="top">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/lyx_question.png" hspace="5" alt="question"></td>
+<th align="left" valign="middle"><b>Question.</b></th>
+</tr>
+<tr><td>&nbsp;</td> <td align="left" valign="top"><p>
+<div class="alert-text-normal">
 <ol>
  <li> Once more, how many admonition environments does Doconce support?</li>
-</ol>
-</div>
+</ol></div>
+</p></td></tr>
+</table>
 
 
 <p>
-<div class="alert alert-block alert-danger alert-text-normal"><b>Tip.</b>
-It is of outmost important to
+
+<table width="95%" border="0">
+<tr>
+<td width="25" align="center" valign="top">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/lyx_warning.png" hspace="5" alt="warning"></td>
+<th align="left" valign="middle"><b>Tip.</b></th>
+</tr>
+<tr><td>&nbsp;</td> <td align="left" valign="top"><p>
+<div class="alert-text-normal">It is of outmost important to
 
 <p>
 
@@ -362,22 +448,31 @@ Because here the thing is to do
 <p>
 
 <!-- code=python (from !bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">urllib</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">urllib</span>
 
 <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">grab</span>(url, filename):
     urllib<span style="color: #666666">.</span>urlretrieve(url, filename<span style="color: #666666">=</span>filename)
 </pre></div>
-<p>
-</div>
+<p></div>
+</p></td></tr>
+</table>
 
 
 <p>
 Next is a warning without a title ("none" implies no title).
 
 <p>
-<div class="alert alert-block alert-danger alert-text-normal"><b></b>
-And here comes some text with bad news.
-</div>
+
+<table width="95%" border="0">
+<tr>
+<td width="25" align="center" valign="top">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/lyx_warning.png" hspace="5" alt="warning"></td>
+<th align="left" valign="middle"><b></b></th>
+</tr>
+<tr><td>&nbsp;</td> <td align="left" valign="top"><p>
+<div class="alert-text-normal">And here comes some text with bad news.</div>
+</p></td></tr>
+</table>
 
 
 <h3>Going deeper environments  <a name="___sec4"></a></h3>
@@ -387,8 +482,15 @@ Here is a long notice environment with a custom title and much
 text, math and code.
 
 <p>
-<div class="alert alert-block alert-success alert-text-normal"><b>Going deeper.</b>
-We have some equations that should be preceded by much text, so the
+
+<table width="95%" border="0">
+<tr>
+<td width="25" align="center" valign="top">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/lyx_notice.png" hspace="5" alt="notice"></td>
+<th align="left" valign="middle"><b>Going deeper.</b></th>
+</tr>
+<tr><td>&nbsp;</td> <td align="left" valign="top"><p>
+<div class="alert-text-normal">We have some equations that should be preceded by much text, so the
 task is to write and write. The number of words, and not the
 meaning, is what counts here. We need desperately to fill up the
 page in the hope that some admonitions will experience a page break,
@@ -415,7 +517,7 @@ code is task that this "Going deeper" environment targets.
 <p>
 
 <!-- code=python (from !bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">Dudt</span>(u):
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">Dudt</span>(u):
     r <span style="color: #666666">=</span> diff(u, t) <span style="color: #666666">+</span> u<span style="color: #666666">*</span>grad(u)
     <span style="color: #008000; font-weight: bold">return</span> r
 
@@ -429,7 +531,7 @@ Longer computer code requires vertical space:
 <p>
 
 <!-- code=python (from !bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Diff</span>:
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Diff</span>:
     <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__init__</span>(<span style="color: #008000">self</span>, f, h<span style="color: #666666">=1E-5</span>):
         <span style="color: #008000">self</span><span style="color: #666666">.</span>f <span style="color: #666666">=</span> f
         <span style="color: #008000">self</span><span style="color: #666666">.</span>h <span style="color: #666666">=</span> <span style="color: #008000">float</span>(h)
@@ -472,8 +574,9 @@ Longer computer code requires vertical space:
 And then we add a figure too.
 
 <p>
-<center><p><img src="../../doc/src/manual/fig/wave1D.png" align="bottom" width=400></p></center>
-</div>
+<center><p><img src="../../doc/src/manual/fig/wave1D.png" align="bottom" width=400></p></center></div>
+</p></td></tr>
+</table>
 
 
 <h3>The end  <a name="___sec5"></a></h3>
@@ -484,11 +587,19 @@ for the novice",
 just because we can.
 
 <p>
-<div class="alert alert-block alert-warning alert-text-normal"><b>Concluding remarks, for the novice.</b>
-We can summarize the most important things with admons: they have
+
+<table width="95%" border="0">
+<tr>
+<td width="25" align="center" valign="top">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/lyx_summary.png" hspace="5" alt="summary"></td>
+<th align="left" valign="middle"><b>Concluding remarks, for the novice.</b></th>
+</tr>
+<tr><td>&nbsp;</td> <td align="left" valign="top"><p>
+<div class="alert-text-normal">We can summarize the most important things with admons: they have
 a different typesetting, and they may have a symbol.
-Titles should be optional.
-</div>
+Titles should be optional.</div>
+</p></td></tr>
+</table>
 
 
 <p>
@@ -496,20 +607,7 @@ Titles should be optional.
 The <code>remarks</code> and <code>hint</code> environments are not allowed outside
 exercises (and problems and projects too).
 
-<p>
-<ul class="pager">
-  <li class="previous">
-    <a href="._admon_bootstrap_alert000.html">&larr; Prev</a>
-  </li>
-
-
-</ul>
 <!-- ------------------- end of main content --------------- -->
-
-</div>  <!-- end container -->
-<!-- include javascript, jQuery *first* -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 
 
 </body>
