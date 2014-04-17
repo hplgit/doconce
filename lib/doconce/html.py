@@ -1634,21 +1634,28 @@ def define(FILENAME_EXTENSION,
         boots_version = '3.1.1'
         if html_style == 'bootstrap':
             boots_style = 'boostrap'
-            url = '//netdna.bootstrapcdn.com/bootstrap/%s/css/bootstrap.min.css' % boots_version
-        elif html_style == 'bootswatch':
-            boots_style = 'cosmo'  # default
-            url = '//netdna.bootstrapcdn.com/bootswatch/%s/%s/bootstrap.min.css' % (boots_version, boots_style)
-        else:
+            url = 'http://netdna.bootstrapcdn.com/bootstrap/%s/css/bootstrap.min.css' % boots_version
+        elif html_style.startswith('bootstrap_'):
+            # Local Doconce stored or modified bootstrap themes
             boots_style = html_style.split('_')[1]
+            url = 'https://raw.github.com/hplgit/doconce/master/bundled/html_styles/style_bootstrap/css/%s.css' % html_style
+        elif html_style.startswith('bootswatch'):
+            default = 'cosmo'
+            boots_style = default if 'bootswatch_' not in html_style else \
+                          html_style.split('_')[1]
             url = '//netdna.bootstrapcdn.com/bootswatch/%s/%s/bootstrap.min.css' % (boots_version, boots_style)
 
         style = """
 <!-- Bootstrap style: %s -->
 <link href="http:%s" rel="stylesheet">
+<!-- not necessary
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
 """% (html_style, url)
         if option('bootstrap_FlatUI'):
+            # Add the Flat UI style
             style += """
-<link href="https://raw.github.com/hplgit/doconce/master/bundled/html_styles/style_FlatUI/css/flat-ui.css" rel="stylesheet">
+<link href="https://raw.github.com/hplgit/doconce/master/bundled/html_styles/style_bootstrap/css/flat-ui.css" rel="stylesheet">
 """
         bootstrap_title_bar = ''
 
@@ -1679,7 +1686,16 @@ pre { color: inherit; background-color: transparent; }
         meta_tags += '<meta name="description" content="%s">\n' % title
 
         if html_style.startswith('boots'):
-            from doconce import dofile_basename
+
+            # Make link back to the main HTML file
+            outfilename = option('html_output=', None)
+            if outfilename is None:
+                from doconce import dofile_basename
+                outfilename = dofile_basename + '.html'
+            else:
+                if not outfilename.endswith('html'):
+                    outfilename += '.html'
+
             bootstrap_title_bar += """
 <div class="navbar navbar-default navbar-fixed-top">
   <div class="navbar-header">
@@ -1702,7 +1718,7 @@ pre { color: inherit; background-color: transparent; }
   </div>
 </div>
 </div>
-""" % (dofile_basename + '.html', title)
+""" % (outfilename, title)
 
 
     keywords = re.findall(r'idx\{(.+?)\}', filestr)
