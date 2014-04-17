@@ -1643,13 +1643,13 @@ def define(FILENAME_EXTENSION,
             default = 'cosmo'
             boots_style = default if 'bootswatch_' not in html_style else \
                           html_style.split('_')[1]
-            url = '//netdna.bootstrapcdn.com/bootswatch/%s/%s/bootstrap.min.css' % (boots_version, boots_style)
+            url = 'http://netdna.bootstrapcdn.com/bootswatch/%s/%s/bootstrap.min.css' % (boots_version, boots_style)
 
         style = """
 <!-- Bootstrap style: %s -->
-<link href="http:%s" rel="stylesheet">
+<link href="%s" rel="stylesheet">
 <!-- not necessary
-<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 -->
 """% (html_style, url)
         if option('bootstrap_FlatUI'):
