@@ -380,6 +380,7 @@ def recommended_html_styles_and_pygments_styles():
         'simple': ['autumn', 'default', 'perldoc'],
         'blood': ['monokai', 'native'],
         'sky': ['default'],
+        'moon': ['fruity', 'native'],
         'night': ['fruity', 'native'],
         'moon': ['fruity', 'native'],
         'darkgray': ['native', 'monokai'],
