@@ -4,12 +4,14 @@ label{doconce2formats}
 
 Transformation of a Doconce document `mydoc.do.txt` to various other
 formats apply the script `doconce format`:
+
 !bc sys
-Terminal> doconce format format mydoc.do.txt
+Terminal> doconce format formatname mydoc.do.txt
 !ec
-or just
+or drop the extension:
+
 !bc sys
-Terminal> doconce format format mydoc
+Terminal> doconce format formatname mydoc
 !ec
 
 ===== Generating a makefile =====
@@ -17,7 +19,7 @@ Terminal> doconce format format mydoc
 Producing HTML, Sphinx, and in particular LaTeX documents from
 Doconce sources requires a few commands. Often you want to
 produce several different formats. The relevant commands should
-then be placed in a script that acts as a "makefile".
+then be placed in a script that acts as a ``makefile''.
 
 The `doconce makefile` can be used to automatically generate
 such a makefile, more precisely a Python script `make.py`, which
@@ -39,17 +41,28 @@ and if something goes wrong, the script aborts.
 ===== Preprocessing =====
 
 The `preprocess` and `mako` programs are used to preprocess the
-file, and options to `preprocess` and/or `mako` can be added after the
-filename. For example,
+file. The Doconce program detects whether `preprocess` and/or `mako`
+statements are present and runs the corresponding programs, first
+`preprocess` and then `mako`.
+
+Options to `preprocess` and/or `mako` can be added after the
+filename with the syntax `-DMYVAR` or `MYVAR=True` for defining
+a variable `MYVAR`, or `-DMYVAR=val` or `MYVAR=val` for giving
+`MYVAR` the value `val`. For example,
 !bc sys
-Terminal> doconce format latex mydoc -Dextra_sections -DVAR1=5     # preprocess
-Terminal> doconce format latex yourdoc extra_sections=True VAR1=5  # mako
+Terminal> doconce format sphinx mydoc -Dextra_sections -DVAR1=5
+Terminal> doconce format sphinx mydoc extra_sections=True VAR1=5
 !ec
 The variable `FORMAT` is always defined as the current format when
-running `preprocess` or `mako`. That is, in the last example, `FORMAT` is
-defined as `latex`. Inside the Doconce document one can then perform
-format specific actions through tests like `#if FORMAT == "latex"`
-(for `preprocess`) or `% if FORMAT == "latex":` (for `mako`).
+running `preprocess` or `mako`. That is, in the above examples, `FORMAT` is
+defined as `sphinx`. Inside the Doconce document one can then perform
+format specific actions through tests like `#if FORMAT == "sphinx"`
+(for `preprocess`) or `% if FORMAT == "sphinx":` (for `mako`).
+
+The result of a Doconce file `mydoc.do.txt` after running `preprocess`
+is available in a file `tmp_preprocess__mydoc.do.txt`. Similarly,
+the result of running `mako` is available in
+`tmp_mako__mydoc.do.txt`.
 
 ===== Removal of inline comments =====
 
@@ -223,9 +236,10 @@ a "scientific report": "http://doconce-report-demo.blogspot.no/"
 for demonstrations of blog posts at `blogspot.no`.
 
 !bwarning
-In the readers' comments after the blog post one cannot paste raw HTML
-code with MathJax
-scripts so there is no support for mathematics in the discussion forum.
+The comment field after the blog post does not recognize MathJax (LaTeX)
+mathematics or code with indentation. However, using a MathJax
+bookmarklet, e.g., at URL: "http://checkmyworking.com/misc/mathjax-bookmarklet/", one can get the mathematics properly rendered. The comment fields are
+not suitable for computer code, though, as HTML tags are not allowed.
 !ewarning
 
 !bnotice
@@ -235,7 +249,7 @@ be replaced by the relevant URL. This is usually done by using the
 as prefix to all figure names (a similar `--movie_prefix=` option exists as
 well).
 
-Changing figure names in a blog post can also be done "manually" by
+Changing figure names in a blog post can also be done ``manually'' by
 some editing code in the script that compiles the Doconce document
 to HTML format:
 
@@ -277,20 +291,26 @@ for mathematics in the text, though.
 ===== Pandoc and Markdown =====
 
 Output in Pandoc's extended Markdown format results from
+
 !bc sys
 Terminal> doconce format pandoc mydoc
 !ec
-The name of the output file is `mydoc.mkd`.
+The name of the output file is `mydoc.md`.
 From this format one can go to numerous other formats:
+
 !bc sys
-Terminal> pandoc -R -t mediawiki -o mydoc.mwk --toc mydoc.mkd
+Terminal> pandoc -R -t mediawiki -o mydoc.mwk --toc mydoc.md
 !ec
 Pandoc supports `latex`, `html`, `odt` (OpenOffice), `docx` (Microsoft
 Word), `rtf`, `texinfo`, to mention some. The `-R` option makes
 Pandoc pass raw HTML or LaTeX to the output format instead of ignoring it,
 while the `--toc` option generates a table of contents.
 See the "Pandoc documentation": "http://johnmacfarlane.net/pandoc/README.html"
-for the many features of the `pandoc` program. The HTML output from
+for the many features of the `pandoc` program.
+
+=== Markdown to HTML conversion ===
+
+The HTML output from
 `pandoc` needs adjustments to provide full support for MathJax LaTeX
 mathematics, and for this purpose one should use `doconce md2html`:
 
@@ -299,6 +319,8 @@ Terminal> doconce format pandoc mydoc
 Terminal> doconce m2html mydoc
 !ec
 The result `mydoc.html` can be viewed in a browser.
+
+=== Using Pandoc to go from LaTeX to MS Word or HTML ===
 
 Pandoc is useful to go from LaTeX mathematics to, e.g., HTML or MS
 Word.  There are two ways (experiment to find the best one for your
@@ -323,15 +345,11 @@ replace` and `doconce subst` edits might be needed on the `.mkd` or
 to MS Word.  Also when going to reStructuredText using Pandoc, it can
 be advantageous to go via LaTeX.
 
-Here is an example where we take a Doconce snippet (without title, author,
-and date), maybe with some unnumbered equations, and quickly generate
-HTML with mathematics displayed my MathJax:
-!bc sys
-Terminal> doconce format pandoc mydoc
-Terminal> pandoc -t html -o mydoc.html -s --mathjax mydoc.mkd
-!ec
-The `-s` option adds a proper header and footer to the `mydoc.html` file.
-This recipe is a quick way of makeing HTML notes with (some) mathematics.
+=== Strict Markdown ===
+
+The option `--strict_markdown_output` generates plain or strict
+Markdown without the many extension that Pandoc accepts in Markdown
+syntax.
 
 === GitHub-flavored Markdown ===
 
@@ -390,6 +408,29 @@ the GitHub issue tracker. Turning on Preview shows the typesetting of
 the quote, compute code, inline verbatim, headings, the task list, and
 the table.
 
+=== MultiMarkdown ===
+
+The option `--multimarkdown_output` generates the MultiMarkdown
+version of Markdown (as opposed to Pandoc-extended Markdown (default),
+strict Markdown, or GitHub-flavored Markdown).
+
+
+=== Strapdown rendering of Markdown text ===
+
+"Strapdown": "http://strapdownjs.com" is a tool that can render Markdown
+text nicely in a web browser by just inserting an HTML header and
+footer in the Markdown file and load the file into a browser.
+The option `--strapdown` outputs the relevant header and footer.
+The output file must be renamed such that it gets the extension `.html`:
+
+!bc sys
+Terminal> doconce format pandoc mydoc --strict_markdown_output \
+          --strapdown --bootstrap_bootwatch_theme=slate
+Terminal> mv mydoc.md mydoc.html
+!ec
+The `--bootstrap_bootwatch_theme=theme` option is used to choose
+a "Bootswatch": "http://bootswatch.com/" theme whose names are
+found on the "Strapdown page": "http://strapdownjs.com".
 
 ===== LaTeX =====
 
@@ -429,6 +470,18 @@ the `ptex2tex` step.)
 Going from `ptex2tex` format to standard LaTeX format is enabled by
 either the `ptex2tex` program or Doconce's (simplified) version of it:
 `doconce ptex2tex`. Details are given below.
+
+!bnotice Information on typesetting of inline verbatim
+The `ptex2tex` and the `doconce ptex2tex` programs take inline verbatim
+code, typeset with backticks in Doconce, and translate this to
+
+!bc
+\Verb!text!
+!ec
+Thereafter, if `text` does not contain illegal characters for the `\texttt`
+command, the latter is used instead since then LaTeX can insert
+linebreaks in the inline verbatim text and hence avoid overfull hboxes.
+!enotice
 
 # Note: putting code blocks inside a list is not successful in many
 # formats - the text may be messed up. A better choice is a paragraph
@@ -470,7 +523,7 @@ look for options starting with `--latex` to get a more verbose description):
  * `--latex_todonotes`
  * `--latex_double_spacing`
  * `--latex_preamble=filename`
- * `--latex_admon=graybox1,graybox2,graybox3,yellowbox,paragraph,colors1,colors2`
+ * `--latex_admon=mdfbox,graybox2,grayicon,yellowicon,paragraph,colors1,colors2`
  * `--latex_admon_color=0.34,0.02,0.8`
  * `--latex_admon_envir_map=2`
  * `--latex_exercise_numbering=absolute,chapter`

@@ -1,0 +1,7 @@
+Idea: make a vim syntax file and then autotranslate to gedit syntax file.
+
+ * "Vim syntax highlighting": "http://vim.wikia.com/wiki/Creating_your_own_syntax_files", see also "this": "http://stackoverflow.com/questions/2193157/vim-simple-steps-to-create-syntax-highlight-file-for-logfiles", maybe "this example": "http://learnvimscriptthehardway.stevelosh.com/chapters/45.html" is too dependent on previous vim scripting chapters, this is "another webpage": "http://www.openlogic.com/wazi/bid/188101/Create-Your-Own-Syntax-Highlighting-in-Vim"
+ * "Transform Vim syntax file to Gedit syntax file": "http://ubuntuforums.org/showthread.php?t=1675380"
+ * Relevant Vim syntax file: `/usr/share/vim/addons/syntax/asciidoc.vim`
+ * "Kate syntax file": "http://kate-editor.org/2005/03/24/writing-a-syntax-highlighting-file/"
+ * "Gedit syntax file": "http://askubuntu.com/questions/295559/how-to-add-a-new-language-definition-for-syntax-highlighting-in-gedit"

@@ -91,7 +91,7 @@ def latex_code(filestr, code_blocks, code_block_types,
                                tex_blocks[i])
 
     lines = filestr.splitlines()
-    # Add Python Online Tutor URL before code blocks with pyoptpro code
+    # Add Online Python Tutor URL before code blocks with pyoptpro code
     for i in range(len(lines)):
         if _CODE_BLOCK in lines[i]:
             words = lines[i].split()
@@ -132,7 +132,7 @@ def latex_code(filestr, code_blocks, code_block_types,
     filestr = re.sub(r'!et\n', '', filestr)
 
     # Check for misspellings
-    envirs = 'pro pypro cypro cpppro cpro fpro plpro shpro mpro cod pycod cycod cppcod ccod fcod plcod shcod mcod htmlcod htmlpro rstcod rstpro xmlcod xmlpro cppans pyans fans bashans swigans uflans sni dat dsni csv txt sys slin ipy rpy plin ver warn rule summ ccq cc ccl py pyoptpro pyscpro'.split()
+    envirs = 'pro pypro cypro cpppro cpro fpro plpro shpro mpro cod pycod cycod cppcod ccod fcod plcod shcod mcod htmlcod htmlpro rstcod rstpro xmlcod xmlpro cppans pyans fans bashans swigans uflans sni dat dsni csv txt sys slin ipy rpy plin ver warn rule summ ccq cc ccl pyshell pyoptpro pyscpro'.split()
     for envir in code_block_types:
         if envir:
             if envir[-1].isdigit():
@@ -143,6 +143,8 @@ def latex_code(filestr, code_blocks, code_block_types,
                 print 'Warning: found "!bc %s", but %s is not a standard predefined ptex2tex environment' % (envir, envir)
 
     # --- Final fixes for latex format ---
+
+    chapters = True if re.search(r'\\chapter\{', filestr) is not None else False
 
     appendix_pattern = r'\\(chapter|section\*?)\{Appendix:\s+'
     filestr = re.sub(appendix_pattern,
@@ -165,7 +167,10 @@ def latex_code(filestr, code_blocks, code_block_types,
 
     if include_numbering_of_exercises:
         # Remove section numbers of exercise sections
-        exercise_pattern = r'subsection\*?\{(Exercise|Problem|Project) +(\d+)\s*: +(.+\})'
+        if option('examples_as_exercises'):
+            exercise_pattern = r'subsection\*?\{(Exercise|Problem|Project|Example) +(\d+)\s*: +(.+\})'
+        else:
+            exercise_pattern = r'subsection\*?\{(Exercise|Problem|Project) +(\d+)\s*: +(.+\})'
         # Make table of contents or list of exercises entry
         # (might have to add \phantomsection right before because
         # of the hyperref package?)
@@ -193,6 +198,22 @@ def latex_code(filestr, code_blocks, code_block_types,
         r"""subsection*{\g<1> \\thedoconceexercisecounter: \g<3>
 \\addcontentsline{loe}{doconceexercise}{\g<1> \\thedoconceexercisecounter: \g<3>
 """, filestr)
+            # Treat {Exercise}/{Project}/{Problem}
+            # Pattern starts with --- begin exercise ... \subsection{
+            # but not \addcontentsline
+            exercise_pattern = r'^% --- begin exercise ---\n\\begin\{doconceexercise\}\n\\refstepcounter\{doconceexercisecounter\}\n\n\\subsection\{(.+?)$(?!\\addcont)'
+            # No increment of exercise counter, but add to contents
+            replacement = r"""% --- begin exercise ---
+\begin{doconceexercise}
+
+\subsection{\g<1>"""
+            if option('latex_list_of_exercises=', 'none') != 'none':
+                replacement += r"""
+\addcontentsline{loe}{doconceexercise}{\g<1>
+"""
+            replacement = fix_latex_command_regex(replacement, 'replacement')
+            filestr = re.sub(exercise_pattern, replacement, filestr,
+                             flags=re.MULTILINE)
             # Find suitable titles for list of exercises
             import sets
             types_of_exer = sets.Set()
@@ -218,7 +239,8 @@ def latex_code(filestr, code_blocks, code_block_types,
                 # Also, the name of the doconce exercise environment
                 # cannot be doconce:exercise (previous name), but
                 # must be doconceexercise because of the \l@... command
-                style_listofexercises = r"""
+                if chapters:
+                    style_listofexercises = r"""
 %% --- begin definition of \listofexercises command ---
 \makeatletter
 \newcommand\listofexercises{
@@ -231,10 +253,24 @@ def latex_code(filestr, code_blocks, code_block_types,
 \makeatother
 %% --- end definition of \listofexercises command ---
 """ % vars()
-                insert_listofexercises = r"""
+                    insert_listofexercises = r"""
 \clearemptydoublepage
 \listofexercises
 \clearemptydoublepage
+""" % vars()
+                else:
+                    style_listofexercises = r"""
+%% --- begin definition of \listofexercises command ---
+\makeatletter
+\newcommand\listofexercises{\section*{%(heading)s}
+\@starttoc{loe}
+}
+\newcommand*{\l@doconceexercise}{\@dottedtocline{0}{0pt}{6.5em}}
+\makeatother
+%% --- end definition of \listofexercises command ---
+""" % vars()
+                    insert_listofexercises = r"""
+\listofexercises
 """ % vars()
                 target = r'\newcounter{doconceexercisecounter}'
                 filestr = filestr.replace(
@@ -245,11 +281,19 @@ def latex_code(filestr, code_blocks, code_block_types,
                         target, target + insert_listofexercises)
 
 
+    # Subexercise headings should utilize \subex{} and not \paragraph{}
+    subex_header_postfix = option('latex_subex_header_postfix=', ')')
+    filestr = re.sub(r'\\paragraph\{([a-z])\)\}',
+                     r'\subex{\g<1>%s}' % subex_header_postfix,
+                     filestr)
+
     # Avoid Filename: as a new paragraph with indentation
-    filestr = filestr.replace(r'Filename: \code{', r'\noindent Filename: \code{')
+    filestr = re.sub(r'^(Filenames?): +?\\code\{',
+                     r'\\noindent \g<1>: \code{', filestr,
+                     flags=re.MULTILINE)
     # Preface is normally an unnumbered section or chapter
     # (add \markboth only if book style with chapters
-    if re.search(r'\\chapter\{', filestr):
+    if chapters:
         markboth = r'\n\markboth{\g<2>}{\g<2>}'
     else:
         markboth = ''
@@ -624,7 +668,30 @@ Movie \arabic{doconce:movie:counter}: %s
     text += '\\end{doconce:movie}\n'
     return text
 
+def latex_footnotes(filestr, format, pattern_def, pattern_footnote):
+    footnotes = {name: text for name, text, dummy in
+                 re.findall(pattern_def, filestr, flags=re.MULTILINE|re.DOTALL)}
+    # Remove definitions
+    filestr = re.sub(pattern_def, '', filestr, flags=re.MULTILINE|re.DOTALL)
+
+    def subst_footnote(m):
+        name = m.group('name')
+        text = footnotes[name].strip()
+        return '\\footnote{%s}' % text
+
+    filestr = re.sub(pattern_footnote, subst_footnote, filestr)
+    return filestr
+
 def latex_table(table):
+    latex_table_align = option('latex_table_align=', 'quote')
+    if latex_table_align == 'left':
+        table_align = ('', '')
+    elif latex_table_align == 'quote':
+        table_align = (r'\begin{quote}', r'\end{quote}')
+    elif latex_table_align == 'center':
+        table_align = (r'\begin{center}', r'\end{center}')
+    latex_style = option('latex_style=', 'std')
+
     column_width = table_analysis(table['rows'])
 
     #ncolumns = max(len(row) for row in table['rows'])
@@ -648,7 +715,10 @@ def latex_table(table):
         print 'Table with rows', table['rows']
         _abort()
 
-    s = '\n' + r'\begin{quote}\begin{tabular}{%s}' % column_spec + '\n'
+    s = '\n' + table_align[0] + '\n'
+    if latex_style == "Springer_T2":
+        s += '{\\small   % Springer T2 style: small table font and more vspace\n\n\\vspace{4mm}\n\n'
+    s += r'\begin{tabular}{%s}' % column_spec + '\n'
     for i, row in enumerate(table['rows']):
         if row == ['horizontal rule']:
             s += r'\hline' + '\n'
@@ -690,7 +760,10 @@ def latex_table(table):
 
             s += ' & '.join(row) + ' \\\\\n'
 
-    s += r'\end{tabular}\end{quote}' + '\n\n' + r'\noindent' + '\n'
+    s += r'\end{tabular}' + '\n'
+    if latex_style == "Springer_T2":
+        s += '\n\\vspace{4mm}\n\n}\n'
+    s += table_align[1] + '\n\n' + r'\noindent' + '\n'
     return s
 
 def latex_title(m):
@@ -1209,7 +1282,7 @@ def latex_box(block, format, text_size='normal'):
     return r"""
 \begin{center}
 \begin{Sbox}
-\begin{minipage}{0.85\textwidth}
+\begin{minipage}{0.85\linewidth}
 %s
 \end{minipage}
 \end{Sbox}
@@ -1256,13 +1329,13 @@ def _get_admon_figs(filename):
         shutil.copy(os.path.join(latexfigdir_all, filename), latexfigdir)
 
 _admon_latex_figs = dict(
-    graybox3=dict(
+    grayicon=dict(
         warning='small_gray_warning',
         question='small_gray_question2',  # 'small_gray_question3'
         notice='small_gray_notice',
         summary='small_gray_summary',
         ),
-    yellowbox=dict(
+    yellowicon=dict(
         warning='small_yellow_warning',
         question='small_yellow_question',
         notice='small_yellow_notice',
@@ -1285,6 +1358,7 @@ def get_admon_figname(admon_tp, admon_name):
 admons = 'notice', 'summary', 'warning', 'question', 'block'
 for _admon in admons:
     _Admon = _admon.capitalize()
+    _title_period = '' if option('latex_admon_title_no_period') else '.'
     text = r"""
 def latex_%(_admon)s(text_block, format, title='%(_Admon)s', text_size='normal'):
     if title.lower().strip() == 'none':
@@ -1310,29 +1384,32 @@ def latex_%(_admon)s(text_block, format, title='%(_Admon)s', text_size='normal')
             r'\\\g<1>%%s' %% _envir_mapping.get(envir, envir), text_block)
 
 
-    latex_admon = option('latex_admon=', 'graybox1')
+    latex_admon = option('latex_admon=', 'mdfbox')
     if text_size == 'small':
         # When a font size changing command is used, incl a \par at the end
         text_block = r'{\footnotesize ' + text_block + '\n\\par}'
         # Add reduced initial vertical space?
-        if latex_admon in ("yellowbox", "graybox3", "colors2"):
+        if latex_admon in ("yellowicon", "grayicon", "colors2"):
             text_block = r'\vspace{-2.5mm}\par\noindent' + '\n' + text_block
         elif latex_admon == "colors1":
             # Add reduced initial vertical space
             text_block = r'\vspace{-3.5mm}\par\noindent' + '\n' + text_block
-        elif latex_admon in ("graybox1", "graybox2"):
+        elif latex_admon in ("mdfbox", "graybox2"):
             text_block = r'\vspace{0.5mm}\par\noindent' + '\n' + text_block
     elif text_size == 'large':
         text_block = r'{\large ' + text_block + '\n\\par}'
         title = r'{\large ' + title + '}'
 
-    title_graybox1 = title.replace(',', '')  # title in graybox1 cannot handle ,
-    if title_graybox1 and title_graybox1[-1] not in ('.', ':', '!', '?'):
-        title_graybox1 += '.'
+    # title in mdfbox (or graybox2 with mdframed) cannot handle ,
+    title_mdframed = title.replace(',', '')
+    if title_mdframed and title_mdframed[-1] not in ('.', ':', '!', '?'):
+        title_mdframed += '%(_title_period)s'
+    if latex_admon == 'mdfbox':
+        title = title_mdframed
 
     title_para = title
     if title_para and title_para[-1] not in ('.', ':', '!', '?'):
-        title_para += '.'
+        title_para += '%(_title_period)s'
 
     # For graybox2 we use graybox2admon except for summary without verbatim code,
     # then \grayboxhrules is used (which can be wrapped in a small box of 50 percent
@@ -1359,15 +1436,15 @@ def latex_%(_admon)s(text_block, format, title='%(_Admon)s', text_size='normal')
 %%s
 }''' %% text_block_graybox2
     else:
-        # same mdframed package as for graybox1 admon, use title_graybox1
+        # same mdframed package as for mdfbox admon, use title_mdframed
         envir_graybox2 = r'''
 \begin{graybox2admon}[%%s]
 %%s
 \end{graybox2admon}
 
-''' %% (title_graybox1, text_block_graybox2)
+''' %% (title_mdframed, text_block_graybox2)
 
-    if latex_admon in ('colors1', 'colors2', 'graybox3', 'yellowbox'):
+    if latex_admon in ('colors1', 'colors2', 'mdfbox', 'grayicon', 'yellowicon'):
         text = r'''
 \begin{%(_admon)s_%%(latex_admon)sadmon}[%%(title)s]
 %%(text_block)s
@@ -1394,13 +1471,6 @@ def latex_%(_admon)s(text_block, format, title='%(_Admon)s', text_size='normal')
 %%(envir_graybox2)s
 ''' %% vars()
 
-    else:
-        text = r'''
-\begin{graybox1admon}[%%(title_graybox1)s]
-%%(text_block)s
-\end{graybox1admon}
-
-''' %% vars()
     return text
     """ % vars()
     exec(text)
@@ -1541,6 +1611,8 @@ def define(FILENAME_EXTENSION,
         'movie':         latex_movie,
         'comment':       '%% %s',
         'linebreak':     r'\g<text>\\\\',
+        'footnote':      latex_footnotes,
+        'non-breaking-space': None,
         }
 
     ENVIRS['latex'] = {
@@ -1687,12 +1759,16 @@ def define(FILENAME_EXTENSION,
 
     from misc import copy_latex_packages
 
+    side_tp = 'oneside' if option('device=') == 'paper' else 'twoside'
+    m = re.search(chapter_pattern, filestr, flags=re.MULTILINE)
+    # (use A-Z etc to avoid sphinx table headings to indicate chapters...
+    if m:  # We have chapters, use book style
+        chapters = True
+    else:
+        chapters = False
+
     if latex_style == 'std':
-        side_tp = 'oneside' if option('device=') == 'paper' else 'twoside'
-        m = re.search(chapter_pattern, filestr, flags=re.MULTILINE)
-        # (use A-Z etc to avoid sphinx table headings to indicate chapters...
-        if m:  # We have chapters, use book style
-            chapters = True
+        if chapters:
             INTRO['latex'] += r"""
 \documentclass[%%
 %(side_tp)s,                 %% oneside: electronic viewing, twoside: printing
@@ -1702,7 +1778,6 @@ open=right               %% start new chapters on odd-numbered pages
 10pt]{book}
 """ % vars()
         else:  # Only sections, use article style
-            chapters = False
             INTRO['latex'] += r"""
 \documentclass[%%
 %(side_tp)s,                 %% oneside: electronic viewing, twoside: printing
@@ -1994,23 +2069,42 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
     # Admonitions
     if re.search(r'^!b(%s)' % '|'.join(admons), filestr, flags=re.MULTILINE):
         # Found one !b... command for an admonition
-        latex_admon = option('latex_admon=', 'graybox1')
+        latex_admon = option('latex_admon=', 'mdfbox')
         latex_admon_color = option('latex_admon_color=', None)
 
+        admon_styles = 'colors1', 'colors2', 'mdfbox', 'graybox2', 'grayicon', 'yellowicon',
+        admon_color = {style: {} for style in admon_styles}
+
         if latex_admon_color is None:
+            # default colors
             # colors1, colors2 color
             light_blue = (0.87843, 0.95686, 1.0)
             pink = (1.0, 0.8235294, 0.8235294)
-            # colors1, colors2, yellowbox color
+            # colors1, colors2, yellowicon color
             yellow1 = (0.988235, 0.964706, 0.862745)
             yellow1b = (0.97, 0.88, 0.62)  # alt, not used
-            # graybox1 color
+            # mdfbox color
             gray1 = "gray!5"
             # graybox2 color
             gray2 = (0.94, 0.94, 0.94)
-            # graybox3 color
+            # grayicon color
             gray3 = (0.91, 0.91, 0.91)   # lighter gray
             gray3l = (0.97, 0.97, 0.97)  # even lighter gray, not used
+
+            for admon_style in ('colors1', 'colors2'):
+                admon_color[admon_style] = dict(
+                    warning=pink,
+                    question=yellow1,
+                    notice=yellow1,
+                    summary=yellow1,
+                    #block=_gray2,
+                    block=yellow1,
+                    )
+            for admon in admons:
+                admon_color['mdfbox'][admon] = gray1
+                admon_color['graybox2'][admon] = gray2
+                admon_color['grayicon'][admon] = gray3
+                admon_color['yellowicon'][admon] = yellow1
         else:
             # use latex_admon_color for everything
             try:
@@ -2020,50 +2114,39 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
                 # Color name input
                 pass
 
-            light_blue = latex_admon_color
-            pink = latex_admon_color
-            # colors1, colors2, yellowbox color
-            yellow1 = latex_admon_color
-            # graybox1 color
-            gray1 = latex_admon_color
-            # graybox2 color
-            gray2 = latex_admon_color
-            # graybox3 color
-            gray3 = latex_admon_color
-
-        _colorsadmon2colors = dict(
-            warning=pink,
-            question=yellow1,
-            notice=yellow1,
-            summary=yellow1,
-            #block=_gray2,
-            block=yellow1,
-            )
+            for style in admon_styles:
+                for admon in admons:
+                    admon_color[style][admon] = latex_admon_color
 
         if latex_admon in ('colors1',):
             packages = r'\usepackage{framed}'
-        elif latex_admon in ('colors2', 'graybox3', 'yellowbox'):
+        elif latex_admon in ('colors2', 'grayicon', 'yellowicon'):
             packages = r'\usepackage{framed,wrapfig}'
         elif latex_admon in ('graybox2',):
             packages = r"""\usepackage{wrapfig,calc}
 \usepackage[framemethod=TikZ]{mdframed}  % use latest version: https://github.com/marcodaniel/mdframed"""
-        else: # graybox1
+        else: # mdfbox
             packages = r'\usepackage[framemethod=TikZ]{mdframed}'
         INTRO['latex'] += '\n' + packages + '\n\n% --- begin definitions of admonition environments ---\n'
 
-        if latex_admon == 'graybox2':
-            if isinstance(gray2, tuple):
-                gray2_rgb = ','.join([str(cl) for cl in gray2])
-                define_graybox2_color = r'\definecolor{%(latex_admon)s_background}{rgb}{%(gray2_rgb)s}' % vars()
-            else:
-                define_graybox2_color = r'\colorlet{%(latex_admon)s_background}{%(gray2)s}' % vars()
+        for style in admon_styles:
+            for admon in admons:
+                color = admon_color[style][admon]
+                if isinstance(color, (tuple,list)):
+                    rgb = ','.join([str(cl) for cl in color])
+                    admon_color[style][admon] = r'\definecolor{%(latex_admon)s_%(admon)s_background}{rgb}{%(rgb)s}' % vars()
+                else:
+                    admon_color[style][admon] = r'\colorlet{%(latex_admon)s_%(admon)s_background}{%(color)s}' % vars()
 
+        if latex_admon == 'graybox2':
             # First define environments independent of admon type
+
             INTRO['latex'] += r"""
-%% Admonition style "graybox2" is a gray or colored box with a square
-%% frame, except for the summary admon which has horizontal rules only
-%% Note: this admonition type cannot handle verbatim text!
-%(define_graybox2_color)s""" % vars()
+% Admonition style "graybox2" is a gray or colored box with a square
+% frame, except for the summary admon which has horizontal rules only
+% Note: this admonition type cannot handle verbatim text!
+"""
+            INTRO['latex'] += admon_color[latex_admon]['warning'] + '\n'
             if latex_papersize == 'a4':
                 INTRO['latex'] += r"""
 \newdimen\barheight
@@ -2071,7 +2154,7 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 
 %% small box to the right for A4 paper
 \newcommand{\grayboxhrules}[1]{\begin{wrapfigure}{r}{0.5\textwidth}
-\vspace*{-\baselineskip}\colorbox{%(latex_admon)s_background}{\rule{3pt}{0pt}
+\vspace*{-\baselineskip}\colorbox{%(latex_admon)s_warning_background}{\rule{3pt}{0pt}
 \begin{minipage}{0.5\textwidth-6pt-\columnsep}
 \hspace*{3mm}
 \setbox2=\hbox{\parbox[t]{55mm}{
@@ -2086,7 +2169,7 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
                 INTRO['latex'] += r"""
 %% colored box of 80%% width
 \newcommand{\grayboxhrules}[1]{\begin{center}
-\colorbox{%(latex_admon)s_background}{\rule{6pt}{0pt}
+\colorbox{%(latex_admon)s_warning_background}{\rule{6pt}{0pt}
 \begin{minipage}{0.8\linewidth}
 \parbox[t]{0mm}{\rule[0pt]{0mm}{0.5\baselineskip}}\hrule
 \vspace*{0.5\baselineskip}\noindent #1
@@ -2097,9 +2180,9 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
             INTRO['latex'] += r"""
 %% Fallback for verbatim content in \grayboxhrules
 \newmdenv[
-  backgroundcolor=%(latex_admon)s_background,
-  skipabove=\topsep,
-  skipbelow=\topsep,
+  backgroundcolor=%(latex_admon)s_warning_background,
+  skipabove=15pt,
+  skipbelow=15pt,
   leftmargin=23,
   rightmargin=23,
   needspace=0pt,
@@ -2118,92 +2201,45 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 % Admonition style "paragraph" is just a plain paragraph
 \newenvironment{paragraphadmon}[1][]{\paragraph{#1}}{}
 """
-        elif latex_admon in ('colors1', 'colors2', 'graybox3', 'yellowbox'):
-            pass
-        else:
-            # graybox1
-            if isinstance(gray1, tuple):
-                gray1_rgb = ','.join([str(cl) for cl in gray1])
-                define_graybox1_color = r'\definecolor{%(latex_admon)s_background}{rgb}{%(gray1_rgb)s}' % vars()
-            else:
-                define_graybox1_color = r'\colorlet{%(latex_admon)s_background}{%(gray1)s}' % vars()
-
-            INTRO['latex'] += r"""
-%% Admonition style "graybox1" is an oval colored box
-%(define_graybox1_color)s
-\newmdenv[
-  backgroundcolor=%(latex_admon)s_background,
-  skipabove=\topsep,
-  skipbelow=\topsep,
-  outerlinewidth=0,
-  leftmargin=0,
-  rightmargin=0,
-  roundcorner=5,
-  needspace=0pt,
-]{graybox1mdframed}
-
-\newenvironment{graybox1admon}[1][]{
-\begin{graybox1mdframed}[frametitle=#1]
-}
-{
-\end{graybox1mdframed}
-}
-""" % vars()
 
         # Define environments depending on the admon type
         for admon in admons:
             Admon = admon.upper()[0] + admon[1:]
 
             # Figure files are copied when necessary
-            if isinstance(_colorsadmon2colors[admon], tuple):
-                colors12_color_rgb = ','.join([str(cl) for cl in _colorsadmon2colors[admon]])
-                define_colors12_color = r'\definecolor{%(latex_admon)s_%(admon)s_background}{rgb}{%(colors12_color_rgb)s}' % vars()
-            else:
-                colors12_color = _colorsadmon2colors[admon]
-                define_colors12_color = r'\colorlet{%(latex_admon)s_%(admon)s_background}{%(colors12_color)s}' % vars()
 
             graphics_colors1 = r'\includegraphics[height=0.3in]{latex_figs/%s}\ \ \ ' % get_admon_figname('colors1', admon)
             graphics_colors2 = r"""\begin{wrapfigure}{l}{0.07\textwidth}
 \vspace{-13pt}
 \includegraphics[width=0.07\textwidth]{latex_figs/%s}
 \end{wrapfigure}""" % get_admon_figname('colors2', admon)
-            # Old typesetting of title (for latex_admon==colors1): {\large\sc #1}
 
-            if isinstance(gray3, tuple):
-                gray3_rgb = ','.join([str(cl) for cl in gray3])
-                define_graybox3_color = r'\definecolor{%(latex_admon)s_%(admon)s_background}{rgb}{%(gray3_rgb)s}' % vars()
-            else:
-                define_graybox3_color = r'\colorlet{%(latex_admon)s_%(admon)s_background}{%(gray3)s}' % vars()
-
-            graphics_graybox3 = r"""\begin{wrapfigure}{l}{0.07\textwidth}
+            graphics_grayicon = r"""\begin{wrapfigure}{l}{0.07\textwidth}
 \vspace{-13pt}
 \includegraphics[width=0.07\textwidth]{latex_figs/%s}
-\end{wrapfigure}"""% get_admon_figname('graybox3', admon)
+\end{wrapfigure}"""% get_admon_figname('grayicon', admon)
 
-
-            if isinstance(yellow1, tuple):
-                yellow1_rgb = ','.join([str(cl) for cl in yellow1])
-                define_yellowbox_color = r'\definecolor{%(latex_admon)s_%(admon)s_background}{rgb}{%(yellow1_rgb)s}' % vars()
-            else:
-                define_yellowbox_color = r'\colorlet{%(latex_admon)s_%(admon)s_background}{%(yellow1)s}' % vars()
-
-            graphics_yellowbox = r"""\begin{wrapfigure}{l}{0.07\textwidth}
+            graphics_yellowicon = r"""\begin{wrapfigure}{l}{0.07\textwidth}
 \vspace{-13pt}
 \includegraphics[width=0.07\textwidth]{latex_figs/%s}
-\end{wrapfigure}""" % get_admon_figname('yellowbox', admon)
+\end{wrapfigure}""" % get_admon_figname('yellowicon', admon)
 
             if admon == 'block':
                 # No figures for block admon
                 graphics_colors1 = ''
                 graphics_colors2 = ''
-                graphics_graybox3 = ''
-                graphics_yellowbox = ''
+                graphics_grayicon = ''
+                graphics_yellowicon = ''
+
+            _admon_style_color = admon_color.get(latex_admon, None)
+            if _admon_style_color is not None:
+                define_bgcolor = _admon_style_color[admon]
 
             if latex_admon == 'colors1':
                 INTRO['latex'] += r"""
 %% Admonition style "colors1" has its style taken from the NumPy User Guide
 %% "%(admon)s" admon
-%(define_colors12_color)s
+%(define_bgcolor)s
 %% \fboxsep sets the space between the text and the box
 \newenvironment{%(admon)sshaded}
 {\def\FrameCommand{\fboxsep=3mm\colorbox{%(latex_admon)s_%(admon)s_background}}
@@ -2222,7 +2258,7 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
             elif latex_admon == 'colors2':
                 INTRO['latex'] += r"""
 %% Admonition style "colors2", admon "%(admon)s"
-%(define_colors12_color)s
+%(define_bgcolor)s
 %% \fboxsep sets the space between the text and the box
 \newenvironment{%(admon)sshaded}
 {\def\FrameCommand{\fboxsep=3mm\colorbox{%(latex_admon)s_%(admon)s_background}}
@@ -2238,52 +2274,87 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 \end{%(admon)sshaded}
 }
 """ % vars()
-            elif latex_admon == 'graybox3':
+            elif latex_admon == 'grayicon':
                 INTRO['latex'] += r"""
-%% Admonition style "graybox3" has colored background, no frame, and an icon
+%% Admonition style "grayicon" has colored background, no frame, and an icon
 %% Admon "%(admon)s"
-%(define_graybox3_color)s
+%(define_bgcolor)s
 %% \fboxsep sets the space between the text and the box
 \newenvironment{%(admon)sshaded}
 {\def\FrameCommand{\fboxsep=3mm\colorbox{%(latex_admon)s_%(admon)s_background}}
  \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
 
-\newenvironment{%(admon)s_graybox3admon}[1][%(Admon)s]{
+\newenvironment{%(admon)s_%(latex_admon)sadmon}[1][%(Admon)s]{
 \begin{%(admon)sshaded}
 \noindent
-%(graphics_graybox3)s \textbf{#1}\par
+%(graphics_grayicon)s \textbf{#1}\par
 \nobreak\noindent\ignorespaces
 }
 {
 \end{%(admon)sshaded}
 }
 """ % vars()
-            elif latex_admon == 'yellowbox':
+            elif latex_admon == 'yellowicon':
                 INTRO['latex'] += r"""
-%% Admonition style "yellowbox" has colored background, yellow icons, and no farme
+%% Admonition style "yellowicon" has colored background, yellow icons, and no farme
 %% Admon "%(admon)s"
-%(define_yellowbox_color)s
+%(define_bgcolor)s
 %% \fboxsep sets the space between the text and the box
 \newenvironment{%(admon)sshaded}
 {\def\FrameCommand{\fboxsep=3mm\colorbox{%(latex_admon)s_%(admon)s_background}}
  \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
 
-\newenvironment{%(admon)s_yellowboxadmon}[1][%(Admon)s]{
+\newenvironment{%(admon)s_%(latex_admon)sadmon}[1][%(Admon)s]{
 \begin{%(admon)sshaded}
 \noindent
-%(graphics_yellowbox)s \textbf{#1}\par
+%(graphics_yellowicon)s \textbf{#1}\par
 \nobreak\noindent\ignorespaces
 }
 {
 \end{%(admon)sshaded}
 }
 """ % vars()
+
+
+            elif latex_admon == 'mdfbox':
+                # mdfbox, the most flexible/custom admon construction
+                INTRO['latex'] += r"""
+%% Admonition style "mdfbox" is an oval colored box based on mdframed
+%% "%(admon)s" admon
+%(define_bgcolor)s
+\newmdenv[
+  skipabove=15pt,
+  skipbelow=15pt,
+  outerlinewidth=0,
+  backgroundcolor=%(latex_admon)s_%(admon)s_background,
+  linecolor=black,
+  linewidth=2pt,       %% frame thickness
+  frametitlebackgroundcolor=%(latex_admon)s_%(admon)s_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        %% frame shadow?
+  shadowsize=11pt,
+  leftmargin=0,
+  rightmargin=0,
+  roundcorner=5,
+  needspace=0pt,
+]{%(admon)s_%(latex_admon)smdframed}
+
+\newenvironment{%(admon)s_%(latex_admon)sadmon}[1][]{
+\begin{%(admon)s_%(latex_admon)smdframed}[frametitle=#1]
+}
+{
+\end{%(admon)s_%(latex_admon)smdframed}
+}
+""" % vars()
+        INTRO['latex'] += r"""
+% --- end of definitions of admonition environments ---
+"""
 
     colored_table_rows = option('latex_colored_table_rows=', 'no')
 
-    INTRO['latex'] += r"""
-% --- end of definitions of admonition environments ---
 
+    INTRO['latex'] += r"""
 % prevent orhpans and widows
 \clubpenalty = 10000
 \widowpenalty = 10000
@@ -2291,7 +2362,8 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
     if section_headings != 'std':
         INTRO['latex'] += r"""
 % http://www.ctex.org/documents/packages/layout/titlesec.pdf
-\usepackage[compact]{titlesec}  % reduce the spacing above/below the heading
+\usepackage{titlesec}  % needed for colored section headings
+%\usepackage[compact]{titlesec}  % reduce the spacing around section headings
 """
     if section_headings == 'blue':
         INTRO['latex'] += r"""
@@ -2408,9 +2480,29 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 \usepackage{chngcntr}
 \counterwithin{doconceexercisecounter}{chapter}
 """
+            if latex_style != 'Springer_T2':
+                INTRO['latex'] += r"""
+
+% ------ header in subexercises ------
+%\newcommand{\subex}[1]{\paragraph{#1}}
+%\newcommand{\subex}[1]{\par\vspace{1.7mm}\noindent{\bf #1}\ \ }
+\makeatletter
+% 1.5ex is the spacing above the header, 0.5em the spacing after subex title
+\newcommand\subex{\@startsection{paragraph}{4}{\z@}%
+                  {1.5ex\@plus1ex \@minus.2ex}%
+                  {-0.5em}%
+                  {\normalfont\normalsize\bfseries}}
+\makeatother
+
+"""
+            else:
+                INTRO['latex'] += r"""
+% \subex{} is defined in t2do.sty
+"""
+
             break
 
-    if latex_style not in ("Koma_Script", "Springer_T2"):
+    if chapters and latex_style not in ("Koma_Script", "Springer_T2"):
         # Follow advice from fancyhdr: redefine \cleardoublepage
         # see http://www.tex.ac.uk/cgi-bin/texfaq2html?label=reallyblank
         # (Koma has its own solution to the problem, svmono.cls has the command)
@@ -2551,6 +2643,7 @@ def fix_latex_command_regex(pattern, application='match'):
     '\\\\mbox\\{(\\\\d+)\\}'
     >>> re.sub(pattern, replacement, r'\mbox{987}')
     '\\mbox{987}'  # no substitution, no match
+    >>> # \g<1> and similar works fine
 
     """
     import string

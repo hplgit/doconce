@@ -393,7 +393,7 @@ methods for showing movies, set by the option `-DMOVIE=...` to
  o `media9`:
    the `media9` package is used for Flash and MP4 movies, `movie15`
    for MPEG and AVI files, and a simple `\href{run:file}{link}` command
-   for other formats. Only Acrobat Reader support displaying these
+   for other formats. Only Acrobat Reader supports displaying these
    type of movies.
  o `multimedia`: the `\movie` command (known from LaTeX Beamer) is used
    for movies.
@@ -564,12 +564,15 @@ set the (terminal) prompt that prefixes the command:
 ===== Inline Tagging =====
 label{inline:tagging}
 idx{inline tagging} idx{emphasized words} idx{boldface words} idx{verbatim text}
-idx{inline comments}
+idx{inline comments}idx{non-breaking space}idx{nbsp}
 
 Doconce supports tags for *emphasized phrases*, _boldface phrases_,
 and `verbatim text` (also called type writer text, for inline code),
 color{blue}{colored words},
 plus LaTeX/TeX inline mathematics, such as $\nu = \sin(x)$|$v = sin(x)$.
+Links are easy to define, either with a "text": "http://google.com" or
+just a plain URL: "http://google.com".
+Also non-breaking space (to avoid linebreak) can be specified.
 
 === Emphasized Words ===
 
@@ -711,6 +714,107 @@ resulting in the link URL: "manual.html".
 #`_static`, which must be manually copied to the Sphinx directory's
 #`_static` directory - links in the `.rst` files are automatically
 #adjusted.)
+
+idx{quotation syntax}
+
+=== Quotes ===
+
+Quotations employ either the emphasized font or double quotation marks.
+In the latter case, one should not use the character `"` but rather
+the (LaTeX-inspired) construction with double backticks and two single
+quotes:
+
+!bc
+This is a sentence with ``words to be quoted''.
+!ec
+To candidates for find double quotes that should be transferred to the above
+type of quotation (which is a common mistake),
+one can run a regular expression search like
+
+!bc sys
+Terminal> find . -name '*.do.txt' -exec grep -E \
+          '[^("]"[A-Za-z0-9 ,]+" *[^:`)"]' {} \; -print
+!ec
+This search may give many false hits as double quotes are frequently
+used in computer code and preprocessor instructions (URLs and hyperlinks
+should not give hits in the above regular expressions).
+
+idx{non-breaking space}
+
+=== Non-Breaking Space ===
+
+The non-breaking space character is tilde:
+
+!bc
+Here comes a long line with a specification of a number with unit at the end,
+which is an example that requires a "non-breaking space character":
+"http://en.wikipedia.org/wiki/Non-breaking_space": 7.4~km is traveled
+in~$7.4/5.5\approx 1.345$~s. (Computer code, where the tilde has a
+meaning, as in `y = ~x`, is not affected. The non-breaking character only
+works between characters, numbers, and the math dollar sign.)
+!ec
+This is rendered as
+
+!bquote
+Here comes a long line with a specification of a number with unit at the end,
+which is an example that requires a "non-breaking space character":
+"http://en.wikipedia.org/wiki/Non-breaking_space": 7.4~km is traveled
+in~$7.4/5.5\approx 1.345$~s. (Computer code, where the tilde has a
+meaning, as in `y = ~x`, is not affected. The non-breaking character only
+works between characters, numbers, and the math dollar sign.)
+!equote
+
+idx{footnotes}
+
+=== Footnotes ===
+
+Typesetting of footnotes employs a common email or Extended Markdown syntax:
+
+!bc
+Footnotes are typeset according to the output format[^typesetting].
+The syntax is optional spaces, opening bracket, hat,
+a name without spaces [^remedy-for-name-with-spaces], and closing
+bracket. The logical name of the footnote is not used in LaTeX,
+HTML, reStructuredText, or Sphinx, because these languages employ
+numbered footnotes. Other formats employ the logical name.
+
+  [^typesetting]: Typesetting of the footnote depends on the format.
+Plain text does nothing, LaTeX removes the
+definition and inserts the footnote as part of the LaTeX text.
+reStructuredText and Sphinx employ a similar type of typesetting
+as Extended Markdown and Doconce, and in HTML we keep the same
+syntax, just displayed properly in HTML.
+
+Footnotes are preferably defined after the paragraph they are used.
+The definition is the footnote syntax (some optional space, bracket,
+hat, name, bracket) followed by colon and a text.
+
+[^remedy-for-name-with-spaces]: Just put in dashes or underscores in
+case of spaces.
+!ec
+The text above looks as follows.
+
+Footnotes are typeset according to the output format[^typesetting].
+The syntax is optional spaces, opening bracket, hat,
+a name without spaces [^remedy-for-name-with-spaces], and closing
+bracket. The logical name of the footnote is not used in LaTeX,
+HTML, reStructuredText, or Sphinx, because these languages employ
+numbered footnotes. Other formats employ the logical name.
+
+  [^typesetting]: Typesetting of the footnote depends on the format.
+Plain text does nothing, LaTeX removes the
+definition and inserts the footnote as part of the LaTeX text.
+reStructuredText and Sphinx employ a similar type of typesetting
+as Extended Markdown and Doconce, and in HTML we keep the same
+syntax, just displayed properly in HTML.
+
+Footnotes are preferably defined after the paragraph they are used.
+The definition is the footnote syntax (some optional space, bracket,
+hat, name, bracket) followed by colon and a text.
+
+[^remedy-for-name-with-spaces]: Just put in dashes or underscores in
+case of spaces.
+
 
 === Inline Comments ===
 
@@ -1598,6 +1702,23 @@ plain verbatim typesetting (for `ptex2tex` this means the `ccq`
 environment, which is defined in the config file `.ptex2tex.cfg`,
 while for Sphinx it defaults to the `python` environment).
 
+By default, `pro` is used for complete programs in Python, `cod` is
+for a code snippet in Python, while `xcod` and `xpro` implies computer
+language specific typesetting where `x` can be `f` for Fortran, `c`
+for C, `cpp` for C++, `sh` for Unix shells, `pl` for Perl, `m` for
+Matlab, `cy` for Cython, `r` for Ruby, and `py` for Python.  The
+argument `sys` means by default `console` for Sphinx and
+`CodeTerminal` (ptex2tex environent) for LaTeX. Other specifications
+are `dat` for a data file or print out, `latex` for LaTeX`, `js` for
+JavaScript, `html` for HTML, `pyshell` for plain interactive Python
+shell sessions, and `ipy` for interactive IPython sessions (the latter
+does not introduce any environment in `sphinx` output, as interactive
+sessions are automatically recognized and handled in that format).
+(All these definitions of the arguments after `!bc` can be redefined
+in the `.ptex2tex.cfg` configuration file for ptex2tex/LaTeX and in
+the `sphinx code-blocks` comments for Sphinx, see below.)
+
+
 Since the config file for `ptex2tex` and command-line arguments for
 the alternative `doconce ptex2tex` program can define what some environments
 map onto with respect to typesetting, a similar possibility is
@@ -1608,78 +1729,67 @@ optional comment to be inserted in the Doconce source file, e.g.,
 !bc
 # sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console
 !ec
-Here, three arguments are defined: `pycod` for Python code,
-`cod` also for Python code, `cppcod` for C++ code, and `sys`
-for terminal sessions. The same arguments would be defined
-in `.ptex2tex.cfg` for how to typeset the blocks in LaTeX using
+Here, three arguments are defined: `!bc pycod` maps on to the
+Pygments style `python` for Python code,
+`!bc cod` maps on to the Pygments style `fortran` for Fortran
+code, `!bc cppcod`  maps on to the Pygments style `c++` for C++ code,
+and `!bc sys` maps on to the Pygments `console` style for
+terminal sessions. The same arguments would be defined
+in `.ptex2tex.cfg` or on the command line for `doconce ptex2tex`
+for how to typeset the blocks in LaTeX using
 various verbatim styles (Pygments can also be used in a LaTeX
 context).
-
-By default, `pro` is used for complete programs in Python, `cod` is
-for a code snippet in Python, while `xcod` and `xpro` implies computer
-language specific typesetting where `x` can be `f` for Fortran, `c`
-for C, `cpp` for C++, `sh` for Unix shells, `pl` for Perl, `m` for
-Matlab, `cy` for Cython, and `py` for Python.  The argument `sys`
-means by default `console` for Sphinx and `CodeTerminal` (ptex2tex
-environent) for LaTeX. Other specifications are `dat` for a data file
-or print out, and `ipy` for interactive Python sessions (the latter
-does not introduce any environment  in `sphinx` output, as interactive
-sessions are automatically recognized and handled).  All these
-definitions of the arguments after `!bc` can be redefined in the
-`.ptex2tex.cfg` configuration file for ptex2tex/LaTeX and in the
-`sphinx code-blocks` comments for Sphinx. Support for other languages
-is easily added.
 
 # (Any sphinx code-block comment, whether inside verbatim code
 # blocks or outside, yields a mapping between bc arguments
 # and computer languages. In case of muliple definitions, the
 # first one is used.)
 
+!bwarning Tip
 The enclosing `!ec` tag of verbatim computer code blocks must
 be followed by a newline.  A common error in list environments is to
 forget to indent the plain text surrounding the code blocks. In
 general, we recommend to use paragraph headings instead of list items
 in combination with code blocks (it usually looks better, and some
 common errors are naturally avoided).
+!ewarning
 
 Here is a verbatim code block with Python code (`pycod` style):
+
 !bc
 |bc pycod
-# regular expressions for inline tags:
-inline_tag_begin = r'(?P<begin>(^|\s+))'
-inline_tag_end = r'(?P<end>[.,?!;:)\s])'
-INLINE_TAGS = {
-    'emphasize':
-    r'%s\*(?P<subst>[^ `][^*`]*)\*%s' % \
-    (inline_tag_begin, inline_tag_end),
-    'verbatim':
-    r'%s`(?P<subst>[^ ][^`]*)`%s' % \
-    (inline_tag_begin, inline_tag_end),
-    'bold':
-    r'%s_(?P<subst>[^ `][^_`]*)_%s' % \
-    (inline_tag_begin, inline_tag_end),
-}
+def f(x, y):
+    return x + y
+
+# Main program
+from math import pi
+print 'Testing f:', f(pi, 0)
 |ec
 !ec
 The typeset result of this block becomes
 
 !bc pycod
-# regular expressions for inline tags:
-inline_tag_begin = r'(?P<begin>(^|\s+))'
-inline_tag_end = r'(?P<end>[.,?!;:)\s])'
-INLINE_TAGS = {
-    'emphasize':
-    r'%s\*(?P<subst>[^ `][^*`]*)\*%s' % \
-    (inline_tag_begin, inline_tag_end),
-    'verbatim':
-    r'%s`(?P<subst>[^ ][^`]*)`%s' % \
-    (inline_tag_begin, inline_tag_end),
-    'bold':
-    r'%s_(?P<subst>[^ `][^_`]*)_%s' % \
-    (inline_tag_begin, inline_tag_end),
-}
+def f(x, y):
+    return x + y
+
+# Main program
+from math import pi
+print 'Testing f:', f(pi, 0)
 !ec
+
 And here is a C++ code snippet (`cppcod` style):
+
+!bc
+|bc cppcod
+void myfunc(double* x, const double& myarr) {
+    for (int i = 1; i < myarr.size(); i++) {
+        myarr[i] = myarr[i] - x[i]*myarr[i-1]
+    }
+}
+|ec
+!ec
+with the rendered result
+
 !bc cppcod
 void myfunc(double* x, const double& myarr) {
     for (int i = 1; i < myarr.size(); i++) {
@@ -1946,7 +2056,7 @@ This is a hint.
 
 |bblock This is a block.
 A block has never any icon. It is mostly used in slides
-and give the text block effect in LaTeX beamer.
+and gives the text block effect in LaTeX beamer.
 |eblock
 
 |bnotice Going deeper
@@ -2035,24 +2145,24 @@ Several values are available:
  * `colors1` (inspired by the NumPy User Guide) applies different colors for
    the different admons with an embedded icon.
  * `colors2` is like `colors1` but the text is wrapped around the icon.
- * `graybox1` is the default and gives rounded gray boxes with a potential
-   title and no icon.
+ * `mdfbox` is the default and gives rounded (gray) boxes with a potential
+   title and no icon (using the very flexible `mdframed` packaged in LaTeX)
  * `graybox2` has square corners, gray background, and is narrower
-   than `graybox1`. One special feature of `graybox2` is the summary
+   than `mdfbox`. One special feature of `graybox2` is the summary
    admon, which has a different look with horizontal rules only,
    and for A4 format, the summary box is half of the text width and
    wrapped with running text around (if it does not contain verbatim text,
    in that case the standard `graybox2` style is used). This small
    summary box is effective in proposals to disperse small paragraphs
    of key points around.
- * `graybox3` has icons and a light gray background.
- * `yellowbox` has icons and a light yellow background.
+ * `grayicon` has icons and a light gray background.
+ * `yellowicon` has icons and a light yellow background.
 
 There is also an option `--latex_admon_color=...` that can be used
 to override the default color. Values are either saturated colors
 like `gray!10` or an RGB tuple `0.95,0.91,0.97`. The chosen color
 replaces all default colors for all admon styles except `paragraph`.
-For example, an oval white box is produced by `--latex_admon=graybox1`
+For example, an oval white box is produced by `--latex_admon=mdfbox`
 and `--latex_admon_color=white`.
 
 === The Box Environment ===
@@ -2140,7 +2250,7 @@ defined as the desired output format of Doconce (`html`, `latex`,
 the value of `FORMAT` and take different actions for different
 formats. Below is an example:
 
-@@@CODE _format_specific1.do.txt
+@@@CODE _format_specific1.do.txt envir=cc
 
 A variable `DEVICE` is also defined. It equals `screen` by default,
 but the command-line argument `--device=paper` can set `DEVICE` to
@@ -2303,7 +2413,7 @@ by Doconce, it is recommended to hardcode that feature for a particular
 format and use the if-else construction of the preprocessor. For example,
 if a sophisticated table is desired in LaTeX output, do something like
 
-@@@CODE _format_specific2.do.txt
+@@@CODE _format_specific2.do.txt envir=cc
 
 Similarly, if certain adjustments are needed, like
 pagebreaks in LaTeX, hardcode that in the Doconce format (and recall
@@ -2358,10 +2468,10 @@ many keyboard shortcuts are defined:
 |  Ctrl+c h2     | heading level 2 (subsection/h2)       |
 |  Ctrl+c h3     | heading level 2 (subsection/h3)       |
 |  Ctrl+c hp     | heading for paragraph                 |
-|  Ctrl+c me     | math environment: !bt equation !et    |
-|  Ctrl+c ma     | math environment: !bt align !et       |
-|  Ctrl+c ce     | code environment: !bc !ec             |
-|  Ctrl+c cf     | code from file: @@@CODE               |
+|  Ctrl+c me     | math environment: `!bt` equation `!et`|
+|  Ctrl+c ma     | math environment: `!bt` align `!et`   |
+|  Ctrl+c ce     | code environment: `!bc` code `!ec`    |
+|  Ctrl+c cf     | code from file: `@@@CODE`             |
 |  Ctrl+c table2 | table with 2 columns                  |
 |  Ctrl+c table3 | table with 3 columns                  |
 |  Ctrl+c table4 | table with 4 columns                  |
@@ -2384,7 +2494,7 @@ The slides can either be ordinary, separate slides - or just
 a document with much briefer text and emphasis on bullet lists,
 figures, mathematical formulas, admonitions, and little text.
 
-Points:
+Points to consider (just sketches...):
 
  * Only some pygments style are suited for a particular reveal.js/deck.js
    theme
@@ -2392,6 +2502,15 @@ Points:
  * Admon styles are erased in reveal
  * Use `--keep_pygments_html_bg` to avoid big changes in background
    color for code
+ * Can use PowerPoint or Google Presenter to design a slide and then
+   save as image (GP directly, PP via Save as Picture or
+   Save As + choosing image type,
+   and then all or present slide only), then import image in doconce.
+   LaTeX formulas in image are easiest created as PNGs using
+   URL: "http://www.codecogs.com/latex/eqneditor.php".
+ * From doconce to PP or GP: use the latexslides script to convert
+   to PDFs and odp format, convert odp to ppt interactively or with
+   `unoconv`.
 
 ===== Overview =====
 
@@ -2976,9 +3095,9 @@ All verbatim and TeX blocks are removed and stored elsewhere
 to ensure that no formatting rules are not applied to these blocks.
 
 The text is examined line by line for typesetting of lists, as well as
-handling of blank lines and comment lines.
-List parsing needs some awareness of the context.
-Each line is interpreted by a regular expression
+handling of blank lines and comment lines.  List parsing needs some
+awareness of the context.  Each line is interpreted by a regular
+expression
 
 !bc
 (?P<indent> *(?P<listtype>[*o-] )? *)(?P<keyword>[^:]+?:)?(?P<text>.*)\s?
@@ -3011,6 +3130,33 @@ LaTeX, and work further on the document in this format.
 
 ===== Typesetting of Function Arguments, Return Values, and Variables =====
 
+!bnotice Note
+This text is somewhat outdated.
+Now Doconce supports NumPy-style docstrings. Doconce can also do
+automatic references to Python documentation, say the :mod:`math`
+module, but the link only works in case of Sphinx output.
+Typical syntax is
+
+!bc
+With :mod:`numpy` and the :func:`scipy.io.loadmat` function in
+the :mod:`scipy.io` module, we can ...
+!ec
+In case of ambiguous names, say a local `math` module, one can
+use `python`, `numpy`, `scipy`, and `mpl` (matplotlib) as prefix
+(as defined in `conf.py`, generated by the `doconce sphinx_dir`):
+
+!bc
+With :func:`python:math.sin` instead of :func:`math.sin` ...
+!ec
+(More info in the Sphinx API doc by the author - under development.)
+
+A Mako function can provide greater flexibility such that
+other formats than Sphinx can take advantage of such references
+(full URL can be built into the function, depending on the format).
+!enotice
+
+
+!bquote
 As part of comments (or doc strings) in computer code one often wishes
 to explain what a function takes of arguments and what the return
 values are. Similarly, it is desired to document class, instance, and
@@ -3041,6 +3187,7 @@ and Sphinx just typeset the list as a list with keywords.
       which must be a positive number.
     - module variable tolerance: tolerance (float) for stopping
       the iterations.
+!equote
 
 ======= References =======
 

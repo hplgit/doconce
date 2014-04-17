@@ -154,6 +154,26 @@ cpdef f(double x):
     return x + 1
 !ec
 
+Standard Python shell sessions:
+
+!bc ipy
+>>> from numpy import sin
+>>> # Some comment
+>>> x = sin(1.2); print 'Value:', x
+Value: 0.932039085967
+!ec
+
+IPython sessions:
+
+!bc ipy
+In [1]: from numpy import sin
+
+In [2]: # Some comment
+
+In [3]: x = sin(1.2); print 'Value:', x
+Value: 0.932039085967
+!ec
+
 # This one tests a + sign before a code environment
 C++:
 !bc cpppro
@@ -215,7 +235,9 @@ since latex use ! in the `Verb` typesetting, but this should now
 be fixed: test `!bc` and `!ec` as well as `!bsummary`.
 Also test backslashes and braces like `\begin`, `\begin{enumerate}`,
 `\end{this}\end{that}`, and `{something \inside braces}` in inline
-verbatim text.
+verbatim text. Since the exclamation mark is used as delimiter
+in LaTeX inline verbatim, we need to test it, as in `a != b`,
+and a Doconce directive a la `!bc`.
 
 Here is some color{red}{red} color and an attempt to write color{green}{with
 green color containing a linebreak. <linebreak>
@@ -227,6 +249,35 @@ the previous blocks with line breaks.
 === Running OS commands ===
 
 @@@OSCMD python -c 'print "Testing\noutput\nfrom\nPython."'
+
+=== Footnotes ===
+
+Here is a test of footnotes[^footnote], which are handy in text.
+They are used in different flavors [^flavor], which gives flexibility
+in writing. This is the third[^example-of-the-third-footnote] example.
+
+  [^footnote]: Typesetting of the footnote depends on the format.
+Plain text does nothing, LaTeX removes the
+definition and inserts the footnote as part of the LaTeX text.
+reStructuredText and Sphinx employ a similar type of typesetting
+as Extended Markdown and Doconce, and in HTML we keep the same
+syntax, just displayed properly in HTML.
+[^flavor]: Could say contexts too...
+
+Here is some more text before a new definition of a footnote that was used
+used above.
+
+
+!bnotice Non-breaking space character
+This paragraph aims to test "non-breaking space character":
+"http://en.wikipedia.org/wiki/Non-breaking_space", and a typical
+example where this is needed is int units: 7.4~km is traveled
+in~$7.4/5.5\approx 1.345$~s.  Also check that a~"link": "http://google.com"~is
+not broken across lines (drag the browser window to test this).
+On the other hand, the tilde is used in
+computer code, e.g., as in `[~x for x in y]` or in `y=~x`, and should
+of course remain a tilde.
+!enotice
 
 ===== Subsection 2: Testing figures =====
 label{subsec:ex}
@@ -249,7 +300,7 @@ idx{movies}
 Here is figure ref{myfig} with a long multi-line caption
 and an extra space before the FIGURE keyword.
 
- FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long
+FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long
 caption spanning
 several lines and containing verbatim words like `my_file_v1` and `my_file_v2`
 as well as math with subscript as in $t_{i+1}$. label{myfig}
@@ -724,12 +775,10 @@ let the program count the number of heads.
 Use `r = random.random()` and define head as `r <= 0.5`.
 !ehint
 
-# Test syntax error
-
-  !bhint
+!bhint
 Draw an integer among $\{1,2\}$ with
 `r = random.randint(1,2)` and define head when `r` is 1.
-  !ehint
+!ehint
 
 !bans
 If the `random.random()` function returns a number $<1/2$, let it be
@@ -988,6 +1037,7 @@ With some text, before we continue with exercises.
 label{exer:some:formula}
 file=verify_formula.py
 
+# Test comments not at the end only
 Pick a statement from Project ref{proj:circle1} or Problem ref{demo:ex:1}
 and verify it.
 
@@ -1164,3 +1214,6 @@ case in LaTeX.
 
 And finally, what about admons, quotes, and boxes? They are tested
 in a separate document: `admon.do.txt`.
+
+[^example-of-the-third-footnote]: Not much to add here, but the footnote
+is at the end with only one newline.

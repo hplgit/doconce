@@ -56,10 +56,10 @@ provides a lot of shortcuts for setting up many elements in a document:
 |  Ctrl+c h2     | heading level 2 (subsection/h2)       |
 |  Ctrl+c h3     | heading level 2 (subsection/h3)       |
 |  Ctrl+c hp     | heading for paragraph                 |
-|  Ctrl+c me     | math environment: !bt equation !et    |
-|  Ctrl+c ma     | math environment: !bt align !et       |
-|  Ctrl+c ce     | code environment: !bc !ec             |
-|  Ctrl+c cf     | code from file: @@@CODE               |
+|  Ctrl+c me     | math environment: `!bt` equation `!et`|
+|  Ctrl+c ma     | math environment: `!bt` align `!et`   |
+|  Ctrl+c ce     | code environment: `!bc` code `!ec`    |
+|  Ctrl+c cf     | code from file: `@@@CODE`             |
 |  Ctrl+c table2 | table with 2 columns                  |
 |  Ctrl+c table3 | table with 3 columns                  |
 |  Ctrl+c table4 | table with 4 columns                  |
@@ -134,10 +134,38 @@ Words surrounded by `*` are emphasized: `*emphasized words*` becomes
 *emphasized words*. Similarly, an underscore surrounds words that
 appear in boldface: `_boldface_` becomes _boldface_. Colored words
 are also possible: the text
+
 !bc
 `color{red}{two red words}`
 !ec
 becomes color{red}{two red words}.
+Quotations appear inside double backticks and double single quotes:
+
+!bc
+This is a sentence with ``words to be quoted''.
+!ec
+
+A forced linebreak is specified by `<linebreak>` at the point where the
+linebreak in the output is wanted.
+
+Footnotes use a label in the text with the footnote text separate,
+preferably after the paragraph where the footnote appears:
+
+!bc
+Differentiating[^diff2] (ref{eq1}) leads
+to a new and simpler equation.
+
+[^diff2]: More precisely, we apply the divergence
+$\nabla\cdot$ on both sides.
+
+Here comes a new paragraph...
+!ec
+
+Non-breaking space is inserted using the tilde character as in LaTeX:
+
+!bc
+This distance corresponds to 7.5~km, which is traveled in $7.5/5$~s.
+!ec
 
 ===== Lists =====
 
@@ -217,7 +245,7 @@ blocks, verbatim code blocks, or lists if the formats `rst` and
 `sphinx` are desired.
 
 Comment lines starting with `##` are not propagated to the output
-document and can be used for comments that are only interest in
+document and can be used for comments that are only of interest in
 the Doconce file.
 
 Large portions of text can be left out using Preprocess. Just place
@@ -738,7 +766,7 @@ Here goes the solution of this subexercise.
 
 |bremarks
 At the very end of the exercise it may be appropriate to summarize
-and give some perspectives. The text inside the !bremarks-!eremarks
+and give some perspectives. The text inside the `!bremarks` and `!eremarks`
 directives is always typeset at the end of the exercise.
 |eremarks
 

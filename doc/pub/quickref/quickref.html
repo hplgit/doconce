@@ -136,7 +136,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>Feb 17, 2014</h4></center> <!-- date -->
+<center><h4>Apr 16, 2014</h4></center> <!-- date -->
 
 <h2>Table of contents</h2>
 
@@ -218,23 +218,27 @@ provides a lot of shortcuts for setting up many elements in a document:
 
 <p>
 <table border="1">
-<tr><td align="center"><b>             Emacs key              </b></td> <td align="center"><b>               Action               </b></td> </tr>
-<tr><td align="left">   Ctrl+c f                              </td> <td align="left">   figure                                </td> </tr>
-<tr><td align="left">   Ctrl+c v                              </td> <td align="left">   movie/video                           </td> </tr>
-<tr><td align="left">   Ctrl+c h1                             </td> <td align="left">   heading level 1 (section/h1)          </td> </tr>
-<tr><td align="left">   Ctrl+c h2                             </td> <td align="left">   heading level 2 (subsection/h2)       </td> </tr>
-<tr><td align="left">   Ctrl+c h3                             </td> <td align="left">   heading level 2 (subsection/h3)       </td> </tr>
-<tr><td align="left">   Ctrl+c hp                             </td> <td align="left">   heading for paragraph                 </td> </tr>
-<tr><td align="left">   Ctrl+c me                             </td> <td align="left">   math environment: !bt equation !et    </td> </tr>
-<tr><td align="left">   Ctrl+c ma                             </td> <td align="left">   math environment: !bt align !et       </td> </tr>
-<tr><td align="left">   Ctrl+c ce                             </td> <td align="left">   code environment: !bc !ec             </td> </tr>
-<tr><td align="left">   Ctrl+c cf                             </td> <td align="left">   code from file: @@@CODE               </td> </tr>
-<tr><td align="left">   Ctrl+c table2                         </td> <td align="left">   table with 2 columns                  </td> </tr>
-<tr><td align="left">   Ctrl+c table3                         </td> <td align="left">   table with 3 columns                  </td> </tr>
-<tr><td align="left">   Ctrl+c table4                         </td> <td align="left">   table with 4 columns                  </td> </tr>
-<tr><td align="left">   Ctrl+c exer                           </td> <td align="left">   exercise outline                      </td> </tr>
-<tr><td align="left">   Ctrl+c slide                          </td> <td align="left">   slide outline                         </td> </tr>
-<tr><td align="left">   Ctrl+c help                           </td> <td align="left">   print this table                      </td> </tr>
+<thead>
+<tr><th align="center">                         Emacs key                          </th> <th align="center">                           Action                           </th> </tr>
+</thead>
+<tbody>
+<tr><td align="left">   Ctrl+c f                                                        </td> <td align="left">   figure                                                          </td> </tr>
+<tr><td align="left">   Ctrl+c v                                                        </td> <td align="left">   movie/video                                                     </td> </tr>
+<tr><td align="left">   Ctrl+c h1                                                       </td> <td align="left">   heading level 1 (section/h1)                                    </td> </tr>
+<tr><td align="left">   Ctrl+c h2                                                       </td> <td align="left">   heading level 2 (subsection/h2)                                 </td> </tr>
+<tr><td align="left">   Ctrl+c h3                                                       </td> <td align="left">   heading level 2 (subsection/h3)                                 </td> </tr>
+<tr><td align="left">   Ctrl+c hp                                                       </td> <td align="left">   heading for paragraph                                           </td> </tr>
+<tr><td align="left">   Ctrl+c me                                                       </td> <td align="left">   math environment: <code>!bt</code> equation <code>!et</code>    </td> </tr>
+<tr><td align="left">   Ctrl+c ma                                                       </td> <td align="left">   math environment: <code>!bt</code> align <code>!et</code>       </td> </tr>
+<tr><td align="left">   Ctrl+c ce                                                       </td> <td align="left">   code environment: <code>!bc</code> code <code>!ec</code>        </td> </tr>
+<tr><td align="left">   Ctrl+c cf                                                       </td> <td align="left">   code from file: <code>@@@CODE</code>                            </td> </tr>
+<tr><td align="left">   Ctrl+c table2                                                   </td> <td align="left">   table with 2 columns                                            </td> </tr>
+<tr><td align="left">   Ctrl+c table3                                                   </td> <td align="left">   table with 3 columns                                            </td> </tr>
+<tr><td align="left">   Ctrl+c table4                                                   </td> <td align="left">   table with 4 columns                                            </td> </tr>
+<tr><td align="left">   Ctrl+c exer                                                     </td> <td align="left">   exercise outline                                                </td> </tr>
+<tr><td align="left">   Ctrl+c slide                                                    </td> <td align="left">   slide outline                                                   </td> </tr>
+<tr><td align="left">   Ctrl+c help                                                     </td> <td align="left">   print this table                                                </td> </tr>
+</tbody>
 </table>
 
 <h3>Title, Authors, and Date  <a name="___sec2"></a></h3>
@@ -278,7 +282,10 @@ The table of contents is removed by writing <code>TOC: off</code>.
 
 <p>
 <table border="1">
-<tr><td align="center"><b>                            Section type                           </b></td> <td align="center"><b>                               Syntax                              </b></td> </tr>
+<thead>
+<tr><th align="center">                           Section type                          </th> <th align="center">                              Syntax                             </th> </tr>
+</thead>
+<tbody>
 <tr><td align="left">   chapter                                                              </td> <td align="left">   <code>========= Heading ========</code> (9 <code>=</code>)           </td> </tr>
 <tr><td align="left">   section                                                              </td> <td align="left">   <code>======= Heading =======</code>    (7 <code>=</code>)           </td> </tr>
 <tr><td align="left">   subsection                                                           </td> <td align="left">   <code>===== Heading =====</code>        (5 <code>=</code>)           </td> </tr>
@@ -289,6 +296,7 @@ The table of contents is removed by writing <code>TOC: off</code>.
 <tr><td align="left">   appendix                                                             </td> <td align="left">   <code>===== Appendix: heading =====</code> (5 <code>=</code>)        </td> </tr>
 <tr><td align="left">   exercise                                                             </td> <td align="left">   <code>======= Exercise: heading =======</code> (7 <code>=</code>)    </td> </tr>
 <tr><td align="left">   exercise                                                             </td> <td align="left">   <code>===== Exercise: heading =====</code> (5 <code>=</code>)        </td> </tr>
+</tbody>
 </table>
 <p>
 Note that abstracts are recognized by starting with <code>__Abstract.__</code> or
@@ -308,11 +316,49 @@ Words surrounded by <code>*</code> are emphasized: <code>*emphasized words*</cod
 <em>emphasized words</em>. Similarly, an underscore surrounds words that
 appear in boldface: <code>_boldface_</code> becomes <b>boldface</b>. Colored words
 are also possible: the text
+
+<p>
 <!-- begin verbatim block -->
 <pre><code>`color{red}{two red words}`
 </code></pre>
 <!-- end verbatim block -->
 becomes <font color="red">two red words</font>.
+Quotations appear inside double backticks and double single quotes:
+
+<p>
+<!-- begin verbatim block -->
+<pre><code>This is a sentence with ``words to be quoted''.
+</code></pre>
+<!-- end verbatim block -->
+
+<p>
+A forced linebreak is specified by <code><linebreak></code> at the point where the
+linebreak in the output is wanted.
+
+<p>
+Footnotes use a label in the text with the footnote text separate,
+preferably after the paragraph where the footnote appears:
+
+<p>
+<!-- begin verbatim block -->
+<pre><code>Differentiating[^diff2] \eqref{eq1} leads
+to a new and simpler equation.
+
+[^diff2]: More precisely, we apply the divergence
+$\nabla\cdot$ on both sides.
+
+Here comes a new paragraph...
+</code></pre>
+<!-- end verbatim block -->
+
+<p>
+Non-breaking space is inserted using the tilde character as in LaTeX:
+
+<p>
+<!-- begin verbatim block -->
+<pre><code>This distance corresponds to 7.5~km, which is traveled in $7.5/5$~s.
+</code></pre>
+<!-- end verbatim block -->
 
 <h3>Lists  <a name="___sec5"></a></h3>
 
@@ -418,7 +464,7 @@ blocks, verbatim code blocks, or lists if the formats <code>rst</code> and
 
 <p>
 Comment lines starting with <code>##</code> are not propagated to the output
-document and can be used for comments that are only interest in
+document and can be used for comments that are only of interest in
 the Doconce file.
 
 <p>
@@ -1183,7 +1229,7 @@ Here goes the solution of this subexercise.
 
 !bremarks
 At the very end of the exercise it may be appropriate to summarize
-and give some perspectives. The text inside the !bremarks-!eremarks
+and give some perspectives. The text inside the `!bremarks` and `!eremarks`
 directives is always typeset at the end of the exercise.
 !eremarks
 

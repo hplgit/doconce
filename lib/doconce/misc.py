@@ -42,7 +42,13 @@ such that the verbatim environments become like
     ('--html_output=',
      'Alternative basename of files associated with the HTML format.'),
     ('--html_style=',
-     'Name of theme for HTML style (solarized, vagrant, bloodish, ...).'),
+     'Name of theme for HTML style (solarized, vagrant, bloodish, bootstrap, bootswatch, bootswatch_*, ...).'),
+    ('--bootstrap_FlatUI',
+     'Add the Flat UI modification of standard Bootstrap layout themes.'),
+    ('--html_code_style=',
+     'off, inherit, transparent: enable normal inline verbatim font where foreground and background color is inherited from the surroundnings (e.g., to avoid the red Boostrap color). on: default.'),
+    ('--html_pre_style=',
+     'off, inherit: let code blocks inside <pre> tags have foreground and background color inherited from the surroundnings. on: default.'),
     ('--html_template=',
      """Specify an HTML template with header/footer in which the doconce
 document is embedded."""),
@@ -53,7 +59,10 @@ document is embedded."""),
     ('--html_video_autoplay=',
      """True for autoplay when HTML is loaded, otherwise False (default)."""),
     ('--html_admon=',
-     "Type of admonition and color: white, colors, gray, yellow."),
+     """\
+Type of admonition and color: white, colors, gray, yellow.
+For html_style=vagrant,bootstrap,bootswatch,bootswatch_*:
+boostrap_panel, bootstrap_alert."""),
     ('--html_admon_shadow',
      'Add a shadow effect to HTML admon boxes (gray, yellow, apricot).'),
     ('--html_admon_bg_color=',
@@ -81,18 +90,6 @@ inserted to the right in exercises - "default" and "none" are allowed
      """Open HTML links in a new window."""),
     ('--device=',
      """Set device to paper, screen, or other (paper impacts LaTeX output)."""),
-    ('--latex_font=',
-     """LaTeX font choice: helvetica, palatino, std (Computer Modern, default)."""),
-    ('--latex_bibstyle=',
-     'LaTeX bibliography style. Default: plain.'),
-    ('--latex_title_layout=',
-     """Layout of the title, authors, and date:
-std: traditional LaTeX layout,
-titlepage: separate page,
-doconce_heading (default): authors with "footnotes" for institutions,
-beamer: layout for beamer slides."""),
-    ('--latex_papersize=',
-     """Geometry of page size: a6, a4, std (default)."""),
     ('--latex_style=',
      """LaTeX style package used for the document.
 std: standard LaTeX article or book style,
@@ -105,6 +102,20 @@ Korma_Script: Korma Script style,
 siamltex: SIAM's standard LaTeX style for papers,
 siamltexmm: SIAM's extended (blue) multimedia style for papers.
 """),
+    ('--latex_font=',
+     """LaTeX font choice: helvetica, palatino, std (Computer Modern, default)."""),
+    ('--latex_bibstyle=',
+     'LaTeX bibliography style. Default: plain.'),
+    ('--latex_table_align=',
+     'Default: quote. Other values: left, center.'),
+    ('--latex_title_layout=',
+     """Layout of the title, authors, and date:
+std: traditional LaTeX layout,
+titlepage: separate page,
+doconce_heading (default): authors with "footnotes" for institutions,
+beamer: layout for beamer slides."""),
+    ('--latex_papersize=',
+     """Geometry of page size: a6, a4, std (default)."""),
     ('--latex_list_of_exercises=',
     """LaTeX typesetting of list of exercises:
 loe: special, separate list of exercises,
@@ -120,7 +131,7 @@ the left on odd page numbers."""),
     ('--latex_section_headings=',
 """Typesetting of title/section/subsection headings:
 std (default): standard LaTeX,
-blue: gray blye color,
+blue: gray blue color,
 strongblue: stronger blue color,
 gray: white text on gray background, fit to heading width,
 gray-wide: white text on gray background, wide as the textwidth
@@ -149,21 +160,18 @@ to the doconce-generated preamble."""),
 computer programs."""),
     ('--latex_admon=',
      """Type of admonition in LaTeX:
-colors1:  (inspired by the NumPy User Guide) applies different colors for
-          the different admons with an embedded icon,
-colors2:  like `colors1` but the text is wrapped around the icon,
-graybox1 (default): rounded gray boxes with a potential title and no icon,
-graybox2:  box with square corners, gray background, and is narrower
-           than graybox1 (one special feature of graybox2 is the summary
-           admon, which has a different look with horizontal rules only,
-           and for A4 format, the summary box is half of the text width and
-           wrapped with running text around (if it does not contain verbatim
-           text, in that case the standard graybox2 style is used). This small
-           summary box is effective in proposals to disperse small paragraphs
-           of key points around),
-graybox3:  box with icons and a light gray background,
-yellowbox: box icons and a light yellow background,
-paragraph: plain paragraph with boldface heading.
+colors1:   (inspired by the NumPy User Guide) applies different colors for
+            the different admons with an embedded icon,
+colors2:    like `colors1` but the text is wrapped around the icon,
+mdfbox:     rounded gray boxes with a potential title and no icon (default),
+graybox2:   box with square corners, gray background, and narrower
+            than mdfbox, if code it reduces to something like mdfbox
+            (mdframed based); the summary admon is in case of A4 format
+            only half of the text width with text wrapped around
+            (effective for proposals and articles),
+grayicon:   box with gray icons and a default light gray background,
+yellowicon: box yellow icons and a default light yellow background,
+paragraph:  plain paragraph with boldface heading.
 """),
     ('--latex_admon_color=',
      """The color to be used as background in admonitions.
@@ -172,6 +180,8 @@ Either rgb tuple or saturated color a la yellow!5:
  '--latex_admon_color=yellow!5'
 (note the quotes, needed for bash, in the latter example)
 """),
+    ('--latex_admon_title_no_period',
+     'Do not add a period at the end of admon titles in LaTeX.'),
     ('--latex_admon_envir_map=',
      """Mapping of code envirs to new envir names inside admons (e.g., to get
 a different code typesetting inside admons. If a number, say 2, as in
@@ -183,6 +193,8 @@ pycod2. Otherwise it must be a mapping for each envir:
      """absolute: exercises numbered as 1, 2, ...
 chapter: exercises numbered as 1.1, 1.2, ... , 3.1, 3.2, etc.
          with a chapter prefix."""),
+    ('--latex_subex_header_postfix=',
+     'Default: ). Gives headers a), b), etc. Can be set to period, colon, etc.'),
     ('--latex_double_hyphen',
      """Replace single dash - by double dash -- in LaTeX output.
 Somewhat intelligent, but may give unwanted edits. Use with great care!"""),
@@ -200,8 +212,6 @@ Somewhat intelligent, but may give unwanted edits. Use with great care!"""),
      'Make HTML output for wordpress.com pages.'),
     ('--tables2csv',
      'Write each table to a CSV file table_X.csv, where X is the table number.'),
-    ('--github_md',
-     'Turn on github-flavored-markdown dialect of the pandoc translator'),
     ('--sections_up',
      'Upgrade all sections: sections to chapters, subsections to sections, etc.'),
     ('--sections_down',
@@ -222,6 +232,17 @@ Somewhat intelligent, but may give unwanted edits. Use with great care!"""),
      'Check that all URLs referred to in the document are valid.'),
     ('--short_title=',
      "Short version of the document's title."),
+    ('--markdown',
+     'Allow Markdown (and some Extended Markdown) syntax as input.'),
+    ('--md2do_output=',
+     'Dump to file the Doconce code arising from converting from Markdown. Default value is None (no dump). Any filename can be specified: --md2do_output=myfile.do.txt'),
+    ('--github_md',
+     'Turn on github-flavored-markdown dialect of the pandoc translator'),
+    ('--strapdown',
+     'Wrap Markdown output in HTML header/footer such that the output file (renamed as .html) can automatically be rendered as an HTML via strapdownjs.com technology. Combine with --github_md for richer output. Styles are set with --bootwatch_theme=cyborg (for instance).'),
+    ('--bootwatch_theme=', 'Boostrap themes from bootwatch.com. See http://strapdownjs.com/ for names. Default: spacelab.'),
+    ('--strict_markdown_output', 'Ensure strict/basic Markdown as output.'),
+    ('--multimarkdown_output', 'Allow MultiMarkdown as output.'),
     ]
 
 _legal_command_line_options = \
@@ -359,6 +380,7 @@ def recommended_html_styles_and_pygments_styles():
         'simple': ['autumn', 'default', 'perldoc'],
         'blood': ['monokai', 'native'],
         'sky': ['default'],
+        'moon': ['fruity', 'native'],
         'night': ['fruity', 'native'],
         'moon': ['fruity', 'native'],
         'darkgray': ['native', 'monokai'],
@@ -1141,11 +1163,16 @@ def copy_latex_packages(packages):
     missing_files = []
     import commands
     for style in packages:
-        failure, output = commands.getstatusoutput('kpsewhich %s.sty' % style)
+        stem, ext = os.path.splitext(style)
+        if ext == '':
+            style += '.sty'
+        failure, output = commands.getstatusoutput('kpsewhich %s' % style)
         if output == '':
-            missing_files.append(style + '.sty')
+            missing_files.append(style)
     if missing_files:
         # Copy zipfile with styles to current dir
+        print '*** missing style files:'
+        print '   ', ', '.join(missing_files)
         import doconce
         doconce_dir = os.path.dirname(doconce.__file__)
         doconce_datafile = os.path.join(doconce_dir, datafile)
@@ -1215,7 +1242,7 @@ def ptex2tex():
     # All envirs in the .ptex2tex.cfg file as of June 2012.
     # (Recall that the longest names must come first so that they
     # are substituted first, e.g., \bcc after \bccod)
-    envirs = 'pro pypro cypro cpppro cpro fpro plpro shpro mpro cod pycod cycod cppcod ccod fcod plcod shcod mcod rst cppans pyans fans bashans swigans uflans sni dat dsni sys slin ipy rpy plin ver warn rule summ ccq cc ccl py'.split()
+    envirs = 'pro pypro cypro cpppro cpro fpro plpro shpro mpro cod pycod cycod cppcod ccod fcod plcod shcod mcod rst cppans pyans fans bashans swigans uflans sni dat dsni sys slin ipy pyshell rpy plin ver warn rule summ ccq cc ccl'.split()
     envirs += ['htmlcod', 'htmlpro', 'html',
                'rbpro', 'rbcod', 'rb',
                'xmlpro', 'xmlcod', 'xml',
@@ -1246,11 +1273,23 @@ def ptex2tex():
                 # Fix value=minted and value=ans*:
                 # they need the language explicitly
                 if value == 'minted':
-                    languages = dict(py='python', cy='cython', f='fortran',
-                                     c='c', cpp='c++', sh='bash', rst='rst',
-                                     m ='matlab', pl='perl', swig='c++',
-                                     latex='latex', html='html', js='js',
-                                     xml='xml', rb='ruby')
+                    languages = dict(
+                        py='python', cy='cython', f='fortran',
+                        c='c', cpp='c++', sh='bash', rst='rst',
+                        m ='matlab', pl='perl', swig='c++',
+                        latex='latex', html='html', js='js',
+                        xml='xml', rb='ruby', sys='console',
+                        dat='text', txt='text', csv='text',
+                        pyshell='python', ipy='ipython',
+                        # pyopt and pysc are treated in latex.py
+                        )
+                    from pygments.lexers import get_lexer_by_name
+                    try:
+                        get_lexer_by_name('ipython')
+                    except:
+                        # need sudo pip install -e git+https://bitbucket.org/sanguineturtle/pygments-ipython-console#egg=pygments-ipython-console'
+                        types2languages['ipy'] = 'python'
+
                     if envir == 'envir':
                         for lang in languages:
                             begin = '\\' + 'begin{minted}[fontsize=\\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{' + languages[lang] + '}'
@@ -1266,10 +1305,12 @@ def ptex2tex():
                                 end = '\\' + 'end{' + value + '}'
                                 envir_user_spec.append((envir, begin, end))
                 elif value.startswith('ans'):
-                    languages = dict(py='python', cy='python', f='fortran',
-                                     cpp='c++', sh='bash', swig='swigcode',
-                                     ufl='uflcode', m='matlab', c='c++',
-                                     latex='latexcode', xml='xml')
+                    languages = dict(
+                        py='python', cy='python', f='fortran',
+                        cpp='c++', sh='bash', swig='swigcode',
+                        ufl='uflcode', m='matlab', c='c++',
+                        latex='latexcode', xml='xml',
+                        pyopt='python', pyshell='python', ipy='python')
                     if envir == 'envir':
                         for lang in languages:
                             language = languages[lang]
@@ -1455,8 +1496,8 @@ download preprocess from http://code.google.com/p/preprocess""")
                 print """
 *** warning: inline verbatim "%s"
     contains both delimiters %s and %s that the \\%s LaTeX
-    command will use - be prepared for strange output that
-    requires manual editing (or with doconce replace/subst)
+    command \\Verb will use - be prepared for strange output that
+    requires manual editing (or use doconce replace/subst)
 """ % (verbatim, verb_delimiter, alt_verb_delimiter)
             filestr = re.sub(r"""\\code\{%s\}([ \n,.;:?!)"'-])""" % verbatim,
                              r'\\%s%s%s%s\g<1>' %
@@ -1479,6 +1520,13 @@ download preprocess from http://code.google.com/p/preprocess""")
     filestr = cpattern.sub(r'{\\fontsize{%spt}{%spt}\\%s!\g<1>!}\g<2>' %
                            (fontsize, fontsize, verb_command), filestr)
     '''
+    # \Verb!...! does not cause linebreak in latex, shift to \texttt{}
+    # where possible since this will reduce overfull hboxes
+    filestr = re.sub(r'\{\\Verb!([^{}_$\^#%\\]+?)!\}',
+                     r'\\texttt{\g<1>}', filestr)
+    filestr = re.sub(r'\{\\protect\s*\\Verb!([^{}_$\^#%\\]+?)!\}',
+                     r'\\texttt{\g<1>}', filestr)
+
     f = open(output_filename, 'w')
     f.write(filestr)
     f.close()
@@ -1965,7 +2013,7 @@ def split_html():
         basename = filename[:-5]
 
     header, parts, footer = get_header_parts_footer(filename, "html")
-    files = doconce_html_split(header, parts, footer, basename, filename)
+    files = doconce_split_html(header, parts, footer, basename, filename)
     print '%s now links to the generated files' % filename
     print ', '.join(files)
 
@@ -2045,7 +2093,7 @@ def slides_html():
 
     filestr = None
     if slide_type == 'doconce':
-        doconce_html_split(header, parts, footer, basename, filename)
+        doconce_split_html(header, parts, footer, basename, filename)
     elif slide_type in ('reveal', 'csss', 'dzslides', 'deck', 'html5slides'):
         filestr = generate_html5_slides(header, parts, footer,
                                         basename, filename, slide_type)
@@ -2226,16 +2274,18 @@ def get_header_parts_footer(filename, format='html'):
     return header, parts, footer
 
 
-def doconce_html_split(header, parts, footer, basename, filename):
+def doconce_split_html(header, parts, footer, basename, filename):
     """Native doconce style splitting of HTML file into parts."""
     import html
     # Check if we use a vagrant template, because that leads to
     # different navigation etc.
-    vagrant = 'builds on the Twitter Bootstrap style' in '\n'.join(header)
+    header_str = '\n'.join(header)
+    vagrant = 'builds on the Twitter Bootstrap style' in header_str
+    bootstrap = '<!-- Bootstrap style: boots' in header_str
 
-    if vagrant:
+    if vagrant or bootstrap:
         local_navigation_pics = False    # navigation is in the template
-        vagrant_navigation_passive = """\
+        bootstrap_navigation_passive = """\
 <!-- Navigation buttons at the bottom:
      Doconce will automatically fill in the right URL in these
      buttons when doconce html_split is run. Otherwise they are empty.
@@ -2249,18 +2299,18 @@ def doconce_html_split(header, parts, footer, basename, filename):
 </ul>
 -->
 """
-        vagrant_navigation_active = """\
+        bootstrap_navigation_active = """\
 <ul class="pager">
 %s
 %s
 </ul>
 """
-        vagrant_navigation_prev = """\
+        bootstrap_navigation_prev = """\
   <li class="previous">
     <a href="%s">&larr; %s</a>
   </li>
 """
-        vagrant_navigation_next = """\
+        bootstrap_navigation_next = """\
   <li class="next">
     <a href="%s">%s &rarr;</a>
   </li>
@@ -2283,8 +2333,8 @@ def doconce_html_split(header, parts, footer, basename, filename):
 
 
     # Fix internal links to point to the right splitted file
-    name_pattern = r'<a name="(.+?)">'
-    href_pattern = r'<a href="#(.+?)">'
+    name_pattern = r'<a name="([^"]+?)"'
+    href_pattern = r'<a href="#([^"]+?)"'
     parts_name = [re.findall(name_pattern, ''.join(part)) for part in parts]
     parts_name.append(re.findall(name_pattern, ''.join(header)))
     parts_name.append(re.findall(name_pattern, ''.join(footer)))
@@ -2418,7 +2468,7 @@ def doconce_html_split(header, parts, footer, basename, filename):
         lines.append('<a name="part%04d"></a>\n' % pn)
 
         # Decoration line?
-        if header_part_line and not vagrant:
+        if header_part_line and not (vagrant or bootstrap):
             if local_navigation_pics:
                 header_part_line_filename = html_imagefile(header_part_line)
             else:
@@ -2432,14 +2482,23 @@ def doconce_html_split(header, parts, footer, basename, filename):
         next_part_filename = _part_filename % (basename, pn+1) + '.html'
         generated_files.append(part_filename)
 
-        if vagrant:
+        if vagrant or bootstrap:
             # Make navigation arrows
             prev_ = next_ = ''
+            # Add jumbotron button reference on first page
+            if pn == 0:
+                for i in range(len(part)):
+                    if part[i].startswith('<!-- potential-jumbotron-button -->'):
+                        part[i] = part[i].replace(
+                              '<!-- potential-jumbotron-button -->',
+                              '\n\n<p><a href="%s" class="btn btn-primary btn-lg">Read &raquo;</a></p>\n\n' % next_part_filename)
+                        break
+
             if pn > 0:
-               prev_ = vagrant_navigation_prev % (prev_part_filename, "Prev")
+               prev_ = bootstrap_navigation_prev % (prev_part_filename, "Prev")
             if pn < len(parts)-1:
-               next_ = vagrant_navigation_next % (next_part_filename, "Next")
-            buttons = vagrant_navigation_active % (prev_, next_)
+               next_ = bootstrap_navigation_next % (next_part_filename, "Next")
+            buttons = bootstrap_navigation_active % (prev_, next_)
         else:
             # Simple navigation buttons at the top and bottom of the page
             lines.append('<!-- begin top navigation -->') # for easy removal
@@ -2462,8 +2521,10 @@ def doconce_html_split(header, parts, footer, basename, filename):
         lines.append('<p>\n')
         if vagrant:
             footer_text = ''.join(footer).replace(
-                vagrant_navigation_passive, buttons)
+                bootstrap_navigation_passive, buttons)
             lines += footer_text.splitlines(True)
+        elif bootstrap:
+            lines += buttons.splitlines(True) + footer
         else:
             lines.append('<!-- begin bottom navigation -->')
             if pn > 0:
@@ -4024,11 +4085,15 @@ def slides_beamer():
 
 
 def generate_beamer_slides(header, parts, footer, basename, filename):
+    # Styles: red/blue_plain/shadow, dark, dark_gradient, vintage
     header = ''.join(header)
     theme = option('beamer_slide_theme=', default='default')
     if theme != 'default':
         beamerstyle = 'beamertheme' + theme
-        copy_latex_packages([beamerstyle])
+        packages = [beamerstyle]
+        if theme == 'vintage':
+            packages.append('vintage_background.png')
+        copy_latex_packages(packages)
     handout = '[handout]' if option('handout') else ''
 
     slides = r"""
@@ -4123,10 +4188,10 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
     admons = 'notice', 'summary', 'warning', 'question', 'block'
     for admon in admons:
         Admon = admon[0].upper() + admon[1:]
-        for envir in 'colors1', 'colors2', 'graybox3', 'yellowbox':
+        for envir in 'colors1', 'colors2', 'grayicon', 'yellowicon':
             slides += r"""\newenvironment{%(admon)s_%(envir)sadmon}[1][]{\begin{block}{#1}}{\end{block}}
 """ % vars()
-    for envir in 'paragraph', 'graybox1', 'graybox2':
+    for envir in 'paragraph', 'mdfbox', 'graybox2':
         slides += r"""\newenvironment{%(envir)sadmon}[1][]{\begin{block}{#1}}{\end{block}}
 """ % vars()
     slides += r"""\newcommand{\grayboxhrules}[1]{\begin{block}{}#1\end{block}}
@@ -4774,14 +4839,33 @@ _latex_environments = [
     ("\\bccq",              "\\eccq"),
     ("\\bcc",               "\\ecc"),
     ("\\bcod",              "\\ecod"),
+    ("\\bpycod",            "\\epycod"),
     ("\\bpro",              "\\epro"),
-    ("\\bpy",               "\\epy"),
+    ("\\bpypro",            "\\epypro"),
     ("\\brpy",              "\\erpy"),
     ("\\bipy",              "\\eipy"),
+    ("\\bfcod",             "\\efcod"),
+    ("\\bfpro",             "\\efpro"),
+    ("\\bccod",             "\\epcod"),
+    ("\\bcpro",             "\\epcro"),
+    ("\\bcppcod",           "\\ecppcod"),
+    ("\\bcpppro",           "\\ecpppro"),
+    ("\\bhtmlcod",          "\\ehtmlcod"),
+    ("\\bhtmlpro",          "\\ehtmlpro"),
+    ("\\brcod",             "\\ercod"),
+    ("\\brpro",             "\\eprro"),
+    ("\\bjscod",            "\\ejscod"),
+    ("\\bjspro",            "\\ejspro"),
+    ("\\blatexcod",         "\\elatexcod"),
+    ("\\blatexpro",         "\\elatexpro"),
+    ("\\bshcod",            "\\eshcod"),
+    ("\\bshpro",            "\\eshpro"),
     ("\\bsys",              "\\esys"),
     ("\\bdat",              "\\edat"),
     ("\\bsni",              "\\esni"),
     ("\\bdsni",             "\\edsni"),
+    ("\\bpyshell",          "\\epyshell"),
+    ("\\bpy",               "\\epy"),
     ]
 
 _replacements = [
@@ -4792,7 +4876,10 @@ _replacements = [
     (r'"([^"]+?)":\s*"[^"]+?"', r'\g<1>'),  # links
     (r"^#.*$", "", re.MULTILINE),
     (r"(idx|label|ref|cite)\{.*?\}", ""),
+    (r"cite\[.+?\]\{.+?\}", ""),
     (r"refch\[.*?\]\[.*?\]\[.*?\]", "", re.DOTALL),
+    (r'^ *\|[\-rlc]+?\|', '', re.MULTILINE),
+    (r' +\| +', ' '),
     ('<linebreak>', ''),
     (r"={3,}",  ""),
     (r'`[^ ][^`]*?`', ""),
@@ -4802,7 +4889,7 @@ _replacements = [
     (r'"ftp://.*?"', ""),
     (r"\b[A-Za-z_0-9/.:]+\.(com|org|net|edu|)\b", ""),  # net name
     (r'\[[A-Za-z]+:\s+[^\]]*?\]', ''),  # inline comment
-    (r'^\s*file=[A-Za-z_0-9., ]+\s*$', '', re.MULTILINE),
+    (r'^\s*files?=[A-Za-z_0-9.,* ]+\s*$', '', re.MULTILINE),
     (r"^@@@CODE.*$", "", re.MULTILINE),
     (r"^@@@OSCMD.*$", "", re.MULTILINE),
     (r"^\s*(FIGURE|MOVIE):\s*\[.+?\]",    "", re.MULTILINE),
@@ -4950,6 +5037,63 @@ def _do_regex_replacements(text, replacements, verbose=0):
             print text
     return text
 
+def _do_fixes_4MSWord(text):
+    t = text  # short cut
+    # Deal with special strange left-overs from removing ref, cite, etc.
+    # , , ,
+    t = re.sub(r',\s+,', ' ', t)
+    # .  period at the beginning of a line
+    t = re.sub(r'^\. +', '', t, flags=re.MULTILINE)
+    #,   comma at the beginning of a line
+    t = re.sub(r'^\, +', '', t, flags=re.MULTILINE)
+    # text like   .,
+    t = re.sub(r' +,\.', '.', t)
+    # or   -.
+    t = re.sub(r' +-\.', '.', t)
+    # and ( ,  ,   , , )
+    t = re.sub(r'\([, ]*\)', ' ', t)
+    # initial spaces on a line
+    t = re.sub(r'^ +([A-Z])', r'\1', t, flags=re.MULTILINE)
+    # too complicated to remove emphasize: t = re.sub(r'(^| +)\*(.+?)\*[, \n.]', r' \2 ', t, flags=re.DOTALL|re.MULTILINE)
+    t = re.sub(r'^\s+\*\s+', '', t, flags=re.MULTILINE)
+    t = re.sub(r' +\)', ')', t)
+    t = t.replace(':)', ')')
+    t = re.sub(r'^ +', '', t, flags=re.MULTILINE)
+    t = re.sub(r'^\.\n', '\n', t, flags=re.MULTILINE)
+    t = re.sub(r'  +', ' ', t)
+    t = re.sub(r'\\begin\{.+?\}', '', t)
+    t = re.sub(r'\\end\{.+?\}', '', t)
+    # Remove space above paragraphs starting with lower case
+    t = re.sub(r'\n\n+([a-z])', r' \1', t)
+    # Remove newlines at the end of text (to help word)
+    # (this might not be desired for grepping in the stripped file)
+    if not '--dont_remove_newlines' in sys.argv:
+        t = re.sub(r'([A-Za-z0-9,.:!?)])\n(?=[^\n])', '\g<1> ', t)
+    # Do these after we have joined lines
+    # spaces before comma
+    t = re.sub(r'([A-Za-z])[:;?.]?\s+, +', r'\1, ', t)
+    # spaces before period
+    t = re.sub(r'([A-Za-z])[:;?.]? +\. +', r'\1. ', t)
+    # spaces before period
+    t = re.sub(r'([A-Za-z])[:;?.]? +\.', r'\1.', t)
+    # spaces before colon
+    t = re.sub(r'([A-Za-z])[:;?.]? +:', r'\1:', t)
+
+    t = t.replace(', g.,', '')
+    t = t.replace('ref[', '')
+    t = t.replace('][', '')
+    t = t.replace(']', '')
+    t = t.replace('[', '')
+    t = t.replace(']', '')
+    t = t.replace('*', '')
+    t = t.replace('|', '')
+    t = t.replace('()', '')
+    t = t.replace('(-)', '')
+    t = t.replace(r'\noindent', '')
+
+    return t
+
+
 def _spellcheck(filename, dictionaries=['.dict4spell.txt'], newdict=None,
                 remove_multiplicity=False, strip_file='.strip'):
     """
@@ -5051,10 +5195,11 @@ def _spellcheck(filename, dictionaries=['.dict4spell.txt'], newdict=None,
     text = _do_regex_replacements(text, replacements, verbose)
     #print 'Text after regex replacements:\n', text
 
+    text = _do_fixes_4MSWord(text)
+
     # Write modified text to scratch file and run ispell
     scratchfile = 'tmp_stripped_%s' % filename
     f = open(scratchfile, 'w')
-    text = text.replace('  ', ' ').replace('\n\n', '\n')
     f.write(text)
     f.close()
     personal_dictionaries = []
@@ -5529,7 +5674,13 @@ def ref_external():
     f.close()
 
 def _usage_latex_problems():
-    print 'doconce latex_problems mydoc.log [overfull-hbox-limit]'
+    print 'doconce latex_problems mydoc.log [overfull-hbox-limit --texcode]'
+    print """
+Interpret the .log file and write out latex problems related to
+undefined references, multiply defined labels, and overfull hboxes.
+The lower limit for overfull hboxes can be specified as an integer.
+--texcode causes the problematic lines in overfull hboxes to be printed.
+"""
 
 def latex_problems():
     if len(sys.argv) < 2:
@@ -5547,6 +5698,14 @@ def latex_problems():
     f = open(filename, 'r')
     lines = f.readlines()
     f.close()
+
+    ok_overfull_hboxes = []
+    # Springer T2 will have some overfull hboxes for chapter headings,
+    # remove these from the report 120.1 and 30.8
+    t2 = 't2do.sty' in ''.join(lines)
+    if t2:
+        ok_overfull_hboxes += ['120.1', '30.8']
+
     multiply_defined_labels = []
     multiply_defined_labels_pattern = r"LaTeX Warning: Label `(.+?)' multiply defined"
     undefined_references = []
@@ -5562,7 +5721,8 @@ def latex_problems():
             undefined_references.append((m.group(1), m.group(2)))
         m = re.search(overfull_hboxes_pattern, line)
         if m:
-            overfull_hboxes.append((float(m.group(1)), m.group(2).strip()))
+            overfull_hboxes.append(
+                ('%.1f' % float(m.group(1)), m.group(2).strip()))
     problems = False
     if multiply_defined_labels:
         problems = True
@@ -5575,11 +5735,25 @@ def latex_problems():
         for ref, page in undefined_references:
             print '    ', ref, 'on page', page
     if overfull_hboxes:
+        texcode = '--texcode' in sys.argv
+        if texcode:
+            # Load .tex file
+            f = open(filename[:-4] + '.tex', 'r')
+            texfile = f.readlines()
+            f.close()
         problems = True
         print "\nOverfull hbox'es:"
         for npt, at_lines in overfull_hboxes:
-            if npt > overfull_hbox_limit:
-                print '    ', '%7.1f' % npt, 'lines', at_lines
+            if float(npt) > overfull_hbox_limit and npt not in ok_overfull_hboxes:
+                print '    ', npt, 'lines', at_lines
+                if texcode:
+                    line_range = [int(line)-1 for line in at_lines.split('--')]
+                    if line_range[1] - line_range[0] < 4 and r'\end' in texfile[line_range[1]]:
+                        # Print more surroundings above
+                        print '\n*** printing 6 lines above problem line:'
+                        print ''.join(texfile[line_range[0]-6:line_range[1]+1])
+                    else:
+                        print '\n', ''.join(texfile[line_range[0]:line_range[1]+1])
 
     if not problems:
         print 'no serious LaTeX problems found in %s!' % filename
@@ -5662,7 +5836,9 @@ def capitalize():
         'Pysketcher',
         ]
     # This functionality is not well implemented so instead of finding
-    # a perfect solution we fix well-known special cases
+    # a perfect solution we fix well-known special cases.
+    # A better software solution would be to read a user-made file
+    # with fixes. The fixes below are special for a book project...
     cap_words_fix = [
         ('exer. ref{', 'Exer. ref{'),
         ('exer. (_', 'Exer. (_'),  # latex2doconce external reference
@@ -5685,12 +5861,23 @@ def capitalize():
         ('mac os x', 'Mac OS X'),
         ('midpoint integration', 'Midpoint integration'),
         ('midpoint rule', 'Midpoint rule'),
+        ('trapozoidal integration', 'Trapozoidal integration'),
+        ('trapozoidal rule', 'Trapozoidal rule'),
         ('world wide web', 'World Wide Web'),
         ('cODE', 'code'),
-        ('runge-kutta', 'Runge-Kutta'),
         ('on windows', 'on Windows'),
         ('in windows', 'in Windows'),
         ('under windows', 'under Windows'),
+        ('on mac', 'on Mac'),
+        ('in mac', 'in Mac'),
+        ('under mac', 'under Mac'),
+        ('a mac', 'a Mac'),
+        ("python's", "Python's"),
+        ("forward Euler", "Forward Euler"),
+        ("backward Euler", "Backward Euler"),
+        ("crank-nicolson", "Crank-Nicolson"),
+        ("adams-bashforth", "Adams-Bashforth"),
+        ('runge-kutta', 'Runge-Kutta'),
         ]
     for name in 'Newton', 'Lagrange', 'Einstein', 'Poisson', 'Taylor', 'Gibb', \
             'Heun', :
@@ -6306,7 +6493,7 @@ def _latex2doconce(filestr):
     # ptex2tex code environments:
     code_envirs = ['ccq', 'cod', 'pro', 'ccl', 'cc', 'sys',
                    'dsni', 'sni', 'slin', 'ipy', 'rpy',
-                   'py', 'plin', 'ver', 'warn', 'rule', 'summ',
+                   'pyshell', 'plin', 'ver', 'warn', 'rule', 'summ',
                    'dat', ] # sequence important for replace!
     for language in 'py', 'f', 'c', 'cpp', 'sh', 'pl', 'm':
         for tp in 'cod', 'pro':

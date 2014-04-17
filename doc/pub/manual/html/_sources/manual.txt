@@ -1,11 +1,15 @@
 .. Automatically generated reST file from Doconce source
    (https://github.com/hplgit/doconce/)
 
+
+.. |nbsp| unicode:: 0xA0
+   :trim:
+
 Doconce Description
 ===================
 
 :Author: Hans Petter Langtangen
-:Date: Jan 10, 2014
+:Date: Apr 16, 2014
 
 .. lines beginning with # are doconce comment lines
 
@@ -81,22 +85,31 @@ Here are some Doconce features:
     cleaner LaTeX and HTML output.
 
 **History.**
-Doconce was developed in 2006 at a time when most popular
-markup languages used quite some tagging.  Later, almost untagged
-markup languages like Markdown and the Pandoc translator became
-popular. Doconce is not a replacement of Pandoc, which is a
-considerably more sophisticated project. Moreover, Doconce was
-developed mainly to fulfill the needs for a flexible source code base
-for books with much mathematics and computer code.
+The Doconce development started in 2006 at a time when
+most popular markup languages used quite some tagging (LaTeX,
+reStructuredText, HTML).  Later, almost untagged markup languages,
+especially `Markdown <http://daringfireball.net/projects/markdown/>`_
+and its sisters `MultiMarkdown <http://fletcherpenney.net/multimarkdown/>`_ and `Pandoc-extended
+Markdown <http://johnmacfarlane.net/pandoc/>`_, became popular. Doconce
+looks much like Markdown and is in particular close to the
+functionality and nature of MultiMarkdown. The advantage of Doconce,
+however, is a series of features for supporting both small and large
+documents (books in particular) with much mathematics and computer
+code. Doconce can also output Sphinx (not supported by Pandoc or
+MultiMarkdown), a format that is very attractive for presenting
+scientific material on the web.  A recent dialect of Doconce allows
+Markdown syntax, extended with Doconce syntax as you like, as valid
+input to the Doconce translator.
 
 **Disclaimer.**
-Doconce is a simple tool, largely based on interpreting
-and handling text through regular expressions. The possibility for
-tweaking the layout is obviously limited since the text can go to
-all sorts of sophisticated markup languages. Moreover, because of
-limitations of regular expressions, some formatting of Doconce syntax
-may face problems when transformed to HTML, LaTeX, Sphinx, and similar
-formats.
+Doconce applies *text transformations*, mostly via
+regular expressions. This is not a fool-proof method of translation
+compared to real parsing. The possibility for tweaking the layout in
+the Doconce document is obviously limited (compared to LaTeX and HTML
+in particular) since the text can go to all sorts of sophisticated
+markup languages. This can be compensated, however, by clever use of
+the programmable preprocessors and by automatic editing of the output
+(via regular expressions).
 
 
 
@@ -662,15 +675,17 @@ From Doconce to Other Formats
 Transformation of a Doconce document ``mydoc.do.txt`` to various other
 formats apply the script ``doconce format``:
 
-.. code-block:: console
-
-        Terminal> doconce format format mydoc.do.txt
-
-or just
 
 .. code-block:: console
 
-        Terminal> doconce format format mydoc
+        Terminal> doconce format formatname mydoc.do.txt
+
+or drop the extension:
+
+
+.. code-block:: console
+
+        Terminal> doconce format formatname mydoc
 
 
 Generating a makefile
@@ -704,19 +719,30 @@ Preprocessing
 -------------
 
 The ``preprocess`` and ``mako`` programs are used to preprocess the
-file, and options to ``preprocess`` and/or ``mako`` can be added after the
-filename. For example,
+file. The Doconce program detects whether ``preprocess`` and/or ``mako``
+statements are present and runs the corresponding programs, first
+``preprocess`` and then ``mako``.
+
+Options to ``preprocess`` and/or ``mako`` can be added after the
+filename with the syntax ``-DMYVAR`` or ``MYVAR=True`` for defining
+a variable ``MYVAR``, or ``-DMYVAR=val`` or ``MYVAR=val`` for giving
+``MYVAR`` the value ``val``. For example,
 
 .. code-block:: console
 
-        Terminal> doconce format latex mydoc -Dextra_sections -DVAR1=5     # preprocess
-        Terminal> doconce format latex yourdoc extra_sections=True VAR1=5  # mako
+        Terminal> doconce format sphinx mydoc -Dextra_sections -DVAR1=5
+        Terminal> doconce format sphinx mydoc extra_sections=True VAR1=5
 
 The variable ``FORMAT`` is always defined as the current format when
-running ``preprocess`` or ``mako``. That is, in the last example, ``FORMAT`` is
-defined as ``latex``. Inside the Doconce document one can then perform
-format specific actions through tests like ``#if FORMAT == "latex"``
-(for ``preprocess``) or ``% if FORMAT == "latex":`` (for ``mako``).
+running ``preprocess`` or ``mako``. That is, in the above examples, ``FORMAT`` is
+defined as ``sphinx``. Inside the Doconce document one can then perform
+format specific actions through tests like ``#if FORMAT == "sphinx"``
+(for ``preprocess``) or ``% if FORMAT == "sphinx":`` (for ``mako``).
+
+The result of a Doconce file ``mydoc.do.txt`` after running ``preprocess``
+is available in a file ``tmp_preprocess__mydoc.do.txt``. Similarly,
+the result of running ``mako`` is available in
+``tmp_mako__mydoc.do.txt``.
 
 Removal of inline comments
 --------------------------
@@ -918,9 +944,10 @@ for demonstrations of blog posts at ``blogspot.no``.
 
 
 .. warning::
-    In the readers' comments after the blog post one cannot paste raw HTML
-    code with MathJax
-    scripts so there is no support for mathematics in the discussion forum.
+    The comment field after the blog post does not recognize MathJax (LaTeX)
+    mathematics or code with indentation. However, using a MathJax
+    bookmarklet, e.g., at `<http://checkmyworking.com/misc/mathjax-bookmarklet/>`_, one can get the mathematics properly rendered. The comment fields are
+    not suitable for computer code, though, as HTML tags are not allowed.
 
 
 
@@ -953,6 +980,11 @@ for demonstrations of blog posts at ``blogspot.no``.
 
 
 
+.. See here if MathJax stops working in HTML pages on blogger and elsewhere:
+
+.. `<http://weiqigao.blogspot.no/2013/03/enabling-mathjax-in-blogger.html>`_
+
+
 Blog posts at Google can also be published `automatically through email <http://support.google.com/blogger/bin/answer.py?hl=en&answer=41452>`_.
 A Python program can send the contents of the HTML file
 to the blog site's email address using the packages  ``smtplib`` and ``email``.
@@ -975,23 +1007,30 @@ Pandoc and Markdown
 
 Output in Pandoc's extended Markdown format results from
 
+
 .. code-block:: console
 
         Terminal> doconce format pandoc mydoc
 
-The name of the output file is ``mydoc.mkd``.
+The name of the output file is ``mydoc.md``.
 From this format one can go to numerous other formats:
+
 
 .. code-block:: console
 
-        Terminal> pandoc -R -t mediawiki -o mydoc.mwk --toc mydoc.mkd
+        Terminal> pandoc -R -t mediawiki -o mydoc.mwk --toc mydoc.md
 
 Pandoc supports ``latex``, ``html``, ``odt`` (OpenOffice), ``docx`` (Microsoft
 Word), ``rtf``, ``texinfo``, to mention some. The ``-R`` option makes
 Pandoc pass raw HTML or LaTeX to the output format instead of ignoring it,
 while the ``--toc`` option generates a table of contents.
 See the `Pandoc documentation <http://johnmacfarlane.net/pandoc/README.html>`_
-for the many features of the ``pandoc`` program. The HTML output from
+for the many features of the ``pandoc`` program.
+
+Markdown to HTML conversion
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The HTML output from
 ``pandoc`` needs adjustments to provide full support for MathJax LaTeX
 mathematics, and for this purpose one should use ``doconce md2html``:
 
@@ -1002,6 +1041,9 @@ mathematics, and for this purpose one should use ``doconce md2html``:
         Terminal> doconce m2html mydoc
 
 The result ``mydoc.html`` can be viewed in a browser.
+
+Using Pandoc to go from LaTeX to MS Word or HTML
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Pandoc is useful to go from LaTeX mathematics to, e.g., HTML or MS
 Word.  There are two ways (experiment to find the best one for your
@@ -1028,17 +1070,12 @@ replace`` and ``doconce subst`` edits might be needed on the ``.mkd`` or
 to MS Word.  Also when going to reStructuredText using Pandoc, it can
 be advantageous to go via LaTeX.
 
-Here is an example where we take a Doconce snippet (without title, author,
-and date), maybe with some unnumbered equations, and quickly generate
-HTML with mathematics displayed my MathJax:
+Strict Markdown
+~~~~~~~~~~~~~~~
 
-.. code-block:: console
-
-        Terminal> doconce format pandoc mydoc
-        Terminal> pandoc -t html -o mydoc.html -s --mathjax mydoc.mkd
-
-The ``-s`` option adds a proper header and footer to the ``mydoc.html`` file.
-This recipe is a quick way of makeing HTML notes with (some) mathematics.
+The option ``--strict_markdown_output`` generates plain or strict
+Markdown without the many extension that Pandoc accepts in Markdown
+syntax.
 
 GitHub-flavored Markdown
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1103,6 +1140,33 @@ the GitHub issue tracker. Turning on Preview shows the typesetting of
 the quote, compute code, inline verbatim, headings, the task list, and
 the table.
 
+MultiMarkdown
+~~~~~~~~~~~~~
+
+The option ``--multimarkdown_output`` generates the MultiMarkdown
+version of Markdown (as opposed to Pandoc-extended Markdown (default),
+strict Markdown, or GitHub-flavored Markdown).
+
+
+Strapdown rendering of Markdown text
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+`Strapdown <http://strapdownjs.com>`_ is a tool that can render Markdown
+text nicely in a web browser by just inserting an HTML header and
+footer in the Markdown file and load the file into a browser.
+The option ``--strapdown`` outputs the relevant header and footer.
+The output file must be renamed such that it gets the extension ``.html``:
+
+
+.. code-block:: console
+
+        Terminal> doconce format pandoc mydoc --strict_markdown_output \
+                  --strapdown --bootstrap_bootwatch_theme=slate
+        Terminal> mv mydoc.md mydoc.html
+
+The ``--bootstrap_bootwatch_theme=theme`` option is used to choose
+a `Bootswatch <http://bootswatch.com/>`_ theme whose names are
+found on the `Strapdown page <http://strapdownjs.com>`_.
 
 LaTeX
 -----
@@ -1148,6 +1212,25 @@ Going from ``ptex2tex`` format to standard LaTeX format is enabled by
 either the ``ptex2tex`` program or Doconce's (simplified) version of it:
 ``doconce ptex2tex``. Details are given below.
 
+
+.. admonition:: Information on typesetting of inline verbatim
+
+   The ``ptex2tex`` and the ``doconce ptex2tex`` programs take inline verbatim
+   code, typeset with backticks in Doconce, and translate this to
+   
+   
+   .. code-block:: text
+   
+   
+           \Verb!text!
+   
+   Thereafter, if ``text`` does not contain illegal characters for the ``\texttt``
+   command, the latter is used instead since then LaTeX can insert
+   linebreaks in the inline verbatim text and hence avoid overfull hboxes.
+
+
+
+
 .. Note: putting code blocks inside a list is not successful in many
 
 .. formats - the text may be messed up. A better choice is a paragraph
@@ -1178,6 +1261,41 @@ as `<http://goo.gl/>`_, `<http://tinyurl.com/>`_, and
 `<https://bitly.com/>`_.)
 The default, ``--device=screen``, creates a PDF file for reading
 on a screen where links are just clickable.
+
+There are many additional options (run ``doconce format --help`` and
+look for options starting with ``--latex`` to get a more verbose description):
+
+ * ``--latex_font=helvetica,palatino``
+
+ * ``--latex_papersize=a4,a6``
+
+ * ``--latex_bibstyle=plain``
+
+ * ``--latex_title_layout=titlepage,std,beamer,doconce_heading``
+
+ * ``--latex_style=std,Springer_lncse,Springer_llncs,Springer_T2,...``
+
+ * ``--latex_list_of_exercises=loe,toc,none``
+
+ * ``--latex_fancy_header``
+
+ * ``--latex_section_headings=std,blue,strongblue,gray,gray-wide``
+
+ * ``--latex_colored_table_rows=blue,gray,no``
+
+ * ``--latex_todonotes``
+
+ * ``--latex_double_spacing``
+
+ * ``--latex_preamble=filename``
+
+ * ``--latex_admon=mdfbox,graybox2,grayicon,yellowicon,paragraph,colors1,colors2``
+
+ * ``--latex_admon_color=0.34,0.02,0.8``
+
+ * ``--latex_admon_envir_map=2``
+
+ * ``--latex_exercise_numbering=absolute,chapter``
 
 **Step 2.**
 Run ``ptex2tex`` (if you have installed the
@@ -1210,14 +1328,6 @@ Preprocessor variables to be defined or undefined are
 
  * ``XELATEX`` for processing by ``xelatex``
 
- * ``PALATINO`` for the Palatino font
-
- * ``HELVETICA`` for the Helvetica font
-
- * ``A4PAPER`` for A4 paper size
-
- * ``A6PAPER`` for A6 paper size (suitable for reading PDFs on phones)
-
  * ``MOVIE`` for specifying how movies are handled: the value ``media9``
    implies the ``media9`` package and the ``\includemedia`` command
    for ``.flv`` and ``.mp4`` movies,
@@ -1239,71 +1349,6 @@ Preprocessor variables to be defined or undefined are
    code with the Pygments tool (which requires ``latex``
    or ``pdflatex`` to be run with the ``-shell-escape`` option)
 
- * ``TODONOTES`` for using the fancy ``todonotes`` package for typesetting
-   inline comments (looks much like track changes in MS Word). This
-   macro has only effect if inline comments are used (name, colon,
-   and comment inside brackets).
-
- * ``LINENUMBERS`` for inclusion of line numbers in the text.
-
- * ``COLORED_TABLE_ROWS`` for coloring every other table rows (set this
-   variable to ``gray`` or ``blue``).
-
- * ``FANCY_HEADER`` for turning on headers with section title and page
-   (and also chapter title on odd numbered pages if chapters exist).
-
- * ``DOUBLE_SPACING`` for 50 percent larger line spacing (useful for
-   pen corrections) and LaTeX "draft" mode.
-
-There are also preprocessor variables with specific values:
-
- * ``LATEX_HEADING`` for the typesetting of the title, author, parts of
-   preamble:
-
-     * ``traditional`` for traditional LaTeX heading,
-
-     * ``titlepage`` for a separate titlepage,
-
-     * ``Springer_collection`` for edited volumes on Springer,
-
-      * ``beamer`` for Beamer slides,
-
-
-     * ``doconce_heading`` (default) for listing institutions after names.
-
-
- * ``LATEX_STYLE`` for speficying the style (affects parameters in
-   ``documentclass`` and inclusion of special packages and commands):
-
-     * ``std`` for standard LaTeX,
-
-     * ``Springer_lncse`` for Springer's LNCSE book series,
-
-     * ``Springer_T2`` for large Springer book format,
-
-     * ``Springer_llncse`` for Springer's LNCS book series,
-
-     * ``Koma_Script`` for Koma-Script ``scrartcl`` style,
-
-     * ``siamltex`` for standard SIAM journal paper style,
-
-     * ``siamltexmm`` for newer SIAM journal paper (multi media)
-       style with blue headings.
-
-
- * ``SECTION_HEADINGS`` for specifying the style of the section,
-   subsection, and paragraph headings:
-
-     * ``blue`` for a blue-gray color of the text,
-
-     * ``strongblue`` for a stronger blue color of the text,
-
-     * ``gray`` for white text on gray background,
-
-     * ``gray-wide`` for white text in a gray box that spans the whole
-       page width.
-
-
 If you are not satisfied with the generated Doconce preamble, you can provide
 your own preamble by adding the command-line option ``--latex_preamble=myfile``.
 In case ``myfile`` contains a documentclass definition, Doconce assumes
@@ -1313,13 +1358,12 @@ present in ``myfile``). Otherwise, ``myfile`` is assumed to contain
 *additional* LaTeX code to be added to the Doconce default preamble.
 
 The ``ptex2tex`` tool makes it possible to easily switch between many
-different fancy formattings of computer code in LaTeX
-documents. After any ``!bc`` command in the Doconce source you can
-insert verbatim block styles as defined in your ``.ptex2tex.cfg``
-file, e.g., ``!bc sys`` for a terminal session, where ``sys`` is set to
-a certain environment in ``.ptex2tex.cfg`` (e.g., ``CodeTerminal``).
-There are about 40 styles to choose from, and you can easily add
-new ones.
+different fancy formattings of computer code in LaTeX documents. After
+any ``!bc`` command in the Doconce source you can insert verbatim block
+styles as defined in your ``.ptex2tex.cfg`` file, e.g., ``!bc sys`` for a
+terminal session, where ``sys`` is set to a certain environment in
+``.ptex2tex.cfg`` (e.g., ``CodeTerminal``).  There are about 40 styles to
+choose from, and you can easily add new ones.
 
 Also the ``doconce ptex2tex`` command supports preprocessor directives
 for processing the ``.p.tex`` file. The command allows specifications
@@ -2365,7 +2409,7 @@ methods for showing movies, set by the option ``-DMOVIE=...`` to
 1. ``media9``:
    the ``media9`` package is used for Flash and MP4 movies, ``movie15``
    for MPEG and AVI files, and a simple `\h:ref:`run:file`{link}` command
-   for other formats. Only Acrobat Reader support displaying these
+   for other formats. Only Acrobat Reader supports displaying these
    type of movies.
 
 2. ``multimedia``: the ``\movie`` command (known from LaTeX Beamer) is used
@@ -3938,11 +3982,18 @@ Inline Tagging
 
 .. index:: inline comments
 
+.. index:: non-breaking space
+
+.. index:: nbsp
+
 
 Doconce supports tags for *emphasized phrases*, **boldface phrases**,
 and ``verbatim text`` (also called type writer text, for inline code),
 <font color="blue">colored words</font>,
 plus LaTeX/TeX inline mathematics, such as :math:`\nu = \sin(x)`.
+Links are easy to define, either with a `text <http://google.com>`_ or
+just a plain `<http://google.com>`_.
+Also non-breaking space (to avoid linebreak) can be specified.
 
 Emphasized Words
 ~~~~~~~~~~~~~~~~
@@ -4136,6 +4187,131 @@ resulting in the link `<manual.html>`_.
 .. adjusted.)
 
 
+
+.. index:: quotation syntax
+
+
+Quotes
+~~~~~~
+
+Quotations employ either the emphasized font or double quotation marks.
+In the latter case, one should not use the character ``"`` but rather
+the (LaTeX-inspired) construction with double backticks and two single
+quotes:
+
+
+.. code-block:: text
+
+
+        This is a sentence with ``words to be quoted''.
+
+To candidates for find double quotes that should be transferred to the above
+type of quotation (which is a common mistake),
+one can run a regular expression search like
+
+
+.. code-block:: console
+
+        Terminal> find . -name '*.do.txt' -exec grep -E \
+                  '[^("]"[A-Za-z0-9 ,]+" *[^:`)"]' {} \; -print
+
+This search may give many false hits as double quotes are frequently
+used in computer code and preprocessor instructions (URLs and hyperlinks
+should not give hits in the above regular expressions).
+
+
+.. index:: non-breaking space
+
+
+Non-Breaking Space
+~~~~~~~~~~~~~~~~~~
+
+The non-breaking space character is tilde:
+
+
+.. code-block:: text
+
+
+        Here comes a long line with a specification of a number with unit at the end,
+        which is an example that requires a "non-breaking space character":
+        "http://en.wikipedia.org/wiki/Non-breaking_space": 7.4~km is traveled
+        in~$7.4/5.5\approx 1.345$~s. (Computer code, where the tilde has a
+        meaning, as in `y = ~x`, is not affected. The non-breaking character only
+        works between characters, numbers, and the math dollar sign.)
+
+This is rendered as
+
+
+..
+
+    Here comes a long line with a specification of a number with unit at the end,
+    which is an example that requires a `non-breaking space character <http://en.wikipedia.org/wiki/Non-breaking_space>`_: 7.4 |nbsp| km is traveled
+    in~:math:`7.4/5.5\approx 1.345`~s. (Computer code, where the tilde has a
+    meaning, as in ``y = ~x``, is not affected. The non-breaking character only
+    works between characters, numbers, and the math dollar sign.)
+
+
+
+
+.. index:: footnotes
+
+
+Footnotes
+~~~~~~~~~
+
+Typesetting of footnotes employs a common email or Extended Markdown syntax:
+
+
+.. code-block:: text
+
+
+        Footnotes are typeset according to the output format[^typesetting].
+        The syntax is optional spaces, opening bracket, hat,
+        a name without spaces [^remedy-for-name-with-spaces], and closing
+        bracket. The logical name of the footnote is not used in LaTeX,
+        HTML, reStructuredText, or Sphinx, because these languages employ
+        numbered footnotes. Other formats employ the logical name.
+        
+          [^typesetting]: Typesetting of the footnote depends on the format.
+        Plain text does nothing, LaTeX removes the
+        definition and inserts the footnote as part of the LaTeX text.
+        reStructuredText and Sphinx employ a similar type of typesetting
+        as Extended Markdown and Doconce, and in HTML we keep the same
+        syntax, just displayed properly in HTML.
+        
+        Footnotes are preferably defined after the paragraph they are used.
+        The definition is the footnote syntax (some optional space, bracket,
+        hat, name, bracket) followed by colon and a text.
+        
+        [^remedy-for-name-with-spaces]: Just put in dashes or underscores in
+        case of spaces.
+
+The text above looks as follows.
+
+Footnotes are typeset according to the output format [#typesetting]_.
+The syntax is optional spaces, opening bracket, hat,
+a name without spaces [#remedy-for-name-with-spaces]_, and closing
+bracket. The logical name of the footnote is not used in LaTeX,
+HTML, reStructuredText, or Sphinx, because these languages employ
+numbered footnotes. Other formats employ the logical name.
+
+.. [#typesetting] Typesetting of the footnote depends on the format.
+   Plain text does nothing, LaTeX removes the
+   definition and inserts the footnote as part of the LaTeX text.
+   reStructuredText and Sphinx employ a similar type of typesetting
+   as Extended Markdown and Doconce, and in HTML we keep the same
+   syntax, just displayed properly in HTML.
+
+
+Footnotes are preferably defined after the paragraph they are used.
+The definition is the footnote syntax (some optional space, bracket,
+hat, name, bracket) followed by colon and a text.
+
+.. [#remedy-for-name-with-spaces] Just put in dashes or underscores in
+   case of spaces.
+
+
+
 Inline Comments
 ~~~~~~~~~~~~~~~
 
@@ -4164,6 +4340,40 @@ All such comments can easily be removed from the ``.do.txt`` file
 Inline comments are typeset in a simple way (boldface name and the
 comment in parenthesis), but in LaTeX very visible color boxes
 are used (via the ``todonotes`` package).
+
+Forced Line Breaks
+~~~~~~~~~~~~~~~~~~
+
+By ending a line with ``<linebreak>`` the output format has a forced
+linebreak at this point. This can be used to typeset poems,
+songs (if not in a verbatim block), or the origin of quotes.
+Here is an example:
+
+
+.. code-block:: text
+
+
+        !bquote
+        *Program writing is substantially more demanding than book
+        writing. Why is it so? I think the main reason is that a larger
+        attention span is needed when working on a large computer program
+        than when doing other intellectual tasks.* <linebreak>
+        Donald Knuth cite[p. 18]{Knuth85}, computer scientist, 1938-.
+        !equote
+
+is rendered as
+
+
+..
+
+    *Program writing is substantially more demanding than book
+    writing. Why is it so? I think the main reason is that a larger
+    attention span is needed when working on a large computer program
+    than when doing other intellectual tasks.* 
+    
+    | Donald Knuth [Ref1]_ (p. 18), computer scientist, 1938-.
+
+
 
 
 Inline Mathematics
@@ -4285,47 +4495,226 @@ Generalized Cross-Referencing
 -----------------------------
 
 Sometimes a series of individual documents may be assembled to one
-large document. The assembly impacts how references to sections
-are written: when referring to a section in the same document, a label
-can be used, while references to sections in other documents are
-written differently, sometimes involving a link (URL) and a citation.
-Especially if both the individual documents and the large assembly document
-are to exist side by side, a flexible way of referencing is needed.
-For this purpose, Doconce offers *generalized references* which allows
-a reference to have two different formulations, one for internal
-references and one for external references. Since LaTeX supports
-references to labels in external documents via the ``xr`` package,
-the generalized references in Doconce has a syntax that may utilize
-the ``xr`` feature in LaTeX.
+large document, typically a book.
+In the book one wants to make cross references between chapters
+and sections, while these become references to external documents
+when the chapters (or sections) are compiled as stand-alone
+documents. For example, one can in a Doconce file ``file1.do.txt``
+have text like
 
+
+.. code-block:: text
+
+
+        ...as shown in Section ref{sec:eqs}.
+
+with `` defined in another file ``file2.do.txt``.
+If ``file1.do.txt`` and ``file2.do.txt`` are combined to a single
+document, the reference is treated correctly, but if ``file1.do.txt``
+is compiled as a single document, the label ``sec:eqs`` becomes
+undefined. Then one would instead write
+
+
+.. code-block:: text
+
+
+        ...as shown in the document "Mathematical Equations":
+        "http://some.net/doc/matheqs.html" cite{math_eqs_2020}.
+
+However, LaTeX has functionality for referring to labels
+in external documents: these work fine when the ``xr`` package
+is used and the external documents are listed as
+``externaldocument{name}``. In that case, we would write
+the above reference as
+
+
+.. code-block:: text
+
+
+        \externaldocument{file2}
+        ...
+        ...as shown in Section ref{sec:eqs} in cite{math_eqs_2020}.
+
+
+To treat all these cases simultanesouly, Doconce
+features *generalized references* which allows
+a reference to have different formulations, depending on whether
+the label is present in the document or is present in an
+external document.
 The syntax of generalized references reads
+
 
 .. code-block:: text
 
 
         ref[internal][cite][external]
 
-If all `:ref:`label`` references in the text ``internal`` are references
-to labels in the present document, the above ``ref`` command is replaced
-by the text ``internal``. Otherwise, if cite is non-empty and the format
-is ``latex`` or ``pdflatex`` one assumes that the references in ``internal``
-are to external documents declared by a comment line ``#
-Externaldocuments: testdoc, mydoc`` (usually after the title, authors,
-and date). In this case the output text is ``internal cite`` and the
-LaTeX package ``xr`` is used to handle the labels in the external documents.
-When referring to a complete chapter (not a section in it), which
-corresponds to a complete external document, it does not make sense
-to write out ``internal cite`` since the ``internal`` reference is a
-chapter number. In such cases, the ``internal``
-syntax can be used,
-and if the label is in another LaTeX document, the output is just ``cite``
-(rather than ``internal cite``). An example below will illustrate the use.
-For all
-output formats other than ``latex`` and ``pdflatex``, the ``external``
-text will be the output.
+If all `:ref:`label`` references in the text ``internal`` are
+to labels defined in the Doconce document, the
+generalized reference becomes the text ``internal``.
+If one or more labels are not present in the document and
+``latex`` or ``pdflatex`` is output format, the generalized reference becomes the
+text ``internal`` plus ``cite``, while for all other formats the
+text in ``external`` is used.
 
-Here is an example on a specific generalized reference to a section
-in a document:
+The example above can now be written as the generalized reference
+
+
+.. code-block:: text
+
+
+        ...as shown in ref[Section ref{sec:eqs}][ in cite{math_eqs_2020}][
+        the document "Mathematical Equations":
+        "http://some.net/doc/matheqs.html" cite{math_eqs_2020}].
+
+When `` is found in the current Doconce document,
+the generalized reference becomes
+
+
+.. code-block:: text
+
+
+        Section ref{sec:eqs}
+
+If not, and ``latex`` or ``pdflatex`` is output, the reference becomes
+
+
+.. code-block:: text
+
+
+        Section ref{sec:eqs}] in cite{math_eqs_2020}
+
+while in all other cases the reference becomes
+
+
+.. code-block:: text
+
+
+        the document "Mathematical Equations":
+        "http://some.net/doc/matheqs.html" cite{math_eqs_2020}
+
+
+For the reference to a label in an external document
+to work in the LaTeX case it is required to list this
+document in the Doconce file as
+
+
+.. code-block:: text
+
+
+        # Externaldocuments: file2
+
+Several external documents can be listed with comma as delimiter:
+
+
+.. code-block:: text
+
+
+        # Externaldocuments: file2, file3, myfile
+
+on *a single line*. The ``Externaldocuments`` comment leads to use
+of the ``xr`` package and insertion of ``\externaldocument{file2}``
+in the LaTeX output file. It is a good habit to place
+the ``Externaldocument`` comment after the title, author, and date.
+
+Very often a reference to a chapter in a book becomes just
+a reference to a complete document, not a specific section,
+if chapters are compiled individually. For ``latex`` and ``pdflatex``
+output one would then do a reference `the chapter :ref:`ch:eqs``
+as just ``[Ref2]_``. That is, one would just use
+the ``cite`` text and not ``internal`` plus ``cite``. This is enabled
+by writing the generalized reference with ``refch`` instead of
+``ref``:
+
+
+.. code-block:: text
+
+
+        ...as shown in refch[Chapter ref{ch:eqs}][cite{eqs_doc_2008}][
+        the document "Some Equations": "http://some.net/someeqs/"].
+
+
+The ``doconce ref_external`` command will read all the labels in the
+external documents listed in the ``Externaldocuments:`` comment
+and use the publish file of the current document to automatically
+generate substitution commands that translates ordinary references
+to generalized references. For example, ``doconce ref_external file1``
+will find the reference
+
+
+.. code-block:: text
+
+
+        ......as shown in Section ref{sec:eqs}.
+
+as a reference to an label ``sec:eqs`` defined in ``file2``, grab
+the title of ``file2.do.txt`` and find the bibliographic data in
+the publish file and make a substitution command
+
+
+.. code-block:: text
+
+
+        doconce subst "Section\s+ref{sec:eqs}" "..." $files
+
+where "..." is the generalized reference as shown in the
+examples above.
+In other words, with ``doconce ref_external`` one can automatically
+generate generalized references between, for example, chapters in
+a book that exist as stand-alone documents.
+
+
+.. warning::
+    Generalized references to equations work well in LaTeX, but
+    not in other formats as one cannot resolve the equation number
+    in the external document. It is then better to write different
+    text using the ``FORMAT`` variable in Mako:
+    
+    
+    .. code-block:: text
+    
+    
+            % if FORMAT in ("pdflatex", "latex"):
+            By combining ref[(ref{eqs:g1})-(ref{eqs:g4})][ in cite{some_doc}][
+            dummy] we can derive the expression ...
+            % else:
+            One can from cite{some_doc} derive the expression
+            % endif
+    
+    The ``doconce ref_external`` tool generates an ``external`` text
+    in case of references to equations that says
+    "reference to specific **equations** (label eqs:g1 and eqs:g4)
+    in external document "name": "link" is not recommended".
+    One can then search for this text and make a Mako if-else rewrite
+    as shown above.
+
+
+
+
+
+.. admonition:: Limited support
+
+   The ``doconce ref_external`` tool cannot correctly handle references
+   to a range of sections like
+   
+   
+   .. code-block:: text
+   
+   
+           Sections ref{mydoc:sec1}-ref{mydoc:sec2}
+   
+   The automatically generated generalized references should always
+   be manually checked and edited.
+
+
+
+
+A Worked Example
+~~~~~~~~~~~~~~~~
+
+Here is an example on a specific working generalized reference where
+the LaTeX output also has a hyperlink:
+
 
 .. code-block:: text
 
@@ -4390,13 +4779,11 @@ The rendered text in the current format becomes
     As explained in
     a `section <http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex>`_ in
     the document `A Document for Testing Doconce <http://hplgit.github.io/doconce/test/demo_testdoc.html>`_
-    [Ref1]_, Doconce documents may include tables.
+    [Ref3]_, Doconce documents may include tables.
 
 
 
-A reference to an entire external document, which is usually a chapter
-of a book if the reference is internal in the Doconce source,
-usually needs to apply the ``refch`` syntax:
+A complete "chapter" reference may look like
 
 
 .. code-block:: text
@@ -4410,7 +4797,7 @@ usually needs to apply the ``refch`` syntax:
         "http://hplgit.github.io/doconce/test/demo_testdoc.html"
         cite{Doconce:test}], Doconce documents may include tables.
 
-The output now if ``ch:testdoc`` is not a label in the document,
+The output now, if ``ch:testdoc`` is not a label in the document,
 becomes in the ``latex`` and ``pdflatex`` case
 
 
@@ -4431,13 +4818,26 @@ The resulting rendered text in the current format becomes
     As explained in
     the document
     `A Document for Testing Doconce <http://hplgit.github.io/doconce/test/demo_testdoc.html>`_
-    [Ref1]_, Doconce documents may include tables.
+    [Ref3]_, Doconce documents may include tables.
 
 
 
 Note that LaTeX cannot
 have links to local files, so a complete URL on the form
 ``http://...`` must be used.
+
+
+.. admonition:: Tip
+
+   Use ``doconce ref_external`` to get an overview of the external
+   references in a file. Very often you want to rewrite the text
+   to reduce the amount of external referencing. Remember then
+   to compile your document before running ``doconce ref_external``
+   again since the command applies the compiled files to get information
+   (``tmp_preprocess_*`` or ``tmp_mako_*``) if you use any of the Preprocess
+   or Mako preprocessors.
+
+
 
 
 Index
@@ -4589,16 +4989,16 @@ We use the command
         cite{key}
 
 to refer to a publication with bibliographic key ``key``.
-Here is an example: [Ref2]_ discussed propagation of
-large destructive water waves, [Ref3]_ gave
+Here is an example: [Ref4]_ discussed propagation of
+large destructive water waves, [Ref5]_ gave
 an overview of numerical methods for solving the Navier-Stokes equations,
 while the use of Backward Kolmogorov equations for analyzing
-random vibrations was investigated in [Ref4]_.
-The book chapter [Ref5]_ contains information on
+random vibrations was investigated in [Ref6]_.
+The book chapter [Ref7]_ contains information on
 C++ software tools for programming multigrid methods. A real retro
-reference is [Ref6]_ about a big FORTRAN package.
+reference is [Ref8]_ about a big FORTRAN package.
 Multiple references are also possible, e.g., see
-[Ref2]_ [Ref5]_.
+[Ref4]_ [Ref7]_.
 
 A LaTeX-style cite command with additional detailed reference is also possible,
 
@@ -4608,8 +5008,8 @@ A LaTeX-style cite command with additional detailed reference is also possible,
 
         cite[details]{key}
 
-for example as in [Ref3]_ (Section 2)
-or [Ref3]_ (Equation (4.2)).
+for example as in [Ref5]_ (Section 2)
+or [Ref5]_ (Equation (4.2)).
 
 In LaTeX, the ``cite`` command is directly translated to the
 corresponding LaTeX version of the command with a backslash; in reST
@@ -4730,7 +5130,7 @@ This is a quick way of writing tables. For example, we can
 write a text file ``tmp.csv`` with
 
 
-.. code-block:: python
+.. code-block:: text
 
         time, velocity, acceleration
         0.0, 1.4186, -5.01
@@ -4916,7 +5316,20 @@ one can use the ``!bsubex`` and ``!bsol``
 commands to indicate a subproblem and a solution. In this way, the
 typesetting of the example looks like an exercise equipped with a solution.
 
+List of Exercises, Problems, and Projects
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Doconce also supports listing all exercises, problems, and projects
+with corresponding page numbers.
+By default, no such listing is enabled. When running ``doconce ptex2tex`` or
+``ptex2tex``, there is a preprocessor variable ``LIST_OF_EXERCISES``
+that can be set to
+
+ * ``toc``: include exercises, problems, and projects as part of
+   the table of contents
+
+ * ``loe``: make a separate list of exercises, problems, and projects,
+   which appears after the table of contents
 
 .. _sec:verbatim:blocks:
 
@@ -4969,6 +5382,23 @@ plain verbatim typesetting (for ``ptex2tex`` this means the ``ccq``
 environment, which is defined in the config file ``.ptex2tex.cfg``,
 while for Sphinx it defaults to the ``python`` environment).
 
+By default, ``pro`` is used for complete programs in Python, ``cod`` is
+for a code snippet in Python, while ``xcod`` and ``xpro`` implies computer
+language specific typesetting where ``x`` can be ``f`` for Fortran, ``c``
+for C, ``cpp`` for C++, ``sh`` for Unix shells, ``pl`` for Perl, ``m`` for
+Matlab, ``cy`` for Cython, ``r`` for Ruby, and ``py`` for Python.  The
+argument ``sys`` means by default ``console`` for Sphinx and
+``CodeTerminal`` (ptex2tex environent) for LaTeX. Other specifications
+are ``dat`` for a data file or print out, ``latex`` for LaTeX`, ``js`` for
+JavaScript, ``html`` for HTML, ``pyshell`` for plain interactive Python
+shell sessions, and ``ipy`` for interactive IPython sessions (the latter
+does not introduce any environment in ``sphinx`` output, as interactive
+sessions are automatically recognized and handled in that format).
+(All these definitions of the arguments after ``!bc`` can be redefined
+in the ``.ptex2tex.cfg`` configuration file for ptex2tex/LaTeX and in
+the ``sphinx code-blocks`` comments for Sphinx, see below.)
+
+
 Since the config file for ``ptex2tex`` and command-line arguments for
 the alternative ``doconce ptex2tex`` program can define what some environments
 map onto with respect to typesetting, a similar possibility is
@@ -4982,27 +5412,16 @@ optional comment to be inserted in the Doconce source file, e.g.,
 
         # sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console
 
-Here, three arguments are defined: ``pycod`` for Python code,
-``cod`` also for Python code, ``cppcod`` for C++ code, and ``sys``
-for terminal sessions. The same arguments would be defined
-in ``.ptex2tex.cfg`` for how to typeset the blocks in LaTeX using
+Here, three arguments are defined: ``!bc pycod`` maps on to the
+Pygments style ``python`` for Python code,
+``!bc cod`` maps on to the Pygments style ``fortran`` for Fortran
+code, ``!bc cppcod``  maps on to the Pygments style ``c++`` for C++ code,
+and ``!bc sys`` maps on to the Pygments ``console`` style for
+terminal sessions. The same arguments would be defined
+in ``.ptex2tex.cfg`` or on the command line for ``doconce ptex2tex``
+for how to typeset the blocks in LaTeX using
 various verbatim styles (Pygments can also be used in a LaTeX
 context).
-
-By default, ``pro`` is used for complete programs in Python, ``cod`` is
-for a code snippet in Python, while ``xcod`` and ``xpro`` implies computer
-language specific typesetting where ``x`` can be ``f`` for Fortran, ``c``
-for C, ``cpp`` for C++, ``sh`` for Unix shells, ``pl`` for Perl, ``m`` for
-Matlab, ``cy`` for Cython, and ``py`` for Python.  The argument ``sys``
-means by default ``console`` for Sphinx and ``CodeTerminal`` (ptex2tex
-environent) for LaTeX. Other specifications are ``dat`` for a data file
-or print out, and ``ipy`` for interactive Python sessions (the latter
-does not introduce any environment  in ``sphinx`` output, as interactive
-sessions are automatically recognized and handled).  All these
-definitions of the arguments after ``!bc`` can be redefined in the
-``.ptex2tex.cfg`` configuration file for ptex2tex/LaTeX and in the
-``sphinx code-blocks`` comments for Sphinx. Support for other languages
-is easily added.
 
 .. (Any sphinx code-block comment, whether inside verbatim code
 
@@ -5013,33 +5432,32 @@ is easily added.
 .. first one is used.)
 
 
-The enclosing ``!ec`` tag of verbatim computer code blocks must
-be followed by a newline.  A common error in list environments is to
-forget to indent the plain text surrounding the code blocks. In
-general, we recommend to use paragraph headings instead of list items
-in combination with code blocks (it usually looks better, and some
-common errors are naturally avoided).
+
+.. admonition:: Tip
+
+   The enclosing ``!ec`` tag of verbatim computer code blocks must
+   be followed by a newline.  A common error in list environments is to
+   forget to indent the plain text surrounding the code blocks. In
+   general, we recommend to use paragraph headings instead of list items
+   in combination with code blocks (it usually looks better, and some
+   common errors are naturally avoided).
+
+
+
 
 Here is a verbatim code block with Python code (``pycod`` style):
+
 
 .. code-block:: text
 
 
         !bc pycod
-        # regular expressions for inline tags:
-        inline_tag_begin = r'(?P<begin>(^|\s+))'
-        inline_tag_end = r'(?P<end>[.,?!;:)\s])'
-        INLINE_TAGS = {
-            'emphasize':
-            r'%s\*(?P<subst>[^ `][^*`]*)\*%s' % \
-            (inline_tag_begin, inline_tag_end),
-            'verbatim':
-            r'%s`(?P<subst>[^ ][^`]*)`%s' % \
-            (inline_tag_begin, inline_tag_end),
-            'bold':
-            r'%s_(?P<subst>[^ `][^_`]*)_%s' % \
-            (inline_tag_begin, inline_tag_end),
-        }
+        def f(x, y):
+            return x + y
+        
+        # Main program
+        from math import pi
+        print 'Testing f:', f(pi, 0)
         !ec
 
 The typeset result of this block becomes
@@ -5047,22 +5465,30 @@ The typeset result of this block becomes
 
 .. code-block:: python
 
-        # regular expressions for inline tags:
-        inline_tag_begin = r'(?P<begin>(^|\s+))'
-        inline_tag_end = r'(?P<end>[.,?!;:)\s])'
-        INLINE_TAGS = {
-            'emphasize':
-            r'%s\*(?P<subst>[^ `][^*`]*)\*%s' % \
-            (inline_tag_begin, inline_tag_end),
-            'verbatim':
-            r'%s`(?P<subst>[^ ][^`]*)`%s' % \
-            (inline_tag_begin, inline_tag_end),
-            'bold':
-            r'%s_(?P<subst>[^ `][^_`]*)_%s' % \
-            (inline_tag_begin, inline_tag_end),
-        }
+        def f(x, y):
+            return x + y
+        
+        # Main program
+        from math import pi
+        print 'Testing f:', f(pi, 0)
+
 
 And here is a C++ code snippet (``cppcod`` style):
+
+
+.. code-block:: text
+
+
+        !bc cppcod
+        void myfunc(double* x, const double& myarr) {
+            for (int i = 1; i < myarr.size(); i++) {
+                myarr[i] = myarr[i] - x[i]*myarr[i-1]
+            }
+        }
+        !ec
+
+with the rendered result
+
 
 .. code-block:: c++
 
@@ -5092,7 +5518,7 @@ The first line implies that all lines in the file ``myfile.f`` are
 copied into a verbatim block, typset in a ``!bc Xpro`` environment, where
 ``X`` is the extension of the filename, here ``f`` (i.e., the environment
 becomes ``!bc fpro`` and will typically lead to some Fortran-style
-formatting in Linux and Sphinx).  The
+formatting).  The
 second line has a ``fromto:`` directive, which implies copying code
 between two lines in the code, typset within a !`bc Xcod`
 environment (again, ``X`` is the filename extension, implying the
@@ -5105,6 +5531,16 @@ example above, we copy code from the line matching ``subroutine test``
 (with as many blanks as desired between the two words) and the line
 matching ``C END1`` (C followed by 5 blanks and then the text END1). The
 final line with the "to" text is not included in the verbatim block.
+
+One can also specify the code environment explictly rather than relying
+on the file extension:
+
+
+.. code-block:: text
+
+
+        @@@CODE somefile.py envir=X fromto: def myfunc@def yourfunc
+
 
 Let us copy a whole file (the first line above):
 
@@ -5349,7 +5785,8 @@ Here are a few examples:
         !enotice
         
         !bblock This is a block.
-        A block has never any icon.
+        A block has never any icon. It is mostly used in slides
+        and gives the text block effect in LaTeX beamer.
         !eblock
         
         !bnotice Going deeper
@@ -5414,13 +5851,28 @@ In ``rst`` and ``sphinx`` one applies the native admonitions, but
 in ``sphinx`` the ``automake_sphinx.py`` script manipulates the HTML
 file to set a gray background for all admonitions.
 In ``html`` one has a command-line argument ``--html_admon`` that
-can be set to different styles: ``--html_admon=white`` for
-white background and small icons, ``--html_admon=gray`` for
-larger icons with gray background and small font, ``--html_admon=yellow``
-and ``--html_admon=apricot``
-works as the ``gray`` style, but the color is different.
-With ``--html_admon=colors`` one gets quite bright colors
-as backgrounds for the different admonitions.
+can be set to different styles:
+
+ * ``--html_admon=gray`` for
+   icons with gray background and small font,
+
+ * ``--html_admon=yellow``
+   and ``--html_admon=apricot`` are similar,
+   but the icons and colors are different,
+
+ * ``--html_admon=colors`` has quite bright colors
+   as backgrounds for the different admonitions,
+
+ * ``--html_admon=lyx``
+   gives a white background and small icons,
+
+ * ``--html_admon=paragraph`` results in a simple paragraph with the
+   admon title as heading.
+
+The options ``--html_admon_bg_color=...`` and ``--html_admon_bd_color=...``
+can be used to override the default background and boundary frame colors
+of the admon styles (respectively). These options have only effect
+for the ``apricot``, ``yellow``, and ``gray`` styles.
 
 Some recommended combinations for admonitions in HTML are
 
@@ -5442,8 +5894,8 @@ icon (defined in ``vagrant.css``), while the others are yellow (defined
 in ``twitter_bootstrap.css``). The ``--html_admon`` color has no effect
 for the ``vagrant`` style.
 
-In ``latex`` and ``pdflatex``, the type of admonition is configured in the
-``.p.tex`` file through the ``ADMON`` preprocessor variable.
+In ``latex`` and ``pdflatex``, the type of admonition style is set by
+the command-line option ``--latex_admon=``.
 Several values are available:
 
  * ``paragraph`` is the simplest type of admonition and typeset
@@ -5454,11 +5906,11 @@ Several values are available:
 
  * ``colors2`` is like ``colors1`` but the text is wrapped around the icon.
 
- * ``graybox1`` is the default and gives rounded gray boxes with a potential
-   title and no icon.
+ * ``mdfbox`` is the default and gives rounded (gray) boxes with a potential
+   title and no icon (using the very flexible ``mdframed`` packaged in LaTeX)
 
  * ``graybox2`` has square corners, gray background, and is narrower
-   than ``graybox1``. One special feature of ``graybox2`` is the summary
+   than ``mdfbox``. One special feature of ``graybox2`` is the summary
    admon, which has a different look with horizontal rules only,
    and for A4 format, the summary box is half of the text width and
    wrapped with running text around (if it does not contain verbatim text,
@@ -5466,9 +5918,88 @@ Several values are available:
    summary box is effective in proposals to disperse small paragraphs
    of key points around.
 
- * ``graybox3`` has icons and a light gray background.
+ * ``grayicon`` has icons and a light gray background.
 
- * ``yellowbox`` has icons and a light yellow background.
+ * ``yellowicon`` has icons and a light yellow background.
+
+There is also an option ``--latex_admon_color=...`` that can be used
+to override the default color. Values are either saturated colors
+like ``gray!10`` or an RGB tuple ``0.95,0.91,0.97``. The chosen color
+replaces all default colors for all admon styles except ``paragraph``.
+For example, an oval white box is produced by ``--latex_admon=mdfbox``
+and ``--latex_admon_color=white``.
+
+The Box Environment
+~~~~~~~~~~~~~~~~~~~
+
+A plain box without any title or colored background,
+just a rectangular frame, is also
+available. The syntax goes like
+
+
+.. code-block:: text
+
+
+        !bbox
+        !bt
+        \[ \nabla\cdot\boldsymbol{u} = 0  \quad\hbox{(mass balance)}\]
+        !et
+        !ebox
+
+resulting in
+
+
+.. The below box could be typeset as .. admonition: Attention
+   but we have decided not to do so (the box formatting is just ignored)
+..
+
+
+.. math::
+         \nabla\cdot\boldsymbol{u} = 0\quad\hbox{(mass balance)}
+
+
+Admonitions are usually used to typeset something that should be distinct
+from the running text: a warning, a remark, a notification, a question,
+a summary, while a box is often used to highlight a key finding
+in the running text: an equation, a hypothesis, a theorem, a
+rule, or a conclusion.
+
+Typesetting of Algorithms
+-------------------------
+
+Doconce has no support for typesetting of algorithms, while LaTeX
+has quite sophisticated support. LaTeX writes need some strategy with
+dealing with algorithms in Doconce: they should be sophisticated
+when the output is in LaTeX and they should be readable when the
+output is in other formats that have no native support for
+algorithms.
+
+The simplest solution is to use the preprocessor (Preprocess or Mako)
+to allow different solutions for different formats.
+There are basically three typesetting styles available: LaTeX
+algorithm environments, pseudo code in a verbatim block, and
+a nested list. A preprocessor variable, say ``ALG`` can be used
+to select the typesetting. With Mako we can write
+
+
+.. code-block:: text
+
+
+        % if ALG == 'latex':
+        # Write native LaTeX code for the algorithm
+        % elif ALG == 'code':
+        # Write pseudo code in (e.g.) a python-like style
+        !bc pycode
+        if feature in element:
+        ...
+        !ec
+        % elif ALG == 'list':
+        # Use lists to express the algorithm
+          o if this element has the feature:
+            * ...
+        % endif
+
+
 
 Preprocessing Steps
 -------------------
@@ -5497,7 +6028,7 @@ the value of ``FORMAT`` and take different actions for different
 formats. Below is an example:
 
 
-.. code-block:: python
+.. code-block:: text
 
         First some math:
         
@@ -5657,7 +6188,7 @@ format and use the if-else construction of the preprocessor. For example,
 if a sophisticated table is desired in LaTeX output, do something like
 
 
-.. code-block:: python
+.. code-block:: text
 
         # #if FORMAT in ("latex", "pdflatex")
         # insert native LaTeX code for fancy table
@@ -5713,26 +6244,26 @@ the Doconce Editing Mode.
 The major advantage with the Doconce Editing Mode in Emacs is that
 many keyboard shortcuts are defined:
 
-==================================  ==================================  
-            Emacs key                             Action                
-==================================  ==================================  
-Ctrl+c f                            figure                              
-Ctrl+c v                            movie/video                         
-Ctrl+c h1                           heading level 1 (section/h1)        
-Ctrl+c h2                           heading level 2 (subsection/h2)     
-Ctrl+c h3                           heading level 2 (subsection/h3)     
-Ctrl+c hp                           heading for paragraph               
-Ctrl+c me                           math environment: !bt equation !et  
-Ctrl+c ma                           math environment: !bt align !et     
-Ctrl+c ce                           code environment: !bc !ec           
-Ctrl+c cf                           code from file: @@@CODE             
-Ctrl+c table2                       table with 2 columns                
-Ctrl+c table3                       table with 3 columns                
-Ctrl+c table4                       table with 4 columns                
-Ctrl+c exer                         exercise outline                    
-Ctrl+c slide                        slide outline                       
-Ctrl+c help                         print this table                    
-==================================  ==================================  
+==========================================  ==========================================  
+                Emacs key                                     Action                    
+==========================================  ==========================================  
+Ctrl+c f                                    figure                                      
+Ctrl+c v                                    movie/video                                 
+Ctrl+c h1                                   heading level 1 (section/h1)                
+Ctrl+c h2                                   heading level 2 (subsection/h2)             
+Ctrl+c h3                                   heading level 2 (subsection/h3)             
+Ctrl+c hp                                   heading for paragraph                       
+Ctrl+c me                                   math environment: ``!bt`` equation ``!et``  
+Ctrl+c ma                                   math environment: ``!bt`` align ``!et``     
+Ctrl+c ce                                   code environment: ``!bc`` code ``!ec``      
+Ctrl+c cf                                   code from file: ``@@@CODE``                 
+Ctrl+c table2                               table with 2 columns                        
+Ctrl+c table3                               table with 3 columns                        
+Ctrl+c table4                               table with 4 columns                        
+Ctrl+c exer                                 exercise outline                            
+Ctrl+c slide                                slide outline                               
+Ctrl+c help                                 print this table                            
+==========================================  ==========================================  
 
 Typing ``Ctrl+c help`` prints the above table in Emacs. Try out
 the different shortcuts and see how handy they are in learning
@@ -5749,7 +6280,7 @@ The slides can either be ordinary, separate slides - or just
 a document with much briefer text and emphasis on bullet lists,
 figures, mathematical formulas, admonitions, and little text.
 
-Points:
+Points to consider (just sketches...):
 
  * Only some pygments style are suited for a particular reveal.js/deck.js
    theme
@@ -5760,6 +6291,17 @@ Points:
 
  * Use ``--keep_pygments_html_bg`` to avoid big changes in background
    color for code
+
+ * Can use PowerPoint or Google Presenter to design a slide and then
+   save as image (GP directly, PP via Save as Picture or
+   Save As + choosing image type,
+   and then all or present slide only), then import image in doconce.
+   LaTeX formulas in image are easiest created as PNGs using
+   `<http://www.codecogs.com/latex/eqneditor.php>`_.
+
+ * From doconce to PP or GP: use the latexslides script to convert
+   to PDFs and odp format, convert odp to ppt interactively or with
+   ``unoconv``.
 
 Overview
 --------
@@ -6401,9 +6943,9 @@ All verbatim and TeX blocks are removed and stored elsewhere
 to ensure that no formatting rules are not applied to these blocks.
 
 The text is examined line by line for typesetting of lists, as well as
-handling of blank lines and comment lines.
-List parsing needs some awareness of the context.
-Each line is interpreted by a regular expression
+handling of blank lines and comment lines.  List parsing needs some
+awareness of the context.  Each line is interpreted by a regular
+expression
 
 
 .. code-block:: text
@@ -6440,42 +6982,77 @@ LaTeX, and work further on the document in this format.
 Typesetting of Function Arguments, Return Values, and Variables
 ---------------------------------------------------------------
 
-As part of comments (or doc strings) in computer code one often wishes
-to explain what a function takes of arguments and what the return
-values are. Similarly, it is desired to document class, instance, and
-module variables.  Such arguments/variables can be typeset as
-description lists of the form listed below and *placed at the end of
-the doc string*. Note that ``argument``, ``keyword argument``, ``return``,
-``instance variable``, ``class variable``, and ``module variable`` are the
-only legal keywords (descriptions) for the description list in this
-context.  If the output format is Epytext (Epydoc) or Sphinx, such lists of
-arguments and variables are nicely formatted.
+
+.. admonition:: Note
+
+   This text is somewhat outdated.
+   Now Doconce supports NumPy-style docstrings. Doconce can also do
+   automatic references to Python documentation, say the :mod:`math`
+   module, but the link only works in case of Sphinx output.
+   Typical syntax is
+   
+   
+   .. code-block:: text
+   
+   
+           With :mod:`numpy:numpy` and the :func:`scipy:scipy.io.loadmat` function in
+           the :mod:`scipy:scipy.io` module, we can ...
+   
+   The prefix ``numpy``, ``scipy``, and ``python`` (for the standard library)
+   are predefined in ``conf.py`` as generated by the ``doconce sphinx_dir``
+   command.
+   
+   (More info in the Sphinx API doc by the author - under development.)
+   
+   A Mako function can provide greater flexibility such that
+   other formats than Sphinx can take advantage of such references
+   (full URL can be built into the function, depending on the format).
 
 
-.. code-block:: text
 
 
-            - argument x: x value (float),
-              which must be a positive number.
-            - keyword argument tolerance: tolerance (float) for stopping
-              the iterations.
-            - return: the root of the equation (float), if found, otherwise None.
-            - instance variable eta: surface elevation (array).
-            - class variable items: the total number of MyClass objects (int).
-            - module variable debug: True: debug mode is on; False: no debugging
-              (bool variable).
 
 
-The result depends on the output format: all formats except Epytext
-and Sphinx just typeset the list as a list with keywords.
+..
 
-    :var x: 
-      x value (float),
-      which must be a positive number.
+    As part of comments (or doc strings) in computer code one often wishes
+    to explain what a function takes of arguments and what the return
+    values are. Similarly, it is desired to document class, instance, and
+    module variables.  Such arguments/variables can be typeset as
+    description lists of the form listed below and *placed at the end of
+    the doc string*. Note that ``argument``, ``keyword argument``, ``return``,
+    ``instance variable``, ``class variable``, and ``module variable`` are the
+    only legal keywords (descriptions) for the description list in this
+    context.  If the output format is Epytext (Epydoc) or Sphinx, such lists of
+    arguments and variables are nicely formatted.
+    
+    
+    .. code-block:: text
+    
+    
+                - argument x: x value (float),
+                  which must be a positive number.
+                - keyword argument tolerance: tolerance (float) for stopping
+                  the iterations.
+                - return: the root of the equation (float), if found, otherwise None.
+                - instance variable eta: surface elevation (array).
+                - class variable items: the total number of MyClass objects (int).
+                - module variable debug: True: debug mode is on; False: no debugging
+                  (bool variable).
+    
+    
+    The result depends on the output format: all formats except Epytext
+    and Sphinx just typeset the list as a list with keywords.
+    
+        :var x: 
+          x value (float),
+          which must be a positive number.
+    
+        :var tolerance: 
+          tolerance (float) for stopping
+          the iterations.
 
-    :var tolerance: 
-      tolerance (float) for stopping
-      the iterations.
+
 
 References
 ==========
@@ -6490,42 +7067,53 @@ References
 
 
 .. [Ref1]
-   [Ref1]. **H. P. Langtangen**,
+   **D. E. Knuth**. Theory and Practice,
+   *EATCS Bulletin*,
+   27,
+   pp. 14-21,
+   1985.
+
+.. [Ref2]
+   [Ref2]. **T. H. E. Author**,
+   Some Equations,
+   2008.
+
+.. [Ref3]
+   [Ref3]. **H. P. Langtangen**,
    A Document for Testing Doconce,
    `http://hplgit.github.io/doconce/test/demo_testdoc.html <http://hplgit.github.io/doconce/test/demo_testdoc.html>`_.
 
-.. [Ref2]
+.. [Ref4]
    **H. P. Langtangen and G. Pedersen**. Propagation of Large Destructive Waves,
    *International Journal of Applied Mechanics and Engineering*,
    7(1),
    pp. 187-204,
    2002.
 
-.. [Ref3]
+.. [Ref5]
    **H. P. Langtangen, K.-A. Mardal and R. Winther**. Numerical Methods for Incompressible Viscous Flow,
    *Advances in Water Resources*,
    25,
    pp. 1125-1146,
    2002.
 
-.. [Ref4]
+.. [Ref6]
    **H. P. Langtangen**. Numerical Solution of First Passage Problems in Random Vibrations,
    *SIAM Journal of Scientific and Statistical Computing*,
    15,
    pp. 997-996,
    1994.
 
-.. [Ref5]
+.. [Ref7]
    **K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen**. Software Tools for Multigrid Methods,
    Advanced Topics in Computational Partial Differential Equations -- Numerical Methods and Diffpack Programming,
    edited by **H. P. Langtangen and A. Tveito**,
    Springer,
    2003.
 
-.. [Ref6]
+.. [Ref8]
    **H. P. Langtangen**. The FEMDEQS Program System,
    *Department of Mathematics, University of Oslo*,
    1989.
-
 
 

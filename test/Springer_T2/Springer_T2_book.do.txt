@@ -292,8 +292,44 @@ distributed values in an interval $[p,q]$. The `numpy` function
 a = np.linspace(p, q, n)
 !ec
 
+|-------------c-----------------------------------------c-------------------------------|
+| Construction              | Meaning                                                   |
+|-------------l-----------------------------------------l-------------------------------|
+| `array(ld)`               | copy list data `ld` to a `numpy` array                    |
+| `asarray(d)`              | make array of data `d` (no data copy if already array)    |
+| `zeros(n)`                | make a `float` vector/array of length `n`, with zeros     |
+| `zeros(n, int)`           | make an `int` vector/array of length `n` with zeros       |
+| `zeros((m,n))`            | make a two-dimensional `float` array with shape (`m`,`n`) |
+| `zeros_like(x)`           | make array of same shape and element type as `x`          |
+| `linspace(a,b,m)`         | uniform sequence of `m` numbers in $[a,b]$                |
+| `a.shape`                 | tuple containing `a`'s shape                              |
+| `a.size`                  | total no of elements in `a`                               |
+| `len(a)`                  | length of a one-dim. array `a` (same as `a.shape[0]`)     |
+| `a.dtype`                 | the type of elements in `a`                               |
+| `a.reshape(3,2)`          | return `a` reshaped as $3\times 2$ array                  |
+| `a[i]`                    | vector indexing                                           |
+| `a[i,j]`                  | two-dim. array indexing                                   |
+| `a[1:k]`                  | slice: reference data with indices `1`,\ldots,`k-1`       |
+| `a[1:8:3]`                | slice: reference data with indices `1`, `4`,\ldots,`7`    |
+| `b = a.copy()`            | copy an array                                             |
+|---------------------------------------------------------------------------------------|
 
 ========= Storing results in data files =========
+
+We need to test spaces around footnotes for 2-digit footnotes, which
+means we need a lot of URLs, e.g., to files:
+"`ball2_cml.py`": "${src_path}/input/ball2_cml.py",
+"`bisection_ex.py`": "${src_path}/input/bisection_ex.py",
+"`bisection_movie.py`": "${src_path}/input/bisection_movie.py",
+"`bisection_plot.py`": "${src_path}/input/bisection_plot.py",
+"`bisection.py`": "${src_path}/input/bisection.py",
+"`bisection_v1.py`": "${src_path}/input/bisection_v1.py",
+"`bisection_v2.py`": "${src_path}/input/bisection_v2.py",
+"`c2f_cml.py`": "${src_path}/input/c2f_cml.py",
+"`data.txt`": "${src_path}/input/data.txt",
+"`Fdeg.dat`": "${src_path}/input/Fdeg.dat",
+"`integrate.py`": "${src_path}/input/integrate.py", and
+"`interest.py`": "${src_path}/input/interest.py".
 
 ======= Writing data to file =======
 label{sec:files:writing}
@@ -412,7 +448,13 @@ for i in range(len(data)):
         outfile.write('%14.8f' % data[i][j])
     outfile.write('\n')
 !ec
+Some other files and URLs we can mention, just to test a 2-digit footnote,
+are
 
+ * "`addall.py`": "${src_path}/input/addall.py"
+ * "`addall_v1.py`": "${src_path}/input/addall_v1.py"
+ * "`add_cml.py`": "${src_path}/input/add_cml.py"
+ * "`add_input.py`": "${src_path}/input/add_input.py"
 
 
 

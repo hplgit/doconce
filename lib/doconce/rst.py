@@ -3,6 +3,7 @@ from common import remove_code_and_tex, insert_code_and_tex, indent_lines, \
     table_analysis, plain_exercise, bibliography, \
     cite_with_multiple_args2multiple_cites
 from html import html_movie
+from doconce import _abort
 
 # replacement patterns for substitutions of inline tags
 def rst_figure(m):
@@ -101,20 +102,13 @@ def rst_code(filestr, code_blocks, code_block_types,
     #filestr = re.sub(r'^!et *\n', '\n\n', filestr, flags=re.MULTILINE)
     filestr = re.sub(r'^!et *\n', '\n', filestr, flags=re.MULTILINE)
 
-    # sphinx math:
-    #filestr = re.sub(r'!bt\n', '\n.. math::\n\n', filestr)
-    #filestr = re.sub(r'!et\n', '\n\n', filestr)
-
-    #filestr = re.sub(r'!et\n', '\n', filestr)
-    #filestr = re.sub(r'!et\n', '', filestr)
-
-    # Fix: if there are !bc-!ec or !bt-!et environments after each
+    # Fix: if there are !bc-!ec or other environments after each
     # other without text in between, there is a difficulty with the
     # :: symbol before the code block. In these cases, we get
-    # !ec:: and !et:: from the above substitutions. We just replace
-    # these by empty text.
-    filestr = filestr.replace('!ec::', '')
-    filestr = filestr.replace('!et::', '')
+    # !ec::, !et::, !bbox:: etc. from the above substitutions.
+    # We just replace these by empty text.
+    filestr = re.sub(r'^(!(b|e)[a-z]+)::', r'\g<1>', filestr,
+                     flags=re.MULTILINE)
 
     # Check
     for pattern in '^!bt', '^!et':
@@ -166,6 +160,21 @@ def fix_underlines_in_headings(filestr):
                 if len(lines[i+1]) != len(lines[i]):
                     lines[i+1] = section_marker[0]*len(lines[i])
     filestr = '\n'.join(lines)
+    return filestr
+
+def rst_footnotes(filestr, format, pattern_def, pattern_footnote):
+    # We use autonumbered named labels such that the footnotes have numbers
+    # like [2], [3] etc. (just use hash before name in the syntax)
+
+    def subst_def(m):
+        text = indent_lines(m.group('text'), format, ' '*3)
+        name = m.group('name')
+        start = '.. [#%s] ' % name
+        return start + text.lstrip()
+
+    filestr = re.sub(pattern_def, subst_def, filestr,
+                     flags=re.MULTILINE|re.DOTALL)
+    filestr = re.sub(pattern_footnote, ' [#\g<name>]_', filestr)
     return filestr
 
 def rst_table(table):
@@ -491,6 +500,8 @@ def define(FILENAME_EXTENSION,
         'comment':       lambda c: '' if c.isspace() or c == '' else '.. %s\n' % c,
         #'linebreak':     r'| \g<text>',  # does not work: interfers with tables and requires a final blank line after block
         'linebreak':     r'<linebreakpipe> \g<text>',  # fixed in rst_code/sphinx_code as a hack
+        'footnote':      rst_footnotes,
+        'non-breaking-space': ' |nbsp| ',
         }
 
     ENVIRS['rst'] = {
@@ -532,3 +543,19 @@ def define(FILENAME_EXTENSION,
    (https://github.com/hplgit/doconce/)
 
 """
+    # http://stackoverflow.com/questions/11830242/non-breaking-space
+    from common import INLINE_TAGS
+    if re.search(INLINE_TAGS['non-breaking-space'], filestr):
+        nbsp = """
+.. |nbsp| unicode:: 0xA0
+   :trim:
+
+"""
+        if 'TITLE:' not in filestr:
+            print '*** error: non-breaking space character ~ is used,'
+            print '    but this will give an error when the document does'
+            print '    not have a title.'
+            _abort()
+        else:
+            INTRO['rst'] += nbsp
+

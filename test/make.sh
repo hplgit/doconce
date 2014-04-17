@@ -49,9 +49,8 @@ cp testdoc.html testdoc_no_solutions.html
 system doconce format latex testdoc --without_answers --without_solutions $ex -DSOMEVAR --sections_down
 cp testdoc.p.tex testdoc_no_solutions.p.tex
 
-cp -r ../bundled/html_styles/style_vagrant .
-doconce replace 'css/' 'style_vagrant/css/' style_vagrant/template_vagrant.html
-system doconce format html testdoc.do.txt $ex --html_style=vagrant --html_template=style_vagrant/template_vagrant.html
+cp ../bundled/html_styles/style_vagrant/template_vagrant.html .
+system doconce format html testdoc.do.txt $ex --html_style=vagrant --html_template=template_vagrant.html
 cp testdoc.html testdoc_vagrant.html
 # Test that a split of testdoc_vagrant.html becomes correct
 doconce split_html testdoc_vagrant.html
@@ -69,7 +68,8 @@ system doconce format pdflatex testdoc.do.txt --device=paper $ex --latex_double_
 # --latex_paper=a4 triggers summary environment to be smaller paragraph
 # within the text (fine for proposals or articles).
 
-system doconce latex_exercise_toc testdoc
+# Drop the table exercise toc since we want to test loe above
+#system doconce latex_exercise_toc testdoc
 
 # doconce replace does not work well with system bash func above without quotes
 doconce replace 'vspace{1cm} % after toc' 'clearpage % after toc' testdoc.p.tex
@@ -86,6 +86,7 @@ doconce replace --examples_as__exercises $ex testdoc.p.tex
 system ptex2tex -DMINTED testdoc
 
 # test that pdflatex works
+rm -f *.aux
 system pdflatex -shell-escape testdoc
 pdflatex -shell-escape testdoc
 makeindex testdoc
@@ -159,6 +160,7 @@ system doconce slides_html slides1 deck --html_slide_type=sandstone.firefox
 cp slides1.html slides1_deck.html
 /bin/ls -R deck.js >> slides1_deck.html
 
+rm -f *.aux
 system doconce format pdflatex slides1 --latex_title_layout=beamer
 system doconce ptex2tex slides1
 system doconce slides_beamer slides1
@@ -167,6 +169,7 @@ system doconce format html slides2 --pygments_html_style=emacs
 system doconce slides_html slides2 reveal --html_slide_type=beigesmall
 cp slides2.html slides2_reveal.html
 
+rm -f *.aux
 system doconce format pdflatex slides2 --latex_title_layout=beamer
 system doconce ptex2tex slides2 envir=minted
 system doconce slides_beamer slides2
@@ -175,6 +178,7 @@ system doconce format html slides3 --pygments_html_style=emacs SLIDE_TYPE=reveal
 system doconce slides_html slides3 reveal --html_slide_type=beigesmall
 cp slides3.html slides3_reveal.html
 
+rm -f *.aux
 theme=red3
 system doconce format pdflatex slides3 SLIDE_TYPE=beamer SLIDE_THEME=$theme --latex_title_layout=beamer
 system doconce ptex2tex slides3 envir=minted
@@ -201,6 +205,7 @@ system doconce format sphinx author1
 system doconce format plain author1
 
 # Test math
+rm -f *.aux
 name=math_test
 doconce format pdflatex $name
 doconce ptex2tex $name
@@ -219,11 +224,13 @@ doconce format pandoc $name
 doconce md2latex $name
 
 # Test admonitions
-admon_tps="colors1 graybox1 paragraph graybox2 yellowbox graybox3 colors2"
+
+# LaTeX admon styles
+admon_tps="colors1 mdfbox paragraph graybox2 yellowicon grayicon colors2"
 for admon_tp in $admon_tps; do
-if [ $admon_tp = 'graybox1' ]; then
+if [ $admon_tp = 'mdfbox' ]; then
    color="--latex_admon_color=gray!6"
-elif [ $admon_tp = 'graybox3' ]; then
+elif [ $admon_tp = 'grayicon' ]; then
    color="--latex_admon_color=gray!20"
 else
    color=
@@ -243,10 +250,12 @@ rm -rf latex_figs
 done
 
 # Test different code envirs inside admons
-doconce format pdflatex admon --latex_admon=graybox1 --latex_admon_color=1,1,1 --latex_admon_envir_map=2
+doconce format pdflatex admon --latex_admon=mdfbox --latex_admon_color=1,1,1 --latex_admon_envir_map=2
 doconce ptex2tex admon pycod2=minted pypro2=minted pycod=Verbatim pypro=Verbatim
 cp admon.tex admon_double_envirs.tex
+rm -rf latex_figs
 
+# Test HTML admon styles
 system doconce format html admon --html_admon=lyx --html_style=blueish2
 cp admon.html admon_lyx.html
 
@@ -265,8 +274,15 @@ cp admon.html admon_yellow.html
 system doconce format html admon --html_admon=apricot --html_style=solarized
 cp admon.html admon_apricot.html
 
-system doconce format html admon --html_style=vagrant --pygments_html_style=default --html_template=style_vagrant/template_vagrant.html
+system doconce format html admon --html_style=vagrant --pygments_html_style=default --html_template=template_vagrant.html
 cp admon.html admon_vagrant.html
+
+system doconce format html admon --html_style=bootstrap --pygments_html_style=default --html_admon=bootstrap_alert
+cp admon.html admon_bootstrap_alert.html
+doconce split_html admon_bootstrap_alert.html
+
+system doconce format html admon --html_style=bootswatch --pygments_html_style=default --html_admon=bootstrap_panel
+cp admon.html admon_bootswatch_panel.html
 
 system doconce sphinx_dir dirname=tmp_admon admon
 system python automake_sphinx.py
@@ -279,7 +295,12 @@ cp admon.mwiki admon_mwiki.mwiki
 system doconce format plain admon
 cp admon.txt admon_paragraph.txt
 
-cp -fr admon_*.html admon_*.pdf admon_*.*wiki admon_*.txt admon_sphinx admon_demo/
+cp -fr admon_*.html admon_*.pdf admon_*.*wiki admon_*.txt ._admon_*.html admon_sphinx admon_demo/
+cd admon_demo
+doconce replace '../doc/src/manual/fig/wave1D' '../../doc/src/manual/fig/wave1D' *.html .*.html
+rm -rf *~
+cd ..
+
 
 #google-chrome admon_*.html
 #for pdf in admon_*.pdf; do evince $pdf; done
@@ -288,6 +309,11 @@ if [ -d latex_figs ]; then
     echo "BUG: latex_figs was made by some non-latex format..."
 fi
 
+# Test Bootstrap HTML styles
+system doconce format html test_boots --html_style=bootswatch_journal --pygments_html_style=default --html_admon=bootstrap_panel
+doconce split_html test_boots.html
+
+# Test GitHub-extended Markdown
 system doconce format pandoc github_md.do.txt --github_md
 
 # Test movie handling

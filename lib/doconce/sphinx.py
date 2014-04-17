@@ -271,12 +271,13 @@ def sphinx_code(filestr, code_blocks, code_block_types,
 
     filestr = insert_code_and_tex(filestr, code_blocks, tex_blocks, 'rst')
 
-    # Remove all !bc ipy since interactive sessions are automatically
-    # handled by sphinx without indentation (just a blank line before
-    # and after)
-    cpattern = re.compile(r'^!bc +ipy *\n(.*?)^!ec *\n',
-                          re.DOTALL|re.MULTILINE)
-    filestr = cpattern.sub('\n\g<1>\n', filestr)
+    # Remove all !bc ipy and !bc pyshell since interactive sessions
+    # are automatically handled by sphinx without indentation
+    # (just a blank line before and after)
+    filestr = re.sub(r'^!bc +ipy *\n(.*?)^!ec *\n',
+                     '\n\g<1>\n', filestr, re.DOTALL|re.MULTILINE)
+    filestr = re.sub(r'^!bc +pyshell *\n(.*?)^!ec *\n',
+                     '\n\g<1>\n', filestr, re.DOTALL|re.MULTILINE)
 
     # Make correct code-block:: language constructions
     for key in envir2lang:
@@ -289,7 +290,7 @@ def sphinx_code(filestr, code_blocks, code_block_types,
         #                 '\n.. code-block:: %s\n\n' % envir2lang[key], filestr,
         #                 flags=re.MULTILINE)
         # Check that we have code installed to handle pyscpro
-        if key == 'pyscpro':
+        if 'pyscpro' in filestr and key == 'pyscpro':
             try:
                 import icsecontrib.sagecellserver
             except ImportError:
@@ -466,6 +467,7 @@ def define(FILENAME_EXTENSION,
         }
 
     TOC['sphinx'] = lambda s: ''  # Sphinx automatically generates a toc
+
 
 
 #---------------------------------------------------------------------------

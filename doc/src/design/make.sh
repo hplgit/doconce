@@ -21,20 +21,19 @@ cp mydoc.html $pub/mydoc_uio.html
 cp -r uio $pub/
 
 # Utilize the vagrant template
-cp -r ../../bundled/html_styles/style_vagrant .
+cp ../../bundled/html_styles/style_vagrant/template_vagrant.html .
 # Customize the template
-doconce replace LogoWord 'DiffEq' style_vagrant/template_vagrant.html
-doconce replace withSubWord '101' style_vagrant/template_vagrant.html
-doconce replace '<a href="">GO TO 1</a>' '<a href="http://wikipedia.org">Wikipedia</a>' style_vagrant/template_vagrant.html
-doconce replace '<a href="">GO TO 2</a>' '<a href="http://wolframalpha.com">WolframAlpha</a>' style_vagrant/template_vagrant.html
-doconce replace 'Here goes a footer, if desired, maybe with a Copyright &copy;' '&copy; 2013' style_vagrant/template_vagrant.html
-doconce replace 'href="css' 'href="style_vagrant/css' style_vagrant/template_vagrant.html
+doconce replace LogoWord 'DiffEq' template_vagrant.html
+doconce replace withSubWord '101' template_vagrant.html
+doconce replace '<a href="">GO TO 1</a>' '<a href="http://wikipedia.org">Wikipedia</a>' template_vagrant.html
+doconce replace '<a href="">GO TO 2</a>' '<a href="http://wolframalpha.com">WolframAlpha</a>' template_vagrant.html
+doconce replace 'Here goes a footer, if desired, maybe with a Copyright &copy;' '&copy; 2013' template_vagrant.html
 
-doconce format html mydoc.do.txt --html_style=vagrant --html_template=style_vagrant/template_vagrant.html
+doconce format html mydoc.do.txt --html_style=vagrant --html_template=template_vagrant.html
 pygmentize -f html -O full,style=emacs -o mydoc_vagrant_pygmentized.html -l html mydoc.html
 cp mydoc.html $pub/mydoc_vagrant.html
 cp -r style_vagrant mydoc_vagrant_pygmentized.html $pub/
 
 # Report about the technology
 doconce format html wrapper_tech
-cp wrapper_tech.html $pub
+cp wrapper_tech.html $pub/index.html

@@ -39,14 +39,14 @@ def _abort():
 
 def internet_access():
     """Return True if internet is on, else False."""
-    import urllib2
+    import urllib2, socket
     try:
         # Check google.com with numerical IP-address (which avoids
         # DNS loopup) and set timeout to 1 sec so this does not
         # take much time (google.com should respond quickly)
-       response=urllib2.urlopen('http://74.125.228.100', timeout=1)
+       response = urllib2.urlopen('http://74.125.228.100', timeout=1)
        return True
-    except urllib2.URLError as err:
+    except (urllib2.URLError, socket.timeout) as err:
         pass
     return False
 
@@ -493,6 +493,8 @@ def doconce_exercise_output(exer,
 
     s = '\n\n# ' + envir_delimiter_lines['exercise'][0] + '\n\n'
     s += exer['heading']  # result string
+    comments = ''  # collect comments at the end of the exercises
+
     if include_numbering and not include_type:
         include_type = True
     if not exer['type_visible']:
@@ -511,6 +513,26 @@ def doconce_exercise_output(exer,
         s += '# keywords = %s' % '; '.join(exer['keywords']) + '\n'
 
     if exer['text']:
+        # Let comments at the end of the text come very last, if there
+        # are no subexercises. Just outputting comments at the end
+        # makes Filename: ... on a separate line, which does not look good.
+        # We extract the final comments and print them after anything else.
+        # Final comments often contain fruitful comments about the solution.
+        if (not exer['subex']) and '\n#' in exer['text']:
+            lines = exer['text'].splitlines()
+            newlines = []
+            comments = []
+            for i, line in enumerate(reversed(lines)):
+                if line.startswith('#') or line.isspace() or line == '':
+                    comments.append(line)
+                else:
+                    break
+            comments = '\n'.join(comments)
+            if i == 0:
+                exer['text'] = '\n'.join(lines)
+            elif i > 0:
+                exer['text'] = '\n'.join(lines[:-i])
+
         s += '\n' + exer['text'] + '\n'
 
     if exer['hints']:
@@ -625,6 +647,9 @@ def doconce_exercise_output(exer,
         else:
             s += '# solution files: %s\n' % ', '.join(exer['solution_file'])
 
+    if comments:
+        s += '\n' + comments
+
     s += '\n# ' + envir_delimiter_lines['exercise'][1] + '\n\n'
     return s
 
@@ -687,9 +712,9 @@ ENVIRS = {}
 
 
 # regular expressions for inline tags:
-inline_tag_begin = r"""(?P<begin>(^|[(\s]))"""
+inline_tag_begin = r"""(?P<begin>(^|[(\s~]))"""
 # ' is included as apostrophe in end tag
-inline_tag_end = r"""(?P<end>($|[.,?!;:)}'\s-]))"""
+inline_tag_end = r"""(?P<end>($|[.,?!;:)}'\s~\[-]))"""
 # alternatives using positive lookbehind and lookahead (not tested!):
 inline_tag_before = r"""(?<=(^|[(\s]))"""
 inline_tag_after = r"""(?=$|[.,?!;:)\s])"""
@@ -820,12 +845,22 @@ INLINE_TAGS = {
     'movie':
     r'^MOVIE:\s*\[(?P<filename>[^,\]]+),?(?P<options>[^\]]*)\]\s*?(?P<caption>.*)$',
     'linebreak': '^(?P<text>.*)<linebreak> *$',
+    #'footnote':  # definition is in doconce.py since no regular re.sub in loop is to be performed
+    # The tilde is used in URLs and computer code
+    # Must be substituted before inline math, color, etc., if the next
+    # regex is to work (but then &nbsp;$math$ breaks later...)
+    #'non-breaking-space': r'(?<=[$A-Za-z0-9])~(?=[$A-Za-z0-9])',
+    # This one allows HTML MathJax formulas and HTML tags to surround the ~
+    # (i.e., after substitutions of $...$, color, etc.)
+    'non-breaking-space': r'(?<=[})>$A-Za-z0-9])~(?=[{\\<$A-Za-z0-9])'
+
     }
+
 INLINE_TAGS_SUBST = {}
 
 # frequent syntax errors that we can test for: (not yet used)
-heading_error = (r'(^ [_=]+[^_=]*|^[_=]+[^ _=]*$)',
-                 'Initial spaces or missing underscore(s) or = at the end')
+heading_error = (r'(^ [=]+[^=]*|^[=]+[^ =]*$)',
+                 'Initial spaces before heading or missing = at the end')
 INLINE_TAGS_BUGS = {
     # look for space after first special character ($ ` _ etc)
     'math': (r'%s(?P<subst>\$ [^$]*\$)%s' % (inline_tag_begin, inline_tag_end),

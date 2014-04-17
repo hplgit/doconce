@@ -104,7 +104,8 @@ def mwiki_code(filestr, code_blocks, code_block_types,
                       htmlpro='html5', xmlpro='xml',
                       html='html5', xml='xml',
                       sys='bash', dat='text', csv='text', txt='text',
-                      pyoptpro='python', pyscpro='python')
+                      pyoptpro='python', pyscpro='python',
+                      ipy='python', pyshell='python')
 
     for key in envir2lang:
         language = envir2lang[key]
@@ -375,6 +376,7 @@ def define(FILENAME_EXTENSION,
         'comment':       '<!-- %s -->',
         'abstract':      r'\n*\g<type>.* \g<text>\g<rest>',
         'linebreak':     r'\g<text><br />',
+        'non-breaking-space': '&nbsp;',
         }
 
     CODE['mwiki'] = mwiki_code
@@ -429,4 +431,5 @@ def define(FILENAME_EXTENSION,
 
     # document start:
     INTRO['mwiki'] = ''
+
 
