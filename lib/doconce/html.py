@@ -1634,24 +1634,26 @@ def define(FILENAME_EXTENSION,
         boots_version = '3.1.1'
         if html_style == 'bootstrap':
             boots_style = 'boostrap'
-            url = 'http://netdna.bootstrapcdn.com/bootstrap/%s/css/bootstrap.min.css' % boots_version
+            urls = ['http://netdna.bootstrapcdn.com/bootstrap/%s/css/bootstrap.min.css' % boots_version]
         elif html_style.startswith('bootstrap_'):
             # Local Doconce stored or modified bootstrap themes
             boots_style = html_style.split('_')[1]
-            url = 'https://raw.github.com/hplgit/doconce/master/bundled/html_styles/style_bootstrap/css/%s.css' % html_style
+            urls = ['http://netdna.bootstrapcdn.com/bootstrap/%s/css/bootstrap.min.css' % boots_version,
+                    'https://raw.github.com/hplgit/doconce/master/bundled/html_styles/style_bootstrap/css/%s.css' % html_style]
         elif html_style.startswith('bootswatch'):
             default = 'cosmo'
             boots_style = default if 'bootswatch_' not in html_style else \
                           html_style.split('_')[1]
-            url = 'http://netdna.bootstrapcdn.com/bootswatch/%s/%s/bootstrap.min.css' % (boots_version, boots_style)
+            urls = ['http://netdna.bootstrapcdn.com/bootswatch/%s/%s/bootstrap.min.css' % (boots_version, boots_style)]
 
         style = """
 <!-- Bootstrap style: %s -->
-<link href="%s" rel="stylesheet">
+%s
 <!-- not necessary
 <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 -->
-"""% (html_style, url)
+"""% (html_style, '\n'.join(['<link href="%s" rel="stylesheet">' % url
+                   for url in urls]))
         if option('bootstrap_FlatUI'):
             # Add the Flat UI style
             style += """
@@ -1732,8 +1734,9 @@ pre { color: inherit; background-color: transparent; }
         meta_tags += '<meta name="keywords" content="%s">\n' % keywords
 
 
+    # Had to take DOCTYPE out from 1st line to load css files from github...
+    # <!DOCTYPE html>
     INTRO['html'] = """\
-<!DOCTYPE html>
 <!--
 Automatically generated HTML file from Doconce source
 (https://github.com/hplgit/doconce/)

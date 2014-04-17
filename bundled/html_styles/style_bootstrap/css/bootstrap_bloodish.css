@@ -9,7 +9,7 @@ body {
 
 a {
   color: #8a0808;
-} 
+}
 
 p {
   font-size: 16px;
@@ -266,4 +266,82 @@ input[type="color"],
 .badge-info {
    background-color: #560a0a;
 }
+
+.panel {
+  border: 2px solid #404040;
+}
+.panel-default > .panel-heading {
+  background-color: #8a0808;
+  color:#ffffff;
+  border-color: #720808;
+}
+.panel-default > .panel-heading+.panel-collapse .panel-body {
+  border-top-color:#720808;
+}
+.panel-default > .panel-footer+.panel-collapse .panel-body {
+  border-bottom-color:#720808;
+}
+.panel-primary {
+  border-color:#8a0808;
+}
+.panel-primary > .panel-heading {
+  color:#ffffff;
+  background-color:#8a0808;
+  border-color:#8a0808;
+}
+.panel-success {
+  border-color: #720808;
+}
+.panel-success > .panel-heading {
+  color: #ffffff;
+  background-color: #8a0808;
+}
+.panel-success > .panel-heading+.panel-collapse .panel-body {
+  border-top-color:transparent;
+}
+.panel-success > .panel-footer+.panel-collapse .panel-body {
+  border-bottom-color:transparent;
+}
+.panel-info {
+  border-color:transparent;
+}
+.panel-info > .panel-heading {
+  background-color: #ffffff;
+  border-color: #8a0808;
+  border-color:transparent;
+}
+.panel-info > .panel-heading+.panel-collapse .panel-body {
+  border-top-color:transparent;
+}
+.panel-info > .panel-footer+.panel-collapse .panel-body {
+  border-bottom-color:transparent;
+}
+.panel-warning {
+}
+.panel-warning > .panel-heading {
+  color:#ffffff;
+  background-color:#404040;
+  border-color:#000000;
+}
+.panel-warning > .panel-heading+.panel-collapse .panel-body {
+  border-top-color:transparent;
+}
+.panel-warning > .panel-footer+.panel-collapse .panel-body {
+  border-bottom-color:transparent;
+}
+.panel-danger {
+  border-color: #191919;
+}
+.panel-danger > .panel-heading {
+  color: #ffffff;
+  background-color: #404040;
+  border-color: #191919;
+}
+.panel-danger > .panel-heading+.panel-collapse .panel-body {
+  border-top-color:transparent;
+}
+.panel-danger > .panel-footer+.panel-collapse .panel-body {
+  border-bottom-color:transparent;
+};
+
 
