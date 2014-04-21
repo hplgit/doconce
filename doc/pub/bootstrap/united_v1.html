@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <!--
 Automatically generated HTML file from Doconce source
 (https://github.com/hplgit/doconce/)
@@ -13,6 +12,9 @@ Automatically generated HTML file from Doconce source
 
 <!-- Bootstrap style: bootswatch_united -->
 <link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/united/bootstrap.min.css" rel="stylesheet">
+<!-- not necessary
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
 
 <style type="text/css">
 /* Let inline verbatim have the same color as the surroundings */
@@ -63,6 +65,7 @@ MathJax.Hub.Config({
 
 
     
+<!-- Bootstrap navigation bar -->
 <div class="navbar navbar-default navbar-fixed-top">
   <div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
@@ -70,7 +73,7 @@ MathJax.Hub.Config({
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="bootstrap_demo.html">Doconce Demo of the Bootstrap style</a>
+    <a class="navbar-brand" href="united_v1.html">Doconce Demo of the Bootstrap style</a>
   </div>
   <div class="navbar-collapse collapse navbar-responsive-collapse">
     <ul class="nav navbar-nav navbar-right">
@@ -94,6 +97,8 @@ MathJax.Hub.Config({
 
 <div class="container">
 
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
+
 <!-- ------------------- main content ---------------------- -->
 
 
@@ -108,8 +113,8 @@ way:
 
 <p>
 
-<!-- code=console (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; doconce format html mydoc --html_style=bootswatch --html_admon=bootstrap_panel</span>
+<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format html mydoc --html_style=bootswatch --html_admon=bootstrap_panel
 </pre></div>
 <p>
 The title, optionally with authors, date, table of contents, abstract
@@ -143,7 +148,7 @@ Doconce supports the following themes from the Bootstrap family:
 
 <ul>
  <li> <code>bootstrap</code> (the original <a href="http://getbootstrap.com/examples/theme/" target="_self">Bootstrap theme</a>)</li>
- <li> <code>bootswatch</code>, defaults to Cosmo theme</li>
+ <li> <code>bootswatch</code>, defaults to the Bootswatch Cosmo theme</li>
  <li> <code>bootswatch_THEME</code>, where <code>THEME</code> can be among
    (see <a href="http://www.bootstrapcdn.com/?theme=5#bootswatch_tab" target="_self">demos</a>)</li>
 
@@ -175,6 +180,16 @@ Doconce supports the following themes from the Bootstrap family:
 
 </ul>
 
+ <li> Variations of the Bootstrap theme, named <code>bootstrap_THEME</code>, where
+   <code>THEME</code> can be</li>
+
+<ul>
+   <li> <code>FlatUI</code> for the <a href="http://designmodo.github.io/Flat-UI/" target="_self">Flat UI</a> theme</li>
+   <li> <code>bootflat</code> for the <a href="http://bootflat.github.io/" target="_self">Bootflat</a> theme</li>
+   <li> <code>blue</code>, <code>red</code>, <code>brown</code>, <code>bluegray</code>, and <code>bloodish</code> color variations
+     of the original Bootstrap theme</li>
+</ul>
+
 </ul>
 
 You write Boostrap HTML files as normal Doconce documents, but there
@@ -188,7 +203,7 @@ are some additional features:
    next page.</li>
  <li> Possibility to define a local grid of elements in the document to
    align admons, figures, code, or other elements horisontally.</li>
- <li> Other layouts of admons <button type="button" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="&quot;Admon&quot; is a short form of admonition: a box that highlights some text, either as extra material or as particularly important material. Doconce supports different types of admonitions: notice, question, summary, and warning. These can have an optional title, and some admonition styles will also include an icon image. In addition, there is a block admonition without a title and icon."><a name="link_footnote_1"><a><a href="#def_footnote_1" style="color: white">1</a></button>.</li>
+ <li> Other layouts of admons <button type="button" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="&quot;Admon&quot; is a short form for admonition: a box that highlights some text, e.g., as extra material or as particularly important material. Doconce supports different types of admonitions: notice, question, summary, and warning. These can have an optional title, and some admonition styles will also include an icon image. In addition, there is a block admonition without a title and icon."><a name="link_footnote_1"><a><a href="#def_footnote_1" style="color: white">1</a></button>.</li>
  <li> Footnotes feature a tooltip functionality such that hovering the mouse
    over the footnote brings up a little window with the footnote
    (try it on the footnote after <em>admon</em> right above!).</li>
@@ -209,8 +224,8 @@ pages for different things, just
 </div>
 
 
-<p><a name="def_footnote_1"></a><a href="#link_footnote_1"><b>1:</b></a> &quot;Admon&quot; is a short form of admonition: a
-box that highlights some text, either as extra material or as
+<p><a name="def_footnote_1"></a><a href="#link_footnote_1"><b>1:</b></a> &quot;Admon&quot; is a short form for admonition: a
+box that highlights some text, e.g., as extra material or as
 particularly important material. Doconce supports different types
 of admonitions: notice, question, summary, and warning. These
 can have an optional title, and some admonition styles will also
@@ -233,11 +248,11 @@ Typical commands for producing Boostrap or Bootswatch layouts are
 
 <p>
 
-<!-- code=console (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; doconce format html mydoc --html_style=boostrap</span>
-<span style="color: #888888">Terminal&gt; doconce format html mydoc --html_style=booswatch</span>
-<span style="color: #888888">Terminal&gt; doconce format html mydoc --html_style=boostrap --admon_style=bootstrap_panel</span>
-<span style="color: #888888">Terminal&gt; doconce format html mydoc --html_style=booswatch_superhero --admon_style=bootstrap_panel</span>
+<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format html mydoc --html_style=boostrap
+Terminal&gt; doconce format html mydoc --html_style=booswatch
+Terminal&gt; doconce format html mydoc --html_style=boostrap --admon_style=bootstrap_panel
+Terminal&gt; doconce format html mydoc --html_style=booswatch_superhero --admon_style=bootstrap_panel
 </pre></div>
 <p>
 Below are some examples on admons.
@@ -430,9 +445,9 @@ we can run the program:
 
 <p>
 
-<!-- code=console (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; python prog.py</span>
-<span style="color: #888888">0</span>
+<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; python prog.py
+0
 </pre></div>
 <p>
   </div> <!-- column col-sm-4 -->
@@ -492,9 +507,9 @@ we can run the program:
 
 <p>
 
-<!-- code=console (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; python prog.py</span>
-<span style="color: #888888">0</span>
+<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%">Terminal&gt; python prog.py
+0
 </pre></div>
 <p>
 </div>
@@ -511,6 +526,12 @@ we can run the program:
 <!-- include javascript, jQuery *first* -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
 
 
 </body>

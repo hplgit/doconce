@@ -271,7 +271,9 @@ def html_code(filestr, code_blocks, code_block_types,
                            swig='c++', latex='latex', tex='latex',
                            html='html', xml='xml',
                            js='js',
-                           sys='console', # sys='text', sys='bash'
+                           #sys='console',
+                           sys='text',
+                           #sys='bash'
                            dat='text', txt='text', csv='text',
                            cc='txt', ccq='text',
                            pyshell='python', ipy='ipython',
@@ -1634,21 +1636,34 @@ def define(FILENAME_EXTENSION,
         boots_version = '3.1.1'
         if html_style == 'bootstrap':
             boots_style = 'boostrap'
-            url = '//netdna.bootstrapcdn.com/bootstrap/%s/css/bootstrap.min.css' % boots_version
-        elif html_style == 'bootswatch':
-            boots_style = 'cosmo'  # default
-            url = '//netdna.bootstrapcdn.com/bootswatch/%s/%s/bootstrap.min.css' % (boots_version, boots_style)
-        else:
+            urls = ['http://netdna.bootstrapcdn.com/bootstrap/%s/css/bootstrap.min.css' % boots_version]
+        elif html_style == 'bootstrap_bootflat':
+            boots_style = 'bootflat'
+            urls = ['http://netdna.bootstrapcdn.com/bootstrap/%s/css/bootstrap.min.css' % boots_version,
+                    'https://raw.githubusercontent.com/bootflat/bootflat.github.io/master/bootflat/css/bootflat.css']
+        elif html_style.startswith('bootstrap_'):
+            # Local Doconce stored or modified bootstrap themes
             boots_style = html_style.split('_')[1]
-            url = '//netdna.bootstrapcdn.com/bootswatch/%s/%s/bootstrap.min.css' % (boots_version, boots_style)
+            urls = ['http://netdna.bootstrapcdn.com/bootstrap/%s/css/bootstrap.min.css' % boots_version,
+                    'https://raw.github.com/hplgit/doconce/master/bundled/html_styles/style_bootstrap/css/%s.css' % html_style]
+        elif html_style.startswith('bootswatch'):
+            default = 'cosmo'
+            boots_style = default if 'bootswatch_' not in html_style else \
+                          html_style.split('_')[1]
+            urls = ['http://netdna.bootstrapcdn.com/bootswatch/%s/%s/bootstrap.min.css' % (boots_version, boots_style)]
 
         style = """
 <!-- Bootstrap style: %s -->
-<link href="http:%s" rel="stylesheet">
-"""% (html_style, url)
+%s
+<!-- not necessary
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
+"""% (html_style, '\n'.join(['<link href="%s" rel="stylesheet">' % url
+                   for url in urls]))
         if option('bootstrap_FlatUI'):
+            # Add the Flat UI style
             style += """
-<link href="https://raw.github.com/hplgit/doconce/master/bundled/html_styles/style_FlatUI/css/flat-ui.css" rel="stylesheet">
+<link href="https://raw.github.com/hplgit/doconce/master/bundled/html_styles/style_bootstrap/css/flat-ui.css" rel="stylesheet">
 """
         bootstrap_title_bar = ''
 
@@ -1679,8 +1694,18 @@ pre { color: inherit; background-color: transparent; }
         meta_tags += '<meta name="description" content="%s">\n' % title
 
         if html_style.startswith('boots'):
-            from doconce import dofile_basename
+
+            # Make link back to the main HTML file
+            outfilename = option('html_output=', None)
+            if outfilename is None:
+                from doconce import dofile_basename
+                outfilename = dofile_basename + '.html'
+            else:
+                if not outfilename.endswith('html'):
+                    outfilename += '.html'
+
             bootstrap_title_bar += """
+<!-- Bootstrap navigation bar -->
 <div class="navbar navbar-default navbar-fixed-top">
   <div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
@@ -1702,7 +1727,7 @@ pre { color: inherit; background-color: transparent; }
   </div>
 </div>
 </div>
-""" % (dofile_basename + '.html', title)
+""" % (outfilename, title)
 
 
     keywords = re.findall(r'idx\{(.+?)\}', filestr)
@@ -1716,8 +1741,9 @@ pre { color: inherit; background-color: transparent; }
         meta_tags += '<meta name="keywords" content="%s">\n' % keywords
 
 
+    # Had to take DOCTYPE out from 1st line to load css files from github...
+    # <!DOCTYPE html>
     INTRO['html'] = """\
-<!DOCTYPE html>
 <!--
 Automatically generated HTML file from Doconce source
 (https://github.com/hplgit/doconce/)
@@ -1737,12 +1763,20 @@ Automatically generated HTML file from Doconce source
         INTRO['html'] += bootstrap_title_bar
         INTRO['html'] += """
 <div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
 """
         OUTRO['html'] += """
 </div>  <!-- end container -->
 <!-- include javascript, jQuery *first* -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
 """
     OUTRO['html'] += """
 

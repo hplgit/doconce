@@ -25,7 +25,7 @@ construction results in a short, standard Bootstrap main page.
 Doconce supports the following themes from the Bootstrap family:
 
  * `bootstrap` (the original "Bootstrap theme": "http://getbootstrap.com/examples/theme/")
- * `bootswatch`, defaults to Cosmo theme
+ * `bootswatch`, defaults to the Bootswatch Cosmo theme
  * `bootswatch_THEME`, where `THEME` can be among
    (see "demos": "http://www.bootstrapcdn.com/?theme=5#bootswatch_tab")
    * Bootswatch themes with white background:
@@ -45,6 +45,12 @@ Doconce supports the following themes from the Bootstrap family:
      * `darkly`
      * `slate`
      * `superhero`
+ * Variations of the Bootstrap theme, named `bootstrap_THEME`, where
+   `THEME` can be
+   * `FlatUI` for the "Flat UI": "http://designmodo.github.io/Flat-UI/" theme
+   * `bootflat` for the "Bootflat": "http://bootflat.github.io/" theme
+   * `blue`, `red`, `brown`, `bluegray`, and `bloodish` color variations
+     of the original Bootstrap theme
 
 You write Boostrap HTML files as normal Doconce documents, but there
 are some additional features:
@@ -69,8 +75,8 @@ pages for different things, just
    version in `static_*`)
 !enotice
 
-[^admons]: ``Admon'' is a short form of admonition: a
-box that highlights some text, either as extra material or as
+[^admons]: ``Admon'' is a short form for admonition: a
+box that highlights some text, e.g., as extra material or as
 particularly important material. Doconce supports different types
 of admonitions: notice, question, summary, and warning. These
 can have an optional title, and some admonition styles will also
