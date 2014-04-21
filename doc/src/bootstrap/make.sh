@@ -32,12 +32,12 @@ done
 
 # CBC style (demonstrates also how to insert a banner and footer image)
 # needs custom editing and adding of code
-doconce format html bootstrap_demo --html_style=bootstrap_cbc --pygments_html_style=default --html_admon=bootstrap_panel --html_output=cbc --keep_pygments_html_bg #--html_code_style=inherit --html_pre_style=inherit
+doconce format html bootstrap_demo --html_style=bootstrap_cbc --pygments_html_style=default --html_admon=bootstrap_panel --html_output=cbc --keep_pygments_html_bg --html_code_style=inherit --html_pre_style=inherit
 doconce replace ' navbar-fixed-top' '' cbc.html
-doconce subst '<!-- Bootstrap navigation bar -->' '<div class="masthead">\n<div class="container">\n<img src="http://cbc.simula.no/styles/stylefigs/CBClogoweb334x72.gif">\n</div>\n</div>\n' cbc.html
+doconce subst '<!-- Bootstrap navigation bar -->' '<div class="masthead">\n<div class="container">\n<a href="http://cbc.simula.no"><img src="http://cbc.simula.no/styles/stylefigs/CBClogoweb334x72.gif"></a>\n</div>\n</div>\n' cbc.html
 doconce subst -s '<!-- Bootstrap footer.+?-->' '<footer><a href="http://simula.no"><img width="250" align=right src="http://cbc.simula.no/pub/figs/simula_logo_pos.png"></a></footer>' cbc.html
 
 # index.html file with links to all the demos
-doconce format html index --html_style=bootswatch_spacelab --no_pygments_html
+doconce format html index --html_style=bootswatch_spacelab --no_pygments_html --html_links_in_new_window
 
 cp *.html .*.html ../../../pub/bootstrap

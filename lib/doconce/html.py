@@ -1763,6 +1763,8 @@ Automatically generated HTML file from Doconce source
         INTRO['html'] += bootstrap_title_bar
         INTRO['html'] += """
 <div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
 """
         OUTRO['html'] += """
 </div>  <!-- end container -->

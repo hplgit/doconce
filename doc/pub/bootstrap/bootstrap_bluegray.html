@@ -10,8 +10,9 @@ Automatically generated HTML file from Doconce source
 
 
 
-<!-- Bootstrap style: bootswatch_cerulean -->
-<link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/cerulean/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap style: bootstrap_bluegray -->
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://raw.github.com/hplgit/doconce/master/bundled/html_styles/style_bootstrap/css/bootstrap_bluegray.css" rel="stylesheet">
 <!-- not necessary
 <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 -->
@@ -73,7 +74,7 @@ MathJax.Hub.Config({
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="cerulean_v1.html">Doconce Demo of the Bootstrap style</a>
+    <a class="navbar-brand" href="bootstrap_bluegray.html">Doconce Demo of the Bootstrap style</a>
   </div>
   <div class="navbar-collapse collapse navbar-responsive-collapse">
     <ul class="nav navbar-nav navbar-right">
@@ -209,7 +210,11 @@ are some additional features:
    (try it on the footnote after <em>admon</em> right above!).</li>
 </ul>
 
-<div class="alert alert-block alert-success alert-text-normal"><b>Quick generation of websites.</b>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+  <h3 class="panel-title">Quick generation of websites</h3>
+  </div>
+<div class="panel-body">
 To make a typical website with Bootstrap layout and different type of
 pages for different things, just
 
@@ -221,6 +226,7 @@ pages for different things, just
  <li> link the documents (locally) to each other (link directly to the HTML
    version in <code>static_*</code>)</li>
 </ul>
+</div>
 </div>
 
 
@@ -258,12 +264,16 @@ Terminal&gt; doconce format html mydoc --html_style=booswatch_superhero --admon_
 Below are some examples on admons.
 
 <p>
-<div class="alert alert-block alert-danger alert-text-normal"><b>Warning: recall to prefix module functions.</b>
+<div class="panel panel-warning">
+  <div class="panel-heading">
+  <h3 class="panel-title">Warning: recall to prefix module functions</h3>
+  </div>
+<div class="panel-body">
 
 <p>
 
 <!-- code=ipython (from !bc ipy) typeset with pygments style "default" -->
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">In [1]: </span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">In [1]: </span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
 
 <span style="color: #000080; font-weight: bold">In [2]: </span>x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0</span>, <span style="color: #666666">4*</span>np<span style="color: #666666">.</span>pi, <span style="color: #666666">11</span>)
 
@@ -287,17 +297,27 @@ Below are some examples on admons.
 <p>
 This is the admon for warnings or paying attention.
 </div>
-
-
-<p>
-<div class="alert alert-block alert-info alert-text-normal"><b>Question.</b>
-How many admon styles are supported by the Doconce Boostrap and Bootswatch
-styles?
 </div>
 
 
 <p>
-<div class="alert alert-block alert-warning alert-text-normal"><b>Summary.</b>
+<div class="panel panel-success">
+  <div class="panel-heading">
+  <h3 class="panel-title">Question</h3>
+  </div>
+<div class="panel-body">
+How many admon styles are supported by the Doconce Boostrap and Bootswatch
+styles?
+</div>
+</div>
+
+
+<p>
+<div class="panel panel-danger">
+  <div class="panel-heading">
+  <h3 class="panel-title">Summary</h3>
+  </div>
+<div class="panel-body">
 Doconce supports the following elements of Bootstrap elements:
 
 <p>
@@ -309,6 +329,7 @@ Doconce supports the following elements of Bootstrap elements:
  <li> Columns of content (grid structure via the <code>slidecell</code> environment)</li>
  <li> Tooltips via footnotes</li>
 </ul>
+</div>
 </div>
 
 
@@ -343,7 +364,11 @@ the following syntax in case of a 1x3 grid:
 # end-grid-area
 </pre></div>
 <p>
-<div class="alert alert-block alert-danger alert-text-normal"><b>Important rule.</b>
+<div class="panel panel-warning">
+  <div class="panel-heading">
+  <h3 class="panel-title">Important rule</h3>
+  </div>
+<div class="panel-body">
 
 <ul>
  <li> The <code># begin/end-grid-area</code> directives mark the beginning and end of
@@ -351,6 +376,7 @@ the following syntax in case of a 1x3 grid:
  <li> Only text <em>inside</em> the slidecell environments is typeset in the output HTML
    document.</li>
 </ul>
+</div>
 </div>
 
 
@@ -388,11 +414,16 @@ We consider
 # end-grid-area
 </pre></div>
 <p>
-<div class="alert alert-block alert-success alert-text-normal"><b>It is easy to shuffle cells around in the grid structure.</b>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+  <h3 class="panel-title">It is easy to shuffle cells around in the grid structure.</h3>
+  </div>
+<div class="panel-body">
 A nice feature is that the coordinates of the cells, here <code>00</code>, <code>01</code>,
 and <code>02</code> can be given in any desired order. For example, if we want
 to reverse the sequence of the three elements in the three columns
 of this grid, we simply change <code>00</code> by <code>02</code> and <code>02</code> by <code>00</code>.
+</div>
 </div>
 
 
@@ -461,7 +492,11 @@ we can run the program:
 <p>
 <div class="row"> <!-- begin cell row -->
   <div class="col-sm-4">
-<div class="alert alert-block alert-success alert-text-normal"><b>Mathematics.</b>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+  <h3 class="panel-title">Mathematics</h3>
+  </div>
+<div class="panel-body">
 Given a function
 
 <p>
@@ -470,16 +505,21 @@ $$ f(x) = e^{-ax}\sin wx\thinspace .$$
 Write a program for evaluating \( f(x) \), and test the program
 for the value of \( f(0) \).
 </div>
+</div>
 
   </div> <!-- column col-sm-4 -->
   <div class="col-sm-4">
-<div class="alert alert-block alert-success alert-text-normal"><b>Implementation.</b>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+  <h3 class="panel-title">Implementation</h3>
+  </div>
+<div class="panel-body">
 The Python implementation reads
 
 <p>
 
 <!-- code=python (from !bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> exp, sin
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> exp, sin
 
 <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
     <span style="color: #008000; font-weight: bold">return</span> exp(<span style="color: #666666">-</span>a<span style="color: #666666">*</span>x)<span style="color: #666666">*</span>sin(w<span style="color: #666666">*</span>x)
@@ -488,16 +528,21 @@ The Python implementation reads
 where <code>a</code> and <code>w</code> must be <em>global variables</em>, initialized in the
 main program.
 </div>
+</div>
 
   </div> <!-- column col-sm-4 -->
   <div class="col-sm-4">
-<div class="alert alert-block alert-success alert-text-normal"><b>Computational experiment.</b>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+  <h3 class="panel-title">Computational experiment</h3>
+  </div>
+<div class="panel-body">
 With a main program
 
 <p>
 
 <!-- code=python (from !bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%">a <span style="color: #666666">=</span> <span style="color: #666666">1</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a <span style="color: #666666">=</span> <span style="color: #666666">1</span>
 <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> pi
 w <span style="color: #666666">=</span> pi
 <span style="color: #008000; font-weight: bold">print</span> f(<span style="color: #666666">0</span>)
@@ -508,10 +553,11 @@ we can run the program:
 <p>
 
 <!-- code=text (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%">Terminal&gt; python prog.py
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; python prog.py
 0
 </pre></div>
 <p>
+</div>
 </div>
 
   </div> <!-- column col-sm-4 -->
