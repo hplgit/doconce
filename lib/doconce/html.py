@@ -271,7 +271,9 @@ def html_code(filestr, code_blocks, code_block_types,
                            swig='c++', latex='latex', tex='latex',
                            html='html', xml='xml',
                            js='js',
-                           sys='console', # sys='text', sys='bash'
+                           #sys='console',
+                           sys='text',
+                           #sys='bash'
                            dat='text', txt='text', csv='text',
                            cc='txt', ccq='text',
                            pyshell='python', ipy='ipython',
@@ -1635,6 +1637,10 @@ def define(FILENAME_EXTENSION,
         if html_style == 'bootstrap':
             boots_style = 'boostrap'
             urls = ['http://netdna.bootstrapcdn.com/bootstrap/%s/css/bootstrap.min.css' % boots_version]
+        elif html_style == 'bootstrap_bootflat':
+            boots_style = 'bootflat'
+            urls = ['http://netdna.bootstrapcdn.com/bootstrap/%s/css/bootstrap.min.css' % boots_version,
+                    'https://raw.githubusercontent.com/bootflat/bootflat.github.io/master/bootflat/css/bootflat.css']
         elif html_style.startswith('bootstrap_'):
             # Local Doconce stored or modified bootstrap themes
             boots_style = html_style.split('_')[1]
@@ -1699,6 +1705,7 @@ pre { color: inherit; background-color: transparent; }
                     outfilename += '.html'
 
             bootstrap_title_bar += """
+<!-- Bootstrap navigation bar -->
 <div class="navbar navbar-default navbar-fixed-top">
   <div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
@@ -1762,6 +1769,12 @@ Automatically generated HTML file from Doconce source
 <!-- include javascript, jQuery *first* -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
 """
     OUTRO['html'] += """
 

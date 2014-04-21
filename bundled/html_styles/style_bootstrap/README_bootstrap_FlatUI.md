@@ -1,3 +1,6 @@
+This file describes the file css/bootstrap_FlatUI.css, which
+is taken from the Flat UI project with the following README.md file:
+
 Note: This directory contains only the plain Flat UI css file.
 
 

@@ -1,4 +1,13 @@
+/*
+How to autoedit the HTML file to get the complete CBC banner style:
 
+doconce replace ' navbar-fixed-top' '' mydoc.html
+
+doconce subst '<!-- Bootstrap navigation bar -->' '<div class="masthead">\n<div class="container">\n<img src="http://cbc.simula.no/styles/stylefigs/CBClogoweb334x72.gif">\n</div>\n</div>\n' mydoc.html
+
+doconce subst -s '<!-- Bootstrap footer.+?-->' '<footer><a href="http://simula.no"><img width="250" align=right src="http://cbc.simula.no/pub/figs/simula_logo_pos.png"></a></footer>' mydoc.html
+
+*/
 body {
   margin: 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -205,8 +214,17 @@ input[type="color"],
   color: #404040;
 }
 
+.masthead {
+    color:#FFFFFF;
+    background-image:url("http://cbc.simula.no/styles/stylefigs/cbctoprod.gif");
+    background-repeat:no-repeat;
+    height:72px;
+    background-position: top right;
+}
+
+
 .navbar {
-  background-color: #8a0808;
+  background-color: #404040;
   color: #ffffff;
 }
 
