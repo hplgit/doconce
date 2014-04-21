@@ -852,7 +852,7 @@ INLINE_TAGS = {
     #'non-breaking-space': r'(?<=[$A-Za-z0-9])~(?=[$A-Za-z0-9])',
     # This one allows HTML MathJax formulas and HTML tags to surround the ~
     # (i.e., after substitutions of $...$, color, etc.)
-    'non-breaking-space': r'(?<=[})>$A-Za-z0-9])~(?=[{\\<$A-Za-z0-9])'
+    'non-breaking-space': r'(?<=[})>$A-Za-z0-9_`])~(?=[{\\<$A-Za-z0-9`:])'
 
     }
 
